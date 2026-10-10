@@ -1,0 +1,107 @@
+{
+  "name": "FootstepHouse",
+  "displayName": "Dr. Footstep's House",
+  "bgmTrack": "sinnoh/valor",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "###....####",
+    "##......###",
+    "#.......###",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "LabDesk",
+      "x": 1,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "TrashCan",
+      "x": 1,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 7,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 8,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 8,
+      "y": 4,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 8,
+      "y": 5,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Sinnoh",
+      "targetX": 663,
+      "targetY": 835,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "dr_footstep",
+      "name": "Dr. Footstep",
+      "npcType": "Gentleman",
+      "x": 5,
+      "y": 6,
+      "facing": "Down",
+      "script": "DrFootstep"
+    }
+  ],
+  "wildEncounters": []
+}

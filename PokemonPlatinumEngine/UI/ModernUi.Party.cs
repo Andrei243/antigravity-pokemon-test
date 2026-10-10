@@ -131,13 +131,16 @@ internal static partial class ModernUi
     /// One Pokémon in full: its 2D sprite, name, types and nature on the left; stats and experience, then its moves,
     /// on the right.
     /// </summary>
-    /// <param name="page">-1 for a summary of one page; with a condition page (plan 06 · R14c), 0 for the stats and moves and 1 for the condition.</param>
-    public static void DrawSummary(int sw, int sh, Pokemon p, int index, int count, float appear = 1f, int page = -1)
+    /// <param name="page">-1 for a summary of one page; else 0 for the stats and moves, 1 for the condition (plan 06 · R14c) and 2 for the ribbons (plan 06 · R17b).</param>
+    /// <param name="ribbonCursor">On the ribbons' page, the ribbon looked at; -1 while the page only shows them.</param>
+    public static void DrawSummary(int sw, int sh, Pokemon p, int index, int count, float appear = 1f, int page = -1, int ribbonCursor = -1)
     {
         Backdrop(sw, sh);
         ScreenTitle("SUMMARY");
-        if (page >= 0 && count > 1) Hints(sw - 64, 44, ("Left / Right", "Page"), ("Up / Down", "Next Pokémon"), ("Esc", "Back"));
-        else if (page >= 0) Hints(sw - 64, 44, ("Left / Right", "Page"), ("Esc", "Back"));
+        if (page == PartyScreen.RibbonsPage && ribbonCursor >= 0) Hints(sw - 64, 44, ("Arrows", "Ribbon"), ("Esc", "Back"));
+        else if (page == PartyScreen.RibbonsPage && !p.IsEgg && p.Ribbons.Count > 0) Hints(sw - 64, 44, ("Z", "Look"), ("Left / Right", "Page"), ("Esc", "Back"));
+        else if (page >= 0 && !p.IsEgg && count > 1) Hints(sw - 64, 44, ("Left / Right", "Page"), ("Up / Down", "Next Pokémon"), ("Esc", "Back"));
+        else if (page >= 0 && !p.IsEgg) Hints(sw - 64, 44, ("Left / Right", "Page"), ("Esc", "Back"));
         else if (count > 1) Hints(sw - 64, 44, ("Up / Down", "Next Pokémon"), ("Esc", "Back"));
         else Hints(sw - 64, 44, ("Esc", "Back"));
 
@@ -193,6 +196,13 @@ internal static partial class ModernUi
         if (page == 1)
         {
             ConditionPanel(new Rectangle(696 + slide, 132, 1160, 900), ConditionOf(p));
+            return;
+        }
+
+        // ---- The ribbons, on theirs
+        if (page == PartyScreen.RibbonsPage)
+        {
+            RibbonsPanel(new Rectangle(696 + slide, 132, 1160, 900), p, ribbonCursor);
             return;
         }
 

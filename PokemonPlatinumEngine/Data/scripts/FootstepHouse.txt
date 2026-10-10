@@ -1,0 +1,50 @@
+# Dr. Footstep's house on Route 213 (plan 06 · R17b), rebuilt to the original's plan. docs/scripts.md describes the
+# language; the lines are our own, on the original's beats (scripts_footstep_house.s).
+#
+# Dr. Footstep reads from its footprints what the first of the team that is no Egg feels about its Trainer, in five
+# steps of its friendship (under 70, from 70, 150 and 200, and at 255), and gives the Footprint Ribbon to one whose
+# friendship is all there is. The original speaks in four voices by the species' kind of footprint, and in a fifth
+# for those that leave none; here there is the one voice.
+
+
+script OnEnter
+  setflag FLAG_FIRST_ARRIVAL_DOCTOR_FOOTSTEPS_HOUSE
+  end
+
+
+script DrFootstep
+  ribbon feeling
+  if result == 0 goto Nobody
+  if flag FLAG_TALKED_TO_DR_FOOTSTEP goto Again
+  setflag FLAG_TALKED_TO_DR_FOOTSTEP
+  say "I am Dr. Footstep! Footprints tell me everything. Show me a Pokémon's, and I'll tell you what it thinks of you."
+  goto Read
+label Again
+  say "Back again? Then let us see what your {wearer}'s footprints have to say today."
+label Read
+  fade out
+  wait 0.6
+  fade in
+  ribbon feeling
+  if result == 5 goto Devoted
+  if result == 4 say "Hmm, hmm! 'Being with my Trainer is the best part of every day,' these prints say. You two are close indeed."
+  if result == 3 say "Hmm! 'I've come to like travelling with this Trainer,' they say. A good, steady bond."
+  if result == 2 say "Hmm. 'This Trainer is all right, I suppose,' they say. There is room to grow, but it is on its way."
+  if result == 1 say "Hmm... 'I don't know what to make of this Trainer yet,' they say. Give it time, and kindness."
+  say "And that is what your Pokémon thinks!"
+  end
+label Devoted
+  say "Oh, my! 'I would follow my Trainer anywhere at all,' these prints say. I have seldom read a heart so open!"
+  ribbon has RIBBON_FOOTPRINT
+  if result == 1 goto Worn
+  say "A bond like that should be seen by everyone. Allow me!"
+  ribbon give RIBBON_FOOTPRINT
+  fanfare item
+  text "{player} received the {ribbon}!" "{player} put the {ribbon} on {wearer}."
+  end
+label Worn
+  say "And it wears the ribbon to prove it. Splendid, splendid!"
+  end
+label Nobody
+  say "I am Dr. Footstep, and I read footprints. But you have no Pokémon with you to leave me any!"
+  end

@@ -1140,7 +1140,8 @@
         "species": "Roselia",
         "level": 18,
         "ivScale": 0,
-        "personality": 4279416
+        "personality": 4279416,
+        "ballSeal": 1
       },
       {
         "species": "Combee",
@@ -1648,13 +1649,15 @@
         "species": "Pikachu",
         "level": 23,
         "ivScale": 0,
-        "personality": 2673528
+        "personality": 2673528,
+        "ballSeal": 20
       },
       {
         "species": "Clefairy",
         "level": 23,
         "ivScale": 0,
-        "personality": 4683128
+        "personality": 4683128,
+        "ballSeal": 20
       }
     ],
     "rematches": [
@@ -1951,7 +1954,8 @@
         "species": "Gible",
         "level": 34,
         "ivScale": 50,
-        "personality": 15648136
+        "personality": 15648136,
+        "ballSeal": 17
       }
     ],
     "rematches": [
@@ -2156,7 +2160,8 @@
         "species": "Croagunk",
         "level": 30,
         "ivScale": 0,
-        "personality": 8482184
+        "personality": 8482184,
+        "ballSeal": 25
       }
     ],
     "rematches": [
@@ -2200,7 +2205,8 @@
         "species": "Prinplup",
         "level": 27,
         "ivScale": 0,
-        "personality": 9745288
+        "personality": 9745288,
+        "ballSeal": 23
       }
     ],
     "rematches": [
@@ -2250,7 +2256,8 @@
         "species": "Chatot",
         "level": 27,
         "ivScale": 0,
-        "personality": 11095176
+        "personality": 11095176,
+        "ballSeal": 22
       }
     ],
     "rematches": [
@@ -2861,7 +2868,8 @@
         "species": "Shellos",
         "level": 26,
         "ivScale": 0,
-        "personality": 14787464
+        "personality": 14787464,
+        "ballSeal": 8
       }
     ],
     "rematches": [
@@ -2885,7 +2893,8 @@
         "species": "Marill",
         "level": 28,
         "ivScale": 0,
-        "personality": 13009528
+        "personality": 13009528,
+        "ballSeal": 9
       }
     ],
     "rematches": [
@@ -3963,7 +3972,8 @@
         "species": "Golbat",
         "level": 39,
         "ivScale": 0,
-        "personality": 2066056
+        "personality": 2066056,
+        "ballSeal": 5
       }
     ],
     "rematches": [
@@ -4442,7 +4452,8 @@
           "Horn Attack",
           "Aqua Ring",
           "Captivate"
-        ]
+        ],
+        "ballSeal": 15
       }
     ],
     "rematches": [
@@ -7302,7 +7313,8 @@
           "Thunderbolt",
           "Solar Beam",
           "Hyper Beam"
-        ]
+        ],
+        "ballSeal": 13
       }
     ]
   },
@@ -8235,7 +8247,8 @@
           "Hammer Arm",
           "Psychic",
           "Magnet Rise"
-        ]
+        ],
+        "ballSeal": 11
       }
     ],
     "rematches": [
@@ -8651,7 +8664,8 @@
         "species": "Magnemite",
         "level": 33,
         "ivScale": 0,
-        "personality": 11155336
+        "personality": 11155336,
+        "ballSeal": 18
       }
     ],
     "rematches": [
@@ -9403,7 +9417,8 @@
           "Fire Punch",
           "Quick Attack",
           "Giga Impact"
-        ]
+        ],
+        "ballSeal": 14
       }
     ]
   },
@@ -9813,7 +9828,8 @@
         "species": "Luxray",
         "level": 45,
         "ivScale": 0,
-        "personality": 15038088
+        "personality": 15038088,
+        "ballSeal": 4
       }
     ],
     "rematches": [
@@ -10683,7 +10699,8 @@
         "species": "Clefairy",
         "level": 6,
         "ivScale": 0,
-        "personality": 12133496
+        "personality": 12133496,
+        "ballSeal": 2
       }
     ]
   },
@@ -13034,7 +13051,8 @@
         "species": "Mime Jr.",
         "level": 6,
         "ivScale": 0,
-        "personality": 9529736
+        "personality": 9529736,
+        "ballSeal": 3
       }
     ]
   },
@@ -13456,7 +13474,8 @@
           "Bite",
           "Mega Drain",
           "Withdraw"
-        ]
+        ],
+        "ballSeal": 10
       }
     ]
   },
@@ -13518,7 +13537,8 @@
           "Mach Punch",
           "Fury Swipes",
           "Leer"
-        ]
+        ],
+        "ballSeal": 10
       }
     ]
   },
@@ -13580,7 +13600,8 @@
           "Peck",
           "Metal Claw",
           "Growl"
-        ]
+        ],
+        "ballSeal": 10
       }
     ]
   },
@@ -13654,7 +13675,8 @@
           "Bite",
           "Mega Drain",
           "Leech Seed"
-        ]
+        ],
+        "ballSeal": 10
       }
     ]
   },
@@ -13728,7 +13750,8 @@
           "Flame Wheel",
           "Mach Punch",
           "Aerial Ace"
-        ]
+        ],
+        "ballSeal": 10
       }
     ]
   },
@@ -13802,7 +13825,8 @@
           "Aerial Ace",
           "Metal Claw",
           "Fury Attack"
-        ]
+        ],
+        "ballSeal": 10
       }
     ]
   },
@@ -13888,7 +13912,8 @@
           "Earthquake",
           "Crunch",
           "Synthesis"
-        ]
+        ],
+        "ballSeal": 24
       }
     ]
   },
@@ -13974,7 +13999,8 @@
           "Focus Blast",
           "Shadow Claw",
           "Aerial Ace"
-        ]
+        ],
+        "ballSeal": 24
       }
     ]
   },
@@ -14060,7 +14086,8 @@
           "Aerial Ace",
           "Metal Claw",
           "Shadow Claw"
-        ]
+        ],
+        "ballSeal": 24
       }
     ]
   },
@@ -15376,7 +15403,8 @@
         "level": 22,
         "ivScale": 0,
         "personality": 8024712,
-        "item": "Sitrus Berry"
+        "item": "Sitrus Berry",
+        "ballSeal": 7
       }
     ]
   },
@@ -15398,7 +15426,8 @@
         "level": 23,
         "ivScale": 0,
         "personality": 462456,
-        "item": "Sitrus Berry"
+        "item": "Sitrus Berry",
+        "ballSeal": 6
       }
     ]
   },
@@ -16265,7 +16294,8 @@
           "Zen Headbutt",
           "Swagger",
           "Payback"
-        ]
+        ],
+        "ballSeal": 12
       }
     ],
     "rematches": [
@@ -16363,7 +16393,8 @@
           "Aerial Ace",
           "Zen Headbutt",
           "Crunch"
-        ]
+        ],
+        "ballSeal": 23
       }
     ],
     "rematches": [
@@ -16620,7 +16651,8 @@
           "Air Slash",
           "Synthesis",
           "Sunny Day"
-        ]
+        ],
+        "ballSeal": 19
       }
     ],
     "rematches": [
@@ -16722,7 +16754,8 @@
           "Magical Leaf",
           "Shock Wave",
           "Shadow Ball"
-        ]
+        ],
+        "ballSeal": 21
       }
     ],
     "rematches": [
@@ -17572,7 +17605,8 @@
         "species": "Gastrodon",
         "level": 53,
         "ivScale": 0,
-        "personality": 31880
+        "personality": 31880,
+        "ballSeal": 1
       }
     ],
     "rematches": [
@@ -17887,7 +17921,8 @@
           "Bite",
           "Leech Seed",
           "Synthesis"
-        ]
+        ],
+        "ballSeal": 10
       }
     ]
   },
@@ -18258,7 +18293,8 @@
           "Punishment",
           "Flame Wheel",
           "Will-O-Wisp"
-        ]
+        ],
+        "ballSeal": 10
       }
     ]
   },
@@ -18344,7 +18380,8 @@
           "Aerial Ace",
           "Metal Claw",
           "Swagger"
-        ]
+        ],
+        "ballSeal": 10
       }
     ]
   },
@@ -19574,7 +19611,8 @@
         "species": "Gabite",
         "level": 46,
         "ivScale": 50,
-        "personality": 979592
+        "personality": 979592,
+        "ballSeal": 17
       }
     ]
   },
@@ -19594,7 +19632,8 @@
         "species": "Shelgon",
         "level": 61,
         "ivScale": 50,
-        "personality": 13190536
+        "personality": 13190536,
+        "ballSeal": 17
       },
       {
         "species": "Gabite",
@@ -19860,7 +19899,8 @@
           "Zen Headbutt",
           "Earthquake",
           "Stone Edge"
-        ]
+        ],
+        "ballSeal": 12
       }
     ]
   },
@@ -20048,7 +20088,8 @@
           "Air Slash",
           "Earthquake",
           "Silver Wind"
-        ]
+        ],
+        "ballSeal": 19
       }
     ]
   },
@@ -20497,13 +20538,15 @@
         "species": "Pikachu",
         "level": 44,
         "ivScale": 0,
-        "personality": 4395640
+        "personality": 4395640,
+        "ballSeal": 20
       },
       {
         "species": "Clefairy",
         "level": 44,
         "ivScale": 0,
-        "personality": 6405496
+        "personality": 6405496,
+        "ballSeal": 20
       }
     ]
   },
@@ -20522,13 +20565,15 @@
         "species": "Raichu",
         "level": 60,
         "ivScale": 0,
-        "personality": 14724216
+        "personality": 14724216,
+        "ballSeal": 20
       },
       {
         "species": "Clefable",
         "level": 60,
         "ivScale": 0,
-        "personality": 16734072
+        "personality": 16734072,
+        "ballSeal": 20
       }
     ]
   },
@@ -20594,7 +20639,8 @@
         "species": "Chatot",
         "level": 35,
         "ivScale": 0,
-        "personality": 14525832
+        "personality": 14525832,
+        "ballSeal": 22
       }
     ]
   },
@@ -20614,7 +20660,8 @@
         "species": "Chatot",
         "level": 45,
         "ivScale": 0,
-        "personality": 13250440
+        "personality": 13250440,
+        "ballSeal": 22
       }
     ]
   },
@@ -20634,7 +20681,8 @@
         "species": "Chatot",
         "level": 61,
         "ivScale": 0,
-        "personality": 15854984
+        "personality": 15854984,
+        "ballSeal": 22
       }
     ]
   },
@@ -20658,7 +20706,8 @@
         "species": "Magneton",
         "level": 52,
         "ivScale": 0,
-        "personality": 5500552
+        "personality": 5500552,
+        "ballSeal": 18
       }
     ]
   },
@@ -21483,7 +21532,8 @@
         "species": "Luxray",
         "level": 54,
         "ivScale": 0,
-        "personality": 15246472
+        "personality": 15246472,
+        "ballSeal": 4
       }
     ]
   },
@@ -21503,7 +21553,8 @@
         "species": "Luxray",
         "level": 61,
         "ivScale": 0,
-        "personality": 4330888
+        "personality": 4330888,
+        "ballSeal": 4
       }
     ]
   },
@@ -22634,7 +22685,8 @@
         "species": "Shellos",
         "level": 32,
         "ivScale": 0,
-        "personality": 11228296
+        "personality": 11228296,
+        "ballSeal": 8
       }
     ]
   },
@@ -22666,7 +22718,8 @@
         "species": "Gastrodon",
         "level": 51,
         "ivScale": 0,
-        "personality": 12318600
+        "personality": 12318600,
+        "ballSeal": 8
       }
     ]
   },
@@ -22684,7 +22737,8 @@
         "species": "Azumarill",
         "level": 44,
         "ivScale": 0,
-        "personality": 4415352
+        "personality": 4415352,
+        "ballSeal": 9
       }
     ]
   },
@@ -22752,7 +22806,8 @@
         "species": "Azumarill",
         "level": 53,
         "ivScale": 0,
-        "personality": 13206648
+        "personality": 13206648,
+        "ballSeal": 9
       }
     ]
   },
@@ -24222,7 +24277,8 @@
           "Earthquake",
           "Crunch",
           "Leech Seed"
-        ]
+        ],
+        "ballSeal": 24
       }
     ]
   },
@@ -24312,7 +24368,8 @@
           "Focus Blast",
           "Shadow Claw",
           "Aerial Ace"
-        ]
+        ],
+        "ballSeal": 24
       }
     ]
   },
@@ -24402,7 +24459,8 @@
           "Metal Claw",
           "Drill Peck",
           "Shadow Claw"
-        ]
+        ],
+        "ballSeal": 24
       }
     ]
   },
@@ -24492,7 +24550,8 @@
           "Earthquake",
           "Crunch",
           "Stone Edge"
-        ]
+        ],
+        "ballSeal": 24
       }
     ]
   },
@@ -24582,7 +24641,8 @@
           "Focus Blast",
           "Shadow Claw",
           "Aerial Ace"
-        ]
+        ],
+        "ballSeal": 24
       }
     ]
   },
@@ -24672,7 +24732,8 @@
           "Metal Claw",
           "Drill Peck",
           "Ice Beam"
-        ]
+        ],
+        "ballSeal": 24
       }
     ]
   },
@@ -25118,7 +25179,8 @@
           "Fire Punch",
           "Brick Break",
           "Giga Impact"
-        ]
+        ],
+        "ballSeal": 14
       }
     ]
   },
@@ -26132,7 +26194,8 @@
           "Thunderbolt",
           "Solar Beam",
           "Hyper Beam"
-        ]
+        ],
+        "ballSeal": 13
       }
     ]
   },
@@ -26395,7 +26458,8 @@
           "Earthquake",
           "Crunch",
           "Stone Edge"
-        ]
+        ],
+        "ballSeal": 24
       }
     ]
   },
@@ -26487,7 +26551,8 @@
           "Focus Blast",
           "Shadow Claw",
           "Aerial Ace"
-        ]
+        ],
+        "ballSeal": 24
       }
     ]
   },
@@ -26579,7 +26644,8 @@
           "Metal Claw",
           "Drill Peck",
           "Ice Beam"
-        ]
+        ],
+        "ballSeal": 24
       }
     ]
   },
@@ -26741,13 +26807,15 @@
         "species": "Clefairy",
         "level": 21,
         "ivScale": 0,
-        "personality": 13545592
+        "personality": 13545592,
+        "ballSeal": 2
       },
       {
         "species": "Clefairy",
         "level": 21,
         "ivScale": 40,
-        "personality": 1742712
+        "personality": 1742712,
+        "ballSeal": 2
       }
     ]
   },
@@ -26765,19 +26833,22 @@
         "species": "Clefairy",
         "level": 32,
         "ivScale": 0,
-        "personality": 8327032
+        "personality": 8327032,
+        "ballSeal": 2
       },
       {
         "species": "Clefairy",
         "level": 32,
         "ivScale": 40,
-        "personality": 13301624
+        "personality": 13301624,
+        "ballSeal": 2
       },
       {
         "species": "Clefairy",
         "level": 32,
         "ivScale": 80,
-        "personality": 1498744
+        "personality": 1498744,
+        "ballSeal": 2
       }
     ]
   },
@@ -26795,25 +26866,29 @@
         "species": "Clefairy",
         "level": 43,
         "ivScale": 0,
-        "personality": 3108472
+        "personality": 3108472,
+        "ballSeal": 2
       },
       {
         "species": "Clefairy",
         "level": 43,
         "ivScale": 40,
-        "personality": 8083064
+        "personality": 8083064,
+        "ballSeal": 2
       },
       {
         "species": "Clefairy",
         "level": 43,
         "ivScale": 80,
-        "personality": 13057400
+        "personality": 13057400,
+        "ballSeal": 2
       },
       {
         "species": "Clefairy",
         "level": 43,
         "ivScale": 120,
-        "personality": 1254776
+        "personality": 1254776,
+        "ballSeal": 2
       }
     ]
   },
@@ -26906,7 +26981,8 @@
         "species": "Mime Jr.",
         "level": 23,
         "ivScale": 0,
-        "personality": 12274056
+        "personality": 12274056,
+        "ballSeal": 3
       }
     ]
   },
@@ -26924,13 +27000,15 @@
         "species": "Mr. Mime",
         "level": 33,
         "ivScale": 0,
-        "personality": 2993288
+        "personality": 2993288,
+        "ballSeal": 3
       },
       {
         "species": "Kadabra",
         "level": 33,
         "ivScale": 0,
-        "personality": 11761288
+        "personality": 11761288,
+        "ballSeal": 3
       }
     ]
   },
@@ -26948,19 +27026,22 @@
         "species": "Mr. Mime",
         "level": 44,
         "ivScale": 0,
-        "personality": 9278600
+        "personality": 9278600,
+        "ballSeal": 3
       },
       {
         "species": "Kadabra",
         "level": 44,
         "ivScale": 0,
-        "personality": 1269384
+        "personality": 1269384,
+        "ballSeal": 3
       },
       {
         "species": "Ambipom",
         "level": 44,
         "ivScale": 0,
-        "personality": 5279368
+        "personality": 5279368,
+        "ballSeal": 3
       }
     ]
   },
@@ -27071,7 +27152,8 @@
         "level": 35,
         "ivScale": 250,
         "personality": 9803144,
-        "item": "Rare Candy"
+        "item": "Rare Candy",
+        "ballSeal": 26
       }
     ]
   },
@@ -27098,7 +27180,8 @@
           "Soft-Boiled",
           "Egg Bomb",
           "Psychic"
-        ]
+        ],
+        "ballSeal": 27
       }
     ]
   },
@@ -27434,31 +27517,36 @@
         "species": "Clefairy",
         "level": 48,
         "ivScale": 0,
-        "personality": 7802488
+        "personality": 7802488,
+        "ballSeal": 2
       },
       {
         "species": "Clefairy",
         "level": 48,
         "ivScale": 40,
-        "personality": 12777080
+        "personality": 12777080,
+        "ballSeal": 2
       },
       {
         "species": "Clefairy",
         "level": 48,
         "ivScale": 80,
-        "personality": 974200
+        "personality": 974200,
+        "ballSeal": 2
       },
       {
         "species": "Clefairy",
         "level": 48,
         "ivScale": 120,
-        "personality": 5948792
+        "personality": 5948792,
+        "ballSeal": 2
       },
       {
         "species": "Clefairy",
         "level": 48,
         "ivScale": 160,
-        "personality": 10923128
+        "personality": 10923128,
+        "ballSeal": 2
       }
     ]
   },
@@ -27501,19 +27589,22 @@
         "species": "Mr. Mime",
         "level": 50,
         "ivScale": 0,
-        "personality": 1574792
+        "personality": 1574792,
+        "ballSeal": 3
       },
       {
         "species": "Alakazam",
         "level": 50,
         "ivScale": 0,
-        "personality": 5273992
+        "personality": 5273992,
+        "ballSeal": 3
       },
       {
         "species": "Ambipom",
         "level": 50,
         "ivScale": 0,
-        "personality": 14352776
+        "personality": 14352776,
+        "ballSeal": 3
       }
     ]
   },
@@ -27692,37 +27783,43 @@
         "species": "Clefairy",
         "level": 53,
         "ivScale": 0,
-        "personality": 11935864
+        "personality": 11935864,
+        "ballSeal": 2
       },
       {
         "species": "Clefairy",
         "level": 53,
         "ivScale": 40,
-        "personality": 132984
+        "personality": 132984,
+        "ballSeal": 2
       },
       {
         "species": "Clefairy",
         "level": 53,
         "ivScale": 80,
-        "personality": 5107576
+        "personality": 5107576,
+        "ballSeal": 2
       },
       {
         "species": "Clefairy",
         "level": 53,
         "ivScale": 120,
-        "personality": 10081912
+        "personality": 10081912,
+        "ballSeal": 2
       },
       {
         "species": "Clefairy",
         "level": 53,
         "ivScale": 160,
-        "personality": 15056504
+        "personality": 15056504,
+        "ballSeal": 2
       },
       {
         "species": "Clefairy",
         "level": 53,
         "ivScale": 200,
-        "personality": 3253880
+        "personality": 3253880,
+        "ballSeal": 2
       }
     ]
   },
@@ -27765,19 +27862,22 @@
         "species": "Mr. Mime",
         "level": 56,
         "ivScale": 0,
-        "personality": 14499976
+        "personality": 14499976,
+        "ballSeal": 3
       },
       {
         "species": "Alakazam",
         "level": 56,
         "ivScale": 0,
-        "personality": 1421960
+        "personality": 1421960,
+        "ballSeal": 3
       },
       {
         "species": "Ambipom",
         "level": 56,
         "ivScale": 0,
-        "personality": 10501000
+        "personality": 10501000,
+        "ballSeal": 3
       }
     ]
   },
@@ -27885,7 +27985,8 @@
           "Fire Punch",
           "Brick Break",
           "Giga Impact"
-        ]
+        ],
+        "ballSeal": 14
       }
     ]
   },
@@ -27939,7 +28040,8 @@
           "Thunderbolt",
           "Solar Beam",
           "Hyper Beam"
-        ]
+        ],
+        "ballSeal": 13
       }
     ]
   },
@@ -28025,7 +28127,8 @@
           "Earthquake",
           "Crunch",
           "Synthesis"
-        ]
+        ],
+        "ballSeal": 24
       }
     ]
   },
@@ -28111,7 +28214,8 @@
           "Focus Blast",
           "Shadow Claw",
           "Aerial Ace"
-        ]
+        ],
+        "ballSeal": 24
       }
     ]
   },
@@ -28197,7 +28301,8 @@
           "Aerial Ace",
           "Metal Claw",
           "Shadow Claw"
-        ]
+        ],
+        "ballSeal": 24
       }
     ]
   },

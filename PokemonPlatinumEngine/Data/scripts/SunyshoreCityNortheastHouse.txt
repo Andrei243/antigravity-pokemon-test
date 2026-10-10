@@ -1,0 +1,47 @@
+# Julia's house in Sunyshore City (plan 06 · R17b), rebuilt to the original's plan. docs/scripts.md describes the
+# language; the lines are our own, on the original's beats (scripts_sunyshore_city_northeast_house.s).
+#
+# Julia asks for a story every day and gives the first of the team that is no Egg the day's ribbon for it: Alert on
+# Monday, Shock on Tuesday, Downcast on Wednesday, Careless on Thursday, Relax on Friday, Snooze on Saturday and Smile
+# on Sunday. The first visit only makes the acquaintance (she asks to be visited tomorrow); a Pokémon that has the
+# day's ribbon already gets none; and one story a day is all she hears (the two daily flags the new day clears).
+# In the original the story is a word chosen from the easy-chat words; here the player only answers yes or no.
+
+
+script Julia
+  if flag FLAG_DAILY_TOLD_STORY_SUNYSHORE_CITY_NORTHEAST_HOUSE goto Tomorrow
+  if flag FLAG_DAILY_VISIT_TOMORROW_SUNYSHORE_CITY_NORTHEAST_HOUSE goto VisitTomorrow
+  if not flag FLAG_TALKED_TO_JULIA_SUNYSHORE_CITY_NORTHEAST_HOUSE goto First
+  ribbon has today
+  if result == 1 goto GaveBefore
+  if weekday monday ask "It's Monday, and I want a story that wakes me right up. Have you one about a time you had to be on your guard?"
+  if weekday tuesday ask "It's Tuesday. Tell me about something that gave you a real shock! Will you?"
+  if weekday wednesday ask "Wednesdays always get me down. Have you a story of a time you felt low, to keep mine company?"
+  if weekday thursday ask "Thursday! Tell me about a slip you made without thinking. Go on, will you?"
+  if weekday friday ask "Friday at last. Have you a story about putting your feet up and taking it easy?"
+  if weekday saturday ask "It's a sleepy sort of Saturday. Will you tell me about the best sleep you ever had?"
+  if weekday sunday ask "Sunday! I'd like a story that makes me smile. Have you one?"
+  if no goto Nothing
+  setflag FLAG_DAILY_TOLD_STORY_SUNYSHORE_CITY_NORTHEAST_HOUSE
+  say "...Oh, that was lovely. Thank you! I shan't forget it, and neither should your {wearer}. Please, give it this."
+  ribbon give today
+  fanfare item
+  text "{player} received the {ribbon}!" "{player} put the {ribbon} on {wearer}."
+label Tomorrow
+  say "Come and tell me another story tomorrow, won't you? I've a different ribbon for every day of the week."
+  end
+label First
+  setflag FLAG_TALKED_TO_JULIA_SUNYSHORE_CITY_NORTHEAST_HOUSE
+  setflag FLAG_DAILY_VISIT_TOMORROW_SUNYSHORE_CITY_NORTHEAST_HOUSE
+  say "My husband is a sailor, so I'm often on my own here. A traveller like you must have stories. Would you come and tell me one?"
+  say "Not today, I'm all out of sorts today. Tomorrow! Do come tomorrow."
+  end
+label VisitTomorrow
+  say "Do come and visit tomorrow. I'll be ready for a story then."
+  end
+label GaveBefore
+  say "Your {wearer} has today's ribbon already. Bring another Pokémon along first, or come back on another day."
+  end
+label Nothing
+  say "Nothing comes to mind? That happens. Come back when you've thought of one."
+  end

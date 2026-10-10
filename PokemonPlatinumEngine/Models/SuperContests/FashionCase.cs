@@ -49,13 +49,63 @@ public sealed class FashionCase
     public Dictionary<string, int> ToSave() => Held.ToDictionary(h => SuperContestDatabase.AccessoryName(h.Accessory), h => h.Count);
 
     /// <summary>Takes on what a save kept; anything it doesn't know is left out.</summary>
-    public void Load(IReadOnlyDictionary<string, int>? saved)
+    public void Load(IReadOnlyDictionary<string, int>? saved, IEnumerable<string>? savedBackdrops = null)
     {
         Array.Clear(counts);
         foreach (var (name, count) in saved ?? new Dictionary<string, int>())
         {
             int accessory = SuperContestDatabase.Accessory(name);
             if (accessory >= 0) counts[accessory] = Math.Clamp(count, 0, Limit(accessory));
+        }
+        backdrops.Clear();
+        foreach (string name in savedBackdrops ?? Array.Empty<string>())
+        {
+            int backdrop = SuperContestDatabase.Backdrop(name);
+            if (backdrop >= 0) backdrops.Add(backdrop);
+        }
+    }
+
+    // ---------------------------------------------------------------- backdrops (plan 06 · R17b)
+
+    // The original keeps a place for each backdrop the player has, in the order they came (BackdropFlags)
+    private readonly List<int> backdrops = new();
+
+    /// <summary><c>FashionCase_HasBackdrop</c>.</summary>
+    public bool HasBackdrop(int backdrop) => backdrops.Contains(backdrop);
+
+    /// <summary>The backdrops in the case, in the order they came (<c>FashionCase_GetTotalBackdrops</c> counts them).</summary>
+    public IReadOnlyList<int> Backdrops => backdrops;
+
+    /// <summary><c>FashionCase_AddBackdrop</c>: one of each at most; false for one already there, or that is none.</summary>
+    public bool AddBackdrop(int backdrop)
+    {
+        if (backdrop < 0 || backdrop >= SuperContestDatabase.Backdrops.Count || HasBackdrop(backdrop)) return false;
+        backdrops.Add(backdrop);
+        return true;
+    }
+
+    /// <summary>What a save keeps of the backdrops: their names in the order they came.</summary>
+    public List<string> BackdropsToSave() => backdrops.Select(SuperContestDatabase.BackdropName).ToList();
+
+    /// <summary>
+    /// What comes with the Fashion Case (<c>JubilifeCity_GiveFashionCaseAndAccessories</c>): five draws among the six
+    /// fluffs, five among the six feathers and moustaches that follow them, the Dress Up backdrop, and two different
+    /// ones of the eight after it (a draw again while it is the one just drawn).
+    /// </summary>
+    public void FillAsGiven(Random chance)
+    {
+        int fluff = SuperContestDatabase.Accessory("White Fluff"), feather = SuperContestDatabase.Accessory("Blue Feather");
+        for (int i = 0; i < 5; i++) Add(fluff + chance.Next(6));
+        for (int i = 0; i < 5; i++) Add(feather + chance.Next(6));
+        AddBackdrop(0);
+        int last = -1;
+        for (int i = 0; i < 2; i++)
+        {
+            int drawn;
+            do drawn = chance.Next(8);
+            while (drawn == last);
+            last = drawn;
+            AddBackdrop(1 + drawn);
         }
     }
 }

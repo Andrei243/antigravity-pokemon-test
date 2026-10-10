@@ -428,7 +428,69 @@ script Clerk
 # A PC.
 script PC
   text "{player} switched the PC on."
+  # With a Seal Case, the PC offers the Ball Capsules too, as the original's own PC does (plan 06 · R17b;
+  # CommonScript_BallCapsules: with no Seal at all there is nothing to open)
+  if not item "Seal Case" goto Storage
+  choose "Which should be opened?" "POKéMON STORAGE" "BALL CAPSULES" "SWITCH OFF"
+  if result == 1 goto Capsules
+  if result == 2 end
+label Storage
   pc
+  end
+label Capsules
+  seal count
+  if result == 0 goto NoSeals
+  seal capsules
+  end
+label NoSeals
+  text "There are no Seals in the Seal Case."
+  end
+
+
+# The Ribbon Syndicate of the Resort Area (plan 06 · R17b; scripts_resort_area_ribbon_syndicate_1f.s). Its building
+# stands in an area plan 01 · M10 opens: the room's doorkeeper and cashier run these two once it is built.
+#
+# The doorkeeper, as the player comes in (the original's OnFrame): the door is theirs for good once the team shows ten
+# different ribbons (FLAG_JOINED_RIBBON_SYNDICATE); without the flag, the room's script shows them out.
+script RibbonSyndicateEntry
+  if flag FLAG_JOINED_RIBBON_SYNDICATE goto Member
+  ribbon count
+  if result < 10 goto Refused
+  setflag FLAG_JOINED_RIBBON_SYNDICATE
+  setvar VAR_RESORT_AREA_RIBBON_SYNDICATE_1F_STATE 1
+  say "Ten ribbons, and more! {player}, you simply must join us. Welcome to the Ribbon Syndicate."
+label Member
+  return
+label Refused
+  say "The Ribbon Syndicate is for those who have collected a great many ribbons. Do come back when you have."
+  return
+
+
+# The Syndicate's cashier: the Gorgeous Ribbon for 10,000, then the Royal Ribbon for 100,000, then the Gorgeous
+# Royal Ribbon for 999,999, each for the first of the team that is no Egg, which must have the one before.
+script RibbonSyndicateCashier
+  ribbon offer
+  if result == 0 goto AllThree
+  if result == 10000 ask "Welcome, {player}. For your {wearer}, may I suggest the Gorgeous Ribbon? It is a mere 10,000."
+  if result == 100000 ask "For a {wearer} of such taste, the Royal Ribbon. It is 100,000. Shall I?"
+  if result == 999999 ask "The Gorgeous Royal Ribbon, {player}. There is nothing finer. It is 999,999. Shall I?"
+  if no goto Another
+  ribbon offer
+  if result == 10000 takemoney 10000
+  if result == 100000 takemoney 100000
+  if result == 999999 takemoney 999999
+  if result == 0 goto Short
+  ribbon give offer
+  text "{player} bought the {ribbon}!" "{player} put the {ribbon} on {wearer}."
+  end
+label Short
+  say "Please, {player}. One does not joke about money in the Ribbon Syndicate."
+  end
+label Another
+  say "Do visit us again."
+  end
+label AllThree
+  say "That is the Gorgeous Royal Ribbon on your {wearer}. There is nothing more I could possibly sell it."
   end
 
 

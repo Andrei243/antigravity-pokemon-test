@@ -1,0 +1,874 @@
+{
+  "seals": [
+    {
+      "id": "HEART_SEAL_A",
+      "name": "Heart Seal A",
+      "price": 50,
+      "letter": false
+    },
+    {
+      "id": "HEART_SEAL_B",
+      "name": "Heart Seal B",
+      "price": 50,
+      "letter": false
+    },
+    {
+      "id": "HEART_SEAL_C",
+      "name": "Heart Seal C",
+      "price": 50,
+      "letter": false
+    },
+    {
+      "id": "HEART_SEAL_D",
+      "name": "Heart Seal D",
+      "price": 50,
+      "letter": false
+    },
+    {
+      "id": "HEART_SEAL_E",
+      "name": "Heart Seal E",
+      "price": 100,
+      "letter": false
+    },
+    {
+      "id": "HEART_SEAL_F",
+      "name": "Heart Seal F",
+      "price": 100,
+      "letter": false
+    },
+    {
+      "id": "STAR_SEAL_A",
+      "name": "Star Seal A",
+      "price": 50,
+      "letter": false
+    },
+    {
+      "id": "STAR_SEAL_B",
+      "name": "Star Seal B",
+      "price": 50,
+      "letter": false
+    },
+    {
+      "id": "STAR_SEAL_C",
+      "name": "Star Seal C",
+      "price": 50,
+      "letter": false
+    },
+    {
+      "id": "STAR_SEAL_D",
+      "name": "Star Seal D",
+      "price": 50,
+      "letter": false
+    },
+    {
+      "id": "STAR_SEAL_E",
+      "name": "Star Seal E",
+      "price": 100,
+      "letter": false
+    },
+    {
+      "id": "STAR_SEAL_F",
+      "name": "Star Seal F",
+      "price": 100,
+      "letter": false
+    },
+    {
+      "id": "LINE_SEAL_A",
+      "name": "Line Seal A",
+      "price": 100,
+      "letter": false
+    },
+    {
+      "id": "LINE_SEAL_B",
+      "name": "Line Seal B",
+      "price": 100,
+      "letter": false
+    },
+    {
+      "id": "LINE_SEAL_C",
+      "name": "Line Seal C",
+      "price": 100,
+      "letter": false
+    },
+    {
+      "id": "LINE_SEAL_D",
+      "name": "Line Seal D",
+      "price": 100,
+      "letter": false
+    },
+    {
+      "id": "SMOKE_SEAL_A",
+      "name": "Smoke Seal A",
+      "price": 100,
+      "letter": false
+    },
+    {
+      "id": "SMOKE_SEAL_B",
+      "name": "Smoke Seal B",
+      "price": 100,
+      "letter": false
+    },
+    {
+      "id": "SMOKE_SEAL_C",
+      "name": "Smoke Seal C",
+      "price": 100,
+      "letter": false
+    },
+    {
+      "id": "SMOKE_SEAL_D",
+      "name": "Smoke Seal D",
+      "price": 100,
+      "letter": false
+    },
+    {
+      "id": "ELE_SEAL_A",
+      "name": "Ele-Seal A",
+      "price": 100,
+      "letter": false
+    },
+    {
+      "id": "ELE_SEAL_B",
+      "name": "Ele-Seal B",
+      "price": 100,
+      "letter": false
+    },
+    {
+      "id": "ELE_SEAL_C",
+      "name": "Ele-Seal C",
+      "price": 100,
+      "letter": false
+    },
+    {
+      "id": "ELE_SEAL_D",
+      "name": "Ele-Seal D",
+      "price": 100,
+      "letter": false
+    },
+    {
+      "id": "FOAMY_SEAL_A",
+      "name": "Foamy Seal A",
+      "price": 50,
+      "letter": false
+    },
+    {
+      "id": "FOAMY_SEAL_B",
+      "name": "Foamy Seal B",
+      "price": 50,
+      "letter": false
+    },
+    {
+      "id": "FOAMY_SEAL_C",
+      "name": "Foamy Seal C",
+      "price": 50,
+      "letter": false
+    },
+    {
+      "id": "FOAMY_SEAL_D",
+      "name": "Foamy Seal D",
+      "price": 50,
+      "letter": false
+    },
+    {
+      "id": "FIRE_SEAL_A",
+      "name": "Fire Seal A",
+      "price": 50,
+      "letter": false
+    },
+    {
+      "id": "FIRE_SEAL_B",
+      "name": "Fire Seal B",
+      "price": 50,
+      "letter": false
+    },
+    {
+      "id": "FIRE_SEAL_C",
+      "name": "Fire Seal C",
+      "price": 50,
+      "letter": false
+    },
+    {
+      "id": "FIRE_SEAL_D",
+      "name": "Fire Seal D",
+      "price": 50,
+      "letter": false
+    },
+    {
+      "id": "PARTY_SEAL_A",
+      "name": "Party Seal A",
+      "price": 50,
+      "letter": false
+    },
+    {
+      "id": "PARTY_SEAL_B",
+      "name": "Party Seal B",
+      "price": 50,
+      "letter": false
+    },
+    {
+      "id": "PARTY_SEAL_C",
+      "name": "Party Seal C",
+      "price": 100,
+      "letter": false
+    },
+    {
+      "id": "PARTY_SEAL_D",
+      "name": "Party Seal D",
+      "price": 100,
+      "letter": false
+    },
+    {
+      "id": "FLORA_SEAL_A",
+      "name": "Flora Seal A",
+      "price": 50,
+      "letter": false
+    },
+    {
+      "id": "FLORA_SEAL_B",
+      "name": "Flora Seal B",
+      "price": 50,
+      "letter": false
+    },
+    {
+      "id": "FLORA_SEAL_C",
+      "name": "Flora Seal C",
+      "price": 50,
+      "letter": false
+    },
+    {
+      "id": "FLORA_SEAL_D",
+      "name": "Flora Seal D",
+      "price": 50,
+      "letter": false
+    },
+    {
+      "id": "FLORA_SEAL_E",
+      "name": "Flora Seal E",
+      "price": 50,
+      "letter": false
+    },
+    {
+      "id": "FLORA_SEAL_F",
+      "name": "Flora Seal F",
+      "price": 50,
+      "letter": false
+    },
+    {
+      "id": "SONG_SEAL_A",
+      "name": "Song Seal A",
+      "price": 50,
+      "letter": false
+    },
+    {
+      "id": "SONG_SEAL_B",
+      "name": "Song Seal B",
+      "price": 50,
+      "letter": false
+    },
+    {
+      "id": "SONG_SEAL_C",
+      "name": "Song Seal C",
+      "price": 50,
+      "letter": false
+    },
+    {
+      "id": "SONG_SEAL_D",
+      "name": "Song Seal D",
+      "price": 50,
+      "letter": false
+    },
+    {
+      "id": "SONG_SEAL_E",
+      "name": "Song Seal E",
+      "price": 50,
+      "letter": false
+    },
+    {
+      "id": "SONG_SEAL_F",
+      "name": "Song Seal F",
+      "price": 50,
+      "letter": false
+    },
+    {
+      "id": "SONG_SEAL_G",
+      "name": "Song Seal G",
+      "price": 50,
+      "letter": false
+    },
+    {
+      "id": "A_SEAL",
+      "name": "A Seal",
+      "price": 0,
+      "letter": true
+    },
+    {
+      "id": "B_SEAL",
+      "name": "B Seal",
+      "price": 0,
+      "letter": true
+    },
+    {
+      "id": "C_SEAL",
+      "name": "C Seal",
+      "price": 0,
+      "letter": true
+    },
+    {
+      "id": "D_SEAL",
+      "name": "D Seal",
+      "price": 0,
+      "letter": true
+    },
+    {
+      "id": "E_SEAL",
+      "name": "E Seal",
+      "price": 0,
+      "letter": true
+    },
+    {
+      "id": "F_SEAL",
+      "name": "F Seal",
+      "price": 0,
+      "letter": true
+    },
+    {
+      "id": "G_SEAL",
+      "name": "G Seal",
+      "price": 0,
+      "letter": true
+    },
+    {
+      "id": "H_SEAL",
+      "name": "H Seal",
+      "price": 0,
+      "letter": true
+    },
+    {
+      "id": "I_SEAL",
+      "name": "I Seal",
+      "price": 0,
+      "letter": true
+    },
+    {
+      "id": "J_SEAL",
+      "name": "J Seal",
+      "price": 0,
+      "letter": true
+    },
+    {
+      "id": "K_SEAL",
+      "name": "K Seal",
+      "price": 0,
+      "letter": true
+    },
+    {
+      "id": "L_SEAL",
+      "name": "L Seal",
+      "price": 0,
+      "letter": true
+    },
+    {
+      "id": "M_SEAL",
+      "name": "M Seal",
+      "price": 0,
+      "letter": true
+    },
+    {
+      "id": "N_SEAL",
+      "name": "N Seal",
+      "price": 0,
+      "letter": true
+    },
+    {
+      "id": "O_SEAL",
+      "name": "O Seal",
+      "price": 0,
+      "letter": true
+    },
+    {
+      "id": "P_SEAL",
+      "name": "P Seal",
+      "price": 0,
+      "letter": true
+    },
+    {
+      "id": "Q_SEAL",
+      "name": "Q Seal",
+      "price": 0,
+      "letter": true
+    },
+    {
+      "id": "R_SEAL",
+      "name": "R Seal",
+      "price": 0,
+      "letter": true
+    },
+    {
+      "id": "S_SEAL",
+      "name": "S Seal",
+      "price": 0,
+      "letter": true
+    },
+    {
+      "id": "T_SEAL",
+      "name": "T Seal",
+      "price": 0,
+      "letter": true
+    },
+    {
+      "id": "U_SEAL",
+      "name": "U Seal",
+      "price": 0,
+      "letter": true
+    },
+    {
+      "id": "V_SEAL",
+      "name": "V Seal",
+      "price": 0,
+      "letter": true
+    },
+    {
+      "id": "W_SEAL",
+      "name": "W Seal",
+      "price": 0,
+      "letter": true
+    },
+    {
+      "id": "X_SEAL",
+      "name": "X Seal",
+      "price": 0,
+      "letter": true
+    },
+    {
+      "id": "Y_SEAL",
+      "name": "Y Seal",
+      "price": 0,
+      "letter": true
+    },
+    {
+      "id": "Z_SEAL",
+      "name": "Z Seal",
+      "price": 0,
+      "letter": true
+    },
+    {
+      "id": "SHOCK_SEAL",
+      "name": "Shock Seal",
+      "price": 0,
+      "letter": true
+    },
+    {
+      "id": "MYSTERY_SEAL",
+      "name": "Mystery Seal",
+      "price": 0,
+      "letter": true
+    },
+    {
+      "id": "LIQUID_SEAL",
+      "name": "Liquid Seal",
+      "price": 0,
+      "letter": false
+    },
+    {
+      "id": "BURST_SEAL",
+      "name": "Burst Seal",
+      "price": 0,
+      "letter": false
+    },
+    {
+      "id": "TWINKLE_SEAL",
+      "name": "Twinkle Seal",
+      "price": 0,
+      "letter": false
+    }
+  ],
+  "market": [
+    [
+      "STAR_SEAL_A",
+      "SONG_SEAL_G",
+      "FOAMY_SEAL_D",
+      "FLORA_SEAL_F",
+      "LINE_SEAL_B",
+      "ELE_SEAL_A",
+      "PARTY_SEAL_C"
+    ],
+    [
+      "HEART_SEAL_A",
+      "STAR_SEAL_B",
+      "FIRE_SEAL_A",
+      "SONG_SEAL_A",
+      "LINE_SEAL_C",
+      "ELE_SEAL_B",
+      "PARTY_SEAL_D"
+    ],
+    [
+      "HEART_SEAL_B",
+      "STAR_SEAL_C",
+      "FIRE_SEAL_B",
+      "FLORA_SEAL_A",
+      "SONG_SEAL_B",
+      "LINE_SEAL_D",
+      "ELE_SEAL_C"
+    ],
+    [
+      "HEART_SEAL_C",
+      "STAR_SEAL_D",
+      "FIRE_SEAL_C",
+      "FLORA_SEAL_B",
+      "SONG_SEAL_C",
+      "SMOKE_SEAL_A",
+      "ELE_SEAL_D"
+    ],
+    [
+      "HEART_SEAL_D",
+      "FOAMY_SEAL_A",
+      "FIRE_SEAL_D",
+      "FLORA_SEAL_C",
+      "SONG_SEAL_D",
+      "STAR_SEAL_E",
+      "SMOKE_SEAL_B"
+    ],
+    [
+      "FOAMY_SEAL_B",
+      "PARTY_SEAL_A",
+      "FLORA_SEAL_D",
+      "SONG_SEAL_E",
+      "HEART_SEAL_E",
+      "STAR_SEAL_F",
+      "SMOKE_SEAL_C"
+    ],
+    [
+      "FOAMY_SEAL_C",
+      "PARTY_SEAL_B",
+      "FLORA_SEAL_E",
+      "SONG_SEAL_F",
+      "HEART_SEAL_F",
+      "LINE_SEAL_A",
+      "SMOKE_SEAL_D"
+    ]
+  ],
+  "trainerCapsules": [
+    [
+      "FLORA_SEAL_B,147,77",
+      "FLORA_SEAL_B,147,60",
+      "FLORA_SEAL_B,147,76",
+      "FLORA_SEAL_A,147,94"
+    ],
+    [
+      "SONG_SEAL_G,169,97",
+      "SONG_SEAL_E,214,97",
+      "SONG_SEAL_E,169,58",
+      "SONG_SEAL_B,220,76",
+      "SONG_SEAL_B,157,77",
+      "SONG_SEAL_F,209,58",
+      "SONG_SEAL_C,189,49",
+      "SONG_SEAL_D,189,108"
+    ],
+    [
+      "PARTY_SEAL_B,161,80",
+      "PARTY_SEAL_D,161,82",
+      "PARTY_SEAL_A,160,79",
+      "PARTY_SEAL_C,160,82"
+    ],
+    [
+      "ELE_SEAL_A,155,112",
+      "ELE_SEAL_A,177,113",
+      "ELE_SEAL_A,200,114",
+      "ELE_SEAL_A,222,114",
+      "ELE_SEAL_A,166,113",
+      "ELE_SEAL_A,187,114",
+      "ELE_SEAL_A,211,114",
+      "ELE_SEAL_A,187,114"
+    ],
+    [
+      "SMOKE_SEAL_B,150,58",
+      "SMOKE_SEAL_B,139,100",
+      "SMOKE_SEAL_B,151,72",
+      "SMOKE_SEAL_B,137,58",
+      "SMOKE_SEAL_B,137,72",
+      "SMOKE_SEAL_B,152,101",
+      "SMOKE_SEAL_B,137,86",
+      "SMOKE_SEAL_B,151,87"
+    ],
+    [
+      "HEART_SEAL_B,177,89",
+      "HEART_SEAL_A,184,98",
+      "HEART_SEAL_A,182,78",
+      "HEART_SEAL_A,178,89",
+      "HEART_SEAL_A,166,90",
+      "HEART_SEAL_B,178,88",
+      "STAR_SEAL_B,177,88"
+    ],
+    [
+      "HEART_SEAL_F,182,112",
+      "HEART_SEAL_F,170,111",
+      "HEART_SEAL_E,158,111",
+      "HEART_SEAL_E,206,112",
+      "HEART_SEAL_F,194,112"
+    ],
+    [
+      "FOAMY_SEAL_B,189,84",
+      "FOAMY_SEAL_B,189,84"
+    ],
+    [
+      "FOAMY_SEAL_D,189,85",
+      "FOAMY_SEAL_D,189,85"
+    ],
+    [
+      "STAR_SEAL_A,189,84",
+      "STAR_SEAL_B,190,84"
+    ],
+    [
+      "STAR_SEAL_E,189,120",
+      "STAR_SEAL_E,210,120",
+      "STAR_SEAL_E,168,120",
+      "STAR_SEAL_E,180,121",
+      "STAR_SEAL_E,200,121",
+      "STAR_SEAL_E,158,120",
+      "STAR_SEAL_E,219,120",
+      "STAR_SEAL_E,189,126"
+    ],
+    [
+      "SMOKE_SEAL_B,168,122",
+      "SMOKE_SEAL_B,213,123",
+      "SMOKE_SEAL_A,179,126",
+      "SMOKE_SEAL_A,200,126",
+      "SMOKE_SEAL_A,190,127",
+      "SMOKE_SEAL_B,202,122",
+      "SMOKE_SEAL_B,191,123",
+      "SMOKE_SEAL_B,179,122"
+    ],
+    [
+      "FIRE_SEAL_B,139,53",
+      "FIRE_SEAL_B,145,73",
+      "FIRE_SEAL_B,139,94",
+      "FIRE_SEAL_B,160,73",
+      "FIRE_SEAL_B,147,88",
+      "FIRE_SEAL_B,145,61",
+      "FIRE_SEAL_B,133,66",
+      "FIRE_SEAL_B,133,82"
+    ],
+    [
+      "FIRE_SEAL_D,134,73",
+      "FIRE_SEAL_D,149,66",
+      "FIRE_SEAL_D,163,73",
+      "FIRE_SEAL_D,135,58",
+      "FIRE_SEAL_D,135,90",
+      "FIRE_SEAL_D,148,74",
+      "FIRE_SEAL_D,150,83"
+    ],
+    [
+      "FOAMY_SEAL_D,188,84",
+      "FOAMY_SEAL_B,189,84"
+    ],
+    [
+      "STAR_SEAL_B,188,72",
+      "LINE_SEAL_D,190,70",
+      "ELE_SEAL_A,189,70",
+      "SMOKE_SEAL_B,189,70",
+      "FIRE_SEAL_B,188,73",
+      "FOAMY_SEAL_B,188,71",
+      "PARTY_SEAL_A,189,71",
+      "SMOKE_SEAL_A,189,70"
+    ],
+    [
+      "FIRE_SEAL_B,165,55",
+      "FIRE_SEAL_B,165,54",
+      "STAR_SEAL_B,165,54",
+      "STAR_SEAL_B,167,54",
+      "FIRE_SEAL_B,165,55",
+      "STAR_SEAL_D,166,53",
+      "STAR_SEAL_B,164,56",
+      "FIRE_SEAL_D,166,54"
+    ],
+    [
+      "ELE_SEAL_B,161,84",
+      "ELE_SEAL_D,162,84",
+      "ELE_SEAL_A,162,84",
+      "ELE_SEAL_C,162,84",
+      "SONG_SEAL_B,163,85",
+      "SONG_SEAL_B,163,86",
+      "SONG_SEAL_B,164,85",
+      "SONG_SEAL_B,162,85"
+    ],
+    [
+      "FLORA_SEAL_A,140,50",
+      "FLORA_SEAL_D,157,85",
+      "FLORA_SEAL_B,158,62",
+      "FLORA_SEAL_A,174,48",
+      "FLORA_SEAL_F,156,42",
+      "FLORA_SEAL_B,140,74",
+      "FLORA_SEAL_B,175,75",
+      "FLORA_SEAL_E,156,24"
+    ],
+    [
+      "PARTY_SEAL_D,188,66",
+      "FLORA_SEAL_B,188,66",
+      "LINE_SEAL_A,187,65"
+    ],
+    [
+      "HEART_SEAL_C,238,53",
+      "HEART_SEAL_A,139,55",
+      "HEART_SEAL_C,139,55",
+      "HEART_SEAL_A,237,54",
+      "HEART_SEAL_A,139,55",
+      "HEART_SEAL_A,188,77",
+      "HEART_SEAL_A,237,53",
+      "HEART_SEAL_C,188,77"
+    ],
+    [
+      "LINE_SEAL_B,159,83"
+    ],
+    [
+      "LINE_SEAL_A,189,78",
+      "STAR_SEAL_D,189,77",
+      "STAR_SEAL_D,190,77",
+      "STAR_SEAL_C,190,76",
+      "STAR_SEAL_D,189,76",
+      "STAR_SEAL_C,190,77",
+      "STAR_SEAL_C,190,77",
+      "STAR_SEAL_C,189,77"
+    ],
+    [
+      "LINE_SEAL_A,190,73",
+      "STAR_SEAL_B,190,72",
+      "STAR_SEAL_B,189,73",
+      "STAR_SEAL_B,189,73",
+      "STAR_SEAL_B,189,73",
+      "STAR_SEAL_C,189,73",
+      "STAR_SEAL_C,189,73",
+      "STAR_SEAL_C,189,73"
+    ],
+    [
+      "SMOKE_SEAL_D,161,67",
+      "SMOKE_SEAL_D,167,75",
+      "SMOKE_SEAL_D,147,71",
+      "SMOKE_SEAL_D,163,86",
+      "SMOKE_SEAL_D,149,84"
+    ],
+    [
+      "HEART_SEAL_C,174,62",
+      "HEART_SEAL_C,189,87",
+      "HEART_SEAL_C,204,60",
+      "HEART_SEAL_C,174,78",
+      "HEART_SEAL_C,205,78",
+      "HEART_SEAL_C,188,54",
+      "HEART_SEAL_C,173,44",
+      "HEART_SEAL_C,207,95"
+    ],
+    [
+      "HEART_SEAL_A,189,84",
+      "HEART_SEAL_A,191,52",
+      "HEART_SEAL_A,205,78",
+      "HEART_SEAL_A,205,62",
+      "HEART_SEAL_A,173,77",
+      "HEART_SEAL_A,175,60",
+      "HEART_SEAL_A,176,43",
+      "HEART_SEAL_A,204,93"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "HEART_SEAL_B,219,48",
+      "STAR_SEAL_B,185,51",
+      "HEART_SEAL_F,165,104"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+  ]
+}

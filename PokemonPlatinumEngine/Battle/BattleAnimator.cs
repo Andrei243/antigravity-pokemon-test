@@ -42,7 +42,7 @@ public sealed class CombatantView
 }
 
 /// <summary>What an effect cue shows: a move, or something that happens to one Pokémon.</summary>
-public enum CueKind { Move, StatUp, StatDown, Heal, Status }
+public enum CueKind { Move, StatUp, StatDown, Heal, Status, Seals }
 
 /// <summary>
 /// An effect for the renderer to play (plan 04 · G8): a move from one place to another and how it landed, or a
@@ -60,6 +60,9 @@ public sealed class EffectCue
 
     /// <summary>For <see cref="CueKind.Status"/>: the condition that was given.</summary>
     public StatusCondition Status { get; init; }
+
+    /// <summary>For <see cref="CueKind.Seals"/> (plan 06 · R17b): the Ball Capsule whose Seals burst as the Pokémon comes out of its ball.</summary>
+    public Models.BallCapsule? Capsule { get; init; }
 
     public BattleSide FromSide { get; init; }
     public int FromSlot { get; init; }
@@ -86,7 +89,7 @@ public sealed class EffectCue
     public bool Landed => !Missed && !Blocked;
 
     /// <summary>How long this cue plays.</summary>
-    public float Length => Kind == CueKind.Move ? BattleAnimator.EffectTime : BattleAnimator.MarkTime;
+    public float Length => Kind == CueKind.Move ? BattleAnimator.EffectTime : Kind == CueKind.Seals ? BattleAnimator.SealTime : BattleAnimator.MarkTime;
 }
 
 /// <summary>The steps of a thrown Poké Ball, in order.</summary>
@@ -120,6 +123,9 @@ public sealed class BattleAnimator
     /// <summary>A send-out: the ball flies onto the platform in <see cref="SendOutBallTime"/>, then the Pokémon grows out of it.</summary>
     public const float SendOutTime = 1.0f;
     public const float SendOutBallTime = 0.35f;
+
+    /// <summary>A Ball Capsule's Seals: from the throw to the last piece of the last Seal (plan 06 · R17b; <see cref="Graphics.SealFx.Length"/> after the ball opens).</summary>
+    public const float SealTime = SendOutBallTime + Graphics.SealFx.Length;
     // A physical strike and a special move's release peak about when the damage lands (the engine's hit delay)
     public const float AttackTime = 0.65f;
     public const float HitTime = 0.55f;
@@ -281,6 +287,17 @@ public sealed class BattleAnimator
     /// <summary>A status condition given to one Pokémon.</summary>
     public EffectCue StatusGiven(BattleSide side, int slot, StatusCondition status) =>
         Cue(new EffectCue { Kind = CueKind.Status, Status = status, FromSide = side, FromSlot = slot, ToSide = side, ToSlot = slot });
+
+    /// <summary>
+    /// The Seals of a Ball Capsule bursting round a Pokémon as it is sent out (plan 06 · R17b). It begins with the
+    /// throw (<see cref="SendOut"/>); the Seals go off once the ball has opened, each by its own delay.
+    /// </summary>
+    public EffectCue SealBurst(BattleSide side, int slot, Models.BallCapsule capsule) =>
+        Cue(new EffectCue
+        {
+            Kind = CueKind.Seals, Capsule = capsule, FromSide = side, FromSlot = slot,
+            ToSide = side == BattleSide.Player ? BattleSide.Enemy : BattleSide.Player, ToSlot = 0
+        });
 
     /// <summary>Faints after <paramref name="delay"/> seconds (so the hit and the HP drain play first).</summary>
     public void Faint(BattleSide side, float delay = 0.6f, int slot = 0)

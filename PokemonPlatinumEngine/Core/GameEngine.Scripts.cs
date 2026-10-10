@@ -337,6 +337,17 @@ public partial class GameEngine
             journalScreen.Open();
             return;
         }
+        // The Seal Case and the Fashion Case from the item button (plan 06 · R17b)
+        if (item.Name == BagScreen.SealCaseItem)
+        {
+            OpenBallCapsules(fromBag: false);
+            return;
+        }
+        if (item.Name == BagScreen.FashionCaseItem)
+        {
+            OpenFashionCase(fromBag: false);
+            return;
+        }
         // The Poffin Case opened from the item button goes back to the field when it closes (UsePoffinCaseInField)
         if (item.FieldUse == "PoffinCase")
         {
@@ -866,6 +877,15 @@ public partial class GameEngine
                     // The Poffin House's pot (plan 06 · R14c): the bag, to choose the first berry
                     game.StartCooking();
                     break;
+                case ScriptScreen.BallCapsules:
+                    game.OpenBallCapsules(fromBag: false);
+                    break;
+                case ScriptScreen.SealShop:
+                    game.OpenSealShop();
+                    break;
+                case ScriptScreen.ContestPhoto:
+                    if (System.Enum.TryParse<ContestStat>(counter, out var framed)) game.ShowContestPhoto(framed);
+                    break;
                 case ScriptScreen.Pc:
                     game.currentState = GameState.PCStorage;
                     game.pcScreen.Open(game.pcBoxStorage);
@@ -1035,6 +1055,11 @@ public partial class GameEngine
             game.HoldContest(slot, category, rank, mode);
 
         public bool Hatch() => game.HatchFirstEgg();
+
+        // ---- Ball Capsules, Seals and ribbons (plan 06 · R17b)
+
+        public SealCase SealCase => game.sealCase;
+        public Models.SuperContests.ContestRecords ContestRecords => game.contestRecords;
 
         // The original's field cries (a legendary in its lair, a Pokémon a script brings out) have an echo beside them
         public void Cry(string species)

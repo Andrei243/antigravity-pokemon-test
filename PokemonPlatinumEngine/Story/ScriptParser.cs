@@ -465,7 +465,7 @@ public static class ScriptParser
             // checked, the contest is held, and what a win gave is asked; an accessory for the Fashion Case
             case "supercontest":
             {
-                string what = r.OneOf("rank", "category", "mode", "check", "enter", "ribbon", "prize");
+                string what = r.OneOf("rank", "category", "mode", "check", "enter", "ribbon", "prize", "photo", "fashioncase");
                 string value = what switch
                 {
                     "rank" => r.OneOf("normal", "great", "ultra", "master"),
@@ -481,6 +481,28 @@ public static class ScriptParser
                 int count = r.More ? r.Int("how many") : 1;
                 if (count < 1) throw r.Error("an accessory is given one at a time at least");
                 return new Instruction { Op = Op.GiveAccessory, Line = line, Name = accessory, Number = count };
+            }
+
+            // Ball Capsules, Seals and ribbons (plan 06 · R17b): Seals into the Seal Case (one kind, the five that come
+            // with the case, an Unown's own), the count of kinds, the capsules' screen and the market's stall; a ribbon
+            // asked of or put on the first of the team that is no Egg, the team's count, and what earns one
+            case "seal":
+            {
+                string what = r.OneOf("give", "first", "unown", "count", "capsules", "shop");
+                if (what != "give") return new Instruction { Op = Op.Seal, Line = line, Name = what };
+                string seal = r.Text("a Seal's name");
+                if (Data.SealDatabase.Seal(seal) == 0) throw r.Error($"there is no Seal '{seal}'");
+                int count = r.More ? r.Int("how many") : 1;
+                if (count < 1) throw r.Error("a Seal is given one at a time at least");
+                return new Instruction { Op = Op.Seal, Line = line, Name = what, Other = seal, Number = count };
+            }
+            case "ribbon":
+            {
+                string what = r.OneOf("give", "has", "count", "offer", "effort", "feeling");
+                if (what is not ("give" or "has")) return new Instruction { Op = Op.Ribbon, Line = line, Name = what };
+                string ribbon = r.Word("a ribbon (RIBBON_ALERT), 'today' or 'offer'");
+                if (ribbon is not ("today" or "offer") && Data.RibbonDatabase.Get(ribbon) == null) throw r.Error($"there is no ribbon '{ribbon}'");
+                return new Instruction { Op = Op.Ribbon, Line = line, Name = what, Other = ribbon };
             }
 
             case "script":

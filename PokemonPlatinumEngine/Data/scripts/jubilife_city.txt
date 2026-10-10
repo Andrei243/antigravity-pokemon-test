@@ -223,6 +223,25 @@ label Beaten
   hide clown_1
   hide clown_2
   hide clown_3
+  # Jubilife TV's man, who saw it all from his door, comes up with the Fashion Case and what goes in it: ten
+  # Accessories and three Backdrops (plan 06 · R17b; JubilifeCity_GiveFashionCaseAndAccessories)
+  clearflag FLAG_HIDE_JUBILIFE_CITY_COLLECTOR
+  place collector 174 750 up
+  show collector
+  walk collector up 8
+  face player down
+  speaker "TV Producer"
+  say "Oh, that was very good! What a show! I'm with Jubilife TV, and I know a star when I see one."
+  say "Here. Trainers who catch my eye get one of these."
+  give "Fashion Case"
+  setflag FLAG_RECEIVED_FASHION_CASE
+  supercontest fashioncase
+  text "The Fashion Case came with Accessories and Backdrops in it."
+  speaker "TV Producer"
+  say "Dress your Pokémon up with what's inside. One day you'll want to, believe me. Hearthome City has a hall just for it!"
+  walk collector down 8
+  hide collector
+  setflag FLAG_HIDE_JUBILIFE_CITY_COLLECTOR
   end
 
 

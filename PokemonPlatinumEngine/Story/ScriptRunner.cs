@@ -65,6 +65,10 @@ public sealed class ScriptRunner
     private int contestSlot = -1;
     private string lastAccessory = "";
 
+    // The Seal and the ribbon last given or asked about, how many Seals, and whom a ribbon was for (plan 06 · R17b)
+    private string lastSeal = "", lastRibbon = "", lastWearer = "";
+    private int lastSeals;
+
     public ScriptRunner(ScriptLibrary library, IScriptHost host)
     {
         this.library = library;
@@ -559,6 +563,8 @@ public sealed class ScriptRunner
                 host.Open(i.Name == "halloffame" ? ScriptScreen.HallOfFame : ScriptScreen.Pc, Subject);
                 break;
             case Op.HallOfFame:
+                // Party_GiveChampionRibbons: everyone who enters the Hall of Fame wears Sinnoh's Champion Ribbon (plan 06 · R17b)
+                RibbonRules.GiveChampion(host.Party);
                 host.EnterHallOfFame();
                 break;
             case Op.Travel:
@@ -695,6 +701,14 @@ public sealed class ScriptRunner
                 });
                 break;
             }
+
+            // Ball Capsules, Seals and ribbons (plan 06 · R17b)
+            case Op.Seal:
+                Seal(i);
+                break;
+            case Op.Ribbon:
+                Ribbon(i);
+                break;
 
             default:
                 throw Wrong(i, $"the runner doesn't know how to carry out '{i.Op}'");
@@ -841,10 +855,140 @@ public sealed class ScriptRunner
             }
             case "ribbon":
                 Result = host.ContestOutcome?.NewRibbon != null ? 1 : 0;
+                if (host.ContestOutcome?.NewRibbon is { } newRibbon) lastRibbon = newRibbon;
                 break;
             case "prize":
                 Result = host.ContestOutcome?.Prize != null ? 1 : 0;
                 if (host.ContestOutcome?.Prize is { } won) lastAccessory = won;
+                break;
+            case "photo":
+                // ContestPhotoHasData: the frame of the contest last named; with a photograph in it, it is shown
+                if (host.ContestRecords.PhotoOf(contestCategory) == null)
+                {
+                    Result = 0;
+                    break;
+                }
+                Result = 1;
+                host.Open(ScriptScreen.ContestPhoto, Subject, contestCategory.ToString());
+                break;
+            case "fashioncase":
+                // JubilifeCity_GiveFashionCaseAndAccessories: what comes with the Fashion Case, ten accessories and three backdrops
+                host.FashionCase.FillAsGiven(host.Chance);
+                break;
+        }
+    }
+
+    /// <summary>
+    /// The Seals' commands (plan 06 · R17b), on the original's (<c>GiveOrTakeSeal</c>, <c>CountUniqueSealsInSealCase</c>,
+    /// <c>OpenSealCapsuleEditor</c>, <c>PokeMartSeal</c>): <c>give</c> puts so many of a kind into the Seal Case without a
+    /// word (RESULT 1, or 0 when ninety-nine would be passed; <c>{seal}</c> and <c>{seals}</c> say which and how many);
+    /// <c>first</c> the five that come with the case (RESULT how many went in); <c>unown</c> the Seals the boy of
+    /// Solaceon Town gives for the team's first Unown (RESULT 0 with no Unown, 1 given, with <c>{wearer}</c> the Unown,
+    /// 2 when it is the shape shown last this visit or the kind is full); <c>count</c> how many kinds the player has;
+    /// <c>capsules</c> opens the Ball Capsules and <c>shop</c> the market's stall of the day, the script waiting.
+    /// </summary>
+    private void Seal(Instruction i)
+    {
+        var sealCase = host.SealCase;
+        switch (i.Name)
+        {
+            case "give":
+            {
+                int seal = SealDatabase.Seal(i.Other);
+                lastSeal = SealDatabase.Name(seal);
+                lastSeals = i.Number;
+                Result = sealCase.Give(seal, i.Number) ? 1 : 0;
+                break;
+            }
+            case "first":
+                Result = CapsuleRules.FirstSeals(host.Chance).Count(seal => sealCase.Give(seal));
+                break;
+            case "unown":
+            {
+                // FindPartySlotWithSpecies, then the shape against the one shown last (VAR_MAP_LOCAL_0x00, forgotten on leaving)
+                const string shown = StoryState.LocalVariablePrefix + "UNOWN_SEAL";
+                var unown = host.Party.Members.FirstOrDefault(p => CapsuleRules.UnownSeal(p) != 0);
+                if (unown == null)
+                {
+                    Result = 0;
+                    break;
+                }
+                int seal = CapsuleRules.UnownSeal(unown);
+                int count = CapsuleRules.UnownSeals(sealCase, seal);
+                lastWearer = unown.DisplayName;
+                lastSeal = SealDatabase.Name(seal);
+                if (host.Story.Var(shown) == seal || count <= 0 || !sealCase.Give(seal, count))
+                {
+                    Result = 2;
+                    break;
+                }
+                host.Story.SetVar(shown, seal);
+                lastSeals = count;
+                Result = 1;
+                break;
+            }
+            case "count":
+                Result = sealCase.Unique;
+                break;
+            case "capsules":
+                host.Open(ScriptScreen.BallCapsules, Subject);
+                break;
+            case "shop":
+                host.Open(ScriptScreen.SealShop, Subject);
+                break;
+        }
+    }
+
+    /// <summary>
+    /// The ribbons' commands (plan 06 · R17b), on the original's (<c>GetPartyMonRibbon</c>, <c>SetPartyMonRibbon</c>,
+    /// <c>CountPartyRibbons</c>, <c>GetPartyMonEVTotal</c>), all about the first of the team that is no Egg
+    /// (<c>GetFirstNonEggInParty</c>; <c>{wearer}</c> names it): <c>has</c> asks whether it has a ribbon and <c>give</c>
+    /// puts one on (RESULT 1 when it hadn't it); the ribbon is its constant, <c>today</c> for the one Julia gives on
+    /// this day of the week, or <c>offer</c> for the one the Syndicate offers it next. <c>{ribbon}</c> names the ribbon
+    /// either spoke of. <c>count</c> is how many different ribbons the team shows; <c>offer</c> the price of the
+    /// Syndicate's next ribbon for it (0 once it has all three); <c>effort</c> 1 when its effort values are full;
+    /// <c>feeling</c> how Dr. Footstep reads its friendship, 1 to 5.
+    /// </summary>
+    private void Ribbon(Instruction i)
+    {
+        int slot = RibbonRules.FirstNonEgg(host.Party);
+        var pokemon = slot >= 0 ? host.Party.Members[slot] : null;
+        lastWearer = pokemon?.DisplayName ?? "";
+        switch (i.Name)
+        {
+            case "has":
+            case "give":
+            {
+                string? ribbon = i.Other switch
+                {
+                    "today" => RibbonRules.Daily(host.Weekday),
+                    "offer" => pokemon != null ? RibbonRules.SyndicateOffer(pokemon)?.Ribbon : null,
+                    _ => i.Other
+                };
+                if (pokemon == null || ribbon == null)
+                {
+                    Result = 0;
+                    break;
+                }
+                lastRibbon = RibbonDatabase.Name(ribbon);
+                Result = i.Name == "has" ? (RibbonRules.Has(pokemon, ribbon) ? 1 : 0) : RibbonRules.Give(pokemon, ribbon) ? 1 : 0;
+                break;
+            }
+            case "count":
+                Result = RibbonRules.CountPartyRibbons(host.Party);
+                break;
+            case "offer":
+            {
+                var offer = pokemon != null ? RibbonRules.SyndicateOffer(pokemon) : null;
+                if (offer is var (ribbon, price)) lastRibbon = RibbonDatabase.Name(ribbon);
+                Result = offer?.Price ?? 0;
+                break;
+            }
+            case "effort":
+                Result = pokemon != null && RibbonRules.EarnsEffort(pokemon) ? 1 : 0;
+                break;
+            case "feeling":
+                Result = pokemon != null ? RibbonRules.FeelingLevel(pokemon) : 0;
                 break;
         }
     }
@@ -1146,7 +1290,11 @@ public sealed class ScriptRunner
             "taken" => lastTaken,
             // The Super Contests (plan 06 · R17a): the accessory last given, the ribbon last won, and who was entered
             "accessory" => lastAccessory,
-            "ribbon" => host.ContestOutcome?.NewRibbon ?? "",
+            "ribbon" => lastRibbon.Length > 0 ? lastRibbon : host.ContestOutcome?.NewRibbon ?? "",
+            // Ball Capsules, Seals and ribbons (plan 06 · R17b): the Seal last given and how many, the Unown or the ribbon's wearer
+            "seal" => lastSeal,
+            "seals" => lastSeals.ToString(),
+            "wearer" => lastWearer,
             "contestant" => contestSlot >= 0 && contestSlot < host.Party.Count ? host.Party.Members[contestSlot].DisplayName : host.ContestOutcome?.Pokemon ?? "",
             _ => match.Value
         };

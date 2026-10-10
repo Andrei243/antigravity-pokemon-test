@@ -76,8 +76,14 @@ internal static class MoveFx
             case CueKind.Status:
                 Status(c, fx);
                 break;
+            case CueKind.Seals:
+                SealFx.Play(c, fx, SealScratch);
+                break;
         }
     }
+
+    // The pieces of a capsule's burst, worked out afresh each frame (the renderer's thread only)
+    private static readonly List<SealMote> SealScratch = new();
 
     /// <summary>Moves with an effect of their own rather than their type's template.</summary>
     public static bool HasOwnEffect(string move) => Overrides.ContainsKey(move);

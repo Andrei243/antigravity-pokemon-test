@@ -316,3 +316,36 @@ script GiveMild
   text "{player} received a Mild Poffin!"
   text "The Mild Poffin was put away in the Poffin Case."
   return
+
+
+# The five frames on the lobby's wall (plan 06 · R17b; the original's ContestHallLobby_Frame0 to 4): each holds the
+# photograph of the player's own Pokémon as it last won that contest, with what it wore. An empty one is only a frame.
+script FrameCool
+  supercontest category cool
+  supercontest photo
+  if result == 0 text "It's a photo frame. The winner of a contest has their picture hung here."
+  end
+
+script FrameBeauty
+  supercontest category beauty
+  supercontest photo
+  if result == 0 text "It's a photo frame. The winner of a contest has their picture hung here."
+  end
+
+script FrameCute
+  supercontest category cute
+  supercontest photo
+  if result == 0 text "It's a photo frame. The winner of a contest has their picture hung here."
+  end
+
+script FrameSmart
+  supercontest category smart
+  supercontest photo
+  if result == 0 text "It's a photo frame. The winner of a contest has their picture hung here."
+  end
+
+script FrameTough
+  supercontest category tough
+  supercontest photo
+  if result == 0 text "It's a photo frame. The winner of a contest has their picture hung here."
+  end

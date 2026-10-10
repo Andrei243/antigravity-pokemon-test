@@ -631,8 +631,8 @@ public class PoffinTests
         screen.Confirm(party);
         screen.Confirm(party);
         Assert.True(screen.ShowSummary);
-        screen.TurnSummaryPage(1);
-        Assert.Equal(0, screen.SummaryPage);
+        // Until then the pages are the stats and the ribbons (plan 06 · R17b)
+        Assert.DoesNotContain(PartyScreen.ConditionPage, screen.SummaryPages);
         screen.ShowCondition = true;
         screen.TurnSummaryPage(1);
         Assert.Equal(1, screen.SummaryPage);

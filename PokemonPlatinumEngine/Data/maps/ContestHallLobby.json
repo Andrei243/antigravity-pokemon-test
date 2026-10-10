@@ -201,27 +201,32 @@
     {
       "x": 2,
       "y": 11,
-      "text": "Photographs of the Master Rank's winners line the board, each Pokémon striking its proudest pose."
+      "text": "A frame for the winner of the Cool Contest.",
+      "script": "FrameCool"
     },
     {
       "x": 4,
       "y": 11,
-      "text": "Photographs of the Master Rank's winners line the board, each Pokémon striking its proudest pose."
+      "text": "A frame for the winner of the Beauty Contest.",
+      "script": "FrameBeauty"
     },
     {
       "x": 6,
       "y": 11,
-      "text": "Photographs of the Master Rank's winners line the board, each Pokémon striking its proudest pose."
+      "text": "A frame for the winner of the Cute Contest.",
+      "script": "FrameCute"
     },
     {
       "x": 8,
       "y": 11,
-      "text": "Photographs of the Master Rank's winners line the board, each Pokémon striking its proudest pose."
+      "text": "A frame for the winner of the Smart Contest.",
+      "script": "FrameSmart"
     },
     {
       "x": 10,
       "y": 11,
-      "text": "Photographs of the Master Rank's winners line the board, each Pokémon striking its proudest pose."
+      "text": "A frame for the winner of the Tough Contest.",
+      "script": "FrameTough"
     }
   ],
   "npcs": [

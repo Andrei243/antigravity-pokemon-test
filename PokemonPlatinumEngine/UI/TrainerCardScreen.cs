@@ -20,6 +20,10 @@ public sealed record TrainerCardInfo(string Name, int TrainerId, int Money, int 
     public int LinkWins { get; init; }
     public int LinkLosses { get; init; }
     public int LinkTrades { get; init; }
+
+    /// <summary>The Super Contests entered and won (plan 06 · R17b).</summary>
+    public int ContestsEntered { get; init; }
+    public int ContestsWon { get; init; }
 }
 
 /// <summary>

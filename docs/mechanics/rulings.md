@@ -906,7 +906,7 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 | Backdrops | The Fashion Case keeps backdrops too; the opponents' dressings name one | The dressings' backdrop is imported and nothing uses it | The dressing-up photographs are plan 06 · R17b's |
 | The winner's photograph | The winner's dressed-up picture is kept and hung on the lobby's boards | The boards say what they said | With the photographs (R17b) |
 | Where accessories come from | Amity Square, the Floaroma flower shop (for berries), the Veilstone massage girl, Jubilife TV's dress-up room | Only Keira's Glitter Powder, the prizes and `giveaccessory` in a script | Amity Square is plan 06 · R16's; the shops' and houses' rooms are plan 01 · M11's |
-| The Fashion Case in the bag | Opens a viewer of the accessories and backdrops | The key item does nothing when used | R17b, with the Ball Capsules' screens |
+| The Fashion Case in the bag | Says how many accessories and backdrops it holds | The key item does nothing when used | R17b, with the Ball Capsules' screens (done: "Ball Capsules, Seals and ribbons", below) |
 | The TV, the Journal and the records | The contest is a TV programme, a line of the Journal for a Link Contest, and counts in the game's records | Not kept | Plan 08's TV; the records are R17b's with the ribbons' screen |
 | Chatot's cry | A recorded Chatter plays in the acting | Not there | No microphone |
 
@@ -955,3 +955,71 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 | Verity Cavern, Acuity Cavern, Azelf | The guardians wait in their caverns after the Distortion World | Verity Cavern's mouth is shut; Valor Cavern is empty once Saturn has gone | Plan 02 · S13 |
 | The houses of Routes 216 and 217 | A lodge to rest in; an Icicle Plate for whoever found HM08; a Spell Tag | Doors shut | Plan 01 · M11 |
 | Byron in Iron Island's house | He gives a Metal Coat after the National Pokédex | Door shut | Post-game (plan 02 · S15), plan 01 · M11 |
+
+## Ball Capsules, Seals and ribbons (2026-10-10, plan 06 · R17b)
+
+**Platinum's rules, kept as they are** (`src/ball_seal_info.c`, `src/applications/capsule_menu/main.c`, `manager.c`, `placement.c`, `graphics.c`, `src/pokemon.c`, `src/battle_anim/ov12_02235E94.c`, `ov12_02237E54.c`, `src/unk_0202CC64.c`, `src/ribbon.c`, `src/scrcmd_party.c`, `src/party.c`, `src/trainer_case.c`, `src/contest.c`, `src/box_app_manager.c`, `src/shop_menu.c`, `include/data/mart_items.h`, `res/trainers/ball_capsules.json`, and the scripts of Solaceon Town's east house, the Sunyshore Market, Sunyshore City's north-east house, Route 213's Footstep House, the Ribbon Syndicate, the Contest Hall's lobby and Jubilife City).
+
+- **The Seal Case** (`SealCase`): eighty kinds of Seal and twelve Ball Capsules of up to eight Seals each. Ninety-nine of a kind at most, counted with those stuck on capsules (`GiveOrTakeSeal` refuses what would pass it); a Seal stuck on a capsule is out of the case until it is taken off again.
+- **A capsule** is a list of Seals, each a kind and a place in the dots of the capsule's own picture, the ball's middle at (190, 70). A Seal dropped within sixty dots of the middle is on the ball; further out it goes back into the case. The first of the list is in front.
+- **The capsules' menu** by what a capsule carries (`CapsuleGraphics_OpenCapsuleSelectionMenu`): one on a Pokémon's ball offers taking it off first; one with Seals and on nobody's ball putting it on first; an empty one only changing it, swapping and leaving. Over the twelve, left and right go round all of them and up and down stop at the first and last rows.
+- **On a Pokémon** (`Pokemon_SetBallSeal`, `MON_DATA_BALL_CAPSULE_ID`, `MON_DATA_BALL_CAPSULE`): the Pokémon holds the capsule's number and its own copy of the Seals. Only a capsule with a Seal on it can be put on, never on an Egg, and only on a Pokémon of the team; a capsule already on another Pokémon comes off that one. Changing a capsule that is on a ball and keeping the change renews the Pokémon's copy; swapping two capsules takes their Pokémon with them. A Pokémon whose ball has a capsule doesn't go into a box (`box_app_manager.c`: the capsule has to come off first), and the Shedinja a Nincada leaves has none.
+- **The burst** (`ov12_02237EA0`, `ov12_022365D4`): as the ball opens, each Seal goes off after a delay by how far from the ball's middle it is stuck: at once within twenty dots, then eight, fourteen and twenty frames (of thirty a second) for each twenty dots more, twenty for anything within four dots of the edge; a letter always after eight. It goes off as far right of the Pokémon's place and as far above it as it is stuck from the ball's middle, thirty dots higher.
+- **Trainers' capsules** (`res/trainers/ball_capsules.json`, `ball_seal` in a trainer's data): 105 Pokémon of trainers' teams come out of one of the trainers' own 128 capsules: Volkner's Electivire, Flint's Magmortar, the rival's starter from Pastoria City on, and one Pokémon each of some two dozen trainers of the routes (Ace Trainers, Rich Boys, a Lady, an Idol, a Clown).
+- **Where Seals come from**: the mother in Solaceon Town's east house gives the Seal Case with five Seals, each a draw (one of the six Heart Seals, two of the six Star Seals, one of the four Foamy Seals, one of the seven Song Seals). Her boy gives ten of a letter's Seal for the first Unown of the team in that letter's shape (as many as bring the kind to ninety-nine; "!" is the Shock Seal and "?" the Mystery Seal), and not twice running for one shape, which he forgets once the player leaves. The merchant of the Sunyshore Market sells seven Seals a day by the day of the week (`sSealShopStock`), at the prices of `sealTypeValues` (50 or 100), as many at a time as the money and the ninety-nine allow.
+- **A capsule kept** counts two points of the Trainer Card's score (`TRAINER_SCORE_EVENT_UNK_06`).
+- **The ribbons** (`sRibbonDataTable`): eighty, in the original's order (Hoenn's Champion Ribbon and its twenty contest ribbons, Winning, Victory, Artist and Effort, the seven of Hoenn's and Orre's gifts and events, Sinnoh's Champion Ribbon, the twenty of the Super Contests, the Battle Tower's six, the seven of the days, the Syndicate's three, Footprint, Record, History, Legend, and the seven of later events). The team's count is the different ribbons its Pokémon show between them (`CountPartyRibbons`), Eggs left out.
+- **Who gives which**: every giver means the first of the team that is no Egg (`GetFirstNonEggInParty`). The Hall of Fame gives every Pokémon of the entering team that is no Egg the Sinnoh Champ Ribbon (`Party_GiveChampionRibbons`). Julia, in Sunyshore City's north-east house, gives the day's ribbon for a story: Alert on Monday, Shock, Downcast, Careless, Relax, Snooze, and Smile on Sunday; the first visit only makes the acquaintance, and she hears one story a day (two daily flags). The woman of the Sunyshore Market gives the Effort Ribbon to a Pokémon whose effort values come to 510. Dr. Footstep, on Route 213, reads its friendship in five steps (under 70, from 70, 150, 200, and 255) and gives the Footprint Ribbon at 255. The Ribbon Syndicate lets in a team that shows ten different ribbons, and its cashier sells the first of the team the Gorgeous Ribbon for 10,000, then the Royal Ribbon for 100,000, then the Gorgeous Royal Ribbon for 999,999.
+- **The contests' records and photographs** (`Contest_EndContest`): the Super Contests entered, those won and the ribbons won are counted (to 9,999, practice rounds never); a win puts the winner's photograph in the frame of its contest, one of five on the Contest Hall's wall, over the one that hung there.
+- **The Trainer Card's stars** (`TrainerCase_CalculateTrainerCardLevel`): a win at the Master Rank is one of the five, read from the flag R17a already set.
+- **The Fashion Case** (`JubilifeCity_GiveFashionCaseAndAccessories`): the man of Jubilife TV gives it in Jubilife City once Team Galactic has gone from the north gate, with five draws among the six fluffs, five among the six feathers and moustaches after them, the first backdrop and two different ones of the eight after it. Eighteen backdrops, one of each at most.
+
+**Quirks kept**
+
+- A Seal whose middle is exactly sixty dots from the ball's is still on it; the delay's last step begins four dots short of the edge, so a Seal at fifty-six dots waits twenty frames where the steps of twenty would give it fourteen.
+- The capsule a Pokémon carries is a copy: taking a Seal off the capsule in the case and backing out without keeping leaves both as they were, and a capsule swapped away keeps its Pokémon.
+- The boy counts an Unown's Seals with those stuck on capsules, so a case with ninety-five of a letter gets four.
+- Volkner's Electivire comes out of seven of one Fire Seal, all the trainers' capsule holds.
+
+**Our own choices**
+
+- **The cases open from the bag.** The original's bag only says how many Seals or accessories a case holds (`ITEM_USE_FUNC_BAG_MESSAGE`); the capsules are changed at a PC, and nothing shows the accessories outside a contest. Here OPEN on the Seal Case goes to the Ball Capsules (and a PC offers BALL CAPSULES too, as the original's does, once the player has the case), and OPEN on the Fashion Case to a viewer of its accessories, its backdrops and the contests' records.
+- **The stylus is the arrows.** A Seal is picked from the case's list (eight kinds to a page, the page turning off its top and foot), carried over the ball four dots a press, and dropped with the button; the item button goes from the case's side to the Seals on the ball, which are picked up again the same way. Enter keeps the capsule; backing out asks first, as the original's QUIT does.
+- **What a capsule gives is shown on its screen**, over and over on a little stage beside the ball, with the battle's own pieces drawn flat; the original shows it only in battle. The merchant's stall shows the Seal under the cursor the same way.
+- **The Seals' looks are ours**: a sign and a colour for each kind (style guide, "Ball Capsules and Seals"), and bursts of our own for the fourteen families (hearts that float up, stars thrown out, rays, smoke, sparks, bubbles, flames, confetti, petals, notes, drops, a bang, twinkles), the A to G of a family differing in colour, size and number. A letter Seal bursts as its letter, written in dots, where it was stuck: several spell a word, read from the left on the player's side and on the opponent's alike.
+- **The capsule's burst comes with the ball's own flash**, where the original plays it in place of the ball's particles.
+- **The ribbons' page** is the summary's last, after the stats and the condition: the original has it among its summary's pages too, with the ribbons' pictures and descriptions, which are ours here (a sign by what a ribbon is given for, and a line of our own saying so).
+- **Julia's story is a yes or a no.** The original has the player choose a word from the easy-chat system's lists; this game has no such lists, and the word decides nothing.
+- **Dr. Footstep speaks in one voice.** The original words his reading five ways by the species' kind of footprint (and says nothing of a Pokémon that leaves none); here the five steps of friendship have a line each.
+- **A photograph is a print**: the winner's menu sprite on the theatre's stage with the accessories it wore round it, its ribbon, its name, the contest and rank, the player's name and the day. The original keeps the dressed-up picture itself, with the backdrop chosen.
+- **The Fashion Case comes to an older save** as it loads, once it is past Jubilife City's scene with Team Galactic and has none (`GameEngine.OweTheFashionCase`); no story version was raised for it.
+- **Every line is our own**, on the original's beats.
+
+**Which ribbons can be had, and which wait**
+
+| Ribbons | How many | Given by | Waits for |
+| --- | --- | --- | --- |
+| The Super Contests' | 20 | A win (R17a) | |
+| Alert, Shock, Downcast, Careless, Relax, Snooze, Smile | 7 | Julia, one a day | |
+| Effort | 1 | The woman of the Sunyshore Market | |
+| Footprint | 1 | Dr. Footstep | |
+| Sinnoh Champ | 1 | The Hall of Fame | |
+| Gorgeous, Royal, Gorgeous Royal | 3 | `common.RibbonSyndicateCashier`, behind `common.RibbonSyndicateEntry` | The Resort Area's Ribbon Syndicate (plan 01 · M10): its doorkeeper and its cashier run the two scripts |
+| Ability, Great Ability, Double Ability, Multi Ability, Pair Ability, World Ability | 6 | Nobody yet | The Battle Tower (plan 06 · R18) |
+| Hoenn's Champion, its twenty contest ribbons, Winning, Victory, Artist | 24 | Nobody | They come only on a Pokémon brought over from Hoenn (Pal Park, plan 06 · R16b; the migration of plan 08) |
+| Marine, Land, Sky, Country, National, Earth, World | 7 | Nobody | The same: given in Hoenn's and Orre's games and by their events |
+| Record, History, Legend, Red, Green, Blue, Festival, Carnival, Classic, Premier | 10 | Nobody | Nothing in Platinum gives them (the last seven were an event's); named and drawn |
+
+**Stand-ins for what this game lacks**
+
+| What | The original | Here | Why |
+| --- | --- | --- | --- |
+| The Seals' pictures and particles | A sprite and a particle effect each | A sign on a sticker and a burst from the battle effects' kit | Nothing is taken from the games |
+| The Seals' sounds | Some Seals have a sound of their own as they burst (the Song Seals' notes) | The ball's own sound | Plan 05 |
+| The ribbons' pictures and words | A sprite and a description each | A rosette, a bow, a medal or a pennant in the ribbon's colour, and a line of our own | The same |
+| The backdrops | A picture each | A scene of our own in two tones and a few plain shapes, by the backdrop's name | The same |
+| The Ribbon Syndicate | A building in the Resort Area: a doorkeeper, a cashier, a spa upstairs | The two scripts, started by nobody | The Resort Area is plan 01 · M10's |
+| The Sunyshore Market's other stalls | Three more sellers of nothing, and the Seals on show | Its people say their lines | Plan 01 · M11 |
+| The Seal Club's programme | A TV programme shows other trainers' capsules | Not there | Plan 08's TV |
+| Seals and backdrops from elsewhere | Mystery gifts, the Global Terminal, a daily Seal in the Pokémon News Press, Amity Square's accessories | Only the givers above | Plans 07, 08 and 01 · M11; Amity Square is R16's |
+| The footprints | Dr. Footstep's reading follows the species' footprint, which the Pokédex shows | One voice, no footprints | Plan 09 |

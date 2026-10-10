@@ -155,6 +155,9 @@ internal static class Pix
         ['Z'] = "XXXXX....X...X...X...X...X....XXXXX"
     };
 
+    /// <summary>A capital letter's seven rows of five, 'X' where it is inked; null for a character the alphabet lacks.</summary>
+    public static string? Glyph(char letter) => Glyphs.TryGetValue(char.ToUpperInvariant(letter), out var rows) ? rows : null;
+
     public static int TextWidth(string text, int scale = 1) => text.Length == 0 ? 0 : (text.Length * 6 - 1) * scale;
 
     public const int TextHeight = 7;

@@ -70,6 +70,8 @@ public sealed partial class Importer
                     Personality = personality,
                     Form = form > 0 && bySpecies[name].Forms is { } forms && form <= forms.Count ? forms[form - 1].Name : null
                 };
+                // The Ball Capsule its ball comes with (plan 06 · R17b): a place of res/trainers/ball_capsules.json, from 1
+                if (m.TryGetProperty("ball_seal", out var ballSeal) && ballSeal.ValueKind == JsonValueKind.Number) mon.BallSeal = ballSeal.GetInt32();
                 if (m.TryGetProperty("item", out var item) && item.ValueKind == JsonValueKind.String && item.GetString() != "ITEM_NONE") mon.Item = ItemName(item.GetString()!);
                 if (m.TryGetProperty("moves", out var moves) && moves.ValueKind == JsonValueKind.Array)
                 {
