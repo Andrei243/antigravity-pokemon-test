@@ -18,9 +18,18 @@
   ],
   // The houses have no rooms yet (plan 01 · M11)
   "locked": [ 1, 3, 4, 5, 6 ],
+  // Plan 02 · S8 (scripts/pastoria_city.txt): the rival keeping the Great Marsh's door after the bomb (trigger 0), his
+  // battle at the Gym's door (trigger 1), and the bomb going off as the player comes up to the observatory (trigger 2)
+  "triggers": [ { "trigger": 0, "script": "BlockGreatMarsh" }, { "trigger": 1, "script": "RivalBattle" }, { "trigger": 2, "script": "Bomb" } ],
   "people": {
-    // The Clefairy that follows its trainer everywhere (plan 10 · F1); the Croagunk waits for its scene (plan 02 · S8)
+    // The Clefairy that follows its trainer everywhere (plan 10 · F1). The Croagunk that hops past the board now and
+    // then (the original's trigger 3) is left out: plan 02 · S8's ruling
     "clefairy": { "name": "Clefairy", "dialog": [ "Pi! Pippi!" ] },
+    // The rival in the Gym's doorway while Crasher Wake is away, and his scenes; Crasher Wake out of his Gym; the grunt
+    // waiting for Team Galactic's parcel (plan 02 · S8)
+    "rival": { "name": "{rival}", "script": "Rival" },
+    "crasher_wake": { "name": "Crasher Wake", "script": "Wake" },
+    "grunt_m": { "name": "Grunt", "script": "Grunt" },
     "picnicker": {
       "name": "Picnicker",
       "dialog": [

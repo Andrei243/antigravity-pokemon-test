@@ -8,11 +8,15 @@
 # (FLAG_HIDE_PASTORIA_CITY_GRUNT_M, VAR_PASTORIA_CITY_STATE, for plan 02 · S8).
 
 
-# PastoriaGym_Init: the green is down, so stepping on a green button does nothing until another has been pressed
+# PastoriaGym_Init: the green is down, so stepping on a green button does nothing until another has been pressed.
+# Crasher Wake is out of his Gym from the moment he hears of the bomb until he is back from the Great Marsh (plan
+# 02 · S8: pastoria_city.txt sets FLAG_HIDE_PASTORIA_CITY_GYM_CRASHER_WAKE, valor_lakefront.txt clears it); the
+# Gym's map gives him no flag of his own, so he is sent away as the player comes in.
 script OnEnter
   setvar VAR_MAP_LOCAL_0x01 0
   setvar VAR_MAP_LOCAL_0x02 1
   setvar VAR_MAP_LOCAL_0x03 0
+  if flag FLAG_HIDE_PASTORIA_CITY_GYM_CRASHER_WAKE hide crasher_wake
   end
 
 

@@ -1,0 +1,51 @@
+# Team Galactic's warehouse in Veilstone City (plan 02 · S8), rebuilt to the original's plan. docs/scripts.md
+# describes the language; the lines are our own, on the original's beats (scripts_veilstone_city_galactic_warehouse.s).
+#
+# Looker brings the player in once the assistant and the player have beaten its guards (veilstone_city.txt,
+# VAR_VEILSTONE_CITY_GALACTIC_WAREHOUSE_STATE 1). The way on is shut by a rusty door that wants a special key (the
+# Storage Key and the Galactic HQ behind it are plan 02 · S11's); Looker finds HM02 in its ball by the crates and tells
+# the player to keep it, and has overheard in the Game Corner that Team Galactic has sent something to Pastoria City
+# (VAR_PASTORIA_CITY_STATE 1, which brings the rival there). He waits in here until the explosion in Pastoria
+# (FLAG_HIDE_VEILSTONE_CITY_GALACTIC_WAREHOUSE_LOOKER).
+
+
+# The original's OnTransition (Looker by the door until he has looked round) and OnFrame (state 1).
+script OnEnter
+  if var VAR_VEILSTONE_CITY_GALACTIC_WAREHOUSE_STATE < 2 place looker 8 10 up
+  if var VAR_VEILSTONE_CITY_GALACTIC_WAREHOUSE_STATE >= 2 place looker 12 8 down
+  if var VAR_VEILSTONE_CITY_GALACTIC_WAREHOUSE_STATE == 1 goto WithLooker
+  end
+label WithLooker
+  walk looker up 2
+  speaker "Looker"
+  say "Hmm. This door, it does not budge. Without the proper key, here our road ends."
+  say "Whoever fled through it is beyond our reach... for now."
+  walk looker down 2
+  face looker left
+  wait 0.4
+  face looker right
+  wait 0.4
+  walk looker right 5
+  face looker up
+  emote looker exclaim
+  face looker left
+  face player right
+  say "What is this? A Hidden Machine, for the move Fly!"
+  say "Take it, {player}. Team Galactic will make no use of it if it is in your bag."
+  walk looker left 5
+  face looker down
+  face player up
+  setvar VAR_PASTORIA_CITY_STATE 1
+  setvar VAR_VEILSTONE_CITY_GALACTIC_WAREHOUSE_STATE 2
+  say "Well. The warehouse has told us little. Never mind."
+  say "In the Game Corner, I caught a whisper: a crate of Team Galactic's has gone off to Pastoria City."
+  say "What is in it, I cannot say. But my nose for trouble, it is twitching."
+  end
+
+
+# Looker afterwards (the original's script 3).
+script Looker
+  speaker "Looker"
+  say "A crate of Team Galactic's, on its way to Pastoria City... I do not like it, my friend. Not one bit."
+  say "If you go that way, keep your eyes open for me."
+  end

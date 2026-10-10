@@ -21,7 +21,7 @@ public sealed class StoryState
     /// How much of the story a save knows about. A save from before story state existed is 0; every chapter that
     /// needs older saves brought up to date raises it and adds a step to <see cref="Story.StoryMigration"/>.
     /// </summary>
-    public const int CurrentVersion = 9;
+    public const int CurrentVersion = 10;
 
     /// <summary>The Pokédex is the player's (the original's own flag, set as Rowan hands it over).</summary>
     public const string PokedexFlag = "FLAG_HAS_POKEDEX";

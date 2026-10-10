@@ -1,0 +1,103 @@
+# Route 213 (plan 02 · S8). docs/scripts.md describes the language; the lines are our own, on the original's beats
+# (scripts_route_213.s).
+#
+# The grunt who set off the bomb in the Great Marsh runs from Pastoria City along the beach (pastoria_city.txt,
+# FLAG_TALKED_TO_PASTORIA_CITY_GRUNT_M). Caught talking to himself by the gate, he runs further east; caught again by
+# the beach, he runs off toward the lake, and Looker comes after him, realises too late who he passed, and gives chase
+# (FLAG_ROUTE_213_GRUNT_M_LEFT). The grunt waits at Valor Lakefront from then on (valor_lakefront.txt), and Looker in
+# the Hotel Grand Lake's lobby, whose room is plan 01 · M11's (FLAG_HIDE_GRAND_LAKE_ROUTE_213_LOBBY_LOOKER).
+
+
+# The original's OnTransition: the grunt is on the beach once the Fen Badge is won and he has run from Pastoria, by the
+# gate until he has been spoken to there.
+script OnEnter
+  if flag FLAG_ROUTE_213_GRUNT_M_LEFT end
+  if not badge fen end
+  if not flag FLAG_TALKED_TO_PASTORIA_CITY_GRUNT_M end
+  if not flag FLAG_TALKED_TO_ROUTE_213_GRUNT_M place grunt_m 654 812 right
+  clearflag FLAG_HIDE_ROUTE_213_GRUNT_M
+  end
+
+
+# The grunt (the original's script 2), talking to himself by the gate and then by the beach.
+script Grunt
+  speaker "Galactic Grunt"
+  if flag FLAG_TALKED_TO_ROUTE_213_GRUNT_M goto ByTheBeach
+  say "All the power we took from the Valley Windworks went into this little beauty..."
+  say "Only a real brain could put something like it together. Our boss built it himself, you know. A genius, that man!"
+  face self player
+  emote self exclaim
+  say "Wha--?! How long have you been standing there?! I was just muttering, that's all!"
+  say "Bah. You're not worth the bother of a battle..."
+  if facing left goto RoundThePlayer
+  walk self right 10 fast
+  goto Moved
+label RoundThePlayer
+  walk self down 2 right 9 fast
+label Moved
+  hide self
+  setflag FLAG_TALKED_TO_ROUTE_213_GRUNT_M
+  place self 683 833 right
+  show self
+  end
+label ByTheBeach
+  say "One little Galactic Bomb, and what a bang! Give us a crate of them and we could flatten anything we liked."
+  say "I wonder what the bosses mean to aim it at..."
+  face self player
+  emote self exclaim
+  say "Wha--?! You AGAIN?! Can't a guy talk to himself in peace?!"
+  say "You're like a burr on my sleeve. My legs are aching from all this running... but I'm still not battling you!"
+  if facing left goto Round
+  walk self right 4 up 1 right 6 fast
+  goto Gone
+label Round
+  walk self up 1 right 10 fast
+label Gone
+  hide self
+  setflag FLAG_HIDE_ROUTE_213_GRUNT_M
+  setflag FLAG_ROUTE_213_GRUNT_M_LEFT
+  # Looker comes along the beach from the west, up to the player, and runs on east after the grunt
+  clearflag FLAG_HIDE_ROUTE_213_LOOKER
+  place looker 671 835 right
+  show looker
+  if facing left goto PlayerEast
+  if facing right goto PlayerWest
+  if facing up goto PlayerSouth
+  # The player stood north of the grunt
+  walk looker right 10 up 3 right 1 fast
+  call LookerTalks
+  walk looker down 1 right 4 up 1 right 6 fast
+  goto LookerGone
+label PlayerEast
+  walk looker right 10 up 2 right 2 fast
+  call LookerTalks
+  walk looker up 1 right 10 fast
+  goto LookerGone
+label PlayerWest
+  walk looker right 10 up 2 fast
+  face looker right
+  call LookerTalks
+  walk looker up 1 right 10 fast
+  goto LookerGone
+label PlayerSouth
+  walk looker right 10 up 1 right 1 fast
+  call LookerTalks
+  walk looker up 2 right 10 fast
+label LookerGone
+  hide looker
+  setflag FLAG_HIDE_ROUTE_213_LOOKER
+  clearflag FLAG_HIDE_GRAND_LAKE_ROUTE_213_LOBBY_LOOKER
+  clearflag FLAG_HIDE_VALOR_LAKEFRONT_GRUNT_M
+  end
+
+script LookerTalks
+  face player looker
+  speaker "Looker"
+  say "My friend! That crate of Team Galactic's would not leave my thoughts, so here I am."
+  say "...A bomb, you say? It has already gone off? In the Great Marsh?!"
+  say "And now you chase a man in a strange suit, with his hair cut round like a pudding basin..."
+  say "That is Team Galactic, without a doubt!"
+  face looker down
+  say "But... but he ran right past me! Looker, Looker, what a blunder! He was the bomber himself!"
+  say "After him! Stop in the name of the International Police!"
+  return

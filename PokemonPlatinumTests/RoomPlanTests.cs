@@ -32,7 +32,9 @@ public class RoomPlanTests
         // Hearthome City's of plan 02 · S7, part 1
         new object[] { "ContestHallLobby", 1, 3, 16, 13 },
         // Route 209's Lost Tower, plan 02 · S7, part 2
-        new object[] { "LostTower1F", 1, 3, 7, 14 }
+        new object[] { "LostTower1F", 1, 3, 7, 14 },
+        // Veilstone City's Galactic warehouse, plan 02 · S8
+        new object[] { "VeilstoneGalacticWarehouse", 1, 3, 8, 11 }
     };
 
     /// <summary>Gate houses rebuilt to the original's plans: a door in each side wall, both to the map of Sinnoh.</summary>
@@ -97,7 +99,8 @@ public class RoomPlanTests
         new object[] { "LostTower1F", "pokemon_breeder_f_2", 2, 4, Direction.Right },
         new object[] { "LostTower2F", "youngster_oliver", 8, 10, Direction.Up },
         new object[] { "LostTower5F", "old_woman_1", 7, 9, Direction.Down },
-        new object[] { "LostTower5F", "old_woman_2", 8, 9, Direction.Down }
+        new object[] { "LostTower5F", "old_woman_2", 8, 9, Direction.Down },
+        new object[] { "VeilstoneGalacticWarehouse", "looker", 12, 8, Direction.Down }
     };
 
     [Theory]

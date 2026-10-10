@@ -11,6 +11,7 @@
 //   dotnet run --project tools/ShotHarness -- <output dir> encounters         wild Pokémon beyond the tables: the Poké Radar, a honey tree, poison, swarms, a roamer, Feebas
 //   dotnet run --project tools/ShotHarness -- <output dir> berries            berry patches in each stage, a patch picked, and the Lottery Corner
 //   dotnet run --project tools/ShotHarness -- <output dir> eterna             the third chapter's second half: Eterna City, Team Galactic's building, the Bicycle
+//   dotnet run --project tools/ShotHarness -- <output dir> veilstone          the fifth chapter: Veilstone's warehouse and HM02, Pastoria's bomb, the chase to Valor Lakefront
 //   dotnet run --project tools/ShotHarness -- <output dir> distortion         the Distortion World's floors and the north's last landmarks (the end of `world`)
 //   dotnet run --project tools/ShotHarness -- <dir> diff <other dir>          two runs' shots compared pixel by pixel (exits 1 if any differ)
 //   dotnet run --project tools/ShotHarness -- <dir> ab <before> <after> <before again>   three runs of `profile` compared (tools/dev/ab.sh)
@@ -93,6 +94,7 @@ if (mode == "poketch") h.PoketchMode();
 if (mode == "jubilife") h.JubilifeMode();
 if (mode == "windworks") h.WindworksMode();
 if (mode == "eterna") h.EternaMode();
+if (mode == "veilstone") h.VeilstoneMode();
 if (mode == "opening") h.OpeningMode();
 if (mode == "boutique") h.BoutiqueMode();
 if (mode == "cast") h.CastMode();

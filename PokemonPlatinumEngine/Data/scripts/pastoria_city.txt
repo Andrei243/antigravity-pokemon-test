@@ -1,10 +1,298 @@
-# Pastoria City (plan 01 · M7). docs/scripts.md describes the language; the lines are our own.
+# Pastoria City (plan 01 · M7, plan 02 · S8). docs/scripts.md describes the language; the lines are our own, on the
+# original's beats (scripts_pastoria_city.s).
 #
 # Walking back out of the Great Marsh through the observatory ends a Safari Game that is still on.
+#
+# The chapter, by VAR_PASTORIA_CITY_STATE: the rival stands in the Gym's doorway while Crasher Wake is away in
+# Veilstone, and steps out of it once Looker has found HM02 (veilstone_city.txt sets FLAG_HIDE_PASTORIA_CITY_RIVAL;
+# the warehouse sets state 1). Then he comes to the player at the Gym's door and battles (trigger 1, state 2). With
+# the Fen Badge (PastoriaGym.txt sets state 3) the rival is waiting as the player comes out, and Crasher Wake hears
+# of a Team Galactic grunt and a bomb at the Great Marsh's observatory (state 4). By the observatory the bomb goes
+# off: the grunt runs east, Crasher Wake into the marsh and the rival keeps its door (trigger 2 or Crasher Wake spoken
+# to, state 5; the rival turns the player back from it, trigger 0). The grunt runs on to Route 213 when spoken to
+# (route_213.txt), and the rival and Crasher Wake are back where they belong once Cynthia has been met at Valor
+# Lakefront (valor_lakefront.txt, state 6).
+#
+# Arriving in Pastoria also lifts the television crew's blockade of the gate between Hearthome City and Route 212
+# (FLAG_HIDE_ROUTE_212_BLOCKADE, hearthome_city.json), as the original's OnTransition does.
+
 
 script OnEnter
-  if not safari end
+  setflag FLAG_HIDE_ROUTE_212_BLOCKADE
+  if var VAR_PASTORIA_CITY_STATE == 4 call AfterTheGym
+  if var VAR_PASTORIA_CITY_STATE == 5 place rival 611 810 up
+  if flag FLAG_PASTORIA_CITY_GRUNT_M_MOVED_EAST place grunt_m 637 812 right
+  if safari call SafariOver
+  if var VAR_PASTORIA_CITY_STATE == 3 goto WakeComesOut
+  end
+# The original's OnFrame (state 3): out of the Gym with the Fen Badge, the rival is waiting, and Crasher Wake comes
+# out after the player
+label WakeComesOut
+  place player 589 828 down
+  place rival 595 819 down
+  show rival
+  music "common/rival"
+  walk rival down 9 left 5 fast
+  face player right
+  speaker "{rival}"
+  say "There you are! Got the Badge, didn't you? Told you Mr. Wake... er, my master... was the real deal!"
+  sound "door_open"
+  walk player down 1
+  face player up
+  clearflag FLAG_HIDE_PASTORIA_CITY_CRASHER_WAKE
+  place crasher_wake 589 827 down
+  show crasher_wake
+  walk crasher_wake down 1
+  setflag FLAG_HIDE_PASTORIA_CITY_GYM_CRASHER_WAKE
+  face crasher_wake right
+  wait 0.3
+  face crasher_wake down
+  speaker "Crasher Wake"
+  say "Who's making all that noise on my doorstep? Oh. The pair of you."
+  emote rival exclaim
+  speaker "{rival}"
+  say "Master! Over here!"
+  face crasher_wake right
+  speaker "Crasher Wake"
+  say "Hold it, kid. Sure, your dad and I go way back. But I never signed up to be anybody's teacher!"
+  face crasher_wake down
+  say "And the two of you hardly need one. You'll find your own strength, each in your own way."
+  speaker "{rival}"
+  say "Doesn't matter what you signed up for. I picked you, so that's that!"
+  say "Anyway, never mind that! Some Team Galactic guy's loitering at the observatory gate, and he was mumbling about a bomb!"
+  face crasher_wake right
+  speaker "Crasher Wake"
+  say "A BOMB?! In MY city?! Not while I'm breathing!"
+  walk rival down 1
+  face rival right
+  face player right
+  walk crasher_wake right 6 up 8 fast
+  hide crasher_wake
+  setflag FLAG_HIDE_PASTORIA_CITY_CRASHER_WAKE
+  speaker "{rival}"
+  say "Master! Hang on, wait up!"
+  walk rival right 5 up 8 fast
+  hide rival
+  setflag FLAG_HIDE_PASTORIA_CITY_RIVAL
+  music area
+  # Where the two of them wait now, by the observatory gate
+  call AfterTheGym
+  clearflag FLAG_HIDE_PASTORIA_CITY_CRASHER_WAKE
+  show crasher_wake
+  clearflag FLAG_HIDE_PASTORIA_CITY_RIVAL
+  show rival
+  setvar VAR_PASTORIA_CITY_STATE 4
+  end
+
+script AfterTheGym
+  place rival 608 814 down
+  place crasher_wake 611 810 up
+  return
+
+script SafariOver
   safari end
   speaker "Attendant"
-  say "Welcome back! Your Safari Game is over. We hope you found something good out there!"
+  say "Welcome back! That's the end of your Safari Game. Did the marsh treat you well?"
+  return
+
+
+# Before the Gym's door once Looker has been to the warehouse (trigger 1, state 1): the rival comes down the street
+# and battles. He is shown for the scene alone: his flag still hides him, so a battle lost leaves the doorway clear.
+script RivalBattle
+  place rival 595 819 left
+  show rival
+  walk rival down 9 fast
+  face rival left
+  emote rival exclaim
+  music "common/rival"
+  walk rival left 4 fast
+  face player right
+  speaker "{rival}"
+  say "Ha! Bet you thought I'd come barrelling into you again. Not this time!"
+  say "Been training, {player}? Let's find out how much. Show me what your team's got!"
+  walk rival left 1
+  if starter "Turtwig" goto VsTurtwig
+  if starter "Chimchar" goto VsChimchar
+  battle rival as "rival_pastoria_city_piplup"
+  goto After
+label VsTurtwig
+  battle rival as "rival_pastoria_city_turtwig"
+  goto After
+label VsChimchar
+  battle rival as "rival_pastoria_city_chimchar"
+label After
+  speaker "{rival}"
+  say "Huh. Fine, you've got stronger. I wasn't really trying, anyway!"
+  say "Oh, big news: Mr. Wake's taking me on as his apprentice! Someday I'll have a theme tune all my own!"
+  walk rival right 5 up 9 fast
+  hide rival
+  music area
+  setvar VAR_PASTORIA_CITY_STATE 2
+  end
+
+
+# The rival spoken to (the original's script 17): in the Gym's doorway while Crasher Wake is away, by the observatory
+# after the Gym, and keeping the marsh's door after the bomb.
+script Rival
+  speaker "{rival}"
+  if var VAR_PASTORIA_CITY_STATE >= 5 goto Go
+  if var VAR_PASTORIA_CITY_STATE == 4 goto Waiting
+  say "Hey, {player}. Bad timing, I'm afraid. Mr. Wake, the Gym Leader, isn't here. He's off in Veilstone City."
+  say "Went to spar with Maylene, their Leader. I came all this way just to miss him!"
+  end
+label Waiting
+  if facing up goto Front
+  say "Come round the front! I'm not chatting to you sideways!"
+  face self down
+  end
+label Front
+  say "When I catch my next Pokémon, it's going to be a Croagunk. You've seen that smirk, right? Unbeatable!"
+  end
+label Go
+  say "Why are you still standing about here?! That Galactic creep is getting away!"
+  end
+
+
+# Crasher Wake by the observatory gate (the original's script 20): spoken to after the Gym, he and the rival see the
+# bomb go off. The trigger in front of the observatory's door does the same (Bomb, below).
+script Wake
+  if var VAR_PASTORIA_CITY_STATE == 4 goto SeeTheBomb
+  speaker "Crasher Wake"
+  say "Wahahaha! Pastoria's waters are calm today. Just how I like them!"
+  end
+label SeeTheBomb
+  call Explosion
+  face crasher_wake down
+  face rival down
+  face player down
+  walk grunt_m down 3 fast
+  call ButtonPushed
+  face player right
+  face crasher_wake right
+  face rival right
+  call GruntRuns
+  face crasher_wake down
+  if var PLAYER_X == 612 face player left
+  if var PLAYER_X == 611 face player up
+  call GoAfterTheGoon
+  end
+
+# In front of the observatory's west door after the Gym (trigger 2, state 4): the player steps aside as the grunt
+# comes out of it.
+script Bomb
+  call Explosion
+  face crasher_wake down
+  face rival down
+  walk player down 1 right 1 fast
+  face player down
+  walk grunt_m down 3 fast
+  call ButtonPushed
+  face crasher_wake right
+  face rival right
+  face player right
+  call GruntRuns
+  face crasher_wake down
+  face player up
+  call GoAfterTheGoon
+  end
+
+script Explosion
+  call AfterTheGym
+  walk rival up 3 right 1 fast
+  speaker "{rival}"
+  say "Oi! Wait for me! I'm part of this too!"
+  face player up
+  face crasher_wake up
+  speaker "Crasher Wake"
+  say "Now then, where's this Galactic so-and..."
+  face rival up
+  sound "thunder"
+  camera shake 0.8
+  text "KA-BOOOOOM!!"
+  # The grunt comes out of the observatory's door
+  clearflag FLAG_HIDE_PASTORIA_CITY_GRUNT_M
+  place grunt_m 610 809 down
+  show grunt_m
+  return
+
+script ButtonPushed
+  speaker "Galactic Grunt"
+  say "Whoa... My ears are ringing."
+  speaker "Crasher Wake"
+  say "YOU THERE! What did you just do?!"
+  face grunt_m up
+  speaker "Galactic Grunt"
+  say "Who, me? I only did as I was told."
+  say "That parcel from Veilstone? It was the Galactic Bomb. Somebody had to press its button, and that somebody was me. Click!"
+  say "Ooh, I'd better go and tell the bosses how the test went! Toodles! Love the mask, by the way. Not!"
+  return
+
+# The grunt runs off east, to wait by the gate to Route 213
+script GruntRuns
+  walk grunt_m right 12 fast
+  hide grunt_m
+  place grunt_m 637 812 right
+  show grunt_m
+  speaker "Crasher Wake"
+  say "The Great Marsh... If that blast has done it any harm..."
+  return
+
+script GoAfterTheGoon
+  speaker "Crasher Wake"
+  say "Stay here, both of you! I'm going in alone, and nobody else follows me. Got that?"
+  say "If there's more of that bomb lying about in there, it could go off any second!"
+  walk crasher_wake up 1
+  hide crasher_wake
+  setflag FLAG_HIDE_PASTORIA_CITY_CRASHER_WAKE
+  if var PLAYER_X == 612 walk rival right 2 up 1 fast
+  if var PLAYER_X != 612 walk rival right 1 up 1 right 1 fast
+  face rival up
+  setflag FLAG_HIDE_VEILSTONE_CITY_GALACTIC_WAREHOUSE_LOOKER
+  setvar VAR_PASTORIA_CITY_STATE 5
+  setflag FLAG_PASTORIA_CITY_GRUNT_M_MOVED_EAST
+  face rival player
+  speaker "{rival}"
+  say "{player}! That Galactic creep went east. Go and get him!"
+  say "I'll guard this door, like my master told us. Nobody's getting past me!"
+  say "Now hurry, before he gets away!"
+  return
+
+
+# By the observatory's door once the bomb has gone off (trigger 0, state 5): the rival keeps it.
+script BlockGreatMarsh
+  place rival 611 810 up
+  face player right
+  face rival left
+  speaker "{rival}"
+  say "Why are you still standing about here?! That Galactic creep is getting away!"
+  walk player down 1
+  face player up
+  walk rival left 1
+  walk rival right 1
+  face rival up
+  end
+
+
+# The grunt (the original's script 9): by the observatory before the Gym, waiting for a parcel from Veilstone; after
+# the bomb, by the gate to Route 213, where he runs from the player.
+script Grunt
+  speaker "Galactic Grunt"
+  if flag FLAG_PASTORIA_CITY_GRUNT_M_MOVED_EAST goto StopFollowing
+  say "Where's that delivery from Veilstone got to? I've been stood here for ages."
+  say "They'd better get a move on. The sooner it turns up, the sooner things go off with a bang. Heh heh..."
+  end
+label StopFollowing
+  say "You again? Stop tailing me, will you?"
+  say "I'd teach you a lesson, but I'm wanted at the lake and I'm late already. Count yourself lucky!"
+  say "And stay put this time. I mean it!"
+  if facing left goto FromTheEast
+  walk self right 2 fast
+  goto Gone
+label FromTheEast
+  walk self down 1 right 2 fast
+label Gone
+  sound "stairs"
+  hide self
+  setflag FLAG_HIDE_PASTORIA_CITY_GRUNT_M
+  setflag FLAG_TALKED_TO_PASTORIA_CITY_GRUNT_M
   end
