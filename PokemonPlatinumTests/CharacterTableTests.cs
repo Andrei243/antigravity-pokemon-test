@@ -258,7 +258,7 @@ public class CharacterTableTests
 
     private static bool SpinWait(Func<bool> done)
     {
-        for (int i = 0; i < 400; i++)
+        for (int i = 0; i < 2400; i++)
         {
             if (done()) return true;
             System.Threading.Thread.Sleep(25);

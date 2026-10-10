@@ -172,7 +172,7 @@ public static class RegionDatabase
                 "VictoryRoad1FRoom1", "VictoryRoad1FRoom2", "VictoryRoad1FRoom3",
                 "FightAreaPokemonCenter", "FightAreaPokeMart", "SurvivalAreaPokemonCenter", "SurvivalAreaPokeMart", "ResortAreaPokemonCenter",
                 // Plan 02 · S11, part a: Lake Acuity as Team Galactic leaves it (a matrix of the imported world)
-                "LakeAcuityGalactic"
+                "LakeAcuityGalactic",
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

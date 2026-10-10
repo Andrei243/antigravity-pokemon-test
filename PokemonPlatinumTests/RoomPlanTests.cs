@@ -50,7 +50,7 @@ public class RoomPlanTests
         new object[] { "SolaceonTownEastHouse", 1, 3, 4, 8 },
         new object[] { "SunyshoreMarket", 1, 3, 5, 12 },
         new object[] { "SunyshoreCityNortheastHouse", 1, 3, 4, 8 },
-        new object[] { "FootstepHouse", 1, 3, 4, 8 }
+        new object[] { "FootstepHouse", 1, 3, 4, 8 },
     };
 
     /// <summary>The Canalave Library's upper floors (plan 02 · S10): no door, only the stairs.</summary>
@@ -149,7 +149,7 @@ public class RoomPlanTests
         new object[] { "SunyshoreMarket", "gym_guide", 1, 5, Direction.Right },
         new object[] { "SunyshoreMarket", "sailor", 8, 9, Direction.Down },
         new object[] { "SunyshoreCityNortheastHouse", "julia", 3, 5, Direction.Down },
-        new object[] { "FootstepHouse", "dr_footstep", 5, 6, Direction.Down }
+        new object[] { "FootstepHouse", "dr_footstep", 5, 6, Direction.Down },
     };
 
     [Theory]
@@ -274,7 +274,7 @@ public class RoomPlanTests
         new object[] { "TeamGalacticEternaBuilding2F", 14, 3, "TeamGalacticEternaBuilding3F", 2, 3 },
         new object[] { "TeamGalacticEternaBuilding2F", 20, 3, "TeamGalacticEternaBuilding3F", 8, 3 },
         new object[] { "TeamGalacticEternaBuilding3F", 14, 3, "TeamGalacticEternaBuilding4F", 3, 3 },
-        new object[] { "TeamGalacticEternaBuilding3F", 20, 3, "TeamGalacticEternaBuilding4F", 8, 3 }
+        new object[] { "TeamGalacticEternaBuilding3F", 20, 3, "TeamGalacticEternaBuilding4F", 8, 3 },
     };
 
     [Theory]

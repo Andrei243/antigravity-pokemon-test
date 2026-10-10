@@ -57,7 +57,7 @@ public enum Op
     // The League's platform lifts (plan 01 · M9, part 2d)
     PlatformLift,
     // Ball Capsules, Seals and ribbons (plan 06 · R17b)
-    Seal, Ribbon
+    Seal, Ribbon,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>
