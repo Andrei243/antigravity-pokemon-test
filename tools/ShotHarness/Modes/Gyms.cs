@@ -87,9 +87,39 @@ partial class Harness
             At(map, x, y, facing);
             game.Interact();
         }
-        // `gyms eterna veilstone hearthome`: only the Gyms named
+        // `gyms oreburgh eterna veilstone hearthome pastoria`: only the Gyms named
         var only = args.Length > 2 ? args[2..] : null;
         bool Want(string gym) => only == null || only.Contains(gym);
+
+        // ---- the Oreburgh Gym: its tiers of rock, rebuilt to the original's heights
+        if (Want("oreburgh"))
+        {
+        Enter("OreburghGym", 5, 24);
+        Frames(20); Shot("g50_oreburgh_door");
+        At("OreburghGym", 5, 19, Direction.Up); Frames(4); Shot("g51_oreburgh_the_pit_and_the_bridge");
+        TalkFrom("OreburghGym", "youngster_jonathon", 5, 18, Direction.Left);
+        IntoBattle("Jonathon's battle"); Shot("g52_oreburgh_battle_jonathon");
+        ReadOn();
+        At("OreburghGym", 2, 18, Direction.Up); Frames(4); Shot("g53_oreburgh_up_the_west_stairs");
+        // Onto the bridge from the west tier, by the field's own steps (placed on its tile, the player would stand in the pit under it)
+        At("OreburghGym", 3, 17, Direction.Right); Frames(2);
+        engine.Steering = (Direction.Right, false); Frames(30); engine.Steering = null; Frames(10);
+        Console.WriteLine($"oreburgh: on the bridge at {game.Player.GridX},{game.Player.GridY}, height {game.Player.HeightOn(game.Map)}");
+        Shot("g54_oreburgh_on_the_bridge");
+        TalkFrom("OreburghGym", "youngster_darius", 6, 11, Direction.Right);
+        IntoBattle("Darius's battle");
+        ReadOn();
+        At("OreburghGym", 5, 9, Direction.Up); Frames(4); Shot("g55_oreburgh_below_the_dais");
+        var rock = game.Map;
+        Console.WriteLine($"oreburgh: heights at the door {rock.HeightAt(5, 24)}, the pit {rock.HeightAt(3, 16)}, the bridge {rock.DeckAt(5, 17)}, " +
+            $"the second tier {rock.HeightAt(5, 10)}, the dais {rock.HeightAt(5, 4)}");
+        TalkFrom("OreburghGym", "roark", 5, 4, Direction.Up);
+        ReadOn(() => Box().IsActive && Box().CurrentLine.Contains("Roark")); Box().FinishLine(); Frames(4); Shot("g56_oreburgh_roark");
+        IntoBattle("Roark's battle"); Shot("g57_oreburgh_battle_roark");
+        ReadOn();
+        At("OreburghGym", 5, 21, Direction.Up); Frames(4); Shot("g58_oreburgh_from_the_mat");
+        Console.WriteLine($"oreburgh: Coal Badge {story.HasBadge(Badge.Coal)}");
+        }
 
         // ---- the Eterna Gym: the flower clock
         if (Want("eterna"))
@@ -180,6 +210,59 @@ partial class Harness
         IntoBattle("Maylene's battle"); Shot("g28_veilstone_battle_maylene");
         ReadOn();
         Console.WriteLine($"veilstone: Cobble Badge {story.HasBadge(Badge.Cobble)}, TM60 {game.Bag.GetQuantity(ItemDatabase.Get("TM60")!)}");
+        }
+
+        // ---- the Pastoria Gym: the water and its buttons
+        if (Want("pastoria"))
+        {
+        Enter("PastoriaGym", 13, 41);
+        Frames(20); Shot("g60_pastoria_door");
+        PastoriaWater Pool() => (PastoriaWater)Here().Puzzle!;
+        // Onto a button by the field's own step, from whichever side a step reaches it; the room's trigger presses it
+        void StepOnto(int x, int y)
+        {
+            foreach (var way in new[] { Direction.Up, Direction.Down, Direction.Left, Direction.Right })
+            {
+                var (dx, dy) = FieldMovement.Delta(way);
+                int fx = x - dx, fy = y - dy;
+                if (!Here().IsWalkable(fx, fy)) continue;
+                var step = FieldMovement.Step(Here(), fx, fy, way, new Walker(TravelMode.OnFoot, Here().HeightAt(fx, fy)));
+                if (!step.Moves || (step.X, step.Y) != (x, y)) continue;
+                At("PastoriaGym", fx, fy, way); Frames(2);
+                engine.Steering = (way, false);
+                Until(() => game.Player.GridX == x && game.Player.GridY == y, "the step onto the button", 120);
+                engine.Steering = null;
+                return;
+            }
+            Console.WriteLine($"  !! no step onto the button at {x},{y}");
+        }
+        At("PastoriaGym", 13, 36, Direction.Up); Frames(4); Shot("g61_pastoria_the_water_at_two");
+        // Up onto the floating floor: the middle ground, then a raft carried at the water's height
+        engine.Steering = (Direction.Up, false); Frames(40); engine.Steering = null; Frames(6);
+        Console.WriteLine($"pastoria: afloat at {game.Player.GridX},{game.Player.GridY}, height {game.Player.HeightOn(Here())}");
+        Shot("g62_pastoria_on_a_raft");
+        // The orange button lowers it: the water on its way down, and the pool drained
+        StepOnto(3, 34);
+        Skip(1.0); Shot("g63_pastoria_the_water_falling");
+        Until(() => !Pool().Moving, "the water at its level");
+        Frames(10); Shot("g64_pastoria_the_water_at_nought");
+        Console.WriteLine($"pastoria: after the orange button the water is at {Pool().Level}");
+        // The blue raises it to the top
+        StepOnto(9, 24);
+        Until(() => !Pool().Moving, "the water at its level");
+        Frames(10); Shot("g65_pastoria_the_water_at_four");
+        Console.WriteLine($"pastoria: after the blue button the water is at {Pool().Level}");
+        TalkFrom("PastoriaGym", "sailor_damian", 7, 23, Direction.Up);
+        IntoBattle("Damian's battle"); Shot("g66_pastoria_battle_sailor");
+        ReadOn();
+        foreach (var npc in Here().Everyone.Where(n => n.IsTrainer)) { npc.HasBattled = true; story.Defeat(npc.TrainerData?.Id ?? npc.Key); }
+        Pool().Settle(PastoriaWater.Button.Blue);
+        At("PastoriaGym", 12, 5, Direction.Up); Frames(4); Shot("g67_pastoria_by_wake");
+        TalkFrom("PastoriaGym", "crasher_wake", 13, 5, Direction.Up);
+        ReadOn(() => Box().IsActive && Box().CurrentLine.Contains("Wake")); Box().FinishLine(); Frames(4); Shot("g68_pastoria_wake");
+        IntoBattle("Wake's battle"); Shot("g69_pastoria_battle_wake");
+        ReadOn();
+        Console.WriteLine($"pastoria: Fen Badge {story.HasBadge(Badge.Fen)}, TM55 {game.Bag.GetQuantity(ItemDatabase.Get("TM55")!)}");
         }
 
         // ---- the Hearthome Gym: the dark rooms and their doors

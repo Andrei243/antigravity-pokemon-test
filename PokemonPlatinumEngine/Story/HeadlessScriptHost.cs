@@ -449,6 +449,13 @@ public sealed class HeadlessScriptHost : IScriptHost
         if (Map?.Puzzle is EternaClock clock) clock.Apply(Map, Story);
     }
 
+    public void PressButton(PastoriaWater.Button button)
+    {
+        Log.Add($"pressbutton {button.ToString().ToLowerInvariant()}");
+        // The water is at its level at once
+        if (Map?.Puzzle is PastoriaWater water) water.Settle(button);
+    }
+
     /// <summary>Who travels with the player, and as which trainer (plan 02 · S6).</summary>
     public NPC? Travelling { get; private set; }
     public string? Partner { get; private set; }

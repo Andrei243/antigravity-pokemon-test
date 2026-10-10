@@ -684,6 +684,8 @@ public sealed class WorldRenderer
             // that (a Gym) keeps the deepest room's distance and follows the player along its length (style guide,
             // "A room is seen whole; a hall is followed")
             var roomTarget = room.RoomCenter;
+            // A room with relief (a Gym's tiers) is followed up and down them as the field is
+            if (map.HasRelief) roomTarget.Y += groundY;
             int depth = room.RoomDepth;
             float distance = MapScene.IndoorDistance * Math.Max(1f, (Math.Min(depth, DeepestRoom) - 1) / 8f);
             if (depth > DeepestRoom)

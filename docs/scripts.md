@@ -243,6 +243,7 @@ Plan 01 · M9. A Gym's puzzle is the room's own (`puzzle` in its map file, `GymP
 
 | Command | What it does |
 |---|---|
+| `pressbutton blue` | The Pastoria Gym's water sets off for the level of a button's colour, `blue` (four tiles), `green` (two) or `orange` (nought), and the script waits while it moves (the original's `PressPastoriaGymButton`; `PastoriaWater`). The room's coordinate events run it as the player steps on a button. |
 | `flowerclock` | Turns the Eterna Gym's flower clock on to its next time (`VAR_ETERNA_GYM_FLOWER_CLOCK_STATE`, the original's `AdvanceEternaGymClock`; `EternaClock`) and waits while its hands turn and a fountain drains, the camera on them; `camera release` brings it back. `RESULT` is 0 where the clock is at its last time already, 1 when it turned, 2 when a fountain drained too. |
 
 ### Field moves and key items

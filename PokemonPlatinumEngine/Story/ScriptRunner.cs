@@ -337,6 +337,10 @@ public sealed class ScriptRunner
                 if (Result > 0) host.TurnClock(from, from + 1);
                 break;
             }
+            // PressPastoriaGymButton: the Pastoria Gym's water sets off for the level of a button's colour
+            case Op.PressButton:
+                host.PressButton(i.Name switch { "blue" => PastoriaWater.Button.Blue, "orange" => PastoriaWater.Button.Orange, _ => PastoriaWater.Button.Green });
+                break;
             case Op.Partner:
                 if (i.Option)
                 {

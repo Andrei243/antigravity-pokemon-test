@@ -43,7 +43,7 @@ internal static class PropModels
 
     public static void Build(KitBuilder kit, Prop p, Map map)
     {
-        kit.Origin = new Vector3(p.X, 0, p.Y);
+        kit.Origin = new Vector3(p.X, Relief.At(map, p.X + p.Width / 2f, p.Y + p.Depth / 2f), p.Y);
         int w = p.Width * 32, d = p.Depth * 32;
         switch (p.Type)
         {

@@ -302,6 +302,12 @@ public class Map
     /// leads (see <see cref="MapStructures.FindBuildings"/>).
     /// </summary>
     public Dictionary<(int X, int Y), BuildingKind> BuildingKinds { get; } = new();
+
+    /// <summary>The plates a hand-made map's heights were laid from (<see cref="MapFile.LayHeights"/>), kept so its file is written back as it was.</summary>
+    public List<HeightPlate> Plates { get; } = new();
+
+    /// <summary>The behaviours a hand-made map's file gives its tiles beyond what their look says, kept so the file is written back as it was.</summary>
+    public List<MapFile.BehaviourRecord> BehaviourPatches { get; } = new();
     public int Width { get; }
     public int Height { get; }
 

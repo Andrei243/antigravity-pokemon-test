@@ -24,7 +24,8 @@ public static class ScriptParser
 
     private static readonly Regex Identifier = new("^[A-Za-z_][A-Za-z0-9_]*$", RegexOptions.Compiled);
     private static readonly Regex FlagName = new("^(FLAG_[A-Z0-9_]+|[A-Z][A-Za-z]+HallOfFame)$", RegexOptions.Compiled);
-    private static readonly Regex VariableName = new("^VAR_[A-Z0-9_]+$", RegexOptions.Compiled);
+    // The original's own local variables keep its spelling (VAR_MAP_LOCAL_0x01), which its coordinate events name too
+    private static readonly Regex VariableName = new("^(VAR_[A-Z0-9_]+|VAR_MAP_LOCAL_0x[0-9A-F]{2})$", RegexOptions.Compiled);
 
     public const float EmoteSeconds = 0.9f, FadeSeconds = 0.4f, PanSeconds = 0.8f, ReleaseSeconds = 0.6f, ShakeSeconds = 0.5f;
 
@@ -195,6 +196,8 @@ public static class ScriptParser
                 return new Instruction { Op = Op.Defeat, Line = line, Name = r.Text("a trainer's id") };
             case "flowerclock":
                 return new Instruction { Op = Op.FlowerClock, Line = line };
+            case "pressbutton":
+                return new Instruction { Op = Op.PressButton, Line = line, Name = r.OneOf("blue", "green", "orange") };
             case "partner":
             {
                 if (r.PeekWord("off"))

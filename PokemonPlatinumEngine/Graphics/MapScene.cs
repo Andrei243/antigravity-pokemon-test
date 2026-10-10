@@ -224,6 +224,7 @@ internal sealed class MapScene
         if (map.IsIndoors)
         {
             scene.AddInterior(batches, kit);
+            scene.AddFaces(batches);
         }
         else
         {
@@ -404,7 +405,8 @@ internal sealed class MapScene
                     // draws that); over dry ground the ground under it is drawn in shade. A boardwalk lies a
                     // hair above the water it rests on.
                     if (!Map.IsDeepWater(tx, ty) && deck - MathF.Max(MathF.Max(nw, ne), MathF.Max(sw, se)) > 0.3f)
-                        flat.Quad(new(tx, sw, ty + 1), new(tx + 1, se, ty + 1), new(tx + 1, ne, ty), new(tx, nw, ty), default, default, default, default, new Color(70, 96, 78, 255), Up);
+                        flat.Quad(new(tx, sw, ty + 1), new(tx + 1, se, ty + 1), new(tx + 1, ne, ty), new(tx, nw, ty), default, default, default, default,
+                            Map.IsIndoors ? new Color(52, 46, 52, 255) : new Color(70, 96, 78, 255), Up);
                     nw = ne = sw = se = deck + WaterLevel * 3f;
                 }
 
@@ -456,10 +458,13 @@ internal sealed class MapScene
         var under = Map.IsVoid ? batches.For(SceneTextures.IslandUnderside) : null;
         bool Over(int x, int y) => under != null && TypeAt(x, y) == TileType.Void;
 
+        // In a room only the floor has faces, and only toward more of the floor: its walls stand on its highest ground
+        bool Drawn(int x, int y) => !Map.IsIndoors || Map.InBounds(x, y) && IsInteriorFloor(x, y, Map.GetGroundTile(x, y));
+
         for (int ty = ground.Y; ty < ground.Bottom; ty++)
             for (int tx = ground.X; tx < ground.Right; tx++)
             {
-                if (!Map.InBounds(tx, ty)) continue;
+                if (!Map.InBounds(tx, ty) || !Drawn(tx, ty)) continue;
                 // The void has no ground, so no edge of its own: only an island's edge over it shows
                 if (under != null && TypeAt(tx, ty) == TileType.Void) continue;
                 var (nw, ne, sw, se) = Relief.Corners(Map, tx, ty);
@@ -468,19 +473,19 @@ internal sealed class MapScene
                 // Each edge against the matching edge of the tile beyond it; a face that would look north is never seen
                 float wide = face == rock ? NatureArt.RockFaceTiles : 1f;
                 bool island = under != null && TypeAt(tx, ty) != TileType.Void;
-                if (Map.InBounds(tx, ty + 1))
+                if (Map.InBounds(tx, ty + 1) && Drawn(tx, ty + 1))
                 {
                     var s = Relief.Corners(Map, tx, ty + 1);
                     if (island && Over(tx, ty + 1)) Underside(under!, new(tx, 0, ty + 1), sw, new(tx + 1, 0, ty + 1), se, South, tx);
                     else Face(face, new(tx, 0, ty + 1), sw, s.NW, new(tx + 1, 0, ty + 1), se, s.NE, South, tx, wide);
                 }
-                if (Map.InBounds(tx + 1, ty))
+                if (Map.InBounds(tx + 1, ty) && Drawn(tx + 1, ty))
                 {
                     var e = Relief.Corners(Map, tx + 1, ty);
                     if (island && Over(tx + 1, ty)) Underside(under!, new(tx + 1, 0, ty + 1), se, new(tx + 1, 0, ty), ne, Vector3.UnitX, ty);
                     else Face(face, new(tx + 1, 0, ty + 1), se, e.SW, new(tx + 1, 0, ty), ne, e.NW, Vector3.UnitX, ty, wide);
                 }
-                if (Map.InBounds(tx - 1, ty))
+                if (Map.InBounds(tx - 1, ty) && Drawn(tx - 1, ty))
                 {
                     var w = Relief.Corners(Map, tx - 1, ty);
                     if (island && Over(tx - 1, ty)) Underside(under!, new(tx, 0, ty), nw, new(tx, 0, ty + 1), sw, -Vector3.UnitX, ty);
@@ -827,6 +832,21 @@ internal sealed class MapScene
         kit.Origin = Vector3.Zero;
 
         var theme = Map.ArenaType;
+
+        // A room with relief (plan 01 · M9: the Oreburgh Gym's tiers) has its walls standing on its highest ground,
+        // and under them, wherever the floor beside a wall is lower, the face of the ground from the floor up to it
+        float wallFoot = 0f;
+        if (Map.HasRelief)
+        {
+            for (int ty = by; ty < h - 1; ty++)
+                for (int tx = lx; tx < w - 1; tx++)
+                {
+                    var (cnw, cne, csw, cse) = Relief.Corners(Map, tx, ty);
+                    wallFoot = MathF.Max(wallFoot, MathF.Max(MathF.Max(cnw, cne), MathF.Max(csw, cse)));
+                }
+            Plinths(batches, lx, by, wallFoot);
+        }
+        kit.Origin = new Vector3(0, wallFoot, 0);
         var backWall = kit.Face("wall.back", right - left, wallH, c => GroundBaker.PaintWall(c, style, 0, theme));
         var sideWall = kit.Face("wall.side", front - back, wallH, c => GroundBaker.PaintWall(c, style, 0, theme));
         kit.Quad(kit.At(left, 0, back), kit.At(right, 0, back), kit.At(right, wallH, back), kit.At(left, wallH, back), backWall, KitBuilder.FrontNormal);
@@ -839,7 +859,16 @@ internal sealed class MapScene
         kit.Box(left - cap, left, back, front + cap, wallH - 1, wallH, top: Top(cap, front - back + cap));
         kit.Box(right, right + cap, back, front + cap, wallH - 1, wallH, top: Top(cap, front - back + cap));
 
-        // The front wall is cut down to a low kerb so the camera can see in, with a gap for the door
+        // The front wall is cut down to a low kerb so the camera can see in, with a gap for the door; with relief it
+        // stands on the floor of the front row, not on the walls' foot
+        float frontFoot = 0f;
+        if (Map.HasRelief)
+            for (int tx = lx; tx < w - 1; tx++)
+            {
+                var (_, _, csw, cse) = Relief.Corners(Map, tx, h - 2);
+                frontFoot = MathF.Max(frontFoot, MathF.Max(csw, cse));
+            }
+        kit.Origin = new Vector3(0, frontFoot, 0);
         for (int tx = 1; tx < w - 1; tx++)
         {
             if (Map.GetGroundTile(tx, h - 1) == TileType.Door) continue;
@@ -849,6 +878,7 @@ internal sealed class MapScene
             kit.Box(tx * T, tx * T + run, front, front + cap, 0, 8, Top(run, cap), kit.Face($"wall.kerb.{run}", run, 8, GroundBaker.PaintWallTop));
             tx = end;
         }
+        kit.Origin = Vector3.Zero;
 
         // The room's own inner walls (a room rebuilt to the original's plan: the Valley Windworks' hall and the
         // corridor below it) are cut away as the front wall is, so the camera sees over them, but only down to the
@@ -864,8 +894,11 @@ internal sealed class MapScene
                 bool n = Floor(tx, ty - 1), s = Floor(tx, ty + 1), wst = Floor(tx - 1, ty), e = Floor(tx + 1, ty);
                 var top = kit.Face($"wall.top.inner.{(n ? "n" : "")}{(s ? "s" : "")}{(wst ? "w" : "")}{(e ? "e" : "")}", T, T,
                     c => GroundBaker.PaintWallTop(c, n, s, wst, e));
+                // With relief a wall stands on the highest floor beside it (the Pastoria Gym's wings by its entrance)
+                kit.Origin = new Vector3(0f, Map.HasRelief ? InnerWallFoot(tx, ty) : 0f, 0f);
                 kit.Box(tx * T, tx * T + T, ty * T, ty * T + T, 0, innerH, top, s ? inner : null, wst ? inner : null, e ? inner : null);
             }
+        kit.Origin = Vector3.Zero;
 
         var daylight = batches.For(SceneTextures.WindowLight, MeshPass.Light);
         foreach (var prop in Map.Props)
@@ -884,5 +917,36 @@ internal sealed class MapScene
                 if (Map.GetGroundTile(tx, ty) == TileType.PC) PropModels.BuildPc(kit, tx, ty);
 
         RoomCenter = new Vector3((lx + w - 1) / 2f, 0.6f * VS, (back + front) / (2f * T) + 0.2f);
+    }
+
+    /// <summary>The drawn height an inner wall stands at: the highest of the floor round it.</summary>
+    private float InnerWallFoot(int tx, int ty)
+    {
+        float foot = 0f;
+        foreach (var (x, y) in new[] { (tx, ty - 1), (tx, ty + 1), (tx - 1, ty), (tx + 1, ty) })
+            if (Map.InBounds(x, y) && Map.GetGroundTile(x, y) != TileType.Wall)
+                foot = MathF.Max(foot, Relief.At(Map, x + 0.5f, y + 0.5f));
+        return foot;
+    }
+
+    /// <summary>
+    /// The ground's face under a room's back and side walls where the floor beside them lies lower than the walls'
+    /// foot: rock under rocky ground, earth under the rest, as the faces between the floor's own levels.
+    /// </summary>
+    private void Plinths(MeshBatches batches, int lx, int by, float foot)
+    {
+        var earth = batches.For(SceneTextures.BankFace);
+        var rock = batches.For(SceneTextures.RockFace);
+        int w = Map.Width, h = Map.Height;
+        for (int ty = by; ty < h - 1; ty++)
+            for (int tx = lx; tx < w - 1; tx++)
+            {
+                var face = IsRocky(Map.GetGroundTile(tx, ty)) ? rock : earth;
+                float wide = face == rock ? NatureArt.RockFaceTiles : 1f;
+                var (nw, ne, sw, se) = Relief.Corners(Map, tx, ty);
+                if (ty == by) Face(face, new(tx, 0, ty), foot, nw, new(tx + 1, 0, ty), foot, ne, South, tx, wide);
+                if (tx == lx) Face(face, new(tx, 0, ty + 1), foot, sw, new(tx, 0, ty), foot, nw, Vector3.UnitX, ty, wide);
+                if (tx == w - 2) Face(face, new(tx + 1, 0, ty), foot, ne, new(tx + 1, 0, ty + 1), foot, se, -Vector3.UnitX, ty, wide);
+            }
     }
 }

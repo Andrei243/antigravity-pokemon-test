@@ -164,6 +164,12 @@ public interface IScriptHost
     void TurnClock(int from, int to);
 
     /// <summary>
+    /// A button of the Pastoria Gym is stepped on (<c>PressPastoriaGymButton</c>): the water and the floor on it set off
+    /// for its colour's level; the script waits while they move (<see cref="Busy"/>).
+    /// </summary>
+    void PressButton(PastoriaWater.Button button);
+
+    /// <summary>
     /// Someone of the map starts travelling with the player, walking behind and battling beside them as the trainer
     /// of Platinum's data <paramref name="trainerId"/> (plan 02 · S6, <see cref="Follower"/>); null for both and they
     /// stop.

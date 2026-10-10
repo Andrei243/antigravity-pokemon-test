@@ -134,7 +134,7 @@ public class JubilifeAndRoarkTests
         Assert.Null(game.Present("rival", "oreburgh_city"));
 
         // The Gym: its two trainers, and Roark, for the Coal Badge and TM76
-        game.Arrive("OreburghGym", 5, 23);
+        game.Arrive("OreburghGym", 5, 24);
         Assert.Contains("battle youngster_darius Won", game.Talk("youngster_darius").Log);
         var gym = game.Talk("roark");
         Assert.Contains("battle leader_roark Won", gym.Log);
@@ -143,6 +143,10 @@ public class JubilifeAndRoarkTests
         Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM76")!));
         Assert.Equal(2, game.Story.Var("VAR_OREBURGH_CITY_STATE"));
         Assert.Equal(3, game.Story.Var("VAR_JUBILIFE_CITY_STATE"));
+        // and what the original's Roark sets besides (scripts_oreburgh_city_gym.s)
+        Assert.True(game.Story.Has("FLAG_HIDE_POKECENTER_BASEMENT_BLOCKADE"));
+        Assert.Equal(1, game.Story.Var("VAR_GTS_ACCESS_STATE"));
+        Assert.Equal(1, game.Story.Var("VAR_JUBILIFE_LOOKER_PAL_PAD_STATE"));
         Assert.DoesNotContain(game.Talk("roark").Log, l => l.StartsWith("battle"));
         Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM76")!));
 
@@ -191,7 +195,7 @@ public class JubilifeAndRoarkTests
         var darius = gym.Everyone.Single(n => n.Key == "youngster_darius").TrainerData!;
         Assert.Equal(new[] { ("Geodude", 9), ("Onix", 9) }, darius.Party.Members.Select(p => (p.Species.Name, p.Level)));
         Assert.Equal("Youngster", darius.TrainerClass);
-        Assert.Equal(5, gym.Everyone.Single(n => n.Key == "youngster_jonathon").TrainerData!.SightRange);
+        Assert.Equal(3, gym.Everyone.Single(n => n.Key == "youngster_jonathon").TrainerData!.SightRange);
     }
 
     [Fact]

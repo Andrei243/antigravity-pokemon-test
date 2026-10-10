@@ -24,6 +24,11 @@ internal sealed class GymPieces
     // The Eterna Gym's pieces
     private Piece? minuteHand, hourHand, waterPool, stillParts;
 
+    // The Pastoria Gym's: the water over the pool, a raft of its floating floor, a button of each colour up and down
+    private Piece? poolWater, raft;
+    private readonly List<(int X, int Y)> rafts = new();
+    private readonly Dictionary<(PastoriaWater.Button Colour, bool Down), Piece> buttons = new();
+
     // The Hearthome Gym's: the doors and pads (still), and a sign for each door, shown where its clue lies
     private readonly Dictionary<HearthomeDoors.Sign, Piece> clues = new();
 
@@ -60,6 +65,18 @@ internal sealed class GymPieces
                 yield return (clue, Matrix4x4.CreateTranslation(doors.Clue.X, 0f, doors.Clue.Y));
             yield break;
         }
+        if (map.Puzzle is PastoriaWater pool)
+        {
+            // The water a hair under its level, so a walkway at the same height shows over it; the rafts on it
+            float level = pool.Level - map.GroundLevel;
+            if (poolWater != null) yield return (poolWater, Matrix4x4.CreateTranslation(0f, level - 0.06f, 0f));
+            if (raft != null)
+                foreach (var (x, y) in rafts) yield return (raft, Matrix4x4.CreateTranslation(x, level, y));
+            foreach (var (x, y, colour) in PastoriaWater.Buttons)
+                if (buttons.TryGetValue((colour, colour == pool.Pressed), out var button))
+                    yield return (button, Matrix4x4.CreateTranslation(x, Relief.At(map, x + 0.5f, y + 0.5f), y));
+            yield break;
+        }
         if (map.Puzzle is EternaClock clock)
         {
             var pin = new Vector3(EternaClock.CenterX + 0.5f, 0f, EternaClock.CenterZ + 0.5f);
@@ -86,6 +103,7 @@ internal sealed class GymPieces
         Unload();
         builtFor = map;
         if (map.Puzzle is EternaClock) BuildEterna(map);
+        else if (map.Puzzle is PastoriaWater) BuildPastoria(map);
         else if (hearthome) BuildHearthome(map);
         return true;
     }
@@ -390,6 +408,96 @@ internal sealed class GymPieces
             }
     }
 
+    // ------------------------------------------------------------------ the Pastoria Gym
+
+    private static readonly Color Water = new(64, 136, 214, 255), WaterLight = new(132, 194, 244, 255), WaterDark = new(44, 104, 184, 255);
+    private static readonly Tone Raft = Tone.Of(178, 132, 84, 210, 168, 112, 122, 86, 56);
+    private static readonly Tone Rim = Tone.Of(176, 184, 196, 214, 220, 228, 120, 128, 144);
+
+    /// <summary>The colours of a button's face, as the style guide gives them.</summary>
+    private static Tone ButtonTone(PastoriaWater.Button colour) => colour switch
+    {
+        PastoriaWater.Button.Blue => Tone.Of(70, 120, 222, 130, 176, 250, 40, 78, 170),
+        PastoriaWater.Button.Green => Tone.Of(74, 176, 92, 140, 222, 140, 44, 124, 64),
+        _ => Tone.Of(236, 138, 52, 252, 190, 110, 186, 94, 30)
+    };
+
+    /// <summary>
+    /// The Pastoria Gym (style guide, "Gyms"): the water over the pool, a tile of it for each tile its floor covers;
+    /// a raft of planks for each tile where that floor is what carries the player; and a button of each colour, a
+    /// round face in a pale rim, standing up or pressed down.
+    /// </summary>
+    private void BuildPastoria(Map map)
+    {
+        const int T = GroundBaker.ArtTile;
+        var sheet = new ArtSheet();
+        float vs = MapScene.VerticalScaleOf(map);
+        var water = new KitBuilder(sheet, vs);
+        var surface = water.Face("pool.water", T, T, PaintWater);
+        for (int y = PastoriaWater.Top; y < PastoriaWater.Top + PastoriaWater.Depth; y++)
+            for (int x = PastoriaWater.Left; x < PastoriaWater.Left + PastoriaWater.Width; x++)
+            {
+                water.Origin = new Vector3(x, 0f, y);
+                water.Decal(0, T, 0, T, 0f, surface);
+            }
+
+        // A raft wherever the floating floor is what someone stands on: open floor lower than the floor can be, and
+        // of none of the behaviours that keep walkers to a height or off the floor
+        rafts.Clear();
+        for (int y = PastoriaWater.Top; y < PastoriaWater.Top + PastoriaWater.Depth; y++)
+            for (int x = PastoriaWater.Left; x < PastoriaWater.Left + PastoriaWater.Width; x++)
+                if (!map.IsSolid(x, y) && map.BehaviourAt(x, y) == TileBehavior.None && map.HeightAt(x, y) < 1.5f && map.DeckAt(x, y) == null)
+                    rafts.Add((x, y));
+        var planks = new KitBuilder(sheet, vs);
+        planks.Block("raft", Raft, 1, T - 1, 1, T - 1, -3, 2);
+        var deck = planks.Face("raft.deck", T - 4, T - 4, PaintRaft);
+        planks.Decal(2, T - 2, 2, T - 2, 2f * Texel * vs + 0.004f, deck);
+
+        var kits = new Dictionary<(PastoriaWater.Button, bool), KitBuilder>();
+        foreach (var colour in Enum.GetValues<PastoriaWater.Button>())
+            foreach (bool down in new[] { false, true })
+            {
+                var kit = new KitBuilder(sheet, vs);
+                kit.Block("button.rim", Rim, 4, T - 4, 4, T - 4, 0, 2);
+                var tone = ButtonTone(colour);
+                var face = kit.Face($"button.{colour}.{down}", 20, 20, c => Disc(c, 20, tone));
+                kit.Block($"button.{colour}", tone, 8, T - 8, 8, T - 8, 0, down ? 3 : 6, sides: true);
+                kit.Decal(6, T - 6, 6, T - 6, (down ? 3 : 6) * Texel * vs + 0.004f, face);
+                kits[(colour, down)] = kit;
+            }
+
+        art = Upload(sheet);
+        poolWater = Make(water);
+        raft = Make(planks);
+        foreach (var (key, kit) in kits)
+            if (Make(kit) is { } piece) buttons[key] = piece;
+    }
+
+    private const float Texel = 1f / GroundBaker.ArtTile;
+
+    private static void PaintWater(PixelCanvas c)
+    {
+        // Small waves in rows, a light crest over a dark trough, offset from row to row
+        for (int y = 0; y < c.Height; y++)
+            for (int x = 0; x < c.Width; x++)
+            {
+                int u = (x + (y / 4) * 5) % 16, v = y % 8;
+                var col = v == 0 && u < 6 ? WaterLight : v == 1 && u < 6 ? WaterDark : Water;
+                c.SetRaw(x, y, col);
+            }
+    }
+
+    private static void PaintRaft(PixelCanvas c)
+    {
+        // Planks running east and west, five texels wide, with a dark seam between them and a nail at each end
+        for (int y = 0; y < c.Height; y++)
+            for (int x = 0; x < c.Width; x++)
+            {
+                var col = y % 5 == 4 ? Raft.Dark : (x is 2 or 25) && y % 5 == 2 ? Raft.Dark : y % 5 == 0 ? Raft.Light : Raft.Base;
+                c.SetRaw(x, y, col);
+            }
+    }
+
     // ------------------------------------------------------------------ the GPU
 
     private Texture2D Upload(ArtSheet sheet)
@@ -427,7 +535,9 @@ internal sealed class GymPieces
         if (art.Id != 0) Raylib.UnloadTexture(art);
         art = default;
         builtFor = null;
-        minuteHand = hourHand = waterPool = stillParts = null;
+        minuteHand = hourHand = waterPool = stillParts = poolWater = raft = null;
+        buttons.Clear();
+        rafts.Clear();
         clues.Clear();
     }
 }

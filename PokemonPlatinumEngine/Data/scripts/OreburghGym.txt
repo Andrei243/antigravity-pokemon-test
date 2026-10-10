@@ -25,6 +25,9 @@ script Roark
   clearflag FLAG_HIDE_JUBILIFE_ROWAN
   clearflag FLAG_HIDE_JUBILIFE_GALACTIC_GRUNTS
   setflag FLAG_HIDE_SANDGEM_TOWN_LAB_PROF_ROWAN
+  setflag FLAG_HIDE_POKECENTER_BASEMENT_BLOCKADE
+  setvar VAR_GTS_ACCESS_STATE 1
+  setvar VAR_JUBILIFE_LOOKER_PAL_PAD_STATE 1
 label Tm
   say "Take this too. It's a TM I'm rather proud of."
   give "TM76"

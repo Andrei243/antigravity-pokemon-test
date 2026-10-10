@@ -33,6 +33,18 @@ public abstract class GymPuzzle
     /// <summary>Whether a step onto a tile, going a way, is a hop over it to the tile beyond (Eterna's hour hand).</summary>
     public virtual bool HopsOver(int x, int y, Direction dir) => false;
 
+    /// <summary>
+    /// The height of a floor the puzzle lays over a tile, apart from the room's own plates (the Pastoria Gym's water,
+    /// the original's dynamic height plates); null where it lays none.
+    /// </summary>
+    public virtual float? FloorAt(int x, int y) => null;
+
+    /// <summary>
+    /// Whether the puzzle closes a tile to someone stepping onto it from a height (<c>DynamicMapFeatures_CheckCollision</c>),
+    /// <paramref name="afloat"/> when the step would put them on the puzzle's floor (<see cref="FloorAt"/>).
+    /// </summary>
+    public virtual bool Refuses(Map map, int x, int y, float from, bool afloat) => false;
+
     /// <summary>The puzzle a map file names; null for none.</summary>
     public static GymPuzzle? Create(string? name) => name switch
     {
@@ -41,6 +53,7 @@ public abstract class GymPuzzle
         VeilstoneBags.PuzzleName => new VeilstoneBags(),
         HearthomeDoors.Room1Name => new HearthomeDoors(1),
         HearthomeDoors.Room2Name => new HearthomeDoors(2),
+        PastoriaWater.PuzzleName => new PastoriaWater(),
         _ => throw new ArgumentException($"There is no Gym puzzle called '{name}'.")
     };
 }
