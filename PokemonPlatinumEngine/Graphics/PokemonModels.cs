@@ -651,7 +651,11 @@ internal static partial class PokemonModels
         // Paldea's second batch, Tandemaus to Klawf
         "Tandemaus", "Maushold", "Fidough", "Dachsbun", "Smoliv", "Dolliv", "Arboliva", "Squawkabilly", "Nacli", "Naclstack", "Garganacl",
         "Charcadet", "Armarouge", "Ceruledge", "Tadbulb", "Bellibolt", "Wattrel", "Kilowattrel", "Maschiff", "Mabosstiff", "Shroodle", "Grafaiai",
-        "Bramblin", "Brambleghast", "Toedscool", "Toedscruel", "Klawf"
+        "Bramblin", "Brambleghast", "Toedscool", "Toedscruel", "Klawf",
+        // Paldea's third batch, Capsakid to Dondozo
+        "Capsakid", "Scovillain", "Rellor", "Rabsca", "Flittle", "Espathra", "Tinkatink", "Tinkatuff", "Tinkaton", "Wiglett", "Wugtrio",
+        "Bombirdier", "Finizen", "Palafin", "Varoom", "Revavroom", "Cyclizar", "Orthworm", "Glimmet", "Glimmora", "Greavard", "Houndstone",
+        "Flamigo", "Cetoddle", "Cetitan", "Veluza", "Dondozo"
     };
 
     /// <summary>
@@ -717,6 +721,7 @@ internal static partial class PokemonModels
         "Zacian-Crowned", "Zamazenta-Crowned", "Eternatus-Eternamax", "Urshifu-Rapid-Strike", "Zarude-Dada", "Calyrex-Ice", "Calyrex-Shadow",
         "Ursaluna-Bloodmoon", "Basculegion-Female", "Enamorus-Therian", "Oinkologne-Female",
         "Maushold-Family-Of-Three", "Squawkabilly-Blue-Plumage", "Squawkabilly-Yellow-Plumage", "Squawkabilly-White-Plumage",
+        "Palafin-Hero",
         "Venusaur-Mega", "Charizard-Mega-X", "Charizard-Mega-Y", "Blastoise-Mega", "Beedrill-Mega", "Pidgeot-Mega",
         "Raichu-Mega-X", "Raichu-Mega-Y", "Clefable-Mega", "Alakazam-Mega", "Victreebel-Mega", "Slowbro-Mega", "Gengar-Mega",
         "Kangaskhan-Mega", "Starmie-Mega", "Pinsir-Mega", "Gyarados-Mega", "Aerodactyl-Mega", "Dragonite-Mega", "Mewtwo-Mega-X",
@@ -726,7 +731,7 @@ internal static partial class PokemonModels
         "Garchomp-Mega", "Garchomp-Mega-Z", "Lucario-Mega", "Lucario-Mega-Z", "Abomasnow-Mega", "Gallade-Mega", "Froslass-Mega", "Heatran-Mega", "Darkrai-Mega", "Emboar-Mega", "Excadrill-Mega", "Audino-Mega", "Scolipede-Mega", "Scrafty-Mega", "Eelektross-Mega", "Chandelure-Mega", "Golurk-Mega",
         "Chesnaught-Mega", "Delphox-Mega", "Greninja-Mega", "Pyroar-Mega", "Floette-Mega", "Meowstic-Male-Mega", "Meowstic-Female-Mega",
         "Malamar-Mega", "Barbaracle-Mega", "Dragalge-Mega", "Hawlucha-Mega", "Zygarde-Mega", "Diancie-Mega", "Crabominable-Mega", "Golisopod-Mega", "Drampa-Mega", "Magearna-Mega", "Magearna-Original-Mega",
-        "Zeraora-Mega", "Falinks-Mega",
+        "Zeraora-Mega", "Falinks-Mega", "Scovillain-Mega", "Glimmora-Mega",
         "Venusaur-Gmax", "Charizard-Gmax", "Blastoise-Gmax", "Butterfree-Gmax",
         "Pikachu-Gmax", "Meowth-Gmax", "Machamp-Gmax", "Gengar-Gmax", "Kingler-Gmax", "Lapras-Gmax", "Eevee-Gmax", "Snorlax-Gmax", "Garbodor-Gmax",
         "Melmetal-Gmax", "Rillaboom-Gmax", "Cinderace-Gmax", "Inteleon-Gmax", "Corviknight-Gmax", "Orbeetle-Gmax", "Drednaw-Gmax", "Coalossal-Gmax",
@@ -1794,6 +1799,33 @@ internal static partial class PokemonModels
         "TOEDSCOOL" => Toedscool(),
         "TOEDSCRUEL" => Toedscruel(),
         "KLAWF" => Klawf(),
+        "CAPSAKID" => Capsakid(),
+        "SCOVILLAIN" => Scovillain(),
+        "RELLOR" => Rellor(),
+        "RABSCA" => Rabsca(),
+        "FLITTLE" => Flittle(),
+        "ESPATHRA" => Espathra(),
+        "TINKATINK" => Tinkatink(),
+        "TINKATUFF" => Tinkatuff(),
+        "TINKATON" => Tinkaton(),
+        "WIGLETT" => Wiglett(),
+        "WUGTRIO" => Wugtrio(),
+        "BOMBIRDIER" => Bombirdier(),
+        "FINIZEN" => Finizen(),
+        "PALAFIN" => Palafin(),
+        "VAROOM" => Varoom(),
+        "REVAVROOM" => Revavroom(),
+        "CYCLIZAR" => Cyclizar(),
+        "ORTHWORM" => Orthworm(),
+        "GLIMMET" => Glimmet(),
+        "GLIMMORA" => Glimmora(),
+        "GREAVARD" => Greavard(),
+        "HOUNDSTONE" => Houndstone(),
+        "FLAMIGO" => Flamigo(),
+        "CETODDLE" => Cetoddle(),
+        "CETITAN" => Cetitan(),
+        "VELUZA" => Veluza(),
+        "DONDOZO" => Dondozo(),
         // Platinum's own forms of its Sinnoh species (PokemonModels.Forms.cs)
         "ROTOM-HEAT" => RotomHeat(),
         "ROTOM-WASH" => RotomWash(),
@@ -1965,6 +1997,7 @@ internal static partial class PokemonModels
         "SQUAWKABILLY-BLUE-PLUMAGE" => SquawkabillyBlue(),
         "SQUAWKABILLY-YELLOW-PLUMAGE" => SquawkabillyYellow(),
         "SQUAWKABILLY-WHITE-PLUMAGE" => SquawkabillyWhite(),
+        "PALAFIN-HERO" => PalafinHero(),
         // The Mega Evolutions (PokemonModels.Megas.cs)
         "VENUSAUR-MEGA" => VenusaurMega(),
         "CHARIZARD-MEGA-X" => CharizardMegaX(),
@@ -2059,6 +2092,8 @@ internal static partial class PokemonModels
         "MAGEARNA-ORIGINAL-MEGA" => MagearnaOriginalMega(),
         "ZERAORA-MEGA" => ZeraoraMega(),
         "FALINKS-MEGA" => FalinksMega(),
+        "SCOVILLAIN-MEGA" => ScovillainMega(),
+        "GLIMMORA-MEGA" => GlimmoraMega(),
         // Gigantamax (PokemonModels.Gigantamax.cs), and Pikachu's caps and costumes and the spiky-eared Pichu (PokemonModels.Pikachu.cs)
         "VENUSAUR-GMAX" => VenusaurGmax(),
         "CHARIZARD-GMAX" => CharizardGmax(),

@@ -779,7 +779,11 @@ public class PokemonTests
             // Paldea's second batch, Tandemaus to Klawf
             "Tandemaus", "Maushold", "Fidough", "Dachsbun", "Smoliv", "Dolliv", "Arboliva", "Squawkabilly", "Nacli", "Naclstack", "Garganacl",
             "Charcadet", "Armarouge", "Ceruledge", "Tadbulb", "Bellibolt", "Wattrel", "Kilowattrel", "Maschiff", "Mabosstiff", "Shroodle", "Grafaiai",
-            "Bramblin", "Brambleghast", "Toedscool", "Toedscruel", "Klawf"
+            "Bramblin", "Brambleghast", "Toedscool", "Toedscruel", "Klawf",
+            // Paldea's third batch, Capsakid to Dondozo
+            "Capsakid", "Scovillain", "Rellor", "Rabsca", "Flittle", "Espathra", "Tinkatink", "Tinkatuff", "Tinkaton", "Wiglett", "Wugtrio",
+            "Bombirdier", "Finizen", "Palafin", "Varoom", "Revavroom", "Cyclizar", "Orthworm", "Glimmet", "Glimmora", "Greavard", "Houndstone",
+            "Flamigo", "Cetoddle", "Cetitan", "Veluza", "Dondozo"
         };
         Assert.All(handBuilt, n => Assert.True(PokemonPlatinumEngine.Graphics.PokemonModels.HasModel(n), n));
         Assert.All(handBuilt, n => Assert.NotNull(PokemonDatabase.Get(n)));
