@@ -14,7 +14,7 @@ namespace PokemonPlatinumTests;
 /// The Gyms of plan 01 · M9, part 1, each on the original's plan with its puzzle as the original's gym code makes it
 /// work (<c>src/overlay008/gym_features.c</c>) and its Leader's script played through: the Eterna Gym's flower clock,
 /// the Hearthome Gym's dark rooms and their doors, the Veilstone Gym's punching bags, the Pastoria Gym's water, and of
-/// part 2 the Canalave Gym's lifts and the Snowpoint Gym's ice and snowballs.
+/// part 2 the Canalave Gym's lifts, the Snowpoint Gym's ice and snowballs and the Sunyshore Gym's gears.
 /// </summary>
 [Collection("MapDatabase")]
 public class GymTests
@@ -62,6 +62,9 @@ public class GymTests
         new object[] { "PastoriaGym", 1, 2, 13, 41, "Sinnoh" },
         new object[] { "CanalaveGym", 1, 3, 16, 26, "Sinnoh" },
         new object[] { "SnowpointGym", 1, 3, 11, 28, "Sinnoh" },
+        new object[] { "SunyshoreGym", 1, 3, 8, 14, "Sinnoh" },
+        new object[] { "SunyshoreGymRoom2", 1, 3, 9, 21, "SunyshoreGym" },
+        new object[] { "SunyshoreGymRoom3", 1, 3, 11, 25, "SunyshoreGymRoom2" },
         new object[] { "EternaGym", 1, 3, 11, 27, "Sinnoh" },
         new object[] { "VeilstoneGym", 1, 3, 12, 30, "Sinnoh" },
         new object[] { "HearthomeGym", 1, 3, 4, 8, "Sinnoh" },
@@ -103,6 +106,16 @@ public class GymTests
         new object[] { "SnowpointGym", "snowball_1", 12, 18, Direction.Up },
         new object[] { "SnowpointGym", "snowball_6", 11, 11, Direction.Up },
         new object[] { "SnowpointGym", "snowball_19", 20, 23, Direction.Up },
+        new object[] { "SunyshoreGym", "gym_guide", 11, 13, Direction.Down },
+        new object[] { "SunyshoreGym", "school_kid_tiera", 6, 4, Direction.Right },
+        new object[] { "SunyshoreGymRoom2", "school_kid_forrest", 4, 5, Direction.Up },
+        new object[] { "SunyshoreGymRoom2", "guitarist_jerry", 14, 11, Direction.Down },
+        new object[] { "SunyshoreGymRoom2", "poke_kid_meghan", 12, 4, Direction.Down },
+        new object[] { "SunyshoreGymRoom3", "volkner", 11, 3, Direction.Down },
+        new object[] { "SunyshoreGymRoom3", "ace_trainer_destiny", 4, 23, Direction.Right },
+        new object[] { "SunyshoreGymRoom3", "guitarist_preston", 3, 3, Direction.Down },
+        new object[] { "SunyshoreGymRoom3", "guitarist_lonnie", 16, 23, Direction.Down },
+        new object[] { "SunyshoreGymRoom3", "ace_trainer_zachery", 21, 10, Direction.Left },
         new object[] { "OreburghGym", "youngster_jonathon", 4, 18, Direction.Right },
         new object[] { "OreburghGym", "youngster_darius", 7, 11, Direction.Left },
         new object[] { "EternaGym", "gym_guide", 9, 25, Direction.Down },
@@ -1130,6 +1143,376 @@ public class GymTests
         Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM72")!));
     }
 
+
+    // ------------------------------------------------------------------ the Sunyshore Gym
+
+    /// <summary>
+    /// The original's three rooms (<c>tools/MapImporter -- --room sunyshore_city_gym_room_N</c>, lands 296 to 298): each
+    /// row from its first column given, '#' or a capital letter blocked, '.' or a small letter open. The rooms' own
+    /// grids are these, but for the four columns of the top row of the third room that no height plate covers (7, 8, 14
+    /// and 15), which the original's walker can't step onto (the ground there is no height at all, a drop), and which
+    /// are solid here.
+    /// </summary>
+    private static readonly (string Room, int Left, int Top, string[] Rows)[] SunyshorePlans =
+    {
+        ("SunyshoreGym", 1, 2, new[]
+        {
+            "#######a#######",
+            "BBBBBbbbbbBBBBB",
+            "BBBBBbbbbbBBBBB",
+            "BBBBBbbbbbBBBBB",
+            "B#.#BB#.#BB#.#B",
+            "##.####.####.##",
+            "...............",
+            "##.####.####.##",
+            "B#.#BB#.#BB#.#B",
+            "BBBBBbbbbbbbbbb",
+            "BBBBB#bbb#bbbbb",
+            "BBBBBbbbbbbbbbb",
+            "BBBBBb.c.bbbbbb"
+        }),
+        ("SunyshoreGymRoom2", 0, 0, new[]
+        {
+            "##################",
+            "##################",
+            "#########a########",
+            "#bbbbbb..........#",
+            "#bbbbbb..........#",
+            "#bbbbbb..........#",
+            "#bbbB#.#BB#.#B#b##",
+            "#bbb##.####.###b##",
+            "#bbb..........#b##",
+            "#...##.####.###b##",
+            "#...B#.#BB#.#B#b##",
+            "##b#B#.#BB#.#Bb..#",
+            "##b###.####.##bbb#",
+            "##b#..........bbb#",
+            "##b###.####.##bbb#",
+            "##b#B#.#BB#.#Bbbb#",
+            "#...bbbbbbbbbbBBB#",
+            "#...bbbbbbbbbbBBB#",
+            "#bbbbbbbbbbbbbBBB#",
+            "#bbbbbbbbbbbbbBBB#",
+            "#bbbbbbbbbbbbbBBB#",
+            "#bbbbbbb.c.bbbBBB#"
+        }),
+        ("SunyshoreGymRoom3", 1, 3, new[]
+        {
+            ".....................",
+            ".....................",
+            ".....................",
+            "aaa##.####.####.##aaa",
+            "aaa##.####.####.##aaa",
+            "aaa...............aaa",
+            "...##.####.####.##...",
+            "...##.####.####.##...",
+            "#a###.####.####.###a#",
+            "#a###.####.####.###a#",
+            "#a#...............#a#",
+            "#a###.####.####.###a#",
+            "#a###.####.####.###a#",
+            "#a#A#.#AA#.#AA#.#A#a#",
+            "#a###.####.####.###a#",
+            "#a#...............#a#",
+            "#a###.####.####.###a#",
+            "#a#A#.#AA#.#AA#.#A#a#",
+            "...aaaaAAaaaaaaaaa...",
+            "aaaaaaaAAaaaaaaaaaaaa",
+            "aaaaaaaAAaaaaaaaaaaaa",
+            "aaaaaaaAAaaaaaaaaaaaa",
+            "aaaaaaaAA.b.aaaaaaaaa"
+        })
+    };
+
+    /// <summary>
+    /// The original's height plates of each room (x, z, width, depth, height at the north-west corner, rise southward),
+    /// in tiles, as the importer prints them.
+    /// </summary>
+    private static readonly Dictionary<string, (float X, float Z, float W, float D, float H, float SlopeZ)[]> SunyshorePlates = new()
+    {
+        ["SunyshoreGym"] = new (float, float, float, float, float, float)[]
+        {
+            (6, 3, 5, 3, 1, 0), (6, 6, 5, 5, 1, 0), (6, 11, 5, 4, 1, 0), (11, 11, 5, 4, 1, 0), (11, 6, 5, 5, 1, 0), (1, 6, 5, 5, 1, 0),
+            (8, 2, 1, 1, 1, 0), (1, 11, 5, 4, 0, 0), (1, 3, 5, 3, 0, 0), (11, 3, 5, 3, 0, 0)
+        },
+        ["SunyshoreGymRoom2"] = new (float, float, float, float, float, float)[]
+        {
+            (15, 15, 2, 1, 1, 0), (14, 15, 1, 1, 1, 0), (4, 15, 10, 1, 1, 0), (10, 2.625f, 7, 3.375f, 4, 0), (9, 2.625f, 1, 3.375f, 4, 0),
+            (7, 2.625f, 2, 3.375f, 4, 0), (14, 11, 1, 4, 1, 0), (4, 11, 10, 4, 1, 0), (1, 21, 3, 1, 1, 0), (4, 21, 10, 1, 1, 0),
+            (4, 2.625f, 3, 3.375f, 1, 0), (1, 2.625f, 3, 3.375f, 1, 0), (9, 1.625f, 1, 1, 4, 0), (15, 6, 1, 5, 4, 0), (2, 11, 1, 5, 4, 0),
+            (4, 6, 10, 5, 1, 0), (14, 16, 3, 6, 0, 0), (15, 12, 2, 3, 4, -1), (15, 11, 2, 1, 4, 0), (4, 16, 10, 5, 1, 0),
+            (1, 18, 3, 3, 4.0006f, -1), (1, 16, 3, 2, 4, 0), (1, 9, 3, 2, 4, 0), (1, 6, 3, 3, 1.0012f, 1)
+        },
+        ["SunyshoreGymRoom3"] = new (float, float, float, float, float, float)[]
+        {
+            (1, 25, 3, 1, 1, 0), (4, 25, 4, 1, 1, 0), (1, 6, 3, 3, 6.9997f, -1), (1, 2.625f, 3, 3.375f, 7, 0), (19, 6, 3, 3, 6.9997f, -1),
+            (19, 9, 3, 1.75f, 4, 0), (16, 2.625f, 3, 3.375f, 7, 0), (19, 2.625f, 3, 3.375f, 7, 0), (19, 25, 3, 1, 1, 0), (10, 25, 9, 1, 1, 0),
+            (20, 10.75f, 1, 10.5f, 4, 0), (2, 10.75f, 1, 10.5f, 4, 0), (10, 16, 9, 5.25f, 1, 0), (4, 16, 4, 5.25f, 1, 0), (8, 16, 2, 5.25f, 1, 0),
+            (8, 21.25f, 2, 4.75f, 0, 0), (1, 9, 3, 1.75f, 4, 0), (9, 2.625f, 5, 3.375f, 7, 0), (4, 2.625f, 3, 3.375f, 7, 0),
+            (19, 22, 3, 3, 4.0011f, -1), (19, 21.25f, 3, 0.75f, 4, 0), (4, 21.25f, 4, 3.75f, 1, 0), (1, 22, 3, 3, 4.0011f, -1),
+            (1, 21.25f, 3, 0.75f, 4, 0), (4, 6, 15, 10, 7, 0), (10, 21.25f, 9, 3.75f, 1, 0)
+        }
+    };
+
+    /// <summary>The original's height at a tile's middle, or null where no plate covers it.</summary>
+    private static float? SunyshoreHeight(string room, int x, int y)
+    {
+        float mx = x + 0.5f, mz = y + 0.5f;
+        foreach (var (px, pz, w, d, h, slope) in SunyshorePlates[room])
+            if (mx >= px && mx <= px + w && mz >= pz && mz <= pz + d) return h + (mz - pz) * slope;
+        return null;
+    }
+
+    [Fact]
+    public void TheSunyshoreGymsRoomsAreTheOriginalsTilesAndHeights()
+    {
+        foreach (var (name, left, top, rows) in SunyshorePlans)
+        {
+            var map = Room(name);
+            Assert.IsType<SunyshoreGears>(map.Puzzle);
+            Assert.Equal(PokemonType.Electric, map.ArenaType);
+            Assert.True(map.HasRelief, name);
+            for (int r = 0; r < rows.Length; r++)
+                for (int c = 0; c < rows[r].Length; c++)
+                {
+                    int x = left + c, y = top + r;
+                    char t = rows[r][c];
+                    bool blocked = t == '#' || char.IsUpper(t);
+                    float? height = SunyshoreHeight(name, x, y);
+                    bool gap = !blocked && height == null;
+                    Assert.True(blocked || gap == (name == "SunyshoreGymRoom3" && y is >= 3 and <= 5 && x is 7 or 8 or 14 or 15),
+                        $"{name}: ({x}, {y}) is open in the original with no plate under it");
+                    Assert.True(map.IsSolid(x, y) == (blocked || gap), $"{name}: ({x}, {y}) should be {(blocked || gap ? "solid" : "open")}");
+                    if (!blocked && !gap) Assert.True(System.MathF.Abs(map.HeightAt(x, y) - height!.Value) < 0.01f,
+                        $"{name}: ({x}, {y}) stands at {map.HeightAt(x, y)}, the original's plate at {height}");
+                }
+            // Where the original has a gear, the room draws nothing of its own: the gear is drawn over the dark
+            foreach (var gear in SunyshoreGears.Gears[((SunyshoreGears)map.Puzzle!).Room])
+                foreach (var (x, y) in SunyshoreGears.ReachOf(gear).Append((gear.X, gear.Y)))
+                {
+                    Assert.Equal(TileType.Void, map.GetGroundTile(x, y));
+                    Assert.Equal(gear.Walkway, map.HeightAt(x, y));
+                }
+        }
+    }
+
+    /// <summary>
+    /// The original's tables of what each state closes (<c>sSunyshoreCollisionLists</c>) are the gears' walkways as their
+    /// shapes and turns make them (<c>sSunyshoreRoomGears</c>): in every room and state, a tile a gear can reach is closed
+    /// exactly when none of its walkways is there; a flat gear's hub is never closed (a gear on edge's is the middle of its
+    /// bar); and each region is one arm of one gear, or the column of one gear on edge.
+    /// </summary>
+    [Fact]
+    public void EachSunyshoreGearsWalkwaysAtEachTurnAreTheOriginalsTable()
+    {
+        for (int room = 0; room < 3; room++)
+        {
+            var gears = SunyshoreGears.Gears[room];
+            foreach (var region in SunyshoreGears.Regions[room])
+                Assert.Single(gears, g => Enumerable.Range(region.X, region.Width).All(x => Enumerable.Range(region.Y, region.Depth)
+                    .All(y => SunyshoreGears.ReachOf(g).Contains((x, y)))));
+            for (int state = 0; state < SunyshoreGears.States; state++)
+            {
+                var there = gears.SelectMany(g => SunyshoreGears.WalkwaysOf(g, state)).ToHashSet();
+                foreach (var g in gears)
+                {
+                    if (!g.OnEdge) Assert.False(SunyshoreGears.Closes(room, state, g.X, g.Y), $"room {room + 1}: the hub at ({g.X}, {g.Y}) closes");
+                    foreach (var tile in SunyshoreGears.ReachOf(g))
+                        Assert.True(SunyshoreGears.Closes(room, state, tile.X, tile.Y) != there.Contains(tile),
+                            $"room {room + 1}, state {state}: ({tile.X}, {tile.Y}) is {(there.Contains(tile) ? "a walkway" : "no walkway")} but the table {(SunyshoreGears.Closes(room, state, tile.X, tile.Y) ? "closes" : "opens")} it");
+                }
+            }
+        }
+        // The first room as the field has it: the middle gear's arms point east and south as the player comes in
+        var first = new SunyshoreGears(0);
+        Assert.Equal(new[] { (9, 8), (10, 8), (8, 9), (8, 10) }.ToHashSet(), SunyshoreGears.WalkwaysOf(SunyshoreGears.Gears[0][1], 0).ToHashSet());
+        Assert.True(first.Refuses(null!, 7, 8, 1f, false));
+        Assert.False(first.Refuses(null!, 9, 8, 1f, false));
+    }
+
+    [Fact]
+    public void TheSunyshoreGearsTurnAtTheOriginalsPaceEachTheirOwnWay()
+    {
+        var gears = new SunyshoreGears(0);
+        // A quarter turn on: the state moves on as the button is pressed, and the gears take sixteen frames to get there
+        var turn = gears.Press(SunyshoreGears.Button.Normal);
+        Assert.Equal(1, gears.State);
+        Assert.Equal(16f / 30f, turn.Duration, 4);
+        gears.Update(8f / 30f);
+        // Halfway: the first gear (counter-clockwise from a quarter) at 135 degrees, the second (clockwise from a half) at 135
+        Assert.Equal(135f, gears.AngleOf(0), 2);
+        Assert.Equal(135f, gears.AngleOf(1), 2);
+        gears.Update(8f / 30f);
+        Assert.Null(gears.Turning);
+        Assert.Equal(180f, gears.AngleOf(0), 2);
+        Assert.Equal(90f, gears.AngleOf(1), 2);
+        // A quarter back from nought is the last state; a half on takes twice as long
+        gears.Set(0);
+        gears.Press(SunyshoreGears.Button.Reverse);
+        Assert.Equal(3, gears.State);
+        gears.Update(4f / 30f);
+        Assert.Equal(90f - 22.5f, gears.AngleOf(0), 2);
+        gears.Finish();
+        Assert.Equal(1, SunyshoreGears.After(3, SunyshoreGears.Button.Double));
+        Assert.Equal(32f / 30f, gears.Press(SunyshoreGears.Button.Double).Duration, 4);
+        Assert.Equal(1, gears.State);
+
+        // Coming in by a room's door from the room before, the first state; from the room beyond, the one that leads back
+        var map = Room("SunyshoreGymRoom2");
+        var second = (SunyshoreGears)map.Puzzle!;
+        second.ArriveAt(map, new StoryState(), new System.Random(0), 9, 21);
+        Assert.Equal(0, second.State);
+        second.ArriveAt(map, new StoryState(), new System.Random(0), 9, 3);
+        Assert.Equal(1, second.State);
+        Assert.Equal(new[] { 2, 1, 0 }, SunyshoreGears.BackState);
+    }
+
+    /// <summary>
+    /// Every place someone on foot can come to in a room of the Sunyshore Gym from a tile, the gears in a state, by the
+    /// field's own rules: a step onto a button's tile (the room's own trigger) turns them, as the original's coordinate
+    /// events do. Without <paramref name="pressing"/> the gears never turn.
+    /// </summary>
+    private static Dictionary<(int X, int Y, int State), (int X, int Y, int State)?> TurnThrough(Map map, int x, int y, int state, bool pressing = true)
+    {
+        var gears = (SunyshoreGears)map.Puzzle!;
+        var start = (x, y, state);
+        var from = new Dictionary<(int X, int Y, int State), (int X, int Y, int State)?> { [start] = null };
+        var queue = new Queue<(int X, int Y, int State)>();
+        queue.Enqueue(start);
+        while (queue.Count > 0)
+        {
+            var here = queue.Dequeue();
+            gears.Set(here.State);
+            foreach (var dir in new[] { Direction.Up, Direction.Down, Direction.Left, Direction.Right })
+            {
+                var step = FieldMovement.Step(map, here.X, here.Y, dir, new Walker(TravelMode.OnFoot, map.HeightAt(here.X, here.Y)));
+                if (!step.Moves) continue;
+                int next = here.State;
+                if (pressing && gears.ButtonAt(step.X, step.Y) is { } kind)
+                {
+                    Assert.NotNull(FieldScripts.TriggerAt(map, step.X, step.Y, new StoryState()));
+                    next = SunyshoreGears.After(next, kind);
+                }
+                if (from.TryAdd((step.X, step.Y, next), here)) queue.Enqueue((step.X, step.Y, next));
+            }
+        }
+        gears.Set(0);
+        return from;
+    }
+
+    [Theory]
+    [InlineData("SunyshoreGym", 8, 14, 8, 2)]
+    [InlineData("SunyshoreGymRoom2", 9, 21, 9, 2)]
+    [InlineData("SunyshoreGymRoom3", 11, 25, 11, 4)]
+    public void EachSunyshoreRoomsGearsLeadFromItsDoorOnByTheButtonsAndBack(string name, int x, int y, int toX, int toY)
+    {
+        var map = Room(name);
+        var gears = (SunyshoreGears)map.Puzzle!;
+        var ways = TurnThrough(map, x, y, 0);
+        Assert.Contains(ways.Keys, k => (k.X, k.Y) == (toX, toY));
+        // Every trainer, the guide and Volkner can be walked up to
+        var reach = ways.Keys.Select(k => (k.X, k.Y)).ToHashSet();
+        foreach (var who in map.Everyone)
+            Assert.True(CanTalkTo(reach, who), $"{name}: {who.Key} can't be walked up to");
+        // Nobody stands on a walkway that isn't there, nor in anything solid
+        Assert.DoesNotContain(ways.Keys, k => SunyshoreGears.Closes(gears.Room, k.State, k.X, k.Y) || map.IsSolid(k.X, k.Y));
+        // The way on takes the buttons: with the gears as they are laid out, it can't be had
+        var stuck = TurnThrough(map, x, y, 0, pressing: false);
+        Assert.DoesNotContain(stuck.Keys, k => (k.X, k.Y) == (toX, toY));
+        // Coming back from the room beyond (in front of its door, the gears laid out to lead back), the door is reached again
+        if (map.Warps.FirstOrDefault(w => w.SourceY == 2) is { } door)
+        {
+            gears.ArriveAt(map, new StoryState(), new System.Random(0), door.SourceX, door.SourceY + 1);
+            var back = TurnThrough(map, door.SourceX, door.SourceY + 1, gears.State);
+            Assert.Contains(back.Keys, k => (k.X, k.Y) == (x, y));
+            gears.Set(0);
+        }
+    }
+
+    /// <summary>
+    /// Each button shows the way the gear under it turns when pressed, as the original's button props do: its land data
+    /// puts model 465 on a hub whose gear turns counter-clockwise, 466 where it turns clockwise, and 467 where the
+    /// button is a half turn (<c>tools/MapImporter -- --room</c>).
+    /// </summary>
+    [Fact]
+    public void EachSunyshoreButtonShowsTheWayItsGearTurnsAsTheOriginalsModelDoes()
+    {
+        var models = new Dictionary<(int Room, int X, int Y), int>
+        {
+            [(0, 3, 8)] = 465, [(0, 13, 8)] = 465,
+            [(1, 11, 8)] = 465, [(1, 6, 8)] = 466, [(1, 6, 13)] = 466,
+            [(2, 6, 8)] = 465, [(2, 16, 13)] = 466, [(2, 6, 18)] = 467, [(2, 16, 18)] = 467
+        };
+        for (int room = 0; room < 3; room++)
+            foreach (var (x, y, kind) in SunyshoreGears.Buttons[room])
+            {
+                var gear = SunyshoreGears.Gears[room].Single(g => (g.X, g.Y) == (x, y));
+                int shown = kind == SunyshoreGears.Button.Double ? 467 : SunyshoreGears.Sense(gear, kind) > 0 ? 465 : 466;
+                Assert.Equal(models[(room, x, y)], shown);
+            }
+    }
+
+    [Fact]
+    public void TheSunyshoreGymsButtonsAreTheRoomsOwnTriggers()
+    {
+        var game = new OpeningTests.Game(0);
+        foreach (var (name, room) in new[] { ("SunyshoreGym", 0), ("SunyshoreGymRoom2", 1), ("SunyshoreGymRoom3", 2) })
+        {
+            game.Arrive(name, 1, 1);
+            var gears = (SunyshoreGears)game.Map.Puzzle!;
+            gears.Set(0);
+            // Each of the original's coordinate events is a button of the puzzle's table, on a gear's hub
+            Assert.Equal(SunyshoreGears.Buttons[room].Select(b => (b.X, b.Y)).OrderBy(b => b).ToList(),
+                game.Map.Triggers.Select(t => (t.X, t.Y)).OrderBy(b => b).ToList());
+            Assert.All(SunyshoreGears.Buttons[room], b => Assert.Contains(SunyshoreGears.Gears[room], g => (g.X, g.Y) == (b.X, b.Y)));
+            // A step onto one presses it, every time (the variable it goes by stays at nought)
+            foreach (var script in game.Map.Triggers.Select(t => t.Script).Distinct())
+            {
+                var kind = gears.ButtonAt(game.Map.Triggers.First(t => t.Script == script).X, game.Map.Triggers.First(t => t.Script == script).Y)!.Value;
+                int before = gears.State;
+                Assert.Contains($"gearbutton {kind.ToString().ToLowerInvariant()}", game.Step(script).Log);
+                Assert.Equal(SunyshoreGears.After(before, kind), gears.State);
+                Assert.True(game.Fires(script));
+            }
+            gears.Set(0);
+        }
+    }
+
+    [Fact]
+    public void TheSunyshoreGymPlaysThroughToTheBeaconBadge()
+    {
+        var game = new OpeningTests.Game(0);
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Garchomp")!, 55));
+        game.Arrive("SunyshoreGym", 8, 14);
+        Assert.Contains(game.Talk("gym_guide").Transcript, l => l.Text.Contains("Electric"));
+        Assert.DoesNotContain(game.Play(Scripts.Find("GymStatue", "SunyshoreGym")!).Transcript, l => l.Text.Contains("Certified"));
+        Assert.Contains(game.Talk("school_kid_tiera").Log, l => l.StartsWith("battle school_kid_tiera Won"));
+        game.Through("SunyshoreGymRoom2");
+        Assert.Contains(game.Talk("guitarist_jerry").Log, l => l.StartsWith("battle guitarist_jerry Won"));
+        game.Through("SunyshoreGymRoom3");
+
+        var gym = game.Talk("volkner");
+        Assert.Contains("battle leader_volkner Won", gym.Log);
+        Assert.True(game.Story.HasBadge(Badge.Beacon));
+        Assert.Equal(Badge.Beacon, FieldMoveRules.BadgeFor(FieldMove.Waterfall));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM57")!));
+        Assert.True(game.Story.Has("FLAG_RECEIVED_VOLKNER_TM57"));
+        Assert.Equal(2, game.Story.Var("VAR_SUNYSHORE_CITY_STATE"));
+        // His trainers count as beaten, those not yet fought too
+        foreach (var id in new[] { "ace_trainer_zachery", "ace_trainer_destiny", "guitarist_jerry", "guitarist_preston", "guitarist_lonnie",
+                     "poke_kid_meghan", "school_kid_forrest", "school_kid_tiera" })
+            Assert.True(game.Story.HasDefeated(id), id);
+        Assert.DoesNotContain(game.Talk("ace_trainer_zachery").Log, l => l.StartsWith("battle"));
+        Assert.DoesNotContain(game.Talk("volkner").Log, l => l.StartsWith("battle"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM57")!));
+        // The statues name the player once the Badge is won (the rival comes with his own win, plan 02 · S13)
+        game.Through("SunyshoreGymRoom2");
+        game.Through("SunyshoreGym");
+        var statue = game.Play(Scripts.Find("GymStatue", "SunyshoreGym")!).Transcript;
+        Assert.Contains(statue, l => l.Text.Contains("Certified"));
+        Assert.DoesNotContain(statue, l => l.Text.Contains(OpeningTests.Game.Rival));
+    }
+
     // ------------------------------------------------------------------ the doors from the cities
 
     [Theory]
@@ -1140,6 +1523,7 @@ public class GymTests
     [InlineData("HearthomeGym")]
     [InlineData("CanalaveGym")]
     [InlineData("SnowpointGym")]
+    [InlineData("SunyshoreGym")]
     public void EachGymsDoorLeadsInFromItsCityAndBackOut(string gym)
     {
         var world = MapDatabase.Get("Sinnoh");

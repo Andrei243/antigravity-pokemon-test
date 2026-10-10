@@ -119,6 +119,8 @@ internal static class GroundBaker
         PokemonType.Rock or PokemonType.Steel => (Rgb(176, 160, 142), Rgb(162, 146, 128), Rgb(118, 104, 92)),
         // The Snowpoint Gym's: frosted tiles of pale blue
         PokemonType.Ice => (Rgb(222, 234, 246), Rgb(206, 222, 240), Rgb(150, 176, 212)),
+        // The Sunyshore Gym's: plates of steel, a power station's floor
+        PokemonType.Electric => (Rgb(150, 160, 182), Rgb(138, 148, 170), Rgb(92, 100, 124)),
         _ => (Rgb(236, 232, 214), Rgb(222, 216, 196), Rgb(172, 164, 140))
     };
 
@@ -249,6 +251,8 @@ internal static class GroundBaker
         PokemonType.Steel => (Rgb(164, 170, 182), Rgb(146, 152, 166), Tone.Of(176, 58, 50), Tone.Of(214, 220, 228), Tone.Of(90, 94, 106)),
         // Snowpoint's: frost white over a wainscot of glacier blue
         PokemonType.Ice => (Rgb(226, 236, 248), Rgb(204, 220, 242), Tone.Of(92, 142, 204), Tone.Of(244, 248, 254), Tone.Of(56, 92, 150)),
+        // Sunyshore's: night blue with a motif and a rail of electric yellow, over a wainscot of steel
+        PokemonType.Electric => (Rgb(54, 64, 104), Rgb(236, 206, 84), Tone.Of(118, 126, 148), Tone.Of(236, 206, 84), Tone.Of(40, 46, 70)),
         _ => (Rgb(238, 240, 244), Rgb(224, 228, 236), Tone.Of(150, 160, 186), Tone.Of(250, 250, 252), Tone.Of(96, 104, 128))
     };
 

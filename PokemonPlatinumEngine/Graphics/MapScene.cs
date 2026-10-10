@@ -460,34 +460,41 @@ internal sealed class MapScene
 
         // In a room only the floor has faces, and only toward more of the floor: its walls stand on its highest ground
         bool Drawn(int x, int y) => !Map.IsIndoors || Map.InBounds(x, y) && IsInteriorFloor(x, y, Map.GetGroundTile(x, y));
+        var hall = HallFace(batches);
+        // A room's void is the dark under a Gym's pieces (the Sunyshore Gym's gears): a floor's face beside it runs down
+        // to the room's lowest ground, whatever walkway lies level with the floor there, so the floor reads as a deck
+        float? dark = Map.IsIndoors ? Darkest() : null;
+        (float NW, float NE, float SW, float SE) Beyond(int x, int y) =>
+            dark is { } d && TypeAt(x, y) == TileType.Void ? (d, d, d, d) : Relief.Corners(Map, x, y);
 
         for (int ty = ground.Y; ty < ground.Bottom; ty++)
             for (int tx = ground.X; tx < ground.Right; tx++)
             {
                 if (!Map.InBounds(tx, ty) || !Drawn(tx, ty)) continue;
-                // The void has no ground, so no edge of its own: only an island's edge over it shows
-                if (under != null && TypeAt(tx, ty) == TileType.Void) continue;
+                // The void has no ground, so no edge of its own: only an island's edge over it shows. Nor has a room's:
+                // what stands over it is a Gym's own piece (the Sunyshore Gym's gears), drawn apart
+                if ((under != null || Map.IsIndoors) && TypeAt(tx, ty) == TileType.Void) continue;
                 var (nw, ne, sw, se) = Relief.Corners(Map, tx, ty);
-                var face = IsRocky(Map.GetGroundTile(tx, ty)) ? rock : earth;
+                var face = IsRocky(Map.GetGroundTile(tx, ty)) ? rock : hall ?? earth;
 
                 // Each edge against the matching edge of the tile beyond it; a face that would look north is never seen
                 float wide = face == rock ? NatureArt.RockFaceTiles : 1f;
                 bool island = under != null && TypeAt(tx, ty) != TileType.Void;
                 if (Map.InBounds(tx, ty + 1) && Drawn(tx, ty + 1))
                 {
-                    var s = Relief.Corners(Map, tx, ty + 1);
+                    var s = Beyond(tx, ty + 1);
                     if (island && Over(tx, ty + 1)) Underside(under!, new(tx, 0, ty + 1), sw, new(tx + 1, 0, ty + 1), se, South, tx);
                     else Face(face, new(tx, 0, ty + 1), sw, s.NW, new(tx + 1, 0, ty + 1), se, s.NE, South, tx, wide);
                 }
                 if (Map.InBounds(tx + 1, ty) && Drawn(tx + 1, ty))
                 {
-                    var e = Relief.Corners(Map, tx + 1, ty);
+                    var e = Beyond(tx + 1, ty);
                     if (island && Over(tx + 1, ty)) Underside(under!, new(tx + 1, 0, ty + 1), se, new(tx + 1, 0, ty), ne, Vector3.UnitX, ty);
                     else Face(face, new(tx + 1, 0, ty + 1), se, e.SW, new(tx + 1, 0, ty), ne, e.NW, Vector3.UnitX, ty, wide);
                 }
                 if (Map.InBounds(tx - 1, ty) && Drawn(tx - 1, ty))
                 {
-                    var w = Relief.Corners(Map, tx - 1, ty);
+                    var w = Beyond(tx - 1, ty);
                     if (island && Over(tx - 1, ty)) Underside(under!, new(tx, 0, ty), nw, new(tx, 0, ty + 1), sw, -Vector3.UnitX, ty);
                     else Face(face, new(tx, 0, ty), nw, w.NE, new(tx, 0, ty + 1), sw, w.SE, -Vector3.UnitX, ty, wide);
                 }
@@ -503,6 +510,21 @@ internal sealed class MapScene
                     if (Relief.Deck(Map, tx - 1, ty) == null) Beam(new(tx, 0, ty), new(tx, 0, ty + 1), -Vector3.UnitX);
                 }
             }
+    }
+
+    /// <summary>The lowest drawn ground of a room, or null where it has no void to stand over.</summary>
+    private float? Darkest()
+    {
+        float? low = null;
+        bool any = false;
+        for (int ty = 0; ty < Map.Height; ty++)
+            for (int tx = 0; tx < Map.Width; tx++)
+            {
+                if (Map.GetGroundTile(tx, ty) == TileType.Void) any = true;
+                float h = Relief.At(Map, tx + 0.5f, ty + 0.5f);
+                if (low == null || h < low) low = h;
+            }
+        return any ? low : null;
     }
 
     /// <summary>
@@ -930,6 +952,13 @@ internal sealed class MapScene
     }
 
     /// <summary>
+    /// The face a Gym's hall stands on where its leader's colours give it one of its own (style guide, "Gyms"): the
+    /// Sunyshore Gym's floors are decks of steel over the dark. Null for the rest, whose floors stand on earth.
+    /// </summary>
+    private MeshBuilder? HallFace(MeshBatches batches) =>
+        Map.Interior == InteriorStyle.Gym && Map.ArenaType == Data.PokemonType.Electric ? batches.For(SceneTextures.PowerFace) : null;
+
+    /// <summary>
     /// The ground's face under a room's back and side walls where the floor beside them lies lower than the walls'
     /// foot: rock under rocky ground, earth under the rest, as the faces between the floor's own levels.
     /// </summary>
@@ -937,13 +966,16 @@ internal sealed class MapScene
     {
         var earth = batches.For(SceneTextures.BankFace);
         var rock = batches.For(SceneTextures.RockFace);
+        var hall = HallFace(batches);
+        // Beside a Gym's void the wall runs down to the room's lowest ground, as a floor's face does (AddFaces)
+        float? dark = Darkest();
         int w = Map.Width, h = Map.Height;
         for (int ty = by; ty < h - 1; ty++)
             for (int tx = lx; tx < w - 1; tx++)
             {
-                var face = IsRocky(Map.GetGroundTile(tx, ty)) ? rock : earth;
+                var face = IsRocky(Map.GetGroundTile(tx, ty)) ? rock : hall ?? earth;
                 float wide = face == rock ? NatureArt.RockFaceTiles : 1f;
-                var (nw, ne, sw, se) = Relief.Corners(Map, tx, ty);
+                var (nw, ne, sw, se) = dark is { } d && Map.GetGroundTile(tx, ty) == TileType.Void ? (d, d, d, d) : Relief.Corners(Map, tx, ty);
                 if (ty == by) Face(face, new(tx, 0, ty), foot, nw, new(tx + 1, 0, ty), foot, ne, South, tx, wide);
                 if (tx == lx) Face(face, new(tx, 0, ty + 1), foot, sw, new(tx, 0, ty), foot, nw, Vector3.UnitX, ty, wide);
                 if (tx == w - 2) Face(face, new(tx + 1, 0, ty), foot, ne, new(tx + 1, 0, ty + 1), foot, se, -Vector3.UnitX, ty, wide);

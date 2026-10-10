@@ -278,11 +278,12 @@ The couple's scripts are `common.DayCareMan` and `common.DayCareLady`.
 
 ### Gyms
 
-Plan 01 · M9. A Gym's puzzle is the room's own (`puzzle` in its map file, `GymPuzzle`): the Hearthome Gym's doors are chosen and the Veilstone Gym's bags and tyres laid out as the player comes in, and a bag is kicked by facing it and pressing the button, all with no script. What a script does to a puzzle is here.
+Plan 01 · M9. A Gym's puzzle is the room's own (`puzzle` in its map file, `GymPuzzle`): the Hearthome Gym's doors are chosen, the Veilstone Gym's bags and tyres and the Sunyshore Gym's gears laid out as the player comes in, and a bag is kicked by facing it and pressing the button, all with no script. What a script does to a puzzle is here.
 
 | Command | What it does |
 |---|---|
 | `pressbutton blue` | The Pastoria Gym's water sets off for the level of a button's colour, `blue` (four tiles), `green` (two) or `orange` (nought), and the script waits while it moves (the original's `PressPastoriaGymButton`; `PastoriaWater`). The room's coordinate events run it as the player steps on a button. |
+| `gearbutton normal` | Every gear of the Sunyshore Gym's room turns together, each its own way: `normal` a quarter on, `reverse` a quarter back, `double` a half on, and the script waits while they turn (the original's `PressSunyshoreGymButton`; `SunyshoreGears`). The room's coordinate events run it as the player steps on the button on a gear's hub, every time. |
 | `flowerclock` | Turns the Eterna Gym's flower clock on to its next time (`VAR_ETERNA_GYM_FLOWER_CLOCK_STATE`, the original's `AdvanceEternaGymClock`; `EternaClock`) and waits while its hands turn and a fountain drains, the camera on them; `camera release` brings it back. `RESULT` is 0 where the clock is at its last time already, 1 when it turned, 2 when a fountain drained too. |
 
 ### Field moves and key items

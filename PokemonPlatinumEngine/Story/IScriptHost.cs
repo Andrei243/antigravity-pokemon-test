@@ -173,6 +173,12 @@ public interface IScriptHost
     void PressButton(PastoriaWater.Button button);
 
     /// <summary>
+    /// A button of the Sunyshore Gym is stepped on (<c>PressSunyshoreGymButton</c>): every gear of the room turns on a
+    /// quarter, back a quarter or on a half (<see cref="SunyshoreGears"/>); the script waits while they turn (<see cref="Busy"/>).
+    /// </summary>
+    void PressGearButton(SunyshoreGears.Button kind);
+
+    /// <summary>
     /// Someone of the map starts travelling with the player, walking behind and battling beside them as the trainer
     /// of Platinum's data <paramref name="trainerId"/> (plan 02 · S6, <see cref="Follower"/>); null for both and they
     /// stop.

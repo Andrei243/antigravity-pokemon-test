@@ -64,6 +64,7 @@ public static partial class SoundBank
         Add("lift", SoundGroup.Field, "SEQ_SE_DP_ELEBETA", "A platform of the Canalave Gym sets off with the player on it.");
         Add("lift_stop", SoundGroup.Field, "SEQ_SE_DP_KI_GASYAN", "The platform comes to its end and locks in place.");
         Add("snowball", SoundGroup.Field, "SEQ_SE_DP_FW291", "A snowball of the Snowpoint Gym bursts as the player slides into it.");
+        Add("gears", SoundGroup.Field, "SEQ_SE_DP_GAGAGA", "The Sunyshore Gym's gears grind round as the player steps on a button.");
         Add("thunder", SoundGroup.Field, "SEQ_SE_DP_T_KAMI2", "Thunder cracking close, just after a storm's lightning (two strikes of three).");
         Add("thunder_rumble", SoundGroup.Field, "SEQ_SE_DP_T_KAMI", "Thunder rolling from further off, a second after the lightning (one strike of three).");
 
@@ -326,6 +327,16 @@ public static partial class SoundBank
                 d.Bell(0.01f, 0.3f, 820f, 2.76f, 2.5f, 0.18f, 6f);
                 d.Noise(0.12f, 0.015f, Filter.Band, 2600f, 2600f, 0.5f, 4f, 0.1f, 2f);
                 return Finish(d.S, 0.4f);
+            case "gears":
+                // Great gears grinding round: a motor's low drone, the teeth catching one after another in an even
+                // ratchet, and a ring of steel on steel over it
+                d = new SoundDesign(0.62f, 0x6EA2u);
+                d.Tone(0, 0.6f, Wave.Triangle, 56f, 64f, 0.4f, 0.06f, 1.4f, vibratoHz: 18f, vibratoDepth: 0.05f);
+                d.Noise(0, 0.6f, Filter.Low, 420f, 300f, 0.45f, 1.1f, 0.05f, 1.2f, 18f, 0.6f);
+                d.Crackle(0.02f, 0.54f, 10, 1500f, 0.5f, even: true);
+                d.Crackle(0.05f, 0.54f, 10, 2600f, 0.25f, even: true);
+                d.Bell(0.02f, 0.5f, 410f, 2.41f, 1.2f, 0.06f, 3f);
+                return Finish(d.S, 0.38f);
             case "snowball":
                 // Packed snow bursting: a soft muffled thud, a crunch that falls away, and icy bits pattering down
                 d = new SoundDesign(0.5f, 0x5B0u);

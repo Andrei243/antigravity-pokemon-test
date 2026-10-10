@@ -201,6 +201,8 @@ public static class ScriptParser
                 return new Instruction { Op = Op.FlowerClock, Line = line };
             case "pressbutton":
                 return new Instruction { Op = Op.PressButton, Line = line, Name = r.OneOf("blue", "green", "orange") };
+            case "gearbutton":
+                return new Instruction { Op = Op.GearButton, Line = line, Name = r.OneOf("normal", "reverse", "double") };
             case "partner":
             {
                 if (r.PeekWord("off"))
