@@ -171,6 +171,21 @@ script ChapterSeven
   setflag FLAG_HIDE_CANALAVE_LIBRARY_COUNTERPART
   setflag FLAG_HIDE_CANALAVE_LIBRARY_ROWAN
 label Won
+  call ChapterEight
+  return
+
+
+# Who the eighth chapter (plan 02 · S11, "Snowpoint and Galactic HQ") keeps out of sight until their scenes, as the
+# original's new game does (scripts_init_new_game.s). Its first half, Lake Acuity and Snowpoint: Uxie in Acuity Cavern
+# (back with the lake guardians, plan 02 · S13), and Candice and Cynthia in Snowpoint City's streets, who come after
+# the Hall of Fame (plan 02 · S15). The rival at Acuity Lakefront's rock face and at the lake Team Galactic comes to,
+# and Maylene in Snowpoint's Pokémon Center, are there from the start, as the original's are. Called by ChapterSeven,
+# and run for a save from before (Story/StoryMigration.cs, version 13). It may only set flags and variables, and ends
+# in return.
+script ChapterEight
+  setflag FLAG_HIDE_ACUITY_CAVERN_UXIE
+  setflag FLAG_HIDE_SNOWPOINT_CITY_CANDICE
+  setflag FLAG_HIDE_SNOWPOINT_CITY_CYNTHIA
   return
 
 

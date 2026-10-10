@@ -2,8 +2,15 @@
   "area": "lake_acuity_low_water",
   "bgmTrack": "sinnoh/lake",
   "trees": "Pine",
-  // The rival, who comes to the lake after Team Galactic has gone, waits for the story (plan 02 · S11).
-  // The TM14 ball stands in the grass north of the water, which cliffs close off on this version of the lake; it
-  // waits for the lake Team Galactic comes to, whose own file has it too
+  // Lake Acuity as it is at the start: the map Acuity Lakefront leads to until Commander Mars is beaten at Lake
+  // Verity, when it turns to the lake Team Galactic has come to (lake_acuity; plan 02 · S11, part a). The rival is
+  // here from the news of the explosion (Canalave City clears his flag) and has nothing to report: he would be met
+  // only by someone with Snowpoint's Badge and Rock Climb before Team Galactic has left Lake Verity, which the
+  // grunts in Mt. Coronet see to it nobody is in a game of today (scripts/lake_acuity_low_water.txt).
+  "people": {
+    "rival": { "name": "{rival}", "script": "Rival", "still": true }
+  },
+  // The TM14 ball stands in the grass north of the water, which cliffs close off on this version of the lake; the
+  // lake Team Galactic comes to has it too, with the same flag, and there the water leads to it
   "heldBack": [ "item_tm14" ]
 }

@@ -1,0 +1,88 @@
+# Lake Acuity as Team Galactic leaves it (plan 02 · S11, part a): the original's other map of the lake, which Acuity
+# Lakefront leads to once Commander Mars is beaten at Lake Verity. docs/scripts.md describes the language; the lines
+# are our own, on the original's beats (scripts_lake_acuity.s).
+#
+# The scene plays as the player comes in (the original's OnFrame, VAR_LAKE_ACUITY_STATE 1, which Mars's defeat sets):
+# at the water's edge the rival has lost to Commander Jupiter, and the lake's Pokémon is already taken. She mocks him,
+# comes down the shore to the player, whom she knows from Eterna City, warns them off Team Galactic's headquarters in
+# Veilstone City, and leaves; nobody battles. The player goes up to the rival, who could do nothing, saw the Pokémon
+# suffer, and goes off resolved to grow stronger. The player comes in a step inside the way out (14 or 15, 49), a tile
+# further in than the original's, so every walk here is a step shorter than its own.
+#
+# What the scene leaves (the original's own): VAR_LAKE_ACUITY_STATE 2; the grunt who drops the Storage Key shown in
+# Veilstone City (FLAG_HIDE_VEILSTONE_CITY_GRUNT_M_STORAGE_KEY cleared: plan 02 · S11, part b, writes him); the
+# professor back in his lab and gone from Lake Verity with the assistant, on both of its maps; the tremor no longer
+# the talk of Canalave City (FLAG_LAKE_VALOR_EXPLODED cleared); the lake's own theme from now on
+# (FLAG_ALT_MUSIC_LAKE_ACUITY). The original's RemoveObject sets the flag that hides whoever it takes away, so Jupiter
+# and the rival are hidden by their flags too.
+#
+# Acuity Cavern on the island, and Uxie in it, come back with the lake guardians (plan 02 · S13).
+
+
+script OnEnter
+  if var VAR_LAKE_ACUITY_STATE != 1 end
+  camera pan 16 45 1.0
+  wait 0.25
+  face rival up
+  speaker "{rival}"
+  say "...! You're not getting away with this, Team Galactic!"
+  face jupiter down
+  speaker "Jupiter"
+  say "Oh? Is that all? Finished already?"
+  say "Your Pokémon aren't bad. You, though, are so weak it's almost funny."
+  say "Did you honestly think you could save the Pokémon of the lake? And be Champion one day, too? Dream on, kid."
+  say "Ugh, this cold gets into everything. We're done here. Back to headquarters in Veilstone."
+  if var PLAYER_X == 15 goto East
+  walk jupiter left 2 down 5
+  face jupiter left
+  face player right
+  goto Met
+label East
+  walk jupiter left 2 down 4
+label Met
+  camera release 0.8
+  say "Hm? Don't I know you? Yes... Eterna City."
+  say "Listen. What Team Galactic is about to do is for everyone's sake. Something far too big for a child to grasp."
+  say "So keep out of our way. And spare me the tears over a few poor Pokémon. It's all so tiresome."
+  say "Whatever you do, don't waste your time coming to our headquarters in Veilstone City. Now, if you'll excuse me."
+  if var PLAYER_X == 15 goto LeaveEast
+  walk jupiter down 1
+  goto Gone
+label LeaveEast
+  walk jupiter left 1 down 2
+label Gone
+  sound "stairs"
+  hide jupiter
+  setflag FLAG_HIDE_LAKE_ACUITY_JUPITER
+  if var PLAYER_X == 15 goto WalkEast
+  walk player up 4 right 2
+  goto Beaten
+label WalkEast
+  walk player up 4 right 1
+label Beaten
+  face rival left
+  speaker "{rival}"
+  say "......" "...Yeah. That's right. I couldn't do a thing against Team Galactic. Not one thing!"
+  face rival up
+  say "That Pokémon they call Uxie... It was hurting. And I just stood here and watched."
+  wait 0.5
+  face rival left
+  say "I'm going to get tougher. Not so I can win. Winning and losing isn't good enough any more."
+  say "Saying I want to be the strongest Trainer there ever was doesn't make me strong. It takes real work. And a heart that doesn't give up."
+  move rival down 2 left 2 down 3
+  wait 0.4
+  face player down
+  waitmoves
+  sound "stairs"
+  hide rival
+  setflag FLAG_HIDE_LAKE_ACUITY_RIVAL
+  setflag FLAG_ALT_MUSIC_LAKE_ACUITY
+  clearflag FLAG_HIDE_VEILSTONE_CITY_GRUNT_M_STORAGE_KEY
+  setvar VAR_LAKE_ACUITY_STATE 2
+  clearflag FLAG_HIDE_SANDGEM_TOWN_LAB_PROF_ROWAN
+  setflag FLAG_HIDE_LAKE_VERITY_LOW_WATER_COUNTERPART
+  setflag FLAG_HIDE_LAKE_VERITY_LOW_WATER_PROF_ROWAN
+  setflag FLAG_HIDE_LAKE_VERITY_COUNTERPART
+  setflag FLAG_HIDE_LAKE_VERITY_PROF_ROWAN
+  clearflag FLAG_LAKE_VALOR_EXPLODED
+  end

@@ -1,0 +1,23 @@
+# Snowpoint City (plan 02 · S11, part a). docs/scripts.md describes the language; the lines are our own, on the
+# original's beats (scripts_snowpoint_city.s).
+#
+# The town's part in the story is its Gym (SnowpointGym.txt, plan 01 · M9: Candice and the Icicle Badge, which lets
+# Rock Climb take the player up Acuity Lakefront's rock face) and Maylene, warming up in its Pokémon Center
+# (SnowpointPokemonCenter.txt). Snowpoint Temple stands shut at the top of town: its guard stands before the east
+# half of its door, and whoever steps up to the west half (the original's trigger 0, one tile at 366, 198, while
+# VAR_SNOWPOINT_CITY_STATE is 0) is turned back.
+#
+# After the Hall of Fame Candice comes up the street to let the Champion in, and Cynthia waits on the quay beside the
+# ship to the Battle Zone: both are plan 02 · S15's (FLAG_HIDE_SNOWPOINT_CITY_CANDICE, FLAG_HIDE_SNOWPOINT_CITY_CYNTHIA,
+# set from the start by common.ChapterEight), and so is the sailor's offer to sail.
+
+
+# The temple's guard turns the player back (the original's coordinate event, script 3).
+script TempleGuard
+  face temple_guard left
+  speaker "Temple Guard"
+  say "Only those the temple has chosen may set foot in Snowpoint Temple."
+  say "I'm sorry, but I must ask you to leave."
+  face temple_guard down
+  walk player down 1
+  end

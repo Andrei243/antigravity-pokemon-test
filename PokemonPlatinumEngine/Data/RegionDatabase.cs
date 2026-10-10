@@ -170,7 +170,9 @@ public static class RegionDatabase
                 // Plan 01 · M10, part a: Victory Road's back rooms (matrices of the imported world), and the Pokémon Centers
                 // and Marts of the Battle Zone's three towns
                 "VictoryRoad1FRoom1", "VictoryRoad1FRoom2", "VictoryRoad1FRoom3",
-                "FightAreaPokemonCenter", "FightAreaPokeMart", "SurvivalAreaPokemonCenter", "SurvivalAreaPokeMart", "ResortAreaPokemonCenter"
+                "FightAreaPokemonCenter", "FightAreaPokeMart", "SurvivalAreaPokemonCenter", "SurvivalAreaPokeMart", "ResortAreaPokemonCenter",
+                // Plan 02 · S11, part a: Lake Acuity as Team Galactic leaves it (a matrix of the imported world)
+                "LakeAcuityGalactic"
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

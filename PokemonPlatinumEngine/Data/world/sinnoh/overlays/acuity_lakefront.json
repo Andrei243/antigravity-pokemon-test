@@ -2,10 +2,22 @@
   "area": "acuity_lakefront",
   "bgmTrack": "sinnoh/route216",
   "trees": "Pine",
-  // The way in shares its tiles between two lakes, as the original moves its warps by script: the lake as it is now
-  // (warps 0 and 1) and the lake Team Galactic comes to (warps 2 and 3), which opens with its chapter (plan 02 · S11)
-  "locked": [ 2, 3 ],
-  // The rival, who runs on up to the lake ahead of the player (the original's trigger), comes with that chapter too
+  // The way into the lake shares its tiles between two maps, as the original moves its warps by script: the lake as
+  // it is at the start (warps 0 and 1) until Commander Mars is beaten at Lake Verity, and the lake Team Galactic has
+  // come to (warps 2 and 3) from then on (plan 02 · S11, part a)
+  "switches": [
+    { "warp": 0, "until": "FLAG_TEAM_GALACTIC_LEFT_LAKE_VERITY" },
+    { "warp": 1, "until": "FLAG_TEAM_GALACTIC_LEFT_LAKE_VERITY" },
+    { "warp": 2, "from": "FLAG_TEAM_GALACTIC_LEFT_LAKE_VERITY" },
+    { "warp": 3, "from": "FLAG_TEAM_GALACTIC_LEFT_LAKE_VERITY" }
+  ],
+  // The rival stands at the head of the rock face that leads up to the lake, which nobody climbs without Rock Climb
+  // and Snowpoint's Badge. As the player first comes up to its foot (the original's trigger, two tiles across the
+  // path) he calls down and runs on to the lake (plan 02 · S11, part a; scripts/acuity_lakefront.txt)
+  "triggers": [ { "trigger": 0, "script": "RivalCallsDown" } ],
+  "people": {
+    "rival": { "name": "{rival}", "dialog": [ "{rival}: Team Galactic! I'm coming for you!" ], "still": true }
+  },
   "signs": {
     "arrow_signpost": "Acuity Lakefront\nNorth: Lake Acuity"
   }

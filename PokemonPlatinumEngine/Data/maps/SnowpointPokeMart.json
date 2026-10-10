@@ -104,6 +104,30 @@
       ],
       "isPokeMartClerk": true,
       "mart": "snowpoint"
+    },
+    {
+      "id": "youngster",
+      "name": "Youngster",
+      "npcType": "Youngster",
+      "x": 6,
+      "y": 5,
+      "facing": "Up",
+      "dialog": [
+        "I'm teaching my Pokémon new moves with Technical Machines, a different mix of types for each of them.",
+        "It's all for the Elite Four of the Pokémon League. They say those four are far tougher than any Gym Leader!"
+      ]
+    },
+    {
+      "id": "snowpoint_lady",
+      "name": "Woman",
+      "npcType": "Lady",
+      "x": 2,
+      "y": 6,
+      "facing": "Right",
+      "dialog": [
+        "A frozen Pokémon thaws out by itself, given time.",
+        "All the same, if I were you I'd keep a few Ice Heals in my bag."
+      ]
     }
   ],
   "wildEncounters": []

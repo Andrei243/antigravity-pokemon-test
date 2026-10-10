@@ -1,0 +1,22 @@
+# Lake Acuity as it is before Team Galactic comes (plan 02 · S11, part a): the map Acuity Lakefront leads to until
+# Commander Mars is beaten at Lake Verity. docs/scripts.md describes the language; the lines are our own, on the
+# original's beats (scripts_lake_acuity_low_water.s).
+#
+# The rival, sent here from Canalave City's library to watch the lake, has nothing to report, and says so; spoken to
+# again he sends the player off to the Gym they haven't beaten. Whoever stands here has climbed the lakefront's rock
+# face, so has Snowpoint's Badge: Sunyshore's is the one left.
+
+
+# The rival (the original's script 1).
+script Rival
+  face self player
+  speaker "{rival}"
+  if flag FLAG_TALKED_TO_LAKE_ACUITY_LOW_WATER_RIVAL goto Again
+  setflag FLAG_TALKED_TO_LAKE_ACUITY_LOW_WATER_RIVAL
+  say "{player}? What are you doing here? This lake's mine to watch, remember? You've got your own."
+  say "There's nothing going on, anyway. And if anything does, I've got it covered. I've got my Pokémon with me, and you know how tough I am!"
+  end
+label Again
+  say "What did I tell you? I'm fine here by myself!"
+  say "If you haven't been yet, go and take on Sunyshore's Gym. Things are only going to get rougher from here, and you'll want every Badge you can get."
+  end

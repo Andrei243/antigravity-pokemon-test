@@ -1,0 +1,40 @@
+# Acuity Lakefront (plan 02 · S11, part a). docs/scripts.md describes the language; the lines are our own, on the
+# original's beats (scripts_acuity_lakefront.s).
+#
+# The lake lies at the top of a rock face that nobody climbs without Rock Climb, and Rock Climb waits for the Icicle
+# Badge: that is what keeps Lake Acuity shut until Snowpoint's Gym is beaten, in Platinum. The rival stands at the head
+# of the face from the start. As the player first comes up to its foot (the original's trigger 0, two tiles across the
+# path at 310 and 311, 244; VAR_ACUITY_LAKEFRONT_STATE 0) the camera goes up to him: he calls down that the rocks need
+# Snowpoint's Badge, and runs on to the lake and Team Galactic. The original's RemoveObject sets the flag that hides
+# him (FLAG_HIDE_ACUITY_LAKEFRONT_RIVAL). The road from Route 217 to Snowpoint City crosses the trigger, so nobody
+# comes to the Gym without having heard him; a save that had been to Snowpoint before the scene was written finds him
+# gone (Story/StoryMigration.cs, version 13).
+#
+# The way into the lake is two ways on the same tiles (the overlay's switches): the lake as it is at the start until
+# Commander Mars is beaten at Lake Verity (FLAG_TEAM_GALACTIC_LEFT_LAKE_VERITY), and the lake Team Galactic has come
+# to from then on (lake_acuity.txt).
+
+
+# The original's OnTransition: with the Icicle Badge, Maylene has gone home from Snowpoint's Pokémon Center to her
+# own Gym (Route 217 took her out of it, route_217.txt).
+script OnEnter
+  if not badge icicle end
+  setflag FLAG_HIDE_SNOWPOINT_CITY_POKECENTER_1F_MAYLENE
+  clearflag FLAG_HIDE_VEILSTONE_CITY_GYM_MAYLENE
+  end
+
+
+# The rival at the head of the rock face (the original's coordinate event, script 4).
+script RivalCallsDown
+  camera pan 310 238 1.0
+  wait 0.25
+  speaker "{rival}"
+  say "Hey! {player}! Down there! You're only getting here now? You're so slow it hurts to watch!"
+  say "Listen up! See how knobbly these rocks are? You can't climb them until you've got the Badge from Snowpoint's Gym. So go and get it!"
+  say "Anyway, I'm not standing about. Team Galactic! Ready or not, here I come!"
+  walk rival up 3 left 1 up 4
+  hide rival
+  setflag FLAG_HIDE_ACUITY_LAKEFRONT_RIVAL
+  camera release 0.8
+  setvar VAR_ACUITY_LAKEFRONT_STATE 1
+  end
