@@ -15,8 +15,13 @@
   ],
   // The library, the inn and the houses have no rooms yet (plan 01 · M11)
   "locked": [ 3, 4, 5, 6, 9, 10 ],
+  // The rival on the bridge over the canal (plan 02 · S9, scripts/canalave_city.txt)
+  "triggers": [ { "trigger": 0, "script": "RivalOnTheBridge" } ],
   // Sailor Eldritch, who sails trainers to Iron Island, is written with the ferry
   "people": {
+    // The rival, shown for his battle on the bridge and outside the Gym once Byron is beaten (plan 02 · S9; his
+    // library scene is plan 02 · S10's)
+    "rival_bridge": { "name": "{rival}", "script": "Rival", "still": true },
     // The Psyduck watching the boats (plan 10 · F1)
     "psyduck": { "name": "Psyduck", "dialog": [ "Psy...? Psyduck?" ] },
     // He sails the player to Iron Island and back (scripts/canalave_city.txt)

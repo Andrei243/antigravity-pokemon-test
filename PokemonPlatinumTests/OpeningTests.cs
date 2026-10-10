@@ -87,6 +87,9 @@ public class OpeningTests
             Map = maps[name];
             Map.ForgetForced();
             Map.ApplyPresence(Story.Has);
+            // As the engine does (GameEngine.ArriveOnMap): whoever moves of their own accord starts again from where
+            // they first stood, so someone a scene walked off is back on their own tile (plan 02 · S9)
+            Wandering.SendHome(Map);
             Tile = (x, y);
             if (Scripts.In(Map.ScriptFileAt(x, y), ScriptLibrary.OnEnter) is { } script) Play(script);
         }

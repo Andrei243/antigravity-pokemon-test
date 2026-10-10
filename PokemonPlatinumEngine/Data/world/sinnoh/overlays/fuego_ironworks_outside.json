@@ -2,8 +2,7 @@
   "area": "fuego_ironworks_outside",
   "bgmTrack": "sinnoh/route205",
   "trees": "Pine",
-  // The ironworks have no room yet (plan 01 · M11)
-  "locked": [ 0, 1, 2 ],
+  // The ironworks' doors lead onto its floor (fuego_ironworks_building, plan 02 · S9)
   "signs": {
     "signboard": "Fuego Ironworks\nWhere the furnaces never go out."
   }

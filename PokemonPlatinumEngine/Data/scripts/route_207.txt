@@ -21,6 +21,8 @@ script Assistant
   say "{player}! Phew, I caught you before the mountain. The professor asked me to bring you something."
   choose "Here's a game first. Which hand do you think it's in?" "Right" "Left"
   say "...Ha ha! It doesn't matter which, actually. You win either way!"
+  # The first level of rematches comes with it (the original's Route207_GiveVsSeeker; set since plan 02 · S9)
+  setflag FLAG_UNLOCKED_VS_SEEKER_LVL_1
   give "Vs. Seeker"
   speaker "{assistant}"
   say "It's a Vs. Seeker. Use it, and any trainer you've beaten who wants a rematch will let you know."

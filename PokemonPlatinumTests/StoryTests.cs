@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
@@ -632,8 +633,11 @@ public class StoryTests
     [Fact]
     public void AFlagOrAVariableAskedAboutIsSetSomewhere()
     {
-        // A flag nobody sets is a misspelling, unless it is a region's Hall of Fame (the League's script sets those)
-        var known = Scripts.FlagsWritten.Concat(RegionDatabase.All.Select(r => r.StoryCompleteFlag)).ToHashSet();
+        // A flag nobody sets is a misspelling, unless it is a region's Hall of Fame (the League's script sets those) or
+        // a town's first arrival, which the game sets as the player comes (SpawnLocations: the elder's house in Celestic
+        // Town asks Canalave City's, plan 02 · S9)
+        var known = Scripts.FlagsWritten.Concat(RegionDatabase.All.Select(r => r.StoryCompleteFlag))
+            .Concat(SpawnLocations.All.Select(s => s.ArrivalFlag)).ToHashSet();
         Assert.DoesNotContain(Scripts.FlagsRead, f => !known.Contains(f));
         Assert.DoesNotContain(Scripts.VariablesRead, v => !Scripts.VariablesWritten.Contains(v));
     }
@@ -739,7 +743,19 @@ public class StoryTests
             // A trigger's script starts with the player on the trigger, as stepping onto it starts it
             var trigger = person == null ? map.Triggers.FirstOrDefault(t => t.Script == name && what.StartsWith("the trigger", StringComparison.Ordinal)
                 && what.Contains($" at {t.X},{t.Y} ", StringComparison.Ordinal)) : null;
-            var ways = EveryWayThrough(script, map, person, before: trigger == null ? null : host => host.PlayerTile = (trigger.X, trigger.Y));
+            // A thing read where it stands starts with the player on the open tile below it, facing it, as a painting
+            // on a cave's back wall is read (plan 02 · S9: Celestic Town's ruins walk the player about from there)
+            (int X, int Y)? read = null;
+            if (person == null && what.StartsWith("the tile read at ", StringComparison.Ordinal))
+            {
+                var at = what["the tile read at ".Length..what.IndexOf(" of ", StringComparison.Ordinal)].Split(',');
+                (int x, int y) = (int.Parse(at[0], CultureInfo.InvariantCulture), int.Parse(at[1], CultureInfo.InvariantCulture));
+                if (map.InBounds(x, y + 1) && !map.IsSolid(x, y + 1)) read = (x, y + 1);
+            }
+            Action<HeadlessScriptHost>? before = trigger != null ? host => host.PlayerTile = (trigger.X, trigger.Y)
+                : read is { } below ? host => { host.PlayerTile = below; host.PlayerFacing = Direction.Up; }
+                : null;
+            var ways = EveryWayThrough(script, map, person, before: before);
             Assert.NotEmpty(ways);
             foreach (var (host, _) in ways)
                 Assert.True(host.Problems.Count == 0, $"{script.FullName}, started by {what}: {string.Join("; ", host.Problems)}");

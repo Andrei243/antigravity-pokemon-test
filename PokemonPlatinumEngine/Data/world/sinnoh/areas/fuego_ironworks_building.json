@@ -1,0 +1,39 @@
+{
+  "key": "fuego_ironworks_building",
+  "index": 205,
+  "name": "Fuego Ironworks",
+  "matrix": 8,
+  "kind": "Cave",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "InteriorOrthographic",
+  "battleBackground": "Indoors2",
+  "dayMusic": "D_04",
+  "nightMusic": "D_04",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 26, "z": 26, "to": "fuego_ironworks_outside", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "item_tm35", "looks": "pokeball", "movement": "none", "x": 21, "z": 21, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_FUEGO_IRONWORKS_BUILDING_TM35", "item": "TM35", "script": "7120" },
+    { "id": "item_calcium", "looks": "pokeball", "movement": "none", "x": 11, "z": 7, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_FUEGO_IRONWORKS_BUILDING_CALCIUM", "item": "Calcium", "script": "7122" },
+    { "id": "item_rock_incense", "looks": "pokeball", "movement": "none", "x": 46, "z": 20, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_FUEGO_IRONWORKS_BUILDING_ROCK_INCENSE", "item": "Rock Incense", "script": "7121" },
+    { "id": "item_fire_stone", "looks": "pokeball", "movement": "none", "x": 51, "z": 6, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_FUEGO_IRONWORKS_BUILDING_FIRE_STONE", "item": "Fire Stone", "script": "7123" },
+    { "id": "mr_fuego", "looks": "middle_aged_man", "movement": "look_south_west_and_east", "x": 25, "z": 19, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "worker_dillan", "looks": "worker", "movement": "look_south_and_east", "x": 3, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_WORKER_DILLAN" },
+    { "id": "worker_holden", "looks": "worker", "movement": "look_north_and_south", "x": 26, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_WORKER_HOLDEN" },
+    { "id": "worker_conrad", "looks": "worker", "movement": "look_east", "x": 35, "z": 25, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_WORKER_CONRAD" },
+    { "id": "item_blue_shard", "looks": "pokeball", "movement": "none", "x": 40, "z": 18, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_FUEGO_IRONWORKS_BUILDING_BLUE_SHARD", "item": "Blue Shard", "script": "7280" },
+    { "id": "item_red_shard", "looks": "pokeball", "movement": "none", "x": 27, "z": 16, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_FUEGO_IRONWORKS_BUILDING_RED_SHARD", "item": "Red Shard", "script": "7281" },
+    { "id": "item_green_shard", "looks": "pokeball", "movement": "none", "x": 44, "z": 6, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_FUEGO_IRONWORKS_BUILDING_GREEN_SHARD", "item": "Green Shard", "script": "7282" },
+    { "id": "item_yellow_shard", "looks": "pokeball", "movement": "none", "x": 11, "z": 18, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_FUEGO_IRONWORKS_BUILDING_YELLOW_SHARD", "item": "Yellow Shard", "script": "7283" }
+  ],
+  "signs": [
+    { "x": 44, "z": 15, "type": 2, "script": "8047", "item": "Star Piece", "flag": "FLAG_OBTAINED_HIDDEN_FUEGO_IRONWORKS_BUILDING_STAR_PIECE", "range": 2 },
+    { "x": 22, "z": 3, "type": 2, "script": "8046", "item": "Protein", "flag": "FLAG_OBTAINED_HIDDEN_FUEGO_IRONWORKS_BUILDING_PROTEIN", "range": 2 }
+  ],
+  "triggers": []
+}

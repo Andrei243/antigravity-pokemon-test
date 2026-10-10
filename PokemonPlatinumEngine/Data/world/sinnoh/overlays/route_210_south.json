@@ -13,6 +13,8 @@
     "psyduck_2": { "name": "Psyduck", "script": "Psyduck" },
     "psyduck_3": { "name": "Psyduck", "script": "Psyduck" },
     "psyduck_4": { "name": "Psyduck", "script": "Psyduck" },
+    // Cynthia comes up the road once they have gone, with the Old Charm for her grandmother (plan 02 · S9)
+    "cynthia": { "name": "Cynthia", "dialog": [ "Cynthia: My grandmother is the elder of Celestic Town. You'll find her there." ] },
     "jogger_wyatt": {
       "name": "Wyatt",
       "trainer": {
@@ -27,13 +29,8 @@
         "Come back in the morning, when I'm fresh."
       ]
     },
-    "ace_trainer_f": {
-      "name": "Trainer",
-      "dialog": [
-        "Further north the road climbs into a fog so thick you can barely see your own hand.",
-        "Battles up there are tricky. In fog, moves miss far more often than you'd think."
-      ]
-    },
+    // Resting by the café, she gives TM51 once (plan 02 · S9, scripts/route_210_south.txt)
+    "ace_trainer_f": { "name": "Trainer", "script": "Roost" },
     "ninja_boy_fabian": {
       "name": "Fabian",
       "trainer": {

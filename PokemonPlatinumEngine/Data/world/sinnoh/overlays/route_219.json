@@ -2,6 +2,23 @@
   "area": "route_219",
   "bgmTrack": "sinnoh/route201",
   "trees": "Round",
+  // The two tubers on the beach, the first trainers the sea road south of Sandgem Town brings (plan 02 · S9)
+  "people": {
+    "tuber_trenton": {
+      "name": "Trenton",
+      "trainer": {
+        "dialogueBefore": "Tuber Trenton: My rubber ring and me can float all day! Want to battle while I dry off?",
+        "dialogueAfter": "Tuber Trenton: Sploosh. That's the sound of me losing."
+      }
+    },
+    "tuber_mariel": {
+      "name": "Mariel",
+      "trainer": {
+        "dialogueBefore": "Tuber Mariel: I'm not allowed past the rocks without a grown-up. But I'm allowed to battle!",
+        "dialogueAfter": "Tuber Mariel: I'm going back in the water. It's nicer than losing."
+      }
+    }
+  },
   "signs": {
     "arrow_signpost_sandgem_beach": "Route 219\nNorth: Sandgem Town"
   }

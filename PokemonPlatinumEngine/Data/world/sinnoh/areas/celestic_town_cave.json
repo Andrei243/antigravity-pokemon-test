@@ -1,0 +1,30 @@
+{
+  "key": "celestic_town_cave",
+  "index": 449,
+  "name": "Celestic Town",
+  "matrix": 169,
+  "kind": "Indoors",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "Default",
+  "battleBackground": "Indoors1",
+  "dayMusic": "CITY04_D",
+  "nightMusic": "CITY04_N",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 10, "z": 20, "to": "celestic_town", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "elder", "looks": "expert_f", "movement": "look_west", "x": 10, "z": 3, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CELESTIC_TOWN_CAVE_ELDER", "script": "3" },
+    { "id": "cyrus", "looks": "cyrus", "movement": "look_north", "x": 9, "z": 3, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CELESTIC_TOWN_CAVE_CYRUS", "script": "2" },
+    { "id": "cynthia", "looks": "cynthia", "movement": "look_north", "x": 9, "z": 10, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CELESTIC_TOWN_CAVE_CYNTHIA", "script": "0" }
+  ],
+  "signs": [
+    { "x": 9, "z": 2, "type": 0, "script": "1" },
+    { "x": 10, "z": 2, "type": 0, "script": "1" }
+  ],
+  "triggers": []
+}

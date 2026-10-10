@@ -264,7 +264,12 @@ public static class WorldModels
         // The rifts that open at Spear Pillar in plan 02 · S12's scene: Dialga's, Palkia's, and the dark beneath
         Thing("d5_ana_d", PropType.Rift, "the rift that opens at Spear Pillar where Dialga comes"),
         Thing("d5_ana_p", PropType.Rift, "the rift that opens at Spear Pillar where Palkia comes"),
-        Thing("d5_ana_pl", PropType.RiftShadow, "the dark the rifts cast on Spear Pillar's floor: the way into the Distortion World")
+        Thing("d5_ana_pl", PropType.RiftShadow, "the dark the rifts cast on Spear Pillar's floor: the way into the Distortion World"),
+        // Plan 02 · S9: the cave of Celestic Town's ruins and the floor of the Fuego Ironworks, both opened by their chapter
+        Thing("t5_o01c", PropType.Outcrop, "the ancient painting at the back of Celestic Town's ruins, on a slab of the cave's rock"),
+        Ground("d_mat01", "the mat inside the Fuego Ironworks' door: the floor draws it"),
+        Thing("box03", PropType.Crates, "crates stacked on the Fuego Ironworks' floor"),
+        Thing("d04_s01", PropType.Headframe, "the furnace in the middle of the Fuego Ironworks' floor, a tower of steel as tall as its model")
     };
 
     private static readonly Dictionary<string, WorldModel> ByName = Table.ToDictionary(m => m.Name, StringComparer.Ordinal);

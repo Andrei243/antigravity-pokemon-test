@@ -1,0 +1,167 @@
+# Celestic Town (plan 02 · S9). docs/scripts.md describes the language; the lines are our own, on the original's
+# beats (scripts_celestic_town.s).
+#
+# A Team Galactic grunt stands in the way into the ruins at the heart of town, threatening to blow the place up. The
+# elder (Cynthia's grandmother) waits at the south end of town and tells of him as the player first comes by (the
+# original's trigger 0, three tiles across the road, VAR_CELESTIC_TOWN_ELDER_STATE 0). Beaten, the grunt runs off,
+# and the elder comes up to thank the player and takes the Old Charm Cynthia sent (FLAG_DELIVERED_OLD_CHARM). Inside
+# the ruins (celestic_town_cave.txt) Cyrus is beaten and the elder gives HM03; Cynthia is waiting as the player comes
+# back out (VAR_CELESTIC_TOWN_STATE 1, the original's OnFrame), warns of Team Galactic and points the way to the
+# library in Canalave City, which lifts the blockade on Route 218 (FLAG_HIDE_ROUTE_218_BLOCKADE, state 2). She stays
+# until the player reaches Canalave City (canalave_city.txt).
+#
+# The original's RemoveObject also sets the flag that hides whoever it takes away, so the grunt sent off here is
+# hidden by his flag as well.
+#
+# The later mechanics' beat (Z-Moves shown by a boss here, plan 06 · decision 2) is left out by default: if the user
+# confirms it, plan 06 · R21 writes it into celestic_town_cave.txt after Cyrus's battle.
+
+
+# The original's OnTransition (the Vs. Seeker's second level of rematches) and OnFrame (Cynthia, state 1).
+script OnEnter
+  setflag FLAG_UNLOCKED_VS_SEEKER_LVL_2
+  if var VAR_CELESTIC_TOWN_STATE == 1 goto Cynthia
+  end
+label Cynthia
+  # Out of the ruins' door she comes up to the player; anyone who came back some other way finds her where she stands
+  if var PLAYER_X != 463 goto Quietly
+  if var PLAYER_Y != 522 goto Quietly
+  emote cynthia exclaim
+  walk cynthia left 2
+  face player right
+  speaker "Cynthia"
+  say "{player}! Is everyone all right here? You saw those people and their Galactic Bomb, didn't you?"
+  face cynthia up
+  say "Team Galactic... I took them for a harmless crowd. The strange outfits, the grand talk about making a new universe..."
+  say "I thought it was all just talk, nothing to take seriously. But they're turning out to be far more trouble than I imagined."
+  say "Trying to keep Pokémon all to themselves? That I can't forgive."
+  face cynthia left
+  call Lifted
+  wait 0.2
+  call Library
+  end
+label Quietly
+  call Lifted
+  end
+
+script Lifted
+  setvar VAR_CELESTIC_TOWN_STATE 2
+  setflag FLAG_HIDE_ROUTE_218_BLOCKADE
+  return
+
+
+# Cynthia, once the ruins are quiet (the original's script 6), and the end of her scene.
+script Library
+  speaker "Cynthia"
+  say "By the way, did you enjoy the ruins? If they caught your interest, there's a library in Canalave City."
+  say "It's full of old books, and you can read up on Sinnoh's history there. It might even help with your Pokédex."
+  say "The quickest way to Canalave City is west from Jubilife City."
+  return
+
+
+# The elder's warning, as the player first walks past her (trigger 0). Once the grunt is gone she has nothing to warn of.
+script ElderWarns
+  if flag FLAG_DELIVERED_OLD_CHARM goto Quiet
+  face player left
+  face elder right
+  call Spaceman
+  end
+label Quiet
+  setvar VAR_CELESTIC_TOWN_ELDER_STATE 1
+  end
+
+script Spaceman
+  setvar VAR_CELESTIC_TOWN_ELDER_STATE 1
+  speaker "Elder"
+  say "There's a peculiar sort of spaceman standing in front of our ruins. There's nothing in there for him, and that only seems to make him crosser."
+  say "Now he says he'll blow the whole town up with a bomb... The cheek of it!"
+  say "If I were only a little younger, my Pokémon and I would teach that spaceman some manners..."
+  return
+
+# The elder spoken to (the original's script 2).
+script Elder
+  if flag FLAG_DELIVERED_OLD_CHARM goto Ruins
+  call Spaceman
+  end
+label Ruins
+  speaker "Elder"
+  say "You've come all the way up to Celestic Town. Don't hurry off: take a good look round the ruins."
+  end
+
+
+# The grunt before the ruins' door (the original's script 4). Beaten, he runs off past the player, and the elder comes
+# up from the south of town to stand beside them.
+script Grunt
+  speaker "Galactic Grunt"
+  face self player
+  say "This town's a relic! There's nothing here worth a thing. Nobody needs it, so I'm going to blow it sky-high with a Galactic Bomb!"
+  ask "Get in my way and I'll knock you flat in a battle. So, what'll it be? You going to get in my way?"
+  if no goto Smart
+  say "You'd stand up to Team Galactic? Then you're standing up to the whole world... no, the whole universe!"
+  battle self as "galactic_grunt_celestic_town"
+  speaker "Galactic Grunt"
+  say "Too tough... I can't get anything done here..."
+  say "Who cares about this backwater anyway? I'm glad to see the back of it!"
+  if facing left goto FromTheEast
+  if facing right goto FromTheWest
+  # From the south: he runs west and down past the player, who turns to watch
+  walk self left 3 down 9 fast
+  face player left
+  face player down
+  call Gone
+  place elder 466 531 up
+  walk elder up 8 left 2
+  face player right
+  goto Charm
+label FromTheEast
+  walk self left 3 down 9 fast
+  face player down
+  call Gone
+  place elder 466 531 up
+  walk elder up 8 left 2
+  face elder up
+  goto Charm
+label FromTheWest
+  walk self down 2 left 3 down 7 fast
+  face player down
+  call Gone
+  place elder 466 531 up
+  walk elder up 8 left 4
+  face elder up
+  goto Charm
+label Smart
+  say "Smart kid! You know what's good for you."
+  say "Team Galactic came all the way out to the sticks for everybody's sake. We appreciate your cooperation."
+  say "...Now where's my partner got to?"
+  end
+label Charm
+  speaker "Elder"
+  say "My, weren't you magnificent! Quite the Trainer, aren't you? As the elder of Celestic Town, you have my thanks."
+  if not item "Old Charm" goto Ruins
+  say "Oh? Is that an Old Charm you have there? Might I see it, dear?"
+  say "...What's this? Cynthia asked you to bring it to me? That girl! She's my granddaughter, you know."
+  fanfare keyitem
+  text "{player} handed the Old Charm to the elder."
+  take "Old Charm"
+  speaker "Elder"
+  say "Charms like this were made here in Celestic Town, long, long ago, in honour of the deity said to have made Sinnoh."
+  say "One still turns up every so often."
+label Ruins
+  setflag FLAG_DELIVERED_OLD_CHARM
+  say "Now that you're here in Celestic Town, why not have a look inside the ruins?"
+  end
+
+script Gone
+  hide self
+  setflag FLAG_HIDE_CELESTIC_TOWN_GRUNT_M
+  return
+
+
+# The carvings either side of the ruins' door (the original's scripts 11 and 12), read from the yard.
+script EtchingDialga
+  text "A great carving of something like a Pokémon covers the stone..." "Worn words are cut beneath it..." "\"Time runs on and never stops... What was, what is, what will be...\""
+  end
+
+script EtchingPalkia
+  text "A great carving of something like a Pokémon covers the stone..." "Worn words are cut beneath it..." "\"Space reaches out and never ends... and our spirits are as wide as space...\""
+  end

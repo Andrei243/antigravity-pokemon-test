@@ -152,7 +152,10 @@ public static class RegionDatabase
                 // Veilstone City's Galactic warehouse, where HM02 lies (plan 02 · S8)
                 "VeilstoneGalacticWarehouse",
                 // Solaceon Town's Pokémon Day Care, rebuilt to the original's plan (plan 06 · R15)
-                "PokemonDayCare"
+                "PokemonDayCare",
+                // Plan 02 · S9: the cave of Celestic Town's ruins and the Fuego Ironworks' floor (matrices of the
+                // imported world), and the elder's house in Celestic Town, rebuilt to the original's plan
+                "CelesticTownCave", "FuegoIronworksBuilding", "CelesticTownNorthHouse"
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },
