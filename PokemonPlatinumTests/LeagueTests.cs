@@ -637,10 +637,11 @@ public class LeagueTests
     {
         // The walk of the whole game goes past the guard (whose own script steps him aside), up each shaft on its
         // platform and through each door of the Four (a thing in the way until its room is won), as far as the Hall
-        var reached = WorldWalk.FromEveryStart(MapDatabase.Get);
+        var maps = MapDatabase.Fresh();
+        var reached = WorldWalk.FromEveryStart(maps);
         foreach (string name in InOrder)
-            Assert.True(reached.ContainsKey(MapDatabase.Get(name)), $"{name} isn't reached");
-        Assert.Contains((8, 5), reached[MapDatabase.Get(Hall)]);
+            Assert.True(reached.ContainsKey(maps(name)), $"{name} isn't reached");
+        Assert.Contains((8, 5), reached[maps(Hall)]);
     }
     // ------------------------------------------------------------------ the art (style guide, "The League's rooms")
 

@@ -24,6 +24,17 @@ public static partial class MapDatabase
     /// <summary>(Re)loads every map from its file, with fresh NPCs and trainers.</summary>
     public static void Initialize() => Load();
 
+    /// <summary>
+    /// A freshly loaded set of maps of the caller's own, found by name as <see cref="Get"/> finds them. What a test that
+    /// walks the whole game holds on to: <see cref="Get"/> answers from whatever set was loaded last, so a walk that
+    /// asks it twice can be handed two different maps of one name when another test reloads the set in between.
+    /// </summary>
+    internal static System.Func<string, Map> Fresh()
+    {
+        var own = Load();
+        return name => own.TryGetValue(name, out var map) ? map : own[StartMap];
+    }
+
     private static Dictionary<string, Map> Load()
     {
         string folder = GameDataFiles.PathOf(Folder);

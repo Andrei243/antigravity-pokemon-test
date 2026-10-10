@@ -166,10 +166,11 @@ public class CharacterTableTests
             }
         }
         // The sea's, the snow's and the east's people (plan 01 · M7 and M8): plan 11 · C3 and C4's
+        // (Snowpoint's townsman is given a look that exists by his overlay since plan 02 · S11a)
         Assert.Equal(new[]
         {
             "ace_trainer_snow_f", "ace_trainer_snow_m", "policeman", "roughneck", "sailor", "skier_f", "skier_m",
-            "snowpoint_npc_f", "snowpoint_npc_m", "swimmer_f", "swimmer_m", "tuber_f", "tuber_m"
+            "snowpoint_npc_f", "swimmer_f", "swimmer_m", "tuber_f", "tuber_m"
         }, unmade);
     }
 

@@ -383,8 +383,9 @@ public class BagAndShopTests
             var map = GameDataFiles.Load<MapFile>(Path.Combine(MapDatabase.Folder, name + ".json")).ToMap();
             var clerks = map.Everyone.Where(n => n.IsPokeMartClerk).ToList();
             Assert.Single(clerks, c => c.Mart == null);
-            // Sandgem Town's Mart has the common counter alone, as in Platinum
-            if (name == "PokeMart") Assert.Single(clerks);
+            // Sandgem Town's Mart has the common counter alone, as in Platinum, and so have the Fight Area's and the
+            // Survival Area's (their second vendor is the original's `Dummy2`, who sells nothing)
+            if (name is "PokeMart" or "FightAreaPokeMart" or "SurvivalAreaPokeMart") Assert.Single(clerks);
             else Assert.Single(clerks, c => c.Mart != null && MartDatabase.Specialties.ContainsKey(c.Mart));
         }
     }

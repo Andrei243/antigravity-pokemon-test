@@ -267,12 +267,14 @@ public class PokemonTests
     [Fact]
     public void TestEveryWarpCanBeReachedFromWhereTheGameStarts()
     {
-        MapDatabase.Initialize();
-        var reached = WorldWalk.FromEveryStart(MapDatabase.Get);
+        // A set of maps of this test's own: other classes reload the shared set while this walk goes on, and a map
+        // asked for by name afterwards would then be another object than the one walked
+        var maps = MapDatabase.Fresh();
+        var reached = WorldWalk.FromEveryStart(maps);
 
         foreach (string name in MapDatabase.MapNames)
         {
-            var map = MapDatabase.Get(name);
+            var map = maps(name);
             // Johto and the regions after it have no maps yet; every map there is must be one the game can come to
             Assert.True(reached.TryGetValue(map, out var tiles), $"{name} can't be reached from where its region starts");
             foreach (var warp in map.Warps)
