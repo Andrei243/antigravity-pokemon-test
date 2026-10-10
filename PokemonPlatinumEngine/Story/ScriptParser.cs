@@ -504,6 +504,22 @@ public static class ScriptParser
                 if (ribbon is not ("today" or "offer") && Data.RibbonDatabase.Get(ribbon) == null) throw r.Error($"there is no ribbon '{ribbon}'");
                 return new Instruction { Op = Op.Ribbon, Line = line, Name = what, Other = ribbon };
             }
+            case "underground":
+            {
+                string what = r.OneOf("give", "room", "flags", "down", "up", "mine", "hiker", "pc", "bag", "cantake", "takeflag", "home");
+                if (what != "give") return new Instruction { Op = Op.Underground, Line = line, Name = what };
+                string kind = r.OneOf("trap", "sphere", "good");
+                if (kind == "sphere")
+                {
+                    string colour = r.OneOf("prism", "pale", "red", "blue", "green");
+                    int size = r.More ? r.Int("the Sphere's size") : 1;
+                    if (size is < 1 or > 99) throw r.Error("a Sphere's size is 1 to 99");
+                    return new Instruction { Op = Op.Underground, Line = line, Name = what, Other = kind, Partner = colour, Number = size };
+                }
+                string thing = r.Text(kind == "trap" ? "a trap's name" : "a good's name");
+                if (kind == "trap" ? Data.UndergroundDatabase.TrapId(thing) == 0 : Data.UndergroundDatabase.GoodId(thing) == 0) throw r.Error($"there is no {kind} '{thing}'");
+                return new Instruction { Op = Op.Underground, Line = line, Name = what, Other = kind, Partner = thing };
+            }
 
             case "script":
             case "label":

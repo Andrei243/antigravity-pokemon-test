@@ -51,6 +51,12 @@ internal static class OutdoorProps
         foreach (var prop in map.Props)
         {
             if (!within.Contains(prop.X, prop.Y)) continue;
+            // What stands in a secret base of the Underground is built as the rooms' furniture is (plan 06 · R16a)
+            if (prop.Model.StartsWith(UndergroundArt.ModelPrefix, StringComparison.Ordinal))
+            {
+                UndergroundArt.Build(kit, prop, map);
+                continue;
+            }
             kit.Origin = new Vector3(prop.X, Relief.At(map, prop.X + prop.Width / 2f, prop.Y + prop.Depth / 2f), prop.Y);
             switch (prop.Type)
             {

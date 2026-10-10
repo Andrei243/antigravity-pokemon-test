@@ -632,7 +632,7 @@ public class FieldLifeTests
         var used = new[]
         {
             FieldLife.Print, FieldLife.Puff, FieldLife.Puff + 1, FieldLife.Puff + 2, FieldLife.Leaf, FieldLife.Leaf + 1,
-            FieldLife.Ring, FieldLife.Ring + 1, FieldLife.Ring + 2, FieldLife.Drop, FieldLife.Fleck, FieldLife.Fleck + 1
+            FieldLife.Ring, FieldLife.Ring + 1, FieldLife.Ring + 2, FieldLife.Drop, FieldLife.Fleck, FieldLife.Fleck + 1, FieldLife.Star
         };
         Assert.Equal(used.Length, used.Distinct().Count());
         for (int cell = 0; cell < FieldLife.Columns * 2; cell++)

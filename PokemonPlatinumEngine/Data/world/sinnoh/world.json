@@ -125,7 +125,12 @@
     { "name": "VictoryRoad1FRoom3", "matrix": 48, "area": "victory_road_1f_room_3", "setting": "Cave" },
     // Plan 02 · S11, part a: Lake Acuity as Team Galactic leaves it (the map Acuity Lakefront leads to once Commander
     // Mars is beaten at Lake Verity, and for the rest of the game)
-    { "name": "LakeAcuityGalactic", "matrix": 108, "area": "lake_acuity", "trees": "Pine" }
+    { "name": "LakeAcuityGalactic", "matrix": 108, "area": "lake_acuity", "trees": "Pine" },
+    // Plan 06 · R16a: the Underground, a matrix of its own under the whole region. Nothing leads into it but the
+    // Explorer Kit, so the tiles it is come to by are named here: the mat of the secret base, and the four tiles of
+    // every chunk that whoever digs down lands on (its tunnels are several systems that don't join one another)
+    { "name": "Underground", "matrix": 2, "area": "underground", "setting": "Cave", "arrivals": [[15, 23]],
+      "arrivalsInEveryChunk": [[8, 8], [23, 8], [8, 23], [23, 23]] }
   ],
   "areas": [
     "twinleaf_town",
@@ -295,6 +300,8 @@
     "route_230",
     "resort_area",
     // Plan 02 · S11, part a
-    "lake_acuity"
+    "lake_acuity",
+    // Plan 06 · R16a
+    "underground"
   ]
 }

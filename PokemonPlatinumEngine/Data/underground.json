@@ -1,0 +1,4552 @@
+{
+  "objects": [
+    {
+      "id": "SMALL_PRISM_SPHERE",
+      "width": 2,
+      "height": 2,
+      "odd": 30,
+      "even": 22,
+      "oddNational": 27,
+      "evenNational": 20
+    },
+    {
+      "id": "SMALL_PALE_SPHERE",
+      "width": 2,
+      "height": 2,
+      "odd": 22,
+      "even": 30,
+      "oddNational": 20,
+      "evenNational": 27
+    },
+    {
+      "id": "SMALL_RED_SPHERE",
+      "width": 2,
+      "height": 2,
+      "odd": 167,
+      "even": 194,
+      "oddNational": 110,
+      "evenNational": 164
+    },
+    {
+      "id": "SMALL_BLUE_SPHERE",
+      "width": 2,
+      "height": 2,
+      "odd": 194,
+      "even": 167,
+      "oddNational": 150,
+      "evenNational": 124
+    },
+    {
+      "id": "SMALL_GREEN_SPHERE",
+      "width": 2,
+      "height": 2,
+      "odd": 150,
+      "even": 150,
+      "oddNational": 107,
+      "evenNational": 107
+    },
+    {
+      "id": "LARGE_PRISM_SPHERE",
+      "width": 3,
+      "height": 3,
+      "odd": 15,
+      "even": 13,
+      "oddNational": 13,
+      "evenNational": 10
+    },
+    {
+      "id": "LARGE_PALE_SPHERE",
+      "width": 3,
+      "height": 3,
+      "odd": 13,
+      "even": 15,
+      "oddNational": 10,
+      "evenNational": 13
+    },
+    {
+      "id": "LARGE_RED_SPHERE",
+      "width": 3,
+      "height": 3,
+      "odd": 83,
+      "even": 96,
+      "oddNational": 61,
+      "evenNational": 75
+    },
+    {
+      "id": "LARGE_BLUE_SPHERE",
+      "width": 3,
+      "height": 3,
+      "odd": 96,
+      "even": 83,
+      "oddNational": 75,
+      "evenNational": 61
+    },
+    {
+      "id": "LARGE_GREEN_SPHERE",
+      "width": 3,
+      "height": 3,
+      "odd": 75,
+      "even": 75,
+      "oddNational": 53,
+      "evenNational": 53
+    },
+    {
+      "id": "TREASURE_OVAL_STONE",
+      "width": 3,
+      "height": 3,
+      "odd": 0,
+      "even": 0,
+      "oddNational": 0,
+      "evenNational": 0
+    },
+    {
+      "id": "TREASURE_ODD_KEYSTONE",
+      "width": 4,
+      "height": 4,
+      "odd": 0,
+      "even": 0,
+      "oddNational": 2,
+      "evenNational": 2
+    },
+    {
+      "id": "TREASURE_SUN_STONE",
+      "width": 3,
+      "height": 3,
+      "shape": [
+        "oxo",
+        "xxx",
+        "xxx"
+      ],
+      "odd": 4,
+      "even": 1,
+      "oddNational": 15,
+      "evenNational": 3
+    },
+    {
+      "id": "TREASURE_STAR_PIECE",
+      "width": 3,
+      "height": 3,
+      "shape": [
+        "oxo",
+        "xxx",
+        "oxo"
+      ],
+      "odd": 2,
+      "even": 2,
+      "oddNational": 10,
+      "evenNational": 10
+    },
+    {
+      "id": "TREASURE_MOON_STONE",
+      "width": 4,
+      "height": 2,
+      "shape": [
+        "oxxx",
+        "xxxo"
+      ],
+      "odd": 1,
+      "even": 2,
+      "oddNational": 1,
+      "evenNational": 8
+    },
+    {
+      "id": "TREASURE_MOON_STONE",
+      "width": 2,
+      "height": 4,
+      "shape": [
+        "xo",
+        "xx",
+        "xx",
+        "ox"
+      ],
+      "odd": 1,
+      "even": 2,
+      "oddNational": 2,
+      "evenNational": 7
+    },
+    {
+      "id": "TREASURE_HARD_STONE",
+      "width": 2,
+      "height": 2,
+      "odd": 4,
+      "even": 4,
+      "oddNational": 20,
+      "evenNational": 20
+    },
+    {
+      "id": "TREASURE_THUNDERSTONE",
+      "width": 3,
+      "height": 3,
+      "shape": [
+        "oxx",
+        "xxx",
+        "xxo"
+      ],
+      "odd": 4,
+      "even": 1,
+      "oddNational": 30,
+      "evenNational": 5
+    },
+    {
+      "id": "TREASURE_EVERSTONE",
+      "width": 4,
+      "height": 2,
+      "odd": 4,
+      "even": 4,
+      "oddNational": 20,
+      "evenNational": 20
+    },
+    {
+      "id": "TREASURE_FIRE_STONE",
+      "width": 3,
+      "height": 3,
+      "odd": 4,
+      "even": 1,
+      "oddNational": 30,
+      "evenNational": 5
+    },
+    {
+      "id": "TREASURE_WATER_STONE",
+      "width": 3,
+      "height": 3,
+      "shape": [
+        "xxx",
+        "xxx",
+        "xxo"
+      ],
+      "odd": 1,
+      "even": 4,
+      "oddNational": 5,
+      "evenNational": 30
+    },
+    {
+      "id": "TREASURE_LEAF_STONE",
+      "width": 3,
+      "height": 4,
+      "shape": [
+        "oxo",
+        "xxx",
+        "xxx",
+        "oxo"
+      ],
+      "odd": 1,
+      "even": 2,
+      "oddNational": 3,
+      "evenNational": 15
+    },
+    {
+      "id": "TREASURE_LEAF_STONE",
+      "width": 4,
+      "height": 3,
+      "shape": [
+        "oxxo",
+        "xxxx",
+        "oxxo"
+      ],
+      "odd": 1,
+      "even": 2,
+      "oddNational": 2,
+      "evenNational": 15
+    },
+    {
+      "id": "TREASURE_HELIX_FOSSIL",
+      "width": 4,
+      "height": 4,
+      "shape": [
+        "oxxx",
+        "xxxx",
+        "xxxx",
+        "xxxo"
+      ],
+      "odd": 0,
+      "even": 0,
+      "oddNational": 3,
+      "evenNational": 1
+    },
+    {
+      "id": "TREASURE_HELIX_FOSSIL",
+      "width": 4,
+      "height": 4,
+      "shape": [
+        "xxxo",
+        "xxxx",
+        "xxxx",
+        "oxxx"
+      ],
+      "odd": 0,
+      "even": 0,
+      "oddNational": 3,
+      "evenNational": 1
+    },
+    {
+      "id": "TREASURE_HELIX_FOSSIL",
+      "width": 4,
+      "height": 4,
+      "shape": [
+        "oxxx",
+        "xxxx",
+        "xxxx",
+        "xxxo"
+      ],
+      "odd": 0,
+      "even": 0,
+      "oddNational": 3,
+      "evenNational": 1
+    },
+    {
+      "id": "TREASURE_HELIX_FOSSIL",
+      "width": 4,
+      "height": 4,
+      "shape": [
+        "xxxo",
+        "xxxx",
+        "xxxx",
+        "oxxx"
+      ],
+      "odd": 0,
+      "even": 0,
+      "oddNational": 3,
+      "evenNational": 1
+    },
+    {
+      "id": "TREASURE_DOME_FOSSIL",
+      "width": 5,
+      "height": 4,
+      "shape": [
+        "xxxxx",
+        "xxxxx",
+        "xxxxx",
+        "oxxxo"
+      ],
+      "odd": 0,
+      "even": 0,
+      "oddNational": 1,
+      "evenNational": 13
+    },
+    {
+      "id": "TREASURE_CLAW_FOSSIL",
+      "width": 4,
+      "height": 5,
+      "shape": [
+        "ooxx",
+        "oxxx",
+        "oxxx",
+        "xxxo",
+        "xxoo"
+      ],
+      "odd": 0,
+      "even": 0,
+      "oddNational": 3,
+      "evenNational": 1
+    },
+    {
+      "id": "TREASURE_CLAW_FOSSIL",
+      "width": 5,
+      "height": 4,
+      "shape": [
+        "xxooo",
+        "xxxxo",
+        "oxxxx",
+        "ooxxx"
+      ],
+      "odd": 0,
+      "even": 0,
+      "oddNational": 3,
+      "evenNational": 1
+    },
+    {
+      "id": "TREASURE_CLAW_FOSSIL",
+      "width": 4,
+      "height": 5,
+      "shape": [
+        "ooxx",
+        "oxxx",
+        "xxxo",
+        "xxxo",
+        "xxoo"
+      ],
+      "odd": 0,
+      "even": 0,
+      "oddNational": 3,
+      "evenNational": 1
+    },
+    {
+      "id": "TREASURE_CLAW_FOSSIL",
+      "width": 5,
+      "height": 4,
+      "shape": [
+        "xxxoo",
+        "xxxxo",
+        "oxxxx",
+        "oooxx"
+      ],
+      "odd": 0,
+      "even": 0,
+      "oddNational": 3,
+      "evenNational": 1
+    },
+    {
+      "id": "TREASURE_ROOT_FOSSIL",
+      "width": 5,
+      "height": 5,
+      "shape": [
+        "xxxxo",
+        "xxxxx",
+        "xxoxx",
+        "oooxx",
+        "ooxxo"
+      ],
+      "odd": 0,
+      "even": 0,
+      "oddNational": 1,
+      "evenNational": 3
+    },
+    {
+      "id": "TREASURE_ROOT_FOSSIL",
+      "width": 5,
+      "height": 5,
+      "shape": [
+        "ooxxx",
+        "ooxxx",
+        "xooxx",
+        "xxxxx",
+        "oxxxo"
+      ],
+      "odd": 0,
+      "even": 0,
+      "oddNational": 1,
+      "evenNational": 3
+    },
+    {
+      "id": "TREASURE_ROOT_FOSSIL",
+      "width": 5,
+      "height": 5,
+      "shape": [
+        "oxxoo",
+        "xxooo",
+        "xxoxx",
+        "xxxxx",
+        "oxxxx"
+      ],
+      "odd": 0,
+      "even": 0,
+      "oddNational": 1,
+      "evenNational": 3
+    },
+    {
+      "id": "TREASURE_ROOT_FOSSIL",
+      "width": 5,
+      "height": 5,
+      "shape": [
+        "oxxxo",
+        "xxxxx",
+        "xxoox",
+        "xxxoo",
+        "xxxoo"
+      ],
+      "odd": 0,
+      "even": 0,
+      "oddNational": 1,
+      "evenNational": 3
+    },
+    {
+      "id": "TREASURE_OLD_AMBER",
+      "width": 4,
+      "height": 4,
+      "shape": [
+        "oxxx",
+        "xxxx",
+        "xxxx",
+        "xxxo"
+      ],
+      "odd": 0,
+      "even": 0,
+      "oddNational": 2,
+      "evenNational": 2
+    },
+    {
+      "id": "TREASURE_OLD_AMBER",
+      "width": 4,
+      "height": 4,
+      "shape": [
+        "xxxo",
+        "xxxx",
+        "xxxx",
+        "oxxx"
+      ],
+      "odd": 0,
+      "even": 0,
+      "oddNational": 3,
+      "evenNational": 3
+    },
+    {
+      "id": "TREASURE_RARE_BONE",
+      "width": 3,
+      "height": 6,
+      "shape": [
+        "xxx",
+        "oxo",
+        "oxo",
+        "oxo",
+        "oxo",
+        "xxx"
+      ],
+      "odd": 1,
+      "even": 1,
+      "oddNational": 5,
+      "evenNational": 5
+    },
+    {
+      "id": "TREASURE_RARE_BONE",
+      "width": 6,
+      "height": 3,
+      "shape": [
+        "xoooox",
+        "xxxxxx",
+        "xoooox"
+      ],
+      "odd": 1,
+      "even": 1,
+      "oddNational": 5,
+      "evenNational": 5
+    },
+    {
+      "id": "TREASURE_REVIVE",
+      "width": 3,
+      "height": 3,
+      "shape": [
+        "oxo",
+        "xxx",
+        "oxo"
+      ],
+      "odd": 8,
+      "even": 8,
+      "oddNational": 10,
+      "evenNational": 10
+    },
+    {
+      "id": "TREASURE_MAX_REVIVE",
+      "width": 3,
+      "height": 3,
+      "odd": 1,
+      "even": 1,
+      "oddNational": 2,
+      "evenNational": 2
+    },
+    {
+      "id": "TREASURE_RED_SHARD",
+      "width": 3,
+      "height": 3,
+      "shape": [
+        "xxx",
+        "xxo",
+        "xxx"
+      ],
+      "odd": 13,
+      "even": 13,
+      "oddNational": 17,
+      "evenNational": 17
+    },
+    {
+      "id": "TREASURE_BLUE_SHARD",
+      "width": 3,
+      "height": 3,
+      "shape": [
+        "xxx",
+        "xxx",
+        "xxo"
+      ],
+      "odd": 13,
+      "even": 13,
+      "oddNational": 17,
+      "evenNational": 17
+    },
+    {
+      "id": "TREASURE_YELLOW_SHARD",
+      "width": 4,
+      "height": 3,
+      "shape": [
+        "xoxo",
+        "xxxo",
+        "xxxx"
+      ],
+      "odd": 13,
+      "even": 13,
+      "oddNational": 17,
+      "evenNational": 17
+    },
+    {
+      "id": "TREASURE_GREEN_SHARD",
+      "width": 4,
+      "height": 3,
+      "shape": [
+        "xxxx",
+        "xxxx",
+        "xxox"
+      ],
+      "odd": 13,
+      "even": 13,
+      "oddNational": 17,
+      "evenNational": 17
+    },
+    {
+      "id": "TREASURE_HEART_SCALE",
+      "width": 2,
+      "height": 2,
+      "shape": [
+        "xo",
+        "xx"
+      ],
+      "odd": 33,
+      "even": 33,
+      "oddNational": 30,
+      "evenNational": 30
+    },
+    {
+      "id": "TREASURE_ARMOR_FOSSIL",
+      "width": 5,
+      "height": 4,
+      "shape": [
+        "oxxxo",
+        "oxxxo",
+        "xxxxx",
+        "oxxxo"
+      ],
+      "odd": 0,
+      "even": 25,
+      "oddNational": 0,
+      "evenNational": 12
+    },
+    {
+      "id": "TREASURE_SKULL_FOSSIL",
+      "width": 4,
+      "height": 4,
+      "shape": [
+        "xxxx",
+        "xxxx",
+        "xxxx",
+        "oxxo"
+      ],
+      "odd": 25,
+      "even": 0,
+      "oddNational": 12,
+      "evenNational": 0
+    },
+    {
+      "id": "TREASURE_LIGHT_CLAY",
+      "width": 4,
+      "height": 4,
+      "shape": [
+        "xoxo",
+        "xxxx",
+        "xxxx",
+        "oxox"
+      ],
+      "odd": 1,
+      "even": 1,
+      "oddNational": 5,
+      "evenNational": 2
+    },
+    {
+      "id": "TREASURE_IRON_BALL",
+      "width": 3,
+      "height": 3,
+      "odd": 1,
+      "even": 1,
+      "oddNational": 2,
+      "evenNational": 5
+    },
+    {
+      "id": "TREASURE_ICY_ROCK",
+      "width": 4,
+      "height": 4,
+      "shape": [
+        "oxxo",
+        "xxxx",
+        "xxxx",
+        "xoox"
+      ],
+      "odd": 2,
+      "even": 1,
+      "oddNational": 11,
+      "evenNational": 5
+    },
+    {
+      "id": "TREASURE_SMOOTH_ROCK",
+      "width": 4,
+      "height": 4,
+      "shape": [
+        "ooxo",
+        "xxxo",
+        "oxxx",
+        "oxoo"
+      ],
+      "odd": 1,
+      "even": 2,
+      "oddNational": 5,
+      "evenNational": 11
+    },
+    {
+      "id": "TREASURE_HEAT_ROCK",
+      "width": 4,
+      "height": 3,
+      "shape": [
+        "xoxo",
+        "xxxx",
+        "xxxx"
+      ],
+      "odd": 2,
+      "even": 1,
+      "oddNational": 11,
+      "evenNational": 5
+    },
+    {
+      "id": "TREASURE_DAMP_ROCK",
+      "width": 3,
+      "height": 3,
+      "odd": 1,
+      "even": 2,
+      "oddNational": 5,
+      "evenNational": 11
+    },
+    {
+      "id": "TREASURE_FLAME_PLATE",
+      "width": 4,
+      "height": 3,
+      "odd": 1,
+      "even": 1,
+      "oddNational": 1,
+      "evenNational": 1
+    },
+    {
+      "id": "TREASURE_SPLASH_PLATE",
+      "width": 4,
+      "height": 3,
+      "odd": 1,
+      "even": 1,
+      "oddNational": 1,
+      "evenNational": 1
+    },
+    {
+      "id": "TREASURE_ZAP_PLATE",
+      "width": 4,
+      "height": 3,
+      "odd": 1,
+      "even": 1,
+      "oddNational": 1,
+      "evenNational": 1
+    },
+    {
+      "id": "TREASURE_MEADOW_PLATE",
+      "width": 4,
+      "height": 3,
+      "odd": 1,
+      "even": 1,
+      "oddNational": 1,
+      "evenNational": 1
+    },
+    {
+      "id": "TREASURE_ICICLE_PLATE",
+      "width": 4,
+      "height": 3,
+      "odd": 1,
+      "even": 1,
+      "oddNational": 1,
+      "evenNational": 1
+    },
+    {
+      "id": "TREASURE_FIST_PLATE",
+      "width": 4,
+      "height": 3,
+      "odd": 1,
+      "even": 1,
+      "oddNational": 1,
+      "evenNational": 1
+    },
+    {
+      "id": "TREASURE_TOXIC_PLATE",
+      "width": 4,
+      "height": 3,
+      "odd": 1,
+      "even": 1,
+      "oddNational": 1,
+      "evenNational": 1
+    },
+    {
+      "id": "TREASURE_EARTH_PLATE",
+      "width": 4,
+      "height": 3,
+      "odd": 1,
+      "even": 1,
+      "oddNational": 1,
+      "evenNational": 1
+    },
+    {
+      "id": "TREASURE_SKY_PLATE",
+      "width": 4,
+      "height": 3,
+      "odd": 1,
+      "even": 1,
+      "oddNational": 1,
+      "evenNational": 1
+    },
+    {
+      "id": "TREASURE_MIND_PLATE",
+      "width": 4,
+      "height": 3,
+      "odd": 1,
+      "even": 1,
+      "oddNational": 1,
+      "evenNational": 1
+    },
+    {
+      "id": "TREASURE_INSECT_PLATE",
+      "width": 4,
+      "height": 3,
+      "odd": 1,
+      "even": 1,
+      "oddNational": 1,
+      "evenNational": 1
+    },
+    {
+      "id": "TREASURE_STONE_PLATE",
+      "width": 4,
+      "height": 3,
+      "odd": 1,
+      "even": 1,
+      "oddNational": 1,
+      "evenNational": 1
+    },
+    {
+      "id": "TREASURE_SPOOKY_PLATE",
+      "width": 4,
+      "height": 3,
+      "odd": 1,
+      "even": 1,
+      "oddNational": 1,
+      "evenNational": 1
+    },
+    {
+      "id": "TREASURE_DRACO_PLATE",
+      "width": 4,
+      "height": 3,
+      "odd": 1,
+      "even": 1,
+      "oddNational": 1,
+      "evenNational": 1
+    },
+    {
+      "id": "TREASURE_DREAD_PLATE",
+      "width": 4,
+      "height": 3,
+      "odd": 1,
+      "even": 1,
+      "oddNational": 1,
+      "evenNational": 1
+    },
+    {
+      "id": "TREASURE_IRON_PLATE",
+      "width": 4,
+      "height": 3,
+      "odd": 1,
+      "even": 1,
+      "oddNational": 1,
+      "evenNational": 1
+    },
+    {
+      "id": "ROCK_1",
+      "width": 4,
+      "height": 1,
+      "odd": 1,
+      "even": 1,
+      "oddNational": 1,
+      "evenNational": 1
+    },
+    {
+      "id": "ROCK_1",
+      "width": 1,
+      "height": 4,
+      "odd": 1,
+      "even": 1,
+      "oddNational": 1,
+      "evenNational": 1
+    },
+    {
+      "id": "ROCK_2",
+      "width": 2,
+      "height": 2,
+      "odd": 1,
+      "even": 1,
+      "oddNational": 1,
+      "evenNational": 1
+    },
+    {
+      "id": "ROCK_3",
+      "width": 3,
+      "height": 2,
+      "shape": [
+        "xxx",
+        "oxo"
+      ],
+      "odd": 1,
+      "even": 1,
+      "oddNational": 1,
+      "evenNational": 1
+    },
+    {
+      "id": "ROCK_3",
+      "width": 2,
+      "height": 3,
+      "shape": [
+        "ox",
+        "xx",
+        "ox"
+      ],
+      "odd": 1,
+      "even": 1,
+      "oddNational": 1,
+      "evenNational": 1
+    },
+    {
+      "id": "ROCK_3",
+      "width": 3,
+      "height": 2,
+      "shape": [
+        "oxo",
+        "xxx"
+      ],
+      "odd": 1,
+      "even": 1,
+      "oddNational": 1,
+      "evenNational": 1
+    },
+    {
+      "id": "ROCK_3",
+      "width": 2,
+      "height": 3,
+      "shape": [
+        "xo",
+        "xx",
+        "xo"
+      ],
+      "odd": 1,
+      "even": 1,
+      "oddNational": 1,
+      "evenNational": 1
+    },
+    {
+      "id": "ROCK_4",
+      "width": 3,
+      "height": 2,
+      "shape": [
+        "xxo",
+        "oxx"
+      ],
+      "odd": 1,
+      "even": 1,
+      "oddNational": 1,
+      "evenNational": 1
+    },
+    {
+      "id": "ROCK_4",
+      "width": 2,
+      "height": 3,
+      "shape": [
+        "ox",
+        "xx",
+        "xo"
+      ],
+      "odd": 1,
+      "even": 1,
+      "oddNational": 1,
+      "evenNational": 1
+    },
+    {
+      "id": "ROCK_5",
+      "width": 3,
+      "height": 2,
+      "shape": [
+        "oxx",
+        "xxo"
+      ],
+      "odd": 1,
+      "even": 1,
+      "oddNational": 1,
+      "evenNational": 1
+    },
+    {
+      "id": "ROCK_5",
+      "width": 2,
+      "height": 3,
+      "shape": [
+        "xo",
+        "xx",
+        "ox"
+      ],
+      "odd": 1,
+      "even": 1,
+      "oddNational": 1,
+      "evenNational": 1
+    },
+    {
+      "id": "ROCK_6",
+      "width": 3,
+      "height": 3,
+      "odd": 1,
+      "even": 1,
+      "oddNational": 1,
+      "evenNational": 1
+    },
+    {
+      "id": "ROCK_7",
+      "width": 2,
+      "height": 4,
+      "odd": 1,
+      "even": 1,
+      "oddNational": 1,
+      "evenNational": 1
+    },
+    {
+      "id": "ROCK_7",
+      "width": 4,
+      "height": 2,
+      "odd": 1,
+      "even": 1,
+      "oddNational": 1,
+      "evenNational": 1
+    }
+  ],
+  "treasures": [
+    {
+      "id": "SMALL_PRISM_SPHERE",
+      "name": "Small Prism Sphere",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      }
+    },
+    {
+      "id": "SMALL_PALE_SPHERE",
+      "name": "Small Pale Sphere",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      }
+    },
+    {
+      "id": "SMALL_RED_SPHERE",
+      "name": "Small Red Sphere",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      }
+    },
+    {
+      "id": "SMALL_BLUE_SPHERE",
+      "name": "Small Blue Sphere",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      }
+    },
+    {
+      "id": "SMALL_GREEN_SPHERE",
+      "name": "Small Green Sphere",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      }
+    },
+    {
+      "id": "LARGE_PRISM_SPHERE",
+      "name": "Large Prism Sphere",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      }
+    },
+    {
+      "id": "LARGE_PALE_SPHERE",
+      "name": "Large Pale Sphere",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      }
+    },
+    {
+      "id": "LARGE_RED_SPHERE",
+      "name": "Large Red Sphere",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      }
+    },
+    {
+      "id": "LARGE_BLUE_SPHERE",
+      "name": "Large Blue Sphere",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      }
+    },
+    {
+      "id": "LARGE_GREEN_SPHERE",
+      "name": "Large Green Sphere",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      }
+    },
+    {
+      "id": "TREASURE_OVAL_STONE",
+      "name": "Oval Stone",
+      "item": "Oval Stone",
+      "price": {
+        "kind": "Pale",
+        "any": false,
+        "min": 15,
+        "max": 20,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_ODD_KEYSTONE",
+      "name": "Odd Keystone",
+      "item": "Odd Keystone",
+      "price": {
+        "kind": "Prism",
+        "any": false,
+        "min": 50,
+        "max": 60,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_SUN_STONE",
+      "name": "Sun Stone",
+      "item": "Sun Stone",
+      "price": {
+        "kind": "Red",
+        "any": false,
+        "min": 25,
+        "max": 35,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_STAR_PIECE",
+      "name": "Star Piece",
+      "item": "Star Piece",
+      "price": {
+        "kind": "Pale",
+        "any": false,
+        "min": 35,
+        "max": 45,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_MOON_STONE",
+      "name": "Moon Stone",
+      "item": "Moon Stone",
+      "price": {
+        "kind": "Pale",
+        "any": false,
+        "min": 25,
+        "max": 35,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_HARD_STONE",
+      "name": "Hard Stone",
+      "item": "Hard Stone",
+      "price": {
+        "kind": "Red",
+        "any": false,
+        "min": 25,
+        "max": 35,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_THUNDERSTONE",
+      "name": "Thunder Stone",
+      "item": "Thunder Stone",
+      "price": {
+        "kind": "Prism",
+        "any": false,
+        "min": 25,
+        "max": 35,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_EVERSTONE",
+      "name": "Everstone",
+      "item": "Everstone",
+      "price": {
+        "kind": "Pale",
+        "any": false,
+        "min": 25,
+        "max": 35,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_FIRE_STONE",
+      "name": "Fire Stone",
+      "item": "Fire Stone",
+      "price": {
+        "kind": "Red",
+        "any": false,
+        "min": 25,
+        "max": 35,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_WATER_STONE",
+      "name": "Water Stone",
+      "item": "Water Stone",
+      "price": {
+        "kind": "Blue",
+        "any": false,
+        "min": 25,
+        "max": 35,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_LEAF_STONE",
+      "name": "Leaf Stone",
+      "item": "Leaf Stone",
+      "price": {
+        "kind": "Green",
+        "any": false,
+        "min": 25,
+        "max": 35,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_NUGGET_UNUSED",
+      "name": "Nugget",
+      "item": "Nugget",
+      "price": {
+        "kind": "Blue",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_HELIX_FOSSIL",
+      "name": "Helix Fossil",
+      "item": "Helix Fossil",
+      "price": {
+        "kind": "Blue",
+        "any": false,
+        "min": 30,
+        "max": 50,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_DOME_FOSSIL",
+      "name": "Dome Fossil",
+      "item": "Dome Fossil",
+      "price": {
+        "kind": "Green",
+        "any": false,
+        "min": 30,
+        "max": 50,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_CLAW_FOSSIL",
+      "name": "Claw Fossil",
+      "item": "Claw Fossil",
+      "price": {
+        "kind": "Blue",
+        "any": false,
+        "min": 30,
+        "max": 50,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_ROOT_FOSSIL",
+      "name": "Root Fossil",
+      "item": "Root Fossil",
+      "price": {
+        "kind": "Green",
+        "any": false,
+        "min": 30,
+        "max": 50,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_OLD_AMBER",
+      "name": "Old Amber",
+      "item": "Old Amber",
+      "price": {
+        "kind": "Prism",
+        "any": false,
+        "min": 30,
+        "max": 50,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_RARE_BONE",
+      "name": "Rare Bone",
+      "item": "Rare Bone",
+      "price": {
+        "kind": "Pale",
+        "any": false,
+        "min": 25,
+        "max": 35,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_REVIVE",
+      "name": "Revive",
+      "item": "Revive",
+      "price": {
+        "kind": "Pale",
+        "any": false,
+        "min": 5,
+        "max": 10,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_MAX_REVIVE",
+      "name": "Max Revive",
+      "item": "Max Revive",
+      "price": {
+        "kind": "Pale",
+        "any": false,
+        "min": 40,
+        "max": 50,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_RED_SHARD",
+      "name": "Red Shard",
+      "item": "Red Shard",
+      "price": {
+        "kind": "Red",
+        "any": false,
+        "min": 20,
+        "max": 25,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_BLUE_SHARD",
+      "name": "Blue Shard",
+      "item": "Blue Shard",
+      "price": {
+        "kind": "Blue",
+        "any": false,
+        "min": 20,
+        "max": 25,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_YELLOW_SHARD",
+      "name": "Yellow Shard",
+      "item": "Yellow Shard",
+      "price": {
+        "kind": "Prism",
+        "any": false,
+        "min": 20,
+        "max": 25,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_GREEN_SHARD",
+      "name": "Green Shard",
+      "item": "Green Shard",
+      "price": {
+        "kind": "Green",
+        "any": false,
+        "min": 20,
+        "max": 25,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_HEART_SCALE",
+      "name": "Heart Scale",
+      "item": "Heart Scale",
+      "price": {
+        "kind": "Red",
+        "any": false,
+        "min": 5,
+        "max": 10,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_ARMOR_FOSSIL",
+      "name": "Armor Fossil",
+      "item": "Armor Fossil",
+      "price": {
+        "kind": "Blue",
+        "any": false,
+        "min": 30,
+        "max": 50,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_SKULL_FOSSIL",
+      "name": "Skull Fossil",
+      "item": "Skull Fossil",
+      "price": {
+        "kind": "Green",
+        "any": false,
+        "min": 30,
+        "max": 50,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_LIGHT_CLAY",
+      "name": "Light Clay",
+      "item": "Light Clay",
+      "price": {
+        "kind": "Pale",
+        "any": false,
+        "min": 40,
+        "max": 50,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_IRON_BALL",
+      "name": "Iron Ball",
+      "item": "Iron Ball",
+      "price": {
+        "kind": "Prism",
+        "any": false,
+        "min": 40,
+        "max": 50,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_ICY_ROCK",
+      "name": "Icy Rock",
+      "item": "Icy Rock",
+      "price": {
+        "kind": "Pale",
+        "any": false,
+        "min": 35,
+        "max": 40,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_SMOOTH_ROCK",
+      "name": "Smooth Rock",
+      "item": "Smooth Rock",
+      "price": {
+        "kind": "Prism",
+        "any": false,
+        "min": 35,
+        "max": 40,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_HEAT_ROCK",
+      "name": "Heat Rock",
+      "item": "Heat Rock",
+      "price": {
+        "kind": "Red",
+        "any": false,
+        "min": 40,
+        "max": 50,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_DAMP_ROCK",
+      "name": "Damp Rock",
+      "item": "Damp Rock",
+      "price": {
+        "kind": "Blue",
+        "any": false,
+        "min": 40,
+        "max": 50,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_FLAME_PLATE",
+      "name": "Flame Plate",
+      "item": "Flame Plate",
+      "price": {
+        "kind": "Red",
+        "any": false,
+        "min": 70,
+        "max": 80,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_SPLASH_PLATE",
+      "name": "Splash Plate",
+      "item": "Splash Plate",
+      "price": {
+        "kind": "Blue",
+        "any": false,
+        "min": 70,
+        "max": 80,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_ZAP_PLATE",
+      "name": "Zap Plate",
+      "item": "Zap Plate",
+      "price": {
+        "kind": "Prism",
+        "any": false,
+        "min": 70,
+        "max": 80,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_MEADOW_PLATE",
+      "name": "Meadow Plate",
+      "item": "Meadow Plate",
+      "price": {
+        "kind": "Green",
+        "any": false,
+        "min": 70,
+        "max": 80,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_ICICLE_PLATE",
+      "name": "Icicle Plate",
+      "item": "Icicle Plate",
+      "price": {
+        "kind": "Blue",
+        "any": false,
+        "min": 70,
+        "max": 80,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_FIST_PLATE",
+      "name": "Fist Plate",
+      "item": "Fist Plate",
+      "price": {
+        "kind": "Prism",
+        "any": false,
+        "min": 70,
+        "max": 80,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_TOXIC_PLATE",
+      "name": "Toxic Plate",
+      "item": "Toxic Plate",
+      "price": {
+        "kind": "Pale",
+        "any": false,
+        "min": 70,
+        "max": 80,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_EARTH_PLATE",
+      "name": "Earth Plate",
+      "item": "Earth Plate",
+      "price": {
+        "kind": "Green",
+        "any": false,
+        "min": 70,
+        "max": 80,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_SKY_PLATE",
+      "name": "Sky Plate",
+      "item": "Sky Plate",
+      "price": {
+        "kind": "Blue",
+        "any": false,
+        "min": 70,
+        "max": 80,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_MIND_PLATE",
+      "name": "Mind Plate",
+      "item": "Mind Plate",
+      "price": {
+        "kind": "Pale",
+        "any": false,
+        "min": 70,
+        "max": 80,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_INSECT_PLATE",
+      "name": "Insect Plate",
+      "item": "Insect Plate",
+      "price": {
+        "kind": "Green",
+        "any": false,
+        "min": 70,
+        "max": 80,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_STONE_PLATE",
+      "name": "Stone Plate",
+      "item": "Stone Plate",
+      "price": {
+        "kind": "Prism",
+        "any": false,
+        "min": 70,
+        "max": 80,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_SPOOKY_PLATE",
+      "name": "Spooky Plate",
+      "item": "Spooky Plate",
+      "price": {
+        "kind": "Pale",
+        "any": false,
+        "min": 70,
+        "max": 80,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_DRACO_PLATE",
+      "name": "Draco Plate",
+      "item": "Draco Plate",
+      "price": {
+        "kind": "Red",
+        "any": false,
+        "min": 70,
+        "max": 80,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_DREAD_PLATE",
+      "name": "Dread Plate",
+      "item": "Dread Plate",
+      "price": {
+        "kind": "Red",
+        "any": false,
+        "min": 70,
+        "max": 80,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TREASURE_IRON_PLATE",
+      "name": "Iron Plate",
+      "item": "Iron Plate",
+      "price": {
+        "kind": "Prism",
+        "any": false,
+        "min": 70,
+        "max": 80,
+        "forTrade": true
+      }
+    }
+  ],
+  "traps": [
+    {
+      "id": "TRAP_MOVE_UP",
+      "name": "Move Trap (Up)",
+      "price": {
+        "kind": "Blue",
+        "any": false,
+        "min": 3,
+        "max": 6,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TRAP_MOVE_RIGHT",
+      "name": "Move Trap (Right)",
+      "price": {
+        "kind": "Red",
+        "any": false,
+        "min": 3,
+        "max": 6,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TRAP_MOVE_DOWN",
+      "name": "Move Trap (Down)",
+      "price": {
+        "kind": "Blue",
+        "any": false,
+        "min": 3,
+        "max": 6,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TRAP_MOVE_LEFT",
+      "name": "Move Trap (Left)",
+      "price": {
+        "kind": "Red",
+        "any": false,
+        "min": 3,
+        "max": 6,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TRAP_HURL_UP",
+      "name": "Hurl Trap (Up)",
+      "price": {
+        "kind": "Blue",
+        "any": false,
+        "min": 12,
+        "max": 15,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TRAP_HURL_RIGHT",
+      "name": "Hurl Trap (Right)",
+      "price": {
+        "kind": "Red",
+        "any": false,
+        "min": 12,
+        "max": 15,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TRAP_HURL_DOWN",
+      "name": "Hurl Trap (Down)",
+      "price": {
+        "kind": "Blue",
+        "any": false,
+        "min": 12,
+        "max": 15,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TRAP_HURL_LEFT",
+      "name": "Hurl Trap (Left)",
+      "price": {
+        "kind": "Red",
+        "any": false,
+        "min": 12,
+        "max": 15,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TRAP_WARP_DUMMY",
+      "name": "Warp Trap",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      }
+    },
+    {
+      "id": "TRAP_HI_WARP_DUMMY",
+      "name": "Hi-Warp Trap",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      }
+    },
+    {
+      "id": "TRAP_HOLE",
+      "name": "Hole Trap",
+      "price": {
+        "kind": "Prism",
+        "any": false,
+        "min": 3,
+        "max": 6,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TRAP_PIT",
+      "name": "Pit Trap",
+      "price": {
+        "kind": "Prism",
+        "any": false,
+        "min": 12,
+        "max": 15,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TRAP_REVERSE",
+      "name": "Reverse Trap",
+      "price": {
+        "kind": "Pale",
+        "any": false,
+        "min": 10,
+        "max": 12,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TRAP_CONFUSE",
+      "name": "Confuse Trap",
+      "price": {
+        "kind": "Pale",
+        "any": false,
+        "min": 10,
+        "max": 12,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TRAP_RUN_DUMMY",
+      "name": "Run Trap",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      }
+    },
+    {
+      "id": "TRAP_FADE_DUMMY",
+      "name": "Fade Trap",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      }
+    },
+    {
+      "id": "TRAP_SLOW_DUMMY",
+      "name": "Slow Trap",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      }
+    },
+    {
+      "id": "TRAP_SMOKE",
+      "name": "Smoke Trap",
+      "price": {
+        "kind": "Red",
+        "any": false,
+        "min": 5,
+        "max": 7,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TRAP_BIG_SMOKE",
+      "name": "Big Smoke Trap",
+      "price": {
+        "kind": "Red",
+        "any": false,
+        "min": 12,
+        "max": 16,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TRAP_ROCK",
+      "name": "Rock Trap",
+      "price": {
+        "kind": "Blue",
+        "any": false,
+        "min": 3,
+        "max": 6,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TRAP_ROCKFALL",
+      "name": "Rockfall Trap",
+      "price": {
+        "kind": "Blue",
+        "any": false,
+        "min": 8,
+        "max": 15,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TRAP_FOAM",
+      "name": "Foam Trap",
+      "price": {
+        "kind": "Blue",
+        "any": false,
+        "min": 5,
+        "max": 7,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TRAP_BUBBLE",
+      "name": "Bubble Trap",
+      "price": {
+        "kind": "Blue",
+        "any": false,
+        "min": 12,
+        "max": 16,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TRAP_ALERT_1",
+      "name": "Alert Trap 1",
+      "price": {
+        "kind": "Pale",
+        "any": false,
+        "min": 5,
+        "max": 9,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TRAP_ALERT_2",
+      "name": "Alert Trap 2",
+      "price": {
+        "kind": "Pale",
+        "any": false,
+        "min": 5,
+        "max": 9,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TRAP_ALERT_3",
+      "name": "Alert Trap 3",
+      "price": {
+        "kind": "Pale",
+        "any": false,
+        "min": 5,
+        "max": 9,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TRAP_ALERT_4",
+      "name": "Alert Trap 4",
+      "price": {
+        "kind": "Pale",
+        "any": false,
+        "min": 5,
+        "max": 9,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TRAP_LEAF",
+      "name": "Leaf Trap",
+      "price": {
+        "kind": "Green",
+        "any": false,
+        "min": 15,
+        "max": 19,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TRAP_FLOWER",
+      "name": "Flower Trap",
+      "price": {
+        "kind": "Green",
+        "any": false,
+        "min": 30,
+        "max": 40,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TRAP_EMBER",
+      "name": "Ember Trap",
+      "price": {
+        "kind": "Red",
+        "any": false,
+        "min": 5,
+        "max": 9,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TRAP_FIRE",
+      "name": "Fire Trap",
+      "price": {
+        "kind": "Red",
+        "any": false,
+        "min": 20,
+        "max": 30,
+        "forTrade": true
+      }
+    },
+    {
+      "id": "TRAP_RADAR_DUMMY",
+      "name": "Radar Trap",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      }
+    },
+    {
+      "id": "TRAP_DIGGER_DRILL",
+      "name": "Digger Drill",
+      "price": {
+        "kind": "None",
+        "any": true,
+        "min": 15,
+        "max": 20,
+        "forTrade": true
+      }
+    }
+  ],
+  "goods": [
+    {
+      "id": "UG_GOOD_PC_NORMAL_FLAG",
+      "name": "PC",
+      "width": 2,
+      "depth": 1,
+      "collision": "110000000",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_PC_BRONZE_FLAG",
+      "name": "PC",
+      "width": 2,
+      "depth": 1,
+      "collision": "110000000",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_PC_SILVER_FLAG",
+      "name": "PC",
+      "width": 2,
+      "depth": 1,
+      "collision": "110000000",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_PC_GOLD_FLAG",
+      "name": "PC",
+      "width": 2,
+      "depth": 1,
+      "collision": "110000000",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_PC_PLATINUM_FLAG",
+      "name": "PC",
+      "width": 2,
+      "depth": 1,
+      "collision": "110000000",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_BIG_BOULDER",
+      "name": "Big Boulder",
+      "width": 2,
+      "depth": 2,
+      "collision": "110110000",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_YELLOW_CUSHION",
+      "name": "Yellow Cushion",
+      "width": 1,
+      "depth": 1,
+      "collision": "000000000",
+      "price": {
+        "kind": "Red",
+        "any": false,
+        "min": 8,
+        "max": 10,
+        "forTrade": true
+      },
+      "money": 500,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_BLUE_CUSHION",
+      "name": "Blue Cushion",
+      "width": 1,
+      "depth": 1,
+      "collision": "000000000",
+      "price": {
+        "kind": "Red",
+        "any": false,
+        "min": 8,
+        "max": 10,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_WOODEN_CHAIR",
+      "name": "Wooden Chair",
+      "width": 1,
+      "depth": 1,
+      "collision": "000000000",
+      "price": {
+        "kind": "Red",
+        "any": false,
+        "min": 8,
+        "max": 10,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_BIG_TABLE",
+      "name": "Big Table",
+      "width": 3,
+      "depth": 3,
+      "collision": "111111111",
+      "price": {
+        "kind": "Blue",
+        "any": false,
+        "min": 12,
+        "max": 15,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_PLAIN_TABLE",
+      "name": "Plain Table",
+      "width": 2,
+      "depth": 2,
+      "collision": "110110000",
+      "price": {
+        "kind": "Blue",
+        "any": false,
+        "min": 8,
+        "max": 10,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_SMALL_TABLE",
+      "name": "Small Table",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "Blue",
+        "any": false,
+        "min": 8,
+        "max": 10,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_LONG_TABLE",
+      "name": "Long Table",
+      "width": 1,
+      "depth": 3,
+      "collision": "100100100",
+      "price": {
+        "kind": "Blue",
+        "any": false,
+        "min": 12,
+        "max": 15,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_WIDE_TABLE",
+      "name": "Wide Table",
+      "width": 3,
+      "depth": 1,
+      "collision": "111000000",
+      "price": {
+        "kind": "Blue",
+        "any": false,
+        "min": 12,
+        "max": 15,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_POKE_TABLE",
+      "name": "Poké Table",
+      "width": 2,
+      "depth": 2,
+      "collision": "110110000",
+      "price": {
+        "kind": "Blue",
+        "any": false,
+        "min": 20,
+        "max": 25,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_BIG_BOOKSHELF",
+      "name": "Big Bookshelf",
+      "width": 2,
+      "depth": 1,
+      "collision": "110000000",
+      "price": {
+        "kind": "Green",
+        "any": false,
+        "min": 20,
+        "max": 25,
+        "forTrade": true
+      },
+      "money": 0,
+      "record": "FossilsDug",
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_SMALL_BOOKSHELF",
+      "name": "Small Bookshelf",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "Green",
+        "any": false,
+        "min": 8,
+        "max": 10,
+        "forTrade": true
+      },
+      "money": 0,
+      "record": "FossilsDug",
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_RESEARCH_SHELF",
+      "name": "Research Shelf",
+      "width": 2,
+      "depth": 1,
+      "collision": "110000000",
+      "price": {
+        "kind": "Green",
+        "any": false,
+        "min": 12,
+        "max": 15,
+        "forTrade": true
+      },
+      "money": 0,
+      "record": "SpheresDug",
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_BIKE_RACK",
+      "name": "Bike Rack",
+      "width": 2,
+      "depth": 1,
+      "collision": "110000000",
+      "price": {
+        "kind": "Green",
+        "any": false,
+        "min": 35,
+        "max": 49,
+        "forTrade": true
+      },
+      "money": 0,
+      "record": "TrapHits",
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_SHOP_SHELF",
+      "name": "Shop Shelf",
+      "width": 2,
+      "depth": 1,
+      "collision": "110000000",
+      "price": {
+        "kind": "Green",
+        "any": false,
+        "min": 35,
+        "max": 49,
+        "forTrade": true
+      },
+      "money": 0,
+      "record": "GiftsGiven",
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_DISPLAY_SHELF",
+      "name": "Display Shelf",
+      "width": 2,
+      "depth": 2,
+      "collision": "110110000",
+      "price": {
+        "kind": "Green",
+        "any": false,
+        "min": 12,
+        "max": 15,
+        "forTrade": true
+      },
+      "money": 0,
+      "record": "GiftsReceived",
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_CUPBOARD",
+      "name": "Cupboard",
+      "width": 2,
+      "depth": 1,
+      "collision": "110000000",
+      "price": {
+        "kind": "Green",
+        "any": false,
+        "min": 20,
+        "max": 25,
+        "forTrade": true
+      },
+      "money": 1000,
+      "record": "OthersHelped",
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_WOOD_DRESSER",
+      "name": "Wood Dresser",
+      "width": 2,
+      "depth": 1,
+      "collision": "110000000",
+      "price": {
+        "kind": "Green",
+        "any": false,
+        "min": 20,
+        "max": 25,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_PINK_DRESSER",
+      "name": "Pink Dresser",
+      "width": 2,
+      "depth": 1,
+      "collision": "110000000",
+      "price": {
+        "kind": "Green",
+        "any": false,
+        "min": 50,
+        "max": 60,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_TV",
+      "name": "TV",
+      "width": 2,
+      "depth": 1,
+      "collision": "110000000",
+      "price": {
+        "kind": "Prism",
+        "any": false,
+        "min": 9,
+        "max": 10,
+        "forTrade": true
+      },
+      "money": 4500,
+      "record": "TotalScore",
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_REFRIGERATOR",
+      "name": "Refrigerator",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "Green",
+        "any": false,
+        "min": 12,
+        "max": 15,
+        "forTrade": true
+      },
+      "money": 1000,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_PRETTY_SINK",
+      "name": "Pretty Sink",
+      "width": 2,
+      "depth": 1,
+      "collision": "110000000",
+      "price": {
+        "kind": "Prism",
+        "any": false,
+        "min": 9,
+        "max": 10,
+        "forTrade": true
+      },
+      "money": 3000,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_FEATHERY_BED",
+      "name": "Feathery Bed",
+      "width": 3,
+      "depth": 3,
+      "collision": "010000010",
+      "price": {
+        "kind": "Blue",
+        "any": false,
+        "min": 33,
+        "max": 40,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_TRASH_CAN",
+      "name": "Trash Can",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "Red",
+        "any": false,
+        "min": 8,
+        "max": 10,
+        "forTrade": true
+      },
+      "money": 0,
+      "record": "TrapsHit",
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_CARDBOARD_BOX",
+      "name": "Cardboard Box",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "Red",
+        "any": false,
+        "min": 20,
+        "max": 25,
+        "forTrade": true
+      },
+      "money": 0,
+      "record": "TimesBaseMoved",
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_CRATE",
+      "name": "Crate",
+      "width": 2,
+      "depth": 2,
+      "collision": "110110000",
+      "price": {
+        "kind": "Red",
+        "any": false,
+        "min": 33,
+        "max": 40,
+        "forTrade": true
+      },
+      "money": 0,
+      "record": "TimesBaseMoved",
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_CONTAINER",
+      "name": "Container",
+      "width": 2,
+      "depth": 2,
+      "collision": "110110000",
+      "price": {
+        "kind": "Pale",
+        "any": false,
+        "min": 10,
+        "max": 40,
+        "forTrade": true
+      },
+      "money": 0,
+      "record": "TimesBaseMoved",
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_OIL_DRUM",
+      "name": "Oil Drum",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "Pale",
+        "any": false,
+        "min": 10,
+        "max": 40,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_BIG_OIL_DRUM",
+      "name": "Big Oil Drum",
+      "width": 2,
+      "depth": 2,
+      "collision": "110110000",
+      "price": {
+        "kind": "Pale",
+        "any": false,
+        "min": 10,
+        "max": 40,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_IRON_BEAM",
+      "name": "Iron Beam",
+      "width": 2,
+      "depth": 2,
+      "collision": "110110000",
+      "price": {
+        "kind": "Prism",
+        "any": false,
+        "min": 9,
+        "max": 10,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_POTTED_PLANT",
+      "name": "Potted Plant",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "Red",
+        "any": false,
+        "min": 20,
+        "max": 25,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_POKE_FLOWER",
+      "name": "Poké Flower",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "Pale",
+        "any": false,
+        "min": 10,
+        "max": 40,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_HEALING_MACHINE",
+      "name": "Healing Machine",
+      "width": 2,
+      "depth": 3,
+      "collision": "110110110",
+      "price": {
+        "kind": "Prism",
+        "any": false,
+        "min": 90,
+        "max": 99,
+        "forTrade": true
+      },
+      "money": 0,
+      "record": "FlagsRegistered",
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_LAB_MACHINE",
+      "name": "Lab Machine",
+      "width": 2,
+      "depth": 2,
+      "collision": "110110000",
+      "price": {
+        "kind": "Prism",
+        "any": false,
+        "min": 28,
+        "max": 30,
+        "forTrade": true
+      },
+      "money": 0,
+      "record": "RecoveredFlags",
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_TEST_MACHINE",
+      "name": "Test Machine",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "Prism",
+        "any": false,
+        "min": 28,
+        "max": 30,
+        "forTrade": true
+      },
+      "money": 0,
+      "record": "OwnFlagsTaken",
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_GAME_SYSTEM",
+      "name": "Game System",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "Prism",
+        "any": false,
+        "min": 48,
+        "max": 50,
+        "forTrade": true
+      },
+      "money": 0,
+      "record": "TotalScore",
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_VENDING_MACHINE",
+      "name": "Vending Machine",
+      "width": 2,
+      "depth": 1,
+      "collision": "110000000",
+      "price": {
+        "kind": "Green",
+        "any": false,
+        "min": 8,
+        "max": 10,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_RED_BIKE",
+      "name": "Red Bike",
+      "width": 2,
+      "depth": 1,
+      "collision": "110000000",
+      "price": {
+        "kind": "Red",
+        "any": false,
+        "min": 33,
+        "max": 40,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_GREEN_BIKE",
+      "name": "Green Bike",
+      "width": 2,
+      "depth": 1,
+      "collision": "110000000",
+      "price": {
+        "kind": "Green",
+        "any": false,
+        "min": 33,
+        "max": 40,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_BINOCULARS",
+      "name": "Binoculars",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "Pale",
+        "any": false,
+        "min": 10,
+        "max": 40,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_GLOBE",
+      "name": "Globe",
+      "width": 3,
+      "depth": 3,
+      "collision": "111111111",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 0,
+      "record": "PeopleMet",
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_GYM_STATUE",
+      "name": "Gym Statue",
+      "width": 1,
+      "depth": 2,
+      "collision": "100100000",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 0,
+      "record": "FlagsObtained",
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_RED_TENT",
+      "name": "Red Tent",
+      "width": 3,
+      "depth": 3,
+      "collision": "101000101",
+      "price": {
+        "kind": "Pale",
+        "any": false,
+        "min": 20,
+        "max": 70,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_BLUE_TENT",
+      "name": "Blue Tent",
+      "width": 3,
+      "depth": 3,
+      "collision": "101000101",
+      "price": {
+        "kind": "Pale",
+        "any": false,
+        "min": 20,
+        "max": 70,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_CLEAR_TENT",
+      "name": "Clear Tent",
+      "width": 3,
+      "depth": 3,
+      "collision": "101000101",
+      "price": {
+        "kind": "Pale",
+        "any": false,
+        "min": 40,
+        "max": 99,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_MAZE_BLOCK_1",
+      "name": "Maze Block 1",
+      "width": 3,
+      "depth": 3,
+      "collision": "111000101",
+      "price": {
+        "kind": "Prism",
+        "any": false,
+        "min": 48,
+        "max": 50,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_MAZE_BLOCK_2",
+      "name": "Maze Block 2",
+      "width": 3,
+      "depth": 3,
+      "collision": "101001101",
+      "price": {
+        "kind": "Prism",
+        "any": false,
+        "min": 48,
+        "max": 50,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_MAZE_BLOCK_3",
+      "name": "Maze Block 3",
+      "width": 3,
+      "depth": 3,
+      "collision": "101000111",
+      "price": {
+        "kind": "Prism",
+        "any": false,
+        "min": 48,
+        "max": 50,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_MAZE_BLOCK_4",
+      "name": "Maze Block 4",
+      "width": 3,
+      "depth": 3,
+      "collision": "101100101",
+      "price": {
+        "kind": "Prism",
+        "any": false,
+        "min": 48,
+        "max": 50,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_MAZE_BLOCK_5",
+      "name": "Maze Block 5",
+      "width": 3,
+      "depth": 3,
+      "collision": "101000101",
+      "price": {
+        "kind": "Prism",
+        "any": false,
+        "min": 48,
+        "max": 50,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_HOLE_TOOL",
+      "name": "Hole Tool",
+      "width": 1,
+      "depth": 1,
+      "collision": "000000000",
+      "price": {
+        "kind": "Blue",
+        "any": false,
+        "min": 10,
+        "max": 12,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": true,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_PIT_TOOL",
+      "name": "Pit Tool",
+      "width": 1,
+      "depth": 1,
+      "collision": "000000000",
+      "price": {
+        "kind": "Blue",
+        "any": false,
+        "min": 25,
+        "max": 30,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": true,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_SMOKE_TOOL",
+      "name": "Smoke Tool",
+      "width": 1,
+      "depth": 1,
+      "collision": "000000000",
+      "price": {
+        "kind": "Red",
+        "any": false,
+        "min": 12,
+        "max": 14,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": true,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_BIG_SMOKE_TOOL",
+      "name": "Big Smoke Tool",
+      "width": 1,
+      "depth": 1,
+      "collision": "000000000",
+      "price": {
+        "kind": "Red",
+        "any": false,
+        "min": 28,
+        "max": 32,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": true,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_ROCK_TOOL",
+      "name": "Rock Tool",
+      "width": 1,
+      "depth": 1,
+      "collision": "000000000",
+      "price": {
+        "kind": "Red",
+        "any": false,
+        "min": 10,
+        "max": 12,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": true,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_ROCKFALL_TOOL",
+      "name": "Rockfall Tool",
+      "width": 1,
+      "depth": 1,
+      "collision": "000000000",
+      "price": {
+        "kind": "Red",
+        "any": false,
+        "min": 25,
+        "max": 30,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": true,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_FOAM_TOOL",
+      "name": "Foam Tool",
+      "width": 1,
+      "depth": 1,
+      "collision": "000000000",
+      "price": {
+        "kind": "Blue",
+        "any": false,
+        "min": 12,
+        "max": 14,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": true,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_BUBBLE_TOOL",
+      "name": "Bubble Tool",
+      "width": 1,
+      "depth": 1,
+      "collision": "000000000",
+      "price": {
+        "kind": "Blue",
+        "any": false,
+        "min": 28,
+        "max": 32,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": true,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_ALERT_TOOL_1",
+      "name": "Alert Tool 1",
+      "width": 1,
+      "depth": 1,
+      "collision": "000000000",
+      "price": {
+        "kind": "Pale",
+        "any": false,
+        "min": 20,
+        "max": 50,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": true,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_ALERT_TOOL_2",
+      "name": "Alert Tool 2",
+      "width": 1,
+      "depth": 1,
+      "collision": "000000000",
+      "price": {
+        "kind": "Pale",
+        "any": false,
+        "min": 20,
+        "max": 50,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": true,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_ALERT_TOOL_3",
+      "name": "Alert Tool 3",
+      "width": 1,
+      "depth": 1,
+      "collision": "000000000",
+      "price": {
+        "kind": "Pale",
+        "any": false,
+        "min": 20,
+        "max": 50,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": true,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_ALERT_TOOL_4",
+      "name": "Alert Tool 4",
+      "width": 1,
+      "depth": 1,
+      "collision": "000000000",
+      "price": {
+        "kind": "Pale",
+        "any": false,
+        "min": 20,
+        "max": 50,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": true,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_LEAF_TOOL",
+      "name": "Leaf Tool",
+      "width": 1,
+      "depth": 1,
+      "collision": "000000000",
+      "price": {
+        "kind": "Green",
+        "any": false,
+        "min": 30,
+        "max": 38,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": true,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_FLOWER_TOOL",
+      "name": "Flower Tool",
+      "width": 1,
+      "depth": 1,
+      "collision": "000000000",
+      "price": {
+        "kind": "Green",
+        "any": false,
+        "min": 65,
+        "max": 80,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": true,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_EMBER_TOOL",
+      "name": "Ember Tool",
+      "width": 1,
+      "depth": 1,
+      "collision": "000000000",
+      "price": {
+        "kind": "Red",
+        "any": false,
+        "min": 15,
+        "max": 18,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": true,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_FIRE_TOOL",
+      "name": "Fire Tool",
+      "width": 1,
+      "depth": 1,
+      "collision": "000000000",
+      "price": {
+        "kind": "Red",
+        "any": false,
+        "min": 33,
+        "max": 40,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": true,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_CUTE_CUP",
+      "name": "Cute Cup",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_COOL_CUP",
+      "name": "Cool Cup",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_BEAUTY_CUP",
+      "name": "Beauty Cup",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_TOUGH_CUP",
+      "name": "Tough Cup",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_CLEVER_CUP",
+      "name": "Clever Cup",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_BLUE_CRYSTAL",
+      "name": "Blue Crystal",
+      "width": 2,
+      "depth": 2,
+      "collision": "110110000",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_PINK_CRYSTAL",
+      "name": "Pink Crystal",
+      "width": 2,
+      "depth": 2,
+      "collision": "110110000",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_RED_CRYSTAL",
+      "name": "Red Crystal",
+      "width": 2,
+      "depth": 2,
+      "collision": "110110000",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_YELLOW_CRYSTAL",
+      "name": "Yellow Crystal",
+      "width": 2,
+      "depth": 2,
+      "collision": "110110000",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_PRETTY_GEM",
+      "name": "Pretty Gem",
+      "width": 2,
+      "depth": 2,
+      "collision": "110110000",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_SHINY_GEM",
+      "name": "Shiny Gem",
+      "width": 2,
+      "depth": 2,
+      "collision": "110110000",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_MYSTIC_GEM",
+      "name": "Mystic Gem",
+      "width": 2,
+      "depth": 2,
+      "collision": "110110000",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_GLITTER_GEM",
+      "name": "Glitter Gem",
+      "width": 2,
+      "depth": 2,
+      "collision": "110110000",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_BRONZE_TROPHY",
+      "name": "Bronze Trophy",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_SILVER_TROPHY",
+      "name": "Silver Trophy",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_GOLD_TROPHY",
+      "name": "Gold Trophy",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_GREAT_TROPHY_UNUSED",
+      "name": "Great Trophy",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_BALL_ORNAMENT_UNUSED",
+      "name": "Ball Ornament",
+      "width": 2,
+      "depth": 2,
+      "collision": "110110000",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_ROUND_ORNAMENT_UNUSED",
+      "name": "Round Ornament",
+      "width": 2,
+      "depth": 2,
+      "collision": "110110000",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_CLEAR_ORNAMENT_UNUSED",
+      "name": "Clear Ornament",
+      "width": 2,
+      "depth": 2,
+      "collision": "110110000",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_CHARMANDER_DOLL",
+      "name": "Charmander Doll",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "Red",
+        "any": false,
+        "min": 25,
+        "max": 30,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": true,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_BULBASAUR_DOLL",
+      "name": "Bulbasaur Doll",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "Green",
+        "any": false,
+        "min": 25,
+        "max": 30,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": true,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_SQUIRTLE_DOLL",
+      "name": "Squirtle Doll",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "Blue",
+        "any": false,
+        "min": 25,
+        "max": 30,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": true,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_CYNDAQUIL_DOLL",
+      "name": "Cyndaquil Doll",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "Red",
+        "any": false,
+        "min": 25,
+        "max": 30,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": true,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_CHIKORITA_DOLL",
+      "name": "Chikorita Doll",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "Green",
+        "any": false,
+        "min": 25,
+        "max": 30,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": true,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_TOTODILE_DOLL",
+      "name": "Totodile Doll",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "Blue",
+        "any": false,
+        "min": 25,
+        "max": 30,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": true,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_TORCHIC_DOLL",
+      "name": "Torchic Doll",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "Red",
+        "any": false,
+        "min": 25,
+        "max": 30,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": true,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_TREECKO_DOLL",
+      "name": "Treecko Doll",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "Green",
+        "any": false,
+        "min": 25,
+        "max": 30,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": true,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_MUDKIP_DOLL",
+      "name": "Mudkip Doll",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "Blue",
+        "any": false,
+        "min": 25,
+        "max": 30,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": true,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_CHIMCHAR_DOLL",
+      "name": "Chimchar Doll",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "Red",
+        "any": false,
+        "min": 25,
+        "max": 40,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_TURTWIG_DOLL",
+      "name": "Turtwig Doll",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "Green",
+        "any": false,
+        "min": 35,
+        "max": 40,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_PIPLUP_DOLL",
+      "name": "Piplup Doll",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "Blue",
+        "any": false,
+        "min": 35,
+        "max": 40,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_PIKACHU_DOLL",
+      "name": "Pikachu Doll",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "Pale",
+        "any": false,
+        "min": 70,
+        "max": 99,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_PLUSLE_DOLL",
+      "name": "Plusle Doll",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "Red",
+        "any": false,
+        "min": 60,
+        "max": 70,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": true,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_MINUN_DOLL",
+      "name": "Minun Doll",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "Blue",
+        "any": false,
+        "min": 60,
+        "max": 70,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": true,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_CLEFAIRY_DOLL",
+      "name": "Clefairy Doll",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "Pale",
+        "any": false,
+        "min": 40,
+        "max": 70,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_JIGGLYPUFF_DOLL",
+      "name": "Jigglypuff Doll",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "Pale",
+        "any": false,
+        "min": 40,
+        "max": 70,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": true,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_WOBBUFFET_DOLL",
+      "name": "Wobbuffet Doll",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "Green",
+        "any": false,
+        "min": 80,
+        "max": 99,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": true,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_MEOWTH_DOLL",
+      "name": "Meowth Doll",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "Red",
+        "any": false,
+        "min": 15,
+        "max": 20,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": true,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_SKITTY_DOLL",
+      "name": "Skitty Doll",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "Green",
+        "any": false,
+        "min": 15,
+        "max": 20,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": true,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_GLAMEOW_DOLL",
+      "name": "Glameow Doll",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "Blue",
+        "any": false,
+        "min": 15,
+        "max": 20,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_BUNEARY_DOLL",
+      "name": "Buneary Doll",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "Pale",
+        "any": false,
+        "min": 15,
+        "max": 30,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_WEAVILE_DOLL",
+      "name": "Weavile Doll",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "Prism",
+        "any": false,
+        "min": 28,
+        "max": 30,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_MUNCHLAX_DOLL",
+      "name": "Munchlax Doll",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 2000,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_BONSLY_DOLL",
+      "name": "Bonsly Doll",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 2000,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_MIME_JR_DOLL",
+      "name": "Mime Jr. Doll",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 2000,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_LUCARIO_DOLL",
+      "name": "Lucario Doll",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_MANTYKE_DOLL",
+      "name": "Mantyke Doll",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 3000,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_BUIZEL_DOLL",
+      "name": "Buizel Doll",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 3000,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_CHATOT_DOLL",
+      "name": "Chatot Doll",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 3000,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_MANAPHY_DOLL_UNUSED",
+      "name": "Manaphy Doll",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_SNORLAX_DOLL",
+      "name": "Snorlax Doll",
+      "width": 2,
+      "depth": 1,
+      "collision": "110000000",
+      "price": {
+        "kind": "Red",
+        "any": false,
+        "min": 80,
+        "max": 99,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_WAILORD_DOLL",
+      "name": "Wailord Doll",
+      "width": 2,
+      "depth": 1,
+      "collision": "110000000",
+      "price": {
+        "kind": "Blue",
+        "any": false,
+        "min": 80,
+        "max": 99,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": true,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_MAGNEZONE_DOLL_UNUSED",
+      "name": "Magnezone Doll",
+      "width": 2,
+      "depth": 1,
+      "collision": "110000000",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_DRIFLOON_DOLL",
+      "name": "Drifloon Doll",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "Blue",
+        "any": false,
+        "min": 33,
+        "max": 40,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_HAPPINY_DOLL",
+      "name": "Happiny Doll",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "Pale",
+        "any": false,
+        "min": 40,
+        "max": 70,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_PACHIRISU_DOLL",
+      "name": "Pachirisu Doll",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "Pale",
+        "any": false,
+        "min": 70,
+        "max": 99,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": true
+    },
+    {
+      "id": "UG_GOOD_BASE_ENTRANCE_NORTH",
+      "name": "-",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_BASE_ENTRANCE_SOUTH",
+      "name": "-",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_BASE_ENTRANCE_WEST",
+      "name": "-",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_BASE_ENTRANCE_EAST",
+      "name": "-",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "None",
+        "any": false,
+        "min": 0,
+        "max": 0,
+        "forTrade": false
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_WIDE_SOFA",
+      "name": "Wide Sofa",
+      "width": 2,
+      "depth": 1,
+      "collision": "110000000",
+      "price": {
+        "kind": "Blue",
+        "any": false,
+        "min": 20,
+        "max": 25,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_BONSAI",
+      "name": "Bonsai",
+      "width": 1,
+      "depth": 1,
+      "collision": "100000000",
+      "price": {
+        "kind": "Green",
+        "any": false,
+        "min": 8,
+        "max": 10,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_DAINTY_FLOWERS",
+      "name": "Dainty Flowers",
+      "width": 1,
+      "depth": 2,
+      "collision": "100100000",
+      "price": {
+        "kind": "Green",
+        "any": false,
+        "min": 8,
+        "max": 10,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_LOVELY_FLOWERS",
+      "name": "Lovely Flowers",
+      "width": 1,
+      "depth": 2,
+      "collision": "100100000",
+      "price": {
+        "kind": "Green",
+        "any": false,
+        "min": 8,
+        "max": 10,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_PRETTY_FLOWERS",
+      "name": "Pretty Flowers",
+      "width": 1,
+      "depth": 2,
+      "collision": "100100000",
+      "price": {
+        "kind": "Green",
+        "any": false,
+        "min": 8,
+        "max": 10,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    },
+    {
+      "id": "UG_GOOD_LAVISH_FLOWERS",
+      "name": "Lavish Flowers",
+      "width": 3,
+      "depth": 1,
+      "collision": "111000000",
+      "price": {
+        "kind": "Green",
+        "any": false,
+        "min": 8,
+        "max": 10,
+        "forTrade": true
+      },
+      "money": 0,
+      "national": false,
+      "ungiftable": false
+    }
+  ],
+  "vendors": [
+    {
+      "kind": "Goods",
+      "x": 72,
+      "z": 104
+    },
+    {
+      "kind": "Goods",
+      "x": 424,
+      "z": 87
+    },
+    {
+      "kind": "Goods",
+      "x": 200,
+      "z": 185
+    },
+    {
+      "kind": "Goods",
+      "x": 335,
+      "z": 264
+    },
+    {
+      "kind": "Goods",
+      "x": 175,
+      "z": 279
+    },
+    {
+      "kind": "Goods",
+      "x": 424,
+      "z": 439
+    },
+    {
+      "kind": "Goods",
+      "x": 87,
+      "z": 456
+    },
+    {
+      "kind": "Goods",
+      "x": 311,
+      "z": 358
+    },
+    {
+      "kind": "Traps",
+      "x": 232,
+      "z": 87
+    },
+    {
+      "kind": "Traps",
+      "x": 328,
+      "z": 151
+    },
+    {
+      "kind": "Traps",
+      "x": 232,
+      "z": 215
+    },
+    {
+      "kind": "Traps",
+      "x": 232,
+      "z": 298
+    },
+    {
+      "kind": "Traps",
+      "x": 279,
+      "z": 328
+    },
+    {
+      "kind": "Traps",
+      "x": 279,
+      "z": 456
+    },
+    {
+      "kind": "Traps",
+      "x": 183,
+      "z": 392
+    },
+    {
+      "kind": "Traps",
+      "x": 279,
+      "z": 245
+    },
+    {
+      "kind": "Treasures",
+      "x": 40,
+      "z": 471
+    },
+    {
+      "kind": "Treasures",
+      "x": 471,
+      "z": 72
+    },
+    {
+      "kind": "Treasures",
+      "x": 471,
+      "z": 471
+    },
+    {
+      "kind": "Treasures",
+      "x": 40,
+      "z": 72
+    }
+  ]
+}

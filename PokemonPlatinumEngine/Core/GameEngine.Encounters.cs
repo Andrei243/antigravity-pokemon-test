@@ -173,7 +173,7 @@ public partial class GameEngine
     /// </summary>
     private void KeepTheEncounterClock(int daysPassed)
     {
-        if (daysPassed > 0) DailyEvents.DaysPass(daysPassed, story, encounters, PlaceKey(), fieldRandom);
+        if (daysPassed > 0) DailyEvents.DaysPass(daysPassed, story, encounters, PlaceKey(), fieldRandom, underground);
         encounters.ClockTo(GameClock.Moment);
         berries.ClockTo(GameClock.Moment);
     }

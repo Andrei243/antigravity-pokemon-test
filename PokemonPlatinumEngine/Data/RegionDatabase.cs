@@ -176,6 +176,8 @@ public static class RegionDatabase
                 // Plan 02 · S11, part b: Team Galactic's headquarters in Veilstone City, floor by floor on the original's plans
                 "GalacticHQ1F", "GalacticHQ2F", "GalacticHQ3F", "GalacticHQ4F", "GalacticHQB1F", "GalacticHQB2F",
                 "GalacticHQHall", "GalacticHQLaboratory", "GalacticHQControlRoom",
+                // Plan 06 · R16a: the Underground (a matrix of the imported world, come to by the Explorer Kit alone)
+                "Underground",
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

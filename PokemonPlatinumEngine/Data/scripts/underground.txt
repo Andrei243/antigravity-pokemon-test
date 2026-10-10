@@ -1,0 +1,112 @@
+# The Underground (plan 06 · R16a). docs/scripts.md describes the language; the lines are our own, on the original's
+# beats (scripts_underground.s, and what src/underground/ says through its own text printers).
+#
+# Nothing leads here but the Explorer Kit. The game lays the tunnels out as the player arrives: the day's walls and
+# traps and the day's other diggers' bases (the hikers stand where the overlay puts them). What is asked of the player
+# below ground is asked by these scripts; what they answer is carried out by the `underground` command.
+
+
+# Roark is beside whoever comes down for the first time (the original's frame script, Underground_OnFrame_RoarkIntro).
+script OnEnter
+  if var VAR_HAS_SEEN_UNDERGROUND_ROARK_INTRO != 0 end
+  face roark player
+  emote roark exclaim
+  wait 0.4
+  face player roark
+  speaker "Roark"
+  say "Well, look who it is! {player}! Your first time down here, by the look of you."
+  say "This is the Underground: tunnels that run beneath the whole of Sinnoh, from one end to the other."
+  say "What am I doing in a place like this? Hard to say! Down here you do as you please."
+  say "Dig Treasure and Spheres out of the walls. Hollow out a Secret Base of your own. That sort of thing."
+  say "The Underground Man in Eterna City knows these tunnels better than anyone. Have a word with him."
+  say "Right, I must be going. Watch where you tread!"
+  face roark down
+  wait 0.3
+  sound "warp"
+  hide roark
+  setflag FLAG_HIDE_ROARK_UNDERGROUND
+  setvar VAR_HAS_SEEN_UNDERGROUND_ROARK_INTRO 1
+  setflag FLAG_HAS_SEEN_UNDERGROUND_ROARK_INTRO
+  end
+
+
+# The hikers (UndergroundVendors_StartShopMenuTask): eight trade goods for Spheres, eight trade traps, and four give
+# Spheres for treasures. Each also gives a Sphere for the kind of thing he trades in.
+script HikerGoods
+  speaker "Hiker"
+  say "Got a Sphere or two about you? Then I've goods here you might fancy for your base."
+  underground hiker
+  speaker "Hiker"
+  say "Mind how you go down here!"
+  end
+
+script HikerTraps
+  speaker "Hiker"
+  say "Got a Sphere or two about you? I'll swap you a trap for the right one."
+  underground hiker
+  speaker "Hiker"
+  say "Mind how you go down here!"
+  end
+
+script HikerTreasures
+  speaker "Hiker"
+  say "Dug up any treasures? I'll give you good Spheres for them."
+  underground hiker
+  speaker "Hiker"
+  say "Mind how you go down here!"
+  end
+
+
+# A wall that holds something, faced with the button (Mining_ProcessMiningSpotInteract).
+script Wall
+  speaker none
+  text "This stretch of wall sounds hollow. Something is in there!"
+  ask "Dig into it?"
+  if no end
+  underground mine
+  end
+
+
+# The PC of the player's own base (UndergroundPC_OpenPCMenu). A flag carried home is put up on it first.
+script BasePC
+  speaker none
+  underground home
+  if result == 2 goto Better
+  if result == 1 goto Brought
+label Menu
+  underground pc
+  end
+label Brought
+  sound "levelup"
+  text "{digger}'s flag was put up on your PC!"
+  goto Menu
+label Better
+  sound "levelup"
+  text "{digger}'s flag was put up on your PC!"
+  text "Your base's own flag has changed for a finer one!"
+  goto Menu
+
+
+# The PC of another digger's base: its flag is there to be taken, one a day (UndergroundPC_StartTakeFlagPromptTask).
+script DiggerPC
+  speaker none
+  underground cantake
+  if result == 0 goto None
+  ask "{digger}'s flag is on the PC. Take it?"
+  if no end
+  underground takeflag
+  sound "exclaim"
+  text "You took {digger}'s flag! Carry it home, to the PC of your own base."
+  end
+label None
+  text "It is {digger}'s PC. There is no flag on it for you today."
+  end
+
+
+# GO UP, from the bag below ground (the original's Underground menu).
+script GoUp
+  speaker none
+  ask "Go back up to the surface?"
+  if no end
+  underground up
+  end

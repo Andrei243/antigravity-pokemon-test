@@ -125,6 +125,12 @@ public class SaveData
     /// <summary>The Super Contests entered and won, and the winners' photographs (plan 06 · R17b). Null before any, and in older saves.</summary>
     public Models.SuperContests.ContestRecords? ContestRecords { get; set; }
 
+    /// <summary>
+    /// The Underground (plan 06 · R16a): its bag and PC, what lies buried, the base, the records and the day's number.
+    /// Null in saves from before it, which are given a new one.
+    /// </summary>
+    public Models.Underground.UndergroundState? Underground { get; set; }
+
     /// <summary>Solaceon Town's Day Care (plan 06 · R15). Null while it is empty with no cycle under way, and in older saves.</summary>
     public DayCareSave? DayCare { get; set; }
 

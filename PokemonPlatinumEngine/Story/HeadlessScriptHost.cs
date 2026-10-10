@@ -127,6 +127,21 @@ public sealed class HeadlessScriptHost : IScriptHost
     public SealCase SealCase { get; } = new();
     public Models.SuperContests.ContestRecords ContestRecords { get; } = new();
 
+    /// <summary>
+    /// The Underground (plan 06 · R16a): its state, empty unless a test or a script fills it; what its commands in the
+    /// tunnels come to, which a test may set by name (1 where it sets none); and whose base or flag is spoken of.
+    /// </summary>
+    public Models.Underground.UndergroundState Underground { get; } = new();
+    public Dictionary<string, int> UndergroundResults { get; } = new();
+    public string DiggerName { get; set; } = "Bram";
+
+    public int UndergroundAct(string what, NPC? subject)
+    {
+        Log.Add($"underground {what}");
+        if (what is "down" or "up" or "mine" or "hiker" or "pc" or "bag") Waits();
+        return UndergroundResults.GetValueOrDefault(what, 1);
+    }
+
     /// <summary>The Pokémon hatched so far by <c>hatch</c>, in order: here an Egg hatches at once, with no scene.</summary>
     public List<Pokemon> Hatched { get; } = new();
 

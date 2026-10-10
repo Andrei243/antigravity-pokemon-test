@@ -231,6 +231,20 @@ public class ScriptTests
           ribbon offer
           ribbon effort
           ribbon feeling
+          underground give trap "Digger Drill"
+          underground give sphere prism 3
+          underground give good "Plain Table"
+          underground room
+          underground flags
+          underground down
+          underground up
+          underground mine
+          underground hiker
+          underground pc
+          underground bag
+          underground cantake
+          underground takeflag
+          underground home
         script Other
           end
         """;
@@ -1078,6 +1092,9 @@ public class ScriptTests
         public void HoldContest(int slot, ContestStat category, PokemonPlatinumEngine.Models.SuperContests.ContestRank rank, PokemonPlatinumEngine.Models.SuperContests.ContestMode mode) => inner.HoldContest(slot, category, rank, mode);
         public SealCase SealCase => inner.SealCase;
         public PokemonPlatinumEngine.Models.SuperContests.ContestRecords ContestRecords => inner.ContestRecords;
+        public PokemonPlatinumEngine.Models.Underground.UndergroundState Underground => inner.Underground;
+        public int UndergroundAct(string what, NPC? subject) => inner.UndergroundAct(what, subject);
+        public string DiggerName => inner.DiggerName;
         public int? HoneyTreeFaced => inner.HoneyTreeFaced;
         public uint TrainerNumber => inner.TrainerNumber;
         public TimeOfDay TimeOfDay => inner.TimeOfDay;

@@ -58,6 +58,8 @@ public enum Op
     PlatformLift,
     // Ball Capsules, Seals and ribbons (plan 06 · R17b)
     Seal, Ribbon,
+    // The Underground (plan 06 · R16a)
+    Underground,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>
