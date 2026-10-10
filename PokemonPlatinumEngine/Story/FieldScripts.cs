@@ -59,6 +59,18 @@ public static class FieldScripts
     public const string SafariOutOfBalls = "common.SafariOutOfBalls";
 
     /// <summary>
+    /// Berries (plan 06 · R14a; the original's berry tree script and its entries 1 to 3): soft soil spoken to, a
+    /// berry planted, mulch laid and the Sprayduck used from the bag on the soil faced.
+    /// </summary>
+    public const string BerryPatch = "common.BerryPatch";
+    public const string PlantBerry = "common.PlantBerry";
+    public const string UseMulch = "common.UseMulch";
+    public const string UseSprayduck = "common.UseSprayduck";
+
+    /// <summary>Jubilife TV's lottery corner (plan 06 · R14a): its clerk runs this, once the TV's rooms are built (plan 01 · M11).</summary>
+    public const string Lottery = "common.Lottery";
+
+    /// <summary>
     /// The script a field move chosen from the party menu runs (<c>common.UseCut</c>…); null for Milk Drink and
     /// Soft-Boiled, which the party menu carries out itself, and Chatter, which has nothing to do here.
     /// </summary>
@@ -76,6 +88,7 @@ public static class FieldScripts
     {
         if (!string.IsNullOrEmpty(npc.Script)) return npc.Script;
         if (npc.IsItemBall) return ItemBall;
+        if (npc.IsBerryPatch) return BerryPatch;
         if (npc.IsPokemon) return Pokemon;
         if (npc.Obstacle is { } obstacle)
             return obstacle switch { PropType.CutTree => CutTree, PropType.CrackedRock => Rock, _ => Boulder };

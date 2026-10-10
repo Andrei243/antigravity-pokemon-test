@@ -92,10 +92,10 @@
     { "id": "arrow_signpost_eterna_city", "looks": "arrow_signpost", "movement": "none", "x": 281, "z": 532, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "3" },
     { "id": "fisherman", "looks": "fisherman", "movement": "look_south", "x": 267, "z": 532, "facing": 1, "rangeX": 0, "rangeZ": 0, "y": 7, "script": "1" },
     { "id": "item_guard_spec", "looks": "pokeball", "movement": "none", "x": 274, "z": 541, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_205_NORTH_GUARD_SPEC", "item": "Guard Spec.", "script": "7023" },
-    { "id": "berry_soil_1", "looks": "berry_soil", "movement": "berry_soil", "x": 277, "z": 519, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2800" },
-    { "id": "berry_soil_2", "looks": "berry_soil", "movement": "berry_soil", "x": 278, "z": 519, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2800" },
-    { "id": "berry_soil_3", "looks": "berry_soil", "movement": "berry_soil", "x": 279, "z": 519, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2800" },
-    { "id": "berry_soil_4", "looks": "berry_soil", "movement": "berry_soil", "x": 280, "z": 519, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2800" },
+    { "id": "berry_soil_1", "looks": "berry_soil", "movement": "berry_soil", "x": 277, "z": 519, "facing": 0, "rangeX": 0, "rangeZ": 0, "patch": 14, "script": "2800" },
+    { "id": "berry_soil_2", "looks": "berry_soil", "movement": "berry_soil", "x": 278, "z": 519, "facing": 0, "rangeX": 0, "rangeZ": 0, "patch": 15, "script": "2800" },
+    { "id": "berry_soil_3", "looks": "berry_soil", "movement": "berry_soil", "x": 279, "z": 519, "facing": 0, "rangeX": 0, "rangeZ": 0, "patch": 16, "script": "2800" },
+    { "id": "berry_soil_4", "looks": "berry_soil", "movement": "berry_soil", "x": 280, "z": 519, "facing": 0, "rangeX": 0, "rangeZ": 0, "patch": 17, "script": "2800" },
     { "id": "map_signpost", "looks": "map_signpost", "movement": "none", "x": 293, "z": 530, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "MAP_HEADER_ETERNA_CITY", "script": "65535" }
   ],
   "signs": [

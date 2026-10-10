@@ -206,6 +206,8 @@ public partial class GameEngine
         foreach (var (boulder, _, _, _) in slides) boulder.StepOffsetX = boulder.StepOffsetY = 0f;
         slides.Clear();
         currentMap.ResetObstacles();
+        // The berry patches in view begin to grow (BerryPatches_UpdateGrowthStates, plan 06 · R14a)
+        SeeBerryPatches();
     }
 
     /// <summary>
@@ -327,6 +329,8 @@ public partial class GameEngine
     private void UseFieldItem(ItemData item)
     {
         int x = player.GridX, y = player.GridY;
+        // A berry planted, mulch laid or the Sprayduck used on the soil faced (plan 06 · R14a)
+        if (UseOnSoil(item)) return;
         if (item.FieldUse == "Journal")
         {
             currentState = GameState.Journal;
@@ -843,6 +847,10 @@ public partial class GameEngine
                 case ScriptScreen.ChoosePokemon:
                     game.currentState = GameState.PartyMenu;
                     game.partyScreen.OpenToChoose();
+                    break;
+                case ScriptScreen.ChooseItem:
+                    // A berry to plant or a mulch to lay (plan 06 · R14a): the bag on its pocket, holding only those
+                    game.OpenBagToChoose(counter ?? "berries");
                     break;
                 case ScriptScreen.Pc:
                     game.currentState = GameState.PCStorage;

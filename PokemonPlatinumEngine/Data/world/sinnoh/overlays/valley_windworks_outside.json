@@ -9,7 +9,10 @@
   "read": { "4": "Door" },
   "people": {
     "grunt_m": { "name": "Galactic Grunt", "script": "DoorGrunt" },
-    "looker": { "name": "Looker", "dialog": [ "Their base is in Eterna City. Remember it!" ] }
+    "looker": { "name": "Looker", "dialog": [ "Their base is in Eterna City. Remember it!" ] },
+    // The Drifloon that floats by on Fridays once the windworks are free (plan 06 · R14a): its own flag hides it on
+    // every other day, which the place's OnEnter sets or clears
+    "drifloon": { "name": "Drifloon", "script": "Drifloon" }
   },
   "signs": {
     "signboard": "Valley Windworks\nClean power from the wind of the valley."

@@ -733,6 +733,10 @@ public static class WorldMapBuilder
                 return (TileType.Water, solid, solid && cover == TerrainCover.Boulder ? PropType.Boulder : null);
             case TileBehavior.Ice:
                 return (TileType.Ice, solid, null);
+            // Soft soil is a bed of bare earth whatever lies round it (plan 06 · R14a; style guide, "Berry plants"):
+            // the import names no texture for it, which read as lawn
+            case TileBehavior.BerrySoil:
+                return (TileType.Dirt, solid, null);
         }
 
         return cover switch
@@ -1407,6 +1411,26 @@ public static class WorldMapBuilder
                     GridY = o.Z,
                     Item = o.Item,
                     ItemCount = o.Count ?? 1,
+                    HiddenBy = o.HiddenBy,
+                    Key = o.Id,
+                    ScriptFile = key
+                });
+                continue;
+            }
+
+            // Soft soil is an object of the map as the original's is (plan 06 · R14a), with the number of its berry
+            // patch: what grows there is the game's (BerryPatches), and it is spoken to through common.BerryPatch
+            if (o.Patch is { } patch)
+            {
+                // The soil is bare earth under it, wherever it lies (one of Floaroma's is under the flower shop's model)
+                if (map.InBounds(o.X, o.Z)) map.SetGroundTile(o.X, o.Z, TileType.Dirt, map.IsSolid(o.X, o.Z));
+                map.NPCs.Add(new NPC
+                {
+                    Name = "Soft soil",
+                    NpcType = NPC.BerryPatchType,
+                    GridX = o.X,
+                    GridY = o.Z,
+                    Patch = patch,
                     HiddenBy = o.HiddenBy,
                     Key = o.Id,
                     ScriptFile = key

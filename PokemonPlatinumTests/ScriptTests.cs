@@ -185,6 +185,19 @@ public class ScriptTests
           trophygarden
           roamer start "Mesprit"
           survivepoison VAR_A
+          berry status
+          berry moisture
+          berry mulched
+          berry plant
+          berry plant own
+          berry mulch own
+          berry water
+          berry pick
+          chooseitem berries
+          chooseitem mulch
+          lottery check
+          lottery boxed
+          lottery prize
         script Other
           end
         """;
@@ -232,6 +245,8 @@ public class ScriptTests
               if pokerus end
               if safari end
               if partner end
+              if weekday friday end
+              if pocket berries end
             """)[0];
 
         var asked = script.Code.Select(i => i.Condition!.Query).ToHashSet();
@@ -1063,5 +1078,9 @@ public class ScriptTests
         public void Fanfare(MusicRole role) { }
         public void Sound(string name) { }
         public void Cry(string species) { }
+        public DateTime Today => inner.Today;
+        public BerryPatches Berries => inner.Berries;
+        public IEnumerable<Pokemon> Stored => inner.Stored;
+        public void AddScore(int points) { }
     }
 }

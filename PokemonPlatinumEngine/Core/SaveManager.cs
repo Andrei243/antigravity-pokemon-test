@@ -104,6 +104,12 @@ public class SaveData
     public SpecialEncounters? Encounters { get; set; }
 
     /// <summary>
+    /// What grows in the soft soil (plan 06 · R14a): the 128 berry patches. Null in older saves, which find the soil
+    /// as a new game does.
+    /// </summary>
+    public BerryPatches? Berries { get; set; }
+
+    /// <summary>
     /// Which layout of the world the position refers to. Saves from before the import (0, also what a file
     /// without the field reads as) stood on hand-made maps that no longer exist; <see cref="Place"/> moves them.
     /// </summary>

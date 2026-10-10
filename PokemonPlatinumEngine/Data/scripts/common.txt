@@ -25,6 +25,8 @@ script NewGame
   setflag FLAG_HIDE_SANDGEM_TOWN_RIVAL
   setflag FLAG_HIDE_SANDGEM_TOWN_PROF_ROWAN
   setflag FLAG_HIDE_SANDGEM_TOWN_LAB_PROF_OAK
+  # The Valley Windworks' Drifloon of Fridays, until the place's own OnEnter says it is there (plan 06 · R14a)
+  setflag FLAG_HIDE_VALLEY_WINDWORKS_OUTSIDE_DRIFLOON
   setvar VAR_TWINLEAF_TOWN_GUITARIST_TRIGGER_STATE 1
   call ChapterTwo
   return
@@ -545,4 +547,168 @@ script SwarmNews
   end
 label Today
   say "Today there's a whole crowd of {swarm} on {swarmplace}!" "If you want to meet one, now's your chance, {player}!"
+  end
+
+
+# Soft soil (plan 06 · R14a; scripts_berry_tree_interaction.s, BerryTree_Main). What grows there is told from any
+# side, and its fruit picked; planting, mulch and the Sprayduck's watering are done facing the soil from the south,
+# as in the original (GetPlayerDir 0), but for soil with mulch already on it, which the original offers to plant from
+# anywhere. A berry and a mulch are chosen from the bag, opened on them alone.
+script BerryPatch
+  speaker none
+  sound "select"
+  berry status
+  if result == 0 goto Soil
+  if result == 5 goto Fruit
+  if result == 1 text "A {berry} was planted here."
+  if result == 2 text "The {berry} has sprouted!"
+  if result == 3 text "The {berry} plant is growing taller."
+  if result == 4 text "The {berry} plant is in full bloom!"
+  if not facing up end
+  if not item "Sprayduck" end
+label Water
+  ask "Water it with the Sprayduck?"
+  if no end
+  berry water
+  text "{player} watered the {berry} plant. It looks happy!"
+  end
+label Fruit
+  ask "The plant has borne {berries}! Pick the fruit?"
+  if no goto Leave
+  berry pick
+  fanfare item
+  text "{player} picked {berries}!" "{player} put the fruit away in the Berries pocket."
+  end
+label Leave
+  if not facing up goto LeftIt
+  if item "Sprayduck" goto Water
+label LeftIt
+  text "{player} left the fruit on the plant."
+  end
+label Soil
+  berry mulched
+  if result == 1 goto Mulched
+  if not facing up goto Plain
+  if item "Growth Mulch" goto WithMulch
+  if item "Damp Mulch" goto WithMulch
+  if item "Stable Mulch" goto WithMulch
+  if item "Gooey Mulch" goto WithMulch
+  if not pocket berries goto Plain
+  text "It's soft, crumbly soil."
+  goto OfferPlant
+label WithMulch
+  if not pocket berries goto OfferMulch
+  choose "It's soft, crumbly soil." "Spread mulch" "Plant a Berry" "Leave it"
+  if result == 0 goto ChooseMulch
+  if result == 1 goto ChooseBerry
+  end
+label OfferMulch
+  ask "It's soft, crumbly soil. Spread some mulch on it?"
+  if no end
+label ChooseMulch
+  chooseitem mulch
+  if result == 0 end
+  berry mulch
+  if result == 0 end
+  text "{player} spread the {mulch} over the soil."
+  if not pocket berries end
+  goto OfferPlant
+label Mulched
+  text "The soil has been spread with {mulch}."
+  if not pocket berries end
+label OfferPlant
+  ask "Plant a Berry here?"
+  if no end
+label ChooseBerry
+  chooseitem berries
+  if result == 0 end
+  berry plant
+  if result == 0 end
+  text "{player} planted the {berry} in the soft soil."
+  end
+label Plain
+  text "It's soft, crumbly soil."
+  end
+
+
+# A berry used from the bag on empty soft soil faced (plan 06 · R14a; the berry tree script's entry 1, BerryTree_PlantBerry).
+script PlantBerry
+  speaker none
+  berry plant own
+  if result == 0 end
+  text "{player} planted the {berry} in the soft soil."
+  end
+
+
+# The Sprayduck used from the bag or the item button on a plant faced (plan 06 · R14a; entry 2, BerryTree_UseSprayduck).
+script UseSprayduck
+  speaker none
+  berry status
+  berry water
+  text "{player} watered the {berry} plant. It looks happy!"
+  end
+
+
+# A mulch used from the bag on empty soil faced (plan 06 · R14a; entry 3, BerryTree_UseMulch), and then, with berries
+# in the bag, the offer to plant one, as after a mulch chosen at the soil.
+script UseMulch
+  speaker none
+  berry mulch own
+  if result == 0 end
+  text "{player} spread the {mulch} over the soil."
+  if not pocket berries end
+  ask "Plant a Berry here?"
+  if no end
+  chooseitem berries
+  if result == 0 end
+  berry plant
+  if result == 0 end
+  text "{player} planted the {berry} in the soft soil."
+  end
+
+
+# Jubilife TV's lottery corner (plan 06 · R14a; scripts_jubilife_tv_1f.s, its ace trainer at the counter): the day's
+# number against the ID numbers of the player's Pokémon on the team and in the PC, from the last digit up, a prize for
+# the most digits matched, and a prize once a day; until one is won the number can be looked at again. The TV's rooms
+# are plan 01 · M11's, and the clerk there runs this. The bag here holds anything, so the original's prize kept back
+# for want of room never is.
+script Lottery
+  if flag FLAG_DAILY_RECEIVED_LOTTERY_PRIZE goto Drawn
+  if flag FLAG_DAILY_CHECKED_LUCKY_NUMBER goto Again
+  ask "Welcome to the Lottery Corner! Shall we see whether today's number matches the ID number of one of your Pokémon?"
+  if no goto Bye
+  goto Check
+label Again
+  ask "Would you like to check today's number again?"
+  if no goto Bye
+label Check
+  setflag FLAG_DAILY_CHECKED_LUCKY_NUMBER
+  say "One moment... Today's lucky number is {lottery}!"
+  lottery check
+  if result == 0 goto NoMatch
+  lottery boxed
+  if result == 1 goto Boxed
+  say "The ID number of {lotterymon}, on your team, matches it!"
+  goto Prize
+label Boxed
+  say "The ID number of {lotterymon}, resting in your PC, matches it!"
+label Prize
+  lottery check
+  if result == 5 say "Every digit matches! That's the jackpot!"
+  if result == 4 say "The last four digits match! That's the first prize!"
+  if result == 3 say "The last three digits match! That's the second prize!"
+  if result == 2 say "The last two digits match! That's the third prize!"
+  if result == 1 say "The last digit matches! That's the fourth prize!"
+  lottery prize
+  setflag FLAG_DAILY_RECEIVED_LOTTERY_PRIZE
+  say "Do come and try your luck again!"
+  end
+label NoMatch
+  say "Oh dear, none of your Pokémon's ID numbers match today's. Please try again another day!"
+  end
+label Drawn
+  say "You've had today's prize already. A new number comes up tomorrow!"
+  end
+label Bye
+  say "Please come again!"
   end

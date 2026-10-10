@@ -4,11 +4,12 @@
 # A grunt guards the door. Beaten, he locks himself in with his key; the other key is the one the meadow's grunts
 # dropped, and with it the door opens (FLAG_UNLOCKED_VALLEY_WINDWORKS_DOOR, which the door waits for). Coming out
 # after Commander Mars, the player meets Looker, who looks inside and says where Team Galactic is based.
-# VAR_VALLEY_WINDWORKS_LOOKER_STATE: 1 waiting outside, 2 gone. The Drifloon of Fridays waits for a Pokémon that can
-# stand in the field.
+# VAR_VALLEY_WINDWORKS_LOOKER_STATE: 1 waiting outside, 2 gone. Once the windworks are free, a Drifloon floats by the
+# door on Fridays (plan 06 · R14a), until a battle with it that isn't lost sends it off for the day.
 
 
 script OnEnter
+  call FridayDrifloon
   if var VAR_VALLEY_WINDWORKS_TEAM_GALACTIC_STATE == 2 setvar VAR_VALLEY_WINDWORKS_TEAM_GALACTIC_STATE 3
   if var VAR_VALLEY_WINDWORKS_LOOKER_STATE == 1 goto Looker
   end
@@ -76,4 +77,28 @@ script Door
   end
 label Locked
   text "The door is locked from the inside."
+  end
+
+
+# The Drifloon of Fridays (plan 06 · R14a; the original's OnTransition and its script 5): it comes once the windworks
+# are free (VAR_VALLEY_WINDWORKS_STATE 2), on a Friday by the calendar, and stays away the rest of a day on which a
+# battle with it wasn't lost (FLAG_DAILY_WON_AGAINST_VALLEY_WINDWORKS_OUTSIDE_DRIFLOON, which the day's events clear).
+script FridayDrifloon
+  setflag FLAG_HIDE_VALLEY_WINDWORKS_OUTSIDE_DRIFLOON
+  if var VAR_VALLEY_WINDWORKS_STATE < 2 return
+  if flag FLAG_DAILY_WON_AGAINST_VALLEY_WINDWORKS_OUTSIDE_DRIFLOON return
+  if not weekday friday return
+  clearflag FLAG_HIDE_VALLEY_WINDWORKS_OUTSIDE_DRIFLOON
+  return
+
+
+# The Drifloon spoken to: its cry, and a battle at level 15. Won, run from or caught, it drifts off for the day.
+script Drifloon
+  cry own
+  speaker none
+  text "Fuwaaa..."
+  wildbattle "Drifloon" 15
+  setflag FLAG_DAILY_WON_AGAINST_VALLEY_WINDWORKS_OUTSIDE_DRIFLOON
+  setflag FLAG_HIDE_VALLEY_WINDWORKS_OUTSIDE_DRIFLOON
+  hide self
   end

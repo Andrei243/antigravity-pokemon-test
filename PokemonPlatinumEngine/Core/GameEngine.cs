@@ -271,6 +271,10 @@ public partial class GameEngine
         // What the game remembers of its wild Pokémon starts over: the day's numbers drawn, no roamer loose (plan 06 · R13)
         encounters = SpecialEncounters.NewGame(fieldRandom);
         radar.Clear();
+        // The soft soil as a new game finds it (plan 06 · R14a)
+        berries = BerryPatches.NewGame();
+        world.Berries = berries;
+        choosingFrom = null;
         registeredItem = null;
         exitSpot = null;
         lastDay = null;
@@ -291,6 +295,9 @@ public partial class GameEngine
         wardrobe.Clear();
         PlayerIdentity.SetOutfit(wardrobe.Worn);
         trainerId = fieldRandom.Next(0, 65536);
+        // The lottery's first number and the first level of the day (scripts_init_new_game.s; plan 06 · R14a), drawn
+        // after the card's number so that stays what it was
+        DailyEvents.NewGame(story, fieldRandom);
         adventureStarted = DateTime.Now;
         trainerScore = scoredBadges = 0;
         hallOfFame = new HallOfFame();
@@ -410,6 +417,10 @@ public partial class GameEngine
         encounters = save.Encounters ?? SpecialEncounters.NewGame(fieldRandom);
         radar.Clear();
         Roamers.Scatter(encounters, fieldRandom);
+        // What grows in the soft soil (plan 06 · R14a); a save from before finds what a new game does
+        berries = save.Berries ?? BerryPatches.NewGame();
+        world.Berries = berries;
+        choosingFrom = null;
 
         playerParty.Clear();
         foreach (var pData in save.Party)
@@ -450,7 +461,7 @@ public partial class GameEngine
         // The story as the save has it, brought up to date if an older game wrote it; then everyone where it puts them
         runner.Abort();
         story.Restore(save.ToStory());
-        StoryMigration.Upgrade(story, save.StoryVersion, playerParty.Members.Concat(pcBoxStorage.All), scripts, playerInventory);
+        StoryMigration.Upgrade(story, save.StoryVersion, playerParty.Members.Concat(pcBoxStorage.All), scripts, playerInventory, fieldRandom);
         MapDatabase.RestoreDefeatedTrainers(story.DefeatedTrainers);
         RefreshPresence(startOver: true);
 
@@ -516,6 +527,7 @@ public partial class GameEngine
             Poketch = poketch.Save(),
             Safari = safari.Active ? new SafariSave(safari.Balls, safari.Steps) : null,
             Encounters = encounters,
+            Berries = berries,
             WorldVersion = SaveData.CurrentWorld,
             Party = playerParty.Members.Select(SavedPokemonData.FromPokemon).ToList(),
             Boxes = SavedBoxes.From(pcBoxStorage),
@@ -698,12 +710,14 @@ public partial class GameEngine
                 }
                 break;
             case GameState.BagMenu:
-                bagScreen.Update(playerInventory, playerParty, ShowNotification, EvolutionContextNow(), dt);
+                bagScreen.Update(BagShows, playerParty, ShowNotification, EvolutionContextNow(), dt);
                 registeredItem = bagScreen.Registered;
                 if (bagScreen.TakeEvolution() is { } fromBag) PlayEvolutions(new[] { fromBag }, GameState.BagMenu);
                 else if (!bagScreen.IsActive)
                 {
                     currentState = GameState.Overworld;
+                    // Open for a script to choose from, it answers with the item chosen (plan 06 · R14a)
+                    ChoiceFromBag();
                     if (bagScreen.TakeFieldUse() is { } usedHere) UseFieldItem(usedHere);
                 }
                 break;
@@ -1415,6 +1429,9 @@ public partial class GameEngine
                 bagScreen.Registered = registeredItem;
                 bagScreen.Aids = encounterAids;
                 bagScreen.PlayerName = PlayerIdentity.Name;
+                // Empty soft soil ahead: USE plants a berry there (plan 06 · R14a)
+                bagScreen.SoilAhead = SoilAhead();
+                choosingFrom = null;
                 bagScreen.Open();
                 break;
             case StartMenuChoice.Trainer:
@@ -1680,7 +1697,7 @@ public partial class GameEngine
                 flyScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.BagMenu:
-                bagScreen.Draw(VirtualWidth, VirtualHeight, playerInventory, playerParty, EvolutionContextNow());
+                bagScreen.Draw(VirtualWidth, VirtualHeight, BagShows, playerParty, EvolutionContextNow());
                 break;
             case GameState.Evolution:
                 evolutionScreen.Draw(VirtualWidth, VirtualHeight);

@@ -116,6 +116,37 @@ public class BagScreen
     // An item used in the field itself (the Bicycle, a rod, an Escape Rope), for the game to carry out once the bag closes
     private ItemData? usedInField;
 
+    // ---- the soil ahead, and an item chosen for a script (plan 06 · R14a)
+
+    /// <summary>
+    /// Whether the player faces soft soil with nothing growing in it (the original's <c>BERRY_PATCH_FLAG_EMPTY</c>):
+    /// then USE plants any berry (<c>UseBerryFromMenu</c>). The game sets it as the bag opens.
+    /// </summary>
+    public bool SoilAhead { get; set; }
+
+    /// <summary>
+    /// True while the bag is open for a script to have an item chosen (<see cref="OpenToChoose"/>; the original's
+    /// <c>OpenBerriesBag</c> and <c>OpenItemsBag</c>): one pocket, what the game put in it, A picks and B backs out.
+    /// It stays true once the bag has closed, until it is opened again, so the game can read <see cref="Chosen"/>.
+    /// </summary>
+    public bool Choosing { get; private set; }
+
+    /// <summary>The item picked while <see cref="Choosing"/>; null when the player backed out.</summary>
+    public ItemData? Chosen { get; private set; }
+
+    /// <summary>What the screen asks while <see cref="Choosing"/> ("PLANT WHICH BERRY?"); null for the bag's own title.</summary>
+    public string? Prompt { get; private set; }
+
+    /// <summary>Opens the bag on one pocket for an item to be chosen and nothing else done with it.</summary>
+    public void OpenToChoose(ItemPocket pocket, string prompt)
+    {
+        Open();
+        Choosing = true;
+        Chosen = null;
+        Prompt = prompt;
+        CurrentPocket = pocket;
+    }
+
     /// <summary>Hands over the item chosen to be used in the field, once: the bag has closed for it.</summary>
     public ItemData? TakeFieldUse()
     {
@@ -146,6 +177,9 @@ public class BagScreen
         toTeach.Clear();
         openAge = 0f;
         upDown.Release();
+        Choosing = false;
+        Chosen = null;
+        Prompt = null;
     }
 
     public void Close()
@@ -162,7 +196,7 @@ public class BagScreen
     /// <summary>To the next or the previous pocket, wrapping round; each keeps its own cursor.</summary>
     public void MovePocket(int step)
     {
-        if (step == 0 || Actions != null || Tossing) return;
+        if (step == 0 || Actions != null || Tossing || Choosing) return;
         CurrentPocket = Pockets[UiNav.Wrap(PocketIndex, step, Pockets.Length)];
         AudioManager.PlaySound("page");
     }
@@ -209,9 +243,17 @@ public class BagScreen
     /// <summary>
     /// Items used in the field itself rather than on a Pokémon (plan 02 · S2), by the original's use of each: the
     /// Bicycle, the three rods, the Escape Rope, the Journal and the Vs. Seeker (plan 06 · R12), the Poké Radar and
-    /// Honey (plan 06 · R13). The bag closes and the game carries them out.
+    /// Honey (plan 06 · R13), the Sprayduck and the mulches on soft soil (plan 06 · R14a). The bag closes and the game
+    /// carries them out.
     /// </summary>
-    public static bool UsedInField(ItemData item) => item.FieldUse is "Bicycle" or "OldRod" or "GoodRod" or "SuperRod" or "EscapeRope" or "Journal" or "VsSeeker" or "PokeRadar" or "Honey";
+    public static bool UsedInField(ItemData item) => item.FieldUse is "Bicycle" or "OldRod" or "GoodRod" or "SuperRod" or "EscapeRope" or "Journal" or "VsSeeker" or "PokeRadar" or "Honey"
+        or "Sprayduck" or "Mulch";
+
+    /// <summary>
+    /// Whether USE plants the item in the soil the player faces (<c>UseBerryFromMenu</c>, plan 06 · R14a): any of
+    /// Platinum's berries, with empty soft soil ahead. Elsewhere a berry is used as it always was, on a Pokémon.
+    /// </summary>
+    public static bool PlantsHere(ItemData item, bool soilAhead) => soilAhead && BerryPatches.CanPlant(item);
 
     /// <summary>Items that do their work from the bag itself, on nobody: the Repels and the flutes, and Sacred Ash on the whole team.</summary>
     public static bool UsedInBag(ItemData item) => EncounterAids.IsAid(item) || ItemUse.RevivesAll(item);
@@ -225,11 +267,14 @@ public class BagScreen
     /// <summary>Items the player aims at one Pokémon, to use or to give.</summary>
     public static bool NeedsTarget(ItemData item) => CanUse(item) || CanGive(item);
 
-    /// <summary>What the A button offers for an item, CANCEL last: a key item that can be kept on the item button offers that too.</summary>
-    public static List<BagAction> ActionsFor(ItemData item, string? registered = null)
+    /// <summary>
+    /// What the A button offers for an item, CANCEL last: a key item that can be kept on the item button offers that
+    /// too, and a berry offers USE wherever it can be planted (<paramref name="soilAhead"/>).
+    /// </summary>
+    public static List<BagAction> ActionsFor(ItemData item, string? registered = null, bool soilAhead = false)
     {
         var actions = new List<BagAction>();
-        if (CanUse(item) || UsedInField(item) || UsedInBag(item)) actions.Add(BagAction.Use);
+        if (CanUse(item) || UsedInField(item) || UsedInBag(item) || PlantsHere(item, soilAhead)) actions.Add(BagAction.Use);
         if (CanGive(item)) actions.Add(BagAction.Give);
         if (CanToss(item)) actions.Add(BagAction.Toss);
         if (item.CanBeRegistered && UsedInField(item)) actions.Add(registered == item.Name ? BagAction.Deselect : BagAction.Register);
@@ -248,6 +293,15 @@ public class BagScreen
         Follow(items.Count);
         var item = items[SelectedIndex].Data;
 
+        // An item chosen for a script is only chosen: the script does what comes of it
+        if (Choosing)
+        {
+            Chosen = item;
+            AudioManager.PlaySound("select");
+            Close();
+            return;
+        }
+
         if (Tossing)
         {
             int count = Math.Clamp(TossCount, 1, inventory.GetQuantity(item));
@@ -261,7 +315,7 @@ public class BagScreen
 
         if (Actions == null)
         {
-            var actions = ActionsFor(item, Registered);
+            var actions = ActionsFor(item, Registered, SoilAhead);
             if (actions.Count == 1)
             {
                 onNotification("It can't be used here.");
@@ -291,7 +345,8 @@ public class BagScreen
                 TossCount = 1;
                 AudioManager.PlaySound("select");
                 return;
-            case BagAction.Use when UsedInField(item):
+            // A berry with soft soil ahead is planted there (UseBerryFromMenu), and anything used in the field
+            case BagAction.Use when PlantsHere(item, SoilAhead) || UsedInField(item):
                 usedInField = item;
                 AudioManager.PlaySound("select");
                 Close();

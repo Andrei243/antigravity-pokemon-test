@@ -76,6 +76,29 @@ public sealed class HeadlessScriptHost : IScriptHost
 
     public Random Chance => Rng;
 
+    // ---- the day's events (plan 06 · R14a)
+
+    /// <summary>Today, for <c>if weekday</c>; a test sets the day it wants (the calendar's own otherwise).</summary>
+    public DateTime Today { get; set; } = GameClock.Today;
+
+    /// <summary>The berry patches, as a new game finds them unless a test hands its own.</summary>
+    public BerryPatches Berries { get; set; } = BerryPatches.NewGame();
+
+    /// <summary>The PC's Pokémon are <see cref="Box"/>'s.</summary>
+    public IEnumerable<Pokemon> Stored => Box;
+
+    /// <summary>The points the script added to the Trainer Card's score.</summary>
+    public int Score { get; private set; }
+
+    public void AddScore(int points)
+    {
+        Score += points;
+        Log.Add($"score {points}");
+    }
+
+    /// <summary>The item picked when a script opens the bag to have one chosen (<c>chooseitem</c>), by name; null backs out.</summary>
+    public string? ItemChoice { get; set; }
+
     /// <summary>What a walk or a placement ran into: off the map, or into something solid.</summary>
     public List<string> Problems { get; } = new();
 
@@ -266,11 +289,13 @@ public sealed class HeadlessScriptHost : IScriptHost
         Shown("open a screen");
         Waits();
         Log.Add(screen == ScriptScreen.Shop && (counter ?? subject?.Mart) is { } mart ? $"open {screen} {mart}"
-            : screen == ScriptScreen.Wardrobe && counter != null ? $"open {screen} {counter}"
+            : screen is ScriptScreen.Wardrobe or ScriptScreen.ChooseItem && counter != null ? $"open {screen} {counter}"
             : $"open {screen}");
         Answer = 0;
         // The team's Pokémon a script asks to have chosen: the one the test says (none, 255, to back out)
         if (screen == ScriptScreen.ChoosePokemon) Answer = PokemonChoice;
+        // An item picked from the bag (plan 06 · R14a), by its number as the original's scripts have it; 0 backs out
+        if (screen == ScriptScreen.ChooseItem) Answer = ItemChoice != null && ItemDatabase.Get(ItemChoice) is { } picked ? picked.Id : 0;
         if (screen != ScriptScreen.Starter) return;
 
         // As the game does: the Pokémon chosen joins the team (the player's first, since plan 02 · S4)

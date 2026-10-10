@@ -51,6 +51,7 @@ public partial class GameEngine
         public Poketch Poketch => game.poketch;
         public SpecialEncounters Encounters => game.encounters;
         public RadarChain Radar => game.radar;
+        public BerryPatches Berries => game.berries;
         public FishingAttempt? Fishing { get => game.fishing; set => game.fishing = value; }
 
         /// <summary>The Eterna Gym's clock turning on, which its script waits for (plan 01 · M9).</summary>

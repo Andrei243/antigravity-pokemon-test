@@ -406,6 +406,18 @@ public static class ScriptParser
             }
             case "survivepoison":
                 return new Instruction { Op = Op.SurvivePoison, Line = line, Name = r.Variable(writable: false) };
+            // The day's events, berries and the lottery (plan 06 · R14a)
+            case "berry":
+            {
+                string what = r.OneOf("status", "moisture", "mulched", "plant", "mulch", "water", "pick");
+                // What is planted or laid can be the script's own item: the berry or the mulch used from the bag
+                bool own = what is "plant" or "mulch" && r.More && r.OneOf("own") == "own";
+                return new Instruction { Op = Op.Berry, Line = line, Name = what, Own = own };
+            }
+            case "chooseitem":
+                return new Instruction { Op = Op.ChooseItem, Line = line, Name = r.OneOf("berries", "mulch") };
+            case "lottery":
+                return new Instruction { Op = Op.Lottery, Line = line, Name = r.OneOf("check", "boxed", "prize") };
 
             case "trade":
             {
@@ -496,6 +508,10 @@ public static class ScriptParser
                 return new Condition { Query = Query.Safari, Negated = negated };
             case "partner":
                 return new Condition { Query = Query.Partner, Negated = negated };
+            case "weekday":
+                return new Condition { Query = Query.Weekday, Negated = negated, Name = r.Enum<DayOfWeek>("a day of the week").ToString() };
+            case "pocket":
+                return new Condition { Query = Query.Pocket, Negated = negated, Name = r.Enum<ItemPocket>("a pocket of the bag").ToString() };
             default:
                 throw r.Error($"'{word}' is nothing an 'if' can ask");
         }

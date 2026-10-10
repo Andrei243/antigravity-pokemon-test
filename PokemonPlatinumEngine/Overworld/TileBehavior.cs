@@ -284,6 +284,7 @@ public static class TileBehaviors
         TileBehavior.Sand or TileBehavior.ShadedSnow => (BehaviourSupport.Plain, "Walked on; every step leaves a footprint that fades."),
         TileBehavior.Door => (BehaviourSupport.Plain, "A blocked tile until a warp opens it."),
         TileBehavior.LedgeCornerSouthEast or TileBehavior.LedgeCornerSouthWest => (BehaviourSupport.Plain, "A blocked tile, drawn as the end of its ledge."),
+        TileBehavior.BerrySoil => (BehaviourSupport.Plain, "Soft soil's look. The patch is the area's soft soil object standing on it, faced to plant, water and pick (`BerryPatches`, plan 06 · R14a)."),
         _ => (BehaviourSupport.Plain, "Ground like any other: only the blocked flag and the height matter.")
     };
 }

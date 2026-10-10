@@ -89,7 +89,7 @@ Every tile of the imported world carries two things from Platinum's own map data
 | `0x88` | `Unknown88` | Not understood yet. | *Not yet.* Not understood. |  |  | 47 | 47 | 16 places |
 | `0x8E` | `Unknown8E` | Not understood yet. | *Not yet.* Not understood. |  |  | 2 | 2 | Snowpoint City, Pokémon Mansion, Route 212 and 5 more |
 | `0x8F` | `Unknown8F` | Not understood yet. | *Not yet.* Not understood. |  |  | 7 | 4 | T.G. Eterna Bldg, Eterna City, Sunyshore City and 7 more |
-| `0xA0` | `BerrySoil` | Soft soil where a Berry can be planted. | Ground like any other: only the blocked flag and the height matter. |  |  | 121 | 120 | 27 places |
+| `0xA0` | `BerrySoil` | Soft soil where a Berry can be planted. | Soft soil's look. The patch is the area's soft soil object standing on it, faced to plant, water and pick (`BerryPatches`, plan 06 · R14a). |  |  | 121 | 120 | 27 places |
 | `0xA1` | `DeepSnow` | Snow deep enough to slow a walker. | **Rule.** No running, no Bicycles; a walker sinks to the ankle and leaves footprints. |  |  | 2,687 | 0 | Snowpoint City, Acuity Lakefront, Route 216, Route 217 |
 | `0xA2` | `DeeperSnow` | Deeper snow, slower still. | **Rule.** Half a walk's pace, no Bicycles; a walker sinks to the shin and leaves footprints. |  |  | 703 | 0 | Snowpoint City, Acuity Lakefront, Route 216, Route 217 |
 | `0xA3` | `DeepestSnow` | The deepest snow: a walker wades. | **Rule.** A quarter of a walk's pace, no Bicycles; a walker sinks to the knee and leaves footprints. |  |  | 171 | 0 | Snowpoint City, Acuity Lakefront, Route 217 |

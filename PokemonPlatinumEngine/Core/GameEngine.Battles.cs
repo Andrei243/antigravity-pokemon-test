@@ -141,23 +141,24 @@ public partial class GameEngine
     };
 
     /// <summary>
-    /// What the clock does to the team (plan 06 · R10): each new day takes a day off Pokérus
-    /// (<c>Party_UpdatePokerusStatus</c>), and from eight in the evening a Shaymin in its Sky Forme is back in its
-    /// Land Forme (<c>Party_SetShayminForm</c>, which reverts it as the clock passes eight).
+    /// What the clock does (<c>sub_020559DC</c>): each new day runs the day's events (<see cref="DailyEvents.DaysPass"/>,
+    /// plan 06 · R14a: the daily flags, the day's numbers, Pokérus, the lottery, the hidden items that come back), the
+    /// minutes since the clock was last read go to the berry patches and the honey trees, and from eight in the
+    /// evening a Shaymin in its Sky Forme is back in its Land Forme (<c>Party_SetShayminForm</c>, which reverts it as
+    /// the clock passes eight). A clock turned back counts nothing, as the original's.
     /// </summary>
     private void KeepTheClock()
     {
         var today = GameClock.Today;
         int days = lastDay is { } before && today > before ? (today - before).Days : 0;
-        if (days > 0) PokerusRules.DaysPass(playerParty, days);
         lastDay = today;
-        // The day's numbers, the daily flags and the honey trees' minutes (plan 06 · R13)
-        KeepTheEncounterClock(days);
+        if (days > 0) DailyEvents.DaysPass(new DailyEvents.Day(story, encounters, playerParty, PlaceKey(), fieldRandom), days);
+        DailyEvents.MinutesPass(berries, encounters, encounters.ClockTo(GameClock.Moment));
         if (FormRules.ShayminNight((int)GameClock.Hour))
             foreach (var p in playerParty.Members) FormRules.BackToLand(p);
     }
 
-    // The day the clock was last looked at, for Pokérus's days (saved)
+    // The day the clock was last looked at, for the day's events (saved)
     private DateTime? lastDay;
 
     /// <summary>Who the player is, as a Pokémon's original trainer is marked (plan 06 · R10).</summary>

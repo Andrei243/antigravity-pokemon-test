@@ -39,7 +39,8 @@ public static class StoryMigration
     /// <c>StoryVersion</c>; <paramref name="owned"/> is every Pokémon the player has, on the team and in the PC, and
     /// <paramref name="bag"/> the player's bag, for what a step hands over.
     /// </summary>
-    public static void Upgrade(StoryState story, int savedVersion, IEnumerable<Pokemon> owned, ScriptLibrary scripts, Inventory? bag = null)
+    /// <param name="chance">Where a step's draws come from (the day's events' first numbers); the game's own chance when left out.</param>
+    public static void Upgrade(StoryState story, int savedVersion, IEnumerable<Pokemon> owned, ScriptLibrary scripts, Inventory? bag = null, Random? chance = null)
     {
         if (savedVersion < 1) FromBeforeTheStory(story, owned, scripts);
         if (savedVersion < 2) PastTheOpening(story, scripts);
@@ -48,7 +49,24 @@ public static class StoryMigration
         if (savedVersion < 4) RenameTrainers(story);
         if (savedVersion < 5) HandOverRockSmash(story, bag);
         if (savedVersion < 6) RenameTrainers(story, SouthWestTrainers);
+        if (savedVersion < 7) TheDaysBegin(story, chance ?? Core.Dice.Shared);
     }
+
+    /// <summary>
+    /// Version 7, plan 06 · R14a ("the day's events"): a save from before the day's events has no number for Jubilife
+    /// TV's lottery and no level of the day, which a new game's script draws (<see cref="DailyEvents.NewGame"/>); it is
+    /// given them as a new game is, unless something has set them already. The Valley Windworks' Drifloon of Fridays,
+    /// which stood nowhere before, is hidden as a new game hides it until the place's own script says it is there.
+    /// </summary>
+    private static void TheDaysBegin(StoryState story, Random chance)
+    {
+        story.Set(FridayDrifloonFlag);
+        if (story.Var(Lottery.NumberVar) != 0 || story.Var(DailyEvents.DailyLevelVar) != 0) return;
+        DailyEvents.NewGame(story, chance);
+    }
+
+    /// <summary>The flag that hides the Valley Windworks' Drifloon (scripts/valley_windworks_outside.txt).</summary>
+    public const string FridayDrifloonFlag = "FLAG_HIDE_VALLEY_WINDWORKS_OUTSIDE_DRIFLOON";
 
     /// <summary>The flag set as Oreburgh Gate's hiker hands over HM06 (scripts/oreburgh_gate_1f.txt).</summary>
     public const string ReceivedRockSmashFlag = "FLAG_RECEIVED_HM06";

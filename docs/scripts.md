@@ -51,7 +51,13 @@ that exists, every script to something that starts it, and plays each to its end
   obstacle in front, which is whose script it is (its `own` flag is the obstacle's). Fly's map is chosen before
   `UseFly` runs.
 - **An item used from the bag or the item button.** An Escape Rope runs `EscapeRope` and Honey `UseHoney`; the
-  Bicycle, the rods and the Poké Radar are the game's own, with no script.
+  Bicycle, the rods and the Poké Radar are the game's own, with no script. With soft soil ahead (plan 06 · R14a), a
+  Berry runs `PlantBerry`, a mulch `UseMulch` and the Sprayduck `UseSprayduck`, each with the item as its own and
+  the patch as whose script it is; elsewhere the bag says it can't be used here.
+- **Soft soil faced** (plan 06 · R14a). A patch of soft soil is someone of the map (`npcType` "BerryPatch", with
+  the original's number of the patch, `"patch"` in the area's file) and runs `BerryPatch`: what grows there, the
+  fruit offered, a mulch or a Berry offered for empty soil, the Sprayduck's water for a plant. `Lottery` is Jubilife
+  TV's lottery corner, for the woman at its counter once the TV's floor is built (plan 01 · M11).
 - **Wild Pokémon** (plan 06 · R13). A honey tree faced from the south runs `HoneyTree` (it has no person of its own:
   the tree is a prop, found by its place, `HoneyTrees.Faced`); poison that leaves a Pokémon with one hit point in
   the field runs `PoisonSurvived`. `SwarmNews` is the assistant's sister's, for when her house is built.
@@ -117,7 +123,9 @@ name too), `{self}`, `{lead}` (the first Pokémon of the team), `{starter}`, `{r
 `{assistantstarter}` (the one of the three neither child took), `{item}` (the last item given or taken),
 `{money}`, `{result}` and `{var:NAME}`; `{member:NAME}` is the nickname of the team's Pokémon at the place the
 variable gives (from 0), and `{swarm}` and `{swarmplace}` the species of the day's swarm and where it is,
-`{trophygarden}` the Trophy Garden's newest (plan 06 · R13).
+`{trophygarden}` the Trophy Garden's newest (plan 06 · R13). After a word on a berry patch, `{berry}` is its berry,
+`{berries}` its crop in words ("an Oran Berry", "3 Oran Berries") and `{mulch}` the mulch on it; `{lottery}` is the
+day's lucky number in five digits and `{lotterymon}` the Pokémon the last `lottery check` matched (plan 06 · R14a).
 
 ### Where a script goes
 
@@ -150,6 +158,8 @@ What an `if` can ask:
 | `safari` | A Safari Game is under way in the Great Marsh. |
 | `partner` | Someone travels with the player (`partner`, below). |
 | `rematch self` | The trainer is waiting for a rematch the Vs. Seeker found (plan 06 · R12). |
+| `weekday friday` | The game's clock says it is that day of the week (`GameClock.Today`; plan 06 · R14a: the Valley Windworks' Drifloon comes on Fridays). |
+| `pocket berries` | That pocket of the bag holds anything (`ItemPocket`: `items`, `medicine`, `berries`…). |
 
 ### What the story remembers
 
@@ -164,6 +174,11 @@ do: it is cleared whenever the player comes to another area or through a warp (`
 obstacle's flag is one of these, made its area's own (`FLAG_MAP_LOCAL_HIDE_OBSTACLE_1_ETERNA_CITY`), so a tree
 that was cut grows back once the player has gone. So are three of the game's own: `FLAG_STRENGTH_ACTIVE` (cleared
 on leaving any place), `FLAG_FLASH_ACTIVE` and `FLAG_DEFOG_ACTIVE` (cleared on going anywhere that isn't a cave).
+
+A flag named `FLAG_DAILY_...` lasts until the game's clock comes to a new day, as the original's daily flags do
+(`StoryState.ClearDaily`, the first of the day's events, `Models/DailyEvents.cs`): the lottery's
+`FLAG_DAILY_RECEIVED_LOTTERY_PRIZE`, the Friday Drifloon's `FLAG_DAILY_WON_AGAINST_VALLEY_WINDWORKS_OUTSIDE_DRIFLOON` and the like
+come back each day by themselves.
 
 ### Giving and taking
 
@@ -275,6 +290,25 @@ Plan 06 · R13. What the game remembers of its wild Pokémon beyond the tables (
 | `trophygarden` | Mr. Backlot brings one more Pokémon to the Trophy Garden (`TrophyGarden_AddNewMon`); `{trophygarden}` names it. |
 | `roamer start "Mesprit"` | Sets a roaming Pokémon loose (`RoamingPokemon_ActivateSlot`): Mesprit, Cresselia, Darkrai, Moltres, Zapdos or Articuno, made afresh at its level and full HP, somewhere at random. |
 | `survivepoison VAR_X` | The team's Pokémon at the place the variable gives comes through the poison if it is down to one hit point: cured, `RESULT` 1; otherwise 0. |
+
+### Berries and the lottery
+
+Plan 06 · R14a. A berry command works on the patch of soft soil the script belongs to (`Models/BerryPatches.cs`);
+the patches grow by the game's clock whether a script looks at them or not.
+
+| Command | What it does |
+|---|---|
+| `berry status` | `RESULT` is the plant's stage: 0 nothing, 1 planted, 2 sprouted, 3 growing, 4 blooming, 5 in fruit; `{berry}`, `{berries}` and `{mulch}` say what grows, its crop and the mulch. |
+| `berry moisture` | `RESULT` is how wet the soil is: 0 very dry, 1 dry, 2 moist. |
+| `berry mulched` | `RESULT` is 1 when mulch is down; `{mulch}` names it. |
+| `berry plant`, `berry plant own` | Plants the Berry last chosen with `chooseitem` (or the script's own, used from the bag), taking it from the bag. `RESULT` is 1, or 0 where nothing could be planted. |
+| `berry mulch`, `berry mulch own` | Lays the mulch last chosen (or the script's own) on empty soil, taking it from the bag. `RESULT` 1 or 0. |
+| `berry water` | Waters the soil to its full moisture (the Sprayduck). `RESULT` is 1 when something grows there. |
+| `berry pick` | Picks the fruit into the bag, with a point on the Trainer Card's score. `RESULT` is how many; the patch is empty again. |
+| `chooseitem berries`, `chooseitem mulch` | Opens the bag on its Berries or its Items pocket for one to be chosen ("PLANT WHICH BERRY?"). `RESULT` is 1 and `{item}` the one chosen, or 0 when the bag was closed. |
+| `lottery check` | The day's number against the trainer ID of every Pokémon on the team and in the PC (`Models/Lottery.cs`). `RESULT` is the most digits matched, from the last, 0 to 5; `{lotterymon}` is the one that matched. |
+| `lottery boxed` | `RESULT` is 1 when the best match of the last check is in the PC. |
+| `lottery prize` | Hands over the prize for the last check's digits, with its fanfare and lines: an Ultra Ball, a PP Up, an Exp. Share, a Max Revive or the Master Ball. `RESULT` 1, or 0 for no match. The daily flag that says it was given is the script's to set. |
 
 ## Who is on the map
 

@@ -772,6 +772,9 @@ public sealed class AreaObject
     public string? Item { get; set; }
     public int? Count { get; set; }
 
+    /// <summary>For soft soil (plan 06 · R14a): the original's number of the berry patch (the object's first datum), 0 to 127.</summary>
+    public int? Patch { get; set; }
+
     public string Script { get; set; } = "";
 }
 
