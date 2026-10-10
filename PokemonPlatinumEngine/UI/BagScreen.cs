@@ -12,7 +12,7 @@ using PokemonPlatinumEngine.UI.Kit;
 namespace PokemonPlatinumEngine.UI;
 
 /// <summary>What can be done with the item under the cursor.</summary>
-public enum BagAction { Use, Give, Toss, Register, Deselect, Cancel }
+public enum BagAction { Use, Give, Toss, Register, Deselect, Cancel, Open }
 
 /// <summary>
 /// The bag: Platinum's eight pockets as tabs, the pocket's items as a list and the chosen item beside it. The A
@@ -181,6 +181,14 @@ public class BagScreen
         upDown.Release();
     }
 
+    /// <summary>Opens the bag again where it was left, pocket and cursors and all: back from the Poffin Case (plan 06 · R14c).</summary>
+    public void Resume()
+    {
+        IsActive = true;
+        Actions = null;
+        openAge = AppearTime;
+    }
+
     public void Close()
     {
         if (PickingFor != null) pickClosed = true;
@@ -246,7 +254,7 @@ public class BagScreen
     /// Bicycle, the three rods, the Escape Rope, the Journal and the Vs. Seeker (plan 06 · R12), the Poké Radar and
     /// Honey (plan 06 · R13). The bag closes and the game carries them out.
     /// </summary>
-    public static bool UsedInField(ItemData item) => item.FieldUse is "Bicycle" or "OldRod" or "GoodRod" or "SuperRod" or "EscapeRope" or "Journal" or "VsSeeker" or "PokeRadar" or "Honey";
+    public static bool UsedInField(ItemData item) => item.FieldUse is "Bicycle" or "OldRod" or "GoodRod" or "SuperRod" or "EscapeRope" or "Journal" or "VsSeeker" or "PokeRadar" or "Honey" or "PoffinCase";
 
     /// <summary>Items that do their work from the bag itself, on nobody: the Repels and the flutes, and Sacred Ash on the whole team.</summary>
     public static bool UsedInBag(ItemData item) => EncounterAids.IsAid(item) || ItemUse.RevivesAll(item);
@@ -264,7 +272,9 @@ public class BagScreen
     public static List<BagAction> ActionsFor(ItemData item, string? registered = null)
     {
         var actions = new List<BagAction>();
-        if (CanUse(item) || UsedInField(item) || UsedInBag(item)) actions.Add(BagAction.Use);
+        // The Poffin Case is opened, as the original's bag says (ITEM_ACTION_OPEN, plan 06 · R14c)
+        if (item.FieldUse == "PoffinCase") actions.Add(BagAction.Open);
+        else if (CanUse(item) || UsedInField(item) || UsedInBag(item)) actions.Add(BagAction.Use);
         if (CanGive(item)) actions.Add(BagAction.Give);
         if (CanToss(item)) actions.Add(BagAction.Toss);
         if (item.CanBeRegistered && UsedInField(item)) actions.Add(registered == item.Name ? BagAction.Deselect : BagAction.Register);
@@ -340,6 +350,7 @@ public class BagScreen
                 TossCount = 1;
                 AudioManager.PlaySound("select");
                 return;
+            case BagAction.Open:
             case BagAction.Use when UsedInField(item):
                 usedInField = item;
                 AudioManager.PlaySound("select");

@@ -146,7 +146,9 @@ public static class RegionDatabase
                 // Hearthome's rooms of plan 02 · S7: the Contest Hall's lobby and the gate to Route 209
                 "ContestHallLobby", "Route209GateToHearthomeCity",
                 // Route 209's Lost Tower, its five floors of graves (plan 02 · S7)
-                "LostTower1F", "LostTower2F", "LostTower3F", "LostTower4F", "LostTower5F"
+                "LostTower1F", "LostTower2F", "LostTower3F", "LostTower4F", "LostTower5F",
+                // Hearthome's Poffin House and Pokémon Fan Club (plan 06 · R14c)
+                "PoffinHouse", "HearthomeFanClub"
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

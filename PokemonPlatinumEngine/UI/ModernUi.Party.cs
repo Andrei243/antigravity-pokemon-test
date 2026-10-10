@@ -124,11 +124,14 @@ internal static partial class ModernUi
     /// One Pokémon in full: its 2D sprite, name, types and nature on the left; stats and experience, then its moves,
     /// on the right.
     /// </summary>
-    public static void DrawSummary(int sw, int sh, Pokemon p, int index, int count, float appear = 1f)
+    /// <param name="page">-1 for a summary of one page; with a condition page (plan 06 · R14c), 0 for the stats and moves and 1 for the condition.</param>
+    public static void DrawSummary(int sw, int sh, Pokemon p, int index, int count, float appear = 1f, int page = -1)
     {
         Backdrop(sw, sh);
         ScreenTitle("SUMMARY");
-        if (count > 1) Hints(sw - 64, 44, ("Up / Down", "Next Pokémon"), ("Esc", "Back"));
+        if (page >= 0 && count > 1) Hints(sw - 64, 44, ("Left / Right", "Page"), ("Up / Down", "Next Pokémon"), ("Esc", "Back"));
+        else if (page >= 0) Hints(sw - 64, 44, ("Left / Right", "Page"), ("Esc", "Back"));
+        else if (count > 1) Hints(sw - 64, 44, ("Up / Down", "Next Pokémon"), ("Esc", "Back"));
         else Hints(sw - 64, 44, ("Esc", "Back"));
 
         float slide = (1f - UiMotion.EaseOut(appear)) * 60f;
@@ -173,6 +176,13 @@ internal static partial class ModernUi
         string toNext = top ? "" : Math.Max(0, p.ExpForNextLevel - p.CurrentExp).ToString("N0");
         UiFonts.Draw(toNext, who.X + who.Width - 44 - UiFonts.Measure(toNext, 24, UiWeight.Black), who.Y + 830, 24, Ink, UiWeight.Black);
         ExpBar(new Rectangle(x, who.Y + 864, who.Width - 88, 12), top ? 1f : p.ExpProgressRatio);
+
+        // ---- The condition, on its own page
+        if (page == 1)
+        {
+            ConditionPanel(new Rectangle(696 + slide, 132, 1160, 900), ConditionOf(p));
+            return;
+        }
 
         // ---- Stats
         var stats = new Rectangle(696 + slide, 132, 1160, 400);

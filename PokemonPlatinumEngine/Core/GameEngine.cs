@@ -41,6 +41,9 @@ public enum GameState
     Journal,
     /// <summary>The wardrobe at home, or a boutique's (plan 11 · C10).</summary>
     Wardrobe,
+    /// <summary>The pot at the Poffin House, and the Poffin Case (plan 06 · R14c).</summary>
+    PoffinCooking,
+    PoffinCase,
     Transition
 }
 
@@ -273,6 +276,7 @@ public partial class GameEngine
         // What the game remembers of its wild Pokémon starts over: the day's numbers drawn, no roamer loose (plan 06 · R13)
         encounters = SpecialEncounters.NewGame(fieldRandom);
         berries = BerryPatches.NewGame();
+        poffinCase.Clear();
         radar.Clear();
         registeredItem = null;
         exitSpot = null;
@@ -412,6 +416,7 @@ public partial class GameEngine
         // game come back to sends every roamer anywhere (the original's continue task)
         encounters = save.Encounters ?? SpecialEncounters.NewGame(fieldRandom);
         berries = save.Berries ?? BerryPatches.NewGame();
+        poffinCase.Restore(save.Poffins);
         radar.Clear();
         Roamers.Scatter(encounters, fieldRandom);
 
@@ -522,6 +527,7 @@ public partial class GameEngine
             Safari = safari.Active ? new SafariSave(safari.Balls, safari.Steps) : null,
             Encounters = encounters,
             Berries = berries,
+            Poffins = poffinCase.Count > 0 ? poffinCase.All.ToList() : null,
             WorldVersion = SaveData.CurrentWorld,
             Party = playerParty.Members.Select(SavedPokemonData.FromPokemon).ToList(),
             Boxes = SavedBoxes.From(pcBoxStorage),
@@ -708,6 +714,7 @@ public partial class GameEngine
                 bagScreen.Update(playerInventory, playerParty, ShowNotification, EvolutionContextNow(), dt);
                 registeredItem = bagScreen.Registered;
                 if (bagScreen.TakeEvolution() is { } fromBag) PlayEvolutions(new[] { fromBag }, GameState.BagMenu);
+                else if (!bagScreen.IsActive && choosingBerryToCook && bagScreen.TakePick(out var toCook)) BerryChosenToCook(toCook);
                 else if (!bagScreen.IsActive && bagScreen.TakePick(out var picked))
                 {
                     // A script that asked for an item hears which (plan 06 · R14a)
@@ -718,7 +725,12 @@ public partial class GameEngine
                 else if (!bagScreen.IsActive)
                 {
                     currentState = GameState.Overworld;
-                    if (bagScreen.TakeFieldUse() is { } usedHere) UseFieldItem(usedHere);
+                    // The Poffin Case opened from the bag goes back to the bag when it closes (StartMenu_ExitPoffinCase)
+                    if (bagScreen.TakeFieldUse() is { } usedHere)
+                    {
+                        if (usedHere.FieldUse == "PoffinCase") OpenPoffinCase(fromBag: true);
+                        else UseFieldItem(usedHere);
+                    }
                 }
                 break;
             case GameState.Evolution:
@@ -775,6 +787,12 @@ public partial class GameEngine
                     foreach (string tried in wardrobeScreen.TakeTried()) CharacterModels.Forget(tried);
                     currentState = GameState.Overworld;
                 }
+                break;
+            case GameState.PoffinCooking:
+                UpdateCooking(dt);
+                break;
+            case GameState.PoffinCase:
+                UpdatePoffinCase(dt);
                 break;
             case GameState.Journal:
                 journalScreen.Update(journal, dt);
@@ -1486,6 +1504,8 @@ public partial class GameEngine
             case StartMenuChoice.Pokemon:
                 currentState = GameState.PartyMenu;
                 partyScreen.Open();
+                // The summary's condition page, once the Contest Hall has been visited (plan 06 · R14c)
+                partyScreen.ShowCondition = story.Has(ContestHallVisitedFlag);
                 break;
             case StartMenuChoice.Bag:
                 currentState = GameState.BagMenu;
@@ -1793,6 +1813,12 @@ public partial class GameEngine
                 break;
             case GameState.Journal:
                 journalScreen.Draw(VirtualWidth, VirtualHeight, journal);
+                break;
+            case GameState.PoffinCooking:
+                cookingScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.PoffinCase:
+                poffinCaseScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.PCStorage:
                 pcScreen.Draw(VirtualWidth, VirtualHeight, playerParty, pcBoxStorage);

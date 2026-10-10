@@ -459,6 +459,11 @@ public class BattleCoreTests
         p.AbilityName = "Shell Armor";
         p.Friendship = 201;
         p.Beauty = 12;
+        p.Cool = 3;
+        p.Cute = 4;
+        p.Smart = 5;
+        p.Tough = 6;
+        p.Sheen = 77;
         p.Ball = "Dusk Ball";
         p.Nickname = "Moss";
         p.EvHP = 9;

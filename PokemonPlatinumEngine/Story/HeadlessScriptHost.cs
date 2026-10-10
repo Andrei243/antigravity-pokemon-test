@@ -95,6 +95,12 @@ public sealed class HeadlessScriptHost : IScriptHost
 
     public string? ChosenItem { get; private set; }
 
+    /// <summary>
+    /// The Poffin Case (plan 06 · R14c), empty unless a test fills it. Cooking (<c>poffin cook</c>) only notes that it
+    /// opened: no pot is stirred here, as if the player had backed out of the bag at once.
+    /// </summary>
+    public PoffinCase Poffins { get; } = new();
+
     /// <summary>What a walk or a placement ran into: off the map, or into something solid.</summary>
     public List<string> Problems { get; } = new();
 

@@ -124,6 +124,7 @@ internal static partial class ModernUi
         BagAction.Toss => "TOSS",
         BagAction.Register => "REGISTER",
         BagAction.Deselect => "DESELECT",
+        BagAction.Open => "OPEN",
         _ => "CANCEL"
     };
 

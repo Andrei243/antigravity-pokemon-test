@@ -260,8 +260,8 @@
       "y": 9,
       "facing": "Left",
       "dialog": [
-        "A Pokémon that eats well looks its best on stage. Sweet treats bring out the cute in it, they say.",
-        "Next time, I'm baking for mine before we go on!"
+        "A Pokémon that's been fed Poffins looks its best on stage. Sweet ones bring out the cute in it, they say.",
+        "I'd better learn to cook really good ones at the Poffin House!"
       ]
     },
     {
@@ -298,10 +298,7 @@
       "x": 16,
       "y": 6,
       "facing": "Up",
-      "dialog": [
-        "It takes practice to win a contest. Lots and lots of practice.",
-        "I've been practising my bow for a week."
-      ]
+      "script": "RichBoy"
     },
     {
       "id": "mom",

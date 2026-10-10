@@ -1,0 +1,52 @@
+# The Pokémon Fan Club in Hearthome City (plan 06 · R14c), rebuilt to the original's plan. docs/scripts.md describes
+# the language; the lines are our own, on the original's beats (scripts_hearthome_city_pokemon_fan_club.s).
+#
+# The chairman gives the Poffin Case, once (FLAG_RECEIVED_HEARTHOME_CITY_POKEMON_FAN_CLUB_POFFIN_CASE); the woman by
+# the shelves reads how fond of the player the first of the team is (LEAD_FRIENDSHIP), on the original's seven steps.
+# The club's Psyduck, Buneary and Clefairy are Pokémon of the field (common.Pokemon). The reporter of the TV's
+# programme waits for plan 08.
+
+
+script Chairman
+  speaker "Chairman"
+  if flag FLAG_RECEIVED_HEARTHOME_CITY_POKEMON_FAN_CLUB_POFFIN_CASE goto Done
+  say "Welcome, welcome! I am the chairman of the Pokémon Fan Club!"
+  say "You love your Pokémon too, I can tell. Then you simply must have one of these!"
+  give "Poffin Case"
+  setflag FLAG_RECEIVED_HEARTHOME_CITY_POKEMON_FAN_CLUB_POFFIN_CASE
+  say "Fill it with Poffins and treat your Pokémon. The Poffin House is just next door, you know!"
+  end
+label Done
+  say "We are, without question, the finest fan club in all of Sinnoh!"
+  end
+
+
+script Beauty
+  speaker "Woman"
+  say "Oh, is that your Pokémon? Let me have a look..."
+  if var LEAD_FRIENDSHIP >= 255 goto Adores
+  if var LEAD_FRIENDSHIP >= 200 goto Fond
+  if var LEAD_FRIENDSHIP >= 150 goto Friendly
+  if var LEAD_FRIENDSHIP >= 100 goto GettingUsed
+  if var LEAD_FRIENDSHIP >= 50 goto NotUsed
+  if var LEAD_FRIENDSHIP >= 1 goto Wary
+  say "Oh dear... {lead} looks thoroughly fed up with you. Please be kinder to it."
+  end
+label Adores
+  say "My, my! {lead} simply adores you. I can't imagine a happier Pokémon!"
+  end
+label Fond
+  say "{lead} is very fond of you. You can see it in its eyes."
+  end
+label Friendly
+  say "{lead} is quite friendly with you. Keep it up!"
+  end
+label GettingUsed
+  say "{lead} is warming to you. Give it a little more time."
+  end
+label NotUsed
+  say "{lead} isn't quite used to you yet."
+  end
+label Wary
+  say "{lead} seems a bit wary of you. Try spending more time together."
+  end

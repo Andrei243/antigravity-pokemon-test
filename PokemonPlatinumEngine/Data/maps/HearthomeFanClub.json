@@ -1,0 +1,262 @@
+{
+  "name": "HearthomeFanClub",
+  "displayName": "Pokémon Fan Club",
+  "bgmTrack": "sinnoh/hearthome",
+  "interior": "House",
+  "trees": "Round",
+  "width": 12,
+  "height": 19,
+  "ground": [
+    "############",
+    "############",
+    "############",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "######D#####"
+  ],
+  "solid": [
+    "############",
+    "############",
+    "############",
+    "####....####",
+    "#..........#",
+    "#..........#",
+    "#...####...#",
+    "#..........#",
+    "#.#.####.#.#",
+    "#.#.####.#.#",
+    "#...####...#",
+    "##........##",
+    "##........##",
+    "###......###",
+    "###......###",
+    "###......###",
+    "#..........#",
+    "#..........#",
+    "######.#####"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 3,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 10,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Sofa",
+      "x": 4,
+      "y": 6,
+      "width": 4,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 4,
+      "y": 8,
+      "width": 4,
+      "depth": 3
+    },
+    {
+      "type": "Chair",
+      "x": 2,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Chair",
+      "x": 2,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Chair",
+      "x": 9,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Chair",
+      "x": 9,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 10,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 2,
+      "y": 14,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 14,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 4,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 7,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 6,
+      "y": 17,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 6,
+      "sourceY": 18,
+      "targetMap": "Sinnoh",
+      "targetX": 488,
+      "targetY": 711,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "gentleman",
+      "name": "Chairman",
+      "npcType": "Gentleman",
+      "x": 6,
+      "y": 7,
+      "facing": "Down",
+      "script": "Chairman"
+    },
+    {
+      "id": "beauty",
+      "name": "Woman",
+      "npcType": "Lady",
+      "x": 2,
+      "y": 4,
+      "facing": "Down",
+      "script": "Beauty"
+    },
+    {
+      "id": "psyduck",
+      "name": "Psyduck",
+      "npcType": "Pokemon",
+      "x": 9,
+      "y": 5,
+      "facing": "Down",
+      "dialog": [
+        "Psy... ay?"
+      ],
+      "species": "Psyduck",
+      "movement": "wander_around",
+      "rangeZ": 1
+    },
+    {
+      "id": "buneary",
+      "name": "Buneary",
+      "npcType": "Pokemon",
+      "x": 7,
+      "y": 13,
+      "facing": "Down",
+      "dialog": [
+        "Bun! Buneary!"
+      ],
+      "species": "Buneary",
+      "movement": "wander_around",
+      "rangeX": 1,
+      "rangeZ": 1
+    },
+    {
+      "id": "clefairy",
+      "name": "Clefairy",
+      "npcType": "Pokemon",
+      "x": 3,
+      "y": 11,
+      "facing": "Down",
+      "dialog": [
+        "Pippi! Pi!"
+      ],
+      "species": "Clefairy",
+      "movement": "look_around",
+      "rangeX": 1,
+      "rangeZ": 1
+    }
+  ],
+  "wildEncounters": []
+}

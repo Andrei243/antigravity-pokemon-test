@@ -43,6 +43,15 @@ public class PartyScreen
     public bool ShowSummary { get; set; } = false;
     public bool IsActive { get; set; } = false;
 
+    /// <summary>
+    /// Whether the summary has a page for the contest condition (plan 06 · R14c): as in the original, once the
+    /// Contest Hall has been visited (<c>PokemonSummaryScreen_ShowContestData</c>). The game sets it as it opens the menu.
+    /// </summary>
+    public bool ShowCondition { get; set; }
+
+    /// <summary>The summary's page: 0 the Pokémon, its stats and moves; 1 its condition.</summary>
+    public int SummaryPage { get; private set; }
+
     /// <summary>The chosen Pokémon's menu while it is open, and the entry under its cursor.</summary>
     public IReadOnlyList<PartyAction>? Actions { get; private set; }
     public int ActionIndex { get; private set; }
@@ -172,6 +181,7 @@ public class PartyScreen
         {
             case PartyActionKind.Summary:
                 ShowSummary = true;
+                SummaryPage = 0;
                 summaryAge = 0f;
                 AudioManager.PlayCry(party.Members[SelectedIndex]);
                 break;
@@ -212,6 +222,14 @@ public class PartyScreen
         AudioManager.PlaySound("cursor");
     }
 
+    /// <summary>Turns the summary to its other page, where it has two (<see cref="ShowCondition"/>).</summary>
+    public void TurnSummaryPage(int dx)
+    {
+        if (!ShowSummary || !ShowCondition || dx == 0) return;
+        SummaryPage = SummaryPage == 0 ? 1 : 0;
+        AudioManager.PlaySound("page");
+    }
+
     /// <summary>Moves the cursor over the two-column list, or to the next Pokémon while the summary is open.</summary>
     public void MoveCursor(int dx, int dy, int count)
     {
@@ -240,7 +258,9 @@ public class PartyScreen
                 ShowSummary = false;
                 AudioManager.PlaySound("cancel");
             }
-            else MoveCursor(dx, dy, party.Count);
+            // With a condition page, left and right turn the page and up and down go through the team
+            else if (ShowCondition && dx != 0) TurnSummaryPage(dx);
+            else MoveCursor(ShowCondition ? 0 : dx, dy, party.Count);
             return;
         }
 
@@ -275,7 +295,7 @@ public class PartyScreen
         if (ShowSummary && SelectedIndex < party.Count)
         {
             ModernUi.DrawSummary(screenWidth, screenHeight, party.Members[SelectedIndex], SelectedIndex, party.Count,
-                Math.Clamp(summaryAge / SummaryAppearTime, 0f, 1f));
+                Math.Clamp(summaryAge / SummaryAppearTime, 0f, 1f), ShowCondition ? SummaryPage : -1);
         }
         else
         {
