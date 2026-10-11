@@ -736,7 +736,7 @@ public class StarkMountainAndTheLegendaryPokemonTests
         Assert.Equal(("SnowpointTemple1F", 8, 12), (door.TargetMap, door.TargetX, door.TargetY));
         Assert.Null(game.Map.GetWarpAt(367, 197));
         Assert.True(game.Map.IsSolid(367, 197));
-        Assert.Equal(new[] { 1, 6 }, Sinnoh.Overlay("snowpoint_city")!.Locked);
+        Assert.Equal(new[] { 6 }, Sinnoh.Overlay("snowpoint_city")!.Locked); // the tutor's house (warp 1) is open since plan 01 · M11, part d
 
         // In, and out again onto the trigger's tile: Candice has gone back to her Gym, and nothing turns the player back
         game.Arrive(door.TargetMap, door.TargetX, door.TargetY);
