@@ -141,3 +141,26 @@ script BlockSunyshore
   if var PLAYER_Y == 791 walk collector up 3
   face collector down
   end
+
+# The beauty before the Hotel Grand Lake's east cottage (the original's script 5; plan 01 · M11, part b). She has
+# dropped the cottage's Suite Key, which lies hidden beside the hotel's reception on Route 213. Handed it, she lets
+# herself in (FLAG_HIDE_VALOR_LAKEFRONT_BEAUTY) and is found inside from then on, with a reward
+# (FLAG_HIDE_GRAND_LAKE_VALOR_LAKEFRONT_EAST_HOUSE_BEAUTY, which plan 02 · S8 sets from the start;
+# GrandLakeValorLakefrontEastHouse.txt).
+script Beauty
+  if item "Suite Key" goto Found
+  sayown
+  end
+label Found
+  say "Whatever am I to do? I've gone and dropped my suite key again..."
+  emote self exclaim
+  say "Oh! That's it! That's my suite key!" "You found it for me? How sweet of you. Thank you!"
+  take "Suite Key"
+  face self up
+  sound "door_open"
+  walk self up 1
+  hide self
+  sound "door_close"
+  setflag FLAG_HIDE_VALOR_LAKEFRONT_BEAUTY
+  clearflag FLAG_HIDE_GRAND_LAKE_VALOR_LAKEFRONT_EAST_HOUSE_BEAUTY
+  end

@@ -328,4 +328,11 @@ public interface IScriptHost
     /// less than <paramref name="sides"/>. The Berry Master's berry of the day, a ghost of the Old Chateau.
     /// </summary>
     int Random(int sides);
+
+    /// <summary>
+    /// How many turns the battle last fought went on for before the one that ended it (plan 01 · M11, part b; the
+    /// original's <c>VAR_TOTAL_TURNS_LAST_BATTLE</c>, which a battle won on its first turn leaves at nought): what the
+    /// Pokémon Mansion's maids count.
+    /// </summary>
+    int BattleTurns { get; }
 }

@@ -17,11 +17,18 @@ public sealed class SafariGame
     public int Balls { get; set; }
     public int Steps { get; private set; }
 
+    /// <summary>
+    /// The Pokémon caught in this game (the original's <c>GetCurrentSafariGameCaughtNum</c>; plan 01 · M11, part b). It
+    /// outlasts the game's end, until the next one starts: the observatory's cowgirl asks once the player is back.
+    /// </summary>
+    public int Caught { get; set; }
+
     public void Start()
     {
         Active = true;
         Balls = StartBalls;
         Steps = StartSteps;
+        Caught = 0;
     }
 
     public void End()
@@ -32,11 +39,12 @@ public sealed class SafariGame
     }
 
     /// <summary>A game read back from a save.</summary>
-    public void Resume(int balls, int steps)
+    public void Resume(int balls, int steps, int caught = 0)
     {
         Active = true;
         Balls = balls;
         Steps = steps;
+        Caught = caught;
     }
 
     /// <summary>One step in the marsh; true when it was the last.</summary>

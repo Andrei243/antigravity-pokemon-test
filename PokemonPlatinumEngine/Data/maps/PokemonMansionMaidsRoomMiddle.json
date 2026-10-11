@@ -1,0 +1,118 @@
+{
+  "name": "PokemonMansionMaidsRoomMiddle",
+  "displayName": "Pokémon Mansion",
+  "bgmTrack": "sinnoh/route209",
+  "interior": "House",
+  "trees": "Round",
+  "width": 9,
+  "height": 11,
+  "ground": [
+    "#########",
+    "#########",
+    "#########",
+    "#_______#",
+    "#_______#",
+    "#_______#",
+    "#_______#",
+    "#_______#",
+    "#_______#",
+    "#_______#",
+    "####D####"
+  ],
+  "solid": [
+    "#########",
+    "#########",
+    "#########",
+    "####..#.#",
+    "#.....#.#",
+    "#.....#.#",
+    "#.......#",
+    "#.......#",
+    "#.......#",
+    "#......##",
+    "####.####"
+  ],
+  "props": [
+    {
+      "type": "Painting",
+      "x": 6,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 2,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bed",
+      "x": 6,
+      "y": 3,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "TrashCan",
+      "x": 7,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 10,
+      "targetMap": "PokemonMansion",
+      "targetX": 13,
+      "targetY": 6,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 6,
+      "y": 4,
+      "text": "A bed, neatly made.",
+      "script": "Bed"
+    },
+    {
+      "x": 6,
+      "y": 5,
+      "text": "A bed, neatly made.",
+      "script": "Bed"
+    }
+  ],
+  "npcs": [
+    {
+      "id": "maid_middle",
+      "name": "Maid",
+      "npcType": "Lass",
+      "x": 3,
+      "y": 6,
+      "facing": "Up",
+      "script": "SootheBell",
+      "movement": "wander_around",
+      "rangeX": 2,
+      "rangeZ": 2
+    }
+  ],
+  "wildEncounters": []
+}

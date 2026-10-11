@@ -2,10 +2,10 @@
   "area": "great_marsh_6",
   "bgmTrack": "sinnoh/great_marsh",
   "trees": "Round",
-  // The observatory is passed through to Pastoria City; its rooms come with plan 01 · M11
-  "through": [
-    { "warp": 0, "to": "pastoria_city", "toWarp": 7 },
-    { "warp": 1, "to": "pastoria_city", "toWarp": 8 }
+  // The way out leads into the observatory's back door (plan 01 · M11, part b), before its counter
+  "doors": [
+    { "warp": 0, "map": "PastoriaCityObservatoryGate1F", "x": 5, "y": 3, "facing": "Down" },
+    { "warp": 1, "map": "PastoriaCityObservatoryGate1F", "x": 5, "y": 3, "facing": "Down" }
   ],
   "people": {
     "ace_trainer_m": {

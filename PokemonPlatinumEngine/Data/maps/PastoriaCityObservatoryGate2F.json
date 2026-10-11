@@ -1,0 +1,225 @@
+{
+  "name": "PastoriaCityObservatoryGate2F",
+  "displayName": "Pastoria City",
+  "bgmTrack": "sinnoh/pastoria",
+  "interior": "House",
+  "trees": "Round",
+  "width": 13,
+  "height": 13,
+  "ground": [
+    "#############",
+    "#############",
+    "#############",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#############"
+  ],
+  "solid": [
+    "#############",
+    "#############",
+    "#############",
+    "#.#...#...#.#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "###.....##..#",
+    "#####...##..#",
+    "###.....##..#",
+    "#...........#",
+    "#...........#",
+    "#############"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 1,
+      "y": 2,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 5,
+      "y": 2,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 9,
+      "y": 2,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Binoculars",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Binoculars",
+      "x": 6,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Binoculars",
+      "x": 10,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 3,
+      "y": 8,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 7,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SideStairsDown",
+      "x": 8,
+      "y": 8,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Bookshelf",
+      "x": 1,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 1,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 2,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 2,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 3,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 7,
+      "sourceY": 8,
+      "targetMap": "PastoriaCityObservatoryGate1F",
+      "targetX": 11,
+      "targetY": 8,
+      "targetFacing": "Right"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 2,
+      "y": 3,
+      "text": "A pair of binoculars, pointed out over the Great Marsh.",
+      "script": "Binoculars"
+    },
+    {
+      "x": 6,
+      "y": 3,
+      "text": "A pair of binoculars, pointed out over the Great Marsh.",
+      "script": "Binoculars"
+    },
+    {
+      "x": 10,
+      "y": 3,
+      "text": "A pair of binoculars, pointed out over the Great Marsh.",
+      "script": "Binoculars"
+    }
+  ],
+  "npcs": [
+    {
+      "id": "ace_trainer_f",
+      "name": "Trainer",
+      "npcType": "Lass",
+      "x": 5,
+      "y": 10,
+      "facing": "Left",
+      "dialog": [
+        "Tell me I'm not imagining things...",
+        "The Pokémon out in the Great Marsh aren't the ones I saw there yesterday!"
+      ],
+      "movement": "wander_around",
+      "rangeX": 1
+    },
+    {
+      "id": "bug_catcher",
+      "name": "Bug Catcher",
+      "npcType": "Youngster",
+      "x": 4,
+      "y": 5,
+      "facing": "Down",
+      "dialog": [
+        "Put a coin in the binoculars and look out over the Great Marsh.",
+        "You can see which Pokémon are about today before you ever set foot in the mud."
+      ],
+      "movement": "look_south_west_and_east"
+    },
+    {
+      "id": "pokefan_m",
+      "name": "Pokéfan",
+      "npcType": "Gentleman",
+      "x": 3,
+      "y": 9,
+      "facing": "Up",
+      "dialog": [
+        "There are little trains out in the marsh. Quick Trams, they call them.",
+        "Take one if you're heading for the far end. It beats wading."
+      ],
+      "movement": "look_north_and_west"
+    },
+    {
+      "id": "picnicker",
+      "name": "Picnicker",
+      "npcType": "Lass",
+      "x": 7,
+      "y": 5,
+      "facing": "Down",
+      "dialog": [
+        "Walk across the bog and every so often you sink right in, up to your knees!",
+        "Here's the odd thing, though: turn about while you're stuck, and a Pokémon may pop out beside you."
+      ],
+      "movement": "look_south_and_east"
+    }
+  ],
+  "wildEncounters": []
+}

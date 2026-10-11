@@ -1,0 +1,256 @@
+{
+  "name": "CafeCabin",
+  "displayName": "Café Cabin",
+  "bgmTrack": "sinnoh/route210",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#####D#####"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#......####",
+    "#.#....#..#",
+    "#......####",
+    "#.#.......#",
+    "#.......#.#",
+    "#.........#",
+    "#####.#####"
+  ],
+  "behaviours": [
+    { "x": 7, "y": 4, "width": 1, "depth": 1, "behaviour": "Counter" },
+    { "x": 7, "y": 5, "width": 3, "depth": 1, "behaviour": "Counter" }
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 2,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 7,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "KitchenCounter",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "KitchenCounter",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 1,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 2,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 3,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 1,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 2,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 3,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 7,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 8,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 9,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 5,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 7,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 7,
+      "y": 5,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 7,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 5,
+      "sourceY": 9,
+      "targetMap": "Sinnoh",
+      "targetX": 566,
+      "targetY": 592,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "rancher",
+      "name": "Rancher",
+      "npcType": "Gentleman",
+      "x": 7,
+      "y": 7,
+      "facing": "Right",
+      "dialog": [
+        "Howdy, traveller! Some of the folks at my tables are spoiling for a battle.",
+        "Take them on or leave them be. It's all the same to me."
+      ]
+    },
+    {
+      "id": "waitress",
+      "name": "Waitress",
+      "npcType": "Lady",
+      "x": 8,
+      "y": 4,
+      "facing": "Left",
+      "script": "Milk"
+    },
+    {
+      "id": "collector_fernando",
+      "name": "Fernando",
+      "npcType": "Gentleman",
+      "x": 1,
+      "y": 4,
+      "facing": "Right",
+      "trainer": {
+        "id": "collector_fernando",
+        "name": "Fernando",
+        "trainerClass": "Collector",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Collector Fernando: A glass of milk, a quiet table and a good battle. That's my idea of a day off!",
+        "dialogueAfter": "Collector Fernando: Well, two out of three isn't bad.",
+        "sightRange": 0
+      }
+    },
+    {
+      "id": "collector_edwin",
+      "name": "Edwin",
+      "npcType": "Gentleman",
+      "x": 3,
+      "y": 4,
+      "facing": "Left",
+      "trainer": {
+        "id": "collector_edwin",
+        "name": "Edwin",
+        "trainerClass": "Collector",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Collector Edwin: I collect rare Pokémon. Care to meet the pride of my collection?",
+        "dialogueAfter": "Collector Edwin: Rare it may be. Unbeatable it is not.",
+        "sightRange": 0
+      }
+    },
+    {
+      "id": "waitress_kati",
+      "name": "Kati",
+      "npcType": "Lady",
+      "x": 5,
+      "y": 3,
+      "facing": "Down",
+      "trainer": {
+        "id": "waitress_kati",
+        "name": "Kati",
+        "trainerClass": "Waitress",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Waitress Kati: Welcome! Today's special is a battle with me, served piping hot!",
+        "dialogueAfter": "Waitress Kati: Oh dear. That one's going straight back to the kitchen.",
+        "sightRange": 0
+      }
+    },
+    {
+      "id": "old_man",
+      "name": "Old Man",
+      "npcType": "Gentleman",
+      "x": 3,
+      "y": 6,
+      "facing": "Left",
+      "script": "Psyduck"
+    }
+  ],
+  "wildEncounters": []
+}

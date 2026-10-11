@@ -1,0 +1,25 @@
+# The Hotel Grand Lake's west cottage at Valor Lakefront (plan 01 · M11, part b), on the original's plan.
+# docs/scripts.md describes the language; the lines are our own, on the original's beats
+# (scripts_grand_lake_valor_lakefront_west_house.s).
+#
+# The game director is staying here. He asks after the Pokédex, and has more to say once every Pokémon of Sinnoh
+# has been seen (210 of them). The diplomas themselves are the Pokédex's own to hand out, the first time it is
+# opened once complete (plan 03 · D10; docs/mechanics/rulings.md): he sends the player to look. Having said so, he
+# talks of other things until the player has gone out and come back (a flag that lasts while the player stays, as
+# the original's FLAG_MAP_LOCAL_0x01).
+
+
+script Director
+  if flag FLAG_MAP_LOCAL_GAME_DIRECTOR_SPOKE goto Stories
+  if var SEEN >= 210 goto Complete
+  say "Hello there! I'm the game director!" "Oh! You're filling in a Pokédex, I see!" "Do come and show me again once there's more in it!"
+  end
+label Complete
+  setflag FLAG_MAP_LOCAL_GAME_DIRECTOR_SPOKE
+  say "Hello there! I'm the game director!" "Oh! You've seen every single Pokémon of Sinnoh! That's marvellous!"
+  sound "levelup"
+  say "Work like that deserves a diploma. Open your Pokédex: you'll find it waiting for you inside."
+  end
+label Stories
+  say "How did you come by all the Pokémon in your Pokédex, I wonder?" "Did you work long and hard to catch and raise each one? Were some of them gifts from friends? Did a few arrive in trades from far away?" "Every Pokédex may look the same in the end. The stories inside them never are."
+  end

@@ -203,6 +203,15 @@ public static class RegionDatabase
                 "OldChateau", "OldChateauDiningArea", "OldChateauWestRoom", "OldChateauEastRoom", "OldChateauCorridor",
                 "OldChateauBackWestRoom", "OldChateauBackMiddleWestRoom", "OldChateauBackMiddleRoom", "OldChateauBackMiddleEastRoom",
                 "OldChateauBackEastRoom",
+                // Plan 01 · M11, part b: the rooms of the east and the sea, on the original's plans
+                "CafeCabin", "VeilstoneCitySouthwestHouse", "VeilstoneCityNorthwestHouse", "VeilstoneCityNortheastHouse",
+                "SevenStarsRestaurant", "GrandLakeValorLakefrontEastHouse", "GrandLakeValorLakefrontWestHouse",
+                "GrandLakeRoute213Lobby", "GrandLakeRoute213EastHouse", "GrandLakeRoute213NorthwestHouse", "GrandLakeRoute213NortheastHouse",
+                "PastoriaCityMiddleHouse", "PastoriaCityNorthHouse", "PastoriaCityNortheastHouse", "PastoriaCitySouthwestHouse",
+                "PastoriaCityObservatoryGate1F", "PastoriaCityObservatoryGate2F",
+                "PokemonMansion", "PokemonMansionMaidsRoomWest", "PokemonMansionMaidsRoomMiddle", "PokemonMansionMaidsRoomEast",
+                "PokemonMansionOffice", "Route221House",
+                "CanalaveCitySoutheastHouse", "CanalaveCitySailorEldritchHouse", "CanalaveCityWestHouse", "IronIslandHouse",
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

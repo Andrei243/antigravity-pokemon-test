@@ -2,9 +2,9 @@
   "area": "trophy_garden",
   "bgmTrack": "sinnoh/route209",
   "trees": "Round",
-  // The Pokémon Mansion's hall is passed through to Route 212; its rooms come with plan 01 · M11
-  "through": [
-    { "warp": 0, "to": "route_212_north", "toWarp": 2 },
-    { "warp": 1, "to": "route_212_north", "toWarp": 2 }
+  // The way out leads into the back door of the Pokémon Mansion's hall (plan 01 · M11, part b)
+  "doors": [
+    { "warp": 0, "map": "PokemonMansion", "x": 33, "y": 3, "facing": "Down" },
+    { "warp": 1, "map": "PokemonMansion", "x": 33, "y": 3, "facing": "Down" }
   ]
 }

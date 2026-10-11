@@ -1,0 +1,23 @@
+# The Hotel Grand Lake's east cottage on Route 213 (plan 01 · M11, part b), on the original's plan. docs/scripts.md
+# describes the language; the lines are our own, on the original's beats (scripts_grand_lake_route_213_east_house.s).
+#
+# A guest who dreams of travelling: each time he names one of four places far from Sinnoh, by the original's die.
+
+
+script Traveller
+  say "Is that so? A traveller, are you? Good for you. Everybody ought to see other places!"
+  random 4
+  if result == 0 goto Moon
+  if result == 1 goto Tower
+  if result == 2 goto Space
+  say "Have you heard of the Whirl Islands, off in the Johto region?" "A Pokémon of shining silver, they say... I mean to see it before I'm through."
+  end
+label Moon
+  say "Do you know Mt. Moon, in the Kanto region?" "Clefairy dancing under the full moon... That is a sight I must see once in my life."
+  end
+label Tower
+  say "Have you heard of the Tin Tower, in the Johto region?" "A Pokémon in all the colours of the rainbow... I mean to see it before I'm through."
+  end
+label Space
+  say "Do you know the Space Center, in the Hoenn region?" "A rocket climbing all the way up into space... That is a sight I must see once in my life."
+  end

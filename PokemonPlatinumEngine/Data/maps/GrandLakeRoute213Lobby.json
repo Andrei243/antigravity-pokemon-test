@@ -1,0 +1,233 @@
+{
+  "name": "GrandLakeRoute213Lobby",
+  "displayName": "Hotel Grand Lake",
+  "bgmTrack": "sinnoh/valor",
+  "interior": "House",
+  "trees": "Round",
+  "width": 17,
+  "height": 13,
+  "ground": [
+    "#################",
+    "#################",
+    "#################",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "########D########"
+  ],
+  "solid": [
+    "#################",
+    "#################",
+    "########.########",
+    "##...##...#...###",
+    "#.....#...#...#.#",
+    "#.....#...#####.#",
+    "#...............#",
+    "#...............#",
+    "#...#.......#...#",
+    "#...............#",
+    "##.............##",
+    "##.............##",
+    "########.########"
+  ],
+  "behaviours": [
+    { "x": 6, "y": 3, "width": 1, "depth": 3, "behaviour": "Counter" },
+    { "x": 14, "y": 3, "width": 1, "depth": 2, "behaviour": "Counter" },
+    { "x": 10, "y": 4, "width": 1, "depth": 1, "behaviour": "Counter" },
+    { "x": 10, "y": 5, "width": 5, "depth": 1, "behaviour": "Counter" }
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 3,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 12,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 5,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 15,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 3,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 11,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 12,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 13,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 8,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 15,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 6,
+      "y": 3,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "Table",
+      "x": 14,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Table",
+      "x": 10,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 10,
+      "y": 5,
+      "width": 5,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 10,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 2,
+      "targetMap": "Sinnoh",
+      "targetX": 706,
+      "targetY": 812,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 8,
+      "sourceY": 12,
+      "targetMap": "Sinnoh",
+      "targetX": 706,
+      "targetY": 819,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "ace_trainer_f",
+      "name": "Trainer",
+      "npcType": "Lass",
+      "x": 3,
+      "y": 5,
+      "facing": "Down",
+      "dialog": [
+        "Isn't this hotel the most romantic place you ever saw?",
+        "One day a knight will ride up on his Pokémon and carry me off here for our honeymoon. I just know it!"
+      ]
+    },
+    {
+      "id": "policeman",
+      "name": "Receptionist",
+      "npcType": "Gentleman",
+      "x": 11,
+      "y": 4,
+      "facing": "Left",
+      "script": "Rest"
+    },
+    {
+      "id": "looker",
+      "name": "Looker",
+      "npcType": "looker",
+      "x": 9,
+      "y": 4,
+      "facing": "Right",
+      "script": "Looker",
+      "hiddenBy": "FLAG_HIDE_GRAND_LAKE_ROUTE_213_LOBBY_LOOKER"
+    }
+  ],
+  "wildEncounters": []
+}

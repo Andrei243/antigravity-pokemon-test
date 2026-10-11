@@ -1,0 +1,15 @@
+# Canalave City's south-east house (plan 01 · M11, part b), on the original's plan. docs/scripts.md describes the
+# language; the lines are our own, on the original's beats (scripts_canalave_city_southeast_house.s).
+#
+# The Trainer of the house gives TM48, which she found in a ship's cargo, once
+# (FLAG_RECEIVED_CANALAVE_CITY_SOUTHEAST_HOUSE_TM48).
+
+
+script SkillSwap
+  if flag FLAG_RECEIVED_CANALAVE_CITY_SOUTHEAST_HOUSE_TM48 goto Explain
+  say "Hello, Trainer! Here's something I came across." "It was mixed in with a load of cargo from another country." "It's no use to me, so you had better have it."
+  give "TM48"
+  setflag FLAG_RECEIVED_CANALAVE_CITY_SOUTHEAST_HOUSE_TM48
+label Explain
+  say "You know how every Pokémon has an Ability of its own?" "Skill Swap makes the Pokémon that uses it change Abilities with its target." "How well you use it shows what kind of Trainer you are."
+  end

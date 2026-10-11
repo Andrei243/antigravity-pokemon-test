@@ -140,6 +140,9 @@ public sealed class HeadlessScriptHost : IScriptHost
 
     public int Random(int sides) => Rolls.Count > 0 ? Rolls.Dequeue() % Math.Max(1, sides) : 0;
 
+    /// <summary>The turns the battle last fought took, as a test says (<see cref="Fight"/> may set it battle by battle).</summary>
+    public int BattleTurns { get; set; }
+
     public int UndergroundAct(string what, NPC? subject)
     {
         Log.Add($"underground {what}");

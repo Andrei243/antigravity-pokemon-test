@@ -1,0 +1,42 @@
+# The Massage Girl's house in Veilstone City (plan 01 · M11, part b), on the original's plan. docs/scripts.md
+# describes the language; the lines are our own, on the original's beats (scripts_veilstone_city_southwest_house.s).
+#
+# Once a day (FLAG_DAILY_GOT_MASSAGE_VEILSTONE_CITY_SOUTHWEST_HOUSE, cleared with the day) she massages one Pokémon of
+# the team: it grows friendlier by three, as the original's IncreasePartyMonFriendship counts it (team befriend), and
+# she finds one of sixteen accessories while she works, drawn among those the Fashion Case still has room for (team
+# massage: the original's TryGetRandomMassageGirlAccessory). An Egg is not massaged.
+
+
+script Massage
+  if flag FLAG_DAILY_GOT_MASSAGE_VEILSTONE_CITY_SOUTHWEST_HOUSE goto Tomorrow
+  say "Oh, somebody looks worn out... No, no, not you. I mean your Pokémon!"
+  ask "I could give one of them a massage, if you like. Shall I?"
+  if no goto Shy
+  say "Which one could do with a little looking after?"
+  choosepokemon
+  team befriend 3
+  if result == 255 goto Shy
+  if result == 254 goto Egg
+  say "Hee hee... All right, let's begin. There now, sweetie, just relax..."
+  fade out
+  sound "heal"
+  wait 1.2
+  fade in
+  text "{member:RESULT} looks blissfully content..."
+  setflag FLAG_DAILY_GOT_MASSAGE_VEILSTONE_CITY_SOUTHWEST_HOUSE
+  team massage room
+  if result == 0 goto Bye
+  say "Oh, and look what turned up while I was working on your Pokémon!"
+  team massage
+label Bye
+  say "Do drop by again tomorrow, if you like."
+  end
+label Egg
+  say "Don't be silly! I'd crack that Egg if I tried to massage it!"
+  end
+label Shy
+  say "Oh! It's nothing shady, I promise..."
+  end
+label Tomorrow
+  say "Hm? You want me to show you how Pokémon are massaged?" "Hee hee hee... That's a secret, of course!" "Come and see me again tomorrow!"
+  end

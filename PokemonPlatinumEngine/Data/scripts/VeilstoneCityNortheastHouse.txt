@@ -1,0 +1,37 @@
+# Veilstone City's north-east house (plan 01 · M11, part b), on the original's plan. docs/scripts.md describes the
+# language; the lines are our own, on the original's beats (scripts_veilstone_city_northeast_house.s).
+#
+# The man of the house found a Porygon wandering near Team Galactic's building and gives it away at level 25, once
+# (FLAG_RECEIVED_VEILSTONE_CITY_NORTHEAST_HOUSE_PORYGON; FLAG_TALKED_TO_VEILSTONE_CITY_NORTHEAST_HOUSE_POKEFAN_M once
+# he has told how he came by it). Only a team with room takes it, as in the original. The nickname the original
+# offers afterwards waits for the naming prompt (plan 12 · Q19).
+
+
+script Porygon
+  if flag FLAG_RECEIVED_VEILSTONE_CITY_NORTHEAST_HOUSE_PORYGON goto After
+  if flag FLAG_TALKED_TO_VEILSTONE_CITY_NORTHEAST_HOUSE_POKEFAN_M goto Again
+  setflag FLAG_TALKED_TO_VEILSTONE_CITY_NORTHEAST_HOUSE_POKEFAN_M
+  say "You're a Trainer, aren't you?" "You see, there's a Pokémon I'd like somebody to look after. It's called Porygon." "I found it wandering about near Team Galactic's building, and I'm no Trainer myself."
+  ask "Would you take it off my hands?"
+  goto Answer
+label Again
+  say "You're a Trainer, aren't you?" "About that Pokémon I'd like somebody to look after, the Porygon..."
+  ask "Would you take it off my hands?"
+label Answer
+  if no goto Declined
+  if party >= 6 goto Full
+  say "Wonderful! Thank you! The Porygon will be glad of it too." "I suspect it ran away from those Team Galactic goons."
+  givepokemon "Porygon" 25
+  setflag FLAG_RECEIVED_VEILSTONE_CITY_NORTHEAST_HOUSE_PORYGON
+  fanfare pokemon
+  text "{player} received the Porygon!"
+  end
+label Full
+  say "Thank you! ... Oh, but you've a whole team with you already." "If you want this Porygon, put one of them in a PC Box first."
+  end
+label Declined
+  say "Is that so..." "Then I'll look after it a while longer. Do come and see me if you change your mind."
+  end
+label After
+  say "That building of Team Galactic's bothers me so much I can hardly sleep." "It's so strange. Like a robot that might get up and walk off at any moment."
+  end

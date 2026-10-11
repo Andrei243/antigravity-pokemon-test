@@ -1,0 +1,139 @@
+{
+  "name": "GrandLakeRoute213NorthwestHouse",
+  "displayName": "Hotel Grand Lake",
+  "bgmTrack": "sinnoh/valor",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "######D####"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "##......###",
+    "#.........#",
+    "#.#......##",
+    "#.#......##",
+    "#.#.......#",
+    "#.........#",
+    "######.####"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fridge",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 8,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 9,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bed",
+      "x": 2,
+      "y": 5,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "TrashCan",
+      "x": 9,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 6,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 6,
+      "sourceY": 9,
+      "targetMap": "Sinnoh",
+      "targetX": 701,
+      "targetY": 806,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "clown",
+      "name": "Clown",
+      "npcType": "clown",
+      "x": 2,
+      "y": 3,
+      "facing": "Left",
+      "script": "TrickRoom"
+    },
+    {
+      "id": "psychic",
+      "name": "Psychic",
+      "npcType": "Youngster",
+      "x": 8,
+      "y": 6,
+      "facing": "Left",
+      "script": "Fortune"
+    },
+    {
+      "id": "guitarist",
+      "name": "Guitarist",
+      "npcType": "Youngster",
+      "x": 5,
+      "y": 5,
+      "facing": "Left",
+      "dialog": [
+        "Me, I'm a simple fellow. I let my guitar do the talking.",
+        "A tune and my Pokémon: with those two I can shine wherever the road takes me.",
+        "They say you'll find players like me hanging around Pokémon Centers, too."
+      ],
+      "movement": "wander_around",
+      "rangeX": 1,
+      "rangeZ": 1
+    }
+  ],
+  "wildEncounters": []
+}

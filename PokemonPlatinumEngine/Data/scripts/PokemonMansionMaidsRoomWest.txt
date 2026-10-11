@@ -1,0 +1,17 @@
+# The west one of the maids' three rooms in the Pokémon Mansion (plan 01 · M11, part b), on the original's plan.
+# docs/scripts.md describes the language; the lines are our own, on the original's beats
+# (scripts_pokemon_mansion_maids_room.s). PokemonMansionMaidsRoomMiddle.txt says how the three rooms are kept.
+#
+# The bed may be slept in: the team is healed behind a fade, as often as asked. A Luxury Ball lies by the television.
+
+
+script Bed
+  ask "It's a bed... Take a rest?"
+  if no end
+  text "{player} was fast asleep in no time..."
+  fade out
+  fanfare heal
+  heal
+  fade in
+  text "{player} and the Pokémon woke from their nap as good as new!"
+  end

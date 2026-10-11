@@ -1,0 +1,26 @@
+# The Hotel Grand Lake's north-east cottage on Route 213 (plan 01 · M11, part b), on the original's plan.
+# docs/scripts.md describes the language; the lines are our own, on the original's beats
+# (scripts_grand_lake_route_213_northeast_house.s).
+#
+# A couple who wanted a cottage to themselves. He gives away the Pokétch's Coin Toss app, which chose this one for
+# them; both have something else to say once the player has it. A Max Revive is hidden in the bin.
+
+
+script CoinToss
+  if poketchapp CoinToss goto Have
+  say "The hotel was full, but they managed to squeeze the two of us in here." "So at last we're alone together. Or we would be, if you weren't standing there." "Look, here's something we have no more use for. Take it, would you?"
+  fanfare keyitem
+  poketchapp CoinToss
+  text "{player} added the Coin Toss app to the Pokétch!"
+label Have
+  say "I've always left my decisions to the toss of a coin." "It makes me brave. Nothing I decide is ever my fault!"
+  end
+
+
+script Lady
+  if poketchapp CoinToss goto Have
+  say "It was his coin toss that landed us in this musty, stuffy old cottage..."
+  end
+label Have
+  say "We came here to be alone and talk, with nobody to disturb us." "We need this time together, just the two of us."
+  end

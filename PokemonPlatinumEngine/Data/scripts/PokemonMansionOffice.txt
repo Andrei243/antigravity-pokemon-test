@@ -1,0 +1,127 @@
+# Mr. Backlot's office in the Pokémon Mansion (plan 01 · M11, part b), on the original's plan. docs/scripts.md
+# describes the language; the lines are our own, on the original's beats (scripts_pokemon_mansion_office.s).
+#
+# Mr. Backlot boasts of his Trophy Garden. Once the Hall of Fame is behind the player (where the original asks for
+# the National Pokédex, as the other rooms of plan 01 · M11 do), agreeing with him twice has him name a Pokémon that
+# isn't in the garden at all, and his butler is sent to put one there: one more of the garden's sixteen each day
+# (trophygarden: plan 06 · R13's TrophyGarden_AddNewMon; FLAG_DAILY_ADDED_TROPHY_GARDEN_MON). The butler is back the
+# next time the office is come into.
+#
+# A guard keeps fingers off the statue behind the desk (the original's coordinate event before it,
+# VAR_POKEMON_MANSION_OFFICE_BLOCK_STATUE_STATE 0), but late at night: the original has him away from two to six in
+# the morning by the hour, and here by the time of day, which is what a script can ask. The book on the desk tells
+# of Manaphy, and the Pokédex has it as seen from then on (FLAG_SKIP_POKEMON_MANSION_OFFICE_BOOK_SEEN_MANAPHY_CHECK).
+
+
+script OnEnter
+  if time latenight goto Away
+  clearflag FLAG_HIDE_POKEMON_MANSION_OFFICE_POLICEMAN
+  setvar VAR_POKEMON_MANSION_OFFICE_BLOCK_STATUE_STATE 0
+  end
+label Away
+  setflag FLAG_HIDE_POKEMON_MANSION_OFFICE_POLICEMAN
+  setvar VAR_POKEMON_MANSION_OFFICE_BLOCK_STATUE_STATE 1
+  end
+
+
+script Backlot
+  if flag FLAG_DAILY_ADDED_TROPHY_GARDEN_MON goto Cute
+  if flag FLAG_GAME_COMPLETED goto Envious
+  say "Hello, hello! Welcome to my magnificent mansion!" "There is a great deal to be proud of in this house, inside and out..." "But nothing makes me prouder than my Trophy Garden at the back!" "Why travel far and wide, when Pokémon come flocking to a garden like mine?" "You are welcome to join them and marvel at it!"
+  end
+label Envious
+  say "Ahem!" "There is a great deal to be proud of in this house, inside and out..." "But nothing makes me prouder than my Trophy Garden at the back!" "Why travel far and wide, when Pokémon come flocking to a garden like mine?"
+  ask "Well? Doesn't that make you envious? You are envious, aren't you?"
+  if no goto Fooling
+  say "Muhohoho... I thought so! I knew you would be!" "Not that I mind. I do enjoy telling you my little stories!" "When I step out into my prized garden, you see, Pokémon come running up to me, as pleased as can be to see me!"
+  ask "Well? Doesn't THAT make you envious? You are envious, aren't you?"
+  if no goto Fooling
+  trophygarden
+  setflag FLAG_DAILY_ADDED_TROPHY_GARDEN_MON
+  say "Muhohoho... I thought so! I knew you would be!" "Let me tell you what happened this very morning, when I went out into my garden." "A {trophygarden} with the sweetest eyes came scampering over, jumped up, and gave me a kiss on the cheek..."
+  emote old_man exclaim
+  face old_man right
+  speaker "Butler"
+  say "M-Master! That Pokémon you speak of... There is no such Pokémon in the garden..."
+  emote self exclaim
+  face self left
+  speaker self
+  say "Wha... Erm..." "Wh-what are you saying? I am no teller of tall tales!" "Now listen... Mutter, mutter... Whisper, whisper..."
+  speaker "Butler"
+  say "Yes, Master! At once, sir!"
+  walk old_man down 2 right 1
+  hide old_man
+  face self player
+  speaker self
+label Cute
+  say "... It's true, I tell you! Not one fib has ever passed these lips!" "There really are darling {trophygarden} in my Trophy Garden! That is the honest truth!"
+  end
+label Fooling
+  say "I know you are, really... You don't fool anybody..."
+  end
+
+
+script Butler
+  if flag FLAG_DAILY_ADDED_TROPHY_GARDEN_MON goto Seen
+  if not flag FLAG_GAME_COMPLETED goto Master
+  if flag FLAG_TALKED_TO_POKEMON_MANSION_OFFICE_OLD_MAN_NATIONAL_DEX goto Stroll
+  setflag FLAG_TALKED_TO_POKEMON_MANSION_OFFICE_OLD_MAN_NATIONAL_DEX
+  say "And how do you find it? The master's Trophy Garden as it is now, I mean." "You will have noticed how many rare Pokémon have come to it of late?" "But that is only to be expected. It is the master's Trophy Garden."
+  face self down
+  end
+label Stroll
+  random 2
+  if result == 1 goto Wonderful
+  say "The master took his stroll in the Trophy Garden today, as he does every day."
+  face self down
+  end
+label Master
+  random 2
+  if result == 1 goto Wonderful
+  say "The master does so enjoy showing his prized garden to strong Trainers."
+  face self down
+  end
+label Wonderful
+  say "The master is a truly wonderful and generous man!" "It is on his orders that the garden, his pride and joy, is open to everyone. Even to Trainers."
+  face self down
+  end
+label Seen
+  say "Did you see them? There were {trophygarden} in the garden, were there not?" "But that is only to be expected. It is the master's Trophy Garden."
+  face self down
+  end
+
+
+script Guard
+  say "You may look, but please keep your hands off this statue."
+  face self down
+  end
+
+# The original's coordinate event before the statue (script 5)
+script BlockStatue
+  face policeman left
+  speaker "Guard"
+  say "I am very sorry, but please keep your hands off the statue."
+  walk player down 1
+  face player up
+  face policeman down
+  end
+
+script Statue
+  text "A statue of a Pokémon. It looks dreadfully expensive..."
+  text "... ! You have left fingerprints all over it..."
+  end
+
+
+script Book
+  ask "A book about Pokémon. It looks dreadfully expensive. Read it?"
+  if no goto Back
+  text "MANAPHY"
+  text "A Pokémon so rare that it has never once been seen in Sinnoh, let alone caught."
+  if flag FLAG_SKIP_POKEMON_MANSION_OFFICE_BOOK_SEEN_MANAPHY_CHECK goto Back
+  setflag FLAG_SKIP_POKEMON_MANSION_OFFICE_BOOK_SEEN_MANAPHY_CHECK
+  seen "Manaphy"
+  text "What the book says of Manaphy was added to the Pokédex."
+  end
+label Back
+  text "{player} put the book back."
+  end

@@ -66,6 +66,9 @@ public enum Op
     Fossil, GameCorner, Villa, PalPark,
     // A die of the script's own (plan 01 · M11): the original's GetRandom
     Random,
+    // What a room's people ask of the team and do for it (plan 01 · M11, part b): a massage, a Pokémon of a level,
+    // a pair of Combee, the condition a scarf is given for
+    Team,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

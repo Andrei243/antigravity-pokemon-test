@@ -1,0 +1,150 @@
+# The Pokémon Mansion's hall on Route 212 (plan 01 · M11, part b), on the original's plan. docs/scripts.md describes
+# the language; the lines are our own, on the original's beats (scripts_pokemon_mansion.s).
+#
+# The maid at the west end of the corridor holds the 5-Maid Knockout Exact-Turn Attack Challenge: five maids to beat
+# one after another, in exactly the day's number of turns (VAR_FIVE_MAID_KNOCKOUT_TURN_TARGET, five to nine, drawn by
+# the room's arrival once a day behind FLAG_DAILY_SET_FIVE_MAID_KNOCKOUT_TURN_TARGET). The turns are counted as the
+# original counts them (TURNS: a battle's last turn is not one, so five battles won at once come to none). Whoever
+# hits the number battles the young master or the young lady of the house, by a die of two. The challenge is taken
+# once a day (a flag of our own, FLAG_DAILY_TOOK_FIVE_MAID_KNOCKOUT_CHALLENGE, where the original sets and clears the
+# two prodigies' trainer flags). Each maid, and the prodigy, comes out onto the mat the first maid has stepped off:
+# they are people of the map hidden by the original's two flags, which the arrival sets as the original's does.
+
+
+script OnEnter
+  setflag FLAG_FIRST_ARRIVAL_POKEMON_MANSION
+  setflag FLAG_HIDE_POKEMON_MANSION_FIVE_MAID_KNOCKOUT_MAID
+  setflag FLAG_HIDE_POKEMON_MANSION_FIVE_MAID_KNOCKOUT_BOSS
+  if flag FLAG_DAILY_SET_FIVE_MAID_KNOCKOUT_TURN_TARGET end
+  setflag FLAG_DAILY_SET_FIVE_MAID_KNOCKOUT_TURN_TARGET
+  setvar VAR_FIVE_MAID_KNOCKOUT_TURN_TARGET 5
+  random 5
+  if result == 1 setvar VAR_FIVE_MAID_KNOCKOUT_TURN_TARGET 6
+  if result == 2 setvar VAR_FIVE_MAID_KNOCKOUT_TURN_TARGET 7
+  if result == 3 setvar VAR_FIVE_MAID_KNOCKOUT_TURN_TARGET 8
+  if result == 4 setvar VAR_FIVE_MAID_KNOCKOUT_TURN_TARGET 9
+  end
+
+
+script Challenge
+  if flag FLAG_DAILY_TOOK_FIVE_MAID_KNOCKOUT_CHALLENGE goto Tomorrow
+  # The player stands before her in the middle of the corridor, whichever side they spoke from
+  if var PLAYER_Y == 8 call FromSouth
+  if var PLAYER_Y == 6 call FromNorth
+  if flag FLAG_STARTED_FIVE_MAID_KNOCKOUT_CHALLENGE goto Target
+  setflag FLAG_STARTED_FIVE_MAID_KNOCKOUT_CHALLENGE
+  say "Welcome." "Here you may challenge the pride of the mansion: its five Trainer maids." "The challenge is to beat all five of us one after another, with no rest in between." "And should you beat us in exactly the number of turns we name, there is a special reward."
+  say "A turn, by the way, is one round of a battle: each side has a Pokémon use a move, uses an item, or changes Pokémon." "And now..."
+label Target
+  ask "The 5-Maid Knockout Exact-Turn Attack Challenge! Today's number of turns is {var:VAR_FIVE_MAID_KNOCKOUT_TURN_TARGET}! Will you try?"
+  if no goto Declined
+  setflag FLAG_DAILY_TOOK_FIVE_MAID_KNOCKOUT_CHALLENGE
+  say "Very well! Our first maid, please!"
+  walk self up 1
+  face self down
+
+  show five_maid_knockout_maid
+  speaker "Maid Belinda"
+  say "First up! My favourite colour is blue, and I shall open the proceedings!"
+  battle five_maid_knockout_maid as "maid_belinda"
+  speaker "Maid Belinda"
+  say "The next of us is really rather strong."
+  hide five_maid_knockout_maid
+  wait 0.4
+
+  show five_maid_knockout_maid
+  speaker "Maid Sophie"
+  say "Delighted to meet you in battle. Green is the colour that suits me best!"
+  battle five_maid_knockout_maid as "maid_sophie"
+  speaker "Maid Sophie"
+  say "I was number two, and a little bit tough. The next maid is tougher still!"
+  hide five_maid_knockout_maid
+  wait 0.4
+
+  show five_maid_knockout_maid
+  speaker "Maid Emily"
+  say "My lucky colour is yellow! The sunshine girl, that's me!"
+  battle five_maid_knockout_maid as "maid_emily"
+  speaker "Maid Emily"
+  say "The next maid is a wee bit stronger than I am."
+  hide five_maid_knockout_maid
+  wait 0.4
+
+  show five_maid_knockout_maid
+  speaker "Maid Elena"
+  say "Pink is the colour I can't do without! And I am fourth in line!"
+  battle five_maid_knockout_maid as "maid_elena"
+  speaker "Maid Elena"
+  say "Th-the next maid is ever so strong!"
+  hide five_maid_knockout_maid
+  walk self down 1
+  face self right
+  speaker self
+  say "Congratulations! You have beaten four maids so far." "You have taken {var:TURNS} turns up to now. The target is {var:VAR_FIVE_MAID_KNOCKOUT_TURN_TARGET} turns."
+  walk self up 1
+  face self down
+
+  show five_maid_knockout_maid
+  speaker "Maid Clare"
+  say "Red is my colour! Ready or not, here comes number five!"
+  battle five_maid_knockout_maid as "maid_clare"
+  speaker "Maid Clare"
+  say "You knocked out all five of us! You must be something splendid!"
+  hide five_maid_knockout_maid
+  walk self down 1
+  face self right
+  speaker self
+  say "Congratulations on your sweep." "The target was {var:VAR_FIVE_MAID_KNOCKOUT_TURN_TARGET} turns. The number of turns you took to beat the maids was {var:TURNS}."
+  if var TURNS != VAR_FIVE_MAID_KNOCKOUT_TURN_TARGET goto Missed
+  say "How splendid of you! You hit the target exactly!" "A sweep in the very number of turns we named earns a special reward..."
+  random 2
+  if result == 1 goto Celeste
+  say "The chance to battle our own young prodigy, Master Liam!"
+  walk self up 1
+  face self down
+  show liam
+  speaker "Rich Boy Liam"
+  say "A Trainer has come all this way to pull me into a battle...?" "I never expected that. Still, I may as well enjoy it, don't you think?"
+  battle liam
+  speaker "Rich Boy Liam"
+  say "Wonderful! You are a marvel of a Trainer!" "Oh, and I'll thank you not to pry into what I get up to at the back of the mansion. A knowing wink is all you will get out of me."
+  hide liam
+  walk self down 1
+  face self right
+  speaker self
+  say "You are the real thing! Sweeping the floor with five maids wasn't enough for you, oh no!" "To think you would get the better of our Master Liam as well!"
+  goto Tomorrow
+label Celeste
+  say "The chance to battle our own young prodigy, Lady Celeste!"
+  walk self up 1
+  face self down
+  show celeste
+  speaker "Lady Celeste"
+  say "Oh, my... If the maids have called me out, you must be good. Do show me how good."
+  battle celeste
+  speaker "Lady Celeste"
+  say "Oh, my! My, my, my! You battle quite enchantingly." "I shall take my leave now. Hee hee..."
+  hide celeste
+  walk self down 1
+  face self right
+  speaker self
+  say "You are the real thing! Sweeping the floor with five maids wasn't enough for you, oh no!" "To think you would get the better of our Lady Celeste as well!"
+  goto Tomorrow
+label Missed
+  say "Oh... How disappointing for you." "All the same, you swept all five maids, and that is plenty to be proud of!"
+label Tomorrow
+  say "Please visit us again tomorrow."
+  end
+label Declined
+  say "Oh, how disappointing... Do take the challenge some time."
+  end
+
+script FromSouth
+  walk player right 1 up 1
+  face player left
+  return
+
+script FromNorth
+  walk player right 1 down 1
+  face player left
+  return

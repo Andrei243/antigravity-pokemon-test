@@ -277,6 +277,12 @@ public class ScriptTests
           palpark store
           palpark end
           random 6
+          team befriend 3
+          team level VAR_X
+          team combee
+          team condition cool
+          team massage
+          team massage room
         script Other
           end
         """;
@@ -1132,6 +1138,7 @@ public class ScriptTests
         public int PastimeAct(string what, int number, NPC? subject) => inner.PastimeAct(what, number, subject);
         public string DiggerName => inner.DiggerName;
         public int Random(int sides) => inner.Random(sides);
+        public int BattleTurns => inner.BattleTurns;
         public int? HoneyTreeFaced => inner.HoneyTreeFaced;
         public uint TrainerNumber => inner.TrainerNumber;
         public TimeOfDay TimeOfDay => inner.TimeOfDay;

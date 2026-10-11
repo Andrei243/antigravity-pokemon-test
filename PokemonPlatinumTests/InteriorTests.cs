@@ -129,7 +129,8 @@ public class InteriorTests
                 Assert.True(ScriptLibrary.Default.Find(script, name) != null, $"{name}: what is read at {tile} runs '{script}', which is nowhere");
             foreach (var warp in map.Warps)
             {
-                var target = rooms.GetValueOrDefault(warp.TargetMap) ?? BuiltMaps.Value[warp.TargetMap];
+                // (a room of a later part's that one of these opens on is read from its own file)
+                var target = rooms.GetValueOrDefault(warp.TargetMap) ?? (BuiltMaps.Value.TryGetValue(warp.TargetMap, out var built) ? built : Room(warp.TargetMap));
                 Assert.True(target.IsWalkable(warp.TargetX, warp.TargetY), $"{name}: the way at {warp.SourceX},{warp.SourceY} leads into something solid of {warp.TargetMap}");
                 Assert.False(map.IsSolid(warp.SourceX, warp.SourceY), $"{name}: the way at {warp.SourceX},{warp.SourceY} is walled up");
             }

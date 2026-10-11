@@ -130,7 +130,7 @@ name too), `{self}`, `{lead}` (the first Pokémon of the team), `{starter}`, `{r
 `{assistantstarter}` (the one of the three neither child took), `{item}` (the last item given or taken),
 `{money}`, `{result}` and `{var:NAME}`; `{member:NAME}` is the nickname of the team's Pokémon at the place the
 variable gives (from 0), and `{swarm}` and `{swarmplace}` the species of the day's swarm and where it is,
-`{trophygarden}` the Trophy Garden's newest (plan 06 · R13), `{ticket}` the Lottery Corner's number of the day and
+`{trophygarden}` the Trophy Garden's newest (plan 06 · R13), `{marsh:1}` to `{marsh:6}` the Pokémon the day has brought to that area of the Great Marsh (the Sinnoh Pokédex's list; plan 01 · M11, part b: the observatory's binoculars), `{ticket}` the Lottery Corner's number of the day and
 `{winner}` the Pokémon whose ID number the last `lottery draw` matched (plan 06 · R14a), `{berry}`, `{yield}` and
 `{mulch}` what the patch of soil the script belongs to holds, as the last `berry` command left them, and (plan 06 ·
 R15) `{daycare:0}` and `{daycare:1}` the Pokémon in each place of the Day Care, `{level:N}` the level its steps there
@@ -153,7 +153,7 @@ What an `if` can ask:
 | Question | |
 |---|---|
 | `flag FLAG_X` | The flag is set. |
-| `var VAR_X == 2`, `var VAR_X >= VAR_Y` | A variable against a number or another variable (`==`, `!=`, `<`, `<=`, `>`, `>=`). The game's own may be read too: `RESULT`, `PLAYER_X`, `PLAYER_Y`, `MONEY`, `PARTY_COUNT`, `BADGE_COUNT`, `GREETINGS` (the people spoken to, `greetings clear` below), `SEEN` (the species of the Sinnoh Pokédex seen), `LEAD_FRIENDSHIP` (the friendship of the first Pokémon of the team, 0 with none: the fan club's woman, plan 06 · R14c). |
+| `var VAR_X == 2`, `var VAR_X >= VAR_Y` | A variable against a number or another variable (`==`, `!=`, `<`, `<=`, `>`, `>=`). The game's own may be read too: `RESULT`, `PLAYER_X`, `PLAYER_Y`, `MONEY`, `PARTY_COUNT`, `BADGE_COUNT`, `GREETINGS` (the people spoken to, `greetings clear` below), `SEEN` (the species of the Sinnoh Pokédex seen), `LEAD_FRIENDSHIP` (the friendship of the first Pokémon of the team, 0 with none: the fan club's woman, plan 06 · R14c), `TURNS` (the turns of every battle this script has fought, added up as the original counts them: a battle's last turn is not one, so a battle won at once is none; the original's `VAR_TOTAL_TURNS_LAST_BATTLE`, for the Pokémon Mansion's maids) and `SAFARI_CAUGHT` (the Pokémon caught in the Safari Game under way, or in the last one until the next begins: `GetCurrentSafariGameCaughtNum`; both plan 01 · M11, part b). |
 | `yes`, `no` | The answer to the last `ask`. |
 | `result == 1` | What the last question, battle, handing-over or taking came to. |
 | `won`, `lost` | The last battle. |
@@ -208,7 +208,7 @@ on leaving any place), `FLAG_FLASH_ACTIVE` and `FLAG_DEFOG_ACTIVE` (cleared on g
 | Command | |
 |---|---|
 | `battle self [canlose]` | A trainer battle with someone of the map who is a trainer. Won, the script goes on (and they are beaten for good, prize money paid). Lost, the script ends there and the player wakes up in the last Pokémon Center (at home before any), unless `canlose`: then the team is healed and the script goes on with `if lost`. With no Pokémon able to fight (`IScriptHost.CanBattle`), no battle starts: a line says so and the script ends there. |
-| `battle self and other` | Two trainers of the map at once, each with a team of their own, in a double battle. Won, both are beaten. |
+| `battle self and other` | Two trainers of the map at once, each with a team of their own, in a double battle. Won, both are beaten. Whoever is battled again once beaten (the Seven Stars Restaurant's couples on another day, plan 01 · M11, part b) brings their team afresh from Platinum's data, as the original builds a trainer's team for every battle. |
 | `battle self with cheryl`, `battle self with "cheryl_eterna_forest"` | A tag battle: someone of the map who is a trainer, or a trainer of Platinum's data by id, battles beside the player, with a team of their own and their own mind. The player loses when their own team is down, whatever the partner has left. The words after the first trainer come in any order (`battle a and b with c canlose`). |
 | `battle self and pair with partner` | Two trainers who came together, side by side (plan 02 · S6): against the player's two Pokémon, or beside whoever travels with the player (`partner`), who brings a fresh team of their own from Platinum's data, as the original builds it for every battle. Nobody travelling, `with partner` adds no one. |
 | `battle self rematch` | A rematch the Vs. Seeker found (plan 06 · R12): the trainer brings the team of the highest level of their row the story has unlocked and not yet beaten (`VsSeeker.RematchTeam`), for this battle only, and stops waiting. |
@@ -454,6 +454,20 @@ own flags and variables (`FLAG_VILLA_FURNITURE_…`, `VAR_RESORT_VILLA_VISITOR`)
 | `palpark prize` | Hands over the berry the score earns. |
 | `palpark store` | Sends the six to the PC boxes, as Pokémon met at Pal Park. |
 | `palpark end` | Ends the show and keeps nothing of it: the six go on waiting in the park. |
+
+### What a room's people ask of the team
+
+Plan 01 · M11, part b: one command, `team`, for what the people of the houses of the east ask of the team and do for
+it, each after one command of the original's.
+
+| Command | What it does |
+|---|---|
+| `team befriend 3` | The Pokémon `RESULT` names (after `choosepokemon`) grows friendlier by so much, as the original's `IncreasePartyMonFriendship` counts it: half as much again with a Soothe Bell, then one more out of a Luxury Ball, never past 255. `RESULT` stays the Pokémon's place, so a line can go on naming it (`{member:RESULT}`); it is 254 for an Egg, which nothing changes, and 255 with none chosen. The Massage Girl's three points. |
+| `team level VAR_DAILY_RANDOM_LEVEL` | `RESULT` is the place of the first of the team (no Egg) at the level the variable holds, or 255 with none: the original's loop of `GetPartyMonLevel` in Route 221's house. |
+| `team combee` | `RESULT` 0 with no Combee on the team, 1 with one sex, 2 with both; an Egg is none (`CheckPartyCombeeGenderCount`). |
+| `team condition cool` | `RESULT` is a contest condition of the first of the team that is no Egg: `cool`, `beauty`, `cute`, `smart` or `tough`, 0 to 255, 0 with nobody (`GetFirstNonEggInParty`, `GetPartyMonContestStat`). The Scarf Guy's five scarves. |
+| `team massage room` | `RESULT` 1 while the Fashion Case has room for any of the Massage Girl's sixteen accessories (Pretty Dewdrop to Glitter Powder, `ScriptRunner.MassageAccessories`). |
+| `team massage` | One of the sixteen goes into the Fashion Case, drawn by the script's die among those it still has room for (`TryGetRandomMassageGirlAccessory`), with the item fanfare and the lines `giveaccessory` says. `RESULT` 1, or 0 and not a word with room for none. `{accessory}` names it. |
 
 ## Who is on the map
 

@@ -1,0 +1,135 @@
+{
+  "name": "PastoriaCityNorthHouse",
+  "displayName": "Pastoria City",
+  "bgmTrack": "sinnoh/pastoria",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#.....#####",
+    "#.........#",
+    "#..##.....#",
+    "#..##.....#",
+    "#.........#",
+    "#.........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 4,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 6,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 3,
+      "y": 5,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Sinnoh",
+      "targetX": 600,
+      "targetY": 825,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "scientist_m",
+      "name": "Scientist",
+      "npcType": "Gentleman",
+      "x": 5,
+      "y": 6,
+      "facing": "Down",
+      "dialog": [
+        "Out in the Great Marsh, people get about on the Quick Trams that run on rails.",
+        "That way nobody tramples what lives and grows in the mud."
+      ]
+    },
+    {
+      "id": "psyduck",
+      "name": "Psyduck",
+      "npcType": "Pokemon",
+      "x": 4,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "Psyduck: Gwah?!"
+      ],
+      "species": "Psyduck"
+    },
+    {
+      "id": "kid_with_nds",
+      "name": "Boy",
+      "npcType": "Youngster",
+      "x": 8,
+      "y": 5,
+      "facing": "Left",
+      "dialog": [
+        "They call them Quick Trams, but have you ever seen one move?",
+        "I could walk across the Great Marsh faster. If I didn't keep sinking in."
+      ],
+      "movement": "look_around"
+    }
+  ],
+  "wildEncounters": []
+}

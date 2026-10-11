@@ -821,14 +821,16 @@ script BlackOutHome
 
 
 # The end of a Safari Game in the Great Marsh (plan 01 · M7; the original's GreatMarsh scripts for the last step
-# and the last ball): the attendant's voice over the speakers, and the player is taken back out to Pastoria City,
-# in front of the observatory.
+# and the last ball): the attendant's voice over the speakers, and the player is taken back to the observatory's
+# counter, inside its door to the marsh (plan 01 · M11, part b: the room's arrival walks them out from there, as the
+# original's does for VAR_SAFARI_GAME_STATE 2).
 script SafariTimeUp
   speaker "Attendant"
   say "Ding-dong! That's time! Your Safari Game is over."
   say "Thank you for playing. Please come again!"
   safari end
-  warp "Sinnoh" 610 810 down
+  setvar VAR_SAFARI_GAME_STATE 2
+  warp "PastoriaCityObservatoryGate1F" 5 3 down
   end
 
 script SafariOutOfBalls
@@ -836,7 +838,8 @@ script SafariOutOfBalls
   say "Ding-dong! You're out of Safari Balls, so your Safari Game is over."
   say "Thank you for playing. Please come again!"
   safari end
-  warp "Sinnoh" 610 810 down
+  setvar VAR_SAFARI_GAME_STATE 2
+  warp "PastoriaCityObservatoryGate1F" 5 3 down
   end
 
 

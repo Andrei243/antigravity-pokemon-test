@@ -2,8 +2,10 @@
   "area": "route_210_south",
   "bgmTrack": "sinnoh/route210",
   "trees": "Round",
-  // Café Cabin has no rooms yet (plan 01 · M11)
-  "locked": [ 0 ],
+  // Café Cabin, on the original's plan (plan 01 · M11, part b)
+  "doors": [
+    { "warp": 0, "map": "CafeCabin", "x": 5, "y": 8, "facing": "Up" }
+  ],
   // Jogger Wyatt battles in the morning and only jogs past at other times: the route's arrival script swaps him for
   // his double on the same tile by their FLAG_HIDE_ROUTE_210_SOUTH_JOGGER_WYATT* flags (plan 06 · R14a)
   "people": {
