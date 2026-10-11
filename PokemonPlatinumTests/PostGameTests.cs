@@ -333,17 +333,18 @@ public class PostGameTests
             Assert.Equal(("Sinnoh", 654 + i, 424, Direction.Down), (back.TargetMap, back.TargetX, back.TargetY, back.TargetFacing));
             Assert.True(map.IsWalkable(back.TargetX, back.TargetY));
         }
-        // (the gate's two and the Battle Tower's two)
-        Assert.Equal(4, grounds.Warps.Count);
+        // (the gate's two, the Battle Tower's two and the Battle Factory's three)
+        Assert.Equal(7, grounds.Warps.Count);
 
         // The five facilities' doors are the rules lane's (plan 06 · R18). The Battle Tower's two lead into its lobby
-        // (R18a); every way into the four halls is shut until its sitting, at the tiles the original has them
+        // (R18a) and the Battle Factory's three to the head of its lobby's stairs (R18b); every way into the other
+        // three halls is shut until its sitting, at the tiles the original has them
         var file = Sinnoh.Area("battle_frontier")!;
         var facilities = file.Warps.Where(w => w.To.StartsWith("battle_") && !w.To.Contains("gate")).ToList();
         Assert.Equal(14, facilities.Count);
         Assert.Equal(new[] { "battle_arcade", "battle_castle", "battle_factory", "battle_hall", "battle_tower" }, facilities.Select(w => w.To).Distinct().OrderBy(n => n));
-        var halls = facilities.Where(w => w.To != "battle_tower").ToList();
-        Assert.Equal(12, halls.Count);
+        var halls = facilities.Where(w => w.To is not ("battle_tower" or "battle_factory")).ToList();
+        Assert.Equal(9, halls.Count);
         Assert.All(halls, w =>
         {
             Assert.Null(grounds.GetWarpAt(w.X, w.Z));
@@ -355,8 +356,18 @@ public class PostGameTests
             var door = grounds.GetWarpAt(w.X, w.Z)!;
             Assert.Equal(("BattleTower", 15, 19, Direction.Up), (door.TargetMap, door.TargetX, door.TargetY, door.TargetFacing));
         });
-        // Nor do the triggers before the four halls' doors do anything yet
-        Assert.Empty(grounds.Triggers);
+        Assert.Equal(new[] { (73, 34), (77, 34), (77, 35) }, facilities.Where(w => w.To == "battle_factory").Select(w => (w.X, w.Z)).OrderBy(p => p));
+        Assert.All(facilities.Where(w => w.To == "battle_factory"), w =>
+        {
+            var door = grounds.GetWarpAt(w.X, w.Z)!;
+            Assert.Equal(("BattleFactory", 1, 7, Direction.Right), (door.TargetMap, door.TargetX, door.TargetY, door.TargetFacing));
+        });
+        // The trigger under the Factory's porch walks whoever steps on it in (the original's script 37), over ground that
+        // can be walked; the other three halls' triggers do nothing yet
+        var porch = Assert.Single(grounds.Triggers);
+        Assert.Equal((74, 34, 1, 2, "EnterBattleFactory"), (porch.X, porch.Y, porch.Width, porch.Depth, porch.Script));
+        Assert.NotNull(ScriptLibrary.Default.Find(porch.Script, "battle_frontier"));
+        Assert.All(new[] { (72, 34), (74, 34), (74, 35), (75, 34), (76, 34), (75, 35), (76, 35) }, t => Assert.True(grounds.IsWalkable(t.Item1, t.Item2), $"({t.Item1},{t.Item2}) before the Factory's doors can't be walked"));
 
         // Its people have lines of ours; two of the Exchange Service Corner's attendants trade Battle Points for their
         // booth's prizes (R18a) and the third says what she waits for; the reporter, and whoever the story brings,

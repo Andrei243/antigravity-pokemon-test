@@ -322,6 +322,35 @@ public class ScriptTests
           tower tells 0
           tower partner 0
           tower partnered
+          factory begin single 50
+          factory enter
+          factory active
+          factory way
+          factory level
+          factory battles
+          factory next
+          factory hint
+          factory rent
+          factory opponent
+          factory battle
+          factory won
+          factory head
+          factory announce
+          factory odds
+          factory draw
+          factory trade
+          factory stand
+          factory brain
+          factory beat silver
+          factory streak
+          factory pause
+          factory paused
+          factory resume
+          factory finish won
+          factory points
+          factory beaten
+          factory forfeit
+          factory end
         script Other
           end
         """;
@@ -1177,6 +1206,7 @@ public class ScriptTests
         public int PastimeAct(string what, int number, NPC? subject) => inner.PastimeAct(what, number, subject);
         public PokemonPlatinumEngine.Models.Frontier.FrontierRecords Frontier => inner.Frontier;
         public PokemonPlatinumEngine.Models.Frontier.BattleTowerChallenge? Tower { get => inner.Tower; set => inner.Tower = value; }
+        public PokemonPlatinumEngine.Models.Frontier.BattleFactoryChallenge? Factory { get => inner.Factory; set => inner.Factory = value; }
         public int FrontierAct(string what, int number, NPC? subject) => inner.FrontierAct(what, number, subject);
         public IReadOnlyList<int> Entered => inner.Entered;
         public void FrontierBattle(Party team, IReadOnlyList<Trainer> foes, Trainer? partner, bool doubles) => inner.FrontierBattle(team, foes, partner, doubles);

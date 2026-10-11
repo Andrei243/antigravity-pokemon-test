@@ -41,6 +41,7 @@ public partial class GameEngine
     private void LoadFrontier(FrontierRecords? saved)
     {
         tower = null;
+        factory = null;
         enteredSlots = Array.Empty<int>();
         if (saved != null)
         {
@@ -92,8 +93,16 @@ public partial class GameEngine
                 AudioManager.PlaySound("save");
                 return 1;
             case "journal":
-                journal.Tell(new JournalEvent(JournalEventKind.BattleTower));
+                // The facility whose challenge goes up, by its number; the Tower's commands hand over none
+                journal.Tell(new JournalEvent(number == (int)FrontierFacility.Factory ? JournalEventKind.BattleFactory : JournalEventKind.BattleTower));
+                if (number == (int)FrontierFacility.Factory) AskForRentalPictures();
                 return 1;
+            case "rent":
+                OpenFactoryRentals(number);
+                return 0;
+            case "trade":
+                OpenFactoryTrade();
+                return 0;
             default:
                 return 0;
         }
@@ -155,7 +164,7 @@ public partial class GameEngine
             });
             battleRenderer.SetArena(currentMap, player.GridX, player.GridY);
             battleTrainers.Clear();
-        }, SceneTransition.ForBattle(trainer: true, leader: trainers.Any(t => t.TrainerClass == "Tower Tycoon"), trainers[0].Party.Members[0].Level, team.Members.FirstOrDefault()?.Level ?? 0));
+        }, SceneTransition.ForBattle(trainer: true, leader: trainers.Any(t => t.TrainerClass is "Tower Tycoon" or "Factory Head" or "Hall Matron" or "Castle Valet" or "Arcade Star"), trainers[0].Party.Members[0].Level, team.Members.FirstOrDefault()?.Level ?? 0));
     }
 
     /// <summary>

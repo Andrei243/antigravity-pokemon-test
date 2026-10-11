@@ -209,6 +209,8 @@ public static class RegionDatabase
                 // Plan 06 · R18a: the Battle Tower's lobby, lift, corridors, battle rooms and Battle Salon
                 "BattleTower", "BattleTowerElevator", "BattleTowerCorridor", "BattleTowerBattleRoom",
                 "BattleTowerCorridorMulti", "BattleTowerMultiBattleRoom", "BattleTowerBattleSalon",
+                // Plan 06 · R18b: the Battle Factory's lobby, corridor and battle room
+                "BattleFactory", "BattleFactoryCorridor", "BattleFactoryBattleRoom",
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

@@ -1,8 +1,8 @@
 # The Battle Frontier's grounds (plan 01 · M10, part b). docs/scripts.md describes the language; the lines are our
 # own, on the original's beats (scripts_battle_frontier.s).
 #
-# The Battle Tower's doors are open (plan 06 · R18a) and the four halls' shut until their insides are built (R18b to
-# R18d). The Exchange Service Corner's two booths trade Battle Points for prizes; the third, the scratch-off cards',
+# The Battle Tower's doors are open (plan 06 · R18a) and the Battle Factory's (R18b); the other three halls' are shut
+# until their insides are built (R18c and R18d). The Exchange Service Corner's two booths trade Battle Points for prizes; the third, the scratch-off cards',
 # waits for its cards. The reporter whom the original's arrival script moves about the grounds waits for the
 # television programmes (plan 08).
 
@@ -37,6 +37,15 @@ label Short
   end
 label Bye
   say "We hope to see you again."
+  end
+
+
+# The way into the Battle Factory (the original's script 37, BattleFrontier_CoordEvent_EnterBattleFactory): whoever
+# steps under its porch is walked on in to the head of the lobby's stairs.
+script EnterBattleFactory
+  walk player right 2 fast
+  sound "door_slide"
+  warp "BattleFactory" 1 7 right
   end
 
 

@@ -1,0 +1,263 @@
+{
+  "name": "BattleFactory",
+  "displayName": "Battle Factory",
+  "bgmTrack": "sinnoh/veilstone",
+  "interior": "Museum",
+  "trees": "Round",
+  "width": 27,
+  "height": 14,
+  "ground": [
+    "###########################",
+    "###########################",
+    "###########################",
+    "#________________________##",
+    "#________________________##",
+    "#________________________##",
+    "D________________________##",
+    "D_________________________#",
+    "D_________________________#",
+    "#_________________________#",
+    "#_________________________#",
+    "#_________________________#",
+    "#_________________________#",
+    "###########################"
+  ],
+  "solid": [
+    "###########################",
+    "###########################",
+    "######################.####",
+    "#..............##..#.....##",
+    "#..................#.....##",
+    "#..................#.....##",
+    "...##..##..##......##.#.###",
+    "..........................#",
+    "...##..##..##.............#",
+    "#.........................#",
+    "#.........................#",
+    "#.........................#",
+    "#.........................#",
+    "###########################"
+  ],
+  "props": [
+    {
+      "type": "Bench",
+      "x": 3,
+      "y": 6,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 7,
+      "y": 6,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 11,
+      "y": 6,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 3,
+      "y": 8,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 7,
+      "y": 8,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 11,
+      "y": 8,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 15,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 19,
+      "y": 3,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "Counter",
+      "x": 19,
+      "y": 6,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 22,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 24,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 1,
+      "y": 6,
+      "width": 2,
+      "depth": 3
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 0,
+      "sourceY": 6,
+      "targetMap": "BattleFrontier",
+      "targetX": 72,
+      "targetY": 34,
+      "targetFacing": "Left"
+    },
+    {
+      "sourceX": 0,
+      "sourceY": 7,
+      "targetMap": "BattleFrontier",
+      "targetX": 72,
+      "targetY": 34,
+      "targetFacing": "Left"
+    },
+    {
+      "sourceX": 0,
+      "sourceY": 8,
+      "targetMap": "BattleFrontier",
+      "targetX": 72,
+      "targetY": 34,
+      "targetFacing": "Left"
+    },
+    {
+      "sourceX": 22,
+      "sourceY": 2,
+      "targetMap": "BattleFactoryCorridor",
+      "targetX": 8,
+      "targetY": 11,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 22,
+      "y": 6,
+      "text": "",
+      "script": "RecordsMachine"
+    },
+    {
+      "x": 15,
+      "y": 3,
+      "text": "The screen runs through the Pokémon being readied for rental. They go by too fast to count."
+    },
+    {
+      "x": 16,
+      "y": 3,
+      "text": "The screen runs through the Pokémon being readied for rental. They go by too fast to count."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "single_attendant",
+      "name": "Attendant",
+      "npcType": "Lass",
+      "x": 21,
+      "y": 6,
+      "facing": "Down",
+      "script": "SingleAttendant"
+    },
+    {
+      "id": "multi_attendant",
+      "name": "Attendant",
+      "npcType": "Lass",
+      "x": 23,
+      "y": 6,
+      "facing": "Down",
+      "script": "MultiAttendant"
+    },
+    {
+      "id": "youngster",
+      "name": "Youngster",
+      "npcType": "Youngster",
+      "x": 16,
+      "y": 5,
+      "facing": "Right",
+      "script": "Youngster"
+    },
+    {
+      "id": "beauty",
+      "name": "Beauty",
+      "npcType": "Lady",
+      "x": 15,
+      "y": 12,
+      "facing": "Left",
+      "script": "Beauty"
+    },
+    {
+      "id": "policeman",
+      "name": "Policeman",
+      "npcType": "Gentleman",
+      "x": 25,
+      "y": 9,
+      "facing": "Up",
+      "script": "Policeman"
+    },
+    {
+      "id": "sailor",
+      "name": "Sailor",
+      "npcType": "Gentleman",
+      "x": 1,
+      "y": 12,
+      "facing": "Up",
+      "script": "Sailor"
+    },
+    {
+      "id": "pokemon_breeder_f",
+      "name": "Pokémon Breeder",
+      "npcType": "Lady",
+      "x": 1,
+      "y": 11,
+      "facing": "Down",
+      "script": "Breeder"
+    },
+    {
+      "id": "clown",
+      "name": "Clown",
+      "npcType": "Clown",
+      "x": 18,
+      "y": 9,
+      "facing": "Left",
+      "script": "Clown"
+    },
+    {
+      "id": "lady",
+      "name": "Lady",
+      "npcType": "Lady",
+      "x": 22,
+      "y": 11,
+      "facing": "Left",
+      "script": "Lady"
+    }
+  ],
+  "wildEncounters": []
+}

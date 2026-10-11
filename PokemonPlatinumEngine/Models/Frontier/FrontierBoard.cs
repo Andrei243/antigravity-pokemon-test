@@ -4,7 +4,8 @@ using PokemonPlatinumEngine.Story;
 namespace PokemonPlatinumEngine.Models.Frontier;
 
 /// <summary>A row of a facility's board: a way of taking its challenge, the longest streak in it and the latest, and whether the latest still runs.</summary>
-public sealed record FrontierBoardRow(string Label, int Record, int Latest, bool Running);
+/// <param name="RecordCount">A second number a facility keeps with its record streak (the Battle Factory's trades), and with its latest; null where it keeps none.</param>
+public sealed record FrontierBoardRow(string Label, int Record, int Latest, bool Running, int? RecordCount = null, int? LatestCount = null);
 
 /// <summary>
 /// What a facility's records machine shows (plan 06 · R18a; the original's Frontier records application,
@@ -14,6 +15,9 @@ public sealed record FrontierBoardRow(string Label, int Record, int Latest, bool
 /// </summary>
 public sealed record FrontierBoard(FrontierFacility Facility, string Title, IReadOnlyList<FrontierBoardRow> Rows, int BattlePoints, FrontierPrint Print, int Victories)
 {
+    /// <summary>What the rows' second numbers count ("TRADES"); null when the rows have none.</summary>
+    public string? CountLabel { get; init; }
+
     public static string NameOf(FrontierFacility facility) => facility switch
     {
         FrontierFacility.Tower => "Battle Tower",
@@ -33,6 +37,19 @@ public sealed record FrontierBoard(FrontierFacility Facility, string Title, IRea
                 rows.Add(new FrontierBoardRow(label, records.Get(BattleTowerChallenge.RecordStat(mode)), records.Get(BattleTowerChallenge.LatestStat(mode)),
                     records.IsRunning(FrontierFacility.Tower, (int)mode)));
         }
-        return new FrontierBoard(facility, NameOf(facility), rows, records.BattlePoints, FrontierBrains.PrintOf(story, facility), records.VictoriesAt(facility));
+        string? counted = null;
+        if (facility is FrontierFacility.Factory or FrontierFacility.FactoryOpen)
+        {
+            // The Battle Factory: its two levels, each taken alone with one Pokémon out or with two, and the trades of each streak
+            counted = "TRADES";
+            foreach (bool open in new[] { false, true })
+                foreach (var (way, label) in new[] { (FrontierChallenge.Single, "Single"), (FrontierChallenge.Double, "Double") })
+                    rows.Add(new FrontierBoardRow((open ? "Open Level " : "Lv. 50 ") + label,
+                        records.Get(BattleFactoryChallenge.RecordStreakStat(way, open)), records.Get(BattleFactoryChallenge.LatestStreakStat(way, open)),
+                        records.IsRunning(BattleFactoryChallenge.FacilityOf(open), (int)way),
+                        records.Get(BattleFactoryChallenge.RecordTradesStat(way, open)), records.Get(BattleFactoryChallenge.LatestTradesStat(way, open))));
+            facility = FrontierFacility.Factory;
+        }
+        return new FrontierBoard(facility, NameOf(facility), rows, records.BattlePoints, FrontierBrains.PrintOf(story, facility), records.VictoriesAt(facility)) { CountLabel = counted };
     }
 }

@@ -1,0 +1,248 @@
+# The Battle Factory's lobby (plan 06 · R18b). docs/scripts.md describes the language; the lines are our own, on the
+# original's beats (scripts_battle_factory.s).
+#
+# Two attendants stand at the counter at the foot of the stairs, with the records' machine between them and the door
+# into the Factory behind. The first takes Single and Double challenges at Level 50 or at the Open Level: no Pokémon
+# of the player's own goes in, so nothing is asked of the team but to be healed, the game is saved, and she leads the
+# way. The second would take a Multi challenge beside a friend, which isn't held (decision 06 · 7).
+#
+# VAR_BATTLE_FACTORY_LOBBY_LOAD_ACTION says how the player comes back into the lobby, as in the original: 1 with a
+# round of seven won (the print is handed over), 2 with the challenge put down between two battles (it is saved here
+# and taken up again when the player says so), 3 with it lost or given up, and 255 while a challenge is under way,
+# which is only ever found here by someone who closed the game in the middle of one: that streak is over.
+#
+# Not here: the reporter who interviews whoever has a streak to talk about (plan 08), and a challenge beside a
+# friend over a link (plan 07).
+
+
+script OnEnter
+  # Whoever led the way into the Factory is back at her counter
+  place single_attendant 21 6 down
+  place multi_attendant 23 6 down
+  if var VAR_BATTLE_FACTORY_LOBBY_LOAD_ACTION == 1 goto Won
+  if var VAR_BATTLE_FACTORY_LOBBY_LOAD_ACTION == 2 goto PutDown
+  if var VAR_BATTLE_FACTORY_LOBBY_LOAD_ACTION == 3 goto Over
+  if var VAR_BATTLE_FACTORY_LOBBY_LOAD_ACTION == 255 goto LeftOpen
+  end
+label Won
+  call RoundWon
+  end
+label PutDown
+  call Paused
+  end
+label Over
+  call ChallengeEnded
+  end
+label LeftOpen
+  call WalkedOut
+  end
+
+
+# The first attendant: Single and Double challenges (BattleFactory_SingleAttendant).
+script SingleAttendant
+  if var VAR_BATTLE_FACTORY_LOBBY_LOAD_ACTION == 2 goto Waiting
+  factory end
+  say "Welcome to the Battle Factory, where you battle with Pokémon we lend you!"
+  choose "Which challenge would you like to take?" "SINGLE BATTLE" "DOUBLE BATTLE" "INFO" "EXIT"
+  if result == 0 goto Level
+  if result == 1 goto LevelDouble
+  if result == 2 goto Info
+  goto Bye
+label Waiting
+  call Paused
+  end
+label Info
+  say "You bring nothing in. We show you six rental Pokémon, and you choose three of them to battle with."
+  say "Seven trainers follow, one after another. After each win you may trade one of your three for one of the Pokémon you have just beaten."
+  say "Before each battle our staff tell you a little of who comes next. The further your streak goes, the less they can say."
+  say "Win all seven and you earn Battle Points, and stronger rentals wait in the next round. The more you trade, the better some of them will be."
+  end
+label Level
+  choose "At which level will you battle?" "LEVEL 50" "OPEN LEVEL" "CANCEL"
+  if result == 0 goto Single50
+  if result == 1 goto SingleOpen
+  goto Bye
+label LevelDouble
+  choose "At which level will you battle?" "LEVEL 50" "OPEN LEVEL" "CANCEL"
+  if result == 0 goto Double50
+  if result == 1 goto DoubleOpen
+  goto Bye
+label Single50
+  factory begin single 50
+  goto Go
+label SingleOpen
+  factory begin single open
+  goto Go
+label Double50
+  factory begin double 50
+  goto Go
+label DoubleOpen
+  factory begin double open
+label Go
+  call GoIn
+  factory active
+  if result == 0 end
+  # BattleFactory_WalkToCorridorSingleChallenge: the attendant leads the way round to the door behind the counter
+  walk self up 2 right 1 up 1
+  hide self
+  walk player up 3 right 1 up 1
+  sound "door_slide"
+  warp "BattleFactoryCorridor" 8 11 up
+  end
+label Bye
+  say "We hope to see you again."
+  end
+
+
+# The team is healed and the game saved before a challenge goes in (BattleFactory_HealAndSaveBeforeChallenge), and
+# the round's trainers and rentals are drawn. A challenge the game isn't saved for is let go of.
+script GoIn
+  heal
+  ask "Your game must be saved before the challenge begins. Shall I save it?"
+  if no goto NoSave
+  call Prepare
+  frontier save
+  text "{player} saved the game."
+  factory enter
+  say "Thank you. This way, please."
+  return
+label NoSave
+  factory end
+  say "Then please come back when you are ready."
+  return
+
+
+# The Factory's rooms as nobody is in them: what the lobby sets before a challenge goes in.
+script Prepare
+  setflag FLAG_HIDE_BATTLE_FACTORY_BATTLE_ROOM_OPPONENT
+  setvar VAR_BATTLE_FACTORY_LOBBY_LOAD_ACTION 255
+  setvar VAR_BATTLE_FACTORY_SCENE 0
+  return
+
+
+# The second attendant: a Multi challenge, which two players take side by side (BattleFactory_MultiAttendant).
+script MultiAttendant
+  say "This counter is for the Battle Factory's Multi challenge, which two trainers take side by side with two rental Pokémon each."
+  say "I'm sorry to say nobody can be linked up with. Only the Single and Double challenges are held."
+  end
+
+
+# Back from a round of seven won (BattleFactory_OnFrame_ChallengeEndedCompletedRound): the print for beating the
+# Factory Head is handed over, and the game is saved.
+script RoundWon
+  setvar VAR_BATTLE_FACTORY_LOBBY_LOAD_ACTION 0
+  factory active
+  if result == 0 end
+  speaker "Attendant"
+  say "Congratulations on winning all seven battles!"
+  frontier print factory
+  if result == 1 call SilverPrint
+  if result == 2 call GoldPrint
+  factory end
+  text "The result is being recorded. {player} saved the game."
+  frontier save
+  say "We hope to see you again."
+  end
+
+script SilverPrint
+  say "You have beaten the Factory Head! This calls for something to remember it by."
+  text "A Silver Print was added to {player}'s record of the Battle Factory!"
+  fanfare keyitem
+  return
+
+script GoldPrint
+  say "You have beaten the Factory Head at his very best! There is no higher honour here."
+  text "A Gold Print was added to {player}'s record of the Battle Factory!"
+  fanfare keyitem
+  return
+
+
+# Back from a challenge lost or given up (BattleFactory_OnFrame_ChallengeEnded).
+script ChallengeEnded
+  setvar VAR_BATTLE_FACTORY_LOBBY_LOAD_ACTION 0
+  factory active
+  if result == 0 end
+  factory end
+  speaker "Attendant"
+  say "Thank you for taking the challenge."
+  text "The result is being recorded. {player} saved the game."
+  frontier save
+  say "We hope to see you again."
+  end
+
+
+# A challenge put down between two battles (BattleFactory_OnFrame_ResumeChallenge): the game is saved with it, and it
+# is taken up again when the player says so, with the three rentals it was put down with.
+script Paused
+  speaker "Attendant"
+  factory paused
+  if result == 0 goto Nothing
+  text "{player} saved the game."
+  frontier save
+  ask "Your challenge is waiting where you put it down, and so are your three rental Pokémon. Would you like to go on with it now?"
+  if no goto Later
+  factory resume
+  if result == 0 goto Nothing
+  call Prepare
+  factory enter
+  say "Then this way, please."
+  warp "BattleFactoryCorridor" 8 11 up
+  end
+label Later
+  say "Very well. Speak to me whenever you are ready."
+  end
+label Nothing
+  setvar VAR_BATTLE_FACTORY_LOBBY_LOAD_ACTION 0
+  end
+
+
+# The game was closed in the middle of a challenge (BattleFactory_OnFrame_DidntSaveBeforeQuit).
+script WalkedOut
+  setvar VAR_BATTLE_FACTORY_LOBBY_LOAD_ACTION 0
+  speaker "Attendant"
+  say "The last challenge was left before it was over, so it can't be taken up again."
+  say "I'm afraid its streak ends there."
+  factory forfeit
+  say "We hope to see you again."
+  end
+
+
+# The machine on the counter between the two attendants: the Factory's records.
+script RecordsMachine
+  sound "select"
+  frontier records factory
+  end
+
+
+# The lobby's people.
+script Breeder
+  say "Before every battle the staff let slip a little about the trainer you're going to meet."
+  say "Listen hard. It's the only thing in there that isn't a surprise."
+  end
+
+script Sailor
+  say "I got lucky in my first round. They read me the whole of the other trainer's team, one, two, three!"
+  say "They've been tighter with it every round since."
+  end
+
+script Beauty
+  say "Watch what each Pokémon does to you in a battle and keep it in your head."
+  say "It may be yours a minute later, and then you'll know just what it can do."
+  end
+
+script Youngster
+  say "Rent them, win with them, hand them back. No favourites, no excuses. That's my style, and I'll teach it to anybody."
+  end
+
+script Clown
+  say "Walk in with empty hands and walk out a winner! Isn't that the best trick you ever heard of?"
+  end
+
+script Lady
+  say "I can't take this challenge. I already have my six darlings, and I couldn't bear to battle with anyone else's."
+  end
+
+script Policeman
+  say "I never thought much of borrowed Pokémon. Then one of them flattened my whole team with a single move."
+  say "I've been coming here ever since."
+  end

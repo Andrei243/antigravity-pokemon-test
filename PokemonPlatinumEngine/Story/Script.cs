@@ -68,6 +68,8 @@ public enum Op
     Random,
     // The Battle Frontier's frame and the Battle Tower (plan 06 · R18a)
     Frontier, Tower,
+    // The Battle Factory (plan 06 · R18b)
+    Factory,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

@@ -1,0 +1,87 @@
+# The Battle Factory's battle room (plan 06 · R18b). docs/scripts.md describes the language; the lines are our own,
+# on the original's beats (frontier_scripts_battle_factory.s; the room is laid out from where the original's scene
+# stands its people: the challenger at the west end of the floor, the trainer at the east).
+#
+# One battle to a visit. The trainer drawn for this place of the round comes in by the door at the back and round
+# to the far end (factory opponent), the battle is fought with the three rentals in hand (factory battle), and the
+# corridor hears how it went (VAR_BATTLE_FACTORY_SCENE: 1 won with more to come, 2 the seventh won, 3 lost). At the
+# 21st battle of a Single streak, and at the 49th, nobody comes in: the Factory Head is simply there.
+#
+# Not here: what each trainer says, which is the original's own text: they come in without a word.
+
+
+script OnEnter
+  factory active
+  if result == 0 end
+  walk player left 5 up 3 right 1
+  factory head
+  if result != 0 goto Thorton
+  factory opponent
+  place opponent 8 3 down
+  sound "door_slide"
+  clearflag FLAG_HIDE_BATTLE_FACTORY_BATTLE_ROOM_OPPONENT
+  show opponent
+  walk opponent down 2 right 5 down 3 left 1
+  text "{foe} steps up to battle!"
+  factory battle
+  if result == 0 goto Lost
+  walk opponent up 3 left 4 up 2
+  goto Count
+
+# The Factory Head (the scene's own for him: the challenger looks about, the floor shakes, and he stands there)
+label Thorton
+  factory opponent
+  factory brain
+  face player up
+  wait 0.5
+  face player left
+  wait 0.3
+  face player down
+  wait 0.5
+  face player right
+  camera shake 0.6
+  place opponent 12 8 left
+  clearflag FLAG_HIDE_BATTLE_FACTORY_BATTLE_ROOM_OPPONENT
+  show opponent
+  emote player exclaim 0.6
+  speaker "Thorton"
+  factory odds
+  factory head
+  if result == 2 goto Gold
+  say "...{rental:0}. {rental:1}. {rental:2}. So those are the three you rented."
+  say "I am Thorton, the Factory Head, and my machine has already worked this battle out. Your chance of winning: {number} per cent."
+  goto Battle
+label Gold
+  say "{rental:0}, {rental:1} and {rental:2}. I see. You have come a long way with borrowed Pokémon."
+  say "My machine gives you {number} chances in a hundred. This time I have built it to be right."
+label Battle
+  factory battle
+  if result == 0 goto Lost
+  factory head
+  if result == 2 goto BeatGold
+  say "...Error. Recalculating. No. The machine was wrong, and you were not."
+  factory beat silver
+  goto Count
+label BeatGold
+  say "No machine could have told me this. What you do with a Pokémon can't be measured, and I am glad of it."
+  factory beat gold
+
+label Count
+  setflag FLAG_HIDE_BATTLE_FACTORY_BATTLE_ROOM_OPPONENT
+  hide opponent
+  factory won
+  if result == 1 goto Seven
+  setvar VAR_BATTLE_FACTORY_SCENE 1
+  warp "BattleFactoryCorridor" 8 6 up
+  end
+label Seven
+  setvar VAR_BATTLE_FACTORY_SCENE 2
+  warp "BattleFactoryCorridor" 8 6 up
+  end
+
+label Lost
+  setflag FLAG_HIDE_BATTLE_FACTORY_BATTLE_ROOM_OPPONENT
+  hide opponent
+  setvar VAR_BATTLE_FACTORY_SCENE 3
+  warp "BattleFactoryCorridor" 8 6 up
+  end

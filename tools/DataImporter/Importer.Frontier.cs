@@ -98,6 +98,34 @@ public sealed partial class Importer
         data.Banned = Regex.Matches(banlist, @"SPECIES_\w+").Select(m => api.SpeciesName(speciesConstants.IndexOf(m.Value))).ToList();
         if (data.Banned.Count != 18) throw new InvalidDataException($"{data.Banned.Count} banned species, not 18");
 
+        // The Battle Factory (plan 06 · R18b): each round's trainers, and the rows its rentals and its trainers' Pokémon
+        // are drawn from (src/overlay104/battle_factory_helpers.c)
+        string factory = decomp.Source("overlay104", "battle_factory_helpers.c");
+        string rounds = Regex.Match(factory, @"sBattleFactoryOpponentPools\[\] = \{(.*?)\n\};", RegexOptions.Singleline).Groups[1].Value;
+        data.Factory.Opponents = Regex.Matches(rounds, @"\{ (FRONTIER_TRAINER_\w+), (FRONTIER_TRAINER_\w+), (FRONTIER_TRAINER_\w+), (FRONTIER_TRAINER_\w+) \}")
+            .Select(m => Enumerable.Range(1, 4).Select(g => constants.IndexOf(m.Groups[g].Value)).ToArray()).ToList();
+        if (data.Factory.Opponents.Count != 8 || data.Factory.Opponents.Any(r => r.Any(n => n < 0) || r[1] <= r[0] || r[3] <= r[2]))
+            throw new InvalidDataException("The Battle Factory's rounds were not read");
+        List<FactoryPoolRecord> Pools(string table)
+        {
+            string body = Regex.Match(factory, @"BattleFactoryPokemonPool " + table + @"\[\] = \{(.*?)\n\};", RegexOptions.Singleline).Groups[1].Value;
+            var rows = Regex.Matches(body, @"\.trainerIDMax = (\w+),\s*\.setIDMin = (\d+),\s*\.setIDMax = (\d+),\s*\.ivs = (\d+),\s*\.canBeUpgraded = (TRUE|FALSE)")
+                .Select(m => new FactoryPoolRecord
+                {
+                    TrainerMax = constants.IndexOf(m.Groups[1].Value),
+                    SetMin = int.Parse(m.Groups[2].Value),
+                    SetMax = int.Parse(m.Groups[3].Value),
+                    Ivs = int.Parse(m.Groups[4].Value),
+                    Upgrades = m.Groups[5].Value == "TRUE"
+                }).ToList();
+            if (rows.Count != 10 || rows.Any(r => r.TrainerMax < 0 || r.SetMin < 1 || r.SetMax < r.SetMin || r.SetMax >= data.Sets.Count))
+                throw new InvalidDataException($"The Battle Factory's table {table} was not read");
+            return rows;
+        }
+        data.Factory.Level50 = Pools("sLevel50Pools");
+        data.Factory.OpenFoes = Pools("sOpenLevelOpponentPools");
+        data.Factory.OpenRentals = Pools("sOpenLevelPlayerPools");
+
         return data;
     }
 

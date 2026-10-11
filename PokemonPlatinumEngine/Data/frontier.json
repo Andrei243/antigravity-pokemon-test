@@ -31702,5 +31702,273 @@
     "Darkrai",
     "Shaymin",
     "Arceus"
-  ]
+  ],
+  "factory": {
+    "opponents": [
+      [
+        0,
+        99,
+        100,
+        119
+      ],
+      [
+        80,
+        119,
+        120,
+        139
+      ],
+      [
+        100,
+        139,
+        140,
+        159
+      ],
+      [
+        120,
+        159,
+        160,
+        179
+      ],
+      [
+        140,
+        179,
+        180,
+        199
+      ],
+      [
+        160,
+        199,
+        200,
+        219
+      ],
+      [
+        180,
+        219,
+        220,
+        239
+      ],
+      [
+        200,
+        299,
+        200,
+        299
+      ]
+    ],
+    "level50": [
+      {
+        "trainerMax": 100,
+        "setMin": 1,
+        "setMax": 150,
+        "ivs": 0,
+        "upgrades": true
+      },
+      {
+        "trainerMax": 120,
+        "setMin": 151,
+        "setMax": 250,
+        "ivs": 4,
+        "upgrades": true
+      },
+      {
+        "trainerMax": 140,
+        "setMin": 251,
+        "setMax": 350,
+        "ivs": 8,
+        "upgrades": true
+      },
+      {
+        "trainerMax": 160,
+        "setMin": 351,
+        "setMax": 486,
+        "ivs": 12,
+        "upgrades": true
+      },
+      {
+        "trainerMax": 180,
+        "setMin": 487,
+        "setMax": 622,
+        "ivs": 16,
+        "upgrades": true
+      },
+      {
+        "trainerMax": 200,
+        "setMin": 623,
+        "setMax": 758,
+        "ivs": 20,
+        "upgrades": true
+      },
+      {
+        "trainerMax": 220,
+        "setMin": 759,
+        "setMax": 894,
+        "ivs": 24,
+        "upgrades": true
+      },
+      {
+        "trainerMax": 300,
+        "setMin": 351,
+        "setMax": 950,
+        "ivs": 31,
+        "upgrades": false
+      },
+      {
+        "trainerMax": 310,
+        "setMin": 351,
+        "setMax": 486,
+        "ivs": 12,
+        "upgrades": false
+      },
+      {
+        "trainerMax": 311,
+        "setMin": 351,
+        "setMax": 486,
+        "ivs": 31,
+        "upgrades": false
+      }
+    ],
+    "openFoes": [
+      {
+        "trainerMax": 100,
+        "setMin": 351,
+        "setMax": 486,
+        "ivs": 0,
+        "upgrades": true
+      },
+      {
+        "trainerMax": 120,
+        "setMin": 487,
+        "setMax": 622,
+        "ivs": 4,
+        "upgrades": true
+      },
+      {
+        "trainerMax": 140,
+        "setMin": 623,
+        "setMax": 758,
+        "ivs": 8,
+        "upgrades": true
+      },
+      {
+        "trainerMax": 160,
+        "setMin": 759,
+        "setMax": 894,
+        "ivs": 12,
+        "upgrades": true
+      },
+      {
+        "trainerMax": 180,
+        "setMin": 351,
+        "setMax": 950,
+        "ivs": 16,
+        "upgrades": true
+      },
+      {
+        "trainerMax": 200,
+        "setMin": 351,
+        "setMax": 950,
+        "ivs": 20,
+        "upgrades": true
+      },
+      {
+        "trainerMax": 220,
+        "setMin": 351,
+        "setMax": 950,
+        "ivs": 24,
+        "upgrades": true
+      },
+      {
+        "trainerMax": 300,
+        "setMin": 351,
+        "setMax": 950,
+        "ivs": 31,
+        "upgrades": false
+      },
+      {
+        "trainerMax": 310,
+        "setMin": 759,
+        "setMax": 950,
+        "ivs": 12,
+        "upgrades": false
+      },
+      {
+        "trainerMax": 311,
+        "setMin": 759,
+        "setMax": 950,
+        "ivs": 31,
+        "upgrades": false
+      }
+    ],
+    "openRentals": [
+      {
+        "trainerMax": 100,
+        "setMin": 351,
+        "setMax": 486,
+        "ivs": 0,
+        "upgrades": true
+      },
+      {
+        "trainerMax": 120,
+        "setMin": 487,
+        "setMax": 622,
+        "ivs": 4,
+        "upgrades": true
+      },
+      {
+        "trainerMax": 140,
+        "setMin": 623,
+        "setMax": 758,
+        "ivs": 8,
+        "upgrades": true
+      },
+      {
+        "trainerMax": 160,
+        "setMin": 759,
+        "setMax": 894,
+        "ivs": 12,
+        "upgrades": true
+      },
+      {
+        "trainerMax": 180,
+        "setMin": 623,
+        "setMax": 950,
+        "ivs": 16,
+        "upgrades": true
+      },
+      {
+        "trainerMax": 200,
+        "setMin": 623,
+        "setMax": 950,
+        "ivs": 20,
+        "upgrades": true
+      },
+      {
+        "trainerMax": 220,
+        "setMin": 623,
+        "setMax": 950,
+        "ivs": 24,
+        "upgrades": true
+      },
+      {
+        "trainerMax": 300,
+        "setMin": 351,
+        "setMax": 950,
+        "ivs": 31,
+        "upgrades": false
+      },
+      {
+        "trainerMax": 310,
+        "setMin": 759,
+        "setMax": 950,
+        "ivs": 12,
+        "upgrades": false
+      },
+      {
+        "trainerMax": 311,
+        "setMin": 759,
+        "setMax": 950,
+        "ivs": 31,
+        "upgrades": false
+      }
+    ]
+  }
 }

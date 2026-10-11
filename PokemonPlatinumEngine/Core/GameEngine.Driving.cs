@@ -75,6 +75,9 @@ public partial class GameEngine
         public Models.Frontier.FrontierRecords Frontier => game.frontier;
         public Models.Frontier.BattleTowerChallenge? Tower => game.tower;
         public FrontierRecordsScreen FrontierBoard => game.frontierRecordsScreen;
+        /// <summary>The Battle Factory (plan 06 · R18b): the challenge under way and the screen its rentals are chosen and traded on.</summary>
+        public Models.Frontier.BattleFactoryChallenge? Factory => game.factory;
+        public FactoryScreen FactoryRentals => game.factoryScreen;
         public Models.Underground.UndergroundField Tunnels => game.Tunnels;
         public MiningScreen Mining => game.miningScreen;
         public UndergroundScreen UndergroundLists => game.undergroundScreen;

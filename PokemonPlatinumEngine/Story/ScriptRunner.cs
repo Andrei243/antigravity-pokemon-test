@@ -752,6 +752,11 @@ public sealed partial class ScriptRunner
                 Tower(i);
                 break;
 
+            // The Battle Factory (plan 06 · R18b)
+            case Op.Factory:
+                Factory(i);
+                break;
+
             default:
                 throw Wrong(i, $"the runner doesn't know how to carry out '{i.Op}'");
         }
@@ -1398,6 +1403,9 @@ public sealed partial class ScriptRunner
             "ally" when argument is "0" or "1" => allies[argument[0] - '0'],
             "allymove" when argument is "0" or "1" => allyMoves[argument[0] - '0'],
             "partner" => host.Tower?.Partner is { } beside ? Models.Frontier.BattleTowerChallenge.PartnerNames[beside.Id] : "",
+            // The Battle Factory (plan 06 · R18b): what the staff's hint names, and the three rentals in hand
+            "hint" when argument is "0" or "1" or "2" => hints[argument[0] - '0'],
+            "rental" when argument is "0" or "1" or "2" => host.Factory?.Team is { } rented && argument[0] - '0' < rented.Count ? rented[argument[0] - '0'].Species : "",
             "contestant" => contestSlot >= 0 && contestSlot < host.Party.Count ? host.Party.Members[contestSlot].DisplayName : host.ContestOutcome?.Pokemon ?? "",
             _ => match.Value
         };

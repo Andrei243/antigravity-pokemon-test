@@ -1,0 +1,125 @@
+{
+  "name": "BattleFactoryBattleRoom",
+  "displayName": "Battle Factory",
+  "bgmTrack": "sinnoh/veilstone",
+  "interior": "Lab",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "width": 17,
+  "height": 13,
+  "ground": [
+    "#################",
+    "#################",
+    "#################",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "########D########"
+  ],
+  "solid": [
+    "#################",
+    "#################",
+    "########.########",
+    "##.....#.#.....##",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "##.............##",
+    "########.########"
+  ],
+  "props": [
+    {
+      "type": "LabMachine",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 15,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 7,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 15,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 5,
+      "y": 7,
+      "width": 7,
+      "depth": 3
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 12,
+      "targetMap": "BattleFactory",
+      "targetX": 21,
+      "targetY": 7,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 8,
+      "sourceY": 2,
+      "targetMap": "BattleFactoryCorridor",
+      "targetX": 8,
+      "targetY": 6,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "opponent",
+      "name": "Trainer",
+      "npcType": "Youngster",
+      "x": 8,
+      "y": 3,
+      "facing": "Down",
+      "dialog": [
+        "..."
+      ],
+      "hiddenBy": "FLAG_HIDE_BATTLE_FACTORY_BATTLE_ROOM_OPPONENT"
+    }
+  ],
+  "wildEncounters": []
+}

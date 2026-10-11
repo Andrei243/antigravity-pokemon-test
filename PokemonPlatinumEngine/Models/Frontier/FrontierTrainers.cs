@@ -28,9 +28,10 @@ public sealed class FrontierOpponent
     /// <summary>
     /// The trainer as a battle takes one (<c>FieldBattleDTO_InitFrontierTrainer</c>): no prize money, no items of
     /// their own, and the three routines every Frontier trainer thinks with (<c>FieldBattleDTO_NewBattleTower</c>:
-    /// <c>AI_FLAG_BASIC | AI_FLAG_EVAL_ATTACK | AI_FLAG_EXPERT</c>).
+    /// <c>AI_FLAG_BASIC | AI_FLAG_EVAL_ATTACK | AI_FLAG_EXPERT</c>), or with <paramref name="mind"/> where a facility has its
+    /// trainers think otherwise (the Battle Factory's by the round).
     /// </summary>
-    public Trainer AsTrainer()
+    public Trainer AsTrainer(AiFlags? mind = null)
     {
         var trainer = new Trainer
         {
@@ -38,7 +39,7 @@ public sealed class FrontierOpponent
             Name = Record.Name,
             TrainerClass = Record.Class,
             PrizeMoney = 0,
-            Ai = FrontierTrainers.Mind,
+            Ai = mind ?? FrontierTrainers.Mind,
             Look = FrontierTrainers.LookOf(Record)
         };
         foreach (var p in Pokemon) trainer.Party.Add(p);

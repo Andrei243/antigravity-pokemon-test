@@ -504,6 +504,39 @@ every facility shares (the records are the game's `FrontierRecords`, saved; the 
 
 `{partner}` names whoever battles beside the player, once chosen.
 
+### The Battle Factory
+
+Plan 06 · R18b; `docs/mechanics/rulings.md`, "The Battle Factory". A challenge lives between its scripts as
+`IScriptHost.Factory` and is never saved but when it is put down (`factory pause`); what the Factory shares with the
+other facilities (Battle Points, the board, the print, the save) is `frontier`'s, above. Its draws are made on the
+game's own chance, as the original's are.
+
+| Command | What it does |
+|---|---|
+| `factory begin single 50` | Starts a challenge: `single` or `double`, at Level `50` or the `open` level. A streak still running that way is taken up with its trades. The story's `VAR_BATTLE_FACTORY_CHALLENGE_TYPE` and `VAR_BATTLE_FACTORY_CHALLENGE_LEVEL` keep its kind. |
+| `factory enter` | Draws the round's trainers, the six rentals on offer and the first trainer's three (a challenge taken up again keeps what it had), and counts a challenge begun. |
+| `factory pause`, `factory resume` | Puts the challenge down between two battles, and takes it up again: `RESULT` 1, or 0 when none waits. `factory paused` is 1 while one is put down. |
+| `factory forfeit` | Ends the streak of a challenge that was walked out on (the game closed in the middle of it). |
+| `factory end`, `factory active` | Lets go of the challenge; `RESULT` 1 while one is under way. |
+| `factory way`, `factory level` | `RESULT` 0 for a Single challenge and 1 for a Double one (-1 with none); 0 for Level 50 and 1 for the Open Level. |
+| `factory battles`, `factory next` | The battles won in the round, and the number of the one to come: `RESULT` and `{number}`. |
+| `factory hint` | What the staff tell of the trainer to come, by the round: `RESULT` 0 three species (`{hint:0}` to `{hint:2}`), 1 two, 2 a species and its first move (`{hint:0}`, `{hint:1}`), 3 a move, 4 a type, 5 no type in common. |
+| `factory rent` | Opens the six on offer for three to be chosen in their order, and waits: `RESULT` 1 once they are. The taking counts as one trade. |
+| `factory draw` | Draws the next trainer's three, clear of the three in hand and of the three just beaten. |
+| `factory trade` | Offers one of the beaten trainer's three for one in hand, and waits: `RESULT` 1 when a trade was made (`{hint:0}` what was given up, `{hint:1}` what was taken), 0 when not. |
+| `factory stand` | Has the trainer to come stand ready with the three drawn. |
+| `factory head`, `factory announce` | Who the next battle is against (0, 1 the Factory Head for the silver print, 2 for the gold one); and 1 the one time he is to be announced. |
+| `factory odds` | `RESULT` and `{number}`: 10 to 99, the chance the Factory Head's machine comes up with (a roll of `random 90`, and ten). |
+| `factory opponent` | Stands the trainer of this place of the round in the battle room as `opponent`, with the look of their class. `{foe}` names them. |
+| `factory battle` | The battle, with the three in hand, whole: `RESULT` 1 won, 0 lost. A Double challenge puts two out. |
+| `factory won` | Counts the win: `RESULT` 1 once the round's seven are beaten. `factory streak` is the streak as it stands. |
+| `factory brain`, `factory beat silver`, `factory beat gold` | Counts the Factory Head met; notes him beaten, so that the print waits in the lobby. |
+| `factory finish won`, `factory finish lost` | Writes the records: the streak runs on to the next round, or ends where it stands. |
+| `factory points` | Hands over the Battle Points a round earned: `RESULT` and `{number}`. |
+| `factory beaten` | Who was beaten in this challenge: 0 nobody, 1 the Factory Head for the silver print, 2 for the gold one. |
+
+`{rental:0}`, `{rental:1}` and `{rental:2}` name the three rentals in hand.
+
 ## Who is on the map
 
 A person can carry a flag that takes them off the map while it is set (`hiddenBy`) or one they wait for
