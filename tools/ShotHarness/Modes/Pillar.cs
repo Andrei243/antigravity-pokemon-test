@@ -25,6 +25,16 @@ partial class Harness
         infernape.Moves.Clear();
         foreach (string move in new[] { "Flamethrower", "Strength", "Close Combat", "Rock Climb" }) infernape.Moves.Add(new Move(MoveDatabase.Get(move)!));
         team.Members.Insert(0, infernape);
+        // Two more that can end a battle by themselves. A critical hit can fell the lead from full health (Cyrus's
+        // Honchkrow did, once the seeded chance had moved), and the battles of this mode are meant to be won: the
+        // harness sends the next one in (Harness.Confirm)
+        foreach (var (species, moves) in new[] { ("Garchomp", new[] { "Earthquake", "Dragon Claw" }), ("Empoleon", new[] { "Surf", "Ice Beam" }) })
+        {
+            var backup = new Pokemon(PokemonDatabase.Get(species)!, 62);
+            backup.Moves.Clear();
+            foreach (string move in moves) backup.Moves.Add(new Move(MoveDatabase.Get(move)!));
+            team.Members.Insert(team.Members.IndexOf(infernape) + 1, backup);
+        }
         // The Badges of the chapters before, and the story as the button in Team Galactic's control room leaves it
         // (GalacticHQControlRoom.txt): the painting on Mt. Coronet's second floor broken, the grunt back in its north hall
         foreach (var badge in new[] { Badge.Coal, Badge.Forest, Badge.Relic, Badge.Cobble, Badge.Fen, Badge.Mine, Badge.Icicle }) story.GiveBadge(badge);

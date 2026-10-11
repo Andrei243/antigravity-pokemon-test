@@ -82,8 +82,20 @@ partial class Harness
         game.Player.SetPosition(116, 886, Direction.Down);
     }
 
+    // How long a run may take before it is given up as stuck (SHOTS_TIME_LIMIT, in seconds; half an hour unless
+    // set, nought for no limit). A mode that waits for something that never comes spins for ever otherwise: a
+    // battle its helper can't answer, a script that never ends
+    readonly System.Diagnostics.Stopwatch running = System.Diagnostics.Stopwatch.StartNew();
+    readonly double timeLimit = double.TryParse(Environment.GetEnvironmentVariable("SHOTS_TIME_LIMIT"), out double seconds) ? seconds : 1800;
+
     void Frames(int n)
     {
+        if (timeLimit > 0 && running.Elapsed.TotalSeconds > timeLimit)
+        {
+            Console.WriteLine($"!! the run was given up after {timeLimit:0} seconds: it is stuck (SHOTS_TIME_LIMIT)");
+            Console.Out.Flush();
+            Environment.Exit(3);
+        }
         for (int i = 0; i < n; i++)
         {
             FrameClock.Fixed = ++tick / 60.0;
@@ -357,6 +369,15 @@ partial class Harness
 
     void Confirm(BattleEngine b)
     {
+        // A battle a mode means to win can still cost it a Pokémon by chance. The game then asks who comes in next,
+        // and confirming answers nothing: the next one able to fight goes in, as a player would send it. With nobody
+        // left the battle is lost by itself
+        if (b.HUD.MenuState == BattleMenuState.SwitchPokemon)
+        {
+            int next = b.PlayerParty.Members.FindIndex(p => !p.IsFainted && !b.PlayerSlots.Any(s => s.Pokemon == p));
+            Console.WriteLine(next >= 0 ? $"  !! a Pokémon of the harness's fainted: {b.PlayerParty.Members[next].DisplayName} goes in" : "  !! nobody is left to send in");
+            if (next >= 0) { b.SelectSwitch(next); Frames(1); return; }
+        }
         Console.WriteLine("  msg: " + b.CurrentMessage);
         b.ConfirmMessage();
         Frames(1);
