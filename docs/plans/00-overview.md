@@ -10,12 +10,12 @@ About 350 sittings are left, some twenty of them marked optional.
 
 | Plan | Done | Left (sittings) | Notes |
 |---|---|---|---|
-| 01 · Sinnoh map | M1–M9, M10a | ~7 | M10b, M11, M12 |
-| 02 · Story | S1, S2, S4–S10, S11a | ~8 | S11b to S15; S15 is more than one sitting |
+| 01 · Sinnoh map | M1–M12 | ~1 | done 2026-10-11 but for two hand-made rooms still to rebuild to the original's plans (the player's house and the professor's lab) and M12's timings, owed on a quiet machine |
+| 02 · Story | S1, S2, S4–S15 | 0 | done 2026-10-11: played from the bedroom to the post-game; the plan ends with what the story still owes other plans |
 | 03 · National Pokédex | D1, D5–D11, every model batch to Pecharunt (all 1,025 hand-built; Paldea 3a–3c) | 4 | D12 (three parts), D13 |
 | 04 · Graphics | everything | 0 | what G11 owes (the M6–M9 cities in `profile`) goes to 01 · M12 |
 | 05 · Sound and music | A1–A5, A7 | ~3 | A6 rolls on inside the sessions that open places and scenes |
-| 06 · Game mechanics | R1–R15, R17 | ~20 | R16 and R18 are several sittings each |
+| 06 · Game mechanics | R1–R18 | ~12 | every one of Platinum's mechanics is in (2026-10-11); R19 to R30 are the later generations' |
 | 07 · Online | — | 8 | most of O2 and O3 came with plan 06; O8 optional |
 | 08 · Platinum's details | P6 | 22 | P3's met data and markings came with R12 |
 | 09 · Looks | — | 15 | |

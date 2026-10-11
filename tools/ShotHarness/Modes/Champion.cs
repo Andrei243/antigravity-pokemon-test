@@ -319,7 +319,9 @@ partial class Harness
         ComeThrough("Sinnoh", 167, 847, Direction.Up);
         Frames(30); Shot("ch64_sandgem_the_assistant_is_back");
         TalkTo("Sinnoh", "sandgem_counterpart", "sandgem_town", -1, 0);
-        ReadTo("Congratulations"); Frames(4); Shot("ch65_sandgem_congratulations_champion");
+        // (her first word to a new Champion is the elder's message since plan 02 · S15, part c, as the original's is;
+        // the congratulations come once the elder has been heard)
+        ReadTo("elder of Celestic Town"); Frames(4); Shot("ch65_sandgem_the_elders_message");
         ReadTo(null);
 
         // ---- and who else the victory brought on or sent away
