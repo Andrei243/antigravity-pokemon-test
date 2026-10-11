@@ -1,0 +1,859 @@
+# The Battleground, Buck's family's place in the Survival Area (plan 02 · S15, part c), on the original's plan.
+# docs/scripts.md describes the language; the lines are our own, on the original's beats (scripts_battleground.s).
+#
+# The door opens once Charon has been caught on Stark Mountain (the Survival Area's overlay). The first time in, the
+# old man behind the bar, Buck's grandfather, has the player come over and welcomes them: a private club for Sinnoh's
+# Gym Leaders and whoever they vouch for (VAR_BATTLEGROUND_STATE 1). Buck stands by the bar until he is spoken to: his
+# place is the player's too, and he is off to the Battle Tower (FLAG_TALKED_TO_BATTLEGROUND_BUCK, which lets Heatran
+# wake in Stark Mountain's heart; FLAG_BUCK_LEFT_BATTLEGROUND, which lets him be met in the Battle Salon and drawn as
+# one of this room's own guests).
+#
+# Who is in today is drawn as the room is first come into each day (FLAG_DAILY_SET_BATTLEGROUND_TRAINERS), by the
+# original's GetRandomBattlegroundTrainers:
+#
+#   the first place is one of the eight Gym Leaders, each as likely as another;
+#   the second and the third are another Leader each, or nobody: a die of nine, where a nine is nobody, thrown again
+#   while it shows a Leader already drawn, and nobody at the eighth throw;
+#   the fourth is one of the five who have battled beside the player, or nobody (a die of six), and they come only once
+#   the story has had the player travel with them: Cheryl through Eterna Forest, Riley on Iron Island (his Egg taken),
+#   Marley through Victory Road, Mira out of Wayward Cave, and Buck once he has left for the Tower.
+#
+# VAR_BATTLEGROUND_TRAINER_1 to _4 keep the draw, as the original's do: a Leader is 0 to 7 in its list's order (Roark,
+# Gardenia, Crasher Wake, Maylene, Fantina, Candice, Byron, Volkner) and nobody 8; of the fourth, 0 to 4 are Cheryl,
+# Riley, Marley, Buck and Mira and 5 nobody. FLAG_HIDE_BATTLEGROUND_TRAINER_4 is the original's too: set at the draw
+# for a guest the story hasn't brought yet, who then stays away for the day. The original gives four objects the looks
+# of whoever was drawn; here each of the thirteen is someone of the room, shown by a flag of our own
+# (FLAG_BATTLEGROUND_HAS_<WHO>) and put on their place as the room is come into.
+#
+# Each asks for a battle (one of two sets of words, by a coin thrown at the draw: VAR_RANDOM_BATTLEGROUND_MESSAGE), and
+# asks again in other words once refused, until the room is left. Agreed to, the battle is their rematch team of
+# Platinum's data, and counts (VAR_TIMES_BATTLED_AT_BATTLEGROUND, our name for the original's game record, which the
+# Villa's visitors read: plan 06 · R16b). Beaten, they are beaten for the day (FLAG_DAILY_DEFEATED_BATTLEGROUND_<WHO>)
+# and have something else to say; Roark and Byron have other words while both are in.
+#
+# Stood in for: the Leaders', Buck's and the guests' looks where plan 11 has none yet (Candice, Byron, Volkner, Riley,
+# Marley, Buck: the looks the story's other scenes give them), and the Survival Area's song.
+
+
+# Battleground_OnTransition, and the frame table's welcome
+script OnEnter
+  setflag FLAG_VISITED_BATTLEGROUND
+  if not flag FLAG_DAILY_SET_BATTLEGROUND_TRAINERS call Draw
+  call ClearOfThePlaces
+  call Stand
+  if var VAR_BATTLEGROUND_STATE == 0 call Welcome
+  end
+
+
+# Battleground_SetTrainers
+script Draw
+  setflag FLAG_DAILY_SET_BATTLEGROUND_TRAINERS
+  # The first: a Leader
+  random 8
+  setvar VAR_BATTLEGROUND_TRAINER_1 RESULT
+  # The second: another Leader, or nobody (GetRandomBattlegroundGymLeaderID)
+  setvar VAR_BATTLEGROUND_TRAINER_2 8
+  setvar VAR_MAP_LOCAL_0x02 0
+label Second
+  random 9
+  if result == 8 goto Third
+  addvar VAR_MAP_LOCAL_0x02 1
+  if var VAR_MAP_LOCAL_0x02 >= 8 goto Third
+  if var RESULT == VAR_BATTLEGROUND_TRAINER_1 goto Second
+  setvar VAR_BATTLEGROUND_TRAINER_2 RESULT
+label Third
+  # The third: a Leader who is neither of those, or nobody
+  setvar VAR_BATTLEGROUND_TRAINER_3 8
+  setvar VAR_MAP_LOCAL_0x02 0
+label ThirdAgain
+  random 9
+  if result == 8 goto Fourth
+  addvar VAR_MAP_LOCAL_0x02 1
+  if var VAR_MAP_LOCAL_0x02 >= 8 goto Fourth
+  if var RESULT == VAR_BATTLEGROUND_TRAINER_1 goto ThirdAgain
+  if var RESULT == VAR_BATTLEGROUND_TRAINER_2 goto ThirdAgain
+  setvar VAR_BATTLEGROUND_TRAINER_3 RESULT
+label Fourth
+  # The fourth: one of the five who have battled beside the player, or nobody (GetRandomBattlegroundStatTrainerID),
+  # and only if the story has brought them (Battleground_TryHideCheryl and the rest)
+  random 6
+  setvar VAR_BATTLEGROUND_TRAINER_4 RESULT
+  clearflag FLAG_HIDE_BATTLEGROUND_TRAINER_4
+  if var VAR_BATTLEGROUND_TRAINER_4 == 5 setflag FLAG_HIDE_BATTLEGROUND_TRAINER_4
+  if var VAR_BATTLEGROUND_TRAINER_4 != 0 goto NotCheryl
+  if not flag FLAG_TRAVELED_WITH_CHERYL setflag FLAG_HIDE_BATTLEGROUND_TRAINER_4
+label NotCheryl
+  if var VAR_BATTLEGROUND_TRAINER_4 != 1 goto NotRiley
+  if not flag FLAG_RECEIVED_RIOLU_EGG_FROM_RILEY setflag FLAG_HIDE_BATTLEGROUND_TRAINER_4
+label NotRiley
+  if var VAR_BATTLEGROUND_TRAINER_4 != 2 goto NotMarley
+  if not flag FLAG_TRAVELED_WITH_MARLEY setflag FLAG_HIDE_BATTLEGROUND_TRAINER_4
+label NotMarley
+  if var VAR_BATTLEGROUND_TRAINER_4 != 3 goto NotBuck
+  if not flag FLAG_BUCK_LEFT_BATTLEGROUND setflag FLAG_HIDE_BATTLEGROUND_TRAINER_4
+label NotBuck
+  if var VAR_BATTLEGROUND_TRAINER_4 != 4 goto Words
+  if not flag FLAG_TRAVELED_WITH_MIRA setflag FLAG_HIDE_BATTLEGROUND_TRAINER_4
+label Words
+  # Which of each guest's two sets of words the day has
+  random 2
+  setvar VAR_RANDOM_BATTLEGROUND_MESSAGE RESULT
+  # (who was beaten yesterday is forgotten with the day's other flags: FLAG_DAILY_DEFEATED_BATTLEGROUND_<WHO>)
+  return
+
+
+# A game saved on one of the four places and taken up on another day would find a guest put down where the player
+# stands: whoever is on one of them as the room is come to is moved to the mat
+script ClearOfThePlaces
+  if var PLAYER_X == 2 goto West
+  if var PLAYER_X == 6 goto Middle
+  if var PLAYER_X == 9 goto Table
+  if var PLAYER_X == 11 goto Screen
+  return
+label West
+  if var PLAYER_Y == 9 place player 7 11 up
+  return
+label Middle
+  if var PLAYER_Y == 8 place player 7 11 up
+  return
+label Table
+  if var PLAYER_Y == 7 place player 7 11 up
+  return
+label Screen
+  if var PLAYER_Y == 5 place player 7 11 up
+  return
+
+
+# Battleground_SetTrainersGraphics: whoever the day drew, on their places
+script Stand
+  clearflag FLAG_BATTLEGROUND_HAS_ROARK
+  clearflag FLAG_BATTLEGROUND_HAS_GARDENIA
+  clearflag FLAG_BATTLEGROUND_HAS_WAKE
+  clearflag FLAG_BATTLEGROUND_HAS_MAYLENE
+  clearflag FLAG_BATTLEGROUND_HAS_FANTINA
+  clearflag FLAG_BATTLEGROUND_HAS_CANDICE
+  clearflag FLAG_BATTLEGROUND_HAS_BYRON
+  clearflag FLAG_BATTLEGROUND_HAS_VOLKNER
+  clearflag FLAG_BATTLEGROUND_HAS_CHERYL
+  clearflag FLAG_BATTLEGROUND_HAS_RILEY
+  clearflag FLAG_BATTLEGROUND_HAS_MARLEY
+  clearflag FLAG_BATTLEGROUND_HAS_BUCK
+  clearflag FLAG_BATTLEGROUND_HAS_MIRA
+  # The first place, at the table by the west wall
+  setvar VAR_MAP_LOCAL_0x01 VAR_BATTLEGROUND_TRAINER_1
+  call Leader
+  if var VAR_BATTLEGROUND_TRAINER_1 == 0 place roark 2 9 right
+  if var VAR_BATTLEGROUND_TRAINER_1 == 1 place gardenia 2 9 right
+  if var VAR_BATTLEGROUND_TRAINER_1 == 2 place wake 2 9 right
+  if var VAR_BATTLEGROUND_TRAINER_1 == 3 place maylene 2 9 right
+  if var VAR_BATTLEGROUND_TRAINER_1 == 4 place fantina 2 9 right
+  if var VAR_BATTLEGROUND_TRAINER_1 == 5 place candice 2 9 right
+  if var VAR_BATTLEGROUND_TRAINER_1 == 6 place byron 2 9 right
+  if var VAR_BATTLEGROUND_TRAINER_1 == 7 place volkner 2 9 right
+  # The second, in the middle of the floor
+  setvar VAR_MAP_LOCAL_0x01 VAR_BATTLEGROUND_TRAINER_2
+  call Leader
+  if var VAR_BATTLEGROUND_TRAINER_2 == 0 place roark 6 8 down
+  if var VAR_BATTLEGROUND_TRAINER_2 == 1 place gardenia 6 8 down
+  if var VAR_BATTLEGROUND_TRAINER_2 == 2 place wake 6 8 down
+  if var VAR_BATTLEGROUND_TRAINER_2 == 3 place maylene 6 8 down
+  if var VAR_BATTLEGROUND_TRAINER_2 == 4 place fantina 6 8 down
+  if var VAR_BATTLEGROUND_TRAINER_2 == 5 place candice 6 8 down
+  if var VAR_BATTLEGROUND_TRAINER_2 == 6 place byron 6 8 down
+  if var VAR_BATTLEGROUND_TRAINER_2 == 7 place volkner 6 8 down
+  # The third, at the big table
+  setvar VAR_MAP_LOCAL_0x01 VAR_BATTLEGROUND_TRAINER_3
+  call Leader
+  if var VAR_BATTLEGROUND_TRAINER_3 == 0 place roark 9 7 left
+  if var VAR_BATTLEGROUND_TRAINER_3 == 1 place gardenia 9 7 left
+  if var VAR_BATTLEGROUND_TRAINER_3 == 2 place wake 9 7 left
+  if var VAR_BATTLEGROUND_TRAINER_3 == 3 place maylene 9 7 left
+  if var VAR_BATTLEGROUND_TRAINER_3 == 4 place fantina 9 7 left
+  if var VAR_BATTLEGROUND_TRAINER_3 == 5 place candice 9 7 left
+  if var VAR_BATTLEGROUND_TRAINER_3 == 6 place byron 9 7 left
+  if var VAR_BATTLEGROUND_TRAINER_3 == 7 place volkner 9 7 left
+  # The fourth, before the screen
+  if flag FLAG_HIDE_BATTLEGROUND_TRAINER_4 return
+  if var VAR_BATTLEGROUND_TRAINER_4 == 0 setflag FLAG_BATTLEGROUND_HAS_CHERYL
+  if var VAR_BATTLEGROUND_TRAINER_4 == 1 setflag FLAG_BATTLEGROUND_HAS_RILEY
+  if var VAR_BATTLEGROUND_TRAINER_4 == 2 setflag FLAG_BATTLEGROUND_HAS_MARLEY
+  if var VAR_BATTLEGROUND_TRAINER_4 == 3 setflag FLAG_BATTLEGROUND_HAS_BUCK
+  if var VAR_BATTLEGROUND_TRAINER_4 == 4 setflag FLAG_BATTLEGROUND_HAS_MIRA
+  return
+
+
+# The Leader VAR_MAP_LOCAL_0x01 names is in today
+script Leader
+  if var VAR_MAP_LOCAL_0x01 == 0 setflag FLAG_BATTLEGROUND_HAS_ROARK
+  if var VAR_MAP_LOCAL_0x01 == 1 setflag FLAG_BATTLEGROUND_HAS_GARDENIA
+  if var VAR_MAP_LOCAL_0x01 == 2 setflag FLAG_BATTLEGROUND_HAS_WAKE
+  if var VAR_MAP_LOCAL_0x01 == 3 setflag FLAG_BATTLEGROUND_HAS_MAYLENE
+  if var VAR_MAP_LOCAL_0x01 == 4 setflag FLAG_BATTLEGROUND_HAS_FANTINA
+  if var VAR_MAP_LOCAL_0x01 == 5 setflag FLAG_BATTLEGROUND_HAS_CANDICE
+  if var VAR_MAP_LOCAL_0x01 == 6 setflag FLAG_BATTLEGROUND_HAS_BYRON
+  if var VAR_MAP_LOCAL_0x01 == 7 setflag FLAG_BATTLEGROUND_HAS_VOLKNER
+  return
+
+
+# Battleground_OnFrame_Welcome: the old man sees who has come in, and the player goes over to the bar. The original
+# walks the player four tiles east, to the tile under Buck's own (11, 9), where the player's head would hide him: here
+# the walk stops a tile short, clear of him
+script Welcome
+  setvar VAR_BATTLEGROUND_STATE 1
+  emote expert_m exclaim
+  # (whoever is not on the mat, a game saved in the room, is spoken to where they stand)
+  if var PLAYER_X != 7 goto Speak
+  if var PLAYER_Y != 11 goto Speak
+  walk player up 2 right 3
+  face player right
+label Speak
+  speaker "Old Man"
+  say "Oh? Then you must be...! Yes, yes: Buck's friend! I've had the whole story twice over, once from Buck and once from Wake."
+  say "Well, my young friend, from today this door is open to you whenever you like."
+  say "This is a private club. Sinnoh's Gym Leaders come here, and whoever a Gym Leader will vouch for. Nobody else."
+  say "The best there are, come to get better still. Welcome to the Battleground!"
+  return
+
+
+# Battleground_ExpertM: Buck's grandfather, behind his bar
+script OldMan
+  face self player
+  speaker "Old Man"
+  if flag FLAG_BATTLED_STARK_MOUNTAIN_ROOM_3_HEATRAN goto AtHome
+  say "Now, what shall I tell you about today? ...I know. Stark Mountain."
+  say "That volcano is as old as Sinnoh, from when time and space first ran together and made the land."
+  say "They say the lava that welled up and pooled there became a Pokémon."
+  say "And that the Magma Stone was set on it to hold it down, so the Pokémon wouldn't rage and the mountain wouldn't burst."
+  end
+label AtHome
+  say "Welcome to the Battleground! Make yourself at home, the way you always do."
+  end
+
+
+# Battleground_Buck: he goes out by the door, round whoever is in his way
+script Buck
+  face self player
+  speaker "Buck"
+  setflag FLAG_TALKED_TO_BATTLEGROUND_BUCK
+  say "My place is for the toughest Trainers and nobody else. I mean it!"
+  say "You're meant to be brought in by a Gym Leader, but you? You're a special case."
+  say "Right, I'm off to the Battle Frontier. I want to see how far up that Tower I can get!"
+  if var PLAYER_Y == 8 goto FromTheWest
+  walk self left 1 down 1 left 3 down 2
+  goto Gone
+label FromTheWest
+  walk self down 1 left 4 down 2
+label Gone
+  face player left
+  sound "door_open"
+  hide self
+  setflag FLAG_BUCK_LEFT_BATTLEGROUND
+  setflag FLAG_HIDE_BATTLEGROUND_BUCK
+  end
+
+
+script Roark
+  face self player
+  speaker "Roark"
+  if flag FLAG_DAILY_DEFEATED_BATTLEGROUND_ROARK goto After
+  if var VAR_RANDOM_BATTLEGROUND_MESSAGE == 1 goto Second
+  if flag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_ROARK goto Again
+  ask "I've been down in the Underground every single day, digging up Fossil after Fossil. My Pokémon came up tougher each time. Could I show you how tough, in a battle?"
+  goto Answer
+label Again
+  ask "Hold on, could I have a moment? Running into you here feels like luck. Will you take my challenge after all?"
+label Answer
+  if no goto Declined
+  say "Here goes! These are my rock-solid Pokémon, my pride and joy!"
+  goto Battle
+label Declined
+  setflag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_ROARK
+  say "Something else, then. You know the Spheres you dig up down there? Why do they grow when you leave them buried?"
+  say "It doesn't matter much. But isn't it odd, when you think about it?"
+  end
+label Second
+  if flag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_ROARK goto Again2
+  ask "Would you like a battle? You'd meet a different Roark from the one you beat at my Gym."
+  goto Answer2
+label Again2
+  ask "Oh? You do want to battle?"
+label Answer2
+  if no goto Declined2
+  say "I'm sending out my Tyranitar. It's tougher than my dad's Aggron, whatever he says!"
+label Battle
+  addvar VAR_TIMES_BATTLED_AT_BATTLEGROUND 1
+  battle self as "leader_roark_rematch"
+  setflag FLAG_DAILY_DEFEATED_BATTLEGROUND_ROARK
+  speaker "Roark"
+label After
+  if flag FLAG_BATTLEGROUND_HAS_BYRON goto WithDad
+  if var VAR_RANDOM_BATTLEGROUND_MESSAGE == 1 goto After2
+  say "...We got carried away there. Next time, how about a race instead? Whoever digs up a Fossil first, down in the Underground."
+  end
+label After2
+  say "Pokémon from ages past... Fossils nobody has found yet... If I dug the whole of Sinnoh over, would I turn up a new one?"
+  end
+label Declined2
+  setflag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_ROARK
+  say "Hmm... Now that's an answer to break a heart."
+  end
+label WithDad
+  say "It took becoming a Gym Leader myself to see how good my dad really is."
+  say "Not that I'd ever say so where he could hear me. Keep it to yourself!"
+  end
+
+
+script Gardenia
+  face self player
+  speaker "Gardenia"
+  if flag FLAG_DAILY_DEFEATED_BATTLEGROUND_GARDENIA goto After
+  if var VAR_RANDOM_BATTLEGROUND_MESSAGE == 1 goto Second
+  if flag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_GARDENIA goto Again
+  ask "Hi! Have you been keeping well? ...Let's skip to the good part. Shall we battle?"
+  goto Answer
+label Again
+  ask "Oh? So you do want a battle?"
+label Answer
+  if no goto Declined
+  say "That's the way! Nothing tells you how someone has been keeping like a battle with them!"
+  goto Battle
+label Declined
+  setflag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_GARDENIA
+  say "No? Not in the mood, then. Why not give your Badges a polish instead? It might put a shine on your day as well."
+  end
+label Second
+  if flag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_GARDENIA goto Again2
+  ask "My Grass types are coming up lovely and strong, and I'm curious what you've brought along. Fancy a battle? Just a quick one?"
+  goto Answer2
+label Again2
+  ask "They really are coming up lovely and strong, you know. Come on, a battle! A quick one, all right?"
+label Answer2
+  if no goto Declined2
+  say "Grass types have their weak points, and plenty of them. I won't pretend otherwise. But that's never the whole of who wins!"
+label Battle
+  addvar VAR_TIMES_BATTLED_AT_BATTLEGROUND 1
+  battle self as "leader_gardenia_rematch"
+  setflag FLAG_DAILY_DEFEATED_BATTLEGROUND_GARDENIA
+  speaker "Gardenia"
+label After
+  if var VAR_RANDOM_BATTLEGROUND_MESSAGE == 1 goto After2
+  say "Outside her Gym, a Gym Leader is one more Trainer. I still mean to be as strong as I can be wherever I go."
+  say "It wouldn't be fair on my Pokémon if we lost because of me."
+  end
+label After2
+  say "By the way... have you ever been inside the Old Chateau? Me? Oh, well, with the Gym to run, and one thing and another..."
+  say "I'm here to train! ...All right, I'm here for the fun of it. Ahaha! Never mind me!"
+  end
+label Declined2
+  setflag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_GARDENIA
+  say "Aww, really? And they've come up so lovely and strong..."
+  end
+
+
+script Wake
+  face self player
+  speaker "Crasher Wake"
+  if flag FLAG_DAILY_DEFEATED_BATTLEGROUND_CRASHER_WAKE goto After
+  if var VAR_RANDOM_BATTLEGROUND_MESSAGE == 1 goto Second
+  if flag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_WAKE goto Again
+  ask "What is there for a Trainer to do in a place like this? As far as I can see, nothing but battle! Well?"
+  goto Answer
+label Again
+  ask "No need for words. Trainers understand each other by battling! That's what makes us Trainers! Well?"
+label Answer
+  if no goto Declined
+  say "My Pokémon have learned a few new Water moves since you saw them. Let's see how you hold up!"
+  goto Battle
+label Declined
+  setflag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_WAKE
+  say "Then you get the song! Ahem! \"The ring is my ocean, the breakers my home! Crash! Crash! Here comes Crasher Wake!\""
+  say "\"He'll douse every fire and wash you away! Crash! Crash! ...But lightning, he'd rather not say!\" Thank you, thank you."
+  end
+label Second
+  if flag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_WAKE goto Again2
+  ask "Hah! How's it going? White water made my Pokémon what they are: they'll take all you've got and drag you under! Shall we get to it?"
+  goto Answer2
+label Again2
+  ask "So what's it to be? Are we battling?"
+label Answer2
+  if no goto Declined2
+  say "That's the spirit! Come and get it!"
+label Battle
+  addvar VAR_TIMES_BATTLED_AT_BATTLEGROUND 1
+  battle self as "leader_wake_rematch"
+  setflag FLAG_DAILY_DEFEATED_BATTLEGROUND_CRASHER_WAKE
+  speaker "Crasher Wake"
+label After
+  if var VAR_RANDOM_BATTLEGROUND_MESSAGE == 1 goto After2
+  say "A battle both sides walk away from grinning, whoever won. That's what I'm after, every time."
+  say "One of these days I mean to have battled everyone in the world. Isn't that right, {player}?!"
+  end
+label After2
+  say "However hard I train, there's always somebody tougher. The stronger I get, the further off the top looks."
+  say "It's a long, hard road with no end to it. But my Pokémon are beside me for every step!"
+  end
+label Declined2
+  setflag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_WAKE
+  say "Whoa! Slipped right through my fingers! You're a slippery one, {player}!"
+  end
+
+
+script Maylene
+  face self player
+  speaker "Maylene"
+  if flag FLAG_DAILY_DEFEATED_BATTLEGROUND_MAYLENE goto After
+  if var VAR_RANDOM_BATTLEGROUND_MESSAGE == 1 goto Second
+  if flag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_MAYLENE goto Again
+  ask "I don't mind losing to the same Trainer over and over. Each time shows me how far my Pokémon and I have come. So, {player}: a rematch, please?"
+  goto Answer
+label Again
+  ask "Yes, {player}? Is it... would you like a battle?"
+label Answer
+  if no goto Declined
+  say "Right! Rei! ...That's my bow before a match. {player}, here comes everything I have!"
+  goto Battle
+label Declined
+  setflag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_MAYLENE
+  say "Oh... I was all set for a battle. That's let the air out of me a bit."
+  end
+label Second
+  if flag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_MAYLENE goto Again2
+  ask "Being with my Pokémon is what has kept me going. Please, {player}, will you take our challenge?"
+  goto Answer2
+label Again2
+  ask "{player}! I know I keep on at you, but please: take our challenge?"
+label Answer2
+  if no goto Declined2
+  say "All right! Here we come, {player}!"
+label Battle
+  addvar VAR_TIMES_BATTLED_AT_BATTLEGROUND 1
+  battle self as "leader_maylene_rematch"
+  setflag FLAG_DAILY_DEFEATED_BATTLEGROUND_MAYLENE
+  speaker "Maylene"
+label After
+  if var VAR_RANDOM_BATTLEGROUND_MESSAGE == 1 goto After2
+  say "I love coming here. Buck's grandpa cooks for everyone, and all of it is delicious."
+  say "And that's not the best part. You can eat as much as you want! Isn't that amazing, {player}?"
+  end
+label After2
+  say "Somebody told me going barefoot is good for you. And now that I think about it, every Pokémon goes barefoot!"
+  end
+label Declined2
+  setflag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_MAYLENE
+  say "All right! Understood! We'll train a lot harder, until we're worth your time, {player}."
+  end
+
+
+script Fantina
+  face self player
+  speaker "Fantina"
+  if flag FLAG_DAILY_DEFEATED_BATTLEGROUND_FANTINA goto After
+  if var VAR_RANDOM_BATTLEGROUND_MESSAGE == 1 goto Second
+  if flag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_FANTINA goto Again
+  ask "At last, you are here! So: you shall challenge me, and I shall win. You will be astonished at how strong I have become! Yes?"
+  goto Answer
+label Again
+  ask "This time you shall challenge me, non? And I shall win. You will be astonished at how strong I have become!"
+label Answer
+  if no goto Declined
+  say "Ohohoho!!"
+  goto Battle
+label Declined
+  setflag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_FANTINA
+  say "You... you disappoint me. It is very sad. But understand this: while you refuse, you have not beaten me."
+  end
+label Second
+  if flag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_FANTINA goto Again2
+  ask "Oh? It is you? You are not at the Contests today? One who takes the stage should also take me on. You will?"
+  goto Answer2
+label Again2
+  ask "Yes, what is it? If you bring me a challenge, I accept!"
+label Answer2
+  if no goto Declined2
+  say "A Pokémon battle is a delight, every time without fail. And why? Because in those moments we are at our most serious."
+label Battle
+  addvar VAR_TIMES_BATTLED_AT_BATTLEGROUND 1
+  battle self as "leader_fantina_rematch"
+  setflag FLAG_DAILY_DEFEATED_BATTLEGROUND_FANTINA
+  speaker "Fantina"
+label After
+  if var VAR_RANDOM_BATTLEGROUND_MESSAGE == 1 goto After2
+  say "You are an amazing person! Très fantastique! And I am overjoyed, for now I have a purpose."
+  say "My purpose is to defeat you! It is your gift to me!"
+  end
+label After2
+  say "I wish to battle the way I dance."
+  end
+label Declined2
+  setflag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_FANTINA
+  say "No? That is all right also. Only to see your face has made me happy."
+  end
+
+
+script Candice
+  face self player
+  speaker "Candice"
+  if flag FLAG_DAILY_DEFEATED_BATTLEGROUND_CANDICE goto After
+  if var VAR_RANDOM_BATTLEGROUND_MESSAGE == 1 goto Second
+  if flag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_CANDICE goto Again
+  ask "Hiya! What's up? Bet you can't guess what I'm thinking! ...I'll just tell you. I want to battle you! OK?"
+  goto Answer
+label Again
+  ask "Listen, listen. You will battle Candice, won't you?"
+label Answer
+  if no goto Declined
+  say "This time Candice is getting through on willpower alone!"
+  goto Battle
+label Declined
+  setflag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_CANDICE
+  say "Oh... Was it my willpower? Did it scare you off?"
+  end
+label Second
+  if flag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_CANDICE goto Again2
+  ask "Candice is on fire today! Blazing! Hot enough to melt an Ice type! I need a battle to cool off. Please?"
+  goto Answer2
+label Again2
+  ask "You really do want to battle me, don't you?"
+label Answer2
+  if no goto Declined2
+  say "OK! Now you'll see how good Candice... I mean, how good my Pokémon can be!"
+label Battle
+  addvar VAR_TIMES_BATTLED_AT_BATTLEGROUND 1
+  battle self as "leader_candice_rematch"
+  setflag FLAG_DAILY_DEFEATED_BATTLEGROUND_CANDICE
+  speaker "Candice"
+label After
+  if var VAR_RANDOM_BATTLEGROUND_MESSAGE == 1 goto After2
+  say "Ooh, look at what you're wearing. That is so in right now! I wish I had one like it."
+  end
+label After2
+  say "Awww! That does it! I'm going to train until I can throw a Focus Punch myself!"
+  end
+label Declined2
+  setflag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_CANDICE
+  say "Awww!"
+  end
+
+
+script Byron
+  face self player
+  speaker "Byron"
+  if flag FLAG_DAILY_DEFEATED_BATTLEGROUND_BYRON goto After
+  if var VAR_RANDOM_BATTLEGROUND_MESSAGE == 1 goto Second
+  if flag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_BYRON goto Again
+  ask "I've met a good many challengers at my Gym, and spent days on Iron Island asking myself what I'm worth. I'm sure of it now: I can break your guard. A rematch?"
+  goto Answer
+label Again
+  ask "I'm sure of it now: I can break your guard. Might I have that rematch?"
+label Answer
+  if no goto Declined
+  say "It's battling the strong that tempers and hones us. Here's to our showdown!"
+  goto Battle
+label Declined
+  setflag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_BYRON
+  say "You had a gleam in your eye when you came to my Gym. It has dulled a little."
+  end
+label Second
+  if flag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_BYRON goto Again2
+  ask "We've been in training ever since we last lost to you, and I believe we've mended what was wrong. Might I ask for another rematch?"
+  goto Answer2
+label Again2
+  ask "Might I ask for another rematch?"
+label Answer2
+  if no goto Declined2
+  say "Thank you! My Pokémon have wanted another go at you as badly as I have!"
+label Battle
+  addvar VAR_TIMES_BATTLED_AT_BATTLEGROUND 1
+  battle self as "leader_byron_rematch"
+  setflag FLAG_DAILY_DEFEATED_BATTLEGROUND_BYRON
+  speaker "Byron"
+label After
+  if flag FLAG_BATTLEGROUND_HAS_ROARK goto WithSon
+  if var VAR_RANDOM_BATTLEGROUND_MESSAGE == 1 goto After2
+  say "I trained on Iron Island beside my Pokémon, hammering at steel day in and day out..."
+  say "Gwahahaha! And it seems I could do with a good deal more hardening yet!"
+  end
+label After2
+  say "Argh... short again. Should I ask my boy Roark to train with me? ...No. Far too embarrassing. Hmm. What a fix."
+  end
+label Declined2
+  setflag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_BYRON
+  say "Gwahahaha! A pity, but very well! There's a lot to learn from battling you. We'd got our hopes up."
+  end
+label WithSon
+  say "...So that Roark thinks he can show up his old man? I've some polishing left to do, I fear."
+  say "Ah, it's you! Never mind me. Make yourself at home."
+  end
+
+
+script Volkner
+  face self player
+  speaker "Volkner"
+  if flag FLAG_DAILY_DEFEATED_BATTLEGROUND_VOLKNER goto After
+  if var VAR_RANDOM_BATTLEGROUND_MESSAGE == 1 goto Second
+  if flag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_VOLKNER goto Again
+  ask "Your Pokémon... I can feel the power in them from here. And you can feel it in mine, can't you? Battle us!"
+  goto Answer
+label Again
+  ask "Hm? What is it? You do want to battle?"
+label Answer
+  if no goto Declined
+  say "Yes! This feeling before a battle: it's electric! Let's go. Let's make some sparks fly!"
+  goto Battle
+label Declined
+  setflag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_VOLKNER
+  say "Aw, come on. Don't let me down..."
+  end
+label Second
+  if flag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_VOLKNER goto Again2
+  ask "My Electivire won't settle for anything less than a tough opponent. I'm not too proud to beg. Battle us?"
+  goto Answer2
+label Again2
+  ask "Hm? What is it? You'll face my Electivire after all, and help me toughen up my team?"
+label Answer2
+  if no goto Declined2
+  say "You! And me! Let's make some sparks fly!"
+label Battle
+  addvar VAR_TIMES_BATTLED_AT_BATTLEGROUND 1
+  battle self as "leader_volkner_rematch"
+  setflag FLAG_DAILY_DEFEATED_BATTLEGROUND_VOLKNER
+  speaker "Volkner"
+label After
+  if var VAR_RANDOM_BATTLEGROUND_MESSAGE == 1 goto After2
+  say "Winning makes me happy. Losing makes me furious. Nothing clever about it, but it's what makes me stronger."
+  end
+label After2
+  say "Some Trainers have one Pokémon they can't leave out of their team, whatever happens. Mine is Electivire."
+  end
+label Declined2
+  setflag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_VOLKNER
+  say "Well, sure. An Electivire is a lot to face. I get it..."
+  end
+
+
+script Cheryl
+  face self player
+  speaker "Cheryl"
+  if flag FLAG_DAILY_DEFEATED_BATTLEGROUND_CHERYL goto After
+  if var VAR_RANDOM_BATTLEGROUND_MESSAGE == 1 goto Second
+  if flag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_CHERYL goto Again
+  ask "Oh, hello, {player}. Are you my opponent for today?"
+  goto Answer
+label Again
+  ask "{player}, may I ask you for a battle?"
+label Answer
+  if no goto Declined
+  say "My Pokémon have been longing for a battle."
+  goto Battle
+label Declined
+  setflag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_CHERYL
+  say "Oh... but my Pokémon were so looking forward to it..."
+  end
+label Second
+  if flag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_CHERYL goto Again2
+  ask "It has been a long time, hasn't it? Would you care to have a battle with me?"
+  goto Answer2
+label Again2
+  ask "...Yes? Would you like to battle after all?"
+label Answer2
+  if no goto Declined2
+  say "I ought to warn you: my Pokémon can be rather a handful."
+label Battle
+  addvar VAR_TIMES_BATTLED_AT_BATTLEGROUND 1
+  battle self as "cheryl_battleground"
+  setflag FLAG_DAILY_DEFEATED_BATTLEGROUND_CHERYL
+  speaker "Cheryl"
+label After
+  if var VAR_RANDOM_BATTLEGROUND_MESSAGE == 1 goto After2
+  say "Thank you, {player}! My darling Pokémon are a little tougher now, and it's your doing."
+  end
+label After2
+  say "Being a Trainer isn't easy. The more you battle, the more there is to find out. But do you know? I love Pokémon for that as well!"
+  end
+label Declined2
+  setflag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_CHERYL
+  say "Hee hee... Pokémon would be worn out if we did nothing but battle, wouldn't they?"
+  end
+
+
+script Riley
+  face self player
+  speaker "Riley"
+  if flag FLAG_DAILY_DEFEATED_BATTLEGROUND_RILEY goto After
+  if var VAR_RANDOM_BATTLEGROUND_MESSAGE == 1 goto Second
+  if flag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_RILEY goto Again
+  ask "You and I are both Trainers. Let's leave the small talk and go straight to the battle. That's how I do things. Agreed?"
+  goto Answer
+label Again
+  ask "You see? It doesn't feel right unless we battle. Does it?"
+label Answer
+  if no goto Declined
+  say "A battle is how we say hello!"
+  goto Battle
+label Declined
+  setflag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_RILEY
+  say "Very well. What is it you have to tell me, then?"
+  end
+label Second
+  if flag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_RILEY goto Again2
+  ask "Hello. It's been a while. If it suits you, I would like to challenge you here and now."
+  goto Answer2
+label Again2
+  ask "That look of yours... You're ready for our battle, I take it?"
+label Answer2
+  if no goto Declined2
+  say "We'll hold nothing back to bring your Pokémon down."
+label Battle
+  addvar VAR_TIMES_BATTLED_AT_BATTLEGROUND 1
+  battle self as "riley_battleground"
+  setflag FLAG_DAILY_DEFEATED_BATTLEGROUND_RILEY
+  speaker "Riley"
+label After
+  if var VAR_RANDOM_BATTLEGROUND_MESSAGE == 1 goto After2
+  say "Know who you face. Their Pokémon, and the moves those Pokémon use."
+  say "Go in knowing that much, and your chances are a good deal better."
+  end
+label After2
+  say "If I hadn't been on Iron Island that day... If you hadn't come there..."
+  say "Perhaps we would never have met. Or would we have met somewhere else?"
+  end
+label Declined2
+  setflag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_RILEY
+  say "All right. We'll wait until you are ready."
+  end
+
+
+script Marley
+  face self player
+  speaker "Marley"
+  if flag FLAG_DAILY_DEFEATED_BATTLEGROUND_MARLEY goto After
+  if var VAR_RANDOM_BATTLEGROUND_MESSAGE == 1 goto Second
+  if flag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_MARLEY goto Again
+  ask "I... Is it all right if we battle?"
+  goto Answer
+label Again
+  ask "...So? Are we battling?"
+label Answer
+  if no goto Declined
+  say "...OK. I'll do my best."
+  goto Battle
+label Declined
+  setflag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_MARLEY
+  say "...Oh. ...You can be as unkind as that?"
+  end
+label Second
+  if flag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_MARLEY goto Again2
+  ask "...Oh? A battle? With me?"
+  goto Answer2
+label Again2
+  ask "...If you won't battle, I might not come back..."
+label Answer2
+  if no goto Declined2
+  say "...OK. I... won't lose...!"
+label Battle
+  addvar VAR_TIMES_BATTLED_AT_BATTLEGROUND 1
+  battle self as "marley_battleground"
+  setflag FLAG_DAILY_DEFEATED_BATTLEGROUND_MARLEY
+  speaker "Marley"
+label After
+  if var VAR_RANDOM_BATTLEGROUND_MESSAGE == 1 goto After2
+  say "...You're so strong. It makes me happy. ...I don't know why. It's a strange feeling."
+  end
+label After2
+  say "...I might like battling you. ...A little. Only the smallest little bit."
+  end
+label Declined2
+  setflag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_MARLEY
+  say "...Oh, you. I'm starting to dislike you a little."
+  end
+
+
+# Buck as one of his own place's guests, once he has left for the Tower
+script BuckGuest
+  face self player
+  speaker "Buck"
+  if flag FLAG_DAILY_DEFEATED_BATTLEGROUND_BUCK goto After
+  if var VAR_RANDOM_BATTLEGROUND_MESSAGE == 1 goto Second
+  if flag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_BUCK goto Again
+  ask "Eheheh! There you are at last! No hanging about. Shall we do this?"
+  goto Answer
+label Again
+  ask "What? What?! So we are going to battle?"
+label Answer
+  if no goto Declined
+  say "...I'm telling you now: I'm seriously tough. Try to look surprised!"
+  goto Battle
+label Declined
+  setflag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_BUCK
+  say "Huh? What? There goes the wind from my sails. Well, you're here now. Put your feet up, make yourself at home, all of that."
+  end
+label Second
+  if flag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_BUCK goto Again2
+  ask "One: there are no shortcuts where Pokémon are concerned! Two... never mind two. Shall we do this?"
+  goto Answer2
+label Again2
+  ask "So? Feel like battling now?"
+label Answer2
+  if no goto Declined2
+  say "I can feel my Pokémon shaking in their Poké Balls! They can't wait, that's all. It isn't nerves!"
+label Battle
+  addvar VAR_TIMES_BATTLED_AT_BATTLEGROUND 1
+  battle self as "buck_battleground"
+  setflag FLAG_DAILY_DEFEATED_BATTLEGROUND_BUCK
+  speaker "Buck"
+label After
+  if var VAR_RANDOM_BATTLEGROUND_MESSAGE == 1 goto After2
+  say "Phew! Too much! I'd better go and work on my team at the Battle Tower."
+  end
+label After2
+  say "Phew! Too much! I'd better go and work on my team up Stark Mountain!"
+  end
+label Declined2
+  setflag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_BUCK
+  say "Hey! This place! They don't call it the Battleground for nothing!"
+  end
+
+
+script Mira
+  face self player
+  speaker "Mira"
+  if flag FLAG_DAILY_DEFEATED_BATTLEGROUND_MIRA goto After
+  if var VAR_RANDOM_BATTLEGROUND_MESSAGE == 1 goto Second
+  if flag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_MIRA goto Again
+  ask "{player}! Please teach Mira about Pokémon!"
+  goto Answer
+label Again
+  ask "{player}, please? Please teach Mira about Pokémon!"
+label Answer
+  if no goto Declined
+  say "{player}! Mira will show you: Mira doesn't get lost any more!"
+  goto Battle
+label Declined
+  setflag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_MIRA
+  say "Mira is a little sad... Mira's Pokémon are stronger now."
+  end
+label Second
+  if flag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_MIRA goto Again2
+  ask "{player}! Mira is stronger now! Please! Battle with Mira!"
+  goto Answer2
+label Again2
+  ask "You will battle Mira?"
+label Answer2
+  if no goto Declined2
+  say "{player} is going to be so surprised by Mira!"
+label Battle
+  addvar VAR_TIMES_BATTLED_AT_BATTLEGROUND 1
+  battle self as "mira_battleground"
+  setflag FLAG_DAILY_DEFEATED_BATTLEGROUND_MIRA
+  speaker "Mira"
+label After
+  if var VAR_RANDOM_BATTLEGROUND_MESSAGE == 1 goto After2
+  say "{player}, please teach Mira about Pokémon again! Mira wants to get lots and lots stronger, just like {player}!"
+  end
+label After2
+  say "You're always with your Pokémon, {player}. That's how you got to be so strong. Mira is starting to understand!"
+  end
+label Declined2
+  setflag FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_MIRA
+  say "Mira really did get stronger. Mira wanted {player} to see."
+  end

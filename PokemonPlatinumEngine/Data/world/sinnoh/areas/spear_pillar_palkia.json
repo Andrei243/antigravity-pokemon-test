@@ -1,0 +1,28 @@
+{
+  "key": "spear_pillar_palkia",
+  "index": 585,
+  "name": "Spear Pillar",
+  "matrix": 281,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear13",
+  "camera": "SpearPillar",
+  "battleBackground": "Mountain",
+  "dayMusic": "D_MOUNT2",
+  "nightMusic": "D_MOUNT2",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 31, "z": 53, "to": "mt_coronet_6f", "toWarp": 4 }
+  ],
+  "objects": [],
+  "signs": [
+    { "x": 33, "z": 16, "type": 0, "script": "1" },
+    { "x": 33, "z": 17, "type": 0, "script": "1" }
+  ],
+  "triggers": [
+    { "x": 31, "z": 52, "width": 1, "depth": 1, "script": "2039", "variable": "VAR_HALL_OF_ORIGIN_STATE", "value": "1" }
+  ]
+}

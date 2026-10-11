@@ -111,7 +111,8 @@ public class SpearPillarAndTheDistortionWorldTests
         // Mt. Coronet's way out onto the summit leads to the pillar as the story finds it
         game.Arrive("MtCoronet6F", 7, 7);
         Assert.Equal("SpearPillar", game.Map.GetWarpAt(7, 5)!.TargetMap);
-        Assert.Equal(new[] { "SpearPillar", "SpearPillarDistorted" }, game.Map.WarpsAt(7, 5).Select(w => w.TargetMap).OrderBy(n => n));
+        // (four ways on one tile since plan 02 · S15, part c: Dialga's pillar and Palkia's for whoever holds their orbs)
+        Assert.Equal(new[] { "SpearPillar", "SpearPillarDialga", "SpearPillarDistorted", "SpearPillarPalkia" }, game.Map.WarpsAt(7, 5).Select(w => w.TargetMap).OrderBy(n => n));
     }
 
     // ------------------------------------------------------------------ the climb through Mt. Coronet

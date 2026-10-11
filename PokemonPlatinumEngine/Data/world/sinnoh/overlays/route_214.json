@@ -1,7 +1,8 @@
 {
   "area": "route_214",
   // The Ruin Maniac's cave is the short one until he digs it through to Maniac Tunnel and the Solaceon Ruins, once the
-  // player has seen enough of the Unown (warps 3 and 4 share its tile; plan 02)
+  // player has seen enough of Unown's forms (warps 3 and 4 share its tile; plan 08 · P19, which brings that count:
+  // plan 02's "What the story still owes")
   "bgmTrack": "sinnoh/route210",
   "trees": "Pine",
   // The gate house to Veilstone City, on the original's plan (plan 01 · M11, part d)

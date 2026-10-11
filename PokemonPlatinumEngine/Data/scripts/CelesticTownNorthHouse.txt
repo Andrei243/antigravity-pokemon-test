@@ -2,8 +2,11 @@
 # language; the lines are our own, on the original's beats (scripts_celestic_town_north_house.s).
 #
 # The elder is home once Cyrus has left the ruins (celestic_town_cave.txt clears
-# FLAG_HIDE_CELESTIC_TOWN_NORTH_HOUSE_ELDER). What she found in the shrine after the Hall of Fame (the Adamant and
-# Lustrous Orbs' passage, FLAG_UNLOCKED_DIALGA_PALKIA_SPEAR_PILLAR) is the post-game's (plan 02 · S15).
+# FLAG_HIDE_CELESTIC_TOWN_NORTH_HOUSE_ELDER). To a Champion (plan 02 · S15, part c) she reads from an old book she found
+# in the shrine after the trouble on Mt. Coronet: whoever bears the Adamant Orb calls Dialga to Spear Pillar, and
+# whoever bears the Lustrous Orb calls Palkia. Having heard it is what lets the mountain's way out lead to their
+# pillars (FLAG_UNLOCKED_DIALGA_PALKIA_SPEAR_PILLAR, which mt_coronet_6f.txt asks), and she reads it again whenever
+# asked, as the original's does.
 
 
 # The old man by the table (the original's script 1).
@@ -25,6 +28,7 @@ label Not
 # The elder, home again (the original's script 2).
 script Elder
   speaker "Elder"
+  if flag FLAG_GAME_COMPLETED goto Research
   if flag FLAG_FIRST_ARRIVAL_CANALAVE_CITY goto Oldest
   say "Once one of your Pokémon knows Surf, you'll find you can reach all sorts of places you couldn't before."
   say "You may be surprised where the water takes you."
@@ -32,4 +36,14 @@ script Elder
 label Oldest
   say "Celestic Town is the oldest town in all of Sinnoh. It was founded to honour Pokémon of the distant past."
   say "Or so the story goes, at any rate..."
+  end
+label Research
+  # CelesticTownNorthHouse_IDidSomeResearch
+  setflag FLAG_UNLOCKED_DIALGA_PALKIA_SPEAR_PILLAR
+  say "Well, hello! You're looking well."
+  say "I've been doing some reading of my own since that business in the ruins. The way Mt. Coronet was carrying on had me worried too."
+  say "And this is what I found in the shrine: a book, and a very old one. Let me read you a little."
+  say "\"Carry the Adamant Orb, bright as the day it was made, up to the Spear Pillar, and Dialga will come to it: the Pokémon that keeps watch over time.\""
+  say "\"Carry the Lustrous Orb there in the same way, and Palkia will come: the Pokémon that holds all of space together.\""
+  say "So it seems the people of long ago met them both: Dialga and Palkia, the Pokémon of time and of space."
   end

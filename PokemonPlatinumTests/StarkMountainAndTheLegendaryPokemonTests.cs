@@ -517,8 +517,9 @@ public class StarkMountainAndTheLegendaryPokemonTests
         game.Arrive("Sinnoh", 655, 341);
         Assert.Equal((652, 339), (game.Present("buck", "survival_area")!.GridX, game.Present("buck", "survival_area")!.GridY));
         Assert.NotNull(game.Present("rival", "survival_area"));
-        // The Battleground's door is part c's to open
-        Assert.True(game.Map.IsSolid(652, 338));
+        // The Battleground's door is open from the arrest on (plan 02 · S15, part c built the room)
+        Assert.False(game.Map.IsSolid(652, 338));
+        Assert.Equal("Battleground", game.Map.GetWarpAt(652, 338)!.TargetMap);
 
         // The Fight Area's rival is gone for good as the town is come to (the original's FightArea_HideRival)
         game.Story.SetVar("VAR_FIGHT_AREA_STATE", 2);
@@ -576,8 +577,9 @@ public class StarkMountainAndTheLegendaryPokemonTests
         Assert.Equal((7, 6, "Heatran", true), (heatran.GridX, heatran.GridY, heatran.Species, heatran.IsPokemon));
         Assert.False(game.Map.IsSolid(7, 7));
         Assert.Null(game.Present("magma_stone"));
-        // The flag that brings it is the Battleground's to set, and is still asked ahead of that scene
-        Assert.Contains(SpokenToBuck, StoryTests.AskedAheadOfTheirScenes);
+        // The flag that brings it is the Battleground's to set (plan 02 · S15, part c: Battleground.Buck)
+        Assert.DoesNotContain(SpokenToBuck, StoryTests.AskedAheadOfTheirScenes);
+        Assert.Contains(Find("Buck", "Battleground").Everything(), i => i.Op == Op.SetFlag && i.Name == SpokenToBuck);
         // And not before the mountain's scene has played, whatever else is set
         var early = Champion();
         early.Story.Set(SpokenToBuck);

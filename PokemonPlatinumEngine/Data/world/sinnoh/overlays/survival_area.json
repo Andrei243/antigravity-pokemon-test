@@ -10,11 +10,11 @@
     // The south house, on the original's plan (plan 01 · M11, part c): the black belt who gives TM42
     { "warp": 1, "map": "SurvivalAreaSouthHouse", "x": 4, "y": 8, "facing": "Up" },
     // The north house, a shard tutor's, on the original's plan (plan 01 · M11, part d)
-    { "warp": 2, "map": "SurvivalAreaNorthHouse", "x": 4, "y": 8, "facing": "Up" }
+    { "warp": 2, "map": "SurvivalAreaNorthHouse", "x": 4, "y": 8, "facing": "Up" },
+    // The Battleground, on the original's plan (plan 02 · S15, part c): its door is shut until Charon has been caught
+    // on Stark Mountain (the original moves the door's warp away until FLAG_ARRESTED_CHARON_STARK_MOUNTAIN)
+    { "warp": 0, "map": "Battleground", "x": 7, "y": 11, "facing": "Up", "openedBy": "FLAG_ARRESTED_CHARON_STARK_MOUNTAIN" }
   ],
-  // The Battleground (warp 0) opens once the story has been to Stark Mountain (the original moves its warp away until
-  // FLAG_ARRESTED_CHARON_STARK_MOUNTAIN; plan 02 · S15)
-  "locked": [ 0 ],
   // Buck, who shows the player his door, and the rival, who trains here and battles at weekends
   // (scripts/survival_area.txt; plan 02 · S15, part a), come once Charon is caught at Stark Mountain: the original
   // hides both from the start (common.ChapterTwelve) and its last scene there clears their flags (plan 02 · S15, part b)

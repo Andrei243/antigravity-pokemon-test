@@ -256,7 +256,8 @@ public static class FieldMovement
             if (!IsRockFace(there, dir) || walker.Mode != TravelMode.OnFoot || !walker.Moves.HasFlag(FieldMoves.RockClimb) || !walker.Climbing)
                 return No(Obstacle.RockFace);
             var (tx, ty) = PastRun(map, nx, ny, dx, dy, b => b == there);
-            if (!map.IsWalkable(tx, ty)) return No(Obstacle.RockFace);
+            // (nor onto a tile someone stands on: the climb ends where they are in the way, as a ramp's jump does)
+            if (!map.IsWalkable(tx, ty) || map.NpcIn(tx, ty, map.HeightAt(tx, ty)) != null) return No(Obstacle.RockFace);
             return new FieldStep(StepKind.Climb, tx, ty, map.HeightAt(tx, ty), Pace.Walk, TravelMode.OnFoot, Obstacle.None);
         }
 

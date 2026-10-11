@@ -7,7 +7,7 @@
   // Plan 02 · S12 (scripts/spear_pillar.txt): Team Galactic at the summit. The two grunts at the head of the steps
   // stop whoever comes between them (trigger 0) and battle together; Commander Mars and Commander Jupiter close in
   // before the altar (trigger 1), the rival comes up to fight beside the player, and Cyrus's scene follows their defeat.
-  // The Hall of Origin's trigger (2) is the post-game's (plan 02 · S15)
+  // The Hall of Origin's trigger (2) waits for the Azure Flute of an event (plan 03 · D12c)
   "triggers": [
     { "trigger": 0, "script": "GruntsStop" },
     { "trigger": 1, "script": "MarsAndJupiter" }

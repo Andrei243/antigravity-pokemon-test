@@ -259,6 +259,9 @@ public static class RegionDatabase
                 "SolaceonPokemonCenter2F", "SolaceonPokemonCenterB1F", "SunyshorePokemonCenter2F",
                 "SunyshorePokemonCenterB1F", "SurvivalAreaPokemonCenter2F", "SurvivalAreaPokemonCenterB1F",
                 "VeilstonePokemonCenter2F", "VeilstonePokemonCenterB1F",
+                // Plan 02 · S15, part c: the Battleground in the Survival Area, on the original's plan, and Spear Pillar
+                // with Dialga's rift and with Palkia's
+                "Battleground", "SpearPillarDialga", "SpearPillarPalkia",
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

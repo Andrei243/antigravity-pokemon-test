@@ -35,6 +35,7 @@
 //   dotnet run --project tools/ShotHarness -- <output dir> hall               the Battle Hall: its lobby and counter, the record keeper, one Pokémon entered, the stage, the board of types, a battle, the round's Battle Points, a challenge put down, two of a kind, the Hall Matron
 //   dotnet run --project tools/ShotHarness -- <output dir> castle             the Battle Castle: its lobby and counter, three entered, the valet's room and his two counters, the throne room, a battle and its Castle Points, the round's Battle Points, a challenge put down, a battle passed, the Castle Valet
 //   dotnet run --project tools/ShotHarness -- <output dir> legends            after the Hall of Fame, part b: Stark Mountain with Mars, Jupiter, Buck and Charon's arrest, Heatran, a rematch at the League, Snowpoint Temple and Regigigas, the sailor's son, Fullmoon Island, Cresselia and the Lunar Wing
+//   dotnet run --project tools/ShotHarness -- <output dir> epilogue           after the Hall of Fame, part c: Rotom in the Old Chateau's television, the elder's book, Dialga's and Palkia's pillars, the Battleground with its guests and their rematches, Cynthia before the ruins' painting
 //   dotnet run --project tools/ShotHarness -- <dir> diff <other dir>          two runs' shots compared pixel by pixel (exits 1 if any differ)
 //   dotnet run --project tools/ShotHarness -- <dir> ab <before> <after> <before again>   three runs of `profile` compared (tools/dev/ab.sh)
 //   dotnet run --project tools/ShotHarness -- <dir> contact [prefix]          every shot of a run on sheets of twenty
@@ -145,6 +146,7 @@ if (mode == "postgame") h.PostgameMode();
 if (mode == "hall") h.HallMode();
 if (mode == "castle") h.CastleMode();
 if (mode == "legends") h.LegendsMode();
+if (mode == "epilogue") h.EpilogueMode();
 
 h.Close();
 Raylib.CloseWindow();

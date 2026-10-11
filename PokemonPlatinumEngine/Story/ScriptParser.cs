@@ -157,7 +157,12 @@ public static class ScriptParser
                 return new Instruction { Op = op, Line = line, Own = true };
             }
             case "setvar":
-                return new Instruction { Op = Op.SetVar, Line = line, Name = r.Variable(writable: true), Number = r.Int("a value") };
+            {
+                // A number, or another variable's value as it is now (the original's SetVar takes either): "setvar VAR_X RESULT"
+                string variable = r.Variable(writable: true);
+                if (r.PeekVariable) return new Instruction { Op = Op.SetVar, Line = line, Name = variable, Other = r.Variable(writable: false) };
+                return new Instruction { Op = Op.SetVar, Line = line, Name = variable, Number = r.Int("a value") };
+            }
             case "addvar":
                 return new Instruction { Op = Op.AddVar, Line = line, Name = r.Variable(writable: true), Number = r.Int("an amount") };
 
@@ -602,13 +607,15 @@ public static class ScriptParser
             // What a room's people ask of the team (plan 01 · M11, part b)
             case "team":
             {
-                string what = r.OneOf("befriend", "level", "combee", "condition", "massage", "first", "nature", "size");
+                string what = r.OneOf("befriend", "level", "combee", "condition", "massage", "first", "nature", "size", "holds");
                 return what switch
                 {
                     // Plan 01 · M11, part c: a nature by its name, and a size beside the record ("team size keep" keeps it)
                     "nature" => new Instruction { Op = Op.Team, Line = line, Name = what, Other = NatureWord(r) },
                     "size" when r.PeekWord("keep") => new Instruction { Op = Op.Team, Line = line, Name = what, Option = r.OneOf("keep") == "keep" },
                     "size" => new Instruction { Op = Op.Team, Line = line, Name = what, Other = r.Text("a species' name") },
+                    // Plan 02 · S15, part c: whether anyone of the team holds an item (the Adamant and Lustrous Orbs)
+                    "holds" => new Instruction { Op = Op.Team, Line = line, Name = what, Other = r.Text("an item's name") },
                     "befriend" => new Instruction { Op = Op.Team, Line = line, Name = what, Number = r.Int("how much friendlier") },
                     "level" => new Instruction { Op = Op.Team, Line = line, Name = what, Other = r.Variable(writable: false) },
                     "condition" => new Instruction { Op = Op.Team, Line = line, Name = what, Other = r.OneOf("cool", "beauty", "cute", "smart", "tough") },
@@ -855,6 +862,7 @@ public static class ScriptParser
         public bool PeekQuoted => More && tokens[at].Quoted;
         public bool PeekIs(string word) => More && !tokens[at].Quoted && tokens[at].Text == word;
         public bool PeekNumber => More && !tokens[at].Quoted && int.TryParse(tokens[at].Text, NumberStyles.AllowLeadingSign, CultureInfo.InvariantCulture, out _);
+        public bool PeekVariable => More && !tokens[at].Quoted && (VariableName.IsMatch(tokens[at].Text) || BuiltInVariables.Contains(tokens[at].Text));
         public bool PeekDirection => More && !tokens[at].Quoted && DirectionOf(tokens[at].Text) != null;
 
         /// <summary>Whether the next word is this one, unquoted.</summary>

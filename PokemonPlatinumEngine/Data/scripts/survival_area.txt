@@ -2,8 +2,8 @@
 # the lines are our own, on the original's beats (scripts_survival_area.s).
 #
 # The Battleground's door, read where it stands (the original's script 7). It stays shut until Charon has been caught
-# at Stark Mountain: the original moves the door's warp away until FLAG_ARRESTED_CHARON_STARK_MOUNTAIN (plan 02 · S15,
-# part c builds the room and opens it).
+# at Stark Mountain: the original moves the door's warp away until FLAG_ARRESTED_CHARON_STARK_MOUNTAIN, and the overlay
+# opens it by the same flag (the room is Battleground.txt's: plan 02 · S15, part c).
 #
 # Buck and the rival come to its step only then, too (the original hides both from the start, and the last scene of
 # Stark Mountain clears FLAG_HIDE_SURVIVAL_AREA_BUCK and FLAG_HIDE_SURVIVAL_AREA_RIVAL: plan 02 · S15, part b). Buck
@@ -13,8 +13,12 @@
 # things to say. The original draws which as the town is come to; here he is asked as he is spoken to.
 
 script BattlegroundDoor
+  if flag FLAG_ARRESTED_CHARON_STARK_MOUNTAIN goto Open
   text "The door is locked."
   text "A plate beside it reads: \"Members only.\""
+  end
+label Open
+  text "A plate beside the door reads: \"The Battleground. Members only.\""
   end
 
 

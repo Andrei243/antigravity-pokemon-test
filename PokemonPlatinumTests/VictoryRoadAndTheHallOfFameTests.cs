@@ -540,6 +540,11 @@ public class VictoryRoadAndTheHallOfFameTests
         var her = game.Present("sandgem_counterpart", "sandgem_town");
         Assert.NotNull(her);
         Assert.Equal((168, 845), (her!.GridX, her.GridY));
+        // Her first word is the elder of Celestic Town's message, as the original's is (plan 02 · S15, part c wrote the
+        // scene it leads to); her congratulations come once the elder is heard and Dialga or Palkia met at Spear Pillar
+        Assert.Contains(game.Talk("sandgem_counterpart", "sandgem_town").Transcript, l => l.Text.Contains("elder of Celestic Town"));
+        game.Story.Set("FLAG_UNLOCKED_DIALGA_PALKIA_SPEAR_PILLAR");
+        game.Story.SetVar("VAR_SPEAR_PILLAR_DIALGA_STATE", 1);
         Assert.Contains(game.Talk("sandgem_counterpart", "sandgem_town").Transcript, l => l.Text.Contains("Congratulations, Champion"));
 
         // With every Pokémon of Sinnoh seen she wants the Pokédex shown to the professor, which is where the post-game begins

@@ -90,16 +90,31 @@ script OnEnter
 # (FLAG_STARTED_COUNTERPART_POKE_RADAR_TUTORIAL, VAR_ROUTE_202_STATE 2; route_202.txt), and after it one of three
 # things about the Radar and the Pokédex.
 #
-# Left for plan 02 · S15, part c, which writes the scene it leads to: the elder of Celestic Town's message (asked
-# before the congratulations while FLAG_UNLOCKED_DIALGA_PALKIA_SPEAR_PILLAR is unset) and the word of Dialga or Palkia
-# at Spear Pillar after it. Her words for a National Pokédex filled to the last species wait for a way to fill it
-# (plan 03). The original also asks whether today is the player's birthday, which this game doesn't keep.
+# Until every Pokémon of Sinnoh has been seen she passes on what she has heard (plan 02 · S15, part c), in the
+# original's order: the elder of Celestic Town has something to tell the player, until the elder has told it
+# (FLAG_UNLOCKED_DIALGA_PALKIA_SPEAR_PILLAR, CelesticTownNorthHouse.txt); after that the professor's word that Dialga or
+# Palkia may show itself at Spear Pillar, unless one of the two has been battled there since the Hall of Fame was last
+# entered (VAR_SPEAR_PILLAR_DIALGA_STATE or VAR_SPEAR_PILLAR_PALKIA_STATE 1), when she has her congratulations.
+#
+# Her words for a National Pokédex filled to the last species wait for a way to fill it (plan 03 · D12a). The original
+# also asks whether today is the player's birthday, which it reads from the console's own profile: this game keeps
+# none, and the question is left out for good.
 script Counterpart
   if not flag FLAG_GAME_COMPLETED goto Tour
   face self player
   speaker "{assistant}"
   if nationaldex goto National
   if var SEEN >= 210 goto SeenAll
+  # CounterpartTalk_ElderHasSomethingToTell, and CounterpartTalk_CheckDialgaOrPalkiaAtSpearPillar
+  if not flag FLAG_UNLOCKED_DIALGA_PALKIA_SPEAR_PILLAR goto Elder
+  if var VAR_SPEAR_PILLAR_DIALGA_STATE == 1 goto Champion
+  if var VAR_SPEAR_PILLAR_PALKIA_STATE == 1 goto Champion
+  say "Oh, {player}! The professor told me something. He thinks Dialga or Palkia might show itself at Spear Pillar again!"
+  end
+label Elder
+  say "Hi, {player}! You know the elder of Celestic Town, don't you? She asked me to tell you she has something important to say to you."
+  end
+label Champion
   say "{player}! The professor told me everything! Congratulations, Champion!"
   end
 label SeenAll

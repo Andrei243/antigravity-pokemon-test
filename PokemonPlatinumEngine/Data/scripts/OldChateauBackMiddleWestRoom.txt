@@ -1,0 +1,39 @@
+# The Old Chateau's second room off the corridor (plan 01 · M11, part a), on the original's plan: the room with the
+# television (plan 02 · S15, part c). docs/scripts.md describes the language; the lines are our own, on the original's
+# beats (scripts_old_chateau_back_middle_west_room.s).
+#
+# The set against the back wall is looked at from before it (the room's two signboards, on the set's own tiles). By day
+# it only has an unfriendly air. After dark (night or late night, the original's GetTimeOfDay) something stirs inside
+# it, and whoever agrees to thump it is met by a Rotom of level 20; the battle may be run from. It comes once a day
+# (FLAG_DAILY_BATTLED_OLD_CHATEAU_ROTOM, set before the battle, so a battle lost has used the day up too) until it is
+# caught (FLAG_CAUGHT_OLD_CHATEAU_ROTOM). The original asks for nothing else: not the Hall of Fame, not the National
+# Pokédex, so the television answers from the first night the chateau can be come to.
+#
+# Rotom's five appliances stand in the room behind Team Galactic's building in Eterna City, which the Secret Key of an
+# event opens: left shut (docs/mechanics/rulings.md; plan 03 · D12c, plan 08).
+
+
+# OldChateauBackMiddleWestRoom_TV
+script TV
+  speaker none
+  if flag FLAG_CAUGHT_OLD_CHATEAU_ROTOM goto Staring
+  if flag FLAG_DAILY_BATTLED_OLD_CHATEAU_ROTOM goto Staring
+  if time night goto Inside
+  if time latenight goto Inside
+label Staring
+  text "The television has an unfriendly air about it..." "It feels as if it were staring back."
+  end
+label Inside
+  text "Something is moving inside the television... Is that a Pokémon?"
+  ask "It looks as if it might come out. Give the set a thump?"
+  if no end
+  text "{player} thumped the television!"
+  cry "Rotom"
+  setflag FLAG_DAILY_BATTLED_OLD_CHATEAU_ROTOM
+  wildbattle "Rotom" 20
+  if result == 3 goto Caught
+  text "Rotom slipped back into the television..."
+  end
+label Caught
+  setflag FLAG_CAUGHT_OLD_CHATEAU_ROTOM
+  end

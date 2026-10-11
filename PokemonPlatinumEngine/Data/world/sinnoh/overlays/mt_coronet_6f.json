@@ -5,12 +5,15 @@
   // The way out onto the summit shares its tile between the maps of Spear Pillar, as the original's does (its OnLoad
   // moves the warps): the pillar as the story finds it (warp 1) until the Distortion World tears it, and the torn
   // pillar (warp 2) from then until the player comes out at Sendoff Spring, which clears the flag again (plan 02 · S12).
-  // Dialga's and Palkia's pillars, for a game that holds their orbs after the Hall of Fame, come with plan 02 · S15
+  // Dialga's pillar (warp 3) and Palkia's (warp 4) are for a game that holds their orbs after the Hall of Fame (plan
+  // 02 · S15, part c): the floor's own arrival script decides, as the original's does, and sets one of two flags of our
+  // own; a way that is there from a flag takes the tile from the pillar as it stands (Map.GetWarpAt)
   "switches": [
     { "warp": 1, "until": "FLAG_SPEAR_PILLAR_IS_DISTORTED" },
-    { "warp": 2, "from": "FLAG_SPEAR_PILLAR_IS_DISTORTED" }
+    { "warp": 2, "from": "FLAG_SPEAR_PILLAR_IS_DISTORTED" },
+    { "warp": 3, "from": "FLAG_SPEAR_PILLAR_HOLDS_DIALGA" },
+    { "warp": 4, "from": "FLAG_SPEAR_PILLAR_HOLDS_PALKIA" }
   ],
-  "locked": [ 3, 4 ],
   // Team Galactic's last guard before the summit (plan 02 · S12), with Platinum's team
   "people": {
     "galactic_grunt": {

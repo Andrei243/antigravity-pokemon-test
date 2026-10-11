@@ -240,12 +240,15 @@ public class BattleZoneTests
         // The Battleground and the Rock Peak Ruins (the story's). The Battle Frontier's gate and the Ribbon Syndicate's
         // door are open since part b (PostGameTests), and the Villa's since plan 06 · R16b
         Assert.Equal("ResortAreaVilla", map.GetWarpAt(822, 469)?.TargetMap);
-        foreach (var (x, y) in new[] { (652, 338), (785, 340) })
+        foreach (var (x, y) in new[] { (785, 340) })
         {
             Assert.Null(map.GetWarpAt(x, y));
             Assert.True(map.IsSolid(x, y), $"the way in at ({x},{y}) can be walked into");
         }
-        // The Battleground's door says why, read where it stands
+        // The Battleground's door waits for the story (plan 02 · S15, part c: Charon caught on Stark Mountain), and
+        // says why, read where it stands
+        var door = Assert.Single(map.WarpsAt(652, 338));
+        Assert.Equal(("Battleground", "FLAG_ARRESTED_CHARON_STARK_MOUNTAIN"), (door.TargetMap, door.OpenedBy));
         Assert.Equal("BattlegroundDoor", map.TileScripts[(652, 338)]);
         var host = new HeadlessScriptHost { Map = map };
         var runner = new ScriptRunner(ScriptLibrary.Default, host);

@@ -292,7 +292,7 @@ public sealed partial class ScriptRunner
                 story.Unset(i.Own ? OwnFlag(i) : i.Name);
                 break;
             case Op.SetVar:
-                story.SetVar(i.Name, i.Number);
+                story.SetVar(i.Name, i.Other.Length > 0 ? Value(i.Other) : i.Number);
                 break;
             case Op.AddVar:
                 story.AddVar(i.Name, i.Number);
@@ -1376,6 +1376,11 @@ public sealed partial class ScriptRunner
                 Result = (int)SizeContest.Compare(measured, record);
                 break;
             }
+            // ScrCmd_CheckPartyHasHeldItem (plan 02 · S15, part c): 1 when anyone of the team holds the item, as Mt.
+            // Coronet's summit asks of the Adamant and the Lustrous Orb beside the bag. An Egg holds nothing
+            case "holds":
+                Result = team.Any(p => !p.IsEgg && p.HeldItem?.Name == i.Other) ? 1 : 0;
+                break;
             // ScrCmd_TryGetRandomMassageGirlAccessory and Common_GiveAccessory: one of her sixteen, drawn among those the
             // Fashion Case still has room for
             case "massage":

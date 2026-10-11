@@ -1,0 +1,46 @@
+# Mt. Coronet's sixth floor, under the summit (plan 02 · S15, part c). docs/scripts.md describes the language
+# (scripts_mt_coronet_6f.s).
+#
+# The way out at the head of the room leads to one of four maps of Spear Pillar, and the original decides which as the
+# floor is come to (its OnTransition and OnLoad move one of four warps onto the tile). The pillar as the story finds it
+# and the pillar the Distortion World has torn go by FLAG_SPEAR_PILLAR_IS_DISTORTED (plan 02 · S12). The other two are
+# for a game that is out of the Distortion World (VAR_EXITED_DISTORTION_WORLD_STATE 2 or more) and has heard the elder
+# of Celestic Town after the Hall of Fame (FLAG_UNLOCKED_DIALGA_PALKIA_SPEAR_PILLAR, CelesticTownNorthHouse.txt):
+#
+#   Dialga's pillar, with the Adamant Orb in the bag or held by one of the team, until Dialga has been caught or has
+#   been battled since the Hall of Fame was last entered (VAR_SPEAR_PILLAR_DIALGA_STATE 1, which every victory there
+#   puts back to 0 for a Dialga not caught);
+#   failing that Palkia's, with the Lustrous Orb, by the same rule;
+#   failing both, the pillar as it stands.
+#
+# So whoever holds both orbs meets Dialga first and Palkia on the next climb. The overlay's switches read two flags of
+# our own, which this script keeps: FLAG_SPEAR_PILLAR_HOLDS_DIALGA and FLAG_SPEAR_PILLAR_HOLDS_PALKIA.
+
+
+# MtCoronet6F_OnTransition
+script OnEnter
+  clearflag FLAG_SPEAR_PILLAR_HOLDS_DIALGA
+  clearflag FLAG_SPEAR_PILLAR_HOLDS_PALKIA
+  if flag FLAG_SPEAR_PILLAR_IS_DISTORTED end
+  # MtCoronet6F_TrySetWarpSpearPillarDialgaPalkia
+  if var VAR_EXITED_DISTORTION_WORLD_STATE < 2 end
+  if not flag FLAG_UNLOCKED_DIALGA_PALKIA_SPEAR_PILLAR end
+  # MtCoronet6F_TrySetWarpSpearPillarDialga
+  if flag FLAG_CAUGHT_DIALGA goto Palkia
+  if var VAR_SPEAR_PILLAR_DIALGA_STATE >= 1 goto Palkia
+  if item "Adamant Orb" goto DialgasPillar
+  team holds "Adamant Orb"
+  if result == 1 goto DialgasPillar
+label Palkia
+  # MtCoronet6F_TrySetWarpSpearPillarPalkia
+  if flag FLAG_CAUGHT_PALKIA end
+  if var VAR_SPEAR_PILLAR_PALKIA_STATE >= 1 end
+  if item "Lustrous Orb" goto PalkiasPillar
+  team holds "Lustrous Orb"
+  if result == 0 end
+label PalkiasPillar
+  setflag FLAG_SPEAR_PILLAR_HOLDS_PALKIA
+  end
+label DialgasPillar
+  setflag FLAG_SPEAR_PILLAR_HOLDS_DIALGA
+  end
