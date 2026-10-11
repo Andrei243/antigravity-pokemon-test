@@ -719,8 +719,12 @@ public class TheNationalPokedexAndTheBattleZoneTests
         while (queue.Count > 0)
         {
             var (x, y, mode, height) = queue.Dequeue();
-            foreach (var warp in map.WarpsAt(x, y).Where(w => w.TargetMap == map.Name))
-                Visit(warp.TargetX, warp.TargetY, TravelMode.OnFoot, map.HeightAt(warp.TargetX, warp.TargetY));
+            foreach (var warp in map.WarpsAt(x, y))
+            {
+                // A gate house is a room since plan 01 · M11, part d: in at one door and out of the far one
+                var through = warp.TargetMap != map.Name && warp.TargetMap.Contains("Gate", StringComparison.Ordinal) ? GateWalk.FarDoor(warp) : warp;
+                if (through.TargetMap == map.Name) Visit(through.TargetX, through.TargetY, TravelMode.OnFoot, map.HeightAt(through.TargetX, through.TargetY));
+            }
             var walker = new Walker(mode, height, Moves: everything, Climbing: true);
             foreach (var way in new[] { Direction.Up, Direction.Right, Direction.Left, Direction.Down })
             {

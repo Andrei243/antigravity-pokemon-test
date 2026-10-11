@@ -121,7 +121,12 @@ public partial class FinalInteriorTests
                 string farArea = beyond.AreaAt(far.TargetX, far.TargetY)!.Key;
                 Assert.True(farArea == one || farArea == other, $"{where}: its far door leads to {farArea}");
                 if (one != other) Assert.NotEqual(area, farArea);
-                Assert.True(beyond.IsWalkable(far.TargetX, far.TargetY), $"{where}: its far door lets out onto a blocked tile");
+                // (or onto a tile someone stands on whom the story takes away before anyone can come out that way: Flint
+                // and Volkner before the Battle Frontier's gate until their tag battle, plan 02 · S15, part a)
+                var inTheWay = beyond.Everyone.Where(n => (n.GridX, n.GridY) == (far.TargetX, far.TargetY)).ToList();
+                Assert.True(beyond.IsWalkable(far.TargetX, far.TargetY)
+                    || (!beyond.IsSolid(far.TargetX, far.TargetY) && inTheWay.Count > 0 && inTheWay.All(n => n.HiddenBy != null)),
+                    $"{where}: its far door lets out onto a blocked tile");
                 Assert.Null(beyond.GetWarpAt(far.TargetX, far.TargetY));
                 var (dx, dy) = FieldMovement.Delta(far.TargetFacing);
                 var back = beyond.GetWarpAt(far.TargetX - dx, far.TargetY - dy);
