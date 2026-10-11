@@ -1,0 +1,49 @@
+# The Fight Area's south house (plan 01 · M11, part c), on the original's plan. docs/scripts.md describes the
+# language; the lines are our own, on the original's beats (scripts_fight_area_south_house.s).
+#
+# The Item Expert tells of eight things worth giving a Pokémon to hold. The original lists the eight and EXIT in one
+# window and comes back to it after each; a question here takes six answers, so they are asked for in two steps, and
+# one item is one talk.
+
+
+script ItemExpert
+  say "I am the Item Expert! What a Pokémon can be given to hold, I know from end to end!" "Your Pokémon, now: do they hold anything? The better the thing held, the stronger its holder." "There are some I can vouch for. Care to hear?"
+  choose "Which item shall I tell you about?" "LUM BERRY" "FOCUS SASH" "EXPERT BELT" "LIFE ORB" "OTHERS" "EXIT"
+  if result == 0 goto Lum
+  if result == 1 goto Sash
+  if result == 2 goto Belt
+  if result == 3 goto Orb
+  if result == 5 goto Exit
+  choose "And of these, which?" "CHOICE SCARF" "CHOICE BAND" "CHOICE SPECS" "LEFTOVERS" "EXIT"
+  if result == 0 goto Scarf
+  if result == 1 goto Band
+  if result == 2 goto Specs
+  if result == 3 goto Leftovers
+# FightAreaSouthHouse_VarietyOfOtherItems
+label Exit
+  say "There are a great many more, of course." "And which is the one to hold comes down to how you mean to battle." "My last word on it: you'll never know until you try!"
+  end
+label Lum
+  say "The Lum Berry!" "The Pokémon holding it shakes off whatever ails it on the spot: sleep, paralysis, confusion, the lot." "It is a berry, mind. Once eaten, it's gone."
+  end
+label Sash
+  say "The Focus Sash!" "A Pokémon at full HP that holds one can't be knocked out by a single hit: it hangs on with 1 HP." "One more turn than you had any right to. Ask anyone who plans their battles what that is worth!"
+  end
+label Belt
+  say "The Expert Belt!" "It lifts a super-effective move to 120% of its power." "Just the thing for a Pokémon that knows moves of several types."
+  end
+label Orb
+  say "The Life Orb!" "Every move its holder uses hits at 130% of its power!" "But! Each time one lands, the holder pays a tenth of its own HP."
+  end
+label Scarf
+  say "The Choice Scarf!" "It takes its holder's Speed to 150%!" "But take care: the Pokémon is held to the one move it picks."
+  end
+label Band
+  say "The Choice Band!" "It takes its holder's Attack to 150%, and holds it to one move." "It does nothing for Sp. Atk, mind. Make no mistake about that."
+  end
+label Specs
+  say "The Choice Specs!" "They take their holder's Sp. Atk to 150%, and hold it to one move." "They do nothing for Attack, mind. Make no mistake about that."
+  end
+label Leftovers
+  say "Leftovers!" "At the end of every turn, once both sides have moved, the holder gets back a sixteenth of its HP." "In a close battle, that little can be the whole difference."
+  end

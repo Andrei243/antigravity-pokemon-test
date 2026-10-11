@@ -290,7 +290,9 @@ public sealed class MapFile
         }
 
         foreach (var w in Warps)
-            map.Warps.Add(new Warp { SourceX = w.SourceX, SourceY = w.SourceY, TargetMap = w.TargetMap, TargetX = w.TargetX, TargetY = w.TargetY, TargetFacing = w.TargetFacing });
+            // (a room's way may be there for part of the story only, "until" and "from": the Ribbon Syndicate's lift, whose
+            // door leads out onto the floor it stands at; plan 01 · M11, part c)
+            map.Warps.Add(new Warp { SourceX = w.SourceX, SourceY = w.SourceY, TargetMap = w.TargetMap, TargetX = w.TargetX, TargetY = w.TargetY, TargetFacing = w.TargetFacing, Until = w.Until, From = w.From });
 
         foreach (var s in Signboards)
         {

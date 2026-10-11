@@ -1,0 +1,233 @@
+{
+  "name": "SunyshoreCityWestHouse",
+  "displayName": "Sunyshore City",
+  "bgmTrack": "sinnoh/sunyshore",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#####.#####",
+    "###.......#",
+    "##........#",
+    "##........#",
+    "#........##",
+    "#.......###",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Painting",
+      "x": 5,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 3,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 6,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 8,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 2,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 1,
+      "y": 4,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Cushion",
+      "x": 2,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "TrashCan",
+      "x": 1,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 9,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 8,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 9,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Sinnoh",
+      "targetX": 845,
+      "targetY": 769,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "battle_girl",
+      "name": "Battle Girl",
+      "npcType": "Lass",
+      "x": 6,
+      "y": 6,
+      "facing": "Down",
+      "dialog": [
+        "Been down in the Underground lately?",
+        "Where you come out down there depends on where you dig down up here.",
+        "So I get my Explorer Kit out in every town I come to."
+      ],
+      "movement": "wander_around",
+      "rangeZ": 1
+    },
+    {
+      "id": "clown",
+      "name": "Clown",
+      "npcType": "clown",
+      "x": 5,
+      "y": 3,
+      "facing": "Up",
+      "dialog": [
+        "The Spheres that turn up in the tunnel walls shine like jewels.",
+        "And the hikers down there will swap you all sorts of things for them."
+      ]
+    },
+    {
+      "id": "gym_guide",
+      "name": "Man",
+      "npcType": "Gentleman",
+      "x": 2,
+      "y": 5,
+      "facing": "Down",
+      "dialog": [
+        "Mind the traps down there!",
+        "Some you get out of with quick hands. And some want a good, hard puff of breath!"
+      ]
+    },
+    {
+      "id": "pokemon_breeder_f",
+      "name": "Breeder",
+      "npcType": "Lady",
+      "x": 2,
+      "y": 7,
+      "facing": "Down",
+      "dialog": [
+        "The Underground Man of Eterna City and Byron, Canalave's Gym Leader, are family, you know.",
+        "Count Byron's son Roark in too, and that's three generations who can't stop digging."
+      ]
+    },
+    {
+      "id": "youngster_1",
+      "name": "Boy",
+      "npcType": "youngster",
+      "x": 9,
+      "y": 5,
+      "facing": "Left",
+      "dialog": [
+        "Bury a Sphere and it grows a little bigger every day. Strange things, Spheres.",
+        "Oh, no! I buried some of mine ages ago and forgot all about them! I'd better go and dig them up!"
+      ]
+    },
+    {
+      "id": "youngster_2",
+      "name": "Boy",
+      "npcType": "youngster",
+      "x": 9,
+      "y": 6,
+      "facing": "Left",
+      "dialog": [
+        "Every flag you carry home from another digger's Secret Base makes your own a better one.",
+        "So hide yours well, and get good at sniffing out everybody else's."
+      ]
+    },
+    {
+      "id": "youngster_3",
+      "name": "Boy",
+      "npcType": "youngster",
+      "x": 8,
+      "y": 7,
+      "facing": "Left",
+      "dialog": [
+        "Go on down and have some fun. There's a whole adventure waiting under your feet!"
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

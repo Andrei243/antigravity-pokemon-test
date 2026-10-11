@@ -18,6 +18,8 @@ partial class Harness
     // table of the Seven Stars Restaurant and its double battle, the Suite Key and the White Flute, the Safari Game
     // from the observatory's counter into the marsh and back out, the Matchup Checker, the binoculars, the Pokémon
     // Mansion's corridor and a door of it, the maids' challenge and a prodigy, Mr. Backlot and his statue.
+    // Part c's towns (the north and the Battle Zone): celestic, snow, sunyshore, battlezone, syndicate; `workc` shows
+    // part c's rooms at work (`in_z*`, Modes/InteriorsNorth.cs).
     public void InteriorsMode()
     {
         game.State = GameState.Overworld;
@@ -59,6 +61,16 @@ partial class Harness
             }),
             ("mansion", new[] { "PokemonMansion", "PokemonMansionMaidsRoomWest", "PokemonMansionMaidsRoomMiddle", "PokemonMansionMaidsRoomEast", "PokemonMansionOffice" }),
             ("canalave", new[] { "Route221House", "CanalaveCitySoutheastHouse", "CanalaveCitySailorEldritchHouse", "CanalaveCityWestHouse", "IronIslandHouse", "PalParkLobby" }),
+            // Part c: the north and the Battle Zone
+            ("celestic", new[] { "CelesticTownNorthwestHouse", "CelesticTownNortheastHouse", "CelesticTownSouthwestHouse" }),
+            ("snow", new[] { "Route216House", "Route217WestHouse", "Route217NortheastHouse" }),
+            ("sunyshore", new[] { "Route222EastHouse", "Route222WestHouse", "SunyshoreCityWestHouse", "SunyshoreCityNorthwestHouse", "SunyshoreCityEastHouse" }),
+            ("battlezone", new[]
+            {
+                "FightAreaMiddleHouse", "FightAreaSouthHouse", "Route225House", "SurvivalAreaSouthHouse", "Route226House", "Route227House",
+                "Route228SouthHouse", "ResortAreaHouse"
+            }),
+            ("syndicate", new[] { "ResortAreaRibbonSyndicate1F", "ResortAreaRibbonSyndicate2F", "ResortAreaRibbonSyndicateElevator" }),
         };
         var asked = args.Length > 2 ? args[2..].ToHashSet(StringComparer.OrdinalIgnoreCase) : null;
 
@@ -93,6 +105,9 @@ partial class Harness
         foreach (var (town, rooms) in towns)
         {
             if (asked != null && !asked.Contains(town)) continue;
+            // The Ribbon Syndicate shows whoever hasn't ten ribbons out as they come in: its rooms are looked at as a member's
+            bool joined = game.Story.Has("FLAG_JOINED_RIBBON_SYNDICATE");
+            if (town == "syndicate") game.Story.Set("FLAG_JOINED_RIBBON_SYNDICATE");
             var shots = new List<string>();
             int n = 0;
             foreach (string room in rooms)
@@ -127,8 +142,10 @@ partial class Harness
                 Raylib.UnloadImage(img);
             }
             Save(sheet, "interiors_" + town);
+            if (town == "syndicate" && !joined) game.Story.Unset("FLAG_JOINED_RIBBON_SYNDICATE");
         }
-        bool workA = asked == null || asked.Contains("work"), workB = asked == null || asked.Contains("workb");
+        bool workA = asked == null || asked.Contains("work"), workB = asked == null || asked.Contains("workb"), workC = asked == null || asked.Contains("workc");
+        if (workC) InteriorsAtWorkC();
         if (workB) InteriorsAtWorkB();
         if (!workA) return;
 

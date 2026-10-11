@@ -1,0 +1,153 @@
+{
+  "name": "SunyshoreCityNorthwestHouse",
+  "displayName": "Sunyshore City",
+  "bgmTrack": "sinnoh/sunyshore",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "####...####",
+    "#.........#",
+    "#.#.....#.#",
+    "#.......#.#",
+    "##......#.#",
+    "##........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 5,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 1,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 3,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fridge",
+      "x": 7,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "KitchenCounter",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "KitchenCounter",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 1,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 2,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bed",
+      "x": 8,
+      "y": 5,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Sinnoh",
+      "targetX": 875,
+      "targetY": 744,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "old_man",
+      "name": "Old Man",
+      "npcType": "Gentleman",
+      "x": 3,
+      "y": 5,
+      "facing": "Left",
+      "dialog": [
+        "They say Team Galactic has been making trouble all over Sinnoh.",
+        "We've never seen so much as one of them in Sunyshore, mind you.",
+        "Small wonder. Our Gym Leader Volkner is more than a match for anybody."
+      ]
+    },
+    {
+      "id": "old_woman",
+      "name": "Old Woman",
+      "npcType": "Lady",
+      "x": 1,
+      "y": 5,
+      "facing": "Right",
+      "dialog": [
+        "A long time ago a boy called Cyrus lived in this town.",
+        "He kept away from other people. He was happier among his machines.",
+        "Such a clever boy at his lessons, too... I do wonder sometimes what became of him."
+      ],
+      "movement": "look_north_and_east"
+    }
+  ],
+  "wildEncounters": []
+}

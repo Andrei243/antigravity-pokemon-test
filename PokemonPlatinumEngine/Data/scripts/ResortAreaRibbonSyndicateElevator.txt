@@ -1,0 +1,42 @@
+# The Ribbon Syndicate's lift (plan 01 · M11, part c), on the original's plan. docs/scripts.md describes the
+# language; the lines are our own, on the original's beats (scripts_resort_area_ribbon_syndicate_elevator.s).
+#
+# The lift's doors in the back wall of each floor lead into this car, and its attendant asks for the floor. The
+# original remembers where its rider came from and aims the car's door there by a command of its own
+# (SetSpecialLocation); here the car's door is two ways on one tile, to the ground floor until
+# FLAG_RIBBON_SYNDICATE_LIFT_UPSTAIRS (a flag of our own) and to the floor above from it, and the ride sets or
+# clears the flag. Each floor says the same as it is come to, so the flag can never be wrong for long.
+#
+# Stood in for until plan 09 lands (L12), as the Vista Lighthouse's is: the ride is the lift's sounds and a tremor of
+# the picture (the original's PlayElevatorAnimation scrolls the car's lights).
+
+
+script Lift
+  choose "Welcome, and thank you for visiting us today. Which floor would you like?" "2F" "1F" "EXIT"
+  if result == 0 goto Up
+  if result == 2 end
+  # ResortAreaRibbonSyndicateElevator_SelectFloor1
+  if not flag FLAG_RIBBON_SYNDICATE_LIFT_UPSTAIRS goto Same
+  say "Certainly. Going down."
+  clearflag FLAG_RIBBON_SYNDICATE_LIFT_UPSTAIRS
+  goto Ride
+# ResortAreaRibbonSyndicateElevator_SelectFloor2
+label Up
+  if flag FLAG_RIBBON_SYNDICATE_LIFT_UPSTAIRS goto Same
+  say "Certainly. Going up."
+  setflag FLAG_RIBBON_SYNDICATE_LIFT_UPSTAIRS
+# ResortAreaRibbonSyndicateElevator_ElevatorAnimation
+label Ride
+  face self down
+  sound "lift"
+  camera shake 1.5
+  wait 1.5
+  sound "lift_stop"
+  wait 0.3
+  face self right
+  say "Here we are!"
+  end
+# ResortAreaRibbonSyndicateElevator_SelectCurrentFloor
+label Same
+  say "Er... But this is that floor already?"
+  end

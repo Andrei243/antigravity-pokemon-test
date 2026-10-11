@@ -1,0 +1,45 @@
+# The Meister's house on Route 226 (plan 01 · M11, part c), on the original's plan. docs/scripts.md describes the
+# language; the lines are our own, on the original's beats (scripts_route_226_house.s).
+#
+# The Meister has been all over the world and mixes its languages. On the first talk he sets the Pokédex up to show
+# entries in other languages (FLAG_ENABLED_POKEDEX_LANGUAGE_DETECTION: set here and read by nothing yet, for this
+# Pokédex has one language; docs/mechanics/rulings.md). Then, and every time until it is done, he asks for a Finneon
+# in exchange for the Magikarp he brought from home (NpcTrades "foppa", plan 06 · R12: a Magikarp from a German
+# game, holding a Lum Berry). FLAG_TRADED_FOR_FOPPA_MAGIKARP: the trade is done.
+
+
+# Route226House_OnTransition
+script OnEnter
+  setflag FLAG_FIRST_ARRIVAL_THE_MEISTERS_HOUSE
+  end
+
+
+script Meister
+  if flag FLAG_TRADED_FOR_FOPPA_MAGIKARP goto Friends
+  if flag FLAG_ENABLED_POKEDEX_LANGUAGE_DETECTION goto Ask
+  say "Ah, konnichiwa! Guten Tag, and so pleased to meet you!" "I am the Meister. In your language, a master of a craft. Something like so, n'est-ce pas?"
+  setflag FLAG_ENABLED_POKEDEX_LANGUAGE_DETECTION
+  say "Wait, wait. Sniff, sniff... Ja! There is no mistaking it!" "You are one who loves Pokémon, the same as me. Wunderbar!" "So, here is what I do: I teach your Pokédex to show what it knows of a Pokémon in other languages!" "Not of every Pokémon, je suis désolé. Only of those from the countries the Meister has seen." "Now, your Pokédex, please. I turn this here... I poke at that there... Et voilà!"
+label Ask
+  say "Konnichiwa! Bonjour, and all the rest!" "Have you a Pokémon called Finneon? C'est un Pokémon in the style of a fish?"
+  ask "Would you be so kind as to trade it for my precious Magikarp?"
+  if no goto Tragedy
+  choosepokemon
+  if result == 255 goto Tragedy
+  trade foppa
+  if result == 0 goto NotWanted
+  setflag FLAG_TRADED_FOR_FOPPA_MAGIKARP
+  say "Danke schön, arigato, gracias, and all of them at once!" "That Magikarp has been at my side since the country where I was born." "Be good to it, I beg of you!"
+  end
+# Route226House_ThatIsNoFinneon
+label NotWanted
+  say "Oh, non, non! That is no Finneon! A Finneon is what I asked for!" "You have made the Meister melancholy."
+  end
+# Route226House_ThisIsATragedy
+label Tragedy
+  say "Oh! A tragedy! This is a tragedy, I tell you!" "But one day you will trade me the Pokémon I want." "The Meister knows it. He has seen the world!"
+  end
+# Route226House_MakeFriendsAnywhere
+label Friends
+  say "Because there are Pokémon, I can make a friend in any country on earth." "To know that fills my heart. It is wonderful in the most wonderful way!"
+  end

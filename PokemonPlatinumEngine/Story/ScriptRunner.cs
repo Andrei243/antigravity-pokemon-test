@@ -65,6 +65,10 @@ public sealed partial class ScriptRunner
     private int contestSlot = -1;
     private string lastAccessory = "";
 
+    // The Pokémon last measured beside the size record, its size and the record's as they are told (plan 01 · M11, part c)
+    private Pokemon? measured;
+    private string lastSize = "", lastRecord = "";
+
     // The Seal and the ribbon last given or asked about, how many Seals, and whom a ribbon was for (plan 06 · R17b)
     private string lastSeal = "", lastRibbon = "", lastWearer = "";
     private int lastSeals;
@@ -1297,6 +1301,42 @@ public sealed partial class ScriptRunner
                 Result = lead == null ? 0 : i.Other switch { "cool" => lead.Cool, "beauty" => lead.Beauty, "cute" => lead.Cute, "smart" => lead.Smart, _ => lead.Tough };
                 break;
             }
+            // GetFirstNonEggInParty (plan 01 · M11, part c: the Ribbon Syndicate's spa): the first of the team that is no
+            // Egg, 255 with none (the original says 0 there, which a team of Eggs alone never asks)
+            case "first":
+            {
+                int slot = team.FindIndex(p => !p.IsEgg);
+                Result = slot < 0 ? 255 : slot;
+                break;
+            }
+            // ScrCmd_FindPartySlotWithNature: the first of the team, no Egg, of a nature, or 255
+            case "nature":
+            {
+                var nature = Enum.Parse<Nature>(i.Other);
+                int slot = team.FindIndex(p => !p.IsEgg && p.Nature == nature);
+                Result = slot < 0 ? 255 : slot;
+                break;
+            }
+            // ScrCmd_CalcSizeContestResult, for the Pokémon RESULT names (after choosepokemon), with the script's own
+            // check of its species before it: 0 smaller than the record, 1 the same, 2 larger, 3 for another species
+            // (an Egg is none, as the original's GetPartyMonSpecies has it). "team size keep" is
+            // ScrCmd_UpdateSizeContestRecord for the one last measured
+            case "size" when i.Option:
+                if (measured != null) host.Story.SetVar(SizeContest.RecordVariable, SizeContest.Factor(measured));
+                break;
+            case "size":
+            {
+                int slot = Result;
+                measured = null;
+                Result = 3;
+                if (slot < 0 || slot >= team.Count || team[slot].IsEgg || team[slot].Species.Name != i.Other) break;
+                measured = team[slot];
+                int record = SizeContest.Record(host.Story);
+                lastSize = SizeContest.Told(SizeContest.Millimetres(measured));
+                lastRecord = SizeContest.Told(SizeContest.Millimetres(measured.Height, record));
+                Result = (int)SizeContest.Compare(measured, record);
+                break;
+            }
             // ScrCmd_TryGetRandomMassageGirlAccessory and Common_GiveAccessory: one of her sixteen, drawn among those the
             // Fashion Case still has room for
             case "massage":
@@ -1475,6 +1515,9 @@ public sealed partial class ScriptRunner
             "fee" when DayCarePlace(argument) is { } at => host.DayCare.Fee(at).ToString(),
             "left" => lastLeft,
             "taken" => lastTaken,
+            // The size last measured and the record it was held against (plan 01 · M11, part c)
+            "size" => lastSize,
+            "record" => lastRecord,
             // The Super Contests (plan 06 · R17a): the accessory last given, the ribbon last won, and who was entered
             "accessory" => lastAccessory,
             "ribbon" => lastRibbon.Length > 0 ? lastRibbon : host.ContestOutcome?.NewRibbon ?? "",

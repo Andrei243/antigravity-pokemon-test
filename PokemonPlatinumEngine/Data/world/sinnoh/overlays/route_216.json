@@ -2,8 +2,10 @@
   "area": "route_216",
   "bgmTrack": "sinnoh/route216",
   "trees": "Pine",
-  // The Snowbound Lodge has no rooms yet (plan 01 · M11)
-  "locked": [ 1 ],
+  // The Snowbound Lodge, on the original's plan (plan 01 · M11, part c): its keeper and its bed give a rest
+  "doors": [
+    { "warp": 1, "map": "Route216House", "x": 4, "y": 8, "facing": "Up" }
+  ],
   "people": {
     "ace_trainer_blake": {
       "name": "Blake",

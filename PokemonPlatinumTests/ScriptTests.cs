@@ -328,6 +328,10 @@ public class ScriptTests
           team condition cool
           team massage
           team massage room
+          team first
+          team nature serious
+          team size "Remoraid"
+          team size keep
         script Other
           end
         """;

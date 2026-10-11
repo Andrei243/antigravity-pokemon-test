@@ -6,13 +6,14 @@
   "architecture": "Resort",
   "doors": [
     { "warp": 3, "map": "ResortAreaPokemonCenter", "x": 5, "y": 7, "facing": "Up" },
-    // The Ribbon Syndicate's ground floor (plan 01 · M10, part b): its hostess asks for the team's ribbons inside
+    // The Ribbon Syndicate's ground floor (plan 01 · M10, part b): its hostess asks for the team's ribbons inside,
+    // and the lift in its back wall goes up to the spa (plan 01 · M11, part c)
     { "warp": 2, "map": "ResortAreaRibbonSyndicate1F", "x": 15, "y": 15, "facing": "Up" },
     // The Villa, built to the original's plan (plan 06 · R16b)
-    { "warp": 0, "map": "ResortAreaVilla", "x": 11, "y": 11, "facing": "Up" }
+    { "warp": 0, "map": "ResortAreaVilla", "x": 11, "y": 11, "facing": "Up" },
+    // The house by the pond, on the original's plan (plan 01 · M11, part c)
+    { "warp": 1, "map": "ResortAreaHouse", "x": 4, "y": 8, "facing": "Up" }
   ],
-  // The house by the pond (plan 01 · M11)
-  "locked": [ 1 ],
   // The boy who hands the Villa over (scripts/resort_area.txt, plan 06 · R16b)
   "triggers": [ { "trigger": 0, "script": "GiveVilla" } ],
   "people": {

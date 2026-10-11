@@ -136,7 +136,8 @@ variable gives (from 0), and `{swarm}` and `{swarmplace}` the species of the day
 `{mulch}` what the patch of soil the script belongs to holds, as the last `berry` command left them, and (plan 06 ·
 R15) `{daycare:0}` and `{daycare:1}` the Pokémon in each place of the Day Care, `{level:N}` the level its steps there
 have brought it to, `{grown:N}` the levels it has grown and `{fee:N}` what taking it back costs, `{left}` the Pokémon
-last left there and `{taken}` the one last taken back.
+last left there and `{taken}` the one last taken back, and (plan 01 · M11, part c) `{size}` the size of the Pokémon
+last measured with `team size` and `{record}` the record it was held against, in centimetres.
 
 ### Where a script goes
 
@@ -507,7 +508,7 @@ every facility shares (the records are the game's `FrontierRecords`, saved; the 
 ### What a room's people ask of the team
 
 Plan 01 · M11, part b: one command, `team`, for what the people of the houses of the east ask of the team and do for
-it, each after one command of the original's.
+it, each after one command of the original's. Part c (the north and the Battle Zone) added `first`, `nature` and `size`.
 
 | Command | What it does |
 |---|---|
@@ -517,6 +518,10 @@ it, each after one command of the original's.
 | `team condition cool` | `RESULT` is a contest condition of the first of the team that is no Egg: `cool`, `beauty`, `cute`, `smart` or `tough`, 0 to 255, 0 with nobody (`GetFirstNonEggInParty`, `GetPartyMonContestStat`). The Scarf Guy's five scarves. |
 | `team massage room` | `RESULT` 1 while the Fashion Case has room for any of the Massage Girl's sixteen accessories (Pretty Dewdrop to Glitter Powder, `ScriptRunner.MassageAccessories`). |
 | `team massage` | One of the sixteen goes into the Fashion Case, drawn by the script's die among those it still has room for (`TryGetRandomMassageGirlAccessory`), with the item fanfare and the lines `giveaccessory` says. `RESULT` 1, or 0 and not a word with room for none. `{accessory}` names it. |
+| `team first` | `RESULT` is the place of the first of the team that is no Egg, or 255 with none (`GetFirstNonEggInParty`): the Ribbon Syndicate's spa treats that one (`team befriend` after it). |
+| `team nature serious` | `RESULT` is the place of the first of the team, no Egg, of that nature, or 255 with none (`FindPartySlotWithNature`): the inventor of Sunyshore City, who gives a Pokétch app for the sight of one. |
+| `team size "Remoraid"` | The Pokémon `RESULT` names (after `choosepokemon`) is measured against the size record (`CalcSizeContestResult`; `Models/SizeContest.cs`): `RESULT` 0 smaller, 1 the same, 2 larger, and 3 where it isn't that species (an Egg is none, and so is nobody chosen). `{size}` is its size and `{record}` the record's, as that species. The record is the story's `VAR_SIZE_CONTEST_RECORD`, and until one is kept the original's first (33,280). |
+| `team size keep` | The Pokémon last measured is the record from now on (`UpdateSizeContestRecord`). |
 
 ## Who is on the map
 

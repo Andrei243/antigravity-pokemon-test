@@ -1,0 +1,20 @@
+# The north-east house on Route 217 (plan 01 · M11, part c), on the original's plan. docs/scripts.md describes the
+# language; the lines are our own, on the original's beats (scripts_route_217_northeast_house.s).
+#
+# A woman alone in a house deep in the snow gives a Spell Tag, once (FLAG_RECEIVED_ROUTE_217_NORTHEAST_HOUSE_SPELL_TAG),
+# and sets the flag that hides her as she does (FLAG_HIDE_ROUTE_217_NORTHEAST_HOUSE_POKEMON_BREEDER_F): she is there
+# for the rest of this visit, as the original's object is until its map is left, and the house is empty ever after.
+
+
+script Woman
+  if flag FLAG_RECEIVED_ROUTE_217_NORTHEAST_HOUSE_SPELL_TAG goto Tag
+  say "... Somebody... here...?" "... How rare..." "... Thank you... for coming... A gift..."
+  setflag FLAG_RECEIVED_ROUTE_217_NORTHEAST_HOUSE_SPELL_TAG
+  # (shown by the script itself, she stays until the house is come to again, whatever her flag says)
+  show self
+  setflag FLAG_HIDE_ROUTE_217_NORTHEAST_HOUSE_POKEMON_BREEDER_F
+  give "Spell Tag"
+  end
+label Tag
+  say "... The Spell Tag..." "... It gives Ghost-type moves more strength..." "... May it serve you well..."
+  end

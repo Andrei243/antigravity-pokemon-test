@@ -1,0 +1,19 @@
+# The south house on Route 228 (plan 01 · M11, part c), on the original's plan. docs/scripts.md describes the
+# language; the lines are our own, on the original's beats (scripts_route_228_south_house.s).
+#
+# An old gentleman among his piles of books, who knows Sunyshore City's Badge when he sees it and has a grandson he
+# thinks of still. He tells the same tale to yes and stops himself at no. The four piles are read where they stand
+# (the room's own signs).
+
+
+script Gentleman
+  say "That Badge... Sunyshore's Gym gave you that, didn't it?" "Then you have been to that harbour town..."
+  ask "Would you... would you hear an old man's tale?"
+  if no goto Never
+  # Route228SouthHouse_ShouldntBurdenYou
+  say "No... I oughtn't to weigh you down with it." "My grandson grew up in that city by the sea." "He wore himself out trying to be all his parents wanted of him, and took shelter in tinkering with machines." "I ask myself even now whether I should have taken the boy in and brought him up myself." "Would it have been any better for him? I can't tell. I doubt anybody could." "Forgive me. I should never have told you any of this..."
+  end
+# Route228SouthHouse_PayMeNoHeed
+label Never
+  say "Ah... Never mind me, then." "I had only hoped to ease a guilty mind a little..."
+  end

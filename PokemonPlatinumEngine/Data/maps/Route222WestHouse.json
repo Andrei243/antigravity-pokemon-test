@@ -1,0 +1,204 @@
+{
+  "name": "Route222WestHouse",
+  "displayName": "Pikachu Fan Club",
+  "bgmTrack": "sinnoh/route209",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#.....#####",
+    "#.........#",
+    "#..##.....#",
+    "#..##.....#",
+    "#.........#",
+    "#.........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 4,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 6,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 3,
+      "y": 5,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Sinnoh",
+      "targetX": 795,
+      "targetY": 785,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "pikachu_1",
+      "name": "Pikachu",
+      "npcType": "Pokemon",
+      "x": 8,
+      "y": 5,
+      "facing": "Left",
+      "dialog": [
+        "Pikachu: Pikachuu!"
+      ],
+      "species": "Pikachu",
+      "movement": "wander_west_and_east",
+      "rangeX": 1
+    },
+    {
+      "id": "pikachu_2",
+      "name": "Pikachu",
+      "npcType": "Pokemon",
+      "x": 2,
+      "y": 7,
+      "facing": "Up",
+      "dialog": [
+        "Pikachu: Pika! Pika pi!"
+      ],
+      "species": "Pikachu",
+      "movement": "wander_around",
+      "rangeX": 1
+    },
+    {
+      "id": "pikachu_3",
+      "name": "Pikachu",
+      "npcType": "Pokemon",
+      "x": 1,
+      "y": 4,
+      "facing": "Right",
+      "dialog": [
+        "Pikachu: Chaa..."
+      ],
+      "species": "Pikachu",
+      "movement": "wander_around",
+      "rangeX": 1,
+      "rangeZ": 1
+    },
+    {
+      "id": "pikachu_4",
+      "name": "Pikachu",
+      "npcType": "Pokemon",
+      "x": 7,
+      "y": 7,
+      "facing": "Down",
+      "dialog": [
+        "Pikachu: Pi? Pikapi?"
+      ],
+      "species": "Pikachu",
+      "movement": "wander_around",
+      "rangeX": 1,
+      "rangeZ": 1
+    },
+    {
+      "id": "pikachu_5",
+      "name": "Pikachu",
+      "npcType": "Pokemon",
+      "x": 7,
+      "y": 5,
+      "facing": "Right",
+      "dialog": [
+        "Pikachu: Pika pika!"
+      ],
+      "species": "Pikachu",
+      "movement": "wander_west_and_east",
+      "rangeX": 1
+    },
+    {
+      "id": "pokefan_m",
+      "name": "Pokéfan",
+      "npcType": "Gentleman",
+      "x": 5,
+      "y": 5,
+      "facing": "Down",
+      "dialog": [
+        "Heh heh heh! I'm going to be Champion one day, and I'll do it with nothing but Pikachu!"
+      ],
+      "movement": "look_north_south_and_east"
+    },
+    {
+      "id": "poke_kid_janet",
+      "name": "Janet",
+      "npcType": "Pokemon",
+      "x": 4,
+      "y": 3,
+      "facing": "Right",
+      "script": "Trainer",
+      "species": "Pikachu",
+      "trainer": {
+        "id": "poke_kid_janet",
+        "name": "Janet",
+        "trainerClass": "Poké Kid",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Poké Kid Janet: Pika, pika... Oh! You could tell? I'm not a real Pikachu. I'm a Trainer!",
+        "dialogueAfter": "Poké Kid Janet: Pikaaa... I mean: you win.",
+        "sightRange": 0
+      },
+      "movement": "wander_around",
+      "rangeX": 1
+    }
+  ],
+  "wildEncounters": []
+}

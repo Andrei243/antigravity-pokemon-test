@@ -1,0 +1,22 @@
+# The house on Route 227 (plan 01 · M11, part c), on the original's plan. docs/scripts.md describes the language;
+# the lines are our own, on the original's beats (scripts_route_227_house.s).
+#
+# The old woman lets whoever is on the way up to Stark Mountain rest: the team is healed behind a fade, as often as
+# asked. The original asks again at once after a rest, and again after that for as long as the answer is yes; here a
+# rest is one talk, and she says to rest again whenever one likes.
+
+
+script Rest
+  say "Oh, dear, are your Pokémon worn out? Then you must rest. Yes, what a good idea!"
+  ask "Will you rest here a while?"
+  if no goto Sure
+  say "That's right, that's right. You've earned a good rest."
+  fade out
+  fanfare heal
+  heal
+  fade in
+  say "Oh, but you still look tired to me. You'll be wanting another rest, won't you?" "Rest again whenever you like. Yes, what a good idea!"
+  end
+label Sure
+  say "Is that so? You're quite sure, now?" "It's you I'm thinking of. You wouldn't be putting me out at all!"
+  end

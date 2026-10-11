@@ -1,0 +1,20 @@
+# The west house on Route 217 (plan 01 · M11, part c), on the original's plan. docs/scripts.md describes the
+# language; the lines are our own, on the original's beats (scripts_route_217_west_house.s).
+#
+# The hiker lost HM08 in the blizzard: it is the ball in the snow outside (plan 02 · S10's HM). Whoever comes in with
+# it in the bag keeps it and is given the Icicle Plate for owning up, once
+# (FLAG_RECEIVED_ROUTE_217_WEST_HOUSE_ICICLE_PLATE).
+
+
+script Hiker
+  if flag FLAG_RECEIVED_ROUTE_217_WEST_HOUSE_ICICLE_PLATE goto Plate
+  if item "HM08" goto Found
+  say "I was fighting my way through the blizzard out there when I dropped an HM." "Rock Climb, it was. With that I could go straight up a sheer cliff..."
+  end
+label Found
+  say "I was fighting my way through the blizzard out there when I dropped an HM." "Rock Climb, it was. With that I could go straight up a sheer cliff..." "Hey! What's that you've got? You found my Hidden Machine?" "I'd given it up for lost, and you dug it out of the snow. No, no, you keep it. Put it to good use." "I like an honest face, though. Here, take this for yours."
+  setflag FLAG_RECEIVED_ROUTE_217_WEST_HOUSE_ICICLE_PLATE
+  give "Icicle Plate"
+label Plate
+  say "That Icicle Plate turned up under the snow too." "I'm no scholar, but it looks ancient to me." "As old as the day Sinnoh itself was made, maybe..."
+  end

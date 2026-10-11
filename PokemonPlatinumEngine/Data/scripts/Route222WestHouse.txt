@@ -1,0 +1,12 @@
+# The Pikachu Fan Club on Route 222 (plan 01 · M11, part c), on the original's plan. docs/scripts.md describes the
+# language (scripts_route_222_west_house.s).
+#
+# Five Pikachu, the man who means to be Champion with nothing else, and Poké Kid Janet, a Trainer in a Pikachu's
+# costume who walks about among them and battles whoever speaks to her (the original gives her a Pikachu's own look
+# and no sight: she is found by talking to the Pikachu). Their lines are the room's own; this is the room's arrival.
+
+
+# Route222WestHouse_OnTransition
+script OnEnter
+  setflag FLAG_FIRST_ARRIVAL_PIKACHU_FAN_CLUB
+  end

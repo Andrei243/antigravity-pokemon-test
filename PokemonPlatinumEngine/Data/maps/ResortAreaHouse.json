@@ -1,0 +1,128 @@
+{
+  "name": "ResortAreaHouse",
+  "displayName": "Resort Area",
+  "bgmTrack": "sinnoh/sandgem",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#.....#####",
+    "#.........#",
+    "#..##.....#",
+    "#..##.....#",
+    "#.........#",
+    "#.........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 4,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 6,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 3,
+      "y": 5,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Sinnoh",
+      "targetX": 810,
+      "targetY": 456,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "collector",
+      "name": "Collector",
+      "npcType": "Gentleman",
+      "x": 6,
+      "y": 4,
+      "facing": "Up",
+      "script": "Collector"
+    },
+    {
+      "id": "old_man",
+      "name": "Old Man",
+      "npcType": "Gentleman",
+      "x": 2,
+      "y": 5,
+      "facing": "Up",
+      "dialog": [
+        "The best Trainers there are come together at the Battle Frontier. Not Sinnoh's alone, either.",
+        "To win there with the Pokémon you love, that you caught and raised yourself... What could make a Trainer happier?"
+      ]
+    },
+    {
+      "id": "ninja_boy",
+      "name": "Boy",
+      "npcType": "Youngster",
+      "x": 8,
+      "y": 7,
+      "facing": "Up",
+      "script": "Boy"
+    }
+  ],
+  "wildEncounters": []
+}

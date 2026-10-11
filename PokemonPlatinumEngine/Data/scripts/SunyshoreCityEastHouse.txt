@@ -1,0 +1,55 @@
+# The inventor's house in Sunyshore City, the east house (plan 01 · M11, part c), on the original's plan.
+# docs/scripts.md describes the language; the lines are our own, on the original's beats
+# (scripts_sunyshore_city_east_house.s).
+#
+# He writes Pokétch apps and gives three away, one after another, each for the sight of a Pokémon of the team with
+# the nature he is in the mood for (team nature: the original's FindPartySlotWithNature, which passes an Egg by): the
+# Calendar for a Serious one, the Dot Artist for a Naive one, the Roulette for a Quirky one. Which he asks for next
+# is told by the apps the Pokétch has; his first talk only introduces him (VAR_SUNYSHORE_CITY_EAST_HOUSE_SCIENTIST_STATE).
+
+
+script Scientist
+  if var VAR_SUNYSHORE_CITY_EAST_HOUSE_SCIENTIST_STATE >= 1 goto Check
+  setvar VAR_SUNYSHORE_CITY_EAST_HOUSE_SCIENTIST_STATE 1
+  say "That gleaming, splendid thing on your wrist! A Pokétch, and the newest model, if I'm any judge!" "Wonderful things, aren't they? The Pokétch Company lets me write apps of my own for them." "You're a Trainer, yes? Then do me a favour." "Your Pokémon are bound to have all sorts of natures. Would you let me see them?"
+  end
+# SunyshoreCityEastHouse_TryCheckNatures
+label Check
+  if poketchapp Roulette goto All
+  if poketchapp DotArt goto Quirky
+  if poketchapp Calendar goto Naive
+  team nature Serious
+  if var RESULT != 255 goto Calendar
+  say "Now, what am I in the mood to see..." "A Pokémon with a Serious nature. Yes, that's the one."
+  end
+label Naive
+  team nature Naive
+  if var RESULT != 255 goto DotArt
+  say "Now, what am I in the mood to see..." "A Pokémon with a Naive nature. Yes, that's the one."
+  end
+label Quirky
+  team nature Quirky
+  if var RESULT != 255 goto Roulette
+  say "Now, what am I in the mood to see..." "A Pokémon with a Quirky nature. Yes, that's the one."
+  end
+label Calendar
+  say "Yes! Your {member:RESULT} is as Serious as they come!" "Thank you. The Calendar app is yours, for your Pokétch."
+  fanfare keyitem
+  poketchapp Calendar
+  text "{player} added the Calendar app to the Pokétch!"
+  end
+label DotArt
+  say "Yes! Your {member:RESULT} is Naive through and through!" "Thank you. The Dot Artist app is yours, for your Pokétch."
+  fanfare keyitem
+  poketchapp DotArt
+  text "{player} added the Dot Artist app to the Pokétch!"
+  end
+label Roulette
+  say "Yes! Your {member:RESULT} is every bit as Quirky as I hoped!" "Thank you. The Roulette app is yours, for your Pokétch."
+  fanfare keyitem
+  poketchapp Roulette
+  text "{player} added the Roulette app to the Pokétch!"
+  end
+label All
+  say "One of these days there may be more Pokétch apps than there are kinds of Pokémon."
+  end

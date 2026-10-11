@@ -1,0 +1,14 @@
+# The house on Route 225 (plan 01 · M11, part c), on the original's plan. docs/scripts.md describes the language;
+# the lines are our own, on the original's beats (scripts_route_225_house.s).
+#
+# The worker gives a Fresh Water for the climb, once (FLAG_RECEIVED_ROUTE_225_HOUSE_FRESH_WATER).
+
+
+script Worker
+  if flag FLAG_RECEIVED_ROUTE_225_HOUSE_FRESH_WATER goto Water
+  say "Hot work, getting about the Battle Zone, isn't it? Here, let your Pokémon have a drink of this."
+  setflag FLAG_RECEIVED_ROUTE_225_HOUSE_FRESH_WATER
+  give "Fresh Water"
+label Water
+  say "Water is where all life springs from." "Where Pokémon first sprang from, though... that nobody can tell you."
+  end

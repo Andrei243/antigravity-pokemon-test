@@ -201,6 +201,11 @@ public enum PropType
     LiftCar,
     /// <summary>The indicator on the back wall of a lift's car: a dark panel with an arrow up and an arrow down.</summary>
     LiftIndicator,
+    /// <summary>
+    /// Books piled on the floor (plan 01 · M11, part c: the original's book01 lying on a blocked tile). Past the
+    /// decorations like a flower stand: the room's own tiles say that it blocks.
+    /// </summary>
+    BookPile,
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>

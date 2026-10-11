@@ -1,0 +1,34 @@
+# The Snowbound Lodge on Route 216 (plan 01 · M11, part c), on the original's plan. docs/scripts.md describes the
+# language; the lines are our own, on the original's beats (scripts_route_216_house.s).
+#
+# The lodge's keeper lets a traveller out of the snow rest, and so does the bed, looked at from beside it or from its
+# foot: the team is healed behind a fade, as often as asked.
+
+
+script Rest
+  say "Yahoo! The old lodge has seen better days, but come in out of the snow and make yourself at home!"
+  ask "Want a rest before you go back out?"
+  if no goto Bed
+  fade out
+  fanfare heal
+  heal
+  fade in
+  say "There! You and your Pokémon are fit, cheerful and ready to go!"
+  end
+label Bed
+  say "It's a tumbledown place, as you can see." "Do as you like: head straight back out, or have a nap in the bed first."
+  end
+
+
+# Route216House_Bed
+script Bed
+  speaker none
+  ask "It's a bed... Take a rest?"
+  if no end
+  text "{player} was asleep almost at once..."
+  fade out
+  fanfare heal
+  heal
+  fade in
+  text "{player} and the Pokémon woke up completely rested!"
+  end

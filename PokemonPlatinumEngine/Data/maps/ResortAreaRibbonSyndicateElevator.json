@@ -1,0 +1,78 @@
+{
+  "name": "ResortAreaRibbonSyndicateElevator",
+  "displayName": "Ribbon Syndicate",
+  "bgmTrack": "sinnoh/sandgem",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 7,
+  "height": 8,
+  "ground": [
+    "#######",
+    "#######",
+    "#######",
+    "#_____#",
+    "#_____#",
+    "#_____#",
+    "#_____#",
+    "###D###"
+  ],
+  "solid": [
+    "#######",
+    "#######",
+    "#######",
+    "#.....#",
+    "#.....#",
+    "#.....#",
+    "#.....#",
+    "###.###"
+  ],
+  "props": [
+    {
+      "type": "Rug",
+      "x": 3,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LiftIndicator",
+      "x": 3,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 3,
+      "sourceY": 7,
+      "targetMap": "ResortAreaRibbonSyndicate1F",
+      "targetX": 5,
+      "targetY": 3,
+      "targetFacing": "Down",
+      "until": "FLAG_RIBBON_SYNDICATE_LIFT_UPSTAIRS"
+    },
+    {
+      "sourceX": 3,
+      "sourceY": 7,
+      "targetMap": "ResortAreaRibbonSyndicate2F",
+      "targetX": 5,
+      "targetY": 3,
+      "targetFacing": "Down",
+      "from": "FLAG_RIBBON_SYNDICATE_LIFT_UPSTAIRS"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "receptionist",
+      "name": "Lift Attendant",
+      "npcType": "Lass",
+      "x": 1,
+      "y": 6,
+      "facing": "Right",
+      "script": "Lift"
+    }
+  ],
+  "wildEncounters": []
+}

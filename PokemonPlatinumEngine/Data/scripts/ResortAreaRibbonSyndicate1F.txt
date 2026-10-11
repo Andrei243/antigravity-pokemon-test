@@ -6,11 +6,13 @@
 # (common.RibbonSyndicateEntry, plan 06 · R17b: ten different ones between them, and the door is theirs for good,
 # FLAG_JOINED_RIBBON_SYNDICATE); whoever hasn't them is shown out, to the tile before the door. A member finds her a
 # step to the east, out of the way. The cashier behind the counter is common.RibbonSyndicateCashier. The lift in the
-# back wall goes to the spa on the floor above, which isn't built (docs/mechanics/rulings.md).
+# back wall goes to the spa on the floor above (plan 01 · M11, part c: ResortAreaRibbonSyndicateElevator, whose car
+# leads out by FLAG_RIBBON_SYNDICATE_LIFT_UPSTAIRS, a flag of our own; whoever stands on this floor has the lift down).
 
 
 # The original's OnTransition (the hostess beside the way for a member) and OnFrame_CheckEntry
 script OnEnter
+  clearflag FLAG_RIBBON_SYNDICATE_LIFT_UPSTAIRS
   if flag FLAG_JOINED_RIBBON_SYNDICATE goto Member
   speaker "Hostess"
   wait 0.3

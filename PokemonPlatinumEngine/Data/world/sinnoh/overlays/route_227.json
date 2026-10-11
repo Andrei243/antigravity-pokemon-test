@@ -5,8 +5,10 @@
   "bgmTrack": "sinnoh/route206",
   "trees": "Round",
   "architecture": "Resort",
-  // The house by the road has no room yet (plan 01 · M11)
-  "locked": [ 0 ],
+  // The house by the road, on the original's plan (plan 01 · M11, part c): the old woman in it gives a rest
+  "doors": [
+    { "warp": 0, "map": "Route227House", "x": 4, "y": 8, "facing": "Up" }
+  ],
   // The rival and Crasher Wake arguing at the foot of the road (trigger 0), and Buck, who asks the player to come up
   // Stark Mountain with him (trigger 1), wait for the story (plan 02 · S15). The road's north end runs on to Stark
   // Mountain, which is plan 01 · M10, part b's

@@ -117,6 +117,13 @@ internal static class PropModels
             // A lift (plan 02 · S13, the Vista Lighthouse): its car open in the shaft, and the indicator inside it
             case PropType.LiftCar: LiftCar(kit); break;
             case PropType.LiftIndicator: kit.Card(4, 28, 32.5f, 46, 58, kit.Face("lift.indicator", 24, 12, PaintLiftIndicator)); break;
+            // Books piled on the floor (plan 01 · M11, part c)
+            case PropType.BookPile:
+            {
+                int turn = BookPileTurn(p.X, p.Y);
+                kit.Sprite(kit.Face($"bookpile.{turn}", BookPileWidth, BookPileHeight, c => PaintBookPile(c, turn)), 16, 21);
+                break;
+            }
         }
     }
 
@@ -233,6 +240,38 @@ internal static class PropModels
         Pot(12, 26, Blooms[(turn + 1) % Blooms.Length]);
         Pot(22, 26, Blooms[(turn + 2) % Blooms.Length]);
         c.Rect(1, 42, 2, 2, WoodDark.Base); c.Rect(27, 42, 2, 2, WoodDark.Base);
+        Pix.Outline(c);
+    }
+
+    /// <summary>Width and height of a pile of books, in texels, and how many ways there are to pile one.</summary>
+    public const int BookPileWidth = 26, BookPileHeight = 24, BookPileTurns = 5;
+
+    private static readonly Color[] Covers = { Rgb(200, 66, 66), Rgb(66, 114, 200), Rgb(76, 160, 96), Rgb(230, 190, 76), Rgb(150, 96, 176) };
+
+    /// <summary>Which way the pile on a tile is laid: by the tile, so two piles in a room are never the same.</summary>
+    public static int BookPileTurn(int x, int y) => (x + y * 2) % BookPileTurns;
+
+    /// <summary>
+    /// A pile of books (style guide, "Rooms"): five lying flat one on another, each four texels thick, in the
+    /// bookshelf's cover colours, the cream of its pages at one end. Their lengths, shifts and colours go by
+    /// <paramref name="turn"/>.
+    /// </summary>
+    public static void PaintBookPile(PixelCanvas c, int turn)
+    {
+        int[] lengths = { 24, 20, 22, 18, 22 }, shifts = { 0, 2, 1, 4, 2 };
+        for (int i = 0; i < 5; i++)
+        {
+            // From the floor up: the widest at the foot of the pile
+            int length = lengths[(i + turn) % lengths.Length], x = 1 + shifts[(i * 2 + turn) % shifts.Length], y = BookPileHeight - 4 - i * 4;
+            if (x + length > BookPileWidth - 1) x = BookPileWidth - 1 - length;
+            var cover = Covers[(i * 2 + turn) % Covers.Length];
+            bool pagesRight = (i + turn) % 2 == 0;
+            c.Rect(x, y, length, 4, cover);
+            c.HLine(x, y, length, PixelCanvas.Light1(cover, 0.35f));
+            c.HLine(x, y + 3, length, PixelCanvas.Shadow(cover, 0.3f));
+            // The pages show at one end, between the two boards of the cover
+            c.Rect(pagesRight ? x + length - 3 : x, y + 1, 3, 2, Cream.Base);
+        }
         Pix.Outline(c);
     }
 

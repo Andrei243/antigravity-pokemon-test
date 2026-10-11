@@ -397,7 +397,8 @@ public class PostGameTests
         Assert.Equal("resort_area", AreaKey(map, 824, 453));
         var room = Room("ResortAreaRibbonSyndicate1F");
         Assert.Equal(RegionDatabase.Sinnoh, RegionDatabase.RegionOfMap(room.Name)!.Id);
-        var exit = Assert.Single(room.Warps);
+        // (the lift in its back wall is the other way out, since plan 01 · M11, part c: NorthInteriorTests)
+        var exit = Assert.Single(room.Warps, w => w.TargetMap == "Sinnoh");
         Assert.Equal(("Sinnoh", 824, 454, Direction.Down), (exit.TargetMap, exit.TargetX, exit.TargetY, exit.TargetFacing));
         Assert.True(map.IsWalkable(824, 454));
 
@@ -450,11 +451,12 @@ public class PostGameTests
         Assert.True(RibbonRules.Has(lead, RibbonRules.Gorgeous));
         Assert.Equal(10_000, member.Money);
 
-        // The lady has a word for a boy and another for a girl, and the lift's door says why it stays shut
+        // The lady has a word for a boy and another for a girl, and the lift in the back wall leads into its car (it was
+        // shut until plan 01 · M11, part c built the floor above: NorthInteriorTests)
         var lady = Assert.Single(again.Everyone, n => n.Key == "lady");
         string Says(PlayerLook look) => Run("Lady", again.Name, new HeadlessScriptHost { Map = again, PlayerLook = look }, lady).Transcript.Last().Text;
         Assert.NotEqual(Says(PlayerLook.Boy), Says(PlayerLook.Girl));
-        Assert.Contains("lift", again.Signboards[(5, 2)]);
+        Assert.Equal("ResortAreaRibbonSyndicateElevator", again.GetWarpAt(5, 2)?.TargetMap);
         Assert.Equal(2, again.Everyone.Count(n => n.IsPokemon));
     }
 
