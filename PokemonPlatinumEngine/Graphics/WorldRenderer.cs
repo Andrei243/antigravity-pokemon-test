@@ -890,12 +890,14 @@ public sealed class WorldRenderer
             if (map.Puzzle?.Hides(npc.Level ?? map.HeightAt(npc.GridX, npc.GridY), viewer) == true) continue;
             if (npc is { IsPokemon: true, Species: { } species })
             {
-                // A Pokémon of the map stands on its tile as a person does; on the move it hops a texel or two
+                // A Pokémon of the map stands on its tile as a person does; on the move it hops a texel or two, a hop to
+                // each tile, and shows its second frame while it is off the ground (style guide, "Pokémon in the field")
                 float sx = npc.DrawX + 0.5f, sz = npc.DrawY + 0.5f;
-                float hop = npc.WalkBlend >= 0.5f && MathF.Sin(npc.WalkCycle * MathF.Tau * 2f) > 0f ? Rows(2f) : 0f;
+                bool moving = npc.WalkBlend >= 0.5f, up = moving && MathF.Sin(npc.WalkCycle * MathF.Tau * 2f) > 0f;
+                float hop = up ? Rows(2f) : 0f;
                 float ground = (npc.Level is { } deck ? Relief.Under(map, sx, sz, deck) : Relief.At(map, sx, sz)) - SinkAt(map, sx, sz);
                 pokemon.Add((new Vector3(sx, ground + hop, sz), species, CharacterSprites.FacingIndex(Player.YawOf(npc.Facing)),
-                    FieldSprites.FrameAt(time + SeedOf(npc.Name + npc.Key) * 10f)));
+                    moving ? (up ? 1 : 0) : FieldSprites.FrameAt(time + SeedOf(npc.Name + npc.Key) * 10f)));
                 continue;
             }
             if (npc.IsBerrySoil)

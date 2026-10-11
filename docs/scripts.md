@@ -687,6 +687,28 @@ battle, the question.
 | `arcade brain`, `arcade beat silver`, `arcade beat gold` | Counts the Arcade Star met; notes her beaten, so that the print waits in the lobby. |
 | `arcade finish won`, `arcade finish lost`, `arcade points`, `arcade beaten` | As the Hall's: the records, the Battle Points a round earned, and who was beaten. |
 
+### Amity Square's walk
+
+Plan 06 · R16c; `docs/mechanics/rulings.md`, "Amity Square's walk". The rules are `Overworld/AmitySquare.cs`, and what
+the walk remembers is the story's own variables under the original's names (`VAR_FOLLOWER_MON_ACTIVE`, `_PARTY_ID`,
+`_SPECIES`, the three of the next find, `VAR_AMITY_SQUARE_STEP_COUNT`, `VAR_AMITY_SQUARE_GIFT_ID`, and our own
+`VAR_AMITY_SQUARE_GIFT_MAN_PLACE`), so a script may ask them. The Pokémon out of its ball is the square's
+`follower_mon`, off the map behind `FLAG_HIDE_AMITY_SQUARE_FOLLOWER_MON` until it walks; it follows the player by
+itself, also on a walk a script sends the player on, and is behind them wherever `place player` puts them. `{walker}`
+names the Pokémon last asked about, or the one that walks along.
+
+| Command | What it does |
+|---|---|
+| `amity arrive` | Draws the day's gift of the man of the park and where he stands (`AmitySquare_OnTransition`: a die of sixteen, then one of five); `RESULT` is his place, 0 to 4. |
+| `amity may` | `RESULT` 1 when the team has one of the species the square lets in, four more of them with the National Pokédex (`AmitySquare_CheckPartyHasSpecies`), and the asking starts from the team's first place. |
+| `amity next` | The next Pokémon of the team that may walk, an Egg never: `RESULT` 1 and `{walker}` names it, or 0 with none left. |
+| `amity walk` | The one last named is out of its ball: `follower_mon` takes its looks and its name and walks behind the player from here, its steps counted from nought and its first find decided (three dice). The script waits while its model is made. |
+| `amity leave` | It follows nobody any more (the script takes it off the map by its flag). |
+| `amity walker`, `amity grown` | `RESULT` 1 while a Pokémon walks along, which `{walker}` names; and 1 when it is one of the six starters grown up, who have moods of their own. |
+| `amity find` | Speaking to it: `RESULT` 0 with fewer than two hundred steps since the last find or nowhere to put what it has, 1 a berry, 2 an accessory, which `{thing}` names. The count starts again and the next find is decided. |
+| `amity gift` | What the man offers today: `RESULT` 0 five of a berry, 1 an accessory; `{thing}` names it. |
+| `amity take`, `amity give` | What was found, or offered, goes into the bag or the Fashion Case with the item's fanfare and the lines `give` and `giveaccessory` say: `RESULT` 0 when the Fashion Case has no room for it. |
+
 ## Who is on the map
 
 A person can carry a flag that takes them off the map while it is set (`hiddenBy`) or one they wait for

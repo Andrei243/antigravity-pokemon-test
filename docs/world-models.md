@@ -96,9 +96,9 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | `d04_s01` | the furnace in the middle of the Fuego Ironworks' floor, a tower of steel as tall as its model | a prop: Headframe |  | 3.0 × 3.0 × 4.1 | 1 | Fuego Ironworks |
 | `d11_o01a` | a bench in Amity Square | a prop: Bench |  | 1.0 × 1.8 × 1.1 | 3 | Amity Square |
 | `d11_o01b` | a bench in Amity Square | a prop: Bench |  | 1.0 × 1.8 × 1.1 | 3 | Amity Square |
-| `d11_o02a` | a flower bed of Amity Square | a prop: FlowerBed |  | 2.1 × 3.2 × 1.0 | 1 | Amity Square |
-| `d11_o02b` | a flower bed of Amity Square | a prop: FlowerBed |  | 2.2 × 3.2 × 1.0 | 1 | Amity Square |
-| `d11s01` | a great standing stone of Amity Square | a prop: Outcrop |  | 5.7 × 3.1 × 7.9 | 10 | Amity Square |
+| `d11_o02a` | a receptionist's desk in Amity Square | a prop: ReceptionDesk |  | 2.1 × 3.2 × 1.0 | 1 | Amity Square |
+| `d11_o02b` | a receptionist's desk in Amity Square | a prop: ReceptionDesk |  | 2.2 × 3.2 × 1.0 | 1 | Amity Square |
+| `d11s01` | a hut of Amity Square's ruins | a prop: RuinHut |  | 5.7 × 3.1 × 7.9 | 10 | Amity Square |
 | `d16_o01` | a pool of lava on Stark Mountain's flank | a prop: Lava |  | 7.0 × 8.0 × 0.0 | 2 | Stark Mountain |
 | `d16_o02` | the mouth of Stark Mountain, and the smoke over it | a prop: Crater |  | 16.7 × 15.8 × 22.6 | 1 | Stark Mountain |
 | `d20_o01` | a pillar of Snowpoint Temple | a prop: Column |  | 1.8 × 1.8 × 4.6 | 9 | Snowpoint Temple |

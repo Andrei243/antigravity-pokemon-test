@@ -1713,7 +1713,7 @@ public static class WorldMapBuilder
             // People appear only once the game says who they are
             if (overlay?.People == null || !overlay.People.TryGetValue(o.Id, out var person)) continue;
             // A Pokémon of the original's stands as itself, unless the overlay makes someone else of it (plan 10 · F1)
-            string? species = person.NpcType == null && person.Trainer == null ? SpeciesFor(o.Looks) : null;
+            string? species = person.NpcType == null && person.Trainer == null ? SpeciesFor(o.Looks) : person.NpcType == NPC.PokemonType ? person.Species : null;
             // A trainer is the table's, by the id its object's script gives (TRAINER_YOUNGSTER_TRISTAN), or the one the
             // overlay names for someone a script battles; the overlay gives their lines alone (plan 08 · P7)
             MapFile.TrainerRecord? trainer = null;

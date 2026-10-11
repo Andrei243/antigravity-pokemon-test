@@ -806,6 +806,13 @@ public sealed class OverlayPerson
     /// hikers, whom the original stands by a table of its own code as the map is come to).
     /// </summary>
     public int[]? At { get; set; }
+
+    /// <summary>
+    /// For someone the overlay makes a Pokémon (<c>npcType</c> <c>Pokemon</c>) whose looks the original sets by
+    /// script: the species it stands as until one dresses it (plan 06 · R16c: Amity Square's <c>follower_mon</c>, the
+    /// Pokémon of the team let out of its ball there).
+    /// </summary>
+    public string? Species { get; set; }
 }
 
 /// <summary>A tile that leads elsewhere: to the warp numbered <see cref="ToWarp"/> of the area <see cref="To"/>.</summary>

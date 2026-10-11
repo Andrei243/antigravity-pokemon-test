@@ -142,6 +142,8 @@ public partial class GameEngine
         story.Unset(BicycleRules.OnCyclingRoadFlag);
         story.Unset(BicycleRules.ForcedInGateFlag);
         ChangePlace();
+        // A Pokémon out of its ball stays in Amity Square (plan 06 · R16c)
+        LeaveStrollBehind();
         // Another map ends the Poké Radar's chain (RadarChain_Clear), and the roamers note where the player is (plan 06 · R13)
         EndRadarChain();
         Roamers.NotePlace(encounters, PlaceKey());
@@ -631,6 +633,9 @@ public partial class GameEngine
             return;
         }
         playerWalk.Update(dt, player, currentMap, StepLeavesItsMark);
+        // A Pokémon out of its ball keeps behind the player on a walk a script sends them on too (plan 06 · R16c); a
+        // person who travels along is moved by the scene itself
+        if (along?.Pokemon != null) TrailBehind();
         if (playerWalk.IsDone) playerWalk = null;
     }
 
@@ -768,6 +773,13 @@ public partial class GameEngine
             if (who == null)
             {
                 game.player.SetPosition(x, y, facing ?? game.player.Facing);
+                // A Pokémon out of its ball is nobody's to place: it is behind the player wherever a script puts them
+                // (plan 06 · R16c: the huts of Amity Square). A person who travels along is the scene's own to move
+                if (game.along is { Pokemon: not null } stroller && game.currentMap.Follower == stroller.Who)
+                {
+                    game.PutBehind(stroller, x, y, game.player.Facing);
+                    game.partnerHeading = game.player.Heading;
+                }
                 return;
             }
             StopWalk(who);
@@ -796,7 +808,7 @@ public partial class GameEngine
         private void StopWalk(NPC who)
         {
             game.wandering.Settle(who);
-            if (game.partner?.Who == who) game.partner.Settle();
+            if (game.along?.Who == who) game.along.Settle();
             foreach (var walk in game.npcWalks.Where(w => w.Who == who)) walk.Finish();
             game.npcWalks.RemoveAll(w => w.Who == who);
         }
@@ -831,7 +843,7 @@ public partial class GameEngine
         // ---- what the script waits for
 
         public bool Busy => game.currentState != GameState.Overworld || game.dialogue.IsActive || game.scriptFade.IsMoving || game.cutIn != null
-            || game.fieldMoveStep || game.PuzzleMoving;
+            || game.fieldMoveStep || game.PuzzleMoving || game.AwaitingStroll;
 
         public void Say(string? speaker, IReadOnlyList<string> lines)
         {

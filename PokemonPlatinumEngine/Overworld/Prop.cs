@@ -161,6 +161,10 @@ public enum PropType
     TrainerStatue,
     /// <summary>A giant of carved stone, taller than a door (the statue in Snowpoint Temple's hall).</summary>
     Colossus,
+    // Amity Square (plan 06 · R16c): a hut of its ruins, walked into by the open tile of its south row, and the desk
+    // each receptionist stands behind. The world says which of their tiles block
+    RuinHut,
+    ReceptionDesk,
 
     // Decoration: floor rugs and things hung on the back wall, never solid
     Rug,

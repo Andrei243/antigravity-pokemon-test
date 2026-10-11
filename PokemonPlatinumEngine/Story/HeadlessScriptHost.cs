@@ -668,6 +668,17 @@ public sealed class HeadlessScriptHost : IScriptHost
     public Models.Frontier.BattleCastleChallenge? Castle { get; set; }
     public Models.Frontier.BattleArcadeChallenge? Arcade { get; set; }
 
+    /// <summary>The Pokémon of the team that walks behind the player, and the thing of the map it is (plan 06 · R16c).</summary>
+    public Pokemon? Strolling { get; private set; }
+    public NPC? StrollingAs { get; private set; }
+
+    public void WalkWith(NPC? body, Pokemon? pokemon)
+    {
+        if (body != null && pokemon != null) Follower.Dress(body, pokemon);
+        (StrollingAs, Strolling) = body != null && pokemon != null ? (body, pokemon) : (null, null);
+        Log.Add(Strolling == null ? "walk with nobody" : $"walk with {Strolling.DisplayName}");
+    }
+
     /// <summary>What a test does at one of the Battle Castle's counters ("castleself", "castlefoe") while the script waits; nothing when left empty.</summary>
     public Action<Models.Frontier.BattleCastleChallenge, string>? AtCastleCounter { get; set; }
 

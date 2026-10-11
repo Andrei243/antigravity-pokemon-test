@@ -208,6 +208,13 @@ internal static partial class Landmarks
             case PropType.Colossus:
                 Colossus(kit, w, d);
                 return true;
+            // Amity Square (plan 06 · R16c; Landmarks.Amity.cs)
+            case PropType.RuinHut:
+                RuinHut(kit, map, prop, w, d);
+                return true;
+            case PropType.ReceptionDesk:
+                ReceptionDesk(kit, map, prop, w, d);
+                return true;
         }
         return false;
     }

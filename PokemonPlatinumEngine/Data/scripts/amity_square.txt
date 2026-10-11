@@ -1,0 +1,388 @@
+# Amity Square (plan 06 · R16c), where a Pokémon of the team is let out of its ball to walk behind the player.
+# docs/scripts.md describes the language; the lines are our own, on the original's beats (scripts_amity_square.s).
+#
+# Nobody goes further than the receptionists' counters alone: the tile north of each gate's lane asks whoever comes
+# up it with no Pokémon out (VAR_FOLLOWER_MON_ACTIVE 0), and the tile south of that says goodbye to whoever comes
+# back down with one (1). The Pokémon is the square's follower_mon, off the map behind its flag until `amity walk`
+# dresses it. Speaking to it after two hundred steps turns up a berry or an accessory (`amity find`). The ruins'
+# huts carry whoever steps north, west or east of a hut's middle to another hut's (Hut1 to Hut27, the original's
+# twenty-seven coordinate events), which is the only way onto most of the raised ground.
+
+
+# (AmitySquare_OnTransition) The day's gift and where the man of the park stands are drawn as the square is come
+# into. A game taken up again in the middle of a walk draws nothing and keeps its Pokémon out
+script OnEnter
+  setflag FLAG_FIRST_ARRIVAL_AMITY_SQUARE
+  if var VAR_FOLLOWER_MON_ACTIVE == 1 goto Stand
+  setflag FLAG_HIDE_AMITY_SQUARE_FOLLOWER_MON
+  amity arrive
+label Stand
+  if var VAR_AMITY_SQUARE_GIFT_MAN_PLACE == 0 place gift_man 28 14 down
+  if var VAR_AMITY_SQUARE_GIFT_MAN_PLACE == 1 place gift_man 38 8 down
+  if var VAR_AMITY_SQUARE_GIFT_MAN_PLACE == 2 place gift_man 40 21 down
+  if var VAR_AMITY_SQUARE_GIFT_MAN_PLACE == 3 place gift_man 48 41 down
+  if var VAR_AMITY_SQUARE_GIFT_MAN_PLACE == 4 place gift_man 20 13 down
+  end
+
+
+# ---------------------------------------------------------------- the gates
+
+# (AmitySquare_CoordEvent_WestGate) The tile before the west counter, with no Pokémon out
+script WestGate
+  face player left
+  call Reception
+  if not flag FLAG_MAP_LOCAL_AMITY_SQUARE_WALK goto Back
+  call LetOut
+  place follower_mon 12 47 left
+  call Welcome
+  end
+label Back
+  walk player down 1
+  end
+
+# (AmitySquare_CoordEvent_EastGate)
+script EastGate
+  face player right
+  call Reception
+  if not flag FLAG_MAP_LOCAL_AMITY_SQUARE_WALK goto Back
+  call LetOut
+  place follower_mon 51 47 right
+  call Welcome
+  end
+label Back
+  walk player down 1
+  end
+
+# (AmitySquare_CheckHasNationalDex on) Whether the team has one of the square's Pokémon at all, and then each of them
+# in turn until the player says yes to one
+script Reception
+  clearflag FLAG_MAP_LOCAL_AMITY_SQUARE_WALK
+  speaker "Receptionist"
+  amity may
+  if result == 0 goto List
+  amity next
+  if result == 0 goto Nobody
+  ask "Welcome to Amity Square! Would you like to take {walker} out for a stroll?"
+  if yes goto Chosen
+label Others
+  amity next
+  if result == 0 goto Nobody
+  ask "Oh, not that one? Then would you rather stroll with {walker}?"
+  if yes goto Chosen
+  goto Others
+label Chosen
+  setflag FLAG_MAP_LOCAL_AMITY_SQUARE_WALK
+  return
+label Nobody
+  say "I see. Do come back whenever you fancy a stroll."
+  return
+label List
+  if nationaldex goto LongList
+  say "Welcome to Amity Square! I'm afraid only certain Pokémon may be walked here." "Pikachu, Clefairy, Psyduck, Pachirisu, Drifloon, Buneary and Happiny, and Turtwig, Chimchar and Piplup with whatever they grow into." "Do come back with one of them!"
+  return
+label LongList
+  say "Welcome to Amity Square! I'm afraid only certain Pokémon may be walked here." "Pikachu, Clefairy, Psyduck, Pachirisu, Drifloon, Buneary, Happiny, Jigglypuff, Torchic, Skitty and Shroomish, and Turtwig, Chimchar and Piplup with whatever they grow into." "Do come back with one of them!"
+  return
+
+# (AmitySquare_SetFollowerMon) The team is rested, and behind a dark screen the Pokémon comes out of its ball
+script LetOut
+  heal
+  fade out
+  clearflag FLAG_HIDE_AMITY_SQUARE_FOLLOWER_MON
+  amity walk
+  return
+
+# (AmitySquare_EnterWithFollowerMon) The two of them step into the square
+script Welcome
+  fade in
+  setvar VAR_FOLLOWER_MON_ACTIVE 1
+  speaker "Receptionist"
+  say "There we are! Enjoy your time together, you and {walker}."
+  walk player up 1
+  return
+
+# (AmitySquare_CoordEvent_ExitAmitySquare) The tile south of it, with a Pokémon out: back into its ball
+script LeaveWest
+  call Leave
+  end
+
+script LeaveEast
+  call Leave
+  end
+
+script Leave
+  fade out
+  amity leave
+  setflag FLAG_HIDE_AMITY_SQUARE_FOLLOWER_MON
+  setvar VAR_FOLLOWER_MON_ACTIVE 0
+  fade in
+  speaker "Receptionist"
+  say "Do you both feel the better for it? Please come again!"
+  walk player down 1
+  return
+
+
+# ---------------------------------------------------------------- the Pokémon walking along
+
+# (AmitySquare_FollowerMon) After two hundred steps it is holding something; before that it has a mood, one of nine,
+# and the starters grown up have nine of their own
+script FollowerMon
+  sound "select"
+  face self player
+  amity find
+  if result == 0 goto Mood
+  cry own
+  text "Oh? {walker} is holding something!"
+  amity take
+  end
+label Mood
+  cry own
+  amity grown
+  if result == 1 goto Grown
+  random 9
+  if result == 0 text "{walker} is keeping up with a spring in its step."
+  if result == 1 text "{walker} looks as happy as can be."
+  if result == 2 text "{walker} seems to be in fine spirits."
+  if result == 3 text "{walker} is gazing up at you fondly."
+  if result == 4 text "{walker} is scratching at the ground for some reason."
+  if result == 5 text "{walker} nearly tripped over its own feet!"
+  if result == 6 text "{walker} is skipping along."
+  if result == 7 text "{walker} is so happy that it can't keep still."
+  if result == 8 text "{walker} seems to be enjoying the walk."
+  end
+label Grown
+  random 9
+  if result == 0 text "{walker} is ambling along at its ease."
+  if result == 1 text "{walker} looks as happy as can be."
+  if result == 2 text "{walker} seems to be in fine spirits."
+  if result == 3 text "{walker} pressed up close against you."
+  if result == 4 text "{walker} is scratching at the ground for some reason."
+  if result == 5 text "{walker} made a great show of stumbling. It's only playing!"
+  if result == 6 text "{walker} gave a long, contented yawn."
+  if result == 7 text "{walker} is sniffing at the grass."
+  if result == 8 text "{walker} seems to be enjoying the walk."
+  end
+
+
+# ---------------------------------------------------------------- the square's people
+
+# (AmitySquare_Receptionist) Spoken to over her counter: one of six things, and she turns back to the lane
+script ReceptionistWest
+  call ReceptionistTalk
+  face self right
+  end
+
+script ReceptionistEast
+  call ReceptionistTalk
+  face self left
+  end
+
+script ReceptionistTalk
+  amity walker
+  if result == 0 goto Alone
+  random 6
+  if result == 0 say "{walker} looks ever so pleased to be trotting about after you."
+  if result == 1 say "The owner of Amity Square asks only that people and Pokémon enjoy themselves here."
+  if result == 2 say "Keep an eye on the ground as you go. Your Pokémon may turn up something useful."
+  if result == 3 say "Are you enjoying your stroll?"
+  if result == 4 say "Seeing so many sweet Pokémon go by makes me happy all day long."
+  if result == 5 say "Stay in Amity Square for as long as you like."
+  return
+label Alone
+  say "Welcome to Amity Square, a park for strolling with a Pokémon at your side."
+  return
+
+# (AmitySquare_Happiny) Too drowsy to make a sound
+script Happiny
+  text "Happiny's eyelids are drooping. It looks ready for a nap."
+  end
+
+# (AmitySquare_GiftMan) Five of a berry or an accessory, once a day
+script GiftMan
+  if flag FLAG_DAILY_RECEIVED_AMITY_SQUARE_MAN_GIFT goto Tomorrow
+  say "Good day to you! How I love this park. I walk here every day, rain or shine."
+  amity gift
+  ask "Do you know the {thing}? I came across it on the paths this morning. Would you like what I found?"
+  if no goto Declined
+  amity give
+  if result == 0 goto NoRoom
+label Tomorrow
+  setflag FLAG_DAILY_RECEIVED_AMITY_SQUARE_MAN_GIFT
+  say "Ha ha ha! Perhaps we shall meet again tomorrow."
+  end
+label Declined
+  say "Oh! Well, it's no trouble to me."
+  end
+label NoRoom
+  say "Oh dear, your Fashion Case has no room for another of those. Find me again once it has."
+  end
+
+
+# ---------------------------------------------------------------- the ruins' huts
+
+# Whoever steps north, west or east of a hut's middle is carried, in the dark, to the middle of another hut and walks
+# out of its door (AmitySquare_DoWarp). A Pokémon out of its ball is behind the player wherever they are put down.
+# Hut A is the south-west one by the stairs, B the one east of it, C the east one, D the north-east one, E the
+# north-west one, F and G the two in the north, H the one in the middle and I the south-east one (AmitySquare.Huts)
+script ToHutA
+  fade out
+  sound "warp"
+  place player 17 18 down
+  fade in
+  walk player down 1
+  return
+
+script ToHutB
+  fade out
+  sound "warp"
+  place player 35 17 down
+  fade in
+  walk player down 1
+  return
+
+script ToHutC
+  fade out
+  sound "warp"
+  place player 52 27 down
+  fade in
+  walk player down 1
+  return
+
+script ToHutD
+  fade out
+  sound "warp"
+  place player 47 10 down
+  fade in
+  walk player down 1
+  return
+
+script ToHutE
+  fade out
+  sound "warp"
+  place player 15 12 down
+  fade in
+  walk player down 1
+  return
+
+script ToHutF
+  fade out
+  sound "warp"
+  place player 33 9 down
+  fade in
+  walk player down 1
+  return
+
+script ToHutG
+  fade out
+  sound "warp"
+  place player 26 11 down
+  fade in
+  walk player down 1
+  return
+
+script ToHutH
+  fade out
+  sound "warp"
+  place player 41 18 down
+  fade in
+  walk player down 1
+  return
+
+script ToHutI
+  fade out
+  sound "warp"
+  place player 47 36 down
+  fade in
+  walk player down 1
+  return
+
+# Hut A: north, west, east
+script Hut1
+  call ToHutB
+  end
+script Hut2
+  call ToHutB
+  end
+script Hut3
+  call ToHutB
+  end
+# Hut B
+script Hut4
+  call ToHutA
+  end
+script Hut5
+  call ToHutA
+  end
+script Hut6
+  call ToHutA
+  end
+# Hut C
+script Hut7
+  call ToHutD
+  end
+script Hut8
+  call ToHutF
+  end
+script Hut9
+  call ToHutE
+  end
+# Hut D
+script Hut10
+  call ToHutC
+  end
+script Hut11
+  call ToHutE
+  end
+script Hut12
+  call ToHutF
+  end
+# Hut E
+script Hut13
+  call ToHutC
+  end
+script Hut14
+  call ToHutG
+  end
+script Hut15
+  call ToHutH
+  end
+# Hut F
+script Hut16
+  call ToHutC
+  end
+script Hut17
+  call ToHutH
+  end
+script Hut18
+  call ToHutG
+  end
+# Hut G
+script Hut19
+  call ToHutD
+  end
+script Hut20
+  call ToHutI
+  end
+script Hut21
+  call ToHutE
+  end
+# Hut H
+script Hut22
+  call ToHutD
+  end
+script Hut23
+  call ToHutF
+  end
+script Hut24
+  call ToHutI
+  end
+# Hut I
+script Hut25
+  call ToHutC
+  end
+script Hut26
+  call ToHutE
+  end
+script Hut27
+  call ToHutF
+  end

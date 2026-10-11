@@ -197,9 +197,12 @@ public partial class GameEngine
     /// <summary>Keeps everyone standing where they are: the harness, whose shots count on people being where they first stood.</summary>
     public bool PeopleStayPut { get; set; }
 
-    // Whoever travels with the player (plan 02 · S6): Cheryl through Eterna Forest. The tile the player was last
-    // seen heading for tells when they set off from another
-    private Follower? partner;
+    // Whoever walks behind the player (Overworld.Follower), one at a time: someone of the story who travels along and
+    // battles beside the player (plan 02 · S6: Cheryl through Eterna Forest), or a Pokémon of the team out of its ball,
+    // which only walks (plan 06 · R16c: Amity Square). `partner` is the first kind alone, which is what everything
+    // that changes for a partner asks. The tile the player was last seen heading for tells when they set off from another
+    private Follower? along;
+    private Follower? partner => along is { TrainerId: not null } ? along : null;
     private (int X, int Y) partnerHeading;
     private DateTime? adventureStarted;
 
@@ -318,7 +321,7 @@ public partial class GameEngine
         registeredItem = null;
         exitSpot = null;
         lastDay = null;
-        partner = null;
+        along = null;
         MapDatabase.RestoreDefeatedTrainers(Array.Empty<string>());
         // The story starts over: the flags and variables every game begins with, and everyone where those put them
         runner.Abort();
@@ -535,12 +538,14 @@ public partial class GameEngine
         journal.Restore(save.Journal);
 
         // Whoever was travelling with the player goes on doing so, behind them
-        partner = null;
-        if (save.Partner is { } partnerId && save.PartnerPerson is { } person && currentMap.FindPerson(person) is { } along)
+        along = null;
+        if (save.Partner is { } partnerId && save.PartnerPerson is { } person && currentMap.FindPerson(person) is { } beside)
         {
-            partner = new Follower(along, partnerId);
+            along = new Follower(beside, partnerId);
             KeepPartnerAlong();
         }
+        // And so does the Pokémon out of its ball in Amity Square, which the story's own variables remember (plan 06 · R16c)
+        else ResumeStroll();
         // A game saved below ground finds the tunnels laid out as it left them (plan 06 · R16a)
         if (IsUnderground) ArriveUnderground();
     }
@@ -1008,7 +1013,8 @@ public partial class GameEngine
         RefreshPresence();
 
         // Whoever travels with the player keeps up, whatever else has the field
-        partner?.Update(dt, player.Stride);
+        along?.Update(dt, player.Stride);
+        KeepTheStroll(dt);
 
         // A warp panel has the player: they turn on the spot until the picture closes, and again as it opens
         if (panelRide != null)
@@ -1144,13 +1150,7 @@ public partial class GameEngine
         // A snowball the slide broke bursts as it happens (plan 01 · M9, part 2b)
         ShatterSnowball();
 
-        // The player has set off from a tile: whoever travels with them goes there next
-        if (partner != null && currentMap.Follower == partner.Who)
-        {
-            var head = player.Heading;
-            if (head != (player.GridX, player.GridY) && head != partnerHeading) partner.PlayerLeft(player.GridX, player.GridY);
-            partnerHeading = head;
-        }
+        TrailBehind();
 
         // A door that leads somewhere opens as the player steps up to it: the door's own tile, or the open way
         // into a porch with the door in the wall behind
@@ -1246,6 +1246,15 @@ public partial class GameEngine
         else if (InputManager.IsActionPressed(GameAction.Cancel) || InputManager.IsActionPressed(GameAction.PoketchTouch)) poketchView.LetGo();
     }
 
+    /// <summary>The player has set off from a tile: whoever walks behind them goes there next.</summary>
+    private void TrailBehind()
+    {
+        if (along == null || currentMap.Follower != along.Who) return;
+        var head = player.Heading;
+        if (head != (player.GridX, player.GridY) && head != partnerHeading) along.PlayerLeft(player.GridX, player.GridY, head);
+        partnerHeading = head;
+    }
+
     private bool OnStep()
     {
         if (charactersReadyAt != (currentMap.Name, player.GridX >> 5, player.GridY >> 5)) KeepCharactersNear(trim: false);
@@ -1253,6 +1262,9 @@ public partial class GameEngine
         if (IsUnderground && UndergroundStep()) return true;
         // The steps the game has counted (RECORD_STEPS), and a step of Pal Park's Catching Show (plan 06 · R16b)
         pastimes.Steps++;
+        // And the steps a Pokémon out of its ball has walked since it last turned something up (plan 06 · R16c;
+        // SystemVars_IncrementAmitySquareStepCount, which the original counts everywhere and reads only in the square)
+        if (story.Var(AmitySquare.ActiveVar) == 1) AmitySquare.CountStep(story);
         if (PalParkStep()) return true;
         if (++friendshipSteps >= FriendshipRules.WalkCycleSteps)
         {

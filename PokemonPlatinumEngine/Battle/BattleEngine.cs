@@ -177,6 +177,9 @@ public partial class BattleEngine
 
         Kind = setup.Kind;
         Partner = setup.Partner;
+        // Whoever battles beside the player stands on the platform beside them, in their class's look or their own
+        if (Partner != null)
+            Anim.PartnerTrainer = CharacterStyles.Default.InBattle(Partner.TrainerClass, Partner.Look is { } theirs ? PlayerIdentity.CharacterFor(theirs) : null);
 
         // The rules get copies of every Pokémon; the game's own are what the screen shows
         var trainers = setup.Trainers.Select(mirror.Copy).ToList();

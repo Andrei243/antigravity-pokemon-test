@@ -299,7 +299,15 @@ public sealed class BattleRenderer
     private void PlaceTrainers(BattleAnimator anim)
     {
         trainers.Clear();
-        if (anim.PlayerTrainer != null)
+        if (anim.PartnerTrainer != null)
+        {
+            // Beside a partner the player stands behind their own Pokémon's place and the partner behind theirs (a tag
+            // battle), and each steps off their own side as the Pokémon are sent out
+            if (anim.PlayerTrainer != null)
+                PlaceOnPlatform(anim.PlayerTrainer, Spot(BattleSide.Player, 0, 2), MathF.PI, PlayerTrainerScale, anim.PlayerTrainerExit, -1f, anim.Time);
+            PlaceOnPlatform(anim.PartnerTrainer, Spot(BattleSide.Player, 1, 2), MathF.PI, PlayerTrainerScale, anim.PlayerTrainerExit, 1f, anim.Time + 0.7f);
+        }
+        else if (anim.PlayerTrainer != null)
             PlaceOnPlatform(anim.PlayerTrainer, BattleStage.PlayerSpot, MathF.PI, PlayerTrainerScale, anim.PlayerTrainerExit, -1f, anim.Time);
         if (anim.EnemyTrainer2 != null)
         {
@@ -413,7 +421,9 @@ public sealed class BattleRenderer
         float exit = isPlayer ? anim.PlayerTrainerExit : anim.EnemyTrainerExit;
         if (exit >= 0f && MathF.Abs(exit - age) < 0.05f && trainers.Count > 0)
         {
-            int index = isPlayer ? 0 : (anim.PlayerTrainer != null ? 1 : 0) + (anim.EnemyTrainer2 != null && slot == 1 ? 1 : 0);
+            // (The list is the player, a partner, then the trainers across the field: PlaceTrainers)
+            int mine = (anim.PlayerTrainer != null ? 1 : 0) + (anim.PartnerTrainer != null ? 1 : 0);
+            int index = isPlayer ? (slot == 1 && anim.PartnerTrainer != null ? mine - 1 : 0) : mine + (anim.EnemyTrainer2 != null && slot == 1 ? 1 : 0);
             if (index < trainers.Count) thrower = trainers[index];
         }
 

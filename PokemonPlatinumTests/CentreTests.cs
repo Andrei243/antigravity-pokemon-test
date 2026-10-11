@@ -221,11 +221,12 @@ public class CentreTests
     // ------------------------------------------------------------------ what stands there
 
     [Fact]
-    public void AmitySquareHasItsFlowerBedsAndStones()
+    public void AmitySquareHasItsDesksAndItsHuts()
     {
+        // (The desks were taken for flower beds and the huts for standing stones until plan 06 · R16c walked into them)
         var square = BuiltMaps.Value["AmitySquare"];
-        Assert.Contains(square.Props, p => p.Type == PropType.FlowerBed);
-        Assert.Contains(square.Props, p => p.Type == PropType.Outcrop);
+        Assert.Equal(2, square.Props.Count(p => p.Type == PropType.ReceptionDesk));
+        Assert.Equal(10, square.Props.Count(p => p.Type == PropType.RuinHut));
         Assert.DoesNotContain(WorldModels.All.Where(m => m.StandInUntil == "M6"), m => true);
     }
 

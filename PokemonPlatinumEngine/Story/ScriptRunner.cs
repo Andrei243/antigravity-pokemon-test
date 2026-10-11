@@ -821,6 +821,11 @@ public sealed partial class ScriptRunner
                 Arcade(i);
                 break;
 
+            // Amity Square's walk (plan 06 · R16c)
+            case Op.Amity:
+                Amity(i);
+                break;
+
             default:
                 throw Wrong(i, $"the runner doesn't know how to carry out '{i.Op}'");
         }
@@ -1605,6 +1610,8 @@ public sealed partial class ScriptRunner
             // The Battle Arcade (plan 06 · R18d): the event the game board stopped on
             "event" => lastEvent,
             "struck" => lastStruck,
+            // Amity Square's walk (plan 06 · R16c): the Pokémon the receptionist asks about, or the one walking along
+            "walker" => lastWalker,
             "contestant" => contestSlot >= 0 && contestSlot < host.Party.Count ? host.Party.Members[contestSlot].DisplayName : host.ContestOutcome?.Pokemon ?? "",
             _ => match.Value
         };
