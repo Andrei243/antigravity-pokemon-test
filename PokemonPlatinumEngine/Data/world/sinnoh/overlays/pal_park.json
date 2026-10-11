@@ -1,0 +1,14 @@
+{
+  "area": "pal_park",
+  "name": "Pal Park",
+  // The original keeps the park silent until the show starts and then plays the Great Marsh's theme
+  "bgmTrack": "sinnoh/great_marsh",
+  "trees": "Round",
+  // The gate's two tiles lead back to the lobby, but nobody reaches them: the strip before them asks whether to give
+  // the show up (scripts/pal_park.txt, plan 06 · R16b), and the script takes the player out
+  "locked": [ 0, 1 ],
+  "triggers": [ { "trigger": 0, "script": "RetireAtGate" } ],
+  "people": {
+    "worker": { "name": "Park Attendant", "npcType": "Clerk", "script": "Worker", "still": true }
+  }
+}

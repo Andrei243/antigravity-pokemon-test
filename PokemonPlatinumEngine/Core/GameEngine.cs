@@ -56,6 +56,8 @@ public enum GameState
     Mining,
     Underground,
     Decoration,
+    /// <summary>A sitting at one of the Game Corner's slot machines (plan 06 · R16b).</summary>
+    SlotMachine,
     Transition
 }
 
@@ -296,6 +298,7 @@ public partial class GameEngine
         fashionCase.Load(null);
         sealCase.Load(null);
         LoadUnderground(null);
+        pastimes.Clear();
         contestRecords.Load(null);
         contestOutcome = null;
         radar.Clear();
@@ -446,6 +449,7 @@ public partial class GameEngine
         if (save.FashionCase == null && save.StoryFlags.Contains(ContestHallVisitedFlag)) fashionCase.Add("Glitter Powder");
         sealCase.Load(save.SealCase);
         LoadUnderground(save.Underground);
+        pastimes.Load(save.Pastimes);
         contestRecords.Load(save.ContestRecords);
         contestOutcome = null;
         radar.Clear();
@@ -569,6 +573,7 @@ public partial class GameEngine
             Backdrops = fashionCase.Backdrops.Count > 0 ? fashionCase.BackdropsToSave() : null,
             SealCase = sealCase.Total > 0 ? sealCase.ToSave() : null,
             Underground = underground,
+            Pastimes = pastimes.ToSave(),
             ContestRecords = contestRecords.IsEmpty ? null : contestRecords,
             DayCare = DayCareSave.From(dayCare),
             WorldVersion = SaveData.CurrentWorld,
@@ -686,6 +691,8 @@ public partial class GameEngine
                 break;
             case GameState.Overworld:
                 UpdateOverworld(dt);
+                // The Catching Show's clock (plan 06 · R16b)
+                TickPalPark(dt);
                 break;
             case GameState.Dialogue:
                 UpdateDialogue(dt);
@@ -864,6 +871,9 @@ public partial class GameEngine
                 break;
             case GameState.Decoration:
                 UpdateDecoration(dt);
+                break;
+            case GameState.SlotMachine:
+                UpdateSlotMachine(dt);
                 break;
             case GameState.Journal:
                 journalScreen.Update(journal, dt);
@@ -1194,6 +1204,9 @@ public partial class GameEngine
         if (charactersReadyAt != (currentMap.Name, player.GridX >> 5, player.GridY >> 5)) KeepCharactersNear(trim: false);
         // A step below ground: a base's way in or out, a trap (plan 06 · R16a)
         if (IsUnderground && UndergroundStep()) return true;
+        // The steps the game has counted (RECORD_STEPS), and a step of Pal Park's Catching Show (plan 06 · R16b)
+        pastimes.Steps++;
+        if (PalParkStep()) return true;
         if (++friendshipSteps >= FriendshipRules.WalkCycleSteps)
         {
             friendshipSteps = 0;
@@ -1917,6 +1930,7 @@ public partial class GameEngine
                 // The Pokétch shows over the field while nothing else is on the screen
                 if (currentState == GameState.Overworld && !startMenu.IsActive && !ScriptRunning) poketchView.Draw(VirtualWidth, VirtualHeight, poketch, PoketchNow());
                 if (safari.Active) ModernUi.SafariCount(VirtualWidth, safari.Balls, safari.Steps);
+                DrawParkCount();
                 dialogue.Draw(VirtualWidth, VirtualHeight);
                 DrawChoice();
                 locationSign.Draw();
@@ -1994,6 +2008,9 @@ public partial class GameEngine
                 break;
             case GameState.Decoration:
                 decorationScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.SlotMachine:
+                slotScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.PCStorage:
                 pcScreen.Draw(VirtualWidth, VirtualHeight, playerParty, pcBoxStorage);

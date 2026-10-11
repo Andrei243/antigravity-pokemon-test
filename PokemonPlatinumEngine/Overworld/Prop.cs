@@ -166,7 +166,9 @@ public enum PropType
     /// <summary>A leaf of a locked door of Team Galactic's: a thing of the map (<see cref="NPC.GalacticDoorType"/>), drawn as a card.</summary>
     GalacticDoor,
     /// <summary>A tank of the laboratory, two tiles by two: a glass cylinder of green fluid between a steel foot and cap.</summary>
-    Tank
+    Tank,
+    // Fossils, the Game Corner and the Villa (plan 06 · R16b): none blocks by itself, the room's own tiles say where one can walk
+    DisplayCase, SlotMachine, Piano, Rack, AudioSystem, Bust, SilverBust, GuestSet, NightTable, MusicBox, TeaSet, PcDesk,
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>

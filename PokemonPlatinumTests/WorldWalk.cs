@@ -181,12 +181,15 @@ internal static class WorldWalk
     /// (plan 01 · M10, part a), where the ship from Snowpoint City lands the player on the Fight Area's pier once the
     /// Hall of Fame has been entered (the original's TakeShipFromSnowpoint to 623, 434, facing east; plan 02 · S15
     /// gives Snowpoint's sailor the script, and the walk then finds the way by itself).
+    /// And Pal Park's lobby (plan 06 · R16b), before whose doors Route 221's two workers stand until the National
+    /// Pokédex is had (plan 02 · S15 sets the flags that hide them, and the walk then finds the way by itself).
     /// </summary>
     public static readonly MapSpot[] StoryArrivals =
     {
         new("DistortionWorld1F", 34, 30, Direction.Down),
         new("DistortionWorldTurnbackCaveRoom", 46, 45, Direction.Down),
-        new("Sinnoh", 623, 434, Direction.Right)
+        new("Sinnoh", 623, 434, Direction.Right),
+        new("PalParkLobby", 7, 19, Direction.Up)
     };
 
     /// <summary>The whole game from where each region that is built begins, and from where only the story takes the player.</summary>

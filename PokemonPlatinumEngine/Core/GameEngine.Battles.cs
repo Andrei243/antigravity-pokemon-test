@@ -115,7 +115,7 @@ public partial class GameEngine
                 Kind = kind,
                 CannotFlee = cannotFlee,
                 PlayerName = name,
-                SpecialBalls = kind == BattleKind.Safari ? safari.Balls : 0,
+                SpecialBalls = kind == BattleKind.Safari ? safari.Balls : kind == BattleKind.PalPark ? pastimes.PalPark.Show?.ParkBalls ?? 0 : 0,
                 MoveHints = MoveHintsOn
             });
             // A Pokémon hooked on a rod is fought on the water's stage, as a surfer's is (the original's water
@@ -397,6 +397,8 @@ public partial class GameEngine
                 safari.Balls = battle.SpecialBalls;
                 if (safari.OutOfBalls) StartScript(FieldScripts.SafariOutOfBalls);
             }
+            // A catch in Pal Park is the Catching Show's next (plan 06 · R16b)
+            AfterParkBattle();
         });
     }
 }

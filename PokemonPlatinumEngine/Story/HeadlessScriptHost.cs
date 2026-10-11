@@ -142,6 +142,34 @@ public sealed class HeadlessScriptHost : IScriptHost
         return UndergroundResults.GetValueOrDefault(what, 1);
     }
 
+    /// <summary>
+    /// Fossils, the Game Corner, the Villa and Pal Park (plan 06 · R16b): the coins, the six and the records, the
+    /// Villa's records as a test sets them, and what a sitting at a machine is to come to (the coins it leaves, set
+    /// by a test; the case as it is otherwise).
+    /// </summary>
+    public Models.Pastimes Pastimes { get; } = new();
+    public Models.VillaRecords VillaRecords { get; set; }
+    public int? SlotsLeave { get; set; }
+
+    public int PastimeAct(string what, int number, NPC? subject)
+    {
+        Log.Add($"pastime {what} {number}");
+        switch (what)
+        {
+            case "slots":
+                if (SlotsLeave is { } coins) Pastimes.Coins.Set(coins);
+                return 1;
+            case "boxroom":
+                return Models.PcBoxes.BoxCount * Models.PcBoxes.BoxSize - Boxes.Count;
+            case "store":
+                if (!Pastimes.PalPark.Stocked) return 0;
+                Boxes.AddRange(Pastimes.PalPark.TakeSix("Pal Park", GameClock.Today));
+                return 1;
+            default:
+                return 1;
+        }
+    }
+
     /// <summary>The Pokémon hatched so far by <c>hatch</c>, in order: here an Egg hatches at once, with no scene.</summary>
     public List<Pokemon> Hatched { get; } = new();
 

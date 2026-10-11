@@ -159,6 +159,8 @@ public partial class GameEngine
             underground.HeldFlag = null;
             trap = null;
         }
+        // The Villa's furniture stands where it is owned (plan 06 · R16b)
+        if (currentMap.Name == VillaMap) FurnishVilla();
         // The people of the place come to are made ready behind the fade, and the rigs of the place left are let go
         KeepCharactersNear(trim: true);
         arrived = true;

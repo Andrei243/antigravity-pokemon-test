@@ -1,0 +1,747 @@
+# The Villa in the Resort Area (plan 06 · R16b), rebuilt to the original's plan. docs/scripts.md describes the
+# language; the lines are our own, on the original's beats (scripts_villa.s).
+#
+# VAR_VILLA_STATE: 0 before the player has been inside, 1 while the boy who gave the Villa away waits for the free
+# table to be ordered (he won't let the player leave: DontGoYet), 2 from the table's delivery on. Furniture is
+# ordered from the catalogue on the table (OrderForm, on the table's tiles; villa catalogue, villa buy), paid for,
+# and delivered at once: villa furnish stands it in its own place. Each piece owned is a flag
+# (FLAG_VILLA_FURNITURE_...), and looking at one says what it is (Look...).
+#
+# The day's visitor (VAR_RESORT_VILLA_VISITOR, drawn each new day by VillaRules.NewDay; 255 for nobody) is shown as
+# the player comes in (OnEnter, the original's OnTransition): the rival, the assistant, Mom, Volkner, Flint with
+# Volkner and Maylene with Candice are found inside; the professor, Roark, Gardenia, Maylene and Byron wait at the
+# door outside and come in when asked (FLAG_VILLA_VISITOR_INSIDE; resort_area.txt); Fantina, Crasher Wake, Candice
+# and Cynthia walk in once the player has stepped up to the table (the triggers on 10,7, by
+# VAR_MAP_LOCAL_VILLA_CALLER; FLAG_VILLA_VISITOR_OUTSIDE then keeps them where they are). Each says one of five
+# things, by VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM. Five pieces bring someone round the moment they are delivered:
+# the table the rival, the small sofa the assistant, the bookshelf the professor, the houseplants Gardenia, the
+# piano Cynthia.
+
+
+script OnEnter
+  if var VAR_VILLA_STATE == 0 goto First
+  if flag FLAG_VILLA_VISITOR_OUTSIDE end
+  call SendEveryoneHome
+  setvar VAR_MAP_LOCAL_VILLA_CALLER 0
+  if var VAR_RESORT_VILLA_VISITOR == 255 end
+  if var VAR_RESORT_VILLA_VISITOR == 6 setvar VAR_MAP_LOCAL_VILLA_CALLER 6
+  if var VAR_RESORT_VILLA_VISITOR == 8 setvar VAR_MAP_LOCAL_VILLA_CALLER 8
+  if var VAR_RESORT_VILLA_VISITOR == 10 setvar VAR_MAP_LOCAL_VILLA_CALLER 10
+  if var VAR_RESORT_VILLA_VISITOR == 12 setvar VAR_MAP_LOCAL_VILLA_CALLER 12
+  if var VAR_RESORT_VILLA_VISITOR == 0 clearflag FLAG_HIDE_VILLA_RIVAL
+  if var VAR_RESORT_VILLA_VISITOR == 1 clearflag FLAG_HIDE_VILLA_COUNTERPART
+  if var VAR_RESORT_VILLA_VISITOR == 3 clearflag FLAG_HIDE_VILLA_MOM
+  if var VAR_RESORT_VILLA_VISITOR == 11 clearflag FLAG_HIDE_VILLA_VOLKNER
+  if var VAR_RESORT_VILLA_VISITOR == 13 goto FlintAndVolkner
+  if var VAR_RESORT_VILLA_VISITOR == 14 goto MayleneAndCandice
+  if not flag FLAG_VILLA_VISITOR_INSIDE end
+  if var VAR_RESORT_VILLA_VISITOR == 2 clearflag FLAG_HIDE_VILLA_PROF_ROWAN
+  if var VAR_RESORT_VILLA_VISITOR == 4 clearflag FLAG_HIDE_VILLA_ROARK
+  if var VAR_RESORT_VILLA_VISITOR == 5 clearflag FLAG_HIDE_VILLA_GARDENIA
+  if var VAR_RESORT_VILLA_VISITOR == 7 clearflag FLAG_HIDE_VILLA_MAYLENE
+  if var VAR_RESORT_VILLA_VISITOR == 9 clearflag FLAG_HIDE_VILLA_BYRON
+  end
+label FlintAndVolkner
+  clearflag FLAG_HIDE_VILLA_FLINT
+  clearflag FLAG_HIDE_VILLA_VOLKNER
+  end
+label MayleneAndCandice
+  clearflag FLAG_HIDE_VILLA_MAYLENE
+  clearflag FLAG_HIDE_VILLA_CANDICE
+  place maylene 6 8 right
+  place candice 7 8 left
+  end
+label First
+  # The first time in: the boy who gave the Villa away is waiting, and a new game's flags are set here
+  setflag FLAG_HIDE_VILLA_DELIVERY_GUY
+  call SendEveryoneHome
+  setvar VAR_RESORT_AREA_STATE 1
+  setvar VAR_RESORT_VILLA_VISITOR 255
+  setvar VAR_VILLA_STATE 1
+  speaker "Boy"
+  say "Well, here it is. Yours now, every board of it!" "...Ah. I may have sold the furniture. All of it. I needed the money, you see."
+  say "But a house needs a table, so the first one's on me. The catalogue's right here."
+  call OfferTable
+  end
+
+
+script SendEveryoneHome
+  setflag FLAG_HIDE_VILLA_RIVAL
+  setflag FLAG_HIDE_VILLA_COUNTERPART
+  setflag FLAG_HIDE_VILLA_PROF_ROWAN
+  setflag FLAG_HIDE_VILLA_MOM
+  setflag FLAG_HIDE_VILLA_ROARK
+  setflag FLAG_HIDE_VILLA_GARDENIA
+  setflag FLAG_HIDE_VILLA_FANTINA
+  setflag FLAG_HIDE_VILLA_MAYLENE
+  setflag FLAG_HIDE_VILLA_CRASHER_WAKE
+  setflag FLAG_HIDE_VILLA_BYRON
+  setflag FLAG_HIDE_VILLA_CANDICE
+  setflag FLAG_HIDE_VILLA_VOLKNER
+  setflag FLAG_HIDE_VILLA_CYNTHIA
+  setflag FLAG_HIDE_VILLA_FLINT
+  return
+
+
+script OfferTable
+  villa choose "Table"
+  ask "Order the Table? It's free."
+  if no goto NotYet
+  villa buy
+  call Deliver
+  speaker "Boy"
+  say "There. A table! It's a home already." "That's the last of it off my hands. Do look after the place, won't you?"
+  fade out 0.4
+  hide school_kid_m
+  setflag FLAG_HIDE_VILLA_SCHOOL_KID_M
+  setvar VAR_VILLA_STATE 2
+  fade in 0.4
+  call RivalDropsIn
+  return
+label NotYet
+  speaker "Boy"
+  say "Go on, order the table. I can't hand over an empty house and sleep at night."
+  return
+
+
+script SchoolKid
+  call OfferTable
+  end
+
+
+script DontGoYet
+  face school_kid_m down
+  say "Wait, don't go yet! Order the table first. Please."
+  walk player up 1
+  end
+
+
+# ---- the catalogue
+
+script OrderForm
+  text "{player} opened the furniture catalogue. Money: ${money}."
+  villa catalogue
+  if result == 0 end
+  if result == 2 goto Sold
+  ask "Order the {thing} for ${price}?"
+  if no end
+  villa buy
+  if result == 0 goto Poor
+  call Deliver
+  villa is "Small Sofa"
+  if result == 1 goto Sofa
+  villa is "Bookshelf"
+  if result == 1 goto Shelf
+  villa is "Houseplant"
+  if result == 1 goto Plant
+  villa is "Piano"
+  if result == 1 goto Piano
+  end
+label Sofa
+  call CounterpartDropsIn
+  end
+label Shelf
+  call RowanDropsIn
+  end
+label Plant
+  call GardeniaDropsIn
+  end
+label Piano
+  call CynthiaDropsIn
+  end
+label Sold
+  text "The {thing} has been bought already. The page is stamped: sold out."
+  end
+label Poor
+  text "There isn't enough money for the {thing}."
+  end
+
+
+script Deliver
+  fade out 0.4
+  villa furnish
+  place player 10 6 down
+  clearflag FLAG_HIDE_VILLA_DELIVERY_GUY
+  place delivery_guy 10 8 up
+  show delivery_guy
+  fade in 0.4
+  speaker "Delivery Man"
+  villa owned
+  if result == 20 goto Last
+  say "Delivery! One {thing}, put right where it belongs. Thank you for your order!"
+  goto Leaves
+label Last
+  say "Delivery! One {thing}... and that's the whole catalogue. You've bought us out!"
+label Leaves
+  fade out 0.4
+  hide delivery_guy
+  setflag FLAG_HIDE_VILLA_DELIVERY_GUY
+  fade in 0.4
+  return
+
+
+# ---- who a piece brings round the moment it is delivered
+
+script RivalDropsIn
+  call SendEveryoneHome
+  clearflag FLAG_HIDE_VILLA_RIVAL
+  place rival 11 11 up
+  show rival
+  sound "stairs"
+  walk rival left 1 up 3
+  face player down
+  setflag FLAG_VILLA_VISITOR_INSIDE
+  setvar VAR_RESORT_VILLA_VISITOR 255
+  speaker "{rival}"
+  say "{player}! You got yourself a whole Villa?! No fair!" "...One table. That's it? OK, I'm fining you a million if this place isn't full the next time I come by!"
+  walk rival down 3 right 1
+  sound "stairs"
+  hide rival
+  setflag FLAG_HIDE_VILLA_RIVAL
+  return
+
+
+script CounterpartDropsIn
+  call SendEveryoneHome
+  clearflag FLAG_HIDE_VILLA_COUNTERPART
+  place counterpart 11 11 up
+  show counterpart
+  sound "stairs"
+  walk counterpart left 1 up 3
+  face player down
+  setflag FLAG_VILLA_VISITOR_INSIDE
+  setvar VAR_RESORT_VILLA_VISITOR 1
+  speaker "{assistant}"
+  say "{player}! The professor said you had a Villa now, and I had to see." "Oh, a sofa! May I sit a while? It's been a long day of Pokédex pages."
+  return
+
+
+script RowanDropsIn
+  call SendEveryoneHome
+  clearflag FLAG_HIDE_VILLA_PROF_ROWAN
+  place prof_rowan 11 11 up
+  show prof_rowan
+  sound "stairs"
+  walk prof_rowan left 1 up 3
+  face player down
+  setflag FLAG_VILLA_VISITOR_INSIDE
+  setflag FLAG_HIDE_RESORT_AREA_PROF_ROWAN
+  setvar VAR_RESORT_VILLA_VISITOR 2
+  speaker "Professor Rowan"
+  say "Hm. I was passing, and I saw a bookshelf carried in." "A house with books in it is a house worth visiting. I shall look them over, if I may."
+  return
+
+
+script GardeniaDropsIn
+  call SendEveryoneHome
+  clearflag FLAG_HIDE_VILLA_GARDENIA
+  place gardenia 11 11 up
+  show gardenia
+  sound "stairs"
+  walk gardenia left 1 up 3
+  face player down
+  setflag FLAG_VILLA_VISITOR_INSIDE
+  setflag FLAG_HIDE_RESORT_AREA_GARDENIA
+  setvar VAR_RESORT_VILLA_VISITOR 5
+  speaker "Gardenia"
+  say "I knew it! I could smell fresh leaves from the road." "Houseplants! Four of them! You have very good taste, you know."
+  return
+
+
+script CynthiaDropsIn
+  call SendEveryoneHome
+  clearflag FLAG_HIDE_VILLA_CYNTHIA
+  place cynthia 11 11 up
+  show cynthia
+  sound "stairs"
+  walk cynthia left 1 up 3
+  face player down
+  setflag FLAG_VILLA_VISITOR_INSIDE
+  setflag FLAG_VILLA_VISITOR_OUTSIDE
+  setvar VAR_RESORT_VILLA_VISITOR 12
+  setvar VAR_MAP_LOCAL_VILLA_CALLER 0
+  speaker "Cynthia"
+  say "Forgive me for walking in. I heard a piano being tuned, and my feet did the rest." "I played when I was small. May I?"
+  return
+
+
+# ---- who walks in once the player has stepped up to the table
+
+script FantinaComesIn
+  sound "stairs"
+  clearflag FLAG_HIDE_VILLA_FANTINA
+  place fantina 11 11 up
+  show fantina
+  face player down
+  walk fantina left 2 up 5 left 3
+  setflag FLAG_VILLA_VISITOR_OUTSIDE
+  setvar VAR_MAP_LOCAL_VILLA_CALLER 0
+  end
+
+
+script CrasherWakeComesIn
+  sound "stairs"
+  clearflag FLAG_HIDE_VILLA_CRASHER_WAKE
+  place crasher_wake 11 11 up
+  show crasher_wake
+  face player down
+  walk crasher_wake right 5 up 7 right 3
+  setflag FLAG_VILLA_VISITOR_OUTSIDE
+  setvar VAR_MAP_LOCAL_VILLA_CALLER 0
+  end
+
+
+script CandiceComesIn
+  sound "stairs"
+  clearflag FLAG_HIDE_VILLA_CANDICE
+  place candice 11 11 up
+  show candice
+  face player down
+  walk candice left 2 up 5 left 3
+  setflag FLAG_VILLA_VISITOR_OUTSIDE
+  setvar VAR_MAP_LOCAL_VILLA_CALLER 0
+  end
+
+
+script CynthiaComesIn
+  sound "stairs"
+  clearflag FLAG_HIDE_VILLA_CYNTHIA
+  place cynthia 11 11 up
+  show cynthia
+  face player down
+  walk cynthia left 2 up 6 left 6
+  setflag FLAG_VILLA_VISITOR_OUTSIDE
+  setvar VAR_MAP_LOCAL_VILLA_CALLER 0
+  end
+
+
+# ---- what each visitor says: one of five things, by the day's draw
+
+script Rival
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 1 goto M1
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 2 goto M2
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 3 goto M3
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 4 goto M4
+  say "{player}! I ran the whole way from the Battle Frontier. Ten seconds flat. Probably."
+  end
+label M1
+  say "You know what this place needs? A training room. And a second training room."
+  end
+label M2
+  say "My dad never sits down, either. Runs in the family! ...OK, I'll sit. For a second."
+  end
+label M3
+  say "One day I'm getting a Villa of my own. Bigger than this. With a slide."
+  end
+label M4
+  say "Hey, {player}. Thanks for letting me drop in. Don't tell anyone I said that."
+  end
+
+
+script Counterpart
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 1 goto M1
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 2 goto M2
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 3 goto M3
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 4 goto M4
+  say "It's so quiet here, {player}. I can hear the waves from the window."
+  end
+label M1
+  say "The professor gave me a day off. I didn't know what to do with it, so I came to see you."
+  end
+label M2
+  say "Do you remember Lake Verity? It feels like such a long time ago, and it wasn't, really."
+  end
+label M3
+  say "I've been thinking about how many Pokémon we still haven't met. Isn't that a wonderful problem to have?"
+  end
+label M4
+  say "You've made this place really nice. I could stay all afternoon. ...I am staying all afternoon."
+  end
+
+
+script ProfRowan
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 1 goto M1
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 2 goto M2
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 3 goto M3
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 4 goto M4
+  say "Hm. A good room to think in. I have not had one of those in forty years of fieldwork."
+  end
+label M1
+  say "Even resting, a Pokémon changes. Remember that, the next time you think nothing is happening."
+  end
+label M2
+  say "I brought my notes. Do not mind me. I shall be no trouble at all." "...Is there tea?"
+  end
+label M3
+  say "You have come a long way from Route 201. I thought so then, and I think so now."
+  end
+label M4
+  say "The Pokédex is never finished. That is the joy of it. Go on, off with you. I am reading."
+  end
+
+
+script Mom
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 1 goto M1
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 2 goto M2
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 3 goto M3
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 4 goto M4
+  say "My own child, with a Villa! I had to come and see it with my own eyes."
+  end
+label M1
+  say "Are you eating properly? Sleeping? You'd tell me if you weren't. No, you wouldn't. I'm asking anyway."
+  end
+label M2
+  say "{rival}'s mother sends her love. She says he ran past the house last week and forgot to stop."
+  end
+label M3
+  say "It needs curtains. Every house needs curtains. I'll say no more about it."
+  end
+label M4
+  say "I'm proud of you, dear. I don't say it enough. There, I've said it."
+  end
+
+
+script Roark
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 1 goto M1
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 2 goto M2
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 3 goto M3
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 4 goto M4
+  say "Nice place! Solid foundations, too. I checked. Force of habit."
+  end
+label M1
+  say "Dug anything up lately? The Underground's been good to me this month. Three Skull Fossils!"
+  end
+label M2
+  say "My father says a holiday is a waste of a good shift. I say he should try one."
+  end
+label M3
+  say "I keep looking at your walls and wondering what's behind them. Don't worry. I left my pick at home."
+  end
+label M4
+  say "Come down the mine again some time. The Machop still ask after you."
+  end
+
+
+script Gardenia
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 1 goto M1
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 2 goto M2
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 3 goto M3
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 4 goto M4
+  say "The air here is so soft! My Roserade would never want to leave."
+  end
+label M1
+  say "Water them every third day, and talk to them. Plants like to be told how they're doing."
+  end
+label M2
+  say "This house is lovely by daylight. You won't catch me here after dark, though. Old houses creak."
+  end
+label M3
+  say "I'd put flowers on every sill. And the roof. Is anyone using the roof?"
+  end
+label M4
+  say "Thank you for having me! It's nice to be somewhere that isn't a Gym for once."
+  end
+
+
+script Fantina
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 1 goto M1
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 2 goto M2
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 3 goto M3
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 4 goto M4
+  say "Ohohoho! So this is your Villa. It has the charm. A little more purple, and it would be perfect."
+  end
+label M1
+  say "I practise my words every day. Yesterday I learned 'chandelier'. Today I look for one."
+  end
+label M2
+  say "A room like this wants dancing! You do not dance? Then I shall, for both of us."
+  end
+label M3
+  say "The Contests miss you. So do I, a little. Come and be dazzling again soon."
+  end
+label M4
+  say "To rest is also an art. You see? I am resting very beautifully."
+  end
+
+
+script Maylene
+  if var VAR_RESORT_VILLA_VISITOR == 14 goto Both
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 1 goto M1
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 2 goto M2
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 3 goto M3
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 4 goto M4
+  say "Is it all right if I don't sit? I never know what to do with chairs."
+  end
+label M1
+  say "I ran here barefoot along the shore. The sand is good for the ankles. You should try it."
+  end
+label M2
+  say "Is there... anything to eat? No, no, it's fine. I had breakfast. Two days ago."
+  end
+label M3
+  say "If you see my dad at the Game Corner, tell him I know."
+  end
+label M4
+  say "You've got stronger again. I can tell by how you stand. Battle me soon, OK?"
+  end
+label Both
+  call MayleneAndCandice
+  end
+
+
+script CrasherWake
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 1 goto M1
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 2 goto M2
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 3 goto M3
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 4 goto M4
+  say "WAHAHAHA! Crasher Wake has entered the Villa! ...Sorry. Was that too loud for indoors?"
+  end
+label M1
+  say "There's a pool out back! I took a dip on the way in. The towel is yours now. Sorry about that too."
+  end
+label M2
+  say "I wrote a new song for my entrance. It's mostly my name. Want to hear it? It's mostly my name."
+  end
+label M3
+  say "A mask is like a house: you have to feel at home in it. Deep, isn't it? I thought of that just now."
+  end
+label M4
+  say "Good roof, good walls, good company! That's a tag team nobody beats!"
+  end
+
+
+script Byron
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 1 goto M1
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 2 goto M2
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 3 goto M3
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 4 goto M4
+  say "Gahahaha! A fine house! But soft. Where's the steel? A house wants a good steel door."
+  end
+label M1
+  say "My boy Roark been round? He never visits ME. Says I talk about defence too much. Nonsense!"
+  end
+label M2
+  say "I walked the island for Fossils this morning. Found a shovel I lost in the spring. A good day!"
+  end
+label M3
+  say "You don't mind if I stand? I think better on my feet. Thirty years of standing in a Gym does that."
+  end
+label M4
+  say "You beat me fair and square, and I've not forgotten it. Come to Canalave and do it again!"
+  end
+
+
+script Candice
+  if var VAR_RESORT_VILLA_VISITOR == 14 goto Both
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 1 goto M1
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 2 goto M2
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 3 goto M3
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 4 goto M4
+  say "It's SO warm here! I took off my scarf and I didn't know what to do with my hands."
+  end
+label M1
+  say "Focus! That's what matters, in battle and in decorating. This room has focus. I like it."
+  end
+label M2
+  say "Do you ever get snow here? No? Not even a little? ...I'll bring some next time."
+  end
+label M3
+  say "Maylene says I talk too much about fashion. Maylene owns one pair of trousers."
+  end
+label M4
+  say "Thanks for having me over! Come up to Snowpoint and I'll show you a REAL winter."
+  end
+label Both
+  call MayleneAndCandice
+  end
+
+
+script Volkner
+  if var VAR_RESORT_VILLA_VISITOR == 13 goto Both
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 1 goto M1
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 2 goto M2
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 3 goto M3
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 4 goto M4
+  say "...Nice place. Who wired it? No, don't tell me. I'd only want to redo it."
+  end
+label M1
+  say "I came here to do nothing. It's harder than it sounds."
+  end
+label M2
+  say "Since our battle the Gym's been busy again. I suppose I owe you for that."
+  end
+label M3
+  say "If the lights flicker, that wasn't me. ...It might have been me."
+  end
+label M4
+  say "You're the kind of trainer who keeps things interesting. Don't stop."
+  end
+label Both
+  call FlintAndVolkner
+  end
+
+
+script Cynthia
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 1 goto M1
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 2 goto M2
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 3 goto M3
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 4 goto M4
+  say "A house by the sea, at the far end of everything. I can see why you chose it."
+  end
+label M1
+  say "I spend so long deciding what to do with a free day that the day is over. Today I simply came here."
+  end
+label M2
+  say "Every old story in Sinnoh begins in a quiet place. Perhaps one will begin in this room."
+  end
+label M3
+  say "You remind me why I became a trainer. Don't let me grow too used to winning."
+  end
+label M4
+  say "Thank you for the welcome. When you next come to the League, come as a friend first."
+  end
+
+
+script Flint
+  call FlintAndVolkner
+  end
+
+
+script FlintAndVolkner
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 1 goto M1
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 2 goto M2
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 3 goto M3
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 4 goto M4
+  speaker "Flint"
+  say "Look at this place, Volkner! We should get one. I'd light the fire, you'd fix the lights."
+  speaker "Volkner"
+  say "...We'd burn it down in a week."
+  return
+label M1
+  speaker "Flint"
+  say "I dragged him out of his Gym by the collar. Fresh air! Sea! A friend's house!"
+  speaker "Volkner"
+  say "He did. By the actual collar."
+  return
+label M2
+  speaker "Volkner"
+  say "Flint talks. I listen. It's worked since we were kids."
+  speaker "Flint"
+  say "He means I'm the interesting one."
+  return
+label M3
+  speaker "Flint"
+  say "You lit a fire under this one, {player}. He hasn't yawned through a battle since."
+  speaker "Volkner"
+  say "...I never yawned."
+  return
+label M4
+  speaker "Flint"
+  say "Next time, the three of us battle on the beach. Loser cooks!"
+  speaker "Volkner"
+  say "Then you're cooking."
+  return
+
+
+script MayleneAndCandice
+  face maylene right
+  face candice left
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 1 goto M1
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 2 goto M2
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 3 goto M3
+  if var VAR_RESORT_VILLA_VISITOR_MESSAGE_NUM == 4 goto M4
+label M0
+  speaker "Candice"
+  say "So I said to her, shoes are not weakness, shoes are focus for the feet!"
+  speaker "Maylene"
+  say "...I still don't see what's wrong with feet."
+  return
+label M1
+  speaker "Maylene"
+  say "We trained on the beach all morning. Candice didn't complain once."
+  speaker "Candice"
+  say "I complained the whole time! You just weren't listening!"
+  return
+label M2
+  speaker "Candice"
+  say "{player}, settle this. Snow or sand?"
+  speaker "Maylene"
+  say "Don't answer. There's no right answer. I tried."
+  return
+label M3
+  speaker "Maylene"
+  say "Candice walked all the way to Veilstone to see me, once. Through the snow."
+  speaker "Candice"
+  say "And you walked back with me barefoot. We're both a bit much, aren't we?"
+  return
+label M4
+  # The fifth is said only over the Tea Set; without it they say the first
+  if not flag FLAG_VILLA_FURNITURE_TEA_SET goto M0
+  speaker "Candice"
+  say "Real cups! Real tea! Maylene, put the cup down, you drink it, you don't train with it."
+  speaker "Maylene"
+  say "...It's a good weight, though."
+  return
+
+
+# ---- what looking at a piece says
+
+script LookTable
+  call OrderForm
+  end
+
+script LookBigSofa
+  text "A big sofa. It is very hard to get up from."
+  end
+
+script LookSmallSofa
+  text "A small sofa, just right for two."
+  end
+
+script LookBed
+  text "A bed wide enough to sleep across. The sheets smell of the sea."
+  end
+
+script LookNightTable
+  text "A night table. Its lamp gives a small, warm light."
+  end
+
+script LookTv
+  text "A wide television. The picture is of a hillside on a fine day."
+  end
+
+script LookAudioSystem
+  text "An audio system. The dials are all set exactly in the middle."
+  end
+
+script LookBookshelf
+  text "A bookshelf full of books about Pokémon, and one about furniture."
+  end
+
+script LookRack
+  text "A rack of odds and ends from all over Sinnoh."
+  end
+
+script LookHouseplant
+  text "A houseplant. Its leaves have been dusted."
+  end
+
+script LookPcDesk
+  text "A desk with a computer on it. The screen shows the catalogue's order page."
+  end
+
+script LookPokemonBust
+  text "A bronze bust of a Pokémon. The plate reads: for victories everywhere at the Battle Frontier."
+  end
+
+script LookPokemonBustSilver
+  text "A silver bust of a Pokémon. The plate reads: for a silver print at the Battle Frontier."
+  end
+
+script LookPiano
+  text "A grand piano. A key, pressed, sounds long after the finger has gone."
+  end
+
+script LookGuestSet
+  text "A low table and two seats, for guests."
+  end

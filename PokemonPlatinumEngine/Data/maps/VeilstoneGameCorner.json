@@ -1,0 +1,431 @@
+{
+  "name": "VeilstoneGameCorner",
+  "displayName": "Game Corner",
+  "bgmTrack": "sinnoh/veilstone",
+  "interior": "GameHall",
+  "trees": "Round",
+  "width": 17,
+  "height": 13,
+  "ground": [
+    "#################",
+    "#################",
+    "#################",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#####D###########"
+  ],
+  "solid": [
+    "#################",
+    "#################",
+    "#################",
+    "#...#........#..#",
+    "#...#...........#",
+    "#####..##...##..#",
+    "#......##...##..#",
+    "#......##...##..#",
+    "#......##...##..#",
+    "#......##...##..#",
+    "##.............##",
+    "##.............##",
+    "#####.###########"
+  ],
+  "props": [
+    {
+      "type": "Counter",
+      "x": 4,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Counter",
+      "x": 1,
+      "y": 5,
+      "width": 4,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 13,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 15,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 15,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SlotMachine",
+      "x": 7,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SlotMachine",
+      "x": 7,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SlotMachine",
+      "x": 7,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SlotMachine",
+      "x": 7,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SlotMachine",
+      "x": 7,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SlotMachine",
+      "x": 8,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SlotMachine",
+      "x": 8,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SlotMachine",
+      "x": 8,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SlotMachine",
+      "x": 8,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SlotMachine",
+      "x": 8,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SlotMachine",
+      "x": 12,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SlotMachine",
+      "x": 12,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SlotMachine",
+      "x": 12,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SlotMachine",
+      "x": 12,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SlotMachine",
+      "x": 12,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SlotMachine",
+      "x": 13,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SlotMachine",
+      "x": 13,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SlotMachine",
+      "x": 13,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SlotMachine",
+      "x": 13,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SlotMachine",
+      "x": 13,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 7,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 10,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 5,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 5,
+      "sourceY": 12,
+      "targetMap": "Sinnoh",
+      "targetX": 706,
+      "targetY": 624,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 12,
+      "y": 6,
+      "text": "A slot machine.",
+      "script": "Machine0"
+    },
+    {
+      "x": 13,
+      "y": 7,
+      "text": "A slot machine.",
+      "script": "Machine1"
+    },
+    {
+      "x": 7,
+      "y": 7,
+      "text": "A slot machine.",
+      "script": "Machine2"
+    },
+    {
+      "x": 7,
+      "y": 8,
+      "text": "A slot machine.",
+      "script": "Machine3"
+    },
+    {
+      "x": 13,
+      "y": 9,
+      "text": "A slot machine.",
+      "script": "Machine4"
+    },
+    {
+      "x": 8,
+      "y": 6,
+      "text": "A slot machine.",
+      "script": "Machine5"
+    },
+    {
+      "x": 8,
+      "y": 7,
+      "text": "A slot machine.",
+      "script": "Machine6"
+    },
+    {
+      "x": 8,
+      "y": 8,
+      "text": "A slot machine.",
+      "script": "Machine7"
+    },
+    {
+      "x": 8,
+      "y": 9,
+      "text": "A slot machine.",
+      "script": "Machine8"
+    },
+    {
+      "x": 13,
+      "y": 6,
+      "text": "A slot machine.",
+      "script": "Machine9"
+    },
+    {
+      "x": 12,
+      "y": 8,
+      "text": "A slot machine.",
+      "script": "Machine10"
+    },
+    {
+      "x": 12,
+      "y": 9,
+      "text": "A slot machine.",
+      "script": "Machine11"
+    },
+    {
+      "x": 10,
+      "y": 2,
+      "text": "A board on the wall.",
+      "script": "BonusSign"
+    }
+  ],
+  "npcs": [
+    {
+      "id": "receptionist",
+      "name": "Clerk",
+      "npcType": "Clerk",
+      "x": 2,
+      "y": 4,
+      "facing": "Down",
+      "script": "CoinsClerk"
+    },
+    {
+      "id": "beauty_1",
+      "name": "Beauty",
+      "npcType": "Lady",
+      "x": 10,
+      "y": 11,
+      "facing": "Left",
+      "script": "LadyExplains",
+      "movement": "wander_around",
+      "rangeX": 1,
+      "rangeZ": 1
+    },
+    {
+      "id": "pokefan_m_1",
+      "name": "Old Man",
+      "npcType": "Gentleman",
+      "x": 4,
+      "y": 8,
+      "facing": "Right",
+      "script": "OldMan",
+      "movement": "look_north_south_and_east"
+    },
+    {
+      "id": "collector",
+      "name": "Farmer",
+      "npcType": "Gentleman",
+      "x": 6,
+      "y": 6,
+      "facing": "Right",
+      "script": "Farmer"
+    },
+    {
+      "id": "guitarist",
+      "name": "Guitarist",
+      "npcType": "Youngster",
+      "x": 11,
+      "y": 7,
+      "facing": "Right",
+      "script": "Guitarist"
+    },
+    {
+      "id": "worker",
+      "name": "Worker",
+      "npcType": "Youngster",
+      "x": 7,
+      "y": 3,
+      "facing": "Left",
+      "script": "Worker",
+      "movement": "look_south_and_west"
+    },
+    {
+      "id": "beauty_2",
+      "name": "Beauty",
+      "npcType": "Lady",
+      "x": 6,
+      "y": 9,
+      "facing": "Right",
+      "script": "LadyBalls"
+    },
+    {
+      "id": "pokefan_m_2",
+      "name": "Man",
+      "npcType": "Gentleman",
+      "x": 14,
+      "y": 8,
+      "facing": "Left",
+      "script": "MaylenesDad"
+    },
+    {
+      "id": "looker",
+      "name": "Looker",
+      "npcType": "Looker",
+      "x": 9,
+      "y": 8,
+      "facing": "Left",
+      "script": "Looker",
+      "hiddenBy": "FLAG_HIDE_GAME_CORNER_LOOKER"
+    }
+  ],
+  "wildEncounters": []
+}

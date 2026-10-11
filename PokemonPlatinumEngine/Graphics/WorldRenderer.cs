@@ -224,10 +224,16 @@ public sealed class WorldRenderer
     /// <summary>
     /// Lets go of whatever was drawn of a part of a map whose ground has changed (a place the story revealed or
     /// hid again, plan 01 · M8): its chunks and their neighbours, whose edges were baked with it, are made again
-    /// as they come into view.
+    /// as they come into view. A room is one scene, made again whole the next time it is drawn (the Villa as its
+    /// furniture arrives, plan 06 · R16b).
     /// </summary>
     public void Forget(Map map, int x, int y, int width, int height)
     {
+        if (!map.IsStreamed)
+        {
+            if (scenes.Remove(map.Name, out var whole)) whole.Unload();
+            return;
+        }
         var stale = chunks.Keys.Where(k => k.Map == map
             && k.X >= x / Map.ChunkTiles - 1 && k.X <= (x + width - 1) / Map.ChunkTiles + 1
             && k.Y >= y / Map.ChunkTiles - 1 && k.Y <= (y + height - 1) / Map.ChunkTiles + 1).ToList();

@@ -178,6 +178,10 @@ public static class RegionDatabase
                 "GalacticHQHall", "GalacticHQLaboratory", "GalacticHQControlRoom",
                 // Plan 06 · R16a: the Underground (a matrix of the imported world, come to by the Explorer Kit alone)
                 "Underground",
+                // Plan 06 · R16b: the Mining Museum, the Game Corner with its prize exchange and the Coin Case's house, the
+                // Villa, and Pal Park's lobby and grounds
+                "OreburghMiningMuseum", "VeilstoneGameCorner", "VeilstonePrizeExchange", "VeilstoneSoutheastHouse", "ResortAreaVilla",
+                "PalParkLobby", "PalPark",
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

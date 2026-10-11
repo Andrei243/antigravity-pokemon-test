@@ -1,0 +1,47 @@
+# The Oreburgh Mining Museum (plan 06 · R16b), rebuilt to the original's plan. docs/scripts.md describes the language;
+# the lines are our own, on the original's beats (scripts_mining_museum.s).
+#
+# The scientist at the desk brings a Fossil back to life: he has nothing to say of it until the player has the
+# Explorer Kit (FLAG_RECEIVED_EXPLORER_KIT), takes one Fossil (asking which when the bag holds more than one kind),
+# and has the Pokémon ready once the player has left the museum and come in again: the Fossil's species is kept in
+# VAR_REVIVED_POKEMON_SPECIES, and FLAG_MAP_LOCAL_MUSEUM_REVIVING, which lasts only while the player stays, says the
+# machine is still at work. A full team is told to make room, as in the original.
+
+
+script FossilResearcher
+  if flag FLAG_MAP_LOCAL_MUSEUM_REVIVING goto Working
+  say "I study Fossils. More than study them: with the machine behind me, I can bring them back to life!"
+  if not flag FLAG_RECEIVED_EXPLORER_KIT goto NotYet
+  fossil ready
+  if result == 1 goto Ready
+  fossil count
+  if result == 0 goto None
+  ask "You have a Fossil with you, I can smell the stone dust! Shall I bring it back to life?"
+  if no goto Declined
+  fossil choose
+  if result == 0 goto Declined
+  fossil revive
+  if result == 0 goto Declined
+label Working
+  setflag FLAG_MAP_LOCAL_MUSEUM_REVIVING
+  say "This takes a little while, and I work better unwatched." "Take a walk outside, then come and see me again."
+  end
+label Ready
+  say "There you are! Look what your Fossil turned out to be: {thing}!"
+  if not party < 6 goto Full
+  fossil give
+  fanfare pokemon
+  text "{player} received {thing}!"
+  end
+label Full
+  say "But your team is full. Make room for one more, and it's yours."
+  end
+label None
+  say "Bring me a Fossil, and I'll show you what once walked this land." "They turn up in the walls of the Underground, if you dig for them."
+  end
+label Declined
+  say "No? If you change your mind, you know where the machine is."
+  end
+label NotYet
+  say "...But you've never dug anything up yourself, have you? Come back when you have. It will mean more."
+  end

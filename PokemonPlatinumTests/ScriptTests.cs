@@ -245,6 +245,36 @@ public class ScriptTests
           underground cantake
           underground takeflag
           underground home
+          fossil count
+          fossil choose
+          fossil revive
+          fossil ready
+          fossil give
+          gamecorner coins
+          gamecorner room 50
+          gamecorner add 50
+          gamecorner take 3
+          gamecorner slots 11
+          gamecorner prize
+          gamecorner buy
+          gamecorner hiddenpower
+          gamecorner cointrick
+          villa catalogue
+          villa choose "Table"
+          villa is "Piano"
+          villa buy
+          villa furnish
+          villa owned
+          palpark check
+          palpark start
+          palpark go
+          palpark active
+          palpark caught
+          palpark points total
+          palpark record
+          palpark prize
+          palpark store
+          palpark end
         script Other
           end
         """;
@@ -1094,6 +1124,9 @@ public class ScriptTests
         public PokemonPlatinumEngine.Models.SuperContests.ContestRecords ContestRecords => inner.ContestRecords;
         public PokemonPlatinumEngine.Models.Underground.UndergroundState Underground => inner.Underground;
         public int UndergroundAct(string what, NPC? subject) => inner.UndergroundAct(what, subject);
+        public PokemonPlatinumEngine.Models.Pastimes Pastimes => inner.Pastimes;
+        public PokemonPlatinumEngine.Models.VillaRecords VillaRecords => inner.VillaRecords;
+        public int PastimeAct(string what, int number, NPC? subject) => inner.PastimeAct(what, number, subject);
         public string DiggerName => inner.DiggerName;
         public int? HoneyTreeFaced => inner.HoneyTreeFaced;
         public uint TrainerNumber => inner.TrainerNumber;

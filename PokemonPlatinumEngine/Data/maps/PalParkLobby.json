@@ -1,0 +1,261 @@
+{
+  "name": "PalParkLobby",
+  "displayName": "Pal Park",
+  "bgmTrack": "sinnoh/route206",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 17,
+  "height": 21,
+  "ground": [
+    "#################",
+    "#################",
+    "#################",
+    "#################",
+    "#################",
+    "#################",
+    "#################",
+    "#_____________###",
+    "#_____________###",
+    "#_____________###",
+    "#_____________###",
+    "#_____________###",
+    "#_____________###",
+    "#_____________###",
+    "#_____________###",
+    "#_____________###",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#######D#########"
+  ],
+  "solid": [
+    "#################",
+    "#################",
+    "#################",
+    "#################",
+    "#################",
+    "#################",
+    "#######.#########",
+    "#######.#########",
+    "##..##.......####",
+    "#....#.......####",
+    "#....#.......####",
+    "#....##.#########",
+    "#..........######",
+    "#..........######",
+    "#..........######",
+    "#............####",
+    "#..............##",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#######.#########"
+  ],
+  "props": [
+    {
+      "type": "Counter",
+      "x": 1,
+      "y": 7,
+      "width": 6,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 8,
+      "y": 7,
+      "width": 6,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 5,
+      "y": 8,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "Counter",
+      "x": 13,
+      "y": 8,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "Counter",
+      "x": 5,
+      "y": 11,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 8,
+      "y": 11,
+      "width": 6,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 11,
+      "y": 12,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "SideStairsUpEast",
+      "x": 11,
+      "y": 13,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 11,
+      "y": 14,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 13,
+      "y": 15,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 15,
+      "y": 16,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 2,
+      "y": 6,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 10,
+      "y": 6,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 7,
+      "y": 19,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 7,
+      "sourceY": 20,
+      "targetMap": "Sinnoh",
+      "targetX": 306,
+      "targetY": 910,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 7,
+      "sourceY": 6,
+      "targetMap": "PalPark",
+      "targetX": 24,
+      "targetY": 47,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 11,
+      "y": 13,
+      "text": "The stairs up to the viewing gallery. A rope across them says: closed today."
+    },
+    {
+      "x": 12,
+      "y": 13,
+      "text": "The stairs up to the viewing gallery. A rope across them says: closed today."
+    },
+    {
+      "x": 13,
+      "y": 13,
+      "text": "The stairs up to the viewing gallery. A rope across them says: closed today."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "worker",
+      "name": "Park Attendant",
+      "npcType": "Clerk",
+      "x": 7,
+      "y": 11,
+      "facing": "Down",
+      "script": "Worker"
+    },
+    {
+      "name": "PC Terminal",
+      "npcType": "Trainer",
+      "x": 4,
+      "y": 8,
+      "facing": "Up",
+      "isPCTerminal": true
+    },
+    {
+      "id": "pokemon_breeder_m",
+      "name": "Breeder",
+      "npcType": "Youngster",
+      "x": 2,
+      "y": 11,
+      "facing": "Down",
+      "script": "RecordGuy",
+      "movement": "wander_around",
+      "rangeX": 1,
+      "rangeZ": 1
+    },
+    {
+      "id": "lass_1",
+      "name": "Lass",
+      "npcType": "Lass",
+      "x": 3,
+      "y": 16,
+      "facing": "Down",
+      "script": "PoketchAppLady",
+      "movement": "look_around"
+    },
+    {
+      "id": "beauty",
+      "name": "Beauty",
+      "npcType": "Lady",
+      "x": 12,
+      "y": 17,
+      "facing": "Down",
+      "dialog": [
+        "The rare ones take so long to come out! I've walked that grass until my feet ached.",
+        "They say the rarer the Pokémon, the better the show's score. I suppose it's only fair."
+      ],
+      "movement": "wander_around",
+      "rangeX": 1,
+      "rangeZ": 1
+    }
+  ],
+  "wildEncounters": []
+}

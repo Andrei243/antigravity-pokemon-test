@@ -30,20 +30,34 @@ internal static partial class ModernUi
     /// from the right and stands on the right end of the text box, a row to an answer, the one under the cursor a
     /// filled pill as in the start menu.
     /// </summary>
+    /// <summary>The most answers a question shows at once; a longer list scrolls.</summary>
+    public const int MostChoiceRows = 8;
+
     public static void DrawChoices(int sw, int sh, IReadOnlyList<string> options, int selected, float shown)
     {
         const float row = 72, pad = 16, size = 34;
         float widest = 0f;
         foreach (string option in options) widest = Math.Max(widest, UiFonts.Measure(option, size, UiWeight.Black));
         float width = Math.Max(260, widest + 116);
-        float height = pad * 2 + options.Count * row;
+        // A long list (a catalogue, a counter's prizes) shows a window of its rows that follows the cursor (plan 06 · R16b)
+        int rows = Math.Min(options.Count, MostChoiceRows), first = Math.Clamp(selected - MostChoiceRows / 2, 0, options.Count - rows);
+        float height = pad * 2 + rows * row;
         // Its right edge is the text box's (96 from the screen's), and it stands 22 above it
         var panel = new Rectangle(sw - 96 - width + (1f - shown) * (width + 140), sh - 262 - 22 - height, width, height);
         Panel(panel, 32);
 
-        for (int i = 0; i < options.Count; i++)
+        if (rows < options.Count)
         {
-            var r = new Rectangle(panel.X + 14, panel.Y + pad + i * row + 4, width - 28, row - 8);
+            // Where the window stands in the list: a thumb on a track down the panel's right edge
+            var track = new Rectangle(panel.X + panel.Width - 12, panel.Y + pad + 6, 6, height - pad * 2 - 12);
+            UiShapes.Shape(track, 3, Darker(PanelBottom, 0.12f), Darker(PanelBottom, 0.12f), Darker(PanelBottom, 0.12f), 0);
+            float thumb = track.Height * rows / options.Count;
+            var at = new Rectangle(track.X, track.Y + (track.Height - thumb) * first / (options.Count - rows), 6, thumb);
+            UiShapes.Shape(at, 3, Selection, Selection, Selection, 0);
+        }
+        for (int i = first; i < first + rows; i++)
+        {
+            var r = new Rectangle(panel.X + 14, panel.Y + pad + (i - first) * row + 4, width - 28, row - 8);
             if (i == selected)
             {
                 UiShapes.Shadow(r, r.Height / 2f, 18, new Vector2(0, 5), Selection with { A = 120 });

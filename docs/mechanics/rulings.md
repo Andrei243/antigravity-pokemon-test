@@ -1160,3 +1160,59 @@ Decision 06 · 7 leaves local wireless and the online play of the Underground ou
 | The hikers' looks | The hiker | The look that stands for it in `characters.json` | Plan 11 |
 | Three hikers | All twenty stand in the tunnels | The three of the north-west system are held back: it lies under Fullmoon and Newmoon Islands, and nothing over it is open | Plan 01 · M10, part b: take them off the overlay's `heldBack` when the islands open |
 | The base's PC radars | Lists of what is about | Not there | See above |
+
+## Fossils, the Game Corner, the Villa and Pal Park (2026-10-11, plan 06 · R16b)
+
+**Platinum's rules, kept as they are** (`src/scrcmd_fossil.c`, `src/coins.c` and the script commands for coins and prizes, `src/overlay101/` whole (the slot machine: `ov101_021D0D80.c`, `ov101_021D1A28.c`, `ov101_021D59AC.c`, `ov101_021D7E48.c` and its tables), `src/villa_furniture.c`, `villa_visitors.h` and `SystemVars_UpdateVillaVisitor`, `src/catching_show.c`, and the scripts of the Mining Museum, the Game Corner, the prize exchange, Veilstone's south-east house, the Resort Area, the Villa, Pal Park and its lobby):
+
+- **Fossils** (`sFossilItemToSpeciesMapping`): Old Amber is Aerodactyl, the Helix Fossil Omanyte, the Dome Fossil Kabuto, the Root Fossil Lileep, the Claw Fossil Anorith, the Armor Fossil Shieldon and the Skull Fossil Cranidos. The Mining Museum's scientist has nothing to offer until the player has the Explorer Kit; he takes one Fossil (asking which when the bag holds more than one kind), keeps its species in `VAR_REVIVED_POKEMON_SPECIES`, and has the Pokémon ready, at level 20, once the player has left the museum and come in again. A full team is told to make room.
+- **The Coin Case** (`coins.c`): 50,000 coins at most, and coins are added all or none. The clown of Veilstone's south-east house gives the case to whoever wins his toss, which is a draw of two whichever hand is named. The Game Corner's clerk sells 50 coins for $1,000 and 500 for $10,000 while they fit; an old man gives 20 and a farmer 50, once each.
+- **The slot machines** (decision 06 · 8: the international Platinum's, as the decompilation has them). Twelve of the hall's machines are played, each with a mood of 0 to 5 dealt anew every day (one machine of the best and one of the worst among them). The machine runs at the original's thirty frames a second:
+  - three reels of twenty-one symbols (the original's strips), turning half a symbol a frame; a game costs three coins and plays all five lines;
+  - as the lever is pulled the machine draws what the game may pay (by its mood: a prize on 25 to 35 games in a hundred; which prize, and whether the bonus comes with it, by the mood's weights), and most of the time lets on what it drew;
+  - a reel stopped slips on up to four symbols to bring the drawn symbol onto a line, or to keep every line clear when nothing was drawn; a replay or the ball of the wide prizes is brought round however far it is while the reels are stopped left to right;
+  - a cherry on the first reel pays 2 for each line it stands on, by itself; three balls pay 10, three moons 15, three sevens 100; three replays play the next game for nothing;
+  - the bonus, once drawn, waits: the machine asks for three sevens of one colour, and until they are lined up most games are drawn as a chance at them (65 to 75 in a hundred by the mood) and the rest as a small prize;
+  - the bonus game is rounds of fifteen games at one coin each, in which the mascot points out the order to stop the reels in; stopped in that order a replay on the middle line pays 15, and out of order nothing is brought round. Whether another round follows is drawn as each begins, by the kind of bonus (50, 70 or 90 in a hundred) less what tired the mascot; under a red moon a win tires it, under a bright one another round is certain;
+  - the longest run of bonus rounds at a sitting is kept (`VAR_CONSECUTIVE_BONUS_ROUND_WINS`), and ten in a row earn TM64 at the counter.
+- **The prize exchange**: nineteen prizes at the original's prices in coins (the Silk Scarf, Wide Lens, Zoom Lens and Metronome at 1,000; fifteen TMs from 2,000 to 20,000). The guitarist beside the counter tells the type a Pokémon's Hidden Power is (`CalcHiddenPowerType`), whether it knows the move or not.
+- **The Villa** (`villa_furniture.c`, `scripts_villa.s`): a boy in the Resort Area gives it to whoever first walks up, and waits inside until the free table has been ordered. The catalogue on the table lists twenty pieces at the original's prices, each with its one place in the room; nine are listed only once something has been done: the Music Box with the Rack, the Tea Set with the Guest Set, the two busts for the Battle Frontier's victories and prints, the Piano after ten entries in the Hall of Fame, the Guest Set after fifty battles at the Battleground, the Wall Clock after fifty berries planted, the Masterpiece after thirty Eggs hatched, the Chandelier after 300,000 steps. A piece ordered is delivered at once and blocks the tiles the original's table gives it. The delivery of the last piece adds ten to the Trainer Card's score.
+- **The Villa's visitors** (`CalcVillaVisitorIndex`): each new day, unless the player is at the Resort Area or in the Villa, a visitor is drawn: with fewer than eight pieces one of four (the rival, the assistant, the professor, Mom), with eight one of twelve (the eight Gym Leaders join them), with twelve one of fifteen (Cynthia, Flint with Volkner, Maylene with Candice). Each says one of five things, drawn with the visitor. Some are found inside, five wait at the door until asked in, and four walk in once the player has stepped up to the table. The table, the Small Sofa, the Bookshelf, the Houseplant and the Piano each bring someone round the moment they are delivered.
+- **Pal Park** (`catching_show.c`, plan 06 · R9's `CatchingShow`): the attendant starts a show for whoever has six Pokémon waiting in the park and six free places in the boxes. In the park each of the six keeps to its corner of the grass or the water, a Park Ball never misses, and the sixth catch ends the show. The score is told in its three parts, a new record is kept (`VAR_CATCHING_SHOW_RECORD`), a berry is given by the score (under 3,000 one of eight, under 3,300 one of five, under 3,500 one of seven, one of six from there up), and the six go to the boxes as Pokémon met at Pal Park, or are left in the park to be caught again. Walking back to the gate, or speaking to the attendant beside it, asks whether to give the show up; given up, the six go on waiting.
+
+**Quirks kept**
+
+- The visitor's chance is compared so that the chance itself passes: a visitor comes on 26, 76 and 91 days in a hundred, not 25, 75 and 90.
+- Every line that pays is paid what the last line found pays, and a cherry on the first reel is a line by itself.
+- While the bonus waits for its sevens, the small prize's table is read with its second share asked twice and its last two never.
+- A Catching Show's score of 10,000 or more would earn no berry: the lobby's script checks only under it.
+- The clown's question makes no difference to his toss.
+
+**Our own choices**
+
+- **A machine is played with the game's keys**: the button bets and pulls the lever, Left, Down and Right stop the first, second and third reel, and the back button gets up. The original's are X, Down, and Y, B and A; a button kept down counts the coins out twice as fast, as there.
+- **The symbols are ours**: the original's numbers with pictures of our own (a red and a blue seven, a replay mark, cherries, a ball, a moon), and so is everything on the machine's display. What the mascot does on the original's lower screen is a small display here: the order pointed out as three numbers over the reels, the moon, and what stamina is left.
+- **The waits the original spends on its mascot's animations are lengths of our own** (the rules in between are frame for frame).
+- **The day's deal of moods uses the game's own generator**, seeded with the day's number as the original seeds the console's: the moods are the original's twelve, in an order that isn't the cartridge's for the same day.
+- **The exchange's counter ends the talk after an answer**; the original's goes back to its list.
+- **A piece of furniture is delivered where the script stands**: the original walks the player out of the door and in again behind a black screen.
+- **Every line** in the museum, the hall, the exchange, the Villa and the park is ours, on the original's beats: the visitors' five sayings each are our own too.
+
+**Stand-ins for what this game lacks**
+
+| What | The original | Here | Why |
+| --- | --- | --- | --- |
+| The six Pokémon of a Catching Show | Brought over from a Game Boy Advance cartridge in the lower slot | Nothing has been brought over: the attendant says so and no show begins. `PalParkState.Stock(six)` puts six in the park (saved as `SaveData.Pastimes.Waiting`), and the show, its score, its prize and the boxes run from there | Plan 08 · P21 writes the migration and calls it; the smallest stand-in that claims nothing |
+| A show broken off | The six wait in the save | The same: the show itself isn't saved, and a game taken up again in the park is sent back to the lobby | As the original |
+| Pal Park's lobby | Two floors: a counter below, a gallery above reached by an escalator, with four spectators | One floor on the original's plan, the stairs roped off | Plan 01 · M11 builds the gallery |
+| Professor Oak in the lobby | Meets the player at (7, 15) the first time they come in after the National Pokédex | Not there | Plan 02 · S15 |
+| Route 221's workers | Stand before the door until the National Pokédex | They stand there still | Plan 02 · S15 hides them |
+| Looker at the Game Corner | Sits at a machine until the Cobble Badge, and again after Stark Mountain with other words | His first line; gone with the Badge | Plan 02 · S15 brings him back |
+| The machines' sounds and the places' music | Their own | Effects the game already has (the coin, the gears, a beep, Clefairy's cry); Veilstone's theme in the hall, Oreburgh's in the museum, Sandgem's in the Villa, Route 206's in the lobby and the Great Marsh's in the park | Plan 05 · A6 |
+| A name for a revived Pokémon | Asked for | Not asked | Plan 12 has no naming in the field yet |
+| The two busts' conditions | A victory at each of the Battle Frontier's five facilities; a silver print or better at any of them | Never met: the busts aren't listed | Plan 06 · R18 fills `VillaRecordsNow` |
+| The Guest Set's condition | Fifty battles at the Battleground (a game record, `RECORD_TIMES_BATTLED_AT_BATTLEGROUND`) | A story variable of our own naming, `VAR_TIMES_BATTLED_AT_BATTLEGROUND`, which nothing counts yet | Plan 02 · S15 builds the Battleground and counts into it |
+| The Chandelier | Hangs over the room | Owned and counted, not drawn: it hangs out of the camera's sight | The doll's house has no ceiling |
+| The Music Box and the TV | A tune; a programme | A line each | Plan 05, plan 08 |
+| The catalogue as a book on the table | An object of its own | The table's own tiles open the order form | One thing fewer to stand on a table |
+| Byron, Candice, Volkner and Flint | Their own looks | A gentleman, a lass and two youngsters, as their own Gyms have them | Plan 11 |

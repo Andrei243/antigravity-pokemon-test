@@ -60,6 +60,8 @@ public enum Op
     Seal, Ribbon,
     // The Underground (plan 06 · R16a)
     Underground,
+    // Fossils, the Game Corner, the Villa and Pal Park (plan 06 · R16b)
+    Fossil, GameCorner, Villa, PalPark,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

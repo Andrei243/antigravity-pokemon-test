@@ -1,0 +1,28 @@
+{
+  "key": "pal_park",
+  "index": 251,
+  "name": "Pal Park",
+  "matrix": 49,
+  "kind": "Outdoors",
+  "sign": "Park",
+  "weather": "Clear",
+  "camera": "ZoomedIn",
+  "battleBackground": "Plain",
+  "dayMusic": "SILENCE_FIELD_sseq_1",
+  "nightMusic": "SILENCE_FIELD_sseq_1",
+  "bike": true,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 24, "z": 52, "to": "pal_park_lobby", "toWarp": 1 },
+    { "x": 25, "z": 52, "to": "pal_park_lobby", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "worker", "looks": "worker", "movement": "look_west", "x": 28, "z": 48, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "6" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 22, "z": 48, "width": 6, "depth": 1, "script": "5", "variable": "VAR_PAL_PARK_STATE", "value": "1" }
+  ]
+}

@@ -1,0 +1,150 @@
+# Pal Park's lobby on Route 221 (plan 06 · R16b). docs/scripts.md describes the language; the lines are our own, on
+# the original's beats (scripts_pal_park_lobby.s).
+#
+# The attendant in the gap of the counter starts a Catching Show (palpark check, palpark start) for whoever has six
+# Pokémon waiting in the park and six free places in the PC boxes, steps aside and lets the player through the door
+# to the park. VAR_PAL_PARK_STATE says how the player comes back: 1 with all six caught (the score is told, the
+# record kept, a berry given, and the six sent to the boxes or left in the park for another try), 2 having given
+# up (the six go on waiting). Nothing has been brought over until this game's migration exists (plan 08 · P21), and
+# the attendant says so.
+#
+# Not here: the viewing gallery upstairs with its four spectators (the room is flat, and the stairs are roped off),
+# and Professor Oak, who meets the player at 7,15 the first time they come in after the National Pokédex
+# (FLAG_HIDE_PAL_PARK_LOBBY_PROF_OAK, VAR_PAL_PARK_LOBBY_STATE: plan 02 · S15).
+
+
+script OnEnter
+  if var VAR_PAL_PARK_STATE == 0 end
+  place worker 8 9 left
+  if var VAR_PAL_PARK_STATE == 1 goto Tally
+  # Given up: nothing is told, and the six go on waiting in the park
+  setvar VAR_PAL_PARK_STATE 0
+  palpark end
+  goto Out
+label Tally
+  setvar VAR_PAL_PARK_STATE 0
+  walk player down 2
+  face player right
+  speaker "Park Attendant"
+  say "All six caught! Now, let's see how your Catching Show went."
+  palpark points catching
+  text "Catching points: {number}"
+  palpark points time
+  text "Time points: {number}"
+  palpark points type
+  text "Type points: {number}"
+  palpark points total
+  text "Total: {number} points!"
+  palpark record
+  if result == 1 goto Record
+  say "A fine show. Here is something for your trouble."
+  goto Prize
+label Record
+  say "That beats the record! Outstanding! This is for you."
+label Prize
+  palpark prize
+label AskStore
+  ask "Shall I send the six you caught to your PC boxes?"
+  if yes goto Stored
+  ask "Then you'd like them left in the park, to put on the show again?"
+  if no goto AskStore
+  say "That's the spirit! They'll be waiting for you."
+  palpark end
+  goto Out
+label Stored
+  palpark store
+  say "Your Pokémon have been sent to your PC boxes." "Do come and see us again!"
+label Out
+  face player down
+  walk player down 5
+  walk worker left 1 down 2
+  face worker down
+  end
+
+
+script Worker
+  if flag FLAG_TALKED_TO_PAL_PARK_LOBBY_RECEPTIONIST goto Greeting
+  setflag FLAG_TALKED_TO_PAL_PARK_LOBBY_RECEPTIONIST
+  say "Welcome to Pal Park, {player}!" "Pokémon brought here from far away are let loose in the park, and their trainer catches them again in a Catching Show."
+label Greeting
+  choose "What will it be today?" "ENTER" "INFO" "EXIT"
+  if result == 0 goto Check
+  if result == 1 goto Info
+  say "Aww, that's too bad. Another day, then!"
+  end
+label Info
+  choose "What shall I read out of the manual?" "The park" "The Catching Show" "Bringing Pokémon" "That's enough"
+  if result == 0 goto Park
+  if result == 1 goto Show
+  if result == 2 goto Bringing
+  say "Ask me whenever you like!"
+  end
+label Park
+  say "Pal Park is where Pokémon from faraway regions come to stay. Six at a time are brought over, and wait in the park until their trainer has caught them again."
+  end
+label Show
+  say "In a Catching Show you walk the park's grass and water with six Park Balls. Each of the six keeps to its own corner, and a Park Ball never misses."
+  say "The score is the Pokémon's own points, plus points for catching them quickly, and for never catching two of a type in a row. A good score earns a berry!"
+  end
+label Bringing
+  say "Six Pokémon are brought over together, and no more until those six have been caught and sent to your PC boxes."
+  end
+label Check
+  palpark check
+  if result == 1 goto BoxesFull
+  if result == 2 goto NoneBrought
+  palpark start
+  say "Here are your six Park Balls. The score to beat is {var:VAR_CATCHING_SHOW_RECORD} points. Good luck, {player}!"
+  walk self up 2 right 1
+  face self left
+  walk player up 5
+  warp "PalPark" 24 47 up
+  end
+label NoneBrought
+  say "Oh! But there are no Pokémon of yours waiting in the park." "Six must be brought over from far away before a show can be held. Nobody has brought any yet."
+  end
+label BoxesFull
+  say "Your PC boxes haven't room for six more Pokémon. Please make some room first."
+  end
+
+
+script RecordGuy
+  if var VAR_CATCHING_SHOW_RECORD == 0 goto None
+  say "The record for a Catching Show stands at {var:VAR_CATCHING_SHOW_RECORD} points. It's written up behind the counter."
+  end
+label None
+  say "Nobody has put on a Catching Show here yet. The first score will be the record!"
+  end
+
+
+script PoketchAppLady
+  if var VAR_MAP_LOCAL_PAL_PARK_APP == 1 goto GotTimer
+  if var VAR_MAP_LOCAL_PAL_PARK_APP == 2 goto GotColours
+  if poketchapp ColorChanger goto All
+  say "Isn't Pal Park wonderful? Pokémon I have never seen, from places I'll never go!"
+  if poketchapp KitchenTimer goto Kecleon
+  say "There is one I long to see: it does nothing but eat and sleep, they say, and it is as big as a house."
+  if not has "Snorlax" goto No
+  say "That's it! That's the very one! Oh, thank you. Here, take this for your Pokétch."
+  poketchapp KitchenTimer
+  setvar VAR_MAP_LOCAL_PAL_PARK_APP 1
+  end
+label Kecleon
+  say "And there's another: it changes colour to match whatever it stands on. Imagine!"
+  if not has "Kecleon" goto No
+  say "Oh! It went green, and then it went pink! Thank you! This is for your Pokétch."
+  poketchapp ColorChanger
+  setvar VAR_MAP_LOCAL_PAL_PARK_APP 2
+  end
+label GotTimer
+  say "The Kitchen Timer makes you want to cook something, doesn't it?"
+  end
+label GotColours
+  say "Changing the Pokétch's colour changes my mood for the whole day."
+  end
+label No
+  say "What was its name, now? If you ever have one with you, do show me."
+  end
+label All
+  say "Are you putting on a Catching Show today? I'll be cheering!"
+  end

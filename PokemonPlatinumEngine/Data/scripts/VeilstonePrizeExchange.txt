@@ -1,0 +1,54 @@
+# Veilstone City's prize exchange (plan 06 · R16b), rebuilt to the original's plan. docs/scripts.md describes the
+# language; the lines are our own, on the original's beats (scripts_veilstone_city_prize_exchange.s).
+#
+# The clerk exchanges Coins for one of nineteen prizes (gamecorner prize, gamecorner buy: the original's table and
+# prices). The original's counter goes back to its list after every answer; ours ends the talk, and the player asks
+# again. The guitarist tells the type a Pokémon's Hidden Power is, or would be (gamecorner hiddenpower).
+
+
+script Receptionist
+  say "Welcome! Coins from the Game Corner are exchanged here for prizes. You have {coins} Coins."
+  gamecorner prize
+  if result == 0 goto Leave
+  ask "The {item}, for {price} Coins?"
+  if no goto Leave
+  gamecorner buy
+  if result == 0 goto Few
+  sound "select"
+  say "Here you are!"
+  text "{player} put the {item} away."
+  end
+label Few
+  say "I'm sorry, you haven't enough Coins for that."
+  end
+label Leave
+  say "Oh, is that so? Do come again when something takes your fancy."
+  end
+
+
+script Guitarist
+  if flag FLAG_TALKED_TO_VEILSTONE_CITY_PRIZE_EXCHANGE_GUITARIST goto Offer
+  setflag FLAG_TALKED_TO_VEILSTONE_CITY_PRIZE_EXCHANGE_GUITARIST
+  ask "I've a knack nobody asked for: I can tell what type a Pokémon's Hidden Power would be. Want to hear it?"
+  if no goto Later
+  goto Tell
+label Offer
+  ask "Shall I tell you the type of one of your Pokémon's Hidden Power?"
+  if no goto Later
+label Tell
+  choosepokemon
+  gamecorner hiddenpower
+  if result == 0 goto Later
+  if result == 3 goto Egg
+  if result == 1 goto Knows
+  say "Hmm, hmm. If that one learned Hidden Power, the move would be of the {thing} type."
+  end
+label Knows
+  say "Hmm, hmm. That one's Hidden Power is of the {thing} type. No doubt about it."
+  end
+label Egg
+  say "An Egg? Even I can't hear anything through a shell."
+  end
+label Later
+  say "Whenever you're curious, just ask."
+  end

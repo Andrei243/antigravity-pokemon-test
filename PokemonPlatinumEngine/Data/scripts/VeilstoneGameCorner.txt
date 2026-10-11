@@ -1,0 +1,266 @@
+# The Veilstone Game Corner (plan 06 · R16b), rebuilt to the original's plan. docs/scripts.md describes the language;
+# the lines are our own, on the original's beats (scripts_game_corner.s).
+#
+# Twelve of the hall's machines can be played (Machine0 to Machine11, the original's numbers: gamecorner slots), by
+# whoever carries a Coin Case. The clerk sells Coins, 50 for $1,000 and 500 for $10,000, as long as they fit in the
+# case, and gives TM64 to whoever has won ten bonus rounds in a row (VAR_CONSECUTIVE_BONUS_ROUND_WINS, which the
+# machines keep; FLAG_RECEIVED_GAME_CORNER_TM64). Two of the players give Coins away once each
+# (FLAG_RECEIVED_GAME_CORNER_20_COINS_OLD_MAN, FLAG_RECEIVED_GAME_CORNER_50_COINS_FARMER). Looker sits at a machine
+# until the Cobble Badge is won (FLAG_HIDE_GAME_CORNER_LOOKER, set in the Veilstone Gym). The original brings him back
+# once Charon is caught at Stark Mountain, with other words (FLAG_ARRESTED_CHARON_STARK_MOUNTAIN): plan 02 · S15 clears
+# his flag there and adds that line here.
+
+
+script Machine0
+  if not item "Coin Case" goto NoCase
+  fade out 0.3
+  gamecorner slots 0
+  fade in 0.3
+  end
+label NoCase
+  text "The reels turn behind the glass. Without a Coin Case there is nothing to play with."
+  end
+
+
+script Machine1
+  if not item "Coin Case" goto NoCase
+  fade out 0.3
+  gamecorner slots 1
+  fade in 0.3
+  end
+label NoCase
+  text "The reels turn behind the glass. Without a Coin Case there is nothing to play with."
+  end
+
+
+script Machine2
+  if not item "Coin Case" goto NoCase
+  fade out 0.3
+  gamecorner slots 2
+  fade in 0.3
+  end
+label NoCase
+  text "The reels turn behind the glass. Without a Coin Case there is nothing to play with."
+  end
+
+
+script Machine3
+  if not item "Coin Case" goto NoCase
+  fade out 0.3
+  gamecorner slots 3
+  fade in 0.3
+  end
+label NoCase
+  text "The reels turn behind the glass. Without a Coin Case there is nothing to play with."
+  end
+
+
+script Machine4
+  if not item "Coin Case" goto NoCase
+  fade out 0.3
+  gamecorner slots 4
+  fade in 0.3
+  end
+label NoCase
+  text "The reels turn behind the glass. Without a Coin Case there is nothing to play with."
+  end
+
+
+script Machine5
+  if not item "Coin Case" goto NoCase
+  fade out 0.3
+  gamecorner slots 5
+  fade in 0.3
+  end
+label NoCase
+  text "The reels turn behind the glass. Without a Coin Case there is nothing to play with."
+  end
+
+
+script Machine6
+  if not item "Coin Case" goto NoCase
+  fade out 0.3
+  gamecorner slots 6
+  fade in 0.3
+  end
+label NoCase
+  text "The reels turn behind the glass. Without a Coin Case there is nothing to play with."
+  end
+
+
+script Machine7
+  if not item "Coin Case" goto NoCase
+  fade out 0.3
+  gamecorner slots 7
+  fade in 0.3
+  end
+label NoCase
+  text "The reels turn behind the glass. Without a Coin Case there is nothing to play with."
+  end
+
+
+script Machine8
+  if not item "Coin Case" goto NoCase
+  fade out 0.3
+  gamecorner slots 8
+  fade in 0.3
+  end
+label NoCase
+  text "The reels turn behind the glass. Without a Coin Case there is nothing to play with."
+  end
+
+
+script Machine9
+  if not item "Coin Case" goto NoCase
+  fade out 0.3
+  gamecorner slots 9
+  fade in 0.3
+  end
+label NoCase
+  text "The reels turn behind the glass. Without a Coin Case there is nothing to play with."
+  end
+
+
+script Machine10
+  if not item "Coin Case" goto NoCase
+  fade out 0.3
+  gamecorner slots 10
+  fade in 0.3
+  end
+label NoCase
+  text "The reels turn behind the glass. Without a Coin Case there is nothing to play with."
+  end
+
+
+script Machine11
+  if not item "Coin Case" goto NoCase
+  fade out 0.3
+  gamecorner slots 11
+  fade in 0.3
+  end
+label NoCase
+  text "The reels turn behind the glass. Without a Coin Case there is nothing to play with."
+  end
+
+
+script CoinsClerk
+  say "Welcome to the Veilstone Game Corner!"
+  if not item "Coin Case" goto NoCase
+  if flag FLAG_RECEIVED_GAME_CORNER_TM64 goto Sell
+  if var VAR_CONSECUTIVE_BONUS_ROUND_WINS >= 10 goto Memento
+label Sell
+  choose "Coins are $1,000 for 50. How many would you like?" "50 Coins" "500 Coins" "No, thanks"
+  if result == 0 goto Fifty
+  if result == 1 goto FiveHundred
+  say "Do come and play again!"
+  end
+label Fifty
+  if not money >= 1000 goto Poor
+  gamecorner room 50
+  if result == 0 goto Full
+  takemoney 1000
+  gamecorner add 50
+  sound "coin_land"
+  say "Thank you! Here are your 50 Coins. Good luck at the machines!"
+  end
+label FiveHundred
+  if not money >= 10000 goto Poor
+  gamecorner room 500
+  if result == 0 goto Full
+  takemoney 10000
+  gamecorner add 500
+  sound "coin_land"
+  say "Thank you! Here are your 500 Coins. Good luck at the machines!"
+  end
+label Poor
+  say "I'm sorry, you haven't the money for that."
+  end
+label Full
+  say "Oh! Your Coin Case won't hold that many more. You are doing well!"
+  end
+label Memento
+  say "Ten bonus rounds, one after another? In all my years at this counter I never saw it done!" "Please, take this to remember the day by."
+  give "TM64"
+  setflag FLAG_RECEIVED_GAME_CORNER_TM64
+  say "And please keep playing our machines!"
+  end
+label NoCase
+  say "I'm afraid you have no Coin Case to put Coins in. You can't play without one."
+  end
+
+
+script LadyExplains
+  say "Bet three Coins, pull the lever, and stop the reels one by one. Three alike in a line, and the machine pays!" "And if three sevens line up... well. You'll see who comes out to play."
+  end
+
+
+script OldMan
+  if not item "Coin Case" goto NoCase
+  if flag FLAG_RECEIVED_GAME_CORNER_20_COINS_OLD_MAN goto Tip
+  gamecorner room 20
+  if result == 0 goto Tip
+  setflag FLAG_RECEIVED_GAME_CORNER_20_COINS_OLD_MAN
+  say "Ho ho! The machines have been kind to me today, {player}. Here, have a few of mine and try your luck."
+  gamecorner add 20
+  sound "coin_land"
+  text "{player} received 20 Coins!"
+  end
+label Tip
+  say "When Clefairy comes out, watch where it points and stop the reels in that order. That's all there is to it!"
+  end
+label NoCase
+  say "No Coin Case? The fellow in the house next door had one, last I heard. He does tricks with coins."
+  end
+
+
+script Farmer
+  if not item "Coin Case" goto NoCase
+  if flag FLAG_RECEIVED_GAME_CORNER_50_COINS_FARMER goto Clefairy
+  gamecorner room 50
+  if result == 0 goto Clefairy
+  setflag FLAG_RECEIVED_GAME_CORNER_50_COINS_FARMER
+  say "Lights! Bells! It's like the harvest fair in here, {player}! Here, you have some too. I've more than I can carry."
+  gamecorner add 50
+  sound "coin_land"
+  text "{player} received 50 Coins!"
+  end
+label Clefairy
+  say "That Clefairy! I'd play all day just to watch it hop about."
+  end
+label NoCase
+  say "Round and round they go and I can't stop them where I want. It's driving me up the wall!"
+  end
+
+
+script Worker
+  say "What do I want? Coins, of course. Lots of them. There's a TM over at the prize counter with my name on it."
+  end
+
+
+script LadyBalls
+  say "Sometimes the machine shows you a little sign before you stop the reels. It's telling you what to aim for." "It isn't always honest, mind. But mostly it is."
+  end
+
+
+script Guitarist
+  say "A friend of mine won a mountain of Coins in one sitting. Said the moon went bright and Clefairy just wouldn't go home."
+  end
+
+
+script MaylenesDad
+  say "Nothing's going my way today. Nothing went my way yesterday either." "...Don't tell my daughter you saw me here. She thinks I'm out training."
+  end
+
+
+script BonusSign
+  if var VAR_CONSECUTIVE_BONUS_ROUND_WINS > 999 goto Most
+  text "The board reads: 'Bonus rounds in a row: can you reach 10?'" "Chalked underneath: 'Your best so far: {var:VAR_CONSECUTIVE_BONUS_ROUND_WINS}.'"
+  end
+label Most
+  text "The board reads: 'Bonus rounds in a row: can you reach 10?'" "Chalked underneath: 'Your best so far: 999.'"
+  end
+
+
+script Looker
+  say "Shh! I am not here. That is to say, I am here, but as a man who plays the machines, nothing more." "One hears a great deal at a place like this, if one sits very still and keeps losing."
+  end

@@ -291,6 +291,21 @@ public interface IScriptHost
     /// </summary>
     int UndergroundAct(string what, NPC? subject);
 
+    // ------------------------------------------------------------------ fossils, the Game Corner, the Villa, Pal Park (plan 06 · R16b)
+
+    /// <summary>The Coin Case's coins, Pal Park's six and its show, and the game records the Villa's catalogue asks about.</summary>
+    Models.Pastimes Pastimes { get; }
+
+    /// <summary>What the Villa's catalogue reads of the game's records before it lists its later pieces.</summary>
+    Models.VillaRecords VillaRecords { get; }
+
+    /// <summary>
+    /// What those commands need of the game itself: <c>slots</c> sits the player at a machine of the Game Corner (the
+    /// script waits; the number is the machine's), <c>furnish</c> stands the Villa's furniture in its room,
+    /// <c>boxroom</c> is how many free places the boxes have, <c>store</c> sends Pal Park's six to them (1 when done).
+    /// </summary>
+    int PastimeAct(string what, int number, NPC? subject);
+
     /// <summary>Whose base the player is in, or whose flag they carry: <c>{digger}</c> in a line.</summary>
     string DiggerName { get; }
 

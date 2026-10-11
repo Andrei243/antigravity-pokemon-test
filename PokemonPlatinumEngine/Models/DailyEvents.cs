@@ -53,6 +53,8 @@ public static class DailyEvents
         encounters.DaysPass(days);
         // SystemVars_InitDailyRandomLevel: LCRNG_Next() % 98 + 2
         story.SetVar(RandomLevelVariable, chance.Next(98) + 2);
+        // SystemVars_UpdateVillaVisitor: the Villa's visitor of the day (plan 06 · R16b)
+        VillaRules.NewDay(story, place, chance);
         ReturnHiddenItems(story, place, chance);
     }
 

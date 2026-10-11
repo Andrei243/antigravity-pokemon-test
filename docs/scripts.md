@@ -59,6 +59,10 @@ that exists, every script to something that starts it, and plays each to its end
   player faces a wall that holds something and presses the button, `BasePC` and `DiggerPC` at the PC of the
   player's own base and of another digger's, and `GoUp` from the last tab of the bag below ground. The hikers'
   are their own (`HikerGoods`, `HikerTraps`, `HikerTreasures`), and Roark's welcome is the place's `OnEnter`.
+- **The Villa and Pal Park** (plan 06 · R16b). Looking at a piece of the Villa's furniture runs its `Look…` script
+  of `ResortAreaVilla.txt` (`LookTable`, which is the catalogue's order form, `LookPiano`, `LookPokemonBustSilver`:
+  the piece's flag in words, `GameEngine.VillaLookScript`), and the sixth Pokémon caught in a Catching Show runs
+  `CaughtAll` of `pal_park.txt`.
 - **A gate onto the Cycling Road on foot.** A warp marked for riders only (an overlay's passage with
   `"bicycle": true`) runs `CyclistsOnly` instead of being taken.
 - **Waking up after a lost battle** (plan 06 · R10). The player comes round in the Pokémon Center last gone into,
@@ -404,6 +408,44 @@ Plan 06 · R16a; `docs/mechanics/rulings.md`, "The Underground". What the player
 
 `{thing}` is what the last `underground give` gave, and `{digger}` the digger whose base the player is in, whose
 flag is carried, or whose was last brought home.
+
+### Fossils, the Game Corner, the Villa and Pal Park
+
+Plan 06 · R16b; `docs/mechanics/rulings.md`, "Fossils, the Game Corner, the Villa and Pal Park". The Coin Case's
+coins and the Catching Show are the game's `Pastimes` (saved); the Villa's furniture and visitors are the story's
+own flags and variables (`FLAG_VILLA_FURNITURE_…`, `VAR_RESORT_VILLA_VISITOR`).
+
+| Command | What it does |
+|---|---|
+| `fossil count` | `RESULT` is how many Fossils the bag holds, of whatever kind. |
+| `fossil choose` | Picks the Fossil to revive, asking which when the bag holds more than one kind: `RESULT` 1, or 0 with none chosen. `{item}` names it and `{thing}` what it was. |
+| `fossil revive` | Takes the Fossil chosen and remembers its species (`VAR_REVIVED_POKEMON_SPECIES`): `RESULT` 0 if it couldn't. |
+| `fossil ready` | `RESULT` 1 while a revived Pokémon waits to be collected; `{thing}` names it. |
+| `fossil give` | Hands it over at level 20: `RESULT` 1 into the team, 2 into a box, 0 with none waiting. |
+| `gamecorner coins` | `RESULT` is what the Coin Case holds. `{coins}` in a line says it. |
+| `gamecorner room 500` | `RESULT` 1 when that many more fit (the case holds 50,000). |
+| `gamecorner add 50`, `gamecorner take 50` | Puts coins in or takes them out, all or none: `RESULT` 1 when it did. |
+| `gamecorner slots 3` | Sits the player at a machine of that number (0 to 11: its mood is the day's deal for it) and waits until they get up. |
+| `gamecorner prize` | Asks which of the exchange's prizes: `RESULT` 1, or 0 for none. `{item}`, `{price}` in coins, and `{thing}` the move a TM holds. |
+| `gamecorner buy` | Exchanges coins for the prize chosen: `RESULT` 1, or 0 with too few. |
+| `gamecorner hiddenpower` | Reads the Hidden Power of the Pokémon `RESULT` names (after `choosepokemon`): `RESULT` 0 with none chosen, 1 when it knows the move, 2 when it doesn't, 3 for an Egg; `{thing}` is the type. |
+| `gamecorner cointrick` | The Coin Case's clown tosses his coin: `RESULT` 0 or 1, the hand it is in. |
+| `villa catalogue` | Asks which piece of what the catalogue lists now: `RESULT` 1 for one to order, 2 for one already in the room, 0 for none. `{thing}` names it and `{price}` is its price. |
+| `villa choose "Table"` | Names a piece without asking, with the same `RESULT`. |
+| `villa is "Piano"` | `RESULT` 1 when that is the piece last chosen. |
+| `villa buy` | Pays for the piece chosen, and it is the player's: `RESULT` 0 with too little money. |
+| `villa furnish` | Stands what is owned in the room, each piece in its place. |
+| `villa owned` | `RESULT` is how many pieces are owned. |
+| `palpark check` | `RESULT` 0 when a Catching Show can begin, 1 when the boxes haven't six free places, 2 when six Pokémon don't wait in the park. |
+| `palpark start` | Lets the six loose and hands over six Park Balls: `RESULT` 0 if it couldn't. |
+| `palpark go` | Starts the show's clock. |
+| `palpark active` | `RESULT` 1 while a show is on. |
+| `palpark caught` | `RESULT` is how many of the six are caught. |
+| `palpark points catching` | Stops the clock; `RESULT` and `{number}` are a part of the score (`catching`, `time`, `type`) or all of it (`total`). |
+| `palpark record` | `RESULT` 1 when the total beats `VAR_CATCHING_SHOW_RECORD`, which then keeps it. |
+| `palpark prize` | Hands over the berry the score earns. |
+| `palpark store` | Sends the six to the PC boxes, as Pokémon met at Pal Park. |
+| `palpark end` | Ends the show and keeps nothing of it: the six go on waiting in the park. |
 
 ## Who is on the map
 

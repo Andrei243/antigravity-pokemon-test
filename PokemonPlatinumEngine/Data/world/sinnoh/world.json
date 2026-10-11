@@ -130,7 +130,9 @@
     // Explorer Kit, so the tiles it is come to by are named here: the mat of the secret base, and the four tiles of
     // every chunk that whoever digs down lands on (its tunnels are several systems that don't join one another)
     { "name": "Underground", "matrix": 2, "area": "underground", "setting": "Cave", "arrivals": [[15, 23]],
-      "arrivalsInEveryChunk": [[8, 8], [23, 8], [8, 23], [23, 23]] }
+      "arrivalsInEveryChunk": [[8, 8], [23, 8], [8, 23], [23, 23]] },
+    // Plan 06 · R16b: Pal Park's grounds, where the Catching Show is held (a matrix of its own behind the lobby on Route 221)
+    { "name": "PalPark", "matrix": 49, "area": "pal_park", "trees": "Round" }
   ],
   "areas": [
     "twinleaf_town",
@@ -302,6 +304,8 @@
     // Plan 02 · S11, part a
     "lake_acuity",
     // Plan 06 · R16a
-    "underground"
+    "underground",
+    // Plan 06 · R16b
+    "pal_park"
   ]
 }

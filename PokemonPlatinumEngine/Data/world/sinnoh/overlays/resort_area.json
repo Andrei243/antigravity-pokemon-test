@@ -5,14 +5,23 @@
   "trees": "Round",
   "architecture": "Resort",
   "doors": [
-    { "warp": 3, "map": "ResortAreaPokemonCenter", "x": 5, "y": 7, "facing": "Up" }
+    { "warp": 3, "map": "ResortAreaPokemonCenter", "x": 5, "y": 7, "facing": "Up" },
+    // The Villa, built to the original's plan (plan 06 · R16b)
+    { "warp": 0, "map": "ResortAreaVilla", "x": 11, "y": 11, "facing": "Up" }
   ],
-  // The Villa (plan 06 · R16b gives it to the player and furnishes it), the Ribbon Syndicate (plan 06 · R17b) and
-  // the house by the pond (plan 01 · M11)
-  "locked": [ 0, 1, 2 ],
-  // The boy who hands the Villa over (trigger 0) and the Villa's visitors, the professor and four Gym Leaders who
-  // wait at its door, come with the Villa (plan 06 · R16b)
+  // The Ribbon Syndicate (plan 06 · R17b) and the house by the pond (plan 01 · M11)
+  "locked": [ 1, 2 ],
+  // The boy who hands the Villa over (scripts/resort_area.txt, plan 06 · R16b)
+  "triggers": [ { "trigger": 0, "script": "GiveVilla" } ],
   "people": {
+    // The Villa's giver, and the five of its visitors who wait at its door to be asked in (plan 06 · R16b). Byron has
+    // no look of his own yet (plan 11)
+    "school_kid_m": { "name": "Boy", "npcType": "Youngster", "script": "SchoolKid", "still": true },
+    "prof_rowan": { "name": "Professor Rowan", "npcType": "Rowan", "script": "ProfRowan", "still": true },
+    "roark": { "name": "Roark", "npcType": "Roark", "script": "Roark", "still": true },
+    "gardenia": { "name": "Gardenia", "npcType": "Gardenia", "script": "Gardenia", "still": true },
+    "maylene": { "name": "Maylene", "npcType": "Maylene", "script": "Maylene", "still": true },
+    "byron": { "name": "Byron", "npcType": "Gentleman", "script": "Byron", "still": true },
     "beauty_1": {
       "name": "Beauty",
       "dialog": [
