@@ -44,6 +44,7 @@ public partial class GameEngine
         factory = null;
         hall = null;
         castle = null;
+        arcade = null;
         enteredSlots = Array.Empty<int>();
         if (saved != null)
         {
@@ -101,6 +102,7 @@ public partial class GameEngine
                     FrontierFacility.Factory => JournalEventKind.BattleFactory,
                     FrontierFacility.Hall => JournalEventKind.BattleHall,
                     FrontierFacility.Castle => JournalEventKind.BattleCastle,
+                    FrontierFacility.Arcade => JournalEventKind.BattleArcade,
                     _ => JournalEventKind.BattleTower
                 }));
                 if (number == (int)FrontierFacility.Factory) AskForRentalPictures();
@@ -132,6 +134,9 @@ public partial class GameEngine
             case "trade":
                 OpenFactoryTrade();
                 return 0;
+            case "arcadeboard":
+                OpenArcadeBoard();
+                return 0;
             default:
                 return 0;
         }
@@ -157,7 +162,7 @@ public partial class GameEngine
     /// A battle of the Battle Frontier (<c>FieldBattleDTO_NewBattleTower</c>): the team is the battle's own, the foes
     /// are the trainers made for it, the ground is the Frontier's own, and nothing is won, lost or learnt by it.
     /// </summary>
-    private void StartFrontierBattle(Party team, IReadOnlyList<Trainer> foes, Trainer? beside, bool doubles)
+    private void StartFrontierBattle(Party team, IReadOnlyList<Trainer> foes, Trainer? beside, bool doubles, FrontierConditions? conditions = null)
     {
         EndRadarChain();
         scriptOutcome = BattleOutcome.None;
@@ -187,7 +192,10 @@ public partial class GameEngine
                     Night = GameClock.IsNight,
                     HasCaught = species => playerPokedex.IsCaught(species.DexNumber),
                     Badges = story.BadgeCount,
-                    Player = PlayerMark
+                    Player = PlayerMark,
+                    // The weather or the Trick Room a facility's own rules open the battle under (the Battle Arcade's board, plan 06 · R18d)
+                    Weather = conditions?.Weather ?? Battle.Sim.BattleWeather.None,
+                    TrickRoom = conditions?.TrickRoom ?? false
                 },
                 MoveHints = MoveHintsOn
             });
@@ -203,6 +211,8 @@ public partial class GameEngine
     private void EndFrontierBattle()
     {
         scriptOutcome = battle?.Result == BattleResult.PlayerVictory ? BattleOutcome.Won : BattleOutcome.Lost;
+        // The turns it took, which the Battle Arcade scores a battle by (dto->totalTurnsElapsed)
+        scriptTurns = battle?.Core.Turn ?? 0;
         battleMayBeLost = false;
         StartTransition(GameState.Overworld, () =>
         {
@@ -241,6 +251,7 @@ public partial class GameEngine
         public BattleTowerChallenge? Tower { get => game.tower; set => game.tower = value; }
         public int FrontierAct(string what, int number, NPC? subject) => game.FrontierAct(what, number, subject);
         public IReadOnlyList<int> Entered => game.enteredSlots;
-        public void FrontierBattle(Party team, IReadOnlyList<Trainer> foes, Trainer? partner, bool doubles) => game.StartFrontierBattle(team, foes, partner, doubles);
+        public void FrontierBattle(Party team, IReadOnlyList<Trainer> foes, Trainer? partner, bool doubles, FrontierConditions? conditions = null) =>
+            game.StartFrontierBattle(team, foes, partner, doubles, conditions);
     }
 }

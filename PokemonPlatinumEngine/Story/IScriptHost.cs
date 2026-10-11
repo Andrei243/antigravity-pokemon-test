@@ -354,9 +354,11 @@ public interface IScriptHost
     /// <summary>
     /// A battle of the Battle Frontier (<see cref="BattleSetup.Frontier"/>): the team is the battle's own copy, the
     /// foes are trainers made for it, and nothing it does reaches the player's Pokémon, bag or money. Lost, the script
-    /// goes on. <see cref="Outcome"/> is how it went once the host is no longer busy.
+    /// goes on. <see cref="Outcome"/> is how it went once the host is no longer busy. <paramref name="conditions"/>
+    /// are the weather or the Trick Room the battle opens under, where a facility sets one (the Battle Arcade's
+    /// board, plan 06 · R18d).
     /// </summary>
-    void FrontierBattle(Party team, IReadOnlyList<Trainer> foes, Trainer? partner, bool doubles);
+    void FrontierBattle(Party team, IReadOnlyList<Trainer> foes, Trainer? partner, bool doubles, Models.Frontier.FrontierConditions? conditions = null);
 
     /// <summary>
     /// How many turns the battle last fought went on for before the one that ended it (plan 01 · M11, part b; the
@@ -416,4 +418,12 @@ public interface IScriptHost
     /// field until the script ends.
     /// </summary>
     Models.Frontier.BattleCastleChallenge? Castle { get; set; }
+
+    /// <summary>
+    /// The Battle Arcade challenge under way (plan 06 · R18d); null while none is. <see cref="FrontierAct"/> takes one
+    /// more word for it: <c>arcadeboard</c> opens the game board the challenge has brought up
+    /// (<see cref="Models.Frontier.BattleArcadeChallenge.Board"/>) and plays it until its cursor is stopped (the script
+    /// waits).
+    /// </summary>
+    Models.Frontier.BattleArcadeChallenge? Arcade { get; set; }
 }

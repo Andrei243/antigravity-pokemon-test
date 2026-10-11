@@ -40917,5 +40917,704 @@
       12,
       27
     ]
+  },
+  "arcade": {
+    "opponents": [
+      [
+        0,
+        99,
+        100,
+        119
+      ],
+      [
+        80,
+        119,
+        120,
+        139
+      ],
+      [
+        100,
+        139,
+        140,
+        159
+      ],
+      [
+        120,
+        159,
+        160,
+        179
+      ],
+      [
+        140,
+        179,
+        180,
+        199
+      ],
+      [
+        160,
+        199,
+        200,
+        219
+      ],
+      [
+        180,
+        219,
+        220,
+        239
+      ],
+      [
+        200,
+        299,
+        200,
+        299
+      ]
+    ],
+    "items": [
+      [
+        "King's Rock",
+        "Quick Claw",
+        "Bright Powder",
+        "Metronome",
+        "Big Root",
+        "Focus Band",
+        "Focus Sash",
+        "Leftovers",
+        "Iron Ball",
+        "Lagging Tail",
+        "Black Sludge"
+      ],
+      [
+        "White Herb",
+        "Power Herb",
+        "Muscle Band",
+        "Wise Glasses",
+        "Shell Bell",
+        "Scope Lens",
+        "Wide Lens",
+        "Zoom Lens",
+        "Expert Belt",
+        "Life Orb",
+        "Iron Ball",
+        "Lagging Tail",
+        "Black Sludge"
+      ],
+      [
+        "Focus Band",
+        "Focus Sash",
+        "Leftovers",
+        "Scope Lens",
+        "Wide Lens",
+        "Zoom Lens",
+        "Expert Belt",
+        "Life Orb",
+        "Choice Band",
+        "Choice Specs",
+        "Choice Scarf"
+      ]
+    ],
+    "berries": [
+      [
+        "Cheri Berry",
+        "Chesto Berry",
+        "Pecha Berry",
+        "Rawst Berry",
+        "Aspear Berry",
+        "Persim Berry",
+        "Sitrus Berry",
+        "Lum Berry"
+      ],
+      [
+        "Occa Berry",
+        "Passho Berry",
+        "Wacan Berry",
+        "Rindo Berry",
+        "Yache Berry",
+        "Chople Berry",
+        "Kebia Berry",
+        "Shuca Berry",
+        "Coba Berry",
+        "Payapa Berry",
+        "Tanga Berry",
+        "Charti Berry",
+        "Kasib Berry",
+        "Haban Berry",
+        "Colbur Berry",
+        "Babiri Berry",
+        "Chilan Berry",
+        "Persim Berry",
+        "Sitrus Berry",
+        "Lum Berry"
+      ],
+      [
+        "Persim Berry",
+        "Sitrus Berry",
+        "Lum Berry",
+        "Liechi Berry",
+        "Ganlon Berry",
+        "Salac Berry",
+        "Petaya Berry",
+        "Apicot Berry",
+        "Lansat Berry",
+        "Starf Berry"
+      ]
+    ],
+    "effects": [
+      {
+        "name": "LOWER_FOE_HP",
+        "rounds": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "name": "POISON_FOE",
+        "rounds": [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "name": "PARALYZE_FOE",
+        "rounds": [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "name": "BURN_FOE",
+        "rounds": [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "name": "SLEEP_FOE",
+        "rounds": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "name": "FREEZE_FOE",
+        "rounds": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "name": "FOE_GET_BERRY",
+        "rounds": [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "name": "FOE_GET_ITEM",
+        "rounds": [
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "name": "FOE_LEVEL_UP",
+        "rounds": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "name": "LOWER_ALLY_HP",
+        "rounds": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "name": "POISON_ALLY",
+        "rounds": [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "name": "PARALYZE_ALLY",
+        "rounds": [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "name": "BURN_ALLY",
+        "rounds": [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "name": "SLEEP_ALLY",
+        "rounds": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "name": "FREEZE_ALLY",
+        "rounds": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "name": "ALLY_GET_BERRY",
+        "rounds": [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "name": "ALLY_GET_ITEM",
+        "rounds": [
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "name": "ALLY_LEVEL_UP",
+        "rounds": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "name": "SUNNY_BATTLE",
+        "rounds": [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "name": "RAINY_BATTLE",
+        "rounds": [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "name": "SANDY_BATTLE",
+        "rounds": [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "name": "HAIL_BATTLE",
+        "rounds": [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "name": "FOGGY_BATTLE",
+        "rounds": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1
+        ]
+      },
+      {
+        "name": "TRICK_ROOM",
+        "rounds": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1
+        ]
+      },
+      {
+        "name": "SPEED_UP",
+        "rounds": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "battles": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0
+        ]
+      },
+      {
+        "name": "SLOW_DOWN",
+        "rounds": [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "battles": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0
+        ]
+      },
+      {
+        "name": "RANDOMIZE_CURSOR",
+        "rounds": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "battles": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0
+        ]
+      },
+      {
+        "name": "SWAP_MONS",
+        "rounds": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1
+        ],
+        "battles": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0
+        ]
+      },
+      {
+        "name": "GET_1_BP",
+        "rounds": [
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "battles": [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "NO_BATTLE",
+        "rounds": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1
+        ],
+        "battles": [
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0
+        ]
+      },
+      {
+        "name": "NO_EVENT",
+        "rounds": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "name": "GET_3_BP",
+        "rounds": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "battles": [
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0
+        ]
+      }
+    ],
+    "weights": [
+      [
+        15,
+        15,
+        40,
+        30
+      ],
+      [
+        35,
+        20,
+        30,
+        15
+      ],
+      [
+        30,
+        30,
+        35,
+        5
+      ],
+      [
+        25,
+        40,
+        30,
+        5
+      ],
+      [
+        10,
+        75,
+        10,
+        5
+      ]
+    ],
+    "thresholds": [
+      21,
+      16,
+      10,
+      5
+    ],
+    "cursorFrames": [
+      20,
+      16,
+      8,
+      4,
+      3,
+      2,
+      1,
+      0
+    ],
+    "speedByRound": [
+      [
+        7,
+        5
+      ],
+      [
+        4,
+        4
+      ],
+      [
+        0,
+        3
+      ]
+    ],
+    "scoreByStatus": [
+      8,
+      6,
+      4,
+      0,
+      0
+    ],
+    "scoreByFainted": [
+      6,
+      4,
+      2,
+      0,
+      0
+    ],
+    "scoreByTurns": [
+      [
+        3,
+        10
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        7,
+        4
+      ],
+      [
+        9,
+        2
+      ],
+      [
+        10,
+        0
+      ]
+    ],
+    "pointsByRound": [
+      0,
+      2,
+      2,
+      2,
+      2,
+      4,
+      4,
+      5,
+      6
+    ]
   }
 }

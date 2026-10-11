@@ -128,6 +128,7 @@ public sealed partial class Importer
 
         Hall(data, constants);
         Castle(data, constants);
+        Arcade(data, constants);
         return data;
     }
 
@@ -231,6 +232,69 @@ public sealed partial class Importer
         data.Castle.ItemsByRank = ByRank("sItemsAvailableByRank[]", data.Castle.Items.Count);
         if (data.Castle.Berries.Count != 32 || data.Castle.Items.Count != 27 || data.Castle.BerriesByRank.Count != 3 || data.Castle.ItemsByRank.Count != 3)
             throw new InvalidDataException("The Battle Castle's counters were not read");
+    }
+
+    /// <summary>
+    /// The Battle Arcade (plan 06 · R18d): each round's trainers (<c>sBattleArcadeOpponentPools</c>,
+    /// <c>src/overlay104/battle_arcade_helpers.c</c>); what its board gives to hold, how fast its cursor starts, what a
+    /// battle scores and what a round earns (<c>src/overlay104/battle_arcade.c</c>); and the board's own tables: the
+    /// rounds and battles each event may come up in, the weights of the four kinds of event and the cursor's paces
+    /// (<c>src/applications/frontier/battle_arcade/main.c</c>). The events are kept in the order of their numbers
+    /// (<c>include/constants/battle_frontier.h</c>).
+    /// </summary>
+    private void Arcade(FrontierData data, List<string> trainerConstants)
+    {
+        string helpers = decomp.Source("overlay104", "battle_arcade_helpers.c");
+        string rounds = Regex.Match(helpers, @"sBattleArcadeOpponentPools\[\] = \{(.*?)\n\};", RegexOptions.Singleline).Groups[1].Value;
+        data.Arcade.Opponents = Regex.Matches(rounds, @"\{ (FRONTIER_TRAINER_\w+), (FRONTIER_TRAINER_\w+), (FRONTIER_TRAINER_\w+), (FRONTIER_TRAINER_\w+) \}")
+            .Select(m => Enumerable.Range(1, 4).Select(g => trainerConstants.IndexOf(m.Groups[g].Value)).ToArray()).ToList();
+        if (data.Arcade.Opponents.Count != 8 || data.Arcade.Opponents.Any(r => r.Any(n => n < 0) || r[1] <= r[0] || r[3] <= r[2]))
+            throw new InvalidDataException("The Battle Arcade's rounds were not read");
+
+        string arcade = decomp.Source("overlay104", "battle_arcade.c");
+        string Body(string source, string head) => Regex.Match(source, Regex.Escape(head) + @" = \{(.*?)\};", RegexOptions.Singleline).Groups[1].Value;
+        List<int> Numbers(string source, string head) => Regex.Matches(Body(source, head), @"\d+").Select(m => int.Parse(m.Value)).ToList();
+        List<int[]> Pairs(string source, string head) => Regex.Matches(Body(source, head), @"\{ (\d+), (\d+) \}").Select(m => new[] { int.Parse(m.Groups[1].Value), int.Parse(m.Groups[2].Value) }).ToList();
+        List<List<string>> Held(string kind) => Enumerable.Range(1, 3)
+            .Select(tier => Regex.Matches(Body(arcade, $"static const u16 s{kind}PoolTier{tier}[]"), @"ITEM_\w+").Select(m => ItemName(m.Value)).ToList()).ToList();
+        data.Arcade.Items = Held("Item");
+        data.Arcade.Berries = Held("Berry");
+        if (!data.Arcade.Items.Select(l => l.Count).SequenceEqual(new[] { 11, 13, 11 }) || !data.Arcade.Berries.Select(l => l.Count).SequenceEqual(new[] { 8, 20, 10 }))
+            throw new InvalidDataException("The Battle Arcade's items and berries were not read");
+        data.Arcade.SpeedByRound = Pairs(arcade, "} sRouletteSpeedByRound[]");
+        data.Arcade.ScoreByStatus = Numbers(arcade, "sPerformanceByNumWithStatus[ARCADE_MAX_PARTY_SIZE + 1]");
+        data.Arcade.ScoreByFainted = Numbers(arcade, "sPerformanceByNumFainted[ARCADE_MAX_PARTY_SIZE + 1]");
+        data.Arcade.ScoreByTurns = Pairs(arcade, "} sPerformanceByTurnsElapsed[]");
+        data.Arcade.PointsByRound = Numbers(arcade, "sBPPerRoundSolo[ARCADE_MAX_DISTINCT_ROUNDS + 1]");
+        if (data.Arcade.SpeedByRound.Count != 3 || data.Arcade.ScoreByStatus.Count != 5 || data.Arcade.ScoreByFainted.Count != 5
+            || data.Arcade.ScoreByTurns.Count != 5 || data.Arcade.PointsByRound.Count != 9)
+            throw new InvalidDataException("The Battle Arcade's scores, speeds and Battle Points were not read");
+
+        // The board. Its events by their numbers, each with the seven rounds it may come up in
+        string board = decomp.Source("applications", "frontier", "battle_arcade", "main.c");
+        var numbers = Regex.Matches(decomp.Text("include", "constants", "battle_frontier.h"), @"#define ARCADE_EFFECT_(\w+)\s+(\d+)")
+            .Where(m => !m.Groups[1].Value.StartsWith("CATEGORY_")).ToDictionary(m => m.Groups[1].Value, m => int.Parse(m.Groups[2].Value));
+        var byRound = Regex.Matches(Body(board, "} sEffectAvailabilityByRound[NUM_ARCADE_EFFECTS]").Replace("\n", " ") + "}", @"\[ARCADE_EFFECT_(\w+)\] =\s+\{ ([01, ]+) \}")
+            .ToDictionary(m => m.Groups[1].Value, m => Regex.Matches(m.Groups[2].Value, "[01]").Select(b => int.Parse(b.Value)).ToArray());
+        // The seven events that go by the battle as well: the row each reads is named in GetAvailableEffects
+        var rows = Regex.Matches(Body(board, "} sEffectAvailabilityByBattle[ARCADE_BATTLES_PER_ROUND]") + "}", @"\{ ([01, ]+) \}")
+            .Select(m => Regex.Matches(m.Groups[1].Value, "[01]").Select(b => int.Parse(b.Value)).ToArray()).ToList();
+        var rowOf = Regex.Matches(board, @"case ARCADE_EFFECT_(\w+):\s+effectIndex = (\d+);").ToDictionary(m => m.Groups[1].Value, m => int.Parse(m.Groups[2].Value));
+        if (numbers.Count != 32 || byRound.Count != 32 || rows.Count != 7 || rowOf.Count != 7 || rows.Any(r => r.Length != 7) || byRound.Values.Any(r => r.Length != 7))
+            throw new InvalidDataException($"The Battle Arcade's board was not read: {numbers.Count} events, {byRound.Count} rows by round, {rows.Count} by battle for {rowOf.Count}");
+        data.Arcade.Effects = numbers.OrderBy(n => n.Value).Select(n => new ArcadeEffectRecord
+        {
+            Name = n.Key,
+            Rounds = byRound[n.Key],
+            Battles = rowOf.TryGetValue(n.Key, out int row) ? rows[row] : null
+        }).ToList();
+        if (!data.Arcade.Effects.Select((e, i) => numbers[e.Name] == i).All(ok => ok)) throw new InvalidDataException("The Battle Arcade's events are not numbered from nought");
+        data.Arcade.Weights = Regex.Matches(Body(board, "sCategoryWeights[][NUM_ARCADE_EFFECT_CATEGORIES]") + "}", @"\{ (\d+), (\d+), (\d+), (\d+) \}")
+            .Select(m => Enumerable.Range(1, 4).Select(g => int.Parse(m.Groups[g].Value)).ToArray()).ToList();
+        data.Arcade.Thresholds = Numbers(board, "sCategoryTierPerformanceThresholds[]");
+        data.Arcade.CursorFrames = Pairs(board, "sCursorMoveFrames[8][2]").Select(p => p[0]).ToList();
+        if (data.Arcade.Weights.Count != 5 || data.Arcade.Weights.Any(w => w.Sum() != 100) || data.Arcade.Thresholds.Count != 4 || data.Arcade.CursorFrames.Count != 8)
+            throw new InvalidDataException("The Battle Arcade's weights, thresholds and cursor paces were not read");
     }
 
     private static JsonElement Json(string text)

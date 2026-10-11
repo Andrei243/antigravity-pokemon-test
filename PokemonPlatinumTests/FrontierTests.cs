@@ -772,8 +772,8 @@ public class FrontierTests
         Assert.Equal(new[] { "Single Battle", "Double Battle", "Multi Battle" }, board.Rows.Select(r => r.Label));
         Assert.Equal(new FrontierBoardRow("Double Battle", 30, 14, true), board.Rows[1]);
         Assert.Equal(new FrontierBoardRow("Single Battle", 0, 0, false), board.Rows[0]);
-        // A facility not built yet has a board with no rows
-        Assert.Empty(FrontierBoard.For(FrontierFacility.Arcade, records, story).Rows);
+        // Every facility is built (the Arcade was the last, plan 06 · R18d): none has a board with no rows
+        Assert.All(Enum.GetValues<FrontierFacility>(), facility => Assert.NotEmpty(FrontierBoard.For(facility, records, story).Rows));
     }
 
     // ------------------------------------------------------------------ a Frontier battle

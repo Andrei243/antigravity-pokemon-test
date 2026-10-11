@@ -15,7 +15,7 @@ public sealed record FrontierSpeciesRow(string Species, int Single, int Double);
 /// What a facility's records machine shows (plan 06 · R18a; the original's Frontier records application,
 /// <c>src/applications/frontier/records</c>, opened by <c>scripts_battle_frontier_records.s</c>): a row for each way
 /// its challenge is taken, the Battle Points held and the commemorative print won. Each facility gives its own rows
-/// (<see cref="For"/>); the Tower's are here. No drawing or input.
+/// (<see cref="For"/>). No drawing or input.
 /// </summary>
 public sealed record FrontierBoard(FrontierFacility Facility, string Title, IReadOnlyList<FrontierBoardRow> Rows, int BattlePoints, FrontierPrint Print, int Victories)
 {
@@ -34,7 +34,7 @@ public sealed record FrontierBoard(FrontierFacility Facility, string Title, IRea
         _ => "Battle Arcade"
     };
 
-    /// <summary>The board of a facility as the records stand. A facility not built yet has a board with no rows.</summary>
+    /// <summary>The board of a facility as the records stand: every one of the five has rows of its own.</summary>
     public static FrontierBoard For(FrontierFacility facility, FrontierRecords records, StoryState story)
     {
         var rows = new List<FrontierBoardRow>();
@@ -83,6 +83,13 @@ public sealed record FrontierBoard(FrontierFacility Facility, string Title, IRea
                 rows.Add(new FrontierBoardRow(label, records.Get(BattleCastleChallenge.RecordStreakStat(way)), records.Get(BattleCastleChallenge.LatestStreakStat(way)),
                     records.IsRunning(FrontierFacility.Castle, (int)way),
                     records.Get(BattleCastleChallenge.RecordPointsStat(way)), records.Get(BattleCastleChallenge.LatestPointsStat(way))));
+        }
+        if (facility == FrontierFacility.Arcade)
+        {
+            // The Battle Arcade (plan 06 · R18d): a streak and nothing beside it
+            foreach (var (way, label) in new[] { (FrontierChallenge.Single, "Single Battle"), (FrontierChallenge.Double, "Double Battle") })
+                rows.Add(new FrontierBoardRow(label, records.Get(BattleArcadeChallenge.RecordStreakStat(way)), records.Get(BattleArcadeChallenge.LatestStreakStat(way)),
+                    records.IsRunning(FrontierFacility.Arcade, (int)way)));
         }
         return new FrontierBoard(facility, NameOf(facility), rows, records.BattlePoints, FrontierBrains.PrintOf(story, facility), records.VictoriesAt(facility)) { CountLabel = counted, Species = species };
     }

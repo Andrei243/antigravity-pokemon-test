@@ -85,6 +85,9 @@ public partial class GameEngine
         public HallBoardScreen HallBoard => game.hallBoard;
         public Models.Frontier.BattleCastleChallenge? Castle => game.castle;
         public CastleScreen CastleCounter => game.castleScreen;
+        /// <summary>The Battle Arcade (plan 06 · R18d): the challenge under way and its game board.</summary>
+        public Models.Frontier.BattleArcadeChallenge? Arcade => game.arcade;
+        public ArcadeBoardScreen ArcadeBoard => game.arcadeBoard;
         public Models.Underground.UndergroundField Tunnels => game.Tunnels;
         public MiningScreen Mining => game.miningScreen;
         public UndergroundScreen UndergroundLists => game.undergroundScreen;

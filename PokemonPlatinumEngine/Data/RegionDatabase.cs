@@ -230,6 +230,8 @@ public static class RegionDatabase
                 // Plan 06 · R18c: the Battle Hall's lobby, passage and stage, and the Battle Castle's lobby, valet's room and throne room
                 "BattleHall", "BattleHallCorridor", "BattleHallStage",
                 "BattleCastle", "BattleCastleCorridor", "BattleCastleBattleRoom",
+                // Plan 06 · R18d: the Battle Arcade's lobby, corridor and game room
+                "BattleArcade", "BattleArcadeCorridor", "BattleArcadeBattleRoom",
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

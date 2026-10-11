@@ -1,8 +1,8 @@
 # The Battle Frontier's grounds (plan 01 · M10, part b). docs/scripts.md describes the language; the lines are our
 # own, on the original's beats (scripts_battle_frontier.s).
 #
-# The Battle Tower's doors are open (plan 06 · R18a), the Battle Factory's (R18b) and the Battle Hall's and the
-# Battle Castle's (R18c); the Battle Arcade's are shut until its inside is built (R18d). The Exchange Service
+# All five facilities' doors are open: the Battle Tower's (plan 06 · R18a), the Battle Factory's (R18b), the Battle
+# Hall's and the Battle Castle's (R18c) and the Battle Arcade's (R18d). The Exchange Service
 # Corner's two booths trade Battle Points for prizes; the third, the scratch-off cards',
 # waits for its cards. The reporter whom the original's arrival script moves about the grounds waits for the
 # television programmes (plan 08).
@@ -62,6 +62,15 @@ script EnterBattleCastle
   walk player left 1 fast
   sound "door_slide"
   warp "BattleCastle" 21 9 left
+  end
+
+
+# The way into the Battle Arcade (the original's script 36), which stands in the south-east of the grounds: whoever
+# steps under its porch is walked on in to the mat inside its lobby's door (plan 06 · R18d).
+script EnterBattleArcade
+  walk player right 2 fast
+  sound "door_slide"
+  warp "BattleArcade" 1 6 right
   end
 
 

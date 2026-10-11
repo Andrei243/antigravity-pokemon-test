@@ -80,6 +80,8 @@ public enum Op
     NationalDex,
     // The Battle Hall and the Battle Castle (plan 06 · R18c)
     Hall, Castle,
+    // The Battle Arcade (plan 06 · R18d)
+    Arcade,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>
