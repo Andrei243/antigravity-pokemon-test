@@ -135,6 +135,11 @@ public sealed class HeadlessScriptHost : IScriptHost
     public Dictionary<string, int> UndergroundResults { get; } = new();
     public string DiggerName { get; set; } = "Bram";
 
+    /// <summary>What the script's dice come to, in turn (each taken within its die's sides); 0 once they run out.</summary>
+    public Queue<int> Rolls { get; } = new();
+
+    public int Random(int sides) => Rolls.Count > 0 ? Rolls.Dequeue() % Math.Max(1, sides) : 0;
+
     public int UndergroundAct(string what, NPC? subject)
     {
         Log.Add($"underground {what}");

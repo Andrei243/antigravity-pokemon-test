@@ -1,0 +1,268 @@
+{
+  "name": "OldChateauEastRoom",
+  "displayName": "Old Chateau",
+  "bgmTrack": "sinnoh/turnback_cave",
+  "interior": "House",
+  "trees": "Round",
+  "encounterRate": 10,
+  "width": 9,
+  "height": 10,
+  "ground": [
+    "#########",
+    "#########",
+    "#########",
+    "#_______#",
+    "#_______#",
+    "D_______#",
+    "#_______#",
+    "#_______#",
+    "#_______#",
+    "#########"
+  ],
+  "solid": [
+    "#########",
+    "#########",
+    "#########",
+    "#..######",
+    "#.......#",
+    "....#####",
+    "#...#####",
+    "#...#####",
+    "#......##",
+    "#########"
+  ],
+  "behaviours": [
+    { "x": 1, "y": 3, "width": 2, "depth": 1, "behaviour": "OldChateauFloor" },
+    { "x": 1, "y": 4, "width": 7, "depth": 1, "behaviour": "OldChateauFloor" },
+    { "x": 2, "y": 5, "width": 2, "depth": 1, "behaviour": "OldChateauFloor" },
+    { "x": 1, "y": 6, "width": 3, "depth": 2, "behaviour": "OldChateauFloor" },
+    { "x": 1, "y": 8, "width": 6, "depth": 1, "behaviour": "OldChateauFloor" }
+  ],
+  "props": [
+    {
+      "type": "TrashCan",
+      "x": 3,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 4,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 5,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 6,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 7,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 1,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 4,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 4,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 5,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 5,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 6,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 6,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 7,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 7,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 4,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 5,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 6,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 7,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 7,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 0,
+      "sourceY": 5,
+      "targetMap": "OldChateau",
+      "targetX": 17,
+      "targetY": 6,
+      "targetFacing": "Left"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 7,
+      "y": 8,
+      "text": "An old notebook. Something is scrawled in it: \"... anything so peculiar ought to make off with the mot...\"\nThe rest of the pages are blank."
+    }
+  ],
+  "npcs": [],
+  "wildEncounters": [
+    {
+      "speciesName": "Gastly",
+      "minLevel": 14,
+      "maxLevel": 14,
+      "weight": 20
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 15,
+      "maxLevel": 15,
+      "weight": 20
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 14,
+      "maxLevel": 14,
+      "weight": 10
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 15,
+      "maxLevel": 15,
+      "weight": 10
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 16,
+      "maxLevel": 16,
+      "weight": 10
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 17,
+      "maxLevel": 17,
+      "weight": 10
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 16,
+      "maxLevel": 16,
+      "weight": 5
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 17,
+      "maxLevel": 17,
+      "weight": 5
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 17,
+      "maxLevel": 17,
+      "weight": 4
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 17,
+      "maxLevel": 17,
+      "weight": 4
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 17,
+      "maxLevel": 17,
+      "weight": 1
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 17,
+      "maxLevel": 17,
+      "weight": 1
+    }
+  ]
+}

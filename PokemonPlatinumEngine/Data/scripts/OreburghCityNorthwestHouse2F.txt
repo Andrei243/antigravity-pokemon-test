@@ -1,0 +1,15 @@
+# Oreburgh City's north-west house, upper floor (plan 01 · M11, part a), on the original's plan. docs/scripts.md
+# describes the language; the lines are our own, on the original's beats (scripts_oreburgh_city_northwest_house_2f.s).
+#
+# The girl by the shelves gives a Dusk Ball, once (FLAG_RECEIVED_OREBURGH_CITY_NORTHWEST_HOUSE_2F_DUSK_BALL).
+
+
+script DuskBall
+  if flag FLAG_RECEIVED_OREBURGH_CITY_NORTHWEST_HOUSE_2F_DUSK_BALL goto Explain
+  say "Are you out catching Pokémon? Here, have this if it's any use to you."
+  give "Dusk Ball"
+  setflag FLAG_RECEIVED_OREBURGH_CITY_NORTHWEST_HOUSE_2F_DUSK_BALL
+  end
+label Explain
+  say "A Dusk Ball is made for the dark." "It works best at night, or down in a cave."
+  end

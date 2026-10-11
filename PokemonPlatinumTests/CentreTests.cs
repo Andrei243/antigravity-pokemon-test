@@ -101,16 +101,19 @@ public class CentreTests
     public void ADoorOfAPlaceNotBuiltYetStaysShut()
     {
         var map = Overworld;
-        // Hearthome's Foreign Building, Solaceon's north-east house (Mt. Coronet's upper floors, shut here until plan
-        // 01 · M8, are open, Eterna's Gym since M9, Hearthome's Contest Hall and the Lost Tower since plan 02 · S7, and
-        // Solaceon's Day Care since plan 06 · R15)
-        foreach (var (x, y) in new[] { (460, 709), (579, 648) })
+        // The room of the Solaceon Ruins that Maniac Tunnel comes out in (Mt. Coronet's upper floors, shut here until plan
+        // 01 · M8, are open, Eterna's Gym since M9, Hearthome's Contest Hall and the Lost Tower since plan 02 · S7,
+        // Solaceon's Day Care since plan 06 · R15, and Hearthome's Foreign Building, Solaceon's houses and the Old
+        // Chateau since plan 01 · M11, part a)
+        foreach (var (x, y) in new[] { (597, 652) })
         {
             Assert.Null(map.GetWarpAt(x, y));
             Assert.True(map.IsSolid(x, y), $"the way in at ({x},{y}) leads nowhere and can be walked into");
         }
         var forest = BuiltMaps.Value["EternaForest"];
-        Assert.Null(forest.GetWarpAt(74, 15));   // the Old Chateau
+        Assert.Equal("OldChateau", forest.GetWarpAt(74, 15)?.TargetMap);
+        Assert.Equal("ForeignBuilding", map.GetWarpAt(460, 709)?.TargetMap);
+        Assert.Equal("SolaceonTownNortheastHouse", map.GetWarpAt(579, 648)?.TargetMap);
         Assert.Contains(forest.PlacedBuildings!, b => b.Kind == BuildingKind.Mansion);
     }
 

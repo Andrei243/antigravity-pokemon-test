@@ -276,6 +276,7 @@ public class ScriptTests
           palpark prize
           palpark store
           palpark end
+          random 6
         script Other
           end
         """;
@@ -1130,6 +1131,7 @@ public class ScriptTests
         public PokemonPlatinumEngine.Models.VillaRecords VillaRecords => inner.VillaRecords;
         public int PastimeAct(string what, int number, NPC? subject) => inner.PastimeAct(what, number, subject);
         public string DiggerName => inner.DiggerName;
+        public int Random(int sides) => inner.Random(sides);
         public int? HoneyTreeFaced => inner.HoneyTreeFaced;
         public uint TrainerNumber => inner.TrainerNumber;
         public TimeOfDay TimeOfDay => inner.TimeOfDay;

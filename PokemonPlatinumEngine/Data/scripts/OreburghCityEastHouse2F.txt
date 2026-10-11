@@ -1,0 +1,15 @@
+# Oreburgh City's east house, upper floor (plan 01 · M11, part a), on the original's plan. docs/scripts.md describes
+# the language; the lines are our own, on the original's beats (scripts_oreburgh_city_east_house_2f.s).
+#
+# The boy at the table gives a Great Ball, once (FLAG_RECEIVED_OREBURGH_CITY_EAST_HOUSE_2F_GREAT_BALL), and goes
+# straight on to what he thinks about Poké Balls, as the original does.
+
+
+script GreatBall
+  if flag FLAG_RECEIVED_OREBURGH_CITY_EAST_HOUSE_2F_GREAT_BALL goto Thinking
+  say "Wow... Your Pokémon's eyes are positively sparkling! That makes me so happy. Here, I want you to have this!"
+  give "Great Ball"
+  setflag FLAG_RECEIVED_OREBURGH_CITY_EAST_HOUSE_2F_GREAT_BALL
+label Thinking
+  say "Pokémon spend so much of their time inside their Poké Balls, don't they?" "I keep wondering which kind of ball each one would like best."
+  end

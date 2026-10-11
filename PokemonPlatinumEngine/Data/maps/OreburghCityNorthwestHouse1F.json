@@ -1,0 +1,270 @@
+{
+  "name": "OreburghCityNorthwestHouse1F",
+  "displayName": "Oreburgh City",
+  "bgmTrack": "sinnoh/oreburgh",
+  "interior": "House",
+  "trees": "Round",
+  "width": 20,
+  "height": 14,
+  "ground": [
+    "####################",
+    "####################",
+    "####################",
+    "###________##______#",
+    "###________##______#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###########D########"
+  ],
+  "solid": [
+    "####################",
+    "####################",
+    "####################",
+    "####..#########...##",
+    "###........####....#",
+    "###...##...........#",
+    "###...##...........#",
+    "###................#",
+    "###................#",
+    "###...##...........#",
+    "###...##...........#",
+    "####..............##",
+    "####..............##",
+    "###########.########"
+  ],
+  "props": [
+    {
+      "type": "Painting",
+      "x": 4,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 17,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 3,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 6,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 7,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 10,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SideStairsUp",
+      "x": 13,
+      "y": 3,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Rug",
+      "x": 15,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 18,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 8,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 6,
+      "y": 5,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 8,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 8,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 6,
+      "y": 9,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 8,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 3,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 11,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 18,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 11,
+      "sourceY": 13,
+      "targetMap": "Sinnoh",
+      "targetX": 271,
+      "targetY": 747,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 15,
+      "sourceY": 3,
+      "targetMap": "OreburghCityNorthwestHouse2F",
+      "targetX": 7,
+      "targetY": 3,
+      "targetFacing": "Left"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "pokemon_breeder_m",
+      "name": "Pokémon Breeder",
+      "npcType": "Gentleman",
+      "x": 14,
+      "y": 8,
+      "facing": "Right",
+      "dialog": [
+        "Sinnoh has eight Gym Leaders, and every Trainer is after the same thing: a Badge from each.",
+        "Which means beating all eight of them in their own Gyms!"
+      ],
+      "movement": "wander_west_and_east",
+      "rangeX": 1
+    },
+    {
+      "id": "youngster",
+      "name": "Youngster",
+      "npcType": "youngster",
+      "x": 5,
+      "y": 5,
+      "facing": "Right",
+      "dialog": [
+        "A Gym Leader isn't some Trainer you bump into on a route. They're tough. Really tough.",
+        "If I were you I'd bring as many Pokémon as I could carry."
+      ]
+    },
+    {
+      "id": "pokefan_f",
+      "name": "Pokéfan",
+      "npcType": "Lady",
+      "x": 8,
+      "y": 10,
+      "facing": "Left",
+      "dialog": [
+        "Roark lets us townsfolk train our Pokémon down in the mine."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

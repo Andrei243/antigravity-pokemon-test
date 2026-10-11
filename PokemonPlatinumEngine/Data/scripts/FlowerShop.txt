@@ -1,0 +1,250 @@
+# Floaroma Town's flower shop (plan 01 · M11, part a), on the original's plan. docs/scripts.md describes the
+# language; the lines are our own, on the original's beats (scripts_flower_shop.s).
+#
+# The woman by the door gives a berry a day (FLAG_DAILY_RECEIVED_FLOWER_SHOP_BERRY, cleared with the day): one of
+# Cheri, Chesto, Pecha, Rawst and Aspear, by the original's die of five. The girl among the flowers gives the
+# Sprayduck, once (FLAG_RECEIVED_FLOWER_SHOP_SPRAYDUCK), which is what waters a berry patch (plan 06 · R14a). The
+# florist behind the till swaps berries for accessories, at the original's prices (src/overlay007/accessory_shop.c):
+# a berry for a flower or a pair of specs, ten for the next five, fifty or a hundred for the last nine. The original
+# lists all twenty-two in one window; here they are asked for in three steps, and one swap is one talk.
+
+
+script Berry
+  if flag FLAG_DAILY_RECEIVED_FLOWER_SHOP_BERRY goto Tomorrow
+  say "Plant a single berry and it grows into a plant that bears a handful more." "So every berry that goes into the ground means more berries in the world. Do help us spread them everywhere!"
+  setflag FLAG_DAILY_RECEIVED_FLOWER_SHOP_BERRY
+  random 5
+  if result == 1 goto Chesto
+  if result == 2 goto Pecha
+  if result == 3 goto Rawst
+  if result == 4 goto Aspear
+  give "Cheri Berry"
+  end
+label Chesto
+  give "Chesto Berry"
+  end
+label Pecha
+  give "Pecha Berry"
+  end
+label Rawst
+  give "Rawst Berry"
+  end
+label Aspear
+  give "Aspear Berry"
+  end
+label Tomorrow
+  say "Do plant that berry somewhere the soil is soft and loamy." "Come by again tomorrow and I'll have a different one for you."
+  end
+
+
+script Sprayduck
+  if flag FLAG_RECEIVED_FLOWER_SHOP_SPRAYDUCK goto Explain
+  say "You're a Trainer, aren't you? Please, water your berries with this. It's a watering can called the Sprayduck."
+  give "Sprayduck"
+  setflag FLAG_RECEIVED_FLOWER_SHOP_SPRAYDUCK
+  end
+label Explain
+  say "Sprinkle the soil with the Sprayduck wherever you've planted a berry." "The plants like a drink while they're growing, too."
+  end
+
+
+script Accessories
+  ask "Hello! Would you like to swap some of your berries for accessories?"
+  if no goto Bye
+  choose "Which accessories would you like to see?" "For 1 berry" "For 10 berries" "For 50 or 100" "None"
+  if result == 0 goto One
+  if result == 1 goto Ten
+  if result == 2 goto Many
+label Bye
+  say "Please come again!"
+  end
+
+label One
+  choose "Flowers or specs?" "Flowers" "Specs" "Neither"
+  if result == 0 goto Flowers
+  if result == 2 goto Bye
+  choose "Which would you like?" "Googly Specs: 1 Leppa" "Black Specs: 1 Persim" "Neither"
+  if result == 0 goto GooglySpecs
+  if result == 1 goto BlackSpecs
+  goto Bye
+label Flowers
+  choose "Which flower would you like?" "Red: 1 Cheri" "Pink: 1 Chesto" "White: 1 Pecha" "Blue: 1 Oran" "More flowers" "None"
+  if result == 0 goto RedFlower
+  if result == 1 goto PinkFlower
+  if result == 2 goto WhiteFlower
+  if result == 3 goto BlueFlower
+  if result == 5 goto Bye
+  choose "Which flower would you like?" "Orange: 1 Rawst" "Yellow: 1 Aspear" "None"
+  if result == 0 goto OrangeFlower
+  if result == 1 goto YellowFlower
+  goto Bye
+
+label Ten
+  choose "Which would you like?" "Gorgeous Specs: 10 Razz" "Sweet Candy: 10 Bluk" "Confetti: 10 Nanab" "Colored Parasol: 10 Wepear" "Old Umbrella: 10 Pinap" "None"
+  if result == 0 goto GorgeousSpecs
+  if result == 1 goto SweetCandy
+  if result == 2 goto Confetti
+  if result == 3 goto ColoredParasol
+  if result == 4 goto OldUmbrella
+  goto Bye
+
+label Many
+  choose "Which would you like?" "Spotlight: 50 Cornn" "Standing Mike: 50 Magost" "Carpet: 50 Rabuta" "Retro Pipe: 50 Nomel" "The grand ones" "None"
+  if result == 0 goto Spotlight
+  if result == 1 goto StandingMike
+  if result == 2 goto Carpet
+  if result == 3 goto RetroPipe
+  if result == 5 goto Bye
+  choose "Which would you like?" "Cape: 100 Pamtre" "Surfboard: 100 Watmel" "Fluffy Bed: 100 Durin" "Mirror Ball: 100 Spelon" "Photo Board: 100 Belue" "None"
+  if result == 0 goto Cape
+  if result == 1 goto Surfboard
+  if result == 2 goto FluffyBed
+  if result == 3 goto MirrorBall
+  if result == 4 goto PhotoBoard
+  goto Bye
+
+# Each swap: the berries are taken, all or none; the accessory goes into the Fashion Case, and the berries come back
+# where the case has no room for it
+label RedFlower
+  take "Cheri Berry" 1
+  if result == 0 goto Short
+  giveaccessory "Red Flower"
+  if result == 0 additem "Cheri Berry" 1
+  goto Done
+label PinkFlower
+  take "Chesto Berry" 1
+  if result == 0 goto Short
+  giveaccessory "Pink Flower"
+  if result == 0 additem "Chesto Berry" 1
+  goto Done
+label WhiteFlower
+  take "Pecha Berry" 1
+  if result == 0 goto Short
+  giveaccessory "White Flower"
+  if result == 0 additem "Pecha Berry" 1
+  goto Done
+label BlueFlower
+  take "Oran Berry" 1
+  if result == 0 goto Short
+  giveaccessory "Blue Flower"
+  if result == 0 additem "Oran Berry" 1
+  goto Done
+label OrangeFlower
+  take "Rawst Berry" 1
+  if result == 0 goto Short
+  giveaccessory "Orange Flower"
+  if result == 0 additem "Rawst Berry" 1
+  goto Done
+label YellowFlower
+  take "Aspear Berry" 1
+  if result == 0 goto Short
+  giveaccessory "Yellow Flower"
+  if result == 0 additem "Aspear Berry" 1
+  goto Done
+label GooglySpecs
+  take "Leppa Berry" 1
+  if result == 0 goto Short
+  giveaccessory "Googly Specs"
+  if result == 0 additem "Leppa Berry" 1
+  goto Done
+label BlackSpecs
+  take "Persim Berry" 1
+  if result == 0 goto Short
+  giveaccessory "Black Specs"
+  if result == 0 additem "Persim Berry" 1
+  goto Done
+label GorgeousSpecs
+  take "Razz Berry" 10
+  if result == 0 goto Short
+  giveaccessory "Gorgeous Specs"
+  if result == 0 additem "Razz Berry" 10
+  goto Done
+label SweetCandy
+  take "Bluk Berry" 10
+  if result == 0 goto Short
+  giveaccessory "Sweet Candy"
+  if result == 0 additem "Bluk Berry" 10
+  goto Done
+label Confetti
+  take "Nanab Berry" 10
+  if result == 0 goto Short
+  giveaccessory "Confetti"
+  if result == 0 additem "Nanab Berry" 10
+  goto Done
+label ColoredParasol
+  take "Wepear Berry" 10
+  if result == 0 goto Short
+  giveaccessory "Colored Parasol"
+  if result == 0 additem "Wepear Berry" 10
+  goto Done
+label OldUmbrella
+  take "Pinap Berry" 10
+  if result == 0 goto Short
+  giveaccessory "Old Umbrella"
+  if result == 0 additem "Pinap Berry" 10
+  goto Done
+label Spotlight
+  take "Cornn Berry" 50
+  if result == 0 goto Short
+  giveaccessory "Spotlight"
+  if result == 0 additem "Cornn Berry" 50
+  goto Done
+label StandingMike
+  take "Magost Berry" 50
+  if result == 0 goto Short
+  giveaccessory "Standing Mike"
+  if result == 0 additem "Magost Berry" 50
+  goto Done
+label Carpet
+  take "Rabuta Berry" 50
+  if result == 0 goto Short
+  giveaccessory "Carpet"
+  if result == 0 additem "Rabuta Berry" 50
+  goto Done
+label RetroPipe
+  take "Nomel Berry" 50
+  if result == 0 goto Short
+  giveaccessory "Retro Pipe"
+  if result == 0 additem "Nomel Berry" 50
+  goto Done
+label Cape
+  take "Pamtre Berry" 100
+  if result == 0 goto Short
+  giveaccessory "Cape"
+  if result == 0 additem "Pamtre Berry" 100
+  goto Done
+label Surfboard
+  take "Watmel Berry" 100
+  if result == 0 goto Short
+  giveaccessory "Surfboard"
+  if result == 0 additem "Watmel Berry" 100
+  goto Done
+label FluffyBed
+  take "Durin Berry" 100
+  if result == 0 goto Short
+  giveaccessory "Fluffy Bed"
+  if result == 0 additem "Durin Berry" 100
+  goto Done
+label MirrorBall
+  take "Spelon Berry" 100
+  if result == 0 goto Short
+  giveaccessory "Mirror Ball"
+  if result == 0 additem "Spelon Berry" 100
+  goto Done
+label PhotoBoard
+  take "Belue Berry" 100
+  if result == 0 goto Short
+  giveaccessory "Photo Board"
+  if result == 0 additem "Belue Berry" 100
+  goto Done
+
+label Short
+  say "Oh... You haven't enough of those berries, I'm afraid."
+  end
+label Done
+  if result == 0 goto Full
+  say "Thank you! Do come again!"
+  end
+label Full
+  say "Oh! Your Fashion Case can't hold any more of that one. Here are your berries back."
+  end

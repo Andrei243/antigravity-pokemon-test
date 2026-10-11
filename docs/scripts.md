@@ -146,6 +146,7 @@ last left there and `{taken}` the one last taken back.
 | `return` | Back to the script that called this one; ends a script nobody called. |
 | `end` | Ends everything, whoever called. |
 | `if [not] <question> <command>` | Carries the command out when the answer is yes. Any one command may follow, most often `goto`. |
+| `random 26` | A die of that many sides (one or more), rolled on the game's own chance: `RESULT` is 0 to one less than its sides (the original's `GetRandom`; plan 01 · M11, part a: the flower shop's berry of the day, the Berry Master's, the Old Chateau's ghosts). A test rolls for it (`HeadlessScriptHost.Rolls`, and 0 once they run out). |
 
 What an `if` can ask:
 

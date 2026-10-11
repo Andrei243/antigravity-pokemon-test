@@ -207,6 +207,37 @@ internal static class GroundBaker
     // ------------------------------------------------------------------ walls
 
     /// <summary>
+    /// The face a house's upper level stands on (plan 01 · M11: the gallery of the Old Chateau's hall; style guide,
+    /// "Rooms"): the wall's own chair rail along its top and its panelled wainscot below, a panel to every 16 texels
+    /// across and every 24 down, so the body repeats whole. 32 by <see cref="NatureArt.FaceCap"/> +
+    /// <see cref="NatureArt.FaceBody"/>.
+    /// </summary>
+    public static PixelCanvas RoomFace()
+    {
+        var c = new PixelCanvas(32, NatureArt.FaceCap + NatureArt.FaceBody);
+        var wainscot = Tone.Of(178, 124, 82);
+        var trim = Tone.Of(250, 244, 226);
+        for (int y = 0; y < c.Height; y++)
+            for (int x = 0; x < 32; x++)
+            {
+                Color col;
+                if (y < 4) col = y == 0 ? trim.Light : y == 3 ? trim.Dark : trim.Base;
+                else if (y < NatureArt.FaceCap) col = y == NatureArt.FaceCap - 1 ? wainscot.Dark : y == 4 ? PixelCanvas.Shadow(wainscot.Base, 0.18f) : wainscot.Base;
+                else
+                {
+                    int px = x % 16, py = (y - NatureArt.FaceCap) % 24;
+                    col = px == 15 ? wainscot.Dark : px == 0 ? wainscot.Light
+                        : py == 0 ? wainscot.Light : py == 23 ? wainscot.Dark
+                        : px >= 3 && px <= 12 && py >= 3 && py <= 20
+                            ? (px == 3 || py == 3 ? wainscot.Dark : px == 12 || py == 20 ? wainscot.Light : wainscot.Base)
+                            : wainscot.Base;
+                }
+                c.SetRaw(x, y, col);
+            }
+        return c;
+    }
+
+    /// <summary>
     /// Paints one wall of a room, the full height of the canvas (80 texels) and as wide as the wall: crown
     /// moulding, wallpaper with a small motif, a chair rail, panelled wainscot and a skirting board.
     /// </summary>

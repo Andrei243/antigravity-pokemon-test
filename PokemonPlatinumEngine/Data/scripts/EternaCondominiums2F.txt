@@ -1,0 +1,15 @@
+# The Eterna Condominiums, second floor (plan 01 · M11, part a), on the original's plan. docs/scripts.md describes
+# the language; the lines are our own, on the original's beats (scripts_eterna_city_condominiums_2f.s).
+#
+# The old woman by the sink gives TM67 (Recycle), once (FLAG_RECEIVED_ETERNA_CITY_CONDOMINIUMS_2F_TM67).
+
+
+script Recycle
+  if flag FLAG_RECEIVED_ETERNA_CITY_CONDOMINIUMS_2F_TM67 goto After
+  say "I have kept this TM, Recycle, for longer than I care to count." "It is no earthly use to me these days. I do hope you will make something of it, young Trainer."
+  give "TM67"
+  setflag FLAG_RECEIVED_ETERNA_CITY_CONDOMINIUMS_2F_TM67
+  end
+label After
+  say "Old folk like me have a long road behind us to look back on." "You young ones have nothing but the road ahead."
+  end

@@ -1,0 +1,270 @@
+{
+  "name": "JubilifeCitySouthHouse1F",
+  "displayName": "Jubilife City",
+  "bgmTrack": "sinnoh/jubilife",
+  "interior": "House",
+  "trees": "Round",
+  "width": 20,
+  "height": 14,
+  "ground": [
+    "####################",
+    "####################",
+    "####################",
+    "###________##______#",
+    "###________##______#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###########D########"
+  ],
+  "solid": [
+    "####################",
+    "####################",
+    "####################",
+    "####..#########...##",
+    "###........####....#",
+    "###...##...........#",
+    "###...##...........#",
+    "###................#",
+    "###................#",
+    "###...##...........#",
+    "###...##...........#",
+    "####..............##",
+    "####..............##",
+    "###########.########"
+  ],
+  "props": [
+    {
+      "type": "Painting",
+      "x": 4,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 17,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 3,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 6,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 7,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 10,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SideStairsUp",
+      "x": 13,
+      "y": 3,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Rug",
+      "x": 15,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 18,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 8,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 6,
+      "y": 5,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 8,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 8,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 6,
+      "y": 9,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 8,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 3,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 11,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 18,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 11,
+      "sourceY": 13,
+      "targetMap": "Sinnoh",
+      "targetX": 167,
+      "targetY": 789,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 15,
+      "sourceY": 3,
+      "targetMap": "JubilifeCitySouthHouse2F",
+      "targetX": 7,
+      "targetY": 3,
+      "targetFacing": "Left"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "ace_trainer_m",
+      "name": "Ace Trainer",
+      "npcType": "Youngster",
+      "x": 5,
+      "y": 9,
+      "facing": "Right",
+      "dialog": [
+        "Pokémon are a wonder and a riddle, every one of them.",
+        "But ask any Trainer what matters most and you'll hear the same thing: the battle you fight together."
+      ]
+    },
+    {
+      "id": "lass",
+      "name": "Lass",
+      "npcType": "lass",
+      "x": 8,
+      "y": 9,
+      "facing": "Left",
+      "dialog": [
+        "Hi, Trainer! Ever get stuck, with no idea what to do next?",
+        "Talk to people! Everyone you meet! And go everywhere your feet will take you. That's how you find new places."
+      ]
+    },
+    {
+      "id": "pachirisu",
+      "name": "Pachirisu",
+      "npcType": "Pokemon",
+      "x": 11,
+      "y": 7,
+      "facing": "Right",
+      "dialog": [
+        "Pachirisu: Kukkuuh!"
+      ],
+      "species": "Pachirisu",
+      "movement": "look_around"
+    }
+  ],
+  "wildEncounters": []
+}

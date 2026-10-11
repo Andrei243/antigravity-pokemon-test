@@ -189,6 +189,20 @@ public static class RegionDatabase
                 // Villa, and Pal Park's lobby and grounds
                 "OreburghMiningMuseum", "VeilstoneGameCorner", "VeilstonePrizeExchange", "VeilstoneSoutheastHouse", "ResortAreaVilla",
                 "PalParkLobby", "PalPark",
+                // Plan 01 · M11, part a: the rooms of the south-west and the centre, on the original's plans
+                "TwinleafTownNortheastHouse", "TwinleafTownSouthwestHouse",
+                "SandgemTownCounterpartHouse1F", "SandgemTownCounterpartHouse2F", "SandgemTownHouse",
+                "JubilifeCityCondominiums1F", "JubilifeCityCondominiums2F", "JubilifeCitySouthHouse1F", "JubilifeCitySouthHouse2F",
+                "OreburghCityNorthwestHouse1F", "OreburghCityNorthwestHouse2F", "OreburghNorthHouse2F", "OreburghCityWestHouse",
+                "OreburghCityMiddleHouse", "OreburghCityEastHouse1F", "OreburghCityEastHouse2F", "OreburghCitySouthHouse",
+                "FlowerShop", "FloaromaTownSoutheastHouse", "FloaromaTownMiddleHouse", "FloaromaMeadowHouse", "Route205House",
+                "EternaCitySouthHouse", "EternaCityEastHouse", "EternaCityHerbShop", "EternaCondominiums2F", "EternaCondominiums3F",
+                "Route208House", "HearthomeCityNorthwestHouse", "HearthomeCitySoutheastHouse1F", "HearthomeCitySoutheastHouse2F",
+                "ForeignBuilding", "HearthomeCityNortheastHouse1F", "HearthomeCityNortheastHouse2F",
+                "SolaceonTownNortheastHouse", "SolaceonTownPokemonNewsPress", "SolaceonTownNorthHouse",
+                "OldChateau", "OldChateauDiningArea", "OldChateauWestRoom", "OldChateauEastRoom", "OldChateauCorridor",
+                "OldChateauBackWestRoom", "OldChateauBackMiddleWestRoom", "OldChateauBackMiddleRoom", "OldChateauBackMiddleEastRoom",
+                "OldChateauBackEastRoom",
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

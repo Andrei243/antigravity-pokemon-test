@@ -1,0 +1,179 @@
+{
+  "name": "HearthomeCitySoutheastHouse2F",
+  "displayName": "Hearthome City",
+  "bgmTrack": "sinnoh/hearthome",
+  "interior": "House",
+  "trees": "Round",
+  "width": 22,
+  "height": 14,
+  "ground": [
+    "######################",
+    "######################",
+    "######################",
+    "#_____#_______##_____#",
+    "#_____#_______##_____#",
+    "#_____#_______##_____#",
+    "#____________________#",
+    "#____________________#",
+    "#_____________##_____#",
+    "#_____________##_____#",
+    "#_____________##_____#",
+    "#_____________##_____#",
+    "#_____________##_____#",
+    "######################"
+  ],
+  "solid": [
+    "######################",
+    "######################",
+    "##################.###",
+    "#.....###..######...##",
+    "#.....#.......##.....#",
+    "#.....#.......##.....#",
+    "#....................#",
+    "#....................#",
+    "#.#......##...##.....#",
+    "#.#......##...##.....#",
+    "#.#...........##.....#",
+    "#.............##.....#",
+    "#.............##.....#",
+    "######################"
+  ],
+  "behaviours": [
+    { "x": 18, "y": 2, "width": 1, "depth": 1, "behaviour": "Door" }
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 2,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 9,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 7,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Fridge",
+      "x": 11,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "KitchenCounter",
+      "x": 12,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "KitchenCounter",
+      "x": 13,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 16,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 20,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 8,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 11,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 9,
+      "y": 8,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Bed",
+      "x": 2,
+      "y": 8,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "Cushion",
+      "x": 8,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 11,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 18,
+      "sourceY": 2,
+      "targetMap": "HearthomeCitySoutheastHouse1F",
+      "targetX": 18,
+      "targetY": 3,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "ace_trainer_f",
+      "name": "Ace Trainer",
+      "npcType": "Lass",
+      "x": 11,
+      "y": 8,
+      "facing": "Left",
+      "script": "ShellBell"
+    },
+    {
+      "id": "clefairy",
+      "name": "Clefairy",
+      "npcType": "Pokemon",
+      "x": 10,
+      "y": 7,
+      "facing": "Down",
+      "dialog": [
+        "Clefairy: Pippi!"
+      ],
+      "species": "Clefairy"
+    }
+  ],
+  "wildEncounters": []
+}

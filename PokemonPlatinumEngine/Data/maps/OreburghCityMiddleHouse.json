@@ -1,0 +1,127 @@
+{
+  "name": "OreburghCityMiddleHouse",
+  "displayName": "Oreburgh City",
+  "bgmTrack": "sinnoh/oreburgh",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#.....#####",
+    "#.........#",
+    "#..##.....#",
+    "#..##.....#",
+    "#.........#",
+    "#.........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 4,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 6,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 3,
+      "y": 5,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Sinnoh",
+      "targetX": 293,
+      "targetY": 753,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "school_kid_f",
+      "name": "School Kid",
+      "npcType": "Lass",
+      "x": 8,
+      "y": 6,
+      "facing": "Left",
+      "dialog": [
+        "Roark trains Rock-type Pokémon.",
+        "Aren't Rock types great? I love how lumpy they are!"
+      ],
+      "movement": "wander_around",
+      "rangeX": 1,
+      "rangeZ": 1
+    },
+    {
+      "id": "hiker",
+      "name": "Hiker",
+      "npcType": "Gentleman",
+      "x": 2,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "Roark is this town's Gym Leader.",
+        "He's young, but he keeps the mine running safe and smooth."
+      ],
+      "movement": "look_south_and_east",
+      "rangeX": 1
+    }
+  ],
+  "wildEncounters": []
+}

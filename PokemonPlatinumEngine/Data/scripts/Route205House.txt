@@ -1,0 +1,18 @@
+# The house on Route 205, before Eterna Forest (plan 01 · M11, part a), on the original's plan. docs/scripts.md
+# describes the language; the lines are our own, on the original's beats (scripts_route_205_house.s).
+#
+# The woman of the house lets a tired traveller rest: the team is healed behind a fade, as often as asked.
+
+
+script Rest
+  ask "You look worn out... Won't you rest here a while?"
+  if no goto Proud
+  fade out
+  fanfare heal
+  heal
+  fade in
+  say "There. You and your Pokémon look as fresh as the morning!"
+  end
+label Proud
+  say "Being young is no reason to run yourself into the ground, you know."
+  end

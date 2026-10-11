@@ -7,8 +7,10 @@
     { "warp": 0, "to": "hearthome_city", "toWarp": 14 },
     { "warp": 1, "to": "hearthome_city", "toWarp": 18 }
   ],
-  // The house on the route has no room yet (plan 01 · M11)
-  "locked": [ 2 ],
+  // Plan 01 · M11, part a: rooms on the original's plans
+  "doors": [
+    { "warp": 2, "map": "Route208House", "x": 4, "y": 8, "facing": "Up" }
+  ],
   "people": {
     // In Platinum he hands over the Odd Keystone; the gift is plan 02's (S5)
     // He gives the Odd Keystone (plan 02 · S7, scripts/route_208.txt)

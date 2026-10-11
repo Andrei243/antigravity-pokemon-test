@@ -64,6 +64,8 @@ public enum Op
     Seen,
     // Fossils, the Game Corner, the Villa and Pal Park (plan 06 · R16b)
     Fossil, GameCorner, Villa, PalPark,
+    // A die of the script's own (plan 01 · M11): the original's GetRandom
+    Random,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

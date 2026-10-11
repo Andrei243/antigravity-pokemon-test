@@ -1,0 +1,276 @@
+{
+  "name": "OldChateau",
+  "displayName": "Old Chateau",
+  "bgmTrack": "sinnoh/turnback_cave",
+  "interior": "House",
+  "trees": "Round",
+  "encounterRate": 10,
+  "width": 19,
+  "height": 17,
+  "ground": [
+    "###################",
+    "###################",
+    "###################",
+    "#_________________#",
+    "#_________________#",
+    "#___#####_#####___#",
+    "D___#_________#___D",
+    "#___#_________#___#",
+    "#___#_________#___#",
+    "#_________________#",
+    "#_________________#",
+    "####___________####",
+    "#_________________#",
+    "#_________________#",
+    "#_________________#",
+    "#_________________#",
+    "#########D#########"
+  ],
+  "solid": [
+    "###################",
+    "###################",
+    "#########.#########",
+    "#.................#",
+    "#.................#",
+    "#...#####.#####...#",
+    "....#..#......#....",
+    "#...#.........#...#",
+    "#...#.........#...#",
+    "#...###.....###...#",
+    "#.................#",
+    "#######.....#######",
+    "##...............##",
+    "#.................#",
+    "#.................#",
+    "#.................#",
+    "#########.#########"
+  ],
+  "heights": [
+    { "x": 1, "z": 2.625, "width": 3, "depth": 9.375, "height": 3, "slopeX": 0, "slopeZ": 0 },
+    { "x": 8, "z": 2, "width": 3, "depth": 0.625, "height": 3, "slopeX": 0, "slopeZ": 0 },
+    { "x": 4, "z": 2.625, "width": 1, "depth": 6.375, "height": 3, "slopeX": 0, "slopeZ": 0 },
+    { "x": 5, "z": 2.625, "width": 9, "depth": 2.375, "height": 3, "slopeX": 0, "slopeZ": 0 },
+    { "x": 14, "z": 2.625, "width": 1, "depth": 6.375, "height": 3, "slopeX": 0, "slopeZ": 0 },
+    { "x": 15, "z": 2.625, "width": 3, "depth": 9.375, "height": 3, "slopeX": 0, "slopeZ": 0 },
+    { "x": 5, "z": 5, "width": 9, "depth": 4, "height": 0, "slopeX": 0, "slopeZ": 0 },
+    { "x": 7, "z": 9, "width": 5, "depth": 3, "height": 0, "slopeX": 0, "slopeZ": 0 },
+    { "x": 4, "z": 9, "width": 3, "depth": 3, "height": 2.999, "slopeX": -1, "slopeZ": 0 },
+    { "x": 12, "z": 9, "width": 3, "depth": 3, "height": 0.0004, "slopeX": 1, "slopeZ": 0 },
+    { "x": 1, "z": 12, "width": 17, "depth": 4, "height": 0, "slopeX": 0, "slopeZ": 0 }
+  ],
+  "behaviours": [
+    { "x": 1, "y": 3, "width": 17, "depth": 2, "behaviour": "OldChateauFloor" },
+    { "x": 1, "y": 5, "width": 3, "depth": 1, "behaviour": "OldChateauFloor" },
+    { "x": 15, "y": 5, "width": 3, "depth": 1, "behaviour": "OldChateauFloor" },
+    { "x": 2, "y": 6, "width": 2, "depth": 1, "behaviour": "OldChateauFloor" },
+    { "x": 5, "y": 6, "width": 2, "depth": 1, "behaviour": "OldChateauFloor" },
+    { "x": 8, "y": 6, "width": 6, "depth": 1, "behaviour": "OldChateauFloor" },
+    { "x": 15, "y": 6, "width": 2, "depth": 1, "behaviour": "OldChateauFloor" },
+    { "x": 1, "y": 7, "width": 3, "depth": 3, "behaviour": "OldChateauFloor" },
+    { "x": 5, "y": 7, "width": 9, "depth": 2, "behaviour": "OldChateauFloor" },
+    { "x": 15, "y": 7, "width": 3, "depth": 3, "behaviour": "OldChateauFloor" },
+    { "x": 7, "y": 9, "width": 5, "depth": 1, "behaviour": "OldChateauFloor" },
+    { "x": 1, "y": 10, "width": 17, "depth": 1, "behaviour": "OldChateauFloor" },
+    { "x": 7, "y": 11, "width": 5, "depth": 1, "behaviour": "OldChateauFloor" },
+    { "x": 2, "y": 12, "width": 15, "depth": 1, "behaviour": "OldChateauFloor" },
+    { "x": 1, "y": 13, "width": 17, "depth": 2, "behaviour": "OldChateauFloor" },
+    { "x": 1, "y": 15, "width": 8, "depth": 1, "behaviour": "OldChateauFloor" },
+    { "x": 10, "y": 15, "width": 8, "depth": 1, "behaviour": "OldChateauFloor" }
+  ],
+  "props": [
+    {
+      "type": "Painting",
+      "x": 5,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 12,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 1,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 7,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 17,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 7,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 11,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 17,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 9,
+      "y": 15,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 0,
+      "sourceY": 6,
+      "targetMap": "OldChateauWestRoom",
+      "targetX": 7,
+      "targetY": 5,
+      "targetFacing": "Left"
+    },
+    {
+      "sourceX": 18,
+      "sourceY": 6,
+      "targetMap": "OldChateauEastRoom",
+      "targetX": 1,
+      "targetY": 5,
+      "targetFacing": "Right"
+    },
+    {
+      "sourceX": 9,
+      "sourceY": 5,
+      "targetMap": "OldChateauDiningArea",
+      "targetX": 19,
+      "targetY": 11,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 9,
+      "sourceY": 2,
+      "targetMap": "OldChateauCorridor",
+      "targetX": 19,
+      "targetY": 5,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 9,
+      "sourceY": 16,
+      "targetMap": "EternaForest",
+      "targetX": 74,
+      "targetY": 16,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 7,
+      "y": 6,
+      "text": "A statue of a Pokémon. ... It seems to be glaring."
+    }
+  ],
+  "npcs": [],
+  "wildEncounters": [
+    {
+      "speciesName": "Gastly",
+      "minLevel": 14,
+      "maxLevel": 14,
+      "weight": 20
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 15,
+      "maxLevel": 15,
+      "weight": 20
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 14,
+      "maxLevel": 14,
+      "weight": 10
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 15,
+      "maxLevel": 15,
+      "weight": 10
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 16,
+      "maxLevel": 16,
+      "weight": 10
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 17,
+      "maxLevel": 17,
+      "weight": 10
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 16,
+      "maxLevel": 16,
+      "weight": 5
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 17,
+      "maxLevel": 17,
+      "weight": 5
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 17,
+      "maxLevel": 17,
+      "weight": 4
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 17,
+      "maxLevel": 17,
+      "weight": 4
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 17,
+      "maxLevel": 17,
+      "weight": 1
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 17,
+      "maxLevel": 17,
+      "weight": 1
+    }
+  ]
+}

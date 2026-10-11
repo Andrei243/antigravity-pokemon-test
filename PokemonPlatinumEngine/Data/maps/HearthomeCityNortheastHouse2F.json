@@ -1,0 +1,207 @@
+{
+  "name": "HearthomeCityNortheastHouse2F",
+  "displayName": "Hearthome City",
+  "bgmTrack": "sinnoh/hearthome",
+  "interior": "House",
+  "trees": "Round",
+  "width": 22,
+  "height": 14,
+  "ground": [
+    "######################",
+    "######################",
+    "######################",
+    "#_____#_______##_____#",
+    "#_____#_______##_____#",
+    "#_____#_______##_____#",
+    "#____________________#",
+    "#____________________#",
+    "#_____________##_____#",
+    "#_____________##_____#",
+    "#_____________##_____#",
+    "#_____________##_____#",
+    "#_____________##_____#",
+    "######################"
+  ],
+  "solid": [
+    "######################",
+    "######################",
+    "##################.###",
+    "#.....###..######...##",
+    "#.....#.......##.....#",
+    "#.....#.......##.....#",
+    "#....................#",
+    "#....................#",
+    "#.#......##...##.....#",
+    "#.#......##...##.....#",
+    "#.#...........##.....#",
+    "#.............##.....#",
+    "#.............##.....#",
+    "######################"
+  ],
+  "behaviours": [
+    { "x": 18, "y": 2, "width": 1, "depth": 1, "behaviour": "Door" }
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 2,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 9,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 7,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Fridge",
+      "x": 11,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "KitchenCounter",
+      "x": 12,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "KitchenCounter",
+      "x": 13,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 16,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 20,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 8,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 11,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 9,
+      "y": 8,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Bed",
+      "x": 2,
+      "y": 8,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "Cushion",
+      "x": 8,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 11,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 18,
+      "sourceY": 2,
+      "targetMap": "HearthomeCityNortheastHouse1F",
+      "targetX": 18,
+      "targetY": 3,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "expert_m",
+      "name": "Old Man",
+      "npcType": "Gentleman",
+      "x": 8,
+      "y": 8,
+      "facing": "Right",
+      "dialog": [
+        "Some people are kind in the hope of kindness in return.",
+        "And what, I ask you, is wrong with that?"
+      ]
+    },
+    {
+      "id": "expert_f",
+      "name": "Old Woman",
+      "npcType": "Lady",
+      "x": 12,
+      "y": 4,
+      "facing": "Up",
+      "dialog": [
+        "They call Hearthome a city that is good to children. I say that's not the half of it.",
+        "Hearthome is good to children, to grown-ups, and to Pokémon too."
+      ],
+      "movement": "wander_around"
+    },
+    {
+      "id": "old_man",
+      "name": "Grandfather",
+      "npcType": "Gentleman",
+      "x": 11,
+      "y": 8,
+      "facing": "Left",
+      "dialog": [
+        "Every one of my grandchildren is clamouring for a Pokémon of their own.",
+        "It won't be easy to manage. But think how it will liven the place up!"
+      ]
+    },
+    {
+      "id": "old_woman",
+      "name": "Grandmother",
+      "npcType": "Lady",
+      "x": 3,
+      "y": 5,
+      "facing": "Up",
+      "dialog": [
+        "Stairs? No, dear, this house has none. It is easier that way.",
+        "The little Pokémon can get about so much better without them."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

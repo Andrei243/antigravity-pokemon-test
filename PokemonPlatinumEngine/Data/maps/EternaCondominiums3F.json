@@ -1,0 +1,251 @@
+{
+  "name": "EternaCondominiums3F",
+  "displayName": "Eterna City",
+  "bgmTrack": "sinnoh/eterna",
+  "interior": "House",
+  "trees": "Round",
+  "width": 20,
+  "height": 14,
+  "ground": [
+    "####################",
+    "####################",
+    "####################",
+    "###________##______#",
+    "###________##______#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "####################"
+  ],
+  "solid": [
+    "####################",
+    "####################",
+    "####################",
+    "######...####.....##",
+    "###......####......#",
+    "###................#",
+    "###................#",
+    "###................#",
+    "###...##......##...#",
+    "###...##......##...#",
+    "###................#",
+    "####..............##",
+    "####..............##",
+    "####################"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 6,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 15,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 3,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 4,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 5,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SideStairsDown",
+      "x": 9,
+      "y": 3,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Plant",
+      "x": 18,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 8,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 13,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 16,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 6,
+      "y": 8,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Table",
+      "x": 14,
+      "y": 8,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 8,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 13,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 16,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 3,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 18,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 3,
+      "targetMap": "EternaCondominiums2F",
+      "targetX": 16,
+      "targetY": 3,
+      "targetFacing": "Right"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "pokefan_m",
+      "name": "Pokéfan",
+      "npcType": "Gentleman",
+      "x": 5,
+      "y": 9,
+      "facing": "Left",
+      "dialog": [
+        "Badges from the Gyms, ribbons from the Contests... there's more than one way to come out on top, it seems.",
+        "Here's hoping you find the one where you're the winner."
+      ]
+    },
+    {
+      "id": "school_kid_m",
+      "name": "School Kid",
+      "npcType": "Youngster",
+      "x": 16,
+      "y": 7,
+      "facing": "Down",
+      "dialog": [
+        "Ha ha ha! Got you now! Your flag is mine!"
+      ],
+      "movement": "walk_south_west_north_east",
+      "rangeX": 3,
+      "rangeZ": 3
+    },
+    {
+      "id": "bug_catcher",
+      "name": "Bug Catcher",
+      "npcType": "Youngster",
+      "x": 10,
+      "y": 7,
+      "facing": "Down",
+      "dialog": [
+        "I've picked berries by the armful, and I'm swapping the lot for accessories.",
+        "Next stop, Hearthome City! I'm going to enter a Contest!"
+      ],
+      "movement": "look_south_and_west",
+      "rangeX": 1
+    },
+    {
+      "id": "ninja_boy",
+      "name": "Boy",
+      "npcType": "Youngster",
+      "x": 13,
+      "y": 10,
+      "facing": "Up",
+      "dialog": [
+        "You'll never catch me! I've laid traps everywhere!"
+      ],
+      "movement": "walk_north_east_south_west",
+      "rangeX": 3,
+      "rangeZ": 3
+    }
+  ],
+  "wildEncounters": []
+}

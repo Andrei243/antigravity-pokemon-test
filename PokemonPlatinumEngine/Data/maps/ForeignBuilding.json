@@ -1,0 +1,248 @@
+{
+  "name": "ForeignBuilding",
+  "displayName": "Foreign Building",
+  "bgmTrack": "sinnoh/hearthome",
+  "interior": "House",
+  "trees": "Round",
+  "width": 17,
+  "height": 22,
+  "ground": [
+    "#################",
+    "#################",
+    "#################",
+    "#################",
+    "#################",
+    "#################",
+    "#################",
+    "#################",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "##_____________##",
+    "##_____________##",
+    "##_____________##",
+    "##_____________##",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "########D########"
+  ],
+  "solid": [
+    "#################",
+    "#################",
+    "#################",
+    "#################",
+    "#################",
+    "#################",
+    "#################",
+    "#################",
+    "##.............##",
+    "#...............#",
+    "#...............#",
+    "#...###...###...#",
+    "#...............#",
+    "#...............#",
+    "##..###...###..##",
+    "##.............##",
+    "##.............##",
+    "##..###...###..##",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "########.########"
+  ],
+  "props": [
+    {
+      "type": "Statue",
+      "x": 1,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 15,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 8,
+      "y": 20,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 4,
+      "y": 11,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 10,
+      "y": 11,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 4,
+      "y": 14,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 10,
+      "y": 14,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 4,
+      "y": 17,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 10,
+      "y": 17,
+      "width": 3,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 21,
+      "targetMap": "Sinnoh",
+      "targetX": 460,
+      "targetY": 710,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "ruin_maniac",
+      "name": "Ruin Maniac",
+      "npcType": "Gentleman",
+      "x": 4,
+      "y": 9,
+      "facing": "Up",
+      "dialog": [
+        "I look, and I see my father. My son. My own life.",
+        "I look, and I see nature. Pokémon. The world."
+      ]
+    },
+    {
+      "id": "old_man",
+      "name": "Old Man",
+      "npcType": "Gentleman",
+      "x": 13,
+      "y": 9,
+      "facing": "Left",
+      "dialog": [
+        "Making things wears out the spirit.",
+        "The spirit mends, and the wish to make something comes back. What a wondrous circle it is."
+      ]
+    },
+    {
+      "id": "ninja_boy",
+      "name": "Boy",
+      "npcType": "Youngster",
+      "x": 2,
+      "y": 14,
+      "facing": "Left",
+      "dialog": [
+        "When people and Pokémon join hands, everybody's happy!",
+        "It brings everyone together. It could make the whole world one!"
+      ],
+      "movement": "wander_north_and_south",
+      "rangeZ": 1
+    },
+    {
+      "id": "old_woman",
+      "name": "Old Woman",
+      "npcType": "Lady",
+      "x": 5,
+      "y": 12,
+      "facing": "Up",
+      "dialog": [
+        "It is only natural to be lonely. Being lonely is what teaches me to feel for others.",
+        "It is why I look forward to a better tomorrow.",
+        "And still, now and then, I am fond of days gone by. Time does mend some sorrows, though..."
+      ]
+    },
+    {
+      "id": "ace_trainer_f",
+      "name": "Ace Trainer",
+      "npcType": "Lass",
+      "x": 6,
+      "y": 15,
+      "facing": "Up",
+      "dialog": [
+        "There are words that not everyone can explain...",
+        "\"Love\", for one. And \"joy\"."
+      ]
+    },
+    {
+      "id": "pokefan_f",
+      "name": "Pokéfan",
+      "npcType": "Lady",
+      "x": 11,
+      "y": 18,
+      "facing": "Up",
+      "dialog": [
+        "Pokémon, people... of course we are all different. How could we not be?",
+        "Never judge a Pokémon by whether it is weak or strong.",
+        "Look for the good in it, always. That is what counts!"
+      ]
+    },
+    {
+      "id": "lady",
+      "name": "Lady",
+      "npcType": "lady",
+      "x": 8,
+      "y": 8,
+      "facing": "Up",
+      "dialog": [
+        "Mind and matter.",
+        "Neither must be stronger than the other. Balance. That is the key."
+      ]
+    },
+    {
+      "id": "psychic",
+      "name": "Psychic",
+      "npcType": "Youngster",
+      "x": 2,
+      "y": 19,
+      "facing": "Right",
+      "dialog": [
+        "We cannot read each other's minds, and so we fear and we doubt.",
+        "But to rule what lies beyond our senses is more than anyone can do."
+      ]
+    },
+    {
+      "id": "expert_m",
+      "name": "Old Man",
+      "npcType": "Gentleman",
+      "x": 15,
+      "y": 10,
+      "facing": "Left",
+      "dialog": [
+        "When the strong and able do too much, they leave no room for what others could give.",
+        "The strong must hold back. That is how everyone lives together, each with a share to carry."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

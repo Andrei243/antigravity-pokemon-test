@@ -26,7 +26,7 @@ internal static class SceneTextures
         _ = White; _ = Bark; _ = Leaves; _ = LeafShell; _ = Needles; _ = TallGrass; _ = LawnTuft; _ = Flowers; _ = LedgeFace; _ = RockLedgeFace;
         _ = BankFace; _ = RockFace; _ = PowerFace; _ = Waterfall; _ = IslandUnderside;
         _ = LeagueFace(LeagueArt.Stone.Slate); _ = LeagueFace(LeagueArt.Stone.Basalt); _ = LeagueFace(LeagueArt.Stone.Marble);
-        _ = LeagueFace(LeagueArt.Stone.Sandstone);
+        _ = LeagueFace(LeagueArt.Stone.Sandstone); _ = RoomFace;
         _ = LightPool; _ = LampGlow; _ = WindowLight;
     }
 
@@ -118,6 +118,9 @@ internal static class SceneTextures
 
     /// <summary>The face of the Sunyshore Gym's steel decks over the dark (style guide, "Gyms").</summary>
     public static Texture2D PowerFace => Get("power_face", GymArt.PowerFace, repeat: true);
+
+    /// <summary>The face a house's upper level stands on: its own panelled wainscot (style guide, "Rooms"; plan 01 · M11).</summary>
+    public static Texture2D RoomFace => Get("room_face", GroundBaker.RoomFace, repeat: true);
 
     /// <summary>The face the floors of a room of the League stand on, in its stone (style guide, "The League's rooms").</summary>
     public static Texture2D LeagueFace(LeagueArt.Stone stone) => Get($"league_face_{stone}", () => LeagueArt.Face(stone), repeat: true);

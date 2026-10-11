@@ -1,0 +1,136 @@
+{
+  "name": "OreburghCityWestHouse",
+  "displayName": "Oreburgh City",
+  "bgmTrack": "sinnoh/oreburgh",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#.....#####",
+    "#.........#",
+    "#..##.....#",
+    "#..##.....#",
+    "#.........#",
+    "#.........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 4,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 6,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 3,
+      "y": 5,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Sinnoh",
+      "targetX": 273,
+      "targetY": 757,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "youngster",
+      "name": "Youngster",
+      "npcType": "youngster",
+      "x": 7,
+      "y": 6,
+      "facing": "Right",
+      "dialog": [
+        "Ever seen a Pokémon that's the wrong colour? Or heard of one?",
+        "Take Pikachu. Yellow, right? Well, once in a blue moon there's one that's more of an orange."
+      ],
+      "movement": "look_north_and_east"
+    },
+    {
+      "id": "pokefan_f",
+      "name": "Pokéfan",
+      "npcType": "Lady",
+      "x": 5,
+      "y": 5,
+      "facing": "Left",
+      "dialog": [
+        "Pokémon have natures the way we have personalities, don't they?",
+        "So it hardly surprises me that some come in a different colour."
+      ],
+      "movement": "look_south_and_west"
+    },
+    {
+      "id": "pikachu",
+      "name": "Pikachu",
+      "npcType": "Pokemon",
+      "x": 8,
+      "y": 6,
+      "facing": "Down",
+      "dialog": [
+        "Pikachu: Pikaaah!"
+      ],
+      "species": "Pikachu"
+    }
+  ],
+  "wildEncounters": []
+}

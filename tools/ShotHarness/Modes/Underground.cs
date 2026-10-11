@@ -395,7 +395,7 @@ partial class Harness
             ReadOn();
             Until(() => game.State == GameState.Overworld && !Box().IsActive, "the tunnels again", 200);
         }
-        // The nearest hiker of a kind who is in the tunnels (three wait with the islands over their system)
+        // The nearest hiker of a kind who is in the tunnels (all twenty stand there since plan 01 · M11, part a)
         int Hiker(string kind) => Enumerable.Range(0, UndergroundDatabase.Vendors.Count)
             .Where(i => UndergroundDatabase.Vendors[i].Kind == kind && below.GetNpcAt(UndergroundDatabase.Vendors[i].X, UndergroundDatabase.Vendors[i].Z) != null)
             .OrderBy(i => Far(UndergroundDatabase.Vendors[i].X, UndergroundDatabase.Vendors[i].Z)).First();

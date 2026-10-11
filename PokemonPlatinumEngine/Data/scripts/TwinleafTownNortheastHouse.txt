@@ -1,0 +1,14 @@
+# Twinleaf Town's north-east house (plan 01 · M11, part a), on the original's plan. docs/scripts.md describes the
+# language; the lines are our own, on the original's beats (scripts_twinleaf_town_northeast_house.s).
+#
+# The young man teases the player about the rival until the two have been to Lake Verity together
+# (VAR_VISITED_LAKE_VERITY_WITH_RIVAL), and remembers his own short journey after.
+
+
+script Guitarist
+  if var VAR_VISITED_LAKE_VERITY_WITH_RIVAL >= 1 goto Journey
+  say "Off to find {rival} again, are you? You two are thick as thieves!"
+  end
+label Journey
+  say "I went on a journey with Pokémon once, a long time ago." "Only as far as Sandgem Town, mind you. The next town over. Still, those were good days..."
+  end

@@ -9,11 +9,15 @@
     // The Pokémon Day Care, rebuilt to the original's plan (plan 06 · R15)
     { "warp": 0, "map": "PokemonDayCare", "x": 9, "y": 11, "facing": "Up" },
     // The east house, where the Seal Case is given, rebuilt to the original's plan (plan 06 · R17b)
-    { "warp": 4, "map": "SolaceonTownEastHouse", "x": 4, "y": 8, "facing": "Up" }
+    { "warp": 4, "map": "SolaceonTownEastHouse", "x": 4, "y": 8, "facing": "Up" },
+    // Plan 01 · M11, part a: rooms on the original's plans
+    { "warp": 1, "map": "SolaceonTownNortheastHouse", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 2, "map": "SolaceonTownPokemonNewsPress", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 3, "map": "SolaceonTownNorthHouse", "x": 4, "y": 8, "facing": "Up" }
   ],
-  // The other houses and the Pokémon News Press have no rooms yet (plan 01 · M11); the room of the ruins Maniac Tunnel
-  // leads to opens with the tunnel (plan 02: the Ruin Maniac digs it once enough Unown have been seen)
-  "locked": [ 1, 2, 3, 7 ],
+  // The room of the ruins Maniac Tunnel leads to opens with the tunnel (plan 02: the Ruin Maniac digs it once enough
+  // Unown have been seen)
+  "locked": [ 7 ],
   // The Rare Candy on the ledge over the ruins is reached through Maniac Tunnel (with the tunnel, plan 02)
   "heldBack": [ "item_rare_candy" ],
   // Plan 02 · S7 (scripts/solaceon_town.txt): the rival coming down the street as the player first arrives (trigger 0)

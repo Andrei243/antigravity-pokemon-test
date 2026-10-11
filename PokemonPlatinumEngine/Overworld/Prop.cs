@@ -185,6 +185,18 @@ public enum PropType
     CavePainting,
     // Fossils, the Game Corner and the Villa (plan 06 · R16b): none blocks by itself, the room's own tiles say where one can walk
     DisplayCase, SlotMachine, Piano, Rack, AudioSystem, Bust, SilverBust, GuestSet, NightTable, MusicBox, TeaSet, PcDesk,
+
+    // The rooms of plan 01 · M11, rebuilt to the original's plans. Appended past the decorations: it never blocks
+    /// <summary>
+    /// A seat one walks onto, as the original's stools and floor cushions are: a square cushion on the floor. Whoever
+    /// sits at a table stands on its tile.
+    /// </summary>
+    Cushion,
+    /// <summary>
+    /// A stand of potted flowers on each tile it covers (the Floaroma flower shop). Past the decorations like the
+    /// laboratory's tank: the room's own tiles say that it blocks.
+    /// </summary>
+    FlowerStand,
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>

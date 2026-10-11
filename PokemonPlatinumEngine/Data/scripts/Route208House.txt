@@ -1,0 +1,204 @@
+# The Berry Master's house on Route 208 (plan 01 · M11, part a), on the original's plan. docs/scripts.md describes
+# the language; the lines are our own, on the original's beats (scripts_route_208_house.s).
+#
+# The Berry Master gives a berry a day (FLAG_DAILY_RECEIVED_ROUTE_208_HOUSE_RANDOM_BERRY, cleared with the day): one of
+# the twenty-six from Cheri to Tamato, by the original's die. His granddaughter gives the Pokétch's Berry Searcher to
+# whoever owns up to forgetting where their berries are planted. The woman sells the four mulches at 200 each. The
+# book on the table says what each mulch does, one mulch to a reading. Coming in is remembered
+# (FLAG_FIRST_ARRIVAL_BERRY_MASTERS_HOUSE, the original's own, which nothing here reads yet).
+
+
+script OnEnter
+  setflag FLAG_FIRST_ARRIVAL_BERRY_MASTERS_HOUSE
+  end
+
+
+script BerryMaster
+  if flag FLAG_DAILY_RECEIVED_ROUTE_208_HOUSE_RANDOM_BERRY goto Feed
+  say "Folk hereabouts have taken to calling me the Berry Master." "I give a berry away every day, so that people learn what marvellous things they are. And you have earned today's!"
+  setflag FLAG_DAILY_RECEIVED_ROUTE_208_HOUSE_RANDOM_BERRY
+  random 26
+  if result == 1 goto B1
+  if result == 2 goto B2
+  if result == 3 goto B3
+  if result == 4 goto B4
+  if result == 5 goto B5
+  if result == 6 goto B6
+  if result == 7 goto B7
+  if result == 8 goto B8
+  if result == 9 goto B9
+  if result == 10 goto B10
+  if result == 11 goto B11
+  if result == 12 goto B12
+  if result == 13 goto B13
+  if result == 14 goto B14
+  if result == 15 goto B15
+  if result == 16 goto B16
+  if result == 17 goto B17
+  if result == 18 goto B18
+  if result == 19 goto B19
+  if result == 20 goto B20
+  if result == 21 goto B21
+  if result == 22 goto B22
+  if result == 23 goto B23
+  if result == 24 goto B24
+  if result == 25 goto B25
+  give "Cheri Berry"
+  end
+label B1
+  give "Chesto Berry"
+  end
+label B2
+  give "Pecha Berry"
+  end
+label B3
+  give "Rawst Berry"
+  end
+label B4
+  give "Aspear Berry"
+  end
+label B5
+  give "Leppa Berry"
+  end
+label B6
+  give "Oran Berry"
+  end
+label B7
+  give "Persim Berry"
+  end
+label B8
+  give "Lum Berry"
+  end
+label B9
+  give "Sitrus Berry"
+  end
+label B10
+  give "Figy Berry"
+  end
+label B11
+  give "Wiki Berry"
+  end
+label B12
+  give "Mago Berry"
+  end
+label B13
+  give "Aguav Berry"
+  end
+label B14
+  give "Iapapa Berry"
+  end
+label B15
+  give "Razz Berry"
+  end
+label B16
+  give "Bluk Berry"
+  end
+label B17
+  give "Nanab Berry"
+  end
+label B18
+  give "Wepear Berry"
+  end
+label B19
+  give "Pinap Berry"
+  end
+label B20
+  give "Pomeg Berry"
+  end
+label B21
+  give "Kelpsy Berry"
+  end
+label B22
+  give "Qualot Berry"
+  end
+label B23
+  give "Hondew Berry"
+  end
+label B24
+  give "Grepa Berry"
+  end
+label B25
+  give "Tamato Berry"
+  end
+label Feed
+  say "Berries are a gift of nature. Feed them to your Pokémon, I say!" "Happy Pokémon make people want to plant more berries, and more berries make Sinnoh a greener place for us all."
+  end
+
+
+script BerrySearcher
+  if poketchapp BerrySearcher goto Water
+  ask "Are you the forgetful sort, who plants berries and then can't remember where?"
+  if no goto Fine
+  say "I knew it! So am I! We're two of a kind, you and me. You can have this app for your Pokétch!"
+  if not poketch goto NoWatch
+  poketchapp BerrySearcher
+  fanfare item
+  text "{player} received the Berry Searcher for the Pokétch!"
+  say "The Berry Searcher shows you where berries are ripe and waiting to be picked."
+  end
+label NoWatch
+  say "Oh... You haven't got a Pokétch to put it on. Come back when you have one!"
+  end
+label Fine
+  say "Oh, is that so. Then you'll manage perfectly well without this lovely thing."
+  end
+label Water
+  say "Some kinds of berries want lots and lots of water."
+  end
+
+
+script Mulch
+  choose "Um... Would you like some mulch? It's good for growing berries. You have ${money}." "Growth Mulch: $200" "Damp Mulch: $200" "Stable Mulch: $200" "Gooey Mulch: $200" "No, thanks"
+  if result == 0 goto Growth
+  if result == 1 goto Damp
+  if result == 2 goto Stable
+  if result == 3 goto Gooey
+  say "Um... Please come again."
+  end
+label Growth
+  takemoney 200
+  if result == 0 goto Short
+  give "Growth Mulch"
+  goto Made
+label Damp
+  takemoney 200
+  if result == 0 goto Short
+  give "Damp Mulch"
+  goto Made
+label Stable
+  takemoney 200
+  if result == 0 goto Short
+  give "Stable Mulch"
+  goto Made
+label Gooey
+  takemoney 200
+  if result == 0 goto Short
+  give "Gooey Mulch"
+label Made
+  say "I make it myself, from the best soil and, um... what Pokémon leave behind. You know." "It helps berries grow up healthy."
+  end
+label Short
+  say "Um... You don't seem to have enough money..."
+  end
+
+
+script Book
+  sayown
+  choose "Which mulch would you like to read about?" "Growth Mulch" "Damp Mulch" "Stable Mulch" "Gooey Mulch" "Close the book"
+  if result == 0 goto Growth
+  if result == 1 goto Damp
+  if result == 2 goto Stable
+  if result == 3 goto Gooey
+  end
+label Growth
+  text "Growth Mulch makes berries grow faster. The soil dries out faster too, so water it more often."
+  end
+label Damp
+  text "Damp Mulch keeps the soil from drying out. The berries grow more slowly for it."
+  end
+label Stable
+  text "Stable Mulch keeps ripe berries on the plant for longer. Some growers lay it where they seldom pass."
+  end
+label Gooey
+  text "Gooey Mulch lets a plant come up again more times from where the old one withered."
+  end

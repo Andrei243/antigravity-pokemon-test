@@ -1,0 +1,244 @@
+{
+  "name": "OreburghCityNorthwestHouse2F",
+  "displayName": "Oreburgh City",
+  "bgmTrack": "sinnoh/oreburgh",
+  "interior": "House",
+  "trees": "Round",
+  "width": 20,
+  "height": 14,
+  "ground": [
+    "####################",
+    "####################",
+    "####################",
+    "###________##______#",
+    "###________##______#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "####################"
+  ],
+  "solid": [
+    "####################",
+    "####################",
+    "####################",
+    "######...####.....##",
+    "###......####......#",
+    "###................#",
+    "###................#",
+    "###................#",
+    "###...##......##...#",
+    "###...##......##...#",
+    "###................#",
+    "####..............##",
+    "####..............##",
+    "####################"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 6,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 15,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 3,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 4,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 5,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SideStairsDown",
+      "x": 9,
+      "y": 3,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Plant",
+      "x": 18,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 8,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 13,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 16,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 6,
+      "y": 8,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Table",
+      "x": 14,
+      "y": 8,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 8,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 13,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 16,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 3,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 18,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 3,
+      "targetMap": "OreburghCityNorthwestHouse1F",
+      "targetX": 16,
+      "targetY": 3,
+      "targetFacing": "Right"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "worker",
+      "name": "Worker",
+      "npcType": "Gentleman",
+      "x": 10,
+      "y": 8,
+      "facing": "Right",
+      "dialog": [
+        "Give your Pokémon a nickname, that's what I say.",
+        "Nothing makes one feel more like your very own."
+      ]
+    },
+    {
+      "id": "school_kid_f",
+      "name": "School Kid",
+      "npcType": "Lass",
+      "x": 12,
+      "y": 8,
+      "facing": "Left",
+      "dialog": [
+        "He called our Psyduck \"Yellow\". Because it's yellow.",
+        "I've thought about it for days and I still can't see the reasoning."
+      ]
+    },
+    {
+      "id": "lass",
+      "name": "Lass",
+      "npcType": "lass",
+      "x": 5,
+      "y": 5,
+      "facing": "Left",
+      "script": "DuskBall",
+      "movement": "wander_around",
+      "rangeX": 1
+    },
+    {
+      "id": "psyduck",
+      "name": "Yellow",
+      "npcType": "Pokemon",
+      "x": 11,
+      "y": 8,
+      "facing": "Down",
+      "dialog": [
+        "Yellow: Duuuck?"
+      ],
+      "species": "Psyduck"
+    }
+  ],
+  "wildEncounters": []
+}

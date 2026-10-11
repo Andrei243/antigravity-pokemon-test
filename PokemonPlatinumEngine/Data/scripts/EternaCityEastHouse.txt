@@ -1,0 +1,19 @@
+# Eterna City's east house (plan 01 · M11, part a), on the original's plan. docs/scripts.md describes the language;
+# the lines are our own, on the original's beats (scripts_eterna_city_east_house.s).
+#
+# The young man knows what the plate torn off the Pokémon statue said, or as much of it as he remembers: two
+# inscriptions, each asked for with a yes.
+
+
+script Inscription
+  say "Honestly! What is the world coming to? Somebody has ripped the plate clean off the Pokémon statue!" "Now nobody can read what was written on it. Who would do a thing like that?"
+  ask "Actually... do you want to know what it said?"
+  if no goto Shrug
+  say "The first inscription went something like this." "\"... the making of DIA... the one who gives time...\"" "\"Where there is laughter there are tears, and likewise... the same time flows on... the blessing of DIA...\"" "Ouch. I've forgotten whole chunks of it."
+  ask "Want to hear the other one?"
+  if no goto Shrug
+  say "The second went more or less like this." "\"... the birth of PAL... the maker of worlds side by side...\"" "\"Alive, and not alive... rifts in space... to come to the same world... the blessing of PAL...\"" "Some people say there was a third inscription once. I don't buy it." "A third Pokémon, beside the ones that rule time and space? Nothing could be as mighty as that."
+  end
+label Shrug
+  say "Well, if you're not interested, don't let me keep you."
+  end

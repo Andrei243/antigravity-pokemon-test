@@ -1,0 +1,123 @@
+{
+  "name": "FloaromaMeadowHouse",
+  "displayName": "Floaroma Meadow",
+  "bgmTrack": "sinnoh/floaroma",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#.....#####",
+    "#.........#",
+    "#..##.....#",
+    "#..##.....#",
+    "#.........#",
+    "#.........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 4,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 6,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 3,
+      "y": 5,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "FloaromaMeadow",
+      "targetX": 39,
+      "targetY": 46,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "hiker",
+      "name": "Hiker",
+      "npcType": "Gentleman",
+      "x": 5,
+      "y": 3,
+      "facing": "Up",
+      "dialog": [
+        "The flowers in these fields are something special.",
+        "See how much brighter they are than flowers anywhere else in Sinnoh? You have Pokémon to thank for that."
+      ]
+    },
+    {
+      "id": "ninja_boy",
+      "name": "Boy",
+      "npcType": "Youngster",
+      "x": 6,
+      "y": 6,
+      "facing": "Left",
+      "dialog": [
+        "If you spread Honey on a tree, come back later and see whether it's shaking.",
+        "If it is, there's often a rare Pokémon in it. I get all excited every time I see one moving!"
+      ],
+      "movement": "look_around"
+    }
+  ],
+  "wildEncounters": []
+}

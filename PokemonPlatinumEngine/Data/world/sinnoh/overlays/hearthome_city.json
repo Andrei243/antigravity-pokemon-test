@@ -16,7 +16,12 @@
     // The Poffin House and the Pokémon Fan Club, whose chairman gives the Poffin Case, built to the original's plans
     // (plan 06 · R14c)
     { "warp": 10, "map": "PoffinHouse", "x": 8, "y": 13, "facing": "Up" },
-    { "warp": 12, "map": "HearthomeFanClub", "x": 6, "y": 17, "facing": "Up" }
+    { "warp": 12, "map": "HearthomeFanClub", "x": 6, "y": 17, "facing": "Up" },
+    // Plan 01 · M11, part a: rooms on the original's plans
+    { "warp": 6, "map": "HearthomeCityNorthwestHouse", "x": 5, "y": 8, "facing": "Up" },
+    { "warp": 7, "map": "HearthomeCitySoutheastHouse1F", "x": 10, "y": 12, "facing": "Up" },
+    { "warp": 9, "map": "ForeignBuilding", "x": 8, "y": 20, "facing": "Up" },
+    { "warp": 13, "map": "HearthomeCityNortheastHouse1F", "x": 10, "y": 12, "facing": "Up" }
   ],
   // Gate houses are passed through; their rooms come with plan 01 · M11
   "through": [
@@ -29,8 +34,6 @@
     { "warp": 15, "to": "route_212_north", "toWarp": 0 },
     { "warp": 16, "to": "route_212_north", "toWarp": 1 }
   ],
-  // The houses and the Foreign Building have no rooms yet (plan 01 · M11)
-  "locked": [ 6, 7, 9, 13 ],
   // Plan 02 · S7 (scripts/hearthome_city.txt): Keira's Buneary running into the player as they come from Route 208
   // (trigger 0)
   "triggers": [ { "trigger": 0, "script": "Buneary" } ],

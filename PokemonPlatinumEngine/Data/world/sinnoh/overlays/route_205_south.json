@@ -2,8 +2,10 @@
   "area": "route_205_south",
   "bgmTrack": "sinnoh/route205",
   "trees": "Pine",
-  // The house on the route has no room yet (plan 01 · M11)
-  "locked": [ 2 ],
+  // Plan 01 · M11, part a: rooms on the original's plans
+  "doors": [
+    { "warp": 2, "map": "Route205House", "x": 4, "y": 8, "facing": "Up" }
+  ],
   // The little girl on the road out of Floaroma Town, and the grunts at the bridge's north end (plan 02 · S6)
   "triggers": [ { "trigger": 0, "script": "LittleGirl" }, { "trigger": 1, "script": "BridgeGrunts" } ],
   "people": {

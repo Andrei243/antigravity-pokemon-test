@@ -1,0 +1,26 @@
+# The Old Chateau's dining room (plan 01 · M11, part a), on the original's plan. docs/scripts.md describes the
+# language (scripts_old_chateau_dining_area.s).
+#
+# Now and then an old man stands at the head of the long table as the player comes in: the original rolls a die of
+# a hundred and one for it and shows him on ten or less (CheckShouldShowGhost 10). He turns, glides off along the
+# table and is gone before anyone can speak to him. His flag (FLAG_HIDE_OLD_CHATEAU_DINING_AREA_OLD_MAN) hides him
+# the rest of the time.
+
+
+script OnEnter
+  random 101
+  if result <= 10 goto Ghost
+  setflag FLAG_HIDE_OLD_CHATEAU_DINING_AREA_OLD_MAN
+  end
+label Ghost
+  clearflag FLAG_HIDE_OLD_CHATEAU_DINING_AREA_OLD_MAN
+  place old_man 19 4 down
+  show old_man
+  walk player up 1
+  wait 0.5
+  face old_man left
+  wait 0.3
+  walk old_man left 10
+  hide old_man
+  setflag FLAG_HIDE_OLD_CHATEAU_DINING_AREA_OLD_MAN
+  end

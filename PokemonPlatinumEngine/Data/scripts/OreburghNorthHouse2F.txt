@@ -1,0 +1,19 @@
+# The house in the north of Oreburgh City, upper floor (plan 01 · M11, part a), on the original's plan.
+# docs/scripts.md describes the language; the lines are our own, on the original's beats
+# (scripts_oreburgh_city_north_house_2f.s).
+#
+# The man who never goes out asks to be shown a Geodude, and gives a Heal Ball for the sight of one on the team, once
+# (FLAG_RECEIVED_OREBURGH_CITY_NORTH_HOUSE_2F_HEAL_BALL).
+
+
+script Geodude
+  if flag FLAG_RECEIVED_OREBURGH_CITY_NORTH_HOUSE_2F_HEAL_BALL goto After
+  say "The view from up here is splendid, but going all the way outside is such a bother." "I don't suppose you could show me the Pokémon they call Geodude?"
+  if not has "Geodude" end
+  say "Oh! That one! That's a Geodude! Look at it... It's adorable..." "That settles it! I'm going out to catch Pokémon of my own! Thank you, my friend. Take this, with my thanks!"
+  give "Heal Ball"
+  setflag FLAG_RECEIVED_OREBURGH_CITY_NORTH_HOUSE_2F_HEAL_BALL
+  end
+label After
+  say "To think there are so many kinds of Pokémon out in the world." "Now I want to see every last one of them!"
+  end

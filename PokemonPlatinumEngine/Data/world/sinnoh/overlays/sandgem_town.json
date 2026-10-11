@@ -6,10 +6,11 @@
   "doors": [
     { "warp": 0, "map": "PokeMart", "x": 4, "y": 6, "facing": "Up" },
     { "warp": 1, "map": "PokemonCenter", "x": 5, "y": 7, "facing": "Up" },
-    { "warp": 2, "map": "RowanLab", "x": 5, "y": 8, "facing": "Up" }
+    { "warp": 2, "map": "RowanLab", "x": 5, "y": 8, "facing": "Up" },
+    // Plan 01 · M11, part a: rooms on the original's plans
+    { "warp": 3, "map": "SandgemTownCounterpartHouse1F", "x": 6, "y": 10, "facing": "Up" },
+    { "warp": 4, "map": "SandgemTownHouse", "x": 4, "y": 8, "facing": "Up" }
   ],
-  // The two houses have no rooms yet (plan 01 · M11)
-  "locked": [ 3, 4 ],
   "people": {
     // The chapter's people (scripts/sandgem_town.txt; plan 02 · S4): the assistant who takes the player to the lab
     // and shows them round, the rival running out of it, the professor at its door with a TM

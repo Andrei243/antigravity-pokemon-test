@@ -1,0 +1,201 @@
+{
+  "name": "SandgemTownCounterpartHouse1F",
+  "displayName": "Sandgem Town",
+  "bgmTrack": "sinnoh/sandgem",
+  "interior": "House",
+  "trees": "Round",
+  "width": 13,
+  "height": 12,
+  "ground": [
+    "#############",
+    "#############",
+    "#############",
+    "#____##_____#",
+    "#____##_____#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "######D######"
+  ],
+  "solid": [
+    "#############",
+    "#############",
+    "#############",
+    "###.#####..##",
+    "#....####...#",
+    "#....##.....#",
+    "#...........#",
+    "#..##.......#",
+    "#..##.......#",
+    "##.........##",
+    "##.........##",
+    "######.######"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 3,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 9,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "KitchenCounter",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "KitchenCounter",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fridge",
+      "x": 4,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SideStairsUp",
+      "x": 7,
+      "y": 3,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Rug",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 11,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 5,
+      "y": 5,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 2,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 3,
+      "y": 7,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Cushion",
+      "x": 2,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 3,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 6,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 11,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 6,
+      "sourceY": 11,
+      "targetMap": "Sinnoh",
+      "targetX": 176,
+      "targetY": 855,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 9,
+      "sourceY": 3,
+      "targetMap": "SandgemTownCounterpartHouse2F",
+      "targetX": 5,
+      "targetY": 3,
+      "targetFacing": "Left"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "expert_m",
+      "name": "Grandfather",
+      "npcType": "Gentleman",
+      "x": 3,
+      "y": 9,
+      "facing": "Up",
+      "script": "Grandfather",
+      "movement": "look_north_and_west"
+    },
+    {
+      "id": "twin",
+      "name": "Little Sister",
+      "npcType": "Lass",
+      "x": 5,
+      "y": 7,
+      "facing": "Up",
+      "script": "LittleSister",
+      "movement": "wander_north_and_south",
+      "rangeZ": 1
+    }
+  ],
+  "wildEncounters": []
+}

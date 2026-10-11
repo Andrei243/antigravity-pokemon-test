@@ -92,10 +92,11 @@ internal static class PropModels
                 break;
             // Eterna City's rooms (plan 02 · S6): the Team Galactic building's stairs at the sides of its floors, the
             // cycle shop's bicycles, a bin, and boxes stacked in a storeroom
-            case PropType.SideStairsUp: SideStairsUp(kit, w, d, east: false); break;
-            case PropType.SideStairsDown: SideStairsDown(kit, w, d, west: false); break;
-            case PropType.SideStairsUpEast: SideStairsUp(kit, w, d, east: true); break;
-            case PropType.SideStairsDownWest: SideStairsDown(kit, w, d, west: true); break;
+            // (of wood in a house, plan 01 · M11; of steel anywhere else)
+            case PropType.SideStairsUp: SideStairsUp(kit, w, d, east: false, wood: map.Interior == InteriorStyle.House); break;
+            case PropType.SideStairsDown: SideStairsDown(kit, w, d, west: false, wood: map.Interior == InteriorStyle.House); break;
+            case PropType.SideStairsUpEast: SideStairsUp(kit, w, d, east: true, wood: map.Interior == InteriorStyle.House); break;
+            case PropType.SideStairsDownWest: SideStairsDown(kit, w, d, west: true, wood: map.Interior == InteriorStyle.House); break;
             case PropType.Headstone: kit.Sprite(kit.Face("headstone", 22, 30, PaintHeadstone), 16, 20); break;
             case PropType.Tomb: kit.Sprite(kit.Face("tomb", 54, 50, PaintTomb), 32, 40); break;
             case PropType.Bicycle: kit.Sprite(kit.Face("bicycle", 58, 36, PaintBicycle), w / 2f, d / 2f + 10); break;
@@ -110,7 +111,125 @@ internal static class PropModels
             case PropType.WarpPanel: WarpPanel(kit, wayOut: false); break;
             case PropType.WarpPanelOut: WarpPanel(kit, wayOut: true); break;
             case PropType.Tank: Tank(kit, w, d); break;
+            // The seats of the rooms rebuilt to the original's plans (plan 01 · M11): walked onto, never in the way
+            case PropType.Cushion: Cushion(kit); break;
+            case PropType.FlowerStand: FlowerStand(kit, p); break;
         }
+    }
+
+    /// <summary>
+    /// A seat one walks onto (style guide, "Rooms"): a square cushion 20 texels across and 5 high in the sofa's red,
+    /// a seam two texels in from its edge and a button at its middle.
+    /// </summary>
+    private static void Cushion(KitBuilder kit)
+    {
+        const int s = 20, at = (32 - s) / 2, h = 5;
+        var top = kit.Face("cushion.top", s, s, c =>
+        {
+            TopFace(c, RedFabric);
+            Pix.Border(c, 2, 2, s - 4, s - 4, RedFabric.Dark);
+            c.Rect(s / 2 - 1, s / 2 - 1, 2, 2, RedFabric.Dark);
+            c.Set(s / 2 - 1, s / 2 - 1, RedFabric.Light);
+        });
+        var front = kit.Face("cushion.front", s, h, c => Edge(c, RedFabric));
+        var side = kit.Face("cushion.side", s, h, c => Edge(c, Tone.Of(RedFabric.Dark)));
+        kit.Box(at, at + s, at + 1, at + 1 + s, 0, h, top, front, side, side);
+    }
+
+    private static readonly Color[] Blooms = { Rgb(226, 72, 72), Rgb(250, 214, 76), Rgb(240, 140, 180), Rgb(246, 246, 250), Rgb(110, 150, 230), Rgb(240, 150, 70) };
+
+    /// <summary>
+    /// A stand of potted flowers on each tile (style guide, "Rooms"): two wooden steps, three pots on the lower and
+    /// two on the upper, the blooms' colours dealt round by the tile.
+    /// </summary>
+    private static void FlowerStand(KitBuilder kit, Prop p)
+    {
+        for (int ty = 0; ty < p.Depth; ty++)
+            for (int tx = 0; tx < p.Width; tx++)
+            {
+                int turn = ((p.X + tx) * 5 + (p.Y + ty) * 3) % Blooms.Length;
+                var art = kit.Face($"flowerstand.{turn}", 30, 44, c => PaintFlowerStand(c, turn));
+                kit.Sprite(art, tx * 32 + 16, ty * 32 + 20);
+            }
+    }
+
+    /// <summary>A flower stand, 30 by 44: its blooms take their colours in turn from <paramref name="turn"/> on.</summary>
+    public static void PaintFlowerStand(PixelCanvas c, int turn)
+    {
+        var clay = Tone.Of(196, 110, 72);
+        void Pot(int x, int y, Color bloom)
+        {
+            // The bloom, a tuft of leaf under it, and the pot they stand in: flat shapes, no lone texel
+            c.Rect(x + 1, y, 4, 4, bloom);
+            c.Rect(x + 2, y + 1, 2, 2, PixelCanvas.Shadow(bloom, 0.22f));
+            c.Rect(x, y + 4, 6, 3, Leaf);
+            c.Rect(x + 1, y + 4, 4, 1, LeafLight);
+            c.Rect(x, y + 7, 6, 5, clay.Base);
+            c.Rect(x + 1, y + 7, 3, 1, clay.Light);
+            c.Rect(x + 4, y + 8, 2, 4, clay.Dark);
+        }
+        // The upper step and its two pots, then the lower step in front of it with three
+        c.Rect(3, 20, 24, 4, WoodLight.Base);
+        // (the light and dark lines stop a texel short of the ends, so the outline round the step is one shade)
+        c.Rect(4, 20, 22, 1, WoodLight.Light);
+        c.Rect(4, 23, 22, 1, WoodLight.Dark);
+        Pot(6, 8, Blooms[(turn + 3) % Blooms.Length]);
+        Pot(18, 8, Blooms[(turn + 4) % Blooms.Length]);
+        c.Rect(4, 24, 2, 14, WoodDark.Base); c.Rect(24, 24, 2, 14, WoodDark.Base);
+        c.Rect(0, 38, 30, 4, Wood.Base);
+        c.Rect(1, 38, 28, 1, Wood.Light);
+        c.Rect(1, 41, 28, 1, Wood.Dark);
+        Pot(2, 26, Blooms[turn]);
+        Pot(12, 26, Blooms[(turn + 1) % Blooms.Length]);
+        Pot(22, 26, Blooms[(turn + 2) % Blooms.Length]);
+        c.Rect(1, 42, 2, 2, WoodDark.Base); c.Rect(27, 42, 2, 2, WoodDark.Base);
+        Pix.Outline(c);
+    }
+
+    /// <summary>Width and height of a way on painted on a room's back wall, in texels.</summary>
+    public const int DoorwayWidth = 28, DoorwayHeight = 54;
+
+    /// <summary>
+    /// A doorway through a house's back wall (style guide, "Rooms"): the dark of the room beyond in a frame of dark
+    /// wood three texels wide under a lintel five deep.
+    /// </summary>
+    public static void PaintDoorway(PixelCanvas c)
+    {
+        int w = c.Width, h = c.Height;
+        var beyond = Rgb(30, 24, 30);
+        Pix.Raised(c, 0, 0, w, h, WoodDark);
+        c.Rect(3, 7, w - 6, h - 7, beyond);
+        c.Rect(3, 7, w - 6, 2, PixelCanvas.Light1(beyond, 0.18f));
+        c.VLine(3, 9, h - 9, PixelCanvas.Light1(beyond, 0.18f));
+        c.VLine(w - 4, 9, h - 9, PixelCanvas.Light1(beyond, 0.1f));
+        c.Rect(1, 1, w - 2, 5, Wood.Base);
+        c.HLine(1, 1, w - 2, Wood.Light);
+        c.HLine(1, 5, w - 2, WoodDark.Dark);
+        c.HLine(3, h - 1, w - 6, WoodDark.Light);
+    }
+
+    /// <summary>
+    /// A lift's doors in a back wall: two leaves of brushed steel shut on a dark seam in a steel frame, a floor light
+    /// over the head and a lit call button beside the right jamb.
+    /// </summary>
+    public static void PaintLiftDoors(PixelCanvas c)
+    {
+        int w = c.Width, h = c.Height;
+        Pix.Raised(c, 0, 0, w, h, Casing);
+        // The floor light over the head
+        c.Rect(w / 2 - 5, 2, 10, 3, Dark.Base);
+        c.Rect(w / 2 - 3, 3, 2, 1, Rgb(250, 214, 76));
+        // The two leaves, each brushed top to bottom, and the seam between them
+        int x0 = 3, x1 = w - 7, y0 = 8;
+        c.Rect(x0, y0, x1 - x0, h - y0, Steel.Base);
+        for (int x = x0 + 2; x < x1; x += 3) c.VLine(x, y0 + 1, h - y0 - 2, Steel.Light);
+        c.HLine(x0, y0, x1 - x0, Steel.Dark);
+        c.VLine((x0 + x1) / 2, y0, h - y0, Dark.Base);
+        c.VLine((x0 + x1) / 2 - 1, y0, h - y0, Steel.Dark);
+        // The call button on the jamb
+        c.Rect(w - 5, h / 2 - 2, 3, 5, Dark.Base);
+        c.Rect(w - 4, h / 2 - 1, 1, 2, Rgb(250, 214, 76));
+        c.HLine(x0, h - 1, x1 - x0, Steel.Dark);
     }
 
     /// <summary>
@@ -200,11 +319,14 @@ internal static class PropModels
     /// prop, with a rail along their open south side: eight steps of the prop's width, the last just under the top of
     /// the wall. <paramref name="east"/> turns it round, climbing east from its west end (the Lost Tower's).
     /// </summary>
-    private static void SideStairsUp(KitBuilder kit, int w, int d, bool east)
+    private static void SideStairsUp(KitBuilder kit, int w, int d, bool east, bool wood = false)
     {
+        // A house's flight is its own wood; the key of every face says which, so the two never share one
+        Tone Steel = wood ? WoodLight : PropModels.Steel, Casing = wood ? Wood : PropModels.Casing, Dark = wood ? WoodDark : PropModels.Dark;
+        string of = wood ? ".wood" : "";
         const int steps = 8, rise = 8;
         int run = w / steps, z0 = 2, z1 = d - 4;
-        var tread = kit.Face($"sidestairs.tread.{z1 - z0}{(east ? ".east" : "")}", run, z1 - z0, c =>
+        var tread = kit.Face($"sidestairs.tread{of}.{z1 - z0}{(east ? ".east" : "")}", run, z1 - z0, c =>
         {
             c.Rect(0, 0, run, c.Height, Steel.Base);
             // A ribbed plate, light at the step's nosing on the edge the flight is climbed from
@@ -215,8 +337,8 @@ internal static class PropModels
         for (int i = 0; i < steps; i++)
         {
             int x1 = east ? (i + 1) * run : w - i * run, top = (i + 1) * rise;
-            var south = kit.Face($"sidestairs.south.{top}", run, top, c => Pix.Raised(c, 0, 0, run, top, Casing));
-            var riser = kit.Face($"sidestairs.riser.{z1 - z0}x{top}", z1 - z0, top, c =>
+            var south = kit.Face($"sidestairs.south{of}.{top}", run, top, c => Pix.Raised(c, 0, 0, run, top, Casing));
+            var riser = kit.Face($"sidestairs.riser{of}.{z1 - z0}x{top}", z1 - z0, top, c =>
             {
                 Pix.Raised(c, 0, 0, z1 - z0, top, Casing);
                 c.HLine(0, 0, z1 - z0, Steel.Light);
@@ -224,10 +346,10 @@ internal static class PropModels
             if (east) kit.Box(x1 - run, x1, z0, z1, 0, top, tread, south, riser, null);
             else kit.Box(x1 - run, x1, z0, z1, 0, top, tread, south, null, riser);
             // The rail climbs with the steps along the open side
-            kit.Block("sidestairs.rail", Dark, x1 - run, x1, z1, z1 + 2, top, top + 12);
+            kit.Block("sidestairs.rail" + of, Dark, x1 - run, x1, z1, z1 + 2, top, top + 12);
         }
-        if (east) kit.Block("sidestairs.newel", Dark, 0, 3, z1 - 1, z1 + 3, 0, rise + 18);
-        else kit.Block("sidestairs.newel", Dark, w - 3, w, z1 - 1, z1 + 3, 0, rise + 18);
+        if (east) kit.Block("sidestairs.newel" + of, Dark, 0, 3, z1 - 1, z1 + 3, 0, rise + 18);
+        else kit.Block("sidestairs.newel" + of, Dark, w - 3, w, z1 - 1, z1 + 3, 0, rise + 18);
     }
 
     /// <summary>
@@ -235,11 +357,13 @@ internal static class PropModels
     /// with a rail round its open sides and a post at each corner. <paramref name="west"/> turns it round, going down
     /// westward from its head on the east (the Lost Tower's).
     /// </summary>
-    private static void SideStairsDown(KitBuilder kit, int w, int d, bool west)
+    private static void SideStairsDown(KitBuilder kit, int w, int d, bool west, bool wood = false)
     {
+        Tone Steel = wood ? WoodLight : PropModels.Steel, Dark = wood ? WoodDark : PropModels.Dark;
+        string of = wood ? ".wood" : "";
         const int steps = 7;
         int z0 = 2, z1 = d - 4;
-        var well = kit.Face($"sidestairs.well.{w}x{z1 - z0}{(west ? ".west" : "")}", w, z1 - z0, c =>
+        var well = kit.Face($"sidestairs.well{of}.{w}x{z1 - z0}{(west ? ".west" : "")}", w, z1 - z0, c =>
         {
             int run = w / steps;
             for (int i = 0; i < steps; i++)
@@ -259,11 +383,11 @@ internal static class PropModels
         kit.Decal(0, w, z0, z1, 0.004f, well);
         // The rail along the south side and across the far end; the head of the stairs is open
         int far = west ? 0 : w - 2;
-        kit.Block("sidestairs.downrail", Dark, west ? 0 : 2, west ? w - 2 : w, z1, z1 + 2, 16, 19);
-        kit.Block("sidestairs.downrail.end", Dark, far, far + 2, z0, z1, 16, 19);
+        kit.Block("sidestairs.downrail" + of, Dark, west ? 0 : 2, west ? w - 2 : w, z1, z1 + 2, 16, 19);
+        kit.Block("sidestairs.downrail.end" + of, Dark, far, far + 2, z0, z1, 16, 19);
         foreach (int x in west ? new[] { w - 4, w / 2 - 1, 1 } : new[] { 2, w / 2 - 1, w - 3 })
-            kit.Block("sidestairs.post", Dark, x, x + 2, z1, z1 + 2, 0, 16);
-        kit.Block("sidestairs.post", Dark, far, far + 2, z0, z0 + 2, 0, 16);
+            kit.Block("sidestairs.post" + of, Dark, x, x + 2, z1, z1 + 2, 0, 16);
+        kit.Block("sidestairs.post" + of, Dark, far, far + 2, z0, z0 + 2, 0, 16);
     }
 
     /// <summary>

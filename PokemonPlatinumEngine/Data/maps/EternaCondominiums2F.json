@@ -1,0 +1,217 @@
+{
+  "name": "EternaCondominiums2F",
+  "displayName": "Eterna City",
+  "bgmTrack": "sinnoh/eterna",
+  "interior": "House",
+  "trees": "Round",
+  "width": 20,
+  "height": 14,
+  "ground": [
+    "####################",
+    "####################",
+    "####################",
+    "###________##______#",
+    "###________##______#",
+    "###________________#",
+    "###________________#",
+    "#######__###########",
+    "#######__###########",
+    "#######__###########",
+    "###_____________#__#",
+    "###________________#",
+    "###________________#",
+    "####################"
+  ],
+  "solid": [
+    "####################",
+    "####################",
+    "####################",
+    "#####....######...##",
+    "###......######....#",
+    "###................#",
+    "###................#",
+    "#######..###########",
+    "#######..###########",
+    "#######..###########",
+    "###.#.#....###..####",
+    "###.#..............#",
+    "###.#..............#",
+    "####################"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 5,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 17,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 3,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 4,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SideStairsDown",
+      "x": 9,
+      "y": 3,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "SideStairsUp",
+      "x": 13,
+      "y": 3,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Rug",
+      "x": 15,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 18,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 6,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 11,
+      "y": 10,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "TrashCan",
+      "x": 13,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "KitchenCounter",
+      "x": 17,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "KitchenCounter",
+      "x": 18,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bed",
+      "x": 4,
+      "y": 10,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "Cushion",
+      "x": 11,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 12,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 3,
+      "targetMap": "EternaCondominiums1F",
+      "targetX": 16,
+      "targetY": 3,
+      "targetFacing": "Right"
+    },
+    {
+      "sourceX": 15,
+      "sourceY": 3,
+      "targetMap": "EternaCondominiums3F",
+      "targetX": 7,
+      "targetY": 3,
+      "targetFacing": "Left"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "expert_f",
+      "name": "Old Woman",
+      "npcType": "Lady",
+      "x": 17,
+      "y": 11,
+      "facing": "Left",
+      "script": "Recycle"
+    },
+    {
+      "id": "twin",
+      "name": "Little Girl",
+      "npcType": "Lass",
+      "x": 6,
+      "y": 4,
+      "facing": "Right",
+      "dialog": [
+        "Gardenia, our Gym Leader, slips off to Eterna Forest every now and then.",
+        "I always wonder what she gets up to in there."
+      ]
+    },
+    {
+      "id": "expert_m",
+      "name": "Old Man",
+      "npcType": "Gentleman",
+      "x": 6,
+      "y": 11,
+      "facing": "Up",
+      "dialog": [
+        "Recycle is a move for the middle of a battle.",
+        "The Pokémon that uses it gets back the item it has just used up."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

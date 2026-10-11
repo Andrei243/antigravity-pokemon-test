@@ -1,0 +1,206 @@
+{
+  "name": "OldChateauWestRoom",
+  "displayName": "Old Chateau",
+  "bgmTrack": "sinnoh/turnback_cave",
+  "interior": "House",
+  "trees": "Round",
+  "encounterRate": 10,
+  "width": 9,
+  "height": 10,
+  "ground": [
+    "#########",
+    "#########",
+    "#########",
+    "#_______#",
+    "#_______#",
+    "#_______D",
+    "#_______#",
+    "#_______#",
+    "#_______#",
+    "#########"
+  ],
+  "solid": [
+    "#########",
+    "#########",
+    "#########",
+    "###.....#",
+    "#.......#",
+    "#.#......",
+    "#.......#",
+    "##.....##",
+    "###.#..##",
+    "#########"
+  ],
+  "behaviours": [
+    { "x": 3, "y": 3, "width": 5, "depth": 1, "behaviour": "OldChateauFloor" },
+    { "x": 1, "y": 4, "width": 7, "depth": 1, "behaviour": "OldChateauFloor" },
+    { "x": 1, "y": 5, "width": 1, "depth": 1, "behaviour": "OldChateauFloor" },
+    { "x": 3, "y": 5, "width": 4, "depth": 1, "behaviour": "OldChateauFloor" },
+    { "x": 1, "y": 6, "width": 7, "depth": 1, "behaviour": "OldChateauFloor" },
+    { "x": 2, "y": 7, "width": 5, "depth": 1, "behaviour": "OldChateauFloor" },
+    { "x": 3, "y": 8, "width": 1, "depth": 1, "behaviour": "OldChateauFloor" },
+    { "x": 5, "y": 8, "width": 2, "depth": 1, "behaviour": "OldChateauFloor" }
+  ],
+  "props": [
+    {
+      "type": "Bookshelf",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 7,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 7,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 1,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 2,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 7,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 2,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 5,
+      "targetMap": "OldChateau",
+      "targetX": 1,
+      "targetY": 6,
+      "targetFacing": "Right"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "item_old_gateau",
+      "name": "Old Gateau",
+      "npcType": "ItemBall",
+      "x": 4,
+      "y": 6,
+      "facing": "Down",
+      "hiddenBy": "FLAG_OBTAINED_OLD_CHATEAU_SIDE_ROOMS_OLD_GATEAU",
+      "item": "Old Gateau"
+    }
+  ],
+  "wildEncounters": [
+    {
+      "speciesName": "Gastly",
+      "minLevel": 14,
+      "maxLevel": 14,
+      "weight": 20
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 15,
+      "maxLevel": 15,
+      "weight": 20
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 14,
+      "maxLevel": 14,
+      "weight": 10
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 15,
+      "maxLevel": 15,
+      "weight": 10
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 16,
+      "maxLevel": 16,
+      "weight": 10
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 17,
+      "maxLevel": 17,
+      "weight": 10
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 16,
+      "maxLevel": 16,
+      "weight": 5
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 17,
+      "maxLevel": 17,
+      "weight": 5
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 17,
+      "maxLevel": 17,
+      "weight": 4
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 17,
+      "maxLevel": 17,
+      "weight": 4
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 17,
+      "maxLevel": 17,
+      "weight": 1
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 17,
+      "maxLevel": 17,
+      "weight": 1
+    }
+  ]
+}

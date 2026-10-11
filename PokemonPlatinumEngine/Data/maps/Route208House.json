@@ -1,0 +1,190 @@
+{
+  "name": "Route208House",
+  "displayName": "Berry Master's House",
+  "bgmTrack": "sinnoh/route206",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "###########",
+    "#.........#",
+    "#..##.....#",
+    "#..##.....#",
+    "#.........#",
+    "#......####",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 4,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 6,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 3,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "FlowerStand",
+      "x": 4,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "FlowerStand",
+      "x": 5,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 3,
+      "y": 5,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "FlowerStand",
+      "x": 7,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "FlowerStand",
+      "x": 8,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "FlowerStand",
+      "x": 9,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Sinnoh",
+      "targetX": 441,
+      "targetY": 717,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 4,
+      "y": 6,
+      "text": "A book: \"Much Ado About Mulch: A Berry Grower's Guide\".",
+      "script": "Book"
+    }
+  ],
+  "npcs": [
+    {
+      "id": "old_man",
+      "name": "Berry Master",
+      "npcType": "Gentleman",
+      "x": 5,
+      "y": 5,
+      "facing": "Left",
+      "script": "BerryMaster"
+    },
+    {
+      "id": "twin",
+      "name": "Little Girl",
+      "npcType": "Lass",
+      "x": 7,
+      "y": 7,
+      "facing": "Down",
+      "script": "BerrySearcher",
+      "movement": "wander_around",
+      "rangeX": 1
+    },
+    {
+      "id": "pokemon_breeder_f",
+      "name": "Pokémon Breeder",
+      "npcType": "Lady",
+      "x": 8,
+      "y": 5,
+      "facing": "Down",
+      "script": "Mulch"
+    }
+  ],
+  "wildEncounters": []
+}

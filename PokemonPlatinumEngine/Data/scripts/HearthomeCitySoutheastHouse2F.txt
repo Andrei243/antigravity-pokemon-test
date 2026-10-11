@@ -1,0 +1,15 @@
+# Hearthome City's south-east house, upper floor (plan 01 · M11, part a), on the original's plan. docs/scripts.md
+# describes the language; the lines are our own, on the original's beats (scripts_hearthome_city_southeast_house_2f.s).
+#
+# The Trainer at the table gives a Shell Bell, once (FLAG_RECEIVED_HEARTHOME_CITY_SOUTHEAST_HOUSE_2F_SHELL_BELL).
+
+
+script ShellBell
+  if flag FLAG_RECEIVED_HEARTHOME_CITY_SOUTHEAST_HOUSE_2F_SHELL_BELL goto Explain
+  say "I've something for your Pokémon to hold. Here, take this Shell Bell."
+  give "Shell Bell"
+  setflag FLAG_RECEIVED_HEARTHOME_CITY_SOUTHEAST_HOUSE_2F_SHELL_BELL
+  end
+label Explain
+  say "Give the Shell Bell to a Pokémon to hold in battle. It gets a little HP back every time it lands a hit." "Somebody gave me that one on holiday, but I had one already."
+  end

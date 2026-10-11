@@ -1,0 +1,143 @@
+{
+  "name": "EternaCityHerbShop",
+  "displayName": "Herb Shop",
+  "bgmTrack": "sinnoh/eterna",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "##...#..###",
+    "##...#....#",
+    "######....#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 4,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 1,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 5,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Counter",
+      "x": 1,
+      "y": 5,
+      "width": 5,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Sinnoh",
+      "targetX": 316,
+      "targetY": 522,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "expert_f",
+      "name": "Old Woman",
+      "npcType": "Lady",
+      "x": 6,
+      "y": 6,
+      "facing": "Right",
+      "dialog": [
+        "Herbal medicine works wonders. Your Pokémon won't thank you for it, mind.",
+        "It is dreadfully bitter, and it smells worse!"
+      ]
+    },
+    {
+      "id": "cashier_f",
+      "name": "Herbalist",
+      "npcType": "Clerk",
+      "x": 3,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "Welcome to the Herb Shop! Medicine that works, at prices that don't hurt."
+      ],
+      "isPokeMartClerk": true,
+      "mart": "eterna_house"
+    },
+    {
+      "id": "expert_m",
+      "name": "Old Man",
+      "npcType": "Gentleman",
+      "x": 8,
+      "y": 4,
+      "facing": "Up",
+      "dialog": [
+        "Somebody ought to invent a herbal medicine that isn't bitter.",
+        "Now that would be a breakthrough!"
+      ],
+      "movement": "look_north_and_east"
+    }
+  ],
+  "wildEncounters": []
+}

@@ -405,7 +405,8 @@ public class UndergroundTests
         Assert.True(UndergroundField.InABase(32, 100));
         Assert.False(UndergroundField.InABase(33, 65));
         // Every hiker's tile is floor, and each hiker on the map stands where the original's table has him, not where
-        // the map's file does (the overlay's "at"). Those of a system nothing open lies over yet are held back
+        // the map's file does (the overlay's "at"). All twenty stand there since Fullmoon and Newmoon Islands opened
+        // over the north-west system (plan 01 · M11, part a took its three out of the overlay's "heldBack")
         Assert.All(UndergroundDatabase.Vendors, v => Assert.False(map.IsSolid(v.X, v.Z)));
         string[] prefixes = { "goods_vendor_", "traps_vendor_", "treasures_vendor_" };
         var counts = new int[3];
@@ -421,7 +422,7 @@ public class UndergroundTests
             Assert.Equal("Hiker" + vendor.Kind, hiker.Script);
             standing++;
         }
-        Assert.True(standing >= 17, $"{standing} hikers stand in the tunnels");
+        Assert.Equal(UndergroundDatabase.Vendors.Count, standing);
         Assert.Equal(standing, map.Everyone.Count(n => n.Key != null && n.Key.Contains("_vendor_")));
     }
 
