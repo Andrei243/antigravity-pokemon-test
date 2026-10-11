@@ -2,7 +2,8 @@
 # describes the language; the lines are our own, on the original's beats (scripts_pokemon_league_bertha_room.s).
 #
 # As Aaron's room: the door shuts behind the challenger, and the door on to Flint's passage opens once Bertha is
-# beaten. She is drawn as a lady until plan 11 makes her look; her rematch team waits for plan 02 · S15.
+# beaten. She is drawn as a lady until plan 11 makes her look. Once Charon has been arrested at Stark Mountain she
+# brings her rematch team (plan 02 · S15, part b).
 
 
 # PokemonLeagueBerthaRoom_OnFrame_EnterRoom, by the door's own flag (see Aaron's room)
@@ -22,7 +23,13 @@ script Bertha
   say "Well now. What a young thing to have come so far! But there's steel in the way you stand, isn't there, dear?"
   say "My name is Bertha. I've spent a long life with Ground Pokémon: patient, steady, and stronger than anyone expects."
   say "Now then. Would you show an old woman how much you've learned on your way here?"
+  # PokemonLeagueBerthaRoom_StartBerthaRematchBattle: the stronger team, once Charon is caught at Stark Mountain
+  if flag FLAG_ARRESTED_CHARON_STARK_MOUNTAIN goto Rematch
   battle self as "elite_four_bertha"
+  goto Fought
+label Rematch
+  battle self as "elite_four_bertha_rematch"
+label Fought
   setflag FLAG_DEFEATED_BERTHA
   sound "lift_stop"
   setflag FLAG_HIDE_POKEMON_LEAGUE_BERTHA_ROOM_EXIT_DOOR

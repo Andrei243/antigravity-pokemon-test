@@ -1,0 +1,126 @@
+# The great room inside Stark Mountain (plan 01 · M10, part b; its story plan 02 · S15, part b). docs/scripts.md
+# describes the language; the lines are our own, on the original's beats (scripts_stark_mountain_room_2.s,
+# scripts_follower_partners.s).
+#
+# A few steps in from the first room the way opens out, and whoever steps onto the tile where it does (the original's
+# coordinate event at 42, 69) is called to from behind: Buck comes running in after them and they go on together. He
+# walks behind the player as Platinum's "buck_stark_mountain", heals the team after every battle and battles beside
+# them against the room's trainers, who stand in pairs. Turning back for the way out (42, 70) leaves him waiting where
+# the way opens out; at the room's far end (47, 3, before the way into the mountain's heart) he says this is it and
+# goes in ahead (FLAG_HIDE_STARK_MOUNTAIN_ROOM_2_BUCK: he is in the last room from the start, as the original's is).
+# VAR_STARK_MOUNTAIN_ROOM_2_FOLLOWER_BUCK_STATE: 0 not with him, 1 together, 2 gone ahead.
+#
+# Stood in for: Buck's look (plan 11 · C6: a youngster stands for him, as on Route 227).
+
+
+# Away from the room without having seen him through, he waits where the way opens out (the original's OnTransition)
+script OnEnter
+  if var VAR_STARK_MOUNTAIN_ROOM_2_FOLLOWER_BUCK_STATE >= 2 end
+  if partner end
+  setvar VAR_STARK_MOUNTAIN_ROOM_2_FOLLOWER_BUCK_STATE 0
+  place buck 42 68 up
+  end
+
+
+# StarkMountainRoom2_CoordEvent_BuckStartFollowing
+script BuckJoins
+  if flag FLAG_TALKED_TO_STARK_MOUNTAIN_ROOM_2_BUCK goto Again
+  # StarkMountainRoom2_BuckEnterStartFollowing: he comes up the passage behind the player
+  place buck 42 78 up
+  clearflag FLAG_HIDE_STARK_MOUNTAIN_ROOM_2_BUCK
+  show buck
+  walk buck up 8 fast
+  face player down
+  speaker "Buck"
+  say "Hey, {player}! Wait for me!"
+  say "So what's going on in here? ...What?! Team Galactic's inside? Got it! Then we're a team, you and me. Let's go!"
+  goto Together
+label Again
+  # StarkMountainRoom2_BuckStartFollowing: he has been waiting a step further in
+  place buck 42 68 down
+  face player up
+  speaker "Buck"
+  say "Team Galactic's still in there, isn't it? Come on! We'll go together!"
+label Together
+  fanfare levelup
+  text "{player} decided to go with Buck."
+  setflag FLAG_TALKED_TO_STARK_MOUNTAIN_ROOM_2_BUCK
+  setvar VAR_STARK_MOUNTAIN_ROOM_2_FOLLOWER_BUCK_STATE 1
+  speaker "Buck"
+  say "You won't be sorry you brought me! I'll have your Pokémon fit again after every battle."
+  partner buck "buck_stark_mountain"
+  end
+
+
+# StarkMountainRoom2_CoordEvent_PlayerLeaveBuck: a step behind the player, he is on the tile to the north
+script PlayerTurnsBack
+  partner off
+  place buck 42 69 down
+  face player up
+  speaker "Buck"
+  say "Whoa, hold on! If you go back now I'm left in here all on my own!"
+  say "...Well. If you've got to go, you've got to go. I'll hang about here till you're back."
+  setvar VAR_STARK_MOUNTAIN_ROOM_2_FOLLOWER_BUCK_STATE 0
+  walk buck up 1
+  face buck down
+  end
+
+
+# StarkMountainRoom2_CoordEvent_BuckLeavePlayer: he is a step behind the player, whichever way they came to the tile
+# before the way in, and the player makes room for him
+script BuckGoesAhead
+  partner off
+  if facing up goto FromTheSouth
+  if facing left goto FromTheEast
+  place buck 46 3 right
+  walk player right 1
+  face player left
+  walk buck right 1
+  goto HereWeAre
+label FromTheSouth
+  place buck 47 4 up
+  walk player left 1
+  face player right
+  walk buck up 1
+  goto HereWeAre
+label FromTheEast
+  place buck 48 3 left
+  walk player left 1
+  face player right
+  walk buck left 1
+label HereWeAre
+  face buck up
+  wait 0.4
+  face buck player
+  speaker "Buck"
+  say "Here we are, {player}! The heart of the mountain. Team Galactic's just through there, right?"
+  say "This is it, then. No more fooling about!"
+  walk buck up 1
+  sound "stairs"
+  hide buck
+  setflag FLAG_HIDE_STARK_MOUNTAIN_ROOM_2_BUCK
+  setvar VAR_STARK_MOUNTAIN_ROOM_2_FOLLOWER_BUCK_STATE 2
+  end
+
+
+# Buck, spoken to on the way (the original's FollowerPartners_Buck)
+script Buck
+  face self player
+  speaker "Buck"
+  if var VAR_FOLLOWER_BUCK_TIMES_TALKED >= 3 goto Cool
+  if var VAR_FOLLOWER_BUCK_TIMES_TALKED == 2 goto Brother
+  if var VAR_FOLLOWER_BUCK_TIMES_TALKED == 1 goto Tough
+  say "This mountain's where I raised my Pokémon, {player}. Every one of them! I know it like my own back yard."
+  addvar VAR_FOLLOWER_BUCK_TIMES_TALKED 1
+  end
+label Tough
+  say "People keep telling me a Trainer has to be tough. Says who? There's no law about it! I do this because it's fun."
+  addvar VAR_FOLLOWER_BUCK_TIMES_TALKED 1
+  end
+label Brother
+  say "My big brother's one of the Elite Four, you know. You've met him: Flint! Loud, isn't he? It runs in the family."
+  addvar VAR_FOLLOWER_BUCK_TIMES_TALKED 1
+  end
+label Cool
+  say "Wouldn't it be something if there was a Pokémon down here that nobody's ever seen? I've always thought there might be."
+  end

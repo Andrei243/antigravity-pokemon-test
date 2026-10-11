@@ -4,8 +4,8 @@
 # The challenger walks two steps in and the door shuts behind them (the door is a thing of the map, brought on by its
 # flag); the door on to Bertha's passage stands shut until Aaron is beaten. Both doors and FLAG_DEFEATED_AARON are put
 # back by the Pokémon Center's own script each time the player comes in there, as the original's are. He is drawn as a
-# youngster until plan 11 makes his look. His rematch team (the original's, once Charon is arrested at Stark Mountain)
-# waits for the flag's own scene (plan 02 · S15).
+# youngster until plan 11 makes his look. Once Charon has been arrested at Stark Mountain
+# (FLAG_ARRESTED_CHARON_STARK_MOUNTAIN, plan 02 · S15, part b) he brings his rematch team, as the original's does.
 
 
 # PokemonLeagueAaronRoom_OnFrame_EnterRoom. The original runs it while a local variable is nought, which a save made
@@ -26,7 +26,13 @@ script Aaron
   say "Hello there, and welcome to the Pokémon League! I'm Aaron, the first of the Elite Four."
   say "Let me ask you something. Do you know why I battle with Bug Pokémon? Because nothing is more beautiful, that's why. The shine of a shell, the hum of wings... They're perfect."
   say "I came to this room to become perfect too, alongside them. So come on! Let me measure myself against you!"
+  # PokemonLeagueAaronRoom_StartAaronRematchBattle: the stronger team, once Charon is caught at Stark Mountain
+  if flag FLAG_ARRESTED_CHARON_STARK_MOUNTAIN goto Rematch
   battle self as "elite_four_aaron"
+  goto Fought
+label Rematch
+  battle self as "elite_four_aaron_rematch"
+label Fought
   setflag FLAG_DEFEATED_AARON
   sound "lift_stop"
   setflag FLAG_HIDE_POKEMON_LEAGUE_AARON_ROOM_EXIT_DOOR

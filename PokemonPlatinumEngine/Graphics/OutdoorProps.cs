@@ -653,6 +653,53 @@ internal static class OutdoorProps
         Pix.Outline(c);
     }
 
+    /// <summary>
+    /// The Magma Stone, 30 by 28 (style guide, "The Magma Stone"): a squat lump of the lava pool's crust, flat where it
+    /// sits, split by three cracks that glow as the pool's do, with an ember where they meet.
+    /// </summary>
+    public static void PaintMagmaStone(PixelCanvas c)
+    {
+        var light = Rgb(90, 70, 70);
+        var mid = Rgb(60, 46, 50);
+        var dark = Rgb(40, 32, 40);
+        var lip = Rgb(150, 44, 30);
+        var glow = Rgb(222, 94, 36);
+        var heart = Rgb(250, 158, 50);
+        var ember = Rgb(255, 224, 118);
+
+        // The lump: an ellipse broader than tall, cut flat along its foot
+        for (int y = 2; y <= 26; y++)
+            for (int x = 1; x <= 28; x++)
+            {
+                float u = (x + 0.5f - 15f) / 14f, v = (y + 0.5f - 16f) / 13.5f;
+                float d = u * u + v * v;
+                if (d > 1f || y > 25) continue;
+                c.Set(x, y, u + v < -0.7f ? light : u + v > 0.55f || y >= 24 || d > 0.84f && u + v > -0.1f ? dark : mid);
+            }
+
+        // A crack: lips of deep red either side of a line of glow, with its heart along the middle of its run
+        void Crack((int X, int Y)[] run)
+        {
+            foreach (var (x, y) in run)
+            {
+                if (c.Get(x - 1, y).A > 0) c.Set(x - 1, y, lip);
+                if (c.Get(x + 1, y).A > 0) c.Set(x + 1, y, lip);
+            }
+            for (int i = 0; i < run.Length; i++)
+                c.Set(run[i].X, run[i].Y, i > 0 && i < run.Length - 1 ? heart : glow);
+        }
+
+        // Down from the crown, out to the left shoulder and out to the right foot: they meet a little above the middle
+        Crack(new[] { (14, 4), (14, 5), (15, 6), (15, 7), (14, 8), (14, 9), (15, 10), (15, 11), (15, 12) });
+        Crack(new[] { (4, 15), (5, 15), (6, 14), (7, 14), (8, 13), (9, 13), (10, 13), (11, 12), (12, 12), (13, 12), (14, 12) });
+        Crack(new[] { (16, 13), (17, 14), (18, 14), (19, 15), (20, 16), (21, 17), (22, 17), (23, 18), (24, 19), (24, 20), (25, 21) });
+        c.Rect(14, 12, 3, 2, ember);
+        c.Set(15, 11, heart);
+        c.Set(13, 13, heart);
+        c.Set(17, 14, heart);
+        Pix.Outline(c);
+    }
+
     /// <summary>A wooden notice board on two posts, 30 by 30.</summary>
     public static void PaintSignpost(PixelCanvas c)
     {
@@ -694,6 +741,7 @@ public static class ThingCards
             PropType.GalacticDoor => (GalacticArt.DoorWidth, GalacticArt.DoorHeight, GalacticArt.PaintDoor),
             PropType.Rubble => (30, 20, OutdoorProps.PaintRubble),
             PropType.CavePainting => (32, 52, OutdoorProps.PaintCavePainting),
+            PropType.MagmaStone => (30, 28, OutdoorProps.PaintMagmaStone),
             _ => (OutdoorProps.ItemBallCard, OutdoorProps.ItemBallCard, OutdoorProps.PaintItemBall)
         };
         var art = new PixelCanvas(w, h);
@@ -707,7 +755,7 @@ public static class ThingCards
     /// </summary>
     public static float FootOf(PropType kind) => kind switch
     {
-        PropType.CutTree or PropType.StrengthBoulder => 20f / 32f,
+        PropType.CutTree or PropType.StrengthBoulder or PropType.MagmaStone => 20f / 32f,
         PropType.CrackedRock or PropType.Rubble => 19f / 32f,
         PropType.PunchingBag or PropType.TireStack or PropType.Bollard or PropType.Snowball => 18f / 32f,
         // A shutter stands across the middle of its gap

@@ -1,0 +1,129 @@
+# Sailor Eldritch's house in Canalave City (the room: plan 01 · M11, part b; its story: plan 02 · S15, part b), on the
+# original's plan. docs/scripts.md describes the language; the lines are our own, on the original's beats
+# (scripts_canalave_city_sailor_eldritch_house.s).
+#
+# VAR_LUNAR_WING_EVENT_STATE, as the original counts it:
+#   0  nothing the matter: the boy runs about the room and his mother stands by the kitchen;
+#   1  the first time a Champion with the National Pokédex comes in, the boy lies in his bed in a nightmare he can't
+#      be woken from, his mother beside him;
+#   2  once he has been looked at (FLAG_TALKED_TO_CANALAVE_CITY_SAILOR_ELDRITCH_HOUSE_LITTLE_BOY): his father, at the
+#      quay, asks the player to go to Fullmoon Island for the Lunar Wing (canalave_city.txt), and offers the island
+#      among the places he sails to from then on;
+#   3  woken: looked at again by someone who has met Cresselia and carries the Lunar Wing, he wakes
+#      (FLAG_WOKE_UP_CANALAVE_CITY_SAILOR_ELDRITCH_HOUSE_LITTLE_BOY, and the wing is used up); his father runs in,
+#      thanks the player and goes back to his boat. The next time the house is come to it is 0 again, for good.
+#
+# The boy in bed is a second person of the room, on the bed's middle tile as the original's is, there only while our
+# own flag FLAG_CANALAVE_CITY_SAILOR_ELDRITCH_HOUSE_LITTLE_BOY_IN_BED is set (the original moves its one object; here
+# the boy who runs about is hidden by the same flag). Sailor Eldritch is on the map only for the scene
+# (FLAG_HIDE_CANALAVE_CITY_SAILOR_ELDRITCH_HOUSE_SAILOR_ELDRITCH, set from the start by common.ChapterTwelve), which
+# stands him inside the door, on the original's tile; his own tile in the room's file is a step further in, since the
+# original's is where whoever comes in is put down.
+#
+# Left out: what the original goes on to once the boy is well, for whoever has the Member Card of one of its events
+# (the Harbor Inn's dream, Newmoon Island and Darkrai): docs/mechanics/rulings.md, "After the Hall of Fame, part b".
+
+
+# CanalaveCitySailorEldritchHouse_OnTransition
+script OnEnter
+  if var VAR_LUNAR_WING_EVENT_STATE == 3 goto Over
+  if var VAR_LUNAR_WING_EVENT_STATE >= 1 goto InBed
+  # CanalaveCitySailorEldritchHouse_TryInitLunarWingEvent
+  if flag FLAG_WOKE_UP_CANALAVE_CITY_SAILOR_ELDRITCH_HOUSE_LITTLE_BOY goto Well
+  if not flag FLAG_GAME_COMPLETED goto Well
+  if not nationaldex goto Well
+  setvar VAR_LUNAR_WING_EVENT_STATE 1
+label InBed
+  # CanalaveCitySailorEldritchHouse_SetLittleBoyPokefanFPositionsAtBed
+  setflag FLAG_CANALAVE_CITY_SAILOR_ELDRITCH_HOUSE_LITTLE_BOY_IN_BED
+  place pokefan_f 9 6 left
+  end
+label Over
+  setvar VAR_LUNAR_WING_EVENT_STATE 0
+label Well
+  clearflag FLAG_CANALAVE_CITY_SAILOR_ELDRITCH_HOUSE_LITTLE_BOY_IN_BED
+  place pokefan_f 8 4 up
+  end
+
+
+# CanalaveCitySailorEldritchHouse_LittleBoy, in his bed: looked at from the one tile beside it (7, 6)
+script BoyInBed
+  speaker none
+  if var VAR_LUNAR_WING_EVENT_STATE == 3 goto Awake
+  if not flag FLAG_TALKED_TO_CANALAVE_CITY_SAILOR_ELDRITCH_HOUSE_LITTLE_BOY goto First
+  if not flag FLAG_MET_CRESSELIA goto Thrashing
+  if not item "Lunar Wing" goto Thrashing
+  setflag FLAG_WOKE_UP_CANALAVE_CITY_SAILOR_ELDRITCH_HOUSE_LITTLE_BOY
+  setvar VAR_LUNAR_WING_EVENT_STATE 3
+  take "Lunar Wing"
+  emote little_boy_in_bed sleep 1.2
+  say "The little boy is tossing and turning in his sleep."
+  say "The Lunar Wing {player} was carrying began to glow..."
+  say "The fear went out of the boy's face. He is sleeping as peacefully as anyone could wish!"
+  emote little_boy_in_bed exclaim
+  say "The little boy woke up!"
+  fanfare heal
+  wait 0.5
+  # CanalaveCitySailorEldritchHouse_SailorEldritchEnter
+  sound "door_open"
+  clearflag FLAG_HIDE_CANALAVE_CITY_SAILOR_ELDRITCH_HOUSE_SAILOR_ELDRITCH
+  place sailor_eldritch 4 8 up
+  show sailor_eldritch
+  wait 0.2
+  face pokefan_f left
+  face little_boy_in_bed left
+  face player left
+  walk sailor_eldritch up 2 right 2
+  # The player steps back from the bed to let him by
+  walk player down 1
+  face player up
+  walk sailor_eldritch right 1
+  speaker "Sailor Eldritch"
+  say "You... you're awake! Oh, my boy! My boy..."
+  say "I don't know what to say. I haven't the words."
+  face sailor_eldritch down
+  say "Thank you! As long as any of us lives, we'll not forget what you've done for him!"
+  face sailor_eldritch right
+  say "To see you yourself again, son: it puts the wind back in my sails! I'm a sailor again, by thunder!"
+  face sailor_eldritch down
+  say "And you: come down to the quay and sail with me, any time you like!"
+  face player left
+  walk sailor_eldritch left 3 down 2
+  hide sailor_eldritch
+  setflag FLAG_HIDE_CANALAVE_CITY_SAILOR_ELDRITCH_HOUSE_SAILOR_ELDRITCH
+  sound "door_close"
+  face player right
+  end
+# CanalaveCitySailorEldritchHouse_FirstTimeBoyThrashingInSleep
+label First
+  setflag FLAG_TALKED_TO_CANALAVE_CITY_SAILOR_ELDRITCH_HOUSE_LITTLE_BOY
+  setvar VAR_LUNAR_WING_EVENT_STATE 2
+label Thrashing
+  emote little_boy_in_bed sleep 1.2
+  say "The little boy is tossing and turning in his sleep. Something in his dream has hold of him."
+  say "He is muttering... \"Dark... it's so dark... it's watching me...\""
+  end
+# CanalaveCitySailorEldritchHouse_ScaryDreamDarkPokemon
+label Awake
+  speaker "Little Boy"
+  say "I couldn't wake up... I was somewhere dark, and there was a dark Pokémon, and it kept on looking at me..."
+  say "But I could hear you all the time, Dad. And you, Mum. I knew you were there."
+  end
+
+
+# CanalaveCitySailorEldritchHouse_PokefanF
+script Mother
+  face self player
+  if var VAR_LUNAR_WING_EVENT_STATE == 3 goto Thanks
+  if var VAR_LUNAR_WING_EVENT_STATE >= 1 goto Afraid
+  sayown
+  end
+label Afraid
+  say "I never dreamed a child of ours could be caught in a nightmare that won't let him go..."
+  say "It has happened in Canalave before, they say, long ago. People who slept and slept and couldn't be woken, until someone brought them a feather from the island of the full moon."
+  face self left
+  end
+label Thanks
+  say "Thank you! Thank you! However often I say it, it will never be enough!"
+  face self left
+  end

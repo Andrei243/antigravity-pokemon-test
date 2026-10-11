@@ -4,13 +4,31 @@
   // D_06, as the rooms before it: Victory Road's stands in (plan 05 · A6)
   "bgmTrack": "sinnoh/victory_road",
   // The mountain's heart (plan 01 · M10, part b): a short hall with the Magma Stone's place at its head. Everyone in
-  // it is the story's (plan 02 · S15, part b): Charon and his grunts, Looker and his Croagunk, the two policemen,
-  // Buck, and Heatran, which waits at the head of the hall for whoever takes the stone away again (hidden by
-  // FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_HEATRAN).
+  // it is the story's (plan 02 · S15, part b; scripts/stark_mountain_room_3.txt): Charon between his two grunts
+  // before the stone and Buck inside the way in, there from the start; Looker, his Croagunk and the two policemen,
+  // whom the scene brings on; and Heatran at the head of the hall, which shows only once Buck has been spoken to at
+  // his place in the Survival Area (the room's own arrival script decides, as the original's does).
   //
-  // Two of the scene's things have the looks of an obstacle, and would stand here as a boulder to push and a rock to
-  // smash if they were laid out with the rest: the Magma Stone itself (hidden by
-  // FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_MAGMA_STONE) and the cracked rock Looker hides as (hidden by
-  // FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_ROCK_SMASH_LOOKER). They are held back until the scene that owns them
-  "heldBack": [ "magma_stone", "rock_smash_looker" ]
+  // Two of the scene's things have the looks of an obstacle in the original, and would stand here as a boulder to push
+  // and a rock to smash if they were laid out with the rest: the Magma Stone itself and the cracked rock Looker hides
+  // as. They are held back, and stand here as things of the story's own that no field move clears (npcs, below:
+  // "MagmaStone", "FalseRock"), on the original's tiles and behind its flags.
+  //
+  // Stood in for until plan 11: Buck is a youngster, the policemen gentlemen
+  "heldBack": [ "magma_stone", "rock_smash_looker" ],
+  "people": {
+    "charon": { "name": "Charon", "script": "Galactic", "still": true },
+    "grunt_m_1": { "name": "Grunt", "script": "Galactic", "still": true },
+    "grunt_m_2": { "name": "Grunt", "script": "Galactic", "still": true },
+    "buck": { "name": "Buck", "npcType": "Youngster", "script": "BuckWaits", "still": true },
+    "looker": { "name": "Looker", "script": "Galactic", "still": true },
+    "croagunk": { "name": "Croagunk", "still": true },
+    "policeman_1": { "name": "Policeman", "npcType": "Gentleman", "script": "Galactic", "still": true },
+    "policeman_2": { "name": "Policeman", "npcType": "Gentleman", "script": "Galactic", "still": true },
+    "heatran": { "name": "Heatran", "script": "Heatran", "still": true }
+  },
+  "npcs": [
+    { "id": "magma_stone", "name": "Magma Stone", "npcType": "MagmaStone", "x": 7, "y": 8, "script": "MagmaStone", "hiddenBy": "FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_MAGMA_STONE" },
+    { "id": "rock_smash_looker", "name": "Cracked rock", "npcType": "FalseRock", "x": 10, "y": 13, "script": "OddRock", "hiddenBy": "FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_ROCK_SMASH_LOOKER" }
+  ]
 }

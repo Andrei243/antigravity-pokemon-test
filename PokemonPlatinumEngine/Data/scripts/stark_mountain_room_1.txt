@@ -1,10 +1,108 @@
-# Stark Mountain's first room (plan 01 · M10, part b). docs/scripts.md describes the language
-# (scripts_stark_mountain_room_1.s).
+# Stark Mountain's first room (plan 01 · M10, part b; its story plan 02 · S15, part b). docs/scripts.md describes the
+# language; the lines are our own, on the original's beats (scripts_stark_mountain_room_1.s).
 #
-# Arriving sets what the original's does for the place itself. The original's arrival also hides Buck on Route 227
-# (FLAG_HIDE_ROUTE_227_BUCK), and Commanders Mars and Jupiter battle whoever comes in while
-# VAR_STARK_MOUNTAIN_ROOM_1_STATE is 0: both are the story's (plan 02 · S15, part b).
+# Arriving sets what the original's does: the place counts as come to, and Buck is gone from Route 227, where he has
+# waited since his question (he comes in after the player in the next room).
+#
+# The first time anyone comes in (VAR_STARK_MOUNTAIN_ROOM_1_STATE 0) Team Galactic is there before them: Commander
+# Mars and Commander Jupiter side by side, and behind them Charon between two grunts. Mars wants to know what became
+# of Cyrus, won't believe the answer, and battles; beaten, she steps back and Jupiter battles in her place. Beaten
+# too, they have had enough: Mars leaves to look for Cyrus, Jupiter to do as she pleases, and they walk out past the
+# player. Charon, who thinks them both fools and Cyrus a bigger one, has no interest in a child: he goes on up the
+# room with his grunts to fetch the Magma Stone (FLAG_HIDE_STARK_MOUNTAIN_ROOM_1_TEAM_GALACTIC, state 1).
+#
+# A battle lost is a white-out, and the scene plays again from its start the next time the room is come into, as the
+# original's does (nothing is set until its end), so the two are stood back in their places first.
+#
+# Stood in for: the Commanders' words in battle (plan 11 · C12) and Team Galactic's tune (plan 05 · A6).
+
 
 script OnEnter
   setflag FLAG_FIRST_ARRIVAL_STARK_MOUNTAIN_INTERIOR
+  setflag FLAG_HIDE_ROUTE_227_BUCK
+  if var VAR_STARK_MOUNTAIN_ROOM_1_STATE == 0 call TeamGalactic
+  end
+
+
+# StarkMountainOutside_OnFrame_TeamGalactic (the original's own name for it): the player stands a step inside the way
+# in (20, 28)
+script TeamGalactic
+  # A game saved further up the room before there was anyone here is brought down to meet them
+  if var PLAYER_Y != 28 place player 20 28 up
+  place mars 20 26 down
+  place jupiter 21 26 down
+  face player up
+  emote mars exclaim
+  speaker "Mars"
+  say "Hey! You! You're going to tell us where Master Cyrus went!"
+  say "Where did the two of you get to, when you vanished off Spear Pillar? ...Another world? A world turned inside out, where Giratina lives?"
+  say "Do you expect me to swallow that? Fine. If you won't talk sense, I'll shake some out of you!"
+  walk mars down 1
+  battle mars as "commander_mars_stark_mountain"
+  # She steps back before she speaks (the original speaks first): right before the player she is behind their head
+  walk mars up 1
+  face mars down
+  speaker "Mars"
+  say "My Pokémon let me down again! How am I ever going to find out what happened to Master Cyrus now?"
+  face jupiter left
+  wait 0.4
+  face jupiter down
+  speaker "Jupiter"
+  say "...Mars. You are hopeless. It embarrasses me to be called a Commander in the same breath as you."
+  say "Very well. I'll take my turn. I want to know what became of Master Cyrus as much as you do."
+  walk jupiter down 1
+  battle jupiter as "commander_jupiter_stark_mountain"
+  speaker "Jupiter"
+  say "...How dare you!"
+  wait 0.5
+  emote mars exclaim
+  face jupiter up
+  speaker "Mars"
+  say "Right! That does it for me! I'm going to find Master Cyrus myself. That inside-out world: that's where I'll look."
+  say "I'm through with Team Galactic. Jupiter, it's all yours!"
+  speaker "Jupiter"
+  say "It galls me to follow Mars in anything, but... I'm leaving as well, and I'll do as I like from now on. Without Master Cyrus there is nothing in Team Galactic worth staying for."
+  say "So there you are, old man. Do what you please with it."
+  face mars up
+  wait 0.4
+  face mars down
+  wait 0.4
+  speaker "Mars"
+  say "You heard us. From today we're two ordinary girls. Tidy up whatever's left any way you want!"
+  walk player left 1
+  face player right
+  walk mars down 3
+  sound "stairs"
+  hide mars
+  face jupiter right
+  speaker "Jupiter"
+  say "...An ordinary girl. Her? Whatever she is, she will never be that."
+  say "And what am I to do with myself now? ...A journey, perhaps. They say it is the thing to do."
+  walk jupiter left 1 down 2
+  sound "stairs"
+  hide jupiter
+  face charon down
+  face player up
+  speaker "Charon"
+  say "Haaah... So easily swayed, the pair of them, and so quick to flounce off. What did they ever see in Cyrus?"
+  say "A boy who thought too much and grew up too little. All that trouble to build Team Galactic, and then he throws it away for a dream of his own."
+  say "But no matter. Let the young keep their dreams. I prefer to keep my feet in the real world, and in the real world it is money that counts."
+  say "You, child: I have no business with you. The ones who did all the hard work have just walked out, so I shall go and collect the Magma Stone myself. Tee hee!"
+  move charon up 7
+  move grunt_m_1 right 1 up 7
+  wait 0.3
+  move grunt_m_2 left 1 up 7
+  waitmoves
+  hide charon
+  hide grunt_m_1
+  hide grunt_m_2
+  setflag FLAG_HIDE_STARK_MOUNTAIN_ROOM_1_TEAM_GALACTIC
+  setvar VAR_STARK_MOUNTAIN_ROOM_1_STATE 1
+  return
+
+
+# Anyone of Team Galactic's spoken to (nobody is: the scene has them from the first step in)
+script Galactic
+  speaker none
+  text "They are watching the way in, and haven't a word to spare."
   end

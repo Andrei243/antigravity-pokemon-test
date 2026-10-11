@@ -170,6 +170,20 @@ public class NPC
     /// </summary>
     public const string CavePaintingType = "CavePainting";
 
+    /// <summary>
+    /// The Magma Stone of Stark Mountain (plan 02 · S15, part b; the original stands it as a boulder nobody pushes,
+    /// <c>LOCALID_MAGMA_STONE</c>): a thing of the map on its place at the head of the mountain's last room while its
+    /// flag lets it, in the way like a person, which no field move clears. Drawn as a card.
+    /// </summary>
+    public const string MagmaStoneType = "MagmaStone";
+
+    /// <summary>
+    /// A cracked rock that is no rock (plan 02 · S15, part b; the original's <c>LOCALID_ROCK_SMASH_LOOKER</c>, the
+    /// disguise Looker keeps watch in at Stark Mountain): a thing of the map drawn as the cracked rock's own card, in
+    /// the way like a person, which Rock Smash does not break.
+    /// </summary>
+    public const string FalseRockType = "FalseRock";
+
     /// <summary>Which thing of a Gym's puzzle this is; null for anyone and anything else.</summary>
     public PropType? GymThing => NpcType switch
     {
@@ -181,6 +195,8 @@ public class NPC
         GalacticDoorType => PropType.GalacticDoor,
         RubbleType => PropType.Rubble,
         CavePaintingType => PropType.CavePainting,
+        MagmaStoneType => PropType.MagmaStone,
+        FalseRockType => PropType.CrackedRock,
         _ => null
     };
 

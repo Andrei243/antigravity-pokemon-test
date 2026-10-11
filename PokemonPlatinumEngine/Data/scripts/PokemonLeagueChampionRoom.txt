@@ -8,7 +8,8 @@
 #
 # The original sets FLAG_ALT_MUSIC_CHAMPION_ROOM before the battle and clears it when the battle is lost; here it is
 # set once the battle is won, which comes to the same (a script ends where a battle is lost). The room has no song of
-# its own for after the battle yet (plan 05 · A6). Cynthia's rematch team waits for plan 02 · S15.
+# its own for after the battle yet (plan 05 · A6). Once Charon has been arrested at Stark Mountain Cynthia brings her
+# rematch team (plan 02 · S15, part b).
 
 
 # PokemonLeagueChampionRoom_OnFrame_EnterRoom. The original runs it while a local variable is nought, since its frame
@@ -28,7 +29,13 @@ label Again
   say "A Champion's room is a quiet place, you know. There is nothing I look forward to more than a challenger worth every one of my Pokémon."
   say "Come, then. As Champion of the Pokémon League, I accept your challenge!"
 label Fight
+  # PokemonLeagueChampionRoom_StartCynthiaRematchBattle: the stronger team, once Charon is caught at Stark Mountain
+  if flag FLAG_ARRESTED_CHARON_STARK_MOUNTAIN goto Rematch
   battle cynthia as "champion_cynthia"
+  goto Fought
+label Rematch
+  battle cynthia as "champion_cynthia_rematch"
+label Fought
   setflag FLAG_ALT_MUSIC_CHAMPION_ROOM
   say "...It has been a long time since I lost a battle. I had forgotten how it feels. It feels like the start of something."
   setflag FLAG_DEFEATED_CYNTHIA

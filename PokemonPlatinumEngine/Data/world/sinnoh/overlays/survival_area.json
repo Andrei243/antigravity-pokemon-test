@@ -41,9 +41,11 @@
         "I'm not taking a single one out, though. You'd be mad to set off from here without them!"
       ]
     },
+    // Once Heatran has been battled in Stark Mountain he has another thing to say (plan 02 · S15, part b)
     "cameraman": {
       "name": "Cameraman",
       "npcType": "Gentleman",
+      "script": "Cameraman",
       "dialog": [
         "I once filmed a red Gyarados! Biggest scoop of my life, and I've been after the next one ever since.",
         "They say something stirs inside the volcano up north. If it shows itself, my camera will be rolling."

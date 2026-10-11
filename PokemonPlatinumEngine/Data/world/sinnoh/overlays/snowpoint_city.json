@@ -12,12 +12,14 @@
     { "warp": 5, "map": "SnowpointGym", "x": 11, "y": 28, "facing": "Up" }
   ],
   // The east house (warp 1) is a move tutor's: its room comes with the tutors' (plan 01 · M11, part d). Snowpoint
-  // Temple is built inside (plan 01 · M10, part b), and its two doors, warps 2 and 6, stay shut until the story lets
-  // the Champion in (plan 02 · S15 takes them out of here)
-  "locked": [ 1, 2, 6 ],
+  // Temple is built inside (plan 01 · M10, part b). Its west door (warp 2) is open, and the trigger before it is what
+  // keeps everyone out until the story lets a Champion in (plan 02 · S15, part b). Its east door (warp 6) is never
+  // walked to: the guard stands before it for good, as the original's does, so it stays a door painted on the wall
+  "locked": [ 1, 6 ],
   // Cynthia comes down to the quay the first time a Champion sets sail (plan 02 · S15, part a; her flag is set from
-  // the start, common.ChapterEight). Candice at the temple's door comes with the temple (plan 02 · S15, part b). The original's trigger in front of the temple's west door, beside
-  // its guard: she turns the player back (plan 02 · S11, part a; scripts/snowpoint_city.txt)
+  // the start, common.ChapterEight). The original's trigger in front of the temple's west door, beside its guard: she
+  // turns the player back (plan 02 · S11, part a; scripts/snowpoint_city.txt), until Candice comes up from her Gym to
+  // let a Champion with the National Pokédex in (plan 02 · S15, part b)
   "triggers": [ { "trigger": 0, "script": "TempleGuard" } ],
   "people": {
     // The townspeople's own looks (Snowpoint's people in their winter clothes) are plan 11's; left to the fallback each
@@ -49,6 +51,7 @@
     "snowpoint_npc_m": {
       "name": "Man",
       "npcType": "Youngster",
+      "script": "Man",
       "dialog": [
         "There's an ancient temple at the top of town. I'd give anything to see what's inside.",
         "Nobody gets past the woman standing at its door, though. Not even me, and I've lived here all my life."
@@ -64,12 +67,13 @@
         "After weeks out on a cold sea, though, a quiet town is just what a sailor wants."
       ]
     },
-    // In Platinum she lets the Champion in; the temple waits for the post-game (plan 02 · S15). Her own look (an Ace
-    // Trainer in snow gear) is plan 11's; left to the fallback she is the boy the player is, standing beside the
-    // player in her own scene, so the lady stands for her
+    // She lets a Champion with the National Pokédex in once Candice has told her to (plan 02 · S15, part b). Her own
+    // look (an Ace Trainer in snow gear) is plan 11's; left to the fallback she is the boy the player is, standing
+    // beside the player in her own scene, so the lady stands for her
     "temple_guard": {
       "name": "Temple Guard",
       "npcType": "Lady",
+      "script": "Guard",
       "dialog": [
         "Behind me stands Snowpoint Temple, built in an age long before the town.",
         "Only those the temple has chosen may enter. I'm sorry, but I cannot let you pass."
@@ -78,6 +82,9 @@
     // He sails a Champion to the Battle Zone (scripts/snowpoint_city.txt, Ship; plan 02 · S15, part a); until the Hall
     // of Fame he only says where his ship goes
     "cynthia": { "name": "Cynthia", "npcType": "Cynthia", "dialog": [ "Cynthia: Safe travels." ], "still": true },
+    // Candice, who comes up the street to the temple's steps for that scene alone (her look is plan 11's: a lass
+    // stands for her, as in her Gym)
+    "candice": { "name": "Candice", "npcType": "Lass", "script": "Candice", "still": true },
     "sailor_ss_spiral": {
       "name": "Sailor",
       "npcType": "Gentleman",

@@ -11,18 +11,98 @@
 # original asks FLAG_GAME_COMPLETED and nothing else, and lands the player on the Fight Area's pier at 623, 434, facing
 # east (TakeShipFromSnowpoint). The first time, Cynthia comes down to the quay to see the player off
 # (FLAG_HIDE_SNOWPOINT_CITY_CYNTHIA, set from the start by common.ChapterEight; FLAG_SAILED_TO_BATTLE_ZONE once she
-# has). Candice, who comes up the street to let a Champion with the National Pokédex into the temple
-# (FLAG_HIDE_SNOWPOINT_CITY_CANDICE), comes with the temple: plan 02 · S15, part b.
+# has).
+#
+# The temple opens for a Champion with the National Pokédex (plan 02 · S15, part b; the original asks for both, the
+# Pokédex first). The guard begins as she always has, and then Candice comes up the street from her Gym
+# (FLAG_HIDE_SNOWPOINT_CITY_CANDICE, set from the start by common.ChapterEight) and tells her to let this one in:
+# Cynthia has told her of the player's Pokédex. VAR_SNOWPOINT_CITY_STATE is 1 from then on: the trigger before the
+# door is dead, the guard tells of the temple's age, the man who longs to see inside has another thing to say, and
+# Candice is gone the next time the town is come to. The temple's west door is the one walked in by: the guard stands
+# before the east one and never leaves it, in the original either.
 
 
-# The temple's guard turns the player back (the original's coordinate event, script 3).
+# SnowpointCity_OnTransition: Candice has gone back to her Gym once the temple is open
+script OnEnter
+  if var VAR_SNOWPOINT_CITY_STATE < 1 end
+  setflag FLAG_HIDE_SNOWPOINT_CITY_CANDICE
+  hide candice
+  end
+
+
+# The temple's guard turns the player back, or is told to let them by (the original's coordinate event, script 3).
 script TempleGuard
   face temple_guard left
   speaker "Temple Guard"
   say "Only those the temple has chosen may set foot in Snowpoint Temple."
   say "I'm sorry, but I must ask you to leave."
+  # SnowpointCity_CheckAllowEnterTemple
+  if not nationaldex goto Back
+  if not flag FLAG_GAME_COMPLETED goto Back
+  call CandiceLetsIn
+  end
+label Back
   face temple_guard down
   walk player down 1
+  end
+
+
+# The guard, spoken to (the original's script 2): from the south, the one side she can be spoken to from that is no
+# trigger
+script Guard
+  face self player
+  speaker "Temple Guard"
+  if not nationaldex goto No
+  if not flag FLAG_GAME_COMPLETED goto No
+  if var VAR_SNOWPOINT_CITY_STATE == 0 goto Chosen
+  say "They say the temple was raised in an age nobody remembers, in honour of the Pokémon of rock, of ice and of steel that gave the land its shape."
+  say "So the story goes. I have guarded its door for years, and I have never once been inside."
+  end
+label Chosen
+  say "Only those the temple has chosen may set foot in Snowpoint Temple."
+  say "I'm sorry, but I must ask you to leave."
+  call CandiceLetsIn
+  end
+label No
+  sayown
+  end
+
+
+# SnowpointCity_AllowEnterTemple: Candice comes up the street from her Gym, to the foot of the temple's steps (a tile
+# nearer than the original's seven steps bring her, where the text box would cover her as she speaks)
+script CandiceLetsIn
+  wait 1.0
+  clearflag FLAG_HIDE_SNOWPOINT_CITY_CANDICE
+  place candice 366 208 up
+  show candice
+  walk candice up 8
+  speaker "Candice"
+  say "It's all right! You can let this one in!"
+  face player down
+  face temple_guard down
+  setvar VAR_SNOWPOINT_CITY_STATE 1
+  say "Cynthia's told me all about you, {player}. You're filling in a Pokédex, aren't you?"
+  say "There are Pokémon in the temple you won't find anywhere else. Have fun exploring! And wrap up warm: it's colder in there than out here."
+  return
+
+
+# SnowpointCity_Candice
+script Candice
+  face self player
+  speaker "Candice"
+  say "There are Pokémon in the temple you won't find anywhere else. Have fun exploring!"
+  end
+
+
+# SnowpointCity_SnowpointNPCM: the man who longs to see inside
+script Man
+  face self player
+  if var VAR_SNOWPOINT_CITY_STATE >= 1 goto Dragged
+  sayown
+  end
+label Dragged
+  say "They say Pokémon dragged the whole of Snowpoint City up here, long ago, and that the temple is where they lay down to rest afterwards."
+  say "You've been let in? Then tell me what it's like in there! ...No, don't. I want to see it for myself one day."
   end
 
 

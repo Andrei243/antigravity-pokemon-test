@@ -2,7 +2,8 @@
 # the language; the lines are our own, on the original's beats (scripts_pokemon_league_lucian_room.s).
 #
 # As Aaron's room: the door shuts behind the challenger, and the door on to the Champion's passage opens once Lucian
-# is beaten. He is drawn as a gentleman until plan 11 makes his look; his rematch team waits for plan 02 · S15.
+# is beaten. He is drawn as a gentleman until plan 11 makes his look. Once Charon has been arrested at Stark Mountain
+# he brings his rematch team (plan 02 · S15, part b).
 
 
 # PokemonLeagueLucianRoom_OnFrame_EnterRoom, by the door's own flag (see Aaron's room)
@@ -22,7 +23,13 @@ script Lucian
   say "...One moment, please. I'm at the last page of the chapter."
   say "There. Thank you for waiting. I am Lucian, the last of the Elite Four, and I battle with Psychic Pokémon."
   say "Three of my colleagues have already lost to you, so I know how this is likely to end. I intend to enjoy finding out all the same. Shall we?"
+  # PokemonLeagueLucianRoom_StartLucianRematchBattle: the stronger team, once Charon is caught at Stark Mountain
+  if flag FLAG_ARRESTED_CHARON_STARK_MOUNTAIN goto Rematch
   battle self as "elite_four_lucian"
+  goto Fought
+label Rematch
+  battle self as "elite_four_lucian_rematch"
+label Fought
   setflag FLAG_DEFEATED_LUCIAN
   sound "lift_stop"
   setflag FLAG_HIDE_POKEMON_LEAGUE_LUCIAN_ROOM_EXIT_DOOR

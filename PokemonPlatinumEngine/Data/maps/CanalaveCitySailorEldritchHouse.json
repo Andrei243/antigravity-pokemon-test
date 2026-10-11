@@ -133,6 +133,7 @@
         "He's the bravest man there is. Even the sea doesn't scare him!",
         "A Gym Leader would be good too, though. Byron's amazing!"
       ],
+      "hiddenBy": "FLAG_CANALAVE_CITY_SAILOR_ELDRITCH_HOUSE_LITTLE_BOY_IN_BED",
       "movement": "wander_west_and_east",
       "rangeX": 3,
       "rangeZ": 3
@@ -147,7 +148,31 @@
       "dialog": [
         "That boy of ours never runs out of energy!",
         "Which is just how a boy ought to be."
-      ]
+      ],
+      "script": "Mother"
+    },
+    {
+      "id": "little_boy_in_bed",
+      "name": "Little Boy",
+      "npcType": "Youngster",
+      "x": 8,
+      "y": 6,
+      "facing": "Down",
+      "script": "BoyInBed",
+      "shownBy": "FLAG_CANALAVE_CITY_SAILOR_ELDRITCH_HOUSE_LITTLE_BOY_IN_BED",
+      "level": 0.44
+    },
+    {
+      "id": "sailor_eldritch",
+      "name": "Sailor Eldritch",
+      "npcType": "Gentleman",
+      "x": 4,
+      "y": 7,
+      "facing": "Up",
+      "dialog": [
+        "My boy's himself again, and I've you to thank for it!"
+      ],
+      "hiddenBy": "FLAG_HIDE_CANALAVE_CITY_SAILOR_ELDRITCH_HOUSE_SAILOR_ELDRITCH"
     }
   ],
   "wildEncounters": []

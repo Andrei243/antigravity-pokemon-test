@@ -1,0 +1,244 @@
+# The heart of Stark Mountain (plan 02 · S15, part b). docs/scripts.md describes the language; the lines are our own,
+# on the original's beats (scripts_stark_mountain_room_3.s).
+#
+# A short hall with the Magma Stone on its place at the head of it. The first time anyone comes in
+# (VAR_STARK_MOUNTAIN_ROOM_3_STATE 0) Charon stands before the stone between his two grunts, telling himself how the
+# others have thrown Team Galactic away, and Buck is inside the way in. The mountain trembles; Buck and the player go
+# up the hall; Charon takes the stone and says what he means to do with it (wake Heatran, hold the volcano over
+# Sinnoh's head and be paid for it). A voice shouts, a Croagunk darts out and snatches the stone from his hands, and
+# the cracked rock in the corner turns out to have been Looker all day. The grunts take one look at the International
+# Police and run; two policemen come in and Charon is led off to somewhere cooler; and Looker, who finds it far too
+# hot, takes everyone outside, where stark_mountain_outside.txt goes on.
+#
+# What the scene leaves is what the original's does: Charon arrested (FLAG_ARRESTED_CHARON_STARK_MOUNTAIN: the Elite
+# Four and the Champion bring their stronger teams from now on, and the Battleground's door is the story's to open),
+# the state 1, Looker and Buck shown outside (VAR_STARK_MOUNTAIN_OUTSIDE_STATE 2), Buck and the rival shown before the
+# Battleground in the Survival Area, Buck shown inside it, and Looker back at Veilstone's Game Corner.
+#
+# Heatran waits at the head of the hall afterwards, but only once Buck has been spoken to at his place
+# (FLAG_TALKED_TO_BATTLEGROUND_BUCK: plan 02 · S15, part c), for a Champion with the National Pokédex, while the state
+# is 1: the room's own arrival decides, as the original's OnTransition does. It battles whoever speaks to it, at level
+# 50, and the battle may be run from. Lost, the player wakes in a Pokémon Center and Heatran waits here still. Caught,
+# it is gone for good (FLAG_CAUGHT_HEATRAN). Knocked out or run from, it sinks back into the volcano (state 2) until
+# the Hall of Fame is next entered, whose script brings it back while it hasn't been caught
+# (PokemonLeagueHallOfFame.txt). Any battle not lost unlocks the Vs. Seeker's last level of rematches.
+#
+# Stood in for until plan 09 lands (L11, L12, L14): the tremor is the picture's shake and a rumble, where the original
+# has an effect of its own; Looker's tune (plan 05 · A6); Buck's and the policemen's looks (plan 11).
+
+
+# StarkMountainRoom3_OnTransition, and the frame table's scene
+script OnEnter
+  if var VAR_STARK_MOUNTAIN_ROOM_3_STATE >= 1 setflag FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_BUCK
+  call HeatranOrNot
+  if var VAR_STARK_MOUNTAIN_ROOM_3_STATE == 0 call Charon
+  end
+
+
+# StarkMountainRoom3_TryHideHeatran
+script HeatranOrNot
+  if flag FLAG_CAUGHT_HEATRAN goto Hide
+  if not flag FLAG_GAME_COMPLETED goto Hide
+  if not nationaldex goto Hide
+  if not flag FLAG_TALKED_TO_BATTLEGROUND_BUCK goto Hide
+  if var VAR_STARK_MOUNTAIN_ROOM_3_STATE != 1 goto Hide
+  clearflag FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_HEATRAN
+  return
+label Hide
+  setflag FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_HEATRAN
+  return
+
+
+# StarkMountainRoom3_OnFrame_Charon: the player stands a step inside the way in (7, 16), Buck beside them (6, 16)
+script Charon
+  # A game saved further up the hall before there was anyone here is brought down to the way in
+  if var PLAYER_Y != 16 place player 7 16 up
+  place buck 6 16 up
+  face player up
+  # The hall is longer than the picture is tall from the way in: the camera looks at its middle, where the stone and
+  # Charon are seen from the first word, and the two who come up the hall stand clear of the text box
+  camera pan 7 12 0.8
+  speaker "Charon"
+  say "...Cyrus has vanished. Mars and Jupiter have walked out. And Saturn says he will mind what is left of Team Galactic, and will have nothing to do with me."
+  say "Fools! Fools, every one of them, to throw Team Galactic away when there is still so much to be made of it!"
+  sound "thunder_rumble"
+  camera shake 0.9
+  wait 0.3
+  move buck up 2
+  walk player up 2
+  waitmoves
+  face buck up
+  speaker "Buck"
+  say "Hey! You lot! Team Galactic! What do you think you're up to in my mountain?!"
+  walk charon up 2
+  wait 0.4
+  sound "select"
+  hide magma_stone
+  setflag FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_MAGMA_STONE
+  face charon down
+  speaker "Charon"
+  say "Eh? What's this, now? Followed me all the way in, have you? I do like to see children trying their hardest."
+  say "A pity you are too late. With this Magma Stone I shall wake the Pokémon Heatran, and with Heatran the volcano will do as I tell it."
+  say "All Sinnoh will pay me to keep it quiet. Such a lot of money! And I shall be the boss of a new Team Galactic. Tee hee hee!"
+  speaker "???"
+  say "Go! Go! Go!"
+  cry "Croagunk"
+  clearflag FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_CROAGUNK
+  show croagunk
+  walk croagunk left 2 up 3 fast
+  face croagunk up
+  sound "bump"
+  wait 0.2
+  walk croagunk down 3 right 2 fast
+  face charon left
+  wait 0.2
+  face charon right
+  wait 0.2
+  face charon down
+  face grunt_m_1 right
+  face grunt_m_2 right
+  speaker "Charon"
+  say "No! The Magma Stone! What...? What is going on here?!"
+  wait 0.5
+  speaker "???"
+  say "Excellent work, Croagunk!"
+  hide croagunk
+  setflag FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_CROAGUNK
+  hide rock_smash_looker
+  setflag FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_ROCK_SMASH_LOOKER
+  clearflag FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_LOOKER
+  show looker
+  emote buck exclaim
+  speaker "Looker"
+  say "Pah! To pass a whole day as a rock, without one sneeze, without one scratch of the nose: it was no small thing!"
+  walk looker left 3 up 3
+  face grunt_m_1 up
+  face grunt_m_2 up
+  say "Now, old man. The International Police would be most grateful for your help. You have a great deal to tell us about this new Team Galactic."
+  say "Cyrus is gone, and Mars, and Jupiter. There is nobody left to ask but you."
+  face grunt_m_1 right
+  speaker "Grunt"
+  say "Hey! That's the International Police!"
+  face grunt_m_2 left
+  say "It is! It's the International Police, all right! Then there's only one thing for it!"
+  wait 0.5
+  say "Run for it!"
+  move grunt_m_2 down 5 left 1 fast
+  wait 0.15
+  move grunt_m_1 right 2 down 5 left 1 fast
+  wait 0.4
+  face player right
+  wait 0.4
+  face player up
+  waitmoves
+  sound "stairs"
+  hide grunt_m_1
+  hide grunt_m_2
+  face charon down
+  speaker "Charon"
+  say "Gah... What a mess... Er. International Police, did you say? I can't think what you mean."
+  say "A new Team Galactic? Squeezing money out of Sinnoh with Heatran? The ramblings of a harmless old man! A joke! All of it, a joke!"
+  speaker "Looker"
+  say "Then you shall tell us the joke from the beginning. We have all the time in the world."
+  say "Ah, no, no. No struggling. Three against one, you would not enjoy it. Officers! This way, if you please!"
+  clearflag FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_POLICEMEN
+  place policeman_1 7 17 up
+  place policeman_2 7 17 up
+  hide policeman_2
+  show policeman_1
+  sound "stairs"
+  walk policeman_1 up 2 right 1 up 3 left 2
+  face policeman_1 up
+  show policeman_2
+  walk policeman_2 right 1 up 4 left 1
+  face policeman_2 up
+  speaker "Looker"
+  say "He is an old man, and this heat can do him no good. Quickly: take him somewhere cool. A cell would do very nicely!"
+  # Looker goes round behind him and sees him down the hall
+  move looker left 1 up 1 right 1 down 2
+  wait 0.35
+  move charon down 3
+  waitmoves
+  # In file round the player and out: a policeman, Charon, a policeman
+  move policeman_2 right 1 down 3 left 1 down 1
+  wait 0.35
+  move charon down 1 right 1 down 3 left 1 down 1
+  wait 0.35
+  move policeman_1 right 1 down 1 right 1 down 3 left 1 down 1
+  wait 0.3
+  face player right
+  face buck right
+  wait 0.6
+  face player down
+  face buck down
+  waitmoves
+  sound "stairs"
+  hide charon
+  hide policeman_1
+  hide policeman_2
+  setflag FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_TEAM_GALACTIC
+  setflag FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_POLICEMEN
+  face player up
+  face buck up
+  face looker down
+  camera release 0.6
+  speaker "Looker"
+  say "{player}! And you, the boy I have not met! There is something I must say to you both."
+  say "First of all: it is far too hot in here! Let us get out of this oven!"
+  setvar VAR_STARK_MOUNTAIN_OUTSIDE_STATE 2
+  setflag FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_BUCK
+  setflag FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_LOOKER
+  setvar VAR_STARK_MOUNTAIN_ROOM_3_STATE 1
+  setflag FLAG_ARRESTED_CHARON_STARK_MOUNTAIN
+  clearflag FLAG_HIDE_GAME_CORNER_LOOKER
+  clearflag FLAG_HIDE_SURVIVAL_AREA_RIVAL
+  clearflag FLAG_HIDE_BATTLEGROUND_BUCK
+  clearflag FLAG_HIDE_SURVIVAL_AREA_BUCK
+  clearflag FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_BUCK
+  clearflag FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_LOOKER
+  warp "Sinnoh" 751 233 up
+  return
+
+
+# StarkMountainRoom3_Heatran
+script Heatran
+  setflag FLAG_BATTLED_STARK_MOUNTAIN_ROOM_3_HEATRAN
+  cry "Heatran"
+  speaker none
+  say "Gwooh... grrrohh!"
+  wildbattle "Heatran" 50
+  setvar VAR_STARK_MOUNTAIN_ROOM_3_STATE 2
+  setflag FLAG_UNLOCKED_VS_SEEKER_LVL_5
+  setflag FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_HEATRAN
+  hide heatran
+  if result == 3 goto Caught
+  say "Heatran sank back into the depths of the volcano..."
+  end
+label Caught
+  setflag FLAG_CAUGHT_HEATRAN
+  end
+
+
+# Whoever of the scene's people is spoken to (nobody is: it has them from the first step in)
+script Galactic
+  speaker none
+  text "Nobody here has a word to spare."
+  end
+
+# Buck, inside the way in until the scene begins
+script BuckWaits
+  face self player
+  speaker "Buck"
+  say "Shh! Look. That's them, right up at the top of the hall."
+  end
+
+# The Magma Stone on its place, and the rock in the corner, should anyone get near either
+script MagmaStone
+  speaker none
+  text "A dark stone, hot to stand near. Light moves in the cracks across it."
+  end
+
+script OddRock
+  speaker none
+  text "A big cracked rock. ...Did it just breathe?"
+  end

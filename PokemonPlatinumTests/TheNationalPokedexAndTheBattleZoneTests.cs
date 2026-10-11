@@ -1026,9 +1026,9 @@ public class TheNationalPokedexAndTheBattleZoneTests
             return string.Join(" ", host.Transcript.Select(l => l.Text));
         }
         Assert.Contains("I am not here", Says());
-        // The flag is Stark Mountain's last scene's to set (plan 02 · S15, part b)
+        // The flag is Stark Mountain's last scene's to set (plan 02 · S15, part b: StarkMountainAndTheLegendaryPokemonTests)
         Assert.Contains("holiday", Says(host => host.Story.Set("FLAG_ARRESTED_CHARON_STARK_MOUNTAIN")));
-        Assert.Contains("FLAG_ARRESTED_CHARON_STARK_MOUNTAIN", StoryTests.AskedAheadOfTheirScenes);
+        Assert.Contains("FLAG_ARRESTED_CHARON_STARK_MOUNTAIN", Scripts.FlagsWritten);
     }
 
     // ------------------------------------------------------------------ saves from before

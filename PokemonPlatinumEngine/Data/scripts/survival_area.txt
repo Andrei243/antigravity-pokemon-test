@@ -18,6 +18,19 @@ script BattlegroundDoor
   end
 
 
+# SurvivalArea_Cameraman: after something for his camera, and sure he has found it once Heatran has shown itself
+# (FLAG_BATTLED_STARK_MOUNTAIN_ROOM_3_HEATRAN, stark_mountain_room_3.txt: plan 02 · S15, part b)
+script Cameraman
+  face self player
+  if flag FLAG_BATTLED_STARK_MOUNTAIN_ROOM_3_HEATRAN goto Heatran
+  sayown
+  end
+label Heatran
+  say "You saw it? The Pokémon in the volcano? You actually battled it?!"
+  say "That's it, then. That's my next film! I've got the title, I've got the star... All I need now is the nerve to go up there."
+  end
+
+
 # SurvivalArea_Buck
 script Buck
   face self player

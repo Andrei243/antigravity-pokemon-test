@@ -3,11 +3,19 @@
   "climate": "Volcanic",
   // D_06, as the first room: Victory Road's stands in (plan 05 · A6)
   "bgmTrack": "sinnoh/victory_road",
-  // The great room inside the mountain (plan 01 · M10, part b). Buck, who waits at its foot and walks it with the
-  // player (triggers 0 to 2, VAR_STARK_MOUNTAIN_ROOM_2_FOLLOWER_BUCK_STATE; hidden by
-  // FLAG_HIDE_STARK_MOUNTAIN_ROOM_2_BUCK), is the story's (plan 02 · S15, part b). Its trainers stand in pairs that
-  // face one another, and with Buck along two who see the player at once battle side by side
+  // The great room inside the mountain (plan 01 · M10, part b). Buck comes in after the player where the way opens
+  // out, walks the room behind them and battles beside them, waits there if they turn back and goes on ahead at its
+  // far end (plan 02 · S15, part b; scripts/stark_mountain_room_2.txt: the original's three coordinate events,
+  // VAR_STARK_MOUNTAIN_ROOM_2_FOLLOWER_BUCK_STATE; hidden by FLAG_HIDE_STARK_MOUNTAIN_ROOM_2_BUCK until he first comes
+  // in and once he has gone ahead). Its trainers stand in pairs that face one another, and with Buck along two who
+  // see the player at once battle side by side. His own look is plan 11's
+  "triggers": [
+    { "trigger": 0, "script": "BuckJoins" },
+    { "trigger": 1, "script": "PlayerTurnsBack" },
+    { "trigger": 2, "script": "BuckGoesAhead" }
+  ],
   "people": {
+    "buck": { "name": "Buck", "npcType": "Youngster", "script": "Buck", "still": true },
     "ace_trainer_keenan": {
       "name": "Keenan",
       "trainer": {
