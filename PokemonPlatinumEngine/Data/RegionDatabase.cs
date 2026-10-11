@@ -261,6 +261,9 @@ public static class RegionDatabase
                 "VeilstonePokemonCenter2F", "VeilstonePokemonCenterB1F",
                 // Plan 06 · R18d: the Battle Arcade's lobby, corridor and game room
                 "BattleArcade", "BattleArcadeCorridor", "BattleArcadeBattleRoom",
+                // Plan 02 · S15, part c: the Battleground in the Survival Area, on the original's plan, and Spear Pillar
+                // with Dialga's rift and with Palkia's
+                "Battleground", "SpearPillarDialga", "SpearPillarPalkia",
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

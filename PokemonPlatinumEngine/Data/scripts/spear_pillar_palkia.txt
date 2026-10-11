@@ -1,0 +1,26 @@
+# Spear Pillar with Palkia's rift over its altar (plan 02 · S15, part c). docs/scripts.md describes the language; the
+# lines are our own, on the original's beats (scripts_spear_pillar_palkia.s).
+#
+# As spear_pillar_dialga.txt, for whoever holds the Lustrous Orb: Palkia at level 70 behind its rift, quiet once it has
+# been battled (VAR_SPEAR_PILLAR_PALKIA_STATE 1) until the Hall of Fame is next entered, and gone for good once caught
+# (FLAG_CAUGHT_PALKIA). A game that holds both orbs is led to Dialga's pillar first.
+
+
+# SpearPillarPalkia_Rift
+script Rift
+  speaker none
+  if var VAR_SPEAR_PILLAR_PALKIA_STATE >= 1 goto Quiet
+  if flag FLAG_CAUGHT_PALKIA goto Quiet
+  text "Beyond the rift lies a place where nothing is the way it ought to be..." "And in it, looking back: Palkia!"
+  ask "Will you challenge Palkia?"
+  if no end
+  cry "Palkia"
+  camera shake 0.6
+  text "Palkia: Gagyagyaah!"
+  wildbattle "Palkia" 70
+  setvar VAR_SPEAR_PILLAR_PALKIA_STATE 1
+  if result == 3 setflag FLAG_CAUGHT_PALKIA
+  end
+label Quiet
+  text "Space itself seems to pour out of the rift, more of it than anyone could find a way across." "Where does it lead?"
+  end

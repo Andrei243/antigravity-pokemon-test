@@ -64,6 +64,7 @@ public class OpeningTests
 
         /// <summary>The time of day and the day of the week the next script finds, where a test says so.</summary>
         public DayOfWeek? Weekday { get; set; }
+        public TimeOfDay? Time { get; set; }
 
         /// <summary>Answers for the next script's questions, in order (the first answer, yes, for any left over).</summary>
         public Queue<int> Answers { get; } = new();
@@ -173,6 +174,7 @@ public class OpeningTests
                 LeagueVictories = LeagueVictories
             };
             if (Weekday is { } day) host.Weekday = day;
+            if (Time is { } time) host.TimeOfDay = time;
             while (Answers.Count > 0) host.Answers.Enqueue(Answers.Dequeue());
             while (Rolls.Count > 0) host.Rolls.Enqueue(Rolls.Dequeue());
             var runner = new ScriptRunner(Scripts, host);

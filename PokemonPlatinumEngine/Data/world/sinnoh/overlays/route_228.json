@@ -13,8 +13,9 @@
     // The north house, on the original's plan (plan 01 · M11, part d): the tutor of the starters' three strongest moves
     { "warp": 2, "map": "Route228NorthHouse", "x": 4, "y": 8, "facing": "Up" }
   ],
-  // The Rock Peak Ruins, two warps on one tile of which the original keeps one by whether Regigigas travels along,
-  // are the story's (plan 02 · S15)
+  // The Rock Peak Ruins, two warps on one tile of which the original keeps one by whether an event's Regigigas travels
+  // along, stay shut with the other two Regis' ruins (docs/mechanics/rulings.md, "After the Hall of Fame, part b"; plan
+  // 03 · D12c)
   "locked": [ 4, 5 ],
   "people": {
     "ace_trainer_jose": {

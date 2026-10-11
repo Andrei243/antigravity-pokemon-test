@@ -513,16 +513,17 @@ public class InteriorTests
     }
 
     [Fact]
-    public void TheTelevisionRotomLivesInSaysNothingYet()
+    public void TheTelevisionRotomLivesInIsReadFromBeforeIt()
     {
-        // Plan 02 · S15c gives it its scene: the set stands at (11, 3) and (12, 3) of the second room off the corridor
+        // The set stands at (11, 3) and (12, 3) of the second room off the corridor, and plan 02 · S15, part c gave it its
+        // scene: both of its tiles are read, and run the room's own script (TheBattlegroundAndTheLastLegendsTests plays it)
         var room = Room("OldChateauBackMiddleWestRoom");
         Assert.Contains(room.Props, p => p.Type == PropType.Television && p.Covers(11, 3) && p.Covers(12, 3));
         Assert.True(room.IsWalkable(11, 4));
         Assert.True(room.IsWalkable(12, 4));
-        Assert.DoesNotContain(room.Signboards.Keys, k => k is (11, 3) or (12, 3));
-        Assert.DoesNotContain(room.SignScripts.Keys, k => k is (11, 3) or (12, 3));
-        Assert.Null(ScriptLibrary.Default.Find("TV", "OldChateauBackMiddleWestRoom"));
+        Assert.Equal("TV", room.SignScripts[(11, 3)]);
+        Assert.Equal("TV", room.SignScripts[(12, 3)]);
+        Assert.NotNull(ScriptLibrary.Default.Find("TV", "OldChateauBackMiddleWestRoom"));
     }
 
     [Theory]

@@ -1,0 +1,11 @@
+{
+  "area": "spear_pillar_dialga",
+  "bgmTrack": "sinnoh/spear_pillar",
+  "evolutionSites": [ "Magnetic Field" ],
+  // The summit's battles are fought on bare rock: the cave's stage stands in for the mountain's, as on the pillar itself
+  "battleArena": "Cave",
+  // Plan 02 · S15, part c (scripts/spear_pillar_dialga.txt): the pillar a Champion with the Adamant Orb finds, with
+  // nobody on it. Dialga's rift over the altar is read from below it (the original's background events, both script 1).
+  // The Hall of Origin's step before the way down (trigger 0) waits for the Azure Flute's event (plan 03 · D12c)
+  "read": { "1": "Rift" }
+}

@@ -11,6 +11,12 @@
     // Cresselia, which rests on Fullmoon Island until it is come upon and roams from then on
     { "key": "stark_mountain", "name": "Stark Mountain", "cells": "23,7", "special": [ "Heatran" ], "how": "The heart of the mountain" },
     { "key": "snowpoint_temple", "name": "Snowpoint Temple", "cells": "11,6", "special": [ "Regigigas" ], "how": "Its deepest room" },
-    { "key": "fullmoon_island", "name": "Fullmoon Island", "cells": "1,8", "special": [ "Cresselia" ], "how": "The island's wood, then roaming" }
+    { "key": "fullmoon_island", "name": "Fullmoon Island", "cells": "1,8", "special": [ "Cresselia" ], "how": "The island's wood, then roaming" },
+    // Plan 02 · S15, part c: Rotom in the Old Chateau's television after dark; Dialga and Palkia behind their rifts at
+    // Spear Pillar, for a Champion who carries their orbs; and Giratina, which plan 02 · S12 put in Turnback Cave's
+    // last room for whoever didn't catch it in the Distortion World
+    { "key": "old_chateau_rotom", "name": "Old Chateau", "cells": "6,18 8,16", "special": [ "Rotom" ], "how": "The television, after dark" },
+    { "key": "spear_pillar", "name": "Spear Pillar", "cells": "11,16", "special": [ "Dialga", "Palkia" ], "how": "With its orb, after the Hall of Fame" },
+    { "key": "turnback_cave_giratina", "name": "Turnback Cave", "cells": "23,22", "special": [ "Giratina" ], "how": "Its last room" }
   ]
 }

@@ -169,6 +169,10 @@
     // the professor has heard of the Distortion World (Valor Cavern has been open since S10)
     { "name": "VerityCavern", "matrix": 103, "area": "verity_cavern", "setting": "Cave" },
     { "name": "AcuityCavern", "matrix": 109, "area": "acuity_cavern", "setting": "Cave" },
+    // Plan 02 · S15, part c: Spear Pillar as a game that holds the Adamant or the Lustrous Orb finds it after the
+    // Hall of Fame, with Dialga's rift or Palkia's over the altar (matrices of their own in the original)
+    { "name": "SpearPillarDialga", "matrix": 280, "area": "spear_pillar_dialga" },
+    { "name": "SpearPillarPalkia", "matrix": 281, "area": "spear_pillar_palkia" },
   ],
   "areas": [
     "twinleaf_town",
@@ -366,5 +370,8 @@
     // Plan 02 · S13
     "verity_cavern",
     "acuity_cavern",
+    // Plan 02 · S15, part c
+    "spear_pillar_dialga",
+    "spear_pillar_palkia",
   ]
 }

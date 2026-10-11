@@ -220,6 +220,9 @@ public sealed class ScriptLibrary
                     case Op.Team when i.Name == "size" && !i.Option && PokemonDatabase.Get(i.Other) == null:
                         Wrong(i, $"there is no species '{i.Other}'");
                         break;
+                    case Op.Team when i.Name == "holds" && ItemDatabase.Get(i.Other) == null:
+                        Wrong(i, $"there is no item '{i.Other}'");
+                        break;
                     case Op.Tutor when i.Name == "moves" && !Models.MoveTutors.Places.Contains(i.Other):
                         Wrong(i, $"no shard tutor lives at '{i.Other}'");
                         break;

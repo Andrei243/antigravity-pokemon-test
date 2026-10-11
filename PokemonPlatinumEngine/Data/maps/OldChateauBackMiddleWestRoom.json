@@ -235,7 +235,20 @@
       "targetFacing": "Down"
     }
   ],
-  "signboards": [],
+  "signboards": [
+    {
+      "x": 11,
+      "y": 3,
+      "text": "",
+      "script": "TV"
+    },
+    {
+      "x": 12,
+      "y": 3,
+      "text": "",
+      "script": "TV"
+    }
+  ],
   "npcs": [],
   "wildEncounters": [
     {

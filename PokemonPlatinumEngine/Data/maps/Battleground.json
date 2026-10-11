@@ -1,0 +1,341 @@
+{
+  "name": "Battleground",
+  "displayName": "Battleground",
+  "bgmTrack": "sinnoh/veilstone",
+  "interior": "House",
+  "trees": "Round",
+  "width": 17,
+  "height": 13,
+  "ground": [
+    "#################",
+    "#################",
+    "#################",
+    "##___________####",
+    "##______________#",
+    "##______________#",
+    "##______________#",
+    "##_____________##",
+    "#______________##",
+    "#______________##",
+    "#______________##",
+    "#______________##",
+    "#######D#########"
+  ],
+  "solid": [
+    "#################",
+    "#################",
+    "#################",
+    "##........#######",
+    "##..........#...#",
+    "##..........#.#.#",
+    "##..........#.###",
+    "##.#...##...#.###",
+    "#......##...#.###",
+    "#..#........#.###",
+    "#...........#.###",
+    "#..#.#...#..#####",
+    "#######.#########"
+  ],
+  "behaviours": [
+    { "x": 12, "y": 3, "width": 1, "depth": 7, "behaviour": "Counter" },
+    { "x": 12, "y": 11, "width": 3, "depth": 1, "behaviour": "Counter" }
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 3,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 6,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 10,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 12,
+      "y": 3,
+      "width": 1,
+      "depth": 8
+    },
+    {
+      "type": "Bookshelf",
+      "x": 14,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 14,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "TrashCan",
+      "x": 15,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 14,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 3,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 7,
+      "y": 7,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Bookshelf",
+      "x": 14,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 14,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 3,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 14,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 12,
+      "y": 11,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 3,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 5,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 7,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 7,
+      "sourceY": 12,
+      "targetMap": "Sinnoh",
+      "targetX": 652,
+      "targetY": 339,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "expert_m",
+      "name": "Old Man",
+      "npcType": "Gentleman",
+      "x": 13,
+      "y": 9,
+      "facing": "Left",
+      "script": "OldMan"
+    },
+    {
+      "id": "buck",
+      "name": "Buck",
+      "npcType": "Youngster",
+      "x": 11,
+      "y": 8,
+      "facing": "Down",
+      "script": "Buck",
+      "hiddenBy": "FLAG_HIDE_BATTLEGROUND_BUCK"
+    },
+    {
+      "id": "roark",
+      "name": "Roark",
+      "npcType": "Roark",
+      "x": 2,
+      "y": 9,
+      "facing": "Right",
+      "script": "Roark",
+      "shownBy": "FLAG_BATTLEGROUND_HAS_ROARK"
+    },
+    {
+      "id": "gardenia",
+      "name": "Gardenia",
+      "npcType": "Gardenia",
+      "x": 2,
+      "y": 9,
+      "facing": "Right",
+      "script": "Gardenia",
+      "shownBy": "FLAG_BATTLEGROUND_HAS_GARDENIA"
+    },
+    {
+      "id": "wake",
+      "name": "Crasher Wake",
+      "npcType": "crasher_wake",
+      "x": 2,
+      "y": 9,
+      "facing": "Right",
+      "script": "Wake",
+      "shownBy": "FLAG_BATTLEGROUND_HAS_WAKE"
+    },
+    {
+      "id": "maylene",
+      "name": "Maylene",
+      "npcType": "Maylene",
+      "x": 2,
+      "y": 9,
+      "facing": "Right",
+      "script": "Maylene",
+      "shownBy": "FLAG_BATTLEGROUND_HAS_MAYLENE"
+    },
+    {
+      "id": "fantina",
+      "name": "Fantina",
+      "npcType": "Fantina",
+      "x": 2,
+      "y": 9,
+      "facing": "Right",
+      "script": "Fantina",
+      "shownBy": "FLAG_BATTLEGROUND_HAS_FANTINA"
+    },
+    {
+      "id": "candice",
+      "name": "Candice",
+      "npcType": "Lass",
+      "x": 2,
+      "y": 9,
+      "facing": "Right",
+      "script": "Candice",
+      "shownBy": "FLAG_BATTLEGROUND_HAS_CANDICE"
+    },
+    {
+      "id": "byron",
+      "name": "Byron",
+      "npcType": "Gentleman",
+      "x": 2,
+      "y": 9,
+      "facing": "Right",
+      "script": "Byron",
+      "shownBy": "FLAG_BATTLEGROUND_HAS_BYRON"
+    },
+    {
+      "id": "volkner",
+      "name": "Volkner",
+      "npcType": "Youngster",
+      "x": 2,
+      "y": 9,
+      "facing": "Right",
+      "script": "Volkner",
+      "shownBy": "FLAG_BATTLEGROUND_HAS_VOLKNER"
+    },
+    {
+      "id": "cheryl",
+      "name": "Cheryl",
+      "npcType": "Cheryl",
+      "x": 11,
+      "y": 5,
+      "facing": "Up",
+      "script": "Cheryl",
+      "shownBy": "FLAG_BATTLEGROUND_HAS_CHERYL"
+    },
+    {
+      "id": "riley",
+      "name": "Riley",
+      "npcType": "Clerk",
+      "x": 11,
+      "y": 5,
+      "facing": "Up",
+      "script": "Riley",
+      "shownBy": "FLAG_BATTLEGROUND_HAS_RILEY"
+    },
+    {
+      "id": "marley",
+      "name": "Marley",
+      "npcType": "Lass",
+      "x": 11,
+      "y": 5,
+      "facing": "Up",
+      "script": "Marley",
+      "shownBy": "FLAG_BATTLEGROUND_HAS_MARLEY"
+    },
+    {
+      "id": "buck_guest",
+      "name": "Buck",
+      "npcType": "Youngster",
+      "x": 11,
+      "y": 5,
+      "facing": "Up",
+      "script": "BuckGuest",
+      "shownBy": "FLAG_BATTLEGROUND_HAS_BUCK"
+    },
+    {
+      "id": "mira",
+      "name": "Mira",
+      "npcType": "Mira",
+      "x": 11,
+      "y": 5,
+      "facing": "Up",
+      "script": "Mira",
+      "shownBy": "FLAG_BATTLEGROUND_HAS_MIRA"
+    }
+  ],
+  "wildEncounters": []
+}

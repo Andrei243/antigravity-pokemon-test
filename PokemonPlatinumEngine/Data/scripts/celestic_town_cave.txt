@@ -8,7 +8,19 @@
 # (CelesticTownNorthHouse.txt). Cynthia waits outside (VAR_CELESTIC_TOWN_STATE 1, celestic_town.txt).
 #
 # The original's RemoveObject also sets the flag that hides whoever it takes away, so Cyrus and the elder are hidden
-# by their flags once they go. Cynthia's own talk before the painting is the post-game's (plan 02 · S15c).
+# by their flags once they go.
+#
+# After the Hall of Fame (plan 02 · S15, part c): once Charon has been caught on Stark Mountain
+# (FLAG_ARRESTED_CHARON_STARK_MOUNTAIN), the first look at the painting brings Cynthia in after the player. She tells
+# how it has always been read (Dialga or Palkia at Spear Pillar, with the three of the lakes round it) and asks
+# whether she may go on: her own reading (the three lights are Dialga, Palkia and Giratina, and the light at their
+# heart whatever made the world), then a line cut into one of Sinnoh's old Plates and where Giratina fits, then what
+# she believes as someone who studies myths. Each step is a question; a no at any of them and she begs pardon and
+# goes. She is heard once (FLAG_TALKED_TO_CELESTIC_TOWN_CAVE_CYNTHIA), and again after every entry into the Hall of
+# Fame, whose script clears the flag (PokemonLeagueHallOfFame.txt).
+#
+# What plan 23 · Z17 adds here, and Platinum has not: the way into Hisui, a side region reached from these ruins by a
+# Champion (its plan's decision 3). Nothing of it is written; the painting's script is where its question would go.
 
 
 # Coming in while Cyrus is still here (refused, or a battle lost): he stands before the painting and the elder beside
@@ -22,6 +34,12 @@ script OnEnter
 
 # The painting (the original's script 1).
 script Painting
+  # CelesticTownCave_PaintingCynthia: after Stark Mountain, once for each entry into the Hall of Fame
+  if not flag FLAG_ARRESTED_CHARON_STARK_MOUNTAIN goto Examine
+  if flag FLAG_TALKED_TO_CELESTIC_TOWN_CAVE_CYNTHIA goto Examine
+  call CynthiaReads
+  end
+label Examine
   if flag FLAG_EXAMINED_CELESTIC_TOWN_CAVE_PAINTING goto Again
   text "{player} looked closely at the ancient painting." "Strange shapes cover a whole stretch of the rock." "Three figures stand in a triangle... and at their heart, a sphere of light?" "What could it all mean?"
   setflag FLAG_EXAMINED_CELESTIC_TOWN_CAVE_PAINTING
@@ -91,6 +109,77 @@ label Again
 label Fight
   call CyrusBattle
   end
+
+
+# Cynthia before the painting (the original's CelesticTownCave_PaintingCynthia). She comes in by the way the elder
+# once did and stands beside the player, on the other of the two tiles before the painting.
+script CynthiaReads
+  setflag FLAG_TALKED_TO_CELESTIC_TOWN_CAVE_CYNTHIA
+  clearflag FLAG_HIDE_CELESTIC_TOWN_CAVE_CYNTHIA
+  place cynthia 4 11 up
+  show cynthia
+  if var PLAYER_X == 9 goto PlayerToTheWest
+  walk cynthia up 6 right 1 up 1 right 4 up 1
+  face player left
+  goto Reading
+label PlayerToTheWest
+  walk cynthia up 6 right 1 up 1 right 5 up 1
+  face player right
+label Reading
+  speaker "Cynthia"
+  say "This painting... It has always been read the same way."
+  say "The light in the middle is Dialga, or Palkia, as it appears at Spear Pillar. And the three lights round it are Uxie, Mesprit and Azelf."
+  face cynthia player
+  ask "May I go on?"
+  if no goto CarriedAway
+  face cynthia up
+  wait 0.25
+  face player up
+  wait 0.5
+  say "But then it struck me that there might be another way to read it."
+  say "What if this triangle of lights is a different three? What if they are Dialga, Palkia and Giratina?"
+  say "And the great light at their heart: is that something else again? Could it be whatever made this world of ours?"
+  face cynthia player
+  face player cynthia
+  ask "May I go on a little longer?"
+  if no goto CarriedAway
+  say "Thank you for hearing my idea out."
+  say "You know the old Plates that turn up all over Sinnoh? One of them carries a line that says, as near as I can put it: \"From the First One, two were let go: one of time, one of space.\""
+  say "I think that line points the same way: to one more Pokémon, mightier even than Dialga or Palkia. Does that sound possible to you?"
+  move cynthia down 1
+  wait 0.25
+  face player down
+  waitmoves
+  say "I can't say for certain where Giratina belongs in all this. But they say that in the Distortion World neither time nor space holds steady."
+  say "That tells us something about the one Pokémon that lives there. It must be a match for Dialga and Palkia, who rule time and space..."
+  say "...and yet its power must be the opposite of theirs, somehow."
+  walk cynthia up 1
+  face cynthia player
+  face player cynthia
+  ask "I'm sorry, this has gone on so long. May I say one last thing?"
+  if no goto CarriedAway
+  say "I wonder who it was that painted this, all that time ago."
+  say "Dialga's Roar of Time... Palkia's Spacial Rend... To the people of those days it must truly have seemed that these Pokémon ruled time and space. The sight must have shaken them to the core."
+  say "This painting is that awe and that wonder, set down on stone. It carried the memory to more people than anyone could count, until it had become a myth."
+  say "That is what I believe, as someone who studies myths."
+  say "...I have let myself run on, and for far too long. I'm sorry, and thank you. Let's meet again."
+  goto Leave
+label CarriedAway
+  speaker "Cynthia"
+  say "I'm so sorry. I let myself get carried away..."
+label Leave
+  if var PLAYER_X == 9 goto LeaveFromTheEastTile
+  move cynthia down 1 left 4 down 1 left 1 down 6
+  goto Watch
+label LeaveFromTheEastTile
+  move cynthia down 1 left 5 down 1 left 1 down 6
+label Watch
+  wait 0.5
+  face player left
+  waitmoves
+  hide cynthia
+  setflag FLAG_HIDE_CELESTIC_TOWN_CAVE_CYNTHIA
+  return
 
 
 # Cyrus before the painting (the original's script 2), once the player has stood aside.

@@ -828,7 +828,7 @@ public class TheNationalPokedexAndTheBattleZoneTests
         game.Arrive("Sinnoh", 655, 341);
         Assert.Null(game.Present("buck", "survival_area"));
         Assert.Null(game.Present("rival", "survival_area"));
-        // The Battleground's door is as it was: shut, and read where it stands (its room is part c's)
+        // The Battleground's door is shut until Charon is caught, and read where it stands (plan 02 · S15, part c)
         Assert.True(game.Map.IsSolid(652, 338));
         Assert.Equal("BattlegroundDoor", game.Map.TileScripts[(652, 338)]);
 

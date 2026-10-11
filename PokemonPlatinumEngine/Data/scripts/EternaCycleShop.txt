@@ -4,7 +4,8 @@
 # The manager is away until the player frees him from Team Galactic's building (FLAG_HIDE_CYCLE_SHOP_POKEFAN_M); back
 # behind his counter, he gives the newest Bicycle (FLAG_RECEIVED_BICYCLE), and from then until the player also has an
 # Explorer Kit, Eterna's ways out are watched (VAR_ETERNA_CITY_BLOCK_EXITS_STATE 1, scripts/eterna_city.txt). His
-# Clefairy waits for Pokémon that stand in the field (plan 10).
+# Clefairy is back in the shop with him, by its own flag (FLAG_HIDE_CYCLE_SHOP_CLEFAIRY, which his rescue clears: a
+# Pokémon of the room since plan 02 · S15, part c, crying when spoken to as the original's does).
 
 
 # The manager (the original's script 1).

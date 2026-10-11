@@ -143,6 +143,8 @@ public class RoomPlanTests
         new object[] { "VeilstoneStore1F", 1, 3, 10, 12 },
         // Plan 01 · M11, part d: the Global Terminal, whose ground floor has the door
         new object[] { "GlobalTerminal1F", 1, 3, 13, 18 },
+        // Plan 02 · S15, part c: the Battleground in the Survival Area
+        new object[] { "Battleground", 1, 3, 7, 11 },
     };
 
     /// <summary>Rooms on the original's plans whose door isn't in the last row of the room (plan 06 · R16b): the Oreburgh
@@ -870,6 +872,10 @@ public class RoomPlanTests
         new object[] { "BattleArcade", "parasol_lady", 19, 6, Direction.Right },
         new object[] { "BattleArcade", "hiker_1", 13, 8, Direction.Down },
         new object[] { "BattleArcade", "hiker_2", 13, 9, Direction.Up },
+        // The Battleground (plan 02 · S15, part c): Buck's grandfather behind his bar and Buck before it. The day's four
+        // guests are put on the original's four tiles as the room is come into (TheBattlegroundAndTheLastLegendsTests)
+        new object[] { "Battleground", "expert_m", 13, 9, Direction.Left },
+        new object[] { "Battleground", "buck", 11, 8, Direction.Down },
     };
 
     [Theory]

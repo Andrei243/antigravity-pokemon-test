@@ -15,10 +15,10 @@
     { "warp": 2, "map": "SolaceonTownPokemonNewsPress", "x": 4, "y": 8, "facing": "Up" },
     { "warp": 3, "map": "SolaceonTownNorthHouse", "x": 4, "y": 8, "facing": "Up" }
   ],
-  // The room of the ruins Maniac Tunnel leads to opens with the tunnel (plan 02: the Ruin Maniac digs it once enough
-  // Unown have been seen)
+  // The room of the ruins Maniac Tunnel leads to opens with the tunnel (the Ruin Maniac digs it once enough of Unown's
+  // forms have been seen: plan 08 · P19, by plan 02's "What the story still owes")
   "locked": [ 7 ],
-  // The Rare Candy on the ledge over the ruins is reached through Maniac Tunnel (with the tunnel, plan 02)
+  // The Rare Candy on the ledge over the ruins is reached through Maniac Tunnel (with the tunnel, plan 08 · P19)
   "heldBack": [ "item_rare_candy" ],
   // Plan 02 · S7 (scripts/solaceon_town.txt): the rival coming down the street as the player first arrives (trigger 0)
   "triggers": [ { "trigger": 0, "script": "RivalInTown" } ],

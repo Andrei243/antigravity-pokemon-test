@@ -373,6 +373,8 @@ public class ScriptTests
           team nature serious
           team size "Remoraid"
           team size keep
+          team holds "Adamant Orb"
+          setvar VAR_X RESULT
           nationaldex
           hall enough single
           hall choose single

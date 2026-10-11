@@ -1016,13 +1016,23 @@ public class Map
     /// <summary>Water deep enough to need Surf.</summary>
     public bool IsDeepWater(int x, int y) => TileBehaviors.IsSurfable(BehaviourAt(x, y));
 
-    /// <summary>The way a tile leads now: the first of its warps that the story hasn't shut.</summary>
+    /// <summary>
+    /// The way a tile leads now, found by the tile's own list (plan 01 · M12). Where the story keeps more than two ways
+    /// on one tile (plan 02 · S15, part c: Mt. Coronet's way out onto its summit, which is Spear Pillar as it stands,
+    /// the torn pillar, Dialga's or Palkia's), a way that is there from a flag takes the tile from one that is only
+    /// there until another: the original moves the one warp it has decided on onto the tile and the rest away.
+    /// </summary>
     public Warp? GetWarpAt(int x, int y)
     {
         if (!WarpsByTile().TryGetValue((x, y), out var here)) return null;
+        Warp? found = null;
         foreach (var warp in here)
-            if (!warp.Shut) return warp;
-        return null;
+        {
+            if (warp.Shut) continue;
+            if (warp.From != null) return warp;
+            found ??= warp;
+        }
+        return found;
     }
 
     /// <summary>

@@ -215,6 +215,19 @@
       "y": 10,
       "facing": "Left",
       "script": "ShopBoy"
+    },
+    {
+      "id": "clefairy",
+      "name": "Clefairy",
+      "npcType": "Pokemon",
+      "x": 2,
+      "y": 10,
+      "facing": "Right",
+      "dialog": [
+        "Clefairy: Pip-piih!"
+      ],
+      "hiddenBy": "FLAG_HIDE_CYCLE_SHOP_CLEFAIRY",
+      "species": "Clefairy"
     }
   ],
   "wildEncounters": []

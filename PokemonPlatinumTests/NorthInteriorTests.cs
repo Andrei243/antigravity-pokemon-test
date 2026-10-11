@@ -107,7 +107,7 @@ public class NorthInteriorTests
             (616, 366, 620, 368, 617, (string?)"Route225House"),
             (654, 346, 658, 348, 655, "SurvivalAreaSouthHouse"),
             (655, 323, 658, 325, 656, "SurvivalAreaNorthHouse"),   // the tutor's house (part d)
-            (651, 336, 655, 338, 652, null),          // the Battleground, the story's
+            (651, 336, 655, 338, 652, "Battleground"),   // the Battleground (plan 02 · S15, part c)
         })
         {
             var house = Assert.Single(houses, b => b.X0 <= door && b.X1 >= door && b.Y0 <= y1 && b.Y1 >= y0);
@@ -143,15 +143,13 @@ public class NorthInteriorTests
         // stays shut
         Assert.Equal(new[] { 6 }, Sinnoh.Overlay("snowpoint_city")!.Locked);
         Assert.Equal(new[] { 7, 8 }, Sinnoh.Overlay("sunyshore_city")!.Locked);
-        Assert.Equal(new[] { 0 }, Sinnoh.Overlay("survival_area")!.Locked);
         Assert.Equal(new[] { 4, 5 }, Sinnoh.Overlay("route_228")!.Locked);
-        foreach (string area in new[] { "celestic_town", "route_216", "route_217", "route_222", "fight_area", "route_225", "route_226", "route_227", "resort_area" })
+        foreach (string area in new[] { "celestic_town", "route_216", "route_217", "route_222", "fight_area", "route_225", "route_226", "route_227", "resort_area", "survival_area" })
             Assert.True(Sinnoh.Overlay(area)!.Locked is not { Count: > 0 }, $"{area} still has a door shut");
         Assert.Equal("unused_sunyshore_city_house_1", Sinnoh.Area("sunyshore_city")!.Warps[7].To);
         Assert.Equal("unused_sunyshore_city_house_2", Sinnoh.Area("sunyshore_city")!.Warps[8].To);
-        // The rooms left shut are not built by this part either
-        foreach (string left in new[] { "Battleground" })
-            Assert.False(File.Exists(GameDataFiles.PathOf(Path.Combine(MapDatabase.Folder, left + ".json"))), left);
+        // The Battleground, which this part left shut, is built since plan 02 · S15, part c, and opens with the story
+        Assert.Equal("FLAG_ARRESTED_CHARON_STARK_MOUNTAIN", Sinnoh.Overlay("survival_area")!.Doors!.Single(d => d.Map == "Battleground").OpenedBy);
     }
 
     [Fact]

@@ -1,0 +1,34 @@
+# Spear Pillar with Dialga's rift over its altar (plan 02 · S15, part c). docs/scripts.md describes the language; the
+# lines are our own, on the original's beats (scripts_spear_pillar_dialga.s).
+#
+# The summit as a Champion who holds the Adamant Orb finds it once the elder of Celestic Town has told what she read in
+# the shrine (mt_coronet_6f.txt decides which Spear Pillar the mountain's way out leads to). Nobody is here: only the
+# rift, read from below it. Through it Dialga can be seen, and asked, it comes out to battle at level 70; the battle
+# may be run from. Whatever its end but a loss, the rift is quiet from then on (VAR_SPEAR_PILLAR_DIALGA_STATE 1), and
+# the mountain's way leads to Palkia's pillar or to the pillar as it stands; a Dialga that wasn't caught is behind its
+# rift again once the Hall of Fame has next been entered (PokemonLeagueHallOfFame.txt puts the state back to 0). Caught,
+# it is gone for good (FLAG_CAUGHT_DIALGA).
+#
+# The Hall of Origin's step before the way down (VAR_HALL_OF_ORIGIN_STATE 1, for whoever carries the Azure Flute of an
+# event) is left dead: plan 03 · D12c. Stood in for until plan 09 · L14 gives the legendary Pokémon their ways in: the
+# cry, a shake of the picture and the battle's own opening.
+
+
+# SpearPillarDialga_Rift
+script Rift
+  speaker none
+  if var VAR_SPEAR_PILLAR_DIALGA_STATE >= 1 goto Quiet
+  if flag FLAG_CAUGHT_DIALGA goto Quiet
+  text "Beyond the rift lies a place where nothing is the way it ought to be..." "And in it, looking back: Dialga!"
+  ask "Will you challenge Dialga?"
+  if no end
+  cry "Dialga"
+  camera shake 0.6
+  text "Dialga: Gyugguh-gwaah!"
+  wildbattle "Dialga" 70
+  setvar VAR_SPEAR_PILLAR_DIALGA_STATE 1
+  if result == 3 setflag FLAG_CAUGHT_DIALGA
+  end
+label Quiet
+  text "Time itself seems to pour out of the rift, more of it than anyone could stand in for long." "Where does it lead?"
+  end
