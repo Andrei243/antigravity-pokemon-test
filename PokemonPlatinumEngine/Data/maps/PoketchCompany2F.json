@@ -1,0 +1,306 @@
+{
+  "name": "PoketchCompany2F",
+  "displayName": "Pokétch Company",
+  "bgmTrack": "sinnoh/jubilife",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 21,
+  "height": 14,
+  "ground": [
+    "#####################",
+    "#####################",
+    "#####################",
+    "#________####_______#",
+    "#________####_______#",
+    "#___________________#",
+    "#___________________#",
+    "#___________________#",
+    "#_______##########__#",
+    "#_______##########__#",
+    "#_______##########__#",
+    "#______##___________#",
+    "#_______#___________#",
+    "#####################"
+  ],
+  "solid": [
+    "#####################",
+    "#####################",
+    "#####################",
+    "#####..########...###",
+    "#......########.....#",
+    "#...................#",
+    "#...................#",
+    "#..###..............#",
+    "#..###..##########..#",
+    "#..###..##########..#",
+    "#.......##########..#",
+    "##.....#######......#",
+    "##.....##...........#",
+    "#####################"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 6,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 17,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 3,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 4,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 6,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SideStairsUpEast",
+      "x": 7,
+      "y": 3,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "SideStairsDownWest",
+      "x": 13,
+      "y": 3,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Rug",
+      "x": 15,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 18,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 19,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 4,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 2,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 6,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 2,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 3,
+      "y": 7,
+      "width": 3,
+      "depth": 3
+    },
+    {
+      "type": "Cushion",
+      "x": 6,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 2,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 6,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 9,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 10,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 11,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 12,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 13,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 7,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 15,
+      "sourceY": 3,
+      "targetMap": "PoketchCompany",
+      "targetX": 5,
+      "targetY": 3,
+      "targetFacing": "Left"
+    },
+    {
+      "sourceX": 6,
+      "sourceY": 3,
+      "targetMap": "PoketchCompany3F",
+      "targetX": 16,
+      "targetY": 3,
+      "targetFacing": "Right"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "pokefan_m",
+      "name": "Designer",
+      "npcType": "Gentleman",
+      "x": 12,
+      "y": 6,
+      "facing": "Right",
+      "dialog": [
+        "We try to think the way a Trainer thinks.",
+        "That's how we work out which Pokétch apps would be worth making."
+      ],
+      "movement": "wander_west_and_east",
+      "rangeX": 1
+    },
+    {
+      "id": "old_man",
+      "name": "Old Man",
+      "npcType": "Gentleman",
+      "x": 2,
+      "y": 9,
+      "facing": "Right",
+      "dialog": [
+        "Pokémon Watch! Pokétch, for short.",
+        "Say it the long way and... now, what is Pokémon short for again?",
+        "Never mind that. I am the father of the president of the Pokétch Company!"
+      ]
+    },
+    {
+      "id": "clefairy",
+      "name": "Clefairy",
+      "npcType": "Pokemon",
+      "x": 3,
+      "y": 10,
+      "facing": "Right",
+      "dialog": [
+        "Clefairy: Pippi?"
+      ],
+      "species": "Clefairy"
+    },
+    {
+      "id": "pachirisu",
+      "name": "Pachirisu",
+      "npcType": "Pokemon",
+      "x": 4,
+      "y": 11,
+      "facing": "Down",
+      "dialog": [
+        "Pachirisu: Chipa chii?"
+      ],
+      "species": "Pachirisu",
+      "movement": "wander_around"
+    }
+  ],
+  "wildEncounters": []
+}

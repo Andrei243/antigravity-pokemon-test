@@ -116,7 +116,7 @@ partial class Harness
         ReadTo(null);
 
         // ---- the Trainers' School: the parcel
-        At("TrainersSchool", 7, 10, Direction.Up); Frames(30); Shot("j05_trainers_school");
+        At("TrainersSchool", 7, 11, Direction.Up); Frames(30); Shot("j05_trainers_school");
         TalkTo("TrainersSchool", "rival");
         ReadTo("Town Map!"); Frames(10); Shot("j06_school_the_parcel");
         ReadTo(null);

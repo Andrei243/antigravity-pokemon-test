@@ -8,7 +8,7 @@ partial class Harness
         GoTo("TwinleafTown", 11, 1, Direction.Up); Shot("02b_twinleaf_north");
         GoTo("TwinleafTown", 9, 14, Direction.Left); Shot("02c_twinleaf_pond");
         GoTo("PlayerHouse", 4, 6, Direction.Up); Shot("03_player_house");
-        GoTo("RivalHouse", 5, 7, Direction.Up); Shot("03b_rival_house");
+        GoTo("RivalHouse", 6, 9, Direction.Up); Shot("03b_rival_house");
         GoTo("TwinleafTown", 17, 9, Direction.Up); Shot("03c_twinleaf_rival_door");
         GoTo("Route201", 14, 10, Direction.Left); Shot("04_route201");
         GoTo("Route201", 24, 8, Direction.Up); Shot("04b_route201_grass");
@@ -28,7 +28,7 @@ partial class Harness
         GoTo("JubilifeCity", 28, 29, Direction.Up); Shot("08e_jubilife_center_mart");
         GoTo("JubilifeCity", 9, 29, Direction.Up); Shot("08f_jubilife_terminal");
         GoTo("TrainersSchool", 6, 9, Direction.Up); Shot("09_trainers_school");
-        GoTo("PoketchCompany", 5, 7, Direction.Up); Shot("09b_poketch_company");
+        GoTo("PoketchCompany", 10, 9, Direction.Up); Shot("09b_poketch_company");
         GoTo("JubilifePokemonCenter", 8, 8, Direction.Up); Shot("09c_jubilife_center");
         GoTo("PalletTown", 9, 9, Direction.Down); Shot("10_pallet");
         GoTo("PalletTown", 9, 17, Direction.Down); Shot("10b_pallet_pier");

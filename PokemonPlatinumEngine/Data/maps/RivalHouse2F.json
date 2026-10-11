@@ -4,92 +4,114 @@
   "bgmTrack": "sinnoh/twinleaf",
   "interior": "House",
   "trees": "Round",
-  "width": 9,
-  "height": 7,
+  "width": 12,
+  "height": 12,
   "ground": [
-    "#########",
-    "#########",
-    "#_______#",
-    "#_______#",
-    "#_______#",
-    "#_______#",
-    "#########"
+    "############",
+    "############",
+    "############",
+    "############",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "############"
   ],
   "solid": [
-    "#########",
-    "#########",
-    "##.#.#.##",
-    "#......##",
-    "#.......#",
-    "#.......#",
-    "#########"
+    "############",
+    "############",
+    "############",
+    "############",
+    "###...######",
+    "###........#",
+    "#..........#",
+    "#..........#",
+    "#.#........#",
+    "#.#.......##",
+    "#.#.......##",
+    "############"
   ],
   "props": [
     {
-      "type": "Stairs",
-      "x": 1,
-      "y": 2,
-      "width": 1,
-      "depth": 2
-    },
-    {
-      "type": "Bookshelf",
-      "x": 3,
-      "y": 2,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Television",
+      "type": "Window",
       "x": 5,
-      "y": 2,
-      "width": 1,
+      "y": 3,
+      "width": 2,
       "depth": 1
     },
     {
-      "type": "Bed",
-      "x": 7,
-      "y": 2,
-      "width": 1,
+      "type": "SideStairsDownWest",
+      "x": 1,
+      "y": 4,
+      "width": 2,
       "depth": 2
     },
     {
       "type": "Rug",
       "x": 3,
       "y": 4,
-      "width": 3,
-      "depth": 2
+      "width": 1,
+      "depth": 1
     },
     {
-      "type": "Plant",
+      "type": "Television",
       "x": 7,
+      "y": 4,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 9,
+      "y": 4,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 9,
       "y": 5,
       "width": 1,
       "depth": 1
     },
     {
-      "type": "Window",
-      "x": 5,
-      "y": 1,
-      "width": 2,
+      "type": "Bed",
+      "x": 2,
+      "y": 8,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "Plant",
+      "x": 10,
+      "y": 10,
+      "width": 1,
       "depth": 1
     }
   ],
   "warps": [
     {
-      "sourceX": 1,
-      "sourceY": 3,
+      "sourceX": 3,
+      "sourceY": 4,
       "targetMap": "RivalHouse",
-      "targetX": 6,
+      "targetX": 1,
       "targetY": 3,
-      "targetFacing": "Down"
+      "targetFacing": "Left"
     }
   ],
   "signboards": [
     {
-      "x": 5,
-      "y": 2,
-      "text": "The television is showing a battle replay with the sound turned all the way up."
+      "x": 6,
+      "y": 4,
+      "text": "A game console sits on the floor, its controller flung down beside it.\nThe television is showing a battle replay with the sound turned all the way up."
+    },
+    {
+      "x": 9,
+      "y": 4,
+      "text": "A note is up on the PC's screen.\n\"Adventure Rule No. 1: when in doubt, open the menu! Adventure Rule No. 2: SAVE your progress!\"\nThere is nothing else on it."
     }
   ],
   "npcs": [
@@ -97,8 +119,8 @@
       "id": "rival",
       "name": "{rival}",
       "npcType": "Rival",
-      "x": 6,
-      "y": 4,
+      "x": 9,
+      "y": 5,
       "facing": "Up",
       "hiddenBy": "FLAG_HIDE_TWINLEAF_TOWN_RIVAL_HOUSE_2F_RIVAL"
     }

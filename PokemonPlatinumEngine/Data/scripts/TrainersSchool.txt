@@ -18,7 +18,17 @@ script Rival
   give "Town Map"
   say "I've already learned everything this school has to teach, so I'm off to Oreburgh City for my first Gym Badge!"
   say "You'd better hurry up, {player}! Or I'm fining you ten million!"
-  walk rival down 7 fast
+  # He runs for the door by the original's two ways: round whoever stands south of him, or straight down past
+  # whoever spoke to him from the side (the room is on the original's plan since plan 01 · M11)
+  if var PLAYER_X != 6 goto Straight
+  walk rival right 1 fast
+  walk rival down 8 fast
+  goto Gone
+label Straight
+  walk rival down 4 fast
+  walk rival right 1 fast
+  walk rival down 4 fast
+label Gone
   sound "door_open"
   hide rival
   setflag FLAG_HIDE_TRAINERS_SCHOOL_RIVAL

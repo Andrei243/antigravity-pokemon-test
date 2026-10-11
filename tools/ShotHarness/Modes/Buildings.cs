@@ -39,9 +39,9 @@ partial class Harness
         // Every room
         (string Name, string Map, int X, int Y)[] rooms =
         {
-            ("b30_player_house", "PlayerHouse", 4, 6), ("b31_rival_house", "RivalHouse", 5, 7), ("b32_pallet_house", "PalletPlayerHouse", 4, 6),
+            ("b30_player_house", "PlayerHouse", 4, 6), ("b31_rival_house", "RivalHouse", 6, 9), ("b32_pallet_house", "PalletPlayerHouse", 4, 6),
             ("b33_pokemon_center", "PokemonCenter", 8, 8), ("b34_mart", "PokeMart", 5, 8), ("b35_lab", "RowanLab", 5, 7),
-            ("b36_school", "TrainersSchool", 6, 9), ("b37_poketch", "PoketchCompany", 5, 7)
+            ("b36_school", "TrainersSchool", 6, 9), ("b37_poketch", "PoketchCompany", 10, 9)
         };
         foreach (var (name, map, x, y) in rooms)
         {

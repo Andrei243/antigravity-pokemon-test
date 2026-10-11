@@ -22,7 +22,8 @@ partial class Harness
     // part c's rooms at work (`in_z*`, Modes/InteriorsNorth.cs).
     // Part d's towns: gates, tutors, store, centers, terminal; `workd` shows part d's rooms at work (`in_w*`,
     // Modes/InteriorsLast.cs).
-    // The last rooms' towns (the hand-made rooms of the first chapters, rebuilt): pokecenters, marts.
+    // The last rooms' towns (the hand-made rooms of the first chapters, rebuilt): pokecenters, marts, firstrooms; `worke`
+    // shows them at work (`in_v*`, Modes/InteriorsFirst.cs).
     public void InteriorsMode()
     {
         game.State = GameState.Overworld;
@@ -115,6 +116,7 @@ partial class Harness
                 "PokeMart", "JubilifePokeMart", "OreburghPokeMart", "FloaromaPokeMart", "EternaPokeMart", "HearthomePokeMart", "SolaceonPokeMart",
                 "PastoriaPokeMart", "CanalavePokeMart", "SnowpointPokeMart", "SunyshorePokeMart", "FightAreaPokeMart", "SurvivalAreaPokeMart",
             }),
+            ("firstrooms", new[] { "TrainersSchool", "PoketchCompany", "PoketchCompany2F", "PoketchCompany3F", "JubilifeTV1F", "RivalHouse", "RivalHouse2F" }),
         };
         var asked = args.Length > 2 ? args[2..].ToHashSet(StringComparer.OrdinalIgnoreCase) : null;
 
@@ -190,6 +192,7 @@ partial class Harness
         }
         bool workA = asked == null || asked.Contains("work"), workB = asked == null || asked.Contains("workb"), workC = asked == null || asked.Contains("workc");
         bool workD = asked == null || asked.Contains("workd");
+        if (asked == null || asked.Contains("worke")) InteriorsAtWorkE();
         if (workD) InteriorsAtWorkD();
         if (workC) InteriorsAtWorkC();
         if (workB) InteriorsAtWorkB();

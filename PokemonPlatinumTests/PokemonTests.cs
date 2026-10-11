@@ -62,7 +62,8 @@ public class PokemonTests
         foreach (var (room, doorX, doorY) in new[] { ("JubilifePokemonCenter", 180, 776), ("JubilifePokeMart", 179, 766), ("TrainersSchool", 168, 776), ("PoketchCompany", 141, 751) })
         {
             Assert.Equal(room, sinnoh.GetWarpAt(doorX, doorY)?.TargetMap);
-            var exit = MapDatabase.Get(room).Warps.Single(w => w.TargetMap == "Sinnoh");
+            // (The Pokétch Company has two doors, as the original has: each leads back out before its own)
+            var exit = MapDatabase.Get(room).Warps.Single(w => w.TargetMap == "Sinnoh" && w.TargetX == doorX);
             Assert.Equal(("Sinnoh", doorX, doorY + 1), (exit.TargetMap, exit.TargetX, exit.TargetY));
             Assert.True(sinnoh.IsWalkable(exit.TargetX, exit.TargetY), $"{room} lets out onto a tile nobody can stand on");
         }

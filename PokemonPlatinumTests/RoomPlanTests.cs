@@ -177,6 +177,12 @@ public class RoomPlanTests
         new object[] { "SunyshorePokeMart", 1, 3, 3, 11 },
         new object[] { "FightAreaPokeMart", 1, 3, 3, 11 },
         new object[] { "SurvivalAreaPokeMart", 1, 3, 3, 11 },
+        // The Trainers' School on the original's plan (plan 01 · M11, the last rooms)
+        new object[] { "TrainersSchool", 1, 3, 7, 11 },
+        // Jubilife TV's lobby on the original's plan (plan 01 · M11, the last rooms)
+        new object[] { "JubilifeTV1F", 1, 4, 9, 18 },
+        // The rival's house on the original's plans (plan 01 · M11, the last rooms)
+        new object[] { "RivalHouse", 1, 3, 6, 10 },
     };
 
     /// <summary>Rooms on the original's plans whose door isn't in the last row of the room (plan 06 · R16b): the Oreburgh
@@ -208,6 +214,14 @@ public class RoomPlanTests
     /// <summary>The Battle Arcade's rooms (plan 06 · R18d): the lobby is come into from the west, and the corridor and
     /// the game room behind its attendants are laid out from the original's scenes (<c>BattleArcadeTests</c>).</summary>
     internal static readonly string[] BattleArcade = { "BattleArcade", "BattleArcadeCorridor", "BattleArcadeBattleRoom" };
+
+    /// <summary>The Pokétch Company (plan 01 · M11, the last rooms): its ground floor has two doors onto Jubilife City,
+    /// as the original's has, and the floors over it only their stairs (<c>RebuiltRoomTests</c>).</summary>
+    internal static readonly string[] PoketchCompany = { "PoketchCompany", "PoketchCompany2F", "PoketchCompany3F" };
+
+    /// <summary>The rival's room over his house (plan 01 · M11, the last rooms): no door, only the stairs, and the scene that
+    /// plays as the player first comes up them (<c>RebuiltRoomTests</c>, <c>OpeningTests</c>).</summary>
+    internal static readonly string[] RivalsRoom = { "RivalHouse2F" };
 
     /// <summary>The Canalave Library's upper floors (plan 02 · S10): no door, only the stairs.</summary>
     internal static readonly string[] LibraryUpperFloors = { "CanalaveLibrary2F", "CanalaveLibrary3F" };
@@ -1032,6 +1046,36 @@ public class RoomPlanTests
         new object[] { "SurvivalAreaPokeMart", "ace_trainer_f", 7, 7, Direction.Down },
         new object[] { "SurvivalAreaPokeMart", "hiker", 8, 3, Direction.Down },
         new object[] { "SurvivalAreaPokeMart", "cashier_f", 3, 5, Direction.Down },
+        // The Trainers' School on the original's plan (plan 01 · M11, the last rooms)
+        new object[] { "TrainersSchool", "teacher", 5, 4, Direction.Down },
+        new object[] { "TrainersSchool", "rival", 6, 3, Direction.Up },
+        new object[] { "TrainersSchool", "youngster_1", 14, 9, Direction.Down },
+        new object[] { "TrainersSchool", "lass", 2, 8, Direction.Right },
+        new object[] { "TrainersSchool", "youngster_2", 5, 8, Direction.Left },
+        new object[] { "TrainersSchool", "school_kid_harrison", 12, 4, Direction.Down },
+        new object[] { "TrainersSchool", "school_kid_christine", 14, 4, Direction.Down },
+        // Jubilife TV's lobby on the original's plan (plan 01 · M11, the last rooms)
+        new object[] { "JubilifeTV1F", "beauty", 13, 13, Direction.Left },
+        new object[] { "JubilifeTV1F", "gym_guide", 13, 7, Direction.Left },
+        new object[] { "JubilifeTV1F", "poketch_co_president", 3, 11, Direction.Left },
+        new object[] { "JubilifeTV1F", "ace_trainer_snow_f", 9, 7, Direction.Down },
+        new object[] { "JubilifeTV1F", "ace_trainer_m", 7, 10, Direction.Left },
+        // The Pokétch Company's three floors on the original's plans (plan 01 · M11, the last rooms)
+        new object[] { "PoketchCompany", "scientist_m", 15, 8, Direction.Down },
+        new object[] { "PoketchCompany", "receptionist", 16, 3, Direction.Down },
+        new object[] { "PoketchCompany", "poketch_co_president", 18, 5, Direction.Down },
+        new object[] { "PoketchCompany", "lass", 6, 7, Direction.Right },
+        new object[] { "PoketchCompany2F", "pokefan_m", 12, 6, Direction.Right },
+        new object[] { "PoketchCompany2F", "old_man", 2, 9, Direction.Right },
+        new object[] { "PoketchCompany2F", "clefairy", 3, 10, Direction.Right },
+        new object[] { "PoketchCompany2F", "pachirisu", 4, 11, Direction.Down },
+        new object[] { "PoketchCompany3F", "ninja_boy", 7, 5, Direction.Right },
+        new object[] { "PoketchCompany3F", "pokefan_f", 14, 6, Direction.Left },
+        new object[] { "PoketchCompany3F", "expert_f", 3, 6, Direction.Left },
+        // The rival's house on the original's plans (plan 01 · M11, the last rooms)
+        new object[] { "RivalHouse", "rival_mom", 4, 6, Direction.Down },
+        // The rival's room over it (plan 01 · M11, the last rooms)
+        new object[] { "RivalHouse2F", "rival", 9, 5, Direction.Up },
     };
 
     [Theory]
@@ -1123,6 +1167,8 @@ public class RoomPlanTests
             TerminalFloors,
             ParkGallery,
             BattleArcade,
+            PoketchCompany,
+            RivalsRoom,
         }.SelectMany(names => names).ToHashSet();
         foreach (string path in Directory.GetFiles(GameDataFiles.PathOf(MapDatabase.Folder), "*.json"))
         {

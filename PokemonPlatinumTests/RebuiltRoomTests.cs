@@ -10,7 +10,9 @@ namespace PokemonPlatinumTests;
 /// <summary>
 /// The rooms of the first chapters, made by hand before the world was imported and laid out again on the original's
 /// plans last of all (plan 01 · M11, the last rooms): the ground floors of the seventeen Pokémon Centers and the
-/// thirteen Poké Marts, each town's a copy of one plan with its own people. What stood on the hand-made tiles was
+/// thirteen Poké Marts, each town's a copy of one plan with its own people, and in Jubilife City the Trainers' School,
+/// the Pokétch Company on its three floors and Jubilife TV's lobby, and in Twinleaf Town the rival's house on its two.
+/// What stood on the hand-made tiles was
 /// carried across: the towns' doors, the floors above and below, the nurse's and the clerks' counters, the PC, the
 /// tile a white-out wakes on, and a save made in the old room (<see cref="SaveData.PlaceOn"/>). Where the people
 /// stand is <see cref="RoomPlanTests"/>'s.
@@ -80,7 +82,7 @@ public class RebuiltRoomTests
             string where = $"{room.Name}: {who.Key} at {who.GridX},{who.GridY}";
             // (The PC's terminal is the PC's own tile)
             Assert.True(who.IsPCTerminal || !room.IsSolid(who.GridX, who.GridY), where + " stands in something solid");
-            bool speaks = who.DialogLines.Count > 0 || who.IsHealingNurse || who.IsPokeMartClerk || who.IsPCTerminal
+            bool speaks = who.DialogLines.Count > 0 || who.IsHealingNurse || who.IsPokeMartClerk || who.IsPCTerminal || who.IsItemBall
                 || who.Script != null && ScriptLibrary.Default.Find(who.Script, room.Name) != null;
             Assert.True(speaks, where + " has nothing to say");
         }
@@ -300,9 +302,214 @@ public class RebuiltRoomTests
         Assert.True(new Prop { Type = PropType.StoreShelf, X = 7, Y = 5, Width = 2 }.IsSolid);
     }
 
+    // ------------------------------------------------------------------ Jubilife City's three
+
+    [Fact]
+    public void TheTrainersSchoolIsTheOriginalsPlanWithItsSceneOnTheOriginalsTiles()
+    {
+        var map = Room("TrainersSchool");
+        Assert.Equal((17, 13), (map.Width, map.Height));
+        Assert.Equal((1, 3), map.RoomCorner());
+        LeadsInAndBackOut(map, 7, 11);
+        EveryoneStandsOnFloorWithSomethingToSay(map);
+
+        // The blackboard on the back wall, read from the two tiles before it; the rival stands on one of them until he leaves
+        Assert.Contains(map.Props, p => p.Type == PropType.Blackboard && (p.X, p.Y, p.Width) == (5, 2, 2));
+        Assert.False(new Prop { Type = PropType.Blackboard }.IsSolid);
+        foreach (int x in new[] { 5, 6 })
+        {
+            Assert.NotNull(map.GetSignboardAt(x, 2));
+            Assert.Equal("Blackboard", map.SignScripts[(x, 2)]);
+            Assert.False(map.IsSolid(x, 3));
+        }
+        // The notebook lies on the pupils' table, and the X Attack by the west wall
+        Assert.NotNull(map.GetSignboardAt(4, 9));
+        Assert.Contains(map.Props, p => p.Type == PropType.Table && p.Covers(4, 9));
+        Assert.Contains(map.Everyone, n => n.IsItemBall && (n.GridX, n.GridY, n.Item) == (1, 4, "X Attack"));
+        // The east classroom is come into round the end of its wall
+        Assert.All(Enumerable.Range(3, 6), y => Assert.True(map.IsSolid(10, y)));
+        Assert.All(Enumerable.Range(9, 3), y => Assert.False(map.IsSolid(10, y)));
+    }
+
+    [Theory]
+    // Spoken to from the south he runs round the player; from either side, straight down (the original's two movements)
+    [InlineData(6, 4, Direction.Up)]
+    [InlineData(7, 3, Direction.Left)]
+    [InlineData(5, 3, Direction.Right)]
+    public void TheRivalRunsFromTheBlackboardToTheSchoolsDoorWhereverThePlayerStands(int x, int y, Direction facing)
+    {
+        var map = Room("TrainersSchool");
+        var rival = map.FindPerson("rival")!;
+        Assert.Equal((6, 3), (rival.GridX, rival.GridY));
+        Assert.True(map.IsWalkable(x, y));
+        var host = new HeadlessScriptHost { Map = map, PlayerTile = (x, y), PlayerFacing = facing };
+        host.Bag.AddItem(ItemDatabase.Get("Parcel")!, 1);
+        Run("Rival", "TrainersSchool", host, rival);
+        // He ends on the mat inside the door, never having walked through anything or anyone, and is gone
+        Assert.Equal((7, 11), (rival.GridX, rival.GridY));
+        Assert.DoesNotContain(rival, map.NPCs);
+        Assert.True(host.Story.Has("FLAG_HIDE_TRAINERS_SCHOOL_RIVAL") && host.Story.Has("FLAG_TALKED_TO_TRAINERS_SCHOOL_RIVAL"));
+        Assert.Equal(1, host.Story.Var("VAR_POKETCH_CAMPAIGN_STATE"));
+        Assert.Equal(1, host.Bag.GetQuantity(ItemDatabase.Get("Town Map")!));
+    }
+
+    [Fact]
+    public void ThePoketchCompanyHasTheOriginalsThreeFloorsAndTwoDoors()
+    {
+        var ground = Room("PoketchCompany");
+        Assert.Equal((21, 14), (ground.Width, ground.Height));
+        // Each of the city's two doors leads onto the mat inside its own, and each of the room's back out before its own
+        var doors = BuiltSinnoh.Value.Warps.Where(w => w.TargetMap == "PoketchCompany").OrderBy(w => w.SourceX).ToList();
+        var exits = ground.Warps.Where(w => w.TargetMap == "Sinnoh").OrderBy(w => w.SourceX).ToList();
+        Assert.Equal(2, doors.Count);
+        Assert.Equal(new[] { (3, 13), (16, 13) }, exits.Select(w => (w.SourceX, w.SourceY)));
+        for (int i = 0; i < 2; i++)
+        {
+            Assert.Equal((exits[i].SourceX, exits[i].SourceY - 1, Direction.Up), (doors[i].TargetX, doors[i].TargetY, doors[i].TargetFacing));
+            Assert.Equal((doors[i].SourceX, doors[i].SourceY + 1), (exits[i].TargetX, exits[i].TargetY));
+            Assert.True(ground.IsWalkable(doors[i].TargetX, doors[i].TargetY));
+        }
+
+        // The floors are joined by their stairs both ways, each flight beside its warp, whoever takes one set down beside the other end
+        string[] floors = RoomPlanTests.PoketchCompany;
+        for (int i = 0; i < floors.Length - 1; i++)
+        {
+            Map below = Room(floors[i]), above = Room(floors[i + 1]);
+            var up = Assert.Single(below.Warps, w => w.TargetMap == above.Name);
+            var down = Assert.Single(above.Warps, w => w.TargetMap == below.Name);
+            Assert.Equal((down.SourceX + 1, down.SourceY, Direction.Right), (up.TargetX, up.TargetY, up.TargetFacing));
+            Assert.Equal((up.SourceX - 1, up.SourceY, Direction.Left), (down.TargetX, down.TargetY, down.TargetFacing));
+            Assert.True(above.IsWalkable(up.TargetX, up.TargetY) && below.IsWalkable(down.TargetX, down.TargetY));
+            Assert.Contains(below.Props, p => p.Type == PropType.SideStairsUpEast && p.X == up.SourceX + 1);
+            Assert.Contains(above.Props, p => p.Type == PropType.SideStairsDownWest && p.X + p.Width == down.SourceX);
+        }
+        foreach (string name in floors)
+        {
+            var map = Room(name);
+            Assert.Equal(RegionDatabase.Sinnoh, RegionDatabase.RegionOfMap(name)!.Id);
+            Assert.Equal(ground.BgmTrack, map.BgmTrack);
+            EveryoneStandsOnFloorWithSomethingToSay(map);
+        }
+
+        // The president before his family's counter, with the apps he hands out by the Badges (PoketchTests has the script)
+        var president = Assert.Single(ground.Everyone, n => n.Name == "President");
+        Assert.Equal((18, 5, "President", "FLAG_HIDE_POKETCH_CO_1F_POKETCH_CO_PRESIDENT"), (president.GridX, president.GridY, president.Script, president.HiddenBy));
+        var receptionist = Assert.Single(ground.Everyone, n => n.Key == "receptionist");
+        Assert.True(ground.IsCounter(receptionist.GridX, receptionist.GridY + 1) && ground.IsWalkable(receptionist.GridX, receptionist.GridY + 2));
+        // The president's father and his two Pokémon upstairs
+        Assert.Equal(new[] { "Clefairy", "Pachirisu" }, Room("PoketchCompany2F").Everyone.Where(n => n.Species != null).Select(n => n.Species).OrderBy(s => s));
+        // The top floor's four PCs each tell of a handful of apps, read from the tile before them
+        var top = Room("PoketchCompany3F");
+        var guides = new[] { (1, 11, 0, 1), (9, 11, 0, 1), (15, 11, 0, 1), (1, 4, 1, 0) };
+        foreach (var (gx, gy, dx, dy) in guides)
+        {
+            Assert.StartsWith("A guide to the Pokétch", top.GetSignboardAt(gx, gy));
+            Assert.True(top.IsSolid(gx, gy) && top.IsWalkable(gx + dx, gy + dy), $"the guide at {gx},{gy} can't be read");
+        }
+        // Every app Platinum has is told of by one of them
+        string told = string.Join(" ", guides.Select(g => top.GetSignboardAt(g.Item1, g.Item2)));
+        foreach (string app in new[]
+                 {
+                     "Digital Watch", "Calculator", "Memo Pad", "Pedometer", "Pokémon List", "Friendship Checker", "Dowsing Machine", "Berry Searcher",
+                     "Day-Care Checker", "Pokémon History", "Counter", "Analog Watch", "Marking Map", "Link Searcher", "Coin Toss", "Move Tester",
+                     "Calendar", "Dot Artist", "Roulette", "Trainer Counter", "Kitchen Timer", "Color Changer", "Matchup Checker", "Stopwatch", "Alarm Clock",
+                 })
+            Assert.Contains(app, told);
+    }
+
+    [Fact]
+    public void JubilifeTVsLobbyIsTheOriginalsPlanWithItsUpperFloorsRopedOff()
+    {
+        var map = Room("JubilifeTV1F");
+        Assert.Equal((22, 20), (map.Width, map.Height));
+        LeadsInAndBackOut(map, 9, 18);
+        EveryoneStandsOnFloorWithSomethingToSay(map);
+
+        // The Lottery Corner's clerk inside her desk, spoken to across it
+        var clerk = Assert.Single(map.Everyone, n => n.Script == "LotteryClerk");
+        Assert.Equal((9, 7, Direction.Down), (clerk.GridX, clerk.GridY, clerk.Facing));
+        Assert.True(map.IsCounter(9, 8) && map.IsWalkable(9, 9));
+        Assert.All(new[] { (7, 6), (7, 7), (7, 8), (8, 8), (9, 8), (10, 8), (11, 8), (11, 7), (11, 6), (8, 5), (9, 5), (10, 5) },
+            t => Assert.True(map.IsSolid(t.Item1, t.Item2), $"{t} is a way in behind the desk"));
+
+        // The stairs and the lift lead nowhere until the station's floors are built (plan 08 · P8): a rope and a card say so
+        Assert.Single(map.Warps);
+        Assert.Contains(map.Props, p => p.Type == PropType.SideStairsUp && p.Covers(13, 4));
+        Assert.Contains("NO VISITORS", map.GetSignboardAt(13, 4));
+        Assert.True(map.IsWalkable(14, 4));
+        Assert.Contains("STAFF ONLY", map.GetSignboardAt(18, 3));
+        Assert.True(map.IsSolid(18, 3) && map.IsWalkable(18, 4));
+        Assert.Contains(map.Everyone, n => string.Join(" ", n.DialogLines).Contains("shut to visitors"));
+    }
+
+    // ------------------------------------------------------------------ the rival's house
+
+    [Fact]
+    public void TheRivalsHouseIsTheOriginalsPlanOnBothFloors()
+    {
+        var ground = Room("RivalHouse");
+        Assert.Equal((13, 12, InteriorStyle.House), (ground.Width, ground.Height, ground.Interior));
+        LeadsInAndBackOut(ground, 6, 10);
+        EveryoneStandsOnFloorWithSomethingToSay(ground);
+        var mom = Assert.Single(ground.Everyone);
+        Assert.Equal((4, 6, "RivalMom"), (mom.GridX, mom.GridY, mom.Script));
+
+        // The stairs in the north-west corner lead up to the head of the stairs in his room and back down beside their foot
+        var room = Room("RivalHouse2F");
+        Assert.Equal((12, 12, InteriorStyle.House), (room.Width, room.Height, room.Interior));
+        var up = Assert.Single(ground.Warps, w => w.TargetMap == "RivalHouse2F");
+        var down = Assert.Single(room.Warps);
+        Assert.Equal(((2, 3), (4, 4, Direction.Right)), ((up.SourceX, up.SourceY), (up.TargetX, up.TargetY, up.TargetFacing)));
+        Assert.Equal(("RivalHouse", (3, 4), (1, 3, Direction.Left)), (down.TargetMap, (down.SourceX, down.SourceY), (down.TargetX, down.TargetY, down.TargetFacing)));
+        Assert.True(room.IsWalkable(4, 4) && ground.IsWalkable(1, 3));
+        Assert.Contains(ground.Props, p => p.Type == PropType.SideStairsUpEast && (p.X, p.Y) == (3, 3));
+        Assert.Contains(room.Props, p => p.Type == PropType.SideStairsDownWest && p.X + p.Width == down.SourceX);
+        Assert.Equal(ground.BgmTrack, room.BgmTrack);
+
+        // He stands at his desk, behind the flag that takes him out of the house for good
+        var rival = Assert.Single(room.Everyone);
+        Assert.Equal((9, 5, Direction.Up, "FLAG_HIDE_TWINLEAF_TOWN_RIVAL_HOUSE_2F_RIVAL"), (rival.GridX, rival.GridY, rival.Facing, rival.HiddenBy));
+        // His console on the floor before the television and the note on his PC are read where the original's are
+        Assert.Contains("console", room.GetSignboardAt(6, 4));
+        Assert.Contains("Adventure Rule", room.GetSignboardAt(9, 4));
+        Assert.True(room.IsWalkable(6, 5) && !room.IsSolid(9, 5));
+    }
+
+    [Fact]
+    public void TheRivalRunsOutOfHisRoomByTheOriginalsWayAsThePlayerComesUpTheStairs()
+    {
+        var room = Room("RivalHouse2F");
+        var rival = room.FindPerson("rival")!;
+        // The player comes up onto the tile beside the stairs' head, looking into the room
+        var host = new HeadlessScriptHost { Map = room, PlayerTile = (4, 4), PlayerFacing = Direction.Right };
+        var runner = new ScriptRunner(ScriptLibrary.Default, host);
+        runner.Start(ScriptLibrary.Default.In("RivalHouse2F", ScriptLibrary.OnEnter)!);
+        runner.RunToEnd();
+        Assert.Empty(host.Problems);
+        // The player has stepped clear, and he has run round the room's furniture to the stairs and is gone
+        Assert.Equal((4, 5), host.PlayerTile);
+        Assert.Equal((3, 4), (rival.GridX, rival.GridY));
+        Assert.DoesNotContain(rival, room.NPCs);
+        Assert.True(host.Story.Has("FLAG_RIVAL_LEFT_HOME") && host.Story.Has("FLAG_HIDE_TWINLEAF_TOWN_RIVAL_HOUSE_2F_RIVAL"));
+        Assert.Equal((1, 2), (host.Story.Var("VAR_RIVAL_HOUSE_STATE"), host.Story.Var("VAR_TWINLEAF_TOWN_GUITARIST_TRIGGER_STATE")));
+
+        // Come up again, nothing plays
+        var again = new HeadlessScriptHost(host.Story) { Map = room, PlayerTile = (4, 4), PlayerFacing = Direction.Right };
+        var second = new ScriptRunner(ScriptLibrary.Default, again);
+        second.Start(ScriptLibrary.Default.In("RivalHouse2F", ScriptLibrary.OnEnter)!);
+        second.RunToEnd();
+        Assert.Empty(again.Transcript);
+        Assert.Equal((4, 4), again.PlayerTile);
+    }
+
     // ------------------------------------------------------------------ saves
 
-    public static IEnumerable<object[]> Rebuilt => Centers.Concat(Marts.Select(m => m.Room)).Select(name => new object[] { name });
+    public static readonly string[] JubilifeRooms = { "TrainersSchool", "PoketchCompany", "JubilifeTV1F" };
+
+    public static readonly string[] RivalsHouse = { "RivalHouse", "RivalHouse2F" };
+
+    public static IEnumerable<object[]> Rebuilt =>
+        Centers.Concat(Marts.Select(m => m.Room)).Concat(JubilifeRooms).Concat(RivalsHouse).Select(name => new object[] { name });
 
     [Theory]
     [MemberData(nameof(Rebuilt))]
@@ -311,9 +518,12 @@ public class RebuiltRoomTests
         var map = MapDatabase.Get(room);
         var arrival = SaveData.ArrivalIn(map, MapDatabase.Get);
         Assert.NotNull(arrival);
-        // The mat inside the door, looking in
-        var door = Assert.Single(BuiltSinnoh.Value.Warps, w => w.TargetMap == room);
-        Assert.Equal(new MapSpot(room, door.TargetX, door.TargetY, Direction.Up), arrival);
+        // The mat inside the door, looking in (the Pokétch Company has two doors: its west one, the first of its ways out)
+        // A floor with no door of its own (the rival's room): beside the head of its stairs, as one comes up them
+        var door = BuiltSinnoh.Value.Warps.Where(w => w.TargetMap == room).OrderBy(w => w.SourceX).FirstOrDefault();
+        var expected = door != null ? new MapSpot(room, door.TargetX, door.TargetY, Direction.Up) : new MapSpot(room, 4, 4, Direction.Right);
+        Assert.Equal(room == "RivalHouse2F", door == null);
+        Assert.Equal(expected, arrival);
         Assert.False(map.IsSolid(arrival!.X, arrival.Y));
 
         Assert.True(SaveData.RebuiltAfter(room, SaveData.ImportedJubilife));
@@ -331,8 +541,8 @@ public class RebuiltRoomTests
         }
 
         // A save made in the room as it is today stands where it stood
-        var today = new SaveData { CurrentMapName = room, PlayerGridX = arrival.X, PlayerGridY = arrival.Y - 3, PlayerFacing = Direction.Right, WorldVersion = SaveData.CurrentWorld };
-        Assert.Equal(new MapSpot(room, arrival.X, arrival.Y - 3, Direction.Right), JsonSerializer.Deserialize<SaveData>(JsonSerializer.Serialize(today))!.PlaceOn(MapDatabase.Get));
+        var today = new SaveData { CurrentMapName = room, PlayerGridX = arrival.X, PlayerGridY = arrival.Y, PlayerFacing = Direction.Down, WorldVersion = SaveData.CurrentWorld };
+        Assert.Equal(new MapSpot(room, arrival.X, arrival.Y, Direction.Down), JsonSerializer.Deserialize<SaveData>(JsonSerializer.Serialize(today))!.PlaceOn(MapDatabase.Get));
     }
 
     [Fact]

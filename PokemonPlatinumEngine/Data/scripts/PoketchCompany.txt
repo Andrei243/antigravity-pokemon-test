@@ -1,4 +1,5 @@
-# The Pokétch Company (plan 06 · R14b). docs/scripts.md describes the language; the lines are our own, on the
+# The Pokétch Company (plan 06 · R14b; its three floors are on the original's plans since plan 01 · M11's last session,
+# the president before his counter on the ground floor). docs/scripts.md describes the language; the lines are our own, on the
 # original's beats (scripts_poketch_co_1f.s): the president hands out a new app for the first Gym Badge, the third,
 # the fifth and the seventh, one at a time and in that order, and after the last talks of the Poké Radar's ideas.
 

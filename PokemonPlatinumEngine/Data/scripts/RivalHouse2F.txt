@@ -12,8 +12,11 @@ script OnEnter
   music "common/rival"
   say "{player}! What are you doing in here? We're going to see Professor Rowan, remember?"
   say "I'll be waiting on the road north of town. Don't be late, or it's a ten-million fine!"
-  walk player right 1
-  walk rival left 4 up 1 fast
+  # The player steps clear of the stairs' head, and he runs round to them (the original's two movements; the room is
+  # on the original's plan since plan 01 · M11)
+  walk player down 1
+  face player up
+  walk rival left 4 up 1 left 2 fast
   hide rival
   sound "stairs"
   setflag FLAG_HIDE_TWINLEAF_TOWN_RIVAL_HOUSE_2F_RIVAL

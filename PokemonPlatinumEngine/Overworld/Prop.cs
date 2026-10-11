@@ -218,6 +218,8 @@ public enum PropType
     /// wall's own row like a painting. Past the decorations: it blocks nothing, and the floor before it is walked.
     /// </summary>
     WallShelf,
+    /// <summary>A blackboard on a room's back wall (plan 01 · M11, the last rooms: the Trainers' School), on the wall's own row like a painting.</summary>
+    Blackboard,
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>

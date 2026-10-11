@@ -22,7 +22,8 @@ public class SaveData
 
     /// <summary>
     /// The <see cref="WorldVersion"/> from which the rooms of the first chapters are laid out on the original's plans
-    /// (plan 01 · M11, the last rooms: the Pokémon Centers' ground floors and the Poké Marts). A save from before stood
+    /// (plan 01 · M11, the last rooms: the Pokémon Centers' ground floors, the Poké Marts, the Trainers' School, the
+    /// Pokétch Company and Jubilife TV's lobby). A save from before stood
     /// on the tiles of the hand-made rooms: <see cref="PlaceOn"/> moves it.
     /// </summary>
     public const int RebuiltRooms = 3;
@@ -196,6 +197,8 @@ public class SaveData
             "FightAreaPokemonCenter", "SurvivalAreaPokemonCenter", "ResortAreaPokemonCenter",
             "PokeMart", "JubilifePokeMart", "OreburghPokeMart", "FloaromaPokeMart", "EternaPokeMart", "HearthomePokeMart", "SolaceonPokeMart",
             "PastoriaPokeMart", "CanalavePokeMart", "SnowpointPokeMart", "SunyshorePokeMart", "FightAreaPokeMart", "SurvivalAreaPokeMart",
+            "TrainersSchool", "PoketchCompany", "JubilifeTV1F",
+            "RivalHouse", "RivalHouse2F",
         }),
     };
 
