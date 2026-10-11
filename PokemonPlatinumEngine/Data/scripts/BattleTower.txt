@@ -1,0 +1,461 @@
+# The Battle Tower's lobby (plan 06 · R18a). docs/scripts.md describes the language; the lines are our own, on the
+# original's beats (scripts_battle_tower.s).
+#
+# Three booths stand along the back, each with a lift behind it: the middle one's attendant takes challenges of the
+# Single and Double Battle Rooms, the west one's of the Multi Battle Room, and the east one's would take the Wi-Fi
+# Battle Rooms', which aren't held (decision 06 · 7). A challenge is begun (tower begin), its Pokémon chosen and
+# checked, the team healed and the game saved, and the attendant leads the way into the lift.
+#
+# VAR_BATTLE_TOWER_LOBBY_LOAD_ACTION says how the player comes back into the lobby, as in the original: 1 with the
+# challenge over (won through or lost: the records are told, the print handed over, ribbons and trophies given),
+# 2 with it put down between two battles (it is saved here and taken up again when the player says so), 3 out of the
+# Battle Salon without a partner, and 255 while a challenge is under way, which is only ever found here by someone who
+# closed the game in the middle of one: that challenge is over, and its streak with it.
+#
+# Not here: the reporter who interviews whoever has a streak to talk about (plan 08), the Wi-Fi rooms and their two
+# machines, and a challenge beside a friend over a link (plan 07).
+
+
+script OnEnter
+  # Whoever led the way to a lift is back at her counter
+  place single_attendant 15 5 down
+  place multi_attendant 11 5 down
+  # BattleTower_OnTransition: someone waits beside the middle booth while a trophy is due
+  tower waiting
+  if result == 0 setflag FLAG_HIDE_BATTLE_TOWER_TEALA
+  if result != 0 clearflag FLAG_HIDE_BATTLE_TOWER_TEALA
+  if var VAR_BATTLE_TOWER_LOBBY_LOAD_ACTION == 1 goto Ended
+  if var VAR_BATTLE_TOWER_LOBBY_LOAD_ACTION == 2 goto PutDown
+  if var VAR_BATTLE_TOWER_LOBBY_LOAD_ACTION == 3 goto FromSalon
+  if var VAR_BATTLE_TOWER_LOBBY_LOAD_ACTION == 255 goto LeftOpen
+  end
+label Ended
+  call ChallengeEnded
+  end
+label PutDown
+  call Paused
+  end
+label FromSalon
+  call LeftSalon
+  end
+label LeftOpen
+  call WalkedOut
+  end
+
+
+# Every room of the Tower as nobody is in it: what the lobby sets before a challenge goes up.
+script Prepare
+  setflag FLAG_HIDE_BATTLE_TOWER_BATTLE_ROOM_OPPONENT
+  setflag FLAG_HIDE_MULTI_BATTLE_ROOM_OPPONENT_1
+  setflag FLAG_HIDE_MULTI_BATTLE_ROOM_OPPONENT_2
+  setflag FLAG_HIDE_BATTLE_TOWER_MULTI_PARTNER
+  setvar VAR_BATTLE_TOWER_LOBBY_LOAD_ACTION 255
+  return
+
+# BattleTower_ResetBattleTowerVars.
+script Reset
+  setvar VAR_BATTLE_TOWER_LOBBY_LOAD_ACTION 0
+  setvar VAR_BATTLE_TOWER_ELEVATOR_LOAD_ACTION 0
+  setvar VAR_BATTLE_TOWER_BATTLE_ROOM_LOAD_ACTION 0
+  setvar VAR_BATTLE_TOWER_BATTLE_SALON_STATE 0
+  return
+
+
+# The middle booth: the Single and Double Battle Rooms (BattleTower_SingleAttendant).
+script SingleAttendant
+  if var VAR_BATTLE_TOWER_LOBBY_LOAD_ACTION == 2 goto Waiting
+  tower end
+  say "Welcome to the Battle Tower! This counter is for the Single and Double Battle Rooms."
+  choose "Would you like to take a Battle Room challenge?" "CHALLENGE" "INFO" "EXIT"
+  if result == 1 goto Info
+  if result == 2 goto Bye
+  choose "Which Battle Room will it be?" "SINGLE BATTLE" "DOUBLE BATTLE" "CANCEL"
+  if result == 0 goto Single
+  if result == 1 goto Double
+  goto Bye
+label Waiting
+  call Paused
+  end
+label Info
+  say "In a Battle Room you meet seven trainers, one after another. Beat all seven and you earn Battle Points."
+  say "A Single Battle takes three Pokémon and a Double Battle four. Any above Lv. 50 are brought down to it for the battles."
+  say "No two may be of one species, no two may hold the same item, and nothing from the Bag may be used."
+  say "Win set after set and your streak grows. Lose once, and it starts again from nothing."
+  end
+label Single
+  tower begin single
+  goto Check
+label Double
+  tower begin double
+label Check
+  tower enough
+  if result == 1 goto Choose
+  call TooFew
+  tower end
+  end
+label Choose
+  say "Please choose the Pokémon you will enter."
+  tower choose
+  if result == 0 goto Withdraw
+  tower check
+  if result == 1 goto SameSpecies
+  if result == 2 goto SameItem
+  setvar VAR_BATTLE_TOWER_ELEVATOR_LOAD_ACTION 1
+  setvar VAR_BATTLE_TOWER_BATTLE_ROOM_LOAD_ACTION 1
+  call GoUp
+  tower active
+  if result == 0 end
+  # BattleTower_EnterBattleRoomAnimation: the attendant leads the way to the lift behind the booth
+  walk self up 2
+  walk player up 2
+  sound "door_slide"
+  hide self
+  walk player up 1
+  warp "BattleTowerElevator" 3 6 up
+  end
+label SameSpecies
+  say "I'm sorry. The Pokémon entered must all be of different species."
+  goto Withdraw
+label SameItem
+  say "I'm sorry. No two of the Pokémon entered may hold the same item."
+label Withdraw
+  tower end
+label Bye
+  say "We hope to see you again."
+  end
+
+
+# Too few of the team may take part (MessageSeenBanlistSpecies): how many are needed, and who is never let in.
+script TooFew
+  say "I'm sorry. You need {number} Pokémon that can take part, all of different species and holding different items."
+  say "An Egg can't take part, and nor can {banned}."
+  return
+
+
+# The team is healed and the game saved, and the set's trainers are drawn
+# (BattleTower_HealAndSaveBeforeEnteringBattleRoom). A challenge the game isn't saved for is let go of.
+script GoUp
+  heal
+  ask "Your game must be saved before you go up. Shall I save it?"
+  if no goto NoSave
+  call Prepare
+  frontier save
+  text "{player} saved the game."
+  tower enter
+  say "Thank you. Let me show you the way."
+  return
+label NoSave
+  tower end
+  say "Then please come back when you are ready."
+  return
+
+
+# The west booth: the Multi Battle Room, beside one of the trainers waiting in the Battle Salon
+# (BattleTower_MultiAttendant). The original also asks whether a friend is to be linked up with.
+script MultiAttendant
+  if var VAR_BATTLE_TOWER_LOBBY_LOAD_ACTION == 2 goto Waiting
+  tower end
+  say "Welcome! This counter is for the Multi Battle Room, where two trainers battle side by side."
+  choose "Would you like to take a Multi Battle Room challenge?" "CHALLENGE" "INFO" "EXIT"
+  if result == 1 goto Info
+  if result == 2 goto Bye
+  tower enough 2
+  if result == 1 goto Choose
+  call TooFew
+  end
+label Waiting
+  call Paused
+  end
+label Info
+  say "In the Multi Battle Room you and a partner each bring two Pokémon, and meet seven pairs of trainers."
+  say "You find your partner in the Battle Salon downstairs: trainers you have travelled with wait there for someone to team up with."
+  say "The rules are the Battle Rooms' own: different species, different items, and nothing from the Bag."
+  end
+label Choose
+  tower begin multi
+  say "Please choose the two Pokémon you will enter."
+  tower choose
+  if result == 0 goto Withdraw
+  tower check
+  if result == 1 goto SameSpecies
+  if result == 2 goto SameItem
+  setvar VAR_BATTLE_TOWER_ELEVATOR_LOAD_ACTION 3
+  setvar VAR_BATTLE_TOWER_BATTLE_ROOM_LOAD_ACTION 1
+  setvar VAR_BATTLE_TOWER_BATTLE_SALON_STATE 1
+  call GoUp
+  tower active
+  if result == 0 end
+  walk self up 2
+  walk player up 2
+  sound "door_slide"
+  hide self
+  walk player up 1
+  warp "BattleTowerElevator" 3 6 up
+  end
+label SameSpecies
+  say "I'm sorry. The two Pokémon entered must be of different species."
+  goto Withdraw
+label SameItem
+  say "I'm sorry. The two Pokémon entered may not hold the same item."
+label Withdraw
+  tower end
+label Bye
+  say "We hope to see you again."
+  end
+
+
+# The east booth: the Wi-Fi Battle Rooms, which need other players and aren't held.
+script WifiAttendant
+  say "This counter is for the Wi-Fi Battle Rooms, where teams sent in from all over the world are battled."
+  say "I'm sorry to say the rooms are closed. Nothing is coming in over the air."
+  end
+
+
+# Back from a challenge (BattleTower_OnFrame_ChallengeEnded): the attendant says how it went, hands over what was
+# won and saves the game.
+script ChallengeEnded
+  call Reset
+  tower active
+  if result == 0 end
+  speaker "Attendant"
+  tower sevens
+  if result == 1 goto Cleared
+  say "Thank you for taking the challenge."
+  tower ribbon streak
+  if result == 1 call StreakRibbons
+  call Record
+  tower mode
+  if result == 0 call Trophy
+  goto Close
+label Cleared
+  tower mode
+  if result == 0 goto Single
+  say "Congratulations! You have beaten all seven trainers!"
+  tower ribbon streak
+  if result == 1 call StreakRibbons
+  call Record
+  goto Close
+label Single
+  tower beaten
+  if result == 0 goto Seven
+  frontier print tower
+  if result == 1 call SilverPrint
+  if result == 2 call GoldPrint
+  tower ribbon palmer
+  if result == 0 goto Saved
+  say "And for beating the Tower Tycoon, the Pokémon you entered are awarded a ribbon."
+  fanfare item
+  goto Saved
+label Seven
+  say "Congratulations! You have beaten all seven trainers!"
+label Saved
+  call Record
+  call Trophy
+label Close
+  tower end
+  speaker "Attendant"
+  say "We hope to see you again."
+  end
+
+script StreakRibbons
+  say "A streak of fifty! The Pokémon you entered are awarded a ribbon for it."
+  fanfare item
+  return
+
+script SilverPrint
+  say "You have beaten the Tower Tycoon! This calls for something to remember it by."
+  text "A Silver Print was added to {player}'s record of the Battle Tower!"
+  fanfare keyitem
+  return
+
+script GoldPrint
+  say "You have beaten the Tower Tycoon at his very best! There is no higher honour here."
+  text "A Gold Print was added to {player}'s record of the Battle Tower!"
+  fanfare keyitem
+  return
+
+script Record
+  text "The result is being recorded. {player} saved the game."
+  frontier save
+  return
+
+
+# A trophy for the Single Battle Room's record: bronze at 20, silver at 50, gold at 100, sent to the Secret Base's PC
+# (BattleTower_TryGiveTrophy).
+script Trophy
+  tower trophy
+  if result == 0 return
+  speaker "Teala"
+  if result == 4 goto NoRoom
+  say "A streak of {number} in the Single Battle Room! That deserves a trophy."
+  text "The {thing} was sent to the PC in {player}'s Secret Base."
+  fanfare item
+  return
+label NoRoom
+  say "You have earned a trophy, but the PC in your Secret Base has no room for it. Please make some room and come to see me."
+  return
+
+script Teala
+  call Trophy
+  if result != 0 end
+  say "I look after the Tower's trophies. Keep winning in the Single Battle Room and one will be yours."
+  end
+
+
+# A challenge put down between two battles (BattleTower_OnFrame_ResumeChallenge): the game is saved with it, and it
+# is taken up again when the player says so. Whoever has changed the Pokémon entered in the meantime has ended it.
+script Paused
+  speaker "Attendant"
+  tower paused
+  if result == 0 goto Nothing
+  text "{player} saved the game."
+  frontier save
+  ask "Your challenge is waiting where you put it down. Would you like to go on with it now?"
+  if no goto Later
+  tower resume
+  if result == 0 goto Over
+  call Prepare
+  setvar VAR_BATTLE_TOWER_BATTLE_ROOM_LOAD_ACTION 2
+  setvar VAR_BATTLE_TOWER_ELEVATOR_LOAD_ACTION 1
+  tower mode
+  if result == 2 setvar VAR_BATTLE_TOWER_ELEVATOR_LOAD_ACTION 2
+  say "Then let me show you the way."
+  warp "BattleTowerElevator" 3 6 up
+  end
+label Later
+  say "Very well. Speak to me whenever you are ready."
+  end
+label Over
+  call Reset
+  say "I'm sorry. The Pokémon you entered are no longer as they were, so the challenge can't go on. It ends here."
+  end
+label Nothing
+  call Reset
+  end
+
+
+# Out of the Battle Salon with no partner (BattleTower_OnFrame_QuitBattleSalon).
+script LeftSalon
+  call Reset
+  tower end
+  speaker "Attendant"
+  say "We hope to see you again."
+  end
+
+
+# The game was closed in the middle of a challenge (BattleTower_OnFrame_DidntSaveBeforeQuit).
+script WalkedOut
+  call Reset
+  speaker "Attendant"
+  say "The last challenge was left before it was over, so it can't be taken up again."
+  say "I'm afraid its streak ends there."
+  tower forfeit
+  say "We hope to see you again."
+  end
+
+
+# The machine beside the west booth: the Tower's records (FrontierRecords_BattleTower).
+script RecordsMachine
+  sound "select"
+  frontier records tower
+  end
+
+# The two beside the east booth show the Wi-Fi rooms' results and leaders (BattleTower_NoDataYet).
+script WifiMachine
+  text "A screen for the Wi-Fi Battle Rooms' results. There is no data yet."
+  end
+
+
+# The judge of a Pokémon's potential (BattleTower_StatsJudge).
+script StatsJudge
+  if flag FLAG_TALKED_TO_STATS_JUDGE goto Again
+  say "I have spent a lifetime looking at Pokémon, and I can tell at a glance what one is capable of."
+  say "Show me one of yours, and I'll tell you what I see in it."
+  setflag FLAG_TALKED_TO_STATS_JUDGE
+  goto Choose
+label Again
+  say "Ah, it's you. Shall I judge one of your Pokémon?"
+label Choose
+  choosepokemon
+  if result == 255 goto Cancel
+  frontier judge
+  if result == 0 goto Cancel
+  if result == 3 goto Egg
+  # The four ranks of the whole (to 90, to 120, to 150, beyond) and of the best stat (to 15, to 25, to 30, 31)
+  frontier judged total
+  if result <= 90 goto Plain
+  if result <= 120 goto Better
+  if result <= 150 goto Fine
+  say "Taken all together, {wearer} is as gifted a Pokémon as I have ever been shown."
+  goto Best
+label Plain
+  say "Taken all together, {wearer} is nothing out of the ordinary. There is no shame in that."
+  goto Best
+label Better
+  say "Taken all together, {wearer} has rather more in it than most."
+  goto Best
+label Fine
+  say "Taken all together, {wearer} has a great deal in it. You have a fine one there."
+label Best
+  say "What it has most of is {thing}."
+  frontier judged best
+  if result <= 15 goto Fair
+  if result <= 25 goto Good
+  if result <= 30 goto Splendid
+  say "And there it leaves nothing to wish for. I have never seen better."
+  end
+label Fair
+  say "Though even there it is only fair."
+  end
+label Good
+  say "And there it is strong."
+  end
+label Splendid
+  say "And there it is splendid."
+  end
+label Egg
+  say "An Egg? I can't judge what hasn't hatched yet."
+  end
+label Cancel
+  say "Another time, then."
+  end
+
+
+# The lobby's people.
+script Artist
+  say "You have the look of someone strong. I'd like to paint that look, if it would only hold still."
+  end
+
+script Jogger
+  say "The Battle Tower is full of surprises. I never know who will walk into the room next!"
+  end
+
+script Idol
+  say "If I keep on winning here, they'll put my profile on television. So I keep on trying!"
+  end
+
+script RichBoy
+  say "I raised this little fellow myself, from the day it hatched. Nobody in that tower frightens us."
+  end
+
+script Pikachu1
+  cry "Pikachu"
+  text "Pikachu: Pika... chu..."
+  end
+
+script Pikachu2
+  cry "Pikachu"
+  text "Pikachu: Pika pichuu!"
+  end
+
+script SchoolKid1
+  say "There are so many tough trainers here. I come to watch, and to learn."
+  end
+
+script SchoolKid2
+  say "Seven battles in a row, and the Pokémon are healed between them. It's the trainer who gets tired!"
+  end
+
+script ParasolLady
+  say "I used to live in Hoenn. There was a Battle Tower there too, you know. It brings back memories."
+  end

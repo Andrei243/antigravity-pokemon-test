@@ -43,7 +43,7 @@ public static class DailyEvents
     /// number moves on once for each.
     /// </summary>
     public static void DaysPass(int days, StoryState story, SpecialEncounters encounters, string? place, Random chance,
-        Underground.UndergroundState? underground = null)
+        Underground.UndergroundState? underground = null, Frontier.FrontierRecords? frontier = null)
     {
         if (days <= 0) return;
         // Underground_HandleDailyEvents comes first: the buried Spheres grow, the day's number of the tunnels moves on
@@ -56,6 +56,8 @@ public static class DailyEvents
         // SystemVars_UpdateVillaVisitor: the Villa's visitor of the day (plan 06 · R16b)
         VillaRules.NewDay(story, place, chance);
         ReturnHiddenItems(story, place, chance);
+        // sub_0206C008, the last of the day's events: the Battle Tower's draws start from the day's number (plan 06 · R18a)
+        frontier?.NewDay(encounters.DailyNumber);
     }
 
     /// <summary>

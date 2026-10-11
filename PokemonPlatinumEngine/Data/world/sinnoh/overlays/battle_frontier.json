@@ -10,11 +10,16 @@
     { "warp": 10, "to": "fight_area", "toWarp": 2 },
     { "warp": 11, "to": "fight_area", "toWarp": 3 }
   ],
-  // The five facilities stand shut until their insides are built (plan 06 · R18): the Battle Tower's two doors
-  // (0, 1), the Battle Factory's (2, 3, and 12 inside its porch), the Battle Hall's (4, 5, 13), the Battle Castle's
-  // (6, 7, 15) and the Battle Arcade's (8, 9, 14). The four triggers before the inner doors, which walk the player in
-  // (the original's scripts 34 to 37), are theirs too
-  "locked": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 13, 14, 15 ],
+  // The Battle Tower's two doors lead into its lobby, built to the original's plan (plan 06 · R18a)
+  "doors": [
+    { "warp": 0, "map": "BattleTower", "x": 15, "y": 19, "facing": "Up" },
+    { "warp": 1, "map": "BattleTower", "x": 15, "y": 19, "facing": "Up" }
+  ],
+  // The four halls stand shut until their insides are built (plan 06 · R18b to R18d): the Battle Factory's doors
+  // (2, 3, and 12 inside its porch), the Battle Hall's (4, 5, 13), the Battle Castle's (6, 7, 15) and the Battle
+  // Arcade's (8, 9, 14). The four triggers before the inner doors, which walk the player in (the original's scripts
+  // 34 to 37), are theirs too
+  "locked": [ 2, 3, 4, 5, 6, 7, 8, 9, 12, 13, 14, 15 ],
   // The reporter who interviews whoever has a streak to talk about (hidden by FLAG_HIDE_BATTLE_FRONTIER_REPORTER,
   // moved about by the place's own arrival script) waits for the television programmes (plan 08)
   "people": {
@@ -162,10 +167,10 @@
       "npcType": "Youngster",
       "dialog": [ "Life goes up and life goes down. I've got my rubber ring, so I just bob along on top." ]
     },
-    // The Exchange Service Corner's two booths trade Battle Points for prizes, and the third sells scratch-off cards
-    // for them: all three open with the Battle Points (plan 06 · R18, part a). Until then they say so
-    "attendant_southwest": { "name": "Attendant", "npcType": "Clerk", "script": "ExchangeCorner", "still": true },
-    "attendant_southeast": { "name": "Attendant", "npcType": "Clerk", "script": "ExchangeCorner", "still": true },
+    // The Exchange Service Corner's two booths trade Battle Points for prizes (plan 06 · R18a): the west one vitamins
+    // and things to hold, the east one Technical Machines. The third sells scratch-off cards, which aren't in yet
+    "attendant_southwest": { "name": "Attendant", "npcType": "Clerk", "script": "ExchangeItems", "still": true },
+    "attendant_southeast": { "name": "Attendant", "npcType": "Clerk", "script": "ExchangeMachines", "still": true },
     "attendant_northwest": { "name": "Attendant", "npcType": "Clerk", "script": "ScratchCards", "still": true }
   },
   "signs": {

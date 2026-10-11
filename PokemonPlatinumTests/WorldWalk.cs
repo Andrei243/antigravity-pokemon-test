@@ -65,6 +65,16 @@ internal static class WorldWalk
         {
             var (map, x, y, mode, height, arrived) = queue.Dequeue();
 
+            // Arriving somewhere runs the place's own script, and wherever that carries the player on is a way there
+            // too (plan 06 · R18a: the Battle Tower's lift leads to its corridors and its Battle Salon by its arrival
+            // script alone)
+            if (arrived)
+                foreach (var sent in WarpsOf("OnEnter", map.ScriptFileAt(x, y)))
+                {
+                    var onto = mapOf(sent.Name);
+                    Visit(onto, sent.X, sent.Y, TravelMode.OnFoot, onto.HeightAt(sent.X, sent.Y), arrived: true);
+                }
+
             // Stepping onto a warp takes it; one is only ever stood on by arriving through another
             if (!arrived && map.WarpsAt(x, y).Any())
             {

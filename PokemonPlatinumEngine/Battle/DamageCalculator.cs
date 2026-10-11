@@ -164,8 +164,9 @@ public static class DamageCalculator
         if (typed && myHold != null && HeldItemEffects.TypeBoostedBy(myHold) == type) power = power * (100 + myParam) / 100;
         if (physical && myHold == "ChoiceAtk") attack = attack * 150 / 100;
         if (!physical && myHold == "ChoiceSpatk") attack = attack * 150 / 100;
-        if (!physical && myHold == "LatiSpecial" && mySpecies is "Latios" or "Latias") attack = attack * 150 / 100;
-        if (!physical && theirHold == "LatiSpecial" && theirSpecies is "Latios" or "Latias") defense = defense * 150 / 100;
+        bool frontier = field?.Frontier ?? false;
+        if (!physical && myHold == "LatiSpecial" && !frontier && mySpecies is "Latios" or "Latias") attack = attack * 150 / 100;
+        if (!physical && theirHold == "LatiSpecial" && !frontier && theirSpecies is "Latios" or "Latias") defense = defense * 150 / 100;
         if (!physical && myHold == "ClamperlSpatk" && mySpecies == "Clamperl") attack *= 2;
         if (!physical && theirHold == "ClamperlSpdef" && theirSpecies == "Clamperl") defense *= 2;
         if (myHold == "PikaSpatkUp" && mySpecies == "Pikachu") power *= 2;

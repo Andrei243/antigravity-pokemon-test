@@ -306,6 +306,9 @@ public sealed partial class BattleCore
     private static Move? MoveForPp(Pokemon p, int index) =>
         index >= 0 && index < p.Moves.Count ? p.Moves[index] : p.Moves.FirstOrDefault(m => m.CurrentPP < m.MaxPP);
 
+    /// <summary>What a battle of the Battle Frontier says of the Bag (plan 06 · R18a): nothing comes out of it there.</summary>
+    public const string FrontierBagRefusal = "Nothing from the Bag may be used here.";
+
     /// <summary>
     /// Why an item from the bag can't be used now; null when it can (<c>BattleSystem_CheckItemUsability</c> and the
     /// bag's own ABLE and NOT ABLE): a Ball in a trainer battle or at two foes, an item the battle doesn't know,
@@ -316,6 +319,8 @@ public sealed partial class BattleCore
     {
         var item = ItemDatabase.Get(choice.Item ?? "");
         if (item == null) return $"There is no item called {choice.Item}.";
+        // PLAYER_INPUT_ITEM in the Battle Frontier
+        if (Frontier) return FrontierBagRefusal;
         // The Great Marsh and Pal Park have their own balls and nothing else
         if (Kind is BattleKind.Safari or BattleKind.PalPark)
             return item.Name != "Safari Ball" ? "Only the balls you were given can be used here." : SpecialBalls <= 0 ? "You have no balls left!" : null;

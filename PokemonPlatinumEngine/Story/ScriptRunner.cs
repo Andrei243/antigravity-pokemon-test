@@ -739,6 +739,14 @@ public sealed partial class ScriptRunner
                 PalPark(i);
                 break;
 
+            // The Battle Frontier's frame and the Battle Tower (plan 06 · R18a)
+            case Op.Frontier:
+                Frontier(i);
+                break;
+            case Op.Tower:
+                Tower(i);
+                break;
+
             default:
                 throw Wrong(i, $"the runner doesn't know how to carry out '{i.Op}'");
         }
@@ -1377,6 +1385,14 @@ public sealed partial class ScriptRunner
             "price" => lastPrice.ToString("N0"),
             "number" => lastNumber.ToString("N0"),
             "digger" => host.DiggerName,
+            // The Battle Frontier and the Battle Tower (plan 06 · R18a): the Battle Points held, who is about to be met, the
+            // banned species seen, what a partner of the Battle Salon tells of, and who battles beside the player
+            "points" => host.Frontier.BattlePoints.ToString("N0"),
+            "foe" => lastFoe,
+            "banned" => lastBanned.Length > 0 ? lastBanned : "certain rare Pokémon",
+            "ally" when argument is "0" or "1" => allies[argument[0] - '0'],
+            "allymove" when argument is "0" or "1" => allyMoves[argument[0] - '0'],
+            "partner" => host.Tower?.Partner is { } beside ? Models.Frontier.BattleTowerChallenge.PartnerNames[beside.Id] : "",
             "contestant" => contestSlot >= 0 && contestSlot < host.Party.Count ? host.Party.Members[contestSlot].DisplayName : host.ContestOutcome?.Pokemon ?? "",
             _ => match.Value
         };

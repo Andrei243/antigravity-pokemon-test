@@ -201,6 +201,12 @@ public partial class BattleEngine
                 HUD.MoveMenuIndex = Math.Clamp(lastMove.GetValueOrDefault(MenuBattler.Pokemon!), 0, Math.Max(0, MenuBattler.Pokemon!.Moves.Count - 1));
                 break;
             case 1:
+                // The Battle Frontier lets nothing out of the Bag, and says so at once (PLAYER_INPUT_ITEM)
+                if (IsFrontier)
+                {
+                    Refuse(BattleCore.FrontierBagRefusal, BattleMenuState.Main);
+                    return;
+                }
                 HUD.MenuState = BattleMenuState.SelectBagPocket;
                 break;
             case 2:
@@ -408,6 +414,12 @@ public partial class BattleEngine
 
     private void AttemptRun()
     {
+        // In the Battle Frontier RUN is a question: to give the match up, and lose it (COMMAND_SELECTION_RUN_SELECT_INIT)
+        if (IsFrontier)
+        {
+            AskToForfeit();
+            return;
+        }
         if (IsTrainerBattle)
         {
             QueueMessage("No! There's no running from a Trainer battle!", () => HUD.MenuState = BattleMenuState.Main);

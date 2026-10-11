@@ -454,6 +454,54 @@ own flags and variables (`FLAG_VILLA_FURNITURE_…`, `VAR_RESORT_VILLA_VISITOR`)
 | `palpark store` | Sends the six to the PC boxes, as Pokémon met at Pal Park. |
 | `palpark end` | Ends the show and keeps nothing of it: the six go on waiting in the park. |
 
+### The Battle Frontier and the Battle Tower
+
+Plan 06 · R18a; `docs/mechanics/rulings.md`, "The Battle Frontier's frame and the Battle Tower". `frontier` is what
+every facility shares (the records are the game's `FrontierRecords`, saved; the prints are the story's own
+`VAR_BATTLE_<FACILITY>_PRINT_STATE`), and `tower` a Battle Tower challenge, which lives between its scripts as
+`IScriptHost.Tower` and is never saved but when it is put down (`tower pause`).
+
+| Command | What it does |
+|---|---|
+| `frontier points` | `RESULT` is the Battle Points held. `{points}` in a line says them. |
+| `frontier give 3` | Adds Battle Points (9,999 at most): `RESULT` is what is held afterwards. |
+| `frontier prize items`, `frontier prize machines` | Asks which of a booth's prizes at the Exchange Service Corner, with the points shown: `RESULT` 1, or 0 for none. `{item}`, `{price}` in Battle Points, and `{thing}` the move a TM holds. |
+| `frontier buy` | Trades Battle Points for the prize chosen: `RESULT` 1, or 0 with too few. |
+| `frontier records tower` | Opens a facility's board of records (`tower`, `factory`, `hall`, `castle`, `arcade`) and waits until it is closed. |
+| `frontier print tower` | Hands over the commemorative print that waits at a facility: `RESULT` 0 for none, 1 the silver one, 2 the gold one. The fifth gold print sets `FLAG_OBTAINED_ALL_BATTLE_FRONTIER_GOLD_PRINTS`. |
+| `frontier judge` | Reads the potential of the Pokémon `RESULT` names (after `choosepokemon`): `RESULT` 0 with none chosen, 3 for an Egg, else 1; `{wearer}` names it and `{thing}` its best stat. |
+| `frontier judged total`, `frontier judged best` | `RESULT` is the six IVs added up, or the highest of them. |
+| `frontier save` | Saves the game where the player stands, as a counter does before a challenge goes up. |
+| `tower begin single` | Starts a challenge (`single`, `double`, `multi`): a streak still running in that mode is taken up. |
+| `tower enough`, `tower enough 2` | `RESULT` 1 when the team holds enough Pokémon that could go in together (the challenge's own number, or the one given). `{number}` is how many are needed and `{banned}` the banned species the Pokédex has seen. |
+| `tower choose` | Opens the team for the challenge's Pokémon to be entered: `RESULT` 1, or 0 when backed out of. |
+| `tower check` | `RESULT` 0 when those entered may go in together, 1 for two of a species, 2 for two holding the same item. |
+| `tower enter` | Takes the Tower's generator up and draws the set's trainers. |
+| `tower active`, `tower mode` | `RESULT` 1 while a challenge is under way; its mode (0 single, 1 double, 2 multi; -1 with none). |
+| `tower next` | `RESULT` and `{number}` are the number of the trainer to come, from 1. |
+| `tower opponent` | Makes the next trainer's team (or the next two trainers') and has whoever stands as `opponent` and `opponent_2` in the room take their looks. `{foe}` names them. |
+| `tower battle` | The battle, with the Pokémon entered as the Frontier's rules have them: `RESULT` 1 won, 0 lost. A battle lost doesn't end the script. |
+| `tower won` | Counts the win: `RESULT` 1 once seven are beaten. `tower sevens` asks that again. |
+| `tower streak` | `RESULT` and `{number}` are the streak as it stands. |
+| `tower palmer` | Who comes next: `RESULT` 0, or 1 for the Tower Tycoon with the silver print at stake, 2 with the gold. |
+| `tower brain` | Counts a Frontier Brain met. |
+| `tower beat silver`, `tower beat gold` | Notes the Tower Tycoon beaten in this challenge and moves the print's variable on. `tower beaten` asks it back (0, 1, 2). |
+| `tower finish won`, `tower finish lost` | Writes the records: the streak, the room and the Trainer Card's score for seven won, the streak's end for a loss or a challenge given up. |
+| `tower points` | Hands over the Battle Points earned, with the points shown: `RESULT` and `{number}`. |
+| `tower pause` | Puts the challenge down where it stands. `tower paused` is 1 while one waits. |
+| `tower resume` | Takes it up again: `RESULT` 0 when none waits or its Pokémon are no longer as they were, which ends it. |
+| `tower forfeit` | Ends a challenge that was walked out on, and its streak. |
+| `tower end` | Lets go of the challenge. |
+| `tower ribbon palmer`, `tower ribbon streak` | Gives the Pokémon entered the ribbon due: `RESULT` 1 when any was given. |
+| `tower trophy` | Sends the trophy due to the secret base's PC: `RESULT` 0 for none, 1 to 3 as given (`{thing}`, and `{number}` the streak it is for), 4 with no room. `tower waiting` says whether one is due. |
+| `tower salon` | Lets into the Battle Salon whoever the story has had the player meet (clears their hiding flags). |
+| `tower partners` | Gives the Battle Salon's five their teams for this challenge. |
+| `tower tells 2` | Fills `{ally:0}`, `{allymove:0}`, `{ally:1}` and `{allymove:1}` with what a partner brings (0 Cheryl, 1 Mira, 2 Riley, 3 Marley, 4 Buck). |
+| `tower partner 2` | Chooses that partner. `tower partnered` is who was chosen (-1 for nobody), and has whoever stands as `partner` in the room take their look. |
+| `tower door` | `RESULT` 0 to 3: which of the corridor's four doors the attendant leads to. |
+
+`{partner}` names whoever battles beside the player, once chosen.
+
 ## Who is on the map
 
 A person can carry a flag that takes them off the map while it is set (`hiddenBy`) or one they wait for

@@ -1,15 +1,42 @@
 # The Battle Frontier's grounds (plan 01 · M10, part b). docs/scripts.md describes the language; the lines are our
 # own, on the original's beats (scripts_battle_frontier.s).
 #
-# The five facilities' doors are shut until their insides are built, and the Exchange Service Corner's three booths
-# wait for the Battle Points they deal in (plan 06 · R18): the attendants say so. The reporter whom the original's
-# arrival script moves about the grounds waits for the television programmes (plan 08).
+# The Battle Tower's doors are open (plan 06 · R18a) and the four halls' shut until their insides are built (R18b to
+# R18d). The Exchange Service Corner's two booths trade Battle Points for prizes; the third, the scratch-off cards',
+# waits for its cards. The reporter whom the original's arrival script moves about the grounds waits for the
+# television programmes (plan 08).
 
-# The two booths that trade Battle Points for prizes (the original's scripts 23 and 25: PokeMartFrontier).
-script ExchangeCorner
+# The two booths that trade Battle Points for prizes (the original's scripts 23 and 25: PokeMartFrontier): the west
+# one vitamins and things to hold, the east one Technical Machines. One prize to a visit: the question is asked and
+# the talk ends, where the original's counter stays open.
+script ExchangeItems
   face self player
   say "Welcome to the Exchange Service Corner, where Battle Points are traded for prizes!"
-  say "The prizes are still being unpacked, I'm afraid. Do come back once the halls have opened their doors."
+  frontier prize items
+  call ExchangeTrade
+  end
+
+script ExchangeMachines
+  face self player
+  say "Welcome to the Exchange Service Corner! This booth trades Battle Points for Technical Machines."
+  frontier prize machines
+  call ExchangeTrade
+  end
+
+# What follows a booth's question: the prize chosen is traded for, if the points are there.
+script ExchangeTrade
+  if result == 0 goto Bye
+  frontier buy
+  if result == 0 goto Short
+  sound "select"
+  text "{player} traded {price} BP for the {item}."
+  say "Thank you! We hope to see you again."
+  end
+label Short
+  say "I'm sorry. You don't have the Battle Points for that."
+  end
+label Bye
+  say "We hope to see you again."
   end
 
 
@@ -17,7 +44,7 @@ script ExchangeCorner
 script ScratchCards
   face self player
   say "Scratch-off cards! One Battle Point a card, and every card a chance at a prize."
-  say "...Or there will be, as soon as the cards come in. Try me again once the halls are open."
+  say "...Or there will be, as soon as the cards come in. Try me again another day."
   end
 
 

@@ -1,0 +1,125 @@
+{
+  "name": "BattleTowerMultiBattleRoom",
+  "displayName": "Multi Battle Room",
+  "bgmTrack": "sinnoh/veilstone",
+  "interior": "Museum",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "width": 16,
+  "height": 11,
+  "ground": [
+    "################",
+    "################",
+    "################",
+    "###__________###",
+    "###__________###",
+    "#______________#",
+    "#______________#",
+    "#______________#",
+    "###__________###",
+    "###__________###",
+    "################"
+  ],
+  "solid": [
+    "################",
+    "################",
+    "#######..#######",
+    "###..........###",
+    "###..........###",
+    "#..............#",
+    "#..............#",
+    "#..............#",
+    "###..........###",
+    "###..........###",
+    "################"
+  ],
+  "props": [
+    {
+      "type": "Rug",
+      "x": 7,
+      "y": 9,
+      "width": 2,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 7,
+      "sourceY": 2,
+      "targetMap": "BattleTower",
+      "targetX": 11,
+      "targetY": 6,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 8,
+      "sourceY": 2,
+      "targetMap": "BattleTower",
+      "targetX": 11,
+      "targetY": 6,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "attendant_north",
+      "name": "Attendant",
+      "npcType": "Lady",
+      "x": 2,
+      "y": 5,
+      "facing": "Right",
+      "dialog": [
+        "The next challengers will be along shortly."
+      ]
+    },
+    {
+      "id": "attendant_south",
+      "name": "Attendant",
+      "npcType": "Lady",
+      "x": 2,
+      "y": 6,
+      "facing": "Right",
+      "dialog": [
+        "The next challengers will be along shortly."
+      ]
+    },
+    {
+      "id": "partner",
+      "name": "Partner",
+      "npcType": "Lass",
+      "x": 8,
+      "y": 9,
+      "facing": "Up",
+      "dialog": [
+        "Let's do our best."
+      ],
+      "hiddenBy": "FLAG_HIDE_BATTLE_TOWER_MULTI_PARTNER"
+    },
+    {
+      "id": "opponent_2",
+      "name": "Trainer",
+      "npcType": "Youngster",
+      "x": 7,
+      "y": 3,
+      "facing": "Down",
+      "dialog": [
+        "..."
+      ],
+      "hiddenBy": "FLAG_HIDE_MULTI_BATTLE_ROOM_OPPONENT_2"
+    },
+    {
+      "id": "opponent",
+      "name": "Trainer",
+      "npcType": "Youngster",
+      "x": 8,
+      "y": 3,
+      "facing": "Down",
+      "dialog": [
+        "..."
+      ],
+      "hiddenBy": "FLAG_HIDE_MULTI_BATTLE_ROOM_OPPONENT_1"
+    }
+  ],
+  "wildEncounters": []
+}

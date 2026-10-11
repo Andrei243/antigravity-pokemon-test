@@ -1,0 +1,22 @@
+# The corridor of the Battle Tower's Multi Battle Room (plan 06 · R18a). docs/scripts.md describes the language;
+# scripts_battle_tower_corridor_multi.s and frontier_scripts_battle_tower_corridor_multi.s are the original.
+#
+# The player comes out of the west lift and the partner chosen in the Battle Salon out of the east one; they meet
+# before the middle doors and go in side by side. Anyone else finds an empty corridor and the lifts back down.
+
+
+script OnEnter
+  tower active
+  if result == 0 end
+  tower partnered
+  if result < 0 end
+  clearflag FLAG_HIDE_BATTLE_TOWER_MULTI_PARTNER
+  show partner
+  place partner 14 3 down
+  move partner down 1 left 5 up 1
+  walk player down 1 right 5 up 1
+  waitmoves
+  sound "door_slide"
+  hide partner
+  warp "BattleTowerMultiBattleRoom" 7 9 up
+  end

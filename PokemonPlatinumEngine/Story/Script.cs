@@ -64,6 +64,8 @@ public enum Op
     Seen,
     // Fossils, the Game Corner, the Villa and Pal Park (plan 06 · R16b)
     Fossil, GameCorner, Villa, PalPark,
+    // The Battle Frontier's frame and the Battle Tower (plan 06 · R18a)
+    Frontier, Tower,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

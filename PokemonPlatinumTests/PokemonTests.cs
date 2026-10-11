@@ -214,6 +214,11 @@ public class PokemonTests
             .Where(w => w.TargetMap == mapName)
             .Select(w => (w.TargetX, w.TargetY))
             .ToList();
+        // A room no door leads into is come to by a script alone (the Battle Tower's corridors and its Battle Salon,
+        // where the lift's arrival script sets the player down, plan 06 · R18a): it is walked from there
+        if (arrivals.Count == 0)
+            arrivals = PokemonPlatinumEngine.Story.ScriptLibrary.Default.All.SelectMany(s => s.Everything())
+                .Where(i => i.Op == PokemonPlatinumEngine.Story.Op.Warp && i.Name == mapName).Select(i => (i.X, i.Y)).Distinct().ToList();
         Assert.NotEmpty(arrivals);
 
         // The Team Galactic building's upper floors are each cut in two on purpose, as the original's are: there every

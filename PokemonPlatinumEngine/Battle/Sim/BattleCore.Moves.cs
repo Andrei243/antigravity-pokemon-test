@@ -488,7 +488,7 @@ public sealed partial class BattleCore
     private bool Disobeys(Battler user, ref Move move, ref Battler? target)
     {
         var p = user.Pokemon!;
-        if (!user.IsPlayerSide || user.Trainer != null || Kind == BattleKind.CatchingLesson) return false;
+        if (!user.IsPlayerSide || user.Trainer != null || Kind == BattleKind.CatchingLesson || Frontier) return false;
         if (!Obedience.IsOutsider(p, Conditions.Player)) return false;
         if (Obedience.LevelCap(Conditions.Badges) is not { } cap || p.Level <= cap) return false;
         if (Obedience.Obeys(p.Level, cap, rng.Roll(RollKind.Obedience, 256))) return false;

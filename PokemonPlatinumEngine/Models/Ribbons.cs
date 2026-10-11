@@ -173,7 +173,10 @@ public static class RibbonRules
         RibbonKind.Effort => null,
         RibbonKind.Champion => ribbon == SinnohChamp ? null : "a Pokémon brought over from Hoenn",
         RibbonKind.Syndicate => "the Resort Area's Ribbon Syndicate",
-        RibbonKind.Tower => ribbon.StartsWith("RIBBON_HOENN_", StringComparison.Ordinal) ? "a Pokémon brought over from Hoenn" : "the Battle Tower",
+        // The Battle Tower gives its four (plan 06 · R18a); the two that take another player wait for one (plan 07)
+        RibbonKind.Tower => ribbon.StartsWith("RIBBON_HOENN_", StringComparison.Ordinal) ? "a Pokémon brought over from Hoenn"
+            : ribbon == "RIBBON_PAIR_ABILITY" ? "a friend to battle beside in the Battle Tower"
+            : ribbon == "RIBBON_WORLD_ABILITY" ? "the Battle Tower's battles with the world" : null,
         RibbonKind.HoennContest => "a Pokémon brought over from Hoenn",
         _ => "an event"
     };

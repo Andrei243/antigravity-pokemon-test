@@ -189,6 +189,9 @@ public static class RegionDatabase
                 // Villa, and Pal Park's lobby and grounds
                 "OreburghMiningMuseum", "VeilstoneGameCorner", "VeilstonePrizeExchange", "VeilstoneSoutheastHouse", "ResortAreaVilla",
                 "PalParkLobby", "PalPark",
+                // Plan 06 · R18a: the Battle Tower's lobby, lift, corridors, battle rooms and Battle Salon
+                "BattleTower", "BattleTowerElevator", "BattleTowerCorridor", "BattleTowerBattleRoom",
+                "BattleTowerCorridorMulti", "BattleTowerMultiBattleRoom", "BattleTowerBattleSalon",
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

@@ -9,6 +9,7 @@
   // beside whoever comes down for the first time (GameEngine.ArriveUnderground); until then his tile is the one
   // under Twinleaf Town
   "people": {
+    "goods_vendor_1": { "name": "Hiker", "script": "HikerGoods", "still": true, "at": [72, 104] },
     "goods_vendor_2": { "name": "Hiker", "script": "HikerGoods", "still": true, "at": [424, 87] },
     "goods_vendor_3": { "name": "Hiker", "script": "HikerGoods", "still": true, "at": [200, 185] },
     "goods_vendor_4": { "name": "Hiker", "script": "HikerGoods", "still": true, "at": [335, 264] },
@@ -16,6 +17,7 @@
     "goods_vendor_6": { "name": "Hiker", "script": "HikerGoods", "still": true, "at": [424, 439] },
     "goods_vendor_7": { "name": "Hiker", "script": "HikerGoods", "still": true, "at": [87, 456] },
     "goods_vendor_8": { "name": "Hiker", "script": "HikerGoods", "still": true, "at": [311, 358] },
+    "traps_vendor_1": { "name": "Hiker", "script": "HikerTraps", "still": true, "at": [232, 87] },
     "traps_vendor_2": { "name": "Hiker", "script": "HikerTraps", "still": true, "at": [328, 151] },
     "traps_vendor_3": { "name": "Hiker", "script": "HikerTraps", "still": true, "at": [232, 215] },
     "traps_vendor_4": { "name": "Hiker", "script": "HikerTraps", "still": true, "at": [232, 298] },
@@ -26,10 +28,10 @@
     "treasures_vendor_1": { "name": "Hiker", "script": "HikerTreasures", "still": true, "at": [40, 471] },
     "treasures_vendor_2": { "name": "Hiker", "script": "HikerTreasures", "still": true, "at": [471, 72] },
     "treasures_vendor_3": { "name": "Hiker", "script": "HikerTreasures", "still": true, "at": [471, 471] },
+    "treasures_vendor_4": { "name": "Hiker", "script": "HikerTreasures", "still": true, "at": [40, 72] },
     "roark": { "name": "Roark", "still": true, "at": [72, 439], "dialog": [ "Watch where you tread down here!" ] }
-  },
+  }
   // The tunnels are six systems that don't join. The north-west one lies under the sea round Fullmoon and Newmoon
-  // Islands, which aren't open yet (plan 01 · M10, part b): nobody can dig down into it, so its three hikers (the
-  // table's goods hiker at 72, 104, trap hiker at 232, 87 and treasure hiker at 40, 72) wait with the islands
-  "heldBack": [ "goods_vendor_1", "traps_vendor_1", "treasures_vendor_4" ]
+  // Islands: its three hikers (the table's goods hiker at 72, 104, trap hiker at 232, 87 and treasure hiker at
+  // 40, 72) waited until the islands were open (plan 01 · M10, part b) and stand with the rest since
 }

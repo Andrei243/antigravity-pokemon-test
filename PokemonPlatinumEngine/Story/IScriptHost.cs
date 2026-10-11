@@ -322,4 +322,33 @@ public interface IScriptHost
     /// shows without a battle, as Dialga and Palkia come at Spear Pillar.
     /// </summary>
     void Seen(PokemonSpecies species);
+
+    // ------------------------------------------------------------------ the Battle Frontier (plan 06 · R18a)
+
+    /// <summary>The Battle Frontier's records: every facility's numbers, the streaks running, the Battle Points.</summary>
+    Models.Frontier.FrontierRecords Frontier { get; }
+
+    /// <summary>The Battle Tower challenge under way; null while none is (the original's <c>fieldSystem->battleTower</c>).</summary>
+    Models.Frontier.BattleTowerChallenge? Tower { get; set; }
+
+    /// <summary>
+    /// What the Frontier's commands need of the game itself. <c>enter</c> opens the team for that many Pokémon to be
+    /// chosen in order (the script waits; <see cref="Answer"/> is 1 when they were, and <see cref="Entered"/> their
+    /// places); <c>records</c> opens the board of the facility of that number and waits; <c>seen</c> is 1 when the
+    /// Pokédex has seen the species of that number; <c>score</c> adds to the Trainer Card's score; <c>opponents</c>
+    /// stands whoever the Battle Tower has made ready in its battle room, and <c>partner</c> whoever battles beside the
+    /// player (the number is which of the five); <c>points</c> shows the Battle Points over the field until the script
+    /// ends; <c>save</c> saves the game where the player stands; <c>journal</c> notes a challenge begun.
+    /// </summary>
+    int FrontierAct(string what, int number, NPC? subject);
+
+    /// <summary>The places in the team of the Pokémon last chosen with <c>enter</c>, in the order chosen.</summary>
+    IReadOnlyList<int> Entered { get; }
+
+    /// <summary>
+    /// A battle of the Battle Frontier (<see cref="BattleSetup.Frontier"/>): the team is the battle's own copy, the
+    /// foes are trainers made for it, and nothing it does reaches the player's Pokémon, bag or money. Lost, the script
+    /// goes on. <see cref="Outcome"/> is how it went once the host is no longer busy.
+    /// </summary>
+    void FrontierBattle(Party team, IReadOnlyList<Trainer> foes, Trainer? partner, bool doubles);
 }

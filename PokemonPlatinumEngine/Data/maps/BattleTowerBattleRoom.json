@@ -1,0 +1,112 @@
+{
+  "name": "BattleTowerBattleRoom",
+  "displayName": "Battle Room",
+  "bgmTrack": "sinnoh/veilstone",
+  "interior": "Museum",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "width": 15,
+  "height": 12,
+  "ground": [
+    "###############",
+    "###############",
+    "###############",
+    "##___________##",
+    "##___________##",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "###############"
+  ],
+  "solid": [
+    "###############",
+    "###############",
+    "#######.#######",
+    "###.........###",
+    "###.........###",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.#.........#.#",
+    "#.#.........#.#",
+    "#.............#",
+    "###############"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Plant",
+      "x": 12,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Plant",
+      "x": 2,
+      "y": 8,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Plant",
+      "x": 12,
+      "y": 8,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Rug",
+      "x": 7,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 7,
+      "sourceY": 2,
+      "targetMap": "BattleTower",
+      "targetX": 15,
+      "targetY": 6,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "attendant",
+      "name": "Attendant",
+      "npcType": "Lady",
+      "x": 2,
+      "y": 6,
+      "facing": "Right",
+      "dialog": [
+        "The next challenger will be along shortly."
+      ]
+    },
+    {
+      "id": "opponent",
+      "name": "Trainer",
+      "npcType": "Youngster",
+      "x": 7,
+      "y": 3,
+      "facing": "Down",
+      "dialog": [
+        "..."
+      ],
+      "hiddenBy": "FLAG_HIDE_BATTLE_TOWER_BATTLE_ROOM_OPPONENT"
+    }
+  ],
+  "wildEncounters": []
+}

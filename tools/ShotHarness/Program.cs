@@ -26,6 +26,7 @@
 //   dotnet run --project tools/ShotHarness -- <output dir> underground        the Underground: the way down, a wall dug through, every trap, a Sphere buried, the hikers, the secret base and its decorating, a flag brought home
 //   dotnet run --project tools/ShotHarness -- <output dir> pillar             the ninth chapter: the climb through Mt. Coronet, Spear Pillar, the torn pillar, the Distortion World floor by floor, Giratina, Sendoff Spring
 //   dotnet run --project tools/ShotHarness -- <output dir> pastimes [part ...]  fossils, the Game Corner, the Villa and Pal Park (museum, corner, villa, park): a Fossil revived, a slot machine through a win and the bonus game, the Villa furnished and visited, a Catching Show
+//   dotnet run --project tools/ShotHarness -- <output dir> tower              the Battle Tower: its lobby and counters, a team entered and turned away, the lift, a streak of seven, the Tower Tycoon, a partner out of the Battle Salon, the Exchange Service Corner
 //   dotnet run --project tools/ShotHarness -- <dir> diff <other dir>          two runs' shots compared pixel by pixel (exits 1 if any differ)
 //   dotnet run --project tools/ShotHarness -- <dir> ab <before> <after> <before again>   three runs of `profile` compared (tools/dev/ab.sh)
 //   dotnet run --project tools/ShotHarness -- <dir> contact [prefix]          every shot of a run on sheets of twenty
@@ -127,6 +128,7 @@ if (mode == "headquarters") h.HeadquartersMode();
 if (mode == "underground") h.UndergroundMode();
 if (mode == "pillar") h.PillarMode();
 if (mode == "pastimes") h.PastimesMode();
+if (mode == "tower") h.TowerMode();
 
 h.Close();
 Raylib.CloseWindow();

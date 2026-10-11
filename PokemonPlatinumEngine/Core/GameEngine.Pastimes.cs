@@ -35,8 +35,12 @@ public partial class GameEngine
     private readonly SlotMachineScreen slotScreen = new();
     private readonly List<Prop> villaProps = new();
 
-    /// <summary>What the Villa's catalogue reads of the game's records (the Battle Frontier's are plan 06 · R18's to fill in).</summary>
-    private VillaRecords VillaRecordsNow => new(FrontierEverywhere: false, FrontierPrint: false, hallOfFame.Total,
+    /// <summary>
+    /// What the Villa's catalogue reads of the game's records. The Battle Frontier's two are its own (plan 06 · R18a):
+    /// a battle won at each of the five facilities, and a silver print or better at any, so each comes true as the
+    /// facilities are built.
+    /// </summary>
+    private VillaRecords VillaRecordsNow => new(FrontierEverywhere: frontier.WonEverywhere, FrontierPrint: Models.Frontier.FrontierBrains.AnyPrint(story), hallOfFame.Total,
         story.Var(VillaRules.BattlegroundVariable), pastimes.BerriesPlanted, pastimes.EggsHatched, pastimes.Steps);
 
     private int PastimeAct(string what, int number, NPC? subject)

@@ -137,6 +137,12 @@ public class SaveData
     /// </summary>
     public Models.PastimesSave? Pastimes { get; set; }
 
+    /// <summary>
+    /// The Battle Frontier (plan 06 · R18a): every facility's streaks, the Battle Points, and the Battle Tower's own
+    /// part, a challenge put down between two battles among it. Null in saves from before it, which are given a new one.
+    /// </summary>
+    public Models.Frontier.FrontierRecords? Frontier { get; set; }
+
     /// <summary>Solaceon Town's Day Care (plan 06 · R15). Null while it is empty with no cycle under way, and in older saves.</summary>
     public DayCareSave? DayCare { get; set; }
 

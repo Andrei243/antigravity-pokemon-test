@@ -645,4 +645,64 @@ public sealed class HeadlessScriptHost : IScriptHost
         Shown("play a cry");
         Log.Add($"cry {species}");
     }
+
+    // ------------------------------------------------------------------ the Battle Frontier (plan 06 · R18a)
+
+    /// <summary>
+    /// The Battle Frontier (plan 06 · R18a): its records, the Tower's challenge under way, the Pokémon a test has
+    /// entered when the team is opened for it (left empty, the first of the team that may go in together), the
+    /// teams its battles were fought with and against, and what was added to the Trainer Card's score.
+    /// </summary>
+    public Models.Frontier.FrontierRecords Frontier { get; } = new();
+    public Models.Frontier.BattleTowerChallenge? Tower { get; set; }
+    public Queue<IReadOnlyList<int>> Entering { get; } = new();
+    public IReadOnlyList<int> Entered { get; private set; } = Array.Empty<int>();
+    public List<(Party Team, IReadOnlyList<Trainer> Foes, Trainer? Partner, bool Doubles)> FrontierBattles { get; } = new();
+    public int FrontierScore { get; private set; }
+
+    public int FrontierAct(string what, int number, NPC? subject)
+    {
+        Log.Add($"frontier {what} {number}");
+        switch (what)
+        {
+            case "enter":
+                Waits();
+                Entered = Entering.Count > 0 ? Entering.Dequeue() : FirstThatMayEnter(number);
+                Answer = Entered.Count == number ? 1 : 0;
+                return Answer;
+            case "seen":
+                return SeenSpecies.Any(s => PokemonDatabase.Get(s)?.DexNumber == number) ? 1 : 0;
+            case "score":
+                FrontierScore += number;
+                return 1;
+            case "records":
+                Waits();
+                return 1;
+            default:
+                return 1;
+        }
+    }
+
+    // The first of the team that could go in together, in the team's order; none when too few can
+    private List<int> FirstThatMayEnter(int needed)
+    {
+        var chosen = new List<int>();
+        for (int i = 0; i < Party.Count && chosen.Count < needed; i++)
+        {
+            var p = Party.Members[i];
+            if (!Models.Frontier.FrontierRules.MayEnter(p)) continue;
+            if (chosen.Any(c => Party.Members[c].Species.Name == p.Species.Name || (p.HeldItem != null && Party.Members[c].HeldItem?.Name == p.HeldItem.Name))) continue;
+            chosen.Add(i);
+        }
+        return chosen.Count == needed ? chosen : new List<int>();
+    }
+
+    public void FrontierBattle(Party team, IReadOnlyList<Trainer> foes, Trainer? partner, bool doubles)
+    {
+        Shown("start a battle");
+        Waits();
+        FrontierBattles.Add((team, foes, partner, doubles));
+        Outcome = Fight?.Invoke(null) ?? BattleOutcome.Won;
+        Log.Add($"frontierbattle {string.Join(" and ", foes.Select(f => f.Id))}{(partner != null ? $" with {partner.Id}" : "")} {Outcome}");
+    }
 }

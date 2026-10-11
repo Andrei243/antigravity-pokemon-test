@@ -1,0 +1,143 @@
+# A Battle Room of the Battle Tower (plan 06 · R18a). docs/scripts.md describes the language; the lines are our own,
+# on the original's beats (frontier_scripts_battle_tower_battle_room.s, which the original plays as a scene of the
+# Frontier's own over the room).
+#
+# Seven trainers come in one after another. Each is made ready as they are come to (tower opponent), battled with
+# the Pokémon entered (tower battle) and, when beaten, followed by the attendant, who heals the team and asks whether
+# to keep going, to put the challenge down (REST) or to give it up (RETIRE). In the Single Battle Room the seventh
+# trainer of the third set, and of the seventh, is the Tower Tycoon. A battle lost, the seventh won or the challenge
+# given up leads back to the lobby, which says how it went (VAR_BATTLE_TOWER_LOBBY_LOAD_ACTION 1); a challenge put
+# down leads there too (2). VAR_BATTLE_TOWER_BATTLE_ROOM_LOAD_ACTION is 2 for a challenge taken up again, which
+# begins at the attendant's question.
+#
+# Not here: the question whether the battle is to be kept as a Battle Video (the Vs. Recorder's file is plan 08 ·
+# P10), and what each trainer says, which is the original's own text: they come in without a word.
+
+
+script OnEnter
+  place attendant 2 6 right
+  tower active
+  if result == 0 end
+  speaker "Attendant"
+  walk player up 3
+  if var VAR_BATTLE_TOWER_BATTLE_ROOM_LOAD_ACTION == 2 goto Menu
+
+label Fight
+  setvar VAR_BATTLE_TOWER_BATTLE_ROOM_LOAD_ACTION 3
+  tower opponent
+  place opponent 7 3 down
+  sound "door_slide"
+  clearflag FLAG_HIDE_BATTLE_TOWER_BATTLE_ROOM_OPPONENT
+  show opponent
+  walk opponent down 1
+  text "{foe} steps up to battle!"
+  tower battle
+  if result == 0 goto Lost
+  walk opponent up 1
+  setflag FLAG_HIDE_BATTLE_TOWER_BATTLE_ROOM_OPPONENT
+  hide opponent
+  tower won
+  if result == 1 goto Seven
+  # The attendant comes over and heals the team
+  walk attendant right 4
+  face player left
+  say "Well done! Let me restore your Pokémon to full health."
+  fanfare heal
+  heal
+  walk attendant left 4
+  face attendant right
+  face player up
+  tower palmer
+  if result == 0 goto Menu
+  say "Please prepare yourself. The Tower Tycoon is on his way to this room!"
+
+label Menu
+  setvar VAR_BATTLE_TOWER_BATTLE_ROOM_LOAD_ACTION 3
+  tower next
+  choose "Next is battle no. {number}. Are you ready?" "KEEP GOING" "REST" "RETIRE"
+  if result == 1 goto Rest
+  if result == 2 goto Retire
+label Onward
+  tower palmer
+  if result != 0 goto Palmer
+  goto Fight
+
+# The Tower Tycoon (the battle room's own scene for him: PlayFrontierBrainEncounterEffect)
+label Palmer
+  tower opponent
+  tower brain
+  place opponent 7 3 down
+  sound "door_slide"
+  clearflag FLAG_HIDE_BATTLE_TOWER_BATTLE_ROOM_OPPONENT
+  show opponent
+  wait 0.4
+  walk opponent down 1
+  speaker "Palmer"
+  tower palmer
+  if result == 2 goto Gold
+  say "So you are {player}! I've heard a great deal about you from that boy of mine, {rival}."
+  say "I am Palmer, the Tower Tycoon. Show me a battle worth the climb!"
+  goto Battle
+label Gold
+  say "{player}! You've come all this way again. I can't tell you how glad that makes me."
+  say "This time I hold nothing back. Meet the very best the Tower Tycoon has!"
+label Battle
+  tower battle
+  if result == 0 goto Lost
+  tower palmer
+  if result == 2 goto BeatGold
+  say "Ha ha ha! Wonderful! To lose like that is no loss at all."
+  tower beat silver
+  goto After
+label BeatGold
+  say "...Magnificent. You and your Pokémon are everything a trainer could hope to be."
+  tower beat gold
+label After
+  walk opponent up 1
+  setflag FLAG_HIDE_BATTLE_TOWER_BATTLE_ROOM_OPPONENT
+  hide opponent
+  speaker "Attendant"
+  tower won
+
+# All seven beaten: the records are written and the Battle Points handed over
+label Seven
+  tower finish won
+  walk attendant right 4
+  face player left
+  tower beaten
+  if result == 0 goto Earned
+  say "You have beaten the Tower Tycoon! He asked that you be given these Battle Points himself."
+  goto Points
+label Earned
+  say "Congratulations! Seven wins in a row. You have earned Battle Points."
+label Points
+  tower points
+  text "{player} received {number} BP!"
+  fanfare item
+  goto Leave
+
+label Lost
+  setflag FLAG_HIDE_BATTLE_TOWER_BATTLE_ROOM_OPPONENT
+  hide opponent
+  tower finish lost
+  goto Leave
+
+label Retire
+  ask "Give the challenge up and go back down?"
+  if no goto Onward
+  tower finish lost
+  goto Leave
+
+label Rest
+  ask "Put the challenge down for now? The game will be saved, and you can go on from here later."
+  if no goto Onward
+  setvar VAR_BATTLE_TOWER_LOBBY_LOAD_ACTION 2
+  tower pause
+  warp "BattleTower" 15 6 up
+  end
+
+label Leave
+  setvar VAR_BATTLE_TOWER_LOBBY_LOAD_ACTION 1
+  setvar VAR_BATTLE_TOWER_BATTLE_ROOM_LOAD_ACTION 0
+  warp "BattleTower" 15 6 up
+  end

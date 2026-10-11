@@ -58,6 +58,8 @@ public enum GameState
     Decoration,
     /// <summary>A sitting at one of the Game Corner's slot machines (plan 06 · R16b).</summary>
     SlotMachine,
+    /// <summary>A facility's records board in the Battle Frontier (plan 06 · R18a).</summary>
+    FrontierRecords,
     Transition
 }
 
@@ -299,6 +301,7 @@ public partial class GameEngine
         sealCase.Load(null);
         LoadUnderground(null);
         pastimes.Clear();
+        LoadFrontier(null);
         contestRecords.Load(null);
         contestOutcome = null;
         radar.Clear();
@@ -450,6 +453,7 @@ public partial class GameEngine
         sealCase.Load(save.SealCase);
         LoadUnderground(save.Underground);
         pastimes.Load(save.Pastimes);
+        LoadFrontier(save.Frontier);
         contestRecords.Load(save.ContestRecords);
         contestOutcome = null;
         radar.Clear();
@@ -574,6 +578,7 @@ public partial class GameEngine
             SealCase = sealCase.Total > 0 ? sealCase.ToSave() : null,
             Underground = underground,
             Pastimes = pastimes.ToSave(),
+            Frontier = frontier,
             ContestRecords = contestRecords.IsEmpty ? null : contestRecords,
             DayCare = DayCareSave.From(dayCare),
             WorldVersion = SaveData.CurrentWorld,
@@ -703,7 +708,12 @@ public partial class GameEngine
                     battle.Update(dt);
                     // The battle theme turns agitated while a Pokémon of the player's is in the red, and calms for the end
                     AudioManager.LowHp = battle.Result == BattleResult.None && battle.PlayerInDanger;
-                    if (battle.IsBattleOver)
+                    if (battle.IsBattleOver && battle.IsFrontier)
+                    {
+                        // A battle of the Battle Frontier leaves nothing behind but how it went (plan 06 · R18a)
+                        EndFrontierBattle();
+                    }
+                    else if (battle.IsBattleOver)
                     {
                         if (battle.Result == BattleResult.PlayerVictory && battle.IsTrainerBattle) playerMoney += battle.PrizeMoney;
                         if (battle.Result == BattleResult.PlayerVictory) playerMoney += battle.PayDayMoney;
@@ -742,7 +752,8 @@ public partial class GameEngine
                 else if (!partyScreen.IsActive)
                 {
                     // A script that asked for a Pokémon to be chosen hears which
-                    if (partyScreen.Choosing) scriptAnswer = partyScreen.Chosen;
+                    if (partyScreen.Entering) TakeEntered();
+                    else if (partyScreen.Choosing) scriptAnswer = partyScreen.Chosen;
                     currentState = GameState.Overworld;
                 }
                 break;
@@ -874,6 +885,9 @@ public partial class GameEngine
                 break;
             case GameState.SlotMachine:
                 UpdateSlotMachine(dt);
+                break;
+            case GameState.FrontierRecords:
+                UpdateFrontierRecords(dt);
                 break;
             case GameState.Journal:
                 journalScreen.Update(journal, dt);
@@ -1723,7 +1737,7 @@ public partial class GameEngine
     private TrainerCardInfo TrainerCardNow()
     {
         bool famous = hallOfFame.Total > 0 || RegionDatabase.All.Any(r => story.Has(r.StoryCompleteFlag));
-        int stars = TrainerCardRules.Level(famous, TrainerCardRules.NationalCaught(playerPokedex.CaughtSpecies), 0, IsContestMaster, 0);
+        int stars = TrainerCardRules.Level(famous, TrainerCardRules.NationalCaught(playerPokedex.CaughtSpecies), TowerBestStreak, IsContestMaster, 0);
         return new TrainerCardInfo(playerName, trainerId, playerMoney, playerPokedex.SeenCount, playerPokedex.CaughtCount, playTime,
             story.BadgeMask, adventureStarted)
         {
@@ -1933,6 +1947,7 @@ public partial class GameEngine
                 if (currentState == GameState.Overworld && !startMenu.IsActive && !ScriptRunning) poketchView.Draw(VirtualWidth, VirtualHeight, poketch, PoketchNow());
                 if (safari.Active) ModernUi.SafariCount(VirtualWidth, safari.Balls, safari.Steps);
                 DrawParkCount();
+                DrawBattlePoints();
                 dialogue.Draw(VirtualWidth, VirtualHeight);
                 DrawChoice();
                 locationSign.Draw();
@@ -2010,6 +2025,9 @@ public partial class GameEngine
                 break;
             case GameState.Decoration:
                 decorationScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.FrontierRecords:
+                frontierRecordsScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.SlotMachine:
                 slotScreen.Draw(VirtualWidth, VirtualHeight);

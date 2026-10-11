@@ -1,0 +1,63 @@
+{
+  "name": "BattleTowerElevator",
+  "displayName": "Battle Tower",
+  "bgmTrack": "sinnoh/veilstone",
+  "interior": "Museum",
+  "trees": "Round",
+  "width": 7,
+  "height": 8,
+  "ground": [
+    "#######",
+    "#######",
+    "#######",
+    "#_____#",
+    "#_____#",
+    "#_____#",
+    "#_____#",
+    "###D###"
+  ],
+  "solid": [
+    "#######",
+    "#######",
+    "#######",
+    "#.....#",
+    "#.....#",
+    "#.....#",
+    "#.....#",
+    "###.###"
+  ],
+  "props": [
+    {
+      "type": "Rug",
+      "x": 3,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 3,
+      "sourceY": 7,
+      "targetMap": "BattleTower",
+      "targetX": 15,
+      "targetY": 6,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "attendant",
+      "name": "Attendant",
+      "npcType": "Lass",
+      "x": 4,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "Going up. Please stand clear of the doors."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}
