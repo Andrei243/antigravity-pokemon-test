@@ -224,8 +224,10 @@ public class JubilifeAndRoarkTests
         Assert.True(story.Has("FLAG_HIDE_JUBILIFE_ROWAN"));
         Assert.True(story.Has("FLAG_HIDE_JUBILIFE_CITY_CLOWNS_1_AND_2"));
         Assert.Equal(1, story.Var("VAR_OREBURGH_GATE_1F_HIKER_STATE"));
-        // and what the later chapters keep hidden with it
-        Assert.True(story.Has("FLAG_HIDE_TURNBACK_CAVE_GIRATINA_ROOM_GIRATINA"));
+        // and what the later chapters keep hidden with it: Turnback Cave's ball. Giratina stands there from the start
+        // since plan 02 · S12 (Cynthia before the cave's mouth is what keeps everyone out until the Hall of Fame)
+        Assert.True(story.Has("FLAG_HIDE_TURNBACK_CAVE_GIRATINA_ROOM_ITEM"));
+        Assert.False(story.Has("FLAG_HIDE_TURNBACK_CAVE_GIRATINA_ROOM_GIRATINA"));
     }
 
     [Fact]
