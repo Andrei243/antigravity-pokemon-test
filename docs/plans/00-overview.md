@@ -396,5 +396,6 @@ The main session starts one agent per cell of the wave, each in its own worktree
 - [ ] Wave 9 · 02 · S13 (done 2026-10-11: the professor's lab after the Distortion World, Azelf and Uxie in their caverns and Mesprit roaming, Flint, Volkner at the Vista Lighthouse, the Beacon Badge's story, Jasmine and HM07; story version 16), 01 · M11b, 06 · R16b (done 2026-10-11: the Mining Museum's fossils, the Game Corner's slot machines and prizes, the Villa and its furniture and visitors, Pal Park's lobby and grounds; nothing is brought over to the Catching Show until plan 08's migration), 09 · L2, 09 · L15, 12 · Q20
 - [ ] Wave 10 · 02 · S14, 01 · M11c, 14 · B14, 08 · P1, 09 · L14, 08 · P13 (beside: 08 · P14)
 - [ ] Wave 11 · the freeze: 16 · T11, then T12
-- [ ] The post-game: 02 · S15a–c, 01 · M11d and M12, 03 · D12a–c and D13
+- [ ] The post-game: 02 · S15a, 02 · S15b, 02 · S15c, 01 · M11d, 01 · M12, 03 · D12a–c and D13
+- [ ] Platinum's last mechanics, taken out of their waves on 2026-10-11: 06 · R18a (done 2026-10-11: Battle Points, the Frontier's records, rules, trainers and sets, the Brains' frame, and the Battle Tower's seven rooms with Palmer; Wi-Fi rooms left out), 06 · R18b, 06 · R18c, 06 · R18d, 06 · R16c
 - [ ] The other regions' groundwork: 18 · W1–W10
