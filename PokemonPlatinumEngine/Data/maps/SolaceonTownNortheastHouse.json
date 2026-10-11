@@ -101,7 +101,7 @@
       "y": 5,
       "facing": "Down",
       "dialog": [
-        "Your {lead} has a nature all its own. You can see it at a glance.",
+        "The Pokémon at the head of your team has a nature all its own. You can see it at a glance.",
         "Did you know a Pokémon's nature decides how it grows?"
       ]
     },
