@@ -1,0 +1,16 @@
+# The Jubilife Condominiums, ground floor (plan 01 · M11, part a), on the original's plan. docs/scripts.md describes
+# the language; the lines are our own, on the original's beats (scripts_jubilife_city_condominiums_1f.s).
+#
+# The woman at the table hands over a Quick Claw, once (FLAG_RECEIVED_JUBILIFE_CITY_CONDOMINIUMS_1F_QUICK_CLAW), and
+# says what it does ever after.
+
+
+script QuickClaw
+  if flag FLAG_RECEIVED_JUBILIFE_CITY_CONDOMINIUMS_1F_QUICK_CLAW goto Explain
+  say "Oh, what a darling Pokémon you have there! Here, let it hold on to this for you."
+  give "Quick Claw"
+  setflag FLAG_RECEIVED_JUBILIFE_CITY_CONDOMINIUMS_1F_QUICK_CLAW
+  end
+label Explain
+  say "A Pokémon holding that Quick Claw will now and then strike first, even if it's a bit of a slowcoach." "Plenty of items only do anything in a Pokémon's hands. Keep an eye out for others it could hold." "... Listen to me. I sound like a schoolteacher."
+  end

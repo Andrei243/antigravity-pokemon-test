@@ -245,6 +245,7 @@ public class ScriptTests
           underground cantake
           underground takeflag
           underground home
+          random 6
         script Other
           end
         """;
@@ -1095,6 +1096,7 @@ public class ScriptTests
         public PokemonPlatinumEngine.Models.Underground.UndergroundState Underground => inner.Underground;
         public int UndergroundAct(string what, NPC? subject) => inner.UndergroundAct(what, subject);
         public string DiggerName => inner.DiggerName;
+        public int Random(int sides) => inner.Random(sides);
         public int? HoneyTreeFaced => inner.HoneyTreeFaced;
         public uint TrainerNumber => inner.TrainerNumber;
         public TimeOfDay TimeOfDay => inner.TimeOfDay;

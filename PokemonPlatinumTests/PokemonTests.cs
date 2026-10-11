@@ -285,6 +285,16 @@ public class PokemonTests
                 Assert.True(tiles!.Contains((warp.SourceX, warp.SourceY)),
                     $"{name}: the warp to {warp.TargetMap} at ({warp.SourceX},{warp.SourceY}) can't be reached from where the game starts");
         }
+
+        // The Underground's tunnels are six systems that don't join, each dug down into from the country over it:
+        // every one of its hikers can be walked up to, the three under Fullmoon and Newmoon Islands among them
+        var tunnels = maps("Underground");
+        var below = reached[tunnels];
+        var hikers = tunnels.Everyone.Where(n => n.Key != null && n.Key.Contains("_vendor_")).ToList();
+        Assert.Equal(UndergroundDatabase.Vendors.Count, hikers.Count);
+        foreach (var hiker in hikers)
+            Assert.True(new[] { (0, 1), (0, -1), (1, 0), (-1, 0) }.Any(d => below.Contains((hiker.GridX + d.Item1, hiker.GridY + d.Item2))),
+                $"nobody can walk up to the Underground's {hiker.Key} at ({hiker.GridX},{hiker.GridY})");
     }
 
     [Fact]

@@ -1,0 +1,233 @@
+{
+  "name": "JubilifeCitySouthHouse2F",
+  "displayName": "Jubilife City",
+  "bgmTrack": "sinnoh/jubilife",
+  "interior": "House",
+  "trees": "Round",
+  "width": 20,
+  "height": 14,
+  "ground": [
+    "####################",
+    "####################",
+    "####################",
+    "###________##______#",
+    "###________##______#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "####################"
+  ],
+  "solid": [
+    "####################",
+    "####################",
+    "####################",
+    "######...####.....##",
+    "###......####......#",
+    "###................#",
+    "###................#",
+    "###................#",
+    "###...##......##...#",
+    "###...##......##...#",
+    "###................#",
+    "####..............##",
+    "####..............##",
+    "####################"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 6,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 15,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 3,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 4,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 5,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SideStairsDown",
+      "x": 9,
+      "y": 3,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Plant",
+      "x": 18,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 8,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 13,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 16,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 6,
+      "y": 8,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Table",
+      "x": 14,
+      "y": 8,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 8,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 13,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 16,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 3,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 18,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 3,
+      "targetMap": "JubilifeCitySouthHouse1F",
+      "targetX": 16,
+      "targetY": 3,
+      "targetFacing": "Right"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "youngster",
+      "name": "Youngster",
+      "npcType": "youngster",
+      "x": 8,
+      "y": 8,
+      "facing": "Down",
+      "dialog": [
+        "Guess what? Some Pokémon evolve once battling has made them strong enough!",
+        "They can come out looking like something else altogether!"
+      ]
+    },
+    {
+      "id": "pokefan_f",
+      "name": "Pokéfan",
+      "npcType": "Lady",
+      "x": 13,
+      "y": 9,
+      "facing": "Down",
+      "dialog": [
+        "Evolution is what makes Pokémon so endlessly fascinating.",
+        "How does it work? I wonder whether that dashing Professor Rowan will ever get to the bottom of it."
+      ]
+    },
+    {
+      "id": "pokemon_breeder_f",
+      "name": "Pokémon Breeder",
+      "npcType": "Lady",
+      "x": 16,
+      "y": 8,
+      "facing": "Left",
+      "dialog": [
+        "Didn't Professor Rowan once do his research alongside Professor Oak, over in Kanto?"
+      ],
+      "movement": "look_around"
+    }
+  ],
+  "wildEncounters": []
+}

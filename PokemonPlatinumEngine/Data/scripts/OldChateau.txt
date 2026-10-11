@@ -1,0 +1,10 @@
+# The Old Chateau's hall, in Eterna Forest (plan 01 · M11, part a), on the original's plan. docs/scripts.md describes
+# the language (scripts_old_chateau.s).
+#
+# Coming in is remembered (FLAG_FIRST_ARRIVAL_OLD_CHATEAU, the original's own, which nothing here reads yet). The
+# statue under the gallery is read where it stands: its line is in the map file.
+
+
+script OnEnter
+  setflag FLAG_FIRST_ARRIVAL_OLD_CHATEAU
+  end

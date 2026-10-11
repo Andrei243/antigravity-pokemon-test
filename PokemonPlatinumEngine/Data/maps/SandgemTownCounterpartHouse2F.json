@@ -1,0 +1,126 @@
+{
+  "name": "SandgemTownCounterpartHouse2F",
+  "displayName": "Sandgem Town",
+  "bgmTrack": "sinnoh/sandgem",
+  "interior": "House",
+  "trees": "Round",
+  "width": 12,
+  "height": 11,
+  "ground": [
+    "############",
+    "############",
+    "############",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "############"
+  ],
+  "solid": [
+    "############",
+    "############",
+    "############",
+    "#####..#####",
+    "#......##..#",
+    "#..........#",
+    "#..........#",
+    "#.#......#.#",
+    "#.#......#.#",
+    "#.#......#.#",
+    "############"
+  ],
+  "props": [
+    {
+      "type": "Bookshelf",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 2,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "TrashCan",
+      "x": 4,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 6,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SideStairsDown",
+      "x": 7,
+      "y": 3,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Bookshelf",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 10,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 2,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bed",
+      "x": 2,
+      "y": 7,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "Bed",
+      "x": 9,
+      "y": 7,
+      "width": 1,
+      "depth": 3
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 6,
+      "sourceY": 3,
+      "targetMap": "SandgemTownCounterpartHouse1F",
+      "targetX": 10,
+      "targetY": 3,
+      "targetFacing": "Right"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 2,
+      "y": 3,
+      "text": "{assistant}'s computer. A note is stuck to the screen:\n\"Rule one: the Start Menu has everything. Rule two: SAVE before bed!\""
+    }
+  ],
+  "npcs": [],
+  "wildEncounters": []
+}

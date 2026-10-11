@@ -1,0 +1,224 @@
+{
+  "name": "JubilifeCityCondominiums2F",
+  "displayName": "Jubilife City",
+  "bgmTrack": "sinnoh/jubilife",
+  "interior": "House",
+  "trees": "Round",
+  "width": 20,
+  "height": 14,
+  "ground": [
+    "####################",
+    "####################",
+    "####################",
+    "###________##______#",
+    "###________##______#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "####################"
+  ],
+  "solid": [
+    "####################",
+    "####################",
+    "####################",
+    "######...####.....##",
+    "###......####......#",
+    "###................#",
+    "###................#",
+    "###................#",
+    "###...##......##...#",
+    "###...##......##...#",
+    "###................#",
+    "####..............##",
+    "####..............##",
+    "####################"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 6,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 15,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 3,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 4,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 5,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SideStairsDown",
+      "x": 9,
+      "y": 3,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Plant",
+      "x": 18,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 8,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 13,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 16,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 6,
+      "y": 8,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Table",
+      "x": 14,
+      "y": 8,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 8,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 13,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 16,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 3,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 18,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 3,
+      "targetMap": "JubilifeCityCondominiums1F",
+      "targetX": 16,
+      "targetY": 3,
+      "targetFacing": "Right"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "bug_catcher",
+      "name": "Bug Catcher",
+      "npcType": "Youngster",
+      "x": 11,
+      "y": 11,
+      "facing": "Up",
+      "dialog": [
+        "What I like best about Pokémon is their moves. No two battles go the same way!",
+        "And when they grow stronger they pick up new ones. It never gets old."
+      ],
+      "movement": "wander_around",
+      "rangeX": 1,
+      "rangeZ": 1
+    },
+    {
+      "id": "pokemon_breeder_m",
+      "name": "Pokémon Breeder",
+      "npcType": "Gentleman",
+      "x": 8,
+      "y": 8,
+      "facing": "Left",
+      "dialog": [
+        "Have you tried a Heal Ball from the Poké Mart? Whatever it catches comes out as fresh as a daisy.",
+        "Catch a Pokémon and it's ready for battle on the spot. Not much use if your team already has six, mind you."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

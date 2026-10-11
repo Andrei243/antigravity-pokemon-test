@@ -178,7 +178,19 @@ public enum PropType
     /// <summary>A leaf of a locked door of Team Galactic's: a thing of the map (<see cref="NPC.GalacticDoorType"/>), drawn as a card.</summary>
     GalacticDoor,
     /// <summary>A tank of the laboratory, two tiles by two: a glass cylinder of green fluid between a steel foot and cap.</summary>
-    Tank
+    Tank,
+
+    // The rooms of plan 01 · M11, rebuilt to the original's plans. Appended past the decorations: it never blocks
+    /// <summary>
+    /// A seat one walks onto, as the original's stools and floor cushions are: a square cushion on the floor. Whoever
+    /// sits at a table stands on its tile.
+    /// </summary>
+    Cushion,
+    /// <summary>
+    /// A stand of potted flowers on each tile it covers (the Floaroma flower shop). Past the decorations like the
+    /// laboratory's tank: the room's own tiles say that it blocks.
+    /// </summary>
+    FlowerStand
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>

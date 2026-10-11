@@ -14,15 +14,17 @@
     // (its door is behind the trees Cut clears) and the Underground Man's house
     { "warp": 2, "map": "EternaCycleShop", "x": 7, "y": 11, "facing": "Up" },
     { "warp": 3, "map": "TeamGalacticEternaBuilding1F", "x": 11, "y": 15, "facing": "Up" },
-    { "warp": 11, "map": "EternaUndergroundManHouse", "x": 4, "y": 8, "facing": "Up" }
+    { "warp": 11, "map": "EternaUndergroundManHouse", "x": 4, "y": 8, "facing": "Up" },
+    // Plan 01 · M11, part a: rooms on the original's plans
+    { "warp": 5, "map": "EternaCitySouthHouse", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 6, "map": "EternaCityEastHouse", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 7, "map": "EternaCityHerbShop", "x": 4, "y": 8, "facing": "Up" }
   ],
   // Gate houses are passed through; their rooms come with plan 01 · M11
   "through": [
     { "warp": 8, "to": "route_206", "toWarp": 4, "bicycle": true },
     { "warp": 9, "to": "route_206", "toWarp": 5, "bicycle": true }
   ],
-  // The houses and the herb shop have no rooms yet (plan 01 · M11)
-  "locked": [ 5, 6, 7 ],
   // Plan 02 · S6 (scripts/eterna_city.txt): the rival running into the player and Cyrus at the statue (trigger 0),
   // Cynthia with HM01 before the Team Galactic building (triggers 3 and 6), and, once the Bicycle is had, the two
   // people who stop the player at the town's ways out until they also have an Explorer Kit (triggers 1 and 2).

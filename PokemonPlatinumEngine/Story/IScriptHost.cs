@@ -299,4 +299,10 @@ public interface IScriptHost
     /// (<see cref="Busy"/>); then the Pokémon is in the Pokédex. False when no Egg is ready.
     /// </summary>
     bool Hatch();
+
+    /// <summary>
+    /// A die of so many sides, rolled on the game's own chance (plan 01 · M11; the original's <c>GetRandom</c>): 0 to one
+    /// less than <paramref name="sides"/>. The Berry Master's berry of the day, a ghost of the Old Chateau.
+    /// </summary>
+    int Random(int sides);
 }

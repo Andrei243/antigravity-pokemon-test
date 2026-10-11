@@ -5,10 +5,11 @@
   "architecture": "Timber",
   "doors": [
     { "warp": 0, "map": "RivalHouse", "x": 5, "y": 7, "facing": "Up" },
-    { "warp": 1, "map": "PlayerHouse", "x": 4, "y": 6, "facing": "Up" }
+    { "warp": 1, "map": "PlayerHouse", "x": 4, "y": 6, "facing": "Up" },
+    // Plan 01 · M11, part a: rooms on the original's plans
+    { "warp": 2, "map": "TwinleafTownNortheastHouse", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 3, "map": "TwinleafTownSouthwestHouse", "x": 4, "y": 8, "facing": "Up" }
   ],
-  // The two neighbours' houses have no rooms yet (plan 01 · M11)
-  "locked": [ 2, 3 ],
   "people": {
     "pokemon_breeder_f": {
       "name": "Neighbour",

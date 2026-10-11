@@ -1,0 +1,230 @@
+{
+  "name": "HearthomeCitySoutheastHouse1F",
+  "displayName": "Hearthome City",
+  "bgmTrack": "sinnoh/hearthome",
+  "interior": "House",
+  "trees": "Round",
+  "width": 22,
+  "height": 14,
+  "ground": [
+    "######################",
+    "######################",
+    "######################",
+    "#____________________#",
+    "#____________________#",
+    "###########__________#",
+    "###########__________#",
+    "###########__________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "##########D###########"
+  ],
+  "solid": [
+    "######################",
+    "######################",
+    "##################.###",
+    "##..................##",
+    "#....................#",
+    "###########..........#",
+    "###########..........#",
+    "###########..........#",
+    "###..................#",
+    "#....................#",
+    "#....#..........#....#",
+    "##..................##",
+    "##..................##",
+    "##########.###########"
+  ],
+  "behaviours": [
+    { "x": 18, "y": 2, "width": 1, "depth": 1, "behaviour": "Door" }
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 5,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 10,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 15,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 20,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "TrashCan",
+      "x": 2,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 4,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 5,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 6,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 15,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 16,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 17,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 10,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 20,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 10,
+      "sourceY": 13,
+      "targetMap": "Sinnoh",
+      "targetX": 494,
+      "targetY": 711,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 18,
+      "sourceY": 2,
+      "targetMap": "HearthomeCitySoutheastHouse2F",
+      "targetX": 18,
+      "targetY": 3,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "middle_aged_man",
+      "name": "Man",
+      "npcType": "Gentleman",
+      "x": 12,
+      "y": 9,
+      "facing": "Down",
+      "dialog": [
+        "First the Contests! Then Amity Square!",
+        "People come to Hearthome from all over, so we keep the place spick and span."
+      ],
+      "movement": "wander_around",
+      "rangeZ": 2
+    },
+    {
+      "id": "lady",
+      "name": "Lady",
+      "npcType": "lady",
+      "x": 4,
+      "y": 10,
+      "facing": "Right",
+      "dialog": [
+        "The whole world follows the Pokémon Contests.",
+        "Oh, what am I to do? I could have the whole world at my feet!"
+      ],
+      "movement": "wander_north_and_south"
+    },
+    {
+      "id": "shroomish",
+      "name": "Shroomish",
+      "npcType": "Pokemon",
+      "x": 20,
+      "y": 7,
+      "facing": "Left",
+      "dialog": [
+        "Shroomish: Pofwaaah!"
+      ],
+      "species": "Shroomish"
+    },
+    {
+      "id": "twin",
+      "name": "Little Girl",
+      "npcType": "Lass",
+      "x": 19,
+      "y": 7,
+      "facing": "Right",
+      "dialog": [
+        "When we go to Amity Square, my Shroomish finds berries and all sorts of things."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

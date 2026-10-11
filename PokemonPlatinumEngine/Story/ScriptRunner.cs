@@ -715,6 +715,11 @@ public sealed class ScriptRunner
                 Underground(i);
                 break;
 
+            // A die of the script's own (plan 01 · M11)
+            case Op.Random:
+                Result = host.Random(i.Number);
+                break;
+
             default:
                 throw Wrong(i, $"the runner doesn't know how to carry out '{i.Op}'");
         }

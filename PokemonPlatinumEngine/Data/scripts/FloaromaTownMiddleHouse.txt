@@ -1,0 +1,20 @@
+# Floaroma Town's middle house (plan 01 · M11, part a), on the original's plan. docs/scripts.md describes the
+# language; the lines are our own, on the original's beats (scripts_floaroma_town_middle_house.s).
+#
+# The little girl gives TM88 (Pluck) to whoever agrees with her, once (FLAG_RECEIVED_FLOAROMA_TOWN_MIDDLE_HOUSE_TM88).
+
+
+script Pluck
+  if flag FLAG_RECEIVED_FLOAROMA_TOWN_MIDDLE_HOUSE_TM88 goto Explain
+  ask "Don't you think it's cute, the way Pokémon pluck berries?"
+  if no goto Odd
+  say "Yes! You think so too! Then this is for you: the TM for Pluck!"
+  give "TM88"
+  setflag FLAG_RECEIVED_FLOAROMA_TOWN_MIDDLE_HOUSE_TM88
+  end
+label Odd
+  say "Oh... I suppose I just like funny things..."
+  end
+label Explain
+  say "A Pokémon that uses Pluck eats the berry its foe is holding, right there in the battle." "It pinches the berry! I think that's so cute!"
+  end

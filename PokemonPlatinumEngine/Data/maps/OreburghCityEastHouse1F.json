@@ -1,0 +1,275 @@
+{
+  "name": "OreburghCityEastHouse1F",
+  "displayName": "Oreburgh City",
+  "bgmTrack": "sinnoh/oreburgh",
+  "interior": "House",
+  "trees": "Round",
+  "width": 20,
+  "height": 14,
+  "ground": [
+    "####################",
+    "####################",
+    "####################",
+    "###________##______#",
+    "###________##______#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###########D########"
+  ],
+  "solid": [
+    "####################",
+    "####################",
+    "####################",
+    "####..#########...##",
+    "###........####....#",
+    "###...##...........#",
+    "###...##...........#",
+    "###................#",
+    "###................#",
+    "###...##...........#",
+    "###...##...........#",
+    "####..............##",
+    "####..............##",
+    "###########.########"
+  ],
+  "props": [
+    {
+      "type": "Painting",
+      "x": 4,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 17,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 3,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 6,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 7,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 10,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SideStairsUp",
+      "x": 13,
+      "y": 3,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Rug",
+      "x": 15,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 18,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 8,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 6,
+      "y": 5,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 8,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 8,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 6,
+      "y": 9,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 8,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 3,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 11,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 18,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 11,
+      "sourceY": 13,
+      "targetMap": "Sinnoh",
+      "targetX": 312,
+      "targetY": 765,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 15,
+      "sourceY": 3,
+      "targetMap": "OreburghCityEastHouse2F",
+      "targetX": 7,
+      "targetY": 3,
+      "targetFacing": "Left"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "pokefan_m",
+      "name": "Pokéfan",
+      "npcType": "Gentleman",
+      "x": 16,
+      "y": 10,
+      "facing": "Down",
+      "dialog": [
+        "Hello there! Those Pokémon of yours could do with some toughening up.",
+        "Why not train them in the Oreburgh Mine?"
+      ],
+      "movement": "wander_north_and_south",
+      "rangeZ": 1
+    },
+    {
+      "id": "hiker",
+      "name": "Hiker",
+      "npcType": "Gentleman",
+      "x": 14,
+      "y": 7,
+      "facing": "Left",
+      "dialog": [
+        "Which moves should my Pokémon learn, and which should they forget?",
+        "I agonise over it every single time."
+      ],
+      "movement": "wander_west_and_east",
+      "rangeX": 1
+    },
+    {
+      "id": "ace_trainer_m",
+      "name": "Ace Trainer",
+      "npcType": "Youngster",
+      "x": 10,
+      "y": 8,
+      "facing": "Right",
+      "dialog": [
+        "Looking at you takes me right back to the day I got my first Pokémon."
+      ],
+      "movement": "wander_around",
+      "rangeX": 1,
+      "rangeZ": 1
+    }
+  ],
+  "wildEncounters": []
+}

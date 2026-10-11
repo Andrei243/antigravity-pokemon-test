@@ -1,0 +1,40 @@
+# Bebe's house in Hearthome City (plan 01 · M11, part a), on the original's plan. docs/scripts.md describes the
+# language; the lines are our own, on the original's beats (scripts_hearthome_city_northwest_house.s).
+#
+# Bebe, who looks after the Pokémon Boxes, offers an Eevee at level 20, once
+# (FLAG_RECEIVED_HEARTHOME_CITY_NORTHWEST_HOUSE_EEVEE; FLAG_MET_BEBE once she has said who she is). Only a team with
+# room takes it, as in the original. The nickname the original offers afterwards waits for the naming prompt
+# (plan 12 · Q19).
+
+
+script Bebe
+  if flag FLAG_RECEIVED_HEARTHOME_CITY_NORTHWEST_HOUSE_EEVEE goto After
+  if flag FLAG_MET_BEBE goto Again
+  setflag FLAG_MET_BEBE
+  say "Hiya! Oh, you're a Trainer! Then you use the Pokémon Boxes! I love meeting the people who use my work!" "... Why the blank look? Oh, right, sorry! There I go, rattling on again." "I'm Bebe! You know the Boxes on the PC? I'm the one who keeps them running!"
+  ask "This is out of the blue, I know, but would you like a Pokémon called Eevee?"
+  goto Answer
+label Again
+  ask "Bebe: So, how about it? Would you like that Eevee?"
+label Answer
+  if no goto Declined
+  if party >= 6 goto Full
+  say "Bebe: Here you go! A good friend of mine in Johto gave it to me. He has more Eevee than he can count." "Sorry, that won't mean a thing to you. Just be good to it, please!"
+  givepokemon "Eevee" 20
+  setflag FLAG_RECEIVED_HEARTHOME_CITY_NORTHWEST_HOUSE_EEVEE
+  fanfare pokemon
+  text "{player} received the Eevee!"
+  end
+label Full
+  say "Bebe: Here you go! ... No, wait, I can't! You haven't room for another Pokémon!" "Now that's exactly what my Boxes are for!"
+  end
+label Declined
+  say "Bebe: Oh, OK... Then I suppose I'll raise it myself."
+  end
+label After
+  if flag FLAG_GAME_COMPLETED goto National
+  say "Bebe: My friend Bill built the first Pokémon storage system." "I've tinkered with it here and there since, to make it easier to use."
+  end
+label National
+  say "Bebe: Oh? You've filled the whole Sinnoh Pokédex? Good for you! You'll be needing my Boxes more than ever." "Mind you, I always did think a good Trainer juggles Boxes cleverly. Not that I'm one to say so."
+  end

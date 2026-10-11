@@ -520,6 +520,13 @@ public static class ScriptParser
                 if (kind == "trap" ? Data.UndergroundDatabase.TrapId(thing) == 0 : Data.UndergroundDatabase.GoodId(thing) == 0) throw r.Error($"there is no {kind} '{thing}'");
                 return new Instruction { Op = Op.Underground, Line = line, Name = what, Other = kind, Partner = thing };
             }
+            // A die of the script's own (plan 01 · M11; the original's GetRandom): RESULT is 0 to one less than its sides
+            case "random":
+            {
+                int sides = r.Int("how many sides the die has");
+                if (sides < 1) throw r.Error("a die has at least one side");
+                return new Instruction { Op = Op.Random, Line = line, Number = sides };
+            }
 
             case "script":
             case "label":

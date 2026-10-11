@@ -1,0 +1,134 @@
+{
+  "name": "FloaromaTownMiddleHouse",
+  "displayName": "Floaroma Town",
+  "bgmTrack": "sinnoh/floaroma",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#.....#####",
+    "#.........#",
+    "#..##.....#",
+    "#..##.....#",
+    "#.........#",
+    "#.........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 4,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 6,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 3,
+      "y": 5,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Sinnoh",
+      "targetX": 171,
+      "targetY": 655,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "pokemon_breeder_f",
+      "name": "Pokémon Breeder",
+      "npcType": "Lady",
+      "x": 8,
+      "y": 6,
+      "facing": "Left",
+      "dialog": [
+        "Long ago this was a bare, lonely hill that even Pokémon kept away from.",
+        "People felt sorry for it and planted flowers, but not one would take. Nobody knew what else to try.",
+        "Then one day somebody gave thanks for everything nature gives us. And the whole hill burst into bloom."
+      ],
+      "movement": "wander_west_and_east",
+      "rangeX": 1
+    },
+    {
+      "id": "twin",
+      "name": "Little Girl",
+      "npcType": "Lass",
+      "x": 2,
+      "y": 3,
+      "facing": "Right",
+      "script": "Pluck"
+    },
+    {
+      "id": "clefairy",
+      "name": "Clefairy",
+      "npcType": "Pokemon",
+      "x": 3,
+      "y": 3,
+      "facing": "Left",
+      "dialog": [
+        "Clefairy: Rii?"
+      ],
+      "species": "Clefairy"
+    }
+  ],
+  "wildEncounters": []
+}

@@ -1085,6 +1085,9 @@ public partial class GameEngine
         public int UndergroundAct(string what, NPC? subject) => game.UndergroundAct(what, subject);
         public string DiggerName => game.DiggerName;
 
+        // A script's die is rolled on the game's chance, so the harness's runs repeat (plan 01 · M11)
+        public int Random(int sides) => Dice.Shared.Next(Math.Max(1, sides));
+
         // The original's field cries (a legendary in its lair, a Pokémon a script brings out) have an echo beside them
         public void Cry(string species)
         {

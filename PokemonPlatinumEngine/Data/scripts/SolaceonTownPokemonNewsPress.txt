@@ -1,0 +1,42 @@
+# The Pokémon News Press in Solaceon Town (plan 01 · M11, part a), on the original's plan. docs/scripts.md describes
+# the language; the lines are our own, on the original's beats (scripts_solaceon_town_pokemon_news_press.s).
+#
+# The computer by the door shows the week's top story, four articles on kinds of Poké Ball; one is read at a time.
+#
+# The editor's daily assignment is not built: in the original he names a Pokémon the player has seen, drawn at random
+# (GetRandomSeenSpecies), wants one shown to him before the day is out (SetNewsPressDeadline), and pays three of one
+# of twelve kinds of ball and a Heart Scale. No script can draw from the Pokédex or keep a deadline yet, so he says
+# who he is and what he is short of, and remembers having said it (FLAG_TALKED_TO_POKEMON_NEWS_PRESS_GYM_GUIDE, the
+# original's own).
+
+
+script Editor
+  if flag FLAG_TALKED_TO_POKEMON_NEWS_PRESS_GYM_GUIDE goto Again
+  setflag FLAG_TALKED_TO_POKEMON_NEWS_PRESS_GYM_GUIDE
+  say "Oh? Come in, come in! You saw the notice outside, I take it?" "Is that a Pokédex? Then you know Professor Rowan! You're exactly the Pokémon finder this paper has been looking for!" "... Only the presses have jammed again, and there's no telling what our lead story needs until they run. Look in another day, will you?"
+  end
+label Again
+  say "Still jammed, I'm afraid. The moment these presses turn, I'll have a Pokémon for you to find. There'll be Poké Balls and a Heart Scale in it for you!"
+  end
+
+
+script Articles
+  sayown
+  choose "Which article will you read?" "The Dusk Ball" "The Heal Ball" "The Quick Ball" "The Dive Ball" "None"
+  if result == 0 goto Dusk
+  if result == 1 goto Heal
+  if result == 2 goto Quick
+  if result == 3 goto Dive
+  end
+label Dusk
+  text "\"Caves and unlit streets are no place for the faint of heart. Pack some Dusk Balls! In the dark, nothing catches a Pokémon better. Keep the night at bay on your travels!\""
+  end
+label Heal
+  text "\"Wear a Pokémon down, then throw: that is how it's done. But a Pokémon caught that way is in no state to battle. Not with the Heal Ball, which cures whatever ails the Pokémon it catches. The ball that's kind to Pokémon!\""
+  end
+label Quick
+  text "\"You want the target's HP low before you throw. But a nimble Pokémon may bolt while you're at it. The answer is the Quick Ball, which works best thrown the moment a battle begins. For the Trainer in a hurry!\""
+  end
+label Dive
+  text "\"The Pokémon of the sea are not like the rest. For the brave who face them, there is the Dive Ball: for whatever you meet on the water, and whatever you pull up on a line.\""
+  end

@@ -907,7 +907,11 @@ internal sealed class MapScene
             {
                 if (warp.SourceY != by - 1 || warp.SourceX < lx || warp.SourceX >= w - 1) continue;
                 const int dw = GalacticArt.DoorwayWidth, dh = GalacticArt.DoorwayHeight;
-                var doorway = kit.Face("wall.doorway", dw, dh, GalacticArt.PaintDoorway);
+                // Team Galactic's frame in their rooms (the lab's); in any other room a lift's doors where the tile is
+                // the original's door, and a doorway framed in the house's wood otherwise (plan 01 · M11)
+                var doorway = style == InteriorStyle.Lab ? kit.Face("wall.doorway", dw, dh, GalacticArt.PaintDoorway)
+                    : Map.BehaviourAt(warp.SourceX, warp.SourceY) == TileBehavior.Door ? kit.Face("wall.liftdoors", dw, dh, PropModels.PaintLiftDoors)
+                    : kit.Face("wall.doorway.house", dw, dh, PropModels.PaintDoorway);
                 float x0 = warp.SourceX * T + (T - dw) / 2f, z = back + 0.5f;
                 kit.Quad(kit.At(x0, 0, z), kit.At(x0 + dw, 0, z), kit.At(x0 + dw, dh, z), kit.At(x0, dh, z), doorway, KitBuilder.FrontNormal);
             }
@@ -957,13 +961,25 @@ internal sealed class MapScene
         // wainscot: each face that looks onto the floor is the lower part of the room's wall, under the walls' dark top
         const int innerH = PropModels.InnerWallHeight;
         bool Floor(int x, int y) => x >= lx && x < w - 1 && y >= by && y < h - 1 && Map.GetGroundTile(x, y) != TileType.Wall;
-        Art? inner = null;
+        Art? inner = null, jog = null;
+        bool Jog(int x, int y) => BackWallJog(Map, x, y);
         for (int ty = by; ty < h - 1; ty++)
             for (int tx = lx; tx < w - 1; tx++)
             {
                 if (Map.GetGroundTile(tx, ty) != TileType.Wall) continue;
-                inner ??= kit.Face("wall.inner", T, innerH, c => GroundBaker.PaintWall(c, style, wallH - innerH, theme, look));
                 bool n = Floor(tx, ty - 1), s = Floor(tx, ty + 1), wst = Floor(tx - 1, ty), e = Floor(tx + 1, ty);
+                if (Jog(tx, ty))
+                {
+                    jog ??= kit.Face("wall.jog", T, wallH, c => GroundBaker.PaintWall(c, style, 0, theme, look));
+                    var jogTop = kit.Face($"wall.top.jog.{(s ? "s" : "")}{(wst ? "w" : "")}{(e ? "e" : "")}", T, T, c => GroundBaker.PaintWallTop(c, false, s, wst, e));
+                    // Beside a lower wall its side shows too, above that wall's top
+                    bool west = wst || Map.GetGroundTile(tx - 1, ty) == TileType.Wall && tx - 1 >= lx && !Jog(tx - 1, ty), east = e || Map.GetGroundTile(tx + 1, ty) == TileType.Wall && tx + 1 < w - 1 && !Jog(tx + 1, ty);
+                    bool south = s || ty + 1 < h - 1 && Map.GetGroundTile(tx, ty + 1) == TileType.Wall && !Jog(tx, ty + 1);
+                    kit.Origin = Vector3.Zero;
+                    kit.Box(tx * T, tx * T + T, ty * T, ty * T + T, 0, wallH, jogTop, south ? jog : null, west ? jog : null, east ? jog : null);
+                    continue;
+                }
+                inner ??= kit.Face("wall.inner", T, innerH, c => GroundBaker.PaintWall(c, style, wallH - innerH, theme, look));
                 var top = kit.Face($"wall.top.inner.{(n ? "n" : "")}{(s ? "s" : "")}{(wst ? "w" : "")}{(e ? "e" : "")}", T, T,
                     c => GroundBaker.PaintWallTop(c, n, s, wst, e));
                 // With relief a wall stands on the highest floor beside it (the Pastoria Gym's wings by its entrance)
@@ -991,6 +1007,25 @@ internal sealed class MapScene
         RoomCenter = new Vector3((lx + w - 1) / 2f, 0.6f * VS, (back + front) / (2f * T) + 0.2f);
     }
 
+    /// <summary>
+    /// Whether a wall tile inside a house's floor is the back wall come forward (plan 01 · M11; style guide, "Rooms"):
+    /// a block of wall that reaches the back wall with nothing but wall behind it (the flank of a staircase, a chimney
+    /// breast) stands the wall's full height, since there is nothing behind it for the camera to see. Anything that
+    /// stands on such a tile keeps it low, and so does a partition: a wall one tile thick with floor on both sides is
+    /// seen over. No GPU calls.
+    /// </summary>
+    internal static bool BackWallJog(Map map, int x, int y)
+    {
+        if (map.Interior != InteriorStyle.House) return false;
+        var (left, back) = map.RoomCorner();
+        bool Floor(int fx, int fy) => fx >= left && fx < map.Width - 1 && fy >= back && fy < map.Height - 1 && map.GetGroundTile(fx, fy) != TileType.Wall;
+        if (x < left || x >= map.Width - 1 || y < back || y >= map.Height - 1) return false;
+        for (int yy = back; yy <= y; yy++)
+            if (map.GetGroundTile(x, yy) != TileType.Wall || map.Props.Exists(p => p.Covers(x, yy)) || map.GetWarpAt(x, yy) != null
+                || Floor(x - 1, yy) && Floor(x + 1, yy)) return false;
+        return true;
+    }
+
     /// <summary>The drawn height an inner wall stands at: the highest of the floor round it.</summary>
     private float InnerWallFoot(int tx, int ty)
     {
@@ -1008,6 +1043,8 @@ internal sealed class MapScene
     /// </summary>
     private MeshBuilder? HallFace(MeshBatches batches)
     {
+        // A house with a floor above its floor (the Old Chateau's gallery, plan 01 · M11) stands it on its own wainscot
+        if (Map.Interior == InteriorStyle.House) return batches.For(SceneTextures.RoomFace);
         if (Map.Interior != InteriorStyle.Gym) return null;
         if (Map.ArenaType == Data.PokemonType.Electric) return batches.For(SceneTextures.PowerFace);
         // The League's rooms stand on dressed stone: marble in the Champion's, basalt over Flint's lava, sandstone under

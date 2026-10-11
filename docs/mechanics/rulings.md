@@ -1158,7 +1158,7 @@ Decision 06 · 7 leaves local wireless and the online play of the Underground ou
 | The Underground's music and sounds | `SEQ_TANKOU` and its own effects | The mine's theme, and effects the game already has (the Pokétch's beep for the radar, a rock breaking for the drill, the stairs for the way down) | Plan 05 · A6 |
 | The goods | A model each | The room furniture's pieces where one fits, plain pieces of our own for the rest; one figure in its species' colour for every doll | Each would be a sculpt of its own |
 | The hikers' looks | The hiker | The look that stands for it in `characters.json` | Plan 11 |
-| Three hikers | All twenty stand in the tunnels | The three of the north-west system are held back: it lies under Fullmoon and Newmoon Islands, and nothing over it is open | Plan 01 · M10, part b: take them off the overlay's `heldBack` when the islands open |
+| Three hikers | All twenty stand in the tunnels | All twenty stand in the tunnels: the three of the north-west system, under Fullmoon and Newmoon Islands, waited in the overlay's `heldBack` until the islands opened | Done (plan 01 · M11, part a) |
 | The base's PC radars | Lists of what is about | Not there | See above |
 
 ## The rest of the post-game (2026-10-11, plan 01 · M10, part b)
@@ -1186,3 +1186,35 @@ Stark Mountain, Snowpoint Temple, Fullmoon and Newmoon Island, the Seabreak Path
 | Stark Mountain's, the temple's, the islands' and the Frontier's themes | `TOWN06`, `D_06`, `D_02`, `D_03`, `CITY11` | Route 206's, Victory Road's, the forest's, Turnback Cave's and Veilstone's play | Plan 05 · A6 |
 | The looks of the sailors, the Frontier's attendants and its visitors | Their own object looks | Looks of ours by `npcType` (a gentleman, a clerk, a lass…) | Plan 11 |
 | The woods' weather | Header values 23 and 26 to 30, which the decompilation doesn't name | Clear | Whoever names them |
+
+## The rooms of the south-west and the centre (2026-10-11, plan 01 · M11, part a)
+
+The houses the areas of M5 and M6 still kept shut, on the original's plans: its tiles, its furniture by its models' names, its people on its events' tiles. The lines are our own, on the beats of each room's script in the decompilation.
+
+- **A gift is given once, by the original's flag**: the Quick Claw (Jubilife's condominiums), the Dusk Ball, the Great Ball and the Heal Ball (Oreburgh's houses; the Heal Ball only to a team with a Geodude on it, as the original asks), the Sprayduck (the flower shop), TM88 (Floaroma's middle house, on a yes), TM67 (Eterna's condominiums), the Shell Bell (Hearthome's south-east house) and Bebe's Eevee, of level 20, which only a team with room takes.
+- **A script rolls the original's die** (`random N`, the original's `GetRandom`, on the game's own chance). The flower shop's berry of the day is one of five (Cheri, Chesto, Pecha, Rawst, Aspear) and the Berry Master's one of twenty-six (Cheri to Tamato, the original's item number plus the roll); each is given once a day by its `FLAG_DAILY_...` flag, which the day's events clear.
+- **The florist's swaps are the original's twenty-two**, at its prices (`sAccessoryShop_ItemLists`: one berry for a flower or a pair of specs, ten for the next five accessories, fifty or a hundred for the last nine). The berries are taken all or none, and come back when the Fashion Case has no room for the accessory.
+- **The Berry Master's house**: the four mulches at 200 each; the Berry Searcher goes onto the Pokétch of whoever owns up to forgetting where their berries are planted; the book on the table is read where it lies.
+- **A rest in Route 205's house heals the team**, behind a fade, as the original's does.
+- **The assistant's sister tells of the day's swarm** once the Hall of Fame is behind the player, and her first word of it begins the swarms: `common.SwarmNews`, which plan 06 · R13 wrote and nobody started until her house was built.
+- **The Old Chateau's wild Pokémon are met on its floor**: every tile of the original's behaviour `OldChateauFloor` (0x0B), by the area's own table and rate, as the Lost Tower's are. Its two ghosts are the original's (`CheckShouldShowGhost`): coming into the dining room rolls a die of a hundred and one and shows the old man at the head of the table on ten or less, and the room off the corridor shows the little girl on twenty-five or less; each goes its way and is gone, and its flag hides it the rest of the time.
+- **The Old Chateau's back rooms are five files of one chunk.** The original draws the five rooms off the corridor in one piece of land and walks each from its own door. Here each room's file shows the rooms beside it over the partitions, cut to the wainscot as every inner wall is, and what lies on the floor lies only in the room it is reached from (the Dread Plate and TM90 are not shown a second time next door).
+- **A lift has doors and no cabin**: the Hearthome houses' lift is a warp on the original's door tile in the back wall, which leads to the tile before the doors of the other floor.
+- **A seat is walked onto**, as the original's stools and cushions are: whoever sits at a table stands on the seat's own tile.
+
+| What | The original | Here, for now | Until |
+|---|---|---|---|
+| Rotom's television | The set in the Old Chateau's second room off the corridor: looked at after dark, a Rotom of level 20 comes out of it, once a day until it is caught (`FLAG_CAUGHT_OLD_CHATEAU_ROTOM`, `FLAG_DAILY_BATTLED_OLD_CHATEAU_ROTOM`) | A `Television` on (11, 3) and (12, 3) of `OldChateauBackMiddleWestRoom`, read from (11, 4) or (12, 4), that says nothing | Plan 02 · S15c |
+| Professor Oak in Eterna City's south house | Stands at (4, 5) once the National Pokédex is had (`FLAG_HIDE_ETERNA_CITY_SOUTH_HOUSE_PROF_OAK`), tells of the three birds that roam and sets them loose | Left out of the room | Plan 02 · S15 |
+| The Pokémon News Press's assignment | The editor names a Pokémon the player has seen, wants one shown to him before the day is out, and pays three of one of twelve kinds of ball and a Heart Scale | He says who he is and what he is short of (`FLAG_TALKED_TO_POKEMON_NEWS_PRESS_GYM_GUIDE`) | A session that gives scripts a draw from the Pokédex and a deadline (plan 06) |
+| "The National Pokédex" in these rooms' scripts | The grandfather's second line and the sister's swarms wait for the National Pokédex | `FLAG_GAME_COMPLETED` stands for it, as for Victory Road's collector | The National Pokédex being given (plan 02, after the Hall of Fame) |
+| Bebe's nickname question | Asks whether the Eevee should have a nickname | Not asked | Plan 12 · Q19 |
+| The florist's window | One window lists all twenty-two accessories with their prices | Question boxes of six answers at most, in three steps, and one swap to a talk | A shop screen that takes berries |
+| The lifts' cabins | A cabin of its own (`hearthome_city_southeast_house_elevator`) with a menu of floors | The doors lead straight to the other floor | Plan 01 · M11, part d, with the Department Store's and the TV station's lifts |
+| The baby in the pram | An object of Hearthome's north-east house | Left out: no look stands for one | Plan 11 |
+| The looks of these rooms' people | Their own object looks (an expert, a scientist, a reporter, a roughneck…) | Looks of ours by `npcType` (a lady, a lass, a gentleman…), each with its own name | Plan 11 |
+| The Old Chateau's two flights | Stairs with balustrades | Plank ramps between low walls | A staircase for rooms on two levels (plan 04's kit) |
+| The herb shop's counter | A wooden counter | The Mart's own counter, which is what a clerk serves across | A counter of a house's own |
+| The Old Chateau's theme | `SEQ_D_03` | Turnback Cave's plays | Plan 05 · A6 |
+| The Trainers' School, the Pokétch Company and Jubilife TV | Rooms on the original's plans, the last two of several floors | The rooms made by hand (a classroom, one room for the company's three floors, the television station's lobby alone) | Plan 01 · M11, part d: the second chapter's scenes, the Lottery Corner and the Pokétch's gifts stand on their tiles, and the upper floors' people speak for plan 08's programmes |
+| The player's and the rival's houses, the professor's lab | Rooms on the original's plans | The rooms made by hand | The story lane's: the first chapter's scenes, a new game's first tile and a white-out's bed stand on their tiles |

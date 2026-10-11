@@ -1,0 +1,124 @@
+{
+  "name": "SolaceonTownNortheastHouse",
+  "displayName": "Solaceon Town",
+  "bgmTrack": "sinnoh/solaceon",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#.....#####",
+    "#.........#",
+    "#..##.....#",
+    "#..##.....#",
+    "#.........#",
+    "#.........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 4,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 6,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 3,
+      "y": 5,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Sinnoh",
+      "targetX": 579,
+      "targetY": 649,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "pokemon_breeder_f",
+      "name": "Pokémon Breeder",
+      "npcType": "Lady",
+      "x": 5,
+      "y": 5,
+      "facing": "Down",
+      "dialog": [
+        "Your {lead} has a nature all its own. You can see it at a glance.",
+        "Did you know a Pokémon's nature decides how it grows?"
+      ]
+    },
+    {
+      "id": "cowgirl",
+      "name": "Cowgirl",
+      "npcType": "Lass",
+      "x": 7,
+      "y": 6,
+      "facing": "Down",
+      "dialog": [
+        "There have been Pokémon in these parts since the old days.",
+        "They say there were great ranches of them all round here."
+      ],
+      "movement": "wander_around",
+      "rangeZ": 2
+    }
+  ],
+  "wildEncounters": []
+}

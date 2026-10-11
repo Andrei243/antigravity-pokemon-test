@@ -513,7 +513,9 @@ public class WorldTests
         Assert.Equal((115, 882, 119, 885), (home.X0, home.Y0, home.X1, home.Y1));
         Assert.Equal(new[] { (116, (string?)"PlayerHouse") }, home.Doors);
         Assert.Contains(twinleaf, b => b.Doors.Any(d => d.Target == "RivalHouse"));
-        Assert.Equal(2, twinleaf.Count(b => b.Doors.All(d => d.Target == null)));
+        // (the two neighbours' doors lead into their rooms since plan 01 · M11, part a)
+        Assert.Contains(twinleaf, b => b.Doors.Any(d => d.Target == "TwinleafTownNortheastHouse"));
+        Assert.Contains(twinleaf, b => b.Doors.Any(d => d.Target == "TwinleafTownSouthwestHouse"));
 
         // Sandgem Town: what a building is comes from the name of its model, not from where its door leads, and
         // it stands on exactly the tiles its model blocks. The signs beside the Center and the Mart stand free.

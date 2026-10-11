@@ -24,6 +24,7 @@
 //   dotnet run --project tools/ShotHarness -- <output dir> snowpoint          the eighth chapter's first half: the rival at Acuity Lakefront, Snowpoint City, Maylene, Candice's Badge, Rock Climb, Jupiter at Lake Acuity
 //   dotnet run --project tools/ShotHarness -- <output dir> headquarters       the eighth chapter's second half: the Storage Key, the warehouse's door, Team Galactic's headquarters floor by floor, Cyrus, Saturn and the lakes' Pokémon set free
 //   dotnet run --project tools/ShotHarness -- <output dir> underground        the Underground: the way down, a wall dug through, every trap, a Sphere buried, the hikers, the secret base and its decorating, a flag brought home
+//   dotnet run --project tools/ShotHarness -- <output dir> interiors [town ...]   the rooms of plan 01 · M11 a town at a time: a shot of each from its way in, a sheet per town, and a few of them at work
 //   dotnet run --project tools/ShotHarness -- <dir> diff <other dir>          two runs' shots compared pixel by pixel (exits 1 if any differ)
 //   dotnet run --project tools/ShotHarness -- <dir> ab <before> <after> <before again>   three runs of `profile` compared (tools/dev/ab.sh)
 //   dotnet run --project tools/ShotHarness -- <dir> contact [prefix]          every shot of a run on sheets of twenty
@@ -123,6 +124,7 @@ if (mode == "battlezone") h.BattleZoneMode();
 if (mode == "snowpoint") h.SnowpointMode();
 if (mode == "headquarters") h.HeadquartersMode();
 if (mode == "underground") h.UndergroundMode();
+if (mode == "interiors") h.InteriorsMode();
 
 h.Close();
 Raylib.CloseWindow();

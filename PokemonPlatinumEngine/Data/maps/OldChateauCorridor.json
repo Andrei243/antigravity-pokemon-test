@@ -1,0 +1,215 @@
+{
+  "name": "OldChateauCorridor",
+  "displayName": "Old Chateau",
+  "bgmTrack": "sinnoh/turnback_cave",
+  "interior": "House",
+  "trees": "Round",
+  "encounterRate": 10,
+  "width": 39,
+  "height": 7,
+  "ground": [
+    "#######################################",
+    "#######################################",
+    "#######################################",
+    "#_____________________________________#",
+    "#_____________________________________#",
+    "#_____________________________________#",
+    "###################D###################"
+  ],
+  "solid": [
+    "#######################################",
+    "#######################################",
+    "####.######.#######.#######.######.####",
+    "##.....#.......#.......#.......#.....##",
+    "#.....................................#",
+    "#.....................................#",
+    "###################.###################"
+  ],
+  "behaviours": [
+    { "x": 2, "y": 3, "width": 5, "depth": 1, "behaviour": "OldChateauFloor" },
+    { "x": 8, "y": 3, "width": 7, "depth": 1, "behaviour": "OldChateauFloor" },
+    { "x": 16, "y": 3, "width": 7, "depth": 1, "behaviour": "OldChateauFloor" },
+    { "x": 24, "y": 3, "width": 7, "depth": 1, "behaviour": "OldChateauFloor" },
+    { "x": 32, "y": 3, "width": 5, "depth": 1, "behaviour": "OldChateauFloor" },
+    { "x": 1, "y": 4, "width": 37, "depth": 1, "behaviour": "OldChateauFloor" },
+    { "x": 1, "y": 5, "width": 18, "depth": 1, "behaviour": "OldChateauFloor" },
+    { "x": 20, "y": 5, "width": 18, "depth": 1, "behaviour": "OldChateauFloor" }
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 7,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 15,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 23,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 31,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 37,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 19,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 19,
+      "sourceY": 6,
+      "targetMap": "OldChateau",
+      "targetX": 9,
+      "targetY": 3,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 4,
+      "sourceY": 2,
+      "targetMap": "OldChateauBackWestRoom",
+      "targetX": 4,
+      "targetY": 7,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 11,
+      "sourceY": 2,
+      "targetMap": "OldChateauBackMiddleWestRoom",
+      "targetX": 11,
+      "targetY": 7,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 19,
+      "sourceY": 2,
+      "targetMap": "OldChateauBackMiddleRoom",
+      "targetX": 12,
+      "targetY": 7,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 27,
+      "sourceY": 2,
+      "targetMap": "OldChateauBackMiddleEastRoom",
+      "targetX": 13,
+      "targetY": 7,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 34,
+      "sourceY": 2,
+      "targetMap": "OldChateauBackEastRoom",
+      "targetX": 10,
+      "targetY": 7,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [],
+  "npcs": [],
+  "wildEncounters": [
+    {
+      "speciesName": "Gastly",
+      "minLevel": 14,
+      "maxLevel": 14,
+      "weight": 20
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 15,
+      "maxLevel": 15,
+      "weight": 20
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 14,
+      "maxLevel": 14,
+      "weight": 10
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 15,
+      "maxLevel": 15,
+      "weight": 10
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 16,
+      "maxLevel": 16,
+      "weight": 10
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 17,
+      "maxLevel": 17,
+      "weight": 10
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 16,
+      "maxLevel": 16,
+      "weight": 5
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 17,
+      "maxLevel": 17,
+      "weight": 5
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 17,
+      "maxLevel": 17,
+      "weight": 4
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 17,
+      "maxLevel": 17,
+      "weight": 4
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 17,
+      "maxLevel": 17,
+      "weight": 1
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 17,
+      "maxLevel": 17,
+      "weight": 1
+    }
+  ]
+}

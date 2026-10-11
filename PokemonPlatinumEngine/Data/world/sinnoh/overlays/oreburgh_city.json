@@ -9,10 +9,16 @@
     // Roark's Gym, built for its chapter (plan 02 · S5)
     { "warp": 0, "map": "OreburghGym", "x": 5, "y": 24, "facing": "Up" },
     // The house north of the Mart, where a girl trades her Abra for a Machop (plan 06 · R12), built to the original's plan
-    { "warp": 8, "map": "OreburghNorthHouse1F", "x": 11, "y": 12, "facing": "Up" }
+    { "warp": 8, "map": "OreburghNorthHouse1F", "x": 11, "y": 12, "facing": "Up" },
+    // Plan 01 · M11, part a: rooms on the original's plans
+    { "warp": 3, "map": "OreburghCityNorthwestHouse1F", "x": 11, "y": 12, "facing": "Up" },
+    { "warp": 4, "map": "OreburghCityWestHouse", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 5, "map": "OreburghCityMiddleHouse", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 7, "map": "OreburghCityEastHouse1F", "x": 11, "y": 12, "facing": "Up" },
+    { "warp": 9, "map": "OreburghCitySouthHouse", "x": 4, "y": 8, "facing": "Up" }
   ],
-  // The museum and the six other houses have no rooms yet (plan 01 · M11)
-  "locked": [ 3, 4, 5, 6, 7, 9 ],
+  // The Mining Museum is plan 06 · R16b's
+  "locked": [ 6 ],
   // The boy who takes the player to the Gym, and the rival on the way out once the Badge is won (plan 02 · S5)
   "triggers": [ { "trigger": 0, "script": "ToTheGym" }, { "trigger": 1, "script": "RivalOnTheWayOut" } ],
   "people": {

@@ -1,0 +1,25 @@
+# The Old Chateau's fourth room off the corridor (plan 01 · M11, part a), on the original's plan. docs/scripts.md
+# describes the language (scripts_old_chateau_back_middle_east_room.s).
+#
+# Now and then a little girl stands in the room next door, seen over the wall between, as the player comes in: the
+# original rolls a die of a hundred and one for it and shows her on twenty-five or less (CheckShouldShowGhost 25).
+# She turns, walks two steps away and is gone. Her flag (FLAG_HIDE_OLD_CHATEAU_BACK_MIDDLE_EAST_ROOM_TWIN) hides her
+# the rest of the time; nobody can come to where she stands.
+
+
+script OnEnter
+  random 101
+  if result <= 25 goto Ghost
+  setflag FLAG_HIDE_OLD_CHATEAU_BACK_MIDDLE_EAST_ROOM_TWIN
+  end
+label Ghost
+  clearflag FLAG_HIDE_OLD_CHATEAU_BACK_MIDDLE_EAST_ROOM_TWIN
+  place twin 20 5 left
+  show twin
+  wait 0.6
+  face twin down
+  wait 0.5
+  walk twin down 2
+  hide twin
+  setflag FLAG_HIDE_OLD_CHATEAU_BACK_MIDDLE_EAST_ROOM_TWIN
+  end

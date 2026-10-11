@@ -1,0 +1,274 @@
+{
+  "name": "HearthomeCityNortheastHouse1F",
+  "displayName": "Hearthome City",
+  "bgmTrack": "sinnoh/hearthome",
+  "interior": "House",
+  "trees": "Round",
+  "width": 22,
+  "height": 14,
+  "ground": [
+    "######################",
+    "######################",
+    "######################",
+    "#____________________#",
+    "#____________________#",
+    "###########__________#",
+    "###########__________#",
+    "###########__________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "##########D###########"
+  ],
+  "solid": [
+    "######################",
+    "######################",
+    "##################.###",
+    "##..................##",
+    "#....................#",
+    "###########..........#",
+    "###########..........#",
+    "###########..........#",
+    "###..................#",
+    "#....................#",
+    "#....#..........#....#",
+    "##..................##",
+    "##..................##",
+    "##########.###########"
+  ],
+  "behaviours": [
+    { "x": 18, "y": 2, "width": 1, "depth": 1, "behaviour": "Door" }
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 5,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 10,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 15,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 20,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "TrashCan",
+      "x": 2,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 4,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 5,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 6,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 15,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 16,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 17,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 10,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 20,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 10,
+      "sourceY": 13,
+      "targetMap": "Sinnoh",
+      "targetX": 486,
+      "targetY": 698,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 18,
+      "sourceY": 2,
+      "targetMap": "HearthomeCityNortheastHouse2F",
+      "targetX": 18,
+      "targetY": 3,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "pokefan_f",
+      "name": "Mother",
+      "npcType": "Lady",
+      "x": 6,
+      "y": 10,
+      "facing": "Left",
+      "dialog": [
+        "Well now, a Trainer! Then you are father and mother both to your Pokémon.",
+        "You know how living with Pokémon keeps showing you things you never knew?",
+        "It's the same with children. Mine teach me something new every day."
+      ]
+    },
+    {
+      "id": "pikachu",
+      "name": "Pikachu",
+      "npcType": "Pokemon",
+      "x": 4,
+      "y": 11,
+      "facing": "Right",
+      "dialog": [
+        "Pikachu: Pika pii?"
+      ],
+      "species": "Pikachu",
+      "movement": "wander_around",
+      "rangeX": 1
+    },
+    {
+      "id": "battle_girl",
+      "name": "Girl",
+      "npcType": "Lass",
+      "x": 5,
+      "y": 8,
+      "facing": "Down",
+      "dialog": [
+        "Babies and Pokémon get on perfectly.",
+        "When the baby has a nap, the Pokémon curls up asleep right beside the pram."
+      ],
+      "movement": "wander_west_and_east",
+      "rangeX": 2
+    },
+    {
+      "id": "ninja_boy",
+      "name": "Boy",
+      "npcType": "Youngster",
+      "x": 12,
+      "y": 9,
+      "facing": "Left",
+      "dialog": [
+        "When I'm bigger I'm going to be a Trainer too!"
+      ],
+      "movement": "wander_north_and_south",
+      "rangeX": 1,
+      "rangeZ": 1
+    },
+    {
+      "id": "twin",
+      "name": "Little Girl",
+      "npcType": "Lass",
+      "x": 2,
+      "y": 10,
+      "facing": "Down",
+      "dialog": [
+        "When I grow up I want to be a Pokémon Coordinator."
+      ],
+      "movement": "wander_west_and_east",
+      "rangeZ": 1
+    },
+    {
+      "id": "lass",
+      "name": "Lass",
+      "npcType": "lass",
+      "x": 15,
+      "y": 10,
+      "facing": "Left",
+      "dialog": [
+        "Oh, wow, a Pokémon Trainer!",
+        "Looking after that many Pokémon must be a lot of work. But a lot of fun comes with it!"
+      ],
+      "movement": "wander_west_and_east",
+      "rangeX": 1,
+      "rangeZ": 2
+    },
+    {
+      "id": "school_kid_m",
+      "name": "School Kid",
+      "npcType": "Youngster",
+      "x": 2,
+      "y": 3,
+      "facing": "Right",
+      "dialog": [
+        "... My sisters make such a racket that nobody ever notices me."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

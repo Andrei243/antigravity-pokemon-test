@@ -599,9 +599,9 @@ public class StoryTests
         started.UnionWith(new[] { FieldScripts.SafariTimeUp, FieldScripts.SafariOutOfBalls });
         // A Repel's last step (plan 06 · R11)
         started.Add(FieldScripts.RepelWoreOff);
-        // Wild Pokémon (plan 06 · R13): a honey tree, Honey from the bag, poison's survivors, and the assistant's
-        // sister's news of swarms (her house is plan 01 · M11's)
-        started.UnionWith(new[] { FieldScripts.HoneyTree, FieldScripts.UseHoney, FieldScripts.PoisonSurvived, FieldScripts.SwarmNews });
+        // Wild Pokémon (plan 06 · R13): a honey tree, Honey from the bag and poison's survivors (the assistant's sister's
+        // news of swarms is called by her own script since her house was built, plan 01 · M11)
+        started.UnionWith(new[] { FieldScripts.HoneyTree, FieldScripts.UseHoney, FieldScripts.PoisonSurvived });
         // Two trainers who saw the player at once (plan 02 · S6)
         started.Add(FieldScripts.TrainerPair);
         // An Egg hatching at the end of a step (plan 06 · R15)

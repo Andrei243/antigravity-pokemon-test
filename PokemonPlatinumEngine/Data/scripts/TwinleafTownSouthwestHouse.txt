@@ -1,0 +1,23 @@
+# Twinleaf Town's south-west house (plan 01 · M11, part a), on the original's plan. docs/scripts.md describes the
+# language; the lines are our own, on the original's beats (scripts_twinleaf_town_southwest_house.s).
+#
+# A grandmother and her granddaughter: each has one thing to say before the player has the Pokédex (FLAG_HAS_POKEDEX)
+# and another after.
+
+
+script Grandmother
+  if flag FLAG_HAS_POKEDEX goto Pokedex
+  say "Have you heard? The Pokémon Professor is back in the next town over." "Four whole years he was away, they say. I wonder what marvellous Pokémon he found in all that time?"
+  end
+label Pokedex
+  say "Well, well! So Professor Rowan trusted you with a Pokédex, did he?"
+  end
+
+
+script LittleGirl
+  if flag FLAG_HAS_POKEDEX goto Friends
+  say "{player}, {player}, listen! I want a Pokémon! A cute one!"
+  end
+label Friends
+  say "{player}, {player}, listen!" "Do you think Pokémon would be friends with me, the way they are with you?"
+  end

@@ -3,8 +3,10 @@
   "bgmTrack": "sinnoh/floaroma",
   "trees": "Round",
   "architecture": "Cottage",
-  // The honey seller's house has no room yet (plan 01 · M11)
-  "locked": [ 2 ],
+  // Plan 01 · M11, part a: rooms on the original's plans
+  "doors": [
+    { "warp": 2, "map": "FloaromaMeadowHouse", "x": 4, "y": 8, "facing": "Up" }
+  ],
   // Two grunts and the honey man at the way in from town (plan 02 · S6)
   "triggers": [ { "trigger": 0, "script": "Grunts" } ],
   "people": {

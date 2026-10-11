@@ -60,6 +60,8 @@ public enum Op
     Seal, Ribbon,
     // The Underground (plan 06 · R16a)
     Underground,
+    // A die of the script's own (plan 01 · M11): the original's GetRandom
+    Random,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>
