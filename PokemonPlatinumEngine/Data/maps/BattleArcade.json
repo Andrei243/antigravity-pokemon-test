@@ -1,0 +1,304 @@
+{
+  "name": "BattleArcade",
+  "displayName": "Battle Arcade",
+  "bgmTrack": "sinnoh/veilstone",
+  "interior": "GameHall",
+  "trees": "Round",
+  "width": 23,
+  "height": 17,
+  "ground": [
+    "#######################",
+    "#######################",
+    "#######################",
+    "#_____________________#",
+    "#_____________________#",
+    "D_____________________#",
+    "D_____________________#",
+    "D_____________________#",
+    "#____________________##",
+    "#_____________________#",
+    "###############_______#",
+    "##___________________##",
+    "#_____________________#",
+    "#_______###############",
+    "#_____________________#",
+    "##____________________#",
+    "#######################"
+  ],
+  "solid": [
+    "#######################",
+    "#######################",
+    "###############.#######",
+    "#............#...#.##.#",
+    "#............#..##....#",
+    ".............#..##....#",
+    "......................#",
+    "......................#",
+    "#....................##",
+    "#.................#..##",
+    "###############.......#",
+    "##................#..##",
+    "#..#..................#",
+    "#.......###############",
+    "#..#..................#",
+    "##....................#",
+    "#######################"
+  ],
+  "props": [
+    {
+      "type": "Rug",
+      "x": 1,
+      "y": 5,
+      "width": 2,
+      "depth": 3
+    },
+    {
+      "type": "Counter",
+      "x": 13,
+      "y": 3,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "Counter",
+      "x": 16,
+      "y": 4,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 17,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 16,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 17,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 19,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "TrashCan",
+      "x": 21,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 18,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 18,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 3,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 3,
+      "y": 14,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 0,
+      "sourceY": 5,
+      "targetMap": "BattleFrontier",
+      "targetX": 59,
+      "targetY": 62,
+      "targetFacing": "Left"
+    },
+    {
+      "sourceX": 0,
+      "sourceY": 6,
+      "targetMap": "BattleFrontier",
+      "targetX": 59,
+      "targetY": 62,
+      "targetFacing": "Left"
+    },
+    {
+      "sourceX": 0,
+      "sourceY": 7,
+      "targetMap": "BattleFrontier",
+      "targetX": 59,
+      "targetY": 62,
+      "targetFacing": "Left"
+    },
+    {
+      "sourceX": 15,
+      "sourceY": 2,
+      "targetMap": "BattleArcadeCorridor",
+      "targetX": 11,
+      "targetY": 11,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 16,
+      "y": 5,
+      "text": "",
+      "script": "RecordsMachine"
+    },
+    {
+      "x": 19,
+      "y": 3,
+      "text": "The screen shows a board of sixteen lights, and a cursor racing round them faster than the eye can follow."
+    },
+    {
+      "x": 20,
+      "y": 3,
+      "text": "The screen shows a board of sixteen lights, and a cursor racing round them faster than the eye can follow."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "single_attendant",
+      "name": "Attendant",
+      "npcType": "Lass",
+      "x": 14,
+      "y": 5,
+      "facing": "Down",
+      "script": "SingleAttendant"
+    },
+    {
+      "id": "multi_attendant",
+      "name": "Attendant",
+      "npcType": "Lass",
+      "x": 15,
+      "y": 5,
+      "facing": "Down",
+      "script": "MultiAttendant"
+    },
+    {
+      "id": "psychic",
+      "name": "Psychic",
+      "npcType": "Youngster",
+      "x": 19,
+      "y": 9,
+      "facing": "Right",
+      "script": "Psychic"
+    },
+    {
+      "id": "waitress",
+      "name": "Waitress",
+      "npcType": "Lass",
+      "x": 2,
+      "y": 12,
+      "facing": "Down",
+      "script": "Waitress"
+    },
+    {
+      "id": "camper",
+      "name": "Camper",
+      "npcType": "Youngster",
+      "x": 2,
+      "y": 14,
+      "facing": "Right",
+      "script": "Camper"
+    },
+    {
+      "id": "beauty",
+      "name": "Beauty",
+      "npcType": "Lady",
+      "x": 4,
+      "y": 14,
+      "facing": "Right",
+      "script": "Beauty"
+    },
+    {
+      "id": "worker",
+      "name": "Worker",
+      "npcType": "Gentleman",
+      "x": 12,
+      "y": 3,
+      "facing": "Left",
+      "script": "Worker"
+    },
+    {
+      "id": "bug_catcher",
+      "name": "Bug Catcher",
+      "npcType": "Youngster",
+      "x": 7,
+      "y": 11,
+      "facing": "Left",
+      "script": "BugCatcher"
+    },
+    {
+      "id": "tuber_f",
+      "name": "Tuber",
+      "npcType": "Lass",
+      "x": 21,
+      "y": 14,
+      "facing": "Right",
+      "script": "Tuber"
+    },
+    {
+      "id": "parasol_lady",
+      "name": "Parasol Lady",
+      "npcType": "Lady",
+      "x": 19,
+      "y": 6,
+      "facing": "Right",
+      "script": "ParasolLady"
+    },
+    {
+      "id": "hiker_1",
+      "name": "Hiker",
+      "npcType": "Gentleman",
+      "x": 13,
+      "y": 8,
+      "facing": "Down",
+      "script": "Hiker1"
+    },
+    {
+      "id": "hiker_2",
+      "name": "Hiker",
+      "npcType": "Gentleman",
+      "x": 13,
+      "y": 9,
+      "facing": "Up",
+      "script": "Hiker2"
+    },
+    {
+      "name": "PC Terminal",
+      "npcType": "Trainer",
+      "x": 17,
+      "y": 5,
+      "facing": "Down",
+      "isPCTerminal": true
+    }
+  ],
+  "wildEncounters": []
+}

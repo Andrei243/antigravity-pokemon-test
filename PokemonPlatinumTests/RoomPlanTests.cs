@@ -171,6 +171,10 @@ public class RoomPlanTests
         "BattleHall", "BattleHallCorridor", "BattleHallStage", "BattleCastle", "BattleCastleCorridor", "BattleCastleBattleRoom",
     };
 
+    /// <summary>The Battle Arcade's rooms (plan 06 · R18d): the lobby is come into from the west, and the corridor and
+    /// the game room behind its attendants are laid out from the original's scenes (<c>BattleArcadeTests</c>).</summary>
+    internal static readonly string[] BattleArcade = { "BattleArcade", "BattleArcadeCorridor", "BattleArcadeBattleRoom" };
+
     /// <summary>The Canalave Library's upper floors (plan 02 · S10): no door, only the stairs.</summary>
     internal static readonly string[] LibraryUpperFloors = { "CanalaveLibrary2F", "CanalaveLibrary3F" };
 
@@ -853,6 +857,19 @@ public class RoomPlanTests
         new object[] { "PalParkGallery", "pokefan_m", 8, 4, Direction.Up },
         new object[] { "PalParkGallery", "youngster", 3, 4, Direction.Up },
         new object[] { "PalParkGallery", "lady", 14, 4, Direction.Up },
+        // The Battle Arcade's lobby (plan 06 · R18d): the original's twelve (its reporter is plan 08's)
+        new object[] { "BattleArcade", "single_attendant", 14, 5, Direction.Down },
+        new object[] { "BattleArcade", "multi_attendant", 15, 5, Direction.Down },
+        new object[] { "BattleArcade", "psychic", 19, 9, Direction.Right },
+        new object[] { "BattleArcade", "waitress", 2, 12, Direction.Down },
+        new object[] { "BattleArcade", "camper", 2, 14, Direction.Right },
+        new object[] { "BattleArcade", "beauty", 4, 14, Direction.Right },
+        new object[] { "BattleArcade", "worker", 12, 3, Direction.Left },
+        new object[] { "BattleArcade", "bug_catcher", 7, 11, Direction.Left },
+        new object[] { "BattleArcade", "tuber_f", 21, 14, Direction.Right },
+        new object[] { "BattleArcade", "parasol_lady", 19, 6, Direction.Right },
+        new object[] { "BattleArcade", "hiker_1", 13, 8, Direction.Down },
+        new object[] { "BattleArcade", "hiker_2", 13, 9, Direction.Up },
     };
 
     [Theory]
@@ -943,6 +960,7 @@ public class RoomPlanTests
             CenterFloors,
             TerminalFloors,
             ParkGallery,
+            BattleArcade,
         }.SelectMany(names => names).ToHashSet();
         foreach (string path in Directory.GetFiles(GameDataFiles.PathOf(MapDatabase.Folder), "*.json"))
         {

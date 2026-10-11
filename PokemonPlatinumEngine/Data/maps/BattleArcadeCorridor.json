@@ -1,0 +1,158 @@
+{
+  "name": "BattleArcadeCorridor",
+  "displayName": "Battle Arcade",
+  "bgmTrack": "sinnoh/veilstone",
+  "interior": "GameHall",
+  "trees": "Round",
+  "width": 16,
+  "height": 13,
+  "ground": [
+    "################",
+    "################",
+    "################",
+    "#______________#",
+    "#______________#",
+    "#______________#",
+    "#______________#",
+    "#______________#",
+    "#______________#",
+    "#______________#",
+    "#______________#",
+    "#______________#",
+    "###########D####"
+  ],
+  "solid": [
+    "################",
+    "################",
+    "####.###########",
+    "##.....##.##..##",
+    "#..............#",
+    "#..............#",
+    "#..............#",
+    "#..............#",
+    "#..............#",
+    "#..............#",
+    "#..............#",
+    "##............##",
+    "###########.####"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 14,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 14,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 7,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 10,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 11,
+      "y": 9,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 8,
+      "width": 8,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 3,
+      "width": 1,
+      "depth": 5
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 11,
+      "sourceY": 12,
+      "targetMap": "BattleArcade",
+      "targetX": 14,
+      "targetY": 6,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 4,
+      "sourceY": 2,
+      "targetMap": "BattleArcadeBattleRoom",
+      "targetX": 8,
+      "targetY": 16,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 7,
+      "y": 3,
+      "text": "A screen full of coloured lights. They chase one another round and round."
+    },
+    {
+      "x": 8,
+      "y": 3,
+      "text": "A screen full of coloured lights. They chase one another round and round."
+    },
+    {
+      "x": 10,
+      "y": 3,
+      "text": "A screen full of coloured lights. They chase one another round and round."
+    },
+    {
+      "x": 11,
+      "y": 3,
+      "text": "A screen full of coloured lights. They chase one another round and round."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "attendant",
+      "name": "Attendant",
+      "npcType": "Lass",
+      "x": 11,
+      "y": 9,
+      "facing": "Up",
+      "dialog": [
+        "..."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

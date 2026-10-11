@@ -82,6 +82,8 @@ public enum Op
     Hall, Castle,
     // The move tutors and the Move Deleter (plan 01 · M11, part d)
     Tutor,
+    // The Battle Arcade (plan 06 · R18d)
+    Arcade,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

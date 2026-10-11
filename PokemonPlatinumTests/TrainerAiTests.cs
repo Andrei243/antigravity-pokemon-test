@@ -352,6 +352,35 @@ public class TrainerAiTests
         Assert.Equal(BattleResult.PlayerDefeat, core.Result);
     }
 
+    [Fact]
+    public void APartnersPokemonGoesBackToThePartner()
+    {
+        // U-turn in a tag battle: the line names the trainer whose Pokémon it is. The partner's only move is
+        // U-turn, and with someone on the bench its Staraptor comes back to it, not to the player beside it
+        var party = new Party();
+        party.Add(Of(Gender.Male, "Bidoof", 50, "Growl"));
+        var barry = new Trainer { Id = "barry", Name = "Barry", TrainerClass = "Pokémon Trainer", Ai = AiFlags.Basic };
+        barry.Party.Add(Of(Gender.Male, "Staraptor", 50, "U-turn"));
+        barry.Party.Add(Of(Gender.Male, "Snorlax", 50, "Tackle"));
+        var grunts = new List<Trainer>();
+        foreach (string name in new[] { "A", "B" })
+        {
+            var grunt = new Trainer { Id = "grunt_" + name, Name = name, TrainerClass = "Galactic Grunt" };
+            grunt.Party.Add(Of(Gender.Male, "Snorlax", 50, "Growl"));
+            grunts.Add(grunt);
+        }
+        var core = new BattleCore(new CoreSetup
+        {
+            PlayerParty = party, Trainers = grunts, Partner = barry, Format = BattleFormat.Double, Random = Calm(), Rules = Ruleset.Platinum,
+            PlayerController = null, EnemyController = null, PlayerName = "Lucas"
+        });
+        core.Start();
+        var said = DoubleTurn(core, (Mine, 0, Foe), (Foe, 0, Mine), (Foe2, 0, Mine));
+        Assert.Contains("Staraptor went back to Barry!", said);
+        Assert.DoesNotContain(said, line => line.Contains("went back to Lucas"));
+        Assert.Equal("Snorlax", core.PlayerSlots[1].Pokemon!.Species.Name);
+    }
+
     // ------------------------------------------------------------------ Platinum's trainers
 
     [Fact]

@@ -686,6 +686,22 @@ public static class ScriptParser
                 return new Instruction { Op = Op.Castle, Line = line, Name = what, Other = which };
             }
 
+            // The Battle Arcade (plan 06 · R18d)
+            case "arcade":
+            {
+                string what = r.OneOf("enough", "choose", "check", "begin", "enter", "pause", "resume", "forfeit", "end", "active", "paused", "way",
+                    "battles", "next", "nth", "round", "draw", "opponent", "board", "event", "side", "immune", "free", "skip", "battle", "won", "done",
+                    "dahlia", "announce", "brain", "beat", "finish", "points", "beaten");
+                string which = what switch
+                {
+                    "begin" => r.OneOf("single", "double"),
+                    "beat" => r.OneOf("silver", "gold"),
+                    "finish" => r.OneOf("won", "lost"),
+                    _ => ""
+                };
+                return new Instruction { Op = Op.Arcade, Line = line, Name = what, Other = which };
+            }
+
             case "script":
             case "label":
                 throw r.Error($"'{word}' begins a line of its own");

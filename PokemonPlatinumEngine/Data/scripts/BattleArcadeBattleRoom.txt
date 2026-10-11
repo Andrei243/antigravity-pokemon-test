@@ -1,0 +1,346 @@
+# The Battle Arcade's game room (plan 06 · R18d). docs/scripts.md describes the language; the lines are our own, on
+# the original's beats (frontier_scripts_battle_arcade.s, which the original plays as a scene of the Frontier's own
+# over a picture of the room: the room here is laid out from where that scene stands its people, the host before the
+# great screen at the head of the room, the challenger on the west of the floor and the trainer on the east, the
+# crowd at the foot of the room).
+#
+# A whole round is played here without leaving. For each game the trainer drawn for it walks in (arcade opponent),
+# the game board is set going and stopped (arcade board), and the host says what its cursor stopped on: something
+# for one side's Pokémon, for the battle, for the board, or a bonus. The battle is fought under it (arcade battle),
+# unless the board passed it (arcade skip). The three are whole again for every battle. Between games the challenge
+# may go on, be put down (REST) or be given up (RETIRE). After the seventh the records are written and the Battle
+# Points handed over; after a battle lost the streak ends. At the 21st game of a Single streak, and at the 49th, the
+# trainer is the Arcade Star herself.
+#
+# The events by their numbers (the original's ARCADE_EFFECT_…): 0 to 8 fall on the trainer's Pokémon and 9 to 17, the
+# same nine, on the challenger's: HP down, poison, paralysis, a burn, sleep, ice, a berry, an item, three levels.
+# 18 to 23 are the battle's: sun, rain, a sandstorm, hail, fog, a Trick Room. 24 to 26 are the board's: faster,
+# slower, random. 27 swaps the teams, 28 and 31 give Battle Points, 29 passes the battle and 30 is nothing.
+#
+# Not here: what each trainer says, which is the original's own text: they walk in without a word; and the question
+# whether the battle is to be kept as a Battle Video (plan 08 · P10).
+
+
+script OnEnter
+  place host 8 4 down
+  place attendant 7 16 up
+  arcade active
+  if result == 0 end
+  speaker "Host"
+  walk player up 6 left 4 up 4
+  face player right
+  hide attendant
+  arcade battles
+  if result != 0 goto Menu
+  say "Welcome to the Battle Arcade, where anything can happen, and generally does!"
+  say "First things first: whatever your Pokémon were holding is in safe keeping until you leave."
+
+# A game: the trainer walks in, and the board is set going
+label Game
+  arcade next
+  arcade dahlia
+  if result == 1 goto Silver
+  if result == 2 goto Gold
+  say "Game no. {number}! Here we go!"
+  arcade opponent
+  place opponent 8 10 up
+  clearflag FLAG_HIDE_BATTLE_ARCADE_ROOM_OPPONENT
+  show opponent
+  walk opponent up 1 right 4 up 3
+  face opponent left
+label Board
+  walk host down 1
+  say "And now, without further ado... let's set the game board going!"
+  arcade board
+  say "And the game board says... {event}!"
+  arcade event
+  if result == 0 goto HpDown
+  if result == 9 goto HpDown
+  if result == 1 goto Poison
+  if result == 10 goto Poison
+  if result == 2 goto Paralysis
+  if result == 11 goto Paralysis
+  if result == 3 goto Burn
+  if result == 12 goto Burn
+  if result == 4 goto Sleep
+  if result == 13 goto Sleep
+  if result == 5 goto Freeze
+  if result == 14 goto Freeze
+  if result == 6 goto Held
+  if result == 15 goto Held
+  if result == 7 goto Held
+  if result == 16 goto Held
+  if result == 8 goto LevelUp
+  if result == 17 goto LevelUp
+  if result == 18 goto Sun
+  if result == 19 goto Rain
+  if result == 20 goto Sand
+  if result == 21 goto Hail
+  if result == 22 goto Fog
+  if result == 23 goto TrickRoom
+  if result == 24 goto Faster
+  if result == 25 goto Slower
+  if result == 26 goto Random
+  if result == 27 goto Swap
+  if result == 28 goto Points
+  if result == 31 goto Points
+  if result == 29 goto NoBattle
+  say "What a pity! Nothing happens this time!"
+  goto Ready
+
+label HpDown
+  say "The battle begins with {struck}'s Pokémon short of their full HP!"
+  goto Ready
+label Poison
+  arcade immune
+  if result == 1 goto PoisonSafe
+  say "The battle begins with {struck}'s Pokémon poisoned!"
+  goto Ready
+label PoisonSafe
+  say "{struck}'s Pokémon are to begin poisoned... Oh! What a stroke of luck! Not one of them can be poisoned!"
+  goto Ready
+label Paralysis
+  arcade immune
+  if result == 1 goto ParalysisSafe
+  say "The battle begins with {struck}'s Pokémon paralyzed!"
+  goto Ready
+label ParalysisSafe
+  say "{struck}'s Pokémon are to begin paralyzed... Oh! What a stroke of luck! Not one of them can be paralyzed!"
+  goto Ready
+label Burn
+  arcade immune
+  if result == 1 goto BurnSafe
+  say "The battle begins with {struck}'s Pokémon burned!"
+  goto Ready
+label BurnSafe
+  say "{struck}'s Pokémon are to begin burned... Oh! What a stroke of luck! Not one of them can be burned!"
+  goto Ready
+label Sleep
+  arcade immune
+  if result == 1 goto SleepSafe
+  say "The battle begins with one of {struck}'s Pokémon fast asleep!"
+  goto Ready
+label SleepSafe
+  say "One of {struck}'s Pokémon is to begin asleep... Oh! What a stroke of luck! Not one of them can be put to sleep!"
+  goto Ready
+label Freeze
+  arcade immune
+  if result == 1 goto FreezeSafe
+  say "The battle begins with one of {struck}'s Pokémon frozen solid!"
+  goto Ready
+label FreezeSafe
+  say "One of {struck}'s Pokémon is to begin frozen... Oh! What a stroke of luck! Not one of them can be frozen!"
+  goto Ready
+label Held
+  say "{struck}'s Pokémon are each lent a {item} to hold!"
+  goto Ready
+label LevelUp
+  say "The battle begins with {struck}'s Pokémon three levels higher!"
+  goto Ready
+label Sun
+  say "This battle is fought under a blazing sun!"
+  goto Ready
+label Rain
+  say "This battle is fought in a steady downpour!"
+  goto Ready
+label Sand
+  say "This battle is fought in a raging sandstorm!"
+  goto Ready
+label Hail
+  say "This battle is fought under a pelting of hail!"
+  goto Ready
+label Fog
+  say "This battle is fought in a fog you could lose a Wailord in!"
+  goto Ready
+label TrickRoom
+  say "This battle is fought on a floor where time and space have come loose. The slow go first!"
+  goto Ready
+label Faster
+  say "From the next game on, the cursor goes faster!"
+  goto Ready
+label Slower
+  say "From the next game on, the cursor goes slower!"
+  goto Ready
+label Random
+  say "In the next game, the cursor goes wherever it pleases!"
+  goto Ready
+label Swap
+  say "For this battle, your Pokémon and the other trainer's change sides!"
+  goto Ready
+# Battle Points, handed over on the spot (_1EDA, _1F71)
+label Points
+  walk host left 3
+  arcade free
+  text "{player} received {number} BP!"
+  fanfare item
+  walk host right 3
+  say "Now then. Are you ready?"
+  goto Ready
+# The battle is passed: the trainer goes as they came, and the game counts as won (_1FFC)
+label NoBattle
+  walk opponent right 2 down 8
+  setflag FLAG_HIDE_BATTLE_ARCADE_ROOM_OPPONENT
+  hide opponent
+  say "Oh! Lucky you! This battle is passed, and it counts as won!"
+  walk host up 1
+  face host down
+  arcade skip
+  arcade done
+  if result == 1 goto RoundDone
+  goto Menu
+
+# The battle, under whatever the board said (_2357)
+label Ready
+  walk host up 1
+  face host down
+  say "Then let the battle begin!"
+  move opponent left 1
+  walk player right 1
+  waitmoves
+  arcade battle
+  if result == 0 goto Lost
+  arcade dahlia
+  if result == 1 goto BeatSilver
+  if result == 2 goto BeatGold
+label Count
+  move opponent right 3 down 8
+  walk player left 1
+  face player right
+  waitmoves
+  setflag FLAG_HIDE_BATTLE_ARCADE_ROOM_OPPONENT
+  hide opponent
+  arcade won
+  arcade done
+  if result == 1 goto RoundDone
+  # _27DC: an attendant runs up, and the three are made whole
+  place attendant 3 11 up
+  show attendant
+  walk attendant up 5 fast
+  face attendant right
+  face player left
+  speaker "Attendant"
+  say "Well played! Let me see to your Pokémon."
+  fanfare heal
+  face player right
+  walk attendant down 6 fast
+  hide attendant
+  speaker "Host"
+label Menu
+  arcade announce
+  if result == 1 say "Now hear this! Our Arcade Star has been watching you, and she insists on playing the next game herself. No ifs, no buts!"
+  arcade next
+  choose "Game no. {number} is next. Are you ready?" "KEEP GOING" "REST" "RETIRE"
+  if result == 1 goto Rest
+  if result == 2 goto Retire
+label Onward
+  arcade draw
+  goto Game
+
+# The Arcade Star (the scene's own for her: she comes in through the crowd, turning as she goes)
+label Silver
+  arcade opponent
+  arcade brain
+  say "Game no. {number}... but wait! Listen to that crowd!"
+  call Entrance
+  speaker "Dahlia"
+  say "No need to fret! Chance will do as chance does. The board goes round, and so does everything else."
+  say "But one thing I do know: nobody comes this far on luck alone. I'm Dahlia, the Arcade Star. Let's see what the board has in store for the two of us!"
+  speaker "Host"
+  goto Board
+label Gold
+  arcade opponent
+  arcade brain
+  say "Game no. {number}... and here she comes again! The Arcade Star!"
+  call Entrance
+  speaker "Dahlia"
+  say "No need to fret! Chance will do as chance does. The board goes round, and so does everything else."
+  say "But you keep on being wonderful, whichever way it turns. Are you wonderful to the very end? Show me, and hold nothing back!"
+  speaker "Host"
+  goto Board
+label BeatSilver
+  speaker "Dahlia"
+  say "How perfectly marvellous! You love your Pokémon, and they believe in you. That's why nothing the board threw at you could knock you down."
+  say "What a lovely win!"
+  arcade beat silver
+  speaker "Host"
+  goto Count
+label BeatGold
+  speaker "Dahlia"
+  say "Marvellous, every one of you! You brushed the bad luck aside and caught the good in both hands, and that takes far more than luck."
+  say "You have beaten me fair and square, and I couldn't be happier to have been here for it!"
+  arcade beat gold
+  speaker "Host"
+  goto Count
+
+# All seven through: the records are written and the Battle Points handed over (_279A)
+label RoundDone
+  arcade finish won
+  setvar VAR_BATTLE_ARCADE_LOBBY_LOAD_ACTION 1
+  say "That's the seventh game, and the seventh win! Congratulations! Your prize is Battle Points!"
+  arcade points
+  text "{player} received {number} BP!"
+  fanfare item
+  goto Leave
+
+label Lost
+  setflag FLAG_HIDE_BATTLE_ARCADE_ROOM_OPPONENT
+  hide opponent
+  arcade finish lost
+  setvar VAR_BATTLE_ARCADE_LOBBY_LOAD_ACTION 3
+  goto Leave
+
+label Retire
+  ask "Give the challenge up? The streak will end here."
+  if no goto Menu
+  arcade finish lost
+  setvar VAR_BATTLE_ARCADE_LOBBY_LOAD_ACTION 3
+  goto Leave
+
+label Rest
+  ask "Save the game and take a break? You can go on from here later."
+  if no goto Menu
+  setvar VAR_BATTLE_ARCADE_LOBBY_LOAD_ACTION 2
+  arcade pause
+  warp "BattleArcade" 14 6 up
+  end
+
+label Leave
+  say "Whatever your Pokémon were holding when they came in is theirs again. Thank you for playing!"
+  warp "BattleArcade" 14 6 up
+  end
+
+
+# The crowd: a wave of it.
+script Cheer
+  emote spectator_13 note 0.2
+  emote spectator_12 note 0.2
+  emote spectator_3 note 0.2
+  emote spectator_6 note 0.3
+  return
+
+
+# The Arcade Star comes up through the crowd from the door, turning on the spot as she goes.
+script Entrance
+  place opponent 8 16 up
+  clearflag FLAG_HIDE_BATTLE_ARCADE_ROOM_OPPONENT
+  show opponent
+  call Cheer
+  walk opponent up 3
+  call Twirl
+  walk opponent up 3
+  call Twirl
+  call Cheer
+  walk opponent up 1 right 4 up 3
+  face opponent left
+  return
+
+script Twirl
+  face opponent right
+  wait 0.12
+  face opponent down
+  wait 0.12
+  face opponent left
+  wait 0.12
+  face opponent up
+  wait 0.12
+  return

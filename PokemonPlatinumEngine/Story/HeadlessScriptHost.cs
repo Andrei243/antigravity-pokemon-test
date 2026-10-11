@@ -666,9 +666,21 @@ public sealed class HeadlessScriptHost : IScriptHost
     public Models.Frontier.BattleFactoryChallenge? Factory { get; set; }
     public Models.Frontier.BattleHallChallenge? Hall { get; set; }
     public Models.Frontier.BattleCastleChallenge? Castle { get; set; }
+    public Models.Frontier.BattleArcadeChallenge? Arcade { get; set; }
 
     /// <summary>What a test does at one of the Battle Castle's counters ("castleself", "castlefoe") while the script waits; nothing when left empty.</summary>
     public Action<Models.Frontier.BattleCastleChallenge, string>? AtCastleCounter { get; set; }
+
+    /// <summary>
+    /// How a test plays the Battle Arcade's game board while the script waits: it is handed the board as it comes
+    /// up and stops its cursor by the frame (<see cref="Models.Frontier.ArcadeBoard.Advance"/>, or
+    /// <see cref="Models.Frontier.ArcadeBoard.PlayTo"/> for a panel). Left empty, the cursor is stopped on the first
+    /// frame it runs.
+    /// </summary>
+    public Action<Models.Frontier.ArcadeBoard>? AtArcadeBoard { get; set; }
+
+    /// <summary>The weather or the room each Frontier battle opened under, beside <see cref="FrontierBattles"/>; null where a facility set none.</summary>
+    public List<Models.Frontier.FrontierConditions?> FrontierFields { get; } = new();
     public Queue<IReadOnlyList<int>> Entering { get; } = new();
     public IReadOnlyList<int> Entered { get; private set; } = Array.Empty<int>();
     public List<(Party Team, IReadOnlyList<Trainer> Foes, Trainer? Partner, bool Doubles)> FrontierBattles { get; } = new();
@@ -715,6 +727,16 @@ public sealed class HeadlessScriptHost : IScriptHost
                 if (Castle != null) AtCastleCounter?.Invoke(Castle, what);
                 Answer = 1;
                 return Answer;
+            case "arcadeboard":
+                // The Battle Arcade's game board: played as a test plays it, or stopped at once
+                Waits();
+                if (Arcade?.Board is { } board)
+                {
+                    AtArcadeBoard?.Invoke(board);
+                    if (!board.IsDone) board.PlayTo();
+                }
+                Answer = 1;
+                return Answer;
             case "seen":
                 return SeenSpecies.Any(s => PokemonDatabase.Get(s)?.DexNumber == number) ? 1 : 0;
             case "score":
@@ -750,11 +772,12 @@ public sealed class HeadlessScriptHost : IScriptHost
         return allowed.GroupBy(i => Party.Members[i].Species.Name).Where(g => g.Count() >= needed).Select(g => g.Take(needed).ToList()).FirstOrDefault() ?? new List<int>();
     }
 
-    public void FrontierBattle(Party team, IReadOnlyList<Trainer> foes, Trainer? partner, bool doubles)
+    public void FrontierBattle(Party team, IReadOnlyList<Trainer> foes, Trainer? partner, bool doubles, Models.Frontier.FrontierConditions? conditions = null)
     {
         Shown("start a battle");
         Waits();
         FrontierBattles.Add((team, foes, partner, doubles));
+        FrontierFields.Add(conditions);
         Outcome = Fight?.Invoke(null) ?? BattleOutcome.Won;
         Log.Add($"frontierbattle {string.Join(" and ", foes.Select(f => f.Id))}{(partner != null ? $" with {partner.Id}" : "")} {Outcome}");
     }

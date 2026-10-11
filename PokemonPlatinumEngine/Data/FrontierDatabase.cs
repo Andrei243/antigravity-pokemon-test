@@ -142,6 +142,59 @@ public sealed class CastleTables
     public List<int> ItemsByRank { get; set; } = new();
 }
 
+/// <summary>
+/// One of the thirty-two events of the Battle Arcade's game board (<c>ARCADE_EFFECT_…</c>), in the original's order:
+/// its constant's name, the rounds it may come up in and, for the seven that go by the battle too, the battles of a
+/// round (<c>sEffectAvailabilityByRound</c>, <c>sEffectAvailabilityByBattle</c>).
+/// </summary>
+public sealed class ArcadeEffectRecord
+{
+    public string Name { get; set; } = "";
+
+    /// <summary>Seven flags: the first six rounds, and every round from the seventh on.</summary>
+    public int[] Rounds { get; set; } = Array.Empty<int>();
+
+    /// <summary>Seven flags, a battle of the round each; null for an event that comes up at any battle.</summary>
+    public int[]? Battles { get; set; }
+}
+
+/// <summary>
+/// The Battle Arcade's tables (plan 06 · R18d; <c>src/overlay104/battle_arcade.c</c>, <c>battle_arcade_helpers.c</c>
+/// and the game board, <c>src/applications/frontier/battle_arcade/main.c</c>).
+/// </summary>
+public sealed class ArcadeTables
+{
+    /// <summary>The trainers of a round, round by round (<c>sBattleArcadeOpponentPools</c>), as the Battle Factory's rows are.</summary>
+    public List<int[]> Opponents { get; set; } = new();
+
+    /// <summary>What the board gives a side to hold, by the round: three lists of items and three of berries (<c>sItemPools</c>, <c>sBerryPools</c>).</summary>
+    public List<List<string>> Items { get; set; } = new();
+    public List<List<string>> Berries { get; set; } = new();
+
+    /// <summary>The board's events (<c>NUM_ARCADE_EFFECTS</c>).</summary>
+    public List<ArcadeEffectRecord> Effects { get; set; } = new();
+
+    /// <summary>How likely a panel is to be the foe's, one's own, the battle's or a bonus, by how the last battle went (<c>sCategoryWeights</c>, five rows of four).</summary>
+    public List<int[]> Weights { get; set; } = new();
+
+    /// <summary>The scores a last battle must reach for each of the first four rows of <see cref="Weights"/> (<c>sCategoryTierPerformanceThresholds</c>).</summary>
+    public List<int> Thresholds { get; set; } = new();
+
+    /// <summary>The frames the cursor waits on a panel at each of its eight speeds (<c>sCursorMoveFrames</c>).</summary>
+    public List<int> CursorFrames { get; set; } = new();
+
+    /// <summary>The cursor's speed as a round begins: a round and the speed from it on, the latest round first (<c>sRouletteSpeedByRound</c>).</summary>
+    public List<int[]> SpeedByRound { get; set; } = new();
+
+    /// <summary>What a battle scores by how many of the team ended it with a status, by how many fainted, and by the turns it took: a number of turns it was under and the score (<c>sPerformanceByNumWithStatus</c>, <c>…ByNumFainted</c>, <c>…ByTurnsElapsed</c>).</summary>
+    public List<int> ScoreByStatus { get; set; } = new();
+    public List<int> ScoreByFainted { get; set; } = new();
+    public List<int[]> ScoreByTurns { get; set; } = new();
+
+    /// <summary>The Battle Points a round earns, by the round the streak goes on to (<c>sBPPerRoundSolo</c>).</summary>
+    public List<int> PointsByRound { get; set; } = new();
+}
+
 public sealed class FrontierData
 {
     /// <summary>The trainers in the original's order: the first is trainer 0.</summary>
@@ -176,6 +229,9 @@ public sealed class FrontierData
 
     /// <summary>The Battle Castle's rounds and what its counters lend (plan 06 · R18c).</summary>
     public CastleTables Castle { get; set; } = new();
+
+    /// <summary>The Battle Arcade's rounds and its game board (plan 06 · R18d).</summary>
+    public ArcadeTables Arcade { get; set; } = new();
 }
 
 /// <summary>
@@ -201,6 +257,7 @@ public static class FrontierDatabase
     public static FactoryTables Factory => Data.Factory;
     public static HallTables Hall => Data.Hall;
     public static CastleTables Castle => Data.Castle;
+    public static ArcadeTables Arcade => Data.Arcade;
 
     public static FrontierTrainerRecord Trainer(int number) => Data.Trainers[number];
     public static FrontierSetRecord Set(int number) => Data.Sets[number];

@@ -660,6 +660,33 @@ on the original's script command; all are for the Pokémon `RESULT` names after 
 
 Pastoria's Move Relearner and Eterna's Name Rater say what they do and change nothing: their rules are plan 12 ·
 Q19's (`Models/Relearning.cs`) and plan 13 · V4's naming prompt.
+
+### The Battle Arcade
+
+Plan 06 · R18d; `docs/mechanics/rulings.md`, "The Battle Arcade". A challenge lives between its scripts as
+`IScriptHost.Arcade`; its three are copies holding nothing that the challenge carries from game to game, and so are
+the trainer's. A whole round is one arrival script of the game room, which loops: the board, what it did, the
+battle, the question.
+
+| Command | What it does |
+|---|---|
+| `arcade enough` | `RESULT` 1 when the team holds three Pokémon of different species that may go in (what they hold doesn't matter: the board takes it for the challenge). `{banned}` as above. |
+| `arcade choose`, `arcade check` | Opens the team for three to be chosen, and waits: `RESULT` 1, or 0 when backed out of. Then 1 when two of them are of one species. |
+| `arcade begin single`, `arcade begin double` | Starts a challenge with the three chosen: copies at level 50 or under, holding nothing. A streak still running that way is taken up. Say it only once the save is agreed to. The story's `VAR_BATTLE_ARCADE_CHALLENGE_TYPE` keeps its kind. |
+| `arcade enter` | Draws the round's trainers and the first one's three (a challenge taken up again keeps what it had), and counts a challenge begun. |
+| `arcade pause`, `arcade resume`, `arcade paused`, `arcade forfeit`, `arcade end`, `arcade active`, `arcade way` | As the Hall's: a challenge put down keeps the game it had come to, the cursor's speed and whether it jumps, the round's trainers, the next one's three and what the board has given the challenger's three to hold. |
+| `arcade battles`, `arcade next`, `arcade nth`, `arcade round` | As the Hall's: the games of the round through, the one to come, its number in the streak, and the rounds the streak has come through. |
+| `arcade draw`, `arcade opponent` | Draws the next trainer's three; stands the trainer drawn in the game room as `opponent`. `{foe}` names them. |
+| `arcade board` | Brings up the game board and waits while it is played, then carries out the event its cursor stopped on: `RESULT` is the event's number (0 to 31, the original's `ARCADE_EFFECT_...`), `{event}` its name, `{struck}` whose Pokémon it fell on (the trainer's name, or the player's) and `{item}` what it gave to hold. |
+| `arcade event`, `arcade side`, `arcade immune` | That number again; whom the event fell on (0 the trainer, 1 the challenger, 2 the battle or the board, 3 a bonus); and 1 when everyone it fell on was kept from it (a type or an ability that a status can't touch). |
+| `arcade free` | Hands over the Battle Points the event gives outright: `RESULT` and `{number}`, 1 or 3 (0 for any other event). |
+| `arcade skip` | Counts a battle the board passed as won, with nothing fought. |
+| `arcade battle` | The battle, with both threes as the board left them (each other's when it swapped them), under the weather or the Trick Room it set: `RESULT` 1 won, 0 lost. Afterwards the battle is scored for the next board, what the board gave to hold is kept, a level it raised is taken back and both threes are made well. |
+| `arcade won`, `arcade done` | Counts the win; 1 once the round's seven are through. |
+| `arcade dahlia`, `arcade announce` | Who the battle to come is against (0, 1 the Arcade Star for the silver print, 2 for the gold one); and 1 the one time she is to be announced. |
+| `arcade brain`, `arcade beat silver`, `arcade beat gold` | Counts the Arcade Star met; notes her beaten, so that the print waits in the lobby. |
+| `arcade finish won`, `arcade finish lost`, `arcade points`, `arcade beaten` | As the Hall's: the records, the Battle Points a round earned, and who was beaten. |
+
 ## Who is on the map
 
 A person can carry a flag that takes them off the map while it is set (`hiddenBy`) or one they wait for

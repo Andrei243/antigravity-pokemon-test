@@ -408,7 +408,8 @@ public sealed partial class BattleCore
 
         if (use.Leaves == Leaving.Returns)
         {
-            Say($"{place.Name} went back to {(place.IsPlayerSide ? playerName : place.Trainer!.Name)}!");
+            // Whose Pokémon it is: a partner's goes back to the partner, not to the player beside them
+            Say($"{place.Name} went back to {place.Trainer?.Name ?? playerName}!");
             if (Pursue(place))
             {
                 if (Result != BattleResult.None) yield break;

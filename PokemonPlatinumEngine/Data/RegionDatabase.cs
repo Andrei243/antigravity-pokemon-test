@@ -259,6 +259,8 @@ public static class RegionDatabase
                 "SolaceonPokemonCenter2F", "SolaceonPokemonCenterB1F", "SunyshorePokemonCenter2F",
                 "SunyshorePokemonCenterB1F", "SurvivalAreaPokemonCenter2F", "SurvivalAreaPokemonCenterB1F",
                 "VeilstonePokemonCenter2F", "VeilstonePokemonCenterB1F",
+                // Plan 06 · R18d: the Battle Arcade's lobby, corridor and game room
+                "BattleArcade", "BattleArcadeCorridor", "BattleArcadeBattleRoom",
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

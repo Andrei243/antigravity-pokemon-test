@@ -443,6 +443,40 @@ public class ScriptTests
           castle beaten
           castle forfeit
           castle end
+          arcade enough
+          arcade choose
+          arcade check
+          arcade begin single
+          arcade enter
+          arcade active
+          arcade way
+          arcade battles
+          arcade next
+          arcade nth
+          arcade round
+          arcade draw
+          arcade opponent
+          arcade board
+          arcade event
+          arcade side
+          arcade immune
+          arcade free
+          arcade skip
+          arcade battle
+          arcade won
+          arcade done
+          arcade dahlia
+          arcade announce
+          arcade brain
+          arcade beat silver
+          arcade pause
+          arcade paused
+          arcade resume
+          arcade finish won
+          arcade points
+          arcade beaten
+          arcade forfeit
+          arcade end
         script Other
           end
         """;
@@ -1302,9 +1336,10 @@ public class ScriptTests
         public PokemonPlatinumEngine.Models.Frontier.BattleFactoryChallenge? Factory { get => inner.Factory; set => inner.Factory = value; }
         public PokemonPlatinumEngine.Models.Frontier.BattleHallChallenge? Hall { get => inner.Hall; set => inner.Hall = value; }
         public PokemonPlatinumEngine.Models.Frontier.BattleCastleChallenge? Castle { get => inner.Castle; set => inner.Castle = value; }
+        public PokemonPlatinumEngine.Models.Frontier.BattleArcadeChallenge? Arcade { get => inner.Arcade; set => inner.Arcade = value; }
         public int FrontierAct(string what, int number, NPC? subject) => inner.FrontierAct(what, number, subject);
         public IReadOnlyList<int> Entered => inner.Entered;
-        public void FrontierBattle(Party team, IReadOnlyList<Trainer> foes, Trainer? partner, bool doubles) => inner.FrontierBattle(team, foes, partner, doubles);
+        public void FrontierBattle(Party team, IReadOnlyList<Trainer> foes, Trainer? partner, bool doubles, PokemonPlatinumEngine.Models.Frontier.FrontierConditions? conditions = null) => inner.FrontierBattle(team, foes, partner, doubles, conditions);
         public string DiggerName => inner.DiggerName;
         public int Random(int sides) => inner.Random(sides);
         public int BattleTurns => inner.BattleTurns;

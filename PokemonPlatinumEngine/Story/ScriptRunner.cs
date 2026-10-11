@@ -816,6 +816,11 @@ public sealed partial class ScriptRunner
                 Tutor(i);
                 break;
 
+            // The Battle Arcade (plan 06 · R18d)
+            case Op.Arcade:
+                Arcade(i);
+                break;
+
             default:
                 throw Wrong(i, $"the runner doesn't know how to carry out '{i.Op}'");
         }
@@ -1597,6 +1602,9 @@ public sealed partial class ScriptRunner
             "type" => lastType,
             "rank" => lastRank.ToString(),
             "cp" => host.Castle is { } castle ? castle.Points(host.Frontier).ToString("N0") : "0",
+            // The Battle Arcade (plan 06 · R18d): the event the game board stopped on
+            "event" => lastEvent,
+            "struck" => lastStruck,
             "contestant" => contestSlot >= 0 && contestSlot < host.Party.Count ? host.Party.Members[contestSlot].DisplayName : host.ContestOutcome?.Pokemon ?? "",
             _ => match.Value
         };

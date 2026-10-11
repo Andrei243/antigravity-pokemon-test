@@ -72,6 +72,8 @@ Every sound effect of the game (plan 05 · A3), what it stands for in the origin
 
 **The Underground** (plan 06 · R16a) has no sounds of its own yet, and plays ones the game already has until plan 05 · A6 gives it its own: `stairs` going down, coming up and through a base's way in; `poketch_beep` for the radar's pulse and as the wall's game begins; in the wall, `ledge` for a blow of the pick, `rock_smash` for one of the hammer, `bump` on bare dark rock, `select` as a thing is bared, `levelup` when the last is out and `boulder` when the wall falls in; `exclaim` as a trap goes off, `cursor` for a turn in a hole or a bubble burst and `bump` for a blow at a trap's boulder; `rock_smash` for the Digger Drill; `levelup` for a flag put up at home.
 
+**The Battle Arcade's game board** (plan 06 · R18d) has no sounds of its own yet either, and plays the menus' until plan 05 · A6 gives it its own: `poketch_beep` for each number of its count, `exclaim` as the events are shown and the cursor sets off, `cursor` as the cursor moves (no oftener than a held key's in a list, though at its fastest it moves every frame), and `select` as it is stopped.
+
 ## Battles
 
 | Sound | The original's | Played when |

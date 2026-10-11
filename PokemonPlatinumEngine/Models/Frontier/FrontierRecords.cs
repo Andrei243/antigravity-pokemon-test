@@ -159,6 +159,9 @@ public sealed class FrontierRecords
     /// <summary>The Battle Castle's own part (plan 06 · R18c): a challenge put down, and what the valet has told.</summary>
     public CastleRecord Castle { get; set; } = new();
 
+    /// <summary>The Battle Arcade's own part (plan 06 · R18d): a challenge put down, and the Battle Points its board has given.</summary>
+    public ArcadeRecord Arcade { get; set; } = new();
+
     // ------------------------------------------------------------------ the numbers
 
     /// <summary><c>BattleFrontierSave_GetStat</c>.</summary>

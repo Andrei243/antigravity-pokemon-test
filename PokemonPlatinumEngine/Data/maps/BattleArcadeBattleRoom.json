@@ -1,0 +1,313 @@
+{
+  "name": "BattleArcadeBattleRoom",
+  "displayName": "Battle Arcade",
+  "bgmTrack": "sinnoh/veilstone",
+  "interior": "GameHall",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "width": 17,
+  "height": 18,
+  "ground": [
+    "#################",
+    "#################",
+    "#################",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "########D########"
+  ],
+  "solid": [
+    "#################",
+    "#################",
+    "#################",
+    "##..########...##",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "##.............##",
+    "########.########"
+  ],
+  "props": [
+    {
+      "type": "Television",
+      "x": 4,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 6,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 8,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 10,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 15,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 16,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 15,
+      "y": 16,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 5,
+      "width": 9,
+      "depth": 3
+    },
+    {
+      "type": "Rug",
+      "x": 8,
+      "y": 8,
+      "width": 1,
+      "depth": 9
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 17,
+      "targetMap": "BattleArcade",
+      "targetX": 14,
+      "targetY": 6,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "host",
+      "name": "Host",
+      "npcType": "Gentleman",
+      "x": 8,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "..."
+      ]
+    },
+    {
+      "id": "attendant",
+      "name": "Attendant",
+      "npcType": "Lass",
+      "x": 7,
+      "y": 16,
+      "facing": "Up",
+      "dialog": [
+        "..."
+      ]
+    },
+    {
+      "id": "opponent",
+      "name": "Trainer",
+      "npcType": "Youngster",
+      "x": 8,
+      "y": 10,
+      "facing": "Up",
+      "dialog": [
+        "..."
+      ],
+      "hiddenBy": "FLAG_HIDE_BATTLE_ARCADE_ROOM_OPPONENT"
+    },
+    {
+      "id": "spectator_1",
+      "name": "Spectator",
+      "npcType": "Gentleman",
+      "x": 4,
+      "y": 12,
+      "facing": "Right",
+      "dialog": [
+        "..."
+      ]
+    },
+    {
+      "id": "spectator_2",
+      "name": "Spectator",
+      "npcType": "Gentleman",
+      "x": 5,
+      "y": 12,
+      "facing": "Left",
+      "dialog": [
+        "..."
+      ]
+    },
+    {
+      "id": "spectator_3",
+      "name": "Spectator",
+      "npcType": "Lass",
+      "x": 11,
+      "y": 13,
+      "facing": "Down",
+      "dialog": [
+        "..."
+      ]
+    },
+    {
+      "id": "spectator_4",
+      "name": "Spectator",
+      "npcType": "Gentleman",
+      "x": 12,
+      "y": 15,
+      "facing": "Up",
+      "dialog": [
+        "..."
+      ]
+    },
+    {
+      "id": "spectator_5",
+      "name": "Spectator",
+      "npcType": "Gentleman",
+      "x": 2,
+      "y": 14,
+      "facing": "Down",
+      "dialog": [
+        "..."
+      ]
+    },
+    {
+      "id": "spectator_6",
+      "name": "Spectator",
+      "npcType": "Lass",
+      "x": 12,
+      "y": 12,
+      "facing": "Down",
+      "dialog": [
+        "..."
+      ]
+    },
+    {
+      "id": "spectator_7",
+      "name": "Spectator",
+      "npcType": "Gentleman",
+      "x": 13,
+      "y": 12,
+      "facing": "Down",
+      "dialog": [
+        "..."
+      ]
+    },
+    {
+      "id": "spectator_8",
+      "name": "Spectator",
+      "npcType": "Gentleman",
+      "x": 4,
+      "y": 13,
+      "facing": "Right",
+      "dialog": [
+        "..."
+      ]
+    },
+    {
+      "id": "spectator_9",
+      "name": "Spectator",
+      "npcType": "Lass",
+      "x": 5,
+      "y": 15,
+      "facing": "Left",
+      "dialog": [
+        "..."
+      ]
+    },
+    {
+      "id": "spectator_10",
+      "name": "Spectator",
+      "npcType": "Gentleman",
+      "x": 11,
+      "y": 12,
+      "facing": "Down",
+      "dialog": [
+        "..."
+      ]
+    },
+    {
+      "id": "spectator_11",
+      "name": "Spectator",
+      "npcType": "Gentleman",
+      "x": 14,
+      "y": 15,
+      "facing": "Right",
+      "dialog": [
+        "..."
+      ]
+    },
+    {
+      "id": "spectator_12",
+      "name": "Spectator",
+      "npcType": "Gentleman",
+      "x": 9,
+      "y": 14,
+      "facing": "Right",
+      "dialog": [
+        "..."
+      ]
+    },
+    {
+      "id": "spectator_13",
+      "name": "Spectator",
+      "npcType": "Gentleman",
+      "x": 6,
+      "y": 12,
+      "facing": "Up",
+      "dialog": [
+        "..."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

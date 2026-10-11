@@ -68,6 +68,8 @@ public enum GameState
     /// <summary>The Battle Hall's board of types, and one of the Battle Castle's two counters (plan 06 · R18c).</summary>
     HallBoard,
     CastleCounter,
+    /// <summary>The Battle Arcade's game board (plan 06 · R18d).</summary>
+    ArcadeBoard,
     Transition
 }
 
@@ -914,6 +916,9 @@ public partial class GameEngine
                 break;
             case GameState.CastleCounter:
                 UpdateCastleCounter(dt);
+                break;
+            case GameState.ArcadeBoard:
+                UpdateArcadeBoard(dt);
                 break;
             case GameState.Journal:
                 journalScreen.Update(journal, dt);
@@ -2074,6 +2079,9 @@ public partial class GameEngine
                 break;
             case GameState.CastleCounter:
                 castleScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.ArcadeBoard:
+                arcadeBoard.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.SlotMachine:
                 slotScreen.Draw(VirtualWidth, VirtualHeight);

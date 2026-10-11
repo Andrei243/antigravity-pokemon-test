@@ -19,6 +19,8 @@ public enum JournalEventKind
     /// <summary>Took a challenge at the Battle Hall or the Battle Castle (<c>LOCATION_EVENT_BATTLE_HALL</c>, <c>…_CASTLE</c>; plan 06 · R18c).</summary>
     BattleHall,
     BattleCastle,
+    /// <summary>Took a challenge at the Battle Arcade (<c>LOCATION_EVENT_BATTLE_ARCADE</c>; plan 06 · R18d).</summary>
+    BattleArcade,
 }
 
 /// <summary>One line of a page: what happened, and the place, item, move or trainer it names.</summary>
@@ -167,6 +169,7 @@ public sealed class Journal
         JournalEventKind.BattleFactory => "Took a challenge at the Battle Factory.",
         JournalEventKind.BattleHall => "Took a challenge at the Battle Hall.",
         JournalEventKind.BattleCastle => "Took a challenge at the Battle Castle.",
+        JournalEventKind.BattleArcade => "Took a challenge at the Battle Arcade.",
         _ => ""
     };
 }

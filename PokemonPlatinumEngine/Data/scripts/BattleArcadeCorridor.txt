@@ -1,0 +1,21 @@
+# The Battle Arcade's corridor (plan 06 · R18d). docs/scripts.md describes the language (frontier_scripts_battle_arcade.s,
+# which the original plays as a scene of the Frontier's own over a picture of a corridor: the room here is laid out
+# from where that scene walks its people, in at the south-east, north, west along the middle and north again to the
+# door of the game room).
+#
+# Nothing is said here: the attendant leads the way and the challenger follows.
+
+
+script OnEnter
+  place attendant 11 9 up
+  arcade active
+  if result == 0 end
+  # _0274 and _0238: north, west and north again, the challenger two steps behind
+  move attendant up 1 left 7 up 5
+  walk player up 3 left 7 up 4
+  waitmoves
+  hide attendant
+  walk player up 1
+  sound "stairs"
+  warp "BattleArcadeBattleRoom" 8 16 up
+  end

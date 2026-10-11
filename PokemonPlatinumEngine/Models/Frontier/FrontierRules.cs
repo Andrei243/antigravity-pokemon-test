@@ -16,6 +16,13 @@ public enum FrontierRefusal
 }
 
 /// <summary>
+/// What a facility hands a Frontier battle beside its two teams (plan 06 · R18d; the original's <c>fieldWeather</c> of
+/// a <c>FieldBattleDTO</c>): the weather the battle opens under, which stays, or the Trick Room it opens in. Only the
+/// Battle Arcade's board gives either.
+/// </summary>
+public sealed record FrontierConditions(Battle.Sim.BattleWeather Weather = Battle.Sim.BattleWeather.None, bool TrickRoom = false);
+
+/// <summary>
 /// The rules every facility of the Battle Frontier holds its entrants to (plan 06 · R18a): which Pokémon may enter,
 /// that no two of a team are of one species or hold the same item, and the level a battle is fought at. Ported from
 /// <c>src/unk_02049D08.c</c> and <c>src/pokemon.c</c>. No drawing or input.
