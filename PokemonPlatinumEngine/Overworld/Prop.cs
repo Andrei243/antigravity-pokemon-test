@@ -213,6 +213,11 @@ public enum PropType
     VendingMachine,
     /// <summary>The Magma Stone on its place in Stark Mountain's last room: a thing of the map (<see cref="NPC.MagmaStoneType"/>), drawn as a card (plan 02 · S15, part b).</summary>
     MagmaStone,
+    /// <summary>
+    /// Shelves of goods hung on a room's back wall (plan 01 · M11, the last rooms: a Poké Mart's east end), on the
+    /// wall's own row like a painting. Past the decorations: it blocks nothing, and the floor before it is walked.
+    /// </summary>
+    WallShelf,
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>

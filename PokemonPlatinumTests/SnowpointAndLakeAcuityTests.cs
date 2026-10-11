@@ -124,7 +124,8 @@ public class SnowpointAndLakeAcuityTests
         // Its Pokémon Center: Maylene by the counter, with the town's people
         game.Through("SnowpointPokemonCenter");
         var maylene = game.Present("maylene")!;
-        Assert.Equal((4, 4, Direction.Up), (maylene.GridX, maylene.GridY, maylene.Facing));
+        // (on the original's tile before the counter since the room was rebuilt to its plan: plan 01 · M11)
+        Assert.Equal((7, 6, Direction.Up), (maylene.GridX, maylene.GridY, maylene.Facing));
         foreach (string key in new[] { "lass", "battle_girl", "psyduck" }) Assert.NotNull(game.Present(key));
         Assert.Equal("Psyduck", game.Present("psyduck")!.Species);
     }
@@ -272,7 +273,7 @@ public class SnowpointAndLakeAcuityTests
         game.Arrive("VeilstoneGym", 12, 30);
         Assert.Null(game.Present("maylene"));
 
-        game.Arrive("SnowpointPokemonCenter", 5, 7);
+        game.Arrive("SnowpointPokemonCenter", 8, 12);
         var before = TalkFrom(game, "maylene", null, facing);
         Assert.Contains(before.Transcript, l => l.Speaker == "Maylene" && l.Text.Contains("Candice uses Ice-type"));
         Assert.Contains(before.Transcript, l => l.Text.Contains("Fighting"));
@@ -295,7 +296,7 @@ public class SnowpointAndLakeAcuityTests
         game.Arrive("Sinnoh", 318, 246);
         Assert.True(game.Story.Has("FLAG_HIDE_SNOWPOINT_CITY_POKECENTER_1F_MAYLENE"));
         Assert.False(game.Story.Has("FLAG_HIDE_VEILSTONE_CITY_GYM_MAYLENE"));
-        game.Arrive("SnowpointPokemonCenter", 5, 7);
+        game.Arrive("SnowpointPokemonCenter", 8, 12);
         Assert.Null(game.Present("maylene"));
         game.Arrive("VeilstoneGym", 12, 30);
         Assert.NotNull(game.Present("maylene"));
@@ -498,7 +499,7 @@ public class SnowpointAndLakeAcuityTests
         Assert.Contains((366, 198), Of("Sinnoh"));
         Assert.Contains((367, 223), Of("Sinnoh"));
         Assert.Contains((356, 246), Of("Sinnoh"));
-        Assert.Contains((4, 5), Of("SnowpointPokemonCenter"));
+        Assert.Contains((8, 6), Of("SnowpointPokemonCenter"));
     }
 
     // ------------------------------------------------------------------ saves from before

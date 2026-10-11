@@ -4,8 +4,8 @@
   "trees": "Round",
   "architecture": "City",
   "doors": [
-    { "warp": 2, "map": "JubilifePokemonCenter", "x": 5, "y": 7, "facing": "Up" },
-    { "warp": 6, "map": "JubilifePokeMart", "x": 4, "y": 6, "facing": "Up" },
+    { "warp": 2, "map": "JubilifePokemonCenter", "x": 8, "y": 12, "facing": "Up" },
+    { "warp": 6, "map": "JubilifePokeMart", "x": 3, "y": 11, "facing": "Up" },
     { "warp": 7, "map": "TrainersSchool", "x": 7, "y": 10, "facing": "Up" },
     // The Pokétch Company has two doors onto the street and one hall behind them
     { "warp": 8, "map": "PoketchCompany", "x": 5, "y": 7, "facing": "Up" },

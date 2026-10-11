@@ -22,6 +22,7 @@ partial class Harness
     // part c's rooms at work (`in_z*`, Modes/InteriorsNorth.cs).
     // Part d's towns: gates, tutors, store, centers, terminal; `workd` shows part d's rooms at work (`in_w*`,
     // Modes/InteriorsLast.cs).
+    // The last rooms' towns (the hand-made rooms of the first chapters, rebuilt): pokecenters, marts.
     public void InteriorsMode()
     {
         game.State = GameState.Overworld;
@@ -100,6 +101,20 @@ partial class Harness
             }),
             ("terminal", new[] { "GlobalTerminal1F", "GlobalTerminal2F", "GlobalTerminal3F" }),
             ("gallery", new[] { "PalParkLobby", "PalParkGallery" }),
+            // The rooms of the first chapters, rebuilt to the original's plans last (plan 01 · M11): the seventeen Pokémon
+            // Centers' ground floors and the thirteen Marts
+            ("pokecenters", new[]
+            {
+                "PokemonCenter", "JubilifePokemonCenter", "OreburghPokemonCenter", "FloaromaPokemonCenter", "EternaPokemonCenter",
+                "HearthomePokemonCenter", "SolaceonPokemonCenter", "VeilstonePokemonCenter", "PastoriaPokemonCenter", "CanalavePokemonCenter",
+                "CelesticPokemonCenter", "SnowpointPokemonCenter", "SunyshorePokemonCenter", "PokemonLeagueSouthPokemonCenter",
+                "FightAreaPokemonCenter", "SurvivalAreaPokemonCenter", "ResortAreaPokemonCenter",
+            }),
+            ("marts", new[]
+            {
+                "PokeMart", "JubilifePokeMart", "OreburghPokeMart", "FloaromaPokeMart", "EternaPokeMart", "HearthomePokeMart", "SolaceonPokeMart",
+                "PastoriaPokeMart", "CanalavePokeMart", "SnowpointPokeMart", "SunyshorePokeMart", "FightAreaPokeMart", "SurvivalAreaPokeMart",
+            }),
         };
         var asked = args.Length > 2 ? args[2..].ToHashSet(StringComparer.OrdinalIgnoreCase) : null;
 

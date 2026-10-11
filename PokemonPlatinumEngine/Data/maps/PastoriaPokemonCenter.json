@@ -4,99 +4,206 @@
   "bgmTrack": "common/pokecenter",
   "interior": "PokemonCenter",
   "trees": "Round",
-  "width": 11,
-  "height": 9,
+  "width": 17,
+  "height": 14,
   "ground": [
-    "###########",
-    "###########",
-    "#________P#",
-    "#_________#",
-    "#_________#",
-    "#_________#",
-    "#_________#",
-    "#_________#",
-    "#####D#####"
+    "#################",
+    "#################",
+    "#################",
+    "#___________P___#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "###___________###",
+    "#_______________#",
+    "###___________###",
+    "##_____________##",
+    "########D########"
   ],
   "solid": [
-    "###########",
-    "###########",
-    "##.....#.##",
-    "#..#####..#",
-    "#.........#",
-    "#.........#",
-    "##.......##",
-    "#........##",
-    "#####.#####"
+    "#################",
+    "#################",
+    "#################",
+    "########..###..##",
+    "#....###..##....#",
+    "#....#######....#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "###...........###",
+    "##.............##",
+    "###...........###",
+    "##.............##",
+    "########.########"
+  ],
+  "behaviours": [
+    { "x": 5, "y": 3, "width": 1, "depth": 2, "behaviour": "Counter" },
+    { "x": 11, "y": 3, "width": 1, "depth": 1, "behaviour": "Counter" },
+    { "x": 10, "y": 4, "width": 2, "depth": 1, "behaviour": "Counter" },
+    { "x": 5, "y": 5, "width": 7, "depth": 1, "behaviour": "Counter" }
   ],
   "props": [
     {
-      "type": "Counter",
+      "type": "Painting",
+      "x": 13,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
       "x": 3,
       "y": 3,
-      "width": 5,
-      "depth": 1
-    },
-    {
-      "type": "HealingMachine",
-      "x": 7,
-      "y": 2,
       "width": 1,
       "depth": 1
     },
     {
-      "type": "Plant",
-      "x": 1,
-      "y": 2,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Plant",
-      "x": 9,
-      "y": 7,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Rug",
+      "type": "Bookshelf",
       "x": 4,
-      "y": 5,
-      "width": 3,
-      "depth": 2
-    },
-    {
-      "type": "WallEmblem",
-      "x": 5,
-      "y": 1,
+      "y": 3,
       "width": 1,
       "depth": 1
     },
     {
-      "type": "Window",
-      "x": 2,
-      "y": 1,
-      "width": 2,
+      "type": "Cushion",
+      "x": 1,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 1,
+      "y": 6,
+      "width": 1,
       "depth": 1
     },
     {
       "type": "SideStairsUp",
       "x": 1,
-      "y": 6,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 3,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 13,
+      "y": 10,
       "width": 1,
       "depth": 1
     },
     {
       "type": "SideStairsDown",
-      "x": 9,
-      "y": 6,
+      "x": 15,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 3,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 4,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 8,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 12,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 13,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 5,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Counter",
+      "x": 11,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 10,
+      "y": 4,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 5,
+      "y": 5,
+      "width": 7,
+      "depth": 1
+    },
+    {
+      "type": "HealingMachine",
+      "x": 7,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 10,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WallEmblem",
+      "x": 8,
+      "y": 2,
       "width": 1,
       "depth": 1
     }
   ],
   "warps": [
     {
-      "sourceX": 5,
-      "sourceY": 8,
+      "sourceX": 8,
+      "sourceY": 13,
       "targetMap": "Sinnoh",
       "targetX": 600,
       "targetY": 816,
@@ -104,15 +211,15 @@
     },
     {
       "sourceX": 2,
-      "sourceY": 6,
+      "sourceY": 10,
       "targetMap": "PastoriaPokemonCenter2F",
       "targetX": 3,
       "targetY": 10,
       "targetFacing": "Right"
     },
     {
-      "sourceX": 8,
-      "sourceY": 6,
+      "sourceX": 14,
+      "sourceY": 10,
       "targetMap": "PastoriaPokemonCenterB1F",
       "targetX": 13,
       "targetY": 10,
@@ -122,20 +229,51 @@
   "signboards": [],
   "npcs": [
     {
+      "id": "nurse",
       "name": "Nurse Joy",
       "npcType": "Nurse",
-      "x": 5,
-      "y": 2,
+      "x": 8,
+      "y": 4,
       "facing": "Down",
       "isHealingNurse": true
     },
     {
       "name": "PC Terminal",
       "npcType": "Trainer",
-      "x": 9,
-      "y": 2,
+      "x": 12,
+      "y": 3,
       "facing": "Up",
       "isPCTerminal": true
+    },
+    {
+      "id": "black_belt",
+      "name": "Black Belt",
+      "npcType": "BlackBelt",
+      "x": 4,
+      "y": 7,
+      "facing": "Down",
+      "dialog": [
+        "The Great Marsh is vast! How vast, you ask?",
+        "Go up to the observatory and see for yourself!"
+      ],
+      "movement": "wander_around",
+      "rangeX": 1,
+      "rangeZ": 1
+    },
+    {
+      "id": "school_kid_f",
+      "name": "Schoolgirl",
+      "npcType": "Lass",
+      "x": 11,
+      "y": 8,
+      "facing": "Down",
+      "dialog": [
+        "Pastoria's Great Marsh used to be part of the sea.",
+        "The water drained away little by little and left the marsh behind. That's why Pokémon live there that you'll see nowhere else."
+      ],
+      "movement": "wander_around",
+      "rangeX": 1,
+      "rangeZ": 1
     }
   ],
   "wildEncounters": []

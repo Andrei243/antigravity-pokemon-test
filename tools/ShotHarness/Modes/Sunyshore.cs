@@ -289,12 +289,12 @@ partial class Harness
             Where("before the gym");
 
             // ---- the city's Pokémon Center and Mart, with their people
-            ComeThrough("SunyshorePokemonCenter", 5, 7, Direction.Up);
+            ComeThrough("SunyshorePokemonCenter", 8, 12, Direction.Up);
             Frames(30); Shot("sy4c_pokemon_center");
             TalkTo("SunyshorePokemonCenter", "ninja_boy", null, -1, 0);
             ReadTo("seven Gym Badges"); Frames(4); Shot("sy4d_pokemon_center_the_boy_counts_badges");
             ReadTo(null);
-            ComeThrough("SunyshorePokeMart", 4, 6, Direction.Up);
+            ComeThrough("SunyshorePokeMart", 3, 11, Direction.Up);
             Frames(30); Shot("sy4e_mart");
 
             // ---- the lab once the player has been to Sunyshore: the professor behind his desk, the assistant gone

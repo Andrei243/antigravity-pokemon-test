@@ -277,7 +277,7 @@ public class EternaTests
     public void TheEternaPokemonCentersPeopleKnowWhatTeamGalacticDid()
     {
         var game = NewGame();
-        game.Arrive("EternaPokemonCenter", 5, 7);
+        game.Arrive("EternaPokemonCenter", 8, 12);
         Assert.Contains("took my Pokémon", game.Talk("school_kid_m").Transcript[0].Text);
         game.Story.Set("FLAG_TEAM_GALACTIC_LEFT_ETERNA_BUILDING");
         Assert.Contains("got my Pokémon back", game.Talk("school_kid_m").Transcript[0].Text);

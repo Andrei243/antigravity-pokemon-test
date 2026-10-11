@@ -495,7 +495,7 @@ public class SouthWestTests
         Assert.Equal(new MapSpot("TrainersSchool", 6, 8), room.Place());
 
         // A save of today stands where it says, in the city or anywhere else
-        Assert.Equal(SaveData.ImportedJubilife, SaveData.CurrentWorld);
+        Assert.True(SaveData.CurrentWorld >= SaveData.ImportedJubilife);
         var today = new SaveData { CurrentMapName = "Sinnoh", PlayerGridX = 175, PlayerGridY = 760, PlayerFacing = Direction.Up, WorldVersion = SaveData.CurrentWorld };
         Assert.Equal(new MapSpot("Sinnoh", 175, 760, Direction.Up), JsonSerializer.Deserialize<SaveData>(JsonSerializer.Serialize(today))!.Place());
         // The lake kept its name when it was imported, so the version decides

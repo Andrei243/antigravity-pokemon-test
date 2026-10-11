@@ -20,8 +20,15 @@ public class SaveData
     /// <summary>The <see cref="WorldVersion"/> from which Jubilife City is part of that map and no longer one of its own (plan 01 · M5).</summary>
     public const int ImportedJubilife = 2;
 
+    /// <summary>
+    /// The <see cref="WorldVersion"/> from which the rooms of the first chapters are laid out on the original's plans
+    /// (plan 01 · M11, the last rooms: the Pokémon Centers' ground floors and the Poké Marts). A save from before stood
+    /// on the tiles of the hand-made rooms: <see cref="PlaceOn"/> moves it.
+    /// </summary>
+    public const int RebuiltRooms = 3;
+
     /// <summary>The <see cref="WorldVersion"/> of saves made today.</summary>
-    public const int CurrentWorld = ImportedJubilife;
+    public const int CurrentWorld = RebuiltRooms;
 
     public string PlayerName { get; set; } = "Lucas";
 
@@ -171,11 +178,71 @@ public class SaveData
         ["JubilifeCity"] = (ImportedJubilife, new MapSpot("Sinnoh", 180, 777))
     };
 
-    /// <summary>Where the save's player stands on today's maps.</summary>
+    /// <summary>Where the save's player stands on today's maps (a room's own tiles are <see cref="PlaceOn"/>'s to check).</summary>
     public MapSpot Place() =>
         OldMaps.TryGetValue(CurrentMapName, out var moved) && WorldVersion < moved.Until
             ? moved.Spot
             : new MapSpot(CurrentMapName, PlayerGridX, PlayerGridY, PlayerFacing);
+
+    // The rooms laid out again on the original's plans, by the version from which each is so: a save from before
+    // stood on the old room's tiles, which mean nothing on the new plan (a tile behind the counter, a wall)
+    private static readonly (int From, string[] Rooms)[] RebuiltSince =
+    {
+        (RebuiltRooms, new[]
+        {
+            "PokemonCenter", "JubilifePokemonCenter", "OreburghPokemonCenter", "FloaromaPokemonCenter", "EternaPokemonCenter",
+            "HearthomePokemonCenter", "SolaceonPokemonCenter", "VeilstonePokemonCenter", "PastoriaPokemonCenter", "CanalavePokemonCenter",
+            "CelesticPokemonCenter", "SnowpointPokemonCenter", "SunyshorePokemonCenter", "PokemonLeagueSouthPokemonCenter",
+            "FightAreaPokemonCenter", "SurvivalAreaPokemonCenter", "ResortAreaPokemonCenter",
+            "PokeMart", "JubilifePokeMart", "OreburghPokeMart", "FloaromaPokeMart", "EternaPokeMart", "HearthomePokeMart", "SolaceonPokeMart",
+            "PastoriaPokeMart", "CanalavePokeMart", "SnowpointPokeMart", "SunyshorePokeMart", "FightAreaPokeMart", "SurvivalAreaPokeMart",
+        }),
+    };
+
+    /// <summary>Whether a room has been laid out again since a save of this <see cref="WorldVersion"/> was made.</summary>
+    public static bool RebuiltAfter(string room, int worldVersion) =>
+        RebuiltSince.Any(set => worldVersion < set.From && set.Rooms.Contains(room, StringComparer.OrdinalIgnoreCase));
+
+    /// <summary>
+    /// Where the save's player stands on today's maps, rooms included (plan 01 · M11, the last rooms). One rule for
+    /// every room: a save made in a room that has been laid out again since (<see cref="RebuiltAfter"/>), or standing
+    /// on a tile of a room where nobody can stand, wakes on the tile the room is come into by (<see cref="ArrivalIn"/>:
+    /// inside its door, or beside the stairs that lead up to it), looking the way one comes in. Outdoors and in a
+    /// room that is as it was, the save's own tile stands.
+    /// </summary>
+    public MapSpot PlaceOn(Func<string, Map?> maps)
+    {
+        var spot = Place();
+        if (maps(spot.Map) is not { IsIndoors: true, IsStreamed: false } room
+            || !string.Equals(room.Name, spot.Map, StringComparison.OrdinalIgnoreCase)) return spot;
+        bool standable = room.InBounds(spot.X, spot.Y) && !room.IsSolid(spot.X, spot.Y);
+        if (standable && !RebuiltAfter(room.Name, WorldVersion)) return spot;
+        return ArrivalIn(room, maps) ?? spot;
+    }
+
+    /// <summary>
+    /// The tile a room is come into by: where the way back in from wherever its first way out leads puts whoever takes
+    /// it (the mat inside a door, the landing of a flight of stairs). Null for a room no way leads back into.
+    /// </summary>
+    public static MapSpot? ArrivalIn(Map room, Func<string, Map?> maps)
+    {
+        foreach (var way in room.Warps)
+        {
+            if (maps(way.TargetMap) is not { } beyond || ReferenceEquals(beyond, room)) continue;
+            // The way back in: of those that lead here, the one nearest to where this way comes out
+            Warp? back = null;
+            int nearest = int.MaxValue;
+            foreach (var other in beyond.Warps)
+            {
+                if (!string.Equals(other.TargetMap, room.Name, StringComparison.OrdinalIgnoreCase)) continue;
+                int away = Math.Abs(other.SourceX - way.TargetX) + Math.Abs(other.SourceY - way.TargetY);
+                if (away < nearest) (back, nearest) = (other, away);
+            }
+            if (back != null && room.InBounds(back.TargetX, back.TargetY) && !room.IsSolid(back.TargetX, back.TargetY))
+                return new MapSpot(room.Name, back.TargetX, back.TargetY, back.TargetFacing);
+        }
+        return null;
+    }
 
     public List<SavedPokemonData> Party { get; set; } = new();
     /// <summary>The PC as saves before plan 06 · R12 kept it: one list, laid out thirty to a box as it loads.</summary>

@@ -1,8 +1,8 @@
 # Sunyshore City's Pokémon Center (plan 02 · S13). docs/scripts.md describes the language; the lines are our own, on
 # the original's beats (scripts_sunyshore_city_pokecenter_1f.s).
 #
-# The room is the common Pokémon Center of the towns, so its people stand where it has room for them, not on the
-# original's tiles. The boy counts the player's Badges.
+# Its people stand on the original's tiles since the room was rebuilt to its plan (plan 01 · M11). The boy counts the
+# player's Badges.
 
 
 # SunyshoreCityPokecenter1F_NinjaBoy

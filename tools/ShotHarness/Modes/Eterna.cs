@@ -232,7 +232,7 @@ partial class Harness
             Console.WriteLine($"eterna: explorer kit {bag.GetQuantity(ItemDatabase.Get("Explorer Kit")!)}, exits watched {story.Var("VAR_ETERNA_CITY_BLOCK_EXITS_STATE")}");
 
             // ---- the Pokémon Center's people
-            At("EternaPokemonCenter", 5, 6, Direction.Up); Frames(30); Shot("et36_pokemon_center");
+            At("EternaPokemonCenter", 8, 8, Direction.Up); Frames(30); Shot("et36_pokemon_center");
 
             // ---- Gardenia before the Old Chateau
             At("EternaForest", 73, 35, Direction.Up); Frames(30); Shot("et37_forest_gardenia");

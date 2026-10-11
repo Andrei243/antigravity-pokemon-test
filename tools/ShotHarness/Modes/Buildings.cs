@@ -32,7 +32,7 @@ partial class Harness
         engine.Settings.TimeOfDay = TimeOfDay.Twilight;
         engine.ApplySettings(window: false);
         GoTo("JubilifeCity", 19, 17, Direction.Up); Frames(2); Shot("b25_jubilife_twilight");
-        GoTo("PokemonCenter", 5, 6, Direction.Up); Frames(2); Shot("b26_center_twilight");
+        GoTo("PokemonCenter", 8, 8, Direction.Up); Frames(2); Shot("b26_center_twilight");
         engine.Settings.TimeOfDay = TimeOfDay.Day;
         engine.ApplySettings(window: false);
 
@@ -40,7 +40,7 @@ partial class Harness
         (string Name, string Map, int X, int Y)[] rooms =
         {
             ("b30_player_house", "PlayerHouse", 4, 6), ("b31_rival_house", "RivalHouse", 5, 7), ("b32_pallet_house", "PalletPlayerHouse", 4, 6),
-            ("b33_pokemon_center", "PokemonCenter", 5, 6), ("b34_mart", "PokeMart", 4, 5), ("b35_lab", "RowanLab", 5, 7),
+            ("b33_pokemon_center", "PokemonCenter", 8, 8), ("b34_mart", "PokeMart", 5, 8), ("b35_lab", "RowanLab", 5, 7),
             ("b36_school", "TrainersSchool", 6, 9), ("b37_poketch", "PoketchCompany", 5, 7)
         };
         foreach (var (name, map, x, y) in rooms)
@@ -56,7 +56,7 @@ partial class Harness
         GoTo("TwinleafTown", 11, 9, Direction.Up); Timing("twinleaf");
         GoTo("JubilifeCity", 28, 28, Direction.Up); Timing("jubilife");
         GoTo("JubilifeCity", 19, 17, Direction.Up); Timing("jubilife crossroads");
-        GoTo("PokemonCenter", 5, 6, Direction.Up); Timing("pokemon center");
+        GoTo("PokemonCenter", 8, 8, Direction.Up); Timing("pokemon center");
         GoTo("TrainersSchool", 6, 9, Direction.Up); Timing("trainers school");
 
         if (args.Length > 2)

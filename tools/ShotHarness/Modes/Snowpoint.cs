@@ -181,7 +181,7 @@ partial class Harness
             Where("the quay");
 
             // ---- the Pokémon Center: Maylene thawing out
-            ComeThrough("SnowpointPokemonCenter", 5, 7, Direction.Up);
+            ComeThrough("SnowpointPokemonCenter", 8, 12, Direction.Up);
             Frames(30); Shot("sn20_pokemon_center");
             TalkTo("SnowpointPokemonCenter", "maylene", null, 1, 0);
             ReadTo("Brrr"); Frames(4); Shot("sn21_pokemon_center_maylene");
@@ -190,7 +190,7 @@ partial class Harness
             TalkTo("SnowpointPokemonCenter", "psyduck", null, -1, 0);
             ReadTo("Gwa"); Frames(4); Shot("sn23_pokemon_center_the_psyduck");
             ReadTo(null);
-            ComeThrough("SnowpointPokeMart", 4, 6, Direction.Up);
+            ComeThrough("SnowpointPokeMart", 3, 11, Direction.Up);
             Frames(30); Shot("sn24_mart");
 
             // ---- the Gym: Candice and the Icicle Badge (the Gym itself is plan 01 · M9's; `gyms snowpoint` shows its ice)
@@ -205,7 +205,7 @@ partial class Harness
             Console.WriteLine($"gym: icicle badge {story.HasBadge(Badge.Icicle)}, TM72 {bag.GetQuantity(ItemDatabase.Get("TM72")!)}, {Flags("FLAG_HIDE_VEILSTONE_GALACTIC_GRUNTS")}");
 
             // ---- Maylene once the Badge is won
-            ComeThrough("SnowpointPokemonCenter", 5, 7, Direction.Up);
+            ComeThrough("SnowpointPokemonCenter", 8, 12, Direction.Up);
             TalkTo("SnowpointPokemonCenter", "maylene", null, 1, 0);
             ReadTo("That's the Icicle Badge"); Frames(4); Shot("sn34_pokemon_center_maylene_after_the_badge");
             ReadTo(null);
@@ -223,7 +223,7 @@ partial class Harness
         Console.WriteLine($"lakefront with the badge: {Flags("FLAG_HIDE_SNOWPOINT_CITY_POKECENTER_1F_MAYLENE", "FLAG_HIDE_VEILSTONE_CITY_GYM_MAYLENE")}");
         if (stage <= 1)
         {
-            ComeThrough("SnowpointPokemonCenter", 5, 7, Direction.Up);
+            ComeThrough("SnowpointPokemonCenter", 8, 12, Direction.Up);
             Frames(30); Shot("sn35_pokemon_center_maylene_gone_home");
             Console.WriteLine($"pokemon center: maylene there {Someone("SnowpointPokemonCenter", "maylene", null) != null}; veilstone gym: maylene there {Someone("VeilstoneGym", "maylene", null) != null}");
         }

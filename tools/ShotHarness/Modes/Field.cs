@@ -15,8 +15,8 @@ partial class Harness
         GoTo("Route201", 22, 11, Direction.Down); Shot("04c_route201_ledge");
         GoTo("SandgemTown", 14, 8, Direction.Up); Shot("05_sandgem");
         GoTo("SandgemTown", 8, 19, Direction.Up); Shot("05b_sandgem_lab");
-        GoTo("PokemonCenter", 5, 6, Direction.Up); Shot("06_pokecenter");
-        GoTo("PokeMart", 4, 5, Direction.Up); Shot("06b_mart");
+        GoTo("PokemonCenter", 8, 8, Direction.Up); Shot("06_pokecenter");
+        GoTo("PokeMart", 5, 8, Direction.Up); Shot("06b_mart");
         GoTo("RowanLab", 5, 7, Direction.Up); Shot("06c_lab");
         GoTo("LakeVerity", 14, 11, Direction.Up); Shot("07_lake");
         GoTo("Route202", 14, 10, Direction.Up); Shot("07b_route202");
@@ -29,7 +29,7 @@ partial class Harness
         GoTo("JubilifeCity", 9, 29, Direction.Up); Shot("08f_jubilife_terminal");
         GoTo("TrainersSchool", 6, 9, Direction.Up); Shot("09_trainers_school");
         GoTo("PoketchCompany", 5, 7, Direction.Up); Shot("09b_poketch_company");
-        GoTo("JubilifePokemonCenter", 5, 6, Direction.Up); Shot("09c_jubilife_center");
+        GoTo("JubilifePokemonCenter", 8, 8, Direction.Up); Shot("09c_jubilife_center");
         GoTo("PalletTown", 9, 9, Direction.Down); Shot("10_pallet");
         GoTo("PalletTown", 9, 17, Direction.Down); Shot("10b_pallet_pier");
         GoTo("PalletPlayerHouse", 4, 6, Direction.Up); Shot("10c_pallet_house");
@@ -57,7 +57,7 @@ partial class Harness
         // Frame timing (no vsync in the hidden window)
         foreach (var m in new[] { "TwinleafTown", "Route201", "SandgemTown", "PokemonCenter" })
         {
-            GoTo(m, m == "PokemonCenter" ? 5 : 12, m == "PokemonCenter" ? 6 : 10, Direction.Down);
+            GoTo(m, m == "PokemonCenter" ? 8 : 12, m == "PokemonCenter" ? 8 : 10, Direction.Down);
             Timing(m);
         }
     }

@@ -4,76 +4,153 @@
   "bgmTrack": "common/pokemart",
   "interior": "PokeMart",
   "trees": "Round",
-  "width": 9,
-  "height": 8,
+  "width": 12,
+  "height": 13,
   "ground": [
-    "#########",
-    "#########",
-    "#_______#",
-    "#_______#",
-    "#_______#",
-    "#_______#",
-    "#_______#",
-    "####D####"
+    "############",
+    "############",
+    "############",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "###D########"
   ],
   "solid": [
-    "#########",
-    "#########",
-    "#...#####",
-    "#.#.....#",
-    "#.#..##.#",
-    "#.......#",
-    "#......##",
-    "####.####"
+    "############",
+    "############",
+    "############",
+    "######....##",
+    "#...#......#",
+    "#...#..##.##",
+    "#####..##.##",
+    "#..........#",
+    "#..........#",
+    "#......##.##",
+    "#......##.##",
+    "##........##",
+    "###.########"
+  ],
+  "behaviours": [
+    { "x": 1, "y": 6, "width": 4, "depth": 1, "behaviour": "Counter" },
+    { "x": 4, "y": 3, "width": 1, "depth": 3, "behaviour": "Counter" }
   ],
   "props": [
     {
-      "type": "Counter",
+      "type": "Crates",
       "x": 2,
       "y": 3,
       "width": 1,
-      "depth": 2
-    },
-    {
-      "type": "StoreShelf",
-      "x": 4,
-      "y": 2,
-      "width": 3,
       "depth": 1
     },
     {
-      "type": "Fridge",
-      "x": 7,
-      "y": 2,
+      "type": "Crates",
+      "x": 3,
+      "y": 3,
       "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "StoreShelf",
-      "x": 5,
-      "y": 4,
-      "width": 2,
       "depth": 1
     },
     {
       "type": "Plant",
-      "x": 7,
+      "x": 5,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 10,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 10,
       "y": 6,
       "width": 1,
       "depth": 1
     },
     {
-      "type": "Painting",
-      "x": 2,
-      "y": 1,
+      "type": "StoreShelf",
+      "x": 10,
+      "y": 9,
       "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 10,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 3,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 7,
+      "y": 5,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 1,
+      "y": 6,
+      "width": 4,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 7,
+      "y": 6,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 7,
+      "y": 9,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 7,
+      "y": 10,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 4,
+      "y": 3,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "WallShelf",
+      "x": 6,
+      "y": 2,
+      "width": 4,
       "depth": 1
     }
   ],
   "warps": [
     {
-      "sourceX": 4,
-      "sourceY": 7,
+      "sourceX": 3,
+      "sourceY": 12,
       "targetMap": "Sinnoh",
       "targetX": 187,
       "targetY": 843,
@@ -83,15 +160,42 @@
   "signboards": [],
   "npcs": [
     {
+      "id": "cashier_f",
       "name": "Clerk",
       "npcType": "Clerk",
-      "x": 1,
-      "y": 3,
-      "facing": "Right",
+      "x": 3,
+      "y": 5,
+      "facing": "Down",
       "dialog": [
         "Clerk: Welcome to the Sandgem Poké Mart! How may I serve you today?"
       ],
       "isPokeMartClerk": true
+    },
+    {
+      "id": "school_kid_m",
+      "name": "Schoolboy",
+      "npcType": "Youngster",
+      "x": 6,
+      "y": 9,
+      "facing": "Right",
+      "dialog": [
+        "Seen a Pokémon you've simply got to have? Throw a Poké Ball at it!",
+        "I never leave home without a few."
+      ]
+    },
+    {
+      "id": "pokemon_breeder_m",
+      "name": "Pokémon Breeder",
+      "npcType": "Gentleman",
+      "x": 9,
+      "y": 6,
+      "facing": "Down",
+      "dialog": [
+        "A Pokémon with no HP left can't battle on.",
+        "So I'm stocking up on Potions before that happens to any of mine!"
+      ],
+      "movement": "wander_north_and_south",
+      "rangeZ": 1
     }
   ],
   "wildEncounters": []

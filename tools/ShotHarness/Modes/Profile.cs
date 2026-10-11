@@ -43,7 +43,7 @@ partial class Harness
             At("Sinnoh", 175, 792, Direction.Up); Frames(40); Profile("jubilife city");
             At("Sinnoh", 302, 784, Direction.Down); Frames(40); Profile("oreburgh's mine yard");
             At("OreburghGate1F", 16, 22, Direction.Right); Frames(40); Profile("oreburgh gate");
-            At("PokemonCenter", 5, 6, Direction.Up); Frames(40); Profile("pokemon center");
+            At("PokemonCenter", 8, 8, Direction.Up); Frames(40); Profile("pokemon center");
 
             // The rest of Sinnoh (plan 01 · M12: the places M6 to M11 opened, owed since plan 04 · G11). Towns by
             // the tile Fly lands on, before their Pokémon Centers; routes, caves and rooms by the open tile nearest

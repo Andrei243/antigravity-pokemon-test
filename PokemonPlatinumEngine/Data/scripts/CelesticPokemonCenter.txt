@@ -1,0 +1,29 @@
+# Celestic Town's Pokémon Center (plan 01 · M11, the hand-made rooms), on the original's plan. docs/scripts.md
+# describes the language; the lines are our own, on the original's beats (scripts_celestic_town_pokecenter_1f.s).
+#
+# The man by the bookshelf looks the first Pokémon of the team over: at a friendship of 150 and more he hands over a
+# Great Ball, once a day (FLAG_DAILY_RECEIVED_CELESTIC_TOWN_POKECENTER_1F_GREAT_BALL); from 50 it is warming to its
+# Trainer; under that the two have a way to go.
+
+
+# CelesticTownPokecenter1F_PokefanM
+script Pokefan
+  if flag FLAG_DAILY_RECEIVED_CELESTIC_TOWN_POKECENTER_1F_GREAT_BALL goto Trust
+  say "Oh? Hm, hm... Now that is an interesting Pokémon you have with you!"
+  if var LEAD_FRIENDSHIP >= 150 goto Fond
+  if var LEAD_FRIENDSHIP >= 50 goto Warming
+  say "It hasn't quite taken to you yet."
+  say "Give it time. A Trainer and a Pokémon have to earn each other's trust."
+  end
+label Fond
+  say "Anyone can see how fond of you it is. Here, this is for the two of you!"
+  give "Great Ball"
+  setflag FLAG_DAILY_RECEIVED_CELESTIC_TOWN_POKECENTER_1F_GREAT_BALL
+label Trust
+  say "It all comes down to trust between a Trainer and a Pokémon."
+  say "Come to trust one another, and the wins will follow."
+  end
+label Warming
+  say "It is warming to you very nicely."
+  say "Travel together a while longer and it will grow fonder still."
+  end

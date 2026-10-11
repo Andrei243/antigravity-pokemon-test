@@ -3,7 +3,8 @@
 #
 # A boy whose Pokémon Team Galactic took, until it is back with him, and a woman with a Pokétch app that tells how
 # close a Pokémon feels to its Trainer (the Friendship Checker: given and kept, and shown once the Pokétch runs it).
-# The boy's Buneary, home again (FLAG_HIDE_ETERNA_CITY_POKECENTER_1F_BUNEARY), waits for Pokémon that stand in the field.
+# The boy's Buneary, home again (FLAG_HIDE_ETERNA_CITY_POKECENTER_1F_BUNEARY), stands beside him since the room was rebuilt
+# to the original's plan (plan 01 · M11).
 
 
 # The boy (the original's script 3).

@@ -338,9 +338,9 @@ public class PokemonTests
 
         // Nurse Joy stands behind the counter and is talked to across it
         var center = MapDatabase.Get("PokemonCenter");
-        Assert.True(center.IsCounter(5, 3));
-        Assert.False(center.IsWalkable(5, 3));
-        Assert.NotNull(center.GetNpcAt(5, 2));
+        Assert.True(center.IsCounter(8, 5));
+        Assert.False(center.IsWalkable(8, 5));
+        Assert.NotNull(center.GetNpcAt(8, 4));
     }
 
     [Fact]

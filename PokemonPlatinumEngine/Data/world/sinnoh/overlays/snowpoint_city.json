@@ -4,8 +4,8 @@
   "trees": "Pine",
   "architecture": "Snow",
   "doors": [
-    { "warp": 4, "map": "SnowpointPokemonCenter", "x": 5, "y": 7, "facing": "Up" },
-    { "warp": 3, "map": "SnowpointPokeMart", "x": 4, "y": 6, "facing": "Up" },
+    { "warp": 4, "map": "SnowpointPokemonCenter", "x": 8, "y": 12, "facing": "Up" },
+    { "warp": 3, "map": "SnowpointPokeMart", "x": 3, "y": 11, "facing": "Up" },
     // The west house, where a woman trades her Haunter for a Medicham (plan 06 · R12), built to the original's plan
     { "warp": 0, "map": "SnowpointWestHouse", "x": 4, "y": 8, "facing": "Up" },
     // The Gym, rebuilt to the original's plan with its ice and snowballs (plan 01 · M9, part 2b)

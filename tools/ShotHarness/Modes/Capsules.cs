@@ -132,7 +132,7 @@ partial class Harness
             seals.Give(SealDatabase.Seal(kind), 6);
         foreach (char letter in "PIKA") seals.Give(SealDatabase.Seal($"{letter} Seal"), 4);
         seals.Give(SealDatabase.Seal("Shock Seal"), 4);
-        At("SunyshorePokemonCenter", 9, 3, Direction.Up);
+        At("SunyshorePokemonCenter", 12, 4, Direction.Up);
         Frames(6);
         game.Interact(); Frames(3);
         Whole(); Next();
