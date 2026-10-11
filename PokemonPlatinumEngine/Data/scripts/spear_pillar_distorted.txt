@@ -1,0 +1,128 @@
+# Spear Pillar as the Distortion World tears it (plan 02 · S12): the original's second map of the summit, which Mt.
+# Coronet's way out leads to from the moment Giratina takes Cyrus until the player comes out at Sendoff Spring
+# (FLAG_SPEAR_PILLAR_IS_DISTORTED). docs/scripts.md describes the language; the lines are our own, on the original's
+# beats (scripts_spear_pillar_distorted.s).
+#
+# The scene plays as the player is brought here from the other map (the original's OnFrame,
+# VAR_SPEAR_PILLAR_DISTORTED_STATE 1): Cynthia comes up the steps too late, the three Pokémon of the lakes come to
+# hold the tear, and she asks whether the player is ready to go in after Cyrus. Yes leads into the Distortion World
+# (its first floor, beside the portal back); no leaves her waiting by the tear, where she asks again. State 2 from
+# then on. Charon leaves Team Galactic's control room with this scene, as the original has him
+# (FLAG_HIDE_GALACTIC_HQ_CONTROL_ROOM_CHARON).
+#
+# Team Galactic's four stand where they stood, facing the dark (FLAG_HIDE_SPEAR_PILLAR_DISTORTED_TEAM_GALACTIC, set
+# at Sendoff Spring), and the two rifts Dialga and Palkia came through are read where they hang.
+#
+# Stood in for until plan 09 lands (L11, L12, L14): the original's cutscene of the three guardians over the tear (its
+# sub-scenes 4 to 6) is the three as Pokémon of the map, their cries and the camera. Uxie and Azelf are people of our
+# own beside the original's Mesprit, all three behind its flag.
+
+
+script OnEnter
+  if var VAR_SPEAR_PILLAR_DISTORTED_STATE != 1 end
+  place cynthia 32 34 up
+  clearflag FLAG_HIDE_SPEAR_PILLAR_DISTORTED_CYNTHIA
+  show cynthia
+  camera pan 31 26 0.1
+  wait 0.4
+  setvar VAR_SPEAR_PILLAR_DISTORTED_STATE 2
+  music "common/eye_champion"
+  walk cynthia up 4
+  speaker "Cynthia"
+  say "No... I'm too late."
+  wait 0.3
+  # The three Pokémon of the lakes come to hold the tear
+  sound "warp"
+  show mesprit
+  cry "Mesprit"
+  wait 0.6
+  show uxie
+  cry "Uxie"
+  wait 0.6
+  show azelf
+  cry "Azelf"
+  wait 1.0
+  camera shake 0.6
+  wait 0.6
+  call Flicker
+  call Flicker
+  hide mesprit
+  hide uxie
+  hide azelf
+  setflag FLAG_HIDE_SPEAR_PILLAR_DISTORTED_MESPRIT
+  camera release 0.8
+  face player right
+  face cynthia left
+  say "Forgive me. I came as fast as I could, and I missed all of it. But I can see what happened."
+  face cynthia right
+  wait 0.5
+  face cynthia down
+  wait 0.3
+  face cynthia up
+  say "Dialga and Palkia are gone, and Cyrus with them. What took him is the Pokémon the old books barely dare to name: Giratina."
+  say "That darkness is a way into its world, the other side of ours. And look at the pillars. The two worlds are bleeding into each other. Left alone, this one will come apart."
+  say "The Pokémon of the lakes are holding the tear shut as best they can. They can't hold it for long. Somebody has to go in and calm Giratina."
+  setflag FLAG_HIDE_GALACTIC_HQ_CONTROL_ROOM_CHARON
+  music area
+  face cynthia left
+  call Cynthia
+  end
+
+
+# Cynthia by the tear, in the scene and whenever she is spoken to afterwards (the original's
+# SpearPillarDistorted_AskEnterDistortionWorld and SpearPillarDistorted_Cynthia).
+script Cynthia
+  face cynthia player
+  speaker "Cynthia"
+  ask "I'm going in after it. Will you come with me? Are you ready?"
+  if no goto Wait
+  say "Then we have to hurry. Stay close. Nothing in there will be the way you expect it."
+  sound "warp"
+  fade out 0.6
+  warp "DistortionWorld1F" 34 30 down
+  end
+label Wait
+  say "Then get ready, and be quick about it. I'll wait for you here. I won't go in without you."
+  end
+
+
+# The three blink out of sight and back, as they do before they are gone.
+script Flicker
+  hide mesprit
+  hide uxie
+  hide azelf
+  wait 0.07
+  show mesprit
+  show uxie
+  show azelf
+  wait 0.07
+  return
+
+
+# Team Galactic's four, left behind (the original's SpearPillarDistorted_Jupiter, _Mars, _GruntM and _GruntF).
+script Jupiter
+  speaker "Jupiter"
+  say "What was that thing? The shadow that... No. Don't ask me. I don't know."
+  end
+
+script Mars
+  speaker "Mars"
+  say "Where did he go? Where did it take him? He's coming back. He has to come back!"
+  end
+
+script Grunt
+  speaker "Galactic Grunt"
+  say "The boss is gone and the sky's the wrong way up. What are we supposed to do? Nobody gave any orders for this!"
+  end
+
+
+# The two rifts over the altar (the original's SpearPillarDistorted_RiftDialga and _RiftPalkia).
+script RiftDialga
+  speaker none
+  say "A rift hangs in the air. Standing near it, a moment seems to last too long, and then not long enough."
+  end
+
+script RiftPalkia
+  speaker none
+  say "A rift hangs in the air. Standing near it, the far wall seems close enough to touch, and your own hand a long way off."
+  end

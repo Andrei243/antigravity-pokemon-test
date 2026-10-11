@@ -178,7 +178,11 @@ public enum PropType
     /// <summary>A leaf of a locked door of Team Galactic's: a thing of the map (<see cref="NPC.GalacticDoorType"/>), drawn as a card.</summary>
     GalacticDoor,
     /// <summary>A tank of the laboratory, two tiles by two: a glass cylinder of green fluid between a steel foot and cap.</summary>
-    Tank
+    Tank,
+    /// <summary>A heap of broken stone the story left: a thing of the map (<see cref="NPC.RubbleType"/>), drawn as a card (plan 02 · S12).</summary>
+    Rubble,
+    /// <summary>The cave painting that stands over a way through Mt. Coronet until the story breaks it: a thing of the map (<see cref="NPC.CavePaintingType"/>), drawn as a card (plan 02 · S12).</summary>
+    CavePainting,
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>

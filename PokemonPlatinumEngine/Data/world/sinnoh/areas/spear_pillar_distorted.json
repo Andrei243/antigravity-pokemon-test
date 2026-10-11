@@ -1,0 +1,33 @@
+{
+  "key": "spear_pillar_distorted",
+  "index": 221,
+  "name": "Spear Pillar",
+  "matrix": 23,
+  "kind": "Outdoors",
+  "sign": "Cave",
+  "weather": "Clear13",
+  "camera": "SpearPillar",
+  "battleBackground": "Mountain",
+  "dayMusic": "D_MOUNT2",
+  "nightMusic": "D_MOUNT2",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 31, "z": 53, "to": "mt_coronet_6f", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "cynthia", "looks": "cynthia", "movement": "look_north", "x": 31, "z": 30, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SPEAR_PILLAR_DISTORTED_CYNTHIA", "script": "2" },
+    { "id": "mesprit", "looks": "mesprit", "movement": "look_south", "x": 31, "z": 28, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SPEAR_PILLAR_DISTORTED_MESPRIT", "script": "0" },
+    { "id": "jupiter", "looks": "jupiter", "movement": "look_north", "x": 29, "z": 33, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SPEAR_PILLAR_DISTORTED_TEAM_GALACTIC", "script": "3" },
+    { "id": "mars", "looks": "mars", "movement": "look_north", "x": 33, "z": 33, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SPEAR_PILLAR_DISTORTED_TEAM_GALACTIC", "script": "4" },
+    { "id": "grunt_f", "looks": "grunt_f", "movement": "look_north", "x": 30, "z": 48, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SPEAR_PILLAR_DISTORTED_TEAM_GALACTIC", "script": "6" },
+    { "id": "grunt_m", "looks": "grunt_m", "movement": "look_north", "x": 32, "z": 48, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SPEAR_PILLAR_DISTORTED_TEAM_GALACTIC", "script": "5" }
+  ],
+  "signs": [
+    { "x": 29, "z": 17, "type": 0, "script": "7" },
+    { "x": 33, "z": 17, "type": 0, "script": "8" }
+  ],
+  "triggers": []
+}

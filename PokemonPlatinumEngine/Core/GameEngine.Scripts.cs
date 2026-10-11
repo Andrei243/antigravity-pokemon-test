@@ -548,8 +548,14 @@ public partial class GameEngine
             float rest = Math.Max(0f, left / FieldMovement.BoulderPushSeconds);
             boulder.StepOffsetX = -dx * rest;
             boulder.StepOffsetY = -dy * rest;
-            if (left <= 0f) slides.RemoveAt(i);
-            else slides[i] = (boulder, left, dx, dy);
+            if (left > 0f)
+            {
+                slides[i] = (boulder, left, dx, dy);
+                continue;
+            }
+            slides.RemoveAt(i);
+            // Come to rest on a pit, it falls in: the pit's own script says where to (plan 02 · S12)
+            if (FieldScripts.PitUnder(currentMap, boulder) is { } pit) StartScript(pit, boulder, file: currentMap.ScriptFileAt(boulder.GridX, boulder.GridY));
         }
     }
 
@@ -1073,6 +1079,8 @@ public partial class GameEngine
             game.HoldContest(slot, category, rank, mode);
 
         public bool Hatch() => game.HatchFirstEgg();
+
+        public void Seen(PokemonSpecies species) => game.playerPokedex.RegisterSeen(species.DexNumber);
 
         // ---- Ball Capsules, Seals and ribbons (plan 06 · R17b)
 

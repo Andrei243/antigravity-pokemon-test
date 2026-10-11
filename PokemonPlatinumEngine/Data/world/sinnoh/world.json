@@ -159,7 +159,10 @@
     { "name": "SnowpointTempleB5F", "matrix": 73, "area": "snowpoint_temple_b5f", "setting": "Cave" },
     { "name": "FullmoonIslandForest", "matrix": 53, "area": "fullmoon_island_forest", "trees": "Pine" },
     { "name": "NewmoonIslandForest", "matrix": 110, "area": "newmoon_island_forest", "trees": "Pine" },
-    { "name": "BattleFrontier", "matrix": 256, "area": "battle_frontier", "trees": "Round" }
+    { "name": "BattleFrontier", "matrix": 256, "area": "battle_frontier", "trees": "Round" },
+    // Plan 02 · S12: Spear Pillar as the Distortion World tears it (the map Mt. Coronet's summit leads to from the
+    // moment Giratina takes Cyrus until the player comes out at Sendoff Spring)
+    { "name": "SpearPillarDistorted", "matrix": 23, "area": "spear_pillar_distorted" },
   ],
   "areas": [
     "twinleaf_town",
@@ -349,6 +352,8 @@
     "newmoon_island_forest",
     "seabreak_path",
     "flower_paradise",
-    "battle_frontier"
+    "battle_frontier",
+    // Plan 02 · S12
+    "spear_pillar_distorted",
   ]
 }

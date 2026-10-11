@@ -1,7 +1,57 @@
-# Sendoff Spring (plan 01 · M8; scripts_sendoff_spring.s). Once Giratina has been caught, a ball waits again in
-# Turnback Cave's last room each time the player comes through here. Cynthia's scene as the player comes out of
-# the Distortion World is plan 02 · S12's.
+# Sendoff Spring (plan 01 · M8, plan 02 · S12). docs/scripts.md describes the language; the lines are our own, on
+# the original's beats (scripts_sendoff_spring.s).
+#
+# The Distortion World's portal lets the player out here, beside Cynthia, and the scene plays as they arrive (the
+# original's OnFrame, VAR_EXITED_DISTORTION_WORLD_STATE 1): she knows the place for what the old books call it, and
+# sends the player to tell Professor Rowan what has happened. What the scene leaves is what the original sets for the
+# chapter after it: the state 2, the professor's lab waiting to hear it (VAR_SANDGEM_TOWN_LAB_STATE 2), Spear Pillar
+# whole again (FLAG_SPEAR_PILLAR_IS_DISTORTED cleared, Team Galactic's four gone from the torn one), Team Galactic gone
+# from Mt. Coronet (FLAG_HIDE_MT_CORONET_GALACTIC_GRUNTS, the grunt of the northern hall, Looker on the second floor),
+# Commander Saturn in the lobby of their headquarters (FLAG_HIDE_GALACTIC_HQ_1F_SATURN cleared,
+# FLAG_ALT_MUSIC_GALACTIC_HQ_1F), and Lake Valor full again (FLAG_GALACTIC_LEFT_LAKE_VALOR, which switches Valor
+# Lakefront's ways in and gives the lobby's people their later lines).
+#
+# Once Giratina has been caught, a ball waits again in Turnback Cave's last room each time the player comes through
+# here.
+
 
 script OnEnter
   if flag FLAG_CAUGHT_GIRATINA clearflag FLAG_HIDE_TURNBACK_CAVE_GIRATINA_ROOM_ITEM
+  if var VAR_EXITED_DISTORTION_WORLD_STATE != 1 end
+  # SendoffSpring_OnFrame_Cynthia
+  setvar VAR_EXITED_DISTORTION_WORLD_STATE 2
+  speaker "Cynthia"
+  say "We're out. But this isn't Mt. Coronet. Where has it put us?"
+  face cynthia left
+  wait 0.3
+  face cynthia right
+  wait 0.6
+  face cynthia up
+  wait 0.3
+  face player left
+  say "A spring nobody visits, at the end of a road nobody remembers... I know this place from the old books. It is the Sendoff Spring."
+  say "They say it is where this world touches the other one. Whatever was sent across was sent from here. So this is where Giratina let us go."
+  face cynthia right
+  say "It's over, {player}. Sinnoh is as it was, and hardly anyone will ever know how near it came. But Professor Rowan should hear all of it, and from you. Go and see him in Sandgem Town."
+  setvar VAR_SANDGEM_TOWN_LAB_STATE 2
+  setflag FLAG_HIDE_SPEAR_PILLAR_DISTORTED_TEAM_GALACTIC
+  clearflag FLAG_SPEAR_PILLAR_IS_DISTORTED
+  setflag FLAG_HIDE_MT_CORONET_GALACTIC_GRUNTS
+  setflag FLAG_HIDE_MT_CORONET_1F_NORTH_ROOM_1_GRUNT_F
+  setflag FLAG_HIDE_MT_CORONET_2F_LOOKER
+  setflag FLAG_ALT_MUSIC_GALACTIC_HQ_1F
+  clearflag FLAG_HIDE_GALACTIC_HQ_1F_SATURN
+  setflag FLAG_GALACTIC_LEFT_LAKE_VALOR
+  end
+
+
+# Cynthia by the water (the original's SendoffSpring_Cynthia).
+script Cynthia
+  face cynthia player
+  speaker "Cynthia"
+  if var VAR_EXITED_DISTORTION_WORLD_STATE >= 3 goto Wish
+  say "Go on. Tell Professor Rowan what you saw. I'd like to stay here a while and think about it."
+  end
+label Wish
+  say "I keep going over it. Giratina, in a world of its own, close enough to touch... I only wish I had been the one to battle it."
   end

@@ -60,6 +60,8 @@ public enum Op
     Seal, Ribbon,
     // The Underground (plan 06 · R16a)
     Underground,
+    // A Pokémon the story shows goes into the Pokédex as seen (plan 02 · S12)
+    Seen,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

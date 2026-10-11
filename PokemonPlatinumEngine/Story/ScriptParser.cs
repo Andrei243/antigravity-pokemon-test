@@ -521,6 +521,10 @@ public static class ScriptParser
                 return new Instruction { Op = Op.Underground, Line = line, Name = what, Other = kind, Partner = thing };
             }
 
+            // The Pokédex is told of a Pokémon the story shows (plan 02 · S12; the original's SetSpeciesSeen)
+            case "seen":
+                return new Instruction { Op = Op.Seen, Line = line, Name = r.Text("a species' name") };
+
             case "script":
             case "label":
                 throw r.Error($"'{word}' begins a line of its own");

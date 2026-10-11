@@ -1,0 +1,88 @@
+# The Distortion World, B5F (plan 02 · S12). docs/scripts.md describes the language; the lines are our own. The
+# original has no script here: the boulders, the holes they fall through and the guardians' showing are its own code
+# (overlay 9: sMapObjectEventsB5F, sMapEventsB5F, sBoulderFallLocations, DistWorldFallingBoulder).
+#
+# Three boulders stand on three islands, each a step from a hole in the floor. Pushed into its hole with Strength, a
+# boulder falls to B6F and lands in the open there, where it has to be pushed on into the pit its guardian keeps. The
+# first time the player comes near each boulder (the original's events) the guardian shows itself beyond the hole,
+# over nothing, to say what the boulder is for.
+#
+# What the puzzle remembers (flags of our own, where the original keeps its state beside its flags): a boulder has
+# fallen from here (FLAG_DISTORTION_WORLD_..._BOULDER_FELL, cleared again when it goes down a wrong pit below and comes
+# back), and it stands in the open on B6F (FLAG_HIDE_DISTORTION_WORLD_B6F_..._BOULDER cleared).
+#
+# Stood in for until plan 09 · L11: the original's showing (each guardian pushes its boulder a little way, and
+# Mesprit walks the player through it) is the guardian's cry and a look at the boulder; a boulder's fall is its sound
+# and a shake of the picture.
+
+
+# A boulder come to rest on its hole (DistWorldFallingBoulder_TickToB6F): it is gone from here and stands on B6F.
+script MespritBoulderFalls
+  hide self
+  setflag FLAG_DISTORTION_WORLD_MESPRIT_BOULDER_FELL
+  clearflag FLAG_HIDE_DISTORTION_WORLD_B6F_MESPRIT_BOULDER
+  call Fell
+  end
+
+script AzelfBoulderFalls
+  hide self
+  setflag FLAG_DISTORTION_WORLD_AZELF_BOULDER_FELL
+  clearflag FLAG_HIDE_DISTORTION_WORLD_B6F_AZELF_BOULDER
+  call Fell
+  end
+
+script UxieBoulderFalls
+  hide self
+  setflag FLAG_DISTORTION_WORLD_UXIE_BOULDER_FELL
+  clearflag FLAG_HIDE_DISTORTION_WORLD_B6F_UXIE_BOULDER
+  call Fell
+  end
+
+script Fell
+  wait 0.5
+  sound "bump"
+  camera shake 0.4
+  speaker none
+  say "The boulder dropped through the hole. From far below came the sound of it landing."
+  return
+
+
+# The guardians say what the boulders are for (EVENT_CMD_SHOW_..._BOULDER_TUTO), each once.
+script MespritShows
+  setvar VAR_DISTORTION_WORLD_MESPRIT_SHOWN 1
+  if flag FLAG_DISTORTION_WORLD_MESPRIT_BOULDER_FELL end
+  face player left
+  show mesprit
+  cry "Mesprit"
+  wait 0.8
+  camera pan 18 34 0.8
+  wait 0.6
+  camera release 0.6
+  speaker none
+  say "Mesprit looks from the boulder to the hole in front of it, and back to {player}."
+  hide mesprit
+  end
+
+script AzelfShows
+  setvar VAR_DISTORTION_WORLD_AZELF_SHOWN 1
+  if flag FLAG_DISTORTION_WORLD_AZELF_BOULDER_FELL end
+  face player left
+  show azelf
+  cry "Azelf"
+  wait 0.8
+  speaker none
+  say "Azelf darts at the boulder as if to push it into the hole, stops short, and looks at {player}."
+  hide azelf
+  end
+
+script UxieShows
+  setvar VAR_DISTORTION_WORLD_UXIE_SHOWN 1
+  if flag FLAG_DISTORTION_WORLD_UXIE_BOULDER_FELL end
+  face player down
+  show uxie
+  cry "Uxie"
+  wait 0.8
+  speaker none
+  say "Uxie hangs beyond the hole with its eyes shut, and tilts its head toward the boulder."
+  hide uxie
+  end

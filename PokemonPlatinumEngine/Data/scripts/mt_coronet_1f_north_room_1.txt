@@ -1,10 +1,13 @@
-# Mt. Coronet, the northern hall of its first floor (plan 02 · S10). docs/scripts.md describes the language; the lines
-# are our own, on the original's beats (scripts_mt_coronet_1f_north_room_1.s).
+# Mt. Coronet, the northern hall of its first floor (plan 02 · S10, S12). docs/scripts.md describes the language; the
+# lines are our own, on the original's beats (scripts_mt_coronet_1f_north_room_1.s).
 #
 # Two Team Galactic grunts stand side by side across the passage to the stairs down, which lead under the mountain
 # to Route 216 and the north. They talk between themselves about the fog below, and go only when Commander Mars is
-# beaten at Lake Verity (FLAG_HIDE_MT_CORONET_1F_NORTH_ROOM_1_GRUNTS_M, lake_verity.txt). The grunt who stands here
-# after Team Galactic's headquarters fall is plan 02 · S11's.
+# beaten at Lake Verity (FLAG_HIDE_MT_CORONET_1F_NORTH_ROOM_1_GRUNTS_M, lake_verity.txt).
+#
+# Once the button in their headquarters' control room has been pressed (plan 02 · S11) a third grunt stands in the
+# hall's south, who has found that nobody reaches the summit from this side
+# (FLAG_HIDE_MT_CORONET_1F_NORTH_ROOM_1_GRUNT_F, set again at Sendoff Spring, plan 02 · S12).
 
 
 script Grunts
@@ -16,6 +19,14 @@ script Grunts
   face grunt_m_1 left
   face grunt_m_2 left
   say "And nobody gets past us in the meantime. That means you!"
+  end
+
+
+# The grunt who came the wrong way round (the original's MtCoronet1FNorthRoom1_GruntF).
+script GruntF
+  speaker "Galactic Grunt"
+  say "Everyone was told to gather at the top of Mt. Coronet. So I came in from Route 211, like a fool."
+  say "There's no way up to the peak from this side! I'll have to go all the way round to the other entrance..."
   end
 
 

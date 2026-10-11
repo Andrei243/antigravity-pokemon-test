@@ -908,7 +908,10 @@ public sealed class WorldRenderer
                 // its tile's middle, as the props it once was did
                 var kind = npc.Obstacle ?? npc.GymThing ?? PropType.Mailbox;
                 float bx = npc.DrawX + 0.5f, bz = npc.DrawY + ThingCards.FootOf(kind);
-                things.Add((new Vector3(bx, Relief.At(map, bx, bz), bz), kind));
+                // A boulder over a pit of the Distortion World sinks into its mouth (plan 02 · S12)
+                bool overPit = map.BoulderPits.ContainsKey((npc.GridX, npc.GridY)) && map.GetGroundTile(npc.GridX, npc.GridY) == TileType.Void;
+                float ground = overPit ? Relief.InPit(map, npc.GridX, npc.GridY, MathF.Abs(npc.StepOffsetX) + MathF.Abs(npc.StepOffsetY)) : Relief.At(map, bx, bz);
+                things.Add((new Vector3(bx, ground, bz), kind));
                 continue;
             }
             float seed = SeedOf(npc.Name);

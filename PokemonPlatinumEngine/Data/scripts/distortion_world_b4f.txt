@@ -1,0 +1,29 @@
+# The Distortion World, B4F (plan 02 · S12). docs/scripts.md describes the language; the lines are our own. The
+# original has no script here: two of its own events let Giratina's shadow cross the sky, once each
+# (FLAG_DISTORTION_WORLD_GIRATINA_SHADOW_1 and _2), and Cyrus is glimpsed walking off as a slab brings the player
+# down (VAR_DISTORTION_WORLD_CYRUS_APPEARANCE), without a word.
+#
+# Stood in for until plan 09 · L14: a shadow's passing is Giratina's cry and a shake of the picture. Cyrus's wordless
+# appearance, which hangs on which slab the player rides, is left out with the slabs' own movement (plan 01 · M8).
+
+
+script ShadowWest
+  setvar VAR_DISTORTION_WORLD_B4F_SHADOW_WEST 1
+  setflag FLAG_DISTORTION_WORLD_GIRATINA_SHADOW_1
+  call Passes
+  end
+
+script ShadowEast
+  setvar VAR_DISTORTION_WORLD_B4F_SHADOW_EAST 1
+  setflag FLAG_DISTORTION_WORLD_GIRATINA_SHADOW_2
+  call Passes
+  end
+
+script Passes
+  cry "Giratina-Origin"
+  camera shake 0.8
+  emote player exclaim 0.8
+  wait 0.9
+  speaker none
+  say "A vast shadow slid across the stone and was gone."
+  return

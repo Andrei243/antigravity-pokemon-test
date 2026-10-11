@@ -34,8 +34,20 @@ public class DistortionWorldTests
                 yield return (x, y);
     }
 
+    /// <summary>
+    /// Where the story puts the player in the Distortion World: beside the portal the rift at Spear Pillar lets out of
+    /// (the original's warp to 55, 40 of its space), and beside the one Turnback Cave's portal leads to (116, 75). The
+    /// scenes that bring the player to them are plan 02 · S12's (scripts/spear_pillar_distorted.txt,
+    /// turnback_cave_giratina_room.txt).
+    /// </summary>
+    private static readonly MapSpot[] Arrivals =
+    {
+        new("DistortionWorld1F", 34, 30, Direction.Down),
+        new("DistortionWorldTurnbackCaveRoom", 46, 45, Direction.Down)
+    };
+
     /// <summary>The walk from the rift at Spear Pillar (and the portal in Turnback Cave), as the whole game's walk takes it.</summary>
-    private static readonly Lazy<Dictionary<Map, HashSet<(int X, int Y)>>> Walked = new(() => WorldWalk.From(MapNamed, WorldWalk.StoryArrivals));
+    private static readonly Lazy<Dictionary<Map, HashSet<(int X, int Y)>>> Walked = new(() => WorldWalk.From(MapNamed, Arrivals));
 
     [Theory]
     [MemberData(nameof(EveryFloor))]
@@ -90,7 +102,7 @@ public class DistortionWorldTests
     {
         // Every floor is come to from where the rift at Spear Pillar puts the player, through the slabs, the walls
         // and the ferrying rocks
-        var fromTheRift = WorldWalk.From(MapNamed, WorldWalk.StoryArrivals[0]);
+        var fromTheRift = WorldWalk.From(MapNamed, Arrivals[0]);
         foreach (string floor in Floors[..^1])
             Assert.True(fromTheRift.ContainsKey(BuiltMaps.Value[floor]), $"{floor} isn't come to from the rift");
 

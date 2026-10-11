@@ -1,5 +1,9 @@
 {
   "area": "sendoff_spring",
-  "bgmTrack": "sinnoh/route210"
-  // Cynthia, who comes out of the Distortion World with the player, is plan 02 · S12's
+  "bgmTrack": "sinnoh/route210",
+  // Plan 02 · S12 (scripts/sendoff_spring.txt): Cynthia, who comes out of the Distortion World with the player and
+  // stays by the water until the Hall of Fame (FLAG_HIDE_SENDOFF_SPRING_CYNTHIA, which the original sets there)
+  "people": {
+    "cynthia": { "name": "Cynthia", "npcType": "Cynthia", "script": "Cynthia", "still": true }
+  }
 }

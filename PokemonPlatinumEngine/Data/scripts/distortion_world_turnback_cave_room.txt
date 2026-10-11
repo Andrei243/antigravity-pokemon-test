@@ -1,0 +1,21 @@
+# The Distortion World, the room Turnback Cave's portal leads to (plan 02 · S12). docs/scripts.md describes the
+# language; the lines are our own, on the original's beats (scripts_distortion_world_turnback_cave_room.s).
+#
+# A corner of the Distortion World come to through the portal in Turnback Cave's last room, once Giratina is gone
+# from it. The Griseous Orb lies here in its ball; the portal behind leads back to the cave.
+#
+# The original puts a Giratina on the team into its Origin Forme as it comes in here and back as it leaves
+# (SetPartyGiratinaForm): here its forme goes by the Griseous Orb alone (Models/FormRules.cs), which is plan 06's to
+# change.
+
+
+# The portal back (the original's DistortionWorldTurnbackCaveRoom_Portal).
+script Portal
+  speaker none
+  ask "The air is torn here, and Turnback Cave shows through the tear. Leap into the portal?"
+  if no end
+  say "{player} leapt into the portal!"
+  sound "warp"
+  fade out 0.6
+  warp "TurnbackCaveGiratinaRoom" 11 15 down
+  end

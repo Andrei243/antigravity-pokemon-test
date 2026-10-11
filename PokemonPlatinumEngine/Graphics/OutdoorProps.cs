@@ -518,6 +518,118 @@ internal static class OutdoorProps
     }
 
     /// <summary>
+    /// A heap of broken stone, 30 by 20 (style guide, "Rubble"): three slabs leaning on one another in the cave rock's
+    /// tones, the largest with two strokes of the painting it was part of.
+    /// </summary>
+    public static void PaintRubble(PixelCanvas c)
+    {
+        var light = Rgb(150, 138, 150);
+        var mid = Rgb(118, 106, 122);
+        var dark = Rgb(84, 74, 92);
+        var edge = Rgb(58, 50, 66);
+        var ochre = Rgb(196, 108, 64);
+
+        // A slab: a slanted four-sided piece, lit along its top and shaded along its foot
+        void Slab(int x0, int y0, int w, int h, int lean)
+        {
+            for (int y = 0; y < h; y++)
+            {
+                int shift = lean * (h - 1 - y) / Math.Max(1, h - 1);
+                for (int x = 0; x < w; x++)
+                    c.Set(x0 + x + shift, y0 + y, y == 0 ? light : y >= h - 2 || x >= w - 2 ? dark : mid);
+            }
+        }
+
+        // The small one behind on the right, the tall one on the left, the broad one lying across the front
+        Slab(18, 5, 8, 9, -2);
+        Slab(3, 2, 11, 12, 3);
+        Slab(8, 10, 17, 8, 2);
+        // What is left of the painting on the tall slab: two strokes that met at a point
+        for (int i = 0; i < 5; i++) c.Set(8 + i, 9 - i, ochre);
+        c.HLine(9, 10, 4, ochre);
+        // A crack across the broad slab, and chips at its foot
+        for (int i = 0; i < 6; i++) c.Set(14 + i, 12 + i / 2, edge);
+        c.Set(4, 17, mid);
+        c.Set(5, 18, dark);
+        c.Set(26, 17, mid);
+        Pix.Outline(c);
+    }
+
+    /// <summary>
+    /// The cave painting, 32 by 52 (style guide, "The cave painting"): one upright slab with a rounded head in the
+    /// rubble's tones, a darker course at its foot, and the painting in ochre and chalk: a ring with three marks round
+    /// it in a triangle, and under them two beasts face to face. The drawing is our own.
+    /// </summary>
+    public static void PaintCavePainting(PixelCanvas c)
+    {
+        var light = Rgb(150, 138, 150);
+        var mid = Rgb(118, 106, 122);
+        var dark = Rgb(84, 74, 92);
+        var edge = Rgb(58, 50, 66);
+        var ochre = Rgb(196, 108, 64);
+        var chalk = Rgb(222, 210, 196);
+
+        // The slab: a whole tile across but for its outline, its head rounded, lit along its top and its left side and
+        // shaded down its right
+        for (int y = 1; y <= 50; y++)
+        {
+            int cut = y switch { 1 => 6, 2 => 4, 3 => 3, 4 => 2, 5 or 6 => 1, _ => 0 };
+            int x0 = 1 + cut, x1 = 30 - cut;
+            for (int x = x0; x <= x1; x++)
+                c.Set(x, y, x >= x1 - 1 ? dark : x <= x0 + 1 || y <= 2 ? light : mid);
+        }
+        // The course it stands on, under a joint
+        c.Rect(1, 45, 30, 6, dark);
+        c.HLine(1, 44, 30, edge);
+        c.HLine(2, 45, 27, mid);
+        // Two cracks, down from the head and up from the foot
+        for (int i = 0; i < 6; i++) c.Set(25 - i / 2, 5 + i, edge);
+        for (int i = 0; i < 5; i++) c.Set(4 + i, 43 - i / 2, edge);
+
+        // The greater light: a ring, and its heart
+        for (int y = 11; y <= 23; y++)
+            for (int x = 10; x <= 22; x++)
+            {
+                float u = x + 0.5f - 16f, v = y + 0.5f - 17f;
+                float d = u * u + v * v;
+                if (d <= 5.3f * 5.3f && d >= 3.7f * 3.7f) c.Set(x, y, chalk);
+            }
+        c.Rect(15, 16, 2, 2, ochre);
+        // The three points of light round it, in a triangle
+        c.Rect(15, 6, 2, 3, ochre);
+        c.HLine(14, 7, 4, ochre);
+        c.HLine(6, 24, 3, ochre);
+        c.VLine(7, 23, 3, ochre);
+        c.HLine(23, 24, 3, ochre);
+        c.VLine(24, 23, 3, ochre);
+
+        // The two beasts under them, face to face: a body, two legs, a neck and a head toward the other, a fin, a tail
+        void Beast(Color paint, bool mirrored)
+        {
+            int X(int x) => mirrored ? 31 - x : x;
+            void Row(int from, int to, int y) { for (int x = from; x <= to; x++) c.Set(X(x), y, paint); }
+            void Column(int x, int from, int to) { for (int y = from; y <= to; y++) c.Set(X(x), y, paint); }
+            Row(4, 11, 34);
+            Row(4, 11, 35);
+            Column(5, 36, 39);
+            Column(10, 36, 39);
+            Column(11, 31, 33);
+            Row(11, 13, 30);
+            Row(11, 13, 31);
+            c.Set(X(6), 33, paint);
+            c.Set(X(7), 32, paint);
+            c.Set(X(8), 33, paint);
+            c.Set(X(3), 33, paint);
+            c.Set(X(3), 32, paint);
+        }
+        Beast(ochre, false);
+        Beast(chalk, true);
+        // The line they stand on
+        c.HLine(4, 41, 24, dark);
+        Pix.Outline(c);
+    }
+
+    /// <summary>
     /// The boulder that Strength pushes, 30 by 30: one round stone, smooth where the others are broken, with a
     /// ring of highlight on its upper left and a single dimple.
     /// </summary>
@@ -580,6 +692,8 @@ public static class ThingCards
             PropType.Bollard => (16, 28, GymArt.PaintBollard),
             PropType.Snowball => (30, 30, GymArt.PaintSnowball),
             PropType.GalacticDoor => (GalacticArt.DoorWidth, GalacticArt.DoorHeight, GalacticArt.PaintDoor),
+            PropType.Rubble => (30, 20, OutdoorProps.PaintRubble),
+            PropType.CavePainting => (32, 52, OutdoorProps.PaintCavePainting),
             _ => (OutdoorProps.ItemBallCard, OutdoorProps.ItemBallCard, OutdoorProps.PaintItemBall)
         };
         var art = new PixelCanvas(w, h);
@@ -594,10 +708,12 @@ public static class ThingCards
     public static float FootOf(PropType kind) => kind switch
     {
         PropType.CutTree or PropType.StrengthBoulder => 20f / 32f,
-        PropType.CrackedRock => 19f / 32f,
+        PropType.CrackedRock or PropType.Rubble => 19f / 32f,
         PropType.PunchingBag or PropType.TireStack or PropType.Bollard or PropType.Snowball => 18f / 32f,
         // A shutter stands across the middle of its gap
         PropType.GalacticDoor => 0.5f,
+        // The painting stands well back in its tile's south half, a slab filling the niche it is set in
+        PropType.CavePainting => 26f / 32f,
         _ => 0.5f
     };
 }

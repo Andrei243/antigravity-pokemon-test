@@ -1,11 +1,18 @@
 {
   "area": "distortion_world_turnback_cave_room",
   "bgmTrack": "sinnoh/distortion_world",
-  // Reached through the portal in Turnback Cave's own room for Giratina once it has been battled; the portal both
-  // ways and the Griseous Orb that waits here are plan 02's
   "exits": [
     // The wall walked sideways between its two ends (the original's floating platform 0)
     { "x": 48, "z": 25, "map": "DistortionWorldTurnbackCaveRoom", "toX": 48, "toY": 37, "facing": "Left" },
     { "x": 48, "z": 37, "map": "DistortionWorldTurnbackCaveRoom", "toX": 48, "toY": 25, "facing": "Left" }
+  ],
+  // Plan 02 · S12 (scripts/distortion_world_turnback_cave_room.txt): the corner of the Distortion World that the
+  // portal in Turnback Cave's last room leads to once Giratina is gone from it. The portal back hangs on the rock north
+  // of where it lets out (sMapObjectEventTurnbackCaveRoom_Portal and its PROP_KIND_PORTAL: 116, 74 of the Distortion
+  // World's space), and the Griseous Orb lies in its ball at the far end (sMapObjectEventTurnbackCaveRoom_GriseousOrbItem:
+  // 89, 55, the original's visible item 321 and its own flag)
+  "npcs": [
+    { "id": "portal", "name": "Portal", "npcType": "Rift", "x": 46, "y": 44, "facing": "Down", "script": "Portal" },
+    { "id": "item_griseous_orb", "name": "Griseous Orb", "npcType": "ItemBall", "x": 19, "y": 25, "item": "Griseous Orb", "hiddenBy": "FLAG_OBTAINED_DISTORTION_WORLD_TURNBACK_CAVE_ROOM_GRISEOUS_ORB" }
   ]
 }

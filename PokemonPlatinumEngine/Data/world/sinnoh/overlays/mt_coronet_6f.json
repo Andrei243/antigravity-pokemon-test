@@ -2,9 +2,23 @@
   "area": "mt_coronet_6f",
   "bgmTrack": "sinnoh/mt_coronet",
   "evolutionSites": [ "Magnetic Field" ],
-  // The way out onto the summit leads to Spear Pillar as it stands before the story reaches it (warp 1). The same
-  // tile leads, in the original, to the pillar torn by the Distortion World and to Dialga's and Palkia's in the
-  // post-game: those come with plan 02 · S12 and plan 01 · M10
-  "locked": [ 2, 3, 4 ]
-  // Team Galactic's grunt by the way out comes with the climb to Spear Pillar (plan 02 · S12)
+  // The way out onto the summit shares its tile between the maps of Spear Pillar, as the original's does (its OnLoad
+  // moves the warps): the pillar as the story finds it (warp 1) until the Distortion World tears it, and the torn
+  // pillar (warp 2) from then until the player comes out at Sendoff Spring, which clears the flag again (plan 02 · S12).
+  // Dialga's and Palkia's pillars, for a game that holds their orbs after the Hall of Fame, come with plan 02 · S15
+  "switches": [
+    { "warp": 1, "until": "FLAG_SPEAR_PILLAR_IS_DISTORTED" },
+    { "warp": 2, "from": "FLAG_SPEAR_PILLAR_IS_DISTORTED" }
+  ],
+  "locked": [ 3, 4 ],
+  // Team Galactic's last guard before the summit (plan 02 · S12), with Platinum's team
+  "people": {
+    "galactic_grunt": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Galactic Grunt: Spear Pillar is through there, and our boss with it. This is as far as you go!",
+        "dialogueAfter": "Galactic Grunt: Go, then. It makes no difference. Nobody can stop him now."
+      }
+    }
+  }
 }

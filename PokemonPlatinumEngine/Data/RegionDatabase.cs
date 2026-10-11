@@ -183,6 +183,8 @@ public static class RegionDatabase
                 "StarkMountainRoom1", "StarkMountainRoom2", "StarkMountainRoom3",
                 "SnowpointTemple1F", "SnowpointTempleB1F", "SnowpointTempleB2F", "SnowpointTempleB3F", "SnowpointTempleB4F", "SnowpointTempleB5F",
                 "FullmoonIslandForest", "NewmoonIslandForest", "BattleFrontier", "ResortAreaRibbonSyndicate1F",
+                // Plan 02 · S12: Spear Pillar as the Distortion World tears it (a matrix of the imported world)
+                "SpearPillarDistorted",
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

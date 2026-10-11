@@ -552,6 +552,10 @@ public class StoryTests
                 yield return ($"the trigger at {trigger.X},{trigger.Y} of {map.Name}", trigger.Script, trigger.ScriptFile ?? map.Name, map, null);
             foreach (var (at, hidden) in map.HiddenItems)
                 yield return ($"the hidden {hidden.Item} at {at.X},{at.Y} of {map.Name}", FieldScripts.HiddenItem, map.ScriptFileAt(at.X, at.Y), map, null);
+            // A pit a pushed boulder comes to rest on (plan 02 · S12): its script runs with a boulder of the place
+            foreach (var (at, script) in map.BoulderPits)
+                yield return ($"the pit at {at.X},{at.Y} of {map.Name}", script, map.ScriptFileAt(at.X, at.Y), map,
+                    map.Everyone.First(n => n.Obstacle == PropType.StrengthBoulder && n.ScriptFile == map.ScriptFileAt(at.X, at.Y)));
         }
     }
 

@@ -1,0 +1,28 @@
+# The Distortion World, B2F (plan 02 · S12). docs/scripts.md describes the language; the lines are our own, on the
+# original's beats (scripts_distortion_world_b2f.s). distortion_world_1f.txt says what VAR_DISTORTION_WORLD_PROGRESS
+# counts.
+#
+# Cynthia stands by the wall that leads up to the upper stones (on it, in the original) from the moment Mesprit has
+# been seen on B1F (progress 4). Spoken to, she proposes that the two search apart (progress 5), and after that only
+# says the two need not go together. She has gone on once Cyrus has been met on B3F (progress 6).
+
+
+script OnEnter
+  if var VAR_DISTORTION_WORLD_PROGRESS < 4 hide cynthia
+  if var VAR_DISTORTION_WORLD_PROGRESS > 5 hide cynthia
+  end
+
+
+# The original's DistortionWorldB2F_OnFrame_FirstEntry (her object's script) and DistortionWorldB2F_Cynthia.
+script Cynthia
+  face cynthia player
+  speaker "Cynthia"
+  if var VAR_DISTORTION_WORLD_PROGRESS >= 5 goto Apart
+  say "The stones here don't lie in one plane. Some hang over the others, and a wall is as good a floor as any."
+  say "We'll cover more of it apart. You take whichever way opens to you, and I'll take another. Call out if you find Cyrus, or Giratina."
+  setvar VAR_DISTORTION_WORLD_PROGRESS 5
+  face cynthia left
+  end
+label Apart
+  say "We needn't keep together. This place lets each of us through by a road of our own. I'll find you further down."
+  end

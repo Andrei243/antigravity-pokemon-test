@@ -1,6 +1,13 @@
 {
   "area": "distortion_world_b2f",
   "bgmTrack": "sinnoh/distortion_world",
+  // Plan 02 · S12 (scripts/distortion_world_b2f.txt): Cynthia by the foot of the wall that leads up to the upper
+  // stones, where the original stands her on the wall itself (sMapObjectEventB2F_Cynthia1 and 2, rotated: 30, 20 of
+  // the Distortion World's space). She is there once Mesprit has been seen on B1F and until Cyrus has been spoken to
+  // on B3F, which the place's OnEnter sees to
+  "npcs": [
+    { "id": "cynthia", "name": "Cynthia", "npcType": "Cynthia", "x": 20, "y": 22, "facing": "Left", "script": "Cynthia" }
+  ],
   // B2F is stepping stones on two levels, the upper nine tiles over the lower (the original's floating floors,
   // which the importer writes into the chunks). Small rocks ferry the player across the drop between stones, and
   // two of them up or down between the levels (its events P2N to P18N: MOVE_PLATFORM with the player on it, then

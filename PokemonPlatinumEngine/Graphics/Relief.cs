@@ -88,7 +88,40 @@ internal static class Relief
         // On a floor a Gym's puzzle lays (the Pastoria Gym's water), where it is what they stand at
         if (map.Puzzle?.FloorAt(tx, ty, standingHeight) is { } floor && floor > map.HeightAt(tx, ty) + 0.25f && MathF.Abs(floor - standingHeight) < 0.25f)
             return floor - map.GroundLevel;
+        // In the Distortion World whoever the story hangs over nothing (Giratina, a guardian beyond its pit) is at the
+        // height the story gives them, not down at the nothing's; over an island's rim they stand on the rim
+        if (map.IsVoid && map.IsSolid(tx, ty)) return MathF.Max(At(map, x, z), standingHeight - map.GroundLevel);
         return At(map, x, z);
+    }
+
+    /// <summary>
+    /// How far a boulder sinks into a pit it is pushed over (style guide, "The Distortion World"): into the pit's
+    /// mouth, its top still above the floor.
+    /// </summary>
+    public const float PitSink = 0.6f;
+
+    /// <summary>
+    /// The drawn height of a boulder on a pit's tile (plan 02 · S12; <see cref="Map.BoulderPits"/>), which is a tile
+    /// of nothing: level with the floor it was pushed from while it is on its way to the lip, sinking from there, and
+    /// <see cref="PitSink"/> under the floor once it is in. <paramref name="left"/> is how much of its slide is
+    /// still to come, from 1 as the push begins to 0 at rest.
+    /// </summary>
+    public static float InPit(Map map, int tx, int ty, float left)
+    {
+        // The floor beside the pit: the open ground a boulder comes from (a pit's other sides are rim and nothing)
+        float floor = float.NegativeInfinity;
+        void Beside(int nx, int ny)
+        {
+            if (map.InBounds(nx, ny) && !map.IsSolid(nx, ny)) floor = MathF.Max(floor, At(map, nx + 0.5f, ny + 0.5f));
+        }
+        Beside(tx, ty + 1);
+        Beside(tx + 1, ty);
+        Beside(tx - 1, ty);
+        Beside(tx, ty - 1);
+        if (float.IsNegativeInfinity(floor)) return At(map, tx + 0.5f, ty + 0.5f);
+        // Nothing gives way under it until most of it is over the lip
+        float into = Math.Clamp((0.6f - left) / 0.6f, 0f, 1f);
+        return floor - PitSink * into * into;
     }
 
     /// <summary>

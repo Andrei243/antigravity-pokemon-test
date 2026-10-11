@@ -11,5 +11,16 @@
     // The wall walked sideways between its two ends (floating platform 0)
     { "x": 10, "z": 28, "map": "DistortionWorldB3F", "toX": 10, "toY": 39, "facing": "Right" },
     { "x": 10, "z": 39, "map": "DistortionWorldB3F", "toX": 10, "toY": 28, "facing": "Right" }
+  ],
+  // Plan 02 · S12 (scripts/distortion_world_b3f.txt): Cyrus comes up the passage to whoever lands at its head
+  // (sMapObjectEventB3F_Cyrus: 65, 49 of the Distortion World's space; the scene alone shows him)
+  "npcs": [
+    { "id": "cyrus", "name": "Cyrus", "npcType": "Cyrus", "x": 18, "y": 28, "facing": "Up", "hiddenBy": "FLAG_HIDE_DISTORTION_WORLD_APPARITIONS", "dialog": [ "......" ] }
+  ],
+  // The landing at the head of the passage (sMapEventsB3F: 65, 41, while the progress is DIST_WORLD_PROGRESS_SAW_B1F_MESPRIT
+  // or DIST_WORLD_PROGRESS_TALKED_TO_B2F_CYNTHIA: the original lists the event once for each)
+  "triggers": [
+    { "x": 18, "z": 20, "variable": "VAR_DISTORTION_WORLD_PROGRESS", "value": 4, "script": "Cyrus" },
+    { "x": 18, "z": 20, "variable": "VAR_DISTORTION_WORLD_PROGRESS", "value": 5, "script": "CyrusToo" }
   ]
 }

@@ -1,0 +1,49 @@
+# The Distortion World, B1F (plan 02 · S12). docs/scripts.md describes the language; the lines are our own, on the
+# original's beats (scripts_distortion_world_b1f.s). distortion_world_1f.txt says what VAR_DISTORTION_WORLD_PROGRESS
+# counts.
+#
+# The first time the player comes down the slab (progress 2) Cynthia is at its foot, wonders whether Giratina will
+# show itself, and goes on ahead across the gaps (progress 3). Further on, before the wall that is walked sideways, a
+# step (the original's event, progress 3) brings Mesprit's cry and Mesprit itself, which drifts up the wall and is
+# gone: the way on (progress 4).
+
+
+script OnEnter
+  if var VAR_DISTORTION_WORLD_PROGRESS != 2 hide cynthia
+  if var VAR_DISTORTION_WORLD_PROGRESS != 2 end
+  # DistortionWorldB1F_OnFrame_FirstEntry
+  face player up
+  wait 0.8
+  face cynthia down
+  speaker "Cynthia"
+  say "There is no sign of it. Giratina can see us, I'm sure of that. Will it let us see it?"
+  say "Mind the gaps between the stones. A good run carries you over. Watch how I go."
+  move cynthia left 1 down 2
+  wait 0.8
+  face player left
+  waitmoves
+  face cynthia left
+  wait 0.4
+  walk cynthia left 6 fast
+  walk cynthia down 3 fast
+  walk cynthia left 3 fast
+  hide cynthia
+  setvar VAR_DISTORTION_WORLD_PROGRESS 3
+  end
+
+
+# The original's DistortionWorldB1F_CoordEvent_Mesprit.
+script Mesprit
+  setvar VAR_DISTORTION_WORLD_PROGRESS 4
+  cry "Mesprit"
+  speaker none
+  say "Kyauuun!"
+  place mesprit 12 22 up
+  show mesprit
+  face player left
+  wait 1.0
+  walk mesprit up 2
+  walk mesprit up 9 fast
+  hide mesprit
+  face player up
+  end

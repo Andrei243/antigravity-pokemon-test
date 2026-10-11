@@ -1,0 +1,188 @@
+# The Distortion World, B6F (plan 02 · S12). docs/scripts.md describes the language; the lines are our own, on the
+# original's beats (scripts_distortion_world_b6f.s, and overlay 9's falling boulders). distortion_world_1f.txt says
+# what VAR_DISTORTION_WORLD_PROGRESS counts.
+#
+# The floor under B5F, in three wings, each with a row of pits and one of the lakes' guardians hanging beyond the pit
+# it keeps. A boulder fallen from B5F lands in the open on its wing. Pushed into the guardian's pit it comes to rest
+# (FLAG_DISTORTION_WORLD_..._BOULDER_IN_PIT) and the guardian cries, flickers and is gone home (the original's scripts
+# 5 to 7); pushed into any other pit it falls right through and is back on B5F
+# (DistWorldFallingBoulder_TickToWrongPit). With all three at rest the puzzle is done
+# (FLAG_DISTORTION_WORLD_PUZZLE_FINISHED).
+#
+# Cynthia stands in the passage south, which is one tile wide, and calls the floor a puzzle until then. Spoken to with
+# the puzzle done, she says where the three have gone, sees stepping stones come up out of nothing
+# (FLAG_DISTORTION_WORLD_STEPPING_STONES) and crosses to the slab that leads down (progress 7), where she waits.
+#
+# Each wing's pits are come to by that wing's boulder alone (a boulder pushed into the passages between the wings can
+# be turned no further), so a pit's script knows whose boulder it has.
+
+
+script OnEnter
+  if var VAR_DISTORTION_WORLD_PROGRESS >= 8 hide cynthia
+  if var VAR_DISTORTION_WORLD_PROGRESS == 7 place cynthia 28 46 right
+  end
+
+
+# A boulder at rest in the pit its guardian keeps (DistWorldFallingBoulder_TickToCorrectPit).
+script MespritPit
+  # The guardian is held where it is while the flags change under it
+  show mesprit
+  hide self
+  setflag FLAG_HIDE_DISTORTION_WORLD_B6F_MESPRIT_BOULDER
+  setflag FLAG_DISTORTION_WORLD_MESPRIT_BOULDER_IN_PIT
+  call Settles
+  cry "Mesprit"
+  speaker none
+  say "Kyauuun!"
+  call MespritGoes
+  call AllThree
+  end
+
+script UxiePit
+  show uxie
+  hide self
+  setflag FLAG_HIDE_DISTORTION_WORLD_B6F_UXIE_BOULDER
+  setflag FLAG_DISTORTION_WORLD_UXIE_BOULDER_IN_PIT
+  call Settles
+  cry "Uxie"
+  speaker none
+  say "Kyuuun!"
+  call UxieGoes
+  call AllThree
+  end
+
+script AzelfPit
+  show azelf
+  hide self
+  setflag FLAG_HIDE_DISTORTION_WORLD_B6F_AZELF_BOULDER
+  setflag FLAG_DISTORTION_WORLD_AZELF_BOULDER_IN_PIT
+  call Settles
+  cry "Azelf"
+  speaker none
+  say "Kyaaan!"
+  call AzelfGoes
+  call AllThree
+  end
+
+script Settles
+  sound "bump"
+  camera shake 0.4
+  wait 0.6
+  return
+
+script MespritGoes
+  hide mesprit
+  wait 0.07
+  show mesprit
+  wait 0.07
+  hide mesprit
+  wait 0.07
+  show mesprit
+  wait 0.07
+  sound "warp"
+  hide mesprit
+  return
+
+script UxieGoes
+  hide uxie
+  wait 0.07
+  show uxie
+  wait 0.07
+  hide uxie
+  wait 0.07
+  show uxie
+  wait 0.07
+  sound "warp"
+  hide uxie
+  return
+
+script AzelfGoes
+  hide azelf
+  wait 0.07
+  show azelf
+  wait 0.07
+  hide azelf
+  wait 0.07
+  show azelf
+  wait 0.07
+  sound "warp"
+  hide azelf
+  return
+
+script AllThree
+  if not flag FLAG_DISTORTION_WORLD_MESPRIT_BOULDER_IN_PIT return
+  if not flag FLAG_DISTORTION_WORLD_UXIE_BOULDER_IN_PIT return
+  if not flag FLAG_DISTORTION_WORLD_AZELF_BOULDER_IN_PIT return
+  setflag FLAG_DISTORTION_WORLD_PUZZLE_FINISHED
+  return
+
+
+# A boulder pushed into any other pit: it is gone from here and stands on B5F again.
+script MespritWrongPit
+  hide self
+  setflag FLAG_HIDE_DISTORTION_WORLD_B6F_MESPRIT_BOULDER
+  clearflag FLAG_DISTORTION_WORLD_MESPRIT_BOULDER_FELL
+  call Swallowed
+  end
+
+script UxieWrongPit
+  hide self
+  setflag FLAG_HIDE_DISTORTION_WORLD_B6F_UXIE_BOULDER
+  clearflag FLAG_DISTORTION_WORLD_UXIE_BOULDER_FELL
+  call Swallowed
+  end
+
+script AzelfWrongPit
+  hide self
+  setflag FLAG_HIDE_DISTORTION_WORLD_B6F_AZELF_BOULDER
+  clearflag FLAG_DISTORTION_WORLD_AZELF_BOULDER_FELL
+  call Swallowed
+  end
+
+script Swallowed
+  wait 1.0
+  speaker none
+  say "The boulder fell through the pit and out of sight. Nothing came of it."
+  say "...Far overhead, something heavy settled back where it first stood."
+  return
+
+
+# A pit looked into, and a boulder at rest in one (the original's DistortionWorldB6F_BoulderPit).
+script BoulderPit
+  speaker none
+  say "A round pit is cut into the edge of the stone. A boulder might fit it."
+  end
+
+script InPit
+  speaker none
+  say "The boulder sits in the pit as if it had been cut for it. It won't be moved again."
+  end
+
+
+# Cynthia (the original's DistortionWorldB6F_Cynthia, _CynthiaPuzzleFinished and _WereGettingClose).
+script Cynthia
+  face cynthia player
+  speaker "Cynthia"
+  if var VAR_DISTORTION_WORLD_PROGRESS >= 7 goto Close
+  if flag FLAG_DISTORTION_WORLD_PUZZLE_FINISHED goto Finished
+  say "This whole floor is one great puzzle. Boulders above, pits here, and the three Pokémon of the lakes waiting by them."
+  say "They followed us in to help, I think. Give each of them what it is waiting for."
+  end
+label Finished
+  say "I saw them go. The three of them have gone home to their lakes: they did what they came for."
+  say "They were holding this place steady for us, each at its own corner. Emotion, knowledge and will..."
+  setflag FLAG_DISTORTION_WORLD_STEPPING_STONES
+  wait 0.8
+  face cynthia down
+  emote cynthia exclaim 0.8
+  wait 1.0
+  say "Look. Stones, coming up out of nothing. That is our way down."
+  walk self down 1
+  walk self down 3 fast
+  walk self left 1
+  face cynthia right
+  setvar VAR_DISTORTION_WORLD_PROGRESS 7
+  end
+label Close
+  say "We're getting close. The air is heavier with every floor. Giratina is right under us."
+  end

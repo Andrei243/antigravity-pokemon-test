@@ -72,6 +72,10 @@ public sealed class ScriptLibrary
     /// part b): called by <see cref="ChapterEight"/>, and run for a save from before.</summary>
     public const string Headquarters = "common.Headquarters";
 
+    /// <summary>The script that hides whoever the ninth chapter brings on later (plan 02 · S12, Spear Pillar and the
+    /// Distortion World): called by <see cref="Headquarters"/>, and run for a save from before.</summary>
+    public const string ChapterNine = "common.ChapterNine";
+
     private readonly Dictionary<string, Script> scripts = new(StringComparer.Ordinal);
 
     public IReadOnlyCollection<Script> All => scripts.Values;
@@ -188,7 +192,10 @@ public sealed class ScriptLibrary
                     case Op.Cry when !i.Own && PokemonDatabase.Get(i.Name) == null && PokemonDatabase.SpeciesOfForm(i.Name) == null:
                         Wrong(i, $"there is no species or form '{i.Name}'");
                         break;
-                    case Op.GivePokemon or Op.WildBattle or Op.CatchingLesson or Op.GiveEgg when PokemonDatabase.Get(i.Name) == null:
+                    case Op.WildBattle when PokemonDatabase.Get(i.Name) == null && PokemonDatabase.SpeciesOfForm(i.Name) == null:
+                        Wrong(i, $"there is no species or form '{i.Name}'");
+                        break;
+                    case Op.GivePokemon or Op.CatchingLesson or Op.GiveEgg or Op.Seen when PokemonDatabase.Get(i.Name) == null:
                         Wrong(i, $"there is no species '{i.Name}'");
                         break;
                     case Op.GiveAccessory when SuperContestDatabase.Accessory(i.Name) < 0:

@@ -105,6 +105,13 @@ public static class FieldScripts
     public static HiddenItem? HiddenAt(Map map, int x, int y, StoryState story) =>
         map.HiddenItems.TryGetValue((x, y), out var hidden) && !story.Has(hidden.Flag) ? hidden : null;
 
+    /// <summary>
+    /// The script of the pit a boulder has come to rest on (plan 02 · S12; <see cref="Map.BoulderPits"/>), or null where
+    /// it stands on ordinary ground: what the field starts once the boulder's slide has ended, the boulder its subject.
+    /// </summary>
+    public static string? PitUnder(Map map, NPC boulder) =>
+        boulder.Obstacle == PropType.StrengthBoulder && map.BoulderPits.TryGetValue((boulder.GridX, boulder.GridY), out string? script) ? script : null;
+
     /// <summary>The first trigger under a tile whose state of the story has come: the one a step there starts.</summary>
     public static StepTrigger? TriggerAt(Map map, int x, int y, StoryState story)
     {

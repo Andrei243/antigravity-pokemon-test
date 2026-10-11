@@ -1,8 +1,53 @@
 {
   "area": "spear_pillar",
   "bgmTrack": "sinnoh/spear_pillar",
-  "evolutionSites": [ "Magnetic Field" ]
-  // Cyrus, Mars and Jupiter, their grunts and the rival, and the scenes the area's three triggers start (the
-  // grunts at the top of the steps, Cyrus at the altar, the Hall of Origin in the post-game), come with the story
-  // (plan 02 · S12, and plan 01 · M10 for the Hall of Origin)
+  "evolutionSites": [ "Magnetic Field" ],
+  // The summit's battles are fought on bare rock: the cave's stage stands in for the mountain's, which isn't built
+  "battleArena": "Cave",
+  // Plan 02 · S12 (scripts/spear_pillar.txt): Team Galactic at the summit. The two grunts at the head of the steps
+  // stop whoever comes between them (trigger 0) and battle together; Commander Mars and Commander Jupiter close in
+  // before the altar (trigger 1), the rival comes up to fight beside the player, and Cyrus's scene follows their defeat.
+  // The Hall of Origin's trigger (2) is the post-game's (plan 02 · S15)
+  "triggers": [
+    { "trigger": 0, "script": "GruntsStop" },
+    { "trigger": 1, "script": "MarsAndJupiter" }
+  ],
+  "people": {
+    "grunt_f": {
+      "name": "Grunt", "script": "Grunts", "still": true,
+      "trainer": { "id": "galactic_grunt_spear_pillar_1",
+        "dialogueBefore": "Galactic Grunt: We'll take you down together!",
+        "dialogueAfter": "Galactic Grunt: Kept you busy, didn't we?" }
+    },
+    "grunt_m": {
+      "name": "Grunt", "script": "Grunts", "still": true,
+      "trainer": { "id": "galactic_grunt_spear_pillar_2",
+        "dialogueBefore": "Galactic Grunt: Two against one. Hardly fair, is it? Good!",
+        "dialogueAfter": "Galactic Grunt: Two against one, and we still lost..." }
+    },
+    "mars": {
+      "name": "Mars", "npcType": "Mars", "script": "Mars", "still": true,
+      "trainer": { "id": "commander_mars_spear_pillar",
+        "dialogueBefore": "Mars: You go through me first!",
+        "dialogueAfter": "Mars: Unbelievable. Beaten by you again." }
+    },
+    "jupiter": {
+      "name": "Jupiter", "npcType": "Jupiter", "script": "Jupiter", "still": true,
+      "trainer": { "id": "commander_jupiter_spear_pillar",
+        "dialogueBefore": "Jupiter: And then through me.",
+        "dialogueAfter": "Jupiter: Tch. I underestimated the pair of you." }
+    },
+    "cyrus": { "name": "Cyrus", "npcType": "Cyrus", "dialog": [ "......" ], "still": true },
+    // Shown by the scene alone (FLAG_HIDE_SPEAR_PILLAR_RIVAL, which the original's OnTransition sets while the state
+    // is under 4 and common.ChapterNine sets for every game)
+    "rival": { "name": "{rival}", "dialog": [ "{rival}: Go on! Stop him!" ], "still": true }
+  },
+  // Dialga and Palkia as Cyrus calls them, and the shadow that comes for him: Pokémon of the map of our own, which
+  // stand in for the original's cutscene until plan 09 · L14 (FLAG_HIDE_SPEAR_PILLAR_LEGENDS is ours, set for every
+  // game and never cleared: the scene shows them by itself and they are gone with the map)
+  "npcs": [
+    { "id": "dialga", "name": "Dialga", "npcType": "Pokemon", "species": "Dialga", "x": 29, "y": 21, "facing": "Down", "hiddenBy": "FLAG_HIDE_SPEAR_PILLAR_LEGENDS" },
+    { "id": "palkia", "name": "Palkia", "npcType": "Pokemon", "species": "Palkia", "x": 33, "y": 21, "facing": "Down", "hiddenBy": "FLAG_HIDE_SPEAR_PILLAR_LEGENDS" },
+    { "id": "giratina", "name": "Giratina", "npcType": "Pokemon", "species": "Giratina-Origin", "x": 31, "y": 25, "facing": "Down", "hiddenBy": "FLAG_HIDE_SPEAR_PILLAR_LEGENDS" }
+  ]
 }

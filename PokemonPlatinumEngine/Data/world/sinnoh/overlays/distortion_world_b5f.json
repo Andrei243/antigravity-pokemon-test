@@ -1,7 +1,6 @@
 {
   "area": "distortion_world_b5f",
   "bgmTrack": "sinnoh/distortion_world",
-  // The boulders of the three lakes' guardians and the pits they fall through are plan 02 · S13's
   "exits": [
     // The slabs: up to B4F (sMovingPlatformMapTemplateB5F_1, path 13), down to B6F (B5F_2, path 14) and up past
     // B4F to B3F (B5F_3, path 15)
@@ -14,5 +13,32 @@
     { "x": 47, "z": 43, "map": "DistortionWorldB4F", "toX": 48, "toY": 22, "facing": "Left" },
     { "x": 47, "z": 44, "map": "DistortionWorldB4F", "toX": 48, "toY": 22, "facing": "Left" },
     { "x": 47, "z": 45, "map": "DistortionWorldB4F", "toX": 48, "toY": 22, "facing": "Left" }
+  ],
+  // Plan 02 · S12 (scripts/distortion_world_b5f.txt): the three boulders of the lakes' guardians, each beside the
+  // hole it falls through to B6F (sMapObjectEventB5F_MespritBoulder, _AzelfBoulder and _UxieBoulder: 75, 68; 98, 67;
+  // 86, 56 of the Distortion World's space), pushed with Strength as any boulder is. A boulder is here until it has
+  // fallen (FLAG_DISTORTION_WORLD_..._BOULDER_FELL, ours: the original keeps the puzzle's state beside its flags), and
+  // here again when it has gone down a wrong pit below. The three guardians show themselves beyond the holes, over
+  // nothing, in the scenes alone (sMapObjectEventB5F_Mesprit, _Azelf and _Uxie)
+  "npcs": [
+    { "id": "mesprit_boulder", "name": "Boulder", "npcType": "StrengthBoulder", "x": 18, "y": 34, "hiddenBy": "FLAG_DISTORTION_WORLD_MESPRIT_BOULDER_FELL" },
+    { "id": "azelf_boulder", "name": "Boulder", "npcType": "StrengthBoulder", "x": 41, "y": 33, "hiddenBy": "FLAG_DISTORTION_WORLD_AZELF_BOULDER_FELL" },
+    { "id": "uxie_boulder", "name": "Boulder", "npcType": "StrengthBoulder", "x": 29, "y": 22, "hiddenBy": "FLAG_DISTORTION_WORLD_UXIE_BOULDER_FELL" },
+    { "id": "mesprit", "name": "Mesprit", "npcType": "Pokemon", "species": "Mesprit", "x": 20, "y": 34, "facing": "Left", "level": 1, "hiddenBy": "FLAG_HIDE_DISTORTION_WORLD_APPARITIONS", "dialog": [ "..." ] },
+    { "id": "azelf", "name": "Azelf", "npcType": "Pokemon", "species": "Azelf", "x": 39, "y": 33, "facing": "Right", "level": 1, "hiddenBy": "FLAG_HIDE_DISTORTION_WORLD_APPARITIONS", "dialog": [ "..." ] },
+    { "id": "uxie", "name": "Uxie", "npcType": "Pokemon", "species": "Uxie", "x": 29, "y": 24, "facing": "Up", "level": 1, "hiddenBy": "FLAG_HIDE_DISTORTION_WORLD_APPARITIONS", "dialog": [ "..." ] }
+  ],
+  // The holes: the tile a boulder falls from (sBoulderFallLocations: 76, 68; 97, 67; 86, 57)
+  "pits": [
+    { "x": 19, "z": 34, "script": "MespritBoulderFalls" },
+    { "x": 40, "z": 33, "script": "AzelfBoulderFalls" },
+    { "x": 29, "z": 23, "script": "UxieBoulderFalls" }
+  ],
+  // Where each guardian shows what its boulder is for, once (sMapEventsB5F: 86 and 87, 53; 100, 67 and 68; 80, 67 and
+  // 68, each while its DIST_WORLD_PUZZLE_FLAG_..._TUTO_SEEN is unset: the variables are ours)
+  "triggers": [
+    { "x": 29, "z": 19, "width": 2, "variable": "VAR_DISTORTION_WORLD_UXIE_SHOWN", "value": 0, "script": "UxieShows" },
+    { "x": 43, "z": 33, "depth": 2, "variable": "VAR_DISTORTION_WORLD_AZELF_SHOWN", "value": 0, "script": "AzelfShows" },
+    { "x": 23, "z": 33, "depth": 2, "variable": "VAR_DISTORTION_WORLD_MESPRIT_SHOWN", "value": 0, "script": "MespritShows" }
   ]
 }

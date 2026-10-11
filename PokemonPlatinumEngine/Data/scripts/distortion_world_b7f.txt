@@ -1,0 +1,123 @@
+# The Distortion World, B7F (plan 02 · S12). docs/scripts.md describes the language; the lines are our own, on the
+# original's beats (scripts_distortion_world_b7f.s). distortion_world_1f.txt says what VAR_DISTORTION_WORLD_PROGRESS
+# counts.
+#
+# The first time the slab brings the player down (progress 7) Cynthia is at its foot, says Giratina is close, and
+# goes on up the path to where Cyrus waits (progress 8). The row before the two (the original's event) starts their
+# argument: he comes down to her, she steps aside, and he says what he means by justice (progress 9). Spoken to, he
+# battles (galactic_boss_cyrus_distortion_world); a battle lost leaves him standing there. Beaten (progress 10), he
+# walks out past the player, Cynthia heals the team, and the two go up to the last stretch before Giratina's room,
+# which lies north of where she stops.
+#
+# Slabs do not move yet (plan 01 · M8), so Cynthia does not ride down with the player: she is met at the foot.
+
+
+# Where the two stand, by how far the story has come.
+script OnEnter
+  if var VAR_DISTORTION_WORLD_PROGRESS == 8 goto Waiting
+  if var VAR_DISTORTION_WORLD_PROGRESS == 7 goto First
+  if var VAR_DISTORTION_WORLD_PROGRESS == 9 goto Talking
+  hide cyrus
+  if var VAR_DISTORTION_WORLD_PROGRESS < 7 hide cynthia
+  if var VAR_DISTORTION_WORLD_PROGRESS >= 10 place cynthia 15 37 up
+  end
+label Waiting
+  place cyrus 11 38 down
+  place cynthia 11 42 up
+  end
+label Talking
+  place cynthia 10 42 right
+  place cyrus 11 42 left
+  end
+label First
+  # DistortionWorldB7F_OnFrame_FirstEntry
+  place cyrus 11 38 down
+  place cynthia 10 52 up
+  wait 0.8
+  face player up
+  speaker "Cynthia"
+  say "This is the bottom of it. Giratina is up ahead. And I don't think it is alone."
+  walk cynthia right 1
+  walk cynthia up 3 fast
+  walk cynthia up 7
+  setvar VAR_DISTORTION_WORLD_PROGRESS 8
+  end
+
+
+# The original's DistortionWorldB7F_CoordEvent_CynthiaCyrus, from each of its three tiles.
+script CynthiaAndCyrus
+  setvar VAR_DISTORTION_WORLD_PROGRESS 9
+  place cyrus 11 38 down
+  place cynthia 11 42 up
+  face player up
+  speaker "Cynthia"
+  say "Cyrus. So you were here ahead of us."
+  move cynthia left 1
+  walk cyrus down 4
+  face cyrus left
+  face cynthia right
+  say "Why? Why unmake a world to change it? If it is a world without spirit you want, you could have gone away by yourself and felt nothing, and troubled no one."
+  speaker "Cyrus"
+  say "And leave it as it is? Spirit is the flaw. It makes people weak and cruel by turns, and it is in all of them."
+  say "I will not hide from an imperfect world. I will end it and make it right. That is not cruelty. That is my justice."
+  end
+
+
+# Cyrus (the original's DistortionWorldB7F_Cyrus), spoken to from the south or the east.
+script Cyrus
+  face cyrus player
+  speaker "Cyrus"
+  say "You again, at the end of everything. Very well. I will not lose to you a third time. The shadow Pokémon is mine to bring down, and you are in my way!"
+  battle cyrus as "galactic_boss_cyrus_distortion_world"
+  setvar VAR_DISTORTION_WORLD_PROGRESS 10
+  speaker "Cyrus"
+  say "...Beaten. Here, of all places."
+  say "And now you will go to that Pokémon and calm it, and this crooked world and the other will both go on as they are. You would undo everything I have done."
+  if var PLAYER_X != 11 goto Aside
+  walk player right 1
+  face player left
+label Aside
+  face cynthia down
+  walk self down 7
+  face player down
+  walk self down 3 fast
+  hide cyrus
+  # Cynthia comes over to the player
+  walk cynthia right 1
+  face cynthia player
+  face player cynthia
+  speaker "Cynthia"
+  say "Don't believe a word of it. A world with nothing in it to hurt would have nothing in it to love, either."
+  say "Hold still, {player}. Your Pokémon have earned this."
+  fanfare heal
+  heal
+  speaker none
+  say "Cynthia tended {player}'s team. Every Pokémon is back at full health!"
+  speaker "Cynthia"
+  say "Now. Let's go and meet Giratina."
+  move cynthia up 6 right 4 down 1
+  wait 0.9
+  if var PLAYER_Y == 43 goto FromSouth
+  walk player left 1 up 6 right 4
+  goto There
+label FromSouth
+  walk player left 1 up 7 right 4
+label There
+  waitmoves
+  face cynthia up
+  face player down
+  say "It is just ahead of you, and it is furious: at Cyrus, at what was done to time and space, perhaps at all of us."
+  say "It has to be shown that not everyone means it harm. Catch it or beat it, whichever you can. Either will quiet it. I'll be right behind you."
+  end
+
+
+# Cynthia (the original's DistortionWorldB7F_Cynthia).
+script Cynthia
+  face cynthia player
+  speaker "Cynthia"
+  if var VAR_DISTORTION_WORLD_PROGRESS >= 10 goto After
+  say "A world put right by emptying it? That is no justice. It is only a man who was hurt, and never learned what to do with it."
+  end
+label After
+  say "You and your Pokémon are bound to each other. I watched it just now. Take that with you to Giratina. It is the one thing Cyrus never had."
+  end

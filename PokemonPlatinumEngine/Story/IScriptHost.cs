@@ -299,4 +299,12 @@ public interface IScriptHost
     /// (<see cref="Busy"/>); then the Pokémon is in the Pokédex. False when no Egg is ready.
     /// </summary>
     bool Hatch();
+
+    // ------------------------------------------------------------------ the Pokédex (plan 02 · S12)
+
+    /// <summary>
+    /// The Pokédex records a species as seen (<c>seen</c>; the original's <c>SetSpeciesSeen</c>): a Pokémon the story
+    /// shows without a battle, as Dialga and Palkia come at Spear Pillar.
+    /// </summary>
+    void Seen(PokemonSpecies species);
 }

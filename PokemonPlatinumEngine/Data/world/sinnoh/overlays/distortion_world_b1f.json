@@ -9,5 +9,17 @@
     // tw_arc.narc): until gravity turns, each end carries the player to the other
     { "x": 12, "z": 14, "map": "DistortionWorldB1F", "toX": 12, "toY": 23, "facing": "Right" },
     { "x": 12, "z": 23, "map": "DistortionWorldB1F", "toX": 12, "toY": 14, "facing": "Right" }
+  ],
+  // Plan 02 · S12 (scripts/distortion_world_b1f.txt): Cynthia at the slab's foot the first time the player comes
+  // down it (the original carries her down on the slab), and Mesprit at the foot of the wall, which shows the way up
+  // it (sMapObjectEventB1F_Mesprit: 12, 57 of the Distortion World's space). Both are shown by the place's OnEnter and
+  // its scenes; Mesprit hangs over the rock at the island's own height
+  "npcs": [
+    { "id": "cynthia", "name": "Cynthia", "npcType": "Cynthia", "x": 39, "y": 17, "facing": "Down", "dialog": [ "Cynthia: Go on. I'm right behind you." ] },
+    { "id": "mesprit", "name": "Mesprit", "npcType": "Pokemon", "species": "Mesprit", "x": 12, "y": 22, "facing": "Up", "level": 1, "hiddenBy": "FLAG_HIDE_DISTORTION_WORLD_APPARITIONS", "dialog": [ "..." ] }
+  ],
+  // The step that brings Mesprit (sMapEventsB1F: 15, 58, while the progress is DIST_WORLD_PROGRESS_ENTERED_B1F)
+  "triggers": [
+    { "x": 15, "z": 23, "variable": "VAR_DISTORTION_WORLD_PROGRESS", "value": 3, "script": "Mesprit" }
   ]
 }

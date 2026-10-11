@@ -1,10 +1,53 @@
 {
   "area": "distortion_world_b6f",
   "bgmTrack": "sinnoh/distortion_world",
-  // The pits the boulders fall into from B5F are plan 02 · S13's
   "exits": [
     // The slabs: up to B5F (sMovingPlatformMapTemplateB6F_1, path 17) and down to B7F (B6F_2, path 18)
     { "x": 31, "z": 29, "map": "DistortionWorldB5F", "toX": 30, "toY": 33, "facing": "Down" },
     { "x": 29, "z": 48, "map": "DistortionWorldB7F", "toX": 11, "toY": 54, "facing": "Down" }
+  ],
+  // Plan 02 · S12 (scripts/distortion_world_b6f.txt): the puzzle of the three boulders, as the original's code runs it
+  // (sMapObjectEventsB6F, sBoulderFallLocations). A boulder fallen from B5F stands in the open on its wing
+  // (FLAG_HIDE_DISTORTION_WORLD_B6F_..._BOULDER, ours, cleared as it falls); pushed into its guardian's pit it rests
+  // there for good (FLAG_DISTORTION_WORLD_..._BOULDER_IN_PIT, ours) and the guardian, which hangs beyond the pit
+  // until then, goes home. Cynthia stands in the one passage south until all three are done, and then by the slab
+  "npcs": [
+    { "id": "mesprit_boulder", "name": "Boulder", "npcType": "StrengthBoulder", "x": 19, "y": 30, "hiddenBy": "FLAG_HIDE_DISTORTION_WORLD_B6F_MESPRIT_BOULDER" },
+    { "id": "azelf_boulder", "name": "Boulder", "npcType": "StrengthBoulder", "x": 42, "y": 29, "hiddenBy": "FLAG_HIDE_DISTORTION_WORLD_B6F_AZELF_BOULDER" },
+    { "id": "uxie_boulder", "name": "Boulder", "npcType": "StrengthBoulder", "x": 30, "y": 18, "hiddenBy": "FLAG_HIDE_DISTORTION_WORLD_B6F_UXIE_BOULDER" },
+    { "id": "mesprit_boulder_in_pit", "name": "Boulder", "npcType": "StrengthBoulder", "x": 12, "y": 29, "level": 1, "shownBy": "FLAG_DISTORTION_WORLD_MESPRIT_BOULDER_IN_PIT", "script": "InPit" },
+    { "id": "azelf_boulder_in_pit", "name": "Boulder", "npcType": "StrengthBoulder", "x": 40, "y": 30, "level": 1, "shownBy": "FLAG_DISTORTION_WORLD_AZELF_BOULDER_IN_PIT", "script": "InPit" },
+    { "id": "uxie_boulder_in_pit", "name": "Boulder", "npcType": "StrengthBoulder", "x": 29, "y": 22, "level": 1, "shownBy": "FLAG_DISTORTION_WORLD_UXIE_BOULDER_IN_PIT", "script": "InPit" },
+    { "id": "mesprit", "name": "Mesprit", "npcType": "Pokemon", "species": "Mesprit", "x": 12, "y": 26, "facing": "Down", "level": 1, "hiddenBy": "FLAG_DISTORTION_WORLD_MESPRIT_BOULDER_IN_PIT" },
+    { "id": "uxie", "name": "Uxie", "npcType": "Pokemon", "species": "Uxie", "x": 26, "y": 22, "facing": "Right", "level": 1, "hiddenBy": "FLAG_DISTORTION_WORLD_UXIE_BOULDER_IN_PIT" },
+    { "id": "azelf", "name": "Azelf", "npcType": "Pokemon", "species": "Azelf", "x": 40, "y": 33, "facing": "Up", "level": 1, "hiddenBy": "FLAG_DISTORTION_WORLD_AZELF_BOULDER_IN_PIT" },
+    { "id": "cynthia", "name": "Cynthia", "npcType": "Cynthia", "x": 29, "y": 42, "facing": "Up", "script": "Cynthia" }
+  ],
+  // The pits (sBoulderFallLocations): on each wing the one its guardian keeps, where a boulder comes to rest, and the
+  // others, which swallow it and send it back up to where it first stood
+  "pits": [
+    { "x": 12, "z": 29, "script": "MespritPit" },
+    { "x": 19, "z": 29, "script": "MespritWrongPit" },
+    { "x": 23, "z": 29, "script": "MespritWrongPit" },
+    { "x": 29, "z": 22, "script": "UxiePit" },
+    { "x": 29, "z": 18, "script": "UxieWrongPit" },
+    { "x": 29, "z": 19, "script": "UxieWrongPit" },
+    { "x": 29, "z": 14, "script": "UxieWrongPit" },
+    { "x": 29, "z": 15, "script": "UxieWrongPit" },
+    { "x": 40, "z": 30, "script": "AzelfPit" },
+    { "x": 44, "z": 30, "script": "AzelfWrongPit" },
+    { "x": 49, "z": 30, "script": "AzelfWrongPit" }
+  ],
+  // What a pit says when looked into (the original's nine objects nobody sees, sMapObjectEventB6F_..._BoulderPitText)
+  "readAt": [
+    { "x": 12, "z": 29, "script": "BoulderPit" },
+    { "x": 19, "z": 29, "script": "BoulderPit" },
+    { "x": 23, "z": 29, "script": "BoulderPit" },
+    { "x": 29, "z": 14, "script": "BoulderPit" },
+    { "x": 29, "z": 18, "script": "BoulderPit" },
+    { "x": 29, "z": 22, "script": "BoulderPit" },
+    { "x": 40, "z": 30, "script": "BoulderPit" },
+    { "x": 44, "z": 30, "script": "BoulderPit" },
+    { "x": 49, "z": 30, "script": "BoulderPit" }
   ]
 }

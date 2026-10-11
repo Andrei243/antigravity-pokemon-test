@@ -1,0 +1,204 @@
+# Spear Pillar, at the summit of Mt. Coronet (plan 02 · S12). docs/scripts.md describes the language; the lines are
+# our own, on the original's beats (scripts_spear_pillar.s).
+#
+# Team Galactic hold the ruin. Two grunts stand either side of the head of the steps and stop whoever comes between
+# them (the original's trigger, VAR_SPEAR_PILLAR_STATE 0): a double battle, for which two Pokémon able to fight are
+# needed, and state 1 once it is won. Further up, Commander Mars and Commander Jupiter stand either side of the way to
+# the altar (the original's trigger, three tiles across, state 1): they close in, the rival comes running up the steps
+# to stand beside the player, and the two fight the two (S6's tag battle, the rival's team by the player's starter).
+# Won, the rival heals the player's team, leaves the rest to the player and goes (state 2), and the scene at the altar
+# follows at once: Cyrus calls Dialga and Palkia out of time and space with his two Red Chains, the Pokémon the two
+# were set to balance comes for him out of the dark, and he is gone. The summit is torn from then on: state 3, the
+# third level of the Vs. Seeker's rematches, FLAG_SPEAR_PILLAR_IS_DISTORTED (which moves Mt. Coronet's way out onto the
+# pillar the Distortion World has torn), VAR_SPEAR_PILLAR_DISTORTED_STATE 1, Dialga and Palkia in the Pokédex as seen,
+# and Team Galactic's people gone from this map (they stand on the other one).
+#
+# A battle lost leaves the state where it was, so the scene starts again from its trigger. The rival is shown by the
+# scene alone (the original's OnTransition hides him again while the state is under 4), and the place's arrival puts
+# the two commanders back on their tiles.
+#
+# Stood in for until plan 09 lands (L11 the effects, L12 the set pieces, L14 the legendaries' ways in): the original's
+# cutscene (its sub-scene 63: the chains, the two Pokémon drawn out of their rifts, the shadow rising from the floor)
+# is Dialga and Palkia stepping out as Pokémon of the map, their cries, the camera's shake, the script's fade and the
+# sounds the bank has. The Dynamax beat a later mechanic would bring here (decision 06 · 2) is left out.
+
+
+# Arriving: the commanders back where they stand, for a scene a lost battle cut short.
+script OnEnter
+  if var VAR_SPEAR_PILLAR_STATE != 1 end
+  place mars 33 32 down
+  place jupiter 29 32 down
+  end
+
+
+# The original's SpearPillar_CoordEvent_Grunts, between the two at the head of the steps.
+script GruntsStop
+  face grunt_f right
+  face grunt_m left
+  speaker "Galactic Grunt"
+  if party < 2 goto OnlyOne
+  say "Stop right there! The boss is making a new world up ahead, and we're here to see nobody spoils it."
+  say "Two of us, one of you. We'll take you down together!"
+  battle grunt_f and grunt_m
+  setvar VAR_SPEAR_PILLAR_STATE 1
+  speaker "Galactic Grunt"
+  say "Go on, then. We've done our part: we kept you busy. You're too late to change a thing."
+  end
+label OnlyOne
+  say "One Pokémon? You came all the way up here with one Pokémon? Come back when there's something for the two of us to beat!"
+  walk player down 1
+  face grunt_f down
+  face grunt_m down
+  end
+
+
+# The original's SpearPillar_Grunts, once they are beaten.
+script Grunts
+  speaker "Galactic Grunt"
+  say "We let you past. Call it that, anyway. It makes no difference now."
+  end
+
+
+# The original's SpearPillar_Jupiter and SpearPillar_Mars.
+script Jupiter
+  speaker "Jupiter"
+  say "Hush. Something nobody has ever seen is about to happen. Be quiet and watch."
+  end
+
+script Mars
+  speaker "Mars"
+  say "You made it up here? Well, well. I'm almost impressed."
+  end
+
+
+# The original's SpearPillar_CoordEvent_MarsJupiter, from each of its three tiles, and SpearPillar_Cyrus after it.
+script MarsAndJupiter
+  if var PLAYER_X == 30 goto FromWest
+  if var PLAYER_X == 32 goto FromEast
+  # From the middle: Mars steps in on the east, Jupiter turns
+  face player right
+  face jupiter right
+  walk mars left 1
+  goto Closed
+label FromWest
+  face player left
+  face jupiter right
+  walk mars left 1
+  goto Closed
+label FromEast
+  face player right
+  walk jupiter right 1
+  face mars left
+label Closed
+  speaker "Mars"
+  say "That's far enough. The boss is not to be disturbed, least of all by you. If you want to reach him, you go through me first!"
+  speaker "Jupiter"
+  say "And then through me. Did you think we would take turns? How sweet."
+  # The rival comes up the steps to stand beside the player
+  if var PLAYER_X == 31 goto RivalWest
+  place rival 31 40 up
+  show rival
+  walk rival up 8 fast
+  if var PLAYER_X == 30 face rival right
+  if var PLAYER_X == 32 face rival left
+  goto RivalHere
+label RivalWest
+  place rival 30 40 up
+  show rival
+  walk rival up 8 fast
+  face rival left
+label RivalHere
+  music "common/rival"
+  speaker "{rival}"
+  say "Hey! Don't you dare start without me!"
+  speaker "Jupiter"
+  say "...Hm? Oh. The boy from the lake. Come back for more?"
+  speaker "{rival}"
+  say "I've come for payback! I'm not who I was at Lake Acuity. I've done nothing but train since then!"
+  say "{player}! Two of them, two of us. Let's take them on together!"
+  if starter "Chimchar" goto Chimchar
+  if starter "Piplup" goto Piplup
+  battle mars and jupiter with "rival_spear_pillar_turtwig"
+  goto Won
+label Chimchar
+  battle mars and jupiter with "rival_spear_pillar_chimchar"
+  goto Won
+label Piplup
+  battle mars and jupiter with "rival_spear_pillar_piplup"
+label Won
+  face player rival
+  face rival player
+  speaker "{rival}"
+  say "We did it! Those two were something else, though. My Pokémon are just about spent."
+  say "So here's what I can do for you, {player}. Hold still!"
+  fanfare heal
+  heal
+  speaker none
+  say "{rival} used his medicine on {player}'s team. Every Pokémon is back at full health!"
+  speaker "{rival}"
+  say "That's the last of what I had. From here on it's your show. Go and stop him!"
+  face player down
+  walk rival down 8 fast
+  hide rival
+  music area
+  setvar VAR_SPEAR_PILLAR_STATE 2
+
+  # At the altar (SpearPillar_Cyrus)
+  face player up
+  camera pan 31 26 1.4
+  speaker "Cyrus"
+  say "Everything is ready. Here everything ends, and here everything begins."
+  say "With the Red Chain made of the crystals of the three Pokémon of the lakes, and with a second that I forged by my own science, I take hold of what made this world."
+  music stop
+  wait 0.4
+  sound "gear"
+  wait 0.8
+  camera shake 0.8
+  say "Come. Lord of time, whom the myths call Dialga!"
+  sound "thunder_rumble"
+  camera shake 1.0
+  show dialga
+  cry "Dialga"
+  wait 1.0
+  say "And you. Lord of space, whom they call Palkia!"
+  sound "thunder_rumble"
+  camera shake 1.0
+  show palkia
+  cry "Palkia"
+  wait 1.0
+  seen "Dialga"
+  seen "Palkia"
+  say "At last. For this I schemed, and lied, and spent every one of those who followed me. Time and space are in my hands."
+  say "This crooked, unfinished world and the spirit that fouls it will be unmade, and I shall make another: a world without strife, because it is without heart. Complete."
+  wait 0.5
+  sound "thunder"
+  camera shake 1.4
+  say "...What is this? A weight in the air. Something is angry. At me?"
+  fade out 0.6
+  sound "thunder_rumble"
+  cry "Giratina-Origin"
+  show giratina
+  hide dialga
+  hide palkia
+  fade in 0.5
+  camera shake 1.2
+  say "A Pokémon that comes as a shadow... So there was a third, set against the other two. Interesting."
+  say "It changes nothing! I hold the power of Dialga and of Palkia. Whatever you are, you cannot..."
+  fade out 0.5
+  sound "thunder"
+  cry "Giratina-Origin"
+  hide cyrus
+  hide giratina
+  wait 0.8
+  text "The shadow closed over Cyrus and sank into the floor. Where it went down, the stone of Spear Pillar is gone."
+  camera release 0.1
+  setflag FLAG_HIDE_SPEAR_PILLAR_GRUNTS
+  setflag FLAG_HIDE_SPEAR_PILLAR_MARS_JUPITER
+  setflag FLAG_HIDE_SPEAR_PILLAR_CYRUS
+  setvar VAR_SPEAR_PILLAR_STATE 3
+  setflag FLAG_UNLOCKED_VS_SEEKER_LVL_3
+  clearflag FLAG_HIDE_SPEAR_PILLAR_DISTORTED_TEAM_GALACTIC
+  setflag FLAG_SPEAR_PILLAR_IS_DISTORTED
+  setvar VAR_SPEAR_PILLAR_DISTORTED_STATE 1
+  warp "SpearPillarDistorted" 30 30 up
+  end

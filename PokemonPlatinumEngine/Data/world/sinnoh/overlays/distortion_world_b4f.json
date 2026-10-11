@@ -10,5 +10,12 @@
     // (sMapEventB4F_Waterfall, a cascade 42 tiles down): until gravity turns, the wall's foot carries the player to
     // the shore of the pool the waterfall falls into
     { "x": 48, "z": 22, "map": "DistortionWorldB5F", "toX": 44, "toY": 33, "facing": "Left" }
+  ],
+  // Plan 02 · S12 (scripts/distortion_world_b4f.txt): Giratina passes twice, each once (sMapEventsB4F: 65, 57 and 98,
+  // 56 to 57 of the Distortion World's space, each while its own flag is unset: the variables are ours, since a
+  // trigger waits for a variable, and the scripts set the original's flags beside them)
+  "triggers": [
+    { "x": 8, "z": 23, "variable": "VAR_DISTORTION_WORLD_B4F_SHADOW_WEST", "value": 0, "script": "ShadowWest" },
+    { "x": 41, "z": 22, "depth": 2, "variable": "VAR_DISTORTION_WORLD_B4F_SHADOW_EAST", "value": 0, "script": "ShadowEast" }
   ]
 }

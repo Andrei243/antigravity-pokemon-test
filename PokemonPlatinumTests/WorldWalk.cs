@@ -40,6 +40,27 @@ internal static class WorldWalk
             Visit(map, start.X, start.Y, TravelMode.OnFoot, map.HeightAt(start.X, start.Y), arrived: true);
         }
 
+        // Who and what takes the player somewhere when spoken to or read, by the tile they are on, whenever in the story
+        // they are there and whatever they stand on (plan 02 · S12): Cynthia by the tear at Spear Pillar, who is hidden
+        // until her scene, and a portal of the Distortion World, which hangs on rock or over nothing
+        var sending = new Dictionary<Map, Dictionary<(int X, int Y), List<PokemonPlatinumEngine.Story.Instruction>>>();
+        Dictionary<(int X, int Y), List<PokemonPlatinumEngine.Story.Instruction>> SendingOf(Map map)
+        {
+            if (sending.TryGetValue(map, out var found)) return found;
+            sending[map] = found = new();
+            void Add(int x, int y, string script, string? file)
+            {
+                var sent = WarpsOf(script, file).ToList();
+                if (sent.Count == 0) return;
+                if (!found.TryGetValue((x, y), out var list)) found[(x, y)] = list = new();
+                list.AddRange(sent);
+            }
+            foreach (var person in map.Everyone)
+                if (person.Script is { } theirs) Add(person.GridX, person.GridY, theirs, person.ScriptFile ?? map.ScriptFileAt(person.GridX, person.GridY));
+            foreach (var (at, read) in map.TileScripts) Add(at.X, at.Y, read, map.ScriptFileAt(at.X, at.Y));
+            return found;
+        }
+
         while (queue.Count > 0)
         {
             var (map, x, y, mode, height, arrived) = queue.Dequeue();
@@ -86,6 +107,13 @@ internal static class WorldWalk
             var walker = new Walker(mode, height, Moves: Everything, Climbing: true);
             foreach (var way in Ways)
             {
+                var (ax, ay) = FieldMovement.Delta(way);
+                if (SendingOf(map).TryGetValue((x + ax, y + ay), out var portals))
+                    foreach (var sent in portals)
+                    {
+                        var onto = mapOf(sent.Name);
+                        Visit(onto, sent.X, sent.Y, TravelMode.OnFoot, onto.HeightAt(sent.X, sent.Y), arrived: true);
+                    }
                 var step = FieldMovement.Step(map, x, y, way, walker);
                 if (step.Moves)
                 {
