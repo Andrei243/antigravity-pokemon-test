@@ -432,4 +432,12 @@ public interface IScriptHost
     /// waits).
     /// </summary>
     Models.Frontier.BattleArcadeChallenge? Arcade { get; set; }
+
+    /// <summary>
+    /// A Pokémon of the team is out of its ball and walks behind the player as a thing of the map (plan 06 · R16c:
+    /// Amity Square's <c>follower_mon</c>, dressed as it by <see cref="Follower.Dress"/>); null for both and it stops
+    /// following, where it stands. It is the same follower a partner is (<see cref="TravelWith"/>), and the game has
+    /// one at a time.
+    /// </summary>
+    void WalkWith(NPC? body, Pokemon? pokemon);
 }

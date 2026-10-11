@@ -1962,3 +1962,37 @@ The map of the region as one set of data and one screen, for the Town Map out of
 | The Journal's lines for the rematches and the legendaries | Written as each is met | None | Plan 08 |
 | Hisui | (not in Platinum) | Nothing: the ruins' painting is where plan 23 · Z17 puts the way to its side region | Plan 23 · Z17 |
 | Later mechanics | (not in Platinum) | The rematch teams use none | Decision 06 · 2: plan 06 · R20 to R23 |
+
+## Amity Square's walk
+
+Plan 06 · R16c, from the original's `scripts_amity_square.s`, `scrcmd_amity_square.c`, `events_amity_square.json`, the two gate houses' scripts and `system_vars.c`.
+
+**The original's rules, kept**
+
+- **Who may walk.** Sixteen species: Pikachu, Clefairy, Psyduck, Pachirisu, Drifloon, Buneary, Happiny, and the three starters with what they grow into; four more with the National Pokédex: Jigglypuff, Torchic, Skitty, Shroomish. The receptionist asks about each such Pokémon of the team in its order until the player says yes to one; with none she lists the species, and whoever says no to all is told to come back. An Egg is never asked about, but an Egg of one of the species keeps her from listing them, as the original's two checks read a party differently.
+- **Nobody is in the square alone.** The tile north of each gate's lane asks whoever steps on it with no Pokémon out, and turns them back a step unless one comes out; the tile south of it says goodbye to whoever steps on it with one. The gate houses' own receptionists only talk, as the original's do. Coming out of its ball rests the whole team (`HealParty`).
+- **What it turns up.** Speaking to it with two hundred steps walked since the walk began or the last find, it is holding something: decided ahead, a berry one time in five and an accessory otherwise, the accessory from its family's row of ten by a roll of a hundred (15, 15, 15, 15, 10, 10, 8, 5, 5, 2), the berry from nine (Magost 20, Cornn, Rabuta and Nomel 15 each, Spelon, Pamtre, Watmel, Durin and Belue 7 each). The kind decided is tried first and the other when it can't be put away. Otherwise it has a mood: one of nine at random, and the six starters grown up have nine of their own.
+- **The man of the park** gives five of one of the nine berries or one of seven accessories once a day, drawn as the square is come into, and stands in one of five places by a die.
+- **The ruins' huts.** Nine huts in two sets: the two by the west lawn's stairs lead only to one another, and the seven of the east lead about among themselves, which is the only way to the Spooky Plate, the woman with her Happiny and four of the man's five places. A step north, west or east of a hut's middle carries the player, in the dark, to the middle of the hut that tile leads to, from where they walk out of its door.
+
+**Our own choices**
+
+- **The step count is kept only on a walk.** The original counts every step of the game up to ten thousand and reads the count only here, after clearing it as a walk begins; here it is counted while a Pokémon is out, which comes to the same.
+- **A tall Pokémon keeps two tiles behind.** The field's camera is steep: anything a tile south of the player that stands taller than about nine tenths of a tile is drawn over their feet, and Torterra, at nearly two tiles, hid the player to the shoulders whenever they walked north. A Pokémon drawn taller than 1.3 tiles (`GameEngine.TallStroller`: of the square's species, Torterra and Empoleon) follows two tiles behind (`Follower.Gap`), makes way as any follower does when the player walks back into it, and is spoken to from the tile between. Every other follower is a step behind, as the original's are.
+- **The bag never fills**, so a berry found always fits; the original's order (the kind decided, then the other, then nothing) is kept and tested for when it would matter.
+- **The man keeps his gift when the Fashion Case has no room for it**, and can be asked again that day; the original hands it over unseen and counts the day as done.
+- **The walk ends however the square is left.** The original has only its two gates. Here whatever takes the player to another map with a Pokémon out puts it back in its ball (`GameEngine.LeaveStrollBehind`).
+- **A game saved on a walk** is taken up again with the Pokémon out behind the player: the story's own variables are all a save keeps of it, and the square's arrival script leaves a walk under way alone.
+- **The place of the team goes with the Pokémon.** The original keeps a place of the team and would speak of another Pokémon if the team were put in another order during a walk; here the place follows the one that is out.
+- **The huts are stone huts, and the desks desks.** The world's models there had been taken for standing stones and flower beds; walked into, they are a hut with a doorway in its south face, under whose slab the player is not seen, and a counter round the tile each receptionist stands on (style guide, "Props").
+- **Every line is our own**, on the original's beats: the receptionists' six things, the nine moods of each kind, the man's offer.
+
+**Stand-ins for what this game lacks**
+
+| What | The original | Here | Why |
+| --- | --- | --- | --- |
+| The Pokémon's own sprite | An overworld sprite drawn for each of the twenty species, with a walk | Its field sprite, baked from its model: two frames, shown in turn with a hop to each tile | Plan 10 · F2's walk cycles |
+| Its shadow in the huts' dark, the objects raised and lowered as a hut carries the player | `ScrCmd_32D`, `32E`, `338`, `339` | Nothing: the player and the Pokémon are under the slab and unseen | The hut hides them |
+| The huts' sound | `SEQ_SE_DP_GYURU` | The warp panels' `warp` | Plan 05 · A6 |
+| The television's Amity Square Watch, and the count of finds it reads | `ScrCmd_27C`, `RECORD_UNK_051`, the reporters in the gates | Not kept | Plan 08's television |
+| A follower outside the square | None in Platinum | None: plan 10 · F3 and F4 | The follower is one type already (`Overworld/Follower.cs`) |

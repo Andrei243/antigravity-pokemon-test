@@ -74,6 +74,13 @@ internal static class WorldWalk
                     Visit(onto, sent.X, sent.Y, TravelMode.OnFoot, onto.HeightAt(sent.X, sent.Y), arrived: true);
                 }
 
+            // A tile whose own script puts the player down elsewhere on the map is a way there (plan 06 · R16c: the huts
+            // of Amity Square's ruins, three tiles in each, which are the only way onto most of its raised ground)
+            foreach (var trigger in map.TriggersAt(x, y))
+                foreach (var put in PutsOf(trigger.Script, trigger.ScriptFile ?? map.ScriptFileAt(x, y)))
+                    if (put.X >= 0 && put.Y >= 0 && put.X < map.Width && put.Y < map.Height && !map.IsSolid(put.X, put.Y))
+                        Visit(map, put.X, put.Y, TravelMode.OnFoot, map.HeightAt(put.X, put.Y), arrived: true);
+
             // Stepping onto a warp takes it; one is only ever stood on by arriving through another
             if (!arrived && map.WarpsAt(x, y).Any())
             {
@@ -197,6 +204,21 @@ internal static class WorldWalk
     private static IEnumerable<PokemonPlatinumEngine.Story.Instruction> WarpsOf(string script, string? file) =>
         PokemonPlatinumEngine.Story.ScriptLibrary.Default.Find(script, file)?.Everything().Where(i => i.Op == PokemonPlatinumEngine.Story.Op.Warp)
         ?? Enumerable.Empty<PokemonPlatinumEngine.Story.Instruction>();
+
+    /// <summary>
+    /// Where a tile's script puts the player down on its own map: its <c>place player</c>, or that of a script it
+    /// calls. A script that warps is no such way (what it places is on the map it warps to).
+    /// </summary>
+    private static IEnumerable<PokemonPlatinumEngine.Story.Instruction> PutsOf(string script, string? file)
+    {
+        var library = PokemonPlatinumEngine.Story.ScriptLibrary.Default;
+        var lines = library.Find(script, file)?.Everything().ToList();
+        if (lines == null) return Enumerable.Empty<PokemonPlatinumEngine.Story.Instruction>();
+        lines.AddRange(lines.Where(i => i.Op == PokemonPlatinumEngine.Story.Op.Call).ToList()
+            .SelectMany(call => library.Find(call.Name, file)?.Everything() ?? Enumerable.Empty<PokemonPlatinumEngine.Story.Instruction>()));
+        if (lines.Any(i => i.Op == PokemonPlatinumEngine.Story.Op.Warp)) return Enumerable.Empty<PokemonPlatinumEngine.Story.Instruction>();
+        return lines.Where(i => i.Op == PokemonPlatinumEngine.Story.Op.Place && i.Name == "player");
+    }
 
     /// <summary>Whether a person's script walks them off their own tile (<c>walk self</c>).</summary>
     internal static bool StepsAside(string script, string? file) =>

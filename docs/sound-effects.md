@@ -39,7 +39,7 @@ Every sound effect of the game (plan 05 · A3), what it stands for in the origin
 | `door_close` | `SEQ_SE_DP_DOOR_CLOSE2` | The door shuts behind the player who came out of it. |
 | `door_slide` | `SEQ_SE_DP_DOOR10` | Glass doors slide open (a Pokémon Center, a Mart). |
 | `stairs` | `SEQ_SE_DP_KAIDAN2` | Going up or down stairs, or through a way out that isn't a door. |
-| `warp` | `SEQ_SE_DP_TELE2` | A warp panel. |
+| `warp` | `SEQ_SE_DP_TELE2` | A warp panel. And, until it has a sound of its own, a hut of Amity Square's ruins carrying the player to another (the original's `SEQ_SE_DP_GYURU`; plan 06 · R16c). |
 | `exclaim` | — | The "!" over a trainer who has seen the player, or anyone a script surprises. |
 | `surf` | — | A Pokémon is ridden out onto the water. |
 | `save` | `SEQ_SE_DP_SAVE` | The game is saved. |

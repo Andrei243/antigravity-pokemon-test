@@ -479,6 +479,17 @@ public class ScriptTests
           arcade beaten
           arcade forfeit
           arcade end
+          amity arrive
+          amity may
+          amity next
+          amity walk
+          amity walker
+          amity grown
+          amity find
+          amity take
+          amity gift
+          amity give
+          amity leave
         script Other
           end
         """;
@@ -1339,6 +1350,7 @@ public class ScriptTests
         public PokemonPlatinumEngine.Models.Frontier.BattleHallChallenge? Hall { get => inner.Hall; set => inner.Hall = value; }
         public PokemonPlatinumEngine.Models.Frontier.BattleCastleChallenge? Castle { get => inner.Castle; set => inner.Castle = value; }
         public PokemonPlatinumEngine.Models.Frontier.BattleArcadeChallenge? Arcade { get => inner.Arcade; set => inner.Arcade = value; }
+        public void WalkWith(NPC? body, Pokemon? pokemon) => inner.WalkWith(body, pokemon);
         public int FrontierAct(string what, int number, NPC? subject) => inner.FrontierAct(what, number, subject);
         public IReadOnlyList<int> Entered => inner.Entered;
         public void FrontierBattle(Party team, IReadOnlyList<Trainer> foes, Trainer? partner, bool doubles, PokemonPlatinumEngine.Models.Frontier.FrontierConditions? conditions = null) => inner.FrontierBattle(team, foes, partner, doubles, conditions);

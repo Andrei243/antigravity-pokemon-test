@@ -254,7 +254,7 @@ public static class WorldModels
         Thing("board_d", PropType.Billboard, "a billboard"),
 
         // ---------------------------------------------------------------- places of their own
-        Thing("d11s01", PropType.Outcrop, "a great standing stone of Amity Square"),
+        Thing("d11s01", PropType.RuinHut, "a hut of Amity Square's ruins"),
         Thing("d20_o03", PropType.Outcrop, "a block of carved stone in the Solaceon Ruins"),
         Thing("d20_o01b", PropType.Column, "the pillar in the middle of Turnback Cave's pillar room"),
         Thing("d20_o01", PropType.Column, "a pillar of Snowpoint Temple"),
@@ -262,8 +262,8 @@ public static class WorldModels
         Ground("yabu_ana_in", "the rift in the floor of Giratina's room in Turnback Cave"),
         Thing("d11_o01a", PropType.Bench, "a bench in Amity Square"),
         Thing("d11_o01b", PropType.Bench, "a bench in Amity Square"),
-        Thing("d11_o02a", PropType.FlowerBed, "a flower bed of Amity Square"),
-        Thing("d11_o02b", PropType.FlowerBed, "a flower bed of Amity Square"),
+        Thing("d11_o02a", PropType.ReceptionDesk, "a receptionist's desk in Amity Square"),
+        Thing("d11_o02b", PropType.ReceptionDesk, "a receptionist's desk in Amity Square"),
         Thing("d6_o01", PropType.Tram, "the Great Marsh's tram on its rails"),
         Thing("d6_o02", PropType.Binoculars, "the Great Marsh's coin viewers"),
         Thing("d5_colum01", PropType.Column, "a column of Spear Pillar"), Thing("d5_colum02", PropType.Column, "a column of Spear Pillar"),

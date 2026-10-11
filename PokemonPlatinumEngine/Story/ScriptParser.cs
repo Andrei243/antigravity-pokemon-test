@@ -709,6 +709,14 @@ public static class ScriptParser
                 return new Instruction { Op = Op.Arcade, Line = line, Name = what, Other = which };
             }
 
+            // Amity Square's walk (plan 06 · R16c)
+            case "amity":
+                return new Instruction
+                {
+                    Op = Op.Amity, Line = line,
+                    Name = r.OneOf("arrive", "may", "next", "walk", "leave", "walker", "grown", "find", "take", "gift", "give")
+                };
+
             case "script":
             case "label":
                 throw r.Error($"'{word}' begins a line of its own");

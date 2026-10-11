@@ -669,7 +669,9 @@ public class StoryTests
         // business on it any longer
         Assert.DoesNotContain(AskedAheadOfTheirScenes, f => Scripts.FlagsWritten.Contains(f));
         // The slot machines' and the Catching Show's records and the Villa's visitor of the day are the game's to keep (plan 06 · R16b)
-        Assert.DoesNotContain(Scripts.VariablesRead, v => !Scripts.VariablesWritten.Contains(v) && !PokemonPlatinumEngine.Core.GameEngine.PastimeVariables.Contains(v));
+        // and so are those of Amity Square's walk, which `amity` and the player's steps keep (plan 06 · R16c)
+        Assert.DoesNotContain(Scripts.VariablesRead, v => !Scripts.VariablesWritten.Contains(v) && !PokemonPlatinumEngine.Core.GameEngine.PastimeVariables.Contains(v)
+            && !PokemonPlatinumEngine.Overworld.AmitySquare.KeptByTheGame.Contains(v));
     }
 
     /// <summary>

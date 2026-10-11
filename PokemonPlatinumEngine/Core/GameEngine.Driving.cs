@@ -184,5 +184,18 @@ public partial class GameEngine
         public string? PartnerAlong => game.partner?.TrainerId;
         /// <summary>The Day Care's part of a step (plan 06 · R15): the couple walk it, and an Egg may be ready to hatch.</summary>
         public bool DayCareStep() => game.DayCareStep();
+        /// <summary>
+        /// The player has come to the area they stand in, as far as the game knows (plan 06 · R16c): its name, its music and
+        /// its own arrival script, as a step across its border brings them. A tool that puts the player down in the middle
+        /// of a place calls it, or the first step taken there counts as walking in and goes to that script, which comes
+        /// before the step's wild Pokémon. True when the place had a script to start.
+        /// </summary>
+        public bool EnterArea() => game.EnterArea();
+        /// <summary>Whoever walks behind the player now (plan 06 · R16c): a partner of the story or a Pokémon out of its ball; null with nobody.</summary>
+        public Follower? Along => game.along;
+        /// <summary>A Pokémon of the team walks behind the player as a thing of the map, as <c>amity walk</c> has it (plan 06 · R16c).</summary>
+        public void WalkWith(NPC body, Pokemon pokemon) => game.WalkWith(body, pokemon);
+        /// <summary>The game written to its save where the player stands, as the save screen writes it.</summary>
+        public bool Save() => SaveManager.SaveGame(game.BuildSave());
     }
 }

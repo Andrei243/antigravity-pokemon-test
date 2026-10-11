@@ -86,6 +86,12 @@ partial class Harness
                 if (grass > most) (best, most) = ((x, y), grass);
             }
         Go("Sinnoh", best.X, best.Y, Direction.Down);
+        // Put down in the grass, the player has not come to Route 202 as far as the game knows: the first step would
+        // count as walking into it and go to the place's own arrival script (it has had one since plan 02 · S15a),
+        // which comes before a step's wild Pokémon, a shaking patch's too. So the mode walks in first
+        game.EnterArea();
+        Frames(10);
+        game.LocationSign.Hide();
         state.RadarCharge = RadarChain.BatterySteps;
         game.UseFieldItem(ItemDatabase.Get("Poké Radar")!);
         Frames(50); Shot("en01_radar_shaking");
@@ -105,13 +111,16 @@ partial class Harness
             Until(() => State() != GameState.Overworld, "the patch's Pokémon", 120);
             engine.Steering = null;
             Until(() => State() == GameState.Battle, "the patch's battle", 300);
-            var fight = game.Battle;
-            ToMainMenu(fight);
-            Shot("en02_radar_patch_battle");
-            Console.WriteLine($"radar: met {fight.EnemyPokemon?.Species.Name} at {fight.EnemyPokemon?.Level}, chain {radar.Count} of {radar.Species}");
-            EndBattle(run: false);
-            Frames(40); Shot("en03_radar_after_a_win");
-            Console.WriteLine($"radar: after the win the chain is {radar.Count}, {radar.Patches.Count(p => p.Active)} patches shaking, {radar.Patches.Count(p => p.Active && p.ContinuesChain)} going on with it");
+            // (No battle, no shots of one: the line above has said so, and the mode goes on to the rest)
+            if (game.Battle is { } fight)
+            {
+                ToMainMenu(fight);
+                Shot("en02_radar_patch_battle");
+                Console.WriteLine($"radar: met {fight.EnemyPokemon?.Species.Name} at {fight.EnemyPokemon?.Level}, chain {radar.Count} of {radar.Species}");
+                EndBattle(run: false);
+                Frames(40); Shot("en03_radar_after_a_win");
+                Console.WriteLine($"radar: after the win the chain is {radar.Count}, {radar.Patches.Count(p => p.Active)} patches shaking, {radar.Patches.Count(p => p.Active && p.ContinuesChain)} going on with it");
+            }
         }
 
         // ---- the honey tree on Route 205's south: faced from the south, with Honey in the bag

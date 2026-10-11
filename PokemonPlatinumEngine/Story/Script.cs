@@ -84,6 +84,8 @@ public enum Op
     Tutor,
     // The Battle Arcade (plan 06 · R18d)
     Arcade,
+    // Amity Square's walk (plan 06 · R16c)
+    Amity,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

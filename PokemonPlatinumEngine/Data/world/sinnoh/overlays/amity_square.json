@@ -1,10 +1,44 @@
 {
   "area": "amity_square",
   "bgmTrack": "sinnoh/amity_square",
-  // The imported collision data closes in the Spooky Plate's hollow under a great stone, and the two people who
-  // stand on the stones' raised ground: held back (their lines kept) until the square's stones are looked at again
-  // (plan 01 · M11)
-  "heldBack": [ "item_spooky_plate", "pokemon_breeder_f", "gift_man" ],
+  // The great stones are the huts of the square's ruins (plan 06 · R16c): whoever stands in the middle of one and
+  // steps north, west or east is carried to another's, which is the only way onto most of the raised ground: the
+  // Spooky Plate's hollow, the woman with her Happiny and the man of the park. The original's twenty-seven
+  // coordinate events, three to a hut, in its events' order (scripts 18 to 44), after the four of the two gates:
+  // the receptionist's question for whoever comes in with no Pokémon out, and her goodbye for whoever leaves with one
+  "triggers": [
+    { "trigger": 0, "script": "WestGate" },
+    { "trigger": 1, "script": "LeaveWest" },
+    { "trigger": 2, "script": "EastGate" },
+    { "trigger": 3, "script": "LeaveEast" },
+    { "trigger": 4, "script": "Hut1" },
+    { "trigger": 5, "script": "Hut2" },
+    { "trigger": 6, "script": "Hut3" },
+    { "trigger": 7, "script": "Hut4" },
+    { "trigger": 8, "script": "Hut5" },
+    { "trigger": 9, "script": "Hut6" },
+    { "trigger": 10, "script": "Hut7" },
+    { "trigger": 11, "script": "Hut8" },
+    { "trigger": 12, "script": "Hut9" },
+    { "trigger": 13, "script": "Hut10" },
+    { "trigger": 14, "script": "Hut11" },
+    { "trigger": 15, "script": "Hut12" },
+    { "trigger": 16, "script": "Hut13" },
+    { "trigger": 17, "script": "Hut14" },
+    { "trigger": 18, "script": "Hut15" },
+    { "trigger": 19, "script": "Hut16" },
+    { "trigger": 20, "script": "Hut17" },
+    { "trigger": 21, "script": "Hut18" },
+    { "trigger": 22, "script": "Hut19" },
+    { "trigger": 23, "script": "Hut20" },
+    { "trigger": 24, "script": "Hut21" },
+    { "trigger": 25, "script": "Hut22" },
+    { "trigger": 26, "script": "Hut23" },
+    { "trigger": 27, "script": "Hut24" },
+    { "trigger": 28, "script": "Hut25" },
+    { "trigger": 29, "script": "Hut26" },
+    { "trigger": 30, "script": "Hut27" }
+  ],
   "trees": "Round",
   // Hearthome City's two gates, on the original's plan (plan 01 · M11, part d): a receptionist in each
   "doors": [
@@ -14,25 +48,20 @@
     { "warp": 3, "map": "HearthomeCityEastGateToAmitySquare", "x": 5, "y": 3, "facing": "Down" }
   ],
   "people": {
-    // The Pokémon their trainers walk here (plan 10 · F1); the Happiny stays held back with its trainer
+    // The Pokémon their trainers walk here (plan 10 · F1). The Happiny is drowsy and says so without a cry, as the
+    // original's is
     "drifloon": { "name": "Drifloon", "dialog": [ "Fuwaaa..." ] },
     "pikachu": { "name": "Pikachu", "dialog": [ "Pika! Pikachu!" ] },
     "clefairy": { "name": "Clefairy", "dialog": [ "Clefairy is holding something shiny in both hands." ] },
-    // In Platinum the two receptionists let a Pokémon of a few kinds out of its ball to walk beside the player; nothing walks beside the player yet
-    "receptionist_west": {
-      "name": "Receptionist",
-      "dialog": [
-        "Welcome to Amity Square! Take as long as you like.",
-        "Some trainers walk the paths with a Pokémon at their side. It does them both a world of good."
-      ]
-    },
-    "receptionist_east": {
-      "name": "Receptionist",
-      "dialog": [
-        "This is Amity Square, where people and Pokémon come to unwind.",
-        "Keep an eye on the ground as you go. Visitors drop all sorts of things."
-      ]
-    },
+    "happiny": { "name": "Happiny", "script": "Happiny", "still": true },
+    // The Pokémon of the team that walks behind the player (plan 06 · R16c): the original gives this object its looks
+    // by script, so it is made a Pokémon here and dressed as whoever is let out (it is a Pikachu until then, off the
+    // map behind its flag). It follows the player: nothing else moves it
+    "follower_mon": { "name": "Pokémon", "npcType": "Pokemon", "species": "Pikachu", "script": "FollowerMon", "still": true },
+    // The two receptionists stand behind their counters inside the square: they ask whoever comes up from a gate which
+    // Pokémon is to walk along (the triggers above), and have a word for whoever stops by with one
+    "receptionist_west": { "name": "Receptionist", "script": "ReceptionistWest", "still": true },
+    "receptionist_east": { "name": "Receptionist", "script": "ReceptionistEast", "still": true },
     "pokemon_breeder_m": {
       "name": "Man",
       "dialog": [
@@ -61,13 +90,8 @@
         "My Clefairy understands every word I say. Well, nearly every word."
       ]
     },
-    // In Platinum he gives away Berries or an accessory once a day; the gift is plan 02's (S7)
-    "gift_man": {
-      "name": "Man",
-      "dialog": [
-        "Good day to you! I walk in this park every day, rain or shine.",
-        "You never know what you'll find on the paths. Only this morning I came across a handful of Berries!"
-      ]
-    }
+    // He gives away five of a berry or an accessory once a day, and stands somewhere else each visit (the square's own
+    // arrival script draws both)
+    "gift_man": { "name": "Man", "script": "GiftMan", "still": true }
   }
 }

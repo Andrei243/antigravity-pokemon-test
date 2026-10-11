@@ -93,6 +93,8 @@ public partial class GameEngine
         AudioManager.PlayWildBattleMusic(wildPkmn.Species);
         // Whoever travels with the player battles beside them, with a fresh team of their own
         var beside = kind == BattleKind.Normal ? PartnerTrainer() : null;
+        // They stand on the platform beside the player, and their rig is made behind the fade (plan 06 · R16c)
+        if (beside != null) CharacterModels.Preload(new[] { CharacterStyles.Default.InBattle(beside.TrainerClass, beside.Look is { } look ? PlayerIdentity.CharacterFor(look) : null) });
         var wilds = second != null ? new List<Pokemon> { wildPkmn, second } : new List<Pokemon> { wildPkmn };
         // What wild Pokémon hold, and the Poké Radar's chain, which only a Pokémon of the field's own lets go on (plan 06 · R13)
         GiveWildItems(wilds, kind);
@@ -237,38 +239,54 @@ public partial class GameEngine
     /// Someone of the map starts travelling with the player (plan 02 · S6): they walk behind and battle beside the
     /// player as a trainer of Platinum's data; null for both and they stop, where they stand.
     /// </summary>
-    private void SetPartner(NPC? who, string? trainerId)
+    private void SetPartner(NPC? who, string? trainerId) => SetAlong(who != null && trainerId != null ? new Follower(who, trainerId) : null);
+
+    /// <summary>
+    /// Whoever walks behind the player from now on, in place of whoever did: someone who travels along, a Pokémon of
+    /// the team (plan 06 · R16c), or nobody, and then whoever followed stops where they stand.
+    /// </summary>
+    private void SetAlong(Follower? next)
     {
-        if (partner != null)
+        if (along != null)
         {
-            partner.Settle();
-            foreach (var map in MapDatabase.MapNames.Select(MapDatabase.Get)) if (map.Follower == partner.Who) map.Follower = null;
+            along.Settle();
+            foreach (var map in MapDatabase.MapNames.Select(MapDatabase.Get)) if (map.Follower == along.Who) map.Follower = null;
         }
-        partner = who != null && trainerId != null ? new Follower(who, trainerId) : null;
-        if (partner == null) return;
+        along = next;
+        if (along == null) return;
         // Off the Bicycle: nobody rides with someone walking beside them (SetPlayerBike FALSE as Cheryl joins)
         if (player.Mode == TravelMode.Cycling && player.SetCycling(false)) PlayFieldMusic();
-        wandering.Settle(partner.Who);
-        currentMap.Follower = partner.Who;
+        wandering.Settle(along.Who);
+        currentMap.Follower = along.Who;
         partnerHeading = player.Heading;
     }
 
-    /// <summary>The player has come to a map: whoever travels with them is behind them if they belong to it.</summary>
+    /// <summary>The player has come to a map: whoever walks behind them is behind them if they belong to it.</summary>
     private void KeepPartnerAlong()
     {
-        if (partner == null) return;
-        if (!currentMap.Everyone.Contains(partner.Who)) return;
-        currentMap.Follower = partner.Who;
-        partner.Behind(player.GridX, player.GridY, player.Facing);
+        if (along == null) return;
+        if (!currentMap.Everyone.Contains(along.Who)) return;
+        currentMap.Follower = along.Who;
+        PutBehind(along, player.GridX, player.GridY, player.Facing);
         partnerHeading = player.Heading;
+    }
+
+    /// <summary>Whoever follows is put behind a tile of the player's, as far back as their gap where the ground there is open, else a tile.</summary>
+    private void PutBehind(Follower who, int x, int y, Direction facing)
+    {
+        var (dx, dy) = FieldMovement.Delta(facing);
+        bool room = who.Gap > 1 && Enumerable.Range(1, who.Gap).All(k => currentMap.InBounds(x - dx * k, y - dy * k) && !currentMap.IsSolid(x - dx * k, y - dy * k));
+        who.Behind(x, y, facing, room ? who.Gap : 1);
     }
 
     /// <summary>A fresh team of whoever travels with the player, as the original builds it for every battle; null when nobody does.</summary>
     private Trainer? PartnerTrainer()
     {
-        if (partner == null || TrainerDatabase.Get(partner.TrainerId) is not { } record) return null;
+        if (partner is not { TrainerId: { } id } beside || TrainerDatabase.Get(id) is not { } record) return null;
         var trainer = new Trainer { Id = record.Id };
         TrainerDatabase.Fill(trainer, record);
+        // On the battle's platform they are who they are in the field (plan 06 · R16c)
+        trainer.Look = beside.Who.NpcType;
         return trainer;
     }
 
@@ -292,7 +310,12 @@ public partial class GameEngine
         // nobody in particular (plan 11 · C1), whose rig is built behind the fade
         trainer.Look = trainerNpc.NpcType;
         if (secondNpc?.TrainerData is { } carried) carried.Look = secondNpc.NpcType;
-        CharacterModels.Preload(trainers.Select(t => CharacterStyles.Default.InBattle(t.TrainerClass, PlayerIdentity.CharacterFor(t.Look!))));
+        // Whoever battles beside the player stands on the platform too, as the person they are in the field: whoever
+        // travels along, or someone of the map a script named (plan 06 · R16c)
+        if (partner != null)
+            partner.Look ??= (this.partner is { } beside && beside.TrainerId == partner.Id ? beside.Who : currentMap.Everyone.FirstOrDefault(n => n.TrainerData == partner))?.NpcType;
+        CharacterModels.Preload(trainers.Concat(partner == null ? Enumerable.Empty<Trainer>() : new[] { partner })
+            .Select(t => CharacterStyles.Default.InBattle(t.TrainerClass, t.Look is { } look ? PlayerIdentity.CharacterFor(look) : null)));
 
         eyeThemePlaying = false;
         AudioManager.PlayMusic(MusicDirector.BattleRole(trainers.Select(t => t.TrainerClass)), immediate: true);

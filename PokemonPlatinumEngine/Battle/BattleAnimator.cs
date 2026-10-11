@@ -211,6 +211,12 @@ public sealed class BattleAnimator
     /// <summary>A second opposing trainer standing beside the first (two trainers battling together).</summary>
     public string? EnemyTrainer2 { get; internal set; }
 
+    /// <summary>
+    /// Whoever battles beside the player, standing on the platform with them until the Pokémon are sent out (a tag
+    /// battle, plan 06 · R16c); they step off as the player does.
+    /// </summary>
+    public string? PartnerTrainer { get; internal set; }
+
     /// <summary>Seconds since the trainer started walking off the platform (-1 = still standing there).</summary>
     public float PlayerTrainerExit { get; private set; } = -1f;
     public float EnemyTrainerExit { get; private set; } = -1f;
@@ -343,7 +349,7 @@ public sealed class BattleAnimator
         if (ShakeAge >= 0f && (ShakeAge += dt) > 0.4f) ShakeAge = -1f;
         if (PlayerTrainerExit >= 0f) PlayerTrainerExit += dt;
         if (EnemyTrainerExit >= 0f) EnemyTrainerExit += dt;
-        if (PlayerTrainerExit > TrainerExitTime) PlayerTrainer = null;
+        if (PlayerTrainerExit > TrainerExitTime) PlayerTrainer = PartnerTrainer = null;
         if (EnemyTrainerExit > TrainerExitTime) EnemyTrainer = EnemyTrainer2 = null;
 
         for (int i = 0; i < cues.Count; i++)
