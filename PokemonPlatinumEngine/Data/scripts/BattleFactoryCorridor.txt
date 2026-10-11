@@ -1,0 +1,140 @@
+# The Battle Factory's corridor (plan 06 · R18b). docs/scripts.md describes the language; the lines are our own, on
+# the original's beats (frontier_scripts_battle_factory.s, which the original plays as a scene of the Frontier's own
+# over a picture of the corridor: the room here is laid out from where that scene stands its people).
+#
+# Everything between two battles happens here. As a round begins the staff tell of the first trainer (factory hint:
+# less with every round) and the six rental Pokémon are chosen from (factory rent). After a battle won the three are
+# restored and the challenge may go on, be put down (REST) or be given up (RETIRE); going on, the next trainer is
+# drawn and told of, and one of the three may be traded for one of the Pokémon just beaten (factory trade). After the
+# seventh the records are written and the Battle Points handed over; after a battle lost the streak ends.
+#
+# VAR_BATTLE_FACTORY_SCENE, a variable of our own, says what the battle room sent the player back with: 1 a battle
+# won with more to come, 2 the seventh won, 3 a battle lost; 0 is someone come in from the lobby, with a round to
+# begin or a challenge to take up again.
+#
+# Not here: the question whether the battle is to be kept as a Battle Video (plan 08 · P10).
+
+
+script OnEnter
+  place attendant 8 5 down
+  factory active
+  if result == 0 end
+  speaker "Factory Staff"
+  if var VAR_BATTLE_FACTORY_SCENE == 1 goto Won
+  if var VAR_BATTLE_FACTORY_SCENE == 2 goto RoundDone
+  if var VAR_BATTLE_FACTORY_SCENE == 3 goto Lost
+  walk player up 5
+  factory battles
+  if result != 0 goto Menu
+  # A round begins: who comes first, and the six on offer
+  call Hint
+  say "Now, please choose three of the six Pokémon we have made ready for you."
+  factory rent
+  say "Your rental Pokémon are ready. Please go in."
+  goto In
+
+label Won
+  setvar VAR_BATTLE_FACTORY_SCENE 0
+  say "Well done! Your Pokémon have been restored to full health."
+  fanfare heal
+label Menu
+  factory announce
+  if result == 1 call HeadComes
+  factory next
+  choose "Next is battle no. {number}. Are you ready?" "KEEP GOING" "REST" "RETIRE"
+  if result == 1 goto Rest
+  if result == 2 goto Retire
+label Onward
+  factory draw
+  call Hint
+  ask "Would you like to trade one of your Pokémon for one of those you have just beaten?"
+  if no goto NoTrade
+  factory trade
+label NoTrade
+  factory stand
+  say "Then please go in."
+label In
+  # The staff step aside, and the door at the back leads into the battle room
+  walk attendant left 1
+  face attendant down
+  walk player up 3
+  sound "door_slide"
+  setvar VAR_BATTLE_FACTORY_SCENE 0
+  warp "BattleFactoryBattleRoom" 8 11 up
+  end
+
+# All seven beaten: the records are written and the Battle Points handed over
+label RoundDone
+  setvar VAR_BATTLE_FACTORY_SCENE 0
+  factory finish won
+  setvar VAR_BATTLE_FACTORY_LOBBY_LOAD_ACTION 1
+  factory beaten
+  if result == 0 goto Earned
+  say "You have beaten the Factory Head! He asked that these Battle Points be given to you himself."
+  goto Points
+label Earned
+  say "Congratulations! Seven wins in a row. You have earned Battle Points."
+label Points
+  factory points
+  text "{player} received {number} BP!"
+  fanfare item
+  goto Leave
+
+label Lost
+  setvar VAR_BATTLE_FACTORY_SCENE 0
+  factory finish lost
+  setvar VAR_BATTLE_FACTORY_LOBBY_LOAD_ACTION 3
+  goto Leave
+
+label Retire
+  ask "Give the challenge up and hand your rental Pokémon back?"
+  if no goto Onward
+  factory finish lost
+  setvar VAR_BATTLE_FACTORY_LOBBY_LOAD_ACTION 3
+  goto Leave
+
+label Rest
+  ask "Put the challenge down for now? The game will be saved, and you can go on from here later."
+  if no goto Onward
+  setvar VAR_BATTLE_FACTORY_LOBBY_LOAD_ACTION 2
+  factory pause
+  warp "BattleFactory" 21 7 up
+  end
+
+label Leave
+  say "Thank you. We will look after the rental Pokémon from here."
+  warp "BattleFactory" 21 7 up
+  end
+
+
+# What the staff can tell of the trainer to come: all of it in the first round, and less with every round after.
+script Hint
+  factory hint
+  if result == 1 goto Two
+  if result == 2 goto One
+  if result == 3 goto Move
+  if result == 4 goto Type
+  if result == 5 goto Varied
+  say "I can tell you about the next trainer. Their Pokémon are {hint:0}, {hint:1} and {hint:2}."
+  return
+label Two
+  say "I can tell you about the next trainer. Two of their Pokémon are {hint:0} and {hint:1}."
+  return
+label One
+  say "I can tell you about the next trainer. The first Pokémon you will meet is {hint:0}, and it knows {hint:1}."
+  return
+label Move
+  say "I can tell you this much about the next trainer: their first Pokémon knows {hint:0}."
+  return
+label Type
+  say "I can tell you this much about the next trainer: they are fond of the {hint:0} type."
+  return
+label Varied
+  say "I can tell you this much about the next trainer: their Pokémon have no type in common."
+  return
+
+
+# The Factory Head is on his way (BattleFactoryScene_Text_FactoryHeadApproaching), said once.
+script HeadComes
+  say "Please be on your guard. The Factory Head himself has come down to meet you!"
+  return

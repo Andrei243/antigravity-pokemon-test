@@ -150,6 +150,9 @@ public sealed class FrontierRecords
 
     public TowerRecord Tower { get; set; } = new();
 
+    /// <summary>The Battle Factory's own part (plan 06 · R18b): a challenge put down, and the trades made.</summary>
+    public FactoryRecord Factory { get; set; } = new();
+
     // ------------------------------------------------------------------ the numbers
 
     /// <summary><c>BattleFrontierSave_GetStat</c>.</summary>

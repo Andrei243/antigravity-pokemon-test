@@ -126,6 +126,11 @@ public class RoomPlanTests
         "BattleTowerCorridorMulti", "BattleTowerMultiBattleRoom", "BattleTowerBattleSalon",
     };
 
+    /// <summary>The Battle Factory's rooms (plan 06 · R18b): its lobby is come into from the west, at the head of its
+    /// stairs, and the corridor and the battle room behind its counter are laid out from the original's scene, which is a
+    /// picture and no map (<c>BattleFactoryTests</c>).</summary>
+    internal static readonly string[] BattleFactory = { "BattleFactory", "BattleFactoryCorridor", "BattleFactoryBattleRoom" };
+
     /// <summary>The Canalave Library's upper floors (plan 02 · S10): no door, only the stairs.</summary>
     internal static readonly string[] LibraryUpperFloors = { "CanalaveLibrary2F", "CanalaveLibrary3F" };
 
@@ -532,6 +537,16 @@ public class RoomPlanTests
         new object[] { "CanalaveCitySoutheastHouse", "ace_trainer_f", 8, 7, Direction.Down },
         new object[] { "CanalaveCitySailorEldritchHouse", "little_boy", 5, 5, Direction.Up },
         new object[] { "CanalaveCitySailorEldritchHouse", "pokefan_f", 8, 4, Direction.Up },
+        // The Battle Factory's lobby, plan 06 · R18b (events_battle_factory)
+        new object[] { "BattleFactory", "single_attendant", 21, 6, Direction.Down },
+        new object[] { "BattleFactory", "multi_attendant", 23, 6, Direction.Down },
+        new object[] { "BattleFactory", "youngster", 16, 5, Direction.Right },
+        new object[] { "BattleFactory", "beauty", 15, 12, Direction.Left },
+        new object[] { "BattleFactory", "policeman", 25, 9, Direction.Up },
+        new object[] { "BattleFactory", "sailor", 1, 12, Direction.Up },
+        new object[] { "BattleFactory", "pokemon_breeder_f", 1, 11, Direction.Down },
+        new object[] { "BattleFactory", "clown", 18, 9, Direction.Left },
+        new object[] { "BattleFactory", "lady", 22, 11, Direction.Left },
     };
 
     [Theory]
@@ -614,6 +629,7 @@ public class RoomPlanTests
             InnerRooms,
             LighthouseGallery,
             BattleTower,
+            BattleFactory,
         }.SelectMany(names => names).ToHashSet();
         foreach (string path in Directory.GetFiles(GameDataFiles.PathOf(MapDatabase.Folder), "*.json"))
         {

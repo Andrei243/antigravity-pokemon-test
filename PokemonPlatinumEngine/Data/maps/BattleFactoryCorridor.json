@@ -1,0 +1,123 @@
+{
+  "name": "BattleFactoryCorridor",
+  "displayName": "Battle Factory",
+  "bgmTrack": "sinnoh/veilstone",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 17,
+  "height": 13,
+  "ground": [
+    "#################",
+    "#################",
+    "#################",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "########D########"
+  ],
+  "solid": [
+    "#################",
+    "#################",
+    "########.########",
+    "###.###...###.###",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "##.............##",
+    "##.............##",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "########.########"
+  ],
+  "props": [
+    {
+      "type": "LabMachine",
+      "x": 1,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 4,
+      "y": 3,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 10,
+      "y": 3,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 14,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 1,
+      "y": 7,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Computer",
+      "x": 15,
+      "y": 7,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Rug",
+      "x": 8,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 12,
+      "targetMap": "BattleFactory",
+      "targetX": 21,
+      "targetY": 7,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 8,
+      "sourceY": 2,
+      "targetMap": "BattleFactoryBattleRoom",
+      "targetX": 8,
+      "targetY": 11,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "attendant",
+      "name": "Factory Staff",
+      "npcType": "Scientist",
+      "x": 8,
+      "y": 5,
+      "facing": "Down",
+      "dialog": [
+        "The rental Pokémon are being looked over. Please speak to the attendant in the lobby."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

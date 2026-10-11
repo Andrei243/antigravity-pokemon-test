@@ -60,6 +60,8 @@ public enum GameState
     SlotMachine,
     /// <summary>A facility's records board in the Battle Frontier (plan 06 · R18a).</summary>
     FrontierRecords,
+    /// <summary>The Battle Factory's rentals: the six on offer, or a trade after a battle won (plan 06 · R18b).</summary>
+    FactoryRentals,
     Transition
 }
 
@@ -891,6 +893,9 @@ public partial class GameEngine
                 break;
             case GameState.FrontierRecords:
                 UpdateFrontierRecords(dt);
+                break;
+            case GameState.FactoryRentals:
+                UpdateFactoryRentals(dt);
                 break;
             case GameState.Journal:
                 journalScreen.Update(journal, dt);
@@ -2031,6 +2036,9 @@ public partial class GameEngine
                 break;
             case GameState.FrontierRecords:
                 frontierRecordsScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.FactoryRentals:
+                factoryScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.SlotMachine:
                 slotScreen.Draw(VirtualWidth, VirtualHeight);

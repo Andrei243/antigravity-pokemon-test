@@ -29,6 +29,7 @@
 //   dotnet run --project tools/ShotHarness -- <output dir> sunyshore          the tenth chapter: the professor's lab, the lakes' three caverns, Flint in Sunyshore City, the Vista Lighthouse and its lift, Volkner, the Beacon Badge, the rival and Jasmine on the beach
 //   dotnet run --project tools/ShotHarness -- <output dir> tower              the Battle Tower: its lobby and counters, a team entered and turned away, the lift, a streak of seven, the Tower Tycoon, a partner out of the Battle Salon, the Exchange Service Corner
 //   dotnet run --project tools/ShotHarness -- <output dir> interiors [town ...] [work] [workb]   the rooms of plan 01 · M11 a town at a time: a shot of each from its way in, a sheet per town, and a few of them at work
+//   dotnet run --project tools/ShotHarness -- <output dir> factory            the Battle Factory: its lobby and counter, the staff's hint, the six rentals and a summary, the three chosen, a battle, a trade, the round's Battle Points, a challenge put down, the Factory Head
 //   dotnet run --project tools/ShotHarness -- <dir> diff <other dir>          two runs' shots compared pixel by pixel (exits 1 if any differ)
 //   dotnet run --project tools/ShotHarness -- <dir> ab <before> <after> <before again>   three runs of `profile` compared (tools/dev/ab.sh)
 //   dotnet run --project tools/ShotHarness -- <dir> contact [prefix]          every shot of a run on sheets of twenty
@@ -133,6 +134,7 @@ if (mode == "pastimes") h.PastimesMode();
 if (mode == "interiors") h.InteriorsMode();
 if (mode == "sunyshore") h.SunyshoreMode();
 if (mode == "tower") h.TowerMode();
+if (mode == "factory") h.FactoryMode();
 
 h.Close();
 Raylib.CloseWindow();

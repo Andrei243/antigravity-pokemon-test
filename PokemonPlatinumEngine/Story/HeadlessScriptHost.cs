@@ -663,6 +663,7 @@ public sealed class HeadlessScriptHost : IScriptHost
     /// </summary>
     public Models.Frontier.FrontierRecords Frontier { get; } = new();
     public Models.Frontier.BattleTowerChallenge? Tower { get; set; }
+    public Models.Frontier.BattleFactoryChallenge? Factory { get; set; }
     public Queue<IReadOnlyList<int>> Entering { get; } = new();
     public IReadOnlyList<int> Entered { get; private set; } = Array.Empty<int>();
     public List<(Party Team, IReadOnlyList<Trainer> Foes, Trainer? Partner, bool Doubles)> FrontierBattles { get; } = new();
@@ -677,6 +678,18 @@ public sealed class HeadlessScriptHost : IScriptHost
                 Waits();
                 Entered = Entering.Count > 0 ? Entering.Dequeue() : FirstThatMayEnter(number);
                 Answer = Entered.Count == number ? 1 : 0;
+                return Answer;
+            case "rent":
+                // The Battle Factory's six: what a test chose, or the first three
+                Waits();
+                Entered = Entering.Count > 0 ? Entering.Dequeue() : Enumerable.Range(0, number).ToList();
+                Answer = Entered.Count == number ? 1 : 0;
+                return Answer;
+            case "trade":
+                // A trade a test asked for (the place given up and the place taken); none otherwise
+                Waits();
+                Entered = Entering.Count > 0 ? Entering.Dequeue() : Array.Empty<int>();
+                Answer = Entered.Count == 2 ? 1 : 0;
                 return Answer;
             case "seen":
                 return SeenSpecies.Any(s => PokemonDatabase.Get(s)?.DexNumber == number) ? 1 : 0;

@@ -1460,3 +1460,49 @@ The houses the areas of M7 still kept shut, on the original's plans, made as par
 | The cafe's bar, the hotel's reception, the observatory's counter | Counters of each room's own | Wooden tables, spoken across by the original's own tile behaviour | A counter of a house's own |
 | The looks of these rooms' people | Their own object looks (a maid, a waitress, a policeman, a cameraman, a game director…) | Looks of ours by `npcType` (a lass, a lady, a gentleman…) | Plan 11 |
 | The moves' tutors and the two move men | Route 212's shard tutor, Route 210's Grandma Wilma, Pastoria's Move Relearner, Canalave's Move Deleter | Their houses stay shut | Plan 01 · M11, part d |
+
+## The Battle Factory (2026-10-11, plan 06 · R18b)
+
+**Platinum's rules, kept as they are** (`src/overlay104/battle_factory.c`, `battle_factory_helpers.c`, `frscrcmd_battle_factory.c`, `src/battle_factory_save.c`, `src/scrcmd_battle_factory.c`, `src/battle_frontier_stats.c`, `scripts_battle_factory.s`, `frontier_scripts_battle_factory.s`, and the rental application, `src/applications/frontier/battle_factory/main.c`):
+
+- **Nothing of the player's own goes in.** A challenge is Single or Double, at Level 50 or at the Open Level, where every Pokémon is of level 100; each of the four has its own streak, record and count of trades.
+- **A round** is seven battles. Its fourteen trainers are drawn as it begins, none twice (the seven a solo challenge meets are the first seven), from the round's row of the table: one span for the first six battles and another for the seventh, the eighth round's row for every round after. The remainder is taken by a span's width, so its last trainer is never drawn.
+- **The six on offer** are drawn from the row of the round (at Level 50 sets 1 to 150 with IVs of 0 in the first round, then 151 to 250 with 4, 251 to 350 with 8, 351 to 486 with 12, 487 to 622 with 16, 623 to 758 with 20, 759 to 894 with 24, and from the eighth round any of 351 to 950 with 31; the Open Level's rows start at set 351), no two of one species and no two holding the same item. **Trades lift some of them** into the next row, with its IVs: none for a streak of up to 6 trades, the last one of the six from 7, two from 14, three from 21, four from 28 and five from 35; the last two places are then each swapped with one of the six, drawn, so a lifted one can stand anywhere. The eighth round's row can't be lifted.
+- **A trainer's three** are drawn from the row the trainer's number falls in, never lifted, and share neither a species nor an item with the six on offer (the first trainer's) or with the three in hand and the three just beaten (every trainer after).
+- **Three are chosen in the order they go into battle**, and the taking counts as one trade for the streak. Both teams go into every battle whole.
+- **What the staff tell** of the trainer to come goes by the round: all three species in the first, two in the second, the first species and its first move in the third, that move alone in the fourth, and from the fifth the type most of the three have (each Pokémon counting once for each of its types, the first in the original's order of types winning a tie) or that no type is shared by two.
+- **How the trainers think** goes by the round too: at random in the first two rounds, with the basic routine alone in the third and fourth, with all three routines from the fifth.
+- **After a battle won** the challenge can be gone on with, put down or given up. Going on, the next trainer's three are drawn and told of before a trade is offered: one of the three in hand for one of the three just beaten, which comes over as it was (its set, IVs and personality). A trade counts for the streak and for the game's own record of trades.
+- **Seven won** earn Battle Points by the round the streak goes on to (5, 5, 5, 5, 7, 7, 8, and 9 from the eighth), add seven to the Trainer Card's score, and the streak runs on: the next challenge of that way and level takes up its wins and its trades. A battle lost or a challenge given up ends the streak where it stands; a game closed in the middle of a challenge loses it, with its latest streak and trades set to nought.
+- **The Factory Head** is the 21st and the 49th battle of a Single streak. His three are rentals like anyone's, from a row kept for him (at Level 50 sets 351 to 486, IVs of 12 the first time and 31 the second; at the Open Level 759 to 950), and he thinks with all three routines whatever the round. Beaten, the round is worth 20 Battle Points and the lobby hands over the silver or the gold print (`VAR_BATTLE_FACTORY_PRINT_STATE`).
+- **The records**: the latest streak and its trades, and the record streak with the trades of the streak that set it (when a record is only equalled, the more trades of the two are kept).
+
+**Quirks kept**
+
+- The round's fourteenth trainer is worked out as though a solo challenge met fourteen: in the second and the sixth round of a Single challenge it is the Factory Head, whom nobody meets there.
+- Two sets that hold nothing would count as holding the same item (every set of the tables holds something).
+- The Battle Points go by the round the streak has just come into, so the first round earns the second row's 5.
+- A streak taken up past its eighth round keeps the round's count it began with, which only the eighth row's tables read.
+
+**Our own choices**
+
+- **The lobby's floor is level.** The original comes in at the head of three flights of stairs, six tiles above the floor; a room's walls stand at one level here, and a floor sunk under its own door drew as a pit with earth for sides. Its tiles are the original's: where the rails of the three flights block, either side of the aisle from the door, benches stand.
+- **The corridor and the battle room are rooms.** The original plays everything past the lobby as a scene over two pictures; here they are two small rooms laid out from where that scene stands its people (the staff before the door, the challenger at the west end of the battle room's floor and the trainer at the east), and the scene is their arrival scripts.
+- **One screen for the rentals and the trade** (`FactoryScreen`), in the menus' look, for the original's conveyor of Poké Balls: the same steps and the same ways back (a Pokémon's menu of SUMMARY, RENT or REMOVE, CANCEL; Cancel takes the last one back; the third asks; a trade's BACK and CANCEL, each asked once more). Only one's own Pokémon are read in full, as in the original.
+- **A rental's summary** is one page with its ability and item on it; the original opens its summary of four pages.
+- **REST and RETIRE are asked once**, and a challenge put down is saved in the lobby and taken up at the counter, as the Battle Tower's is here. Nothing can be changed in between: the three rentals are kept with it.
+- **The draws are on the game's own chance** in the original's order; what was drawn is kept, so a challenge put down comes back as it was.
+- **A trainer of the battle room says nothing**, as in the Tower; the Factory Head has lines of ours, with the three rentals named and a number from 10 to 99 as the original has them.
+
+**Stand-ins for what this game lacks**
+
+| What | The original | Here | Why |
+| --- | --- | --- | --- |
+| The Multi challenge | Two players side by side over a link, two rentals each | The second counter's attendant says nobody can be linked up with; its stats and running flags are in the records | Decision 06 · 7; plan 07 |
+| A battle kept as a Battle Video | RECORD in the menu between battles | Not offered | Plan 08 · P10 |
+| The reporter in the lobby | Interviews whoever has a streak to talk about | Not there | Plan 08's television |
+| The Factory Head's coming | Smoke, rising blocks and a sound of his own as he appears | The floor shakes and he stands there | Plan 09's effects, plan 05 · A6 |
+| The Factory's music and its door's sound | Their own | Veilstone City's theme and a sliding door | Plan 05 · A6 |
+| Thorton, the attendants and the staff | Their own looks | A gentleman, lasses and a scientist | Plan 11 |
+| The battle room's stage | The Factory's own background and platforms | A Gym's hall | Plan 04's arenas have none for the Frontier |
+| The lobby's stairs | Three flights down from the door | A level floor, benches where the rails stand | A room's shell stands at one level; whoever gives rooms a sunk floor (plan 04, plan 01 · M11) can put the original's plates back (they are in the importer's `--room battle_factory`) |

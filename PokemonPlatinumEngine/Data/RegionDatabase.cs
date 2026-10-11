@@ -218,6 +218,8 @@ public static class RegionDatabase
                 "PokemonMansion", "PokemonMansionMaidsRoomWest", "PokemonMansionMaidsRoomMiddle", "PokemonMansionMaidsRoomEast",
                 "PokemonMansionOffice", "Route221House",
                 "CanalaveCitySoutheastHouse", "CanalaveCitySailorEldritchHouse", "CanalaveCityWestHouse", "IronIslandHouse",
+                // Plan 06 · R18b: the Battle Factory's lobby, corridor and battle room
+                "BattleFactory", "BattleFactoryCorridor", "BattleFactoryBattleRoom",
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

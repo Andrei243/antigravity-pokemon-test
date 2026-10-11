@@ -134,10 +134,11 @@ internal static partial class ModernUi
     /// </summary>
     /// <param name="page">-1 for a summary of one page; else 0 for the stats and moves, 1 for the condition (plan 06 · R14c) and 2 for the ribbons (plan 06 · R17b).</param>
     /// <param name="ribbonCursor">On the ribbons' page, the ribbon looked at; -1 while the page only shows them.</param>
-    public static void DrawSummary(int sw, int sh, Pokemon p, int index, int count, float appear = 1f, int page = -1, int ribbonCursor = -1)
+    /// <param name="rental">A rental Pokémon of the Battle Factory (plan 06 · R18b): its ability and what it holds stand where a Pokémon of one's own shows its experience.</param>
+    public static void DrawSummary(int sw, int sh, Pokemon p, int index, int count, float appear = 1f, int page = -1, int ribbonCursor = -1, bool rental = false)
     {
         Backdrop(sw, sh);
-        ScreenTitle("SUMMARY");
+        ScreenTitle(rental ? "RENTAL POK\u00c9MON" : "SUMMARY");
         if (page == PartyScreen.RibbonsPage && ribbonCursor >= 0) Hints(sw - 64, 44, ("Arrows", "Ribbon"), ("Esc", "Back"));
         else if (page == PartyScreen.RibbonsPage && !p.IsEgg && p.Ribbons.Count > 0) Hints(sw - 64, 44, ("Z", "Look"), ("Left / Right", "Page"), ("Esc", "Back"));
         else if (page >= 0 && !p.IsEgg && count > 1) Hints(sw - 64, 44, ("Left / Right", "Page"), ("Up / Down", "Next Pokémon"), ("Esc", "Back"));
@@ -184,14 +185,24 @@ internal static partial class ModernUi
         UiShapes.Fill(new Rectangle(x, who.Y + 732, who.Width - 88, 3), 1.5f, Rule);
         Label("NATURE", x, who.Y + 752);
         UiFonts.Draw(p.Nature.ToString(), x, who.Y + 776, 34, Ink, UiWeight.Black);
-        Label("EXP. POINTS", x + 260, who.Y + 752);
-        UiFonts.Draw(p.CurrentExp.ToString("N0"), x + 260, who.Y + 776, 34, Ink, UiWeight.Black);
+        if (rental)
+        {
+            Label("ABILITY", x + 260, who.Y + 752);
+            UiFonts.Draw(p.AbilityName ?? "", x + 260, who.Y + 776, 34, Ink, UiWeight.Black);
+            Label("HELD ITEM", x, who.Y + 824);
+            UiFonts.Draw(p.HeldItem?.Name ?? "None", x, who.Y + 848, 34, Ink, UiWeight.Black);
+        }
+        else
+        {
+            Label("EXP. POINTS", x + 260, who.Y + 752);
+            UiFonts.Draw(p.CurrentExp.ToString("N0"), x + 260, who.Y + 776, 34, Ink, UiWeight.Black);
 
-        bool top = p.Level >= 100;
-        Label(top ? "TOP LEVEL" : $"TO Lv {p.Level + 1}", x, who.Y + 834);
-        string toNext = top ? "" : Math.Max(0, p.ExpForNextLevel - p.CurrentExp).ToString("N0");
-        UiFonts.Draw(toNext, who.X + who.Width - 44 - UiFonts.Measure(toNext, 24, UiWeight.Black), who.Y + 830, 24, Ink, UiWeight.Black);
-        ExpBar(new Rectangle(x, who.Y + 864, who.Width - 88, 12), top ? 1f : p.ExpProgressRatio);
+            bool top = p.Level >= 100;
+            Label(top ? "TOP LEVEL" : $"TO Lv {p.Level + 1}", x, who.Y + 834);
+            string toNext = top ? "" : Math.Max(0, p.ExpForNextLevel - p.CurrentExp).ToString("N0");
+            UiFonts.Draw(toNext, who.X + who.Width - 44 - UiFonts.Measure(toNext, 24, UiWeight.Black), who.Y + 830, 24, Ink, UiWeight.Black);
+            ExpBar(new Rectangle(x, who.Y + 864, who.Width - 88, 12), top ? 1f : p.ExpProgressRatio);
+        }
 
         // ---- The condition, on its own page
         if (page == 1)

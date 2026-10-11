@@ -13,13 +13,20 @@
   // The Battle Tower's two doors lead into its lobby, built to the original's plan (plan 06 · R18a)
   "doors": [
     { "warp": 0, "map": "BattleTower", "x": 15, "y": 19, "facing": "Up" },
-    { "warp": 1, "map": "BattleTower", "x": 15, "y": 19, "facing": "Up" }
+    { "warp": 1, "map": "BattleTower", "x": 15, "y": 19, "facing": "Up" },
+    // The Battle Factory's doors lead to the head of its lobby's stairs (plan 06 · R18b): the two in its front, and
+    // the one under its porch that whoever comes out of the lobby stands before
+    { "warp": 2, "map": "BattleFactory", "x": 1, "y": 7, "facing": "Right" },
+    { "warp": 3, "map": "BattleFactory", "x": 1, "y": 7, "facing": "Right" },
+    { "warp": 12, "map": "BattleFactory", "x": 1, "y": 7, "facing": "Right" }
   ],
-  // The four halls stand shut until their insides are built (plan 06 · R18b to R18d): the Battle Factory's doors
-  // (2, 3, and 12 inside its porch), the Battle Hall's (4, 5, 13), the Battle Castle's (6, 7, 15) and the Battle
-  // Arcade's (8, 9, 14). The four triggers before the inner doors, which walk the player in (the original's scripts
-  // 34 to 37), are theirs too
-  "locked": [ 2, 3, 4, 5, 6, 7, 8, 9, 12, 13, 14, 15 ],
+  // The trigger under the Battle Factory's porch walks whoever steps on it in (the original's script 37); the other
+  // three halls' wait for their sittings
+  "triggers": [ { "trigger": 3, "script": "EnterBattleFactory" } ],
+  // Three halls stand shut until their insides are built (plan 06 · R18c and R18d): the Battle Hall's doors (4, 5,
+  // and 13 inside its porch), the Battle Castle's (6, 7, 15) and the Battle Arcade's (8, 9, 14). The three triggers
+  // before their inner doors, which walk the player in (the original's scripts 34 to 36), are theirs too
+  "locked": [ 4, 5, 6, 7, 8, 9, 13, 14, 15 ],
   // The reporter who interviews whoever has a streak to talk about (hidden by FLAG_HIDE_BATTLE_FRONTIER_REPORTER,
   // moved about by the place's own arrival script) waits for the television programmes (plan 08)
   "people": {

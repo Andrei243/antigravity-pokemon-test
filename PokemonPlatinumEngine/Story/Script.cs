@@ -71,6 +71,8 @@ public enum Op
     // What a room's people ask of the team and do for it (plan 01 · M11, part b): a massage, a Pokémon of a level,
     // a pair of Combee, the condition a scarf is given for
     Team,
+    // The Battle Factory (plan 06 · R18b)
+    Factory,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

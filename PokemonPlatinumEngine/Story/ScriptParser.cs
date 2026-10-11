@@ -607,6 +607,21 @@ public static class ScriptParser
                 };
             }
 
+            // The Battle Factory (plan 06 · R18b)
+            case "factory":
+            {
+                string what = r.OneOf("begin", "enter", "pause", "resume", "forfeit", "end", "active", "paused", "way", "level", "battles", "next", "hint",
+                    "rent", "draw", "trade", "stand", "head", "announce", "odds", "opponent", "battle", "won", "brain", "beat", "streak", "finish", "points", "beaten");
+                string which = what switch
+                {
+                    "begin" => r.OneOf("single", "double") + " " + r.OneOf("50", "open"),
+                    "beat" => r.OneOf("silver", "gold"),
+                    "finish" => r.OneOf("won", "lost"),
+                    _ => ""
+                };
+                return new Instruction { Op = Op.Factory, Line = line, Name = what, Other = which };
+            }
+
             case "script":
             case "label":
                 throw r.Error($"'{word}' begins a line of its own");

@@ -364,4 +364,13 @@ public interface IScriptHost
     /// Pokémon Mansion's maids count.
     /// </summary>
     int BattleTurns { get; }
+
+    /// <summary>
+    /// The Battle Factory challenge under way (plan 06 · R18b); null while none is. <see cref="FrontierAct"/> takes two
+    /// more words for it: <c>rent</c> opens the six on offer for three to be chosen (the script waits;
+    /// <see cref="Entered"/> is their places among the six, in the order chosen), and <c>trade</c> the three in hand and
+    /// the beaten trainer's three (<see cref="Entered"/> is the place given up and the place taken, or nothing when no
+    /// trade was made).
+    /// </summary>
+    Models.Frontier.BattleFactoryChallenge? Factory { get; set; }
 }

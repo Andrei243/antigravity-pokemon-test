@@ -14,6 +14,8 @@ public enum JournalEventKind
     GameCorner,
     /// <summary>Took a challenge at the Battle Tower (<c>LOCATION_EVENT_BATTLE_TOWER</c>; plan 06 · R18a).</summary>
     BattleTower,
+    /// <summary>Took a challenge at the Battle Factory (<c>LOCATION_EVENT_BATTLE_FACTORY</c>; plan 06 · R18b).</summary>
+    BattleFactory,
 }
 
 /// <summary>One line of a page: what happened, and the place, item, move or trainer it names.</summary>
@@ -159,6 +161,7 @@ public sealed class Journal
         JournalEventKind.UsedFieldMove => $"Used {e.Subject} in the field.",
         JournalEventKind.GameCorner => "Played the slots at the Game Corner.",
         JournalEventKind.BattleTower => "Took a challenge at the Battle Tower.",
+        JournalEventKind.BattleFactory => "Took a challenge at the Battle Factory.",
         _ => ""
     };
 }

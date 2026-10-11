@@ -44,7 +44,7 @@ internal static partial class ModernUi
         }
 
         // The columns' heads
-        float top = panel.Y + 132, rowH = 132, recordX = panel.X + panel.Width * 0.52f, latestX = panel.X + panel.Width * 0.76f;
+        float top = panel.Y + 132, rowH = board.Rows.Count > 3 ? 112 : 132, recordX = panel.X + panel.Width * 0.52f, latestX = panel.X + panel.Width * 0.76f;
         Label("CHALLENGE", x, top);
         Label("RECORD STREAK", recordX, top);
         Label("LATEST STREAK", latestX, top);
@@ -56,8 +56,15 @@ internal static partial class ModernUi
             UiFonts.DrawCentered(row.Label, r.X + 28, r.Y + r.Height / 2f, 40, Ink, UiWeight.ExtraBold);
             UiFonts.DrawCentered(row.Record.ToString("N0"), recordX, r.Y + r.Height / 2f, 56, Ink, UiWeight.Black);
             UiFonts.DrawCentered(row.Latest.ToString("N0"), latestX, r.Y + r.Height / 2f, 44, row.Running ? Ink : Muted, UiWeight.Black);
+            // What a facility counts beside its streaks (the Battle Factory's trades), small after each
+            if (board.CountLabel != null && row.RecordCount is { } recordCount && row.LatestCount is { } latestCount)
+            {
+                string kept = $"{recordCount:N0} {board.CountLabel}", last = $"{latestCount:N0} {board.CountLabel}";
+                UiFonts.DrawCentered(kept, recordX + UiFonts.Measure(row.Record.ToString("N0"), 56, UiWeight.Black) + 20, r.Y + r.Height / 2f + 8, 22, Muted, UiWeight.Black);
+                UiFonts.DrawCentered(last, latestX + UiFonts.Measure(row.Latest.ToString("N0"), 44, UiWeight.Black) + 20, r.Y + r.Height / 2f + 22, 20, Muted, UiWeight.Black);
+            }
             // A streak still running is taken up again by the next challenge
-            if (row.Running) Tag(latestX + UiFonts.Measure(row.Latest.ToString("N0"), 44, UiWeight.Black) + 24, r.Y + r.Height / 2f - 19, "RUNNING", Green, 38);
+            if (row.Running) Tag(latestX + UiFonts.Measure(row.Latest.ToString("N0"), 44, UiWeight.Black) + 24, r.Y + r.Height / 2f - (board.CountLabel != null ? 34 : 19), "RUNNING", Green, board.CountLabel != null ? 30 : 38);
         }
 
         // The foot: the Battle Points and the battles won here

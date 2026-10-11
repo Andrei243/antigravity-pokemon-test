@@ -55,6 +55,41 @@ public sealed class FrontierPrizeRecord
     public int Price { get; set; }
 }
 
+/// <summary>
+/// A row of one of the Battle Factory's tables of rental Pokémon (<c>BattleFactoryPokemonPool</c>): the sets a
+/// Pokémon is drawn from, the IV all its stats take, and whether a streak's trades can lift a draw into the next row.
+/// A row is found by a round's number or by a trainer's (the first whose <see cref="TrainerMax"/> the trainer's
+/// number is under).
+/// </summary>
+public sealed class FactoryPoolRecord
+{
+    public int TrainerMax { get; set; }
+    public int SetMin { get; set; }
+    public int SetMax { get; set; }
+    public int Ivs { get; set; }
+    public bool Upgrades { get; set; }
+}
+
+/// <summary>The Battle Factory's tables (plan 06 · R18b; <c>src/overlay104/battle_factory_helpers.c</c>).</summary>
+public sealed class FactoryTables
+{
+    /// <summary>
+    /// The trainers of a round, round by round (<c>sBattleFactoryOpponentPools</c>): the first and the one past the
+    /// last of those its first six battles are drawn from, and the same for its seventh. The last row is every
+    /// round's from the eighth on.
+    /// </summary>
+    public List<int[]> Opponents { get; set; } = new();
+
+    /// <summary>The rentals at Level 50, the player's by the round and a trainer's by the trainer (<c>sLevel50Pools</c>).</summary>
+    public List<FactoryPoolRecord> Level50 { get; set; } = new();
+
+    /// <summary>A trainer's Pokémon at the Open Level (<c>sOpenLevelOpponentPools</c>).</summary>
+    public List<FactoryPoolRecord> OpenFoes { get; set; } = new();
+
+    /// <summary>The player's rentals at the Open Level, by the round (<c>sOpenLevelPlayerPools</c>).</summary>
+    public List<FactoryPoolRecord> OpenRentals { get; set; } = new();
+}
+
 public sealed class FrontierData
 {
     /// <summary>The trainers in the original's order: the first is trainer 0.</summary>
@@ -80,6 +115,9 @@ public sealed class FrontierData
 
     /// <summary>The species no facility lets in (<c>sBattleFrontierBanlist</c>), in the original's order.</summary>
     public List<string> Banned { get; set; } = new();
+
+    /// <summary>The Battle Factory's rounds and rentals (plan 06 · R18b).</summary>
+    public FactoryTables Factory { get; set; } = new();
 }
 
 /// <summary>
@@ -102,6 +140,7 @@ public static class FrontierDatabase
     public static IReadOnlyList<FrontierPrizeRecord> ExchangeItems => Data.ExchangeItems;
     public static IReadOnlyList<FrontierPrizeRecord> ExchangeMachines => Data.ExchangeMachines;
     public static IReadOnlyList<string> Banned => Data.Banned;
+    public static FactoryTables Factory => Data.Factory;
 
     public static FrontierTrainerRecord Trainer(int number) => Data.Trainers[number];
     public static FrontierSetRecord Set(int number) => Data.Sets[number];
