@@ -1,0 +1,18 @@
+# The Move Relearner's house in Pastoria City (plan 01 · M11, part d), on the original's plan. docs/scripts.md
+# describes the language; the lines are our own, on the original's beats (scripts_pastoria_city_east_house.s).
+#
+# In the original he teaches a Pokémon any move its species learns by level, at or below its own, that it doesn't
+# know, for a Heart Scale. That list is plan 12 · Q19's rule (Models/Relearning.cs, which the party menu's REMEMBER
+# asks too) and isn't written yet, so he says what he does, tells a Heart Scale when he sees one, and takes nothing:
+# a stand-in (docs/mechanics/rulings.md). What Q19 joins here is named in the plan (01 · M11, "Ready from M11d").
+
+
+# PastoriaCityEastHouse_MoveManiac
+script Relearner
+  say "Everybody calls me the Pokémon Move Maniac. I'd sooner be called a Move Tutor, myself." "I know every move a Pokémon learns as it grows, and I can teach a Pokémon any of them it has let slip."
+  if item "Heart Scale" goto Scale
+  say "If a Pokémon of yours wants a move back, come and see me with a Heart Scale. That's all I ask."
+  end
+label Scale
+  say "Oh! That's one! That's a real, honest-to-goodness Heart Scale you have there!" "...And wouldn't you know it, I've lent my notebooks to a friend, every last one. I'd be guessing without them." "Keep that scale safe and come back another day, will you? I'll teach your Pokémon then."
+  end

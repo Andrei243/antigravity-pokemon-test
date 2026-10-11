@@ -1,0 +1,67 @@
+# Grandma Wilma's house on Route 210 (plan 01 · M11, part d), on the original's plan. docs/scripts.md describes the
+# language; the lines are our own, on the original's beats (scripts_route_210_grandma_wilma_house.s).
+#
+# She teaches Draco Meteor to a Dragon-type Pokémon that trusts its Trainer fully (friendship 255) and doesn't know
+# the move (Models/MoveTutors.cs; `tutor special dracometeor`, docs/scripts.md), for nothing. With no Dragon type on
+# the team she says so before anyone is chosen. FLAG_TALKED_TO_ROUTE_210_GRANDMA_WILMA: her first words are said.
+
+
+# Route210GrandmaWilmaHouse_OnTransition
+script OnEnter
+  setflag FLAG_FIRST_ARRIVAL_DRAGON_MASTERS_HOUSE
+  end
+
+
+# Route210GrandmaWilmaHouse_Wilma
+script Wilma
+  if flag FLAG_TALKED_TO_ROUTE_210_GRANDMA_WILMA goto Again
+  setflag FLAG_TALKED_TO_ROUTE_210_GRANDMA_WILMA
+  say "Ho ho ho... Grandma Wilma, they call me." "I came out here all on my own, from a town of Dragon tamers." "The mightiest of all the Dragon-type moves: that is what I can teach the tough Pokémon of Sinnoh."
+  ask "Would you have me teach it to one of your Pokémon?"
+  goto Answer
+label Again
+  ask "Ah, it is you again... Shall I teach the best Dragon-type move I know to one of your Pokémon?"
+label Answer
+  if no goto ComeBack
+  tutor dragons
+  if result == 0 goto NoDragons
+  say "Fine, fine. Now choose the Pokémon I am to teach."
+  choosepokemon
+  tutor special dracometeor
+  if result == 1 goto ComeBack
+  if result == 2 goto Egg
+  if result == 3 goto CantLearn
+  if result == 4 goto Knows
+  if result == 5 goto NotClose
+  tutor learn
+  if result == 0 goto GaveUp
+  if result == 2 goto Hm
+  if result == 3 say "One, two, and... poof! {wearer} forgot {forgotten}. And..."
+  fanfare levelup
+  say "{wearer} learned {thing}!"
+  say "Draco Meteor's power to destroy is a fearsome thing to see." "Mind, though: using it lowers the user's own Special Attack."
+  end
+label ComeBack
+  say "Well, should you change your mind, do come back."
+  end
+label NoDragons
+  say "I see... I do like your spirit." "But not one of the Pokémon with you now can learn this move."
+  end
+label Egg
+  say "Hmmm... Teaching a move to an Egg is a feat beyond even me."
+  end
+label CantLearn
+  say "I'm sorry to disappoint you. That Pokémon cannot learn this move."
+  end
+label Knows
+  say "Oh? That Pokémon knows {thing} already."
+  end
+label NotClose
+  say "I'm sorry to disappoint you..." "That Pokémon could learn this move, but it hasn't come to trust you fully yet." "Until it does, I can't make it learn."
+  end
+label GaveUp
+  say "{wearer} did not learn {thing}."
+  goto ComeBack
+label Hm
+  say "{forgotten} isn't a move that can be given up like that. {wearer} did not learn {thing}."
+  goto ComeBack

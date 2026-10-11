@@ -1,0 +1,52 @@
+# The gate at the foot of the Cycling Road (plan 01 · M11, part d), on the original's plan. docs/scripts.md describes
+# the language; the lines are our own, on the original's beats (scripts_route_206_cycling_road_south_gate.s).
+#
+# The Cycling Road lies north of the room. The row of the lane just past the gate keepers (the original's trigger at
+# y 6, while VAR_MAP_LOCAL_0x02 is 0) turns back anyone on foot; a rider is waved through and can't get off the
+# Bicycle from there to the road (FLAG_FORCE_BIKING_IN_GATE). The row before it (y 8, while the variable is 1) lets a
+# rider coming back off again, and whoever comes in from the road is riding and stays so until that row.
+#
+# The Battle Girl gives the Flag once, an Accessory (FLAG_RECEIVED_ROUTE_206_CYCLING_ROAD_SOUTH_GATE_ACCESSORY_FLAG).
+
+
+# Route206CyclingRoadSouthGate_OnFrame_TryForceBiking
+script OnEnter
+  if var PLAYER_Y <= 3 setflag FLAG_FORCE_BIKING_IN_GATE
+  end
+
+
+# Route206CyclingRoadSouthGate_CoordEvent_OnlyCyclists
+script OnlyBicycles
+  if var CYCLING == 1 goto Riding
+  emote cashier_m_west exclaim
+  speaker "Gate Keeper"
+  say "Hold on! The Cycling Road is open to cyclists only. You'll need to be on a Bicycle."
+  walk player down 1
+  end
+label Riding
+  setflag FLAG_FORCE_BIKING_IN_GATE
+  setvar VAR_MAP_LOCAL_0x02 1
+  end
+
+
+# Route206CyclingRoadSouthGate_CoordEvent_ClearFlagForceBikingInGate
+script OffTheRoad
+  clearflag FLAG_FORCE_BIKING_IN_GATE
+  setvar VAR_MAP_LOCAL_0x02 0
+  end
+
+
+# Route206CyclingRoadSouthGate_BattleGirl
+script BattleGirl
+  if flag FLAG_RECEIVED_ROUTE_206_CYCLING_ROAD_SOUTH_GATE_ACCESSORY_FLAG goto Given
+  say "What's a Bicycle without one of these?" "A Flag! Everybody ought to have one. It's an Accessory for your Pokémon, too."
+  giveaccessory "Flag"
+  if result == 0 goto Full
+  setflag FLAG_RECEIVED_ROUTE_206_CYCLING_ROAD_SOUTH_GATE_ACCESSORY_FLAG
+  end
+label Full
+  say "Oh, your Fashion Case has no room for it. Come back when it does!"
+  end
+label Given
+  say "Go on through Mt. Coronet from here and you come to Hearthome City, where the Pokémon Contests are held." "Dress your Pokémon up in your Accessories and give one a try!"
+  end

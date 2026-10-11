@@ -1,0 +1,134 @@
+# Veilstone's Department Store, fourth floor (plan 01 · M11, part d), on the original's plan. docs/scripts.md
+# describes the language; the lines are our own, on the original's beats (scripts_veilstone_store_4f.s).
+#
+# Two clerks sell things for a Secret Base, for money (the original's PokeMartDecor with MART_DECOR_ID_VEILSTONE_4F_UP
+# and _DOWN: five furnishings and six dolls, at the prices of the Underground's table of goods, underground.json's
+# "money"). What is bought is sent to the base's PC (`underground give good`), which holds two hundred. A question
+# takes six answers, so the dolls are asked for in two. The attendant recommends the first of her four, as on the
+# floors below (VeilstoneStore2F.txt).
+
+
+script OnEnter
+  setvar VAR_VEILSTONE_STORE_LIFT_FLOOR 5
+  call VeilstoneStoreElevator.Stands
+  end
+
+
+# VeilstoneStore4F_Attendant
+script Attendant
+  choose "Hello. May I help you with anything?" "WHAT'S GOOD?" "NOTHING, THANKS"
+  if result == 0 goto Cushion
+  say "Please enjoy your visit."
+  end
+label Cushion
+  say "The Yellow Cushion is a great favourite: neither too soft nor too firm."
+  end
+
+
+# VeilstoneStore4F_TopDecorVendor
+script Goods
+  say "Welcome! Furnishings for a Secret Base, sent straight to its PC."
+  underground room
+  if result == 0 goto Full
+  choose "Which would you like?" "YELLOW CUSHION  500" "CUPBOARD  1,000" "TV  4,500" "REFRIGERATOR  1,000" "PRETTY SINK  3,000" "NOTHING"
+  if result == 0 goto Cushion
+  if result == 1 goto Cupboard
+  if result == 2 goto Tv
+  if result == 3 goto Fridge
+  if result == 4 goto Sink
+  say "Please come again!"
+  end
+label Cushion
+  takemoney 500
+  if result == 0 goto Poor
+  underground give good "Yellow Cushion"
+  goto Sold
+label Cupboard
+  takemoney 1000
+  if result == 0 goto Poor
+  underground give good "Cupboard"
+  goto Sold
+label Tv
+  takemoney 4500
+  if result == 0 goto Poor
+  underground give good "TV"
+  goto Sold
+label Fridge
+  takemoney 1000
+  if result == 0 goto Poor
+  underground give good "Refrigerator"
+  goto Sold
+label Sink
+  takemoney 3000
+  if result == 0 goto Poor
+  underground give good "Pretty Sink"
+label Sold
+  sound "select"
+  say "Thank you! It is on its way to the PC of your Secret Base."
+  end
+label Poor
+  say "I'm so sorry, but you haven't the money for that."
+  end
+label Full
+  say "I'm so sorry. The PC of your Secret Base has no room for anything more."
+  end
+
+
+# VeilstoneStore4F_BottomDecorVendor
+script Dolls
+  say "Welcome! Pokémon Dolls for a Secret Base, sent straight to its PC."
+  underground room
+  if result == 0 goto Full
+  choose "Which doll would you like?" "MUNCHLAX  2,000" "BONSLY  2,000" "MIME JR.  2,000" "OTHER DOLLS" "NOTHING"
+  if result == 0 goto Munchlax
+  if result == 1 goto Bonsly
+  if result == 2 goto MimeJr
+  if result == 3 goto Others
+  say "Please come again!"
+  end
+label Others
+  choose "Which of these, then?" "MANTYKE  3,000" "BUIZEL  3,000" "CHATOT  3,000" "NOTHING"
+  if result == 0 goto Mantyke
+  if result == 1 goto Buizel
+  if result == 2 goto Chatot
+  say "Please come again!"
+  end
+label Munchlax
+  takemoney 2000
+  if result == 0 goto Poor
+  underground give good "Munchlax Doll"
+  goto Sold
+label Bonsly
+  takemoney 2000
+  if result == 0 goto Poor
+  underground give good "Bonsly Doll"
+  goto Sold
+label MimeJr
+  takemoney 2000
+  if result == 0 goto Poor
+  underground give good "Mime Jr. Doll"
+  goto Sold
+label Mantyke
+  takemoney 3000
+  if result == 0 goto Poor
+  underground give good "Mantyke Doll"
+  goto Sold
+label Buizel
+  takemoney 3000
+  if result == 0 goto Poor
+  underground give good "Buizel Doll"
+  goto Sold
+label Chatot
+  takemoney 3000
+  if result == 0 goto Poor
+  underground give good "Chatot Doll"
+label Sold
+  sound "select"
+  say "Thank you! It is on its way to the PC of your Secret Base."
+  end
+label Poor
+  say "I'm so sorry, but you haven't the money for that."
+  end
+label Full
+  say "I'm so sorry. The PC of your Secret Base has no room for anything more."
+  end

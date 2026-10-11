@@ -33,7 +33,7 @@
     "#....................#",
     "#........#...#..####.#",
     "#...............####.#",
-    "###..................#",
+    "###.................##",
     "###########.##########"
   ],
   "props": [
@@ -122,20 +122,6 @@
       "depth": 2
     },
     {
-      "type": "Plant",
-      "x": 1,
-      "y": 11,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Plant",
-      "x": 2,
-      "y": 11,
-      "width": 1,
-      "depth": 1
-    },
-    {
       "type": "Rug",
       "x": 10,
       "y": 4,
@@ -153,6 +139,20 @@
       "type": "WallEmblem",
       "x": 17,
       "y": 0,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SideStairsUp",
+      "x": 1,
+      "y": 11,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "SideStairsDown",
+      "x": 20,
+      "y": 11,
       "width": 1,
       "depth": 1
     }
@@ -173,6 +173,22 @@
       "targetX": 4,
       "targetY": 15,
       "targetFacing": "Up"
+    },
+    {
+      "sourceX": 3,
+      "sourceY": 11,
+      "targetMap": "PokemonLeagueNorthPokemonCenter2F",
+      "targetX": 3,
+      "targetY": 10,
+      "targetFacing": "Right"
+    },
+    {
+      "sourceX": 19,
+      "sourceY": 11,
+      "targetMap": "PokemonLeagueNorthPokemonCenterB1F",
+      "targetX": 13,
+      "targetY": 10,
+      "targetFacing": "Left"
     }
   ],
   "signboards": [],

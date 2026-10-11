@@ -1,0 +1,261 @@
+{
+  "name": "OreburghPokemonCenterB1F",
+  "displayName": "Pokémon Center",
+  "bgmTrack": "common/pokecenter",
+  "interior": "PokemonCenter",
+  "trees": "Round",
+  "width": 17,
+  "height": 14,
+  "ground": [
+    "#################",
+    "#################",
+    "#################",
+    "#______________##",
+    "#______________##",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_____________###",
+    "#_______________#",
+    "#_____________###",
+    "#______________##",
+    "#################"
+  ],
+  "solid": [
+    "#################",
+    "#################",
+    "#################",
+    "###...#........##",
+    "#.#...#........##",
+    "#.###############",
+    "#...............#",
+    "#...............#",
+    "#.##............#",
+    "#.##..........###",
+    "#..............##",
+    "#...#.......#.###",
+    "##..#.......#..##",
+    "#################"
+  ],
+  "behaviours": [
+    { "x": 2, "y": 3, "width": 1, "depth": 2, "behaviour": "Counter" },
+    { "x": 6, "y": 3, "width": 1, "depth": 2, "behaviour": "Counter" },
+    { "x": 2, "y": 5, "width": 3, "depth": 1, "behaviour": "Counter" },
+    { "x": 6, "y": 5, "width": 3, "depth": 1, "behaviour": "Counter" },
+    { "x": 10, "y": 5, "width": 5, "depth": 1, "behaviour": "Counter" }
+  ],
+  "props": [
+    {
+      "type": "Computer",
+      "x": 15,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 2,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 3,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 2,
+      "y": 8,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Cushion",
+      "x": 4,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 13,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SideStairsUpEast",
+      "x": 15,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 4,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 6,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 7,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 9,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 10,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 11,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 12,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Counter",
+      "x": 6,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Counter",
+      "x": 2,
+      "y": 5,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 6,
+      "y": 5,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 10,
+      "y": 5,
+      "width": 5,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 5,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 9,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 14,
+      "sourceY": 10,
+      "targetMap": "OreburghPokemonCenter",
+      "targetX": 7,
+      "targetY": 6,
+      "targetFacing": "Left"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "wifi_plaza_attendant_f",
+      "name": "Attendant",
+      "npcType": "Nurse",
+      "x": 4,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "Welcome to the desk of the Wi-Fi Plaza: a fair where Trainers from all round the world play games together.",
+        "It is closed, I'm sorry to say. Sinnoh's link to the wider world has gone quiet."
+      ]
+    },
+    {
+      "id": "teala_middle",
+      "name": "Attendant",
+      "npcType": "Nurse",
+      "x": 8,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "This is the Pokémon Wi-Fi Club, for battles and trades with friends who live far away.",
+        "Its doors are shut for the time being. The link to the wider world is down."
+      ]
+    },
+    {
+      "id": "teala_east",
+      "name": "Attendant",
+      "npcType": "Nurse",
+      "x": 12,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "I am here to explain the Wi-Fi Club to anyone who asks.",
+        "There is little to explain while it is closed, though. I do hope you will come back when the link is up again!"
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

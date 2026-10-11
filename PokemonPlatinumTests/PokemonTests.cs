@@ -62,7 +62,7 @@ public class PokemonTests
         foreach (var (room, doorX, doorY) in new[] { ("JubilifePokemonCenter", 180, 776), ("JubilifePokeMart", 179, 766), ("TrainersSchool", 168, 776), ("PoketchCompany", 141, 751) })
         {
             Assert.Equal(room, sinnoh.GetWarpAt(doorX, doorY)?.TargetMap);
-            var exit = MapDatabase.Get(room).Warps.Single();
+            var exit = MapDatabase.Get(room).Warps.Single(w => w.TargetMap == "Sinnoh");
             Assert.Equal(("Sinnoh", doorX, doorY + 1), (exit.TargetMap, exit.TargetX, exit.TargetY));
             Assert.True(sinnoh.IsWalkable(exit.TargetX, exit.TargetY), $"{room} lets out onto a tile nobody can stand on");
         }
@@ -73,7 +73,7 @@ public class PokemonTests
         Assert.True(sinnoh.IsWalkable(190, 758) && sinnoh.AreaAt(193, 758)!.Key == "route_203" && sinnoh.IsWalkable(193, 758));
         Assert.True(sinnoh.IsWalkable(175, 737) && sinnoh.AreaAt(175, 735)!.Key == "route_204_south" && sinnoh.IsWalkable(175, 735));
         var gate = sinnoh.GetWarpAt(128, 758)!;
-        Assert.Equal("route_218", sinnoh.AreaAt(gate.TargetX, gate.TargetY)!.Key);
+        Assert.Equal("Route218GateToJubilifeCity", gate.TargetMap);
     }
 
     [Fact]

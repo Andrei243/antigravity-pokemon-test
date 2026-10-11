@@ -1,0 +1,134 @@
+{
+  "name": "Route228NorthHouse",
+  "displayName": "Route 228",
+  "bgmTrack": "sinnoh/route209",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "##.....####",
+    "##........#",
+    "##........#",
+    "##........#",
+    "##........#",
+    "##........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Painting",
+      "x": 4,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 2,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 6,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 7,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Cushion",
+      "x": 2,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 1,
+      "y": 5,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Sinnoh",
+      "targetX": 789,
+      "targetY": 357,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 4,
+      "y": 2,
+      "text": "A poster. \"The ultimate moves may be taught to the Pokémon listed here!\" \"The blazing fire Pokémon: Charizard, Typhlosion, Blaziken, Infernape.\" \"The restless water Pokémon: Blastoise, Feraligatr, Swampert, Empoleon.\" \"The quiet grass Pokémon: Venusaur, Meganium, Sceptile, Torterra.\""
+    }
+  ],
+  "npcs": [
+    {
+      "id": "expert_m",
+      "name": "Old Man",
+      "npcType": "Gentleman",
+      "x": 2,
+      "y": 5,
+      "facing": "Down",
+      "script": "Master"
+    }
+  ],
+  "wildEncounters": []
+}

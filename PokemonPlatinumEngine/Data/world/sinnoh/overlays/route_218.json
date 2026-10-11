@@ -2,12 +2,12 @@
   "area": "route_218",
   "bgmTrack": "sinnoh/route203",
   "trees": "Round",
-  // Gate houses are passed through; their rooms come with plan 01 · M11
-  "through": [
-    { "warp": 0, "to": "canalave_city", "toWarp": 7 },
-    { "warp": 1, "to": "canalave_city", "toWarp": 8 },
-    { "warp": 2, "to": "jubilife_city", "toWarp": 12 },
-    { "warp": 3, "to": "jubilife_city", "toWarp": 13 }
+  // The gate houses to Canalave City and to Jubilife City, on the original's plan (plan 01 · M11, part d)
+  "doors": [
+    { "warp": 0, "map": "Route218GateToCanalaveCity", "x": 10, "y": 7, "facing": "Left" },
+    { "warp": 1, "map": "Route218GateToCanalaveCity", "x": 10, "y": 7, "facing": "Left" },
+    { "warp": 2, "map": "Route218GateToJubilifeCity", "x": 1, "y": 7, "facing": "Right" },
+    { "warp": 3, "map": "Route218GateToJubilifeCity", "x": 1, "y": 7, "facing": "Right" }
   ],
   "people": {
     // The blockade before the Canalave gate (plan 02 · S9): a guitarist and a fisherman rehearsing a show with their

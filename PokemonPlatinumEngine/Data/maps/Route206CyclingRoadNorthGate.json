@@ -1,0 +1,201 @@
+{
+  "name": "Route206CyclingRoadNorthGate",
+  "displayName": "Route 206",
+  "bgmTrack": "sinnoh/route206",
+  "interior": "House",
+  "trees": "Round",
+  "bike": true,
+  "width": 14,
+  "height": 14,
+  "ground": [
+    "##############",
+    "##############",
+    "##############",
+    "##___________#",
+    "##___________#",
+    "##___________#",
+    "##___________#",
+    "##___________#",
+    "##___________#",
+    "##___________#",
+    "##___________#",
+    "##___________#",
+    "##___________#",
+    "######DDD#####"
+  ],
+  "solid": [
+    "##############",
+    "##############",
+    "######...#####",
+    "##...#...#...#",
+    "##...#...#...#",
+    "##...#...#...#",
+    "##.#.#...#.#.#",
+    "##...#...#...#",
+    "##.#.#...#.#.#",
+    "##...#...#...#",
+    "##...#...#...#",
+    "##...#...#...#",
+    "##...#...#...#",
+    "######...#####"
+  ],
+  "behaviours": [
+    { "x": 5, "y": 3, "width": 1, "depth": 10, "behaviour": "Counter" },
+    { "x": 9, "y": 3, "width": 1, "depth": 10, "behaviour": "Counter" }
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 3,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 11,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 3,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 11,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 5,
+      "y": 3,
+      "width": 1,
+      "depth": 10
+    },
+    {
+      "type": "Counter",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 10
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 7,
+      "sourceY": 2,
+      "targetMap": "Sinnoh",
+      "targetX": 304,
+      "targetY": 568,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 7,
+      "sourceY": 13,
+      "targetMap": "Sinnoh",
+      "targetX": 304,
+      "targetY": 577,
+      "targetFacing": "Down",
+      "cyclistsOnly": true
+    },
+    {
+      "sourceX": 6,
+      "sourceY": 13,
+      "targetMap": "Sinnoh",
+      "targetX": 304,
+      "targetY": 577,
+      "targetFacing": "Down",
+      "cyclistsOnly": true
+    },
+    {
+      "sourceX": 8,
+      "sourceY": 13,
+      "targetMap": "Sinnoh",
+      "targetX": 304,
+      "targetY": 577,
+      "targetFacing": "Down",
+      "cyclistsOnly": true
+    },
+    {
+      "sourceX": 6,
+      "sourceY": 2,
+      "targetMap": "Sinnoh",
+      "targetX": 304,
+      "targetY": 568,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 8,
+      "sourceY": 2,
+      "targetMap": "Sinnoh",
+      "targetX": 304,
+      "targetY": 568,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "cashier_m_east",
+      "name": "Gate Keeper",
+      "npcType": "Clerk",
+      "x": 10,
+      "y": 7,
+      "facing": "Left",
+      "dialog": [
+        "Learn to change gears, and there's nowhere a Bicycle won't take you.",
+        "The run button does it. Third gear down the Cycling Road is quite something!"
+      ]
+    },
+    {
+      "id": "cashier_m_west",
+      "name": "Gate Keeper",
+      "npcType": "Clerk",
+      "x": 4,
+      "y": 7,
+      "facing": "Right",
+      "dialog": [
+        "Learn to change gears, and there's nowhere a Bicycle won't take you.",
+        "The run button does it. Third gear down the Cycling Road is quite something!"
+      ]
+    },
+    {
+      "id": "scientist_m",
+      "name": "Assistant",
+      "npcType": "Scientist",
+      "x": 6,
+      "y": 4,
+      "facing": "Down",
+      "script": "Assistant",
+      "hiddenBy": "FLAG_HIDE_ROUTE_206_CYCLING_ROAD_NORTH_GATE_SCIENTIST_M"
+    }
+  ],
+  "triggers": [
+    {
+      "x": 6,
+      "y": 8,
+      "width": 3,
+      "depth": 1,
+      "script": "OnlyBicycles",
+      "variable": "VAR_MAP_LOCAL_0x02",
+      "value": 0
+    },
+    {
+      "x": 6,
+      "y": 6,
+      "width": 3,
+      "depth": 1,
+      "script": "OffTheRoad",
+      "variable": "VAR_MAP_LOCAL_0x02",
+      "value": 1
+    }
+  ],
+  "wildEncounters": []
+}

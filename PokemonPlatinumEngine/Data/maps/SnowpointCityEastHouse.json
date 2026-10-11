@@ -1,0 +1,144 @@
+{
+  "name": "SnowpointCityEastHouse",
+  "displayName": "Snowpoint City",
+  "bgmTrack": "sinnoh/snowpoint",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "##.....####",
+    "##........#",
+    "##........#",
+    "##........#",
+    "##........#",
+    "##........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Painting",
+      "x": 4,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 2,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 6,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 7,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Cushion",
+      "x": 2,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 1,
+      "y": 5,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Sinnoh",
+      "targetX": 379,
+      "targetY": 209,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 4,
+      "y": 2,
+      "text": "A list is pinned to the wall. MOVES TAUGHT FOR SHARDS: Snore, Spite, Helping Hand, Synthesis, Magnet Rise, Last Resort, Swift, Uproar."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "expert_m",
+      "name": "Old Man",
+      "npcType": "Gentleman",
+      "x": 5,
+      "y": 5,
+      "facing": "Down",
+      "script": "Sayings",
+      "movement": "look_south_and_east"
+    },
+    {
+      "id": "hiker",
+      "name": "Hiker",
+      "npcType": "Gentleman",
+      "x": 2,
+      "y": 4,
+      "facing": "Down",
+      "script": "Tutor"
+    }
+  ],
+  "wildEncounters": []
+}

@@ -131,6 +131,18 @@ public class RoomPlanTests
         new object[] { "Route227House", 1, 3, 4, 8 },
         new object[] { "Route228SouthHouse", 1, 3, 4, 8 },
         new object[] { "ResortAreaHouse", 1, 3, 4, 8 },
+        // Plan 01 · M11, part d: the tutors' and the two move men's houses
+        new object[] { "Route210GrandmaWilmaHouse", 1, 3, 4, 8 },
+        new object[] { "Route212House", 1, 3, 4, 8 },
+        new object[] { "PastoriaCityEastHouse", 1, 3, 4, 8 },
+        new object[] { "CanalaveCityEastHouse", 1, 3, 4, 8 },
+        new object[] { "SnowpointCityEastHouse", 1, 3, 4, 8 },
+        new object[] { "SurvivalAreaNorthHouse", 1, 3, 4, 8 },
+        new object[] { "Route228NorthHouse", 1, 3, 4, 8 },
+        // Plan 01 · M11, part d: Veilstone's Department Store, whose ground floor has the door
+        new object[] { "VeilstoneStore1F", 1, 3, 10, 12 },
+        // Plan 01 · M11, part d: the Global Terminal, whose ground floor has the door
+        new object[] { "GlobalTerminal1F", 1, 3, 13, 18 },
     };
 
     /// <summary>Rooms on the original's plans whose door isn't in the last row of the room (plan 06 · R16b): the Oreburgh
@@ -155,7 +167,25 @@ public class RoomPlanTests
     internal static readonly string[] LibraryUpperFloors = { "CanalaveLibrary2F", "CanalaveLibrary3F" };
 
     /// <summary>Gate houses rebuilt to the original's plans: a door in each side wall, both to the map of Sinnoh.</summary>
-    internal static readonly string[] Gates = { "Route209GateToHearthomeCity" };
+    internal static readonly string[] Gates =
+    {
+        "Route209GateToHearthomeCity",
+        // Plan 01 · M11, part d: the seven others on the same plan (m_gatepl02)
+        "Route218GateToJubilifeCity", "Route218GateToCanalaveCity", "Route208GateToHearthomeCity", "Route215GateToVeilstoneCity",
+        "Route213GateToPastoriaCity", "Route222GateToSunyshoreCity", "Route228GateToRoute226",
+    };
+
+    /// <summary>
+    /// Gate houses on a road that runs north and south (plan 01 · M11, part d): a way through the back wall and a door
+    /// in the front wall, each to the place on its side (<c>FinalInteriorTests</c>). The Cycling Road's two have doors
+    /// three tiles wide, Hearthome's two lead to Amity Square, and the Battle Frontier's is a hall of two parts.
+    /// </summary>
+    internal static readonly string[] NorthSouthGates =
+    {
+        "Route212GateToHearthomeCity", "Route225GateToFightArea", "Route214GateToVeilstoneCity",
+        "Route206CyclingRoadNorthGate", "Route206CyclingRoadSouthGate",
+        "HearthomeCityWestGateToAmitySquare", "HearthomeCityEastGateToAmitySquare", "BattleFrontierGateToFightArea",
+    };
 
     /// <summary>The Team Galactic Eterna Building's upper floors: no door, only the stairs, and each cut in two (one
     /// staircase of each pair a trap that leads back down into the other part).</summary>
@@ -195,6 +225,38 @@ public class RoomPlanTests
     /// doors in the ground floor's back wall, never from the map of Sinnoh (<c>NorthInteriorTests</c>).</summary>
     internal static readonly string[] SyndicateLift = { "ResortAreaRibbonSyndicate2F", "ResortAreaRibbonSyndicateElevator" };
 
+    /// <summary>
+    /// The floors of Veilstone's Department Store but the ground floor, and the car of its lift (plan 01 · M11, part d):
+    /// come to by the escalators in the middle of each floor and the lift's doors in its back wall, never from the map
+    /// of Sinnoh (<c>FinalInteriorTests</c>).
+    /// </summary>
+    internal static readonly string[] StoreFloors =
+    {
+        "VeilstoneStore2F", "VeilstoneStore3F", "VeilstoneStore4F", "VeilstoneStore5F", "VeilstoneStoreB1F", "VeilstoneStoreElevator",
+    };
+    /// <summary>
+    /// The floor above and the floor below each Pokémon Center (plan 01 · M11, part d): the original's two plans, one
+    /// map of each to a Center as the original has a header of each to a town, come to by the escalators of the
+    /// Center's ground floor (<c>FinalInteriorTests</c>).
+    /// </summary>
+    internal static readonly string[] CenterFloors =
+    {
+        "CanalavePokemonCenter2F", "CanalavePokemonCenterB1F", "CelesticPokemonCenter2F", "CelesticPokemonCenterB1F",
+        "EternaPokemonCenter2F", "EternaPokemonCenterB1F", "FightAreaPokemonCenter2F", "FightAreaPokemonCenterB1F",
+        "FloaromaPokemonCenter2F", "FloaromaPokemonCenterB1F", "HearthomePokemonCenter2F", "HearthomePokemonCenterB1F",
+        "JubilifePokemonCenter2F", "JubilifePokemonCenterB1F", "OreburghPokemonCenter2F", "OreburghPokemonCenterB1F",
+        "PastoriaPokemonCenter2F", "PastoriaPokemonCenterB1F", "PokemonCenter2F", "PokemonCenterB1F",
+        "PokemonLeagueNorthPokemonCenter2F", "PokemonLeagueNorthPokemonCenterB1F", "PokemonLeagueSouthPokemonCenter2F",
+        "PokemonLeagueSouthPokemonCenterB1F", "ResortAreaPokemonCenter2F", "ResortAreaPokemonCenterB1F",
+        "SnowpointPokemonCenter2F", "SnowpointPokemonCenterB1F", "SolaceonPokemonCenter2F", "SolaceonPokemonCenterB1F",
+        "SunyshorePokemonCenter2F", "SunyshorePokemonCenterB1F", "SurvivalAreaPokemonCenter2F",
+        "SurvivalAreaPokemonCenterB1F", "VeilstonePokemonCenter2F", "VeilstonePokemonCenterB1F",
+    };
+    /// <summary>The Global Terminal's upper floors (plan 01 · M11, part d): come to by the ground floor's warp panels (<c>FinalInteriorTests</c>).</summary>
+    internal static readonly string[] TerminalFloors = { "GlobalTerminal2F", "GlobalTerminal3F" };
+    /// <summary>The viewing gallery over Pal Park's lobby (plan 01 · M11, part d): the original's upper level of the lobby's
+    /// own map, a map of its own here, come to by the lobby's escalator (<c>FinalInteriorTests</c>).</summary>
+    internal static readonly string[] ParkGallery = { "PalParkGallery" };
     /// <summary>The gallery at the top of the Vista Lighthouse (plan 02 · S13): no door, only the lift's car in the
     /// shaft at its middle (<c>SunyshoreTests</c>).</summary>
     internal static readonly string[] LighthouseGallery = { "VistaLighthouse" };
@@ -621,6 +683,139 @@ public class RoomPlanTests
         new object[] { "ResortAreaRibbonSyndicate2F", "receptionist_3", 12, 5, Direction.Left },
         new object[] { "ResortAreaRibbonSyndicate2F", "receptionist_4", 16, 12, Direction.Down },
         new object[] { "ResortAreaRibbonSyndicateElevator", "receptionist", 1, 6, Direction.Right },
+        // Plan 01 · M11, part d: the gate houses (events_<gate>.json)
+        new object[] { "Route218GateToJubilifeCity", "policeman", 7, 6, Direction.Down },
+        new object[] { "Route218GateToJubilifeCity", "fisherman", 4, 8, Direction.Up },
+        new object[] { "Route218GateToCanalaveCity", "policeman", 2, 5, Direction.Down },
+        new object[] { "Route218GateToCanalaveCity", "scientist_m", 5, 7, Direction.Right },
+        new object[] { "Route208GateToHearthomeCity", "pokemon_breeder_m", 7, 9, Direction.Down },
+        new object[] { "Route208GateToHearthomeCity", "middle_aged_woman", 5, 6, Direction.Down },
+        new object[] { "Route208GateToHearthomeCity", "clefairy", 4, 6, Direction.Down },
+        new object[] { "Route215GateToVeilstoneCity", "ruin_maniac", 7, 8, Direction.Right },
+        new object[] { "Route213GateToPastoriaCity", "pokefan_m", 8, 5, Direction.Left },
+        new object[] { "Route213GateToPastoriaCity", "school_kid_f", 5, 8, Direction.Down },
+        new object[] { "Route222GateToSunyshoreCity", "worker", 7, 5, Direction.Down },
+        new object[] { "Route222GateToSunyshoreCity", "pokefan_m", 6, 8, Direction.Right },
+        new object[] { "Route228GateToRoute226", "school_kid_f", 5, 8, Direction.Left },
+        new object[] { "Route228GateToRoute226", "ace_trainer_f", 7, 6, Direction.Up },
+        new object[] { "Route212GateToHearthomeCity", "collector", 4, 4, Direction.Up },
+        new object[] { "Route212GateToHearthomeCity", "cowgirl", 6, 7, Direction.Up },
+        new object[] { "Route225GateToFightArea", "ace_trainer_m", 4, 10, Direction.Down },
+        new object[] { "Route225GateToFightArea", "rich_boy", 6, 5, Direction.Left },
+        new object[] { "Route214GateToVeilstoneCity", "middle_aged_man", 6, 8, Direction.Up },
+        new object[] { "Route206CyclingRoadNorthGate", "cashier_m_east", 10, 7, Direction.Left },
+        new object[] { "Route206CyclingRoadNorthGate", "cashier_m_west", 4, 7, Direction.Right },
+        new object[] { "Route206CyclingRoadNorthGate", "scientist_m", 6, 4, Direction.Down },
+        new object[] { "Route206CyclingRoadSouthGate", "cashier_m_west", 3, 7, Direction.Right },
+        new object[] { "Route206CyclingRoadSouthGate", "cashier_m_east", 11, 7, Direction.Left },
+        new object[] { "Route206CyclingRoadSouthGate", "battle_girl", 9, 9, Direction.Left },
+        new object[] { "HearthomeCityWestGateToAmitySquare", "receptionist", 6, 3, Direction.Down },
+        new object[] { "HearthomeCityWestGateToAmitySquare", "beauty", 6, 8, Direction.Up },
+        new object[] { "HearthomeCityWestGateToAmitySquare", "pikachu", 6, 7, Direction.Down },
+        new object[] { "HearthomeCityEastGateToAmitySquare", "receptionist", 6, 3, Direction.Down },
+        new object[] { "HearthomeCityEastGateToAmitySquare", "black_belt", 6, 7, Direction.Down },
+        new object[] { "BattleFrontierGateToFightArea", "pokemon_breeder_m", 4, 6, Direction.Up },
+        new object[] { "BattleFrontierGateToFightArea", "expert_m", 11, 6, Direction.Left },
+        new object[] { "BattleFrontierGateToFightArea", "ruin_maniac", 3, 4, Direction.Left },
+        new object[] { "BattleFrontierGateToFightArea", "attendant_battle_castle", 5, 13, Direction.Right },
+        new object[] { "BattleFrontierGateToFightArea", "attendant_battle_factory", 5, 15, Direction.Right },
+        new object[] { "BattleFrontierGateToFightArea", "attendant_general", 5, 17, Direction.Right },
+        new object[] { "BattleFrontierGateToFightArea", "attendant_battle_arcade", 9, 13, Direction.Left },
+        new object[] { "BattleFrontierGateToFightArea", "attendant_battle_hall", 9, 15, Direction.Left },
+        new object[] { "BattleFrontierGateToFightArea", "attendant_battle_tower", 9, 17, Direction.Left },
+        new object[] { "BattleFrontierGateToFightArea", "beauty", 11, 3, Direction.Left },
+        // Plan 01 · M11, part d: the tutors' and the two move men's houses
+        new object[] { "Route210GrandmaWilmaHouse", "wilma", 5, 5, Direction.Down },
+        new object[] { "Route212House", "beauty", 3, 4, Direction.Right },
+        new object[] { "Route212House", "hiker", 5, 6, Direction.Left },
+        new object[] { "Route212House", "twin", 8, 7, Direction.Down },
+        new object[] { "PastoriaCityEastHouse", "move_maniac", 8, 4, Direction.Down },
+        new object[] { "PastoriaCityEastHouse", "youngster", 2, 4, Direction.Down },
+        new object[] { "CanalaveCityEastHouse", "move_deleter", 2, 6, Direction.Right },
+        new object[] { "SnowpointCityEastHouse", "expert_m", 5, 5, Direction.Down },
+        new object[] { "SnowpointCityEastHouse", "hiker", 2, 4, Direction.Down },
+        new object[] { "SurvivalAreaNorthHouse", "hiker", 3, 4, Direction.Right },
+        new object[] { "SurvivalAreaNorthHouse", "psychic", 8, 5, Direction.Up },
+        new object[] { "Route228NorthHouse", "expert_m", 2, 5, Direction.Down },
+        // Plan 01 · M11, part d: Veilstone's Department Store (events_veilstone_store_<floor>.json)
+        new object[] { "VeilstoneStore1F", "receptionist", 16, 8, Direction.Left },
+        new object[] { "VeilstoneStore1F", "middle_aged_man", 17, 11, Direction.Down },
+        new object[] { "VeilstoneStore1F", "lady", 2, 9, Direction.Right },
+        new object[] { "VeilstoneStore1F", "socialite", 4, 11, Direction.Up },
+        new object[] { "VeilstoneStore1F", "cashier_f", 3, 5, Direction.Right },
+        new object[] { "VeilstoneStore1F", "cashier_m", 2, 5, Direction.Down },
+        new object[] { "VeilstoneStore2F", "lady", 15, 11, Direction.Right },
+        new object[] { "VeilstoneStore2F", "bug_catcher_1", 5, 11, Direction.Right },
+        new object[] { "VeilstoneStore2F", "cashier_m", 2, 8, Direction.Down },
+        new object[] { "VeilstoneStore2F", "receptionist", 18, 6, Direction.Left },
+        new object[] { "VeilstoneStore2F", "cashier_f_up", 2, 4, Direction.Right },
+        new object[] { "VeilstoneStore2F", "cashier_f_mid", 2, 6, Direction.Right },
+        new object[] { "VeilstoneStore2F", "bug_catcher_2", 6, 10, Direction.Right },
+        new object[] { "VeilstoneStore3F", "receptionist", 18, 6, Direction.Left },
+        new object[] { "VeilstoneStore3F", "twin", 9, 10, Direction.Down },
+        new object[] { "VeilstoneStore3F", "guitarist", 7, 4, Direction.Down },
+        new object[] { "VeilstoneStore3F", "cashier_f", 3, 4, Direction.Down },
+        new object[] { "VeilstoneStore3F", "cashier_m", 3, 11, Direction.Up },
+        new object[] { "VeilstoneStore3F", "pokemon_breeder_f", 18, 10, Direction.Down },
+        new object[] { "VeilstoneStore4F", "ninja_boy", 15, 10, Direction.Left },
+        new object[] { "VeilstoneStore4F", "pokefan_f", 16, 11, Direction.Up },
+        new object[] { "VeilstoneStore4F", "receptionist", 18, 5, Direction.Left },
+        new object[] { "VeilstoneStore4F", "cashier_f", 3, 5, Direction.Right },
+        new object[] { "VeilstoneStore4F", "cashier_m", 2, 8, Direction.Down },
+        new object[] { "VeilstoneStore4F", "school_kid_m", 6, 11, Direction.Down },
+        new object[] { "VeilstoneStore5F", "bug_catcher", 3, 6, Direction.Down },
+        new object[] { "VeilstoneStore5F", "middle_aged_woman", 14, 8, Direction.Up },
+        new object[] { "VeilstoneStore5F", "collector_1", 10, 11, Direction.Right },
+        new object[] { "VeilstoneStore5F", "collector_2", 9, 11, Direction.Right },
+        new object[] { "VeilstoneStoreB1F", "receptionist_1", 15, 6, Direction.Left },
+        new object[] { "VeilstoneStoreB1F", "cashier_f_lava_cookie", 20, 11, Direction.Up },
+        new object[] { "VeilstoneStoreB1F", "cashier_f_poffin", 15, 11, Direction.Down },
+        new object[] { "VeilstoneStoreB1F", "socialite_1", 3, 8, Direction.Up },
+        new object[] { "VeilstoneStoreB1F", "receptionist_2", 5, 6, Direction.Right },
+        new object[] { "VeilstoneStoreB1F", "cashier_f_berry", 5, 11, Direction.Down },
+        new object[] { "VeilstoneStoreB1F", "cashier_f_rage_candy_bar", 20, 6, Direction.Left },
+        new object[] { "VeilstoneStoreB1F", "socialite_2", 16, 9, Direction.Up },
+        new object[] { "VeilstoneStoreB1F", "gentleman", 21, 13, Direction.Left },
+        new object[] { "VeilstoneStoreB1F", "prof_rowan", 15, 4, Direction.Down },
+        new object[] { "VeilstoneStoreElevator", "receptionist", 1, 6, Direction.Right },
+        // Plan 01 · M11, part d: the Global Terminal (events_global_terminal_<floor>.json)
+        new object[] { "GlobalTerminal1F", "receptionist_gts", 7, 3, Direction.Down },
+        new object[] { "GlobalTerminal1F", "collector", 3, 9, Direction.Right },
+        new object[] { "GlobalTerminal1F", "bug_catcher", 6, 7, Direction.Right },
+        new object[] { "GlobalTerminal1F", "guitarist", 3, 13, Direction.Up },
+        new object[] { "GlobalTerminal1F", "expert_m", 24, 7, Direction.Right },
+        new object[] { "GlobalTerminal1F", "ace_trainer_m", 6, 12, Direction.Up },
+        new object[] { "GlobalTerminal1F", "beauty_1", 12, 7, Direction.Right },
+        new object[] { "GlobalTerminal1F", "receptionist_entry_north", 9, 15, Direction.Right },
+        new object[] { "GlobalTerminal1F", "receptionist_entry_south", 9, 16, Direction.Right },
+        new object[] { "GlobalTerminal1F", "picnicker", 25, 12, Direction.Up },
+        new object[] { "GlobalTerminal1F", "youngster", 16, 16, Direction.Left },
+        new object[] { "GlobalTerminal1F", "pokemon_breeder_f", 13, 3, Direction.Up },
+        new object[] { "GlobalTerminal1F", "pokemon_breeder_m", 12, 13, Direction.Down },
+        new object[] { "GlobalTerminal1F", "beauty_2", 15, 10, Direction.Down },
+        new object[] { "GlobalTerminal2F", "battle_girl", 10, 6, Direction.Left },
+        new object[] { "GlobalTerminal2F", "twin", 11, 17, Direction.Down },
+        new object[] { "GlobalTerminal2F", "pokefan_f", 13, 10, Direction.Left },
+        new object[] { "GlobalTerminal2F", "beauty", 4, 15, Direction.Right },
+        new object[] { "GlobalTerminal2F", "lass", 13, 15, Direction.Left },
+        new object[] { "GlobalTerminal2F", "expert_f", 10, 14, Direction.Left },
+        new object[] { "GlobalTerminal2F", "hiker", 5, 8, Direction.Right },
+        new object[] { "GlobalTerminal2F", "idol", 20, 11, Direction.Right },
+        new object[] { "GlobalTerminal2F", "artist", 7, 4, Direction.Down },
+        new object[] { "GlobalTerminal3F", "gentleman", 8, 16, Direction.Right },
+        new object[] { "GlobalTerminal3F", "hiker", 18, 10, Direction.Left },
+        new object[] { "GlobalTerminal3F", "guitarist", 15, 10, Direction.Left },
+        new object[] { "GlobalTerminal3F", "school_kid_f", 6, 6, Direction.Up },
+        new object[] { "GlobalTerminal3F", "camper", 4, 11, Direction.Right },
+        new object[] { "GlobalTerminal3F", "youngster", 6, 5, Direction.Down },
+        new object[] { "GlobalTerminal3F", "pokefan_m", 4, 10, Direction.Right },
+        new object[] { "GlobalTerminal3F", "clown", 11, 10, Direction.Left },
+        new object[] { "GlobalTerminal3F", "ace_trainer_m", 9, 6, Direction.Left },
+        // Pal Park's viewing gallery (plan 01 · M11, part d): the lobby's four spectators on the original's tiles
+        new object[] { "PalParkGallery", "lass_2", 9, 4, Direction.Up },
+        new object[] { "PalParkGallery", "pokefan_m", 8, 4, Direction.Up },
+        new object[] { "PalParkGallery", "youngster", 3, 4, Direction.Up },
+        new object[] { "PalParkGallery", "lady", 14, 4, Direction.Up },
     };
 
     [Theory]
@@ -705,6 +900,11 @@ public class RoomPlanTests
             BattleTower,
             BattleFactory,
             SyndicateLift,
+            NorthSouthGates,
+            StoreFloors,
+            CenterFloors,
+            TerminalFloors,
+            ParkGallery,
         }.SelectMany(names => names).ToHashSet();
         foreach (string path in Directory.GetFiles(GameDataFiles.PathOf(MapDatabase.Folder), "*.json"))
         {

@@ -1,0 +1,187 @@
+{
+  "name": "Route212GateToHearthomeCity",
+  "displayName": "Route 212",
+  "bgmTrack": "sinnoh/route209",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 14,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "####___####",
+    "###_____###",
+    "####___####",
+    "###_____###",
+    "####___####",
+    "###_____###",
+    "#_________#",
+    "#_________#",
+    "#####D#####"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "#####.#####",
+    "#.........#",
+    "#.........#",
+    "####...####",
+    "####...####",
+    "####...####",
+    "####...####",
+    "####...####",
+    "####...####",
+    "#.........#",
+    "#.........#",
+    "#####.#####"
+  ],
+  "props": [
+    {
+      "type": "Painting",
+      "x": 8,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 3,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 7,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 3,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 7,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 3,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 7,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 5,
+      "sourceY": 2,
+      "targetMap": "Sinnoh",
+      "targetX": 458,
+      "targetY": 728,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 5,
+      "sourceY": 13,
+      "targetMap": "Sinnoh",
+      "targetX": 458,
+      "targetY": 737,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 8,
+      "y": 2,
+      "text": "A map of Sinnoh. Hearthome City lies north of here, and Route 212 runs south past the Pokémon Mansion toward Pastoria City."
+    },
+    {
+      "x": 9,
+      "y": 2,
+      "text": "A map of Sinnoh. Hearthome City lies north of here, and Route 212 runs south past the Pokémon Mansion toward Pastoria City."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "collector",
+      "name": "Collector",
+      "npcType": "Gentleman",
+      "x": 4,
+      "y": 4,
+      "facing": "Up",
+      "dialog": [
+        "I came all the way across Sinnoh to enter Hearthome's Contests.",
+        "My feet ache, but my Pokémon are raring to go on stage!"
+      ],
+      "movement": "wander_around",
+      "rangeZ": 1
+    },
+    {
+      "id": "cowgirl",
+      "name": "Cowgirl",
+      "npcType": "Lass",
+      "x": 6,
+      "y": 7,
+      "facing": "Up",
+      "dialog": [
+        "My Pokémon have had Poffin after Poffin after Poffin.",
+        "With a shine like theirs, we're bound to bring a ribbon or two home!"
+      ],
+      "movement": "wander_north_and_south",
+      "rangeZ": 1
+    },
+    {
+      "id": "reporter",
+      "name": "Reporter",
+      "npcType": "Lass",
+      "x": 5,
+      "y": 11,
+      "facing": "Left",
+      "dialog": [
+        "Sorry, the gate's closed for a little while. We're filming a programme down on Route 212!",
+        "Come back once we've wrapped up, won't you?"
+      ],
+      "hiddenBy": "FLAG_HIDE_ROUTE_212_BLOCKADE"
+    },
+    {
+      "id": "cameraman",
+      "name": "Cameraman",
+      "npcType": "Gentleman",
+      "x": 4,
+      "y": 11,
+      "facing": "Right",
+      "dialog": [
+        "Sorry, nobody gets through the gate for now. We're on location for a television shoot."
+      ],
+      "hiddenBy": "FLAG_HIDE_ROUTE_212_BLOCKADE"
+    }
+  ],
+  "triggers": [
+    {
+      "x": 4,
+      "y": 10,
+      "width": 3,
+      "depth": 1,
+      "script": "Blockade"
+    }
+  ],
+  "wildEncounters": []
+}

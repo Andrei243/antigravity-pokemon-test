@@ -19,12 +19,10 @@
     // couple's, and the inventor's, who gives Pokétch apps for Pokémon of the natures he asks to see)
     { "warp": 2, "map": "SunyshoreCityWestHouse", "x": 4, "y": 8, "facing": "Up" },
     { "warp": 4, "map": "SunyshoreCityNorthwestHouse", "x": 4, "y": 8, "facing": "Up" },
-    { "warp": 9, "map": "SunyshoreCityEastHouse", "x": 4, "y": 8, "facing": "Up" }
-  ],
-  // The gate house to Route 222 is passed through; its room comes with plan 01 · M11, part d
-  "through": [
-    { "warp": 3, "to": "route_222", "toWarp": 0 },
-    { "warp": 6, "to": "route_222", "toWarp": 1 }
+    { "warp": 9, "map": "SunyshoreCityEastHouse", "x": 4, "y": 8, "facing": "Up" },
+    // The gate house to Route 222, on the original's plan (plan 01 · M11, part d)
+    { "warp": 3, "map": "Route222GateToSunyshoreCity", "x": 10, "y": 7, "facing": "Left" },
+    { "warp": 6, "map": "Route222GateToSunyshoreCity", "x": 10, "y": 7, "facing": "Left" }
   ],
   // Two houses the original never used (its own files call them unused): their doors stay shut for good
   "locked": [ 7, 8 ],

@@ -4,10 +4,10 @@
   // player has seen enough of the Unown (warps 3 and 4 share its tile; plan 02)
   "bgmTrack": "sinnoh/route210",
   "trees": "Pine",
-  // Gate houses are passed through; their rooms come with plan 01 · M11
-  "through": [
-    { "warp": 0, "to": "veilstone_city", "toWarp": 11 },
-    { "warp": 1, "to": "veilstone_city", "toWarp": 12 }
+  // The gate house to Veilstone City, on the original's plan (plan 01 · M11, part d)
+  "doors": [
+    { "warp": 0, "map": "Route214GateToVeilstoneCity", "x": 5, "y": 12, "facing": "Up" },
+    { "warp": 1, "map": "Route214GateToVeilstoneCity", "x": 5, "y": 12, "facing": "Up" }
   ],
   "people": {
     "pi_carlos": {

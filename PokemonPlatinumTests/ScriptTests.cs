@@ -360,6 +360,15 @@ public class ScriptTests
           halloffame show
           save
           credits
+          tutor moves "route_212"
+          tutor afford
+          tutor pay
+          tutor special dracometeor
+          tutor special ultimate
+          tutor dragons
+          tutor learn
+          tutor forget
+          tutor delete
           team first
           team nature serious
           team size "Remoraid"
@@ -1281,5 +1290,6 @@ public class ScriptTests
         public void Cry(string species) { }
         public bool NationalDex => inner.NationalDex;
         public bool Save() => inner.Save();
+        public bool Cycling => inner.Cycling;
     }
 }

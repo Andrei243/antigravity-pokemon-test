@@ -8,8 +8,8 @@
 # up (the six go on waiting). Nothing has been brought over until this game's migration exists (plan 08 · P21), and
 # the attendant says so.
 #
-# Not here: the viewing gallery upstairs with its four spectators (the room is flat, and the stairs are roped off),
-# and Professor Oak, who meets the player at 7,15 the first time they come in after the National Pokédex
+# The viewing gallery upstairs with its four spectators is a map of its own, PalParkGallery (plan 01 · M11, part d),
+# come to by the escalator. Not here: Professor Oak, who meets the player at 7,15 the first time they come in after the National Pokédex
 # (FLAG_HIDE_PAL_PARK_LOBBY_PROF_OAK, VAR_PAL_PARK_LOBBY_STATE: plan 02 · S15).
 
 

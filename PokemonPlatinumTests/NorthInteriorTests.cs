@@ -106,7 +106,7 @@ public class NorthInteriorTests
         {
             (616, 366, 620, 368, 617, (string?)"Route225House"),
             (654, 346, 658, 348, 655, "SurvivalAreaSouthHouse"),
-            (655, 323, 658, 325, 656, null),          // the tutor's house, still shut (part d)
+            (655, 323, 658, 325, 656, "SurvivalAreaNorthHouse"),   // the tutor's house (part d)
             (651, 336, 655, 338, 652, null),          // the Battleground, the story's
         })
         {
@@ -136,27 +136,20 @@ public class NorthInteriorTests
     [Fact]
     public void WhatIsStillShutInTheseAreasIsSomeoneElses()
     {
-        // The three move tutors' houses (Snowpoint City's east house, the Survival Area's north house and Route 228's
-        // north house) are part d's; Snowpoint Temple's two doors, the Battleground and the Rock Peak Ruins are the
-        // story's; two houses of Sunyshore City are ones the original's own files call unused
-        Assert.Equal(new[] { 1, 2, 6 }, Sinnoh.Overlay("snowpoint_city")!.Locked);
+        // Part d built the three move tutors' houses (Snowpoint City's east house, the Survival Area's north house and
+        // Route 228's north house: FinalInteriorTests). Snowpoint Temple's two doors, the Battleground and the Rock Peak
+        // Ruins are the story's; two houses of Sunyshore City are ones the original's own files call unused
+        Assert.Equal(new[] { 2, 6 }, Sinnoh.Overlay("snowpoint_city")!.Locked);
         Assert.Equal(new[] { 7, 8 }, Sinnoh.Overlay("sunyshore_city")!.Locked);
-        Assert.Equal(new[] { 0, 2 }, Sinnoh.Overlay("survival_area")!.Locked);
-        Assert.Equal(new[] { 2, 4, 5 }, Sinnoh.Overlay("route_228")!.Locked);
+        Assert.Equal(new[] { 0 }, Sinnoh.Overlay("survival_area")!.Locked);
+        Assert.Equal(new[] { 4, 5 }, Sinnoh.Overlay("route_228")!.Locked);
         foreach (string area in new[] { "celestic_town", "route_216", "route_217", "route_222", "fight_area", "route_225", "route_226", "route_227", "resort_area" })
             Assert.True(Sinnoh.Overlay(area)!.Locked is not { Count: > 0 }, $"{area} still has a door shut");
         Assert.Equal("unused_sunyshore_city_house_1", Sinnoh.Area("sunyshore_city")!.Warps[7].To);
         Assert.Equal("unused_sunyshore_city_house_2", Sinnoh.Area("sunyshore_city")!.Warps[8].To);
         // The rooms left shut are not built by this part either
-        foreach (string left in new[] { "SnowpointCityEastHouse", "SurvivalAreaNorthHouse", "Route228NorthHouse", "Battleground" })
+        foreach (string left in new[] { "Battleground" })
             Assert.False(File.Exists(GameDataFiles.PathOf(Path.Combine(MapDatabase.Folder, left + ".json"))), left);
-        // The gate houses are walked through until part d, as before
-        Assert.Equal(new[] { 0, 1 }, Sinnoh.Overlay("route_222")!.Through!.Select(t => t.Warp).Order());
-        Assert.Equal(new[] { 3, 6 }, Sinnoh.Overlay("sunyshore_city")!.Through!.Select(t => t.Warp).Order());
-        Assert.Equal(new[] { 0, 1, 2, 3 }, Sinnoh.Overlay("fight_area")!.Through!.Select(t => t.Warp).Order());
-        Assert.Equal(new[] { 0, 1 }, Sinnoh.Overlay("route_225")!.Through!.Select(t => t.Warp).Order());
-        Assert.Equal(new[] { 1, 2 }, Sinnoh.Overlay("route_226")!.Through!.Select(t => t.Warp).Order());
-        Assert.Equal(new[] { 0, 1 }, Sinnoh.Overlay("route_228")!.Through!.Select(t => t.Warp).Order());
     }
 
     [Fact]

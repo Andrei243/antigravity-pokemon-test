@@ -1,0 +1,12 @@
+# The gate between Pastoria City and Route 213 (plan 01 · M11, part d), on the original's plan. docs/scripts.md
+# describes the language; the lines are our own, on the original's beats (scripts_route_213_gate_to_pastoria_city.s).
+
+
+script SchoolKid
+  ask "Tell me, have you heard of the Battle Frontier?"
+  if no goto Unknown
+  say "Then you're someone who keeps up with things." "It's meant to be great fun: halls for battling in, each with rules all its own."
+  end
+label Unknown
+  say "Then you're a little behind the times, I'd say." "It's meant to be great fun: halls where you battle one Trainer after another, each with rules all its own."
+  end

@@ -4,19 +4,18 @@
   "bgmTrack": "sinnoh/route209",
   "trees": "Round",
   "architecture": "Resort",
-  // The gate house to Route 226 is passed through; its room comes with plan 01 · M11, part d
-  "through": [
-    { "warp": 0, "to": "route_226", "toWarp": 2 },
-    { "warp": 1, "to": "route_226", "toWarp": 1 }
-  ],
   // The south house, on the original's plan (plan 01 · M11, part c): an old gentleman among his books
   "doors": [
-    { "warp": 3, "map": "Route228SouthHouse", "x": 4, "y": 8, "facing": "Up" }
+    { "warp": 3, "map": "Route228SouthHouse", "x": 4, "y": 8, "facing": "Up" },
+    // The gate house to Route 226, on the original's plan (plan 01 · M11, part d)
+    { "warp": 0, "map": "Route228GateToRoute226", "x": 10, "y": 7, "facing": "Left" },
+    { "warp": 1, "map": "Route228GateToRoute226", "x": 10, "y": 7, "facing": "Left" },
+    // The north house, on the original's plan (plan 01 · M11, part d): the tutor of the starters' three strongest moves
+    { "warp": 2, "map": "Route228NorthHouse", "x": 4, "y": 8, "facing": "Up" }
   ],
-  // The north house (warp 2) is the tutor's of the three strongest moves: its room comes with the tutors' (plan 01 ·
-  // M11, part d). The Rock Peak Ruins, two warps on one tile of which the original keeps one by whether Regigigas
-  // travels along, are the story's (plan 02 · S15)
-  "locked": [ 2, 4, 5 ],
+  // The Rock Peak Ruins, two warps on one tile of which the original keeps one by whether Regigigas travels along,
+  // are the story's (plan 02 · S15)
+  "locked": [ 4, 5 ],
   "people": {
     "ace_trainer_jose": {
       "name": "Jose",

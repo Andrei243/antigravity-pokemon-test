@@ -8,12 +8,13 @@
     { "warp": 3, "map": "SurvivalAreaPokemonCenter", "x": 5, "y": 7, "facing": "Up" },
     { "warp": 4, "map": "SurvivalAreaPokeMart", "x": 4, "y": 6, "facing": "Up" },
     // The south house, on the original's plan (plan 01 · M11, part c): the black belt who gives TM42
-    { "warp": 1, "map": "SurvivalAreaSouthHouse", "x": 4, "y": 8, "facing": "Up" }
+    { "warp": 1, "map": "SurvivalAreaSouthHouse", "x": 4, "y": 8, "facing": "Up" },
+    // The north house, a shard tutor's, on the original's plan (plan 01 · M11, part d)
+    { "warp": 2, "map": "SurvivalAreaNorthHouse", "x": 4, "y": 8, "facing": "Up" }
   ],
   // The Battleground (warp 0) opens once the story has been to Stark Mountain (the original moves its warp away until
-  // FLAG_ARRESTED_CHARON_STARK_MOUNTAIN; plan 02 · S15). The north house (warp 2) is a move tutor's: its room comes
-  // with the tutors' (plan 01 · M11, part d)
-  "locked": [ 0, 2 ],
+  // FLAG_ARRESTED_CHARON_STARK_MOUNTAIN; plan 02 · S15)
+  "locked": [ 0 ],
   // Buck, who shows the player his door on the way to Stark Mountain, and the rival, who trains here afterwards and
   // battles at weekends, wait for the story (plan 02 · S15)
   "people": {

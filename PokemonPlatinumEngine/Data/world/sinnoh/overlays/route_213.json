@@ -3,11 +3,6 @@
   "bgmTrack": "sinnoh/valor",
   "trees": "Round",
   "architecture": "Resort",
-  // The gate to Pastoria City is passed through; its room comes with plan 01 · M11, part d
-  "through": [
-    { "warp": 0, "to": "pastoria_city", "toWarp": 10 },
-    { "warp": 1, "to": "pastoria_city", "toWarp": 11 }
-  ],
   // Dr. Footstep's house, rebuilt to the original's plan (plan 06 · R17b)
   "doors": [
     { "warp": 2, "map": "FootstepHouse", "x": 4, "y": 8, "facing": "Up" },
@@ -17,7 +12,10 @@
     { "warp": 4, "map": "GrandLakeRoute213Lobby", "x": 8, "y": 3, "facing": "Down" },
     { "warp": 5, "map": "GrandLakeRoute213EastHouse", "x": 6, "y": 8, "facing": "Up" },
     { "warp": 6, "map": "GrandLakeRoute213NorthwestHouse", "x": 6, "y": 8, "facing": "Up" },
-    { "warp": 7, "map": "GrandLakeRoute213NortheastHouse", "x": 6, "y": 8, "facing": "Up" }
+    { "warp": 7, "map": "GrandLakeRoute213NortheastHouse", "x": 6, "y": 8, "facing": "Up" },
+    // The gate house to Pastoria City, on the original's plan (plan 01 · M11, part d)
+    { "warp": 0, "map": "Route213GateToPastoriaCity", "x": 10, "y": 7, "facing": "Left" },
+    { "warp": 1, "map": "Route213GateToPastoriaCity", "x": 10, "y": 7, "facing": "Left" }
   ],
   "people": {
     // The grunt who set off the bomb in the Great Marsh, running from Pastoria City, and Looker after him (plan 02 · S8,

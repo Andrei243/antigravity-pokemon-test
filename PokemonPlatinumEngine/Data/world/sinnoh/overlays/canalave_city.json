@@ -12,17 +12,17 @@
     // Plan 01 · M11, part b: three houses on the original's plans (Sailor Eldritch's is the one by the quay)
     { "warp": 4, "map": "CanalaveCitySoutheastHouse", "x": 4, "y": 8, "facing": "Up" },
     { "warp": 6, "map": "CanalaveCitySailorEldritchHouse", "x": 4, "y": 8, "facing": "Up" },
-    { "warp": 10, "map": "CanalaveCityWestHouse", "x": 4, "y": 8, "facing": "Up" }
-  ],
-  // Gate houses are passed through; their rooms come with plan 01 · M11
-  "through": [
-    { "warp": 7, "to": "route_218", "toWarp": 0 },
-    { "warp": 8, "to": "route_218", "toWarp": 1 }
+    { "warp": 10, "map": "CanalaveCityWestHouse", "x": 4, "y": 8, "facing": "Up" },
+    // The gate house to Route 218, on the original's plan (plan 01 · M11, part d): {assistant}'s father waits in it
+    // with the Pokédex's upgrade
+    { "warp": 7, "map": "Route218GateToCanalaveCity", "x": 1, "y": 7, "facing": "Right" },
+    { "warp": 8, "map": "Route218GateToCanalaveCity", "x": 1, "y": 7, "facing": "Right" },
+    // The east house, the Move Deleter's, on the original's plan (plan 01 · M11, part d)
+    { "warp": 9, "map": "CanalaveCityEastHouse", "x": 4, "y": 8, "facing": "Up" }
   ],
   // The Harbor Inn (warp 5) stays shut: nobody is let in before the night Darkrai calls them, which the original
-  // gives by an event of its own (plan 02 · S15b; docs/mechanics/rulings.md, "The rooms of the east and the sea").
-  // The east house (warp 9) is the Move Deleter's: its room comes with the tutors' (plan 01 · M11, part d)
-  "locked": [ 5, 9 ],
+  // gives by an event of its own (plan 02 · S15b; docs/mechanics/rulings.md, "The rooms of the east and the sea")
+  "locked": [ 5 ],
   // The rival on the bridge over the canal (plan 02 · S9, scripts/canalave_city.txt)
   "triggers": [ { "trigger": 0, "script": "RivalOnTheBridge" } ],
   // Sailor Eldritch, who sails trainers to Iron Island, is written with the ferry

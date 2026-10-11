@@ -160,6 +160,10 @@ public class LeagueTests
                     // The way into a room of the Four is in its front wall, which the door shuts as the challenger comes in:
                     // the room's own tile there is the wall
                     if (Four.Select(RoomOf).Contains(name) && (x, y) == (8, 12)) blocked = true;
+                    // The Pokémon Center's escalator down (plan 01 · M11, part d): the original's two stand in an alcove
+                    // south of the hall, which this room leaves out. The flight up takes the two tiles the original blocks
+                    // in the hall's south-west corner; the flight down has no such tile and takes the hall's south-east one
+                    if (name == Center && (x, y) == (20, 11)) blocked = true;
                     Assert.True(map.IsSolid(x, y) == blocked, $"{name}: ({x}, {y}) should be {(blocked ? "solid" : "open")}");
                 }
             // Above the original's row 2 there is only wall, but in the Pokémon Center, whose nurse and clerks stand in row 1

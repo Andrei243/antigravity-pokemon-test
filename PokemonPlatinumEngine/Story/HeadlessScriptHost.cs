@@ -749,4 +749,8 @@ public sealed class HeadlessScriptHost : IScriptHost
         Saves.Add((Story.Snapshot(), Map?.Name, PlayerTile));
         return true;
     }
+
+    // ------------------------------------------------------------------ the Cycling Road's gates
+
+    public bool Cycling => PlayerMode == TravelMode.Cycling;
 }

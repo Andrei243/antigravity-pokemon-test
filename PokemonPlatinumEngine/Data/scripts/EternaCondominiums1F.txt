@@ -2,7 +2,12 @@
 # own, on the original's beats (scripts_eterna_city_condominiums_1f.s).
 #
 # A boy trades his Chatot, Charap, for a Buizel (NpcTrades "charap"). FLAG_TRADED_FOR_CHARAP_CHATOT: the trade is
-# done. The Name Rater, who lives here too, waits for a naming screen.
+# done.
+#
+# The Name Rater lives here too (plan 01 · M11, part d: EternaCityCondominiums1F_ExpertM). In the original he gives a
+# Pokémon of the player's own a new nickname; the one naming prompt is plan 13 · V4's (plan 12 · Q19 puts RENAME in
+# the party menu with it) and isn't written yet, so he judges the name he is shown and changes nothing: a stand-in
+# (docs/mechanics/rulings.md).
 
 
 script Charap
@@ -24,4 +29,18 @@ label Waiting
   end
 label Done
   say "Has Chatot learned Chatter yet? It can say anything you teach it!"
+  end
+
+
+# EternaCityCondominiums1F_ExpertM
+script NameRater
+  ask "Hello, hello! I am the official Name Rater! Shall I rate the nicknames of your Pokémon?"
+  if no goto Again
+  say "Whose nickname am I to judge?"
+  choosepokemon
+  if result == 255 goto Again
+  say "{member:RESULT}, is it? Now that is a decent name!" "A better one still? Ah... there you have me. My great book of names is away at the binder's." "Take good care of {member:RESULT} in the meantime!"
+  end
+label Again
+  say "I see. Do come and visit again."
   end

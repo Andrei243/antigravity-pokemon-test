@@ -30,15 +30,18 @@ public class CentreTests
     [InlineData(454, 726, 446, 726, Direction.Left, "route_208")]
     // Eterna City down to the Cycling Road's north end, and back
     [InlineData(304, 569, 304, 577, Direction.Down, "route_206")]
-    [InlineData(305, 576, 305, 568, Direction.Up, "eterna_city")]
+    [InlineData(305, 576, 304, 568, Direction.Up, "eterna_city")]
     // The Cycling Road's south gate, both ways
     [InlineData(302, 681, 302, 689, Direction.Down, "route_206")]
-    [InlineData(303, 688, 303, 680, Direction.Up, "route_206")]
+    [InlineData(303, 688, 302, 680, Direction.Up, "route_206")]
     public void AGateHouseIsWalkedThroughToItsFarSide(int x, int y, int toX, int toY, Direction facing, string area)
     {
         var map = Overworld;
         var warp = map.GetWarpAt(x, y);
         Assert.NotNull(warp);
+        // A gate house is a room since plan 01 · M11, part d: in by its door, across its floor, and out by the door in
+        // its far wall (each of a wide door's tiles leads to the one tile the original's warp names)
+        warp = GateWalk.FarDoor(warp!);
         Assert.Equal(("Sinnoh", toX, toY, facing), (warp!.TargetMap, warp.TargetX, warp.TargetY, warp.TargetFacing));
         Assert.Equal(area, AreaKey(map, toX, toY));
         Assert.True(map.IsWalkable(toX, toY));
@@ -52,11 +55,12 @@ public class CentreTests
         var square = BuiltMaps.Value["AmitySquare"];
         foreach (var (x, y) in new[] { (458, 683), (459, 683), (500, 683), (501, 683) })
         {
-            var into = map.GetWarpAt(x, y)!;
+            // (through the gate's room, plan 01 · M11, part d)
+            var into = GateWalk.FarDoor(map.GetWarpAt(x, y)!);
             Assert.Equal("AmitySquare", into.TargetMap);
             Assert.True(square.IsWalkable(into.TargetX, into.TargetY));
             // And out by the same gate, a step south of it
-            var back = square.Warps.OrderBy(w => Math.Abs(w.SourceX - into.TargetX) + Math.Abs(w.SourceY - into.TargetY)).First();
+            var back = GateWalk.FarDoor(square.Warps.OrderBy(w => Math.Abs(w.SourceX - into.TargetX) + Math.Abs(w.SourceY - into.TargetY)).First());
             Assert.Equal("Sinnoh", back.TargetMap);
             Assert.Equal("hearthome_city", AreaKey(map, back.TargetX, back.TargetY));
             Assert.True(Math.Abs(back.TargetX - x) <= 1 && back.TargetY == y + 1);
@@ -83,7 +87,7 @@ public class CentreTests
                 Assert.Equal(town, AreaKey(map, door.SourceX, door.SourceY));
                 var inside = MapDatabase.Get(room);
                 Assert.True(inside.IsWalkable(door.TargetX, door.TargetY));
-                var exit = Assert.Single(inside.Warps);
+                var exit = Assert.Single(inside.Warps, w => w.TargetMap == "Sinnoh");
                 Assert.Equal(("Sinnoh", door.SourceX, door.SourceY + 1), (exit.TargetMap, exit.TargetX, exit.TargetY));
                 Assert.Equal(RegionDatabase.Sinnoh, RegionDatabase.RegionOfMap(room)!.Id);
             }

@@ -582,9 +582,12 @@ public class FieldMoveTests
     {
         var warp = Overworld.GetWarpAt(x, y);
         Assert.NotNull(warp);
-        Assert.Equal(ridersOnly, warp!.CyclistsOnly);
+        // The gates are rooms since plan 01 · M11, part d: anyone goes in, and it is the room's door onto the road that
+        // only a rider takes
+        Assert.False(warp!.CyclistsOnly);
+        Assert.Equal(ridersOnly, GateWalk.FarDoor(warp).CyclistsOnly);
         // Other gates are walked through by anyone
-        Assert.False(Overworld.GetWarpAt(447, 726)!.CyclistsOnly);
+        Assert.False(GateWalk.FarDoor(Overworld.GetWarpAt(447, 726)!).CyclistsOnly);
     }
 
     [Fact]

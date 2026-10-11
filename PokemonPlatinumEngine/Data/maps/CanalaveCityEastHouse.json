@@ -1,0 +1,107 @@
+{
+  "name": "CanalaveCityEastHouse",
+  "displayName": "Canalave City",
+  "bgmTrack": "sinnoh/canalave",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#.....#####",
+    "#.........#",
+    "#..##.....#",
+    "#..##.....#",
+    "#.........#",
+    "#.........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 4,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 6,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 3,
+      "y": 5,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Sinnoh",
+      "targetX": 53,
+      "targetY": 733,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "move_deleter",
+      "name": "Move Deleter",
+      "npcType": "Gentleman",
+      "x": 2,
+      "y": 6,
+      "facing": "Right",
+      "script": "Deleter"
+    }
+  ],
+  "wildEncounters": []
+}

@@ -797,6 +797,11 @@ public sealed partial class ScriptRunner
                 host.Open(ScriptScreen.Credits, Subject);
                 break;
 
+            // The move tutors and the Move Deleter (plan 01 · M11, part d)
+            case Op.Tutor:
+                Tutor(i);
+                break;
+
             default:
                 throw Wrong(i, $"the runner doesn't know how to carry out '{i.Op}'");
         }
@@ -1436,6 +1441,8 @@ public sealed partial class ScriptRunner
         // one), and the Pokémon caught in the Safari Game under way or just over (plan 01 · M11, part b)
         "TURNS" => turns,
         "SAFARI_CAUGHT" => host.Safari.Caught,
+        // Whether the player rides the Bicycle (plan 01 · M11, part d: the Cycling Road's gate keepers)
+        "CYCLING" => host.Cycling ? 1 : 0,
         _ => host.Story.Var(variable)
     };
 
@@ -1549,6 +1556,8 @@ public sealed partial class ScriptRunner
             "wearer" => lastWearer,
             // The Underground (plan 06 · R16a): what was last given, and whose base or flag it is
             "thing" => lastThing,
+            // The move a Pokémon gave up for the one a tutor taught it (plan 01 · M11, part d)
+            "forgotten" => lastForgotten,
             // Fossils, the Game Corner, the Villa and Pal Park (plan 06 · R16b): the coins in the case, a price, a number
             "coins" => host.Pastimes.Coins.Coins.ToString("N0"),
             "price" => lastPrice.ToString("N0"),

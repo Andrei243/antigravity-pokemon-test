@@ -1,0 +1,155 @@
+{
+  "name": "Route218GateToCanalaveCity",
+  "displayName": "Route 218",
+  "bgmTrack": "sinnoh/route203",
+  "interior": "House",
+  "trees": "Round",
+  "width": 12,
+  "height": 13,
+  "ground": [
+    "############",
+    "############",
+    "############",
+    "##__####__##",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "D__________D",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "############"
+  ],
+  "solid": [
+    "############",
+    "############",
+    "############",
+    "##..####..##",
+    "#...####...#",
+    "#..........#",
+    "#..........#",
+    "............",
+    "#..........#",
+    "#..........#",
+    "##..####..##",
+    "##..####..##",
+    "############"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 10,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 10,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 4,
+      "y": 4,
+      "width": 4,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 4,
+      "y": 10,
+      "width": 4,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 4,
+      "y": 11,
+      "width": 4,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 0,
+      "sourceY": 7,
+      "targetMap": "Sinnoh",
+      "targetX": 62,
+      "targetY": 754,
+      "targetFacing": "Left"
+    },
+    {
+      "sourceX": 11,
+      "sourceY": 7,
+      "targetMap": "Sinnoh",
+      "targetX": 71,
+      "targetY": 754,
+      "targetFacing": "Right"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 5,
+      "y": 4,
+      "text": "A map of Sinnoh. Canalave City lies west of here, and Route 218 runs east over the water toward Jubilife City."
+    },
+    {
+      "x": 6,
+      "y": 4,
+      "text": "A map of Sinnoh. Canalave City lies west of here, and Route 218 runs east over the water toward Jubilife City."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "policeman",
+      "name": "Policeman",
+      "npcType": "Gentleman",
+      "x": 2,
+      "y": 5,
+      "facing": "Down",
+      "dialog": [
+        "Phew... Standing watch all day is thirsty work, I can tell you."
+      ]
+    },
+    {
+      "id": "scientist_m",
+      "name": "Assistant",
+      "npcType": "Scientist",
+      "x": 5,
+      "y": 7,
+      "facing": "Right",
+      "script": "Assistant",
+      "hiddenBy": "FLAG_HIDE_ROUTE_218_GATE_TO_CANALAVE_CITY_SCIENTIST_M"
+    }
+  ],
+  "triggers": [
+    {
+      "x": 7,
+      "y": 5,
+      "width": 1,
+      "depth": 5,
+      "script": "Upgrade",
+      "variable": "VAR_ROUTE_218_GATE_TO_CANALAVE_CITY_STATE",
+      "value": 0
+    }
+  ],
+  "wildEncounters": []
+}

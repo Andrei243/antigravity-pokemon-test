@@ -1,0 +1,55 @@
+# The gate between Route 218 and Canalave City (plan 01 · M11, part d), on the original's plan. docs/scripts.md
+# describes the language; the lines are our own, on the original's beats (scripts_route_218_gate_to_canalave_city.s).
+#
+# The professor's assistant, who is {assistant}'s father, waits in the middle of the room for the player to come
+# through (the original's trigger, a column five tiles deep at x 7, while VAR_ROUTE_218_GATE_TO_CANALAVE_CITY_STATE
+# is 0). He upgrades the Pokédex so that it tells males from females and one form from another (the original's
+# TurnOnPokedexFormDetection: FLAG_ENABLED_POKEDEX_FORM_DETECTION here, set and read by nothing yet, plan 03), and
+# leaves by the east door (FLAG_HIDE_ROUTE_218_GATE_TO_CANALAVE_CITY_SCIENTIST_M).
+
+
+# Route218GateToCanalaveCity_CoordEvent_ScientistM
+script Upgrade
+  emote scientist_m exclaim
+  if var PLAYER_Y == 5 walk scientist_m right 1 up 2
+  if var PLAYER_Y == 6 walk scientist_m right 1 up 1
+  if var PLAYER_Y == 7 walk scientist_m right 1
+  if var PLAYER_Y == 8 walk scientist_m right 1 down 1
+  if var PLAYER_Y == 9 walk scientist_m right 1 down 2
+  face scientist_m right
+  face player left
+  call Words
+  if var PLAYER_Y == 5 walk scientist_m down 2 right 4
+  if var PLAYER_Y == 6 walk scientist_m down 1 right 4
+  if var PLAYER_Y == 7 walk scientist_m up 1 right 3 down 1 right 1
+  if var PLAYER_Y == 8 walk scientist_m up 1 right 4
+  if var PLAYER_Y == 9 walk scientist_m up 2 right 4
+  call Leaves
+  end
+
+
+# Spoken to where he stands, by someone who came in the other way
+script Assistant
+  call Words
+  call Leaves
+  end
+
+
+script Leaves
+  sound "stairs"
+  hide scientist_m
+  setflag FLAG_HIDE_ROUTE_218_GATE_TO_CANALAVE_CITY_SCIENTIST_M
+  setvar VAR_ROUTE_218_GATE_TO_CANALAVE_CITY_STATE 1
+  return
+
+
+script Words
+  speaker "Assistant"
+  say "{player}! It's been a long time!" "Ah, that look. You're wondering who on earth I am, aren't you?" "I work for Professor Rowan. And I'm {assistant}'s father, as it happens."
+  say "The professor asked me to upgrade your Pokédex. I had a hunch you'd come through this gate sooner or later, so here I've waited." "Might I borrow your Pokédex a moment, {player}?"
+  say "Now, where does the software go... In here, was it?" "Ka-chunk. Ka-chunk!"
+  sound "pc_on"
+  setflag FLAG_ENABLED_POKEDEX_FORM_DETECTION
+  say "There, all done! Your Pokédex is upgraded." "I'd better say what's new. It can now show you how the males and the females of a Pokémon differ."
+  say "Well, I'll let you get on with your work for the professor." "One more thing, if I may: keep an eye on Team Galactic. The professor is worried about what they're up to."
+  return

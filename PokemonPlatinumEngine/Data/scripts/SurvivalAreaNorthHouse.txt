@@ -1,0 +1,45 @@
+# The shard tutor's house in the Survival Area (plan 01 · M11, part d), on the original's plan. docs/scripts.md
+# describes the language; the lines are our own, on the original's beats (scripts_survival_area_north_house.s).
+#
+# The hiker teaches a Pokémon one of seventeen moves for Shards, most of them red (Models/MoveTutors.cs, the
+# original's move tutor table for TUTOR_LOCATION_SURVIVAL_AREA; `tutor`, docs/scripts.md), as the tutor of Route 212
+# does (Route212House.txt).
+
+
+# SurvivalAreaNorthHouse_Hiker
+script Tutor
+  ask "If you'll share your Shards with me, I can teach some moves. Would you like one taught?"
+  if no goto Bye
+  say "Which Pokémon should I teach?"
+  choosepokemon
+  tutor moves "survival_area"
+  if result == 3 goto Egg
+  if result == 2 goto Nothing
+  if result != 1 goto Bye
+  tutor afford
+  if result == 0 goto Poor
+  tutor learn
+  if result == 0 goto GaveUp
+  if result == 2 goto Hm
+  if result == 3 say "One, two, and... poof! {wearer} forgot {forgotten}. And..."
+  tutor pay
+  fanfare levelup
+  say "{wearer} learned {thing}!"
+label Bye
+  say "See you, then!"
+  end
+label Egg
+  say "Teach an Egg a move? That's out of my league!"
+  end
+label Nothing
+  say "There's no move of mine that this Pokémon can be taught."
+  end
+label Poor
+  say "You haven't enough Shards for that."
+  end
+label GaveUp
+  say "{wearer} did not learn {thing}."
+  goto Bye
+label Hm
+  say "{forgotten} isn't a move that can be given up like that. {wearer} did not learn {thing}."
+  goto Bye

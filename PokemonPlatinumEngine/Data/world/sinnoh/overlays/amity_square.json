@@ -6,12 +6,12 @@
   // (plan 01 · M11)
   "heldBack": [ "item_spooky_plate", "pokemon_breeder_f", "gift_man" ],
   "trees": "Round",
-  // Gate houses are passed through; their rooms come with plan 01 · M11
-  "through": [
-    { "warp": 0, "to": "hearthome_city", "toWarp": 0 },
-    { "warp": 1, "to": "hearthome_city", "toWarp": 1 },
-    { "warp": 2, "to": "hearthome_city", "toWarp": 3 },
-    { "warp": 3, "to": "hearthome_city", "toWarp": 4 }
+  // Hearthome City's two gates, on the original's plan (plan 01 · M11, part d): a receptionist in each
+  "doors": [
+    { "warp": 0, "map": "HearthomeCityWestGateToAmitySquare", "x": 5, "y": 3, "facing": "Down" },
+    { "warp": 1, "map": "HearthomeCityWestGateToAmitySquare", "x": 5, "y": 3, "facing": "Down" },
+    { "warp": 2, "map": "HearthomeCityEastGateToAmitySquare", "x": 5, "y": 3, "facing": "Down" },
+    { "warp": 3, "map": "HearthomeCityEastGateToAmitySquare", "x": 5, "y": 3, "facing": "Down" }
   ],
   "people": {
     // The Pokémon their trainers walk here (plan 10 · F1); the Happiny stays held back with its trainer

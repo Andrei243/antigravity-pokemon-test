@@ -1,0 +1,165 @@
+{
+  "name": "PalParkGallery",
+  "displayName": "Pal Park",
+  "bgmTrack": "sinnoh/route206",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 17,
+  "height": 16,
+  "ground": [
+    "#################",
+    "#################",
+    "#################",
+    "#################",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#VVVVVVVVVVVV___#",
+    "#VVVVVVVVVVVV___#",
+    "#VVVVVVVVVVVV___#",
+    "#VVVVVVVVVVVV___#",
+    "#VVVVVVVVVV_____#",
+    "#VVVVVVVVVV_____#",
+    "#VVVVVVVVVV_____#",
+    "#################"
+  ],
+  "solid": [
+    "#################",
+    "#################",
+    "#################",
+    "#################",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "##############..#",
+    "##############..#",
+    "##############..#",
+    "##############..#",
+    "##############..#",
+    "##############..#",
+    "#############...#",
+    "##############..#",
+    "#################"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 2,
+      "y": 3,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 7,
+      "y": 3,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 12,
+      "y": 3,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 1,
+      "y": 7,
+      "width": 13,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 13,
+      "y": 8,
+      "width": 1,
+      "depth": 4
+    },
+    {
+      "type": "Counter",
+      "x": 11,
+      "y": 12,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "SideStairsDownWest",
+      "x": 11,
+      "y": 13,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 11,
+      "y": 14,
+      "width": 3,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 13,
+      "sourceY": 13,
+      "targetMap": "PalParkLobby",
+      "targetX": 9,
+      "targetY": 13,
+      "targetFacing": "Left"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "lass_2",
+      "name": "Girl",
+      "npcType": "Lass",
+      "x": 9,
+      "y": 4,
+      "facing": "Up",
+      "dialog": [
+        "I made Dad bring me here to watch {player}'s Catching Show!",
+        "Is it starting yet? I can't wait much longer!"
+      ]
+    },
+    {
+      "id": "pokefan_m",
+      "name": "Man",
+      "npcType": "Gentleman",
+      "x": 8,
+      "y": 4,
+      "facing": "Up",
+      "dialog": [
+        "My girl here thinks the world of you, {player}.",
+        "Not a day goes by but she asks to be taken to a Catching Show."
+      ]
+    },
+    {
+      "id": "youngster",
+      "name": "Youngster",
+      "npcType": "Youngster",
+      "x": 3,
+      "y": 4,
+      "facing": "Up",
+      "dialog": [
+        "It isn't only the catching that people come up here for.",
+        "You get to see Pokémon from far away that you would never meet in Sinnoh. That's what sets my heart pounding!"
+      ]
+    },
+    {
+      "id": "lady",
+      "name": "Lady",
+      "npcType": "Lady",
+      "x": 14,
+      "y": 4,
+      "facing": "Up",
+      "dialog": [
+        "A Catching Show... A Trainer and a Pokémon, each trying to outwit the other, with nothing between them.",
+        "The ones from Kanto and Hoenn are what I come to see. Though it does pull at my heart, to think how far they are from home."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

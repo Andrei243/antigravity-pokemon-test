@@ -75,6 +75,8 @@ public enum Op
     Factory,
     // The Hall of Fame's end (plan 02 · S14): the game written to its save unasked, and the credits
     Save, Credits,
+    // The move tutors and the Move Deleter (plan 01 · M11, part d)
+    Tutor,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

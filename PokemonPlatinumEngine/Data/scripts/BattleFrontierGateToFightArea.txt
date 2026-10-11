@@ -1,0 +1,96 @@
+# The gate between the Fight Area and the Battle Frontier (plan 01 · M11, part d), on the original's plan.
+# docs/scripts.md describes the language; the lines are our own, on the original's beats
+# (scripts_battle_frontier_gate_to_fight_area.s).
+#
+# The first time through (VAR_BATTLE_FRONTIER_GATE_TO_FIGHT_AREA_STATE 0), the six attendants turn to the door, the
+# one at the near end of the west counter calls the player over, upgrades the Vs. Recorder (its Frontier records are
+# the Frontier's own boards here, plan 06 · R18a: docs/mechanics/rulings.md) and offers to explain. After that she
+# answers the same questions when spoken to, and each of the other five tells of one hall. A question's answer ends
+# the talk: StoryTests plays every way through every script, so a menu never leads back to itself.
+
+
+# BattleFrontierGateToFightArea_OnTransition and _OnFrame_FirstEntry
+script OnEnter
+  setflag FLAG_FIRST_ARRIVAL_BATTLE_PARK
+  if var VAR_BATTLE_FRONTIER_GATE_TO_FIGHT_AREA_STATE != 0 end
+  setvar VAR_BATTLE_FRONTIER_GATE_TO_FIGHT_AREA_STATE 1
+  face attendant_battle_castle down
+  face attendant_battle_factory down
+  face attendant_general down
+  face attendant_battle_arcade down
+  face attendant_battle_hall down
+  face attendant_battle_tower down
+  speaker "Attendant"
+  say "Welcome to the Battle Frontier! This way, please, if this is your first visit."
+  face attendant_battle_castle right
+  face attendant_battle_factory right
+  face attendant_general right
+  face attendant_battle_arcade left
+  face attendant_battle_hall left
+  face attendant_battle_tower left
+  if var PLAYER_Y == 20 walk player up 3
+  face player left
+  say "The Battle Frontier keeps a record of everything you do in its halls. May I see your Vs. Recorder for a moment?"
+  fanfare keyitem
+  text "{player}'s Vs. Recorder was upgraded! It can keep the Battle Frontier's records now."
+  speaker "Attendant"
+  call General
+  end
+
+
+# BattleFrontierGateToFightArea_AttendantGeneral
+script General
+
+  choose "What would you like to hear about?" "THE FRONTIER" "THE RULES" "BATTLE POINTS" "THE EXCHANGE" "THE RECORDS" "NOTHING"
+  if result == 0 say "The Battle Frontier is five halls for Pokémon battles and nothing else: the Battle Tower, the Battle Factory, the Battle Hall, the Battle Castle and the Battle Arcade." "Each hall has rules of its own, and each is run by a Trainer of fearsome strength. We call them the Frontier Brains."
+  if result == 1 say "In every hall you battle Trainer after Trainer without a rest at a Pokémon Center between them." "No items from your Bag, no Exp. Points and no prize money. Pokémon above level 50 fight as if they were level 50, and certain rare Pokémon may not enter at all." "No two of your Pokémon may be the same species or hold the same item."
+  if result == 2 say "Win through a round and the hall awards you Battle Points, BP for short." "The longer your winning streak, the more each round is worth. Beat a Frontier Brain and there is a handsome bonus."
+  if result == 3 say "Battle Points are traded for prizes at the Exchange Service Corner, the booths in the middle of the grounds." "Items your Pokémon can hold, moves to teach them, and more besides."
+  if result == 4 say "Every hall keeps a board of your best streaks beside its counter, and stamps a print in your records when you beat its Frontier Brain." "Have a look at one whenever you'd like to see how far you've come."
+  say "Please enjoy your visit to the Battle Frontier!"
+  end
+
+
+script Tower
+  ask "This desk answers for the Battle Tower. Shall I tell you about it?"
+  if no goto TowerDone
+  say "The Battle Tower is the tall one at the head of the grounds. You enter three Pokémon and take on seven Trainers in a row, room after room." "It is battling at its plainest: your team against theirs. Keep winning and you may meet the Tower Tycoon."
+label TowerDone
+  say "We hope you'll try the Battle Tower!"
+  end
+
+
+script Factory
+  ask "This desk answers for the Battle Factory. Shall I tell you about it?"
+  if no goto FactoryDone
+  say "At the Battle Factory you leave your own Pokémon at the door. You are lent three out of six, and battle with those." "After each win you may swap one of yours for one you have just beaten. It tests what you know of every Pokémon there is."
+label FactoryDone
+  say "We hope you'll try the Battle Factory!"
+  end
+
+
+script Hall
+  ask "This desk answers for the Battle Hall. Shall I tell you about it?"
+  if no goto HallDone
+  say "At the Battle Hall a single Pokémon of yours takes the stage, and you choose which type it faces next." "Each type you beat comes back stronger. Carry one Pokémon through them all, if you can!"
+label HallDone
+  say "We hope you'll try the Battle Hall!"
+  end
+
+
+script Castle
+  ask "This desk answers for the Battle Castle. Shall I tell you about it?"
+  if no goto CastleDone
+  say "At the Battle Castle your Pokémon are not healed between battles. You earn Castle Points by winning well, and spend them on healing, on items, or on a look at what your next opponent has." "It is a hall for those who plan ahead."
+label CastleDone
+  say "We hope you'll try the Battle Castle!"
+  end
+
+
+script Arcade
+  ask "This desk answers for the Battle Arcade. Shall I tell you about it?"
+  if no goto ArcadeDone
+  say "At the Battle Arcade a game board is spun before every battle, and where it stops decides what befalls you or your opponent: a status, a berry, a change of weather..." "Luck counts for as much as strength there. Some people can't keep away!"
+label ArcadeDone
+  say "We hope you'll try the Battle Arcade!"
+  end

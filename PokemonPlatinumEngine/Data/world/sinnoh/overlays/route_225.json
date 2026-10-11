@@ -5,14 +5,12 @@
   "bgmTrack": "sinnoh/route206",
   "trees": "Round",
   "architecture": "Resort",
-  // The gate house to the Fight Area is passed through; its room comes with plan 01 · M11, part d
-  "through": [
-    { "warp": 0, "to": "fight_area", "toWarp": 0 },
-    { "warp": 1, "to": "fight_area", "toWarp": 1 }
-  ],
   // The house halfway up, on the original's plan (plan 01 · M11, part c): a drink of Fresh Water for the climb
   "doors": [
-    { "warp": 2, "map": "Route225House", "x": 4, "y": 8, "facing": "Up" }
+    { "warp": 2, "map": "Route225House", "x": 4, "y": 8, "facing": "Up" },
+    // The gate house to the Fight Area, on the original's plan (plan 01 · M11, part d)
+    { "warp": 0, "map": "Route225GateToFightArea", "x": 5, "y": 3, "facing": "Down" },
+    { "warp": 1, "map": "Route225GateToFightArea", "x": 5, "y": 3, "facing": "Down" }
   ],
   "people": {
     "ace_trainer_rodolfo": {

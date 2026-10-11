@@ -1,0 +1,152 @@
+{
+  "name": "SurvivalAreaNorthHouse",
+  "displayName": "Survival Area",
+  "bgmTrack": "sinnoh/veilstone",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "##.....####",
+    "##........#",
+    "##........#",
+    "##........#",
+    "##........#",
+    "##........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Painting",
+      "x": 4,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 2,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 6,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 7,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Cushion",
+      "x": 2,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 1,
+      "y": 5,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Sinnoh",
+      "targetX": 656,
+      "targetY": 326,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 4,
+      "y": 2,
+      "text": "A list is pinned to the wall. MOVES TAUGHT FOR SHARDS: Mud-Slap, Rollout, Superpower, Iron Head, Aqua Tail, Gastro Acid, Endeavor, Outrage, Ancient Power, Signal Beam, Earth Power, Gunk Shot, Twister, Seed Bomb, Iron Defense, Bounce, Heat Wave."
+    },
+    {
+      "x": 1,
+      "y": 4,
+      "text": "A diary lies open. \"Red Shards speak of power. Blue Shards speak of cunning effects. Yellow Shards speak of troubles for the foe.\" \"Red Shards are the ones I like!\""
+    }
+  ],
+  "npcs": [
+    {
+      "id": "hiker",
+      "name": "Hiker",
+      "npcType": "Gentleman",
+      "x": 3,
+      "y": 4,
+      "facing": "Right",
+      "script": "Tutor"
+    },
+    {
+      "id": "psychic",
+      "name": "Psychic",
+      "npcType": "Youngster",
+      "x": 8,
+      "y": 5,
+      "facing": "Up",
+      "dialog": [
+        "I came to live where nobody could reach me without Rock Climb. I'd had my fill of people, you see.",
+        "But once I'd stopped seeing people, I found myself looking forward to visitors.",
+        "Where one lives can change a person. A Pokémon too, I shouldn't wonder."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

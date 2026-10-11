@@ -20,6 +20,8 @@ partial class Harness
     // Mansion's corridor and a door of it, the maids' challenge and a prodigy, Mr. Backlot and his statue.
     // Part c's towns (the north and the Battle Zone): celestic, snow, sunyshore, battlezone, syndicate; `workc` shows
     // part c's rooms at work (`in_z*`, Modes/InteriorsNorth.cs).
+    // Part d's towns: gates, tutors, store, centers, terminal; `workd` shows part d's rooms at work (`in_w*`,
+    // Modes/InteriorsLast.cs).
     public void InteriorsMode()
     {
         game.State = GameState.Overworld;
@@ -71,6 +73,33 @@ partial class Harness
                 "Route228SouthHouse", "ResortAreaHouse"
             }),
             ("syndicate", new[] { "ResortAreaRibbonSyndicate1F", "ResortAreaRibbonSyndicate2F", "ResortAreaRibbonSyndicateElevator" }),
+            // Part d: the gate houses, the tutors' and the move men's houses, the Department Store, the Pokémon
+            // Centers' other floors and the Global Terminal
+            ("gates", new[]
+            {
+                "Route218GateToJubilifeCity", "Route218GateToCanalaveCity", "Route208GateToHearthomeCity", "Route209GateToHearthomeCity",
+                "Route215GateToVeilstoneCity", "Route213GateToPastoriaCity", "Route222GateToSunyshoreCity", "Route228GateToRoute226",
+                "Route212GateToHearthomeCity", "Route225GateToFightArea", "Route214GateToVeilstoneCity",
+                "Route206CyclingRoadNorthGate", "Route206CyclingRoadSouthGate",
+                "HearthomeCityWestGateToAmitySquare", "HearthomeCityEastGateToAmitySquare", "BattleFrontierGateToFightArea",
+            }),
+            ("tutors", new[]
+            {
+                "Route210GrandmaWilmaHouse", "Route212House", "PastoriaCityEastHouse", "CanalaveCityEastHouse",
+                "SnowpointCityEastHouse", "SurvivalAreaNorthHouse", "Route228NorthHouse", "EternaCondominiums1F",
+            }),
+            ("store", new[]
+            {
+                "VeilstoneStoreB1F", "VeilstoneStore1F", "VeilstoneStore2F", "VeilstoneStore3F", "VeilstoneStore4F", "VeilstoneStore5F",
+                "VeilstoneStoreElevator",
+            }),
+            ("centers", new[]
+            {
+                "JubilifePokemonCenter", "JubilifePokemonCenter2F", "JubilifePokemonCenterB1F",
+                "PokemonLeagueNorthPokemonCenter", "PokemonLeagueNorthPokemonCenter2F", "PokemonLeagueNorthPokemonCenterB1F",
+            }),
+            ("terminal", new[] { "GlobalTerminal1F", "GlobalTerminal2F", "GlobalTerminal3F" }),
+            ("gallery", new[] { "PalParkLobby", "PalParkGallery" }),
         };
         var asked = args.Length > 2 ? args[2..].ToHashSet(StringComparer.OrdinalIgnoreCase) : null;
 
@@ -145,6 +174,8 @@ partial class Harness
             if (town == "syndicate" && !joined) game.Story.Unset("FLAG_JOINED_RIBBON_SYNDICATE");
         }
         bool workA = asked == null || asked.Contains("work"), workB = asked == null || asked.Contains("workb"), workC = asked == null || asked.Contains("workc");
+        bool workD = asked == null || asked.Contains("workd");
+        if (workD) InteriorsAtWorkD();
         if (workC) InteriorsAtWorkC();
         if (workB) InteriorsAtWorkB();
         if (!workA) return;

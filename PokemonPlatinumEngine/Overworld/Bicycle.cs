@@ -18,6 +18,14 @@ public static class BicycleRules
     /// </summary>
     public const string OnCyclingRoadFlag = "FLAG_ON_CYCLING_ROAD";
 
+    /// <summary>
+    /// The original's flag for the stretch of a gate house between its keepers and the Cycling Road
+    /// (<c>FLAG_FORCE_BIKING_IN_GATE</c>; plan 01 · M11, part d): the gate's own scripts set it for a rider waved
+    /// through or come in off the road and clear it on the way back, and like the road's it goes with the next warp.
+    /// While it is set the Bicycle can't be got off.
+    /// </summary>
+    public const string ForcedInGateFlag = "FLAG_FORCE_BIKING_IN_GATE";
+
     public static BicycleCheck Check(Map map, int x, int y, TravelMode mode, bool onCyclingRoad)
     {
         var underfoot = map.BehaviourAt(x, y);

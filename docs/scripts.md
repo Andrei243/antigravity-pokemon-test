@@ -69,8 +69,10 @@ that exists, every script to something that starts it, and plays each to its end
   of `ResortAreaVilla.txt` (`LookTable`, which is the catalogue's order form, `LookPiano`, `LookPokemonBustSilver`:
   the piece's flag in words, `GameEngine.VillaLookScript`), and the sixth Pokémon caught in a Catching Show runs
   `CaughtAll` of `pal_park.txt`.
-- **A gate onto the Cycling Road on foot.** A warp marked for riders only (an overlay's passage with
-  `"bicycle": true`) runs `CyclistsOnly` instead of being taken.
+- **A gate onto the Cycling Road on foot.** A warp marked for riders only (`"cyclistsOnly": true` on a warp of a
+  map file: the doors onto the road of the Cycling Road's two gate houses, plan 01 · M11, part d) runs
+  `CyclistsOnly` instead of being taken. Inside the gates a row of the lane turns a walker back before the door is
+  ever reached (the rooms' own triggers, which ask the built-in variable `CYCLING`).
 - **Waking up after a lost battle** (plan 06 · R10). The player comes round in the Pokémon Center last gone into,
   in front of the nurse, who runs `BlackOutCenter`, or at home before any, beside Mom, who runs `BlackOutHome`.
   Both heal the team.
@@ -155,7 +157,7 @@ What an `if` can ask:
 | Question | |
 |---|---|
 | `flag FLAG_X` | The flag is set. |
-| `var VAR_X == 2`, `var VAR_X >= VAR_Y` | A variable against a number or another variable (`==`, `!=`, `<`, `<=`, `>`, `>=`). The game's own may be read too: `RESULT`, `PLAYER_X`, `PLAYER_Y`, `MONEY`, `PARTY_COUNT`, `BADGE_COUNT`, `GREETINGS` (the people spoken to, `greetings clear` below), `SEEN` (the species of the Sinnoh Pokédex seen), `LEAD_FRIENDSHIP` (the friendship of the first Pokémon of the team, 0 with none: the fan club's woman, plan 06 · R14c), `TURNS` (the turns of every battle this script has fought, added up as the original counts them: a battle's last turn is not one, so a battle won at once is none; the original's `VAR_TOTAL_TURNS_LAST_BATTLE`, for the Pokémon Mansion's maids) and `SAFARI_CAUGHT` (the Pokémon caught in the Safari Game under way, or in the last one until the next begins: `GetCurrentSafariGameCaughtNum`; both plan 01 · M11, part b). |
+| `var VAR_X == 2`, `var VAR_X >= VAR_Y` | A variable against a number or another variable (`==`, `!=`, `<`, `<=`, `>`, `>=`). The game's own may be read too: `RESULT`, `PLAYER_X`, `PLAYER_Y`, `MONEY`, `PARTY_COUNT`, `BADGE_COUNT`, `GREETINGS` (the people spoken to, `greetings clear` below), `SEEN` (the species of the Sinnoh Pokédex seen), `LEAD_FRIENDSHIP` (the friendship of the first Pokémon of the team, 0 with none: the fan club's woman, plan 06 · R14c), `TURNS` (the turns of every battle this script has fought, added up as the original counts them: a battle's last turn is not one, so a battle won at once is none; the original's `VAR_TOTAL_TURNS_LAST_BATTLE`, for the Pokémon Mansion's maids) and `SAFARI_CAUGHT` (the Pokémon caught in the Safari Game under way, or in the last one until the next begins: `GetCurrentSafariGameCaughtNum`; both plan 01 · M11, part b) and `CYCLING` (1 while the player rides the Bicycle, else 0: the original's `CheckPlayerOnBike`, which the Cycling Road's gate keepers ask; plan 01 · M11, part d). |
 | `yes`, `no` | The answer to the last `ask`. |
 | `result == 1` | What the last question, battle, handing-over or taking came to. |
 | `won`, `lost` | The last battle. |
@@ -567,6 +569,27 @@ Plan 02 · S14. What the Hall of Fame's script does once the team is recorded (`
 | `save` | Writes the game to its save where the player stands, with no question and no panel (the original saves so before its credits). `RESULT` is 1 when it was written, 0 when it couldn't be. The words and the sound are the script's. |
 | `credits` | The credits (`UI/CreditsScreen.cs`, `Data/credits.json`): the script waits until they have rolled and the last card has been dismissed. |
 
+### The move tutors and the Move Deleter
+
+Plan 01 · M11, part d. The three who teach moves for Shards (Route 212's, Snowpoint City's and the Survival Area's),
+Grandma Wilma on Route 210, the old man of Route 228 and Canalave's Move Deleter do what the original's do, by
+`Models/MoveTutors.cs` (the original's table of tutor moves and their prices, the species' own lists of what they
+can be taught, and the two scripts that ask a type or a species and full friendship). One command, `tutor`, each word
+on the original's script command; all are for the Pokémon `RESULT` names after `choosepokemon`, `{wearer}` names it,
+`{thing}` the move and `{forgotten}` the move given up for it.
+
+| Command | What it does |
+|---|---|
+| `tutor moves "route_212"` | Asks which of the place's moves the Pokémon is to be taught, of those on its species' list that it doesn't know, each with its price in Shards (`ShowMoveTutorMoveSelectionMenu`). `RESULT` 1 one was picked, 0 none, 2 the tutor has nothing for it, 3 an Egg, 4 nobody chosen. The places are `route_212`, `snowpoint_city` and `survival_area`; any other is told as the file is read. |
+| `tutor afford`, `tutor pay` | `RESULT` 1 when the bag holds the Shards the move picked costs (`CheckCanAffordMove`); `pay` takes them, all or none (`PayShardCost`). |
+| `tutor special dracometeor`, `tutor special ultimate` | The checks of the two tutors of one move each: a Dragon type for Draco Meteor; one of the twelve starters of Kanto to Sinnoh fully grown for Blast Burn, Hydro Cannon or Frenzy Plant, whichever is its own. `RESULT` 0 it may learn, 1 nobody chosen, 2 an Egg, 3 it can't, 4 it knows the move, 5 its friendship is under 255. |
+| `tutor dragons` | `RESULT` 1 when anyone of the team is a Dragon type (Grandma Wilma's first look). |
+| `tutor learn` | Teaches the move settled on by `moves` or `special` (`MoveTeaching.Learn`): at once to a Pokémon with room (`RESULT` 1); one that knows four is asked which is to go (`RESULT` 3 learned in its place, 0 given up, 2 an HM's move was picked, which stays, and nothing is learned). |
+| `tutor forget` | The Move Deleter's question: which of the Pokémon's moves is to be forgotten. `RESULT` 1 one was picked (`{thing}`), 0 none, 2 it knows only one, 3 an Egg, 4 nobody chosen. |
+| `tutor delete` | Takes the move picked away for good, an HM's too (`ForgetMove`). `RESULT` 1, or 0 with none picked. |
+
+Pastoria's Move Relearner and Eterna's Name Rater say what they do and change nothing: their rules are plan 12 ·
+Q19's (`Models/Relearning.cs`) and plan 13 · V4's naming prompt.
 ## Who is on the map
 
 A person can carry a flag that takes them off the map while it is set (`hiddenBy`) or one they wait for

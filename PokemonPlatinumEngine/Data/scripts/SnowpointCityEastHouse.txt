@@ -1,0 +1,61 @@
+# The shard tutor's house in Snowpoint City (plan 01 · M11, part d), on the original's plan. docs/scripts.md describes
+# the language; the lines are our own, on the original's beats (scripts_snowpoint_city_east_house.s).
+#
+# The hiker teaches a Pokémon one of eight moves for Shards, most of them yellow and green (Models/MoveTutors.cs, the
+# original's move tutor table for TUTOR_LOCATION_SNOWPOINT_CITY; `tutor`, docs/scripts.md), as the tutor of Route 212
+# does (Route212House.txt).
+#
+# The old man teaches a "trendy saying" a day in the original: a word unlocked for the phrases players send one
+# another (TryBufferAndUnlockRandomToughWord, FLAG_DAILY_HEARD_TRENDY_SAYING_SNOWPOINT_CITY_EAST_HOUSE). This game has
+# no such phrases (decision 06 · 7 leaves the wireless out), so he offers and the saying escapes him: a stand-in
+# (docs/mechanics/rulings.md).
+
+
+# SnowpointCityEastHouse_Hiker
+script Tutor
+  ask "Share your coloured Shards with me, and I'll teach your Pokémon a move. Want one taught?"
+  if no goto Bye
+  say "Which Pokémon will it be?"
+  choosepokemon
+  tutor moves "snowpoint_city"
+  if result == 3 goto Egg
+  if result == 2 goto Nothing
+  if result != 1 goto Bye
+  tutor afford
+  if result == 0 goto Poor
+  tutor learn
+  if result == 0 goto GaveUp
+  if result == 2 goto Hm
+  if result == 3 say "One, two, and... poof! {wearer} forgot {forgotten}. And..."
+  tutor pay
+  fanfare levelup
+  say "{wearer} learned {thing}!"
+label Bye
+  say "Be seeing you, then!"
+  end
+label Egg
+  say "Teaching a move to an Egg is beyond me!"
+  end
+label Nothing
+  say "There's no move of mine that this Pokémon can be taught."
+  end
+label Poor
+  say "You haven't enough Shards."
+  end
+label GaveUp
+  say "{wearer} did not learn {thing}."
+  goto Bye
+label Hm
+  say "{forgotten} isn't a move that can be given up like that. {wearer} did not learn {thing}."
+  goto Bye
+
+
+# SnowpointCityEastHouse_ExpertM
+script Sayings
+  ask "Hello, hello. Would you care to hear a trendy saying?"
+  if no goto Behind
+  say "Very well... The trendy thing to say, for someone like you, would be..." "...Oh, bother. It was on the tip of my tongue a moment ago." "Sayings go out of fashion faster than I can remember them these days!"
+  end
+label Behind
+  say "Oh, come now. With an attitude like that, you'll fall behind the times!"
+  end

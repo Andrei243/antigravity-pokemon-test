@@ -387,4 +387,10 @@ public interface IScriptHost
     /// <c>ClearGame</c> saves so before the credits). False when it couldn't be written.
     /// </summary>
     bool Save();
+
+    /// <summary>
+    /// Whether the player is riding the Bicycle (the built-in variable <c>CYCLING</c>; the original's
+    /// <c>CheckPlayerOnBike</c>, which the Cycling Road's gate keepers ask: plan 01 · M11, part d).
+    /// </summary>
+    bool Cycling { get; }
 }

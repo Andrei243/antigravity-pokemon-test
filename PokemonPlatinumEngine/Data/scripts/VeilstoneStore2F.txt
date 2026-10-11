@@ -1,0 +1,46 @@
+# Veilstone's Department Store, second floor (plan 01 · M11, part d), on the original's plan. docs/scripts.md
+# describes the language; the lines are our own, on the original's beats (scripts_veilstone_store_2f.s).
+#
+# Two clerks sell over the west counter (marts.json's veilstone_2f_up and veilstone_2f_mid: the battle items and the
+# vitamins), and the third gives away the Pokétch's Counter app. The attendant recommends something: to a regular
+# customer one of four at random in the original (CheckIsDepartmentStoreRegular, a count of purchases this game
+# doesn't keep), to anyone else the first of them, which is what she does here (docs/mechanics/rulings.md).
+
+
+script OnEnter
+  setvar VAR_VEILSTONE_STORE_LIFT_FLOOR 3
+  call VeilstoneStoreElevator.Stands
+  end
+
+
+# VeilstoneStore2F_Attendant
+script Attendant
+  choose "Hello. May I help you with anything?" "WHAT'S GOOD?" "NOTHING, THANKS"
+  if result == 0 goto Protein
+  say "Please enjoy your visit."
+  end
+label Protein
+  say "Might I interest you in a Protein? It is a drink that raises Attack."
+  end
+
+
+# VeilstoneStore2F_PoketchVendor
+script Poketch
+  if poketchapp Counter goto Given
+  ask "We're giving away a Pokétch app, quite free, as a promotion. The Counter app, over the counter! Would you like it?"
+  if no goto Declined
+  if not poketch goto NoWatch
+  say "There you are. Go forth and count!"
+  fanfare keyitem
+  poketchapp Counter
+  text "{player} added the Counter app to the Pokétch!"
+  end
+label Given
+  say "I do hope that Counter app is proving useful."
+  end
+label Declined
+  say "Not interested? I'll be here if you change your mind."
+  end
+label NoWatch
+  say "Oh! But you have no Pokétch to put it on. Come back when you have one!"
+  end

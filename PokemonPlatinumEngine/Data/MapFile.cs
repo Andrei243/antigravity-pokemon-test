@@ -45,6 +45,12 @@ public sealed class MapFile
     /// <summary>How often its wild Pokémon are met, the original's rate; left out for the default.</summary>
     public int? EncounterRate { get; set; }
 
+    /// <summary>
+    /// A room the Bicycle is ridden through (plan 01 · M11, part d: the Cycling Road's two gates, the only rooms whose
+    /// header allows it in the original); left out for a room like any other, where the rider gets off at the door.
+    /// </summary>
+    public bool? Bike { get; set; }
+
     public int Width { get; set; }
     public int Height { get; set; }
 
@@ -243,6 +249,7 @@ public sealed class MapFile
             Weather = Weather ?? FieldWeather.Clear
         };
         if (EncounterRate is { } rate) map.EncounterRate = rate;
+        map.BikeAllowed = Bike == true;
 
         CheckRows(Ground, "ground");
         CheckRows(Solid, "solid");
@@ -292,7 +299,7 @@ public sealed class MapFile
         foreach (var w in Warps)
             // (a room's way may be there for part of the story only, "until" and "from": the Ribbon Syndicate's lift, whose
             // door leads out onto the floor it stands at; plan 01 · M11, part c)
-            map.Warps.Add(new Warp { SourceX = w.SourceX, SourceY = w.SourceY, TargetMap = w.TargetMap, TargetX = w.TargetX, TargetY = w.TargetY, TargetFacing = w.TargetFacing, Until = w.Until, From = w.From });
+            map.Warps.Add(new Warp { SourceX = w.SourceX, SourceY = w.SourceY, TargetMap = w.TargetMap, TargetX = w.TargetX, TargetY = w.TargetY, TargetFacing = w.TargetFacing, Until = w.Until, From = w.From, CyclistsOnly = w.CyclistsOnly });
 
         foreach (var s in Signboards)
         {
@@ -505,6 +512,7 @@ public sealed class MapFile
             Puzzle = map.Puzzle?.Name,
             Weather = map.Weather == FieldWeather.Clear ? null : map.Weather,
             EncounterRate = map.EncounterRate == new Map(1, 1).EncounterRate ? null : map.EncounterRate,
+            Bike = map.BikeAllowed ? true : null,
             Width = map.Width,
             Height = map.Height
         };

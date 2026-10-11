@@ -17,15 +17,16 @@
     { "warp": 3, "map": "JubilifeTV1F", "x": 6, "y": 7, "facing": "Up" },
     // Plan 01 · M11, part a: rooms on the original's plans
     { "warp": 0, "map": "JubilifeCityCondominiums1F", "x": 11, "y": 12, "facing": "Up" },
-    { "warp": 4, "map": "JubilifeCitySouthHouse1F", "x": 11, "y": 12, "facing": "Up" }
+    { "warp": 4, "map": "JubilifeCitySouthHouse1F", "x": 11, "y": 12, "facing": "Up" },
+    // The gate house to Route 218, on the original's plan (plan 01 · M11, part d): its fisherman gives the Old Rod
+    { "warp": 12, "map": "Route218GateToJubilifeCity", "x": 10, "y": 7, "facing": "Left" },
+    { "warp": 13, "map": "Route218GateToJubilifeCity", "x": 10, "y": 7, "facing": "Left" },
+    // The Global Terminal, three floors on the original's plans (plan 01 · M11, part d): its wireless functions are
+    // left out, and its people say so
+    { "warp": 1, "map": "GlobalTerminal1F", "x": 13, "y": 18, "facing": "Up" }
   ],
-  // The Global Terminal's rooms are plan 01 · M11, part d's; the other two doors are of houses the original never used
-  "locked": [ 1, 10, 11 ],
-  // The gate house to Route 218 is passed through; its rooms come with plan 01 · M11
-  "through": [
-    { "warp": 12, "to": "route_218", "toWarp": 2 },
-    { "warp": 13, "to": "route_218", "toWarp": 3 }
-  ],
+  // The other two doors are of houses the original never used
+  "locked": [ 10, 11 ],
   // The original's coordinate triggers by number: the first arrival, Team Galactic at the north gate, Looker on the
   // road to Route 203 and the Pokétch campaign (the GTS greeter and the Pal Pad wait for their rooms and items)
   "triggers": [

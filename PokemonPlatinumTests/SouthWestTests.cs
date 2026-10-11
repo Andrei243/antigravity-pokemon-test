@@ -368,11 +368,16 @@ public class SouthWestTests
     public void AWayInThatLeadsNowhereIsClosed()
     {
         var map = Overworld;
-        // The Global Terminal's porch is an open tile in the world's data
-        foreach (var (x, y) in new[] { (149, 778) })
+        // The Global Terminal's porch is an open tile in the world's data: closed while it led nowhere, and the way in
+        // since plan 01 · M11, part d built the terminal's rooms
+        Assert.Equal("GlobalTerminal1F", map.GetWarpAt(149, 778)!.TargetMap);
+        Assert.False(map.IsSolid(149, 778));
+        // What still leads nowhere is still closed: the doors of the two houses of Jubilife City the original never used
+        foreach (int unused in new[] { 10, 11 })
         {
-            Assert.Null(map.GetWarpAt(x, y));
-            Assert.True(map.IsSolid(x, y), $"one can walk into the way in at ({x},{y}), which leads nowhere");
+            var way = World.LoadAll().Single(w => w.Index.Region == "Sinnoh").Area("jubilife_city")!.Warps[unused];
+            Assert.Null(map.GetWarpAt(way.X, way.Z));
+            Assert.True(map.IsSolid(way.X, way.Z), $"one can walk into the way in at ({way.X},{way.Z}), which leads nowhere");
         }
         // The Trainers' School is entered the same way, and is open
         Assert.Equal("TrainersSchool", map.GetWarpAt(168, 776)!.TargetMap);
@@ -458,7 +463,7 @@ public class SouthWestTests
                 Assert.Equal(room, inside.Name);
                 Assert.True(inside.IsWalkable(door.TargetX, door.TargetY));
                 // Leaving puts one down outside the same door
-                var exit = Assert.Single(inside.Warps);
+                var exit = Assert.Single(inside.Warps, w => w.TargetMap == "Sinnoh");
                 Assert.Equal(("Sinnoh", door.SourceX, door.SourceY + 1), (exit.TargetMap, exit.TargetX, exit.TargetY));
                 Assert.True(map.IsWalkable(exit.TargetX, exit.TargetY));
                 Assert.Equal(RegionDatabase.Sinnoh, RegionDatabase.RegionOfMap(room)!.Id);

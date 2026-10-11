@@ -538,18 +538,18 @@ public class VeilstoneAndPastoriaTests
     {
         var game = NewGame();
         game.Arrive("Sinnoh", 458, 725);
-        foreach (int x in new[] { 458, 459 })
-        {
-            Assert.Equal("Sinnoh", game.Map.GetWarpAt(x, 729)!.TargetMap);
-            Assert.NotNull(game.Map.GetNpcAt(x, 729));
-        }
-        Assert.Contains("television", game.Talk("route_212_cameraman", "hearthome_city").Transcript[0].Text);
+        // The gate is a room since plan 01 · M11, part d, and the crew stand inside it, before its far door
+        foreach (int x in new[] { 458, 459 }) Assert.Equal("Route212GateToHearthomeCity", game.Map.GetWarpAt(x, 729)!.TargetMap);
+        game.Arrive("Route212GateToHearthomeCity", 5, 3);
+        Assert.NotNull(game.Map.GetNpcAt(4, 11));
+        Assert.NotNull(game.Map.GetNpcAt(5, 11));
+        Assert.Contains("television", game.Talk("cameraman", "Route212GateToHearthomeCity").Transcript[0].Text);
         // Coming to Pastoria City from the other side lifts it
         game.Arrive("Sinnoh", 600, 820);
         Assert.True(game.Story.Has("FLAG_HIDE_ROUTE_212_BLOCKADE"));
-        game.Arrive("Sinnoh", 458, 725);
-        Assert.Null(game.Map.GetNpcAt(458, 729));
-        Assert.Null(game.Map.GetNpcAt(459, 729));
+        game.Arrive("Route212GateToHearthomeCity", 5, 3);
+        Assert.Null(game.Map.GetNpcAt(4, 11));
+        Assert.Null(game.Map.GetNpcAt(5, 11));
     }
 
     // ------------------------------------------------------------------ the way through

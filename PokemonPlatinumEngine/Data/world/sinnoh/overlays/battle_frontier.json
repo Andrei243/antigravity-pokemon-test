@@ -4,12 +4,6 @@
   "bgmTrack": "sinnoh/veilstone",
   "trees": "Round",
   "architecture": "Resort",
-  // The gate house to the Fight Area is passed through; its rooms, with the attendants who explain each hall, come
-  // with plan 01 · M11
-  "through": [
-    { "warp": 10, "to": "fight_area", "toWarp": 2 },
-    { "warp": 11, "to": "fight_area", "toWarp": 3 }
-  ],
   // The Battle Tower's two doors lead into its lobby, built to the original's plan (plan 06 · R18a)
   "doors": [
     { "warp": 0, "map": "BattleTower", "x": 15, "y": 19, "facing": "Up" },
@@ -18,7 +12,11 @@
     // the one under its porch that whoever comes out of the lobby stands before
     { "warp": 2, "map": "BattleFactory", "x": 1, "y": 7, "facing": "Right" },
     { "warp": 3, "map": "BattleFactory", "x": 1, "y": 7, "facing": "Right" },
-    { "warp": 12, "map": "BattleFactory", "x": 1, "y": 7, "facing": "Right" }
+    { "warp": 12, "map": "BattleFactory", "x": 1, "y": 7, "facing": "Right" },
+    // The gate house to the Fight Area, on the original's plan (plan 01 · M11, part d): six attendants at its
+    // counters, who explain the Frontier and each hall
+    { "warp": 10, "map": "BattleFrontierGateToFightArea", "x": 7, "y": 3, "facing": "Down" },
+    { "warp": 11, "map": "BattleFrontierGateToFightArea", "x": 7, "y": 3, "facing": "Down" }
   ],
   // The trigger under the Battle Factory's porch walks whoever steps on it in (the original's script 37); the other
   // three halls' wait for their sittings
