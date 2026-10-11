@@ -148,7 +148,7 @@
       "y": 9,
       "facing": "Right",
       "script": "AppFan",
-      "shownBy": "FLAG_STORED_POKEMON_AT_DAY_CARE"
+      "hiddenBy": "FLAG_HIDE_DAY_CARE_GYM_GUIDE"
     }
   ],
   "wildEncounters": []

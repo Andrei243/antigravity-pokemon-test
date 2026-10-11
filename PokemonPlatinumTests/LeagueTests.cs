@@ -576,7 +576,8 @@ public class LeagueTests
         game.Step("Lift");
 
         // The Champion's room is one scene: Cynthia's battle, the platform, and on through the hallway, where she and
-        // the professor come up, into the Hall of Fame; from there, for now, home (plan 02 · S14 writes the scene)
+        // the professor come up, into the Hall of Fame; and from its scene, home (plan 02 · S14:
+        // VictoryRoadAndTheHallOfFameTests holds the scene itself)
         int before = game.Played.Count;
         game.Through(Champion);
         var scenes = game.Played.Skip(before).Take(3).ToList();

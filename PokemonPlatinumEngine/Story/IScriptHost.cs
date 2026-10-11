@@ -12,7 +12,7 @@ namespace PokemonPlatinumEngine.Story;
 public enum BattleOutcome { None, Won, Lost, Fled, Caught }
 
 /// <summary>The screens a script can open and wait for.</summary>
-public enum ScriptScreen { Starter, Shop, Pc, Travel, ChoosePokemon, HallOfFame, Wardrobe, ChooseItem, PoffinCooking, BallCapsules, SealShop, ContestPhoto }
+public enum ScriptScreen { Starter, Shop, Pc, Travel, ChoosePokemon, HallOfFame, Wardrobe, ChooseItem, PoffinCooking, BallCapsules, SealShop, ContestPhoto, Ceremony, Credits }
 
 /// <summary>
 /// What a script needs of the game it runs in. The <see cref="ScriptRunner"/> decides what happens and in what
@@ -328,4 +328,18 @@ public interface IScriptHost
     /// less than <paramref name="sides"/>. The Berry Master's berry of the day, a ghost of the Old Chateau.
     /// </summary>
     int Random(int sides);
+
+    // ------------------------------------------------------------------ the Hall of Fame's end (plan 02 · S14)
+
+    /// <summary>
+    /// Whether the National Pokédex is the player's (<c>if nationaldex</c>; the original's <c>GetNationalDexEnabled</c>):
+    /// the Hall of Fame's script and the scenes after it ask.
+    /// </summary>
+    bool NationalDex { get; }
+
+    /// <summary>
+    /// Writes the game to its save where the player stands, without asking (<c>save</c>; the original's
+    /// <c>ClearGame</c> saves so before the credits). False when it couldn't be written.
+    /// </summary>
+    bool Save();
 }

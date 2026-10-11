@@ -322,6 +322,33 @@ internal static class LeagueArt
         Pix.Disc(c, w / 2 - 3, h / 2 - 3, 7, Rgb(96, 170, 236));
     }
 
+    /// <summary>
+    /// A Poké Ball standing in one of the machine's sockets (plan 02 · S14; style guide, "The League's rooms"): the
+    /// field's own ball, ten texels across in the middle of a card of twelve, outlined.
+    /// </summary>
+    public static void PaintMachineBall(PixelCanvas c)
+    {
+        Color red = Rgb(218, 62, 58), redLight = Rgb(244, 120, 104), redDark = Rgb(170, 42, 56);
+        Color white = Rgb(240, 240, 236), whiteShade = Rgb(198, 200, 214), band = Rgb(58, 52, 72);
+        float middle = c.Width / 2f;
+        const float radius = 5f;
+        for (int y = 0; y < c.Height; y++)
+            for (int x = 0; x < c.Width; x++)
+            {
+                float u = (x + 0.5f - middle) / radius, v = (y + 0.5f - middle) / radius;
+                if (u * u + v * v > 1f) continue;
+                if (y == c.Height / 2 - 1 || y == c.Height / 2) c.Set(x, y, band);
+                else if (v < 0f) c.Set(x, y, u + v * 1.1f < -0.72f ? redLight : u > 0.55f ? redDark : red);
+                else c.Set(x, y, u + v > 0.62f ? whiteShade : white);
+            }
+        // The button: two texels of white on the band
+        c.Set(c.Width / 2 - 1, c.Height / 2 - 1, white);
+        c.Set(c.Width / 2, c.Height / 2 - 1, white);
+        c.Set(c.Width / 2 - 1, c.Height / 2, white);
+        c.Set(c.Width / 2, c.Height / 2, white);
+        Pix.Outline(c);
+    }
+
     /// <summary>The front of the machine's console: panels of steel under a line of gold, a row of small lights.</summary>
     public static void PaintConsoleFront(PixelCanvas c)
     {

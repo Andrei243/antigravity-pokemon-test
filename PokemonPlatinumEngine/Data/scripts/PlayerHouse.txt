@@ -5,11 +5,44 @@
 # Pokémon; and, once the Pokédex is the player's, the Journal and the rival's mother with a parcel for her son.
 # VAR_PLAYER_HOUSE_STATE counts the visits as the original's does: 1 told, 2 warned, 3 back from the rival's
 # battle, 4 the shoes given, 6 the parcel given.
+#
+# After the Hall of Fame (plan 02 · S14; the original's OnFrame_Postgame): the first time the new Champion comes
+# downstairs Mom has news. The rival has been round looking for them, shouting about a ship at Snowpoint City; and
+# until the National Pokédex is the player's she asks how the professor's Pokédex is coming along.
+# VAR_PLAYER_HOUSE_POSTGAME_STATE is 1 from the Hall of Fame's first victory and 2 once she has said it.
 
 
 script OnEnter
   if var VAR_PLAYER_HOUSE_STATE == 0 goto RivalLeft
+  if var VAR_PLAYER_HOUSE_POSTGAME_STATE == 1 goto Postgame
   if var VAR_PLAYER_HOUSE_STATE == 3 goto RunningShoes
+  end
+label Postgame
+  # TwinleafTownPlayerHouse1F_OnFrame_Postgame, with the original's two flags (it asks them although, the state
+  # having moved on to 2, the scene never comes a second time)
+  setvar VAR_PLAYER_HOUSE_POSTGAME_STATE 2
+  if flag FLAG_TALKED_TO_MOM_ABOUT_RIVAL_SNOWPOINT_CITY end
+  if not flag FLAG_TALKED_TO_MOM_ABOUT_NATIONAL_DEX_PROGRESS goto MomHasNews
+  if not nationaldex end
+label MomHasNews
+  wait 0.15
+  face player mom
+  face mom player
+  emote mom exclaim
+  speaker "Mom"
+  say "{player}! There you are, sleepyhead. {rival} was round here a little while ago, looking for you."
+  say "I couldn't make out what it was all about. He kept shouting that you had to get on a ship at Snowpoint City!"
+  say "You know how he is. He was out of the door again before I could ask him a single thing."
+  if nationaldex goto RivalCame
+  # TwinleafTownPlayerHouse1F_IsYourProjectComingAlong
+  setflag FLAG_TALKED_TO_MOM_ABOUT_NATIONAL_DEX_PROGRESS
+  say "Well, never mind him. How are you getting on, Champion? Is that Pokédex of Professor Rowan's coming along?"
+  face mom left
+  end
+label RivalCame
+  # TwinleafTownPlayerHouse1F_RivalCameLookingForYou
+  setflag FLAG_TALKED_TO_MOM_ABOUT_RIVAL_SNOWPOINT_CITY
+  face mom left
   end
 label RivalLeft
   walk mom right 1

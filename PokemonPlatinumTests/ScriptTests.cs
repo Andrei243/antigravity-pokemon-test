@@ -277,6 +277,9 @@ public class ScriptTests
           palpark store
           palpark end
           random 6
+          halloffame show
+          save
+          credits
         script Other
           end
         """;
@@ -327,6 +330,7 @@ public class ScriptTests
               if partner end
               if time morning end
               if weekday friday end
+              if nationaldex end
             """)[0];
 
         var asked = script.Code.Select(i => i.Condition!.Query).ToHashSet();
@@ -1184,5 +1188,7 @@ public class ScriptTests
         public void Fanfare(MusicRole role) { }
         public void Sound(string name) { }
         public void Cry(string species) { }
+        public bool NationalDex => inner.NationalDex;
+        public bool Save() => inner.Save();
     }
 }

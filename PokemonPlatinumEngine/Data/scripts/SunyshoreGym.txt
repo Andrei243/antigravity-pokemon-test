@@ -35,14 +35,18 @@ label Won
   end
 
 
-# The original names the certified trainers only once the Badge is won: the player, and the rival as well once he has won
-# it too (VAR_RIVAL_BEAT_SUNYSHORE_GYM), which his scene in Sunyshore City sets after the player's win. That scene is plan
-# 02 · S13's, and its branch of the statue comes with it.
+# The original names the certified trainers only once the Badge is won: the player, and the rival after them once he has
+# won it too (VAR_RIVAL_BEAT_SUNYSHORE_GYM, which his battle before the Pokémon League's door sets: plan 02 · S14). Here
+# alone the player's name comes first, since the player's was the first of the two Badges.
 script GymStatue
   speaker none
   if badge beacon goto Won
   say "SUNYSHORE CITY POKéMON GYM. Leader: Volkner"
   end
 label Won
+  if var VAR_RIVAL_BEAT_SUNYSHORE_GYM >= 1 goto Both
   say "SUNYSHORE CITY POKéMON GYM. Leader: Volkner. Certified Trainers: {player}"
+  end
+label Both
+  say "SUNYSHORE CITY POKéMON GYM. Leader: Volkner. Certified Trainers: {player}, {rival}"
   end

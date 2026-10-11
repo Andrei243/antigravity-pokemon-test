@@ -77,6 +77,37 @@ public static class StoryMigration
         // counted as caught, and Sunyshore City as its scenes leave it for a save that has already been there or holds
         // its Beacon Badge
         if (savedVersion < 16) ChapterTen(story, scripts, owned);
+        // Version 17: the people of the eleventh chapter (plan 02 · S14), and everything the Hall of Fame's scene sets
+        // for a save that entered it before that scene was written
+        if (savedVersion < 17) ChapterEleven(story, scripts);
+    }
+
+    /// <summary>The flag that says the League has been won (scripts/PokemonLeagueHallOfFame.txt; the original's system flag).</summary>
+    public const string GameCompletedFlag = "FLAG_GAME_COMPLETED";
+
+    /// <summary>The variable of the rival's battle before the League's door (scripts/PokemonLeagueNorthPokemonCenter.txt): 1 once he has been beaten there.</summary>
+    public const string RivalAtTheLeague = "VAR_RIVAL_BEAT_SUNYSHORE_GYM";
+
+    /// <summary>
+    /// Version 17, a save from before the eleventh chapter was written (plan 02 · S14): its people are hidden until
+    /// their scenes by <see cref="ScriptLibrary.ChapterEleven"/>, which a new game runs too (called by the chapter
+    /// before): the rival in the League's Pokémon Center, and the Day-Care couple's fan unless a Pokémon has been left
+    /// with them already.
+    /// <para>A save that has entered the Hall of Fame went through a room whose scene ended in a stand-in: the record,
+    /// the region done and home. It is given what the scene sets now, by the scene's own script of what a victory sets
+    /// (<see cref="ScriptLibrary.HallOfFameVictory"/>, which needs no screen): the Day-Care couple's fan, the assistant
+    /// in Sandgem Town, Lucian among Canalave's shelves, Mom's news at home, and the Pokémon of the lakes and of Turnback
+    /// Cave back where they weren't caught, as every victory brings them back. With it the Vs. Seeker's fourth level of
+    /// rematches, which the scene sets beside it. And the rival, who battles whoever first walks up to the League's door,
+    /// has had his battle: a Champion is not asked which of the two is ready for the Elite Four.</para>
+    /// </summary>
+    private static void ChapterEleven(StoryState story, ScriptLibrary scripts)
+    {
+        Run(story, scripts, ScriptLibrary.ChapterEleven);
+        if (!story.Has(GameCompletedFlag)) return;
+        Run(story, scripts, ScriptLibrary.HallOfFameVictory);
+        story.Set(Overworld.VsSeeker.LevelFlag(4));
+        if (story.Var(RivalAtTheLeague) == 0) story.SetVar(RivalAtTheLeague, 1);
     }
 
     /// <summary>The flag that first arriving in Sunyshore City sets (<see cref="Data.SpawnLocation.ArrivalFlag"/>).</summary>

@@ -286,6 +286,12 @@ public class Map
     public HallStyle? Hall { get; set; }
 
     /// <summary>
+    /// How many Poké Balls lie on the Hall of Fame's machine (plan 02 · S14): the game sets it from the story as the
+    /// room's script lays them, and the room's pieces draw one in each socket.
+    /// </summary>
+    public int MachineBalls { get; set; }
+
+    /// <summary>
     /// The special places this map has that some Pokémon evolve at when they level up there: "Moss Rock",
     /// "Ice Rock", "Magnetic Field", "Stone Arch" (the names the evolutions in species.json use).
     /// </summary>

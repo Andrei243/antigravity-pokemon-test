@@ -80,6 +80,17 @@ public sealed class ScriptLibrary
     /// <see cref="ChapterNine"/>, and run for a save from before.</summary>
     public const string ChapterTen = "common.ChapterTen";
 
+    /// <summary>The script that hides whoever the eleventh chapter brings on later (plan 02 · S14, the Pokémon League):
+    /// called by <see cref="ChapterTen"/>, and run for a save from before.</summary>
+    public const string ChapterEleven = "common.ChapterEleven";
+
+    /// <summary>
+    /// The script of everything a victory in the Hall of Fame sets (plan 02 · S14; the original's
+    /// <c>SetHallOfFameVictoryFlagsAndVars</c>): called by the room's scene, and run with no screen for a save that
+    /// entered the Hall of Fame before the scene was written.
+    /// </summary>
+    public const string HallOfFameVictory = "PokemonLeagueHallOfFame.Victory";
+
     private readonly Dictionary<string, Script> scripts = new(StringComparer.Ordinal);
 
     public IReadOnlyCollection<Script> All => scripts.Values;

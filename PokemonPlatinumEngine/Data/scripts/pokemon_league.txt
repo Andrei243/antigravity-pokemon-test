@@ -1,0 +1,13 @@
+# The Pokémon League's grounds (plan 02 · S14). docs/scripts.md describes the language; the lines are our own, on the
+# original's beats (scripts_pokemon_league.s).
+#
+# Nobody stands out here: the way up from Victory Road, the first Pokémon Center, the steps and the League's own
+# doors. Its two signs are read plainly (the area's overlay). The statues either side of the steps say whose
+# ground this is.
+
+
+# PokemonLeague_Statue (the original's script 3, on each of the eight statues' tiles)
+script Statue
+  speaker none
+  text "POKéMON LEAGUE\nWhere every Trainer's road comes to its summit."
+  end

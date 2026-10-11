@@ -1,0 +1,90 @@
+{
+  "sections": [
+    {
+      "heading": "A fan remake",
+      "entries": [
+        { "name": "Sinnoh, rebuilt from the ground up" },
+        {
+          "name": "by people who love the game it retells",
+          "note": "This is an unofficial fan project. It is not affiliated with or endorsed by Nintendo, Creatures Inc. or GAME FREAK inc."
+        }
+      ]
+    },
+    {
+      "heading": "The original",
+      "entries": [
+        {
+          "name": "Pokémon Platinum Version",
+          "note": "Created by GAME FREAK, and published by Nintendo and The Pokémon Company."
+        },
+        {
+          "name": "Its world, its story and its Pokémon are theirs",
+          "note": "To everyone who made Sinnoh, and everyone who has made Pokémon since: thank you."
+        }
+      ]
+    },
+    {
+      "heading": "Made anew",
+      "entries": [
+        {
+          "name": "Every model, picture, sound, tune and line of dialogue",
+          "note": "Nothing is taken from the Pokémon games. The art is made by the game's own code, the music is written and played by its own synthesiser, and the story is told in our own words."
+        },
+        {
+          "name": "Built by its contributors",
+          "note": "One session at a time."
+        }
+      ]
+    },
+    {
+      "heading": "Made with",
+      "entries": [
+        { "name": "C# and .NET" },
+        { "name": "raylib", "note": "by Ramon Santamaria and contributors" },
+        { "name": "Raylib-cs", "note": "the C# bindings to raylib" }
+      ]
+    },
+    {
+      "heading": "Data",
+      "entries": [
+        {
+          "name": "PokéAPI",
+          "note": "© Paul Hallett and PokéAPI contributors · BSD 3-Clause licence · the species, moves, abilities and items of the later generations, and every name"
+        },
+        {
+          "name": "pret/pokeplatinum",
+          "note": "The decompilation of Pokémon Platinum, read for layouts and numbers only: never for art, sound or text"
+        },
+        {
+          "name": "Pokémon Showdown",
+          "note": "© Guangcong Luo and other contributors · MIT licence · the numbers of the later generations' mechanics"
+        }
+      ]
+    },
+    {
+      "heading": "Typeface",
+      "entries": [
+        {
+          "name": "Nunito",
+          "note": "© 2014 The Nunito Project Authors · designed by Vernon Adams, Cyreal and Jacques Le Bailly · SIL Open Font License 1.1"
+        }
+      ]
+    },
+    {
+      "heading": "The Champion",
+      "team": true,
+      "entries": [
+        { "name": "{player}", "note": "Champion of the Sinnoh Pokémon League" }
+      ]
+    },
+    {
+      "heading": "And you",
+      "entries": [
+        { "name": "Thank you for playing" },
+        { "name": "The journey goes on", "note": "Pokémon and Pokémon character names are trademarks of Nintendo." }
+      ]
+    }
+  ],
+  "end": "THE END",
+  "farewell": "Thank you for playing."
+}

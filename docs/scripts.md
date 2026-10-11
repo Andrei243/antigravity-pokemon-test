@@ -173,6 +173,7 @@ What an `if` can ask:
 | `rematch self` | The trainer is waiting for a rematch the Vs. Seeker found (plan 06 · R12). |
 | `time morning` | The time of day now: `morning`, `day`, `twilight`, `night` or `latenight` (`GameClock`, plan 06 · R14a). |
 | `weekday friday` | The day of the week today. |
+| `nationaldex` | The National Pokédex is the player's (plan 02 · S14; the original's `GetNationalDexEnabled`): the Hall of Fame's script, Mom and the assistant ask it. Nothing gives it yet (plan 02 · S15). |
 
 ### What the story remembers
 
@@ -257,7 +258,7 @@ Plan 06 · R12.
 | Command | |
 |---|---|
 | `trade kazza` | One of the original's trades with people of the game (`Models/NpcTrades.cs`): the Pokémon last chosen with `choosepokemon` goes, the trade's own comes, with its nickname, its trainer and its held item, and is met in a trade. `RESULT` is 1 when the one chosen was the species the trade asks for, and nothing changes hands otherwise. A traded Pokémon from a person never evolves by the trade (the original's `ScrCmd_TradeWithNpc` asks no evolution). |
-| `halloffame` | The team enters the Hall of Fame (`Models/HallOfFame.cs`): the entry is written and its screen shows. |
+| `halloffame` | The team enters the Hall of Fame (`Models/HallOfFame.cs`): the entry is written, and every Pokémon of the team that is no Egg wears the Sinnoh Champ Ribbon. The scene of it is `halloffame show` ("The Hall of Fame's end", below). |
 
 ### Poffins
 
@@ -455,6 +456,16 @@ own flags and variables (`FLAG_VILLA_FURNITURE_…`, `VAR_RESORT_VILLA_VISITOR`)
 | `palpark prize` | Hands over the berry the score earns. |
 | `palpark store` | Sends the six to the PC boxes, as Pokémon met at Pal Park. |
 | `palpark end` | Ends the show and keeps nothing of it: the six go on waiting in the park. |
+
+### The Hall of Fame's end
+
+Plan 02 · S14. What the Hall of Fame's script does once the team is recorded (`halloffame`, above), as the original's `ClearGame` does it: the scene of the team's entry, the save, the credits.
+
+| Command | What it does |
+|---|---|
+| `halloffame show` | The scene of the team's entry (`UI/HallOfFameCeremony.cs`; the original's `FieldTask_StartHallOfFame`): each Pokémon of the team in turn with who it is, whose it was and where it was met, then the Champion among them all. The script waits until the picture has closed. |
+| `save` | Writes the game to its save where the player stands, with no question and no panel (the original saves so before its credits). `RESULT` is 1 when it was written, 0 when it couldn't be. The words and the sound are the script's. |
+| `credits` | The credits (`UI/CreditsScreen.cs`, `Data/credits.json`): the script waits until they have rolled and the last card has been dismissed. |
 
 ## Who is on the map
 

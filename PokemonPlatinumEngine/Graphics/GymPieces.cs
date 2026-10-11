@@ -50,7 +50,9 @@ internal sealed class GymPieces
     // Center's gate), a door of the back wall shut and open, the gate that shuts the front wall, a lift's platform,
     // and the lava's frames
     private bool league;
-    private Piece? doorShut, doorOpen, gate, liftPlatform;
+    private Piece? doorShut, doorOpen, gate, liftPlatform, machineBall;
+    // Where a ball stands in each socket of the Hall of Fame's machine (plan 02 · S14), in the order they are laid
+    private readonly List<Vector3> sockets = new();
     private readonly List<Piece> lava = new();
     private readonly List<(int X, int Y)> doorways = new();
 
@@ -104,6 +106,10 @@ internal sealed class GymPieces
                         yield return (gate, Matrix4x4.CreateTranslation(npc.GridX, Relief.At(map, npc.GridX + 0.5f, map.Height - 1.5f), map.Height - 1));
             if (liftPlatform != null && map.Puzzle is LeagueLift lift)
                 yield return (liftPlatform, Matrix4x4.CreateTranslation(lift.Where.X, lift.Height - map.GroundLevel, lift.Where.Z));
+            // The balls laid on the Hall of Fame's machine, one to a socket
+            if (machineBall != null)
+                for (int i = 0; i < Math.Min(map.MachineBalls, sockets.Count); i++)
+                    yield return (machineBall, Matrix4x4.CreateTranslation(sockets[i]));
             // The lava drifts: four frames, three a second
             if (lava.Count > 0)
                 yield return (lava[(int)((long)(FrameClock.Now * LavaFramesPerSecond) % lava.Count)], Matrix4x4.CreateTranslation(0f, LavaLevel - map.GroundLevel, 0f));
@@ -996,6 +1002,9 @@ internal sealed class GymPieces
                 still.Box(x, x + 4, 0, 3, 0, rows, null, rail, rail, rail);
         }
 
+        KitBuilder? ballKit = null;
+        sockets.Clear();
+
         // Lava over every void tile of a room of fire
         var lavaKits = new List<KitBuilder>();
         if (map.ArenaType == Data.PokemonType.Fire)
@@ -1029,6 +1038,7 @@ internal sealed class GymPieces
             case HallStyle.HallOfFame:
                 Carpet(still, map, CarpetCrimson, 6, back + 2, 5, map.Height - 3 - back);
                 Machine(still, map, 7, back);
+                ballKit = MachineBalls(sheet, vs, 7, back);
                 break;
         }
         if (map.Interior == InteriorStyle.PokemonCenter) CenterGate(still, map);
@@ -1039,6 +1049,7 @@ internal sealed class GymPieces
         doorOpen = Make(openKit);
         gate = Make(gateKit);
         if (liftKit != null) liftPlatform = Make(liftKit);
+        if (ballKit != null) machineBall = Make(ballKit);
         foreach (var kit in lavaKits)
             if (Make(kit) is { } piece) lava.Add(piece);
     }
@@ -1080,6 +1091,24 @@ internal sealed class GymPieces
         kit.Box(8, 88, 18, 58, 0, 20, kit.Face("league.machine.top", 80, 40, LeagueArt.PaintConsoleTop),
             kit.Face("league.machine.front", 80, 20, LeagueArt.PaintConsoleFront), side, side);
         kit.Card(18, 78, 8, 24, 68, kit.Face("league.machine.screen", 60, 44, LeagueArt.PaintScreen));
+    }
+
+    /// <summary>
+    /// A Poké Ball for the machine's sockets (plan 02 · S14): an upright card twelve texels square standing on the
+    /// console's top, and the place of each of the six sockets its top is painted with (LeagueArt.PaintConsoleTop:
+    /// a ring about the middle of a top 80 by 40, which lies from 8, 18 of the machine's own corner).
+    /// </summary>
+    private KitBuilder MachineBalls(ArtSheet sheet, float vs, int x, int back)
+    {
+        const float T = GroundBaker.ArtTile;
+        var kit = new KitBuilder(sheet, vs) { Origin = Vector3.Zero };
+        kit.Card(-6, 6, 0, 20, 32, kit.Face("league.machine.ball", 12, 12, LeagueArt.PaintMachineBall));
+        for (int i = 0; i < 6; i++)
+        {
+            double a = Math.PI * 2 * i / 6;
+            sockets.Add(new Vector3(x + (8 + 40.5f + (float)Math.Cos(a) * 24f) / T, 0f, back + (18 + 20.5f + (float)Math.Sin(a) * 12f) / T));
+        }
+        return kit;
     }
 
     /// <summary>
@@ -1165,7 +1194,8 @@ internal sealed class GymPieces
         platforms.Clear();
         snowball = null;
         league = false;
-        doorShut = doorOpen = gate = liftPlatform = null;
+        doorShut = doorOpen = gate = liftPlatform = machineBall = null;
+        sockets.Clear();
         lava.Clear();
         doorways.Clear();
         gears.Clear();

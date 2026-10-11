@@ -886,9 +886,10 @@ public class SunyshoreAndTheLakeGuardiansTests
         foreach (string flag in fresh.Flags.Where(f => f.Contains("CAVERN") || f.Contains("SUNYSHORE") || f.Contains("VISTA")))
             Assert.True(upgraded.Has(flag), flag);
         Assert.Equal(fresh.Var(CityState), upgraded.Var(CityState));
-        // The chapter's script is the last link of the chain a new game runs, and may only set things up
+        // The chapter's script is a link of the chain a new game runs (the eleventh chapter's follows it, plan 02 ·
+        // S14), and may only set things up
         Assert.Contains(Find("ChapterNine", ScriptLibrary.Common).Everything(), i => i.Op == Op.Call && i.Name == "ChapterTen");
-        Assert.All(Find("ChapterTen", ScriptLibrary.Common).Everything(), i => Assert.Contains(i.Op, new[] { Op.SetFlag, Op.ClearFlag, Op.SetVar, Op.If, Op.Return }));
+        Assert.All(Find("ChapterTen", ScriptLibrary.Common).Everything(), i => Assert.Contains(i.Op, new[] { Op.SetFlag, Op.ClearFlag, Op.SetVar, Op.If, Op.Call, Op.Return }));
     }
 
     // ------------------------------------------------------------------ the lighthouse's rooms and the lift's pieces

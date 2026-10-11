@@ -58,6 +58,9 @@ public enum GameState
     Decoration,
     /// <summary>A sitting at one of the Game Corner's slot machines (plan 06 · R16b).</summary>
     SlotMachine,
+    /// <summary>The scene of a team's entry into the Hall of Fame, and the credits after it (plan 02 · S14).</summary>
+    HallOfFameCeremony,
+    Credits,
     Transition
 }
 
@@ -875,6 +878,12 @@ public partial class GameEngine
             case GameState.SlotMachine:
                 UpdateSlotMachine(dt);
                 break;
+            case GameState.HallOfFameCeremony:
+                UpdateCeremony(dt);
+                break;
+            case GameState.Credits:
+                UpdateCredits(dt);
+                break;
             case GameState.Journal:
                 journalScreen.Update(journal, dt);
                 if (!journalScreen.IsActive) currentState = GameState.Overworld;
@@ -916,7 +925,8 @@ public partial class GameEngine
     private void UpdateAmbience()
     {
         bool heard = gameStarted && currentMap != null && player != null
-            && currentState is not (GameState.Title or GameState.Intro or GameState.Battle or GameState.Evolution or GameState.Hatch);
+            && currentState is not (GameState.Title or GameState.Intro or GameState.Battle or GameState.Evolution or GameState.Hatch
+                or GameState.HallOfFameCeremony or GameState.Credits);
         if (!heard)
         {
             if (fieldAmbience.Count > 0) fieldAmbience = new List<AmbienceLayer>();
@@ -942,6 +952,7 @@ public partial class GameEngine
         // What field moves left in force (Strength, Flash, Defog), and boulders sliding on from a push
         KeepFieldMovesInForce();
         KeepPuzzleInForce(dt);
+        KeepTheMachinesBalls();
         ShatterSnowball();
         KeepTheClock();
         KeepBerriesInView();
@@ -1904,6 +1915,14 @@ public partial class GameEngine
         {
             wardrobeScreen.Render(renderContext);
         }
+        else if (scene == GameState.HallOfFameCeremony)
+        {
+            ceremony.Render(renderContext);
+        }
+        else if (scene == GameState.Credits)
+        {
+            credits.Render(renderContext);
+        }
         // (The field and the battle have told the profiler of their own passes; this takes whatever else was rendered)
         FrameProfiler.Lap(FrameSection.Scene);
 
@@ -2014,6 +2033,12 @@ public partial class GameEngine
             case GameState.SlotMachine:
                 slotScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
+            case GameState.HallOfFameCeremony:
+                ceremony.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.Credits:
+                credits.Draw(VirtualWidth, VirtualHeight);
+                break;
             case GameState.PCStorage:
                 pcScreen.Draw(VirtualWidth, VirtualHeight, playerParty, pcBoxStorage);
                 break;
@@ -2031,6 +2056,8 @@ public partial class GameEngine
                 else if (scene == GameState.Hatch) hatchScreen.Draw(VirtualWidth, VirtualHeight);
                 else if (scene == GameState.BagMenu) bagScreen.Draw(VirtualWidth, VirtualHeight, playerInventory, playerParty, EvolutionContextNow());
                 else if (scene == GameState.SuperContest) contestScreen.Draw(VirtualWidth, VirtualHeight);
+                else if (scene == GameState.HallOfFameCeremony) ceremony.Draw(VirtualWidth, VirtualHeight);
+                else if (scene == GameState.Credits) credits.Draw(VirtualWidth, VirtualHeight);
                 break;
         }
 

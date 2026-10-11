@@ -2,8 +2,13 @@
 # and its guard (plan 01 · M9, part 2d). docs/scripts.md describes the language; the lines are our own, on the
 # original's beats (scripts_pokemon_league_north_pokecenter_1f.s).
 #
-# The rival's battle in front of the door (the original's trigger on tiles 10 to 12 of row 4, by
-# VAR_RIVAL_BEAT_SUNYSHORE_GYM, and his object at 11, 11) is plan 02 · S14's.
+# The rival's battle before the door (plan 02 · S14): the first step onto the row before the guard, from any of its
+# three tiles, brings him running in through the way out. He means to take on the League too, and battles to see which
+# of the two is ready (his team by the player's starter, rival_pokemon_league_*). Beaten, he owns that he isn't, swears
+# to come back tougher and runs out; VAR_RIVAL_BEAT_SUNYSHORE_GYM is the scene's variable, as the original's, and it
+# is what the Sunyshore Gym's statues wait for before they name him (SunyshoreGym.txt). His flag stays set throughout:
+# the scene shows him and takes him off again by itself, so a battle lost (the player wakes at this room's nurse)
+# leaves nobody standing in the doorway, and he comes running in again at the next step onto the row.
 
 
 # PokemonLeagueNorthPokecenter1F_OnTransition. Coming in lets Fly come here, and puts the Elite Four's rooms back as
@@ -35,6 +40,9 @@ script DoorGuard
   if flag FLAG_POKEMON_LEAGUE_DOOR_GUARD_MOVED_AWAY goto Moved
   say "Beyond this door the Elite Four are waiting. Only a Trainer with all eight of Sinnoh's Gym Badges goes through. Let me have a look at yours."
   if badges < 8 goto Short
+  # PokemonLeagueNorthPokecenter1F_Text_ExamineGymBadges: he counts them off, town by town
+  say "Oreburgh City's Coal Badge. Eterna City's Forest Badge. Hearthome City's Relic Badge. Veilstone City's Cobble Badge."
+  say "Pastoria City's Fen Badge. Canalave City's Mine Badge. Snowpoint City's Icicle Badge. And... Sunyshore City's Beacon Badge!"
   fanfare badge
   if facing left goto FromTheEast
   walk self right 1
@@ -58,4 +66,44 @@ label Moved
   end
 label Short
   say "...You don't have all eight yet. I can't let you through. Come back when you have every Gym Badge in Sinnoh."
+  end
+
+
+# PokemonLeagueNorthPokecenter1F_CoordEvent_Rival (plan 02 · S14): the row before the guard, while
+# VAR_RIVAL_BEAT_SUNYSHORE_GYM is nought. He comes in by the way out and up beside the carpet to the tile below the
+# player's, as the original's three movements have him. The original stands him on its exit mat, which is its warp;
+# here the way out is the door in the row below the mat, so that is his own tile, a step further to come.
+script RivalBeforeTheDoor
+  show rival
+  music "common/rival"
+  if var PLAYER_X == 10 walk rival up 4 left 1 up 3 fast
+  if var PLAYER_X == 11 walk rival up 7 fast
+  if var PLAYER_X == 12 walk rival up 4 right 1 up 3 fast
+  face player down
+  speaker "{rival}"
+  say "Hold it right there, {player}! You're not going through that door without me!"
+  say "You've come to take on the Pokémon League, haven't you? Well, so have I! I didn't win eight Badges to stand and watch you go in first."
+  say "So we'll settle it the way we always do. Whoever wins this battle is the one who's ready for the Elite Four!"
+  if starter "Turtwig" goto VsTurtwig
+  if starter "Chimchar" goto VsChimchar
+  battle rival as "rival_pokemon_league_piplup"
+  goto After
+label VsTurtwig
+  battle rival as "rival_pokemon_league_turtwig"
+  goto After
+label VsChimchar
+  battle rival as "rival_pokemon_league_chimchar"
+label After
+  speaker "{rival}"
+  say "...If I'm still losing to you, then I'm not ready for the Pokémon League. Not yet. Argh, I can't stand it!"
+  say "But you just watch! I'm going to get a whole lot tougher, and then I'm coming back to beat every last one of them."
+  say "The Champion is the toughest Trainer there is, and that's going to be me!"
+  say "So don't you dare lose to anybody in there before I've had my turn, {player}!"
+  if var PLAYER_X == 10 walk rival down 3 right 1 down 4 fast
+  if var PLAYER_X == 11 walk rival down 7 fast
+  if var PLAYER_X == 12 walk rival down 3 left 1 down 4 fast
+  sound "stairs"
+  hide rival
+  music area
+  setvar VAR_RIVAL_BEAT_SUNYSHORE_GYM 1
   end

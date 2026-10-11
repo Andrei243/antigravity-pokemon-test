@@ -8,7 +8,9 @@
     { "warp": 0, "map": "PokemonLeagueSouthPokemonCenter", "x": 5, "y": 7, "facing": "Up" },
     { "warp": 1, "map": "PokemonLeagueNorthPokemonCenter", "x": 11, "y": 11, "facing": "Up" }
   ],
-  // The statues by the League's steps are the original's tile events of type 0, which nothing reads yet (plan 02 · S7)
+  // The statues by the League's steps are the original's tile events of type 0, script 3: read from before them
+  // (plan 02 · S14)
+  "read": { "3": "Statue" },
   "signs": {
     "signboard": "Victory Road\nThe last road before the Pokémon League. Only trainers with eight Badges go on.",
     "arrow_signpost": "Pokémon League\nNorth: the Pokémon League"
