@@ -455,8 +455,7 @@ public class RoomPlanTests
     [Fact]
     public void EveryOtherRoomBeginsWhereTheHandMadeOnesDo()
     {
-        var rebuilt = Plans.Select(p => (string)p[0]).Concat(UpperFloors).Concat(Gates).Concat(LostTower).Concat(LibraryUpperFloors).Concat(GalacticHeadquarters).Concat(OddlyShaped).ToHashSet();
-        var rebuilt = Plans.Select(p => (string)p[0]).Concat(UpperFloors).Concat(Gates).Concat(LostTower).Concat(LibraryUpperFloors).Concat(GalacticHeadquarters).Concat(InnerRooms).ToHashSet();
+        var rebuilt = Plans.Select(p => (string)p[0]).Concat(UpperFloors).Concat(Gates).Concat(LostTower).Concat(LibraryUpperFloors).Concat(GalacticHeadquarters).Concat(OddlyShaped).Concat(InnerRooms).ToHashSet();
         foreach (string path in Directory.GetFiles(GameDataFiles.PathOf(MapDatabase.Folder), "*.json"))
         {
             string name = Path.GetFileNameWithoutExtension(path);
