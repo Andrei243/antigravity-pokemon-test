@@ -360,6 +360,10 @@ public class ScriptTests
           halloffame show
           save
           credits
+          team first
+          team nature serious
+          team size "Remoraid"
+          team size keep
         script Other
           end
         """;

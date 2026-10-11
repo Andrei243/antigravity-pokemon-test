@@ -111,6 +111,26 @@ public class RoomPlanTests
         new object[] { "CanalaveCitySailorEldritchHouse", 1, 3, 4, 8 },
         new object[] { "CanalaveCityWestHouse", 1, 3, 4, 8 },
         new object[] { "IronIslandHouse", 1, 3, 4, 8 },
+        // Plan 01 · M11, part c: the rooms of the north and of the Battle Zone
+        new object[] { "CelesticTownNorthwestHouse", 1, 3, 4, 8 },
+        new object[] { "CelesticTownNortheastHouse", 1, 3, 4, 8 },
+        new object[] { "CelesticTownSouthwestHouse", 1, 3, 4, 8 },
+        new object[] { "Route216House", 1, 3, 4, 8 },
+        new object[] { "Route217WestHouse", 1, 3, 4, 8 },
+        new object[] { "Route217NortheastHouse", 1, 3, 4, 8 },
+        new object[] { "Route222EastHouse", 1, 3, 4, 8 },
+        new object[] { "Route222WestHouse", 1, 3, 4, 8 },
+        new object[] { "SunyshoreCityWestHouse", 1, 3, 4, 8 },
+        new object[] { "SunyshoreCityNorthwestHouse", 1, 3, 4, 8 },
+        new object[] { "SunyshoreCityEastHouse", 1, 3, 4, 8 },
+        new object[] { "FightAreaMiddleHouse", 1, 3, 4, 8 },
+        new object[] { "FightAreaSouthHouse", 1, 3, 4, 8 },
+        new object[] { "Route225House", 1, 3, 4, 8 },
+        new object[] { "SurvivalAreaSouthHouse", 1, 3, 4, 8 },
+        new object[] { "Route226House", 1, 3, 4, 8 },
+        new object[] { "Route227House", 1, 3, 4, 8 },
+        new object[] { "Route228SouthHouse", 1, 3, 4, 8 },
+        new object[] { "ResortAreaHouse", 1, 3, 4, 8 },
     };
 
     /// <summary>Rooms on the original's plans whose door isn't in the last row of the room (plan 06 · R16b): the Oreburgh
@@ -171,6 +191,10 @@ public class RoomPlanTests
         "GrandLakeRoute213Lobby", "PastoriaCityObservatoryGate2F", "PokemonMansionMaidsRoomWest", "PokemonMansionMaidsRoomMiddle",
         "PokemonMansionMaidsRoomEast", "PokemonMansionOffice",
     };
+    /// <summary>The Ribbon Syndicate's upper floor and the car of its lift (plan 01 · M11, part c): come to by the lift's
+    /// doors in the ground floor's back wall, never from the map of Sinnoh (<c>NorthInteriorTests</c>).</summary>
+    internal static readonly string[] SyndicateLift = { "ResortAreaRibbonSyndicate2F", "ResortAreaRibbonSyndicateElevator" };
+
     /// <summary>The gallery at the top of the Vista Lighthouse (plan 02 · S13): no door, only the lift's car in the
     /// shaft at its middle (<c>SunyshoreTests</c>).</summary>
     internal static readonly string[] LighthouseGallery = { "VistaLighthouse" };
@@ -547,6 +571,56 @@ public class RoomPlanTests
         new object[] { "BattleFactory", "pokemon_breeder_f", 1, 11, Direction.Down },
         new object[] { "BattleFactory", "clown", 18, 9, Direction.Left },
         new object[] { "BattleFactory", "lady", 22, 11, Direction.Left },
+        // Plan 01 · M11, part c: the rooms of the north and of the Battle Zone
+        new object[] { "CelesticTownNorthwestHouse", "expert_m", 2, 4, Direction.Down },
+        new object[] { "CelesticTownNorthwestHouse", "expert_f", 4, 4, Direction.Down },
+        new object[] { "CelesticTownNorthwestHouse", "gym_guide", 7, 6, Direction.Left },
+        new object[] { "CelesticTownNortheastHouse", "pokefan_m", 7, 6, Direction.Down },
+        new object[] { "CelesticTownNortheastHouse", "ninja_boy", 2, 5, Direction.Left },
+        new object[] { "CelesticTownSouthwestHouse", "happiny", 2, 5, Direction.Down },
+        new object[] { "CelesticTownSouthwestHouse", "black_belt", 7, 6, Direction.Down },
+        new object[] { "Route216House", "hiker", 3, 5, Direction.Down },
+        new object[] { "Route216House", "snowpoint_npc_f", 6, 4, Direction.Left },
+        new object[] { "Route217WestHouse", "hiker", 4, 5, Direction.Up },
+        new object[] { "Route217NortheastHouse", "pokemon_breeder_f", 4, 5, Direction.Down },
+        new object[] { "Route222EastHouse", "fisherman", 5, 5, Direction.Left },
+        new object[] { "Route222WestHouse", "pikachu_1", 8, 5, Direction.Left },
+        new object[] { "Route222WestHouse", "pikachu_2", 2, 7, Direction.Up },
+        new object[] { "Route222WestHouse", "pikachu_3", 1, 4, Direction.Right },
+        new object[] { "Route222WestHouse", "pikachu_4", 7, 7, Direction.Down },
+        new object[] { "Route222WestHouse", "pikachu_5", 7, 5, Direction.Right },
+        new object[] { "Route222WestHouse", "pokefan_m", 5, 5, Direction.Down },
+        new object[] { "Route222WestHouse", "poke_kid_janet", 4, 3, Direction.Right },
+        new object[] { "SunyshoreCityWestHouse", "battle_girl", 6, 6, Direction.Down },
+        new object[] { "SunyshoreCityWestHouse", "clown", 5, 3, Direction.Up },
+        new object[] { "SunyshoreCityWestHouse", "gym_guide", 2, 5, Direction.Down },
+        new object[] { "SunyshoreCityWestHouse", "pokemon_breeder_f", 2, 7, Direction.Down },
+        new object[] { "SunyshoreCityWestHouse", "youngster_1", 9, 5, Direction.Left },
+        new object[] { "SunyshoreCityWestHouse", "youngster_2", 9, 6, Direction.Left },
+        new object[] { "SunyshoreCityWestHouse", "youngster_3", 8, 7, Direction.Left },
+        new object[] { "SunyshoreCityNorthwestHouse", "old_man", 3, 5, Direction.Left },
+        new object[] { "SunyshoreCityNorthwestHouse", "old_woman", 1, 5, Direction.Right },
+        new object[] { "SunyshoreCityEastHouse", "scientist_m", 5, 5, Direction.Up },
+        new object[] { "FightAreaMiddleHouse", "pokefan_m", 5, 5, Direction.Right },
+        new object[] { "FightAreaMiddleHouse", "school_kid_m", 8, 6, Direction.Left },
+        new object[] { "FightAreaMiddleHouse", "youngster", 3, 7, Direction.Up },
+        new object[] { "FightAreaSouthHouse", "old_man", 6, 5, Direction.Left },
+        new object[] { "FightAreaSouthHouse", "torchic", 2, 6, Direction.Down },
+        new object[] { "FightAreaSouthHouse", "old_woman", 2, 5, Direction.Right },
+        new object[] { "FightAreaSouthHouse", "item_expert", 8, 6, Direction.Down },
+        new object[] { "Route225House", "worker", 5, 6, Direction.Down },
+        new object[] { "SurvivalAreaSouthHouse", "black_belt", 4, 5, Direction.Left },
+        new object[] { "Route226House", "meister", 2, 5, Direction.Right },
+        new object[] { "Route227House", "expert_f", 3, 5, Direction.Left },
+        new object[] { "Route228SouthHouse", "gentleman", 2, 3, Direction.Left },
+        new object[] { "ResortAreaHouse", "collector", 6, 4, Direction.Up },
+        new object[] { "ResortAreaHouse", "old_man", 2, 5, Direction.Up },
+        new object[] { "ResortAreaHouse", "ninja_boy", 8, 7, Direction.Up },
+        new object[] { "ResortAreaRibbonSyndicate2F", "receptionist_1", 16, 5, Direction.Down },
+        new object[] { "ResortAreaRibbonSyndicate2F", "receptionist_2", 12, 7, Direction.Down },
+        new object[] { "ResortAreaRibbonSyndicate2F", "receptionist_3", 12, 5, Direction.Left },
+        new object[] { "ResortAreaRibbonSyndicate2F", "receptionist_4", 16, 12, Direction.Down },
+        new object[] { "ResortAreaRibbonSyndicateElevator", "receptionist", 1, 6, Direction.Right },
     };
 
     [Theory]
@@ -630,6 +704,7 @@ public class RoomPlanTests
             LighthouseGallery,
             BattleTower,
             BattleFactory,
+            SyndicateLift,
         }.SelectMany(names => names).ToHashSet();
         foreach (string path in Directory.GetFiles(GameDataFiles.PathOf(MapDatabase.Folder), "*.json"))
         {

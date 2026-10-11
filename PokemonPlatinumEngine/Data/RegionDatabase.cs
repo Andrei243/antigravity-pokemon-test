@@ -220,6 +220,13 @@ public static class RegionDatabase
                 "CanalaveCitySoutheastHouse", "CanalaveCitySailorEldritchHouse", "CanalaveCityWestHouse", "IronIslandHouse",
                 // Plan 06 · R18b: the Battle Factory's lobby, corridor and battle room
                 "BattleFactory", "BattleFactoryCorridor", "BattleFactoryBattleRoom",
+                // Plan 01 · M11, part c: the rooms of the north and of the Battle Zone, on the original's plans
+                "CelesticTownNorthwestHouse", "CelesticTownNortheastHouse", "CelesticTownSouthwestHouse",
+                "Route216House", "Route217WestHouse", "Route217NortheastHouse", "Route222EastHouse", "Route222WestHouse",
+                "SunyshoreCityWestHouse", "SunyshoreCityNorthwestHouse", "SunyshoreCityEastHouse",
+                "FightAreaMiddleHouse", "FightAreaSouthHouse", "Route225House", "SurvivalAreaSouthHouse",
+                "Route226House", "Route227House", "Route228SouthHouse", "ResortAreaHouse",
+                "ResortAreaRibbonSyndicate2F", "ResortAreaRibbonSyndicateElevator",
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

@@ -1043,11 +1043,18 @@ public static class WorldMapBuilder
         return found;
     }
 
+    /// <summary>How many tiles of open ground shut in under a house may be and still be a pocket of the house.</summary>
+    public const int PocketTiles = 2;
+
+    /// <summary>The widest and deepest a model's box may be, in tiles, for a pocket to make one block of it: a house, not a museum.</summary>
+    public const int HouseWidth = 6, HouseDepth = 4;
+
     /// <summary>
     /// The open tiles under a building's box that no way leads out of: each patch of open ground there which stays
     /// within two tiles of the box, however one walks it. A passage that runs out into the grounds is no such patch.
     /// </summary>
-    private static List<(int X, int Z)> Enclosed(Map map, Placed model, Func<int, int, bool> blocked)
+    /// <param name="most">The most tiles a patch may have to count: a pocket is a tile or two, a hall's inside as big as it is.</param>
+    private static List<(int X, int Z)> Enclosed(Map map, Placed model, Func<int, int, bool> blocked, int most = int.MaxValue)
     {
         int x0 = (int)MathF.Floor(model.X), x1 = (int)MathF.Floor(model.X1), z0 = (int)MathF.Floor(model.Z), z1 = (int)MathF.Floor(model.Z1);
         var seen = new HashSet<(int X, int Z)>();
@@ -1072,7 +1079,7 @@ public static class WorldMapBuilder
                         if (seen.Add((nx, nz))) open.Enqueue((nx, nz));
                     }
                 }
-                if (!leadsOut) enclosed.AddRange(patch.Where(t => model.Covers(t.X, t.Z)));
+                if (!leadsOut && patch.Count <= most) enclosed.AddRange(patch.Where(t => model.Covers(t.X, t.Z)));
             }
         return enclosed;
     }
@@ -1177,6 +1184,14 @@ public static class WorldMapBuilder
                 map.SetSolid(x, z, true);
             }
 
+        // A pocket in a house (plan 01 · M11, part c): the original leaves a tile or two open in the middle of some
+        // houses (Route 225's, the Survival Area's two and its Battleground, Route 212's), shut in by the house's own
+        // walls, where nobody can come and no way leads. Cut into rectangles round the pocket, such a house fell apart
+        // into a small block, a fence and a door under the fence, or into two halves with a gap between: a building no
+        // bigger than a house that shuts a pocket in is one block, the box of the tiles it blocks
+        var pocketed = models.Where(m => m.Stands && m.IsBuilding && m.Model?.Hollow != true && m.Prop.Width <= HouseWidth && m.Prop.Depth <= HouseDepth
+            && Enclosed(map, m, Blocked, most: PocketTiles).Any(t => !entrances.Contains(t))).ToHashSet<Placed>(ReferenceEqualityComparer.Instance);
+
         foreach (var (x, z) in owner.Keys) under[z * map.Width + x] = true;
         // What the ground's cover guessed at such a tile (a boulder, a fence) gives way to the model
         map.Props.RemoveAll(prop => prop.Type is PropType.Boulder or PropType.Fence && owner.ContainsKey((prop.X, prop.Y)));
@@ -1228,9 +1243,11 @@ public static class WorldMapBuilder
                     for (int x = r.X0; x <= r.X1; x++)
                         thin.Add((x, z));
             }
-            if (blocks.Count == 0)
+            if (blocks.Count == 0 || pocketed.Contains(model))
             {
-                // Nothing two tiles each way (a house whose middle the world leaves open): the whole of it is one block
+                // Nothing two tiles each way (a house whose middle the world leaves open), or a pocket shut in: the whole
+                // of it is one block
+                blocks.Clear();
                 var (bx0, bz0, bx1, bz1) = (tiles.Min(t => t.X), tiles.Min(t => t.Z), tiles.Max(t => t.X), tiles.Max(t => t.Z));
                 if (bx1 == bx0 || bz1 == bz0) continue;
                 blocks.Add((bx0, bz0, bx1, bz1));

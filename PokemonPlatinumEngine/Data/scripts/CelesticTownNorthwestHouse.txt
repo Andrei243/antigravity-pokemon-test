@@ -1,0 +1,43 @@
+# Celestic Town's shop, the north-west house (plan 01 · M11, part c), on the original's plan. docs/scripts.md
+# describes the language; the lines are our own, on the original's beats (scripts_celestic_town_northwest_house.s).
+#
+# The town has no Poké Mart: the old couple behind this counter are its two clerks, she with the common counter by
+# the badges and he with the town's own (marts.json, "celestic"), and both are the common Clerk. The man in glasses
+# gives a pair away by the hour, each once: Choice Specs in the morning (4 to 10), Black Glasses by day and at
+# twilight (10 to 20), Wise Glasses at night (20 to 4), as the original's GetHour has them.
+
+
+script Glasses
+  say "Put on a pair of glasses and the whole world looks different." "Take them off again and it looks different once more. Makes you think, doesn't it?"
+  if time morning goto Specs
+  if time day goto Black
+  if time twilight goto Black
+  # CelesticTownNorthwestHouse_TryGiveWiseGlasses
+  if flag FLAG_RECEIVED_CELESTIC_TOWN_NORTHWEST_HOUSE_WISE_GLASSES goto WiseWord
+  say "So, how about changing the way the world looks to your Pokémon?"
+  setflag FLAG_RECEIVED_CELESTIC_TOWN_NORTHWEST_HOUSE_WISE_GLASSES
+  give "Wise Glasses"
+  say "Night is for thinking over what the day has taught you. Wise Glasses are the pair for that."
+label WiseWord
+  say "Wise Glasses put a little more power into a Pokémon's special moves."
+  end
+# CelesticTownNorthwestHouse_TryGiveChoiceSpecs
+label Specs
+  if flag FLAG_RECEIVED_CELESTIC_TOWN_NORTHWEST_HOUSE_CHOICE_SPECS goto SpecsWord
+  say "So, how about changing the way the world looks to your Pokémon?"
+  setflag FLAG_RECEIVED_CELESTIC_TOWN_NORTHWEST_HOUSE_CHOICE_SPECS
+  give "Choice Specs"
+  say "Morning is where a new day starts. Put on the Choice Specs and choose well."
+label SpecsWord
+  say "A Pokémon in Choice Specs can use only the one move it picks." "Its Sp. Atk goes up to make up for it, though."
+  end
+# CelesticTownNorthwestHouse_TryGiveBlackGlasses
+label Black
+  if flag FLAG_RECEIVED_CELESTIC_TOWN_NORTHWEST_HOUSE_BLACKGLASSES goto BlackWord
+  say "So, how about changing the way the world looks to your Pokémon?"
+  setflag FLAG_RECEIVED_CELESTIC_TOWN_NORTHWEST_HOUSE_BLACKGLASSES
+  give "Black Glasses"
+  say "The sun is at its brightest about now. Just the hour for a pair of Black Glasses."
+label BlackWord
+  say "Black Glasses make Dark-type moves hit harder."
+  end

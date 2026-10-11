@@ -1,0 +1,263 @@
+{
+  "name": "ResortAreaRibbonSyndicate2F",
+  "displayName": "Ribbon Syndicate",
+  "bgmTrack": "sinnoh/sandgem",
+  "interior": "House",
+  "trees": "Round",
+  "width": 30,
+  "height": 17,
+  "ground": [
+    "##############################",
+    "##############################",
+    "##############################",
+    "#________##__________________#",
+    "#____________________________#",
+    "#____________________________#",
+    "#____________________________#",
+    "####___####__________________#",
+    "####___####__________________#",
+    "####___####__________________#",
+    "#_________#__________________#",
+    "#_________#__________________#",
+    "#_________#__________________#",
+    "#_________#__________________#",
+    "#_________#__________________#",
+    "#_________#__________________#",
+    "##############################"
+  ],
+  "solid": [
+    "##############################",
+    "##############################",
+    "#####.########################",
+    "#.##...####..######...######.#",
+    "#..............##.......##...#",
+    "#............................#",
+    "#............................#",
+    "####...####..................#",
+    "####...####..................#",
+    "####...####..................#",
+    "##.......##..................#",
+    "#...###...#..................#",
+    "#...###...#..................#",
+    "#.........#..................#",
+    "#.........#..................#",
+    "#.........#..................#",
+    "##############################"
+  ],
+  "behaviours": [
+    { "x": 5, "y": 2, "width": 1, "depth": 1, "behaviour": "Door" }
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "KitchenCounter",
+      "x": 17,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "KitchenCounter",
+      "x": 18,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "KitchenCounter",
+      "x": 26,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "KitchenCounter",
+      "x": 27,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 16,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 25,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 3,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 4,
+      "y": 11,
+      "width": 3,
+      "depth": 2
+    },
+    {
+      "type": "Cushion",
+      "x": 3,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 7,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Column",
+      "x": 3,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Column",
+      "x": 7,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 13,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bed",
+      "x": 15,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Bed",
+      "x": 16,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "StoreShelf",
+      "x": 22,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bed",
+      "x": 24,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Bed",
+      "x": 25,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 5,
+      "sourceY": 2,
+      "targetMap": "ResortAreaRibbonSyndicateElevator",
+      "targetX": 3,
+      "targetY": 6,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "receptionist_1",
+      "name": "Attendant",
+      "npcType": "Lass",
+      "x": 16,
+      "y": 5,
+      "facing": "Down",
+      "dialog": [
+        "No guest of ours ever sets eyes on another, and neither do their Pokémon.",
+        "That way every one of them can let go and rest."
+      ]
+    },
+    {
+      "id": "receptionist_2",
+      "name": "Attendant",
+      "npcType": "Lass",
+      "x": 12,
+      "y": 7,
+      "facing": "Down",
+      "dialog": [
+        "Ours is a most exclusive service. We see five members a day, and not one more."
+      ]
+    },
+    {
+      "id": "receptionist_3",
+      "name": "Attendant",
+      "npcType": "Lass",
+      "x": 12,
+      "y": 5,
+      "facing": "Left",
+      "script": "Spa"
+    },
+    {
+      "id": "receptionist_4",
+      "name": "Attendant",
+      "npcType": "Lass",
+      "x": 16,
+      "y": 12,
+      "facing": "Down",
+      "dialog": [
+        "Our members leave us closer to their Pokémon than they came. We are rather known for it."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

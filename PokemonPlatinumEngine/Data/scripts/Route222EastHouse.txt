@@ -1,0 +1,47 @@
+# The fisherman's house on Route 222 (plan 01 · M11, part c), on the original's plan. docs/scripts.md describes the
+# language; the lines are our own, on the original's beats (scripts_route_222_east_house.s).
+#
+# He measures any Remoraid of the team he is shown and keeps the size of the biggest (Models/SizeContest.cs, the
+# original's overlay005/size_contest.c: a size worked out of the Pokémon's personality and IVs; the record is
+# VAR_SIZE_CONTEST_RECORD, and until one is kept it is the 60.1 cm every game begins with). A bigger one than the
+# record earns a Net Ball, every time, and becomes the record. Sizes are told in centimetres here
+# (docs/mechanics/rulings.md). The original gives nothing and keeps nothing when the bag is full; the bag here
+# always has room.
+
+
+# Route222EastHouse_OnTransition
+script OnEnter
+  setflag FLAG_FIRST_ARRIVAL_POKEMON_SIZE_JUDGE
+  end
+
+
+script Fisherman
+  if not has "Remoraid" goto Dream
+  say "I had a dream! Such a wonderful dream!" "A Trainer came to my door and showed me a giant Remoraid!" "... Hold on. Is that...? It wasn't a dream at all!" "Qu-quick! How big is the Remoraid you've brought me?"
+  choosepokemon
+  if result == 255 goto Denied
+  team size "Remoraid"
+  if result == 3 goto Other
+  if result == 0 goto Smaller
+  if result == 1 goto Same
+  say "{size}... This Remoraid measures {size}..." "Why, that's bigger than the one in my dream!" "You must have this. I insist."
+  give "Net Ball"
+  team size keep
+  say "Thank you! I haven't had such fun in years." "I think I'll dream of an even bigger Remoraid tonight."
+  end
+# Route222EastHouse_NoRemoraid
+label Dream
+  say "I had a dream! Such a wonderful dream!" "A Trainer came to my door and showed me a giant Remoraid!"
+  end
+label Same
+  say "{record}... Have I been here before?" "I could swear I've measured this very size..."
+  end
+label Smaller
+  say "This Remoraid comes to {size}." "I happen to know a genius who brought me one of {record}..."
+  end
+label Other
+  say "Wha... What do you call that?" "Did you hear a single word I said?"
+  end
+label Denied
+  say "Oh, what? You'd keep me from measuring your Remoraid? Why?"
+  end

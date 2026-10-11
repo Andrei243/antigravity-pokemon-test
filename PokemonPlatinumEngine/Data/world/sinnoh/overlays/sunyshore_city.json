@@ -14,15 +14,20 @@
     { "warp": 1, "map": "SunyshoreCityNortheastHouse", "x": 4, "y": 8, "facing": "Up" },
     // The Vista Lighthouse (plan 02 · S13): its door leads into the lift, which carries whoever steps in up to the
     // gallery at the top, and back down to this door
-    { "warp": 10, "map": "VistaLighthouseElevator", "x": 3, "y": 6, "facing": "Up" }
+    { "warp": 10, "map": "VistaLighthouseElevator", "x": 3, "y": 6, "facing": "Up" },
+    // Plan 01 · M11, part c: the town's other three houses, on the original's plans (the diggers' house, the old
+    // couple's, and the inventor's, who gives Pokétch apps for Pokémon of the natures he asks to see)
+    { "warp": 2, "map": "SunyshoreCityWestHouse", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 4, "map": "SunyshoreCityNorthwestHouse", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 9, "map": "SunyshoreCityEastHouse", "x": 4, "y": 8, "facing": "Up" }
   ],
-  // The gate house to Route 222 is passed through; its rooms come with plan 01 · M11
+  // The gate house to Route 222 is passed through; its room comes with plan 01 · M11, part d
   "through": [
     { "warp": 3, "to": "route_222", "toWarp": 0 },
     { "warp": 6, "to": "route_222", "toWarp": 1 }
   ],
-  // The other houses have no rooms yet (plan 01 · M11); two houses the original never used
-  "locked": [ 2, 4, 7, 8, 9 ],
+  // Two houses the original never used (its own files call them unused): their doors stay shut for good
+  "locked": [ 7, 8 ],
   // The beach north of the Gym (trigger 0, plan 02 · S13): once the Beacon Badge is won the rival comes running up it,
   // and Jasmine gives HM07 (scripts/sunyshore_city.txt)
   "triggers": [ { "trigger": 0, "script": "RivalAndJasmine" } ],

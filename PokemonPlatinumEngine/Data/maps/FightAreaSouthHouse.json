@@ -1,0 +1,144 @@
+{
+  "name": "FightAreaSouthHouse",
+  "displayName": "Fight Area",
+  "bgmTrack": "sinnoh/veilstone",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#.....#####",
+    "#.........#",
+    "#..##.....#",
+    "#..##.....#",
+    "#.........#",
+    "#.........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 4,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 6,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 3,
+      "y": 5,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Sinnoh",
+      "targetX": 654,
+      "targetY": 445,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "old_man",
+      "name": "Old Man",
+      "npcType": "Gentleman",
+      "x": 6,
+      "y": 5,
+      "facing": "Left",
+      "dialog": [
+        "Only the toughest of Trainers used to come out to the Battle Zone.",
+        "Odd fish, people called them, for gathering in a place like this.",
+        "You'd hardly know it now. The Fight Area, the Survival Area... they seemed to go up overnight."
+      ]
+    },
+    {
+      "id": "torchic",
+      "name": "Torchic",
+      "npcType": "Pokemon",
+      "x": 2,
+      "y": 6,
+      "facing": "Down",
+      "dialog": [
+        "Torchic: Chic! Chi-chic!"
+      ],
+      "species": "Torchic"
+    },
+    {
+      "id": "old_woman",
+      "name": "Old Woman",
+      "npcType": "Lady",
+      "x": 2,
+      "y": 5,
+      "facing": "Right",
+      "dialog": [
+        "He was one of those odd fish, back when the Battle Zone was young.",
+        "Well... so was I."
+      ]
+    },
+    {
+      "id": "item_expert",
+      "name": "Item Expert",
+      "npcType": "Gentleman",
+      "x": 8,
+      "y": 6,
+      "facing": "Down",
+      "script": "ItemExpert"
+    }
+  ],
+  "wildEncounters": []
+}

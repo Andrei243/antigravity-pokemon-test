@@ -596,9 +596,13 @@ public static class ScriptParser
             // What a room's people ask of the team (plan 01 · M11, part b)
             case "team":
             {
-                string what = r.OneOf("befriend", "level", "combee", "condition", "massage");
+                string what = r.OneOf("befriend", "level", "combee", "condition", "massage", "first", "nature", "size");
                 return what switch
                 {
+                    // Plan 01 · M11, part c: a nature by its name, and a size beside the record ("team size keep" keeps it)
+                    "nature" => new Instruction { Op = Op.Team, Line = line, Name = what, Other = NatureWord(r) },
+                    "size" when r.PeekWord("keep") => new Instruction { Op = Op.Team, Line = line, Name = what, Option = r.OneOf("keep") == "keep" },
+                    "size" => new Instruction { Op = Op.Team, Line = line, Name = what, Other = r.Text("a species' name") },
                     "befriend" => new Instruction { Op = Op.Team, Line = line, Name = what, Number = r.Int("how much friendlier") },
                     "level" => new Instruction { Op = Op.Team, Line = line, Name = what, Other = r.Variable(writable: false) },
                     "condition" => new Instruction { Op = Op.Team, Line = line, Name = what, Other = r.OneOf("cool", "beauty", "cute", "smart", "tough") },
@@ -951,6 +955,14 @@ public static class ScriptParser
             if (steps.Count == 0) throw Error("a walk needs steps: up, down, left, right");
             return (steps, fast);
         }
+    }
+
+    /// <summary>A nature by its name, in any case (<c>team nature serious</c>).</summary>
+    private static string NatureWord(Reader r)
+    {
+        string word = r.Word("a nature");
+        if (!Enum.TryParse<Nature>(word, ignoreCase: true, out var nature) || !Enum.IsDefined(nature)) throw r.Error($"'{word}' is no nature");
+        return nature.ToString();
     }
 
     private static Direction? DirectionOf(string word) => word switch

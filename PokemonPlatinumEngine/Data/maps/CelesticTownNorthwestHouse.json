@@ -1,0 +1,145 @@
+{
+  "name": "CelesticTownNorthwestHouse",
+  "displayName": "Celestic Town",
+  "bgmTrack": "sinnoh/celestic",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "##...#..###",
+    "##...#....#",
+    "######....#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "####.######"
+  ],
+  "behaviours": [
+    { "x": 5, "y": 3, "width": 1, "depth": 2, "behaviour": "Counter" },
+    { "x": 1, "y": 5, "width": 5, "depth": 1, "behaviour": "Counter" }
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 4,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 1,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 5,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Counter",
+      "x": 1,
+      "y": 5,
+      "width": 5,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Sinnoh",
+      "targetX": 450,
+      "targetY": 516,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "expert_m",
+      "name": "Shopkeeper",
+      "npcType": "Gentleman",
+      "x": 2,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "Come in, come in. This counter has the things you'll find nowhere but Celestic."
+      ],
+      "isPokeMartClerk": true,
+      "mart": "celestic"
+    },
+    {
+      "id": "expert_f",
+      "name": "Shopkeeper",
+      "npcType": "Lady",
+      "x": 4,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "Welcome, dear. What can I get you?"
+      ],
+      "isPokeMartClerk": true
+    },
+    {
+      "id": "gym_guide",
+      "name": "Man in Glasses",
+      "npcType": "Gentleman",
+      "x": 7,
+      "y": 6,
+      "facing": "Left",
+      "script": "Glasses",
+      "movement": "wander_around",
+      "rangeZ": 1
+    }
+  ],
+  "wildEncounters": []
+}

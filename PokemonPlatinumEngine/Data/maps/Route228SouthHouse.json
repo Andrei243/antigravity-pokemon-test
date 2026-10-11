@@ -1,0 +1,184 @@
+{
+  "name": "Route228SouthHouse",
+  "displayName": "Route 228",
+  "bgmTrack": "sinnoh/route209",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "##...######",
+    "##........#",
+    "#......#..#",
+    "#.##......#",
+    "####.....##",
+    "##......###",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Cushion",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "BookPile",
+      "x": 5,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 6,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 7,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "BookPile",
+      "x": 7,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 2,
+      "y": 6,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "BookPile",
+      "x": 1,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "BookPile",
+      "x": 9,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 1,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 8,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 9,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Sinnoh",
+      "targetX": 775,
+      "targetY": 387,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 5,
+      "y": 3,
+      "text": "A stack of old, heavy books.\n\"Matter and the Mind\", \"Where the Spirit Dwells\"..."
+    },
+    {
+      "x": 1,
+      "y": 7,
+      "text": "A stack of old, heavy books.\n\"How Machines Are Made\", \"The Workings of a Perfect Thing\"..."
+    },
+    {
+      "x": 7,
+      "y": 5,
+      "text": "A stack of old, heavy books.\n\"Past the Edge of Time and Space\", \"What Holds Time and Space Together?\"..."
+    },
+    {
+      "x": 9,
+      "y": 7,
+      "text": "A stack of old, heavy books.\n\"The Stars and Their Galaxies\", \"How Space Began\"..."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "gentleman",
+      "name": "Old Gentleman",
+      "npcType": "gentleman",
+      "x": 2,
+      "y": 3,
+      "facing": "Left",
+      "script": "Gentleman"
+    }
+  ],
+  "wildEncounters": []
+}

@@ -1,0 +1,163 @@
+{
+  "name": "Route216House",
+  "displayName": "Snowbound Lodge",
+  "bgmTrack": "sinnoh/route216",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "####...####",
+    "#.........#",
+    "#.#.....#.#",
+    "#.......#.#",
+    "##......#.#",
+    "##........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 5,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 1,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 3,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fridge",
+      "x": 7,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "KitchenCounter",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "KitchenCounter",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 1,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 2,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bed",
+      "x": 8,
+      "y": 5,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Sinnoh",
+      "targetX": 303,
+      "targetY": 399,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 8,
+      "y": 6,
+      "text": "A bed, with the blankets turned down.",
+      "script": "Bed"
+    },
+    {
+      "x": 8,
+      "y": 7,
+      "text": "A bed, with the blankets turned down.",
+      "script": "Bed"
+    }
+  ],
+  "npcs": [
+    {
+      "id": "hiker",
+      "name": "Hiker",
+      "npcType": "Gentleman",
+      "x": 3,
+      "y": 5,
+      "facing": "Down",
+      "script": "Rest"
+    },
+    {
+      "id": "snowpoint_npc_f",
+      "name": "Woman",
+      "npcType": "Lady",
+      "x": 6,
+      "y": 4,
+      "facing": "Left",
+      "dialog": [
+        "Some Pokémon have Thick Fat to keep them warm. I have three coats and a scarf.",
+        "Do you know what Thick Fat does in a battle, by the way?",
+        "It halves the damage of Fire-type and Ice-type moves."
+      ],
+      "movement": "wander_around",
+      "rangeZ": 1
+    }
+  ],
+  "wildEncounters": []
+}

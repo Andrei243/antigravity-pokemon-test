@@ -11,8 +11,9 @@
     // The Gym, rebuilt to the original's plan with its ice and snowballs (plan 01 · M9, part 2b)
     { "warp": 5, "map": "SnowpointGym", "x": 11, "y": 28, "facing": "Up" }
   ],
-  // The east house has no room yet (plan 01 · M11). Snowpoint Temple is built inside (plan 01 · M10, part b), and its
-  // two doors, warps 2 and 6, stay shut until the story lets the Champion in (plan 02 · S15 takes them out of here)
+  // The east house (warp 1) is a move tutor's: its room comes with the tutors' (plan 01 · M11, part d). Snowpoint
+  // Temple is built inside (plan 01 · M10, part b), and its two doors, warps 2 and 6, stay shut until the story lets
+  // the Champion in (plan 02 · S15 takes them out of here)
   "locked": [ 1, 2, 6 ],
   // Candice at the temple's door and Cynthia on the quay come after the Hall of Fame (plan 02 · S15; their flags
   // are set from the start, common.ChapterEight). The original's trigger in front of the temple's west door, beside

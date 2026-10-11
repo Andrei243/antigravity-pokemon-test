@@ -3,13 +3,17 @@
   "bgmTrack": "sinnoh/route209",
   "trees": "Round",
   "architecture": "Seaside",
-  // The gate house to Sunyshore City is passed through; its rooms come with plan 01 · M11
+  // The gate house to Sunyshore City is passed through; its room comes with plan 01 · M11, part d
   "through": [
     { "warp": 0, "to": "sunyshore_city", "toWarp": 3 },
     { "warp": 1, "to": "sunyshore_city", "toWarp": 6 }
   ],
-  // The house of the size contest and the Pikachu Fan Club have no rooms yet (plan 01 · M11)
-  "locked": [ 2, 3 ],
+  // The fisherman's house, where a Remoraid is measured against the biggest he has seen, and the Pikachu Fan Club, on
+  // the original's plans (plan 01 · M11, part c)
+  "doors": [
+    { "warp": 2, "map": "Route222EastHouse", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 3, "map": "Route222WestHouse", "x": 4, "y": 8, "facing": "Up" }
+  ],
   // Policeman Thomas battles only at night: by day his double without a battle (policeman_thomas_no_battle, on the
   // same tile) walks his beat instead, swapped by the route's arrival script (plan 06 · R14a)
   "people": {

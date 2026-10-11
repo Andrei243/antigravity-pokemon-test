@@ -1,0 +1,16 @@
+# Celestic Town's south-west house (plan 01 · M11, part c), on the original's plan. docs/scripts.md describes the
+# language; the lines are our own, on the original's beats (scripts_celestic_town_southwest_house.s).
+#
+# The black belt has no use for a watch and gives the Pokétch's Analog Watch app away, once: the app itself is what
+# says it was given. His Happiny has its cry.
+
+
+script Watch
+  if poketchapp AnalogWatch goto Have
+  say "I must bear down and train. To someone who trains, the hour means nothing." "So what would I want with a watch? Here, you have it!"
+  fanfare keyitem
+  poketchapp AnalogWatch
+  text "{player} added the Analog Watch app to the Pokétch!"
+label Have
+  say "Hands or numbers: which sort of watch do you like best?" "Myself, I tell the time by an hourglass."
+  end

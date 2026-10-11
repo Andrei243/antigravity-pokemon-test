@@ -5,8 +5,12 @@
   // The rock crusted with ice stands on this route: Eevee become Glaceon here, as the original's table of places says.
   // The rock itself is an object of the original's that nothing draws yet
   "evolutionSites": [ "Ice Rock" ],
-  // The two houses have no rooms yet (plan 01 · M11)
-  "locked": [ 0, 1 ],
+  // The two houses, on the original's plans (plan 01 · M11, part c): the hiker who lost HM08 in the snow, and the
+  // woman who gives a Spell Tag and is gone
+  "doors": [
+    { "warp": 0, "map": "Route217WestHouse", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 1, "map": "Route217NortheastHouse", "x": 4, "y": 8, "facing": "Up" }
+  ],
   // Maylene meets the player at the route's south end on her way to Snowpoint City (the original's trigger 0; plan 02 ·
   // S10, scripts/route_217.txt)
   "triggers": [ { "trigger": 0, "script": "Maylene" } ],

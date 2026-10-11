@@ -1,0 +1,14 @@
+# The Survival Area's south house (plan 01 · M11, part c), on the original's plan. docs/scripts.md describes the
+# language; the lines are our own, on the original's beats (scripts_survival_area_south_house.s).
+#
+# The black belt gives TM42, Facade, once (FLAG_RECEIVED_SURVIVAL_AREA_SOUTH_HOUSE_TM42).
+
+
+script BlackBelt
+  if flag FLAG_RECEIVED_SURVIVAL_AREA_SOUTH_HOUSE_TM42 goto Facade
+  say "There's a move that hits twice as hard when the Pokémon using it is poisoned, paralysed or burned." "I happen to have the Technical Machine for it right here. You want it? It's yours."
+  setflag FLAG_RECEIVED_SURVIVAL_AREA_SOUTH_HOUSE_TM42
+  give "TM42"
+label Facade
+  say "Facade is a fine move for a Pokémon to know." "Whoever you're up against will think twice before poisoning or paralysing it."
+  end

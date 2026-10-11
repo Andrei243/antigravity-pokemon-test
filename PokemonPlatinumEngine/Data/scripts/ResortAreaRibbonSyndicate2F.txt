@@ -1,0 +1,115 @@
+# The Ribbon Syndicate's upper floor in the Resort Area, its spa (plan 01 · M11, part c), on the original's plan.
+# docs/scripts.md describes the language; the lines are our own, on the original's beats
+# (scripts_resort_area_ribbon_syndicate_2f.s).
+#
+# Once a day (FLAG_DAILY_GOT_SPA_TREATMENT_RESORT_AREA_RIBBON_SYNDICATE_2F, cleared with the day) the attendant by
+# the lift offers the first of the team that is no Egg a treatment (team first: the original's
+# GetFirstNonEggInParty). She leads the player to the chair of the west bay, by the original's own steps from each
+# of the four tiles she can be spoken to from, the three other attendants close in, one of four things is said of
+# what is used (a die of four), and the Pokémon grows friendlier: by 30 five times in a hundred, by 10 twenty-five,
+# by 5 the rest (a die of a hundred; team befriend, as the original's IncreasePartyMonFriendship counts it).
+# Afterwards the attendant to the west steps out of the way. The floor is come to by the lift alone, so arriving
+# says where the lift stands (FLAG_RIBBON_SYNDICATE_LIFT_UPSTAIRS, a flag of our own: the lift's car leads out by it).
+
+
+script OnEnter
+  setflag FLAG_RIBBON_SYNDICATE_LIFT_UPSTAIRS
+  end
+
+
+# ResortAreaRibbonSyndicate2F_Receptionist3
+script Spa
+  if flag FLAG_DAILY_GOT_SPA_TREATMENT_RESORT_AREA_RIBBON_SYNDICATE_2F goto Tomorrow
+  team first
+  if var RESULT == 255 goto Tomorrow
+  say "How may we look after you today? With a spa treatment, perhaps?" "Our treatments leave a Pokémon fonder of its Trainer. Your {member:RESULT} would enjoy one, I think."
+  ask "Would you care for a spa treatment, {player}?"
+  if no goto Another
+  say "Very good. This way, if you please..."
+  # ResortAreaRibbonSyndicate2F_WalkToChair: by where the player stands beside her
+  if var PLAYER_X == 11 goto FromWest
+  if var PLAYER_X == 13 goto FromEast
+  if var PLAYER_Y == 4 goto FromNorth
+  # From the south
+  walk self right 1 down 1 right 2 down 1 right 2
+  face self left
+  walk player right 3 down 1 right 1
+  goto Seated
+label FromWest
+  walk self right 2 down 2 right 3
+  face self left
+  walk player right 3 down 2 right 2
+  goto Seated
+label FromEast
+  walk self down 1 right 1 down 1 right 4
+  face self left
+  walk player down 2 right 3
+  goto Seated
+label FromNorth
+  walk self right 2 down 2 right 3
+  face self left
+  walk player down 1 right 3 down 2 right 1
+label Seated
+  face player down
+  # ResortAreaRibbonSyndicate2F_ReceptionistsSurroundPlayer
+  move receptionist_1 down 1
+  move receptionist_2 right 3
+  move receptionist_4 up 4
+  waitmoves
+  say "We are ready to begin. Let every muscle go, if you would."
+  random 4
+  if result == 0 goto Oil
+  if result == 1 goto Foam
+  if result == 2 goto Massage
+  say "The herbs you can smell on the air of the salon are there to set the mind at rest."
+  goto Treated
+label Oil
+  say "This oil has diamonds dissolved in it. It works all the better for them."
+  goto Treated
+label Foam
+  say "There is an essence drawn from pearls in this foam."
+  goto Treated
+label Massage
+  say "This massage comes from overseas. It drives out everything the body is better without."
+label Treated
+  fade out
+  sound "heal"
+  wait 1.2
+  fade in
+  setflag FLAG_DAILY_GOT_SPA_TREATMENT_RESORT_AREA_RIBBON_SYNDICATE_2F
+  # ResortAreaRibbonSyndicate2F_IncreaseFriendship
+  random 100
+  if var RESULT < 5 goto Much
+  if var RESULT < 30 goto More
+  team first
+  team befriend 5
+  call Aside
+  say "There. All done." "Our treatment has left your pampered darling a little fonder of you."
+  end
+label Much
+  team first
+  team befriend 30
+  call Aside
+  say "There. All done." "Our treatment has left your pampered darling very much fonder of you."
+  end
+label More
+  team first
+  team befriend 10
+  call Aside
+  say "There. All done." "Our treatment has left your pampered darling fonder of you."
+  end
+# ResortAreaRibbonSyndicate2F_SeeYouAgain
+label Another
+  say "We hope to see you again."
+  end
+# ResortAreaRibbonSyndicate2F_OneSessionADay
+label Tomorrow
+  say "Oh, I do beg your pardon." "A member may have one spa session a day, and no more."
+  end
+
+
+# ResortAreaRibbonSyndicate2F_Movement_Receptionist2MoveAside: the way out of the chair
+script Aside
+  walk receptionist_2 up 1
+  face receptionist_2 down
+  return

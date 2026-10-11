@@ -6,11 +6,14 @@
   "doors": [
     { "warp": 5, "map": "CelesticPokemonCenter", "x": 5, "y": 7, "facing": "Up" },
     // The elder's house, rebuilt to the original's plan (plan 02 · S9)
-    { "warp": 0, "map": "CelesticTownNorthHouse", "x": 5, "y": 8, "facing": "Up" }
+    { "warp": 0, "map": "CelesticTownNorthHouse", "x": 5, "y": 8, "facing": "Up" },
+    // Plan 01 · M11, part c: the town's other three houses, on the original's plans. The north-west one is its shop:
+    // the old couple behind its counter sell what a Mart does, and the town's own things
+    { "warp": 1, "map": "CelesticTownNorthwestHouse", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 2, "map": "CelesticTownNortheastHouse", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 3, "map": "CelesticTownSouthwestHouse", "x": 4, "y": 8, "facing": "Up" }
   ],
-  // The other houses have no rooms yet (plan 01 · M11). The cave of the ruins (warp 4) is open since its scene,
-  // plan 02 · S9: an area of its own, celestic_town_cave
-  "locked": [ 1, 2, 3 ],
+  // (The cave of the ruins, warp 4, is open since its scene, plan 02 · S9: an area of its own, celestic_town_cave)
   // The elder's warning as the player first comes up the road (plan 02 · S9, scripts/celestic_town.txt)
   "triggers": [ { "trigger": 0, "script": "ElderWarns" } ],
   // The carvings either side of the ruins' door
