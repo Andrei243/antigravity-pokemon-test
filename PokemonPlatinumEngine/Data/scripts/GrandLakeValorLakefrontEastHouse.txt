@@ -1,0 +1,18 @@
+# The Hotel Grand Lake's east cottage at Valor Lakefront (plan 01 · M11, part b), on the original's plan.
+# docs/scripts.md describes the language; the lines are our own, on the original's beats
+# (scripts_grand_lake_valor_lakefront_east_house.s).
+#
+# The woman who dropped her Suite Key stands before the cottage's door until the key is brought back to her
+# (valor_lakefront.txt: FLAG_HIDE_GRAND_LAKE_VALOR_LAKEFRONT_EAST_HOUSE_BEAUTY is cleared then). Inside she gives the
+# White Flute for it, once (FLAG_RECEIVED_GRAND_LAKE_VALOR_LAKEFRONT_EAST_HOUSE_WHITE_FLUTE).
+
+
+script WhiteFlute
+  if flag FLAG_RECEIVED_GRAND_LAKE_VALOR_LAKEFRONT_EAST_HOUSE_WHITE_FLUTE goto After
+  say "Thank you so much for helping me out. Here, a little something for your trouble!"
+  setflag FLAG_RECEIVED_GRAND_LAKE_VALOR_LAKEFRONT_EAST_HOUSE_WHITE_FLUTE
+  give "White Flute"
+  end
+label After
+  say "Blow the White Flute when you'd like more wild Pokémon to come your way." "It's made of glass, and they only make them in the Hoenn region. Rather special, isn't it?"
+  end

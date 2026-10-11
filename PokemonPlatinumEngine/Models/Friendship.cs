@@ -98,6 +98,23 @@ public static class FriendshipRules
         p.Friendship = Math.Clamp(p.Friendship + delta, 0, Max);
     }
 
+    /// <summary>
+    /// A script's own friendship (plan 01 · M11, part b; <c>ScrCmd_IncreasePartyMonFriendship</c>: the Massage Girl's
+    /// three points): the amount as it is given, half as much again with a Soothe Bell and then one more out of a Luxury
+    /// Ball, never past the most. The original's one more for a Pokémon met where the script runs is left out: this
+    /// game keeps no such place (docs/mechanics/rulings.md).
+    /// </summary>
+    public static void ChangeByScript(Pokemon p, int amount)
+    {
+        if (p.IsEgg) return;
+        if (amount > 0)
+        {
+            if (p.HeldItem?.HoldEffect == SootheEffect) amount = amount * 150 / 100;
+            if (p.Ball == LuxuryBall) amount++;
+        }
+        p.Friendship = Math.Clamp(p.Friendship + amount, 0, Max);
+    }
+
     /// <summary>Whether an item's friendship would raise it (<c>CheckFriendshipItemEffect</c>): not at the most, and only by a gain.</summary>
     public static bool WouldRaise(Pokemon p, (int Low, int Mid, int High) change) => p.Friendship < Max && Band(p, change) > 0;
 }

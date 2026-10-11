@@ -1,0 +1,164 @@
+{
+  "name": "PastoriaCityObservatoryGate1F",
+  "displayName": "Pastoria City",
+  "bgmTrack": "sinnoh/pastoria",
+  "interior": "House",
+  "trees": "Round",
+  "width": 13,
+  "height": 13,
+  "ground": [
+    "#############",
+    "#############",
+    "#############",
+    "#___________#",
+    "#___________#",
+    "#_____#######",
+    "#_____#######",
+    "#_____#######",
+    "#_____##____#",
+    "#_____##____#",
+    "#___________#",
+    "#___________#",
+    "#####D#######"
+  ],
+  "solid": [
+    "#############",
+    "#############",
+    "#####.#######",
+    "####........#",
+    "#..#........#",
+    "#..#..#######",
+    "#..#..#######",
+    "#..#..#######",
+    "####..####..#",
+    "#.....####..#",
+    "#...........#",
+    "#...........#",
+    "#####.#######"
+  ],
+  "behaviours": [
+    { "x": 3, "y": 3, "width": 1, "depth": 5, "behaviour": "Counter" },
+    { "x": 1, "y": 8, "width": 3, "depth": 1, "behaviour": "Counter" }
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SideStairsUp",
+      "x": 8,
+      "y": 8,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Rug",
+      "x": 10,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 5,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 3,
+      "y": 3,
+      "width": 1,
+      "depth": 5
+    },
+    {
+      "type": "Table",
+      "x": 1,
+      "y": 8,
+      "width": 3,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 5,
+      "sourceY": 12,
+      "targetMap": "Sinnoh",
+      "targetX": 610,
+      "targetY": 810,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 10,
+      "sourceY": 8,
+      "targetMap": "PastoriaCityObservatoryGate2F",
+      "targetX": 6,
+      "targetY": 8,
+      "targetFacing": "Left"
+    },
+    {
+      "sourceX": 5,
+      "sourceY": 2,
+      "targetMap": "GreatMarsh",
+      "targetX": 68,
+      "targetY": 117,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "cashier_f",
+      "name": "Attendant",
+      "npcType": "Clerk",
+      "x": 2,
+      "y": 7,
+      "facing": "Down",
+      "script": "Explain"
+    },
+    {
+      "id": "cashier_m",
+      "name": "Attendant",
+      "npcType": "Clerk",
+      "x": 2,
+      "y": 6,
+      "facing": "Right",
+      "dialog": [
+        "Welcome to the Great Marsh! Step up to the counter if you would like to play a Safari Game."
+      ]
+    },
+    {
+      "id": "cowgirl",
+      "name": "Cowgirl",
+      "npcType": "Lass",
+      "x": 1,
+      "y": 9,
+      "facing": "Right",
+      "script": "Cowgirl"
+    }
+  ],
+  "triggers": [
+    {
+      "x": 4,
+      "y": 6,
+      "width": 3,
+      "depth": 1,
+      "script": "Counter",
+      "variable": "VAR_PASTORIA_CITY_OBSERVATORY_GATE_1F_STATE",
+      "value": 0
+    }
+  ],
+  "wildEncounters": []
+}

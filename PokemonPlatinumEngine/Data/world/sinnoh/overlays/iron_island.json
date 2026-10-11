@@ -2,8 +2,11 @@
   "area": "iron_island",
   "bgmTrack": "sinnoh/route203",
   "trees": "Pine",
-  // The house has no rooms yet (plan 01 · M11)
-  "locked": [ 0 ],
+  // The cabin by the landing, on the original's plan (plan 01 · M11, part b); Byron waits in it with a Metal Coat
+  // once the National Pokédex is the player's (plan 02 · S15)
+  "doors": [
+    { "warp": 0, "map": "IronIslandHouse", "x": 4, "y": 8, "facing": "Up" }
+  ],
   "people": {
     // He sails the player back to Canalave City (scripts/iron_island.txt)
     "sailor": { "name": "Sailor", "script": "Ferry" },

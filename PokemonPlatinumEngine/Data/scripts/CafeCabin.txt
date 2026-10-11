@@ -1,0 +1,47 @@
+# Café Cabin on Route 210 (plan 01 · M11, part b), on the original's plan. docs/scripts.md describes the language; the
+# lines are our own, on the original's beats (scripts_cafe.s).
+#
+# The waitress behind the bar sells Moomoo Milk, a bottle for $500 or a dozen for $6000, as often as asked. The old
+# man at the table has something to say about the Psyduck across the road outside, before and after the Secret
+# Potion has cured them (FLAG_USED_SECRETPOTION, route_210_south.txt). The three who battle (two collectors and a
+# waitress) are trainers of the room, on the common script.
+
+
+script OnEnter
+  setflag FLAG_FIRST_ARRIVAL_ROUTE_210_COFFEE_SHOP
+  end
+
+
+script Milk
+  say "How are you doing? What'll it be?" "Not that there's much to choose from: Moomoo Milk is all we ever pour." "Moomoo Milk, $500 a bottle."
+  choose "Something for the road?" "1 bottle" "1 dozen" "No, thanks"
+  if result == 0 goto Bottle
+  if result == 1 goto Dozen
+  say "Suit yourself." "And don't go thinking Moomoo Milk is all we can get, mind. It's all we choose to serve. We're very particular about it."
+  end
+label Bottle
+  takemoney 500
+  if result == 0 goto Short
+  sound "select"
+  say "Here's your Moomoo Milk. Enjoy."
+  give "Moomoo Milk"
+  end
+label Dozen
+  takemoney 6000
+  if result == 0 goto Short
+  sound "select"
+  say "Moomoo Milk by the dozen. That's twelve to the dozen, of course."
+  give "Moomoo Milk" 12
+  end
+label Short
+  say "Oh! You haven't the money for that, sweetie."
+  end
+
+
+script Psyduck
+  if flag FLAG_USED_SECRETPOTION goto Cured
+  say "You'll have seen the Psyduck huddled across the road outside, youngster?" "Psyduck are plagued by headaches that never quite leave them, poor things." "I'm afraid there's nothing for it but to wait until they feel better."
+  end
+label Cured
+  say "Well, well! I hear you're the one who eased those Psyduck's headaches." "Whoever trusted you with that Secret Potion must be quite a Trainer!"
+  end

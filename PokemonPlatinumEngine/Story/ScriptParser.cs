@@ -20,7 +20,7 @@ namespace PokemonPlatinumEngine.Story;
 public static class ScriptParser
 {
     /// <summary>Variables a script may read but not write: the game keeps them.</summary>
-    public static readonly string[] BuiltInVariables = { "RESULT", "PLAYER_X", "PLAYER_Y", "MONEY", "PARTY_COUNT", "BADGE_COUNT", "GREETINGS", "SEEN", "LEAD_FRIENDSHIP" };
+    public static readonly string[] BuiltInVariables = { "RESULT", "PLAYER_X", "PLAYER_Y", "MONEY", "PARTY_COUNT", "BADGE_COUNT", "GREETINGS", "SEEN", "LEAD_FRIENDSHIP", "TURNS", "SAFARI_CAUGHT" };
 
     private static readonly Regex Identifier = new("^[A-Za-z_][A-Za-z0-9_]*$", RegexOptions.Compiled);
     private static readonly Regex FlagName = new("^(FLAG_[A-Z0-9_]+|[A-Z][A-Za-z]+HallOfFame)$", RegexOptions.Compiled);
@@ -590,6 +590,21 @@ public static class ScriptParser
                 if (what is "tells" or "partner" && number is < 0 or > 4) throw r.Error("the Battle Salon's partners are 0 to 4");
                 if (what == "enough" && number is < 0 or > 4) throw r.Error("a challenge takes two, three or four Pokémon");
                 return new Instruction { Op = Op.Tower, Line = line, Name = what, Other = which, Number = number };
+            }
+
+            // What a room's people ask of the team (plan 01 · M11, part b)
+            case "team":
+            {
+                string what = r.OneOf("befriend", "level", "combee", "condition", "massage");
+                return what switch
+                {
+                    "befriend" => new Instruction { Op = Op.Team, Line = line, Name = what, Number = r.Int("how much friendlier") },
+                    "level" => new Instruction { Op = Op.Team, Line = line, Name = what, Other = r.Variable(writable: false) },
+                    "condition" => new Instruction { Op = Op.Team, Line = line, Name = what, Other = r.OneOf("cool", "beauty", "cute", "smart", "tough") },
+                    // "team massage room" asks; a bare "team massage" gives
+                    "massage" => new Instruction { Op = Op.Team, Line = line, Name = what, Option = r.PeekWord("room") && r.OneOf("room") == "room" },
+                    _ => new Instruction { Op = Op.Team, Line = line, Name = what }
+                };
             }
 
             case "script":

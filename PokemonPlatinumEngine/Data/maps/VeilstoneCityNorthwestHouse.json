@@ -1,0 +1,171 @@
+{
+  "name": "VeilstoneCityNorthwestHouse",
+  "displayName": "Veilstone City",
+  "bgmTrack": "sinnoh/veilstone",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "##...######",
+    "##........#",
+    "#......#..#",
+    "#.##......#",
+    "####.....##",
+    "##......###",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Cushion",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 6,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 7,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Table",
+      "x": 2,
+      "y": 6,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Crates",
+      "x": 1,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 8,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 9,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 7,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Sinnoh",
+      "targetX": 711,
+      "targetY": 603,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "ace_trainer_f",
+      "name": "Trainer",
+      "npcType": "Lass",
+      "x": 4,
+      "y": 3,
+      "facing": "Down",
+      "dialog": [
+        "An old tale says Mt. Coronet split Sinnoh into two halves.",
+        "When I see how different the Shellos of the east and the west have grown, I think the tale may well be true."
+      ]
+    },
+    {
+      "id": "old_woman",
+      "name": "Old Woman",
+      "npcType": "Lady",
+      "x": 6,
+      "y": 6,
+      "facing": "Down",
+      "dialog": [
+        "Where there are people who long to see them, Pokémon show themselves.",
+        "And they come in more shapes than anyone could count."
+      ],
+      "movement": "look_south_and_east"
+    },
+    {
+      "id": "buneary",
+      "name": "Buneary",
+      "npcType": "Pokemon",
+      "x": 3,
+      "y": 5,
+      "facing": "Down",
+      "dialog": [
+        "Buneary: Nii! Nii!"
+      ],
+      "species": "Buneary",
+      "movement": "look_south_and_east"
+    }
+  ],
+  "wildEncounters": []
+}

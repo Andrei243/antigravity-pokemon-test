@@ -18,7 +18,12 @@
     // original's plans (plan 06 · R16b)
     { "warp": 2, "map": "VeilstoneGameCorner", "x": 5, "y": 11, "facing": "Up" },
     { "warp": 5, "map": "VeilstonePrizeExchange", "x": 4, "y": 8, "facing": "Up" },
-    { "warp": 7, "map": "VeilstoneSoutheastHouse", "x": 4, "y": 8, "facing": "Up" }
+    { "warp": 7, "map": "VeilstoneSoutheastHouse", "x": 4, "y": 8, "facing": "Up" },
+    // Plan 01 · M11, part b: the town's other three houses, on the original's plans (the Massage Girl's is the
+    // south-west one)
+    { "warp": 6, "map": "VeilstoneCitySouthwestHouse", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 8, "map": "VeilstoneCityNorthwestHouse", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 9, "map": "VeilstoneCityNortheastHouse", "x": 4, "y": 8, "facing": "Up" }
   ],
   // Gate houses are passed through; their rooms come with plan 01 · M11
   "through": [
@@ -27,8 +32,8 @@
     { "warp": 11, "to": "route_214", "toWarp": 0 },
     { "warp": 12, "to": "route_214", "toWarp": 1 }
   ],
-  // The Department Store and three houses (plan 01 · M11) have no rooms yet
-  "locked": [ 3, 6, 8, 9 ],
+  // The Department Store has no rooms yet (plan 01 · M11, part d)
+  "locked": [ 3 ],
   // Plan 02 · S8 (scripts/veilstone_city.txt): the warehouse's guards pushing the player back until Maylene's Badge
   // (trigger 0), and Crasher Wake coming out of the Gym (trigger 1)
   "triggers": [ { "trigger": 0, "script": "GruntsBlock" }, { "trigger": 1, "script": "CrasherWake" } ],

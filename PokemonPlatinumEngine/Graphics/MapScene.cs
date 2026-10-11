@@ -598,6 +598,8 @@ internal sealed class MapScene
     {
         if (ty < roomCorner.Back) return false;
         if (ty == Map.Height - 1) return t == TileType.Door;
+        // (the wall before a house's void is its front there, a kerb with no floor under it: style guide, "Rooms")
+        if (t == TileType.Wall && Map.Interior == InteriorStyle.House && Map.GetGroundTile(tx, ty + 1) == TileType.Void) return false;
         return tx >= roomCorner.Left && tx < Map.Width - 1;
     }
 
@@ -896,23 +898,39 @@ internal sealed class MapScene
             var backWall = kit.Face(whole ? "wall.back" : $"wall.back.{run}", run, wallH, c => GroundBaker.PaintWall(c, style, 0, theme, look));
             kit.Quad(kit.At(a, 0, back), kit.At(a + run, 0, back), kit.At(a + run, wallH, back), kit.At(a, wallH, back), backWall, KitBuilder.FrontNormal);
         }
-        var sideWall = kit.Face("wall.side", front - back, wallH, c => GroundBaker.PaintWall(c, style, 0, theme, look));
-        kit.Quad(kit.At(left, 0, front), kit.At(left, 0, back), kit.At(left, wallH, back), kit.At(left, wallH, front), sideWall, Vector3.UnitX);
-        kit.Quad(kit.At(right, 0, back), kit.At(right, 0, front), kit.At(right, wallH, front), kit.At(right, wallH, back), sideWall, -Vector3.UnitX);
+        // A house whose plan is no rectangle (plan 01 · M11, part b: the Pokémon Mansion's cross; style guide, "Rooms")
+        // has nothing where its plan has nothing: beyond the wall that bounds its floor the tiles are void. A side wall
+        // stops where the void beside it begins, and the wall before the void is the room's front there: the same kerb
+        bool Nothing(int x, int y) => style == InteriorStyle.House && Map.GetGroundTile(x, y) == TileType.Void;
+        int SideEnd(int column)
+        {
+            int row = h - 1;
+            while (row - 1 > by + 1 && Nothing(column, row - 1)) row--;
+            return row == h - 1 ? front : (row - 1) * T;
+        }
+        int westEnd = SideEnd(lx), eastEnd = SideEnd(w - 2);
+        Art SideWall(int end) => kit.Face(end == front ? "wall.side" : $"wall.side.{end - back}", end - back, wallH, c => GroundBaker.PaintWall(c, style, 0, theme, look));
+        kit.Quad(kit.At(left, 0, westEnd), kit.At(left, 0, back), kit.At(left, wallH, back), kit.At(left, wallH, westEnd), SideWall(westEnd), Vector3.UnitX);
+        kit.Quad(kit.At(right, 0, back), kit.At(right, 0, eastEnd), kit.At(right, wallH, eastEnd), kit.At(right, wallH, back), SideWall(eastEnd), -Vector3.UnitX);
 
         // A way on through the back wall of a room that is no Gym (a warp on the row behind the floor: the laboratory
-        // of Team Galactic's headquarters, plan 02 · S11): a doorway on the wall, which whoever takes it walks into
+        // of Team Galactic's headquarters, plan 02 · S11): a doorway on the wall, which whoever takes it walks into.
+        // In a house the same goes for the back wall come forward (plan 01 · M11, part b: the Pokémon Mansion's
+        // corridors, whose own back wall stands three tiles before the hall's): the doorway is on that wall's face
         if (style != InteriorStyle.Gym)
             foreach (var warp in Map.Warps)
             {
-                if (warp.SourceY != by - 1 || warp.SourceX < lx || warp.SourceX >= w - 1) continue;
+                if (warp.SourceX < lx || warp.SourceX >= w - 1) continue;
+                bool forward = warp.SourceY >= by && warp.SourceY < h - 2 && Map.GetGroundTile(warp.SourceX, warp.SourceY) == TileType.Wall
+                    && BackWallJog(Map, warp.SourceX, warp.SourceY);
+                if (warp.SourceY != by - 1 && !forward) continue;
                 const int dw = GalacticArt.DoorwayWidth, dh = GalacticArt.DoorwayHeight;
                 // Team Galactic's frame in their rooms (the lab's); in any other room a lift's doors where the tile is
                 // the original's door, and a doorway framed in the house's wood otherwise (plan 01 · M11)
                 var doorway = style == InteriorStyle.Lab ? kit.Face("wall.doorway", dw, dh, GalacticArt.PaintDoorway)
                     : Map.BehaviourAt(warp.SourceX, warp.SourceY) == TileBehavior.Door ? kit.Face("wall.liftdoors", dw, dh, PropModels.PaintLiftDoors)
                     : kit.Face("wall.doorway.house", dw, dh, PropModels.PaintDoorway);
-                float x0 = warp.SourceX * T + (T - dw) / 2f, z = back + 0.5f;
+                float x0 = warp.SourceX * T + (T - dw) / 2f, z = (forward ? (warp.SourceY + 1) * T : back) + 0.5f;
                 kit.Quad(kit.At(x0, 0, z), kit.At(x0 + dw, 0, z), kit.At(x0 + dw, dh, z), kit.At(x0, dh, z), doorway, KitBuilder.FrontNormal);
             }
 
@@ -927,8 +945,8 @@ internal sealed class MapScene
             kit.Box(a, a + run, back - cap, back, wallH - 1, wallH, top: TopOf("top", run, cap, a == left - cap, a + run == end));
             if (a + run == end) break;
         }
-        kit.Box(left - cap, left, back, front + cap, wallH - 1, wallH, top: Top(cap, front - back + cap));
-        kit.Box(right, right + cap, back, front + cap, wallH - 1, wallH, top: Top(cap, front - back + cap));
+        kit.Box(left - cap, left, back, westEnd + cap, wallH - 1, wallH, top: Top(cap, westEnd - back + cap));
+        kit.Box(right, right + cap, back, eastEnd + cap, wallH - 1, wallH, top: Top(cap, eastEnd - back + cap));
 
         // The front wall is cut down to a low kerb so the camera can see in, with a gap for the door; with relief it
         // stands on the floor of the front row, not on the walls' foot
@@ -940,18 +958,23 @@ internal sealed class MapScene
                 frontFoot = MathF.Max(frontFoot, MathF.Max(csw, cse));
             }
         kit.Origin = new Vector3(0, frontFoot, 0);
-        for (int tx = 1; tx < w - 1; tx++)
+        // A run of kerb before the tiles from one to another, its north edge at z
+        void Kerb(int from, int to, int z)
         {
-            if (Map.GetGroundTile(tx, h - 1) == TileType.Door) continue;
-            int end = tx;
-            while (end + 1 < w - 1 && Map.GetGroundTile(end + 1, h - 1) != TileType.Door) end++;
-            int run = (end - tx + 1) * T;
-            for (int a = tx * T, last = tx * T + run; a < last; a += length)
+            for (int a = from * T, last = (to + 1) * T; a < last; a += length)
             {
                 int part = Math.Min(length, last - a);
-                bool west = a == tx * T, east = a + part == last;
-                kit.Box(a, a + part, front, front + cap, 0, 8, TopOf("top", part, cap, west, east), TopOf("kerb", part, 8, west, east));
+                bool west = a == from * T, east = a + part == last;
+                kit.Box(a, a + part, z, z + cap, 0, 8, TopOf("top", part, cap, west, east), TopOf("kerb", part, 8, west, east));
             }
+        }
+        bool NoKerb(int tx) => Map.GetGroundTile(tx, h - 1) == TileType.Door || Nothing(tx, h - 2);
+        for (int tx = 1; tx < w - 1; tx++)
+        {
+            if (NoKerb(tx)) continue;
+            int end = tx;
+            while (end + 1 < w - 1 && !NoKerb(end + 1)) end++;
+            Kerb(tx, end, front);
             tx = end;
         }
         kit.Origin = Vector3.Zero;
@@ -963,11 +986,23 @@ internal sealed class MapScene
         bool Floor(int x, int y) => x >= lx && x < w - 1 && y >= by && y < h - 1 && Map.GetGroundTile(x, y) != TileType.Wall;
         Art? inner = null, jog = null;
         bool Jog(int x, int y) => BackWallJog(Map, x, y);
+        // (a wall with nothing beyond it to the south is the room's front there: the front wall's kerb)
+        bool Low(int x, int y) => x >= lx && x < w - 1 && y >= by && y < h - 2 && Map.GetGroundTile(x, y) == TileType.Wall && Nothing(x, y + 1) && !Jog(x, y);
         for (int ty = by; ty < h - 1; ty++)
             for (int tx = lx; tx < w - 1; tx++)
             {
                 if (Map.GetGroundTile(tx, ty) != TileType.Wall) continue;
-                bool n = Floor(tx, ty - 1), s = Floor(tx, ty + 1), wst = Floor(tx - 1, ty), e = Floor(tx + 1, ty);
+                if (Low(tx, ty))
+                {
+                    int end = tx;
+                    while (Low(end + 1, ty)) end++;
+                    kit.Origin = Vector3.Zero;
+                    Kerb(tx, end, ty * T);
+                    tx = end;
+                    continue;
+                }
+                // (beside a kerb a wall's side shows, as it does beside the floor)
+                bool n = Floor(tx, ty - 1), s = Floor(tx, ty + 1), wst = Floor(tx - 1, ty) || Low(tx - 1, ty), e = Floor(tx + 1, ty) || Low(tx + 1, ty);
                 if (Jog(tx, ty))
                 {
                     jog ??= kit.Face("wall.jog", T, wallH, c => GroundBaker.PaintWall(c, style, 0, theme, look));
@@ -1020,8 +1055,9 @@ internal sealed class MapScene
         var (left, back) = map.RoomCorner();
         bool Floor(int fx, int fy) => fx >= left && fx < map.Width - 1 && fy >= back && fy < map.Height - 1 && map.GetGroundTile(fx, fy) != TileType.Wall;
         if (x < left || x >= map.Width - 1 || y < back || y >= map.Height - 1) return false;
+        // (a way through such a wall is a doorway on its face: the warp's own tile stands as high as the rest)
         for (int yy = back; yy <= y; yy++)
-            if (map.GetGroundTile(x, yy) != TileType.Wall || map.Props.Exists(p => p.Covers(x, yy)) || map.GetWarpAt(x, yy) != null
+            if (map.GetGroundTile(x, yy) != TileType.Wall || map.Props.Exists(p => p.Covers(x, yy)) || yy < y && map.GetWarpAt(x, yy) != null
                 || Floor(x - 1, yy) && Floor(x + 1, yy)) return false;
         return true;
     }

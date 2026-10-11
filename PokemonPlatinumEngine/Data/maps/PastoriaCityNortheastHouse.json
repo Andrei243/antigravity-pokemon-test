@@ -1,0 +1,135 @@
+{
+  "name": "PastoriaCityNortheastHouse",
+  "displayName": "Pastoria City",
+  "bgmTrack": "sinnoh/pastoria",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#.....#####",
+    "#.........#",
+    "#..##.....#",
+    "#..##.....#",
+    "#.........#",
+    "#.........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 4,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 6,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 3,
+      "y": 5,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Sinnoh",
+      "targetX": 624,
+      "targetY": 820,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "ace_trainer_m",
+      "name": "Scarf Guy",
+      "npcType": "Youngster",
+      "x": 5,
+      "y": 5,
+      "facing": "Left",
+      "script": "Scarves"
+    },
+    {
+      "id": "battle_girl",
+      "name": "Battle Girl",
+      "npcType": "Lass",
+      "x": 8,
+      "y": 6,
+      "facing": "Down",
+      "dialog": [
+        "My brother's girlfriend is the Massage Girl over in Veilstone City.",
+        "They keep in touch by giving their Pokémon Mail to carry to each other."
+      ],
+      "movement": "wander_north_and_south",
+      "rangeZ": 1
+    },
+    {
+      "id": "pachirisu",
+      "name": "Pachirisu",
+      "npcType": "Pokemon",
+      "x": 3,
+      "y": 3,
+      "facing": "Right",
+      "dialog": [
+        "Pachirisu: Suu! Pasuu!"
+      ],
+      "species": "Pachirisu",
+      "movement": "wander_west_and_east",
+      "rangeX": 1
+    }
+  ],
+  "wildEncounters": []
+}

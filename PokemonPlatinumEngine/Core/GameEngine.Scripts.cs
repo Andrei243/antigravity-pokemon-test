@@ -43,6 +43,8 @@ public partial class GameEngine
     // The battle a script started: how it came out, and whether losing it is part of the story
     private BattleOutcome scriptOutcome;
     private bool battleMayBeLost;
+    // ... and the turns it went on for before its last (the original's VAR_TOTAL_TURNS_LAST_BATTLE; plan 01 · M11, part b)
+    private int scriptTurns;
 
     // The story as the maps last saw it, and whether the place the player came to has yet to run its own script
     private int presenceRevision = -1;
@@ -1099,6 +1101,8 @@ public partial class GameEngine
 
         // A script's die is rolled on the game's chance, so the harness's runs repeat (plan 01 · M11)
         public int Random(int sides) => Dice.Shared.Next(Math.Max(1, sides));
+
+        public int BattleTurns => game.scriptTurns;
 
         // The original's field cries (a legendary in its lair, a Pokémon a script brings out) have an echo beside them
         public void Cry(string species)

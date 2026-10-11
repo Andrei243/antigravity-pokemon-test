@@ -1,0 +1,234 @@
+# The Seven Stars Restaurant at Valor Lakefront (plan 01 · M11, part b), on the original's plan. docs/scripts.md
+# describes the language; the lines are our own, on the original's beats (scripts_restaurant.s).
+#
+# Nine couples dine here, and each day five of them have a table (FLAG_DAILY_SET_RESTAURANT_TRAINERS, cleared with the
+# day; each couple is taken off the map by the original's FLAG_HIDE_RESTAURANT_<ONE>_<OTHER>). The room's arrival
+# draws them as the original's does: a die of nine until five are seated, and here, should the die never come up
+# with a fifth, the first tables still empty are filled. Whoever is spoken to asks for a double battle, their
+# partner beside them, and a couple beaten says so for the rest of the day (a flag of our own for each,
+# FLAG_DAILY_BEAT_RESTAURANT_<ONE>_<OTHER>, where the original clears their trainer flags each morning): they may be
+# battled again tomorrow, with their teams as they were. The original also draws one of three sets of lines for each
+# couple each day; here each trainer has one.
+#
+# The restaurant is shut late at night and in the morning (the original's nine o'clock to eleven at night, by the
+# hour; here by the time of day, which is what a script can ask): the waiter shows whoever comes in back out.
+
+
+script OnEnter
+  setflag FLAG_FIRST_ARRIVAL_VALOR_LAKEFRONT_RESTAURANT
+  if time latenight goto Closed
+  if time morning goto Closed
+  if flag FLAG_DAILY_SET_RESTAURANT_TRAINERS end
+  call Empty
+  setvar VAR_RESTAURANT_SEATED 0
+  setvar VAR_RESTAURANT_DRAWS 0
+label Draw
+  addvar VAR_RESTAURANT_DRAWS 1
+  if var VAR_RESTAURANT_DRAWS > 60 goto Fill
+  random 9
+  if result == 0 call Seat0
+  if result == 1 call Seat1
+  if result == 2 call Seat2
+  if result == 3 call Seat3
+  if result == 4 call Seat4
+  if result == 5 call Seat5
+  if result == 6 call Seat6
+  if result == 7 call Seat7
+  if result == 8 call Seat8
+  if var VAR_RESTAURANT_SEATED < 5 goto Draw
+  setflag FLAG_DAILY_SET_RESTAURANT_TRAINERS
+  end
+label Fill
+  call Seat0
+  call Seat1
+  call Seat2
+  call Seat3
+  call Seat4
+  call Seat5
+  call Seat6
+  call Seat7
+  call Seat8
+  setflag FLAG_DAILY_SET_RESTAURANT_TRAINERS
+  end
+label Closed
+  call Empty
+  face player right
+  wait 0.4
+  speaker "Waiter"
+  say "I do beg your pardon. The Seven Stars is closed for the night." "We look forward to serving you once we have opened again."
+  warp "Sinnoh" 706 791 down
+  end
+
+# Every table is cleared
+script Empty
+  setflag FLAG_HIDE_RESTAURANT_ISMAEL_HARLEY
+  setflag FLAG_HIDE_RESTAURANT_ROMAN_KYLIE
+  setflag FLAG_HIDE_RESTAURANT_LEONARDO_REBECCA
+  setflag FLAG_HIDE_RESTAURANT_EUGENE_ALISON
+  setflag FLAG_HIDE_RESTAURANT_ESTEBAN_MEREDITH
+  setflag FLAG_HIDE_RESTAURANT_EMANUEL_BLYTHE
+  setflag FLAG_HIDE_RESTAURANT_DARRYL_VALERIE
+  setflag FLAG_HIDE_RESTAURANT_KENDRICK_GABRIELLA
+  setflag FLAG_HIDE_RESTAURANT_EMILIO_KAYLEE
+  return
+
+# A couple takes its table, if it has none yet and five aren't seated
+script Seat0
+  if var VAR_RESTAURANT_SEATED >= 5 return
+  if not flag FLAG_HIDE_RESTAURANT_ISMAEL_HARLEY return
+  clearflag FLAG_HIDE_RESTAURANT_ISMAEL_HARLEY
+  addvar VAR_RESTAURANT_SEATED 1
+  return
+script Seat1
+  if var VAR_RESTAURANT_SEATED >= 5 return
+  if not flag FLAG_HIDE_RESTAURANT_ROMAN_KYLIE return
+  clearflag FLAG_HIDE_RESTAURANT_ROMAN_KYLIE
+  addvar VAR_RESTAURANT_SEATED 1
+  return
+script Seat2
+  if var VAR_RESTAURANT_SEATED >= 5 return
+  if not flag FLAG_HIDE_RESTAURANT_LEONARDO_REBECCA return
+  clearflag FLAG_HIDE_RESTAURANT_LEONARDO_REBECCA
+  addvar VAR_RESTAURANT_SEATED 1
+  return
+script Seat3
+  if var VAR_RESTAURANT_SEATED >= 5 return
+  if not flag FLAG_HIDE_RESTAURANT_EUGENE_ALISON return
+  clearflag FLAG_HIDE_RESTAURANT_EUGENE_ALISON
+  addvar VAR_RESTAURANT_SEATED 1
+  return
+script Seat4
+  if var VAR_RESTAURANT_SEATED >= 5 return
+  if not flag FLAG_HIDE_RESTAURANT_ESTEBAN_MEREDITH return
+  clearflag FLAG_HIDE_RESTAURANT_ESTEBAN_MEREDITH
+  addvar VAR_RESTAURANT_SEATED 1
+  return
+script Seat5
+  if var VAR_RESTAURANT_SEATED >= 5 return
+  if not flag FLAG_HIDE_RESTAURANT_EMANUEL_BLYTHE return
+  clearflag FLAG_HIDE_RESTAURANT_EMANUEL_BLYTHE
+  addvar VAR_RESTAURANT_SEATED 1
+  return
+script Seat6
+  if var VAR_RESTAURANT_SEATED >= 5 return
+  if not flag FLAG_HIDE_RESTAURANT_DARRYL_VALERIE return
+  clearflag FLAG_HIDE_RESTAURANT_DARRYL_VALERIE
+  addvar VAR_RESTAURANT_SEATED 1
+  return
+script Seat7
+  if var VAR_RESTAURANT_SEATED >= 5 return
+  if not flag FLAG_HIDE_RESTAURANT_KENDRICK_GABRIELLA return
+  clearflag FLAG_HIDE_RESTAURANT_KENDRICK_GABRIELLA
+  addvar VAR_RESTAURANT_SEATED 1
+  return
+script Seat8
+  if var VAR_RESTAURANT_SEATED >= 5 return
+  if not flag FLAG_HIDE_RESTAURANT_EMILIO_KAYLEE return
+  clearflag FLAG_HIDE_RESTAURANT_EMILIO_KAYLEE
+  addvar VAR_RESTAURANT_SEATED 1
+  return
+
+
+# What every table asks first: a second Pokémon to battle with, and whether the player will. It ends the talk for
+# whoever hasn't two Pokémon or says no, and comes back for whoever says yes
+script Ask
+  if var PARTY_COUNT >= 2 goto Two
+  say "The house rule is two Pokémon against two, I'm afraid. Do come back with a second!"
+  end
+label Two
+  trainerline before
+  ask "Will you take the two of us on?"
+  if yes return
+  say "Another time, then. The soup is getting cold in any case."
+  end
+
+
+script IsmaelHarley
+  if flag FLAG_DAILY_BEAT_RESTAURANT_ISMAEL_HARLEY goto Beaten
+  call Ask
+  battle artist_ismael and beauty_harley
+  setflag FLAG_DAILY_BEAT_RESTAURANT_ISMAEL_HARLEY
+  end
+label Beaten
+  trainerline after
+  end
+
+script RomanKylie
+  if flag FLAG_DAILY_BEAT_RESTAURANT_ROMAN_KYLIE goto Beaten
+  call Ask
+  battle rich_boy_roman and lady_kylie
+  setflag FLAG_DAILY_BEAT_RESTAURANT_ROMAN_KYLIE
+  end
+label Beaten
+  trainerline after
+  end
+
+script LeonardoRebecca
+  if flag FLAG_DAILY_BEAT_RESTAURANT_LEONARDO_REBECCA goto Beaten
+  call Ask
+  battle gentleman_leonardo and socialite_rebecca
+  setflag FLAG_DAILY_BEAT_RESTAURANT_LEONARDO_REBECCA
+  end
+label Beaten
+  trainerline after
+  end
+
+script EugeneAlison
+  if flag FLAG_DAILY_BEAT_RESTAURANT_EUGENE_ALISON goto Beaten
+  call Ask
+  battle collector_eugine and aroma_lady_alison
+  setflag FLAG_DAILY_BEAT_RESTAURANT_EUGENE_ALISON
+  end
+label Beaten
+  trainerline after
+  end
+
+script EstebanMeredith
+  if flag FLAG_DAILY_BEAT_RESTAURANT_ESTEBAN_MEREDITH goto Beaten
+  call Ask
+  battle school_kid_esteban and pokefan_meredith
+  setflag FLAG_DAILY_BEAT_RESTAURANT_ESTEBAN_MEREDITH
+  end
+label Beaten
+  trainerline after
+  end
+
+script EmanuelBlythe
+  if flag FLAG_DAILY_BEAT_RESTAURANT_EMANUEL_BLYTHE goto Beaten
+  call Ask
+  battle veteran_emanuel and lass_blythe
+  setflag FLAG_DAILY_BEAT_RESTAURANT_EMANUEL_BLYTHE
+  end
+label Beaten
+  trainerline after
+  end
+
+script DarrylValerie
+  if flag FLAG_DAILY_BEAT_RESTAURANT_DARRYL_VALERIE goto Beaten
+  call Ask
+  battle cameraman_darryl and reporter_valerie
+  setflag FLAG_DAILY_BEAT_RESTAURANT_DARRYL_VALERIE
+  end
+label Beaten
+  trainerline after
+  end
+
+script KendrickGabriella
+  if flag FLAG_DAILY_BEAT_RESTAURANT_KENDRICK_GABRIELLA goto Beaten
+  call Ask
+  battle pi_kendrick and beauty_gabriella
+  setflag FLAG_DAILY_BEAT_RESTAURANT_KENDRICK_GABRIELLA
+  end
+label Beaten
+  trainerline after
+  end
+
+script EmilioKaylee
+  if flag FLAG_DAILY_BEAT_RESTAURANT_EMILIO_KAYLEE goto Beaten
+  call Ask
+  battle scientist_emilio and breeder_kaylee
+  setflag FLAG_DAILY_BEAT_RESTAURANT_EMILIO_KAYLEE
+  end
+label Beaten
+  trainerline after
+  end

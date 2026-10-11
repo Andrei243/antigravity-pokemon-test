@@ -3,19 +3,22 @@
   "bgmTrack": "sinnoh/valor",
   "trees": "Round",
   "architecture": "Resort",
-  // The gate to Pastoria City and the Hotel Grand Lake's lobby are passed through; their rooms come with plan 01 · M11
+  // The gate to Pastoria City is passed through; its room comes with plan 01 · M11, part d
   "through": [
     { "warp": 0, "to": "pastoria_city", "toWarp": 10 },
-    { "warp": 1, "to": "pastoria_city", "toWarp": 11 },
-    { "warp": 3, "to": "route_213", "toWarp": 4 },
-    { "warp": 4, "to": "route_213", "toWarp": 3 }
+    { "warp": 1, "to": "pastoria_city", "toWarp": 11 }
   ],
   // Dr. Footstep's house, rebuilt to the original's plan (plan 06 · R17b)
   "doors": [
-    { "warp": 2, "map": "FootstepHouse", "x": 4, "y": 8, "facing": "Up" }
+    { "warp": 2, "map": "FootstepHouse", "x": 4, "y": 8, "facing": "Up" },
+    // Plan 01 · M11, part b: the Hotel Grand Lake's lobby, come into from the beach by its front door and from the
+    // terrace above by the door in its back wall, and the three cottages on the terrace, on the original's plans
+    { "warp": 3, "map": "GrandLakeRoute213Lobby", "x": 8, "y": 11, "facing": "Up" },
+    { "warp": 4, "map": "GrandLakeRoute213Lobby", "x": 8, "y": 3, "facing": "Down" },
+    { "warp": 5, "map": "GrandLakeRoute213EastHouse", "x": 6, "y": 8, "facing": "Up" },
+    { "warp": 6, "map": "GrandLakeRoute213NorthwestHouse", "x": 6, "y": 8, "facing": "Up" },
+    { "warp": 7, "map": "GrandLakeRoute213NortheastHouse", "x": 6, "y": 8, "facing": "Up" }
   ],
-  // The hotel's houses have no rooms yet (plan 01 · M11)
-  "locked": [ 5, 6, 7 ],
   "people": {
     // The grunt who set off the bomb in the Great Marsh, running from Pastoria City, and Looker after him (plan 02 · S8,
     // scripts/route_213.txt)

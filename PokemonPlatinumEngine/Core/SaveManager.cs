@@ -9,8 +9,8 @@ using PokemonPlatinumEngine.Overworld;
 
 namespace PokemonPlatinumEngine.Core;
 
-/// <summary>A Safari Game as a save keeps it: the balls and the steps left.</summary>
-public sealed record SafariSave(int Balls, int Steps);
+/// <summary>A Safari Game as a save keeps it: the balls and the steps left, and how many Pokémon it has caught.</summary>
+public sealed record SafariSave(int Balls, int Steps, int Caught = 0);
 
 public class SaveData
 {

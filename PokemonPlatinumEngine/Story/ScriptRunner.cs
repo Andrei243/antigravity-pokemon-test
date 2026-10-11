@@ -124,6 +124,20 @@ public sealed partial class ScriptRunner
         lastOutcome = BattleOutcome.None;
         Result = 0;
         EndedInDefeat = false;
+        turns = 0;
+    }
+
+    /// <summary>The turns of every battle this script has fought, added up (<c>TURNS</c>; plan 01 · M11, part b).</summary>
+    private int turns;
+
+    /// <summary>
+    /// Whoever is battled again once beaten (plan 01 · M11, part b: the Seven Stars Restaurant's couples on another
+    /// day) brings their team afresh from Platinum's data, as the original builds a trainer's team for every battle.
+    /// </summary>
+    private static void Refresh(NPC? who)
+    {
+        if (who?.TrainerData is { Party.Count: > 0 } trainer && !trainer.Party.HasUsablePokemon && TrainerDatabase.Get(trainer.Id) is { } record)
+            TrainerDatabase.Fill(trainer, record);
     }
 
     /// <summary>Stops the script where it is.</summary>
@@ -437,6 +451,8 @@ public sealed partial class ScriptRunner
                     };
                     break;
                 }
+                Refresh(foe);
+                Refresh(second);
                 host.Battle(foe, second, partner, mayLose, i.FirstBattle);
                 afterBusy = () => AfterBattle(mayLose);
                 break;
@@ -752,6 +768,11 @@ public sealed partial class ScriptRunner
                 Tower(i);
                 break;
 
+            // What a room's people ask of the team and do for it (plan 01 · M11, part b)
+            case Op.Team:
+                Team(i);
+                break;
+
             default:
                 throw Wrong(i, $"the runner doesn't know how to carry out '{i.Op}'");
         }
@@ -778,6 +799,7 @@ public sealed partial class ScriptRunner
     private void AfterBattle(bool mayLose)
     {
         lastOutcome = host.Outcome;
+        turns += host.BattleTurns;
         Result = lastOutcome switch
         {
             BattleOutcome.Won => 1,
@@ -1224,6 +1246,75 @@ public sealed partial class ScriptRunner
         }
     }
 
+    /// <summary>The Massage Girl's sixteen accessories, in the original's order (ACCESSORY_PRETTY_DEWDROP to ACCESSORY_GLITTER_POWDER).</summary>
+    public static readonly IReadOnlyList<string> MassageAccessories = new[]
+    {
+        "Pretty Dewdrop", "Snow Crystal", "Sparks", "Shimmering Fire", "Mystic Fire", "Determination", "Peculiar Spoon", "Puffy Smoke",
+        "Poison Extract", "Wealthy Coin", "Eerie Thing", "Spring", "Seashell", "Humming Note", "Shiny Powder", "Glitter Powder",
+    };
+
+    /// <summary>
+    /// <c>team ...</c> (plan 01 · M11, part b): what the people of the houses ask of the team and do for it, each after
+    /// one command of the original's.
+    /// </summary>
+    private void Team(Instruction i)
+    {
+        var team = host.Party.Members;
+        switch (i.Name)
+        {
+            // ScrCmd_IncreasePartyMonFriendship, for the Pokémon RESULT names (after choosepokemon): 255 with none
+            // chosen, 254 for an Egg
+            case "befriend":
+            {
+                int slot = Result;
+                if (slot < 0 || slot >= team.Count) { Result = 255; break; }
+                if (team[slot].IsEgg) { Result = 254; break; }
+                // (RESULT stays the Pokémon's place, so a line can go on naming it with {member:RESULT})
+                FriendshipRules.ChangeByScript(team[slot], i.Number);
+                break;
+            }
+            // The loop of GetPartyMonLevel in the original's Route 221 house: the first of the team at the level a
+            // variable holds, or 255
+            case "level":
+            {
+                int level = Value(i.Other);
+                int slot = team.FindIndex(p => !p.IsEgg && p.Level == level);
+                Result = slot < 0 ? 255 : slot;
+                break;
+            }
+            // ScrCmd_CheckPartyCombeeGenderCount: 0 with no Combee, 1 with one sex, 2 with both
+            case "combee":
+            {
+                bool male = team.Any(p => !p.IsEgg && p.Species.Name == "Combee" && p.Gender == Gender.Male);
+                bool female = team.Any(p => !p.IsEgg && p.Species.Name == "Combee" && p.Gender == Gender.Female);
+                Result = male && female ? 2 : male || female ? 1 : 0;
+                break;
+            }
+            // GetFirstNonEggInParty and GetPartyMonContestStat
+            case "condition":
+            {
+                var lead = team.FirstOrDefault(p => !p.IsEgg);
+                Result = lead == null ? 0 : i.Other switch { "cool" => lead.Cool, "beauty" => lead.Beauty, "cute" => lead.Cute, "smart" => lead.Smart, _ => lead.Tough };
+                break;
+            }
+            // ScrCmd_TryGetRandomMassageGirlAccessory and Common_GiveAccessory: one of her sixteen, drawn among those the
+            // Fashion Case still has room for
+            case "massage":
+            {
+                var fits = MassageAccessories.Select(SuperContestDatabase.Accessory).Where(a => a >= 0 && host.FashionCase.CanFit(a)).ToList();
+                if (i.Option) { Result = fits.Count > 0 ? 1 : 0; break; }
+                if (fits.Count == 0) { Result = 0; break; }
+                int accessory = fits[host.Random(fits.Count)];
+                host.FashionCase.Add(accessory);
+                lastAccessory = SuperContestDatabase.AccessoryName(accessory);
+                Result = 1;
+                host.Fanfare(MusicRole.FanfareItem);
+                host.Say(null, new List<string> { $"{{player}} received the {lastAccessory}!", "{player} put it away in the Fashion Case." });
+                break;
+            }
+        }
+    }
+
     /// <summary>The item a line gives and how many: the one it names, or the script's own.</summary>
     private (ItemData Item, int Count) Given(Instruction i)
     {
@@ -1281,6 +1372,10 @@ public sealed partial class ScriptRunner
         "SEEN" => host.SeenInSinnoh,
         // The friendship of the first of the team (the original's GetFirstNonEggInParty and GetPartyMonFriendship)
         "LEAD_FRIENDSHIP" => host.Party.Count > 0 ? host.Party.Members[0].Friendship : 0,
+        // The turns of the battles this script has fought, as the original counts them (a battle's last turn is not
+        // one), and the Pokémon caught in the Safari Game under way or just over (plan 01 · M11, part b)
+        "TURNS" => turns,
+        "SAFARI_CAUGHT" => host.Safari.Caught,
         _ => host.Story.Var(variable)
     };
 
@@ -1366,6 +1461,10 @@ public sealed partial class ScriptRunner
             "swarm" => Swarms.Species(Swarms.AreaOf(host.Encounters.SwarmDaily)),
             "swarmplace" => Swarms.PlaceName(Swarms.AreaOf(host.Encounters.SwarmDaily)),
             "trophygarden" => TrophyGardenRules.SpeciesIn(host.Encounters.TrophyFirst, SpecialEncounterTables.Sinnoh.TrophyGarden) ?? "",
+            // The Pokémon the day has put in one of the Great Marsh's six areas, {marsh:1} to {marsh:6} (plan 01 · M11,
+            // part b: the observatory's binoculars); the Sinnoh list's, as nothing a script can ask says the National one
+            "marsh" when int.TryParse(argument, out int marshArea) && marshArea >= 1 && marshArea <= GreatMarsh.Areas.Length =>
+                GreatMarsh.DailySpecies(SpecialEncounterTables.Sinnoh.GreatMarsh, host.Encounters.MarshDaily, GreatMarsh.Areas[marshArea - 1], nationalDex: false) ?? "",
             // The day's lottery ticket, and whose Pokémon matched it (plan 06 · R14a)
             "ticket" => Ticket.ToString("D5"),
             "winner" => lottery.Winner?.DisplayName ?? "",

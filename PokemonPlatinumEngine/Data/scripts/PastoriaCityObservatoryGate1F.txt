@@ -1,0 +1,99 @@
+# The Great Marsh's observatory in Pastoria City, ground floor (plan 01 · M11, part b), on the original's plan.
+# docs/scripts.md describes the language; the lines are our own, on the original's beats
+# (scripts_pastoria_city_observatory_gate_1f.s).
+#
+# The Safari Game is started at the counter: whoever walks up the room toward the door at its back steps onto the
+# original's coordinate event before the attendant (trigger 0), is asked, pays the fee and is let into the marsh
+# with thirty Safari Balls and five hundred steps (safari start; Models/SafariGame.cs). Turned down, or short of
+# the fee, they are sent a step back. The original also turns away whoever has no room left for a Pokémon in the
+# team or the boxes; here a catch with no room is the battle's own to refuse.
+#
+# Coming back through the marsh's door with a game still on, the player is asked whether to leave: yes ends the
+# game, no leads back in. A game that ended in the marsh (its last step, its last ball: common.SafariTimeUp and
+# SafariOutOfBalls, which set VAR_SAFARI_GAME_STATE to 2) brings the player here too. Either way the cowgirl by the
+# wall comes up with the Pokétch's Matchup Checker for whoever caught five Pokémon or more in that one game, once
+# (SAFARI_CAUGHT; FLAG_RECEIVED_PASTORIA_CITY_OBSERVATORY_GATE_1F_MATCHUPCHECKER).
+
+
+script OnEnter
+  if var VAR_SAFARI_GAME_STATE == 2 goto Over
+  if not safari end
+  speaker "Attendant"
+  ask "You still have time left. Are you sure you want to leave the Great Marsh?"
+  if no goto Back
+  say "Very well. I'll take the Safari Balls you have left." "Thank you for playing. We hope to see you again!"
+  safari end
+  goto Out
+label Back
+  say "Then do enjoy the rest of your Safari Game!"
+  warp "GreatMarsh" 68 116 up
+  end
+label Over
+  setvar VAR_SAFARI_GAME_STATE 0
+label Out
+  walk player down 4
+  if flag FLAG_RECEIVED_PASTORIA_CITY_OBSERVATORY_GATE_1F_MATCHUPCHECKER end
+  if var SAFARI_CAUGHT < 5 end
+  walk cowgirl right 4
+  face cowgirl up
+  face player down
+  speaker "Cowgirl"
+  say "Well now, how many Pokémon did you catch in that Safari Game? Five at least?" "Ayup! So you did! Isn't that something!" "Here you are, then: the Matchup Checker, for your Pokétch."
+  fanfare keyitem
+  poketchapp MatchupChecker
+  text "{player} added the Matchup Checker app to the Pokétch!"
+  setflag FLAG_RECEIVED_PASTORIA_CITY_OBSERVATORY_GATE_1F_MATCHUPCHECKER
+  walk cowgirl left 4
+  face cowgirl right
+  end
+
+
+# The original's coordinate event before the counter (script 2)
+script Counter
+  face player left
+  if var PLAYER_X >= 5 call StepWest
+  speaker "Attendant"
+  say "Welcome to the Great Marsh, the home of Pastoria's Safari Game!"
+  ask "All you can catch for just $500! Would you like to play a Safari Game?"
+  if no goto Away
+  say "That will be $500, please."
+  takemoney 500
+  if result == 0 goto Short
+  sound "select"
+  safari start
+  say "Here are your Safari Balls."
+  text "{player} received 30 Safari Balls."
+  say "We'll call you when your game is over. Until then, enjoy yourself! Off you go into the wild!"
+  walk player up 3 right 1
+  face player up
+  warp "GreatMarsh" 68 116 up
+  end
+label Short
+  say "I'm sorry. You don't have enough money."
+label Away
+  walk player down 1
+  end
+
+script StepWest
+  walk player left 1
+  face player left
+  return
+
+
+script Explain
+  ask "Welcome to the Great Marsh! Is this your first Safari Game?"
+  if no goto Enjoy
+  say "You go into the Great Marsh with 30 Safari Balls, and they are the only balls you may throw in there." "The game is over when your last ball is thrown, or when you have walked 500 steps." "Do enjoy the Great Marsh, just as nature left it!"
+  end
+label Enjoy
+  say "I see. Then enjoy your Safari Game!"
+  end
+
+
+script Cowgirl
+  if flag FLAG_RECEIVED_PASTORIA_CITY_OBSERVATORY_GATE_1F_MATCHUPCHECKER goto Have
+  say "Howdy. Playing the Safari Game, are you?" "How would you like to play a little game of mine at the same time?" "There's only the one rule, and it's a simple one: catch five Pokémon or more in a single Safari Game." "Manage that, and the Matchup Checker for your Pokétch is yours."
+  end
+label Have
+  say "The Matchup Checker shows how well two of your Pokémon get along." "It can't tell how you and I would get along as friends, mind."
+  end

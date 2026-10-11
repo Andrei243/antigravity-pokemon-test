@@ -322,6 +322,12 @@ public class ScriptTests
           tower tells 0
           tower partner 0
           tower partnered
+          team befriend 3
+          team level VAR_X
+          team combee
+          team condition cool
+          team massage
+          team massage room
         script Other
           end
         """;
@@ -1182,6 +1188,7 @@ public class ScriptTests
         public void FrontierBattle(Party team, IReadOnlyList<Trainer> foes, Trainer? partner, bool doubles) => inner.FrontierBattle(team, foes, partner, doubles);
         public string DiggerName => inner.DiggerName;
         public int Random(int sides) => inner.Random(sides);
+        public int BattleTurns => inner.BattleTurns;
         public int? HoneyTreeFaced => inner.HoneyTreeFaced;
         public uint TrainerNumber => inner.TrainerNumber;
         public TimeOfDay TimeOfDay => inner.TimeOfDay;

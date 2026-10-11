@@ -1,0 +1,33 @@
+# The Hotel Grand Lake's lobby on Route 213 (plan 01 · M11, part b), on the original's plan. docs/scripts.md
+# describes the language; the lines are our own, on the original's beats (scripts_grand_lake_route_213_lobby.s).
+#
+# The receptionist has no room free, and lets a traveller rest instead: the team is healed behind a fade, as often
+# as asked. Looker questions the guests here after the Team Galactic grunt has run past along the beach (plan 02 ·
+# S8: route_213.txt clears FLAG_HIDE_GRAND_LAKE_ROUTE_213_LOBBY_LOOKER, valor_lakefront.txt sets it again once the
+# grunt is cornered): he sends the player to search outside, and the second time is found in the middle of the
+# receptionist's boasting (FLAG_TALKED_TO_GRAND_LAKE_ROUTE_213_LOBBY_LOOKER).
+
+
+script Rest
+  say "Good day. You would like a room for the night? Ah, but you have no reservation." "I'm afraid every room is taken. You are welcome to rest here a while, though."
+  fade out
+  fanfare heal
+  heal
+  fade in
+  say "Your Pokémon are quite recovered. We hope to see you again!"
+  end
+
+
+script Looker
+  if flag FLAG_TALKED_TO_GRAND_LAKE_ROUTE_213_LOBBY_LOOKER goto Again
+  setflag FLAG_TALKED_TO_GRAND_LAKE_ROUTE_213_LOBBY_LOOKER
+  say "Ah, my friend, it is you! Yes, I am at this hotel now." "I question the guests, one by one. Has anybody seen a suspicious character?" "I ask for your help. Search outside, if you will." "Our man, he may have slipped past already without a soul noticing."
+  face self right
+  end
+label Again
+  face self right
+  say "Is that so? The Champion of the Hoenn region has stayed in this hotel?" "But that is of no importance! A suspicious character, I said! Your boasting, I do not need!"
+  face self player
+  say "Inside the hotel, I will search. You, I ask to search outside." "Our man, he may have slipped past already without a soul noticing."
+  face self right
+  end

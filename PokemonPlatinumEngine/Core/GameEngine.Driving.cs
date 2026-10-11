@@ -50,6 +50,8 @@ public partial class GameEngine
         public Journal Journal { get => game.journal; set => game.journal = value; }
         public Wardrobe Wardrobe => game.wardrobe;
         public Poketch Poketch => game.poketch;
+        /// <summary>The Great Marsh's Safari Game (plan 01 · M7; its catches, plan 01 · M11, part b).</summary>
+        public SafariGame Safari => game.safari;
         public SpecialEncounters Encounters => game.encounters;
         public BerryPatches Berries => game.berries;
         public PoffinCase Poffins => game.poffinCase;

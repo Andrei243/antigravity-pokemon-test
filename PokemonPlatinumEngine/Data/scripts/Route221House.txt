@@ -1,0 +1,36 @@
+# The house on Route 221 (plan 01 · M11, part b), on the original's plan. docs/scripts.md describes the language;
+# the lines are our own, on the original's beats (scripts_route_221_house.s).
+#
+# The old man names a level each day (VAR_DAILY_RANDOM_LEVEL, drawn with the day: Models/DailyEvents.cs) and rewards
+# whoever shows him a Pokémon of the team at exactly that level (team level: the original's loop of
+# GetPartyMonLevel), once a day (FLAG_DAILY_RECEIVED_ROUTE_221_HOUSE_REWARD): a Black Belt, then an Expert Belt, then
+# a Focus Sash, and round again (VAR_ROUTE_221_HOUSE_REWARD_INDEX). The original keeps a reward the bag has no room
+# for until the next visit (FLAG_COULD_NOT_RECEIVE_ROUTE_221_HOUSE_REWARD); the bag here always has room. The
+# original draws the first number as a game begins; here the day's events draw it, so in a game's first day the old
+# man makes do with a number of his own, 25.
+
+
+script Level
+  if flag FLAG_DAILY_RECEIVED_ROUTE_221_HOUSE_REWARD goto Tomorrow
+  if var VAR_DAILY_RANDOM_LEVEL < 2 setvar VAR_DAILY_RANDOM_LEVEL 25
+  say "... I see it! Today's number is {var:VAR_DAILY_RANDOM_LEVEL}!" "Show me a Pokémon at Lv. {var:VAR_DAILY_RANDOM_LEVEL}. Do that, and there's a reward in it for you."
+  team level VAR_DAILY_RANDOM_LEVEL
+  if result == 255 end
+  say "... Oh? Now what's this?!" "Your {member:RESULT} is at Lv. {var:VAR_DAILY_RANDOM_LEVEL}. Well, I'll be! Remarkable!" "A sight like that deserves a thank-you."
+  setflag FLAG_DAILY_RECEIVED_ROUTE_221_HOUSE_REWARD
+  if var VAR_ROUTE_221_HOUSE_REWARD_INDEX == 1 goto Expert
+  if var VAR_ROUTE_221_HOUSE_REWARD_INDEX == 2 goto Sash
+  setvar VAR_ROUTE_221_HOUSE_REWARD_INDEX 1
+  give "Black Belt"
+  end
+label Expert
+  setvar VAR_ROUTE_221_HOUSE_REWARD_INDEX 2
+  give "Expert Belt"
+  end
+label Sash
+  setvar VAR_ROUTE_221_HOUSE_REWARD_INDEX 0
+  give "Focus Sash"
+  end
+label Tomorrow
+  say "A Pokémon of a high level was at a low one once." "And one at a low level will not stay there, for all it can do is grow." "That's the way of it, youngster. Come and see me again tomorrow."
+  end

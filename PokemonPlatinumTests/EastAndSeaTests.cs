@@ -171,35 +171,63 @@ public class EastAndSeaTests
 
     // ------------------------------------------------------------------ the Great Marsh
 
+    private const string Gate = "PastoriaCityObservatoryGate1F";
+
+    private static Map GateRoom() => GameDataFiles.Load<MapFile>(Path.Combine(MapDatabase.Folder, Gate + ".json")).ToMap();
+
     [Fact]
     public void TheGreatMarshIsEnteredThroughPastoriasObservatoryAndLeftTheSameWay()
     {
+        // The observatory is a room since plan 01 · M11, part b: Pastoria's door leads onto its mat, its back door into
+        // the marsh, and the marsh's way out back to the tile inside that door
         var map = Overworld;
         var marsh = BuiltMaps.Value["GreatMarsh"];
-        var into = map.Warps.Where(w => w.TargetMap == "GreatMarsh").ToList();
-        Assert.NotEmpty(into);
+        var gate = GateRoom();
+        var into = map.Warps.Where(w => w.TargetMap == Gate).ToList();
+        Assert.Equal(2, into.Count);
         Assert.All(into, w =>
         {
             Assert.Equal("pastoria_city", AreaKey(map, w.SourceX, w.SourceY));
-            Assert.True(marsh.IsWalkable(w.TargetX, w.TargetY));
+            Assert.Equal((5, 11, Direction.Up), (w.TargetX, w.TargetY, w.TargetFacing));
         });
-        Assert.Contains(marsh.Warps, w => w.TargetMap == "Sinnoh" && AreaKey(map, w.TargetX, w.TargetY) == "pastoria_city");
+        Assert.DoesNotContain(map.Warps, w => w.TargetMap == "GreatMarsh");
+        var back = Assert.Single(gate.Warps, w => w.TargetMap == "GreatMarsh");
+        Assert.Equal((5, 2), (back.SourceX, back.SourceY));
+        Assert.True(marsh.IsWalkable(back.TargetX, back.TargetY));
+        Assert.Equal("great_marsh_6", AreaKey(marsh, back.TargetX, back.TargetY));
+        var out_ = marsh.Warps.Where(w => w.TargetMap == Gate).ToList();
+        Assert.Equal(2, out_.Count);
+        Assert.All(out_, w =>
+        {
+            Assert.Equal((5, 3, Direction.Down), (w.TargetX, w.TargetY, w.TargetFacing));
+            Assert.Equal(1, Math.Abs(w.SourceY - back.TargetY));
+        });
+        Assert.True(gate.IsWalkable(5, 3));
+        var street = Assert.Single(gate.Warps, w => w.TargetMap == "Sinnoh");
+        Assert.Equal("pastoria_city", AreaKey(map, street.TargetX, street.TargetY));
+        Assert.True(map.IsWalkable(street.TargetX, street.TargetY));
 
-        // Saying no to the game puts the player back out in Pastoria City, on open ground
+        // The original's coordinate event lies before the attendant, across the way to the back door
+        var trigger = Assert.Single(gate.Triggers);
+        Assert.Equal((4, 6, 3, 1, "Counter"), (trigger.X, trigger.Y, trigger.Width, trigger.Depth, trigger.Script));
+        Assert.Contains(gate.Everyone, n => n.Key == "cashier_m" && (n.GridX, n.GridY, n.Facing) == (2, 6, Direction.Right));
+
+        // Saying no at the counter sends the player a step back, and costs nothing
         var host = PlayEntrance(answer: 1);
         Assert.False(host.Safari.Active);
-        Assert.Equal("pastoria_city", AreaKey(map, host.PlayerTile.X, host.PlayerTile.Y));
-        Assert.True(map.IsWalkable(host.PlayerTile.X, host.PlayerTile.Y));
+        Assert.Equal((4, 7), host.PlayerTile);
         Assert.Equal(3000, host.Money);
+        Assert.Empty(host.Problems);
     }
 
+    /// <summary>Steps up to the observatory's counter, on the tile the door leads up to, and answers its question.</summary>
     private static HeadlessScriptHost PlayEntrance(int answer, int money = 3000, Action<HeadlessScriptHost>? before = null)
     {
-        var host = new HeadlessScriptHost { Money = money };
+        var host = new HeadlessScriptHost { Money = money, Map = GateRoom(), PlayerTile = (5, 6), PlayerFacing = Direction.Up };
         host.Answers.Enqueue(answer);
         before?.Invoke(host);
         var runner = new ScriptRunner(ScriptLibrary.Default, host);
-        runner.Start(ScriptLibrary.Default.Find("OnEnter", "great_marsh_6")!);
+        runner.Start(ScriptLibrary.Default.Find("Counter", Gate)!);
         runner.RunToEnd();
         return host;
     }
@@ -212,9 +240,11 @@ public class EastAndSeaTests
         Assert.Equal((SafariGame.StartBalls, SafariGame.StartSteps), (host.Safari.Balls, host.Safari.Steps));
         Assert.Equal((30, 500), (SafariGame.StartBalls, SafariGame.StartSteps));
         Assert.Equal(3000 - SafariGame.Fee, host.Money);
-        Assert.DoesNotContain(host.Log, l => l.StartsWith("warp"));
+        // Paid up, the player goes on through the door behind the counter, two tiles into the marsh
+        Assert.Contains("warp GreatMarsh 68 116", host.Log);
+        Assert.Empty(host.Problems);
 
-        // Coming in again while playing asks nothing
+        // Coming into the marsh while playing asks nothing
         int talks = host.Transcript.Count;
         var runner = new ScriptRunner(ScriptLibrary.Default, host);
         runner.Start(ScriptLibrary.Default.Find("OnEnter", "great_marsh_6")!);
@@ -222,11 +252,19 @@ public class EastAndSeaTests
         Assert.Equal(talks, host.Transcript.Count);
         Assert.Equal(3000 - SafariGame.Fee, host.Money);
 
-        // Short of the fee: no game, and back out
+        // Short of the fee: no game, and a step back from the counter
         var poor = PlayEntrance(answer: 0, money: 499);
         Assert.False(poor.Safari.Active);
         Assert.Equal(499, poor.Money);
-        Assert.Contains(poor.Log, l => l.StartsWith("warp Sinnoh"));
+        Assert.DoesNotContain(poor.Log, l => l.StartsWith("warp"));
+        Assert.Equal((4, 7), poor.PlayerTile);
+
+        // Nobody is in the marsh without a game: whoever is found there is shown back to the counter
+        var stray = new HeadlessScriptHost();
+        runner = new ScriptRunner(ScriptLibrary.Default, stray);
+        runner.Start(ScriptLibrary.Default.Find("OnEnter", "great_marsh_6")!);
+        runner.RunToEnd();
+        Assert.Contains($"warp {Gate} 5 7", stray.Log);
     }
 
     [Fact]
@@ -248,33 +286,52 @@ public class EastAndSeaTests
         Assert.False(game.Active);
         Assert.False(game.OutOfBalls);
 
-        // The attendant's announcement ends the game and takes the player back to Pastoria City
+        // The attendant's announcement ends the game and takes the player back to the observatory, inside its door to
+        // the marsh; the room's arrival walks them out past the counter (plan 01 · M11, part b)
         foreach (string end in new[] { FieldScripts.SafariTimeUp, FieldScripts.SafariOutOfBalls })
         {
-            var host = new HeadlessScriptHost();
+            var host = new HeadlessScriptHost { MapNamed = name => name == Gate ? GateRoom() : null };
             host.Safari.Start();
             var runner = new ScriptRunner(ScriptLibrary.Default, host);
             runner.Start(ScriptLibrary.Default.Find(end)!);
             runner.RunToEnd();
             Assert.False(host.Safari.Active);
-            Assert.Equal("pastoria_city", AreaKey(Overworld, host.PlayerTile.X, host.PlayerTile.Y));
-            Assert.True(Overworld.IsWalkable(host.PlayerTile.X, host.PlayerTile.Y));
+            Assert.Equal(2, host.Story.Var("VAR_SAFARI_GAME_STATE"));
+            Assert.Equal((Gate, (5, 3)), (host.Map!.Name, host.PlayerTile));
+            runner.Start(ScriptLibrary.Default.Find("OnEnter", Gate)!);
+            runner.RunToEnd();
+            Assert.Equal(0, host.Story.Var("VAR_SAFARI_GAME_STATE"));
+            Assert.Equal((5, 7), host.PlayerTile);
+            Assert.Empty(host.Problems);
         }
 
-        // Walking out through the observatory ends a game still on
-        var leaving = new HeadlessScriptHost();
+        // Coming back through the door with a game still on, the attendant asks: yes ends the game...
+        var leaving = new HeadlessScriptHost { Map = GateRoom(), PlayerTile = (5, 3) };
         leaving.Safari.Start();
-        var town = new ScriptRunner(ScriptLibrary.Default, leaving);
-        town.Start(ScriptLibrary.Default.Find("OnEnter", "pastoria_city")!);
-        town.RunToEnd();
+        leaving.Answers.Enqueue(0);
+        var room = new ScriptRunner(ScriptLibrary.Default, leaving);
+        room.Start(ScriptLibrary.Default.Find("OnEnter", Gate)!);
+        room.RunToEnd();
         Assert.False(leaving.Safari.Active);
-        Assert.NotEmpty(leaving.Transcript);
-        // and says nothing to someone who wasn't playing
-        var passing = new HeadlessScriptHost();
-        town = new ScriptRunner(ScriptLibrary.Default, passing);
-        town.Start(ScriptLibrary.Default.Find("OnEnter", "pastoria_city")!);
-        town.RunToEnd();
+        Assert.Equal((5, 7), leaving.PlayerTile);
+        // ... no leads back into the marsh with everything as it was
+        var staying = new HeadlessScriptHost { Map = GateRoom(), PlayerTile = (5, 3) };
+        staying.Safari.Start();
+        staying.Safari.Balls = 12;
+        staying.Answers.Enqueue(1);
+        room = new ScriptRunner(ScriptLibrary.Default, staying);
+        room.Start(ScriptLibrary.Default.Find("OnEnter", Gate)!);
+        room.RunToEnd();
+        Assert.True(staying.Safari.Active);
+        Assert.Equal(12, staying.Safari.Balls);
+        Assert.Contains("warp GreatMarsh 68 116", staying.Log);
+        // and it says nothing to someone who only came in from the street
+        var passing = new HeadlessScriptHost { Map = GateRoom(), PlayerTile = (5, 11) };
+        room = new ScriptRunner(ScriptLibrary.Default, passing);
+        room.Start(ScriptLibrary.Default.Find("OnEnter", Gate)!);
+        room.RunToEnd();
         Assert.Empty(passing.Transcript);
+        Assert.Equal((5, 11), passing.PlayerTile);
     }
 
     [Fact]

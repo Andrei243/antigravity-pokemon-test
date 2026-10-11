@@ -357,4 +357,11 @@ public interface IScriptHost
     /// goes on. <see cref="Outcome"/> is how it went once the host is no longer busy.
     /// </summary>
     void FrontierBattle(Party team, IReadOnlyList<Trainer> foes, Trainer? partner, bool doubles);
+
+    /// <summary>
+    /// How many turns the battle last fought went on for before the one that ended it (plan 01 · M11, part b; the
+    /// original's <c>VAR_TOTAL_TURNS_LAST_BATTLE</c>, which a battle won on its first turn leaves at nought): what the
+    /// Pokémon Mansion's maids count.
+    /// </summary>
+    int BattleTurns { get; }
 }

@@ -1,0 +1,123 @@
+{
+  "name": "PastoriaCitySouthwestHouse",
+  "displayName": "Pastoria City",
+  "bgmTrack": "sinnoh/pastoria",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#.....#####",
+    "#.........#",
+    "#..##.....#",
+    "#..##.....#",
+    "#.........#",
+    "#.........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 4,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 6,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 3,
+      "y": 5,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Sinnoh",
+      "targetX": 589,
+      "targetY": 845,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "pokemon_breeder_f",
+      "name": "Pokémon Breeder",
+      "npcType": "Lady",
+      "x": 5,
+      "y": 5,
+      "facing": "Right",
+      "script": "Berry",
+      "movement": "look_south_and_east"
+    },
+    {
+      "id": "twin",
+      "name": "Little Girl",
+      "npcType": "Lass",
+      "x": 7,
+      "y": 6,
+      "facing": "Right",
+      "dialog": [
+        "My big sister goes out picking berries every single day! Come and see us again!",
+        "We cook them, too. We mix them all up, and they come out yummy!"
+      ],
+      "movement": "wander_around",
+      "rangeX": 1,
+      "rangeZ": 1
+    }
+  ],
+  "wildEncounters": []
+}

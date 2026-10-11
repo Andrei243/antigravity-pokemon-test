@@ -1,0 +1,82 @@
+# Pastoria City's south-west house (plan 01 · M11, part b), on the original's plan. docs/scripts.md describes the
+# language; the lines are our own, on the original's beats (scripts_pastoria_city_southwest_house.s).
+#
+# The woman of the house gives a berry a day (FLAG_DAILY_RECEIVED_PASTORIA_CITY_SOUTHWEST_HOUSE_RANDOM_BERRY, cleared
+# with the day): one of the seventeen that weaken a hit of one type, Occa to Chilan in the order of the original's
+# item numbers, by its die of seventeen.
+
+
+script Berry
+  if flag FLAG_DAILY_RECEIVED_PASTORIA_CITY_SOUTHWEST_HOUSE_RANDOM_BERRY goto Planting
+  say "I've walked every corner of the Sinnoh region, and wherever I go I plant berries." "Here, one for you as well. Do plant it somewhere, won't you?"
+  setflag FLAG_DAILY_RECEIVED_PASTORIA_CITY_SOUTHWEST_HOUSE_RANDOM_BERRY
+  random 17
+  if result == 1 goto B1
+  if result == 2 goto B2
+  if result == 3 goto B3
+  if result == 4 goto B4
+  if result == 5 goto B5
+  if result == 6 goto B6
+  if result == 7 goto B7
+  if result == 8 goto B8
+  if result == 9 goto B9
+  if result == 10 goto B10
+  if result == 11 goto B11
+  if result == 12 goto B12
+  if result == 13 goto B13
+  if result == 14 goto B14
+  if result == 15 goto B15
+  if result == 16 goto B16
+  give "Occa Berry"
+  end
+label B1
+  give "Passho Berry"
+  end
+label B2
+  give "Wacan Berry"
+  end
+label B3
+  give "Rindo Berry"
+  end
+label B4
+  give "Yache Berry"
+  end
+label B5
+  give "Chople Berry"
+  end
+label B6
+  give "Kebia Berry"
+  end
+label B7
+  give "Shuca Berry"
+  end
+label B8
+  give "Coba Berry"
+  end
+label B9
+  give "Payapa Berry"
+  end
+label B10
+  give "Tanga Berry"
+  end
+label B11
+  give "Charti Berry"
+  end
+label B12
+  give "Kasib Berry"
+  end
+label B13
+  give "Haban Berry"
+  end
+label B14
+  give "Colbur Berry"
+  end
+label B15
+  give "Babiri Berry"
+  end
+label B16
+  give "Chilan Berry"
+  end
+label Planting
+  say "Planting berries is a kindness to Pokémon." "It gives the wild ones that much more to eat."
+  end

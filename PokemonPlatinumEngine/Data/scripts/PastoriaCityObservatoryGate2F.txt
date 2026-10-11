@@ -1,0 +1,50 @@
+# The Great Marsh's observatory in Pastoria City, upper floor (plan 01 · M11, part b), on the original's plan.
+# docs/scripts.md describes the language; the lines are our own, on the original's beats
+# (scripts_pastoria_city_observatory_gate_2f.s).
+#
+# Three pairs of binoculars look out over the marsh, $100 a look. The original swings the picture over the marsh and
+# shows a Pokémon that lives where it comes to rest (GreatMarshBinoculars_GetMonSpecies); here a look names the
+# Pokémon the day has brought to one of the marsh's six areas, drawn by the script's die ({marsh:1} to {marsh:6}:
+# plan 06 · R13's daily Pokémon, which is what the binoculars are for). The view itself waits for plan 09's kit.
+
+
+script Binoculars
+  ask "A pair of binoculars, pointed out over the Great Marsh. Put $100 in?"
+  if no end
+  takemoney 100
+  if result == 0 goto Short
+  sound "select"
+  fade out 0.3
+  fade in 0.3
+  random 6
+  if result == 1 goto Area2
+  if result == 2 goto Area3
+  if result == 3 goto Area4
+  if result == 4 goto Area5
+  if result == 5 goto Area6
+  text "The glass swings out over Area 1..."
+  text "A {marsh:1} lifts its head out of the reeds and looks about."
+  end
+label Area2
+  text "The glass swings out over Area 2..."
+  text "A {marsh:2} is wading through the shallows."
+  end
+label Area3
+  text "The glass swings out over Area 3..."
+  text "A {marsh:3} peers out from the tall grass."
+  end
+label Area4
+  text "The glass swings out over Area 4..."
+  text "A {marsh:4} is splashing about in the mud."
+  end
+label Area5
+  text "The glass swings out over Area 5..."
+  text "A {marsh:5} darts across a patch of open ground."
+  end
+label Area6
+  text "The glass swings out over Area 6..."
+  text "A {marsh:6} is dozing in the sun by the tram's rails."
+  end
+label Short
+  text "There isn't enough money for that..."
+  end

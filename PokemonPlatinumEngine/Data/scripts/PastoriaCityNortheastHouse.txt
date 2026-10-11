@@ -1,0 +1,71 @@
+# The Scarf Guy's house in Pastoria City (plan 01 · M11, part b), on the original's plan. docs/scripts.md describes
+# the language; the lines are our own, on the original's beats (scripts_pastoria_city_northeast_house.s).
+#
+# He looks the first Pokémon of the team over and gives a scarf for each contest condition it has at 200 or more
+# (team condition: the original's GetFirstNonEggInParty and GetPartyMonContestStat), in the original's order: the
+# Red Scarf for Cool, the Blue for Beauty, the Pink for Cute, the Green for Smart, the Yellow for Tough; one scarf
+# to a visit, each once (FLAG_RECEIVED_PASTORIA_CITY_NORTHEAST_HOUSE_<COLOUR>_SCARF).
+
+
+script Scarves
+  if not flag FLAG_RECEIVED_PASTORIA_CITY_NORTHEAST_HOUSE_RED_SCARF goto Examine
+  if not flag FLAG_RECEIVED_PASTORIA_CITY_NORTHEAST_HOUSE_BLUE_SCARF goto Examine
+  if not flag FLAG_RECEIVED_PASTORIA_CITY_NORTHEAST_HOUSE_PINK_SCARF goto Examine
+  if not flag FLAG_RECEIVED_PASTORIA_CITY_NORTHEAST_HOUSE_GREEN_SCARF goto Examine
+  if not flag FLAG_RECEIVED_PASTORIA_CITY_NORTHEAST_HOUSE_YELLOW_SCARF goto Examine
+  say "I'm clean out of scarves to give you! And clean out of things to say, too!"
+  end
+label Examine
+  say "Howdy there! Let's have a look at your Pokémon and see whether it's earned itself a scarf!" "Hm, hm... I see..."
+  if flag FLAG_RECEIVED_PASTORIA_CITY_NORTHEAST_HOUSE_RED_SCARF goto NotCool
+  team condition cool
+  if var RESULT >= 200 goto Red
+label NotCool
+  if flag FLAG_RECEIVED_PASTORIA_CITY_NORTHEAST_HOUSE_BLUE_SCARF goto NotBeautiful
+  team condition beauty
+  if var RESULT >= 200 goto Blue
+label NotBeautiful
+  if flag FLAG_RECEIVED_PASTORIA_CITY_NORTHEAST_HOUSE_PINK_SCARF goto NotCute
+  team condition cute
+  if var RESULT >= 200 goto Pink
+label NotCute
+  if flag FLAG_RECEIVED_PASTORIA_CITY_NORTHEAST_HOUSE_GREEN_SCARF goto NotSmart
+  team condition smart
+  if var RESULT >= 200 goto Green
+label NotSmart
+  if flag FLAG_RECEIVED_PASTORIA_CITY_NORTHEAST_HOUSE_YELLOW_SCARF goto SoSo
+  team condition tough
+  if var RESULT >= 200 goto Yellow
+label SoSo
+  say "Hmm. This isn't quite what I was hoping to see..." "I won't lie to you. Your Pokémon isn't bad, but it isn't good either. It's just so-so." "If you want it in better condition, feed it some more Poffins!"
+  end
+label Red
+  say "Your {lead} is looking good! Mighty impressive, I'd say!" "Tell you what: you can have this Red Scarf!"
+  give "Red Scarf"
+  setflag FLAG_RECEIVED_PASTORIA_CITY_NORTHEAST_HOUSE_RED_SCARF
+  say "The Red Scarf stands for passion!" "Give it to a Pokémon to hold and it has the edge in a Cool Contest."
+  end
+label Blue
+  say "Your {lead} is looking good! Mighty impressive, I'd say!" "Tell you what: you can have this Blue Scarf!"
+  give "Blue Scarf"
+  setflag FLAG_RECEIVED_PASTORIA_CITY_NORTHEAST_HOUSE_BLUE_SCARF
+  say "The Blue Scarf stands for the wide open sea!" "Give it to a Pokémon to hold and it has the edge in a Beauty Contest."
+  end
+label Pink
+  say "Your {lead} is looking good! Mighty impressive, I'd say!" "Tell you what: you can have this Pink Scarf!"
+  give "Pink Scarf"
+  setflag FLAG_RECEIVED_PASTORIA_CITY_NORTHEAST_HOUSE_PINK_SCARF
+  say "The Pink Scarf stands for charm!" "Give it to a Pokémon to hold and it has the edge in a Cute Contest."
+  end
+label Green
+  say "Your {lead} is looking good! Mighty impressive, I'd say!" "Tell you what: you can have this Green Scarf!"
+  give "Green Scarf"
+  setflag FLAG_RECEIVED_PASTORIA_CITY_NORTHEAST_HOUSE_GREEN_SCARF
+  say "The Green Scarf stands for the breeze in spring!" "Give it to a Pokémon to hold and it has the edge in a Smart Contest."
+  end
+label Yellow
+  say "Your {lead} is looking good! Mighty impressive, I'd say!" "Tell you what: you can have this Yellow Scarf!"
+  give "Yellow Scarf"
+  setflag FLAG_RECEIVED_PASTORIA_CITY_NORTHEAST_HOUSE_YELLOW_SCARF
+  say "The Yellow Scarf stands for toughness!" "Give it to a Pokémon to hold and it has the edge in a Tough Contest."
+  end

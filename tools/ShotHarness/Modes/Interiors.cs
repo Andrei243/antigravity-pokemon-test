@@ -13,7 +13,11 @@ partial class Harness
     // (`in_x*`): a gift given once, the flower shop's swap of berries for an accessory, the Berry Master's berry of the
     // day, a rest on Route 205, a floor reached by its stairs and by a lift, the Old Chateau's ghost at its table. It
     // prints what each left behind. Name towns after the mode to do only those: twinleaf, sandgem, jubilife, oreburgh,
-    // floaroma, eterna, chateau, hearthome, solaceon.
+    // floaroma, eterna, chateau, hearthome, solaceon, and part b's: veilstone, lakefront, pastoria, mansion, canalave.
+    // `work` shows part a's rooms at work (`in_x*`) and `workb` part b's (`in_y*`): the café's milk, a massage, a
+    // table of the Seven Stars Restaurant and its double battle, the Suite Key and the White Flute, the Safari Game
+    // from the observatory's counter into the marsh and back out, the Matchup Checker, the binoculars, the Pokémon
+    // Mansion's corridor and a door of it, the maids' challenge and a prodigy, Mr. Backlot and his statue.
     public void InteriorsMode()
     {
         game.State = GameState.Overworld;
@@ -41,6 +45,20 @@ partial class Harness
                 "HearthomeCityNortheastHouse1F", "HearthomeCityNortheastHouse2F"
             }),
             ("solaceon", new[] { "SolaceonTownNortheastHouse", "SolaceonTownPokemonNewsPress", "SolaceonTownNorthHouse" }),
+            // Part b: the east and the sea
+            ("veilstone", new[] { "CafeCabin", "VeilstoneCitySouthwestHouse", "VeilstoneCityNorthwestHouse", "VeilstoneCityNortheastHouse" }),
+            ("lakefront", new[]
+            {
+                "SevenStarsRestaurant", "GrandLakeValorLakefrontEastHouse", "GrandLakeValorLakefrontWestHouse", "GrandLakeRoute213Lobby",
+                "GrandLakeRoute213EastHouse", "GrandLakeRoute213NorthwestHouse", "GrandLakeRoute213NortheastHouse"
+            }),
+            ("pastoria", new[]
+            {
+                "PastoriaCityMiddleHouse", "PastoriaCityNorthHouse", "PastoriaCityNortheastHouse", "PastoriaCitySouthwestHouse",
+                "PastoriaCityObservatoryGate1F", "PastoriaCityObservatoryGate2F"
+            }),
+            ("mansion", new[] { "PokemonMansion", "PokemonMansionMaidsRoomWest", "PokemonMansionMaidsRoomMiddle", "PokemonMansionMaidsRoomEast", "PokemonMansionOffice" }),
+            ("canalave", new[] { "Route221House", "CanalaveCitySoutheastHouse", "CanalaveCitySailorEldritchHouse", "CanalaveCityWestHouse", "IronIslandHouse", "PalParkLobby" }),
         };
         var asked = args.Length > 2 ? args[2..].ToHashSet(StringComparer.OrdinalIgnoreCase) : null;
 
@@ -110,7 +128,9 @@ partial class Harness
             }
             Save(sheet, "interiors_" + town);
         }
-        if (asked != null && !asked.Contains("work")) return;
+        bool workA = asked == null || asked.Contains("work"), workB = asked == null || asked.Contains("workb");
+        if (workB) InteriorsAtWorkB();
+        if (!workA) return;
 
         // ---- a few of them at work
         DialogueManager Box() => game.Dialogue;
@@ -238,4 +258,237 @@ partial class Harness
             return holds();
         }
     }
+
+    // ---- part b's rooms at work (`in_y*`), through the game's own TryInteract, steps, question boxes and battles
+    void InteriorsAtWorkB()
+    {
+        var team = game.Party;
+        DialogueManager Box() => game.Dialogue;
+        void Until(Func<bool> holds, string what, int most = 900)
+        {
+            for (int i = 0; i < most && !holds(); i++) Frames(1);
+            if (!holds()) Console.WriteLine($"  !! never happened: {what}");
+        }
+        // A battle won at once: every foe brought down to 1 HP and struck, the team kept well. Each trainer's team is
+        // weakened, not the first's alone: a couple of the restaurant are two trainers with a team each
+        bool Win()
+        {
+            var fight = game.Battle;
+            for (int guard = 0; guard < 120 && !fight.IsBattleOver; guard++)
+            {
+                if (fight.HUD.MenuState == BattleMenuState.Main)
+                {
+                    foreach (var mine in team.Members.Where(p => p.CurrentHP > 0)) { mine.CurrentHP = mine.MaxHP; mine.Status = StatusCondition.None; }
+                    foreach (var foe in fight.Trainers.SelectMany(t => t.Party.Members)) foe.CurrentHP = Math.Min(foe.CurrentHP, 1);
+                    foreach (var foe in fight.Core.EnemySlots.Where(b => b.Pokemon != null)) foe.Pokemon!.CurrentHP = Math.Min(foe.Pokemon.CurrentHP, 1);
+                    fight.SelectMainMenuOption(0);
+                    fight.SelectMove(0);
+                    if (fight.HUD.MenuState == BattleMenuState.SelectTarget) fight.SelectTarget(0);
+                }
+                else Confirm(fight);
+                Skip(0.5);
+            }
+            if (!fight.IsBattleOver) { Console.WriteLine("  !! a battle that wouldn't end"); return false; }
+            Until(() => game.State != GameState.Battle, "the field again", 1500);
+            foreach (var mine in team.Members) { mine.CurrentHP = mine.MaxHP; mine.Status = StatusCondition.None; }
+            Frames(10);
+            return game.State != GameState.Battle;
+        }
+        // Reads every line on to the end of the script, shooting the first line that holds each word given (a word to a
+        // shot); each question takes the next of the answers (the first once they run out), the team's first Pokémon is
+        // chosen when one is asked for, and every battle is won (shot at its menu, if a shot is named for it)
+        // (a word may be one of several, "this|that"; `heard` is told every line as it stands whole)
+        void ReadOn((string Word, string Shot)[] shots, int[]? answers = null, string? battleShot = null, Action<string>? heard = null)
+        {
+            var left = shots.ToList();
+            int answered = 0;
+            void Look()
+            {
+                heard?.Invoke(Box().VisibleText);
+                var hit = left.FirstOrDefault(s => s.Word.Split('|').Any(word => Box().VisibleText.Contains(word, StringComparison.Ordinal)));
+                if (hit.Shot == null) return;
+                Shot(hit.Shot);
+                left.Remove(hit);
+            }
+            for (int i = 0; i < 6000; i++)
+            {
+                bool busy = engine.ScriptRunning || Box().IsActive || engine.Choice.IsOpen || game.State is GameState.Dialogue or GameState.Battle or GameState.PartyMenu;
+                if (!busy && i > 4) break;
+                if (game.State == GameState.Battle)
+                {
+                    // Read on past the challenge, the Pokémon sent out and what their abilities say, to the menu
+                    for (int k = 0; k < 40 && game.Battle.HUD.MenuState != BattleMenuState.Main && !game.Battle.IsBattleOver; k++) { Confirm(game.Battle); Skip(0.5); }
+                    if (battleShot != null) { Skip(1.5); Shot(battleShot); battleShot = null; }
+                    if (!Win()) return;
+                    continue;
+                }
+                if (game.State == GameState.PartyMenu)
+                {
+                    Frames(10);
+                    game.PartyScreen.SelectedIndex = 0;
+                    game.PartyScreen.Confirm(team); Frames(3);
+                    continue;
+                }
+                if (engine.Choice.IsOpen)
+                {
+                    Frames(24);
+                    Look();
+                    int answer = answers != null && answered < answers.Length ? answers[answered] : 0;
+                    answered++;
+                    for (int k = 0; k < answer; k++) engine.Choice.Move(1);
+                    engine.Choice.Confirm(); Frames(4);
+                    continue;
+                }
+                if (!Box().IsActive) { Frames(1); continue; }
+                Box().FinishLine(); Frames(2);
+                if (engine.Choice.IsOpen) continue;
+                Look();
+                Box().Advance(); Frames(2);
+            }
+            foreach (var (word, shot) in left) Console.WriteLine($"  !! never said \"{word}\" for {shot}");
+            Until(() => game.State == GameState.Overworld && !Box().IsActive, "the text gone");
+        }
+        void Talk(string map, int x, int y, Direction facing) { At(map, x, y, facing); game.Interact(); Frames(3); }
+        void Arrive(string map, int x, int y, Direction facing) { At(map, x, y, facing); game.ArriveOnMap(); Frames(4); }
+        int Have(string item) => inventory.GetQuantity(ItemDatabase.Get(item)!);
+        // A team of two that can stand at the restaurant's tables: the lead's first move is one that strikes
+        team.Clear();
+        team.Add(new Pokemon(PokemonDatabase.Get("Torterra")!, 45));
+        team.Add(new Pokemon(PokemonDatabase.Get("Staraptor")!, 45));
+        foreach (var mine in team.Members)
+        {
+            mine.Moves.Clear();
+            mine.Moves.Add(new Move(MoveDatabase.Get(mine.Species.Name == "Torterra" ? "Razor Leaf" : "Wing Attack")!));
+        }
+        var lead = team.Members[0];
+        game.Money = Math.Max(game.Money, 20000);
+
+        // Café Cabin: a bottle of Moomoo Milk over the bar
+        int money = game.Money;
+        Talk("CafeCabin", 6, 4, Direction.Right);
+        ReadOn(new[] { ("road", "in_y01_cafe_milk"), ("Enjoy", "in_y02_cafe_bottle") });
+        Console.WriteLine($"  the café: Moomoo Milk {Have("Moomoo Milk")}, money {money} then {game.Money}");
+
+        // The Massage Girl: the first of the team, three points friendlier, and what she found
+        int friendship = lead.Friendship;
+        Talk("VeilstoneCitySouthwestHouse", 5, 6, Direction.Up);
+        ReadOn(new[] { ("massage", "in_y03_massage"), ("content", "in_y04_massage_content"), ("received", "in_y05_massage_accessory") });
+        Console.WriteLine($"  the massage: {lead.DisplayName}'s friendship {friendship} then {lead.Friendship}; the day's flag {game.Story.Has("FLAG_DAILY_GOT_MASSAGE_VEILSTONE_CITY_SOUTHWEST_HOUSE")}; accessories of hers in the case {ScriptRunner.MassageAccessories.Sum(a => game.FashionCase.Count(SuperContestDatabase.Accessory(a)))}");
+
+        // The Seven Stars Restaurant: the day's five couples at their tables, one asked, and their double battle
+        Arrive("SevenStarsRestaurant", 9, 12, Direction.Up);
+        Frames(6); Shot("in_y06_restaurant_tables");
+        var diner = game.Map.NPCs.Where(n => n.IsTrainer).OrderBy(n => Math.Abs(n.GridX - 9) + Math.Abs(n.GridY - 12)).First();
+        Console.WriteLine($"  the restaurant: {game.Map.NPCs.Count(n => n.IsTrainer)} diners at their tables: {string.Join(", ", game.Map.NPCs.Where(n => n.IsTrainer).Select(n => n.Name))}");
+        Talk("SevenStarsRestaurant", diner.GridX, diner.GridY + 1, Direction.Up);
+        money = game.Money;
+        ReadOn(new[] { ("two of us", "in_y07_restaurant_asked") }, battleShot: "in_y08_restaurant_battle");
+        Console.WriteLine($"  {diner.Name}'s table: beaten today {game.Story.Flags.Count(f => f.StartsWith("FLAG_DAILY_BEAT_RESTAURANT_", StringComparison.Ordinal))}, money {money} then {game.Money}");
+
+        // The Suite Key: the beauty before her cottage lets herself in, and gives the White Flute inside
+        // (the cottage's door is the lakefront's warp 1, at 715, 781: she stands on the tile before it)
+        inventory.AddItem(ItemDatabase.Get("Suite Key")!, 1);
+        At("Sinnoh", 715, 783, Direction.Up);
+        game.ArriveOnMap(); Frames(30);
+        Shot("in_y09_suite_key_before");
+        game.Interact(); Frames(3);
+        ReadOn(new[] { ("my suite key!", "in_y10_suite_key") });
+        Frames(20); Shot("in_y11_suite_key_gone");
+        Arrive("GrandLakeValorLakefrontEastHouse", 6, 8, Direction.Up);
+        var guest = game.Map.NPCs.FirstOrDefault(n => n.Script == "WhiteFlute");
+        Console.WriteLine($"  the Suite Key: {Have("Suite Key")} left, the beauty {(guest != null ? $"in her cottage at {guest.GridX},{guest.GridY}" : "NOT in her cottage")}");
+        if (guest != null)
+        {
+            At("GrandLakeValorLakefrontEastHouse", guest.GridX, guest.GridY + 1, Direction.Up);
+            game.Interact(); Frames(3);
+            ReadOn(new[] { ("trouble", "in_y12_white_flute") });
+            Console.WriteLine($"  the White Flute: {Have("White Flute")}");
+        }
+
+        // The Hotel Grand Lake's lobby: a rest over the reception desk
+        lead.CurrentHP = 1;
+        Talk("GrandLakeRoute213Lobby", 9, 4, Direction.Right);
+        ReadOn(new[] { ("reservation", "in_y13_lobby_rest") });
+        Console.WriteLine($"  the lobby's rest: {lead.DisplayName} at {lead.CurrentHP} of {lead.MaxHP} HP");
+
+        // The Safari Game: up to the counter, the fee, into the marsh by the back door; back out with the game on, the
+        // attendant's question, and the cowgirl's app for five caught
+        money = game.Money;
+        At("PastoriaCityObservatoryGate1F", 5, 8, Direction.Up);
+        Frames(3); Shot("in_y14_observatory");
+        engine.Steering = (Direction.Up, false);
+        Until(() => engine.ScriptRunning, "the counter's question", 240);
+        engine.Steering = null;
+        ReadOn(new[] { ("just $500", "in_y15_safari_counter"), ("Safari Balls.", "in_y16_safari_balls") });
+        Until(() => game.Map.Name == "GreatMarsh" && game.State == GameState.Overworld, "the marsh", 600);
+        Frames(30); Shot("in_y17_safari_marsh");
+        Console.WriteLine($"  the Safari Game: on {game.Safari.Active}, {game.Safari.Balls} balls and {game.Safari.Steps} steps, money {money} then {game.Money}, in {game.Map.Name} at {game.Player.GridX},{game.Player.GridY}");
+        game.Safari.Caught = 5;
+        engine.Steering = (Direction.Down, false);
+        Until(() => game.Map.Name == "PastoriaCityObservatoryGate1F", "the observatory again", 600);
+        engine.Steering = null;
+        // (the room's arrival asks once the fade has opened on it)
+        Until(() => game.State == GameState.Dialogue || engine.Choice.IsOpen || Box().IsActive, "the attendant's question", 900);
+        ReadOn(new[] { ("still have time", "in_y18_safari_leave"), ("Five at least", "in_y19_matchup_checker") });
+        Console.WriteLine($"  back at the counter: the game on {game.Safari.Active}, the player at {game.Player.GridX},{game.Player.GridY}, the Matchup Checker {game.Poketch.Has(PoketchApp.MatchupChecker)}");
+
+        // The binoculars upstairs
+        Talk("PastoriaCityObservatoryGate2F", 6, 4, Direction.Up);
+        ReadOn(new[] { ("binoculars", "in_y20_binoculars"), ("swings", "in_y21_binoculars_view"), ("A ", "in_y22_binoculars_pokemon") });
+
+        // The Pokémon Mansion: the hall, the west corridor with its doorways, and a door of it taken
+        Arrive("PokemonMansion", 33, 12, Direction.Up);
+        Frames(6); Shot("in_y23_mansion_hall");
+        At("PokemonMansion", 13, 8, Direction.Up); Frames(3); Shot("in_y24_mansion_corridor");
+        At("PokemonMansion", 13, 6, Direction.Up); Frames(2);
+        engine.Steering = (Direction.Up, false);
+        Until(() => game.Map.Name == "PokemonMansionMaidsRoomMiddle" && game.State == GameState.Overworld, "the maids' room", 400);
+        engine.Steering = null;
+        Frames(20); Shot("in_y25_maids_room");
+        Console.WriteLine($"  through the corridor's door: {game.Map.Name} at {game.Player.GridX},{game.Player.GridY} facing {game.Player.Facing}");
+
+        // The maids' challenge: five battles won at once come to no turns, which is not the day's number...
+        Arrive("PokemonMansion", 2, 7, Direction.Left);
+        game.Interact(); Frames(3);
+        ReadOn(new[] { ("Exact-Turn", "in_y26_challenge"), ("First up", "in_y27_first_maid"), ("four maids", "in_y28_four_maids"), ("sweep", "in_y29_sweep") }, battleShot: "in_y2a_maid_battle");
+        Console.WriteLine($"  the maids' challenge: target {game.Story.Var("VAR_FIVE_MAID_KNOCKOUT_TURN_TARGET")}, taken today {game.Story.Has("FLAG_DAILY_TOOK_FIVE_MAID_KNOCKOUT_CHALLENGE")}, the maids beaten {new[] { "maid_belinda", "maid_sophie", "maid_emily", "maid_elena", "maid_clare" }.Count(game.Story.HasDefeated)}");
+        // ... and the maids' Clefairy hold on with Endure as they please, so for the prodigy the day's number is made the
+        // number the sweep took, as the maid tells it (the mode's rigging, as a slot machine's draw is rigged)
+        game.Story.ClearDaily();
+        Arrive("PokemonMansion", 2, 7, Direction.Left);
+        game.Interact(); Frames(3);
+        ReadOn(new[] { ("prodigy", "in_y2b_prodigy_named"), ("pull me|called me out", "in_y2c_prodigy") }, heard: text =>
+        {
+            int at = text.IndexOf("maids was ", StringComparison.Ordinal);
+            if (at < 0) return;
+            string digits = new string(text[(at + 10)..].TakeWhile(char.IsDigit).ToArray());
+            if (digits.Length > 0) game.Story.SetVar("VAR_FIVE_MAID_KNOCKOUT_TURN_TARGET", int.Parse(digits));
+        });
+        Console.WriteLine($"  the prodigy: Liam beaten {game.Story.HasDefeated("rich_boy_liam")}, Celeste beaten {game.Story.HasDefeated("lady_celeste")}");
+
+        // Mr. Backlot's office: his boast once the Hall of Fame is behind the player, the butler sent out, the statue
+        // guarded, and the book
+        bool champion = game.Story.Has("FLAG_GAME_COMPLETED");
+        game.Story.Set("FLAG_GAME_COMPLETED");
+        Arrive("PokemonMansionOffice", 7, 10, Direction.Up);
+        Frames(6); Shot("in_y30_office");
+        Talk("PokemonMansionOffice", 7, 9, Direction.Up);
+        ReadOn(new[] { ("envious", "in_y31_backlot"), ("kiss", "in_y32_backlot_story"), ("At once", "in_y33_butler") });
+        Frames(10); Shot("in_y34_butler_gone");
+        Console.WriteLine($"  Mr. Backlot: the Trophy Garden's newest is {TrophyGardenRules.SpeciesIn(game.Encounters.TrophyFirst, SpecialEncounterTables.Sinnoh.TrophyGarden)}, the day's flag {game.Story.Has("FLAG_DAILY_ADDED_TROPHY_GARDEN_MON")}");
+        if (!champion) game.Story.Unset("FLAG_GAME_COMPLETED");
+        At("PokemonMansionOffice", 7, 5, Direction.Up); Frames(2);
+        engine.Steering = (Direction.Up, false);
+        Until(() => engine.ScriptRunning, "the guard's word", 240);
+        engine.Steering = null;
+        ReadOn(new[] { ("hands off", "in_y35_statue_guarded") });
+        Console.WriteLine($"  before the statue: the player at {game.Player.GridX},{game.Player.GridY}");
+
+        // The old man of Route 221 and the day's level
+        game.Story.SetVar(DailyEvents.RandomLevelVariable, lead.Level);
+        Talk("Route221House", 3, 5, Direction.Left);
+        ReadOn(new[] { ("number", "in_y36_level"), ("Remarkable", "in_y37_level_shown") });
+        Console.WriteLine($"  Route 221's old man: Black Belt {Have("Black Belt")}, the day's flag {game.Story.Has("FLAG_DAILY_RECEIVED_ROUTE_221_HOUSE_REWARD")}");
+    }
+
 }

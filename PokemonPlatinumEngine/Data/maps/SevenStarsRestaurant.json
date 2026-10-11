@@ -1,0 +1,639 @@
+{
+  "name": "SevenStarsRestaurant",
+  "displayName": "Seven Stars Restaurant",
+  "bgmTrack": "sinnoh/valor",
+  "interior": "House",
+  "trees": "Round",
+  "width": 19,
+  "height": 14,
+  "ground": [
+    "###################",
+    "###################",
+    "###################",
+    "#_________________#",
+    "#_________________#",
+    "#_________________#",
+    "#_________________#",
+    "#_________________#",
+    "#_________________#",
+    "#_________________#",
+    "#_________________#",
+    "#_________________#",
+    "#_________________#",
+    "#########D#########"
+  ],
+  "solid": [
+    "###################",
+    "###################",
+    "###################",
+    "##..#....#....#..##",
+    "#.................#",
+    "#.................#",
+    "#.....#.....#.....#",
+    "#.................#",
+    "#.#.............#.#",
+    "#.................#",
+    "#.................#",
+    "#....#.......#....#",
+    "#.................#",
+    "#########.#########"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 3,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 4,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 10,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 13,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 14,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 15,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 17,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 6,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 7,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 11,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 12,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 13,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 1,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 2,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 3,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 15,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 16,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 17,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 4,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 5,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 6,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 12,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 13,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 14,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 9,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 9,
+      "sourceY": 13,
+      "targetMap": "Sinnoh",
+      "targetX": 706,
+      "targetY": 791,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "gentleman_leonardo",
+      "name": "Leonardo",
+      "npcType": "gentleman",
+      "x": 13,
+      "y": 3,
+      "facing": "Right",
+      "script": "LeonardoRebecca",
+      "hiddenBy": "FLAG_HIDE_RESTAURANT_LEONARDO_REBECCA",
+      "trainer": {
+        "id": "gentleman_leonardo",
+        "name": "Leonardo",
+        "trainerClass": "Gentleman",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Gentleman Leonardo: Forty years we have dined here, my dear wife and I. Indulge an old couple with a battle?",
+        "dialogueAfter": "Gentleman Leonardo: Splendid! That takes me back forty years.",
+        "sightRange": 0
+      }
+    },
+    {
+      "id": "socialite_rebecca",
+      "name": "Rebecca",
+      "npcType": "Lady",
+      "x": 15,
+      "y": 3,
+      "facing": "Left",
+      "script": "LeonardoRebecca",
+      "hiddenBy": "FLAG_HIDE_RESTAURANT_LEONARDO_REBECCA",
+      "trainer": {
+        "id": "socialite_rebecca",
+        "name": "Rebecca",
+        "trainerClass": "Socialite",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Socialite Rebecca: Leonardo is quite hopeless on his own. In a double battle I can keep an eye on him.",
+        "dialogueAfter": "Socialite Rebecca: You see, dear? I told you not to lead with the Chatot.",
+        "sightRange": 0
+      }
+    },
+    {
+      "id": "rich_boy_roman",
+      "name": "Roman",
+      "npcType": "Gentleman",
+      "x": 8,
+      "y": 3,
+      "facing": "Right",
+      "script": "RomanKylie",
+      "hiddenBy": "FLAG_HIDE_RESTAURANT_ROMAN_KYLIE",
+      "trainer": {
+        "id": "rich_boy_roman",
+        "name": "Roman",
+        "trainerClass": "Rich Boy",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Rich Boy Roman: We've had every dish on the menu, twice. The only thing left to order is a battle.",
+        "dialogueAfter": "Rich Boy Roman: Waiter! The bill. And something for my pride.",
+        "sightRange": 0
+      }
+    },
+    {
+      "id": "lady_kylie",
+      "name": "Kylie",
+      "npcType": "lady",
+      "x": 10,
+      "y": 3,
+      "facing": "Left",
+      "script": "RomanKylie",
+      "hiddenBy": "FLAG_HIDE_RESTAURANT_ROMAN_KYLIE",
+      "trainer": {
+        "id": "lady_kylie",
+        "name": "Kylie",
+        "trainerClass": "Lady",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Lady Kylie: My Clefairy are too well brought up to battle at the table. Well, usually.",
+        "dialogueAfter": "Lady Kylie: Oh my. We did forget our manners, didn't we?",
+        "sightRange": 0
+      }
+    },
+    {
+      "id": "reporter_valerie",
+      "name": "Valerie",
+      "npcType": "Lass",
+      "x": 17,
+      "y": 8,
+      "facing": "Left",
+      "script": "DarrylValerie",
+      "hiddenBy": "FLAG_HIDE_RESTAURANT_DARRYL_VALERIE",
+      "trainer": {
+        "id": "reporter_valerie",
+        "name": "Valerie",
+        "trainerClass": "Reporter",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Reporter Valerie: Tonight's top story: a challenger walks up to our table! More after this battle.",
+        "dialogueAfter": "Reporter Valerie: And that's the news. Back to my dessert.",
+        "sightRange": 0
+      }
+    },
+    {
+      "id": "cameraman_darryl",
+      "name": "Darryl",
+      "npcType": "Gentleman",
+      "x": 15,
+      "y": 8,
+      "facing": "Right",
+      "script": "DarrylValerie",
+      "hiddenBy": "FLAG_HIDE_RESTAURANT_DARRYL_VALERIE",
+      "trainer": {
+        "id": "cameraman_darryl",
+        "name": "Darryl",
+        "trainerClass": "Cameraman",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Cameraman Darryl: We're off the clock, so no cameras. But I never turn down a good scene.",
+        "dialogueAfter": "Cameraman Darryl: And of course, the one time I'm not filming...",
+        "sightRange": 0
+      }
+    },
+    {
+      "id": "artist_ismael",
+      "name": "Ismael",
+      "npcType": "Gentleman",
+      "x": 3,
+      "y": 3,
+      "facing": "Right",
+      "script": "IsmaelHarley",
+      "hiddenBy": "FLAG_HIDE_RESTAURANT_ISMAEL_HARLEY",
+      "trainer": {
+        "id": "artist_ismael",
+        "name": "Ismael",
+        "trainerClass": "Artist",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Artist Ismael: Don't move! The light on your face just now... No, it's gone. A battle will have to do instead.",
+        "dialogueAfter": "Artist Ismael: I shall call this one \"Still Life with Defeat\".",
+        "sightRange": 0
+      }
+    },
+    {
+      "id": "pi_kendrick",
+      "name": "Kendrick",
+      "npcType": "Gentleman",
+      "x": 4,
+      "y": 11,
+      "facing": "Right",
+      "script": "KendrickGabriella",
+      "hiddenBy": "FLAG_HIDE_RESTAURANT_KENDRICK_GABRIELLA",
+      "trainer": {
+        "id": "pi_kendrick",
+        "name": "Kendrick",
+        "trainerClass": "PI",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "PI Kendrick: I have been watching you since you came in. You have the look of a Trainer who can't refuse a challenge.",
+        "dialogueAfter": "PI Kendrick: My deductions were right. I only wish they'd been wrong.",
+        "sightRange": 0
+      }
+    },
+    {
+      "id": "beauty_gabriella",
+      "name": "Gabriella",
+      "npcType": "Lady",
+      "x": 6,
+      "y": 11,
+      "facing": "Left",
+      "script": "KendrickGabriella",
+      "hiddenBy": "FLAG_HIDE_RESTAURANT_KENDRICK_GABRIELLA",
+      "trainer": {
+        "id": "beauty_gabriella",
+        "name": "Gabriella",
+        "trainerClass": "Beauty",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Beauty Gabriella: He says he's working on a case. I say he's just nosy. Shall we give him something to investigate?",
+        "dialogueAfter": "Beauty Gabriella: Case closed, I think.",
+        "sightRange": 0
+      }
+    },
+    {
+      "id": "beauty_harley",
+      "name": "Harley",
+      "npcType": "Lady",
+      "x": 5,
+      "y": 3,
+      "facing": "Left",
+      "script": "IsmaelHarley",
+      "hiddenBy": "FLAG_HIDE_RESTAURANT_ISMAEL_HARLEY",
+      "trainer": {
+        "id": "beauty_harley",
+        "name": "Harley",
+        "trainerClass": "Beauty",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Beauty Harley: He has been staring at his soup for an hour, looking for the right colours. Do rescue me.",
+        "dialogueAfter": "Beauty Harley: That was the most fun I've had all evening.",
+        "sightRange": 0
+      }
+    },
+    {
+      "id": "aroma_lady_alison",
+      "name": "Alison",
+      "npcType": "Lady",
+      "x": 7,
+      "y": 6,
+      "facing": "Left",
+      "script": "EugeneAlison",
+      "hiddenBy": "FLAG_HIDE_RESTAURANT_EUGENE_ALISON",
+      "trainer": {
+        "id": "aroma_lady_alison",
+        "name": "Alison",
+        "trainerClass": "Aroma Lady",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Aroma Lady Alison: Can you smell the roses on the tables? My Roselia arranged them. It battles just as prettily.",
+        "dialogueAfter": "Aroma Lady Alison: Even a rose that loses still smells lovely.",
+        "sightRange": 0
+      }
+    },
+    {
+      "id": "veteran_emanuel",
+      "name": "Emanuel",
+      "npcType": "Gentleman",
+      "x": 1,
+      "y": 8,
+      "facing": "Right",
+      "script": "EmanuelBlythe",
+      "hiddenBy": "FLAG_HIDE_RESTAURANT_EMANUEL_BLYTHE",
+      "trainer": {
+        "id": "veteran_emanuel",
+        "name": "Emanuel",
+        "trainerClass": "Veteran",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Veteran Emanuel: I am teaching my granddaughter how two Pokémon cover each other. You will do nicely for the lesson.",
+        "dialogueAfter": "Veteran Emanuel: Hm. It seems the lesson was for me.",
+        "sightRange": 0
+      }
+    },
+    {
+      "id": "lass_blythe",
+      "name": "Blythe",
+      "npcType": "lass",
+      "x": 3,
+      "y": 8,
+      "facing": "Left",
+      "script": "EmanuelBlythe",
+      "hiddenBy": "FLAG_HIDE_RESTAURANT_EMANUEL_BLYTHE",
+      "trainer": {
+        "id": "lass_blythe",
+        "name": "Blythe",
+        "trainerClass": "Lass",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Lass Blythe: Grandpa talks about tactics all through dinner. I just want to get on with it!",
+        "dialogueAfter": "Lass Blythe: Next time I'm picking the tactics.",
+        "sightRange": 0
+      }
+    },
+    {
+      "id": "pokefan_meredith",
+      "name": "Meredith",
+      "npcType": "Lady",
+      "x": 13,
+      "y": 6,
+      "facing": "Left",
+      "script": "EstebanMeredith",
+      "hiddenBy": "FLAG_HIDE_RESTAURANT_ESTEBAN_MEREDITH",
+      "trainer": {
+        "id": "pokefan_meredith",
+        "name": "Meredith",
+        "trainerClass": "Pokéfan",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Pokéfan Meredith: My little ones have been so good all through dinner. They've earned a run-around.",
+        "dialogueAfter": "Pokéfan Meredith: There, there. Pudding for everybody anyway.",
+        "sightRange": 0
+      }
+    },
+    {
+      "id": "scientist_emilio",
+      "name": "Emilio",
+      "npcType": "Gentleman",
+      "x": 12,
+      "y": 11,
+      "facing": "Right",
+      "script": "EmilioKaylee",
+      "hiddenBy": "FLAG_HIDE_RESTAURANT_EMILIO_KAYLEE",
+      "trainer": {
+        "id": "scientist_emilio",
+        "name": "Emilio",
+        "trainerClass": "Scientist",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Scientist Emilio: My theory: two minds working as one will beat any single Trainer. Shall we run the experiment?",
+        "dialogueAfter": "Scientist Emilio: Fascinating. The theory needs more work.",
+        "sightRange": 0
+      }
+    },
+    {
+      "id": "school_kid_esteban",
+      "name": "Esteban",
+      "npcType": "Youngster",
+      "x": 11,
+      "y": 6,
+      "facing": "Right",
+      "script": "EstebanMeredith",
+      "hiddenBy": "FLAG_HIDE_RESTAURANT_ESTEBAN_MEREDITH",
+      "trainer": {
+        "id": "school_kid_esteban",
+        "name": "Esteban",
+        "trainerClass": "School Kid",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "School Kid Esteban: Mum says no pudding until I've finished my homework. Our homework is double battles!",
+        "dialogueAfter": "School Kid Esteban: Does losing count as finishing it?",
+        "sightRange": 0
+      }
+    },
+    {
+      "id": "breeder_kaylee",
+      "name": "Kaylee",
+      "npcType": "Lady",
+      "x": 14,
+      "y": 11,
+      "facing": "Left",
+      "script": "EmilioKaylee",
+      "hiddenBy": "FLAG_HIDE_RESTAURANT_EMILIO_KAYLEE",
+      "trainer": {
+        "id": "breeder_kaylee",
+        "name": "Kaylee",
+        "trainerClass": "Pokémon Breeder",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Pokémon Breeder Kaylee: I raised these three from Eggs. They've never eaten anywhere this fancy, and they're over-excited.",
+        "dialogueAfter": "Pokémon Breeder Kaylee: Well battled, all of you. Now sit down and behave.",
+        "sightRange": 0
+      }
+    },
+    {
+      "id": "collector_eugine",
+      "name": "Eugene",
+      "npcType": "Gentleman",
+      "x": 5,
+      "y": 6,
+      "facing": "Right",
+      "script": "EugeneAlison",
+      "hiddenBy": "FLAG_HIDE_RESTAURANT_EUGENE_ALISON",
+      "trainer": {
+        "id": "collector_eugene",
+        "name": "Eugene",
+        "trainerClass": "Collector",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Collector Eugene: I fished for a whole year to find this Pokémon. Tonight it finally gets to show off.",
+        "dialogueAfter": "Collector Eugene: A whole year... and it was over before the starter arrived.",
+        "sightRange": 0
+      }
+    },
+    {
+      "id": "waiter",
+      "name": "Waiter",
+      "npcType": "Clerk",
+      "x": 10,
+      "y": 12,
+      "facing": "Left",
+      "dialog": [
+        "Welcome to the Seven Stars Restaurant.",
+        "Our guests come for the cooking and stay for the battles: two Pokémon against two, at any table you like."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

@@ -1,0 +1,121 @@
+{
+  "name": "PastoriaCityMiddleHouse",
+  "displayName": "Pastoria City",
+  "bgmTrack": "sinnoh/pastoria",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#.....#####",
+    "#.........#",
+    "#..##.....#",
+    "#..##.....#",
+    "#.........#",
+    "#.........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 4,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 6,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 3,
+      "y": 5,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Sinnoh",
+      "targetX": 601,
+      "targetY": 836,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "old_man",
+      "name": "Old Man",
+      "npcType": "Gentleman",
+      "x": 7,
+      "y": 6,
+      "facing": "Left",
+      "dialog": [
+        "Combee are curious little things. Only the females ever evolve and grow strong. The males never do.",
+        "Come to think of it, my wife was a strong one too.",
+        "She evolved from my bride into the mother of all our children."
+      ]
+    },
+    {
+      "id": "bug_catcher",
+      "name": "Bug Catcher",
+      "npcType": "Youngster",
+      "x": 5,
+      "y": 5,
+      "facing": "Down",
+      "script": "Combee",
+      "movement": "look_south_and_east"
+    }
+  ],
+  "wildEncounters": []
+}

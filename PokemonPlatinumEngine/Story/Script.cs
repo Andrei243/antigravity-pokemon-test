@@ -68,6 +68,9 @@ public enum Op
     Random,
     // The Battle Frontier's frame and the Battle Tower (plan 06 · R18a)
     Frontier, Tower,
+    // What a room's people ask of the team and do for it (plan 01 · M11, part b): a massage, a Pokémon of a level,
+    // a pair of Combee, the condition a scarf is given for
+    Team,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

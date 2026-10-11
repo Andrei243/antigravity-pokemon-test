@@ -1,0 +1,31 @@
+# Pastoria City's middle house (plan 01 · M11, part b), on the original's plan. docs/scripts.md describes the
+# language; the lines are our own, on the original's beats (scripts_pastoria_city_middle_house.s).
+#
+# The boy wants to see a male and a female Combee at once, on the team (team combee: the original's
+# CheckPartyCombeeGenderCount), and gives the Macho Brace for the sight, once
+# (FLAG_RECEIVED_PASTORIA_CITY_MIDDLE_HOUSE_MACHO_BRACE). The first time he only asks
+# (FLAG_TALKED_TO_PASTORIA_CITY_MIDDLE_HOUSE_BUG_CATCHER).
+
+
+script Combee
+  if flag FLAG_RECEIVED_PASTORIA_CITY_MIDDLE_HOUSE_MACHO_BRACE goto Good
+  if flag FLAG_TALKED_TO_PASTORIA_CITY_MIDDLE_HOUSE_BUG_CATCHER goto Look
+  setflag FLAG_TALKED_TO_PASTORIA_CITY_MIDDLE_HOUSE_BUG_CATCHER
+  say "Hey, have you caught a Combee of each kind, a boy and a girl?" "If you have, I want to see the two of them together." "Show me and I'll give you a Macho Brace. Deal?"
+  end
+label Look
+  team combee
+  if result == 0 goto None
+  if result == 1 goto One
+  say "Wow! A girl Combee AND a boy Combee! I've gone all giddy!" "Here's your reward, like I promised. Go on, take it!"
+  setflag FLAG_RECEIVED_PASTORIA_CITY_MIDDLE_HOUSE_MACHO_BRACE
+  give "Macho Brace"
+label Good
+  say "You're good! You'd make a great Bug Maniac!"
+  end
+label None
+  say "Aww, you haven't got even one Combee?" "They're so cute, the way the smell of Honey brings them buzzing along." "Show me a boy and a girl together, OK? I'll give you a Macho Brace if you do."
+  end
+label One
+  say "That's it! A Combee! It's sooo cute!" "It'd be even better with one of the other kind beside it, though. The girls are rare, you know, so everybody wants one." "Show me a boy and a girl together and the Macho Brace is yours."
+  end

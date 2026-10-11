@@ -3,8 +3,13 @@
   "bgmTrack": "sinnoh/valor",
   "trees": "Round",
   "architecture": "Resort",
-  // The restaurant and the houses have no rooms yet (plan 01 · M11)
-  "locked": [ 0, 1, 2 ],
+  // Plan 01 · M11, part b: the Seven Stars Restaurant and the Hotel Grand Lake's two cottages by the lake, on the
+  // original's plans
+  "doors": [
+    { "warp": 0, "map": "SevenStarsRestaurant", "x": 9, "y": 12, "facing": "Up" },
+    { "warp": 1, "map": "GrandLakeValorLakefrontEastHouse", "x": 6, "y": 8, "facing": "Up" },
+    { "warp": 2, "map": "GrandLakeValorLakefrontWestHouse", "x": 6, "y": 8, "facing": "Up" }
+  ],
   // The way into the lake shares its tiles between two maps, as the original moves its warps by script: the lake Team
   // Galactic drained (warps 3 and 4) until the story fills it again (FLAG_GALACTIC_LEFT_LAKE_VALOR, plan 02 · S13),
   // and the lake as it was (warps 5 and 6) from then on
@@ -49,9 +54,12 @@
         "They've had a blackout down there, and the crews are still working to get the lights back on."
       ]
     },
-    // In the original she gives a reward for the Suite Key she dropped, inside her cottage (plan 01 · M11)
+    // She has dropped the Suite Key of her cottage, which lies hidden by the hotel's reception on Route 213: handed
+    // it, she goes in, and gives a reward inside (plan 01 · M11, part b; scripts/valor_lakefront.txt)
     "beauty": {
       "name": "Beauty",
+      "script": "Beauty",
+      "still": true,
       "dialog": [
         "My suite key... it's gone! It must have slipped out of my pocket somewhere between here and the hotel.",
         "A Pokétch that could sniff out lost things would come in very handy right now..."

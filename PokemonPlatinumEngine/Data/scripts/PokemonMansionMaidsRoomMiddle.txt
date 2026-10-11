@@ -1,0 +1,30 @@
+# The middle one of the maids' three rooms in the Pokémon Mansion (plan 01 · M11, part b), on the original's plan:
+# three rooms side by side behind three doors of the west corridor, which the original keeps in one map and this
+# game in three. docs/scripts.md describes the language; the lines are our own, on the original's beats
+# (scripts_pokemon_mansion_maids_room.s).
+#
+# The maid of this room gives a Soothe Bell, once (FLAG_RECEIVED_POKEMON_MANSION_MAIDS_ROOM_SOOTHE_BELL). Its bed, like
+# the other rooms', may be slept in: the team is healed behind a fade, as often as asked.
+
+
+script SootheBell
+  if flag FLAG_RECEIVED_POKEMON_MANSION_MAIDS_ROOM_SOOTHE_BELL goto After
+  say "You know you can catch Pokémon out in the Trophy Garden?" "Put this on one you have caught and it will warm to you all the faster." "I'll let you have one of mine. Do try it!"
+  setflag FLAG_RECEIVED_POKEMON_MANSION_MAIDS_ROOM_SOOTHE_BELL
+  give "Soothe Bell"
+  end
+label After
+  say "I do hope you grow into a Trainer that Pokémon can love and trust."
+  end
+
+
+script Bed
+  ask "It's a bed... Take a rest?"
+  if no end
+  text "{player} was fast asleep in no time..."
+  fade out
+  fanfare heal
+  heal
+  fade in
+  text "{player} and the Pokémon woke from their nap as good as new!"
+  end

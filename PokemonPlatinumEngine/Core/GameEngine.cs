@@ -438,7 +438,7 @@ public partial class GameEngine
         registeredItem = save.RegisteredItem;
         poketch.Load(save.Poketch);
         poketchView.Hide();
-        if (save.Safari is { } game) safari.Resume(game.Balls, game.Steps);
+        if (save.Safari is { } game) safari.Resume(game.Balls, game.Steps, game.Caught);
         else safari.End();
         encounterAids.RepelSteps = Math.Max(0, save.RepelSteps);
         encounterAids.Flute = Flute.None;
@@ -569,7 +569,7 @@ public partial class GameEngine
             PartnerPerson = partner?.Who.Key,
             RepelSteps = encounterAids.RepelSteps,
             Poketch = poketch.Save(),
-            Safari = safari.Active ? new SafariSave(safari.Balls, safari.Steps) : null,
+            Safari = safari.Active ? new SafariSave(safari.Balls, safari.Steps, safari.Caught) : null,
             Encounters = encounters,
             Berries = berries,
             Poffins = poffinCase.Count > 0 ? poffinCase.All.ToList() : null,
@@ -742,6 +742,9 @@ public partial class GameEngine
                             BattleResult.PlayerRan or BattleResult.EnemyFled => BattleOutcome.Fled,
                             _ => BattleOutcome.None
                         };
+                        scriptTurns = battle.Core.Turn;
+                        // The Safari Game counts what it caught (the Matchup Checker is given for five in one game)
+                        if (safari.Active && battle.Kind == BattleKind.Safari && battle.Result == BattleResult.EnemyCaught) safari.Caught++;
                         EndBattle();
                     }
                 }

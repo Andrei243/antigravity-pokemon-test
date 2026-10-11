@@ -1,0 +1,42 @@
+# The Hotel Grand Lake's north-west cottage on Route 213 (plan 01 · M11, part b), on the original's plan.
+# docs/scripts.md describes the language; the lines are our own, on the original's beats
+# (scripts_grand_lake_route_213_northwest_house.s).
+#
+# A troupe of street performers has taken the cottage. The clown gives TM92, once
+# (FLAG_RECEIVED_GRAND_LAKE_ROUTE_213_NORTHWEST_HOUSE_TM92). The psychic reads a fortune the first time she is spoken
+# to (FLAG_TALKED_TO_GRAND_LAKE_ROUTE_213_NORTHWEST_HOUSE_PSYCHIC): one of four, by the original's die of ten (four
+# sides for a meeting, three for a brief joy, two for an accident, one for a turn of destiny).
+
+
+script TrickRoom
+  if flag FLAG_RECEIVED_GRAND_LAKE_ROUTE_213_NORTHWEST_HOUSE_TM92 goto Explain
+  say "We're a travelling troupe of street performers!" "Never mind the introductions. Have this instead!"
+  give "TM92"
+  setflag FLAG_RECEIVED_GRAND_LAKE_ROUTE_213_NORTHWEST_HOUSE_TM92
+label Explain
+  say "Trick Room is a strange one: it turns time itself on its head." "For a little while after it is used, the slowest Pokémon moves first and the quickest waits its turn." "What you make of that is up to you, Trainer..."
+  end
+
+
+script Fortune
+  if flag FLAG_TALKED_TO_GRAND_LAKE_ROUTE_213_NORTHWEST_HOUSE_PSYCHIC goto Read
+  setflag FLAG_TALKED_TO_GRAND_LAKE_ROUTE_213_NORTHWEST_HOUSE_PSYCHIC
+  say "Let me look into your eyes... I shall read your fortune..." "... ... ..."
+  random 10
+  if var RESULT < 4 goto Meeting
+  if var RESULT < 7 goto Joy
+  if var RESULT < 9 goto Accident
+  say "Your destiny is about to turn..." "For better or for worse? That lies beyond what I can see..."
+  end
+label Meeting
+  say "A magical meeting is on the wind..." "With a Pokémon, or with a Trainer? That I cannot tell..."
+  end
+label Joy
+  say "A brief moment of joy is close at hand..." "But remember this: good and ill are two sides of one coin..."
+  end
+label Accident
+  say "An accident nobody could foresee lies in wait..." "Whether you fall to it or rise above it rests with you alone..."
+  end
+label Read
+  say "I have looked into a great many eyes over the years, human and Pokémon alike..." "But yours hold kindness, strength, joy, sorrow and more besides, all swirling together..." "Eyes whose colours never settle are the hardest of all to read..."
+  end

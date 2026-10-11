@@ -1,0 +1,384 @@
+{
+  "name": "PokemonMansion",
+  "displayName": "Pokémon Mansion",
+  "bgmTrack": "sinnoh/route209",
+  "interior": "House",
+  "trees": "Round",
+  "width": 58,
+  "height": 18,
+  "ground": [
+    "##########################################################",
+    "##########################################################",
+    "##########################################################",
+    "###########################_____________##################",
+    "###########################_____________##################",
+    "###########################_____________##################",
+    "#________________________________________________________#",
+    "#________________________________________________________#",
+    "#________________________________________________________#",
+    "###########################_____________##################",
+    "#VVVVVVVVVVVVVVVVVVVVVVVVV#_____________#VVVVVVVVVVVVVVVV#",
+    "#VVVVVVVVVVVVVVVVVVVVVVVVV#_____________#VVVVVVVVVVVVVVVV#",
+    "#VVVVVVVVVVVVVVVVVVVVVVVVV#_____________#VVVVVVVVVVVVVVVV#",
+    "#VVVVVVVVVVVVVVVVVVVVVVVVV#_____________#VVVVVVVVVVVVVVVV#",
+    "#VVVVVVVVVVVVVVVVVVVVVVVVV#_____________#VVVVVVVVVVVVVVVV#",
+    "#VVVVVVVVVVVVVVVVVVVVVVVVV##___________##VVVVVVVVVVVVVVVV#",
+    "#VVVVVVVVVVVVVVVVVVVVVVVVV#_____________#VVVVVVVVVVVVVVVV#",
+    "#################################D########################"
+  ],
+  "solid": [
+    "##########################################################",
+    "##########################################################",
+    "#################################.########################",
+    "############################..#.....#..###################",
+    "###########################.............##################",
+    "#####.#######.#######.#####....#...#....########.#########",
+    "#........#.......#.......#.....#...#.....#...............#",
+    "#........................................................#",
+    "#........................................................#",
+    "###########################....#...#....##################",
+    "###########################....#...#....##################",
+    "###########################.............##################",
+    "###########################.............##################",
+    "###########################....#...#....##################",
+    "###########################....#...#....##################",
+    "############################..#.....#..###################",
+    "############################..#.....#..###################",
+    "#################################.########################"
+  ],
+  "props": [
+    {
+      "type": "Painting",
+      "x": 29,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 37,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 27,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 30,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 36,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 39,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 17,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 25,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 31,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 35,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 41,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 1,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 56,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 31,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 35,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 31,
+      "y": 14,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 35,
+      "y": 14,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 27,
+      "y": 16,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 30,
+      "y": 16,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 33,
+      "y": 16,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 36,
+      "y": 16,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 39,
+      "y": 16,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 33,
+      "sourceY": 17,
+      "targetMap": "Sinnoh",
+      "targetX": 470,
+      "targetY": 773,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 5,
+      "sourceY": 5,
+      "targetMap": "PokemonMansionMaidsRoomWest",
+      "targetX": 4,
+      "targetY": 9,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 13,
+      "sourceY": 5,
+      "targetMap": "PokemonMansionMaidsRoomMiddle",
+      "targetX": 4,
+      "targetY": 9,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 21,
+      "sourceY": 5,
+      "targetMap": "PokemonMansionMaidsRoomEast",
+      "targetX": 4,
+      "targetY": 9,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 48,
+      "sourceY": 5,
+      "targetMap": "PokemonMansionOffice",
+      "targetX": 7,
+      "targetY": 10,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 33,
+      "sourceY": 2,
+      "targetMap": "TrophyGarden",
+      "targetX": 14,
+      "targetY": 24,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "maid_office",
+      "name": "Maid",
+      "npcType": "Lass",
+      "x": 49,
+      "y": 6,
+      "facing": "Down",
+      "dialog": [
+        "This is the office of Mr. Backlot, the master of the mansion."
+      ]
+    },
+    {
+      "id": "maid_trophy_garden",
+      "name": "Maid",
+      "npcType": "Lass",
+      "x": 34,
+      "y": 6,
+      "facing": "Down",
+      "dialog": [
+        "This way to the Trophy Garden. The master keeps it open to every visitor.",
+        "Do take care, though: wild Pokémon live out there."
+      ]
+    },
+    {
+      "id": "maid_far_west",
+      "name": "Maid",
+      "npcType": "Lass",
+      "x": 1,
+      "y": 7,
+      "facing": "Right",
+      "script": "Challenge"
+    },
+    {
+      "id": "maid_far_east",
+      "name": "Maid",
+      "npcType": "Lass",
+      "x": 56,
+      "y": 7,
+      "facing": "Left",
+      "dialog": [
+        "I'm so sorry. Nobody may go beyond this point.",
+        "Please, you really mustn't. Mr. Backlot would be ever so cross with me!"
+      ]
+    },
+    {
+      "id": "five_maid_knockout_maid",
+      "name": "Maid",
+      "npcType": "Lass",
+      "x": 1,
+      "y": 7,
+      "facing": "Right",
+      "dialog": [
+        "..."
+      ],
+      "hiddenBy": "FLAG_HIDE_POKEMON_MANSION_FIVE_MAID_KNOCKOUT_MAID",
+      "trainer": {
+        "id": "maid_belinda",
+        "name": "Maid",
+        "trainerClass": "Maid",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "sightRange": 0
+      }
+    },
+    {
+      "id": "maid_east",
+      "name": "Maid",
+      "npcType": "Lass",
+      "x": 42,
+      "y": 6,
+      "facing": "Right",
+      "dialog": [
+        "That book on the master's desk looks dreadfully expensive.",
+        "I do wish I could have one little peek inside it..."
+      ],
+      "movement": "walk_back_and_forth",
+      "rangeX": 3
+    },
+    {
+      "id": "liam",
+      "name": "Liam",
+      "npcType": "Gentleman",
+      "x": 1,
+      "y": 7,
+      "facing": "Right",
+      "hiddenBy": "FLAG_HIDE_POKEMON_MANSION_FIVE_MAID_KNOCKOUT_BOSS",
+      "trainer": {
+        "id": "rich_boy_liam",
+        "name": "Liam",
+        "trainerClass": "Rich Boy",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "sightRange": 0
+      }
+    },
+    {
+      "id": "celeste",
+      "name": "Celeste",
+      "npcType": "lady",
+      "x": 1,
+      "y": 7,
+      "facing": "Right",
+      "hiddenBy": "FLAG_HIDE_POKEMON_MANSION_FIVE_MAID_KNOCKOUT_BOSS",
+      "trainer": {
+        "id": "lady_celeste",
+        "name": "Celeste",
+        "trainerClass": "Lady",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "sightRange": 0
+      }
+    }
+  ],
+  "wildEncounters": []
+}

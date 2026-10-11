@@ -1,0 +1,154 @@
+{
+  "name": "CanalaveCitySailorEldritchHouse",
+  "displayName": "Canalave City",
+  "bgmTrack": "sinnoh/canalave",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "####...####",
+    "#.........#",
+    "#.#.....#.#",
+    "#.......#.#",
+    "##......#.#",
+    "##........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 5,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 1,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 3,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fridge",
+      "x": 7,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "KitchenCounter",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "KitchenCounter",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 1,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 2,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bed",
+      "x": 8,
+      "y": 5,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Sinnoh",
+      "targetX": 39,
+      "targetY": 749,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "little_boy",
+      "name": "Little Boy",
+      "npcType": "Youngster",
+      "x": 5,
+      "y": 5,
+      "facing": "Up",
+      "dialog": [
+        "I'm going to be a sailor, just like my dad!",
+        "He's the bravest man there is. Even the sea doesn't scare him!",
+        "A Gym Leader would be good too, though. Byron's amazing!"
+      ],
+      "movement": "wander_west_and_east",
+      "rangeX": 3,
+      "rangeZ": 3
+    },
+    {
+      "id": "pokefan_f",
+      "name": "Mother",
+      "npcType": "Lady",
+      "x": 8,
+      "y": 4,
+      "facing": "Up",
+      "dialog": [
+        "That boy of ours never runs out of energy!",
+        "Which is just how a boy ought to be."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}
