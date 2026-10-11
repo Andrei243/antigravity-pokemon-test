@@ -1,0 +1,17 @@
+# The Survival Area's Pokémon Center (plan 01 · M11, the hand-made rooms), on the original's plan. docs/scripts.md
+# describes the language; the lines are our own, on the original's beats (scripts_survival_area_pokecenter_1f.s).
+#
+# The trainer by the wall wonders about the building next door until the player has been inside it
+# (FLAG_VISITED_BATTLEGROUND, which the Battleground's own arrival sets), and about the Battle Factory after.
+
+
+# SurvivalAreaPokecenter1F_AceTrainerM
+script AceTrainer
+  if flag FLAG_VISITED_BATTLEGROUND goto Factory
+  say "Have you seen the building next door? Trainers of real standing meet there to battle."
+  say "Its door stays shut to anybody the owner does not know. One day he will wave me in."
+  end
+label Factory
+  say "They say the Battle Factory lets you take up its challenge without a single Pokémon of your own."
+  say "Now there's a thought. Perhaps I ought to give it a go..."
+  end

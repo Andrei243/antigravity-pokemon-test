@@ -5,8 +5,8 @@
   "trees": "Round",
   "architecture": "Resort",
   "doors": [
-    { "warp": 3, "map": "SurvivalAreaPokemonCenter", "x": 5, "y": 7, "facing": "Up" },
-    { "warp": 4, "map": "SurvivalAreaPokeMart", "x": 4, "y": 6, "facing": "Up" },
+    { "warp": 3, "map": "SurvivalAreaPokemonCenter", "x": 8, "y": 12, "facing": "Up" },
+    { "warp": 4, "map": "SurvivalAreaPokeMart", "x": 3, "y": 11, "facing": "Up" },
     // The south house, on the original's plan (plan 01 · M11, part c): the black belt who gives TM42
     { "warp": 1, "map": "SurvivalAreaSouthHouse", "x": 4, "y": 8, "facing": "Up" },
     // The north house, a shard tutor's, on the original's plan (plan 01 · M11, part d)

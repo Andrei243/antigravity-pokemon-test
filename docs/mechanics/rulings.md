@@ -1996,3 +1996,32 @@ Plan 06 · R16c, from the original's `scripts_amity_square.s`, `scrcmd_amity_squ
 | The huts' sound | `SEQ_SE_DP_GYURU` | The warp panels' `warp` | Plan 05 · A6 |
 | The television's Amity Square Watch, and the count of finds it reads | `ScrCmd_27C`, `RECORD_UNK_051`, the reporters in the gates | Not kept | Plan 08's television |
 | A follower outside the square | None in Platinum | None: plan 10 · F3 and F4 | The follower is one type already (`Overworld/Follower.cs`) |
+
+## The hand-made rooms of the first chapters (2026-10-11, plan 01 · M11, the last rooms)
+
+The rooms made by hand before the world was imported, laid out again on the original's plans: the ground floors of the seventeen Pokémon Centers and of the thirteen Poké Marts, the Trainers' School, the Pokétch Company, Jubilife TV's lobby and the rival's house. The beats of each person's lines were read from the original's scripts (`scripts_<town>_pokecenter_1f.s`, `scripts_<town>_mart.s`, `scripts_trainers_school.s`, `scripts_poketch_co_1f.s` to `3f`, `scripts_jubilife_tv_1f.s`, `scripts_twinleaf_town_rival_house_1f.s` and `2f`); the lines are our own.
+
+- **One plan serves every Center and one every Mart**, as in the original, where seventeen headers share one land file and twelve another (Pastoria's Mart is the same room with a carving on its counter and two tiles of its corners blocked or open differently: here it is the common plan with the carving read on the counter). Each town's room is a file of its own with its own people.
+- **People a chapter placed keep the chapter's lines, scripts and names** and moved to the original's tiles: Maylene stands before the counter in Snowpoint's Center as the original has her, not in the corner the hand-made room had for her. Snowpoint's woman in the Mart keeps the chapter's id (`snowpoint_lady`) for the original's `snowpoint_npc_f`.
+- **The attendant before the basement** stands in Sandgem's and Jubilife's Centers alone, as in the original, behind `FLAG_HIDE_POKECENTER_BASEMENT_BLOCKADE`, which the Oreburgh Gym's script sets with the Coal Badge. She stands on the tile the way up from the basement comes out on; nobody can be below while she is there, but for a save made downstairs before she was placed, which comes up beside her.
+- **A white-out wakes two tiles before the nurse**, across her counter, as it did: the engine finds the tile from her. At home it is still beside Mom.
+- **The escalators are where the original has them**, in alcoves of the south wall, the way up at the west and the way down at the east; the floors above and below were not changed and lead back onto the mats beside them.
+- **Celestic's Pokéfan** gives his Great Ball once a day (`FLAG_DAILY_RECEIVED_CELESTIC_TOWN_POKECENTER_1F_GREAT_BALL`) by the first Pokémon's friendship, at the original's thresholds: 150 and more the ball, 50 and more a kind word, under that a word of advice. The original's check of a full bag is not made: the bag here has room.
+- **The rival leaves the Trainers' School and his own room by the original's movements**: round the player when spoken to from the south, straight down otherwise; and from his desk round to the stairs once the player has stepped clear of their head. In a script the player's step comes first and his run after, where the original moves both at once.
+- **The Pokétch Company has two doors**, each leading back out before its own; its floors are joined by the stairs beside the original's warps.
+- **A save made in a room that has been laid out again** wakes on the tile the room is come into by, looking in; so does any save that stands on a tile of a room where nobody can stand. This is a rule of the save's place (`WorldVersion` 3), not of the story: no story version was raised.
+
+**Stand-ins for what this game lacks**
+
+| What | The original | Here | Why |
+| --- | --- | --- | --- |
+| The Centers' daily trainers | Two people of each ground floor who are a reporter and a cameraman, an idol, a clown, two interviewers, a Poké Kid or a guitarist by the day of the week, battled once a day after the Vs. Seeker's first rematches | Nobody: their tiles, (6, 6) and (5, 6), are left free | Plan 08 · P9, with the reporters |
+| Oreburgh's psychic | Asks the player's favourite kind of Trainer and makes it the look others see in the Union Room | Asks, and changes nothing | Plan 13 (online): decision 06 · 7 |
+| The Pokétch Company's four PCs | A menu of the apps the player has, each with its description | A word on a handful of apps each, all twenty-five between them | The language's menus are fixed lists; plan 08 if ever |
+| The Pokétch Company's reporter, the Marts' delivery man | A television interview; an event's gift | Not placed | Plan 08 · P9; plan 13 |
+| Jubilife TV's upper floors | The Fitting Room, the studios, the records, by the stairs and the lift | A rope across the stairs, a card by the lift, and a guide who says the studios are shut | Plan 08 · P8 (the programmes), plan 13 (the rankings) |
+| The Lottery Corner's helper | (none: the hand-made lobby had a gentleman who explained the lottery) | The clerk explains it herself; the original's four others are in | The original's lobby has no such person |
+| The healing machine's monitor, the Centers' machine beside the counter | Models of their own | The emblem on the wall; a terminal on the nurse's side of the counter | Plan 01 (a model reader, if ever) |
+| The rival's console | A model on the floor before his television | Read on its tile, with nothing drawn | The same |
+| Escalators that move | Carry the player | The side stairs in steel, taken as stairs are | Style guide, "Rooms": an escalator |
+| Looks | The classes' own, the basement's attendant's, the receptionist's | The classes' looks the table has; a nurse; a lady | Plan 11 · C2 to C4 |

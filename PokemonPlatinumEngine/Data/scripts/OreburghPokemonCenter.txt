@@ -1,0 +1,27 @@
+# Oreburgh City's Pokémon Center (plan 01 · M11, the hand-made rooms), on the original's plan. docs/scripts.md
+# describes the language; the lines are our own, on the original's beats (scripts_oreburgh_city_pokecenter_1f.s).
+#
+# The psychic asks what kind of Trainer the player would be taken for. In the original the answer is how others see
+# the player in the Union Room; with the wireless link down (decision 06 · 7) he asks and changes nothing (plan 13).
+# The gentleman wonders about Team Galactic, and wonders differently once the game is completed.
+
+
+# OreburghCityPokecenter1F_Psychic
+script Psychic
+  say "Hmmm...! Tell me, what kind of Trainer do you like best of all?"
+  say "No, no, don't answer straight away. It is the sort of thing a person ought to think over."
+  say "The way you see yourself is the way others will come to see you. Tell me when you have made up your mind!"
+  end
+
+
+# OreburghCityPokecenter1F_Gentleman
+script Gentleman
+  if flag FLAG_GAME_COMPLETED goto Afterwards
+  say "Hmmm! Team Galactic... What are they? Who are they?"
+  say "They promise the world a marvellous new kind of energy. And yet people whisper that they take Pokémon away by force."
+  say "A mystery! A mystery, I tell you! Is nobody looking into them?"
+  end
+label Afterwards
+  say "Hmmm! Team Galactic... What were they, in the end?"
+  say "I hear they have sworn off taking other people's Pokémon. They still work on that energy of theirs, but honestly these days."
+  end

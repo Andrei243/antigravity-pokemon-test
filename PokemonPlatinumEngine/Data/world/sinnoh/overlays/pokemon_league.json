@@ -5,7 +5,7 @@
   // The way in to the Elite Four is through the north Pokémon Center, rebuilt to the original's plan (plan 01 · M9, part 2d):
   // its door is the tile below the original's exit mat at (11, 11)
   "doors": [
-    { "warp": 0, "map": "PokemonLeagueSouthPokemonCenter", "x": 5, "y": 7, "facing": "Up" },
+    { "warp": 0, "map": "PokemonLeagueSouthPokemonCenter", "x": 8, "y": 12, "facing": "Up" },
     { "warp": 1, "map": "PokemonLeagueNorthPokemonCenter", "x": 11, "y": 11, "facing": "Up" }
   ],
   // The statues by the League's steps are the original's tile events of type 0, script 3: read from before them

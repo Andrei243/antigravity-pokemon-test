@@ -3,8 +3,8 @@
 #
 # Maylene, who ran up Route 217 barefoot on her way to train with Candice, is thawing out by the counter. She stays
 # until the player has the Icicle Badge and comes to Acuity Lakefront again, where the original sends her home to her
-# own Gym (FLAG_HIDE_SNOWPOINT_CITY_POKECENTER_1F_MAYLENE, acuity_lakefront.txt). The room is the common Pokémon
-# Center of the towns, so she and its other people stand where it has room for them, not on the original's tiles.
+# own Gym (FLAG_HIDE_SNOWPOINT_CITY_POKECENTER_1F_MAYLENE, acuity_lakefront.txt). She and the
+# room's other people stand on the original's tiles since the room was rebuilt to its plan (plan 01 · M11).
 
 
 # Maylene (the original's script 5).

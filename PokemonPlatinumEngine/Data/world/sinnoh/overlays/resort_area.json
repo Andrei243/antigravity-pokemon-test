@@ -5,7 +5,7 @@
   "trees": "Round",
   "architecture": "Resort",
   "doors": [
-    { "warp": 3, "map": "ResortAreaPokemonCenter", "x": 5, "y": 7, "facing": "Up" },
+    { "warp": 3, "map": "ResortAreaPokemonCenter", "x": 8, "y": 12, "facing": "Up" },
     // The Ribbon Syndicate's ground floor (plan 01 · M10, part b): its hostess asks for the team's ribbons inside,
     // and the lift in its back wall goes up to the spa (plan 01 · M11, part c)
     { "warp": 2, "map": "ResortAreaRibbonSyndicate1F", "x": 15, "y": 15, "facing": "Up" },

@@ -63,7 +63,7 @@ partial class Harness
         Console.WriteLine($"  picked: {bag.GetQuantity(cheri) - before} Cheri Berry; patch 18 is {patches[18].Stage}");
 
         // The Lottery Corner
-        At("JubilifeTV1F", 3, 4, Direction.Up);
+        At("JubilifeTV1F", 9, 9, Direction.Up);
         game.LocationSign.Hide();
         Frames(4);
         Shot("b10_tv_lobby");

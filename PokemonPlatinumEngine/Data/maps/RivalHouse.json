@@ -4,152 +4,161 @@
   "bgmTrack": "sinnoh/twinleaf",
   "interior": "House",
   "trees": "Round",
-  "width": 10,
-  "height": 9,
+  "width": 13,
+  "height": 12,
   "ground": [
-    "##########",
-    "##########",
-    "#________#",
-    "#________#",
-    "#________#",
-    "#________#",
-    "#________#",
-    "#________#",
-    "#####D####"
+    "#############",
+    "#############",
+    "#############",
+    "#____##_____#",
+    "#____##_____#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "######D######"
   ],
   "solid": [
-    "##########",
-    "##########",
-    "###.######",
-    "#........#",
-    "#..###...#",
-    "##.......#",
-    "##.......#",
-    "##......##",
-    "#####.####"
+    "#############",
+    "#############",
+    "#############",
+    "#..#####..###",
+    "#..####.....#",
+    "#....##..####",
+    "#...........#",
+    "#...........#",
+    "#.......##..#",
+    "##......##.##",
+    "##.........##",
+    "######.######"
+  ],
+  "behaviours": [
+    { "x": 9, "y": 5, "width": 3, "depth": 1, "behaviour": "Counter" }
   ],
   "props": [
     {
-      "type": "Bookshelf",
-      "x": 1,
+      "type": "Window",
+      "x": 8,
       "y": 2,
-      "width": 1,
+      "width": 2,
       "depth": 1
     },
     {
-      "type": "Bookshelf",
+      "type": "Rug",
       "x": 2,
-      "y": 2,
+      "y": 3,
       "width": 1,
       "depth": 1
     },
     {
-      "type": "Television",
-      "x": 4,
-      "y": 2,
+      "type": "SideStairsUpEast",
+      "x": 3,
+      "y": 3,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Fridge",
+      "x": 7,
+      "y": 3,
       "width": 1,
       "depth": 1
     },
     {
       "type": "KitchenCounter",
-      "x": 6,
-      "y": 2,
+      "x": 10,
+      "y": 3,
       "width": 1,
       "depth": 1
     },
     {
-      "type": "Stove",
-      "x": 7,
-      "y": 2,
+      "type": "KitchenCounter",
+      "x": 11,
+      "y": 3,
       "width": 1,
       "depth": 1
     },
     {
-      "type": "Fridge",
-      "x": 8,
-      "y": 2,
+      "type": "Television",
+      "x": 5,
+      "y": 5,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 10,
+      "y": 8,
       "width": 1,
       "depth": 1
     },
     {
       "type": "Table",
-      "x": 3,
-      "y": 4,
+      "x": 8,
+      "y": 8,
       "width": 2,
-      "depth": 1
-    },
-    {
-      "type": "Chair",
-      "x": 5,
-      "y": 4,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Sofa",
-      "x": 1,
-      "y": 5,
-      "width": 1,
       "depth": 2
     },
     {
       "type": "Plant",
       "x": 1,
-      "y": 7,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Plant",
-      "x": 8,
-      "y": 7,
+      "y": 10,
       "width": 1,
       "depth": 1
     },
     {
       "type": "Rug",
-      "x": 4,
-      "y": 6,
+      "x": 6,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 11,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 9,
+      "y": 5,
       "width": 3,
-      "depth": 2
-    },
-    {
-      "type": "Painting",
-      "x": 3,
-      "y": 1,
-      "width": 1,
       "depth": 1
-    },
-    {
-      "type": "Window",
-      "x": 5,
-      "y": 1,
-      "width": 2,
-      "depth": 1
-    },
-    {
-      "type": "Stairs",
-      "x": 5,
-      "y": 2,
-      "width": 1,
-      "depth": 2
     }
   ],
   "warps": [
     {
-      "sourceX": 5,
-      "sourceY": 8,
+      "sourceX": 6,
+      "sourceY": 11,
       "targetMap": "Sinnoh",
       "targetX": 105,
       "targetY": 876,
       "targetFacing": "Down"
     },
     {
-      "sourceX": 5,
+      "sourceX": 2,
       "sourceY": 3,
       "targetMap": "RivalHouse2F",
-      "targetX": 2,
-      "targetY": 3,
+      "targetX": 4,
+      "targetY": 4,
       "targetFacing": "Right"
     }
   ],
@@ -159,8 +168,8 @@
       "id": "rival_mom",
       "name": "{rival}'s Mom",
       "npcType": "Lady",
-      "x": 7,
-      "y": 4,
+      "x": 4,
+      "y": 6,
       "facing": "Down",
       "script": "RivalMom"
     }

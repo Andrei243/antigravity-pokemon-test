@@ -4,132 +4,266 @@
   "bgmTrack": "sinnoh/jubilife",
   "interior": "Lab",
   "trees": "Round",
-  "width": 11,
-  "height": 9,
+  "width": 21,
+  "height": 14,
   "ground": [
-    "###########",
-    "###########",
-    "#_________#",
-    "#_________#",
-    "#_________#",
-    "#_________#",
-    "#_________#",
-    "#_________#",
-    "#####D#####"
+    "#####################",
+    "#####################",
+    "#####################",
+    "#________####_______#",
+    "#________####_______#",
+    "#___________________#",
+    "#___________________#",
+    "#____#______________#",
+    "#____#______________#",
+    "#____#______________#",
+    "#____#______________#",
+    "#____#______________#",
+    "#____#______________#",
+    "###D############D####"
   ],
   "solid": [
-    "###########",
-    "###########",
-    "##.......##",
-    "#..#####..#",
-    "#.........#",
-    "##.......##",
-    "##.......##",
-    "##.......##",
-    "#####.#####"
+    "#####################",
+    "#####################",
+    "#####################",
+    "#####..########...###",
+    "#......######.#####.#",
+    "#...................#",
+    "#...................#",
+    "#....#..####........#",
+    "#....#..####........#",
+    "#....#..............#",
+    "#....#..####........#",
+    "#....#..####........#",
+    "#....#..............#",
+    "###.############.####"
+  ],
+  "behaviours": [
+    { "x": 14, "y": 3, "width": 1, "depth": 1, "behaviour": "Counter" },
+    { "x": 18, "y": 3, "width": 1, "depth": 1, "behaviour": "Counter" },
+    { "x": 14, "y": 4, "width": 5, "depth": 1, "behaviour": "Counter" }
   ],
   "props": [
     {
-      "type": "LabDesk",
+      "type": "Window",
+      "x": 6,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 16,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
       "x": 3,
       "y": 3,
-      "width": 5,
-      "depth": 1
-    },
-    {
-      "type": "Bookshelf",
-      "x": 1,
-      "y": 2,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Bookshelf",
-      "x": 9,
-      "y": 2,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "LabMachine",
-      "x": 1,
-      "y": 5,
-      "width": 1,
-      "depth": 2
-    },
-    {
-      "type": "LabMachine",
-      "x": 9,
-      "y": 5,
-      "width": 1,
-      "depth": 2
-    },
-    {
-      "type": "Plant",
-      "x": 1,
-      "y": 7,
       "width": 1,
       "depth": 1
     },
     {
       "type": "Plant",
-      "x": 9,
-      "y": 7,
+      "x": 4,
+      "y": 3,
       "width": 1,
       "depth": 1
     },
     {
-      "type": "WallEmblem",
-      "x": 5,
-      "y": 1,
+      "type": "Rug",
+      "x": 6,
+      "y": 3,
       "width": 1,
       "depth": 1
     },
     {
-      "type": "Window",
-      "x": 2,
-      "y": 1,
-      "width": 2,
-      "depth": 1
-    },
-    {
-      "type": "Window",
+      "type": "SideStairsUpEast",
       "x": 7,
-      "y": 1,
+      "y": 3,
       "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Plant",
+      "x": 13,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 19,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Sofa",
+      "x": 8,
+      "y": 7,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Table",
+      "x": 9,
+      "y": 7,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Sofa",
+      "x": 11,
+      "y": 7,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Sofa",
+      "x": 8,
+      "y": 10,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Table",
+      "x": 9,
+      "y": 10,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Sofa",
+      "x": 11,
+      "y": 10,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Rug",
+      "x": 3,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 16,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 14,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 18,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 14,
+      "y": 4,
+      "width": 5,
       "depth": 1
     }
   ],
   "warps": [
     {
-      "sourceX": 5,
-      "sourceY": 8,
+      "sourceX": 3,
+      "sourceY": 13,
       "targetMap": "Sinnoh",
       "targetX": 141,
       "targetY": 752,
       "targetFacing": "Down"
+    },
+    {
+      "sourceX": 16,
+      "sourceY": 13,
+      "targetMap": "Sinnoh",
+      "targetX": 145,
+      "targetY": 752,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 6,
+      "sourceY": 3,
+      "targetMap": "PoketchCompany2F",
+      "targetX": 16,
+      "targetY": 3,
+      "targetFacing": "Right"
     }
   ],
   "signboards": [],
   "npcs": [
     {
+      "id": "scientist_m",
+      "name": "Engineer",
+      "npcType": "Scientist",
+      "x": 15,
+      "y": 8,
+      "facing": "Down",
+      "dialog": [
+        "You may be sure I'll go on inventing Pokétch apps.",
+        "A Pokétch is like a Pokémon, you see. It evolves!"
+      ]
+    },
+    {
+      "id": "receptionist",
+      "name": "Receptionist",
+      "npcType": "Lady",
+      "x": 16,
+      "y": 3,
+      "facing": "Down",
+      "dialog": [
+        "Welcome to the Pokétch Company.",
+        "We are a family business, to tell the truth, so there isn't a great deal to look at."
+      ]
+    },
+    {
+      "id": "poketch_co_president",
       "name": "President",
       "npcType": "poketch_president",
-      "x": 5,
-      "y": 2,
+      "x": 18,
+      "y": 5,
       "facing": "Down",
       "script": "President",
       "hiddenBy": "FLAG_HIDE_POKETCH_CO_1F_POKETCH_CO_PRESIDENT"
     },
     {
-      "name": "Engineer",
-      "npcType": "Clerk",
-      "x": 8,
-      "y": 6,
-      "facing": "Left",
+      "id": "lass",
+      "name": "Lass",
+      "npcType": "lass",
+      "x": 6,
+      "y": 7,
+      "facing": "Right",
       "dialog": [
-        "Engineer: Every Pokétch app starts as a sketch on that desk.",
-        "Engineer: A clock, a calculator, a step counter... we're always dreaming up new ones!"
+        "Do you watch TV? There's a show called Pokétch Detective, and it's brilliant.",
+        "Every time I see it I want to use my Pokétch more!"
       ]
     }
   ],

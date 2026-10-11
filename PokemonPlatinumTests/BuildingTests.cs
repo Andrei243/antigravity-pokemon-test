@@ -618,9 +618,9 @@ public class BuildingTests
 
         // The floor by the back wall is shaded in two flat steps, never a gradient
         var tiles = GroundBaker.BakeInterior(MapDatabase.Get("PokemonCenter"));
-        var shades = Enumerable.Range(64, 14).Select(y => tiles.Get(5 * 32 + 5, y)).Distinct().Count();
+        var shades = Enumerable.Range(96, 14).Select(y => tiles.Get(5 * 32 + 5, y)).Distinct().Count();
         Assert.InRange(shades, 2, 6);
-        Assert.True(tiles.Get(5 * 32 + 5, 64 + 2).R < tiles.Get(5 * 32 + 5, 64 + 20).R);
+        Assert.True(tiles.Get(5 * 32 + 5, 96 + 2).R < tiles.Get(5 * 32 + 5, 96 + 20).R);
 
         // The mat at the door
         var mat = planks.Get(4 * 32 + 16, 8 * 32 + 10);

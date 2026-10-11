@@ -451,7 +451,8 @@ public partial class GameEngine
         // The rules the adventure began under, before any of its Pokémon are made
         Ruleset.Use(save.Rules);
 
-        var place = save.Place();
+        // (A save made in a room laid out again since wakes on the tile the room is come into by: plan 01 · M11)
+        var place = save.PlaceOn(MapDatabase.Get);
         currentMap = MapDatabase.Get(place.Map);
         player = new Player(place.X, place.Y);
         player.Facing = place.Facing;

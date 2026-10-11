@@ -4,8 +4,8 @@
   "trees": "Pine",
   "architecture": "Brick",
   "doors": [
-    { "warp": 1, "map": "OreburghPokemonCenter", "x": 5, "y": 7, "facing": "Up" },
-    { "warp": 2, "map": "OreburghPokeMart", "x": 4, "y": 6, "facing": "Up" },
+    { "warp": 1, "map": "OreburghPokemonCenter", "x": 8, "y": 12, "facing": "Up" },
+    { "warp": 2, "map": "OreburghPokeMart", "x": 3, "y": 11, "facing": "Up" },
     // Roark's Gym, built for its chapter (plan 02 · S5)
     { "warp": 0, "map": "OreburghGym", "x": 5, "y": 24, "facing": "Up" },
     // The house north of the Mart, where a girl trades her Abra for a Machop (plan 06 · R12), built to the original's plan

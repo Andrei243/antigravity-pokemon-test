@@ -19,7 +19,9 @@ public partial class FinalInteriorTests
     {
         var to = Room(way.TargetMap);
         string where = $"{from} ({way.SourceX},{way.SourceY}) to {way.TargetMap}";
-        Assert.True(to.IsWalkable(way.TargetX, way.TargetY), $"{where} puts the player on a blocked tile ({way.TargetX},{way.TargetY})");
+        // (The attendant who keeps Sandgem's and Jubilife's basements shut until the Coal Badge stands on the tile one would come up onto)
+        bool attendant = to.GetNpcAt(way.TargetX, way.TargetY)?.HiddenBy == "FLAG_HIDE_POKECENTER_BASEMENT_BLOCKADE";
+        Assert.True(attendant || to.IsWalkable(way.TargetX, way.TargetY), $"{where} puts the player on a blocked tile ({way.TargetX},{way.TargetY})");
         Assert.True(to.Warps.Any(w => w.TargetMap == from && Math.Abs(w.SourceX - way.TargetX) + Math.Abs(w.SourceY - way.TargetY) <= 1),
             $"{where}: nothing beside ({way.TargetX},{way.TargetY}) leads back");
     }
@@ -347,7 +349,9 @@ public partial class FinalInteriorTests
             Assert.True(up.SourceX < down.SourceX, center);
             Assert.Contains(ground.Props, p => p.Type == PropType.SideStairsUp && (p.X + p.Width, p.Y) == (up.SourceX, up.SourceY));
             Assert.Contains(ground.Props, p => p.Type == PropType.SideStairsDown && (p.X, p.Y) == (down.SourceX + 1, down.SourceY));
-            Assert.True(ground.IsWalkable(up.SourceX + 1, up.SourceY) && ground.IsWalkable(down.SourceX - 1, down.SourceY), $"{center}: nobody can step onto its escalators");
+            // (Before the Coal Badge an attendant stands before the way down in Sandgem's and Jubilife's, as the original's does)
+            bool Free(int x, int y) => ground.IsWalkable(x, y) || ground.GetNpcAt(x, y)?.HiddenBy == "FLAG_HIDE_POKECENTER_BASEMENT_BLOCKADE";
+            Assert.True(Free(up.SourceX + 1, up.SourceY) && Free(down.SourceX - 1, down.SourceY), $"{center}: nobody can step onto its escalators");
             // The floors are the original's two plans (m_pc02 and m_pc07), each with its three attendants behind a counter
             foreach (var (way, suffix, back, facing) in new[] { (up, "2F", (up.SourceX + 1, up.SourceY), Direction.Right), (down, "B1F", (down.SourceX - 1, down.SourceY), Direction.Left) })
             {

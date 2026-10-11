@@ -1,4 +1,5 @@
-# Jubilife TV's lobby (plan 06 · R14a), made by hand until plan 01 · M11 builds the station's floors. docs/scripts.md
+# Jubilife TV's lobby (plan 06 · R14a; on the original's plan since plan 01 · M11, its stairs and lift roped off until
+# the station's floors are built with their programmes, plan 08 · P8). docs/scripts.md
 # describes the language; the lines are our own, on the original's beats (scripts_jubilife_tv_1f.s).
 #
 # The Lottery Corner: once a day the clerk reads out the day's number (Models/Lottery.cs) and matches it, digit by

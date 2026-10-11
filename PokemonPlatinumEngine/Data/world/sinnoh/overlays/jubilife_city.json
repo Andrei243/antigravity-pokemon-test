@@ -4,17 +4,17 @@
   "trees": "Round",
   "architecture": "City",
   "doors": [
-    { "warp": 2, "map": "JubilifePokemonCenter", "x": 5, "y": 7, "facing": "Up" },
-    { "warp": 6, "map": "JubilifePokeMart", "x": 4, "y": 6, "facing": "Up" },
-    { "warp": 7, "map": "TrainersSchool", "x": 7, "y": 10, "facing": "Up" },
+    { "warp": 2, "map": "JubilifePokemonCenter", "x": 8, "y": 12, "facing": "Up" },
+    { "warp": 6, "map": "JubilifePokeMart", "x": 3, "y": 11, "facing": "Up" },
+    { "warp": 7, "map": "TrainersSchool", "x": 7, "y": 11, "facing": "Up" },
     // The Pokétch Company has two doors onto the street and one hall behind them
-    { "warp": 8, "map": "PoketchCompany", "x": 5, "y": 7, "facing": "Up" },
-    { "warp": 5, "map": "PoketchCompany", "x": 5, "y": 7, "facing": "Up" },
+    { "warp": 8, "map": "PoketchCompany", "x": 3, "y": 12, "facing": "Up" },
+    { "warp": 5, "map": "PoketchCompany", "x": 16, "y": 12, "facing": "Up" },
     // Our boutique (plan 11 · C10) in the southwest house, whose people in the original only chat: when plan 01 · M11
     // builds Jubilife's houses to the original's plans, the boutique moves to a floor of the Veilstone Department Store
     { "warp": 9, "map": "JubilifeBoutique", "x": 5, "y": 7, "facing": "Up" },
     // Jubilife TV's lobby, made by hand for its Lottery Corner (plan 06 · R14a) until plan 01 · M11 builds its floors
-    { "warp": 3, "map": "JubilifeTV1F", "x": 6, "y": 7, "facing": "Up" },
+    { "warp": 3, "map": "JubilifeTV1F", "x": 9, "y": 18, "facing": "Up" },
     // Plan 01 · M11, part a: rooms on the original's plans
     { "warp": 0, "map": "JubilifeCityCondominiums1F", "x": 11, "y": 12, "facing": "Up" },
     { "warp": 4, "map": "JubilifeCitySouthHouse1F", "x": 11, "y": 12, "facing": "Up" },

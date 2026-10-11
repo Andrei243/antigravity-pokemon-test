@@ -1,0 +1,17 @@
+# Floaroma Town's Pokémon Center (plan 01 · M11, the hand-made rooms), on the original's plan. docs/scripts.md
+# describes the language; the lines are our own, on the original's beats (scripts_floaroma_town_pokecenter_1f.s).
+#
+# The trainer by the stairs frets over the power until Commander Mars is beaten at the Valley Windworks
+# (VAR_VALLEY_WINDWORKS_TEAM_GALACTIC_STATE 2 and after), and of the road to Eterna City from then on.
+
+
+# FloaromaTownPokecenter1F_AceTrainerF
+script AceTrainer
+  if var VAR_VALLEY_WINDWORKS_TEAM_GALACTIC_STATE >= 2 goto Road
+  say "The power keeps cutting out lately."
+  say "Do you suppose something is the matter at the Valley Windworks?"
+  end
+label Road
+  say "It's a long way from here to Eterna City."
+  say "Pack for a proper journey before you set out."
+  end

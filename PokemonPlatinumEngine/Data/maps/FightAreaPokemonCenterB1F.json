@@ -213,8 +213,8 @@
       "sourceX": 14,
       "sourceY": 10,
       "targetMap": "FightAreaPokemonCenter",
-      "targetX": 7,
-      "targetY": 6,
+      "targetX": 13,
+      "targetY": 10,
       "targetFacing": "Left"
     }
   ],

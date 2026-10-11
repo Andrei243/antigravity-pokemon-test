@@ -4,99 +4,206 @@
   "bgmTrack": "common/pokecenter",
   "interior": "PokemonCenter",
   "trees": "Round",
-  "width": 11,
-  "height": 9,
+  "width": 17,
+  "height": 14,
   "ground": [
-    "###########",
-    "###########",
-    "#________P#",
-    "#_________#",
-    "#_________#",
-    "#_________#",
-    "#_________#",
-    "#_________#",
-    "#####D#####"
+    "#################",
+    "#################",
+    "#################",
+    "#___________P___#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "###___________###",
+    "#_______________#",
+    "###___________###",
+    "##_____________##",
+    "########D########"
   ],
   "solid": [
-    "###########",
-    "###########",
-    "##.....#.##",
-    "#..#####..#",
-    "#.........#",
-    "#.........#",
-    "##.......##",
-    "#........##",
-    "#####.#####"
+    "#################",
+    "#################",
+    "#################",
+    "########..###..##",
+    "#....###..##....#",
+    "#....#######....#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "###...........###",
+    "##.............##",
+    "###...........###",
+    "##.............##",
+    "########.########"
+  ],
+  "behaviours": [
+    { "x": 5, "y": 3, "width": 1, "depth": 2, "behaviour": "Counter" },
+    { "x": 11, "y": 3, "width": 1, "depth": 1, "behaviour": "Counter" },
+    { "x": 10, "y": 4, "width": 2, "depth": 1, "behaviour": "Counter" },
+    { "x": 5, "y": 5, "width": 7, "depth": 1, "behaviour": "Counter" }
   ],
   "props": [
     {
-      "type": "Counter",
+      "type": "Painting",
+      "x": 13,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
       "x": 3,
       "y": 3,
-      "width": 5,
-      "depth": 1
-    },
-    {
-      "type": "HealingMachine",
-      "x": 7,
-      "y": 2,
       "width": 1,
       "depth": 1
     },
     {
-      "type": "Plant",
-      "x": 1,
-      "y": 2,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Plant",
-      "x": 9,
-      "y": 7,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Rug",
+      "type": "Bookshelf",
       "x": 4,
-      "y": 5,
-      "width": 3,
-      "depth": 2
-    },
-    {
-      "type": "WallEmblem",
-      "x": 5,
-      "y": 1,
+      "y": 3,
       "width": 1,
       "depth": 1
     },
     {
-      "type": "Window",
-      "x": 2,
-      "y": 1,
-      "width": 2,
+      "type": "Cushion",
+      "x": 1,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 1,
+      "y": 6,
+      "width": 1,
       "depth": 1
     },
     {
       "type": "SideStairsUp",
       "x": 1,
-      "y": 6,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 3,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 13,
+      "y": 10,
       "width": 1,
       "depth": 1
     },
     {
       "type": "SideStairsDown",
-      "x": 9,
-      "y": 6,
+      "x": 15,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 3,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 4,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 8,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 12,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 13,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 5,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Counter",
+      "x": 11,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 10,
+      "y": 4,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 5,
+      "y": 5,
+      "width": 7,
+      "depth": 1
+    },
+    {
+      "type": "HealingMachine",
+      "x": 7,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 10,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WallEmblem",
+      "x": 8,
+      "y": 2,
       "width": 1,
       "depth": 1
     }
   ],
   "warps": [
     {
-      "sourceX": 5,
-      "sourceY": 8,
+      "sourceX": 8,
+      "sourceY": 13,
       "targetMap": "Sinnoh",
       "targetX": 303,
       "targetY": 757,
@@ -104,15 +211,15 @@
     },
     {
       "sourceX": 2,
-      "sourceY": 6,
+      "sourceY": 10,
       "targetMap": "OreburghPokemonCenter2F",
       "targetX": 3,
       "targetY": 10,
       "targetFacing": "Right"
     },
     {
-      "sourceX": 8,
-      "sourceY": 6,
+      "sourceX": 14,
+      "sourceY": 10,
       "targetMap": "OreburghPokemonCenterB1F",
       "targetX": 13,
       "targetY": 10,
@@ -122,20 +229,92 @@
   "signboards": [],
   "npcs": [
     {
+      "id": "nurse",
       "name": "Nurse Joy",
       "npcType": "Nurse",
-      "x": 5,
-      "y": 2,
+      "x": 8,
+      "y": 4,
       "facing": "Down",
       "isHealingNurse": true
     },
     {
       "name": "PC Terminal",
       "npcType": "Trainer",
-      "x": 9,
-      "y": 2,
+      "x": 12,
+      "y": 3,
       "facing": "Up",
       "isPCTerminal": true
+    },
+    {
+      "id": "psychic",
+      "name": "Psychic",
+      "npcType": "Youngster",
+      "x": 5,
+      "y": 9,
+      "facing": "Right",
+      "script": "Psychic"
+    },
+    {
+      "id": "ace_trainer_f",
+      "name": "Ace Trainer",
+      "npcType": "Lass",
+      "x": 3,
+      "y": 6,
+      "facing": "Down",
+      "dialog": [
+        "The PC in any Pokémon Center opens the Pokémon Storage System.",
+        "It keeps the Pokémon you can't carry, and it's where you go to fetch them back. That's all there is to it."
+      ],
+      "movement": "wander_around",
+      "rangeX": 1,
+      "rangeZ": 1
+    },
+    {
+      "id": "ninja_boy",
+      "name": "Ninja Boy",
+      "npcType": "Youngster",
+      "x": 11,
+      "y": 8,
+      "facing": "Left",
+      "dialog": [
+        "I went downstairs to sign up for the Pokémon Wi-Fi Club!",
+        "They told me to come back when the link is up again. I'm going to ask every single day!"
+      ],
+      "movement": "wander_west_and_east",
+      "rangeX": 1
+    },
+    {
+      "id": "gentleman",
+      "name": "Gentleman",
+      "npcType": "gentleman",
+      "x": 12,
+      "y": 12,
+      "facing": "Left",
+      "script": "Gentleman"
+    },
+    {
+      "id": "kid_with_nds_west",
+      "name": "Boy",
+      "npcType": "Youngster",
+      "x": 14,
+      "y": 5,
+      "facing": "Right",
+      "dialog": [
+        "You know how friends battle each other over the wireless link?",
+        "With a Vs. Recorder you can keep the whole battle to watch again. A Battle Video, it's called!"
+      ]
+    },
+    {
+      "id": "kid_with_nds_east",
+      "name": "Boy",
+      "npcType": "Youngster",
+      "x": 15,
+      "y": 5,
+      "facing": "Left",
+      "dialog": [
+        "A Vs. Recorder! I want one of those so much!",
+        "Did you go to the Global Terminal in Jubilife City? Did you? Did you?"
+      ]
     }
   ],
   "wildEncounters": []

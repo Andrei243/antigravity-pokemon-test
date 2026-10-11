@@ -130,7 +130,7 @@ public static class RegionDatabase
                 // Plan 01 · M9, part 1: the Gyms rebuilt to the original's plans, with their puzzles
                 "EternaGym", "HearthomeGym", "HearthomeGymRoom1", "HearthomeGymRoom2", "HearthomeGymLeaderRoom", "VeilstoneGym", "PastoriaGym", "CanalaveGym", "SnowpointGym",
                 "SunyshoreGym", "SunyshoreGymRoom2", "SunyshoreGymRoom3",
-                // Rooms, still made by hand (plan 01 · M11)
+                // The rooms of the first chapters (made by hand until plan 01 · M11 laid them out again, but for the houses and the lab)
                 "PlayerHouse", "PlayerHouse2F", "RivalHouse", "RivalHouse2F", "PokemonCenter", "PokeMart", "RowanLab",
                 "JubilifePokemonCenter", "JubilifePokeMart", "JubilifeBoutique", "JubilifeTV1F", "TrainersSchool", "PoketchCompany",
                 "OreburghPokemonCenter", "OreburghPokeMart", "OreburghGym", "FloaromaPokemonCenter", "FloaromaPokeMart",
@@ -264,6 +264,8 @@ public static class RegionDatabase
                 // Plan 02 · S15, part c: the Battleground in the Survival Area, on the original's plan, and Spear Pillar
                 // with Dialga's rift and with Palkia's
                 "Battleground", "SpearPillarDialga", "SpearPillarPalkia",
+                // Plan 01 · M11, the last rooms: the floors over the Pokétch Company's, on the original's plans
+                "PoketchCompany2F", "PoketchCompany3F",
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

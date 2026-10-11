@@ -35,7 +35,7 @@ partial class Harness
         void Talk() { game.Interact(); Frames(3); }
 
         // ---- the nurse: a welcome, a question with its answers, the team made well
-        At("PokemonCenter", 5, 4, Direction.Up);
+        At("PokemonCenter", 8, 6, Direction.Up);
         team.Members[0].CurrentHP = 1;
         Talk();
         Whole(); Shot("st01_nurse_greets");

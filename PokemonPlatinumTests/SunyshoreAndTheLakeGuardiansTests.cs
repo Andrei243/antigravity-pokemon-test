@@ -703,13 +703,13 @@ public class SunyshoreAndTheLakeGuardiansTests
     public void TheTownsRoomsHaveTheirPeople()
     {
         var game = AfterTheLab();
-        game.Arrive("SunyshorePokemonCenter", 5, 7);
+        game.Arrive("SunyshorePokemonCenter", 8, 12);
         foreach (string key in new[] { "old_man", "ninja_boy", "middle_aged_man" }) Assert.NotNull(game.Present(key));
         Assert.Contains(game.Talk("ninja_boy").Transcript, l => l.Text.Contains("seven Gym Badges"));
         Assert.Contains(game.Talk("middle_aged_man").Transcript, l => l.Text.Contains("solar panels"));
         game.Story.SetBadges(0xFF);
         Assert.Contains(game.Talk("ninja_boy").Transcript, l => l.Text.Contains("All eight Gym Badges"));
-        game.Arrive("SunyshorePokeMart", 4, 6);
+        game.Arrive("SunyshorePokeMart", 3, 11);
         Assert.Contains(game.Talk("ruin_maniac").Transcript, l => l.Text.Contains("Victory Road"));
         Assert.Contains(game.Talk("sailor").Transcript, l => l.Text.Contains("Seals"));
     }

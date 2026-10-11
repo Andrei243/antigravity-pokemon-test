@@ -4,136 +4,326 @@
   "bgmTrack": "sinnoh/jubilife",
   "interior": "PokeMart",
   "trees": "Round",
-  "width": 13,
-  "height": 9,
+  "width": 22,
+  "height": 20,
   "ground": [
-    "#############",
-    "#############",
-    "#___________#",
-    "#___________#",
-    "#___________#",
-    "#___________#",
-    "#___________#",
-    "#___________#",
-    "######D######"
+    "######################",
+    "######################",
+    "######################",
+    "######################",
+    "############_________#",
+    "############_________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#########D############"
   ],
   "solid": [
-    "#############",
-    "#############",
-    "#....###....#",
-    "#####...#####",
-    "#...........#",
-    "#...........#",
-    "#.##.....##.#",
-    "##.........##",
-    "######.######"
+    "######################",
+    "######################",
+    "######################",
+    "######################",
+    "##############......##",
+    "##############.......#",
+    "#......#...#.....##..#",
+    "#......#...#.....##..#",
+    "#......#####.........#",
+    "#..............#....##",
+    "#.....#.....#..#.##.##",
+    "#.#...#.....#..#.##.##",
+    "#....................#",
+    "#..............#....##",
+    "#.....#.....#..#.##.##",
+    "#.#...#.....#..#.##.##",
+    "#....................#",
+    "##..................##",
+    "##..................##",
+    "#########.############"
+  ],
+  "behaviours": [
+    { "x": 7, "y": 6, "width": 1, "depth": 2, "behaviour": "Counter" },
+    { "x": 11, "y": 6, "width": 1, "depth": 2, "behaviour": "Counter" },
+    { "x": 7, "y": 8, "width": 5, "depth": 1, "behaviour": "Counter" }
   ],
   "props": [
     {
-      "type": "Counter",
-      "x": 1,
-      "y": 3,
-      "width": 4,
-      "depth": 1
+      "type": "SideStairsUp",
+      "x": 12,
+      "y": 4,
+      "width": 2,
+      "depth": 2
     },
     {
-      "type": "Counter",
-      "x": 8,
-      "y": 3,
-      "width": 4,
+      "type": "Rug",
+      "x": 14,
+      "y": 4,
+      "width": 1,
       "depth": 1
     },
     {
       "type": "Plant",
-      "x": 5,
-      "y": 2,
+      "x": 20,
+      "y": 4,
       "width": 1,
       "depth": 1
+    },
+    {
+      "type": "Sofa",
+      "x": 15,
+      "y": 10,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Sofa",
+      "x": 20,
+      "y": 10,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Table",
+      "x": 17,
+      "y": 10,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Cushion",
+      "x": 1,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 2,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 3,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 6,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 12,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Sofa",
+      "x": 15,
+      "y": 14,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Sofa",
+      "x": 20,
+      "y": 14,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Table",
+      "x": 17,
+      "y": 14,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Cushion",
+      "x": 1,
+      "y": 15,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 2,
+      "y": 15,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 3,
+      "y": 15,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 6,
+      "y": 15,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 12,
+      "y": 15,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 18,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 9,
+      "y": 18,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 20,
+      "y": 18,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 7,
+      "y": 6,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Counter",
+      "x": 11,
+      "y": 6,
+      "width": 1,
+      "depth": 2
     },
     {
       "type": "Television",
-      "x": 6,
-      "y": 2,
-      "width": 1,
+      "x": 17,
+      "y": 7,
+      "width": 2,
       "depth": 1
     },
     {
-      "type": "Plant",
+      "type": "Counter",
       "x": 7,
-      "y": 2,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Bench",
-      "x": 2,
-      "y": 6,
-      "width": 2,
-      "depth": 1
-    },
-    {
-      "type": "Bench",
-      "x": 9,
-      "y": 6,
-      "width": 2,
-      "depth": 1
-    },
-    {
-      "type": "Plant",
-      "x": 1,
-      "y": 7,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Plant",
-      "x": 11,
-      "y": 7,
-      "width": 1,
+      "y": 8,
+      "width": 5,
       "depth": 1
     }
   ],
   "warps": [
     {
-      "sourceX": 6,
-      "sourceY": 8,
+      "sourceX": 9,
+      "sourceY": 19,
       "targetMap": "Sinnoh",
       "targetX": 164,
       "targetY": 752,
       "targetFacing": "Down"
     }
   ],
-  "signboards": [],
+  "signboards": [
+    {
+      "x": 13,
+      "y": 4,
+      "text": "A rope hangs across the foot of the stairs.\nThe card on it reads: STUDIOS. NO VISITORS TODAY."
+    },
+    {
+      "x": 18,
+      "y": 3,
+      "text": "The lift's doors are shut.\nA card beside them reads: STAFF ONLY."
+    }
+  ],
   "npcs": [
     {
+      "id": "beauty",
+      "name": "Beauty",
+      "npcType": "Lady",
+      "x": 13,
+      "y": 13,
+      "facing": "Left",
+      "dialog": [
+        "This is where the official records are kept. Winning streaks, how many Pokémon you've caught, that sort of thing.",
+        "Everybody's records are up on the third floor for anyone to see."
+      ],
+      "movement": "look_around",
+      "rangeX": 1
+    },
+    {
+      "id": "gym_guide",
+      "name": "Guide",
+      "npcType": "Gentleman",
+      "x": 13,
+      "y": 7,
+      "facing": "Left",
+      "dialog": [
+        "Fancy dressing your Pokémon up? There's a Fitting Room on the second floor, with Accessories for every taste.",
+        "Or there will be. The studios upstairs are shut to visitors for the time being, I'm afraid."
+      ]
+    },
+    {
+      "id": "poketch_co_president",
+      "name": "Man",
+      "npcType": "Gentleman",
+      "x": 3,
+      "y": 11,
+      "facing": "Left",
+      "dialog": [
+        "I'm here to get our commercials on TV.",
+        "They'll bring more customers into the department store, you'll see."
+      ],
+      "movement": "look_north_and_west",
+      "rangeX": 1
+    },
+    {
+      "id": "ace_trainer_snow_f",
       "name": "Lottery Clerk",
       "npcType": "Clerk",
-      "x": 3,
-      "y": 2,
+      "x": 9,
+      "y": 7,
       "facing": "Down",
       "script": "LotteryClerk"
     },
     {
-      "name": "Receptionist",
-      "npcType": "Lady",
-      "x": 9,
-      "y": 2,
-      "facing": "Down",
+      "id": "ace_trainer_m",
+      "name": "Ace Trainer",
+      "npcType": "Youngster",
+      "x": 7,
+      "y": 10,
+      "facing": "Left",
       "dialog": [
-        "Receptionist: Welcome to Jubilife TV! The studios upstairs are closed to visitors today, I'm afraid.",
-        "Do try the Lottery Corner while you're here. Someone wins something nearly every day!"
-      ]
-    },
-    {
-      "name": "Gentleman",
-      "npcType": "Gentleman",
-      "x": 6,
-      "y": 5,
-      "facing": "Up",
-      "dialog": [
-        "Gentleman: I come in every day to check my lucky number. My Pokémon came from all over Sinnoh, you see.",
-        "The more different ID numbers you have among your Pokémon, the better your chances. Trading helps!"
-      ]
+        "The station interviews Trainers of every kind for its shows. People like to hear what the good ones have to say, after all.",
+        "I'd like to hear from the Gym Leaders myself. And from the Elite Four of the Pokémon League!"
+      ],
+      "movement": "wander_around",
+      "rangeX": 1
     }
   ],
   "wildEncounters": []

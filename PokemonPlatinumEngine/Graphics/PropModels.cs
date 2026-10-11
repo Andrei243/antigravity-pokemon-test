@@ -126,6 +126,10 @@ internal static class PropModels
             }
             // A vending machine (plan 01 · M11, part d: the Department Store's roof)
             case PropType.VendingMachine: VendingMachine(kit); break;
+            // A Mart's wall of shelves (plan 01 · M11, the last rooms)
+            case PropType.WallShelf: WallShelf(kit, w); break;
+            // The Trainers' School's blackboard (plan 01 · M11, the last rooms)
+            case PropType.Blackboard: Blackboard(kit, w); break;
         }
     }
 
@@ -1087,7 +1091,66 @@ internal static class PropModels
     private static void StoreShelf(KitBuilder kit, int w, bool againstWall)
     {
         int sw = w - 2, z0 = againstWall ? 0 : 6, z1 = againstWall ? 20 : 26;
-        var front = kit.Face($"shelf.front.{sw}", sw, 44, c =>
+        var front = ShelfFront(kit, sw);
+        var top = kit.Face($"shelf.top.{sw}", sw, z1 - z0, c => TopFace(c, Steel));
+        var side = kit.Face($"shelf.side.{z1 - z0}", z1 - z0, 44, c => Pix.Raised(c, 0, 0, z1 - z0, 44, Tone.Of(Steel.Dark)));
+        kit.Box(1, w - 1, z0, z1, 0, 44, top, front, side, side);
+    }
+
+    /// <summary>
+    /// Shelves hung on the back wall (style guide, "Rooms": a wall of shelves): the store shelf's front six texels
+    /// proud of the wall its row is, over the floor before it.
+    /// </summary>
+    private static void WallShelf(KitBuilder kit, int w)
+    {
+        const int proud = 6;
+        int sw = w - 2;
+        var top = kit.Face($"shelf.wall.top.{sw}", sw, proud, c => TopFace(c, Steel));
+        var side = kit.Face("shelf.wall.side", proud, 44, c => Pix.Raised(c, 0, 0, proud, 44, Tone.Of(Steel.Dark)));
+        kit.Box(1, w - 1, 32, 32 + proud, 0, 44, top, ShelfFront(kit, sw), side, side);
+    }
+
+    /// <summary>
+    /// A blackboard on the back wall (style guide, "Rooms": a blackboard): dark green in a wooden frame with a ledge,
+    /// three rows of chalk on it, over the tiles it is read from.
+    /// </summary>
+    private static void Blackboard(KitBuilder kit, int w)
+    {
+        const int high = 30;
+        int bw = w;
+        var art = kit.Face($"blackboard.{bw}", bw, high, c =>
+        {
+            var frame = Tone.Of(Rgb(150, 104, 66));
+            var board = Rgb(46, 92, 74);
+            var chalk = Rgb(226, 232, 220);
+            // The frame, and under it the ledge the chalk lies on
+            Pix.Raised(c, 0, 0, bw, high - 4, frame);
+            Pix.Raised(c, 0, high - 4, bw, 4, frame);
+            c.Rect(2, 2, bw - 4, high - 8, board);
+            c.HLine(2, 2, bw - 4, PixelCanvas.Shadow(board, 0.25f));
+            c.VLine(2, 2, high - 8, PixelCanvas.Shadow(board, 0.25f));
+            // Writing: three rows, each a run of words of different lengths
+            for (int row = 0; row < 3; row++)
+            {
+                int y = 6 + row * 6, x = 6 + row * 2;
+                for (int word = 0; ; word++)
+                {
+                    int length = 6 + (word * 7 + row * 5) % 9;
+                    if (x + length > bw - 6) break;
+                    c.Rect(x, y, length, 2, chalk);
+                    x += length + 4;
+                }
+            }
+            // A stick of chalk and the duster on the ledge
+            c.Rect(8, high - 3, 6, 2, chalk);
+            c.Rect(bw - 20, high - 3, 10, 2, Rgb(96, 110, 150));
+        });
+        kit.Card(0, w, 32.5f, 36, 36 + high, art);
+    }
+
+    /// <summary>The front of a shelf of goods: a steel frame, three boards, and boxes, tins and bottles in clusters of a kind.</summary>
+    private static Art ShelfFront(KitBuilder kit, int sw) =>
+        kit.Face($"shelf.front.{sw}", sw, 44, c =>
         {
             Pix.Raised(c, 0, 0, sw, 44, Steel);
             c.Rect(2, 2, sw - 4, 40, Rgb(86, 92, 112));
@@ -1111,10 +1174,6 @@ internal static class PropModels
                 }
             }
         });
-        var top = kit.Face($"shelf.top.{sw}", sw, z1 - z0, c => TopFace(c, Steel));
-        var side = kit.Face($"shelf.side.{z1 - z0}", z1 - z0, 44, c => Pix.Raised(c, 0, 0, z1 - z0, 44, Tone.Of(Steel.Dark)));
-        kit.Box(1, w - 1, z0, z1, 0, 44, top, front, side, side);
-    }
 
     // ------------------------------------------------------------------ laboratories
 
