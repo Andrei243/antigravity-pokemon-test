@@ -133,6 +133,7 @@ public partial class GameEngine
             foreach (var (cx, cy) in place.Cells)
                 world?.Forget(map, cx * Map.ChunkTiles, cy * Map.ChunkTiles, Map.ChunkTiles, Map.ChunkTiles);
         MapDatabase.ApplyPresence(story.Has, forget: startOver);
+        KeepTheRegionsPicture();
     }
 
     /// <summary>The player has come to a map by a door, a warp or a save: whoever a script moved off it or onto it is back as the flags say.</summary>
@@ -142,6 +143,7 @@ public partial class GameEngine
         story.Unset(BicycleRules.OnCyclingRoadFlag);
         story.Unset(BicycleRules.ForcedInGateFlag);
         ChangePlace();
+        NoteTheTrailOnArrival();
         // Another map ends the Poké Radar's chain (RadarChain_Clear), and the roamers note where the player is (plan 06 · R13)
         EndRadarChain();
         Roamers.NotePlace(encounters, PlaceKey());
@@ -241,9 +243,9 @@ public partial class GameEngine
         var walker = new Walker(player.Mode, player.HeightOn(currentMap), Moves: player.Moves);
         var spot = FieldMoveRules.SpotOf(currentMap, player.GridX, player.GridY, player.Facing, walker) with { Partner = partner != null };
         var error = FieldMoveRules.Check(move, spot, story);
-        // Dig needs a way out to lead to, and Fly a town to fly to
-        var towns = SpawnLocations.FlyDestinations(story, key => MapDatabase.Get("Sinnoh").Areas.Any(a => a.Key == key && a.Open)).ToList();
-        if (error == FieldMoveError.None && ((move == FieldMove.Dig && exitSpot == null) || (move == FieldMove.Fly && towns.Count == 0)))
+        // Dig needs a way out to lead to, and Fly a place on the region's map that is open to fly to
+        var regionMap = move == FieldMove.Fly ? TownMapNow() : null;
+        if (error == FieldMoveError.None && ((move == FieldMove.Dig && exitSpot == null) || (move == FieldMove.Fly && regionMap?.Spots.Any(s => s.Open) != true)))
             error = FieldMoveError.Location;
         if (error != FieldMoveError.None)
         {
@@ -255,8 +257,9 @@ public partial class GameEngine
         partyScreen.Close();
         if (move == FieldMove.Fly)
         {
-            var here = currentMap.Name == "Sinnoh" ? (player.GridX, player.GridY) : exitSpot is { } exit ? (exit.X, exit.Y) : ((int, int)?)null;
-            flyScreen.Open(towns, here, index);
+            // Fly's choice is the map of the region in its own mode (TOWN_MAP_MODE_FLY; plan 01 · M12)
+            townMapFromBag = false;
+            townMapScreen.Open(regionMap!, TownMapMode.Fly, index);
             currentState = GameState.FlyMap;
             return;
         }
@@ -290,6 +293,8 @@ public partial class GameEngine
             if (!story.Has(town.ArrivalFlag)) journal.Tell(new JournalEvent(JournalEventKind.ArrivedInLocation, PlaceName()));
             story.Set(town.ArrivalFlag);
         }
+        // And a landmark come to for the first time is told of on the region's map from then on (plan 01 · M12)
+        NoteArrivalOnTheMap();
     }
 
     /// <summary>
@@ -354,6 +359,12 @@ public partial class GameEngine
         {
             currentState = GameState.Journal;
             journalScreen.Open();
+            return;
+        }
+        // The Town Map off the item button: the map of the region, and back to the field (plan 01 · M12)
+        if (item.FieldUse == "TownMap")
+        {
+            if (!OpenTownMap(TownMapMode.Item, fromBag: false)) ShowNotification("There is no map of this place.");
             return;
         }
         // The Seal Case and the Fashion Case from the item button (plan 06 · R17b)

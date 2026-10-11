@@ -33,7 +33,10 @@ public enum GameState
     Evolution,
     SaveMenu,
     Intro,
-    /// <summary>Fly's map of the towns to fly to (plan 02 · S2).</summary>
+    /// <summary>
+    /// The map of the region (plan 01 · M12): the Town Map out of the bag, a map on a wall, and Fly's choice of a
+    /// place to land (plan 02 · S2), which gave the state its name.
+    /// </summary>
     FlyMap,
     /// <summary>The PC's Hall of Fame (plan 06 · R12).</summary>
     HallOfFame,
@@ -120,7 +123,13 @@ public partial class GameEngine
     // UI Sub-screens
     private readonly StartMenu startMenu = new();
     private readonly PartyScreen partyScreen = new();
-    private readonly FlyScreen flyScreen = new();
+    private readonly TownMapScreen townMapScreen = new();
+
+    // The cells of the region's map the player last passed through, which the Town Map marks (plan 01 · M12)
+    private readonly MapTrail mapTrail = new();
+
+    // Where the map of the region goes back to when it closes: the bag it was taken out of, or the field
+    private bool townMapFromBag;
 
     // Where Dig and an Escape Rope lead out of the caves: outside the way the player went into them (the
     // original's exit location), saved with the game
@@ -317,6 +326,7 @@ public partial class GameEngine
         radar.Clear();
         registeredItem = null;
         exitSpot = null;
+        mapTrail.Clear();
         lastDay = null;
         partner = null;
         MapDatabase.RestoreDefeatedTrainers(Array.Empty<string>());
@@ -381,6 +391,8 @@ public partial class GameEngine
         KeepCharactersNear(trim: false);
         PlayAreaMusic(currentMap, player.GridX, player.GridY);
         AnnounceLocation();
+        // The region's map is painted behind the black the game opens from, so the Town Map never waits for it (plan 01 · M12)
+        if (RegionMapNow is { } regionMap) RegionMapPictures.Get(regionMap);
 
         stateBeforeTransition = GameState.Overworld;
         stateAfterTransition = GameState.Overworld;
@@ -444,6 +456,7 @@ public partial class GameEngine
         player.SetMode(save.Travel);
         if (save.PlayerHeight is { } standing) player.SetHeight(standing);
         exitSpot = save.Exit;
+        mapTrail.Restore(save.MapTrail);
         lastDay = save.LastDay;
         registeredItem = save.RegisteredItem;
         poketch.Load(save.Poketch);
@@ -573,6 +586,7 @@ public partial class GameEngine
             Travel = player.Mode,
             PlayerHeight = player.HeightOn(currentMap),
             Exit = exitSpot,
+            MapTrail = mapTrail.IsEmpty ? null : mapTrail.ToSave(),
             LastDay = lastDay,
             RegisteredItem = registeredItem,
             Partner = partner?.TrainerId,
@@ -648,13 +662,15 @@ public partial class GameEngine
             world.Life.Rainfall(currentMap, player.PixelX / Player.TileSize + 0.5f, player.PixelY / Player.TileSize + 0.5f,
                 Weathers.LandsABeat(currentMap.WeatherAt(player.GridX, player.GridY)));
             player.TickBubble(dt);
-            foreach (var npc in currentMap.NPCs) npc.TickBubble(dt);
+            // Only the people near the player are looked at each frame (plan 01 · M12): a bubble is shown over
+            // someone in sight, and the map of Sinnoh holds everyone
+            foreach (var npc in currentMap.NPCs.Near(player.GridX, player.GridY, Wandering.Reach, peopleNear)) npc.TickBubble(dt);
             // A trainer waiting for a rematch spins where they stand (MOVEMENT_TYPE_VS_SEEKER_SPIN)
             rematchSpin += dt;
             if (rematchSpin >= 0.25f)
             {
                 rematchSpin = 0f;
-                foreach (var npc in currentMap.NPCs.Where(n => n.ReadyForRematch && !runner.IsRunning))
+                foreach (var npc in peopleNear.Where(n => n.ReadyForRematch && !runner.IsRunning))
                     npc.Facing = npc.Facing switch { Direction.Down => Direction.Left, Direction.Left => Direction.Up, Direction.Up => Direction.Right, _ => Direction.Down };
             }
         }
@@ -771,18 +787,14 @@ public partial class GameEngine
                 }
                 break;
             case GameState.FlyMap:
-                flyScreen.Update(dt);
-                if (flyScreen.TakeChoice() is { } town)
+                townMapScreen.Update(dt);
+                if (townMapScreen.TakeChoice() is { } town)
                 {
                     flyTarget = town;
                     currentState = GameState.Overworld;
-                    StartScript("common.UseFly", pokemon: playerParty.Members[flyScreen.Flier]);
+                    StartScript("common.UseFly", pokemon: playerParty.Members[townMapScreen.Flier]);
                 }
-                else if (!flyScreen.IsActive)
-                {
-                    currentState = GameState.PartyMenu;
-                    partyScreen.IsActive = true;
-                }
+                else if (!townMapScreen.IsActive) CloseTownMap();
                 break;
             case GameState.BagMenu:
                 bagScreen.Update(playerInventory, playerParty, ShowNotification, EvolutionContextNow(), dt);
@@ -803,6 +815,8 @@ public partial class GameEngine
                     if (bagScreen.TakeFieldUse() is { } usedHere)
                     {
                         if (usedHere.FieldUse == "PoffinCase") OpenPoffinCase(fromBag: true);
+                        // The Town Map is looked at and put back in the bag (plan 01 · M12)
+                        else if (usedHere.FieldUse == "TownMap") OpenTownMap(TownMapMode.Item, fromBag: true);
                         // The Seal Case and the Fashion Case are looked into, and close back onto the bag (plan 06 · R17b)
                         else if (usedHere.Name == BagScreen.SealCaseItem) OpenBallCapsules(fromBag: true);
                         else if (usedHere.Name == BagScreen.FashionCaseItem) OpenFashionCase(fromBag: true);
@@ -1180,6 +1194,9 @@ public partial class GameEngine
     /// After each step: the party walks along (Platinum raises friendship every 128 steps, and the Pokémon at
     /// the head of the party counts its steps for the evolutions that ask for a long walk), then trainers look.
     /// </summary>
+    // The people within reach of the player this frame: a list of the engine's own, so a frame makes none
+    private readonly List<NPC> peopleNear = new();
+
     // Where the people round the player were last made ready: the map and the chunk (plan 11 · C1)
     private (string Map, int X, int Y) charactersReadyAt;
 
@@ -1261,6 +1278,12 @@ public partial class GameEngine
         }
         if (playerParty.Count > 0) Evolution.CountStep(playerParty.Members[0]);
         poketch.Step();
+        // The cell of the region's map stood in is written down as it changes (OverworldMapHistory_Push, plan 01 · M12)
+        if (RegionMap.ForMap(currentMap.Name) is { } region && region.Map == currentMap.Name)
+        {
+            var (cellX, cellY) = RegionMap.CellOf(player.GridX, player.GridY);
+            mapTrail.Push(cellX, cellY, player.Facing);
+        }
         // The Vs. Seeker charges in the bag, and the rematches it found end after a hundred steps (plan 06 · R12)
         if (VsSeeker.Step(story, playerInventory.GetQuantity(ItemDatabase.Get(VsSeeker.Item)!) > 0)) StopRematches(Direction.Down);
         // Riding out onto the water or back onto land, or getting on or off the bicycle, changes the music
@@ -2002,7 +2025,7 @@ public partial class GameEngine
                 partyScreen.Draw(VirtualWidth, VirtualHeight, playerParty);
                 break;
             case GameState.FlyMap:
-                flyScreen.Draw(VirtualWidth, VirtualHeight);
+                townMapScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.BagMenu:
                 bagScreen.Draw(VirtualWidth, VirtualHeight, playerInventory, playerParty, EvolutionContextNow());
@@ -2160,6 +2183,7 @@ public partial class GameEngine
     public void Close()
     {
         renderContext.Unload();
+        RegionMapPictures.Unload();
         Raylib.UnloadRenderTexture(virtualScreen);
         AudioManager.Close();
     }

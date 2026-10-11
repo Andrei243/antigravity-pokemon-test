@@ -163,6 +163,7 @@ What the game loads is in `PokemonPlatinumEngine/Data/world/sinnoh/`:
 | `habitats.json` | `dotnet run --project tools/MapImporter -- --data` | Where the region's wild Pokémon live, open areas or not, for the Pokédex's area page |
 | `calendar.json` | `dotnet run --project tools/MapImporter -- --data` | Platinum's weather calendar: the weather of five places for each day of the year |
 | `encounters.json` | `dotnet run --project tools/MapImporter -- --data` | The wild Pokémon that aren't in an area's own tables (plan 06 · R13): the honey trees', the Great Marsh's and the Trophy Garden's dailies, Feebas's lake and the places swarms come to |
+| `townmap.json` | hand | The map of the region (plan 01 · M12): its grid, the places under the cursor and what is said of each, the hidden places, where Fly lands |
 
 So opening an area is: add its key to `world.json`, run the importer with `--data`, write its overlay. `WorldTests` then checks that every chunk in view has its file, that every entry of the overlay points at something that exists, and that the area can be walked into and out of.
 
@@ -418,6 +419,33 @@ Platinum's weather calendar (`sYearlyWeather` in the original's `src/field_overw
 ```
 
 An area whose header names one of the places takes its weather from the row of today's date (`MapArea.WeatherOn`, by the computer's clock as the original goes by the console's). The table has a row for the 29th of February, so in any other year the days from March on are counted one further (`Weathers.CalendarDay`, as `FieldSystem_GetWeather` does).
+
+### `townmap.json`
+
+The map of the region as the game shows it (plan 01 · M12), read by `RegionMap` (`Data/RegionMap.cs`; `RegionMap.Of(region)`, `ForMap(mapName)`) for the Town Map, Fly's choice, the Pokédex's area page and whatever else shows the region. A region without the file has no map, and the Town Map says nothing there. The cells, the kinds, the flags and the hidden places are the original's (`res/town_map/town_map_data.json` and `src/applications/town_map` of the pinned decompilation); the names are the world's own and every line of text is ours.
+
+```json
+{
+  "map": "Sinnoh", "columns": 30, "rows": 30,
+  "view": [ 0, 5, 30, 24 ], "cursor": [ 1, 6, 28, 28 ], "start": [ 3, 27 ],
+  "hidden": [ { "key": "fullmoon_island", "variable": "VAR_HIDDEN_LOCATION_FULL_MOON_ISLAND", "value": 520, "sea": true } ],
+  "areas": [ { "key": "twinleaf_town", "flag": "FLAG_FIRST_ARRIVAL_TWINLEAF_TOWN", "about": "A small town..." },
+             { "key": "route_201", "about": "..." } ],
+  "landmarks": [ { "key": "oreburgh_gate", "name": "Oreburgh Gate", "flag": "FLAG_FIRST_ARRIVAL_OREBURGH_GATE",
+                   "arrival": [ "oreburgh_gate_1f" ], "about": "A short tunnel..." } ],
+  "blocks": [ { "x": 7, "y": 23, "kind": "Route", "name": "Route 203", "area": "route_203", "landmark": "oreburgh_gate" } ],
+  "fly": [ { "spawn": 1, "cells": "3,27" }, { "spawn": 19, "cells": "12,27", "flag": "FLAG_FIRST_ARRIVAL_POKE_PARK_FRONT_GATE", "unseen": true } ]
+}
+```
+
+- `map` is the streamed map the grid lies over: a cell is one of its chunks, `columns` by `rows` of them (`RegionMap.CellOf` turns a tile into its cell). `view` is the part of the grid the screen shows (left, top, columns, rows), `cursor` the cells the cursor may stand on (left, top, right, bottom) and `start` where it stands when the player is nowhere on the map.
+- `hidden` are the places left off the map until `variable` holds `value`; `sea` has the picture show open water there until then, where the world has land all along.
+- `areas` are what the cursor reads about: a `key`, the words (`about`) and, for a town, the `flag` its words wait for (the original tells of a town only once it has been visited, and of a route from the start).
+- `landmarks` are the places inside a cell (a cave, a building, a lake): a `name`, the `flag` its words and name wait for, and `about`. `arrival` names the areas or maps whose first visit sets that flag, for the places no script of ours sets it for (`RegionMap.ArrivalFlags`, `GameEngine.NoteArrivalOnTheMap`).
+- `blocks` are the cells with something under the cursor: `kind` (`Route`, `Town`, `Landmark`: the tag the screen shows), the `name` shown, its `area`, and where there is one its `landmark` and the `hidden` place it belongs to.
+- `fly` are Fly's places: a `spawn` of `Data/SpawnLocations.cs` and the `cells` it covers; `flag` where the place opens by another flag than the spawn's own first arrival, and `unseen` where nothing of it is drawn until it is open.
+
+A file that contradicts itself is refused with its fault as it loads (a block outside the view, two blocks on one cell, a block that names an area, a landmark or a hidden place the file doesn't have, one of Fly's places on a cell with no block, an `arrival` with no flag to set). `RegionMapTests` holds the file to the world: every block is named as its place on the map of Sinnoh is, every place is on the map and says something the font can write, every flag a place waits for is set by something in the game, and Fly's places are the spawn locations on the cells of their towns.
 
 ## Characters
 

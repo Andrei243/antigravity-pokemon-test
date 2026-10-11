@@ -68,11 +68,23 @@ public static class SpawnLocations
     public static SpawnLocation Respawn(StoryState story) => Get(story.Var(Variable)) ?? All[0];
 
     /// <summary>
-    /// The towns Fly can go to: those first arrived in, among the areas that are open, in the original's order.
+    /// The places Fly can go to: those the region's map has open (<see cref="FlyFlag"/>), among the areas that are
+    /// open, in the original's order.
     /// </summary>
     public static IEnumerable<SpawnLocation> FlyDestinations(StoryState story, Func<string, bool> isOpen) =>
-        All.Where(s => s.Id != PalParkLobby && story.Has(s.ArrivalFlag) && isOpen(s.Area));
+        All.Where(s => story.Has(FlyFlag(s)) && isOpen(s.Area));
 
-    /// <summary>Pal Park's lobby: a place to come back to, never one to fly to (the original's <c>isWarpPos</c> 0).</summary>
+    /// <summary>
+    /// The flag that opens a place to Fly: the one the region's map names for it where it names one (the original's
+    /// <c>sTownMapFlyLocationUnlockFlags</c> asks Pal Park's gate, not Route 221's arrival), else its first arrival's.
+    /// </summary>
+    public static string FlyFlag(SpawnLocation spawn) =>
+        RegionMap.Sinnoh?.FlySpots.FirstOrDefault(f => f.Spawn == spawn.Id)?.Flag ?? spawn.ArrivalFlag;
+
+    /// <summary>
+    /// Pal Park's lobby: no Pokémon Center, so never the place to come back to after a white-out or by Teleport (the
+    /// original's <c>isWarpPos</c> 0), but a place Fly lands before once its gate has been come to: the Town Map
+    /// draws it at its own cell and <c>GetSpawnIdByMapAndCoords</c> finds this entry for it (plan 01 · M12).
+    /// </summary>
     public const int PalParkLobby = 19;
 }

@@ -10,7 +10,54 @@ public class NPC
     public string Id { get; set; } = Guid.NewGuid().ToString();
     public string Name { get; set; } = "Townsperson";
     public string NpcType { get; set; } = "Trainer"; // "Rowan", "Rival", "Nurse", "Clerk", "Youngster", "Lass", "StarterBriefcase"
-    public int GridX { get; set; }
+    private int gridX, gridY;
+
+    // The lists of people that keep them by where they stand (PeopleList): told whenever their tile changes. One for
+    // nearly everyone; an array only for someone who is on more than one map's list at once
+    private PeopleList? watcher;
+    private PeopleList[]? watchers;
+
+    /// <summary>The tile they stand on. Whoever keeps people by their place (a map's <see cref="PeopleList"/>) hears of every change.</summary>
+    public int GridX
+    {
+        get => gridX;
+        set
+        {
+            if (gridX == value) return;
+            int from = gridX;
+            gridX = value;
+            watcher?.Moved(this, from, gridY);
+            if (watchers != null) foreach (var list in watchers) list.Moved(this, from, gridY);
+        }
+    }
+
+    internal void Watch(PeopleList list)
+    {
+        if (watcher == null) watcher = list;
+        else if (watcher != list && (watchers == null || Array.IndexOf(watchers, list) < 0))
+        {
+            var more = new PeopleList[(watchers?.Length ?? 0) + 1];
+            watchers?.CopyTo(more, 0);
+            more[^1] = list;
+            watchers = more;
+        }
+    }
+
+    internal void Unwatch(PeopleList list)
+    {
+        if (watcher == list)
+        {
+            watcher = watchers is { Length: > 0 } ? watchers[0] : null;
+            if (watchers != null) watchers = watchers.Length > 1 ? watchers[1..] : null;
+        }
+        else if (watchers != null && Array.IndexOf(watchers, list) is var at and >= 0)
+        {
+            var fewer = new PeopleList[watchers.Length - 1];
+            Array.Copy(watchers, 0, fewer, 0, at);
+            Array.Copy(watchers, at + 1, fewer, at, fewer.Length - at);
+            watchers = fewer.Length > 0 ? fewer : null;
+        }
+    }
 
     /// <summary>
     /// The height they stand at where it isn't the ground's: on a bridge's deck, over ground others walk (plan 01 ·
@@ -23,7 +70,19 @@ public class NPC
     /// stands on its floor, in water to the chest (plan 01 · M10). Nought for anyone on dry ground.
     /// </summary>
     public int Wading { get; set; }
-    public int GridY { get; set; }
+
+    public int GridY
+    {
+        get => gridY;
+        set
+        {
+            if (gridY == value) return;
+            int from = gridY;
+            gridY = value;
+            watcher?.Moved(this, gridX, from);
+            if (watchers != null) foreach (var list in watchers) list.Moved(this, gridX, from);
+        }
+    }
     public Direction Facing { get; set; } = Direction.Down;
     public List<string> DialogLines { get; set; } = new();
 

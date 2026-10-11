@@ -76,9 +76,14 @@ public class NorthTests
         }
         var league = SpawnLocations.FlyDestinations(story, Open).Where(s => s.Area == "pokemon_league").Select(s => s.Id).ToList();
         Assert.Equal(new[] { 15, 20 }, league);
-        // Pal Park's lobby is a place to come back to, never one to fly to
+        // Pal Park is flown to once its gate has been come to, which is another flag than Route 221's own arrival
+        // (the Town Map's sTownMapFlyLocationUnlockFlags: FIRST_ARRIVAL_POKE_PARK_FRONT_GATE; plan 01 · M12)
         story.Set(SpawnLocations.Get(SpawnLocations.PalParkLobby)!.ArrivalFlag);
         Assert.DoesNotContain(SpawnLocations.FlyDestinations(story, _ => true), s => s.Id == SpawnLocations.PalParkLobby);
+        story.Set("FLAG_FIRST_ARRIVAL_POKE_PARK_FRONT_GATE");
+        Assert.Contains(SpawnLocations.FlyDestinations(story, _ => true), s => s.Id == SpawnLocations.PalParkLobby);
+        // It is still no place to come back to
+        Assert.Null(SpawnLocations.OfRoom("PalParkLobby"));
     }
 
     [Theory]

@@ -542,6 +542,9 @@ public sealed class WorldRenderer
         DrawLife(map, camera, rig, upright: false);
         DrawDoor(map);
         DrawThings(CharacterPass.Color);
+        // Where the place's light is strongly coloured, people and Pokémon keep their own colours (style guide,
+        // "Climates"); the things of the map, drawn before them, are lit as the rock they stand among is
+        if (rig.PeopleWash > 0f) shaders.SetPeopleLight(ArtLook.ForPeople(light, rig.PeopleWash));
         DrawPokemon(CharacterPass.Color);
         DrawActors(CharacterPass.Color);
         DrawLife(map, camera, rig, upright: true);
@@ -850,6 +853,24 @@ public sealed class WorldRenderer
     private bool InSight(NPC npc) =>
         sight is not { } s || (npc.DrawX >= s.MinX - 2f && npc.DrawX <= s.MaxX + 2f && npc.DrawY >= s.MinZ - 2f && npc.DrawY <= s.MaxZ + 2f);
 
+    // Whoever may be in sight this frame: a list of the renderer's own, so a frame makes none
+    private readonly List<NPC> peopleInSight = new();
+
+    /// <summary>
+    /// The people of a map who may be in sight (plan 01 · M12): on a streamed map those standing on the ground drawn
+    /// this frame, a tile more than <see cref="InSight"/> allows for (someone in the middle of a step is drawn up to
+    /// a tile from where they stand), found by where they stand and never by going through everyone the map of
+    /// Sinnoh holds; anywhere else, everyone. In the map's own order.
+    /// </summary>
+    private List<NPC> PeopleInSight(Map map)
+    {
+        if (sight is { } s)
+            return map.NPCs.In((int)MathF.Floor(s.MinX) - 3, (int)MathF.Floor(s.MinZ) - 3, (int)MathF.Ceiling(s.MaxX) + 3, (int)MathF.Ceiling(s.MaxZ) + 3, peopleInSight);
+        peopleInSight.Clear();
+        foreach (var npc in map.NPCs) peopleInSight.Add(npc);
+        return peopleInSight;
+    }
+
     /// <summary>
     /// How many rows of their sprite someone sinks into the ground they stand in: deep snow and marsh mud take
     /// them to the shin or the knee. The ground hides what is under it.
@@ -884,7 +905,7 @@ public sealed class WorldRenderer
         things.Clear();
         berryPlants.Clear();
         pokemon.Clear();
-        foreach (var npc in map.NPCs)
+        foreach (var npc in PeopleInSight(map))
         {
             if (npc.IsPCTerminal || !InSight(npc)) continue;
             if (map.Puzzle?.Hides(npc.Level ?? map.HeightAt(npc.GridX, npc.GridY), viewer) == true) continue;
@@ -1060,7 +1081,7 @@ public sealed class WorldRenderer
             DrawUpright(art, new Rectangle(0, 0, art.Width, art.Height), x + 0.5f, z + 0.15f, ground + 1.95f, w, h, paper, straight, pitchDeg);
         }
 
-        foreach (var npc in map.NPCs)
+        foreach (var npc in PeopleInSight(map))
         {
             float ground = npc.Level is { } level ? Relief.Under(map, npc.DrawX + 0.5f, npc.DrawY + 0.5f, level) : Relief.At(map, npc.DrawX + 0.5f, npc.DrawY + 0.5f);
             if (npc.HasSpottedPlayer && npc.ExclamationTimer > 0f)
@@ -1277,7 +1298,7 @@ public sealed class WorldRenderer
             Rlgl.End();
         }
 
-        foreach (var npc in map.NPCs)
+        foreach (var npc in PeopleInSight(map))
         {
             // (An item's ball has a smaller patch under it than a person, and an obstacle one a little smaller)
             if (!npc.IsPCTerminal && InSight(npc))

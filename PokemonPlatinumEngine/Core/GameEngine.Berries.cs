@@ -16,6 +16,9 @@ public partial class GameEngine
     /// <summary>How far from the player a patch counts as seen: the original's is "in the camera's view".</summary>
     private const int BerrySight = 8;
 
+    // The things within sight of the player this frame, the patches of soil among them: a list of the engine's own
+    private readonly List<NPC> soilInSight = new();
+
     // What the soil on the map was last told: the patches' revision and the map it was told on
     private int berryRevision = -1;
     private Map? berryMap;
@@ -26,9 +29,8 @@ public partial class GameEngine
     /// </summary>
     private void KeepBerriesInView()
     {
-        foreach (var npc in currentMap.NPCs)
-            if (npc.BerryPatch is { } seen && Math.Abs(npc.GridX - player.GridX) <= BerrySight && Math.Abs(npc.GridY - player.GridY) <= BerrySight)
-                berries.Seen(seen);
+        foreach (var npc in currentMap.NPCs.Near(player.GridX, player.GridY, BerrySight, soilInSight))
+            if (npc.BerryPatch is { } seen) berries.Seen(seen);
         if (berries.Revision == berryRevision && berryMap == currentMap) return;
         berryRevision = berries.Revision;
         berryMap = currentMap;

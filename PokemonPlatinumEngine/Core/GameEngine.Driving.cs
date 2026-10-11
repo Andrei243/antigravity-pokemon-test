@@ -139,7 +139,14 @@ public partial class GameEngine
         public EvolutionScreen Evolution => game.evolutionScreen;
         public OptionsScreen Options => game.optionsScreen;
         public WardrobeScreen WardrobeScreen => game.wardrobeScreen;
-        public FlyScreen FlyScreen => game.flyScreen;
+        /// <summary>The map of the region: the Town Map, a wall's map, and Fly's choice of a place (plan 01 · M12).</summary>
+        public TownMapScreen TownMapScreen => game.townMapScreen;
+
+        /// <summary>Opens the map of the region as the game does, in a mode: out of the bag, on a wall, or for Fly with the first of the team.</summary>
+        public bool OpenTownMap(TownMapMode mode) => game.OpenTownMap(mode, fromBag: false);
+
+        /// <summary>The cells of the region's map the player last passed through.</summary>
+        public MapTrail MapTrail => game.mapTrail;
         public PoffinCookingScreen Cooking => game.cookingScreen;
         public PoffinCaseScreen PoffinCaseScreen => game.poffinCaseScreen;
         public HatchScreen Hatch => game.hatchScreen;

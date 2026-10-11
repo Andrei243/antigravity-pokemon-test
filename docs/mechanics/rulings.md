@@ -353,7 +353,7 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 | A partner travelling with the player | Fly, Teleport, Dig and an Escape Rope are refused while Cheryl, Mira, Riley or Buck walks along | The check is there (`FieldMoveError.Partner`) and never fires | Nobody walks along yet: their chapters (plan 02 · S6, S7, S10, S15) |
 | The Pokétch | Twenty-five apps on the lower touch screen | The digital watch, the pedometer and the team's app, on a watch over the field (P shows it, O changes the app) | One screen and no touch; the other apps come with what they show (the Dowsing Machine with item hunting, the Day-Care Checker with the Day Care) |
 | The Bicycle | The player drawn riding it | Its pace, rules, music and sounds; the player is drawn on foot | No riding sprite yet |
-| Fly's map | A cursor over the town map | A list of the towns beside the map, the town ringed | Our own interface (style guide, "Fly") |
+| Fly's map | A cursor over the town map | A cursor over the map since plan 01 · M12 ("The Town Map", below); it was a list of the towns beside the map | Done |
 
 ## After the battle (2026-10-06, plan 06 · R10)
 
@@ -1879,3 +1879,31 @@ The last rooms of Sinnoh that had none: the fifteen gate houses that were walked
 | The game room in battle | The Arcade's own background and platforms | A Gym's hall | Plan 04's arenas have none for the Frontier |
 | The Arcade's music and its sounds | Its own theme, the board's jingles and the cursor's ticks | Veilstone City's theme, the menus' tick for the cursor, a sliding door, the item fanfare | Plan 05 · A6 |
 | The lobby's stairs and its sunk lounge | Three flights of stairs and ramps | A level floor with two inner walls | A room's shell stands at one level; the original's plates are in the importer's `--room battle_arcade` |
+
+## The Town Map (2026-10-11, plan 01 · M12)
+
+The map of the region as one set of data and one screen, for the Town Map out of the bag, Fly's choice and a map on a wall. The grid, the blocks and their kinds, the flags a description waits for, the hidden places and the way come are the original's (`res/town_map/town_map_data.json`, `src/applications/town_map`, `src/overworld_map_history.c`); the picture is painted from our own world and every word is ours.
+
+- **The grid** is the overworld's matrix, a cell to a chunk of 32 tiles by 32: thirty by thirty, of which the screen shows rows 5 to 28. The cursor keeps to the original's bounds (columns 1 to 28, rows 6 to 28; `HandleInput`) and starts on the player's cell, or on Twinleaf Town's (3, 27) when nothing says where the player is.
+- **Where the player is** (`TownMapContext_Init`): on the overworld, the cell stood in. Anywhere else, the cell last gone in from (the original's exit location: `exitSpot`, which every warp out of the overworld notes), and where a game has none (it began indoors, or a script took the player there) the cell the place is come into from, found by walking back through the warps (`RegionMap.PlacesOf`). Where none of the three says, the screen reads "Somewhere off the map" and shows no pin.
+- **What is told of a place** (`PrintLocationDescription`): a route's words from the start, a town's once its `FLAG_FIRST_ARRIVAL_…` is set, a landmark's name and words once its own flag is; a landmark with no flag of its own waits for what its area waits for (the original's `make_town_map_data.py` gives it the area's check).
+- **A landmark's flag** is set in the original by the place's own map script as the player first comes there. Here a script of ours sets some; for twelve the map's file names the place whose first arrival does (`arrival`, by area or by map), and the engine sets the flag where it notes a town's first arrival (`GameEngine.NoteArrivalOnTheMap`). The flags are the original's, so a script written later that sets one changes nothing.
+- **The hidden places** (`SystemVars_CheckHiddenLocation`): Fullmoon Island, Newmoon Island, the Spring Path, and the Seabreak Path with Flower Paradise are off the map until their variable holds the original's number: no block under the cursor, and nothing of them in the picture (open water, or for the Spring Path the land round it). The picture is painted again when one is revealed.
+- **Fly's places** (`TownMap_GetFlyLocationAtPos`, `CanFlyToHoveredLocation`) are the original's twenty, on the cells of their towns. One is open when its flag is set and its area is open in the world. Two are not drawn at all until they are open, as the original leaves them off: the Pokémon Center before Victory Road and Pal Park. **Pal Park is flown to** once its gate has been come to (`FLAG_FIRST_ARRIVAL_POKE_PARK_FRONT_GATE`, which the original's `GetSpawnIdByMapAndCoords` answers with): plan 02 · S2 had left it out of Fly's list, and it is in it now.
+- **The way come** (`OverworldMapHistory`): a ring of six cells, each with the way the player faced as they came into it, written as a step crosses into another cell and, with no way faced, as a door, a ship or a flight brings the player onto the overworld; the first step after that writes the cell again with its way, as the original's does. The map marks the five before the newest, each cell once, and steps through them from the oldest, 26 thirtieths of a second to each. It is saved (`SaveData.MapTrail`), and a save from before it has none until the player walks.
+- **No roamer and no swarm is marked**, because the original's Town Map marks neither: a roaming Pokémon is shown by the Pokétch's Marking Map (plan 06 · R14b), which keeps its own cells, and a swarm is told by the assistant's sister. The two maps share the grid (a cell to a chunk of the overworld, `RegionMap.CellOf`), not their marks.
+- **A wall's map** (`TOWN_MAP_MODE_WALL_MAP`) is the same screen with no way come. Nothing opens it yet: the maps on the walls of the Pokémon Centers are plan 08 · P8's, which calls `GameEngine.OpenTownMap(TownMapMode.Wall)`.
+
+| What | The original | Here, for now | Until |
+|---|---|---|---|
+| The picture | Drawn art on the lower screen, a block of it lit for each place visited | Painted from the world's own tiles, a texel a tile; a visit changes the place's words and Fly's disc, not the picture | For good: our own art |
+| Two screens | The map below, the place's name, picture and words above | One screen: the map on the left, the place on the right | For good |
+| The place's picture | A drawing of each town and landmark on the upper screen | A window on the map from near, four units to a tile, round the cursor's cell | Drawings of the places, if a later plan makes them |
+| Zooming | The X button or a touch of the lens doubles the map round the cursor | Confirm (the Menu key when choosing where to fly) shows a third of the map, three units to a tile, with the whole map small beside it | For good |
+| The cursor | A hand moved by the pad or put down by the stylus | Four corners round a cell, moved by the arrows; no stylus | For good (the stylus is a cursor, as in the Pokétch) |
+| Fly's places | Blocks of the map's own art that light up | A disc on the middle of each place, gold once open | For good |
+| The way come | Five marks, each lit in turn with an arrow | Five dots, one in turn larger with its arrow | For good |
+| Pal Park's flag | Set by the place's own script | Set by the arrival rule on coming into the lobby (`arrival`: `PalParkLobby`), whose scene is plan 06 · R16b's | A script that sets it there, which changes nothing |
+| The landmarks' flags | Each set by its place's script | Set by the arrival rule where no script of ours sets them | The same |
+| A wall's map | Read from the Pokémon Centers' walls | The mode is there and nobody calls it | Plan 08 · P8 |
+| The Pokédex's area page | Its own map, in the Pokédex's colours | The Town Map's picture at 20 units to a chunk, the species' cells lit | For good; another region's Pokédex passes its own region (`ModernUi.RegionMap` asks Sinnoh's) |

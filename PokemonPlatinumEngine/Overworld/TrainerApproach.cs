@@ -42,8 +42,14 @@ public sealed class TrainerApproach
 
     /// <summary>The first trainer still waiting for a battle who is looking at the tile, or null; one other than <paramref name="except"/>, when given.</summary>
     public static NPC? FindSpotter(Map map, int x, int y, NPC? except = null, float? height = null) =>
-        map.NPCs.FirstOrDefault(n => n != except && n.IsTrainer && !n.HasBattled && n.TrainerData != null && CanSee(map, n, x, y, height)
+        map.NPCs.Near(x, y, SightReach).FirstOrDefault(n => n != except && n.IsTrainer && !n.HasBattled && n.TrainerData != null && CanSee(map, n, x, y, height)
             && (except?.TrainerData == null || n.TrainerData!.Id != except.TrainerData.Id));
+
+    /// <summary>
+    /// How far off a trainer who sees a tile can stand, at the very most: only the people this near are asked whether
+    /// they do (plan 01 · M12). Platinum's longest sight is six tiles; a test holds every trainer's under this.
+    /// </summary>
+    public const int SightReach = 16;
 
     /// <summary>
     /// Trainers look straight ahead for as many tiles as their sight range, and not past anything they

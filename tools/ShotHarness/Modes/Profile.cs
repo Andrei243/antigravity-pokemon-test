@@ -5,6 +5,8 @@ partial class Harness
     // Not part of `all`: the heaviest scenes of the game, each timed and then taken apart by the profiler. Run it by
     // itself, with nothing else running, and with SHOTS_WINDOW=3840x2160 for the game as it is full screen. Each
     // scene's median, spread and passes go to profile.json, which `ab` compares (tools/dev/ab.sh runs the three).
+    // SHOTS_LOOK=1 also saves a picture of each scene as it stands when it is timed (profile_<scene>), and with a
+    // SHOTS_ONLY that names no scene the mode only goes to each place and times nothing: how a new scene is looked at.
     public void ProfileMode()
     {
         profileRun.Renderer = Gl.Renderer();
@@ -42,6 +44,88 @@ partial class Harness
             At("Sinnoh", 302, 784, Direction.Down); Frames(40); Profile("oreburgh's mine yard");
             At("OreburghGate1F", 16, 22, Direction.Right); Frames(40); Profile("oreburgh gate");
             At("PokemonCenter", 5, 6, Direction.Up); Frames(40); Profile("pokemon center");
+
+            // The rest of Sinnoh (plan 01 · M12: the places M6 to M11 opened, owed since plan 04 · G11). Towns by
+            // the tile Fly lands on, before their Pokémon Centers; routes, caves and rooms by the open tile nearest
+            // the middle of their open ground. The date is the harness's (the first of June), so the calendar's
+            // weather is the same every run: rain on Route 212's south, snow in the north.
+            void Town(string area, string label)
+            {
+                var spot = SpawnLocations.All.First(s => s.Area == area);
+                At("Sinnoh", spot.X, spot.Y, Direction.Down); Frames(40); Profile(label);
+            }
+            void Place(string area, string label)
+            {
+                var (map, x, y) = AreaSpot(area);
+                At(map.Name, x, y, Direction.Down); Frames(40); Profile(label);
+            }
+            void Room(string name, string label)
+            {
+                // A room's own arrival script may speak: its lines are read on, so the room is timed and not a text box
+                var map = MapDatabase.Get(name);
+                var open = new List<(int X, int Y)>();
+                for (int y = 0; y < map.Height; y++)
+                    for (int x = 0; x < map.Width; x++)
+                        if (map.IsWalkable(x, y) && map.GetWarpAt(x, y) == null) open.Add((x, y));
+                double cx = open.Average(t => t.X), cy = open.Average(t => t.Y);
+                var (sx, sy) = open.OrderBy(t => (t.X - cx) * (t.X - cx) + (t.Y - cy) * (t.Y - cy)).First();
+                At(name, sx, sy, Direction.Up);
+                for (int i = 0; i < 40; i++)
+                {
+                    if (engine.Choice.IsOpen) engine.Choice.Confirm();
+                    else if (game.Dialogue.IsActive) { game.Dialogue.FinishLine(); game.Dialogue.Advance(); }
+                    Frames(4);
+                }
+                if (game.Map.Name != name) Console.WriteLine($"  !! {label}: the room's own script took the player to {game.Map.Name}");
+                Profile(label);
+            }
+
+            // The centre (M6)
+            Town("eterna_city", "eterna city");
+            Place("route_206", "route 206, the cycling road");
+            Place("eterna_forest", "eterna forest");
+            Town("hearthome_city", "hearthome city");
+            Place("amity_square", "amity square");
+            Town("solaceon_town", "solaceon town");
+            // The east and the sea (M7)
+            Place("route_210_north", "route 210, in the fog");
+            Town("celestic_town", "celestic town");
+            Town("veilstone_city", "veilstone city");
+            Town("pastoria_city", "pastoria city");
+            Place("great_marsh_1", "great marsh");
+            Place("route_212_south", "route 212, in the rain");
+            Town("canalave_city", "canalave city");
+            // The north and the end (M8)
+            Place("mt_coronet_2f", "mt. coronet, second floor");
+            Place("route_216", "route 216, in the snow");
+            Town("snowpoint_city", "snowpoint city");
+            Town("sunyshore_city", "sunyshore city");
+            Place("victory_road_1f", "victory road");
+            At("Sinnoh", 847, 560, Direction.Down); Frames(40); Profile("pokemon league");
+            Place("distortion_world_b2f", "distortion world");
+            // The Battle Zone and the post-game (M10)
+            Town("fight_area", "fight area");
+            Place("route_228", "route 228, in its sandstorm");
+            Town("resort_area", "resort area");
+            At("Sinnoh", 750, 248, Direction.Up); Frames(60); Profile("stark mountain's foot");
+            Place("stark_mountain_room_1", "stark mountain's great room");
+            Place("snowpoint_temple_b1f", "snowpoint temple");
+            At("BattleFrontier", 48, 44, Direction.Up); Frames(40); Profile("battle frontier's plaza");
+            Place("underground", "the underground");
+            // The Gyms and their pieces (M9), and the largest rooms (M11 and the chapters')
+            Room("EternaGym", "eterna gym, the flower clock");
+            Room("PastoriaGym", "pastoria gym, the water");
+            Room("CanalaveGym", "canalave gym, the lifts");
+            Room("SnowpointGym", "snowpoint gym, the ice");
+            Room("SunyshoreGym", "sunyshore gym, the gears");
+            Room("PokemonLeagueHallOfFame", "hall of fame");
+            Room("ContestHallLobby", "contest hall");
+            Room("VeilstoneStore1F", "department store");
+            Room("GalacticHQHall", "galactic hall and its ranks");
+            Room("OldChateau", "old chateau");
+            Room("BattleTower", "battle tower's lobby");
+            Room("GlobalTerminal1F", "global terminal");
+            game.Map = MapDatabase.Get("Sinnoh");
 
             engine.Settings.TimeOfDay = TimeOfDay.Night;
             engine.ApplySettings(window: false);

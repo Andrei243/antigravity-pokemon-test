@@ -141,8 +141,10 @@ partial class Harness
         partyMenu.MoveAction(1);
         partyMenu.Confirm(team);
         Frames(20);
-        var fly = game.FlyScreen;
-        for (int i = 0; i < 9 && fly.Towns[fly.Cursor].Area != "hearthome_city"; i++) fly.Move(1);
+        // Fly's choice is the map of the region (plan 01 · M12): the cursor goes from Twinleaf Town's cell to Hearthome City's
+        var fly = game.TownMapScreen;
+        for (int i = 0; i < 40 && fly.HoveredSpot?.Town.Area != "hearthome_city"; i++)
+            fly.Move(Math.Sign(14 - fly.CursorX), Math.Sign(21 - fly.CursorY));
         Frames(10); Shot("fm14_fly_map");
         fly.Confirm(); Frames(2);
         Whole(); Next(); Frames(26); Shot("fm15_fly_cut_in");

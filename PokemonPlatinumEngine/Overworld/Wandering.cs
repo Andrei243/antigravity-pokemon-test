@@ -86,6 +86,14 @@ public sealed class Wandering
 
     private static readonly int[] Waits = { 16, 32, 48, 64 };
 
+    /// <summary>How far from the player people move about, in tiles either way: two chunks, well beyond what is in view.</summary>
+    public const int Reach = 64;
+
+    private static bool InReach(NPC npc, (int X, int Y) player) => Math.Abs(npc.GridX - player.X) <= Reach && Math.Abs(npc.GridY - player.Y) <= Reach;
+
+    // Whoever is near the player this frame: a list of its own, so a frame makes none
+    private readonly List<NPC> near = new();
+
     private readonly Dictionary<NPC, float> waits = new();
     private readonly Dictionary<NPC, NpcWalk> steps = new();
     private readonly Dictionary<NPC, int> legs = new();
@@ -100,7 +108,13 @@ public sealed class Wandering
     /// </summary>
     public void Update(float dt, Map map, (int X, int Y) player, (int X, int Y) heading, Random rng, Func<NPC, bool>? still = null)
     {
-        foreach (var npc in map.NPCs.ToList())
+        // Only those within reach of the player move about (plan 01 · M12): the original has nobody on the map but
+        // the people of the place the player is in, and the map of Sinnoh holds everyone. Whoever is in the middle of
+        // a step finishes it wherever the player has got to
+        map.NPCs.Near(player.X, player.Y, Reach, near);
+        foreach (var walker in steps.Keys)
+            if (!InReach(walker, player) && map.NPCs.Contains(walker)) near.Add(walker);
+        foreach (var npc in near)
         {
             if (npc.Movement is not { } movement || npc.ReadyForRematch || npc.HasSpottedPlayer || still?.Invoke(npc) == true) continue;
 

@@ -24,7 +24,6 @@ internal static partial class ModernUi
     /// <summary>The player's height on the size page, in metres.</summary>
     public const float PlayerHeight = 1.4f;
 
-    private static readonly Color Sea = new(196, 222, 244, 255);
     private static readonly Color Cream = new(252, 246, 228, 255);
     private static readonly Color DeepGold = new(176, 120, 30, 255);
 
@@ -172,8 +171,8 @@ internal static partial class ModernUi
     }
 
     /// <summary>
-    /// AREA: Sinnoh's overworld, one square per chunk, with the places the species lives lit, and beside it those
-    /// places and how the species is met in each.
+    /// AREA: the map of Sinnoh (<see cref="RegionMap"/>, the Town Map's own picture, smaller), with the places the
+    /// species lives lit, and beside it those places and how the species is met in each.
     /// </summary>
     private static void DexArea(Rectangle detail, PokemonSpecies s)
     {
@@ -211,78 +210,8 @@ internal static partial class ModernUi
         UiFonts.Draw(summary, map.X, map.Y + map.Height + 28, 28, Ink, UiWeight.ExtraBold);
         float kx = map.X;
         float ky = map.Y + map.Height + 92;
-        UiShapes.Fill(new Rectangle(kx, ky, 26, 26), 5, Selection);
-        kx += 38 + UiFonts.Measure("Where it lives", 22, UiWeight.ExtraBold);
+        UiShapes.Shape(new Rectangle(kx, ky, 26, 26), 5, Selection, Selection, Color.White, 2.5f);
         UiFonts.DrawCentered("Where it lives", map.X + 38, ky + 13, 22, Muted, UiWeight.ExtraBold);
-        UiShapes.Shape(new Rectangle(kx + 30, ky, 26, 26), 5, Color.White, Color.White, Rule, 2);
-        UiFonts.DrawCentered("Town", kx + 68, ky + 13, 22, Muted, UiWeight.ExtraBold);
-    }
-
-    /// <summary>
-    /// Sinnoh's overworld, one square per chunk (water a pale blue, land the Disc colour, towns white), in a
-    /// rectangle, its empty north left out; the chunks <paramref name="lit"/> breathing in the Selection colour and
-    /// the one at <paramref name="ring"/> ringed in white. Used by the Pokédex's area page and by Fly.
-    /// </summary>
-    public static void RegionMap(Rectangle map, float cell, IReadOnlySet<(int X, int Y)> lit, (int X, int Y)? ring = null)
-    {
-        UiShapes.Fill(map, 18, Sea);
-        var habitats = Habitats.Sinnoh;
-        if (habitats == null) return;
-        // The map's rows from the first with any ground, so the empty north doesn't take room
-        int first = Enumerable.Range(0, habitats.Height).FirstOrDefault(y => Enumerable.Range(0, habitats.Width).Any(x => habitats.LookAt(x, y) != ' '));
-        int rows = Math.Min(habitats.Height - first, (int)(map.Height / cell));
-        float ox = map.X + (map.Width - habitats.Width * cell) / 2f, oy = map.Y + (map.Height - rows * cell) / 2f;
-        float pulse = 0.72f + 0.28f * (0.5f + 0.5f * MathF.Sin((float)FrameClock.Now * 3.2f));
-        for (int y = 0; y < rows; y++)
-            for (int x = 0; x < habitats.Width; x++)
-            {
-                char look = habitats.LookAt(x, first + y);
-                var r = new Rectangle(ox + x * cell, oy + y * cell, cell, cell);
-                if (look == '.') Raylib.DrawRectangleRec(r, Disc);
-                else if (look == 'T') Raylib.DrawRectangleRec(r, Color.White);
-                if (lit.Contains((x, first + y)))
-                    UiShapes.Fill(new Rectangle(r.X + 2, r.Y + 2, cell - 4, cell - 4), 4, Selection with { A = (byte)(255 * pulse) });
-            }
-        if (ring is var (rx, ry) && ry >= first && ry < first + rows)
-        {
-            var c = new Vector2(ox + (rx + 0.5f) * cell, oy + (ry - first + 0.5f) * cell);
-            UiShapes.Ring(c, cell * 0.62f, 4f, Color.White);
-            UiShapes.Ring(c, cell * 0.62f + 3f, 2f, Ink);
-        }
-    }
-
-    /// <summary>
-    /// Fly (style guide, "Fly"): the map of Sinnoh on the left with the town under the cursor lit and the player's
-    /// chunk ringed, and the towns Fly reaches as a list on the right.
-    /// </summary>
-    public static void DrawFly(int sw, int sh, IReadOnlyList<SpawnLocation> towns, int cursor, int top, (int X, int Y)? here, float appear = 1f)
-    {
-        Backdrop(sw, sh);
-        ScreenTitle("FLY");
-        Hints(sw - 64, 44, ("Z", "Fly"), ("Esc", "Back"));
-        float slide = (1f - UiMotion.EaseOut(appear)) * 60f;
-
-        var panel = new Rectangle(64 - slide, 132, 1100, 900);
-        Panel(panel, 34);
-        var lit = new HashSet<(int, int)>();
-        if (cursor < towns.Count) lit.Add((towns[cursor].X / 32, towns[cursor].Y / 32));
-        RegionMap(new Rectangle(panel.X + 28, panel.Y + 28, panel.Width - 56, panel.Height - 56), 28, lit,
-            here is var (hx, hy) ? (hx / 32, hy / 32) : null);
-
-        var list = new Rectangle(1196 + slide, 132, 660, 900);
-        Panel(list, 34);
-        if (towns.Count == 0)
-        {
-            UiFonts.DrawCentered("Nowhere to fly to yet.", list.X + 44, list.Y + 60, 32, Muted, UiWeight.ExtraBold);
-            return;
-        }
-        const int visible = FlyScreen.VisibleRows;
-        for (int i = top; i < Math.Min(towns.Count, top + visible); i++)
-        {
-            var r = new Rectangle(list.X + 20, list.Y + 20 + (i - top) * 92, list.Width - 40, 84);
-            ListRow(r, i == cursor, PlaceName(towns[i].Area), nameX: 40);
-        }
-        ScrollBar(list, top, visible, towns.Count);
     }
 
     /// <summary>A place's name from its key: <c>eterna_city</c> is Eterna City.</summary>
