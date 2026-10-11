@@ -111,7 +111,9 @@ public class SnowpointAndLakeAcuityTests
         Assert.Null(game.Map.GetWarpAt(367, 197));
         Assert.True(game.Map.IsSolid(366, 197));
         Assert.NotNull(game.Present("sailor_ss_spiral", "snowpoint_city"));
-        Assert.DoesNotContain(game.Map.Everyone, n => n.ScriptFile == "snowpoint_city" && n.Key is "candice" or "cynthia");
+        // (Cynthia is on the quay's map since plan 02 · S15, part a, behind her flag; Candice comes with the temple)
+        Assert.DoesNotContain(game.Map.Everyone, n => n.ScriptFile == "snowpoint_city" && n.Key == "candice");
+        Assert.Null(game.Present("cynthia", "snowpoint_city"));
         foreach (string flag in new[] { "FLAG_HIDE_SNOWPOINT_CITY_CANDICE", "FLAG_HIDE_SNOWPOINT_CITY_CYNTHIA", "FLAG_HIDE_ACUITY_CAVERN_UXIE" })
             Assert.True(game.Story.Has(flag), flag);
 

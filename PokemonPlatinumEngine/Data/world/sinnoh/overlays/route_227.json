@@ -7,10 +7,18 @@
   "architecture": "Resort",
   // The house by the road has no room yet (plan 01 · M11)
   "locked": [ 0 ],
-  // The rival and Crasher Wake arguing at the foot of the road (trigger 0), and Buck, who asks the player to come up
-  // Stark Mountain with him (trigger 1), wait for the story (plan 02 · S15). The road's north end runs on to Stark
-  // Mountain, which is plan 01 · M10, part b's
+  // Plan 02 · S15, part a (scripts/route_227.txt): the rival and Crasher Wake at the foot of the road, who are met
+  // by whoever steps up to them (trigger 0), and Buck further up, who asks the player to look round Stark Mountain
+  // (trigger 1) and waits there until the mountain is gone into (plan 02 · S15, part b hides him). Buck's own look is
+  // plan 11's
+  "triggers": [
+    { "trigger": 0, "script": "WakeAndRival" },
+    { "trigger": 1, "script": "BuckAsks" }
+  ],
   "people": {
+    "rival": { "name": "{rival}", "dialog": [ "{rival}: Not now, {player}! I'm training!" ], "still": true },
+    "crasher_wake": { "name": "Crasher Wake", "npcType": "CrasherWake", "dialog": [ "Crasher Wake: Wahaha! The mountain air does a body good!" ], "still": true },
+    "buck": { "name": "Buck", "npcType": "Youngster", "script": "Buck", "still": true },
     "ace_trainer_saul": {
       "name": "Saul",
       "trainer": {

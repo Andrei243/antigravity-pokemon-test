@@ -547,6 +547,11 @@ public class RoomPlanTests
         new object[] { "BattleFactory", "pokemon_breeder_f", 1, 11, Direction.Down },
         new object[] { "BattleFactory", "clown", 18, 9, Direction.Left },
         new object[] { "BattleFactory", "lady", 22, 11, Direction.Left },
+        // The rooms' guests after the Hall of Fame (plan 02 · S15, part a)
+        new object[] { "PalParkLobby", "prof_oak", 7, 15, Direction.Down },
+        new object[] { "EternaCitySouthHouse", "prof_oak", 4, 5, Direction.Down },
+        new object[] { "IronIslandHouse", "byron", 5, 5, Direction.Down },
+        new object[] { "CanalaveLibrary1F", "lucian", 16, 5, Direction.Up },
     };
 
     [Theory]

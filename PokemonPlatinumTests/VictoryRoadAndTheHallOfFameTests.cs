@@ -72,7 +72,7 @@ public class VictoryRoadAndTheHallOfFameTests
         Assert.True(game.Story.Has("FLAG_HIDE_DAY_CARE_GYM_GUIDE"));
         Assert.Equal(0, game.Story.Var(RivalVar));
         Assert.Equal(0, game.Story.Var(Postgame));
-        Assert.Equal(17, StoryState.CurrentVersion);
+        Assert.True(StoryState.CurrentVersion >= 17);
 
         // The rival's own tile is the way out itself (the original's exit mat is its warp), and his trigger the row
         // before the guard
@@ -174,8 +174,12 @@ public class VictoryRoadAndTheHallOfFameTests
         Assert.NotNull(collector);
         Assert.Contains(game.Talk("collector").Transcript, l => l.Text.Contains("Pokémon League"));
 
+        // A Champion without the National Pokédex is still kept out (plan 02 · S15, part a), and hears why
         game.Story.Set(Completed);
         Assert.Contains(game.Talk("collector").Transcript, l => l.Text.Contains("professor"));
+        game.Arrive("VictoryRoad1F", 15, 77);
+        Assert.NotNull(game.Present("collector"));
+        game.NationalDex = true;
         game.Arrive("VictoryRoad1F", 15, 77);
         Assert.Null(game.Present("collector"));
     }
@@ -483,7 +487,8 @@ public class VictoryRoadAndTheHallOfFameTests
     public void TheFlagsAskedAheadOfTheirScenesAreTheOnesTheVictoryAsks()
     {
         var asked = Find("Victory", Hall).Everything().Where(i => i.Condition is { Query: Query.Flag }).Select(i => i.Condition!.Name).ToHashSet();
-        Assert.Subset(asked, StoryTests.AskedAheadOfTheirScenes.ToHashSet());
+        // (but for the one Looker asks at the Game Corner, which is no flag of a victory's: plan 02 · S15, part a)
+        Assert.Subset(asked, StoryTests.AskedAheadOfTheirScenes.Except(new[] { "FLAG_ARRESTED_CHARON_STARK_MOUNTAIN" }).ToHashSet());
         // The script of a victory may be run with no screen (the migration runs it): it sets things and nothing else
         Assert.DoesNotContain(Find("Victory", Hall).Everything(), i => i.Op is not (Op.SetFlag or Op.ClearFlag or Op.SetVar or Op.If or Op.Goto or Op.Return));
     }
@@ -616,9 +621,10 @@ public class VictoryRoadAndTheHallOfFameTests
         StoryMigration.Upgrade(upgraded, 0, Array.Empty<Pokemon>(), Scripts, new Inventory());
         foreach (string flag in new[] { RivalFlag, "FLAG_HIDE_DAY_CARE_GYM_GUIDE" })
             Assert.True(fresh.Has(flag) && upgraded.Has(flag), flag);
-        // The chapter's script is the last link of the chain a new game runs, and may only set things up
+        // The chapter's script is a link of the chain a new game runs (the time after the Hall of Fame is the next,
+        // plan 02 · S15), and may only set things up
         Assert.Contains(Find("ChapterTen", ScriptLibrary.Common).Everything(), i => i.Op == Op.Call && i.Name == "ChapterEleven");
-        Assert.All(Find("ChapterEleven", ScriptLibrary.Common).Everything(), i => Assert.Contains(i.Op, new[] { Op.SetFlag, Op.ClearFlag, Op.SetVar, Op.If, Op.Return }));
+        Assert.All(Find("ChapterEleven", ScriptLibrary.Common).Everything(), i => Assert.Contains(i.Op, new[] { Op.SetFlag, Op.ClearFlag, Op.SetVar, Op.If, Op.Call, Op.Return }));
         Assert.Equal(ScriptLibrary.ChapterEleven, Find("ChapterEleven", ScriptLibrary.Common).FullName);
     }
 

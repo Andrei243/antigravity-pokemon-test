@@ -32,7 +32,7 @@ label Declined
   say "Bebe: Oh, OK... Then I suppose I'll raise it myself."
   end
 label After
-  if flag FLAG_GAME_COMPLETED goto National
+  if nationaldex goto National
   say "Bebe: My friend Bill built the first Pokémon storage system." "I've tinkered with it here and there since, to make it easier to use."
   end
 label National

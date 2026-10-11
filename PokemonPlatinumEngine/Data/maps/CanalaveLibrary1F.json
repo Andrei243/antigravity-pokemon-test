@@ -440,6 +440,16 @@
       "y": 5,
       "facing": "Up",
       "script": "Lass"
+    },
+    {
+      "id": "lucian",
+      "name": "Lucian",
+      "npcType": "Gentleman",
+      "x": 16,
+      "y": 5,
+      "facing": "Up",
+      "script": "Lucian",
+      "hiddenBy": "FLAG_HIDE_CANALAVE_LIBRARY_1F_LUCIAN"
     }
   ],
   "wildEncounters": []

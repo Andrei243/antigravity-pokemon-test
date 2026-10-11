@@ -165,6 +165,8 @@ public partial class GameEngine
         public void UseFieldItem(ItemData item) => game.UseFieldItem(item);
         public EncounterMoment EncounterMomentNow() => game.EncounterMomentNow();
         public void KeepPartnerAlong() => game.KeepPartnerAlong();
+        /// <summary>The trainer who travels with the player now (plan 02 · S6), or null with nobody along.</summary>
+        public string? PartnerAlong => game.partner?.TrainerId;
         /// <summary>The Day Care's part of a step (plan 06 · R15): the couple walk it, and an Egg may be ready to hatch.</summary>
         public bool DayCareStep() => game.DayCareStep();
     }

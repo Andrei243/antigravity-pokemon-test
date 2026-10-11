@@ -259,6 +259,42 @@ script ChapterTen
 script ChapterEleven
   setflag FLAG_HIDE_POKEMON_LEAGUE_NORTH_POKECENTER_1F_RIVAL
   if not flag FLAG_STORED_POKEMON_AT_DAY_CARE setflag FLAG_HIDE_DAY_CARE_GYM_GUIDE
+  call ChapterTwelve
+  return
+
+
+# Who the time after the Hall of Fame (plan 02 · S15, "Post-game") keeps out of sight until their scenes, as the
+# original's new game does (scripts_init_new_game.s). Part a's: Palmer, who comes out of the Battle Frontier's gate once
+# Flint and Volkner are beaten before it; Buck and the rival in the Survival Area, who come to the Battleground's step
+# once Charon is caught; Professor Oak and Marley on Route 224, who come only with an event gift; and Byron in Iron
+# Island's cabin, whom the National Pokédex shows. The rival on the Fight Area's pier, Flint, Volkner, Buck and their
+# crowd before the gate, the two pairs who keep the roads out of the town, the rival, Crasher Wake and Buck on Route
+# 227, Marley in Victory Road and Professor Oak in Pal Park's lobby are there from the start, as the original's are:
+# nobody comes to any of them before the Hall of Fame. Parts b and c's, set here so that their sessions need no
+# step of their own to hide them: whoever Stark Mountain's scenes bring on (Looker and Buck outside it and Buck in
+# its great room, Looker, his Croagunk, the policemen and Heatran in its last), Buck in the Battleground, the sailor
+# in Canalave's house whose son has the nightmare, the professor in Rotom's room of the Old Chateau, and the Lunar
+# Wing, which lies on Fullmoon Island only once Cresselia has flown. Called by ChapterEleven, and run for a save from
+# before (Story/StoryMigration.cs, version 18, which also sees to a save that has already been to the Battle Zone).
+# It may only set flags and variables, and ends in return.
+script ChapterTwelve
+  setflag FLAG_HIDE_FIGHT_AREA_PALMER
+  setflag FLAG_HIDE_SURVIVAL_AREA_BUCK
+  setflag FLAG_HIDE_SURVIVAL_AREA_RIVAL
+  setflag FLAG_HIDE_ROUTE_224_PROF_OAK
+  setflag FLAG_HIDE_ROUTE_224_MARLEY
+  setflag FLAG_HIDE_IRON_ISLAND_HOUSE_BYRON
+  setflag FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_LOOKER
+  setflag FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_BUCK
+  setflag FLAG_HIDE_STARK_MOUNTAIN_ROOM_2_BUCK
+  setflag FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_LOOKER
+  setflag FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_POLICEMEN
+  setflag FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_CROAGUNK
+  setflag FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_HEATRAN
+  setflag FLAG_HIDE_BATTLEGROUND_BUCK
+  setflag FLAG_HIDE_CANALAVE_CITY_SAILOR_ELDRITCH_HOUSE_SAILOR_ELDRITCH
+  setflag FLAG_HIDE_ROTOMS_ROOM_PROF_ROWAN
+  setflag FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
   return
 
 

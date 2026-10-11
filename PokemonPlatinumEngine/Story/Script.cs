@@ -75,6 +75,9 @@ public enum Op
     Factory,
     // The Hall of Fame's end (plan 02 · S14): the game written to its save unasked, and the credits
     Save, Credits,
+    // After the Hall of Fame (plan 02 · S15): the Pokédex upgraded to the National one (the original's
+    // SetNationalDexEnabled)
+    NationalDex,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

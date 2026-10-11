@@ -93,9 +93,12 @@ public class BattleZoneTests
     public void TheShipLandsOnTheFightAreasPierAndItsSailorSailsBack()
     {
         var map = Overworld;
-        // Where the original's TakeShipFromSnowpoint puts the player down, facing east: on the pier's planks
-        var landing = Assert.Single(WorldWalk.StoryArrivals, s => s.Map == "Sinnoh" && AreaKey(map, s.X, s.Y) == "fight_area");
-        Assert.Equal((623, 434, Direction.Right), (landing.X, landing.Y, landing.Facing));
+        // Where the original's TakeShipFromSnowpoint puts the player down, facing east: on the pier's planks. The ship
+        // is Snowpoint's sailor's since plan 02 · S15, part a, and the walk of the whole game finds the way by itself
+        Assert.DoesNotContain(WorldWalk.StoryArrivals, s => s.Map == "Sinnoh" && AreaKey(map, s.X, s.Y) == "fight_area");
+        var ship = ScriptLibrary.Default.Find("Ship", "snowpoint_city")!.Everything().Single(i => i.Op == Op.Warp);
+        var landing = new MapSpot(ship.Name, ship.X, ship.Y, ship.Direction ?? Direction.Down);
+        Assert.Equal(("Sinnoh", 623, 434, Direction.Right), (landing.Map, landing.X, landing.Y, landing.Facing));
         Assert.Equal("fight_area", AreaKey(map, landing.X, landing.Y));
         Assert.Equal(TileType.Planks, map.GetGroundTile(landing.X, landing.Y));
         Assert.True(map.IsWalkable(landing.X, landing.Y));
@@ -146,15 +149,20 @@ public class BattleZoneTests
 
         // The floor's arrival script moves him only for a Champion
         var story = new StoryState();
+        bool nationalDex = false;
         void Arrive()
         {
-            var runner = new ScriptRunner(ScriptLibrary.Default, new HeadlessScriptHost(story));
+            var runner = new ScriptRunner(ScriptLibrary.Default, new HeadlessScriptHost(story) { NationalDex = nationalDex });
             runner.Start(ScriptLibrary.Default.In("victory_road_1f", ScriptLibrary.OnEnter)!);
             runner.RunToEnd();
         }
         Arrive();
         Assert.False(story.Has("FLAG_HIDE_VICTORY_ROAD_1F_COLLECTOR"));
         story.Set("FLAG_GAME_COMPLETED");
+        Arrive();
+        Assert.False(story.Has("FLAG_HIDE_VICTORY_ROAD_1F_COLLECTOR"));
+        // ...who has the National Pokédex too (plan 02 · S15, part a), as the original asks
+        nationalDex = true;
         Arrive();
         Assert.True(story.Has("FLAG_HIDE_VICTORY_ROAD_1F_COLLECTOR"));
     }
@@ -244,10 +252,10 @@ public class BattleZoneTests
         runner.RunToEnd();
         Assert.Contains(host.Transcript, line => line.Text.Contains("Members only"));
 
-        // The story's people wait for the story: the blockades, the rival, Buck. The boy who gives the Villa away and
-        // those who wait at its door are the Resort Area's own (plan 06 · R16b)
-        Assert.DoesNotContain(Outdoors.SelectMany(key => PeopleOf(map, key)), n => n.Key is "rival" or "buck" or "volkner" or "flint" or "palmer" or "ace_trainer_m_2"
-            or "black_belt_2" or "marley" or "prof_oak" or "shaymin" or "crasher_wake");
+        // The story's people are placed since plan 02 · S15, part a (TheNationalPokedexAndTheBattleZoneTests), but
+        // those of Route 224, who come only with an event gift. The boy who gives the Villa away and those who wait at
+        // its door are the Resort Area's own (plan 06 · R16b)
+        Assert.DoesNotContain(PeopleOf(map, "route_224"), n => n.Key is "marley" or "prof_oak" or "shaymin");
         Assert.Contains(PeopleOf(map, "resort_area"), n => n.Key == "school_kid_m" && n.Script == "SchoolKid");
     }
 

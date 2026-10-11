@@ -749,4 +749,21 @@ public sealed class HeadlessScriptHost : IScriptHost
         Saves.Add((Story.Snapshot(), Map?.Name, PlayerTile));
         return true;
     }
+
+    // ------------------------------------------------------------------ after the Hall of Fame (plan 02 · S15)
+
+    public void GiveNationalDex()
+    {
+        NationalDex = true;
+        Log.Add("nationaldex");
+    }
+
+    /// <summary>How many teams have entered the Hall of Fame (<c>LEAGUE_VICTORIES</c>): those this host recorded, unless a test says otherwise.</summary>
+    public int LeagueVictories
+    {
+        get => leagueVictories ?? HallOfFame.Total;
+        set => leagueVictories = value;
+    }
+
+    private int? leagueVictories;
 }

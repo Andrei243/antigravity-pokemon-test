@@ -255,6 +255,18 @@
       "movement": "wander_around",
       "rangeX": 1,
       "rangeZ": 1
+    },
+    {
+      "id": "prof_oak",
+      "name": "Prof. Oak",
+      "npcType": "Gentleman",
+      "x": 7,
+      "y": 15,
+      "facing": "Down",
+      "dialog": [
+        "Prof. Oak: Ah, {player}!"
+      ],
+      "hiddenBy": "FLAG_HIDE_PAL_PARK_LOBBY_PROF_OAK"
     }
   ],
   "wildEncounters": []

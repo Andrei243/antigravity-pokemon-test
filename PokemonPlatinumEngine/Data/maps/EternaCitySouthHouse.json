@@ -127,6 +127,17 @@
     }
   ],
   "signboards": [],
-  "npcs": [],
+  "npcs": [
+    {
+      "id": "prof_oak",
+      "name": "Prof. Oak",
+      "npcType": "Gentleman",
+      "x": 4,
+      "y": 5,
+      "facing": "Down",
+      "script": "Oak",
+      "hiddenBy": "FLAG_HIDE_ETERNA_CITY_SOUTH_HOUSE_PROF_OAK"
+    }
+  ],
   "wildEncounters": []
 }

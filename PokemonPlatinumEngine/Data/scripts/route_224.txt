@@ -3,7 +3,12 @@
 #
 # The white rock at the route's end, read where it stands (the original's script 3). In Platinum Professor Oak has the
 # player write someone's name on it in thanks, which brings Shaymin and opens the Seabreak Path
-# (FLAG_WROTE_ON_ROUTE_224_TABLET): that scene is the story's (plan 02 · S15) and the path plan 01 · M10, part b's.
+# (FLAG_WROTE_ON_ROUTE_224_TABLET). All of that hangs on an event gift: the professor comes only to whoever carries
+# Oak's Letter with the Shaymin event on the save (Route224_OnTransition), and Marley, who walks up to the rock and
+# speaks of the Pokémon of gratitude, comes only once the gift has set VAR_SHAYMIN_EVENT_STATE (her coordinate event
+# waits for VAR_ROUTE_224_STATE 1, which nothing else sets). Neither is placed until the event gifts are
+# (docs/mechanics/rulings.md, "After the Hall of Fame, part a"); their flags are set from the start, as the
+# original's are (common.ChapterTwelve), and the path itself is plan 01 · M10, part b's.
 
 script WhiteRock
   text "A great white rock, worn smooth by the sea wind."

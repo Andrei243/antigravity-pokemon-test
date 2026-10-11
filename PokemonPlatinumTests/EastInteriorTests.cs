@@ -1006,7 +1006,11 @@ public class EastInteriorTests
         Run("Backlot", "PokemonMansionOffice", host, backlot);
         Assert.Null(host.Encounters.TrophyFirst);
 
+        // The original asks for the National Pokédex, not the Hall of Fame (plan 02 · S15, part a)
         host.Story.Set("FLAG_GAME_COMPLETED");
+        Run("Backlot", "PokemonMansionOffice", host, backlot);
+        Assert.Null(host.Encounters.TrophyFirst);
+        host.NationalDex = true;
         // Disagreeing with him gets nowhere
         host.Answers.Enqueue(1);
         Run("Backlot", "PokemonMansionOffice", host, backlot);
@@ -1089,10 +1093,11 @@ public class EastInteriorTests
     [Fact]
     public void TheStorysPeopleOfTheseRoomsAreLeftForItsChapters()
     {
-        // Sailor Eldritch at home (the Lunar Wing's errand, plan 02 · S15b), Byron in Iron Island's cabin (S15), and the
-        // reporter in Canalave's west house (plan 08's programmes) are in the original's rooms and not in ours yet
+        // Sailor Eldritch at home (the Lunar Wing's errand, plan 02 · S15b) and the reporter in Canalave's west house
+        // (plan 08's programmes) are in the original's rooms and not in ours yet. Byron is in Iron Island's cabin since
+        // plan 02 · S15, part a, behind his flag (TheNationalPokedexAndTheBattleZoneTests), and nobody else is
         Assert.DoesNotContain(Room("CanalaveCitySailorEldritchHouse").Everyone, n => n.Key == "sailor_eldritch");
-        Assert.Empty(Room("IronIslandHouse").Everyone);
+        Assert.Equal("FLAG_HIDE_IRON_ISLAND_HOUSE_BYRON", Assert.Single(Room("IronIslandHouse").Everyone).HiddenBy);
         Assert.Empty(Room("CanalaveCityWestHouse").Everyone);
         // The sailor's boy and his mother are as they are before the nightmare
         var home = Room("CanalaveCitySailorEldritchHouse");

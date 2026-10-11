@@ -1,0 +1,11 @@
+# Route 221 (plan 02 · S15, part a). docs/scripts.md describes the language; the lines are our own, on the original's
+# beats (scripts_route_221.s).
+#
+# The two workers before Pal Park's doors are gone once the National Pokédex is the player's (the original's
+# OnTransition: FLAG_HIDE_ROUTE_221_WORKER_WEST and FLAG_HIDE_ROUTE_221_WORKER_EAST).
+
+script OnEnter
+  if not nationaldex end
+  setflag FLAG_HIDE_ROUTE_221_WORKER_WEST
+  setflag FLAG_HIDE_ROUTE_221_WORKER_EAST
+  end

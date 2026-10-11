@@ -173,7 +173,7 @@ What an `if` can ask:
 | `rematch self` | The trainer is waiting for a rematch the Vs. Seeker found (plan 06 · R12). |
 | `time morning` | The time of day now: `morning`, `day`, `twilight`, `night` or `latenight` (`GameClock`, plan 06 · R14a). |
 | `weekday friday` | The day of the week today. |
-| `nationaldex` | The National Pokédex is the player's (plan 02 · S14; the original's `GetNationalDexEnabled`): the Hall of Fame's script, Mom and the assistant ask it. Nothing gives it yet (plan 02 · S15). |
+| `nationaldex` | The National Pokédex is the player's (plan 02 · S14; the original's `GetNationalDexEnabled`): the Hall of Fame's script, Mom and the assistant ask it, and whoever the original keeps for the National Pokédex (the assistant's grandfather, Bebe, Mr. Backlot, Byron, Pal Park's workers; plan 02 · S15, part a). The professor's lab gives it (`nationaldex`, "After the Hall of Fame", below). |
 
 ### What the story remembers
 
@@ -561,6 +561,18 @@ Plan 02 · S14. What the Hall of Fame's script does once the team is recorded (`
 | `halloffame show` | The scene of the team's entry (`UI/HallOfFameCeremony.cs`; the original's `FieldTask_StartHallOfFame`): each Pokémon of the team in turn with who it is, whose it was and where it was met, then the Champion among them all. The script waits until the picture has closed. |
 | `save` | Writes the game to its save where the player stands, with no question and no panel (the original saves so before its credits). `RESULT` is 1 when it was written, 0 when it couldn't be. The words and the sound are the script's. |
 | `credits` | The credits (`UI/CreditsScreen.cs`, `Data/credits.json`): the script waits until they have rolled and the last card has been dismissed. |
+
+### After the Hall of Fame
+
+Plan 02 · S15, part a.
+
+| Command | What it does |
+|---|---|
+| `nationaldex` | The Pokédex becomes the National one (`Pokedex.UnlockNational`; the original's `SetNationalDexEnabled`), as Professor Oak makes it in the professor's lab. It asks nothing and shows nothing: the words and the fanfare are the script's, and so is the question of whether it may be given (`RowanLab.Rowan` asks `flag FLAG_GAME_COMPLETED` and `var SEEN >= 210`, which a test holds to `Pokedex.CanUnlockNational`). `if nationaldex` holds from then on. |
+
+`LEAGUE_VICTORIES` is one more of the game's own variables (`if var LEAGUE_VICTORIES >= 20`): the times a team has entered the Hall of Fame (the original's `GetLeagueVictories`), by which the rival in the Survival Area brings the stronger of his two teams.
+
+A Gym Leader a scene battles is named by the script, as in their Gym (`battle volkner as "leader_volkner_fight_area" and flint with "rival_fight_area_turtwig"`: the first of the two by a team of the table, the second a trainer of the map, the partner the rival's team for the player's starter), never made a trainer of the map: the class brings no eye theme.
 
 ## Who is on the map
 

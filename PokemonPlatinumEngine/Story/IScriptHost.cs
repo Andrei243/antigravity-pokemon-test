@@ -387,4 +387,17 @@ public interface IScriptHost
     /// <c>ClearGame</c> saves so before the credits). False when it couldn't be written.
     /// </summary>
     bool Save();
+
+    // ------------------------------------------------------------------ after the Hall of Fame (plan 02 · S15)
+
+    /// <summary>
+    /// Upgrades the Pokédex to the National one, without a word (<c>nationaldex</c>; the original's
+    /// <c>SetNationalDexEnabled</c>): Professor Oak's visit to the lab in Sandgem Town. Whether it may be had is the
+    /// script's to ask first (<see cref="Models.Pokedex.CanUnlockNational"/>: the Hall of Fame, and every species of
+    /// the Sinnoh Pokédex seen).
+    /// </summary>
+    void GiveNationalDex();
+
+    /// <summary>How many times a team has entered the Hall of Fame (<c>LEAGUE_VICTORIES</c>; the original's <c>GetLeagueVictories</c>).</summary>
+    int LeagueVictories { get; }
 }

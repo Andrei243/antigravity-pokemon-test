@@ -56,6 +56,15 @@ public class OpeningTests
         /// <summary>Whether a script's <c>save</c> fails (plan 02 · S14).</summary>
         public bool SaveFails { get; set; }
 
+        /// <summary>How many times the team has entered the Hall of Fame (a script may ask it: <c>LEAGUE_VICTORIES</c>; plan 02 · S15).</summary>
+        public int LeagueVictories { get; set; }
+
+        /// <summary>The die's faces for the next script's <c>random</c>, in order (nought once they run out).</summary>
+        public Queue<int> Rolls { get; } = new();
+
+        /// <summary>The time of day and the day of the week the next script finds, where a test says so.</summary>
+        public DayOfWeek? Weekday { get; set; }
+
         /// <summary>Answers for the next script's questions, in order (the first answer, yes, for any left over).</summary>
         public Queue<int> Answers { get; } = new();
 
@@ -160,14 +169,19 @@ public class OpeningTests
                 NeedsPokemon = true,
                 PlayerLook = Look,
                 NationalDex = NationalDex,
-                SaveFails = SaveFails
+                SaveFails = SaveFails,
+                LeagueVictories = LeagueVictories
             };
+            if (Weekday is { } day) host.Weekday = day;
             while (Answers.Count > 0) host.Answers.Enqueue(Answers.Dequeue());
+            while (Rolls.Count > 0) host.Rolls.Enqueue(Rolls.Dequeue());
             var runner = new ScriptRunner(Scripts, host);
             runner.Start(script, subject);
             runner.RunToEnd();
             Played.Add((script.FullName, host));
             Assert.Empty(host.Problems);
+            // A script may have upgraded the Pokédex (nationaldex, plan 02 · S15)
+            NationalDex = host.NationalDex;
             // As the engine does whenever the story has moved: whoever a flag brings on or takes off comes or goes
             foreach (var map in maps.Values.Distinct())
             {

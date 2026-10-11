@@ -14,8 +14,8 @@
   // The east house has no room yet (plan 01 · M11). Snowpoint Temple is built inside (plan 01 · M10, part b), and its
   // two doors, warps 2 and 6, stay shut until the story lets the Champion in (plan 02 · S15 takes them out of here)
   "locked": [ 1, 2, 6 ],
-  // Candice at the temple's door and Cynthia on the quay come after the Hall of Fame (plan 02 · S15; their flags
-  // are set from the start, common.ChapterEight). The original's trigger in front of the temple's west door, beside
+  // Cynthia comes down to the quay the first time a Champion sets sail (plan 02 · S15, part a; her flag is set from
+  // the start, common.ChapterEight). Candice at the temple's door comes with the temple (plan 02 · S15, part b). The original's trigger in front of the temple's west door, beside
   // its guard: she turns the player back (plan 02 · S11, part a; scripts/snowpoint_city.txt)
   "triggers": [ { "trigger": 0, "script": "TempleGuard" } ],
   "people": {
@@ -74,10 +74,14 @@
         "Only those the temple has chosen may enter. I'm sorry, but I cannot let you pass."
       ]
     },
-    // In Platinum he sails the Champion to the Battle Zone (plan 02 · S15); until then he only says where his ship goes
+    // He sails a Champion to the Battle Zone (scripts/snowpoint_city.txt, Ship; plan 02 · S15, part a); until the Hall
+    // of Fame he only says where his ship goes
+    "cynthia": { "name": "Cynthia", "npcType": "Cynthia", "dialog": [ "Cynthia: Safe travels." ], "still": true },
     "sailor_ss_spiral": {
       "name": "Sailor",
       "npcType": "Gentleman",
+      "script": "Ship",
+      "still": true,
       "dialog": [
         "This ship sails north to the Battle Zone, where the strongest trainers in the land gather.",
         "We only take trainers who have proved themselves at the Pokémon League. I'll be watching for you!"

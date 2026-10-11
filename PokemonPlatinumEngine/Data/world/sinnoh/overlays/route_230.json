@@ -4,9 +4,28 @@
   "bgmTrack": "sinnoh/route209",
   "trees": "Round",
   "architecture": "Resort",
-  // The fisherman and the rich boy who stand across the way in from the Fight Area until the tag battle before the
-  // Battle Frontier's gate is fought (hidden by FLAG_HIDE_FIGHT_AREA_BLOCKADE) wait for the story (plan 02 · S15)
+  // The fisherman and the rich boy at the water's edge keep the way out onto the sea from the Fight Area until the
+  // battle before the Battle Frontier's gate is won and the National Pokédex had (FLAG_HIDE_FIGHT_AREA_BLOCKADE;
+  // plan 02 · S15, part a: scripts/fight_area.txt, RowanLab.txt)
   "people": {
+    "fisherman": {
+      "name": "Fisherman",
+      "npcType": "Gentleman",
+      "dialog": [
+        "Not this way, not yet! Have you been to the Battle Frontier? It's through the gate at the top of the town.",
+        "See that before you go paddling off round the island. The sea will still be here afterwards."
+      ],
+      "still": true
+    },
+    "rich_boy": {
+      "name": "Rich Boy",
+      "npcType": "Youngster",
+      "dialog": [
+        "Surfing off already? But you've hardly battled anybody here!",
+        "The Fight Area is where Trainers come to challenge one another. It would be rude not to, really."
+      ],
+      "still": true
+    },
     "swimmer_glenn": {
       "name": "Glenn",
       "npcType": "Youngster",

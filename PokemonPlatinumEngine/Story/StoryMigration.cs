@@ -80,6 +80,42 @@ public static class StoryMigration
         // Version 17: the people of the eleventh chapter (plan 02 · S14), and everything the Hall of Fame's scene sets
         // for a save that entered it before that scene was written
         if (savedVersion < 17) ChapterEleven(story, scripts);
+        // Version 18: the people of the time after the Hall of Fame (plan 02 · S15, part a), and the Fight Area's and
+        // Route 227's first scenes counted as had, with the roads out of the town open, for a save that has already
+        // been to the Battle Zone
+        if (savedVersion < 18) ChapterTwelve(story, scripts);
+    }
+
+    /// <summary>The flags that first arriving in the Battle Zone's three towns sets (<see cref="Data.SpawnLocation.ArrivalFlag"/>).</summary>
+    public static readonly string[] ArrivedInTheBattleZone =
+    {
+        "FLAG_FIRST_ARRIVAL_FIGHT_AREA", "FLAG_FIRST_ARRIVAL_SURVIVAL_AREA", "FLAG_FIRST_ARRIVAL_RESORT_AREA"
+    };
+
+    /// <summary>
+    /// Version 18, a save from before the time after the Hall of Fame was written (plan 02 · S15, part a): its people
+    /// are hidden until their scenes by <see cref="ScriptLibrary.ChapterTwelve"/>, which a new game runs too (called by
+    /// the chapter before).
+    /// <para>The rival waits on the Fight Area's pier for whoever the ship first brings, takes them to the Battle
+    /// Frontier's gate, and the battle fought there beside him against Flint and Volkner is what opens the roads out
+    /// of the town, with the National Pokédex. A save that has already been to the Battle Zone came when nobody stood
+    /// on the pier, before the gate or across those roads, and may have saved anywhere beyond them: for it that scene
+    /// has been played (everyone it sends away is gone, and the two pairs who keep the roads with them, whatever its
+    /// Pokédex), and so has the rival's lesson with Crasher Wake at the foot of Route 227, which that battle leads to.
+    /// Buck stays on Route 227, where the way into Stark Mountain begins with him.</para>
+    /// </summary>
+    private static void ChapterTwelve(StoryState story, ScriptLibrary scripts)
+    {
+        Run(story, scripts, ScriptLibrary.ChapterTwelve);
+        if (!ArrivedInTheBattleZone.Any(story.Has)) return;
+        foreach (string flag in new[]
+                 {
+                     "FLAG_HIDE_FIGHT_AREA_RIVAL", "FLAG_HIDE_FIGHT_AREA_BUCK", "FLAG_HIDE_FIGHT_AREA_BATTLERS_AND_SPECTATORS",
+                     "FLAG_HIDE_FIGHT_AREA_BLOCKADE", "FLAG_HIDE_ROUTE_227_RIVAL", "FLAG_HIDE_ROUTE_227_CRASHER_WAKE"
+                 })
+            story.Set(flag);
+        if (story.Var("VAR_FIGHT_AREA_STATE") < 2) story.SetVar("VAR_FIGHT_AREA_STATE", 2);
+        if (story.Var("VAR_ROUTE_227_WAKE_RIVAL_STATE") == 0) story.SetVar("VAR_ROUTE_227_WAKE_RIVAL_STATE", 1);
     }
 
     /// <summary>The flag that says the League has been won (scripts/PokemonLeagueHallOfFame.txt; the original's system flag).</summary>

@@ -84,12 +84,19 @@ script OnEnter
 # Pokémon of Sinnoh seen (CheckLocalDexCompleted: all 210 of the Sinnoh Pokédex) she wants it shown to the professor,
 # which is where the post-game begins (plan 02 · S15). Until then she has heard the news from him.
 #
-# Left for plan 02 · S15, which writes the scenes they lead to: the elder of Celestic Town's message (asked before
-# the congratulations while FLAG_UNLOCKED_DIALGA_PALKIA_SPEAR_PILLAR is unset) and the word of Dialga or Palkia at
-# Spear Pillar after it, and with the National Pokédex her sister, Bebe and the Poké Radar's lesson. The original
-# also asks whether today is the player's birthday, which this game doesn't keep.
+# With the National Pokédex (plan 02 · S15, part a) she has more to say, in the original's order: has the player
+# heard her sister's news of swarms (until FLAG_TALKED_TO_COUNTERPART_SISTER_WITH_NATIONAL_DEX), have they met Bebe
+# (until her Eevee is given), then the Poké Radar's lesson, for which she goes off up Route 202 and waits there
+# (FLAG_STARTED_COUNTERPART_POKE_RADAR_TUTORIAL, VAR_ROUTE_202_STATE 2; route_202.txt), and after it one of three
+# things about the Radar and the Pokédex.
+#
+# Left for plan 02 · S15, part c, which writes the scene it leads to: the elder of Celestic Town's message (asked
+# before the congratulations while FLAG_UNLOCKED_DIALGA_PALKIA_SPEAR_PILLAR is unset) and the word of Dialga or Palkia
+# at Spear Pillar after it. Her words for a National Pokédex filled to the last species wait for a way to fill it
+# (plan 03). The original also asks whether today is the player's birthday, which this game doesn't keep.
 script Counterpart
   if not flag FLAG_GAME_COMPLETED goto Tour
+  face self player
   speaker "{assistant}"
   if nationaldex goto National
   if var SEEN >= 210 goto SeenAll
@@ -101,7 +108,42 @@ label SeenAll
   say "Oh! You've seen every kind of Pokémon there is in Sinnoh! Come on, let's show it to Professor Rowan!"
   end
 label National
-  say "So that's the National Pokédex! There's a whole world of Pokémon to put in it now, {player}."
+  if not flag FLAG_TALKED_TO_COUNTERPART_SISTER_WITH_NATIONAL_DEX goto Sister
+  if not flag FLAG_RECEIVED_HEARTHOME_CITY_NORTHWEST_HOUSE_EEVEE goto Bebe
+  if not flag FLAG_STARTED_COUNTERPART_POKE_RADAR_TUTORIAL goto Lesson
+  random 3
+  if result == 0 goto HowsTheRadar
+  if result == 1 goto Sparkles
+  say "I'm helping the professor with the National Pokédex too, {player}. I'll never catch up with you, but I'm not giving up!"
+  end
+label HowsTheRadar
+  say "How are you getting on with the Poké Radar, {player}? The Pokémon it finds aren't ones you'd meet just walking about."
+  end
+label Sparkles
+  say "Did you know? Once in a long while a patch of grass doesn't shake for the Poké Radar: it sparkles. I wonder what's in one of those..."
+  end
+label Sister
+  if girl goto SisterLucas
+  say "So that's the National Pokédex! Oh, {player}, have you had a chat with my little sister lately? She's found out something you'll want to hear."
+  end
+label SisterLucas
+  say "So that's the National Pokédex! Say, {player}, have you seen my little sister lately? She's picked up some news you can use."
+  end
+label Bebe
+  say "{player}, have you met Bebe, in Hearthome City? She looks after the Pokémon Boxes. She's been asking after people filling in the National Pokédex!"
+  end
+label Lesson
+  # CounterpartTalk_StartPokeRadarTutorial: she goes off east, to the road north
+  setflag FLAG_STARTED_COUNTERPART_POKE_RADAR_TUTORIAL
+  say "The professor gave you a Poké Radar, didn't he? I'll show you how to use it! Come and find me on Route 202, in the tall grass."
+  if facing left walk self up 1
+  move self right 10
+  wait 0.3
+  face player right
+  waitmoves
+  hide self
+  setflag FLAG_HIDE_SANDGEM_TOWN_COUNTERPART
+  setvar VAR_ROUTE_202_STATE 2
   end
 label Tour
   sayown

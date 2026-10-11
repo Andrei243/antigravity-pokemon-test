@@ -11,9 +11,12 @@
   // The Battleground opens once the story has been to Stark Mountain (the original moves its warp away until
   // FLAG_ARRESTED_CHARON_STARK_MOUNTAIN; plan 02 · S15), and the two houses have no rooms yet (plan 01 · M11)
   "locked": [ 0, 1, 2 ],
-  // Buck, who shows the player his door on the way to Stark Mountain, and the rival, who trains here afterwards and
-  // battles at weekends, wait for the story (plan 02 · S15)
+  // Buck, who shows the player his door, and the rival, who trains here and battles at weekends
+  // (scripts/survival_area.txt; plan 02 · S15, part a), come once Charon is caught at Stark Mountain: the original
+  // hides both from the start (common.ChapterTwelve) and its last scene there clears their flags (plan 02 · S15, part b)
   "people": {
+    "buck": { "name": "Buck", "npcType": "Youngster", "script": "Buck", "still": true },
+    "rival": { "name": "{rival}", "script": "Rival", "still": true },
     "ruin_maniac": {
       "name": "Ruin Maniac",
       "dialog": [

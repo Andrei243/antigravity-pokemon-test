@@ -144,6 +144,18 @@
       "facing": "Up",
       "script": "Assistant",
       "hiddenBy": "FLAG_HIDE_SANDGEM_TOWN_LAB_COUNTERPART"
+    },
+    {
+      "id": "prof_oak",
+      "name": "Prof. Oak",
+      "npcType": "Gentleman",
+      "x": 5,
+      "y": 9,
+      "facing": "Up",
+      "dialog": [
+        "Prof. Oak: Well, I must be going!"
+      ],
+      "hiddenBy": "FLAG_HIDE_SANDGEM_TOWN_LAB_PROF_OAK"
     }
   ],
   "wildEncounters": []

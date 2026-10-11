@@ -8,12 +8,22 @@
 # up (the six go on waiting). Nothing has been brought over until this game's migration exists (plan 08 · P21), and
 # the attendant says so.
 #
-# Not here: the viewing gallery upstairs with its four spectators (the room is flat, and the stairs are roped off),
-# and Professor Oak, who meets the player at 7,15 the first time they come in after the National Pokédex
-# (FLAG_HIDE_PAL_PARK_LOBBY_PROF_OAK, VAR_PAL_PARK_LOBBY_STATE: plan 02 · S15).
+# Professor Oak stands in the middle of the lobby the first time the player comes in (plan 02 · S15, part a; the
+# original's OnFrame while VAR_PAL_PARK_LOBBY_STATE is 0: nobody comes in before the National Pokédex, since Route
+# 221's two workers stand before the doors until then). The player goes up to him (the original's professor comes
+# down to the door, where the text would cover the two of them). He says what the park is for, puts the Trainer Counter on the
+# Pokétch, says he will be in Eterna City for a while (FLAG_HIDE_ETERNA_CITY_SOUTH_HOUSE_PROF_OAK cleared) and goes;
+# and the record to beat is the rival's 2,000 points from then on (VAR_CATCHING_SHOW_RECORD).
+#
+# Not here: the viewing gallery upstairs with its four spectators (the room is flat, and the stairs are roped off).
 
 
 script OnEnter
+  # Professor Oak, the first time. Only someone with the National Pokédex comes in at all (Route 221's workers keep
+  # the doors until then), and the scene asks for it too, so that nobody meets him who came some other way
+  if var VAR_PAL_PARK_LOBBY_STATE != 0 goto Park
+  if nationaldex goto Oak
+label Park
   if var VAR_PAL_PARK_STATE == 0 end
   place worker 8 9 left
   if var VAR_PAL_PARK_STATE == 1 goto Tally
@@ -60,6 +70,39 @@ label Out
   walk worker left 1 down 2
   face worker down
   end
+label Oak
+  call OakWelcomes
+  end
+
+
+# PalParkLobby_OnFrame_ProfOak: he sees whoever has just come in by the door, and they go up to him
+script OakWelcomes
+  clearflag FLAG_HIDE_ETERNA_CITY_SOUTH_HOUSE_PROF_OAK
+  setvar VAR_CATCHING_SHOW_RECORD 2000
+  emote prof_oak exclaim
+  walk player up 3
+  speaker "Prof. Oak"
+  say "Ah, {player}! So you came. Welcome to Pal Park!"
+  say "Pokémon are brought here from all over the country and let loose in the park, and their Trainers catch them again in a Catching Show. I had a hand in setting it up."
+  emote prof_oak exclaim
+  say "Now that I think of it, I have just the thing for a Trainer with a National Pokédex to fill. Hold out your Pokétch!"
+  poketchapp TrainerCounter
+  fanfare keyitem
+  text "The Trainer Counter was added to the Pokétch!"
+  say "It keeps count of the Pokémon you meet one after another. You will find a use for it, I am sure."
+  say "I shall be staying in Eterna City for some time. Do call on me there. Good luck, {player}!"
+  wait 0.25
+  walk player right 1
+  face player left
+  move prof_oak down 4
+  wait 0.4
+  face player down
+  waitmoves
+  sound "stairs"
+  hide prof_oak
+  setflag FLAG_HIDE_PAL_PARK_LOBBY_PROF_OAK
+  setvar VAR_PAL_PARK_LOBBY_STATE 1
+  return
 
 
 script Worker
@@ -110,7 +153,12 @@ label BoxesFull
 
 script RecordGuy
   if var VAR_CATCHING_SHOW_RECORD == 0 goto None
+  # PalParkLobby_BufferRivalRecord: the record Professor Oak leaves behind is the rival's
+  if var VAR_CATCHING_SHOW_RECORD == 2000 goto Rivals
   say "The record for a Catching Show stands at {var:VAR_CATCHING_SHOW_RECORD} points. It's written up behind the counter."
+  end
+label Rivals
+  say "The record for a Catching Show stands at 2000 points. Somebody called {rival} set it, and then ran out of the door before I could shake his hand."
   end
 label None
   say "Nobody has put on a Catching Show here yet. The first score will be the record!"

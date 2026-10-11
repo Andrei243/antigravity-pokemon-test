@@ -1,10 +1,233 @@
-# The Fight Area (plan 01 · M10, part a). docs/scripts.md describes the language; the lines are our own, on the
-# original's beats (scripts_fight_area.s).
+# The Fight Area (plan 01 · M10, part a; its story plan 02 · S15, part a). docs/scripts.md describes the language;
+# the lines are our own, on the original's beats (scripts_fight_area.s).
 #
-# The sailor on the pier takes the player back to Snowpoint City, to the quay beside the ship's own sailor there. The
-# way here is that sailor's, once the Hall of Fame has been entered (the original's SnowpointCity_SailorSSSpiral asks
-# FLAG_GAME_COMPLETED and lands the player at 623, 434, facing east): plan 02 · S15 writes it, with the rival's scene
-# that begins as the player steps ashore (FightArea_OnFrame_Rival) and the tag battle before the Battle Frontier's gate.
+# The ship from Snowpoint City lands a Champion on the pier (snowpoint_city.Ship, at 623, 434, facing east), and the
+# rival, who has been waiting there, takes the player to the Battle Frontier's gate, where Flint of the Elite Four and
+# Volkner of Sunyshore's Gym stand with a crowd round them. The two battle the player and the rival together; once
+# they are beaten they and the crowd go, Palmer comes out of the gate and bowls his son over, and Buck, who watched it
+# all, asks the player to the Survival Area.
+#
+# VAR_FIGHT_AREA_STATE: 0 before the rival has been met on the pier, 1 once he has brought the player to the gate
+# (he waits there, and asks again whenever he is spoken to), 2 once Flint and Volkner are beaten.
+#
+# Two trainers stand across the way north to Route 225 and two more at the water's edge on Route 230
+# (FLAG_HIDE_FIGHT_AREA_BLOCKADE): they stand aside for whoever has won that battle and has the National Pokédex,
+# whichever comes second (the battle's end here, Professor Oak's visit in RowanLab.txt).
+
+
+script OnEnter
+  # FightArea_OnTransition: until the battle is won the rival waits before the gate
+  if var VAR_FIGHT_AREA_STATE == 1 place rival 655 426 up
+  if var VAR_FIGHT_AREA_STATE != 0 end
+  # FightArea_OnFrame_Rival: as the player steps ashore
+  if var PLAYER_X != 623 end
+  if var PLAYER_Y != 434 end
+  face rival left
+  emote rival exclaim
+  walk player right 4
+  call ToTheGate
+  call TeamUp
+  end
+
+
+# The rival, spoken to (the original's script 14): on the pier by someone who came another way, and before the gate
+# for as long as the battle hasn't been won.
+script Rival
+  if var VAR_FIGHT_AREA_STATE == 0 goto Pier
+  # FightArea_Rival: he turns back to the two at the gate, and the player comes round to stand at his side
+  face rival up
+  if facing left goto FromTheEast
+  if facing down goto FromTheNorth
+  if facing up goto FromTheSouth
+  goto Beside
+label FromTheEast
+  walk player down 1 left 2 up 1
+  goto Beside
+label FromTheNorth
+  walk player left 1 down 1
+  goto Beside
+label FromTheSouth
+  walk player left 1 up 1
+label Beside
+  face player up
+  speaker "{rival}"
+  ask "Well, {player}? Ready now? Let's show those two what we're made of!"
+  if no goto NeedsHelp
+  call Battle
+  end
+label NeedsHelp
+  call INeedYourHelp
+  end
+label Pier
+  face rival player
+  call ToTheGate
+  call TeamUp
+  end
+
+
+# From the pier to the Frontier's gate (FightArea_OnFrame_Rival). The original walks the two of them across the town
+# to the rival's own tune; the townspeople wander across that road here, so the picture closes on the pier and opens
+# before the gate (docs/mechanics/rulings.md, "After the Hall of Fame, part a").
+script ToTheGate
+  music "common/rival"
+  speaker "{rival}"
+  say "{player}! There you are! I've been on this pier so long I know every plank of it by name!"
+  say "No time to explain. Something big is going on up at the gate. Come on, come with me!"
+  fade out
+  place player 654 426 up
+  place rival 655 426 up
+  fade in
+  music area
+  setvar VAR_FIGHT_AREA_STATE 1
+  return
+
+
+script TeamUp
+  speaker "{rival}"
+  say "See them? That's Flint of the Elite Four. And the one beside him runs the Sunyshore Gym!"
+  ask "They say they'll take on anybody, two at a time. So how about it, {player}? You and me, together!"
+  if no goto NeedsHelp
+  call Battle
+  return
+label NeedsHelp
+  call INeedYourHelp
+  return
+
+
+# FightArea_INeedYourHelp
+script INeedYourHelp
+  face rival left
+  speaker "{rival}"
+  say "What?! Come on, {player}! I can't take those two on alone, and there's nobody I'd sooner have beside me!"
+  return
+
+
+# FightArea_BattleVolknerFlint and FightArea_PostBattleVolknerFlint. A battle lost is a white-out, as the original's:
+# the rival is back before the gate when the player comes again.
+script Battle
+  speaker "{rival}"
+  say "Yes! That's the spirit! The two of us can flatten them!"
+  move rival up 1
+  walk player up 1
+  waitmoves
+  face flint down
+  speaker "Flint"
+  say "Ha! So these are the two who mean to try us? Good! Burn as bright as you can. I want to see it!"
+  face volkner down
+  speaker "Volkner"
+  say "...Show me what you can do. It has been a while since a challenger made me sit up."
+  if starter "Chimchar" goto Chimchar
+  if starter "Piplup" goto Piplup
+  battle volkner as "leader_volkner_fight_area" and flint with "rival_fight_area_turtwig"
+  goto Won
+label Chimchar
+  battle volkner as "leader_volkner_fight_area" and flint with "rival_fight_area_chimchar"
+  goto Won
+label Piplup
+  battle volkner as "leader_volkner_fight_area" and flint with "rival_fight_area_piplup"
+label Won
+  face volkner left
+  speaker "Flint"
+  say "... ... ..."
+  speaker "Volkner"
+  say "Don't burn yourself out over it, Flint. They were simply better than us today."
+  face volkner down
+  say "That was a blast. I had forgotten a battle could feel like that. Thank you, both of you."
+  fade out
+  hide flint
+  hide volkner
+  hide ace_trainer_m_3
+  hide ace_trainer_f_2
+  hide black_belt_3
+  hide battle_girl_2
+  hide sailor_3
+  setflag FLAG_HIDE_FIGHT_AREA_BATTLERS_AND_SPECTATORS
+  fade in
+  face rival left
+  face player right
+  speaker "{rival}"
+  say "We did it! Did you see their faces? Right, no time to lose. I'm off to the Battle Fronti--"
+  # Palmer comes out of the gate at a run
+  clearflag FLAG_HIDE_FIGHT_AREA_PALMER
+  place palmer 655 423 down
+  show palmer
+  sound "bump"
+  text "Thud!"
+  move palmer down 1 fast
+  walk rival down 2 fast
+  face rival up
+  waitmoves
+  face player down
+  wait 0.15
+  face player up
+  face palmer left
+  wait 0.3
+  face palmer right
+  wait 0.3
+  face palmer down
+  speaker "Palmer"
+  say "Hm? What's all this? I heard there was a battle worth seeing before my gate, and here it's over already!"
+  speaker "{rival}"
+  say "Ow, ow, ow... Hey! Watch where you're... D-Dad?!"
+  walk rival up 2 fast
+  speaker "Palmer"
+  say "Well, well! If it isn't {rival}! And you must be {player}. I've heard a great deal about you."
+  say "So you two beat that pair. Then I'll look forward to your challenge. You know where to find me!"
+  walk palmer up 1 fast
+  sound "stairs"
+  hide palmer
+  setflag FLAG_HIDE_FIGHT_AREA_PALMER
+  speaker "{rival}"
+  say "...That was my dad. He's the Tower Tycoon. The strongest Trainer in the whole Battle Frontier."
+  say "Argh! What do I do? I came all this way to beat him, and I fell over the moment I saw him!"
+  say "No. No! I know what I do. I get tougher. Way tougher! Starting right now! See you, {player}!"
+  move rival down 8 fast
+  face player down
+  waitmoves
+  hide rival
+  setflag FLAG_HIDE_FIGHT_AREA_RIVAL
+  # Buck, who watched from beside the Mart
+  walk buck up 1 left 2
+  face player right
+  speaker "Buck"
+  say "Whoa, that was something! You're pretty good, you know that? The name's Buck."
+  say "I've a place up in the Survival Area. If you're passing that way, come and look me up!"
+  move buck down 8
+  wait 0.3
+  face player down
+  waitmoves
+  hide buck
+  setflag FLAG_HIDE_FIGHT_AREA_BUCK
+  # FightArea_RemoveBlockade: the ways on are open to whoever has the National Pokédex too
+  if nationaldex setflag FLAG_HIDE_FIGHT_AREA_BLOCKADE
+  setvar VAR_FIGHT_AREA_STATE 2
+  return
+
+
+# Flint and Volkner before their battle (the original's scripts 18 and 19): each turns back to the gate.
+script Flint
+  face self player
+  speaker "Flint"
+  say "You there! Think you're up to it? Find yourself a partner and we'll see how hot you burn!"
+  face self down
+  end
+
+script Volkner
+  face self player
+  speaker "Volkner"
+  say "Sorry about my friend. He means well. He dragged me out here because he thinks it will do me good."
+  face self down
+  end
+
+
+# Buck beside the Mart, watching (the original's script 25)
+script Buck
+  face self player
+  speaker "Buck"
+  say "Who are those two? Everybody who goes up against them comes back down again. I can't take my eyes off it!"
+  face self left
+  end
+
 
 script Ferry
   face self player
