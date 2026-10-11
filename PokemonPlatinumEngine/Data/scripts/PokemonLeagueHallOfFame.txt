@@ -40,6 +40,9 @@ label Record
   # was, and Giratina waits in Turnback Cave unless it was caught in the Distortion World
   clearflag FLAG_ALT_MUSIC_CHAMPION_ROOM
   if not flag FLAG_CAUGHT_GIRATINA clearflag FLAG_HIDE_TURNBACK_CAVE_GIRATINA_ROOM_GIRATINA
+  # Cynthia is gone from Sendoff Spring, where she stood before Turnback Cave's mouth (plan 02 · S12): the cave is
+  # come to from now on
+  setflag FLAG_HIDE_SENDOFF_SPRING_CYNTHIA
   fade out 0.8
   text "And so {player} entered the Hall of Fame, and went home to Twinleaf Town..."
   warp "PlayerHouse2F" 4 4 up

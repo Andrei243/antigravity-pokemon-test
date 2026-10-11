@@ -231,6 +231,7 @@ public class ScriptTests
           ribbon offer
           ribbon effort
           ribbon feeling
+          seen "Dialga"
         script Other
           end
         """;
@@ -1073,6 +1074,7 @@ public class ScriptTests
         public PoffinCase Poffins => inner.Poffins;
         public DayCare DayCare => inner.DayCare;
         public bool Hatch() => inner.Hatch();
+        public void Seen(PokemonSpecies species) => inner.Seen(species);
         public PokemonPlatinumEngine.Models.SuperContests.FashionCase FashionCase => inner.FashionCase;
         public PokemonPlatinumEngine.Models.SuperContests.ContestOutcome? ContestOutcome => inner.ContestOutcome;
         public void HoldContest(int slot, ContestStat category, PokemonPlatinumEngine.Models.SuperContests.ContestRank rank, PokemonPlatinumEngine.Models.SuperContests.ContestMode mode) => inner.HoldContest(slot, category, rank, mode);

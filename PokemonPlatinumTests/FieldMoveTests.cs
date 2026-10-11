@@ -225,8 +225,13 @@ public class FieldMoveTests
     [Fact]
     public void TheWorldsObstaclesAreObjectsOfTheMapWithTheirAreasOwnFlags()
     {
-        var things = BuiltMaps.Value.Values.SelectMany(m => m.Everyone.Where(n => n.IsObstacle).Select(n => (Map: m, Thing: n))).ToList();
+        // The boulders of a floor with pits are the story's own (the Distortion World's three, plan 02 · S12): where
+        // they are is kept by the puzzle's flags from one visit to the next, and one at rest in its pit stands in it
+        var things = BuiltMaps.Value.Values.Where(m => m.BoulderPits.Count == 0)
+            .SelectMany(m => m.Everyone.Where(n => n.IsObstacle).Select(n => (Map: m, Thing: n))).ToList();
         Assert.True(things.Count >= 40, $"only {things.Count} obstacles");
+        Assert.All(BuiltMaps.Value.Values.Where(m => m.BoulderPits.Count > 0).SelectMany(m => m.Everyone.Where(n => n.IsObstacle)),
+            n => Assert.True(n.Obstacle == PropType.StrengthBoulder && (n.HiddenBy ?? n.ShownBy)!.Contains("DISTORTION_WORLD"), $"{n.Key} is no boulder of the puzzle"));
         foreach (var (map, thing) in things)
         {
             Assert.False(map.IsSolid(thing.GridX, thing.GridY), $"{thing.Name} at {thing.GridX},{thing.GridY} of {map.Name} stands in something solid");

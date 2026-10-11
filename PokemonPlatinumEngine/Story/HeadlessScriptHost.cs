@@ -140,6 +140,15 @@ public sealed class HeadlessScriptHost : IScriptHost
         return true;
     }
 
+    /// <summary>The species a script told the Pokédex of (<c>seen</c>), in order.</summary>
+    public List<string> SeenSpecies { get; } = new();
+
+    public void Seen(PokemonSpecies species)
+    {
+        if (!SeenSpecies.Contains(species.Name)) SeenSpecies.Add(species.Name);
+        Log.Add($"seen {species.Name}");
+    }
+
     /// <summary>What a walk or a placement ran into: off the map, or into something solid.</summary>
     public List<string> Problems { get; } = new();
 
@@ -236,6 +245,10 @@ public sealed class HeadlessScriptHost : IScriptHost
         if (Map == null) return;
         string name = who?.Name ?? "the player";
         if (!Map.InBounds(x, y)) Problems.Add($"{name} {does} off the map at {x},{y}");
+        // Whoever the story floats at a height of their own (a Pokémon over the Distortion World's nothing) is over the
+        // ground, not on it; and someone a script sends across a gap of nothing crosses it, as the original's people
+        // jump the Distortion World's gaps (plan 02 · S12). The player takes their own steps, and is held to the ground.
+        else if (who is { Level: not null } || (who != null && Map.GetGroundTile(x, y) == TileType.Void)) return;
         else if (Map.IsSolid(x, y)) Problems.Add($"{name} {does} into something solid at {x},{y}");
     }
 

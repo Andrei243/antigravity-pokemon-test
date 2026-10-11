@@ -70,6 +70,27 @@ public static class StoryMigration
         // Version 14: the people of Team Galactic's headquarters (plan 02 · S11, part b), and the grunt with the Storage
         // Key shown again for a save that has already seen Commander Jupiter at Lake Acuity
         if (savedVersion < 14) Headquarters(story, scripts);
+        // Version 15: the people of Spear Pillar and the Distortion World (plan 02 · S12), and Cynthia gone from before
+        // Turnback Cave's mouth for a save that has already entered the Hall of Fame
+        if (savedVersion < 15) ChapterNine(story, scripts);
+    }
+
+    /// <summary>The flag that takes Cynthia from before Turnback Cave's mouth at Sendoff Spring (scripts/PokemonLeagueHallOfFame.txt).</summary>
+    public const string SendoffCynthiaGoneFlag = "FLAG_HIDE_SENDOFF_SPRING_CYNTHIA";
+
+    /// <summary>
+    /// Version 15, a save from before the ninth chapter was written (plan 02 · S12): its people are hidden until their
+    /// scenes by <see cref="ScriptLibrary.ChapterNine"/>, which a new game runs too (called by the chapter before). That
+    /// script also keeps what such a save has already done: the shards of Mt. Coronet's cave painting stay on show
+    /// where the button of Team Galactic's control room has been pressed, and Giratina, which a game of ours hid in
+    /// Turnback Cave until the Hall of Fame, stands there again unless it has been caught. Cynthia now stands before
+    /// the cave's mouth at Sendoff Spring until the Hall of Fame, which is what keeps everyone out of it until then: a
+    /// save that has entered the Hall of Fame went through before she stood there, and for it she has gone.
+    /// </summary>
+    private static void ChapterNine(StoryState story, ScriptLibrary scripts)
+    {
+        Run(story, scripts, ScriptLibrary.ChapterNine);
+        if (story.Has("FLAG_GAME_COMPLETED")) story.Set(SendoffCynthiaGoneFlag);
     }
 
     /// <summary>The flag that keeps the grunt with the Storage Key off Veilstone City's terrace (scripts/veilstone_city.txt).</summary>

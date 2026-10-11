@@ -504,6 +504,9 @@ public static class ScriptParser
                 if (ribbon is not ("today" or "offer") && Data.RibbonDatabase.Get(ribbon) == null) throw r.Error($"there is no ribbon '{ribbon}'");
                 return new Instruction { Op = Op.Ribbon, Line = line, Name = what, Other = ribbon };
             }
+            // The Pokédex is told of a Pokémon the story shows (plan 02 · S12; the original's SetSpeciesSeen)
+            case "seen":
+                return new Instruction { Op = Op.Seen, Line = line, Name = r.Text("a species' name") };
 
             case "script":
             case "label":

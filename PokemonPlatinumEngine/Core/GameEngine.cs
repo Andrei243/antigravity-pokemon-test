@@ -1395,7 +1395,9 @@ public partial class GameEngine
         // Check NPC interaction; reception and shop counters can be talked across
         // Someone on a bridge's deck is out of reach from the ground under it
         float standing = player.HeightOn(currentMap);
-        var npc = currentMap.NpcIn(targetX, targetY, currentMap.FootingAt(targetX, targetY, standing));
+        var npc = currentMap.NpcIn(targetX, targetY, currentMap.FootingAt(targetX, targetY, standing))
+            // Whoever the story hangs over nothing, level with the player (Giratina in the Distortion World, plan 02 · S12)
+            ?? currentMap.NpcIn(targetX, targetY, standing);
         if (npc == null && currentMap.IsCounter(targetX, targetY))
         {
             npc = currentMap.GetNpcAt(targetX + dx, targetY + dy);

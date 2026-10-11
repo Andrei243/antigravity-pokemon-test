@@ -406,15 +406,21 @@ public class WorldTests
                 // Someone a new game hides until their scene (the professor at his lab's door, the rival on his own
                 // doorstep) comes on where the scene puts them, and may share that tile with another
                 if (npc.HiddenBy is { } hiding && WorldWalk.HiddenAtStart.Value.Contains(hiding)) continue;
+                // And so does someone who waits for a flag no game starts with (a boulder at rest in its pit, the
+                // portal that hangs where Giratina stood: plan 02 · S12)
+                if (npc.ShownBy != null) continue;
                 people++;
                 string who = $"{map.Name}: {npc.Name} at ({npc.GridX},{npc.GridY})";
                 Assert.True(map.AreaAt(npc.GridX, npc.GridY)?.Open, $"{who} stands outside the open areas");
-                Assert.False(map.IsSolid(npc.GridX, npc.GridY), $"{who} stands in something solid");
+                // What the story hangs in the air or stands on a rock is where nobody walks, as the original has it: a
+                // Pokémon over the Distortion World's nothing or on its plinth in a cave, a portal on the rock beside
+                // where it lets out
+                Assert.True(!map.IsSolid(npc.GridX, npc.GridY) || npc.Level != null || npc.IsPokemon || npc.NpcType == "Rift", $"{who} stands in something solid");
                 // Someone on a bridge's deck may stand over a way in on the ground beneath (the Cycling Road over Wayward Cave's),
                 // and someone the story sends away may stand in a doorway until it does (Floaroma's grunts at the meadow's)
                 Assert.True(map.GetWarpAt(npc.GridX, npc.GridY) == null || npc.Level is { } level && level - map.HeightAt(npc.GridX, npc.GridY) >= FieldMovement.StepLimit
                     || npc.HiddenBy != null, $"{who} stands on a warp");
-                Assert.Single(map.NPCs, n => (n.GridX, n.GridY) == (npc.GridX, npc.GridY) && !(n.HiddenBy is { } h && WorldWalk.HiddenAtStart.Value.Contains(h)));
+                Assert.Single(map.NPCs, n => (n.GridX, n.GridY) == (npc.GridX, npc.GridY) && n.ShownBy == null && !(n.HiddenBy is { } h && WorldWalk.HiddenAtStart.Value.Contains(h)));
                 // (A Pokémon with nothing to say may stand out of reach, in a pen: Solaceon's Day Care farm, plan 10 · F1)
                 Assert.True(CanTalkTo(map, reach, npc.GridX, npc.GridY) || npc.IsPokemon && npc.DialogLines.Count == 0, $"{who} can't be walked up to");
                 Assert.True(npc.DialogLines.Count > 0 || npc.IsTrainer || npc.IsStarterBriefcase || npc.Script != null || npc.IsThing || npc.IsPokemon, $"{who} has nothing to say");

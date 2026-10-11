@@ -1,0 +1,24 @@
+{
+  "area": "spear_pillar_distorted",
+  "bgmTrack": "sinnoh/spear_pillar",
+  "evolutionSites": [ "Magnetic Field" ],
+  "battleArena": "Cave",
+  // Plan 02 · S12 (scripts/spear_pillar_distorted.txt): the summit once Giratina has taken Cyrus. The scene plays as
+  // the player is brought here (the place's OnEnter); afterwards Cynthia waits by the tear and asks again. The two
+  // rifts over the altar are read where they hang (the original's background events 7 and 8)
+  "read": { "7": "RiftDialga", "8": "RiftPalkia" },
+  "people": {
+    "cynthia": { "name": "Cynthia", "npcType": "Cynthia", "script": "Cynthia", "still": true },
+    "mesprit": { "name": "Mesprit", "dialog": [ "..." ], "still": true },
+    "jupiter": { "name": "Jupiter", "npcType": "Jupiter", "script": "Jupiter", "still": true },
+    "mars": { "name": "Mars", "npcType": "Mars", "script": "Mars", "still": true },
+    "grunt_f": { "name": "Grunt", "script": "Grunt", "still": true },
+    "grunt_m": { "name": "Grunt", "script": "Grunt", "still": true }
+  },
+  // Uxie and Azelf beside the original's Mesprit, for the scene that shows the three over the tear (people of our own
+  // behind Mesprit's flag: the original draws them in a cutscene that plan 09 · L14 brings)
+  "npcs": [
+    { "id": "uxie", "name": "Uxie", "npcType": "Pokemon", "species": "Uxie", "x": 29, "y": 28, "facing": "Down", "hiddenBy": "FLAG_HIDE_SPEAR_PILLAR_DISTORTED_MESPRIT" },
+    { "id": "azelf", "name": "Azelf", "npcType": "Pokemon", "species": "Azelf", "x": 33, "y": 28, "facing": "Down", "hiddenBy": "FLAG_HIDE_SPEAR_PILLAR_DISTORTED_MESPRIT" }
+  ]
+}

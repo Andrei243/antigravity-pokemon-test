@@ -58,6 +58,8 @@ public enum Op
     PlatformLift,
     // Ball Capsules, Seals and ribbons (plan 06 · R17b)
     Seal, Ribbon,
+    // A Pokémon the story shows goes into the Pokédex as seen (plan 02 · S12)
+    Seen,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

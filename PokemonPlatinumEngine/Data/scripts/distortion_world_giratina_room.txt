@@ -1,0 +1,156 @@
+# The Distortion World, Giratina's room (plan 02 · S12). docs/scripts.md describes the language; the lines are our
+# own, on the original's beats (scripts_distortion_world_giratina_room.s). distortion_world_1f.txt says what
+# VAR_DISTORTION_WORLD_PROGRESS counts.
+#
+# Three stepping stones lead up over nothing. Coming in with Cyrus beaten (progress 10) Giratina's cry fills the room
+# and its shadow passes (11); on the second stone the shadow passes again, nearer (12); on the last Giratina comes down
+# before the player, in its Origin Forme (13), and waits to be spoken to.
+#
+# The battle is a wild Pokémon's, at level 47, and it may be run from. Lost, the player wakes in a Pokémon Center and
+# Giratina waits here still. Any other end quiets it and it is gone from this room (progress 14): beaten or run from,
+# it is met again in Turnback Cave, where its flag is the Hall of Fame's to clear once it has been beaten there
+# (PokemonLeagueHallOfFame.txt); caught, it is gone from Turnback Cave too (FLAG_CAUGHT_GIRATINA,
+# FLAG_HIDE_TURNBACK_CAVE_GIRATINA_ROOM_GIRATINA) and a ball waits there in its place
+# (FLAG_HIDE_TURNBACK_CAVE_GIRATINA_ROOM_ITEM cleared). Cynthia comes up the stones, and Cyrus after her: he hears that
+# no new world will be made, has nothing to answer, and leaves into the dark. A portal opens where Giratina hung. It
+# leads out at Sendoff Spring, and stepping into it shows the Spring Path on the map of Sinnoh
+# (VAR_HIDDEN_LOCATION_SPRING_PATH) and leaves VAR_EXITED_DISTORTION_WORLD_STATE 1 for the scene there.
+#
+# Stood in for until plan 09 lands (L11, L14): the shadows are Giratina's cry and a shake of the picture; its coming
+# down out of the dark (the original's EVENT_CMD_PLAY_GIRATINA_ARRIVAL, the sky darkening as it descends) is the
+# script's fade; the stones that rise and sink as the player comes and goes are there all the time. The Griseous Orb
+# is in the room Turnback Cave's portal leads to, as in the original.
+
+
+# Who is here, by how far the story has come.
+script OnEnter
+  if var VAR_DISTORTION_WORLD_PROGRESS != 13 hide giratina
+  if var VAR_DISTORTION_WORLD_PROGRESS == 14 show portal
+  if var VAR_DISTORTION_WORLD_PROGRESS == 14 show cynthia
+  if var VAR_DISTORTION_WORLD_PROGRESS != 10 end
+  # DistortionWorldGiratinaRoom_CoordEvent_FirstShadow
+  setvar VAR_DISTORTION_WORLD_PROGRESS 11
+  cry "Giratina-Origin"
+  camera shake 0.8
+  speaker none
+  say "Gshrrraaaoooh!"
+  say "The roar came from everywhere at once. Far ahead, something long and dark crossed the emptiness."
+  end
+
+
+# The original's second shadow (EVENT_CMD_SHOW_GIRATINA_SHADOW on the middle stone).
+script SecondShadow
+  setvar VAR_DISTORTION_WORLD_PROGRESS 12
+  camera shake 1.0
+  sound "thunder_rumble"
+  emote player exclaim 0.8
+  wait 1.0
+  end
+
+
+# The original's DistortionWorldGiratinaRoom_CoordEvent_GiratinaArrival, on the last stone.
+script Arrival
+  setvar VAR_DISTORTION_WORLD_PROGRESS 13
+  face player up
+  fade out 0.6
+  cry "Giratina-Origin"
+  camera shake 1.0
+  show giratina
+  fade in 0.8
+  wait 0.5
+  speaker none
+  say "Giratina hangs in the dark before {player}, and its eyes do not leave them."
+  end
+
+
+# Giratina (the original's DistortionWorldGiratinaRoom_Giratina).
+script Giratina
+  cry "Giratina-Origin"
+  speaker none
+  say "Gshrrraaaoooh!"
+  wildbattle "Giratina-Origin" 47
+  setvar VAR_DISTORTION_WORLD_PROGRESS 14
+  hide giratina
+  if result == 3 goto Caught
+  if result == 2 goto Fled
+  call CynthiaComes
+  speaker "Cynthia"
+  say "It's gone quiet. You stood up to it and it understood: we came to stop what was being done to it, not to do more."
+  say "Beaten, it has slipped away to somewhere in our own world to rest. I shouldn't wonder if it lets itself be found again one day."
+  goto After
+label Fled
+  call CynthiaComes
+  speaker "Cynthia"
+  say "It's gone quiet. It understood us, I think: that we came to stop what was being done to it, not to do more."
+  say "You wouldn't fight it, and it saw that. It has slipped away to somewhere in our own world. Perhaps it will let itself be found again."
+  goto After
+label Caught
+  setflag FLAG_CAUGHT_GIRATINA
+  setflag FLAG_HIDE_TURNBACK_CAVE_GIRATINA_ROOM_GIRATINA
+  clearflag FLAG_HIDE_TURNBACK_CAVE_GIRATINA_ROOM_ITEM
+  call CynthiaComes
+  speaker "Cynthia"
+  say "It's gone quiet. It understood us: that we came to stop what was being done to it, not to do more."
+  say "And it chose to go with you. A Pokémon like that, in a ball of yours. Look after it, {player}. It trusted you."
+label After
+  # DistortionWorldGiratinaRoom_PostBattle
+  camera pan 15 19 1.0
+  place cyrus 15 23 up
+  show cyrus
+  walk cyrus up 3 fast
+  face cynthia down
+  face player down
+  emote cynthia exclaim 0.8
+  emote player exclaim 0.8
+  wait 0.9
+  speaker "Cyrus"
+  say "The shadow Pokémon is calmed. Then this world stands, and the other with it. A new world cannot be made."
+  say "Why? What is it you two are defending? Spirit? A thing that flickers and fails, and takes everyone who trusts it down with it?"
+  speaker "Cynthia"
+  say "It is what lets us stand beside a Pokémon at all. They share what they feel with us, and we with them. That is why this world is worth keeping, crooked as it is."
+  speaker "Cyrus"
+  say "......"
+  say "Enough. I have heard it all before, from weaker people than you. I will find the way to my world yet, and I will find it alone."
+  walk cyrus down 3 fast
+  walk cyrus down 5
+  hide cyrus
+  camera release 1.0
+  speaker "Cynthia"
+  say "He can't feel glad of anything. Not even of being alive. I hope he learns to, wherever he goes."
+  face cynthia up
+  sound "warp"
+  show portal
+  wait 0.5
+  say "Look, a way out, where Giratina was. Come on, {player}. Let's go home."
+  end
+
+
+# Cynthia comes up the stones behind the player (DistortionWorldGiratinaRoom_Movement_CynthiaJumpNorth).
+script CynthiaComes
+  place cynthia 15 23 up
+  show cynthia
+  walk cynthia up 6 fast
+  return
+
+
+# Cynthia, once it is over (the original's DistortionWorldGiratinaRoom_Cynthia).
+script Cynthia
+  if var VAR_DISTORTION_WORLD_PROGRESS != 14 end
+  face cynthia up
+  speaker "Cynthia"
+  say "Let's go home. The portal will take us."
+  end
+
+
+# The portal out (the original's DistortionWorldGiratinaRoom_Portal).
+script Portal
+  speaker none
+  ask "The air is torn where Giratina hung, and daylight shows through. Leap into the portal?"
+  if no end
+  say "{player} leapt into the portal!"
+  setvar VAR_HIDDEN_LOCATION_SPRING_PATH 786
+  setvar VAR_EXITED_DISTORTION_WORLD_STATE 1
+  sound "warp"
+  fade out 0.6
+  warp "SendoffSpring" 32 17 down
+  end

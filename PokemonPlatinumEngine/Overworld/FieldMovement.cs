@@ -390,6 +390,10 @@ public static class FieldMovement
     public static bool CanPush(Map map, NPC boulder, Direction dir)
     {
         var (dx, dy) = Delta(dir);
+        // A pit takes a boulder whatever the tile is, rock or the edge of nothing (the original asks
+        // DistWorld_WillBoulderBeAtFallLocation where the boulder's own step is refused), unless someone stands on it
+        if (map.BoulderPits.ContainsKey((boulder.GridX + dx, boulder.GridY + dy)))
+            return !map.NPCs.Exists(n => n != boulder && n.GridX == boulder.GridX + dx && n.GridY == boulder.GridY + dy);
         var step = Step(map, boulder.GridX, boulder.GridY, dir, new Walker(TravelMode.OnFoot, map.HeightAt(boulder.GridX, boulder.GridY)));
         return step.Kind == StepKind.Walk && step.X == boulder.GridX + dx && step.Y == boulder.GridY + dy
             && map.GetWarpAt(step.X, step.Y) == null;

@@ -156,6 +156,20 @@ public class NPC
     /// </summary>
     public const string GalacticDoorType = "GalacticDoor";
 
+    /// <summary>
+    /// A heap of broken stone the story left where something stood (plan 02 · S12; the original's
+    /// <c>OBJ_EVENT_GFX_CAVE_PAINTING_SHARDS</c>, either side of the hole in Mt. Coronet's cave painting): a thing of
+    /// the map, in the way like a person and read like one, which no field move clears. Drawn as a card.
+    /// </summary>
+    public const string RubbleType = "Rubble";
+
+    /// <summary>
+    /// The cave painting of Mt. Coronet (plan 02 · S12; the original's <c>OBJ_EVENT_GFX_CAVE_PAINTING</c>): a thing of
+    /// the map that stands in the niche before a way on while its flag lets it, in the way like a person and read
+    /// like one. Drawn as a card tall enough to cover the dark of the way behind it.
+    /// </summary>
+    public const string CavePaintingType = "CavePainting";
+
     /// <summary>Which thing of a Gym's puzzle this is; null for anyone and anything else.</summary>
     public PropType? GymThing => NpcType switch
     {
@@ -165,6 +179,8 @@ public class NPC
         SnowballType => PropType.Snowball,
         LeagueDoorType => PropType.LeagueDoor,
         GalacticDoorType => PropType.GalacticDoor,
+        RubbleType => PropType.Rubble,
+        CavePaintingType => PropType.CavePainting,
         _ => null
     };
 

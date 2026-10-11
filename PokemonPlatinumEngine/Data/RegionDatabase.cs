@@ -176,6 +176,8 @@ public static class RegionDatabase
                 // Plan 02 · S11, part b: Team Galactic's headquarters in Veilstone City, floor by floor on the original's plans
                 "GalacticHQ1F", "GalacticHQ2F", "GalacticHQ3F", "GalacticHQ4F", "GalacticHQB1F", "GalacticHQB2F",
                 "GalacticHQHall", "GalacticHQLaboratory", "GalacticHQControlRoom",
+                // Plan 02 · S12: Spear Pillar as the Distortion World tears it (a matrix of the imported world)
+                "SpearPillarDistorted",
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

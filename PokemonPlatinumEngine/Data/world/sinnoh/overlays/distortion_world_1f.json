@@ -2,12 +2,25 @@
   "area": "distortion_world_1f",
   "bgmTrack": "sinnoh/distortion_world",
   // The original's one warp here leads out onto Mt. Coronet's sixth floor from a tile of the void nobody stands on
-  // (a leftover: the way back is the portal north of where the rift puts the player, at 34,29, which plan 02 · S12's
-  // scene opens with the way in)
+  // (a leftover: the way back is the portal north of where the rift puts the player)
   "locked": [ 0 ],
   // The slab that sinks to B1F (sMovingPlatformMapTemplate1F_1, elevator path 0): until slabs move, stepping onto it
   // carries the player down through a fade, onto the slab it stops at
   "exits": [
     { "x": 19, "z": 44, "map": "DistortionWorldB1F", "toX": 40, "toY": 19, "facing": "Down" }
+  ],
+  // Plan 02 · S12 (scripts/distortion_world_1f.txt). The original keeps the Distortion World's people in its own code
+  // (sMapObjectEvents1F), each shown by how far VAR_DISTORTION_WORLD_PROGRESS has come: here they are people of our
+  // own whom the place's OnEnter shows and hides. Cynthia comes through the portal behind the player the first time,
+  // and then waits on the slab until the player has ridden it; the portal back to Spear Pillar hangs where the
+  // original's does (its PROP_KIND_PORTAL and the background event beside it), on the rock north of where it lets out
+  "npcs": [
+    { "id": "cynthia", "name": "Cynthia", "npcType": "Cynthia", "x": 18, "y": 42, "facing": "Right", "script": "CynthiaBySlab" },
+    { "id": "portal", "name": "Portal", "npcType": "Rift", "x": 34, "y": 29, "facing": "Down", "script": "Portal" }
+  ],
+  // The step onto the slab's stone beside her (sMapEvents1F: 40, 52 of the Distortion World's space, while the
+  // progress is DIST_WORLD_PROGRESS_ENTERED_1F)
+  "triggers": [
+    { "x": 19, "z": 42, "variable": "VAR_DISTORTION_WORLD_PROGRESS", "value": 1, "script": "SlabMoves" }
   ]
 }

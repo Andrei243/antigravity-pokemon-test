@@ -7,11 +7,25 @@
   "doors": [
     { "warp": 0, "map": "MtCoronet1FSouth", "x": 25, "y": 4, "facing": "Down" }
   ],
-  // The cave painting stands over the hole up to the floor's upper half (warp 2) until Team Galactic breaks it,
-  // after their headquarters (plan 02 · S11); then Looker waits beside it. Until then the upper half is come to from
-  // above, by the third floor, and the way down through the hole (warp 3) lands in front of the painting, as in the
-  // original
-  "locked": [ 2 ],
+  // The cave painting stands over the hole up to the floor's upper half (warp 2) until Team Galactic breaks it open on
+  // their way to the summit, which the button in their headquarters' control room does (plan 02 · S11:
+  // FLAG_HIDE_MT_CORONET_2F_CAVE_PAINTING, the flag that takes the original's painting off its tile). Until then the
+  // way is shut and the painting stands on its tile, and the upper half is come to from above, by the third floor: the
+  // way down through the hole (warp 3) lands in front of the painting, as in the original
+  "switches": [
+    { "warp": 2, "from": "FLAG_HIDE_MT_CORONET_2F_CAVE_PAINTING" }
+  ],
+  // Plan 02 · S12 (scripts/mt_coronet_2f.txt): Looker catches the player up before the hole (trigger 0, once the
+  // painting is broken) with the Black Flute, and waits there until the player is out of the Distortion World
+  "triggers": [ { "trigger": 0, "script": "Looker" } ],
+  "people": {
+    "looker": { "name": "Looker", "script": "LookerTalk", "still": true },
+    // The painting itself, a slab in the niche before the hole (the area's own flag takes it away), and what is left
+    // of it afterwards, a heap either side of the hole
+    "cave_painting": { "name": "Cave painting", "npcType": "CavePainting", "script": "CavePainting" },
+    "cave_painting_shards_left": { "name": "Rubble", "npcType": "Rubble", "script": "Shards" },
+    "cave_painting_shards_right": { "name": "Rubble", "npcType": "Rubble", "script": "Shards" }
+  },
   // The Max Revive lies in the middle of the floor, reached by two passages that run under arches of rock. The
   // original gives an arch's tiles two heights on plain cave floor, and the world builder makes a deck of two heights
   // only where the tile says it is a bridge: it takes the arches for raised ground, so both passages end at a cliff

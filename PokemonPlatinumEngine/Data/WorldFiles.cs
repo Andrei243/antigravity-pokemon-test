@@ -624,6 +624,19 @@ public sealed class WorldOverlayFile
 
     /// <summary>Street furniture of our own, placed in tiles of the area's matrix.</summary>
     public List<MapFile.PropRecord>? Props { get; set; }
+
+    /// <summary>
+    /// Tiles read by facing them that the original keeps as objects nobody sees (plan 02 · S12: a portal of the
+    /// Distortion World, a pit a boulder might fit, a painting on a wall), each with the script of the area's file it
+    /// runs, in tiles of the area's matrix.
+    /// </summary>
+    public List<OverlayTileScript>? ReadAt { get; set; }
+
+    /// <summary>
+    /// Tiles a pushed boulder falls into (plan 02 · S12; the original's <c>sBoulderFallLocations</c>): a boulder may be
+    /// pushed onto one whatever stands there, and coming to rest on it runs the tile's script, the boulder its subject.
+    /// </summary>
+    public List<OverlayTileScript>? Pits { get; set; }
 }
 
 /// <summary>Where one of an area's warps leads: a tile of a hand-made map.</summary>
@@ -695,6 +708,15 @@ public sealed class OverlayExit
     public int ToX { get; set; }
     public int ToY { get; set; }
     public Direction Facing { get; set; } = Direction.Up;
+}
+
+/// <summary>A tile of an imported area and the script of the area's file it runs (<see cref="WorldOverlayFile.ReadAt"/>, <see cref="WorldOverlayFile.Pits"/>).</summary>
+[JsonConverter(typeof(OneLine<OverlayTileScript>))]
+public sealed class OverlayTileScript
+{
+    public int X { get; set; }
+    public int Z { get; set; }
+    public string Script { get; set; } = "";
 }
 
 /// <summary>Who one of the original's people is in our game. They stand where the area file puts them.</summary>

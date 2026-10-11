@@ -125,7 +125,10 @@
     { "name": "VictoryRoad1FRoom3", "matrix": 48, "area": "victory_road_1f_room_3", "setting": "Cave" },
     // Plan 02 · S11, part a: Lake Acuity as Team Galactic leaves it (the map Acuity Lakefront leads to once Commander
     // Mars is beaten at Lake Verity, and for the rest of the game)
-    { "name": "LakeAcuityGalactic", "matrix": 108, "area": "lake_acuity", "trees": "Pine" }
+    { "name": "LakeAcuityGalactic", "matrix": 108, "area": "lake_acuity", "trees": "Pine" },
+    // Plan 02 · S12: Spear Pillar as the Distortion World tears it (the map Mt. Coronet's summit leads to from the
+    // moment Giratina takes Cyrus until the player comes out at Sendoff Spring)
+    { "name": "SpearPillarDistorted", "matrix": 23, "area": "spear_pillar_distorted" },
   ],
   "areas": [
     "twinleaf_town",
@@ -295,6 +298,8 @@
     "route_230",
     "resort_area",
     // Plan 02 · S11, part a
-    "lake_acuity"
+    "lake_acuity",
+    // Plan 02 · S12
+    "spear_pillar_distorted",
   ]
 }

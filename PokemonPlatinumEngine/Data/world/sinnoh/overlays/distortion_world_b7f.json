@@ -1,12 +1,24 @@
 {
   "area": "distortion_world_b7f",
   "bgmTrack": "sinnoh/distortion_world",
-  // Cynthia and Cyrus wait here in plan 02 · S13's scene
   "exits": [
     // The slab up to B6F (sMovingPlatformMapTemplateB7F_1, path 19)
     { "x": 11, "z": 54, "map": "DistortionWorldB6F", "toX": 29, "toY": 48, "facing": "Down" },
     // On north into Giratina's room (DistWorld_HandlePlayerPositionChanged: walking north at 89, 56 or 57 of the
-    // Distortion World's space, once Cyrus is beaten; the story's condition is plan 02 · S13's)
+    // Distortion World's space). Nobody comes to it before Cyrus is beaten: he and Cynthia stand in the one passage
+    // that leads there
     { "x": 15, "z": 24, "map": "DistortionWorldGiratinaRoom", "toX": 15, "toY": 23, "facing": "Up" }
+  ],
+  // Plan 02 · S12 (scripts/distortion_world_b7f.txt): Cynthia and Cyrus, where the original stands them by how far
+  // the story has come (sMapObjectEventB7F_CynthiaInitial, _CynthiaTalking, _CynthiaPostBattle, _CyrusInitial and
+  // _CyrusTalking), which the place's OnEnter sees to
+  "npcs": [
+    { "id": "cynthia", "name": "Cynthia", "npcType": "Cynthia", "x": 10, "y": 42, "facing": "Right", "script": "Cynthia" },
+    { "id": "cyrus", "name": "Cyrus", "npcType": "Cyrus", "x": 11, "y": 42, "facing": "Left", "script": "Cyrus" }
+  ],
+  // The row before the two (sMapEventsB7F: 84 to 86, 76 of the Distortion World's space, while the progress is
+  // DIST_WORLD_PROGRESS_ENTERED_B7F)
+  "triggers": [
+    { "x": 10, "z": 44, "width": 3, "variable": "VAR_DISTORTION_WORLD_PROGRESS", "value": 8, "script": "CynthiaAndCyrus" }
   ]
 }

@@ -509,6 +509,22 @@ public class Map
             if (warp.Until != null || warp.From != null)
                 warp.Shut = (warp.Until is { } until && flagSet(until)) || (warp.From is { } from && !flagSet(from));
         }
+        ShutLoneWays();
+    }
+
+    /// <summary>
+    /// A way the story switches that shares its tile with no other (plan 02 · S12: the hole behind Mt. Coronet's cave
+    /// painting, which is there only once the painting is broken) is a wall while it is shut, and open ground to walk
+    /// into once it isn't. Where two ways share a tile, one of them is always open, and the tile stays as it is.
+    /// </summary>
+    public void ShutLoneWays()
+    {
+        foreach (var warp in Warps)
+        {
+            if (warp.Until == null && warp.From == null) continue;
+            bool lone = !Warps.Any(other => other != warp && other.SourceX == warp.SourceX && other.SourceY == warp.SourceY);
+            if (lone) SetSolid(warp.SourceX, warp.SourceY, warp.Shut);
+        }
     }
 
     /// <summary>Forgets who a script showed or hid by itself: from here on the flags decide again.</summary>
@@ -552,6 +568,13 @@ public class Map
     /// an inscription in a cave or a pillar. The script is the place's own.
     /// </summary>
     public Dictionary<(int X, int Y), string> TileScripts { get; } = new();
+
+    /// <summary>
+    /// Tiles a pushed boulder falls into (plan 02 · S12; the original's <c>sBoulderFallLocations</c>, the Distortion
+    /// World's): a boulder may be pushed onto one whatever stands there (<see cref="FieldMovement.CanPush"/>), and when
+    /// it comes to rest on it the tile's script runs, the boulder its subject. The script is the place's own.
+    /// </summary>
+    public Dictionary<(int X, int Y), string> BoulderPits { get; } = new();
 
     /// <summary>The file a place's scripts are written in: its area's key on a map of the world, the map's name otherwise.</summary>
     public string ScriptFileAt(int x, int y) => InBounds(x, y) && AreaAt(x, y) is { Key.Length: > 0 } area ? area.Key : Name;

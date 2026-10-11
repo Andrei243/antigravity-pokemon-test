@@ -446,9 +446,12 @@ public sealed class ScriptRunner
             {
                 // The catching lesson is the assistant's battle, fought with the assistant's own Pokémon
                 if (i.Op == Op.WildBattle && NoPokemonToBattle()) break;
-                var species = PokemonDatabase.Get(i.Name) ?? throw Wrong(i, $"there is no species '{i.Name}'");
+                // A wild Pokémon may be met in a form of its species, named as the form is (Giratina-Origin, plan 02 · S12)
+                var species = PokemonDatabase.Get(i.Name) ?? PokemonDatabase.SpeciesOfForm(i.Name) ?? throw Wrong(i, $"there is no species or form '{i.Name}'");
                 var kind = i.Op == Op.CatchingLesson ? BattleKind.CatchingLesson : BattleKind.Normal;
-                host.WildBattle(new Pokemon(species, i.Number), kind, cannotFlee: i.Option);
+                var wild = new Pokemon(species, i.Number);
+                if (!string.Equals(species.Name, i.Name, StringComparison.OrdinalIgnoreCase)) wild.ChangeForm(i.Name);
+                host.WildBattle(wild, kind, cannotFlee: i.Option);
                 afterBusy = () => AfterBattle(mayLose: false);
                 break;
             }
@@ -708,6 +711,11 @@ public sealed class ScriptRunner
                 break;
             case Op.Ribbon:
                 Ribbon(i);
+                break;
+
+            // The Pokédex is told of a Pokémon the story shows (plan 02 · S12)
+            case Op.Seen:
+                host.Seen(PokemonDatabase.Get(i.Name) ?? throw Wrong(i, $"there is no species '{i.Name}'"));
                 break;
 
             default:

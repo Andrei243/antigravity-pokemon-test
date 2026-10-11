@@ -1,10 +1,15 @@
-# Giratina's room at the end of Turnback Cave (plan 01 · M8; scripts_turnback_cave_giratina_room.s). Its doors
-# are never aimed: every one of them leads back to the entrance.
+# Giratina's room at the end of Turnback Cave (plan 01 · M8, plan 02 · S12; scripts_turnback_cave_giratina_room.s).
+# Its doors are never aimed: every one of them leads back to the entrance.
 #
-# Giratina waits here after the Hall of Fame if it got away in the Distortion World (the Hall of Fame clears its
-# flag, plan 02 · S14). Until then a new game keeps it hidden: a Pokémon can't be drawn standing in the field
-# until plan 10 · F1. Once it is caught, a ball lies here each time the player comes back through Sendoff
+# Giratina waits here, in its Altered Forme, for whoever did not catch it in the Distortion World: nobody comes to
+# Turnback Cave before the Distortion World lets them out at Sendoff Spring, so its flag is clear from the start, as
+# the original's is. Caught there or here it is gone for good; beaten here it is gone until the Hall of Fame is next
+# entered (the original hides it as its room loads again after the battle, and the Hall of Fame clears the flag while
+# FLAG_CAUGHT_GIRATINA is unset). Once it is caught, a ball lies here each time the player comes back through Sendoff
 # Spring, and what is in it hangs on how few rooms it took to get here.
+#
+# Where Giratina stood a portal hangs once it is gone, into the corner of the Distortion World where the Griseous Orb
+# lies (the original's background event on its tile).
 
 script Giratina
   cry "Giratina"
@@ -12,6 +17,7 @@ script Giratina
   say "A roar shakes the whole cave!"
   wildbattle "Giratina" 47 nofleeing
   if var RESULT == 3 goto Caught
+  setflag FLAG_HIDE_TURNBACK_CAVE_GIRATINA_ROOM_GIRATINA
   hide self
   say "Giratina sank back into the shadows and was gone..."
   end
@@ -39,4 +45,15 @@ label Taken
 script Inscription
   speaker none
   say "Words are cut into the stone: \"Here the world we know and the world beyond it lie one over the other.\""
+  end
+
+# The portal where Giratina stood (the original's TurnbackCaveGiratinaRoom_Portal).
+script Portal
+  speaker none
+  ask "The air is torn here, and somewhere else shows through the tear. Leap into the portal?"
+  if no end
+  say "{player} leapt into the portal!"
+  sound "warp"
+  fade out 0.6
+  warp "DistortionWorldTurnbackCaveRoom" 46 45 down
   end

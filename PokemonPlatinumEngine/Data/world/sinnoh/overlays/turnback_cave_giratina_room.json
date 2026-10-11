@@ -6,8 +6,14 @@
     // The ball that waits here once Giratina is caught (scripts/turnback_cave_giratina_room.txt)
     // (what is in it hangs on the rooms walked: its script picks)
     "item": { "name": "Poké Ball", "npcType": "ItemBall", "item": "Stardust", "script": "Item" },
-    // After the Hall of Fame, if it got away in the Distortion World (FLAG_HIDE_TURNBACK_CAVE_GIRATINA_ROOM_GIRATINA,
-    // which a new game sets: it can't be drawn standing in the field until plan 10 · F1)
+    // Here from the start, as the original's is, for whoever did not catch it in the Distortion World; gone once it is
+    // caught there or here, or beaten here, and back with the Hall of Fame if it was beaten
+    // (FLAG_HIDE_TURNBACK_CAVE_GIRATINA_ROOM_GIRATINA; plan 02 · S12)
     "giratina": { "name": "Giratina", "script": "Giratina" }
-  }
+  },
+  // The portal into the Distortion World, which hangs where Giratina stood once it is gone (plan 02 · S12; the
+  // original's background event 6 on Giratina's own tile, which only answers when nobody stands there)
+  "npcs": [
+    { "id": "portal", "name": "Portal", "npcType": "Rift", "x": 11, "y": 14, "facing": "Down", "shownBy": "FLAG_HIDE_TURNBACK_CAVE_GIRATINA_ROOM_GIRATINA", "script": "Portal" }
+  ]
 }

@@ -1,0 +1,88 @@
+# Mt. Coronet, the second floor (plan 02 · S12). docs/scripts.md describes the language; the lines are our own, on
+# the original's beats (scripts_mt_coronet_2f.s).
+#
+# A painting from ancient times stands over the hole that leads up to the floor's upper half and so to the summit.
+# Team Galactic break it open on their way to Spear Pillar: the button in their headquarters' control room sets
+# FLAG_HIDE_MT_CORONET_2F_CAVE_PAINTING, shows the shards (FLAG_HIDE_MT_CORONET_2F_CAVE_PAINTING_SHARDS cleared) and
+# leaves VAR_MT_CORONET_2F_STATE 1 (GalacticHQControlRoom.txt, plan 02 · S11). From then on the first step toward the
+# hole (the original's trigger, a column of three tiles east of it) brings Looker running up the passage behind the
+# player: he has seen where Team Galactic went, owns that his Pokémon are no match for what lies ahead, and gives the
+# Black Flute. He waits by the hole until the player comes out of the Distortion World (FLAG_HIDE_MT_CORONET_2F_LOOKER,
+# set at Sendoff Spring).
+#
+# The painting is a thing of the map (the area's own cave_painting, a slab on the hole's tile that covers the dark
+# behind it); its breaking is a set piece that hasn't landed (plan 09 · L12), so it is whole before the button and
+# rubble after.
+
+
+# Arriving: once his scene has played Looker stands by the hole, where the original's object is, not where the scene
+# left him.
+script OnEnter
+  if var VAR_MT_CORONET_2F_STATE >= 2 place looker 10 26 left
+  end
+
+
+# The original's MtCoronet2F_CavePainting: the painting read, from in front of it.
+script CavePainting
+  if flag FLAG_HIDE_MT_CORONET_2F_CAVE_PAINTING end
+  speaker none
+  say "A painting covers the rock from the floor up. It is very old: three points of light round a greater one, and under them two beasts, face to face."
+  end
+
+
+# The original's MtCoronet2F_CavePaintingShards.
+script Shards
+  speaker none
+  say "Broken stone lies either side of a hole. A scrap of paint on one piece is all that is left of the cave painting."
+  end
+
+
+# The original's MtCoronet2F_CoordEvent_Looker (trigger 0, VAR_MT_CORONET_2F_STATE 1), from each of its three tiles.
+script Looker
+  setvar VAR_MT_CORONET_2F_STATE 2
+  place looker 20 25 left
+  clearflag FLAG_HIDE_MT_CORONET_2F_LOOKER
+  show looker
+  walk looker left 4 fast
+  wait 0.3
+  emote looker exclaim 0.8
+  wait 0.3
+  if var PLAYER_Y == 24 goto North
+  if var PLAYER_Y == 26 goto South
+  move looker left 4 fast
+  goto Meet
+label North
+  move looker left 4 up 1 fast
+  goto Meet
+label South
+  move looker left 4 down 1 fast
+label Meet
+  wait 0.5
+  face player right
+  waitmoves
+  face looker left
+  speaker "Looker"
+  say "Wait! It is I, Looker! I followed those space-suited scoundrels all the way from Veilstone City."
+  say "Observe that hole! A painting older than any kingdom stood there this morning. They smashed it to make themselves a shortcut."
+  face looker down
+  say "The top of this mountain... Whatever their boss intends, he intends it up there. And I must ask myself: am I enough to go on?"
+  face looker left
+  say "I am not. I have seen you battle. You are far above me, and my Pokémon would only slow you down."
+  setflag FLAG_RECEIVED_MT_CORONET_2F_BLACK_FLUTE
+  give "Black Flute"
+  say "That flute keeps wild Pokémon at a distance. It is the one thing I have that may be of use to you on the way up."
+  say "Go. Stop Team Galactic! I shall hold this spot, so that no more of them come up behind you."
+  end
+
+
+# The original's MtCoronet2F_Looker, when he is spoken to afterwards.
+script LookerTalk
+  face looker player
+  speaker "Looker"
+  if flag FLAG_RECEIVED_MT_CORONET_2F_BLACK_FLUTE goto Given
+  say "I can do nothing more than give you this. Take it!"
+  setflag FLAG_RECEIVED_MT_CORONET_2F_BLACK_FLUTE
+  give "Black Flute"
+label Given
+  say "You must stop Team Galactic. I am counting on you. All of Sinnoh is, though it does not know it yet!"
+  end

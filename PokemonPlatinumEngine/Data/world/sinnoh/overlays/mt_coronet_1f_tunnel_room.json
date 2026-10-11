@@ -8,7 +8,32 @@
   "doors": [
     { "warp": 0, "map": "MtCoronetOutsideNorth", "x": 45, "y": 29, "facing": "Down" },
     { "warp": 1, "map": "MtCoronet1FNorthRoom1", "x": 20, "y": 61, "facing": "Left" }
-  ]
-  // Team Galactic's grunts on the climb to Spear Pillar (three trainers, and the lost one by the way in) come with
-  // that chapter (plan 02 · S12); their teams are Platinum's in trainers.json
+  ],
+  // Team Galactic on the climb to Spear Pillar (plan 02 · S12, scripts/mt_coronet_1f_tunnel_room.txt): three who
+  // battle, with Platinum's teams, and one by the way in who has lost his way. All are gone once the player comes out
+  // of the Distortion World (FLAG_HIDE_MT_CORONET_GALACTIC_GRUNTS, the original's own, set at Sendoff Spring)
+  "people": {
+    "galactic_grunt_mt_coronet_tunnel_room_1": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Galactic Grunt: Halt! Nobody goes up this mountain today. The boss is busy remaking the world!",
+        "dialogueAfter": "Galactic Grunt: I said halt, and you didn't. That's hardly my fault."
+      }
+    },
+    "galactic_grunt_mt_coronet_tunnel_room_2": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Galactic Grunt: Keep watch, they told me. Nobody comes this way, they told me. And here you are!",
+        "dialogueAfter": "Galactic Grunt: The one time somebody does come by, it had to be somebody like you."
+      }
+    },
+    "galactic_grunt_mt_coronet_tunnel_room_3": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Galactic Grunt: Up and down, up and down this tunnel. At last, something to do!",
+        "dialogueAfter": "Galactic Grunt: Back to walking up and down, then."
+      }
+    },
+    "grunt_m": { "name": "Grunt", "script": "LostGrunt", "still": true }
+  }
 }

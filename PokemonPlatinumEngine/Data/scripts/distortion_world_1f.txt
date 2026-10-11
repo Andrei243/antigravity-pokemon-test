@@ -1,0 +1,98 @@
+# The Distortion World, its first floor (plan 02 · S12). docs/scripts.md describes the language; the lines are our
+# own, on the original's beats (scripts_distortion_world_1f.s, and overlay 9's tables of who stands where).
+#
+# How far the player has come through the Distortion World is VAR_DISTORTION_WORLD_PROGRESS, the original's own
+# count (include/constants/distortion_world.h): 0 none, 1 entered 1F, 2 stood on its slab, 3 entered B1F, 4 saw
+# Mesprit there, 5 spoke to Cynthia on B2F, 6 spoke to Cyrus on B3F, 7 the boulders done, 8 entered B7F, 9 heard
+# Cynthia and Cyrus, 10 beat Cyrus, 11 and 12 Giratina's two shadows, 13 Giratina arrived, 14 Giratina met. The
+# original shows each of its people by that count as a floor loads; here each floor's OnEnter does.
+#
+# The first time (progress 0) the scene plays as the player comes out of the rift: Cynthia follows through the portal,
+# says where this is, and the two see Giratina pass in the distance before she goes on ahead (progress 1). She waits on
+# the slab that leads down, where a step beside her brings her warning that it moves (the original's event, progress
+# 2), until the player has ridden it. The portal behind leads back to Spear Pillar.
+#
+# Stood in for until plan 09 lands (L11, L14): Giratina's shadow crossing the sky (the original's
+# StartDistortionWorldGiratinaShadowEvent) is its cry, a shake of the picture and the two looking round. Slabs do not
+# move yet (plan 01 · M8): the one here is a way down through a fade, so Cynthia does not ride it with the player but
+# is met again at its foot.
+
+
+script OnEnter
+  if var VAR_DISTORTION_WORLD_PROGRESS >= 3 hide cynthia
+  if var VAR_DISTORTION_WORLD_PROGRESS != 0 end
+  # DistortionWorld1F_OnFrame_FirstEntry
+  hide cynthia
+  walk player left 1
+  wait 0.3
+  face player right
+  sound "warp"
+  place cynthia 34 30 down
+  show cynthia
+  wait 0.6
+  face cynthia right
+  wait 0.3
+  face cynthia up
+  wait 0.3
+  speaker "Cynthia"
+  say "This place..."
+  face cynthia down
+  wait 0.3
+  say "Up is not up here, and far is not far. This must be the world on the other side of ours. I'll call it what it is: a distortion world."
+  face cynthia left
+  say "Giratina is somewhere in it, and Cyrus too. Come on. Let's find them."
+  move cynthia down 2
+  wait 0.3
+  face player down
+  waitmoves
+  # Giratina passes in the distance
+  cry "Giratina-Origin"
+  camera shake 0.8
+  face player left
+  face cynthia left
+  emote player exclaim 0.8
+  emote cynthia exclaim 0.8
+  wait 0.9
+  face player right
+  face cynthia right
+  wait 0.6
+  say "That shadow... That was Giratina. It knows we are here."
+  face player down
+  face cynthia up
+  say "It didn't come for us. It is watching. We have to hurry, before whatever angered it gets worse."
+  walk cynthia left 3 down 3 left 2 down 1 left 6
+  hide cynthia
+  place cynthia 18 42 right
+  show cynthia
+  setvar VAR_DISTORTION_WORLD_PROGRESS 1
+  end
+
+
+# The original's DistortionWorld1F_CoordEvent_CynthiaElevator: the step onto the slab's stone beside her.
+script SlabMoves
+  setvar VAR_DISTORTION_WORLD_PROGRESS 2
+  face cynthia player
+  speaker "Cynthia"
+  say "Careful. That slab with the star on it isn't fixed to anything. Step onto it and it moves."
+  say "Down is the only way I can see from here. I'll be right behind you."
+  end
+
+
+# Cynthia on the slab's stone (the original's DistortionWorld1F_CynthiaElevator).
+script CynthiaBySlab
+  face cynthia player
+  speaker "Cynthia"
+  say "Why would only this one stone be a different colour? Nothing here is an accident. I'd say it wants to be stood on."
+  end
+
+
+# The portal back (the original's DistortionWorld1F_Portal).
+script Portal
+  speaker none
+  ask "The air is torn here, and Spear Pillar shows through the tear. Go back to Spear Pillar?"
+  if no end
+  say "{player} stepped through, toward Spear Pillar."
+  sound "warp"
+  fade out 0.6
+  warp "SpearPillarDistorted" 31 33 down
+  end

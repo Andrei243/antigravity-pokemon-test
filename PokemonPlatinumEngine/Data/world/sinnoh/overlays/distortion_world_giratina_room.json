@@ -1,10 +1,28 @@
 {
   "area": "distortion_world_giratina_room",
   "bgmTrack": "sinnoh/distortion_world",
-  // Giratina, Cynthia, Cyrus, the stones that rise as the player comes and the portal to Sendoff Spring are plan
-  // 02 · S13's scene
   "exits": [
     // Back south onto B7F (walking south at 15, 25 or 26: the original's script 4 puts the player at 15, 25 of B7F)
     { "x": 15, "z": 25, "map": "DistortionWorldB7F", "toX": 15, "toY": 25, "facing": "Down" }
+  ],
+  // Plan 02 · S12 (scripts/distortion_world_giratina_room.txt): Giratina over nothing at the head of the stepping
+  // stones (sMapObjectEventGiratinaRoom_Giratina: 15, 13), the portal that hangs in its place once it has been met
+  // (the original's PROP_KIND_PORTAL and the object nobody sees that answers for it), and Cynthia and Cyrus, who come
+  // up the stones after the battle. All four are shown by the place's OnEnter and its scenes. Giratina and the portal
+  // hang most of a tile above the stones' level, clear of the head of whoever stands before them
+  "npcs": [
+    { "id": "giratina", "name": "Giratina", "npcType": "Pokemon", "species": "Giratina-Origin", "x": 15, "y": 13, "facing": "Down", "level": 1.8, "script": "Giratina" },
+    { "id": "portal", "name": "Portal", "npcType": "Rift", "x": 15, "y": 13, "facing": "Down", "level": 1.8, "hiddenBy": "FLAG_HIDE_DISTORTION_WORLD_APPARITIONS", "script": "Portal" },
+    { "id": "cynthia", "name": "Cynthia", "npcType": "Cynthia", "x": 15, "y": 17, "facing": "Up", "hiddenBy": "FLAG_HIDE_DISTORTION_WORLD_APPARITIONS", "script": "Cynthia" },
+    { "id": "cyrus", "name": "Cyrus", "npcType": "Cyrus", "x": 15, "y": 23, "facing": "Up", "hiddenBy": "FLAG_HIDE_DISTORTION_WORLD_APPARITIONS", "dialog": [ "......" ] }
+  ],
+  // Cynthia answers from the stone behind the player's own (the original's object nobody sees at 15, 15)
+  "readAt": [ { "x": 15, "z": 15, "script": "Cynthia" } ],
+  // The two stones on the way up (sMapEventsGiratinaRoom: 15, 17 while the progress is the first shadow's, and 15,
+  // 14 while it is the second's). The first shadow, which the original starts a step inside the room, is the
+  // place's OnEnter
+  "triggers": [
+    { "x": 15, "z": 17, "variable": "VAR_DISTORTION_WORLD_PROGRESS", "value": 11, "script": "SecondShadow" },
+    { "x": 15, "z": 14, "variable": "VAR_DISTORTION_WORLD_PROGRESS", "value": 12, "script": "Arrival" }
   ]
 }

@@ -1,6 +1,23 @@
 {
   "area": "mt_coronet_3f",
   "bgmTrack": "sinnoh/cave",
-  "evolutionSites": [ "Magnetic Field" ]
-  // Team Galactic's two grunts come with the climb to Spear Pillar (plan 02 · S12)
+  "evolutionSites": [ "Magnetic Field" ],
+  // Team Galactic on the climb to Spear Pillar (plan 02 · S12): two who battle, with Platinum's teams, gone once the
+  // player comes out of the Distortion World (FLAG_HIDE_MT_CORONET_GALACTIC_GRUNTS)
+  "people": {
+    "galactic_grunt_1": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Galactic Grunt: You broke into our headquarters and came straight here? You don't know when to stop!",
+        "dialogueAfter": "Galactic Grunt: Fine, fine. Go on up. See if I care."
+      }
+    },
+    "galactic_grunt_2": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Galactic Grunt: The summit is for Team Galactic alone today. Turn round, or be turned round!",
+        "dialogueAfter": "Galactic Grunt: You'll only be in the boss's way up there. Not that he'll notice you."
+      }
+    }
+  }
 }

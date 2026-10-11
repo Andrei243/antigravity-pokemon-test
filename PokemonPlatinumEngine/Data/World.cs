@@ -1556,7 +1556,8 @@ public static class WorldMapBuilder
         {
             var npc = MapFile.BuildNpc(record, map.Name);
             npc.ScriptFile = key;
-            map.NPCs.Add(npc);
+            // A boulder among them is put back where it stood when the player leaves, as every boulder is
+            map.Add(npc);
         }
 
         // What is hidden in the ground, found by looking at its tile; and what is read there, where the overlay
@@ -1595,6 +1596,19 @@ public static class WorldMapBuilder
                 X = t.X, Y = t.Z, Width = t.Width, Depth = t.Depth, Script = bound.Script, ScriptFile = key,
                 Variable = t.Variable.Length > 0 ? t.Variable : null, Value = value
             });
+        }
+        // What is read where nothing shows, and the pits a pushed boulder falls into (plan 02 · S12)
+        foreach (var read in overlay?.ReadAt ?? new()) map.TileScripts[(read.X, read.Z)] = read.Script;
+        foreach (var pit in overlay?.Pits ?? new())
+        {
+            map.BoulderPits[(pit.X, pit.Z)] = pit.Script;
+            // In the Distortion World a pit is the tile the original drops its boulder through, which the import
+            // knows only as blocked: nothing, let into the island, as deep as the nothing round the islands
+            // (VoidIslands has run by now)
+            if (!map.IsVoid || map.GetGroundTile(pit.X, pit.Z) == TileType.Void) continue;
+            float island = MathF.Floor(map.HeightAt(pit.X, pit.Z));
+            map.SetGroundTile(pit.X, pit.Z, TileType.Void, isSolid: true);
+            map.SetHeight(pit.X, pit.Z, island - VoidDrop);
         }
         foreach (var prop in overlay?.Props ?? new()) map.AddProp(prop.Type, prop.X, prop.Y, prop.Width, prop.Depth);
 
@@ -1639,7 +1653,7 @@ public static class WorldMapBuilder
         // A way in that leads nowhere yet (a cave's mouth, a gate house, a hall without a door) is closed: one
         // can't walk into an opening and stand in the wall. A door is shut by itself.
         foreach (var from in file.Warps)
-            if (map.GetWarpAt(from.X, from.Z) == null && map.GetGroundTile(from.X, from.Z) != TileType.Door) map.SetSolid(from.X, from.Z, true);
+            if (!map.WarpsAt(from.X, from.Z).Any() && map.GetGroundTile(from.X, from.Z) != TileType.Door) map.SetSolid(from.X, from.Z, true);
     }
 
     /// <summary>The way into an open area through one of its warps (Turnback Cave's doors, which are aimed as the player comes in).</summary>

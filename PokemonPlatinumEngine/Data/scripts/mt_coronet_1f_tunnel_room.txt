@@ -1,0 +1,16 @@
+# Mt. Coronet, the tunnel room of its first floor (plan 02 · S12). docs/scripts.md describes the language; the lines
+# are our own, on the original's beats (scripts_mt_coronet_1f_tunnel_room.s).
+#
+# The long tunnel from the northern hall out onto the mountain's north face: three of Team Galactic's grunts battle
+# here on the climb to Spear Pillar (their overlay's), and a fourth, just inside the way in, has lost his way. All go
+# once the player is out of the Distortion World (FLAG_HIDE_MT_CORONET_GALACTIC_GRUNTS).
+
+
+# The original's MtCoronet1FTunnelRoom_GruntM: he turns to whoever speaks to him, and back to the wall.
+script LostGrunt
+  face self player
+  speaker "Galactic Grunt"
+  say "Which way is the summit? I've been round this tunnel three times and I still come out where I went in."
+  say "I am hopelessly, completely lost. Don't tell the commanders."
+  face self up
+  end

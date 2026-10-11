@@ -48,12 +48,12 @@ script ChapterTwo
 
 
 # Who the third chapter (plan 02 · S6, "Windworks and Eterna") keeps out of sight until their scenes, as the
-# original's new game does, and what waits in Turnback Cave (plan 01 · M8): its ball, and Giratina, which a game of
-# ours keeps hidden until the Hall of Fame because a Pokémon can't be drawn standing in the field yet. Called by
-# ChapterTwo, and run for a save from before (Story/StoryMigration.cs). It may only set flags and variables.
+# original's new game does, and what waits in Turnback Cave (plan 01 · M8): its ball. Giratina stands there from the
+# start, as the original's does (plan 02 · S12): nobody comes to Turnback Cave before the Distortion World lets them
+# out. Called by ChapterTwo, and run for a save from before (Story/StoryMigration.cs). It may only set flags and
+# variables.
 script ChapterThree
   setflag FLAG_HIDE_TURNBACK_CAVE_GIRATINA_ROOM_ITEM
-  setflag FLAG_HIDE_TURNBACK_CAVE_GIRATINA_ROOM_GIRATINA
   # Windworks and Eterna (scripts_init_new_game.s): who comes once Commander Mars is beaten, and Eterna's people
   # whose scenes come later
   setflag FLAG_HIDE_ROUTE_205_SOUTH_YOUNGSTER
@@ -201,6 +201,33 @@ script Headquarters
   setflag FLAG_HIDE_VEILSTONE_CITY_GRUNT_M_STORAGE_KEY
   setflag FLAG_HIDE_GALACTIC_HQ_HALL_CYRUS
   setflag FLAG_HIDE_GALACTIC_HQ_1F_SATURN
+  call ChapterNine
+  return
+
+
+# Who the ninth chapter (plan 02 · S12, "Spear Pillar and the Distortion World") keeps out of sight until their
+# scenes, as the original's new game does (scripts_init_new_game.s): the shards of Mt. Coronet's cave painting and
+# Looker beside them, who come when Team Galactic's headquarters fall (the control room's button shows the shards, so
+# a game that has pressed it keeps them), and Cynthia and Mesprit at the Spear Pillar the Distortion World tears. The
+# rival at Spear Pillar is shown by his scene alone (the original hides him as the map is come to, while its state is
+# under 4). Flags of our own beside them: Dialga, Palkia and Giratina's shadow at Spear Pillar and whoever a scene of
+# the Distortion World brings on by itself (the original draws the first in a cutscene and adds the others from its own
+# code), and the three boulders on the Distortion World's sixth floor, which are there only once they have fallen from
+# the fifth. Giratina in Turnback Cave, which a game of ours hid until the Hall of Fame, stands there from the start
+# unless it has been caught. Called by Headquarters, and run for a save from before (Story/StoryMigration.cs, version
+# 15). It may only set flags and variables, and ends in return.
+script ChapterNine
+  setflag FLAG_HIDE_MT_CORONET_2F_LOOKER
+  setflag FLAG_HIDE_SPEAR_PILLAR_RIVAL
+  setflag FLAG_HIDE_SPEAR_PILLAR_DISTORTED_CYNTHIA
+  setflag FLAG_HIDE_SPEAR_PILLAR_DISTORTED_MESPRIT
+  setflag FLAG_HIDE_SPEAR_PILLAR_LEGENDS
+  setflag FLAG_HIDE_DISTORTION_WORLD_APPARITIONS
+  if not flag FLAG_FREED_GALACTIC_HQ_POKEMON setflag FLAG_HIDE_MT_CORONET_2F_CAVE_PAINTING_SHARDS
+  if not flag FLAG_DISTORTION_WORLD_MESPRIT_BOULDER_FELL setflag FLAG_HIDE_DISTORTION_WORLD_B6F_MESPRIT_BOULDER
+  if not flag FLAG_DISTORTION_WORLD_AZELF_BOULDER_FELL setflag FLAG_HIDE_DISTORTION_WORLD_B6F_AZELF_BOULDER
+  if not flag FLAG_DISTORTION_WORLD_UXIE_BOULDER_FELL setflag FLAG_HIDE_DISTORTION_WORLD_B6F_UXIE_BOULDER
+  if not flag FLAG_CAUGHT_GIRATINA clearflag FLAG_HIDE_TURNBACK_CAVE_GIRATINA_ROOM_GIRATINA
   return
 
 

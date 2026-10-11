@@ -45,6 +45,11 @@ that exists, every script to something that starts it, and plays each to its end
   `Field_TileBehaviorToScript` does: a rock face along its grain runs `RockFace`, a waterfall faced from the water
   `Waterfall`, and deep water at the player's feet `Water`, which the field offers only to someone who may surf
   (the move and the Fen Badge).
+- **A boulder pushed onto a pit** (plan 02 · S12). A tile an overlay lists under `pits` takes a pushed boulder whatever
+  the tile is (`FieldMovement.CanPush`), and as the boulder comes to rest there the pit's script starts with the
+  boulder as its subject (`self`): it says where the boulder has gone (the Distortion World's fifth and sixth
+  floors). Something read on a tile where nothing shows is an overlay's `readAt`, as a door or a statue is its
+  `read`.
 - **A field move chosen from the party menu.** The menu checks the move where the player stands
   (`FieldMoveRules.Check`: the place, the badge, a partner, what is in force already) and then runs `Use` and the
   move's name (`UseCut`, `UseFly`, `UseSweetScent`), for the Pokémon chosen. Cut, Rock Smash and Strength act on the
@@ -186,6 +191,7 @@ on leaving any place), `FLAG_FLASH_ACTIVE` and `FLAG_DEFOG_ACTIVE` (cleared on g
 | `givebadge coal` | |
 | `givemoney 500`, `takemoney 500` | `takemoney` takes all of it or nothing; `RESULT` says which. |
 | `heal` | The whole team. |
+| `seen "Dialga"` | The Pokédex has the species as seen, without a word and without a battle (plan 02 · S12; the original's `SetSpeciesSeen`, for a Pokémon a scene shows: Dialga and Palkia at Spear Pillar). |
 | `greetings clear` | The count of people spoken to starts again from nought (plan 08 · P12; the original's `ClearSpiritombCounter`). The built-in variable `GREETINGS` is the count: everyone spoken to since, each once (`StoryState.Greeted`, saved). |
 
 ### Battles
@@ -201,6 +207,7 @@ on leaving any place), `FLAG_FLASH_ACTIVE` and `FLAG_DEFOG_ACTIVE` (cleared on g
 | `battle rival as "rival_route_201_turtwig"` | Someone of the map fights with a team of Platinum's data, and is that trainer from then on (who they think like, their items, their prize money): the rival, whose team hangs on the player's starter (plan 02 · S4). A trainer of the `Rival` class is called `{rival}`. |
 | `wildbattle "Starly" 2` | A wild Pokémon put in the player's way. `RESULT`: 1 won, 0 lost, 2 fled, 3 caught. Like `battle`, it waits for a Pokémon able to fight. |
 | `wildbattle "Giratina" 47 nofleeing` | One that can't be run from (the story's legendaries). |
+| `wildbattle "Giratina-Origin" 47` | A form's name in place of its species': the Pokémon is met in that form (plan 02 · S12), and one caught keeps it only as the form's own rule lets it (Giratina's by the Griseous Orb, `FormRules.ByHeldItem`). |
 | `defeat "lass_caroline"` | A trainer of Platinum's data counts as beaten without a battle, in this game and every save of it, and whoever carries that trainer on any map stops wanting to battle: a Leader's script does it for the trainers of the Gym once the Badge is won (the original's `SetTrainerFlag`, plan 01 · M9). |
 | `catchinglesson "Bidoof" 2` | The assistant shows how a Pokémon is caught: their own starter at level 5 and twenty Poké Balls, nothing chosen by the player, no critical hit and no miss, and a ball that can't fail. What is caught is the assistant's. `RESULT` is 3. |
 

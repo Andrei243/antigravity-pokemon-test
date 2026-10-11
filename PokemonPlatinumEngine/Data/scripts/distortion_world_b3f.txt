@@ -1,0 +1,40 @@
+# The Distortion World, B3F (plan 02 · S12). docs/scripts.md describes the language; the lines are our own, on the
+# original's beats (scripts_distortion_world_b3f.s). distortion_world_1f.txt says what VAR_DISTORTION_WORLD_PROGRESS
+# counts.
+#
+# At the head of the long passage south of the slab (the original's event, whether or not Cynthia was spoken to on
+# B2F: progress 4 or 5) Cyrus comes up it to the player. He asks whether the player understands what genes are, and
+# says the same thing either way: this world and the one outside are two strands that hold each other up, and to
+# defeat the Pokémon here is to bring both down, which is what he wants. He goes back the way he came (progress 6).
+
+
+# The original's DistortionWorldB3F_CoordEvent_Cyrus. A trigger's name is one of a kind on its map, so the second of
+# the original's two events has a name of its own.
+script Cyrus
+  call Meets
+  end
+
+script CyrusToo
+  call Meets
+  end
+
+script Meets
+  setvar VAR_DISTORTION_WORLD_PROGRESS 6
+  place cyrus 18 28 up
+  show cyrus
+  face player down
+  walk cyrus up 7
+  speaker "Cyrus"
+  ask "So you followed me even here. Tell me. Do you know what genes are, the blueprint every living thing is built from?"
+  if no goto No
+  say "You do? Then you have paid more attention to the world than most. I'm almost impressed."
+  goto Both
+label No
+  say "No. Of course you don't. Why would a child?"
+label Both
+  say "A gene is two strands wound round each other, each the mirror of the other. Lose one, and the other cannot stand."
+  say "So with these two worlds. The one we were born into and this one, bent the other way, prop each other up. That shadow of a Pokémon is the weight that keeps them balanced."
+  say "Which makes it simple. Bring that Pokémon down, and this world goes. And when this world goes, the world outside goes with it. That is all that matters to me now."
+  walk cyrus down 7
+  hide cyrus
+  return

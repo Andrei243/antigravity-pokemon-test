@@ -9,10 +9,9 @@
 # on this floor is reached from the basement or by warp panel: the way in is the warehouse's.
 #
 # What the lobby's four say changes once Team Galactic has left Lake Valor for good (the original asks
-# FLAG_GALACTIC_LEFT_LAKE_VALOR, which is set after the Distortion World). Nothing sets that flag yet, so each
-# script here says its first lines only, and the lines for afterwards are written beside it for the session that
-# sets the flag (plan 02 · S12 or S13) to put behind an `if flag`. Commander Saturn stands in the lobby from then on
-# (FLAG_HIDE_GALACTIC_HQ_1F_SATURN, which Sendoff Spring clears).
+# FLAG_GALACTIC_LEFT_LAKE_VALOR, which Sendoff Spring sets as the player comes out of the Distortion World, plan 02 ·
+# S12), and Commander Saturn stands in the lobby from then on (FLAG_HIDE_GALACTIC_HQ_1F_SATURN, which the same scene
+# clears).
 
 
 # The original's OnTransition.
@@ -22,37 +21,48 @@ script OnEnter
 
 
 # The receptionist behind her counter (the original's script 2).
-# Afterwards: "Welcome to Team Galactic's headq... Ahem. Welcome to the Galactic Veilstone Building." "Whether it's for
-# the better or the worse I couldn't tell you, but nothing whatever is planned for today."
 script Receptionist
   speaker "Receptionist"
   say "Welcome to Team Galactic's headq... Ahem. Welcome to the Galactic Veilstone Building."
+  if flag FLAG_GALACTIC_LEFT_LAKE_VALOR goto Afterwards
   say "We study the energy of the cosmos here. Power without end, enough for everybody! Wouldn't that be something?"
+  end
+label Afterwards
+  say "Whether it's for the better or the worse I couldn't tell you, but nothing whatever is planned for today."
   end
 
 
 # The scientist in the lobby (script 5).
-# Afterwards: "This is where Team Galactic works. On what, now? On our dream, I suppose." "A wonderful new world... Not
-# that anybody has told me how."
 script Scientist
+  if flag FLAG_GALACTIC_LEFT_LAKE_VALOR goto Afterwards
   say "Team Galactic's research goes on day and night in this building."
   say "New sources of energy: that is what we are after."
+  end
+label Afterwards
+  say "This is where Team Galactic works. On what, now? On our dream, I suppose."
+  say "A wonderful new world... Not that anybody has told me how."
   end
 
 
 # The grunt who wanders the lobby (script 3).
-# Afterwards: the same boast, and then "...That's how we did things, anyway. There's nothing left to take now."
 script GruntM
   say "Whatever can be taken, Team Galactic takes! Whatever isn't needed, Team Galactic throws out!"
+  if flag FLAG_GALACTIC_LEFT_LAKE_VALOR goto Afterwards
   say "That's how we do things!"
+  end
+label Afterwards
+  say "...That's how we did things, anyway. There's nothing left to take now."
   end
 
 
 # The grunt in the lobby's corner (script 4).
-# Afterwards: "Where has our boss got to, I wonder..."
 script GruntF2
+  if flag FLAG_GALACTIC_LEFT_LAKE_VALOR goto Afterwards
   say "You? You're far too young for us."
   say "Come back when you've done some growing."
+  end
+label Afterwards
+  say "Where has our boss got to, I wonder..."
   end
 
 
