@@ -621,6 +621,11 @@ public class RoomPlanTests
         new object[] { "ResortAreaRibbonSyndicate2F", "receptionist_3", 12, 5, Direction.Left },
         new object[] { "ResortAreaRibbonSyndicate2F", "receptionist_4", 16, 12, Direction.Down },
         new object[] { "ResortAreaRibbonSyndicateElevator", "receptionist", 1, 6, Direction.Right },
+        // The rooms' guests after the Hall of Fame (plan 02 · S15, part a)
+        new object[] { "PalParkLobby", "prof_oak", 7, 15, Direction.Down },
+        new object[] { "EternaCitySouthHouse", "prof_oak", 4, 5, Direction.Down },
+        new object[] { "IronIslandHouse", "byron", 5, 5, Direction.Down },
+        new object[] { "CanalaveLibrary1F", "lucian", 16, 5, Direction.Up },
     };
 
     [Theory]

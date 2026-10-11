@@ -19,10 +19,67 @@
     { "warp": 2, "to": "battle_frontier", "toWarp": 10 },
     { "warp": 3, "to": "battle_frontier", "toWarp": 11 }
   ],
-  // The rival, Volkner, Flint, Palmer, Buck and the onlookers of their tag battle before the Frontier's gate, and the
-  // two trainers who keep the way to Route 225 shut until it is fought (ace_trainer_m_2 and black_belt_2, hidden by
-  // FLAG_HIDE_FIGHT_AREA_BLOCKADE), wait for the story (plan 02 · S15)
+  // Plan 02 · S15, part a (scripts/fight_area.txt): the rival waits on the pier for whoever the ship brings, and
+  // takes them to the Frontier's gate, where Flint and Volkner battle the two of them before a crowd; Palmer comes
+  // out of the gate afterwards, and Buck has watched from beside the Mart. Two trainers keep the way north to Route
+  // 225 until that battle is won and the National Pokédex had (FLAG_HIDE_FIGHT_AREA_BLOCKADE). Their own looks are
+  // plan 11's: looks that exist stand for them
   "people": {
+    "rival": { "name": "{rival}", "script": "Rival", "still": true },
+    "buck": { "name": "Buck", "npcType": "Youngster", "script": "Buck", "still": true },
+    "flint": {
+      "name": "Flint", "npcType": "Youngster", "script": "Flint", "still": true,
+      "trainer": { "id": "elite_four_flint_fight_area",
+        "dialogueBefore": "Flint: Burn as bright as you can! I want to see it!",
+        "dialogueAfter": "Flint: ... ... ..." }
+    },
+    // (his team is named by the script, as a Gym Leader's is: battle volkner as "leader_volkner_fight_area")
+    "volkner": { "name": "Volkner", "npcType": "Youngster", "script": "Volkner", "still": true },
+    "palmer": { "name": "Palmer", "npcType": "Gentleman", "dialog": [ "Palmer: You'll find me at the top of the Battle Tower." ], "still": true },
+    "ace_trainer_m_2": {
+      "name": "Ace Trainer",
+      "dialog": [
+        "Hold on. You've a Pokédex there, haven't you? But only Sinnoh's Pokémon are in it.",
+        "The routes behind us are full of Pokémon it has never heard of. Come back when it knows the whole world's."
+      ],
+      "still": true
+    },
+    "black_belt_2": {
+      "name": "Black Belt",
+      "npcType": "BlackBelt",
+      "dialog": [
+        "Have you been up to the Battle Frontier's gate yet? No?",
+        "Then you've no business on the road north! Go and see what the strong look like first. Hah!"
+      ],
+      "still": true
+    },
+    "ace_trainer_m_3": {
+      "name": "Ace Trainer",
+      "dialog": [ "You learn a great deal just by watching a battle between the best. I've stood here since breakfast." ],
+      "still": true
+    },
+    "ace_trainer_f_2": {
+      "name": "Ace Trainer",
+      "dialog": [ "One of the Elite Four and a Gym Leader, battling side by side! I picked a lucky day to come." ],
+      "still": true
+    },
+    "black_belt_3": {
+      "name": "Black Belt",
+      "npcType": "BlackBelt",
+      "dialog": [ "Hrmm... Every move those two make gives me something to think about. A lot to think about!" ],
+      "still": true
+    },
+    "battle_girl_2": {
+      "name": "Battle Girl",
+      "dialog": [ "Are Volkner and Flint friends? They don't seem a bit alike. One's all fire and the other hardly says a word!" ],
+      "still": true
+    },
+    "sailor_3": {
+      "name": "Sailor",
+      "npcType": "Gentleman",
+      "dialog": [ "Fire and lightning on one team! Now there's a pairing you don't meet at sea every day." ],
+      "still": true
+    },
     "sailor_1": {
       "name": "Sailor",
       "npcType": "Gentleman",

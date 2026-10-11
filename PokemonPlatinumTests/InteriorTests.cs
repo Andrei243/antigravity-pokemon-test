@@ -286,7 +286,11 @@ public class InteriorTests
         Run("LittleSister", "SandgemTownCounterpartHouse1F", host);
         Assert.False(host.Story.Has("FLAG_TALKED_TO_COUNTERPART_SISTER_WITH_NATIONAL_DEX"));
         Assert.False(host.Encounters.SwarmsOn);
+        // She asks for the Hall of Fame and the National Pokédex both, as the original's does (plan 02 · S15, part a)
         host.Story.Set("FLAG_GAME_COMPLETED");
+        Run("LittleSister", "SandgemTownCounterpartHouse1F", host);
+        Assert.False(host.Encounters.SwarmsOn);
+        host.NationalDex = true;
         Run("LittleSister", "SandgemTownCounterpartHouse1F", host);
         Assert.True(host.Story.Has("FLAG_TALKED_TO_COUNTERPART_SISTER_WITH_NATIONAL_DEX"));
         Assert.True(host.Encounters.SwarmsOn);

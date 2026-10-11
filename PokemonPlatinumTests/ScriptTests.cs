@@ -364,6 +364,7 @@ public class ScriptTests
           team nature serious
           team size "Remoraid"
           team size keep
+          nationaldex
         script Other
           end
         """;
@@ -1281,5 +1282,7 @@ public class ScriptTests
         public void Cry(string species) { }
         public bool NationalDex => inner.NationalDex;
         public bool Save() => inner.Save();
+        public void GiveNationalDex() => inner.GiveNationalDex();
+        public int LeagueVictories => inner.LeagueVictories;
     }
 }

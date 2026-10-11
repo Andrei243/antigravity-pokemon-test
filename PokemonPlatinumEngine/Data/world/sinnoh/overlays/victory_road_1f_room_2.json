@@ -1,11 +1,17 @@
 {
   "area": "victory_road_1f_room_2",
   "bgmTrack": "sinnoh/victory_road",
-  // The long back room of Victory Road (plan 01 · M10, part a). In Platinum Marley waits just inside, joins the
-  // player (triggers 0 to 2) and battles beside them against the room's trainers, who stand in pairs and see the
-  // player together; she and her tag battles are the story's (plan 02 · S15). Until then each pair battles one after
-  // the other
+  // The long back room of Victory Road (plan 01 · M10, part a). Marley waits just inside, joins whoever comes in,
+  // walks behind them and battles beside them against the room's trainers, who stand in pairs and see the player
+  // together, and parts at the far end (plan 02 · S15, part a: scripts/victory_road_1f_room_2.txt; the original's
+  // three coordinate events). Her own look is plan 11's
+  "triggers": [
+    { "trigger": 0, "script": "MarleyParts" },
+    { "trigger": 1, "script": "PlayerTurnsBack" },
+    { "trigger": 2, "script": "MarleyJoins" }
+  ],
   "people": {
+    "marley": { "name": "Marley", "npcType": "Lass", "script": "Marley", "still": true },
     "ace_trainer_micah": {
       "name": "Micah",
       "trainer": {

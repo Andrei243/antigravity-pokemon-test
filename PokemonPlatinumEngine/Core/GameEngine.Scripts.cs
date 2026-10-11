@@ -1124,5 +1124,11 @@ public partial class GameEngine
 
         // The save is written where the player stands, as the start menu's is, with no question and no panel
         public bool Save() => SaveManager.SaveGame(game.BuildSave());
+
+        // ---- after the Hall of Fame (plan 02 · S15)
+
+        public void GiveNationalDex() => game.playerPokedex.UnlockNational();
+
+        public int LeagueVictories => game.hallOfFame.Total;
     }
 }

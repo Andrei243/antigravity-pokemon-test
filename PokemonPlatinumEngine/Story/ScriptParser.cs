@@ -20,7 +20,7 @@ namespace PokemonPlatinumEngine.Story;
 public static class ScriptParser
 {
     /// <summary>Variables a script may read but not write: the game keeps them.</summary>
-    public static readonly string[] BuiltInVariables = { "RESULT", "PLAYER_X", "PLAYER_Y", "MONEY", "PARTY_COUNT", "BADGE_COUNT", "GREETINGS", "SEEN", "LEAD_FRIENDSHIP", "TURNS", "SAFARI_CAUGHT" };
+    public static readonly string[] BuiltInVariables = { "RESULT", "PLAYER_X", "PLAYER_Y", "MONEY", "PARTY_COUNT", "BADGE_COUNT", "GREETINGS", "SEEN", "LEAD_FRIENDSHIP", "TURNS", "SAFARI_CAUGHT", "LEAGUE_VICTORIES" };
 
     private static readonly Regex Identifier = new("^[A-Za-z_][A-Za-z0-9_]*$", RegexOptions.Compiled);
     private static readonly Regex FlagName = new("^(FLAG_[A-Z0-9_]+|[A-Z][A-Za-z]+HallOfFame)$", RegexOptions.Compiled);
@@ -632,6 +632,10 @@ public static class ScriptParser
                 return new Instruction { Op = Op.Save, Line = line };
             case "credits":
                 return new Instruction { Op = Op.Credits, Line = line };
+
+            // After the Hall of Fame (plan 02 · S15): the Pokédex becomes the National one (SetNationalDexEnabled)
+            case "nationaldex":
+                return new Instruction { Op = Op.NationalDex, Line = line };
 
             case "script":
             case "label":

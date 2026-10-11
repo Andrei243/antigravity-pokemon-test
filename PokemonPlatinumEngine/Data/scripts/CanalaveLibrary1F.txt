@@ -2,8 +2,10 @@
 # language; the lines are our own, on the original's beats (scripts_canalave_library_1f.s).
 #
 # The librarian behind her desk and a girl reading at the shelves, who both have something else to say once Lake Valor
-# has blown (FLAG_LAKE_VALOR_EXPLODED). Lucian of the Elite Four reads here after the Hall of Fame (the original's
-# FLAG_HIDE_CANALAVE_LIBRARY_1F_LUCIAN): plan 02 · S15.
+# has blown (FLAG_LAKE_VALOR_EXPLODED). Lucian of the Elite Four reads at the shelves after the Hall of Fame (plan 02 ·
+# S15, part a; FLAG_HIDE_CANALAVE_LIBRARY_1F_LUCIAN, set from the start by common.ChapterSeven and cleared by every
+# victory at the League, PokemonLeagueHallOfFame.Victory): spoken to, he says which of five books he has in hand
+# (the original's roll of five), that he will see the player at the League, and goes out by the door.
 
 
 script Receptionist
@@ -28,4 +30,42 @@ script Lass
 label After
   face self player
   say "I can't take in a single word any more. That tremor has left me all in a flutter!"
+  end
+
+
+# CanalaveLibrary1F_Lucian
+script Lucian
+  face self player
+  speaker "Lucian"
+  say "Ah, the new Champion. Forgive me, I was miles away. Aren't books wonderful? An hour in here and I forget there is a League at all."
+  random 5
+  if result == 0 goto Letters
+  if result == 1 goto Humankind
+  if result == 2 goto Observations
+  if result == 3 goto Essays
+  say "This one is a book of philosophy. It asks what a Pokémon and a person owe one another, and has the grace not to answer."
+  goto Leaves
+label Letters
+  say "This one is a bundle of letters, written long ago by someone who crossed Sinnoh on foot. Every page smells of rain."
+  goto Leaves
+label Humankind
+  say "This one is a learned tome on humankind: why we gather, why we quarrel, why we keep Pokémon by us through it all."
+  goto Leaves
+label Observations
+  say "This one is a record of wild Pokémon, watched for years by somebody too patient ever to catch one."
+  goto Leaves
+label Essays
+  say "This one is a collection of essays on worlds that might be. Fancies, most of them. The best fancies are half true."
+label Leaves
+  say "But I have read long enough. Come and challenge us again, Champion. I shall be waiting at the Pokémon League."
+  # He goes round the player to the door (CanalaveLibrary1F_LucianLeaveNorth, West and East)
+  if facing right goto East
+  walk self left 5 down 6
+  goto Out
+label East
+  walk self down 1 left 5 down 5
+label Out
+  sound "stairs"
+  hide self
+  setflag FLAG_HIDE_CANALAVE_LIBRARY_1F_LUCIAN
   end

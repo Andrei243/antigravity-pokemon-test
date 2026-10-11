@@ -7,9 +7,12 @@
 # half of its door, and whoever steps up to the west half (the original's trigger 0, one tile at 366, 198, while
 # VAR_SNOWPOINT_CITY_STATE is 0) is turned back.
 #
-# After the Hall of Fame Candice comes up the street to let the Champion in, and Cynthia waits on the quay beside the
-# ship to the Battle Zone: both are plan 02 · S15's (FLAG_HIDE_SNOWPOINT_CITY_CANDICE, FLAG_HIDE_SNOWPOINT_CITY_CYNTHIA,
-# set from the start by common.ChapterEight), and so is the sailor's offer to sail.
+# After the Hall of Fame (plan 02 · S15, part a) the sailor on the quay takes a Champion to the Battle Zone: the
+# original asks FLAG_GAME_COMPLETED and nothing else, and lands the player on the Fight Area's pier at 623, 434, facing
+# east (TakeShipFromSnowpoint). The first time, Cynthia comes down to the quay to see the player off
+# (FLAG_HIDE_SNOWPOINT_CITY_CYNTHIA, set from the start by common.ChapterEight; FLAG_SAILED_TO_BATTLE_ZONE once she
+# has). Candice, who comes up the street to let a Champion with the National Pokédex into the temple
+# (FLAG_HIDE_SNOWPOINT_CITY_CANDICE), comes with the temple: plan 02 · S15, part b.
 
 
 # The temple's guard turns the player back (the original's coordinate event, script 3).
@@ -21,3 +24,50 @@ script TempleGuard
   face temple_guard down
   walk player down 1
   end
+
+
+# The sailor of the ship to the Battle Zone (the original's script 12, SnowpointCity_SailorSSSpiral)
+script Ship
+  face self player
+  if not flag FLAG_GAME_COMPLETED goto NotYet
+  ask "Ahoy, Champion! This ship is bound for the Battle Zone. Shall we cast off?"
+  if no goto Stay
+  if not flag FLAG_SAILED_TO_BATTLE_ZONE call CynthiaSeesOff
+  speaker self
+  say "All aboard, then! Next stop, the Fight Area!"
+  sound "stairs"
+  warp "Sinnoh" 623 434 right
+  end
+label NotYet
+  sayown
+  end
+label Stay
+  say "Suit yourself. But mind: there's no surfing across that sea. The only way to the Battle Zone is by this ship."
+  end
+
+
+# SnowpointCity_Cynthia: she comes down from the town to the head of the gangway, behind the player (a tile short of
+# the original's place, which is the tile at the player's back, where the player's own head would hide her)
+script CynthiaSeesOff
+  clearflag FLAG_HIDE_SNOWPOINT_CITY_CYNTHIA
+  place cynthia 366 241 left
+  show cynthia
+  walk cynthia left 4 down 2 left 6 down 1
+  speaker "Cynthia"
+  say "{player}! I'm so glad I waited. I had a feeling you would come this way."
+  emote player exclaim
+  face player up
+  walk cynthia right 1
+  wait 0.25
+  say "Do you know, I think it is a fine thing that our world keeps changing."
+  say "New places, new Pokémon, new people to meet. However far you go, there is always more of it."
+  walk cynthia left 1
+  face cynthia down
+  say "So go and see the far-off places, {player}. Meet everything they have to show you."
+  say "And when you come back, tell me all about it. Safe travels, Champion."
+  walk cynthia up 1 right 3 up 2 right 7
+  hide cynthia
+  setflag FLAG_HIDE_SNOWPOINT_CITY_CYNTHIA
+  face player down
+  setflag FLAG_SAILED_TO_BATTLE_ZONE
+  return

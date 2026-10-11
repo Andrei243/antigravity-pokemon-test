@@ -120,6 +120,17 @@
     }
   ],
   "signboards": [],
-  "npcs": [],
+  "npcs": [
+    {
+      "id": "byron",
+      "name": "Byron",
+      "npcType": "Gentleman",
+      "x": 5,
+      "y": 5,
+      "facing": "Down",
+      "script": "Byron",
+      "hiddenBy": "FLAG_HIDE_IRON_ISLAND_HOUSE_BYRON"
+    }
+  ],
   "wildEncounters": []
 }

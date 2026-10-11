@@ -1,0 +1,86 @@
+# Route 227 (plan 02 · S15, part a). docs/scripts.md describes the language; the lines are our own, on the original's
+# beats (scripts_route_227.s).
+#
+# At the foot of the road the rival is being put through his paces by Crasher Wake, whom he has made his master:
+# whoever steps up to them (the original's trigger at 738 and 739, 306, while VAR_ROUTE_227_WAKE_RIVAL_STATE is 0) is
+# greeted, and both go, Crasher Wake back down the road and the rival after him to the Battle Frontier. Further up,
+# before Stark Mountain, Buck asks the player to look round the mountain with him (the trigger at 758, 277, while
+# VAR_ROUTE_227_BUCK_STATE is 0) and won't take no for an answer. He waits on the road from then on, until the player
+# has gone into the mountain (the original's stark_mountain_room_1 hides him: plan 02 · S15, part b).
+
+
+# Route227_CoordEvent_WakeRival
+script WakeAndRival
+  if var PLAYER_X == 739 walk player left 1
+  face player up
+  face crasher_wake down
+  face rival down
+  emote crasher_wake exclaim
+  speaker "Crasher Wake"
+  say "Wahaha! Well, if it isn't {player}! The new Champion, come all the way out here!"
+  face rival left
+  wait 0.25
+  speaker "{rival}"
+  say "{player}, meet my master! I asked him to train me. Nobody in Sinnoh is tougher than Crasher Wake!"
+  face crasher_wake right
+  speaker "Crasher Wake"
+  say "Master, he says! I still can't make head or tail of it. You run off before I've finished a single lesson!"
+  speaker "{rival}"
+  say "Aw, don't be like that, Master! I'm listening! Mostly!"
+  face crasher_wake down
+  speaker "Crasher Wake"
+  say "{player}! That mountain up the road is no place to stroll into. Go fully prepared, or don't go at all!"
+  walk player left 1
+  face player right
+  move crasher_wake down 9
+  wait 0.3
+  face player down
+  face rival down
+  waitmoves
+  hide crasher_wake
+  setflag FLAG_HIDE_ROUTE_227_CRASHER_WAKE
+  walk player right 1 up 1
+  face player right
+  face rival left
+  wait 0.1
+  speaker "{rival}"
+  say "Right! Training's over, so I'm off to the Battle Frontier. My dad's at the top of it, and I'm going to beat him!"
+  say "You'd better come too, {player}. I'll be waiting, so don't make me wait long!"
+  move rival down 9 fast
+  wait 0.2
+  face player down
+  waitmoves
+  hide rival
+  setflag FLAG_HIDE_ROUTE_227_RIVAL
+  setvar VAR_ROUTE_227_WAKE_RIVAL_STATE 1
+  end
+
+
+# Route227_CoordEvent_Buck: he comes a step down the road to meet the player
+script BuckAsks
+  face buck down
+  emote buck exclaim
+  walk buck down 1
+  face player up
+  speaker "Buck"
+  say "Hey, {player}! It is you! I had a feeling you'd turn up here."
+label Ask
+  ask "Listen. Will you take a look round Stark Mountain with me?"
+  if yes goto Agreed
+  say "Aw, come on! I'll go on asking till you say yes, you know."
+  goto Ask
+label Agreed
+  face buck up
+  say "There's a bunch of goons in weird outfits poking about up there. I don't like the look of them one bit."
+  face buck down
+  say "What, me? Sure I'm coming! I'll be right behind you. Somebody has to keep an eye on the road!"
+  setvar VAR_ROUTE_227_BUCK_STATE 1
+  end
+
+
+# Route227_Buck
+script Buck
+  face self player
+  speaker "Buck"
+  say "Go on ahead! You're in charge, {player}. I'll catch you up."
+  end

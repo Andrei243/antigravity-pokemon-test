@@ -2,14 +2,15 @@
 # docs/scripts.md describes the language; the lines are our own, on the original's beats
 # (scripts_sandgem_town_counterpart_house_1f.s).
 #
-# The grandfather speaks of the professor, and of how many Pokémon there are once the Hall of Fame is behind the
-# player (the original asks for the National Pokédex, which no script can ask about yet: FLAG_GAME_COMPLETED stands
-# for it, as it does for the Victory Road collector). The little sister cheers the player on, and after the Hall of
-# Fame tells of the day's swarm: common.SwarmNews (plan 06 · R13), which begins the swarms the first time.
+# The grandfather speaks of the professor, and of how many Pokémon there are once the National Pokédex is the
+# player's (plan 02 · S15, part a). The little sister cheers the player on, and tells a Champion with the National
+# Pokédex of the day's swarm (the original asks for both): common.SwarmNews (plan 06 · R13), which begins the swarms
+# the first time and sets FLAG_TALKED_TO_COUNTERPART_SISTER_WITH_NATIONAL_DEX, which her big sister or brother in the
+# street asks about.
 
 
 script Grandfather
-  if flag FLAG_GAME_COMPLETED goto National
+  if nationaldex goto National
   say "So that Rowan is back, is he? A remarkable man. He was studying Pokémon before I had a grey hair on my head." "My son and my grandchild both help him with his research these days."
   end
 label National
@@ -18,7 +19,9 @@ label National
 
 
 script LittleSister
+  if not nationaldex goto Cheers
   if flag FLAG_GAME_COMPLETED goto Swarm
+label Cheers
   say "Who are you?" "... Oh! You're {player}? You're doing that Pokédex thing for the professor!"
   if girl goto Brother
   say "Wow! Just like my big sister! Go for it!"

@@ -7,8 +7,8 @@
 # machines keep; FLAG_RECEIVED_GAME_CORNER_TM64). Two of the players give Coins away once each
 # (FLAG_RECEIVED_GAME_CORNER_20_COINS_OLD_MAN, FLAG_RECEIVED_GAME_CORNER_50_COINS_FARMER). Looker sits at a machine
 # until the Cobble Badge is won (FLAG_HIDE_GAME_CORNER_LOOKER, set in the Veilstone Gym). The original brings him back
-# once Charon is caught at Stark Mountain, with other words (FLAG_ARRESTED_CHARON_STARK_MOUNTAIN): plan 02 · S15 clears
-# his flag there and adds that line here.
+# once Charon is caught at Stark Mountain, with other words (FLAG_ARRESTED_CHARON_STARK_MOUNTAIN): the words are here
+# (plan 02 · S15, part a), and the scene at Stark Mountain that sets that flag and clears his is plan 02 · S15, part b.
 
 
 script Machine0
@@ -262,5 +262,10 @@ label Most
 
 
 script Looker
+  # GameCorner_Looker_PostStarkMountain
+  if flag FLAG_ARRESTED_CHARON_STARK_MOUNTAIN goto After
   say "Shh! I am not here. That is to say, I am here, but as a man who plays the machines, nothing more." "One hears a great deal at a place like this, if one sits very still and keeps losing."
+  end
+label After
+  say "Ah! My friend! The case is closed, the last of them is behind bars, and so I allow myself a small holiday." "You see? Now I am a man who plays the machines, nothing more, and it is the truth. If only the machines would let me win once!"
   end

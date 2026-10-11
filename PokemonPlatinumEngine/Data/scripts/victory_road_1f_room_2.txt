@@ -1,0 +1,120 @@
+# The long back room of Victory Road (plan 02 · S15, part a). docs/scripts.md describes the language; the lines are
+# our own, on the original's beats (scripts_victory_road_1f_room_2.s, scripts_follower_partners.s).
+#
+# Marley waits just inside the way in from the first back room. Whoever comes in and steps towards her (the original's
+# coordinate event down column 5, rows 55 to 60) is asked to take her through: she walks behind the player as
+# Platinum's "marley_victory_road", heals the team after every battle and battles beside them against the room's
+# trainers, who stand in pairs. Turning back for the way in (column 4, the same rows) sends her back to wait where she
+# stood; at the room's far end (row 19, columns 51 to 54, before the way on to Route 224) she thanks the player and
+# goes on ahead, and has travelled with them for good (FLAG_TRAVELED_WITH_MARLEY, which lets her into the Battle
+# Tower's Battle Salon).
+# VAR_VICTORY_ROAD_1F_ROOM_2_FOLLOWER_MARLEY_STATE: 0 not with her, 1 together, 2 parted.
+
+
+# Away from the room without having seen her through, she waits where she first stood (the original's OnTransition)
+script OnEnter
+  if flag FLAG_TRAVELED_WITH_MARLEY end
+  if partner end
+  setvar VAR_VICTORY_ROAD_1F_ROOM_2_FOLLOWER_MARLEY_STATE 0
+  place marley 7 58 right
+  end
+
+
+# VictoryRoad1FRoom2_CoordEvent_MarleyStartFollowing: she comes up to whichever row the player is in
+script MarleyJoins
+  face marley left
+  emote marley exclaim
+  if var PLAYER_Y == 55 walk marley up 3 left 1
+  if var PLAYER_Y == 56 walk marley up 2 left 1
+  if var PLAYER_Y == 57 walk marley up 1 left 1
+  if var PLAYER_Y == 58 walk marley left 1
+  if var PLAYER_Y == 59 walk marley down 1 left 1
+  if var PLAYER_Y == 60 walk marley down 2 left 1
+  face player right
+  speaker "Marley"
+  if flag FLAG_TALKED_TO_VICTORY_ROAD_1F_ROOM_2_MARLEY goto Again
+  say "...I'm Marley. There is somewhere beyond this cave I want to reach, but the Trainers in here come at you two at a time."
+  say "...{player}, isn't it? Let me go with you. Please."
+  goto Together
+label Again
+  say "...You took so long. I thought you had changed your mind about me."
+label Together
+  fanfare levelup
+  text "{player} decided to go with Marley."
+  setflag FLAG_TALKED_TO_VICTORY_ROAD_1F_ROOM_2_MARLEY
+  setvar VAR_VICTORY_ROAD_1F_ROOM_2_FOLLOWER_MARLEY_STATE 1
+  speaker "Marley"
+  say "...I'll see to your Pokémon after every battle. It's the least I can do."
+  partner marley "marley_victory_road"
+  end
+
+
+# VictoryRoad1FRoom2_CoordEvent_PlayerLeaveMarley: a step behind the player, she is on the tile to the east
+script PlayerTurnsBack
+  partner off
+  if var PLAYER_Y == 55 place marley 5 55 left
+  if var PLAYER_Y == 56 place marley 5 56 left
+  if var PLAYER_Y == 57 place marley 5 57 left
+  if var PLAYER_Y == 58 place marley 5 58 left
+  if var PLAYER_Y == 59 place marley 5 59 left
+  if var PLAYER_Y == 60 place marley 5 60 left
+  face player right
+  speaker "Marley"
+  say "...You're going back? ...I see. I'll wait here, then."
+  setvar VAR_VICTORY_ROAD_1F_ROOM_2_FOLLOWER_MARLEY_STATE 0
+  if var PLAYER_Y == 55 walk marley right 2 down 3
+  if var PLAYER_Y == 56 walk marley right 2 down 2
+  if var PLAYER_Y == 57 walk marley right 2 down 1
+  if var PLAYER_Y == 58 walk marley right 2
+  if var PLAYER_Y == 59 walk marley right 2 up 1
+  if var PLAYER_Y == 60 walk marley right 2 up 2
+  face marley right
+  end
+
+
+# VictoryRoad1FRoom2_CoordEvent_MarleyLeavePlayer: she is on the tile to the south, and goes on to the way out
+script MarleyParts
+  partner off
+  if var PLAYER_X == 51 place marley 51 20 up
+  if var PLAYER_X == 52 place marley 52 20 up
+  if var PLAYER_X == 53 place marley 53 20 up
+  if var PLAYER_X == 54 place marley 54 20 up
+  face player down
+  emote marley exclaim
+  speaker "Marley"
+  say "...This is far enough. The way out is just ahead. I can smell the sea from here."
+  say "...Thank you for bringing me, {player}. You are strong. And kinder than you look."
+  if var PLAYER_X == 54 goto East
+  if var PLAYER_X == 51 move marley right 1 up 7 right 3
+  if var PLAYER_X == 52 move marley right 1 up 7 right 2
+  if var PLAYER_X == 53 move marley right 1 up 7 right 1
+  wait 0.3
+  face player right
+  goto Gone
+label East
+  move marley left 1 up 7 right 2
+  wait 0.3
+  face player left
+label Gone
+  wait 0.4
+  face player up
+  waitmoves
+  hide marley
+  setflag FLAG_HIDE_VICTORY_ROAD_1F_ROOM_2_MARLEY
+  setflag FLAG_TRAVELED_WITH_MARLEY
+  setvar VAR_VICTORY_ROAD_1F_ROOM_2_FOLLOWER_MARLEY_STATE 2
+  end
+
+
+# Marley, spoken to on the way (the original's FollowerPartners_Marley)
+script Marley
+  face self player
+  speaker "Marley"
+  if var VAR_FOLLOWER_MARLEY_TIMES_TALKED >= 1 goto Flowers
+  say "...You talk a lot. ...I don't mind it. I'm only not used to it."
+  addvar VAR_FOLLOWER_MARLEY_TIMES_TALKED 1
+  end
+label Flowers
+  say "...Beyond this cave the flowers grow down to the sea. They say a Pokémon lives among them that carries thanks to people far away."
+  say "...There is someone I would like to thank."
+  end

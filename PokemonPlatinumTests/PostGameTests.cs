@@ -331,7 +331,11 @@ public class PostGameTests
             Assert.True(grounds.IsWalkable(into.TargetX, into.TargetY));
             var back = grounds.GetWarpAt(48 + i, 52)!;
             Assert.Equal(("Sinnoh", 654 + i, 424, Direction.Down), (back.TargetMap, back.TargetX, back.TargetY, back.TargetFacing));
-            Assert.True(map.IsWalkable(back.TargetX, back.TargetY));
+            // The ground before the gate is open, and the two who stand on it until the tag battle is won (Flint and
+            // Volkner, plan 02 · S15, part a: nobody goes in before then, as in the original) go by that battle's flag
+            Assert.False(map.IsSolid(back.TargetX, back.TargetY));
+            Assert.All(map.Everyone.Where(n => (n.GridX, n.GridY) == (back.TargetX, back.TargetY)),
+                n => Assert.Equal("FLAG_HIDE_FIGHT_AREA_BATTLERS_AND_SPECTATORS", n.HiddenBy));
         }
         // (the gate's two, the Battle Tower's two and the Battle Factory's three)
         Assert.Equal(7, grounds.Warps.Count);

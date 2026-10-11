@@ -26,7 +26,7 @@
     },
     // The assistant sends the player home without the rival's parcel, and shows how Pokémon are caught with it
     // (scripts/route_202.txt; plan 02 · S4)
-    "counterpart": { "name": "{assistant}", "npcType": "Assistant", "script": "CatchingLesson" },
+    "counterpart": { "name": "{assistant}", "npcType": "Assistant", "script": "Counterpart" },
     "youngster": {
       "name": "Boy",
       "dialog": [

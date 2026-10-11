@@ -797,6 +797,12 @@ public sealed partial class ScriptRunner
                 host.Open(ScriptScreen.Credits, Subject);
                 break;
 
+            // After the Hall of Fame (plan 02 · S15): the Pokédex is upgraded to the National one, without a word
+            // (SetNationalDexEnabled). The words and the fanfare are the script's
+            case Op.NationalDex:
+                host.GiveNationalDex();
+                break;
+
             default:
                 throw Wrong(i, $"the runner doesn't know how to carry out '{i.Op}'");
         }
@@ -1436,6 +1442,9 @@ public sealed partial class ScriptRunner
         // one), and the Pokémon caught in the Safari Game under way or just over (plan 01 · M11, part b)
         "TURNS" => turns,
         "SAFARI_CAUGHT" => host.Safari.Caught,
+        // How many times the team has entered the Hall of Fame (the original's GetLeagueVictories; plan 02 · S15: the
+        // rival's team in the Survival Area)
+        "LEAGUE_VICTORIES" => host.LeagueVictories,
         _ => host.Story.Var(variable)
     };
 

@@ -84,6 +84,10 @@ public sealed class ScriptLibrary
     /// called by <see cref="ChapterTen"/>, and run for a save from before.</summary>
     public const string ChapterEleven = "common.ChapterEleven";
 
+    /// <summary>The script that hides whoever the time after the Hall of Fame brings on later (plan 02 · S15): called
+    /// by <see cref="ChapterEleven"/>, and run for a save from before.</summary>
+    public const string ChapterTwelve = "common.ChapterTwelve";
+
     /// <summary>
     /// The script of everything a victory in the Hall of Fame sets (plan 02 · S14; the original's
     /// <c>SetHallOfFameVictoryFlagsAndVars</c>): called by the room's scene, and run with no screen for a save that

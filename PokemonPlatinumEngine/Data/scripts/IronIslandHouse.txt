@@ -1,0 +1,39 @@
+# The cabin on Iron Island (plan 01 · M11, part b, built it; its guest plan 02 · S15, part a), on the original's plan.
+# docs/scripts.md describes the language; the lines are our own, on the original's beats (scripts_iron_island_house.s).
+#
+# Byron of Canalave's Gym is found here once the National Pokédex is the player's: the room's arrival shows him
+# (FLAG_HIDE_IRON_ISLAND_HOUSE_BYRON, set from the start by common.ChapterTwelve), he hands over a Metal Coat, once
+# (FLAG_RECEIVED_IRON_ISLAND_HOUSE_METAL_COAT), and goes out by the door.
+
+
+# IronIslandHouse_OnTransition
+script OnEnter
+  if flag FLAG_RECEIVED_IRON_ISLAND_HOUSE_METAL_COAT goto Gone
+  if nationaldex clearflag FLAG_HIDE_IRON_ISLAND_HOUSE_BYRON
+  end
+label Gone
+  setflag FLAG_HIDE_IRON_ISLAND_HOUSE_BYRON
+  end
+
+
+# IronIslandHouse_Byron
+script Byron
+  face self player
+  speaker "Byron"
+  say "Gahaha! So you found my hideaway! I come out here to dig, and to think, and nobody is supposed to know."
+  say "Ah, never mind. I was rude to walk off like that after our battle. Take this, by way of saying sorry!"
+  give "Metal Coat"
+  setflag FLAG_RECEIVED_IRON_ISLAND_HOUSE_METAL_COAT
+  say "There are Pokémon that evolve when they are traded holding a Metal Coat. Steel suits them, you'll see! Gahaha!"
+  # He goes round the player to the door (IronIslandHouse_ByronLeaveNorthWest and SouthEast)
+  if facing left goto NorthWest
+  if facing up goto NorthWest
+  walk self down 2 left 1 down 1
+  goto Out
+label NorthWest
+  walk self left 1 down 3
+label Out
+  sound "stairs"
+  hide self
+  setflag FLAG_HIDE_IRON_ISLAND_HOUSE_BYRON
+  end

@@ -1,0 +1,71 @@
+# The south house of Eterna City (plan 01 · M11, part a, built it; its guest plan 02 · S15, part a), on the original's
+# plan. docs/scripts.md describes the language; the lines are our own, on the original's beats
+# (scripts_eterna_city_south_house.s).
+#
+# Professor Oak stays here once he has met the player in Pal Park's lobby (FLAG_HIDE_ETERNA_CITY_SOUTH_HOUSE_PROF_OAK,
+# set from the start by common.ChapterThree and cleared there). The first time he is spoken to he gives the Upgrade
+# an acquaintance sent him (FLAG_RECEIVED_ETERNA_CITY_SOUTH_HOUSE_UPGRADE) and tells of three bird Pokémon of his own
+# region sighted in Sinnoh: Moltres, Zapdos and Articuno are set roaming (roamer start, plan 06 · R13;
+# FLAG_ACTIVATED_ROAMING_LEGENDARY_BIRDS). From then on he sets loose again whichever the Hall of Fame has brought
+# back after it was knocked out (VAR_ROAMING_<BIRD>_STATE 3 made 0), and has a word for whoever has caught all three
+# (FLAG_CAUGHT_ROAMING_LEGENDARY_BIRDS).
+#
+# Left out: his rating of the National Pokédex (PokedexRatings_CheckOak), whose steps are counted against the 493
+# Pokémon of the original's and wait for plan 03 to say what this game's National Pokédex asks for.
+
+
+script Oak
+  face self player
+  speaker "Prof. Oak"
+  if flag FLAG_CAUGHT_ROAMING_LEGENDARY_BIRDS goto Pokedex
+  # EternaCitySouthHouse_CheckCaughtAllRoamingLegendaryBirds: 1 is a roamer caught (Roamers.Captured)
+  if var VAR_ROAMING_MOLTRES_STATE != 1 goto NotAll
+  if var VAR_ROAMING_ZAPDOS_STATE != 1 goto NotAll
+  if var VAR_ROAMING_ARTICUNO_STATE != 1 goto NotAll
+  setflag FLAG_CAUGHT_ROAMING_LEGENDARY_BIRDS
+  say "What? You have caught Moltres, Zapdos and Articuno? All three?!"
+  say "In all my years in Kanto I never managed so much as one. {player}, you are a marvel. May I look at them some time?"
+  end
+label NotAll
+  if flag FLAG_ACTIVATED_ROAMING_LEGENDARY_BIRDS goto Again
+  if flag FLAG_RECEIVED_ETERNA_CITY_SOUTH_HOUSE_UPGRADE goto Pokedex
+  say "{player}! Good of you to call. And how is that Pokédex of yours coming along?"
+  emote self exclaim
+  say "Oh, before I forget! An acquaintance sent me something, and I can think of nobody better to have it."
+  give "Upgrade"
+  setflag FLAG_RECEIVED_ETERNA_CITY_SOUTH_HOUSE_UPGRADE
+  say "There is a Pokémon that evolves when it is traded holding that Upgrade. I shall leave you to find out which."
+  # EternaCitySouthHouse_ActivateRoamingLegendaryBirds
+  roamer start "Moltres"
+  roamer start "Zapdos"
+  roamer start "Articuno"
+  setflag FLAG_ACTIVATED_ROAMING_LEGENDARY_BIRDS
+  say "Now, here is something that will interest you. Three bird Pokémon of legend from my own Kanto have been sighted here in Sinnoh: Moltres, Zapdos and Articuno!"
+  say "They never stay anywhere for long. Keep your eyes open on the routes, {player}, and your Pokédex ready."
+  end
+label Again
+  # EternaCitySouthHouse_TryReactivateRoamingLegendaryBirds: 3 is one the Hall of Fame has brought back (Roamers.Reset)
+  if var VAR_ROAMING_MOLTRES_STATE == 3 call MoltresAgain
+  if var VAR_ROAMING_ZAPDOS_STATE == 3 call ZapdosAgain
+  if var VAR_ROAMING_ARTICUNO_STATE == 3 call ArticunoAgain
+  say "The legendary birds are rare in the extreme, {player}. To come across even one of them is a stroke of luck."
+  say "Should one get away from you, don't lose heart. They are still out there, somewhere in Sinnoh."
+  end
+label Pokedex
+  say "A Pokédex is never truly finished, {player}. That is the pleasure of it. Go on meeting Pokémon, and come and tell me of them."
+  end
+
+script MoltresAgain
+  setvar VAR_ROAMING_MOLTRES_STATE 0
+  roamer start "Moltres"
+  return
+
+script ZapdosAgain
+  setvar VAR_ROAMING_ZAPDOS_STATE 0
+  roamer start "Zapdos"
+  return
+
+script ArticunoAgain
+  setvar VAR_ROAMING_ARTICUNO_STATE 0
+  roamer start "Articuno"
+  return

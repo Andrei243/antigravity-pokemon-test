@@ -4,6 +4,51 @@
 # The assistant waits at the south end of the road. Until the player has been home and been given the rival's
 # parcel, they send the player back to tell their family; with it, they show how a Pokémon is caught and give the
 # player Poké Balls. VAR_ROUTE_202_STATE: 1 shown.
+#
+# After the Hall of Fame (plan 02 · S15, part a): once the professor has given the Poké Radar, the assistant offers in
+# Sandgem Town to show how it is used (sandgem_town.Counterpart makes the state 2) and waits for the player in the
+# grass further up the road, at the original's 186, 817. Spoken to there she shows a patch of grass shaking, tells of
+# the chain, and goes back to stand before the lab (state 3).
+
+
+# Route202_OnTransition: while her lesson waits she stands in the grass (the original's ClearFlag is its Sandgem
+# script's; here she comes onto the road as the player does, already in her place)
+script OnEnter
+  if var VAR_ROUTE_202_STATE != 2 end
+  place counterpart 186 817 down
+  clearflag FLAG_HIDE_ROUTE_202_COUNTERPART
+  end
+
+
+# The assistant, spoken to (the original's script 7): the Poké Radar's lesson, or the road's first scene again
+script Counterpart
+  if var VAR_ROUTE_202_STATE == 2 goto Radar
+  call CatchingLesson
+  end
+label Radar
+  face self player
+  speaker "{assistant}"
+  say "{player}! You came! Right, the Poké Radar. Let me show you how it works."
+  camera pan 189 818 0.8
+  face self right
+  face player right
+  wait 0.25
+  say "You use it standing in tall grass, like that patch over there, and then you watch. Here and there the grass will shake, and a Pokémon is hiding in every patch that does."
+  say "Walk straight into one, without stepping out of the grass, and it jumps out at you."
+  camera release 0.6
+  face self player
+  face player self
+  say "And here's the strange part. Catch it, or make it faint, and the grass shakes again. Go into another shaking patch and the very same kind of Pokémon is there!"
+  say "Keep that going and you have a chain. The longer the chain, the likelier it is that a patch will sparkle instead of shaking... I'll leave you to find out what's in those."
+  say "One more thing: the Radar's battery runs flat when you use it. Fifty steps on foot charges it up again. Good luck, {player}!"
+  # Route202_CounterpartLeavePokeRadar: round the player and back down the road to Sandgem Town
+  if facing up walk self left 1
+  walk self down 3 left 10
+  hide self
+  setflag FLAG_HIDE_ROUTE_202_COUNTERPART
+  clearflag FLAG_HIDE_SANDGEM_TOWN_COUNTERPART
+  setvar VAR_ROUTE_202_STATE 3
+  end
 
 
 # The road north out of Sandgem Town (the original's trigger 6).

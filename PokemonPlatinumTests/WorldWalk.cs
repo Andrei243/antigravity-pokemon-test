@@ -214,25 +214,20 @@ internal static class WorldWalk
     /// Where the story alone takes the player, with no way there on foot yet: a walk of the whole game sets out from
     /// these too, as the player will once the scenes open them. (The Distortion World's two arrivals stood here until
     /// plan 02 · S12's scenes led there: Cynthia's question at the torn pillar and the portal in Turnback Cave's last
-    /// room, which the walk follows by itself.) The Battle Zone
-    /// (plan 01 · M10, part a), where the ship from Snowpoint City lands the player on the Fight Area's pier once the
-    /// Hall of Fame has been entered (the original's TakeShipFromSnowpoint to 623, 434, facing east; plan 02 · S15
-    /// gives Snowpoint's sailor the script, and the walk then finds the way by itself). And the two islands of plan 01 ·
+    /// room, which the walk follows by itself; so did the Fight Area's pier until plan 02 · S15, part a gave Snowpoint
+    /// City's sailor his ship, and Pal Park's lobby until the same session took Route 221's workers from its doors.)
+    /// The two islands of plan 01 ·
     /// M10, part b, where Canalave City's sailor takes the player once the story lets him (the original's
     /// TakeShipFromCanalave to 39, 277 of Fullmoon Island, facing west, and to 152, 277 of Newmoon Island, facing east,
     /// where the Harbor Inn's bed also leaves the player; plan 02 · S15 gives the sailor those two answers), and
     /// Snowpoint Temple, whose doors stay shut until Candice lets the Champion in (plan 02 · S15: the tile inside its
     /// mat, where a door leaves whoever comes in).
-    /// And Pal Park's lobby (plan 06 · R16b), before whose doors Route 221's two workers stand until the National
-    /// Pokédex is had (plan 02 · S15 sets the flags that hide them, and the walk then finds the way by itself).
     /// </summary>
     public static readonly MapSpot[] StoryArrivals =
     {
-        new("Sinnoh", 623, 434, Direction.Right),
         new("Sinnoh", 39, 277, Direction.Left),
         new("Sinnoh", 152, 277, Direction.Right),
         new("SnowpointTemple1F", 8, 12, Direction.Up),
-        new("PalParkLobby", 7, 19, Direction.Up),
     };
 
     /// <summary>The whole game from where each region that is built begins, and from where only the story takes the player.</summary>

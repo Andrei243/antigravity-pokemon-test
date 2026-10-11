@@ -1,21 +1,20 @@
 # Victory Road's first floor (plan 01 · M10, part a). docs/scripts.md describes the language; the lines are our own,
 # on the original's beats (scripts_victory_road_1f.s).
 #
-# A collector stands in the way through to the cave's back rooms and Route 224 beyond them. The original's arrival
+# A collector stands in the way through to the cave's back rooms and Route 224 beyond them. The floor's arrival
 # script takes him away once the Hall of Fame has been entered (FLAG_GAME_COMPLETED) and the National Pokédex is in
-# hand; here the Hall of Fame alone moves him, until the professor's gift of the National Pokédex is something a
-# script can ask about (plan 02 · S15 adds that question to this line).
+# hand (plan 02 · S15, part a), as the original's does.
 
 script OnEnter
   # VictoryRoad_OnTransition (the flag is the original's; Fly doesn't come here)
   setflag FLAG_FIRST_ARRIVAL_VICTORY_ROAD
-  if flag FLAG_GAME_COMPLETED setflag FLAG_HIDE_VICTORY_ROAD_1F_COLLECTOR
+  if not flag FLAG_GAME_COMPLETED end
+  if nationaldex setflag FLAG_HIDE_VICTORY_ROAD_1F_COLLECTOR
   end
 
 
-# The collector (the original's script 2). His second line is for a Champion whom he still keeps out, which in the
-# original is one without the National Pokédex: here nobody hears it until this floor's arrival asks for that too
-# (plan 02 · S15), since the Hall of Fame alone takes him away.
+# The collector (the original's script 2). His second line is for a Champion whom he still keeps out: one without
+# the National Pokédex.
 script Collector
   face self player
   if flag FLAG_GAME_COMPLETED goto Champion

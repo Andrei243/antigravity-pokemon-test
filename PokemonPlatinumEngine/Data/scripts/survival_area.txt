@@ -1,11 +1,81 @@
-# The Survival Area (plan 01 · M10, part a). docs/scripts.md describes the language; the lines are our own, on the
-# original's beats (scripts_survival_area.s).
+# The Survival Area (plan 01 · M10, part a; its story plan 02 · S15, part a). docs/scripts.md describes the language;
+# the lines are our own, on the original's beats (scripts_survival_area.s).
 #
-# The Battleground's door, read where it stands (the original's script 7). It stays shut until the story has been to
-# Stark Mountain: the original moves the door's warp away until FLAG_ARRESTED_CHARON_STARK_MOUNTAIN (plan 02 · S15
-# opens it, and brings Buck and the rival to its step).
+# The Battleground's door, read where it stands (the original's script 7). It stays shut until Charon has been caught
+# at Stark Mountain: the original moves the door's warp away until FLAG_ARRESTED_CHARON_STARK_MOUNTAIN (plan 02 · S15,
+# part c builds the room and opens it).
+#
+# Buck and the rival come to its step only then, too (the original hides both from the start, and the last scene of
+# Stark Mountain clears FLAG_HIDE_SURVIVAL_AREA_BUCK and FLAG_HIDE_SURVIVAL_AREA_RIVAL: plan 02 · S15, part b). Buck
+# says this is his place and goes in. The rival trains before the door from then on: on Saturdays and Sundays he
+# battles, once a day (FLAG_DAILY_DEFEATED_SURVIVAL_AREA_RIVAL), with the stronger of his two teams once the player
+# has entered the Hall of Fame twenty times (the original's GetLeagueVictories); on other days he has one of three
+# things to say. The original draws which as the town is come to; here he is asked as he is spoken to.
 
 script BattlegroundDoor
   text "The door is locked."
   text "A plate beside it reads: \"Members only.\""
+  end
+
+
+# SurvivalArea_Buck
+script Buck
+  face self player
+  speaker "Buck"
+  say "{player}! You made it! Well, this is it: my place. The Battleground."
+  say "Only the toughest Trainers I know get asked inside. After what we went through up the mountain, that means you. Come in whenever you like!"
+  face self up
+  sound "door_open"
+  wait 0.3
+  hide self
+  setflag FLAG_HIDE_SURVIVAL_AREA_BUCK
+  sound "door_close"
+  end
+
+
+# SurvivalArea_Rival
+script Rival
+  face self player
+  speaker "{rival}"
+  if weekday saturday goto Weekend
+  if weekday sunday goto Weekend
+  random 3
+  if result == 0 goto PilingUp
+  if result == 1 goto Everyone
+  say "You know what I've worked out, {player}? The best Trainers are the ones who are crazy about their Pokémon. That's all there is to it!"
+  end
+label PilingUp
+  say "{player}! I'm piling up the wins at the Battle Frontier! My dad had better watch out. I'm coming for him!"
+  end
+label Everyone
+  say "Have you battled everybody in the Battleground yet, {player}? I have. Twice! ...All right, I lost a few."
+  end
+label Weekend
+  if flag FLAG_DAILY_DEFEATED_SURVIVAL_AREA_RIVAL goto After
+  say "{player}! Perfect timing! It's the weekend, and that means it's time I proved which of us is tougher!"
+  if var LEAGUE_VICTORIES >= 20 goto Stronger
+  if starter "Chimchar" goto Chimchar
+  if starter "Piplup" goto Piplup
+  battle self as "rival_survival_area_1_turtwig"
+  goto Won
+label Chimchar
+  battle self as "rival_survival_area_1_chimchar"
+  goto Won
+label Piplup
+  battle self as "rival_survival_area_1_piplup"
+  goto Won
+label Stronger
+  if starter "Chimchar" goto Chimchar2
+  if starter "Piplup" goto Piplup2
+  battle self as "rival_survival_area_2_turtwig"
+  goto Won
+label Chimchar2
+  battle self as "rival_survival_area_2_chimchar"
+  goto Won
+label Piplup2
+  battle self as "rival_survival_area_2_piplup"
+label Won
+  setflag FLAG_DAILY_DEFEATED_SURVIVAL_AREA_RIVAL
+label After
+  say "Argh! You just keep getting tougher, {player}! Fine! Then so will I. Same time next week!"
   end
