@@ -142,6 +142,7 @@
       "x": 6,
       "y": 7,
       "facing": "Up",
+      "script": "Assistant",
       "hiddenBy": "FLAG_HIDE_SANDGEM_TOWN_LAB_COUNTERPART"
     }
   ],

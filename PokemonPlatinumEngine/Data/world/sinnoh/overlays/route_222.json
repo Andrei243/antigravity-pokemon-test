@@ -20,14 +20,8 @@
         "One good bite like that and I'm smiling for a week. That's why I keep coming back."
       ]
     },
-    // In Platinum he gives away the TM for Fling; the gift is plan 02's (S7)
-    "rich_boy": {
-      "name": "Rich Boy",
-      "dialog": [
-        "Fling is a move that hurls whatever your Pokémon is holding straight at the foe.",
-        "Heavy things hit hardest, and some items do something rather odd when they land. Do experiment!"
-      ]
-    },
+    // He gives away the TM for Fling, once (plan 02 · S13, scripts/route_222.txt)
+    "rich_boy": { "name": "Rich Boy", "script": "RichBoy" },
     "fisherman_brett": {
       "name": "Brett",
       "trainer": {

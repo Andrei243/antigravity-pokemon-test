@@ -2,8 +2,7 @@
   "area": "lake_verity",
   "bgmTrack": "sinnoh/lake",
   "trees": "Pine",
-  // Verity Cavern on the island opens with the lake guardians' return (plan 02 · S13)
-  "locked": [ 0 ],
+  // Warp 0 is Verity Cavern's mouth on the island (plan 02 · S13 opened the cavern), reached over the water
   // Lake Verity as Team Galactic holds it (plan 02 · S10, scripts/lake_verity.txt): the professor held back by a grunt
   // at the way in, four grunts in pairs along the shore, and Commander Mars at the water's edge with the assistant,
   // whom she has beaten. Everyone of Team Galactic leaves with her (FLAG_HIDE_LAKE_VERITY_TEAM_GALACTIC).

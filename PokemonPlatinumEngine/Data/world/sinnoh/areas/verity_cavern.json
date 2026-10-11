@@ -1,0 +1,26 @@
+{
+  "key": "verity_cavern",
+  "index": 313,
+  "name": "Verity Cavern",
+  "matrix": 103,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "Cave",
+  "battleBackground": "Cave3",
+  "dayMusic": "D_RYAYHY",
+  "nightMusic": "D_RYAYHY",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 14, "z": 29, "to": "lake_verity", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "mesprit", "looks": "mesprit", "movement": "look_south", "x": 12, "z": 13, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_VERITY_CAVERN_MESPRIT", "script": "2" },
+    { "id": "prof_rowan", "looks": "prof_rowan", "movement": "look_north", "x": 12, "z": 22, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_VERITY_CAVERN_PROF_OAK", "script": "0" }
+  ],
+  "signs": [],
+  "triggers": []
+}

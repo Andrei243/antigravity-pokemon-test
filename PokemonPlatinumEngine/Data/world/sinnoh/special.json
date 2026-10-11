@@ -3,6 +3,9 @@
   // the Pokédex's area page beside habitats.json. Cells are chunks of the overworld, as there.
   "map": [],
   "areas": [
-    { "key": "route_209", "name": "Route 209", "cells": "17,22", "special": [ "Spiritomb" ], "how": "The Hallowed Tower" }
+    { "key": "route_209", "name": "Route 209", "cells": "17,22", "special": [ "Spiritomb" ], "how": "The Hallowed Tower" },
+    // Plan 02 · S13: the two guardians that wait in the caverns of their lakes (Mesprit roams, and has no place of its own)
+    { "key": "lake_valor", "name": "Lake Valor", "cells": "22,23", "special": [ "Azelf" ], "how": "Valor Cavern" },
+    { "key": "lake_acuity", "name": "Lake Acuity", "cells": "9,7", "special": [ "Uxie" ], "how": "Acuity Cavern" }
   ]
 }

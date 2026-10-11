@@ -38,7 +38,8 @@ that exists, every script to something that starts it, and plays each to its end
   (`triggers`: the tiles, the variable and the value stay the import's).
 - **Arriving.** A file's `OnEnter` runs when the player comes to its place by a door, a warp, a loaded save, or
   by walking across the border of its area. It runs every time, so it asks a variable or a flag before it does
-  anything.
+  anything. It may carry the player on by itself: the Vista Lighthouse's lift is a room whose arrival walks its
+  rider in, rides and warps them to the other end (plan 02 · S13).
 - **Facing an obstacle or the water** (plan 02 · S2). A thin tree, a cracked rock and a boulder are things of the
   map (`npcType` `CutTree`, `CrackedRock`, `StrengthBoulder`) and run `CutTree`, `Rock` and `Boulder` when the
   player faces one and presses the button. The tile ahead starts one too, as the original's

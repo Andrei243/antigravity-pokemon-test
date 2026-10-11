@@ -114,7 +114,57 @@ internal static class PropModels
             // The seats of the rooms rebuilt to the original's plans (plan 01 · M11): walked onto, never in the way
             case PropType.Cushion: Cushion(kit); break;
             case PropType.FlowerStand: FlowerStand(kit, p); break;
+            // A lift (plan 02 · S13, the Vista Lighthouse): its car open in the shaft, and the indicator inside it
+            case PropType.LiftCar: LiftCar(kit); break;
+            case PropType.LiftIndicator: kit.Card(4, 28, 32.5f, 46, 58, kit.Face("lift.indicator", 24, 12, PaintLiftIndicator)); break;
         }
+    }
+
+    private static readonly Color Amber = Rgb(250, 190, 70);
+
+    /// <summary>
+    /// A lift's car standing open in the south face of its shaft (style guide, "Rooms": a lift): a plate of ribbed
+    /// steel on the floor with a sill of black and yellow stripes along its open edge, between two dark jambs as high
+    /// as an inner wall is cut, the east one with the call button.
+    /// </summary>
+    private static void LiftCar(KitBuilder kit)
+    {
+        const int jamb = 4, h = InnerWallHeight;
+        var plate = kit.Face("lift.car.plate", 32 - 2 * jamb, 32, c =>
+        {
+            c.Rect(0, 0, c.Width, c.Height, Steel.Base);
+            for (int y = 3; y < c.Height - 4; y += 4) c.HLine(2, y, c.Width - 4, Steel.Dark);
+            for (int y = 4; y < c.Height - 4; y += 4) c.HLine(2, y, c.Width - 4, Steel.Light);
+            // The sill along the open edge, striped as a lift platform's edge is
+            for (int y = c.Height - 3; y < c.Height; y++)
+                for (int x = 0; x < c.Width; x++)
+                    c.Set(x, y, (x + y) / 4 % 2 == 0 ? Rgb(236, 190, 52) : Rgb(40, 40, 50));
+        });
+        kit.Decal(jamb, 32 - jamb, 0, 32, 0.004f, plate);
+        var side = kit.Face("lift.car.jamb.side", jamb, h, c => Pix.Raised(c, 0, 0, jamb, h, Dark));
+        var front = kit.Face("lift.car.jamb", jamb, h, c => Pix.Raised(c, 0, 0, jamb, h, Dark));
+        var button = kit.Face("lift.car.jamb.button", jamb, h, c =>
+        {
+            Pix.Raised(c, 0, 0, jamb, h, Dark);
+            c.Rect(1, 9, 2, 2, Amber);
+        });
+        var top = kit.Face("lift.car.jamb.top", jamb, jamb, c => c.Rect(0, 0, jamb, jamb, Dark.Dark));
+        kit.Box(0, jamb, 32 - jamb, 32, 0, h, top, front, null, side);
+        kit.Box(32 - jamb, 32, 32 - jamb, 32, 0, h, top, button, side, null);
+    }
+
+    /// <summary>The indicator in a lift's car: a dark panel with an arrow up and an arrow down, lit amber.</summary>
+    private static void PaintLiftIndicator(PixelCanvas c)
+    {
+        Pix.Raised(c, 0, 0, c.Width, c.Height, Dark);
+        // An arrow up on the left and an arrow down on the right, each five texels wide and three tall with a stem
+        for (int i = 0; i < 3; i++)
+        {
+            c.HLine(6 - i, 3 + i, 1 + 2 * i, Amber);
+            c.HLine(17 - (2 - i), 6 + i, 1 + 2 * (2 - i), Amber);
+        }
+        c.Rect(5, 6, 3, 3, Amber);
+        c.Rect(16, 3, 3, 3, Amber);
     }
 
     /// <summary>

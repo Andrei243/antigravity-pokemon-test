@@ -228,6 +228,21 @@ script ChapterNine
   if not flag FLAG_DISTORTION_WORLD_AZELF_BOULDER_FELL setflag FLAG_HIDE_DISTORTION_WORLD_B6F_AZELF_BOULDER
   if not flag FLAG_DISTORTION_WORLD_UXIE_BOULDER_FELL setflag FLAG_HIDE_DISTORTION_WORLD_B6F_UXIE_BOULDER
   if not flag FLAG_CAUGHT_GIRATINA clearflag FLAG_HIDE_TURNBACK_CAVE_GIRATINA_ROOM_GIRATINA
+  call ChapterTen
+  return
+
+
+# Who the tenth chapter (plan 02 · S13, "Sunyshore") keeps out of sight until their scenes, as the original's new game
+# does (scripts_init_new_game.s): Professor Rowan in Verity Cavern, who comes in after Mesprit has flown, and the rival
+# in Sunyshore City, who comes running up the beach once the Beacon Badge is won. The three Pokémon of the lakes were
+# hidden in their caverns by the chapters that opened their lakes (NewGame, ChapterSeven, ChapterEight), and the
+# professor's lab brings them back. Flint at Sunyshore's gate and Volkner at the top of its lighthouse are there from
+# the start, as the original's are. Called by ChapterNine, and run for a save from before (Story/StoryMigration.cs,
+# version 16, which also sees to what such a save has already done). It may only set flags and variables, and ends in
+# return.
+script ChapterTen
+  setflag FLAG_HIDE_VERITY_CAVERN_PROF_OAK
+  setflag FLAG_HIDE_SUNYSHORE_CITY_RIVAL
   return
 
 

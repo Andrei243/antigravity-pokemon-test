@@ -1,0 +1,51 @@
+{
+  "name": "VistaLighthouseElevator",
+  "displayName": "Vista Lighthouse",
+  "bgmTrack": "sinnoh/sunyshore",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 7,
+  "height": 8,
+  "ground": [
+    "#######",
+    "#######",
+    "#######",
+    "#_____#",
+    "#_____#",
+    "#_____#",
+    "#_____#",
+    "###D###"
+  ],
+  "solid": [
+    "#######",
+    "#######",
+    "#######",
+    "#.....#",
+    "#.....#",
+    "#.....#",
+    "#.....#",
+    "###.###"
+  ],
+  "props": [
+    {
+      "type": "LiftIndicator",
+      "x": 3,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 3,
+      "sourceY": 7,
+      "targetMap": "Sinnoh",
+      "targetX": 886,
+      "targetY": 791,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [],
+  "wildEncounters": []
+}

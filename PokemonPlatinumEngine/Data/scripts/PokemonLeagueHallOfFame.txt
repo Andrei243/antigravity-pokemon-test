@@ -9,7 +9,8 @@
 # each Pokémon shown in turn, the save, the credits, and the game beginning again from the player's room. It also
 # sets what PokemonLeagueHallOfFame_SetHallOfFameVictoryFlagsAndVars sets and nothing reads yet: the Vs. Seeker's
 # fourth level (FLAG_UNLOCKED_VS_SEEKER_LVL_4), the Spring Path with the National Pokédex, the Day Care's Gym guide,
-# the legendaries put back where they weren't caught (Dialga, Palkia, Heatran, Regigigas, Azelf, Uxie, the roamers),
+# the legendaries put back where they weren't caught (Dialga, Palkia, Heatran, Regigigas and the roamers but Mesprit:
+# Azelf, Uxie and Mesprit are put back below, since plan 02 · S13),
 # VAR_PLAYER_HOUSE_POSTGAME_STATE, the assistant in Sandgem Town, the professor in Veilstone's store, Lucian in
 # Canalave's library and Cynthia gone from Celestic's ruins and Sendoff Spring.
 
@@ -40,6 +41,13 @@ label Record
   # was, and Giratina waits in Turnback Cave unless it was caught in the Distortion World
   clearflag FLAG_ALT_MUSIC_CHAMPION_ROOM
   if not flag FLAG_CAUGHT_GIRATINA clearflag FLAG_HIDE_TURNBACK_CAVE_GIRATINA_ROOM_GIRATINA
+  # ...and so do the lakes' guardians (plan 02 · S13): Azelf and Uxie are back in their caverns unless they were
+  # caught, and a Mesprit that was knocked out is back in its own, to be set loose again (the original's
+  # ROAMER_STATE_DEFEATED, 2, turned to ROAMER_STATE_RESET, 3, which Verity Cavern's script reads)
+  if not flag FLAG_CAUGHT_AZELF clearflag FLAG_HIDE_VALOR_CAVERN_AZELF
+  if not flag FLAG_CAUGHT_UXIE clearflag FLAG_HIDE_ACUITY_CAVERN_UXIE
+  if var VAR_ROAMING_MESPRIT_STATE == 2 clearflag FLAG_HIDE_VERITY_CAVERN_MESPRIT
+  if var VAR_ROAMING_MESPRIT_STATE == 2 setvar VAR_ROAMING_MESPRIT_STATE 3
   # Cynthia is gone from Sendoff Spring, where she stood before Turnback Cave's mouth (plan 02 · S12): the cave is
   # come to from now on
   setflag FLAG_HIDE_SENDOFF_SPRING_CYNTHIA

@@ -164,7 +164,11 @@
     // moment Giratina takes Cyrus until the player comes out at Sendoff Spring)
     { "name": "SpearPillarDistorted", "matrix": 23, "area": "spear_pillar_distorted" },
     // Plan 06 · R16b: Pal Park's grounds, where the Catching Show is held (a matrix of its own behind the lobby on Route 221)
-    { "name": "PalPark", "matrix": 49, "area": "pal_park", "trees": "Round" }
+    { "name": "PalPark", "matrix": 49, "area": "pal_park", "trees": "Round" },
+    // Plan 02 · S13: the caverns on the islands of Lake Verity and Lake Acuity, where Mesprit and Uxie are back once
+    // the professor has heard of the Distortion World (Valor Cavern has been open since S10)
+    { "name": "VerityCavern", "matrix": 103, "area": "verity_cavern", "setting": "Cave" },
+    { "name": "AcuityCavern", "matrix": 109, "area": "acuity_cavern", "setting": "Cave" },
   ],
   "areas": [
     "twinleaf_town",
@@ -358,6 +362,9 @@
     // Plan 02 · S12
     "spear_pillar_distorted",
     // Plan 06 · R16b
-    "pal_park"
+    "pal_park",
+    // Plan 02 · S13
+    "verity_cavern",
+    "acuity_cavern",
   ]
 }

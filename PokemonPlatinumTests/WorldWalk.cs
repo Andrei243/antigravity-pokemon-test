@@ -65,6 +65,15 @@ internal static class WorldWalk
         {
             var (map, x, y, mode, height, arrived) = queue.Dequeue();
 
+            // A place whose own arrival script carries the player on is a way there too (plan 02 · S13: the Vista
+            // Lighthouse's lift, whose car rides to its other end as it is come into)
+            if (arrived)
+                foreach (var sent in WarpsOf(PokemonPlatinumEngine.Story.ScriptLibrary.OnEnter, map.ScriptFileAt(x, y)))
+                {
+                    var onto = mapOf(sent.Name);
+                    Visit(onto, sent.X, sent.Y, TravelMode.OnFoot, onto.HeightAt(sent.X, sent.Y), arrived: true);
+                }
+
             // Stepping onto a warp takes it; one is only ever stood on by arriving through another
             if (!arrived && map.WarpsAt(x, y).Any())
             {
@@ -202,10 +211,10 @@ internal static class WorldWalk
     }
 
     /// <summary>
-    /// Where the story alone takes the player, with no way there on foot: the Distortion World (plan 01 · M8), through
-    /// the rift at Spear Pillar (plan 02 · S12's scene; the original's warp to 55, 40 of its space, facing south) and
-    /// through the portal that opens in Turnback Cave's room for Giratina once it has been battled (116, 75). A walk
-    /// of the whole game sets out from these too, as the player will once the scenes open them. And the Battle Zone
+    /// Where the story alone takes the player, with no way there on foot yet: a walk of the whole game sets out from
+    /// these too, as the player will once the scenes open them. (The Distortion World's two arrivals stood here until
+    /// plan 02 · S12's scenes led there: Cynthia's question at the torn pillar and the portal in Turnback Cave's last
+    /// room, which the walk follows by itself.) The Battle Zone
     /// (plan 01 · M10, part a), where the ship from Snowpoint City lands the player on the Fight Area's pier once the
     /// Hall of Fame has been entered (the original's TakeShipFromSnowpoint to 623, 434, facing east; plan 02 · S15
     /// gives Snowpoint's sailor the script, and the walk then finds the way by itself). And the two islands of plan 01 ·
@@ -219,8 +228,6 @@ internal static class WorldWalk
     /// </summary>
     public static readonly MapSpot[] StoryArrivals =
     {
-        new("DistortionWorld1F", 34, 30, Direction.Down),
-        new("DistortionWorldTurnbackCaveRoom", 46, 45, Direction.Down),
         new("Sinnoh", 623, 434, Direction.Right),
         new("Sinnoh", 39, 277, Direction.Left),
         new("Sinnoh", 152, 277, Direction.Right),

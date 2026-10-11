@@ -87,6 +87,8 @@ public class RoomPlanTests
         new object[] { "SolaceonTownNortheastHouse", 1, 3, 4, 8 },
         new object[] { "SolaceonTownPokemonNewsPress", 1, 3, 4, 8 },
         new object[] { "SolaceonTownNorthHouse", 1, 3, 4, 8 },
+        // The Vista Lighthouse's lift, plan 02 · S13: its door leads out to Sunyshore City
+        new object[] { "VistaLighthouseElevator", 1, 3, 3, 6 },
     };
 
     /// <summary>Rooms on the original's plans whose door isn't in the last row of the room (plan 06 · R16b): the Oreburgh
@@ -129,6 +131,9 @@ public class RoomPlanTests
         "OldChateauBackWestRoom", "OldChateauBackMiddleWestRoom", "OldChateauBackMiddleRoom", "OldChateauBackMiddleEastRoom",
         "OldChateauBackEastRoom",
     };
+    /// <summary>The gallery at the top of the Vista Lighthouse (plan 02 · S13): no door, only the lift's car in the
+    /// shaft at its middle (<c>SunyshoreTests</c>).</summary>
+    internal static readonly string[] LighthouseGallery = { "VistaLighthouse" };
 
     // The original's people (res/field/events/events_<map>.json of the decompilation): local id, tile, facing
     public static IEnumerable<object[]> People => new[]
@@ -387,6 +392,9 @@ public class RoomPlanTests
         new object[] { "SolaceonTownNorthHouse", "lass", 7, 6, Direction.Down },
         new object[] { "OldChateauDiningArea", "old_man", 19, 4, Direction.Down },
         new object[] { "OldChateauBackMiddleEastRoom", "twin", 20, 5, Direction.Left },
+        new object[] { "VistaLighthouse", "sailor", 9, 3, Direction.Up },
+        new object[] { "VistaLighthouse", "youngster", 8, 3, Direction.Up },
+        new object[] { "VistaLighthouse", "volkner", 6, 4, Direction.Up },
     };
 
     [Theory]
@@ -455,7 +463,7 @@ public class RoomPlanTests
     [Fact]
     public void EveryOtherRoomBeginsWhereTheHandMadeOnesDo()
     {
-        var rebuilt = Plans.Select(p => (string)p[0]).Concat(UpperFloors).Concat(Gates).Concat(LostTower).Concat(LibraryUpperFloors).Concat(GalacticHeadquarters).Concat(OddlyShaped).Concat(InnerRooms).ToHashSet();
+        var rebuilt = Plans.Select(p => (string)p[0]).Concat(UpperFloors).Concat(Gates).Concat(LostTower).Concat(LibraryUpperFloors).Concat(GalacticHeadquarters).Concat(OddlyShaped).Concat(InnerRooms).Concat(LighthouseGallery).ToHashSet();
         foreach (string path in Directory.GetFiles(GameDataFiles.PathOf(MapDatabase.Folder), "*.json"))
         {
             string name = Path.GetFileNameWithoutExtension(path);

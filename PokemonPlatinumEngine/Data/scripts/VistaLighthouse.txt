@@ -1,0 +1,70 @@
+# The gallery at the top of the Vista Lighthouse in Sunyshore City (plan 02 · S13), on the original's plan.
+# docs/scripts.md describes the language; the lines are our own, on the original's beats (scripts_vista_lighthouse.s).
+#
+# Volkner, the city's Gym Leader, stands before the binoculars looking out to sea: he has rebuilt his Gym down to the
+# last gear, no challenger has been worth his while for a long time, and he is thinking of leaving it to challenge the
+# Pokémon League himself. Spoken to, he sizes the player up, says he will throw everything he has at them, and goes
+# back to his Gym by the lift (FLAG_VOLKNER_RETURNED_TO_GYM, FLAG_HIDE_VISTA_LIGHTHOUSE_VOLKNER, which the original's
+# RemoveObject sets). That is what moves Flint from before the Gym's door (sunyshore_city.txt).
+#
+# The binoculars are read from the tile Volkner stands on, so nobody looks through them until he has gone.
+#
+# Stood in for until plan 09 lands (L12): the original's binoculars take the picture to the Pokémon League across the
+# sea, seen through their lenses (UseVistaLighthouseBinoculars: the map itself is changed, with a camera of its own);
+# here the view is told over a black screen. The lift's door doesn't open and shut (the car stands open in its shaft).
+
+
+# Our own, beside the original: the lift's car asks which way its rider came (VistaLighthouseElevator.txt)
+script OnEnter
+  setvar VAR_VISTA_LIGHTHOUSE_FLOOR 1
+  end
+
+
+# VistaLighthouse_Volkner
+script Volkner
+  face self player
+  speaker "Volkner"
+  say "... ..."
+  say "...So you're the next one. The latest Trainer come to take on Sunyshore's Gym."
+  say "All right. I've made up my mind. If you turn out to be weak, I'm leaving, to challenge the Pokémon League myself."
+  say "The Gym is rebuilt, down to the last gear. Nothing keeps me here any more. What I want is a battle that makes my heart race again."
+  say "They call me the strongest Gym Leader in Sinnoh. So everything I have, I'm throwing at you."
+  wait 0.4
+  if facing left goto Round
+  if facing right goto Round
+  # VistaLighthouse_VolknerWalkToDoorNorth: the player stands south of him, so he goes round by the east
+  move volkner right 3 down 6 left 3
+  wait 0.3
+  face player right
+  waitmoves
+  goto Leaves
+# VistaLighthouse_VolknerWalkToDoorWestEast
+label Round
+  move volkner down 1 right 3 down 5 left 3
+  wait 0.3
+  face player down
+  wait 0.3
+  face player right
+  waitmoves
+label Leaves
+  face volkner up
+  sound "door_slide"
+  wait 0.3
+  walk volkner up 1
+  hide volkner
+  setflag FLAG_HIDE_VISTA_LIGHTHOUSE_VOLKNER
+  sound "lift"
+  setflag FLAG_VOLKNER_RETURNED_TO_GYM
+  end
+
+
+# VistaLighthouse_Binoculars
+script Binoculars
+  speaker none
+  say "{player} looked through the binoculars."
+  sound "select"
+  fade out 0.4
+  say "Far to the north, across the sea, a wall of rock climbs out of the water, with a waterfall white down its face."
+  say "And on top of it, half lost in cloud, stand the towers of the Pokémon League."
+  fade in
+  end

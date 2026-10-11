@@ -1,0 +1,195 @@
+# Sunyshore City (plan 02 · S13). docs/scripts.md describes the language; the lines are our own, on the original's
+# beats (scripts_sunyshore_city.s).
+#
+# VAR_SUNYSHORE_CITY_STATE counts the chapter as the original's does:
+#   0  Flint of the Elite Four waits just inside the gate from Route 222 and meets whoever comes in by it (the
+#      original's OnFrame): his friend Volkner, the Gym Leader, has lost heart for want of a challenger worth his
+#      while, and has rebuilt his Gym until the whole city's lights went out; would the player give him a battle hot
+#      enough to light him up again?
+#   1  Flint stands before the Gym's door, which nobody passes: Volkner isn't in. He is at the top of the Vista
+#      Lighthouse (VistaLighthouse.txt), and goes back to his Gym once the player has spoken to him there
+#      (FLAG_VOLKNER_RETURNED_TO_GYM). Told so, Flint leaves for the Pokémon League, and the door is free.
+#   2  the Beacon Badge is won (SunyshoreGymRoom3.txt, plan 01 · M9). On the beach north of the Gym, where Jasmine of
+#      Johto looks out to sea, the rival comes running up (the original's trigger, from each of its five tiles): the
+#      player has all eight Badges, and he will catch up yet, without a battle this time. Jasmine, who watched the two,
+#      gives HM07 for the pleasure of it.
+#   3  it is done. Waterfall, with the Badge, is the way up Route 223 to Victory Road.
+#
+# Coming here for the first time after the professor's scene sends the assistant out of his lab (the original's
+# OnTransition: FLAG_HIDE_SANDGEM_TOWN_LAB_COUNTERPART, VAR_SANDGEM_TOWN_LAB_STATE 4). The original does the same for
+# someone who has not heard the professor out (state 2), which nobody can be: the road here opens with his scene. A
+# save from before the chapter can be, so here that state is left to his lab.
+
+
+script OnEnter
+  # Our own, beside the original: the lighthouse's lift asks which way its rider came (VistaLighthouseElevator.txt)
+  setvar VAR_VISTA_LIGHTHOUSE_FLOOR 0
+  # SunyshoreCity_HideSandgemTownLabCounterpart
+  if var VAR_SANDGEM_TOWN_LAB_STATE == 3 setflag FLAG_HIDE_SANDGEM_TOWN_LAB_COUNTERPART
+  if var VAR_SANDGEM_TOWN_LAB_STATE == 3 setvar VAR_SANDGEM_TOWN_LAB_STATE 4
+  if var VAR_SUNYSHORE_CITY_STATE != 0 end
+  # SunyshoreCity_SetFlintPositionAtGate
+  place flint 841 790 left
+  # SunyshoreCity_OnFrame_Flint: whoever comes in by the gate stands a step inside it, on one of its two rows
+  if var PLAYER_X != 833 goto Elsewhere
+  if var PLAYER_Y == 790 goto Comes
+  if var PLAYER_Y == 791 goto Lower
+label Elsewhere
+  # Nobody comes here first by another way; if someone ever does, Flint has said his piece and waits by the Gym
+  place flint 845 748 down
+  setvar VAR_SUNYSHORE_CITY_STATE 1
+  end
+label Lower
+  walk flint down 1
+label Comes
+  walk flint left 3
+  emote flint exclaim
+  walk flint left 4
+  face player right
+  speaker "Flint"
+  say "Hey! You there, Trainer!"
+  say "Your Pokémon may be tucked away in their Poké Balls, but there's no hiding it. That's some serious heat coming off your team!"
+  say "Whoops, where are my manners? I'm Flint, one of the Elite Four of the Pokémon League!"
+  face flint down
+  wait 0.5
+  face flint left
+  say "Say, that gives me a thought. There's something that needs doing in this city, and you look like the one to do it. It concerns the Gym Leader here."
+  say "Volkner's lost his spark. It's been so long since a challenger gave him a real fight that he's bored stiff. All he does is rebuild his Gym, over and over."
+  say "Then the whole city blacked out because of it, and that didn't cheer him up either."
+  say "You've guessed the rest, haven't you? Give him a battle so hot it sets him alight again!"
+  say "It's all riding on you. Don't let me down!"
+  wait 0.5
+  walk flint right 9 up 4
+  hide flint
+  place flint 845 748 down
+  clearflag FLAG_HIDE_SUNYSHORE_CITY_FLINT
+  show flint
+  setvar VAR_SUNYSHORE_CITY_STATE 1
+  end
+
+
+# Flint before the Gym's door (the original's SunyshoreCity_Flint).
+script Flint
+  face self player
+  speaker "Flint"
+  if flag FLAG_VOLKNER_RETURNED_TO_GYM goto Back
+  say "Hey there! He's not back yet. I hear he goes up the lighthouse when he wants to think."
+  say "When he does turn up, you know what to do. A battle so hot it sets him alight again!"
+  say "It's all riding on you!"
+  end
+label Back
+  say "Hey there! He's back at last! And in a good mood, for once."
+  say "I'd bet he saw how tough you are the moment he laid eyes on you. He can't wait to battle you, I can tell."
+  say "So you know what's wanted. A battle so hot it sets him alight again!"
+  say "Right, then. I'll be waiting for you at the Pokémon League!"
+  wait 0.4
+  if facing left goto Side
+  if facing right goto Side
+  # SunyshoreCity_FlintLeaveNorth: the player stands south of him, so he steps round them
+  move flint right 1 down 2 right 8
+  wait 0.3
+  face player right
+  waitmoves
+  goto Gone
+# SunyshoreCity_FlintLeaveWestEast
+label Side
+  move flint down 2 right 9
+  wait 0.3
+  face player down
+  wait 0.3
+  face player right
+  waitmoves
+label Gone
+  hide flint
+  setflag FLAG_HIDE_SUNYSHORE_CITY_FLINT
+  end
+
+
+# The beach north of the Gym, once the Badge is won (the original's SunyshoreCity_CoordEvent_RivalAndJasmine): from
+# each of the trigger's five tiles the rival runs up to the player, and Jasmine comes down to them afterwards.
+script RivalAndJasmine
+  face jasmine down
+  emote jasmine exclaim
+  clearflag FLAG_HIDE_SUNYSHORE_CITY_RIVAL
+  place rival 855 747 up
+  show rival
+  face player down
+  if var PLAYER_X == 853 goto Enter853
+  if var PLAYER_X == 854 goto Enter854
+  if var PLAYER_X == 856 goto Enter856
+  if var PLAYER_X == 857 goto Enter857
+  walk rival up 3 fast
+  goto Meets
+label Enter853
+  walk rival up 4 left 1 fast
+  face player right
+  goto Meets
+label Enter854
+  walk rival up 4 fast
+  face rival left
+  face player right
+  goto Meets
+label Enter856
+  walk rival up 4 fast
+  face rival right
+  face player left
+  goto Meets
+label Enter857
+  walk rival up 4 right 1 fast
+  face player left
+label Meets
+  speaker "{rival}"
+  say "Hey! {player}! Wait a... What?!"
+  say "Eight Badges?! You've beaten every Gym in Sinnoh already? Oh, that's just... Okay, I'm jealous. I admit it!"
+  say "But don't go thinking that means you've won!"
+  face rival down
+  say "Because the toughest Trainer there's ever been is going to be me. Just you wait and see!"
+  say "I used to just dream about it. I wanted to be like my dad, and that was all there was to it."
+  say "It's different now. I've thought about what being a Trainer really takes, and about what Pokémon really are. We're getting tougher a little at a time, me and my team."
+  face rival player
+  say "I won't ask you for a battle today. It stings to admit it, but right now you're stronger than me."
+  say "Not by a lot, mind! By about this much. No, less than that. By a hair!"
+  say "What I'm telling you is, I'll have caught you up before you know it. So you'd better get yourself to the Pokémon League fast, or all you'll see of me is my back!"
+  face player down
+  walk rival down 8 fast
+  hide rival
+  setflag FLAG_HIDE_SUNYSHORE_CITY_RIVAL
+  if var PLAYER_X == 853 walk jasmine left 4 down 1
+  if var PLAYER_X == 854 walk jasmine left 3 down 1
+  if var PLAYER_X == 855 walk jasmine left 2 down 1
+  if var PLAYER_X == 856 walk jasmine left 1 down 1
+  if var PLAYER_X == 857 walk jasmine down 1
+  face player up
+  speaker "Jasmine"
+  say "...Was that a friend of yours?"
+  say "I don't know why, but watching the two of you made me glad. A friend like that is a rare thing."
+  say "Someone you can tell anything to. Someone you can do your best to beat, and never fall out with."
+  say "...Um. I feel warmer for having seen it. You may think it strange of me, but please, let me thank you with this."
+  say "It's only a small thing, but..."
+  give "HM07"
+  setflag FLAG_RECEIVED_SUNYSHORE_CITY_HM07
+  say "...That Hidden Machine holds Waterfall. With it you can climb to the Pokémon League."
+  say "...Um... I'm not good at saying these things, but... I hope it goes well for you."
+  if var PLAYER_X == 853 walk jasmine up 1 right 4
+  if var PLAYER_X == 854 walk jasmine up 1 right 3
+  if var PLAYER_X == 855 walk jasmine up 1 right 2
+  if var PLAYER_X == 856 walk jasmine up 1 right 1
+  if var PLAYER_X == 857 walk jasmine up 1
+  face jasmine down
+  setvar VAR_SUNYSHORE_CITY_STATE 3
+  end
+
+
+# Jasmine on the beach (the original's SunyshoreCity_Jasmine).
+script Jasmine
+  face self player
+  speaker "Jasmine"
+  if flag FLAG_RECEIVED_SUNYSHORE_CITY_HM07 goto Stronger
+  say "...I feel oddly at home in this city. The sea at its doorstep, and a lighthouse over it..."
+  if badge beacon goto Stronger
+  say "Oh... Without this city's Gym Badge, the sea beyond here will only turn you back."
+  end
+label Stronger
+  say "...I left home, far from here, to become stronger."
+  say "Everyone I've met on the way had Pokémon beside them, and every one of them was smiling. I liked seeing that."
+  end

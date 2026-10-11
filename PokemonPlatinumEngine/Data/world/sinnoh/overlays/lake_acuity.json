@@ -3,8 +3,8 @@
   "bgmTrack": "sinnoh/lake",
   "trees": "Pine",
   // Two of its ways out lie among the trees, where nobody walks (the original's own, left from the lake's other
-  // map); Acuity Cavern on the island opens with the lake guardians' return (plan 02 · S13)
-  "locked": [ 0, 1, 2 ],
+  // map). Warp 1 is Acuity Cavern's mouth on the island (plan 02 · S13 opened the cavern), reached over the water
+  "locked": [ 0, 2 ],
   // Lake Acuity as Team Galactic leaves it (plan 02 · S11, part a; scripts/lake_acuity.txt): Commander Jupiter at the
   // water's edge with the rival, whom she has beaten. The scene plays as the player comes in, and both are gone by its
   // end (FLAG_HIDE_LAKE_ACUITY_JUPITER, FLAG_HIDE_LAKE_ACUITY_RIVAL).

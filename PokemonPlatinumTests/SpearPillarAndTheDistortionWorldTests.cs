@@ -1123,7 +1123,8 @@ public class SpearPillarAndTheDistortionWorldTests
             Assert.True(upgraded.Has(flag), flag);
         // The chapter's script is the last link of the chain a new game runs
         Assert.Contains(Find("Headquarters", ScriptLibrary.Common).Everything(), i => i.Op == Op.Call && i.Name == "ChapterNine");
-        Assert.All(Find("ChapterNine", ScriptLibrary.Common).Everything(), i => Assert.Contains(i.Op, new[] { Op.SetFlag, Op.ClearFlag, Op.SetVar, Op.If, Op.Return }));
+        // (and calls the chapter after it, plan 02 · S13)
+        Assert.All(Find("ChapterNine", ScriptLibrary.Common).Everything(), i => Assert.Contains(i.Op, new[] { Op.SetFlag, Op.ClearFlag, Op.SetVar, Op.If, Op.Call, Op.Return }));
     }
 
     // ------------------------------------------------------------------ the rules the chapter added

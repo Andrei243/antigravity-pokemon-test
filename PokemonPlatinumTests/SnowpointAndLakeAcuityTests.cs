@@ -378,12 +378,14 @@ public class SnowpointAndLakeAcuityTests
         foreach (string flag in new[] { "FLAG_HIDE_VEILSTONE_CITY_GRUNT_M_STORAGE_KEY", "FLAG_HIDE_SANDGEM_TOWN_LAB_PROF_ROWAN", "FLAG_LAKE_VALOR_EXPLODED" })
             Assert.False(game.Story.Has(flag), flag);
 
-        // Coming again, the shore is empty and nothing plays; the lake's TM lies on its far shore, the cavern is shut
+        // Coming again, the shore is empty and nothing plays; the lake's TM lies on its far shore, and the cavern on the
+        // island is open (plan 02 · S13), with nobody in it until the professor has heard of the Distortion World
         game.Arrive("LakeAcuityGalactic", x, 49);
         Assert.Empty(game.Last.Transcript);
         Assert.Null(game.Present("jupiter"));
         Assert.Contains(game.Map.NPCs, n => n.IsItemBall && n.Item == "TM14");
-        Assert.Null(game.Map.GetWarpAt(32, 32));
+        Assert.Equal("AcuityCavern", game.Map.GetWarpAt(32, 32)!.TargetMap);
+        Assert.True(game.Story.Has("FLAG_HIDE_ACUITY_CAVERN_UXIE"));
         var back = game.Map.GetWarpAt(x, 50)!;
         Assert.Equal(("Sinnoh", x == 14 ? 308 : 309, 230), (back.TargetMap, back.TargetX, back.TargetY));
 

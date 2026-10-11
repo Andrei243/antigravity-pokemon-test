@@ -65,9 +65,11 @@ label Rest
   sayown
   heal
   fanfare heal
-  # Plan 02 · S10: once Lake Valor has blown she asks after the tremor (in the original until the Distortion World is
-  # behind the player, VAR_EXITED_DISTORTION_WORLD_STATE 2: plan 02 · S12 adds that end to it)
+  # Plan 02 · S10: once Lake Valor has blown she asks after the tremor, until the Distortion World is behind the
+  # player (the original's TwinleafTownPlayerHouse1F_IsEverythingAllRight: VAR_EXITED_DISTORTION_WORLD_STATE 2, which
+  # Sendoff Spring sets; plan 02 · S13)
   if var VAR_CANALAVE_LIBRARY_STATE < 2 end
+  if var VAR_EXITED_DISTORTION_WORLD_STATE >= 2 end
   speaker "Mom"
   say "{player}, is everything all right? The whole house shook a while ago, and the television won't say what it was."
   say "You're mixed up in it somehow, aren't you? ...I thought so. Then be careful, and come home when it's done."
