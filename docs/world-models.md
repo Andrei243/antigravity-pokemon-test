@@ -123,22 +123,22 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | `d3_door1` | a door | nothing of its own: the building's art has its door |  | 1.2 × 0.2 × 1.6 | 2 | Eterna Forest, Route 212 |
 | `d3_s01` | the Old Chateau, abandoned in Eterna Forest | a building: Mansion, 2 storeys |  | 11.5 × 5.3 × 5.3 | 1 | Eterna Forest |
 | `d4_s01` | the Fuego Ironworks | a building: Factory, signed IRONWORKS |  | 16.0 × 10.5 × 8.9 | 1 | Fuego Ironworks |
-| `d5_ana_d` | the rift that opens at Spear Pillar where Dialga comes | a prop: Rift |  | 1.6 × 1.2 × 5.6 | 1 | Spear Pillar |
-| `d5_ana_p` | the rift that opens at Spear Pillar where Palkia comes | a prop: Rift |  | 1.6 × 1.2 × 5.6 | 1 | Spear Pillar |
+| `d5_ana_d` | the rift that opens at Spear Pillar where Dialga comes | a prop: Rift |  | 1.6 × 1.2 × 5.6 | 2 | Spear Pillar |
+| `d5_ana_p` | the rift that opens at Spear Pillar where Palkia comes | a prop: Rift |  | 1.6 × 1.2 × 5.6 | 2 | Spear Pillar |
 | `d5_ana_pl` | the dark the rifts cast on Spear Pillar's floor: the way into the Distortion World | a prop: RiftShadow |  | 7.8 × 7.8 × 0.5 | 1 | Spear Pillar |
-| `d5_colum01` | a column of Spear Pillar | a prop: Column |  | 2.4 × 2.4 × 6.6 | 4 | Spear Pillar |
+| `d5_colum01` | a column of Spear Pillar | a prop: Column |  | 2.4 × 2.4 × 6.6 | 8 | Spear Pillar |
 | `d5_colum01x` | a column of the Hall of Origin | a prop: Column |  | 2.4 × 2.4 × 6.6 | 11 | Hall of Origin |
-| `d5_colum02` | a column of Spear Pillar | a prop: Column |  | 2.4 × 2.4 × 6.6 | 4 | Spear Pillar |
+| `d5_colum02` | a column of Spear Pillar | a prop: Column |  | 2.4 × 2.4 × 6.6 | 8 | Spear Pillar |
 | `d5_colum02x` | a column of the Hall of Origin | a prop: Column |  | 2.4 × 2.4 × 6.6 | 10 | Hall of Origin |
-| `d5_colum03` | a column of Spear Pillar | a prop: Column |  | 2.4 × 2.4 × 5.6 | 2 | Spear Pillar |
+| `d5_colum03` | a column of Spear Pillar | a prop: Column |  | 2.4 × 2.4 × 5.6 | 4 | Spear Pillar |
 | `d5_colum03x` | a column of the Hall of Origin | a prop: Column |  | 2.4 × 2.4 × 5.6 | 8 | Hall of Origin |
-| `d5_colum04` | a column of Spear Pillar | a prop: Column |  | 2.4 × 2.4 × 5.6 | 2 | Spear Pillar |
+| `d5_colum04` | a column of Spear Pillar | a prop: Column |  | 2.4 × 2.4 × 5.6 | 4 | Spear Pillar |
 | `d5_colum04x` | a column of the Hall of Origin | a prop: Column |  | 2.4 × 2.4 × 5.6 | 1 | Hall of Origin |
-| `d5_colum05` | a broken column of Spear Pillar | a prop: Column |  | 2.4 × 2.4 × 4.1 | 8 | Spear Pillar |
+| `d5_colum05` | a broken column of Spear Pillar | a prop: Column |  | 2.4 × 2.4 × 4.1 | 16 | Spear Pillar |
 | `d5_colum05x` | a broken column of the Hall of Origin | a prop: Column |  | 2.4 × 2.4 × 4.1 | 4 | Hall of Origin |
-| `d5_colum06` | a broken column of Spear Pillar | a prop: Column |  | 2.4 × 2.4 × 4.6 | 8 | Spear Pillar |
+| `d5_colum06` | a broken column of Spear Pillar | a prop: Column |  | 2.4 × 2.4 × 4.6 | 16 | Spear Pillar |
 | `d5_colum06x` | a broken column of the Hall of Origin | a prop: Column |  | 2.4 × 2.4 × 4.6 | 4 | Hall of Origin |
-| `d5_colum07` | a fallen column of Spear Pillar | a prop: Column |  | 5.2 × 3.0 × 4.9 | 4 | Spear Pillar |
+| `d5_colum07` | a fallen column of Spear Pillar | a prop: Column |  | 5.2 × 3.0 × 4.9 | 8 | Spear Pillar |
 | `d5_colum07x` | a fallen column of the Hall of Origin | a prop: Column |  | 5.2 × 3.0 × 4.9 | 4 | Hall of Origin |
 | `d6_o01` | the Great Marsh's tram on its rails | a prop: Tram |  | 4.2 × 8.2 × 0.9 | 6 | Great Marsh |
 | `d6_o02` | the Great Marsh's coin viewers | a prop: Binoculars |  | 0.8 × 0.6 × 1.4 | 6 | Great Marsh |

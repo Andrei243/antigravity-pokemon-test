@@ -18,7 +18,12 @@ public class MapIndexTests
     private static NPC? ScanNpcIn(Map map, int x, int y, float height) =>
         map.NPCs.FirstOrDefault(n => n.GridX == x && n.GridY == y && MathF.Abs((n.Level ?? map.HeightAt(x, y)) - height) < FieldMovement.StepLimit);
 
-    private static Warp? ScanWarpAt(Map map, int x, int y) => map.Warps.FirstOrDefault(w => w.SourceX == x && w.SourceY == y && !w.Shut);
+    // Among the open ways of a tile, one that is there from a flag wins (plan 02 · S15, part c); else the first
+    private static Warp? ScanWarpAt(Map map, int x, int y)
+    {
+        var open = map.Warps.Where(w => w.SourceX == x && w.SourceY == y && !w.Shut).ToList();
+        return open.FirstOrDefault(w => w.From != null) ?? open.FirstOrDefault();
+    }
 
     private static bool ScanIsWalkable(Map map, int x, int y)
     {
