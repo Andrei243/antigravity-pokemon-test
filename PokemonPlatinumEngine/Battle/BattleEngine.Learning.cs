@@ -15,7 +15,9 @@ public enum LearnStep
     /// <summary>Which of its four moves to forget (0 to 3), or none of them (4).</summary>
     Choose,
     /// <summary>"Give up on learning it?" Yes (0) or No (1).</summary>
-    GiveUp
+    GiveUp,
+    /// <summary>The Battle Frontier's question on RUN (plan 06 · R18a): whether to give the match up. Yes (0) or No (1).</summary>
+    Forfeit
 }
 
 /// <summary>
@@ -37,7 +39,20 @@ public partial class BattleEngine
     private readonly Queue<Step> interlude = new();
 
     /// <summary>A question about a move to learn is open and waits for an answer.</summary>
-    public bool IsLearningMove => learning != null && HUD.MenuState == BattleMenuState.LearnMove;
+    public bool IsLearningMove => (learning != null || forfeiting) && HUD.MenuState == BattleMenuState.LearnMove;
+
+    // The Battle Frontier's question on RUN is open (the same Yes and No as a move to learn)
+    private bool forfeiting;
+
+    /// <summary>The Battle Frontier asks whether the match is to be given up: the original's own question, with the cursor on No.</summary>
+    private void AskToForfeit()
+    {
+        forfeiting = true;
+        LearnStep = LearnStep.Forfeit;
+        LearnCursor = 1;
+        currentMessage = "Give the match up and end the challenge here?";
+        HUD.MenuState = BattleMenuState.LearnMove;
+    }
 
     public LearnStep LearnStep { get; private set; }
 
@@ -94,6 +109,14 @@ public partial class BattleEngine
     public void ChooseLearn(int answer)
     {
         if (!IsLearningMove) return;
+        if (forfeiting)
+        {
+            forfeiting = false;
+            AudioManager.PlaySound(answer == 0 ? "select" : "cancel");
+            HUD.MenuState = BattleMenuState.Main;
+            if (answer == 0) Commit(BattleChoice.Run(MenuBattler.Place));
+            return;
+        }
         var (p, move) = learning!.Value;
         HUD.MenuState = BattleMenuState.Message;
         switch (LearnStep)
@@ -142,6 +165,7 @@ public partial class BattleEngine
     {
         LearnStep.Forget => 1,
         LearnStep.Choose => 4,
+        LearnStep.Forfeit => 1,
         _ => 0
     };
 

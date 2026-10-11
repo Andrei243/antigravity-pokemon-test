@@ -95,6 +95,15 @@ public class RoomPlanTests
     /// Mining Museum is L-shaped, its door in the west half of its front wall (<c>PastimeTests</c>).</summary>
     internal static readonly string[] OddlyShaped = { "OreburghMiningMuseum" };
 
+    /// <summary>The Battle Tower's rooms (plan 06 · R18a): its lobby leads out onto the Battle Frontier's grounds by three
+    /// tiles of mat, and the lift, the corridors, the battle rooms and the Battle Salon behind it are come to and left
+    /// by the challenge's own scripts (<c>FrontierTests</c>).</summary>
+    internal static readonly string[] BattleTower =
+    {
+        "BattleTower", "BattleTowerElevator", "BattleTowerCorridor", "BattleTowerBattleRoom",
+        "BattleTowerCorridorMulti", "BattleTowerMultiBattleRoom", "BattleTowerBattleSalon",
+    };
+
     /// <summary>The Canalave Library's upper floors (plan 02 · S10): no door, only the stairs.</summary>
     internal static readonly string[] LibraryUpperFloors = { "CanalaveLibrary2F", "CanalaveLibrary3F" };
 
@@ -395,6 +404,28 @@ public class RoomPlanTests
         new object[] { "VistaLighthouse", "sailor", 9, 3, Direction.Up },
         new object[] { "VistaLighthouse", "youngster", 8, 3, Direction.Up },
         new object[] { "VistaLighthouse", "volkner", 6, 4, Direction.Up },
+        // The Battle Tower's lobby and Battle Salon, plan 06 · R18a (events_battle_tower, events_battle_tower_battle_salon)
+        new object[] { "BattleTower", "single_attendant", 15, 5, Direction.Down },
+        new object[] { "BattleTower", "multi_attendant", 11, 5, Direction.Down },
+        new object[] { "BattleTower", "wifi_attendant", 19, 5, Direction.Down },
+        new object[] { "BattleTower", "teala", 16, 6, Direction.Down },
+        new object[] { "BattleTower", "artist", 2, 14, Direction.Down },
+        new object[] { "BattleTower", "jogger", 13, 14, Direction.Left },
+        new object[] { "BattleTower", "idol", 6, 10, Direction.Up },
+        new object[] { "BattleTower", "rich_boy", 25, 13, Direction.Down },
+        new object[] { "BattleTower", "pikachu_1", 25, 14, Direction.Left },
+        new object[] { "BattleTower", "pikachu_2", 19, 16, Direction.Right },
+        new object[] { "BattleTower", "school_kid_m_1", 20, 16, Direction.Left },
+        new object[] { "BattleTower", "parasol_lady", 9, 13, Direction.Down },
+        new object[] { "BattleTower", "school_kid_m_2", 20, 11, Direction.Left },
+        new object[] { "BattleTower", "stats_judge", 24, 7, Direction.Down },
+        new object[] { "BattleTowerBattleSalon", "cheryl", 13, 10, Direction.Left },
+        new object[] { "BattleTowerBattleSalon", "mira", 4, 6, Direction.Right },
+        new object[] { "BattleTowerBattleSalon", "riley", 11, 8, Direction.Down },
+        new object[] { "BattleTowerBattleSalon", "marley", 2, 10, Direction.Right },
+        new object[] { "BattleTowerBattleSalon", "buck", 7, 9, Direction.Up },
+        new object[] { "BattleTowerElevator", "attendant", 4, 4, Direction.Down },
+        new object[] { "BattleTowerBattleRoom", "attendant", 2, 6, Direction.Right },
     };
 
     [Theory]
@@ -463,7 +494,21 @@ public class RoomPlanTests
     [Fact]
     public void EveryOtherRoomBeginsWhereTheHandMadeOnesDo()
     {
-        var rebuilt = Plans.Select(p => (string)p[0]).Concat(UpperFloors).Concat(Gates).Concat(LostTower).Concat(LibraryUpperFloors).Concat(GalacticHeadquarters).Concat(OddlyShaped).Concat(InnerRooms).Concat(LighthouseGallery).ToHashSet();
+        // The rooms that are not laid out as the hand-made ones are: a list each, one to a line, so that sessions
+        // appending in the same night merge by keeping both
+        var rebuilt = new IEnumerable<string>[]
+        {
+            Plans.Select(p => (string)p[0]),
+            UpperFloors,
+            Gates,
+            LostTower,
+            LibraryUpperFloors,
+            GalacticHeadquarters,
+            OddlyShaped,
+            InnerRooms,
+            LighthouseGallery,
+            BattleTower,
+        }.SelectMany(names => names).ToHashSet();
         foreach (string path in Directory.GetFiles(GameDataFiles.PathOf(MapDatabase.Folder), "*.json"))
         {
             string name = Path.GetFileNameWithoutExtension(path);

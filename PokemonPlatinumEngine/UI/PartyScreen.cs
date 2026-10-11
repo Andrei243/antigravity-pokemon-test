@@ -87,6 +87,36 @@ public class PartyScreen
     public int Chosen { get; private set; } = NoneChosen;
     public const int NoneChosen = 255;
 
+    /// <summary>
+    /// Open for several Pokémon to be entered in order (plan 06 · R18a: the three, four or two of a Battle Tower
+    /// challenge): how many are wanted, or 0 while the screen is open for anything else. A enters the Pokémon under the
+    /// cursor, or takes it out again; with all entered, A goes in with them; B takes the last one back, and with none
+    /// entered closes the screen. <see cref="EnteredAll"/> says whether it closed with the full count.
+    /// </summary>
+    public int EnterCount { get; private set; }
+    public List<int> Entered { get; } = new();
+    public bool EnteredAll { get; private set; }
+    public bool Entering => EnterCount > 0;
+    private Func<Pokemon, bool> mayEnter = _ => true;
+
+    /// <summary>Opens the team for <paramref name="count"/> Pokémon to be entered; <paramref name="allowed"/> says which may be.</summary>
+    public void OpenToEnter(int count, Func<Pokemon, bool> allowed)
+    {
+        Open();
+        EnterCount = count;
+        Entered.Clear();
+        EnteredAll = false;
+        mayEnter = allowed;
+    }
+
+    /// <summary>What a Pokémon's card says while the team is entered: its place among those entered, or that it can't go in.</summary>
+    public string? EnterTag(Party party, Pokemon pokemon)
+    {
+        int place = Entered.IndexOf(party.Members.IndexOf(pokemon));
+        if (place >= 0) return place switch { 0 => "1ST", 1 => "2ND", 2 => "3RD", _ => "4TH" };
+        return mayEnter(pokemon) ? null : "NOT ABLE";
+    }
+
     /// <summary>Opens the team for a Pokémon to be chosen (<see cref="Choosing"/>).</summary>
     public void OpenToChoose()
     {
@@ -99,6 +129,7 @@ public class PartyScreen
     {
         IsActive = true;
         Choosing = false;
+        EnterCount = 0;
         SelectedIndex = 0;
         SwapSourceIndex = null;
         ShowSummary = false;
@@ -144,6 +175,7 @@ public class PartyScreen
     public string Prompt => Message ?? (Sharing != null ? "Give HP to which Pokémon?"
         : SwapSourceIndex.HasValue ? "Move to where?"
         : Actions != null ? "Do what with this Pokémon?"
+        : Entering ? Entered.Count == EnterCount ? "Go in with these Pokémon?" : $"Choose {EnterCount} Pokémon to enter. ({EnterCount - Entered.Count} to go)"
         : Choosing ? "Choose which Pokémon?"
         : "Choose a Pokémon.");
 
@@ -152,6 +184,27 @@ public class PartyScreen
     {
         Message = null;
         if (SelectedIndex >= party.Count) return;
+        if (Entering)
+        {
+            if (Entered.Count == EnterCount)
+            {
+                EnteredAll = true;
+                AudioManager.PlaySound("select");
+                Close();
+            }
+            else if (Entered.Remove(SelectedIndex)) AudioManager.PlaySound("cancel");
+            else if (!mayEnter(party.Members[SelectedIndex]))
+            {
+                Message = party.Members[SelectedIndex].IsEgg ? "An Egg can't take part." : $"{party.Members[SelectedIndex].DisplayName} can't take part.";
+                AudioManager.PlaySound("error");
+            }
+            else
+            {
+                Entered.Add(SelectedIndex);
+                AudioManager.PlaySound("select");
+            }
+            return;
+        }
         if (Choosing)
         {
             Chosen = SelectedIndex;
@@ -220,6 +273,11 @@ public class PartyScreen
     {
         Message = null;
         AudioManager.PlaySound("cancel");
+        if (Entering && Entered.Count > 0)
+        {
+            Entered.RemoveAt(Entered.Count - 1);
+            return;
+        }
         if (Sharing is var (giver, _))
         {
             Sharing = null;
@@ -339,7 +397,7 @@ public class PartyScreen
         {
             Confirm(party);
         }
-        else if (InputManager.IsActionPressed(GameAction.Run) && !SwapSourceIndex.HasValue && Actions == null && Sharing == null)
+        else if (InputManager.IsActionPressed(GameAction.Run) && !SwapSourceIndex.HasValue && Actions == null && Sharing == null && !Entering && !Choosing)
         {
             SwapSourceIndex = SelectedIndex;
             AudioManager.PlaySound("select");
@@ -354,6 +412,11 @@ public class PartyScreen
         {
             ModernUi.DrawSummary(screenWidth, screenHeight, party.Members[SelectedIndex], SelectedIndex, party.Count,
                 Math.Clamp(summaryAge / SummaryAppearTime, 0f, 1f), SummaryPage, RibbonCursor);
+        }
+        else if (Entering)
+        {
+            ModernUi.DrawPartyChoice(screenWidth, screenHeight, party, SelectedIndex, Prompt, p => EnterTag(party, p), Math.Clamp(openAge / AppearTime, 0f, 1f),
+                Entered.Count == EnterCount ? "Go in" : "Enter");
         }
         else
         {

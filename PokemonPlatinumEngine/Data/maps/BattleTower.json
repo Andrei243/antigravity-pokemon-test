@@ -1,0 +1,456 @@
+{
+  "name": "BattleTower",
+  "displayName": "Battle Tower",
+  "bgmTrack": "sinnoh/veilstone",
+  "interior": "Museum",
+  "trees": "Round",
+  "width": 31,
+  "height": 21,
+  "ground": [
+    "###############################",
+    "###############################",
+    "###############################",
+    "#########_____________#########",
+    "#########_____________#########",
+    "######__#______________##_#####",
+    "######__#________________######",
+    "#####_____________________#####",
+    "#####_____________________#####",
+    "#_____________________________#",
+    "#_____________________________#",
+    "#_____________________________#",
+    "#_____________________________#",
+    "#_____________________________#",
+    "#_____________________________#",
+    "#_____________________________#",
+    "#########_____________#########",
+    "#########_____________#########",
+    "#########_____________#########",
+    "#########_____________#########",
+    "##############DDD##############"
+  ],
+  "solid": [
+    "###############################",
+    "###############################",
+    "###########.###.###############",
+    "##########...#...#...##########",
+    "##########...#...#...##########",
+    "###########.###.###.#####.#####",
+    "#########.............#..######",
+    "#####.....................#####",
+    "#####.....................#####",
+    "#####.......#.....#...#.#.#####",
+    "#####.................#.#.#####",
+    "#####.................#.#.#####",
+    "#####.................#.#.#####",
+    "#.............................#",
+    "#.............................#",
+    "#.............................#",
+    "#########.............#########",
+    "#########.............#########",
+    "#########.............#########",
+    "#########...#.....#...#########",
+    "##############...##############"
+  ],
+  "props": [
+    {
+      "type": "Counter",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "Counter",
+      "x": 10,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 12,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 13,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Computer",
+      "x": 13,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 14,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 16,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 17,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Computer",
+      "x": 17,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 18,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 20,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 21,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Computer",
+      "x": 21,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 6,
+      "y": 5,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Counter",
+      "x": 22,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 22,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 12,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 18,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 12,
+      "y": 19,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 18,
+      "y": 19,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 22,
+      "y": 9,
+      "width": 1,
+      "depth": 4
+    },
+    {
+      "type": "Bench",
+      "x": 24,
+      "y": 9,
+      "width": 1,
+      "depth": 4
+    },
+    {
+      "type": "TrainerStatue",
+      "x": 2,
+      "y": 10,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "TrainerStatue",
+      "x": 27,
+      "y": 10,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Rug",
+      "x": 14,
+      "y": 19,
+      "width": 3,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 14,
+      "sourceY": 20,
+      "targetMap": "BattleFrontier",
+      "targetX": 48,
+      "targetY": 18,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 15,
+      "sourceY": 20,
+      "targetMap": "BattleFrontier",
+      "targetX": 48,
+      "targetY": 18,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 16,
+      "sourceY": 20,
+      "targetMap": "BattleFrontier",
+      "targetX": 49,
+      "targetY": 18,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 11,
+      "sourceY": 2,
+      "targetMap": "BattleTowerElevator",
+      "targetX": 3,
+      "targetY": 6,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 15,
+      "sourceY": 2,
+      "targetMap": "BattleTowerElevator",
+      "targetX": 3,
+      "targetY": 6,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 13,
+      "y": 5,
+      "text": "",
+      "script": "RecordsMachine"
+    },
+    {
+      "x": 17,
+      "y": 5,
+      "text": "",
+      "script": "WifiMachine"
+    },
+    {
+      "x": 21,
+      "y": 5,
+      "text": "",
+      "script": "WifiMachine"
+    },
+    {
+      "x": 23,
+      "y": 5,
+      "text": "A map of the Battle Frontier hangs here: the tower at the top, the four halls round the plaza."
+    },
+    {
+      "x": 24,
+      "y": 5,
+      "text": "A map of the Battle Frontier hangs here: the tower at the top, the four halls round the plaza."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "single_attendant",
+      "name": "Attendant",
+      "npcType": "Lass",
+      "x": 15,
+      "y": 5,
+      "facing": "Down",
+      "script": "SingleAttendant"
+    },
+    {
+      "id": "multi_attendant",
+      "name": "Attendant",
+      "npcType": "Lass",
+      "x": 11,
+      "y": 5,
+      "facing": "Down",
+      "script": "MultiAttendant"
+    },
+    {
+      "id": "wifi_attendant",
+      "name": "Attendant",
+      "npcType": "Lass",
+      "x": 19,
+      "y": 5,
+      "facing": "Down",
+      "script": "WifiAttendant"
+    },
+    {
+      "id": "teala",
+      "name": "Teala",
+      "npcType": "Lady",
+      "x": 16,
+      "y": 6,
+      "facing": "Down",
+      "script": "Teala",
+      "hiddenBy": "FLAG_HIDE_BATTLE_TOWER_TEALA"
+    },
+    {
+      "id": "artist",
+      "name": "Artist",
+      "npcType": "Gentleman",
+      "x": 2,
+      "y": 14,
+      "facing": "Down",
+      "script": "Artist",
+      "movement": "wander_around",
+      "rangeX": 1,
+      "rangeZ": 1
+    },
+    {
+      "id": "jogger",
+      "name": "Jogger",
+      "npcType": "Youngster",
+      "x": 13,
+      "y": 14,
+      "facing": "Left",
+      "script": "Jogger",
+      "movement": "wander_around",
+      "rangeX": 1,
+      "rangeZ": 1
+    },
+    {
+      "id": "idol",
+      "name": "Idol",
+      "npcType": "Lass",
+      "x": 6,
+      "y": 10,
+      "facing": "Up",
+      "script": "Idol",
+      "movement": "look_north_and_east"
+    },
+    {
+      "id": "rich_boy",
+      "name": "Rich Boy",
+      "npcType": "Youngster",
+      "x": 25,
+      "y": 13,
+      "facing": "Down",
+      "script": "RichBoy"
+    },
+    {
+      "id": "pikachu_1",
+      "name": "Pikachu",
+      "npcType": "Pokemon",
+      "x": 25,
+      "y": 14,
+      "facing": "Left",
+      "script": "Pikachu1",
+      "species": "Pikachu",
+      "movement": "look_south_west_and_east"
+    },
+    {
+      "id": "pikachu_2",
+      "name": "Pikachu",
+      "npcType": "Pokemon",
+      "x": 19,
+      "y": 16,
+      "facing": "Right",
+      "script": "Pikachu2",
+      "species": "Pikachu"
+    },
+    {
+      "id": "school_kid_m_1",
+      "name": "School Kid",
+      "npcType": "Youngster",
+      "x": 20,
+      "y": 16,
+      "facing": "Left",
+      "script": "SchoolKid1"
+    },
+    {
+      "id": "parasol_lady",
+      "name": "Parasol Lady",
+      "npcType": "Lady",
+      "x": 9,
+      "y": 13,
+      "facing": "Down",
+      "script": "ParasolLady",
+      "movement": "wander_around",
+      "rangeX": 1,
+      "rangeZ": 1
+    },
+    {
+      "id": "school_kid_m_2",
+      "name": "School Kid",
+      "npcType": "Youngster",
+      "x": 20,
+      "y": 11,
+      "facing": "Left",
+      "script": "SchoolKid2",
+      "movement": "look_south_and_west"
+    },
+    {
+      "id": "stats_judge",
+      "name": "Judge",
+      "npcType": "Scientist",
+      "x": 24,
+      "y": 7,
+      "facing": "Down",
+      "script": "StatsJudge"
+    },
+    {
+      "name": "PC Terminal",
+      "npcType": "Trainer",
+      "x": 22,
+      "y": 6,
+      "facing": "Up",
+      "isPCTerminal": true
+    }
+  ],
+  "wildEncounters": []
+}

@@ -96,6 +96,13 @@ public sealed class BattleSetup
     /// </summary>
     public bool MoveHints { get; init; }
 
+    /// <summary>
+    /// A battle of the Battle Frontier (plan 06 · R18a; the original's <c>BATTLE_TYPE_FRONTIER</c>): nothing from the
+    /// bag, no EXP, no money either way, RUN is a forfeit, and the Pokédex is told nothing (<see cref="Sim.CoreSetup.Frontier"/>).
+    /// The team it is handed is the battle's own copy (<see cref="Models.Frontier.FrontierRules.TeamFor"/>).
+    /// </summary>
+    public bool Frontier { get; init; }
+
     /// <summary>The trainer's first Pokémon when it isn't the first in their party (the old constructor's foe argument).</summary>
     internal Pokemon? FirstTrainerPokemon { get; init; }
 }

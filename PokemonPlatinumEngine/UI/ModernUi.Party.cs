@@ -79,7 +79,8 @@ internal static partial class ModernUi
             }
             var p = party.Members[i];
             PartyCard(r, p, i == selected, false, lead: false);
-            if (tag(p) is { } said) Tag(r.X + 264, r.Y + 183, said, said == "ABLE" ? Green : Muted);
+            // ABLE, and a place among those entered (1ST, 2ND: plan 06 · R18a), in the colour of what can be done
+            if (tag(p) is { } said) Tag(r.X + 264, r.Y + 183, said, said == "ABLE" || char.IsDigit(said[0]) ? Green : Muted);
         }
 
         var box = new Rectangle(64, 920, 1792, 112);

@@ -1375,3 +1375,52 @@ The houses the areas of M5 and M6 still kept shut, on the original's plans: its 
 | The rival's branch of the Gym's statues | Named beside the player once he has battled before the League's door | Not written | Plan 02 · S14 sets the variable |
 | The lab's other people | Two scientists and its shelves, with lines for this stretch of the story | Not there: the lab is still the room made by hand | Plan 01 · M11 |
 | The gate house and the houses | Route 222's gate with its two people; Sunyshore's and Route 222's houses | Walked through; locked | Plan 01 · M11 |
+
+## The Battle Frontier's frame and the Battle Tower (2026-10-11, plan 06 · R18a)
+
+**Platinum's rules, kept as they are** (`src/battle_frontier_save.c` and `include/constants/battle_frontier.h`, `src/wifi_battle_tower_save.c`, `src/unk_02049D08.c`, `src/unk_0204AEE8.c`, `src/unk_0206B9D8.c`, `src/overlay104/frontier_opponents.c`, `ov104_0223A0C4.c` and `ov104_022394A4.c`, `src/frscrcmd_battle_tower.c`, `src/unk_020494DC.c`, the Frontier's branches of `src/battle/`, `sBattleFrontierBanlist` in `src/pokemon.c`, `res/trainers/frontier/`, and the scripts of the Battle Tower's seven rooms, its battle rooms and the Battle Frontier's grounds):
+
+- **The records** (`BattleFrontierStatsIndex`): a hundred numbers in the original's order, the Tower's ten first, then the Factory's, the Hall's, the Castle's and the Arcade's, none past 9,999; a record is kept only when bettered; a streak "runs" for one way of taking one facility's challenge, and that is one bit of seven sets.
+- **Battle Points**: 9,999 at most, given and spent whole. The Exchange Service Corner's west booth trades for 26 things (the six vitamins for 1 BP each, the six Power items and the two Orbs for 16, the two Herbs for 32, nine things to hold and the Rare Candy for 48), and its east booth for 15 Technical Machines (32 to 80 BP), at the original's prices in the original's order.
+- **Who may go in**: no Egg and none of the eighteen banned species (Mewtwo, Mew, Lugia, Ho-Oh, Celebi, Kyogre, Groudon, Rayquaza, Jirachi, Deoxys, Dialga, Palkia, Giratina, Phione, Manaphy, Darkrai, Shaymin, Arceus); no two of one species; no two holding the same item (holding nothing is no item in common). A counter turns away a team that has too few such Pokémon before anyone is chosen, and names the banned species the Pokédex has seen.
+- **A Frontier battle** (`BATTLE_TYPE_FRONTIER`): the team is a copy of the Pokémon entered, brought down to level 50 where they are above it and left at their own level below; nothing the battle does reaches the Pokémon themselves. Nothing comes out of the Bag. RUN asks whether to give the match up, and giving it up is a battle lost. No EXP, no effort, no prize money either way and none scattered by Pay Day, nothing picked up, no waking in a Pokémon Center. Every Pokémon obeys, the Pokédex is told of nothing it sees, a Burmy keeps its cloak, a Soul Dew does nothing, and a trainer's Pokémon may steal an item (which the battle's end gives back, the team being a copy). The trainers think with three routines (basic, attack evaluation, expert) and use no items.
+- **The trainers and their Pokémon**: 300 trainers, five partners and ten Brains, each with a list of sets drawn from 950. A set is a species, four moves, a nature, an item and the stats its effort goes into (510 between them, 255 at most each). Every IV is the same and goes by the trainer's number: 3 under trainer 100, three more for each twenty after, 31 from trainer 220. A personality is drawn in pairs of sixteen bits until it gives the set's nature and isn't shiny; the ability is its lowest bit's. Friendship is full, or none with Frustration.
+- **The Battle Tower**: a set is seven trainers, a Single Battle with three Pokémon, a Double Battle with four, a Multi Battle with two beside a partner's two. The set's trainers are drawn as the challenge goes up, from the row of the room the streak has reached (the seventh from the bosses' row), none twice; each one's Pokémon are drawn as they are come to, no two of a species or an item, a pair's kept apart from each other's. All of it is on the Tower's own generator (`state × 48828125 + 1`, the draw the state over 65,535), seeded from a number kept with the records: a new streak moves that number on (`× 1566083941 + 1`), a streak that goes on doesn't, and a new day starts it from the day's number. So a room is the same however often it is come back to.
+- **Between battles** the team is healed, and the challenge can be gone on with, put down or given up. Seven won earn Battle Points by the room the streak is left in (3, 3, 4, 4, 5, 5, 7 and 7 from then on), add seven to the Trainer Card's score, and the next challenge starts in the next room. A battle lost or a challenge given up ends the streak where it stands.
+- **The Tower Tycoon** is the seventh trainer of the third and of the seventh set of the Single Battle Room (battles 21 and 49). Beaten, he is worth 20 Battle Points, the lobby hands over a silver or a gold print (`VAR_BATTLE_TOWER_PRINT_STATE`: 1 beaten, 2 handed over, 3 beaten again, 4 handed over), and the Pokémon entered are given the Ability Ribbon or the Great Ability Ribbon. A streak of fifty in the Double or the Multi Battle Room gives them the Double or the Multi Ability Ribbon. The fifth gold print sets `FLAG_OBTAINED_ALL_BATTLE_FRONTIER_GOLD_PRINTS` and adds a thousand to the score.
+- **Trophies**: a Single Battle Room record of 20, 50 and 100 earns the bronze, the silver and the gold trophy, goods sent to the secret base's PC one at a time; with no room there, one waits, and someone stands beside the middle counter until it is collected.
+- **The Brains' frame** (`FrontierBrains`): every facility's Brain comes at its battles 21 and 49 (the Hall's at 50 and 170), each has a print variable of the same five values, and a round is seven battles (the Hall's ten).
+- **The judge** in the lobby adds a Pokémon's six IVs up and puts the sum in one of four ranks (to 90, to 120, to 150, beyond), names the stat of the highest (the first of them in the order HP, Attack, Defense, Speed, Sp. Atk, Sp. Def) and puts that one in one of four as well (to 15, to 25, to 30, 31). What he calls each rank is ours.
+
+**Quirks kept**
+
+- A room's number is passed in a byte as the Tower's trainers are drawn: the 257th room draws from the first room's row again.
+- Two sets that hold nothing count as holding the same item when a trainer's team is drawn; the player's own Pokémon may all hold nothing.
+- After fifty refusals for an item's sake a trainer's team is drawn without looking at items, and is handed Bright Powder, a Lum Berry, Leftovers and a Quick Claw by its places instead.
+- The Battle Points for a set go by the room the streak has just come into, so the first set and the second both earn 3.
+
+**Our own choices**
+
+- **The team is entered on the team's own screen** (`PartyScreen.OpenToEnter`): each Pokémon chosen is numbered in its order, one that may not go in says so, and the button confirms once enough are in. The original's is a mode of its party menu with an ENTER and NO ENTRY menu on each Pokémon.
+- **RETIRE and REST are asked once**: answered no, the challenge goes on to the next battle, where the original goes back to its menu.
+- **A challenge put down** is saved in the lobby, which asks at once whether to go on with it; left for later, either counter's attendant takes it up again. The original closes the game there. A challenge whose Pokémon are no longer where and what they were ends, since here one can walk away in between. A game closed in the middle of a challenge finds its streak ended, as the original's does.
+- **A trainer of a battle room says nothing**: the original's lines are its own text, and we have 300 trainers. The room says who steps up; the Tycoon has lines of ours.
+- **The Exchange Service Corner asks once**: a prize is chosen from a list and the talk ends (as the Game Corner's exchange does here); the original's counter stays open.
+- **The lifts' doors are doorways in the lobby's back wall** behind each booth, the attendant walking in ahead; the corridor's door is one of four, drawn on the game's own chance.
+- **The Tower's draws use a number seeded from the day's number of this game**, which isn't a cartridge's for the same day: the generator and every step of it are the original's, the rooms it gives are ours.
+- **What the Bag is refused with and what RUN asks** are our words.
+
+**Stand-ins for what this game lacks**
+
+| What | The original | Here | Why |
+| --- | --- | --- | --- |
+| The Wi-Fi Battle Rooms and their two machines | Teams sent in over the Wi-Fi Connection, seven rooms, ranks, a leaders' board | The east counter's attendant says the rooms are closed; the machines have no data | Decision 06 · 7: nothing comes in over the air; the World Ability Ribbon waits with it |
+| The Multi Battle Room with a friend | A link to another console from the west counter | Only the Battle Salon's five partners; the question isn't asked | Plan 07; the Pair Ability Ribbon waits with it |
+| Marley and Buck in the Battle Salon | There once they have been travelled with | Their flags (`FLAG_TRAVELED_WITH_MARLEY`, `FLAG_BUCK_LEFT_BATTLEGROUND`) are nobody's to set yet | Plan 02 · S15 sets them |
+| A battle kept as a Battle Video | Asked after each battle, and the Vs. Recorder's saved file | Not asked | Plan 08 · P10 writes the file; R12's Vs. Recorder is as it was |
+| The reporter in the lobby and on the grounds | Interviews whoever has a streak to talk about | Not there | Plan 08's television |
+| The scratch-off cards | A booth of the Exchange Service Corner, a Battle Point a card | The attendant says the cards haven't come | Not built: no session has it yet |
+| The Tower's music, the lift's and the doors' sounds | Their own | Veilstone City's theme, and sounds the game has | Plan 05 · A6 |
+| The Tower Tycoon, Riley, Marley, Buck, the attendants and the judge | Their own looks | A gentleman, a clerk, a lass, a youngster, lasses and a scientist | Plan 11 |
+| The battle rooms' stage | The Tower's own background and platforms | A Gym's hall | Plan 04's arenas have none for the Frontier |
+| The Frontier's other four facilities | The Battle Factory, Hall, Castle and Arcade | Their doors stay shut; their records, prints and rules are in the frame | Plan 06 · R18b to R18d |

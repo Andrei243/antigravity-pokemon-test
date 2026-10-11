@@ -61,6 +61,9 @@ public sealed class FieldState
     public int TrickRoomTurns { get; internal set; }
     public int GravityTurns { get; internal set; }
 
+    /// <summary>The battle is one of the Battle Frontier's (plan 06 · R18a): the damage formula leaves a Soul Dew out there.</summary>
+    public bool Frontier { get; internal set; }
+
     public bool TrickRoom => TrickRoomTurns > 0;
     public bool Gravity => GravityTurns > 0;
 

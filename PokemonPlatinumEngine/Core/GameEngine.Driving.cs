@@ -71,6 +71,10 @@ public partial class GameEngine
         public bool ParkStep() => game.PalParkStep();
         /// <summary>Stands the Villa's furniture in its room as the flags say (the engine's own, as arriving there does).</summary>
         public void FurnishVilla() => game.FurnishVilla();
+        /// <summary>The Battle Frontier (plan 06 · R18a): its records, the Tower's challenge under way and a facility's board.</summary>
+        public Models.Frontier.FrontierRecords Frontier => game.frontier;
+        public Models.Frontier.BattleTowerChallenge? Tower => game.tower;
+        public FrontierRecordsScreen FrontierBoard => game.frontierRecordsScreen;
         public Models.Underground.UndergroundField Tunnels => game.Tunnels;
         public MiningScreen Mining => game.miningScreen;
         public UndergroundScreen UndergroundLists => game.undergroundScreen;

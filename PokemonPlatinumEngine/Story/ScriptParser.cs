@@ -558,6 +558,40 @@ public static class ScriptParser
                 return new Instruction { Op = Op.PalPark, Line = line, Name = what, Other = which };
             }
 
+            // The Battle Frontier's frame and the Battle Tower (plan 06 · R18a)
+            case "frontier":
+            {
+                string what = r.OneOf("points", "give", "prize", "buy", "records", "print", "judge", "judged", "save");
+                string which = what switch
+                {
+                    "prize" => r.OneOf("items", "machines"),
+                    "records" or "print" => r.OneOf("tower", "factory", "hall", "castle", "arcade"),
+                    "judged" => r.OneOf("total", "best"),
+                    _ => ""
+                };
+                int points = what == "give" ? r.Int("a number of Battle Points") : 0;
+                if (points < 0) throw r.Error("Battle Points are counted from nought up");
+                return new Instruction { Op = Op.Frontier, Line = line, Name = what, Other = which, Number = points };
+            }
+            case "tower":
+            {
+                string what = r.OneOf("enough", "begin", "choose", "check", "enter", "pause", "resume", "forfeit", "end", "active", "paused", "mode",
+                    "next", "opponent", "battle", "won", "sevens", "streak", "palmer", "beat", "brain", "finish", "points", "beaten", "ribbon", "trophy",
+                    "waiting", "partners", "tells", "partner", "partnered", "door", "salon");
+                string which = what switch
+                {
+                    "begin" => r.OneOf("single", "double", "multi"),
+                    "beat" => r.OneOf("silver", "gold"),
+                    "finish" => r.OneOf("won", "lost"),
+                    "ribbon" => r.OneOf("palmer", "streak"),
+                    _ => ""
+                };
+                int number = what is "tells" or "partner" ? r.Int("a partner of the Battle Salon, 0 to 4") : what == "enough" && r.More ? r.Int("how many Pokémon") : 0;
+                if (what is "tells" or "partner" && number is < 0 or > 4) throw r.Error("the Battle Salon's partners are 0 to 4");
+                if (what == "enough" && number is < 0 or > 4) throw r.Error("a challenge takes two, three or four Pokémon");
+                return new Instruction { Op = Op.Tower, Line = line, Name = what, Other = which, Number = number };
+            }
+
             case "script":
             case "label":
                 throw r.Error($"'{word}' begins a line of its own");

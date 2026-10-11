@@ -843,6 +843,16 @@ Plan 06 · R16b. Everything here is our own: nothing of the original's reel pict
 - **The Catching Show's count** (`ModernUi.ParkCount`) is the Safari Game's panel at the top right with the Park Balls left and the seconds run.
 - **The Coin Case's count** (`ModernUi.CoinCount`) is the same panel at the top left, a little wider, with the coins and the money side by side; it stands there while someone of the Game Corner or its prize exchange is spoken to, as the original's two windows do.
 
+### The Battle Frontier
+
+Plan 06 · R18a. Everything here is our own: nothing of the original's rooms, record screens or trainers' pictures is taken.
+
+- **The Battle Tower's rooms** are the museum's hall of pale stone (`interior: Museum`): the lobby thirty-one tiles wide, three booths along its back each a gap in a blue counter with an attendant in it, a machine on the counter beside each booth, a lift's doorway in the back wall behind the west and the middle booth, an alcove with a statue at either end and potted plants on the floor. The lift is a room five tiles square with a mat at its door; the corridors are one row of floor before a back wall of doorways four tiles apart; a battle room is bare but for a plant in each corner, the opponent's doorway in the middle of its back wall (two side by side in the room for two). A doorway is the rooms' own (dark, framed, a yellow lintel).
+- **The Battle Frontier's board** (`FrontierRecordsScreen`, `ModernUi.DrawFrontierBoard`) is one screen in the menus' look, titled BATTLE RECORDS: a standard panel with the facility's name at its head in Black 48 and, at the head's right, the print as a disc 38 in radius with a ring (the rule colour and NO PRINT YET until one is won, silver (168, 178, 198), gold (232, 180, 60)); under three small captions a card for each way the challenge is taken, its name at 40, the record streak in Black 56 and the latest in Black 44, muted once the streak has ended and followed by a green RUNNING tag while it runs; and a foot strip in the rule colour with the Battle Points and the battles won there.
+- **The Battle Points' count** (`ModernUi.PointsCount`) is the Coin Case's panel at the top left, with the points in Black 36; it stands there while a booth of the Exchange Service Corner or a battle room speaks of them.
+- **Entering a team** is the team's own screen: a Pokémon chosen carries a green tag with its place (1ST, 2ND, 3RD, 4TH) where a field move's tag would be, one that may not go in a grey NOT ABLE, and the prompt at the foot counts how many are still to go and then asks whether to go in.
+- **A Frontier battle** is fought on a Gym's stage; its two questions (the Bag's refusal, RUN's "give the match up?") are the battle's message box and its Yes and No.
+
 ### Badges
 
 - Eight round medallions in gym order (`ModernUi.Badge`), each in its gym's colour with a simple white mark; our own designs, not the games' badge art.

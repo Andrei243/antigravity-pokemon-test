@@ -333,31 +333,40 @@ public class PostGameTests
             Assert.Equal(("Sinnoh", 654 + i, 424, Direction.Down), (back.TargetMap, back.TargetX, back.TargetY, back.TargetFacing));
             Assert.True(map.IsWalkable(back.TargetX, back.TargetY));
         }
-        Assert.Equal(2, grounds.Warps.Count);
+        // (the gate's two and the Battle Tower's two)
+        Assert.Equal(4, grounds.Warps.Count);
 
-        // The five facilities' doors are the rules lane's (plan 06 · R18): every one of the area file's ways into them
-        // is shut, at the tiles the original has them
+        // The five facilities' doors are the rules lane's (plan 06 · R18). The Battle Tower's two lead into its lobby
+        // (R18a); every way into the four halls is shut until its sitting, at the tiles the original has them
         var file = Sinnoh.Area("battle_frontier")!;
         var facilities = file.Warps.Where(w => w.To.StartsWith("battle_") && !w.To.Contains("gate")).ToList();
         Assert.Equal(14, facilities.Count);
         Assert.Equal(new[] { "battle_arcade", "battle_castle", "battle_factory", "battle_hall", "battle_tower" }, facilities.Select(w => w.To).Distinct().OrderBy(n => n));
-        Assert.All(facilities, w =>
+        var halls = facilities.Where(w => w.To != "battle_tower").ToList();
+        Assert.Equal(12, halls.Count);
+        Assert.All(halls, w =>
         {
             Assert.Null(grounds.GetWarpAt(w.X, w.Z));
             Assert.True(grounds.IsSolid(w.X, w.Z), $"the way into {w.To} at ({w.X},{w.Z}) can be walked into");
         });
         Assert.Equal(new[] { (48, 17), (49, 17) }, facilities.Where(w => w.To == "battle_tower").Select(w => (w.X, w.Z)));
+        Assert.All(facilities.Where(w => w.To == "battle_tower"), w =>
+        {
+            var door = grounds.GetWarpAt(w.X, w.Z)!;
+            Assert.Equal(("BattleTower", 15, 19, Direction.Up), (door.TargetMap, door.TargetX, door.TargetY, door.TargetFacing));
+        });
         // Nor do the triggers before the four halls' doors do anything yet
         Assert.Empty(grounds.Triggers);
 
-        // Its people have lines of ours; the Exchange Service Corner's three attendants say what they wait for; the
-        // reporter, and whoever the story brings, aren't there
+        // Its people have lines of ours; two of the Exchange Service Corner's attendants trade Battle Points for their
+        // booth's prizes (R18a) and the third says what she waits for; the reporter, and whoever the story brings,
+        // aren't there
         var people = grounds.Everyone.Where(n => !n.IsThing).ToList();
         Assert.True(people.Count >= 20, $"only {people.Count} people in the grounds");
         Assert.All(people, n => Assert.True(n.DialogLines.Count > 0 || n.Script != null, $"{n.Key} has nothing to say"));
         Assert.DoesNotContain(people, n => n.Key is "reporter" or "rival" or "palmer");
         var attendants = people.Where(n => n.Key!.StartsWith("attendant_")).ToList();
-        Assert.Equal(new[] { "ExchangeCorner", "ExchangeCorner", "ScratchCards" }, attendants.Select(n => n.Script).OrderBy(s => s));
+        Assert.Equal(new[] { "ExchangeItems", "ExchangeMachines", "ScratchCards" }, attendants.Select(n => n.Script).OrderBy(s => s));
         Assert.All(attendants, a =>
         {
             // Each stands inside a booth and serves over its counter, the way they face

@@ -346,7 +346,7 @@ public sealed partial class BattleCore
         if (!hit.Touched) return;
         var p = user.Pokemon!;
         var q = t.Pokemon!;
-        if (!user.IsPlayerSide && !Rules.FoesCanTakeItems) return;
+        if (!user.IsPlayerSide && !Rules.FoesCanTakeItems && !Frontier) return;
         if (knockedOff.ContainsKey(p) || p.AbilityName == "Multitype" || q.AbilityName == "Multitype" || q.HeldItem?.Name == "Griseous Orb") return;
         if (KeptByStickyHold(user, t, use.Move)) return;
         if (p.HeldItem != null || !CanTake(t)) return;
@@ -388,7 +388,7 @@ public sealed partial class BattleCore
         var q = t.Pokemon!;
         if (t.HasSubstitute || t.Volatile.ItemWentOff) return Fails();
         if (p.AbilityName == "Multitype" || q.AbilityName == "Multitype" || p.HeldItem?.Name == "Griseous Orb" || q.HeldItem?.Name == "Griseous Orb") return Fails();
-        if (!user.IsPlayerSide && !Rules.FoesCanTakeItems) return Fails();
+        if (!user.IsPlayerSide && !Rules.FoesCanTakeItems && !Frontier) return Fails();
         if (knockedOff.ContainsKey(p) || knockedOff.ContainsKey(q)) return Fails();
         if (p.HeldItem == null && q.HeldItem == null) return Fails();
         if (p.HeldItem?.Pocket == ItemPocket.Mail || q.HeldItem?.Pocket == ItemPocket.Mail) return Fails();

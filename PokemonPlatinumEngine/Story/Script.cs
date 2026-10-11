@@ -66,6 +66,8 @@ public enum Op
     Fossil, GameCorner, Villa, PalPark,
     // A die of the script's own (plan 01 · M11): the original's GetRandom
     Random,
+    // The Battle Frontier's frame and the Battle Tower (plan 06 · R18a)
+    Frontier, Tower,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

@@ -1,0 +1,35 @@
+# The Battle Tower's lift (plan 06 · R18a). docs/scripts.md describes the language; scripts_battle_tower_elevator.s
+# is the original.
+#
+# VAR_BATTLE_TOWER_ELEVATOR_LOAD_ACTION says where the lift goes as the player steps in, as in the original: 1 up to
+# the corridor of the Battle Rooms, 2 up to the Multi Battle Room's, 3 down to the Battle Salon. With nothing set
+# (someone who walked in), it goes nowhere and the door leads back out.
+
+
+script OnEnter
+  place attendant 4 4 down
+  if var VAR_BATTLE_TOWER_ELEVATOR_LOAD_ACTION == 0 end
+  # BattleTowerElevator_ElevatorAnimation: in, the ride, and out behind the attendant
+  walk player up 2
+  face player down
+  sound "lift"
+  camera shake 1.2
+  wait 1.2
+  sound "lift_stop"
+  wait 0.3
+  walk attendant down 1 left 1 down 1
+  hide attendant
+  walk player down 2
+  if var VAR_BATTLE_TOWER_ELEVATOR_LOAD_ACTION == 2 goto Multi
+  if var VAR_BATTLE_TOWER_ELEVATOR_LOAD_ACTION == 3 goto Salon
+  setvar VAR_BATTLE_TOWER_ELEVATOR_LOAD_ACTION 0
+  warp "BattleTowerCorridor" 2 3 down
+  end
+label Multi
+  setvar VAR_BATTLE_TOWER_ELEVATOR_LOAD_ACTION 0
+  warp "BattleTowerCorridorMulti" 3 3 down
+  end
+label Salon
+  setvar VAR_BATTLE_TOWER_ELEVATOR_LOAD_ACTION 0
+  warp "BattleTowerBattleSalon" 8 4 down
+  end

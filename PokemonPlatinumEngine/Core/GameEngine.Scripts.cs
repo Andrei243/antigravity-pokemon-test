@@ -224,6 +224,8 @@ public partial class GameEngine
         foreach (var (boulder, _, _, _) in slides) boulder.StepOffsetX = boulder.StepOffsetY = 0f;
         slides.Clear();
         currentMap.ResetObstacles();
+        // The Battle Points a script was speaking of stay behind with the room (plan 06 · R18a)
+        showBattlePoints = false;
     }
 
     /// <summary>

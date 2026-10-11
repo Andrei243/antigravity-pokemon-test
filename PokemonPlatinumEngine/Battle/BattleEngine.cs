@@ -195,7 +195,8 @@ public partial class BattleEngine
             Partner = setup.Partner == null ? null : mirror.Copy(setup.Partner),
             CannotFlee = setup.CannotFlee,
             FirstBattle = setup.FirstBattle,
-            SpecialBalls = setup.SpecialBalls
+            SpecialBalls = setup.SpecialBalls,
+            Frontier = setup.Frontier
         });
 
         Anim.Slots = core.PlayerSlots.Count;
@@ -229,6 +230,9 @@ public partial class BattleEngine
 
     /// <summary>What kind of battle it is (a roamer, the catching lesson, the Great Marsh, Pal Park).</summary>
     public BattleKind Kind { get; }
+
+    /// <summary>A battle of the Battle Frontier (plan 06 · R18a): no bag, no EXP, no money, and RUN asks whether to give the match up.</summary>
+    public bool IsFrontier => core.Frontier;
 
     /// <summary>The trainer beside the player in a tag battle (their Pokémon stand in the player's second place).</summary>
     public Trainer? Partner { get; }
@@ -402,7 +406,8 @@ public partial class BattleEngine
                 if (trainers.Second != null) Anim.EnemyTrainer2 = LookOf(trainers.Second, 1);
                 break;
             case Seen seen:
-                if (Kind != BattleKind.CatchingLesson) Pokedex.RegisterSeen(seen.Species.DexNumber);
+                // The Pokédex isn't told of what is met in the catching lesson or the Battle Frontier (BattleSystem_DexFlagSeen)
+                if (Kind != BattleKind.CatchingLesson && !IsFrontier) Pokedex.RegisterSeen(seen.Species.DexNumber);
                 break;
             case Entered entered:
             {

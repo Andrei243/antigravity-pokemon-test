@@ -277,6 +277,51 @@ public class ScriptTests
           palpark store
           palpark end
           random 6
+          frontier points
+          frontier give 3
+          frontier prize items
+          frontier prize machines
+          frontier buy
+          frontier records tower
+          frontier print tower
+          frontier judge
+          frontier judged total
+          frontier judged best
+          frontier save
+          tower enough 3
+          tower begin single
+          tower choose
+          tower check
+          tower enter
+          tower door
+          tower next
+          tower opponent
+          tower battle
+          tower won
+          tower sevens
+          tower streak
+          tower palmer
+          tower beat silver
+          tower brain
+          tower finish won
+          tower points
+          tower beaten
+          tower ribbon palmer
+          tower ribbon streak
+          tower trophy
+          tower waiting
+          tower mode
+          tower active
+          tower pause
+          tower paused
+          tower resume
+          tower forfeit
+          tower end
+          tower begin multi
+          tower partners
+          tower tells 0
+          tower partner 0
+          tower partnered
         script Other
           end
         """;
@@ -1130,6 +1175,11 @@ public class ScriptTests
         public PokemonPlatinumEngine.Models.Pastimes Pastimes => inner.Pastimes;
         public PokemonPlatinumEngine.Models.VillaRecords VillaRecords => inner.VillaRecords;
         public int PastimeAct(string what, int number, NPC? subject) => inner.PastimeAct(what, number, subject);
+        public PokemonPlatinumEngine.Models.Frontier.FrontierRecords Frontier => inner.Frontier;
+        public PokemonPlatinumEngine.Models.Frontier.BattleTowerChallenge? Tower { get => inner.Tower; set => inner.Tower = value; }
+        public int FrontierAct(string what, int number, NPC? subject) => inner.FrontierAct(what, number, subject);
+        public IReadOnlyList<int> Entered => inner.Entered;
+        public void FrontierBattle(Party team, IReadOnlyList<Trainer> foes, Trainer? partner, bool doubles) => inner.FrontierBattle(team, foes, partner, doubles);
         public string DiggerName => inner.DiggerName;
         public int Random(int sides) => inner.Random(sides);
         public int? HoneyTreeFaced => inner.HoneyTreeFaced;

@@ -1,0 +1,96 @@
+# The Multi Battle Room of the Battle Tower (plan 06 · R18a). docs/scripts.md describes the language; the lines are
+# our own, on the original's beats (frontier_scripts_battle_tower_multi_battle_room.s).
+#
+# The Battle Room's course (BattleTowerBattleRoom.txt) for two: the player and the partner chosen in the Battle
+# Salon stand side by side, seven pairs of trainers come in one after another, and each battle is a double one in
+# which the partner's two Pokémon are their own to command. There is no Tower Tycoon here.
+
+
+script OnEnter
+  tower active
+  if result == 0 end
+  tower partnered
+  if result < 0 end
+  clearflag FLAG_HIDE_BATTLE_TOWER_MULTI_PARTNER
+  show partner
+  place partner 8 9 up
+  speaker "Attendant"
+  move partner up 2
+  walk player up 2
+  waitmoves
+  if var VAR_BATTLE_TOWER_BATTLE_ROOM_LOAD_ACTION == 2 goto Menu
+
+label Fight
+  setvar VAR_BATTLE_TOWER_BATTLE_ROOM_LOAD_ACTION 3
+  tower opponent
+  place opponent_2 7 3 down
+  place opponent 8 3 down
+  sound "door_slide"
+  clearflag FLAG_HIDE_MULTI_BATTLE_ROOM_OPPONENT_1
+  clearflag FLAG_HIDE_MULTI_BATTLE_ROOM_OPPONENT_2
+  show opponent
+  show opponent_2
+  move opponent down 1
+  walk opponent_2 down 1
+  waitmoves
+  text "{foe} step up to battle!"
+  tower battle
+  if result == 0 goto Lost
+  move opponent up 1
+  walk opponent_2 up 1
+  waitmoves
+  setflag FLAG_HIDE_MULTI_BATTLE_ROOM_OPPONENT_1
+  setflag FLAG_HIDE_MULTI_BATTLE_ROOM_OPPONENT_2
+  hide opponent
+  hide opponent_2
+  tower won
+  if result == 1 goto Seven
+  say "Well done, both of you! Let me restore your Pokémon to full health."
+  fanfare heal
+  heal
+
+label Menu
+  setvar VAR_BATTLE_TOWER_BATTLE_ROOM_LOAD_ACTION 3
+  tower next
+  choose "Next is battle no. {number}. Are you ready?" "KEEP GOING" "REST" "RETIRE"
+  if result == 1 goto Rest
+  if result == 2 goto Retire
+  goto Fight
+
+label Seven
+  tower finish won
+  say "Congratulations! Seven pairs beaten in a row. You have earned Battle Points."
+  tower points
+  text "{player} received {number} BP!"
+  fanfare item
+  goto Leave
+
+label Lost
+  setflag FLAG_HIDE_MULTI_BATTLE_ROOM_OPPONENT_1
+  setflag FLAG_HIDE_MULTI_BATTLE_ROOM_OPPONENT_2
+  hide opponent
+  hide opponent_2
+  tower finish lost
+  goto Leave
+
+label Retire
+  ask "Give the challenge up and go back down?"
+  if no goto Fight
+  tower finish lost
+  goto Leave
+
+label Rest
+  ask "Put the challenge down for now? The game will be saved, and you can go on from here later."
+  if no goto Fight
+  setvar VAR_BATTLE_TOWER_LOBBY_LOAD_ACTION 2
+  tower pause
+  setflag FLAG_HIDE_BATTLE_TOWER_MULTI_PARTNER
+  warp "BattleTower" 11 6 up
+  end
+
+label Leave
+  setvar VAR_BATTLE_TOWER_LOBBY_LOAD_ACTION 1
+  setvar VAR_BATTLE_TOWER_BATTLE_ROOM_LOAD_ACTION 0
+  setflag FLAG_HIDE_BATTLE_TOWER_MULTI_PARTNER
+  warp "BattleTower" 11 6 up
+  end

@@ -78,6 +78,8 @@ public sealed partial class BattleCore
                 return TrapOn(b, forRunning: false);
 
             case ChoiceKind.Run:
+                // In the Battle Frontier RUN gives the match up, whatever holds the Pokémon
+                if (Frontier) return null;
                 if (CannotFlee && b.IsPlayerSide) return "There's no running from this battle!";
                 if (Kind is BattleKind.Safari or BattleKind.PalPark) return null;
                 return IsTrainerBattle ? null : TrapOn(b, forRunning: true);

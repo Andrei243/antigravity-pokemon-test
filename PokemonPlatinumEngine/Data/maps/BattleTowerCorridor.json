@@ -1,0 +1,116 @@
+{
+  "name": "BattleTowerCorridor",
+  "displayName": "Battle Tower",
+  "bgmTrack": "sinnoh/veilstone",
+  "interior": "Museum",
+  "trees": "Round",
+  "width": 22,
+  "height": 8,
+  "ground": [
+    "######################",
+    "######################",
+    "######################",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "######################"
+  ],
+  "solid": [
+    "######################",
+    "######################",
+    "##.###.###.###.###.###",
+    "#....................#",
+    "#....................#",
+    "#...#...#...#...#....#",
+    "#...#...#...#...#....#",
+    "######################"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 4,
+      "y": 5,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Plant",
+      "x": 8,
+      "y": 5,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Plant",
+      "x": 12,
+      "y": 5,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Plant",
+      "x": 16,
+      "y": 5,
+      "width": 1,
+      "depth": 2
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 2,
+      "sourceY": 2,
+      "targetMap": "BattleTower",
+      "targetX": 15,
+      "targetY": 6,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 6,
+      "sourceY": 2,
+      "targetMap": "BattleTowerBattleRoom",
+      "targetX": 7,
+      "targetY": 9,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 10,
+      "sourceY": 2,
+      "targetMap": "BattleTowerBattleRoom",
+      "targetX": 7,
+      "targetY": 9,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 14,
+      "sourceY": 2,
+      "targetMap": "BattleTowerBattleRoom",
+      "targetX": 7,
+      "targetY": 9,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 18,
+      "sourceY": 2,
+      "targetMap": "BattleTowerBattleRoom",
+      "targetX": 7,
+      "targetY": 9,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "attendant",
+      "name": "Attendant",
+      "npcType": "Lady",
+      "x": 2,
+      "y": 4,
+      "facing": "Up",
+      "dialog": [
+        "The Battle Rooms are along this corridor."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

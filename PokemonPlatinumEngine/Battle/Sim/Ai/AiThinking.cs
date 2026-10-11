@@ -219,8 +219,8 @@ internal sealed partial class AiThinking
     /// <summary><c>LoadBattleType</c> with <c>BATTLE_TYPE_DOUBLES</c>.</summary>
     public bool IsDouble => Battle.IsDouble;
 
-    /// <summary><c>LoadBattleType</c> with <c>BATTLE_TYPE_FRONTIER</c>: never, until plan 06 · R18.</summary>
-    public bool IsFrontier => false;
+    /// <summary><c>LoadBattleType</c> with <c>BATTLE_TYPE_FRONTIER</c> (plan 06 · R18a).</summary>
+    public bool IsFrontier => Battle.Frontier;
 
     // ---------------------------------------------------------------- the move being scored
 

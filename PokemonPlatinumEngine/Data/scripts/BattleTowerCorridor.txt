@@ -1,0 +1,39 @@
+# The corridor of the Battle Tower's Battle Rooms (plan 06 · R18a). docs/scripts.md describes the language;
+# scripts_battle_tower_corridor.s and frontier_scripts_battle_tower_corridor.s are the original.
+#
+# The attendant leads whoever comes out of the lift with a challenge under way to one of the corridor's four doors,
+# drawn each time (the original's GetRandom 4), and the Battle Room behind it. Anyone else finds an empty corridor
+# and the lift back down.
+
+
+script OnEnter
+  place attendant 2 4 up
+  tower active
+  if result == 0 end
+  face attendant up
+  tower door
+  if result == 1 goto Second
+  if result == 2 goto Third
+  if result == 3 goto Fourth
+  walk attendant right 4 up 1
+  hide attendant
+  walk player down 1 right 4 up 1
+  goto In
+label Second
+  walk attendant right 8 up 1
+  hide attendant
+  walk player down 1 right 8 up 1
+  goto In
+label Third
+  walk attendant right 12 up 1
+  hide attendant
+  walk player down 1 right 12 up 1
+  goto In
+label Fourth
+  walk attendant right 16 up 1
+  hide attendant
+  walk player down 1 right 16 up 1
+label In
+  sound "door_slide"
+  warp "BattleTowerBattleRoom" 7 10 up
+  end

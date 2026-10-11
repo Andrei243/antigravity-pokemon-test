@@ -206,6 +206,9 @@ public static class RegionDatabase
                 // Plan 02 · S13: Verity Cavern and Acuity Cavern (matrices of the imported world), and the Vista
                 // Lighthouse's gallery and lift, rebuilt to the original's plans
                 "VerityCavern", "AcuityCavern", "VistaLighthouse", "VistaLighthouseElevator",
+                // Plan 06 · R18a: the Battle Tower's lobby, lift, corridors, battle rooms and Battle Salon
+                "BattleTower", "BattleTowerElevator", "BattleTowerCorridor", "BattleTowerBattleRoom",
+                "BattleTowerCorridorMulti", "BattleTowerMultiBattleRoom", "BattleTowerBattleSalon",
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

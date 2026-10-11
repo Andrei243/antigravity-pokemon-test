@@ -53,6 +53,15 @@ public sealed class CoreSetup
 
     /// <summary>The Safari Balls or Park Balls the player has.</summary>
     public int SpecialBalls { get; init; }
+
+    /// <summary>
+    /// A battle of the Battle Frontier (<c>BATTLE_TYPE_FRONTIER</c>, plan 06 · R18a): no item from the bag
+    /// (<c>PLAYER_INPUT_ITEM</c>), no EXP (<c>BATTLE_TYPE_NO_EXPERIENCE</c>), no money won or lost and nothing picked up
+    /// (<c>subscript_battle_won</c>, <c>subscript_battle_lost</c>), RUN gives the match up, a Soul Dew does nothing
+    /// (<c>BattleSystem_CalcMoveDamage</c>), the foes may take the player's items (<c>BtlCmd_TryStealItem</c>), every
+    /// Pokémon obeys (<c>BattleSystem_CheckObedience</c>) and Burmy keeps its cloak (<c>BattleSystem_SetBurmyForm</c>).
+    /// </summary>
+    public bool Frontier { get; init; }
 }
 
 /// <summary>
@@ -119,6 +128,9 @@ public sealed partial class BattleCore : IBattleContext
     /// <summary>The game's first battle, which has no critical hits.</summary>
     public bool FirstBattle { get; }
 
+    /// <summary>A battle of the Battle Frontier, with the rules of its own (<see cref="CoreSetup.Frontier"/>).</summary>
+    public bool Frontier { get; }
+
     /// <summary>No critical hit lands in the catching lesson or the first battle (<c>BtlCmd_CalcCrit</c>).</summary>
     internal bool NoCriticalHits => Kind == BattleKind.CatchingLesson || FirstBattle;
 
@@ -169,6 +181,8 @@ public sealed partial class BattleCore : IBattleContext
         Kind = setup.Kind;
         CannotFlee = setup.CannotFlee;
         FirstBattle = setup.FirstBattle;
+        Frontier = setup.Frontier;
+        Field.Frontier = Frontier;
         SpecialBalls = setup.SpecialBalls;
         Partner = Kind is BattleKind.Safari or BattleKind.PalPark ? null : setup.Partner;
 
@@ -769,6 +783,13 @@ public sealed partial class BattleCore : IBattleContext
     private void TryRun(Battler runner)
     {
         ranThisTurn = true;
+        // COMMAND_SELECTION_RUN_SELECT in the Battle Frontier: the match is given up, and lost
+        if (Frontier)
+        {
+            Say($"{playerName} forfeited the match.");
+            End(BattleResult.PlayerDefeat);
+            return;
+        }
         if (IsTrainerBattle)
         {
             Say("No! There's no running from a Trainer battle!");
@@ -893,6 +914,12 @@ public sealed partial class BattleCore : IBattleContext
             // subscript_battle_lost: a share of the money, by the team's highest level and the badges
             // (BtlCmd_PayPrizeMoney), dropped before a wild Pokémon or handed to a trainer
             Say($"{playerName} has no Pokémon left that can fight!");
+            // subscript_battle_lost in the Battle Frontier: no money changes hands and nobody blacks out
+            if (Frontier)
+            {
+                End(BattleResult.PlayerDefeat);
+                return;
+            }
             int highest = PlayerParty.Members.Select(p => p.Level).DefaultIfEmpty(0).Max();
             MoneyLost = Formulas.MoneyPenalty(highest, Conditions.Badges, Conditions.Money);
             if (MoneyLost > 0)
@@ -908,6 +935,12 @@ public sealed partial class BattleCore : IBattleContext
         if (IsTrainerBattle)
         {
             Say($"{playerName} defeated {string.Join(" and ", Trainers.Select(t => t.FullTitle))}!");
+            // subscript_battle_won skips the prize, what Pay Day scattered and Pickup's find in the Battle Frontier
+            if (Frontier)
+            {
+                End(BattleResult.PlayerVictory);
+                return;
+            }
             Say($"{playerName} received ${PrizeMoney} for winning!");
         }
         else
@@ -926,9 +959,9 @@ public sealed partial class BattleCore : IBattleContext
         foreach (var b in AllBattlers.Where(b => b.Pokemon != null)) Revert(b);
         foreach (var (pokemon, item) in knockedOff) pokemon.HeldItem ??= item;
         knockedOff.Clear();
-        if (result == BattleResult.PlayerVictory) PickUp();
+        if (result == BattleResult.PlayerVictory && !Frontier) PickUp();
         // Burmy takes the cloak of the ground it fought on (BattleSystem_SetBurmyForm; not in the Great Marsh or Pal Park)
-        if (Kind is not (BattleKind.Safari or BattleKind.PalPark or BattleKind.CatchingLesson))
+        if (Kind is not (BattleKind.Safari or BattleKind.PalPark or BattleKind.CatchingLesson) && !Frontier)
             FormRules.CloakBurmy(sentOut, Conditions.Terrain);
         Result = result;
         Emit(new Ended(result));
@@ -997,6 +1030,8 @@ public sealed partial class BattleCore : IBattleContext
     /// </summary>
     private void AwardExp(Battler defeated)
     {
+        // BATTLE_TYPE_NO_EXPERIENCE: nothing is gained in the Battle Frontier
+        if (Frontier) return;
         var foe = defeated.Pokemon!;
         var standing = PlayerParty.Members.Where(p => !p.IsFainted).ToList();
         var fought = standing.Where(defeated.FoughtAgainst.Contains).ToList();

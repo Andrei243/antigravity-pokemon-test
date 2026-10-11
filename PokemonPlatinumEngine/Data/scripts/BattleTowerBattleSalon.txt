@@ -1,0 +1,144 @@
+# The Battle Salon of the Battle Tower (plan 06 · R18a). docs/scripts.md describes the language; the lines are our
+# own, on the original's beats (scripts_battle_tower_battle_salon.s).
+#
+# Whoever takes the Multi Battle Room's challenge comes down here to find a partner: the trainers the player has
+# travelled with wait for someone to team up with (Cheryl once Eterna Forest was crossed with her, Mira once she was
+# led out of Wayward Cave, Riley once his Egg was taken on Iron Island, Marley and Buck once the story has them met:
+# FLAG_TRAVELED_WITH_MARLEY and FLAG_BUCK_LEFT_BATTLEGROUND are plan 02 · S15's). As the player comes in each is
+# given two Pokémon for this challenge (tower partners) and says which, with a move of each; the one agreed to goes
+# on ahead, and the attendant at the door shows the player up to the Multi Battle Room.
+# VAR_BATTLE_TOWER_BATTLE_SALON_STATE is 1 as the player is shown in.
+
+
+script OnEnter
+  # The attendant is back before the door she showed someone out of
+  place teala 8 3 down
+  # BattleTowerBattleSalon_OnTransition: only those the story has had the player meet are here
+  setflag FLAG_HIDE_BATTLE_SALON_CHERYL
+  setflag FLAG_HIDE_BATTLE_SALON_MIRA
+  setflag FLAG_HIDE_BATTLE_SALON_RILEY
+  setflag FLAG_HIDE_BATTLE_SALON_MARLEY
+  setflag FLAG_HIDE_BATTLE_SALON_BUCK
+  tower salon
+  if var VAR_BATTLE_TOWER_BATTLE_SALON_STATE != 1 end
+  setvar VAR_BATTLE_TOWER_BATTLE_SALON_STATE 0
+  tower active
+  if result == 0 end
+  tower partners
+  speaker "Attendant"
+  face player up
+  say "This is the Battle Salon. Please find yourself a partner among the trainers here."
+  say "Speak to me if you would rather leave."
+  end
+
+
+# The attendant at the door (BattleTowerBattleSalon_Attendant).
+script Attendant
+  ask "Would you like to leave the Battle Salon, {player}? Your challenge will be called off."
+  if yes goto Leave
+  say "Then please find yourself a partner."
+  end
+label Leave
+  setvar VAR_BATTLE_TOWER_LOBBY_LOAD_ACTION 3
+  # She goes out ahead, and the player is shown down after her
+  walk self up 1
+  hide self
+  warp "BattleTower" 11 6 up
+  end
+
+
+# A partner is agreed on: they go on ahead, and the attendant shows the player to the lift
+# (BattleTowerBattleSalon_PartnerEnterBattleRoom, BattleTowerBattleSalon_OnFrame_EnterBattleRoom).
+script TeamUp
+  hide self
+  speaker "Attendant"
+  say "Your partner has gone on ahead. Let me show you up to the Multi Battle Room."
+  setvar VAR_BATTLE_TOWER_ELEVATOR_LOAD_ACTION 2
+  warp "BattleTowerElevator" 3 6 up
+  return
+
+
+script Cheryl
+  tower active
+  if result == 0 goto Idle
+  tower tells 0
+  ask "Oh, {player}! How lovely. I've brought {ally:0}, which knows {allymove:0}, and {ally:1}, which knows {allymove:1}. Shall we team up?"
+  if no goto No
+  tower partner 0
+  say "Thank you! I'll do my very best not to hold you back."
+  call TeamUp
+  end
+label No
+  say "Oh... Another time, then. I'll be here."
+  end
+label Idle
+  say "I come here to find someone to battle beside. It's much less frightening with two."
+  end
+
+script Mira
+  tower active
+  if result == 0 goto Idle
+  tower tells 1
+  ask "{player}! Mira has {ally:0} with {allymove:0}, and {ally:1} with {allymove:1}! Will you battle with Mira?"
+  if no goto No
+  tower partner 1
+  say "Yay! Mira won't get lost this time, promise!"
+  call TeamUp
+  end
+label No
+  say "Aww. Mira will wait right here."
+  end
+label Idle
+  say "Mira is getting stronger! Mira came all this way by herself."
+  end
+
+script Riley
+  tower active
+  if result == 0 goto Idle
+  tower tells 2
+  ask "It's good to see you again. I have {ally:0}, which knows {allymove:0}, and {ally:1}, which knows {allymove:1}. Shall we see how far we get together?"
+  if no goto No
+  tower partner 2
+  say "Then let's begin. I'll match my pace to yours."
+  call TeamUp
+  end
+label No
+  say "I understand. The offer stands."
+  end
+label Idle
+  say "A tower built for nothing but battling. It clears the mind, don't you find?"
+  end
+
+script Marley
+  tower active
+  if result == 0 goto Idle
+  tower tells 3
+  ask "...{ally:0}, with {allymove:0}. {ally:1}, with {allymove:1}. ...Will you be my partner?"
+  if no goto No
+  tower partner 3
+  say "...Thank you. Let's go."
+  call TeamUp
+  end
+label No
+  say "...I see."
+  end
+label Idle
+  say "...It's quiet in here. I like that."
+  end
+
+script Buck
+  tower active
+  if result == 0 goto Idle
+  tower tells 4
+  ask "Hey, it's you! I'm packing {ally:0} with {allymove:0} and {ally:1} with {allymove:1}. You and me, what do you say?"
+  if no goto No
+  tower partner 4
+  say "That's what I like to hear! Nobody's getting past the two of us!"
+  call TeamUp
+  end
+label No
+  say "Suit yourself! You know where to find me."
+  end
+label Idle
+  say "My big brother's one of the Elite Four, you know. I'm going to be tougher than him one day!"
+  end
