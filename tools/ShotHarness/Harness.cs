@@ -270,6 +270,12 @@ partial class Harness
 
     void Profile(string label, int frames = 240, bool frozen = false)
     {
+        // SHOTS_LOOK=1 saves a picture of the scene as it stands when it is timed, whether it is timed or not
+        if (Environment.GetEnvironmentVariable("SHOTS_LOOK") == "1")
+        {
+            engine.Draw();
+            Shot("profile_" + new string(label.Select(c => char.IsLetterOrDigit(c) ? c : '_').ToArray()));
+        }
         // SHOTS_ONLY=battle,route measures only the scenes whose name has one of those words in it
         var only = (Environment.GetEnvironmentVariable("SHOTS_ONLY") ?? "").Split(',', StringSplitOptions.RemoveEmptyEntries);
         if (only.Length > 0 && !only.Any(word => label.Contains(word, StringComparison.OrdinalIgnoreCase))) return;
