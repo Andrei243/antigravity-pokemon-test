@@ -123,22 +123,24 @@ public sealed class Habitats
         return cells;
     }
 
-    private static Habitats? sinnoh;
-    private static bool loaded;
+    private static readonly Dictionary<string, Habitats?> loaded = new(StringComparer.OrdinalIgnoreCase);
 
-    /// <summary>Sinnoh's habitats, read once; null if the file isn't there.</summary>
-    public static Habitats? Sinnoh
+    /// <summary>A region's habitats (by its folder under <c>Data/world</c>), read once; null if the file isn't there.</summary>
+    public static Habitats? For(string region)
     {
-        get
+        lock (loaded)
         {
-            if (loaded) return sinnoh;
-            loaded = true;
-            string path = Path.Combine(World.Folder, "sinnoh", WorldHabitatsFile.FileName);
-            string special = Path.Combine(World.Folder, "sinnoh", SpecialFileName);
+            if (loaded.TryGetValue(region, out var habitats)) return habitats;
+            string folder = region.ToLowerInvariant();
+            string path = Path.Combine(World.Folder, folder, WorldHabitatsFile.FileName);
+            string special = Path.Combine(World.Folder, folder, SpecialFileName);
             if (File.Exists(GameDataFiles.PathOf(path)))
-                sinnoh = new Habitats(GameDataFiles.Load<WorldHabitatsFile>(path),
+                habitats = new Habitats(GameDataFiles.Load<WorldHabitatsFile>(path),
                     File.Exists(GameDataFiles.PathOf(special)) ? GameDataFiles.Load<WorldHabitatsFile>(special) : null);
-            return sinnoh;
+            return loaded[region] = habitats;
         }
     }
+
+    /// <summary>Sinnoh's habitats.</summary>
+    public static Habitats? Sinnoh => For("sinnoh");
 }

@@ -934,6 +934,17 @@ void main()
         }
     }
 
+    /// <summary>
+    /// The light the field's people, Pokémon and things stand in, where it isn't the scenery's own (style guide,
+    /// "Climates"): set after <see cref="SetLighting"/>, which every frame gives them the scenery's again.
+    /// </summary>
+    public void SetPeopleLight(SceneLighting light)
+    {
+        Set(Sprite, "sunColor", light.SunColor);
+        Set(Sprite, "skyAmbient", light.SkyAmbient);
+        Set(Sprite, "groundAmbient", light.GroundAmbient);
+    }
+
     /// <summary>Distance fog: colour, strength at the far distance, and where it starts and ends (world units from the camera).</summary>
     public void SetFog(Vector3 color, float amount, float near, float far)
     {

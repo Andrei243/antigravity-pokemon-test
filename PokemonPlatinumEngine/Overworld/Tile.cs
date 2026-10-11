@@ -220,8 +220,34 @@ public enum HallStyle
 
 public class Warp
 {
-    public int SourceX { get; set; }
-    public int SourceY { get; set; }
+    private int sourceX, sourceY;
+    private static int moves;
+
+    /// <summary>
+    /// How often any warp has been put on a tile or moved to another: with a map's list of warps' own count of
+    /// changes, what tells the map that its warps by tile are out of date (plan 01 · M12).
+    /// </summary>
+    public static int Moves => System.Threading.Volatile.Read(ref moves);
+
+    public int SourceX
+    {
+        get => sourceX;
+        set
+        {
+            sourceX = value;
+            System.Threading.Interlocked.Increment(ref moves);
+        }
+    }
+
+    public int SourceY
+    {
+        get => sourceY;
+        set
+        {
+            sourceY = value;
+            System.Threading.Interlocked.Increment(ref moves);
+        }
+    }
     public string TargetMap { get; set; } = string.Empty;
     public int TargetX { get; set; }
     public int TargetY { get; set; }

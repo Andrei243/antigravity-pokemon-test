@@ -476,7 +476,11 @@ public class Map
         return height;
     }
 
-    public List<NPC> NPCs { get; } = new();
+    /// <summary>
+    /// Who and what is on the map now, in the order they were put on it: a list that also keeps them by where they
+    /// stand (<see cref="PeopleList"/>, plan 01 · M12), so asking who is on a tile never looks at everyone.
+    /// </summary>
+    public PeopleList NPCs { get; } = new();
 
     /// <summary>
     /// People the story keeps off the map for now: a flag hides them, or a script sent them away (plan 02 · S1).
@@ -492,16 +496,29 @@ public class Map
     /// <summary>Puts everyone where the story has them, on the map or off it, each back in their own place in the list.</summary>
     public void ApplyPresence(Func<string, bool> flagSet)
     {
-        var everyone = Everyone.ToList();
-        foreach (var npc in everyone)
+        // Nothing to do is the usual case, and then the lists are left alone and nothing is made
+        bool settled = true;
+        foreach (var npc in NPCs)
+        {
             if (npc.Order < 0) npc.Order = peopleCounted++;
-        // Nothing to do is the usual case, and then the lists are left alone
-        if (NPCs.All(n => n.IsPresent(flagSet)) && Absent.All(n => !n.IsPresent(flagSet))) return;
+            if (settled && !npc.IsPresent(flagSet)) settled = false;
+        }
+        foreach (var npc in Absent)
+        {
+            if (npc.Order < 0) npc.Order = peopleCounted++;
+            if (settled && npc.IsPresent(flagSet)) settled = false;
+        }
+        if (settled) return;
 
+        var everyone = Everyone.ToList();
         everyone.Sort((a, b) => a.Order.CompareTo(b.Order));
         NPCs.Clear();
         Absent.Clear();
-        foreach (var npc in everyone) (npc.IsPresent(flagSet) ? NPCs : Absent).Add(npc);
+        foreach (var npc in everyone)
+        {
+            if (npc.IsPresent(flagSet)) NPCs.Add(npc);
+            else Absent.Add(npc);
+        }
     }
 
     /// <summary>
@@ -589,7 +606,7 @@ public class Map
     public string ScriptFileAt(int x, int y) => InBounds(x, y) && AreaAt(x, y) is { Key.Length: > 0 } area ? area.Key : Name;
 
     public List<Prop> Props { get; } = new();
-    public List<Warp> Warps { get; } = new();
+    public TrackedList<Warp> Warps { get; } = new();
     public List<WildEncounterEntry> WildEncounters { get; } = new();
     public Dictionary<(int X, int Y), string> Signboards { get; } = new();
 
@@ -982,7 +999,7 @@ public class Map
 
         if (solidGrid[idx]) return false;
 
-        if (NPCs.Any(n => n.GridX == x && n.GridY == y)) return false;
+        if (NPCs.At(x, y) != null) return false;
 
         var behaviour = BehaviourAt(x, y);
         if (FieldMovement.LedgeDirection(behaviour) != null) return false;
@@ -999,26 +1016,52 @@ public class Map
     /// <summary>Water deep enough to need Surf.</summary>
     public bool IsDeepWater(int x, int y) => TileBehaviors.IsSurfable(BehaviourAt(x, y));
 
+    /// <summary>The way a tile leads now: the first of its warps that the story hasn't shut.</summary>
     public Warp? GetWarpAt(int x, int y)
     {
-        return Warps.FirstOrDefault(w => w.SourceX == x && w.SourceY == y && !w.Shut);
+        if (!WarpsByTile().TryGetValue((x, y), out var here)) return null;
+        foreach (var warp in here)
+            if (!warp.Shut) return warp;
+        return null;
     }
 
     /// <summary>
     /// Every way a tile leads at some point of the story, shut or not: two warps share a tile where the place behind
     /// it changes with the story (<see cref="Warp.Until"/>, <see cref="Warp.From"/>).
     /// </summary>
-    public IEnumerable<Warp> WarpsAt(int x, int y) => Warps.Where(w => w.SourceX == x && w.SourceY == y);
+    public IEnumerable<Warp> WarpsAt(int x, int y) => WarpsByTile().TryGetValue((x, y), out var here) ? here : Array.Empty<Warp>();
+
+    // The warps by the tile they are on, in the list's order (plan 01 · M12): made the first time a tile is asked
+    // about and again whenever the list has changed or a warp has been moved, which is as the map is built and when
+    // the story reveals a place. It is made whole and then put in its place, so a chunk being prepared on another
+    // thread reads the old one or the new, never half of either.
+    private Dictionary<(int X, int Y), Warp[]>? warpsByTile;
+    private (int Version, int Moves) warpsStamp = (-1, -1);
+
+    private Dictionary<(int X, int Y), Warp[]> WarpsByTile()
+    {
+        var stamp = (Warps.Version, Warp.Moves);
+        var index = warpsByTile;
+        if (index != null && warpsStamp == stamp) return index;
+
+        var lists = new Dictionary<(int X, int Y), List<Warp>>();
+        foreach (var warp in Warps)
+        {
+            if (!lists.TryGetValue((warp.SourceX, warp.SourceY), out var here)) lists[(warp.SourceX, warp.SourceY)] = here = new List<Warp>(1);
+            here.Add(warp);
+        }
+        index = new Dictionary<(int X, int Y), Warp[]>(lists.Count);
+        foreach (var (tile, here) in lists) index[tile] = here.ToArray();
+        warpsStamp = stamp;
+        return warpsByTile = index;
+    }
 
     public string? GetSignboardAt(int x, int y)
     {
         return Signboards.TryGetValue((x, y), out var text) ? text : null;
     }
 
-    public NPC? GetNpcAt(int x, int y)
-    {
-        return NPCs.FirstOrDefault(n => n.GridX == x && n.GridY == y);
-    }
+    public NPC? GetNpcAt(int x, int y) => NPCs.At(x, y);
 
     /// <summary>
     /// Someone walking behind the player (plan 02 · S6, <see cref="Overworld.Follower"/>): spoken to like anyone, but
@@ -1031,7 +1074,7 @@ public class Map
     /// ground under it, nor the other way round.
     /// </summary>
     public NPC? NpcIn(int x, int y, float height) =>
-        NPCs.FirstOrDefault(n => n.GridX == x && n.GridY == y && MathF.Abs((n.Level ?? HeightAt(x, y)) - height) < FieldMovement.StepLimit);
+        NPCs.At(x, y, (Map: this, Height: height), static (n, at) => MathF.Abs((n.Level ?? at.Map.HeightAt(n.GridX, n.GridY)) - at.Height) < FieldMovement.StepLimit);
 
     /// <summary>Platinum's rate for a small map's own wild Pokémon (see <see cref="EncounterSteps"/>).</summary>
     public int EncounterRate { get; set; } = 30;

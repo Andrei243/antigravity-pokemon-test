@@ -498,17 +498,28 @@ public class FieldMoveTests
     }
 
     [Fact]
-    public void TheFlyScreenChoosesATownStartingNearestThePlayer()
+    public void FlysMapStartsOnThePlayersCellAndFliesToAnOpenPlaceUnderTheCursor()
     {
-        var towns = SpawnLocations.All.Take(9).ToList();
-        var screen = new FlyScreen();
-        screen.Open(towns, (305, 540), flier: 2);
-        Assert.Equal("eterna_city", towns[screen.Cursor].Area);
-        screen.Move(1);
-        Assert.Equal("twinleaf_town", towns[screen.Cursor].Area);
+        // Fly's choice is the map of the region in its own mode (plan 01 · M12; RegionMapTests has the map's rules)
+        var story = new StoryState();
+        story.Set(SpawnLocations.ArrivedIn("eterna_city")!.ArrivalFlag);
+        story.Set(SpawnLocations.ArrivedIn("floaroma_town")!.ArrivalFlag);
+        var region = RegionMap.Sinnoh!;
+        var screen = new TownMapScreen();
+        screen.Open(new TownMapState(region, story, RegionMap.CellOf(305, 540)), TownMapMode.Fly, flier: 2);
+        Assert.Equal((9, 16), (screen.CursorX, screen.CursorY));
+        Assert.Equal("eterna_city", screen.HoveredSpot!.Town.Area);
+
+        // A cell with nowhere to land says no and stays open; an open place under the cursor is flown to
+        screen.Move(-1, 0);
+        Assert.Null(screen.HoveredSpot);
+        screen.Confirm();
+        Assert.True(screen.IsActive);
+        Assert.Null(screen.TakeChoice());
+        screen.Move(1, 0);
         screen.Confirm();
         Assert.False(screen.IsActive);
-        Assert.Equal("twinleaf_town", screen.TakeChoice()!.Area);
+        Assert.Equal("eterna_city", screen.TakeChoice()!.Area);
         Assert.Null(screen.TakeChoice());
         Assert.Equal(2, screen.Flier);
     }

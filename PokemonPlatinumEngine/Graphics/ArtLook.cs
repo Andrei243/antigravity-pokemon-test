@@ -60,6 +60,13 @@ internal readonly record struct LightRig(
     /// <summary>Tint of the light thrown on the ground (pools under lamps, patches under windows).</summary>
     public Vector3 LightTint { get; init; } = Vector3.One;
 
+    /// <summary>
+    /// How far the light people stand in is drawn toward its own grey (style guide, "Climates"; <see cref="ArtLook.ForPeople"/>):
+    /// where a place's light is strongly coloured, a pale coat lit by the whole of it takes the colour of a face.
+    /// Nought nearly everywhere: people are lit as the scenery is.
+    /// </summary>
+    public float PeopleWash { get; init; }
+
     public static LightRig Lerp(LightRig a, LightRig b, float t) => new(
         SceneLighting.Lerp(a.Light, b.Light, t), PixelCanvas.Mix(a.Background, b.Background, t),
         Vector3.Lerp(a.FogColor, b.FogColor, t), a.FogAmount + (b.FogAmount - a.FogAmount) * t,
@@ -69,7 +76,8 @@ internal readonly record struct LightRig(
         a.HomeGlow + (b.HomeGlow - a.HomeGlow) * t)
     {
         GlowColor = Vector3.Lerp(a.GlowColor, b.GlowColor, t),
-        LightTint = Vector3.Lerp(a.LightTint, b.LightTint, t)
+        LightTint = Vector3.Lerp(a.LightTint, b.LightTint, t),
+        PeopleWash = a.PeopleWash + (b.PeopleWash - a.PeopleWash) * t
     };
 }
 
@@ -259,6 +267,25 @@ internal static class ArtLook
     /// <para>A temple of ice: a pale, blue-white key, blue shade, a cyan bounce off the ice, colour drained a little,
     /// and bloom only on what is brighter than the ice.</para>
     /// </summary>
+    /// <summary>How far people's light is drawn toward grey inside a volcano (style guide, "Climates"): all the way, since the grade over the picture warms them by itself.</summary>
+    public const float VolcanicPeopleWash = 1f;
+
+    /// <summary>
+    /// The light people stand in where a place's own is strongly coloured (plan 01 · M12): each of its three lights
+    /// drawn <paramref name="wash"/> of the way to a grey as bright as itself, so the place stays as bright on them
+    /// and a white coat stays paler than a face. The same light when the wash is nought.
+    /// </summary>
+    public static SceneLighting ForPeople(SceneLighting light, float wash)
+    {
+        if (wash <= 0f) return light;
+        static Vector3 Toward(Vector3 colour, float t)
+        {
+            float grey = 0.299f * colour.X + 0.587f * colour.Y + 0.114f * colour.Z;
+            return Vector3.Lerp(colour, new Vector3(grey), t);
+        }
+        return light with { SunColor = Toward(light.SunColor, wash), SkyAmbient = Toward(light.SkyAmbient, wash), GroundAmbient = Toward(light.GroundAmbient, wash) };
+    }
+
     public static LightRig InClimate(LightRig rig, Overworld.AreaClimate climate, bool cave)
     {
         switch (climate)
@@ -271,6 +298,7 @@ internal static class ArtLook
                     FogColor = V(0.14f, 0.07f, 0.06f),
                     LampGlow = VolcanicGlow,
                     GlowColor = LavaGlow,
+                    PeopleWash = VolcanicPeopleWash,
                     Post = rig.Post with { Saturation = 1.02f, ShadowTint = V(1.08f, 0.86f, 0.9f), HighlightTint = V(1.1f, 0.98f, 0.84f) }
                 };
             case Overworld.AreaClimate.Volcanic:

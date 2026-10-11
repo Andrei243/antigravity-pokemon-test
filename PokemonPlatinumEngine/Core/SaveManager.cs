@@ -76,6 +76,12 @@ public class SaveData
     /// </summary>
     public MapSpot? Exit { get; set; }
 
+    /// <summary>
+    /// The cells of the region's map the player last passed through, which the Town Map marks (plan 01 · M12;
+    /// <see cref="Models.MapTrail.ToSave"/>). Null before any, and in older saves.
+    /// </summary>
+    public int[]? MapTrail { get; set; }
+
     /// <summary>The day the clock was last looked at, for Pokérus's days (plan 06 · R10). Null in older saves.</summary>
     public DateTime? LastDay { get; set; }
 

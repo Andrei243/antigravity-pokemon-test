@@ -100,7 +100,7 @@ public sealed class VeilstoneBags : GymPuzzle
     public static bool IsBag(NPC npc) => npc.NpcType == NPC.PunchingBagType;
     public static bool IsTireStack(NPC npc) => npc.NpcType == NPC.TireStackType;
 
-    private static NPC? TireStackOn(Map map, int x, int y) => map.NPCs.FirstOrDefault(n => IsTireStack(n) && n.GridX == x && n.GridY == y);
+    private static NPC? TireStackOn(Map map, int x, int y) => map.NPCs.At(x, y, 0, static (n, _) => IsTireStack(n));
 
     /// <summary>
     /// Kicks a bag of the map the way the player faces: the bag goes to where its run ends, and the stack of tyres it
