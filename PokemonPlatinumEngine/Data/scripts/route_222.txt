@@ -14,3 +14,17 @@ label Battle
   clearflag FLAG_HIDE_ROUTE_222_POLICEMAN_THOMAS
   setflag FLAG_HIDE_ROUTE_222_POLICEMAN_THOMAS_NO_BATTLE
   end
+
+
+# The rich boy by the road gives TM56 away, once (plan 02 · S13; the original's Route222_RichBoy).
+script RichBoy
+  face self player
+  if flag FLAG_RECEIVED_ROUTE_222_TM56 goto Explains
+  say "Everyone thinks a Poké Ball is the only thing a Trainer ever throws. But is it? I want people to stop and ask themselves that!"
+  say "Which is why I hand this Technical Machine to anyone who passes."
+  give "TM56"
+  setflag FLAG_RECEIVED_ROUTE_222_TM56
+label Explains
+  say "With Fling, a Pokémon hurls whatever it is holding straight at the foe, and what happens next depends on what it threw."
+  say "Do remember: a Pokémon holding nothing has nothing to fling, and the move simply fails."
+  end

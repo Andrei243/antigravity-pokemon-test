@@ -1,0 +1,89 @@
+# Verity Cavern (plan 02 · S13). docs/scripts.md describes the language; the lines are our own, on the original's
+# beats (scripts_verity_cavern.s).
+#
+# The cave on the island in the middle of Lake Verity, reached over the water once Team Galactic has gone. Mesprit is
+# back in it once the professor has heard of the Distortion World (RowanLab.txt clears
+# FLAG_HIDE_VERITY_CAVERN_MESPRIT). Nobody battles it here: spoken to, it cries, flickers and is gone, to roam Sinnoh
+# (plan 06 · R13's roamers: it is met in the grass of the routes, flees, keeps what a battle did to it, and is told
+# of by VAR_ROAMING_MESPRIT_STATE once it is caught or knocked out). Professor Rowan comes in after it: his study of
+# the lakes' Pokémon answered nothing about evolution, which pleases him, and the Pokétch's Marking Map shows where
+# Mesprit has gone.
+#
+# A Mesprit knocked out is back here once the Hall of Fame is next entered (PokemonLeagueHallOfFame.txt:
+# VAR_ROAMING_MESPRIT_STATE 3): it flies off again, and that time the professor doesn't come.
+#
+# Stood in for until plan 09 lands (L12, L14): the original shows Mesprit's picture over the field before its cry
+# (DrawPokemonPreview), which is left out.
+
+
+# VerityCavern_OnTransition
+script OnEnter
+  setflag FLAG_FIRST_ARRIVAL_VERITY_CAVERN
+  end
+
+
+# VerityCavern_Mesprit
+script Mesprit
+  cry "Mesprit"
+  speaker none
+  say "Kyuoon!"
+  # It flickers three times and is gone (the original takes it off the map and puts it back by its flag)
+  hide mesprit
+  wait 0.25
+  show mesprit
+  wait 0.25
+  hide mesprit
+  wait 0.25
+  show mesprit
+  wait 0.25
+  hide mesprit
+  wait 0.25
+  show mesprit
+  wait 0.25
+  hide mesprit
+  setflag FLAG_HIDE_VERITY_CAVERN_MESPRIT
+  roamer start "Mesprit"
+  say "Mesprit darted round {player} once, and flew off somewhere far away..."
+  if var VAR_ROAMING_MESPRIT_STATE == 3 goto Again
+  wait 1.0
+  # The professor comes up the cave to where the player stands (VerityCavern_EnterProfRowan*)
+  if facing down goto FromNorth
+  if facing left goto FromEast
+  if facing right goto FromWest
+  place prof_rowan 12 22 up
+  goto Enters
+label FromNorth
+  place prof_rowan 12 20 up
+  goto Enters
+label FromEast
+  place prof_rowan 13 21 up
+  goto Enters
+label FromWest
+  place prof_rowan 11 21 up
+label Enters
+  clearflag FLAG_HIDE_VERITY_CAVERN_PROF_OAK
+  show prof_rowan
+  walk prof_rowan up 7
+  face player down
+  speaker "Prof. Rowan"
+  say "... ..."
+  say "{player}. So that was Mesprit. Then what I asked of you in Canalave's library is done."
+  say "I wanted to know the Pokémon of the lakes, and now I do. And it has told me nothing whatever about evolution."
+  say "Why some Pokémon evolve and others never do, I understand no better than I did. If anything the riddle is deeper."
+  say "Hm! And a riddle left to solve is the best thing a researcher can be given."
+  face prof_rowan down
+  wait 0.5
+  face prof_rowan up
+  say "Why not go after Mesprit, {player}? If you ask me, it wanted you to chase it."
+  say "The Marking Map on your Pokétch will show you where a Pokémon like that has got to."
+  if not poketchapp MarkingMap say "You never picked up the Marking Map? ...The Pokétch Company keeps making new things, you know. Look in on them."
+  say "Off you go, {player}. The road ahead is full of Pokémon and people you have yet to meet, and not one meeting will be like another."
+  say "Make the most of them all. Look after yourself."
+  walk prof_rowan down 7
+  hide prof_rowan
+  setflag FLAG_HIDE_VERITY_CAVERN_PROF_OAK
+  end
+# VerityCavern_ResetRoamingMespritState: set loose a second time, after the Hall of Fame
+label Again
+  setvar VAR_ROAMING_MESPRIT_STATE 0
+  end

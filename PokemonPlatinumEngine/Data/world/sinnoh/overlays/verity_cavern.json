@@ -1,0 +1,15 @@
+{
+  "area": "verity_cavern",
+  "bgmTrack": "sinnoh/cave",
+  // Its floor is wet stone that mirrors whoever stands on it, which is no cave floor to the field: the battle's stage
+  // is named, or it would be fought in a meadow
+  "battleArena": "Cave",
+  // The cave on the island in the middle of Lake Verity (plan 02 · S13, scripts/verity_cavern.txt). Mesprit is back in
+  // it once the professor has heard of the Distortion World (FLAG_HIDE_VERITY_CAVERN_MESPRIT, which his lab's scene
+  // clears): spoken to, it flies off to roam Sinnoh, and the professor comes in after it
+  // (FLAG_HIDE_VERITY_CAVERN_PROF_OAK, as the original names his flag).
+  "people": {
+    "mesprit": { "name": "Mesprit", "script": "Mesprit", "still": true },
+    "prof_rowan": { "name": "Prof. Rowan", "dialog": [ "Prof. Rowan: So this is where it sleeps..." ], "still": true }
+  }
+}

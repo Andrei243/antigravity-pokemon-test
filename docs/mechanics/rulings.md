@@ -1239,3 +1239,51 @@ Stark Mountain, Snowpoint Temple, Fullmoon and Newmoon Island, the Seabreak Path
 | Looks and themes | Mars's, Jupiter's and Saturn's own looks; Team Galactic's, Looker's and Giratina's themes, the Distortion World's own | Commanders' looks as before; Spear Pillar's theme and the Distortion World's, the classes' battle themes | Plan 11 · C6; plan 05 · A6 |
 | The Bosses' words in battle | Cyrus speaks as his last Pokémon comes out | Nothing | Plan 11 · C12 |
 | Walls walked sideways | The Distortion World's walls and ceilings | Not kept; the floors are joined by ways of their overlays | Plan 01 · M8 |
+
+## The tenth chapter: Sunyshore (2026-10-11, plan 02 · S13)
+
+**Platinum's rules, kept as they are** (`res/field/scripts/scripts_sandgem_town_pokemon_research_lab.s`, `scripts_counterpart_talk.s`, `scripts_twinleaf_town_player_house_1f.s`, `scripts_verity_cavern.s`, `scripts_valor_cavern.s`, `scripts_acuity_cavern.s`, `scripts_valor_lakefront.s`, `scripts_route_222.s`, `scripts_sunyshore_city.s`, `scripts_init_sunyshore_city.s`, `scripts_vista_lighthouse.s`, `scripts_vista_lighthouse_elevator.s`, `scripts_sunyshore_city_pokecenter_1f.s`, `scripts_sunyshore_city_mart.s`, `scripts_pokemon_league_hall_of_fame.s`, `scripts_pokemon_league_north_pokecenter_1f.s`, `scripts_init_new_game.s`, the events files of those places, and `src/binoculars_vista_lighthouse.c`)
+
+- **It is the professor's lab that opens Sunyshore and brings the guardians home**, not the Distortion World's end. While `VAR_SANDGEM_TOWN_LAB_STATE` is 2 (Sendoff Spring sets it) the professor and the assistant stand inside the lab's door and the scene plays as the player comes in. It sets `VAR_EXITED_DISTORTION_WORLD_STATE` 3, `FLAG_HIDE_VALOR_LAKEFRONT_COLLECTOR` and `VAR_VALOR_LAKEFRONT_BLOCK_SUNYSHORE_STATE` 1 (the man who turns people back east of Valor Lakefront, and his trigger), clears `FLAG_HIDE_VERITY_CAVERN_MESPRIT`, `FLAG_HIDE_VALOR_CAVERN_AZELF` and `FLAG_HIDE_ACUITY_CAVERN_UXIE`, and leaves the state 3.
+- **Between that scene and the player's arrival in Sunyshore City** the two stay by the door: the professor sends his regards to Cynthia, the assistant wonders about the Pokémon the player met. Arriving in Sunyshore sets `FLAG_HIDE_SANDGEM_TOWN_LAB_COUNTERPART` and the state 4.
+- **Mom asks whether everything is all right** from the tremor (`VAR_CANALAVE_LIBRARY_STATE` 2) until `VAR_EXITED_DISTORTION_WORLD_STATE` is 2.
+- **Mesprit is not battled in its cavern.** Spoken to, it cries, flickers three times and is set roaming (`ActivateRoamingPokemon ROAMING_SLOT_MESPRIT`: level 50). Professor Rowan then comes in, from a tile that hangs on the way the player faces, seven steps up the cave to their side; he speaks of the Marking Map, and has a line more for someone who lacks the app. If Mesprit's state was `ROAMER_STATE_RESET` (3) it is made `ROAMER_STATE_ROAMING` (0) instead and nobody comes.
+- **Azelf and Uxie are wild Pokémon at level 50, and the battle may be run from** (`StartLegendaryBattle`). Lost: a white-out, and the Pokémon waits. Any other end takes it from its cavern (the original sets its flag as the cavern loads again behind the battle); caught, `FLAG_CAUGHT_AZELF` or `FLAG_CAUGHT_UXIE` is set; knocked out or run from, a line says it has gone into the cavern.
+- **The Hall of Fame brings them back**: Azelf's and Uxie's flags are cleared while they haven't been caught, and a Mesprit knocked out as a roamer (`ROAMER_STATE_DEFEATED`, 2) is put back in its cavern with the state `RESET`. One caught stays caught.
+- **Each cavern marks its first arrival** (`FLAG_FIRST_ARRIVAL_VERITY_CAVERN` and its fellows), and Valor Cavern's way out leads to whichever Lake Valor the story is at.
+- **Route 222's rich boy gives TM56 once** (`FLAG_RECEIVED_ROUTE_222_TM56`).
+- **Flint meets whoever comes into Sunyshore City** while `VAR_SUNYSHORE_CITY_STATE` is 0 (an on-frame script, by the gate's row the player stands in), and then stands before the Gym's door (state 1) until `FLAG_VOLKNER_RETURNED_TO_GYM`. Spoken to after it, he leaves for the Pokémon League.
+- **Volkner stands at the top of the Vista Lighthouse from the start**, on the tile the binoculars are read from. Spoken to, he walks round the shaft to the lift and is gone (`FLAG_HIDE_VISTA_LIGHTHOUSE_VOLKNER`), which sets `FLAG_VOLKNER_RETURNED_TO_GYM`.
+- **The lighthouse's lift** carries whoever comes into its car to the other end: two steps in, the ride, two steps out, to 6, 10 of the gallery or to 886, 791 of Sunyshore City, facing south either way.
+- **The rival and Jasmine**: once Volkner's script has set the city's state to 2, the row of five tiles two south of Jasmine starts the scene. Nobody battles. Jasmine gives HM07 (`FLAG_RECEIVED_SUNYSHORE_CITY_HM07`), and the state is 3. Spoken to before the Badge, she says only that the sea will turn the player back.
+- **`VAR_RIVAL_BEAT_SUNYSHORE_GYM` is set by the rival's battle in the League's Pokémon Center**, of whose trigger it is the variable, not by anything in Sunyshore: the Gym's statues name him from then on (plan 02 · S14).
+- **A new game hides** the professor in Verity Cavern (`FLAG_HIDE_VERITY_CAVERN_PROF_OAK`, as the decompilation names his flag) and the rival in Sunyshore City.
+
+**Our own choices**
+
+- **A guardian is brought back only where it hasn't been met already.** The lab's scene clears Azelf's and Uxie's flags unless their `FLAG_CAUGHT_` is set, and Mesprit's only while its roaming state is 0. In the original nothing can have happened to them by then; a save from before the chapter may hold one, and story version 16 counts a guardian the player has as caught.
+- **Sunyshore's arrival moves the lab's state on from 3 only.** The original does so from 2 as well, for someone who has not heard the professor out, which nobody there can be (the road opens with his scene); a save from before the chapter can, and for it the lab's scene still waits.
+- **Someone who first comes to Sunyshore City any other way than by the gate** finds Flint before the Gym already, as a scene missed elsewhere has moved on (plan 02 · S9's Cynthia). The original's on-frame script has no branch for it.
+- **Flint stops a step short of the original's tile** at the gate: here whoever comes through a gate stands a step outside it. He goes on east and north out of sight before he is put before the Gym.
+- **The lift knows its way by a variable of our own**, `VAR_VISTA_LIGHTHOUSE_FLOOR`: 0 set by Sunyshore City's arrival script, 1 by the gallery's. The original asks the floor its dynamic warp remembers (`GetFloorsAbove`). The car's own door leads out to the city, for whoever is ever left standing in it.
+- **The professor walks seven steps back down Verity Cavern**, not nine: the original's nine take him through the cavern's wall.
+- **The professor and the assistant stand two rows inside the door** of our lab, which is smaller than the original's, and the player takes a step in as the scene begins, so that nobody stands under the text.
+- **The lighthouse's two rooms are on the original's plans.** The shaft at the gallery's middle is an inner wall, cut away like any other, and the car stands open in its south face (style guide, "Rooms": a lift).
+- **The caverns' battles are fought on the cave's stage** (their overlays' `battleArena`): their floor is wet stone that mirrors whoever stands on it, which is no cave floor to the field, so the stage would have been a meadow.
+- **Sunyshore's Pokémon Center and Mart** are the towns' common rooms, so their people stand where those have room, not on the original's tiles.
+- **Saves from before** (story version 16): `common.ChapterTen` hides the professor in Verity Cavern and the rival in Sunyshore City. A save that has already been to Sunyshore City, or holds its Beacon Badge, walked in when nobody stood at the gate and the Gym was open: for it Flint has gone, Volkner is in his Gym and the road from Valor Lakefront is open, and with the Badge the city's state is 2, so the beach's scene and HM07 wait.
+- **The cries written out** ("Kyuoon!", "Kyuuoh...", "Kyuuuhn!") are our own.
+
+**Stand-ins for what this game lacks**
+
+| What | The original | Here | Why |
+| --- | --- | --- | --- |
+| The binoculars | The picture goes to the Pokémon League across the sea: the map itself is changed, with a camera of its own, until a button is pressed | Two lines over a black screen that say what is seen | Plan 09 · L12 (set pieces) |
+| Mesprit's picture | Shown over the field before its cry (`DrawPokemonPreview`) | Its cry and a line | Plan 09 · L12 |
+| The lift's ride | The car's lights scroll and its door opens and shuts (`PlayElevatorAnimation`, the door's animation in the gallery) | The lift's sounds and a tremor of the picture; the car stands open in its shaft | Plan 09 · L12 |
+| Looks | Flint's, Volkner's and Jasmine's own; sailors, a collector | Flint and Volkner as youngsters, as in their rooms at the League and the Gym; Jasmine a lass; the sailors gentlemen. The gallery's young visitor is a lass, or Volkner would stand beside his twin | Plan 11 · C6, C2 to C4 |
+| The lake caverns' theme | Their own (`D_RYAYHY`) | The cave's | Plan 05 · A6 |
+| Volkner's words in battle | A Leader speaks during the battle itself | Nothing | Plan 11 · C12 |
+| The rival's branch of the Gym's statues | Named beside the player once he has battled before the League's door | Not written | Plan 02 · S14 sets the variable |
+| The lab's other people | Two scientists and its shelves, with lines for this stretch of the story | Not there: the lab is still the room made by hand | Plan 01 · M11 |
+| The gate house and the houses | Route 222's gate with its two people; Sunyshore's and Route 222's houses | Walked through; locked | Plan 01 · M11 |

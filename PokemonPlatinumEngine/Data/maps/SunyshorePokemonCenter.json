@@ -120,6 +120,39 @@
       "y": 2,
       "facing": "Up",
       "isPCTerminal": true
+    },
+    {
+      "id": "old_man",
+      "name": "Old Man",
+      "npcType": "Gentleman",
+      "x": 3,
+      "y": 5,
+      "facing": "Down",
+      "dialog": [
+        "When I was young I dreamed of being a Gym Leader. It never came to anything.",
+        "But I have had Pokémon beside me every day of my life. I call that a lucky life."
+      ]
+    },
+    {
+      "id": "ninja_boy",
+      "name": "Ninja Boy",
+      "npcType": "Youngster",
+      "x": 7,
+      "y": 7,
+      "facing": "Left",
+      "script": "NinjaBoy"
+    },
+    {
+      "id": "middle_aged_man",
+      "name": "Man",
+      "npcType": "Gentleman",
+      "x": 7,
+      "y": 5,
+      "facing": "Down",
+      "dialog": [
+        "There was no room left to build on, so the city made its roads out of solar panels.",
+        "Clean power, and good roads besides. If you ask me, it shows how set Sunyshore is on getting by."
+      ]
     }
   ],
   "wildEncounters": []

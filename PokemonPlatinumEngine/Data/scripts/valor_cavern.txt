@@ -8,7 +8,34 @@
 # (FLAG_HIDE_LAKE_VALOR_GALACTIC, which the original's RemoveObject sets as it takes him away;
 # FLAG_DEFEATED_COMMANDER_SATURN_VALOR_CAVERN, which turns Verity Lakefront's way in to the lake Team Galactic holds).
 #
-# Azelf itself is back in the cavern after the Distortion World (plan 02 · S13).
+# Azelf itself is back in the cavern once the professor has heard of the Distortion World (plan 02 · S13: RowanLab.txt
+# clears FLAG_HIDE_VALOR_CAVERN_AZELF), and the lake is full again by then, so the cavern is reached over the water.
+# It battles whoever speaks to it, at level 50, and the battle may be run from. Lost, the player wakes in a Pokémon
+# Center and Azelf waits here still. Caught, it is gone for good (FLAG_CAUGHT_AZELF). Knocked out or run from, it is
+# gone into the cavern (the original hides it as the cavern loads again after the battle) until the Hall of Fame is
+# next entered, whose script brings it back while it hasn't been caught (PokemonLeagueHallOfFame.txt).
+
+
+# ValorCavern_OnTransition
+script OnEnter
+  setflag FLAG_FIRST_ARRIVAL_VALOR_CAVERN
+  end
+
+
+# ValorCavern_Azelf
+script Azelf
+  cry "Azelf"
+  speaker none
+  say "Kyuuoh..."
+  wildbattle "Azelf" 50
+  setflag FLAG_HIDE_VALOR_CAVERN_AZELF
+  hide azelf
+  if result == 3 goto Caught
+  say "Azelf slipped away into the depths of the cavern..."
+  end
+label Caught
+  setflag FLAG_CAUGHT_AZELF
+  end
 
 
 script Saturn

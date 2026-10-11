@@ -1,0 +1,31 @@
+# Acuity Cavern (plan 02 · S13). docs/scripts.md describes the language; the lines are our own, on the original's
+# beats (scripts_acuity_cavern.s).
+#
+# The cave on the island in the middle of Lake Acuity, reached over the water. Uxie is back in it once the professor
+# has heard of the Distortion World (RowanLab.txt clears FLAG_HIDE_ACUITY_CAVERN_UXIE), and battles whoever speaks to
+# it, at level 50; the battle may be run from. Lost, the player wakes in a Pokémon Center and Uxie waits here still.
+# Caught, it is gone for good (FLAG_CAUGHT_UXIE). Knocked out or run from, it is gone into the cavern (the original
+# hides it as the cavern loads again after the battle) until the Hall of Fame is next entered, whose script brings it
+# back while it hasn't been caught (PokemonLeagueHallOfFame.txt).
+
+
+# AcuityCavern_OnTransition
+script OnEnter
+  setflag FLAG_FIRST_ARRIVAL_ACUITY_CAVERN
+  end
+
+
+# AcuityCavern_Uxie
+script Uxie
+  cry "Uxie"
+  speaker none
+  say "Kyuuuhn!"
+  wildbattle "Uxie" 50
+  setflag FLAG_HIDE_ACUITY_CAVERN_UXIE
+  hide uxie
+  if result == 3 goto Caught
+  say "Uxie slipped away into the depths of its cavern..."
+  end
+label Caught
+  setflag FLAG_CAUGHT_UXIE
+  end

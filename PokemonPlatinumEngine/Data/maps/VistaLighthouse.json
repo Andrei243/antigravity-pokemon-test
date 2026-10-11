@@ -1,0 +1,131 @@
+{
+  "name": "VistaLighthouse",
+  "displayName": "Vista Lighthouse",
+  "bgmTrack": "sinnoh/sunyshore",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 13,
+  "height": 13,
+  "ground": [
+    "#############",
+    "#############",
+    "#############",
+    "##_________##",
+    "##_________##",
+    "#___________#",
+    "#___#####___#",
+    "#___#####___#",
+    "#___#####___#",
+    "#___##_##___#",
+    "#___________#",
+    "##_________##",
+    "#############"
+  ],
+  "solid": [
+    "#############",
+    "#############",
+    "#############",
+    "##....#....##",
+    "##.........##",
+    "#...........#",
+    "#...#####...#",
+    "#...#####...#",
+    "#...#####...#",
+    "#...##.##...#",
+    "#...........#",
+    "##.........##",
+    "#############"
+  ],
+  "props": [
+    {
+      "type": "Binoculars",
+      "x": 6,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 2,
+      "y": 2,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 5,
+      "y": 2,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 8,
+      "y": 2,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "LiftCar",
+      "x": 6,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 6,
+      "sourceY": 9,
+      "targetMap": "VistaLighthouseElevator",
+      "targetX": 3,
+      "targetY": 6,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 6,
+      "y": 3,
+      "text": "Binoculars, free to use. On a clear day they show all the way to the Pokémon League.",
+      "script": "Binoculars"
+    }
+  ],
+  "npcs": [
+    {
+      "id": "sailor",
+      "name": "Sailor",
+      "npcType": "Gentleman",
+      "x": 9,
+      "y": 3,
+      "facing": "Up",
+      "dialog": [
+        "To a sailor this light means one thing: you are nearly safe home.",
+        "After a long night at sea, there is no finer sight in all of Sinnoh."
+      ]
+    },
+    {
+      "id": "youngster",
+      "name": "Lass",
+      "npcType": "Lass",
+      "x": 8,
+      "y": 3,
+      "facing": "Up",
+      "dialog": [
+        "You can see for miles and miles through those binoculars!",
+        "One day my Pokémon and I are going all the way out there, as far as they can show."
+      ]
+    },
+    {
+      "id": "volkner",
+      "name": "Volkner",
+      "npcType": "Youngster",
+      "x": 6,
+      "y": 4,
+      "facing": "Up",
+      "script": "Volkner",
+      "hiddenBy": "FLAG_HIDE_VISTA_LIGHTHOUSE_VOLKNER"
+    }
+  ],
+  "wildEncounters": []
+}

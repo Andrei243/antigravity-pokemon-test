@@ -73,6 +73,50 @@ public static class StoryMigration
         // Version 15: the people of Spear Pillar and the Distortion World (plan 02 · S12), and Cynthia gone from before
         // Turnback Cave's mouth for a save that has already entered the Hall of Fame
         if (savedVersion < 15) ChapterNine(story, scripts);
+        // Version 16: the people of the tenth chapter (plan 02 · S13), a guardian of the lakes already the player's
+        // counted as caught, and Sunyshore City as its scenes leave it for a save that has already been there or holds
+        // its Beacon Badge
+        if (savedVersion < 16) ChapterTen(story, scripts, owned);
+    }
+
+    /// <summary>The flag that first arriving in Sunyshore City sets (<see cref="Data.SpawnLocation.ArrivalFlag"/>).</summary>
+    public const string ArrivedInSunyshoreFlag = "FLAG_FIRST_ARRIVAL_SUNYSHORE_CITY";
+
+    /// <summary>The flag that says Volkner has left the Vista Lighthouse for his Gym, on which Flint leaves its door (scripts/VistaLighthouse.txt).</summary>
+    public const string VolknerReturnedFlag = "FLAG_VOLKNER_RETURNED_TO_GYM";
+
+    /// <summary>
+    /// Version 16, a save from before the tenth chapter was written (plan 02 · S13): its people are hidden until their
+    /// scenes by <see cref="ScriptLibrary.ChapterTen"/>, which a new game runs too (called by the chapter before).
+    /// <para>The professor's lab brings the three Pokémon of the lakes back to their caverns, each unless it has been
+    /// caught already: a save that has one of them (met some other way, before the caverns were open) counts it as
+    /// caught, so that it isn't found a second time: Azelf and Uxie by their flags, Mesprit by the state its roaming
+    /// keeps.</para>
+    /// <para>In Sunyshore City, Flint meets whoever first comes in by the gate and then keeps the Gym's door until
+    /// Volkner has been fetched from the lighthouse. A save that has already been to Sunyshore City, or holds its
+    /// Beacon Badge, walked in when nobody stood there and found the Gym open: for it Flint has said his piece and
+    /// gone, Volkner is back in his Gym, and the road from Valor Lakefront, which the professor's scene opens, is open,
+    /// so that nobody is shut in or out. With the Badge, the rival's scene on the beach waits (the Gym's script left
+    /// the city's state at 2, and an older Gym's is made so), which is where Jasmine gives HM07.</para>
+    /// </summary>
+    private static void ChapterTen(StoryState story, ScriptLibrary scripts, IEnumerable<Pokemon> owned)
+    {
+        Run(story, scripts, ScriptLibrary.ChapterTen);
+
+        var mine = owned.Select(p => p.Species.Name).ToHashSet(StringComparer.Ordinal);
+        if (mine.Contains("Azelf")) story.Set("FLAG_CAUGHT_AZELF");
+        if (mine.Contains("Uxie")) story.Set("FLAG_CAUGHT_UXIE");
+        string mesprit = Overworld.Roamers.StateVariable("Mesprit");
+        if (mine.Contains("Mesprit") && story.Var(mesprit) == Overworld.Roamers.Roaming) story.SetVar(mesprit, Overworld.Roamers.Captured);
+
+        bool badge = story.HasBadge(Badge.Beacon);
+        if (!badge && !story.Has(ArrivedInSunyshoreFlag)) return;
+        story.Set("FLAG_HIDE_VALOR_LAKEFRONT_COLLECTOR");
+        if (story.Var("VAR_VALOR_LAKEFRONT_BLOCK_SUNYSHORE_STATE") == 0) story.SetVar("VAR_VALOR_LAKEFRONT_BLOCK_SUNYSHORE_STATE", 1);
+        story.Set(VolknerReturnedFlag);
+        story.Set("FLAG_HIDE_VISTA_LIGHTHOUSE_VOLKNER");
+        story.Set("FLAG_HIDE_SUNYSHORE_CITY_FLINT");
+        if (story.Var("VAR_SUNYSHORE_CITY_STATE") < (badge ? 2 : 1)) story.SetVar("VAR_SUNYSHORE_CITY_STATE", badge ? 2 : 1);
     }
 
     /// <summary>The flag that takes Cynthia from before Turnback Cave's mouth at Sendoff Spring (scripts/PokemonLeagueHallOfFame.txt).</summary>

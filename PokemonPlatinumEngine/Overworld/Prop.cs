@@ -183,6 +183,10 @@ public enum PropType
     Rubble,
     /// <summary>The cave painting that stands over a way through Mt. Coronet until the story breaks it: a thing of the map (<see cref="NPC.CavePaintingType"/>), drawn as a card (plan 02 · S12).</summary>
     CavePainting,
+    /// <summary>A lift's car standing open in its shaft (plan 02 · S13, the Vista Lighthouse): a steel plate on the floor between two jambs, walked onto. It blocks nothing by itself.</summary>
+    LiftCar,
+    /// <summary>The indicator on the back wall of a lift's car: a dark panel with an arrow up and an arrow down.</summary>
+    LiftIndicator,
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>

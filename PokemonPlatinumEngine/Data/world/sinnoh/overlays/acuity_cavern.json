@@ -1,0 +1,13 @@
+{
+  "area": "acuity_cavern",
+  "bgmTrack": "sinnoh/cave",
+  // Its floor is wet stone that mirrors whoever stands on it, which is no cave floor to the field: the battle's stage
+  // is named, or it would be fought in a meadow
+  "battleArena": "Cave",
+  // The cave on the island in the middle of Lake Acuity (plan 02 · S13, scripts/acuity_cavern.txt). Uxie is back in it
+  // once the professor has heard of the Distortion World (FLAG_HIDE_ACUITY_CAVERN_UXIE, which his lab's scene clears),
+  // and battles whoever speaks to it.
+  "people": {
+    "uxie": { "name": "Uxie", "script": "Uxie", "still": true }
+  }
+}

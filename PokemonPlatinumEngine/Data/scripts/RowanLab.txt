@@ -3,9 +3,27 @@
 #
 # The first visit: the professor looks at the player's Pokémon, sees the bond already there, and asks the player
 # to fill in a Pokédex of every Pokémon in Sinnoh. The assistant, who has one too, introduces themself.
+#
+# Back from the Distortion World (plan 02 · S13; Sendoff Spring leaves VAR_SANDGEM_TOWN_LAB_STATE 2): the professor and
+# the assistant wait just inside the door, and the scene plays as the player comes in (the original's OnFrame). He
+# has hardly slept, she says how he worried, and he has news: the three Pokémon of the lakes have gone home. With
+# seven Badges, only Sunyshore's Gym is left, and the Pokémon League after it. The scene leaves what the original's
+# leaves: VAR_EXITED_DISTORTION_WORLD_STATE 3, the road to Sunyshore City open (FLAG_HIDE_VALOR_LAKEFRONT_COLLECTOR,
+# VAR_VALOR_LAKEFRONT_BLOCK_SUNYSHORE_STATE 1), the guardians back in their caverns (FLAG_HIDE_VERITY_CAVERN_MESPRIT,
+# FLAG_HIDE_VALOR_CAVERN_AZELF, FLAG_HIDE_ACUITY_CAVERN_UXIE cleared) and the state 3. The two stand by the door
+# until the player has been to Sunyshore City, whose arrival sends the assistant off and makes the state 4
+# (sunyshore_city.txt); the professor is back behind his desk from then on.
+#
+# A guardian is shown only where it hasn't been caught or set roaming already: the original's scene clears the three
+# flags whatever has happened, since nothing can have, and a save from before the chapter may have met one
+# (Story/StoryMigration.cs, version 16).
 
 
 script OnEnter
+  if var VAR_SANDGEM_TOWN_LAB_STATE == 2 goto Returned
+  if var VAR_SANDGEM_TOWN_LAB_STATE == 3 goto ByTheDoor
+  # Afterwards he is behind his desk again (a scene's place holds while the game runs)
+  if var VAR_SANDGEM_TOWN_LAB_STATE >= 4 place prof_rowan 5 2 down
   if var VAR_SANDGEM_TOWN_LAB_STATE != 0 end
   if var VAR_SANDGEM_TOWN_STATE == 0 end
   walk counterpart up 3
@@ -49,13 +67,86 @@ label Takes
   music area
   setvar VAR_SANDGEM_TOWN_LAB_STATE 1
   end
+# SandgemTownLab_OnTransition in states 2 and 3
+label ByTheDoor
+  call TheyWait
+  end
+# SandgemTownLab_OnFrame_ReturnedFromDistortionWorld
+label Returned
+  call TheyWait
+  if var VAR_EXITED_DISTORTION_WORLD_STATE == 2 setvar VAR_EXITED_DISTORTION_WORLD_STATE 3
+  # A step in from the door, so that the player stands clear of the text
+  walk player up 1
+  speaker "Prof. Rowan"
+  say "{player}! You are back!"
+  say "I... Words fail me. You saw it through. All of it!"
+  say "Sixty years I have lived, and I have never spent so many days with my heart in my mouth."
+  face counterpart right
+  wait 0.4
+  face counterpart down
+  speaker "{assistant}"
+  say "The professor has been asking after you everywhere since you left, {player}. He was beside himself."
+  if girl goto Lucas
+  say "He wrote to everyone he knows, trying to find someone who could go and help you... I'm so glad you're safe. Welcome back!"
+  goto News
+label Lucas
+  say "He rang round everyone he knows to scrape up some help. Not that you needed it. I'm glad you're back in one piece, too."
+label News
+  speaker "Prof. Rowan"
+  say "Now, I have news for you. Word has come from all three lakes: their Pokémon are home again, each in its own cave."
+  say "And how do things stand with you? The Pokédex... Hm! {var:SEEN} seen! And your Badges?"
+  if badges >= 8 goto Eight
+  if badges < 7 goto Fewer
+  say "Seven! Only Sunyshore City's Gym is left, then. Having come all this way, you may as well have its Badge too."
+  goto League
+label Fewer
+  say "{var:BADGE_COUNT}, I see. Sunyshore City's Gym is open to you now: why not see how many you can win?"
+  goto League
+label Eight
+  say "All eight! Then you have nothing left to prove to the Gyms of Sinnoh."
+label League
+  say "The Pokémon League is what lies beyond. Go and try yourself against it: you will see more of the world on that road than on all the others put together, and more Pokémon too."
+  setflag FLAG_HIDE_VALOR_LAKEFRONT_COLLECTOR
+  setvar VAR_VALOR_LAKEFRONT_BLOCK_SUNYSHORE_STATE 1
+  if var VAR_ROAMING_MESPRIT_STATE == 0 clearflag FLAG_HIDE_VERITY_CAVERN_MESPRIT
+  if not flag FLAG_CAUGHT_AZELF clearflag FLAG_HIDE_VALOR_CAVERN_AZELF
+  if not flag FLAG_CAUGHT_UXIE clearflag FLAG_HIDE_ACUITY_CAVERN_UXIE
+  setvar VAR_SANDGEM_TOWN_LAB_STATE 3
+  end
+
+
+# SandgemTownLab_SetProfRowanAndCounterpartPositions: the two inside the door, facing it (the original stands them at
+# 7, 14 and 6, 14 of its own, larger room).
+script TheyWait
+  clearflag FLAG_HIDE_SANDGEM_TOWN_LAB_PROF_ROWAN
+  clearflag FLAG_HIDE_SANDGEM_TOWN_LAB_COUNTERPART
+  place prof_rowan 5 5 down
+  place counterpart 4 5 down
+  show counterpart
+  return
 
 
 script Rowan
   if var VAR_SANDGEM_TOWN_LAB_STATE == 0 goto Before
+  face self player
   speaker "Prof. Rowan"
+  # SandgemTownLab_GiveCynthiaMyBestRegards: between his scene and the player's arrival in Sunyshore City
+  if var VAR_SANDGEM_TOWN_LAB_STATE == 3 goto Regards
   say "Your adventure is waiting, {player}. Go and see the Pokémon of Sinnoh for yourself."
+  end
+label Regards
+  say "One thing more, {player}. Should your road cross Cynthia's, tell her that an old professor remembers her kindly."
   end
 label Before
   sayown
+  end
+
+
+# The assistant by the door (the original's scripts_counterpart_talk.s, between the professor's scene and the
+# player's arrival in Sunyshore City).
+script Assistant
+  face self player
+  speaker "{assistant}"
+  say "I keep turning it over, {player}. What you saw on the mountain..."
+  say "Do you suppose those were the Pokémon the legends mean? The ones Sinnoh began with?"
   end

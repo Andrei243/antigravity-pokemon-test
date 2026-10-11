@@ -11,31 +11,33 @@
     // The Sunyshore Market (its two doors) and Julia's house, rebuilt to the original's plans (plan 06 · R17b)
     { "warp": 0, "map": "SunyshoreMarket", "x": 5, "y": 12, "facing": "Up" },
     { "warp": 13, "map": "SunyshoreMarket", "x": 5, "y": 12, "facing": "Up" },
-    { "warp": 1, "map": "SunyshoreCityNortheastHouse", "x": 4, "y": 8, "facing": "Up" }
+    { "warp": 1, "map": "SunyshoreCityNortheastHouse", "x": 4, "y": 8, "facing": "Up" },
+    // The Vista Lighthouse (plan 02 · S13): its door leads into the lift, which carries whoever steps in up to the
+    // gallery at the top, and back down to this door
+    { "warp": 10, "map": "VistaLighthouseElevator", "x": 3, "y": 6, "facing": "Up" }
   ],
   // The gate house to Route 222 is passed through; its rooms come with plan 01 · M11
   "through": [
     { "warp": 3, "to": "route_222", "toWarp": 0 },
     { "warp": 6, "to": "route_222", "toWarp": 1 }
   ],
-  // The Vista Lighthouse and the other houses have no rooms yet (plan 01 · M11); two houses the original
-  // never used
-  "locked": [ 2, 4, 7, 8, 9, 10 ],
-  // Flint, who meets the player at the gate and sends them to find Volkner, and the rival, who comes running once the
-  // Gym is beaten (trigger 0), wait for the story (plan 02)
+  // The other houses have no rooms yet (plan 01 · M11); two houses the original never used
+  "locked": [ 2, 4, 7, 8, 9 ],
+  // The beach north of the Gym (trigger 0, plan 02 · S13): once the Beacon Badge is won the rival comes running up it,
+  // and Jasmine gives HM07 (scripts/sunyshore_city.txt)
+  "triggers": [ { "trigger": 0, "script": "RivalAndJasmine" } ],
   "people": {
-    // She is visiting from Johto. In Platinum she hands over the HM for Waterfall in the rival's scene after the
-    // Gym; the gift is plan 02's
-    "jasmine": {
-      "name": "Jasmine",
-      "npcType": "Lass",
-      "dialog": [
-        "A harbour, and a lighthouse keeping watch over the sea... This town feels just like my own, far away in Johto.",
-        "I came all the way to Sinnoh to grow stronger. I won't go home until I have."
-      ]
-    },
+    // Plan 02 · S13 (scripts/sunyshore_city.txt). Flint of the Elite Four meets whoever first comes in by the gate and
+    // asks them to give his friend Volkner a battle worth having, then waits before the Gym's door until Volkner has
+    // come back to it from the lighthouse; he stands as a youngster, as in his room at the League, until he has a
+    // look of his own (plan 11 · C6). The rival is brought on by his scene on the beach.
+    "flint": { "name": "Flint", "npcType": "Youngster", "script": "Flint", "still": true },
+    "rival": { "name": "{rival}", "dialog": [ "{rival}: I'm going to be the toughest Trainer there ever was. Just you wait and see!" ], "still": true },
+    // She is visiting from Johto, and gives HM07 in the rival's scene after the Gym
+    "jasmine": { "name": "Jasmine", "npcType": "Lass", "script": "Jasmine", "still": true },
     "sailor_1": {
       "name": "Sailor",
+      "npcType": "Gentleman",
       "dialog": [
         "See that great rock out in the water? Squint a little and it looks just like a Pokémon.",
         "Sailors steer by it. Once it's in sight, you know you're nearly home."
@@ -64,6 +66,7 @@
     },
     "sailor_2": {
       "name": "Sailor",
+      "npcType": "Gentleman",
       "dialog": [
         "This whole town stands on walkways, up over the rocks and the waves.",
         "Felt strange when I first came ashore. But people and Pokémon get used to anything, given time."

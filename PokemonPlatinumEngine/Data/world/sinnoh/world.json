@@ -163,6 +163,10 @@
     // Plan 02 · S12: Spear Pillar as the Distortion World tears it (the map Mt. Coronet's summit leads to from the
     // moment Giratina takes Cyrus until the player comes out at Sendoff Spring)
     { "name": "SpearPillarDistorted", "matrix": 23, "area": "spear_pillar_distorted" },
+    // Plan 02 · S13: the caverns on the islands of Lake Verity and Lake Acuity, where Mesprit and Uxie are back once
+    // the professor has heard of the Distortion World (Valor Cavern has been open since S10)
+    { "name": "VerityCavern", "matrix": 103, "area": "verity_cavern", "setting": "Cave" },
+    { "name": "AcuityCavern", "matrix": 109, "area": "acuity_cavern", "setting": "Cave" },
   ],
   "areas": [
     "twinleaf_town",
@@ -355,5 +359,8 @@
     "battle_frontier",
     // Plan 02 · S12
     "spear_pillar_distorted",
+    // Plan 02 · S13
+    "verity_cavern",
+    "acuity_cavern",
   ]
 }

@@ -25,6 +25,7 @@
 //   dotnet run --project tools/ShotHarness -- <output dir> headquarters       the eighth chapter's second half: the Storage Key, the warehouse's door, Team Galactic's headquarters floor by floor, Cyrus, Saturn and the lakes' Pokémon set free
 //   dotnet run --project tools/ShotHarness -- <output dir> underground        the Underground: the way down, a wall dug through, every trap, a Sphere buried, the hikers, the secret base and its decorating, a flag brought home
 //   dotnet run --project tools/ShotHarness -- <output dir> pillar             the ninth chapter: the climb through Mt. Coronet, Spear Pillar, the torn pillar, the Distortion World floor by floor, Giratina, Sendoff Spring
+//   dotnet run --project tools/ShotHarness -- <output dir> sunyshore          the tenth chapter: the professor's lab, the lakes' three caverns, Flint in Sunyshore City, the Vista Lighthouse and its lift, Volkner, the Beacon Badge, the rival and Jasmine on the beach
 //   dotnet run --project tools/ShotHarness -- <dir> diff <other dir>          two runs' shots compared pixel by pixel (exits 1 if any differ)
 //   dotnet run --project tools/ShotHarness -- <dir> ab <before> <after> <before again>   three runs of `profile` compared (tools/dev/ab.sh)
 //   dotnet run --project tools/ShotHarness -- <dir> contact [prefix]          every shot of a run on sheets of twenty
@@ -125,6 +126,7 @@ if (mode == "snowpoint") h.SnowpointMode();
 if (mode == "headquarters") h.HeadquartersMode();
 if (mode == "underground") h.UndergroundMode();
 if (mode == "pillar") h.PillarMode();
+if (mode == "sunyshore") h.SunyshoreMode();
 
 h.Close();
 Raylib.CloseWindow();

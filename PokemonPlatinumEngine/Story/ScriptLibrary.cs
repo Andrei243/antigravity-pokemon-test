@@ -76,6 +76,10 @@ public sealed class ScriptLibrary
     /// Distortion World): called by <see cref="Headquarters"/>, and run for a save from before.</summary>
     public const string ChapterNine = "common.ChapterNine";
 
+    /// <summary>The script that hides whoever the tenth chapter brings on later (plan 02 · S13, Sunyshore): called by
+    /// <see cref="ChapterNine"/>, and run for a save from before.</summary>
+    public const string ChapterTen = "common.ChapterTen";
+
     private readonly Dictionary<string, Script> scripts = new(StringComparer.Ordinal);
 
     public IReadOnlyCollection<Script> All => scripts.Values;

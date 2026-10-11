@@ -185,6 +185,9 @@ public static class RegionDatabase
                 "FullmoonIslandForest", "NewmoonIslandForest", "BattleFrontier", "ResortAreaRibbonSyndicate1F",
                 // Plan 02 · S12: Spear Pillar as the Distortion World tears it (a matrix of the imported world)
                 "SpearPillarDistorted",
+                // Plan 02 · S13: Verity Cavern and Acuity Cavern (matrices of the imported world), and the Vista
+                // Lighthouse's gallery and lift, rebuilt to the original's plans
+                "VerityCavern", "AcuityCavern", "VistaLighthouse", "VistaLighthouseElevator",
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

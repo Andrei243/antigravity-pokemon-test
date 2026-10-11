@@ -104,6 +104,30 @@
       ],
       "isPokeMartClerk": true,
       "mart": "sunyshore"
+    },
+    {
+      "id": "ruin_maniac",
+      "name": "Ruin Maniac",
+      "npcType": "Gentleman",
+      "x": 6,
+      "y": 5,
+      "facing": "Up",
+      "dialog": [
+        "I have heard about Victory Road, the way up to the Pokémon League. Harsh going, they say, from end to end.",
+        "I had better buy all the medicine I can carry."
+      ]
+    },
+    {
+      "id": "sailor",
+      "name": "Sailor",
+      "npcType": "Gentleman",
+      "x": 2,
+      "y": 6,
+      "facing": "Right",
+      "dialog": [
+        "I'm off to the Sunyshore Market for Seals to stick on my Poké Balls.",
+        "Put them on with a bit of style, and my Pokémon are sure to be impressed!"
+      ]
     }
   ],
   "wildEncounters": []

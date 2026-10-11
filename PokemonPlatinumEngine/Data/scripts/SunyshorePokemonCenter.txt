@@ -1,0 +1,18 @@
+# Sunyshore City's Pokémon Center (plan 02 · S13). docs/scripts.md describes the language; the lines are our own, on
+# the original's beats (scripts_sunyshore_city_pokecenter_1f.s).
+#
+# The room is the common Pokémon Center of the towns, so its people stand where it has room for them, not on the
+# original's tiles. The boy counts the player's Badges.
+
+
+# SunyshoreCityPokecenter1F_NinjaBoy
+script NinjaBoy
+  face self player
+  if badge beacon goto Eight
+  say "Whoa, seven Gym Badges! You're amazing!"
+  say "Just one to go, and it's the Pokémon League for you!"
+  end
+label Eight
+  say "Whoa! All eight Gym Badges! You're the most amazing Trainer I've ever met!"
+  say "There's nothing for it now but the Pokémon League!"
+  end

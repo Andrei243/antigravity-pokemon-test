@@ -1,0 +1,33 @@
+# The Vista Lighthouse's lift (plan 02 · S13), on the original's plan. docs/scripts.md describes the language
+# (scripts_vista_lighthouse_elevator.s).
+#
+# The lighthouse's door in Sunyshore City and the car's open door in the gallery at the top both lead in here, and the
+# car carries whoever comes in to the other end at once (the original's OnFrame): two steps in, a turn to the door, the
+# ride, two steps out. The original knows which way to go from the floor its rider came from (GetFloorsAbove, on the
+# way in it remembers); here the two ends each say so as they are come to (VAR_VISTA_LIGHTHOUSE_FLOOR, a variable of
+# our own: 0 set by Sunyshore City's arrival script, 1 by the gallery's), so the car goes to the other one. The door
+# in its front wall leads out to the city, for whoever is ever left standing in it.
+#
+# Stood in for until plan 09 lands (L12): the ride is the lift's sounds and a tremor of the picture (the original's
+# PlayElevatorAnimation scrolls the car's lights).
+
+
+# VistaLighthouseElevator_OnFrame_Init
+script OnEnter
+  walk player up 2
+  face player down
+  sound "lift"
+  camera shake 1.5
+  wait 1.5
+  sound "lift_stop"
+  wait 0.3
+  walk player down 2
+  sound "stairs"
+  if var VAR_VISTA_LIGHTHOUSE_FLOOR == 1 goto Down
+  # VistaLighthouseElevator_ElevatorUp
+  warp "VistaLighthouse" 6 10 down
+  end
+# VistaLighthouseElevator_ElevatorDown
+label Down
+  warp "Sinnoh" 886 791 down
+  end

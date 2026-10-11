@@ -213,6 +213,11 @@ public class PokemonTests
             .Where(w => w.TargetMap == mapName)
             .Select(w => (w.TargetX, w.TargetY))
             .ToList();
+        // A room no warp leads into is come to by a script's own warp (plan 02 · S13: the gallery of the Vista
+        // Lighthouse, where the lift's car puts its rider down)
+        if (arrivals.Count == 0)
+            arrivals.AddRange(PokemonPlatinumEngine.Story.ScriptLibrary.Default.All.SelectMany(s => s.Everything())
+                .Where(i => i.Op == PokemonPlatinumEngine.Story.Op.Warp && i.Name == mapName).Select(i => (i.X, i.Y)));
         Assert.NotEmpty(arrivals);
 
         // The Team Galactic building's upper floors are each cut in two on purpose, as the original's are: there every

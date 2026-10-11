@@ -1,6 +1,9 @@
 {
   "area": "valor_cavern",
   "bgmTrack": "sinnoh/cave",
+  // Its floor is wet stone that mirrors whoever stands on it, which is no cave floor to the field: the battle's stage
+  // is named, or it would be fought in a meadow (plan 02 · S13)
+  "battleArena": "Cave",
   // The way out shares its tile between two maps, as the lakefront's way in does: the drained lake (warp 0) until the
   // story fills it again, the lake as it was (warp 1) from then on (plan 02 · S13)
   "switches": [
@@ -8,8 +11,11 @@
     { "warp": 1, "from": "FLAG_GALACTIC_LEFT_LAKE_VALOR" }
   ],
   // Commander Saturn, alone in the cavern Azelf was taken from (plan 02 · S10, scripts/valor_cavern.txt). He stands as
-  // a grunt until he has a look of his own (plan 11 · C6). Azelf comes back with plan 02 · S13.
+  // a grunt until he has a look of his own (plan 11 · C6). Azelf is back in the cavern once the professor has heard of
+  // the Distortion World (plan 02 · S13: FLAG_HIDE_VALOR_CAVERN_AZELF, which his lab's scene clears), and battles
+  // whoever speaks to it.
   "people": {
-    "saturn": { "name": "Saturn", "npcType": "Grunt", "script": "Saturn", "still": true }
+    "saturn": { "name": "Saturn", "npcType": "Grunt", "script": "Saturn", "still": true },
+    "azelf": { "name": "Azelf", "script": "Azelf", "still": true }
   }
 }
