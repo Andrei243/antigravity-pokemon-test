@@ -2,14 +2,13 @@
   "area": "route_212_north",
   "bgmTrack": "sinnoh/route209",
   "trees": "Round",
-  // The gate to Hearthome City is passed through; its room comes with plan 01 · M11, part d
-  "through": [
-    { "warp": 0, "to": "hearthome_city", "toWarp": 15 },
-    { "warp": 1, "to": "hearthome_city", "toWarp": 16 }
-  ],
   // The Pokémon Mansion's hall, on the original's plan (plan 01 · M11, part b): its back door leads to the Trophy Garden
   "doors": [
-    { "warp": 2, "map": "PokemonMansion", "x": 33, "y": 16, "facing": "Up" }
+    { "warp": 2, "map": "PokemonMansion", "x": 33, "y": 16, "facing": "Up" },
+    // The gate house to Hearthome City, on the original's plan (plan 01 · M11, part d): the television crew of plan
+    // 02 · S8 stand inside it, before this door
+    { "warp": 0, "map": "Route212GateToHearthomeCity", "x": 5, "y": 12, "facing": "Up" },
+    { "warp": 1, "map": "Route212GateToHearthomeCity", "x": 5, "y": 12, "facing": "Up" }
   ],
   // The policemen battle only at night: by day their doubles without a battle (policeman_*_no_battle, on the same
   // tiles) stand there instead, swapped by the route's arrival script (plan 06 · R14a)

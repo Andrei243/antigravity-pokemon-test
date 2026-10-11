@@ -23,17 +23,15 @@
     // south-west one)
     { "warp": 6, "map": "VeilstoneCitySouthwestHouse", "x": 4, "y": 8, "facing": "Up" },
     { "warp": 8, "map": "VeilstoneCityNorthwestHouse", "x": 4, "y": 8, "facing": "Up" },
-    { "warp": 9, "map": "VeilstoneCityNortheastHouse", "x": 4, "y": 8, "facing": "Up" }
+    { "warp": 9, "map": "VeilstoneCityNortheastHouse", "x": 4, "y": 8, "facing": "Up" },
+    // The gate houses to Route 215 and to Route 214, on the original's plans (plan 01 · M11, part d)
+    { "warp": 0, "map": "Route215GateToVeilstoneCity", "x": 10, "y": 7, "facing": "Left" },
+    { "warp": 1, "map": "Route215GateToVeilstoneCity", "x": 10, "y": 7, "facing": "Left" },
+    { "warp": 11, "map": "Route214GateToVeilstoneCity", "x": 5, "y": 3, "facing": "Down" },
+    { "warp": 12, "map": "Route214GateToVeilstoneCity", "x": 5, "y": 3, "facing": "Down" },
+    // The Department Store, floor by floor on the original's plans (plan 01 · M11, part d)
+    { "warp": 3, "map": "VeilstoneStore1F", "x": 10, "y": 12, "facing": "Up" }
   ],
-  // Gate houses are passed through; their rooms come with plan 01 · M11
-  "through": [
-    { "warp": 0, "to": "route_215", "toWarp": 0 },
-    { "warp": 1, "to": "route_215", "toWarp": 1 },
-    { "warp": 11, "to": "route_214", "toWarp": 0 },
-    { "warp": 12, "to": "route_214", "toWarp": 1 }
-  ],
-  // The Department Store has no rooms yet (plan 01 · M11, part d)
-  "locked": [ 3 ],
   // Plan 02 · S8 (scripts/veilstone_city.txt): the warehouse's guards pushing the player back until Maylene's Badge
   // (trigger 0), and Crasher Wake coming out of the Gym (trigger 1)
   "triggers": [ { "trigger": 0, "script": "GruntsBlock" }, { "trigger": 1, "script": "CrasherWake" } ],

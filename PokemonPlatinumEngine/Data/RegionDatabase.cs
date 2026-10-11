@@ -230,6 +230,35 @@ public static class RegionDatabase
                 // Plan 06 · R18c: the Battle Hall's lobby, passage and stage, and the Battle Castle's lobby, valet's room and throne room
                 "BattleHall", "BattleHallCorridor", "BattleHallStage",
                 "BattleCastle", "BattleCastleCorridor", "BattleCastleBattleRoom",
+                // Plan 01 · M11, part d: the gate houses, on the original's plans
+                "Route218GateToJubilifeCity", "Route218GateToCanalaveCity", "Route208GateToHearthomeCity", "Route215GateToVeilstoneCity",
+                "Route213GateToPastoriaCity", "Route222GateToSunyshoreCity", "Route228GateToRoute226",
+                "Route212GateToHearthomeCity", "Route225GateToFightArea", "Route214GateToVeilstoneCity",
+                "Route206CyclingRoadNorthGate", "Route206CyclingRoadSouthGate",
+                "HearthomeCityWestGateToAmitySquare", "HearthomeCityEastGateToAmitySquare", "BattleFrontierGateToFightArea",
+                // Plan 01 · M11, part d: the tutors' and the two move men's houses
+                "Route210GrandmaWilmaHouse", "Route212House", "PastoriaCityEastHouse", "CanalaveCityEastHouse",
+                "SnowpointCityEastHouse", "SurvivalAreaNorthHouse", "Route228NorthHouse",
+                // Plan 01 · M11, part d: Veilstone's Department Store and its lift
+                "VeilstoneStore1F", "VeilstoneStore2F", "VeilstoneStore3F", "VeilstoneStore4F", "VeilstoneStore5F", "VeilstoneStoreB1F",
+                "VeilstoneStoreElevator",
+                // Plan 01 · M11, part d: the Global Terminal's three floors
+                "GlobalTerminal1F", "GlobalTerminal2F", "GlobalTerminal3F",
+                // Plan 01 · M11, part d: the viewing gallery over Pal Park's lobby
+                "PalParkGallery",
+                // Plan 01 · M11, part d: the floor above and the floor below each Pokémon Center, on the original's plans
+                "CanalavePokemonCenter2F", "CanalavePokemonCenterB1F", "CelesticPokemonCenter2F",
+                "CelesticPokemonCenterB1F", "EternaPokemonCenter2F", "EternaPokemonCenterB1F", "FightAreaPokemonCenter2F",
+                "FightAreaPokemonCenterB1F", "FloaromaPokemonCenter2F", "FloaromaPokemonCenterB1F",
+                "HearthomePokemonCenter2F", "HearthomePokemonCenterB1F", "JubilifePokemonCenter2F",
+                "JubilifePokemonCenterB1F", "OreburghPokemonCenter2F", "OreburghPokemonCenterB1F",
+                "PastoriaPokemonCenter2F", "PastoriaPokemonCenterB1F", "PokemonCenter2F", "PokemonCenterB1F",
+                "PokemonLeagueNorthPokemonCenter2F", "PokemonLeagueNorthPokemonCenterB1F",
+                "PokemonLeagueSouthPokemonCenter2F", "PokemonLeagueSouthPokemonCenterB1F", "ResortAreaPokemonCenter2F",
+                "ResortAreaPokemonCenterB1F", "SnowpointPokemonCenter2F", "SnowpointPokemonCenterB1F",
+                "SolaceonPokemonCenter2F", "SolaceonPokemonCenterB1F", "SunyshorePokemonCenter2F",
+                "SunyshorePokemonCenterB1F", "SurvivalAreaPokemonCenter2F", "SurvivalAreaPokemonCenterB1F",
+                "VeilstonePokemonCenter2F", "VeilstonePokemonCenterB1F",
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

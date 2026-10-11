@@ -1,0 +1,318 @@
+{
+  "name": "VeilstoneStore4F",
+  "displayName": "Veilstone Dept. Store",
+  "bgmTrack": "common/pokemart",
+  "interior": "PokeMart",
+  "trees": "Round",
+  "width": 22,
+  "height": 14,
+  "ground": [
+    "######################",
+    "######################",
+    "######################",
+    "#____________________#",
+    "#________##__________#",
+    "#________##__________#",
+    "#________##__________#",
+    "#______######________#",
+    "#____________________#",
+    "#______######________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "######################"
+  ],
+  "solid": [
+    "######################",
+    "######################",
+    "###############.######",
+    "##..##...........#..##",
+    "##..#....##......#..##",
+    "##..#....##......#..##",
+    "##..#....##......#..##",
+    "##..#..######....#..##",
+    "#...#...####.....#...#",
+    "#####..######....#####",
+    "#........##..........#",
+    "##..................##",
+    "##..................##",
+    "######################"
+  ],
+  "behaviours": [
+    { "x": 4, "y": 4, "width": 1, "depth": 5, "behaviour": "Counter" },
+    { "x": 17, "y": 4, "width": 1, "depth": 5, "behaviour": "Counter" },
+    { "x": 1, "y": 9, "width": 4, "depth": 1, "behaviour": "Counter" },
+    { "x": 17, "y": 9, "width": 4, "depth": 1, "behaviour": "Counter" },
+    { "x": 15, "y": 2, "width": 1, "depth": 1, "behaviour": "Door" }
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 5,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 17,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 1,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 20,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 20,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 1,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 1,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 20,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 20,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 6,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SideStairsDown",
+      "x": 8,
+      "y": 8,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "SideStairsUp",
+      "x": 10,
+      "y": 8,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 13,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 10,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 20,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 4,
+      "y": 4,
+      "width": 1,
+      "depth": 5
+    },
+    {
+      "type": "Counter",
+      "x": 17,
+      "y": 4,
+      "width": 1,
+      "depth": 5
+    },
+    {
+      "type": "StoreShelf",
+      "x": 1,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 20,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 1,
+      "y": 9,
+      "width": 4,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 17,
+      "y": 9,
+      "width": 4,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 7,
+      "sourceY": 8,
+      "targetMap": "VeilstoneStore3F",
+      "targetX": 13,
+      "targetY": 8,
+      "targetFacing": "Right"
+    },
+    {
+      "sourceX": 12,
+      "sourceY": 8,
+      "targetMap": "VeilstoneStore5F",
+      "targetX": 6,
+      "targetY": 8,
+      "targetFacing": "Left"
+    },
+    {
+      "sourceX": 15,
+      "sourceY": 2,
+      "targetMap": "VeilstoneStoreElevator",
+      "targetX": 3,
+      "targetY": 6,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 13,
+      "y": 2,
+      "text": "B1F: Food and Produce. 1F: Trainers' Zone. 2F: Battle Collection. 3F: TM Corner. 4F: Poké Dolls and Goods. 5F: Rooftop Plaza."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "ninja_boy",
+      "name": "Ninja Boy",
+      "npcType": "Youngster",
+      "x": 15,
+      "y": 10,
+      "facing": "Left",
+      "dialog": [
+        "Meet a wild Pokémon, and you chuck a Quick Ball straight off!",
+        "And if catching it drags on and on, that's the time for a Timer Ball!"
+      ],
+      "movement": "wander_around",
+      "rangeZ": 2
+    },
+    {
+      "id": "pokefan_f",
+      "name": "Woman",
+      "npcType": "Lady",
+      "x": 16,
+      "y": 11,
+      "facing": "Up",
+      "dialog": [
+        "That boy over there has no Pokémon of his own.",
+        "He says he's training his imagination!"
+      ]
+    },
+    {
+      "id": "receptionist",
+      "name": "Attendant",
+      "npcType": "Clerk",
+      "x": 18,
+      "y": 5,
+      "facing": "Left",
+      "script": "Attendant"
+    },
+    {
+      "id": "cashier_f",
+      "name": "Clerk",
+      "npcType": "Clerk",
+      "x": 3,
+      "y": 5,
+      "facing": "Right",
+      "script": "Goods"
+    },
+    {
+      "id": "cashier_m",
+      "name": "Clerk",
+      "npcType": "Clerk",
+      "x": 2,
+      "y": 8,
+      "facing": "Down",
+      "script": "Dolls"
+    },
+    {
+      "id": "school_kid_m",
+      "name": "School Kid",
+      "npcType": "Youngster",
+      "x": 6,
+      "y": 11,
+      "facing": "Down",
+      "dialog": [
+        "If only there were two of everything, I could challenge my papa!"
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

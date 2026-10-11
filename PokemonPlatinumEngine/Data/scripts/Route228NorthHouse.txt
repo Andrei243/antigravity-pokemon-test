@@ -1,0 +1,55 @@
+# The house of the ultimate moves on Route 228 (plan 01 · M11, part d), on the original's plan. docs/scripts.md
+# describes the language; the lines are our own, on the original's beats (scripts_route_228_north_house.s).
+#
+# The old man teaches Blast Burn, Hydro Cannon or Frenzy Plant to one of the twelve starters of Kanto to Sinnoh fully
+# grown, as his poster lists them, if it trusts its Trainer fully (friendship 255) and doesn't know the move
+# (Models/MoveTutors.cs; `tutor special ultimate`, docs/scripts.md), for nothing.
+# FLAG_TALKED_TO_ROUTE_228_NORTH_HOUSE_EXPERT_M: his first words are said.
+
+
+# Route228NorthHouse_ExpertM
+script Master
+  if flag FLAG_TALKED_TO_ROUTE_228_NORTH_HOUSE_EXPERT_M goto Again
+  setflag FLAG_TALKED_TO_ROUTE_228_NORTH_HOUSE_EXPERT_M
+  say "Your hunger for power has brought you all the way out here..." "...Very well." "Such devotion deserves moves that will take your breath away."
+label Again
+  ask "The ultimate moves! Shall I teach one to a Pokémon of yours?"
+  if no goto Fine
+  say "To which Pokémon shall I teach a move?"
+  choosepokemon
+  tutor special ultimate
+  if result == 1 goto Fine
+  if result == 2 goto Egg
+  if result == 3 goto CantLearn
+  if result == 4 goto Knows
+  if result == 5 goto NotClose
+  ask "I am to teach {thing} to your {wearer}?"
+  if no goto Fine
+  tutor learn
+  if result == 0 goto GaveUp
+  if result == 2 goto Hm
+  if result == 3 say "One, two, and... poof! {wearer} forgot {forgotten}. And..."
+  fanfare levelup
+  say "{wearer} learned {thing}!"
+  end
+label Fine
+  say "Hmm... Well, that is your affair. Come and see me if you have a change of heart."
+  end
+label Egg
+  say "Teach a move to an Egg? Not even I can do that! Keh!"
+  end
+label CantLearn
+  say "That Pokémon can't learn one of my moves! Read the poster! Keh!"
+  end
+label Knows
+  say "That Pokémon already knows the move I would teach it! Keh!"
+  end
+label NotClose
+  say "You and that Pokémon are not close enough yet! Keh!"
+  end
+label GaveUp
+  say "{wearer} did not learn {thing}."
+  goto Fine
+label Hm
+  say "{forgotten} isn't a move that can be given up like that. {wearer} did not learn {thing}."
+  goto Fine

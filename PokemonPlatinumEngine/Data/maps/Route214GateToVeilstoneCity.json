@@ -1,0 +1,140 @@
+{
+  "name": "Route214GateToVeilstoneCity",
+  "displayName": "Route 214",
+  "bgmTrack": "sinnoh/route210",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 14,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "####___####",
+    "###_____###",
+    "####___####",
+    "###_____###",
+    "####___####",
+    "###_____###",
+    "#_________#",
+    "#_________#",
+    "#####D#####"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "#####.#####",
+    "#.........#",
+    "#.........#",
+    "####...####",
+    "####...####",
+    "####...####",
+    "####...####",
+    "####...####",
+    "####...####",
+    "#.........#",
+    "#.........#",
+    "#####.#####"
+  ],
+  "props": [
+    {
+      "type": "Painting",
+      "x": 8,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 3,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 7,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 3,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 7,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 3,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 7,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 5,
+      "sourceY": 2,
+      "targetMap": "Sinnoh",
+      "targetX": 718,
+      "targetY": 637,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 5,
+      "sourceY": 13,
+      "targetMap": "Sinnoh",
+      "targetX": 718,
+      "targetY": 646,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 8,
+      "y": 2,
+      "text": "A map of Sinnoh. Veilstone City lies north of here, and Route 214 runs south toward Valor Lakefront."
+    },
+    {
+      "x": 9,
+      "y": 2,
+      "text": "A map of Sinnoh. Veilstone City lies north of here, and Route 214 runs south toward Valor Lakefront."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "middle_aged_man",
+      "name": "Man",
+      "npcType": "Gentleman",
+      "x": 6,
+      "y": 8,
+      "facing": "Up",
+      "dialog": [
+        "You mean to take Route 214? You are serious, aren't you?",
+        "It's churned to pieces, and there is nothing down there to see.",
+        "Well, nothing but that Ruin Maniac. He's digging his way through solid rock, all on his own!"
+      ],
+      "movement": "wander_around",
+      "rangeZ": 3
+    }
+  ],
+  "wildEncounters": []
+}

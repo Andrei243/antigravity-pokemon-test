@@ -140,6 +140,7 @@ public partial class GameEngine
     {
         // A warp takes the player off the Cycling Road (FieldSystem_InitFlagsWarp)
         story.Unset(BicycleRules.OnCyclingRoadFlag);
+        story.Unset(BicycleRules.ForcedInGateFlag);
         ChangePlace();
         // Another map ends the Poké Radar's chain (RadarChain_Clear), and the roamers note where the player is (plan 06 · R13)
         EndRadarChain();
@@ -404,7 +405,7 @@ public partial class GameEngine
         }
         if (item.FieldUse == "Bicycle")
         {
-            var check = BicycleRules.Check(currentMap, x, y, player.Mode, story.Has(BicycleRules.OnCyclingRoadFlag));
+            var check = BicycleRules.Check(currentMap, x, y, player.Mode, story.Has(BicycleRules.OnCyclingRoadFlag) || story.Has(BicycleRules.ForcedInGateFlag));
             if (check != BicycleCheck.Ok)
             {
                 ShowNotification(BicycleRules.Why(check));
@@ -1130,5 +1131,9 @@ public partial class GameEngine
         public void GiveNationalDex() => game.playerPokedex.UnlockNational();
 
         public int LeagueVictories => game.hallOfFame.Total;
+
+        // ---- the Cycling Road's gates (plan 01 · M11, part d)
+
+        public bool Cycling => game.player.Mode == TravelMode.Cycling;
     }
 }

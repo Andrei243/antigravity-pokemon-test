@@ -1839,12 +1839,6 @@ public static class WorldMapBuilder
             {
                 warp = new Warp { TargetMap = door.Map, TargetX = door.X, TargetY = door.Y, TargetFacing = door.Facing, OpenedBy = door.OpenedBy };
             }
-            else if (overlay?.Through?.FirstOrDefault(t => t.Warp == i) is { } through)
-            {
-                // A gate house passed through: out of its far side, at the warp there that leads into it
-                warp = Join(world, through.To, through.ToWarp);
-                if (warp != null) warp.CyclistsOnly = through.Bicycle;
-            }
             else
             {
                 warp = Join(world, from.To, from.ToWarp);

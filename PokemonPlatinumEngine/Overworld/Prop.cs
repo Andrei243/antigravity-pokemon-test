@@ -206,6 +206,11 @@ public enum PropType
     /// decorations like a flower stand: the room's own tiles say that it blocks.
     /// </summary>
     BookPile,
+    /// <summary>
+    /// A vending machine (plan 01 · M11, part d: the roof of Veilstone's Department Store), read from the tile before
+    /// it. Past the decorations: the room's own tiles say that it blocks.
+    /// </summary>
+    VendingMachine,
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>

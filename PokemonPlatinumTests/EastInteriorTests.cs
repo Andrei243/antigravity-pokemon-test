@@ -109,27 +109,20 @@ public class EastInteriorTests
     [Fact]
     public void WhatIsStillShutInTheseAreasIsSomeoneElses()
     {
-        // Veilstone's Department Store, the Move Relearner's house in Pastoria, the Move Deleter's in Canalave and the
-        // two tutors' on Routes 210 and 212 are part d's; Canalave's Harbor Inn waits for the night Darkrai calls
-        // (plan 02 · S15b); the Iron Ruins are the story's; Lake Valor's two are warps the original leaves on its
-        // shore that no way leads to
-        Assert.Equal(new[] { 3 }, Sinnoh.Overlay("veilstone_city")!.Locked);
-        Assert.Equal(new[] { 4 }, Sinnoh.Overlay("pastoria_city")!.Locked);
-        Assert.Equal(new[] { 5, 9 }, Sinnoh.Overlay("canalave_city")!.Locked);
-        Assert.Equal(new[] { 0 }, Sinnoh.Overlay("route_210_north")!.Locked);
-        Assert.Equal(new[] { 0 }, Sinnoh.Overlay("route_212_south")!.Locked);
+        // Part d built Veilstone's Department Store, the Move Relearner's house in Pastoria, the Move Deleter's in
+        // Canalave and the two tutors' on Routes 210 and 212 (FinalInteriorTests). Canalave's Harbor Inn waits for the
+        // night Darkrai calls (plan 02 · S15b); the Iron Ruins are the story's; Lake Valor's two are warps the original
+        // leaves on its shore that no way leads to
+        Assert.Equal(new[] { 5 }, Sinnoh.Overlay("canalave_city")!.Locked);
+        foreach (string area in new[] { "veilstone_city", "pastoria_city", "route_210_north", "route_212_south" })
+            Assert.True(Sinnoh.Overlay(area)!.Locked is not { Count: > 0 }, $"{area} still has a door shut");
         Assert.Equal(new[] { 2, 3 }, Sinnoh.Overlay("iron_island_b3f")!.Locked);
         Assert.Equal(new[] { 0, 2 }, Sinnoh.Overlay("lake_valor")!.Locked);
         foreach (string area in new[] { "route_210_south", "valor_lakefront", "route_213", "route_212_north", "route_221", "iron_island", "great_marsh_6", "trophy_garden" })
             Assert.True(Sinnoh.Overlay(area)!.Locked is not { Count: > 0 }, $"{area} still has a door shut");
         // The rooms left shut are not built by this part either
-        foreach (string left in new[] { "PastoriaCityEastHouse", "CanalaveCityEastHouse", "CanalaveCityHarborInn", "Route210GrandmaWilmaHouse", "Route212House" })
+        foreach (string left in new[] { "CanalaveCityHarborInn" })
             Assert.False(File.Exists(GameDataFiles.PathOf(Path.Combine(MapDatabase.Folder, left + ".json"))), left);
-        // The gate houses are walked through until part d, as before
-        Assert.Equal(new[] { 0, 1, 11, 12 }, Sinnoh.Overlay("veilstone_city")!.Through!.Select(t => t.Warp).Order());
-        Assert.Equal(new[] { 10, 11 }, Sinnoh.Overlay("pastoria_city")!.Through!.Select(t => t.Warp).Order());
-        Assert.Equal(new[] { 0, 1 }, Sinnoh.Overlay("route_213")!.Through!.Select(t => t.Warp).Order());
-        Assert.Equal(new[] { 0, 1 }, Sinnoh.Overlay("route_212_north")!.Through!.Select(t => t.Warp).Order());
     }
 
     [Fact]

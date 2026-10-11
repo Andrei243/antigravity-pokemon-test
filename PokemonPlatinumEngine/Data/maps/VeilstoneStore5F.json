@@ -1,0 +1,295 @@
+{
+  "name": "VeilstoneStore5F",
+  "displayName": "Veilstone Dept. Store",
+  "bgmTrack": "common/pokemart",
+  "interior": "PokeMart",
+  "trees": "Round",
+  "width": 22,
+  "height": 14,
+  "ground": [
+    "######################",
+    "######################",
+    "######################",
+    "#____________________#",
+    "#________##__________#",
+    "#________##__________#",
+    "#________##__________#",
+    "#______####__________#",
+    "#_________#__________#",
+    "#______####__________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "######################"
+  ],
+  "solid": [
+    "######################",
+    "######################",
+    "###############.######",
+    "##...##.............##",
+    "#........##..........#",
+    "#........##.....##...#",
+    "#........##..........#",
+    "#.##...####..........#",
+    "#.......###..........#",
+    "#......####..........#",
+    "#....................#",
+    "##..............##..##",
+    "##..................##",
+    "######################"
+  ],
+  "behaviours": [
+    { "x": 15, "y": 2, "width": 1, "depth": 1, "behaviour": "Door" }
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "VendingMachine",
+      "x": 5,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "VendingMachine",
+      "x": 6,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 20,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 16,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 17,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 16,
+      "y": 5,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 2,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 3,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 16,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 17,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 2,
+      "y": 7,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 2,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 3,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 6,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SideStairsDown",
+      "x": 8,
+      "y": 8,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 16,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 17,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 16,
+      "y": 11,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 16,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 17,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 20,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 7,
+      "sourceY": 8,
+      "targetMap": "VeilstoneStore4F",
+      "targetX": 13,
+      "targetY": 8,
+      "targetFacing": "Right"
+    },
+    {
+      "sourceX": 15,
+      "sourceY": 2,
+      "targetMap": "VeilstoneStoreElevator",
+      "targetX": 3,
+      "targetY": 6,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 5,
+      "y": 3,
+      "text": "A vending machine.",
+      "script": "VendingMachine"
+    },
+    {
+      "x": 6,
+      "y": 3,
+      "text": "A vending machine.",
+      "script": "VendingMachine"
+    },
+    {
+      "x": 13,
+      "y": 2,
+      "text": "B1F: Food and Produce. 1F: Trainers' Zone. 2F: Battle Collection. 3F: TM Corner. 4F: Poké Dolls and Goods. 5F: Rooftop Plaza."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "bug_catcher",
+      "name": "Bug Catcher",
+      "npcType": "Youngster",
+      "x": 3,
+      "y": 6,
+      "facing": "Down",
+      "dialog": [
+        "That's enough shopping for one day.",
+        "I'm going to grab a drink and put my feet up."
+      ]
+    },
+    {
+      "id": "middle_aged_woman",
+      "name": "Woman",
+      "npcType": "Lady",
+      "x": 14,
+      "y": 8,
+      "facing": "Up",
+      "dialog": [
+        "I've shopped here faithfully for years and years.",
+        "They call me a regular now! Ha!"
+      ],
+      "movement": "wander_around",
+      "rangeX": 1,
+      "rangeZ": 2
+    },
+    {
+      "id": "collector_1",
+      "name": "Collector",
+      "npcType": "Gentleman",
+      "x": 10,
+      "y": 11,
+      "facing": "Right",
+      "script": "Collector"
+    },
+    {
+      "id": "collector_2",
+      "name": "Collector",
+      "npcType": "Gentleman",
+      "x": 9,
+      "y": 11,
+      "facing": "Right",
+      "dialog": [
+        "Two strapping fellows, standing side by side. That's all.",
+        "What? Is there a problem?"
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

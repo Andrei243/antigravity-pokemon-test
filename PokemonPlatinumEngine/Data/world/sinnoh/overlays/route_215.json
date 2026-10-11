@@ -2,10 +2,10 @@
   "area": "route_215",
   "bgmTrack": "sinnoh/route210",
   "trees": "Round",
-  // Gate houses are passed through; their rooms come with plan 01 · M11
-  "through": [
-    { "warp": 0, "to": "veilstone_city", "toWarp": 0 },
-    { "warp": 1, "to": "veilstone_city", "toWarp": 1 }
+  // The gate house to Veilstone City, on the original's plan (plan 01 · M11, part d)
+  "doors": [
+    { "warp": 0, "map": "Route215GateToVeilstoneCity", "x": 1, "y": 7, "facing": "Right" },
+    { "warp": 1, "map": "Route215GateToVeilstoneCity", "x": 1, "y": 7, "facing": "Right" }
   ],
   // Joggers Scott and Craig battle in the morning and only jog past at other times: the route's arrival script swaps
   // each of them for his double on the same tile by their FLAG_HIDE_ROUTE_215_JOGGER_* flags (plan 06 · R14a)

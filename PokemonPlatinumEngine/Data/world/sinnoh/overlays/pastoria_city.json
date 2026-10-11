@@ -15,15 +15,13 @@
     { "warp": 5, "map": "PastoriaCityNortheastHouse", "x": 4, "y": 8, "facing": "Up" },
     { "warp": 6, "map": "PastoriaCitySouthwestHouse", "x": 4, "y": 8, "facing": "Up" },
     { "warp": 7, "map": "PastoriaCityObservatoryGate1F", "x": 5, "y": 11, "facing": "Up" },
-    { "warp": 8, "map": "PastoriaCityObservatoryGate1F", "x": 5, "y": 11, "facing": "Up" }
+    { "warp": 8, "map": "PastoriaCityObservatoryGate1F", "x": 5, "y": 11, "facing": "Up" },
+    // The gate house to Route 213, on the original's plan (plan 01 · M11, part d)
+    { "warp": 10, "map": "Route213GateToPastoriaCity", "x": 1, "y": 7, "facing": "Right" },
+    { "warp": 11, "map": "Route213GateToPastoriaCity", "x": 1, "y": 7, "facing": "Right" },
+    // The east house, the Move Relearner's, on the original's plan (plan 01 · M11, part d)
+    { "warp": 4, "map": "PastoriaCityEastHouse", "x": 4, "y": 8, "facing": "Up" }
   ],
-  // The gate to Route 213 is passed through; its room comes with plan 01 · M11, part d
-  "through": [
-    { "warp": 10, "to": "route_213", "toWarp": 0 },
-    { "warp": 11, "to": "route_213", "toWarp": 1 }
-  ],
-  // The east house is the Move Relearner's: its room comes with the tutors' (plan 01 · M11, part d)
-  "locked": [ 4 ],
   // Plan 02 · S8 (scripts/pastoria_city.txt): the rival keeping the Great Marsh's door after the bomb (trigger 0), his
   // battle at the Gym's door (trigger 1), and the bomb going off as the player comes up to the observatory (trigger 2)
   "triggers": [ { "trigger": 0, "script": "BlockGreatMarsh" }, { "trigger": 1, "script": "RivalBattle" }, { "trigger": 2, "script": "Bomb" } ],

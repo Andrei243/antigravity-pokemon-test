@@ -1,0 +1,210 @@
+{
+  "name": "PokemonLeagueSouthPokemonCenter2F",
+  "displayName": "Pokémon Center",
+  "bgmTrack": "common/pokecenter",
+  "interior": "PokemonCenter",
+  "trees": "Round",
+  "width": 17,
+  "height": 14,
+  "ground": [
+    "#################",
+    "#################",
+    "#################",
+    "##______________#",
+    "##______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "###_____________#",
+    "#_______________#",
+    "###_____________#",
+    "##______________#",
+    "#################"
+  ],
+  "solid": [
+    "#################",
+    "#################",
+    "#################",
+    "##.............##",
+    "##..............#",
+    "#################",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "###.............#",
+    "##..............#",
+    "###..#.......#..#",
+    "##...#.......#.##",
+    "#################"
+  ],
+  "behaviours": [
+    { "x": 2, "y": 5, "width": 6, "depth": 1, "behaviour": "Counter" },
+    { "x": 9, "y": 5, "width": 4, "depth": 1, "behaviour": "Counter" },
+    { "x": 14, "y": 5, "width": 2, "depth": 1, "behaviour": "Counter" }
+  ],
+  "props": [
+    {
+      "type": "Computer",
+      "x": 1,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SideStairsDownWest",
+      "x": 1,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 3,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 5,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 6,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 7,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 8,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 10,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 11,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 12,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 13,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 2,
+      "y": 5,
+      "width": 6,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 9,
+      "y": 5,
+      "width": 4,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 14,
+      "y": 5,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 8,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 13,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 2,
+      "sourceY": 10,
+      "targetMap": "PokemonLeagueSouthPokemonCenter",
+      "targetX": 3,
+      "targetY": 6,
+      "targetFacing": "Right"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "teala_west",
+      "name": "Attendant",
+      "npcType": "Nurse",
+      "x": 7,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "This is the desk of the Union Room, where Trainers from all over meet to chat, to trade and to battle.",
+        "I'm sorry to say its door is shut for now. The wireless link it runs on has gone quiet all over Sinnoh."
+      ]
+    },
+    {
+      "id": "teala_middle",
+      "name": "Attendant",
+      "npcType": "Nurse",
+      "x": 12,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "This is the desk of the Colosseum, where friends bring their teams to battle one another.",
+        "It is closed for the time being, I'm afraid. The wireless link is down."
+      ]
+    },
+    {
+      "id": "teala_east",
+      "name": "Attendant",
+      "npcType": "Nurse",
+      "x": 3,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "At this desk Trainers mix their records and sign one another's Trainer Cards.",
+        "With the link down there is nobody to mix them with. Do ask again another day!"
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

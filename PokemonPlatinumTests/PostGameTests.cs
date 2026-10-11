@@ -323,16 +323,17 @@ public class PostGameTests
     {
         var map = Overworld;
         var grounds = BuiltMaps.Value["BattleFrontier"];
-        // The gate house between the Fight Area and the grounds has no room yet: one walks through it, both ways
+        // The gate house between the Fight Area and the grounds is a room since plan 01 · M11, part d: through it, both
+        // ways, each of a door's two tiles to the one tile the original's warp names
         foreach (int i in new[] { 0, 1 })
         {
-            var into = map.GetWarpAt(654 + i, 423)!;
-            Assert.Equal(("BattleFrontier", 48 + i, 51, Direction.Up), (into.TargetMap, into.TargetX, into.TargetY, into.TargetFacing));
+            var into = GateWalk.FarDoor(map.GetWarpAt(654 + i, 423)!);
+            Assert.Equal(("BattleFrontier", 48, 51, Direction.Up), (into.TargetMap, into.TargetX, into.TargetY, into.TargetFacing));
             Assert.True(grounds.IsWalkable(into.TargetX, into.TargetY));
-            var back = grounds.GetWarpAt(48 + i, 52)!;
-            Assert.Equal(("Sinnoh", 654 + i, 424, Direction.Down), (back.TargetMap, back.TargetX, back.TargetY, back.TargetFacing));
-            // The ground before the gate is open, and the two who stand on it until the tag battle is won (Flint and
-            // Volkner, plan 02 · S15, part a: nobody goes in before then, as in the original) go by that battle's flag
+            var back = GateWalk.FarDoor(grounds.GetWarpAt(48 + i, 52)!);
+            Assert.Equal(("Sinnoh", 654, 424, Direction.Down), (back.TargetMap, back.TargetX, back.TargetY, back.TargetFacing));
+            // The ground before the gate is open, and whoever stands on it until the tag battle is won (Flint and
+            // Volkner, plan 02 · S15, part a: nobody goes in before then, as in the original) goes by that battle's flag
             Assert.False(map.IsSolid(back.TargetX, back.TargetY));
             Assert.All(map.Everyone.Where(n => (n.GridX, n.GridY) == (back.TargetX, back.TargetY)),
                 n => Assert.Equal("FLAG_HIDE_FIGHT_AREA_BATTLERS_AND_SPECTATORS", n.HiddenBy));

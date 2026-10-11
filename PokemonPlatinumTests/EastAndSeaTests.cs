@@ -136,7 +136,8 @@ public class EastAndSeaTests
     public void AGateHouseOfTheEastAndTheSeaIsWalkedThrough(string from, string to)
     {
         var map = Overworld;
-        var ways = map.Warps.Where(w => w.TargetMap == "Sinnoh" && AreaKey(map, w.SourceX, w.SourceY) == from && AreaKey(map, w.TargetX, w.TargetY) == to).ToList();
+        // (a gate house is a room since plan 01 · M11, part d: these are the doors in its far wall)
+        var ways = GateWalk.Through(map, from, to);
         Assert.NotEmpty(ways);
         Assert.All(ways, w =>
         {
@@ -162,7 +163,7 @@ public class EastAndSeaTests
             var inside = MapDatabase.Get(room);
             Assert.Equal(room, inside.Name);
             Assert.True(inside.IsWalkable(door.TargetX, door.TargetY));
-            var exit = Assert.Single(inside.Warps);
+            var exit = Assert.Single(inside.Warps, w => w.TargetMap == "Sinnoh");
             Assert.Equal(("Sinnoh", door.SourceX, door.SourceY + 1), (exit.TargetMap, exit.TargetX, exit.TargetY));
             Assert.Equal(RegionDatabase.Sinnoh, RegionDatabase.RegionOfMap(room)!.Id);
             Assert.Contains(inside.NPCs, n => room.EndsWith("Mart") ? n.IsPokeMartClerk : n.IsHealingNurse);

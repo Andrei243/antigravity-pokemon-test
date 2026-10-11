@@ -1,0 +1,38 @@
+# Veilstone's Department Store, ground floor (plan 01 · M11, part d), on the original's plan. docs/scripts.md
+# describes the language; the lines are our own, on the original's beats (scripts_veilstone_store_1f.s).
+#
+# Two clerks sell over its west counter (marts.json's veilstone_1f_right and veilstone_1f_left: the medicines, and the
+# balls, repels and mail). The socialite gives the mask of a starter the player didn't meet, once
+# (FLAG_RECEIVED_VEILSTONE_STORE_1F_ACCESSORY_STARTER_MASK): Piplup's to whoever chose Turtwig, Turtwig's to whoever
+# chose Chimchar, Chimchar's to whoever chose Piplup.
+
+
+script OnEnter
+  setvar VAR_VEILSTONE_STORE_LIFT_FLOOR 2
+  call VeilstoneStoreElevator.Stands
+  end
+
+
+# VeilstoneStore1F_Socialite
+script Socialite
+  if flag FLAG_RECEIVED_VEILSTONE_STORE_1F_ACCESSORY_STARTER_MASK goto Given
+  say "I made an Accessory after the Pokémon of a Trainer I met once." "Would you like one? Here!"
+  if starter "Turtwig" goto Piplup
+  if starter "Chimchar" goto Turtwig
+  giveaccessory "Chimchar Mask"
+  goto After
+label Piplup
+  giveaccessory "Piplup Mask"
+  goto After
+label Turtwig
+  giveaccessory "Turtwig Mask"
+label After
+  if result == 0 goto Full
+  setflag FLAG_RECEIVED_VEILSTONE_STORE_1F_ACCESSORY_STARTER_MASK
+  end
+label Full
+  say "Oh, your Fashion Case has no room for it. Do come back when it has!"
+  end
+label Given
+  say "Put that mask on a Pokémon, and it will cut quite a different figure in a Contest."
+  end

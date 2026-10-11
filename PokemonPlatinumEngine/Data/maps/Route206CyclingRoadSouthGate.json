@@ -1,0 +1,229 @@
+{
+  "name": "Route206CyclingRoadSouthGate",
+  "displayName": "Route 206",
+  "bgmTrack": "sinnoh/route206",
+  "interior": "House",
+  "trees": "Round",
+  "bike": true,
+  "width": 15,
+  "height": 14,
+  "ground": [
+    "###############",
+    "###############",
+    "###############",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "######DDD######"
+  ],
+  "solid": [
+    "###############",
+    "###############",
+    "######...######",
+    "##..#.....#..##",
+    "#...#.....#...#",
+    "#...#.....#...#",
+    "##..#.....#..##",
+    "#...#.....#...#",
+    "#...#.....#...#",
+    "##..#.....#..##",
+    "#...#.....#...#",
+    "#...#.....#...#",
+    "##..#.....#..##",
+    "######...######"
+  ],
+  "behaviours": [
+    { "x": 4, "y": 3, "width": 1, "depth": 10, "behaviour": "Counter" },
+    { "x": 10, "y": 3, "width": 1, "depth": 10, "behaviour": "Counter" }
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 13,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 13,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 13,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 13,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 4,
+      "y": 3,
+      "width": 1,
+      "depth": 10
+    },
+    {
+      "type": "Counter",
+      "x": 10,
+      "y": 3,
+      "width": 1,
+      "depth": 10
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 6,
+      "sourceY": 2,
+      "targetMap": "Sinnoh",
+      "targetX": 301,
+      "targetY": 680,
+      "targetFacing": "Up",
+      "cyclistsOnly": true
+    },
+    {
+      "sourceX": 6,
+      "sourceY": 13,
+      "targetMap": "Sinnoh",
+      "targetX": 302,
+      "targetY": 689,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 7,
+      "sourceY": 2,
+      "targetMap": "Sinnoh",
+      "targetX": 302,
+      "targetY": 680,
+      "targetFacing": "Up",
+      "cyclistsOnly": true
+    },
+    {
+      "sourceX": 8,
+      "sourceY": 2,
+      "targetMap": "Sinnoh",
+      "targetX": 304,
+      "targetY": 680,
+      "targetFacing": "Up",
+      "cyclistsOnly": true
+    },
+    {
+      "sourceX": 7,
+      "sourceY": 13,
+      "targetMap": "Sinnoh",
+      "targetX": 302,
+      "targetY": 689,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 8,
+      "sourceY": 13,
+      "targetMap": "Sinnoh",
+      "targetX": 303,
+      "targetY": 689,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "cashier_m_west",
+      "name": "Gate Keeper",
+      "npcType": "Clerk",
+      "x": 3,
+      "y": 7,
+      "facing": "Right",
+      "dialog": [
+        "Learn to change gears, and there's nowhere a Bicycle won't take you.",
+        "Uphill, though, even third gear is hard going. Take a run at it!"
+      ]
+    },
+    {
+      "id": "cashier_m_east",
+      "name": "Gate Keeper",
+      "npcType": "Clerk",
+      "x": 11,
+      "y": 7,
+      "facing": "Left",
+      "dialog": [
+        "Learn to change gears, and there's nowhere a Bicycle won't take you.",
+        "Uphill, though, even third gear is hard going. Take a run at it!"
+      ]
+    },
+    {
+      "id": "battle_girl",
+      "name": "Battle Girl",
+      "npcType": "Lass",
+      "x": 9,
+      "y": 9,
+      "facing": "Left",
+      "script": "BattleGirl",
+      "movement": "look_north_south_and_west"
+    }
+  ],
+  "triggers": [
+    {
+      "x": 5,
+      "y": 6,
+      "width": 5,
+      "depth": 1,
+      "script": "OnlyBicycles",
+      "variable": "VAR_MAP_LOCAL_0x02",
+      "value": 0
+    },
+    {
+      "x": 5,
+      "y": 8,
+      "width": 5,
+      "depth": 1,
+      "script": "OffTheRoad",
+      "variable": "VAR_MAP_LOCAL_0x02",
+      "value": 1
+    }
+  ],
+  "wildEncounters": []
+}

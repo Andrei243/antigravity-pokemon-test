@@ -1,0 +1,22 @@
+# Veilstone's Department Store, third floor (plan 01 · M11, part d), on the original's plan. docs/scripts.md describes
+# the language; the lines are our own, on the original's beats (scripts_veilstone_store_3f.s).
+#
+# Two clerks sell Technical Machines (marts.json's veilstone_3f_up and veilstone_3f_down). The attendant recommends
+# the first of her four, as on the floor below (VeilstoneStore2F.txt).
+
+
+script OnEnter
+  setvar VAR_VEILSTONE_STORE_LIFT_FLOOR 4
+  call VeilstoneStoreElevator.Stands
+  end
+
+
+# VeilstoneStore3F_Attendant
+script Attendant
+  choose "Hello. May I help you with anything?" "WHAT'S GOOD?" "NOTHING, THANKS"
+  if result == 0 goto FalseSwipe
+  say "Please enjoy your visit."
+  end
+label FalseSwipe
+  say "False Swipe makes a wild Pokémon easier to catch." "A good many customers have told me so in confidence lately."
+  end

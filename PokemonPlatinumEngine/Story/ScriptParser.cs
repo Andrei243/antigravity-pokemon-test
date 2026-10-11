@@ -22,6 +22,8 @@ public static class ScriptParser
     /// <summary>Variables a script may read but not write: the game keeps them.</summary>
     public static readonly string[] BuiltInVariables = { "RESULT", "PLAYER_X", "PLAYER_Y", "MONEY", "PARTY_COUNT", "BADGE_COUNT", "GREETINGS", "SEEN", "LEAD_FRIENDSHIP", "TURNS", "SAFARI_CAUGHT", "LEAGUE_VICTORIES" };
 
+    public static readonly string[] BuiltInVariables = { "RESULT", "PLAYER_X", "PLAYER_Y", "MONEY", "PARTY_COUNT", "BADGE_COUNT", "GREETINGS", "SEEN", "LEAD_FRIENDSHIP", "TURNS", "SAFARI_CAUGHT", "CYCLING" };
+
     private static readonly Regex Identifier = new("^[A-Za-z_][A-Za-z0-9_]*$", RegexOptions.Compiled);
     private static readonly Regex FlagName = new("^(FLAG_[A-Z0-9_]+|[A-Z][A-Za-z]+HallOfFame)$", RegexOptions.Compiled);
     // The original's own local variables keep its spelling (VAR_MAP_LOCAL_0x01), which its coordinate events name too
@@ -632,6 +634,18 @@ public static class ScriptParser
                 return new Instruction { Op = Op.Save, Line = line };
             case "credits":
                 return new Instruction { Op = Op.Credits, Line = line };
+            // The move tutors and the Move Deleter (plan 01 · M11, part d)
+            case "tutor":
+            {
+                string what = r.OneOf("moves", "afford", "pay", "special", "dragons", "learn", "forget", "delete");
+                string which = what switch
+                {
+                    "moves" => r.Text("the place of a shard tutor"),
+                    "special" => r.OneOf("dracometeor", "ultimate"),
+                    _ => ""
+                };
+                return new Instruction { Op = Op.Tutor, Line = line, Name = what, Other = which };
+            }
 
             // After the Hall of Fame (plan 02 · S15): the Pokédex becomes the National one (SetNationalDexEnabled)
             case "nationaldex":

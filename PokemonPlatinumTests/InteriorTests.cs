@@ -97,9 +97,9 @@ public class InteriorTests
     [Fact]
     public void WhatIsStillShutInTheseAreasIsSomeoneElses()
     {
-        // Jubilife City's Global Terminal (part d) and the two doors of houses the original never used; the room of the
+        // The two doors of Jubilife City that are of houses the original never used (its Global Terminal is part d.s, built); the room of the
         // Solaceon Ruins the Ruin Maniac's tunnel leads to (the story's). Oreburgh's Mining Museum is open since plan 06 · R16b
-        Assert.Equal(new[] { 1, 10, 11 }, Sinnoh.Overlay("jubilife_city")!.Locked);
+        Assert.Equal(new[] { 10, 11 }, Sinnoh.Overlay("jubilife_city")!.Locked);
         Assert.Equal(new[] { 7 }, Sinnoh.Overlay("solaceon_town")!.Locked);
         foreach (string area in new[] { "twinleaf_town", "sandgem_town", "oreburgh_city", "floaroma_town", "floaroma_meadow", "route_205_south", "eterna_city", "eterna_forest", "route_208", "hearthome_city" })
             Assert.True(Sinnoh.Overlay(area)!.Locked is not { Count: > 0 }, $"{area} still has a door shut");

@@ -1,0 +1,283 @@
+{
+  "name": "BattleFrontierGateToFightArea",
+  "displayName": "Battle Frontier",
+  "bgmTrack": "sinnoh/veilstone",
+  "interior": "House",
+  "trees": "Round",
+  "width": 15,
+  "height": 22,
+  "ground": [
+    "###############",
+    "###############",
+    "###############",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "####_______####",
+    "#VV#_______#VV#",
+    "#VV#_______#VV#",
+    "#VV#_______#VV#",
+    "#VV###___###VV#",
+    "#VV#_______#VV#",
+    "#VV#_______#VV#",
+    "#VV#_______#VV#",
+    "#VV#_______#VV#",
+    "#VV#_______#VV#",
+    "#VV###___###VV#",
+    "#VV#_______#VV#",
+    "#VV#_______#VV#",
+    "######DDD######"
+  ],
+  "solid": [
+    "###############",
+    "###############",
+    "######...######",
+    "#.#.........#.#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "####.......####",
+    "####.#...#.####",
+    "####.......####",
+    "####.......####",
+    "#######.#######",
+    "####..#.#..####",
+    "#####.#.#.#####",
+    "#####.#.#.#####",
+    "####..#.#.#####",
+    "####..#.#..####",
+    "#######.#######",
+    "####.......####",
+    "####.......####",
+    "######...######"
+  ],
+  "behaviours": [
+    { "x": 6, "y": 12, "width": 1, "depth": 7, "behaviour": "Counter" },
+    { "x": 8, "y": 12, "width": 1, "depth": 7, "behaviour": "Counter" }
+  ],
+  "props": [
+    {
+      "type": "Column",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Column",
+      "x": 12,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Column",
+      "x": 5,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Column",
+      "x": 9,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 4,
+      "y": 14,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Computer",
+      "x": 10,
+      "y": 14,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "TrashCan",
+      "x": 10,
+      "y": 16,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 6,
+      "y": 12,
+      "width": 1,
+      "depth": 7
+    },
+    {
+      "type": "Counter",
+      "x": 8,
+      "y": 12,
+      "width": 1,
+      "depth": 7
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 7,
+      "sourceY": 2,
+      "targetMap": "BattleFrontier",
+      "targetX": 48,
+      "targetY": 51,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 6,
+      "sourceY": 2,
+      "targetMap": "BattleFrontier",
+      "targetX": 48,
+      "targetY": 51,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 8,
+      "sourceY": 2,
+      "targetMap": "BattleFrontier",
+      "targetX": 48,
+      "targetY": 51,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 7,
+      "sourceY": 21,
+      "targetMap": "Sinnoh",
+      "targetX": 654,
+      "targetY": 424,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 6,
+      "sourceY": 21,
+      "targetMap": "Sinnoh",
+      "targetX": 654,
+      "targetY": 424,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 8,
+      "sourceY": 21,
+      "targetMap": "Sinnoh",
+      "targetX": 654,
+      "targetY": 424,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "pokemon_breeder_m",
+      "name": "Breeder",
+      "npcType": "Gentleman",
+      "x": 4,
+      "y": 6,
+      "facing": "Up",
+      "dialog": [
+        "A place where Trainers do nothing but battle, hall after hall of it. I could move in!"
+      ],
+      "movement": "wander_around",
+      "rangeX": 2
+    },
+    {
+      "id": "expert_m",
+      "name": "Expert",
+      "npcType": "Gentleman",
+      "x": 11,
+      "y": 6,
+      "facing": "Left",
+      "dialog": [
+        "The mightiest Trainers of every land gather here. It makes these old bones feel young again."
+      ],
+      "movement": "wander_around",
+      "rangeX": 2
+    },
+    {
+      "id": "ruin_maniac",
+      "name": "Ruin Maniac",
+      "npcType": "Gentleman",
+      "x": 3,
+      "y": 4,
+      "facing": "Left",
+      "dialog": [
+        "Five facilities, and every one with rules of its own. Where's a fellow meant to start?"
+      ],
+      "movement": "look_south_and_west"
+    },
+    {
+      "id": "attendant_battle_castle",
+      "name": "Attendant",
+      "npcType": "Clerk",
+      "x": 5,
+      "y": 13,
+      "facing": "Right",
+      "script": "Castle"
+    },
+    {
+      "id": "attendant_battle_factory",
+      "name": "Attendant",
+      "npcType": "Clerk",
+      "x": 5,
+      "y": 15,
+      "facing": "Right",
+      "script": "Factory"
+    },
+    {
+      "id": "attendant_general",
+      "name": "Attendant",
+      "npcType": "Clerk",
+      "x": 5,
+      "y": 17,
+      "facing": "Right",
+      "script": "General"
+    },
+    {
+      "id": "attendant_battle_arcade",
+      "name": "Attendant",
+      "npcType": "Clerk",
+      "x": 9,
+      "y": 13,
+      "facing": "Left",
+      "script": "Arcade"
+    },
+    {
+      "id": "attendant_battle_hall",
+      "name": "Attendant",
+      "npcType": "Clerk",
+      "x": 9,
+      "y": 15,
+      "facing": "Left",
+      "script": "Hall"
+    },
+    {
+      "id": "attendant_battle_tower",
+      "name": "Attendant",
+      "npcType": "Clerk",
+      "x": 9,
+      "y": 17,
+      "facing": "Left",
+      "script": "Tower"
+    },
+    {
+      "id": "beauty",
+      "name": "Beauty",
+      "npcType": "Lady",
+      "x": 11,
+      "y": 3,
+      "facing": "Left",
+      "dialog": [
+        "The Frontier Brains! Just saying it gives me goose bumps. I'll meet one yet, you'll see."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

@@ -80,6 +80,8 @@ public enum Op
     NationalDex,
     // The Battle Hall and the Battle Castle (plan 06 · R18c)
     Hall, Castle,
+    // The move tutors and the Move Deleter (plan 01 · M11, part d)
+    Tutor,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

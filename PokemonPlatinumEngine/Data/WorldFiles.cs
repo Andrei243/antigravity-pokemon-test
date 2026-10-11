@@ -633,13 +633,6 @@ public sealed class WorldOverlayFile
     public List<OverlayExit>? Exits { get; set; }
 
     /// <summary>
-    /// Warps into a building that is only passed through (a gate house), by number, each with the warp of the
-    /// area it comes out at on the far side: one is put down there as if the building's rooms had been walked.
-    /// Its rooms come with plan 01 · M11.
-    /// </summary>
-    public List<OverlayPassage>? Through { get; set; }
-
-    /// <summary>
     /// Which of the original's people and things appear, by their id in the area file, and who they are here.
     /// Anyone not listed stays away until the story brings them.
     /// </summary>
@@ -712,21 +705,6 @@ public sealed class OverlaySwitch
     public int Warp { get; set; }
     public string? Until { get; set; }
     public string? From { get; set; }
-}
-
-/// <summary>A warp into a gate house, and the warp of the area on its far side one comes out at.</summary>
-[JsonConverter(typeof(OneLine<OverlayPassage>))]
-public sealed class OverlayPassage
-{
-    public int Warp { get; set; }
-    public string To { get; set; } = "";
-    public int ToWarp { get; set; }
-
-    /// <summary>
-    /// A gate onto the Cycling Road (plan 02 · S2): only a rider goes through it, as the original's gate keepers
-    /// say, and comes out on the road unable to get off until the next warp (<c>FLAG_ON_CYCLING_ROAD</c>).
-    /// </summary>
-    public bool Bicycle { get; set; }
 }
 
 /// <summary>

@@ -1,0 +1,52 @@
+# The shard tutor's house on Route 212 (plan 01 · M11, part d), on the original's plan. docs/scripts.md describes the
+# language; the lines are our own, on the original's beats (scripts_route_212_house.s).
+#
+# The hiker teaches a Pokémon one of thirteen moves for Shards, most of them blue (Models/MoveTutors.cs, the
+# original's move tutor table for TUTOR_LOCATION_ROUTE_212; `tutor`, docs/scripts.md): the Pokémon is chosen, then the
+# move from those it can learn and doesn't know, each with its price; a Pokémon that knows four moves gives one up.
+# An HM's move can't be given up for it, as with a TM. The Shards are paid once the move is learned.
+
+
+# Route212House_OnTransition
+script OnEnter
+  setflag FLAG_FIRST_ARRIVAL_ROUTE_212_MOVE_TUTOR
+  end
+
+
+# Route212House_Hiker
+script Tutor
+  ask "Share a few of your Shards with me, and I can teach your Pokémon some moves. Shall I teach one?"
+  if no goto Bye
+  say "Which Pokémon am I to teach?"
+  choosepokemon
+  tutor moves "route_212"
+  if result == 3 goto Egg
+  if result == 2 goto Nothing
+  if result != 1 goto Bye
+  tutor afford
+  if result == 0 goto Poor
+  tutor learn
+  if result == 0 goto GaveUp
+  if result == 2 goto Hm
+  if result == 3 say "One, two, and... poof! {wearer} forgot {forgotten}. And..."
+  tutor pay
+  fanfare levelup
+  say "{wearer} learned {thing}!"
+label Bye
+  say "See you, then!"
+  end
+label Egg
+  say "Teach a move to an Egg? That's more than I can manage!"
+  end
+label Nothing
+  say "There's no move of mine that this Pokémon can be taught."
+  end
+label Poor
+  say "You haven't the Shards for that one."
+  end
+label GaveUp
+  say "{wearer} did not learn {thing}."
+  goto Bye
+label Hm
+  say "{forgotten} isn't a move that can be given up like that. {wearer} did not learn {thing}."
+  goto Bye

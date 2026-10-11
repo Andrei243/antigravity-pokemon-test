@@ -4,15 +4,13 @@
   "bgmTrack": "sinnoh/route206",
   "trees": "Round",
   "architecture": "Resort",
-  // The gate house to Route 228 is passed through; its room comes with plan 01 · M11, part d
-  "through": [
-    { "warp": 1, "to": "route_228", "toWarp": 1 },
-    { "warp": 2, "to": "route_228", "toWarp": 0 }
-  ],
   // The Meister's house on the islet, on the original's plan (plan 01 · M11, part c): he trades away his Magikarp
   // for a Finneon (one of plan 06 · R12's trades)
   "doors": [
-    { "warp": 0, "map": "Route226House", "x": 4, "y": 8, "facing": "Up" }
+    { "warp": 0, "map": "Route226House", "x": 4, "y": 8, "facing": "Up" },
+    // The gate house to Route 228, on the original's plan (plan 01 · M11, part d)
+    { "warp": 1, "map": "Route228GateToRoute226", "x": 1, "y": 7, "facing": "Right" },
+    { "warp": 2, "map": "Route228GateToRoute226", "x": 1, "y": 7, "facing": "Right" }
   ],
   "people": {
     "swimmer_lydia": {

@@ -15,7 +15,8 @@
 # Pokétch, says he will be in Eterna City for a while (FLAG_HIDE_ETERNA_CITY_SOUTH_HOUSE_PROF_OAK cleared) and goes;
 # and the record to beat is the rival's 2,000 points from then on (VAR_CATCHING_SHOW_RECORD).
 #
-# Not here: the viewing gallery upstairs with its four spectators (the room is flat, and the stairs are roped off).
+# The viewing gallery upstairs with its four spectators is a map of its own, PalParkGallery (plan 01 · M11, part d),
+# come to by the escalator.
 
 
 script OnEnter

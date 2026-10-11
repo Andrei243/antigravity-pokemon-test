@@ -182,25 +182,17 @@
       "targetX": 24,
       "targetY": 47,
       "targetFacing": "Up"
-    }
-  ],
-  "signboards": [
-    {
-      "x": 11,
-      "y": 13,
-      "text": "The stairs up to the viewing gallery. A rope across them says: closed today."
     },
     {
-      "x": 12,
-      "y": 13,
-      "text": "The stairs up to the viewing gallery. A rope across them says: closed today."
-    },
-    {
-      "x": 13,
-      "y": 13,
-      "text": "The stairs up to the viewing gallery. A rope across them says: closed today."
+      "sourceX": 10,
+      "sourceY": 13,
+      "targetMap": "PalParkGallery",
+      "targetX": 14,
+      "targetY": 13,
+      "targetFacing": "Right"
     }
   ],
+  "signboards": [],
   "npcs": [
     {
       "id": "worker",

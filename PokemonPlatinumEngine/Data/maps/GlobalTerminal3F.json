@@ -1,0 +1,344 @@
+{
+  "name": "GlobalTerminal3F",
+  "displayName": "Global Terminal",
+  "bgmTrack": "sinnoh/jubilife",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 20,
+  "height": 19,
+  "ground": [
+    "####################",
+    "####################",
+    "####################",
+    "#####__________#####",
+    "#####__________#####",
+    "###______________###",
+    "###______________###",
+    "###______________###",
+    "##________________##",
+    "#__________________#",
+    "#___________###____#",
+    "#___________###____#",
+    "#___________###____#",
+    "###______________###",
+    "###_____#________###",
+    "###_____#________###",
+    "#####__________#####",
+    "#####__________#####",
+    "####################"
+  ],
+  "solid": [
+    "####################",
+    "####################",
+    "####################",
+    "#####..##......#####",
+    "#####..........#####",
+    "###....##........###",
+    "###....##........###",
+    "###..............###",
+    "##................##",
+    "#....####..........#",
+    "#....####...###....#",
+    "#....####...###....#",
+    "#....####...###....#",
+    "###..............###",
+    "###.....#........###",
+    "###.....#........###",
+    "#####..........#####",
+    "#####..........#####",
+    "####################"
+  ],
+  "behaviours": [
+    { "x": 13, "y": 4, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 13, "y": 14, "width": 1, "depth": 1, "behaviour": "WarpPanel" }
+  ],
+  "props": [
+    {
+      "type": "Painting",
+      "x": 12,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 13,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 6,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 9,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 7,
+      "y": 5,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Cushion",
+      "x": 6,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 9,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 18,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 18,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 18,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 13,
+      "y": 14,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 15,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 6,
+      "y": 15,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 7,
+      "y": 15,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 9,
+      "y": 15,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 5,
+      "y": 9,
+      "width": 4,
+      "depth": 4
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 13,
+      "sourceY": 4,
+      "targetMap": "GlobalTerminal1F",
+      "targetX": 20,
+      "targetY": 4,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 13,
+      "sourceY": 14,
+      "targetMap": "GlobalTerminal2F",
+      "targetX": 16,
+      "targetY": 15,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 12,
+      "y": 2,
+      "text": "The panel leads to the GTS and the Trainer Rankings on 1F."
+    },
+    {
+      "x": 12,
+      "y": 12,
+      "text": "The panel leads to the studios for Box Data and Dress-Up Data on 2F."
+    },
+    {
+      "x": 8,
+      "y": 10,
+      "text": "A machine for Battle Videos. NO SIGNAL, says its screen."
+    },
+    {
+      "x": 8,
+      "y": 11,
+      "text": "A machine for Battle Videos. NO SIGNAL, says its screen."
+    },
+    {
+      "x": 5,
+      "y": 11,
+      "text": "A machine for Battle Videos. NO SIGNAL, says its screen."
+    },
+    {
+      "x": 5,
+      "y": 10,
+      "text": "A machine for Battle Videos. NO SIGNAL, says its screen."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "gentleman",
+      "name": "Gentleman",
+      "npcType": "gentleman",
+      "x": 8,
+      "y": 16,
+      "facing": "Right",
+      "dialog": [
+        "To treat oneself to a Battle Video or two every day...",
+        "I should call that a pastime worthy of a true gentleman."
+      ],
+      "movement": "wander_around",
+      "rangeX": 2
+    },
+    {
+      "id": "hiker",
+      "name": "Hiker",
+      "npcType": "Gentleman",
+      "x": 18,
+      "y": 10,
+      "facing": "Left",
+      "dialog": [
+        "The Hiker enjoying the Box Data down on 2F? That's my little brother."
+      ]
+    },
+    {
+      "id": "guitarist",
+      "name": "Guitarist",
+      "npcType": "Youngster",
+      "x": 15,
+      "y": 10,
+      "facing": "Left",
+      "dialog": [
+        "Let me try the alphabet rap on Jubilife, dig?",
+        "J... Just south of here sits Sandgem by the sea. U... Under Oreburgh, a mine goes deep as deep can be.",
+        "B... Beyond the gate the road runs east. I... In the north, Floaroma's flowers are a feast. L... I've lost the beat. Sorry!"
+      ],
+      "movement": "wander_around",
+      "rangeZ": 2
+    },
+    {
+      "id": "school_kid_f",
+      "name": "School Kid",
+      "npcType": "Lass",
+      "x": 6,
+      "y": 6,
+      "facing": "Up",
+      "dialog": [
+        "It's such a good idea. Anybody at all can join in.",
+        "Even a battle you lost might turn out to be somebody's favourite Battle Video."
+      ],
+      "movement": "look_north_and_west"
+    },
+    {
+      "id": "camper",
+      "name": "Camper",
+      "npcType": "Youngster",
+      "x": 4,
+      "y": 11,
+      "facing": "Right",
+      "dialog": [
+        "What a collection! I can see why everyone comes here.",
+        "I feel tougher just for having watched a few of these."
+      ]
+    },
+    {
+      "id": "youngster",
+      "name": "Youngster",
+      "npcType": "youngster",
+      "x": 6,
+      "y": 5,
+      "facing": "Down",
+      "dialog": [
+        "What you see here is how much people all over the world love Pokémon.",
+        "Watch their Battle Videos, and you share in the fun they had."
+      ],
+      "movement": "look_south_and_west"
+    },
+    {
+      "id": "pokefan_m",
+      "name": "Man",
+      "npcType": "Gentleman",
+      "x": 4,
+      "y": 10,
+      "facing": "Right",
+      "dialog": [
+        "My favourite Battle Videos are the ones with a sweet little Clefairy in them. Only those."
+      ]
+    },
+    {
+      "id": "clown",
+      "name": "Clown",
+      "npcType": "clown",
+      "x": 11,
+      "y": 10,
+      "facing": "Left",
+      "dialog": [
+        "My favourite Battle Video! My favourite Battle Video!",
+        "What's on it? What's on it? It's a secret! It's a secret! And I mean it!"
+      ],
+      "movement": "wander_around",
+      "rangeZ": 1
+    },
+    {
+      "id": "ace_trainer_m",
+      "name": "Ace Trainer",
+      "npcType": "Youngster",
+      "x": 9,
+      "y": 6,
+      "facing": "Left",
+      "dialog": [
+        "This Battle Video is something else!",
+        "One Pokémon left, a hair from being wiped out, and they turned the whole thing round!"
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

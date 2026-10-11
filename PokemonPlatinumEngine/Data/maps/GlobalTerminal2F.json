@@ -1,0 +1,307 @@
+{
+  "name": "GlobalTerminal2F",
+  "displayName": "Global Terminal",
+  "bgmTrack": "sinnoh/jubilife",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 23,
+  "height": 20,
+  "ground": [
+    "#######################",
+    "#######################",
+    "#######################",
+    "########_______########",
+    "####______________#####",
+    "###_________________###",
+    "###_________________###",
+    "###_________________###",
+    "#___________________###",
+    "#_____####____________#",
+    "#______________###____#",
+    "#______________###____#",
+    "#______________###____#",
+    "#______________###____#",
+    "###_________________###",
+    "###_________________###",
+    "###_________________###",
+    "###_________________###",
+    "########_______########",
+    "#######################"
+  ],
+  "solid": [
+    "#######################",
+    "#######################",
+    "#######################",
+    "########..###..########",
+    "####..............#####",
+    "###.................###",
+    "###...####..........###",
+    "###...####..........###",
+    "#.....####..........###",
+    "##.#..####............#",
+    "##.#...........###....#",
+    "##.#...........###....#",
+    "##.#..####.....###....#",
+    "#.....####.....###....#",
+    "###...####..........###",
+    "###...####..........###",
+    "###.................###",
+    "###.................###",
+    "########.......########",
+    "#######################"
+  ],
+  "behaviours": [
+    { "x": 16, "y": 5, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 16, "y": 15, "width": 1, "depth": 1, "behaviour": "WarpPanel" }
+  ],
+  "props": [
+    {
+      "type": "Computer",
+      "x": 11,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 16,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 21,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 21,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 1,
+      "y": 10,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "Bench",
+      "x": 3,
+      "y": 10,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "WarpPanel",
+      "x": 16,
+      "y": 15,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 6,
+      "y": 6,
+      "width": 4,
+      "depth": 3
+    },
+    {
+      "type": "LabMachine",
+      "x": 6,
+      "y": 12,
+      "width": 4,
+      "depth": 4
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 16,
+      "sourceY": 5,
+      "targetMap": "GlobalTerminal1F",
+      "targetX": 16,
+      "targetY": 4,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 16,
+      "sourceY": 15,
+      "targetMap": "GlobalTerminal3F",
+      "targetX": 13,
+      "targetY": 14,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 15,
+      "y": 3,
+      "text": "The panel leads to the GTS and the Trainer Rankings on 1F."
+    },
+    {
+      "x": 15,
+      "y": 13,
+      "text": "The panel leads to the Battle Video Gallery on 3F."
+    },
+    {
+      "x": 6,
+      "y": 7,
+      "text": "A machine for Dress-Up Data. NO SIGNAL, says its screen."
+    },
+    {
+      "x": 6,
+      "y": 8,
+      "text": "A machine for Dress-Up Data. NO SIGNAL, says its screen."
+    },
+    {
+      "x": 9,
+      "y": 14,
+      "text": "A machine for Box Data. NO SIGNAL, says its screen."
+    },
+    {
+      "x": 9,
+      "y": 13,
+      "text": "A machine for Box Data. NO SIGNAL, says its screen."
+    },
+    {
+      "x": 6,
+      "y": 13,
+      "text": "A machine for Box Data. NO SIGNAL, says its screen."
+    },
+    {
+      "x": 6,
+      "y": 14,
+      "text": "A machine for Box Data. NO SIGNAL, says its screen."
+    },
+    {
+      "x": 9,
+      "y": 8,
+      "text": "A machine for Dress-Up Data. NO SIGNAL, says its screen."
+    },
+    {
+      "x": 9,
+      "y": 7,
+      "text": "A machine for Dress-Up Data. NO SIGNAL, says its screen."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "battle_girl",
+      "name": "Battle Girl",
+      "npcType": "Lass",
+      "x": 10,
+      "y": 6,
+      "facing": "Left",
+      "dialog": [
+        "Did you know? About my PC Box, I mean. It is full of Pokémon everybody longs for, such as...",
+        "...No. It would sound like boasting. If you must know, you'll have to find out for yourself."
+      ]
+    },
+    {
+      "id": "twin",
+      "name": "Twin",
+      "npcType": "Lass",
+      "x": 11,
+      "y": 17,
+      "facing": "Down",
+      "dialog": [
+        "Do you know what I like doing?",
+        "Sneaking a look at the people who come to look at Dress-Up Data."
+      ]
+    },
+    {
+      "id": "pokefan_f",
+      "name": "Woman",
+      "npcType": "Lady",
+      "x": 13,
+      "y": 10,
+      "facing": "Left",
+      "dialog": [
+        "That Pokémon, with those Accessories...",
+        "It was so perfectly wonderful that I feel as if I'd been struck by lightning!"
+      ],
+      "movement": "look_around"
+    },
+    {
+      "id": "beauty",
+      "name": "Beauty",
+      "npcType": "Lady",
+      "x": 4,
+      "y": 15,
+      "facing": "Right",
+      "dialog": [
+        "The very same Accessory can make quite different impressions.",
+        "It all depends on where it is put, and how."
+      ],
+      "movement": "look_around"
+    },
+    {
+      "id": "lass",
+      "name": "Lass",
+      "npcType": "lass",
+      "x": 13,
+      "y": 15,
+      "facing": "Left",
+      "dialog": [
+        "A nice lady downstairs gave me a Backdrop once. For nothing!"
+      ]
+    },
+    {
+      "id": "expert_f",
+      "name": "Old Lady",
+      "npcType": "Lady",
+      "x": 10,
+      "y": 14,
+      "facing": "Left",
+      "dialog": [
+        "Oh, dear me! Gracious! Why, it's very nearly scandalous!"
+      ]
+    },
+    {
+      "id": "hiker",
+      "name": "Hiker",
+      "npcType": "Gentleman",
+      "x": 5,
+      "y": 8,
+      "facing": "Right",
+      "dialog": [
+        "Peeking into other people's PC Boxes gives me a guilty sort of thrill.",
+        "It's a pleasure I'd rather nobody knew about. ...Never mind that standing here rather gives me away."
+      ]
+    },
+    {
+      "id": "idol",
+      "name": "Idol",
+      "npcType": "Lass",
+      "x": 20,
+      "y": 11,
+      "facing": "Right",
+      "dialog": [
+        "I come every day to see what everybody's Dress-Up Data looks like.",
+        "For me, it's the first step to being fashionable!"
+      ],
+      "movement": "wander_around",
+      "rangeX": 2
+    },
+    {
+      "id": "artist",
+      "name": "Artist",
+      "npcType": "Gentleman",
+      "x": 7,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "It's an outrage! Why are there only pictures of Pokémon?",
+        "Why none of the ladies? I call that unfair!"
+      ],
+      "movement": "look_around",
+      "rangeX": 2
+    }
+  ],
+  "wildEncounters": []
+}

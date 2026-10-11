@@ -1,0 +1,32 @@
+# The Move Deleter's house in Canalave City (plan 01 · M11, part d), on the original's plan. docs/scripts.md describes
+# the language; the lines are our own, on the original's beats (scripts_canalave_city_east_house.s).
+#
+# He makes a Pokémon forget a move for good, an HM's too, which nothing else can (Models/MoveTutors.cs;
+# `tutor forget` and `tutor delete`, docs/scripts.md): never an Egg's, and never a Pokémon's last.
+
+
+# CanalaveCityEastHouse_MoveDeleter
+script Deleter
+  say "Um... Who did you say I was, again?" "... ..." "Ah, yes, it comes back to me now! I'm the Move Deleter!"
+  ask "You've come to have me make a Pokémon of yours forget a move?"
+  if no goto Remember
+  say "Which Pokémon is to forget one?"
+  choosepokemon
+  tutor forget
+  if result == 3 goto Egg
+  if result == 2 goto OnlyOne
+  if result != 1 goto Remember
+  ask "Hm! {thing}, is it? That is the move to be forgotten?"
+  if no goto Remember
+  tutor delete
+  say "It worked a treat!" "{wearer} has forgotten {thing} completely."
+  end
+label Remember
+  say "Remember me, if ever there's a move that wants forgetting."
+  end
+label Egg
+  say "What? That's an Egg. An Egg oughtn't to know any moves at all!"
+  end
+label OnlyOne
+  say "That Pokémon knows only the one move. It can't very well forget that..."
+  end

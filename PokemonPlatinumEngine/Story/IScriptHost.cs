@@ -416,4 +416,10 @@ public interface IScriptHost
     /// field until the script ends.
     /// </summary>
     Models.Frontier.BattleCastleChallenge? Castle { get; set; }
+
+    /// <summary>
+    /// Whether the player is riding the Bicycle (the built-in variable <c>CYCLING</c>; the original's
+    /// <c>CheckPlayerOnBike</c>, which the Cycling Road's gate keepers ask: plan 01 · M11, part d).
+    /// </summary>
+    bool Cycling { get; }
 }

@@ -2,21 +2,21 @@
   "area": "route_206",
   "bgmTrack": "sinnoh/route206",
   "trees": "Pine",
-  // Gate houses are passed through; their rooms come with plan 01 · M11. Northward through the south gate, as
-  // southward through the north gate, is onto the Cycling Road: riders only (plan 02 · S2)
-  "through": [
-    { "warp": 4, "to": "eterna_city", "toWarp": 8 },
-    { "warp": 5, "to": "eterna_city", "toWarp": 9 },
-    { "warp": 6, "to": "route_206", "toWarp": 10 },
-    { "warp": 7, "to": "route_206", "toWarp": 10 },
-    { "warp": 2, "to": "route_206", "toWarp": 0 },
-    { "warp": 3, "to": "route_206", "toWarp": 1 },
-    { "warp": 8, "to": "route_206", "toWarp": 11 },
-    { "warp": 9, "to": "route_206", "toWarp": 11 },
-    { "warp": 0, "to": "route_206", "toWarp": 2, "bicycle": true },
-    { "warp": 1, "to": "route_206", "toWarp": 3, "bicycle": true },
-    { "warp": 10, "to": "route_206", "toWarp": 7, "bicycle": true },
-    { "warp": 11, "to": "route_206", "toWarp": 8, "bicycle": true }
+  // The Cycling Road's two gates, on the original's plans (plan 01 · M11, part d): the rule that only riders go onto
+  // the road is their rooms' own, a row of each room's lane and its door to the road
+  "doors": [
+    { "warp": 0, "map": "Route206CyclingRoadSouthGate", "x": 7, "y": 12, "facing": "Up" },
+    { "warp": 1, "map": "Route206CyclingRoadSouthGate", "x": 7, "y": 12, "facing": "Up" },
+    { "warp": 2, "map": "Route206CyclingRoadSouthGate", "x": 7, "y": 3, "facing": "Down" },
+    { "warp": 3, "map": "Route206CyclingRoadSouthGate", "x": 7, "y": 3, "facing": "Down" },
+    { "warp": 4, "map": "Route206CyclingRoadNorthGate", "x": 7, "y": 12, "facing": "Up" },
+    { "warp": 5, "map": "Route206CyclingRoadNorthGate", "x": 7, "y": 12, "facing": "Up" },
+    { "warp": 6, "map": "Route206CyclingRoadSouthGate", "x": 6, "y": 3, "facing": "Down" },
+    { "warp": 7, "map": "Route206CyclingRoadSouthGate", "x": 7, "y": 3, "facing": "Down" },
+    { "warp": 8, "map": "Route206CyclingRoadSouthGate", "x": 7, "y": 3, "facing": "Down" },
+    { "warp": 9, "map": "Route206CyclingRoadSouthGate", "x": 8, "y": 3, "facing": "Down" },
+    { "warp": 10, "map": "Route206CyclingRoadSouthGate", "x": 6, "y": 12, "facing": "Up" },
+    { "warp": 11, "map": "Route206CyclingRoadSouthGate", "x": 8, "y": 12, "facing": "Up" }
   ],
   "people": {
     "hiker": {

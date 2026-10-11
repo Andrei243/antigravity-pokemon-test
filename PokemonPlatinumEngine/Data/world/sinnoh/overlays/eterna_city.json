@@ -18,12 +18,11 @@
     // Plan 01 · M11, part a: rooms on the original's plans
     { "warp": 5, "map": "EternaCitySouthHouse", "x": 4, "y": 8, "facing": "Up" },
     { "warp": 6, "map": "EternaCityEastHouse", "x": 4, "y": 8, "facing": "Up" },
-    { "warp": 7, "map": "EternaCityHerbShop", "x": 4, "y": 8, "facing": "Up" }
-  ],
-  // Gate houses are passed through; their rooms come with plan 01 · M11
-  "through": [
-    { "warp": 8, "to": "route_206", "toWarp": 4, "bicycle": true },
-    { "warp": 9, "to": "route_206", "toWarp": 5, "bicycle": true }
+    { "warp": 7, "map": "EternaCityHerbShop", "x": 4, "y": 8, "facing": "Up" },
+    // The Cycling Road's north gate, on the original's plan (plan 01 · M11, part d): its keepers turn back anyone on
+    // foot, inside
+    { "warp": 8, "map": "Route206CyclingRoadNorthGate", "x": 7, "y": 3, "facing": "Down" },
+    { "warp": 9, "map": "Route206CyclingRoadNorthGate", "x": 7, "y": 3, "facing": "Down" }
   ],
   // Plan 02 · S6 (scripts/eterna_city.txt): the rival running into the player and Cyrus at the statue (trigger 0),
   // Cynthia with HM01 before the Team Galactic building (triggers 3 and 6), and, once the Bicycle is had, the two

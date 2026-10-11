@@ -251,15 +251,12 @@
     },
     {
       "id": "expert_m",
-      "name": "Expert",
+      "name": "Name Rater",
       "npcType": "Gentleman",
       "x": 8,
       "y": 10,
       "facing": "Left",
-      "dialog": [
-        "A Pokémon raised by another Trainer brings a little of that Trainer along with it.",
-        "You can see it in how it battles. Trading is how Trainers learn from one another."
-      ]
+      "script": "NameRater"
     }
   ],
   "wildEncounters": []

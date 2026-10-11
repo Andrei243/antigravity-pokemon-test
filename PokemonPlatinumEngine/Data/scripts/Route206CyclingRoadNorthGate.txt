@@ -1,0 +1,58 @@
+# The gate between Eterna City and the Cycling Road (plan 01 · M11, part d), on the original's plan. docs/scripts.md
+# describes the language; the lines are our own, on the original's beats (scripts_route_206_cycling_road_north_gate.s).
+#
+# The Cycling Road lies south of the room. A row of the lane just past the gate keepers (the original's trigger at
+# y 8, while VAR_MAP_LOCAL_0x02 is 0) turns back anyone on foot; a rider is waved through and can't get off the
+# Bicycle from there to the road (FLAG_FORCE_BIKING_IN_GATE, which BicycleRules asks). The row before it (y 6, while
+# the variable is 1) lets a rider coming back off again. Whoever comes in from the road is riding and stays so until
+# that row (the original's OnFrame script). The door to the road is for riders only as well (the map file's
+# "cyclistsOnly"), which is what puts the player on the road.
+#
+# The professor's assistant by the door gives the Exp. Share once to whoever has seen 35 Pokémon
+# (FLAG_RECEIVED_ROUTE_206_CYCLING_ROAD_NORTH_GATE_EXP_SHARE), and is gone the next time the room is come into.
+
+
+# Route206CyclingRoadNorthGate_OnTransition and _OnFrame_TryForceBiking
+script OnEnter
+  if flag FLAG_RECEIVED_ROUTE_206_CYCLING_ROAD_NORTH_GATE_EXP_SHARE setflag FLAG_HIDE_ROUTE_206_CYCLING_ROAD_NORTH_GATE_SCIENTIST_M
+  if var PLAYER_Y >= 12 setflag FLAG_FORCE_BIKING_IN_GATE
+  end
+
+
+# Route206CyclingRoadNorthGate_CoordEvent_OnlyBicycles
+script OnlyBicycles
+  if var CYCLING == 1 goto Riding
+  emote cashier_m_west exclaim
+  speaker "Gate Keeper"
+  say "Hold on! The Cycling Road is for Bicycles and nothing else. Come back riding one!"
+  walk player up 1
+  end
+label Riding
+  setflag FLAG_FORCE_BIKING_IN_GATE
+  setvar VAR_MAP_LOCAL_0x02 1
+  end
+
+
+# Route206CyclingRoadNorthGate_CoordEvent_ClearFlagForceBikingInGate
+script OffTheRoad
+  clearflag FLAG_FORCE_BIKING_IN_GATE
+  setvar VAR_MAP_LOCAL_0x02 0
+  end
+
+
+# Route206CyclingRoadNorthGate_ScientistM
+script Assistant
+  speaker "Assistant"
+  if flag FLAG_RECEIVED_ROUTE_206_CYCLING_ROAD_NORTH_GATE_EXP_SHARE goto Given
+  say "Hello, {player}! I'm one of Professor Rowan's assistants. How is the Pokédex coming along?" "Let me see how many Pokémon you've met so far..."
+  if var SEEN < 35 goto TooFew
+  say "{var:SEEN} already! That's splendid. I have something here for a Trainer like you."
+  give "Exp. Share"
+  setflag FLAG_RECEIVED_ROUTE_206_CYCLING_ROAD_NORTH_GATE_EXP_SHARE
+  end
+label TooFew
+  say "{var:SEEN}... Hmm. Come and see me once you've met at least 35. I'll have something for you then."
+  end
+label Given
+  say "A Pokémon holding the Exp. Share gets a share of the Exp. Points from a battle, even if it never set foot in it."
+  end

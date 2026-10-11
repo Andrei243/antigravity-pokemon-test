@@ -1,0 +1,140 @@
+{
+  "name": "HearthomeCityEastGateToAmitySquare",
+  "displayName": "Hearthome City",
+  "bgmTrack": "sinnoh/hearthome",
+  "interior": "House",
+  "trees": "Round",
+  "width": 9,
+  "height": 14,
+  "ground": [
+    "#########",
+    "#########",
+    "#########",
+    "###_____#",
+    "###_____#",
+    "###_____#",
+    "###_____#",
+    "###_____#",
+    "###_____#",
+    "###_____#",
+    "###_____#",
+    "###_____#",
+    "###_____#",
+    "#####D###"
+  ],
+  "solid": [
+    "#########",
+    "#########",
+    "#####.###",
+    "###.....#",
+    "####...##",
+    "####...##",
+    "###.....#",
+    "###.....#",
+    "###.....#",
+    "####...##",
+    "####...##",
+    "###.....#",
+    "###.....#",
+    "#####.###"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 3,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 7,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 3,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 7,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 3,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 7,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 5,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 5,
+      "sourceY": 13,
+      "targetMap": "Sinnoh",
+      "targetX": 500,
+      "targetY": 684,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 5,
+      "sourceY": 2,
+      "targetMap": "AmitySquare",
+      "targetX": 52,
+      "targetY": 50,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "receptionist",
+      "name": "Receptionist",
+      "npcType": "Lass",
+      "x": 6,
+      "y": 3,
+      "facing": "Down",
+      "dialog": [
+        "This is Amity Square, where you may take a cute Pokémon out for a stroll."
+      ]
+    },
+    {
+      "id": "black_belt",
+      "name": "Black Belt",
+      "npcType": "Gentleman",
+      "x": 6,
+      "y": 7,
+      "facing": "Down",
+      "dialog": [
+        "It's an outrage! They turned my Pokémon away at the gate!",
+        "My poor Gyarados and Steelix... Not cute enough, they said. I call that prejudice!"
+      ],
+      "movement": "wander_around",
+      "rangeX": 1,
+      "rangeZ": 3
+    }
+  ],
+  "wildEncounters": []
+}

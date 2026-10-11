@@ -1,0 +1,128 @@
+# Veilstone's Department Store, the basement (plan 01 · M11, part d), on the original's plan. docs/scripts.md
+# describes the language; the lines are our own, on the original's beats (scripts_veilstone_store_b1f.s).
+#
+# Four counters. One sells five Berries (marts.json's veilstone_b1f). One sells Lava Cookies, one for 200 or ten for
+# 2,000. One sells Poffins at 6,400 each, of two flavours at 32 apiece and a smoothness of 20 (the original's
+# GivePoffin with those numbers: `poffin give`, plan 06 · R14c), to whoever has a Poffin Case with room in it; a
+# question takes six answers, so the ten kinds are asked for in two. And one has sold out of Rage Candy Bars.
+#
+# Professor Rowan stands before that last counter once the Hall of Fame has been entered (the victory clears
+# FLAG_HIDE_VEILSTONE_STORE_B1F_PROF_ROWAN until he has been spoken to: PokemonLeagueHallOfFame.txt, plan 02 · S14),
+# says his piece once (FLAG_TALKED_TO_VEILSTONE_STORE_B1F_PROF_ROWAN) and is gone the next time.
+
+
+script OnEnter
+  setvar VAR_VEILSTONE_STORE_LIFT_FLOOR 1
+  call VeilstoneStoreElevator.Stands
+  end
+
+
+# VeilstoneStoreB1F_ProfRowan
+script Rowan
+  speaker "Prof. Rowan"
+  if flag FLAG_TALKED_TO_VEILSTONE_STORE_B1F_PROF_ROWAN goto Again
+  setflag FLAG_TALKED_TO_VEILSTONE_STORE_B1F_PROF_ROWAN
+  setflag FLAG_HIDE_VEILSTONE_STORE_B1F_PROF_ROWAN
+  say "Hmm... Rage Candy Bars are altogether too popular, it would seem."
+  face self player
+label Again
+  say "Ah, {player}. It's you." "Does life go on thrilling you? It does me." "Only the other day I learned that some Pokémon evolve in certain places and nowhere else." "When I found that out, I was thrilled, I can tell you!"
+  end
+
+
+# VeilstoneStoreB1F_LavaCookieVendor
+script LavaCookies
+  choose "Hello, there. Would you care for some Lava Cookies? They are 200 each." "1" "10" "NO, THANKS"
+  if result == 0 goto One
+  if result == 1 goto Ten
+  say "Please come again."
+  end
+label One
+  takemoney 200
+  if result == 0 goto Poor
+  additem "Lava Cookie"
+  sound "select"
+  say "There you are: one Lava Cookie. Thank you."
+  end
+label Ten
+  takemoney 2000
+  if result == 0 goto Poor
+  additem "Lava Cookie" 10
+  sound "select"
+  say "There you are: ten Lava Cookies. Thank you very much."
+  end
+label Poor
+  say "I'm sorry, but you haven't enough money."
+  end
+
+
+# VeilstoneStoreB1F_PoffinVendor
+script Poffins
+  say "Hello! I sell Poffins. Mine are 6,400 each."
+  if not item "Poffin Case" goto NoCase
+  poffin room
+  if result == 0 goto Full
+  if money < 6400 goto Poor
+  choose "Which Poffin would you like?" "SPICY-DRY" "SPICY-SWEET" "SPICY-BITTER" "SPICY-SOUR" "OTHER KINDS" "NO, THANKS"
+  if result == 0 goto SpicyDry
+  if result == 1 goto SpicySweet
+  if result == 2 goto SpicyBitter
+  if result == 3 goto SpicySour
+  if result == 5 goto Bye
+  choose "Which of these, then?" "DRY-SWEET" "DRY-BITTER" "DRY-SOUR" "OTHER KINDS" "NO, THANKS"
+  if result == 0 goto DrySweet
+  if result == 1 goto DryBitter
+  if result == 2 goto DrySour
+  if result == 4 goto Bye
+  choose "One of these, perhaps?" "SWEET-BITTER" "SWEET-SOUR" "BITTER-SOUR" "NO, THANKS"
+  if result == 0 goto SweetBitter
+  if result == 1 goto SweetSour
+  if result == 2 goto BitterSour
+  goto Bye
+label SpicyDry
+  poffin give 32 32 0 0 0 20
+  goto Sold
+label SpicySweet
+  poffin give 32 0 32 0 0 20
+  goto Sold
+label SpicyBitter
+  poffin give 32 0 0 32 0 20
+  goto Sold
+label SpicySour
+  poffin give 32 0 0 0 32 20
+  goto Sold
+label DrySweet
+  poffin give 0 32 32 0 0 20
+  goto Sold
+label DryBitter
+  poffin give 0 32 0 32 0 20
+  goto Sold
+label DrySour
+  poffin give 0 32 0 0 32 20
+  goto Sold
+label SweetBitter
+  poffin give 0 0 32 32 0 20
+  goto Sold
+label SweetSour
+  poffin give 0 0 32 0 32 20
+  goto Sold
+label BitterSour
+  poffin give 0 0 0 32 32 20
+  goto Sold
+label Sold
+  takemoney 6400
+  sound "select"
+  say "Thank you very much. Do shop with us again."
+  end
+label Bye
+  say "Please come again."
+  end
+label Poor
+  say "I'm so sorry, but you haven't enough money."
+  end
+label Full
+  say "Oh... Your Poffin Case is full already."
+  end
+label NoCase
+  say "I'm so sorry. We can't sell Poffins to someone with no Poffin Case to put them in."
+  end

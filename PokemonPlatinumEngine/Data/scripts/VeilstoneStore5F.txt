@@ -1,0 +1,71 @@
+# Veilstone's Department Store, the Rooftop Plaza (plan 01 · M11, part d), on the original's plan. docs/scripts.md
+# describes the language; the lines are our own, on the original's beats (scripts_veilstone_store_5f.s).
+#
+# Two vending machines sell Fresh Water for 200, Soda Pop for 300 and Lemonade for 350, and one time in sixty-four a
+# second can drops for nothing (the original's GetRandom 64). The original goes on asking until the player stops;
+# here a can ends the talk, as every way through a script must end (StoryTests), and the machine is asked again.
+# A collector gives a Sticky Barb once (FLAG_RECEIVED_VEILSTONE_STORE_5F_STICKY_BARB).
+
+
+script OnEnter
+  setvar VAR_VEILSTONE_STORE_LIFT_FLOOR 6
+  call VeilstoneStoreElevator.Stands
+  end
+
+
+# VeilstoneStore5F_VendingMachine
+script VendingMachine
+  speaker none
+  choose "A vending machine. Which drink would you like?" "FRESH WATER  200" "SODA POP  300" "LEMONADE  350" "NONE"
+  if result == 0 goto Water
+  if result == 1 goto Soda
+  if result == 2 goto Lemonade
+  text "Decided not to buy a drink."
+  end
+label Water
+  takemoney 200
+  if result == 0 goto Poor
+  sound "bump"
+  text "Clang! A can of Fresh Water dropped down."
+  give "Fresh Water"
+  random 64
+  if result != 0 end
+  text "Bonus! Another can of Fresh Water dropped down."
+  give "Fresh Water"
+  end
+label Soda
+  takemoney 300
+  if result == 0 goto Poor
+  sound "bump"
+  text "Clang! A can of Soda Pop dropped down."
+  give "Soda Pop"
+  random 64
+  if result != 0 end
+  text "Bonus! Another can of Soda Pop dropped down."
+  give "Soda Pop"
+  end
+label Lemonade
+  takemoney 350
+  if result == 0 goto Poor
+  sound "bump"
+  text "Clang! A can of Lemonade dropped down."
+  give "Lemonade"
+  random 64
+  if result != 0 end
+  text "Bonus! Another can of Lemonade dropped down."
+  give "Lemonade"
+  end
+label Poor
+  text "Not enough money..."
+  end
+
+
+# VeilstoneStore5F_Collector1
+script Collector
+  if flag FLAG_RECEIVED_VEILSTONE_STORE_5F_STICKY_BARB goto Given
+  say "Ah, a young Pokémon Trainer..." "As one with a few more years behind him, allow me to make you a present. A Sticky Barb!"
+  give "Sticky Barb"
+  setflag FLAG_RECEIVED_VEILSTONE_STORE_5F_STICKY_BARB
+label Given
+  say "The Sticky Barb is for a Pokémon to hold. Should the holder be struck..." "...the barb sticks to its foe, and hurts it turn after turn!"
+  end

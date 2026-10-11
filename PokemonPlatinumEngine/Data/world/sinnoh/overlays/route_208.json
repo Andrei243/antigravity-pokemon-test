@@ -2,14 +2,12 @@
   "area": "route_208",
   "bgmTrack": "sinnoh/route206",
   "trees": "Pine",
-  // Gate houses are passed through; their rooms come with plan 01 · M11
-  "through": [
-    { "warp": 0, "to": "hearthome_city", "toWarp": 14 },
-    { "warp": 1, "to": "hearthome_city", "toWarp": 18 }
-  ],
   // Plan 01 · M11, part a: rooms on the original's plans
   "doors": [
-    { "warp": 2, "map": "Route208House", "x": 4, "y": 8, "facing": "Up" }
+    { "warp": 2, "map": "Route208House", "x": 4, "y": 8, "facing": "Up" },
+    // The gate house to Hearthome City, on the original's plan (plan 01 · M11, part d)
+    { "warp": 0, "map": "Route208GateToHearthomeCity", "x": 1, "y": 7, "facing": "Right" },
+    { "warp": 1, "map": "Route208GateToHearthomeCity", "x": 1, "y": 7, "facing": "Right" }
   ],
   "people": {
     // In Platinum he hands over the Odd Keystone; the gift is plan 02's (S5)

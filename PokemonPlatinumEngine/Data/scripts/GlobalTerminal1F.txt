@@ -1,0 +1,25 @@
+# The Global Terminal in Jubilife City, ground floor (plan 01 · M11, part d), on the original's plan. docs/scripts.md
+# describes the language; the lines are our own, on the original's beats (scripts_global_terminal_1f.s).
+#
+# Everything the building is for goes over the wireless link, which this game leaves out (decision 06 · 7: the GTS,
+# the rankings, the studios for Box Data and Dress-Up Data on 2F and the Battle Video Gallery on 3F): its rooms and
+# its people are here, its receptionists say that the link is down, and its machines show no signal
+# (docs/mechanics/rulings.md). The three floors are joined by warp panels, as the headquarters of Team Galactic are
+# (Overworld/WarpPanels.cs).
+#
+# The beauty guesses the player's favourite Pokémon: the first of the team, as the original's does.
+
+
+# GlobalTerminal1F_Beauty2
+script Favourite
+  if var PARTY_COUNT == 0 goto Nobody
+  ask "Your favourite is {lead}, isn't it?"
+  if no goto Really
+  say "There, I was right! I knew it!"
+  end
+label Really
+  say "...Oh? But your favourite really is {lead}, isn't it?"
+  end
+label Nobody
+  say "I want to know what kind of Pokémon everybody likes best."
+  end

@@ -1,0 +1,150 @@
+{
+  "name": "HearthomeCityWestGateToAmitySquare",
+  "displayName": "Hearthome City",
+  "bgmTrack": "sinnoh/hearthome",
+  "interior": "House",
+  "trees": "Round",
+  "width": 9,
+  "height": 14,
+  "ground": [
+    "#########",
+    "#########",
+    "#########",
+    "###_____#",
+    "###_____#",
+    "###_____#",
+    "###_____#",
+    "###_____#",
+    "###_____#",
+    "###_____#",
+    "###_____#",
+    "###_____#",
+    "###_____#",
+    "#####D###"
+  ],
+  "solid": [
+    "#########",
+    "#########",
+    "#####.###",
+    "###.....#",
+    "####...##",
+    "####...##",
+    "###.....#",
+    "###.....#",
+    "###.....#",
+    "####...##",
+    "####...##",
+    "###.....#",
+    "###.....#",
+    "#####.###"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 3,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 7,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 3,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 7,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 3,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 7,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 5,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 5,
+      "sourceY": 13,
+      "targetMap": "Sinnoh",
+      "targetX": 458,
+      "targetY": 684,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 5,
+      "sourceY": 2,
+      "targetMap": "AmitySquare",
+      "targetX": 10,
+      "targetY": 50,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "receptionist",
+      "name": "Receptionist",
+      "npcType": "Lass",
+      "x": 6,
+      "y": 3,
+      "facing": "Down",
+      "dialog": [
+        "Welcome to Amity Square! It's a park for taking a stroll with a cute Pokémon at your side."
+      ]
+    },
+    {
+      "id": "beauty",
+      "name": "Beauty",
+      "npcType": "Lady",
+      "x": 6,
+      "y": 8,
+      "facing": "Up",
+      "dialog": [
+        "My Pikachu is beside itself to be out of its Poké Ball and walking in the open air.",
+        "Look at its cheeks twitching! That's how you can tell."
+      ]
+    },
+    {
+      "id": "pikachu",
+      "name": "Pikachu",
+      "npcType": "Pokemon",
+      "x": 6,
+      "y": 7,
+      "facing": "Down",
+      "dialog": [
+        "Pika pi!"
+      ],
+      "species": "Pikachu",
+      "movement": "look_around"
+    }
+  ],
+  "wildEncounters": []
+}

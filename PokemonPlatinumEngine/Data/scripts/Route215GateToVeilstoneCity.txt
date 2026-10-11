@@ -1,0 +1,14 @@
+# The gate between Route 215 and Veilstone City (plan 01 · M11, part d), on the original's plan. docs/scripts.md
+# describes the language; the lines are our own, on the original's beats (scripts_route_215_gate_to_veilstone_city.s).
+#
+# The Ruin Maniac wanted to go to Celestic Town and found Route 210's Psyduck in the way, until the Secret Potion has
+# cured them (FLAG_USED_SECRETPOTION, route_210_south.txt).
+
+
+script RuinManiac
+  if flag FLAG_USED_SECRETPOTION goto Gone
+  say "I set out for Celestic Town, but a huddle of Pokémon was sitting right across the road." "Heaven knows what they're doing there. They wouldn't budge an inch."
+  end
+label Gone
+  say "There was a huddle of Pokémon blocking the road up to Celestic Town." "I do believe they've gone now."
+  end

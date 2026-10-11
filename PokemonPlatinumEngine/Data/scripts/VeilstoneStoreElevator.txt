@@ -1,0 +1,85 @@
+# The lift of Veilstone's Department Store (plan 01 · M11, part d), on the original's plan. docs/scripts.md describes
+# the language; the lines are our own, on the original's beats (scripts_veilstone_store_elevator.s).
+#
+# The lift's doors in each floor's back wall lead into the car, and the car's own door leads back out onto the floor
+# it stands at: six ways on one tile, each there from a flag of our own (FLAG_VEILSTONE_STORE_LIFT_AT_B1F and _1F to
+# _5F; the original's warp is to wherever the player came from). Every floor's arrival script says which floor the
+# car stands at (VAR_VEILSTONE_STORE_LIFT_FLOOR, a variable of ours: 1 the basement, 2 the ground floor ... 6 the
+# roof) and calls Stands, which sets that floor's flag alone. The attendant asks for a floor, says which way the lift
+# goes and what the floor sells, and lets the rider out there. A question takes six answers, so the two lowest floors
+# share one.
+
+
+# What every floor's arrival calls: the car stands here
+script Stands
+  clearflag FLAG_VEILSTONE_STORE_LIFT_AT_B1F
+  clearflag FLAG_VEILSTONE_STORE_LIFT_AT_1F
+  clearflag FLAG_VEILSTONE_STORE_LIFT_AT_2F
+  clearflag FLAG_VEILSTONE_STORE_LIFT_AT_3F
+  clearflag FLAG_VEILSTONE_STORE_LIFT_AT_4F
+  clearflag FLAG_VEILSTONE_STORE_LIFT_AT_5F
+  if var VAR_VEILSTONE_STORE_LIFT_FLOOR == 1 setflag FLAG_VEILSTONE_STORE_LIFT_AT_B1F
+  if var VAR_VEILSTONE_STORE_LIFT_FLOOR == 2 setflag FLAG_VEILSTONE_STORE_LIFT_AT_1F
+  if var VAR_VEILSTONE_STORE_LIFT_FLOOR == 3 setflag FLAG_VEILSTONE_STORE_LIFT_AT_2F
+  if var VAR_VEILSTONE_STORE_LIFT_FLOOR == 4 setflag FLAG_VEILSTONE_STORE_LIFT_AT_3F
+  if var VAR_VEILSTONE_STORE_LIFT_FLOOR == 5 setflag FLAG_VEILSTONE_STORE_LIFT_AT_4F
+  if var VAR_VEILSTONE_STORE_LIFT_FLOOR == 6 setflag FLAG_VEILSTONE_STORE_LIFT_AT_5F
+  return
+
+
+# VeilstoneStoreElevator_Receptionist
+script Attendant
+  say "Hello, and thank you for shopping with us today."
+  choose "To which floor may I take you?" "5F" "4F" "3F" "2F" "1F OR B1F" "NEVER MIND"
+  if result == 0 setvar VAR_MAP_LOCAL_0x00 6
+  if result == 1 setvar VAR_MAP_LOCAL_0x00 5
+  if result == 2 setvar VAR_MAP_LOCAL_0x00 4
+  if result == 3 setvar VAR_MAP_LOCAL_0x00 3
+  if result == 5 goto Bye
+  if result != 4 goto Ride
+  choose "The ground floor, or the basement?" "1F" "B1F" "NEVER MIND"
+  if result == 0 setvar VAR_MAP_LOCAL_0x00 2
+  if result == 1 setvar VAR_MAP_LOCAL_0x00 1
+  if result == 2 goto Bye
+label Ride
+  if var VAR_MAP_LOCAL_0x00 == VAR_VEILSTONE_STORE_LIFT_FLOOR goto Same
+  if var VAR_MAP_LOCAL_0x00 > VAR_VEILSTONE_STORE_LIFT_FLOOR say "Certainly. Going up!"
+  if var VAR_MAP_LOCAL_0x00 < VAR_VEILSTONE_STORE_LIFT_FLOOR say "Certainly. Going down!"
+  sound "lift"
+  camera shake 0.6
+  wait 0.8
+  sound "lift_stop"
+  if var VAR_MAP_LOCAL_0x00 == 1 goto Basement
+  if var VAR_MAP_LOCAL_0x00 == 2 goto Ground
+  if var VAR_MAP_LOCAL_0x00 == 3 goto Second
+  if var VAR_MAP_LOCAL_0x00 == 4 goto Third
+  if var VAR_MAP_LOCAL_0x00 == 5 goto Fourth
+  say "Fifth floor: the Rooftop Plaza, for a breath of air between purchases."
+  warp "VeilstoneStore5F" 15 3 down
+  end
+label Basement
+  say "Basement floor: food and produce, with a good many treats you will find nowhere else."
+  warp "VeilstoneStoreB1F" 14 3 down
+  end
+label Ground
+  say "Ground floor: medicine and everything else an adventure calls for."
+  warp "VeilstoneStore1F" 15 3 down
+  end
+label Second
+  say "Second floor: all that a Pokémon battle could ask for."
+  warp "VeilstoneStore2F" 15 3 down
+  end
+label Third
+  say "Third floor: Technical Machines, to make your Pokémon the stronger."
+  warp "VeilstoneStore3F" 15 3 down
+  end
+label Fourth
+  say "Fourth floor: furnishings to covet and Pokémon Dolls."
+  warp "VeilstoneStore4F" 15 3 down
+  end
+label Same
+  say "But we are on that floor already?!"
+  end
+label Bye
+  say "I look forward to serving you again."
+  end

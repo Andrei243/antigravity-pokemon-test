@@ -641,15 +641,15 @@ public class StoryTests
     /// <summary>
     /// Flags the Hall of Fame's script asks about, as the original's does, before anything sets them (plan 02 · S14;
     /// scripts/PokemonLeagueHallOfFame.txt, Victory): they are set by scenes of the post-game (plan 02 · S15: Dialga
-    /// and Palkia at Spear Pillar, Heatran once Buck has been spoken to at the Battleground, Regigigas, the professor
-    /// in the Veilstone Department Store's basement). The session that writes a scene takes its flag off this list.
-    /// And one that Looker asks at the Game Corner (plan 02 · S15, part a; scripts/VeilstoneGameCorner.txt): Charon's
-    /// arrest at Stark Mountain, which part b's scene sets.
+    /// and Palkia at Spear Pillar, Heatran once Buck has been spoken to at the Battleground, Regigigas). The session
+    /// that writes a scene takes its flag off this list (the professor's in the Veilstone Department Store's basement
+    /// went with plan 01 · M11, part d). And one that Looker asks at the Game Corner (plan 02 · S15, part a;
+    /// scripts/VeilstoneGameCorner.txt): Charon's arrest at Stark Mountain, which part b's scene sets.
     /// </summary>
     internal static readonly string[] AskedAheadOfTheirScenes =
     {
         "FLAG_CAUGHT_DIALGA", "FLAG_CAUGHT_PALKIA", "FLAG_CAUGHT_HEATRAN", "FLAG_CAUGHT_REGIGIGAS",
-        "FLAG_TALKED_TO_BATTLEGROUND_BUCK", "FLAG_TALKED_TO_VEILSTONE_STORE_B1F_PROF_ROWAN",
+        "FLAG_TALKED_TO_BATTLEGROUND_BUCK",
         "FLAG_ARRESTED_CHARON_STARK_MOUNTAIN",
     };
 

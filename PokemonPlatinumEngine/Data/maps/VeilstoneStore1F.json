@@ -1,0 +1,296 @@
+{
+  "name": "VeilstoneStore1F",
+  "displayName": "Veilstone Dept. Store",
+  "bgmTrack": "common/pokemart",
+  "interior": "PokeMart",
+  "trees": "Round",
+  "width": 22,
+  "height": 14,
+  "ground": [
+    "######################",
+    "######################",
+    "######################",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#________##__________#",
+    "#______######________#",
+    "#____________________#",
+    "#______######________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "##########D###########"
+  ],
+  "solid": [
+    "######################",
+    "######################",
+    "###############.######",
+    "##..###.............##",
+    "##..#................#",
+    "#...#................#",
+    "#####....##....#####.#",
+    "#......######..#...#.#",
+    "#.......####...#...#.#",
+    "#......######..#####.#",
+    "#....................#",
+    "##..................##",
+    "##..................##",
+    "##########.###########"
+  ],
+  "behaviours": [
+    { "x": 4, "y": 3, "width": 1, "depth": 3, "behaviour": "Counter" },
+    { "x": 1, "y": 6, "width": 4, "depth": 1, "behaviour": "Counter" },
+    { "x": 15, "y": 6, "width": 5, "depth": 1, "behaviour": "Counter" },
+    { "x": 15, "y": 7, "width": 1, "depth": 2, "behaviour": "Counter" },
+    { "x": 19, "y": 7, "width": 1, "depth": 2, "behaviour": "Counter" },
+    { "x": 15, "y": 9, "width": 5, "depth": 1, "behaviour": "Counter" },
+    { "x": 15, "y": 2, "width": 1, "depth": 1, "behaviour": "Door" }
+  ],
+  "props": [
+    {
+      "type": "Bookshelf",
+      "x": 5,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 6,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 20,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 1,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 6,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SideStairsDown",
+      "x": 8,
+      "y": 8,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "SideStairsUp",
+      "x": 10,
+      "y": 8,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 13,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 10,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 20,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 4,
+      "y": 3,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "Counter",
+      "x": 1,
+      "y": 6,
+      "width": 4,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 15,
+      "y": 6,
+      "width": 5,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 15,
+      "y": 7,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Counter",
+      "x": 19,
+      "y": 7,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Counter",
+      "x": 15,
+      "y": 9,
+      "width": 5,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 10,
+      "sourceY": 13,
+      "targetMap": "Sinnoh",
+      "targetX": 701,
+      "targetY": 604,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 12,
+      "sourceY": 8,
+      "targetMap": "VeilstoneStore2F",
+      "targetX": 6,
+      "targetY": 8,
+      "targetFacing": "Left"
+    },
+    {
+      "sourceX": 15,
+      "sourceY": 2,
+      "targetMap": "VeilstoneStoreElevator",
+      "targetX": 3,
+      "targetY": 6,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 7,
+      "sourceY": 8,
+      "targetMap": "VeilstoneStoreB1F",
+      "targetX": 12,
+      "targetY": 8,
+      "targetFacing": "Right"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 10,
+      "y": 9,
+      "text": "\"Discover a new you! Veilstone Department Store\""
+    },
+    {
+      "x": 13,
+      "y": 2,
+      "text": "B1F: Food and Produce. 1F: Trainers' Zone. 2F: Battle Collection. 3F: TM Corner. 4F: Poké Dolls and Goods. 5F: Rooftop Plaza."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "receptionist",
+      "name": "Attendant",
+      "npcType": "Clerk",
+      "x": 16,
+      "y": 8,
+      "facing": "Left",
+      "dialog": [
+        "Welcome to the wonderful Veilstone Department Store!"
+      ]
+    },
+    {
+      "id": "middle_aged_man",
+      "name": "Man",
+      "npcType": "Gentleman",
+      "x": 17,
+      "y": 11,
+      "facing": "Down",
+      "dialog": [
+        "This store knows how to keep its customers happy.",
+        "Become a regular, and they really do look after you."
+      ],
+      "movement": "wander_around",
+      "rangeX": 1
+    },
+    {
+      "id": "lady",
+      "name": "Lady",
+      "npcType": "lady",
+      "x": 2,
+      "y": 9,
+      "facing": "Right",
+      "dialog": [
+        "I do like the formal air of a grand department store."
+      ],
+      "movement": "wander_around",
+      "rangeX": 1
+    },
+    {
+      "id": "socialite",
+      "name": "Socialite",
+      "npcType": "Lady",
+      "x": 4,
+      "y": 11,
+      "facing": "Up",
+      "script": "Socialite",
+      "movement": "wander_around",
+      "rangeX": 1
+    },
+    {
+      "id": "cashier_f",
+      "name": "Clerk",
+      "npcType": "Clerk",
+      "x": 3,
+      "y": 5,
+      "facing": "Right",
+      "isPokeMartClerk": true,
+      "mart": "veilstone_1f_right"
+    },
+    {
+      "id": "cashier_m",
+      "name": "Clerk",
+      "npcType": "Clerk",
+      "x": 2,
+      "y": 5,
+      "facing": "Down",
+      "isPokeMartClerk": true,
+      "mart": "veilstone_1f_left"
+    }
+  ],
+  "wildEncounters": []
+}

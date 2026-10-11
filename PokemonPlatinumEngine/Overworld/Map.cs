@@ -1069,8 +1069,16 @@ public class Map
         return WildEncounterRules.Meet(table, water: true, lead is { } first ? first with { RepelLevel = null } : null, rng);
     }
 
-    /// <summary>Whether the Bicycle may be ridden at a tile: as its area's header says, and outdoors on a small map, never in a room.</summary>
-    public bool BikeAllowedAt(int x, int y) => AreaAt(x, y)?.BikeAllowed ?? !IsIndoors;
+    /// <summary>
+    /// A room the Bicycle is ridden through (a map file's <c>bike</c>; plan 01 · M11, part d: the Cycling Road's gates).
+    /// </summary>
+    public bool BikeAllowed { get; set; }
+
+    /// <summary>
+    /// Whether the Bicycle may be ridden at a tile: as its area's header says, and outdoors on a small map; in a room
+    /// only where the room says so.
+    /// </summary>
+    public bool BikeAllowedAt(int x, int y) => AreaAt(x, y)?.BikeAllowed ?? (BikeAllowed || !IsIndoors);
 
     /// <summary>
     /// A wild Pokémon drawn out at once from the place's table, with no odds to meet first: Sweet Scent and Honey

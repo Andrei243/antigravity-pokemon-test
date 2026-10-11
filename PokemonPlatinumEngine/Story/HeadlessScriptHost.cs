@@ -798,4 +798,8 @@ public sealed class HeadlessScriptHost : IScriptHost
     }
 
     private int? leagueVictories;
+
+    // ------------------------------------------------------------------ the Cycling Road's gates
+
+    public bool Cycling => PlayerMode == TravelMode.Cycling;
 }

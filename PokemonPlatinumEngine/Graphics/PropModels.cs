@@ -124,6 +124,8 @@ internal static class PropModels
                 kit.Sprite(kit.Face($"bookpile.{turn}", BookPileWidth, BookPileHeight, c => PaintBookPile(c, turn)), 16, 21);
                 break;
             }
+            // A vending machine (plan 01 · M11, part d: the Department Store's roof)
+            case PropType.VendingMachine: VendingMachine(kit); break;
         }
     }
 
@@ -464,7 +466,10 @@ internal static class PropModels
                 if (west) (x0, x1) = (w - x1, w - x0);
                 c.Rect(x0, 0, x1 - x0, c.Height, tone);
                 c.VLine(west ? x1 - 1 : x0, 0, c.Height, PixelCanvas.Mix(Steel.Light, Rgb(30, 32, 44), dark));
-                for (int y = 3; y < c.Height - 1; y += 4) c.HLine(x0 + (west ? 1 : 2), y, x1 - x0 - 3, PixelCanvas.Shadow(tone, 0.25f));
+                // A well one tile wide (the Pokémon Centers' escalators) has steps four texels wide: the shade lines
+                // across a tread would be single texels there, so such a tread is left plain
+                if (x1 - x0 - 3 >= 2)
+                    for (int y = 3; y < c.Height - 1; y += 4) c.HLine(x0 + (west ? 1 : 2), y, x1 - x0 - 3, PixelCanvas.Shadow(tone, 0.25f));
             }
             c.HLine(0, 0, w, Dark.Dark);
             c.HLine(0, c.Height - 1, w, Dark.Dark);
@@ -715,6 +720,53 @@ internal static class PropModels
         var top = kit.Face("fridge.top", 26, 22, c => TopFace(c, Enamel));
         var side = kit.Face("fridge.side", 22, 58, c => Pix.Raised(c, 0, 0, 22, 58, Tone.Of(Enamel.Dark)));
         kit.Box(3, 29, 0, 22, 0, 58, top, front, side, side);
+    }
+
+    public const int VendingWidth = 26, VendingHeight = 60;
+
+    /// <summary>The colours of the three drinks a vending machine holds, row by row: water, soda and lemonade.</summary>
+    public static readonly Raylib_cs.Color[] VendingCans = { Pix.Rgb(86, 150, 226), Pix.Rgb(88, 190, 120), Pix.Rgb(236, 206, 84) };
+
+    /// <summary>
+    /// The front of a vending machine (style guide, "Rooms"): a lit window with three rows of cans over three
+    /// buttons and the flap the can drops behind.
+    /// </summary>
+    public static void PaintVendingFront(PixelCanvas c)
+    {
+        var body = Tone.Of(76, 128, 216);
+        Pix.Raised(c, 0, 0, VendingWidth, VendingHeight, body);
+        // The window: glass that lights after dark, then the cans on its shelves
+        c.Rect(3, 5, VendingWidth - 6, 28, Pix.Rgb(214, 232, 246));
+        Pix.Lit(c, 3, 5, VendingWidth - 6, 28, ArtSheet.PublicLight);
+        for (int row = 0; row < 3; row++)
+        {
+            int y = 7 + row * 9;
+            for (int x = 5; x < VendingWidth - 6; x += 4)
+            {
+                c.Rect(x, y, 3, 6, VendingCans[row]);
+                c.HLine(x, y, 3, Pix.Rgb(244, 246, 250));
+            }
+            c.HLine(3, y + 7, VendingWidth - 6, body.Dark);
+        }
+        // Its frame, painted over the glass
+        c.HLine(2, 4, VendingWidth - 4, body.Dark);
+        c.HLine(2, 33, VendingWidth - 4, body.Light);
+        c.VLine(2, 4, 30, body.Dark);
+        c.VLine(VendingWidth - 3, 4, 30, body.Light);
+        // Three buttons, one to a drink, and the flap at the foot
+        for (int i = 0; i < 3; i++) c.Rect(5 + i * 6, 37, 4, 3, VendingCans[i]);
+        c.Rect(4, 46, VendingWidth - 8, 8, Dark.Base);
+        c.HLine(4, 46, VendingWidth - 8, Dark.Dark);
+        c.HLine(5, 53, VendingWidth - 10, Dark.Light);
+    }
+
+    private static void VendingMachine(KitBuilder kit)
+    {
+        var body = Tone.Of(76, 128, 216);
+        var front = kit.Face("vending.front", VendingWidth, VendingHeight, PaintVendingFront);
+        var top = kit.Face("vending.top", VendingWidth, 20, c => TopFace(c, body));
+        var side = kit.Face("vending.side", 20, VendingHeight, c => Pix.Raised(c, 0, 0, 20, VendingHeight, Tone.Of(body.Dark)));
+        kit.Box(3, 3 + VendingWidth, 2, 22, 0, VendingHeight, top, front, side, side);
     }
 
     /// <summary>A kitchen unit a tile wide: cupboards under a worktop with a sink, or an oven under a hob.</summary>

@@ -1,0 +1,481 @@
+{
+  "name": "VeilstoneStoreB1F",
+  "displayName": "Veilstone Dept. Store",
+  "bgmTrack": "common/pokemart",
+  "interior": "PokeMart",
+  "trees": "Round",
+  "width": 25,
+  "height": 16,
+  "ground": [
+    "#########################",
+    "#########################",
+    "#########################",
+    "#_______________________#",
+    "#_______________________#",
+    "#_______________________#",
+    "#_______##______________#",
+    "#_______####____________#",
+    "#_______#_______________#",
+    "#_______####____________#",
+    "#_______________________#",
+    "#_______________________#",
+    "#_______________________#",
+    "#_______________________#",
+    "#_______________________#",
+    "#########################"
+  ],
+  "solid": [
+    "#########################",
+    "#########################",
+    "##############.##########",
+    "##.....................##",
+    "#.......................#",
+    "#..####.......####.####.#",
+    "#..#..#.##....#..#.#..#.#",
+    "#..####.####..####.####.#",
+    "#.......###.............#",
+    "#.......####............#",
+    "#..####.......####.####.#",
+    "#..#..#.......#..#.#..#.#",
+    "#..####.......####.####.#",
+    "##.....................##",
+    "##..........#..........##",
+    "#########################"
+  ],
+  "behaviours": [
+    { "x": 3, "y": 5, "width": 3, "depth": 1, "behaviour": "Counter" },
+    { "x": 14, "y": 5, "width": 4, "depth": 1, "behaviour": "Counter" },
+    { "x": 20, "y": 5, "width": 3, "depth": 1, "behaviour": "Counter" },
+    { "x": 3, "y": 6, "width": 1, "depth": 1, "behaviour": "Counter" },
+    { "x": 6, "y": 6, "width": 1, "depth": 1, "behaviour": "Counter" },
+    { "x": 14, "y": 6, "width": 1, "depth": 1, "behaviour": "Counter" },
+    { "x": 17, "y": 6, "width": 1, "depth": 1, "behaviour": "Counter" },
+    { "x": 19, "y": 6, "width": 1, "depth": 1, "behaviour": "Counter" },
+    { "x": 22, "y": 6, "width": 1, "depth": 1, "behaviour": "Counter" },
+    { "x": 3, "y": 7, "width": 4, "depth": 1, "behaviour": "Counter" },
+    { "x": 14, "y": 7, "width": 4, "depth": 1, "behaviour": "Counter" },
+    { "x": 19, "y": 7, "width": 4, "depth": 1, "behaviour": "Counter" },
+    { "x": 3, "y": 10, "width": 3, "depth": 1, "behaviour": "Counter" },
+    { "x": 15, "y": 10, "width": 3, "depth": 1, "behaviour": "Counter" },
+    { "x": 20, "y": 10, "width": 3, "depth": 1, "behaviour": "Counter" },
+    { "x": 3, "y": 11, "width": 1, "depth": 1, "behaviour": "Counter" },
+    { "x": 6, "y": 11, "width": 1, "depth": 1, "behaviour": "Counter" },
+    { "x": 14, "y": 11, "width": 1, "depth": 1, "behaviour": "Counter" },
+    { "x": 17, "y": 11, "width": 1, "depth": 1, "behaviour": "Counter" },
+    { "x": 19, "y": 11, "width": 1, "depth": 1, "behaviour": "Counter" },
+    { "x": 22, "y": 11, "width": 1, "depth": 1, "behaviour": "Counter" },
+    { "x": 3, "y": 12, "width": 4, "depth": 1, "behaviour": "Counter" },
+    { "x": 14, "y": 12, "width": 4, "depth": 1, "behaviour": "Counter" },
+    { "x": 19, "y": 12, "width": 4, "depth": 1, "behaviour": "Counter" },
+    { "x": 14, "y": 2, "width": 1, "depth": 1, "behaviour": "Door" }
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 23,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 19,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 12,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SideStairsUp",
+      "x": 9,
+      "y": 8,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 14,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 19,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 14,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 9,
+      "y": 14,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 10,
+      "y": 14,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 11,
+      "y": 14,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "TrashCan",
+      "x": 12,
+      "y": 14,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 23,
+      "y": 14,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 3,
+      "y": 5,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 14,
+      "y": 5,
+      "width": 4,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 20,
+      "y": 5,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 3,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 6,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 14,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 17,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 19,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 22,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 3,
+      "y": 7,
+      "width": 4,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 14,
+      "y": 7,
+      "width": 4,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 19,
+      "y": 7,
+      "width": 4,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 3,
+      "y": 10,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 15,
+      "y": 10,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 20,
+      "y": 10,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 3,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 6,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 14,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 17,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 19,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 22,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 3,
+      "y": 12,
+      "width": 4,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 14,
+      "y": 12,
+      "width": 4,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 19,
+      "y": 12,
+      "width": 4,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 11,
+      "sourceY": 8,
+      "targetMap": "VeilstoneStore1F",
+      "targetX": 6,
+      "targetY": 8,
+      "targetFacing": "Left"
+    },
+    {
+      "sourceX": 14,
+      "sourceY": 2,
+      "targetMap": "VeilstoneStoreElevator",
+      "targetX": 3,
+      "targetY": 6,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 12,
+      "y": 2,
+      "text": "B1F: Food and Produce. 1F: Trainers' Zone. 2F: Battle Collection. 3F: TM Corner. 4F: Poké Dolls and Goods. 5F: Rooftop Plaza."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "receptionist_1",
+      "name": "Attendant",
+      "npcType": "Clerk",
+      "x": 15,
+      "y": 6,
+      "facing": "Left",
+      "dialog": [
+        "Welcome to the basement: food and produce.",
+        "We keep a fine selection of things for Pokémon to eat, and treats to spoil them with."
+      ]
+    },
+    {
+      "id": "cashier_f_lava_cookie",
+      "name": "Clerk",
+      "npcType": "Clerk",
+      "x": 20,
+      "y": 11,
+      "facing": "Up",
+      "script": "LavaCookies"
+    },
+    {
+      "id": "cashier_f_poffin",
+      "name": "Clerk",
+      "npcType": "Clerk",
+      "x": 15,
+      "y": 11,
+      "facing": "Down",
+      "script": "Poffins"
+    },
+    {
+      "id": "socialite_1",
+      "name": "Socialite",
+      "npcType": "Lady",
+      "x": 3,
+      "y": 8,
+      "facing": "Up",
+      "dialog": [
+        "I'm hopeless at cooking Poffins, so I buy mine here.",
+        "I do wish I could feed my little ones Poffins I'd made myself, though."
+      ],
+      "movement": "wander_around",
+      "rangeX": 1,
+      "rangeZ": 1
+    },
+    {
+      "id": "receptionist_2",
+      "name": "Attendant",
+      "npcType": "Clerk",
+      "x": 5,
+      "y": 6,
+      "facing": "Right",
+      "dialog": [
+        "Have you ever planted Berries and then clean forgotten about them?",
+        "If that sounds like you, we sell Berries here too."
+      ]
+    },
+    {
+      "id": "cashier_f_berry",
+      "name": "Clerk",
+      "npcType": "Clerk",
+      "x": 5,
+      "y": 11,
+      "facing": "Down",
+      "isPokeMartClerk": true,
+      "mart": "veilstone_b1f"
+    },
+    {
+      "id": "cashier_f_rage_candy_bar",
+      "name": "Clerk",
+      "npcType": "Clerk",
+      "x": 20,
+      "y": 6,
+      "facing": "Left",
+      "dialog": [
+        "Hello! Rage Candy Bars...",
+        "...are all sold out. I'm terribly sorry."
+      ]
+    },
+    {
+      "id": "socialite_2",
+      "name": "Socialite",
+      "npcType": "Lady",
+      "x": 16,
+      "y": 9,
+      "facing": "Up",
+      "dialog": [
+        "Do pay attention, please. A Poffin's flavour shapes a Pokémon's condition.",
+        "Spicy makes it cooler. Dry, more beautiful. Sweet, cuter. Bitter, smarter. And sour makes it tougher.",
+        "Sigh... Aren't Poffins wonderful?"
+      ],
+      "movement": "wander_around",
+      "rangeX": 1,
+      "rangeZ": 1
+    },
+    {
+      "id": "gentleman",
+      "name": "Gentleman",
+      "npcType": "gentleman",
+      "x": 21,
+      "y": 13,
+      "facing": "Left",
+      "dialog": [
+        "Who'd have thought I'd find paradise in the basement of a department store?",
+        "I got carried away and bought every Rage Candy Bar they had!"
+      ],
+      "movement": "wander_around",
+      "rangeX": 1,
+      "rangeZ": 1
+    },
+    {
+      "id": "prof_rowan",
+      "name": "Prof. Rowan",
+      "npcType": "Rowan",
+      "x": 15,
+      "y": 4,
+      "facing": "Down",
+      "script": "Rowan",
+      "hiddenBy": "FLAG_HIDE_VEILSTONE_STORE_B1F_PROF_ROWAN"
+    }
+  ],
+  "wildEncounters": []
+}

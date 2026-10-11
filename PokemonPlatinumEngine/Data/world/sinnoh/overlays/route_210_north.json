@@ -2,8 +2,10 @@
   "area": "route_210_north",
   "bgmTrack": "sinnoh/route210",
   "trees": "Pine",
-  // Grandma Wilma's house has no rooms yet (plan 01 · M11)
-  "locked": [ 0 ],
+  // Grandma Wilma's house, on the original's plan (plan 01 · M11, part d): she teaches Draco Meteor
+  "doors": [
+    { "warp": 0, "map": "Route210GrandmaWilmaHouse", "x": 4, "y": 8, "facing": "Up" }
+  ],
   "people": {
     "black_belt": {
       "name": "Black Belt",

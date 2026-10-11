@@ -9,15 +9,12 @@
     { "warp": 7, "map": "FightAreaPokeMart", "x": 4, "y": 6, "facing": "Up" },
     // Plan 01 · M11, part c: the two houses, on the original's plans (the Item Expert's is the south one)
     { "warp": 4, "map": "FightAreaMiddleHouse", "x": 4, "y": 8, "facing": "Up" },
-    { "warp": 5, "map": "FightAreaSouthHouse", "x": 4, "y": 8, "facing": "Up" }
-  ],
-  // The gate houses to Route 225 and to the Battle Frontier (plan 01 · M10, part b) are passed through; their rooms
-  // come with plan 01 · M11, part d
-  "through": [
-    { "warp": 0, "to": "route_225", "toWarp": 0 },
-    { "warp": 1, "to": "route_225", "toWarp": 1 },
-    { "warp": 2, "to": "battle_frontier", "toWarp": 10 },
-    { "warp": 3, "to": "battle_frontier", "toWarp": 11 }
+    { "warp": 5, "map": "FightAreaSouthHouse", "x": 4, "y": 8, "facing": "Up" },
+    // The gate houses to Route 225 and to the Battle Frontier, on the original's plans (plan 01 · M11, part d)
+    { "warp": 0, "map": "Route225GateToFightArea", "x": 5, "y": 12, "facing": "Up" },
+    { "warp": 1, "map": "Route225GateToFightArea", "x": 5, "y": 12, "facing": "Up" },
+    { "warp": 2, "map": "BattleFrontierGateToFightArea", "x": 7, "y": 20, "facing": "Up" },
+    { "warp": 3, "map": "BattleFrontierGateToFightArea", "x": 7, "y": 20, "facing": "Up" }
   ],
   // Plan 02 · S15, part a (scripts/fight_area.txt): the rival waits on the pier for whoever the ship brings, and
   // takes them to the Frontier's gate, where Flint and Volkner battle the two of them before a crowd; Palmer comes

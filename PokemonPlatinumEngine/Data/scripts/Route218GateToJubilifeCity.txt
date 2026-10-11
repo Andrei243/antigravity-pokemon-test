@@ -1,0 +1,26 @@
+# The gate between Jubilife City and Route 218 (plan 01 · M11, part d), on the original's plan. docs/scripts.md
+# describes the language; the lines are our own, on the original's beats (scripts_route_218_gate_to_jubilife_city.s).
+#
+# The fisherman gives away the Old Rod once (FLAG_RECEIVED_OLD_ROD), to whoever agrees that it is a fine thing, and
+# after that offers to tell how to fish with it.
+
+
+script Fisherman
+  if flag FLAG_RECEIVED_OLD_ROD goto Tips
+  ask "Yes, indeed! There's nothing like an Old Rod! You think so too, don't you?"
+  if no goto Refused
+  say "Ha! The right answer! You and I are going to get along." "Here. This one's my own, and now it's yours!"
+  give "Old Rod"
+  setflag FLAG_RECEIVED_OLD_ROD
+label Tips
+  say "Wherever there's water, there's something to fish for."
+  ask "Come to think of it, would you like a tip or two on using that rod?"
+  if no goto Twice
+  say "Stand facing the water and use the rod from your bag. Then keep your eyes open!" "When a Pokémon bites, an exclamation mark pops up. That's your moment to reel it in!"
+  end
+label Twice
+  say "Getting a bite is the first hurdle. Then you've got to battle whatever you reeled in." "Two thrills for the price of one. That's fishing!"
+  end
+label Refused
+  say "Oh. Is that so? Not one for fishing, eh?"
+  end

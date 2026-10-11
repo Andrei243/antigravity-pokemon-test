@@ -2,8 +2,10 @@
   "area": "route_212_south",
   "bgmTrack": "sinnoh/route209",
   "trees": "Round",
-  // The house has no rooms yet (plan 01 · M11)
-  "locked": [ 0 ],
+  // The shard tutor's house, on the original's plan (plan 01 · M11, part d)
+  "doors": [
+    { "warp": 0, "map": "Route212House", "x": 4, "y": 8, "facing": "Up" }
+  ],
   // Policeman Danny battles only at night: by day his double without a battle (policeman_danny_no_battle, on the
   // same tile) stands there instead, swapped by the route's arrival script (plan 06 · R14a)
   "people": {

@@ -24,7 +24,7 @@
     "#..#####..#",
     "#.........#",
     "#.........#",
-    "###.....###",
+    "##.......##",
     "#........##",
     "#####.#####"
   ],
@@ -41,20 +41,6 @@
       "x": 7,
       "y": 2,
       "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Bench",
-      "x": 1,
-      "y": 6,
-      "width": 2,
-      "depth": 1
-    },
-    {
-      "type": "Bench",
-      "x": 8,
-      "y": 6,
-      "width": 2,
       "depth": 1
     },
     {
@@ -91,6 +77,20 @@
       "y": 1,
       "width": 2,
       "depth": 1
+    },
+    {
+      "type": "SideStairsUp",
+      "x": 1,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SideStairsDown",
+      "x": 9,
+      "y": 6,
+      "width": 1,
+      "depth": 1
     }
   ],
   "warps": [
@@ -101,6 +101,22 @@
       "targetX": 802,
       "targetY": 473,
       "targetFacing": "Down"
+    },
+    {
+      "sourceX": 2,
+      "sourceY": 6,
+      "targetMap": "ResortAreaPokemonCenter2F",
+      "targetX": 3,
+      "targetY": 10,
+      "targetFacing": "Right"
+    },
+    {
+      "sourceX": 8,
+      "sourceY": 6,
+      "targetMap": "ResortAreaPokemonCenterB1F",
+      "targetX": 13,
+      "targetY": 10,
+      "targetFacing": "Left"
     }
   ],
   "signboards": [],

@@ -1,0 +1,492 @@
+{
+  "name": "GlobalTerminal1F",
+  "displayName": "Global Terminal",
+  "bgmTrack": "sinnoh/jubilife",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 28,
+  "height": 20,
+  "ground": [
+    "############################",
+    "############################",
+    "############################",
+    "######________________######",
+    "####___________________#####",
+    "###______________________###",
+    "###______________________###",
+    "#__________________________#",
+    "#__________________________#",
+    "#__________________________#",
+    "#__________________________#",
+    "##_________________________#",
+    "##_________________________#",
+    "##_________________________#",
+    "##______##_________________#",
+    "##_________________________#",
+    "##_________________________#",
+    "#_______##_________________#",
+    "###########_____############",
+    "#############D##############"
+  ],
+  "solid": [
+    "############################",
+    "############################",
+    "############################",
+    "#######...###.........######",
+    "####..#####............#####",
+    "###......................###",
+    "###......................###",
+    "#..........................#",
+    "#.................####..#.##",
+    "#........##.......####..#.##",
+    "#........##.......####..#.##",
+    "##................####..#.##",
+    "##.........................#",
+    "##................####..#.##",
+    "##.##..####.......####..#.##",
+    "##.##..#..#.......####..#.##",
+    "##.....#..#.......####..#.##",
+    "#......####................#",
+    "###########.....############",
+    "#############.##############"
+  ],
+  "behaviours": [
+    { "x": 6, "y": 3, "width": 1, "depth": 1, "behaviour": "Counter" },
+    { "x": 10, "y": 3, "width": 1, "depth": 1, "behaviour": "Counter" },
+    { "x": 6, "y": 4, "width": 2, "depth": 1, "behaviour": "Counter" },
+    { "x": 9, "y": 4, "width": 2, "depth": 1, "behaviour": "Counter" },
+    { "x": 7, "y": 14, "width": 1, "depth": 4, "behaviour": "Counter" },
+    { "x": 10, "y": 14, "width": 1, "depth": 4, "behaviour": "Counter" },
+    { "x": 16, "y": 4, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 20, "y": 4, "width": 1, "depth": 1, "behaviour": "WarpPanel" }
+  ],
+  "props": [
+    {
+      "type": "Painting",
+      "x": 18,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 11,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 16,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 20,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 9,
+      "y": 9,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Bench",
+      "x": 24,
+      "y": 9,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "Bench",
+      "x": 26,
+      "y": 9,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "Cushion",
+      "x": 3,
+      "y": 13,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 4,
+      "y": 13,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 3,
+      "y": 14,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Bench",
+      "x": 24,
+      "y": 14,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "Bench",
+      "x": 26,
+      "y": 14,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "Cushion",
+      "x": 3,
+      "y": 16,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 4,
+      "y": 16,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 13,
+      "y": 18,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 6,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 10,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 6,
+      "y": 4,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 9,
+      "y": 4,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 7,
+      "y": 14,
+      "width": 1,
+      "depth": 4
+    },
+    {
+      "type": "Counter",
+      "x": 10,
+      "y": 14,
+      "width": 1,
+      "depth": 4
+    },
+    {
+      "type": "LabMachine",
+      "x": 18,
+      "y": 8,
+      "width": 4,
+      "depth": 4
+    },
+    {
+      "type": "LabMachine",
+      "x": 18,
+      "y": 13,
+      "width": 4,
+      "depth": 4
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 13,
+      "sourceY": 19,
+      "targetMap": "Sinnoh",
+      "targetX": 149,
+      "targetY": 779,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 16,
+      "sourceY": 4,
+      "targetMap": "GlobalTerminal2F",
+      "targetX": 16,
+      "targetY": 5,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 20,
+      "sourceY": 4,
+      "targetMap": "GlobalTerminal3F",
+      "targetX": 13,
+      "targetY": 4,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 9,
+      "y": 10,
+      "text": "A great globe of the world. Not one point of light shows on it."
+    },
+    {
+      "x": 10,
+      "y": 10,
+      "text": "A great globe of the world. Not one point of light shows on it."
+    },
+    {
+      "x": 18,
+      "y": 9,
+      "text": "A machine for the Battle Video Rankings. NO SIGNAL, says its screen."
+    },
+    {
+      "x": 18,
+      "y": 10,
+      "text": "A machine for the Battle Video Rankings. NO SIGNAL, says its screen."
+    },
+    {
+      "x": 18,
+      "y": 14,
+      "text": "A machine for the Trainer Rankings. NO SIGNAL, says its screen."
+    },
+    {
+      "x": 18,
+      "y": 15,
+      "text": "A machine for the Trainer Rankings. NO SIGNAL, says its screen."
+    },
+    {
+      "x": 21,
+      "y": 9,
+      "text": "A machine for the Battle Video Rankings. NO SIGNAL, says its screen."
+    },
+    {
+      "x": 21,
+      "y": 10,
+      "text": "A machine for the Battle Video Rankings. NO SIGNAL, says its screen."
+    },
+    {
+      "x": 21,
+      "y": 15,
+      "text": "A machine for the Trainer Rankings. NO SIGNAL, says its screen."
+    },
+    {
+      "x": 21,
+      "y": 14,
+      "text": "A machine for the Trainer Rankings. NO SIGNAL, says its screen."
+    },
+    {
+      "x": 18,
+      "y": 2,
+      "text": "One panel leads to the studios for Box Data and Dress-Up Data on 2F. The other leads to the Battle Video Gallery on 3F."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "receptionist_gts",
+      "name": "Receptionist",
+      "npcType": "Clerk",
+      "x": 7,
+      "y": 3,
+      "facing": "Down",
+      "dialog": [
+        "Welcome! This is the Global Trade Station: the GTS, for short. Here Pokémon are traded with people all over the world.",
+        "Or they were. Sinnoh's link to the wider world has gone quiet, and no trade can leave this desk until it is back. I am so sorry!"
+      ]
+    },
+    {
+      "id": "collector",
+      "name": "Collector",
+      "npcType": "Gentleman",
+      "x": 3,
+      "y": 9,
+      "facing": "Right",
+      "dialog": [
+        "That is one big globe, eh?",
+        "Now, whereabouts on it do I live? Let me see if I can point to it..."
+      ]
+    },
+    {
+      "id": "bug_catcher",
+      "name": "Bug Catcher",
+      "npcType": "Youngster",
+      "x": 6,
+      "y": 7,
+      "facing": "Right",
+      "dialog": [
+        "They say that when you get in touch with someone far away, the place they live lights up on this giant globe."
+      ],
+      "movement": "wander_around",
+      "rangeZ": 1
+    },
+    {
+      "id": "guitarist",
+      "name": "Guitarist",
+      "npcType": "Youngster",
+      "x": 3,
+      "y": 13,
+      "facing": "Up",
+      "dialog": [
+        "All I'd have to do is leave a Pokémon here to be traded.",
+        "Who knows? It might have a new Trainer by the time I woke up."
+      ],
+      "movement": "look_around",
+      "rangeX": 2,
+      "rangeZ": 2
+    },
+    {
+      "id": "expert_m",
+      "name": "Old Man",
+      "npcType": "Gentleman",
+      "x": 24,
+      "y": 7,
+      "facing": "Right",
+      "dialog": [
+        "Is all this something even an old fellow like me could work?",
+        "If it is as easy as they say, I should like to trade Pokémon too!"
+      ],
+      "movement": "wander_around",
+      "rangeZ": 1
+    },
+    {
+      "id": "ace_trainer_m",
+      "name": "Ace Trainer",
+      "npcType": "Youngster",
+      "x": 6,
+      "y": 12,
+      "facing": "Up",
+      "dialog": [
+        "This week I'll do it!",
+        "I mean to make the top eight of the rankings, whatever it takes."
+      ],
+      "movement": "wander_around",
+      "rangeX": 1,
+      "rangeZ": 1
+    },
+    {
+      "id": "beauty_1",
+      "name": "Beauty",
+      "npcType": "Lady",
+      "x": 12,
+      "y": 7,
+      "facing": "Right",
+      "dialog": [
+        "Trading Pokémon with people who love them, right round the world, as easily as that.",
+        "Isn't it something?"
+      ],
+      "movement": "wander_around",
+      "rangeZ": 1
+    },
+    {
+      "id": "receptionist_entry_north",
+      "name": "Receptionist",
+      "npcType": "Clerk",
+      "x": 9,
+      "y": 15,
+      "facing": "Right",
+      "dialog": [
+        "Welcome to the Global Terminal!",
+        "This is where the Trainers of the whole world come together: to look at one another's records, and to trade Pokémon.",
+        "I am sorry to say the link is down today. Do look round all the same!"
+      ]
+    },
+    {
+      "id": "receptionist_entry_south",
+      "name": "Receptionist",
+      "npcType": "Clerk",
+      "x": 9,
+      "y": 16,
+      "facing": "Right",
+      "dialog": [
+        "The Global Terminal has a number of machines for reaching the wider world.",
+        "Each of them walks you through what to do. While the link is down, though, their screens show nothing at all."
+      ]
+    },
+    {
+      "id": "picnicker",
+      "name": "Picnicker",
+      "npcType": "Lass",
+      "x": 25,
+      "y": 12,
+      "facing": "Up",
+      "dialog": [
+        "You can mark where you live on this giant globe.",
+        "Then anyone you get in touch with can see where you are!"
+      ],
+      "movement": "look_around"
+    },
+    {
+      "id": "youngster",
+      "name": "Youngster",
+      "npcType": "youngster",
+      "x": 16,
+      "y": 16,
+      "facing": "Left",
+      "dialog": [
+        "The Global Terminal has three floors, and you go between them by warp panel.",
+        "This floor has the GTS. One panel goes to the studios on 2F, for Box Data and Dress-Up Data.",
+        "The other goes up to 3F and the Battle Video Gallery."
+      ]
+    },
+    {
+      "id": "pokemon_breeder_f",
+      "name": "Breeder",
+      "npcType": "Lady",
+      "x": 13,
+      "y": 3,
+      "facing": "Up",
+      "dialog": [
+        "Hello! Have you been to the Dress-Up Data Studio upstairs?",
+        "I hand out Backdrops to everyone who shows their work there. With the studio dark, I've nobody to hand them to!"
+      ],
+      "movement": "look_around"
+    },
+    {
+      "id": "pokemon_breeder_m",
+      "name": "Breeder",
+      "npcType": "Gentleman",
+      "x": 12,
+      "y": 13,
+      "facing": "Down",
+      "dialog": [
+        "Yo, yo, yo! Want the whole world to know about you?",
+        "Then you tell me, yo! ...Soon as the link's back up, anyway. Nobody out there's listening today."
+      ]
+    },
+    {
+      "id": "beauty_2",
+      "name": "Beauty",
+      "npcType": "Lady",
+      "x": 15,
+      "y": 10,
+      "facing": "Down",
+      "script": "Favourite"
+    }
+  ],
+  "wildEncounters": []
+}

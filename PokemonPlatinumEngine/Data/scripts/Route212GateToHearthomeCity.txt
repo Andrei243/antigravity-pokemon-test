@@ -1,0 +1,17 @@
+# The gate between Hearthome City and Route 212 (plan 01 · M11, part d), on the original's plan. docs/scripts.md
+# describes the language; the lines are our own, on the original's beats (scripts_route_212_gate_to_hearthome_city.s).
+#
+# A television crew keeps the gate shut until the player has been to Pastoria City from the other side (plan 02 · S8:
+# Pastoria's arrival sets FLAG_HIDE_ROUTE_212_BLOCKADE, which hides them). The original stands the two of them on the
+# mat before the south door; here they stand a row north of it, so that the tile one comes in on from Route 212 is
+# free, and the last row of the corridor before them is where they turn the player back.
+
+
+script Blockade
+  if flag FLAG_HIDE_ROUTE_212_BLOCKADE end
+  face cameraman player
+  speaker "Cameraman"
+  say "Sorry, nobody gets through the gate for now. We're on location for a television shoot."
+  walk player up 1
+  face cameraman right
+  end
