@@ -4,7 +4,8 @@
 # As Aaron's room: the door shuts behind the challenger, and the door on to Lucian's passage opens once Flint is
 # beaten. He stamps on the spot between the two halves of his greeting, and has other words for a challenger who has
 # entered the Hall of Fame before (FLAG_GAME_COMPLETED, which the Hall of Fame's room sets). He is drawn as a
-# youngster until plan 11 makes his look; his rematch team waits for plan 02 · S15.
+# youngster until plan 11 makes his look. Once Charon has been arrested at Stark Mountain he brings his rematch team
+# (plan 02 · S15, part b).
 
 
 # PokemonLeagueFlintRoom_OnFrame_EnterRoom, by the door's own flag (see Aaron's room)
@@ -34,7 +35,13 @@ label Again
   say "You again! Good! A Champion who keeps coming back to battle is my kind of Champion."
   say "My fire hasn't gone down one bit since last time. Let's see about yours!"
 label Fight
+  # PokemonLeagueFlintRoom_StartFlintRematchBattle: the stronger team, once Charon is caught at Stark Mountain
+  if flag FLAG_ARRESTED_CHARON_STARK_MOUNTAIN goto Rematch
   battle self as "elite_four_flint"
+  goto Fought
+label Rematch
+  battle self as "elite_four_flint_rematch"
+label Fought
   setflag FLAG_DEFEATED_FLINT
   sound "lift_stop"
   setflag FLAG_HIDE_POKEMON_LEAGUE_FLINT_ROOM_EXIT_DOOR

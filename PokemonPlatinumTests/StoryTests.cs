@@ -640,17 +640,15 @@ public class StoryTests
 
     /// <summary>
     /// Flags the Hall of Fame's script asks about, as the original's does, before anything sets them (plan 02 · S14;
-    /// scripts/PokemonLeagueHallOfFame.txt, Victory): they are set by scenes of the post-game (plan 02 · S15: Dialga
-    /// and Palkia at Spear Pillar, Heatran once Buck has been spoken to at the Battleground, Regigigas). The session
-    /// that writes a scene takes its flag off this list (the professor's in the Veilstone Department Store's basement
-    /// went with plan 01 · M11, part d). And one that Looker asks at the Game Corner (plan 02 · S15, part a;
-    /// scripts/VeilstoneGameCorner.txt): Charon's arrest at Stark Mountain, which part b's scene sets.
+    /// scripts/PokemonLeagueHallOfFame.txt, Victory): they are set by scenes of the post-game (plan 02 · S15, part c:
+    /// Dialga and Palkia at Spear Pillar, Buck spoken to at the Battleground, which Heatran's room asks too). The
+    /// session that writes a scene takes its flag off this list, as plan 02 · S15, part b took Heatran's, Regigigas's
+    /// and Charon's arrest, and plan 01 · M11, part d the professor's in the Veilstone Department Store's basement.
     /// </summary>
     internal static readonly string[] AskedAheadOfTheirScenes =
     {
-        "FLAG_CAUGHT_DIALGA", "FLAG_CAUGHT_PALKIA", "FLAG_CAUGHT_HEATRAN", "FLAG_CAUGHT_REGIGIGAS",
+        "FLAG_CAUGHT_DIALGA", "FLAG_CAUGHT_PALKIA",
         "FLAG_TALKED_TO_BATTLEGROUND_BUCK",
-        "FLAG_ARRESTED_CHARON_STARK_MOUNTAIN",
     };
 
     [Fact]
@@ -903,7 +901,8 @@ public class StoryTests
             // The flag is what takes it off the map: nothing stands there any more, now or after a save is loaded
             map.ApplyPresence(host.Story.Has);
             Assert.DoesNotContain(ball, map.NPCs);
-            Assert.Null(map.GetNpcAt(ball.GridX, ball.GridY));
+            // (no ball, that is: the Lunar Wing's lay on the tile where Cresselia rests until it is come upon, plan 02 · S15, part b)
+            Assert.DoesNotContain(map.NPCs, n => n.IsItemBall && (n.GridX, n.GridY) == (ball.GridX, ball.GridY));
             var loaded = new StoryState();
             loaded.Restore(host.Story.Snapshot());
             Assert.False(ball.IsPresent(loaded.Has));

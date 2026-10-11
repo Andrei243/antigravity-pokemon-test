@@ -4,9 +4,10 @@
 # Arriving sets what the original's does: the island counts as come to, and it shows on the maps from then on (the
 # original's EnableHiddenLocation: VAR_HIDDEN_LOCATION_FULL_MOON_ISLAND holds its number for the island, 0x0208).
 #
-# The sailor on the pier sails back to Canalave City, to the pier by Sailor Eldritch's boat. The way here is Sailor
-# Eldritch's, once his son lies in his nightmare (plan 02 · S15, part b: the original's TakeShipFromCanalave lands the
-# player at 39, 277, facing west), and so is what the island's sailor says to whoever carries the Lunar Wing back.
+# The sailor on the pier sails back to Canalave City, to the pier by Sailor Eldritch's boat. He is Sailor Eldritch,
+# who brought the player (canalave_city.Ferry, once his son lies in his nightmare: plan 02 · S15, part b; the
+# original's TakeShipFromCanalave lands the player at 39, 277, facing west) and waits by his boat: whoever comes back
+# to him carrying the Lunar Wing is thanked and sailed home without being asked.
 
 script OnEnter
   setflag FLAG_FIRST_ARRIVAL_FULLMOON_ISLAND
@@ -16,6 +17,8 @@ script OnEnter
 
 script Ferry
   face self player
+  # FullmoonIsland_ThatsTheLunarWing: he sails back at once for whoever carries it
+  if item "Lunar Wing" goto Wing
   ask "Seen all you came to see? Shall we sail back to Canalave City?"
   if no goto Stay
   say "Aye, aye! Anchors aweigh!"
@@ -24,4 +27,10 @@ script Ferry
   end
 label Stay
   say "All right, then. Tell me when you've had enough of the quiet."
+  end
+label Wing
+  say "So the Pokémon you met in there was the one they call the Lunar Pokémon. I've heard tell of it, flying from one end of Sinnoh to the other."
+  say "And that shine in your bag... Then that's the Lunar Wing. Thank you. Thank you! It'll wake my boy. Aboard with you, quick!"
+  sound "stairs"
+  warp "Sinnoh" 44 750 left
   end

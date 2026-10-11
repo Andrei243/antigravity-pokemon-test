@@ -102,17 +102,21 @@ public class SnowpointAndLakeAcuityTests
         Assert.Equal(49, game.Tile.Y);
         Assert.Null(game.Present("rival"));
 
-        // Snowpoint City: the temple's guard before its door, the door shut, the sailor on the quay; Candice and
-        // Cynthia wait for the Hall of Fame
+        // Snowpoint City: the temple's guard before its east door, which is shut for good, and the trigger before its
+        // west one, which turns everyone back until the Hall of Fame (plan 02 · S15, part b opened the door behind it);
+        // the sailor on the quay; Candice and Cynthia wait for the Hall of Fame
         game.Arrive("Sinnoh", 366, 200);
         var guard = game.Present("temple_guard", "snowpoint_city")!;
         Assert.Equal((367, 198, Direction.Down), (guard.GridX, guard.GridY, guard.Facing));
-        Assert.Null(game.Map.GetWarpAt(366, 197));
         Assert.Null(game.Map.GetWarpAt(367, 197));
-        Assert.True(game.Map.IsSolid(366, 197));
+        Assert.True(game.Map.IsSolid(367, 197));
+        Assert.Equal("SnowpointTemple1F", game.Map.GetWarpAt(366, 197)?.TargetMap);
+        Assert.True(game.Fires("TempleGuard"));
+        Assert.Equal((366, 198), game.Map.Triggers.Where(t => t.Script == "TempleGuard").Select(t => (t.X, t.Y)).Single());
         Assert.NotNull(game.Present("sailor_ss_spiral", "snowpoint_city"));
-        // (Cynthia is on the quay's map since plan 02 · S15, part a, behind her flag; Candice comes with the temple)
-        Assert.DoesNotContain(game.Map.Everyone, n => n.ScriptFile == "snowpoint_city" && n.Key == "candice");
+        // (Cynthia is on the quay's map since plan 02 · S15, part a, and Candice down the street from the temple since
+        // part b, each behind her flag)
+        Assert.Null(game.Present("candice", "snowpoint_city"));
         Assert.Null(game.Present("cynthia", "snowpoint_city"));
         foreach (string flag in new[] { "FLAG_HIDE_SNOWPOINT_CITY_CANDICE", "FLAG_HIDE_SNOWPOINT_CITY_CYNTHIA", "FLAG_HIDE_ACUITY_CAVERN_UXIE" })
             Assert.True(game.Story.Has(flag), flag);

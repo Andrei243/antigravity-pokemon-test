@@ -5,9 +5,18 @@
   // 206's stands in
   "bgmTrack": "sinnoh/route206",
   "trees": "Round",
-  // Looker and Buck before the mountain's mouth, and the two grunts of Team Galactic who go in ahead of the player
-  // (trigger 0, while VAR_STARK_MOUNTAIN_OUTSIDE_STATE is 0), wait for the story (plan 02 · S15, part b)
+  // The story's (plan 02 · S15, part b; scripts/stark_mountain_outside.txt): the two grunts of Team Galactic at the far
+  // corner of the way round the lava, who go in ahead of whoever steps onto the original's trigger, and Looker and
+  // Buck before the mouth once Charon is caught (both hidden from the start, common.ChapterTwelve). Buck's look is
+  // plan 11's: a youngster stands for him, as on Route 227
+  "triggers": [ { "trigger": 0, "script": "GruntsGoIn" } ],
   "people": {
+    "grunt_m_1": { "name": "Grunt", "script": "Grunt", "still": true },
+    "grunt_m_2": { "name": "Grunt", "script": "Grunt", "still": true },
+    // (Looker stands east of the tile the player is put down on, where the original stands him north of it: from
+    // the field's camera the player's own head would hide him there as he speaks)
+    "looker": { "name": "Looker", "at": [ 752, 233 ], "dialog": [ "Looker: Kaff! This ash, it is everywhere!" ], "still": true },
+    "buck": { "name": "Buck", "npcType": "Youngster", "dialog": [ "Buck: Give me a minute to get my breath back!" ], "still": true },
     "dragon_tamer_darien": {
       "name": "Darien",
       "trainer": {

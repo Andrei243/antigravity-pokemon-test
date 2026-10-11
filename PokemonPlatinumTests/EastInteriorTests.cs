@@ -137,7 +137,8 @@ public class EastInteriorTests
             foreach (var who in map.Everyone)
             {
                 string where = $"{name}: {who.Key} at {who.GridX},{who.GridY}";
-                Assert.False(map.IsSolid(who.GridX, who.GridY), where + " stands in something solid");
+                // (but for whoever lies on a piece of furniture, a little above the floor: the sailor's boy in his bed, plan 02 · S15, part b)
+                Assert.True(!map.IsSolid(who.GridX, who.GridY) || who.Level != null, where + " stands in something solid");
                 Assert.True(map.GetGroundTile(who.GridX, who.GridY) == TileType.Floor, where + " stands on no floor");
                 Assert.True(who.DialogLines.Count > 0 || who.Script != null || who.IsItemBall || who.IsTrainer, where + " has nothing to say");
                 if (who.Script != null) Assert.True(ScriptLibrary.Default.Find(who.Script, name) != null, where + $" runs '{who.Script}', which is nowhere");
@@ -1086,16 +1087,18 @@ public class EastInteriorTests
     [Fact]
     public void TheStorysPeopleOfTheseRoomsAreLeftForItsChapters()
     {
-        // Sailor Eldritch at home (the Lunar Wing's errand, plan 02 · S15b) and the reporter in Canalave's west house
-        // (plan 08's programmes) are in the original's rooms and not in ours yet. Byron is in Iron Island's cabin since
-        // plan 02 · S15, part a, behind his flag (TheNationalPokedexAndTheBattleZoneTests), and nobody else is
-        Assert.DoesNotContain(Room("CanalaveCitySailorEldritchHouse").Everyone, n => n.Key == "sailor_eldritch");
+        // The reporter in Canalave's west house (plan 08's programmes) is in the original's room and not in ours yet.
+        // Byron is in Iron Island's cabin since plan 02 · S15, part a, behind his flag
+        // (TheNationalPokedexAndTheBattleZoneTests), and Sailor Eldritch at home since part b, behind his, with the boy
+        // in his bed (StarkMountainAndTheLegendaryPokemonTests)
+        Assert.Equal("FLAG_HIDE_CANALAVE_CITY_SAILOR_ELDRITCH_HOUSE_SAILOR_ELDRITCH", Room("CanalaveCitySailorEldritchHouse").Everyone.Single(n => n.Key == "sailor_eldritch").HiddenBy);
         Assert.Equal("FLAG_HIDE_IRON_ISLAND_HOUSE_BYRON", Assert.Single(Room("IronIslandHouse").Everyone).HiddenBy);
         Assert.Empty(Room("CanalaveCityWestHouse").Everyone);
         // The sailor's boy and his mother are as they are before the nightmare
         var home = Room("CanalaveCitySailorEldritchHouse");
-        Assert.Equal(new[] { "little_boy", "pokefan_f" }, home.Everyone.Select(n => n.Key).Order());
-        Assert.All(home.Everyone, n => Assert.NotEmpty(n.DialogLines));
+        home.ApplyPresence(_ => false);
+        Assert.Equal(new[] { "little_boy", "pokefan_f", "sailor_eldritch" }, home.NPCs.Select(n => n.Key).Order());
+        Assert.All(home.NPCs, n => Assert.NotEmpty(n.DialogLines));
     }
 }
 

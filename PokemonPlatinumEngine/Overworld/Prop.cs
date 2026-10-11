@@ -211,6 +211,8 @@ public enum PropType
     /// it. Past the decorations: the room's own tiles say that it blocks.
     /// </summary>
     VendingMachine,
+    /// <summary>The Magma Stone on its place in Stark Mountain's last room: a thing of the map (<see cref="NPC.MagmaStoneType"/>), drawn as a card (plan 02 · S15, part b).</summary>
+    MagmaStone,
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>

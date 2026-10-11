@@ -6,6 +6,11 @@
     { "key": "route_209", "name": "Route 209", "cells": "17,22", "special": [ "Spiritomb" ], "how": "The Hallowed Tower" },
     // Plan 02 · S13: the two guardians that wait in the caverns of their lakes (Mesprit roams, and has no place of its own)
     { "key": "lake_valor", "name": "Lake Valor", "cells": "22,23", "special": [ "Azelf" ], "how": "Valor Cavern" },
-    { "key": "lake_acuity", "name": "Lake Acuity", "cells": "9,7", "special": [ "Uxie" ], "how": "Acuity Cavern" }
+    { "key": "lake_acuity", "name": "Lake Acuity", "cells": "9,7", "special": [ "Uxie" ], "how": "Acuity Cavern" },
+    // Plan 02 · S15, part b: Heatran in the heart of Stark Mountain, Regigigas at the foot of Snowpoint Temple, and
+    // Cresselia, which rests on Fullmoon Island until it is come upon and roams from then on
+    { "key": "stark_mountain", "name": "Stark Mountain", "cells": "23,7", "special": [ "Heatran" ], "how": "The heart of the mountain" },
+    { "key": "snowpoint_temple", "name": "Snowpoint Temple", "cells": "11,6", "special": [ "Regigigas" ], "how": "Its deepest room" },
+    { "key": "fullmoon_island", "name": "Fullmoon Island", "cells": "1,8", "special": [ "Cresselia" ], "how": "The island's wood, then roaming" }
   ]
 }

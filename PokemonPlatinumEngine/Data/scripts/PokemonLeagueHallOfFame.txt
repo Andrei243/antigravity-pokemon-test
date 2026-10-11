@@ -17,8 +17,8 @@
 # game goes straight on in the room, the save having just been written there (docs/mechanics/rulings.md, "The
 # eleventh chapter").
 #
-# Not here, and why: Terastallization at the League's door (decision 06 · 2; plan 06 · R23) and the Four's and
-# Cynthia's rematch teams (plan 02 · S15, by FLAG_ARRESTED_CHARON_STARK_MOUNTAIN).
+# Not here, and why: Terastallization at the League's door (decision 06 · 2; plan 06 · R23). The Four's and
+# Cynthia's rematch teams are their rooms' own (plan 02 · S15, part b, by FLAG_ARRESTED_CHARON_STARK_MOUNTAIN).
 
 
 # PokemonLeagueHallOfFame_OnFrame_EnterHallOfFame
@@ -110,10 +110,13 @@ script LayBall
 # name. It sets flags and variables and nothing else, so a save that entered the Hall of Fame before this scene was
 # written is given it with no screen (Story/StoryMigration.cs, version 17).
 #
-# The legendary Pokémon are put back where they weren't caught. Six of the flags it asks about are set by scenes of
-# the post-game that aren't written yet (plan 02 · S15: FLAG_CAUGHT_DIALGA, FLAG_CAUGHT_PALKIA, FLAG_CAUGHT_HEATRAN,
-# FLAG_CAUGHT_REGIGIGAS, FLAG_TALKED_TO_BATTLEGROUND_BUCK, FLAG_TALKED_TO_VEILSTONE_STORE_B1F_PROF_ROWAN); they are
-# asked here already, as the original asks them, and StoryTests.AskedAheadOfTheirScenes lists them until then.
+# The legendary Pokémon are put back where they weren't caught: Heatran in Stark Mountain's heart and Regigigas in
+# Snowpoint Temple (their own scripts, plan 02 · S15, part b, hide each after a battle that didn't catch it), the
+# lakes' guardians and Giratina, and Cresselia on Fullmoon Island once a roaming one has been knocked out. Four of the
+# flags it asks about are set by scenes that aren't written yet (plan 02 · S15, part c and plan 01 · M11, part d:
+# FLAG_CAUGHT_DIALGA, FLAG_CAUGHT_PALKIA, FLAG_TALKED_TO_BATTLEGROUND_BUCK,
+# FLAG_TALKED_TO_VEILSTONE_STORE_B1F_PROF_ROWAN); they are asked here already, as the original asks them, and
+# StoryTests.AskedAheadOfTheirScenes lists them until then.
 script Victory
   clearflag FLAG_HIDE_DAY_CARE_GYM_GUIDE
   clearflag FLAG_ALT_MUSIC_CHAMPION_ROOM

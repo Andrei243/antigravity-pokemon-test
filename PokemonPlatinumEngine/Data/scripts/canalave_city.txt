@@ -245,14 +245,48 @@ label After
   end
 
 
+# CanalaveCity_SailorEldritch. Iron Island is where he always sails. While his son lies in his nightmare and the
+# player has seen it (VAR_LUNAR_WING_EVENT_STATE 2, plan 02 · S15, part b: CanalaveCitySailorEldritchHouse.txt) he asks
+# only whether they will go to Fullmoon Island for him, and with the Lunar Wing in the bag sends them to his son; from
+# the day the boy has been looked at, Fullmoon Island is one of the places he offers (the original lands the player
+# on its pier at 39, 277, facing west). Newmoon Island he never offers here: the original adds it once the Harbor
+# Inn's dream has taken the player there, which belongs to one of its events (docs/mechanics/rulings.md).
 script Ferry
   face self player
+  if var VAR_LUNAR_WING_EVENT_STATE == 2 goto ForMyBoy
   say "Ahoy there! I sail folk over to Iron Island and back again, whenever the sea's kind."
+  if flag FLAG_TALKED_TO_CANALAVE_CITY_SAILOR_ELDRITCH_HOUSE_LITTLE_BOY goto Where
   ask "Fancy a trip across to Iron Island?"
   if no goto Stay
+label IronIsland
   say "Right you are. All aboard, and hold on to something!"
   warp "Sinnoh" 100 502 right
   end
+label Where
+  choose "Where shall I take you?" "Iron Island" "Fullmoon Island" "Nowhere today"
+  if result == 0 goto IronIsland
+  if result == 2 goto Stay
+  say "Fullmoon Island it is. Anchors aweigh!"
+  sound "stairs"
+  warp "Sinnoh" 39 277 left
+  end
 label Stay
   say "No hurry. The boat's here whenever you want it."
+  end
+# CanalaveCity_AskGoingToFullmoonIsland
+label ForMyBoy
+  if item "Lunar Wing" goto TakeIt
+  ask "...You. You'd go to Fullmoon Island, for my boy?"
+  if no goto Waiting
+  say "His mother and I are counting on you! You're the only one who can bring him out of that nightmare."
+  say "There's a thing called the Lunar Wing on Fullmoon Island, and they say it will wake him. I went myself. I couldn't find it..."
+  sound "stairs"
+  warp "Sinnoh" 39 277 left
+  end
+label Waiting
+  say "Things to see to first? I'll be here, with the boat ready."
+  say "Please. We don't know who else to ask."
+  end
+label TakeIt
+  say "That feather... Is that the Lunar Wing? Then take it to my son! Please, as quick as you can!"
   end

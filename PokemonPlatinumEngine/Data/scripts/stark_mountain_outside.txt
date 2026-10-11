@@ -1,10 +1,121 @@
-# Stark Mountain's foot and mouth (plan 01 · M10, part b). docs/scripts.md describes the language
-# (scripts_stark_mountain_outside.s).
+# Stark Mountain's foot and mouth (plan 01 · M10, part b; its story plan 02 · S15, part b). docs/scripts.md describes
+# the language; the lines are our own, on the original's beats (scripts_stark_mountain_outside.s).
 #
-# Arriving sets what the original's does. The two grunts of Team Galactic who go in ahead of the player (the
-# original's trigger at 752, 235 while VAR_STARK_MOUNTAIN_OUTSIDE_STATE is 0) and Looker and Buck's parting once the
-# Magma Stone is back in its place are the story's (plan 02 · S15, part b).
+# The way to the mouth runs round the pool of lava: east of it, along its south side, up its west side and back along
+# the top. Two grunts of Team Galactic stand at the far corner, on that way. Whoever steps onto the tile where the
+# road reaches the pool (the original's trigger at 752, 235, while VAR_STARK_MOUNTAIN_OUTSIDE_STATE is 0) sees them
+# across the lava: they walk to the mouth, wonder aloud whether old Charon can ever stand in for their boss, and go in
+# (FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_GRUNTS, state 1).
+#
+# Once Charon has been taken in the mountain's heart (stark_mountain_room_3.txt, which sets the state to 2, shows
+# Looker and Buck here and puts the player down before the mouth), the three part as the place is come to: Looker has
+# the Magma Stone and what moving it is said to wake, Buck takes it back in to where it belongs and comes out again
+# with an invitation to his place in the Survival Area, and Looker says goodbye to Sinnoh (state 3). Buck's place is
+# the Battleground (plan 02 · S15, part c), and it is there, once he has been spoken to, that Heatran is let wake.
+#
+# Stood in for: Looker's own tune (plan 05 · A6) and Buck's look (plan 11 · C6: a youngster stands for him). Buck's
+# way off is the road round the pool as far as its south-west corner, where the original walks him the whole way
+# round out of sight. Looker stands east of the player (752, 233, the overlay's "at") where the original stands him
+# to the north, and Buck comes back out to his own tile, a step further than the original's.
+
 
 script OnEnter
   setflag FLAG_FIRST_ARRIVAL_STARK_MOUNTAIN_EXTERIOR
+  # StarkMountainOutside_OnFrame_LookerBuck
+  if var VAR_STARK_MOUNTAIN_OUTSIDE_STATE == 2 call Parting
+  end
+
+
+# StarkMountainOutside_CoordEvent_Grunts: seen from across the lava
+script GruntsGoIn
+  camera pan 747 233 0.8
+  move grunt_m_1 right 4
+  wait 0.25
+  move grunt_m_2 up 1 right 3
+  waitmoves
+  speaker "Grunt"
+  say "This is it. Stark Mountain! What we're after is right down in the middle of it. Come on. Let's get it over with."
+  move grunt_m_1 down 2 right 4 up 1
+  wait 0.25
+  move grunt_m_2 right 1 down 2 right 3 up 1
+  waitmoves
+  face grunt_m_2 right
+  say "Sure, but... that old man. Can he really take over? He's no Master Cyrus, is he?"
+  face grunt_m_1 left
+  wait 0.4
+  face grunt_m_1 up
+  say "You're telling me. Old Charon may call himself a Commander, but nobody takes Master Cyrus's place."
+  say "...I've been thinking this might be a good moment to be done with Team Galactic altogether."
+  move grunt_m_1 up 2
+  wait 0.25
+  move grunt_m_2 right 1 up 2
+  waitmoves
+  sound "stairs"
+  hide grunt_m_1
+  hide grunt_m_2
+  setflag FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_GRUNTS
+  setvar VAR_STARK_MOUNTAIN_OUTSIDE_STATE 1
+  camera release 0.8
+  end
+
+
+# StarkMountainOutside_OnFrame_LookerBuck: the player stands before the mouth (751, 233), Buck to the west and Looker
+# to the east (the original stands him to the north, where the player's own head would hide him from the field's camera)
+script Parting
+  face player right
+  face looker left
+  face buck right
+  speaker "Looker"
+  say "Haaah! The air of the outside! It is delicious, no?"
+  say "...Hkk! Kaff! Gah! I take it back. It is nothing but ash!"
+  wait 0.5
+  say "Now then, the two of you. Look. This is what they came for: the Magma Stone."
+  say "The old stories say that to move it is to wake the Pokémon Heatran, and that when Heatran wakes, Stark Mountain erupts."
+  say "...And I, I have moved it. It is here, in my coat. Hmm. What is a man to do?"
+  face player left
+  speaker "Buck"
+  say "Easy, mister! Hand it over. I know just where it goes. It'll be back in its place before the mountain's even noticed!"
+  walk buck up 2
+  sound "stairs"
+  hide buck
+  face looker up
+  wait 0.4
+  face looker left
+  face player right
+  speaker "Looker"
+  say "That boy has the energy of ten, yes?"
+  say "{player}, I owe you the reason I am here. After we parted on Mt. Coronet I went through their hideout from the roof to the cellar, and what I found there was Charon's plan."
+  say "It led me to this mountain, and to a very long day spent as a rock. And now that he is taken, my work in Sinnoh is done."
+  wait 0.5
+  show buck
+  sound "stairs"
+  walk buck down 2
+  face buck right
+  face player left
+  speaker "Buck"
+  say "Done! The Magma Stone's back where it belongs. Heatran can sleep on. Probably!"
+  say "And {player}! You're something else as a Trainer. Come by my place some time, won't you? It's in the Survival Area. See you there!"
+  walk buck down 1 left 5 up 2 left 3
+  walk buck down 12 fast
+  hide buck
+  setflag FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_BUCK
+  face player right
+  face looker left
+  speaker "Looker"
+  say "And I, too, must be on my way."
+  say "Where I come from they say that a good meeting is paid for at the parting. For years I took it for a pretty phrase. Today I find it is simply true."
+  say "Farewell, {player}, my friend. Wherever I am sent next, I shall not forget Sinnoh. Or you."
+  fade out 0.6
+  hide looker
+  setflag FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_LOOKER
+  fade in 0.6
+  setvar VAR_STARK_MOUNTAIN_OUTSIDE_STATE 3
+  return
+
+
+# Whoever gets a word with the grunts before they move (nobody can: the trigger lies on the only way round to them)
+script Grunt
+  face self player
+  speaker "Grunt"
+  say "Hey! No sightseers! This mountain is Team Galactic's business today."
   end

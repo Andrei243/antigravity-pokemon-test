@@ -137,9 +137,11 @@ public class NorthInteriorTests
     public void WhatIsStillShutInTheseAreasIsSomeoneElses()
     {
         // Part d built the three move tutors' houses (Snowpoint City's east house, the Survival Area's north house and
-        // Route 228's north house: FinalInteriorTests). Snowpoint Temple's two doors, the Battleground and the Rock Peak
-        // Ruins are the story's; two houses of Sunyshore City are ones the original's own files call unused
-        Assert.Equal(new[] { 2, 6 }, Sinnoh.Overlay("snowpoint_city")!.Locked);
+        // Route 228's north house: FinalInteriorTests). The Battleground and the Rock Peak Ruins are the story's; two
+        // houses of Sunyshore City are ones the original's own files call unused. Snowpoint Temple's west door is open
+        // since plan 02 · S15, part b (the trigger before it keeps it); its east one, which the guard never leaves,
+        // stays shut
+        Assert.Equal(new[] { 6 }, Sinnoh.Overlay("snowpoint_city")!.Locked);
         Assert.Equal(new[] { 7, 8 }, Sinnoh.Overlay("sunyshore_city")!.Locked);
         Assert.Equal(new[] { 0 }, Sinnoh.Overlay("survival_area")!.Locked);
         Assert.Equal(new[] { 4, 5 }, Sinnoh.Overlay("route_228")!.Locked);

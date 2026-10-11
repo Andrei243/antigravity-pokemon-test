@@ -215,19 +215,16 @@ internal static class WorldWalk
     /// these too, as the player will once the scenes open them. (The Distortion World's two arrivals stood here until
     /// plan 02 · S12's scenes led there: Cynthia's question at the torn pillar and the portal in Turnback Cave's last
     /// room, which the walk follows by itself; so did the Fight Area's pier until plan 02 · S15, part a gave Snowpoint
-    /// City's sailor his ship, and Pal Park's lobby until the same session took Route 221's workers from its doors.)
-    /// The two islands of plan 01 ·
-    /// M10, part b, where Canalave City's sailor takes the player once the story lets him (the original's
-    /// TakeShipFromCanalave to 39, 277 of Fullmoon Island, facing west, and to 152, 277 of Newmoon Island, facing east,
-    /// where the Harbor Inn's bed also leaves the player; plan 02 · S15 gives the sailor those two answers), and
-    /// Snowpoint Temple, whose doors stay shut until Candice lets the Champion in (plan 02 · S15: the tile inside its
-    /// mat, where a door leaves whoever comes in).
+    /// City's sailor his ship, and Pal Park's lobby until the same session took Route 221's workers from its doors;
+    /// Fullmoon Island's pier until plan 02 · S15, part b gave Canalave City's sailor that answer, and Snowpoint
+    /// Temple's hall until the same session opened its door.)
+    /// What is left is Newmoon Island of plan 01 · M10, part b, where the original's Harbor Inn leaves whoever has the
+    /// Member Card of one of its events and where Canalave City's sailor sails afterwards (its TakeShipFromCanalave to
+    /// 152, 277, facing east): the session that brings the event's gifts writes the way there.
     /// </summary>
     public static readonly MapSpot[] StoryArrivals =
     {
-        new("Sinnoh", 39, 277, Direction.Left),
         new("Sinnoh", 152, 277, Direction.Right),
-        new("SnowpointTemple1F", 8, 12, Direction.Up),
     };
 
     /// <summary>The whole game from where each region that is built begins, and from where only the story takes the player.</summary>

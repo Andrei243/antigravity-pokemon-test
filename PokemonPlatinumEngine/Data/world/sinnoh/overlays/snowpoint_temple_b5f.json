@@ -1,8 +1,12 @@
 {
   "area": "snowpoint_temple_b5f",
   "climate": "Frozen",
-  "bgmTrack": "sinnoh/forest"
+  "bgmTrack": "sinnoh/forest",
   // The temple's deepest room (plan 01 · M10, part b): ice round a dais of stone. Regigigas stands on it, asleep
-  // until Regirock, Regice and Registeel are brought before it (hidden by FLAG_HIDE_SNOWPOINT_TEMPLE_B5F_REGIGIGAS
-  // once it is caught or beaten): it is the story's (plan 02 · S15, part b)
+  // until Regirock, Regice and Registeel are brought before it (plan 02 · S15, part b;
+  // scripts/snowpoint_temple_b5f.txt; hidden by FLAG_HIDE_SNOWPOINT_TEMPLE_B5F_REGIGIGAS once it is caught or beaten).
+  // The dais is cave floor, so the battle is fought in a cave
+  "people": {
+    "regigigas": { "name": "Regigigas", "script": "Regigigas", "still": true }
+  }
 }

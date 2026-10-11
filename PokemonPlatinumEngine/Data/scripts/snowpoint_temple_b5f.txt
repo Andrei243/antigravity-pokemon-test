@@ -1,0 +1,46 @@
+# The deepest room of Snowpoint Temple (plan 02 · S15, part b). docs/scripts.md describes the language; the lines are
+# our own, on the original's beats (scripts_snowpoint_temple_b5f.s).
+#
+# Regigigas stands on its dais in the middle of the ice, as still as a statue, and reads as one: the words cut under
+# it say that the king rises when the three are gathered. With Regirock, Regice and Registeel all in the team it
+# wakes (FLAG_AWAKENED_REGIGIGAS, for good) and battles, at level 1, as in Platinum; the battle may be run from. Lost,
+# the player wakes in a Pokémon Center and Regigigas waits here still, awake. Caught, it is gone for good
+# (FLAG_CAUGHT_REGIGIGAS). Knocked out or run from, it is gone from the room (the original hides it as the room loads
+# again behind the battle) until the Hall of Fame is next entered, whose script brings it back while it hasn't been
+# caught, for whoever has the National Pokédex (PokemonLeagueHallOfFame.txt).
+#
+# The three it asks for are not to be had in Sinnoh by the story alone: Platinum opens their rooms (the Rock Peak
+# Ruins on Route 228, the Iceberg Ruins in Mt. Coronet, the Iron Ruins on Iron Island) only to whoever travels with a
+# Regigigas from one of its events, and here those rooms stay shut (docs/mechanics/rulings.md, "After the Hall of
+# Fame, part b"). A team that has the three by trade or from another region wakes it all the same.
+#
+# Stood in for until plan 09 lands (L12, L14): the original shakes the statue itself as it wakes; here the picture
+# shakes, with a rumble.
+
+
+# SnowpointTempleB5F_Regigigas
+script Regigigas
+  speaker none
+  if flag FLAG_AWAKENED_REGIGIGAS goto Wakes
+  say "It has the shape of a Pokémon, and the stillness of a statue. No statue ever felt so heavy with strength."
+  say "{player} read the words cut into the dais: \"One of rock. One of ice. One of steel. Bring the three together before the king, and the king shall rise.\""
+  if not has "Regirock" end
+  if not has "Regice" end
+  if not has "Registeel" end
+  setflag FLAG_AWAKENED_REGIGIGAS
+  wait 0.4
+  sound "thunder_rumble"
+  camera shake 1.2
+  wait 0.3
+label Wakes
+  cry "Regigigas"
+  say "Zu... zut... gigigi!"
+  wildbattle "Regigigas" 1
+  setflag FLAG_HIDE_SNOWPOINT_TEMPLE_B5F_REGIGIGAS
+  hide regigigas
+  if result == 3 goto Caught
+  say "Regigigas stood still as stone again, and then it was gone from sight..."
+  end
+label Caught
+  setflag FLAG_CAUGHT_REGIGIGAS
+  end

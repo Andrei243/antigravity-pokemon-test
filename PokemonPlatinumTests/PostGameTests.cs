@@ -209,8 +209,13 @@ public class PostGameTests
     public void AnIslandsSailorSailsBackToCanalaveCity(string island, int landX, int landY, string arrival, string shown, int number)
     {
         var map = Overworld;
-        // Where the original's TakeShipFromCanalave puts the player down: on the island's pier, beside its sailor
-        Assert.Contains(WorldWalk.StoryArrivals, s => (s.Map, s.X, s.Y) == ("Sinnoh", landX, landY));
+        // Where the original's TakeShipFromCanalave puts the player down: on the island's pier, beside its sailor.
+        // Fullmoon Island's is where Canalave City's sailor lands whoever he takes there (plan 02 · S15, part b);
+        // Newmoon Island's is still the story's alone, one of the original's events
+        if (island == "fullmoon_island")
+            Assert.Contains(ScriptLibrary.Default.Find("Ferry", "canalave_city")!.Everything(), i => i.Op == Op.Warp && (i.Name, i.X, i.Y) == ("Sinnoh", landX, landY));
+        else
+            Assert.Contains(WorldWalk.StoryArrivals, s => (s.Map, s.X, s.Y) == ("Sinnoh", landX, landY));
         Assert.Equal(island, AreaKey(map, landX, landY));
         Assert.True(map.IsWalkable(landX, landY));
         var sailor = Assert.Single(PeopleOf(map, island));
@@ -235,13 +240,14 @@ public class PostGameTests
         Assert.True(story.Has(arrival));
         Assert.Equal(number, story.Var(shown));
 
-        // The wood in the island's middle: two tiles in, two tiles out, and nobody in it until its Pokémon's session
+        // The wood in the island's middle: two tiles in, two tiles out; Cresselia and her Lunar Wing in Fullmoon
+        // Island's (plan 02 · S15, part b), and nobody in Newmoon Island's until its Pokémon's session
         var wood = BuiltMaps.Value[Sinnoh.MapOf(island + "_forest")!.Name];
         var doors = map.Warps.Where(w => AreaKey(map, w.SourceX, w.SourceY) == island).ToList();
         Assert.Equal(2, doors.Count);
         Assert.All(doors, d => Assert.Equal(wood.Name, d.TargetMap));
         Assert.Equal(2, wood.Warps.Count(w => w.TargetMap == "Sinnoh" && AreaKey(map, w.TargetX, w.TargetY) == island && map.IsWalkable(w.TargetX, w.TargetY)));
-        Assert.Empty(wood.Everyone);
+        Assert.Equal(island == "fullmoon_island" ? new[] { "cresselia", "item_lunar_wing" } : Array.Empty<string>(), wood.Everyone.Select(n => n.Key!).Order());
         Assert.Equal(island == "fullmoon_island" ? "sinnoh/forest" : "sinnoh/turnback_cave", wood.Areas.Single(a => a.Open).BgmTrack);
     }
 
@@ -250,19 +256,19 @@ public class PostGameTests
     {
         var map = Overworld;
         var hall = BuiltMaps.Value["SnowpointTemple1F"];
-        // Two doors side by side, as the original's, both shut until the story lets the Champion in (plan 02 · S15):
-        // the guard stands before the east one, and the tile before the west one is the trigger that turns the player
-        // back while VAR_SNOWPOINT_CITY_STATE is 0 (plan 02 · S11, part a)
+        // Two doors side by side, as the original's. The guard stands before the east one and never leaves it, so it
+        // stays shut; the west one leads in, and the tile before it is the trigger that turns the player back while
+        // VAR_SNOWPOINT_CITY_STATE is 0 (plan 02 · S11, part a), which is until Candice lets a Champion with the
+        // National Pokédex in (plan 02 · S15, part b)
         var doors = Sinnoh.Area("snowpoint_city")!.Warps.Select((w, i) => (Warp: w, Number: i)).Where(d => d.Warp.To == "snowpoint_temple_1f").ToList();
         Assert.Equal(new[] { (366, 197, 2), (367, 197, 6) }, doors.Select(d => (d.Warp.X, d.Warp.Z, d.Number)));
-        Assert.All(doors, d =>
-        {
-            Assert.Contains(d.Number, Sinnoh.Overlay("snowpoint_city")!.Locked!);
-            Assert.Null(map.GetWarpAt(d.Warp.X, d.Warp.Z));
-            Assert.True(map.IsSolid(d.Warp.X, d.Warp.Z));
-        });
-        // Until then the walk of the whole game sets out from the tile inside the mat, where a door would leave it
-        Assert.Contains(WorldWalk.StoryArrivals, s => (s.Map, s.X, s.Y) == ("SnowpointTemple1F", 8, 12));
+        Assert.DoesNotContain(2, Sinnoh.Overlay("snowpoint_city")!.Locked!);
+        Assert.Equal(("SnowpointTemple1F", 8, 12), (map.GetWarpAt(366, 197)!.TargetMap, map.GetWarpAt(366, 197)!.TargetX, map.GetWarpAt(366, 197)!.TargetY));
+        Assert.Contains(6, Sinnoh.Overlay("snowpoint_city")!.Locked!);
+        Assert.Null(map.GetWarpAt(367, 197));
+        Assert.True(map.IsSolid(367, 197));
+        // The walk of the whole game comes in by that door, and no longer sets out from inside it
+        Assert.DoesNotContain(WorldWalk.StoryArrivals, s => s.Map == "SnowpointTemple1F");
         Assert.True(hall.IsWalkable(8, 12));
         var guard = Assert.Single(PeopleOf(map, "snowpoint_city"), n => n.Key == "temple_guard");
         Assert.Equal((367, 198), (guard.GridX, guard.GridY));
@@ -303,7 +309,7 @@ public class PostGameTests
         Assert.Equal(1, BuiltMaps.Value["SnowpointTempleB4F"].Everyone.Count(n => n.NpcType == NPC.BoulderType));
         Assert.Equal("Calcium", Assert.Single(BuiltMaps.Value["SnowpointTempleB1F"].Everyone, n => n.IsItemBall).Item);
         Assert.Equal("Full Restore", Assert.Single(BuiltMaps.Value["SnowpointTempleB3F"].HiddenItems.Values).Item);
-        Assert.Empty(BuiltMaps.Value["SnowpointTempleB5F"].Everyone);
+        Assert.Equal("regigigas", Assert.Single(BuiltMaps.Value["SnowpointTempleB5F"].Everyone).Key);
         Assert.Contains("Sneasel", hall.Areas.Single(a => a.Open).WildEncounters.Select(e => e.SpeciesName));
         Assert.Contains("Jynx", BuiltMaps.Value["SnowpointTempleB5F"].Areas.Single(a => a.Open).WildEncounters.Select(e => e.SpeciesName));
 
@@ -503,10 +509,11 @@ public class PostGameTests
     [Fact]
     public void TheStorysPeopleWaitForTheStory()
     {
-        // Whoever the original's scenes bring on (Buck, Looker, Team Galactic and Charon, Heatran, the Magma Stone,
-        // Regigigas, Cresselia and her Lunar Wing, Darkrai, Shaymin, the Frontier's reporter) is in the area's file
-        // under their own flag and not on the map: plan 02 · S15 and the event gifts' session place them
-        var waiting = new (string Area, string Id, string Flag)[]
+        // Whoever the original's scenes bring on is in the area's file under their own flag. Plan 02 · S15, part b placed
+        // Stark Mountain's (Buck, Looker, Team Galactic and Charon, Heatran), Regigigas, and Cresselia and her Lunar
+        // Wing, each on the original's tile behind the original's flag (StarkMountainAndTheLegendaryPokemonTests);
+        // Darkrai, Shaymin and the Frontier's reporter are still not on the maps: the event gifts' session places them
+        var placed = new (string Area, string Id, string Flag)[]
         {
             ("stark_mountain_outside", "looker", "FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_LOOKER"), ("stark_mountain_outside", "buck", "FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_BUCK"),
             ("stark_mountain_outside", "grunt_m_1", "FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_GRUNTS"), ("stark_mountain_outside", "grunt_m_2", "FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_GRUNTS"),
@@ -516,7 +523,20 @@ public class PostGameTests
             ("stark_mountain_room_3", "charon", "FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_TEAM_GALACTIC"), ("stark_mountain_room_3", "croagunk", "FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_CROAGUNK"),
             ("stark_mountain_room_3", "rock_smash_looker", "FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_ROCK_SMASH_LOOKER"),
             ("snowpoint_temple_b5f", "regigigas", "FLAG_HIDE_SNOWPOINT_TEMPLE_B5F_REGIGIGAS"),
-            ("fullmoon_island_forest", "cresselia", "FLAG_HIDE_FULLMOON_ISLAND_FOREST_CRESSELIA"), ("fullmoon_island_forest", "item_lunar_wing", "FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING"),
+            ("fullmoon_island_forest", "cresselia", "FLAG_HIDE_FULLMOON_ISLAND_FOREST_CRESSELIA"), ("fullmoon_island_forest", "item_lunar_wing", "FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING")
+        };
+        foreach (var (area, id, flag) in placed)
+        {
+            var on = BuiltMaps.Value[Sinnoh.MapOf(area)!.Name];
+            var file = Assert.Single(Sinnoh.Area(area)!.Objects, o => o.Id == id);
+            Assert.Equal(flag, file.HiddenBy);
+            var there = Assert.Single(PeopleOf(on, area), n => n.Key == id);
+            // (but Looker before the mountain's mouth, whom the overlay stands a tile aside, clear of the player's head)
+            var tile = (area, id) == ("stark_mountain_outside", "looker") ? (752, 233) : (file.X, file.Z);
+            Assert.Equal((tile.Item1, tile.Item2, flag), (there.GridX, there.GridY, there.HiddenBy));
+        }
+        var waiting = new (string Area, string Id, string Flag)[]
+        {
             ("newmoon_island_forest", "darkrai", "FLAG_HIDE_NEWMOON_ISLAND_FOREST_DARKRAI"), ("flower_paradise", "shaymin", "FLAG_HIDE_FLOWER_PARADISE_SHAYMIN"),
             ("battle_frontier", "reporter", "FLAG_HIDE_BATTLE_FRONTIER_REPORTER")
         };
@@ -526,15 +546,16 @@ public class PostGameTests
             Assert.Equal(flag, Assert.Single(Sinnoh.Area(area)!.Objects, o => o.Id == id).HiddenBy);
             Assert.DoesNotContain(PeopleOf(on, area), n => n.Key == id);
         }
-        // Stark Mountain's last room is the story's from end to end: nobody stands in it, and nothing lies there
-        Assert.Empty(BuiltMaps.Value["StarkMountainRoom3"].Everyone);
+        // The Magma Stone and the rock Looker hides as have the looks of an obstacle in the original, so its own objects
+        // stay held back and the story stands things of its own on their tiles, which no field move clears
         Assert.Equal(new[] { "magma_stone", "rock_smash_looker" }, Sinnoh.Overlay("stark_mountain_room_3")!.HeldBack);
-        Assert.Equal(new[] { "item_lunar_wing" }, Sinnoh.Overlay("fullmoon_island_forest")!.HeldBack);
-        // The triggers their scenes hang on are in the files too, at the original's tiles, and do nothing yet
+        Assert.DoesNotContain(BuiltMaps.Value["StarkMountainRoom3"].Everyone, n => n.IsObstacle);
+        Assert.Null(Sinnoh.Overlay("fullmoon_island_forest")!.HeldBack);
+        // The triggers their scenes hang on are the original's, at its tiles, each with its scene's script
         Assert.Equal((752, 235, "VAR_STARK_MOUNTAIN_OUTSIDE_STATE"), Sinnoh.Area("stark_mountain_outside")!.Triggers.Select(t => (t.X, t.Z, t.Variable)).Single());
         Assert.Equal(new[] { (42, 69), (42, 70), (47, 3) }, Sinnoh.Area("stark_mountain_room_2")!.Triggers.Select(t => (t.X, t.Z)));
-        Assert.DoesNotContain(Overworld.Triggers, t => AreaKey(Overworld, t.X, t.Y) == "stark_mountain_outside");
-        Assert.Empty(BuiltMaps.Value["StarkMountainRoom2"].Triggers);
+        Assert.Equal("GruntsGoIn", Assert.Single(Overworld.Triggers, t => AreaKey(Overworld, t.X, t.Y) == "stark_mountain_outside").Script);
+        Assert.Equal(new[] { "BuckJoins", "PlayerTurnsBack", "BuckGoesAhead" }, BuiltMaps.Value["StarkMountainRoom2"].Triggers.Select(t => t.Script));
     }
 
     [Fact]
@@ -604,7 +625,9 @@ public class PostGameTests
         Assert.Equal("StarkMountainRoom2", Assert.Single(first.Warps, w => w.TargetMap != "Sinnoh").TargetMap);
         Assert.Contains(second.Warps, w => w.TargetMap == "StarkMountainRoom3");
         Assert.Contains("Stark Mountain", outside.Signboards[(748, 232)]);
+        // (with the first room's scene behind the player: Team Galactic's is plan 02 · S15, part b's, which has its own tests)
         var story = new StoryState();
+        story.SetVar("VAR_STARK_MOUNTAIN_ROOM_1_STATE", 1);
         Run(ScriptLibrary.OnEnter, "stark_mountain_outside", new HeadlessScriptHost(story));
         Run(ScriptLibrary.OnEnter, "stark_mountain_room_1", new HeadlessScriptHost(story));
         Assert.True(story.Has("FLAG_FIRST_ARRIVAL_STARK_MOUNTAIN_EXTERIOR") && story.Has("FLAG_FIRST_ARRIVAL_STARK_MOUNTAIN_INTERIOR"));

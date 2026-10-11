@@ -39,7 +39,8 @@
     // The Psyduck watching the boats (plan 10 · F1)
     "psyduck": { "name": "Psyduck", "script": "Psyduck", "dialog": [ "Psy...? Psyduck?" ] },
     // He sails the player to Iron Island and back (scripts/canalave_city.txt)
-    "sailor_eldritch": { "name": "Sailor Eldritch", "script": "Ferry" },
+    // (a gentleman stands for him, as for the sailor he is on Fullmoon Island's pier and at home: plan 11's look)
+    "sailor_eldritch": { "name": "Sailor Eldritch", "npcType": "Gentleman", "script": "Ferry" },
     // The townspeople talk of the tremor once Lake Valor has blown (FLAG_LAKE_VALOR_EXPLODED, scripts/canalave_city.txt)
     "collector": {
       "name": "Collector",

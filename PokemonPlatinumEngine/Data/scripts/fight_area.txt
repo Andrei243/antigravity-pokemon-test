@@ -18,6 +18,8 @@
 script OnEnter
   # FightArea_OnTransition: until the battle is won the rival waits before the gate
   if var VAR_FIGHT_AREA_STATE == 1 place rival 655 426 up
+  # FightArea_HideRival: with Charon caught at Stark Mountain he trains in the Survival Area (plan 02 · S15, part b)
+  if var VAR_STARK_MOUNTAIN_ROOM_3_STATE >= 1 setflag FLAG_HIDE_FIGHT_AREA_RIVAL
   if var VAR_FIGHT_AREA_STATE != 0 end
   # FightArea_OnFrame_Rival: as the player steps ashore
   if var PLAYER_X != 623 end

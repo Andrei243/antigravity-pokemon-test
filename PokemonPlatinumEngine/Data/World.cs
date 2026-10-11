@@ -1591,6 +1591,10 @@ public static class WorldMapBuilder
         "azelf" => "Azelf",
         "giratina_altered" => "Giratina",
         "giratina_origin" => "Giratina-Origin",
+        // Plan 02 · S15, part b: Stark Mountain's, Snowpoint Temple's and Fullmoon Island's
+        "heatran" => "Heatran",
+        "regigigas" => "Regigigas",
+        "cresselia" => "Cresselia",
         _ => null
     };
 

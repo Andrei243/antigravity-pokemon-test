@@ -1,0 +1,63 @@
+# The clearing in Fullmoon Island's wood (plan 02 · S15, part b). docs/scripts.md describes the language; the lines
+# are our own, on the original's beats (scripts_fullmoon_island_forest.s).
+#
+# Cresselia rests by the pool in the middle of the wood. Nobody battles it here: spoken to, it cries, shimmers and is
+# gone, to roam Sinnoh (plan 06 · R13's roamers: met in the grass of the routes at level 50, fleeing, keeping what a
+# battle did to it; VAR_ROAMING_CRESSELIA_STATE tells what became of it). Where it rested something glitters: the
+# Lunar Wing, in its ball, which the original keeps hidden from the start of the game
+# (FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING, set by common.ChapterTwelve) and shows only now
+# (FLAG_MET_CRESSELIA). It is what wakes Sailor Eldritch's son (CanalaveCitySailorEldritchHouse.txt).
+#
+# Whoever speaks to it from the south would have the ball behind their own head where it rested, so the original has
+# Cresselia draw back a step first and leaves the ball there, a tile further off; so does this.
+#
+# A Cresselia knocked out on the routes is back here once the Hall of Fame is next entered
+# (PokemonLeagueHallOfFame.txt: VAR_ROAMING_CRESSELIA_STATE 3): it flies off again, and that time it leaves nothing.
+#
+# Stood in for until plan 09 lands (L12, L14): the original shows Cresselia's picture over the field before its cry
+# (DrawPokemonPreview), which is left out.
+
+
+# FullmoonIslandForest_Cresselia
+script Cresselia
+  cry "Cresselia"
+  wait 0.6
+  # FullmoonIslandForest_CresseliaMoveAwayForLunarWing
+  if facing up call DrawsBack
+  # It shimmers three times and is gone (the original's FlickerObject)
+  hide cresselia
+  wait 0.2
+  show cresselia
+  wait 0.2
+  hide cresselia
+  wait 0.2
+  show cresselia
+  wait 0.2
+  hide cresselia
+  wait 0.2
+  show cresselia
+  wait 0.2
+  hide cresselia
+  setflag FLAG_HIDE_FULLMOON_ISLAND_FOREST_CRESSELIA
+  roamer start "Cresselia"
+  if var VAR_ROAMING_CRESSELIA_STATE == 3 goto Again
+  # The ball shows by its flag alone: shown by the script it would stay, picked up or not, until the wood was come to again
+  clearflag FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
+  setflag FLAG_MET_CRESSELIA
+  speaker none
+  say "The Pokémon rose over the trees and flew away..."
+  say "Where it was resting, something is glittering."
+  end
+# FullmoonIslandForest_ResetCresseliaRoamingState: set loose a second time, after the Hall of Fame
+label Again
+  setvar VAR_ROAMING_CRESSELIA_STATE 0
+  speaker none
+  say "The Pokémon rose over the trees and flew away..."
+  end
+
+
+script DrawsBack
+  place item_lunar_wing 16 14
+  walk cresselia up 1
+  face cresselia down
+  return
