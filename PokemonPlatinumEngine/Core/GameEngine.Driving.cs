@@ -80,6 +80,11 @@ public partial class GameEngine
         /// <summary>The Battle Factory (plan 06 · R18b): the challenge under way and the screen its rentals are chosen and traded on.</summary>
         public Models.Frontier.BattleFactoryChallenge? Factory => game.factory;
         public FactoryScreen FactoryRentals => game.factoryScreen;
+        /// <summary>The Battle Hall and the Battle Castle (plan 06 · R18c): the challenges under way, the board of types and the valet's counters.</summary>
+        public Models.Frontier.BattleHallChallenge? Hall => game.hall;
+        public HallBoardScreen HallBoard => game.hallBoard;
+        public Models.Frontier.BattleCastleChallenge? Castle => game.castle;
+        public CastleScreen CastleCounter => game.castleScreen;
         public Models.Underground.UndergroundField Tunnels => game.Tunnels;
         public MiningScreen Mining => game.miningScreen;
         public UndergroundScreen UndergroundLists => game.undergroundScreen;

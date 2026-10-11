@@ -153,6 +153,12 @@ public sealed class FrontierRecords
     /// <summary>The Battle Factory's own part (plan 06 · R18b): a challenge put down, and the trades made.</summary>
     public FactoryRecord Factory { get; set; } = new();
 
+    /// <summary>The Battle Hall's own part (plan 06 · R18c): a challenge put down, and every species' record.</summary>
+    public HallRecord Hall { get; set; } = new();
+
+    /// <summary>The Battle Castle's own part (plan 06 · R18c): a challenge put down, and what the valet has told.</summary>
+    public CastleRecord Castle { get; set; } = new();
+
     // ------------------------------------------------------------------ the numbers
 
     /// <summary><c>BattleFrontierSave_GetStat</c>.</summary>

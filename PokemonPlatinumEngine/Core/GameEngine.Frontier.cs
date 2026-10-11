@@ -42,6 +42,8 @@ public partial class GameEngine
     {
         tower = null;
         factory = null;
+        hall = null;
+        castle = null;
         enteredSlots = Array.Empty<int>();
         if (saved != null)
         {
@@ -94,9 +96,36 @@ public partial class GameEngine
                 return 1;
             case "journal":
                 // The facility whose challenge goes up, by its number; the Tower's commands hand over none
-                journal.Tell(new JournalEvent(number == (int)FrontierFacility.Factory ? JournalEventKind.BattleFactory : JournalEventKind.BattleTower));
+                journal.Tell(new JournalEvent((FrontierFacility)number switch
+                {
+                    FrontierFacility.Factory => JournalEventKind.BattleFactory,
+                    FrontierFacility.Hall => JournalEventKind.BattleHall,
+                    FrontierFacility.Castle => JournalEventKind.BattleCastle,
+                    _ => JournalEventKind.BattleTower
+                }));
                 if (number == (int)FrontierFacility.Factory) AskForRentalPictures();
+                if (number == (int)FrontierFacility.Castle) AskForCastlePictures();
                 return 1;
+            case "enterhall":
+                // The team, for the Battle Hall's one Pokémon of level 30 or more to be chosen, or its two (PARTY_MENU_MODE_BATTLE_HALL)
+                scriptAnswer = 0;
+                enteredSlots = Array.Empty<int>();
+                partyScreen.ShowCondition = story.Has(ContestHallVisitedFlag);
+                partyScreen.OpenToEnter(number, BattleHallChallenge.MayEnter);
+                currentState = GameState.PartyMenu;
+                return 0;
+            case "board":
+                OpenHallBoard();
+                return 0;
+            case "castleself":
+                OpenCastleCounter(own: true);
+                return 0;
+            case "castlefoe":
+                OpenCastleCounter(own: false);
+                return 0;
+            case "castlepoints":
+                showCastlePoints = number != 0;
+                return castle?.Points(frontier) ?? 0;
             case "rent":
                 OpenFactoryRentals(number);
                 return 0;

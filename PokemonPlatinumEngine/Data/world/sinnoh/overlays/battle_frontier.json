@@ -18,15 +18,26 @@
     // the one under its porch that whoever comes out of the lobby stands before
     { "warp": 2, "map": "BattleFactory", "x": 1, "y": 7, "facing": "Right" },
     { "warp": 3, "map": "BattleFactory", "x": 1, "y": 7, "facing": "Right" },
-    { "warp": 12, "map": "BattleFactory", "x": 1, "y": 7, "facing": "Right" }
+    { "warp": 12, "map": "BattleFactory", "x": 1, "y": 7, "facing": "Right" },
+    // The Battle Hall's and the Battle Castle's doors lead onto the mats inside their lobbies' east doors (plan 06 ·
+    // R18c): the two in each front, and the one under each porch
+    { "warp": 4, "map": "BattleHall", "x": 25, "y": 9, "facing": "Left" },
+    { "warp": 5, "map": "BattleHall", "x": 25, "y": 9, "facing": "Left" },
+    { "warp": 13, "map": "BattleHall", "x": 25, "y": 9, "facing": "Left" },
+    { "warp": 6, "map": "BattleCastle", "x": 21, "y": 9, "facing": "Left" },
+    { "warp": 7, "map": "BattleCastle", "x": 21, "y": 9, "facing": "Left" },
+    { "warp": 15, "map": "BattleCastle", "x": 21, "y": 9, "facing": "Left" }
   ],
-  // The trigger under the Battle Factory's porch walks whoever steps on it in (the original's script 37); the other
-  // three halls' wait for their sittings
-  "triggers": [ { "trigger": 3, "script": "EnterBattleFactory" } ],
-  // Three halls stand shut until their insides are built (plan 06 · R18c and R18d): the Battle Hall's doors (4, 5,
-  // and 13 inside its porch), the Battle Castle's (6, 7, 15) and the Battle Arcade's (8, 9, 14). The three triggers
-  // before their inner doors, which walk the player in (the original's scripts 34 to 36), are theirs too
-  "locked": [ 4, 5, 6, 7, 8, 9, 13, 14, 15 ],
+  // The triggers under the porches of the Battle Factory, the Battle Hall and the Battle Castle walk whoever steps
+  // on them in (the original's scripts 37, 34 and 35); the Battle Arcade's waits for its sitting
+  "triggers": [
+    { "trigger": 3, "script": "EnterBattleFactory" },
+    { "trigger": 0, "script": "EnterBattleHall" },
+    { "trigger": 1, "script": "EnterBattleCastle" }
+  ],
+  // One hall stands shut until its inside is built (plan 06 · R18d): the Battle Arcade's doors (8, 9, and 14 inside
+  // its porch). The trigger before its inner door, which walks the player in (the original's script 36), is its too
+  "locked": [ 8, 9, 14 ],
   // The reporter who interviews whoever has a streak to talk about (hidden by FLAG_HIDE_BATTLE_FRONTIER_REPORTER,
   // moved about by the place's own arrival script) waits for the television programmes (plan 08)
   "people": {

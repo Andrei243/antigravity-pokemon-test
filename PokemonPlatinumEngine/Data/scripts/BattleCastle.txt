@@ -1,0 +1,255 @@
+# The Battle Castle's lobby (plan 06 · R18c). docs/scripts.md describes the language; the lines are our own, on the
+# original's beats (scripts_battle_castle.s).
+#
+# Two attendants stand across the passage that leads west into the castle, beside the records' machine and the PC.
+# The first takes Single and Double challenges: three Pokémon of different kinds are entered, the team is healed,
+# the game is saved, and she leads the way. Whatever the three hold is taken at the door and handed back at the end.
+# The second would take a Multi challenge beside a friend, which isn't held (decision 06 · 7).
+#
+# VAR_BATTLE_CASTLE_LOBBY_LOAD_ACTION says how the player comes back into the lobby, as in the original: 1 with a
+# round of seven won (the print is handed over), 2 with the challenge put down between two battles, 3 with it lost
+# or given up, and 255 while a challenge is under way, which is only ever found here by someone who closed the game
+# in the middle of one: that streak is over, and its Castle Points with it.
+#
+# Not here: the reporter who interviews whoever has a streak to talk about (plan 08), and a challenge beside a
+# friend over a link (plan 07).
+
+
+script OnEnter
+  # Whoever led the way into the castle is back at her post
+  place single_attendant 5 9 right
+  place multi_attendant 5 10 right
+  if var VAR_BATTLE_CASTLE_LOBBY_LOAD_ACTION == 1 goto Won
+  if var VAR_BATTLE_CASTLE_LOBBY_LOAD_ACTION == 2 goto PutDown
+  if var VAR_BATTLE_CASTLE_LOBBY_LOAD_ACTION == 3 goto Over
+  if var VAR_BATTLE_CASTLE_LOBBY_LOAD_ACTION == 255 goto LeftOpen
+  end
+label Won
+  call RoundWon
+  end
+label PutDown
+  call Paused
+  end
+label Over
+  call ChallengeEnded
+  end
+label LeftOpen
+  call WalkedOut
+  end
+
+
+# The first attendant: Single and Double challenges (BattleCastle_SingleAttendant).
+script SingleAttendant
+  if var VAR_BATTLE_CASTLE_LOBBY_LOAD_ACTION == 2 goto Waiting
+  castle end
+  say "Welcome to the Battle Castle, where her ladyship delights in a battle fought with care!"
+  choose "Which challenge would you like to take?" "SINGLE BATTLE" "DOUBLE BATTLE" "INFO" "EXIT"
+  if result == 0 goto Single
+  if result == 1 goto Double
+  if result == 2 goto Info
+  goto Bye
+label Waiting
+  call Paused
+  end
+label Info
+  say "You enter three Pokémon and battle seven trainers. Nothing is restored between battles, and whatever your Pokémon hold is looked after at the door."
+  say "Every win earns Castle Points: the more HP and PP your Pokémon keep, the more of them. A valet will exchange them for healing, for berries and items to hold, and for word of who you face next."
+  say "Castle Points can also raise the rank of each service, which opens more of it. They stay with you from round to round for as long as your streak goes on."
+  end
+label Single
+  setvar VAR_BATTLE_CASTLE_CHALLENGE_TYPE 0
+  goto Choose
+label Double
+  setvar VAR_BATTLE_CASTLE_CHALLENGE_TYPE 1
+label Choose
+  castle enough
+  if result == 0 goto TooFew
+  say "Please choose the three Pokémon you will enter."
+  castle choose
+  if result == 0 goto Bye
+  castle check
+  if result == 1 goto SameKind
+  call GoIn
+  castle active
+  if result == 0 end
+  # BattleCastle_WalkToCorridorSingleChallenge: the attendant leads the way west into the castle
+  walk self left 4
+  hide self
+  walk player left 5
+  sound "stairs"
+  warp "BattleCastleCorridor" 17 7 left
+  end
+label TooFew
+  say "You need three Pokémon, each of a different kind, to take this challenge."
+  say "Eggs can't enter, and neither can {banned}."
+  goto Bye
+label SameKind
+  say "I'm sorry. The three Pokémon must each be of a different kind."
+label Bye
+  say "We hope to see you again."
+  end
+
+
+# The team is healed and the game saved before a challenge goes in (BattleCastle_HealAndSaveBeforeChallenge). The
+# challenge begins only once the save is agreed to, as the original's does in the scene behind the door: a round's
+# ten Castle Points are handed out as it begins, and a round not entered earns none.
+script GoIn
+  heal
+  ask "Your game must be saved before the challenge begins. Shall I save it?"
+  if no goto NoSave
+  if var VAR_BATTLE_CASTLE_CHALLENGE_TYPE == 1 goto Double
+  castle begin single
+  goto Begun
+label Double
+  castle begin double
+label Begun
+  call Prepare
+  frontier save
+  text "{player} saved the game."
+  castle enter
+  say "Thank you. This way, please."
+  return
+label NoSave
+  say "Then please come back when you are ready."
+  return
+
+
+# The castle's rooms as nobody is in them: what the lobby sets before a challenge goes in.
+script Prepare
+  setflag FLAG_HIDE_BATTLE_CASTLE_ROOM_OPPONENT
+  setflag FLAG_HIDE_BATTLE_CASTLE_ROOM_VALET
+  setvar VAR_BATTLE_CASTLE_LOBBY_LOAD_ACTION 255
+  setvar VAR_BATTLE_CASTLE_SCENE 0
+  return
+
+
+# The second attendant: a Multi challenge, which two players take side by side (BattleCastle_MultiAttendant).
+script MultiAttendant
+  say "This post is for the Battle Castle's Multi challenge, which two trainers take side by side with two Pokémon each."
+  say "I'm sorry to say nobody can be linked up with. Only the Single and Double challenges are held."
+  end
+
+
+# Back from a round of seven won (BattleCastle_OnFrame_ChallengeEndedCompletedRound): the print for beating the
+# Castle Valet is handed over, and the game is saved.
+script RoundWon
+  setvar VAR_BATTLE_CASTLE_LOBBY_LOAD_ACTION 0
+  castle active
+  if result == 0 end
+  speaker "Attendant"
+  say "Congratulations on winning all seven battles!"
+  frontier print castle
+  if result == 1 call SilverPrint
+  if result == 2 call GoldPrint
+  castle end
+  text "The result is being recorded. {player} saved the game."
+  frontier save
+  say "We hope to see you again."
+  end
+
+script SilverPrint
+  say "You have beaten the Castle Valet! Her ladyship asks that you have something to remember it by."
+  text "A Silver Print was added to {player}'s record of the Battle Castle!"
+  fanfare keyitem
+  return
+
+script GoldPrint
+  say "You have beaten the Castle Valet at his very best! Her ladyship was seen to smile."
+  text "A Gold Print was added to {player}'s record of the Battle Castle!"
+  fanfare keyitem
+  return
+
+
+# Back from a challenge lost or given up (BattleCastle_OnFrame_ChallengeEnded).
+script ChallengeEnded
+  setvar VAR_BATTLE_CASTLE_LOBBY_LOAD_ACTION 0
+  castle active
+  if result == 0 end
+  castle end
+  speaker "Attendant"
+  say "Thank you for taking the challenge."
+  text "The result is being recorded. {player} saved the game."
+  frontier save
+  say "We hope to see you again."
+  end
+
+
+# A challenge put down between two battles (BattleCastle_OnFrame_ResumeChallenge): the game is saved with it, and
+# it is taken up again when the player says so, by the three it was entered with, as they were.
+script Paused
+  speaker "Attendant"
+  castle paused
+  if result == 0 goto Nothing
+  text "{player} saved the game."
+  frontier save
+  ask "Your challenge is waiting where you put it down. Would you like to go on with it now?"
+  if no goto Later
+  castle resume
+  if result == 0 goto Gone
+  call Prepare
+  castle enter
+  say "Then this way, please."
+  warp "BattleCastleCorridor" 17 7 left
+  end
+label Later
+  say "Very well. Speak to me whenever you are ready."
+  end
+label Gone
+  say "The Pokémon you entered are no longer with you as they were, so the challenge can't be taken up again. I'm afraid its streak ends there."
+label Nothing
+  setvar VAR_BATTLE_CASTLE_LOBBY_LOAD_ACTION 0
+  end
+
+
+# The game was closed in the middle of a challenge (BattleCastle_OnFrame_DidntSaveBeforeQuit).
+script WalkedOut
+  setvar VAR_BATTLE_CASTLE_LOBBY_LOAD_ACTION 0
+  speaker "Attendant"
+  say "The last challenge was left before it was over, so it can't be taken up again."
+  say "I'm afraid its streak ends there, and its Castle Points with it."
+  castle forfeit
+  say "We hope to see you again."
+  end
+
+
+# The machine beside the PC: the Castle's records.
+script RecordsMachine
+  sound "select"
+  frontier records castle
+  end
+
+
+# The lobby's people.
+script Artist
+  say "Win without your Pokémon taking a scratch, and the Castle Points fairly pour in."
+  say "It is a thing of beauty when it happens. I have been trying to paint it."
+  end
+
+script Socialite
+  say "You may ask the valet to raise your opponent's Pokémon by five levels. It costs next to nothing."
+  say "And when you beat them all the same, the Castle Points you earn are simply delicious."
+  end
+
+script Collector
+  say "Know who you're up against before you walk in! The valet will tell you which Pokémon are waiting, for a price."
+  end
+
+script Maid
+  say "Mr. Darach never raises his voice, and he is never late, and his gloves are always white."
+  say "...I only work here for the experience. Really."
+  end
+
+script Roughneck
+  say "Don't blow all your Castle Points on potions! Put some into the ranks."
+  say "Rank up the healing and they'll top up your PP as well. Rank up the rentals and you get the good stuff."
+  end
+
+script Gentleman
+  say "I am here on a matter of grave importance, and I must not be disturbed."
+  say "...I am deciding which berry to rent."
+  end
+
+script BlackBelt
+  say "A castle! Statues of heroes! Stone floors to train on! I want to live here."
+  say "I asked. They said no."
+  end

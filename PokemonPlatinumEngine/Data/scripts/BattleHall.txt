@@ -1,0 +1,441 @@
+# The Battle Hall's lobby (plan 06 · R18c). docs/scripts.md describes the language; the lines are our own, on the
+# original's beats (scripts_battle_hall.s).
+#
+# Two attendants stand in the gap of the counter, with the way down to the stage behind them. The first takes
+# Single and Double challenges: one Pokémon of level 30 or more is entered (two of one species for a Double
+# challenge), the team is healed, the game is saved, and she leads the way. A streak belongs to the species it was
+# begun with: entering another asks first, and ends it. The second would take a Multi challenge beside a friend,
+# which isn't held (decision 06 · 7).
+#
+# VAR_BATTLE_HALL_LOBBY_LOAD_ACTION says how the player comes back into the lobby, as in the original: 1 with a
+# round of ten won (the print is handed over), 2 with the challenge put down between two battles, 3 with it lost or
+# given up, and 255 while a challenge is under way, which is only ever found here by someone who closed the game in
+# the middle of one: that streak is over.
+#
+# The lobby's own people follow the records: the keeper beside the machine adds up every species' Single record and
+# hands out Battle Points as the total passes its marks; the fan comes nearer the counter the more species have a
+# record; and a well-known visitor may be sitting by the screen after a round won, once the total has passed 500.
+#
+# Not here: the reporter who interviews whoever has a streak to talk about (plan 08), and a challenge beside a
+# friend over a link (plan 07).
+
+
+script OnEnter
+  # Whoever led the way down is back at her counter
+  place single_attendant 6 9 right
+  place multi_attendant 6 10 right
+  call FanPlace
+  if var VAR_BATTLE_HALL_LOBBY_LOAD_ACTION == 1 goto Won
+  if var VAR_BATTLE_HALL_LOBBY_LOAD_ACTION == 2 goto PutDown
+  if var VAR_BATTLE_HALL_LOBBY_LOAD_ACTION == 3 goto Over
+  if var VAR_BATTLE_HALL_LOBBY_LOAD_ACTION == 255 goto LeftOpen
+  end
+label Won
+  call Visitors
+  call RoundWon
+  end
+label PutDown
+  call Paused
+  end
+label Over
+  call ChallengeEnded
+  end
+label LeftOpen
+  call WalkedOut
+  end
+
+
+# BattleHall_OnResume: the fan stands nearer the counter the more species have a record here.
+script FanPlace
+  hall fanstage
+  if result == 1 place fan 13 11 left
+  if result == 2 place fan 8 11 left
+  return
+
+
+# BattleHall_OnLoad, back from a round won: whoever was visiting has gone, and three times in ten, once a day,
+# somebody else has come: nobody until every species' Single record adds up to 500, the other child of Twinleaf
+# Town from there, Mom too from a thousand, and the professor from Kanto and Olivine's Leader from ten thousand.
+#
+# The original shows one person in four looks; here each is a person of the map, there by a flag of our own
+# (FLAG_BATTLE_HALL_VISITOR_0 to 3), with the original's flag and variable kept beside them.
+script Visitors
+  setflag FLAG_HIDE_BATTLE_HALL_MAJOR_NPC
+  clearflag FLAG_BATTLE_HALL_VISITOR_0
+  clearflag FLAG_BATTLE_HALL_VISITOR_1
+  clearflag FLAG_BATTLE_HALL_VISITOR_2
+  clearflag FLAG_BATTLE_HALL_VISITOR_3
+  random 100
+  if result >= 30 return
+  if flag FLAG_DAILY_SET_BATTLE_HALL_MAJOR_NPC return
+  hall visitors
+  if result == 0 return
+  setflag FLAG_DAILY_SET_BATTLE_HALL_MAJOR_NPC
+  clearflag FLAG_HIDE_BATTLE_HALL_MAJOR_NPC
+  if result == 1 goto First
+  if result == 2 goto OfTwo
+  random 4
+  goto Show
+label OfTwo
+  random 2
+label Show
+  if result == 1 goto Second
+  if result == 2 goto Third
+  if result == 3 goto Fourth
+label First
+  setvar VAR_BATTLE_HALL_MAJOR_NPC 0
+  setflag FLAG_BATTLE_HALL_VISITOR_0
+  return
+label Second
+  setvar VAR_BATTLE_HALL_MAJOR_NPC 1
+  setflag FLAG_BATTLE_HALL_VISITOR_1
+  return
+label Third
+  setvar VAR_BATTLE_HALL_MAJOR_NPC 2
+  setflag FLAG_BATTLE_HALL_VISITOR_2
+  return
+label Fourth
+  setvar VAR_BATTLE_HALL_MAJOR_NPC 3
+  setflag FLAG_BATTLE_HALL_VISITOR_3
+  return
+
+
+# The first attendant: Single and Double challenges (BattleHall_SingleAttendant).
+script SingleAttendant
+  if var VAR_BATTLE_HALL_LOBBY_LOAD_ACTION == 2 goto Waiting
+  hall end
+  say "Welcome to the Battle Hall, where a single Pokémon takes the stage!"
+  choose "Which challenge would you like to take?" "SINGLE BATTLE" "DOUBLE BATTLE" "INFO" "EXIT"
+  if result == 0 goto Single
+  if result == 1 goto Double
+  if result == 2 goto Info
+  goto Bye
+label Waiting
+  call Paused
+  end
+label Info
+  say "You enter one Pokémon of level 30 or higher. In a Double Battle you enter two, and they must be the same kind."
+  say "On the stage you choose the type of Pokémon you will battle next. Every type has ten ranks, and each win over a type raises its rank and the level of what you meet."
+  say "Win ten battles and the round is yours, with Battle Points for it. A streak belongs to the kind of Pokémon you began it with."
+  end
+label Single
+  hall enough single
+  if result == 0 goto NoneSingle
+  say "Please choose the Pokémon you will enter."
+  hall choose single
+  if result != 1 goto Bye
+  hall streak single
+  if result != 2 goto SingleGo
+  ask "Your streak with {thing} is still running, and entering {entrant} will end it. Is that all right?"
+  if no goto Bye
+  hall drop single
+label SingleGo
+  hall begin single
+  goto Go
+label Double
+  hall enough double
+  if result == 0 goto NoneDouble
+  say "Please choose the two Pokémon you will enter."
+  hall choose double
+  if result == 0 goto Bye
+  if result == 2 goto Different
+  hall streak double
+  if result != 2 goto DoubleGo
+  ask "Your streak with {thing} is still running, and entering {entrant} will end it. Is that all right?"
+  if no goto Bye
+  hall drop double
+label DoubleGo
+  hall begin double
+label Go
+  call GoIn
+  hall active
+  if result == 0 end
+  # BattleHall_WalkToCorridorSingleChallenge: the attendant leads the way round behind the counter and down
+  walk self left 3 down 3
+  hide self
+  walk player left 4 down 3
+  sound "stairs"
+  warp "BattleHallCorridor" 4 3 down
+  end
+label NoneSingle
+  say "You need a Pokémon of level 30 or higher to take this challenge."
+  say "Eggs can't enter, and neither can {banned}."
+  goto Bye
+label NoneDouble
+  say "You need two Pokémon of the same kind, both of level 30 or higher, to take this challenge."
+  say "Eggs can't enter, and neither can {banned}."
+  goto Bye
+label Different
+  say "I'm sorry. In a Double Battle the two Pokémon must be of the same kind."
+label Bye
+  say "We hope to see you again."
+  end
+
+
+# The team is healed and the game saved before a challenge goes in (BattleHall_HealAndSaveBeforeChallenge). A
+# challenge the game isn't saved for is let go of.
+script GoIn
+  heal
+  ask "Your game must be saved before the challenge begins. Shall I save it?"
+  if no goto NoSave
+  call Prepare
+  frontier save
+  text "{player} saved the game."
+  hall enter
+  say "Thank you. This way, please."
+  return
+label NoSave
+  hall end
+  say "Then please come back when you are ready."
+  return
+
+
+# The Hall's stage as nobody is on it: what the lobby sets before a challenge goes in.
+script Prepare
+  setflag FLAG_HIDE_BATTLE_HALL_STAGE_OPPONENT
+  setvar VAR_BATTLE_HALL_LOBBY_LOAD_ACTION 255
+  # The crowd by the round (the stage scene's _10C8): a few to begin with, more from the third round, a full house from the sixth
+  setflag FLAG_HIDE_BATTLE_HALL_CROWD_2
+  setflag FLAG_HIDE_BATTLE_HALL_CROWD_3
+  hall round
+  if result >= 2 clearflag FLAG_HIDE_BATTLE_HALL_CROWD_2
+  if result >= 5 clearflag FLAG_HIDE_BATTLE_HALL_CROWD_3
+  return
+
+
+# The second attendant: a Multi challenge, which two players take side by side (BattleHall_MultiAttendant).
+script MultiAttendant
+  say "This counter is for the Battle Hall's Multi challenge, which two trainers take side by side with one Pokémon each."
+  say "I'm sorry to say nobody can be linked up with. Only the Single and Double challenges are held."
+  end
+
+
+# Back from a round of ten won (BattleHall_OnFrame_ChallengeEndedCompletedRound): the print for beating the Hall
+# Matron is handed over, and the game is saved.
+script RoundWon
+  setvar VAR_BATTLE_HALL_LOBBY_LOAD_ACTION 0
+  hall active
+  if result == 0 end
+  speaker "Attendant"
+  say "Congratulations on winning all ten battles!"
+  frontier print hall
+  if result == 1 call SilverPrint
+  if result == 2 call GoldPrint
+  hall end
+  text "The result is being recorded. {player} saved the game."
+  frontier save
+  say "We hope to see you again."
+  end
+
+script SilverPrint
+  say "You have beaten the Hall Matron! This calls for something to remember it by."
+  text "A Silver Print was added to {player}'s record of the Battle Hall!"
+  fanfare keyitem
+  return
+
+script GoldPrint
+  say "You have beaten the Hall Matron at her very best! The whole Hall was on its feet."
+  text "A Gold Print was added to {player}'s record of the Battle Hall!"
+  fanfare keyitem
+  return
+
+
+# Back from a challenge lost or given up (BattleHall_OnFrame_ChallengeEnded).
+script ChallengeEnded
+  setvar VAR_BATTLE_HALL_LOBBY_LOAD_ACTION 0
+  hall active
+  if result == 0 end
+  hall end
+  speaker "Attendant"
+  say "Thank you for taking the challenge."
+  text "The result is being recorded. {player} saved the game."
+  frontier save
+  say "We hope to see you again."
+  end
+
+
+# A challenge put down between two battles (BattleHall_OnFrame_ResumeChallenge): the game is saved with it, and it
+# is taken up again when the player says so, by the Pokémon it was entered with.
+script Paused
+  speaker "Attendant"
+  hall paused
+  if result == 0 goto Nothing
+  text "{player} saved the game."
+  frontier save
+  ask "Your challenge is waiting where you put it down. Would you like to go on with it now?"
+  if no goto Later
+  hall resume
+  if result == 0 goto Gone
+  call Prepare
+  hall enter
+  say "Then this way, please."
+  warp "BattleHallCorridor" 4 3 down
+  end
+label Later
+  say "Very well. Speak to me whenever you are ready."
+  end
+label Gone
+  say "The Pokémon you entered is no longer with you as it was, so the challenge can't be taken up again. I'm afraid its streak ends there."
+label Nothing
+  setvar VAR_BATTLE_HALL_LOBBY_LOAD_ACTION 0
+  end
+
+
+# The game was closed in the middle of a challenge (BattleHall_OnFrame_DidntSaveBeforeQuit).
+script WalkedOut
+  setvar VAR_BATTLE_HALL_LOBBY_LOAD_ACTION 0
+  speaker "Attendant"
+  say "The last challenge was left before it was over, so it can't be taken up again."
+  say "I'm afraid its streak ends there."
+  hall forfeit
+  say "We hope to see you again."
+  end
+
+
+# The machine at the end of the counter: the Hall's records.
+script RecordsMachine
+  sound "select"
+  frontier records hall
+  end
+
+
+# The record keeper beside it (BattleHall_RecordKeeper): every species' Single record, added up, earns Battle
+# Points as it passes each mark.
+script RecordKeeper
+  if flag FLAG_SPOKEN_TO_BATTLE_HALL_RECORD_KEEPER goto Count
+  setflag FLAG_SPOKEN_TO_BATTLE_HALL_RECORD_KEEPER
+label Intro
+  say "I keep the Hall's records. Every kind of Pokémon you enter has a record of its own: its longest streak of Single Battles."
+  say "I add them all up, and each time the total passes a mark I have Battle Points for you. The more kinds you bring, the faster it grows!"
+  end
+label Count
+  hall keeper
+  if result == 0 goto Intro
+  if result == 2 goto Coming
+  if result == 3 goto All
+  hall told total
+  say "{player}, your records add up to {number} now."
+  hall told passed
+  say "That is past the mark of {number}, and here is what I promised."
+  hall told points
+  text "{player} received {number} BP!"
+  fanfare item
+  end
+label Coming
+  hall told total
+  say "{player}, your records add up to {number}."
+  hall told coming
+  say "When they reach {number}, I will have Battle Points for you."
+  end
+label All
+  say "{player}, there is no mark left for your records to pass. I have never kept a finer book!"
+  end
+
+
+# The fan who follows the challenger's records (BattleHall_SerenaWinston): what is said goes by the species with one.
+script Fan
+  hall fan
+  if result == 0 goto Fan0
+  if result == 1 goto Fan1
+  if result == 2 goto Fan2
+  if result == 3 goto Fan3
+  if result == 4 goto Fan4
+  if result == 5 goto Fan5
+  if result == 6 goto Fan6
+  if result == 7 goto Fan7
+  if result == 8 goto Fan8
+  say "{player}! Four hundred and seventy-five kinds of Pokémon, every one with a record! Nobody has ever done that. Nobody!"
+  say "I've watched every battle of it. I think I may be your greatest fan in the whole world."
+  end
+label Fan0
+  say "I come to watch the battles. I haven't found a trainer to cheer for yet, though."
+  end
+label Fan1
+  say "I saw you on the stage, {player}! You've got a record now. I'm going to keep my eye on you."
+  end
+label Fan2
+  say "More than ten kinds of Pokémon with a record already! I moved up to get a better view, {player}."
+  end
+label Fan3
+  say "Over thirty kinds! I've started writing your records down in a notebook, {player}."
+  end
+label Fan4
+  say "Fifty kinds and more! My notebook is nearly full, {player}, and it's all you."
+  end
+label Fan5
+  say "A hundred kinds of Pokémon with a record! I asked if I could stand right by the counter. They said yes!"
+  end
+label Fan6
+  say "More than a hundred and fifty kinds! {player}, is there a Pokémon you can't win with?"
+  end
+label Fan7
+  say "Two hundred and fifty kinds... I tell everyone I've been your fan since the very first one, {player}."
+  end
+label Fan8
+  say "Three hundred and fifty kinds! You can't have many left to bring, {player}. I'll be right here for every one."
+  end
+
+
+# The visitors (BattleHall_MajorNPC): one of four, sitting by the screen.
+script Counterpart
+  say "{player}! I came all the way from Sandgem Town to watch. You were amazing up there!"
+  say "The professor says to tell you he's proud of you. He'd never say it himself."
+  end
+
+script Mom
+  say "There you are, {player}! I saw the whole thing on the big screen."
+  say "Look at you, with the crowd on its feet. You and your Pokémon have come such a long way."
+  end
+
+script Professor
+  say "So you are {player}. I have come a long way from Kanto to see this stage, and I was not let down."
+  say "A trainer and a single Pokémon, trusting one another completely. That is the heart of it, young as you are."
+  end
+
+script Jasmine
+  say "Um... hello, {player}. I'm Jasmine. I look after the Gym in Olivine City, far from here."
+  say "I watched your battles. The way your Pokémon looked back at you... it made me want to try harder too."
+  end
+
+
+# The lobby's people.
+script Maid
+  say "A maid sees everything and says nothing. I have seen a great deal in this Hall."
+  say "...That was me saying nothing."
+  end
+
+script Pokefan
+  say "A Pokémon with two types can turn up under either one of them! Pick Poison or pick Fighting, and you may meet the very same Croagunk."
+  end
+
+script Twin
+  say "Isn't my Pachirisu the cutest? It claps when the crowd claps."
+  end
+
+script Pachirisu
+  cry "Pachirisu"
+  text "Pachirisu: Pa-chi!"
+  end
+
+script Woman
+  say "It's one Pokémon against one. A record made that way is a record worth having, don't you think?"
+  end
+
+script Hiker
+  say "Here's a tip. Take on the types that give your Pokémon trouble first, while their rank is low."
+  say "Leave them for last and they'll be waiting for you at their toughest!"
+  end
+
+script OldMan
+  say "One kind of Pokémon is one record. Bring another kind and you start another."
+  say "At my age I have a good many. I'd like a good many more."
+  end
+
+script Idol
+  say "I enter the same kind of Pokémon every time, but never with the same moves twice."
+  say "The crowd loves a surprise!"
+  end
+
+script BugCatcher
+  say "There's a challenge for two, where a friend and you each bring one Pokémon. I'm waiting for my friend to turn up."
+  end

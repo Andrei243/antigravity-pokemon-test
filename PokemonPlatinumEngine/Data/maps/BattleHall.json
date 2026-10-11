@@ -1,0 +1,376 @@
+{
+  "name": "BattleHall",
+  "displayName": "Battle Hall",
+  "bgmTrack": "sinnoh/veilstone",
+  "interior": "GameHall",
+  "trees": "Round",
+  "width": 27,
+  "height": 14,
+  "ground": [
+    "###########################",
+    "###########################",
+    "###########################",
+    "#_________________________#",
+    "#_________________________#",
+    "#_________________________#",
+    "#_________________________#",
+    "#_________________________#",
+    "#_________________________D",
+    "#_________________________D",
+    "#_________________________D",
+    "#_________________________#",
+    "#_________________________#",
+    "###D#######################"
+  ],
+  "solid": [
+    "###########################",
+    "###########################",
+    "###########################",
+    "#...##.###....###..###....#",
+    "#.........................#",
+    "#.........................#",
+    "#.........................#",
+    "#.........................#",
+    "########...................",
+    "#..........................",
+    "#..........................",
+    "#.....#...................#",
+    "#.....#...................#",
+    "###.#######################"
+  ],
+  "props": [
+    {
+      "type": "Television",
+      "x": 4,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 7,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 14,
+      "y": 3,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 19,
+      "y": 3,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 1,
+      "y": 8,
+      "width": 6,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 7,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 6,
+      "y": 11,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Cushion",
+      "x": 2,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 2,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 2,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 4,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 6,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 24,
+      "y": 8,
+      "width": 2,
+      "depth": 3
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 26,
+      "sourceY": 8,
+      "targetMap": "BattleFrontier",
+      "targetX": 24,
+      "targetY": 34,
+      "targetFacing": "Right"
+    },
+    {
+      "sourceX": 26,
+      "sourceY": 9,
+      "targetMap": "BattleFrontier",
+      "targetX": 24,
+      "targetY": 34,
+      "targetFacing": "Right"
+    },
+    {
+      "sourceX": 26,
+      "sourceY": 10,
+      "targetMap": "BattleFrontier",
+      "targetX": 24,
+      "targetY": 34,
+      "targetFacing": "Right"
+    },
+    {
+      "sourceX": 3,
+      "sourceY": 13,
+      "targetMap": "BattleHallCorridor",
+      "targetX": 4,
+      "targetY": 3,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 7,
+      "y": 8,
+      "text": "",
+      "script": "RecordsMachine"
+    },
+    {
+      "x": 4,
+      "y": 3,
+      "text": "The screen shows the stage. A crowd is finding its seats."
+    },
+    {
+      "x": 5,
+      "y": 3,
+      "text": "The screen shows the stage. A crowd is finding its seats."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "single_attendant",
+      "name": "Attendant",
+      "npcType": "Lass",
+      "x": 6,
+      "y": 9,
+      "facing": "Right",
+      "script": "SingleAttendant"
+    },
+    {
+      "id": "multi_attendant",
+      "name": "Attendant",
+      "npcType": "Lass",
+      "x": 6,
+      "y": 10,
+      "facing": "Right",
+      "script": "MultiAttendant"
+    },
+    {
+      "id": "record_keeper",
+      "name": "Record Keeper",
+      "npcType": "Lass",
+      "x": 8,
+      "y": 8,
+      "facing": "Down",
+      "script": "RecordKeeper"
+    },
+    {
+      "id": "maid",
+      "name": "Maid",
+      "npcType": "Lass",
+      "x": 2,
+      "y": 5,
+      "facing": "Left",
+      "script": "Maid"
+    },
+    {
+      "id": "pokefan_f",
+      "name": "Pokéfan",
+      "npcType": "Lady",
+      "x": 3,
+      "y": 7,
+      "facing": "Right",
+      "script": "Pokefan"
+    },
+    {
+      "id": "twin",
+      "name": "Twin",
+      "npcType": "Lass",
+      "x": 15,
+      "y": 5,
+      "facing": "Down",
+      "script": "Twin"
+    },
+    {
+      "id": "pachirisu",
+      "name": "Pachirisu",
+      "npcType": "Pokemon",
+      "x": 15,
+      "y": 6,
+      "facing": "Up",
+      "script": "Pachirisu",
+      "species": "Pachirisu"
+    },
+    {
+      "id": "snowpoint_npc_f",
+      "name": "Woman",
+      "npcType": "Lady",
+      "x": 20,
+      "y": 4,
+      "facing": "Left",
+      "script": "Woman"
+    },
+    {
+      "id": "hiker",
+      "name": "Hiker",
+      "npcType": "Gentleman",
+      "x": 23,
+      "y": 11,
+      "facing": "Up",
+      "script": "Hiker"
+    },
+    {
+      "id": "expert_m",
+      "name": "Old Man",
+      "npcType": "Gentleman",
+      "x": 10,
+      "y": 3,
+      "facing": "Down",
+      "script": "OldMan"
+    },
+    {
+      "id": "idol",
+      "name": "Idol",
+      "npcType": "Lass",
+      "x": 6,
+      "y": 6,
+      "facing": "Up",
+      "script": "Idol"
+    },
+    {
+      "id": "bug_catcher",
+      "name": "Bug Catcher",
+      "npcType": "Youngster",
+      "x": 25,
+      "y": 4,
+      "facing": "Left",
+      "script": "BugCatcher"
+    },
+    {
+      "id": "fan",
+      "name": "Fan",
+      "npcType": "Lass",
+      "x": 18,
+      "y": 11,
+      "facing": "Left",
+      "script": "Fan"
+    },
+    {
+      "id": "visitor_counterpart",
+      "name": "{assistant}",
+      "npcType": "Assistant",
+      "x": 4,
+      "y": 6,
+      "facing": "Down",
+      "script": "Counterpart",
+      "shownBy": "FLAG_BATTLE_HALL_VISITOR_0"
+    },
+    {
+      "id": "visitor_mom",
+      "name": "Mom",
+      "npcType": "Mom",
+      "x": 4,
+      "y": 6,
+      "facing": "Down",
+      "script": "Mom",
+      "shownBy": "FLAG_BATTLE_HALL_VISITOR_1"
+    },
+    {
+      "id": "visitor_professor",
+      "name": "Prof. Oak",
+      "npcType": "Gentleman",
+      "x": 4,
+      "y": 6,
+      "facing": "Down",
+      "script": "Professor",
+      "shownBy": "FLAG_BATTLE_HALL_VISITOR_2"
+    },
+    {
+      "id": "visitor_jasmine",
+      "name": "Jasmine",
+      "npcType": "Lass",
+      "x": 4,
+      "y": 6,
+      "facing": "Down",
+      "script": "Jasmine",
+      "shownBy": "FLAG_BATTLE_HALL_VISITOR_3"
+    },
+    {
+      "name": "PC Terminal",
+      "npcType": "Trainer",
+      "x": 8,
+      "y": 3,
+      "facing": "Down",
+      "isPCTerminal": true
+    }
+  ],
+  "wildEncounters": []
+}

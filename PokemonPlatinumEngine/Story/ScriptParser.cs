@@ -622,6 +622,37 @@ public static class ScriptParser
                 return new Instruction { Op = Op.Factory, Line = line, Name = what, Other = which };
             }
 
+            // The Battle Hall and the Battle Castle (plan 06 · R18c)
+            case "hall":
+            {
+                string what = r.OneOf("enough", "choose", "streak", "drop", "begin", "enter", "pause", "resume", "forfeit", "end", "active", "paused", "way",
+                    "battles", "next", "nth", "round", "board", "argenta", "opponent", "battle", "won", "rank", "brain", "beat", "finish", "points", "beaten",
+                    "keeper", "told", "fan", "fanstage", "visitors", "species");
+                string which = what switch
+                {
+                    "enough" or "choose" or "streak" or "drop" or "begin" => r.OneOf("single", "double"),
+                    "beat" => r.OneOf("silver", "gold"),
+                    "finish" => r.OneOf("won", "lost"),
+                    "told" => r.OneOf("total", "passed", "coming", "points"),
+                    _ => ""
+                };
+                return new Instruction { Op = Op.Hall, Line = line, Name = what, Other = which };
+            }
+            case "castle":
+            {
+                string what = r.OneOf("enough", "choose", "check", "begin", "enter", "pause", "resume", "forfeit", "end", "active", "paused", "way",
+                    "battles", "next", "nth", "round", "heard", "cp", "self", "foe", "pass", "passable", "draw", "darach", "announce", "opponent", "battle",
+                    "won", "done", "fainted", "brain", "beat", "finish", "points", "beaten");
+                string which = what switch
+                {
+                    "begin" => r.OneOf("single", "double"),
+                    "beat" => r.OneOf("silver", "gold"),
+                    "finish" => r.OneOf("won", "lost"),
+                    _ => ""
+                };
+                return new Instruction { Op = Op.Castle, Line = line, Name = what, Other = which };
+            }
+
             case "script":
             case "label":
                 throw r.Error($"'{word}' begins a line of its own");

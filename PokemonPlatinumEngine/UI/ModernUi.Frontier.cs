@@ -67,6 +67,29 @@ internal static partial class ModernUi
             if (row.Running) Tag(latestX + UiFonts.Measure(row.Latest.ToString("N0"), 44, UiWeight.Black) + 24, r.Y + r.Height / 2f - (board.CountLabel != null ? 34 : 19), "RUNNING", Green, board.CountLabel != null ? 30 : 38);
         }
 
+        // The species with records of their own (the Battle Hall's), eight to the board: a name, and its longest
+        // streak alone and as a pair
+        if (board.Species.Count > 0)
+        {
+            float listTop = top + 36 + board.Rows.Count * rowH + 4;
+            Label(board.Species.Count > 8 ? $"BY POK\u00c9MON · THE FIRST 8 OF {board.Species.Count:N0}" : "BY POK\u00c9MON", x, listTop);
+            float cellW = (panel.Width - 64 - 3 * 16) / 4f, cellH = 84;
+            for (int i = 0; i < Math.Min(8, board.Species.Count); i++)
+            {
+                var kept = board.Species[i];
+                var r = new Rectangle(panel.X + 32 + i % 4 * (cellW + 16), listTop + 34 + i / 4 * (cellH + 12), cellW, cellH);
+                UiShapes.Fill(r, 22, Rule with { A = 70 });
+                UiFonts.DrawCentered(kept.Species, r.X + 22, r.Y + r.Height / 2f, 28, Ink, UiWeight.ExtraBold);
+                // Its two records, each under its own small caption at the cell's right
+                string alone = kept.Single.ToString("N0"), twice = kept.Double.ToString("N0");
+                float numbers = r.X + r.Width - 22, captions = numbers - 64 - UiFonts.Measure("DOUBLE", 18, UiWeight.Black);
+                UiFonts.DrawCentered("SINGLE", captions, r.Y + 27, 18, Muted, UiWeight.Black);
+                UiFonts.DrawCentered("DOUBLE", captions, r.Y + 59, 18, Muted, UiWeight.Black);
+                UiFonts.DrawCentered(alone, numbers - UiFonts.Measure(alone, 26, UiWeight.Black), r.Y + 26, 26, kept.Single > 0 ? Ink : Muted, UiWeight.Black);
+                UiFonts.DrawCentered(twice, numbers - UiFonts.Measure(twice, 26, UiWeight.Black), r.Y + 58, 26, kept.Double > 0 ? Ink : Muted, UiWeight.Black);
+            }
+        }
+
         // The foot: the Battle Points and the battles won here
         var foot = new Rectangle(panel.X + 32, panel.Y + panel.Height - 132, panel.Width - 64, 100);
         UiShapes.Fill(foot, 26, Rule with { A = 90 });

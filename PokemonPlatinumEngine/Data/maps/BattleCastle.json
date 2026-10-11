@@ -1,0 +1,330 @@
+{
+  "name": "BattleCastle",
+  "displayName": "Battle Castle",
+  "bgmTrack": "sinnoh/veilstone",
+  "interior": "Gym",
+  "trees": "Round",
+  "hall": "League",
+  "width": 23,
+  "height": 17,
+  "ground": [
+    "#######################",
+    "#######################",
+    "#######################",
+    "########______________#",
+    "########______________#",
+    "########______________#",
+    "########______________#",
+    "########______________#",
+    "######________________D",
+    "D_____________________D",
+    "#_____________________D",
+    "######________________#",
+    "#_____________________#",
+    "#_____________________#",
+    "#_____________________#",
+    "#_____________________#",
+    "#######################"
+  ],
+  "solid": [
+    "#######################",
+    "#######################",
+    "#######################",
+    "########.##..##.......#",
+    "########.....#........#",
+    "########.....#.#......#",
+    "########.....####.....#",
+    "########..............#",
+    "########...............",
+    ".......................",
+    "#......................",
+    "######................#",
+    "#............####.....#",
+    "#............#.#......#",
+    "#...#....#...#........#",
+    "#............##.......#",
+    "#######################"
+  ],
+  "props": [
+    {
+      "type": "Television",
+      "x": 9,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 13,
+      "y": 3,
+      "width": 1,
+      "depth": 4
+    },
+    {
+      "type": "Plant",
+      "x": 14,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 14,
+      "y": 6,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 15,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 14,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 16,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 6,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 7,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 13,
+      "y": 12,
+      "width": 4,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 13,
+      "y": 13,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "Plant",
+      "x": 14,
+      "y": 15,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 15,
+      "y": 13,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 14,
+      "y": 13,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 16,
+      "y": 13,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "TrainerStatue",
+      "x": 4,
+      "y": 14,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "TrainerStatue",
+      "x": 9,
+      "y": 14,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 20,
+      "y": 8,
+      "width": 2,
+      "depth": 3
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 22,
+      "sourceY": 8,
+      "targetMap": "BattleFrontier",
+      "targetX": 37,
+      "targetY": 62,
+      "targetFacing": "Right"
+    },
+    {
+      "sourceX": 22,
+      "sourceY": 9,
+      "targetMap": "BattleFrontier",
+      "targetX": 37,
+      "targetY": 62,
+      "targetFacing": "Right"
+    },
+    {
+      "sourceX": 22,
+      "sourceY": 10,
+      "targetMap": "BattleFrontier",
+      "targetX": 37,
+      "targetY": 62,
+      "targetFacing": "Right"
+    },
+    {
+      "sourceX": 0,
+      "sourceY": 9,
+      "targetMap": "BattleCastleCorridor",
+      "targetX": 17,
+      "targetY": 7,
+      "targetFacing": "Left"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 6,
+      "y": 8,
+      "text": "",
+      "script": "RecordsMachine"
+    },
+    {
+      "x": 9,
+      "y": 3,
+      "text": "The screen shows a great hall, and a lady sitting very still at the far end of it."
+    },
+    {
+      "x": 10,
+      "y": 3,
+      "text": "The screen shows a great hall, and a lady sitting very still at the far end of it."
+    },
+    {
+      "x": 4,
+      "y": 14,
+      "text": "A suit of armour stands guard. It has been polished until it shines."
+    },
+    {
+      "x": 9,
+      "y": 14,
+      "text": "A suit of armour stands guard. It has been polished until it shines."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "single_attendant",
+      "name": "Attendant",
+      "npcType": "Lass",
+      "x": 5,
+      "y": 9,
+      "facing": "Right",
+      "script": "SingleAttendant"
+    },
+    {
+      "id": "multi_attendant",
+      "name": "Attendant",
+      "npcType": "Lass",
+      "x": 5,
+      "y": 10,
+      "facing": "Right",
+      "script": "MultiAttendant"
+    },
+    {
+      "id": "roughneck",
+      "name": "Roughneck",
+      "npcType": "Youngster",
+      "x": 14,
+      "y": 13,
+      "facing": "Right",
+      "script": "Roughneck"
+    },
+    {
+      "id": "black_belt",
+      "name": "Black Belt",
+      "npcType": "BlackBelt",
+      "x": 2,
+      "y": 14,
+      "facing": "Left",
+      "script": "BlackBelt"
+    },
+    {
+      "id": "gentleman",
+      "name": "Gentleman",
+      "npcType": "Gentleman",
+      "x": 8,
+      "y": 12,
+      "facing": "Up",
+      "script": "Gentleman"
+    },
+    {
+      "id": "collector",
+      "name": "Collector",
+      "npcType": "Gentleman",
+      "x": 12,
+      "y": 4,
+      "facing": "Down",
+      "script": "Collector"
+    },
+    {
+      "id": "artist",
+      "name": "Artist",
+      "npcType": "Gentleman",
+      "x": 20,
+      "y": 5,
+      "facing": "Left",
+      "script": "Artist"
+    },
+    {
+      "id": "socialite",
+      "name": "Socialite",
+      "npcType": "Lady",
+      "x": 14,
+      "y": 5,
+      "facing": "Right",
+      "script": "Socialite"
+    },
+    {
+      "id": "waitress",
+      "name": "Maid",
+      "npcType": "Lass",
+      "x": 9,
+      "y": 7,
+      "facing": "Down",
+      "script": "Maid"
+    },
+    {
+      "name": "PC Terminal",
+      "npcType": "Trainer",
+      "x": 7,
+      "y": 8,
+      "facing": "Down",
+      "isPCTerminal": true
+    }
+  ],
+  "wildEncounters": []
+}

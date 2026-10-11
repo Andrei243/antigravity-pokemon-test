@@ -62,6 +62,9 @@ public enum GameState
     FrontierRecords,
     /// <summary>The Battle Factory's rentals: the six on offer, or a trade after a battle won (plan 06 · R18b).</summary>
     FactoryRentals,
+    /// <summary>The Battle Hall's board of types, and one of the Battle Castle's two counters (plan 06 · R18c).</summary>
+    HallBoard,
+    CastleCounter,
     Transition
 }
 
@@ -896,6 +899,12 @@ public partial class GameEngine
                 break;
             case GameState.FactoryRentals:
                 UpdateFactoryRentals(dt);
+                break;
+            case GameState.HallBoard:
+                UpdateHallBoard(dt);
+                break;
+            case GameState.CastleCounter:
+                UpdateCastleCounter(dt);
                 break;
             case GameState.Journal:
                 journalScreen.Update(journal, dt);
@@ -1956,6 +1965,7 @@ public partial class GameEngine
                 if (safari.Active) ModernUi.SafariCount(VirtualWidth, safari.Balls, safari.Steps);
                 DrawParkCount();
                 DrawBattlePoints();
+                DrawCastlePoints();
                 dialogue.Draw(VirtualWidth, VirtualHeight);
                 DrawChoice();
                 locationSign.Draw();
@@ -2039,6 +2049,12 @@ public partial class GameEngine
                 break;
             case GameState.FactoryRentals:
                 factoryScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.HallBoard:
+                hallBoard.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.CastleCounter:
+                castleScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.SlotMachine:
                 slotScreen.Draw(VirtualWidth, VirtualHeight);

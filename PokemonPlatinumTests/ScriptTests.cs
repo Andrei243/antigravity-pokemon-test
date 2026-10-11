@@ -357,6 +357,75 @@ public class ScriptTests
           factory beaten
           factory forfeit
           factory end
+          hall enough single
+          hall choose single
+          hall streak single
+          hall drop double
+          hall begin single
+          hall enter
+          hall active
+          hall way
+          hall battles
+          hall next
+          hall nth
+          hall round
+          hall board
+          hall argenta
+          hall opponent
+          hall battle
+          hall won
+          hall rank
+          hall brain
+          hall beat silver
+          hall pause
+          hall paused
+          hall resume
+          hall finish won
+          hall points
+          hall beaten
+          hall keeper
+          hall told total
+          hall fan
+          hall fanstage
+          hall visitors
+          hall species
+          hall forfeit
+          hall end
+          castle enough
+          castle choose
+          castle check
+          castle begin single
+          castle enter
+          castle active
+          castle way
+          castle battles
+          castle next
+          castle nth
+          castle round
+          castle heard
+          castle cp
+          castle self
+          castle foe
+          castle passable
+          castle pass
+          castle draw
+          castle darach
+          castle announce
+          castle fainted
+          castle opponent
+          castle battle
+          castle won
+          castle done
+          castle brain
+          castle beat silver
+          castle pause
+          castle paused
+          castle resume
+          castle finish won
+          castle points
+          castle beaten
+          castle forfeit
+          castle end
         script Other
           end
         """;
@@ -1213,6 +1282,8 @@ public class ScriptTests
         public PokemonPlatinumEngine.Models.Frontier.FrontierRecords Frontier => inner.Frontier;
         public PokemonPlatinumEngine.Models.Frontier.BattleTowerChallenge? Tower { get => inner.Tower; set => inner.Tower = value; }
         public PokemonPlatinumEngine.Models.Frontier.BattleFactoryChallenge? Factory { get => inner.Factory; set => inner.Factory = value; }
+        public PokemonPlatinumEngine.Models.Frontier.BattleHallChallenge? Hall { get => inner.Hall; set => inner.Hall = value; }
+        public PokemonPlatinumEngine.Models.Frontier.BattleCastleChallenge? Castle { get => inner.Castle; set => inner.Castle = value; }
         public int FrontierAct(string what, int number, NPC? subject) => inner.FrontierAct(what, number, subject);
         public IReadOnlyList<int> Entered => inner.Entered;
         public void FrontierBattle(Party team, IReadOnlyList<Trainer> foes, Trainer? partner, bool doubles) => inner.FrontierBattle(team, foes, partner, doubles);

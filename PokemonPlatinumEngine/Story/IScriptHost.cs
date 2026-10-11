@@ -373,4 +373,20 @@ public interface IScriptHost
     /// trade was made).
     /// </summary>
     Models.Frontier.BattleFactoryChallenge? Factory { get; set; }
+
+    /// <summary>
+    /// The Battle Hall challenge under way (plan 06 · R18c); null while none is. <see cref="FrontierAct"/> takes two
+    /// more words for it: <c>enterhall</c> opens the team for one Pokémon of level 30 or more to be chosen, or two
+    /// (the script waits; <see cref="Entered"/> as for <c>enter</c>), and <c>board</c> the board of types (the script
+    /// waits; <see cref="Entered"/> is the place on the board of the type chosen).
+    /// </summary>
+    Models.Frontier.BattleHallChallenge? Hall { get; set; }
+
+    /// <summary>
+    /// The Battle Castle challenge under way (plan 06 · R18c); null while none is. <see cref="FrontierAct"/> takes
+    /// three more words for it: <c>castleself</c> opens the valet's counter for one's own three (the script waits),
+    /// <c>castlefoe</c> the one about the trainer to come, and <c>castlepoints</c> shows the Castle Points over the
+    /// field until the script ends.
+    /// </summary>
+    Models.Frontier.BattleCastleChallenge? Castle { get; set; }
 }

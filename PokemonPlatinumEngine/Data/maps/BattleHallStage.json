@@ -1,0 +1,251 @@
+{
+  "name": "BattleHallStage",
+  "displayName": "Battle Hall",
+  "bgmTrack": "sinnoh/veilstone",
+  "interior": "GameHall",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "width": 17,
+  "height": 15,
+  "ground": [
+    "#################",
+    "#################",
+    "#################",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#################"
+  ],
+  "solid": [
+    "#################",
+    "#################",
+    "########.########",
+    "##.............##",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#################"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 15,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 6
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 9,
+      "width": 9,
+      "depth": 3
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 2,
+      "targetMap": "BattleHallCorridor",
+      "targetX": 4,
+      "targetY": 12,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "announcer",
+      "name": "Announcer",
+      "npcType": "Gentleman",
+      "x": 3,
+      "y": 10,
+      "facing": "Right",
+      "dialog": [
+        "Ladies and gentlemen, the stage is being made ready. Please speak to the attendant in the lobby."
+      ]
+    },
+    {
+      "id": "opponent",
+      "name": "Trainer",
+      "npcType": "Youngster",
+      "x": 8,
+      "y": 3,
+      "facing": "Down",
+      "dialog": [
+        "..."
+      ],
+      "hiddenBy": "FLAG_HIDE_BATTLE_HALL_STAGE_OPPONENT"
+    },
+    {
+      "id": "spectator_1",
+      "name": "Spectator",
+      "npcType": "Lass",
+      "x": 1,
+      "y": 9,
+      "facing": "Right",
+      "dialog": [
+        "I never miss a round."
+      ]
+    },
+    {
+      "id": "spectator_2",
+      "name": "Spectator",
+      "npcType": "Youngster",
+      "x": 15,
+      "y": 9,
+      "facing": "Left",
+      "dialog": [
+        "Which type will it be this time?"
+      ]
+    },
+    {
+      "id": "spectator_3",
+      "name": "Spectator",
+      "npcType": "Lady",
+      "x": 6,
+      "y": 13,
+      "facing": "Up",
+      "dialog": [
+        "The best seat is right at the front."
+      ]
+    },
+    {
+      "id": "spectator_4",
+      "name": "Spectator",
+      "npcType": "Gentleman",
+      "x": 10,
+      "y": 13,
+      "facing": "Up",
+      "dialog": [
+        "One Pokémon against one. That is a battle as it should be."
+      ]
+    },
+    {
+      "id": "spectator_5",
+      "name": "Spectator",
+      "npcType": "Youngster",
+      "x": 1,
+      "y": 11,
+      "facing": "Right",
+      "dialog": [
+        "Word gets round when a streak is on."
+      ],
+      "hiddenBy": "FLAG_HIDE_BATTLE_HALL_CROWD_2"
+    },
+    {
+      "id": "spectator_6",
+      "name": "Spectator",
+      "npcType": "Lass",
+      "x": 15,
+      "y": 11,
+      "facing": "Left",
+      "dialog": [
+        "I came as soon as I heard."
+      ],
+      "hiddenBy": "FLAG_HIDE_BATTLE_HALL_CROWD_2"
+    },
+    {
+      "id": "spectator_7",
+      "name": "Spectator",
+      "npcType": "Clown",
+      "x": 4,
+      "y": 13,
+      "facing": "Up",
+      "dialog": [
+        "What a show!"
+      ],
+      "hiddenBy": "FLAG_HIDE_BATTLE_HALL_CROWD_2"
+    },
+    {
+      "id": "spectator_8",
+      "name": "Spectator",
+      "npcType": "Lady",
+      "x": 12,
+      "y": 13,
+      "facing": "Up",
+      "dialog": [
+        "Twenty wins and still going!"
+      ],
+      "hiddenBy": "FLAG_HIDE_BATTLE_HALL_CROWD_2"
+    },
+    {
+      "id": "spectator_9",
+      "name": "Spectator",
+      "npcType": "Gentleman",
+      "x": 1,
+      "y": 10,
+      "facing": "Right",
+      "dialog": [
+        "The whole Frontier is talking about this streak."
+      ],
+      "hiddenBy": "FLAG_HIDE_BATTLE_HALL_CROWD_3"
+    },
+    {
+      "id": "spectator_10",
+      "name": "Spectator",
+      "npcType": "Lady",
+      "x": 15,
+      "y": 10,
+      "facing": "Left",
+      "dialog": [
+        "There wasn't a seat to be had."
+      ],
+      "hiddenBy": "FLAG_HIDE_BATTLE_HALL_CROWD_3"
+    },
+    {
+      "id": "spectator_11",
+      "name": "Spectator",
+      "npcType": "Lass",
+      "x": 8,
+      "y": 13,
+      "facing": "Up",
+      "dialog": [
+        "I've lost my voice from cheering."
+      ],
+      "hiddenBy": "FLAG_HIDE_BATTLE_HALL_CROWD_3"
+    },
+    {
+      "id": "spectator_12",
+      "name": "Spectator",
+      "npcType": "Youngster",
+      "x": 2,
+      "y": 13,
+      "facing": "Up",
+      "dialog": [
+        "Fifty in a row! Fifty!"
+      ],
+      "hiddenBy": "FLAG_HIDE_BATTLE_HALL_CROWD_3"
+    }
+  ],
+  "wildEncounters": []
+}

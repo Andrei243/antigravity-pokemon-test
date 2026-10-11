@@ -220,6 +220,9 @@ public static class RegionDatabase
                 "CanalaveCitySoutheastHouse", "CanalaveCitySailorEldritchHouse", "CanalaveCityWestHouse", "IronIslandHouse",
                 // Plan 06 · R18b: the Battle Factory's lobby, corridor and battle room
                 "BattleFactory", "BattleFactoryCorridor", "BattleFactoryBattleRoom",
+                // Plan 06 · R18c: the Battle Hall's lobby, passage and stage, and the Battle Castle's lobby, valet's room and throne room
+                "BattleHall", "BattleHallCorridor", "BattleHallStage",
+                "BattleCastle", "BattleCastleCorridor", "BattleCastleBattleRoom",
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

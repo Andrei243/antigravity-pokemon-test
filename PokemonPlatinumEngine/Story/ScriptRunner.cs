@@ -778,6 +778,14 @@ public sealed partial class ScriptRunner
                 Factory(i);
                 break;
 
+            // The Battle Hall and the Battle Castle (plan 06 · R18c)
+            case Op.Hall:
+                Hall(i);
+                break;
+            case Op.Castle:
+                Castle(i);
+                break;
+
             default:
                 throw Wrong(i, $"the runner doesn't know how to carry out '{i.Op}'");
         }
@@ -1505,6 +1513,11 @@ public sealed partial class ScriptRunner
             // The Battle Factory (plan 06 · R18b): what the staff's hint names, and the three rentals in hand
             "hint" when argument is "0" or "1" or "2" => hints[argument[0] - '0'],
             "rental" when argument is "0" or "1" or "2" => host.Factory?.Team is { } rented && argument[0] - '0' < rented.Count ? rented[argument[0] - '0'].Species : "",
+            // The Battle Hall and the Battle Castle (plan 06 · R18c): who was entered, the type chosen and its rank, the Castle Points held
+            "entrant" => lastEntrant,
+            "type" => lastType,
+            "rank" => lastRank.ToString(),
+            "cp" => host.Castle is { } castle ? castle.Points(host.Frontier).ToString("N0") : "0",
             "contestant" => contestSlot >= 0 && contestSlot < host.Party.Count ? host.Party.Members[contestSlot].DisplayName : host.ContestOutcome?.Pokemon ?? "",
             _ => match.Value
         };
