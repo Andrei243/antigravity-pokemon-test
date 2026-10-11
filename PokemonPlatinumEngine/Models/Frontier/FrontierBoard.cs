@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using PokemonPlatinumEngine.Story;
 
 namespace PokemonPlatinumEngine.Models.Frontier;
@@ -6,6 +7,9 @@ namespace PokemonPlatinumEngine.Models.Frontier;
 /// <summary>A row of a facility's board: a way of taking its challenge, the longest streak in it and the latest, and whether the latest still runs.</summary>
 /// <param name="RecordCount">A second number a facility keeps with its record streak (the Battle Factory's trades), and with its latest; null where it keeps none.</param>
 public sealed record FrontierBoardRow(string Label, int Record, int Latest, bool Running, int? RecordCount = null, int? LatestCount = null);
+
+/// <summary>A species' own records at the Battle Hall: its longest streak in a Single challenge and in a Double one.</summary>
+public sealed record FrontierSpeciesRow(string Species, int Single, int Double);
 
 /// <summary>
 /// What a facility's records machine shows (plan 06 · R18a; the original's Frontier records application,
@@ -17,6 +21,9 @@ public sealed record FrontierBoard(FrontierFacility Facility, string Title, IRea
 {
     /// <summary>What the rows' second numbers count ("TRADES"); null when the rows have none.</summary>
     public string? CountLabel { get; init; }
+
+    /// <summary>The species with records of their own, the longest Single streak first (the Battle Hall's); empty for every other facility.</summary>
+    public IReadOnlyList<FrontierSpeciesRow> Species { get; init; } = System.Array.Empty<FrontierSpeciesRow>();
 
     public static string NameOf(FrontierFacility facility) => facility switch
     {
@@ -50,6 +57,33 @@ public sealed record FrontierBoard(FrontierFacility Facility, string Title, IRea
                         records.Get(BattleFactoryChallenge.RecordTradesStat(way, open)), records.Get(BattleFactoryChallenge.LatestTradesStat(way, open))));
             facility = FrontierFacility.Factory;
         }
-        return new FrontierBoard(facility, NameOf(facility), rows, records.BattlePoints, FrontierBrains.PrintOf(story, facility), records.VictoriesAt(facility)) { CountLabel = counted };
+        var species = new List<FrontierSpeciesRow>();
+        if (facility == FrontierFacility.Hall)
+        {
+            // The Battle Hall (plan 06 · R18c): a streak is a species' own, so a row shows the best any species has
+            // done, and the species follow, each with its two records
+            foreach (var (way, label) in new[] { (FrontierChallenge.Single, "Single Battle"), (FrontierChallenge.Double, "Double Battle") })
+            {
+                var kept = records.Hall.Of(way);
+                rows.Add(new FrontierBoardRow(label, kept.Count == 0 ? 0 : kept.Values.Max(), records.Get(BattleHallChallenge.LatestStreakStat(way)),
+                    records.IsRunning(FrontierFacility.Hall, (int)way)));
+            }
+            foreach (string name in records.Hall.Singles.Keys.Union(records.Hall.Doubles.Keys))
+            {
+                int single = records.Hall.RecordOf(FrontierChallenge.Single, name), twice = records.Hall.RecordOf(FrontierChallenge.Double, name);
+                if (single > 0 || twice > 0) species.Add(new FrontierSpeciesRow(name, single, twice));
+            }
+            species = species.OrderByDescending(r => r.Single).ThenByDescending(r => r.Double).ThenBy(r => r.Species, System.StringComparer.Ordinal).ToList();
+        }
+        if (facility == FrontierFacility.Castle)
+        {
+            // The Battle Castle (plan 06 · R18c): beside each streak, the Castle Points it was made with
+            counted = "CP";
+            foreach (var (way, label) in new[] { (FrontierChallenge.Single, "Single Battle"), (FrontierChallenge.Double, "Double Battle") })
+                rows.Add(new FrontierBoardRow(label, records.Get(BattleCastleChallenge.RecordStreakStat(way)), records.Get(BattleCastleChallenge.LatestStreakStat(way)),
+                    records.IsRunning(FrontierFacility.Castle, (int)way),
+                    records.Get(BattleCastleChallenge.RecordPointsStat(way)), records.Get(BattleCastleChallenge.LatestPointsStat(way))));
+        }
+        return new FrontierBoard(facility, NameOf(facility), rows, records.BattlePoints, FrontierBrains.PrintOf(story, facility), records.VictoriesAt(facility)) { CountLabel = counted, Species = species };
     }
 }

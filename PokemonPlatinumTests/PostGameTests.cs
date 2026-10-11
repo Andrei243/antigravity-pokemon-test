@@ -337,18 +337,19 @@ public class PostGameTests
             Assert.All(map.Everyone.Where(n => (n.GridX, n.GridY) == (back.TargetX, back.TargetY)),
                 n => Assert.Equal("FLAG_HIDE_FIGHT_AREA_BATTLERS_AND_SPECTATORS", n.HiddenBy));
         }
-        // (the gate's two, the Battle Tower's two and the Battle Factory's three)
-        Assert.Equal(7, grounds.Warps.Count);
+        // (the gate's two, the Battle Tower's two, and three each of the Battle Factory, the Battle Hall and the Battle Castle)
+        Assert.Equal(13, grounds.Warps.Count);
 
         // The five facilities' doors are the rules lane's (plan 06 · R18). The Battle Tower's two lead into its lobby
-        // (R18a) and the Battle Factory's three to the head of its lobby's stairs (R18b); every way into the other
-        // three halls is shut until its sitting, at the tiles the original has them
+        // (R18a), the Battle Factory's three to the head of its lobby's stairs (R18b), the Battle Hall's and the
+        // Battle Castle's onto the mats inside their lobbies' east doors (R18c); every way into the Battle Arcade is
+        // shut until its sitting, at the tiles the original has them
         var file = Sinnoh.Area("battle_frontier")!;
         var facilities = file.Warps.Where(w => w.To.StartsWith("battle_") && !w.To.Contains("gate")).ToList();
         Assert.Equal(14, facilities.Count);
         Assert.Equal(new[] { "battle_arcade", "battle_castle", "battle_factory", "battle_hall", "battle_tower" }, facilities.Select(w => w.To).Distinct().OrderBy(n => n));
-        var halls = facilities.Where(w => w.To is not ("battle_tower" or "battle_factory")).ToList();
-        Assert.Equal(9, halls.Count);
+        var halls = facilities.Where(w => w.To == "battle_arcade").ToList();
+        Assert.Equal(3, halls.Count);
         Assert.All(halls, w =>
         {
             Assert.Null(grounds.GetWarpAt(w.X, w.Z));
@@ -366,12 +367,33 @@ public class PostGameTests
             var door = grounds.GetWarpAt(w.X, w.Z)!;
             Assert.Equal(("BattleFactory", 1, 7, Direction.Right), (door.TargetMap, door.TargetX, door.TargetY, door.TargetFacing));
         });
-        // The trigger under the Factory's porch walks whoever steps on it in (the original's script 37), over ground that
-        // can be walked; the other three halls' triggers do nothing yet
-        var porch = Assert.Single(grounds.Triggers);
-        Assert.Equal((74, 34, 1, 2, "EnterBattleFactory"), (porch.X, porch.Y, porch.Width, porch.Depth, porch.Script));
-        Assert.NotNull(ScriptLibrary.Default.Find(porch.Script, "battle_frontier"));
+        Assert.Equal(new[] { (19, 34), (19, 35), (23, 34) }, facilities.Where(w => w.To == "battle_hall").Select(w => (w.X, w.Z)).OrderBy(p => p));
+        Assert.All(facilities.Where(w => w.To == "battle_hall"), w =>
+        {
+            var door = grounds.GetWarpAt(w.X, w.Z)!;
+            Assert.Equal(("BattleHall", 25, 9, Direction.Left), (door.TargetMap, door.TargetX, door.TargetY, door.TargetFacing));
+        });
+        Assert.Equal(new[] { (33, 62), (33, 63), (36, 62) }, facilities.Where(w => w.To == "battle_castle").Select(w => (w.X, w.Z)).OrderBy(p => p));
+        Assert.All(facilities.Where(w => w.To == "battle_castle"), w =>
+        {
+            var door = grounds.GetWarpAt(w.X, w.Z)!;
+            Assert.Equal(("BattleCastle", 21, 9, Direction.Left), (door.TargetMap, door.TargetX, door.TargetY, door.TargetFacing));
+        });
+        // The triggers under the Factory's, the Hall's and the Castle's porches walk whoever steps on them in (the
+        // original's scripts 37, 34 and 35), over ground that can be walked; the Arcade's does nothing yet
+        Assert.Equal(new[] { (22, 34, 1, 2, "EnterBattleHall"), (35, 62, 1, 2, "EnterBattleCastle"), (74, 34, 1, 2, "EnterBattleFactory") },
+            grounds.Triggers.Select(t => (t.X, t.Y, t.Width, t.Depth, t.Script)).OrderBy(t => t));
+        Assert.All(grounds.Triggers, porch => Assert.NotNull(ScriptLibrary.Default.Find(porch.Script, "battle_frontier")));
         Assert.All(new[] { (72, 34), (74, 34), (74, 35), (75, 34), (76, 34), (75, 35), (76, 35) }, t => Assert.True(grounds.IsWalkable(t.Item1, t.Item2), $"({t.Item1},{t.Item2}) before the Factory's doors can't be walked"));
+        Assert.All(new[] { (24, 34), (22, 34), (22, 35), (21, 34), (20, 34) }, t => Assert.True(grounds.IsWalkable(t.Item1, t.Item2), $"({t.Item1},{t.Item2}) before the Hall's doors can't be walked"));
+        Assert.All(new[] { (37, 62), (35, 62), (35, 63), (34, 62) }, t => Assert.True(grounds.IsWalkable(t.Item1, t.Item2), $"({t.Item1},{t.Item2}) before the Castle's doors can't be walked"));
+        // Whoever comes out of a lobby stands on the grounds before its porch, and the lobby's doors lead there
+        foreach (var (lobby, x, y) in new[] { ("BattleHall", 24, 34), ("BattleCastle", 37, 62) })
+        {
+            var room = GameDataFiles.Load<MapFile>(System.IO.Path.Combine(MapDatabase.Folder, lobby + ".json")).ToMap();
+            Assert.All(room.Warps.Where(w => w.TargetMap == "BattleFrontier"), w => Assert.Equal((x, y, Direction.Right), (w.TargetX, w.TargetY, w.TargetFacing)));
+            Assert.Contains(room.Warps, w => w.TargetMap == "BattleFrontier");
+        }
 
         // Its people have lines of ours; two of the Exchange Service Corner's attendants trade Battle Points for their
         // booth's prizes (R18a) and the third says what she waits for; the reporter, and whoever the story brings,

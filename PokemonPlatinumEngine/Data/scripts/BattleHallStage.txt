@@ -1,0 +1,174 @@
+# The Battle Hall's stage (plan 06 · R18c). docs/scripts.md describes the language; the lines are our own, on the
+# original's beats (frontier_scripts_battle_hall.s, which the original plays as a scene of the Frontier's own over a
+# picture of the stage: the room here is laid out from where that scene stands its people, the challenger at the
+# west end of the stage, the trainer at the east, the announcer beside the challenger).
+#
+# A whole round is played here without leaving. Before each battle the type of the Pokémon to be met is chosen on
+# the board (hall board), the trainer drawn for it comes down from the back and round to the far end of the stage
+# (hall opponent), and the battle is fought (hall battle). A win raises the type's rank; the entered Pokémon is
+# whole again for every battle. Between battles the challenge may go on, be put down (REST) or be given up
+# (RETIRE). After the tenth the records are written and the Battle Points handed over; after a battle lost the
+# streak ends. At the 50th battle of a Single streak, and at the 170th, the Hall Matron comes down herself, whatever
+# type was chosen.
+#
+# The crowd is bigger the further a streak has come (the lobby's Prepare lets the later rows in by the round).
+#
+# Not here: what each trainer says, which is the original's own text: they come on without a word; and the question
+# whether the battle is to be kept as a Battle Video (plan 08 · P10).
+
+
+script OnEnter
+  place announcer 3 10 right
+  hall active
+  if result == 0 end
+  speaker "Announcer"
+  walk player down 7 left 3
+  face player right
+  call Cheer
+  hall battles
+  if result != 0 goto Menu
+
+label Type
+  say "Now then! Which type of Pokémon will our challenger take on?"
+  hall board
+  hall nth
+  hall argenta
+  if result == 1 goto Silver
+  if result == 2 goto Gold
+  hall opponent
+  place opponent 8 3 down
+  clearflag FLAG_HIDE_BATTLE_HALL_STAGE_OPPONENT
+  show opponent
+  say "Battle no. {number}! The {type} type, at rank {rank}!"
+  walk opponent down 7 right 3
+  face opponent left
+  text "{foe} takes the stage!"
+label Fight
+  move opponent left 1
+  walk player right 1
+  waitmoves
+  hall battle
+  if result == 0 goto Lost
+  hall argenta
+  if result == 1 goto BeatSilver
+  if result == 2 goto BeatGold
+label Count
+  call Cheer
+  walk opponent left 2 up 7
+  setflag FLAG_HIDE_BATTLE_HALL_STAGE_OPPONENT
+  hide opponent
+  move announcer right 1
+  walk player left 1
+  waitmoves
+  hall won
+  if result == 1 goto RoundDone
+  say "{entrant} has been restored to full health!"
+  fanfare heal
+label Menu
+  hall next
+  choose "Battle no. {number} is next. Are you ready?" "KEEP GOING" "REST" "RETIRE"
+  if result == 1 goto Rest
+  if result == 2 goto Retire
+label Onward
+  place announcer 3 10 right
+  face player right
+  goto Type
+
+# The Hall Matron (the scene's own for her: the lights go down, and she comes down to the stage a few steps at a time
+# with the crowd louder at each)
+label Silver
+  hall opponent
+  hall brain
+  say "Battle no. {number}... But wait! Ladies and gentlemen, look who is coming down to the stage!"
+  call Entrance
+  speaker "Argenta"
+  say "Well, well, well! Forty-nine in a row, and all with one Pokémon? My dear, you have had this old hall on its feet all day."
+  say "I am Argenta, the Hall Matron, and I couldn't sit still in my seat a moment longer. Let me see for myself what the two of you are made of!"
+  speaker "Announcer"
+  goto Fight
+label Gold
+  hall opponent
+  hall brain
+  say "Battle no. {number}... Listen to them! The Hall Matron is on her way down once more!"
+  call Entrance
+  speaker "Argenta"
+  say "A hundred and sixty-nine! In all my years nobody has ever made me wait so long for a battle, or made the wait such a pleasure."
+  say "No holding back this time, my dear. Not for you, and certainly not for me!"
+  speaker "Announcer"
+  goto Fight
+label BeatSilver
+  speaker "Argenta"
+  say "Oh, bravo! Bravo! That is the finest thing I have seen on this stage in a very long while."
+  say "You must come back, and with every Pokémon you have. I want to see them all up here!"
+  hall beat silver
+  speaker "Announcer"
+  goto Count
+label BeatGold
+  speaker "Argenta"
+  say "...Splendid. Simply splendid. I gave you everything I had, and the two of you never once looked away from each other."
+  say "This hall was built for a trainer and a Pokémon like you. Thank you, my dear, from all of us."
+  hall beat gold
+  speaker "Announcer"
+  goto Count
+
+# All ten beaten: the records are written and the Battle Points handed over
+label RoundDone
+  hall finish won
+  setvar VAR_BATTLE_HALL_LOBBY_LOAD_ACTION 1
+  say "Ten battles, ten wins! Ladies and gentlemen, {player} and {entrant}!"
+  call Cheer
+  hall points
+  text "{player} received {number} BP!"
+  fanfare item
+  goto Leave
+
+label Lost
+  setflag FLAG_HIDE_BATTLE_HALL_STAGE_OPPONENT
+  hide opponent
+  hall finish lost
+  setvar VAR_BATTLE_HALL_LOBBY_LOAD_ACTION 3
+  goto Leave
+
+label Retire
+  ask "Give the challenge up? The streak will end here."
+  if no goto Onward
+  hall finish lost
+  setvar VAR_BATTLE_HALL_LOBBY_LOAD_ACTION 3
+  goto Leave
+
+label Rest
+  ask "Put the challenge down for now? The game will be saved, and you can go on from here later."
+  if no goto Onward
+  setvar VAR_BATTLE_HALL_LOBBY_LOAD_ACTION 2
+  hall pause
+  warp "BattleHall" 7 9 left
+  end
+
+label Leave
+  say "Thank you for a splendid show! Please come back to the stage soon."
+  warp "BattleHall" 7 9 left
+  end
+
+
+# The crowd: a wave of it, front to back.
+script Cheer
+  emote spectator_3 note 0.25
+  emote spectator_4 note 0.25
+  emote spectator_1 note 0.25
+  emote spectator_2 note 0.35
+  return
+
+
+# The Hall Matron comes down to the stage.
+script Entrance
+  place opponent 8 3 down
+  clearflag FLAG_HIDE_BATTLE_HALL_STAGE_OPPONENT
+  show opponent
+  wait 0.4
+  walk opponent down 2
+  call Cheer
+  walk opponent down 2
+  call Cheer
+  walk opponent down 3 right 3
+  face opponent left
+  return

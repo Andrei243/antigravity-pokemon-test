@@ -135,10 +135,11 @@ internal static partial class ModernUi
     /// <param name="page">-1 for a summary of one page; else 0 for the stats and moves, 1 for the condition (plan 06 · R14c) and 2 for the ribbons (plan 06 · R17b).</param>
     /// <param name="ribbonCursor">On the ribbons' page, the ribbon looked at; -1 while the page only shows them.</param>
     /// <param name="rental">A rental Pokémon of the Battle Factory (plan 06 · R18b): its ability and what it holds stand where a Pokémon of one's own shows its experience.</param>
-    public static void DrawSummary(int sw, int sh, Pokemon p, int index, int count, float appear = 1f, int page = -1, int ribbonCursor = -1, bool rental = false)
+    /// <param name="title">The screen's title where it is neither the team's nor a rental's (the Battle Castle's counters, plan 06 · R18c).</param>
+    public static void DrawSummary(int sw, int sh, Pokemon p, int index, int count, float appear = 1f, int page = -1, int ribbonCursor = -1, bool rental = false, string? title = null)
     {
         Backdrop(sw, sh);
-        ScreenTitle(rental ? "RENTAL POK\u00c9MON" : "SUMMARY");
+        ScreenTitle(title ?? (rental ? "RENTAL POK\u00c9MON" : "SUMMARY"));
         if (page == PartyScreen.RibbonsPage && ribbonCursor >= 0) Hints(sw - 64, 44, ("Arrows", "Ribbon"), ("Esc", "Back"));
         else if (page == PartyScreen.RibbonsPage && !p.IsEgg && p.Ribbons.Count > 0) Hints(sw - 64, 44, ("Z", "Look"), ("Left / Right", "Page"), ("Esc", "Back"));
         else if (page >= 0 && !p.IsEgg && count > 1) Hints(sw - 64, 44, ("Left / Right", "Page"), ("Up / Down", "Next Pokémon"), ("Esc", "Back"));

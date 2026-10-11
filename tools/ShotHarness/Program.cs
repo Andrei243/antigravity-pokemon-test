@@ -32,6 +32,8 @@
 //   dotnet run --project tools/ShotHarness -- <output dir> champion           the eleventh chapter: Victory Road, the rival before the League's door, the Hall of Fame's scene, the team's entry, the credits, home
 //   dotnet run --project tools/ShotHarness -- <output dir> interiors [town ...] [work] [workb] [workc]   the rooms of plan 01 · M11 a town at a time: a shot of each from its way in, a sheet per town, and a few of them at work
 //   dotnet run --project tools/ShotHarness -- <output dir> postgame           after the Hall of Fame, part a: the professor's rating, Professor Oak and the National Pokédex, the Poké Radar's lesson, Pal Park's lobby, the ship, the Fight Area's tag battle, Route 227, Marley, Lucian
+//   dotnet run --project tools/ShotHarness -- <output dir> hall               the Battle Hall: its lobby and counter, the record keeper, one Pokémon entered, the stage, the board of types, a battle, the round's Battle Points, a challenge put down, two of a kind, the Hall Matron
+//   dotnet run --project tools/ShotHarness -- <output dir> castle             the Battle Castle: its lobby and counter, three entered, the valet's room and his two counters, the throne room, a battle and its Castle Points, the round's Battle Points, a challenge put down, a battle passed, the Castle Valet
 //   dotnet run --project tools/ShotHarness -- <dir> diff <other dir>          two runs' shots compared pixel by pixel (exits 1 if any differ)
 //   dotnet run --project tools/ShotHarness -- <dir> ab <before> <after> <before again>   three runs of `profile` compared (tools/dev/ab.sh)
 //   dotnet run --project tools/ShotHarness -- <dir> contact [prefix]          every shot of a run on sheets of twenty
@@ -139,6 +141,8 @@ if (mode == "tower") h.TowerMode();
 if (mode == "factory") h.FactoryMode();
 if (mode == "champion") h.ChampionMode();
 if (mode == "postgame") h.PostgameMode();
+if (mode == "hall") h.HallMode();
+if (mode == "castle") h.CastleMode();
 
 h.Close();
 Raylib.CloseWindow();

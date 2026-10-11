@@ -1641,3 +1641,89 @@ The houses the areas of M8 and M10 still kept shut, with Celestic Town's and Rou
 | Route 224: Professor Oak, Marley, Shaymin, the name written on the rock | An event gift (Oak's Letter) | Nobody; the rock is unmarked | The event gifts (plan 08); plan 01 · M10, part b has the Seabreak Path's swap ready |
 | Rivals' and Leaders' words in battle | Spoken during the battle | Nothing | Plan 11 · C12 |
 | Later mechanics | (not in Platinum) | Flint and Volkner, the rival and Marley use none | Decision 06 · 2: after their own sessions (plan 06 · R20 to R23) |
+
+## The Battle Hall and the Battle Castle (2026-10-11, plan 06 · R18c)
+
+### The Battle Hall
+
+**Platinum's rules, kept as they are** (`src/overlay104/battle_hall.c`, `battle_hall_helpers.c`, `frscrcmd_battle_hall.c`, `src/scrcmd_battle_hall.c`, `src/battle_hall_save.c`, `src/battle_hall_win_records.c`, `scripts_battle_hall.s`, `frontier_scripts_battle_hall.s`, and the board, `src/applications/frontier/battle_hall/main.c`):
+
+- **One Pokémon goes in**, of level 30 or more, no Egg and none of the banned; two of one species for a Double challenge. It battles at its own level, with what it holds, and is whole again for every battle.
+- **A round** is ten battles, each against one trainer with one Pokémon (in a Double challenge the same Pokémon twice, their personalities a step of 250,025 apart so that both have the set's nature). Before each the type of the Pokémon to be met is chosen on a board of the seventeen types.
+- **A type's rank** goes up with every win over it, from the first to the tenth; a type beaten ten times can't be chosen until every type has been, and then all seventeen stand at their tenth rank again. The ranks last as long as the streak does and are kept in its stats, four bits to a type, two types to a stat, by the types' places on the board.
+- **The opponent's level** is the challenger's level less three times its square root, plus the rank (from nought) times the level over five times that root, plus half a level for every other type already won over; rounded up, and never above the challenger's own. The root is the console's in fixed point (twelve bits after the point), and the rest is in single precision. A Double challenge goes by the higher of the two levels.
+- **The trainer**: a class is drawn first, a roll of twelve: eight of them the eight classes of the type's rank, four the classes the type itself brings (the Water type's Tubers, Sailor and Fisherman). Then, from a place drawn among all the Frontier's trainers onward, the first of that class who hasn't stood in this round; when nobody is left, another of the rank's classes is drawn. A Double challenge draws two, though only the first stands.
+- **The Pokémon** comes from the Hall's own table of 477, in four groups by strength (1 to 154, 155 to 270, 271 to 375, 376 to 477): the first group at a type's first two ranks, the first two at the next three, the second and third at the next three, the third and fourth at the last two. From a place drawn in that range onward, the first of the chosen type that is not the challenger's species and hasn't been met in this round; once the walk has come all the way round, only the one met last is kept out. Its IVs go by the rank (8, 10, 12 … 26), and its trainer thinks at random up to the third rank, with the basic routine up to the seventh and with all three from the eighth.
+- **Ten won** earn Battle Points by the round the streak goes on to (1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 6, 6, 8, 8, 10, 10, and 12 from the eighteenth), add seven to the Trainer Card's score, and the streak runs on. A battle lost or a challenge given up ends it, and every type goes back to its first rank.
+- **A streak belongs to the species it was begun with.** Entering another species asks first, and ends it. Each species keeps its own longest streak, for Single and for Double challenges.
+- **The Hall Matron** is the 50th and the 170th battle of a Single streak, whatever type is chosen: the board announces her and leaves only her place to choose. Her Pokémon is of any type, from the challenger's species' own group the first time and from the strongest group the second, at the challenger's level with 31 in every stat. The win raises the chosen type's rank all the same; the round is worth 20 Battle Points, and the lobby hands over the silver or the gold print (`VAR_BATTLE_HALL_PRINT_STATE`).
+- **The record keeper** adds up every species' Single record and hands over Battle Points as the total passes each of 47 marks, from 10 (1 BP) to 100,000 (1,000 BP); several passed at once are paid together (`VAR_BATTLE_HALL_NEXT_TOTAL_RECORD_MILESTONE`).
+- **The fan** stands nearer the counter from 11 species with a record and nearer still from 101, and has ten things to say by their number (1, 11, 31, 51, 101, 151, 251, 351 and 475).
+- **Well-known visitors** come to the lobby after a round won, three times in ten and once a day: one from a total of 500, one of two from 1,000, one of four from 10,000.
+
+**Quirks kept**
+
+- The walk through the table steps over the last number of its range: that Pokémon is met only when it is the place drawn.
+- A Single round's second places are never filled and hold a nought, which the "not in this round" check reads as trainer 0 and Pokémon 0: after a round's first battle trainer 0, a Youngster, is never drawn.
+- A species the Hall's table doesn't hold counts as of the strongest group for the Hall Matron's first Pokémon.
+- The Battle Points go by the round the streak has just come into.
+
+**Our own choices**
+
+- **The square root's last bit.** The decompilation calls the console kit's `FX_Sqrt`, whose code it doesn't hold. Here it is the whole-number root of the value shifted up 32 more bits, brought back down ten bits and rounded to the nearest, which is what the console's divider is documented to hand over; a level whose root sits within a four-thousandth of a rounding edge could differ by one level from the console (`BattleHallTests.TheSquareRootIsTheConsolesInFixedPoint` holds the form).
+- **A guard on the search for a Pokémon.** The original's walk has come round when it is back at the place it began from, which it can't be when that place is the range's last number (it is stepped over): with nothing left to find it would then walk for ever. Here the walk also counts as having come round after four times the range's length, and after eight takes whatever comes next. No table of the original's reaches either.
+- **The board is one screen** (`HallBoardScreen`), in the menus' look, for the original's lower-screen grid: the same cells in the same order, the same cursor (the entered Pokémon's two cells as one, the way back up from them by the side they were come to from), the same steps (a yes or a no for a type; the Hall Matron's notice, then only her place). Nobody leaves it without a type, as in the original.
+- **A round is one scene.** The original plays the stage as a scene of the Frontier's own over a picture; here the stage is a room laid out from where that scene stands its people, and its arrival script loops through the ten battles.
+- **REST and RETIRE are asked once**, and a challenge put down is saved in the lobby and taken up at the counter, by the Pokémon it was entered with in its place.
+- **The draws are on the game's own chance** in the original's order; what was drawn is kept (the trainers and the Pokémon by their numbers), so a challenge put down comes back as it was.
+
+### The Battle Castle
+
+**Platinum's rules, kept as they are** (`src/overlay104/battle_castle.c`, `battle_castle_helpers.c`, `frscrcmd_battle_castle.c`, `src/battle_castle_save.c`, the valets' two applications, `src/applications/frontier/battle_castle/self_app.c` and `opponent_app.c`, `scripts_battle_castle.s`, `frontier_scripts_battle_castle.s`):
+
+- **Three Pokémon go in**, of different species, no Egg and none of the banned. What they hold is taken at the door and given back at the end, and whoever is above level 50 battles at 50.
+- **A round** is seven battles of three against three (two out at a time in a Double challenge). Its fourteen trainers are drawn as it begins, none twice, from the round's row (one span for the first six, another for the seventh; the eighth round's row for every round after; the remainder is taken by a span's width, so its last trainer is never drawn), and each trainer's three by the draw every facility but the Tower shares.
+- **Nothing is restored between battles.** HP, PP and what is held carry on; after a battle won whoever fainted is back with a single HP and every status is gone.
+- **Castle Points** are what the challenge is run on. Every round begins with 10 more. A battle won earns, for each of the three still standing, 3, and 3 more at full HP, 2 at half or more, 1 under it, and 1 without a status; 8 for a battle that used 5 PP or fewer between the three, 6 for 10 or fewer, 4 for 15 or fewer; 7 for each of the trainer's Pokémon that was raised five levels; never less than 1. They stay with the streak from round to round.
+- **The first counter** (one's own three): HP restored for 10, PP for 8 from its second rank, both for 12 from its third; a berry or an item rented to hold (the first 8 berries at its first two ranks and all 32 at the third; no items at the first rank, 12 at the second, all 27 at the third; one that holds something already is asked about, and what it held is given up). The healing counter's ranks cost 100 and 100, the rental counter's 100 and 150.
+- **The second counter** (the trainer to come): a Pokémon identified for 1; made five levels higher for 1, or five lower for 15 (from 55 or 45 the other way takes it back to 50); its stats, ability, nature and item told for 2; its moves for 5, from the counter's second rank, which costs 50 and is its highest. What was bought is forgotten with the trainer.
+- **A battle is passed** for 50 Castle Points from the fourth round on, though never the Castle Valet's: it counts for the round and the streak, not as a battle won, and earns nothing.
+- **How the trainers think** goes by the round: at random in the first two, with the basic routine in the third and fourth, with all three from the fifth.
+- **Seven through** earn Battle Points by the round the streak goes on to (3, 3, 4, 4, 5, 5, and 7 from the seventh), add seven to the Trainer Card's score, and the streak runs on with its Castle Points and its counters' ranks. A battle lost or a challenge given up ends the streak and puts every counter back at its first rank; a game closed in the middle of a challenge loses the streak's Castle Points too.
+- **The Castle Valet** is the 21st and the 49th battle of a Single streak, thinking with all three routines whatever the round. Beaten, the round is worth 20 Battle Points and the lobby hands over the silver or the gold print (`VAR_BATTLE_CASTLE_PRINT_STATE`).
+- **The records**: the latest streak and its Castle Points, the points spent, and the record streak with the Castle Points of the streak that set it (when a record is only equalled, the more points of the two are kept).
+
+**Quirks kept**
+
+- The first battle after a challenge is taken up again counts as having used no PP: the PP it began with isn't noted on that path.
+- The fourteenth trainer of a Single round is worked out as though a solo challenge met fourteen.
+
+**Our own choices**
+
+- **The challenge begins once the save is agreed to**, as the original's does in the scene behind the door: a round's ten Castle Points are handed out as it begins, and a round not entered earns none.
+- **A challenge taken up again draws its next trainer afresh.** The original keeps the sets of the trainer just beaten and makes his three once more as it loads (with IVs read from a place it never wrote); nothing reads them again, so they are left out.
+- **The valet's room and the throne room are rooms.** The original plays everything past the lobby as a scene over pictures; here they are two rooms laid out from where that scene stands its people (the valet in the passage with the challenger before him; the lady at the head of the throne room, the challenger west of the carpet and the trainer east), and the scene is their arrival scripts. `VAR_BATTLE_CASTLE_SCENE`, a variable of ours, tells the valet's room what the throne room sent the player back with.
+- **One screen for both counters** (`CastleScreen`), in the menus' look, on the original's two applications: the same menus, the same prices asked about before each is paid, the same refusals in the same order (the rank, the points, whether there is anything to restore).
+- **A Pokémon's summary at a counter** is the rental's one page for one's own; one of the trainer's is a panel of the counter with its six stats, its nature, its ability and what it holds, and not its moves, which are another purchase.
+- **How a battle was won is said in four ways** by the Castle Points it earned (40 or more, 25 or more, 15 or more, fewer), in lines of ours.
+- **The valet's menu begins with BATTLE**, then one's own Pokémon, the opponent and the pass; the original's begins with one's own Pokémon and has the battle third. A menu backed out of gives its last answer here, and the pass asks before it is paid for.
+- **The lobbies' floors are level**, as the Battle Factory's is: the Hall's comes down three flights from its door in the original and the Castle's has galleries four and six tiles up. The tiles are the original's; benches and counters stand where its rails and parapets block, and the Castle's galleries are a block of wall.
+
+**Stand-ins for what this game lacks**
+
+| What | The original | Here | Why |
+| --- | --- | --- | --- |
+| The Multi challenges | Two players side by side over a link | Each lobby's second attendant says nobody can be linked up with; their stats and running flags are in the records | Decision 06 · 7; plan 07 |
+| A battle kept as a Battle Video | RECORD in the menu between battles | Not offered | Plan 08 · P10 |
+| The reporters in the lobbies | Interview whoever has a streak to talk about | Not there | Plan 08's television |
+| What each trainer says | The Frontier's own lines before and after a battle | They come on without a word; Argenta and Darach have lines of ours | The original's text is its own |
+| The Hall's crowd | A full house drawn in the scene, louder with the streak, lights and confetti | Four spectators, eight from the third round and twelve from the sixth, a wave of note bubbles | Plan 09's effects, plan 05 · A6 |
+| The Hall Matron's coming | The lights go down and the stage's own animation | She comes down the room a few steps at a time between the crowd's waves | Plan 09 |
+| The Hall's well-known visitors | One person of the map in four looks (the other child of Twinleaf Town, Mom, the professor from Kanto, Olivine's Leader) | Four people of the map, each there by a flag of ours (`FLAG_BATTLE_HALL_VISITOR_0` to `3`), with the original's flag and variable kept beside them | A person's look isn't changed by a variable here |
+| The fan | Serena or Winston, by the player's own look | One fan | Plan 11's cast |
+| The Castle's upper floor and its lady | Caitlin watches from a balcony, and the valets come and go with trays | She stands at the head of the throne room; one valet walks up with the Castle Points | The rooms are laid out on one level |
+| The counters' applications | Two lower-screen applications with their own art | `CastleScreen`, in the menus' look | The interface is our own |
+| Argenta, Darach, Caitlin, the attendants, the announcer and the valets | Their own looks | Looks of the cast that stand for them until theirs are made | Plan 11 |
+| The stage and the throne room in battle | Each facility's own background and platforms | A Gym's hall and the League's | Plan 04's arenas have none for the Frontier |
+| The halls' music and their sounds | Their own | Veilstone City's theme, a sliding door, the item fanfare | Plan 05 · A6 |
+| The lobbies' stairs and galleries | Flights of stairs and upper floors | Level floors | A room's shell stands at one level; the original's plates are in the importer's `--room battle_hall` and `--room battle_castle` |

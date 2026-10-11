@@ -1,0 +1,125 @@
+{
+  "name": "BattleHallCorridor",
+  "displayName": "Battle Hall",
+  "bgmTrack": "sinnoh/veilstone",
+  "interior": "GameHall",
+  "trees": "Round",
+  "width": 9,
+  "height": 14,
+  "ground": [
+    "#########",
+    "#########",
+    "#########",
+    "#_______#",
+    "#_______#",
+    "#_______#",
+    "#_______#",
+    "#_______#",
+    "#_______#",
+    "#_______#",
+    "#_______#",
+    "#_______#",
+    "#_______#",
+    "####D####"
+  ],
+  "solid": [
+    "#########",
+    "#########",
+    "####.####",
+    "##.....##",
+    "#.......#",
+    "#.......#",
+    "#.......#",
+    "##.....##",
+    "#.......#",
+    "#.......#",
+    "#.......#",
+    "#.......#",
+    "##.....##",
+    "####.####"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 7,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 7,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 7,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 3,
+      "width": 1,
+      "depth": 10
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 2,
+      "targetMap": "BattleHall",
+      "targetX": 7,
+      "targetY": 9,
+      "targetFacing": "Left"
+    },
+    {
+      "sourceX": 4,
+      "sourceY": 13,
+      "targetMap": "BattleHallStage",
+      "targetX": 8,
+      "targetY": 3,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "attendant",
+      "name": "Attendant",
+      "npcType": "Lass",
+      "x": 4,
+      "y": 5,
+      "facing": "Down",
+      "dialog": [
+        "The stage is at the foot of this passage. Please speak to the attendant in the lobby."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

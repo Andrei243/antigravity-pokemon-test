@@ -1,0 +1,17 @@
+# The passage down to the Battle Hall's stage (plan 06 · R18c). docs/scripts.md describes the language. The original
+# plays this as a scene of the Frontier's own over a picture (frontier_scripts_battle_hall.s, its first scene): the
+# attendant comes in, walks the length of the passage and stands aside at its foot, and the challenger follows and
+# goes down the steps to the stage. The room here is laid out from where that scene stands the two.
+
+
+script OnEnter
+  place attendant 4 5 down
+  hall active
+  if result == 0 end
+  move attendant down 6 left 1
+  walk player down 9
+  waitmoves
+  face attendant right
+  sound "stairs"
+  warp "BattleHallStage" 8 3 down
+  end

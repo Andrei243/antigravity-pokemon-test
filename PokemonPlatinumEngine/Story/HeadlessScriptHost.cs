@@ -664,6 +664,11 @@ public sealed class HeadlessScriptHost : IScriptHost
     public Models.Frontier.FrontierRecords Frontier { get; } = new();
     public Models.Frontier.BattleTowerChallenge? Tower { get; set; }
     public Models.Frontier.BattleFactoryChallenge? Factory { get; set; }
+    public Models.Frontier.BattleHallChallenge? Hall { get; set; }
+    public Models.Frontier.BattleCastleChallenge? Castle { get; set; }
+
+    /// <summary>What a test does at one of the Battle Castle's counters ("castleself", "castlefoe") while the script waits; nothing when left empty.</summary>
+    public Action<Models.Frontier.BattleCastleChallenge, string>? AtCastleCounter { get; set; }
     public Queue<IReadOnlyList<int>> Entering { get; } = new();
     public IReadOnlyList<int> Entered { get; private set; } = Array.Empty<int>();
     public List<(Party Team, IReadOnlyList<Trainer> Foes, Trainer? Partner, bool Doubles)> FrontierBattles { get; } = new();
@@ -691,6 +696,25 @@ public sealed class HeadlessScriptHost : IScriptHost
                 Entered = Entering.Count > 0 ? Entering.Dequeue() : Array.Empty<int>();
                 Answer = Entered.Count == 2 ? 1 : 0;
                 return Answer;
+            case "enterhall":
+                // The Battle Hall's one Pokémon, or its two of a species: what a test chose, or the first that may go in
+                Waits();
+                Entered = Entering.Count > 0 ? Entering.Dequeue() : FirstForTheHall(number);
+                Answer = Entered.Count == number ? 1 : 0;
+                return Answer;
+            case "board":
+                // The Battle Hall's board: the type a test chose, or the first that can still be chosen
+                Waits();
+                Entered = Entering.Count > 0 ? Entering.Dequeue()
+                    : new[] { Enumerable.Range(0, Models.Frontier.BattleHallChallenge.Board.Length).FirstOrDefault(c => Hall == null || !Hall.Beaten(c)) };
+                Answer = 1;
+                return Answer;
+            case "castleself":
+            case "castlefoe":
+                Waits();
+                if (Castle != null) AtCastleCounter?.Invoke(Castle, what);
+                Answer = 1;
+                return Answer;
             case "seen":
                 return SeenSpecies.Any(s => PokemonDatabase.Get(s)?.DexNumber == number) ? 1 : 0;
             case "score":
@@ -716,6 +740,14 @@ public sealed class HeadlessScriptHost : IScriptHost
             chosen.Add(i);
         }
         return chosen.Count == needed ? chosen : new List<int>();
+    }
+
+    // The first of the team the Battle Hall lets in: one, or the first two of one species; none when there are none
+    private List<int> FirstForTheHall(int needed)
+    {
+        var allowed = Enumerable.Range(0, Party.Count).Where(i => Models.Frontier.BattleHallChallenge.MayEnter(Party.Members[i])).ToList();
+        if (needed == 1) return allowed.Take(1).ToList();
+        return allowed.GroupBy(i => Party.Members[i].Species.Name).Where(g => g.Count() >= needed).Select(g => g.Take(needed).ToList()).FirstOrDefault() ?? new List<int>();
     }
 
     public void FrontierBattle(Party team, IReadOnlyList<Trainer> foes, Trainer? partner, bool doubles)

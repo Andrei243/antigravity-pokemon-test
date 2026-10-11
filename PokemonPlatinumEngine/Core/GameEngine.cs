@@ -65,6 +65,9 @@ public enum GameState
     /// <summary>The scene of a team's entry into the Hall of Fame, and the credits after it (plan 02 · S14).</summary>
     HallOfFameCeremony,
     Credits,
+    /// <summary>The Battle Hall's board of types, and one of the Battle Castle's two counters (plan 06 · R18c).</summary>
+    HallBoard,
+    CastleCounter,
     Transition
 }
 
@@ -905,6 +908,12 @@ public partial class GameEngine
                 break;
             case GameState.Credits:
                 UpdateCredits(dt);
+                break;
+            case GameState.HallBoard:
+                UpdateHallBoard(dt);
+                break;
+            case GameState.CastleCounter:
+                UpdateCastleCounter(dt);
                 break;
             case GameState.Journal:
                 journalScreen.Update(journal, dt);
@@ -1975,6 +1984,7 @@ public partial class GameEngine
                 if (safari.Active) ModernUi.SafariCount(VirtualWidth, safari.Balls, safari.Steps);
                 DrawParkCount();
                 DrawBattlePoints();
+                DrawCastlePoints();
                 dialogue.Draw(VirtualWidth, VirtualHeight);
                 DrawChoice();
                 locationSign.Draw();
@@ -2058,6 +2068,12 @@ public partial class GameEngine
                 break;
             case GameState.FactoryRentals:
                 factoryScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.HallBoard:
+                hallBoard.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.CastleCounter:
+                castleScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.SlotMachine:
                 slotScreen.Draw(VirtualWidth, VirtualHeight);

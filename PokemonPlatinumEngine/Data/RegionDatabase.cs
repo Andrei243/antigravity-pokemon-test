@@ -227,6 +227,9 @@ public static class RegionDatabase
                 "FightAreaMiddleHouse", "FightAreaSouthHouse", "Route225House", "SurvivalAreaSouthHouse",
                 "Route226House", "Route227House", "Route228SouthHouse", "ResortAreaHouse",
                 "ResortAreaRibbonSyndicate2F", "ResortAreaRibbonSyndicateElevator",
+                // Plan 06 · R18c: the Battle Hall's lobby, passage and stage, and the Battle Castle's lobby, valet's room and throne room
+                "BattleHall", "BattleHallCorridor", "BattleHallStage",
+                "BattleCastle", "BattleCastleCorridor", "BattleCastleBattleRoom",
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

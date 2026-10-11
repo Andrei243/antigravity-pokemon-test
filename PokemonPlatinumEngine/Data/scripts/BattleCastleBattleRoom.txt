@@ -1,0 +1,141 @@
+# The Battle Castle's throne room (plan 06 · R18c). docs/scripts.md describes the language; the lines are our own,
+# on the original's beats (frontier_scripts_battle_castle.s; the room is laid out from where the original's scene
+# stands its people: the lady of the castle at the head of the room, the challenger on the west of the carpet, the
+# trainer on the east).
+#
+# One battle to a visit. The trainer drawn for this place of the round comes down from the head of the room (castle
+# opponent), the battle is fought with the three as they stand (castle battle), and a valet brings the Castle Points
+# it earned (castle won), with a word for how it was won. The valet's room hears how it went (VAR_BATTLE_CASTLE_SCENE:
+# 1 won with more to come, 2 the seventh through, 3 lost). A battle passed (5) is only announced. At the 21st battle
+# of a Single streak, and at the 49th, the trainer is the Castle Valet himself.
+#
+# Not here: what each trainer says, which is the original's own text: they come forward without a word.
+
+
+script OnEnter
+  place lady 8 3 down
+  castle active
+  if result == 0 end
+  walk player up 4 left 2 up 2
+  face player right
+  if var VAR_BATTLE_CASTLE_SCENE == 5 goto Passing
+  castle nth
+  castle darach
+  if result != 0 goto Darach
+  castle opponent
+  place opponent 8 6 down
+  clearflag FLAG_HIDE_BATTLE_CASTLE_ROOM_OPPONENT
+  show opponent
+  walk opponent down 1 right 2 down 2
+  face opponent left
+  text "Battle no. {number}. {foe} comes forward!"
+label Fight
+  castle battle
+  if result == 0 goto Lost
+  castle darach
+  if result == 1 goto BeatSilver
+  if result == 2 goto BeatGold
+label Count
+  walk opponent up 2 left 2 up 1
+  setflag FLAG_HIDE_BATTLE_CASTLE_ROOM_OPPONENT
+  hide opponent
+  # Her ladyship looks down the room, and a valet brings what the battle earned
+  castle won
+  if result >= 40 goto Fantastic
+  if result >= 25 goto Remarkable
+  if result >= 15 goto HardFought
+  call ValetIn
+  say "A good effort. Her ladyship sends these Castle Points."
+  goto Given
+label Fantastic
+  call ValetIn
+  say "A flawless victory! Her ladyship is delighted, and sends these Castle Points with her compliments."
+  goto Given
+label Remarkable
+  call ValetIn
+  say "A remarkable victory. Her ladyship is most pleased, and sends these Castle Points."
+  goto Given
+label HardFought
+  call ValetIn
+  say "A hard-fought victory. Her ladyship sends these Castle Points."
+label Given
+  text "{player} received {number} Castle Points!"
+  fanfare item
+  walk valet right 1 down 4
+  setflag FLAG_HIDE_BATTLE_CASTLE_ROOM_VALET
+  hide valet
+label Out
+  call WalkOut
+  castle done
+  if result == 1 goto Seven
+  setvar VAR_BATTLE_CASTLE_SCENE 1
+  sound "stairs"
+  warp "BattleCastleCorridor" 14 4 down
+  end
+label Seven
+  setvar VAR_BATTLE_CASTLE_SCENE 2
+  sound "stairs"
+  warp "BattleCastleCorridor" 14 4 down
+  end
+
+# The Castle Valet (the scene's own for him: he comes down from her ladyship's side and takes his place)
+label Darach
+  castle opponent
+  castle brain
+  place opponent 8 6 down
+  clearflag FLAG_HIDE_BATTLE_CASTLE_ROOM_OPPONENT
+  show opponent
+  walk opponent down 1 right 2 down 2
+  face opponent left
+  speaker "Darach"
+  castle darach
+  if result == 2 goto Gold
+  say "I am Darach, valet to the lady of this castle. Twenty battles, and not one of them careless. Her ladyship has noticed."
+  say "She has asked me to see for her what you are made of. I do not disappoint her ladyship. En garde!"
+  goto Fight
+label Gold
+  say "We meet again, {player}. Forty-eight battles. Her ladyship has spoken of little else."
+  say "I shall hold nothing in reserve, and I trust that you will not insult me by doing otherwise."
+  goto Fight
+label BeatSilver
+  speaker "Darach"
+  say "...Admirably done. I shall have to tell her ladyship that I was outmatched, and I find I do not mind in the least."
+  castle beat silver
+  goto Count
+label BeatGold
+  speaker "Darach"
+  say "There is nothing left that I could have done. You plan as a valet plans, and you battle as a champion battles."
+  say "It has been an honour, {player}. Her ladyship is smiling. I can tell without looking."
+  castle beat gold
+  goto Count
+
+label Lost
+  walk opponent up 2 left 2 up 1
+  setflag FLAG_HIDE_BATTLE_CASTLE_ROOM_OPPONENT
+  hide opponent
+  call WalkOut
+  setvar VAR_BATTLE_CASTLE_SCENE 3
+  sound "stairs"
+  warp "BattleCastleCorridor" 14 4 down
+  end
+
+# A battle passed: nobody comes forward
+label Passing
+  text "{player} presented a pass. Her ladyship inclines her head, and the battle is not held."
+  goto Out
+
+
+# A valet comes up the carpet to the challenger's side.
+script ValetIn
+  speaker "Valet"
+  place valet 8 13 up
+  clearflag FLAG_HIDE_BATTLE_CASTLE_ROOM_VALET
+  show valet
+  walk valet up 4 left 1
+  return
+
+
+# The challenger goes back down the carpet to the door.
+script WalkOut
+  walk player down 2 right 2 down 4
+  return

@@ -1,0 +1,156 @@
+{
+  "name": "BattleCastleBattleRoom",
+  "displayName": "Battle Castle",
+  "bgmTrack": "sinnoh/veilstone",
+  "interior": "Gym",
+  "trees": "Round",
+  "battleArena": "League",
+  "hall": "Champion",
+  "width": 17,
+  "height": 17,
+  "ground": [
+    "#################",
+    "#################",
+    "#################",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "########D########"
+  ],
+  "solid": [
+    "#################",
+    "#################",
+    "#################",
+    "##.....#.#.....##",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "##.............##",
+    "########.########"
+  ],
+  "props": [
+    {
+      "type": "TrainerStatue",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "TrainerStatue",
+      "x": 15,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 7,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 15,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 15,
+      "y": 15,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 8,
+      "y": 4,
+      "width": 1,
+      "depth": 12
+    },
+    {
+      "type": "Rug",
+      "x": 5,
+      "y": 8,
+      "width": 7,
+      "depth": 3
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 16,
+      "targetMap": "BattleCastleCorridor",
+      "targetX": 14,
+      "targetY": 4,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "lady",
+      "name": "Lady Caitlin",
+      "npcType": "Lady",
+      "x": 8,
+      "y": 3,
+      "facing": "Down",
+      "dialog": [
+        "..."
+      ]
+    },
+    {
+      "id": "opponent",
+      "name": "Trainer",
+      "npcType": "Youngster",
+      "x": 8,
+      "y": 6,
+      "facing": "Down",
+      "dialog": [
+        "..."
+      ],
+      "hiddenBy": "FLAG_HIDE_BATTLE_CASTLE_ROOM_OPPONENT"
+    },
+    {
+      "id": "valet",
+      "name": "Valet",
+      "npcType": "Gentleman",
+      "x": 8,
+      "y": 13,
+      "facing": "Up",
+      "dialog": [
+        "..."
+      ],
+      "hiddenBy": "FLAG_HIDE_BATTLE_CASTLE_ROOM_VALET"
+    }
+  ],
+  "wildEncounters": []
+}

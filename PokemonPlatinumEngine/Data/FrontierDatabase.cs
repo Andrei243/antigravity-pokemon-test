@@ -46,6 +46,10 @@ public sealed class FrontierSetRecord
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string? Item { get; set; }
+
+    /// <summary>The form it is in, where it is in one (plan 06 · R18c: two of the Battle Hall's Wormadam, by their cloaks).</summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? Form { get; set; }
 }
 
 /// <summary>Something an Exchange Service Corner hands over for Battle Points.</summary>
@@ -90,6 +94,54 @@ public sealed class FactoryTables
     public List<FactoryPoolRecord> OpenRentals { get; set; } = new();
 }
 
+/// <summary>
+/// The Battle Hall's tables (plan 06 · R18c; <c>src/overlay104/battle_hall_helpers.c</c> and the archive of its own
+/// Pokémon, <c>pl_bsdpm.narc</c>).
+/// </summary>
+public sealed class HallTables
+{
+    /// <summary>
+    /// The Pokémon met in the Hall, in the original's order (<c>sBattleHallPotentialOpponents</c>, each with its set
+    /// of the Hall's own archive): number 1 is the first, and the list's own first entry is the archive's empty one.
+    /// </summary>
+    public List<FrontierSetRecord> Pokemon { get; set; } = new();
+
+    /// <summary>The two types each of them counts as on the board (<c>sBattleHallPotentialOpponentTypes</c>), by the same numbers.</summary>
+    public List<PokemonType[]> Types { get; set; } = new();
+
+    /// <summary>The numbers the four groups begin at (<c>GROUP_1_START</c> to <c>GROUP_4_START</c>), weakest first.</summary>
+    public List<int> Groups { get; set; } = new();
+
+    /// <summary>The eight classes a trainer is drawn from at each of a type's ten ranks (<c>sHallTrainerClassesByRank</c>), by their keys.</summary>
+    public List<string[]> ClassesByRank { get; set; } = new();
+
+    /// <summary>The four classes a type brings (<c>sHallTrainerClassesBySelectedType</c>), in the board's order of types with the unnamed one last.</summary>
+    public List<string[]> ClassesByType { get; set; } = new();
+
+    /// <summary>Every Frontier trainer's class by its key (<c>sFrontierTrainerClasses</c>: the class's constant, which tells a Pokéfan from a Pokéfan where the name doesn't).</summary>
+    public List<string> TrainerClasses { get; set; } = new();
+}
+
+/// <summary>
+/// The Battle Castle's tables (plan 06 · R18c; <c>src/overlay104/battle_castle_helpers.c</c> and the valets'
+/// counters, <c>src/applications/frontier/battle_castle/self_app.c</c>).
+/// </summary>
+public sealed class CastleTables
+{
+    /// <summary>The trainers of a round, round by round (<c>sBattleCastleOpponentPools</c>), as the Battle Factory's rows are.</summary>
+    public List<int[]> Opponents { get; set; } = new();
+
+    /// <summary>The berries lent for Castle Points and what each costs (<c>sBerriesForRent</c>, <c>sBerryPrices</c>).</summary>
+    public List<FrontierPrizeRecord> Berries { get; set; } = new();
+
+    /// <summary>The items lent (<c>sItemsForRent</c>, <c>sItemPrices</c>).</summary>
+    public List<FrontierPrizeRecord> Items { get; set; } = new();
+
+    /// <summary>How many of each list a rank of the counter lends, first rank first (<c>sBerriesAvailableByRank</c>, <c>sItemsAvailableByRank</c>).</summary>
+    public List<int> BerriesByRank { get; set; } = new();
+    public List<int> ItemsByRank { get; set; } = new();
+}
+
 public sealed class FrontierData
 {
     /// <summary>The trainers in the original's order: the first is trainer 0.</summary>
@@ -118,6 +170,12 @@ public sealed class FrontierData
 
     /// <summary>The Battle Factory's rounds and rentals (plan 06 · R18b).</summary>
     public FactoryTables Factory { get; set; } = new();
+
+    /// <summary>The Battle Hall's Pokémon, groups and trainer classes (plan 06 · R18c).</summary>
+    public HallTables Hall { get; set; } = new();
+
+    /// <summary>The Battle Castle's rounds and what its counters lend (plan 06 · R18c).</summary>
+    public CastleTables Castle { get; set; } = new();
 }
 
 /// <summary>
@@ -141,6 +199,8 @@ public static class FrontierDatabase
     public static IReadOnlyList<FrontierPrizeRecord> ExchangeMachines => Data.ExchangeMachines;
     public static IReadOnlyList<string> Banned => Data.Banned;
     public static FactoryTables Factory => Data.Factory;
+    public static HallTables Hall => Data.Hall;
+    public static CastleTables Castle => Data.Castle;
 
     public static FrontierTrainerRecord Trainer(int number) => Data.Trainers[number];
     public static FrontierSetRecord Set(int number) => Data.Sets[number];

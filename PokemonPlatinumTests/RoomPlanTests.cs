@@ -151,6 +151,14 @@ public class RoomPlanTests
     /// picture and no map (<c>BattleFactoryTests</c>).</summary>
     internal static readonly string[] BattleFactory = { "BattleFactory", "BattleFactoryCorridor", "BattleFactoryBattleRoom" };
 
+    /// <summary>The Battle Hall's and the Battle Castle's rooms (plan 06 · R18c): each lobby is come into from the east,
+    /// and the rooms behind its counter are laid out from the original's scenes, which are pictures and no maps
+    /// (<c>BattleHallTests</c>, <c>BattleCastleTests</c>).</summary>
+    internal static readonly string[] BattleHallAndCastle =
+    {
+        "BattleHall", "BattleHallCorridor", "BattleHallStage", "BattleCastle", "BattleCastleCorridor", "BattleCastleBattleRoom",
+    };
+
     /// <summary>The Canalave Library's upper floors (plan 02 · S10): no door, only the stairs.</summary>
     internal static readonly string[] LibraryUpperFloors = { "CanalaveLibrary2F", "CanalaveLibrary3F" };
 
@@ -626,6 +634,30 @@ public class RoomPlanTests
         new object[] { "EternaCitySouthHouse", "prof_oak", 4, 5, Direction.Down },
         new object[] { "IronIslandHouse", "byron", 5, 5, Direction.Down },
         new object[] { "CanalaveLibrary1F", "lucian", 16, 5, Direction.Up },
+        // The Battle Hall's lobby (plan 06 · R18c): the original's fifteen less its reporter (plan 08)
+        new object[] { "BattleHall", "single_attendant", 6, 9, Direction.Right },
+        new object[] { "BattleHall", "multi_attendant", 6, 10, Direction.Right },
+        new object[] { "BattleHall", "record_keeper", 8, 8, Direction.Down },
+        new object[] { "BattleHall", "maid", 2, 5, Direction.Left },
+        new object[] { "BattleHall", "pokefan_f", 3, 7, Direction.Right },
+        new object[] { "BattleHall", "twin", 15, 5, Direction.Down },
+        new object[] { "BattleHall", "pachirisu", 15, 6, Direction.Up },
+        new object[] { "BattleHall", "snowpoint_npc_f", 20, 4, Direction.Left },
+        new object[] { "BattleHall", "hiker", 23, 11, Direction.Up },
+        new object[] { "BattleHall", "expert_m", 10, 3, Direction.Down },
+        new object[] { "BattleHall", "idol", 6, 6, Direction.Up },
+        new object[] { "BattleHall", "bug_catcher", 25, 4, Direction.Left },
+        new object[] { "BattleHall", "fan", 18, 11, Direction.Left },
+        new object[] { "BattleHall", "visitor_counterpart", 4, 6, Direction.Down },
+        new object[] { "BattleCastle", "single_attendant", 5, 9, Direction.Right },
+        new object[] { "BattleCastle", "multi_attendant", 5, 10, Direction.Right },
+        new object[] { "BattleCastle", "roughneck", 14, 13, Direction.Right },
+        new object[] { "BattleCastle", "black_belt", 2, 14, Direction.Left },
+        new object[] { "BattleCastle", "gentleman", 8, 12, Direction.Up },
+        new object[] { "BattleCastle", "collector", 12, 4, Direction.Down },
+        new object[] { "BattleCastle", "artist", 20, 5, Direction.Left },
+        new object[] { "BattleCastle", "socialite", 14, 5, Direction.Right },
+        new object[] { "BattleCastle", "waitress", 9, 7, Direction.Down },
     };
 
     [Theory]
@@ -710,6 +742,7 @@ public class RoomPlanTests
             BattleTower,
             BattleFactory,
             SyndicateLift,
+            BattleHallAndCastle,
         }.SelectMany(names => names).ToHashSet();
         foreach (string path in Directory.GetFiles(GameDataFiles.PathOf(MapDatabase.Folder), "*.json"))
         {

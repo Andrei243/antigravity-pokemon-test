@@ -78,6 +78,8 @@ public enum Op
     // After the Hall of Fame (plan 02 · S15): the Pokédex upgraded to the National one (the original's
     // SetNationalDexEnabled)
     NationalDex,
+    // The Battle Hall and the Battle Castle (plan 06 · R18c)
+    Hall, Castle,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

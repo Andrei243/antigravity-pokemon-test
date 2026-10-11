@@ -579,6 +579,63 @@ Plan 02 · S15, part a.
 
 A Gym Leader a scene battles is named by the script, as in their Gym (`battle volkner as "leader_volkner_fight_area" and flint with "rival_fight_area_turtwig"`: the first of the two by a team of the table, the second a trainer of the map, the partner the rival's team for the player's starter), never made a trainer of the map: the class brings no eye theme.
 
+### The Battle Hall
+
+Plan 06 · R18c; `docs/mechanics/rulings.md`, "The Battle Hall and the Battle Castle". A challenge lives between its
+scripts as `IScriptHost.Hall` and is never saved but when it is put down (`hall pause`); what the Hall shares with
+the other facilities (Battle Points, the board, the print, the save) is `frontier`'s, above. Its draws are made on
+the game's own chance, as the original's are. A whole round is one arrival script of the stage, which loops.
+
+| Command | What it does |
+|---|---|
+| `hall enough single`, `hall enough double` | `RESULT` 1 when the team holds a Pokémon of level 30 or more that may go in, or two of one species. `{banned}` is the banned species the Pokédex has seen. |
+| `hall choose single`, `hall choose double` | Opens the team for the one to be chosen, or the two, and waits: `RESULT` 1, 0 when backed out of, 2 for two of different species. `{entrant}` names the species. |
+| `hall streak single` | `RESULT` 0 with no streak running that way, 1 with one of the species chosen, 2 with another species' (`{thing}` names it), which `hall drop single` lets go of. |
+| `hall begin single`, `hall begin double` | Starts a challenge with the Pokémon chosen. A streak still running that way is taken up with every type's rank. The story's `VAR_BATTLE_HALL_CHALLENGE_TYPE` keeps its kind. |
+| `hall enter` | Counts a challenge begun. |
+| `hall pause`, `hall resume` | Puts the challenge down between two battles, and takes it up again: `RESULT` 1, or 0 when none waits or its Pokémon is no longer in its place (which ends the streak). `hall paused` is 1 while one is put down. |
+| `hall forfeit` | Ends the streak of a challenge that was walked out on (the game closed in the middle of it). |
+| `hall end`, `hall active`, `hall way` | Lets go of the challenge; `RESULT` 1 while one is under way; 0 for a Single challenge and 1 for a Double one (-1 with none). |
+| `hall battles`, `hall next`, `hall nth` | The battles won in the round, the number in the round of the one to come, and its number in the streak: `RESULT` and `{number}`. `hall round` is the rounds the streak has come through (0 with no challenge). |
+| `hall board` | Opens the board of types and waits; the opponent is drawn for the type chosen. `{type}` names it and `{rank}` the rank it stands at, 1 to 10. |
+| `hall argenta` | Who the battle to come is against: 0, 1 the Hall Matron for the silver print, 2 for the gold one. |
+| `hall opponent` | Stands the trainer drawn on the stage as `opponent`, with the look of their class. `{foe}` names them. |
+| `hall battle` | The battle, with the Pokémon entered, whole and at its own level: `RESULT` 1 won, 0 lost. A Double challenge puts both out against the same Pokémon twice. |
+| `hall won` | Counts the win and raises the type's rank: `RESULT` 1 once the round's ten are beaten. `hall rank` is the wins over the type last chosen, 0 to 10 (`{rank}`). |
+| `hall brain`, `hall beat silver`, `hall beat gold` | Counts the Hall Matron met; notes her beaten, so that the print waits in the lobby. |
+| `hall finish won`, `hall finish lost` | Writes the records, and the species' own record: the streak runs on to the next round, or ends where it stands. `RESULT` 1 when the species' record moved. |
+| `hall points` | Hands over the Battle Points a round earned: `RESULT` and `{number}`. |
+| `hall beaten` | Who was beaten in this challenge: 0 nobody, 1 the Hall Matron for the silver print, 2 for the gold one. |
+| `hall keeper` | The record keeper's count of every species' Single record: `RESULT` 0 nothing won yet, 1 a mark passed and its Battle Points handed over, 2 the next still to come, 3 every mark passed. `hall told total`, `passed`, `coming` and `points` are what was counted (`RESULT` and `{number}`). The story's `VAR_BATTLE_HALL_NEXT_TOTAL_RECORD_MILESTONE` keeps the next mark. |
+| `hall fan`, `hall fanstage` | Which of ten things the fan says, by the species with a record (0 to 9), and how near the counter the fan stands (0 to 2). |
+| `hall visitors`, `hall species` | How many well-known visitors may turn up, by the Single records added up (0, 1, 2 or 4); and the species with a record (`RESULT` and `{number}`). |
+
+### The Battle Castle
+
+Plan 06 · R18c. A challenge lives between its scripts as `IScriptHost.Castle`; its three are copies the challenge
+carries from battle to battle, so `castle battle` is fought on them as they stand.
+
+| Command | What it does |
+|---|---|
+| `castle enough` | `RESULT` 1 when the team holds three Pokémon of different species that may go in (what they hold doesn't matter: it is kept at the door). `{banned}` as above. |
+| `castle choose`, `castle check` | Opens the team for three to be chosen, and waits: `RESULT` 1, or 0 when backed out of. Then 1 when two of them are of one species. |
+| `castle begin single`, `castle begin double` | Starts a challenge with the three chosen: copies at level 50 or under, holding nothing, and ten Castle Points for the round. A streak still running that way is taken up with its Castle Points and its counters' ranks. Say it only once the save is agreed to. |
+| `castle enter` | Draws the round's trainers and the first one's three (a challenge taken up again keeps what it had), and counts a challenge begun. |
+| `castle pause`, `castle resume`, `castle paused`, `castle forfeit`, `castle end`, `castle active`, `castle way` | As the Hall's: a challenge put down keeps the three's HP, PP and what they hold. |
+| `castle battles`, `castle next`, `castle nth`, `castle round` | As the Hall's. |
+| `castle heard` | `RESULT` 1 once the valet has explained why items are kept at the door; asking tells it heard. |
+| `castle cp` | The Castle Points held: `RESULT`, `{number}` and `{cp}`. They stand over the field until the script ends. |
+| `castle self`, `castle foe` | Opens the valet's counter for one's own three (healing, rentals, the ranks) or the one about the trainer to come (who they are, their levels, their stats and moves), and waits. |
+| `castle passable`, `castle pass` | `RESULT` 1 where a battle may be passed (from the fourth round, never the Castle Valet's); and passes it for fifty Castle Points: `RESULT` 1, or 0 with too few. |
+| `castle draw` | Draws the next trainer's three. |
+| `castle darach`, `castle announce` | Who the battle to come is against (0, 1 the Castle Valet for the silver print, 2 for the gold one); and 1 the one time he is to be announced. |
+| `castle fainted` | `RESULT` 1 when one of the three fainted in the battle just won (it was revived with a single HP). |
+| `castle opponent` | Stands the trainer drawn in the throne room as `opponent`. `{foe}` names them. |
+| `castle battle` | The battle, with the three as they stand: `RESULT` 1 won, 0 lost. |
+| `castle won` | Counts the win and earns its Castle Points: `RESULT` and `{number}` are what was earned. `castle done` is 1 once the round's seven are through. |
+| `castle brain`, `castle beat silver`, `castle beat gold` | Counts the Castle Valet met; notes him beaten, so that the print waits in the lobby. |
+| `castle finish won`, `castle finish lost`, `castle points`, `castle beaten` | As the Hall's: the records, the Battle Points a round earned, and who was beaten. |
+
 ## Who is on the map
 
 A person can carry a flag that takes them off the map while it is set (`hiddenBy`) or one they wait for

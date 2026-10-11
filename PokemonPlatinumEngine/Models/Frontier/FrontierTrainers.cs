@@ -108,6 +108,7 @@ public static class FrontierTrainers
             IsShiny = false,
             IvHP = ivs, IvAttack = ivs, IvDefense = ivs, IvSpeed = ivs, IvSpAttack = ivs, IvSpDefense = ivs
         };
+        if (set.Form != null) pokemon.ChangeForm(set.Form);
         int stats = System.Numerics.BitOperations.PopCount((uint)set.EvFlags & 0x3F);
         int effort = stats == 0 ? 0 : Math.Min(255, 510 / stats);
         if ((set.EvFlags & 1) != 0) pokemon.EvHP = effort;

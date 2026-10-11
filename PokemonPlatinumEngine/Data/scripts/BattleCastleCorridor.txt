@@ -1,0 +1,153 @@
+# The valet's room of the Battle Castle (plan 06 · R18c). docs/scripts.md describes the language; the lines are our
+# own, on the original's beats (frontier_scripts_battle_castle.s, which the original plays as a scene of the
+# Frontier's own over a picture of a corridor: the room here is laid out from where that scene stands its people,
+# the valet in the middle of the passage, the challenger before him, the way up to the throne room behind).
+#
+# Everything between two battles happens here. As a round begins the valet says what has become of the Pokémon's
+# items, and then offers his services until the challenger goes up to battle: the counter for one's own three
+# (castle self: healing, rentals, the ranks), the counter about the trainer to come (castle foe: who they are,
+# their levels, their stats and moves), and from the fourth round a battle passed for fifty Castle Points. After a
+# battle won whoever fainted has been revived, and the challenge may go on, be put down (REST) or be given up
+# (RETIRE); going on, the next trainer is drawn. After the seventh the records are written and the Battle Points
+# handed over; after a battle lost the streak ends.
+#
+# VAR_BATTLE_CASTLE_SCENE, a variable of our own, says what the throne room sent the player back with: 1 a battle
+# won or passed with more to come, 2 the seventh through, 3 a battle lost; 0 is someone come in from the lobby,
+# with a round to begin or a challenge to take up again; and 5, set here, tells the throne room that the battle
+# is being passed.
+#
+# Not here: the question whether the battle is to be kept as a Battle Video (plan 08 · P10).
+
+
+script OnEnter
+  place valet 13 7 right
+  castle active
+  if result == 0 end
+  speaker "Valet"
+  if var VAR_BATTLE_CASTLE_SCENE == 1 goto Back
+  if var VAR_BATTLE_CASTLE_SCENE == 2 goto RoundDone
+  if var VAR_BATTLE_CASTLE_SCENE == 3 goto Lost
+  walk player left 3
+  castle battles
+  if result != 0 goto Ready
+  # A round begins: what has become of the items, and what the Castle Points are for
+  castle heard
+  if result == 1 goto Briefly
+  say "Welcome to the Battle Castle. I am to see that you want for nothing, within reason."
+  say "By her ladyship's rule, whatever your Pokémon hold is kept at the door until you leave, and nothing is restored between battles."
+  say "What you need, you earn. A battle won with care is rewarded in Castle Points, and Castle Points are what I answer to."
+  goto Counter
+label Briefly
+  say "Welcome back, {player}. Whatever your Pokémon held is in safe keeping, as before."
+label Counter
+  castle round
+  if result == 3 say "From this round on you may pass a battle altogether, for fifty Castle Points. It counts as won, though it earns you nothing."
+  say "How may I be of service?"
+
+label Service
+  castle cp
+  castle passable
+  if result == 1 goto WithPass
+  choose "You have {cp} Castle Points." "BATTLE" "MY POKéMON" "THE OPPONENT"
+  if result == 1 goto Self
+  if result == 2 goto Foe
+  goto Battle
+label WithPass
+  choose "You have {cp} Castle Points." "BATTLE" "MY POKéMON" "THE OPPONENT" "PASS"
+  if result == 1 goto Self
+  if result == 2 goto Foe
+  if result == 3 goto Pass
+  goto Battle
+label Self
+  castle self
+  goto Service
+label Foe
+  castle foe
+  goto Service
+label Pass
+  ask "Passing this battle will cost 50 Castle Points. Is that agreeable?"
+  if no goto Service
+  castle pass
+  if result == 0 goto Poor
+  say "Very good. I shall make your excuses to her ladyship."
+  setvar VAR_BATTLE_CASTLE_SCENE 5
+  goto Up
+label Poor
+  say "I regret that you have not the Castle Points for it."
+  goto Service
+label Battle
+  say "Then please go up. Her ladyship is waiting."
+  setvar VAR_BATTLE_CASTLE_SCENE 0
+label Up
+  walk player up 4
+  sound "stairs"
+  warp "BattleCastleBattleRoom" 8 15 up
+  end
+
+# Back from a battle won, or passed, with more to come
+label Back
+  setvar VAR_BATTLE_CASTLE_SCENE 0
+  walk player down 3
+  face player left
+  castle fainted
+  if result == 0 goto Ready
+  say "The Pokémon that fainted has been brought round. I fear it has very little strength left."
+  sound "heal"
+label Ready
+  castle announce
+  if result == 1 say "I should tell you, {player}: the Castle Valet himself has asked to meet you in the next battle."
+  castle next
+  choose "Battle no. {number} is next. Are you ready?" "KEEP GOING" "REST" "RETIRE"
+  if result == 1 goto Rest
+  if result == 2 goto Retire
+label Onward
+  castle draw
+  say "How may I be of service?"
+  goto Service
+
+# All seven through: the records are written and the Battle Points handed over
+label RoundDone
+  setvar VAR_BATTLE_CASTLE_SCENE 0
+  walk player down 3
+  face player left
+  castle finish won
+  setvar VAR_BATTLE_CASTLE_LOBBY_LOAD_ACTION 1
+  castle beaten
+  if result == 0 goto Earned
+  say "You have beaten the Castle Valet. He asked that these Battle Points come to you from his own hand, and I am that hand."
+  goto Points
+label Earned
+  say "Seven battles, and her ladyship well pleased. You have earned Battle Points."
+label Points
+  castle points
+  text "{player} received {number} BP!"
+  fanfare item
+  goto Leave
+
+label Lost
+  setvar VAR_BATTLE_CASTLE_SCENE 0
+  walk player down 3
+  face player left
+  castle finish lost
+  setvar VAR_BATTLE_CASTLE_LOBBY_LOAD_ACTION 3
+  goto Leave
+
+label Retire
+  ask "Give the challenge up? Your streak and your Castle Points will end with it."
+  if no goto Onward
+  castle finish lost
+  setvar VAR_BATTLE_CASTLE_LOBBY_LOAD_ACTION 3
+  goto Leave
+
+label Rest
+  ask "Put the challenge down for now? The game will be saved, and you can go on from here later."
+  if no goto Onward
+  setvar VAR_BATTLE_CASTLE_LOBBY_LOAD_ACTION 2
+  castle pause
+  warp "BattleCastle" 6 9 left
+  end
+
+label Leave
+  say "What your Pokémon held at the door is theirs again. Thank you for your visit."
+  warp "BattleCastle" 6 9 left
+  end
