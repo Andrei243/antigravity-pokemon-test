@@ -726,4 +726,27 @@ public sealed class HeadlessScriptHost : IScriptHost
         Outcome = Fight?.Invoke(null) ?? BattleOutcome.Won;
         Log.Add($"frontierbattle {string.Join(" and ", foes.Select(f => f.Id))}{(partner != null ? $" with {partner.Id}" : "")} {Outcome}");
     }
+
+    // ------------------------------------------------------------------ the Hall of Fame's end (plan 02 · S14)
+
+    /// <summary>Whether the National Pokédex is the player's (<c>if nationaldex</c>); not unless a test says so.</summary>
+    public bool NationalDex { get; set; }
+
+    /// <summary>Whether <c>save</c> can write the game; it can, unless a test says otherwise.</summary>
+    public bool SaveFails { get; set; }
+
+    /// <summary>
+    /// What the story held each time a script saved the game (<c>save</c>), and where the player stood: how a test
+    /// reads what a save made in the middle of a scene would come back to.
+    /// </summary>
+    public List<(StorySnapshot Story, string? Map, (int X, int Y) Tile)> Saves { get; } = new();
+
+    public bool Save()
+    {
+        Shown("save the game");
+        Log.Add(SaveFails ? "save failed" : "save");
+        if (SaveFails) return false;
+        Saves.Add((Story.Snapshot(), Map?.Name, PlayerTile));
+        return true;
+    }
 }

@@ -213,7 +213,8 @@ public static class WorldModels
 
         // ---------------------------------------------------------------- the Pokémon League and the Battle Zone
         Built("c10_s01", BuildingKind.League, "the Pokémon League", storeys: 3),
-        Thing("c10_s02", PropType.LampPost, "a lantern on the League's steps"),
+        // (The original reads these as statues, PokemonLeague_Statue on each one's two tiles: plan 02 · S14)
+        Thing("c10_s02", PropType.Statue, "a statue on the League's steps"),
         Thing("c11_o01", PropType.Container, "a shipping container on the Fight Area's quay"),
         // The Battle Frontier's five facilities, each with a look of its own (plan 01 · M10, part b; style guide, "The
         // Battle Frontier"), told apart by the name over the door

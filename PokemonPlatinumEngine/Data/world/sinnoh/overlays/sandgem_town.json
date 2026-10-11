@@ -17,6 +17,8 @@
     "sandgem_counterpart": {
       "name": "{assistant}",
       "npcType": "Assistant",
+      // Her tour's last words until the Hall of Fame, which brings her back to stand here (plan 02 · S14)
+      "script": "Counterpart",
       "dialog": [
         "{assistant}: The Pokémon Center has the red roof, and the Poké Mart the blue one.",
         "{assistant}: Tell your family about the Pokédex before you go too far, {player}!"

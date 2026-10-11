@@ -395,7 +395,8 @@ public static class ScriptParser
                 // "pc halloffame" opens the Hall of Fame's records instead of the boxes (plan 06 · R12)
                 return new Instruction { Op = Op.Pc, Line = line, Name = r.More ? r.OneOf("halloffame") : "" };
             case "halloffame":
-                return new Instruction { Op = Op.HallOfFame, Line = line };
+                // "halloffame show" is the scene of the team's entry instead of the record (plan 02 · S14)
+                return new Instruction { Op = Op.HallOfFame, Line = line, Name = r.More ? r.OneOf("show") : "" };
             case "travel":
                 return new Instruction { Op = Op.Travel, Line = line };
             case "choosepokemon":
@@ -622,6 +623,12 @@ public static class ScriptParser
                 return new Instruction { Op = Op.Factory, Line = line, Name = what, Other = which };
             }
 
+            // The Hall of Fame's end (plan 02 · S14): the game saved unasked, as the original's ClearGame saves it, and the credits
+            case "save":
+                return new Instruction { Op = Op.Save, Line = line };
+            case "credits":
+                return new Instruction { Op = Op.Credits, Line = line };
+
             case "script":
             case "label":
                 throw r.Error($"'{word}' begins a line of its own");
@@ -710,6 +717,9 @@ public static class ScriptParser
                 return new Condition { Query = Query.Time, Negated = negated, Name = r.Enum<Core.TimeOfDay>("a time of day").ToString() };
             case "weekday":
                 return new Condition { Query = Query.Weekday, Negated = negated, Name = r.Enum<System.DayOfWeek>("a day of the week").ToString() };
+            // The National Pokédex is the player's (plan 02 · S14; the original's GetNationalDexEnabled)
+            case "nationaldex":
+                return new Condition { Query = Query.NationalDex, Negated = negated };
             default:
                 throw r.Error($"'{word}' is nothing an 'if' can ask");
         }

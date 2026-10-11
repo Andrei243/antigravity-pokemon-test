@@ -920,6 +920,13 @@ public partial class GameEngine
                     game.currentState = GameState.PCStorage;
                     game.pcScreen.Open(game.pcBoxStorage);
                     break;
+                // The Hall of Fame's end (plan 02 · S14): the scene of the team's entry, and the credits
+                case ScriptScreen.Ceremony:
+                    game.OpenCeremony();
+                    break;
+                case ScriptScreen.Credits:
+                    game.OpenCredits();
+                    break;
                 case ScriptScreen.Travel:
                     // The way to the next region, where this map has one: the attendant says how things stand,
                     // and the ship leaves when the story of this region is done
@@ -1110,5 +1117,12 @@ public partial class GameEngine
             if (PokemonDatabase.Get(species) is { } own) AudioManager.PlayCry(own, null, CryMode.FieldEvent);
             else if (PokemonDatabase.SpeciesOfForm(species) is { } of) AudioManager.PlayCry(of, species, CryMode.FieldEvent);
         }
+
+        // ---- the Hall of Fame's end (plan 02 · S14)
+
+        public bool NationalDex => game.playerPokedex.NationalUnlocked;
+
+        // The save is written where the player stands, as the start menu's is, with no question and no panel
+        public bool Save() => SaveManager.SaveGame(game.BuildSave());
     }
 }

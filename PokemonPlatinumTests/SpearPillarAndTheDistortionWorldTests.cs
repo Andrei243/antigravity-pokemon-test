@@ -900,7 +900,7 @@ public class SpearPillarAndTheDistortionWorldTests
         Run(game, "sendoff_spring", "setvar VAR_EXITED_DISTORTION_WORLD_STATE 3");
         Assert.Contains(TalkFrom(game, "cynthia", Direction.Left).Transcript, l => l.Text.Contains("been the one to battle it"));
         // The Hall of Fame takes her from the cave's mouth
-        Assert.Contains(Find("OnEnter", "PokemonLeagueHallOfFame").Everything(), i => i.Op == Op.SetFlag && i.Name == "FLAG_HIDE_SENDOFF_SPRING_CYNTHIA");
+        Assert.Contains(Find("Victory", "PokemonLeagueHallOfFame").Everything(), i => i.Op == Op.SetFlag && i.Name == "FLAG_HIDE_SENDOFF_SPRING_CYNTHIA");
         Run(game, "sendoff_spring", "setflag FLAG_HIDE_SENDOFF_SPRING_CYNTHIA");
         game.Arrive("SendoffSpring", 32, 17);
         Assert.Null(game.Present("cynthia"));
@@ -956,7 +956,7 @@ public class SpearPillarAndTheDistortionWorldTests
         Assert.False(game.Story.Has("FLAG_CAUGHT_GIRATINA"));
         game.Arrive("TurnbackCaveGiratinaRoom", 11, 18);
         Assert.Null(game.Present("giratina"));
-        Assert.Contains(Find("OnEnter", "PokemonLeagueHallOfFame").Everything(), i => i.Op == Op.If && i.Then is { Op: Op.ClearFlag, Name: "FLAG_HIDE_TURNBACK_CAVE_GIRATINA_ROOM_GIRATINA" });
+        Assert.Contains(Find("Victory", "PokemonLeagueHallOfFame").Everything(), i => i.Op == Op.If && i.Then is { Op: Op.ClearFlag, Name: "FLAG_HIDE_TURNBACK_CAVE_GIRATINA_ROOM_GIRATINA" });
 
         // The portal hangs where it stood, and leads into the Distortion World's room behind the cave, or not
         var portal = game.Present("portal")!;

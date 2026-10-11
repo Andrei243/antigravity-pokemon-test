@@ -135,6 +135,10 @@ public partial class GameEngine
         public PoffinCookingScreen Cooking => game.cookingScreen;
         public PoffinCaseScreen PoffinCaseScreen => game.poffinCaseScreen;
         public HatchScreen Hatch => game.hatchScreen;
+
+        /// <summary>The Hall of Fame's ceremony and the credits (plan 02 · S14).</summary>
+        public HallOfFameCeremony Ceremony => game.ceremony;
+        public CreditsScreen Credits => game.credits;
         public PoketchView PoketchView => game.poketchView;
         public PoketchContext PoketchContext => game.PoketchNow();
 

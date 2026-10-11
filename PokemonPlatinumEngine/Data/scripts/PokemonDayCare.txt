@@ -3,6 +3,15 @@
 #
 # Once the player has left a Pokémon with the couple (FLAG_STORED_POKEMON_AT_DAY_CARE), a fan of theirs waits by the
 # table and shares the Pokétch Company's Day-Care Checker app, which shows the two left here and any Egg they found.
+# He is hidden by the original's own flag, FLAG_HIDE_DAY_CARE_GYM_GUIDE (plan 02 · S14): a new game sets it
+# (common.ChapterEleven), the Day-Care Lady's script clears it as the first Pokémon is left, and so does the Hall of
+# Fame's, so a Champion finds him here whether or not they ever left one.
+
+
+# PokemonDayCare_OnTransition
+script OnEnter
+  if flag FLAG_STORED_POKEMON_AT_DAY_CARE clearflag FLAG_HIDE_DAY_CARE_GYM_GUIDE
+  end
 
 
 script AppFan

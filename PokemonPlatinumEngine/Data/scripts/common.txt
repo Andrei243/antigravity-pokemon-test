@@ -243,6 +243,22 @@ script ChapterNine
 script ChapterTen
   setflag FLAG_HIDE_VERITY_CAVERN_PROF_OAK
   setflag FLAG_HIDE_SUNYSHORE_CITY_RIVAL
+  call ChapterEleven
+  return
+
+
+# Who the eleventh chapter (plan 02 · S14, "The Pokémon League") keeps out of sight until their scenes, as the
+# original's new game does (scripts_init_new_game.s): the rival in the League's Pokémon Center, who comes running in
+# as the player first walks up to the door's guard, and the Day-Care couple's fan in Solaceon Town, who is there once
+# a Pokémon has been left with them or the Hall of Fame entered (FLAG_HIDE_DAY_CARE_GYM_GUIDE; a save that has left a
+# Pokémon there already keeps him). The others the Hall of Fame brings on (the assistant in Sandgem Town, the
+# professor in Veilstone's store, Lucian in Canalave's library) were hidden by the chapters of their places. Called
+# by ChapterTen, and run for a save from before (Story/StoryMigration.cs, version 17, which also gives a save that
+# entered the Hall of Fame before its scene was written what the scene sets). It may only set flags and variables,
+# and ends in return.
+script ChapterEleven
+  setflag FLAG_HIDE_POKEMON_LEAGUE_NORTH_POKECENTER_1F_RIVAL
+  if not flag FLAG_STORED_POKEMON_AT_DAY_CARE setflag FLAG_HIDE_DAY_CARE_GYM_GUIDE
   return
 
 
@@ -1011,6 +1027,8 @@ label Raise
   if result == 2 goto MerelyAnEgg
   if result == 3 goto NothingToBattle
   setflag FLAG_STORED_POKEMON_AT_DAY_CARE
+  # The couple's fan comes in (PokemonDayCare.txt: the original shows him as the room is next come to; plan 02 · S14)
+  clearflag FLAG_HIDE_DAY_CARE_GYM_GUIDE
   say "Lovely. We'll raise your {left} for a while. Come back for it later."
   daycare state
   if result == 3 end

@@ -50,6 +50,12 @@ public class OpeningTests
         /// <summary>Who the player is (a script may ask it: <c>if boy</c>); the boy unless a test says otherwise.</summary>
         public PlayerLook Look { get; set; } = PlayerLook.Boy;
 
+        /// <summary>Whether the National Pokédex is the player's (a script may ask it: <c>if nationaldex</c>; plan 02 · S14).</summary>
+        public bool NationalDex { get; set; }
+
+        /// <summary>Whether a script's <c>save</c> fails (plan 02 · S14).</summary>
+        public bool SaveFails { get; set; }
+
         /// <summary>Answers for the next script's questions, in order (the first answer, yes, for any left over).</summary>
         public Queue<int> Answers { get; } = new();
 
@@ -152,7 +158,9 @@ public class OpeningTests
                 Fight = _ => Fight,
                 // As in the game, a chapter's battles are fought only with a Pokémon of the player's
                 NeedsPokemon = true,
-                PlayerLook = Look
+                PlayerLook = Look,
+                NationalDex = NationalDex,
+                SaveFails = SaveFails
             };
             while (Answers.Count > 0) host.Answers.Enqueue(Answers.Dequeue());
             var runner = new ScriptRunner(Scripts, host);

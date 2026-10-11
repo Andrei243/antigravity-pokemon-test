@@ -25,7 +25,7 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | `c06_s02` | a boat at its pier (Pastoria moors two side by side) | a prop: Boat |  | 8.5 × 5.6 × 2.4 | 5 | Fight Area, Pastoria City |
 | `c09_s02` | the ferry between Snowpoint City and the Fight Area | a prop: Boat |  | 9.4 × 5.2 × 2.6 | 2 | Fight Area, Snowpoint City |
 | `c10_s01` | the Pokémon League | a building: League, 3 storeys |  | 11.5 × 9.2 × 16.4 | 1 | Pokémon League |
-| `c10_s02` | a lantern on the League's steps | a prop: LampPost |  | 1.6 × 1.6 × 2.7 | 4 | Pokémon League |
+| `c10_s02` | a statue on the League's steps | a prop: Statue |  | 1.6 × 1.6 × 2.7 | 4 | Pokémon League |
 | `c11_o01` | a shipping container on the Fight Area's quay | a prop: Container |  | 3.0 × 2.8 × 2.2 | 12 | Fight Area |
 | `c1_b01a` | a block of flats with a way in | a building: Apartments, built as in City |  | 5.2 × 4.0 × 6.3 | 3 | Jubilife City |
 | `c1_b01c` | a block of flats | a building: Apartments, built as in City |  | 4.4 × 5.4 × 6.3 | 6 | Jubilife City |

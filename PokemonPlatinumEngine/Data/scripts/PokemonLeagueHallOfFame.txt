@@ -1,57 +1,159 @@
-# The Hall of Fame (plan 01 · M9, part 2d), on the original's plan. docs/scripts.md describes the language; the lines
-# are our own, on the original's beats (scripts_pokemon_league_hall_of_fame.s).
+# The Hall of Fame (the room: plan 01 · M9, part 2d; its scene: plan 02 · S14), on the original's plan.
+# docs/scripts.md describes the language; the lines are our own, on the original's beats
+# (scripts_pokemon_league_hall_of_fame.s, and src/clear_game.c for what follows the machine).
 #
-# THIS ROOM'S SCENE IS PLAN 02 · S14'S. What is here is the room's own arrival as far as the machine, and the smallest
-# end that leaves the game playable: the team is entered in the Hall of Fame (the game's own record and screen, plan 06
-# · R12), healed as the original's save heals it, the region counts as finished, and the player wakes at home. S14
-# replaces everything from "label Record" on with the scene itself: the professor's and Cynthia's words for a first
-# and for a later victory (GetLeagueVictories), the Poké Balls laid on the machine (PlayHallOfFameHealingAnimation),
-# each Pokémon shown in turn, the save, the credits, and the game beginning again from the player's room. It also
-# sets what PokemonLeagueHallOfFame_SetHallOfFameVictoryFlagsAndVars sets and nothing reads yet: the Vs. Seeker's
-# fourth level (FLAG_UNLOCKED_VS_SEEKER_LVL_4), the Spring Path with the National Pokédex, the Day Care's Gym guide,
-# the legendaries put back where they weren't caught (Dialga, Palkia, Heatran, Regigigas and the roamers but Mesprit:
-# Azelf, Uxie and Mesprit are put back below, since plan 02 · S13),
-# VAR_PLAYER_HOUSE_POSTGAME_STATE, the assistant in Sandgem Town, the professor in Veilstone's store, Lucian in
-# Canalave's library and Cynthia gone from Celestic's ruins and Sendoff Spring.
+# One scene, played as the new Champion comes in. Professor Rowan and Cynthia stand either side of the carpet; they
+# have other words for a Champion who has been here before (the original's GetLeagueVictories, which is nought exactly
+# until FLAG_GAME_COMPLETED is first set). Cynthia welcomes the player to the machine and says what it keeps. Then, in
+# the original's order:
+#   - FLAG_UNLOCKED_VS_SEEKER_LVL_4, and the Spring Path on the map for whoever has the National Pokédex;
+#   - a Poké Ball for each of the team laid on the machine, and its chime (PlayHallOfFameHealingAnimation: the balls
+#     are the room's own piece, GymPieces, by VAR_HALL_OF_FAME_BALLS, a variable of ours);
+#   - the screen goes dark, and Victory sets what a victory sets (SetHallOfFameVictoryFlagsAndVars);
+#   - ClearGame: the Champion Ribbons and the record (halloffame), the game completed and the region done, the scene
+#     of the team's entry (halloffame show: each Pokémon in turn, then the Champion among them), the team healed and
+#     the game saved in the player's room, where it begins again, and the credits.
+# The original then resets the console to its title screen, and CONTINUE wakes the player in their room; here the
+# game goes straight on in the room, the save having just been written there (docs/mechanics/rulings.md, "The
+# eleventh chapter").
+#
+# Not here, and why: Terastallization at the League's door (decision 06 · 2; plan 06 · R23) and the Four's and
+# Cynthia's rematch teams (plan 02 · S15, by FLAG_ARRESTED_CHARON_STARK_MOUNTAIN).
 
 
 # PokemonLeagueHallOfFame_OnFrame_EnterHallOfFame
 script OnEnter
   walk player up 8
+  # PokemonLeague_HallOfFame_Movement_TurnAroundInPlace: the professor looks the room over
   face prof_rowan up
   wait 0.5
   face prof_rowan right
+  if flag FLAG_GAME_COMPLETED goto Again
+  # PokemonLeagueHallOfFame_FirstVictoryMessages
+  speaker "Professor Rowan"
+  say "Hm... It has been a very long time since I last set foot in this room."
+  speaker "Cynthia"
+  say "If the last time was the day I became Champion, Professor, then it has been a long time indeed."
+  goto Welcome
+label Again
+  # PokemonLeagueHallOfFame_RepeatVictoryMessages
+  speaker "Professor Rowan"
+  say "However often I come in here, I catch myself standing a little straighter than I do anywhere else."
+  speaker "Cynthia"
+  say "So does everyone, Professor. Everything Pokémon and their Trainers have hoped for and fought for is kept in this room. It asks no less of whoever walks into it."
+label Welcome
   face prof_rowan down
   face cynthia down
-  wait 0.5
+  wait 0.25
   speaker "Cynthia"
-  say "Welcome to the Hall of Fame, {player}."
+  say "{player}. Welcome to the Hall of Fame."
   walk player up 2
+  wait 0.15
+  face prof_rowan right
+  face cynthia left
   face prof_rowan up
   face cynthia up
-  say "This machine keeps the name of every Champion, and of the Pokémon who won beside them. Go on: it's yours to use."
-label Record
-  heal
+  say "Here your names are kept for good: your own, and those of the Pokémon who came all this way beside you."
+  say "What you leave in this room is the memory of your journey so far."
+  say "Think of them as you do it. They are your partners. They grew as you grew, through one hard battle after another."
+  say "Now, {player}. This machine will make a lasting record of what you have done together."
+
+  setflag FLAG_UNLOCKED_VS_SEEKER_LVL_4
+  # PokemonLeagueHallOfFame_EnableHiddenLocationSpringPath (the Distortion World's way out shows it already, plan 02 · S12)
+  if nationaldex setvar VAR_HIDDEN_LOCATION_SPRING_PATH 786
+
+  # PlayHallOfFameHealingAnimation: one ball for each of the team, and the machine's chime
+  setvar VAR_HALL_OF_FAME_BALLS 0
+  wait 0.4
+  call LayBall
+  if var PARTY_COUNT >= 2 call LayBall
+  if var PARTY_COUNT >= 3 call LayBall
+  if var PARTY_COUNT >= 4 call LayBall
+  if var PARTY_COUNT >= 5 call LayBall
+  if var PARTY_COUNT >= 6 call LayBall
+  wait 0.3
+  fanfare heal
+  wait 2.2
+  fade out 0.8
+  setvar VAR_HALL_OF_FAME_BALLS 0
+  call Victory
+
+  # ClearGame (src/clear_game.c)
   halloffame
-  pc halloffame
-  # ClearGame: the game is completed (Flint and Cynthia greet a returning Champion otherwise) and the region is done
   setflag FLAG_GAME_COMPLETED
   setflag SinnohHallOfFame
-  # PokemonLeagueHallOfFame_SetHallOfFameVictoryFlagsAndVars, the parts the game has: the Champion's room is as it
-  # was, and Giratina waits in Turnback Cave unless it was caught in the Distortion World
+  halloffame show
+  heal
+  # SetPlayerStartLocation: the save is written in the player's own room, where the game begins again
+  warp "PlayerHouse2F" 4 4 up
+  save
+  if result == 0 goto NotSaved
+  sound "save"
+  text "{player} saved the game."
+  goto Roll
+label NotSaved
+  text "The game could not be saved."
+label Roll
+  credits
+  end
+
+
+# A Poké Ball set down on the machine
+script LayBall
+  addvar VAR_HALL_OF_FAME_BALLS 1
+  sound "ball_click"
+  wait 0.35
+  return
+
+
+# PokemonLeagueHallOfFame_SetHallOfFameVictoryFlagsAndVars: what every victory sets, each under the original's own
+# name. It sets flags and variables and nothing else, so a save that entered the Hall of Fame before this scene was
+# written is given it with no screen (Story/StoryMigration.cs, version 17).
+#
+# The legendary Pokémon are put back where they weren't caught. Six of the flags it asks about are set by scenes of
+# the post-game that aren't written yet (plan 02 · S15: FLAG_CAUGHT_DIALGA, FLAG_CAUGHT_PALKIA, FLAG_CAUGHT_HEATRAN,
+# FLAG_CAUGHT_REGIGIGAS, FLAG_TALKED_TO_BATTLEGROUND_BUCK, FLAG_TALKED_TO_VEILSTONE_STORE_B1F_PROF_ROWAN); they are
+# asked here already, as the original asks them, and StoryTests.AskedAheadOfTheirScenes lists them until then.
+script Victory
+  clearflag FLAG_HIDE_DAY_CARE_GYM_GUIDE
   clearflag FLAG_ALT_MUSIC_CHAMPION_ROOM
-  if not flag FLAG_CAUGHT_GIRATINA clearflag FLAG_HIDE_TURNBACK_CAVE_GIRATINA_ROOM_GIRATINA
-  # ...and so do the lakes' guardians (plan 02 · S13): Azelf and Uxie are back in their caverns unless they were
-  # caught, and a Mesprit that was knocked out is back in its own, to be set loose again (the original's
-  # ROAMER_STATE_DEFEATED, 2, turned to ROAMER_STATE_RESET, 3, which Verity Cavern's script reads)
+  # PokemonLeagueHallOfFame_ResetSpearPillarDialgaState and ...PalkiaState
+  if not flag FLAG_CAUGHT_DIALGA setvar VAR_SPEAR_PILLAR_DIALGA_STATE 0
+  if not flag FLAG_CAUGHT_PALKIA setvar VAR_SPEAR_PILLAR_PALKIA_STATE 0
+  # PokemonLeagueHallOfFame_TryShowStarkMountainHeatran: only once Buck has been spoken to at the Battleground
+  if flag FLAG_CAUGHT_HEATRAN goto Regigigas
+  if not flag FLAG_TALKED_TO_BATTLEGROUND_BUCK goto Regigigas
+  clearflag FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_HEATRAN
+  setvar VAR_STARK_MOUNTAIN_ROOM_3_STATE 1
+label Regigigas
+  # PokemonLeagueHallOfFame_TryShowSnowpointTempleRegigigas: only with the National Pokédex
+  if flag FLAG_CAUGHT_REGIGIGAS goto Guardians
+  if not nationaldex goto Guardians
+  clearflag FLAG_HIDE_SNOWPOINT_TEMPLE_B5F_REGIGIGAS
+label Guardians
+  # The lakes' guardians (plan 02 · S13): Azelf and Uxie are back in their caverns unless they were caught, and
+  # Giratina waits in Turnback Cave unless it was (plan 02 · S12)
   if not flag FLAG_CAUGHT_AZELF clearflag FLAG_HIDE_VALOR_CAVERN_AZELF
   if not flag FLAG_CAUGHT_UXIE clearflag FLAG_HIDE_ACUITY_CAVERN_UXIE
+  if not flag FLAG_CAUGHT_GIRATINA clearflag FLAG_HIDE_TURNBACK_CAVE_GIRATINA_ROOM_GIRATINA
+  # The roamers: one that was knocked out (ROAMER_STATE_DEFEATED, 2) can be set loose again (ROAMER_STATE_RESET, 3).
+  # Mesprit is back in its cavern for that, which Verity Cavern's script reads, and Cresselia on Fullmoon Island
   if var VAR_ROAMING_MESPRIT_STATE == 2 clearflag FLAG_HIDE_VERITY_CAVERN_MESPRIT
   if var VAR_ROAMING_MESPRIT_STATE == 2 setvar VAR_ROAMING_MESPRIT_STATE 3
-  # Cynthia is gone from Sendoff Spring, where she stood before Turnback Cave's mouth (plan 02 · S12): the cave is
-  # come to from now on
+  if var VAR_ROAMING_CRESSELIA_STATE == 2 clearflag FLAG_HIDE_FULLMOON_ISLAND_FOREST_CRESSELIA
+  if var VAR_ROAMING_CRESSELIA_STATE == 2 setvar VAR_ROAMING_CRESSELIA_STATE 3
+  if var VAR_ROAMING_MOLTRES_STATE == 2 setvar VAR_ROAMING_MOLTRES_STATE 3
+  if var VAR_ROAMING_ZAPDOS_STATE == 2 setvar VAR_ROAMING_ZAPDOS_STATE 3
+  if var VAR_ROAMING_ARTICUNO_STATE == 2 setvar VAR_ROAMING_ARTICUNO_STATE 3
+  # PokemonLeagueHallOfFame_IncreasePlayerHousePostgameState: Mom has news, the first time (PlayerHouse.txt)
+  if var VAR_PLAYER_HOUSE_POSTGAME_STATE == 0 setvar VAR_PLAYER_HOUSE_POSTGAME_STATE 1
+  # Who the victory brings on: the assistant in Sandgem Town, the professor in the Veilstone Department Store's
+  # basement until he has been spoken to there, and Lucian among the Canalave Library's shelves
+  clearflag FLAG_HIDE_SANDGEM_TOWN_COUNTERPART
+  if not flag FLAG_TALKED_TO_VEILSTONE_STORE_B1F_PROF_ROWAN clearflag FLAG_HIDE_VEILSTONE_STORE_B1F_PROF_ROWAN
+  clearflag FLAG_HIDE_CANALAVE_LIBRARY_1F_LUCIAN
+  # ...and who it sends away: Cynthia is gone from Sendoff Spring, where she stood before Turnback Cave's mouth (plan
+  # 02 · S12: the cave is come to from now on), and will speak again before the painting in Celestic Town's ruins
+  clearflag FLAG_TALKED_TO_CELESTIC_TOWN_CAVE_CYNTHIA
   setflag FLAG_HIDE_SENDOFF_SPRING_CYNTHIA
-  fade out 0.8
-  text "And so {player} entered the Hall of Fame, and went home to Twinleaf Town..."
-  warp "PlayerHouse2F" 4 4 up
-  end
+  return

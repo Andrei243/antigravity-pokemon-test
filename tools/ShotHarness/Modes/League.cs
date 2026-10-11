@@ -192,10 +192,18 @@ partial class Harness
         if (end) { Skip(0.6); Shot("lg90_hall_walking_in"); }
         if (end) Line("Welcome", "lg91_hall_of_fame");
         if (end) Line("machine", "lg92_hall_the_machine");
-        ReadOn(() => State() == GameState.HallOfFame);
-        if (end) { Frames(40); Shot("lg93_hall_the_record"); }
-        game.HallOfFameScreen.Close();
+        // The scene of the team's entry, the save and the credits are plan 02 · S14's, which the `champion` mode shows
+        // phase by phase: here they are gone through at the button, with a shot of the first card
+        ReadOn(() => State() == GameState.HallOfFameCeremony);
+        var ceremony = game.Ceremony;
+        Until(() => ceremony.Phase == CeremonyPhase.Show && ceremony.PartsShown == HallOfFameCeremony.CardParts, "a card of the ceremony", 600);
+        if (end) { Frames(10); Shot("lg93_hall_the_record"); }
+        Until(() => { ceremony.PressConfirm(); return State() != GameState.HallOfFameCeremony; }, "the ceremony's end", 6000);
+        ReadOn(() => State() == GameState.Credits);
+        game.Credits.Held = true;
+        Until(() => { game.Credits.PressConfirm(); return State() != GameState.Credits; }, "the credits' end", 9000);
         ReadOn(() => Here().Name == "PlayerHouse2F" && State() == GameState.Overworld && !engine.ScriptRunning && !Box().IsActive);
+        File.Delete("savegame.json");
         Frames(20);
         if (end) Shot("lg94_home");
         Console.WriteLine($"league: FLAG_DEFEATED_CYNTHIA {story.Has("FLAG_DEFEATED_CYNTHIA")}, the Hall of Fame holds {game.HallOfFame.Total}, " +

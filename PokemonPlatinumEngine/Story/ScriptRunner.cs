@@ -582,6 +582,12 @@ public sealed partial class ScriptRunner
                 host.Open(i.Name == "halloffame" ? ScriptScreen.HallOfFame : ScriptScreen.Pc, Subject);
                 break;
             case Op.HallOfFame:
+                // "halloffame show": the scene of the team's entry, which the script waits for (plan 02 · S14; FieldTask_StartHallOfFame)
+                if (i.Name == "show")
+                {
+                    host.Open(ScriptScreen.Ceremony, Subject);
+                    break;
+                }
                 // Party_GiveChampionRibbons: everyone who enters the Hall of Fame wears Sinnoh's Champion Ribbon (plan 06 · R17b)
                 RibbonRules.GiveChampion(host.Party);
                 host.EnterHallOfFame();
@@ -776,6 +782,15 @@ public sealed partial class ScriptRunner
             // The Battle Factory (plan 06 · R18b)
             case Op.Factory:
                 Factory(i);
+                break;
+
+            // The Hall of Fame's end (plan 02 · S14): the game is written to its save where the player stands, without
+            // being asked (ClearGame's SaveData_Save), and the credits play while the script waits
+            case Op.Save:
+                Result = host.Save() ? 1 : 0;
+                break;
+            case Op.Credits:
+                host.Open(ScriptScreen.Credits, Subject);
                 break;
 
             default:
@@ -1420,6 +1435,8 @@ public sealed partial class ScriptRunner
             // GetTimeOfDay and GetDayOfWeek (plan 06 · R14a)
             Query.Time => host.TimeOfDay.ToString() == c.Name,
             Query.Weekday => host.Weekday.ToString() == c.Name,
+            // GetNationalDexEnabled (plan 02 · S14)
+            Query.NationalDex => host.NationalDex,
             _ => throw Wrong(at, $"the runner can't answer '{c.Query}'")
         };
         return yes != c.Negated;

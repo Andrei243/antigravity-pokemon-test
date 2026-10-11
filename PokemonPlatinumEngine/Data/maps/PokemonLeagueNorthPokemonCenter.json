@@ -247,6 +247,26 @@
         "Guitarist: Everybody asks me what the Elite Four are like.",
         "Guitarist: I could tell you, but that'd spoil it. Some things you've got to go and feel for yourself!"
       ]
+    },
+    {
+      "id": "rival",
+      "name": "{rival}",
+      "npcType": "Rival",
+      "x": 11,
+      "y": 12,
+      "facing": "Up",
+      "hiddenBy": "FLAG_HIDE_POKEMON_LEAGUE_NORTH_POKECENTER_1F_RIVAL"
+    }
+  ],
+  "triggers": [
+    {
+      "x": 10,
+      "y": 4,
+      "width": 3,
+      "depth": 1,
+      "script": "RivalBeforeTheDoor",
+      "variable": "VAR_RIVAL_BEAT_SUNYSHORE_GYM",
+      "value": 0
     }
   ],
   "wildEncounters": []

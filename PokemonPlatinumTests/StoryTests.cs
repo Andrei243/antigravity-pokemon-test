@@ -638,6 +638,18 @@ public class StoryTests
         Assert.Empty(Scripts.All.Where(s => s.File == ScriptLibrary.Common).SelectMany(ScriptLibrary.PeopleNamed));
     }
 
+    /// <summary>
+    /// Flags the Hall of Fame's script asks about, as the original's does, before anything sets them (plan 02 · S14;
+    /// scripts/PokemonLeagueHallOfFame.txt, Victory): they are set by scenes of the post-game (plan 02 · S15: Dialga
+    /// and Palkia at Spear Pillar, Heatran once Buck has been spoken to at the Battleground, Regigigas, the professor
+    /// in the Veilstone Department Store's basement). The session that writes a scene takes its flag off this list.
+    /// </summary>
+    internal static readonly string[] AskedAheadOfTheirScenes =
+    {
+        "FLAG_CAUGHT_DIALGA", "FLAG_CAUGHT_PALKIA", "FLAG_CAUGHT_HEATRAN", "FLAG_CAUGHT_REGIGIGAS",
+        "FLAG_TALKED_TO_BATTLEGROUND_BUCK", "FLAG_TALKED_TO_VEILSTONE_STORE_B1F_PROF_ROWAN",
+    };
+
     [Fact]
     public void AFlagOrAVariableAskedAboutIsSetSomewhere()
     {
@@ -649,8 +661,13 @@ public class StoryTests
             // What the Underground Man's missions wait for is set by the game as each thing is done below (plan 06 · R16a)
             .Concat(PokemonPlatinumEngine.Core.GameEngine.UndergroundMissionFlags)
             // The Villa's furniture is the player's as it is paid for (plan 06 · R16b)
-            .Concat(PokemonPlatinumEngine.Core.GameEngine.PastimeFlags).ToHashSet();
+            .Concat(PokemonPlatinumEngine.Core.GameEngine.PastimeFlags)
+            // What the Hall of Fame's script asks ahead of the scenes that set it (plan 02 · S14)
+            .Concat(AskedAheadOfTheirScenes).ToHashSet();
         Assert.DoesNotContain(Scripts.FlagsRead, f => !known.Contains(f));
+        // ...each of which leaves that list with the session that writes its scene: one that is set somewhere has no
+        // business on it any longer
+        Assert.DoesNotContain(AskedAheadOfTheirScenes, f => Scripts.FlagsWritten.Contains(f));
         // The slot machines' and the Catching Show's records and the Villa's visitor of the day are the game's to keep (plan 06 · R16b)
         Assert.DoesNotContain(Scripts.VariablesRead, v => !Scripts.VariablesWritten.Contains(v) && !PokemonPlatinumEngine.Core.GameEngine.PastimeVariables.Contains(v));
     }

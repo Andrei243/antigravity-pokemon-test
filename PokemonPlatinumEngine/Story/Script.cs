@@ -73,6 +73,8 @@ public enum Op
     Team,
     // The Battle Factory (plan 06 · R18b)
     Factory,
+    // The Hall of Fame's end (plan 02 · S14): the game written to its save unasked, and the credits
+    Save, Credits,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>
@@ -81,7 +83,7 @@ public enum Compare { Equal, NotEqual, Less, LessOrEqual, Greater, GreaterOrEqua
 /// <summary>What a condition asks about.</summary>
 public enum Query
 {
-    Flag, Var, Badge, Badges, Item, Party, Knows, Has, Yes, No, Won, Lost, Result, Defeated, Taken, Starter, Money, Facing, Boy, Girl, Poketch, PoketchApp, Pokerus, Safari, Rematch, Partner, Time, Weekday
+    Flag, Var, Badge, Badges, Item, Party, Knows, Has, Yes, No, Won, Lost, Result, Defeated, Taken, Starter, Money, Facing, Boy, Girl, Poketch, PoketchApp, Pokerus, Safari, Rematch, Partner, Time, Weekday, NationalDex
 }
 
 /// <summary>A question a script asks of the game before a line: <c>if [not] ...</c>.</summary>
