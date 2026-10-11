@@ -1,0 +1,123 @@
+# The Resort Area (plan 06 · R16b: the Villa). docs/scripts.md describes the language; the lines are our own, on the
+# original's beats (scripts_resort_area.s).
+#
+# A boy by the Villa gives it to whoever first walks up (the trigger across the path, while VAR_RESORT_AREA_STATE is
+# 0), and takes the player inside (ResortAreaVilla.txt goes on from there). From then on the day's visitor may be
+# one of five who wait at the Villa's door until they are asked in (the professor, Roark, Gardenia, Maylene, Byron:
+# VAR_RESORT_VILLA_VISITOR 2, 4, 5, 7 and 9; FLAG_VILLA_VISITOR_INSIDE once they are in).
+
+
+script OnEnter
+  setflag FLAG_HIDE_RESORT_AREA_PROF_ROWAN
+  setflag FLAG_HIDE_RESORT_AREA_ROARK
+  setflag FLAG_HIDE_RESORT_AREA_GARDENIA
+  setflag FLAG_HIDE_RESORT_AREA_MAYLENE
+  setflag FLAG_HIDE_RESORT_AREA_BYRON
+  if var VAR_RESORT_AREA_STATE == 0 end
+  if var VAR_RESORT_VILLA_VISITOR == 255 end
+  if flag FLAG_VILLA_VISITOR_INSIDE end
+  if var VAR_RESORT_VILLA_VISITOR == 2 clearflag FLAG_HIDE_RESORT_AREA_PROF_ROWAN
+  if var VAR_RESORT_VILLA_VISITOR == 4 clearflag FLAG_HIDE_RESORT_AREA_ROARK
+  if var VAR_RESORT_VILLA_VISITOR == 5 clearflag FLAG_HIDE_RESORT_AREA_GARDENIA
+  if var VAR_RESORT_VILLA_VISITOR == 7 clearflag FLAG_HIDE_RESORT_AREA_MAYLENE
+  if var VAR_RESORT_VILLA_VISITOR == 9 clearflag FLAG_HIDE_RESORT_AREA_BYRON
+  end
+
+
+script GiveVilla
+  if var PLAYER_Y == 472 walk school_kid_m up 1
+  if var PLAYER_Y == 474 walk school_kid_m down 1
+  face school_kid_m left
+  face player right
+  speaker "Boy"
+  ask "You there! You look like someone who could use a Villa. I'm giving this one away, today, for nothing. Will you have it?"
+  if no goto Declined
+  say "Oh, thank goodness. That is a weight off my mind!" "Come in, come in. I'll show you what you've got."
+  setvar VAR_RESORT_AREA_STATE 1
+  setvar VAR_RESORT_VILLA_VISITOR 255
+  hide school_kid_m
+  setflag FLAG_HIDE_RESORT_AREA_SCHOOL_KID_M
+  warp "ResortAreaVilla" 10 6 left
+  end
+label Declined
+  say "No? I can't blame you. A house for nothing does sound shady. It isn't! ...Mostly."
+  if var PLAYER_Y == 472 walk school_kid_m down 1
+  if var PLAYER_Y == 474 walk school_kid_m up 1
+  face school_kid_m left
+  walk player left 1
+  end
+
+
+script SchoolKid
+  say "A Villa, going free! Walk up the path to me and it's yours."
+  end
+
+
+script ProfRowan
+  ask "Hm. {player}. I hear you keep a house here. Might an old man rest his feet in it?"
+  if no goto No
+  say "Good. I shall follow you in."
+  setflag FLAG_HIDE_RESORT_AREA_PROF_ROWAN
+  setvar VAR_RESORT_VILLA_VISITOR 2
+  setflag FLAG_VILLA_VISITOR_INSIDE
+  warp "ResortAreaVilla" 11 11 up
+  end
+label No
+  say "Hm. Another day, then."
+  end
+
+
+script Roark
+  ask "Hey, {player}! Is this your place? Mind if I come in and have a look at the walls?"
+  if no goto No
+  say "Great! After you."
+  setflag FLAG_HIDE_RESORT_AREA_ROARK
+  setvar VAR_RESORT_VILLA_VISITOR 4
+  setflag FLAG_VILLA_VISITOR_INSIDE
+  warp "ResortAreaVilla" 11 11 up
+  end
+label No
+  say "No problem. I'll go and look at the cliffs instead."
+  end
+
+
+script Gardenia
+  ask "{player}! What a pretty house. May I come in? I promise not to rearrange your plants."
+  if no goto No
+  say "Lovely! Lead the way."
+  setflag FLAG_HIDE_RESORT_AREA_GARDENIA
+  setvar VAR_RESORT_VILLA_VISITOR 5
+  setflag FLAG_VILLA_VISITOR_INSIDE
+  warp "ResortAreaVilla" 11 11 up
+  end
+label No
+  say "Oh. Next time, then! I'll be in the garden."
+  end
+
+
+script Maylene
+  ask "Um. {player}. I ran all the way here and then I didn't know if I should knock. Can I come in?"
+  if no goto No
+  say "Thanks! I'll take my shoes off. ...I'm not wearing shoes."
+  setflag FLAG_HIDE_RESORT_AREA_MAYLENE
+  setvar VAR_RESORT_VILLA_VISITOR 7
+  setflag FLAG_VILLA_VISITOR_INSIDE
+  warp "ResortAreaVilla" 11 11 up
+  end
+label No
+  say "OK. I'll run back. It's good training."
+  end
+
+
+script Byron
+  ask "Gahaha! {player}! A house of your own, eh? Let an old digger in to see it?"
+  if no goto No
+  say "That's the spirit! In we go."
+  setflag FLAG_HIDE_RESORT_AREA_BYRON
+  setvar VAR_RESORT_VILLA_VISITOR 9
+  setflag FLAG_VILLA_VISITOR_INSIDE
+  warp "ResortAreaVilla" 11 11 up
+  end
+label No
+  say "Suit yourself! A good defence starts at the front door, I always say."
+  end

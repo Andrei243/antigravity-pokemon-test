@@ -201,8 +201,9 @@ public class PokemonTests
         var map = MapDatabase.Get(mapName);
         Assert.Equal(mapName, map.Name);
         // The Hall of Fame is the end of the way: nobody leaves it but by its own scene (plan 01 · M9, part 2d)
-        // And the Underground has no way in or out but the Explorer Kit (plan 06 · R16a)
-        if (mapName != "PokemonLeagueHallOfFame" && mapName != "Underground") Assert.NotEmpty(map.Warps);
+        // And the Underground has no way in or out but the Explorer Kit (plan 06 · R16a), and Pal Park's grounds none
+        // but the attendants' scripts: the strip before its gate asks whether to give the show up (plan 06 · R16b)
+        if (mapName != "PokemonLeagueHallOfFame" && mapName != "Underground" && mapName != "PalPark") Assert.NotEmpty(map.Warps);
         // A map of the imported world is many places, and not every one leads to every other: a cave lies between
         // the two halves of a route, rocks wait for Rock Smash. The test below walks the whole game instead.
         if (map.IsStreamed) return;

@@ -131,6 +131,12 @@ public class SaveData
     /// </summary>
     public Models.Underground.UndergroundState? Underground { get; set; }
 
+    /// <summary>
+    /// Fossils, the Game Corner, the Villa and Pal Park (plan 06 · R16b): the Coin Case's coins, the six Pokémon that
+    /// wait in Pal Park, and four of the original's game records. Null in saves from before them.
+    /// </summary>
+    public Models.PastimesSave? Pastimes { get; set; }
+
     /// <summary>Solaceon Town's Day Care (plan 06 · R15). Null while it is empty with no cycle under way, and in older saves.</summary>
     public DayCareSave? DayCare { get; set; }
 

@@ -62,6 +62,8 @@ public enum Op
     Underground,
     // A Pokémon the story shows goes into the Pokédex as seen (plan 02 · S12)
     Seen,
+    // Fossils, the Game Corner, the Villa and Pal Park (plan 06 · R16b)
+    Fossil, GameCorner, Villa, PalPark,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

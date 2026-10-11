@@ -17,7 +17,7 @@ namespace PokemonPlatinumEngine.Story;
 /// a pause. Where a script goes next is decided here and nowhere else, so a script does the same in the game and
 /// in a test's host with no screen.
 /// </summary>
-public sealed class ScriptRunner
+public sealed partial class ScriptRunner
 {
     /// <summary>The lines a script may carry out in one go before it is taken to be going round in circles.</summary>
     public const int MostLinesAtOnce = 5000;
@@ -678,6 +678,8 @@ public sealed class ScriptRunner
             case Op.Hatch:
                 // HatchEgg: the team's first Egg with no cycles left hatches in its scene, which the script waits for
                 Result = host.Hatch() ? 1 : 0;
+                // The game's record of Eggs hatched, which the Villa's catalogue asks (plan 06 · R16b)
+                if (Result == 1) host.Pastimes.EggsHatched++;
                 break;
 
             // The Super Contests and the Fashion Case (plan 06 · R17a)
@@ -721,6 +723,20 @@ public sealed class ScriptRunner
             // The Pokédex is told of a Pokémon the story shows (plan 02 · S12)
             case Op.Seen:
                 host.Seen(PokemonDatabase.Get(i.Name) ?? throw Wrong(i, $"there is no species '{i.Name}'"));
+                break;
+
+            // Fossils, the Game Corner, the Villa and Pal Park (plan 06 · R16b)
+            case Op.Fossil:
+                Fossil(i);
+                break;
+            case Op.GameCorner:
+                GameCorner(i);
+                break;
+            case Op.Villa:
+                Villa(i);
+                break;
+            case Op.PalPark:
+                PalPark(i);
                 break;
 
             default:
@@ -1166,6 +1182,8 @@ public sealed class ScriptRunner
                 if (patch.Stage != BerryStage.None) throw Wrong(i, "something grows here already");
                 host.Bag.RemoveItem(berry, 1);
                 patches.Plant(id, berry.Name);
+                // The game's record of berries planted, which the Villa's catalogue asks (plan 06 · R16b)
+                host.Pastimes.BerriesPlanted++;
                 berryName = berry.Name;
                 break;
             }
@@ -1354,6 +1372,10 @@ public sealed class ScriptRunner
             "wearer" => lastWearer,
             // The Underground (plan 06 · R16a): what was last given, and whose base or flag it is
             "thing" => lastThing,
+            // Fossils, the Game Corner, the Villa and Pal Park (plan 06 · R16b): the coins in the case, a price, a number
+            "coins" => host.Pastimes.Coins.Coins.ToString("N0"),
+            "price" => lastPrice.ToString("N0"),
+            "number" => lastNumber.ToString("N0"),
             "digger" => host.DiggerName,
             "contestant" => contestSlot >= 0 && contestSlot < host.Party.Count ? host.Party.Members[contestSlot].DisplayName : host.ContestOutcome?.Pokemon ?? "",
             _ => match.Value

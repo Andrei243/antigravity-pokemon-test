@@ -2,8 +2,14 @@
   "area": "route_221",
   "bgmTrack": "sinnoh/route206",
   "trees": "Round",
-  // The house has no rooms yet (plan 01 · M11); Pal Park comes after the Hall of Fame (plan 01 · M10)
-  "locked": [ 0, 1, 2 ],
+  // Pal Park's lobby, built to the original's plan (plan 06 · R16b). The two workers stand before its doors until the
+  // National Pokédex is the player's (plan 02 · S15)
+  "doors": [
+    { "warp": 1, "map": "PalParkLobby", "x": 7, "y": 19, "facing": "Up" },
+    { "warp": 2, "map": "PalParkLobby", "x": 7, "y": 19, "facing": "Up" }
+  ],
+  // The house has no rooms yet (plan 01 · M11)
+  "locked": [ 0 ],
   "people": {
     // The two workers at Pal Park's door, still setting it up (plan 02 · S9); they leave once the National Pokédex is
     // the player's (the original's OnTransition, FLAG_HIDE_ROUTE_221_WORKER_WEST and _EAST: plan 02 · S15 with Pal Park)

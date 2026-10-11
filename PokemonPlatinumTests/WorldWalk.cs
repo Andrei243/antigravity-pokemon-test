@@ -214,6 +214,8 @@ internal static class WorldWalk
     /// where the Harbor Inn's bed also leaves the player; plan 02 · S15 gives the sailor those two answers), and
     /// Snowpoint Temple, whose doors stay shut until Candice lets the Champion in (plan 02 · S15: the tile inside its
     /// mat, where a door leaves whoever comes in).
+    /// And Pal Park's lobby (plan 06 · R16b), before whose doors Route 221's two workers stand until the National
+    /// Pokédex is had (plan 02 · S15 sets the flags that hide them, and the walk then finds the way by itself).
     /// </summary>
     public static readonly MapSpot[] StoryArrivals =
     {
@@ -223,6 +225,7 @@ internal static class WorldWalk
         new("Sinnoh", 39, 277, Direction.Left),
         new("Sinnoh", 152, 277, Direction.Right),
         new("SnowpointTemple1F", 8, 12, Direction.Up),
+        new("PalParkLobby", 7, 19, Direction.Up),
     };
 
     /// <summary>The whole game from where each region that is built begins, and from where only the story takes the player.</summary>

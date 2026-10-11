@@ -1,0 +1,288 @@
+{
+  "name": "ResortAreaVilla",
+  "displayName": "Villa",
+  "bgmTrack": "sinnoh/sandgem",
+  "interior": "House",
+  "trees": "Round",
+  "width": 22,
+  "height": 13,
+  "ground": [
+    "######################",
+    "######################",
+    "######################",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "###########D##########"
+  ],
+  "solid": [
+    "######################",
+    "######################",
+    "######################",
+    "#....................#",
+    "#....................#",
+    "#....................#",
+    "#....................#",
+    "#....................#",
+    "#....................#",
+    "#....................#",
+    "#....................#",
+    "#....................#",
+    "###########.##########"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 3,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 11,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 11,
+      "sourceY": 12,
+      "targetMap": "Sinnoh",
+      "targetX": 822,
+      "targetY": 470,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "counterpart",
+      "name": "{assistant}",
+      "npcType": "Assistant",
+      "x": 7,
+      "y": 6,
+      "facing": "Down",
+      "script": "Counterpart",
+      "hiddenBy": "FLAG_HIDE_VILLA_COUNTERPART"
+    },
+    {
+      "id": "rival",
+      "name": "{rival}",
+      "npcType": "Rival",
+      "x": 4,
+      "y": 3,
+      "facing": "Left",
+      "script": "Rival",
+      "hiddenBy": "FLAG_HIDE_VILLA_RIVAL",
+      "movement": "wander_west_and_east",
+      "rangeX": 1
+    },
+    {
+      "id": "prof_rowan",
+      "name": "Professor Rowan",
+      "npcType": "Rowan",
+      "x": 17,
+      "y": 4,
+      "facing": "Up",
+      "script": "ProfRowan",
+      "hiddenBy": "FLAG_HIDE_VILLA_PROF_ROWAN"
+    },
+    {
+      "id": "mom",
+      "name": "Mom",
+      "npcType": "Mom",
+      "x": 11,
+      "y": 4,
+      "facing": "Right",
+      "script": "Mom",
+      "hiddenBy": "FLAG_HIDE_VILLA_MOM"
+    },
+    {
+      "id": "roark",
+      "name": "Roark",
+      "npcType": "Roark",
+      "x": 18,
+      "y": 10,
+      "facing": "Down",
+      "script": "Roark",
+      "hiddenBy": "FLAG_HIDE_VILLA_ROARK"
+    },
+    {
+      "id": "gardenia",
+      "name": "Gardenia",
+      "npcType": "Gardenia",
+      "x": 8,
+      "y": 6,
+      "facing": "Down",
+      "script": "Gardenia",
+      "hiddenBy": "FLAG_HIDE_VILLA_GARDENIA",
+      "movement": "wander_around",
+      "rangeX": 1,
+      "rangeZ": 1
+    },
+    {
+      "id": "fantina",
+      "name": "Fantina",
+      "npcType": "Fantina",
+      "x": 6,
+      "y": 6,
+      "facing": "Up",
+      "script": "Fantina",
+      "hiddenBy": "FLAG_HIDE_VILLA_FANTINA",
+      "movement": "look_around"
+    },
+    {
+      "id": "maylene",
+      "name": "Maylene",
+      "npcType": "Maylene",
+      "x": 9,
+      "y": 6,
+      "facing": "Right",
+      "script": "Maylene",
+      "hiddenBy": "FLAG_HIDE_VILLA_MAYLENE",
+      "movement": "look_around"
+    },
+    {
+      "id": "byron",
+      "name": "Byron",
+      "npcType": "Gentleman",
+      "x": 9,
+      "y": 11,
+      "facing": "Down",
+      "script": "Byron",
+      "hiddenBy": "FLAG_HIDE_VILLA_BYRON",
+      "movement": "wander_around",
+      "rangeX": 1,
+      "rangeZ": 1
+    },
+    {
+      "id": "crasher_wake",
+      "name": "Crasher Wake",
+      "npcType": "CrasherWake",
+      "x": 19,
+      "y": 4,
+      "facing": "Up",
+      "script": "CrasherWake",
+      "hiddenBy": "FLAG_HIDE_VILLA_CRASHER_WAKE"
+    },
+    {
+      "id": "candice",
+      "name": "Candice",
+      "npcType": "Lass",
+      "x": 6,
+      "y": 6,
+      "facing": "Down",
+      "script": "Candice",
+      "hiddenBy": "FLAG_HIDE_VILLA_CANDICE"
+    },
+    {
+      "id": "volkner",
+      "name": "Volkner",
+      "npcType": "Youngster",
+      "x": 13,
+      "y": 4,
+      "facing": "Left",
+      "script": "Volkner",
+      "hiddenBy": "FLAG_HIDE_VILLA_VOLKNER"
+    },
+    {
+      "id": "cynthia",
+      "name": "Cynthia",
+      "npcType": "Cynthia",
+      "x": 3,
+      "y": 5,
+      "facing": "Left",
+      "script": "Cynthia",
+      "hiddenBy": "FLAG_HIDE_VILLA_CYNTHIA"
+    },
+    {
+      "id": "flint",
+      "name": "Flint",
+      "npcType": "Youngster",
+      "x": 14,
+      "y": 4,
+      "facing": "Left",
+      "script": "Flint",
+      "hiddenBy": "FLAG_HIDE_VILLA_FLINT"
+    },
+    {
+      "id": "school_kid_m",
+      "name": "Boy",
+      "npcType": "Youngster",
+      "x": 9,
+      "y": 6,
+      "facing": "Right",
+      "script": "SchoolKid",
+      "hiddenBy": "FLAG_HIDE_VILLA_SCHOOL_KID_M"
+    },
+    {
+      "id": "delivery_guy",
+      "name": "Delivery Man",
+      "npcType": "Youngster",
+      "x": 10,
+      "y": 8,
+      "facing": "Up",
+      "dialog": [
+        "Thank you for your order!"
+      ],
+      "hiddenBy": "FLAG_HIDE_VILLA_DELIVERY_GUY"
+    }
+  ],
+  "triggers": [
+    {
+      "x": 10,
+      "y": 7,
+      "width": 1,
+      "depth": 1,
+      "script": "FantinaComesIn",
+      "variable": "VAR_MAP_LOCAL_VILLA_CALLER",
+      "value": 6
+    },
+    {
+      "x": 10,
+      "y": 7,
+      "width": 1,
+      "depth": 1,
+      "script": "CrasherWakeComesIn",
+      "variable": "VAR_MAP_LOCAL_VILLA_CALLER",
+      "value": 8
+    },
+    {
+      "x": 10,
+      "y": 7,
+      "width": 1,
+      "depth": 1,
+      "script": "CandiceComesIn",
+      "variable": "VAR_MAP_LOCAL_VILLA_CALLER",
+      "value": 10
+    },
+    {
+      "x": 10,
+      "y": 7,
+      "width": 1,
+      "depth": 1,
+      "script": "CynthiaComesIn",
+      "variable": "VAR_MAP_LOCAL_VILLA_CALLER",
+      "value": 12
+    },
+    {
+      "x": 11,
+      "y": 11,
+      "width": 1,
+      "depth": 1,
+      "script": "DontGoYet",
+      "variable": "VAR_VILLA_STATE",
+      "value": 1
+    }
+  ],
+  "wildEncounters": []
+}

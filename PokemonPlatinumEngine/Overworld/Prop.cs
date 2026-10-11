@@ -183,6 +183,8 @@ public enum PropType
     Rubble,
     /// <summary>The cave painting that stands over a way through Mt. Coronet until the story breaks it: a thing of the map (<see cref="NPC.CavePaintingType"/>), drawn as a card (plan 02 · S12).</summary>
     CavePainting,
+    // Fossils, the Game Corner and the Villa (plan 06 · R16b): none blocks by itself, the room's own tiles say where one can walk
+    DisplayCase, SlotMachine, Piano, Rack, AudioSystem, Bust, SilverBust, GuestSet, NightTable, MusicBox, TeaSet, PcDesk,
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>

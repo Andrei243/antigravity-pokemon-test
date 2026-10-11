@@ -488,6 +488,8 @@ public class WorldTests
                     // Lake Acuity before Team Galactic comes has grass and, by the original's own header, nothing living in it
                     // and so has Lake Valor's bed, drained (plan 02 · S10)
                     if (area.Key is "lake_acuity_low_water" or "lake_valor_drained") continue;
+                    // Pal Park's grass holds the six of a Catching Show and no table (plan 06 · R16b)
+                    if (area.Key == "pal_park") continue;
                     Assert.True(area.WildEncounters.Count > 0, $"{m.Name}: tall grass at ({x},{y}) in {area.Key}, where nothing lives");
                     if (m == map && area == route201) grass ??= (x, y);
                 }

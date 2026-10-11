@@ -163,6 +163,8 @@
     // Plan 02 · S12: Spear Pillar as the Distortion World tears it (the map Mt. Coronet's summit leads to from the
     // moment Giratina takes Cyrus until the player comes out at Sendoff Spring)
     { "name": "SpearPillarDistorted", "matrix": 23, "area": "spear_pillar_distorted" },
+    // Plan 06 · R16b: Pal Park's grounds, where the Catching Show is held (a matrix of its own behind the lobby on Route 221)
+    { "name": "PalPark", "matrix": 49, "area": "pal_park", "trees": "Round" }
   ],
   "areas": [
     "twinleaf_town",
@@ -355,5 +357,7 @@
     "battle_frontier",
     // Plan 02 · S12
     "spear_pillar_distorted",
+    // Plan 06 · R16b
+    "pal_park"
   ]
 }

@@ -45,6 +45,12 @@ internal static class PropModels
     {
         kit.Origin = new Vector3(p.X, Relief.At(map, p.X + p.Width / 2f, p.Y + p.Depth / 2f), p.Y);
         int w = p.Width * 32, d = p.Depth * 32;
+        // The museum's cases, the Game Corner's machines and the Villa's own pieces (plan 06 · R16b)
+        if (PastimeArt.Builds(p))
+        {
+            PastimeArt.Build(kit, p, map);
+            return;
+        }
         switch (p.Type)
         {
             // What has no furniture of its own is built as the towns build it: a Gym rebuilt to the original's plan

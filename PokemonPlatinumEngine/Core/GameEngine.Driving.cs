@@ -65,6 +65,12 @@ public partial class GameEngine
 
         /// <summary>The Underground (plan 06 · R16a): its state and rules, its screens, the trap that has the player, and the game's own ways down and up.</summary>
         public Models.Underground.UndergroundState Underground => game.underground;
+        public Models.Pastimes Pastimes => game.pastimes;
+        public UI.SlotMachineScreen Slots => game.slotScreen;
+        /// <summary>A step of Pal Park's Catching Show where the player stands (the engine's own, as a step in the grass takes it).</summary>
+        public bool ParkStep() => game.PalParkStep();
+        /// <summary>Stands the Villa's furniture in its room as the flags say (the engine's own, as arriving there does).</summary>
+        public void FurnishVilla() => game.FurnishVilla();
         public Models.Underground.UndergroundField Tunnels => game.Tunnels;
         public MiningScreen Mining => game.miningScreen;
         public UndergroundScreen UndergroundLists => game.undergroundScreen;

@@ -53,7 +53,18 @@ public class RoomPlanTests
         new object[] { "FootstepHouse", 1, 3, 4, 8 },
         // The Ribbon Syndicate's ground floor in the Resort Area, plan 01 · M10, part b
         new object[] { "ResortAreaRibbonSyndicate1F", 1, 3, 15, 15 },
+        // The Game Corner, its prize exchange, the Coin Case's house and the Villa, plan 06 · R16b (the Mining Museum's
+        // door is in the west half of its front wall, and Pal Park's lobby is a flat stand-in: PastimeTests)
+        new object[] { "VeilstoneGameCorner", 1, 3, 5, 11 },
+        new object[] { "VeilstonePrizeExchange", 1, 3, 4, 8 },
+        new object[] { "VeilstoneSoutheastHouse", 1, 3, 4, 8 },
+        new object[] { "ResortAreaVilla", 1, 3, 11, 11 },
+        new object[] { "PalParkLobby", 1, 7, 7, 19 },
     };
+
+    /// <summary>Rooms on the original's plans whose door isn't in the last row of the room (plan 06 · R16b): the Oreburgh
+    /// Mining Museum is L-shaped, its door in the west half of its front wall (<c>PastimeTests</c>).</summary>
+    internal static readonly string[] OddlyShaped = { "OreburghMiningMuseum" };
 
     /// <summary>The Canalave Library's upper floors (plan 02 · S10): no door, only the stairs.</summary>
     internal static readonly string[] LibraryUpperFloors = { "CanalaveLibrary2F", "CanalaveLibrary3F" };
@@ -207,6 +218,28 @@ public class RoomPlanTests
         new object[] { "ResortAreaRibbonSyndicate1F", "lady", 6, 13, Direction.Down },
         new object[] { "ResortAreaRibbonSyndicate1F", "skitty", 10, 11, Direction.Down },
         new object[] { "ResortAreaRibbonSyndicate1F", "psyduck", 25, 6, Direction.Down },
+        // Plan 06 · R16b: the Mining Museum, the Game Corner, the prize exchange, the Coin Case's house, the Villa, Pal Park's lobby
+        new object[] { "OreburghMiningMuseum", "scientist_m", 6, 3, Direction.Down },
+        new object[] { "OreburghMiningMuseum", "ace_trainer_f", 4, 3, Direction.Down },
+        new object[] { "OreburghMiningMuseum", "hiker", 8, 7, Direction.Down },
+        new object[] { "OreburghMiningMuseum", "expert_m", 16, 15, Direction.Down },
+        new object[] { "VeilstoneGameCorner", "receptionist", 2, 4, Direction.Down },
+        new object[] { "VeilstoneGameCorner", "pokefan_m_1", 4, 8, Direction.Right },
+        new object[] { "VeilstoneGameCorner", "collector", 6, 6, Direction.Right },
+        new object[] { "VeilstoneGameCorner", "pokefan_m_2", 14, 8, Direction.Left },
+        new object[] { "VeilstoneGameCorner", "looker", 9, 8, Direction.Left },
+        new object[] { "VeilstonePrizeExchange", "receptionist", 4, 4, Direction.Down },
+        new object[] { "VeilstonePrizeExchange", "guitarist", 2, 7, Direction.Up },
+        new object[] { "VeilstoneSoutheastHouse", "clown", 6, 6, Direction.Down },
+        new object[] { "ResortAreaVilla", "rival", 4, 3, Direction.Left },
+        new object[] { "ResortAreaVilla", "prof_rowan", 17, 4, Direction.Up },
+        new object[] { "ResortAreaVilla", "cynthia", 3, 5, Direction.Left },
+        new object[] { "ResortAreaVilla", "crasher_wake", 19, 4, Direction.Up },
+        new object[] { "ResortAreaVilla", "school_kid_m", 9, 6, Direction.Right },
+        new object[] { "ResortAreaVilla", "delivery_guy", 10, 8, Direction.Up },
+        new object[] { "PalParkLobby", "worker", 7, 11, Direction.Down },
+        new object[] { "PalParkLobby", "lass_1", 3, 16, Direction.Down },
+        new object[] { "PalParkLobby", "beauty", 12, 17, Direction.Down },
     };
 
     [Theory]
@@ -275,7 +308,7 @@ public class RoomPlanTests
     [Fact]
     public void EveryOtherRoomBeginsWhereTheHandMadeOnesDo()
     {
-        var rebuilt = Plans.Select(p => (string)p[0]).Concat(UpperFloors).Concat(Gates).Concat(LostTower).Concat(LibraryUpperFloors).Concat(GalacticHeadquarters).ToHashSet();
+        var rebuilt = Plans.Select(p => (string)p[0]).Concat(UpperFloors).Concat(Gates).Concat(LostTower).Concat(LibraryUpperFloors).Concat(GalacticHeadquarters).Concat(OddlyShaped).ToHashSet();
         foreach (string path in Directory.GetFiles(GameDataFiles.PathOf(MapDatabase.Folder), "*.json"))
         {
             string name = Path.GetFileNameWithoutExtension(path);

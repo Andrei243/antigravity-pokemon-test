@@ -1,0 +1,32 @@
+# The house in the south-east of Veilstone City (plan 06 · R16b; the Game Corner needs its Coin Case), rebuilt to the
+# original's plan. docs/scripts.md describes the language; the lines are our own, on the original's beats
+# (scripts_veilstone_city_southeast_house.s).
+#
+# The clown spins a coin and asks which hand it is in. The answer makes no difference: half the time the player
+# wins the Coin Case (FLAG_RECEIVED_VEILSTONE_CITY_SOUTHEAST_HOUSE_COIN_CASE), as the original's GetRandom decides.
+
+
+script Clown
+  if flag FLAG_RECEIVED_VEILSTONE_CITY_SOUTHEAST_HOUSE_COIN_CASE goto Tearful
+  say "Watch this coin. Watch it closely!" "And... spin!"
+  face self left
+  wait 0.13
+  face self up
+  wait 0.13
+  face self right
+  wait 0.13
+  face self down
+  wait 0.13
+  choose "Now then! Which hand is the coin in?" "The right hand" "The left hand"
+  gamecorner cointrick
+  if result == 0 goto Wrong
+  say "Right you are! And for our winner: a case to keep coins in!"
+  setflag FLAG_RECEIVED_VEILSTONE_CITY_SOUTHEAST_HOUSE_COIN_CASE
+  give "Coin Case"
+  end
+label Wrong
+  say "Wrong! What a poor show. The other hand, it was. Come, try again!"
+  end
+label Tearful
+  say "I gave away my case, and now I've nowhere to keep my coin. I am a tearful clown."
+  end

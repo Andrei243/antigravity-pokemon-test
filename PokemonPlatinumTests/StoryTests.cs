@@ -612,6 +612,8 @@ public class StoryTests
         started.Add(FieldScripts.HatchEgg);
         // The Underground (plan 06 · R16a): a wall that holds something, a base's PC and the bag's way up, which the game starts
         started.UnionWith(PokemonPlatinumEngine.Core.GameEngine.UndergroundScripts.Select(name => Scripts.Find(name, "underground")!.FullName));
+        // What looking at the Villa's furniture says, and the Catching Show's end (plan 06 · R16b)
+        started.UnionWith(PokemonPlatinumEngine.Core.GameEngine.PastimeScripts.Select(s => Scripts.Find(s.Script, s.File)!.FullName));
         started.UnionWith(Enum.GetValues<FieldMove>().Select(FieldScripts.FromMenu).OfType<string>());
         foreach (var script in Scripts.All)
         {
@@ -645,9 +647,12 @@ public class StoryTests
         var known = Scripts.FlagsWritten.Concat(RegionDatabase.All.Select(r => r.StoryCompleteFlag))
             .Concat(SpawnLocations.All.Select(s => s.ArrivalFlag))
             // What the Underground Man's missions wait for is set by the game as each thing is done below (plan 06 · R16a)
-            .Concat(PokemonPlatinumEngine.Core.GameEngine.UndergroundMissionFlags).ToHashSet();
+            .Concat(PokemonPlatinumEngine.Core.GameEngine.UndergroundMissionFlags)
+            // The Villa's furniture is the player's as it is paid for (plan 06 · R16b)
+            .Concat(PokemonPlatinumEngine.Core.GameEngine.PastimeFlags).ToHashSet();
         Assert.DoesNotContain(Scripts.FlagsRead, f => !known.Contains(f));
-        Assert.DoesNotContain(Scripts.VariablesRead, v => !Scripts.VariablesWritten.Contains(v));
+        // The slot machines' and the Catching Show's records and the Villa's visitor of the day are the game's to keep (plan 06 · R16b)
+        Assert.DoesNotContain(Scripts.VariablesRead, v => !Scripts.VariablesWritten.Contains(v) && !PokemonPlatinumEngine.Core.GameEngine.PastimeVariables.Contains(v));
     }
 
     /// <summary>

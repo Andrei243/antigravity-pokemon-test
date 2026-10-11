@@ -196,7 +196,11 @@ public enum InteriorStyle
     /// A Gym rebuilt to the original's plan (plan 01 · M9): its floor is the ground its tiles say (a lawn, flowers,
     /// paths, earth, a hall's own tiles) and its walls are in its leader's colours (<see cref="Map.ArenaType"/>).
     /// </summary>
-    Gym
+    Gym,
+    /// <summary>A museum's hall of pale stone, its exhibits under glass (plan 06 · R16b; style guide, "Fossils, the Game Corner, the Villa and Pal Park").</summary>
+    Museum,
+    /// <summary>The Game Corner: a red carpet, midnight walls and a band of gold bulbs (plan 06 · R16b).</summary>
+    GameHall,
 }
 
 /// <summary>

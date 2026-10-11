@@ -525,6 +525,32 @@ public static class ScriptParser
             case "seen":
                 return new Instruction { Op = Op.Seen, Line = line, Name = r.Text("a species' name") };
 
+            // Fossils, the Game Corner, the Villa and Pal Park (plan 06 · R16b)
+            case "fossil":
+                return new Instruction { Op = Op.Fossil, Line = line, Name = r.OneOf("count", "choose", "revive", "ready", "give") };
+            case "gamecorner":
+            {
+                string what = r.OneOf("coins", "room", "add", "take", "slots", "prize", "buy", "hiddenpower", "cointrick");
+                int number = what is "room" or "add" or "take" or "slots" ? r.Int(what == "slots" ? "a machine, 0 to 11" : "a number of coins") : 0;
+                if (what == "slots" && number is < 0 or > 11) throw r.Error("the Game Corner's machines are 0 to 11");
+                if (what != "slots" && number < 0) throw r.Error("coins are counted from nought up");
+                return new Instruction { Op = Op.GameCorner, Line = line, Name = what, Number = number };
+            }
+            case "villa":
+            {
+                string what = r.OneOf("catalogue", "choose", "is", "buy", "furnish", "owned");
+                if (what is not ("choose" or "is")) return new Instruction { Op = Op.Villa, Line = line, Name = what };
+                string piece = r.Text("a piece of furniture");
+                if (Models.VillaRules.Find(piece) == null) throw r.Error($"the Villa's catalogue has no '{piece}'");
+                return new Instruction { Op = Op.Villa, Line = line, Name = what, Other = piece };
+            }
+            case "palpark":
+            {
+                string what = r.OneOf("check", "start", "go", "active", "caught", "points", "record", "prize", "store", "end");
+                string which = what == "points" ? r.OneOf("catching", "time", "type", "total") : "";
+                return new Instruction { Op = Op.PalPark, Line = line, Name = what, Other = which };
+            }
+
             case "script":
             case "label":
                 throw r.Error($"'{word}' begins a line of its own");

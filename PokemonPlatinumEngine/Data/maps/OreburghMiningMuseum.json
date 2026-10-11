@@ -1,0 +1,507 @@
+{
+  "name": "OreburghMiningMuseum",
+  "displayName": "Oreburgh Mining Museum",
+  "bgmTrack": "sinnoh/oreburgh",
+  "interior": "Museum",
+  "trees": "Pine",
+  "width": 22,
+  "height": 19,
+  "ground": [
+    "######################",
+    "######################",
+    "######################",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#####D########_______#",
+    "##############_______#",
+    "##############_______#",
+    "##############_______#",
+    "######################"
+  ],
+  "solid": [
+    "######################",
+    "######################",
+    "######################",
+    "##.#...#..######....##",
+    "#..#####.............#",
+    "#....................#",
+    "#............###..####",
+    "#............###..####",
+    "##.....####..........#",
+    "##....######..##..####",
+    "##....######..##..####",
+    "##.....####..........#",
+    "##............##..####",
+    "##............##..####",
+    "#####.########.......#",
+    "##############.......#",
+    "##############.......#",
+    "##############.......#",
+    "######################"
+  ],
+  "props": [
+    {
+      "type": "Counter",
+      "x": 3,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 7,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 3,
+      "y": 4,
+      "width": 5,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 20,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 13,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 14,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "DisplayCase",
+      "x": 10,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "DisplayCase",
+      "x": 12,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "DisplayCase",
+      "x": 14,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "DisplayCase",
+      "x": 1,
+      "y": 8,
+      "width": 1,
+      "depth": 5
+    },
+    {
+      "type": "DisplayCase",
+      "x": 7,
+      "y": 8,
+      "width": 4,
+      "depth": 4
+    },
+    {
+      "type": "DisplayCase",
+      "x": 6,
+      "y": 9,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "DisplayCase",
+      "x": 11,
+      "y": 9,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "DisplayCase",
+      "x": 13,
+      "y": 6,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "DisplayCase",
+      "x": 14,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "DisplayCase",
+      "x": 15,
+      "y": 6,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "DisplayCase",
+      "x": 14,
+      "y": 9,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "DisplayCase",
+      "x": 14,
+      "y": 12,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "DisplayCase",
+      "x": 18,
+      "y": 6,
+      "width": 3,
+      "depth": 2
+    },
+    {
+      "type": "DisplayCase",
+      "x": 18,
+      "y": 9,
+      "width": 3,
+      "depth": 2
+    },
+    {
+      "type": "DisplayCase",
+      "x": 18,
+      "y": 12,
+      "width": 3,
+      "depth": 2
+    },
+    {
+      "type": "Painting",
+      "x": 5,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Clock",
+      "x": 8,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 17,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 5,
+      "y": 13,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 5,
+      "sourceY": 14,
+      "targetMap": "Sinnoh",
+      "targetX": 305,
+      "targetY": 748,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 10,
+      "y": 3,
+      "text": "How coal is made, 1:\nLong, long ago, forests grew and fell where the sea and the land met."
+    },
+    {
+      "x": 11,
+      "y": 3,
+      "text": "How coal is made, 1:\nLong, long ago, forests grew and fell where the sea and the land met."
+    },
+    {
+      "x": 12,
+      "y": 3,
+      "text": "How coal is made, 2:\nMud and sand buried the fallen trees, layer on layer, and shut the air out."
+    },
+    {
+      "x": 13,
+      "y": 3,
+      "text": "How coal is made, 2:\nMud and sand buried the fallen trees, layer on layer, and shut the air out."
+    },
+    {
+      "x": 14,
+      "y": 3,
+      "text": "How coal is made, 3:\nThe weight and the warmth of the ground, over ages beyond counting, pressed the wood into coal."
+    },
+    {
+      "x": 15,
+      "y": 3,
+      "text": "How coal is made, 3:\nThe weight and the warmth of the ground, over ages beyond counting, pressed the wood into coal."
+    },
+    {
+      "x": 14,
+      "y": 9,
+      "text": "Coal from other regions. Each lump is a little different in colour and in weight."
+    },
+    {
+      "x": 15,
+      "y": 9,
+      "text": "Coal from other regions. Each lump is a little different in colour and in weight."
+    },
+    {
+      "x": 14,
+      "y": 10,
+      "text": "Coal from other regions. Each lump is a little different in colour and in weight."
+    },
+    {
+      "x": 15,
+      "y": 10,
+      "text": "Coal from other regions. Each lump is a little different in colour and in weight."
+    },
+    {
+      "x": 14,
+      "y": 12,
+      "text": "Samples of coal, sorted by how hard they are and how hot they burn."
+    },
+    {
+      "x": 15,
+      "y": 12,
+      "text": "Samples of coal, sorted by how hard they are and how hot they burn."
+    },
+    {
+      "x": 14,
+      "y": 13,
+      "text": "Samples of coal, sorted by how hard they are and how hot they burn."
+    },
+    {
+      "x": 15,
+      "y": 13,
+      "text": "Samples of coal, sorted by how hard they are and how hot they burn."
+    },
+    {
+      "x": 18,
+      "y": 6,
+      "text": "Miners' lamps through the years, from an open flame to a light worn on the helmet."
+    },
+    {
+      "x": 19,
+      "y": 6,
+      "text": "Miners' lamps through the years, from an open flame to a light worn on the helmet."
+    },
+    {
+      "x": 20,
+      "y": 6,
+      "text": "Miners' lamps through the years, from an open flame to a light worn on the helmet."
+    },
+    {
+      "x": 18,
+      "y": 7,
+      "text": "Miners' lamps through the years, from an open flame to a light worn on the helmet."
+    },
+    {
+      "x": 19,
+      "y": 7,
+      "text": "Miners' lamps through the years, from an open flame to a light worn on the helmet."
+    },
+    {
+      "x": 20,
+      "y": 7,
+      "text": "Miners' lamps through the years, from an open flame to a light worn on the helmet."
+    },
+    {
+      "x": 18,
+      "y": 9,
+      "text": "The tools of the mine: picks, hammers, wedges and a drill worn smooth by hands."
+    },
+    {
+      "x": 19,
+      "y": 9,
+      "text": "The tools of the mine: picks, hammers, wedges and a drill worn smooth by hands."
+    },
+    {
+      "x": 20,
+      "y": 9,
+      "text": "The tools of the mine: picks, hammers, wedges and a drill worn smooth by hands."
+    },
+    {
+      "x": 18,
+      "y": 10,
+      "text": "The tools of the mine: picks, hammers, wedges and a drill worn smooth by hands."
+    },
+    {
+      "x": 19,
+      "y": 10,
+      "text": "The tools of the mine: picks, hammers, wedges and a drill worn smooth by hands."
+    },
+    {
+      "x": 20,
+      "y": 10,
+      "text": "The tools of the mine: picks, hammers, wedges and a drill worn smooth by hands."
+    },
+    {
+      "x": 18,
+      "y": 12,
+      "text": "What a mine worker carries: a helmet, a lunch tin, a whistle and a pair of very dusty gloves."
+    },
+    {
+      "x": 19,
+      "y": 12,
+      "text": "What a mine worker carries: a helmet, a lunch tin, a whistle and a pair of very dusty gloves."
+    },
+    {
+      "x": 20,
+      "y": 12,
+      "text": "What a mine worker carries: a helmet, a lunch tin, a whistle and a pair of very dusty gloves."
+    },
+    {
+      "x": 18,
+      "y": 13,
+      "text": "What a mine worker carries: a helmet, a lunch tin, a whistle and a pair of very dusty gloves."
+    },
+    {
+      "x": 19,
+      "y": 13,
+      "text": "What a mine worker carries: a helmet, a lunch tin, a whistle and a pair of very dusty gloves."
+    },
+    {
+      "x": 20,
+      "y": 13,
+      "text": "What a mine worker carries: a helmet, a lunch tin, a whistle and a pair of very dusty gloves."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "ace_trainer_f",
+      "name": "Receptionist",
+      "npcType": "Lady",
+      "x": 4,
+      "y": 3,
+      "facing": "Down",
+      "dialog": [
+        "Welcome to the Oreburgh Mining Museum!",
+        "Everything here came up out of our own mine. Please take your time."
+      ]
+    },
+    {
+      "id": "scientist_m",
+      "name": "Scientist",
+      "npcType": "Scientist",
+      "x": 6,
+      "y": 3,
+      "facing": "Down",
+      "script": "FossilResearcher"
+    },
+    {
+      "id": "school_kid_m",
+      "name": "Schoolboy",
+      "npcType": "Youngster",
+      "x": 8,
+      "y": 3,
+      "facing": "Up",
+      "dialog": [
+        "The mine goes on and on under the ground, right out beneath the sea!",
+        "I asked how they keep the water out. Nobody would tell me. I think it's a secret."
+      ]
+    },
+    {
+      "id": "hiker",
+      "name": "Hiker",
+      "npcType": "Gentleman",
+      "x": 8,
+      "y": 7,
+      "facing": "Down",
+      "dialog": [
+        "A lump of coal that size! You could warm the whole of Oreburgh through a winter with it.",
+        "Well. Half a winter. Our winters are long."
+      ]
+    },
+    {
+      "id": "twin",
+      "name": "Girl",
+      "npcType": "Lass",
+      "x": 9,
+      "y": 7,
+      "facing": "Down",
+      "dialog": [
+        "It's black and it shines. Is it a jewel? Granddad says it's better than a jewel.",
+        "You can't keep warm with a jewel, he says."
+      ]
+    },
+    {
+      "id": "pokemon_breeder_f",
+      "name": "Breeder",
+      "npcType": "Lass",
+      "x": 3,
+      "y": 7,
+      "facing": "Down",
+      "dialog": [
+        "Have you met the Underground Man in Eterna City? He knows everything about digging.",
+        "He'll give you a kit of your own, if you ask. Then you can dig up Fossils yourself!"
+      ],
+      "movement": "wander_north_and_south",
+      "rangeZ": 1
+    },
+    {
+      "id": "collector",
+      "name": "Collector",
+      "npcType": "Gentleman",
+      "x": 8,
+      "y": 12,
+      "facing": "Up",
+      "dialog": [
+        "Digging takes a strong arm, they say. Nonsense. It takes a strong mind.",
+        "One blow too many and the whole wall comes down on your find. Patience, patience."
+      ]
+    },
+    {
+      "id": "expert_m",
+      "name": "Old Man",
+      "npcType": "Gentleman",
+      "x": 16,
+      "y": 15,
+      "facing": "Down",
+      "dialog": [
+        "I went down that mine at fifteen and came up for good at sixty.",
+        "The town was built on what we dug. Mind you remember that, when you look at these old tools."
+      ],
+      "movement": "wander_west_and_east",
+      "rangeX": 1
+    }
+  ],
+  "wildEncounters": []
+}

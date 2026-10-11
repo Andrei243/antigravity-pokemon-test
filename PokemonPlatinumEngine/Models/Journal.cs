@@ -9,7 +9,9 @@ public enum JournalEventKind
 {
     RestedAtHome, LeftResearchLab, UsedPcBox, ShoppedAtMart, LotsOfShopping, SoldALittle, SoldALot, BusinessAtMart,
     GymWasTooTough, BeatGymLeader, BeatEliteFourMember, BeatChampion, ArrivedInLocation, LeftCave, LeftBuilding,
-    ItemWasObtained, UsedFieldMove
+    ItemWasObtained, UsedFieldMove,
+    /// <summary>Played the slots (the original's <c>LOCATION_EVENT_GAME_CORNER</c>; plan 06 · R16b).</summary>
+    GameCorner,
 }
 
 /// <summary>One line of a page: what happened, and the place, item, move or trainer it names.</summary>
@@ -153,6 +155,7 @@ public sealed class Journal
         JournalEventKind.LeftBuilding => $"Left {PlaceWords.Named(e.Subject ?? "")}.",
         JournalEventKind.ItemWasObtained => $"Found {e.Subject}.",
         JournalEventKind.UsedFieldMove => $"Used {e.Subject} in the field.",
+        JournalEventKind.GameCorner => "Played the slots at the Game Corner.",
         _ => ""
     };
 }

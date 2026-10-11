@@ -1,0 +1,56 @@
+# Pal Park's grounds (plan 06 · R16b), where the Catching Show is held. docs/scripts.md describes the language; the
+# lines are our own, on the original's beats (scripts_pal_park.s).
+#
+# The show's clock starts once the countdown is done (palpark go; VAR_PAL_PARK_STATE 1 while it runs). The game
+# itself meets the six in the grass and on the water and starts CaughtAll with the sixth catch. Walking back to the
+# gate, or speaking to the attendant beside it, asks whether to give up (VAR_PAL_PARK_STATE 2). Nobody is in the
+# park without a show: a game taken up again here is sent back to the lobby.
+
+
+script OnEnter
+  palpark active
+  if result == 0 goto NoShow
+  if var VAR_PAL_PARK_STATE == 1 end
+  text "The Catching Show is about to begin!" "Three... two... one..."
+  sound "select"
+  text "Start!"
+  setvar VAR_PAL_PARK_STATE 1
+  palpark go
+  end
+label NoShow
+  setvar VAR_PAL_PARK_STATE 0
+  warp "PalParkLobby" 7 12 up
+  end
+
+
+script CaughtAll
+  sound "levelup"
+  text "Ding-dong! Congratulations, {player}! All six Pokémon have been caught."
+  setvar VAR_PAL_PARK_STATE 1
+  warp "PalParkLobby" 7 7 down
+  end
+
+
+script RetireAtGate
+  ask "This is the way out. Will you leave the show before all six are caught?"
+  if no goto Stay
+  text "That's a pity. Perhaps another time."
+  setvar VAR_PAL_PARK_STATE 2
+  warp "PalParkLobby" 7 7 down
+  end
+label Stay
+  text "That's the spirit, {player}!"
+  walk player up 1
+  end
+
+
+script Worker
+  ask "How is the show going? You haven't caught all six yet. Will you give up?"
+  if no goto Stay
+  say "I'm sorry to hear it. This way out, please."
+  setvar VAR_PAL_PARK_STATE 2
+  warp "PalParkLobby" 7 7 down
+  end
+label Stay
+  say "That's the spirit, {player}! They're out there in the grass and the water."
+  end

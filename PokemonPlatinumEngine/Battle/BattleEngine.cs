@@ -575,6 +575,8 @@ public partial class BattleEngine
                 mine.Ball = caught.Ball;
                 // Where, when and at what level it was met (Pokemon_SetCatchData)
                 mine.Met(place, GameClock.Today);
+                // A Pokémon caught in Pal Park stays the Catching Show's until the show is over (plan 06 · R16b)
+                if (Kind == BattleKind.PalPark) break;
                 if (caught.ToBox) pcBoxStorage?.Store(mine);
                 else PlayerParty.Add(mine);
                 break;

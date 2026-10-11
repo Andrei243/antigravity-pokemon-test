@@ -96,8 +96,16 @@ internal static class GroundBaker
             return tone;
         }
 
+        if (style == InteriorStyle.GameHall)
+        {
+            // The Game Corner's carpet: deep red, a small gold lozenge in the middle of every tile, a darker seam between them
+            int cx = x % 32, cy = y % 32, away = Math.Abs(cx - 16) + Math.Abs(cy - 16);
+            if (away <= 3) return away == 3 ? Rgb(178, 132, 52) : Rgb(226, 182, 80);
+            return cx == 0 || cy == 0 ? Rgb(126, 34, 50) : (cx + cy) % 4 == 0 ? Rgb(158, 50, 66) : Rgb(150, 44, 60);
+        }
         var (a, b) = style switch
         {
+            InteriorStyle.Museum => (Rgb(226, 222, 212), Rgb(214, 208, 196)),
             InteriorStyle.PokemonCenter => (Rgb(250, 242, 232), Rgb(240, 214, 212)),
             InteriorStyle.PokeMart => (Rgb(230, 238, 246), Rgb(206, 220, 236)),
             _ => (Rgb(240, 242, 246), Rgb(222, 226, 234))
@@ -224,6 +232,8 @@ internal static class GroundBaker
             InteriorStyle.PokemonCenter => (Rgb(250, 242, 240), Rgb(242, 214, 216), Tone.Of(232, 108, 116), Tone.Of(248, 248, 250), Tone.Of(150, 70, 84)),
             InteriorStyle.PokeMart => (Rgb(234, 242, 250), Rgb(214, 226, 242), Tone.Of(76, 128, 216), Tone.Of(248, 248, 250), Tone.Of(52, 84, 150)),
             InteriorStyle.Lab => (Rgb(238, 240, 244), Rgb(224, 228, 236), Tone.Of(150, 160, 186), Tone.Of(250, 250, 252), Tone.Of(96, 104, 128)),
+            InteriorStyle.Museum => (Rgb(244, 236, 216), Rgb(230, 220, 196), Tone.Of(96, 84, 78), Tone.Of(250, 246, 232), Tone.Of(64, 56, 54)),
+            InteriorStyle.GameHall => (Rgb(44, 48, 96), Rgb(226, 182, 80), Tone.Of(62, 70, 132), Tone.Of(226, 182, 80), Tone.Of(28, 30, 62)),
             _ => (Rgb(246, 232, 200), Rgb(232, 212, 172), Tone.Of(178, 124, 82), Tone.Of(250, 244, 226), Tone.Of(120, 84, 58))
         };
 

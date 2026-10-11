@@ -228,9 +228,10 @@ public class BattleZoneTests
     public void TheDoorsOfWhatIsNotBuiltYetStayShut()
     {
         var map = Overworld;
-        // The Battleground (the story's), the Villa (plan 06 · R16b) and the Rock Peak Ruins (the story's). The Battle
-        // Frontier's gate and the Ribbon Syndicate's door are open since part b (PostGameTests)
-        foreach (var (x, y) in new[] { (652, 338), (822, 469), (785, 340) })
+        // The Battleground and the Rock Peak Ruins (the story's). The Battle Frontier's gate and the Ribbon Syndicate's
+        // door are open since part b (PostGameTests), and the Villa's since plan 06 · R16b
+        Assert.Equal("ResortAreaVilla", map.GetWarpAt(822, 469)?.TargetMap);
+        foreach (var (x, y) in new[] { (652, 338), (785, 340) })
         {
             Assert.Null(map.GetWarpAt(x, y));
             Assert.True(map.IsSolid(x, y), $"the way in at ({x},{y}) can be walked into");
@@ -243,9 +244,11 @@ public class BattleZoneTests
         runner.RunToEnd();
         Assert.Contains(host.Transcript, line => line.Text.Contains("Members only"));
 
-        // The story's people wait for the story: the blockades, the rival, Buck, the Leaders at the Villa
+        // The story's people wait for the story: the blockades, the rival, Buck. The boy who gives the Villa away and
+        // those who wait at its door are the Resort Area's own (plan 06 · R16b)
         Assert.DoesNotContain(Outdoors.SelectMany(key => PeopleOf(map, key)), n => n.Key is "rival" or "buck" or "volkner" or "flint" or "palmer" or "ace_trainer_m_2"
-            or "black_belt_2" or "marley" or "prof_oak" or "shaymin" or "crasher_wake" or "school_kid_m" or "prof_rowan");
+            or "black_belt_2" or "marley" or "prof_oak" or "shaymin" or "crasher_wake");
+        Assert.Contains(PeopleOf(map, "resort_area"), n => n.Key == "school_kid_m" && n.Script == "SchoolKid");
     }
 
     // ------------------------------------------------------------------ people, trainers, items, wild Pokémon, weather

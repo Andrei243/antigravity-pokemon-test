@@ -128,5 +128,8 @@ public static class TrainerScore
     /// </summary>
     public const int WentUnderground = 1, UndergroundSteps = 1, UncoveredWall = 2, NewSecretBase = 3, CapturedFlag = 30;
 
+    /// <summary>The last piece of the Villa's furniture bought (plan 06 · R16b; <c>TRAINER_SCORE_EVENT_BOUGHT_ALL_VILLA_FURNITURE</c>).</summary>
+    public const int BoughtAllVillaFurniture = 10;
+
     public static int Add(int score, int points) => (int)Math.Min(Limit, (long)score + points);
 }

@@ -13,7 +13,12 @@
     // the lobby's two, and the room the way out of the headquarters ends in
     { "warp": 14, "map": "GalacticHQ1F", "x": 8, "y": 22, "facing": "Up" },
     { "warp": 15, "map": "GalacticHQ1F", "x": 29, "y": 22, "facing": "Up" },
-    { "warp": 16, "map": "GalacticHQ1F", "x": 42, "y": 22, "facing": "Up" }
+    { "warp": 16, "map": "GalacticHQ1F", "x": 42, "y": 22, "facing": "Up" },
+    // The Game Corner, its prize exchange and the house of the clown who gives the Coin Case away, built to the
+    // original's plans (plan 06 · R16b)
+    { "warp": 2, "map": "VeilstoneGameCorner", "x": 5, "y": 11, "facing": "Up" },
+    { "warp": 5, "map": "VeilstonePrizeExchange", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 7, "map": "VeilstoneSoutheastHouse", "x": 4, "y": 8, "facing": "Up" }
   ],
   // Gate houses are passed through; their rooms come with plan 01 · M11
   "through": [
@@ -22,9 +27,8 @@
     { "warp": 11, "to": "route_214", "toWarp": 0 },
     { "warp": 12, "to": "route_214", "toWarp": 1 }
   ],
-  // The Game Corner (plan 06 · R16b), the Department Store, the prize exchange and the houses (plan 01 · M11) have no
-  // rooms yet
-  "locked": [ 2, 3, 5, 6, 7, 8, 9 ],
+  // The Department Store and three houses (plan 01 · M11) have no rooms yet
+  "locked": [ 3, 6, 8, 9 ],
   // Plan 02 · S8 (scripts/veilstone_city.txt): the warehouse's guards pushing the player back until Maylene's Badge
   // (trigger 0), and Crasher Wake coming out of the Gym (trigger 1)
   "triggers": [ { "trigger": 0, "script": "GruntsBlock" }, { "trigger": 1, "script": "CrasherWake" } ],
