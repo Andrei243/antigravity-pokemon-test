@@ -340,10 +340,47 @@ public sealed class HeadlessScriptHost : IScriptHost
         Log.Add($"emote {who?.Name ?? "player"} {bubble}");
     }
 
-    public void Camera(CameraMove move, int x, int y, float seconds)
+    public float Camera(CameraMove move, int x, int y, float seconds, float factor = 1f, NPC? who = null, IReadOnlyList<(int X, int Y)>? path = null)
     {
         Shown("move the camera");
-        Log.Add(move == CameraMove.Pan ? $"camera Pan {x} {y}" : $"camera {move}");
+        string Number(float value) => value.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        switch (move)
+        {
+            case CameraMove.Pan:
+                Log.Add($"camera Pan {x} {y}");
+                return seconds;
+            case CameraMove.Zoom:
+                Log.Add($"camera Zoom {Number(factor)}");
+                return seconds;
+            case CameraMove.Follow:
+                Log.Add($"camera Follow {who?.Name ?? "player"}");
+                return seconds;
+            case CameraMove.Path:
+            {
+                // Everything happens at once here: the path's time is told from its own tiles, as if the camera began at the first
+                var tiles = path ?? Array.Empty<(int X, int Y)>();
+                Log.Add($"camera Path {string.Join(" ", tiles.Select(t => $"{t.X} {t.Y}"))} at {Number(factor)}");
+                float length = 0f;
+                for (int i = 1; i < tiles.Count; i++)
+                    length += MathF.Sqrt((tiles[i].X - tiles[i - 1].X) * (tiles[i].X - tiles[i - 1].X) + (tiles[i].Y - tiles[i - 1].Y) * (tiles[i].Y - tiles[i - 1].Y));
+                return CameraRig.PathSeconds(length, factor);
+            }
+            default:
+                Log.Add($"camera {move}");
+                return move == CameraMove.Release ? seconds : 0f;
+        }
+    }
+
+    public void Letterbox(bool on, float seconds)
+    {
+        Shown("slide the bars");
+        Log.Add(on ? "letterbox on" : "letterbox off");
+    }
+
+    public void SlowMotion(float share, float seconds)
+    {
+        Shown("slow the field");
+        Log.Add($"slowmo {share.ToString(System.Globalization.CultureInfo.InvariantCulture)}");
     }
 
     public void Effect(SceneEffect kind, int x, int y, float seconds, Direction? way, bool hold)

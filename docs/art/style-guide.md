@@ -726,6 +726,19 @@ A frame must stay under 8 ms on High. In the harness's 1080p window after G11 (p
   - **Matchup checker**: a meter of three big hearts at the top, lit in the ink for each heart the pair earns (flashing for the best); under it two heart-shaped fish of blocks, each a forked tail and a heart on its side with an eye of paper, swim toward one another a step for each heart, kiss under a small heart for the best match and turn their backs and swim apart for none; at the bottom each side's Pokémon in its own button, 48 across, and the check button between them with a heart in it, shown pressed while the fish swim or when there is no pair to check.
 - **The Safari Game** (plan 01 · M7): while a game is on in the Great Marsh, a panel 300 by 96 at the top right, 32 from the edges, as the other panels are: SAFARI BALLS and STEPS as labels over their numbers in Black 36, side by side; a number turns Red at a fifth of its start or under (6 balls, 100 steps). It shows whenever the field does, the Pokétch and the text box included, and goes when the game ends.
 - **Story scenes** (plan 02 · S1): a script has the field to itself, and the interface shows nothing of that but its text. Its fade is plain black over the field and under the text box, so a line can be read on a black screen; it takes 0.4 s unless the scene says otherwise. People a scene sends walking keep the trainers' walking pace (4.5 tiles a second, 8 in a hurry) and come to rest in an eighth of a second. A shake of the camera moves the picture up and down by whole texels thirty times a second, six texels at its start and dying away over its length (half a second unless said).
+- **The camera kit** (plan 09 · L4; `CameraRig`): what a scene does with the field's camera besides sending it to a spot. It sits over whatever camera the place has (the open country's, a cave's, the zoomed-in one, a room's), and every move eases out of where it is and into where it goes on the same curve as a pan (3t² − 2t³).
+
+| Move | What it does | Numbers |
+|---|---|---|
+| Pan | the camera looks at a tile's middle instead of the player, and stays | 0.8 s unless said; from a spot it was sent to already it eases on from there |
+| Follow | the camera keeps on someone else's feet, wherever they walk; `player` brings it back without touching the lens or the bars | 0.8 s to get onto them |
+| Path | the camera travels through the middles of up to eight tiles, from where it looks | 4 tiles a second unless said (a quarter of a tile to 16); it gathers that pace over half a second and loses it over the last half second, and holds it between (a path too short for both halves them) |
+| Zoom | the lens alone: a factor of 1 is the place's own, 2 shows everything twice as large, 0.5 twice as much ground. The field of view changes (tan of its half divided by the factor) and never the pitch or the distance, so upright things stand as straight at every zoom | 0.5 to 4; 0.8 s unless said, eased on the factor's ratio so the picture grows evenly |
+| Bars | the title's own cinema bars: plain black, 120 units at the top and the bottom, sliding in and out in whole units | 0.4 s unless said |
+| Slow motion | the field at a share of its pace for a time, then back by itself | a tenth to the whole of its pace, for 2 s unless said (60 at most), easing in and out over 0.2 s |
+| Release | everything back: the camera to the player, the lens to the place's own, the bars away, time to its pace | 0.6 s unless said |
+
+  The bars lie over the field, its weather and a script's black screen, and under the text box, the answers and every panel, so a line is read across the lower bar. Slow motion slows what the field does (people's steps and gestures, the player's, prints and dust, weather, a scene's effects, a puzzle's pieces) and nothing a scene is timed by: the camera's own moves, the bars, the text, a bubble, a fade and a script's waits all keep the clock's time, so a scene's lines mean the same seconds whatever the pace. A zoom out shows more ground, and what is drawn follows the lens: the ground in view, the people on it, the chunks kept ready, and the shadow map, which is spread over the wider view (its texels grow with it). In a room, which is seen whole, a zoom in lets the camera look where it is sent as far as the zoom leaves room: by the share of the room the zoom has taken out of the picture, and no further. A scene that ends, however it ends, releases what it left.
 
 ### Battle panels
 
@@ -975,6 +988,8 @@ The order follows the games' opening: a notice, a short film, the legendary Pok�
    - **CONTINUE** shows the save at a glance: where it was saved (right of the heading), PLAYER, TIME PLAYED (hours:minutes), POKÉDEX (caught), BADGES n / 8 with the eight medallions, and the PARTY as 2D icons.
    - **NEW GAME** with a save present asks first ("Start a new game?"), with No selected by default.
 7. **Leaving**: 0.8 s fade to black, then the field fades in.
+
+**The loop** (plan 09 · L4): the title left alone for thirty seconds (`TitleScreen.IdleTime`) plays its opening again, as Platinum's title returns to its film: the Journey and the Reveal, never the notice, and back to the title to wait another thirty. It begins in the dip to black every shot begins in, so nothing jumps. A button during it comes to the title with the same flash as the first time, and from there to the menu; the menu, a prompt and a notice wait for as long as it takes.
 
 ### Motion (`UiMotion`, `UiReveal`)
 

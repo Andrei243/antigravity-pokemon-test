@@ -151,6 +151,15 @@ public class ScriptTests
           camera pan 3 4 0.5
           camera release
           camera shake
+          camera zoom 1.5
+          camera zoom 0.5 2 nowait
+          camera follow self 0.5
+          camera follow player
+          camera path 3 4 5 4 2 nowait
+          letterbox on
+          letterbox off 0.2
+          slowmo 0.25
+          slowmo 1 2
           effect burst 3 4
           effect shadow 3 4 2 left wait
           effect beam 3 4 hold
@@ -1445,7 +1454,9 @@ public class ScriptTests
         public void Emote(NPC? who, EmoteBubble bubble, float seconds) { }
         public void Act(NPC? who, Gesture gesture, int times) { }
         public void Mood(NPC? who, Mood mood) { }
-        public void Camera(CameraMove move, int x, int y, float seconds) { }
+        public float Camera(CameraMove move, int x, int y, float seconds, float factor = 1f, NPC? who = null, IReadOnlyList<(int X, int Y)>? path = null) => 0f;
+        public void Letterbox(bool on, float seconds) { }
+        public void SlowMotion(float share, float seconds) { }
         public void Effect(SceneEffect kind, int x, int y, float seconds, Direction? way, bool hold) { }
         public void StopEffect(int x, int y) { }
         public bool Busy => false;
