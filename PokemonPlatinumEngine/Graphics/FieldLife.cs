@@ -61,6 +61,7 @@ internal sealed class FieldLife
     {
         Now += dt;
         pieces.RemoveAll(p => Now - p.Born > LifeOf(p.Kind));
+        effects.RemoveAll(e => Now >= e.Ends);
         if (door is { } d && d.ShutAt is { } shut && Now >= shut + DoorOpens) door = null;
     }
 
@@ -68,6 +69,7 @@ internal sealed class FieldLife
     public void Clear()
     {
         pieces.Clear();
+        effects.Clear();
         door = null;
     }
 
@@ -385,6 +387,74 @@ internal sealed class FieldLife
         }
     }
 
+    // ------------------------------------------------------------------ scene effects
+
+    /// <summary>An effect a script lit on a tile (<see cref="SceneFx"/>): its round's length, and when it ends (never, while held).</summary>
+    private readonly record struct Lit(SceneEffect Kind, int X, int Y, Vector3 Foot, double Born, float Seconds, double Ends, Direction Way, int Seed);
+
+    private readonly List<Lit> effects = new();
+
+    public int EffectCount => effects.Count;
+
+    /// <summary>
+    /// A story's scene lights an effect on a tile (plan 09 · L11): it plays for <paramref name="seconds"/>, or
+    /// round after round until it is stopped when <paramref name="hold"/>, and is seeded by its tile. One of the
+    /// same kind already on the tile gives way to it.
+    /// </summary>
+    public void Effect(Map map, SceneEffect kind, int x, int y, float seconds, Direction way, bool hold)
+    {
+        effects.RemoveAll(e => e.X == x && e.Y == y && e.Kind == kind);
+        var foot = new Vector3(x + 0.5f, Relief.At(map, x + 0.5f, y + 0.5f), y + 0.5f);
+        effects.Add(new Lit(kind, x, y, foot, Now, seconds, hold ? double.PositiveInfinity : Now + seconds, way, SceneFx.SeedOf(x, y)));
+    }
+
+    /// <summary>Every effect held on a tile goes as it would at its end (<see cref="SceneFx.StopAt"/>).</summary>
+    public void StopEffect(int x, int y)
+    {
+        for (int i = 0; i < effects.Count; i++)
+        {
+            var e = effects[i];
+            if (e.X != x || e.Y != y || !double.IsPositiveInfinity(e.Ends)) continue;
+            effects[i] = e with { Ends = e.Born + SceneFx.StopAt(e.Kind, (float)(Now - e.Born), e.Seconds) };
+        }
+    }
+
+    /// <summary>Forgets every effect: coming to another place.</summary>
+    public void ClearEffects() => effects.Clear();
+
+    /// <summary>The effects' pieces now, in the world (<see cref="SceneFx.Quads(SceneEffect, float, float, float, int, Direction, Vector3, List{SceneQuad})"/>).</summary>
+    public void SceneQuads(List<SceneQuad> into)
+    {
+        foreach (var e in effects)
+            SceneFx.Quads(e.Kind, (float)(Now - e.Born), e.Seconds, Until(e), e.Seed, e.Way, e.Foot, into);
+    }
+
+    /// <summary>When an effect ends, counted from its birth: infinity while it is held.</summary>
+    private static float Until(Lit e) => double.IsPositiveInfinity(e.Ends) ? float.PositiveInfinity : (float)(e.Ends - e.Born);
+
+    /// <summary>How white the bursts lit now make the whole picture: the strongest of them.</summary>
+    public float Flash
+    {
+        get
+        {
+            float most = 0f;
+            foreach (var e in effects) most = MathF.Max(most, SceneFx.Flash(e.Kind, (float)(Now - e.Born), Until(e)));
+            return most;
+        }
+    }
+
+    /// <summary>How the picture wavers now: the ripple that reaches furthest, or none.</summary>
+    public SceneRipple Ripple
+    {
+        get
+        {
+            SceneRipple most = default;
+            foreach (var e in effects)
+                if (SceneFx.Ripple(e.Kind, (float)(Now - e.Born), Until(e)) is { Plays: true } r && r.Reach > most.Reach) most = r;
+            return most;
+        }
+    }
+
     // ------------------------------------------------------------------ doors
 
     private readonly record struct Door(Map Map, int X, int Y, double OpenedAt, double? ShutAt, bool ShutHeard = false);
@@ -619,7 +689,7 @@ internal static class WeatherFx
 }
 
 /// <summary>The pixel art of the field's small effects and of the emote bubbles. No GPU calls.</summary>
-internal static class LifeArt
+internal static partial class LifeArt
 {
     private static Color Rgb(int r, int g, int b) => new(r, g, b, 255);
 

@@ -516,6 +516,16 @@ public sealed partial class ScriptRunner
                 // A shake goes on under whatever comes next; a pan is waited for
                 if (i.Camera != CameraMove.Shake) waiting = i.Seconds;
                 break;
+            case Op.Effect:
+                if (i.Name == "stop")
+                {
+                    host.StopEffect(i.X, i.Y);
+                    break;
+                }
+                host.Effect(i.Effect, i.X, i.Y, i.Seconds, i.Direction, i.Name == "hold");
+                // An effect plays on under whatever comes next, unless the script waits for it to end
+                if (i.Name == "wait") waiting = i.Seconds;
+                break;
 
             case Op.UseMove:
             {

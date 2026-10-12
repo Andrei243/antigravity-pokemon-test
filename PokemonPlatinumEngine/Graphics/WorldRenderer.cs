@@ -566,10 +566,13 @@ public sealed class WorldRenderer
     /// </summary>
     public void DrawToScreen(int destWidth, int destHeight)
     {
-        context.Composite(new Rectangle(0, 0, destWidth, destHeight));
+        // A scene's ripple is read by the composite's own pass, and a burst's flash whitens everything over it
+        context.Composite(new Rectangle(0, 0, destWidth, destHeight), Life.Ripple);
         DrawWeather(destWidth, destHeight);
         if (dark) DrawDarkness(destWidth, destHeight);
         if (gymFog > 0f) DrawGymFog(destWidth, destHeight);
+        if (Life.Flash is > 0f and var flash)
+            Raylib.DrawRectangle(0, 0, destWidth, destHeight, new Color(255, 255, 255, (int)(flash * 255f)));
     }
 
     private bool dark;
@@ -1112,15 +1115,18 @@ public sealed class WorldRenderer
             lifeFlat.Clear();
             lifeUpright.Clear();
             Life.Quads(lifeFlat, lifeUpright);
+            sceneQuads.Clear();
+            Life.SceneQuads(sceneQuads);
         }
         var quads = upright ? lifeUpright : lifeFlat;
+        float pitchDeg = MapScene.PitchOf(map), vs = MapScene.VerticalScaleOf(map);
+        Camera3D? straight = map.IsIndoors ? null : camera;
+        DrawSceneEffects(map, camera, upright, pitchDeg, vs, straight);
         if (quads.Count == 0) return;
 
         var atlas = SceneTextures.Life;
-        float pitchDeg = MapScene.PitchOf(map), vs = MapScene.VerticalScaleOf(map);
         float lit = Brightness(rig);
         const float cell = FieldLife.Cell;
-        Camera3D? straight = map.IsIndoors ? null : camera;
         Rlgl.DisableDepthMask();
         foreach (var q in quads)
         {
@@ -1145,6 +1151,52 @@ public sealed class WorldRenderer
             Rlgl.Begin(DrawMode.Quads);
             Rlgl.Color4ub(tint.R, tint.G, tint.B, tint.A);
             (float X, float Z)[] corner = { (cx - hw, q.At.Z + hd), (cx + hw, q.At.Z + hd), (cx + hw, q.At.Z - hd), (cx - hw, q.At.Z - hd) };
+            for (int i = 0; i < 4; i++)
+            {
+                var (u, v) = uv[(i + q.Turn) % 4];
+                Rlgl.TexCoord2f(u, v);
+                Rlgl.Vertex3f(corner[i].X, q.At.Y, corner[i].Z);
+            }
+            Rlgl.End();
+        }
+        Rlgl.SetTexture(0);
+        Rlgl.DrawRenderBatchActive();
+        Rlgl.EnableDepthMask();
+    }
+
+    private readonly List<SceneQuad> sceneQuads = new();
+
+    /// <summary>
+    /// The story's scene effects (style guide, "Life", "Scene effects"): cells of their own atlas, lying on the
+    /// ground or standing up, drawn undimmed because they are light (the shadow is dark by its own tint).
+    /// </summary>
+    private void DrawSceneEffects(Map map, Camera3D camera, bool upright, float pitchDeg, float vs, Camera3D? straight)
+    {
+        if (sceneQuads.Count == 0) return;
+        var atlas = SceneTextures.Effects;
+        const float cell = SceneFx.Cell;
+        Rlgl.DisableDepthMask();
+        foreach (var q in sceneQuads)
+        {
+            if (q.Flat == upright) continue;
+            var src = new Rectangle(q.Cell % SceneFx.Columns * cell, q.Cell / SceneFx.Columns * cell, cell, cell);
+            if (upright)
+            {
+                DrawUpright(atlas, src, SnapToTexel(q.At.X), q.At.Z, q.At.Y + q.Lift * vs, q.Width, q.Height * vs, q.Tint, straight, pitchDeg);
+                continue;
+            }
+
+            float cx = q.At.X;
+            if (!map.IsIndoors && q.At.Y > 0.05f) cx = Straighten(camera, pitchDeg, cx, q.At.Y, q.At.Z);
+            float hw = q.Width / 2f, hd = q.Height / 2f;
+            float u0 = src.X / atlas.Width, u1 = (src.X + src.Width) / atlas.Width, v0 = src.Y / atlas.Height, v1 = (src.Y + src.Height) / atlas.Height;
+            // Turned by quarter turns, as a footprint is, so a shadow heads the way it is sent
+            (float U, float V)[] uv = { (u0, v1), (u1, v1), (u1, v0), (u0, v0) };
+            (float X, float Z)[] corner = { (cx - hw, q.At.Z + hd), (cx + hw, q.At.Z + hd), (cx + hw, q.At.Z - hd), (cx - hw, q.At.Z - hd) };
+            Rlgl.CheckRenderBatchLimit(4);
+            Rlgl.SetTexture(atlas.Id);
+            Rlgl.Begin(DrawMode.Quads);
+            Rlgl.Color4ub(q.Tint.R, q.Tint.G, q.Tint.B, q.Tint.A);
             for (int i = 0; i < 4; i++)
             {
                 var (u, v) = uv[(i + q.Turn) % 4];

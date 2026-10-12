@@ -240,6 +240,7 @@ on leaving any place), `FLAG_FLASH_ACTIVE` and `FLAG_DEFOG_ACTIVE` (cleared on g
 | `fade out [0.4]`, `fade in` | The field to black and back. Text shows over the black. A script that ends in the dark is brought back. |
 | `wait 0.5` | |
 | `camera pan X Y [0.8]`, `camera release [0.6]`, `camera shake [0.5]` | Sends the camera to look at a tile, brings it back, shakes the picture. |
+| `effect burst X Y [seconds] [wait\|hold]`, `effect shadow X Y [2] [right] [wait\|hold]`, `effect stop X Y` | A scene effect on a tile (plan 09 · L11; style guide, "Life", "Scene effects"), with its sound: `burst` (light thrown out, a white flash over the picture), `beam` (a column of light), `rift` (a tear in the air), `shadow` (a dark shape crossing the ground the way it is sent, east if none is given; only a shadow is sent a way), `ripple` (the picture wavering) or `sparkles`. It plays its own length (0.6, 1.5, 3, 2, 1.2 and 1.5 s) or the time given under whatever comes next; `wait` waits for it to end, `hold` plays it until `effect stop` on its tile (a held one is given no time). Coming to another place clears every effect. |
 
 ### Sound
 

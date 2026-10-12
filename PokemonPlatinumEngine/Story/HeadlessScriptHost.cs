@@ -318,6 +318,18 @@ public sealed class HeadlessScriptHost : IScriptHost
         Log.Add(move == CameraMove.Pan ? $"camera Pan {x} {y}" : $"camera {move}");
     }
 
+    public void Effect(SceneEffect kind, int x, int y, float seconds, Direction? way, bool hold)
+    {
+        Shown("show an effect");
+        Log.Add($"effect {kind} {x} {y}" + (way is { } w ? $" {w}" : "") + (hold ? " hold" : ""));
+    }
+
+    public void StopEffect(int x, int y)
+    {
+        Shown("stop an effect");
+        Log.Add($"effect stop {x} {y}");
+    }
+
     // ------------------------------------------------------------------ what a script waits for
 
     /// <summary>Never, unless a test holds the script up to see where it waits for the player.</summary>

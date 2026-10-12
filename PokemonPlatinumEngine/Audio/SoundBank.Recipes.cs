@@ -67,6 +67,12 @@ public static partial class SoundBank
         Add("gears", SoundGroup.Field, "SEQ_SE_DP_GAGAGA", "The Sunyshore Gym's gears grind round as the player steps on a button.");
         Add("thunder", SoundGroup.Field, "SEQ_SE_DP_T_KAMI2", "Thunder cracking close, just after a storm's lightning (two strikes of three).");
         Add("thunder_rumble", SoundGroup.Field, "SEQ_SE_DP_T_KAMI", "Thunder rolling from further off, a second after the lightning (one strike of three).");
+        Add("effect_burst", SoundGroup.Field, null, "A story's scene throws out a burst of light (`effect burst`): the explosion at Lake Valor, a Pokémon of legend appearing.");
+        Add("effect_beam", SoundGroup.Field, null, "A column of light stands on a tile (`effect beam`): the lake guardians' machines.");
+        Add("effect_rift", SoundGroup.Field, null, "A rift tears open in the air (`effect rift`): Spear Pillar.");
+        Add("effect_shadow", SoundGroup.Field, null, "A great shadow sweeps over the ground (`effect shadow`): Giratina's, in the Distortion World.");
+        Add("effect_ripple", SoundGroup.Field, null, "The picture wavers (`effect ripple`): a weight in the air at Spear Pillar, an explosion felt far off.");
+        Add("effect_sparkles", SoundGroup.Field, null, "Points of light rise round a tile (`effect sparkles`): the lake guardians set free and appearing.");
 
         // ---- Battles
         Add("send_out", SoundGroup.Battle, "SEQ_SE_DP_BOWA4", "A ball opens and a Pokémon comes out.");
@@ -263,6 +269,51 @@ public static partial class SoundBank
                 d.Noise(0, 3.2f, Filter.Low, 420f, 80f, 0.9f, 0.8f, 0.25f, 1.3f, flutterHz: 4.5f, flutterDepth: 0.55f);
                 d.Noise(0.2f, 2.8f, Filter.Band, 160f, 60f, 0.5f, 0.9f, 0.3f, 1.2f, flutterHz: 2.2f, flutterDepth: 0.6f);
                 return Finish(d.S, 0.45f);
+            case "effect_burst":
+                // A blast of light: a rush of air thrown outward, a deep knock under it, and a shimmer ringing after
+                d = new SoundDesign(0.8f, 0xB0B5u);
+                d.Noise(0, 0.5f, Filter.High, 5200f, 1400f, 0.7f, 0.8f, 0.01f, 2f);
+                d.Thump(0, 0.3f, 130f, 45f, 0.8f, 0.4f);
+                d.Bell(0.03f, 0.7f, N(91), 3.01f, 2.2f, 0.25f, 2.2f);
+                d.Bell(0.06f, 0.65f, N(98), 2.01f, 1.6f, 0.18f, 2.4f);
+                return Finish(d.S, 0.4f);
+            case "effect_beam":
+                // A column of light standing: a hum rising and settling with a slow waver, air rushing up inside it
+                d = new SoundDesign(0.9f, 0xBEA3u);
+                d.Tone(0, 0.88f, Wave.Sine, 220f, 330f, 0.4f, 0.25f, 0.8f, vibratoHz: 6f, vibratoDepth: 0.02f);
+                d.Tone(0, 0.88f, Wave.Sine, 440f, 660f, 0.18f, 0.3f, 0.8f, vibratoHz: 6f, vibratoDepth: 0.02f);
+                d.Noise(0, 0.86f, Filter.Band, 1800f, 4200f, 0.25f, 1.4f, 0.3f, 1f);
+                return Finish(d.S, 0.36f);
+            case "effect_rift":
+                // The air tearing: noise climbing through a narrow band in fits, over a low growl
+                d = new SoundDesign(0.9f, 0x41F7u);
+                d.Noise(0, 0.88f, Filter.Band, 300f, 2600f, 0.7f, 2.5f, 0.2f, 1.2f, flutterHz: 11f, flutterDepth: 0.6f);
+                d.Tone(0, 0.88f, Wave.Saw, 55f, 48f, 0.18f, 0.2f, 1.2f, vibratoHz: 5f, vibratoDepth: 0.05f);
+                d.Crackle(0.2f, 0.6f, 14, 3200f, 0.25f);
+                return Finish(d.S, 0.38f);
+            case "effect_shadow":
+                // Something vast passing over: a low rush of air that swells and dies, a deep note under it
+                d = new SoundDesign(0.9f, 0x5AD0u);
+                d.Noise(0, 0.88f, Filter.Low, 300f, 900f, 0.8f, 0.9f, 0.45f, 1.4f, flutterHz: 3f, flutterDepth: 0.4f);
+                d.Tone(0, 0.88f, Wave.Sine, 62f, 52f, 0.35f, 0.45f, 1.3f);
+                return Finish(d.S, 0.38f);
+            case "effect_ripple":
+                // The world wavering: two soft tones a little apart, each wobbling against the other
+                d = new SoundDesign(0.8f, 0x2199u);
+                d.Tone(0, 0.78f, Wave.Sine, N(67), N(67), 0.35f, 0.2f, 1f, vibratoHz: 7f, vibratoDepth: 0.03f);
+                d.Tone(0.04f, 0.74f, Wave.Sine, N(74), N(74) * 0.98f, 0.25f, 0.25f, 1f, vibratoHz: 5f, vibratoDepth: 0.04f);
+                d.Tone(0, 0.6f, Wave.Triangle, N(55), N(55), 0.12f, 0.3f, 1.2f, vibratoHz: 7f, vibratoDepth: 0.03f);
+                return Finish(d.S, 0.36f);
+            case "effect_sparkles":
+                // Points of light: high bells struck here and there, rising, ringing out
+                d = new SoundDesign(0.85f, 0x5BA2u);
+                d.Bell(0, 0.4f, N(96), 3f, 1.4f, 0.3f);
+                d.Bell(0.09f, 0.4f, N(100), 3f, 1.4f, 0.26f);
+                d.Bell(0.2f, 0.4f, N(103), 3f, 1.4f, 0.28f);
+                d.Bell(0.28f, 0.4f, N(98), 3f, 1.4f, 0.22f);
+                d.Bell(0.38f, 0.4f, N(108), 3f, 1.4f, 0.24f);
+                d.Bell(0.45f, 0.38f, N(105), 3f, 1.4f, 0.2f);
+                return Finish(d.S, 0.36f);
             case "save":
                 // A soft chime of three bells: written and kept
                 d = new SoundDesign(0.75f);

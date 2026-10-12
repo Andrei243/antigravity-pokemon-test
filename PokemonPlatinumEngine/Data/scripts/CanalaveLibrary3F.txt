@@ -10,9 +10,9 @@
 # 2, FLAG_LAKE_VALOR_EXPLODED; the cameramen who kept the lake shut are gone, FLAG_HIDE_VALOR_LAKEFRONT_CAMERAMEN).
 #
 # The original's RemoveObject also sets the flag that hides whoever it takes away, so the three who leave are hidden
-# by their flags. The explosion is a rumble and a shake of the picture, and the television's report lines over a black
-# screen, until the story's effects are made (plan 09 · L11: the room shaking with its books, the television's own
-# picture). The books on the shelves are Sinnoh's myths, retold in our own words.
+# by their flags. The explosion is a rumble, a shake of the picture and the room wavering (plan 09 · L11's ripple), and
+# the television's report lines over a black screen: a burst of light on the television's own picture waits for that
+# picture, since a script's black screen is drawn over the field and its effects. The books on the shelves are Sinnoh's myths, retold in our own words.
 
 
 script OnEnter
@@ -79,10 +79,11 @@ script Meeting
   face rival down
   speaker "Prof. Rowan"
   say "Which leaves Lake Valor for you, {player}. Now, when you get there, I want you to..."
-  # The explosion at Lake Valor, felt right across Sinnoh (plan 09 · L11 makes the room shake with its books)
+  # The explosion at Lake Valor, felt right across Sinnoh
   music stop
   sound "thunder_rumble"
   camera shake 1.2
+  effect ripple 8 10 1.2
   text "The whole library shook!"
   speaker "Prof. Rowan"
   say "...! Is everyone unharmed?"
@@ -90,7 +91,7 @@ script Meeting
   say "Whoa! What was THAT all about?!"
   walk rival up 1 fast
   face player up
-  # The television's news (plan 09 · L11 gives it its own picture)
+  # The television's news (over the black, until the television has a picture of its own)
   fade out 0.4
   speaker "TV"
   say "...and we break into this programme with news just in from the east of Sinnoh."

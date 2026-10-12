@@ -19,20 +19,29 @@
 # VAR_MT_CORONET_2F_STATE 1.
 #
 # The original lights and darkens the three machines (its containment units' own animation) and flickers the three
-# Pokémon out; here the machines are racks either side of each Pokémon, and the three cry, flicker and are gone (the
-# story's effects: plan 09 · L11). Charon stays until the Distortion World
+# Pokémon out; here the machines are racks either side of each Pokémon, each holding its Pokémon in a column of light
+# until the button puts the light out, and the three come out in sparkles, cry, flicker and are gone in a burst of
+# light (the story's effects: plan 09 · L11). Charon stays until the Distortion World
 # (FLAG_HIDE_GALACTIC_HQ_CONTROL_ROOM_CHARON, plan 02 · S12).
 
 
 # Arriving: Saturn before the button until he is beaten, and aside from it afterwards (the original keeps him where
 # he walked to, and its OnTransition stands him east of the button once the three are free).
 script OnEnter
+  if not flag FLAG_FREED_GALACTIC_HQ_POKEMON call Machines
   if flag FLAG_DEFEATED_GALACTIC_HQ_CONTROL_ROOM_SATURN goto Aside
   place saturn 8 6 up
   end
 label Aside
   place saturn 9 6 down
   end
+
+# The three machines at work: a column of light held on each Pokémon until the button is pressed.
+script Machines
+  effect beam 2 4 hold
+  effect beam 14 4 hold
+  effect beam 8 10 hold
+  return
 
 
 # Commander Saturn (the original's script 3), spoken to from the south or from the east.
@@ -123,12 +132,18 @@ script Button
   clearflag FLAG_HIDE_MT_CORONET_1F_NORTH_ROOM_1_GRUNT_F
   setflag FLAG_FREED_GALACTIC_HQ_POKEMON
   sound "pc_off"
+  effect stop 2 4
+  effect stop 14 4
+  effect stop 8 10
   wait 1.0
   # Out of their machines, each two tiles toward the middle of the room
   move mesprit down 2
   move azelf down 2
   move uxie down 2
   waitmoves
+  effect sparkles 2 6
+  effect sparkles 14 6
+  effect sparkles 8 12
   cry "Mesprit"
   wait 0.5
   cry "Azelf"
@@ -138,6 +153,9 @@ script Button
   call Flicker
   call Flicker
   call Flicker
+  effect burst 2 6
+  effect burst 14 6
+  effect burst 8 12
   hide mesprit
   hide azelf
   hide uxie

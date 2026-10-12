@@ -17,10 +17,11 @@
 # scene alone (the original's OnTransition hides him again while the state is under 4), and the place's arrival puts
 # the two commanders back on their tiles.
 #
-# Stood in for until plan 09 lands (L11 the effects, L12 the set pieces, L14 the legendaries' ways in): the original's
-# cutscene (its sub-scene 63: the chains, the two Pokémon drawn out of their rifts, the shadow rising from the floor)
-# is Dialga and Palkia stepping out as Pokémon of the map, their cries, the camera's shake, the script's fade and the
-# sounds the bank has. The Dynamax beat a later mechanic would bring here (decision 06 · 2) is left out.
+# Stood in for until plan 09 lands (L12 the set pieces, L14 the legendaries' ways in): the original's cutscene (its
+# sub-scene 63: the chains, the two Pokémon drawn out of their rifts, the shadow rising from the floor) is a rift
+# opening and a burst of light for each of Dialga and Palkia, who step out as Pokémon of the map, the air wavering and
+# the shadow sweeping over the altar (plan 09 · L11's effects), their cries, the camera's shake, the script's fade and
+# the sounds the bank has. The Dynamax beat a later mechanic would bring here (decision 06 · 2) is left out.
 
 
 # Arriving: the commanders back where they stand, for a scene a lost battle cut short.
@@ -155,14 +156,20 @@ label Won
   wait 0.8
   camera shake 0.8
   say "Come. Lord of time, whom the myths call Dialga!"
+  effect rift 29 21 2
+  wait 0.8
   sound "thunder_rumble"
   camera shake 1.0
+  effect burst 29 21
   show dialga
   cry "Dialga"
   wait 1.0
   say "And you. Lord of space, whom they call Palkia!"
+  effect rift 33 21 2
+  wait 0.8
   sound "thunder_rumble"
   camera shake 1.0
+  effect burst 33 21
   show palkia
   cry "Palkia"
   wait 1.0
@@ -173,6 +180,7 @@ label Won
   wait 0.5
   sound "thunder"
   camera shake 1.4
+  effect ripple 31 26 2
   say "...What is this? A weight in the air. Something is angry. At me?"
   fade out 0.6
   sound "thunder_rumble"
@@ -181,6 +189,7 @@ label Won
   hide dialga
   hide palkia
   fade in 0.5
+  effect shadow 31 25 1.6 down
   camera shake 1.2
   say "A Pokémon that comes as a shadow... So there was a third, set against the other two. Interesting."
   say "It changes nothing! I hold the power of Dialga and of Palkia. Whatever you are, you cannot..."

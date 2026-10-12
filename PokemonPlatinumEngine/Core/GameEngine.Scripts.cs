@@ -233,6 +233,8 @@ public partial class GameEngine
         currentMap.ResetObstacles();
         // The Battle Points a script was speaking of stay behind with the room (plan 06 · R18a)
         showBattlePoints = false;
+        // And so do a scene's effects, held or not (plan 09 · L11)
+        world?.Life.ClearEffects();
     }
 
     /// <summary>
@@ -850,6 +852,14 @@ public partial class GameEngine
                     break;
             }
         }
+
+        public void Effect(SceneEffect kind, int x, int y, float seconds, Direction? way, bool hold)
+        {
+            game.world.Life.Effect(game.currentMap, kind, x, y, seconds, way ?? Direction.Right, hold);
+            AudioManager.PlaySound(SceneEffects.SoundOf(kind), game.PanAt(x));
+        }
+
+        public void StopEffect(int x, int y) => game.world.Life.StopEffect(x, y);
 
         // ---- what the script waits for
 

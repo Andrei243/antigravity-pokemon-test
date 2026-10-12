@@ -339,6 +339,35 @@ public static class ScriptParser
                         return new Instruction { Op = Op.Camera, Line = line, Camera = CameraMove.Shake, Seconds = r.More ? r.Seconds() : ShakeSeconds };
                 }
 
+            case "effect":
+            {
+                // effect <kind> X Y [seconds] [way] [wait|hold], or effect stop X Y (plan 09 · L11)
+                if (r.PeekIs("stop"))
+                {
+                    r.Next();
+                    int sx = r.Int("a tile's x"), sy = r.Int("a tile's y");
+                    return new Instruction { Op = Op.Effect, Line = line, Name = "stop", X = sx, Y = sy };
+                }
+                var kind = r.Enum<SceneEffect>("a scene effect");
+                int x = r.Int("a tile's x"), y = r.Int("a tile's y");
+                float seconds = SceneEffects.Length(kind);
+                bool timed = r.PeekSeconds;
+                if (timed)
+                {
+                    seconds = r.Seconds();
+                    if (seconds <= 0f) throw r.Error("an effect lasts longer than nothing");
+                }
+                Direction? way = null;
+                if (r.PeekDirection)
+                {
+                    if (!SceneEffects.Moves(kind)) throw r.Error($"only a shadow is sent a way: a {kind.ToString().ToLowerInvariant()} stays where it is lit");
+                    way = r.Direction();
+                }
+                string mode = r.More ? r.OneOf("wait", "hold") : "";
+                if (mode == "hold" && timed) throw r.Error("a held effect lasts until 'effect stop', and is given no time");
+                return new Instruction { Op = Op.Effect, Line = line, Effect = kind, X = x, Y = y, Seconds = seconds, Direction = way, Name = mode };
+            }
+
             case "usemove":
             {
                 string move = r.Text("a field move's name");
@@ -888,6 +917,7 @@ public static class ScriptParser
         public bool PeekNumber => More && !tokens[at].Quoted && int.TryParse(tokens[at].Text, NumberStyles.AllowLeadingSign, CultureInfo.InvariantCulture, out _);
         public bool PeekVariable => More && !tokens[at].Quoted && (VariableName.IsMatch(tokens[at].Text) || BuiltInVariables.Contains(tokens[at].Text));
         public bool PeekDirection => More && !tokens[at].Quoted && DirectionOf(tokens[at].Text) != null;
+        public bool PeekSeconds => More && !tokens[at].Quoted && float.TryParse(tokens[at].Text, NumberStyles.Float, CultureInfo.InvariantCulture, out _);
 
         /// <summary>Whether the next word is this one, unquoted.</summary>
         public bool PeekWord(string word) => More && !tokens[at].Quoted && tokens[at].Text == word;
