@@ -153,6 +153,7 @@ partial class Harness
         Frames(120);
         Console.WriteLine($"after saving: state {game.State}, a save was written: {File.Exists("savegame.json")}");
         File.Delete("savegame.json");
+        File.Delete(SaveManager.BackupOf("savegame.json"));
         game.State = GameState.Overworld;
         game.State = GameState.Shop;
         var shop = game.Shop;
@@ -395,6 +396,24 @@ partial class Harness
 
         party.Members[1].Status = StatusCondition.None;
         party.HealAll();
+
+        // The window's close button (plan 12 · Q1), beside the start menu's question but last, so that no shot before
+        // it moves: over a battle, where the game can't be saved, then over the field, where it can
+        var closing = StartBattle("Bidoof", 5);
+        ToMainMenu(closing);
+        game.RequestClose();
+        Frames(30); Shot("09e_close_prompt_battle");
+        Console.WriteLine($"close button in battle: state {game.State}, answers {string.Join(", ", game.ClosePrompt.Answers)}");
+        game.AnswerClose(CloseChoice.KeepPlaying);
+        Console.WriteLine($"kept playing: state {game.State}");
+        game.State = GameState.Overworld;
+        Frames(2);
+        game.RequestClose();
+        Frames(30); Shot("09d_close_prompt");
+        Console.WriteLine($"close button in the field: state {game.State}, answers {string.Join(", ", game.ClosePrompt.Answers)}");
+        game.AnswerClose(CloseChoice.KeepPlaying);
+        Frames(10);
+        Console.WriteLine($"kept playing: state {game.State}");
         game.State = GameState.Overworld;
     }
 }
