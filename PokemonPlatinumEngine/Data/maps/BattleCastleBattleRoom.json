@@ -119,7 +119,7 @@
     {
       "id": "lady",
       "name": "Lady Caitlin",
-      "npcType": "Lady",
+      "npcType": "caitlin",
       "x": 8,
       "y": 3,
       "facing": "Down",

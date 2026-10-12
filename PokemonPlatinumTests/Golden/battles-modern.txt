@@ -387,6 +387,7 @@ log:
   say It's super effective!
   say Foe Staravia fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Slurpuff gained 222 EXP. Points!
   ExpGained Pokemon=mine#0 Slurpuff Amount=222
   say Bonsly gained 165 EXP. Points!
@@ -455,6 +456,7 @@ log:
   say Ace Trainer Tester sent out Gigalith!
     + Seen Species=Gigalith
     + Entered E0 Pokemon=foe#1 Gigalith FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Foe Gigalith's Sand Stream whipped up a sandstorm!
     + AbilityShown E0 Ability=Sand Stream
     + WeatherChanged Weather=Sandstorm
@@ -860,6 +862,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Milcery fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Cranidos gained 822 EXP. Points!
   ExpGained Pokemon=mine#1 Cranidos Amount=822
   say Electivire gained 179 EXP. Points!
@@ -898,6 +901,7 @@ log:
   say Ace Trainer Tester sent out Ledyba!
     + Seen Species=Ledyba
     + Entered E0 Pokemon=foe#2 Ledyba FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Electivire must recharge!
   say Foe Ledyba used Comet Punch!
     + Lunged E0 Category=Physical
@@ -1249,6 +1253,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Cherrim fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Turtonator gained 905 EXP. Points!
   ExpGained Pokemon=mine#2 Turtonator Amount=905
   say Foe Azumarill's veil of water restored its HP!
@@ -1256,6 +1261,7 @@ log:
   say Ace Trainer Shannon sent out Lopunny!
     + Seen Species=Lopunny
     + Entered E0 Pokemon=foe#2 Lopunny FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Foe Lopunny used Jump Kick!
     + Lunged E0 Category=Physical
     + MoveShown Move=Jump Kick Type=Fighting Category=Physical From=E0 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -1511,6 +1517,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Celesteela fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Zeraora gained 2979 EXP. Points!
   ExpGained Pokemon=mine#0 Zeraora Amount=2979
   say Gorebyss gained 1196 EXP. Points!
@@ -1537,6 +1544,7 @@ log:
   say Ace Trainer Tester sent out Greninja!
     + Seen Species=Greninja
     + Entered E0 Pokemon=foe#2 Greninja FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Gorebyss used Hydro Pump!
     + Lunged P0 Category=Special
     + MoveShown Move=Hydro Pump Type=Water Category=Special From=P0 To=E0 Missed=true Blocked=false Critical=false SuperEffective=false
@@ -1622,6 +1630,7 @@ log:
   say A critical hit!
   say Foe Beheeyem fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Swinub gained 145 EXP. Points!
   ExpGained Pokemon=mine#0 Swinub Amount=145
   say Smoochum gained 96 EXP. Points!
@@ -1638,6 +1647,7 @@ log:
   say Ace Trainer Tester sent out Luxio!
     + Seen Species=Luxio
     + Entered E0 Pokemon=foe#2 Luxio FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Foe Tranquill used Air Slash!
     + Lunged E1 Category=Special
     + MoveShown Move=Air Slash Type=Flying Category=Special From=E1 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -1702,6 +1712,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Wingull fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Croconaw gained 553 EXP. Points!
   ExpGained Pokemon=mine#0 Croconaw Amount=553
   say Dreepy gained 225 EXP. Points!
@@ -1711,6 +1722,7 @@ log:
   say Swimmer Crystal sent out Seaking!
     + Seen Species=Seaking
     + Entered E0 Pokemon=foe#1 Seaking FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Croconaw used Thrash!
     + Lunged P0 Category=Physical
     + MoveShown Move=Thrash Type=Normal Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -1787,6 +1799,7 @@ log:
   say Hit 1 time!
   say Foe Yamask fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Jolteon gained 5 EXP. Points!
   ExpGained Pokemon=mine#0 Jolteon Amount=5
   say Kricketune gained 7 EXP. Points!
@@ -1841,6 +1854,7 @@ log:
   say Ace Trainer Tester sent out Sandy Shocks!
     + Seen Species=Sandy Shocks
     + Entered E0 Pokemon=foe#2 Sandy Shocks FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Jolteon used Pin Missile!
     + Lunged P0 Category=Physical
     + MoveShown Move=Pin Missile Type=Bug Category=Physical From=P0 To=E0 Missed=true Blocked=false Critical=false SuperEffective=false
@@ -1914,6 +1928,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Ponyta fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Gothita gained 127 EXP. Points!
   ExpGained Pokemon=mine#0 Gothita Amount=127
   say Lickitung gained 1089 EXP. Points!
@@ -1940,6 +1955,7 @@ log:
   say Ace Trainer Tester sent out Dudunsparce!
     + Seen Species=Dudunsparce
     + Entered E0 Pokemon=foe#2 Dudunsparce FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Gothita used Psychic!
     + Lunged P0 Category=Special
     + MoveShown Move=Psychic Type=Psychic Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -2218,6 +2234,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Purrloin fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Zubat gained 150 EXP. Points!
   ExpGained Pokemon=mine#1 Zubat Amount=150
   say Flamigo gained 29 EXP. Points!
@@ -2225,6 +2242,7 @@ log:
   say Ace Trainer Tester sent out Sealeo!
     + Seen Species=Sealeo
     + Entered E0 Pokemon=foe#2 Sealeo FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Go! Flamigo!
     + Entered P0 Pokemon=mine#2 Flamigo FromBall=true
   say Flamigo used Mega Kick!
@@ -2330,6 +2348,7 @@ log:
   say It's super effective!
   say Foe Pancham fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Shuppet gained 544 EXP. Points!
   ExpGained Pokemon=mine#1 Shuppet Amount=544
   say Sylveon gained 876 EXP. Points!
@@ -2491,6 +2510,7 @@ log:
   say Ace Trainer Tester sent out Kilowattrel!
     + Seen Species=Kilowattrel
     + Entered E0 Pokemon=foe#2 Kilowattrel FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Sylveon used Moonblast!
     + Lunged P0 Category=Special
     + MoveShown Move=Moonblast Type=Fairy Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -2537,6 +2557,7 @@ log:
   say It's not very effective...
   say Foe Magneton fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Bruxish gained 300 EXP. Points!
   ExpGained Pokemon=mine#0 Bruxish Amount=300
   say Baltoy gained 123 EXP. Points!
@@ -2758,6 +2779,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Glameow fainted!
     + Fainted E1
+    + TrainerReacts E1 Cue=FirstDown
   say Honchkrow gained 616 EXP. Points!
   ExpGained Pokemon=mine#0 Honchkrow Amount=616
   say Shaymin gained 552 EXP. Points!
@@ -3047,6 +3069,7 @@ log:
   say It's not very effective...
   say Foe Magneton fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Heliolisk gained 2989 EXP. Points!
   ExpGained Pokemon=mine#0 Heliolisk Amount=2989
   say Camerupt gained 1890 EXP. Points!
@@ -3132,6 +3155,7 @@ log:
   say Ace Trainer Tester sent out Chatot!
     + Seen Species=Chatot
     + Entered E0 Pokemon=foe#1 Chatot FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Foe Chatot used Growl!
     + Lunged E0 Category=Status
     + MoveShown Move=Growl Type=Normal Category=Status From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -3247,6 +3271,7 @@ log:
   say It's not very effective...
   say Foe Pupitar fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Lickitung gained 24 EXP. Points!
   ExpGained Pokemon=mine#0 Lickitung Amount=24
   say Volbeat gained 26 EXP. Points!
@@ -3310,6 +3335,7 @@ log:
   say Ace Trainer Tester sent out Pupitar!
     + Seen Species=Pupitar
     + Entered E0 Pokemon=foe#1 Pupitar FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Lickitung used Screech!
     + Lunged P0 Category=Status
     + MoveShown Move=Screech Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -3657,6 +3683,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Ribombee fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Magnezone gained 519 EXP. Points!
   ExpGained Pokemon=mine#0 Magnezone Amount=519
   say Surskit gained 34 EXP. Points!
@@ -4064,6 +4091,7 @@ log:
   say A critical hit!
   say Foe Malamar fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Kleavor gained 923 EXP. Points!
   ExpGained Pokemon=mine#0 Kleavor Amount=923
   say Crabrawler gained 405 EXP. Points!
@@ -4080,6 +4108,7 @@ log:
   say Ace Trainer Tester sent out Dragonair!
     + Seen Species=Dragonair
     + Entered E0 Pokemon=foe#2 Dragonair FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Kleavor used Rock Slide!
     + Lunged P0 Category=Physical
     + MoveShown Move=Rock Slide Type=Rock Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -4189,6 +4218,7 @@ log:
   say It's super effective!
   say Foe Spinarak fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Illumise gained 28 EXP. Points!
   ExpGained Pokemon=mine#0 Illumise Amount=28
   say Zigzagoon gained 87 EXP. Points!
@@ -4244,6 +4274,7 @@ log:
   say Ace Trainer Tester sent out Pinsir!
     + Seen Species=Pinsir
     + Entered E0 Pokemon=foe#2 Pinsir FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Foe Pinsir breaks the mold!
   say Illumise used Helping Hand!
   say But there was no target...
@@ -4296,6 +4327,7 @@ log:
   say It's super effective!
   say Foe Xatu fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Dedenne gained 1939 EXP. Points!
   ExpGained Pokemon=mine#0 Dedenne Amount=1939
   say Machamp gained 970 EXP. Points!
@@ -4305,6 +4337,7 @@ log:
   say Psychic Corbin sent out Gallade!
     + Seen Species=Gallade
     + Entered E0 Pokemon=foe#1 Gallade FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Foe Gallade used Feint!
   say But it failed!
   say Dedenne used Thunder!
@@ -4420,6 +4453,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Octillery fainted!
     + Fainted E1
+    + TrainerReacts E1 Cue=FirstDown
   say Houndoom gained 298 EXP. Points!
   ExpGained Pokemon=mine#0 Houndoom Amount=298
   say Raboot gained 424 EXP. Points!
@@ -4432,6 +4466,7 @@ log:
   say Ace Trainer Tester sent out Nidorino!
     + Seen Species=Nidorino
     + Entered E1 Pokemon=foe#2 Nidorino FromBall=true
+    + TrainerReacts E1 Cue=LastPokemon
   say Foe Meganium used Body Slam!
     + Lunged E0 Category=Physical
     + MoveShown Move=Body Slam Type=Normal Category=Physical From=E0 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -4509,6 +4544,7 @@ log:
   say It's super effective!
   say Foe Mesprit fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Pyroar gained 1582 EXP. Points!
   ExpGained Pokemon=mine#0 Pyroar Amount=1582
   say Hariyama gained 1633 EXP. Points!
@@ -4535,6 +4571,7 @@ log:
   say Ace Trainer Tester sent out Spewpa!
     + Seen Species=Spewpa
     + Entered E0 Pokemon=foe#1 Spewpa FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Foe Spewpa used Protect!
     + Lunged E0 Category=Status
     + MoveShown Move=Protect Type=Normal Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -4777,6 +4814,7 @@ log:
   say A critical hit!
   say Foe Magmar fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Iron Boulder gained 1227 EXP. Points!
   ExpGained Pokemon=mine#0 Iron Boulder Amount=1227
   say Cascoon gained 765 EXP. Points!
@@ -4817,6 +4855,7 @@ log:
   say Ace Trainer Tester sent out Larvesta!
     + Seen Species=Larvesta
     + Entered E0 Pokemon=foe#1 Larvesta FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Iron Boulder used Mighty Cleave!
     + Lunged P0 Category=Physical
     + MoveShown Move=Mighty Cleave Type=Rock Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=true
@@ -4938,6 +4977,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Trubbish fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Skuntank gained 529 EXP. Points!
   ExpGained Pokemon=mine#0 Skuntank Amount=529
   say Tepig gained 671 EXP. Points!
@@ -5021,6 +5061,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Stonjourner fainted!
     + Fainted E1
+    + TrainerReacts E1 Cue=FirstDown
   say Frosmoth gained 856 EXP. Points!
   ExpGained Pokemon=mine#0 Frosmoth Amount=856
   say Probopass gained 667 EXP. Points!
@@ -5038,6 +5079,7 @@ log:
   say Ace Trainer Tester sent out Kubfu!
     + Seen Species=Kubfu
     + Entered E0 Pokemon=foe#2 Kubfu FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Frosmoth used Blizzard!
     + Lunged P0 Category=Special
     + MoveShown Move=Blizzard Type=Ice Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -5132,6 +5174,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Cetoddle is hit with recoil!
     + HpChanged P0 Hp=12 Healed=false
+    + TrainerReacts E0 Cue=LowHp
   say Foe Clefairy sprang up!
     + Lunged E0 Category=Status
     + Vanished E0
@@ -5235,6 +5278,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Nidoran♂ fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Gorebyss gained 990 EXP. Points!
   ExpGained Pokemon=mine#1 Gorebyss Amount=990
   say Zeraora gained 589 EXP. Points!
@@ -5281,12 +5325,14 @@ log:
   say Ace Trainer Tester sent out Bayleef!
     + Seen Species=Bayleef
     + Entered E0 Pokemon=foe#2 Bayleef FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Zeraora used Thunder Punch!
     + Lunged P0 Category=Physical
     + MoveShown Move=Thunder Punch Type=Electric Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
     ! Struck E0 Hp=7 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
+    + TrainerReacts E0 Cue=LowHp
   say Foe Bayleef used Sweet Scent!
     + Lunged E0 Category=Status
     + MoveShown Move=Sweet Scent Type=Normal Category=Status From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -5412,6 +5458,7 @@ log:
     + HpChanged E0 Hp=0 Healed=false
   say Foe Nymble fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Floette gained 2092 EXP. Points!
   ExpGained Pokemon=mine#2 Floette Amount=2092
   LevelRose Pokemon=mine#2 Floette Level=16
@@ -5522,6 +5569,7 @@ log:
   say Hit 1 time!
   say Foe Croagunk fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Virizion gained 416 EXP. Points!
   ExpGained Pokemon=mine#0 Virizion Amount=416
   say Alcremie gained 200 EXP. Points!
@@ -5558,6 +5606,7 @@ log:
   say Ace Trainer Tester sent out Emolga!
     + Seen Species=Emolga
     + Entered E0 Pokemon=foe#2 Emolga FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Virizion used Leer!
     + Lunged P0 Category=Status
     + MoveShown Move=Leer Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -5639,6 +5688,7 @@ log:
   say Ferroseed used Iron Head!
     + Lunged P0 Category=Physical
     + MoveShown Move=Iron Head Type=Steel Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+    + TrainerReacts E0 Cue=LowHp
     ! Struck E0 Hp=8 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Buneary used Frustration!
@@ -5781,6 +5831,7 @@ log:
     + ItemShown E1 Item=Sticky Barb
   say Foe Paras fainted!
     + Fainted E1
+    + TrainerReacts E1 Cue=FirstDown
   say Maractus gained 198 EXP. Points!
   ExpGained Pokemon=mine#0 Maractus Amount=198
   say Sneasel gained 217 EXP. Points!
@@ -5811,6 +5862,7 @@ log:
   say Ace Trainer Tester sent out Urshifu!
     + Seen Species=Urshifu
     + Entered E1 Pokemon=foe#2 Urshifu FromBall=true
+    + TrainerReacts E1 Cue=LastPokemon
   say Maractus is fast asleep.
   say Sneasel used Beat Up!
     + Lunged P1 Category=Physical
@@ -6150,6 +6202,7 @@ log:
     + StageChanged E0 Stat=Speed Stage=-1 Rose=false
   say Foe Wormadam fainted!
     + Fainted E1
+    + TrainerReacts E1 Cue=FirstDown
   say Piloswine gained 702 EXP. Points!
   ExpGained Pokemon=mine#0 Piloswine Amount=702
   say Turtonator gained 646 EXP. Points!
@@ -6173,6 +6226,7 @@ log:
   say Beauty Devon sent out Wormadam!
     + Seen Species=Wormadam
     + Entered E0 Pokemon=foe#2 Wormadam FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Foe Wormadam shuddered!
   say Piloswine used Endure!
     + Lunged P0 Category=Status
@@ -6204,6 +6258,7 @@ log:
     ! Struck E0 Hp=12 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
+    + TrainerReacts E0 Cue=LowHp
   say Foe Wormadam used Hidden Power!
     + Lunged E0 Category=Special
     + MoveShown Move=Hidden Power Type=Fighting Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=true
@@ -6363,6 +6418,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Turtonator fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Scizor gained 868 EXP. Points!
   ExpGained Pokemon=mine#1 Scizor Amount=868
   say Weezing gained 783 EXP. Points!
@@ -6389,6 +6445,7 @@ log:
   say Ace Trainer Tester sent out Exeggutor!
     + Seen Species=Exeggutor
     + Entered E0 Pokemon=foe#1 Exeggutor FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Foe Exeggutor used Egg Bomb!
     + Lunged E0 Category=Physical
     + MoveShown Move=Egg Bomb Type=Normal Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -6796,6 +6853,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Wingull fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Alcremie gained 511 EXP. Points!
   ExpGained Pokemon=mine#0 Alcremie Amount=511
   say Marill gained 333 EXP. Points!
@@ -7000,6 +7058,7 @@ log:
   say Sailor Luther sent out Machoke!
     + Seen Species=Machoke
     + Entered E0 Pokemon=foe#1 Machoke FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Foe Machoke used Wake-Up Slap!
     + Lunged E0 Category=Physical
     + MoveShown Move=Wake-Up Slap Type=Fighting Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -7095,6 +7154,7 @@ log:
   say Hit 3 times!
   say Foe Dondozo fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Cloyster gained 76 EXP. Points!
   ExpGained Pokemon=mine#0 Cloyster Amount=76
   say Gimmighoul gained 618 EXP. Points!
@@ -7159,6 +7219,7 @@ log:
   say Ace Trainer Tester sent out Weezing!
     + Seen Species=Weezing
     + Entered E0 Pokemon=foe#2 Weezing FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Foe Weezing used Haze!
     + Lunged E0 Category=Status
   say All stat changes were eliminated!
@@ -7466,6 +7527,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Staravia fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Arceus gained 820 EXP. Points!
   ExpGained Pokemon=mine#0 Arceus Amount=820
   say Snorlax gained 329 EXP. Points!
@@ -7618,6 +7680,7 @@ log:
   say Rival Cedric sent out Buizel!
     + Seen Species=Buizel
     + Entered E0 Pokemon=foe#1 Buizel FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Foe Buizel used Quick Attack!
     + Lunged E0 Category=Physical
     + MoveShown Move=Quick Attack Type=Normal Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -7630,6 +7693,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Buizel's Speed fell!
     + StageChanged E0 Stat=Speed Stage=-1 Rose=false
+    + TrainerReacts E0 Cue=LowHp
   say Ogerpon used Ivy Cudgel!
     + Lunged P0 Category=Physical
     + MoveShown Move=Ivy Cudgel Type=Grass Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=true
@@ -7737,6 +7801,7 @@ log:
   say It's not very effective...
   say Foe Nidoqueen fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Makuhita gained 7 EXP. Points!
   ExpGained Pokemon=mine#0 Makuhita Amount=7
   say Scyther gained 5 EXP. Points!
@@ -7775,6 +7840,7 @@ log:
   say Ace Trainer Tester sent out Espeon!
     + Seen Species=Espeon
     + Entered E0 Pokemon=foe#2 Espeon FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Makuhita used Wake-Up Slap!
     + Lunged P0 Category=Physical
     + MoveShown Move=Wake-Up Slap Type=Fighting Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -7905,6 +7971,7 @@ log:
     + HpChanged P0 Hp=223 Healed=true
   say Foe Umbreon fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Marshadow gained 196 EXP. Points!
   ExpGained Pokemon=mine#1 Marshadow Amount=196
   say Jangmo-o gained 142 EXP. Points!
@@ -7938,6 +8005,7 @@ log:
   say Ace Trainer Tester sent out Watchog!
     + Seen Species=Watchog
     + Entered E0 Pokemon=foe#1 Watchog FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Marshadow used Sucker Punch!
   say But it failed!
   say Foe Watchog used Hypnosis!
@@ -8092,6 +8160,7 @@ log:
     + HpChanged P1 Hp=59 Healed=false
   say Foe Mr. Mime fainted!
     + Fainted E1
+    + TrainerReacts E1 Cue=FirstDown
   say Rapidash gained 1378 EXP. Points!
   ExpGained Pokemon=mine#1 Rapidash Amount=1378
   say Tynamo gained 1719 EXP. Points!
@@ -8108,6 +8177,7 @@ log:
   say Artist William sent out Sudowoodo!
     + Seen Species=Sudowoodo
     + Entered E1 Pokemon=foe#2 Sudowoodo FromBall=true
+    + TrainerReacts E1 Cue=LastPokemon
   say Rapidash used Fury Attack!
     + Lunged P1 Category=Physical
     + MoveShown Move=Fury Attack Type=Normal Category=Physical From=P1 To=E0 Missed=true Blocked=false Critical=false SuperEffective=false
@@ -8225,6 +8295,7 @@ log:
   say It's not very effective...
   say Foe Rhyperior fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Chespin gained 25 EXP. Points!
   ExpGained Pokemon=mine#0 Chespin Amount=25
   say Haunter gained 165 EXP. Points!
@@ -8453,6 +8524,7 @@ log:
     + HpChanged E0 Hp=0 Healed=false
   say Foe Vullaby fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Duskull gained 199 EXP. Points!
   ExpGained Pokemon=mine#2 Duskull Amount=199
   say Ace Trainer Tester sent out Smoochum!
@@ -8471,6 +8543,7 @@ log:
   say Ace Trainer Tester sent out Rapidash!
     + Seen Species=Rapidash
     + Entered E0 Pokemon=foe#2 Rapidash FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Foe Rapidash used Fire Blast!
     + Lunged E0 Category=Special
     + MoveShown Move=Fire Blast Type=Fire Category=Special From=E0 To=P0 Missed=true Blocked=false Critical=false SuperEffective=false
@@ -8528,6 +8601,7 @@ log:
   say It's super effective!
   say Foe Sandaconda fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Dewott gained 219 EXP. Points!
   ExpGained Pokemon=mine#0 Dewott Amount=219
   say Chespin gained 1090 EXP. Points!
@@ -8545,6 +8619,7 @@ log:
   say Ace Trainer Tester sent out Wartortle!
     + Seen Species=Wartortle
     + Entered E0 Pokemon=foe#2 Wartortle FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Foe Wartortle used Rain Dance!
     + Lunged E0 Category=Status
     + MoveShown Move=Rain Dance Type=Water Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -8754,6 +8829,7 @@ log:
     + HpChanged E0 Hp=0 Healed=false
   say Foe Hoothoot fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Comfey gained 337 EXP. Points!
   ExpGained Pokemon=mine#0 Comfey Amount=337
   say Snubbull gained 195 EXP. Points!
@@ -8764,6 +8840,7 @@ log:
   say Policeman Danny sent out Machoke!
     + Seen Species=Machoke
     + Entered E0 Pokemon=foe#1 Machoke FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Comfey used Sweet Kiss!
     + Lunged P0 Category=Status
     + MoveShown Move=Sweet Kiss Type=Fairy Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -8927,6 +9004,7 @@ log:
   say It's not very effective...
   say Foe Eldegoss fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Pachirisu gained 474 EXP. Points!
   ExpGained Pokemon=mine#0 Pachirisu Amount=474
   say Beheeyem gained 173 EXP. Points!
@@ -8969,6 +9047,7 @@ log:
   say Ace Trainer Tester sent out Machoke!
     + Seen Species=Machoke
     + Entered E0 Pokemon=foe#2 Machoke FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Centiskorch used Crunch!
     + Lunged P0 Category=Physical
     + MoveShown Move=Crunch Type=Dark Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -9009,6 +9088,7 @@ log:
     + StageChanged E0 Stat=Attack Stage=-2 Rose=false
   say Foe Machoke boosted the accuracy of its next move using its Micle Berry!
     + ItemShown E0 Item=Micle Berry
+    + TrainerReacts E0 Cue=LowHp
   say Foe Machoke used Wake-Up Slap!
     + Lunged E0 Category=Physical
     + MoveShown Move=Wake-Up Slap Type=Fighting Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -9293,6 +9373,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Huntail fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Dustox gained 319 EXP. Points!
   ExpGained Pokemon=mine#0 Dustox Amount=319
   say Hypno gained 45 EXP. Points!
@@ -9419,6 +9500,7 @@ log:
   say Ace Trainer Tester sent out Centiskorch!
     + Seen Species=Centiskorch
     + Entered E0 Pokemon=foe#1 Centiskorch FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Foe Centiskorch used Smokescreen!
     + Lunged E0 Category=Status
     + MoveShown Move=Smokescreen Type=Normal Category=Status From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -9582,6 +9664,7 @@ log:
     + HpChanged P0 Hp=18 Healed=true
   say Foe Hippowdon fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Dewgong gained 1907 EXP. Points!
   ExpGained Pokemon=mine#1 Dewgong Amount=1907
   say Woobat gained 902 EXP. Points!
@@ -9761,6 +9844,7 @@ log:
   say It's super effective!
   say Foe Amaura fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Lopunny gained 1122 EXP. Points!
   ExpGained Pokemon=mine#2 Lopunny Amount=1122
   say Foe Luxio used Crunch!
@@ -9845,6 +9929,7 @@ log:
   say It's super effective!
   say Foe Guzzlord fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Machamp gained 476 EXP. Points!
   ExpGained Pokemon=mine#1 Machamp Amount=476
   say Linoone gained 94 EXP. Points!
@@ -9917,6 +10002,7 @@ log:
   say Ace Trainer Tester sent out Flamigo!
     + Seen Species=Flamigo
     + Entered E0 Pokemon=foe#2 Flamigo FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Linoone used Belly Drum!
     + Lunged P0 Category=Status
     + MoveShown Move=Belly Drum Type=Normal Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -10433,6 +10519,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Komala fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Dondozo gained 849 EXP. Points!
   ExpGained Pokemon=mine#0 Dondozo Amount=849
   say Ninetales gained 207 EXP. Points!
@@ -10461,6 +10548,7 @@ log:
   say Ace Trainer Tester sent out Mimikyu!
     + Seen Species=Mimikyu
     + Entered E0 Pokemon=foe#2 Mimikyu FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Go! Perrserker!
     + Entered P0 Pokemon=mine#2 Perrserker FromBall=true
   say Foe Mimikyu used Pain Split!
@@ -10575,6 +10663,7 @@ log:
     + HpChanged E0 Hp=0 Healed=false
   say Foe Togekiss fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Chimchar gained 982 EXP. Points!
   ExpGained Pokemon=mine#0 Chimchar Amount=982
   say Wingull gained 373 EXP. Points!
@@ -10676,6 +10765,7 @@ log:
   say Ace Trainer Tester sent out Jangmo-o!
     + Seen Species=Jangmo-o
     + Entered E0 Pokemon=foe#2 Jangmo-o FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Wingull used Aerial Ace!
     + Lunged P0 Category=Physical
     + MoveShown Move=Aerial Ace Type=Flying Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -10760,6 +10850,7 @@ log:
     ! Struck E0 Hp=25 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Hit 2 times!
+    + TrainerReacts E0 Cue=LowHp
   say Foe Jangmo-o used Noble Roar!
     + Lunged E0 Category=Status
     + MoveShown Move=Noble Roar Type=Normal Category=Status From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -11015,6 +11106,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Brambleghast fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Rockruff gained 1145 EXP. Points!
   ExpGained Pokemon=mine#0 Rockruff Amount=1145
   say Dragonair gained 1578 EXP. Points!
@@ -11042,6 +11134,7 @@ log:
   say Ace Trainer Tester sent out Porygon-Z!
     + Seen Species=Porygon-Z
     + Entered E0 Pokemon=foe#2 Porygon-Z FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Pointed stones dug into Foe Porygon-Z!
     + HpChanged E0 Hp=112 Healed=false
   say Foe Porygon-Z's Sp. Atk rose!
@@ -11169,6 +11262,7 @@ log:
   say It's not very effective...
   say Foe Igglybuff fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Joltik gained 90 EXP. Points!
   ExpGained Pokemon=mine#0 Joltik Amount=90
   say Ting-Lu gained 95 EXP. Points!
@@ -11206,6 +11300,7 @@ log:
   say Ace Trainer Tester sent out Pidgeot!
     + Seen Species=Pidgeot
     + Entered E0 Pokemon=foe#2 Pidgeot FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Joltik used Gastro Acid!
     + Lunged P0 Category=Status
     + MoveShown Move=Gastro Acid Type=Poison Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -11308,6 +11403,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Kricketune fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Vivillon gained 984 EXP. Points!
   ExpGained Pokemon=mine#1 Vivillon Amount=984
   say Jirachi gained 525 EXP. Points!
@@ -11315,6 +11411,7 @@ log:
   say Guitarist Tony sent out Magnemite!
     + Seen Species=Magnemite
     + Entered E0 Pokemon=foe#1 Magnemite FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Vivillon used Bug Buzz!
     + Lunged P0 Category=Special
     + MoveShown Move=Bug Buzz Type=Bug Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -11360,6 +11457,7 @@ log:
   say It's not very effective...
   say Foe Magnemite had its energy drained!
     + HpChanged P0 Hp=78 Healed=true
+    + TrainerReacts E0 Cue=LowHp
   say Foe Magnemite is confused!
     + Confused E0
   say Foe Magnemite used Magnet Bomb!
@@ -11467,6 +11565,7 @@ log:
   say It's super effective!
   say Foe Hoopa fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Fearow gained 4148 EXP. Points!
   ExpGained Pokemon=mine#1 Fearow Amount=4148
   say Type: Null gained 5484 EXP. Points!
@@ -11484,6 +11583,7 @@ log:
   say Ace Trainer Tester sent out Dragonair!
     + Seen Species=Dragonair
     + Entered E0 Pokemon=foe#2 Dragonair FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Fearow used Roost!
     + Lunged P1 Category=Status
     + MoveShown Move=Roost Type=Flying Category=Status From=P1 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -11578,6 +11678,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Beheeyem fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Toedscruel gained 513 EXP. Points!
   ExpGained Pokemon=mine#0 Toedscruel Amount=513
   say Butterfree gained 250 EXP. Points!
@@ -11610,6 +11711,7 @@ log:
   say Ace Trainer Tester sent out Bidoof!
     + Seen Species=Bidoof
     + Entered E0 Pokemon=foe#2 Bidoof FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Toedscruel used Growth!
     + Lunged P0 Category=Status
     + MoveShown Move=Growth Type=Normal Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -11683,6 +11785,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Klefki fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Veluza gained 581 EXP. Points!
   ExpGained Pokemon=mine#1 Veluza Amount=581
   say Braviary gained 1063 EXP. Points!
@@ -11708,6 +11811,7 @@ log:
   say Ace Trainer Tester sent out Glaceon!
     + Seen Species=Glaceon
     + Entered E0 Pokemon=foe#1 Glaceon FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Veluza used Liquidation!
     + Lunged P0 Category=Physical
     + MoveShown Move=Liquidation Type=Water Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -11917,6 +12021,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Squirtle fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Wingull gained 302 EXP. Points!
   ExpGained Pokemon=mine#0 Wingull Amount=302
   say Purrloin gained 285 EXP. Points!
@@ -12089,6 +12194,7 @@ log:
   say It's not very effective...
   say Foe Cleffa fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Yveltal gained 275 EXP. Points!
   ExpGained Pokemon=mine#0 Yveltal Amount=275
   say Crocalor gained 93 EXP. Points!
@@ -12131,6 +12237,7 @@ log:
   say Ace Trainer Tester sent out Rayquaza!
     + Seen Species=Rayquaza
     + Entered E0 Pokemon=foe#2 Rayquaza FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Foe Rayquaza used Crunch!
     + Lunged E0 Category=Physical
     + MoveShown Move=Crunch Type=Dark Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -12248,6 +12355,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Quaxly fainted!
     + Fainted E1
+    + TrainerReacts E1 Cue=FirstDown
   say Slither Wing gained 370 EXP. Points!
   ExpGained Pokemon=mine#1 Slither Wing Amount=370
   say Chesnaught gained 122 EXP. Points!
@@ -12255,6 +12363,7 @@ log:
   say Ace Trainer Tester sent out Chandelure!
     + Seen Species=Chandelure
     + Entered E1 Pokemon=foe#2 Chandelure FromBall=true
+    + TrainerReacts E1 Cue=LastPokemon
   say Go! Chesnaught!
     + Entered P0 Pokemon=mine#2 Chesnaught FromBall=true
   say Foe Chandelure used Ember!
@@ -12516,6 +12625,7 @@ log:
   say A critical hit!
   say Foe Nidoran♂ fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Paras gained 340 EXP. Points!
   ExpGained Pokemon=mine#0 Paras Amount=340
   say Bruxish gained 66 EXP. Points!
@@ -12616,6 +12726,7 @@ log:
   say Ace Trainer Tester sent out Cascoon!
     + Seen Species=Cascoon
     + Entered E0 Pokemon=foe#2 Cascoon FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Glastrier used Thrash!
     + Lunged P0 Category=Physical
     + MoveShown Move=Thrash Type=Normal Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -12730,6 +12841,7 @@ log:
   say It's super effective!
   say Foe Turtonator fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Palkia gained 3319 EXP. Points!
   ExpGained Pokemon=mine#0 Palkia Amount=3319
   say Electrike gained 5346 EXP. Points!
@@ -12750,6 +12862,7 @@ log:
   say Ace Trainer Tester sent out Fomantis!
     + Seen Species=Fomantis
     + Entered E0 Pokemon=foe#2 Fomantis FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Palkia used Spacial Rend!
     + Lunged P0 Category=Special
     + MoveShown Move=Spacial Rend Type=Dragon Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -13211,6 +13324,7 @@ log:
   say It's super effective!
   say Foe Wormadam fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Spidops gained 414 EXP. Points!
   ExpGained Pokemon=mine#1 Spidops Amount=414
   say Nymble gained 644 EXP. Points!
@@ -13256,6 +13370,7 @@ log:
   say Ace Trainer Tester sent out Dusknoir!
     + Seen Species=Dusknoir
     + Entered E0 Pokemon=foe#2 Dusknoir FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Foe Dusknoir is exerting its Pressure!
     + AbilityShown E0 Ability=Pressure
   say Spidops used Headbutt!
@@ -13434,6 +13549,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Staravia fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Nickit gained 1431 EXP. Points!
   ExpGained Pokemon=mine#0 Nickit Amount=1431
   say Kingler gained 1101 EXP. Points!
@@ -13449,6 +13565,7 @@ log:
   say Bird Keeper Krystal sent out Noctowl!
     + Seen Species=Noctowl
     + Entered E0 Pokemon=foe#2 Noctowl FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Nickit used Sucker Punch!
     + Lunged P0 Category=Physical
     + MoveShown Move=Sucker Punch Type=Dark Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -13627,6 +13744,7 @@ log:
   say Nickit used Night Slash!
     + Lunged P0 Category=Physical
     + MoveShown Move=Night Slash Type=Dark Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+    + TrainerReacts E0 Cue=LowHp
     ! Struck E0 Hp=34 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Noctowl used Dream Eater!
@@ -13721,6 +13839,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Cramorant fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Elgyem gained 481 EXP. Points!
   ExpGained Pokemon=mine#0 Elgyem Amount=481
   say Scovillain gained 130 EXP. Points!
@@ -13797,6 +13916,7 @@ log:
   say Ace Trainer Tester sent out Totodile!
     + Seen Species=Totodile
     + Entered E0 Pokemon=foe#2 Totodile FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Scovillain used Overheat!
     + Lunged P0 Category=Special
     + MoveShown Move=Overheat Type=Fire Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -13883,6 +14003,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Sentret fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Pidgeot gained 141 EXP. Points!
   ExpGained Pokemon=mine#0 Pidgeot Amount=141
   say Drapion gained 60 EXP. Points!
@@ -14089,6 +14210,7 @@ log:
   say It's not very effective...
   say Foe Axew fainted!
     + Fainted E1
+    + TrainerReacts E1 Cue=FirstDown
   say Nacli gained 6 EXP. Points!
   ExpGained Pokemon=mine#1 Nacli Amount=6
   say Gorebyss gained 5 EXP. Points!
@@ -14105,6 +14227,7 @@ log:
   say Ace Trainer Tester sent out Archen!
     + Seen Species=Archen
     + Entered E1 Pokemon=foe#2 Archen FromBall=true
+    + TrainerReacts E1 Cue=LastPokemon
   say Pointed stones dug into Foe Archen!
     + HpChanged E1 Hp=18 Healed=false
   say Foe Archen used Quick Attack!
@@ -14236,6 +14359,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Pidove fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Shelgon gained 1023 EXP. Points!
   ExpGained Pokemon=mine#0 Shelgon Amount=1023
   say Deoxys gained 1082 EXP. Points!
@@ -14261,6 +14385,7 @@ log:
   say Ace Trainer Tester sent out Riolu!
     + Seen Species=Riolu
     + Entered E0 Pokemon=foe#2 Riolu FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Shelgon used Scary Face!
     + Lunged P0 Category=Status
     + MoveShown Move=Scary Face Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -14379,6 +14504,7 @@ log:
   say It's not very effective...
   say Foe Sprigatito fainted!
     + Fainted E1
+    + TrainerReacts E1 Cue=FirstDown
   say Basculegion gained 435 EXP. Points!
   ExpGained Pokemon=mine#1 Basculegion Amount=435
   say Maushold gained 1759 EXP. Points!
@@ -14390,6 +14516,7 @@ log:
   say Ace Trainer Tester sent out Wyrdeer!
     + Seen Species=Wyrdeer
     + Entered E1 Pokemon=foe#2 Wyrdeer FromBall=true
+    + TrainerReacts E1 Cue=LastPokemon
   say Foe Wyrdeer's Intimidate cuts Maushold's Attack!
     + AbilityShown E1 Ability=Intimidate
   say Maushold's Attack fell!
@@ -14485,6 +14612,7 @@ log:
     ! Struck E0 Hp=40 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Basculegion caused an uproar!
+    + TrainerReacts E0 Cue=LowHp
   say Basculegion is making an uproar!
   say Foe Terapagos used Protect!
     + Lunged E0 Category=Status
@@ -14602,6 +14730,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Mudbray fainted!
     + Fainted E0
+    + TrainerReacts E0 Cue=FirstDown
   say Vigoroth gained 368 EXP. Points!
   ExpGained Pokemon=mine#0 Vigoroth Amount=368
   say Zarude gained 117 EXP. Points!
@@ -14644,6 +14773,7 @@ log:
   say Ace Trainer Tester sent out Phione!
     + Seen Species=Phione
     + Entered E0 Pokemon=foe#1 Phione FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Vigoroth is tightening its focus!
   say Foe Phione used Water Pulse!
     + Lunged E0 Category=Special
@@ -14802,6 +14932,7 @@ log:
   say Geodude used Tackle!
     + Lunged P0 Category=Physical
     + MoveShown Move=Tackle Type=Normal Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+    + TrainerReacts E0 Cue=LowHp
     ! Struck E0 Hp=2 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Rattata used Tail Whip!

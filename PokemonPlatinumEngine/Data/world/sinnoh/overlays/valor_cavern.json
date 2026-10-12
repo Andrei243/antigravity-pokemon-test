@@ -15,7 +15,7 @@
   // the Distortion World (plan 02 · S13: FLAG_HIDE_VALOR_CAVERN_AZELF, which his lab's scene clears), and battles
   // whoever speaks to it.
   "people": {
-    "saturn": { "name": "Saturn", "npcType": "Grunt", "script": "Saturn", "still": true },
+    "saturn": { "name": "Saturn", "script": "Saturn", "still": true },
     "azelf": { "name": "Azelf", "script": "Azelf", "still": true }
   }
 }

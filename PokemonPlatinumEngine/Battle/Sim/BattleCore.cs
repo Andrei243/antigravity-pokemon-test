@@ -265,7 +265,7 @@ public sealed partial class BattleCore : IBattleContext
                     if (WhyNot(choice) is { } refusal) throw new ArgumentException(refusal);
                 break;
             case ReplacementRequest replacement:
-                if (choices.Count != 1 || choices[0].Kind != ChoiceKind.Switch || choices[0].Who != replacement.Place || !CanSendIn(choices[0].SwitchTo))
+                if (choices.Count != 1 || choices[0].Kind != ChoiceKind.Switch || choices[0].Who != replacement.Place || !CanSendIn(At(replacement.Place), choices[0].SwitchTo))
                     throw new ArgumentException($"A Pokémon able to fight is wanted for {replacement.Place}");
                 break;
         }
@@ -553,6 +553,8 @@ public sealed partial class BattleCore : IBattleContext
             // What acts on entry is looked for again after every action (an ability gained by a Transform, a
             // shape the weather changed), as the original runs its switch-in check after every move
             if (Result == BattleResult.None) SwitchInChecks();
+            // A trainer whose last Pokémon the action left in the red speaks once it has been told (plan 11 · C12)
+            WatchTheRed();
 
             // Trick Room turns the rest of the turn round
             if (orderChanged)
@@ -580,6 +582,7 @@ public sealed partial class BattleCore : IBattleContext
 
         EndOfTurn();
         if (Result != BattleResult.None) yield break;
+        WatchTheRed();
 
         foreach (var request in ReplaceFainted()) yield return request;
         if (Result != BattleResult.None) yield break;
@@ -906,7 +909,8 @@ public sealed partial class BattleCore : IBattleContext
         Revert(down);
         down.ClearVolatile();
         NoteFaint(down);
-        Say($"{down.Name} fainted!").With(new Fainted(down.Place));
+        var fell = Say($"{down.Name} fainted!").With(new Fainted(down.Place));
+        FellFirst(down, fell);
         if (!down.IsPlayerSide) AwardExp(down);
     }
 

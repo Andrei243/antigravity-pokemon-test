@@ -1,0 +1,104 @@
+{
+  "PlayerName": "Lucas",
+  "Money": 3000,
+  "PlayTimeSeconds": 32400.0,
+  "Badges": 19,
+  "CurrentMapName": "PokeMart",
+  "PlayerGridX": 3,
+  "PlayerGridY": 9,
+  "PlayerFacing": 1,
+  "WorldVersion": 2,
+  "Look": 0,
+  "RivalName": "Barry",
+  "TrainerId": 41350,
+  "Started": "2026-09-20T00:00:00",
+  "Travel": 0,
+  "Exit": null,
+  "LastDay": "2026-10-01T00:00:00",
+  "RegisteredItem": null,
+  "Party": [
+    {
+      "SpeciesName": "Grotle",
+      "Nickname": "Grotle",
+      "Level": 27,
+      "Gender": 0,
+      "Nature": 0,
+      "IsShiny": false,
+      "CurrentHP": 82,
+      "Status": 0,
+      "IvHP": 20,
+      "IvAttack": 20,
+      "IvDefense": 20,
+      "IvSpAttack": 20,
+      "IvSpDefense": 20,
+      "IvSpeed": 20,
+      "CurrentExp": 15244,
+      "Ability": "Overgrow",
+      "HeldItem": null,
+      "Friendship": 100,
+      "EvHP": 4,
+      "EvAttack": 8,
+      "EvDefense": 0,
+      "EvSpAttack": 0,
+      "EvSpDefense": 0,
+      "EvSpeed": 12,
+      "Personality": 789468898,
+      "Ball": "Poké Ball",
+      "Moves": [
+        {
+          "MoveName": "Tackle",
+          "CurrentPP": 35
+        },
+        {
+          "MoveName": "Withdraw",
+          "CurrentPP": 40
+        },
+        {
+          "MoveName": "Razor Leaf",
+          "CurrentPP": 25
+        },
+        {
+          "MoveName": "Bite",
+          "CurrentPP": 25
+        }
+      ]
+    }
+  ],
+  "BoxStorage": [],
+  "Inventory": [
+    {
+      "ItemName": "Super Potion",
+      "Quantity": 4
+    },
+    {
+      "ItemName": "HM06",
+      "Quantity": 1
+    }
+  ],
+  "SeenSpecies": [
+    388
+  ],
+  "CaughtSpecies": [
+    388
+  ],
+  "NationalPokedex": false,
+  "Diplomas": [],
+  "DefeatedTrainers": [],
+  "StoryFlags": [
+    "FLAG_TALKED_TO_MOM",
+    "FLAG_RIVAL_LEFT_HOME",
+    "FLAG_HAS_POKEDEX",
+    "FLAG_HAS_RUNNING_SHOES",
+    "FLAG_RECEIVED_PARCEL",
+    "FLAG_RECEIVED_HM06"
+  ],
+  "StoryVersion": 8,
+  "StoryVariables": {
+    "VAR_PLAYER_HOUSE_STATE": 6,
+    "VAR_SANDGEM_TOWN_STATE": 2,
+    "VAR_ROUTE_202_STATE": 1
+  },
+  "TakenItems": [],
+  "PlayerStarter": "Turtwig",
+  "RivalStarter": "Chimchar"
+}

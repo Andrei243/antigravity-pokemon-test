@@ -90,6 +90,22 @@ internal static class CharacterFaces
             }
         }
 
+        // Glasses (plan 11 · C6): a round rim round each eye, a bridge between them and a short temple outward, there
+        // with the eyes shut too
+        if (s.Glasses is Color frame)
+        {
+            float rx = eyeW * 1.75f, ry = eyeH * 1.3f, line = adult ? 1.7f : 2f;
+            foreach (float side in new[] { -1f, 1f })
+            {
+                var e = Px(side * face.EyeHalfSpacing, eyeY);
+                AaPaint.Arc(canvas, e, rx, ry, 0f, MathF.PI * 2f, line, frame);
+                AaPaint.Line(canvas, e + new Vector2(side * rx, -ry * 0.2f), e + new Vector2(side * rx * 1.7f, -ry * 0.35f), line, frame);
+            }
+            var l = Px(-face.EyeHalfSpacing, eyeY);
+            var r = Px(face.EyeHalfSpacing, eyeY);
+            AaPaint.Line(canvas, l + new Vector2(rx, -ry * 0.15f), r - new Vector2(rx, ry * 0.15f), line, frame);
+        }
+
         // Brows: only where the bangs leave the brow bare; the professor's are sculpted
         if (!s.BushyBrows)
         {
@@ -148,6 +164,22 @@ internal static class CharacterFaces
         int ey = (int)MathF.Round(anchor.Y) - 1;
         int mouthY = ey + 5;
 
+        // Glasses: a one-texel rim round each eye's two by three, with the bridge on the eyes' top row; the eyes go over it
+        var frame = s.Glasses ?? default;
+        void Rim(int x0)
+        {
+            for (int x = x0 - 1; x <= x0 + 2; x++)
+            {
+                sprite.SetRaw(x, ey - 1, frame);
+                sprite.SetRaw(x, ey + 3, frame);
+            }
+            for (int y = ey; y <= ey + 2; y++)
+            {
+                sprite.SetRaw(x0 - 1, y, frame);
+                sprite.SetRaw(x0 + 2, y, frame);
+            }
+        }
+
         void Eye(int x0, bool highlightLeft)
         {
             if (blink)
@@ -173,6 +205,12 @@ internal static class CharacterFaces
 
         if (facing == 0)
         {
+            if (s.Glasses != null)
+            {
+                Rim(cx - 3);
+                Rim(cx + 2);
+                sprite.SetRaw(cx, ey, frame);
+            }
             Eye(cx - 3, true);
             Eye(cx + 2, true);
             if (s.Lashes && !blink)
@@ -207,6 +245,13 @@ internal static class CharacterFaces
         // In profile: one eye a little behind the front of the face, the mouth just under it
         bool right = facing == 1;
         int eyeX = right ? cx - 3 : cx + 2;
+        if (s.Glasses != null)
+        {
+            Rim(eyeX);
+            // The temple runs back from the rim toward the ear
+            sprite.SetRaw(right ? eyeX - 2 : eyeX + 3, ey, frame);
+            sprite.SetRaw(right ? eyeX - 3 : eyeX + 4, ey, frame);
+        }
         Eye(eyeX, !right);
         if (s.Lashes && !blink) sprite.SetRaw(right ? eyeX - 1 : eyeX + 2, ey, lash);
         if (!s.Mustache) sprite.SetRaw(right ? cx - 1 : cx + 1, mouthY, lip);

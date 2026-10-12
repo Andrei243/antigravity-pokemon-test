@@ -188,7 +188,7 @@
     {
       "id": "bertha",
       "name": "Bertha",
-      "npcType": "Lady",
+      "npcType": "bertha",
       "x": 8,
       "y": 5,
       "facing": "Down",

@@ -568,7 +568,7 @@
     {
       "id": "saturn",
       "name": "Saturn",
-      "npcType": "Grunt",
+      "npcType": "saturn",
       "x": 33,
       "y": 19,
       "facing": "Left",

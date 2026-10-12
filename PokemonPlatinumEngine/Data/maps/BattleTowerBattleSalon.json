@@ -158,7 +158,7 @@
     {
       "id": "teala",
       "name": "Attendant",
-      "npcType": "Lady",
+      "npcType": "teala",
       "x": 8,
       "y": 3,
       "facing": "Down",
@@ -189,7 +189,7 @@
     {
       "id": "riley",
       "name": "Riley",
-      "npcType": "Clerk",
+      "npcType": "riley",
       "x": 11,
       "y": 8,
       "facing": "Down",
@@ -200,7 +200,7 @@
     {
       "id": "marley",
       "name": "Marley",
-      "npcType": "Lass",
+      "npcType": "marley",
       "x": 2,
       "y": 10,
       "facing": "Right",
@@ -211,7 +211,7 @@
     {
       "id": "buck",
       "name": "Buck",
-      "npcType": "Youngster",
+      "npcType": "buck",
       "x": 7,
       "y": 9,
       "facing": "Up",

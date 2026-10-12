@@ -197,5 +197,7 @@ public partial class GameEngine
         public void WalkWith(NPC body, Pokemon pokemon) => game.WalkWith(body, pokemon);
         /// <summary>The game written to its save where the player stands, as the save screen writes it.</summary>
         public bool Save() => SaveManager.SaveGame(game.BuildSave());
+        /// <summary>The game as it stands, as the save screen would write it (plan 24 · X3: the harness's <c>saves</c>).</summary>
+        public SaveData BuildSave() => game.BuildSave();
     }
 }

@@ -2025,3 +2025,17 @@ The rooms made by hand before the world was imported, laid out again on the orig
 | The rival's console | A model on the floor before his television | Read on its tile, with nothing drawn | The same |
 | Escalators that move | Carry the player | The side stairs in steel, taken as stairs are | Style guide, "Rooms": an escalator |
 | Looks | The classes' own, the basement's attendant's, the receptionist's | The classes' looks the table has; a nurse; a lady | Plan 11 · C2 to C4 |
+
+## Trainers who speak in battle (2026-10-12, plan 11 · C12)
+
+Platinum's trainers speak before a battle and after it, never during it; from Black and White on, leaders, rivals and bosses speak at its turning points. This game has them speak only where the `TrainerLines` option holds (On, or Rules in a game played by the modern rules), so a Platinum game shows nothing new. The rules mark the moments (`TrainerReacts`, `BattleCore.Speaks.cs`) whatever the option says; the words are ours (`Data/trainer-lines.json`) and the face's alone.
+
+- **The three moments**, each once per trainer and battle: their last Pokémon able to fight comes out in the middle of the battle (a replacement, a switch, a move that brings it in; the opening's send-outs never count, so a trainer of one has no such moment); the first of theirs falls while others can still fight (the faint that leaves them nobody is the battle's end, which has its own words); their last one stands in the red, a fifth of its HP or under (`BattleCore.RedShare`, the HP bar's red).
+- **The red is read after each action and after the end of a turn**, not at the hit's own impact as the plan first had it: the reaction goes with the last line the action said, so the trainer speaks once the move has been told whole ("It's super effective!" and a critical hit included). At the hit's impact the face's interlude would have put the line between the move and its effectiveness. It follows that whatever left the last one in the red counts (a hit, poison, recoil), that a Pokémon taken from above the red straight to nothing never stood in it and says nothing, and that one healed out of the red in the same action says nothing either.
+- **Only the other side speaks.** A partner beside the player (the rival at Spear Pillar and in the Fight Area) has no moments, and a wild Pokémon none.
+- **Who has lines**: the rival's battles against the player, the eight Gym Leaders' first battles, every battle of Mars, Jupiter, Saturn and Cyrus, and the Elite Four's and Cynthia's first battles. Rematches, the Battle Frontier's Brains and the Fight Area's tag battle have none yet; a trainer with nothing for a moment says nothing.
+
+| What | Black and White on | Here | Why |
+| --- | --- | --- | --- |
+| The trainer on screen | Steps back onto the field as the line is read | The line in the message box under the trainer's name; nobody steps back | Plan 11 · C13 |
+| The moments | Some games also a line for the last Pokémon's Mega Evolution or Z-Move | The three above | Those mechanics are not in the game |

@@ -1,0 +1,163 @@
+{
+  "rival_route_201_*": {
+    "lowHp": { "text": "Hey, hey, slow down! These Pokémon are brand new, {player}!" }
+  },
+  "rival_route_203_*": {
+    "firstDown": { "text": "Already?! Fine, fine, that one was just warming up!" },
+    "lastPokemon": { "text": "Last one! No more messing about, let's wrap this up fast!" },
+    "lowHp": { "text": "No, no, no! I ran the whole way here for this!" }
+  },
+  "rival_route_209_*": {
+    "firstDown": { "text": "Tch! I'll make up for that one double, just watch!" },
+    "lastPokemon": { "text": "My partner since day one! Show {player} what we've got!" },
+    "lowHp": { "text": "Hang in there! We can't lose before Hearthome, we just can't!" }
+  },
+  "rival_pastoria_city_*": {
+    "firstDown": { "text": "Huh! You've been training on the sly, haven't you?" },
+    "lastPokemon": { "text": "Okay, this is it! All or nothing, {player}!" },
+    "lowHp": { "text": "Come on, come on! Don't you quit on me now!" }
+  },
+  "rival_canalave_city_*": {
+    "firstDown": { "text": "Gah, that one hurts! But I'm only just getting started!" },
+    "lastPokemon": { "text": "My last one! If this doesn't work, I'll... I'll think of something!" },
+    "lowHp": { "text": "We are not losing on this bridge! Not here, not to you!" }
+  },
+  "rival_pokemon_league_*": {
+    "firstDown": { "text": "Ha! That's the {player} I know! But I'm not done yet!" },
+    "lastPokemon": { "text": "Last one! Everything I've got goes into this, {player}!" },
+    "lowHp": { "text": "Hold on! We came too far to stop right at the League's door!" }
+  },
+  "rival_survival_area_*": {
+    "firstDown": { "text": "Ow! You never let up, do you? Good! Neither do I!" },
+    "lastPokemon": { "text": "Down to my last! Funny, it always comes to this with you!" },
+    "lowHp": { "text": "Not yet! One more hit, that's all I need!" }
+  },
+
+  "leader_roark": {
+    "firstDown": { "text": "A crack in the rock... You hit harder than you look." },
+    "lastPokemon": { "text": "My last stone. Let's see if you can break bedrock." },
+    "lowHp": { "text": "Steady now... Rock holds firm until the very last blow." }
+  },
+  "leader_gardenia": {
+    "firstDown": { "text": "Oh, my poor sprout! Don't worry, the rest of my garden's tougher!" },
+    "lastPokemon": { "text": "My prettiest bloom is last! Isn't she lovely? And she bites!" },
+    "lowHp": { "text": "Wilting? No way! Grass always grows back!" }
+  },
+  "leader_maylene": {
+    "firstDown": { "text": "You're strong... No! I won't doubt myself. Not today." },
+    "lastPokemon": { "text": "This is my partner. Together, we don't back down!" },
+    "lowHp": { "text": "My hands are shaking... but my heart isn't!" }
+  },
+  "leader_wake": {
+    "firstDown": { "text": "OOF! A clean pin! The crowd loves it! But the match goes on!" },
+    "lastPokemon": { "text": "The main event! My champion of the ring steps in!" },
+    "lowHp": { "text": "Down on the mat? Not while I'm still roaring!" }
+  },
+  "leader_fantina": {
+    "firstDown": { "text": "Ah! A misstep in our dance... How very exciting!" },
+    "lastPokemon": { "text": "And now, the finale! My star takes the stage!" },
+    "lowHp": { "text": "Such passion! You make my heart spin, but we will not bow yet!" }
+  },
+  "leader_byron": {
+    "firstDown": { "text": "Ha! Not bad at all! My boy said you had some grit!" },
+    "lastPokemon": { "text": "My last wall of steel! Come on, give it everything!" },
+    "lowHp": { "text": "Dented, maybe! But steel doesn't fold, kid!" }
+  },
+  "leader_candice": {
+    "firstDown": { "text": "Whoa, nice one! Okay, okay, time to focus up!" },
+    "lastPokemon": { "text": "Last one! She's the coolest girl in Snowpoint, just watch!" },
+    "lowHp": { "text": "Brrr... We're still in this! Stay focused, stay frosty!" }
+  },
+  "leader_volkner": {
+    "firstDown": { "text": "Huh. That actually woke me up a little." },
+    "lastPokemon": { "text": "My last one. Don't let the spark go out now, okay?" },
+    "lowHp": { "text": "Yeah... This is the battle I've been waiting for." }
+  },
+
+  "commander_mars_valley_windworks": {
+    "firstDown": { "text": "Ugh, seriously? A kid like you?!" },
+    "lastPokemon": { "text": "Fine! My cutie will teach you some manners!" },
+    "lowHp": { "text": "This is SO annoying! Just give up already!" }
+  },
+  "commander_mars_lake_verity": {
+    "firstDown": { "text": "Again with you?! You're getting on my last nerve!" },
+    "lastPokemon": { "text": "I won't lose to you twice! Not in front of the boss's lake!" },
+    "lowHp": { "text": "No, no! Cyrus is counting on me!" }
+  },
+  "commander_mars_spear_pillar": {
+    "firstDown": { "text": "Don't think you've won! The boss is right behind us!" },
+    "lastPokemon": { "text": "Last one, but it only takes one to stop you!" },
+    "lowHp": { "text": "We're so close to a new world... Don't you dare ruin it!" }
+  },
+  "commander_mars_stark_mountain": {
+    "firstDown": { "text": "Heh. Still as stubborn as ever, aren't you?" },
+    "lastPokemon": { "text": "Last one. Let's see if you've still got it." },
+    "lowHp": { "text": "You know what? This is more fun than any order I ever followed." }
+  },
+  "commander_jupiter_team_galactic_eterna_building": {
+    "firstDown": { "text": "Hmph. A little luck goes a long way, doesn't it?" },
+    "lastPokemon": { "text": "Enough games. My partner ends this now." },
+    "lowHp": { "text": "You really don't know when to quit, do you?" }
+  },
+  "commander_jupiter_spear_pillar": {
+    "firstDown": { "text": "Cute. But you're already far too late." },
+    "lastPokemon": { "text": "Last one. It's more than enough for the likes of you." },
+    "lowHp": { "text": "Tch... Cyrus's dream won't be stopped by a child." }
+  },
+  "commander_jupiter_stark_mountain": {
+    "firstDown": { "text": "Well. You haven't gone soft, I'll give you that." },
+    "lastPokemon": { "text": "My last. Let's finish what we started all those months ago." },
+    "lowHp": { "text": "Heh... Losing to you is starting to feel familiar." }
+  },
+  "commander_saturn_valor_cavern": {
+    "firstDown": { "text": "I see. Your strength is not an accident." },
+    "lastPokemon": { "text": "My last Pokémon. I'll treat this with the care it deserves." },
+    "lowHp": { "text": "Interesting. You may yet be the one who stops us." }
+  },
+  "commander_saturn_galactic_hq": {
+    "firstDown": { "text": "As expected. Then I'll stop holding back." },
+    "lastPokemon": { "text": "Last one. Whatever happens next, I'll accept it." },
+    "lowHp": { "text": "Perhaps... perhaps this is how it should end." }
+  },
+  "galactic_boss_cyrus_celestic_town_ruins": {
+    "firstDown": { "text": "Your Pokémon fight hard for you. How very inefficient." },
+    "lastPokemon": { "text": "My last. Show me what that spirit of yours is truly worth." },
+    "lowHp": { "text": "Even now, I feel nothing. That is my strength." }
+  },
+  "galactic_boss_cyrus_galactic_hq": {
+    "firstDown": { "text": "You've grown. It changes nothing." },
+    "lastPokemon": { "text": "My last Pokémon. A single piece is all a plan needs." },
+    "lowHp": { "text": "Emotion is a flaw. And yet you lean on it so..." }
+  },
+  "galactic_boss_cyrus_distortion_world": {
+    "firstDown": { "text": "Even here, where nothing is whole, you will not give way." },
+    "lastPokemon": { "text": "The last. The world I seek lies past you, and I will reach it." },
+    "lowHp": { "text": "Why... Why does a spirit like yours refuse to break?" }
+  },
+
+  "elite_four_aaron": {
+    "firstDown": { "text": "Oh, my dear bug! It fought so bravely for me..." },
+    "lastPokemon": { "text": "My last one. Even the smallest wing can carry a storm!" },
+    "lowHp": { "text": "Don't give up! Bugs never stop, not even when they're cornered!" }
+  },
+  "elite_four_bertha": {
+    "firstDown": { "text": "Oh my! You hit like a landslide, young one." },
+    "lastPokemon": { "text": "My last. Granny still has some strength left in her, you'll see." },
+    "lowHp": { "text": "Ho ho! It's been ages since anyone shook my ground like this!" }
+  },
+  "elite_four_flint": {
+    "firstDown": { "text": "Yeah! Now THAT is some heat! Keep it coming!" },
+    "lastPokemon": { "text": "My last flame! Let's see whose fire burns brighter!" },
+    "lowHp": { "text": "Burning low, but never out! Never!" }
+  },
+  "elite_four_lucian": {
+    "firstDown": { "text": "Hm. This chapter turns out differently from what I'd read." },
+    "lastPokemon": { "text": "The last page. Let us see how your story ends." },
+    "lowHp": { "text": "Remarkable. I could not have predicted this." }
+  },
+  "champion_cynthia": {
+    "firstDown": { "text": "Wonderful. You and your Pokémon truly trust one another." },
+    "lastPokemon": { "text": "My last Pokémon. I've rarely had to call on it... Let's go." },
+    "lowHp": { "text": "This is it... the battle I've been hoping for. Don't hold back!" }
+  }
+}

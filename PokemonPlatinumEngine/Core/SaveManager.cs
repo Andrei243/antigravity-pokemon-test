@@ -570,11 +570,17 @@ public static class SaveManager
 
     public static bool HasSaveFile() => File.Exists(SaveFilePath);
 
+    /// <summary>A save as the game writes it to <c>savegame.json</c> (the harness's <c>saves</c> mode writes its own the same way: plan 24 · X3).</summary>
+    public static string Write(SaveData data) => JsonSerializer.Serialize(data, new JsonSerializerOptions { WriteIndented = true });
+
+    /// <summary>A save read as the game reads <c>savegame.json</c> (the tests read the saves of every version the same way: plan 24 · X3).</summary>
+    public static SaveData? Read(string json) => JsonSerializer.Deserialize<SaveData>(json);
+
     public static bool SaveGame(SaveData data)
     {
         try
         {
-            string json = JsonSerializer.Serialize(data, new JsonSerializerOptions { WriteIndented = true });
+            string json = Write(data);
             File.WriteAllText(SaveFilePath, json);
             return true;
         }
@@ -589,8 +595,7 @@ public static class SaveManager
         try
         {
             if (!HasSaveFile()) return null;
-            string json = File.ReadAllText(SaveFilePath);
-            return JsonSerializer.Deserialize<SaveData>(json);
+            return Read(File.ReadAllText(SaveFilePath));
         }
         catch
         {

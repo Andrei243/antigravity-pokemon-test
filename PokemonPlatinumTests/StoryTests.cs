@@ -516,55 +516,16 @@ public class StoryTests
 
     private static readonly ScriptLibrary Scripts = ScriptLibrary.Default;
 
-    // Maps of this class's own, so that playing scripts on them (people walk, are beaten, come and go) shows nowhere else
-    private static readonly Lazy<World> LoadedWorld = new(() => World.LoadAll().Single(w => w.Index.Region == "Sinnoh"));
-
-    private static readonly Lazy<Dictionary<string, Map>> OwnMaps = new(() =>
-    {
-        var maps = new Dictionary<string, Map>(StringComparer.OrdinalIgnoreCase);
-        foreach (string path in Directory.GetFiles(GameDataFiles.PathOf(MapDatabase.Folder), "*.json"))
-        {
-            var map = GameDataFiles.Load<MapFile>(Path.Combine(MapDatabase.Folder, Path.GetFileName(path))).ToMap();
-            maps[map.Name] = map;
-        }
-        foreach (var map in LoadedWorld.Value.BuildMaps()) maps[map.Name] = map;
-        return maps;
-    });
-
-    /// <summary>The map a script file belongs to: the one its area is part of, or the hand-made map it is named for. Null for the common file and for a file of nowhere.</summary>
-    private static Map? MapOfFile(string file) =>
-        LoadedWorld.Value.Index.Areas.Contains(file) && LoadedWorld.Value.MapOf(file) is { } entry ? OwnMaps.Value[entry.Name]
-        : OwnMaps.Value.GetValueOrDefault(file);
-
-    /// <summary>Everyone, every signboard and every trigger of the game, with the script each starts and the file it is looked for in.</summary>
-    private static IEnumerable<(string What, string Script, string File, Map Map, NPC? Person)> Starters()
-    {
-        foreach (var map in OwnMaps.Value.Values)
-        {
-            foreach (var npc in map.Everyone)
-                if (FieldScripts.For(npc) is { } script)
-                    yield return ($"{npc.Name} at {npc.GridX},{npc.GridY} of {map.Name}", script, npc.ScriptFile ?? map.ScriptFileAt(npc.GridX, npc.GridY), map, npc);
-            foreach (var (at, script) in map.SignScripts)
-                yield return ($"the sign at {at.X},{at.Y} of {map.Name}", script, map.ScriptFileAt(at.X, at.Y), map, null);
-            foreach (var (at, script) in map.TileScripts)
-                yield return ($"the tile read at {at.X},{at.Y} of {map.Name}", script, map.ScriptFileAt(at.X, at.Y), map, null);
-            foreach (var trigger in map.Triggers)
-                yield return ($"the trigger at {trigger.X},{trigger.Y} of {map.Name}", trigger.Script, trigger.ScriptFile ?? map.Name, map, null);
-            foreach (var (at, hidden) in map.HiddenItems)
-                yield return ($"the hidden {hidden.Item} at {at.X},{at.Y} of {map.Name}", FieldScripts.HiddenItem, map.ScriptFileAt(at.X, at.Y), map, null);
-            // A pit a pushed boulder comes to rest on (plan 02 · S12): its script runs with a boulder of the place
-            foreach (var (at, script) in map.BoulderPits)
-                yield return ($"the pit at {at.X},{at.Y} of {map.Name}", script, map.ScriptFileAt(at.X, at.Y), map,
-                    map.Everyone.First(n => n.Obstacle == PropType.StrengthBoulder && n.ScriptFile == map.ScriptFileAt(at.X, at.Y)));
-        }
-    }
+    // The walk that plays the game's scripts, with maps of this class's own, so that playing scripts on them (people
+    // walk, are beaten, come and go) shows nowhere else (plan 24 · X3: ScriptWalk.cs)
+    private static readonly ScriptWalk Walk = new();
 
     [Fact]
     public void TheScriptFilesAreReadAndNameNothingThatIsNotThere()
     {
         Assert.Contains(ScriptLibrary.Common, Scripts.Files);
         Assert.Empty(Scripts.Problems(
-            mapExists: OwnMaps.Value.ContainsKey,
+            mapExists: Walk.OwnMaps.ContainsKey,
             songExists: MusicLibrary.Exists,
             soundExists: AudioManager.SoundNames.Contains));
     }
@@ -573,14 +534,14 @@ public class StoryTests
     public void EveryScriptFileBelongsToAPlace()
     {
         foreach (string file in Scripts.Files.Where(f => f != ScriptLibrary.Common))
-            Assert.True(MapOfFile(file) != null, $"scripts/{file}.txt is named for no open area and no map");
+            Assert.True(Walk.MapOfFile(file) != null, $"scripts/{file}.txt is named for no open area and no map");
     }
 
     [Fact]
     public void WhateverStartsAScriptStartsOneThatExists()
     {
-        Assert.NotEmpty(Starters());
-        foreach (var (what, script, file, _, _) in Starters())
+        Assert.NotEmpty(Walk.Starters());
+        foreach (var (what, script, file, _, _) in Walk.Starters())
             Assert.True(Scripts.Find(script, file) != null, $"{what} starts '{script}', which is in neither {file}.txt nor common.txt");
 
         // And the common ones the field reaches for by itself
@@ -591,7 +552,7 @@ public class StoryTests
     [Fact]
     public void NoScriptIsLeftThatNothingStarts()
     {
-        var started = Starters().Select(s => Scripts.Find(s.Script, s.File)!.FullName).ToHashSet();
+        var started = Walk.Starters().Select(s => Scripts.Find(s.Script, s.File)!.FullName).ToHashSet();
         started.UnionWith(new[] { FieldScripts.Nurse, FieldScripts.Clerk, FieldScripts.Pc, FieldScripts.Briefcase, FieldScripts.Attendant, FieldScripts.Trainer, FieldScripts.Talk, FieldScripts.Sign, ScriptLibrary.NewGame, ScriptLibrary.OpeningDone });
         // The field moves': what an obstacle, the water, a waterfall and a rock face run, and what the party menu runs
         started.UnionWith(new[] { FieldScripts.CutTree, FieldScripts.Rock, FieldScripts.Boulder, FieldScripts.Water, FieldScripts.Waterfall, FieldScripts.RockFace });
@@ -630,7 +591,7 @@ public class StoryTests
     {
         foreach (var script in Scripts.All.Where(s => s.File != ScriptLibrary.Common))
         {
-            var map = MapOfFile(script.File)!;
+            var map = Walk.MapOfFile(script.File)!;
             foreach (var (who, line) in ScriptLibrary.PeopleNamed(script))
                 Assert.True(map.FindPerson(who, script.File) != null, $"{script.File}.txt({line}): nobody of {map.Name} is called '{who}'");
         }
@@ -674,182 +635,27 @@ public class StoryTests
             && !PokemonPlatinumEngine.Overworld.AmitySquare.KeptByTheGame.Contains(v));
     }
 
-    /// <summary>
-    /// Plays a script on every way through it: each question answered each way, each battle won and lost. Whoever
-    /// the script belongs to and the map are put back as they were between one way and the next.
-    /// </summary>
-    private static List<(HeadlessScriptHost Host, ScriptRunner Runner)> EveryWayThrough(Script script, Map? map, NPC? subject, IReadOnlyList<string>? own = null,
-        Action<HeadlessScriptHost>? before = null, (string Item, int Count)? item = null, string? flag = null, NPC? pair = null)
-    {
-        var ways = new List<(HeadlessScriptHost, ScriptRunner)>();
-        var toTry = new Stack<List<int>>();
-        toTry.Push(new List<int>());
-        var kept = (map?.Everyone ?? Enumerable.Empty<NPC>()).Append(subject).OfType<NPC>().Distinct()
-            .Select(n => (Person: n, n.GridX, n.GridY, n.Facing, n.HasBattled)).ToList();
-
-        while (toTry.Count > 0)
-        {
-            Assert.True(ways.Count < 300, $"{script.FullName} has more than 300 ways through it");
-            var planned = toTry.Pop();
-            var taken = new List<int>();
-            var asked = new HashSet<string>();
-            // A question asked again on the same way through (the professor asking until he hears yes) is answered
-            // with the first answer, or a loop would make the ways through it endless
-            int Decide(int answers, string? question = null)
-            {
-                int choice = taken.Count < planned.Count ? planned[taken.Count] : 0;
-                bool again = question != null && !asked.Add(question);
-                if (taken.Count >= planned.Count && !again)
-                    for (int other = 1; other < answers; other++) toTry.Push(taken.Append(other).ToList());
-                taken.Add(choice);
-                return choice;
-            }
-
-            var host = new HeadlessScriptHost { Map = map, MapNamed = name => OwnMaps.Value.GetValueOrDefault(name) };
-            host.Party.Add(new Pokemon(PokemonDatabase.Get("Turtwig")!, 5));
-            host.PlayerTile = subject != null ? (subject.GridX, subject.GridY + 1) : (0, 0);
-            host.Decide = (question, answers) => Decide(answers.Count, question);
-            host.Fight = _ => Decide(2) == 0 ? BattleOutcome.Won : BattleOutcome.Lost;
-            before?.Invoke(host);
-
-            var runner = new ScriptRunner(Scripts, host);
-            runner.Start(script, subject, own, item, flag, pair: pair);
-            runner.RunToEnd();
-            ways.Add((host, runner));
-
-            foreach (var (person, x, y, facing, battled) in kept)
-            {
-                (person.GridX, person.GridY, person.Facing, person.HasBattled, person.Forced) = (x, y, facing, battled, null);
-            }
-            map?.ApplyPresence(_ => false);
-        }
-        return ways;
-    }
-
-    /// <summary>The common scripts of the field moves (plan 02 · S2), and those they call.</summary>
-    private static readonly HashSet<string> FieldMoveScripts = new HashSet<string>
-    {
-        FieldScripts.CutTree, FieldScripts.Rock, FieldScripts.Boulder, FieldScripts.Water, FieldScripts.Waterfall, FieldScripts.RockFace,
-        "common.StrengthOn"
-    }.Concat(Enum.GetValues<FieldMove>().Select(FieldScripts.FromMenu).OfType<string>()).ToHashSet();
-
-    /// <summary>A team between them knowing every move a Pokémon uses in the field, and every badge.</summary>
-    private static void KnowsEveryFieldMove(HeadlessScriptHost host)
-    {
-        host.Party.Clear();
-        var moves = Enum.GetValues<FieldMove>().Where(m => m != FieldMove.Chatter).Select(FieldMoveRules.MoveName).ToList();
-        for (int i = 0; i < moves.Count; i += 4)
-        {
-            var pokemon = new Pokemon(PokemonDatabase.Get("Bibarel")!, 40);
-            pokemon.Moves.Clear();
-            foreach (string move in moves.Skip(i).Take(4)) pokemon.Moves.Add(new Move(MoveDatabase.Get(move)!));
-            host.Party.Add(pokemon);
-        }
-        host.Story.SetBadges(0xFF);
-    }
-
-    private static NPC AnyTrainer() => MapFile.BuildNpc(new MapFile.NpcRecord
-    {
-        Id = "anyone", Name = "Anyone", NpcType = "Youngster", X = 2, Y = 2,
-        Dialog = new List<string> { "Something to say." },
-        Trainer = new MapFile.TrainerRecord
-        {
-            Id = "anyone", Name = "Anyone", TrainerClass = "Youngster", PrizeMoney = 64,
-            Party = new List<MapFile.PartyMember> { new() { Species = "Starly", Level = 2 } },
-            DialogueBefore = "Before.", DialogueAfter = "After."
-        }
-    }, "Test");
-
     [Fact]
     public void EveryScriptOfTheGamePlaysToItsEndOnEveryWayThroughIt()
     {
-        // A place's script is played as whatever starts it would start it, on the place's own map
+        // Every script of a place as whatever starts it would start it, on the place's own map, and every common one
+        // by someone who is everything at once (ScriptWalk.PlayEveryScript)
         var played = new HashSet<string>();
-        // Taken whole first: the scripts played take people off the maps and put them back
-        foreach (var (what, name, file, map, person) in Starters().ToList())
+        foreach (var (what, script, ways) in Walk.PlayEveryScript())
         {
-            var script = Scripts.Find(name, file)!;
-            // The common ones are played below, by someone who is everything at once, not by each of the hundreds who share them
-            if (script.File == ScriptLibrary.Common) continue;
-            played.Add(script.FullName);
-            // A trigger's script starts with the player on the trigger, as stepping onto it starts it
-            var trigger = person == null ? map.Triggers.FirstOrDefault(t => t.Script == name && what.StartsWith("the trigger", StringComparison.Ordinal)
-                && what.Contains($" at {t.X},{t.Y} ", StringComparison.Ordinal)) : null;
-            // A thing read where it stands starts with the player on the open tile below it, facing it, as a painting
-            // on a cave's back wall is read (plan 02 · S9: Celestic Town's ruins walk the player about from there)
-            (int X, int Y)? read = null;
-            if (person == null && what.StartsWith("the tile read at ", StringComparison.Ordinal))
-            {
-                var at = what["the tile read at ".Length..what.IndexOf(" of ", StringComparison.Ordinal)].Split(',');
-                (int x, int y) = (int.Parse(at[0], CultureInfo.InvariantCulture), int.Parse(at[1], CultureInfo.InvariantCulture));
-                if (map.InBounds(x, y + 1) && !map.IsSolid(x, y + 1)) read = (x, y + 1);
-            }
-            Action<HeadlessScriptHost>? before = trigger != null ? host => host.PlayerTile = (trigger.X, trigger.Y)
-                : read is { } below ? host => { host.PlayerTile = below; host.PlayerFacing = Direction.Up; }
-                : null;
-            var ways = EveryWayThrough(script, map, person, before: before);
+            if (script.File != ScriptLibrary.Common) played.Add(script.FullName);
             Assert.NotEmpty(ways);
-            foreach (var (host, _) in ways)
-                Assert.True(host.Problems.Count == 0, $"{script.FullName}, started by {what}: {string.Join("; ", host.Problems)}");
+            foreach (var way in ways)
+                Assert.True(way.Host.Problems.Count == 0, $"{script.FullName}, started by {what}: {string.Join("; ", way.Host.Problems)}");
         }
         // Every script of a place that someone or something starts has been played (a clown's has two ways: yes and no)
         Assert.Superset(new HashSet<string> { "jubilife_city.Clown1", "jubilife_city.Clown2", "jubilife_city.Clown3" }, played);
-
-        foreach (var script in Scripts.All.Where(s => s.File == ScriptLibrary.Common && s.FullName != ScriptLibrary.NewGame))
-        {
-            // An item's two scripts are started by a ball and by a place in the ground; a field move's by an obstacle
-            // (with a team that knows every field move and has every badge, and with one that has neither, but for the
-            // party menu's, which only a Pokémon that knows the move starts); every other by a person
-            var obstacle = new NPC { NpcType = NPC.CutTreeType, Name = "Tree", HiddenBy = "FLAG_MAP_LOCAL_HIDE_OBSTACLE_1_TEST", GridX = 2, GridY = 2 };
-            bool fieldMove = FieldMoveScripts.Contains(script.FullName);
-            var ways = script.FullName switch
-            {
-                FieldScripts.ItemBall => EveryWayThrough(script, new Map(8, 8), new NPC { NpcType = NPC.ItemBallType, Name = "Potion", Item = "Potion", HiddenBy = "FLAG_OBTAINED_TEST_POTION" }),
-                FieldScripts.HiddenItem => EveryWayThrough(script, new Map(8, 8), null, item: ("Stardust", 1), flag: "FLAG_OBTAINED_HIDDEN_TEST_STARDUST"),
-                // A Pokémon standing in the field cries as itself (plan 10 · F1)
-                FieldScripts.Pokemon => EveryWayThrough(script, new Map(8, 8), new NPC { NpcType = NPC.PokemonType, Name = "Machop", Species = "Machop" }, new[] { "Machop!" }),
-                _ when fieldMove => EveryWayThrough(script, new Map(8, 8), obstacle, before: KnowsEveryFieldMove),
-                // Two trainers who came together, beside whoever travels with the player and without anyone
-                FieldScripts.TrainerPair => EveryWayThrough(script, new Map(8, 8), AnyTrainer(), pair: AnyTrainer())
-                    .Concat(EveryWayThrough(script, new Map(8, 8), AnyTrainer(), pair: AnyTrainer(), before: host => host.TravelWith(new NPC { Name = "Cheryl" }, "cheryl_eterna_forest"))).ToList(),
-                // A honey tree faced, bare, slathered or with a Pokémon waiting, with Honey in the bag or none (plan 06 · R13)
-                FieldScripts.HoneyTree => new[] { 0, 1440, 600 }.SelectMany(minutes => new[] { 0, 2 }.SelectMany(honey => EveryWayThrough(script, new Map(8, 8), null, before: host =>
-                {
-                    host.HoneyTreeFaced = 0;
-                    host.Encounters.Trees[0].MinutesLeft = minutes;
-                    host.Encounters.Trees[0].Group = 1;
-                    if (honey > 0) host.Bag.AddItem(ItemDatabase.Get("Honey")!, honey);
-                }))).ToList(),
-                // A berry patch at each stage, mulched and not, faced from below or the side, with a bag of everything it
-                // can take or an empty one (plan 06 · R14a)
-                FieldScripts.BerryPatch => Enum.GetValues<BerryStage>().SelectMany(stage => new[] { false, true }.SelectMany(full => new[] { Direction.Up, Direction.Left }.SelectMany(facing =>
-                    new[] { Mulch.None, Mulch.Growth }.SelectMany(mulch => EveryWayThrough(script, new Map(8, 8), new NPC { NpcType = NPC.BerrySoilType, Name = "Soft soil", BerryPatch = 0 }, before: host =>
-                    {
-                        host.Berries = new BerryPatches();
-                        if (stage != BerryStage.None)
-                        {
-                            host.Berries[0].Berry = "Oran Berry";
-                            host.Berries[0].Stage = stage;
-                            host.Berries[0].Yield = stage == BerryStage.Fruit ? 3 : 0;
-                        }
-                        host.Berries[0].Mulch = mulch;
-                        host.PlayerFacing = facing;
-                        if (full)
-                            foreach (var item in new[] { "Pecha Berry", "Growth Mulch", "Sprayduck" }) host.Bag.AddItem(ItemDatabase.Get(item)!, 1);
-                    }))))).ToList(),
-                _ => EveryWayThrough(script, new Map(8, 8), AnyTrainer(), new[] { "A line of its own." })
-            };
-            if (script.FullName is FieldScripts.CutTree or FieldScripts.Rock or FieldScripts.Boulder or FieldScripts.Waterfall or FieldScripts.RockFace)
-                ways.AddRange(EveryWayThrough(script, new Map(8, 8), obstacle));
-            Assert.NotEmpty(ways);
-            Assert.All(ways, way => Assert.Empty(way.Host.Problems));
-        }
     }
 
     // ---- items on the ground
 
     private static IEnumerable<(Map Map, NPC Ball)> ItemBalls() =>
-        OwnMaps.Value.Values.SelectMany(map => map.Everyone.Where(n => n.IsItemBall).Select(ball => (map, ball)));
+        Walk.OwnMaps.Values.SelectMany(map => map.Everyone.Where(n => n.IsItemBall).Select(ball => (map, ball)));
 
     [Fact]
     public void ItemsLieOnTheGroundWhereTheOriginalHasThem()
@@ -873,7 +679,7 @@ public class StoryTests
         Assert.Empty(balls.GroupBy(b => b.Ball.HiddenBy).Where(g => g.Count() > 1 && !shared.Contains(g.Key)).Select(g => g.Key));
 
         // What the user asked to see, where Platinum has it: the Potion beside Route 202's grass and the Poké Ball of Route 203
-        var overworld = OwnMaps.Value["Sinnoh"];
+        var overworld = Walk.OwnMaps["Sinnoh"];
         Assert.Equal("Potion", overworld.FindPerson("item_potion", "route_202")!.Item);
         Assert.Contains(balls, b => b.Ball.Item == "Poké Ball" && b.Ball.ScriptFile == "route_203");
         Assert.Contains(balls, b => b.Ball.Item == "Rare Candy");
@@ -915,7 +721,7 @@ public class StoryTests
     [Fact]
     public void WhatIsHiddenInTheGroundIsFoundOnceByLookingAtIt()
     {
-        var hidden = OwnMaps.Value.Values.SelectMany(map => map.HiddenItems.Select(h => (Map: map, At: h.Key, Item: h.Value))).ToList();
+        var hidden = Walk.OwnMaps.Values.SelectMany(map => map.HiddenItems.Select(h => (Map: map, At: h.Key, Item: h.Value))).ToList();
         Assert.True(hidden.Count >= 20, $"only {hidden.Count} hidden items");
         // The original gives one flag to two places now and then, and says so in its name (Route 207's or Wayward
         // Cave's), or the two are one place shown on two maps (Mt. Coronet's north and south faces share a ledge and
@@ -940,7 +746,7 @@ public class StoryTests
             Assert.Null(FieldScripts.HiddenAt(map, at.X, at.Y, host.Story));
         }
         // Nothing is hidden where nothing is
-        Assert.Null(FieldScripts.HiddenAt(OwnMaps.Value["Sinnoh"], 0, 0, new StoryState()));
+        Assert.Null(FieldScripts.HiddenAt(Walk.OwnMaps["Sinnoh"], 0, 0, new StoryState()));
     }
 
     [Fact]
@@ -1067,7 +873,7 @@ public class StoryTests
     {
         foreach (string house in new[] { "PlayerHouse", "PalletPlayerHouse" })
         {
-            var mom = OwnMaps.Value[house].Everyone.Single(n => n.IsHealingNurse);
+            var mom = Walk.OwnMaps[house].Everyone.Single(n => n.IsHealingNurse);
             var (host, _) = Play(FieldScripts.For(mom)!, mom, before: h => h.Party.Add(Hurt()), file: house);
 
             Assert.Equal(mom.DialogLines.Select(l => PlayerIdentity.Fill(l, host.PlayerName, host.PlayerLook)), host.Transcript.Select(t => t.Text));
@@ -1079,7 +885,7 @@ public class StoryTests
     [Fact]
     public void TheClerkGreetsOpensTheCounterAndSeesThePlayerOff()
     {
-        var clerk = OwnMaps.Value["JubilifePokeMart"].Everyone.Single(n => n.IsPokeMartClerk && n.Mart == null);
+        var clerk = Walk.OwnMaps["JubilifePokeMart"].Everyone.Single(n => n.IsPokeMartClerk && n.Mart == null);
         var (host, _) = Play(FieldScripts.For(clerk)!, clerk);
 
         Assert.Contains("Jubilife", host.Transcript[0].Text);
@@ -1087,7 +893,7 @@ public class StoryTests
         Assert.Equal(2, host.Transcript.Count);
 
         // The second clerk keeps the town's own counter (plan 06 · R11)
-        var own = OwnMaps.Value["JubilifePokeMart"].Everyone.Single(n => n.Mart == "jubilife");
+        var own = Walk.OwnMaps["JubilifePokeMart"].Everyone.Single(n => n.Mart == "jubilife");
         (host, _) = Play(FieldScripts.For(own)!, own);
         Assert.Equal(new[] { "open Shop jubilife" }, host.Log);
     }
@@ -1113,7 +919,7 @@ public class StoryTests
     [Fact]
     public void ATrainerChallengesBattlesAndHasALastWordAfterwards()
     {
-        var trainer = AnyTrainer();
+        var trainer = ScriptWalk.AnyTrainer();
         var (first, _) = Play(FieldScripts.For(trainer)!, trainer, before: h => h.Money = 100);
         Assert.Equal(new[] { "Before." }, first.Transcript.Select(t => t.Text));
         Assert.Equal(new[] { "battle anyone Won" }, first.Log);
@@ -1130,7 +936,7 @@ public class StoryTests
         Assert.Equal(new[] { "Something to say." }, plain.Transcript.Select(t => t.Text));
 
         // A game loaded later knows them as beaten by the story alone
-        var fresh = AnyTrainer();
+        var fresh = ScriptWalk.AnyTrainer();
         var (loaded, _) = Play(FieldScripts.For(fresh)!, fresh, before: h => h.Story.Defeat("anyone"));
         Assert.Equal(new[] { "After." }, loaded.Transcript.Select(t => t.Text));
     }
@@ -1150,7 +956,7 @@ public class StoryTests
     [InlineData("clown_3", "Coupon 3", "FLAG_RECEIVED_COUPON_3")]
     public void AClownGivesACouponForTheRightAnswerOnce(string who, string coupon, string flag)
     {
-        var map = MapOfFile("jubilife_city")!;
+        var map = Walk.MapOfFile("jubilife_city")!;
         var clown = map.FindPerson(who, "jubilife_city")!;
         Assert.Equal("jubilife_city", clown.ScriptFile);
         var script = Scripts.Find(FieldScripts.For(clown)!, clown.ScriptFile)!;
@@ -1205,7 +1011,7 @@ public class StoryTests
     [Fact]
     public void TheWorldsPeopleCarryTheirNamesForScriptsAndTheOriginalsFlags()
     {
-        var overworld = OwnMaps.Value["Sinnoh"];
+        var overworld = Walk.OwnMaps["Sinnoh"];
         var looker = overworld.FindPerson("looker", "jubilife_city")!;
         Assert.Equal(("Looker", "jubilife_city", "FLAG_HIDE_JUBILIFE_CITY_LOOKER"), (looker.Name, looker.ScriptFile, looker.HiddenBy));
 
@@ -1255,7 +1061,7 @@ public class StoryTests
             var map = World.Open(copy, index).BuildMaps().Single(m => m.Name == "Sinnoh");
 
             // The trigger keeps the original's tiles, variable and value, and takes our script, looked for in the area's file
-            var first = LoadedWorld.Value.Area("jubilife_city")!.Triggers[0];
+            var first = Walk.World.Area("jubilife_city")!.Triggers[0];
             var trigger = map.Triggers.Single(t => t.ScriptFile == "jubilife_city");
             Assert.Equal((first.X, first.Z, first.Width, first.Depth), (trigger.X, trigger.Y, trigger.Width, trigger.Depth));
             Assert.Equal(("FirstArrival", "jubilife_city", "VAR_JUBILIFE_CITY_STATE", 0), (trigger.Script, trigger.ScriptFile, trigger.Variable, trigger.Value));
@@ -1265,7 +1071,7 @@ public class StoryTests
             Assert.Null(FieldScripts.TriggerAt(map, first.X + 1, first.Z, story));
 
             // The sign has its script, and is still a sign with its text
-            var sign = LoadedWorld.Value.Area("jubilife_city")!.Objects.Single(o => o.Id == "signboard_jubilife_tv");
+            var sign = Walk.World.Area("jubilife_city")!.Objects.Single(o => o.Id == "signboard_jubilife_tv");
             Assert.Equal("TvSign", map.SignScripts[(sign.X, sign.Z)]);
             Assert.StartsWith("Jubilife TV", map.GetSignboardAt(sign.X, sign.Z));
             Assert.Equal("jubilife_city", map.ScriptFileAt(sign.X, sign.Z));
@@ -1291,11 +1097,11 @@ public class StoryTests
     public void TheAreasKeepTheOriginalsTriggersForTheChaptersToBind()
     {
         // No area's story is written yet, so none is bound; the areas' files hold the triggers the chapters will bind
-        var jubilife = LoadedWorld.Value.Area("jubilife_city")!;
+        var jubilife = Walk.World.Area("jubilife_city")!;
         Assert.Contains(jubilife.Triggers, t => t.Variable == "VAR_JUBILIFE_CITY_STATE" && t.Value == "0");
-        Assert.All(LoadedWorld.Value.Index.Areas.SelectMany(key => LoadedWorld.Value.Area(key)!.Triggers), t => Assert.True(int.TryParse(t.Value, out _), $"a trigger waits for '{t.Value}'"));
+        Assert.All(Walk.World.Index.Areas.SelectMany(key => Walk.World.Area(key)!.Triggers), t => Assert.True(int.TryParse(t.Value, out _), $"a trigger waits for '{t.Value}'"));
 
-        foreach (var map in OwnMaps.Value.Values)
+        foreach (var map in Walk.OwnMaps.Values)
             foreach (var trigger in map.Triggers)
                 Assert.True(map.InBounds(trigger.X, trigger.Y) && map.InBounds(trigger.X + trigger.Width - 1, trigger.Y + trigger.Depth - 1), $"a trigger of {map.Name} lies off it");
     }

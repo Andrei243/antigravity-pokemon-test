@@ -1,0 +1,283 @@
+{
+  "PlayerName": "Lucas",
+  "Money": 3000,
+  "PlayTimeSeconds": 64800.0,
+  "Badges": 255,
+  "CurrentMapName": "Sinnoh",
+  "PlayerGridX": 116,
+  "PlayerGridY": 886,
+  "PlayerFacing": 0,
+  "WorldVersion": 2,
+  "Look": 0,
+  "RivalName": "Barry",
+  "TrainerId": 41350,
+  "Started": "2026-09-20T00:00:00",
+  "Travel": 0,
+  "Exit": null,
+  "LastDay": "2026-10-01T00:00:00",
+  "RegisteredItem": null,
+  "RepelSteps": 0,
+  "TrainerScore": 2550,
+  "HallOfFameTotal": 1,
+  "HallOfFameDebut": null,
+  "HallOfFame": [],
+  "Journal": [],
+  "Rules": "Platinum",
+  "GreetedPeople": [],
+  "Party": [
+    {
+      "SpeciesName": "Torterra",
+      "Nickname": "Torterra",
+      "Level": 62,
+      "Gender": 0,
+      "Nature": 0,
+      "IsShiny": false,
+      "CurrentHP": 202,
+      "Status": 0,
+      "IvHP": 20,
+      "IvAttack": 20,
+      "IvDefense": 20,
+      "IvSpAttack": 20,
+      "IvSpDefense": 20,
+      "IvSpeed": 20,
+      "CurrentExp": 234393,
+      "Ability": "Overgrow",
+      "HeldItem": null,
+      "Friendship": 100,
+      "EvHP": 4,
+      "EvAttack": 8,
+      "EvDefense": 0,
+      "EvSpAttack": 0,
+      "EvSpDefense": 0,
+      "EvSpeed": 12,
+      "Personality": 789746065,
+      "Ball": "Poké Ball",
+      "Pokerus": 0,
+      "Marks": 0,
+      "MetLocation": "Route 201",
+      "MetLevel": 5,
+      "MetDate": "2026-09-20T00:00:00",
+      "Language": null,
+      "Cool": 0,
+      "Beauty": 0,
+      "Cute": 0,
+      "Smart": 0,
+      "Tough": 0,
+      "Sheen": 0,
+      "Moves": [
+        {
+          "MoveName": "Wood Hammer",
+          "CurrentPP": 15
+        },
+        {
+          "MoveName": "Earthquake",
+          "CurrentPP": 10
+        },
+        {
+          "MoveName": "Crunch",
+          "CurrentPP": 15
+        },
+        {
+          "MoveName": "Leaf Storm",
+          "CurrentPP": 5
+        }
+      ]
+    },
+    {
+      "SpeciesName": "Staraptor",
+      "Nickname": "Staraptor",
+      "Level": 60,
+      "Gender": 0,
+      "Nature": 0,
+      "IsShiny": false,
+      "CurrentHP": 184,
+      "Status": 0,
+      "IvHP": 20,
+      "IvAttack": 20,
+      "IvDefense": 20,
+      "IvSpAttack": 20,
+      "IvSpDefense": 20,
+      "IvSpeed": 20,
+      "CurrentExp": 211060,
+      "Ability": "Intimidate",
+      "HeldItem": null,
+      "Friendship": 100,
+      "EvHP": 4,
+      "EvAttack": 8,
+      "EvDefense": 0,
+      "EvSpAttack": 0,
+      "EvSpDefense": 0,
+      "EvSpeed": 12,
+      "Personality": 789730228,
+      "Ball": "Poké Ball",
+      "Pokerus": 0,
+      "Marks": 0,
+      "MetLocation": "Route 201",
+      "MetLevel": 5,
+      "MetDate": "2026-09-20T00:00:00",
+      "Language": null,
+      "Cool": 0,
+      "Beauty": 0,
+      "Cute": 0,
+      "Smart": 0,
+      "Tough": 0,
+      "Sheen": 0,
+      "Moves": [
+        {
+          "MoveName": "Brave Bird",
+          "CurrentPP": 15
+        },
+        {
+          "MoveName": "Close Combat",
+          "CurrentPP": 5
+        },
+        {
+          "MoveName": "Wing Attack",
+          "CurrentPP": 35
+        },
+        {
+          "MoveName": "Quick Attack",
+          "CurrentPP": 30
+        }
+      ]
+    }
+  ],
+  "BoxStorage": [],
+  "Boxes": {
+    "CurrentBox": 0,
+    "UnlockedWallpapers": 0,
+    "Boxes": [
+      {
+        "Name": "BOX 1",
+        "Wallpaper": 0,
+        "Pokemon": []
+      },
+      {
+        "Name": "BOX 2",
+        "Wallpaper": 1,
+        "Pokemon": []
+      },
+      {
+        "Name": "BOX 3",
+        "Wallpaper": 2,
+        "Pokemon": []
+      },
+      {
+        "Name": "BOX 4",
+        "Wallpaper": 3,
+        "Pokemon": []
+      },
+      {
+        "Name": "BOX 5",
+        "Wallpaper": 4,
+        "Pokemon": []
+      },
+      {
+        "Name": "BOX 6",
+        "Wallpaper": 5,
+        "Pokemon": []
+      },
+      {
+        "Name": "BOX 7",
+        "Wallpaper": 6,
+        "Pokemon": []
+      },
+      {
+        "Name": "BOX 8",
+        "Wallpaper": 7,
+        "Pokemon": []
+      },
+      {
+        "Name": "BOX 9",
+        "Wallpaper": 8,
+        "Pokemon": []
+      },
+      {
+        "Name": "BOX 10",
+        "Wallpaper": 9,
+        "Pokemon": []
+      },
+      {
+        "Name": "BOX 11",
+        "Wallpaper": 10,
+        "Pokemon": []
+      },
+      {
+        "Name": "BOX 12",
+        "Wallpaper": 11,
+        "Pokemon": []
+      },
+      {
+        "Name": "BOX 13",
+        "Wallpaper": 12,
+        "Pokemon": []
+      },
+      {
+        "Name": "BOX 14",
+        "Wallpaper": 13,
+        "Pokemon": []
+      },
+      {
+        "Name": "BOX 15",
+        "Wallpaper": 14,
+        "Pokemon": []
+      },
+      {
+        "Name": "BOX 16",
+        "Wallpaper": 15,
+        "Pokemon": []
+      },
+      {
+        "Name": "BOX 17",
+        "Wallpaper": 0,
+        "Pokemon": []
+      },
+      {
+        "Name": "BOX 18",
+        "Wallpaper": 1,
+        "Pokemon": []
+      }
+    ]
+  },
+  "Inventory": [
+    {
+      "ItemName": "Max Potion",
+      "Quantity": 1
+    },
+    {
+      "ItemName": "HM06",
+      "Quantity": 1
+    }
+  ],
+  "SeenSpecies": [
+    389,
+    398
+  ],
+  "CaughtSpecies": [
+    389,
+    398
+  ],
+  "NationalPokedex": true,
+  "Diplomas": [],
+  "DefeatedTrainers": [],
+  "StoryFlags": [
+    "FLAG_TALKED_TO_MOM",
+    "FLAG_RIVAL_LEFT_HOME",
+    "FLAG_HAS_POKEDEX",
+    "FLAG_HAS_RUNNING_SHOES",
+    "FLAG_RECEIVED_PARCEL",
+    "FLAG_RECEIVED_HM06",
+    "FLAG_GAME_COMPLETED",
+    "SinnohHallOfFame",
+    "FLAG_FIRST_ARRIVAL_FIGHT_AREA"
+  ],
+  "StoryVersion": 17,
+  "StoryVariables": {
+    "VAR_PLAYER_HOUSE_STATE": 6,
+    "VAR_SANDGEM_TOWN_STATE": 2,
+    "VAR_ROUTE_202_STATE": 1
+  },
+  "TakenItems": [],
+  "PlayerStarter": "Turtwig",
+  "RivalStarter": "Chimchar"
+}

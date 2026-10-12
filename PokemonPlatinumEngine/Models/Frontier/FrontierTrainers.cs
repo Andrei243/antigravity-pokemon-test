@@ -198,19 +198,14 @@ public static class FrontierTrainers
     /// </summary>
     public static string LookOf(FrontierTrainerRecord trainer) => trainer.Class switch
     {
-        // The Frontier Brains have no looks of their own yet (plan 11): a stand-in each
-        "Tower Tycoon" or "Factory Head" or "Castle Valet" => "Gentleman",
-        "Hall Matron" or "Arcade Star" => "Lady",
-        _ => trainer.Look switch
-        {
-            "pikachu" => CharacterStyles.Default.CharacterFor("youngster"),
-            // The partners of the Battle Salon, as the Tower's own table has them (BattleTowerChallenge.PartnerLooks)
-            "cheryl" => "Cheryl",
-            "mira" => "Mira",
-            "riley" => "Clerk",
-            "marley" => "Lass",
-            "buck" => "Youngster",
-            _ => CharacterStyles.Default.CharacterFor(trainer.Look)
-        }
+        // The Frontier Brains are their own looks (plan 11 · C6), whatever object the data gives them (a schoolboy's)
+        "Tower Tycoon" => "palmer",
+        "Factory Head" => "thorton",
+        "Castle Valet" => "darach",
+        "Hall Matron" => "argenta",
+        "Arcade Star" => "dahlia",
+        // The partners of the Battle Salon (BattleTowerChallenge.PartnerLooks) and everyone else are their object's own
+        // look, or what it stands as
+        _ => trainer.Look == "pikachu" ? CharacterStyles.Default.CharacterFor("youngster") : CharacterStyles.Default.CharacterFor(trainer.Look)
     };
 }

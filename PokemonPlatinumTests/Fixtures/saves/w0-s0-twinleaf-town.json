@@ -1,0 +1,66 @@
+{
+  "PlayerName": "Lucas",
+  "Money": 3000,
+  "PlayTimeSeconds": 3600.0,
+  "Badges": 0,
+  "CurrentMapName": "TwinleafTown",
+  "PlayerGridX": 3,
+  "PlayerGridY": 3,
+  "PlayerFacing": 0,
+  "Party": [
+    {
+      "SpeciesName": "Turtwig",
+      "Nickname": "Turtwig",
+      "Level": 5,
+      "Gender": 0,
+      "Nature": 0,
+      "IsShiny": false,
+      "CurrentHP": 21,
+      "Status": 0,
+      "IvHP": 20,
+      "IvAttack": 20,
+      "IvDefense": 20,
+      "IvSpAttack": 20,
+      "IvSpDefense": 20,
+      "IvSpeed": 20,
+      "CurrentExp": 135,
+      "Moves": [
+        {
+          "MoveName": "Tackle",
+          "CurrentPP": 35
+        },
+        {
+          "MoveName": "Withdraw",
+          "CurrentPP": 40
+        },
+        {
+          "MoveName": "Absorb",
+          "CurrentPP": 25
+        }
+      ]
+    }
+  ],
+  "BoxStorage": [],
+  "Inventory": [
+    {
+      "ItemName": "Potion",
+      "Quantity": 5
+    },
+    {
+      "ItemName": "Poké Ball",
+      "Quantity": 10
+    },
+    {
+      "ItemName": "Revive",
+      "Quantity": 2
+    }
+  ],
+  "SeenSpecies": [
+    387
+  ],
+  "CaughtSpecies": [
+    387
+  ],
+  "DefeatedTrainers": [],
+  "StoryFlags": []
+}

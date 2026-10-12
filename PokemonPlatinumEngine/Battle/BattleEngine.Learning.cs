@@ -51,6 +51,7 @@ public partial class BattleEngine
         LearnStep = LearnStep.Forfeit;
         LearnCursor = 1;
         currentMessage = "Give the match up and end the challenge here?";
+        CurrentSpeaker = null;
         HUD.MenuState = BattleMenuState.LearnMove;
     }
 
@@ -90,6 +91,7 @@ public partial class BattleEngine
         LearnStep = step;
         LearnCursor = 0;
         currentMessage = question;
+        CurrentSpeaker = null;
         HUD.MenuState = BattleMenuState.LearnMove;
     }));
 

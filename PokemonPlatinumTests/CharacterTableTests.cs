@@ -7,6 +7,7 @@ using PokemonPlatinumEngine.Battle;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Models;
+using PokemonPlatinumEngine.Models.Frontier;
 using Raylib_cs;
 
 namespace PokemonPlatinumTests;
@@ -140,6 +141,91 @@ public class CharacterTableTests
             var file = JsonSerializer.Deserialize<MapFile>(File.ReadAllText(GameDataFiles.PathOf($"maps/{map}.json")), GameDataFiles.Json)!;
             Assert.Equal(look, file.Npcs.Single(n => n.Name == name).NpcType);
         }
+    }
+
+    /// <summary>
+    /// The named cast of the story's second half and of the Battle Frontier (plan 11 · C6): each a look of their own,
+    /// under the original's object name, named by the overlays and map files where they stand.
+    /// </summary>
+    public static readonly string[] SecondHalfCast =
+    {
+        "saturn", "riley", "byron", "candice", "volkner", "jasmine", "marley", "buck", "charon", "aaron", "bertha", "flint", "lucian",
+        "palmer", "teala", "prof_oak", "dahlia", "argenta", "thorton", "darach", "caitlin"
+    };
+
+    [Fact]
+    public void TheSecondHalfsNamedCastAreEachTheirOwnLook()
+    {
+        foreach (string look in SecondHalfCast)
+        {
+            Assert.True(Table.Has(look), $"{look} has no look");
+            Assert.False(Table.Fallbacks.ContainsKey(look), $"{look} still falls back");
+            Assert.Equal(look, WorldMapBuilder.CharacterFor(look));
+        }
+        // Each is told from every other look by hair, hat and clothes
+        foreach (string look in SecondHalfCast)
+        {
+            var s = Table.Get(look);
+            foreach (string other in Table.Names.Where(n => !n.Equals(look, StringComparison.OrdinalIgnoreCase)))
+            {
+                var o = Table.Get(other);
+                Assert.False((s.HairColor, s.Hair, s.Hat, s.HatColor, s.Top, s.Bottom) == (o.HairColor, o.Hair, o.Hat, o.HatColor, o.Top, o.Bottom),
+                    $"{look} looks just like {other}");
+            }
+        }
+
+        // The world's people stand as their own looks: the overlays name no type for them, and their objects' looks are theirs
+        foreach (var (key, id) in new[]
+        {
+            ("valor_cavern", "saturn"), ("iron_island", "riley"), ("iron_island_b2f_left_room", "riley"), ("resort_area", "byron"),
+            ("snowpoint_city", "candice"), ("sunyshore_city", "flint"), ("sunyshore_city", "jasmine"), ("victory_road_1f_room_2", "marley"),
+            ("fight_area", "buck"), ("fight_area", "flint"), ("fight_area", "volkner"), ("fight_area", "palmer"), ("route_227", "buck"),
+            ("survival_area", "buck"), ("stark_mountain_outside", "buck"), ("stark_mountain_room_2", "buck"), ("stark_mountain_room_3", "buck"),
+            ("stark_mountain_room_1", "charon"), ("stark_mountain_room_3", "charon")
+        })
+        {
+            var person = Sinnoh.Value.Overlay(key)!.People![id];
+            Assert.Null(person.NpcType);
+            Assert.Equal(id, WorldMapBuilder.CharacterFor(Sinnoh.Value.Area(key)!.Objects.First(o => o.Id == id).Looks));
+        }
+
+        // The rooms' people by their type, under the ids the original's objects gave them
+        foreach (var (map, id, look) in new[]
+        {
+            ("GalacticHQ1F", "saturn", "saturn"), ("GalacticHQControlRoom", "saturn", "saturn"), ("GalacticHQControlRoom", "charon", "charon"),
+            ("CanalaveGym", "byron", "byron"), ("IronIslandHouse", "byron", "byron"), ("SnowpointGym", "candice", "candice"),
+            ("SunyshoreGymRoom3", "volkner", "volkner"), ("VistaLighthouse", "volkner", "volkner"), ("CanalaveLibrary1F", "lucian", "lucian"),
+            ("PokemonLeagueAaronRoom", "aaron", "aaron"), ("PokemonLeagueBerthaRoom", "bertha", "bertha"),
+            ("PokemonLeagueFlintRoom", "flint", "flint"), ("PokemonLeagueLucianRoom", "lucian", "lucian"),
+            ("RowanLab", "prof_oak", "prof_oak"), ("EternaCitySouthHouse", "prof_oak", "prof_oak"), ("PalParkLobby", "prof_oak", "prof_oak"),
+            ("BattleHall", "visitor_professor", "prof_oak"), ("BattleHall", "visitor_jasmine", "jasmine"),
+            ("BattleTower", "teala", "teala"), ("BattleTowerBattleSalon", "teala", "teala"), ("PokemonCenter2F", "teala_middle", "teala"),
+            ("BattleTowerBattleSalon", "riley", "riley"), ("BattleTowerBattleSalon", "marley", "marley"), ("BattleTowerBattleSalon", "buck", "buck"),
+            ("Battleground", "riley", "riley"), ("Battleground", "marley", "marley"), ("Battleground", "buck_guest", "buck"),
+            ("Battleground", "byron", "byron"), ("Battleground", "candice", "candice"), ("Battleground", "volkner", "volkner"),
+            ("ResortAreaVilla", "flint", "flint"), ("ResortAreaVilla", "crasher_wake", "crasher_wake"),
+            ("BattleCastleBattleRoom", "lady", "caitlin")
+        })
+        {
+            var file = JsonSerializer.Deserialize<MapFile>(File.ReadAllText(GameDataFiles.PathOf($"maps/{map}.json")), GameDataFiles.Json)!;
+            Assert.Equal(look, file.Npcs.Single(n => n.Id == id).NpcType, ignoreCase: true);
+        }
+        // Every attendant upstairs and downstairs in a Pokémon Center is Teala
+        foreach (string path in Directory.GetFiles(GameDataFiles.PathOf("maps"), "*PokemonCenter*.json"))
+        {
+            var file = JsonSerializer.Deserialize<MapFile>(File.ReadAllText(path), GameDataFiles.Json)!;
+            Assert.All(file.Npcs.Where(n => n.Id?.StartsWith("teala", StringComparison.Ordinal) == true), n => Assert.Equal("teala", n.NpcType));
+        }
+
+        // The Frontier Brains walk into their battle rooms as themselves, and the Battle Salon's partners too
+        foreach (var (brainClass, look) in new[] { ("Tower Tycoon", "palmer"), ("Factory Head", "thorton"), ("Castle Valet", "darach"), ("Hall Matron", "argenta"), ("Arcade Star", "dahlia") })
+        {
+            var brain = FrontierDatabase.Trainers.First(t => t.Class == brainClass);
+            Assert.Equal(look, FrontierTrainers.LookOf(brain));
+            Assert.Equal(look, Table.InBattle(brainClass, look));
+        }
+        Assert.All(BattleTowerChallenge.PartnerLooks, look => Assert.True(Table.Has(look), $"the partner {look} has no look"));
+        Assert.Equal(new[] { "cheryl", "mira", "riley", "marley", "buck" }, FrontierDatabase.Trainers.Where(t => t.Class == "Pokémon Trainer").Select(FrontierTrainers.LookOf));
     }
 
     /// <summary>

@@ -34,10 +34,10 @@
     // asks them to give his friend Volkner a battle worth having, then waits before the Gym's door until Volkner has
     // come back to it from the lighthouse; he stands as a youngster, as in his room at the League, until he has a
     // look of his own (plan 11 · C6). The rival is brought on by his scene on the beach.
-    "flint": { "name": "Flint", "npcType": "Youngster", "script": "Flint", "still": true },
+    "flint": { "name": "Flint", "script": "Flint", "still": true },
     "rival": { "name": "{rival}", "dialog": [ "{rival}: I'm going to be the toughest Trainer there ever was. Just you wait and see!" ], "still": true },
     // She is visiting from Johto, and gives HM07 in the rival's scene after the Gym
-    "jasmine": { "name": "Jasmine", "npcType": "Lass", "script": "Jasmine", "still": true },
+    "jasmine": { "name": "Jasmine", "script": "Jasmine", "still": true },
     "sailor_1": {
       "name": "Sailor",
       "npcType": "Gentleman",

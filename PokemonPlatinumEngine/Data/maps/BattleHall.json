@@ -346,7 +346,7 @@
     {
       "id": "visitor_professor",
       "name": "Prof. Oak",
-      "npcType": "Gentleman",
+      "npcType": "prof_oak",
       "x": 4,
       "y": 6,
       "facing": "Down",
@@ -356,7 +356,7 @@
     {
       "id": "visitor_jasmine",
       "name": "Jasmine",
-      "npcType": "Lass",
+      "npcType": "jasmine",
       "x": 4,
       "y": 6,
       "facing": "Down",

@@ -1,0 +1,135 @@
+{
+  "PlayerName": "Lucas",
+  "Money": 3000,
+  "PlayTimeSeconds": 10800.0,
+  "Badges": 0,
+  "CurrentMapName": "JubilifeCity",
+  "PlayerGridX": 19,
+  "PlayerGridY": 17,
+  "PlayerFacing": 1,
+  "WorldVersion": 1,
+  "Look": 0,
+  "RivalName": "Barry",
+  "TrainerId": 41350,
+  "Started": "2026-09-20T00:00:00",
+  "Party": [
+    {
+      "SpeciesName": "Piplup",
+      "Nickname": "Piplup",
+      "Level": 10,
+      "Gender": 0,
+      "Nature": 15,
+      "IsShiny": false,
+      "CurrentHP": 32,
+      "Status": 0,
+      "IvHP": 20,
+      "IvAttack": 20,
+      "IvDefense": 20,
+      "IvSpAttack": 20,
+      "IvSpDefense": 20,
+      "IvSpeed": 20,
+      "CurrentExp": 560,
+      "Ability": "Torrent",
+      "HeldItem": null,
+      "Friendship": 100,
+      "EvHP": 4,
+      "EvAttack": 8,
+      "EvDefense": 0,
+      "EvSpAttack": 0,
+      "EvSpDefense": 0,
+      "EvSpeed": 12,
+      "Personality": 789334275,
+      "Ball": "Poké Ball",
+      "Moves": [
+        {
+          "MoveName": "Pound",
+          "CurrentPP": 35
+        },
+        {
+          "MoveName": "Growl",
+          "CurrentPP": 40
+        },
+        {
+          "MoveName": "Bubble",
+          "CurrentPP": 30
+        }
+      ]
+    },
+    {
+      "SpeciesName": "Starly",
+      "Nickname": "Starly",
+      "Level": 7,
+      "Gender": 0,
+      "Nature": 0,
+      "IsShiny": false,
+      "CurrentHP": 24,
+      "Status": 0,
+      "IvHP": 20,
+      "IvAttack": 20,
+      "IvDefense": 20,
+      "IvSpAttack": 20,
+      "IvSpDefense": 20,
+      "IvSpeed": 20,
+      "CurrentExp": 236,
+      "Ability": "Keen Eye",
+      "HeldItem": null,
+      "Friendship": 100,
+      "EvHP": 4,
+      "EvAttack": 8,
+      "EvDefense": 0,
+      "EvSpAttack": 0,
+      "EvSpDefense": 0,
+      "EvSpeed": 12,
+      "Personality": 789310518,
+      "Ball": "Poké Ball",
+      "Moves": [
+        {
+          "MoveName": "Tackle",
+          "CurrentPP": 35
+        },
+        {
+          "MoveName": "Growl",
+          "CurrentPP": 40
+        }
+      ]
+    }
+  ],
+  "BoxStorage": [],
+  "Inventory": [
+    {
+      "ItemName": "Potion",
+      "Quantity": 3
+    },
+    {
+      "ItemName": "Poké Ball",
+      "Quantity": 5
+    }
+  ],
+  "SeenSpecies": [
+    393,
+    396
+  ],
+  "CaughtSpecies": [
+    393,
+    396
+  ],
+  "DefeatedTrainers": [
+    "trainer_tristan"
+  ],
+  "StoryFlags": [
+    "FLAG_TALKED_TO_MOM",
+    "FLAG_RIVAL_LEFT_HOME",
+    "FLAG_HAS_POKEDEX",
+    "FLAG_HAS_RUNNING_SHOES",
+    "FLAG_RECEIVED_PARCEL"
+  ],
+  "StoryVersion": 2,
+  "StoryVariables": {
+    "VAR_PLAYER_HOUSE_STATE": 6,
+    "VAR_SANDGEM_TOWN_STATE": 2,
+    "VAR_ROUTE_202_STATE": 1
+  },
+  "TakenItems": [],
+  "PlayerStarter": "Piplup",
+  "RivalStarter": "Turtwig"
+}

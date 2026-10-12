@@ -1,0 +1,104 @@
+{
+  "PlayerName": "Lucas",
+  "Money": 4200,
+  "PlayTimeSeconds": 3600.0,
+  "Badges": 1,
+  "CurrentMapName": "Sinnoh",
+  "PlayerGridX": 180,
+  "PlayerGridY": 777,
+  "PlayerFacing": 0,
+  "WorldVersion": 2,
+  "Party": [
+    {
+      "SpeciesName": "Starly",
+      "Nickname": "Starly",
+      "Level": 9,
+      "Gender": 0,
+      "Nature": 0,
+      "IsShiny": false,
+      "CurrentHP": 28,
+      "Status": 0,
+      "IvHP": 20,
+      "IvAttack": 20,
+      "IvDefense": 20,
+      "IvSpAttack": 20,
+      "IvSpDefense": 20,
+      "IvSpeed": 20,
+      "CurrentExp": 419,
+      "Moves": [
+        {
+          "MoveName": "Tackle",
+          "CurrentPP": 35
+        },
+        {
+          "MoveName": "Growl",
+          "CurrentPP": 40
+        },
+        {
+          "MoveName": "Quick Attack",
+          "CurrentPP": 30
+        }
+      ]
+    },
+    {
+      "SpeciesName": "Monferno",
+      "Nickname": "Monferno",
+      "Level": 16,
+      "Gender": 0,
+      "Nature": 0,
+      "IsShiny": false,
+      "CurrentHP": 49,
+      "Status": 0,
+      "IvHP": 20,
+      "IvAttack": 20,
+      "IvDefense": 20,
+      "IvSpAttack": 20,
+      "IvSpDefense": 20,
+      "IvSpeed": 20,
+      "CurrentExp": 2535,
+      "Moves": [
+        {
+          "MoveName": "Scratch",
+          "CurrentPP": 35
+        },
+        {
+          "MoveName": "Leer",
+          "CurrentPP": 30
+        },
+        {
+          "MoveName": "Ember",
+          "CurrentPP": 25
+        },
+        {
+          "MoveName": "Mach Punch",
+          "CurrentPP": 30
+        }
+      ]
+    }
+  ],
+  "BoxStorage": [],
+  "Inventory": [
+    {
+      "ItemName": "Potion",
+      "Quantity": 3
+    },
+    {
+      "ItemName": "Poké Ball",
+      "Quantity": 5
+    }
+  ],
+  "SeenSpecies": [
+    391,
+    396
+  ],
+  "CaughtSpecies": [
+    391,
+    396
+  ],
+  "DefeatedTrainers": [
+    "route_202_tristan"
+  ],
+  "StoryFlags": [
+    "KantoHallOfFame"
+  ]
+}

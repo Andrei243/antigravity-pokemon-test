@@ -84,7 +84,7 @@
     {
       "id": "flint",
       "name": "Flint",
-      "npcType": "Youngster",
+      "npcType": "flint",
       "x": 8,
       "y": 5,
       "facing": "Down",

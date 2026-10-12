@@ -112,7 +112,7 @@ internal static partial class ModernUi
                     DrawChoices(sw + 48, sh + 40, new[] { "Yes", "No" }, battle.LearnCursor, 1f);
                 break;
             default:
-                MessageBox(new Rectangle(48, 858, 1824, 172), message, null);
+                MessageBox(new Rectangle(48, 858, 1824, 172), message, null, battle.CurrentSpeaker);
                 break;
         }
     }
@@ -322,10 +322,14 @@ internal static partial class ModernUi
         ExpBar(new Rectangle(x + 40, y + r.Height - 18, 360, 8), view.DisplayedExp);
     }
 
-    /// <summary>The message panel: either "What will X do?" or a message waiting for the A button (two lines if it is long).</summary>
-    public static void MessageBox(Rectangle r, string? message, string? prompting)
+    /// <summary>
+    /// The message panel: either "What will X do?" or a message waiting for the A button (two lines if it is long).
+    /// A line someone says (a trainer speaking in battle, plan 11 · C12) has their name on a pill over the box.
+    /// </summary>
+    public static void MessageBox(Rectangle r, string? message, string? prompting, string? speaker = null)
     {
         Panel(r, 28);
+        if (prompting == null && !string.IsNullOrEmpty(speaker)) SpeakerPill(r, speaker);
         float x = r.X + 52, cy = r.Y + r.Height / 2f;
         if (prompting != null)
         {
@@ -345,6 +349,20 @@ internal static partial class ModernUi
             UiFonts.DrawCentered(lines[1], x, cy + 28, 40, Ink, UiWeight.ExtraBold);
         }
         AdvanceArrow(r.X + r.Width - 64, r.Y + r.Height - 52);
+    }
+
+    /// <summary>
+    /// The name of whoever says the message (style guide, "Battle panels", "A trainer's line"): a pill 44 tall hung on
+    /// the box's top edge (22 above it, 22 over it), 40 in from its left, the name in white Black 26 on Red.
+    /// </summary>
+    private static void SpeakerPill(Rectangle box, string speaker)
+    {
+        const float h = 44, size = 26, pad = 22;
+        float w = pad + UiFonts.Measure(speaker, size, UiWeight.Black) + pad;
+        var pill = new Rectangle(box.X + 40, box.Y - h / 2f, w, h);
+        UiShapes.Shadow(pill, h / 2f, 10, new Vector2(0, 3), ShadowColor);
+        UiShapes.Shape(pill, h / 2f, Lighter(Red, 0.1f), Darker(Red, 0.08f), Darker(Red, 0.3f), 2);
+        UiFonts.DrawCentered(speaker, pill.X + pad, pill.Y + h / 2f, size, Color.White, UiWeight.Black);
     }
 
     private static void MoveMenu(BattleHUD hud, Pokemon p, BattleEngine battle)

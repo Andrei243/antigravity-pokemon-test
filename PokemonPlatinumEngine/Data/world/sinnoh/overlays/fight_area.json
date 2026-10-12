@@ -23,16 +23,16 @@
   // plan 11's: looks that exist stand for them
   "people": {
     "rival": { "name": "{rival}", "script": "Rival", "still": true },
-    "buck": { "name": "Buck", "npcType": "Youngster", "script": "Buck", "still": true },
+    "buck": { "name": "Buck", "script": "Buck", "still": true },
     "flint": {
-      "name": "Flint", "npcType": "Youngster", "script": "Flint", "still": true,
+      "name": "Flint", "script": "Flint", "still": true,
       "trainer": { "id": "elite_four_flint_fight_area",
         "dialogueBefore": "Flint: Burn as bright as you can! I want to see it!",
         "dialogueAfter": "Flint: ... ... ..." }
     },
     // (his team is named by the script, as a Gym Leader's is: battle volkner as "leader_volkner_fight_area")
-    "volkner": { "name": "Volkner", "npcType": "Youngster", "script": "Volkner", "still": true },
-    "palmer": { "name": "Palmer", "npcType": "Gentleman", "dialog": [ "Palmer: You'll find me at the top of the Battle Tower." ], "still": true },
+    "volkner": { "name": "Volkner", "script": "Volkner", "still": true },
+    "palmer": { "name": "Palmer", "dialog": [ "Palmer: You'll find me at the top of the Battle Tower." ], "still": true },
     "ace_trainer_m_2": {
       "name": "Ace Trainer",
       "dialog": [
