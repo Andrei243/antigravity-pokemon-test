@@ -3,6 +3,9 @@
 #
 # The game opens on the end of a television special about Professor Rowan's return to Sinnoh. At the player's first
 # step the rival bursts in from the stairs: he saw it too, and they're off to ask the professor for Pokémon.
+#
+# The room is on the original's plan (plan 01 · M11, the last rooms): the adventure begins on 4, 6, before the
+# television; the computer is in the north-west corner with its seat on 1, 5; the stairs' head is 8, 4.
 
 
 script OnEnter
@@ -17,21 +20,54 @@ script OnEnter
   end
 
 
-# The first step off the starting tile, whichever way (the original's four triggers round it).
+# The first step off the starting tile, whichever way: the original's four triggers round it, and its four ways
+# through the scene, by the tile the player stepped onto (4, 5 to the north, 3, 6 to the west, 5, 6 to the east,
+# 4, 7 to the south). He calls from the stairs' head, runs up to the player, is distracted by the computer, comes
+# back and runs out again. The original starts him two tiles down the flight; here he appears at its head.
 script RivalRushesIn
   sound "stairs"
   show rival
   music "common/rival"
   emote rival exclaim
-  walk rival left 1 fast
-  face player rival
-  face rival player
   speaker "{rival}"
   say "{player}! Did you see it? On TV, just now? The special on Professor Rowan!"
+  # TwinleafTownPlayerHouse2F_Movement_RivalApproachPlayerNorth, West, East, South
+  if var PLAYER_Y == 5 move rival left 1 down 1 left 2 fast
+  if var PLAYER_X == 3 move rival left 1 down 2 left 3 fast
+  if var PLAYER_X == 5 move rival down 2 left 2 fast
+  if var PLAYER_Y == 7 move rival left 1 down 3 left 2 fast
+  wait 0.3
+  face player right
+  waitmoves
   say "He's back in Sinnoh, and he studies Pokémon, so he's got to have tons of them! If we ask nicely, he's sure to give us one each!"
-  say "...Whoa, is that a new computer? Lucky! ...Huh? What was I saying?"
+  emote rival exclaim
+  # ..._RivalApproachPCNorth, West, East, South: to the seat before the computer
+  if var PLAYER_Y == 5 move rival down 1 left 4 up 1 fast
+  if var PLAYER_X == 3 move rival up 1 left 3 fast
+  if var PLAYER_X == 5 move rival up 1 left 5 fast
+  if var PLAYER_Y == 7 move rival up 1 left 4 up 1 fast
+  wait 0.2
+  face player left
+  waitmoves
+  face rival up
+  say "...Whoa, is that a new computer? Lucky!"
+  face rival right
+  say "...Huh? What was I saying?"
+  # ..._RivalWalkBackToPlayerNorth, West, East, South
+  if var PLAYER_Y == 5 walk rival right 2 fast
+  if var PLAYER_X == 3 walk rival right 1 down 1 fast
+  if var PLAYER_X == 5 walk rival right 1 down 1 right 2 fast
+  if var PLAYER_Y == 7 walk rival right 1 down 2 right 1 fast
+  face rival player
   say "Right! We're going to see Professor Rowan! I'll wait for you outside. If you're late, that's a ten-million fine!"
-  walk rival right 1 fast
+  # ..._RivalLeaveNorth, West, East, South: round the player and back to the stairs' head
+  if var PLAYER_Y == 5 move rival down 1 right 3 up 2 right 2 fast
+  if var PLAYER_X == 3 move rival up 1 right 4 up 1 right 2 fast
+  if var PLAYER_X == 5 move rival up 1 right 2 up 1 right 2 fast
+  if var PLAYER_Y == 7 move rival up 1 right 3 up 2 right 2 fast
+  wait 0.45
+  face player right
+  waitmoves
   hide rival
   sound "stairs"
   music area
@@ -39,7 +75,7 @@ script RivalRushesIn
   end
 
 
-# The wardrobe by the bed (plan 11 · C10): the clothes owned, changed for nothing.
+# The wardrobe by the television (plan 11 · C10): the clothes owned, changed for nothing.
 script Wardrobe
   sayown
   wardrobe

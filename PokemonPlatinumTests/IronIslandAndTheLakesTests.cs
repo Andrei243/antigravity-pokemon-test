@@ -542,7 +542,7 @@ public class IronIslandAndTheLakesTests
         Assert.Contains(game.Talk("scientist_f").Transcript, l => l.Text.Contains("earthquake"));
         Assert.Contains(game.Talk("youngster").Transcript, l => l.Text.Contains("wobbly"));
         // Mom at home has felt it too
-        game.Arrive("PlayerHouse", 5, 6);
+        game.Arrive("PlayerHouse", 6, 10);
         Assert.Contains(game.Talk("mom").Transcript, l => l.Text.Contains("whole house shook"));
     }
 

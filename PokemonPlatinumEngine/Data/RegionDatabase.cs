@@ -99,7 +99,7 @@ public static class RegionDatabase
         {
             Id = Sinnoh, Name = "Sinnoh", Generation = 4,
             // In the player's room upstairs at home in Twinleaf Town, facing the television, as in Platinum (plan 02 · S4)
-            Start = new MapSpot("PlayerHouse2F", 4, 4, Direction.Up),
+            Start = new MapSpot("PlayerHouse2F", 4, 6, Direction.Up),
             Maps = new[]
             {
                 // The imported world: the overworld, and the places that are matrices of their own

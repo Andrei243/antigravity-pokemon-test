@@ -37,8 +37,14 @@ public class SaveData
     /// </summary>
     public const int RebuiltRooms = 3;
 
+    /// <summary>
+    /// The <see cref="WorldVersion"/> from which the last two hand-made places are on the original's plans too (plan
+    /// 01 · M11, the last step: the player's house on both floors and Professor Rowan's lab).
+    /// </summary>
+    public const int RebuiltHome = 4;
+
     /// <summary>The <see cref="WorldVersion"/> of saves made today.</summary>
-    public const int CurrentWorld = RebuiltRooms;
+    public const int CurrentWorld = RebuiltHome;
 
     public string PlayerName { get; set; } = "Lucas";
 
@@ -209,6 +215,7 @@ public class SaveData
             "TrainersSchool", "PoketchCompany", "JubilifeTV1F",
             "RivalHouse", "RivalHouse2F",
         }),
+        (RebuiltHome, new[] { "PlayerHouse", "PlayerHouse2F", "RowanLab" }),
     };
 
     /// <summary>Whether a room has been laid out again since a save of this <see cref="WorldVersion"/> was made.</summary>
@@ -220,7 +227,9 @@ public class SaveData
     /// every room: a save made in a room that has been laid out again since (<see cref="RebuiltAfter"/>), or standing
     /// on a tile of a room where nobody can stand, wakes on the tile the room is come into by (<see cref="ArrivalIn"/>:
     /// inside its door, or beside the stairs that lead up to it), looking the way one comes in. Outdoors and in a
-    /// room that is as it was, the save's own tile stands.
+    /// room that is as it was, the save's own tile stands. The room a region's game begins in is come into by the
+    /// tile it begins on: a game saved in the player's bedroom before the first step wakes there, where the scene
+    /// that the first step starts finds it.
     /// </summary>
     public MapSpot PlaceOn(Func<string, Map?> maps)
     {
@@ -229,6 +238,8 @@ public class SaveData
             || !string.Equals(room.Name, spot.Map, StringComparison.OrdinalIgnoreCase)) return spot;
         bool standable = room.InBounds(spot.X, spot.Y) && !room.IsSolid(spot.X, spot.Y);
         if (standable && !RebuiltAfter(room.Name, WorldVersion)) return spot;
+        if (RegionDatabase.RegionOfMap(room.Name)?.Start is { } start && string.Equals(start.Map, room.Name, StringComparison.OrdinalIgnoreCase)
+            && room.InBounds(start.X, start.Y) && !room.IsSolid(start.X, start.Y)) return start;
         return ArrivalIn(room, maps) ?? spot;
     }
 

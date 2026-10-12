@@ -184,8 +184,8 @@ partial class Harness
         {
             // ---- the professor rates a Pokédex that isn't full yet
             SeeOfSinnoh(120);
-            ComeThrough(Lab, 5, 8, Direction.Up);
-            At(Lab, 5, 4, Direction.Up);
+            ComeThrough(Lab, 7, 15, Direction.Up);
+            At(Lab, 7, 6, Direction.Up);
             Frames(20); Shot("pg01_lab_before_the_desk");
             game.Interact();
             ToQuestion("the professor's question"); Shot("pg02_lab_show_me_your_pokedex");
@@ -203,15 +203,15 @@ partial class Harness
             ReadTo(null);
 
             // ---- Professor Oak's visit
-            ComeThrough(Lab, 5, 8, Direction.Up);
-            At(Lab, 5, 4, Direction.Up);
+            ComeThrough(Lab, 7, 15, Direction.Up);
+            At(Lab, 7, 6, Direction.Up);
             game.Interact();
             ToQuestion("the professor's other question"); Shot("pg06_lab_something_to_show_me");
             Answer(0);
             ReadTo("every one of them"); Frames(4); Shot("pg07_lab_every_one_of_them");
             ReadTo("In sixty years"); Frames(4);
             Box().Advance();
-            Walking(Lab, "prof_oak", null, oak => oak.GridY <= 6, "Professor Oak coming in");
+            Walking(Lab, "prof_oak", null, oak => oak.GridY <= 10, "Professor Oak coming in");
             Shot("pg08_lab_professor_oak_comes_in");
             ReadTo("Good day to you"); Frames(4); Shot("pg09_lab_good_day_professor_rowan");
             ReadTo("old colleague"); Frames(4); Shot("pg0a_lab_my_old_colleague");
@@ -220,7 +220,7 @@ partial class Harness
             ReadTo("Pal Park"); Frames(4); Shot("pg0d_lab_pal_park_is_open");
             ReadTo("must be going"); Frames(4);
             Box().Advance();
-            Walking(Lab, "prof_oak", null, oak => oak.GridY >= 7, "Professor Oak going out");
+            Walking(Lab, "prof_oak", null, oak => oak.GridY >= 11, "Professor Oak going out");
             Shot("pg0e_lab_professor_oak_goes");
             ReadTo("This is for you"); Frames(4); Shot("pg0f_lab_this_is_for_you");
             ReadTo("Poké Radar"); Frames(4); Shot("pg0g_lab_the_poke_radar");

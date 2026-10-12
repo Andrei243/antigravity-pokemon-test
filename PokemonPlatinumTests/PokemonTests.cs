@@ -331,11 +331,12 @@ public class PokemonTests
         MapDatabase.Initialize();
         var home = MapDatabase.Get("PlayerHouse");
 
-        Assert.False(home.IsWalkable(4, 4), "the dining table should be solid");
-        Assert.False(home.IsWalkable(8, 2), "the stairs should be solid");
-        Assert.Equal("PlayerHouse2F", home.GetWarpAt(8, 3)?.TargetMap);
-        Assert.True(home.IsWalkable(4, 6), "the rug by the door should be walkable");
-        Assert.True(home.IsWalkable(4, 5), "the white-out spot must stay free");
+        Assert.False(home.IsWalkable(3, 8), "the dining table should be solid");
+        Assert.False(home.IsWalkable(8, 3), "the stairs should be solid");
+        Assert.Equal("PlayerHouse2F", home.GetWarpAt(10, 3)?.TargetMap);
+        Assert.True(home.IsWalkable(6, 10), "the mat inside the door should be walkable");
+        // (the cushion beside Mom's: GameEngine.HomeSpot)
+        Assert.True(home.IsWalkable(8, 8), "the white-out spot must stay free");
 
         // Nurse Joy stands behind the counter and is talked to across it
         var center = MapDatabase.Get("PokemonCenter");

@@ -26,27 +26,37 @@
 # A guardian is shown only where it hasn't been caught or set roaming already: the original's scene clears the three
 # flags whatever has happened, since nothing can have, and a save from before the chapter may have met one
 # (Story/StoryMigration.cs, version 16).
+#
+# The room is on the original's plan (plan 01 · M11, the last rooms), and the scenes walk on the original's tiles: a
+# wide hall at the back, where the professor stands on 7, 5 before his shelves, and the length of the lab down to the
+# door, whose mat is 7, 15. His two assistants work among the machines half-way down (the man is the father of the
+# child who helps the professor).
 
 
 script OnEnter
   if var VAR_SANDGEM_TOWN_LAB_STATE == 2 goto Returned
   if var VAR_SANDGEM_TOWN_LAB_STATE == 3 goto ByTheDoor
   # Afterwards he is behind his desk again (a scene's place holds while the game runs)
-  if var VAR_SANDGEM_TOWN_LAB_STATE >= 4 place prof_rowan 5 2 down
+  if var VAR_SANDGEM_TOWN_LAB_STATE >= 4 place prof_rowan 7 5 down
   if var VAR_SANDGEM_TOWN_LAB_STATE != 0 end
   if var VAR_SANDGEM_TOWN_STATE == 0 end
-  walk counterpart up 3
-  walk player up 4
-  face counterpart prof_rowan
+  # SandgemTownLab_OnFrame_GetPokedex: the assistant, a step ahead at 7, 14, leads the way up the lab and stands
+  # aside at the professor's left hand; the player stops before him
+  move counterpart up 8 right 1
+  walk player up 9
+  waitmoves
+  face counterpart left
   speaker "Prof. Rowan"
   say "Ah, there you are. Let me have a look at that Pokémon of yours."
   say "...Hm. It seems happy to be with you."
   say "Then trusting it to you was no mistake."
   say "When I first saw you two charging into the tall grass, I was shocked. But a bond is already growing between you and your Pokémon."
   say "Cherish that Pokémon, and cherish that bond."
+  face player right
   speaker "{assistant}"
   say "I'm glad! I could tell straight away that you're kind to Pokémon."
   music "common/rowan"
+  face player up
   speaker "Prof. Rowan"
   say "Now. As you know, I am Rowan, and I study Pokémon. There is something I would ask of you."
 label Ask
@@ -66,10 +76,14 @@ label Takes
   say "Tell me, {player}: how did it feel, walking along Route 201 with a Pokémon at your side?"
   say "I have lived for sixty years, and I still feel that thrill. Your great adventure begins now."
   face counterpart player
+  face player right
   speaker "{assistant}"
   say "I'm {assistant}, by the way. I help the professor out. My first Pokémon is {assistantstarter}!"
   say "We're both working on the Pokédex now, so let's do our best. See you outside!"
-  walk counterpart down 3
+  move counterpart down 9
+  wait 0.25
+  face player down
+  waitmoves
   hide counterpart
   setflag FLAG_HIDE_SANDGEM_TOWN_LAB_COUNTERPART
   clearflag FLAG_HIDE_SANDGEM_TOWN_COUNTERPART
@@ -84,8 +98,8 @@ label ByTheDoor
 label Returned
   call TheyWait
   if var VAR_EXITED_DISTORTION_WORLD_STATE == 2 setvar VAR_EXITED_DISTORTION_WORLD_STATE 3
-  # A step in from the door, so that the player stands clear of the text
-  walk player up 1
+  # Up to them from the door
+  walk player up 3
   speaker "Prof. Rowan"
   say "{player}! You are back!"
   say "I... Words fail me. You saw it through. All of it!"
@@ -124,13 +138,15 @@ label League
   end
 
 
-# SandgemTownLab_SetProfRowanAndCounterpartPositions: the two inside the door, facing it (the original stands them at
-# 7, 14 and 6, 14 of its own, larger room).
+# SandgemTownLab_SetProfRowanAndCounterpartPositions: the two inside the door, facing it. The original stands them
+# on 7, 14 and 6, 14, right before the mat; here they wait three tiles further up the lab, and the player walks up to
+# them, because this game's camera shows a room's front rows under the text box and the scene would be read with
+# the player hidden behind it.
 script TheyWait
   clearflag FLAG_HIDE_SANDGEM_TOWN_LAB_PROF_ROWAN
   clearflag FLAG_HIDE_SANDGEM_TOWN_LAB_COUNTERPART
-  place prof_rowan 5 5 down
-  place counterpart 4 5 down
+  place prof_rowan 7 11 down
+  place counterpart 6 11 down
   show counterpart
   return
 
@@ -238,25 +254,32 @@ label Upto209
   return
 
 
-# SandgemTownLab_EnableNationalDex: Professor Oak's visit. The player stands before the desk, across it from
-# Professor Rowan.
+# SandgemTownLab_EnableNationalDex: Professor Oak's visit. The player is first brought round to stand below Professor
+# Rowan, who is on 7, 5 (the original's four ways, by the side he was spoken to from), then steps aside to the west
+# as Professor Oak comes up the lab from the door.
 script OakVisits
+  if var PLAYER_Y == 4 walk player left 1 down 2 right 1
+  if var PLAYER_X == 8 walk player down 1 left 1
+  if var PLAYER_X == 6 walk player down 1 right 1
+  face player up
+  face prof_rowan down
   clearflag FLAG_HIDE_SANDGEM_TOWN_LAB_PROF_OAK
-  place prof_oak 5 8 up
+  place prof_oak 7 14 up
   show prof_oak
   sound "door_open"
   face player down
-  wait 0.5
+  move prof_oak up 7
+  wait 1.1
   walk player left 1
   face player right
-  walk prof_oak up 3
+  waitmoves
   emote prof_rowan exclaim
   speaker "Prof. Oak"
   say "Good day to you, Professor Rowan! I hope I am not interrupting."
   speaker "Prof. Rowan"
   say "Well, I'll be! Professor Oak! My old colleague, all the way from Kanto. It has been far too long!"
   face prof_rowan left
-  wait 0.3
+  wait 0.45
   face prof_rowan down
   say "Let me introduce {player}, who has been helping me with the Pokédex. Every Pokémon of Sinnoh is in it. Every one!"
   walk prof_oak left 1
@@ -277,7 +300,7 @@ script OakVisits
   speaker "Prof. Oak"
   say "Ha! I believe you. One more piece of news: Pal Park, on Route 221, is open at last. Pokémon from far away are let loose there to be caught again."
   say "Do pay it a visit, {player}. I shall be there myself for a while. Well, I must be going!"
-  walk prof_oak down 3 right 1
+  walk prof_oak down 8
   sound "door_close"
   hide prof_oak
   setflag FLAG_HIDE_SANDGEM_TOWN_LAB_PROF_OAK
@@ -290,6 +313,45 @@ script OakVisits
   give "Poké Radar"
   say "That is the Poké Radar. Use it in tall grass, and it finds Pokémon that would never show themselves otherwise. You will need it for that new Pokédex."
   return
+
+
+# The professor's two assistants (SandgemTownLab_ScientistM, ScientistF). Each has three things to say, in the
+# original's order: one for the days between the professor's news and the player's arrival in Sunyshore City (the lab's
+# state 3), one once the National Pokédex is the player's, and one for every other day.
+script ScientistM
+  face self player
+  speaker "Scientist"
+  if var VAR_SANDGEM_TOWN_LAB_STATE == 3 goto Stunned
+  if nationaldex goto Research
+  say "Hello there! I'm {assistant}'s father. I work here with the professor."
+  say "It's a comfort to know there are two of you out there, I can tell you. Look out for each other, won't you?"
+  end
+label Research
+  say "It still astonishes me. Every kind of Pokémon in Sinnoh, in a single Pokédex!"
+  say "And my own {assistant} has been at it twice as long... Well. You have done wonders for the professor's work on how Pokémon evolve."
+  end
+label Stunned
+  say "I... I don't have the words. What you did up there!"
+  say "I haven't been this shaken, or this glad, since the day my child was born. Oh, it's good to be alive!"
+  end
+
+
+script ScientistF
+  face self player
+  speaker "Scientist"
+  if var VAR_SANDGEM_TOWN_LAB_STATE == 3 goto Shivers
+  if nationaldex goto Systems
+  say "The professor designed the new Pokédex together with a professor from the Kanto region."
+  say "I'm one of his assistants. It's hard work, and I wouldn't change places with anyone!"
+  end
+label Systems
+  say "Yes, that's right: Professor Rowan and Professor Oak have been working on how a Pokédex should work, the two of them."
+  say "Professor Oak is the younger man, you know. He was Professor Rowan's junior, once upon a time."
+  end
+label Shivers
+  say "When the professor told us what was happening on the mountain, I went cold all over."
+  say "But he said you would put it right, and he said it as if it were a plain fact. So I believed it. And here you are!"
+  end
 
 
 # The assistant by the door (the original's scripts_counterpart_talk.s, between the professor's scene and the

@@ -203,7 +203,7 @@ A cave nothing leads into names the tiles it is come to by (plan 06 · R16a: the
   "battleArena": "Forest",            // optional, as in a map file
   "climate": "Volcanic",             // optional: air of its own, Volcanic or Frozen (style guide, "Climates")
   "evolutionSites": [ "Moss Rock" ],  // optional, as in a map file
-  "doors": [ { "warp": 1, "map": "PlayerHouse", "x": 4, "y": 6, "facing": "Up" } ],   // "openedBy": a flag it waits for
+  "doors": [ { "warp": 1, "map": "PlayerHouse", "x": 6, "y": 10, "facing": "Up" } ],   // "openedBy": a flag it waits for
   "locked": [ 2, 3 ],
   "exits": [ { "x": 173, "z": 800, "map": "SomeHandMadeMap", "toX": 19, "toY": 32, "facing": "Up" } ],
   "switches": [ { "warp": 3, "until": "FLAG_X" }, { "warp": 5, "from": "FLAG_X" } ],   // optional: warps the story switches

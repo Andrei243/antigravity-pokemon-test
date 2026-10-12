@@ -116,7 +116,7 @@ partial class Harness
                 "PokeMart", "JubilifePokeMart", "OreburghPokeMart", "FloaromaPokeMart", "EternaPokeMart", "HearthomePokeMart", "SolaceonPokeMart",
                 "PastoriaPokeMart", "CanalavePokeMart", "SnowpointPokeMart", "SunyshorePokeMart", "FightAreaPokeMart", "SurvivalAreaPokeMart",
             }),
-            ("firstrooms", new[] { "TrainersSchool", "PoketchCompany", "PoketchCompany2F", "PoketchCompany3F", "JubilifeTV1F", "RivalHouse", "RivalHouse2F" }),
+            ("firstrooms", new[] { "TrainersSchool", "PoketchCompany", "PoketchCompany2F", "PoketchCompany3F", "JubilifeTV1F", "RivalHouse", "RivalHouse2F", "PlayerHouse", "PlayerHouse2F", "RowanLab" }),
         };
         var asked = args.Length > 2 ? args[2..].ToHashSet(StringComparer.OrdinalIgnoreCase) : null;
 
