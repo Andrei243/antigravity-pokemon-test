@@ -330,7 +330,7 @@ public sealed partial class BattleCore
         if (t.Pokemon?.HeldItem == null) return false;
         bool breaks = BattleEffects.Of(user).Any(e => e.IgnoresTargetAbility);
         if (breaks || !BattleEffects.Of(t).Any(e => e.KeepsItem)) return false;
-        Say($"{t.Name}'s {t.Ability!.Name} made {move.Name} ineffective!");
+        Say($"{t.Name}'s {AbilityOf(t)} made {move.Name} ineffective!");
         return true;
     }
 
@@ -354,7 +354,9 @@ public sealed partial class BattleCore
         var item = q.HeldItem!;
         q.HeldItem = null;
         p.HeldItem = item;
-        Say($"{user.Name} stole {t.Name}'s {item.Name}!");
+        // The line tells of the item where it was and where it is now
+        _ = ItemOf(user);
+        Say($"{user.Name} stole {t.Name}'s {ItemOf(t, item)}!");
     }
 
     /// <summary>
@@ -372,7 +374,7 @@ public sealed partial class BattleCore
         var item = q.HeldItem!;
         q.HeldItem = null;
         knockedOff[q] = item;
-        Say($"{user.Name} knocked off {t.Name}'s {item.Name}!");
+        Say($"{user.Name} knocked off {t.Name}'s {ItemOf(t, item)}!");
     }
 
     /// <summary>
@@ -396,8 +398,8 @@ public sealed partial class BattleCore
 
         (p.HeldItem, q.HeldItem) = (q.HeldItem, p.HeldItem);
         Say($"{user.Name} switched items with its target!");
-        if (p.HeldItem != null) Say($"{user.Name} obtained one {p.HeldItem.Name}.");
-        if (q.HeldItem != null) Say($"{t.Name} obtained one {q.HeldItem.Name}.");
+        if (p.HeldItem != null) Say($"{user.Name} obtained one {ItemOf(user)}.");
+        if (q.HeldItem != null) Say($"{t.Name} obtained one {ItemOf(t)}.");
         return true;
     }
 
@@ -414,7 +416,7 @@ public sealed partial class BattleCore
         }
         p.HeldItem = item;
         user.Volatile.ConsumedItem = null;
-        Say($"{user.Name} found one {item.Name}!");
+        Say($"{user.Name} found one {ItemOf(user)}!");
     }
 
     /// <summary>
@@ -430,7 +432,7 @@ public sealed partial class BattleCore
         var item = BattleEffects.ItemInHand(user);
         if (item == null || item.FlingPower == 0) return Fails();
         use.Scratch = item;
-        Say($"{user.Name} flung its {item.Name}!");
+        Say($"{user.Name} flung its {ItemOf(user, item)}!");
         return true;
     }
 
@@ -510,7 +512,7 @@ public sealed partial class BattleCore
 
         q.HeldItem = null;
         t.Volatile.ConsumedItem = berry;
-        Say($"{user.Name} stole and ate {t.Name}'s {berry.Name}!");
+        Say($"{user.Name} stole and ate {t.Name}'s {ItemOf(t, berry)}!");
         // With Klutz or under an Embargo the berry is gone all the same and does nothing for whoever ate it
         if (user.IsActive && !Has(user, "Klutz") && user.Volatile.EmbargoTurns == 0) EatBerry(user, berry, berry.PluckEffect);
     }
@@ -772,7 +774,9 @@ public sealed partial class BattleCore
         if (q.AbilityName is null or "Wonder Guard" or "Multitype" || p.AbilityName == "Multitype" || p.HeldItem?.Name == "Griseous Orb") return Fails();
         KeepAbility(Keep(user), p);
         p.AbilityName = q.AbilityName;
-        Say($"{user.Name} copied {t.Name}'s {q.AbilityName}!");
+        // The line tells of the ability in both places
+        _ = AbilityOf(user);
+        Say($"{user.Name} copied {t.Name}'s {AbilityOf(t)}!");
         return true;
     }
 
@@ -799,7 +803,7 @@ public sealed partial class BattleCore
         if (t.HasSubstitute || q.AbilityName is "Truant" or "Multitype" || q.HeldItem?.Name == "Griseous Orb") return Fails();
         KeepAbility(Keep(t), q);
         q.AbilityName = "Insomnia";
-        Say($"{t.Name} acquired Insomnia!");
+        Say($"{t.Name} acquired {AbilityOf(t)}!");
         return true;
     }
 

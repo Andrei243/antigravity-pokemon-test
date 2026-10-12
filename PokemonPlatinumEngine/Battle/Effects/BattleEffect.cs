@@ -16,6 +16,19 @@ public interface IBattleContext
     /// <summary>Says a line, after what has been said so far.</summary>
     void Announce(string text);
 
+    /// <summary>
+    /// The name of the holder's ability, for the line about to be said (plan 12 · Q11): the line tells of it, as the
+    /// original's message tag does, and carries an <see cref="AbilityShown"/>. Use it wherever a line names an
+    /// ability, never the name itself.
+    /// </summary>
+    string AbilityOf(Battler holder);
+
+    /// <summary>
+    /// The name of the holder's item, for the line about to be said: the line carries an <see cref="ItemShown"/>.
+    /// <paramref name="item"/> names one already out of its hands (a berry eaten, an item knocked off).
+    /// </summary>
+    string ItemOf(Battler holder, ItemData? item = null);
+
     /// <summary>Raises or lowers a stat stage, with the usual messages. Returns false if nothing changed.</summary>
     bool ChangeStat(Battler target, StatType stat, int amount, Battler? source, bool announceFailure = false);
 

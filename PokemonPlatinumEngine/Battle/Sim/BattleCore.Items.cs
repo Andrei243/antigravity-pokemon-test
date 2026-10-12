@@ -86,7 +86,7 @@ public sealed partial class BattleCore
         if (!user.Volatile.ItemWentOff) return;
         user.Volatile.ItemWentOff = false;
         if (!act.MovesFirst || BattleEffects.ItemInHand(user) is not { HoldEffect: "PinchPriority" } berry) return;
-        if (waiting.Count > 0) Say($"{user.Name}'s {berry.Name} let it move first!");
+        if (waiting.Count > 0) Say($"{user.Name}'s {ItemOf(user)} let it move first!");
         ConsumeItem(user);
     }
 
@@ -183,27 +183,29 @@ public sealed partial class BattleCore
                 {
                     t.Pokemon!.HeldItem = null;
                     user.Pokemon.HeldItem = item;
-                    Say($"{t.Name}'s {item.Name} was transferred to {user.Name}!");
+                    // The line tells of the barb in both places: where it was and where it is now
+                    _ = ItemOf(user);
+                    Say($"{t.Name}'s {ItemOf(t, item)} was transferred to {user.Name}!");
                 }
                 break;
             case "RecoilPhysical":
                 if (user.IsActive && !Has(user, "Magic Guard") && !leaving && physical)
                 {
-                    LoseHp(user, Formulas.Divide(user.Pokemon!.MaxHP, param), $"{user.Name} was hurt by {t.Name}'s {item.Name}!");
+                    LoseHp(user, Formulas.Divide(user.Pokemon!.MaxHP, param), $"{user.Name} was hurt by {t.Name}'s {ItemOf(t)}!");
                     ConsumeItem(t);
                 }
                 break;
             case "RecoilSpecial":
                 if (user.IsActive && !Has(user, "Magic Guard") && !physical)
                 {
-                    LoseHp(user, Formulas.Divide(user.Pokemon!.MaxHP, param), $"{user.Name} was hurt by {t.Name}'s {item.Name}!");
+                    LoseHp(user, Formulas.Divide(user.Pokemon!.MaxHP, param), $"{user.Name} was hurt by {t.Name}'s {ItemOf(t)}!");
                     ConsumeItem(t);
                 }
                 break;
             case "HpRestoreSe":
                 if (t.IsActive && hit.Damage.IsSuperEffective)
                 {
-                    RestoreHp(t, Formulas.Divide(t.Pokemon!.MaxHP, param), $"{t.Name} restored its health using its {item.Name}!");
+                    RestoreHp(t, Formulas.Divide(t.Pokemon!.MaxHP, param), $"{t.Name} restored its health using its {ItemOf(t)}!");
                     ConsumeItem(t);
                 }
                 break;
@@ -220,16 +222,16 @@ public sealed partial class BattleCore
     private void Reciprocate(Battler smitten, Battler by)
     {
         if (BattleEffects.ItemInHand(smitten) is not { HoldEffect: "ReciprocateInfat" } knot || !by.IsActive || by == smitten) return;
-        if (by.Ability is { Effect.BlocksInfatuation: true } oblivious)
+        if (by.Ability is { Effect.BlocksInfatuation: true })
         {
-            Say($"{by.Name}'s {oblivious.Name} prevents romance!");
+            Say($"{by.Name}'s {AbilityOf(by)} prevents romance!");
             return;
         }
         var mine = smitten.Pokemon!.Gender;
         var theirs = by.Pokemon!.Gender;
         if (mine == theirs || mine == Gender.Genderless || theirs == Gender.Genderless || by.Volatile.InLoveWith != null) return;
         by.Volatile.InLoveWith = smitten.Place;
-        Say($"{smitten.Name}'s {knot.Name} made {by.Name} fall in love!");
+        Say($"{smitten.Name}'s {ItemOf(smitten)} made {by.Name} fall in love!");
     }
 
     // ---------------------------------------------------------------- the prize

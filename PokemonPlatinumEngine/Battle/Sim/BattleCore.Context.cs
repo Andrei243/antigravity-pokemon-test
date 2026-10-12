@@ -45,7 +45,7 @@ public sealed partial class BattleCore
             bool breaks = BattleEffects.Of(source!).Any(e => e.IgnoresTargetAbility);
             if (!breaks && target.Ability?.Effect is { } guard && guard.BlocksStatDrop(target, stat))
             {
-                if (announceFailure) Say($"{target.Name}'s {target.Ability.Name} prevents its {BattleText.StatName(stat)} from being lowered!");
+                if (announceFailure) Say($"{target.Name}'s {AbilityOf(target)} prevents its {BattleText.StatName(stat)} from being lowered!");
                 return false;
             }
         }
@@ -120,7 +120,7 @@ public sealed partial class BattleCore
         bool breaks = byAnother && BattleEffects.Of(source!).Any(e => e.IgnoresTargetAbility);
         if (!breaks && target.Ability?.Effect is { } guard && guard.BlocksStatus(target, status))
         {
-            if (announceFailure) Say($"{target.Name}'s {target.Ability.Name} prevents {BattleText.StatusName(status)}!");
+            if (announceFailure) Say($"{target.Name}'s {AbilityOf(target)} prevents {BattleText.StatusName(status)}!");
             return false;
         }
 
@@ -160,6 +160,9 @@ public sealed partial class BattleCore
     /// <summary>Confuses (<c>subscript_confuse</c>) unless already confused, kept clear by Own Tempo, behind a Substitute or under a Safeguard.</summary>
     internal bool Confuse(Battler target, Battler? source, bool announceFailure, By how, string? line = null)
     {
+        // What the line names is said with it alone, never with a line of failure
+        var naming = named.ToList();
+        Unsaid();
         if (!target.IsActive) return false;
         bool byAnother = source != null && source != target;
         if (target.IsConfused)
@@ -170,7 +173,7 @@ public sealed partial class BattleCore
         bool breaks = byAnother && BattleEffects.Of(source!).Any(e => e.IgnoresTargetAbility);
         if (BattleEffects.Of(target, includeAbility: !breaks).Any(e => e.BlocksConfusion))
         {
-            if (announceFailure) Say($"{target.Name}'s {target.Ability?.Name} prevents confusion!");
+            if (announceFailure) Say($"{target.Name}'s {AbilityOf(target)} prevents confusion!");
             return false;
         }
         if (byAnother && how != By.Ability && target.HasSubstitute)
@@ -184,6 +187,7 @@ public sealed partial class BattleCore
             return false;
         }
         target.ConfusionTurns = 2 + rng.Roll(RollKind.ConfusionTurns, 4);
+        named.AddRange(naming);
         Say(line ?? $"{target.Name} became confused!").With(new Confused(target.Place));
         CheckConditionHooks(target, source);
         return true;
@@ -191,7 +195,11 @@ public sealed partial class BattleCore
 
     public void RestoreHp(Battler target, int amount, string message)
     {
-        if (!target.IsActive) return;
+        if (!target.IsActive)
+        {
+            Unsaid();
+            return;
+        }
         var p = target.Pokemon!;
         p.CurrentHP = Math.Min(p.MaxHP, p.CurrentHP + amount);
         Say(message).With(new HpChanged(target.Place, p.CurrentHP, Healed: true));
@@ -202,8 +210,11 @@ public sealed partial class BattleCore
     /// <param name="direct">Damage Magic Guard doesn't stop (Struggle's recoil, a Curse's price).</param>
     private void LoseHp(Battler target, int amount, string message, bool direct)
     {
-        if (!target.IsActive) return;
-        if (!direct && BattleEffects.Of(target).Any(e => e.PreventsIndirectDamage)) return;
+        if (!target.IsActive || (!direct && BattleEffects.Of(target).Any(e => e.PreventsIndirectDamage)))
+        {
+            Unsaid();
+            return;
+        }
         var p = target.Pokemon!;
         p.CurrentHP = Math.Max(0, p.CurrentHP - amount);
         target.Turn.TookDamage = true;
@@ -240,16 +251,16 @@ public sealed partial class BattleCore
     bool IBattleContext.Infatuate(Battler target, Battler with)
     {
         if (!target.IsActive || !with.IsActive) return false;
-        if (target.Ability is { Effect.BlocksInfatuation: true } oblivious)
+        if (target.Ability is { Effect.BlocksInfatuation: true })
         {
-            Say($"{target.Name}'s {oblivious.Name} prevents romance!");
+            Say($"{target.Name}'s {AbilityOf(target)} prevents romance!");
             return false;
         }
         var mine = with.Pokemon!.Gender;
         var theirs = target.Pokemon!.Gender;
         if (mine == theirs || mine == Gender.Genderless || theirs == Gender.Genderless || target.Volatile.InLoveWith != null) return false;
         target.Volatile.InLoveWith = with.Place;
-        Say($"{with.Name}'s {with.Ability?.Name} infatuated {target.Name}!");
+        Say($"{with.Name}'s {AbilityOf(with)} infatuated {target.Name}!");
         Reciprocate(target, with);
         return true;
     }
@@ -260,7 +271,11 @@ public sealed partial class BattleCore
     /// </summary>
     public bool SetWeather(BattleWeather weather, int turns, string line)
     {
-        if (Field.Weather == weather && (turns > 0 || Field.WeatherLasts)) return false;
+        if (Field.Weather == weather && (turns > 0 || Field.WeatherLasts))
+        {
+            Unsaid();
+            return false;
+        }
         Field.Weather = weather;
         Field.WeatherTurns = turns;
         Field.WeatherLasts = turns == 0 && weather != BattleWeather.None;
