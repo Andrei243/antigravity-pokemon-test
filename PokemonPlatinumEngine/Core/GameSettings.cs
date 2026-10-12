@@ -88,6 +88,13 @@ public sealed class GameSettings
     /// </summary>
     public RulesDefault MoveHints { get; set; } = RulesDefault.Rules;
 
+    /// <summary>
+    /// Whether the trainers across the field speak at the battle's turning points (plan 11 · C12): Black and White's
+    /// way, so a modern game has it and a Platinum game, whose trainers speak only before and after, doesn't unless
+    /// the player asks.
+    /// </summary>
+    public RulesDefault TrainerLines { get; set; } = RulesDefault.Rules;
+
     /// <summary>A fixed time of day, or null to follow the clock.</summary>
     public TimeOfDay? TimeOfDay { get; set; }
 

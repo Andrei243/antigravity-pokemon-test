@@ -11,13 +11,13 @@ public enum OptionRow
 {
     TextSpeed, Quality, WindowSize, Fullscreen, VSync, TimeOfDay,
     Sound, MusicVolume, SoundVolume, CryVolume, AmbienceVolume, Speakers,
-    MoveHints, Help
+    MoveHints, TrainerLines, Help
 }
 
 /// <summary>
 /// The options screen: text speed, graphics quality, window size, full screen, V-Sync, time of day, and the sound:
 /// on or off, a volume for each of the mixer's buses (the music with its fanfares, the sound effects, the cries,
-/// the ambience) and the speakers it plays through; then the helps of plan 12 (the move hints) and the HELP pages
+/// the ambience) and the speakers it plays through; then the helps of plan 12 (the move hints), the trainers' lines in battle (plan 11 · C12) and the HELP pages
 /// (<see cref="HelpScreen"/>), which open over the options. Changes apply at once; the caller saves the settings
 /// when the screen reports a change. More rows than fit scroll in a window (<see cref="VisibleRows"/>).
 /// </summary>
@@ -147,6 +147,9 @@ public class OptionsScreen
             case OptionRow.MoveHints:
                 s.MoveHints = (RulesDefault)Wrap((int)s.MoveHints + step, 3);
                 break;
+            case OptionRow.TrainerLines:
+                s.TrainerLines = (RulesDefault)Wrap((int)s.TrainerLines + step, 3);
+                break;
         }
     }
 
@@ -182,6 +185,8 @@ public class OptionsScreen
             : "Full sound, for speakers or headphones."),
         OptionRow.MoveHints => ("Move hints", Value(s.MoveHints), "In battle, a move's card says whether it is super effective, not very effective or has no effect on a Pokémon you have seen before. "
             + RulesLine(s.MoveHints, "shows them", "goes without")),
+        OptionRow.TrainerLines => ("Trainers speak", Value(s.TrainerLines), "In battle, Gym Leaders, your rival and other bosses say a line when their last Pokémon comes out, when their first one falls and when their last one is in the red. "
+            + RulesLine(s.TrainerLines, "has them speak", "keeps them quiet, as Platinum did")),
         _ => ("Help", "Open", "The type chart, the controls and a few notes for the road.")
     };
 

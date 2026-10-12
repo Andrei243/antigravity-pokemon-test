@@ -97,6 +97,12 @@ public sealed class BattleSetup
     public bool MoveHints { get; init; }
 
     /// <summary>
+    /// The trainers across the field speak at the moments the rules mark (plan 11 · C12; <see cref="Sim.TrainerReacts"/>,
+    /// <see cref="Data.TrainerLines"/>): presentation only, never read by the rules.
+    /// </summary>
+    public bool TrainerLines { get; init; }
+
+    /// <summary>
     /// A battle of the Battle Frontier (plan 06 · R18a; the original's <c>BATTLE_TYPE_FRONTIER</c>): nothing from the
     /// bag, no EXP, no money either way, RUN is a forfeit, and the Pokédex is told nothing (<see cref="Sim.CoreSetup.Frontier"/>).
     /// The team it is handed is the battle's own copy (<see cref="Models.Frontier.FrontierRules.TeamFor"/>).

@@ -20,6 +20,7 @@ The game's species, moves, abilities, items and maps live as JSON in `PokemonPla
 | `characters.json` | `CharacterStyles` | Every look a person can have, the original's object looks that stand as one of ours for now, and the look of each trainer class in battle (plan 11 · C1); hand-written, see "Characters" below. |
 | `clothes.json` | `ClothingDatabase` | The garments the player can wear and the boutiques that sell them (plan 11 · C9, C10); hand-written, see "Clothes" below. |
 | `credits.json` | `CreditsDatabase` | This remake's credits (plan 02 · S14); hand-written, in our own words. `sections`, in the order they roll: each a `heading` and its `entries`, an entry a `name` and an optional `note` under it (a licence, what a source was read for); `"team": true` on the one section that lists the Champion's team after its own entries. `end` and `farewell` are the last card's two lines. A name may hold `{player}`. Latin-1 only (the interface's font), and no long dash. It names what `docs/art/CREDITS.md` and `THIRD-PARTY-NOTICES.md` list: a source added there is added here. |
+| `trainer-lines.json` | `TrainerLines` | What trainers say in battle (plan 11 · C12); hand-written, in our own words, see "Trainers' lines in battle" below. |
 | `maps/<Name>.json` | `MapDatabase` | One `MapFile` per hand-made map; the file name must match its `name`. |
 | `world/<region>/…` | `World`, then `MapDatabase` | The imported world of a region: `world.json` (what is built), generated `matrices/`, `chunks/` and `areas/`, and hand-written `overlays/`. `WorldMapBuilder` makes one `Map` of each matrix `world.json` lists. |
 | `music/<folder>/<name>.mml` | `MusicLibrary` | Songs in a small text format, one folder per region plus `common`; see `docs/music-format.md`. |
@@ -498,6 +499,28 @@ The engine builds the rigs of the people within two chunks of the player in the 
 - A boutique (`boutiques`) is a counter's key and the garments it sells, in the order its rows show them. A script opens it with `wardrobe "<key>"`; `wardrobe` alone opens the player's own clothes at home.
 
 What the player wears is an `Outfit` (`Core/Outfit.cs`): a garment's id in each slot, or nothing for the look's own. It is saved as `SaveData.Outfit` with the garments bought (`SaveData.Wardrobe`); a save without them loads in the look's own clothes. A character dressed in an outfit is named `PLAYER@<hat>.<top>.<bottoms>.<shoes>.<bag>` (a dash for the look's own), so its rig, sprites and mesh cache follow the outfit, and an outfit with nothing chosen is plain `PLAYER` or `DAWN`.
+
+## Trainers' lines in battle
+
+`Data/trainer-lines.json` (`Data/TrainerLines.cs`) is what a trainer of the other side says in battle, at the three moments the rules mark (plan 11 · C12; `TrainerCue`): `lastPokemon` (the last of their Pokémon able to fight comes out; never the opening's send-out), `firstDown` (the first of theirs falls, with others still able to fight) and `lowHp` (their last one is in the red, a fifth of its HP or under). It is hand-written, our own words, never the games' text.
+
+```json
+{
+  "leader_roark": {
+    "firstDown": { "text": "A crack in the rock... You hit harder than you look." },
+    "lastPokemon": { "text": "My last stone. Let's see if you can break bedrock." },
+    "lowHp": { "text": "Steady now... Rock holds firm until the very last blow." }
+  },
+  "rival_route_203_*": {
+    "lowHp": { "text": "No, no, no! I ran the whole way here for this!", "mood": "...", "act": "..." }
+  }
+}
+```
+
+- A key is a trainer's id in `trainers.json` (`leader_roark`), or a stem ending in `*` that every id beginning with it takes (`rival_route_203_*`: the rival's three teams there, one for each starter). An id of its own wins over a stem, and a longer stem over a shorter one. A rematch is a trainer of its own (`leader_roark_rematch`), with nothing unless it is given its own lines.
+- Each moment has up to one line, `text`, which may hold `{player}` and `{rival}`; a moment left out says nothing. A line must fit two lines of the battle's message box (a hundred characters with both names at their longest) and is Latin-1 only, as the interface's font is.
+- `mood` and `act` are the face and the gesture the line is said with, by plan 11 · C11's names, for C13's trainer on the platform; nothing reads them yet.
+- The lines are read only where the `TrainerLines` option holds (On, or Rules in a game played by the modern rules). Whoever is beside the player (a partner) never speaks: the moments are the other side's.
 
 ## Sound map
 

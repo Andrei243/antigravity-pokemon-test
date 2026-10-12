@@ -266,6 +266,7 @@ public sealed partial class BattleCore
         var said = Say(line);
         if (!place.IsPlayerSide) said.With(new Seen(incoming.Species));
         said.With(new Entered(place.Place, incoming, FromBall: true));
+        SentOutTheLast(place, said);
         Hazards(place);
         if (place.IsActive) beforeEntryEffects?.Invoke();
         ResolveFaints();
@@ -468,7 +469,8 @@ public sealed partial class BattleCore
                 var next = picked;
                 entered.Add(place);
                 SendIn(place, next);
-                Say(SentOutLine(place, next)).With(new Seen(next.Species)).With(new Entered(place.Place, next, FromBall: true));
+                var sent = Say(SentOutLine(place, next)).With(new Seen(next.Species)).With(new Entered(place.Place, next, FromBall: true));
+                SentOutTheLast(place, sent);
             }
 
             // Then each empty place of the player's side (the partner's too), while there is anyone left to send

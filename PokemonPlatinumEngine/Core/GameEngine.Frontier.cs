@@ -197,7 +197,8 @@ public partial class GameEngine
                     Weather = conditions?.Weather ?? Battle.Sim.BattleWeather.None,
                     TrickRoom = conditions?.TrickRoom ?? false
                 },
-                MoveHints = MoveHintsOn
+                MoveHints = MoveHintsOn,
+                TrainerLines = TrainerLinesOn
             });
             battleRenderer.SetArena(currentMap, player.GridX, player.GridY);
             battleTrainers.Clear();
