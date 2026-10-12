@@ -37,7 +37,7 @@ script MeetAssistant
   setflag FLAG_HIDE_SANDGEM_TOWN_COUNTERPART
   music area
   setvar VAR_SANDGEM_TOWN_STATE 1
-  warp "RowanLab" 5 8 up
+  warp "RowanLab" 7 15 up
   end
 
 

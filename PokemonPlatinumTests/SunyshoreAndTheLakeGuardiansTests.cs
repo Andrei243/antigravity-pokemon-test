@@ -74,7 +74,7 @@ public class SunyshoreAndTheLakeGuardiansTests
     private static HeadlessScriptHost IntoTheLab(OpeningTests.Game game)
     {
         game.Facing = Direction.Up;
-        game.Arrive("RowanLab", 5, 8);
+        game.Arrive("RowanLab", 7, 15);
         return game.Last;
     }
 
@@ -201,20 +201,21 @@ public class SunyshoreAndTheLakeGuardiansTests
         var game = NewGame(look: look);
         game.Seen = 143;
         game.Story.SetBadges(0x7F);
-        // Until Sendoff Spring nothing waits in the lab: the professor is behind his desk and the assistant long gone
+        // Until Sendoff Spring nothing waits in the lab: the professor is at the head of his hall and the assistant long gone
         Run(game, "RowanLab", "setvar VAR_SANDGEM_TOWN_LAB_STATE 1\nsetvar VAR_SANDGEM_TOWN_STATE 2\nsetflag FLAG_HIDE_SANDGEM_TOWN_LAB_COUNTERPART");
         Assert.Empty(IntoTheLab(game).Transcript);
-        Assert.Equal((5, 2), (game.Present("prof_rowan")!.GridX, game.Present("prof_rowan")!.GridY));
+        Assert.Equal((7, 5), (game.Present("prof_rowan")!.GridX, game.Present("prof_rowan")!.GridY));
         Assert.Null(game.Present("counterpart"));
 
         OutOfTheDistortionWorld(game);
         var scene = IntoTheLab(game);
-        // The two stand just inside the door, facing it, and the scene plays as the player comes in
+        // The two stand inside the door, facing it (three tiles further up the lab than the original's, clear of the
+        // text), and the scene plays as the player comes in and walks up to them
         var rowan = game.Present("prof_rowan")!;
         var assistant = game.Present("counterpart")!;
-        Assert.Equal((5, 5, Direction.Down), (rowan.GridX, rowan.GridY, rowan.Facing));
-        Assert.Equal((4, 5, Direction.Down), (assistant.GridX, assistant.GridY, assistant.Facing));
-        Assert.Equal((5, 7), scene.PlayerTile);
+        Assert.Equal((7, 11, Direction.Down), (rowan.GridX, rowan.GridY, rowan.Facing));
+        Assert.Equal((6, 11, Direction.Down), (assistant.GridX, assistant.GridY, assistant.Facing));
+        Assert.Equal((7, 12), scene.PlayerTile);
         Assert.Equal(Direction.Up, scene.PlayerFacing);
         Assert.Contains(scene.Transcript, l => l.Speaker == "Prof. Rowan" && l.Text.Contains("You saw it through"));
         string name = look == PlayerLook.Boy ? "Dawn" : "Lucas";
@@ -235,20 +236,20 @@ public class SunyshoreAndTheLakeGuardiansTests
         // It plays once. Until the player has been to Sunyshore City the two wait by the door: he sends his regards to
         // Cynthia, and the assistant wonders about the Pokémon the player met
         Assert.Empty(IntoTheLab(game).Transcript);
-        Assert.Equal((5, 5), (game.Present("prof_rowan")!.GridX, game.Present("prof_rowan")!.GridY));
+        Assert.Equal((7, 11), (game.Present("prof_rowan")!.GridX, game.Present("prof_rowan")!.GridY));
         Assert.Contains(TalkFrom(game, "prof_rowan", Direction.Up).Transcript, l => l.Text.Contains("Cynthia") && l.Text.Contains("remembers her kindly"));
         Assert.Contains(TalkFrom(game, "counterpart", Direction.Up).Transcript, l => l.Speaker == name && l.Text.Contains("Sinnoh began with"));
         // Cynthia at the spring has her later line
         game.Arrive("SendoffSpring", 32, 17);
         Assert.Contains(TalkFrom(game, "cynthia", Direction.Left).Transcript, l => l.Text.Contains("been the one to battle it"));
 
-        // Coming to Sunyshore City sends the assistant off, and the professor is behind his desk again
+        // Coming to Sunyshore City sends the assistant off, and the professor is at the head of his hall again
         ThroughTheGate(game);
         Assert.Equal(4, game.Story.Var(LabState));
         Assert.True(game.Story.Has("FLAG_HIDE_SANDGEM_TOWN_LAB_COUNTERPART"));
         Assert.Empty(IntoTheLab(game).Transcript);
         Assert.Null(game.Present("counterpart"));
-        Assert.Equal((5, 2, Direction.Down), (game.Present("prof_rowan")!.GridX, game.Present("prof_rowan")!.GridY, game.Present("prof_rowan")!.Facing));
+        Assert.Equal((7, 5, Direction.Down), (game.Present("prof_rowan")!.GridX, game.Present("prof_rowan")!.GridY, game.Present("prof_rowan")!.Facing));
         Assert.DoesNotContain(game.Talk("prof_rowan").Transcript, l => l.Text.Contains("Cynthia"));
     }
 
@@ -269,7 +270,7 @@ public class SunyshoreAndTheLakeGuardiansTests
     {
         var game = NewGame();
         Run(game, "PlayerHouse", "setvar VAR_PLAYER_HOUSE_STATE 6\nsetflag FLAG_HAS_POKEDEX\nsetflag FLAG_RECEIVED_PARCEL\nsetvar VAR_CANALAVE_LIBRARY_STATE 2");
-        game.Arrive("PlayerHouse", 4, 6);
+        game.Arrive("PlayerHouse", 6, 10);
         Assert.Contains(game.Talk("mom").Transcript, l => l.Text.Contains("whole house shook"));
         Run(game, "PlayerHouse", "setvar VAR_EXITED_DISTORTION_WORLD_STATE 1");
         Assert.Contains(game.Talk("mom").Transcript, l => l.Text.Contains("whole house shook"));

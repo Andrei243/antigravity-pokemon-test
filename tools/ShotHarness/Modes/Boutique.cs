@@ -63,7 +63,7 @@ partial class Harness
         // ---- out in the street in the new clothes, and at home
         At("Sinnoh", 140, 790, Direction.Down); Frames(30); Shot("bq12_street_outfit");
         ShotCrop("bq12b_street_outfit_close", 860, 400, 200, 200, 4);
-        At("PlayerHouse2F", 3, 3, Direction.Up); Frames(2); Shot("bq13_bedroom");
+        At("PlayerHouse2F", 5, 5, Direction.Up); Frames(2); Shot("bq13_bedroom");
         Talk(); Whole(); Next();
         Until(() => State() == GameState.Wardrobe, "the wardrobe at home");
         Frames(30); Dressed(); Shot("bq14_home_wardrobe");

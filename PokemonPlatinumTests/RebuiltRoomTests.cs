@@ -1,6 +1,7 @@
 using System.Text.Json;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
+using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.Overworld;
 using PokemonPlatinumEngine.Story;
@@ -502,14 +503,435 @@ public class RebuiltRoomTests
         Assert.Equal((4, 4), again.PlayerTile);
     }
 
+    // ------------------------------------------------------------------ the player's house (plan 01 · M11, the last step)
+
+    // Plays a script on until a line that says something is on the screen, as someone reading it would: where everyone
+    // stands at that moment is where the scene has brought them
+    private static void ReadTo(ScriptRunner runner, HeadlessScriptHost host, string text)
+    {
+        for (int i = 0; i < 400 && !host.Transcript.Any(l => l.Text.Contains(text)); i++)
+        {
+            host.Busy = false;
+            host.Walking = false;
+            runner.Update(0.1f);
+        }
+        Assert.Contains(host.Transcript, l => l.Text.Contains(text));
+        Assert.Empty(host.Problems);
+    }
+
+    private static void ReadToTheEnd(ScriptRunner runner, HeadlessScriptHost host)
+    {
+        host.Pauses = false;
+        host.Busy = false;
+        host.Walking = false;
+        runner.RunToEnd();
+        Assert.Empty(host.Problems);
+    }
+
+    [Fact]
+    public void ThePlayersHouseIsTheOriginalsPlanOnBothFloors()
+    {
+        var ground = Room("PlayerHouse");
+        Assert.Equal((13, 12, InteriorStyle.House), (ground.Width, ground.Height, ground.Interior));
+        LeadsInAndBackOut(ground, 6, 10);
+        // Mom on her cushion before the television, looking up at it; she rests the team
+        var mom = ground.FindPerson("mom")!;
+        Assert.Equal((7, 8, Direction.Up, "Mom", true), (mom.GridX, mom.GridY, mom.Facing, mom.Script, mom.IsHealingNurse));
+        Assert.Contains(ground.Props, p => p.Type == PropType.Cushion && (p.X, p.Y) == (7, 8));
+        Assert.Contains(ground.Props, p => p.Type == PropType.Television && (p.X, p.Y, p.Width) == (6, 5, 2));
+        // The rival's mother comes in by the door: its own tile is hers, and the mat is nobody's
+        var visitor = ground.FindPerson("rival_mom")!;
+        Assert.Equal((6, 11, "FLAG_HIDE_TWINLEAF_TOWN_PLAYER_HOUSE_1F_RIVAL_MOM"), (visitor.GridX, visitor.GridY, visitor.HiddenBy));
+        Assert.Equal(2, ground.Everyone.Count());
+        // The original's coordinate event is on the mat itself, for the first time out
+        var warning = Assert.Single(ground.Triggers);
+        Assert.Equal(("DoorWarning", 6, 10, "VAR_PLAYER_HOUSE_STATE", 1), (warning.Script, warning.X, warning.Y, warning.Variable, warning.Value));
+        // The kitchen is the nook in the north-west, behind its counter; each thing is read where the original's is
+        Assert.True(ground.IsCounter(2, 5) && ground.IsSolid(2, 5) && ground.IsWalkable(2, 4) && ground.IsWalkable(2, 6));
+        foreach (var (x, y, says) in new[] { (6, 5, "round-up"), (7, 5, "round-up"), (5, 3, "pudding"), (1, 3, "sink"), (2, 3, "sink"), (1, 5, "cooking"), (2, 5, "cooking"), (3, 5, "cooking") })
+            Assert.Contains(says, ground.GetSignboardAt(x, y));
+        Assert.Equal("TV", ground.SignScripts[(6, 5)]);
+        Assert.Equal("TV", ground.SignScripts[(7, 5)]);
+        Assert.DoesNotContain(ScriptLibrary.Default.Problems().ToList(), p => p.Contains("PlayerHouse", StringComparison.Ordinal));
+
+        // The stairs in the north-east corner lead up to the head of the stairs in the bedroom and back down beside their foot
+        var room = Room("PlayerHouse2F");
+        Assert.Equal((12, 12, InteriorStyle.House), (room.Width, room.Height, room.Interior));
+        var up = Assert.Single(ground.Warps, w => w.TargetMap == "PlayerHouse2F");
+        var down = Assert.Single(room.Warps);
+        Assert.Equal(((10, 3), (7, 4, Direction.Left)), ((up.SourceX, up.SourceY), (up.TargetX, up.TargetY, up.TargetFacing)));
+        Assert.Equal(("PlayerHouse", (8, 4), (11, 3, Direction.Right)), (down.TargetMap, (down.SourceX, down.SourceY), (down.TargetX, down.TargetY, down.TargetFacing)));
+        Assert.True(room.IsWalkable(7, 4) && ground.IsWalkable(11, 3));
+        Assert.Contains(ground.Props, p => p.Type == PropType.SideStairsUp && p.X + p.Width == up.SourceX);
+        Assert.Contains(room.Props, p => p.Type == PropType.SideStairsDown && p.X == down.SourceX + 1);
+        Assert.Equal(ground.BgmTrack, room.BgmTrack);
+
+        // The adventure begins before the television, on the original's tile, with its four coordinate events round it
+        var start = RegionDatabase.Get(RegionDatabase.Sinnoh)!.Start!;
+        Assert.Equal(new MapSpot("PlayerHouse2F", 4, 6, Direction.Up), start);
+        Assert.True(room.IsWalkable(4, 6));
+        Assert.Equal(new[] { (3, 6), (4, 5), (4, 7), (5, 6) }, room.Triggers.Select(t => (t.X, t.Y)).Order());
+        Assert.All(room.Triggers, t => Assert.Equal(("RivalRushesIn", "VAR_PLAYER_HOUSE_RIVAL_STATE", 0), (t.Script, t.Variable, t.Value)));
+        Assert.Null(FieldScripts.TriggerAt(room, 4, 6, new StoryState()));
+        // The rival comes up the stairs: the tile at their head is his (the original stands him on the flight itself)
+        var rival = Assert.Single(room.Everyone);
+        Assert.Equal((8, 4, "FLAG_HIDE_TWINLEAF_TOWN_PLAYER_HOUSE_2F_RIVAL"), (rival.GridX, rival.GridY, rival.HiddenBy));
+        // The computer with its seat and the poster over its desk, the television, and the wardrobe where the original's
+        // console lies (the window has moved a tile along the wall to stand clear of it)
+        Assert.Contains("computer", room.GetSignboardAt(1, 4));
+        Assert.Contains("television", room.GetSignboardAt(3, 4));
+        Assert.Contains("television", room.GetSignboardAt(4, 4));
+        Assert.Contains("menu", room.GetSignboardAt(2, 4));
+        Assert.Contains(room.Props, p => p.Type == PropType.Painting && (p.X, p.Y) == (2, 3));
+        Assert.Equal("Wardrobe", room.SignScripts[(5, 4)]);
+        Assert.Contains(room.Props, p => p.Type == PropType.Wardrobe && (p.X, p.Y) == (5, 4));
+        Assert.True(room.IsSolid(5, 4) && room.IsWalkable(5, 5) && !room.IsSolid(1, 5));
+    }
+
+    [Fact]
+    public void MomComesToTheFootOfTheStairsAndGoesBackToHerCushion()
+    {
+        var map = Room("PlayerHouse");
+        var mom = map.FindPerson("mom")!;
+        // Down the stairs for the first time: the player comes off them onto 11, 3
+        var host = new HeadlessScriptHost { Map = map, PlayerTile = (11, 3), PlayerFacing = Direction.Right, Pauses = true };
+        var runner = new ScriptRunner(ScriptLibrary.Default, host);
+        runner.Start(ScriptLibrary.Default.In("PlayerHouse", ScriptLibrary.OnEnter)!);
+        // She has come round the room to the tile below the player (the original's walk, a tile further east)
+        ReadTo(runner, host, "was just here");
+        Assert.Equal((11, 4), (mom.GridX, mom.GridY));
+        Assert.Equal(((11, 3), Direction.Down), (host.PlayerTile, host.PlayerFacing));
+        ReadToTheEnd(runner, host);
+        Assert.Equal((7, 8, Direction.Up), (mom.GridX, mom.GridY, mom.Facing));
+        Assert.Equal(1, host.Story.Var("VAR_PLAYER_HOUSE_STATE"));
+        Assert.True(host.Story.Has("FLAG_TALKED_TO_MOM"));
+
+        // On the mat, the first time out, she turns to call after the player; once
+        host = new HeadlessScriptHost(host.Story) { Map = map, PlayerTile = (6, 10), PlayerFacing = Direction.Down };
+        var trigger = FieldScripts.TriggerAt(map, 6, 10, host.Story);
+        Assert.Equal("DoorWarning", trigger?.Script);
+        Run("DoorWarning", "PlayerHouse", host);
+        Assert.Contains("tall grass", Said(host));
+        Assert.Equal((Direction.Up, Direction.Down), (host.PlayerFacing, mom.Facing));
+        Assert.Equal(2, host.Story.Var("VAR_PLAYER_HOUSE_STATE"));
+        Assert.Null(FieldScripts.TriggerAt(map, 6, 10, host.Story));
+    }
+
+    [Fact]
+    public void BackFromTheFirstBattleMomLeadsThePlayerFromTheKitchenToTheCushions()
+    {
+        var map = Room("PlayerHouse");
+        var mom = map.FindPerson("mom")!;
+        // route_201.txt brings the player in before the kitchen counter, as the original does
+        Assert.Contains(ScriptLibrary.Default.In("route_201", "Briefcase")!.Code,
+            i => i.Op == Op.Warp && (i.Name, i.X, i.Y) == ("PlayerHouse", 2, 6));
+        var host = new HeadlessScriptHost { Map = map, PlayerTile = (2, 6), PlayerFacing = Direction.Up, Pauses = true };
+        host.Story.SetVar("VAR_PLAYER_HOUSE_STATE", 3);
+        var runner = new ScriptRunner(ScriptLibrary.Default, host);
+        runner.Start(ScriptLibrary.Default.In("PlayerHouse", ScriptLibrary.OnEnter)!);
+        // She was at the sink behind the counter, and has led the way round to the cushions: the two sit side by side
+        ReadTo(runner, host, "Welcome home");
+        Assert.Equal((7, 8, Direction.Left), (mom.GridX, mom.GridY, mom.Facing));
+        Assert.Equal(((6, 8), Direction.Right), (host.PlayerTile, host.PlayerFacing));
+        ReadToTheEnd(runner, host);
+        Assert.True(host.Story.Has(StoryState.RunningShoesFlag));
+        Assert.Equal(4, host.Story.Var("VAR_PLAYER_HOUSE_STATE"));
+        Assert.Equal((7, 8, Direction.Up), (mom.GridX, mom.GridY, mom.Facing));
+    }
+
+    [Theory]
+    // The side of Mom the player speaks to her from: below her, above, to her east, to her west (the original's four ways)
+    [InlineData(7, 9, Direction.Up, 6, 9)]
+    [InlineData(7, 7, Direction.Down, 6, 7)]
+    [InlineData(8, 8, Direction.Left, 8, 9)]
+    [InlineData(6, 8, Direction.Right, 6, 9)]
+    public void TheRivalsMotherBringsTheParcelToWhereverThePlayerStandsBesideMom(int x, int y, Direction facing, int herX, int herY)
+    {
+        var map = Room("PlayerHouse");
+        var mom = map.FindPerson("mom")!;
+        var visitor = map.FindPerson("rival_mom")!;
+        var host = new HeadlessScriptHost { Map = map, PlayerTile = (x, y), PlayerFacing = facing, Pauses = true };
+        host.Story.SetVar("VAR_PLAYER_HOUSE_STATE", 4);
+        host.Story.Set(StoryState.PokedexFlag);
+        host.Story.Set("FLAG_HIDE_TWINLEAF_TOWN_PLAYER_HOUSE_1F_RIVAL_MOM");
+        map.ApplyPresence(host.Story.Has);
+        Assert.DoesNotContain(visitor, map.NPCs);
+        var runner = new ScriptRunner(ScriptLibrary.Default, host);
+        runner.Start(ScriptLibrary.Default.In("PlayerHouse", "Mom")!, mom);
+        // She comes in a step past the mat
+        ReadTo(runner, host, "gone already");
+        Assert.Equal((6, 9), (visitor.GridX, visitor.GridY));
+        Assert.Contains(visitor, map.NPCs);
+        // and over to the player, beside them, to hand the parcel over
+        ReadTo(runner, host, "Would you really?");
+        Assert.Equal((herX, herY), (visitor.GridX, visitor.GridY));
+        Assert.Equal(1, Math.Abs(herX - x) + Math.Abs(herY - y));
+        ReadToTheEnd(runner, host);
+        Assert.Equal(1, host.Bag.GetQuantity(ItemDatabase.Get("Journal")!));
+        Assert.Equal(1, host.Bag.GetQuantity(ItemDatabase.Get("Parcel")!));
+        // She has gone out by the door she came in by, and Mom is back at her television
+        Assert.Equal((6, 11), (visitor.GridX, visitor.GridY));
+        Assert.DoesNotContain(visitor, map.NPCs);
+        Assert.Equal((7, 8, Direction.Up), (mom.GridX, mom.GridY, mom.Facing));
+        Assert.Equal((x, y), host.PlayerTile);
+        Assert.Equal(6, host.Story.Var("VAR_PLAYER_HOUSE_STATE"));
+        Assert.True(host.Story.Has("FLAG_RECEIVED_PARCEL"));
+    }
+
+    [Theory]
+    [InlineData(TimeOfDay.Morning, "Cute")]
+    [InlineData(TimeOfDay.Day, "Smart")]
+    [InlineData(TimeOfDay.Twilight, "Smart")]
+    [InlineData(TimeOfDay.Night, "Tough")]
+    [InlineData(TimeOfDay.LateNight, "Tough")]
+    public void TheTelevisionDownstairsShowsTheContestOfTheHour(TimeOfDay hour, string contest)
+    {
+        var map = Room("PlayerHouse");
+        var host = new HeadlessScriptHost { Map = map, PlayerTile = (6, 6), PlayerFacing = Direction.Up, TimeOfDay = hour };
+        Run("TV", "PlayerHouse", host);
+        Assert.Contains($"Normal Rank {contest} Contest", Said(host));
+        Assert.All(host.Transcript, l => Assert.Equal("TV", l.Speaker));
+    }
+
+    [Theory]
+    // The tile the first step took the player onto: north, west, east, south of where the adventure begins
+    [InlineData(4, 5)]
+    [InlineData(3, 6)]
+    [InlineData(5, 6)]
+    [InlineData(4, 7)]
+    public void TheRivalBurstsInRunsToTheComputerAndBackWhicheverWayThePlayerStepped(int x, int y)
+    {
+        var room = Room("PlayerHouse2F");
+        var rival = room.FindPerson("rival")!;
+        var host = new HeadlessScriptHost { Map = room, PlayerTile = (x, y), Pauses = true };
+        StoryMigration.BeginNewGame(host.Story, ScriptLibrary.Default);
+        room.ApplyPresence(host.Story.Has);
+        Assert.DoesNotContain(rival, room.NPCs);
+        var trigger = FieldScripts.TriggerAt(room, x, y, host.Story);
+        Assert.Equal("RivalRushesIn", trigger?.Script);
+        var runner = new ScriptRunner(ScriptLibrary.Default, host);
+        runner.Start(ScriptLibrary.Default.In("PlayerHouse2F", "RivalRushesIn")!);
+
+        // He calls from the head of the stairs
+        ReadTo(runner, host, "Did you see it?");
+        Assert.Equal((8, 4), (rival.GridX, rival.GridY));
+        Assert.Contains(rival, room.NPCs);
+        // runs up to stand east of the player, who turns to him
+        ReadTo(runner, host, "tons of them");
+        Assert.Equal((x + 1, y), (rival.GridX, rival.GridY));
+        Assert.Equal(Direction.Right, host.PlayerFacing);
+        // is distracted by the computer: he is on its seat, looking at it, and the player looks after him
+        ReadTo(runner, host, "new computer");
+        Assert.Equal((1, 5, Direction.Up), (rival.GridX, rival.GridY, rival.Facing));
+        Assert.Equal(Direction.Left, host.PlayerFacing);
+        ReadTo(runner, host, "What was I saying?");
+        Assert.Equal(Direction.Right, rival.Facing);
+        // comes back to the player's other side
+        ReadTo(runner, host, "ten-million fine");
+        Assert.Equal((x - 1, y, Direction.Right), (rival.GridX, rival.GridY, rival.Facing));
+        // and runs round them to the stairs, never through the furniture, and is gone
+        ReadToTheEnd(runner, host);
+        Assert.Equal((8, 4), (rival.GridX, rival.GridY));
+        Assert.DoesNotContain(rival, room.NPCs);
+        Assert.Equal((x, y), host.PlayerTile);
+        Assert.Equal(1, host.Story.Var("VAR_PLAYER_HOUSE_RIVAL_STATE"));
+        Assert.True(host.Story.Has("FLAG_HIDE_TWINLEAF_TOWN_PLAYER_HOUSE_2F_RIVAL"));
+        Assert.Null(FieldScripts.TriggerAt(room, x, y, host.Story));
+    }
+
+    [Fact]
+    public void AWhiteOutAtHomeWakesOnTheTileEastOfMom()
+    {
+        // In the player's house that is the cushion beside hers, the original's own tile (sSpawnLocations: 8, 8)
+        var home = Room("PlayerHouse");
+        Assert.Equal((8, 8, Direction.Left), GameEngine.HomeSpot(home.FindPerson("mom")!));
+        foreach (string house in new[] { "PlayerHouse", "PalletPlayerHouse" })
+        {
+            var map = Room(house);
+            var mom = Assert.Single(map.Everyone, n => n.IsHealingNurse);
+            var (x, y, _) = GameEngine.HomeSpot(mom);
+            Assert.True(map.IsWalkable(x, y), $"{house}: nobody can wake at {x},{y}");
+        }
+    }
+
+    // ------------------------------------------------------------------ Professor Rowan's lab (plan 01 · M11, the last step)
+
+    [Fact]
+    public void TheLabIsTheOriginalsPlan()
+    {
+        var lab = Room("RowanLab");
+        Assert.Equal((22, 17, InteriorStyle.Lab), (lab.Width, lab.Height, lab.Interior));
+        LeadsInAndBackOut(lab, 7, 15);
+        EveryoneStandsOnFloorWithSomethingToSay(lab);
+        // The professor at the head of his hall; his two assistants among the machines half-way down; the child who
+        // helps him and Professor Oak a step inside the mat, each behind a flag
+        var who = lab.Everyone.ToDictionary(n => n.Key);
+        Assert.Equal(new[] { "counterpart", "prof_oak", "prof_rowan", "scientist_f", "scientist_m" }, who.Keys.Order());
+        Assert.Equal((7, 5, Direction.Down, "Rowan"), (who["prof_rowan"].GridX, who["prof_rowan"].GridY, who["prof_rowan"].Facing, who["prof_rowan"].Script));
+        Assert.Equal((3, 12, "ScientistM"), (who["scientist_m"].GridX, who["scientist_m"].GridY, who["scientist_m"].Script));
+        Assert.Equal((10, 12, "ScientistF"), (who["scientist_f"].GridX, who["scientist_f"].GridY, who["scientist_f"].Script));
+        Assert.Equal((7, 14, "FLAG_HIDE_SANDGEM_TOWN_LAB_COUNTERPART"), (who["counterpart"].GridX, who["counterpart"].GridY, who["counterpart"].HiddenBy));
+        Assert.Equal((7, 14, "FLAG_HIDE_SANDGEM_TOWN_LAB_PROF_OAK"), (who["prof_oak"].GridX, who["prof_oak"].GridY, who["prof_oak"].HiddenBy));
+        Assert.Null(who["prof_rowan"].HiddenBy);
+        // He stands in the open and is spoken to from every side
+        foreach (var (x, y) in new[] { (7, 6), (7, 4), (6, 5), (8, 5) }) Assert.True(lab.IsWalkable(x, y));
+        // What is read along the back wall, where the original's is
+        foreach (var (x, says) in new[] { (3, "Rule No. 1"), (4, "Rule No. 2"), (5, "crammed"), (6, "reports"), (11, "PC"), (20, "sweets") })
+        {
+            Assert.Contains(says, lab.GetSignboardAt(x, 2));
+            Assert.True(lab.IsSolid(x, 2) && lab.IsWalkable(x, 3));
+        }
+        // The way up the lab from the door to the professor is clear
+        Assert.All(Enumerable.Range(6, 10), y => Assert.False(lab.IsSolid(7, y) || lab.IsSolid(8, y) || lab.IsSolid(6, y)));
+
+        // The plan is no rectangle: the hall at the back is the room's whole width, the length of the lab before it
+        // only its west half, and beside that there is nothing (style guide, "Rooms")
+        var outside = MapScene.OutsideThePlan(lab)!;
+        for (int y = 8; y <= 15; y++)
+            for (int x = 14; x <= 20; x++)
+            {
+                Assert.Equal(TileType.Void, lab.GetGroundTile(x, y));
+                Assert.True(outside[x, y]);
+            }
+        Assert.False(outside[7, 10] || outside[13, 10] || outside[16, 5]);
+        // Void that the floor runs up to is a well inside its room, with the room's walls whole round it (Pal Park's
+        // gallery, open over the lobby); a house's void is always outside its plan (the Pokémon Mansion)
+        Assert.Null(MapScene.OutsideThePlan(Room("PalParkGallery")));
+        var mansion = Room("PokemonMansion");
+        var beyond = MapScene.OutsideThePlan(mansion)!;
+        for (int y = 0; y < mansion.Height; y++)
+            for (int x = 0; x < mansion.Width; x++)
+                Assert.Equal(mansion.GetGroundTile(x, y) == TileType.Void, beyond[x, y]);
+        Assert.Null(MapScene.OutsideThePlan(Room("PlayerHouse")));
+    }
+
+    [Fact]
+    public void TheAssistantLeadsThePlayerUpTheLabToThePokedex()
+    {
+        var lab = Room("RowanLab");
+        var assistant = lab.FindPerson("counterpart")!;
+        // sandgem_town.txt brings the two in at the door: the player on the mat, the assistant a step ahead
+        Assert.Contains(ScriptLibrary.Default.In("sandgem_town", "MeetAssistant")!.Code,
+            i => i.Op == Op.Warp && (i.Name, i.X, i.Y) == ("RowanLab", 7, 15));
+        var host = new HeadlessScriptHost { Map = lab, PlayerTile = (7, 15), PlayerFacing = Direction.Up, Pauses = true };
+        host.Story.SetVar("VAR_SANDGEM_TOWN_STATE", 1);
+        var runner = new ScriptRunner(ScriptLibrary.Default, host);
+        runner.Start(ScriptLibrary.Default.In("RowanLab", ScriptLibrary.OnEnter)!);
+        // Up the length of the lab: the player before the professor, the assistant aside at his left hand
+        ReadTo(runner, host, "Let me have a look");
+        Assert.Equal((7, 6), host.PlayerTile);
+        Assert.Equal((8, 6, Direction.Left), (assistant.GridX, assistant.GridY, assistant.Facing));
+        ReadToTheEnd(runner, host);
+        Assert.True(host.Story.Has(StoryState.PokedexFlag));
+        // The assistant has walked back down to the door and out
+        Assert.Equal((8, 15), (assistant.GridX, assistant.GridY));
+        Assert.DoesNotContain(assistant, lab.NPCs);
+        Assert.True(host.Story.Has("FLAG_HIDE_SANDGEM_TOWN_LAB_COUNTERPART"));
+        Assert.Equal(((7, 6), 1), (host.PlayerTile, host.Story.Var("VAR_SANDGEM_TOWN_LAB_STATE")));
+    }
+
+    [Theory]
+    // The side of the professor he was spoken to from: below him, above, to his east, to his west (the original's four ways)
+    [InlineData(7, 6, Direction.Up)]
+    [InlineData(7, 4, Direction.Down)]
+    [InlineData(8, 5, Direction.Left)]
+    [InlineData(6, 5, Direction.Right)]
+    public void ProfessorOakComesUpTheLabWhereverTheProfessorWasSpokenToFrom(int x, int y, Direction facing)
+    {
+        var lab = Room("RowanLab");
+        NPC rowan = lab.FindPerson("prof_rowan")!, oak = lab.FindPerson("prof_oak")!;
+        var host = new HeadlessScriptHost { Map = lab, PlayerTile = (x, y), PlayerFacing = facing, SeenInSinnoh = 210, Pauses = true };
+        host.Story.SetVar("VAR_SANDGEM_TOWN_LAB_STATE", 1);
+        host.Story.SetVar("VAR_SANDGEM_TOWN_STATE", 2);
+        foreach (string flag in new[] { "FLAG_GAME_COMPLETED", "FLAG_HIDE_SANDGEM_TOWN_LAB_PROF_OAK", "FLAG_HIDE_SANDGEM_TOWN_LAB_COUNTERPART" }) host.Story.Set(flag);
+        lab.ApplyPresence(host.Story.Has);
+        host.Answers.Enqueue(0);
+        var runner = new ScriptRunner(ScriptLibrary.Default, host);
+        runner.Start(ScriptLibrary.Default.In("RowanLab", "Rowan")!, rowan);
+        // Professor Oak has come up from the door to stand below the professor, and the player has stepped aside to the west
+        ReadTo(runner, host, "Good day to you");
+        Assert.Equal((7, 7, Direction.Up), (oak.GridX, oak.GridY, oak.Facing));
+        Assert.Equal(((6, 6), Direction.Right), (host.PlayerTile, host.PlayerFacing));
+        Assert.Contains(oak, lab.NPCs);
+        // He turns to the player, who is right above him
+        ReadTo(runner, host, "upgrade that Pokédex");
+        Assert.Equal((6, 7, Direction.Up), (oak.GridX, oak.GridY, oak.Facing));
+        Assert.Equal(Direction.Down, host.PlayerFacing);
+        // He has gone back down the lab and out, and the player is before the professor again for the Poké Radar
+        ReadTo(runner, host, "This is for you");
+        Assert.Equal((6, 15), (oak.GridX, oak.GridY));
+        Assert.DoesNotContain(oak, lab.NPCs);
+        Assert.Equal(((7, 6), Direction.Up), (host.PlayerTile, host.PlayerFacing));
+        ReadToTheEnd(runner, host);
+        Assert.True(host.NationalDex);
+        Assert.True(host.Story.Has("FLAG_HIDE_SANDGEM_TOWN_LAB_PROF_OAK"));
+        Assert.Equal(1, host.Bag.GetQuantity(ItemDatabase.Get("Poké Radar")!));
+    }
+
+    [Theory]
+    // The original's three things each has to say: before Sunyshore City is reached with the professor's news heard
+    // (the lab's state 3), with the National Pokédex, and on any other day
+    [InlineData("scientist_m", 1, false, "father")]
+    [InlineData("scientist_m", 3, false, "good to be alive")]
+    [InlineData("scientist_m", 3, true, "good to be alive")]
+    [InlineData("scientist_m", 4, true, "how Pokémon evolve")]
+    [InlineData("scientist_f", 1, false, "Kanto")]
+    [InlineData("scientist_f", 3, false, "cold all over")]
+    [InlineData("scientist_f", 4, false, "Kanto")]
+    [InlineData("scientist_f", 4, true, "junior")]
+    public void TheProfessorsAssistantsSayWhatTheDayCallsFor(string who, int state, bool national, string says)
+    {
+        var lab = Room("RowanLab");
+        var scientist = lab.FindPerson(who)!;
+        var host = new HeadlessScriptHost { Map = lab, PlayerTile = (scientist.GridX, scientist.GridY + 1), PlayerFacing = Direction.Up, NationalDex = national };
+        host.Story.SetVar("VAR_SANDGEM_TOWN_LAB_STATE", state);
+        Run(scientist.Script!, "RowanLab", host, scientist);
+        Assert.Contains(says, Said(host));
+        Assert.Equal(Direction.Down, scientist.Facing);
+        Assert.All(host.Transcript, l => Assert.Equal("Scientist", l.Speaker));
+    }
+
+    [Fact]
+    public void ASaveMadeInTheBedroomBeforeItWasLaidOutAgainWakesWhereTheAdventureBegins()
+    {
+        var room = MapDatabase.Get("PlayerHouse2F");
+        var start = RegionDatabase.Get(RegionDatabase.Sinnoh)!.Start!;
+        // The room is come into beside the head of its stairs
+        Assert.Equal(new MapSpot("PlayerHouse2F", 7, 4, Direction.Left), SaveData.ArrivalIn(room, MapDatabase.Get));
+        Assert.True(SaveData.RebuiltAfter("PlayerHouse2F", SaveData.RebuiltRooms) && SaveData.RebuiltAfter("PlayerHouse2F", 0));
+        Assert.False(SaveData.RebuiltAfter("PlayerHouse2F", SaveData.CurrentWorld));
+        // but a game begins in it, and the room a game begins in is come into by the tile it begins on: a game saved
+        // before the first step (the old room's 4, 4, a television's tile now) wakes there, with the rival's scene one
+        // step away whichever way it is taken, where beside the stairs the scene could be walked round
+        foreach (var (x, y) in new[] { (4, 4), (3, 3), (6, 5), (1, 4), (7, 4) })
+        {
+            var old = new SaveData { CurrentMapName = "PlayerHouse2F", PlayerGridX = x, PlayerGridY = y, PlayerFacing = Direction.Left, WorldVersion = SaveData.RebuiltRooms };
+            Assert.Equal(start, old.PlaceOn(MapDatabase.Get));
+            var oldest = JsonSerializer.Deserialize<SaveData>($"{{\"CurrentMapName\":\"PlayerHouse2F\",\"PlayerGridX\":{x},\"PlayerGridY\":{y}}}")!;
+            Assert.Equal(start, oldest.PlaceOn(MapDatabase.Get));
+        }
+        var fresh = new StoryState();
+        foreach (var (dx, dy) in new[] { (0, -1), (-1, 0), (1, 0), (0, 1) })
+            Assert.Equal("RivalRushesIn", FieldScripts.TriggerAt(room, start.X + dx, start.Y + dy, fresh)?.Script);
+        // A save of today's stands where it stood, and one in a wall wakes on the same tile whatever its age
+        var today = new SaveData { CurrentMapName = "PlayerHouse2F", PlayerGridX = 7, PlayerGridY = 6, PlayerFacing = Direction.Down, WorldVersion = SaveData.CurrentWorld };
+        Assert.Equal(new MapSpot("PlayerHouse2F", 7, 6, Direction.Down), today.PlaceOn(MapDatabase.Get));
+        var walled = new SaveData { CurrentMapName = "PlayerHouse2F", PlayerGridX = 0, PlayerGridY = 0, WorldVersion = SaveData.CurrentWorld };
+        Assert.Equal(start, walled.PlaceOn(MapDatabase.Get));
+    }
+
     // ------------------------------------------------------------------ saves
 
     public static readonly string[] JubilifeRooms = { "TrainersSchool", "PoketchCompany", "JubilifeTV1F" };
 
     public static readonly string[] RivalsHouse = { "RivalHouse", "RivalHouse2F" };
 
+    // The last two hand-made places (plan 01 · M11, the last step). The bedroom over the house is the room a game
+    // begins in, and has a test of its own: ASaveMadeInTheBedroomBeforeItWasLaidOutAgainWakesWhereTheAdventureBegins
+    public static readonly string[] HomeAndLab = { "PlayerHouse", "RowanLab" };
+
     public static IEnumerable<object[]> Rebuilt =>
-        Centers.Concat(Marts.Select(m => m.Room)).Concat(JubilifeRooms).Concat(RivalsHouse).Select(name => new object[] { name });
+        Centers.Concat(Marts.Select(m => m.Room)).Concat(JubilifeRooms).Concat(RivalsHouse).Concat(HomeAndLab).Select(name => new object[] { name });
 
     [Theory]
     [MemberData(nameof(Rebuilt))]
@@ -529,6 +951,8 @@ public class RebuiltRoomTests
         Assert.True(SaveData.RebuiltAfter(room, SaveData.ImportedJubilife));
         Assert.True(SaveData.RebuiltAfter(room, 0));
         Assert.False(SaveData.RebuiltAfter(room, SaveData.CurrentWorld));
+        // (the house and the lab were laid out again a version after the rest)
+        Assert.Equal(HomeAndLab.Contains(room), SaveData.RebuiltAfter(room, SaveData.RebuiltRooms));
 
         // Wherever the old room's tile falls on the new plan (before its nurse, behind the new counter, in a wall)
         foreach (var (x, y) in new[] { (5, 4), (5, 7), (8, 4), (1, 3), (4, 6), (9, 2) })
@@ -548,7 +972,7 @@ public class RebuiltRoomTests
     [Fact]
     public void ASaveOnATileNobodyCanStandOnWakesWhereItsRoomIsComeIntoWhateverItsAge()
     {
-        Assert.Equal(SaveData.RebuiltRooms, SaveData.CurrentWorld);
+        Assert.Equal(SaveData.RebuiltHome, SaveData.CurrentWorld);
         // In a wall, or off the room's edge: the one rule serves every room, rebuilt or not
         foreach (var (room, x, y, expected) in new[]
                  {
@@ -596,9 +1020,11 @@ public class RebuiltRoomTests
                 Assert.True(map.InBounds(arrival.X, arrival.Y) && !map.IsSolid(arrival.X, arrival.Y), $"{name}: wakes in a wall at {arrival.X},{arrival.Y}");
                 rooms++;
             }
-            // A room no way leads back into (a lift's car a script rides) keeps the save's own tile
+            // A room no way leads back into (a lift's car a script rides) keeps the save's own tile; the room a game
+            // begins in is come into by the tile it begins on
             var stuck = new SaveData { CurrentMapName = name, PlayerGridX = -1, PlayerGridY = -1, WorldVersion = SaveData.CurrentWorld };
-            Assert.Equal(arrival ?? stuck.Place(), stuck.PlaceOn(MapDatabase.Get));
+            var begins = RegionDatabase.Get(RegionDatabase.Sinnoh)!.Start!;
+            Assert.Equal(name == begins.Map ? begins : arrival ?? stuck.Place(), stuck.PlaceOn(MapDatabase.Get));
         }
         Assert.True(rooms >= 250, $"only {rooms} rooms have a tile to wake on");
     }

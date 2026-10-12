@@ -228,9 +228,10 @@ public class WorldTests
     [Fact]
     public void ANewGameStartsInThePlayersRoomAndTheHouseOpensOntoTwinleafTown()
     {
-        // As in Platinum, in the room upstairs, facing the television (plan 02 · S4)
+        // As in Platinum, in the room upstairs, facing the television (plan 02 · S4), on the original's own tile
+        // (sPlayerStartLocation; plan 01 · M11, the last step)
         var start = RegionDatabase.Get(RegionDatabase.Sinnoh)!.Start!;
-        Assert.Equal(("PlayerHouse2F", 4, 4, Direction.Up), (start.Map, start.X, start.Y, start.Facing));
+        Assert.Equal(("PlayerHouse2F", 4, 6, Direction.Up), (start.Map, start.X, start.Y, start.Facing));
         MapDatabase.Initialize();
         var room = MapDatabase.Get("PlayerHouse2F");
         Assert.True(room.IsWalkable(start.X, start.Y));

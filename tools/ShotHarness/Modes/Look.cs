@@ -31,7 +31,7 @@ partial class Harness
         game.PartyScreen.Close();
 
         GoTo("Route201", 24, 8, Direction.Up); Frames(2); Shot("look_5_route201");
-        GoTo("PlayerHouse", 4, 6, Direction.Up); Frames(2); Shot("look_6_house");
+        GoTo("PlayerHouse", 6, 9, Direction.Up); Frames(2); Shot("look_6_house");
         GoTo("LakeVerity", 14, 11, Direction.Up); Frames(2); Shot("look_7_lake");
 
         game.State = GameState.Options;
