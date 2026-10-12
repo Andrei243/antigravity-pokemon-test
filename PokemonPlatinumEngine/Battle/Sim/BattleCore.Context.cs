@@ -188,7 +188,7 @@ public sealed partial class BattleCore
         }
         target.ConfusionTurns = 2 + rng.Roll(RollKind.ConfusionTurns, 4);
         named.AddRange(naming);
-        Say(line ?? $"{target.Name} became confused!").With(new Confused(target.Place));
+        Say(line ?? $"{target.Name} became confused!").With(new Confused(target.Place)).With(Passing(target));
         CheckConditionHooks(target, source);
         return true;
     }
@@ -260,7 +260,7 @@ public sealed partial class BattleCore
         var theirs = target.Pokemon!.Gender;
         if (mine == theirs || mine == Gender.Genderless || theirs == Gender.Genderless || target.Volatile.InLoveWith != null) return false;
         target.Volatile.InLoveWith = with.Place;
-        Say($"{with.Name}'s {AbilityOf(with)} infatuated {target.Name}!");
+        Say($"{with.Name}'s {AbilityOf(with)} infatuated {target.Name}!").With(Passing(target));
         Reciprocate(target, with);
         return true;
     }

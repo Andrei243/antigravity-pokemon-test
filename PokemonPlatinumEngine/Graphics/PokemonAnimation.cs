@@ -15,21 +15,40 @@ internal static class PokemonAnimation
     /// <summary>Radians per second of the idle loop: one breath every 1.7 s at tempo 1.</summary>
     internal const float Beat = MathF.Tau / 1.7f;
 
-    /// <summary>Which eyes the pose shows.</summary>
+    /// <summary>
+    /// Which eyes the pose shows: the first that holds, in the order the style guide keeps ("The pose's fields and
+    /// the eyes' order"; plan 09 · L2). Plan 25 · Y5's and plan 10 · F6's and F10's cases go in the places it names.
+    /// </summary>
     public static EyeState EyesOf(PokePose p)
     {
+        // 1. A faint
         if (p.Faint > 0.2f) return EyeState.Shut;
+        // 2. Asleep: shut whatever else happens to it (hit in its sleep, striking with Snore or Sleep Talk)
+        if (p.Asleep) return EyeState.Shut;
+        // 3. A hit
         if (p.Hurt > 0.02f && p.Hurt < 0.75f) return EyeState.Squeeze;
+        // 4. An attack that is no status move (and a charge: Y5)
         if (p.Attack > 0.06f && p.Attack < 0.8f && p.Kind != MoveCategory.Status) return EyeState.Fierce;
+        // 5. A held fierce look (F10), and 6. a stat's fall or rise (Y5) go here
+        // 7. Frozen: open and held; nothing below reaches a frozen face
+        if (p.Frozen) return EyeState.Open;
+        // 8. A cheer (Y5) and the camp's faces (F6), and 9. tiredness's longer blinks (Y5) go here
+        // 10. A blink, 11. open
         return p.Blink > 0.5f ? EyeState.Shut : EyeState.Open;
     }
+
+    /// <summary>The moment of its idle loop a frozen Pokémon is held at: the loop's start, whatever the clock says.</summary>
+    internal const float HeldMoment = 0f;
+
+    /// <summary>The time the idle loop is played at: the pose's clock, or one moment for a frozen Pokémon (plan 09 · L2).</summary>
+    internal static float IdleTime(PokePose p) => p.Frozen ? HeldMoment : p.Time;
 
     public static void Apply(PokeModel m, PokePose p, SkeletonPose pose)
     {
         pose.Reset();
         // A fainting Pokémon stops breathing and swaying as it goes down
         float down = p.Faint > 0f ? Smooth(0f, 0.7f, p.Faint) : 0f;
-        if (!m.OwnIdle) Idle(m, p.Time * m.Tempo, 1f - down, pose);
+        if (!m.OwnIdle) Idle(m, IdleTime(p) * m.Tempo, 1f - down, pose);
         if (p.Entry > 0f && p.Entry < 1f) Entry(m, p.Entry, pose);
         if (p.Attack > 0f && p.Attack < 1f)
         {

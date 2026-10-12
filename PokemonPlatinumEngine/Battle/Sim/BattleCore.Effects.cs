@@ -1043,7 +1043,7 @@ public sealed partial class BattleCore
         var theirs = t.Pokemon!.Gender;
         if (mine == theirs || mine == Gender.Genderless || theirs == Gender.Genderless || t.Volatile.InLoveWith != null) return Fails();
         t.Volatile.InLoveWith = user.Place;
-        Say($"{t.Name} fell in love!");
+        Say($"{t.Name} fell in love!").With(Passing(t));
         Reciprocate(t, user);
         return true;
     }

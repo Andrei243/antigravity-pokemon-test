@@ -273,6 +273,8 @@ public partial class BattleEngine
             place.CopyVolatileFrom(theirs);
             Anim[place.Side, place.Slot].Away = theirs.IsActive && theirs.IsElsewhere;
             Anim.SettleSubstitute(place.Side, place.Slot, theirs.IsActive && theirs.HasSubstitute);
+            // What lasts on it (plan 09 · L2): the lines have told all of it already; this catches a Pokémon changed from outside
+            Anim.Conditions.Settle(place.Place, ConditionLooks.RulesHave(theirs));
         }
         Weather = core.Field.Weather;
         Anim.SettleWeather(Weather);
@@ -420,6 +422,9 @@ public partial class BattleEngine
     /// <summary>One thing the log says happened, as the screen shows it.</summary>
     private void Show(BattleEvent happening)
     {
+        // What lasts on a Pokémon (plan 09 · L2): a condition given or cured, a confusion or a love begun or ended,
+        // what a newcomer brings, a faint, a leaving. The line sets the look, which is drawn for as long as it lasts
+        Anim.Conditions.Tell(happening);
         switch (happening)
         {
             case TrainersStand trainers:

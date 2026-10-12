@@ -1240,6 +1240,7 @@ log:
     + HpChanged E1 Hp=22 Healed=false
   say Foe Cherrim became confused due to fatigue!
     + Confused E0
+    + VolatileChanged E0 Confused=true InLove=false
   say Tympole is making an uproar!
   say Foe Azumarill's veil of water restored its HP!
     + HpChanged E1 Hp=29 Healed=true
@@ -1754,6 +1755,7 @@ log:
   say It's not very effective...
   say Croconaw became confused due to fatigue!
     + Confused P0
+    + VolatileChanged P0 Confused=true InLove=false
   say Croconaw is confused!
     + Confused P0
     + MomentShown P0 Moment=Confused From=none
@@ -1972,6 +1974,7 @@ log:
     + MoveShown Move=Supersonic Type=Normal Category=Status From=P1 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Cosmoem became confused!
     + Confused E1
+    + VolatileChanged E1 Confused=true InLove=false
   say Ace Trainer Tester sent out Dudunsparce!
     + Seen Species=Dudunsparce
     + Entered E0 Pokemon=foe#2 Dudunsparce FromBall=true
@@ -2026,6 +2029,7 @@ log:
   say Foe Cosmoem's Sp. Atk rose!
     + StageChanged E1 Stat=SpAttack Stage=1 Rose=true
   say Foe Cosmoem snapped out of confusion!
+    + VolatileChanged E1 Confused=false InLove=false
   say Foe Cosmoem used Cosmic Power!
     + Lunged E1 Category=Status
     + MoveShown Move=Cosmic Power Type=Psychic Category=Status From=E1 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -2775,6 +2779,7 @@ log:
     + MoveShown Move=Swagger Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Stunky became confused!
     + Confused E0
+    + VolatileChanged E0 Confused=true InLove=false
   say Foe Stunky's Attack sharply rose!
     + StageChanged E0 Stat=Attack Stage=2 Rose=true
   say Shaymin is hurt by poison!
@@ -2801,6 +2806,7 @@ log:
     + MoveShown Move=Swagger Type=Normal Category=Status From=P0 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Glameow became confused!
     + Confused E1
+    + VolatileChanged E1 Confused=true InLove=false
   say Foe Glameow's Attack sharply rose!
     + StageChanged E1 Stat=Attack Stage=2 Rose=true
   say Shaymin is hurt by poison!
@@ -2861,6 +2867,7 @@ log:
   say Shaymin regained health!
     + HpChanged P1 Hp=96 Healed=true
   say Foe Stunky snapped out of confusion!
+    + VolatileChanged E0 Confused=false InLove=false
   say Foe Stunky used Night Slash!
     + Lunged E0 Category=Physical
     + MoveShown Move=Night Slash Type=Dark Category=Physical From=E0 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -3138,6 +3145,7 @@ log:
     + MoveShown Move=Swagger Type=Normal Category=Status From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Tropius became confused!
     + Confused P0
+    + VolatileChanged P0 Confused=true InLove=false
   say Tropius's Attack sharply rose!
     + StageChanged P0 Stat=Attack Stage=2 Rose=true
   say Tropius is confused!
@@ -3173,6 +3181,7 @@ log:
     ! Struck P0 Hp=122 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Tropius snapped out of confusion!
+    + VolatileChanged P0 Confused=false InLove=false
   say Tropius used Synthesis!
     + Lunged P0 Category=Status
     + MoveShown Move=Synthesis Type=Grass Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -3444,6 +3453,7 @@ log:
     + Lunged P1 Category=Status
     + MoveShown Move=Attract Type=Normal Category=Status From=P1 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Quagsire fell in love!
+    + VolatileChanged E0 Confused=false InLove=true
   say Foe Quagsire is in love with Alcremie!
     + MomentShown E0 Moment=Infatuated From=none
   say Foe Quagsire used Rain Dance!
@@ -3478,6 +3488,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Alcremie fainted!
     + Fainted P1
+    + VolatileChanged E0 Confused=false InLove=false
   say Rain continues to fall.
     + WeatherContinues Weather=Rain
   say Go! Staryu!
@@ -3674,6 +3685,7 @@ log:
     + MoveShown Move=Supersonic Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Ribombee became confused!
     + Confused E0
+    + VolatileChanged E0 Confused=true InLove=false
   say Foe Ribombee is confused!
     + Confused E0
     + MomentShown E0 Moment=Confused From=none
@@ -3686,6 +3698,7 @@ log:
     ! Struck E0 Hp=23 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Ribombee snapped out of confusion!
+    + VolatileChanged E0 Confused=false InLove=false
   say Foe Ribombee used Stun Spore!
     + Lunged E0 Category=Status
     + MoveShown Move=Stun Spore Type=Grass Category=Status From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -3716,6 +3729,7 @@ log:
     + MoveShown Move=Supersonic Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Ribombee became confused!
     + Confused E0
+    + VolatileChanged E0 Confused=true InLove=false
   say Foe Ribombee is confused!
     + Confused E0
     + MomentShown E0 Moment=Confused From=none
@@ -3783,6 +3797,7 @@ log:
     + MoveShown Move=Supersonic Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Dracovish became confused!
     + Confused E0
+    + VolatileChanged E0 Confused=true InLove=false
   say Foe Dracovish is confused!
     + Confused E0
     + MomentShown E0 Moment=Confused From=none
@@ -3835,6 +3850,7 @@ log:
     + StageChanged E0 Stat=Defense Stage=-1 Rose=false
   say Foe Dracovish's taunt wore off!
   say Foe Dracovish snapped out of confusion!
+    + VolatileChanged E0 Confused=false InLove=false
   say Foe Dracovish used Protect!
     + Lunged E0 Category=Status
     + MoveShown Move=Protect Type=Normal Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -4227,6 +4243,7 @@ log:
   say Foe Burmy protected itself!
   say Foe Dragonair became confused due to fatigue!
     + Confused E0
+    + VolatileChanged E0 Confused=true InLove=false
   say Foe Dragonair is confused!
     + Confused E0
     + MomentShown E0 Moment=Confused From=none
@@ -4248,6 +4265,7 @@ log:
   say Diancie fainted!
     + Fainted P0
   say Foe Dragonair snapped out of confusion!
+    + VolatileChanged E0 Confused=false InLove=false
   say Foe Dragonair used Outrage!
     + Lunged E0 Category=Physical
     + MoveShown Move=Outrage Type=Dragon Category=Physical From=E0 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -5325,6 +5343,7 @@ log:
     + MoveShown Move=Flatter Type=Dark Category=Status From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Cosmog became confused!
     + Confused P0
+    + VolatileChanged P0 Confused=true InLove=false
   say Cosmog's Sp. Atk rose!
     + StageChanged P0 Stat=SpAttack Stage=1 Rose=true
   say Cosmog is confused!
@@ -5475,6 +5494,7 @@ log:
     + MoveShown Move=Confuse Ray Type=Ghost Category=Status From=P1 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Inkay became confused!
     + Confused E1
+    + VolatileChanged E1 Confused=true InLove=false
   say Wobbuffet used Mirror Coat!
   say But it failed!
   say Foe Nymble is hurt by its Black Sludge!
@@ -5607,6 +5627,7 @@ log:
     + MoveShown Move=Swagger Type=Normal Category=Status From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Virizion became confused!
     + Confused P0
+    + VolatileChanged P0 Confused=true InLove=false
   say Virizion's Attack sharply rose!
     + StageChanged P0 Stat=Attack Stage=2 Rose=true
   say Virizion is confused!
@@ -5651,6 +5672,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
   say Virizion snapped out of confusion!
+    + VolatileChanged P0 Confused=false InLove=false
   say Virizion used Double Kick!
     + Lunged P0 Category=Physical
     + MoveShown Move=Double Kick Type=Fighting Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -6594,6 +6616,7 @@ log:
     + MoveShown Move=Teeter Dance Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Heatran became confused!
     + Confused E0
+    + VolatileChanged E0 Confused=true InLove=false
   say Foe Heatran is confused!
     + Confused E0
     + MomentShown E0 Moment=Confused From=none
@@ -6636,6 +6659,7 @@ log:
   say Steenee's Sp. Atk harshly fell!
     + StageChanged P0 Stat=SpAttack Stage=-2 Rose=false
   say Foe Heatran snapped out of confusion!
+    + VolatileChanged E0 Confused=false InLove=false
   say Foe Heatran used Scary Face!
     + Lunged E0 Category=Status
     + MoveShown Move=Scary Face Type=Normal Category=Status From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -6997,6 +7021,7 @@ log:
     + Lunged P0 Category=Status
     + MoveShown Move=Attract Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Gastrodon fell in love!
+    + VolatileChanged E0 Confused=false InLove=true
   say Foe Gastrodon is in love with Alcremie!
     + MomentShown E0 Moment=Infatuated From=none
   say Foe Gastrodon is immobilized by love!
@@ -7284,6 +7309,7 @@ log:
     + MoveShown Move=Supersonic Type=Normal Category=Status From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Cloyster became confused!
     + Confused P0
+    + VolatileChanged P0 Confused=true InLove=false
   say Cloyster is confused!
     + Confused P0
     + MomentShown P0 Moment=Confused From=none
@@ -7327,6 +7353,7 @@ log:
     + MomentShown E0 Moment=Poisoned From=none
     + HpChanged E0 Hp=52 Healed=false
   say Cloyster snapped out of confusion!
+    + VolatileChanged P0 Confused=false InLove=false
   say Cloyster used Withdraw!
     + Lunged P0 Category=Status
     + MoveShown Move=Withdraw Type=Water Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -8588,6 +8615,7 @@ log:
     + MoveShown Move=Flatter Type=Dark Category=Status From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Skiddo became confused!
     + Confused P0
+    + VolatileChanged P0 Confused=true InLove=false
   say Skiddo's Sp. Atk rose!
     + StageChanged P0 Stat=SpAttack Stage=1 Rose=true
   say Skiddo is confused!
@@ -8604,6 +8632,7 @@ log:
   say Foe Vullaby knocked off Skiddo's Fist Plate!
     + ItemShown P0 Item=Fist Plate
   say Skiddo snapped out of confusion!
+    + VolatileChanged P0 Confused=false InLove=false
   say Skiddo used Take Down!
     + Lunged P0 Category=Physical
     + MoveShown Move=Take Down Type=Normal Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -8639,6 +8668,7 @@ log:
     + MoveShown Move=Flatter Type=Dark Category=Status From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Duskull became confused!
     + Confused P0
+    + VolatileChanged P0 Confused=true InLove=false
   say Duskull's Sp. Atk rose!
     + StageChanged P0 Stat=SpAttack Stage=1 Rose=true
   say Duskull is confused!
@@ -8656,6 +8686,7 @@ log:
     ! Struck P0 Hp=87 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Duskull snapped out of confusion!
+    + VolatileChanged P0 Confused=false InLove=false
   say Duskull used Future Sight!
     + Lunged P0 Category=Special
     + MoveShown Move=Future Sight Type=Psychic Category=Special From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -8891,6 +8922,7 @@ log:
     + MoveShown Move=Sweet Kiss Type=Fairy Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Hoothoot became confused!
     + Confused E0
+    + VolatileChanged E0 Confused=true InLove=false
   say Foe Hoothoot is confused!
     + Confused E0
     + MomentShown E0 Moment=Confused From=none
@@ -8938,6 +8970,7 @@ log:
     + MoveShown Move=Floral Healing Type=Fairy Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say But nothing happened!
   say Foe Hoothoot snapped out of confusion!
+    + VolatileChanged E0 Confused=false InLove=false
   say Foe Hoothoot used Confusion!
     + Lunged E0 Category=Special
     + MoveShown Move=Confusion Type=Psychic Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -8945,6 +8978,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Comfey became confused!
     + Confused P0
+    + VolatileChanged P0 Confused=true InLove=false
   say Comfey is confused!
     + Confused P0
     + MomentShown P0 Moment=Confused From=none
@@ -8984,6 +9018,7 @@ log:
   say Foe Hoothoot is hit with recoil!
     + HpChanged E0 Hp=6 Healed=false
   say Comfey snapped out of confusion!
+    + VolatileChanged P0 Confused=false InLove=false
   say Comfey used Floral Healing!
     + Lunged P0 Category=Status
     + MoveShown Move=Floral Healing Type=Fairy Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -9000,6 +9035,7 @@ log:
     + MoveShown Move=Sweet Kiss Type=Fairy Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Hoothoot became confused!
     + Confused E0
+    + VolatileChanged E0 Confused=true InLove=false
   say Foe Hoothoot is confused!
     + Confused E0
     + MomentShown E0 Moment=Confused From=none
@@ -9030,6 +9066,7 @@ log:
     + MoveShown Move=Sweet Kiss Type=Fairy Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Machoke became confused!
     + Confused E0
+    + VolatileChanged E0 Confused=true InLove=false
   say Foe Machoke is confused!
     + Confused E0
     + MomentShown E0 Moment=Confused From=none
@@ -9407,6 +9444,7 @@ log:
     + MoveShown Move=Swagger Type=Normal Category=Status From=P1 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Rockruff became confused!
     + Confused E1
+    + VolatileChanged E1 Confused=true InLove=false
   say Foe Rockruff's Attack sharply rose!
     + StageChanged E1 Stat=Attack Stage=2 Rose=true
   say Foe Rockruff is confused!
@@ -11663,6 +11701,7 @@ log:
     + MoveShown Move=Supersonic Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Magnemite became confused!
     + Confused E0
+    + VolatileChanged E0 Confused=true InLove=false
   say Foe Magnemite is confused!
     + Confused E0
     + MomentShown E0 Moment=Confused From=none
@@ -11859,6 +11898,7 @@ log:
     + MoveShown Move=Confuse Ray Type=Ghost Category=Status From=E1 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
   say Fearow became confused!
     + Confused P1
+    + VolatileChanged P1 Confused=true InLove=false
   say Type: Null used Metal Sound!
     + Lunged P0 Category=Status
     + MoveShown Move=Metal Sound Type=Steel Category=Status From=P0 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -12111,6 +12151,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Ogerpon became confused!
     + Confused P1
+    + VolatileChanged P1 Confused=true InLove=false
   say Go! Lileep!
     + Entered P0 Pokemon=mine#2 Lileep FromBall=true
   say Ogerpon is confused!
@@ -13497,6 +13538,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Wormadam became confused!
     + Confused E0
+    + VolatileChanged E0 Confused=true InLove=false
   say Foe Wormadam is confused!
     + Confused E0
     + MomentShown E0 Moment=Confused From=none
@@ -13522,6 +13564,7 @@ log:
   say Your team is no longer protected by Safeguard!
     + SideConditionChanged Side=Player Condition=Safeguard Layers=0
   say Foe Wormadam snapped out of confusion!
+    + VolatileChanged E0 Confused=false InLove=false
   say Foe Wormadam used Protect!
     + Lunged E0 Category=Status
     + MoveShown Move=Protect Type=Normal Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -15098,6 +15141,7 @@ log:
     + MoveShown Move=Swagger Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Phione became confused!
     + Confused E0
+    + VolatileChanged E0 Confused=true InLove=false
   say Foe Phione's Attack sharply rose!
     + StageChanged E0 Stat=Attack Stage=2 Rose=true
   say Foe Phione is confused!

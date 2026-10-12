@@ -46,6 +46,15 @@ internal struct PokePose
 
     /// <summary>0..1 arrival out of the Poké Ball.</summary>
     public float Entry;
+
+    // What lasts on the body (plan 09 · L2). The fields stand in the groups, and in the order, of the style guide's
+    // "The pose's fields and the eyes' order": a new one goes at the end of its own group, never between two here.
+
+    /// <summary>Asleep: the eyes are shut, whatever else the pose does.</summary>
+    public bool Asleep;
+
+    /// <summary>Frozen: the idle loop is held at one moment, and the eyes are held open.</summary>
+    public bool Frozen;
 }
 
 /// <summary>Which eye texture shows (see <see cref="PokemonDecals"/>).</summary>

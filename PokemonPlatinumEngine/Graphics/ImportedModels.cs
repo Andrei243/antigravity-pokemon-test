@@ -680,7 +680,8 @@ internal static class ImportedModels
         if (rig.Clips.TryGetValue(ClipRole.Idle, out c))
         {
             float length = Length(c);
-            float t = p.Time * tempo % length;
+            // (A frozen Pokémon's own idle clip is held at one moment, as the body plan's is: plan 09 · L2)
+            float t = PokemonAnimation.IdleTime(p) * tempo % length;
             return (c, t < 0f ? t + length : t);
         }
         return (-1, 0f);

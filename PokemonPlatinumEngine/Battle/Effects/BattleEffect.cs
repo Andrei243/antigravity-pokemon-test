@@ -65,6 +65,13 @@ public interface IBattleContext
     /// <summary>Confuses the Pokémon as an item's or an ability's own doing (a berry's disliked flavour): not through a Substitute; Own Tempo keeps it clear. Returns false when it couldn't.</summary>
     bool Confuse(Battler target, string? line);
 
+    /// <summary>
+    /// The next line said tells that this Pokémon's confusion or love has just changed (plan 09 · L2): for an item
+    /// that ends either itself (a Persim Berry, a Mental Herb), called once the change is made and before its line.
+    /// The line carries a <see cref="VolatileChanged"/>, from which the screen draws what lasts on the Pokémon.
+    /// </summary>
+    void PassingChanged(Battler pokemon);
+
     /// <summary>The foes standing across from <paramref name="battler"/> that can still fight.</summary>
     IEnumerable<Battler> ActiveFoes(Battler battler);
 

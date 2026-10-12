@@ -4,9 +4,17 @@ partial class Harness
 
     // conditions: what a battle's passing states look like. A Pokémon that has flown up is off its platform while its
     // HP box stays (96_flight_away), and is back as it strikes (96_flight_strike, 96_flight_back); and last, trainers who
-    // speak in battle (98_speaks_*, SpeakingMode). Not part of "all"
+    // speak in battle (98_speaks_*, SpeakingMode). Not part of "all". CONDITIONS_FROM=status goes straight to the
+    // mode's last part, the conditions that last (plan 09 · L2): quicker to look at, but its pictures are then not
+    // the whole mode's, since the clock and the dice stand elsewhere
     public void ConditionsMode()
     {
+        if (Environment.GetEnvironmentVariable("CONDITIONS_FROM") == "status")
+        {
+            StatusLooksMode();
+            return;
+        }
+
         var flyer = new Pokemon(PokemonDatabase.Get("Staravia")!, 30);
         flyer.Moves.Clear();
         flyer.Moves.Add(new Move(MoveDatabase.Get("Fly")));
@@ -109,6 +117,8 @@ partial class Harness
         FieldLookMode();
         // The turn's moments (plan 25 · Y3, Modes/ConditionsMoments.cs), after it for the same reason
         MomentsMode();
+        // A condition that lasts (plan 09 · L2, Modes/ConditionsStatus.cs), the very last for the same reason
+        StatusLooksMode();
     }
 
     // The weather and the doll (plan 25 · Y1): a battle in each of the five weathers at its menu (96_weather_<kind>)

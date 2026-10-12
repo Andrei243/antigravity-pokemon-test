@@ -87,6 +87,8 @@ public sealed class BattleRenderer
 
         fx.Clear();
         MoveFx.Emit(anim, places, fx);
+        // What lasts about each Pokémon: Z's, bubbles, flames, sparks, a shell of ice, stars, hearts (plan 09 · L2)
+        MoveFx.Conditions(anim, places, fx);
         ArenaFx.Emit(Arena, anim.Time, night, fx, Math.Max(anim.WeatherStrength, anim.FadingStrength));
         ArenaFx.Weather(anim.FadingWeather, BattleAnimator.WeatherFadeTime, anim.Time, places, fx, anim.FadingStrength);
         ArenaFx.Weather(anim.Weather, anim.WeatherAge, anim.Time, places, fx);
@@ -154,11 +156,15 @@ public sealed class BattleRenderer
                 bool isPlayer = s == BattleSide.Player;
                 var feet = Spot(s, Math.Min(slot, anim.Slots - 1), anim.Slots) + new Vector3(0, platformTop, 0);
                 float height = (isPlayer ? 1.2f : 2.2f) * SlotFit(anim);
+                // How wide its body is as the battle turns it, for what is drawn beside it (plan 09 · L2)
+                float halfWidth = 0f;
                 var shown = slot < anim.Slots ? anim[s, slot].Shown : null;
                 if (shown != null)
                 {
                     var model = PokemonModels.Get(shown.ModelName);
-                    height = model.Height * ModelScale(model, isPlayer, anim);
+                    float scale = ModelScale(model, isPlayer, anim);
+                    height = model.Height * scale;
+                    halfWidth = PokemonSprites.Framing(model, isPlayer ? SpriteView.Back : SpriteView.Front, PokemonSprites.Size).HalfWidth * scale;
                 }
                 // Behind a doll, a move's effect lands on the doll: the place is as tall as what shows of the two
                 if (slot < anim.Slots)
@@ -167,7 +173,7 @@ public sealed class BattleRenderer
                     if (look.Visible)
                         height = height * look.PokemonGrow + DollSize(s, anim) * (1f - look.PokemonGrow);
                 }
-                places.Set(s, slot, feet, height);
+                places.Set(s, slot, feet, height, halfWidth);
             }
     }
 
@@ -731,13 +737,22 @@ public sealed class BattleRenderer
             Kind = v.AttackCategory,
             Hurt = Math.Max(0f, BattleAnimator.Progress(v.HitAge, BattleAnimator.HitTime)),
             Faint = a.Faint,
-            Entry = a.Entry
+            Entry = a.Entry,
+            // The body's own part of a condition that lasts (plan 09 · L2): as the lines have told of it, never the rules
+            Asleep = v.Condition.Status == StatusCondition.Sleep,
+            Frozen = v.Condition.Status == StatusCondition.Freeze
         };
 
         if (pass == CharacterPass.Color)
         {
             if (a.Flash > 0f) context.Shaders.SetFlash(a.FlashColor, Math.Clamp(a.Flash, 0f, 1f) * 0.85f);
             else if (a.Silhouette > 0f) context.Shaders.SetFlash(SilhouetteColor, a.Silhouette * 0.92f);
+            else
+            {
+                // A condition's cast, blended into its own colours: it gives way to the flashes above
+                var cast = MoveFx.Cast(v.Condition);
+                if (cast.Amount > 0f) context.Shaders.SetFlash(cast.Color, Math.Clamp(cast.Amount, 0f, 1f));
+            }
         }
         PokemonRenderer.Draw(context, model, pose, root, pass);
         if (pass == CharacterPass.Color) context.Shaders.SetFlash(default, 0f);

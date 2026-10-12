@@ -455,7 +455,7 @@ public sealed partial class BattleCore : IBattleContext
                 foreach (var b in group)
                 {
                     OnEntered(b, opening: true);
-                    said.With(new Entered(b.Place, b.Pokemon!, FromBall: true));
+                    Bringing(said.With(new Entered(b.Place, b.Pokemon!, FromBall: true)), b);
                 }
             }
         }
@@ -465,6 +465,8 @@ public sealed partial class BattleCore : IBattleContext
             {
                 OnEntered(b, opening: true);
                 Emit(new Entered(b.Place, b.Pokemon!, FromBall: false));
+                // What it has as it is met shows from the start (plan 09 · L2)
+                foreach (var brought in Brought(b)) Emit(brought);
             }
             Say(foes.Count > 1
                 ? $"Wild {JoinNames(foes.Select(b => b.Pokemon!.DisplayName))} appeared!"
@@ -484,12 +486,12 @@ public sealed partial class BattleCore : IBattleContext
         foreach (var b in own)
         {
             OnEntered(b, opening: true);
-            go.With(new Entered(b.Place, b.Pokemon!, FromBall: true));
+            Bringing(go.With(new Entered(b.Place, b.Pokemon!, FromBall: true)), b);
         }
         foreach (var b in mine.Where(b => b.Trainer != null))
         {
             OnEntered(b, opening: true);
-            Say($"{b.Trainer!.FullTitle} sent out {b.Pokemon!.DisplayName}!").With(new Entered(b.Place, b.Pokemon!, FromBall: true));
+            Bringing(Say($"{b.Trainer!.FullTitle} sent out {b.Pokemon!.DisplayName}!").With(new Entered(b.Place, b.Pokemon!, FromBall: true)), b);
         }
 
         AnnounceFormat();
@@ -906,13 +908,15 @@ public sealed partial class BattleCore : IBattleContext
     {
         down.Pokemon!.Status = StatusCondition.Faint;
         down.Pokemon.CurrentHP = 0;
-        LetGoOf(down);
+        var letGo = LetGoOf(down);
         ComeBack(down);
         if (down.HasSubstitute) Emit(new SubstituteChanged(down.Place, Up: false));
         Revert(down);
         down.ClearVolatile();
         NoteFaint(down);
         var fell = Say($"{down.Name} fainted!").With(new Fainted(down.Place));
+        // Whoever loved it no longer does, from the line that tells of its fall (plan 09 · L2)
+        foreach (var told in letGo) fell.With(told);
         FellFirst(down, fell);
         if (!down.IsPlayerSide) AwardExp(down);
     }

@@ -281,3 +281,23 @@ public sealed record MomentShown(Place Place, BattleMoment Moment, Place? From =
 /// <c>subscript_future_sight_damage</c>, which plays nothing when the attack fails).
 /// </summary>
 public sealed record AheadLanded(string Move, PokemonType Type, MoveCategory Category, Place From, Place To) : BattleEvent;
+
+/// <summary>
+/// The two passing conditions a Pokémon shows for as long as it has them (plan 09 · L2), as they stand from this
+/// line on: whether the Pokémon in a place is confused, and whether it is in love. It rides on every line where
+/// either begins or ends: the move, the ability or the berry that confuses, Attract and Cute Charm, a Destiny Knot,
+/// the herb, the berries and the bag's items that cure them, a confusion running out, and the send-out of a Pokémon
+/// a confusion was passed to by Baton Pass. Where the rules end a love with no line (the one loved is called back),
+/// it stands in the log by itself. The rules change nothing by it; the screen draws what lasts from it, and
+/// <see cref="Confused"/> and the moments go on telling of what is played as each happens.
+/// </summary>
+public sealed record VolatileChanged(Place Place, bool Confused, bool InLove) : BattleEvent;
+
+/// <summary>
+/// A Pokémon takes its place with a status condition it already had (plan 09 · L2): asleep on the bench, poisoned
+/// before the battle began. It rides on the line that sends it out (or stands beside a wild Pokémon's
+/// <see cref="Entered"/>), so whoever shows the battle knows what the newcomer brings without asking the rules,
+/// which are a turn ahead. Nothing is given by it and nothing is played for it: <see cref="StatusChanged"/> is a
+/// condition given or cured on the field.
+/// </summary>
+public sealed record CameInWith(Place Place, StatusCondition Status) : BattleEvent;
