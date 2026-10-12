@@ -62,6 +62,13 @@ Written 2026-10-06, before any session.
 - Tests: the corpus; each corpus battle's `Record` replays to its own text; `GoldenFile` on a temp folder (a difference writes `.received.txt` and names the block, accept rewrites the file).
 - **Done when** changing the critical hit's ×2 under Platinum's rules fails naming the battles it moved, and once accepted `git diff` shows those battles' lines and nothing else.
 
+**Done (2026-10-12).** Built as above, with these choices:
+- `GoldenFile` (`Check`, and `Compare` on any folder for its own test) cuts a file into blocks at lines `=== name`, names every block that moved (the first twenty) and the first line that changed, and leaves what the code gives in `<name>.received.txt`; under `GOLDEN=accept` it writes the file, a missing one too, so one run creates the three. `Repository.Root` replaced the four private `Repo()` (`CoverageTests`, `SoundTests`, `ArchitectureTests`, `VictoryRoadAndTheHallOfFameTests`).
+- `BattleText` writes any event by its type's name and its fields in declared order (a field called `Place` bare), so the events plan 12 · Q11 added in the same wave, and any later, need nothing of it. A Pokémon is named by its party and place as the battle began (`mine`, `partner`, `foe`, `foe2`, `wild`).
+- `BattleCorpus` draws each Pokémon as the game makes one, `new Pokemon(species, level, rng)` on the seed's `BattleRandom`, so its nature, gender and ability come from the personality it draws (CLAUDE.md: nothing sets them afterwards); a held item half the time, by hold effect (Platinum's 158 items, or every item `HeldItemEffects` runs under the modern rules); the player's levels 5 to 80, or within five of a data trainer's highest. Against a trainer of the data under the modern rules its team is built by `PartyOf` and given the modern species and moves. The modern moves are one shared copy each (`Under(Ruleset.Modern)`), so a move is the same move wherever it is met; what a move calls from `MoveDatabase` (Metronome) is still Platinum's in the test.
+- The files were generated once on the merged wave-3 tree (with plan 12 · Q11's new events), with `GOLDEN=accept dotnet test PokemonPlatinumTests --filter Golden`.
+- Not tried in the session: the critical hit's ×2 changed to see the battles it moves (the session built and ran no tests; the merge's run makes the files).
+
 ### X3 · Golden scripts and saves of every version
 - `ScriptWalk.cs` in the test project, beside `WorldWalk.cs`: `EveryWayThrough`, `Starters` and `OwnMaps` move out of `StoryTests`, which goes on using them.
 - `GoldenScriptTests`: every script on every way through it, as `EveryScriptOfTheGamePlaysToItsEndOnEveryWayThroughIt` plays them, a block each: the script, what started it, the answers taken, then the `Transcript` (speaker and line), `Asked`, `Log`, and the flags and variables it left (`StoryState.Snapshot`). File `scripts.txt`. A chapter of plan 02 shows its whole scene in the diff.
@@ -126,7 +133,7 @@ Written 2026-10-06, before any session.
 ## Status
 
 - [x] X1 The rules as build errors
-- [ ] X2 Golden battles and trainer teams
+- [x] X2 Golden battles and trainer teams
 - [ ] X3 Golden scripts and saves of every version
 - [ ] X4 Strict loading and schemas
 - [ ] X5 The damage oracle: Platinum against generation 4
