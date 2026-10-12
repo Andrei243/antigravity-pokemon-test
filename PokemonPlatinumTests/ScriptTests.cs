@@ -1259,7 +1259,7 @@ public class ScriptTests
         {
             "act Barry Wave", "act Barry Nod 2", "act Barry Cheer", "act Barry Surprised", "act Barry Bow", "act Barry Shrug",
             "act Barry Point", "act Barry Laugh 3", "act player Jump", "mood Barry Angry", "mood player Happy",
-            "walk Barry onspot left onspot left back down", "walk player onspot up back right"
+            "walk Barry onspot left onspot left", "walk Barry back down", "walk player onspot up back right"
         }, host.Log);
         Assert.Equal(Mood.Angry, rival.Mood);
         Assert.Equal(Mood.Happy, host.PlayerMood);

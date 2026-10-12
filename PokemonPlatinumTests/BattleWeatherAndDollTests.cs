@@ -42,7 +42,14 @@ public class BattleWeatherAndDollTests
         CoreScenario.Turn(core);
         CoreScenario.Turn(core);
 
+        // Fog's opening line says what its going on says, and carries no event of its own
         var lines = core.Log.OfType<Said>().Where(s => s.Text == GoesOn[weather]).ToList();
+        if (weather == BattleWeather.Fog)
+        {
+            Assert.Equal(3, lines.Count);
+            Assert.Empty(lines[0].Shows.OfType<WeatherContinues>());
+            lines.RemoveAt(0);
+        }
         Assert.Equal(2, lines.Count);
         foreach (var line in lines)
             Assert.Equal(new WeatherContinues(weather), Assert.Single(line.Shows.OfType<WeatherContinues>()));
