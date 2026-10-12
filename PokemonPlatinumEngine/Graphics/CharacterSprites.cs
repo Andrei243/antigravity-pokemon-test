@@ -198,6 +198,7 @@ internal static class CharacterSprites
 
     private static PixelCanvas? LoadOverride(SpriteKey key)
     {
+        if (!Overrides.Enabled) return null;
         string path = Path.Combine(OverrideFolder, key.Rig.Type, OverrideName(key));
         if (!File.Exists(path)) return null;
         var image = Raylib.LoadImage(path);

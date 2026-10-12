@@ -13,6 +13,14 @@ partial class Harness
         profileRun.Window = $"{Raylib.GetScreenWidth()}x{Raylib.GetScreenHeight()}";
         Console.WriteLine($"window {profileRun.Window}, renderer {profileRun.Renderer ?? "unknown"}, preset {engine.Settings.Quality}, profiler waits for the GPU: {FrameProfiler.WaitsForGpu}");
         Console.WriteLine($"start-up: {startMs:F0} ms to initialise the engine");
+        // Where the start-up went, step by step (the log's phases, plan 16 · T3)
+        int told = 0;
+        void TellPhases()
+        {
+            var phases = Log.Phases;
+            for (; told < phases.Count; told++) Console.WriteLine($"  {phases[told].Name}: {phases[told].Milliseconds:F0} ms");
+        }
+        TellPhases();
         // Arriving somewhere new: its chunks baked and uploaded behind the fade
         var fieldRenderer = game.World;
         fieldRenderer.ResetStreamingStats();
@@ -25,7 +33,10 @@ partial class Harness
         Frames(1);
         Console.WriteLine($"arriving in a town not seen yet: {firstFrame:F0} ms to its first frame, {arrival.Elapsed.TotalMilliseconds - firstFrame:F0} ms for the next");
         Console.WriteLine($"  streaming: {fieldRenderer.Streaming}");
-        var presets = (Environment.GetEnvironmentVariable("SHOTS_PRESETS") ?? "High").Split(',');
+        // And the first arrival of the game itself, as its log times it: the place the new game began in, from the
+        // moment the player was put there to the end of the first frame drawn (which was the one above)
+        TellPhases();
+        var presets =(Environment.GetEnvironmentVariable("SHOTS_PRESETS") ?? "High").Split(',');
         foreach (string preset in presets)
         {
             engine.Settings.Quality = Enum.Parse<GraphicsQuality>(preset);
@@ -140,20 +151,38 @@ partial class Harness
             Frames(40); Profile("twinleaf town in fog");
             town.Weather = FieldWeather.Clear;
 
-            // A wild battle at its menu, then the scripted battle's heaviest moments, each held still
-            party.HealAll();
-            var wild = StartBattle("Shinx", 5);
+            // A wild battle at its menu, then the scripted battle's heaviest moments, each held still. Every battle
+            // here has a team, foes and a generator of its own, made from fixed numbers and not from the game's
+            // seeded chance: whatever puts more people on the maps moves that chance, and with it a Pokémon's gender,
+            // HP and ability, so a battle read a line more or less on its way to the menu and its scene was another
+            // picture from one commit to the next (plan 01 · M12)
+            static Pokemon Made(string species, int level, int seed) => new(PokemonDatabase.Get(species)!, level, new Random(seed));
+            var team = new Party();
+            team.Add(Made("Turtwig", 5, 21));
+            team.Add(Made("Chimchar", 7, 22));
+            team.Add(Made("Piplup", 6, 23));
+            BattleEngine Wild(int seed, BattleConditions conditions = null)
+            {
+                var battle = new BattleEngine(new BattleSetup
+                {
+                    PlayerParty = team, Inventory = inventory, Pokedex = pokedex, WildPokemon = new List<Pokemon> { Made("Shinx", 5, 24) },
+                    Random = new Random(seed), Conditions = conditions
+                });
+                game.Battle = battle;
+                game.State = GameState.Battle;
+                return battle;
+            }
+            // (On the map of Sinnoh the stage depends on where the battle starts: StartBattle's place on Route 201)
+            var (stage, stageX, stageY) = Harness.Place("Route201", -1, -1);
+            game.Map = MapDatabase.Get(stage);
+            if (stageX >= 0) game.Player.SetPosition(stageX, stageY, Direction.Up);
+            game.BattleRenderer.SetArena(game.Map, stageX, stageY);
+            var wild = Wild(31);
             ToMainMenu(wild);
             Profile("battle, at the menu");
 
             // The same in the rain (plan 25 · Y1): the weather's layer over the whole stage
-            var rainy = new BattleEngine(new BattleSetup
-            {
-                PlayerParty = party, Inventory = inventory, Pokedex = pokedex, WildPokemon = new List<Pokemon> { Meet("Shinx", 5) },
-                Conditions = new BattleConditions { Weather = BattleWeather.Rain }
-            });
-            game.Battle = rainy;
-            game.State = GameState.Battle;
+            var rainy = Wild(32, new BattleConditions { Weather = BattleWeather.Rain });
             ToMainMenu(rainy);
             Skip(1.0);
             Profile("battle in rain, at the menu");
@@ -196,14 +225,13 @@ partial class Harness
             }
 
             // Two trainers and four Pokémon
-            party.HealAll();
             var one = new Trainer { Name = "Ana", TrainerClass = "Youngster" };
-            one.Party.Add(new Pokemon(PokemonDatabase.Get("Shinx")!, 6));
+            one.Party.Add(Made("Shinx", 6, 25));
             var two = new Trainer { Name = "Cal", TrainerClass = "Lass" };
-            two.Party.Add(new Pokemon(PokemonDatabase.Get("Piplup")!, 6));
+            two.Party.Add(Made("Piplup", 6, 26));
             var d = new BattleEngine(new BattleSetup
             {
-                PlayerParty = party, Inventory = inventory, Pokedex = pokedex, Format = BattleFormat.Double,
+                PlayerParty = team, Inventory = inventory, Pokedex = pokedex, Format = BattleFormat.Double,
                 Trainers = new List<Trainer> { one, two }, WildPokemon = new List<Pokemon>(), Random = new Random(5)
             });
             game.BattleRenderer.SetArena(game.Map);
@@ -215,6 +243,11 @@ partial class Harness
             for (int guard = 0; guard < 6 && d.HUD.MenuState == BattleMenuState.Message; guard++) { d.ConfirmMessage(); Frames(1); Skip(20 / 60.0); }
             Skip(0.8);
             Profile("double battle, at the menu");
+
+            // The same in a sandstorm with every hazard and screen on both sides (plan 25 · Y2): the most the field's
+            // look ever draws over the most a battle already draws (Modes/ConditionsField.cs)
+            EverythingOnTheField();
+            Profile("double battle in a sandstorm, everything on the field");
             game.State = GameState.Overworld;
         }
         engine.Settings.Quality = GraphicsQuality.High;

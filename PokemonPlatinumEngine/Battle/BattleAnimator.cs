@@ -204,6 +204,14 @@ public sealed class BattleAnimator
     public const float SubstituteHitTime = 0.45f;
     public const float SubstituteAsideTime = EffectTime + 0.2f;
 
+    /// <summary>
+    /// What lies on the field (plan 25 · Y2): a hazard, a screen, a room or something sent ahead comes in over
+    /// <see cref="FieldArriveTime"/> from the line that tells of it, and fades over <see cref="FieldFadeTime"/> on
+    /// the line that says it is gone.
+    /// </summary>
+    public const float FieldArriveTime = 0.6f;
+    public const float FieldFadeTime = 0.5f;
+
     // The thrown ball: the trainer runs in and throws, the ball flies, opens over the foe and pulls it in, drops
     // onto the platform, wobbles once per successful shake check with a short pause after each, then clicks shut
     // or bursts open
@@ -360,6 +368,14 @@ public sealed class BattleAnimator
         Weather = weather;
         WeatherAge = instantly ? WeatherFadeTime : 0f;
     }
+
+    // ------------------------------------------------------------------ what lies on the field (plan 25 · Y2)
+
+    /// <summary>
+    /// Each side's screens, veils and hazards, Trick Room and Gravity, and what waits for each place, as the lines
+    /// have told of them: the engine sets it from the log's events and settles it with the rules once a menu opens.
+    /// </summary>
+    public FieldLook FieldLook { get; } = new();
 
     // ------------------------------------------------------------------ the Substitute (plan 25 · Y1)
 
@@ -550,6 +566,7 @@ public sealed class BattleAnimator
             FadingAge = -1f;
             FadingWeather = Sim.BattleWeather.None;
         }
+        FieldLook.Advance(dt);
         if (Ball != null)
         {
             Ball.Age += dt;

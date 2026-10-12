@@ -41,6 +41,9 @@ internal sealed class FxRibbon
     public Color Color;
     public FxBlend Blend;
     public FxShape Shape = FxShape.Beam;
+
+    /// <summary>Tested against the scene's depth, like a quad's (a pane on a platform's rim, plan 25 · Y2); a beam or a bolt is drawn over the scene.</summary>
+    public bool Depth;
 }
 
 /// <summary>Everything the effects draw this frame, plus the screen flash and any extra shake. GPU-free.</summary>
@@ -86,10 +89,10 @@ internal sealed class FxList
         Quads.Add(new FxQuad { Shape = shape, Blend = blend, Depth = depth, Center = at, Size = size, Rotation = rotation, Color = color, Normal = Vector3.Normalize(normal) });
     }
 
-    public void Ribbon(Vector3[] points, float width, Color color, FxBlend blend = FxBlend.Add, FxShape shape = FxShape.Beam)
+    public void Ribbon(Vector3[] points, float width, Color color, FxBlend blend = FxBlend.Add, FxShape shape = FxShape.Beam, bool depth = false)
     {
         if (color.A == 0 || width <= 0f || points.Length < 2) return;
-        Ribbons.Add(new FxRibbon { Points = points, Width = width, Color = color, Blend = blend, Shape = shape });
+        Ribbons.Add(new FxRibbon { Points = points, Width = width, Color = color, Blend = blend, Shape = shape, Depth = depth });
     }
 
     public void ScreenFlash(Color color, float amount)
@@ -544,12 +547,12 @@ internal static class FxRenderer
                 .CompareTo(Vector3.DistanceSquared(fx.Quads[a].Center, camera.Position)));
             Rlgl.SetBlendMode(BlendMode.Alpha);
             foreach (int i in order) Quad(fx.Quads[i], tex.Id, camera.Position, right, up);
-            if (!depth) foreach (var r in fx.Ribbons) if (r.Blend == FxBlend.Alpha) Ribbon(r, tex.Id, camera.Position);
+            foreach (var r in fx.Ribbons) if (r.Depth == depth && r.Blend == FxBlend.Alpha) Ribbon(r, tex.Id, camera.Position);
             Rlgl.DrawRenderBatchActive();
 
             Rlgl.SetBlendMode(BlendMode.Additive);
             foreach (var q in fx.Quads) if (q.Depth == depth && q.Blend == FxBlend.Add) Quad(q, tex.Id, camera.Position, right, up);
-            if (!depth) foreach (var r in fx.Ribbons) if (r.Blend == FxBlend.Add) Ribbon(r, tex.Id, camera.Position);
+            foreach (var r in fx.Ribbons) if (r.Depth == depth && r.Blend == FxBlend.Add) Ribbon(r, tex.Id, camera.Position);
             Rlgl.DrawRenderBatchActive();
         }
 

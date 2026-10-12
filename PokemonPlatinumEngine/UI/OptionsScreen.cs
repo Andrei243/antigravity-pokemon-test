@@ -6,18 +6,24 @@ using PokemonPlatinumEngine.UI.Kit;
 
 namespace PokemonPlatinumEngine.UI;
 
-/// <summary>The settings the options screen offers, in the order of its rows.</summary>
+/// <summary>
+/// The settings the options screen offers, in the order of its rows. A new row goes at the end of the settings,
+/// before <see cref="Help"/>, which stays the last: it is no setting but the way into the help pages.
+/// </summary>
 public enum OptionRow
 {
     TextSpeed, Quality, WindowSize, Fullscreen, VSync, TimeOfDay,
     Sound, MusicVolume, SoundVolume, CryVolume, AmbienceVolume, Speakers,
-    MoveHints, TrainerLines, Help
+    MoveHints, TrainerLines,
+    FocusPause, FrameCap,
+    Help
 }
 
 /// <summary>
 /// The options screen: text speed, graphics quality, window size, full screen, V-Sync, time of day, and the sound:
 /// on or off, a volume for each of the mixer's buses (the music with its fanfares, the sound effects, the cries,
-/// the ambience) and the speakers it plays through; then the helps of plan 12 (the move hints), the trainers' lines in battle (plan 11 · C12) and the HELP pages
+/// the ambience) and the speakers it plays through; then the helps of plan 12 (the move hints), the trainers' lines in battle (plan 11 · C12),
+/// the two rows of plan 16 · T3 (whether the game waits behind another window, and the most frames it draws a second) and the HELP pages
 /// (<see cref="HelpScreen"/>), which open over the options. Changes apply at once; the caller saves the settings
 /// when the screen reports a change. More rows than fit scroll in a window (<see cref="VisibleRows"/>).
 /// </summary>
@@ -150,6 +156,15 @@ public class OptionsScreen
             case OptionRow.TrainerLines:
                 s.TrainerLines = (RulesDefault)Wrap((int)s.TrainerLines + step, 3);
                 break;
+            case OptionRow.FocusPause:
+                s.FocusPause = !s.FocusPause;
+                break;
+            case OptionRow.FrameCap:
+                // 30, 60, 120, none, and round again; a number the file was given by hand counts as 60
+                var caps = GameSettings.FrameCaps;
+                int cap = Array.IndexOf(caps, s.FrameCap);
+                s.FrameCap = caps[Wrap((cap < 0 ? Array.IndexOf(caps, 60) : cap) + step, caps.Length)];
+                break;
         }
     }
 
@@ -187,6 +202,13 @@ public class OptionsScreen
             + RulesLine(s.MoveHints, "shows them", "goes without")),
         OptionRow.TrainerLines => ("Trainers speak", Value(s.TrainerLines), "In battle, Gym Leaders, your rival and other bosses say a line when their last Pokémon comes out, when their first one falls and when their last one is in the red. "
             + RulesLine(s.TrainerLines, "has them speak", "keeps them quiet, as Platinum did")),
+        OptionRow.FocusPause => ("Pause in the background", s.FocusPause ? "On" : "Off", s.FocusPause
+            ? "While another window is in front, the game waits where it is and its sound drops; it goes on when you come back to it."
+            : "The game runs on, sound and all, while another window is in front."),
+        OptionRow.FrameCap => ("Frame limit", s.FrameCap > 0 ? $"{s.FrameCap} fps" : "No limit", (s.FrameCap > 0
+            ? "The most frames the game draws a second."
+            : "The game draws as many frames a second as it can.")
+            + " V-Sync, when it is on, still holds it to the display's refresh rate."),
         _ => ("Help", "Open", "The type chart, the controls and a few notes for the road.")
     };
 

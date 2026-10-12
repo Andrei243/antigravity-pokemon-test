@@ -7,9 +7,40 @@ namespace PokemonPlatinumEngine.Battle.Sim;
 /// <summary>The weather over a battle. Fog only ever comes from the field outside: no move or ability starts it.</summary>
 public enum BattleWeather { None, Rain, Sandstorm, Sun, Hail, Fog }
 
+/// <summary>
+/// What a side of the field can have (plan 25 · Y2): a screen, a veil, a wind or a chant up, or something lying at
+/// its feet. The log tells of each as it comes and goes (<see cref="SideConditionChanged"/>); plan 06 · R19's Aurora
+/// Veil and new hazards join at the end.
+/// </summary>
+public enum SideCondition { Reflect, LightScreen, Mist, Safeguard, Tailwind, LuckyChant, Spikes, ToxicSpikes, StealthRock }
+
+/// <summary>What the whole field can be under besides its weather (<see cref="FieldConditionChanged"/>); R19's terrains join at the end.</summary>
+public enum FieldCondition { TrickRoom, Gravity }
+
+/// <summary>What can wait for a place, whoever stands there when it arrives (<see cref="PlaceConditionChanged"/>).</summary>
+public enum PlaceCondition { Wish, FutureSight, DoomDesire }
+
 /// <summary>What one side of the field has up: screens, veils and what lies scattered at its feet.</summary>
 public sealed class SideState
 {
+    /// <summary>
+    /// How much of a condition the side has: the layers of Spikes (0 to 3) and of Toxic Spikes (0 to 2), 1 or 0 for
+    /// everything else. What a <see cref="SideConditionChanged"/> carries, and what the screen's look is held to.
+    /// </summary>
+    public int Layers(SideCondition condition) => condition switch
+    {
+        SideCondition.Reflect => Reflect ? 1 : 0,
+        SideCondition.LightScreen => LightScreen ? 1 : 0,
+        SideCondition.Mist => Mist ? 1 : 0,
+        SideCondition.Safeguard => Safeguard ? 1 : 0,
+        SideCondition.Tailwind => Tailwind ? 1 : 0,
+        SideCondition.LuckyChant => LuckyChant ? 1 : 0,
+        SideCondition.Spikes => Spikes,
+        SideCondition.ToxicSpikes => ToxicSpikes,
+        SideCondition.StealthRock => StealthRock ? 1 : 0,
+        _ => 0
+    };
+
     public int ReflectTurns, LightScreenTurns, MistTurns, SafeguardTurns, TailwindTurns, LuckyChantTurns;
 
     /// <summary>Follow Me: the foes' moves aimed at one Pokémon of this side go to whoever stands here instead, this turn.</summary>
@@ -42,6 +73,17 @@ public sealed class PlaceState
     public MoveData? DoomMove;
     public Place DoomFrom;
     public int DoomDamage;
+
+    /// <summary>Which of the two attacks that are sent ahead a move is.</summary>
+    public static PlaceCondition AheadAs(MoveData move) => move.Name == "Doom Desire" ? PlaceCondition.DoomDesire : PlaceCondition.FutureSight;
+
+    /// <summary>Whether something waits for the place (what a <see cref="PlaceConditionChanged"/> tells of).</summary>
+    public bool Has(PlaceCondition condition) => condition switch
+    {
+        PlaceCondition.Wish => WishTurns > 0,
+        PlaceCondition.FutureSight or PlaceCondition.DoomDesire => DoomTurns > 0 && DoomMove != null && AheadAs(DoomMove) == condition,
+        _ => false
+    };
 }
 
 /// <summary>
@@ -66,6 +108,14 @@ public sealed class FieldState
 
     public bool TrickRoom => TrickRoomTurns > 0;
     public bool Gravity => GravityTurns > 0;
+
+    /// <summary>Whether the field is under a condition (what a <see cref="FieldConditionChanged"/> tells of).</summary>
+    public bool Has(FieldCondition condition) => condition switch
+    {
+        FieldCondition.TrickRoom => TrickRoom,
+        FieldCondition.Gravity => Gravity,
+        _ => false
+    };
 
     /// <summary>Indexed by <see cref="BattleSide"/>.</summary>
     public SideState[] Sides { get; } = { new(), new() };

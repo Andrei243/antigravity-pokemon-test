@@ -105,6 +105,8 @@ partial class Harness
 
         WeatherAndDollMode();
         SpeakingMode();
+        // What lies on the field (plan 25 · Y2, Modes/ConditionsField.cs): last, so the shots before it stay as they were
+        FieldLookMode();
     }
 
     // The weather and the doll (plan 25 · Y1): a battle in each of the five weathers at its menu (96_weather_<kind>)
@@ -189,8 +191,14 @@ partial class Harness
         }
         Skip(0.5);
         sb.SelectMove(1);
-        ReadTo(sb, "Blastoise used Water Gun!", 0.3);
+        // The line is up as the move is chosen (Blastoise is the faster). The doll is aside within a fifth of a second
+        // of it, while the camera is still on its owner; a moment later the camera cuts to the foe
+        // (BattleCamera.CutTime) and neither is in the picture, which is what a shot 0.3 s in showed (plan 25 · Y2
+        // found it so). So it is taken 0.2 s in, and the mode's clock then brought to where it always stood
+        Skip(0.2);
+        Console.WriteLine($"  line: {sb.CurrentMessage}, weather {sb.Anim.Weather}, doll {sb.Anim[BattleSide.Player].Substitute?.Up.ToString() ?? "none"}, aside {SubstituteDoll.LookOf(sb.Anim[BattleSide.Player].Substitute).Aside:0.00}, camera {game.BattleRenderer.Shot}");
         Shot("96_substitute_aside");
+        Skip(0.1);
         game.State = GameState.Overworld;
 
         party.HealAll();

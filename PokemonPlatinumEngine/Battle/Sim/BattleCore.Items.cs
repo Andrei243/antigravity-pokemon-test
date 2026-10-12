@@ -463,7 +463,7 @@ public sealed partial class BattleCore
             if (use.ContainsKey("guardSpec") && !Field.Side(user.Side).Mist)
             {
                 Field.Side(user.Side).MistTurns = 5;
-                Say($"{TeamOf(user.Side, capital: true)} became shrouded in mist!");
+                Say($"{TeamOf(user.Side, capital: true)} became shrouded in mist!").With(Now(user.Side, SideCondition.Mist));
             }
         }
     }

@@ -100,6 +100,18 @@ public partial class GameEngine
         GiveWildItems(wilds, kind);
         if (!fieldEncounter) EndRadarChain();
         var shown = PrepareModels(wilds.Concat(beside?.Party.Members ?? Enumerable.Empty<Pokemon>()));
+        // Who is met and where, which is what the way into the battle goes by (plan 09 · L13): the ground is the
+        // battle's own, so a Pokémon hooked on a rod is met the water's way from any bank, and the first Pokémon
+        // measured against it is the first of the team that fights (the assistant's, in the lesson)
+        var meeting = new BattleMeeting
+        {
+            WildSpecies = wildPkmn.Species.Name,
+            Double = second != null,
+            Kind = kind,
+            Terrain = BattleConditionsHere().Terrain,
+            TheirLevel = wildPkmn.Level,
+            OwnLevel = party == playerParty ? LeadLevel() : party.Members.FirstOrDefault(p => !p.IsFainted)?.Level ?? 0
+        };
         StartTransition(GameState.Battle, () =>
         {
             AwaitModels(shown);
@@ -124,7 +136,7 @@ public partial class GameEngine
             // terrain gives both the same platforms), whatever ground the player cast from
             if (hooked) battleRenderer.SetArena(BattleArena.Water, trees: currentMap.TreesAt(player.GridX, player.GridY));
             else battleRenderer.SetArena(currentMap, player.GridX, player.GridY);
-        }, SceneTransition.ForBattle(trainer: false, leader: false, wildPkmn.Level, LeadLevel()));
+        }, SceneTransition.ForBattle(meeting));
     }
 
     /// <summary>
@@ -320,6 +332,18 @@ public partial class GameEngine
         eyeThemePlaying = false;
         AudioManager.PlayMusic(MusicDirector.BattleRole(trainers.Select(t => t.TrainerClass)), immediate: true);
         var shown = PrepareModels(trainers.SelectMany(t => t.Party.Members).Concat(partner?.Party.Members ?? Enumerable.Empty<Pokemon>()));
+        bool two = trainer.DoubleBattle || trainers.Count > 1 || partner != null;
+        // Who is met and where, which is what the way into the battle goes by (plan 09 · L13): the first trainer's
+        // class decides for both, as in the original, and the first Pokémon of theirs that can fight is measured
+        // against the player's
+        var meeting = new BattleMeeting
+        {
+            Trainers = BattleMeeting.Of(trainers),
+            Double = two,
+            Terrain = BattleConditionsHere().Terrain,
+            TheirLevel = (trainer.Party.Members.FirstOrDefault(p => !p.IsFainted) ?? trainer.Party.Members[0]).Level,
+            OwnLevel = LeadLevel()
+        };
         StartTransition(GameState.Battle, () =>
         {
             AwaitModels(shown);
@@ -330,7 +354,7 @@ public partial class GameEngine
                 Pokedex = playerPokedex,
                 PcStorage = pcBoxStorage,
                 Place = PlaceName(),
-                Format = trainer.DoubleBattle || trainers.Count > 1 || partner != null ? BattleFormat.Double : BattleFormat.Single,
+                Format = two ? BattleFormat.Double : BattleFormat.Single,
                 Trainers = trainers,
                 Partner = partner,
                 FirstBattle = firstBattle,
@@ -342,8 +366,7 @@ public partial class GameEngine
             battleTrainers.Clear();
             battleTrainers.Add(trainerNpc);
             if (secondNpc?.TrainerData != null) battleTrainers.Add(secondNpc);
-        }, SceneTransition.ForBattle(trainer: true, trainer.TrainerClass.Contains("Leader", StringComparison.OrdinalIgnoreCase),
-            trainer.Party.Members[0].Level, LeadLevel()));
+        }, SceneTransition.ForBattle(meeting));
     }
 
     /// <summary>Whether the move cards say how a move will do: the option, with Rules following the game's own rules (plan 12 · Q10).</summary>

@@ -61,3 +61,19 @@ namespace PokemonPlatinumTests.Probes.Graphics
         public static float Height(PokemonPlatinumEngine.Overworld.Map map) => map.HeightAt(0, 0);
     }
 }
+
+namespace PokemonPlatinumTests.Probes.Core.Diagnostics
+{
+    internal static class Report
+    {
+        public static bool Window() => Raylib_cs.Raylib.IsWindowReady();
+    }
+}
+
+namespace PokemonPlatinumTests.Probes.Core
+{
+    internal static class CommandLine
+    {
+        public static bool InFront() => Raylib_cs.Raylib.IsWindowFocused();
+    }
+}

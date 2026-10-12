@@ -172,6 +172,16 @@ public partial class GameEngine
         eyeThemePlaying = false;
         AudioManager.PlayMusic(MusicDirector.BattleRole(trainers.Select(t => t.TrainerClass)), immediate: true);
         var shown = PrepareModels(trainers.SelectMany(t => t.Party.Members).Concat(beside?.Party.Members ?? Enumerable.Empty<Pokemon>()).Concat(team.Members));
+        // BATTLE_TYPE_FRONTIER: the Frontier's own way in, a Brain's even in a double, and the double's for anyone else's (plan 09 · L13)
+        var meeting = new BattleMeeting
+        {
+            Trainers = BattleMeeting.Of(trainers),
+            Double = doubles,
+            Frontier = true,
+            Terrain = Battle.Sim.BattleTerrain.Special,
+            TheirLevel = trainers[0].Party.Members[0].Level,
+            OwnLevel = team.Members.FirstOrDefault()?.Level ?? 0
+        };
         StartTransition(GameState.Battle, () =>
         {
             AwaitModels(shown);
@@ -202,7 +212,7 @@ public partial class GameEngine
             });
             battleRenderer.SetArena(currentMap, player.GridX, player.GridY);
             battleTrainers.Clear();
-        }, SceneTransition.ForBattle(trainer: true, leader: trainers.Any(t => t.TrainerClass is "Tower Tycoon" or "Factory Head" or "Hall Matron" or "Castle Valet" or "Arcade Star"), trainers[0].Party.Members[0].Level, team.Members.FirstOrDefault()?.Level ?? 0));
+        }, SceneTransition.ForBattle(meeting));
     }
 
     /// <summary>

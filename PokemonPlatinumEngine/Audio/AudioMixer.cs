@@ -79,6 +79,28 @@ public sealed class AudioMixer
 
     public bool Muted { get; set; }
 
+    /// <summary>
+    /// How loud everything plays while the game waits behind another window (plan 16 · T3, the options' "Pause in the
+    /// background"), and how long it takes to drop there and to come back.
+    /// </summary>
+    public const float AwayLevel = 0.25f;
+    private const float AwayTime = 0.25f;
+
+    /// <summary>Whether the game is waiting behind another window: everything glides down to <see cref="AwayLevel"/>, and back when it is over.</summary>
+    public bool Away
+    {
+        get { lock (gate) return away; }
+        set { lock (gate) away = value; }
+    }
+    private bool away;
+    private float awayGain = 1f;
+
+    /// <summary>How loud everything plays for <see cref="Away"/> at this moment: 1 when the game has the player's ear.</summary>
+    public float AwayGain
+    {
+        get { lock (gate) return awayGain; }
+    }
+
     /// <summary>Whether the output sounds as the handheld's own speakers would (<see cref="HandheldLow"/>).</summary>
     public bool Handheld
     {
@@ -321,6 +343,15 @@ public sealed class AudioMixer
 
             if (handheld) Speakers(output);
             float gain = Muted ? 0f : Volume;
+            // Behind another window everything drops to a quarter, gliding there and back sample by sample so nothing
+            // clicks; with the player's ear (the gain at 1 and staying there) the samples are what they always were
+            float awayFrom = awayGain, awayTarget = away ? AwayLevel : 1f;
+            if (awayGain != awayTarget)
+            {
+                float step = frames / (float)Synthesizer.SampleRate / AwayTime * (1f - AwayLevel);
+                awayGain = awayGain < awayTarget ? MathF.Min(awayTarget, awayGain + step) : MathF.Max(awayTarget, awayGain - step);
+            }
+            bool gliding = awayFrom != 1f || awayGain != 1f;
             for (int i = 0; i < output.Length; i++)
             {
                 // A high-pass at ~30 Hz keeps rumble the speakers can't play out of the mix
@@ -331,6 +362,7 @@ public sealed class AudioMixer
 
                 // Gentle limiter: transparent below ±0.8, rounding off peaks above it
                 float x = highPass[ch] * gain;
+                if (gliding) x *= awayFrom + (awayGain - awayFrom) * (i >> 1) / frames;
                 float ax = MathF.Abs(x);
                 if (ax > 0.8f) x = MathF.Sign(x) * (0.8f + 0.2f * MathF.Tanh((ax - 0.8f) / 0.2f));
                 // The handheld's ten bits, with a step of triangular dither
