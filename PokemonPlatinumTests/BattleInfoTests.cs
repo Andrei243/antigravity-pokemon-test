@@ -37,8 +37,9 @@ public class BattleInfoTests
         Assert.Equal(new[] { "Attack +2" }, garchomp.Stages.Select(l => l.Text));
         Assert.Equal(InfoTone.Good, garchomp.Stages[0].Tone);
 
-        // All of it still there two turns on, in the panel's order: the sand's count is never told, a held rock would lengthen it
-        Assert.Equal(new[] { "Sandstorm", "Reflect 2 turns", "Spikes ×1", "Garchomp: Attack +2" }, battle.Info.Lines);
+        // All of it still there two turns on, in the panel's order (the field's, then each side's with its Pokémon's):
+        // the sand's count is never told, a held rock would lengthen it
+        Assert.Equal(new[] { "Sandstorm", "Reflect 2 turns", "Garchomp: Attack +2", "Spikes ×1" }, battle.Info.Lines);
     }
 
     [Fact]
