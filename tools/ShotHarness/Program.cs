@@ -51,7 +51,8 @@
 // exactly what a change did. This file keeps the arguments, the window, the seeds and the order of `all`; Harness.cs
 // holds the game and the helpers, and Modes/ a file for each mode. The harness reaches the engine through its Driver
 // (GameEngine.Drive) and its internal classes directly (InternalsVisibleTo), never by reflection. The output directory
-// becomes the working directory, which keeps the game from loading or writing savegame.json there.
+// becomes the working directory and the folder the game keeps its saves in (SavePaths, below), so nothing of a
+// player's is ever read or written: not a save beside the game, and not the user's own folder for the game.
 
 string startDir = Environment.CurrentDirectory;
 string outDir = Path.GetFullPath(args.Length > 0 ? args[0] : "shots");
@@ -68,6 +69,19 @@ if (mode == "contact") { Compare.Contact(args, outDir); return; }
 if (mode == "crop") { Compare.Crop(args, startDir); return; }
 if (mode == "diff") { Compare.Diff(args, outDir, startDir); return; }
 if (mode == "ab") { Timings.Ab(args, startDir); return; }
+
+// Whatever the game writes (a slot's save, the options, a crash's files) goes into the output folder and nowhere
+// else (plan 12 · Q2). The folder is named outright; a portable.txt in it says the same to anything that asks the
+// machine; and before a game is made the game's own rules are asked where they would keep the saves of a game
+// started here, which only decides and touches nothing: anywhere but this folder, and the run stops
+File.WriteAllText(Path.Combine(outDir, SavePaths.PortableMarker), "The screenshot harness keeps what the game writes in this folder.\n");
+SavePaths.Current = SavePaths.In(outDir);
+string asked = SavePaths.Resolve(SaveEnvironment.Here()).Folder;
+if (!string.Equals(Path.TrimEndingDirectorySeparator(asked), Path.TrimEndingDirectorySeparator(outDir), OperatingSystem.IsWindows() ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal))
+{
+    Console.Error.WriteLine($"!! the game would keep its saves in {asked}, not in the output folder {outDir}: nothing was started");
+    Environment.Exit(4);
+}
 
 Raylib.SetTraceLogLevel(TraceLogLevel.Warning);
 Raylib.SetConfigFlags(ConfigFlags.HiddenWindow);

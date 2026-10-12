@@ -1250,8 +1250,8 @@ public partial class GameEngine
 
         public bool NationalDex => game.playerPokedex.NationalUnlocked;
 
-        // The save is written where the player stands, as the start menu's is, with no question and no panel
-        public bool Save() => SaveManager.SaveGame(game.BuildSave());
+        // The save is written where the player stands, into the game's own slot as the start menu's is, with no question and no panel
+        public bool Save() => game.WriteSave();
 
         // ---- after the Hall of Fame (plan 02 · S15)
 

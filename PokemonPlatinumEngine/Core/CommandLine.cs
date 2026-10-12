@@ -47,6 +47,18 @@ public sealed record LaunchOptions
     /// </summary>
     public int? CrashAfter { get; init; }
 
+    /// <summary>
+    /// <c>--portable</c> (plan 12 · Q2): the saves, the options and the log are kept in the folder the game was
+    /// started in, whatever else <see cref="SavePaths.Resolve"/> would choose.
+    /// </summary>
+    public bool Portable { get; init; }
+
+    /// <summary><c>--save &lt;folder&gt;</c> (plan 12 · Q2): they are kept in this folder, which wins over everything.</summary>
+    public string? SaveFolder { get; init; }
+
+    /// <summary><c>--where</c> (plan 12 · Q2): say where they are kept, and why, and exit: nothing is opened, made or moved.</summary>
+    public bool Where { get; init; }
+
     /// <summary>What was wrong with the command line, a line to each mistake; empty when nothing was.</summary>
     public IReadOnlyList<string> Errors { get; init; } = Array.Empty<string>();
 
@@ -132,7 +144,16 @@ public static class CommandLine
         {
             Hidden = true,
             Check = v => int.TryParse(v, NumberStyles.None, CultureInfo.InvariantCulture, out int n) && n > 0 ? null : $"--crash-after takes a number of frames, 1 or more, not '{v}'."
-        }
+        },
+        new("--portable", null, $"Keep the saves, the options and the log in the folder the game is started in, instead of your own folder for the game. "
+            + $"An empty {SavePaths.PortableMarker} beside the game does the same every time.",
+            (o, _) => o with { Portable = true }),
+        new("--save", "folder", "Keep the saves, the options and the log in this folder.", (o, v) => o with { SaveFolder = v })
+        {
+            Check = v => v.IndexOfAny(Path.GetInvalidPathChars()) >= 0 ? $"--save takes a folder, and '{v}' can't be one." : null
+        },
+        new("--where", null, "Say where the saves, the options and the log are kept, and why, and exit. Nothing is opened, made or moved.",
+            (o, _) => o with { Where = true })
     };
 
     /// <summary>
@@ -176,6 +197,7 @@ public static class CommandLine
         // What can't go together
         if (options.Windowed && options.Fullscreen) errors.Add("--windowed and --fullscreen can't both be given.");
         if (options.SafeMode && options.Fullscreen) errors.Add("--safe-mode opens in a window: it can't be given with --fullscreen.");
+        if (options.Portable && options.SaveFolder != null) errors.Add("--portable and --save can't both be given: each says where the saves are kept.");
         return options with { Errors = errors };
     }
 

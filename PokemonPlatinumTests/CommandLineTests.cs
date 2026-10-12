@@ -25,10 +25,11 @@ public class CommandLineTests
         var launch = Parse();
         Assert.True(launch.IsValid);
         Assert.Equal(new LaunchOptions() with { Errors = launch.Errors }, launch);
-        Assert.False(launch.Help || launch.Windowed || launch.Fullscreen || launch.SafeMode || launch.Verify || launch.Dev);
+        Assert.False(launch.Help || launch.Windowed || launch.Fullscreen || launch.SafeMode || launch.Verify || launch.Dev || launch.Portable || launch.Where);
         Assert.Null(launch.Region);
         Assert.Null(launch.LogPath);
         Assert.Null(launch.CrashAfter);
+        Assert.Null(launch.SaveFolder);
 
         // And it changes nothing of the options
         var settings = new GameSettings { Quality = GraphicsQuality.Medium, Fullscreen = true, WindowWidth = 2560, WindowHeight = 1440 };
@@ -54,9 +55,13 @@ public class CommandLineTests
         Assert.Equal("somewhere/else.txt", Parse("--log", "somewhere/else.txt").LogPath);
         Assert.True(Parse("--dev").Dev);
         Assert.Equal(120, Parse("--crash-after", "120").CrashAfter);
+        // (plan 12 · Q2: where the saves are kept, which SavePathsTests holds to what it does)
+        Assert.True(Parse("--portable").Portable);
+        Assert.Equal("some/folder", Parse("--save", "some/folder").SaveFolder);
+        Assert.True(Parse("--where").Where);
 
         // Each row of the table is one of those: a switch a later session adds must be read here too
-        var tried = new[] { "--help", "--region", "--windowed", "--fullscreen", "--safe-mode", "--verify", "--log", "--dev", "--crash-after" };
+        var tried = new[] { "--help", "--region", "--windowed", "--fullscreen", "--safe-mode", "--verify", "--log", "--dev", "--crash-after", "--portable", "--save", "--where" };
         Assert.Equal(tried, CommandLine.Switches.Select(s => s.Name).Take(tried.Length));
         foreach (var row in CommandLine.Switches)
         {

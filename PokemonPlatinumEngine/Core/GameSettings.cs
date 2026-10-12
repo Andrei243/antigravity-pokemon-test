@@ -136,17 +136,32 @@ public sealed class GameSettings
         Converters = { new JsonStringEnumConverter() }
     };
 
-    public static GameSettings Load(string path = FileName)
+    /// <summary>
+    /// The file these options were read from, which is where <see cref="Save()"/> writes them back; null for options
+    /// nobody read from a file, which are saved beside the saves (<see cref="SavePaths.SettingsFile"/>).
+    /// </summary>
+    [JsonIgnore]
+    public string? ReadFrom { get; private set; }
+
+    /// <summary>The options of the running game: beside its saves (plan 12 · Q2), wherever <see cref="SavePaths.Current"/> says those are.</summary>
+    public static GameSettings Load() => Load(SavePaths.Current.SettingsFile);
+
+    public static GameSettings Load(string path)
     {
         try
         {
-            if (File.Exists(path)) return JsonSerializer.Deserialize<GameSettings>(File.ReadAllText(path), Json) ?? new GameSettings();
+            if (File.Exists(path))
+            {
+                var read = JsonSerializer.Deserialize<GameSettings>(File.ReadAllText(path), Json) ?? new GameSettings();
+                read.ReadFrom = path;
+                return read;
+            }
         }
         catch (Exception e) when (e is IOException or JsonException or UnauthorizedAccessException)
         {
             Log.Warn($"Could not read {path}: {e.Message}; using default settings.");
         }
-        return new GameSettings { FirstRun = !File.Exists(path) };
+        return new GameSettings { FirstRun = !File.Exists(path), ReadFrom = path };
     }
 
     // What a switch of the command line set for this run alone, by the setting's name: the value it had before, which
@@ -194,10 +209,14 @@ public sealed class GameSettings
         }
     }
 
-    public void Save(string path = FileName)
+    /// <summary>Writes the options where they were read from; options nobody read from a file go beside the saves.</summary>
+    public void Save() => Save(ReadFrom ?? SavePaths.Current.SettingsFile);
+
+    public void Save(string path)
     {
         try
         {
+            if (Path.GetDirectoryName(Path.GetFullPath(path)) is { Length: > 0 } folder) Directory.CreateDirectory(folder);
             File.WriteAllText(path, ToFile());
         }
         catch (Exception e) when (e is IOException or UnauthorizedAccessException)

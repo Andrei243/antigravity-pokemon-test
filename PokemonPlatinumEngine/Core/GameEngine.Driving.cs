@@ -205,8 +205,17 @@ public partial class GameEngine
         public Follower? Along => game.along;
         /// <summary>A Pokémon of the team walks behind the player as a thing of the map, as <c>amity walk</c> has it (plan 06 · R16c).</summary>
         public void WalkWith(NPC body, Pokemon pokemon) => game.WalkWith(body, pokemon);
-        /// <summary>The game written to its save where the player stands, as the save screen writes it.</summary>
-        public bool Save() => SaveManager.SaveGame(game.BuildSave());
+        /// <summary>The game written to its slot's save where the player stands, as the save screen writes it.</summary>
+        public bool Save() => game.WriteSave();
+        /// <summary>
+        /// The slot the game is saved in (plan 12 · Q2). A tool that wants its saves in one place whatever an earlier
+        /// run left in its folder sets it.
+        /// </summary>
+        public int SaveSlot { get => game.saveSlot; set => game.saveSlot = SavePaths.IsSlot(value) ? value : throw new ArgumentOutOfRangeException(nameof(value)); }
+        /// <summary>The file of the slot the game is saved in, in the folder the saves are kept in.</summary>
+        public string SaveFile => SavePaths.Current.Slot(game.saveSlot);
+        /// <summary>The slot the game is saved in deleted, its backup with it: a tool that saved takes its save away again.</summary>
+        public bool DeleteSave() => SaveSlots.Delete(SavePaths.Current, game.saveSlot);
         /// <summary>The game as it stands, as the save screen would write it (plan 24 · X3: the harness's <c>saves</c>).</summary>
         public SaveData BuildSave() => game.BuildSave();
     }

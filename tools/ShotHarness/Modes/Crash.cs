@@ -18,9 +18,11 @@ partial class Harness
         const float Dt = 1f / 60f;
         void Seconds(float s) => Frames((int)MathF.Round(s / Dt));
         string Size(string path) => File.Exists(path) ? $"{new FileInfo(path).Length} bytes" : "not there";
+        // The player's own save: the file of the slot the game is saved in (plan 12 · Q2), in the output folder
+        string own = Path.GetFileName(game.SaveFile);
         void Leftovers()
         {
-            foreach (string name in new[] { SaveManager.FileName, SaveManager.BackupOf(SaveManager.FileName), CrashReport.SaveName, SaveManager.BackupOf(CrashReport.SaveName), Log.FileName })
+            foreach (string name in new[] { own, SaveManager.BackupOf(own), CrashReport.SaveName, SaveManager.BackupOf(CrashReport.SaveName), Log.FileName })
                 Console.WriteLine($"  {name}: {Size(Path.Combine(outDir, name))}");
             string logs = Path.Combine(outDir, CrashReport.FolderName);
             var files = Directory.Exists(logs) ? Directory.GetFiles(logs) : Array.Empty<string>();
@@ -29,14 +31,14 @@ partial class Harness
         }
 
         // What an earlier run of this mode left here would be taken for this run's
-        foreach (string name in new[] { SaveManager.FileName, SaveManager.BackupOf(SaveManager.FileName), CrashReport.SaveName, SaveManager.BackupOf(CrashReport.SaveName), Log.FileName, LogBook.RolledName(Log.FileName) })
+        foreach (string name in new[] { own, SaveManager.BackupOf(own), CrashReport.SaveName, SaveManager.BackupOf(CrashReport.SaveName), Log.FileName, LogBook.RolledName(Log.FileName) })
             File.Delete(Path.Combine(outDir, name));
         if (Directory.Exists(Path.Combine(outDir, CrashReport.FolderName))) Directory.Delete(Path.Combine(outDir, CrashReport.FolderName), recursive: true);
 
         // The player's own save, written as the save screen writes it; then the game goes on, so that the game as it
         // stood when it stopped is not the game that was saved
         Console.WriteLine($"saved: {game.Save()}, at {game.Map.Name} {game.Player.GridX},{game.Player.GridY} with {game.Money} of money");
-        byte[] saved = File.ReadAllBytes(Path.Combine(outDir, SaveManager.FileName));
+        byte[] saved = File.ReadAllBytes(Path.Combine(outDir, own));
         game.Money += 1234;
         At("Sinnoh", 112, 880, Direction.Down);
         Frames(30);
@@ -78,10 +80,10 @@ partial class Harness
         Leftovers();
 
         // The player's own save is what it was, and the crash save reads back whole as the game that was running
-        byte[] after = File.ReadAllBytes(Path.Combine(outDir, SaveManager.FileName));
-        Console.WriteLine($"the player's save is {(saved.AsSpan().SequenceEqual(after) ? "byte for byte what it was" : "!! CHANGED")}, with no backup made of it: {!File.Exists(Path.Combine(outDir, SaveManager.BackupOf(SaveManager.FileName)))}");
+        byte[] after = File.ReadAllBytes(Path.Combine(outDir, own));
+        Console.WriteLine($"the player's save is {(saved.AsSpan().SequenceEqual(after) ? "byte for byte what it was" : "!! CHANGED")}, with no backup made of it: {!File.Exists(Path.Combine(outDir, SaveManager.BackupOf(own)))}");
         var (crashOutcome, crashSave) = SaveManager.Load(Path.Combine(outDir, CrashReport.SaveName));
-        var (ownOutcome, ownSave) = SaveManager.Load();
+        var (ownOutcome, ownSave) = SaveManager.Load(game.SaveFile);
         Console.WriteLine($"the crash save reads as {crashOutcome}: {crashSave?.CurrentMapName} {crashSave?.PlayerGridX},{crashSave?.PlayerGridY} with {crashSave?.Money} of money; "
             + $"the player's own reads as {ownOutcome}: {ownSave?.CurrentMapName} {ownSave?.PlayerGridX},{ownSave?.PlayerGridY} with {ownSave?.Money}");
 
@@ -92,10 +94,12 @@ partial class Harness
         Console.WriteLine("----");
         Console.WriteLine($"the note for the next start: {File.ReadAllText(Path.Combine(logs, CrashReport.PendingName)).ReplaceLineEndings(" ")}");
 
-        // The next start, as GameEngine.Initialize does it: the save read, the note taken up, the title told
-        var (loaded, save) = SaveManager.Load();
+        // The next start, as GameEngine.Initialize does it: the slots read, the note taken up, the title told
+        var slots = SaveSlots.Read(SavePaths.Current);
+        var loaded = slots[game.SaveSlot - 1].Outcome;
         var note = CrashReport.TakePending(CrashReport.SaveFolder);
-        var title = new TitleScreen(save, TitleNotice.ForCrash(note, loaded), TitleNotice.ForSave(loaded));
+        var title = TitleScreen.WithSlots(slots.Where(s => s.Taken).Select(s => new TitleSlot(s.Number, s.Save)),
+            slots.Select(s => TitleNotice.ForSlot(s.Number, s.Outcome)).Prepend(TitleNotice.ForCrash(note, slots.Select(s => s.Outcome).ToList())).ToArray());
         game.Title = title;
         game.State = GameState.Title;
         title.PressConfirm();
@@ -147,7 +151,7 @@ partial class Harness
         engine.Settings.FocusPause = false;
 
         // The save this mode wrote is taken away again; the crash's own files stay to be read
-        File.Delete(Path.Combine(outDir, SaveManager.FileName));
-        File.Delete(Path.Combine(outDir, SaveManager.BackupOf(SaveManager.FileName)));
+        File.Delete(Path.Combine(outDir, own));
+        File.Delete(Path.Combine(outDir, SaveManager.BackupOf(own)));
     }
 }

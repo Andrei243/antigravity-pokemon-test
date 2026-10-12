@@ -14,9 +14,16 @@ namespace PokemonPlatinumEngine.UI;
 /// Where the opening is: the notice, the fly-over shots, Giratina's reveal, the idle title, then the menu and the
 /// two questions a new game asks (whether to leave a save behind, and whose rules to play by). Between the title and
 /// the menu, <see cref="Warning"/> tells what the player must know before choosing (a save that couldn't be read,
-/// plan 12 · Q1), one <see cref="TitleNotice"/> at a time.
+/// plan 12 · Q1), one <see cref="TitleNotice"/> at a time. Deleting a save (plan 12 · Q2) is <see cref="ChooseDelete"/>,
+/// the cursor on the saves' cards alone, and <see cref="ConfirmDelete"/>, the question that names the slot.
 /// </summary>
-public enum TitlePhase { Notice, Journey, Reveal, Idle, Menu, ConfirmNewGame, ChooseRules, Leaving, Warning }
+public enum TitlePhase { Notice, Journey, Reveal, Idle, Menu, ConfirmNewGame, ChooseRules, Leaving, Warning, ChooseDelete, ConfirmDelete }
+
+/// <summary>
+/// A slot the title has a card for (plan 12 · Q2): its number from 1 and the game saved in it, or no game for a
+/// slot whose save and backup are both damaged, which can only be deleted.
+/// </summary>
+public sealed record TitleSlot(int Number, SaveData? Save);
 
 /// <summary>
 /// Something the title tells the player before its menu opens, as Platinum tells of a damaged save (plan 12 · Q1):
@@ -25,13 +32,40 @@ public enum TitlePhase { Notice, Journey, Reveal, Idle, Menu, ConfirmNewGame, Ch
 /// </summary>
 public sealed record TitleNotice(string Heading, string Body)
 {
-    /// <summary>What the title says of a save as it was read: nothing when it was whole or there was none.</summary>
-    public static TitleNotice? ForSave(SaveLoad load) => load switch
+    /// <summary>
+    /// What the title says of a slot's save as it was read (plan 12 · Q2: a notice names its slot): nothing when it
+    /// was whole or the slot is empty.
+    /// </summary>
+    public static TitleNotice? ForSlot(int slot, SaveLoad load) => load switch
     {
-        SaveLoad.Recovered => new("The last save couldn't be read",
-            "It was damaged, perhaps by the game closing while it was being written. The save made before it has been loaded instead."),
-        SaveLoad.Damaged => new("The save couldn't be read",
-            "The save and the one kept before it are both damaged, so there is no game to continue. A new game can still be started."),
+        SaveLoad.Recovered => new($"Slot {slot}'s last save was damaged",
+            "It couldn't be read, perhaps because the game closed while it was being written. The save made before it has been loaded instead."),
+        SaveLoad.Damaged => new($"Slot {slot} can't be read",
+            "Its save and the one kept before it are both damaged, so that game can't be continued. DELETE A SAVE frees the slot for another."),
+        _ => null
+    };
+
+    /// <summary>What the title says of a lone save as it was read: slot 1's notice.</summary>
+    public static TitleNotice? ForSave(SaveLoad load) => ForSlot(1, load);
+
+    /// <summary>NEW GAME with every slot taken: a new game needs a slot of its own.</summary>
+    public static TitleNotice NoFreeSlot => new("Every slot holds a save",
+        "A new game needs a slot of its own, and all three are taken. DELETE A SAVE, on this menu, frees one of them.");
+
+    /// <summary>A slot the player asked to delete is still there: something holds its files.</summary>
+    public static TitleNotice CouldNotDelete(int slot) => new($"Slot {slot} couldn't be deleted",
+        "Its files are still there: something else may be using them. Nothing was changed; try again once it is closed.");
+
+    /// <summary>
+    /// What the title says of a save from before there were slots that couldn't be made one (plan 12 · Q2): nothing
+    /// when it was moved or there was none.
+    /// </summary>
+    public static TitleNotice? ForOldSave(OldSaveOutcome moved) => moved.Move switch
+    {
+        OldSaveMove.NoRoom => new("An older save was left where it is",
+            $"{SavePaths.OldSaveName} is from before the game had slots, and all three slots hold a save. Once one is deleted, the next start gives it that slot."),
+        OldSaveMove.Failed => new("An older save couldn't be moved",
+            $"{SavePaths.OldSaveName} is from before the game had slots and couldn't be given one. It is where it was, untouched; the next start tries again."),
         _ => null
     };
 
@@ -41,15 +75,16 @@ public sealed record TitleNotice(string Heading, string Body)
     /// after this one), where the report is and whether the game as it stood was kept beside the save. Null when
     /// the last run left no note: it ended as the player chose.
     /// </summary>
-    public static TitleNotice? ForCrash(Core.Diagnostics.CrashNote? crash, SaveLoad load)
+    public static TitleNotice? ForCrash(Core.Diagnostics.CrashNote? crash, SaveLoad load) => ForCrash(crash, new[] { load });
+
+    /// <summary>The same with several slots (plan 12 · Q2): "Your saves are intact." when more than one holds a save and all read whole.</summary>
+    public static TitleNotice? ForCrash(Core.Diagnostics.CrashNote? crash, IReadOnlyCollection<SaveLoad> slots)
     {
         if (crash == null) return null;
-        string save = load switch
-        {
-            SaveLoad.Ok => "Your save is intact. ",
-            SaveLoad.None => "No game had been saved yet. ",
-            _ => ""
-        };
+        var taken = slots.Where(s => s != SaveLoad.None).ToList();
+        string save = taken.Count == 0 ? "No game had been saved yet. "
+            : taken.Any(s => s != SaveLoad.Ok) ? ""
+            : taken.Count == 1 ? "Your save is intact. " : "Your saves are intact. ";
         string kept = crash.SaveKept
             ? $", and the game as it stood was kept beside your save as {Core.Diagnostics.CrashReport.SaveName}."
             : ".";
@@ -57,13 +92,24 @@ public sealed record TitleNotice(string Heading, string Body)
     }
 }
 
-/// <summary>What the player picked on the title menu.</summary>
-public enum TitleChoice { None, Continue, NewGame, Options, Quit }
+/// <summary>
+/// An entry of the title menu, and what the player picked there. <see cref="Delete"/> (the DELETE A SAVE row) and
+/// <see cref="Unreadable"/> (the card of a slot that can't be read) are entries only: neither is ever handed over
+/// by <see cref="TitleScreen.TakeChoice"/>; a deletion is <see cref="TitleScreen.TakeDeletion"/>'s.
+/// </summary>
+public enum TitleChoice { None, Continue, NewGame, Options, Quit, Delete, Unreadable }
 
 /// <summary>
 /// The opening and the title screen: a short notice, fly-over shots of Sinnoh at different times of day, Giratina
-/// appearing out of the dark with the title lettering, "press start", and the menu to continue the saved game
+/// appearing out of the dark with the title lettering, "press start", and the menu to continue a saved game
 /// (showing its badges, play time, Pokédex and party) or begin a new one. Any button skips ahead to the title.
+/// <para>
+/// A game is saved in one of three slots (plan 12 · Q2), and the menu has a card for each that holds a save
+/// (<see cref="Cards"/>): one to continue from, or, for a slot that can't be read, one that can only be deleted.
+/// NEW GAME takes the first empty slot (<see cref="FreeSlot"/>), and DELETE A SAVE asks which and then asks again.
+/// The screen deletes nothing itself: it hands the slot over (<see cref="TakeDeletion"/>) and is told when the
+/// slot is gone (<see cref="Forget"/>).
+/// </para>
 /// </summary>
 public sealed class TitleScreen
 {
@@ -83,18 +129,24 @@ public sealed class TitleScreen
         ("Sinnoh", new Vector2(166f, 846f), new Vector2(184f, 846f), 20.5f)
     };
 
-    private readonly SaveData? save;
+    private readonly List<TitleSlot> cards = new();
     private readonly List<TitleChoice> entries = new();
     private readonly Queue<TitleNotice> notices = new();
     private TitleChoice chosen = TitleChoice.None;
-    private bool optionsRequested;
+    private bool optionsRequested, noticeOverMenu;
     private float phaseTime, totalTime, menuBlend, skipFlash;
     private int warmed;
+    // The slot the delete question is about, where the question was asked from, and the slot to be deleted once
+    // the answer was yes, until the game takes it
+    private int deleting;
+    private TitlePhase deleteFrom = TitlePhase.Menu;
+    private int deleteRow;
+    private int? deletion;
 
     public TitlePhase Phase { get; private set; } = TitlePhase.Notice;
     public int SelectedIndex { get; private set; }
 
-    /// <summary>In the "start a new game?" prompt: true while Yes is highlighted.</summary>
+    /// <summary>In the "start a new game?" and the "delete this save?" prompts: true while Yes is highlighted.</summary>
     public bool ConfirmYes { get; private set; }
 
     /// <summary>
@@ -103,20 +155,59 @@ public sealed class TitleScreen
     /// </summary>
     public RulesPreset Rules { get; private set; }
 
-    public bool HasSave => save != null;
+    /// <summary>Whether there is a game to continue: a slot whose save could be read.</summary>
+    public bool HasSave => cards.Any(c => c.Save != null);
     public IReadOnlyList<TitleChoice> Entries => entries;
+
+    /// <summary>The slots that hold something, in their order: the menu's first entries are their cards.</summary>
+    public IReadOnlyList<TitleSlot> Cards => cards;
+
+    /// <summary>The slot a new game would be saved in: the lowest with nothing in it; null when all are taken.</summary>
+    public int? FreeSlot
+    {
+        get
+        {
+            for (int slot = 1; slot <= SavePaths.Slots; slot++)
+                if (cards.All(c => c.Number != slot)) return slot;
+            return null;
+        }
+    }
+
+    /// <summary>
+    /// The slot of the choice handed over (<see cref="TakeChoice"/>): the one to continue from, or the one the new
+    /// game is saved in.
+    /// </summary>
+    public int Slot { get; private set; } = 1;
+
+    /// <summary>The slot the delete question is asking about (<see cref="TitlePhase.ConfirmDelete"/>).</summary>
+    public int DeletingSlot => deleting;
 
     /// <summary>The notice being shown in <see cref="TitlePhase.Warning"/>, or the next to be shown; null when none is left.</summary>
     public TitleNotice? Notice => notices.Count > 0 ? notices.Peek() : null;
 
+    /// <summary>The title with one save, in slot 1, or with none.</summary>
     /// <param name="notices">What to tell before the menu opens (null entries are passed over).</param>
     public TitleScreen(SaveData? save, params TitleNotice?[] notices)
+        : this(save != null ? new[] { new TitleSlot(1, save) } : Array.Empty<TitleSlot>(), notices) { }
+
+    /// <summary>The title with the slots that hold something (plan 12 · Q2), each with its game or with none for one that can't be read.</summary>
+    public static TitleScreen WithSlots(IEnumerable<TitleSlot> taken, params TitleNotice?[] notices) => new(taken.ToArray(), notices);
+
+    private TitleScreen(TitleSlot[] taken, TitleNotice?[] notices)
     {
-        this.save = save;
         foreach (var notice in notices)
             if (notice != null) this.notices.Enqueue(notice);
-        if (save != null) entries.Add(TitleChoice.Continue);
+        cards.AddRange(taken.Where(c => SavePaths.IsSlot(c.Number)).DistinctBy(c => c.Number).OrderBy(c => c.Number));
+        Lay();
+    }
+
+    // The menu from top to bottom: a card for each slot that holds something, then the rows
+    private void Lay()
+    {
+        entries.Clear();
+        foreach (var card in cards) entries.Add(card.Save != null ? TitleChoice.Continue : TitleChoice.Unreadable);
         entries.Add(TitleChoice.NewGame);
+        if (cards.Count > 0) entries.Add(TitleChoice.Delete);
         entries.Add(TitleChoice.Options);
         entries.Add(TitleChoice.Quit);
     }
@@ -155,7 +246,8 @@ public sealed class TitleScreen
         phaseTime += dt;
         totalTime += dt;
         skipFlash = Math.Max(0f, skipFlash - dt);
-        bool menuUp = Phase is TitlePhase.Menu or TitlePhase.ConfirmNewGame or TitlePhase.ChooseRules or TitlePhase.Leaving;
+        bool menuUp = Phase is TitlePhase.Menu or TitlePhase.ConfirmNewGame or TitlePhase.ChooseRules or TitlePhase.Leaving
+            or TitlePhase.ChooseDelete or TitlePhase.ConfirmDelete || Phase == TitlePhase.Warning && noticeOverMenu;
         menuBlend = Math.Clamp(menuBlend + (menuUp ? dt : -dt) / 0.45f, 0f, 1f);
 
         switch (Phase)
@@ -194,12 +286,26 @@ public sealed class TitleScreen
                 AudioManager.PlaySound("select");
                 switch (entries[SelectedIndex])
                 {
-                    case TitleChoice.Continue: Leave(TitleChoice.Continue); break;
-                    case TitleChoice.NewGame when HasSave:
+                    case TitleChoice.Continue:
+                        Slot = cards[SelectedIndex].Number;
+                        Leave(TitleChoice.Continue);
+                        break;
+                    // Nothing can be done with a slot that can't be read but delete it
+                    case TitleChoice.Unreadable: AskDelete(cards[SelectedIndex].Number); break;
+                    // A new game takes the first empty slot, and with none it can't begin
+                    case TitleChoice.NewGame when FreeSlot == null: Tell(TitleNotice.NoFreeSlot); break;
+                    case TitleChoice.NewGame when cards.Count > 0:
                         ConfirmYes = false;
                         Enter(TitlePhase.ConfirmNewGame);
                         break;
                     case TitleChoice.NewGame: AskRules(); break;
+                    // With one save there is no asking which
+                    case TitleChoice.Delete when cards.Count == 1: AskDelete(cards[0].Number); break;
+                    case TitleChoice.Delete:
+                        deleteRow = SelectedIndex;
+                        SelectedIndex = 0;
+                        Enter(TitlePhase.ChooseDelete);
+                        break;
                     case TitleChoice.Options: optionsRequested = true; break;
                     case TitleChoice.Quit: Leave(TitleChoice.Quit); break;
                 }
@@ -211,9 +317,62 @@ public sealed class TitleScreen
                 break;
             case TitlePhase.ChooseRules:
                 AudioManager.PlaySound("select");
+                Slot = FreeSlot ?? 1;
                 Leave(TitleChoice.NewGame);
                 break;
+            case TitlePhase.ChooseDelete:
+                AudioManager.PlaySound("select");
+                AskDelete(cards[SelectedIndex].Number);
+                break;
+            case TitlePhase.ConfirmDelete:
+                AudioManager.PlaySound(ConfirmYes ? "select" : "cancel");
+                if (ConfirmYes)
+                {
+                    // The game deletes the slot and says when it is gone (Forget); the menu waits under its cursor
+                    deletion = deleting;
+                    if (deleteFrom == TitlePhase.ChooseDelete) SelectedIndex = deleteRow;
+                    Enter(TitlePhase.Menu);
+                }
+                else Enter(deleteFrom);
+                break;
         }
+    }
+
+    /// <summary>The question that comes before a slot is deleted: it names the slot, and No is highlighted.</summary>
+    private void AskDelete(int slot)
+    {
+        deleting = slot;
+        deleteFrom = Phase == TitlePhase.ChooseDelete ? TitlePhase.ChooseDelete : TitlePhase.Menu;
+        ConfirmYes = false;
+        Enter(TitlePhase.ConfirmDelete);
+    }
+
+    /// <summary>
+    /// The slot the player has asked to delete and said yes to, once; null otherwise. Whoever takes it deletes the
+    /// slot's files and calls <see cref="Forget"/>, or <see cref="Tell"/> if they couldn't be deleted.
+    /// </summary>
+    public int? TakeDeletion()
+    {
+        int? slot = deletion;
+        deletion = null;
+        return slot;
+    }
+
+    /// <summary>A slot is gone: its card goes, the column closes up, and the cursor is on the first entry.</summary>
+    public void Forget(int slot)
+    {
+        if (cards.RemoveAll(c => c.Number == slot) == 0) return;
+        Lay();
+        SelectedIndex = 0;
+        if (Phase is TitlePhase.ChooseDelete or TitlePhase.ConfirmDelete) Enter(TitlePhase.Menu);
+    }
+
+    /// <summary>Something to tell now, over the menu: it is read and put away like any notice, and the menu is back.</summary>
+    public void Tell(TitleNotice notice)
+    {
+        notices.Enqueue(notice);
+        noticeOverMenu = Phase != TitlePhase.Idle;
+        Enter(TitlePhase.Warning);
     }
 
     /// <summary>The last question before a new game: whose rules. Platinum's are highlighted.</summary>
@@ -228,6 +387,7 @@ public sealed class TitleScreen
     {
         AudioManager.PlaySound("select");
         if (notices.Count > 0) notices.Dequeue();
+        if (notices.Count == 0) noticeOverMenu = false;
         Enter(notices.Count > 0 ? TitlePhase.Warning : TitlePhase.Menu);
     }
 
@@ -240,17 +400,25 @@ public sealed class TitleScreen
             return;
         }
         if (Phase is TitlePhase.ConfirmNewGame or TitlePhase.ChooseRules) Enter(TitlePhase.Menu);
+        // Out of the delete question to where it was asked; out of the choice of a save to the row that asked for it
+        else if (Phase == TitlePhase.ConfirmDelete) Enter(deleteFrom);
+        else if (Phase == TitlePhase.ChooseDelete)
+        {
+            SelectedIndex = deleteRow;
+            Enter(TitlePhase.Menu);
+        }
         else if (Phase == TitlePhase.Menu) Enter(TitlePhase.Idle);
         else return;
         AudioManager.PlaySound("cancel");
     }
 
-    /// <summary>Up/down in the menu; any direction flips the answer in a prompt.</summary>
+    /// <summary>Up/down in the menu (among the saves alone while one is chosen to delete); any direction flips the answer in a prompt.</summary>
     public void Move(int step)
     {
         if (step == 0) return;
         if (Phase == TitlePhase.Menu) SelectedIndex = ((SelectedIndex + step) % entries.Count + entries.Count) % entries.Count;
-        else if (Phase == TitlePhase.ConfirmNewGame) ConfirmYes = !ConfirmYes;
+        else if (Phase == TitlePhase.ChooseDelete) SelectedIndex = ((SelectedIndex + step) % cards.Count + cards.Count) % cards.Count;
+        else if (Phase is TitlePhase.ConfirmNewGame or TitlePhase.ConfirmDelete) ConfirmYes = !ConfirmYes;
         else if (Phase == TitlePhase.ChooseRules) Rules = Rules == RulesPreset.Platinum ? RulesPreset.Modern : RulesPreset.Platinum;
         else return;
         AudioManager.PlaySound("cursor");
@@ -366,6 +534,7 @@ public sealed class TitleScreen
         if (menuBlend > 0.01f) DrawMenu(sw, ease);
         if (Phase == TitlePhase.ConfirmNewGame) DrawConfirm(sw, sh);
         if (Phase == TitlePhase.ChooseRules) DrawRules(sw, sh);
+        if (Phase == TitlePhase.ConfirmDelete) DrawDelete(sw, sh);
         if (Phase == TitlePhase.Warning && Notice is { } notice)
             ModernUi.Notice(sw, sh, notice.Heading, notice.Body, "OK", Smooth(0f, 0.18f, phaseTime));
 
@@ -474,35 +643,89 @@ public sealed class TitleScreen
 
     // ------------------------------------------------------------------ menu
 
-    private void DrawMenu(int sw, float ease)
+    /// <summary>The menu's column: where it stands, and how tall a lone save's card and one of several are (style guide, "The slots").</summary>
+    public const float ColumnX = 1016, ColumnWidth = 824, LoneCardHeight = 452, ShortCardHeight = 144;
+
+    /// <summary>A lone save that can be read keeps the whole card; two or three, or a slot that can't be read, are short cards.</summary>
+    public bool LoneCard => cards.Count == 1 && cards[0].Save != null;
+
+    /// <summary>
+    /// Where each entry of the menu stands once the menu is up, in the entries' order: with nothing saved the three
+    /// rows as they always were, with a save the cards and four slimmer rows, centred on the same line.
+    /// </summary>
+    public IReadOnlyList<Rectangle> EntryRects()
     {
-        const float row = 92, gap = 20, card = 452;
-        float slide = (1f - ease) * 520f;
-        float x = 1016 + slide, w = 824;
-        float total = entries.Count * (row + gap) - gap + (HasSave ? card - row : 0);
-        float y = HasSave ? 196 : (1080 - total) / 2f + 40;
+        bool saves = cards.Count > 0;
+        float row = saves ? 76 : 92, gap = saves ? 18 : 20;
+        float card = LoneCard ? LoneCardHeight : ShortCardHeight;
+        float total = cards.Count * card + (entries.Count - cards.Count) * row + (entries.Count - 1) * gap;
+        float y = saves ? 590 - total / 2f : (1080 - total) / 2f + 40;
+        var rects = new List<Rectangle>(entries.Count);
         for (int i = 0; i < entries.Count; i++)
         {
-            bool selected = i == SelectedIndex && Phase != TitlePhase.Idle;
-            float h = entries[i] == TitleChoice.Continue ? card : row;
-            var r = new Rectangle(x, y, w, h);
-            ModernUi.Card(r, 34, selected);
+            float h = i < cards.Count ? card : row;
+            rects.Add(new Rectangle(ColumnX, y, ColumnWidth, h));
+            y += h + gap;
+        }
+        return rects;
+    }
 
+    private void DrawMenu(int sw, float ease)
+    {
+        float slide = (1f - ease) * 520f;
+        var rects = EntryRects();
+        bool removing = Phase is TitlePhase.ChooseDelete or TitlePhase.ConfirmDelete;
+        for (int i = 0; i < entries.Count; i++)
+        {
+            var r = rects[i] with { X = rects[i].X + slide };
+            var card = i < cards.Count ? cards[i] : null;
+            // While a save is being deleted the glow is on its card, and it is Red
+            bool selected = Phase == TitlePhase.ConfirmDelete ? card?.Number == DeletingSlot : i == SelectedIndex && Phase != TitlePhase.Idle;
+            ModernUi.Card(r, 34, selected, removing && card != null ? ModernUi.Red : null);
+
+            if (card != null)
+            {
+                if (LoneCard) ModernUi.SaveSummary(r, card.Save!, "CONTINUE", card.Number);
+                else ModernUi.SaveCard(r, card.Number, card.Save);
+                continue;
+            }
             string label = entries[i] switch
             {
                 TitleChoice.NewGame => "NEW GAME",
+                TitleChoice.Delete => Phase == TitlePhase.ChooseDelete ? "DELETE WHICH SAVE?" : "DELETE A SAVE",
                 TitleChoice.Options => "OPTIONS",
                 _ => "QUIT"
             };
-            if (entries[i] == TitleChoice.Continue) ModernUi.SaveSummary(r, save!, "CONTINUE");
-            else UiFonts.DrawCentered(label, r.X + 48, r.Y + r.Height / 2f, 40, ModernUi.Ink, UiWeight.Black);
-            y += h + gap;
+            UiFonts.DrawCentered(label, r.X + 48, r.Y + r.Height / 2f, cards.Count > 0 ? 36 : 40, ModernUi.Ink, UiWeight.Black);
         }
     }
 
+    /// <summary>What "start a new game?" says under its heading: the slot the new game takes, and that nothing is lost.</summary>
+    public static string NewGameBlurb(int slot, int saves) =>
+        $"It will be saved in slot {slot}. " + (saves == 1 ? "The save you have is kept as it is." : "The saves you have are kept as they are.");
+
+    // (Yes is Green since the slots: a new game takes an empty slot, so nothing is lost by it. Red is the delete question's)
     private void DrawConfirm(int sw, int sh) =>
-        ModernUi.Prompt(sw, sh, "Start a new game?", "Your saved game is kept until you save again in the new one.",
-            new[] { ("NO, GO BACK", ModernUi.Blue), ("YES, NEW GAME", ModernUi.Red) }, ConfirmYes ? 1 : 0);
+        ModernUi.Prompt(sw, sh, "Start a new game?", NewGameBlurb(FreeSlot ?? 1, cards.Count),
+            new[] { ("NO, GO BACK", ModernUi.Blue), ("YES, NEW GAME", ModernUi.Green) }, ConfirmYes ? 1 : 0);
+
+    public static readonly string[] DeleteAnswers = { "NO, KEEP IT", "YES, DELETE" };
+
+    /// <summary>The delete question's heading: it names the slot.</summary>
+    public static string DeleteHeading(int slot) => $"Delete slot {slot}?";
+
+    /// <summary>What the delete question says under its heading: whose game it is and where it stands, and that it can't be undone.</summary>
+    /// <param name="place">Where the game was saved, as the card names it.</param>
+    public static string DeleteBlurb(SaveData? save, string? place) => save == null
+        ? "This save can't be read, nor can the one before it. Deleting it frees the slot."
+        : $"{save.PlayerName}{(string.IsNullOrEmpty(place) ? "" : $" in {place}")}, {FormatPlayTime(save.PlayTimeSeconds)} played. The save and its backup are deleted for good.";
+
+    private void DrawDelete(int sw, int sh)
+    {
+        var save = cards.FirstOrDefault(c => c.Number == DeletingSlot)?.Save;
+        ModernUi.Prompt(sw, sh, DeleteHeading(DeletingSlot), DeleteBlurb(save, save != null ? ModernUi.PlaceOf(save) : null),
+            new[] { (DeleteAnswers[0], ModernUi.Blue), (DeleteAnswers[1], ModernUi.Red) }, ConfirmYes ? 1 : 0);
+    }
 
     /// <summary>What the "which rules?" prompt says about the answer that is highlighted.</summary>
     public static string RulesBlurb(RulesPreset rules) => rules == RulesPreset.Modern

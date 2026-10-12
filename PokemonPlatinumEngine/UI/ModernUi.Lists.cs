@@ -298,14 +298,23 @@ internal static partial class ModernUi
     /// A saved game at a glance, as the title's CONTINUE card and the save panel show it: who and where, time
     /// played, the Pokédex, badges won and the party. It draws its content only; the caller draws what it is on.
     /// </summary>
-    public static void SaveSummary(Rectangle r, SaveData save, string heading)
+    /// <param name="slot">The slot the save is in (plan 12 · Q2), named on a small tag after the heading; nought for none.</param>
+    public static void SaveSummary(Rectangle r, SaveData save, string heading, int slot = 0)
     {
         float x = r.X + 48;
         UiFonts.DrawCentered(heading, x, r.Y + 58, 44, Ink, UiWeight.Black);
-        var place = save.Place();
-        string where = MapDatabase.Get(place.Map).DisplayNameAt(place.X, place.Y);
-        float ww = UiFonts.Measure(where, 28, UiWeight.ExtraBold);
-        UiFonts.DrawCentered(where, r.X + r.Width - 48 - ww, r.Y + 60, 28, Muted, UiWeight.ExtraBold);
+        float headingEnd = x + UiFonts.Measure(heading, 44, UiWeight.Black);
+        if (slot > 0) headingEnd += 20 + Tag(headingEnd + 20, r.Y + 43, SlotLabel(slot), Muted, 30);
+        string where = PlaceOf(save);
+        // A long place's name gives way to the heading and its tag rather than run into them
+        float room = r.X + r.Width - 48 - headingEnd - 28, size = 28;
+        float ww = UiFonts.Measure(where, size, UiWeight.ExtraBold);
+        if (ww > room && ww > 0)
+        {
+            size = MathF.Max(20, MathF.Floor(size * room / ww));
+            ww = UiFonts.Measure(where, size, UiWeight.ExtraBold);
+        }
+        UiFonts.DrawCentered(where, r.X + r.Width - 48 - ww, r.Y + 60, size, Muted, UiWeight.ExtraBold);
         UiShapes.Fill(new Rectangle(x, r.Y + 100, r.Width - 96, 3), 1.5f, Rule);
 
         Label("PLAYER", x, r.Y + 122);
@@ -335,5 +344,57 @@ internal static partial class ModernUi
             Raylib.DrawTexturePro(icon, new Rectangle(0, 0, icon.Width, icon.Height),
                 new Rectangle(x + 96 + i * 100, r.Y + 346, icon.Width * 2, icon.Height * 2), Vector2.Zero, 0f, Color.White);
         }
+    }
+
+    /// <summary>A slot as its tag and its caption name it: SLOT 2.</summary>
+    public static string SlotLabel(int slot) => $"SLOT {slot}";
+
+    /// <summary>The place a game was saved in, as its card names it.</summary>
+    public static string PlaceOf(SaveData save)
+    {
+        var place = save.Place();
+        return MapDatabase.Get(place.Map).DisplayNameAt(place.X, place.Y);
+    }
+
+    /// <summary>
+    /// One of several saves on the title (plan 12 · Q2; style guide, "The slots"): the short of
+    /// <see cref="SaveSummary"/> on a card 144 tall. Its slot over the player's name, the time played, the badges
+    /// won, and along its foot the place it was saved in. A slot with no game (<paramref name="save"/> null: it
+    /// can't be read) says so instead. It draws its content only; the caller draws the card.
+    /// </summary>
+    public static void SaveCard(Rectangle r, int slot, SaveData? save)
+    {
+        // (48 from the card's edges, as the rows' labels and the lone card's content are)
+        float x = r.X + 48, right = r.X + r.Width - 48;
+        Label(SlotLabel(slot), x, r.Y + 22);
+        if (save == null)
+        {
+            UiFonts.Draw("This save can't be read", x, r.Y + 48, 32, Ink, UiWeight.Black);
+            UiFonts.Draw("It and the save kept before it are both damaged.", x, r.Y + 100, 24, Muted, UiWeight.ExtraBold);
+            return;
+        }
+        UiFonts.Draw(save.PlayerName, x, r.Y + 44, 40, Ink, UiWeight.Black);
+
+        Label("TIME PLAYED", x + 300, r.Y + 22);
+        UiFonts.Draw(TitleScreen.FormatPlayTime(save.PlayTimeSeconds), x + 300, r.Y + 44, 40, Ink, UiWeight.Black);
+
+        // (The eighth medallion ends at the card's right margin: 504 + 13 + 7 × 28 + 13 = 726 of the 728 between them)
+        Label($"BADGES  {TitleScreen.CountBadges(save.Badges)} / 8", x + 504, r.Y + 22);
+        for (int b = 0; b < 8; b++)
+            Badge(new Vector2(x + 517 + b * 28, r.Y + 68), 13, b, (save.Badges & (1 << b)) != 0);
+
+        // Along the foot: where it was saved, and whose rules it is played by where they aren't Platinum's own
+        float room = right - x;
+        if (save.Rules == RulesPreset.Modern)
+        {
+            const string rules = "MODERN RULES";
+            float rw = UiFonts.Measure(rules, 20, UiWeight.Black);
+            UiFonts.Draw(rules, right - rw, r.Y + 103, 20, Green, UiWeight.Black);
+            room -= rw + 24;
+        }
+        string where = PlaceOf(save);
+        float size = 24, ww = UiFonts.Measure(where, size, UiWeight.ExtraBold);
+        if (ww > room && ww > 0) size = MathF.Max(18, MathF.Floor(size * room / ww));
+        UiFonts.Draw(where, x, r.Y + 100, size, Muted, UiWeight.ExtraBold);
     }
 }
