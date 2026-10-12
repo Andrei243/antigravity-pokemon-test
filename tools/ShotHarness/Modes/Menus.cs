@@ -415,5 +415,42 @@ partial class Harness
         Frames(10);
         Console.WriteLine($"kept playing: state {game.State}");
         game.State = GameState.Overworld;
+
+        // The level-up panel of a Rare Candy (plan 08 · P5), last so that no shot before it moves: over the team's
+        // cards, what the level added to each stat and then, a press on, the stats as they now stand. The Pokémon and
+        // the candy are put back as they were, for the modes that follow
+        var candy = ItemDatabase.Get("Rare Candy")!;
+        int candies = inventory.GetQuantity(candy);
+        if (candies == 0) inventory.AddItem(candy, 1);
+        var grower = party.Members[0];
+        var asItWas = grower.Clone();
+        game.State = GameState.BagMenu;
+        bag.Open();
+        bag.BeginTargetChoice(candy);
+        Frames(30);
+        bag.UseOnTarget(inventory, party, engine.ShowNotification, new EvolutionContext { Party = party, Bag = inventory });
+        if (bag.LevelUp is { } grew)
+        {
+            Frames(30); Shot("22l_bag_rare_candy_gains");
+            Console.WriteLine($"rare candy: {grew.Pokemon.DisplayName} to Lv. {grew.Level}, {grew.Page}: " +
+                              string.Join(" ", PokemonPlatinumEngine.UI.Kit.LevelUpPanel.Order.Select(s => $"{s} +{grew.Gain(s)}")) + $" (from {grew.Before})");
+            bag.ConfirmLevelUp(engine.ShowNotification);
+            Frames(10); Shot("22m_bag_rare_candy_stats");
+            Console.WriteLine($"rare candy: {grew.Page}: {grew.After}; its own {grower.Stats()} at Lv. {grower.Level}" +
+                              (grower.Stats().ToString() == grew.After.ToString() ? "" : "  !! the panel's numbers are not the Pokémon's"));
+            bag.ConfirmLevelUp(engine.ShowNotification);
+            Console.WriteLine($"rare candy: the panel is {(bag.LevelUp == null ? "down" : "still up")}, a move wanted: {bag.Teaching?.Move ?? "none"}");
+        }
+        else Console.WriteLine("!! the Rare Candy raised no level: the panel was not shot");
+        bag.TakeEvolution();
+        bag.Open();
+        bag.Close();
+        grower.CopyStateFrom(asItWas);
+        int left = inventory.GetQuantity(candy);
+        if (left > candies) inventory.RemoveItem(candy, left - candies);
+        else if (left < candies) inventory.AddItem(candy, candies - left);
+        game.State = GameState.Overworld;
+        // Whatever notice the candy left has gone before the next mode's first shot
+        Frames(200);
     }
 }

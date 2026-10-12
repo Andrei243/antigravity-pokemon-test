@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using PokemonPlatinumEngine.Core.Diagnostics;
 
 namespace PokemonPlatinumEngine.Core;
 
@@ -98,6 +99,22 @@ public sealed class GameSettings
     /// <summary>A fixed time of day, or null to follow the clock.</summary>
     public TimeOfDay? TimeOfDay { get; set; }
 
+    /// <summary>
+    /// Whether the game waits while its window isn't the one in front (plan 16 · T3): off unless chosen, so the game
+    /// runs on behind another window as it always did. On, nothing moves and the sound drops until the player is back
+    /// (<see cref="GameEngine.HeldForFocus"/>).
+    /// </summary>
+    public bool FocusPause { get; set; }
+
+    /// <summary>
+    /// The most frames drawn a second (plan 16 · T3), one of <see cref="FrameCaps"/>: 60 unless chosen, which is what
+    /// the game always asked of raylib; nought is no limit. A cap and nothing more: V-Sync is its own row.
+    /// </summary>
+    public int FrameCap { get; set; } = 60;
+
+    /// <summary>The frame limits the options offer, in their order: nought is none.</summary>
+    public static readonly int[] FrameCaps = { 30, 60, 120, 0 };
+
     /// <summary>True when there was no settings file to load, so the window still has to be sized for the monitor.</summary>
     [JsonIgnore]
     public bool FirstRun { get; private set; }
@@ -127,20 +144,68 @@ public sealed class GameSettings
         }
         catch (Exception e) when (e is IOException or JsonException or UnauthorizedAccessException)
         {
-            Console.WriteLine($"Could not read {path}: {e.Message}; using default settings.");
+            Log.Warn($"Could not read {path}: {e.Message}; using default settings.");
         }
         return new GameSettings { FirstRun = !File.Exists(path) };
+    }
+
+    // What a switch of the command line set for this run alone, by the setting's name: the value it had before, which
+    // is what the file keeps, and the value the run was given
+    private readonly Dictionary<string, (object? Before, object? ThisRun)> forThisRun = new();
+
+    /// <summary>
+    /// Sets one of the settings for this run alone (plan 16 · T3: <c>--windowed</c>, <c>--fullscreen</c>,
+    /// <c>--safe-mode</c>). The game runs with the value given; <see cref="Save"/> goes on writing the value the
+    /// setting had before, so the next ordinary start finds the options as the player left them. Once the player
+    /// changes that setting themselves it is theirs again, and saved as they set it.
+    /// </summary>
+    public void SetForThisRun(string setting, object value)
+    {
+        var property = typeof(GameSettings).GetProperty(setting) ?? throw new ArgumentException($"There is no setting '{setting}'.", nameof(setting));
+        // Set twice in one run (safe mode and --windowed): what the file keeps is still the first "before"
+        object? before = forThisRun.TryGetValue(setting, out var held) ? held.Before : property.GetValue(this);
+        forThisRun[setting] = (before, value);
+        property.SetValue(this, value);
+    }
+
+    /// <summary>The options as <c>settings.json</c> holds them: as they are, but for what a switch set for this run alone.</summary>
+    public string ToFile()
+    {
+        var putBack = new List<(System.Reflection.PropertyInfo Property, object? ThisRun)>();
+        foreach (var (setting, (before, thisRun)) in forThisRun.ToList())
+        {
+            var property = typeof(GameSettings).GetProperty(setting)!;
+            if (!Equals(property.GetValue(this), thisRun))
+            {
+                // The player has changed it since: it is their choice now, for good
+                forThisRun.Remove(setting);
+                continue;
+            }
+            property.SetValue(this, before);
+            putBack.Add((property, thisRun));
+        }
+        try
+        {
+            return JsonSerializer.Serialize(this, Json);
+        }
+        finally
+        {
+            foreach (var (property, thisRun) in putBack) property.SetValue(this, thisRun);
+        }
     }
 
     public void Save(string path = FileName)
     {
         try
         {
-            File.WriteAllText(path, JsonSerializer.Serialize(this, Json));
+            File.WriteAllText(path, ToFile());
         }
         catch (Exception e) when (e is IOException or UnauthorizedAccessException)
         {
-            Console.WriteLine($"Could not write {path}: {e.Message}");
+            Log.Warn($"Could not write {path}: {e.Message}");
         }
     }
+
+    /// <summary>The options as they are in force now: what the log and a crash report say of them.</summary>
+    public string Describe() => JsonSerializer.Serialize(this, Json);
 }

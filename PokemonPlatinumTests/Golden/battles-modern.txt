@@ -1432,6 +1432,7 @@ log:
     + Lunged E0 Category=Special
     + MoveShown Move=Future Sight Type=Psychic Category=Special From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Barboach foresaw an attack!
+    + PlaceConditionChanged P0 Condition=FutureSight Up=true
   say Regice used Lock-On!
     + Lunged P0 Category=Status
     + MoveShown Move=Lock-On Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -1862,7 +1863,7 @@ log:
   ExpGained Pokemon=mine#1 Kricketune Amount=475
   say Delibird gained 1042 EXP. Points!
   ExpGained Pokemon=mine#2 Delibird Amount=1042
-  LevelRose Pokemon=mine#2 Delibird Level=13
+  LevelRose Pokemon=mine#2 Delibird Level=13 Before=31/18/16/17/15/20 After=38/21/19/20/18/24
   say Delibird grew to Lv. 13!
   say Ace Trainer Tester sent out Sandy Shocks!
     + Seen Species=Sandy Shocks
@@ -1946,12 +1947,12 @@ log:
   ExpGained Pokemon=mine#0 Gothita Amount=127
   say Lickitung gained 1089 EXP. Points!
   ExpGained Pokemon=mine#1 Lickitung Amount=1089
-  LevelRose Pokemon=mine#1 Lickitung Level=13
+  LevelRose Pokemon=mine#1 Lickitung Level=13 Before=42/18/21/19/24/12 After=48/20/25/23/27/14
   say Lickitung grew to Lv. 13!
   say Lickitung learned Knock Off!
   say Metang gained 545 EXP. Points!
   ExpGained Pokemon=mine#2 Metang Amount=545
-  LevelRose Pokemon=mine#2 Metang Level=12
+  LevelRose Pokemon=mine#2 Metang Level=12 Before=36/22/27/20/26/14 After=38/24/29/21/28/15
   say Metang grew to Lv. 12!
   say Foe Cosmoem used Cosmic Power!
     + Lunged E1 Category=Status
@@ -2597,6 +2598,7 @@ log:
     + Lunged E0 Category=Status
     + MoveShown Move=Lucky Chant Type=Normal Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say The Lucky Chant shielded the foe's team from critical hits!
+    + SideConditionChanged Side=Enemy Condition=LuckyChant Layers=1
   say Bruxish used Screech!
     + Lunged P0 Category=Status
     + MoveShown Move=Screech Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -2642,12 +2644,14 @@ log:
   say Tirtouga fainted!
     + Fainted P0
   say The foe's team's Lucky Chant wore off!
+    + SideConditionChanged Side=Enemy Condition=LuckyChant Layers=0
   say Go! Baltoy!
     + Entered P0 Pokemon=mine#1 Baltoy FromBall=true
   say Foe Mismagius used Lucky Chant!
     + Lunged E0 Category=Status
     + MoveShown Move=Lucky Chant Type=Normal Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say The Lucky Chant shielded the foe's team from critical hits!
+    + SideConditionChanged Side=Enemy Condition=LuckyChant Layers=1
   say Baltoy used Earth Power!
     + Lunged P0 Category=Special
     + MoveShown Move=Earth Power Type=Ground Category=Special From=P0 To=E0 Missed=false Blocked=true Critical=false SuperEffective=false
@@ -3350,7 +3354,7 @@ log:
   ExpGained Pokemon=mine#1 Volbeat Amount=560
   say Piloswine gained 1635 EXP. Points!
   ExpGained Pokemon=mine#2 Piloswine Amount=1635
-  LevelRose Pokemon=mine#2 Piloswine Level=15
+  LevelRose Pokemon=mine#2 Piloswine Level=15 Before=51/33/23/20/23/20 After=58/37/27/23/26/23
   say Piloswine grew to Lv. 15!
   say Ace Trainer Tester sent out Pupitar!
     + Seen Species=Pupitar
@@ -3864,6 +3868,7 @@ log:
     + Lunged P0 Category=Status
     + MoveShown Move=Mist Type=Ice Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Your team became shrouded in mist!
+    + SideConditionChanged Side=Player Condition=Mist Layers=1
   say Foe Dracovish used Protect!
     + Lunged E0 Category=Status
     + MoveShown Move=Protect Type=Normal Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -3899,6 +3904,7 @@ log:
     ! Struck P0 Hp=96 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Your team's Mist wore off!
+    + SideConditionChanged Side=Player Condition=Mist Layers=0
   say Surskit used Baton Pass!
     + Lunged P0 Category=Status
   say But it failed!
@@ -3936,6 +3942,7 @@ log:
     + Lunged P0 Category=Status
     + MoveShown Move=Mist Type=Ice Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Your team became shrouded in mist!
+    + SideConditionChanged Side=Player Condition=Mist Layers=1
   say Foe Dracovish used Tackle!
     + Lunged E0 Category=Physical
     + MoveShown Move=Tackle Type=Normal Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -3974,6 +3981,7 @@ log:
     + Lunged P0 Category=Status
   say All stat changes were eliminated!
   say Your team's Mist wore off!
+    + SideConditionChanged Side=Player Condition=Mist Layers=0
   say Surskit used Agility!
     + Lunged P0 Category=Status
     + MoveShown Move=Agility Type=Psychic Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -4005,6 +4013,7 @@ log:
     + Lunged P0 Category=Status
     + MoveShown Move=Mist Type=Ice Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Your team became shrouded in mist!
+    + SideConditionChanged Side=Player Condition=Mist Layers=1
   say Foe Dracovish used Brutal Swing!
     + Lunged E0 Category=Physical
     + MoveShown Move=Brutal Swing Type=Dark Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -4122,7 +4131,7 @@ log:
   ExpGained Pokemon=mine#1 Crabrawler Amount=405
   say Diancie gained 1145 EXP. Points!
   ExpGained Pokemon=mine#2 Diancie Amount=1145
-  LevelRose Pokemon=mine#2 Diancie Level=15
+  LevelRose Pokemon=mine#2 Diancie Level=15 Before=42/33/47/36/47/20 After=44/35/50/38/50/22
   say Diancie grew to Lv. 15!
   say Crabrawler used Iron Defense!
     + Lunged P1 Category=Status
@@ -4262,6 +4271,7 @@ log:
     + Lunged E0 Category=Status
     + MoveShown Move=Light Screen Type=Psychic Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Light Screen raised the foe's team's Special Defense!
+    + SideConditionChanged Side=Enemy Condition=LightScreen Layers=1
   say Illumise used Zen Headbutt!
     + Lunged P0 Category=Physical
     + MoveShown Move=Zen Headbutt Type=Psychic Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -4290,7 +4300,7 @@ log:
   ExpGained Pokemon=mine#0 Illumise Amount=893
   say Zigzagoon gained 1278 EXP. Points!
   ExpGained Pokemon=mine#1 Zigzagoon Amount=1278
-  LevelRose Pokemon=mine#1 Zigzagoon Level=17
+  LevelRose Pokemon=mine#1 Zigzagoon Level=17 Before=40/17/16/18/19/29 After=42/18/17/19/20/30
   say Zigzagoon grew to Lv. 17!
   MoveWanted Pokemon=mine#1 Zigzagoon Move=Odor Sleuth
   say Heliolisk gained 1084 EXP. Points!
@@ -4307,6 +4317,7 @@ log:
     + MoveShown Move=Bind Type=Normal Category=Physical From=E0 To=P0 Missed=true Blocked=false Critical=false SuperEffective=false
   say Foe Pinsir's attack missed!
   say The foe's team's Light Screen wore off!
+    + SideConditionChanged Side=Enemy Condition=LightScreen Layers=0
   say Illumise used Covet!
     + Lunged P0 Category=Physical
     + MoveShown Move=Covet Type=Normal Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -5006,7 +5017,7 @@ log:
   ExpGained Pokemon=mine#0 Skuntank Amount=529
   say Tepig gained 671 EXP. Points!
   ExpGained Pokemon=mine#1 Tepig Amount=671
-  LevelRose Pokemon=mine#1 Tepig Level=14
+  LevelRose Pokemon=mine#1 Tepig Level=14 Before=39/21/14/17/19/18 After=44/24/16/18/21/20
   say Tepig grew to Lv. 14!
   MoveWanted Pokemon=mine#1 Tepig Move=Defense Curl
   say Braviary gained 431 EXP. Points!
@@ -5485,7 +5496,7 @@ log:
     + TrainerReacts E0 Cue=FirstDown
   say Floette gained 2092 EXP. Points!
   ExpGained Pokemon=mine#2 Floette Amount=2092
-  LevelRose Pokemon=mine#2 Floette Level=16
+  LevelRose Pokemon=mine#2 Floette Level=16 Before=39/19/19/29/28/20 After=43/21/22/32/32/22
   say Floette grew to Lv. 16!
   MoveWanted Pokemon=mine#2 Floette Move=Razor Leaf
   say Wobbuffet fainted!
@@ -5862,7 +5873,7 @@ log:
   ExpGained Pokemon=mine#1 Sneasel Amount=217
   say Sylveon gained 794 EXP. Points!
   ExpGained Pokemon=mine#2 Sylveon Amount=794
-  LevelRose Pokemon=mine#2 Sylveon Level=9
+  LevelRose Pokemon=mine#2 Sylveon Level=9 Before=25/12/12/17/16/11 After=37/19/18/28/25/16
   say Sylveon grew to Lv. 9!
   say Sneasel used Beat Up!
     + Lunged P1 Category=Physical
@@ -5956,7 +5967,7 @@ log:
   ExpGained Pokemon=mine#1 Sneasel Amount=40
   say Sylveon gained 300 EXP. Points!
   ExpGained Pokemon=mine#2 Sylveon Amount=300
-  LevelRose Pokemon=mine#2 Sylveon Level=10
+  LevelRose Pokemon=mine#2 Sylveon Level=10 Before=37/19/18/28/25/16 After=40/20/20/30/27/18
   say Sylveon grew to Lv. 10!
   MoveWanted Pokemon=mine#2 Sylveon Move=Quick Attack
   Won
@@ -7169,6 +7180,7 @@ log:
     + Lunged P0 Category=Status
     + MoveShown Move=Toxic Spikes Type=Poison Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Poison spikes were scattered all around the foe's team's feet!
+    + SideConditionChanged Side=Enemy Condition=ToxicSpikes Layers=1
   say Foe Dondozo used Supersonic!
     + Lunged E0 Category=Status
     + MoveShown Move=Supersonic Type=Normal Category=Status From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -7191,7 +7203,7 @@ log:
   ExpGained Pokemon=mine#0 Cloyster Amount=76
   say Gimmighoul gained 618 EXP. Points!
   ExpGained Pokemon=mine#1 Gimmighoul Amount=618
-  LevelRose Pokemon=mine#1 Gimmighoul Level=9
+  LevelRose Pokemon=mine#1 Gimmighoul Level=9 Before=24/9/17/15/15/7 After=28/10/20/19/18/8
   say Gimmighoul grew to Lv. 9!
   say Chandelure gained 348 EXP. Points!
   ExpGained Pokemon=mine#2 Chandelure Amount=348
@@ -7242,11 +7254,11 @@ log:
   ExpGained Pokemon=mine#0 Cloyster Amount=409
   say Gimmighoul gained 1494 EXP. Points!
   ExpGained Pokemon=mine#1 Gimmighoul Amount=1494
-  LevelRose Pokemon=mine#1 Gimmighoul Level=12
+  LevelRose Pokemon=mine#1 Gimmighoul Level=12 Before=28/10/20/19/18/8 After=34/12/26/23/23/9
   say Gimmighoul grew to Lv. 12!
   say Chandelure gained 1131 EXP. Points!
   ExpGained Pokemon=mine#2 Chandelure Amount=1131
-  LevelRose Pokemon=mine#2 Chandelure Level=17
+  LevelRose Pokemon=mine#2 Chandelure Level=17 Before=45/24/31/53/34/29 After=50/26/35/59/38/32
   say Chandelure grew to Lv. 17!
   say Ace Trainer Tester sent out Weezing!
     + Seen Species=Weezing
@@ -7548,6 +7560,7 @@ log:
     + Lunged P0 Category=Status
     + MoveShown Move=Gravity Type=Psychic Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Gravity intensified!
+    + FieldConditionChanged Condition=Gravity Up=true
   say Foe Staravia couldn't stay airborne because of gravity!
   say Foe Staravia used Wing Attack!
     + Lunged E0 Category=Physical
@@ -7600,10 +7613,12 @@ log:
     ! Struck P0 Hp=41 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Gravity returned to normal!
+    + FieldConditionChanged Condition=Gravity Up=false
   say Arceus used Gravity!
     + Lunged P0 Category=Status
     + MoveShown Move=Gravity Type=Psychic Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Gravity intensified!
+    + FieldConditionChanged Condition=Gravity Up=true
   say Foe Ponyta used Stomp!
     + Lunged E0 Category=Physical
     + MoveShown Move=Stomp Type=Normal Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -7662,6 +7677,7 @@ log:
     ! Struck P0 Hp=154 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Gravity returned to normal!
+    + FieldConditionChanged Condition=Gravity Up=false
   say Snorlax used Body Slam!
     + Lunged P0 Category=Physical
     + MoveShown Move=Body Slam Type=Normal Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -8155,6 +8171,7 @@ log:
     + Lunged E1 Category=Status
     + MoveShown Move=Light Screen Type=Psychic Category=Status From=E1 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
   say Light Screen raised the foe's team's Special Defense!
+    + SideConditionChanged Side=Enemy Condition=LightScreen Layers=1
   say Foe Smeargle used Ominous Wind!
     + Lunged E0 Category=Special
     + MoveShown Move=Ominous Wind Type=Ghost Category=Special From=E0 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -8245,6 +8262,7 @@ log:
     + MoveShown Move=Rock Throw Type=Rock Category=Physical From=E1 To=P1 Missed=true Blocked=false Critical=false SuperEffective=false
   say Rapidash avoided the attack!
   say The foe's team's Light Screen wore off!
+    + SideConditionChanged Side=Enemy Condition=LightScreen Layers=0
   say Rapidash used Bounce!
     + Reappeared P1
     + Lunged P1 Category=Physical
@@ -8500,6 +8518,7 @@ log:
     + Lunged E0 Category=Status
     + MoveShown Move=Tailwind Type=Flying Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say The tailwind blew from behind the foe's team!
+    + SideConditionChanged Side=Enemy Condition=Tailwind Layers=1
   say Duskull used Will-O-Wisp!
     + Lunged P0 Category=Status
     + MoveShown Move=Will-O-Wisp Type=Fire Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -8531,6 +8550,7 @@ log:
     + Lunged P0 Category=Special
     + MoveShown Move=Future Sight Type=Psychic Category=Special From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Duskull foresaw an attack!
+    + PlaceConditionChanged E0 Condition=FutureSight Up=true
   say Foe Vullaby is hurt by its burn!
     + HpChanged E0 Hp=7 Healed=false
   say Foe Vullaby used Pluck!
@@ -8543,6 +8563,7 @@ log:
     + MoveShown Move=Will-O-Wisp Type=Fire Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Vullaby is already burned!
   say The foe's team's tailwind petered out!
+    + SideConditionChanged Side=Enemy Condition=Tailwind Layers=0
   say Foe Vullaby is hurt by its burn!
     + HpChanged E0 Hp=3 Healed=false
   say Foe Vullaby used Pluck!
@@ -8561,6 +8582,7 @@ log:
     + TrainerReacts E0 Cue=FirstDown
   say Duskull gained 199 EXP. Points!
   ExpGained Pokemon=mine#2 Duskull Amount=199
+  PlaceConditionChanged E0 Condition=FutureSight Up=false
   say Ace Trainer Tester sent out Smoochum!
     + Seen Species=Smoochum
     + Entered E0 Pokemon=foe#1 Smoochum FromBall=true
@@ -8640,7 +8662,7 @@ log:
   ExpGained Pokemon=mine#0 Dewott Amount=219
   say Chespin gained 1090 EXP. Points!
   ExpGained Pokemon=mine#1 Chespin Amount=1090
-  LevelRose Pokemon=mine#1 Chespin Level=20
+  LevelRose Pokemon=mine#1 Chespin Level=20 Before=53/31/34/24/24/25 After=55/33/35/25/25/26
   say Chespin grew to Lv. 20!
   say Combusken gained 124 EXP. Points!
   ExpGained Pokemon=mine#2 Combusken Amount=124
@@ -8816,6 +8838,7 @@ log:
     + Lunged E0 Category=Status
     + MoveShown Move=Reflect Type=Psychic Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Reflect raised the foe's team's Defense!
+    + SideConditionChanged Side=Enemy Condition=Reflect Layers=1
   say Comfey is confused!
     + Confused P0
   say It hurt itself in its confusion!
@@ -8874,6 +8897,7 @@ log:
   say Scyther gained 180 EXP. Points!
   ExpGained Pokemon=mine#2 Scyther Amount=180
   say The foe's team's Reflect wore off!
+    + SideConditionChanged Side=Enemy Condition=Reflect Layers=0
   say Policeman Danny sent out Machoke!
     + Seen Species=Machoke
     + Entered E0 Pokemon=foe#1 Machoke FromBall=true
@@ -9055,6 +9079,7 @@ log:
     + Lunged E0 Category=Status
     + MoveShown Move=Reflect Type=Psychic Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Reflect raised the foe's team's Defense!
+    + SideConditionChanged Side=Enemy Condition=Reflect Layers=1
   say Pachirisu used Super Fang!
     + Lunged P0 Category=Physical
     + MoveShown Move=Super Fang Type=Normal Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -9115,6 +9140,7 @@ log:
   say A critical hit!
   say It's not very effective...
   say The foe's team's Reflect wore off!
+    + SideConditionChanged Side=Enemy Condition=Reflect Layers=0
   say Centiskorch used Lunge!
     + Lunged P0 Category=Physical
     + MoveShown Move=Lunge Type=Bug Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -9874,6 +9900,7 @@ log:
     + Lunged E0 Category=Status
     + MoveShown Move=Light Screen Type=Psychic Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Light Screen raised the foe's team's Special Defense!
+    + SideConditionChanged Side=Enemy Condition=LightScreen Layers=1
   say Hail continues to fall.
     + WeatherContinues Weather=Hail
   say Lopunny is pelted by the hail!
@@ -10590,7 +10617,7 @@ log:
   ExpGained Pokemon=mine#1 Ninetales Amount=1346
   say Perrserker gained 2694 EXP. Points!
   ExpGained Pokemon=mine#2 Perrserker Amount=2694
-  LevelRose Pokemon=mine#2 Perrserker Level=29
+  LevelRose Pokemon=mine#2 Perrserker Level=29 Before=78/72/65/33/43/41 After=80/74/67/34/44/42
   say Perrserker grew to Lv. 29!
   say Ace Trainer Tester sent out Mimikyu!
     + Seen Species=Mimikyu
@@ -10983,6 +11010,7 @@ log:
     + Lunged P1 Category=Status
     + MoveShown Move=Tailwind Type=Flying Category=Status From=P1 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
   say The tailwind blew from behind your team!
+    + SideConditionChanged Side=Player Condition=Tailwind Layers=1
   say Foe Hitmontop used Close Combat!
     + Lunged E1 Category=Physical
     + MoveShown Move=Close Combat Type=Fighting Category=Physical From=E1 To=P0 Missed=false Blocked=false Critical=false SuperEffective=true
@@ -11140,6 +11168,7 @@ log:
     + Lunged P0 Category=Status
     + MoveShown Move=Stealth Rock Type=Rock Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Pointed stones float in the air around the foe's team!
+    + SideConditionChanged Side=Enemy Condition=StealthRock Layers=1
   say Foe Brambleghast used Pain Split!
     + Lunged E0 Category=Status
     + MoveShown Move=Pain Split Type=Normal Category=Status From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -11438,6 +11467,7 @@ log:
     + Lunged P0 Category=Status
     + MoveShown Move=Safeguard Type=Normal Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Your team became cloaked in a mystical veil!
+    + SideConditionChanged Side=Player Condition=Safeguard Layers=1
   say Foe Kricketune used Slash!
     + Lunged E0 Category=Physical
     + MoveShown Move=Slash Type=Normal Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -11496,6 +11526,7 @@ log:
     + MoveShown Move=Lock-On Type=Normal Category=Status From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Magnemite took aim at Vivillon!
   say Your team is no longer protected by Safeguard!
+    + SideConditionChanged Side=Player Condition=Safeguard Layers=0
   say Vivillon used Draining Kiss!
     + Lunged P0 Category=Special
     + MoveShown Move=Draining Kiss Type=Fairy Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -11692,7 +11723,7 @@ log:
   ExpGained Pokemon=mine#1 Fearow Amount=1190
   say Type: Null gained 1667 EXP. Points!
   ExpGained Pokemon=mine#2 Type: Null Amount=1667
-  LevelRose Pokemon=mine#2 Type: Null Level=39
+  LevelRose Pokemon=mine#2 Type: Null Level=39 Before=124/86/82/77/78/55 After=127/88/84/79/80/57
   say Type: Null grew to Lv. 39!
   Won
   say Lucas defeated Ace Trainer Tester!
@@ -11852,7 +11883,7 @@ log:
   ExpGained Pokemon=mine#1 Veluza Amount=1014
   say Braviary gained 1582 EXP. Points!
   ExpGained Pokemon=mine#2 Braviary Amount=1582
-  LevelRose Pokemon=mine#2 Braviary Level=24
+  LevelRose Pokemon=mine#2 Braviary Level=24 Before=80/67/47/32/41/44 After=83/70/48/33/43/46
   say Braviary grew to Lv. 24!
   MoveWanted Pokemon=mine#2 Braviary Move=Scary Face
   say Ace Trainer Tester sent out Glaceon!
@@ -12929,6 +12960,7 @@ log:
     + Lunged E1 Category=Special
     + MoveShown Move=Future Sight Type=Psychic Category=Special From=E1 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Mewtwo foresaw an attack!
+    + PlaceConditionChanged P1 Condition=FutureSight Up=true
   say Electrike used Roar!
     + Lunged P1 Category=Status
     + MoveShown Move=Roar Type=Normal Category=Status From=P1 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -12956,7 +12988,7 @@ log:
   ExpGained Pokemon=mine#0 Palkia Amount=1091
   say Electrike gained 1946 EXP. Points!
   ExpGained Pokemon=mine#2 Electrike Amount=1946
-  LevelRose Pokemon=mine#2 Electrike Level=44
+  LevelRose Pokemon=mine#2 Electrike Level=44 Before=91/56/45/64/44/80 After=93/57/46/65/45/81
   say Electrike grew to Lv. 44!
   MoveWanted Pokemon=mine#2 Electrike Move=Charge
   Won
@@ -13074,11 +13106,11 @@ log:
     + Fainted E0
   say Xatu gained 65 EXP. Points!
   ExpGained Pokemon=mine#0 Xatu Amount=65
-  LevelRose Pokemon=mine#0 Xatu Level=5
+  LevelRose Pokemon=mine#0 Xatu Level=5 Before=20/11/11/13/11/13 After=22/12/13/15/12/15
   say Xatu grew to Lv. 5!
   say Iron Moth gained 43 EXP. Points!
   ExpGained Pokemon=mine#1 Iron Moth Amount=43
-  LevelRose Pokemon=mine#1 Iron Moth Level=3
+  LevelRose Pokemon=mine#1 Iron Moth Level=3 Before=15/8/7/10/9/10 After=18/10/8/13/12/12
   say Iron Moth grew to Lv. 3!
   say Electrode gained 33 EXP. Points!
   ExpGained Pokemon=mine#2 Electrode Amount=33
@@ -13124,6 +13156,7 @@ log:
     + Lunged P0 Category=Status
     + MoveShown Move=Stealth Rock Type=Rock Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Pointed stones float in the air around the foe's team!
+    + SideConditionChanged Side=Enemy Condition=StealthRock Layers=1
   say Foe Patrat used Mean Look!
     + Lunged E1 Category=Status
     + MoveShown Move=Mean Look Type=Normal Category=Status From=E1 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -13259,6 +13292,7 @@ log:
     + Lunged P0 Category=Status
     + MoveShown Move=Safeguard Type=Normal Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Your team became cloaked in a mystical veil!
+    + SideConditionChanged Side=Player Condition=Safeguard Layers=1
   say Celebi used Magical Leaf!
     + Lunged P0 Category=Special
     + MoveShown Move=Magical Leaf Type=Grass Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -13307,6 +13341,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
   say Your team is no longer protected by Safeguard!
+    + SideConditionChanged Side=Player Condition=Safeguard Layers=0
   say Foe Wormadam snapped out of confusion!
   say Foe Wormadam used Protect!
     + Lunged E0 Category=Status
@@ -13316,6 +13351,7 @@ log:
     + Lunged P0 Category=Status
     + MoveShown Move=Safeguard Type=Normal Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Your team became cloaked in a mystical veil!
+    + SideConditionChanged Side=Player Condition=Safeguard Layers=1
   say Celebi used Magical Leaf!
     + Lunged P0 Category=Special
     + MoveShown Move=Magical Leaf Type=Grass Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -13361,6 +13397,7 @@ log:
   say Celebi fainted!
     + Fainted P0
   say Your team is no longer protected by Safeguard!
+    + SideConditionChanged Side=Player Condition=Safeguard Layers=0
   say Go! Spidops!
     + Entered P0 Pokemon=mine#1 Spidops FromBall=true
   say Foe Wormadam used Hidden Power!
@@ -13384,7 +13421,7 @@ log:
   ExpGained Pokemon=mine#1 Spidops Amount=414
   say Nymble gained 644 EXP. Points!
   ExpGained Pokemon=mine#2 Nymble Amount=644
-  LevelRose Pokemon=mine#2 Nymble Level=11
+  LevelRose Pokemon=mine#2 Nymble Level=11 Before=25/13/15/10/10/13 After=28/15/17/12/11/15
   say Nymble grew to Lv. 11!
   MoveWanted Pokemon=mine#2 Nymble Move=Double Kick
   say Ace Trainer Tester sent out Camerupt!
@@ -13420,7 +13457,7 @@ log:
   ExpGained Pokemon=mine#1 Spidops Amount=409
   say Nymble gained 575 EXP. Points!
   ExpGained Pokemon=mine#2 Nymble Amount=575
-  LevelRose Pokemon=mine#2 Nymble Level=12
+  LevelRose Pokemon=mine#2 Nymble Level=12 Before=28/15/17/12/11/15 After=30/16/18/12/12/16
   say Nymble grew to Lv. 12!
   say Ace Trainer Tester sent out Dusknoir!
     + Seen Species=Dusknoir
@@ -13468,7 +13505,7 @@ log:
   ExpGained Pokemon=mine#1 Spidops Amount=159
   say Nymble gained 253 EXP. Points!
   ExpGained Pokemon=mine#2 Nymble Amount=253
-  LevelRose Pokemon=mine#2 Nymble Level=13
+  LevelRose Pokemon=mine#2 Nymble Level=13 Before=30/16/18/12/12/16 After=31/17/19/13/13/17
   say Nymble grew to Lv. 13!
   Won
   say Lucas defeated Ace Trainer Tester!
@@ -14083,6 +14120,7 @@ log:
     + Lunged P0 Category=Status
     + MoveShown Move=Tailwind Type=Flying Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say The tailwind blew from behind your team!
+    + SideConditionChanged Side=Player Condition=Tailwind Layers=1
   say Foe Armaldo used Rock Blast!
     + Lunged E0 Category=Physical
     + MoveShown Move=Rock Blast Type=Rock Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=true
@@ -14132,6 +14170,7 @@ log:
     ! Struck P0 Hp=13 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Your team's tailwind petered out!
+    + SideConditionChanged Side=Player Condition=Tailwind Layers=0
   say Drapion used Bug Bite!
     + Lunged P0 Category=Physical
     + MoveShown Move=Bug Bite Type=Bug Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -14248,6 +14287,7 @@ log:
     + Lunged P1 Category=Status
     + MoveShown Move=Stealth Rock Type=Rock Category=Status From=P1 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
   say Pointed stones float in the air around the foe's team!
+    + SideConditionChanged Side=Enemy Condition=StealthRock Layers=1
   say Foe Mew used Pound!
     + Lunged E0 Category=Physical
     + MoveShown Move=Pound Type=Normal Category=Physical From=E0 To=P0 Missed=true Blocked=false Critical=false SuperEffective=false
@@ -14565,7 +14605,7 @@ log:
   ExpGained Pokemon=mine#1 Basculegion Amount=435
   say Maushold gained 1759 EXP. Points!
   ExpGained Pokemon=mine#2 Maushold Amount=1759
-  LevelRose Pokemon=mine#2 Maushold Level=13
+  LevelRose Pokemon=mine#2 Maushold Level=13 Before=23/11/13/12/12/17 After=46/25/27/24/25/36
   say Maushold grew to Lv. 13!
   MoveWanted Pokemon=mine#2 Maushold Move=Helping Hand
   MoveWanted Pokemon=mine#2 Maushold Move=Super Fang
@@ -15005,12 +15045,12 @@ log:
     + Fainted E0
   say Geodude gained 75 EXP. Points!
   ExpGained Pokemon=mine#0 Geodude Amount=75
-  LevelRose Pokemon=mine#0 Geodude Level=4
+  LevelRose Pokemon=mine#0 Geodude Level=4 Before=15/10/11/7/7/6 After=17/12/14/7/8/7
   say Geodude grew to Lv. 4!
   say Geodude learned Mud Sport!
   say Arctovish gained 50 EXP. Points!
   ExpGained Pokemon=mine#1 Arctovish Amount=50
-  LevelRose Pokemon=mine#1 Arctovish Level=3
+  LevelRose Pokemon=mine#1 Arctovish Level=3 Before=12/7/7/6/5/6 After=18/11/11/11/9/9
   say Arctovish grew to Lv. 3!
   say Fletchinder gained 23 EXP. Points!
   ExpGained Pokemon=mine#2 Fletchinder Amount=23

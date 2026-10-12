@@ -13,6 +13,14 @@ partial class Harness
         profileRun.Window = $"{Raylib.GetScreenWidth()}x{Raylib.GetScreenHeight()}";
         Console.WriteLine($"window {profileRun.Window}, renderer {profileRun.Renderer ?? "unknown"}, preset {engine.Settings.Quality}, profiler waits for the GPU: {FrameProfiler.WaitsForGpu}");
         Console.WriteLine($"start-up: {startMs:F0} ms to initialise the engine");
+        // Where the start-up went, step by step (the log's phases, plan 16 · T3)
+        int told = 0;
+        void TellPhases()
+        {
+            var phases = Log.Phases;
+            for (; told < phases.Count; told++) Console.WriteLine($"  {phases[told].Name}: {phases[told].Milliseconds:F0} ms");
+        }
+        TellPhases();
         // Arriving somewhere new: its chunks baked and uploaded behind the fade
         var fieldRenderer = game.World;
         fieldRenderer.ResetStreamingStats();
@@ -25,7 +33,10 @@ partial class Harness
         Frames(1);
         Console.WriteLine($"arriving in a town not seen yet: {firstFrame:F0} ms to its first frame, {arrival.Elapsed.TotalMilliseconds - firstFrame:F0} ms for the next");
         Console.WriteLine($"  streaming: {fieldRenderer.Streaming}");
-        var presets = (Environment.GetEnvironmentVariable("SHOTS_PRESETS") ?? "High").Split(',');
+        // And the first arrival of the game itself, as its log times it: the place the new game began in, from the
+        // moment the player was put there to the end of the first frame drawn (which was the one above)
+        TellPhases();
+        var presets =(Environment.GetEnvironmentVariable("SHOTS_PRESETS") ?? "High").Split(',');
         foreach (string preset in presets)
         {
             engine.Settings.Quality = Enum.Parse<GraphicsQuality>(preset);
@@ -232,6 +243,11 @@ partial class Harness
             for (int guard = 0; guard < 6 && d.HUD.MenuState == BattleMenuState.Message; guard++) { d.ConfirmMessage(); Frames(1); Skip(20 / 60.0); }
             Skip(0.8);
             Profile("double battle, at the menu");
+
+            // The same in a sandstorm with every hazard and screen on both sides (plan 25 · Y2): the most the field's
+            // look ever draws over the most a battle already draws (Modes/ConditionsField.cs)
+            EverythingOnTheField();
+            Profile("double battle in a sandstorm, everything on the field");
             game.State = GameState.Overworld;
         }
         engine.Settings.Quality = GraphicsQuality.High;

@@ -1,5 +1,7 @@
 using System.Numerics;
 using Raylib_cs;
+using PokemonPlatinumEngine.Battle;
+using PokemonPlatinumEngine.Battle.Sim;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
@@ -1189,19 +1191,27 @@ public class FieldLifeTests
     [Fact]
     public void TheWayIntoABattleFollowsWhoIsMetAndWhetherTheyAreStronger()
     {
-        // As in Platinum: the first Pokémon they send out against the player's first
-        Assert.Equal(TransitionKind.Wild, SceneTransition.ForBattle(trainer: false, leader: false, theirLevel: 4, ownLevel: 5));
-        Assert.Equal(TransitionKind.Wild, SceneTransition.ForBattle(false, false, 5, 5));
-        Assert.Equal(TransitionKind.WildStrong, SceneTransition.ForBattle(false, false, 6, 5));
-        Assert.Equal(TransitionKind.Trainer, SceneTransition.ForBattle(true, false, 5, 5));
-        Assert.Equal(TransitionKind.TrainerStrong, SceneTransition.ForBattle(true, false, 9, 5));
+        // As in Platinum: the first Pokémon they send out against the player's first (on grass here; the ways by
+        // place and by whom are IntoBattleTests')
+        static BattleMeeting Wild(int theirs, int own) => new() { WildSpecies = "Starly", Terrain = BattleTerrain.Grass, TheirLevel = theirs, OwnLevel = own };
+        static BattleMeeting With(string trainerClass, string name, int theirs, int own) =>
+            new() { Trainers = new[] { new MetTrainer(trainerClass, name) }, Terrain = BattleTerrain.Plain, TheirLevel = theirs, OwnLevel = own };
+        Assert.Equal(TransitionKind.Wild, SceneTransition.ForBattle(Wild(theirs: 4, own: 5)));
+        Assert.Equal(TransitionKind.Wild, SceneTransition.ForBattle(Wild(5, 5)));
+        Assert.Equal(TransitionKind.WildStrong, SceneTransition.ForBattle(Wild(6, 5)));
+        Assert.Equal(TransitionKind.Trainer, SceneTransition.ForBattle(With("Youngster", "Tristan", 5, 5)));
+        Assert.Equal(TransitionKind.TrainerStrong, SceneTransition.ForBattle(With("Youngster", "Tristan", 9, 5)));
         // A Gym Leader has their own, however strong
-        Assert.Equal(TransitionKind.Leader, SceneTransition.ForBattle(true, true, 3, 50));
-        Assert.Equal(TransitionKind.Leader, SceneTransition.ForBattle(true, true, 60, 5));
+        Assert.Equal(TransitionKind.Leader, SceneTransition.ForBattle(With("Leader", "Roark", 3, 50)));
+        Assert.Equal(TransitionKind.Leader, SceneTransition.ForBattle(With("Leader", "Roark", 60, 5)));
     }
 
     public static IEnumerable<object[]> BattleKinds() =>
         Enum.GetValues<TransitionKind>().Where(k => k != TransitionKind.Fade).Select(k => new object[] { k });
+
+    /// <summary>The five ways of plan 04 · G9, which a battle on grass still opens by.</summary>
+    private static readonly TransitionKind[] FirstFive =
+        { TransitionKind.Wild, TransitionKind.WildStrong, TransitionKind.Trainer, TransitionKind.TrainerStrong, TransitionKind.Leader };
 
     private static float Covered(TransitionKind kind, bool closing, float closed)
     {
@@ -1282,17 +1292,27 @@ public class FieldLifeTests
         for (float t = -0.1f; t < 1.2f; t += 0.005f) Assert.InRange(SceneTransition.Flash(kind, t), 0f, 0.75f);
         Assert.Equal(0f, SceneTransition.Flash(kind, SceneTransition.FlashSeconds));
 
-        // Nothing closes while it flashes; then the shapes close with an ease and are shut on time
+        // Nothing closes while it flashes, nor while a way of its own leads in; then the shapes close and are shut
+        // on time. The first five take nine tenths of a second, as they always did; the others their own time
+        float shut = SceneTransition.OutSeconds(kind), lead = SceneTransition.LeadSeconds(kind);
         Assert.Equal(0f, SceneTransition.Closed(kind, closing: true, SceneTransition.FlashSeconds));
+        Assert.Equal(0f, SceneTransition.Closed(kind, true, SceneTransition.FlashSeconds + lead));
         float last = 0f;
-        for (float t = SceneTransition.FlashSeconds; t <= SceneTransition.CloseSeconds; t += 0.01f)
+        for (float t = SceneTransition.FlashSeconds; t <= shut; t += 0.01f)
         {
             float now = SceneTransition.Closed(kind, true, t);
             Assert.True(now >= last);
             last = now;
         }
-        Assert.Equal(1f, SceneTransition.Closed(kind, true, SceneTransition.CloseSeconds));
-        Assert.Equal(SceneTransition.CloseSeconds, SceneTransition.OutSeconds(kind));
+        Assert.True(SceneTransition.Closed(kind, true, SceneTransition.FlashSeconds + lead + 0.05f) > 0f);
+        Assert.True(SceneTransition.Closed(kind, true, shut - 0.02f) < 1f);
+        Assert.Equal(1f, SceneTransition.Closed(kind, true, shut));
+        if (FirstFive.Contains(kind))
+        {
+            Assert.Equal(SceneTransition.CloseSeconds, shut);
+            Assert.Equal(0f, lead);
+        }
+        else Assert.InRange(shut, SceneTransition.CloseSeconds, 2.2f);
 
         // And they open at once on the other side, in half a second
         Assert.Equal(1f, SceneTransition.Closed(kind, closing: false, 0f));

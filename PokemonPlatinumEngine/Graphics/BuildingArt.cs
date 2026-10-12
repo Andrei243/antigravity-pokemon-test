@@ -907,7 +907,7 @@ internal static partial class BuildingArt
         int x0 = cx - size / 2, y0 = y + (bandHeight - size) / 2;
         if (kind == SignKind.Center) BallRoundel(c, x0, y0, size);
         else if (kind == SignKind.Globe) GlobeRoundel(c, x0, y0, size);
-        else if (kind == SignKind.Galactic) GalacticMark(c, cx, y0 + 2, size - 4, s.Accent);
+        else if (kind == SignKind.Galactic) GalacticSign(c, cx, y0 + 2, size - 4, s.Accent);
     }
 
     /// <summary>Our own Poké Ball sign: red over white with a dark band and a button, in flat shades.</summary>

@@ -126,8 +126,26 @@ public sealed class WorldRenderer
                 yield return (x, y);
     }
 
+    /// <summary>
+    /// The chunks of a map that can show something on a rectangle of ground (<see cref="MapScene.Reach"/>: their own
+    /// tiles and what stands on them and leans out), cut off at the map's edge. A lens zoomed out asks it (plan 09 · L4).
+    /// </summary>
+    internal static IEnumerable<(int X, int Y)> ChunksUnder(Map map, GroundRect ground)
+    {
+        // (A chunk's reach is ten tiles past its tiles at the most: no chunk further off than that can touch the ground)
+        int x0 = Math.Max(0, (int)MathF.Floor((ground.MinX - 10f) / Map.ChunkTiles)), x1 = Math.Min(map.ChunkColumns - 1, (int)MathF.Floor((ground.MaxX + 10f) / Map.ChunkTiles));
+        int y0 = Math.Max(0, (int)MathF.Floor((ground.MinZ - 10f) / Map.ChunkTiles)), y1 = Math.Min(map.ChunkRows - 1, (int)MathF.Floor((ground.MaxZ + 10f) / Map.ChunkTiles));
+        for (int y = y0; y <= y1; y++)
+            for (int x = x0; x <= x1; x++)
+            {
+                var reach = MapScene.Reach(MapScene.ChunkWindow(map, x, y));
+                if (ground.Touches(new Vector3(reach.MinX, 0, reach.MinZ), new Vector3(reach.MaxX, 0, reach.MaxZ))) yield return (x, y);
+            }
+    }
+
     /// <summary>The scenes to draw for a map this frame: its one scene, or the chunks ready round the camera.</summary>
-    private List<MapScene> ScenesFor(Map map, float focusX, float focusZ, GroundRect? view)
+    /// <param name="ahead">The ground a lens zoomed out shows or will show, when that is more than the block round the camera holds; null at the place's own lens.</param>
+    private List<MapScene> ScenesFor(Map map, float focusX, float focusZ, GroundRect? view, GroundRect? ahead = null)
     {
         drawn.Clear();
         if (!map.IsStreamed)
@@ -144,6 +162,15 @@ public sealed class WorldRenderer
                 if (chunks.ContainsKey((map, x, y))) continue;
                 var window = MapScene.ChunkWindow(map, x, y);
                 if (pass == 0 && view != null && !InView(window, view.Value)) continue;
+                MapScene.Warm(map, window);
+                chunks[(map, x, y)] = new ChunkSlot { Pending = Task.Run(() => Bake(map, window)) };
+            }
+        // ... and so does whatever lies past the block and reaches into a wider lens's view
+        if (ahead is { } wide)
+            foreach (var (x, y) in ChunksUnder(map, wide))
+            {
+                if (chunks.ContainsKey((map, x, y))) continue;
+                var window = MapScene.ChunkWindow(map, x, y);
                 MapScene.Warm(map, window);
                 chunks[(map, x, y)] = new ChunkSlot { Pending = Task.Run(() => Bake(map, window)) };
             }
@@ -192,6 +219,23 @@ public sealed class WorldRenderer
         foreach (var (key, slot) in chunks)
             if (key.Map == map && slot.Scene != null) drawn.Add(slot.Scene);
         return drawn;
+    }
+
+    /// <summary>
+    /// Starts making ready the chunks a camera over a spot of a streamed map will need, without drawing anything:
+    /// they bake on other threads meanwhile, and are uploaded when the camera gets there. The title asks it before
+    /// its opening plays again (plan 09 · L4), so the first shot doesn't begin by waiting for its ground to be baked.
+    /// </summary>
+    internal void MakeReady(Map map, float focusX, float focusZ)
+    {
+        if (!map.IsStreamed) return;
+        foreach (var (x, y) in ChunksAround(map, focusX, focusZ, ChunkReach))
+        {
+            if (chunks.ContainsKey((map, x, y))) continue;
+            var window = MapScene.ChunkWindow(map, x, y);
+            MapScene.Warm(map, window);
+            chunks[(map, x, y)] = new ChunkSlot { Pending = Task.Run(() => Bake(map, window)) };
+        }
     }
 
     /// <summary>
@@ -303,25 +347,31 @@ public sealed class WorldRenderer
 
     // ------------------------------------------------------------------ the camera's own moves
 
-    // Where the camera has been sent to look instead of at the player, and how far it has got (0..1)
-    private Vector2? panTarget;
-    private float panAmount, panRate;
+    /// <summary>
+    /// Where the camera has been sent to look instead of at the player, its lens, the cinema bars and the field's
+    /// pace (plan 09 · L4): one state, moved on each frame by the camera's clock and read here for the target, the
+    /// lens and everything that follows from them (what is in view, the chunks kept ready, the people in sight,
+    /// the shadow map's reach). A script drives it, and so may anything else that holds the field.
+    /// </summary>
+    public CameraRig Camera { get; } = new();
+
+    // The camera's clock, which the game runs while the field is on screen: at the clock's own pace whatever the
+    // field's is, so slow motion slows nothing a scene's camera does
+    private double cameraClock, lastCameraTime;
     private float easedGround = float.NaN;
-    private double lastLifeTime;
     private Map? easedMap;
+
+    /// <summary>Runs the camera's clock: the game does it beside the field's own (<see cref="FieldLife.Advance"/>).</summary>
+    internal void RunCamera(float dt) => cameraClock += dt;
 
     /// <summary>
     /// Sends the camera to look at a spot (in tiles) over <paramref name="seconds"/>, easing out of where it is
     /// and into where it goes; it stays there until <see cref="ReleaseCamera"/>.
     /// </summary>
-    public void PanCamera(float x, float z, float seconds)
-    {
-        panTarget = new Vector2(x, z);
-        panRate = 1f / MathF.Max(0.01f, seconds);
-    }
+    public void PanCamera(float x, float z, float seconds) => Camera.Pan(x, z, seconds);
 
-    /// <summary>Brings the camera back to the player over <paramref name="seconds"/>.</summary>
-    public void ReleaseCamera(float seconds) => panRate = -1f / MathF.Max(0.01f, seconds);
+    /// <summary>Brings the camera back to the player over <paramref name="seconds"/>, and with it whatever else the rig was told.</summary>
+    public void ReleaseCamera(float seconds) => Camera.Release(seconds);
 
     // A shake: how long it has left, how long it was given and how far it throws the picture
     private float shakeLeft, shakeLength = 1f, shakeReach;
@@ -346,7 +396,22 @@ public sealed class WorldRenderer
     }
 
     /// <summary>How far along a pan the camera is, 0 to 1, eased at both ends.</summary>
-    public float PanEase => panAmount * panAmount * (3f - 2f * panAmount);
+    public float PanEase => Camera.PanEase;
+
+    /// <summary>
+    /// The lens a map is looked through this frame: the place's own (<see cref="MapScene.ViewOf"/>) under the rig's
+    /// zoom, which changes its field of view and nothing else. Whatever asks what is in view asks this.
+    /// </summary>
+    private FieldView LensOf(Map? map) => LensOf(map, Camera.Zoom);
+
+    private static FieldView LensOf(Map? map, float zoom)
+    {
+        var lens = map != null ? MapScene.ViewOf(map) : FieldView.Outdoor;
+        return lens with { FovYDeg = CameraRig.FovAt(lens.FovYDeg, zoom) };
+    }
+
+    /// <summary>How much of a room a zoom in has taken out of the picture, 0 to 1: nothing at the place's own lens or a wider one.</summary>
+    private float ZoomSlack => MathF.Max(0f, 1f - 1f / Camera.Zoom);
 
     /// <summary>A character's field sprite facing the camera, for the interface to show large. Call outside any texture mode.</summary>
     public Texture2D Portrait(string characterType)
@@ -407,20 +472,15 @@ public sealed class WorldRenderer
 
         // The camera's own time: it rises and falls after the player smoothly (a jump of more than a tile and
         // a half is an arrival somewhere else, and is taken at once), and goes where it is sent
-        float step = (float)Math.Clamp(Life.Now - lastLifeTime, 0.0, 0.1);
-        lastLifeTime = Life.Now;
+        float step = (float)Math.Clamp(cameraClock - lastCameraTime, 0.0, 0.1);
+        lastCameraTime = cameraClock;
         if (map != easedMap || float.IsNaN(easedGround) || MathF.Abs(groundY - easedGround) > 1.5f) easedGround = groundY;
         else easedGround += (groundY - easedGround) * MathF.Min(1f, step * 10f);
         easedMap = map;
-        panAmount = Math.Clamp(panAmount + panRate * step, 0f, 1f);
-        if (panAmount <= 0f && panRate < 0f) panTarget = null;
-        float lookX = px, lookZ = pz;
-        if (panTarget is { } sent)
-        {
-            lookX += (sent.X - px) * PanEase;
-            lookZ += (sent.Y - pz) * PanEase;
-        }
-        var camera = BuildCamera(map, room, lookX, lookZ, easedGround);
+        // The rig's own moves: where it has been sent, its lens, the bars and the field's pace (plan 09 · L4)
+        Camera.Advance(step);
+        var look = Camera.Look(new Vector2(px, pz));
+        var camera = BuildCamera(map, room, look.X, look.Y, easedGround);
         if (Shake(step) is var jolt && jolt != 0f)
         {
             camera.Position.Z += jolt;
@@ -439,6 +499,8 @@ public sealed class WorldRenderer
             darkAt = new Vector2(at.X / 1920f, (at.Y - 0.5f * (south.Y - at.Y)) / 1080f);
             darkTile = new Vector2((east.X - at.X) / 1920f, (south.Y - at.Y) / 1080f);
         }
+        // Where the player's middle is on the picture, for whatever closes on them (a cave's way into a battle)
+        PlayerOnPicture = player != null ? OnPicture(new Vector3(px, groundY, pz), camera, out _) : new Vector2(0.5f, 0.5f);
 
         // In a dark room of the Hearthome Gym, where each light is on the picture: the player's and every trainer's
         gymLights.Clear();
@@ -457,7 +519,12 @@ public sealed class WorldRenderer
         // Outdoors, only the part of the map near the view is drawn (rooms are small enough to draw whole)
         GroundRect? view = null, casters = null;
         if (!indoors) (view, casters) = VisibleRects(map, camera.Target, groundY, light.SunDirection);
-        var scenes = ScenesFor(map, camera.Target.X, camera.Target.Z, view);
+        // A lens zoomed out, or on its way out, sees past the block of chunks kept ready round the camera: what it
+        // will show is made ready as soon as the zoom is told (plan 09 · L4)
+        GroundRect? ahead = !indoors && map.IsStreamed && Camera.WidestAhead < 1f
+            ? VisibleRects(map, camera.Target, groundY, light.SunDirection, LensOf(map, Camera.WidestAhead)).View
+            : null;
+        var scenes = ScenesFor(map, camera.Target.X, camera.Target.Z, view, ahead);
 
         shaders.SetTime(time);
         shaders.SetWind(Weathers.Wind(weather));
@@ -486,7 +553,10 @@ public sealed class WorldRenderer
         // 1. Shadow map: depth of everything that casts shadows, seen from the sun (or moon)
         // (a room's shadows are cast round its middle; a hall followed across its width takes them along)
         var focus = room != null ? room.RoomCenter with { X = camera.Target.X, Y = 0 } : new Vector3(camera.Target.X, groundY, camera.Target.Z - 2f);
-        var lightCamera = context.Shadows.LightCamera(focus, light.SunDirection, indoors ? 18f : 40f);
+        // (A lens zoomed out shows more ground than the map covers at its own reach: it is spread over the wider view)
+        float shadowReach = indoors ? 18f : 40f;
+        if (!indoors && Camera.Zoom < 1f) shadowReach /= Camera.Zoom;
+        var lightCamera = context.Shadows.LightCamera(focus, light.SunDirection, shadowReach);
 
         FrameProfiler.Lap(FrameSection.Prepare);
         Raylib.BeginTextureMode(context.Shadows.Target);
@@ -565,16 +635,24 @@ public sealed class WorldRenderer
     /// Composites the last rendered frame into the current target with tilt-shift blur and grading, and draws
     /// the weather over it.
     /// </summary>
-    public void DrawToScreen(int destWidth, int destHeight)
+    /// <param name="wavers">A ripple from outside the field's own life (the way into a battle on water, plan 09 · L13): the further-reaching of it and a scene's own plays.</param>
+    public void DrawToScreen(int destWidth, int destHeight, SceneRipple wavers = default)
     {
         // A scene's ripple is read by the composite's own pass, and a burst's flash whitens everything over it
-        context.Composite(new Rectangle(0, 0, destWidth, destHeight), Life.Ripple);
+        var ripple = Life.Ripple;
+        context.Composite(new Rectangle(0, 0, destWidth, destHeight), wavers.Reach > ripple.Reach ? wavers : ripple);
         DrawWeather(destWidth, destHeight);
         if (dark) DrawDarkness(destWidth, destHeight);
         if (gymFog > 0f) DrawGymFog(destWidth, destHeight);
         if (Life.Flash is > 0f and var flash)
             Raylib.DrawRectangle(0, 0, destWidth, destHeight, new Color(255, 255, 255, (int)(flash * 255f)));
     }
+
+    /// <summary>
+    /// Where the player's middle was on the picture the last time the field was rendered, in shares of its width and
+    /// height: the picture's own middle where nobody is followed.
+    /// </summary>
+    public Vector2 PlayerOnPicture { get; private set; } = new(0.5f, 0.5f);
 
     private bool dark;
     private Vector2 darkAt, darkTile;
@@ -721,26 +799,29 @@ public sealed class WorldRenderer
             if (map.HasRelief) roomTarget.Y += groundY;
             int depth = room.RoomDepth;
             float distance = MapScene.IndoorDistance * Math.Max(1f, (Math.Min(depth, DeepestRoom) - 1) / 8f);
-            if (depth > DeepestRoom)
+            // A zoom in takes a share of the room out of the picture, and by that share the camera may look where it
+            // is sent (or at the player) instead of at the room's middle (style guide, "The camera kit")
+            float slack = ZoomSlack;
+            if (depth > DeepestRoom || slack > 0f)
             {
-                float reach = (depth - DeepestRoom) / 2f;
+                float reach = MathF.Max(0f, depth - DeepestRoom) / 2f + slack * Math.Min(depth, DeepestRoom) / 2f;
                 roomTarget.Z = SnapToTexel(Math.Clamp(pz, roomTarget.Z - reach, roomTarget.Z + reach));
             }
             // A hall wider than the picture (the floors of Team Galactic's headquarters, plan 02 · S11) is followed
             // across its width the same way, between its side walls
-            if (room.RoomWidth > WidestRoom)
+            if (room.RoomWidth > WidestRoom || slack > 0f)
             {
-                float reach = (room.RoomWidth - HallInView) / 2f;
+                float reach = (room.RoomWidth > WidestRoom ? (room.RoomWidth - HallInView) / 2f : 0f) + slack * Math.Min(room.RoomWidth, HallInView) / 2f;
                 roomTarget.X = SnapToTexel(Math.Clamp(px, roomTarget.X - reach, roomTarget.X + reach));
             }
             return new Camera3D(roomTarget + dir * distance, roomTarget, Vector3.UnitY,
-                MapScene.IndoorFovYDeg, CameraProjection.Perspective);
+                Camera.Fov(MapScene.IndoorFovYDeg), CameraProjection.Perspective);
         }
 
         // Aim at the player's middle so they sit near the centre of the screen, then keep the view
         // inside the map plus a few tiles of the surrounding forest
         var t = new Vector3(px, groundY + 0.6f * MapScene.VerticalScaleOf(map), pz);
-        var lens = MapScene.ViewOf(map);
+        var lens = LensOf(map);
         var (farOff, nearOff, halfW) = VisibleGround(t.Y - groundY, lens);
         // A cave ends at its rock and the Distortion World at its edge: the view stays inside them. The open country
         // shows a few tiles of forest past its edge
@@ -797,10 +878,13 @@ public sealed class WorldRenderer
 
     /// <param name="map">The map, where its relief matters: higher ground south of the view rises into it, lower ground north of it too.</param>
     /// <param name="groundY">The drawn height of the ground the camera looks at.</param>
-    internal (GroundRect View, GroundRect Casters) VisibleRects(Map? map, Vector3 target, float groundY, Vector3 sunDirection)
+    internal (GroundRect View, GroundRect Casters) VisibleRects(Map? map, Vector3 target, float groundY, Vector3 sunDirection) =>
+        VisibleRects(map, target, groundY, sunDirection, LensOf(map));
+
+    /// <param name="lens">The lens looked through: the place's own under the rig's zoom, or under the zoom it is on its way to.</param>
+    private (GroundRect View, GroundRect Casters) VisibleRects(Map? map, Vector3 target, float groundY, Vector3 sunDirection, FieldView lens)
     {
         const float tallest = 5f;
-        var lens = map != null ? MapScene.ViewOf(map) : FieldView.Outdoor;
         var (farOff, nearOff, halfW) = VisibleGround(target.Y - groundY, lens);
         // Things are a tile or two wide, and a tall tree south of the bottom edge still shows its top
         var view = new GroundRect(target.X - halfW - 2f, target.Z + farOff - 2f, target.X + halfW + 2f, target.Z + nearOff + 4f);

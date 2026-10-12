@@ -16,6 +16,14 @@ settings.json
 # (but not Claude Code's project settings, which run tools/dev/session-start.sh: plan 16 · T16)
 !.claude/settings.json
 
+# What a run of the game and a crash leave beside the save (plan 16 · T3)
+log.txt
+log.1.txt
+**/logs/crash-*.txt
+**/logs/crash.pending
+savegame.crash.json
+savegame.crash.bak
+
 # Hand-made art that replaces generated art (plan 04: overrides/sprites, overrides/models)
 overrides/
 

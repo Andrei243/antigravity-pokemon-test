@@ -98,14 +98,35 @@ partial class Harness
         b.HUD.MenuState = BattleMenuState.Main;
         Skip(1.0);
 
-        // The foe faints
+        // The foe faints. The lead is a point short of its next level, so this win's EXP is a level (plan 08 · P5)
         lead.Moves.Clear();
         lead.Moves.Add(new Move(MoveDatabase.Get("Flare Blitz")!));
         b.EnemyPokemon.CurrentHP = 1;
+        lead.CurrentExp = lead.ExpForNextLevel - 1;
+        string statsBefore = lead.Stats().ToString();
         b.SelectMove(0);
         for (int guard = 0; guard < 6 && !b.CurrentMessage.Contains("fainted"); guard++) { Confirm(b); Skip(0.3); }
         Skip(0.5); Shot("d24_faint");
         Skip(0.5); Shot("d25_faint_sink");
+
+        // The level: its line with the panel over it, what the level added to each stat and then, a press on, the
+        // stats as they now stand. The battle is left there, as it was left at the faint: read to its end, the game
+        // would take it down and roll for what a battle leaves behind
+        for (int guard = 0; guard < 3 && b.LevelUp == null && !b.IsBattleOver; guard++) { Confirm(b); Skip(0.3); }
+        if (b.LevelUp is { } rose)
+        {
+            Skip(0.5); Shot("d26_level_gains");
+            Console.WriteLine($"  level: {rose.Pokemon.DisplayName} to Lv. {rose.Level}, {rose.Page}: " +
+                              string.Join(" ", PokemonPlatinumEngine.UI.Kit.LevelUpPanel.Order.Select(s => $"{s} +{rose.Gain(s)}")) +
+                              $" (from {rose.Before}; its own before the turn {statsBefore})");
+            Confirm(b);
+            Skip(0.3); Shot("d27_level_stats");
+            // The numbers are the rules' own, and the Pokémon on screen has them
+            string rules = b.Core.PlayerParty.Members[0].Stats().ToString();
+            Console.WriteLine($"  level: {rose.Page}: {rose.After} over \"{b.CurrentMessage}\"; the rules' {rules}, the screen's {lead.Stats()} at Lv. {lead.Level}" +
+                              (rules == rose.After.ToString() && lead.Stats().ToString() == rules ? "" : "  !! the panel's numbers are not the Pokémon's"));
+        }
+        else Console.WriteLine("  !! no level rose: the panel was not shot");
 
         // A wild Pokémon, a thrown Poké Ball: the run-in, the throw, the flight, the red light, the wobbles, the click
         game.Map = MapDatabase.Get("Sinnoh");

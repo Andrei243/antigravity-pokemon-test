@@ -182,12 +182,12 @@ public sealed partial class BattleCore
         },
 
         // ---- what a side puts up, and the rooms
-        ["SetReflect"] = new() { Does = (b, use) => b.RaiseScreen(use, s => s.Reflect, (s, t) => s.ReflectTurns = t, "Screens", "Reflect raised {0}'s Defense!") },
-        ["SetLightScreen"] = new() { Does = (b, use) => b.RaiseScreen(use, s => s.LightScreen, (s, t) => s.LightScreenTurns = t, "Screens", "Light Screen raised {0}'s Special Defense!") },
-        ["PreventStatReduction"] = new() { Does = (b, use) => b.RaiseScreen(use, s => s.Mist, (s, t) => s.MistTurns = t, "", "{1} became shrouded in mist!") },
-        ["PreventStatus"] = new() { Does = (b, use) => b.RaiseScreen(use, s => s.Safeguard, (s, t) => s.SafeguardTurns = t, "", "{1} became cloaked in a mystical veil!") },
-        ["PreventCrits"] = new() { Does = (b, use) => b.RaiseScreen(use, s => s.LuckyChant, (s, t) => s.LuckyChantTurns = t, "", "The Lucky Chant shielded {0} from critical hits!") },
-        ["DoubleSpeed3Turns"] = new() { Does = (b, use) => b.RaiseScreen(use, s => s.Tailwind, (s, t) => s.TailwindTurns = t, "Tailwind", "The tailwind blew from behind {0}!") },
+        ["SetReflect"] = new() { Does = (b, use) => b.RaiseScreen(use, SideCondition.Reflect, s => s.Reflect, (s, t) => s.ReflectTurns = t, "Screens", "Reflect raised {0}'s Defense!") },
+        ["SetLightScreen"] = new() { Does = (b, use) => b.RaiseScreen(use, SideCondition.LightScreen, s => s.LightScreen, (s, t) => s.LightScreenTurns = t, "Screens", "Light Screen raised {0}'s Special Defense!") },
+        ["PreventStatReduction"] = new() { Does = (b, use) => b.RaiseScreen(use, SideCondition.Mist, s => s.Mist, (s, t) => s.MistTurns = t, "", "{1} became shrouded in mist!") },
+        ["PreventStatus"] = new() { Does = (b, use) => b.RaiseScreen(use, SideCondition.Safeguard, s => s.Safeguard, (s, t) => s.SafeguardTurns = t, "", "{1} became cloaked in a mystical veil!") },
+        ["PreventCrits"] = new() { Does = (b, use) => b.RaiseScreen(use, SideCondition.LuckyChant, s => s.LuckyChant, (s, t) => s.LuckyChantTurns = t, "", "The Lucky Chant shielded {0} from critical hits!") },
+        ["DoubleSpeed3Turns"] = new() { Does = (b, use) => b.RaiseScreen(use, SideCondition.Tailwind, s => s.Tailwind, (s, t) => s.TailwindTurns = t, "Tailwind", "The tailwind blew from behind {0}!") },
         ["TrickRoom"] = new() { Does = (b, use) => b.TwistTheRoom(use) },
         ["Gravity"] = new() { Does = (b, use) => b.Intensify(use) },
         ["RemoveScreens"] = new()
@@ -197,17 +197,20 @@ public sealed partial class BattleCore
             {
                 var side = b.Field.Side(t.Side);
                 if (!side.Reflect && !side.LightScreen) return;
+                bool reflect = side.Reflect, lightScreen = side.LightScreen;
                 side.ReflectTurns = side.LightScreenTurns = 0;
-                b.Say("It shattered the barrier!");
+                var shattered = b.Say("It shattered the barrier!");
+                if (reflect) shattered.With(new SideConditionChanged(t.Side, SideCondition.Reflect, 0));
+                if (lightScreen) shattered.With(new SideConditionChanged(t.Side, SideCondition.LightScreen, 0));
             }
         },
         ["RemoveHazardsScreensEvaDown"] = new() { Does = (b, use) => b.Defog(use) },
         ["RemoveHazardsAndBinding"] = new() { Then = (b, use) => b.SpinFree(use.User) },
 
         // ---- what lies in wait
-        ["SetSpikes"] = new() { Does = (b, use) => b.Scatter(use, s => s.Spikes < 3, s => s.Spikes++, "Spikes were scattered all around {0}'s feet!") },
-        ["ToxicSpikes"] = new() { Does = (b, use) => b.Scatter(use, s => s.ToxicSpikes < 2, s => s.ToxicSpikes++, "Poison spikes were scattered all around {0}'s feet!") },
-        ["StealthRock"] = new() { Does = (b, use) => b.Scatter(use, s => !s.StealthRock, s => s.StealthRock = true, "Pointed stones float in the air around {0}!") },
+        ["SetSpikes"] = new() { Does = (b, use) => b.Scatter(use, SideCondition.Spikes, s => s.Spikes < 3, s => s.Spikes++, "Spikes were scattered all around {0}'s feet!") },
+        ["ToxicSpikes"] = new() { Does = (b, use) => b.Scatter(use, SideCondition.ToxicSpikes, s => s.ToxicSpikes < 2, s => s.ToxicSpikes++, "Poison spikes were scattered all around {0}'s feet!") },
+        ["StealthRock"] = new() { Does = (b, use) => b.Scatter(use, SideCondition.StealthRock, s => !s.StealthRock, s => s.StealthRock = true, "Pointed stones float in the air around {0}!") },
 
         // ---- sent ahead
         ["HealIn3Turns"] = new() { Does = (b, use) => b.MakeAWish(use) },
@@ -692,8 +695,11 @@ public sealed partial class BattleCore
         RestoreHp(user, Math.Max(1, amount), $"{user.Name} regained health!");
     }
 
+    /// <summary>What a side has of a condition now, for the line that tells of the change (plan 25 · Y2): the screen draws what lasts from it.</summary>
+    private SideConditionChanged Now(BattleSide side, SideCondition what) => new(side, what, Field.Side(side).Layers(what));
+
     /// <summary>Reflect, Light Screen, Mist, Safeguard, Lucky Chant and Tailwind: each fails while it is up. In the line {0} is "your team", {1} "Your team".</summary>
-    private void RaiseScreen(MoveUse use, Func<SideState, bool> isUp, Action<SideState, int> raise, string kind, string line)
+    private void RaiseScreen(MoveUse use, SideCondition what, Func<SideState, bool> isUp, Action<SideState, int> raise, string kind, string line)
     {
         var user = use.User;
         var side = Field.Side(user.Side);
@@ -705,7 +711,7 @@ public sealed partial class BattleCore
         }
         int turns = kind == "Tailwind" ? Rules.TailwindTurns : 5 + (kind.Length > 0 ? BattleEffects.Of(user).Sum(e => e.ExtraTurns(kind)) : 0);
         raise(side, turns);
-        Say(string.Format(line, TeamOf(user.Side), TeamOf(user.Side, capital: true)));
+        Say(string.Format(line, TeamOf(user.Side), TeamOf(user.Side, capital: true))).With(Now(user.Side, what));
     }
 
     /// <summary>Trick Room for five turns; used again while it is up, it takes it down. Either way the rest of the turn is put in order again.</summary>
@@ -715,12 +721,12 @@ public sealed partial class BattleCore
         if (Field.TrickRoom)
         {
             Field.TrickRoomTurns = 0;
-            Say($"{use.User.Name} restored the twisted dimensions!");
+            Say($"{use.User.Name} restored the twisted dimensions!").With(new FieldConditionChanged(FieldCondition.TrickRoom, Up: false));
         }
         else
         {
             Field.TrickRoomTurns = 5;
-            Say($"{use.User.Name} twisted the dimensions!");
+            Say($"{use.User.Name} twisted the dimensions!").With(new FieldConditionChanged(FieldCondition.TrickRoom, Up: true));
         }
         orderChanged = true;
     }
@@ -735,7 +741,7 @@ public sealed partial class BattleCore
             return;
         }
         Field.GravityTurns = 5;
-        Say("Gravity intensified!");
+        Say("Gravity intensified!").With(new FieldConditionChanged(FieldCondition.Gravity, Up: true));
         foreach (var b in BySpeed().Where(b => b.IsActive))
         {
             var v = b.Volatile;
@@ -748,7 +754,7 @@ public sealed partial class BattleCore
     }
 
     /// <summary>Spikes, Toxic Spikes and Stealth Rock on the other side of the field; each has its limit.</summary>
-    private void Scatter(MoveUse use, Func<SideState, bool> room, Action<SideState> add, string line)
+    private void Scatter(MoveUse use, SideCondition what, Func<SideState, bool> room, Action<SideState> add, string line)
     {
         var theirs = Other(use.User.Side);
         var side = Field.Side(theirs);
@@ -759,7 +765,7 @@ public sealed partial class BattleCore
             return;
         }
         add(side);
-        Say(string.Format(line, TeamOf(theirs)));
+        Say(string.Format(line, TeamOf(theirs))).With(Now(theirs, what));
     }
 
     /// <summary><c>subscript_defog</c>: the target's evasion falls, and its side loses its screens, its veils and what lies at its feet; the fog lifts.</summary>
@@ -770,13 +776,15 @@ public sealed partial class BattleCore
             ChangeStat(t, StatType.Evasion, -1, use.User, true, By.Move);
             var side = Field.Side(t.Side);
             string team = TeamOf(t.Side, capital: true);
-            if (side.Reflect) Say($"{team}'s Reflect was blown away!");
-            if (side.LightScreen) Say($"{team}'s Light Screen was blown away!");
-            if (side.Mist) Say($"{team}'s Mist was blown away!");
-            if (side.Safeguard) Say($"{team}'s Safeguard was blown away!");
-            if (side.Spikes > 0) Say($"The spikes around {TeamOf(t.Side)} were blown away!");
-            if (side.ToxicSpikes > 0) Say($"The poison spikes around {TeamOf(t.Side)} were blown away!");
-            if (side.StealthRock) Say($"The pointed stones around {TeamOf(t.Side)} were blown away!");
+            // Each line takes its own look off the field (plan 25 · Y2)
+            SideConditionChanged Gone(SideCondition what) => new(t.Side, what, 0);
+            if (side.Reflect) Say($"{team}'s Reflect was blown away!").With(Gone(SideCondition.Reflect));
+            if (side.LightScreen) Say($"{team}'s Light Screen was blown away!").With(Gone(SideCondition.LightScreen));
+            if (side.Mist) Say($"{team}'s Mist was blown away!").With(Gone(SideCondition.Mist));
+            if (side.Safeguard) Say($"{team}'s Safeguard was blown away!").With(Gone(SideCondition.Safeguard));
+            if (side.Spikes > 0) Say($"The spikes around {TeamOf(t.Side)} were blown away!").With(Gone(SideCondition.Spikes));
+            if (side.ToxicSpikes > 0) Say($"The poison spikes around {TeamOf(t.Side)} were blown away!").With(Gone(SideCondition.ToxicSpikes));
+            if (side.StealthRock) Say($"The pointed stones around {TeamOf(t.Side)} were blown away!").With(Gone(SideCondition.StealthRock));
             side.ReflectTurns = side.LightScreenTurns = side.MistTurns = side.SafeguardTurns = 0;
             side.Spikes = side.ToxicSpikes = 0;
             side.StealthRock = false;
@@ -809,17 +817,17 @@ public sealed partial class BattleCore
         if (side.Spikes > 0)
         {
             side.Spikes = 0;
-            Say($"{user.Name} blew away Spikes!");
+            Say($"{user.Name} blew away Spikes!").With(Now(user.Side, SideCondition.Spikes));
         }
         if (side.ToxicSpikes > 0)
         {
             side.ToxicSpikes = 0;
-            Say($"{user.Name} blew away Toxic Spikes!");
+            Say($"{user.Name} blew away Toxic Spikes!").With(Now(user.Side, SideCondition.ToxicSpikes));
         }
         if (side.StealthRock)
         {
             side.StealthRock = false;
-            Say($"{user.Name} blew away Stealth Rock!");
+            Say($"{user.Name} blew away Stealth Rock!").With(Now(user.Side, SideCondition.StealthRock));
         }
     }
 
@@ -836,7 +844,7 @@ public sealed partial class BattleCore
         }
         place.WishTurns = 2;
         place.WishFrom = use.User.Name;
-        Say($"{use.User.Name} made a wish!");
+        Say($"{use.User.Name} made a wish!").With(new PlaceConditionChanged(use.User.Place, PlaceCondition.Wish, Up: true));
     }
 
     /// <summary>
@@ -860,7 +868,8 @@ public sealed partial class BattleCore
         place.DoomDamage = DamageCalculator.Calculate(user, t, use.Move, rng, spread: false, rules: Rules, noCrit: true, typeless: true).Damage;
         // An ally's Helping Hand counts twice here: once in the formula, and once more on what it gives (the original's own doing)
         if (user.Turn.HelpingHand) place.DoomDamage = place.DoomDamage * 15 / 10;
-        Say(use.Data.Name == "Doom Desire" ? $"{user.Name} chose Doom Desire as its destiny!" : $"{user.Name} foresaw an attack!");
+        Say(use.Data.Name == "Doom Desire" ? $"{user.Name} chose Doom Desire as its destiny!" : $"{user.Name} foresaw an attack!")
+            .With(new PlaceConditionChanged(t.Place, PlaceState.AheadAs(use.Data), Up: true));
     }
 
     /// <summary>Healing Wish and Lunar Dance: the user faints so that whoever takes its place comes in whole. They need someone to come in.</summary>

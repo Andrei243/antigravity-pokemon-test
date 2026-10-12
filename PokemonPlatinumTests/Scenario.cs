@@ -54,7 +54,8 @@ internal static class Scenario
 
     /// <summary>
     /// Confirms messages until a menu opens or the battle ends; returns what was said. A question about a move to
-    /// learn is read on like a message, which keeps every move the Pokémon knows.
+    /// learn is read on like a message, which keeps every move the Pokémon knows, and so is a level's panel (plan
+    /// 08 · P5), whose line stays under it through both its pages and is listed once.
     /// </summary>
     public static List<string> Settle(BattleEngine battle)
     {
@@ -62,7 +63,7 @@ internal static class Scenario
         for (int i = 0; i < 400 && !battle.IsBattleOver; i++)
         {
             if (battle.HUD.MenuState is not (BattleMenuState.Message or BattleMenuState.LearnMove)) break;
-            if (battle.IsWaitingForConfirm) said.Add(battle.CurrentMessage);
+            if (battle.IsWaitingForConfirm && battle.LevelUp is not { Page: PokemonPlatinumEngine.UI.Kit.LevelUpPage.Stats }) said.Add(battle.CurrentMessage);
             battle.ConfirmMessage();
             battle.Update(1f / 60f);
         }

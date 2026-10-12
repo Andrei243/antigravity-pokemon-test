@@ -241,17 +241,17 @@
     {
       "x": 9,
       "y": 11,
-      "text": "A guide to the Pokétch's helpers.\nThe Calculator does sums and the Memo Pad takes notes. The Pokémon History recalls the last Pokémon met, and the Berry Searcher shows where Berries grow.\nThe Friendship Checker, the Day-Care Checker and the Matchup Checker tell how Pokémon feel."
+      "text": "A guide to the Pokétch's helpers.\nThe Calculator does sums, the Memo Pad takes notes, the Pokémon History recalls Pokémon met and the Berry Searcher finds Berries. The Friendship Checker, Day-Care Checker and Matchup Checker tell how Pokémon feel."
     },
     {
       "x": 15,
       "y": 11,
-      "text": "A guide to the Pokétch's pastimes.\nThe Pokémon List shows how the team is doing, and the Dot Artist draws.\nThe Coin Toss and the Roulette decide what nobody can, the Color Changer changes the screen's colour, and the Marking Map keeps marks on a map of Sinnoh."
+      "text": "A guide to the Pokétch's pastimes.\nThe Pokémon List shows how the team is doing, and the Dot Artist draws. The Coin Toss and the Roulette decide what nobody can, the Color Changer recolours the screen, and the Marking Map marks a map of Sinnoh."
     },
     {
       "x": 1,
       "y": 4,
-      "text": "A guide to the Pokétch's counters and finders.\nThe Pedometer counts steps, and the Counter counts anything at all.\nThe Dowsing Machine finds what lies hidden, the Trainer Counter follows the Poké Radar's chains, the Link Searcher looks for players nearby, and the Move Tester tries one type against another."
+      "text": "A guide to the Pokétch's counters and finders.\nThe Pedometer counts steps, and the Counter anything at all. The Dowsing Machine finds what lies hidden, the Trainer Counter follows Poké Radar chains, the Link Searcher finds players, and the Move Tester tests types."
     }
   ],
   "npcs": [

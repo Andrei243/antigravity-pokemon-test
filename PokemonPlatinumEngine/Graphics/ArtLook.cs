@@ -524,6 +524,35 @@ internal static class ArtLook
     }
 
     /// <summary>
+    /// The stage's light under Gravity (plan 25 · Y2; style guide, "What lies on the field"), eased in by
+    /// <paramref name="strength"/> (0..1): the key and both ambients lowered to 84 %, the shadows drawn a little
+    /// toward violet and the vignette 0.08 stronger. The look is our own: Platinum draws nothing while Gravity lasts.
+    /// </summary>
+    public static LightRig UnderGravity(LightRig r, float strength)
+    {
+        strength = Math.Clamp(strength, 0f, 1f);
+        if (strength <= 0f) return r;
+        var under = r with
+        {
+            Light = r.Light with
+            {
+                SunColor = r.Light.SunColor * GravityDim,
+                SkyAmbient = r.Light.SkyAmbient * GravityDim,
+                GroundAmbient = r.Light.GroundAmbient * GravityDim
+            },
+            Post = r.Post with
+            {
+                ShadowTint = r.Post.ShadowTint * V(0.97f, 0.94f, 1.05f),
+                Vignette = r.Post.Vignette + 0.08f
+            }
+        };
+        return strength >= 1f ? under : LightRig.Lerp(r, under, strength);
+    }
+
+    /// <summary>How far Gravity lowers the stage's key and ambient light.</summary>
+    public const float GravityDim = 0.84f;
+
+    /// <summary>
     /// Under the trees: less sun, green shade and haze, a stronger vignette. After dark only the green haze is
     /// added, so the Pokémon still read clearly (night battles stay brighter than the night field).
     /// </summary>

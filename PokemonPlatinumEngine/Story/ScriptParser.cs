@@ -341,18 +341,71 @@ public static class ScriptParser
             case "wait":
                 return new Instruction { Op = Op.Wait, Line = line, Seconds = r.Seconds() };
             case "camera":
-                switch (r.OneOf("pan", "release", "shake"))
+            {
+                // A move the script waits for goes on under whatever comes next when its line ends in 'nowait' (plan
+                // 09 · L4): a path and a zoom at once are a path written so and the zoom after it
+                bool NoWait()
+                {
+                    if (!r.PeekIs("nowait")) return false;
+                    r.Next();
+                    return true;
+                }
+                switch (r.OneOf("pan", "release", "shake", "zoom", "follow", "path"))
                 {
                     case "pan":
                     {
                         int x = r.Int("a tile's x"), y = r.Int("a tile's y");
-                        return new Instruction { Op = Op.Camera, Line = line, Camera = CameraMove.Pan, X = x, Y = y, Seconds = r.More ? r.Seconds() : PanSeconds };
+                        float seconds = r.PeekSeconds ? r.Seconds() : PanSeconds;
+                        return new Instruction { Op = Op.Camera, Line = line, Camera = CameraMove.Pan, X = x, Y = y, Seconds = seconds, Option = NoWait() };
                     }
                     case "release":
-                        return new Instruction { Op = Op.Camera, Line = line, Camera = CameraMove.Release, Seconds = r.More ? r.Seconds() : ReleaseSeconds };
+                    {
+                        float seconds = r.PeekSeconds ? r.Seconds() : ReleaseSeconds;
+                        return new Instruction { Op = Op.Camera, Line = line, Camera = CameraMove.Release, Seconds = seconds, Option = NoWait() };
+                    }
+                    case "zoom":
+                    {
+                        // camera zoom <factor> [seconds] [nowait]: the lens alone; 1 is the place's own
+                        float factor = r.Number("a zoom's factor", CameraRig.WidestZoom, CameraRig.TightestZoom);
+                        float seconds = r.PeekSeconds ? r.Seconds() : CameraRig.ZoomSeconds;
+                        return new Instruction { Op = Op.Camera, Line = line, Camera = CameraMove.Zoom, Factor = factor, Seconds = seconds, Option = NoWait() };
+                    }
+                    case "follow":
+                    {
+                        // camera follow <who> [seconds] [nowait]: on someone's feet until told otherwise; the player's are home
+                        string who = r.Who();
+                        float seconds = r.PeekSeconds ? r.Seconds() : CameraRig.FollowSeconds;
+                        return new Instruction { Op = Op.Camera, Line = line, Camera = CameraMove.Follow, Name = who, Seconds = seconds, Option = NoWait() };
+                    }
+                    case "path":
+                    {
+                        // camera path X Y [X Y …] [tiles a second] [nowait]: a number left over after the pairs is the pace
+                        var numbers = new List<string>();
+                        while (r.PeekSeconds) numbers.Add(r.Word("a tile's x"));
+                        if (numbers.Count < 2) throw r.Error("a path goes through at least one tile: its x and its y");
+                        float pace = CameraRig.PathPace;
+                        if (numbers.Count % 2 == 1)
+                        {
+                            string last = numbers[^1];
+                            numbers.RemoveAt(numbers.Count - 1);
+                            if (!float.TryParse(last, NumberStyles.Float, CultureInfo.InvariantCulture, out pace) || pace < CameraRig.SlowestPath || pace > CameraRig.FastestPath)
+                                throw r.Error($"'{last}' is no pace for a path ({CameraRig.SlowestPath.ToString(CultureInfo.InvariantCulture)} to {CameraRig.FastestPath.ToString(CultureInfo.InvariantCulture)} tiles a second): the number left over after the tiles' pairs is the pace");
+                        }
+                        if (numbers.Count / 2 > CameraRig.MostPathTiles) throw r.Error($"a path goes through {CameraRig.MostPathTiles} tiles at the most");
+                        var tiles = new List<(int X, int Y)>();
+                        for (int n = 0; n < numbers.Count; n += 2)
+                        {
+                            if (!int.TryParse(numbers[n], NumberStyles.AllowLeadingSign, CultureInfo.InvariantCulture, out int x)
+                                || !int.TryParse(numbers[n + 1], NumberStyles.AllowLeadingSign, CultureInfo.InvariantCulture, out int y))
+                                throw r.Error($"'{numbers[n]} {numbers[n + 1]}' is not a tile: a path goes through whole tiles");
+                            tiles.Add((x, y));
+                        }
+                        return new Instruction { Op = Op.Camera, Line = line, Camera = CameraMove.Path, Tiles = tiles, Factor = pace, Option = NoWait() };
+                    }
                     default:
                         return new Instruction { Op = Op.Camera, Line = line, Camera = CameraMove.Shake, Seconds = r.More ? r.Seconds() : ShakeSeconds };
                 }
+            }
 
             case "effect":
             {
@@ -761,6 +814,21 @@ public static class ScriptParser
                     Name = r.OneOf("arrive", "may", "next", "walk", "leave", "walker", "grown", "find", "take", "gift", "give")
                 };
 
+            // The camera kit (plan 09 · L4): the cinema bars slid in or away, and the field slowed for a time
+            case "letterbox":
+            {
+                bool on = r.OneOf("on", "off") == "on";
+                return new Instruction { Op = Op.Letterbox, Line = line, Option = on, Seconds = r.More ? r.Seconds() : CameraRig.BarSeconds };
+            }
+            case "slowmo":
+            {
+                // slowmo <share> [seconds]: the field at a share of its pace, back by itself; a share of 1 ends it now
+                float share = r.Number("a share of the field's pace", CameraRig.SlowestPace, 1f);
+                float seconds = r.More ? r.Seconds() : CameraRig.SlowSeconds;
+                if (seconds <= 0f) throw r.Error("slow motion lasts longer than nothing");
+                return new Instruction { Op = Op.SlowMotion, Line = line, Factor = share, Seconds = seconds };
+            }
+
             case "script":
             case "label":
                 throw r.Error($"'{word}' begins a line of its own");
@@ -1013,6 +1081,15 @@ public static class ScriptParser
             string word = Word("a time in seconds");
             if (!float.TryParse(word, NumberStyles.Float, CultureInfo.InvariantCulture, out float value) || value < 0f || value > 60f)
                 throw Error($"'{word}' is not a time in seconds (0 to 60)");
+            return value;
+        }
+
+        /// <summary>A number that may have a fraction, within its bounds: a zoom's factor, slow motion's share of the pace.</summary>
+        public float Number(string expected, float least, float most)
+        {
+            string word = Word(expected);
+            if (!float.TryParse(word, NumberStyles.Float, CultureInfo.InvariantCulture, out float value) || value < least || value > most)
+                throw Error($"'{word}' is not {expected} ({least.ToString(CultureInfo.InvariantCulture)} to {most.ToString(CultureInfo.InvariantCulture)})");
             return value;
         }
 

@@ -2039,3 +2039,38 @@ Platinum's trainers speak before a battle and after it, never during it; from Bl
 | --- | --- | --- | --- |
 | The trainer on screen | Steps back onto the field as the line is read | The line in the message box under the trainer's name; nobody steps back | Plan 11 · C13 |
 | The moments | Some games also a line for the last Pokémon's Mega Evolution or Z-Move | The three above | Those mechanics are not in the game |
+
+## The level-up panel (2026-10-12, plan 08 · P5)
+
+Platinum shows what a level did to a Pokémon's stats (`BattleScript_GetExpTask`, `src/battle/battle_script.c`): the line that tells of the level, then a window with the six stats and what each gained, a press, the six stats as they now stand, a press, and only then the moves the level brings. This game shows the same under both sets of rules, with no option: it is Platinum's own.
+
+- **The order is the original's**: the level's line with its fanfare first (`SEQ_GET_EXP_WAIT_LEVEL_UP_MESSAGE_PRINT` waits for the text to be written, not for a key), the panel over it (`SEQ_GET_EXP_LEVEL_UP_SUMMARY_PRINT_DIFF`, then `_PRINT_TRUE`), and both pages before `SEQ_GET_EXP_CHECK_LEARN_MOVE`. Plan 08's design had the panel before the line; the original's order was kept, and the log's events stand where they stood (`LevelRose`, then the line, then `MoveWanted`).
+- **The six stats** stand in the original's order (its `statParams`: the most HP, Attack, Defense, Sp. Atk, Sp. Def, Speed), which is not the order effort is counted in.
+- **Before and after are read where the original reads them**: the beaten foe's effort is given first (`BattleScript_CalcEffortValues`, at the start of the task), the old stats are the ones the Pokémon had (effort moves no stat until a level reckons them again), and the new ones count that effort. So a level's gains can hold a point the last foe gave.
+- **Either button turns the page**, as the original's A, B, X, Y or a touch do.
+
+| What | Platinum | Here | Why |
+| --- | --- | --- | --- |
+| Several levels from one gain | A level at a time: the bar fills, the line, the window, the level's moves, and round again | One line and one panel for them all: the gains of every level reached, the stats at the last | The rules give a foe's EXP at once and write one `LevelRose` (plan 06 · R10); the shape of the log was not this session's to change |
+| Whose icon | The party's icon beside the window only for a Pokémon that isn't on the field | The icon, the name and the level in the panel's head, for every Pokémon | The panel stands where the player's HP box is, so the name would be nowhere but in the line |
+| A Rare Candy from the bag | The party menu's own window, the gains and then the stats, before the level's moves and its evolution | The battle's panel over the team's cards, on the half of the screen the Pokémon's card isn't on | One panel and one painter for both |
+| The level's line in the bag | In the party menu's message box | In the prompt under the panel; the moves the level taught into a free place are told by a notice once the panel has been read | The bag tells what an item did by notices at the top of the screen, and a notice and the prompt would have said the same line at once |
+
+## The ways into a battle by place and by whom (2026-10-12, plan 09 · L13)
+
+Which way a battle opens is the original's choice (`EncEffects_GetEffectPair` and `sEncEffectsTable` of `src/enc_effects.c`, `CutInEffects_ForBattle` of `src/overlay005/encounter_effect.c`), ported as `BattleMeeting.Row` and `SceneTransition.ForBattle`, with `IntoBattleTests` naming the original's lines beside each row. What the ways look like is our own (style guide, "Life", "Into battle"): only the order of the choice, each way's beats and its length in frames were read.
+
+- **The quirks kept.** The first opposing trainer's class decides for everyone met (`dto->trainer[1]`). At the Battle Frontier the check for a Brain comes before the one for two a side, and both before Team Galactic's. Team Galactic's ways are theirs in a double battle too. Any other double battle is met the double's way, a Gym Leader's or an Elite Four's as well, which the original's own comment calls a bug that no battle of Platinum's meets; Volkner's in the Fight Area is told apart only for its music. A link battle is met the Frontier's way, and a double one the double's. A Frontier Brain met outside the Frontier would be met the Frontier's way. "Stronger" is a first Pokémon of a higher level than the player's first that can fight, never an equal one.
+- **Classes.** The original has a class to each Gym Leader, to each of the Elite Four, to each Commander and to the grunts of either sex; `trainers.json` names them by the class's word (Leader, Elite Four, Commander, Galactic) with the person's name beside it, and `BattleMeeting.ClassRow` reads those words.
+
+| What | Platinum | Here | Why |
+| --- | --- | --- | --- |
+| The ground of a League room, the Distortion World or a Frontier hall | In no case of `CutInEffects_ForBattle`'s switch, which leaves its number unset | The grass's way, as for every ground but water and a cave | `BattleTerrain.Special` stands for all of them, and a way must be picked |
+| The two flashes | Dark for a weaker foe, white for a stronger one, sixteen frames or so | White for everyone, a quarter of a second (plan 04 · G9's) | The first five ways were built so, and a battle on grass must open as it did |
+| The species with ways of their own | Dialga, Palkia, Uxie, Azelf, Arceus; Shaymin, Giratina, Regigigas, Heatran, Darkrai, Rotom, the three Regis | The wild Pokémon's way by place, for now | Their camera is plan 09 · L14's; their rows go into `BattleMeeting.Row` before its check for two at once, as the original's do |
+| The Gym Leaders, the Elite Four, the Champion | A band with their portrait | The diamonds for a Leader, the trainer's way by place for the others, for now | The bands are plan 09 · L15's |
+| A double battle's four pieces | Four balls fly out from the middle to the edges, then a wipe | Four quarters of the dark slide in from the corners | Plan 09's design: the dark itself is the four pieces |
+| A grunt's six shards | Six copies of the team's logo fly in to the middle, turning and shrinking to nothing, then a wipe | Six facets of our own mark fly in from the rim, each with its sixth of the dark behind it, and meet as the mark | The logo is art; decision 6 of plan 09 gives the team a mark of our own (`GalacticMark`) |
+| The boss's mark | The logo fades in, stands, breaks into a mosaic as the picture is wiped | Our mark grows out of the picture's middle as the picture dims, and its dark core swallows it | The same; a mosaic is a smear, which the field's art never is |
+| The water's waver | The whole picture's rows on a sine twelve or fifteen pixels deep, two or three waves down the screen | The scene effects' ripple, four or six texels deep on its own wave of twenty-four rows | One ripple in the field's composite (plan 09 · L11), not a second |
+| The camera | Pulls in or back during most ways | Stands still | The field's upright cards are straightened for one lens and one distance; the ways that are a camera move are L14's |

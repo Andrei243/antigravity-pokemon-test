@@ -313,6 +313,15 @@ public class SpearPillarAndTheDistortionWorldTests
         Assert.Contains("camera Pan 31 26", scene.Log);
         Assert.Contains(scene.Transcript, l => l.Speaker == "Cyrus" && l.Text.Contains("Red Chain"));
         Assert.Contains(scene.Transcript, l => l.Speaker == null && l.Text.Contains("sank into the floor"));
+        // The camera kit frames it (plan 09 · L4): the bars come in before the camera goes to the altar, it drifts up
+        // and its lens opens as the two are called, each one's coming is slowed, the lens closes for the shadow, and
+        // the release that ends the scene comes after all of it and before the way onto the torn pillar
+        var kit = scene.Log.Where(l => l.StartsWith("camera") || l.StartsWith("letterbox") || l.StartsWith("slowmo")).Where(l => l != "camera Shake").ToList();
+        Assert.Equal(new[]
+        {
+            "letterbox on", "camera Pan 31 26", "camera Path 31 25 at 1", "camera Zoom 0.85", "slowmo 0.4", "slowmo 0.4", "camera Zoom 1.15", "camera Release"
+        }, kit.Take(8));
+        Assert.True(scene.Log.IndexOf("camera Release") < scene.Log.IndexOf("warp SpearPillarDistorted 30 30"));
 
         // What the original sets as the summit is torn
         Assert.Equal(3, game.Story.Var("VAR_SPEAR_PILLAR_STATE"));
@@ -340,6 +349,8 @@ public class SpearPillarAndTheDistortionWorldTests
         Assert.Equal(1, game.Story.Var("VAR_SPEAR_PILLAR_STATE"));
         Assert.False(game.Story.Has("FLAG_SPEAR_PILLAR_IS_DISTORTED"));
         Assert.DoesNotContain(scene.Log, l => l.StartsWith("warp "));
+        // (The scene ended before its bars, its lens or its slow motion: nothing of the camera kit is left behind)
+        Assert.DoesNotContain(scene.Log, l => l.StartsWith("letterbox") || l.StartsWith("slowmo") || l.StartsWith("camera Zoom") || l.StartsWith("camera Path"));
         // Mars had stepped in: coming up again finds both where they stand, the rival out of sight, the trigger waiting
         Assert.Equal((32, 32), (game.Maps["SpearPillar"].Everyone.First(n => n.Key == "mars").GridX, game.Maps["SpearPillar"].Everyone.First(n => n.Key == "mars").GridY));
         game.Arrive("SpearPillar", 31, 49);

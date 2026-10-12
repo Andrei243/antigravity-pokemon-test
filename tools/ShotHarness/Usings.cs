@@ -3,6 +3,7 @@ global using Raylib_cs;
 global using PokemonPlatinumEngine.Battle;
 global using PokemonPlatinumEngine.Battle.Sim;
 global using PokemonPlatinumEngine.Core;
+global using PokemonPlatinumEngine.Core.Diagnostics;
 global using PokemonPlatinumEngine.Data;
 global using PokemonPlatinumEngine.Graphics;
 global using PokemonPlatinumEngine.Models;

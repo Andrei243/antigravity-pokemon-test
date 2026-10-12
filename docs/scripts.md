@@ -242,7 +242,8 @@ on leaving any place), `FLAG_FLASH_ACTIVE` and `FLAG_DEFOG_ACTIVE` (cleared on g
 | `warp "Map" X Y [up]` | Through a fade to a tile of another map. |
 | `fade out [0.4]`, `fade in` | The field to black and back. Text shows over the black. A script that ends in the dark is brought back. |
 | `wait 0.5` | |
-| `camera pan X Y [0.8]`, `camera release [0.6]`, `camera shake [0.5]` | Sends the camera to look at a tile, brings it back, shakes the picture. |
+| `camera pan X Y [0.8]`, `camera release [0.6]`, `camera shake [0.5]` | Sends the camera to look at a tile, brings it back, shakes the picture. A pan and a release are waited for (a shake goes on under whatever comes next), and the release brings back everything the camera kit was told as well. |
+| `camera zoom 1.5 [0.8]`, `camera follow <who> [0.8]`, `camera path X Y X Y … [4]`, `letterbox on\|off [0.4]`, `slowmo 0.25 [2]` | The camera kit (plan 09 · L4): the lens, a camera kept on someone, a path through tiles at a pace, the cinema bars, the field slowed for a time. "The camera kit", below, has each. |
 | `effect burst X Y [seconds] [wait\|hold]`, `effect shadow X Y [2] [right] [wait\|hold]`, `effect stop X Y` | A scene effect on a tile (plan 09 · L11; style guide, "Life", "Scene effects"), with its sound: `burst` (light thrown out, a white flash over the picture), `beam` (a column of light), `rift` (a tear in the air), `shadow` (a dark shape crossing the ground the way it is sent, east if none is given; only a shadow is sent a way), `ripple` (the picture wavering) or `sparkles`. It plays its own length (0.6, 1.5, 3, 2, 1.2 and 1.5 s) or the time given under whatever comes next; `wait` waits for it to end, `hold` plays it until `effect stop` on its tile (a held one is given no time). Coming to another place clears every effect. |
 
 ### Sound
@@ -714,6 +715,45 @@ names the Pokémon last asked about, or the one that walks along.
 | `amity find` | Speaking to it: `RESULT` 0 with fewer than two hundred steps since the last find or nowhere to put what it has, 1 a berry, 2 an accessory, which `{thing}` names. The count starts again and the next find is decided. |
 | `amity gift` | What the man offers today: `RESULT` 0 five of a berry, 1 an accessory; `{thing}` names it. |
 | `amity take`, `amity give` | What was found, or offered, goes into the bag or the Fashion Case with the item's fanfare and the lines `give` and `giveaccessory` say: `RESULT` 0 when the Fashion Case has no room for it. |
+
+### The camera kit
+
+Plan 09 · L4; style guide, "Story scenes", "The camera kit". The rules are `Overworld/CameraRig.cs`: where the field's
+camera looks, its lens, the cinema bars and the field's pace as one state, over whatever camera the place has (the
+open country's, a cave's, a room's). Every move eases out of where it is and into where it goes. A move of the
+camera's own is waited for, as a pan always was; ended in `nowait` it goes on under whatever comes next, which is how
+two are played at once (a path written `nowait`, and the zoom after it). The bars and slow motion never hold the
+script up.
+
+| Command | What it does |
+|---|---|
+| `camera pan X Y [0.8] [nowait]` | The camera looks at a tile's middle instead of the player, and stays. From a spot it was sent to already it eases on from there. |
+| `camera follow <who> [0.8] [nowait]` | The camera gets onto someone's feet over that time and keeps on them wherever they walk. `camera follow player` brings it back to the player and leaves the lens, the bars and the pace as they are. |
+| `camera path X Y [X Y …] [4] [nowait]` | The camera travels through the middles of up to eight tiles, from where it looks now, and stays at the last. The number left over after the pairs is its pace in tiles a second (0.25 to 16, 4 unless given), which it gathers over half a second and loses over the last half second. The script waits as long as the path takes. |
+| `camera zoom 1.5 [0.8] [nowait]` | The lens alone, to a factor of 0.5 to 4: 1 is the place's own, 2 shows everything twice as large, 0.5 twice as much ground. The pitch and the distance don't change, so nothing leans. In a room, which is seen whole, a zoom in lets the camera look where it is sent as far as the zoom leaves room. |
+| `letterbox on [0.4]`, `letterbox off [0.4]` | The cinema bars slide in or away (120 units at the top and the bottom): over the field and a script's black screen, under the text box. |
+| `slowmo 0.25 [2]` | The field runs at that share of its pace (0.1 to 1) for that many seconds (2 unless given) and is back by itself; `slowmo 1` ends it now. It slows people's steps and gestures, the player's, life, weather and a scene's effects; never the camera, the bars, the text, a bubble, a fade or the script's own waits, so `wait 2` is two seconds at any pace. |
+| `camera release [0.6] [nowait]` | Everything back over that time: the camera to the player, the lens to the place's own, the bars away, time to its pace. A script that ends, however it ends, releases what it left; so does a battle lost. |
+
+A reveal, as a chapter writes it: the bars come in while the camera drifts up to the altar, the lens closes on what
+appears there, and the moment itself is slowed.
+
+```
+script Reveal
+  letterbox on
+  camera path 31 26 31 23 1.5 nowait
+  say "Everything is ready."
+  camera zoom 1.4 2 nowait
+  effect rift 29 21 2
+  wait 0.8
+  slowmo 0.3 1.5
+  effect burst 29 21
+  show dialga
+  wait 1.5
+  say "At last."
+  camera release 1.0
+  end
+```
 
 ## Who is on the map
 

@@ -178,7 +178,9 @@ public sealed class ScriptLibrary
             // "pair" is the second of two trainers who came together, and a battle "with partner" is beside whoever
             // travels with the player: the game's own, named by nobody's file (plan 02 · S6)
             if (i.Op is Op.Battle or Op.Face or Op.Walk or Op.Move or Op.Emote or Op.Show or Op.Hide or Op.Place
-                || i.Op == Op.Partner && i.Option)
+                || i.Op == Op.Partner && i.Option
+                // (whoever the camera is told to keep on, plan 09 · L4)
+                || i.Op == Op.Camera && i.Camera == CameraMove.Follow)
             {
                 if (i.Name is not ("player" or "self" or "pair")) yield return (i.Name, i.Line);
                 if (i.Op is Op.Face or Op.Battle && i.Other is not ("" or "player" or "self" or "pair")) yield return (i.Other, i.Line);

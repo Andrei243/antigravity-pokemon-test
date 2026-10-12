@@ -227,6 +227,18 @@ internal static partial class ModernUi
         MoneyRight(r.X + r.Width - 56, r.Y + 350, each * quantity, 60, Ink);
     }
 
+    /// <summary>
+    /// The level-up panel of a Rare Candy over the team's cards (plan 08 · P5; style guide, "Battle panels", "A
+    /// level"): the battle's own panel, standing 22 above the prompt on the half of the screen the Pokémon's card
+    /// isn't on, so the card stays in view with its new level and hit points.
+    /// </summary>
+    /// <param name="cardIndex">The Pokémon's place in the team: even places are the left column's cards.</param>
+    public static void LevelUpOverParty(int sw, int cardIndex, LevelUpPanel panel)
+    {
+        bool cardOnTheLeft = cardIndex % 2 == 0;
+        LevelUp(cardOnTheLeft ? sw - 64 : 64 + 880, 920 - 22, panel);
+    }
+
     /// <summary>"Throw away how many?" over the dimmed bag (plan 06 · R11): the item and a stepper.</summary>
     public static void TossBox(int sw, int sh, ItemData item, int count)
     {

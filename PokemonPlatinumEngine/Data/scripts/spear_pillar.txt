@@ -22,6 +22,11 @@
 # opening and a burst of light for each of Dialga and Palkia, who step out as Pokémon of the map, the air wavering and
 # the shadow sweeping over the altar (plan 09 · L11's effects), their cries, the camera's shake, the script's fade and
 # the sounds the bank has. The Dynamax beat a later mechanic would bring here (decision 06 · 2) is left out.
+#
+# The camera kit (plan 09 · L4) frames it: the cinema bars come in as the camera goes to the altar, the camera drifts a
+# tile up it and its lens opens a little as the two are called, so that both stand clear of the upper bar, the moment
+# each steps out is slowed, and the lens closes on the altar as the shadow comes over it. None of it is waited for, so
+# the scene's beats and its time are what they were; the release that ended the scene brings all of it back.
 
 
 # Arriving: the commanders back where they stand, for a scene a lost battle cut short.
@@ -146,6 +151,7 @@ label Won
 
   # At the altar (SpearPillar_Cyrus)
   face player up
+  letterbox on
   camera pan 31 26 1.4
   speaker "Cyrus"
   say "Everything is ready. Here everything ends, and here everything begins."
@@ -156,10 +162,13 @@ label Won
   wait 0.8
   camera shake 0.8
   say "Come. Lord of time, whom the myths call Dialga!"
+  camera path 31 25 1 nowait
+  camera zoom 0.85 1.6 nowait
   effect rift 29 21 2
   wait 0.8
   sound "thunder_rumble"
   camera shake 1.0
+  slowmo 0.4 1.0
   effect burst 29 21
   show dialga
   cry "Dialga"
@@ -169,6 +178,7 @@ label Won
   wait 0.8
   sound "thunder_rumble"
   camera shake 1.0
+  slowmo 0.4 1.0
   effect burst 33 21
   show palkia
   cry "Palkia"
@@ -189,6 +199,7 @@ label Won
   hide dialga
   hide palkia
   fade in 0.5
+  camera zoom 1.15 1.2 nowait
   effect shadow 31 25 1.6 down
   camera shake 1.2
   say "A Pokémon that comes as a shadow... So there was a third, set against the other two. Interesting."

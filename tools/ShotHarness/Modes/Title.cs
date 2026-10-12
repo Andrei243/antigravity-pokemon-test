@@ -75,6 +75,67 @@ partial class Harness
         Seconds(1f);
         Console.WriteLine($"after the notice: phase {recovered.Phase}, entries {string.Join(", ", recovered.Entries)}");
 
+        // The attract loop (plan 09 · L4), last so that nothing before it moves: the title left alone for its half
+        // minute plays the opening again, without the notice; a button there comes back to the title, and on to the menu
+        var alone = NewTitle(null);
+        alone.PressConfirm();
+        Seconds(TitleScreen.IdleTime - 0.5f); Shot("title_16_idle_before_the_loop");
+        Console.WriteLine($"left alone for {TitleScreen.IdleTime - 0.5f:0.0} s: phase {alone.Phase}");
+        Seconds(0.5f + 1.9f); Shot("title_17_loop_journey_twinleaf");
+        Console.WriteLine($"... and for {TitleScreen.IdleTime + 1.9f:0.0} s: phase {alone.Phase}");
+        Seconds(TitleScreen.SegmentTime * 2f); Shot("title_18_loop_journey_sandgem");
+        Seconds(TitleScreen.SegmentTime - 1.9f + 1.9f); Shot("title_19_loop_reveal");
+        Console.WriteLine($"the opening played again: phase {alone.Phase}");
+        Seconds(TitleScreen.RevealTime + TitleScreen.IdleTime - 1.9f + 2.5f);
+        Console.WriteLine($"left alone again: phase {alone.Phase}");
+        alone.PressConfirm();
+        Seconds(0.1f); Shot("title_20_loop_skipped");
+        Console.WriteLine($"a button in it: phase {alone.Phase}");
+        alone.PressConfirm();
+        Seconds(1f);
+        Console.WriteLine($"... and another: phase {alone.Phase}, entries {string.Join(", ", alone.Entries)}");
+
+        // The start after a crash (plan 16 · T3), after everything else so that nothing before it moves: the title says
+        // once that the game stopped, that the save is intact, where the report is and that the game as it stood was
+        // kept; and, for a game that had never been saved and stopped before one began, the short of it. The notes
+        // are made up here: the `crash` mode leaves a real one and shoots the title that takes it up
+        var when = new DateTime(2026, 6, 1, 12, 0, 0);
+        var crashed = NewTitle(save, TitleNotice.ForCrash(new CrashNote($"{CrashReport.FolderName}/{CrashReport.FileNameAt(when)}", true, when), SaveLoad.Ok));
+        crashed.PressConfirm();
+        Seconds(1.2f);
+        crashed.PressConfirm();
+        Seconds(0.5f); Shot("title_21_notice_crashed");
+        Console.WriteLine($"after a crash: \"{crashed.Notice?.Heading}\": {crashed.Notice?.Body}");
+        crashed.PressConfirm();
+        Seconds(1f);
+        Console.WriteLine($"after the notice: phase {crashed.Phase}, entries {string.Join(", ", crashed.Entries)}");
+
+        var early = new TitleScreen(null, TitleNotice.ForCrash(new CrashNote($"{CrashReport.FolderName}/{CrashReport.FileNameAt(when)}", false, when), SaveLoad.None),
+            TitleNotice.ForSave(SaveLoad.None));
+        game.Title = early;
+        game.State = GameState.Title;
+        early.PressConfirm();
+        Seconds(1.2f);
+        early.PressConfirm();
+        Seconds(0.5f); Shot("title_22_notice_crashed_no_save");
+        Console.WriteLine($"after a crash with nothing saved: {early.Notice?.Body}");
+
+        // And with a save that couldn't be read either: the crash's notice first, then the save's own
+        var both = new TitleScreen(save, TitleNotice.ForCrash(new CrashNote($"{CrashReport.FolderName}/{CrashReport.FileNameAt(when)}", true, when), SaveLoad.Recovered),
+            TitleNotice.ForSave(SaveLoad.Recovered));
+        game.Title = both;
+        both.PressConfirm();
+        Seconds(1.2f);
+        both.PressConfirm();
+        Seconds(0.5f); Shot("title_23_notice_crashed_then_recovered");
+        Console.WriteLine($"after a crash and a damaged save: first \"{both.Notice?.Heading}\": {both.Notice?.Body}");
+        both.PressConfirm();
+        Seconds(0.5f);
+        Console.WriteLine($"... then \"{both.Notice?.Heading}\", phase {both.Phase}");
+        both.PressConfirm();
+        Seconds(0.5f);
+        Console.WriteLine($"... then phase {both.Phase}");
+
         game.State = GameState.Overworld;
     }
 }
