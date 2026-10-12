@@ -183,3 +183,101 @@ public sealed record TrainerReacts(Place Place, TrainerCue Cue) : BattleEvent;
 public sealed record Won : BattleEvent;
 
 public sealed record Ended(BattleResult Result) : BattleEvent;
+
+/// <summary>
+/// The turn's moments (plan 25 · Y3): the original's battle animations that are not moves
+/// (<c>generated/battle_sub_animations.txt</c>), but those drawn by other events (a stat's boost and drop, HP
+/// restored, a condition given, the weathers, the doll's swaps) and those of plan 09 (shiny; a condition that lasts
+/// on the model). Each is named after its original, <c>BATTLE_ANIMATION_…</c>, and written where the original plays
+/// it (<c>BtlCmd_PlayBattleAnimation</c> in a subscript of <c>res/battle/scripts/subscripts</c>, named beside each).
+/// </summary>
+public enum BattleMoment
+{
+    /// <summary><c>subscript_sleeping</c>: asleep as it would have moved.</summary>
+    Asleep,
+
+    /// <summary><c>subscript_poison_damage</c>: poison biting at the turn's end.</summary>
+    Poisoned,
+
+    /// <summary><c>subscript_burn_damage</c>.</summary>
+    Burned,
+
+    /// <summary><c>subscript_frozen</c>: frozen solid as it would have moved.</summary>
+    Frozen,
+
+    /// <summary><c>subscript_fully_paralyzed</c>.</summary>
+    Paralyzed,
+
+    /// <summary><c>subscript_confused</c>, <c>subscript_hurt_self_in_confusion</c>: confused as it tries to move.</summary>
+    Confused,
+
+    /// <summary><c>subscript_infatuated</c>: in love as it tries to move.</summary>
+    Infatuated,
+
+    /// <summary><c>Task_GetExp</c>, <c>SEQ_GET_EXP_CHECK_LEVEL_UP</c>: a Pokémon on the field reaches a level.</summary>
+    LevelUp,
+
+    /// <summary>An item from the bag used on a Pokémon on the field (<c>BtlCmd_UseBagItem</c>).</summary>
+    BagItem,
+
+    /// <summary><c>subscript_escape_item</c>: a Poké Doll or a Fluffy Tail gets the player away.</summary>
+    EscapeItem,
+
+    /// <summary><c>subscript_safari_throw_bait</c>: the Great Marsh's Pokémon as the bait lands.</summary>
+    Happy,
+
+    /// <summary><c>subscript_safari_throw_bait</c>: and as it eats.</summary>
+    Eating,
+
+    /// <summary><c>subscript_safari_throw_rock</c>: the Great Marsh's Pokémon as the mud lands.</summary>
+    Angry,
+
+    /// <summary><c>subscript_curse_damage</c>.</summary>
+    Curse,
+
+    /// <summary><c>subscript_nightmare_effect</c>.</summary>
+    Nightmare,
+
+    /// <summary><c>subscript_leech_seed_effect</c>: between the seeded Pokémon and the place the seed was sown from.</summary>
+    LeechSeed,
+
+    /// <summary><c>subscript_ingrain_heal</c>.</summary>
+    Ingrain,
+
+    /// <summary><c>subscript_bind_effect</c>, by the move that binds: Bind, and any move it has no animation of its own for.</summary>
+    Bind,
+    Wrap,
+    FireSpin,
+    MagmaStorm,
+    Clamp,
+    Whirlpool,
+    SandTomb,
+
+    /// <summary>
+    /// The original's <c>BATTLE_ANIMATION_HELD_ITEM</c>: a held item goes off (Leftovers, a berry eaten, a Focus Sash,
+    /// a Quick Claw…). A line that only names an item (Frisk, Knock Off, Trick) carries its <see cref="ItemShown"/>
+    /// and no moment, which is why this is one: plan 12 · Q11's event is wider than the animation.
+    /// </summary>
+    HeldItem
+}
+
+/// <summary>
+/// A moment of the turn plays on the Pokémon in a place (plan 25 · Y3), on the line that tells of it. Where the line
+/// also changes that Pokémon's HP, the moment comes first and the bar then drains or fills with no flinch and no
+/// sound of a hit, as the original skips the sprite's blink (<c>SYSCTL_SKIP_SPRITE_BLINK</c>). The rules change
+/// nothing by it and never ask whether it can be seen: the screen decides that
+/// (<c>BattleSystem_ShouldShowStatusEffect</c>).
+/// </summary>
+/// <param name="From">
+/// The other end of a moment between two places: for Leech Seed, the place the seed was sown from, which is where
+/// the sapped health goes. Null for a moment on one Pokémon.
+/// </param>
+public sealed record MomentShown(Place Place, BattleMoment Moment, Place? From = null) : BattleEvent;
+
+/// <summary>
+/// An attack sent ahead lands (Future Sight, Doom Desire; plan 25 · Y3): its move's own effect in its landing half,
+/// from the place it was sent from to the place it was aimed at, on the line that says the attack was taken, once
+/// its accuracy has been rolled (the original's <c>PlayMoveAnimationOnMons</c> in
+/// <c>subscript_future_sight_damage</c>, which plays nothing when the attack fails).
+/// </summary>
+public sealed record AheadLanded(string Move, PokemonType Type, MoveCategory Category, Place From, Place To) : BattleEvent;

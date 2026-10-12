@@ -190,7 +190,8 @@ internal sealed class BattleCamera
         {
             if (move.OnSelf) return (Close(places, move.FromSide, move.FromSlot, 2.9f), ShotKind.Self, move);
             float cut = move.Category == MoveCategory.Status ? 0.3f : CutTime;
-            if (move.Age < cut) return (Close(places, move.FromSide, move.FromSlot, 3.0f), ShotKind.Attacker, move);
+            // An attack sent ahead is watched where it lands from the start: nobody need stand where it was sent from (plan 25 · Y3)
+            if (move.Age < cut && !move.Arriving) return (Close(places, move.FromSide, move.FromSlot, 3.0f), ShotKind.Attacker, move);
             var targets = TargetsOf(anim, move);
             var target = TargetShot(places, targets, move.Category == MoveCategory.Status ? 3.4f : 3.0f);
             if (move.Critical && move.Age >= BattleAnimator.ImpactTime && move.Age < BattleAnimator.ImpactTime + 0.4f)

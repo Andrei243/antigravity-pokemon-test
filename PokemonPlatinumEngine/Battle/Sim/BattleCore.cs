@@ -1125,7 +1125,9 @@ public sealed partial class BattleCore : IBattleContext
         // Evolution waits for the battle to end (see LeveledUp)
         if (!leveledUp.Contains(p)) leveledUp.Add(p);
         Emit(new LevelRose(p, p.Level, before, p.Stats()));
-        Say($"{p.DisplayName} grew to Lv. {p.Level}!");
+        var grew = Say($"{p.DisplayName} grew to Lv. {p.Level}!");
+        // Only a Pokémon standing on the field plays the level's animation (SEQ_GET_EXP_CHECK_LEVEL_UP; plan 25 · Y3)
+        if (PlayerSlots.FirstOrDefault(b => b.IsActive && b.Pokemon == p) is { } standing) grew.With(Moment(standing, BattleMoment.LevelUp));
         foreach (string move in learned) Say($"{p.DisplayName} learned {move}!");
         foreach (string move in wanted) Emit(new MoveWanted(p, move));
     }

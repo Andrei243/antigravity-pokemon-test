@@ -107,6 +107,8 @@ partial class Harness
         SpeakingMode();
         // What lies on the field (plan 25 · Y2, Modes/ConditionsField.cs): last, so the shots before it stay as they were
         FieldLookMode();
+        // The turn's moments (plan 25 · Y3, Modes/ConditionsMoments.cs), after it for the same reason
+        MomentsMode();
     }
 
     // The weather and the doll (plan 25 · Y1): a battle in each of the five weathers at its menu (96_weather_<kind>)

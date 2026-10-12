@@ -85,8 +85,10 @@ public sealed partial class BattleCore
         var user = act.User;
         if (!user.Volatile.ItemWentOff) return;
         user.Volatile.ItemWentOff = false;
+        // The claw's animation with no line (plan 25 · Y3): a moment between lines, unless its holder is the last to act anyway
+        if (act.MovesFirst && waiting.Count > 0 && BattleEffects.HoldEffectOf(user) == "SometimesPriority") Emit(Moment(user, BattleMoment.HeldItem));
         if (!act.MovesFirst || BattleEffects.ItemInHand(user) is not { HoldEffect: "PinchPriority" } berry) return;
-        if (waiting.Count > 0) Say($"{user.Name}'s {ItemOf(user)} let it move first!");
+        if (waiting.Count > 0) Say($"{user.Name}'s {ItemAtWork(user)} let it move first!");
         ConsumeItem(user);
     }
 
@@ -191,21 +193,21 @@ public sealed partial class BattleCore
             case "RecoilPhysical":
                 if (user.IsActive && !Has(user, "Magic Guard") && !leaving && physical)
                 {
-                    LoseHp(user, Formulas.Divide(user.Pokemon!.MaxHP, param), $"{user.Name} was hurt by {t.Name}'s {ItemOf(t)}!");
+                    LoseHp(user, Formulas.Divide(user.Pokemon!.MaxHP, param), $"{user.Name} was hurt by {t.Name}'s {ItemAtWork(t)}!");
                     ConsumeItem(t);
                 }
                 break;
             case "RecoilSpecial":
                 if (user.IsActive && !Has(user, "Magic Guard") && !physical)
                 {
-                    LoseHp(user, Formulas.Divide(user.Pokemon!.MaxHP, param), $"{user.Name} was hurt by {t.Name}'s {ItemOf(t)}!");
+                    LoseHp(user, Formulas.Divide(user.Pokemon!.MaxHP, param), $"{user.Name} was hurt by {t.Name}'s {ItemAtWork(t)}!");
                     ConsumeItem(t);
                 }
                 break;
             case "HpRestoreSe":
                 if (t.IsActive && hit.Damage.IsSuperEffective)
                 {
-                    RestoreHp(t, Formulas.Divide(t.Pokemon!.MaxHP, param), $"{t.Name} restored its health using its {ItemOf(t)}!");
+                    RestoreHp(t, Formulas.Divide(t.Pokemon!.MaxHP, param), $"{t.Name} restored its health using its {ItemAtWork(t)}!");
                     ConsumeItem(t);
                 }
                 break;
@@ -231,7 +233,7 @@ public sealed partial class BattleCore
         var theirs = by.Pokemon!.Gender;
         if (mine == theirs || mine == Gender.Genderless || theirs == Gender.Genderless || by.Volatile.InLoveWith != null) return;
         by.Volatile.InLoveWith = smitten.Place;
-        Say($"{smitten.Name}'s {ItemOf(smitten)} made {by.Name} fall in love!");
+        Say($"{smitten.Name}'s {ItemAtWork(smitten)} made {by.Name} fall in love!");
     }
 
     // ---------------------------------------------------------------- the prize
@@ -379,10 +381,12 @@ public sealed partial class BattleCore
             return;
         }
 
-        Say($"{user.Trainer?.FullTitle ?? playerName} used the {item.Name}!");
+        var used = Say($"{user.Trainer?.FullTitle ?? playerName} used the {item.Name}!");
         if (item.BattleUse == "Escaping")
         {
             if (IsTrainerBattle) return;
+            // subscript_escape_item plays its animation on the player's Pokémon before the line that follows (plan 25 · Y3)
+            used.With(Moment(user, BattleMoment.EscapeItem));
             Say("Got away safely!").With(new GotAway());
             End(BattleResult.PlayerRan);
             return;
@@ -390,6 +394,8 @@ public sealed partial class BattleCore
 
         var (target, where) = TargetOfItem(user, act.Choice);
         if (target == null) return;
+        // An item used on a Pokémon that stands on the field shows on it; one used on the bench has nowhere to show
+        if (where != null) used.With(Moment(where, BattleMoment.BagItem));
         var use = item.Use ?? new Dictionary<string, int>();
         string name = where?.Name ?? target.DisplayName;
 

@@ -114,6 +114,24 @@ Every sound effect of the game (plan 05 · A3), what it stands for in the origin
 | `weather_fog` | — | A battle opens in deep fog, and each turn the fog stays. |
 | `substitute_in` | — | A Substitute's doll drops in front of its Pokémon, made or passed by Baton Pass (plan 25 · Y1). |
 | `substitute_out` | — | A Substitute's doll fades in a puff: broken, its Pokémon fainting or called back. |
+| `moment_infatuated` | — | A Pokémon in love as it tries to move (plan 25 · Y3, the original's `BATTLE_ANIMATION_INFATUATED`): two soft bells over a note that wavers. |
+| `moment_bag_item` | — | An item from the bag used on a Pokémon that stands on the field, with the line that says who used it (where the original's `subscript_use_potion` plays a sound of its own, number 1516; `heal` is still heard on the line after, as the HP comes back): a quick chime climbing. |
+| `moment_escape_item` | — | A Poké Doll or a Fluffy Tail used: a puff of smoke, before `run_away` on the line after (`BATTLE_ANIMATION_ITEM_ESCAPE`). |
+| `moment_held_item` | — | A held item goes off (`BATTLE_ANIMATION_HELD_ITEM`): Leftovers, Black Sludge, a Sticky Barb, a berry eaten, a herb, a Focus Sash or Band, a Quick Claw or Custap Berry, a Power Herb, a Destiny Knot, a Toxic or Flame Orb. A ding and its answer. |
+| `moment_happy` | — | The Great Marsh's Pokémon as bait lands by it (`BATTLE_ANIMATION_HAPPY`): three chirps hopping up. |
+| `moment_eating` | — | The Great Marsh's Pokémon eating the bait (`BATTLE_ANIMATION_EATING`): three bites. |
+| `moment_angry` | — | The Great Marsh's Pokémon as mud hits it (`BATTLE_ANIMATION_ANGRY`): steam let off over a growl. |
+| `moment_curse` | — | A curse takes its quarter at the turn's end (`BATTLE_ANIMATION_DAMAGE_CURSE`): something driven in a third of a second in, as the mark lands, and a low moan. |
+| `moment_nightmare` | — | A nightmare takes its quarter from a sleeper (`BATTLE_ANIMATION_DAMAGE_NIGHTMARE`): two low notes grating, a whisper, a cold bell as it bites. |
+| `moment_leech_seed` | — | Leech Seed saps a Pokémon's health (`BATTLE_ANIMATION_DAMAGE_LEECH_SEED`): a breath rising and six motes leaving, each a little higher. |
+| `moment_ingrain` | — | Roots draw up a sixteenth (`BATTLE_ANIMATION_DAMAGE_INGRAIN`): the ground creaking, a rising note, a soft bell. |
+| `moment_bind` | — | Bind or Wrap tightens (`BATTLE_ANIMATION_DAMAGE_BIND`, `_WRAP`): a creak rising, a knock, and the grip let go. |
+| `moment_fire_spin` | — | Fire Spin or Magma Storm whirls round a Pokémon (`BATTLE_ANIMATION_DAMAGE_FIRE_SPIN`, `_MAGMA_STORM`): a roar that comes and goes, crackling. |
+| `moment_clamp` | — | Clamp snaps shut (`BATTLE_ANIMATION_DAMAGE_CLAMP`): a rush inward and a hard clack. |
+| `moment_whirlpool` | — | Whirlpool turns under a Pokémon (`BATTLE_ANIMATION_DAMAGE_WHIRLPOOL`): a wash that swells and sinks, bubbling. |
+| `moment_sand_tomb` | — | Sand Tomb draws a Pokémon down (`BATTLE_ANIMATION_DAMAGE_SAND_TOMB`): a hiss sinking over a low rumble. |
+
+**The turn's moments** (plan 25 · Y3; `SoundBank.MomentSound`): each moment of the turn has a sound, heard as its line appears and only where its mark is seen (none on a Pokémon behind a Substitute or out of sight). A condition as it plays on its turn sounds as it did when it was given: `status_sleep` for a Pokémon fast asleep, `status_poison` and `status_burn` as poison and a burn bite at the turn's end, `status_freeze` frozen solid, `status_paralysis` fully paralysed, `status_confusion` confused. A level has none of its own: its fanfare plays with it. An HP change that comes with a moment makes no sound: no `hit_normal` for a poison tick, no `heal` for Leftovers. An attack sent ahead (Future Sight, Doom Desire) lands with its type's `move_…` sound, from the side it lands on. The original plays its animations' own sounds; these stand for no named one.
 
 ## Moves
 
