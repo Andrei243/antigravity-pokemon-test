@@ -76,8 +76,8 @@ public sealed class SubstituteView
     public int Seed { get; internal set; }
 }
 
-/// <summary>What an effect cue shows: a move, something that happens to one Pokémon, or the weather over the field.</summary>
-public enum CueKind { Move, StatUp, StatDown, Heal, Status, Seals, Weather }
+/// <summary>What an effect cue shows: a move, something that happens to one Pokémon, the weather over the field, or a moment of the turn (plan 25 · Y3).</summary>
+public enum CueKind { Move, StatUp, StatDown, Heal, Status, Seals, Weather, Moment }
 
 /// <summary>
 /// An effect for the renderer to play (plan 04 · G8): a move from one place to another and how it landed, or a
@@ -101,6 +101,22 @@ public sealed class EffectCue
 
     /// <summary>For <see cref="CueKind.Weather"/> (plan 25 · Y1): the weather that begins or goes on.</summary>
     public Sim.BattleWeather Weather { get; init; }
+
+    /// <summary>
+    /// For <see cref="CueKind.Moment"/> (plan 25 · Y3): which moment of the turn. It plays on the Pokémon in the
+    /// cue's "to" place; a moment between two places (Leech Seed) has its other end in the "from" place, and any
+    /// other has both the same.
+    /// </summary>
+    public Sim.BattleMoment Moment { get; init; }
+
+    /// <summary>For the held item's moment: the item that went off is a berry, eaten; anything else only glints.</summary>
+    public bool Berry { get; init; }
+
+    /// <summary>
+    /// For <see cref="CueKind.Move"/>: an attack sent ahead landing (Future Sight, Doom Desire), which plays its
+    /// move's landing half from the place it was sent from, where nobody need stand any more.
+    /// </summary>
+    public bool Arriving { get; init; }
 
     public BattleSide FromSide { get; init; }
     public int FromSlot { get; init; }
@@ -132,6 +148,7 @@ public sealed class EffectCue
         CueKind.Move => BattleAnimator.EffectTime,
         CueKind.Seals => BattleAnimator.SealTime,
         CueKind.Weather => BattleAnimator.WeatherCueTime,
+        CueKind.Moment => BattleAnimator.MomentTime,
         _ => BattleAnimator.MarkTime
     };
 
@@ -187,6 +204,12 @@ public sealed class BattleAnimator
 
     /// <summary>How long a stat change, a heal or a status condition shows on its Pokémon.</summary>
     public const float MarkTime = 1.1f;
+
+    /// <summary>
+    /// How long a moment of the turn plays (plan 25 · Y3): as long as any other mark on a Pokémon. It lands
+    /// <see cref="ImpactTime"/> in, which is when the HP of a moment that hurts or heals begins to move.
+    /// </summary>
+    public const float MomentTime = MarkTime;
 
     /// <summary>
     /// The weather in battle (plan 25 · Y1): its cue plays this long as it begins and on each turn it goes on, and
@@ -429,8 +452,22 @@ public sealed class BattleAnimator
     /// </summary>
     public bool Shows(EffectCue cue)
     {
+        if (cue.Kind == CueKind.Moment)
+        {
+            // The escape item is among the effects the original always shows, and a level's is played without the
+            // check (SEQ_GET_EXP_CHECK_LEVEL_UP); one between two places plays only if both can be seen
+            // (BtlCmd_PlayBattleAnimationOnMons)
+            if (cue.Moment is Sim.BattleMoment.EscapeItem or Sim.BattleMoment.LevelUp) return true;
+            return InSight(cue.ToSide, cue.ToSlot) && (cue.OnSelf || InSight(cue.FromSide, cue.FromSlot));
+        }
         if (!cue.OnOnePokemon) return true;
-        var v = this[cue.ToSide, Math.Clamp(cue.ToSlot, 0, 1)];
+        return InSight(cue.ToSide, cue.ToSlot);
+    }
+
+    /// <summary>The Pokémon in a place is neither behind a doll nor out of sight in the middle of a move.</summary>
+    private bool InSight(BattleSide side, int slot)
+    {
+        var v = this[side, Math.Clamp(slot, 0, 1)];
         return !v.BehindDoll && !v.Away;
     }
 
@@ -491,6 +528,26 @@ public sealed class BattleAnimator
     /// <summary>A status condition given to one Pokémon.</summary>
     public EffectCue StatusGiven(BattleSide side, int slot, StatusCondition status) =>
         Cue(new EffectCue { Kind = CueKind.Status, Status = status, FromSide = side, FromSlot = slot, ToSide = side, ToSlot = slot });
+
+    /// <summary>
+    /// A moment of the turn on one Pokémon (plan 25 · Y3): what the turn's end takes or gives, a condition as it
+    /// plays on its turn, an item going off, a level. <paramref name="from"/> is the other end of a moment between
+    /// two places (Leech Seed's seeder). It isn't started on a Pokémon that can't be seen (<see cref="Shows"/>).
+    /// </summary>
+    public EffectCue Moment(BattleSide side, int slot, Sim.BattleMoment moment, (BattleSide Side, int Slot)? from = null, bool berry = false)
+    {
+        var cue = new EffectCue
+        {
+            Kind = CueKind.Moment, Moment = moment, Berry = berry,
+            FromSide = from?.Side ?? side, FromSlot = from?.Slot ?? slot, ToSide = side, ToSlot = slot,
+            // The moments count for themselves, so a battle's moves keep the seeds they had before there were any
+            Seed = ++momentCount * 6007 + (int)moment * 131
+        };
+        if (Shows(cue)) cues.Add(cue);
+        return cue;
+    }
+
+    private int momentCount;
 
     /// <summary>
     /// The Seals of a Ball Capsule bursting round a Pokémon as it is sent out (plan 06 · R17b). It begins with the

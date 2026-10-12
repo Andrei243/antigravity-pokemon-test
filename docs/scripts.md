@@ -220,6 +220,7 @@ on leaving any place), `FLAG_FLASH_ACTIVE` and `FLAG_DEFOG_ACTIVE` (cleared on g
 | `battle self rematch` | A rematch the Vs. Seeker found (plan 06 · R12): the trainer brings the team of the highest level of their row the story has unlocked and not yet beaten (`VsSeeker.RematchTeam`), for this battle only, and stops waiting. |
 | `battle self first` | The game's first battle (the rival's on Route 201): no critical hits, as in Platinum. |
 | `battle rival as "rival_route_201_turtwig"` | Someone of the map fights with a team of Platinum's data, and is that trainer from then on (who they think like, their items, their prize money): the rival, whose team hangs on the player's starter (plan 02 · S4). A trainer of the `Rival` class is called `{rival}`. |
+| `battle self as "scientist_shaun_rematch_3" inverse canlose` | An inverse battle (plan 14 · B1; `docs/mechanics/rulings.md`, "Formats of the later games"): the type chart is turned round for the whole battle, what a type resisted or took nothing from hurting it and what it feared barely touching it. The word goes with the others in any order, and reaches the battle with its conditions as it is made (`BattleTerms`, `BattleConditions.Inverse`): nothing turns a running battle round. It is no part of Platinum, so only a person of our own says it (the Fight Area's scientist). Someone battled `as` a team of the table is called by that team's name and class in the battle and beats that id when beaten: for a person of ours the last team of a Vs. Seeker row is the one to borrow, since nothing reads it once it is beaten. |
 | `wildbattle "Starly" 2` | A wild Pokémon put in the player's way. `RESULT`: 1 won, 0 lost, 2 fled, 3 caught. Like `battle`, it waits for a Pokémon able to fight. |
 | `wildbattle "Giratina" 47 nofleeing` | One that can't be run from (the story's legendaries). |
 | `wildbattle "Giratina-Origin" 47` | A form's name in place of its species': the Pokémon is met in that form (plan 02 · S12), and one caught keeps it only as the form's own rule lets it (Giratina's by the Griseous Orb, `FormRules.ByHeldItem`). |
@@ -245,6 +246,7 @@ on leaving any place), `FLAG_FLASH_ACTIVE` and `FLAG_DEFOG_ACTIVE` (cleared on g
 | `camera pan X Y [0.8]`, `camera release [0.6]`, `camera shake [0.5]` | Sends the camera to look at a tile, brings it back, shakes the picture. A pan and a release are waited for (a shake goes on under whatever comes next), and the release brings back everything the camera kit was told as well. |
 | `camera zoom 1.5 [0.8]`, `camera follow <who> [0.8]`, `camera path X Y X Y … [4]`, `letterbox on\|off [0.4]`, `slowmo 0.25 [2]` | The camera kit (plan 09 · L4): the lens, a camera kept on someone, a path through tiles at a pace, the cinema bars, the field slowed for a time. "The camera kit", below, has each. |
 | `effect burst X Y [seconds] [wait\|hold]`, `effect shadow X Y [2] [right] [wait\|hold]`, `effect stop X Y` | A scene effect on a tile (plan 09 · L11; style guide, "Life", "Scene effects"), with its sound: `burst` (light thrown out, a white flash over the picture), `beam` (a column of light), `rift` (a tear in the air), `shadow` (a dark shape crossing the ground the way it is sent, east if none is given; only a shadow is sent a way), `ripple` (the picture wavering) or `sparkles`. It plays its own length (0.6, 1.5, 3, 2, 1.2 and 1.5 s) or the time given under whatever comes next; `wait` waits for it to end, `hold` plays it until `effect stop` on its tile (a held one is given no time). Coming to another place clears every effect. |
+| `anim heal`, `anim pc on\|off`, `anim elevator up\|down [4]`, `anim halloffame`, `shake <who> [8]`, `flicker <who> [6]` | The original's set pieces (plan 09 · L12): a Pokémon Center's machine, a PC's screen, a lift's ride, the Hall of Fame's machine, and someone shaken or flickering where they stand. Each is waited for. "The original's set pieces", below, has each. |
 
 ### Sound
 
@@ -754,6 +756,27 @@ script Reveal
   camera release 1.0
   end
 ```
+
+### The original's set pieces
+
+Plan 09 · L12; style guide, "Rooms", "Machines at work", and "Life", "Set pieces". Where the original's scripts call a
+set piece by name, ours call ours. The rules are `Overworld/SetPieces.cs`: what each piece shows is a function of the
+time since its line, on the field's own clock. The counts are the original's; the timing, the art and the sounds are
+ours. Every one of them is waited for, by the runner itself, for as long as it takes, and takes no time at all where
+the place has nothing to play it on (a room with no machine, someone who isn't on the map), so no script is ever left
+waiting on one. Coming to another place ends them all.
+
+| Command | The original's | What it does |
+|---|---|---|
+| `anim heal` | `PlayPokecenterHealingAnimation` | The healing machine of the room the player is in: a Poké Ball is laid on its tray for each Pokémon of the team that is no Egg (the original counts with `CountPartyNonEggs`), one every 0.35 s, then all of them are lit for the 3.6 s the heal's fanfare sounds, which the machine plays itself; then the tray is empty again. It heals nobody: `heal` does. In a room with no machine there is the fanfare alone, and nothing to wait for. |
+| `anim pc on`, `anim pc off` | `PlayPCBootUpAnimation`, `PlayPCShutDownAnimation` | The screen of the PC before the player (the nearest that is used) comes on, with the PC's sound, and stays on; `off` puts out the one that is on, with its sound. 0.4 s and 0.3 s. The PC's own screen (`pc`) plays neither sound: a script that opens it switches it on first and off afterwards, as `common.PC` does. |
+| `anim elevator up`, `anim elevator down [4]` | `PlayElevatorAnimation` | A lift's ride in the car the player stands in: the indicator's arrow runs the way it goes, the car hums and shudders, and a chime says it has arrived. The number is how many times it hums (1 to 12; four unless given, as in six of the original's seven scripts, the Battle Tower's having three), half a second each, and the arrival takes half a second more. It moves nobody: the script's own `warp` does. |
+| `anim halloffame` | `PlayHallOfFameHealingAnimation` | The Hall of Fame's machine: a ball is set in a socket for each of the team, an Egg's too (`GetPartyCount`), one every 0.35 s, and all of them are lit for 3.6 s to the machine's chime. The balls stay in their sockets until the room is left. |
+| `shake <who> [8]` | `ShakeObject` | Someone is shaken where they stand: drawn three texels to either side by turns, so many times over (eight unless given, the original's count for Regigigas; 1 to 32), 0.13 s each. Their tile doesn't change. |
+| `flicker <who> [6]` | `FlickerObject` | Someone flickers: unseen, then seen, changing so many times in all (six unless given, the original's count for Cresselia; 1 to 32) a fifth of a second apart, and seen again once it is over. They stay on the map throughout: a script that means them gone says `hide` afterwards, and sets their flag. |
+
+The original's one-off pieces (the lake guardians' machines, the Vista Lighthouse's binoculars, Giratina's shadow over
+the Distortion World) are their chapters' own scenes, written with `effect` and the camera kit.
 
 ## Who is on the map
 

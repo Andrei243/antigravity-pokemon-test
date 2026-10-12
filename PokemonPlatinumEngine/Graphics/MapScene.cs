@@ -185,7 +185,7 @@ internal sealed class MapScene
         internal List<(Texture2D Tex, MeshPass Pass, Mesh Mesh, (Vector3 Min, Vector3 Max)? Bounds)> Shared { get; } = new();
 
         /// <summary>The faces of the sheet of buildings and props that move, each with its frames as images.</summary>
-        internal List<(Art Region, Image[] Frames, float Rate)> Moving { get; } = new();
+        internal List<(string Key, Art Region, Image[] Frames, float Rate)> Moving { get; } = new();
 
         /// <summary>Uploads in all: a texture or a mesh each.</summary>
         public int Steps => Own.Sum(o => 1 + o.Meshes.Count) + Shared.Count;
@@ -277,8 +277,8 @@ internal sealed class MapScene
         if (kit.Solid.VertexCount + kit.Flat.VertexCount > 0)
         {
             var art = kit.Sheet.ToCanvas().ToImage();
-            foreach (var (_, region, frames, rate) in kit.Sheet.Moving)
-                prepared.Moving.Add((region, frames.Select(f => f.ToImage()).ToArray(), rate));
+            foreach (var (key, region, frames, rate) in kit.Sheet.Moving)
+                prepared.Moving.Add((key, region, frames.Select(f => f.ToImage()).ToArray(), rate));
             kit.Finish();
             prepared.Own.Add((art, true, Packed((kit.Solid, MeshPass.Opaque), (kit.Flat, MeshPass.Ground))));
         }
@@ -310,8 +310,8 @@ internal sealed class MapScene
                 if (!clamp) return;
                 // The sheet of buildings and props: its moving faces will be redrawn into it frame by frame
                 Raylib.SetTextureWrap(texture, TextureWrap.Clamp);
-                foreach (var (region, frames, rate) in prepared.Moving)
-                    scene.moving.Add(new MovingArt(texture, new Rectangle(region.X, region.Y, region.Width, region.Height), frames, rate));
+                foreach (var (key, region, frames, rate) in prepared.Moving)
+                    scene.moving.Add(new MovingArt(texture, new Rectangle(region.X, region.Y, region.Width, region.Height), frames, new FaceFrames(key, frames.Length, rate)));
             });
             foreach (var (packed, pass) in meshes)
                 steps.Enqueue(() => scene.meshes.Add(OnGpu(packed), texture, pass, null, shaders));
@@ -355,30 +355,56 @@ internal sealed class MapScene
         moving.Clear();
     }
 
-    private sealed class MovingArt(Texture2D texture, Rectangle rect, Image[] frames, float rate)
+    private sealed class MovingArt(Texture2D texture, Rectangle rect, Image[] frames, FaceFrames clock)
     {
         public Texture2D Texture { get; } = texture;
         public Rectangle Rect { get; } = rect;
         public Image[] Frames { get; } = frames;
-        public float Rate { get; } = rate;
-        public int Shown { get; set; }
+        public FaceFrames Clock { get; } = clock;
     }
 
     private readonly List<MovingArt> moving = new();
 
     /// <summary>
-    /// Shows the frame each moving face of the scene's art has reached (a fountain's water, a turbine's blades)
-    /// by redrawing its rectangle of the sheet. Call on the thread that owns the window, before drawing.
+    /// Shows the frame each moving face of the scene's art has reached (a fountain's water, a turbine's blades) or
+    /// is held on (a machine's tray, a PC's screen) by redrawing its rectangle of the sheet, and only when the frame
+    /// has changed. Call on the thread that owns the window, before drawing.
     /// </summary>
     public unsafe void Animate(double time)
     {
         foreach (var art in moving)
-        {
-            int frame = (int)((long)(time * art.Rate) % art.Frames.Length);
-            if (frame == art.Shown) continue;
-            art.Shown = frame;
-            Raylib.UpdateTextureRec(art.Texture, art.Rect, art.Frames[frame].Data);
-        }
+            if (art.Clock.Turn(time) is { } frame)
+                Raylib.UpdateTextureRec(art.Texture, art.Rect, art.Frames[frame].Data);
+    }
+
+    /// <summary>
+    /// Asks a held face of the scene's art for the frame a set piece has reached (plan 09 · L12): the next
+    /// <see cref="Animate"/> redraws it if that isn't the frame it shows. A scene with no such face does nothing, so
+    /// whoever plays a piece need not know which rooms have its machine.
+    /// </summary>
+    public void Hold(string key, int frame)
+    {
+        foreach (var art in moving)
+            if (art.Clock.Key == key) art.Clock.Hold(frame);
+    }
+
+    /// <summary>
+    /// Asks every held face whose key begins with <paramref name="prefix"/> for a frame, but the one named, which is
+    /// asked for its own: a room's PCs are all dark but the one switched on.
+    /// </summary>
+    public void HoldEach(string prefix, int frame, string? but = null, int butFrame = 0)
+    {
+        foreach (var art in moving)
+            if (art.Clock.IsHeld && art.Clock.Key.StartsWith(prefix, StringComparison.Ordinal))
+                art.Clock.Hold(art.Clock.Key == but ? butFrame : frame);
+    }
+
+    /// <summary>The frame a face of the scene's art shows now, by its key; null when the scene has no such face. For tools and tests.</summary>
+    public int? FrameShown(string key)
+    {
+        foreach (var art in moving)
+            if (art.Clock.Key == key) return art.Clock.Shown;
+        return null;
     }
 
     private TileType? TypeAt(int x, int y) => GroundBaker.TypeAt(Map, x, y);
@@ -1037,7 +1063,7 @@ internal sealed class MapScene
         }
         for (int ty = by; ty < h - 1; ty++)
             for (int tx = lx; tx < w - 1; tx++)
-                if (Map.GetGroundTile(tx, ty) == TileType.PC) PropModels.BuildPc(kit, tx, ty);
+                if (Map.GetGroundTile(tx, ty) == TileType.PC) PropModels.BuildPc(kit, tx, ty, PropModels.IsTerminal(Map, tx, ty));
 
         RoomCenter = new Vector3((lx + w - 1) / 2f, 0.6f * VS, (back + front) / (2f * T) + 0.2f);
     }

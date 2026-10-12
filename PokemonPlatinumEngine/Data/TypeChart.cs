@@ -167,19 +167,38 @@ public static class TypeChart
     };
 
     /// <param name="rules">The rules whose chart this is; left out, those of the game in progress.</param>
-    public static float GetEffectiveness(PokemonType attackType, PokemonType defenderType1, PokemonType? defenderType2 = null, Ruleset? rules = null)
+    /// <param name="inverse">
+    /// An inverse battle's chart (plan 14 · B1, <see cref="Battle.Sim.BattleConditions.Inverse"/>): each type against
+    /// each is turned round before the two are multiplied, as X and Y have it and as Pokémon Showdown's Inverse Mod
+    /// does it (<c>data/rulesets.ts</c>, <c>inversemod</c>): twice becomes half, half becomes twice, and a type
+    /// that took nothing takes twice. This is the one place the chart is inverted: whoever asks it in a battle
+    /// hands the battle's flag over.
+    /// </param>
+    public static float GetEffectiveness(PokemonType attackType, PokemonType defenderType1, PokemonType? defenderType2 = null, Ruleset? rules = null,
+        bool inverse = false)
     {
         rules ??= Ruleset.Current;
-        float mult1 = Against(attackType, defenderType1, rules);
+        float mult1 = Against(attackType, defenderType1, rules, inverse);
         float mult2 = 1.0f;
 
         if (defenderType2.HasValue && defenderType2.Value != defenderType1)
         {
-            mult2 = Against(attackType, defenderType2.Value, rules);
+            mult2 = Against(attackType, defenderType2.Value, rules, inverse);
         }
 
         return mult1 * mult2;
     }
+
+    private static float Against(PokemonType attack, PokemonType defender, Ruleset rules, bool inverse) =>
+        inverse ? Inverted(Against(attack, defender, rules)) : Against(attack, defender, rules);
+
+    /// <summary>One type against one, turned round: what was strong is weak, and what was weak or stopped is strong.</summary>
+    private static float Inverted(float multiplier) => multiplier switch
+    {
+        > 1.0f => 0.5f,
+        < 1.0f => 2.0f,
+        _ => 1.0f
+    };
 
     private static float Against(PokemonType attack, PokemonType defender, Ruleset rules)
     {

@@ -368,14 +368,15 @@ internal static partial class ModernUi
 
     /// <summary>
     /// Saving: the save as it will be, the question under it with SAVE and CANCEL, and once it is done, a line
-    /// saying so. <paramref name="shown"/> slides the panel up into place.
+    /// saying so. <paramref name="shown"/> slides the panel up into place. The slot the game is saved in is named
+    /// after the heading and in the question (plan 12 · Q2).
     /// </summary>
-    public static void DrawSave(int sw, int sh, SaveData save, int answer, bool saved, float shown)
+    public static void DrawSave(int sw, int sh, SaveData save, int slot, int answer, bool saved, float shown)
     {
         Dim(sw, sh, (int)(150 * shown));
         var r = new Rectangle(sw / 2f - 540, 140 + (1f - shown) * 60f, 1080, 780);
         Panel(r, 36);
-        SaveSummary(new Rectangle(r.X, r.Y, r.Width, SaveSummaryHeight), save, "SAVE");
+        SaveSummary(new Rectangle(r.X, r.Y, r.Width, SaveSummaryHeight), save, "SAVE", slot);
         UiShapes.Fill(new Rectangle(r.X + 48, r.Y + SaveSummaryHeight + 12, r.Width - 96, 3), 1.5f, Rule);
 
         float cy = r.Y + SaveSummaryHeight + 82;
@@ -386,7 +387,7 @@ internal static partial class ModernUi
             return;
         }
 
-        UiFonts.DrawCentered("Save the game?", r.X + 56, cy, 44, Ink, UiWeight.Black);
+        UiFonts.DrawCentered(SaveScreen.Question(slot), r.X + 56, cy, 44, Ink, UiWeight.Black);
         const float gap = 32;
         float bw = (r.Width - 112 - gap) / 2f;
         Button(new Rectangle(r.X + 56, r.Y + r.Height - 56 - 84, bw, 84), 42, Green, SaveScreen.Answers[0], 32, answer == 0);

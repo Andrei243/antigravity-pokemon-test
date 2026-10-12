@@ -106,6 +106,12 @@ public sealed class FieldState
     /// <summary>The battle is one of the Battle Frontier's (plan 06 · R18a): the damage formula leaves a Soul Dew out there.</summary>
     public bool Frontier { get; internal set; }
 
+    /// <summary>
+    /// The battle is an inverse one (plan 14 · B1, <see cref="BattleConditions.Inverse"/>): whoever asks the type
+    /// chart for a Pokémon standing on this field asks it turned round. Set as the battle is made and never after.
+    /// </summary>
+    public bool Inverse { get; internal set; }
+
     public bool TrickRoom => TrickRoomTurns > 0;
     public bool Gravity => GravityTurns > 0;
 

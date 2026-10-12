@@ -73,6 +73,9 @@ public static partial class SoundBank
         Add("effect_shadow", SoundGroup.Field, null, "A great shadow sweeps over the ground (`effect shadow`): Giratina's, in the Distortion World.");
         Add("effect_ripple", SoundGroup.Field, null, "The picture wavers (`effect ripple`): a weight in the air at Spear Pillar, an explosion felt far off.");
         Add("effect_sparkles", SoundGroup.Field, null, "Points of light rise round a tile (`effect sparkles`): the lake guardians set free and appearing.");
+        Add("machine_ball", SoundGroup.Field, "SEQ_SE_DP_BOWA", "A Poké Ball is laid on a Pokémon Center's machine (`anim heal`): one to each Pokémon of the team.");
+        Add("lift_hum", SoundGroup.Field, "SEQ_SE_DP_ELEBETA2", "A lift's car between floors (`anim elevator`): one hum to each round of its indicator's lights.");
+        Add("lift_ding", SoundGroup.Field, "SEQ_SE_DP_PINPON", "A lift arrives at its floor (`anim elevator`): two notes of a chime.");
 
         // ---- Battles
         Add("send_out", SoundGroup.Battle, "SEQ_SE_DP_BOWA4", "A ball opens and a Pokémon comes out.");
@@ -102,6 +105,23 @@ public static partial class SoundBank
         Add("weather_fog", SoundGroup.Battle, null, "A battle opens in deep fog, and each turn the fog stays.");
         Add("substitute_in", SoundGroup.Battle, null, "A Substitute's doll drops in front of its Pokémon.");
         Add("substitute_out", SoundGroup.Battle, null, "A Substitute's doll fades in a puff.");
+        // The turn's moments (plan 25 · Y3): those of a condition play the condition's own sound
+        Add("moment_infatuated", SoundGroup.Battle, null, "A Pokémon in love as it tries to move: hearts rising from it.");
+        Add("moment_bag_item", SoundGroup.Battle, null, "An item from the bag used on a Pokémon on the field.");
+        Add("moment_escape_item", SoundGroup.Battle, null, "A Poké Doll or a Fluffy Tail gets the player away: a puff of smoke.");
+        Add("moment_held_item", SoundGroup.Battle, null, "A held item goes off: Leftovers, a berry eaten, a Focus Sash, a Quick Claw.");
+        Add("moment_happy", SoundGroup.Battle, null, "The Great Marsh's Pokémon as bait lands by it.");
+        Add("moment_eating", SoundGroup.Battle, null, "The Great Marsh's Pokémon eating the bait.");
+        Add("moment_angry", SoundGroup.Battle, null, "The Great Marsh's Pokémon as mud hits it.");
+        Add("moment_curse", SoundGroup.Battle, null, "A curse takes its quarter at the turn's end.");
+        Add("moment_nightmare", SoundGroup.Battle, null, "A nightmare takes its quarter from a sleeper at the turn's end.");
+        Add("moment_leech_seed", SoundGroup.Battle, null, "Leech Seed saps a Pokémon's health for the place the seed was sown from.");
+        Add("moment_ingrain", SoundGroup.Battle, null, "Roots draw up a sixteenth at the turn's end (Ingrain).");
+        Add("moment_bind", SoundGroup.Battle, null, "Bind or Wrap tightens at the turn's end.");
+        Add("moment_fire_spin", SoundGroup.Battle, null, "Fire Spin or Magma Storm whirls round a Pokémon at the turn's end.");
+        Add("moment_clamp", SoundGroup.Battle, null, "Clamp snaps shut at the turn's end.");
+        Add("moment_whirlpool", SoundGroup.Battle, null, "Whirlpool turns under a Pokémon at the turn's end.");
+        Add("moment_sand_tomb", SoundGroup.Battle, null, "Sand Tomb draws a Pokémon down at the turn's end.");
 
         // ---- A move's launch, one per type (the hit's sound comes as it lands)
         foreach (var type in Enum.GetValues<PokemonType>())
@@ -320,6 +340,27 @@ public static partial class SoundBank
                 d.Bell(0.28f, 0.4f, N(98), 3f, 1.4f, 0.22f);
                 d.Bell(0.38f, 0.4f, N(108), 3f, 1.4f, 0.24f);
                 d.Bell(0.45f, 0.38f, N(105), 3f, 1.4f, 0.2f);
+                return Finish(d.S, 0.36f);
+            case "machine_ball":
+                // A ball set down in its socket: a soft pop of air and a small round note under it
+                d = new SoundDesign(0.2f, 0x0BA1u);
+                d.Noise(0, 0.03f, Filter.Band, 1400f, 900f, 0.5f, 1.4f, 0.1f, 2.5f);
+                d.Tone(0, 0.16f, Wave.Sine, N(79), N(76), 0.5f, 0.03f, 2.4f);
+                d.Tone(0.01f, 0.12f, Wave.Triangle, N(91), N(88), 0.14f, 0.03f, 2.6f);
+                return Finish(d.S, 0.34f);
+            case "lift_hum":
+                // A car between floors: half a second of a motor's even hum, swelling a little and easing, with the
+                // faint rattle of its cables, made to follow itself round after round
+                d = new SoundDesign(0.5f, 0x11F2u);
+                d.Tone(0, 0.5f, Wave.Triangle, 92f, 96f, 0.42f, 0.3f, 0.7f, vibratoHz: 16f, vibratoDepth: 0.03f);
+                d.Tone(0, 0.5f, Wave.Sine, 184f, 192f, 0.16f, 0.3f, 0.7f);
+                d.Noise(0, 0.48f, Filter.Band, 700f, 760f, 0.14f, 1f, 0.3f, 0.8f, 22f, 0.35f);
+                return Finish(d.S, 0.32f);
+            case "lift_ding":
+                // The floor reached: two notes of a chime, the second a third below the first
+                d = new SoundDesign(0.62f);
+                d.Bell(0, 0.34f, N(88), 2f, 1.3f, 0.4f);
+                d.Bell(0.16f, 0.46f, N(84), 2f, 1.3f, 0.42f);
                 return Finish(d.S, 0.36f);
             case "save":
                 // A soft chime of three bells: written and kept
@@ -683,6 +724,129 @@ public static partial class SoundBank
                 d = new SoundDesign(0.55f, 0x5B07u);
                 d.Noise(0, 0.45f, Filter.Band, 1600f, 380f, 0.6f, 0.8f, 0.04f, 1.4f);
                 d.Tone(0.02f, 0.4f, Wave.Sine, 620f, 240f, 0.35f, 0.05f, 1.5f);
+                return Finish(d.S, 0.38f);
+
+            // ---------------------------------------------------------------- the turn's moments (plan 25 · Y3)
+            // Each begins with its line; what bites does so a third of a second in, when the moment lands
+            case "moment_infatuated":
+                // Two soft bells a fifth apart over a note that wavers
+                d = new SoundDesign(0.6f);
+                d.Bell(0, 0.35f, N(84), 2f, 0.8f, 0.4f, 2f);
+                d.Bell(0.14f, 0.42f, N(91), 2f, 0.8f, 0.4f, 2f);
+                d.Tone(0, 0.55f, Wave.Sine, N(72), N(72), 0.2f, 0.3f, 1.2f, vibratoHz: 6f, vibratoDepth: 0.02f);
+                return Finish(d.S, 0.36f);
+            case "moment_bag_item":
+                // A quick bright chime climbing: something good was used
+                d = new SoundDesign(0.5f);
+                var chime = Pitches(88, 93, 100);
+                for (int k = 0; k < chime.Length; k++) d.Bell(k * 0.06f, 0.3f, chime[k], 2.01f, 1f, 0.35f, 2.5f);
+                return Finish(d.S, 0.36f);
+            case "moment_escape_item":
+                // A puff: a breath of smoke falling away over a soft knock, and a little whistle off
+                d = new SoundDesign(0.5f, 0xE5CAu);
+                d.Noise(0, 0.42f, Filter.Band, 1800f, 500f, 0.7f, 0.8f, 0.03f, 1.5f);
+                d.Thump(0, 0.16f, 200f, 90f, 0.5f, 0.3f);
+                d.Tone(0.05f, 0.22f, Wave.Sine, 500f, 1100f, 0.2f, 0.2f, 1.6f);
+                return Finish(d.S, 0.4f);
+            case "moment_held_item":
+                // A small ding and its answer: an item going off
+                d = new SoundDesign(0.5f);
+                d.Bell(0, 0.3f, N(91), 3.01f, 1.2f, 0.4f, 3f);
+                d.Bell(0.09f, 0.4f, N(96), 3.01f, 1.2f, 0.4f, 2.6f);
+                return Finish(d.S, 0.36f);
+            case "moment_happy":
+                // Three chirps hopping upward
+                d = new SoundDesign(0.45f);
+                var chirps = Pitches(84, 88, 91);
+                for (int k = 0; k < chirps.Length; k++)
+                {
+                    d.Tone(k * 0.12f, 0.09f, Wave.Sine, chirps[k], chirps[k] * 1.25f, 0.5f, 0.1f, 1.6f);
+                    d.Tone(k * 0.12f, 0.09f, Wave.Triangle, chirps[k] * 0.5f, chirps[k] * 0.62f, 0.2f, 0.1f, 1.6f);
+                }
+                return Finish(d.S, 0.36f);
+            case "moment_eating":
+                // Three bites: a crunch and its crumbs
+                d = new SoundDesign(0.6f, 0xEA7u);
+                for (int k = 0; k < 3; k++)
+                {
+                    d.Noise(k * 0.2f, 0.09f, Filter.Low, 1800f, 700f, 0.7f, 0.9f, 0.05f, 2f);
+                    d.Crackle(k * 0.2f, 0.07f, 5, 2400f, 0.4f);
+                    d.Thump(k * 0.2f, 0.08f, 220f, 150f, 0.3f, 0.2f);
+                }
+                return Finish(d.S, 0.38f);
+            case "moment_angry":
+                // Steam let off in three puffs over a low growl
+                d = new SoundDesign(0.65f, 0xA26Du);
+                for (int k = 0; k < 3; k++) d.Noise(k * 0.2f, 0.16f, Filter.Band, 3000f, 5200f, 0.7f, 0.9f, 0.05f, 1.3f);
+                d.Tone(0, 0.6f, Wave.Saw, 110f, 98f, 0.25f, 0.1f, 1f, vibratoHz: 14f, vibratoDepth: 0.04f);
+                return Finish(d.S, 0.4f);
+            case "moment_curse":
+                // Something comes down and is driven in, and a low moan after it
+                d = new SoundDesign(0.85f, 0xC0A5u);
+                d.Tone(0, 0.36f, Wave.Sine, 420f, 180f, 0.2f, 0.5f, 1f);
+                d.Thump(0.33f, 0.2f, 150f, 55f, 0.8f, 0.5f);
+                d.Tone(0.36f, 0.45f, Wave.Triangle, 175f, 160f, 0.35f, 0.1f, 1.4f, vibratoHz: 6f, vibratoDepth: 0.03f);
+                d.Tone(0.36f, 0.45f, Wave.Sine, 262f, 233f, 0.2f, 0.1f, 1.5f);
+                return Finish(d.S, 0.42f);
+            case "moment_nightmare":
+                // Two low notes that grate on each other, a whisper through them, and a cold bell as it bites
+                d = new SoundDesign(0.8f, 0x417Eu);
+                d.Tone(0, 0.75f, Wave.Sine, 147f, 139f, 0.4f, 0.3f, 1.1f, vibratoHz: 5f, vibratoDepth: 0.03f);
+                d.Tone(0, 0.75f, Wave.Sine, 208f, 196f, 0.3f, 0.3f, 1.1f, vibratoHz: 7f, vibratoDepth: 0.04f);
+                d.Noise(0.1f, 0.6f, Filter.Band, 900f, 400f, 0.25f, 1.5f, 0.4f, 1.2f, flutterHz: 9f, flutterDepth: 0.6f);
+                d.Bell(0.33f, 0.3f, N(73), 1.41f, 2f, 0.2f, 2.5f);
+                return Finish(d.S, 0.38f);
+            case "moment_leech_seed":
+                // Sap drawn out: a breath rising, and motes leaving one after another, each a little higher
+                d = new SoundDesign(0.8f, 0x5EEDu);
+                d.Noise(0, 0.7f, Filter.Band, 500f, 1800f, 0.35f, 1.4f, 0.5f, 1.2f);
+                for (int k = 0; k < 6; k++)
+                {
+                    float sap = N(72 + 2 * k);
+                    d.Tone(0.08f + k * 0.09f, 0.1f, Wave.Sine, sap, sap * 1.15f, 0.4f, 0.1f, 2f);
+                }
+                return Finish(d.S, 0.36f);
+            case "moment_ingrain":
+                // The ground creaks, something is drawn up through it, and a soft bell as it arrives
+                d = new SoundDesign(0.75f, 0x2007u);
+                d.Noise(0, 0.5f, Filter.Low, 300f, 700f, 0.5f, 1.2f, 0.3f, 1.2f, flutterHz: 12f, flutterDepth: 0.5f);
+                d.Tone(0.05f, 0.6f, Wave.Triangle, N(55), N(62), 0.4f, 0.3f, 1.2f);
+                d.Bell(0.33f, 0.35f, N(79), 2f, 0.8f, 0.25f, 2.5f);
+                return Finish(d.S, 0.36f);
+            case "moment_bind":
+                // A grip tightening with a creak, held with a knock, and let go
+                d = new SoundDesign(0.7f, 0xB1DDu);
+                d.Tone(0, 0.36f, Wave.Saw, 140f, 300f, 0.35f, 0.2f, 0.8f, vibratoHz: 30f, vibratoDepth: 0.05f);
+                d.Noise(0, 0.36f, Filter.Band, 700f, 1600f, 0.4f, 2f, 0.3f, 1f, flutterHz: 26f, flutterDepth: 0.7f);
+                d.Thump(0.34f, 0.16f, 170f, 90f, 0.6f, 0.3f);
+                d.Tone(0.4f, 0.25f, Wave.Saw, 300f, 170f, 0.2f, 0.05f, 1.5f);
+                return Finish(d.S, 0.4f);
+            case "moment_fire_spin":
+                // Flames turning round and round: a roar that comes and goes, crackling
+                d = new SoundDesign(0.85f, 0xF12Eu);
+                d.Noise(0, 0.8f, Filter.Band, 500f, 1500f, 0.8f, 0.8f, 0.3f, 1.2f, flutterHz: 7f, flutterDepth: 0.5f);
+                d.Crackle(0.05f, 0.7f, 22, 2600f, 0.45f);
+                return Finish(d.S, 0.42f);
+            case "moment_clamp":
+                // A rush inward, and a shell snapping shut
+                d = new SoundDesign(0.6f, 0xC1A3u);
+                d.Noise(0.05f, 0.28f, Filter.Band, 600f, 2400f, 0.3f, 1f, 0.8f, 1f);
+                d.Noise(0.33f, 0.03f, Filter.Band, 2600f, 2000f, 0.9f, 3f, 0.05f, 2.5f);
+                d.Thump(0.33f, 0.18f, 240f, 90f, 0.8f, 0.5f);
+                d.Bell(0.335f, 0.2f, N(70), 2.76f, 2.2f, 0.25f, 3f);
+                return Finish(d.S, 0.45f);
+            case "moment_whirlpool":
+                // Water going round: a wash that swells and sinks, bubbling
+                d = new SoundDesign(0.85f, 0x3A7Eu);
+                d.Noise(0, 0.8f, Filter.Low, 700f, 1200f, 0.7f, 1f, 0.3f, 1.2f, flutterHz: 4f, flutterDepth: 0.5f);
+                d.Bubbles(0.05f, 0.7f, 9, 240f, 620f, 0.4f);
+                return Finish(d.S, 0.38f);
+            case "moment_sand_tomb":
+                // Sand sliding in and down: a hiss that sinks over a low rumble, grains ticking
+                d = new SoundDesign(0.85f, 0x5A2Du);
+                d.Noise(0, 0.8f, Filter.Band, 4200f, 1800f, 0.6f, 0.9f, 0.3f, 1.2f, flutterHz: 9f, flutterDepth: 0.35f);
+                d.Noise(0, 0.7f, Filter.Low, 260f, 180f, 0.5f, 1f, 0.3f, 1.2f);
+                d.Crackle(0.1f, 0.6f, 14, 4800f, 0.2f);
                 return Finish(d.S, 0.38f);
 
             // ---------------------------------------------------------------- a move's launch, by type

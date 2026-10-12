@@ -173,10 +173,20 @@ public partial class GameEngine
     private readonly SpinTracker spin = new();
     private readonly Random fieldRandom = Dice.New();
 
-    // The opening and title menu, the save it offers to continue, and where the options screen returns to
+    // The opening and title menu, the slots' saves it offers to continue from, and where the options screen returns to
     private TitleScreen titleScreen = new(null);
     private readonly TitleScene titleScene = new();
-    private SaveData? titleSave;
+    private IReadOnlyList<SaveSlot> titleSlots = Array.Empty<SaveSlot>();
+
+    /// <summary>
+    /// The slot this game is saved in (plan 12 · Q2): the one it was continued from, or the empty one a new game
+    /// took. Every save the game writes goes there (<see cref="WriteSave"/>): the save screen's, SAVE AND QUIT's, the
+    /// close button's, a script's.
+    /// </summary>
+    private int saveSlot = 1;
+
+    // The slot the title's NEW GAME chose, until the game it is for begins
+    private int? newGameSlot;
 
     /// <summary>The close button's question, and the state it was asked over, which is drawn under it and comes back on KEEP PLAYING (plan 12 · Q1).</summary>
     private readonly ClosePrompt closePrompt = new();
@@ -316,13 +326,24 @@ public partial class GameEngine
         // The game opens on the title screen, which offers the saved game if there is one
         // A save that couldn't be read gives way to the one before it, and the title says so before its menu (plan 12 · Q1);
         // and before that, once, that the last run stopped on a crash, if it did (plan 16 · T3)
+        // The saves are three slots in one folder (plan 12 · Q2), and each slot's notice names it
         using (Log.Phase("the save"))
         {
-            var (loaded, save) = SaveManager.Load();
-            titleSave = save;
-            var crashed = CrashReport.TakePending(CrashReport.SaveFolder);
-            if (crashed != null) Log.Info($"The last run stopped on a crash ({crashed.Report}); the title says so. The save read as {loaded}.");
-            titleScreen = new TitleScreen(titleSave, TitleNotice.ForCrash(crashed, loaded), TitleNotice.ForSave(loaded));
+            var paths = SavePaths.Current;
+            // An install from before there were slots kept one save: it becomes the first empty slot's, once
+            var old = SaveSlots.AdoptOldSave(paths);
+            if (old.Move == OldSaveMove.Moved) Log.Info($"The save from before there were slots ({SavePaths.OldSaveName}) is slot {old.Slot} now ({SavePaths.SlotName(old.Slot)}).");
+            else if (old.Move == OldSaveMove.NoRoom) Log.Warn($"{SavePaths.OldSaveName} is from before there were slots, and every slot holds a save: it was left where it is.");
+            else if (old.Move == OldSaveMove.Failed) Log.Warn($"{SavePaths.OldSaveName} is from before there were slots and couldn't be given one: {old.Problem}");
+
+            titleSlots = SaveSlots.Read(paths);
+            var crashed = CrashReport.TakePending(paths.Folder);
+            string read = string.Join(", ", titleSlots.Select(s => $"slot {s.Number} {s.Outcome}"));
+            if (crashed != null) Log.Info($"The last run stopped on a crash ({crashed.Report}); the title says so. The saves read as: {read}.");
+            else Log.Info($"The saves read as: {read}.");
+            var notices = new List<TitleNotice?> { TitleNotice.ForCrash(crashed, titleSlots.Select(s => s.Outcome).ToList()), TitleNotice.ForOldSave(old) };
+            notices.AddRange(titleSlots.Select(s => TitleNotice.ForSlot(s.Number, s.Outcome)));
+            titleScreen = TitleScreen.WithSlots(titleSlots.Where(s => s.Taken).Select(s => new TitleSlot(s.Number, s.Save)), notices.ToArray());
         }
         using (Log.Phase("the title's music")) AudioManager.PlayMusic(MusicRole.Title);
     }
@@ -336,6 +357,10 @@ public partial class GameEngine
     /// </summary>
     public void StartNewGame(string? name, PlayerLook look, RulesPreset rules = RulesPreset.Platinum, string? rival = null)
     {
+        // The new game is saved in the slot the title chose for it, the first empty one; a game begun without the
+        // title (a test, a tool) takes the first empty one too, and with none keeps the slot it had (plan 12 · Q2)
+        saveSlot = newGameSlot ?? SaveSlots.FirstEmpty(SavePaths.Current) ?? saveSlot;
+        newGameSlot = null;
         // Before any Pokémon is made: the moves they learn take their values from the rules
         Ruleset.Use(rules);
         playerParty.Clear();
@@ -396,16 +421,22 @@ public partial class GameEngine
         EnterGame();
     }
 
-    /// <summary>Leaves the title screen into the saved game, or into a fresh one when nothing is saved.</summary>
-    public void ContinueGame()
+    /// <summary>
+    /// Leaves the title screen into a slot's saved game, or into a fresh one when nothing is saved there. The title
+    /// names the slot its card was for, and the game is the one that card showed; a tool names none and takes up
+    /// the slot the game is saved in, read from its file as it is now.
+    /// </summary>
+    public void ContinueGame(int? slot = null)
     {
-        var save = titleSave ?? SaveManager.LoadGame();
+        int from = slot ?? saveSlot;
+        var save = slot != null ? titleSlots.FirstOrDefault(s => s.Number == from)?.Save : SaveSlots.Read(SavePaths.Current, from).Save;
         if (save == null)
         {
             StartNewGame();
             return;
         }
 
+        saveSlot = from;
         ApplySaveData(save);
         // The Journal opens by itself on a game left two days or more (Journal_CheckOpenOnContinue), and today's page is begun
         bool showJournal = playerInventory.GetQuantity(ItemDatabase.Get("Journal")!) > 0 && journal.OpensOnContinue(GameClock.Today);
@@ -422,7 +453,7 @@ public partial class GameEngine
     private void EnterGame()
     {
         // The log is told where a game begins or is taken up, so a report's last lines say what was being played
-        Log.Info($"A game is entered at {PlaceKey()} {player.GridX},{player.GridY}, by the {Ruleset.Current.Preset} rules.");
+        Log.Info($"A game is entered at {PlaceKey()} {player.GridX},{player.GridY}, by the {Ruleset.Current.Preset} rules; it is saved in slot {saveSlot}.");
         gameStarted = true;
         trainersLookOnArrival = true;
         arrived = true;
@@ -674,14 +705,43 @@ public partial class GameEngine
         };
     }
 
+    /// <summary>
+    /// The game as it stands written into its slot (plan 12 · Q2): the one way the game writes a save, whoever asks
+    /// (the save screen, SAVE AND QUIT, the close button's question, a script's <c>save</c>, a tool).
+    /// </summary>
+    private bool WriteSave()
+    {
+        bool written = SaveSlots.Write(SavePaths.Current, saveSlot, BuildSave());
+        Log.Info(written ? $"The game was saved in slot {saveSlot} at {PlaceKey()} {player.GridX},{player.GridY}." : $"The game couldn't be saved in slot {saveSlot}.");
+        return written;
+    }
+
     /// <param name="quiet">True when a panel says the game was saved, so no notice is needed.</param>
     private void SaveCurrentGame(bool quiet = false)
     {
-        bool written = SaveManager.SaveGame(BuildSave());
-        Log.Info(written ? $"The game was saved at {PlaceKey()} {player.GridX},{player.GridY}." : "The game couldn't be saved.");
+        WriteSave();
         if (quiet) return;
         ShowNotification("Game saved.");
         AudioManager.PlaySound("save");
+    }
+
+    /// <summary>
+    /// A slot deleted at the player's own word on the title (plan 12 · Q2): its save and its backup are gone for good
+    /// and its card with them; where they couldn't be deleted nothing is changed and the title says so.
+    /// </summary>
+    private void DeleteSlot(int slot)
+    {
+        if (SaveSlots.Delete(SavePaths.Current, slot))
+        {
+            titleSlots = titleSlots.Select(s => s.Number == slot ? new SaveSlot(slot, SaveLoad.None, null) : s).ToList();
+            titleScreen.Forget(slot);
+            Log.Info($"Slot {slot} was deleted at the player's word.");
+        }
+        else
+        {
+            titleScreen.Tell(TitleNotice.CouldNotDelete(slot));
+            Log.Warn($"Slot {slot} couldn't be deleted: its files are still there.");
+        }
     }
 
     /// <summary>
@@ -720,7 +780,7 @@ public partial class GameEngine
                 break;
             case CloseChoice.SaveAndQuit:
                 // A save that couldn't be written keeps the game open, so nothing is lost by quitting anyway
-                if (SaveManager.SaveGame(BuildSave())) QuitRequested = true;
+                if (WriteSave()) QuitRequested = true;
                 else
                 {
                     currentState = closingFrom;
@@ -764,6 +824,8 @@ public partial class GameEngine
             // script's waits keep the clock's
             world.Life.Advance(FieldTime(dt));
             world.RunCamera(dt);
+            // The set pieces playing are heard as they go, by the field's own clock (plan 09 · L12)
+            RunTheSetPieces();
             // The poison's flash fades, and the Poké Radar's patches and the honey trees stir (plan 06 · R13)
             TickEncounters(dt);
             // Thunder follows a storm's lightning, a moment after the flash
@@ -807,13 +869,17 @@ public partial class GameEngine
         {
             case GameState.Title:
                 titleScreen.Update(dt);
+                // A save the player asked to delete, and said yes to
+                if (titleScreen.TakeDeletion() is { } gone) DeleteSlot(gone);
                 switch (titleScreen.TakeChoice())
                 {
                     case TitleChoice.Continue:
-                        ContinueGame();
+                        ContinueGame(titleScreen.Slot);
                         break;
                     case TitleChoice.NewGame:
                         // The professor's welcome comes first; the game begins when it ends, by the rules just chosen
+                        // and in the slot the title found empty
+                        newGameSlot = titleScreen.Slot;
                         newGameRules = titleScreen.Rules;
                         currentState = GameState.Intro;
                         introScreen.Open(GameSettings.CharactersPerSecond(Settings.TextSpeed));
@@ -1125,7 +1191,6 @@ public partial class GameEngine
         // What field moves left in force (Strength, Flash, Defog), and boulders sliding on from a push
         KeepFieldMovesInForce();
         KeepPuzzleInForce(fieldDt);
-        KeepTheMachinesBalls();
         ShatterSnowball();
         KeepTheClock();
         KeepBerriesInView();
@@ -1894,7 +1959,7 @@ public partial class GameEngine
             case StartMenuChoice.Save:
                 // The save as it will be, with the question under it
                 currentState = GameState.SaveMenu;
-                saveScreen.Open(BuildSave());
+                saveScreen.Open(BuildSave(), saveSlot);
                 break;
             case StartMenuChoice.SaveAndQuit:
                 SaveCurrentGame();

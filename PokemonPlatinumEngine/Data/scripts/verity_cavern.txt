@@ -12,8 +12,9 @@
 # A Mesprit knocked out is back here once the Hall of Fame is next entered (PokemonLeagueHallOfFame.txt:
 # VAR_ROAMING_MESPRIT_STATE 3): it flies off again, and that time the professor doesn't come.
 #
-# Stood in for until plan 09 lands (L12, L14): the original shows Mesprit's picture over the field before its cry
-# (DrawPokemonPreview), which is left out.
+# Its flicker is the script's own, as the original's is (it takes Mesprit off the map and puts it back by its flag,
+# three times over; no FlickerObject, so plan 09 · L12's flicker has no part in it). Not here: the original shows
+# Mesprit's picture over the field before its cry (DrawPokemonPreview), which no chapter has a screen for yet.
 
 
 # VerityCavern_OnTransition

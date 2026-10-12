@@ -7,8 +7,9 @@
 # FLAG_RIBBON_SYNDICATE_LIFT_UPSTAIRS (a flag of our own) and to the floor above from it, and the ride sets or
 # clears the flag. Each floor says the same as it is come to, so the flag can never be wrong for long.
 #
-# Stood in for until plan 09 lands (L12), as the Vista Lighthouse's is: the ride is the lift's sounds and a tremor of
-# the picture (the original's PlayElevatorAnimation scrolls the car's lights).
+# The ride is the lift's own set piece (plan 09 · L12; the original's PlayElevatorAnimation with its four rounds of
+# the car's lights), as the Vista Lighthouse's is: the attendant turns to the door, the indicator's arrow runs the
+# way the car goes, the car hums and shudders, and a chime says it has arrived.
 
 
 script Lift
@@ -19,20 +20,20 @@ script Lift
   if not flag FLAG_RIBBON_SYNDICATE_LIFT_UPSTAIRS goto Same
   say "Certainly. Going down."
   clearflag FLAG_RIBBON_SYNDICATE_LIFT_UPSTAIRS
-  goto Ride
+  # ResortAreaRibbonSyndicateElevator_ElevatorAnimation
+  face self down
+  anim elevator down 4
+  goto Arrived
 # ResortAreaRibbonSyndicateElevator_SelectFloor2
 label Up
   if flag FLAG_RIBBON_SYNDICATE_LIFT_UPSTAIRS goto Same
   say "Certainly. Going up."
   setflag FLAG_RIBBON_SYNDICATE_LIFT_UPSTAIRS
-# ResortAreaRibbonSyndicateElevator_ElevatorAnimation
-label Ride
+  # ResortAreaRibbonSyndicateElevator_ElevatorAnimation
   face self down
-  sound "lift"
-  camera shake 1.5
-  wait 1.5
-  sound "lift_stop"
-  wait 0.3
+  anim elevator up 4
+# ResortAreaRibbonSyndicateElevator_HereWeAreMessage
+label Arrived
   face self right
   say "Here we are!"
   end

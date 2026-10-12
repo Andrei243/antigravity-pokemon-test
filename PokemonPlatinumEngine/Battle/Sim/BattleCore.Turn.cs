@@ -164,11 +164,12 @@ public sealed partial class BattleCore
             int drain = BattleEffects.Of(b).Select(e => e.DrainHundredths).DefaultIfEmpty(100).Max();
 
             // Roots and a ring of water give a sixteenth back
-            foreach (var (has, line) in new[] { (v.Ingrained, "{0} absorbed nutrients with its roots!"), (v.AquaRing, "{0}'s veil of water restored its HP!") })
+            // The roots have a moment of their own (subscript_ingrain_heal); the ring of water plays the heal's (plan 25 · Y3)
+            foreach (var (has, line, roots) in new[] { (v.Ingrained, "{0} absorbed nutrients with its roots!", true), (v.AquaRing, "{0}'s veil of water restored its HP!", false) })
             {
                 if (!has || p.CurrentHP >= p.MaxHP) continue;
                 if (v.HealBlockTurns > 0) Say($"{b.Name} was kept from healing!");
-                else RestoreHp(b, Formulas.Divide(p.MaxHP, 16) * drain / 100, string.Format(line, b.Name));
+                else RestoreHp(roots ? Marked(b, BattleMoment.Ingrain) : b, Formulas.Divide(p.MaxHP, 16) * drain / 100, string.Format(line, b.Name));
             }
 
             // Its ability, then its item twice over, as the original has it: a berry it is time for
@@ -182,7 +183,7 @@ public sealed partial class BattleCore
             {
                 var taker = At(to);
                 int taken = Math.Min(p.CurrentHP, Formulas.Divide(p.MaxHP, 8));
-                LoseHp(b, taken, $"{b.Name}'s health is sapped by Leech Seed!");
+                LoseHp(Marked(b, BattleMoment.LeechSeed, taker), taken, $"{b.Name}'s health is sapped by Leech Seed!");
                 int given = taken * BattleEffects.Of(taker).Select(e => e.DrainHundredths).DefaultIfEmpty(100).Max() / 100;
                 if (BattleEffects.Of(b).Any(e => e.HurtsDrainers)) LoseHp(taker, given, $"{taker.Name} sucked up the liquid ooze!");
                 else if (taker.Volatile.HealBlockTurns == 0 && taker.Pokemon!.CurrentHP < taker.Pokemon.MaxHP)
@@ -197,15 +198,15 @@ public sealed partial class BattleCore
                 {
                     case StatusCondition.Poison:
                         if (poisonHeals) PoisonHeal(b);
-                        else LoseHp(b, Formulas.Divide(p.MaxHP, 8), $"{b.Name} is hurt by poison!");
+                        else LoseHp(Marked(b, BattleMoment.Poisoned), Formulas.Divide(p.MaxHP, 8), $"{b.Name} is hurt by poison!");
                         break;
                     case StatusCondition.Toxic:
                         p.ToxicCounter = Math.Min(15, p.ToxicCounter + 1);
                         if (poisonHeals) PoisonHeal(b);
-                        else LoseHp(b, Formulas.Divide(p.MaxHP, 16) * p.ToxicCounter, $"{b.Name} is hurt by poison!");
+                        else LoseHp(Marked(b, BattleMoment.Poisoned), Formulas.Divide(p.MaxHP, 16) * p.ToxicCounter, $"{b.Name} is hurt by poison!");
                         break;
                     case StatusCondition.Burn:
-                        LoseHp(b, Formulas.Divide(p.MaxHP, Rules.BurnDamageDivisor), $"{b.Name} is hurt by its burn!");
+                        LoseHp(Marked(b, BattleMoment.Burned), Formulas.Divide(p.MaxHP, Rules.BurnDamageDivisor), $"{b.Name} is hurt by its burn!");
                         break;
                 }
             }
@@ -213,16 +214,16 @@ public sealed partial class BattleCore
             // A nightmare lasts as long as the sleep does
             if (b.IsActive && v.Nightmare)
             {
-                if (p.Status == StatusCondition.Sleep) LoseHp(b, Formulas.Divide(p.MaxHP, 4), $"{b.Name} is locked in a nightmare!");
+                if (p.Status == StatusCondition.Sleep) LoseHp(Marked(b, BattleMoment.Nightmare), Formulas.Divide(p.MaxHP, 4), $"{b.Name} is locked in a nightmare!");
                 else v.Nightmare = false;
             }
 
-            if (b.IsActive && v.Cursed) LoseHp(b, Formulas.Divide(p.MaxHP, 4), $"{b.Name} is afflicted by the curse!");
+            if (b.IsActive && v.Cursed) LoseHp(Marked(b, BattleMoment.Curse), Formulas.Divide(p.MaxHP, 4), $"{b.Name} is afflicted by the curse!");
 
             // A binding move wears at it until its count is done, and the last count is the one that frees
             if (b.IsActive && v.BindTurns > 0)
             {
-                if (--v.BindTurns > 0) LoseHp(b, Formulas.Divide(p.MaxHP, Rules.BindDamageDivisor), $"{b.Name} is hurt by {v.BindingMove}!");
+                if (--v.BindTurns > 0) LoseHp(Marked(b, BindMoment(v.BindingMove)), Formulas.Divide(p.MaxHP, Rules.BindDamageDivisor), $"{b.Name} is hurt by {v.BindingMove}!");
                 else
                 {
                     Say($"{b.Name} was freed from {v.BindingMove}!");
@@ -319,7 +320,7 @@ public sealed partial class BattleCore
                 Emit(arrived);
                 continue;
             }
-            Say($"{b.Name} took the {move.Name} attack!").With(arrived);
+            var took = Say($"{b.Name} took the {move.Name} attack!").With(arrived);
 
             // Its accuracy is rolled now, by the stages of whoever stands where it was sent from
             var sender = At(place.DoomFrom);
@@ -331,6 +332,8 @@ public sealed partial class BattleCore
                 Say("But it failed!");
                 continue;
             }
+            // It lands with its own move's effect, from the place it was sent from (plan 25 · Y3)
+            took.With(new AheadLanded(move.Name, move.Type, move.Category, place.DoomFrom, b.Place));
             LandAhead(b, place.DoomDamage);
             if (!Settle()) return;
         }

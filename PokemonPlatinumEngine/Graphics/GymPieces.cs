@@ -50,7 +50,7 @@ internal sealed class GymPieces
     // Center's gate), a door of the back wall shut and open, the gate that shuts the front wall, a lift's platform,
     // and the lava's frames
     private bool league;
-    private Piece? doorShut, doorOpen, gate, liftPlatform, machineBall;
+    private Piece? doorShut, doorOpen, gate, liftPlatform, machineBall, machineBallLit;
     // Where a ball stands in each socket of the Hall of Fame's machine (plan 02 · S14), in the order they are laid
     private readonly List<Vector3> sockets = new();
     private readonly List<Piece> lava = new();
@@ -106,10 +106,10 @@ internal sealed class GymPieces
                         yield return (gate, Matrix4x4.CreateTranslation(npc.GridX, Relief.At(map, npc.GridX + 0.5f, map.Height - 1.5f), map.Height - 1));
             if (liftPlatform != null && map.Puzzle is LeagueLift lift)
                 yield return (liftPlatform, Matrix4x4.CreateTranslation(lift.Where.X, lift.Height - map.GroundLevel, lift.Where.Z));
-            // The balls laid on the Hall of Fame's machine, one to a socket
-            if (machineBall != null)
+            // The balls laid on the Hall of Fame's machine, one to a socket, plain or lit (plan 09 · L12)
+            if ((map.MachineLit ? machineBallLit ?? machineBall : machineBall) is { } ball)
                 for (int i = 0; i < Math.Min(map.MachineBalls, sockets.Count); i++)
-                    yield return (machineBall, Matrix4x4.CreateTranslation(sockets[i]));
+                    yield return (ball, Matrix4x4.CreateTranslation(sockets[i]));
             // The lava drifts: four frames, three a second
             if (lava.Count > 0)
                 yield return (lava[(int)((long)(FrameClock.Now * LavaFramesPerSecond) % lava.Count)], Matrix4x4.CreateTranslation(0f, LavaLevel - map.GroundLevel, 0f));
@@ -1002,7 +1002,7 @@ internal sealed class GymPieces
                 still.Box(x, x + 4, 0, 3, 0, rows, null, rail, rail, rail);
         }
 
-        KitBuilder? ballKit = null;
+        KitBuilder? ballKit = null, litKit = null;
         sockets.Clear();
 
         // Lava over every void tile of a room of fire
@@ -1039,6 +1039,9 @@ internal sealed class GymPieces
                 Carpet(still, map, CarpetCrimson, 6, back + 2, 5, map.Height - 3 - back);
                 Machine(still, map, 7, back);
                 ballKit = MachineBalls(sheet, vs, 7, back);
+                // The same ball as the machine lights it (plan 09 · L12)
+                litKit = new KitBuilder(sheet, vs) { Origin = Vector3.Zero };
+                litKit.Card(-6, 6, 0, 20, 32, litKit.Face("league.machine.ball.lit", 12, 12, c => LeagueArt.PaintMachineBall(c, lit: true)));
                 break;
         }
         if (map.Interior == InteriorStyle.PokemonCenter) CenterGate(still, map);
@@ -1050,6 +1053,7 @@ internal sealed class GymPieces
         gate = Make(gateKit);
         if (liftKit != null) liftPlatform = Make(liftKit);
         if (ballKit != null) machineBall = Make(ballKit);
+        if (litKit != null) machineBallLit = Make(litKit);
         foreach (var kit in lavaKits)
             if (Make(kit) is { } piece) lava.Add(piece);
     }
@@ -1082,6 +1086,12 @@ internal sealed class GymPieces
         var side = kit.Face($"league.pier.{d}", d, high, LeagueArt.PaintPier);
         kit.Box(5, 5 + w, 8, 8 + d, 0, high, kit.Face($"league.pier.top.{w}x{d}", w, d, LeagueArt.PaintPierTop), front, side, side);
     }
+
+    /// <summary>
+    /// Whether a room has the Hall of Fame's machine: the Hall itself, which nothing leads out of (the hallway before
+    /// it shares its look and has a way on). No GPU calls: the game asks before it plays the machine's piece.
+    /// </summary>
+    public static bool HasMachine(Map map) => map.Hall == HallStyle.HallOfFame && map.Warps.Count == 0;
 
     /// <summary>The Hall of Fame's machine against the back wall: a console three tiles wide and a screen behind it.</summary>
     private static void Machine(KitBuilder kit, Map map, int x, int back)
@@ -1194,7 +1204,7 @@ internal sealed class GymPieces
         platforms.Clear();
         snowball = null;
         league = false;
-        doorShut = doorOpen = gate = liftPlatform = machineBall = null;
+        doorShut = doorOpen = gate = liftPlatform = machineBall = machineBallLit = null;
         sockets.Clear();
         lava.Clear();
         doorways.Clear();

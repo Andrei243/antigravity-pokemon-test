@@ -36,8 +36,8 @@ public sealed partial class BattleCore
         int roll = rng.Roll(RollKind.Safari, 10);
         if (SafariCatchStage < 12) SafariCatchStage++;
         if (roll != 0 && SafariEscapeCount < 12) SafariEscapeCount++;
-        Say($"{playerName} tossed some bait toward the wild {foe.Pokemon.DisplayName}!");
-        Say(roll == 0 ? $"The wild {foe.Pokemon.DisplayName} is too wrapped up in eating to notice anything!" : $"The wild {foe.Pokemon.DisplayName} is munching away!");
+        Say($"{playerName} tossed some bait toward the wild {foe.Pokemon.DisplayName}!").With(Moment(foe, BattleMoment.Happy));
+        Say(roll == 0 ? $"The wild {foe.Pokemon.DisplayName} is too wrapped up in eating to notice anything!" : $"The wild {foe.Pokemon.DisplayName} is munching away!").With(Moment(foe, BattleMoment.Eating));
     }
 
     /// <summary>
@@ -52,7 +52,7 @@ public sealed partial class BattleCore
         if (SafariEscapeCount > 0) SafariEscapeCount--;
         if (roll != 0 && SafariCatchStage > 0) SafariCatchStage--;
         Say($"{playerName} flung some mud at the wild {foe.Pokemon.DisplayName}!");
-        Say(roll == 0 ? $"The wild {foe.Pokemon.DisplayName} is absolutely furious!" : $"The wild {foe.Pokemon.DisplayName} is fuming!");
+        Say(roll == 0 ? $"The wild {foe.Pokemon.DisplayName} is absolutely furious!" : $"The wild {foe.Pokemon.DisplayName} is fuming!").With(Moment(foe, BattleMoment.Angry));
     }
 
     /// <summary>

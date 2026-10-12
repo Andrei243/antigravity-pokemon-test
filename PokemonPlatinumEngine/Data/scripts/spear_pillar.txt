@@ -17,11 +17,12 @@
 # scene alone (the original's OnTransition hides him again while the state is under 4), and the place's arrival puts
 # the two commanders back on their tiles.
 #
-# Stood in for until plan 09 lands (L12 the set pieces, L14 the legendaries' ways in): the original's cutscene (its
-# sub-scene 63: the chains, the two Pokémon drawn out of their rifts, the shadow rising from the floor) is a rift
-# opening and a burst of light for each of Dialga and Palkia, who step out as Pokémon of the map, the air wavering and
-# the shadow sweeping over the altar (plan 09 · L11's effects), their cries, the camera's shake, the script's fade and
-# the sounds the bank has. The Dynamax beat a later mechanic would bring here (decision 06 · 2) is left out.
+# Stood in for (plan 09 · L14 brings the legendaries' ways in; L12's set pieces have no part here): the original's
+# cutscene (its sub-scene 63: the chains, the two Pokémon drawn out of their rifts, the shadow rising from the floor)
+# is a rift opening and a burst of light for each of Dialga and Palkia, who step out as Pokémon of the map, the air
+# wavering and the shadow sweeping over the altar (plan 09 · L11's effects), their cries, the camera's shake, the
+# script's fade and the sounds the bank has. The Dynamax beat a later mechanic would bring here (decision 06 · 2) is
+# left out.
 #
 # The camera kit (plan 09 · L4) frames it: the cinema bars come in as the camera goes to the altar, the camera drifts a
 # tile up it and its lens opens a little as the two are called, so that both stand clear of the upper bar, the moment

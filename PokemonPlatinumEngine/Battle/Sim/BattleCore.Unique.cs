@@ -671,7 +671,7 @@ public sealed partial class BattleCore
             return;
         }
         var candidates = Enum.GetValues<PokemonType>()
-            .Where(t => (t != PokemonType.Fairy || Rules.ModernSpeciesValues) && !user.HasType(t) && TypeChart.GetEffectiveness(v.Conversion2Type, t, null, Rules) <= 0.5f)
+            .Where(t => (t != PokemonType.Fairy || Rules.ModernSpeciesValues) && !user.HasType(t) && TypeChart.GetEffectiveness(v.Conversion2Type, t, null, Rules, Field.Inverse) <= 0.5f)
             .ToList();
         if (candidates.Count == 0)
         {

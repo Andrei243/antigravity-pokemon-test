@@ -32,8 +32,18 @@ public class SaveScreen
     /// <summary>What the panel shows: the game as it is being saved.</summary>
     public SaveData? Summary { get; private set; }
 
-    public void Open(SaveData summary)
+    /// <summary>
+    /// The slot the game is saved in (plan 12 · Q2), which the panel names: the one it was continued from, or the
+    /// empty one a new game took.
+    /// </summary>
+    public int Slot { get; private set; } = 1;
+
+    /// <summary>The panel's question: it names the slot.</summary>
+    public static string Question(int slot) => $"Save the game in slot {slot}?";
+
+    public void Open(SaveData summary, int slot = 1)
     {
+        Slot = slot;
         IsActive = true;
         Saved = false;
         requested = false;
@@ -116,6 +126,6 @@ public class SaveScreen
     public void Draw(int screenWidth, int screenHeight)
     {
         if (!reveal.Visible || Summary == null) return;
-        ModernUi.DrawSave(screenWidth, screenHeight, Summary, AnswerIndex, Saved, reveal.Shown);
+        ModernUi.DrawSave(screenWidth, screenHeight, Summary, Slot, AnswerIndex, Saved, reveal.Shown);
     }
 }

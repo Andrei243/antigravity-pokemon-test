@@ -76,4 +76,16 @@ namespace PokemonPlatinumTests.Probes.Core
     {
         public static bool InFront() => Raylib_cs.Raylib.IsWindowFocused();
     }
+
+    // Where the saves live needs no window (plan 12 · Q2)
+    internal static class SavePaths
+    {
+        public static bool Hidden() => Raylib_cs.Raylib.IsWindowHidden();
+    }
+
+    // Only the game's own start asks the real machine where its saves are; this is never run
+    internal static class Elsewhere
+    {
+        public static string? OwnFolder() => PokemonPlatinumEngine.Core.SaveEnvironment.Here().PerUserFolder;
+    }
 }

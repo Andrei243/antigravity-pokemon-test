@@ -482,6 +482,15 @@ partial class Harness
             TalkTo(Deep, "regigigas");
             ReadTo("One of rock"); On();
             Frames(40); Shot("le7a_temple_the_king_stirs");
+            // The statue itself shakes, eight times (plan 09 · L12): close up, thrown east and thrown west
+            var statue = Someone(Deep, "regigigas");
+            var pieces = game.World.Pieces;
+            int Thrown() => pieces.OffsetOf(statue, game.World.Life.Now);
+            Until(() => Thrown() > 0, "the statue thrown east", 120);
+            ShotCrop("le7ab_temple_the_statue_shaken_east", 770, 300, 320, 240, 6);
+            Until(() => Thrown() < 0, "the statue thrown west", 120);
+            ShotCrop("le7ac_temple_the_statue_shaken_west", 770, 300, 320, 240, 6);
+            Console.WriteLine($"regigigas shaken: {Thrown()} texels off its tile, {Where(Deep, "regigigas")}");
             ReadTo("gigigi"); Frames(4); Shot("le7b_temple_regigigas_wakes");
             IntoBattle("Regigigas");
             ToMainMenu(game.Battle); Shot("le7c_temple_regigigas_battle");
@@ -547,6 +556,14 @@ partial class Harness
         game.Interact();
         Until(() => Someone(Wood, "cresselia") is { GridY: 14 }, "Cresselia drawing back", 300);
         Frames(4); Shot("le8b_wood_she_draws_back");
+        // It flickers six times and is gone (plan 09 · L12): a moment it isn't seen, and one it is seen again
+        var flickering = Someone(Wood, "cresselia");
+        bool Showing() => game.World.Pieces.Seen(flickering, game.World.Life.Now);
+        Until(() => !Showing(), "Cresselia unseen", 300);
+        Frames(2); Shot("le8ba_wood_she_flickers_out");
+        Until(Showing, "Cresselia seen again", 60);
+        Frames(2); Shot("le8bb_wood_she_flickers_back");
+        Console.WriteLine($"cresselia flickering: on the map {Someone(Wood, "cresselia") != null}, {Where(Wood, "cresselia")}");
         ReadTo("flew away"); Frames(4); Shot("le8c_wood_flew_away");
         ReadTo("glittering"); Frames(4); Shot("le8d_wood_something_is_glittering");
         ReadTo(null); Frames(10);

@@ -46,6 +46,9 @@ partial class Harness
         engine.NewGameRegion = "Sinnoh";
         engine.StartNewGame();
         game.State = GameState.Overworld;
+        // The harness's game is saved in slot 1 whatever an earlier run left in the output folder (a new game takes the
+        // first empty slot, plan 12 · Q2), so a mode that saves writes the one file and takes that one away again
+        game.SaveSlot = 1;
         // The harness moves between maps without arriving anywhere, so the location sign would sit in every field shot
         game.LocationSign.Hide();
 

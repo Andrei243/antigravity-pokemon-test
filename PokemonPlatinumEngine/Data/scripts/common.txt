@@ -512,14 +512,19 @@ script HiddenItem
   end
 
 
-# The nurse of a Pokémon Center.
+# The nurse of a Pokémon Center. At her machine (plan 09 · L12; the original's CommonScript_NurseHealPokemon) she
+# turns to it, a ball for each Pokémon of the team that is no Egg is laid on its tray and all of them are lit to the
+# heal's fanfare (the machine's own set piece, PlayPokecenterHealingAnimation, which the script waits for), she turns
+# back, and the team is well. In a room with no machine there is the fanfare alone.
 script Nurse
   say "Good day! You've come to a Pokémon Center."
   ask "Your Pokémon look as if they could do with a rest. Shall I see to them?"
   if no goto Goodbye
   say "Leave them with me. It won't take a moment."
+  face self left
+  anim heal
+  face self down
   heal
-  fanfare heal
   say "There we are! Every one of them is fit and well again."
   # The first time one of the team has Pokérus, she says what it is (CommonScript_NurseCheckPokerus)
   if flag FLAG_POKECENTER_IDENTIFIED_POKERUS goto Goodbye
@@ -549,26 +554,31 @@ script Clerk
   end
 
 
-# A PC.
+# A PC. Its screen comes on as it is switched on and goes off as it is left, each with its sound (plan 09 · L12; the
+# original's CommonScript_PCBootUpAnimation and CommonScript_PCShutDownAnimation).
 script PC
+  anim pc on
   text "{player} switched the PC on."
   # With a Seal Case, the PC offers the Ball Capsules too, as the original's own PC does (plan 06 · R17b;
   # CommonScript_BallCapsules: with no Seal at all there is nothing to open)
   if not item "Seal Case" goto Storage
   choose "Which should be opened?" "POKéMON STORAGE" "BALL CAPSULES" "SWITCH OFF"
   if result == 1 goto Capsules
-  if result == 2 end
+  if result == 2 goto Off
 label Storage
   pc
+# CommonScript_PCSwitchOff
+label Off
+  anim pc off
   end
 label Capsules
   seal count
   if result == 0 goto NoSeals
   seal capsules
-  end
+  goto Off
 label NoSeals
   text "There are no Seals in the Seal Case."
-  end
+  goto Off
 
 
 # The Ribbon Syndicate of the Resort Area (plan 06 · R17b; scripts_resort_area_ribbon_syndicate_1f.s). Its building
@@ -869,8 +879,11 @@ script CyclistsOnly
 # they last went into, or beside Mom at home, and this is the one who looks after them.
 script BlackOutCenter
   say "Oh my, you came in looking exhausted. First, let me look after your Pokémon."
+  # CommonScript_NurseHealPokemon, as when she is asked: the machine's own set piece (plan 09 · L12)
+  face self left
+  anim heal
+  face self down
   heal
-  fanfare heal
   say "There we are. Every one of them is fit and well again."
   say "Please be careful out there. We'll be here whenever you need us."
   end

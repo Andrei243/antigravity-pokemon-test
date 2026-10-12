@@ -590,29 +590,32 @@ public class SavedItemData
 public enum SaveLoad { Ok, None, Recovered, Damaged }
 
 /// <summary>
-/// Where the game keeps its save, and how it writes and reads it so that nothing but the save being written can be
-/// lost (plan 12 · Q1). A save is written to <c>savegame.json.tmp</c> and moved over <c>savegame.json</c>, which is a
-/// rename on every platform, after the old file, if it reads whole, has been copied to <c>savegame.bak</c>; it carries
-/// its own <see cref="SaveData.Checksum"/>. Reading it says what happened (<see cref="SaveLoad"/>): a file that is cut
-/// short, won't parse or fails its checksum gives way to the backup. No drawing, no input.
+/// How the game writes and reads a save so that nothing but the save being written can be lost (plan 12 · Q1). A
+/// save is written to a temporary file beside it (<c>save1.json.tmp</c>) and moved over the save, which is a rename
+/// on every platform, after the old file, if it reads whole, has been copied to its backup (<c>save1.bak</c>); it
+/// carries its own <see cref="SaveData.Checksum"/>. Reading it says what happened (<see cref="SaveLoad"/>): a file
+/// that is cut short, won't parse or fails its checksum gives way to the backup. Which file a save is has nothing to
+/// do with it: every method here takes its path, and the game's own are <see cref="SavePaths"/>' (plan 12 · Q2: a
+/// slot's file in the folder <see cref="SavePaths.Current"/> names, through <see cref="SaveSlots"/>). No drawing, no input.
 /// </summary>
 public static class SaveManager
 {
-    /// <summary>The save's file in the working directory (plan 12 · Q2 moves it to <c>SavePaths</c>).</summary>
-    public const string FileName = "savegame.json";
+    /// <summary>
+    /// The one save an install had before there were slots (plan 12 · Q2), which the first start afterwards makes
+    /// slot 1 (<see cref="SaveSlots.AdoptOldSave"/>). The game writes no file of this name any more.
+    /// </summary>
+    public const string FileName = SavePaths.OldSaveName;
 
     private static readonly JsonSerializerOptions Options = new() { WriteIndented = true };
 
-    /// <summary>The backup kept beside a save: <c>savegame.json</c>'s is <c>savegame.bak</c>.</summary>
+    /// <summary>The backup kept beside a save: <c>save1.json</c>'s is <c>save1.bak</c>.</summary>
     public static string BackupOf(string path) => Path.ChangeExtension(path, ".bak");
 
-    /// <summary>The file a save is written to before it takes the save's place: <c>savegame.json.tmp</c>.</summary>
+    /// <summary>The file a save is written to before it takes the save's place: <c>save1.json.tmp</c>.</summary>
     public static string TempOf(string path) => path + ".tmp";
 
-    public static bool HasSaveFile() => File.Exists(FileName) || File.Exists(BackupOf(FileName));
-
     /// <summary>
-    /// A save as the game writes it to <c>savegame.json</c>, its checksum in it (the harness's <c>saves</c> mode writes
+    /// A save as the game writes it to a slot's file, its checksum in it (the harness's <c>saves</c> mode writes
     /// its own the same way: plan 24 · X3). The data's own <see cref="SaveData.Checksum"/> is left as it was.
     /// </summary>
     public static string Write(SaveData data)
@@ -624,7 +627,7 @@ public static class SaveManager
     }
 
     /// <summary>
-    /// A save read as the game reads <c>savegame.json</c>, with no check of its checksum (the tests read the saves of
+    /// A save read as the game reads a slot's file, with no check of its checksum (the tests read the saves of
     /// every version the same way: plan 24 · X3). Throws on a file that isn't JSON.
     /// </summary>
     public static SaveData? Read(string json) => JsonSerializer.Deserialize<SaveData>(json);
@@ -755,8 +758,6 @@ public static class SaveManager
 
     // ------------------------------------------------------------------ writing and reading the file
 
-    public static bool SaveGame(SaveData data) => SaveGame(data, FileName);
-
     /// <summary>
     /// Writes a save so that a crash at any moment loses nothing but this save: to the temporary file first, flushed
     /// to the disk, then the old save, if it is whole, copied to the backup, then the temporary file moved over the
@@ -783,11 +784,8 @@ public static class SaveManager
         }
     }
 
-    /// <summary>The save if one can be loaded, from the backup if the save itself is damaged; null if neither.</summary>
-    public static SaveData? LoadGame() => Load(FileName).Save;
-
     /// <summary>
-    /// Reads the save and says what happened: <see cref="SaveLoad.None"/> with no file at all, <see cref="SaveLoad.Ok"/>
+    /// Reads a save and says what happened: <see cref="SaveLoad.None"/> with no file at all, <see cref="SaveLoad.Ok"/>
     /// with the save whole, <see cref="SaveLoad.Recovered"/> with the save gone or damaged and the backup whole (its
     /// game is the one returned), <see cref="SaveLoad.Damaged"/> with nothing whole to load.
     /// </summary>
@@ -800,9 +798,6 @@ public static class SaveManager
         if (hasBackup && ReadWhole(backup) is { } before) return (SaveLoad.Recovered, before);
         return (SaveLoad.Damaged, null);
     }
-
-    /// <summary>The save in the working directory, read as <see cref="Load(string)"/> reads it.</summary>
-    public static (SaveLoad Outcome, SaveData? Save) Load() => Load(FileName);
 }
 
 /// <summary>The PC's boxes in a save (plan 06 · R12): the box the PC was left on, the wallpapers unlocked, and each box's name, wallpaper and Pokémon by place.</summary>

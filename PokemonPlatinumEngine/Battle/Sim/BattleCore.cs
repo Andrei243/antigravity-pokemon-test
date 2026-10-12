@@ -183,6 +183,7 @@ public sealed partial class BattleCore : IBattleContext
         FirstBattle = setup.FirstBattle;
         Frontier = setup.Frontier;
         Field.Frontier = Frontier;
+        Field.Inverse = Conditions.Inverse;
         SpecialBalls = setup.SpecialBalls;
         Partner = Kind is BattleKind.Safari or BattleKind.PalPark ? null : setup.Partner;
 
@@ -281,7 +282,7 @@ public sealed partial class BattleCore : IBattleContext
     /// given from outside. Null when its numbers aren't a <see cref="BattleRandom"/>'s: nothing else comes out
     /// the same everywhere.
     /// </summary>
-    public BattleRecord? Record => startedFrom is uint seed ? new BattleRecord(seed, answers.ToList()) : null;
+    public BattleRecord? Record => startedFrom is uint seed ? new BattleRecord(seed, answers.ToList(), Inverse) : null;
 
     /// <summary>
     /// Plays a record through. The battle must be new, between teams as they were when the recorded one began,
@@ -291,6 +292,7 @@ public sealed partial class BattleCore : IBattleContext
     public void Replay(BattleRecord record)
     {
         if (startedFrom != record.Seed) throw new ArgumentException("A replay starts from the record's own seed");
+        if (Inverse != record.Inverse) throw new ArgumentException("A replay is fought under the record's own chart: an inverse battle's as an inverse battle");
         Start();
         foreach (var answered in record.Answers) Submit(answered);
     }
@@ -490,6 +492,7 @@ public sealed partial class BattleCore : IBattleContext
             Say($"{b.Trainer!.FullTitle} sent out {b.Pokemon!.DisplayName}!").With(new Entered(b.Place, b.Pokemon!, FromBall: true));
         }
 
+        AnnounceFormat();
         OpenUnderTheSky();
         SwitchInChecks();
     }
@@ -1122,7 +1125,9 @@ public sealed partial class BattleCore : IBattleContext
         // Evolution waits for the battle to end (see LeveledUp)
         if (!leveledUp.Contains(p)) leveledUp.Add(p);
         Emit(new LevelRose(p, p.Level, before, p.Stats()));
-        Say($"{p.DisplayName} grew to Lv. {p.Level}!");
+        var grew = Say($"{p.DisplayName} grew to Lv. {p.Level}!");
+        // Only a Pokémon standing on the field plays the level's animation (SEQ_GET_EXP_CHECK_LEVEL_UP; plan 25 · Y3)
+        if (PlayerSlots.FirstOrDefault(b => b.IsActive && b.Pokemon == p) is { } standing) grew.With(Moment(standing, BattleMoment.LevelUp));
         foreach (string move in learned) Say($"{p.DisplayName} learned {move}!");
         foreach (string move in wanted) Emit(new MoveWanted(p, move));
     }

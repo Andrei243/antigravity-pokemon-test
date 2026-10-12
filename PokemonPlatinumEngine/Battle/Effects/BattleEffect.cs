@@ -29,6 +29,21 @@ public interface IBattleContext
     /// </summary>
     string ItemOf(Battler holder, ItemData? item = null);
 
+    /// <summary>
+    /// The name of the holder's item on a line that tells of the item going off (plan 25 · Y3): as
+    /// <see cref="ItemOf"/>, and the line also shows the held item's moment (<see cref="BattleMoment.HeldItem"/>).
+    /// Use it where the original plays its held-item animation (a berry eaten, Leftovers, a Focus Sash), and
+    /// <see cref="ItemOf"/> where a line only names an item.
+    /// </summary>
+    string ItemAtWork(Battler holder, ItemData? item = null);
+
+    /// <summary>
+    /// Gives the holder a status condition as its own item's doing (a Toxic Orb, a Flame Orb): as
+    /// <see cref="TryInflictStatus"/> with nobody behind it, and the line that tells of the condition shows the item
+    /// going off.
+    /// </summary>
+    bool TryInflictStatusByItem(Battler holder, StatusCondition status);
+
     /// <summary>Raises or lowers a stat stage, with the usual messages. Returns false if nothing changed.</summary>
     bool ChangeStat(Battler target, StatType stat, int amount, Battler? source, bool announceFailure = false);
 

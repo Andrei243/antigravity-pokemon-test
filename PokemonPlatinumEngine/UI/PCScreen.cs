@@ -85,7 +85,8 @@ public class PCScreen
         CloseMenus();
         boxKey.Release();
         openAge = 0f;
-        AudioManager.PlaySound("pc_on");
+        // (The PC's own two sounds are heard as its screen comes on and goes off in the field: the script's
+        // anim pc on and anim pc off, plan 09 · L12)
     }
 
     public void Close() => IsActive = false;
@@ -481,7 +482,6 @@ public class PCScreen
                 // The PC remembers the box it was left on
                 pc.CurrentBox = Box;
                 Close();
-                AudioManager.PlaySound("pc_off");
             }
         }
         else if (InputManager.IsActionPressed(GameAction.Confirm)) Confirm(party, pc, onNotification);

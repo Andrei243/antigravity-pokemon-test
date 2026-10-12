@@ -415,7 +415,7 @@ public sealed class TrainerAi : IBattleController
         foreach (int i in Bench(battle, mine))
         {
             var p = mine.Roster!.Members[i];
-            float against = Data.TypeChart.GetEffectiveness(hit.Type, p.PrimaryType, p.SecondaryType, battle.Rules);
+            float against = Data.TypeChart.GetEffectiveness(hit.Type, p.PrimaryType, p.SecondaryType, battle.Rules, battle.Field.Inverse);
             bool fits = immune ? against == 0f : against > 0f && against < 1f;
             if (!fits) continue;
             foreach (var m in p.Moves)
@@ -469,7 +469,7 @@ public sealed class TrainerAi : IBattleController
         bool super = false, weak = false, immune = false;
         foreach (var t in target.Types.Distinct())
         {
-            float multiplier = Data.TypeChart.GetEffectiveness(type, t, null, battle.Rules);
+            float multiplier = Data.TypeChart.GetEffectiveness(type, t, null, battle.Rules, battle.Field.Inverse);
             if (multiplier == 0f)
             {
                 if (t == PokemonType.Flying && type == PokemonType.Ground && (battle.Field.Gravity || BattleEffects.HoldEffectOf(target) == "SpeedDownGrounded")) continue;
@@ -509,7 +509,8 @@ public sealed class TrainerAi : IBattleController
                 var p = party[i];
                 var d1 = defender.Types[0];
                 var d2 = defender.Types[^1];
-                byte score = (byte)(Matchup(p.PrimaryType, d1, d2, battle.Rules) + Matchup(p.SecondaryType ?? p.PrimaryType, d1, d2, battle.Rules));
+                bool inverse = battle.Field.Inverse;
+                byte score = (byte)(Matchup(p.PrimaryType, d1, d2, battle.Rules, inverse) + Matchup(p.SecondaryType ?? p.PrimaryType, d1, d2, battle.Rules, inverse));
                 if (maxScore < score)
                 {
                     maxScore = score;
@@ -542,12 +543,15 @@ public sealed class TrainerAi : IBattleController
         return pick;
     }
 
-    /// <summary><c>BattleSystem_TypeMatchupMultiplier</c>: 40 put through the chart for one attacking type against two.</summary>
-    private static int Matchup(PokemonType attacking, PokemonType d1, PokemonType d2, Ruleset rules)
+    /// <summary>
+    /// <c>BattleSystem_TypeMatchupMultiplier</c>: 40 put through the chart for one attacking type against two. The
+    /// chart is the battle's own, so an inverse battle's is turned round (plan 14 · B1), as every sum the AI makes is.
+    /// </summary>
+    private static int Matchup(PokemonType attacking, PokemonType d1, PokemonType d2, Ruleset rules, bool inverse)
     {
         int mul = 40;
-        mul = mul * (int)MathF.Round(Data.TypeChart.GetEffectiveness(attacking, d1, null, rules) * 10f) / 10;
-        if (d2 != d1) mul = mul * (int)MathF.Round(Data.TypeChart.GetEffectiveness(attacking, d2, null, rules) * 10f) / 10;
+        mul = mul * (int)MathF.Round(Data.TypeChart.GetEffectiveness(attacking, d1, null, rules, inverse) * 10f) / 10;
+        if (d2 != d1) mul = mul * (int)MathF.Round(Data.TypeChart.GetEffectiveness(attacking, d2, null, rules, inverse) * 10f) / 10;
         return mul;
     }
 

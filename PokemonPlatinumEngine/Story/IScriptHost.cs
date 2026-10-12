@@ -114,6 +114,28 @@ public interface IScriptHost
     /// <summary>Every effect held on a tile goes as it would at its end.</summary>
     void StopEffect(int x, int y);
 
+    /// <summary>
+    /// A set piece the original's scripts call by name is played where the player stands (plan 09 · L12; style guide,
+    /// "Rooms", "Machines at work"): a Pokémon Center's machine or the Hall of Fame's with a ball for each of
+    /// <paramref name="count"/> Pokémon, the PC before the player switched on or the one that is on switched off, a
+    /// lift's ride of <paramref name="count"/> hums. Returns how long it takes, which the runner itself waits; nothing
+    /// where the place has nothing to play it on, so a script is never left waiting.
+    /// </summary>
+    float Anim(SetPiece piece, int count);
+
+    /// <summary>
+    /// Someone is shaken so many times where they stand (plan 09 · L12; the original's <c>ShakeObject</c>): drawn a few
+    /// texels to either side, their tile unchanged. Returns how long it takes, which the runner waits; nothing for
+    /// someone who isn't on the map. Nobody is the player.
+    /// </summary>
+    float Shake(NPC? who, int times);
+
+    /// <summary>
+    /// Someone flickers (plan 09 · L12; the original's <c>FlickerObject</c>): unseen and seen by turns, changing so
+    /// many times in all, and seen again at the end. Returns how long it takes; nothing for someone who isn't on the map.
+    /// </summary>
+    float Flicker(NPC? who, int times);
+
     // ------------------------------------------------------------------ what the script waits for
 
     /// <summary>
@@ -135,9 +157,11 @@ public interface IScriptHost
     /// <summary>
     /// Battles a trainer of the map, or two at once (<paramref name="second"/>), perhaps with a trainer at the
     /// player's side (<paramref name="partner"/>, a tag battle). <see cref="Outcome"/> is how it went once the host is
-    /// no longer busy. The game's first battle (<paramref name="first"/>) has no critical hits.
+    /// no longer busy. The game's first battle (<paramref name="first"/>) has no critical hits. What the script asks
+    /// of the battle itself comes as its <paramref name="terms"/> (plan 14 · B1: an inverse battle), which the host
+    /// lays over the place's own conditions as it makes the battle; null asks nothing.
     /// </summary>
-    void Battle(NPC trainer, NPC? second, Trainer? partner, bool mayLose, bool first);
+    void Battle(NPC trainer, NPC? second, Trainer? partner, bool mayLose, bool first, BattleTerms? terms = null);
 
     /// <summary>A wild Pokémon in the player's way: one met as ever, one that can't be run from, or the assistant's catching lesson, which the player watches.</summary>
     void WildBattle(Pokemon wild, BattleKind kind, bool cannotFlee);

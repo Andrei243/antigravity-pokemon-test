@@ -437,6 +437,8 @@ public sealed partial class ScriptRunner
                     partner = beside.TrainerData ?? throw Wrong(i, $"{beside.Name} is no trainer and can't battle beside the player");
                 }
                 bool mayLose = i.Option;
+                // What the line asks of the battle itself (plan 14 · B1): an inverse battle
+                var terms = i.Inverse ? new BattleTerms(Inverse: true) : null;
                 // A rematch the Vs. Seeker found: the trainer brings the team of the level the story has reached, for
                 // this battle, and stops waiting for one (VsSeeker_GetRematchTrainerID, SetMoveCodeForFacingDirection)
                 var own = foe.TrainerData;
@@ -447,7 +449,7 @@ public sealed partial class ScriptRunner
                     TrainerDatabase.Fill(team, rematch);
                     foe.TrainerData = team;
                     foe.ReadyForRematch = false;
-                    host.Battle(foe, second, partner, mayLose, i.FirstBattle);
+                    host.Battle(foe, second, partner, mayLose, i.FirstBattle, terms);
                     afterBusy = () =>
                     {
                         foe.TrainerData = own;
@@ -457,7 +459,7 @@ public sealed partial class ScriptRunner
                 }
                 Refresh(foe);
                 Refresh(second);
-                host.Battle(foe, second, partner, mayLose, i.FirstBattle);
+                host.Battle(foe, second, partner, mayLose, i.FirstBattle, terms);
                 afterBusy = () => AfterBattle(mayLose);
                 break;
             }
@@ -852,6 +854,27 @@ public sealed partial class ScriptRunner
                 break;
             case Op.SlowMotion:
                 host.SlowMotion(i.Factor, i.Seconds);
+                break;
+
+            // The original's set pieces (plan 09 · L12): each is waited for by the runner itself, for as long as the
+            // host says it takes, which is nothing where it can't be played (a room with no machine, someone not on
+            // the map), so a script is never left waiting on one
+            case Op.Anim:
+                waiting = host.Anim(i.Piece, i.Piece switch
+                {
+                    // CountPartyNonEggs: a ball on the nurse's tray for every Pokémon that is no Egg
+                    SetPiece.Heal => host.Party.Members.Count(p => !p.IsEgg),
+                    // GetPartyCount: the Hall of Fame's machine takes the whole team's
+                    SetPiece.HallOfFame => host.Party.Count,
+                    SetPiece.ElevatorUp or SetPiece.ElevatorDown => i.Number,
+                    _ => 0
+                });
+                break;
+            case Op.Shake:
+                waiting = host.Shake(Person(i.Name, i), i.Number);
+                break;
+            case Op.Flicker:
+                waiting = host.Flicker(Person(i.Name, i), i.Number);
                 break;
 
             default:

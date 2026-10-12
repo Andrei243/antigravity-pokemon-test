@@ -18,15 +18,14 @@ public partial class GameEngine
     private readonly CreditsScreen credits = new();
 
     /// <summary>
-    /// How many Poké Balls lie on the Hall of Fame's machine: a variable of our own that the room's script counts up
-    /// as it lays them (the original's <c>PlayHallOfFameHealingAnimation</c>) and puts back to nought.
+    /// The room's machine shows the balls its own piece has laid on it, plain or lit (plan 09 · L12: the script's
+    /// <c>anim halloffame</c>, the original's <c>PlayHallOfFameHealingAnimation</c>): none until the piece begins, one
+    /// more every beat of it, and all of them from then until the room is left.
     /// </summary>
-    public const string MachineBallsVariable = "VAR_HALL_OF_FAME_BALLS";
-
-    /// <summary>The room's machine shows the balls the story says lie on it.</summary>
     private void KeepTheMachinesBalls()
     {
-        if (currentMap.Hall == HallStyle.HallOfFame) currentMap.MachineBalls = story.Var(MachineBallsVariable);
+        if (currentMap.Hall != HallStyle.HallOfFame) return;
+        (currentMap.MachineBalls, currentMap.MachineLit) = world.Pieces.Machine(SetPiece.HallOfFame, world.Life.Now);
     }
 
     /// <summary>The team's models, asked for before a fade and waited on at its midpoint, as a battle's are.</summary>
