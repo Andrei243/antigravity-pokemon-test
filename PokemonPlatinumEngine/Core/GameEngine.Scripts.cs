@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Raylib_cs;
+using Gesture = PokemonPlatinumEngine.Overworld.Gesture;
 using PokemonPlatinumEngine.Audio;
 using PokemonPlatinumEngine.Battle;
 using PokemonPlatinumEngine.Data;
@@ -37,6 +38,23 @@ public partial class GameEngine
     // What a script set going: people walking, the player walking, the screen gone black, the camera sent away
     private readonly List<NpcWalk> npcWalks = new();
     private PlayerWalk? playerWalk;
+
+    // Whoever a script's last gesture was given to (plan 11 · C11; null for the player), while the script waits for it
+    private (bool Waiting, NPC? Who) actor;
+
+    /// <summary>True while someone plays the gesture a script waits for.</summary>
+    private bool ActorBusy => actor.Waiting && (actor.Who is { } who ? who.Gesture : player.Gesture) != null;
+
+    /// <summary>
+    /// Runs the clock of the gesture a script waits for when its actor is not among the people whose clocks run
+    /// anyway (those near the player), so a script never waits for one that can't end.
+    /// </summary>
+    private void KeepTheActorActing(float dt, List<NPC> near)
+    {
+        if (!actor.Waiting) return;
+        if (actor.Who is { } who && !near.Contains(who)) who.TickGesture(dt);
+        if (!ActorBusy) actor = default;
+    }
     private readonly ScreenFade scriptFade = new();
     private bool cameraSent;
 
@@ -150,6 +168,9 @@ public partial class GameEngine
         EndRadarChain();
         Roamers.NotePlace(encounters, PlaceKey());
         currentMap.ForgetForced();
+        // A face held and a gesture under way are let go on coming to a place, as the people's are (plan 11 · C11)
+        player.StopActing();
+        actor = default;
         currentMap.ApplyPresence(story.Has);
         // Whoever was still walking on the map left behind stands where they were going, not between two tiles
         foreach (var walk in npcWalks) walk.Finish();
@@ -806,7 +827,7 @@ public partial class GameEngine
             game.currentMap.ApplyPresence(game.story.Has);
         }
 
-        public void Walk(NPC? who, IReadOnlyList<Direction> steps, bool fast)
+        public void Walk(NPC? who, IReadOnlyList<ScriptStep> steps, bool fast)
         {
             if (who == null)
             {
@@ -833,6 +854,19 @@ public partial class GameEngine
             if (who == null) game.player.ShowBubble(bubble, seconds);
             else who.ShowBubble(bubble, seconds);
             if (bubble == EmoteBubble.Exclaim) AudioManager.PlaySound("exclaim", who == null ? 0f : game.PanAt(who.GridX));
+        }
+
+        public void Act(NPC? who, Gesture gesture, int times)
+        {
+            if (who == null) game.player.Act(gesture, times);
+            else who.Act(gesture, times);
+            game.actor = (true, who);
+        }
+
+        public void Mood(NPC? who, Mood mood)
+        {
+            if (who == null) game.player.Mood = mood;
+            else who.Mood = mood;
         }
 
         public void Camera(CameraMove move, int x, int y, float seconds)
@@ -864,7 +898,7 @@ public partial class GameEngine
         // ---- what the script waits for
 
         public bool Busy => game.currentState != GameState.Overworld || game.dialogue.IsActive || game.scriptFade.IsMoving || game.cutIn != null
-            || game.fieldMoveStep || game.PuzzleMoving || game.AwaitingStroll;
+            || game.fieldMoveStep || game.PuzzleMoving || game.AwaitingStroll || game.ActorBusy;
 
         public void Say(string? speaker, IReadOnlyList<string> lines)
         {

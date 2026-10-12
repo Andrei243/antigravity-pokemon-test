@@ -733,9 +733,15 @@ public partial class GameEngine
             world.Life.Rainfall(currentMap, player.PixelX / Player.TileSize + 0.5f, player.PixelY / Player.TileSize + 0.5f,
                 Weathers.LandsABeat(currentMap.WeatherAt(player.GridX, player.GridY)));
             player.TickBubble(dt);
+            player.TickGesture(dt);
             // Only the people near the player are looked at each frame (plan 01 · M12): a bubble is shown over
-            // someone in sight, and the map of Sinnoh holds everyone
-            foreach (var npc in currentMap.NPCs.Near(player.GridX, player.GridY, Wandering.Reach, peopleNear)) npc.TickBubble(dt);
+            // someone in sight, and the map of Sinnoh holds everyone. A gesture's clock runs as a bubble's does (plan 11 · C11)
+            foreach (var npc in currentMap.NPCs.Near(player.GridX, player.GridY, Wandering.Reach, peopleNear))
+            {
+                npc.TickBubble(dt);
+                npc.TickGesture(dt);
+            }
+            KeepTheActorActing(dt, peopleNear);
             // A trainer waiting for a rematch spins where they stand (MOVEMENT_TYPE_VS_SEEKER_SPIN)
             rematchSpin += dt;
             if (rematchSpin >= 0.25f)

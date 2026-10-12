@@ -9,3 +9,4 @@ global using PokemonPlatinumEngine.Models;
 global using PokemonPlatinumEngine.Overworld;
 global using PokemonPlatinumEngine.Story;
 global using PokemonPlatinumEngine.UI;
+global using Gesture = PokemonPlatinumEngine.Overworld.Gesture;

@@ -478,6 +478,108 @@ public class StoryTests
     }
 
     [Fact]
+    public void SomeoneWalkedOnTheSpotStaysOnTheirTileAndOneSteppedBackKeepsTheirFacing()
+    {
+        // Two steps on the spot to the left (plan 11 · C11, the original's WalkOnSpot): turned, the legs walking, the
+        // tile the same
+        var npc = new NPC { GridX = 5, GridY = 5, Facing = Direction.Down };
+        var onSpot = new NpcWalk(npc, new[] { new ScriptStep(Direction.Left, ScriptStepKind.OnSpot), new ScriptStep(Direction.Left, ScriptStepKind.OnSpot) }, fast: false);
+        onSpot.Update(0.1f);
+        Assert.Equal((5, 5, Direction.Left), (npc.GridX, npc.GridY, npc.Facing));
+        Assert.Equal((0f, 0f), (npc.StepOffsetX, npc.StepOffsetY));
+        Assert.True(npc.WalkBlend > 0f);
+        float taken = 0.1f;
+        for (; taken < 5f && !onSpot.IsDone; taken += 1f / 60f) onSpot.Update(1f / 60f);
+        Assert.Equal((5, 5, Direction.Left), (npc.GridX, npc.GridY, npc.Facing));
+        // Two steps' time at a walk, then the rest
+        Assert.InRange(taken, 2f / NpcWalk.WalkPace, 2f / NpcWalk.WalkPace + 0.2f);
+
+        // A step to the right with the facing kept (LockDir): a step back from where they look
+        var back = new NpcWalk(npc, new[] { new ScriptStep(Direction.Right, ScriptStepKind.Back) }, fast: false);
+        back.Update(0.1f);
+        Assert.Equal((6, 5, Direction.Left), (npc.GridX, npc.GridY, npc.Facing));
+        Assert.InRange(npc.DrawX, 5.01f, 5.99f);
+        back.Finish();
+        Assert.Equal((6, 5, Direction.Left), (npc.GridX, npc.GridY, npc.Facing));
+
+        // The player takes the same with their own steps: on the spot to the left, then two back up the map
+        var map = new Map(10, 10);
+        var player = new Player(5, 5);
+        var walk = new PlayerWalk(new[]
+        {
+            new ScriptStep(Direction.Left, ScriptStepKind.OnSpot), new ScriptStep(Direction.Up, ScriptStepKind.Back),
+            new ScriptStep(Direction.Up, ScriptStepKind.Back)
+        }, fast: false);
+        int steps = 0;
+        for (int frame = 0; frame < 900 && !walk.IsDone; frame++)
+        {
+            walk.Update(1f / 60f, player, map, () => steps++);
+            Assert.Equal(Direction.Left, player.Facing);
+        }
+        Assert.True(walk.IsDone);
+        Assert.False(walk.Blocked);
+        Assert.Equal((5, 3, Direction.Left), (player.GridX, player.GridY, player.Facing));
+        Assert.Equal(2, steps);
+
+        // A step back into something is given up after a moment, as a walk into a wall is
+        map.SetSolid(6, 3, true);
+        var blocked = new PlayerWalk(new[] { new ScriptStep(Direction.Right, ScriptStepKind.Back) }, fast: false);
+        int frames = 0;
+        for (; frames < 900 && !blocked.IsDone; frames++) blocked.Update(1f / 60f, player, map);
+        Assert.True(blocked.IsDone && blocked.Blocked);
+        Assert.Equal((5, 3, Direction.Left), (player.GridX, player.GridY, player.Facing));
+        Assert.InRange(frames / 60f, PlayerWalk.GiveUpAfter, PlayerWalk.GiveUpAfter + 0.5f);
+    }
+
+    [Fact]
+    public void AGesturesClockIsTheFieldsAndEndsAfterItsRounds()
+    {
+        // Two people given the same gesture and the same frames are at the same moment of it: the clock is the dt the
+        // field hands them, as a bubble's is (plan 11 · C11), so a fixed frame clock repeats it
+        var first = new NPC();
+        var second = new NPC();
+        first.Act(Gesture.Nod, 2);
+        second.Act(Gesture.Nod, 2);
+        float[] frames = { 1f / 60f, 1f / 30f, 0.05f, 1f / 144f, 0.1f, 1f / 60f };
+        foreach (float dt in frames)
+        {
+            first.TickGesture(dt);
+            second.TickGesture(dt);
+        }
+        Assert.Equal(first.GestureAge, second.GestureAge);
+        Assert.Equal(frames.Sum(), first.GestureAge, 4);
+        Assert.Equal(Gesture.Nod, first.Gesture);
+        Assert.Equal(2, first.GestureTimes);
+
+        // Each round starts the emote again, and the gesture is over after as many rounds as it was asked for
+        float round = Acting.Length(Gesture.Nod);
+        Assert.Equal(0.25f, Acting.RoundAge(Gesture.Nod, round + 0.25f), 4);
+        var nod = new NPC();
+        nod.Act(Gesture.Nod, 2);
+        float played = 0f;
+        for (; played < 10f && nod.Gesture != null; played += 1f / 60f) nod.TickGesture(1f / 60f);
+        Assert.InRange(played, 2f * round - 0.02f, 2f * round + 0.02f);
+        Assert.Equal(0f, nod.GestureAge);
+
+        // A jump on the spot is the hop's own length; the player plays gestures by the same clock
+        Assert.Equal(Acting.JumpSeconds, Acting.Length(Gesture.Jump));
+        var player = new Player(3, 3);
+        player.Act(Gesture.Jump);
+        player.TickGesture(Acting.JumpSeconds / 2f);
+        Assert.Equal(Gesture.Jump, player.Gesture);
+        player.TickGesture(Acting.JumpSeconds);
+        Assert.Null(player.Gesture);
+
+        // A face is held until it is changed or the place is come to again, with any gesture under way
+        var map = new Map(6, 6);
+        var held = new NPC { GridX = 2, GridY = 2, Mood = Mood.Sad };
+        map.NPCs.Add(held);
+        held.Act(Gesture.Laugh);
+        map.ForgetForced();
+        Assert.Equal((Mood.Neutral, (Gesture?)null), (held.Mood, held.Gesture));
+    }
+
+    [Fact]
     public void AScriptsFadeGoesToBlackAndComesBack()
     {
         var fade = new ScreenFade();

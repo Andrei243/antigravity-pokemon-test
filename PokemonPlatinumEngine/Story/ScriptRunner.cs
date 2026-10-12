@@ -495,6 +495,13 @@ public sealed partial class ScriptRunner
                 host.Emote(Person(i.Name, i), i.Bubble, i.Seconds);
                 waiting = i.Seconds;
                 break;
+            case Op.Act:
+                // Waited for to its end (the host's Busy), as a walk is
+                host.Act(Person(i.Name, i), i.Gesture, i.Number);
+                break;
+            case Op.Mood:
+                host.Mood(Person(i.Name, i), i.Mood);
+                break;
             case Op.Show:
             case Op.Hide:
                 host.SetVisible(Person(i.Name, i)!, i.Op == Op.Show);

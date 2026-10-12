@@ -282,5 +282,45 @@ partial class Harness
         Talk(); Whole(); Shot("st40_hallowed_tower_stirs");
         ReadOn();
         Console.WriteLine($"hallowed tower: state {story.Var("VAR_HALLOWED_TOWER_STATE")}, keystones {bag.GetQuantity(ItemDatabase.Get("Odd Keystone")!)}, greetings {story.Greetings}");
+
+        // ---- gestures and faces on cue (plan 11 · C11), last in the mode so that nothing before it moves: back in
+        // Twinleaf Town two tiles from the breeder, she waves, bows and points, the player laughs, she holds two faces,
+        // walks on the spot and steps back
+        At("Sinnoh", bx - 2, by, Direction.Right);
+        breeder.Facing = Direction.Left;
+        var acting = ScriptParser.Parse("twinleaf_town", $"""
+            script Acting
+              face pokemon_breeder_f player
+              act pokemon_breeder_f wave
+              act pokemon_breeder_f bow
+              act pokemon_breeder_f point
+              act player laugh
+              mood pokemon_breeder_f happy
+              wait 0.6
+              mood pokemon_breeder_f angry
+              wait 0.6
+              walk pokemon_breeder_f onspot left 2
+              walk pokemon_breeder_f back right
+              mood pokemon_breeder_f neutral
+            """)[0];
+        engine.StartScript(acting);
+        // Each gesture is shot at the middle of its round, by its own clock
+        void AtTheMiddle(NPC? who, Gesture gesture)
+        {
+            Until(() => (who != null ? who.Gesture : me.Gesture) == gesture
+                && (who != null ? who.GestureAge : me.GestureAge) >= Acting.Length(gesture) * 0.5f, $"the {gesture}");
+            Shot($"st50_act_{gesture.ToString().ToLowerInvariant()}");
+        }
+        AtTheMiddle(breeder, Gesture.Wave);
+        AtTheMiddle(breeder, Gesture.Bow);
+        AtTheMiddle(breeder, Gesture.Point);
+        AtTheMiddle(null, Gesture.Laugh);
+        Until(() => breeder.Mood == Mood.Happy, "the happy face"); Frames(10); Shot("st51_mood_happy");
+        Until(() => breeder.Mood == Mood.Angry, "the angry face"); Frames(10); Shot("st51_mood_angry");
+        Until(() => breeder.WalkBlend > 0.6f && breeder.GridX == bx, "the steps on the spot"); Shot("st52_walk_on_the_spot");
+        Until(() => breeder.GridX == bx + 1 && breeder.StepOffsetX < -0.4f, "the step back"); Shot("st53_step_back");
+        Until(() => !engine.ScriptRunning, "the acting's end");
+        Console.WriteLine($"acting: she is at {breeder.GridX - bx},{breeder.GridY - by} of where she stood (1,0 is right), facing {breeder.Facing} (Left is right), mood {breeder.Mood}, gesture {breeder.Gesture?.ToString() ?? "none"}; the player's gesture {me.Gesture?.ToString() ?? "none"}");
+        breeder.GridX = bx; breeder.GridY = by;
     }
 }

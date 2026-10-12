@@ -1,5 +1,6 @@
 using System;
 using System.Numerics;
+using PokemonPlatinumEngine.Overworld;
 
 namespace PokemonPlatinumEngine.Graphics;
 
@@ -22,8 +23,60 @@ internal static class CharacterAnimation
         Emote.Nod => 1.0f,
         Emote.Cheer => 1.4f,
         Emote.Throw => 0.75f,
+        Emote.Bow => 1.2f,
+        Emote.Shrug => 1.0f,
+        Emote.Point => 1.2f,
+        Emote.Laugh => 1.4f,
         _ => 0f
     };
+
+    /// <summary>
+    /// The emote a script's gesture plays (plan 11 · C11); none for a jump, which is the hop's clip played on the
+    /// spot (<see cref="HopOnTheSpot"/>).
+    /// </summary>
+    public static Emote EmoteOf(Gesture gesture) => gesture switch
+    {
+        Gesture.Wave => Emote.Wave,
+        Gesture.Nod => Emote.Nod,
+        Gesture.Cheer => Emote.Cheer,
+        Gesture.Surprised => Emote.Surprised,
+        Gesture.Bow => Emote.Bow,
+        Gesture.Shrug => Emote.Shrug,
+        Gesture.Point => Emote.Point,
+        Gesture.Laugh => Emote.Laugh,
+        _ => Emote.None
+    };
+
+    /// <summary>The face a script's mood holds (plan 11 · C11).</summary>
+    public static Expression ExpressionOf(Mood mood) => mood switch
+    {
+        Mood.Happy => Expression.Happy,
+        Mood.Surprised => Expression.Surprised,
+        Mood.Sad => Expression.Sad,
+        Mood.Angry => Expression.Angry,
+        _ => Expression.Neutral
+    };
+
+    /// <summary>
+    /// The pose of someone playing a gesture <paramref name="age"/> seconds into its round: an emote over the idle,
+    /// or for a jump the hop's progress (the lift is the caller's, <see cref="JumpLift"/>).
+    /// </summary>
+    public static void Act(ref CharacterPose pose, Gesture gesture, float age)
+    {
+        if (gesture == Gesture.Jump)
+        {
+            pose.Hop = HopOnTheSpot(age);
+            return;
+        }
+        pose.Emote = EmoteOf(gesture);
+        pose.EmoteTime = age;
+    }
+
+    /// <summary>A jump on the spot's progress through the hop's clip, <paramref name="age"/> seconds into it; 0 once it is over.</summary>
+    public static float HopOnTheSpot(float age) => age > 0f && age < Acting.JumpSeconds ? age / Acting.JumpSeconds : 0f;
+
+    /// <summary>How high a jump on the spot lifts its jumper, in texels of the field (32 to a tile): eight at its height.</summary>
+    public static float JumpLift(float age) => MathF.Round(Acting.JumpTexels * MathF.Sin(HopOnTheSpot(age) * MathF.PI));
 
     /// <summary>When a throw lets go of the ball, seconds into the emote.</summary>
     public const float ThrowRelease = 0.3f;
@@ -35,7 +88,7 @@ internal static class CharacterAnimation
         if (p.EmoteTime >= Duration(p.Emote)) return Expression.Neutral;
         return p.Emote switch
         {
-            Emote.Wave or Emote.Cheer => Expression.Happy,
+            Emote.Wave or Emote.Cheer or Emote.Laugh => Expression.Happy,
             Emote.Surprised => Expression.Surprised,
             _ => Expression.Neutral
         };
@@ -202,6 +255,9 @@ internal static class CharacterAnimation
     {
         switch (emote)
         {
+            case Emote.Bow or Emote.Shrug or Emote.Point or Emote.Laugh:
+                CueClip(emote, t, pose);
+                break;
             case Emote.Wave:
             {
                 // The right hand up beside the head (out to the side, the forearm raised, so the big head
@@ -273,6 +329,77 @@ internal static class CharacterAnimation
                 pose.Turn(HumanBones.Hair, -0.12f * bounce);
                 pose.Turn(HumanBones.ShinL, 0.25f * (1f - bounce));
                 pose.Turn(HumanBones.ShinR, 0.25f * (1f - bounce));
+                break;
+            }
+        }
+    }
+
+    /// <summary>The emotes of plan 11 · C11, which a script plays on cue (<c>act</c>): a bow, a shrug, a point and a laugh.</summary>
+    private static void CueClip(Emote emote, float t, SkeletonPose pose)
+    {
+        float d = Duration(emote);
+        switch (emote)
+        {
+            case Emote.Bow:
+            {
+                // Bent forward from the waist and held a moment, the head down, the arms hanging straight from the
+                // shoulders, then up again
+                float bend = Smooth(0.05f, 0.4f, t) * (1f - Smooth(d - 0.45f, d - 0.1f, t));
+                pose.Turn(HumanBones.Hips, 0.12f * bend);
+                pose.Turn(HumanBones.Spine, 0.42f * bend);
+                pose.Turn(HumanBones.Head, 0.3f * bend);
+                pose.Turn(HumanBones.UpperArmL, -0.4f * bend, 0f, -0.06f * bend);
+                pose.Turn(HumanBones.UpperArmR, -0.4f * bend, 0f, 0.06f * bend);
+                pose.Turn(HumanBones.ForeArmL, 0.12f * bend);
+                pose.Turn(HumanBones.ForeArmR, 0.12f * bend);
+                pose.Turn(HumanBones.Hair, 0.2f * bend);
+                pose.Turn(HumanBones.Bag, -0.15f * bend);
+                pose.Turn(HumanBones.Skirt, -0.08f * bend);
+                break;
+            }
+            case Emote.Shrug:
+            {
+                // Both shoulders up, the forearms out to the sides with the hands open, the head tilted
+                float up = Smooth(0.1f, 0.35f, t) * (1f - Smooth(d - 0.4f, d - 0.12f, t));
+                Up(pose, HumanBones.UpperArmL, 0.035f * up);
+                Up(pose, HumanBones.UpperArmR, 0.035f * up);
+                pose.Turn(HumanBones.UpperArmL, -0.15f * up, 0f, 0.2f * up);
+                pose.Turn(HumanBones.UpperArmR, -0.15f * up, 0f, -0.2f * up);
+                pose.Turn(HumanBones.ForeArmL, -0.9f * up, 0f, 0.55f * up);
+                pose.Turn(HumanBones.ForeArmR, -0.9f * up, 0f, -0.55f * up);
+                pose.Turn(HumanBones.HandL, 0f, 0f, 0.3f * up);
+                pose.Turn(HumanBones.HandR, 0f, 0f, -0.3f * up);
+                pose.Turn(HumanBones.Head, 0.04f * up, 0f, 0.16f * up);
+                Up(pose, HumanBones.Spine, 0.006f * up);
+                break;
+            }
+            case Emote.Point:
+            {
+                // The right arm straight out ahead at the shoulder's height, the head and the body turned a little
+                // after it
+                float out_ = Smooth(0.05f, 0.3f, t) * (1f - Smooth(d - 0.35f, d - 0.08f, t));
+                pose.Rotation[HumanBones.UpperArmR] = Quaternion.Slerp(pose.Rotation[HumanBones.UpperArmR], Quaternion.Identity, out_);
+                pose.Turn(HumanBones.UpperArmR, -1.5f * out_, 0f, 0.42f * out_);
+                pose.Rotation[HumanBones.ForeArmR] = Quaternion.Slerp(pose.Rotation[HumanBones.ForeArmR], Quaternion.Identity, out_);
+                pose.Rotation[HumanBones.HandR] = Quaternion.Slerp(pose.Rotation[HumanBones.HandR], Quaternion.Identity, out_);
+                pose.Turn(HumanBones.Spine, 0f, -0.12f * out_);
+                pose.Turn(HumanBones.Head, 0.04f * out_, -0.14f * out_);
+                pose.Turn(HumanBones.Hair, 0f, 0f, 0.04f * out_);
+                break;
+            }
+            case Emote.Laugh:
+            {
+                // The head tipped back, the shoulders shaking with it, the hands at the belly
+                float back = Smooth(0.05f, 0.3f, t) * (1f - Smooth(d - 0.35f, d - 0.08f, t));
+                float shake = MathF.Abs(MathF.Sin(t * Tau * 3.5f)) * back;
+                pose.Turn(HumanBones.Head, -0.42f * back + 0.06f * shake);
+                pose.Turn(HumanBones.Spine, -0.14f * back);
+                Up(pose, HumanBones.Spine, 0.008f * shake);
+                pose.Turn(HumanBones.UpperArmL, -0.3f * back, 0f, 0.05f * back);
+                pose.Turn(HumanBones.UpperArmR, -0.3f * back, 0f, -0.05f * back);
+                pose.Turn(HumanBones.ForeArmL, -0.75f * back, 0f, -0.25f * back);
+                pose.Turn(HumanBones.ForeArmR, -0.75f * back, 0f, 0.25f * back);
+                pose.Turn(HumanBones.Hair, -0.15f * back + 0.08f * shake);
                 break;
             }
         }

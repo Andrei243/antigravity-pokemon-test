@@ -88,6 +88,8 @@ public enum Op
     Amity,
     // The story's scene effects (plan 09 · L11): a burst, a beam, a rift, a shadow, a ripple, sparkles
     Effect,
+    // Gestures and faces on cue (plan 11 · C11): a gesture played, waited for as a walk is, and a face held
+    Act, Mood,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>
@@ -173,8 +175,14 @@ public sealed class Instruction
     /// <summary>The lines said, or a question followed by its answers.</summary>
     public IReadOnlyList<string> Lines { get; init; } = Array.Empty<string>();
 
-    /// <summary>The steps of a walk.</summary>
-    public IReadOnlyList<Direction> Path { get; init; } = Array.Empty<Direction>();
+    /// <summary>The steps of a walk, each onto the next tile, on the spot or keeping the facing (plan 11 · C11).</summary>
+    public IReadOnlyList<ScriptStep> Path { get; init; } = Array.Empty<ScriptStep>();
+
+    /// <summary>For <see cref="Op.Act"/>: the gesture played (plan 11 · C11).</summary>
+    public Gesture Gesture { get; init; }
+
+    /// <summary>For <see cref="Op.Mood"/>: the face held (plan 11 · C11).</summary>
+    public Mood Mood { get; init; }
 
     /// <summary>A word that changes how the line is carried out: a walk at a run, a battle that may be lost, a fade to black.</summary>
     public bool Option { get; init; }

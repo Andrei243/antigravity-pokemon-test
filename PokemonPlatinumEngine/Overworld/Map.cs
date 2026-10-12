@@ -553,10 +553,15 @@ public class Map
         }
     }
 
-    /// <summary>Forgets who a script showed or hid by itself: from here on the flags decide again.</summary>
+    /// <summary>Forgets who a script showed or hid by itself, and the faces and gestures it gave: from here on the flags decide again.</summary>
     public void ForgetForced()
     {
-        foreach (var npc in Everyone) npc.Forced = null;
+        foreach (var npc in Everyone)
+        {
+            npc.Forced = null;
+            // So is a face a script had them hold, and a gesture under way (plan 11 · C11)
+            npc.StopActing();
+        }
     }
 
     /// <summary>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Numerics;
 using System.Threading.Tasks;
 using Raylib_cs;
+using Gesture = PokemonPlatinumEngine.Overworld.Gesture;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Overworld;
 
@@ -948,16 +949,20 @@ public sealed class WorldRenderer
             }
             float seed = SeedOf(npc.Name);
             var pose = new CharacterPose { Walk = npc.WalkCycle, WalkBlend = npc.WalkBlend, Time = time + seed * 10f, Blink = IsBlinking(time, seed) };
+            // A gesture and a face a script gave them (plan 11 · C11)
+            float jump = Acted(ref pose, npc.Gesture, npc.GestureAge, npc.Mood);
             if (npc.HasSpottedPlayer && npc.ExclamationTimer > 0f)
             {
                 // A trainer who has just spotted the player starts, under the "!"
                 pose.Emote = Emote.Surprised;
                 pose.EmoteTime = TrainerApproach.ExclaimTime - npc.ExclamationTimer;
+                pose.Hop = 0f;
                 pose.Blink = false;
+                jump = 0f;
             }
             float nx = npc.DrawX + 0.5f, nz = npc.DrawY + 0.5f;
             actors.Add(new Actor(CharacterModels.Get(PlayerIdentity.CharacterFor(npc.NpcType), shaders),
-                new Vector3(nx, (npc.Level is { } level ? Relief.Under(map, nx, nz, level) : Relief.At(map, nx, nz)) - SinkAt(map, nx, nz) - Rows(npc.Wading), nz), Player.YawOf(npc.Facing), pose));
+                new Vector3(nx, (npc.Level is { } level ? Relief.Under(map, nx, nz, level) : Relief.At(map, nx, nz)) - SinkAt(map, nx, nz) - Rows(npc.Wading) + Rows(jump), nz), Player.YawOf(npc.Facing), pose));
         }
 
         if (player == null) return;
@@ -971,6 +976,8 @@ public sealed class WorldRenderer
             Time = time,
             Blink = IsBlinking(time, 0.37f)
         };
+        // A gesture and a face a script gave the player (plan 11 · C11); a ledge's hop goes before a jump on the spot
+        float playerJump = Acted(ref playerPose, player.HopProgress > 0f ? null : player.Gesture, player.GestureAge, player.Mood);
         // On the water the player sits on a Pokémon's back, and the two bob together, a texel up and a texel down.
         // The Pokémon is the one whose Surf it is, once its field sprite is ready (plan 10 · F1); the swimmer every
         // Pokémon shares stands in meanwhile
@@ -984,7 +991,7 @@ public sealed class WorldRenderer
             carrier = FieldSprites.Get(carried, facing);
         }
         float seat = carrier != null ? CarrierSeat(carrier) : SurfMount.Seat;
-        float feet = groundY + lift + Rows(seat) * saddle + bob * saddle - SinkAt(map, px, pz) * (1f - saddle);
+        float feet = groundY + lift + Rows(seat) * saddle + bob * saddle - SinkAt(map, px, pz) * (1f - saddle) + Rows(playerJump);
         actors.Add(new Actor(CharacterModels.Get(PlayerIdentity.Character, shaders), new Vector3(px, feet, pz), player.Yaw, playerPose));
 
         if (player.Mount is { } ridden)
@@ -1003,6 +1010,19 @@ public sealed class WorldRenderer
     internal static int CarrierSeat(FieldSprites.Strip carrier) => (int)MathF.Round((carrier.Rows - CarrierSunk(carrier)) * 0.55f);
 
     private static bool IsBlinking(float time, float seed) => (time + seed * 7.3f) % 4.1f < 0.13f;
+
+    /// <summary>
+    /// Poses someone by the gesture and the mood a script gave them (plan 11 · C11): the gesture's round as an emote
+    /// over the idle, or the hop played on the spot; the mood as the face. Gives how many texels a jump lifts them.
+    /// </summary>
+    internal static float Acted(ref CharacterPose pose, Gesture? gesture, float age, Mood mood)
+    {
+        pose.Expression = CharacterAnimation.ExpressionOf(mood);
+        if (gesture is not { } playing) return 0f;
+        float round = Acting.RoundAge(playing, age);
+        CharacterAnimation.Act(ref pose, playing, round);
+        return playing == Gesture.Jump ? CharacterAnimation.JumpLift(round) : 0f;
+    }
 
     /// <summary>
     /// A number from 0 to 1 that is a name's own, the same every run (a string's hash code changes from run to
