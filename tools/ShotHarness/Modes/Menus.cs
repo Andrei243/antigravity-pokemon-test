@@ -151,9 +151,10 @@ partial class Harness
         saving.Confirm();
         Frames(12); Shot("31b_saved");
         Frames(120);
-        Console.WriteLine($"after saving: state {game.State}, a save was written: {File.Exists("savegame.json")}");
-        File.Delete("savegame.json");
-        File.Delete(SaveManager.BackupOf("savegame.json"));
+        // The save is the slot's file in the folder the game keeps its saves in, which is the output folder (plan 12 · Q2)
+        Console.WriteLine($"after saving: state {game.State}, a save was written to slot {game.SaveSlot}: {File.Exists(game.SaveFile)} "
+            + $"({Path.GetRelativePath(outDir, game.SaveFile)}); the old name's file is there: {File.Exists(Path.Combine(outDir, SavePaths.OldSaveName))}");
+        game.DeleteSave();
         game.State = GameState.Overworld;
         game.State = GameState.Shop;
         var shop = game.Shop;
@@ -452,5 +453,19 @@ partial class Harness
         game.State = GameState.Overworld;
         // Whatever notice the candy left has gone before the next mode's first shot
         Frames(200);
+
+        // Saving names the slot the game is saved in (plan 12 · Q2), last so that no shot before it moves: a game in
+        // the third slot asked and saved, and the file that was written for it
+        game.SaveSlot = 3;
+        game.ChooseFromStartMenu(StartMenuChoice.Save);
+        Frames(30); Shot("31c_save_asking_slot_3");
+        game.SaveScreen.Confirm();
+        Frames(12); Shot("31d_saved_slot_3");
+        Frames(120);
+        Console.WriteLine($"saving in slot {game.SaveSlot}: {Path.GetRelativePath(outDir, game.SaveFile)} written {File.Exists(game.SaveFile)}, "
+            + $"the first slot's {File.Exists(SavePaths.Current.Slot(1))}; the slots read as {string.Join(", ", SaveSlots.Read(SavePaths.Current).Select(s => $"{s.Number} {s.Outcome}"))}");
+        game.DeleteSave();
+        game.SaveSlot = 1;
+        game.State = GameState.Overworld;
     }
 }

@@ -253,4 +253,12 @@ public sealed class BattleConditions
 
     /// <summary>Who the player is, as a Pokémon's original trainer is marked: one marked otherwise is someone else's. Null takes every Pokémon for the player's own.</summary>
     public TrainerMark? Player { get; init; }
+
+    /// <summary>
+    /// An inverse battle (plan 14 · B1; <c>docs/mechanics/rulings.md</c>, "Formats of the later games"): the type
+    /// chart is turned round for the whole battle (<see cref="TypeChart.GetEffectiveness"/>). It is handed in with
+    /// the battle's other conditions and never changes while the battle runs; <see cref="FieldState.Inverse"/> is
+    /// where the rules read it, and a <see cref="BattleRecord"/> keeps it.
+    /// </summary>
+    public bool Inverse { get; init; }
 }

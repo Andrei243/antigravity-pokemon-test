@@ -128,6 +128,7 @@ public class ScriptTests
           battle self with helper
           battle self first
           battle self as "rival_route_201_piplup" first canlose
+          battle self as "scientist_shaun_rematch_3" inverse canlose
           wildbattle "Starly" 2
           wildbattle "Giratina" 47 nofleeing
           catchinglesson "Bidoof" 2
@@ -507,6 +508,16 @@ public class ScriptTests
           amity gift
           amity give
           amity leave
+          anim heal
+          anim pc on
+          anim pc off
+          anim elevator up
+          anim elevator down 3
+          anim halloffame
+          shake self
+          shake rival 3
+          flicker self
+          flicker player 4
         script Other
           end
         """;
@@ -1459,10 +1470,13 @@ public class ScriptTests
         public void SlowMotion(float share, float seconds) { }
         public void Effect(SceneEffect kind, int x, int y, float seconds, Direction? way, bool hold) { }
         public void StopEffect(int x, int y) { }
+        public float Anim(SetPiece piece, int count) => 0f;
+        public float Shake(NPC? who, int times) => 0f;
+        public float Flicker(NPC? who, int times) => 0f;
         public bool Busy => false;
         public void Say(string? speaker, IReadOnlyList<string> lines) { }
         public int Answer => 0;
-        public void Battle(NPC trainer, NPC? second, Trainer? partner, bool mayLose, bool first) { }
+        public void Battle(NPC trainer, NPC? second, Trainer? partner, bool mayLose, bool first, BattleTerms? terms = null) { }
         public void WildBattle(Pokemon wild, BattleKind kind, bool cannotFlee) { }
         public BattleOutcome Outcome => BattleOutcome.Won;
         public void Open(ScriptScreen screen, NPC? subject, string? counter = null) { }

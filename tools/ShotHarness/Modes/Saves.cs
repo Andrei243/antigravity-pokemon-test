@@ -5,7 +5,7 @@ partial class Harness
     // Saves as today's game writes them, for the test project's corpus of every version (PokemonPlatinumTests/Fixtures/
     // saves, SaveCorpusTests): a new game in the player's room once the television has had its say, a game past the
     // first chapter in front of the house, surfing, on a bridge's deck, a Safari Game under way, the girl, and a game
-    // under the modern rules. Each is the engine's own BuildSave written as SaveManager writes savegame.json, into
+    // under the modern rules. Each is the engine's own BuildSave written as SaveManager writes a slot's save, into
     // <out dir>/saves/ as w<world>-s<story>-<moment>.json. No shots. Not part of "all". A session that raises
     // SaveData.CurrentWorld or StoryState.CurrentVersion runs it and copies the files into the corpus.
     public void SavesMode()

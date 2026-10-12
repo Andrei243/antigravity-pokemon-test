@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Raylib_cs;
 
 namespace PokemonPlatinumEngine.Graphics;
@@ -326,10 +327,21 @@ internal static class LeagueArt
     /// A Poké Ball standing in one of the machine's sockets (plan 02 · S14; style guide, "The League's rooms"): the
     /// field's own ball, ten texels across in the middle of a card of twelve, outlined.
     /// </summary>
-    public static void PaintMachineBall(PixelCanvas c)
+    public static void PaintMachineBall(PixelCanvas c) => PaintMachineBall(c, lit: false);
+
+    /// <summary>
+    /// The same ball as the machine lights it (plan 09 · L12; style guide, "Rooms", "Machines at work"): its shape
+    /// kept, its red and its white turned pale, and a rim of light in place of the dark outline.
+    /// </summary>
+    public static void PaintMachineBall(PixelCanvas c, bool lit)
     {
         Color red = Rgb(218, 62, 58), redLight = Rgb(244, 120, 104), redDark = Rgb(170, 42, 56);
         Color white = Rgb(240, 240, 236), whiteShade = Rgb(198, 200, 214), band = Rgb(58, 52, 72);
+        if (lit)
+        {
+            (red, redLight, redDark) = (Rgb(255, 150, 130), Rgb(255, 196, 170), Rgb(236, 110, 100));
+            (white, whiteShade) = (Rgb(255, 252, 230), Rgb(250, 236, 196));
+        }
         float middle = c.Width / 2f;
         const float radius = 5f;
         for (int y = 0; y < c.Height; y++)
@@ -346,7 +358,17 @@ internal static class LeagueArt
         c.Set(c.Width / 2, c.Height / 2 - 1, white);
         c.Set(c.Width / 2 - 1, c.Height / 2, white);
         c.Set(c.Width / 2, c.Height / 2, white);
-        Pix.Outline(c);
+        if (!lit)
+        {
+            Pix.Outline(c);
+            return;
+        }
+        // Lit, its rim is light: every texel beside the ball
+        var rim = new List<(int X, int Y)>();
+        for (int y = 0; y < c.Height; y++)
+            for (int x = 0; x < c.Width; x++)
+                if (!c.IsOpaque(x, y) && (c.IsOpaque(x, y + 1) || c.IsOpaque(x, y - 1) || c.IsOpaque(x - 1, y) || c.IsOpaque(x + 1, y))) rim.Add((x, y));
+        foreach (var (x, y) in rim) c.SetRaw(x, y, Rgb(255, 246, 196));
     }
 
     /// <summary>The front of the machine's console: panels of steel under a line of gold, a row of small lights.</summary>

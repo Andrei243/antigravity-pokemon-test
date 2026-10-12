@@ -9,11 +9,22 @@ namespace PokemonPlatinumEngine.Models;
 /// The Pokémon Storage System as Platinum keeps it (plan 06 · R12; the original's <c>pc_boxes.c</c> and the box
 /// application's rules): eighteen boxes of thirty places, each place empty or holding one Pokémon, each box with a
 /// name of up to eight letters and a wallpaper, and the box the PC was last left on, where a Pokémon caught with a
-/// full team goes first. No drawing or input: the PC's screen (<c>PCScreen</c>) asks these rules.
+/// full team goes first. Once the Pokédex is the National one the PC has a hundred boxes (plan 03 · D13,
+/// <see cref="Grow"/>). No drawing or input: the PC's screen (<c>PCScreen</c>) asks these rules.
 /// </summary>
 public sealed class PcBoxes
 {
-    public const int BoxCount = 18, Columns = 6, Rows = 5, BoxSize = Columns * Rows;
+    public const int Columns = 6, Rows = 5, BoxSize = Columns * Rows;
+
+    /// <summary>The boxes Platinum's PC has (<c>MAX_PC_BOXES</c>), and every game's until its Pokédex is the National one.</summary>
+    public const int BoxCount = 18;
+
+    /// <summary>
+    /// The boxes of a PC whose owner has the National Pokédex (plan 03 · D13). Platinum's eighteen hold one of each of
+    /// its 493 species with room to spare; a hundred, the user's number (2026-10-12), hold the National Pokédex's
+    /// 1,025 nearly three times over: room for their forms and for more than one of a kind.
+    /// </summary>
+    public const int NationalBoxCount = 100;
 
     /// <summary>The longest name a box can be given (<c>BOX_NAME_LEN</c>).</summary>
     public const int NameLength = 8;
@@ -45,7 +56,7 @@ public sealed class PcBoxes
         public int Count => Slots.Count(p => p != null);
     }
 
-    private readonly Box[] boxes = new Box[BoxCount];
+    private Box[] boxes;
 
     public IReadOnlyList<Box> Boxes => boxes;
 
@@ -55,10 +66,30 @@ public sealed class PcBoxes
     /// <summary>A bit for each of the eight wallpapers beyond the sixteen every game has.</summary>
     public int UnlockedWallpapers { get; set; }
 
-    public PcBoxes()
+    public PcBoxes() : this(BoxCount) { }
+
+    /// <summary>A PC of so many boxes: never fewer than Platinum's, nor more than the National Pokédex's.</summary>
+    public PcBoxes(int count)
     {
-        // Box n is called "Box n" and has wallpaper n, the sixteen round again for the last two
-        for (int i = 0; i < BoxCount; i++) boxes[i] = new Box { Name = $"Box {i + 1}", Wallpaper = i % OwnWallpapers };
+        boxes = new Box[Math.Clamp(count, BoxCount, NationalBoxCount)];
+        for (int i = 0; i < boxes.Length; i++) boxes[i] = Fresh(i);
+    }
+
+    // Box n is called "Box n" and has wallpaper n, the sixteen round again for those after them
+    private static Box Fresh(int i) => new() { Name = $"Box {i + 1}", Wallpaper = i % OwnWallpapers };
+
+    /// <summary>
+    /// Gives the PC the boxes that go with the National Pokédex. The boxes it has keep their names, their wallpapers
+    /// and everything in them; the new ones come after them, empty. False if it had them already.
+    /// </summary>
+    public bool Grow(int count = NationalBoxCount)
+    {
+        count = Math.Min(count, NationalBoxCount);
+        if (count <= boxes.Length) return false;
+        var grown = new Box[count];
+        for (int i = 0; i < count; i++) grown[i] = i < boxes.Length ? boxes[i] : Fresh(i);
+        boxes = grown;
+        return true;
     }
 
     public Pokemon? this[int box, int slot] => boxes[box].Slots[slot];
@@ -67,7 +98,11 @@ public sealed class PcBoxes
     public IEnumerable<Pokemon> All => boxes.SelectMany(b => b.Slots).OfType<Pokemon>();
 
     public int Count => boxes.Sum(b => b.Count);
-    public bool IsFull => Count >= BoxCount * BoxSize;
+
+    /// <summary>How many Pokémon the boxes hold when full, and how many more they can take now.</summary>
+    public int Capacity => boxes.Length * BoxSize;
+    public int Free => Capacity - Count;
+    public bool IsFull => Count >= Capacity;
 
     /// <summary>Whether a wallpaper may be put up: one of the sixteen, or one of the eight once unlocked.</summary>
     public bool HasWallpaper(int wallpaper) =>
@@ -88,9 +123,9 @@ public sealed class PcBoxes
     /// </summary>
     public (int Box, int Slot)? Store(Pokemon pokemon)
     {
-        for (int i = 0; i < BoxCount; i++)
+        for (int i = 0; i < boxes.Length; i++)
         {
-            int box = (CurrentBox + i) % BoxCount;
+            int box = (CurrentBox + i) % boxes.Length;
             int slot = Array.IndexOf(boxes[box].Slots, null);
             if (slot < 0) continue;
             PutIn(box, slot, pokemon);

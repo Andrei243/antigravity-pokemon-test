@@ -13,10 +13,10 @@
 # Team Galactic's four stand where they stood, facing the dark (FLAG_HIDE_SPEAR_PILLAR_DISTORTED_TEAM_GALACTIC, set
 # at Sendoff Spring), and the two rifts Dialga and Palkia came through are read where they hang.
 #
-# Stood in for until plan 09 lands (L12, L14): the original's cutscene of the three guardians over the tear (its
-# sub-scenes 4 to 6) is the three as Pokémon of the map, each coming in sparkles, the air wavering as they hold the
-# tear (plan 09 · L11's effects), their cries and the camera. Uxie and Azelf are people of our
-# own beside the original's Mesprit, all three behind its flag.
+# Stood in for (plan 09 · L12's set pieces have no part here): the original's cutscene of the three guardians over the
+# tear (its sub-scenes 4 to 6) is the three as Pokémon of the map, each coming in sparkles, the air wavering as they
+# hold the tear (plan 09 · L11's effects), their cries and the camera. Uxie and Azelf are people of our own beside the
+# original's Mesprit, all three behind its flag.
 
 
 script OnEnter

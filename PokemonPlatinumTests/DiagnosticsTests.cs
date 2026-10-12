@@ -418,6 +418,25 @@ public class DiagnosticsTests
     }
 
     [Fact]
+    public void TheReportNamesTheSlotsFileToPutAside()
+    {
+        // The game is saved in a slot (plan 12 · Q2), and going on from a crash save means putting that slot's file aside
+        using var folder = new Folder();
+        var inSlotTwo = new GameFacts("Overworld", "Sinnoh", "twinleaf_town", 116, 886, SaveFile: "save2.json");
+        var outcome = CrashReport.Write(folder.Path, Thrown("The floor gave way."), Facts(game: inSlotTwo), () => Game("As it stood", 4234));
+        string report = File.ReadAllText(outcome.ReportPath!);
+        Assert.Contains("Saved in: save2.json", report);
+        Assert.Contains("put your save2.json aside and give savegame.crash.json its name", report);
+        Assert.DoesNotContain("your savegame.json", report);
+
+        // A report that isn't told the file says how a slot's is named
+        using var other = new Folder();
+        var untold = CrashReport.Write(other.Path, Thrown("The floor gave way."), Facts(), () => Game("As it stood", 4234));
+        Assert.Contains("put your slot's save (save1.json for slot 1) aside", File.ReadAllText(untold.ReportPath!));
+        Assert.DoesNotContain("Saved in:", File.ReadAllText(untold.ReportPath!));
+    }
+
+    [Fact]
     public void WithNoGameInProgressThereIsAReportAndNoCrashSave()
     {
         using var folder = new Folder();

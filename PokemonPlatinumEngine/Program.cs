@@ -36,11 +36,25 @@ public static class Program
             return verified.Code;
         }
 
+        if (launch.Where)
+        {
+            // Where the saves would be kept, and nothing else: no folder is made and no file opened
+            Log.Say(Locate(launch).Describe());
+            return CommandLine.Ended;
+        }
+
         CommandLine.Launched = launch;
-        // The log is beside the save unless --log names another place; a run begins with what it is and where it runs
-        if (!Log.Open(launch.LogPath ?? Log.FileName)) Log.Say($"The log couldn't be opened at {launch.LogPath ?? Log.FileName}: this run keeps none.", error: true);
+        // Where the saves, the options, the log and a crash's files are kept (plan 12 · Q2): decided once, here, for
+        // the whole run. This is the only place that asks the real machine, so nothing but the game itself ever
+        // writes in a user's own folder
+        var paths = Settle(Locate(launch));
+        SavePaths.Current = paths;
+        // The log is beside the saves unless --log names another place; a run begins with what it is and where it runs
+        string log = launch.LogPath ?? paths.LogFile;
+        if (!Log.Open(log)) Log.Say($"The log couldn't be opened at {log}: this run keeps none.", error: true);
         Log.Heading($"==== Pokémon Platinum (a fan remake) {GameVersion.Describe()}, started {WallClock.Local.ToString("yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture)} ====");
         Log.Info($"Started with: {(launch.Given.Length > 0 ? launch.Given : "(no switches)")}");
+        Log.Info($"The saves are kept in {paths.Folder}. {paths.Why}");
         Log.Info($"System: {RuntimeInformation.OSDescription} ({RuntimeInformation.OSArchitecture}), {RuntimeInformation.FrameworkDescription}");
 
         GameEngine? engine = null;
@@ -48,6 +62,32 @@ public static class Program
         Log.Info(code == CommandLine.Ended ? "The game ended as the player chose." : "The game stopped on a crash.");
         Log.Close();
         return code;
+    }
+
+    /// <summary>
+    /// Where this run keeps its saves (plan 12 · Q2), by <see cref="SavePaths.Resolve"/>: the switches first, then
+    /// what is found beside the game, then the user's own folder. It only decides; nothing is made or moved.
+    /// </summary>
+    /// <param name="machine">The machine to decide for; null for this one, which only the game's own start asks.</param>
+    internal static SavePaths Locate(LaunchOptions launch, SaveEnvironment? machine = null) =>
+        SavePaths.Resolve(machine ?? SaveEnvironment.Here(), launch.Portable, launch.SaveFolder);
+
+    /// <summary>
+    /// Makes the folder the saves are kept in, if it isn't there yet (a fresh install's first start). Where it can't
+    /// be made the game says so and keeps its files in the folder it was started in, as it always did.
+    /// </summary>
+    internal static SavePaths Settle(SavePaths paths)
+    {
+        try
+        {
+            Directory.CreateDirectory(paths.Folder);
+            return paths;
+        }
+        catch (Exception e) when (e is IOException or UnauthorizedAccessException or NotSupportedException)
+        {
+            Log.Say($"The folder for the saves couldn't be made ({paths.Folder}: {e.Message}). They are kept in the folder the game was started in instead.", error: true);
+            return SavePaths.In(Environment.CurrentDirectory, "The folder chosen for the saves couldn't be made, so they are kept in the folder the game was started in.");
+        }
     }
 
     /// <summary>

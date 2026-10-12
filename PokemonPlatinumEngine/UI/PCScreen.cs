@@ -28,7 +28,14 @@ public class PCScreen
     private const float AppearTime = 0.3f;
 
     /// <summary>A box as Platinum has it: six across, five down, eighteen boxes.</summary>
-    public const int Columns = PcBoxes.Columns, Rows = PcBoxes.Rows, BoxSize = PcBoxes.BoxSize, BoxCount = PcBoxes.BoxCount;
+    public const int Columns = PcBoxes.Columns, Rows = PcBoxes.Rows, BoxSize = PcBoxes.BoxSize;
+
+    /// <summary>How many boxes the PC that was opened has: Platinum's eighteen, or the National Pokédex's hundred (plan 03 · D13).</summary>
+    public int BoxCount { get; private set; } = PcBoxes.BoxCount;
+
+    // Left and right at the box's name, which a key kept down runs through (a hundred boxes are a long way a press at a time)
+    private readonly HeldKey boxKey = new();
+    private readonly CursorTick tick = new();
 
     private float openAge;
 
@@ -71,12 +78,15 @@ public class PCScreen
         PartyIndex = 0;
         Cell = 0;
         // The PC opens on the box it was last left on
-        Box = pc?.CurrentBox ?? 0;
+        BoxCount = pc?.Boxes.Count ?? PcBoxes.BoxCount;
+        Box = Math.Clamp(pc?.CurrentBox ?? 0, 0, BoxCount - 1);
         Held = null;
         Changed = false;
         CloseMenus();
+        boxKey.Release();
         openAge = 0f;
-        AudioManager.PlaySound("pc_on");
+        // (The PC's own two sounds are heard as its screen comes on and goes off in the field: the script's
+        // anim pc on and anim pc off, plan 09 · L12)
     }
 
     public void Close() => IsActive = false;
@@ -108,9 +118,10 @@ public class PCScreen
     /// <summary>
     /// One step of the cursor. Up and down the party; sideways from the party into the box and from the box's
     /// edge back to it; up from the box's top row (or down from its last) to its name, where left and right
-    /// change box. With a menu open, up and down move through it.
+    /// change box. With a menu open, up and down move through it. At the box's name a step that comes from a key
+    /// kept down (<paramref name="held"/>) stops at the first and the last box, where a press goes round.
     /// </summary>
-    public void Move(int dx, int dy, int partyCount)
+    public void Move(int dx, int dy, int partyCount, bool held = false)
     {
         if (dx == 0 && dy == 0) return;
         if (Naming != null) return;
@@ -144,7 +155,12 @@ public class PCScreen
                 }
                 break;
             case StorageZone.BoxName:
-                if (dx != 0) Box = UiNav.Wrap(Box, dx, BoxCount);
+                if (dx != 0)
+                {
+                    int next = held ? Math.Clamp(Box + Math.Sign(dx), 0, BoxCount - 1) : UiNav.Wrap(Box, dx, BoxCount);
+                    if (next == Box) return;
+                    Box = next;
+                }
                 else
                 {
                     Zone = StorageZone.Box;
@@ -175,7 +191,8 @@ public class PCScreen
                 }
                 break;
         }
-        AudioManager.PlaySound(Box != boxBefore ? "page" : "cursor");
+        // (a key kept down changes box faster than the sound lasts, so not every one of those sounds)
+        if (tick.Sounds(held)) AudioManager.PlaySound(Box != boxBefore ? "page" : "cursor");
     }
 
     /// <summary>What the menu offers for the Pokémon under the cursor.</summary>
@@ -450,9 +467,14 @@ public class PCScreen
             return;
         }
 
-        int dx = (InputManager.IsActionPressed(GameAction.Right) ? 1 : 0) - (InputManager.IsActionPressed(GameAction.Left) ? 1 : 0);
+        // A key kept down at the box's name runs on through the boxes; anywhere else only a press counts
+        tick.Update(dt);
+        bool runs = Zone == StorageZone.BoxName && !Busy;
+        int dx = boxKey.Advance(dt, InputManager.Axis(GameAction.Left, GameAction.Right), runs ? InputManager.Axis(GameAction.Left, GameAction.Right, held: true) : 0);
         int dy = (InputManager.IsActionPressed(GameAction.Down) ? 1 : 0) - (InputManager.IsActionPressed(GameAction.Up) ? 1 : 0);
-        if (dx != 0 || dy != 0) Move(dx, dy, party.Count);
+        if (boxKey.Repeating && dx != 0)
+            for (int i = 0; i < Math.Abs(dx); i++) Move(Math.Sign(dx), 0, party.Count, held: true);
+        else if (dx != 0 || dy != 0) Move(dx, dy, party.Count);
         else if (InputManager.IsActionPressed(GameAction.Cancel))
         {
             if (!Cancel(party, pc))
@@ -460,7 +482,6 @@ public class PCScreen
                 // The PC remembers the box it was left on
                 pc.CurrentBox = Box;
                 Close();
-                AudioManager.PlaySound("pc_off");
             }
         }
         else if (InputManager.IsActionPressed(GameAction.Confirm)) Confirm(party, pc, onNotification);

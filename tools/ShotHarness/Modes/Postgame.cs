@@ -225,7 +225,7 @@ partial class Harness
             ReadTo("This is for you"); Frames(4); Shot("pg0f_lab_this_is_for_you");
             ReadTo("Poké Radar"); Frames(4); Shot("pg0g_lab_the_poke_radar");
             ReadTo(null);
-            Console.WriteLine($"the upgrade: national {game.Pokedex.NationalUnlocked}, Poké Radar {Held("Poké Radar")}, Professor Oak there {Someone(Lab, "prof_oak") != null}, "
+            Console.WriteLine($"the upgrade: national {game.Pokedex.NationalUnlocked}, the PC's boxes {game.Boxes.Boxes.Count}, Poké Radar {Held("Poké Radar")}, Professor Oak there {Someone(Lab, "prof_oak") != null}, "
                 + Flags("FLAG_HIDE_SANDGEM_TOWN_LAB_PROF_OAK", "FLAG_HIDE_FIGHT_AREA_BLOCKADE") + $", player at {Me().GridX},{Me().GridY}");
             game.Interact();
             ReadTo("many more"); Frames(4); Shot("pg0h_lab_many_more_pokemon");

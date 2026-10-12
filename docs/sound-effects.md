@@ -43,8 +43,8 @@ Every sound effect of the game (plan 05 · A3), what it stands for in the origin
 | `exclaim` | — | The "!" over a trainer who has seen the player, or anyone a script surprises. |
 | `surf` | — | A Pokémon is ridden out onto the water. |
 | `save` | `SEQ_SE_DP_SAVE` | The game is saved. |
-| `pc_on` | `SEQ_SE_DP_PC_LOGIN` | A PC is switched on. |
-| `pc_off` | `SEQ_SE_DP_PC_LOGOFF` | A PC is switched off. |
+| `pc_on` | `SEQ_SE_DP_PC_LOGIN` | A PC is switched on: as its screen comes on in the field (`anim pc on`, plan 09 · L12). |
+| `pc_off` | `SEQ_SE_DP_PC_LOGOFF` | A PC is switched off: as its screen goes dark in the field (`anim pc off`). |
 | `vs_seeker` | `SE_DP_VS_SEEKER_BEEP_sseq` | The Vs. Seeker is used: it searches for trainers who want a rematch. |
 | `heal` | `SEQ_SE_DP_KAIFUKU` | A medicine used from the bag, HP restored in battle. |
 | `bike_bell` | `SEQ_SE_DP_JITENSYA` | Getting on the Bicycle (plan 02 · S2). |
@@ -63,8 +63,8 @@ Every sound effect of the game (plan 05 · A3), what it stands for in the origin
 | `roulette_spin` | `SEQ_SE_DP_POKETCH_011` | The Pokétch's roulette comes to rest. |
 | `timer_alarm` | `SEQ_SE_DP_DENSI11` | The Pokétch's kitchen timer runs out. |
 | `dowsing_ping` | `SEQ_SE_DP_POKETCH_009` | The Dowsing Machine touched: a ring spreading over the screen. |
-| `lift` | `SEQ_SE_DP_ELEBETA` | A platform of the Canalave Gym sets off with the player on it; a platform lift of the League sets off up its shaft (the original's `SEQ_SE_DP_ELEBETA4`, plan 01 · M9 2d); the Vista Lighthouse's lift on its ride, and as Volkner goes down in it (plan 02 · S13). |
-| `lift_stop` | `SEQ_SE_DP_KI_GASYAN` | The platform comes to its end and locks in place; in the League, also a door of the Elite Four's rooms coming down behind the challenger, and the door on opening once the room's master is beaten; the Vista Lighthouse's lift arriving. |
+| `lift` | `SEQ_SE_DP_ELEBETA` | A platform of the Canalave Gym sets off with the player on it; a platform lift of the League sets off up its shaft (the original's `SEQ_SE_DP_ELEBETA4`, plan 01 · M9 2d); the Vista Lighthouse's lift as Volkner goes down in it (plan 02 · S13; a ride in a lift's car is `lift_hum`'s since plan 09 · L12). |
+| `lift_stop` | `SEQ_SE_DP_KI_GASYAN` | The platform comes to its end and locks in place; in the League, also a door of the Elite Four's rooms coming down behind the challenger, and the door on opening once the room's master is beaten. |
 | `snowball` | `SEQ_SE_DP_FW291` | A snowball of the Snowpoint Gym bursts as the player slides into it fast enough (`ov5_021E06A8`). |
 | `gears` | `SEQ_SE_DP_GAGAGA` | The Sunyshore Gym's gears grind round as the player steps on a button on a hub (`SunyshoreGym_PressButton`). |
 | `thunder` | `SEQ_SE_DP_T_KAMI2` | Thunder cracking close, a fifth of a second after a storm's lightning (two strikes of three, as the original's storm chooses). |
@@ -75,6 +75,9 @@ Every sound effect of the game (plan 05 · A3), what it stands for in the origin
 | `effect_shadow` | — | A great shadow sweeps over the ground (`effect shadow`): a low rush of air swelling and dying over a deep note. |
 | `effect_ripple` | — | The picture wavers (`effect ripple`): two soft tones a little apart, wobbling against each other. |
 | `effect_sparkles` | — | Points of light rise round a tile (`effect sparkles`): high bells struck here and there, ringing out. |
+| `machine_ball` | `SEQ_SE_DP_BOWA` | A Poké Ball is laid on a Pokémon Center's machine (`anim heal`, plan 09 · L12): one to each Pokémon of the team that is no Egg, a soft pop and a small round note, before the heal's fanfare as the balls light. |
+| `lift_hum` | `SEQ_SE_DP_ELEBETA2` | A lift's car between floors (`anim elevator`, plan 09 · L12): half a second of a motor's even hum, played once to each round of the indicator's lights (four in every lift but the Battle Tower's, which has three), where the original loops its sound until the lights have gone round. |
+| `lift_ding` | `SEQ_SE_DP_PINPON` | A lift arrives at its floor (`anim elevator`): two notes of a chime, the second a third below the first. |
 
 **The Underground** (plan 06 · R16a) has no sounds of its own yet, and plays ones the game already has until plan 05 · A6 gives it its own: `stairs` going down, coming up and through a base's way in; `poketch_beep` for the radar's pulse and as the wall's game begins; in the wall, `ledge` for a blow of the pick, `rock_smash` for one of the hammer, `bump` on bare dark rock, `select` as a thing is bared, `levelup` when the last is out and `boulder` when the wall falls in; `exclaim` as a trap goes off, `cursor` for a turn in a hole or a bubble burst and `bump` for a blow at a trap's boulder; `rock_smash` for the Digger Drill; `levelup` for a flag put up at home.
 
@@ -89,7 +92,7 @@ Every sound effect of the game (plan 05 · A3), what it stands for in the origin
 | `run_away` | `SEQ_SE_DP_NIGERU` | Getting away from a wild Pokémon. |
 | `ball_throw` | `SEQ_SE_DP_NAGERU` | A ball thrown. |
 | `ball_shake` | `SEQ_SE_DP_KON` | Each wobble of a thrown ball; each rock of an Egg about to hatch (plan 06 · R15). |
-| `ball_click` | `SEQ_SE_DP_GETTING` | The ball clicks shut: caught; each Poké Ball set down on the Hall of Fame's machine (plan 02 · S14). |
+| `ball_click` | `SEQ_SE_DP_GETTING` | The ball clicks shut: caught; each Poké Ball set in a socket of the Hall of Fame's machine (plan 02 · S14; since plan 09 · L12 by the machine's own piece, `anim halloffame`). |
 | `ball_break` | — | The ball bursts open: the Pokémon broke free; an Egg breaks open as it hatches. |
 | `hit_normal` | `SEQ_SE_DP_KOUKA_M` | A hit lands. |
 | `hit_super` | `SEQ_SE_DP_KOUKA_H` | A super-effective hit lands. |
@@ -111,6 +114,24 @@ Every sound effect of the game (plan 05 · A3), what it stands for in the origin
 | `weather_fog` | — | A battle opens in deep fog, and each turn the fog stays. |
 | `substitute_in` | — | A Substitute's doll drops in front of its Pokémon, made or passed by Baton Pass (plan 25 · Y1). |
 | `substitute_out` | — | A Substitute's doll fades in a puff: broken, its Pokémon fainting or called back. |
+| `moment_infatuated` | — | A Pokémon in love as it tries to move (plan 25 · Y3, the original's `BATTLE_ANIMATION_INFATUATED`): two soft bells over a note that wavers. |
+| `moment_bag_item` | — | An item from the bag used on a Pokémon that stands on the field, with the line that says who used it (where the original's `subscript_use_potion` plays a sound of its own, number 1516; `heal` is still heard on the line after, as the HP comes back): a quick chime climbing. |
+| `moment_escape_item` | — | A Poké Doll or a Fluffy Tail used: a puff of smoke, before `run_away` on the line after (`BATTLE_ANIMATION_ITEM_ESCAPE`). |
+| `moment_held_item` | — | A held item goes off (`BATTLE_ANIMATION_HELD_ITEM`): Leftovers, Black Sludge, a Sticky Barb, a berry eaten, a herb, a Focus Sash or Band, a Quick Claw or Custap Berry, a Power Herb, a Destiny Knot, a Toxic or Flame Orb. A ding and its answer. |
+| `moment_happy` | — | The Great Marsh's Pokémon as bait lands by it (`BATTLE_ANIMATION_HAPPY`): three chirps hopping up. |
+| `moment_eating` | — | The Great Marsh's Pokémon eating the bait (`BATTLE_ANIMATION_EATING`): three bites. |
+| `moment_angry` | — | The Great Marsh's Pokémon as mud hits it (`BATTLE_ANIMATION_ANGRY`): steam let off over a growl. |
+| `moment_curse` | — | A curse takes its quarter at the turn's end (`BATTLE_ANIMATION_DAMAGE_CURSE`): something driven in a third of a second in, as the mark lands, and a low moan. |
+| `moment_nightmare` | — | A nightmare takes its quarter from a sleeper (`BATTLE_ANIMATION_DAMAGE_NIGHTMARE`): two low notes grating, a whisper, a cold bell as it bites. |
+| `moment_leech_seed` | — | Leech Seed saps a Pokémon's health (`BATTLE_ANIMATION_DAMAGE_LEECH_SEED`): a breath rising and six motes leaving, each a little higher. |
+| `moment_ingrain` | — | Roots draw up a sixteenth (`BATTLE_ANIMATION_DAMAGE_INGRAIN`): the ground creaking, a rising note, a soft bell. |
+| `moment_bind` | — | Bind or Wrap tightens (`BATTLE_ANIMATION_DAMAGE_BIND`, `_WRAP`): a creak rising, a knock, and the grip let go. |
+| `moment_fire_spin` | — | Fire Spin or Magma Storm whirls round a Pokémon (`BATTLE_ANIMATION_DAMAGE_FIRE_SPIN`, `_MAGMA_STORM`): a roar that comes and goes, crackling. |
+| `moment_clamp` | — | Clamp snaps shut (`BATTLE_ANIMATION_DAMAGE_CLAMP`): a rush inward and a hard clack. |
+| `moment_whirlpool` | — | Whirlpool turns under a Pokémon (`BATTLE_ANIMATION_DAMAGE_WHIRLPOOL`): a wash that swells and sinks, bubbling. |
+| `moment_sand_tomb` | — | Sand Tomb draws a Pokémon down (`BATTLE_ANIMATION_DAMAGE_SAND_TOMB`): a hiss sinking over a low rumble. |
+
+**The turn's moments** (plan 25 · Y3; `SoundBank.MomentSound`): each moment of the turn has a sound, heard as its line appears and only where its mark is seen (none on a Pokémon behind a Substitute or out of sight). A condition as it plays on its turn sounds as it did when it was given: `status_sleep` for a Pokémon fast asleep, `status_poison` and `status_burn` as poison and a burn bite at the turn's end, `status_freeze` frozen solid, `status_paralysis` fully paralysed, `status_confusion` confused. A level has none of its own: its fanfare plays with it. An HP change that comes with a moment makes no sound: no `hit_normal` for a poison tick, no `heal` for Leftovers. An attack sent ahead (Future Sight, Doom Desire) lands with its type's `move_…` sound, from the side it lands on. The original plays its animations' own sounds; these stand for no named one.
 
 ## Moves
 

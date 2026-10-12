@@ -222,7 +222,7 @@ internal sealed class Leftovers : BattleEffect
     public override void AtEndOfTurn(IBattleContext ctx, Battler self)
     {
         var p = self.Pokemon!;
-        if (p.CurrentHP < p.MaxHP) ctx.RestoreHp(self, Formulas.Divide(p.MaxHP, 16), $"{self.Name} restored a little HP using its {ctx.ItemOf(self)}!");
+        if (p.CurrentHP < p.MaxHP) ctx.RestoreHp(self, Formulas.Divide(p.MaxHP, 16), $"{self.Name} restored a little HP using its {ctx.ItemAtWork(self)}!");
     }
 }
 
@@ -234,9 +234,9 @@ internal sealed class BlackSludge : BattleEffect
         var p = self.Pokemon!;
         if (self.HasType(PokemonType.Poison))
         {
-            if (p.CurrentHP < p.MaxHP) ctx.RestoreHp(self, Formulas.Divide(p.MaxHP, 16), $"{self.Name} restored a little HP using its {ctx.ItemOf(self)}!");
+            if (p.CurrentHP < p.MaxHP) ctx.RestoreHp(self, Formulas.Divide(p.MaxHP, 16), $"{self.Name} restored a little HP using its {ctx.ItemAtWork(self)}!");
         }
-        else ctx.LoseHp(self, Formulas.Divide(p.MaxHP, 8), $"{self.Name} is hurt by its {ctx.ItemOf(self)}!");
+        else ctx.LoseHp(self, Formulas.Divide(p.MaxHP, 8), $"{self.Name} is hurt by its {ctx.ItemAtWork(self)}!");
     }
 }
 
@@ -247,7 +247,7 @@ internal sealed class ShellBell(int param) : BattleEffect
     {
         int total = hits.Sum(h => h.Damage);
         if (total > 0 && self.IsActive && self.Pokemon!.CurrentHP < self.Pokemon.MaxHP)
-            ctx.RestoreHp(self, Formulas.Divide(total, param), $"{self.Name} restored a little HP using its {ctx.ItemOf(self)}!");
+            ctx.RestoreHp(self, Formulas.Divide(total, param), $"{self.Name} restored a little HP using its {ctx.ItemAtWork(self)}!");
     }
 }
 
@@ -287,7 +287,7 @@ internal sealed class FocusSash : BattleEffect
     {
         var p = self.Pokemon!;
         if (p.CurrentHP != p.MaxHP || damage < p.CurrentHP) return false;
-        ctx.Announce($"{self.Name} hung on using its {ctx.ItemOf(self)}!");
+        ctx.Announce($"{self.Name} hung on using its {ctx.ItemAtWork(self)}!");
         ctx.ConsumeItem(self);
         return true;
     }
@@ -299,7 +299,7 @@ internal sealed class FocusBand(int param) : BattleEffect
     public override bool EnduresHit(IBattleContext ctx, Battler self, int damage)
     {
         if (damage < self.Pokemon!.CurrentHP || ctx.Random.Roll(RollKind.ItemChance, 100) >= param) return false;
-        ctx.Announce($"{self.Name} hung on using its {ctx.ItemOf(self)}!");
+        ctx.Announce($"{self.Name} hung on using its {ctx.ItemAtWork(self)}!");
         return true;
     }
 }
@@ -309,7 +309,7 @@ internal sealed class StatusOrb(StatusCondition status) : BattleEffect
 {
     public override void AfterTheTurn(IBattleContext ctx, Battler self)
     {
-        if (self.Pokemon!.Status == StatusCondition.None) ctx.TryInflictStatus(self, status, null);
+        if (self.Pokemon!.Status == StatusCondition.None) ctx.TryInflictStatusByItem(self, status);
     }
 }
 
@@ -320,7 +320,7 @@ internal sealed class StatusOrb(StatusCondition status) : BattleEffect
 internal sealed class StickyBarb(int param) : BattleEffect
 {
     public override void AfterTheTurn(IBattleContext ctx, Battler self) =>
-        ctx.LoseHp(self, Formulas.Divide(self.Pokemon!.MaxHP, param), $"{self.Name} is hurt by its {ctx.ItemOf(self)}!");
+        ctx.LoseHp(self, Formulas.Divide(self.Pokemon!.MaxHP, param), $"{self.Name} is hurt by its {ctx.ItemAtWork(self)}!");
 }
 
 /// <summary>Eaten at half HP or less to restore HP (<c>HpRestore</c>: the parameter; <c>HpPctRestore</c>: that share of its HP in a hundred).</summary>
@@ -332,7 +332,7 @@ internal sealed class HealBerry(Func<Pokemon, int> amount) : BattleEffect
         if (p.IsFainted || p.CurrentHP > p.MaxHP / 2) return;
         var berry = p.HeldItem!;
         ctx.ConsumeItem(self);
-        ctx.RestoreHp(self, Math.Max(1, amount(p)), $"{self.Name} restored its health using its {ctx.ItemOf(self, berry)}!");
+        ctx.RestoreHp(self, Math.Max(1, amount(p)), $"{self.Name} restored its health using its {ctx.ItemAtWork(self, berry)}!");
     }
 }
 
@@ -348,7 +348,7 @@ internal sealed class FlavorBerry(Flavor flavor, int param) : BattleEffect
         if (p.IsFainted || p.CurrentHP > p.MaxHP / 2) return;
         var berry = p.HeldItem!;
         ctx.ConsumeItem(self);
-        ctx.RestoreHp(self, Formulas.Divide(p.MaxHP, Math.Max(1, param)), $"{self.Name} restored its health using its {ctx.ItemOf(self, berry)}!");
+        ctx.RestoreHp(self, Formulas.Divide(p.MaxHP, Math.Max(1, param)), $"{self.Name} restored its health using its {ctx.ItemAtWork(self, berry)}!");
         if (HeldItemEffects.DislikedBy(p.Nature) == flavor)
         {
             ctx.Announce($"For {self.Name}, the {ctx.ItemOf(self, berry)} was too {flavor.ToString().ToLowerInvariant()}!");
@@ -373,8 +373,8 @@ internal sealed class CureBerry(bool curesConfusion, params StatusCondition[] cu
         var berry = p.HeldItem!;
         ctx.ConsumeItem(self);
         if (confusion) self.ConfusionTurns = 0;
-        if (status) ctx.CureStatus(self, $"{self.Name}'s {ctx.ItemOf(self, berry)} cured its {BattleText.StatusName(p.Status)}!");
-        else ctx.Announce($"{self.Name}'s {ctx.ItemOf(self, berry)} snapped it out of its confusion!");
+        if (status) ctx.CureStatus(self, $"{self.Name}'s {ctx.ItemAtWork(self, berry)} cured its {BattleText.StatusName(p.Status)}!");
+        else ctx.Announce($"{self.Name}'s {ctx.ItemAtWork(self, berry)} snapped it out of its confusion!");
     }
 }
 
@@ -390,7 +390,7 @@ internal sealed class LeppaBerry(int param) : BattleEffect
         var berry = p.HeldItem!;
         ctx.ConsumeItem(self);
         move.CurrentPP = Math.Min(move.MaxPP, move.CurrentPP + param);
-        ctx.Announce($"{self.Name}'s {ctx.ItemOf(self, berry)} restored {move.Name}'s PP!");
+        ctx.Announce($"{self.Name}'s {ctx.ItemAtWork(self, berry)} restored {move.Name}'s PP!");
     }
 }
 
@@ -403,7 +403,7 @@ internal sealed class PinchStatBerry(StatType stat, int param) : BattleEffect
         if (p.IsFainted || p.CurrentHP > p.MaxHP / HeldItemEffects.PinchParam(self, param) || p.StatStages.GetValueOrDefault(stat) >= 6) return;
         var berry = p.HeldItem!;
         ctx.ConsumeItem(self);
-        ctx.Announce($"{self.Name} ate its {ctx.ItemOf(self, berry)}!");
+        ctx.Announce($"{self.Name} ate its {ctx.ItemAtWork(self, berry)}!");
         ctx.ChangeStat(self, stat, 1, self);
     }
 }
@@ -418,7 +418,7 @@ internal sealed class LansatBerry(int param) : BattleEffect
         var berry = p.HeldItem!;
         ctx.ConsumeItem(self);
         self.Volatile.FocusEnergy = true;
-        ctx.Announce($"{self.Name} used its {ctx.ItemOf(self, berry)} to get pumped!");
+        ctx.Announce($"{self.Name} used its {ctx.ItemAtWork(self, berry)} to get pumped!");
     }
 }
 
@@ -435,7 +435,7 @@ internal sealed class StarfBerry(int param) : BattleEffect
         if (open.Count == 0) return;
         var berry = p.HeldItem!;
         ctx.ConsumeItem(self);
-        ctx.Announce($"{self.Name} ate its {ctx.ItemOf(self, berry)}!");
+        ctx.Announce($"{self.Name} ate its {ctx.ItemAtWork(self, berry)}!");
         ctx.ChangeStat(self, open[ctx.Random.Roll(RollKind.Pick, open.Count)], 2, self);
     }
 }
@@ -450,7 +450,7 @@ internal sealed class MicleBerry(int param) : BattleEffect
         var berry = p.HeldItem!;
         ctx.ConsumeItem(self);
         self.Volatile.MicleBerry = true;
-        ctx.Announce($"{self.Name} boosted the accuracy of its next move using its {ctx.ItemOf(self, berry)}!");
+        ctx.Announce($"{self.Name} boosted the accuracy of its next move using its {ctx.ItemAtWork(self, berry)}!");
     }
 }
 
@@ -466,7 +466,7 @@ internal sealed class WhiteHerb : BattleEffect
         var herb = p.HeldItem!;
         ctx.ConsumeItem(self);
         foreach (var stat in lowered) p.StatStages[stat] = 0;
-        ctx.Announce($"{self.Name} returned its stats to normal using its {ctx.ItemOf(self, herb)}!");
+        ctx.Announce($"{self.Name} returned its stats to normal using its {ctx.ItemAtWork(self, herb)}!");
     }
 }
 
@@ -480,6 +480,6 @@ internal sealed class MentalHerb : BattleEffect
         var herb = p.HeldItem!;
         ctx.ConsumeItem(self);
         self.Volatile.InLoveWith = null;
-        ctx.Announce($"{self.Name} cured its infatuation using its {ctx.ItemOf(self, herb)}!");
+        ctx.Announce($"{self.Name} cured its infatuation using its {ctx.ItemAtWork(self, herb)}!");
     }
 }

@@ -30,6 +30,14 @@ public enum BattleFormat
     Double
 }
 
+/// <summary>
+/// What a script or a venue asks of a battle beyond who fights it and where (plan 14): the formats of the later
+/// games that are a flag on the battle. The game lays them over the place's own conditions as the battle is made
+/// (<see cref="Sim.BattleConditions"/>), never into a battle that is running. B1: an inverse battle, whose type
+/// chart is turned round (<see cref="Sim.BattleConditions.Inverse"/>).
+/// </summary>
+public sealed record BattleTerms(bool Inverse = false);
+
 /// <summary>Everything a battle starts from.</summary>
 public sealed class BattleSetup
 {

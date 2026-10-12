@@ -204,15 +204,19 @@ partial class Harness
             ReadTo("kept for good"); Frames(4); Shot("ch24_hall_your_names_are_kept");
             ReadTo("This machine"); Frames(4); Shot("ch25_hall_this_machine");
 
-            // ---- the balls laid on the machine, one for each of the team
+            // ---- the balls laid on the machine, one for each of the team, and lit: the machine's own set piece (plan
+            // 09 · L12), with the machine close up at the screen's own resolution while they are plain and while lit
             Box().Advance();
-            Until(() => story.Var(GameEngine.MachineBallsVariable) == 1, "the first ball", 300);
+            Until(() => game.Map.MachineBalls == 1, "the first ball", 300);
             Frames(6); Shot("ch26_hall_the_first_ball");
-            Until(() => story.Var(GameEngine.MachineBallsVariable) == 3, "three balls", 300);
+            Until(() => game.Map.MachineBalls == 3, "three balls", 300);
             Frames(6); Shot("ch27_hall_three_balls");
-            Until(() => story.Var(GameEngine.MachineBallsVariable) == team.Members.Count, "every ball", 300);
+            ShotCrop("ch27b_hall_three_balls_close", 840, 250, 240, 150, 8);
+            Until(() => game.Map.MachineBalls == team.Members.Count, "every ball", 300);
             Frames(30); Shot("ch28_hall_every_ball_and_the_chime");
-            Console.WriteLine($"the machine: {story.Var(GameEngine.MachineBallsVariable)} balls for a team of {team.Members.Count}");
+            Until(() => game.Map.MachineLit, "the balls lit", 120);
+            Frames(2); ShotCrop("ch28b_hall_the_balls_lit_close", 840, 250, 240, 150, 8);
+            Console.WriteLine($"the machine: {game.Map.MachineBalls} balls for a team of {team.Members.Count}, lit {game.Map.MachineLit}");
 
             // ---- the scene of the team's entry: each Pokémon and its card
             Until(() => State() == GameState.HallOfFameCeremony, "the ceremony", 1200);
@@ -256,8 +260,8 @@ partial class Harness
 
             // ---- the save, in the player's own room
             ReadTo("saved the game"); Frames(4); Shot("ch45_the_game_is_saved");
-            var saved = SaveManager.LoadGame();
-            Console.WriteLine(saved == null ? "  !! no save was written" : $"the save: {saved.CurrentMapName} at {saved.PlayerGridX},{saved.PlayerGridY}, story version {saved.StoryVersion}, completed {saved.StoryFlags.Contains("FLAG_GAME_COMPLETED")}");
+            var saved = SaveManager.Load(game.SaveFile).Save;
+            Console.WriteLine(saved == null ? "  !! no save was written" : $"the save, in slot {game.SaveSlot}: {saved.CurrentMapName} at {saved.PlayerGridX},{saved.PlayerGridY}, story version {saved.StoryVersion}, completed {saved.StoryFlags.Contains("FLAG_GAME_COMPLETED")}");
             Box().Advance();
         }
         else
@@ -300,8 +304,7 @@ partial class Harness
             Until(() => State() == GameState.Overworld && !engine.ScriptRunning, "the game going on at home", 900);
             Frames(60);
         }
-        File.Delete("savegame.json");
-        File.Delete(SaveManager.BackupOf("savegame.json"));
+        game.DeleteSave();
 
         // ---- waking at home, where the game goes on
         ReadTo(null, 300);

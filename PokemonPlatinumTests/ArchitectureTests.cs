@@ -78,11 +78,18 @@ public class ArchitectureTests
             (root, u) => In(root, u, "Battle") && u.TargetType == $"{Engine}.Models.Pokemon" && u.Member == "get_Ability"
                 && !(u.Caller == "Battler" && u.Method == "get_Ability")),
         new("What is written about the game needs no window (plan 16 · T3): Core.Diagnostics and the command line use no raylib type",
-            (root, u) => (In(root, u, "Core.Diagnostics") || u.Namespace == $"{root}.Core" && CommandLineTypes.Contains(u.Caller)) && Raylib(u))
+            (root, u) => (In(root, u, "Core.Diagnostics") || u.Namespace == $"{root}.Core" && CommandLineTypes.Contains(u.Caller)) && Raylib(u)),
+        new("Where the saves live needs no window (plan 12 · Q2): SavePaths, SaveEnvironment and SaveSlots use no raylib type",
+            (root, u) => u.Namespace == $"{root}.Core" && SaveTypes.Contains(u.Caller) && Raylib(u)),
+        new("Nothing but the game's own start finds a user's own folder (plan 12 · Q2): the real machine, SaveEnvironment.Here, is asked in Program alone",
+            (root, u) => u.TargetType == $"{Engine}.Core.SaveEnvironment" && u.Member == "Here" && !(u.Namespace == root && u.Caller == "Program"))
     };
 
     // The command line and what it is read into (Core/CommandLine.cs)
     private static readonly string[] CommandLineTypes = { "CommandLine", "LaunchOptions", "Switch" };
+
+    // Where the saves live and the slots there (Core/SavePaths.cs, Core/SaveSlots.cs)
+    private static readonly string[] SaveTypes = { "SavePaths", "SaveEnvironment", "SaveSlots" };
 
     [Fact]
     public void TheEngineKeepsEveryRule()

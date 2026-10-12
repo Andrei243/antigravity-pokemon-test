@@ -10,8 +10,9 @@ namespace PokemonPlatinumEngine.Core.Diagnostics;
 /// What the game says of itself for a crash report: the screen it was on, where the player stood if a game was in
 /// progress, the graphics card's name and the options as they were. Plain values, so the writer needs no window.
 /// </summary>
+/// <param name="SaveFile">The file the game in progress is saved in, by its name alone (<c>save2.json</c>, plan 12 · Q2); null with no game in progress.</param>
 public sealed record GameFacts(string State, string? Map = null, string? Area = null, int? X = null, int? Y = null,
-    string? Renderer = null, string? Settings = null);
+    string? Renderer = null, string? Settings = null, string? SaveFile = null);
 
 /// <summary>Everything a crash report holds beside the exception.</summary>
 public sealed record CrashFacts(DateTime When, string Build, string Os, string Runtime, string Arguments, GameFacts? Game, IReadOnlyList<string> Log)
@@ -49,8 +50,8 @@ public sealed record CrashOutcome(string? ReportPath, string? SavePath, string? 
 /// <para>
 /// What is kept: the newest <see cref="Keep"/> reports (older ones are deleted as a new one is written), and one
 /// crash save with the one before it as <c>savegame.crash.bak</c> (the save's own way: a new crash save takes the
-/// old one's place and the old one becomes the backup). To go on from a crash save, the player puts their
-/// <c>savegame.json</c> aside and renames the crash save in its place; nothing does that for them.
+/// old one's place and the old one becomes the backup). To go on from a crash save, the player puts their slot's
+/// save (<c>save1.json</c>) aside and renames the crash save in its place; nothing does that for them.
 /// </para>
 /// No drawing, no input: the writer takes plain values and an exception, so tests drive it with made-up ones.
 /// </summary>
@@ -71,8 +72,8 @@ public static class CrashReport
     /// <summary>The sections of a report, in its order.</summary>
     public static readonly string[] Sections = { "When", "Build", "Machine", "Started with", "Options", "Game", "What went wrong", "Log", "Crash save" };
 
-    /// <summary>Where the save is, and so where the reports and the crash save go: the working directory (plan 12 · Q2 moves it to <c>SavePaths</c>).</summary>
-    public static string SaveFolder => Path.GetDirectoryName(Path.GetFullPath(SaveManager.FileName)) ?? Environment.CurrentDirectory;
+    /// <summary>Where the saves are, and so where the reports and the crash save go: <see cref="SavePaths.Current"/>'s folder (plan 12 · Q2).</summary>
+    public static string SaveFolder => SavePaths.Current.Folder;
 
     private static readonly JsonSerializerOptions NoteJson = new() { WriteIndented = true };
 
@@ -102,7 +103,8 @@ public static class CrashReport
         Section(Sections[4], Or(game?.Settings, "(not read yet)"));
         Section(Sections[5], game == null ? "(the game hadn't been made yet)"
             : $"Screen: {game.State}\n" + (game.Map == null ? "No game in progress."
-                : $"Map: {game.Map}{(game.Area != null ? $" ({game.Area})" : "")}\nTile: {game.X}, {game.Y}"));
+                : $"Map: {game.Map}{(game.Area != null ? $" ({game.Area})" : "")}\nTile: {game.X}, {game.Y}"
+                + (game.SaveFile != null ? $"\nSaved in: {game.SaveFile}" : "")));
         Section(Sections[6], Describe(exception));
         Section($"{Sections[7]} (its last {facts.Log.Count} lines)", facts.Log.Count > 0 ? string.Join("\n", facts.Log) : "(nothing was logged)");
         Section(Sections[8], save);
@@ -183,9 +185,11 @@ public static class CrashReport
             saveProblem = $"The game as it stood couldn't be put into a save ({e.GetType().Name}: {e.Message}), so nothing was kept.";
         }
 
+        // The save the game was being played from is a slot's file (plan 12 · Q2), which the game names if it can
+        string own = facts.Game?.SaveFile is { Length: > 0 } file ? $"your {file}" : $"your slot's save ({SavePaths.SlotName(1)} for slot 1)";
         string kept = savePath != null
             ? $"The game as it stood was kept as {SaveName}, beside your save and never over it.\n"
-              + $"To go on from there, put your {SaveManager.FileName} aside and give {SaveName} its name.\n"
+              + $"To go on from there, put {own} aside and give {SaveName} its name.\n"
               + "It was caught in the middle of whatever was happening, so your own save is the safer one."
             : saveProblem!;
 

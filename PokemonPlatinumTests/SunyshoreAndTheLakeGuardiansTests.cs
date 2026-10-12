@@ -556,7 +556,8 @@ public class SunyshoreAndTheLakeGuardiansTests
         // Into the car from the city: two steps in, the ride, two steps out, and the gallery, before the car's open door
         var up = game.Played[^2].Host;
         Assert.Equal("VistaLighthouseElevator.OnEnter", game.Played[^2].Script);
-        Assert.Contains("camera Shake", up.Log);
+        // The ride is the lift's own set piece, with the original's four rounds of the car's lights (plan 09 · L12)
+        Assert.Contains("anim elevator up 4", up.Log);
         Assert.Contains("warp VistaLighthouse 6 10", up.Log);
         Assert.Equal(("VistaLighthouse", (6, 10)), (game.Map.Name, game.Tile));
         Assert.Equal(1, game.Story.Var("VAR_VISTA_LIGHTHOUSE_FLOOR"));

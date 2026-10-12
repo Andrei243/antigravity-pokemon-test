@@ -388,6 +388,7 @@ log:
     ! Struck P0 Hp=3 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Geodude is afflicted by the curse!
+    + MomentShown E0 Moment=Curse From=none
     + HpChanged E0 Hp=45 Healed=false
   say Duskull used Curse!
     + Lunged P0 Category=Status
@@ -401,6 +402,7 @@ log:
   say Duskull fainted!
     + Fainted P0
   say Foe Geodude is afflicted by the curse!
+    + MomentShown E0 Moment=Curse From=none
     + HpChanged E0 Hp=28 Healed=false
   say Go! Growlithe!
     + Entered P0 Pokemon=mine#1 Growlithe FromBall=true
@@ -423,6 +425,7 @@ log:
   say Growlithe fainted!
     + Fainted P0
   say Foe Geodude is afflicted by the curse!
+    + MomentShown E0 Moment=Curse From=none
     + HpChanged E0 Hp=0 Healed=false
   say Foe Geodude fainted!
     + Fainted E0
@@ -506,6 +509,7 @@ log:
   say Foe Flareon fell asleep!
     + StatusChanged E0 Status=Sleep
   say Foe Flareon is fast asleep.
+    + MomentShown E0 Moment=Asleep From=none
   say Chatot used Fury Attack!
     + Lunged P0 Category=Physical
     + MoveShown Move=Fury Attack Type=Normal Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -515,7 +519,9 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Hit 3 times!
   say Foe Flareon is fast asleep.
+    + MomentShown E0 Moment=Asleep From=none
   say Foe Flareon is fast asleep.
+    + MomentShown E0 Moment=Asleep From=none
   say Chatot used Chatter!
     + Lunged P0 Category=Special
     + MoveShown Move=Chatter Type=Flying Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -671,6 +677,7 @@ log:
     + StatusChanged E0 Status=Burn
   say Foe Nidoran♂'s Lum Berry cured its burn!
     + ItemShown E0 Item=Lum Berry
+    + MomentShown E0 Moment=HeldItem From=none
     + StatusChanged E0 Status=None
   say Foe Machop used Cross Chop!
     + Lunged E1 Category=Physical
@@ -853,6 +860,7 @@ log:
     + Confused P0
   say Drowzee is confused!
     + Confused P0
+    + MomentShown P0 Moment=Confused From=none
   say It hurt itself in its confusion!
     ! Struck P0 Hp=20 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
@@ -862,6 +870,7 @@ log:
   say Foe Golduck's attack missed!
   say Drowzee is confused!
     + Confused P0
+    + MomentShown P0 Moment=Confused From=none
   say It hurt itself in its confusion!
     ! Struck P0 Hp=4 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
@@ -872,6 +881,7 @@ log:
     + StageChanged P0 Stat=Defense Stage=-2 Rose=false
   say Drowzee is confused!
     + Confused P0
+    + MomentShown P0 Moment=Confused From=none
   say Drowzee used Psych Up!
     + Lunged P0 Category=Status
     + MoveShown Move=Psych Up Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -953,9 +963,11 @@ log:
     + WeatherContinues Weather=Rain
   say Espeon restored a little HP using its Leftovers!
     + ItemShown P0 Item=Leftovers
+    + MomentShown P0 Moment=HeldItem From=none
     + HpChanged P0 Hp=76 Healed=true
   say Espeon is confused!
     + Confused P0
+    + MomentShown P0 Moment=Confused From=none
   say Espeon used Swift!
     + Lunged P0 Category=Special
     + MoveShown Move=Swift Type=Normal Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -1136,6 +1148,7 @@ log:
     ! Struck P0 Hp=154 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Whiscash is fast asleep.
+    + MomentShown P0 Moment=Asleep From=none
   say Foe Poliwhirl used Wake-Up Slap!
     + Lunged E0 Category=Physical
     + MoveShown Move=Wake-Up Slap Type=Fighting Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -1171,6 +1184,7 @@ log:
     ! Struck P0 Hp=54 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Whiscash is fast asleep.
+    + MomentShown P0 Moment=Asleep From=none
   say Foe Milotic used Hydro Pump!
     + Lunged E0 Category=Special
     + MoveShown Move=Hydro Pump Type=Water Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -1349,12 +1363,14 @@ log:
     + MoveShown Move=Encore Type=Normal Category=Status From=P1 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Rattata received an encore!
   say Foe Rattata is frozen solid!
+    + MomentShown E1 Moment=Frozen From=none
   say Foe Rattata used Quick Attack!
     + Lunged E0 Category=Physical
     + MoveShown Move=Quick Attack Type=Normal Category=Physical From=E0 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
     ! Struck P1 Hp=19 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Rattata is frozen solid!
+    + MomentShown E1 Moment=Frozen From=none
   say Vigoroth used Encore!
     + Lunged P1 Category=Status
     + MoveShown Move=Encore Type=Normal Category=Status From=P1 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -1629,6 +1645,7 @@ log:
     + Confused P0
   say Bellossom is confused!
     + Confused P0
+    + MomentShown P0 Moment=Confused From=none
   say Bellossom used Magical Leaf!
     + Lunged P0 Category=Special
     + MoveShown Move=Magical Leaf Type=Grass Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -1644,6 +1661,7 @@ log:
     + Entered E0 Pokemon=foe#1 Rhyhorn FromBall=true
   say Bellossom is confused!
     + Confused P0
+    + MomentShown P0 Moment=Confused From=none
   say It hurt itself in its confusion!
     ! Struck P0 Hp=132 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
@@ -1654,6 +1672,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Bellossom is confused!
     + Confused P0
+    + MomentShown P0 Moment=Confused From=none
   say It hurt itself in its confusion!
     ! Struck P0 Hp=36 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
@@ -1663,6 +1682,7 @@ log:
   say Foe Rhyhorn's attack missed!
   say Bellossom is confused!
     + Confused P0
+    + MomentShown P0 Moment=Confused From=none
   say It hurt itself in its confusion!
     ! Struck P0 Hp=21 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
@@ -1781,8 +1801,10 @@ log:
   say It's super effective!
   say Porygon2 restored its health using its Berry Juice!
     + ItemShown P1 Item=Berry Juice
+    + MomentShown P1 Moment=HeldItem From=none
     + HpChanged P1 Hp=44 Healed=true
   say Foe Heracross is hurt by Whirlpool!
+    + MomentShown E0 Moment=Whirlpool From=none
     + HpChanged E0 Hp=15 Healed=false
   say Foe Gardevoir used Psychic!
     + Lunged E1 Category=Special
@@ -1798,6 +1820,7 @@ log:
     + ItemShown P1 Item=Berry Juice
   say Porygon2 restored its health using its Berry Juice!
     + ItemShown P1 Item=Berry Juice
+    + MomentShown P1 Moment=HeldItem From=none
     + HpChanged P1 Hp=64 Healed=true
   say Foe Heracross used Take Down!
     + Lunged E0 Category=Physical
@@ -1826,6 +1849,7 @@ log:
     + MoveShown Move=Attract Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Heracross fell in love!
   say Foe Heracross is in love with Wormadam!
+    + MomentShown E0 Moment=Infatuated From=none
   say Foe Heracross is immobilized by love!
   say Foe Gardevoir used Psychic!
     + Lunged E1 Category=Special
@@ -1874,6 +1898,7 @@ log:
     + ItemShown P1 Item=Berry Juice
   say Porygon2 restored its health using its Berry Juice!
     + ItemShown P1 Item=Berry Juice
+    + MomentShown P1 Moment=HeldItem From=none
     + HpChanged P1 Hp=50 Healed=true
   say Wormadam used Attract!
     + Lunged P0 Category=Status
@@ -2143,6 +2168,7 @@ log:
   say Foe Miltank is pelted by the hail!
     + HpChanged E1 Hp=148 Healed=false
   say Foe Miltank is hurt by poison!
+    + MomentShown E1 Moment=Poisoned From=none
     + HpChanged E1 Hp=129 Healed=false
   say Ace Trainer Tester sent out Whismur!
     + Seen Species=Whismur
@@ -2172,6 +2198,7 @@ log:
   say Hail continues to fall.
     + WeatherContinues Weather=Hail
   say Foe Miltank is hurt by poison!
+    + MomentShown E1 Moment=Poisoned From=none
     + HpChanged E1 Hp=110 Healed=false
   say Psyduck used Amnesia!
     + Lunged P0 Category=Status
@@ -2501,8 +2528,10 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Weedle was caught in Clamperl's Clamp!
   say Foe Weedle is hurt by Clamp!
+    + MomentShown E0 Moment=Clamp From=none
     + HpChanged E0 Hp=65 Healed=false
   say Clamperl is hurt by poison!
+    + MomentShown P0 Moment=Poisoned From=none
     + HpChanged P0 Hp=94 Healed=false
   say Foe Weedle used String Shot!
     + Lunged E0 Category=Status
@@ -2515,8 +2544,10 @@ log:
   say Clamperl's Defense sharply rose!
     + StageChanged P0 Stat=Defense Stage=2 Rose=true
   say Foe Weedle is hurt by Clamp!
+    + MomentShown E0 Moment=Clamp From=none
     + HpChanged E0 Hp=59 Healed=false
   say Clamperl is hurt by poison!
+    + MomentShown P0 Moment=Poisoned From=none
     + HpChanged P0 Hp=80 Healed=false
   say Foe Weedle used String Shot!
     + Lunged E0 Category=Status
@@ -2529,8 +2560,10 @@ log:
     ! Struck E0 Hp=26 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Weedle is hurt by Clamp!
+    + MomentShown E0 Moment=Clamp From=none
     + HpChanged E0 Hp=20 Healed=false
   say Clamperl is hurt by poison!
+    + MomentShown P0 Moment=Poisoned From=none
     + HpChanged P0 Hp=66 Healed=false
   say Foe Weedle used String Shot!
     + Lunged E0 Category=Status
@@ -2543,6 +2576,7 @@ log:
   say Clamperl's attack missed!
   say Foe Weedle was freed from Clamp!
   say Clamperl is hurt by poison!
+    + MomentShown P0 Moment=Poisoned From=none
     + HpChanged P0 Hp=52 Healed=false
   say Foe Weedle used String Shot!
     + Lunged E0 Category=Status
@@ -2555,6 +2589,7 @@ log:
   say Clamperl's Defense sharply rose!
     + StageChanged P0 Stat=Defense Stage=4 Rose=true
   say Clamperl is hurt by poison!
+    + MomentShown P0 Moment=Poisoned From=none
     + HpChanged P0 Hp=38 Healed=false
   say Foe Weedle used String Shot!
     + Lunged E0 Category=Status
@@ -2573,6 +2608,7 @@ log:
   say Clamperl gained 556 EXP. Points!
   ExpGained Pokemon=mine#0 Clamperl Amount=556
   say Clamperl is hurt by poison!
+    + MomentShown P0 Moment=Poisoned From=none
     + HpChanged P0 Hp=24 Healed=false
   say Ace Trainer Tester sent out Lombre!
     + Seen Species=Lombre
@@ -2588,8 +2624,10 @@ log:
   say It's not very effective...
   say Foe Lombre was caught in Clamperl's Whirlpool!
   say Foe Lombre is hurt by Whirlpool!
+    + MomentShown E0 Moment=Whirlpool From=none
     + HpChanged E0 Hp=85 Healed=false
   say Clamperl is hurt by poison!
+    + MomentShown P0 Moment=Poisoned From=none
     + HpChanged P0 Hp=10 Healed=false
   say Foe Lombre used Bubble Beam!
     + Lunged E0 Category=Special
@@ -2603,8 +2641,10 @@ log:
   say Clamperl's Defense sharply rose!
     + StageChanged P0 Stat=Defense Stage=6 Rose=true
   say Foe Lombre is hurt by Whirlpool!
+    + MomentShown E0 Moment=Whirlpool From=none
     + HpChanged E0 Hp=80 Healed=false
   say Clamperl is hurt by poison!
+    + MomentShown P0 Moment=Poisoned From=none
     + HpChanged P0 Hp=0 Healed=false
   say Clamperl fainted!
     + Fainted P0
@@ -2703,6 +2743,7 @@ log:
     + Confused P0
   say Chimchar is confused!
     + Confused P0
+    + MomentShown P0 Moment=Confused From=none
   say Chimchar used Slack Off!
     + Lunged P0 Category=Status
     + MoveShown Move=Slack Off Type=Normal Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -2716,6 +2757,7 @@ log:
   say It's super effective!
   say Chimchar is confused!
     + Confused P0
+    + MomentShown P0 Moment=Confused From=none
   say It hurt itself in its confusion!
     ! Struck P0 Hp=69 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
@@ -2884,6 +2926,7 @@ log:
   say Manectric was burned!
     + StatusChanged P0 Status=Burn
   say Manectric is hurt by its burn!
+    + MomentShown P0 Moment=Burned From=none
     + HpChanged P0 Hp=79 Healed=false
   say Manectric used Odor Sleuth!
     + Lunged P0 Category=Status
@@ -2895,6 +2938,7 @@ log:
     ! Struck P0 Hp=69 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Manectric is hurt by its burn!
+    + MomentShown P0 Moment=Burned From=none
     + HpChanged P0 Hp=57 Healed=false
   say Manectric used Bite!
     + Lunged P0 Category=Physical
@@ -2904,6 +2948,7 @@ log:
   say It's super effective!
   say Foe Duskull flinched!
   say Manectric is hurt by its burn!
+    + MomentShown P0 Moment=Burned From=none
     + HpChanged P0 Hp=45 Healed=false
   say Manectric used Quick Attack!
     + Lunged P0 Category=Physical
@@ -2916,6 +2961,7 @@ log:
     ! Struck P0 Hp=32 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Manectric is hurt by its burn!
+    + MomentShown P0 Moment=Burned From=none
     + HpChanged P0 Hp=20 Healed=false
   say Foe Duskull used Shadow Sneak!
     + Lunged E0 Category=Physical
@@ -2930,6 +2976,7 @@ log:
   say It's super effective!
     + TrainerReacts E0 Cue=LowHp
   say Manectric is hurt by its burn!
+    + MomentShown P0 Moment=Burned From=none
     + HpChanged P0 Hp=0 Healed=false
   say Manectric fainted!
     + Fainted P0
@@ -3063,7 +3110,9 @@ log:
   say Foe Poochyena is paralyzed! It may be unable to move!
     + StatusChanged E0 Status=Paralyze
   say Foe Poochyena is paralyzed! It can't move!
+    + MomentShown E0 Moment=Paralyzed From=none
   say Foe Poochyena is paralyzed! It can't move!
+    + MomentShown E0 Moment=Paralyzed From=none
   say Jolteon used Agility!
     + Lunged P0 Category=Status
     + MoveShown Move=Agility Type=Psychic Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -3078,10 +3127,13 @@ log:
   say Jolteon used Last Resort!
   say But it failed!
   say Foe Poochyena is paralyzed! It can't move!
+    + MomentShown E0 Moment=Paralyzed From=none
   say Jolteon used Last Resort!
   say But it failed!
   say Foe Poochyena is paralyzed! It can't move!
+    + MomentShown E0 Moment=Paralyzed From=none
   say Foe Poochyena is paralyzed! It can't move!
+    + MomentShown E0 Moment=Paralyzed From=none
   say Jolteon used Thunder Wave!
     + Lunged P0 Category=Status
     + MoveShown Move=Thunder Wave Type=Electric Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -3147,6 +3199,7 @@ log:
   say Whismur is paralyzed! It may be unable to move!
     + StatusChanged P0 Status=Paralyze
   say Foe Umbreon is paralyzed! It can't move!
+    + MomentShown E0 Moment=Paralyzed From=none
   say Foe Umbreon used Assurance!
     + Lunged E0 Category=Physical
     + MoveShown Move=Assurance Type=Dark Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -3158,6 +3211,7 @@ log:
     ! Struck E0 Hp=199 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Umbreon is paralyzed! It can't move!
+    + MomentShown E0 Moment=Paralyzed From=none
   say Whismur used Roar!
     + Lunged P0 Category=Status
     + MoveShown Move=Roar Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -3211,6 +3265,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Murkrow was caught in Clamperl's Whirlpool!
   say Foe Murkrow is hurt by Whirlpool!
+    + MomentShown E0 Moment=Whirlpool From=none
     + HpChanged E0 Hp=119 Healed=false
   say Foe Murkrow used Sucker Punch!
     + Lunged E0 Category=Physical
@@ -3338,6 +3393,7 @@ log:
   say Rain continues to fall.
     + WeatherContinues Weather=Rain
   say Slowbro is hurt by poison!
+    + MomentShown P0 Moment=Poisoned From=none
     + HpChanged P0 Hp=188 Healed=false
   say Slowbro used Rain Dance!
     + Lunged P0 Category=Status
@@ -3352,6 +3408,7 @@ log:
   say Rain continues to fall.
     + WeatherContinues Weather=Rain
   say Slowbro is hurt by poison!
+    + MomentShown P0 Moment=Poisoned From=none
     + HpChanged P0 Hp=160 Healed=false
   say Slowbro used Psych Up!
     + Lunged P0 Category=Status
@@ -3365,6 +3422,7 @@ log:
   say Rain continues to fall.
     + WeatherContinues Weather=Rain
   say Slowbro is hurt by poison!
+    + MomentShown P0 Moment=Poisoned From=none
     + HpChanged P0 Hp=132 Healed=false
   say Slowbro used Psych Up!
     + Lunged P0 Category=Status
@@ -3378,6 +3436,7 @@ log:
   say The rain stopped.
     + WeatherChanged Weather=None
   say Slowbro is hurt by poison!
+    + MomentShown P0 Moment=Poisoned From=none
     + HpChanged P0 Hp=97 Healed=false
   say Slowbro used Rain Dance!
     + Lunged P0 Category=Status
@@ -3392,6 +3451,7 @@ log:
   say Rain continues to fall.
     + WeatherContinues Weather=Rain
   say Slowbro is hurt by poison!
+    + MomentShown P0 Moment=Poisoned From=none
     + HpChanged P0 Hp=63 Healed=false
   say Slowbro used Psychic!
     + Lunged P0 Category=Special
@@ -3407,6 +3467,7 @@ log:
   say Rain continues to fall.
     + WeatherContinues Weather=Rain
   say Slowbro is hurt by poison!
+    + MomentShown P0 Moment=Poisoned From=none
     + HpChanged P0 Hp=35 Healed=false
   say Ace Trainer Tester sent out Prinplup!
     + Seen Species=Prinplup
@@ -3425,6 +3486,7 @@ log:
   say Rain continues to fall.
     + WeatherContinues Weather=Rain
   say Slowbro is hurt by poison!
+    + MomentShown P0 Moment=Poisoned From=none
     + HpChanged P0 Hp=7 Healed=false
   say Foe Prinplup used Drill Peck!
     + Lunged E0 Category=Physical
@@ -3876,6 +3938,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say The Chilan Berry weakened Thrash's power!
     + ItemShown E1 Item=Chilan Berry
+    + MomentShown E1 Moment=HeldItem From=none
   say Heatran used Crunch!
     + Lunged P1 Category=Physical
     + MoveShown Move=Crunch Type=Dark Category=Physical From=P1 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -4048,6 +4111,7 @@ log:
     + Lunged E0 Category=Status
     + Vanished E0
   say Heatran is paralyzed! It can't move!
+    + MomentShown P1 Moment=Paralyzed From=none
   say Foe Skiploom used Bounce!
     + Reappeared E0
     + Lunged E0 Category=Physical
@@ -4078,6 +4142,7 @@ log:
   say Heatran acquired Insomnia!
     + AbilityShown P1 Ability=Insomnia
   say Heatran is paralyzed! It can't move!
+    + MomentShown P1 Moment=Paralyzed From=none
   say Foe Skiploom used Giga Drain!
     + Lunged E0 Category=Special
     + MoveShown Move=Giga Drain Type=Grass Category=Special From=E0 To=P1 Missed=false Blocked=false Critical=true SuperEffective=false
@@ -4113,12 +4178,14 @@ log:
   say Heatran had its energy drained!
     + HpChanged E0 Hp=179 Healed=true
   say Heatran is paralyzed! It can't move!
+    + MomentShown P1 Moment=Paralyzed From=none
   say Foe Skiploom used Worry Seed!
     + Lunged E0 Category=Status
     + MoveShown Move=Worry Seed Type=Grass Category=Status From=E0 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
   say Heatran acquired Insomnia!
     + AbilityShown P1 Ability=Insomnia
   say Heatran is paralyzed! It can't move!
+    + MomentShown P1 Moment=Paralyzed From=none
   say Foe Skiploom used Memento!
     + Lunged E0 Category=Status
     + HpChanged E0 Hp=0 Healed=false
@@ -4462,6 +4529,7 @@ log:
     ! HitSounded SuperEffective=true NotVeryEffective=false
   say It's super effective!
   say Lickilicky is hurt by poison!
+    + MomentShown P1 Moment=Poisoned From=none
     + HpChanged P1 Hp=187 Healed=false
   say Foe Feraligatr used Ice Fang!
     + Lunged E1 Category=Physical
@@ -4478,6 +4546,7 @@ log:
   say Lickilicky gained 685 EXP. Points!
   ExpGained Pokemon=mine#1 Lickilicky Amount=685
   say Lickilicky is hurt by poison!
+    + MomentShown P1 Moment=Poisoned From=none
     + HpChanged P1 Hp=148 Healed=false
   say Foe Feraligatr used Flail!
     + Lunged E1 Category=Physical
@@ -4490,6 +4559,7 @@ log:
   say Foe Feraligatr's Defense harshly fell!
     + StageChanged E1 Stat=Defense Stage=-2 Rose=false
   say Lickilicky is hurt by poison!
+    + MomentShown P1 Moment=Poisoned From=none
     + HpChanged P1 Hp=114 Healed=false
   say Foe Feraligatr used Flail!
     + Lunged E1 Category=Physical
@@ -4618,6 +4688,7 @@ log:
     ! HitSounded SuperEffective=true NotVeryEffective=false
   say It's super effective!
   say Prinplup's health is sapped by Leech Seed!
+    + MomentShown P0 Moment=LeechSeed From=E0
     + HpChanged P0 Hp=41 Healed=false
   say Foe Venusaur took in the sapped health!
     + HpChanged E0 Hp=29 Healed=true
@@ -4997,6 +5068,7 @@ log:
   say But it failed!
   say Foe Gligar is confused!
     + Confused E0
+    + MomentShown E0 Moment=Confused From=none
   say Foe Gligar used Feint Attack!
     + Lunged E0 Category=Physical
     + MoveShown Move=Feint Attack Type=Dark Category=Physical From=E0 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -5011,6 +5083,7 @@ log:
     + Fainted P1
   say Foe Gligar is confused!
     + Confused E0
+    + MomentShown E0 Moment=Confused From=none
   say It hurt itself in its confusion!
     ! Struck E0 Hp=46 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
@@ -5382,6 +5455,7 @@ log:
   say It's super effective!
   say Foe Hoppip was hurt by Feebas's Rowap Berry!
     + ItemShown P0 Item=Rowap Berry
+    + MomentShown P0 Moment=HeldItem From=none
     + HpChanged E1 Hp=72 Healed=false
   say Feebas had its energy drained!
     + HpChanged E1 Hp=82 Healed=true
@@ -5485,6 +5559,7 @@ log:
     + MoveShown Move=Leech Seed Type=Grass Category=Status From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Arbok was seeded!
   say Arbok's health is sapped by Leech Seed!
+    + MomentShown P0 Moment=LeechSeed From=E0
     + HpChanged P0 Hp=114 Healed=false
   say Arbok used Mud Bomb!
     + Lunged P0 Category=Special
@@ -5496,6 +5571,7 @@ log:
   say Foe Cherrim took in sunlight!
     + Lunged E0 Category=Status
   say Arbok's health is sapped by Leech Seed!
+    + MomentShown P0 Moment=LeechSeed From=E0
     + HpChanged P0 Hp=98 Healed=false
   say Foe Cherrim took in the sapped health!
     + HpChanged E0 Hp=112 Healed=true
@@ -5510,6 +5586,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
   say Arbok's health is sapped by Leech Seed!
+    + MomentShown P0 Moment=LeechSeed From=E0
     + HpChanged P0 Hp=61 Healed=false
   say Foe Cherrim took in the sapped health!
     + HpChanged E0 Hp=118 Healed=true
@@ -5519,6 +5596,7 @@ log:
   say Foe Cherrim took in sunlight!
     + Lunged E0 Category=Status
   say Arbok's health is sapped by Leech Seed!
+    + MomentShown P0 Moment=LeechSeed From=E0
     + HpChanged P0 Hp=45 Healed=false
   say Arbok used Mud Bomb!
     + Lunged P0 Category=Special
@@ -5533,6 +5611,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
   say Arbok's health is sapped by Leech Seed!
+    + MomentShown P0 Moment=LeechSeed From=E0
     + HpChanged P0 Hp=0 Healed=false
   say Foe Cherrim took in the sapped health!
     + HpChanged E0 Hp=118 Healed=true
@@ -5557,6 +5636,7 @@ log:
   say The sunlight is strong.
     + WeatherContinues Weather=Sun
   say Lady Melissa used the Full Restore!
+    + MomentShown E0 Moment=BagItem From=none
   say Foe Cherrim recovered 110 HP!
     + HpChanged E0 Hp=118 Healed=true
   say Charizard used Flamethrower!
@@ -6139,18 +6219,21 @@ log:
   say Go! Voltorb!
     + Entered P0 Pokemon=mine#2 Voltorb FromBall=true
   say Foe Hoppip is fast asleep.
+    + MomentShown E0 Moment=Asleep From=none
   say Voltorb used Spark!
     + Lunged P0 Category=Physical
     + MoveShown Move=Spark Type=Electric Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
     ! Struck E0 Hp=70 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Hoppip is fast asleep.
+    + MomentShown E0 Moment=Asleep From=none
   say Voltorb used Screech!
     + Lunged P0 Category=Status
     + MoveShown Move=Screech Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Hoppip's Defense harshly fell!
     + StageChanged E0 Stat=Defense Stage=-2 Rose=false
   say Foe Hoppip is fast asleep.
+    + MomentShown E0 Moment=Asleep From=none
   say Voltorb used Rollout!
     + Lunged P0 Category=Physical
     + MoveShown Move=Rollout Type=Rock Category=Physical From=P0 To=E0 Missed=true Blocked=false Critical=false SuperEffective=false
@@ -6420,6 +6503,7 @@ log:
   ExpGained Pokemon=mine#0 Mudkip Amount=187
   LevelRose Pokemon=mine#0 Mudkip Level=14 Before=37/20/20/18/22/17 After=39/22/21/19/24/18
   say Mudkip grew to Lv. 14!
+    + MomentShown P0 Moment=LevelUp From=none
   Won
   say Lucas defeated Hiker Daniel!
   say Lucas received $384 for winning!
@@ -6511,6 +6595,7 @@ log:
     + StageChanged E1 Stat=Evasion Stage=1 Rose=true
   say Raikou took the Future Sight attack!
     + PlaceConditionChanged P1 Condition=FutureSight Up=false
+    + AheadLanded Move=Future Sight Type=Psychic Category=Special From=E0 To=P1
   Struck P1 Hp=52 Hard=false
   HitSounded SuperEffective=false NotVeryEffective=false
   say Raikou used Reflect!
@@ -6578,6 +6663,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Purugly is hurt by its Sticky Barb!
     + ItemShown E0 Item=Sticky Barb
+    + MomentShown E0 Moment=HeldItem From=none
     + HpChanged E0 Hp=4 Healed=false
   say Foe Purugly used Slash!
     + Lunged E0 Category=Physical
@@ -6599,6 +6685,7 @@ log:
   ExpGained Pokemon=mine#0 Gastrodon Amount=1725
   say Gastrodon is hurt by its Sticky Barb!
     + ItemShown P0 Item=Sticky Barb
+    + MomentShown P0 Moment=HeldItem From=none
     + HpChanged P0 Hp=128 Healed=false
   say Ace Trainer Tester sent out Cubone!
     + Seen Species=Cubone
@@ -6619,6 +6706,7 @@ log:
     + WeatherContinues Weather=Rain
   say Gastrodon is hurt by its Sticky Barb!
     + ItemShown P0 Item=Sticky Barb
+    + MomentShown P0 Moment=HeldItem From=none
     + HpChanged P0 Hp=60 Healed=false
   say Foe Cubone used Double-Edge!
     + Lunged E0 Category=Physical
@@ -6636,6 +6724,7 @@ log:
     + WeatherContinues Weather=Rain
   say Foe Cubone is hurt by its Sticky Barb!
     + ItemShown E0 Item=Sticky Barb
+    + MomentShown E0 Moment=HeldItem From=none
     + HpChanged E0 Hp=151 Healed=false
   say Foe Cubone used Fling!
     + Lunged E0 Category=Physical
@@ -6766,6 +6855,7 @@ log:
     + MoveShown Move=Double-Edge Type=Normal Category=Physical From=P0 To=E0 Missed=false Blocked=true Critical=false SuperEffective=false
   say It doesn't affect Foe Duskull...
   say Jigglypuff is hurt by its burn!
+    + MomentShown P0 Moment=Burned From=none
     + HpChanged P0 Hp=114 Healed=false
   say Foe Duskull used Payback!
     + Lunged E0 Category=Physical
@@ -6779,12 +6869,15 @@ log:
     + MoveShown Move=Hyper Voice Type=Normal Category=Special From=P0 To=E0 Missed=false Blocked=true Critical=false SuperEffective=false
   say It doesn't affect Foe Duskull...
   say Jigglypuff is hurt by its burn!
+    + MomentShown P0 Moment=Burned From=none
     + HpChanged P0 Hp=50 Healed=false
   say Jigglypuff took the Future Sight attack!
     + PlaceConditionChanged P0 Condition=FutureSight Up=false
+    + AheadLanded Move=Future Sight Type=Psychic Category=Special From=E0 To=P0
   Struck P0 Hp=26 Hard=false
   HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Duskull is in love with Jigglypuff!
+    + MomentShown E0 Moment=Infatuated From=none
   say Foe Duskull used Payback!
     + Lunged E0 Category=Physical
     + MoveShown Move=Payback Type=Dark Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -6834,6 +6927,7 @@ log:
   say Hit 3 times!
   say Oddish is confused!
     + Confused P0
+    + MomentShown P0 Moment=Confused From=none
   say Oddish used Giga Drain!
     + Lunged P0 Category=Special
     + MoveShown Move=Giga Drain Type=Grass Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -6847,6 +6941,7 @@ log:
   say Foe Delcatty's attack missed!
   say Oddish is confused!
     + Confused P0
+    + MomentShown P0 Moment=Confused From=none
   say Oddish used Petal Dance!
     + Lunged P0 Category=Special
     + MoveShown Move=Petal Dance Type=Grass Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -6859,6 +6954,7 @@ log:
   say Oddish fell asleep!
     + StatusChanged P0 Status=Sleep
   say Oddish is fast asleep.
+    + MomentShown P0 Moment=Asleep From=none
   say Foe Delcatty used Double Slap!
     + Lunged E0 Category=Physical
     + MoveShown Move=Double Slap Type=Normal Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -7052,6 +7148,7 @@ log:
     + StageChanged E1 Stat=Attack Stage=-2 Rose=false
   say Foe Gyarados is confused!
     + Confused E1
+    + MomentShown E1 Moment=Confused From=none
   say Foe Gyarados used Thrash!
     + Lunged E1 Category=Physical
     + MoveShown Move=Thrash Type=Normal Category=Physical From=E1 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -7070,6 +7167,7 @@ log:
     + Entered P0 Pokemon=mine#2 Roselia FromBall=true
   say Foe Gyarados is confused!
     + Confused E1
+    + MomentShown E1 Moment=Confused From=none
   say Foe Gyarados used Thrash!
     + Lunged E1 Category=Physical
     + MoveShown Move=Thrash Type=Normal Category=Physical From=E1 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -7089,6 +7187,7 @@ log:
   say It's super effective!
   say Foe Gyarados is confused!
     + Confused E1
+    + MomentShown E1 Moment=Confused From=none
   say It hurt itself in its confusion!
     ! Struck E1 Hp=3 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
@@ -7098,6 +7197,7 @@ log:
   say Foe Goldeen fell asleep!
     + StatusChanged E0 Status=Sleep
   say Foe Goldeen is fast asleep.
+    + MomentShown E0 Moment=Asleep From=none
   say Foe Gyarados snapped out of confusion!
   say Foe Gyarados used Bite!
     + Lunged E1 Category=Physical
@@ -7192,6 +7292,7 @@ log:
     + Confused P0
   say Sunflora is confused!
     + Confused P0
+    + MomentShown P0 Moment=Confused From=none
   say It hurt itself in its confusion!
     ! Struck P0 Hp=10 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
@@ -7203,6 +7304,7 @@ log:
     + WeatherContinues Weather=Sun
   say Sunflora is confused!
     + Confused P0
+    + MomentShown P0 Moment=Confused From=none
   say It hurt itself in its confusion!
     ! Struck P0 Hp=0 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
@@ -7417,6 +7519,7 @@ log:
     ! Struck E0 Hp=76 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Hit 2 times!
+  MomentShown E0 Moment=HeldItem From=none
   say Foe Glameow used Fury Swipes!
     + Lunged E0 Category=Physical
     + MoveShown Move=Fury Swipes Type=Normal Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -7560,6 +7663,7 @@ log:
     + PlaceConditionChanged E0 Condition=FutureSight Up=true
   say Foe Mankey is confused!
     + Confused E0
+    + MomentShown E0 Moment=Confused From=none
   say Foe Mankey used Close Combat!
     + Lunged E0 Category=Physical
     + MoveShown Move=Close Combat Type=Fighting Category=Physical From=E0 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -7606,6 +7710,7 @@ log:
   say But it failed!
   say Foe Mankey is confused!
     + Confused E0
+    + MomentShown E0 Moment=Confused From=none
   say It hurt itself in its confusion!
     ! Struck E0 Hp=0 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
@@ -7656,6 +7761,7 @@ log:
   say It's super effective!
   say Phanpy restored its health using its Wiki Berry!
     + ItemShown P0 Item=Wiki Berry
+    + MomentShown P0 Moment=HeldItem From=none
     + HpChanged P0 Hp=19 Healed=true
   say Foe Gyarados used Dragon Dance!
     + Lunged E0 Category=Status
@@ -7700,6 +7806,7 @@ log:
   say Foe Gyarados's Defense harshly fell!
     + StageChanged E0 Stat=Defense Stage=-2 Rose=false
   say Foe Gyarados is paralyzed! It can't move!
+    + MomentShown E0 Moment=Paralyzed From=none
   say Flygon used Dragon Claw!
     + Lunged P0 Category=Physical
     + MoveShown Move=Dragon Claw Type=Dragon Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -7756,6 +7863,7 @@ log:
   say A sandstorm kicked up!
     + WeatherChanged Weather=Sandstorm
   say Foe Gyarados is paralyzed! It can't move!
+    + MomentShown E0 Moment=Paralyzed From=none
   say The sandstorm rages.
     + WeatherContinues Weather=Sandstorm
   say Foe Gyarados is buffeted by the sandstorm!
@@ -8169,6 +8277,7 @@ log:
     + StageChanged P1 Stat=Accuracy Stage=-1 Rose=false
   say Foe Piloswine was hurt by Rhydon's Rowap Berry!
     + ItemShown P1 Item=Rowap Berry
+    + MomentShown P1 Moment=HeldItem From=none
     + HpChanged E1 Hp=62 Healed=false
   say Foe Piloswine used Endure!
     + Lunged E1 Category=Status
@@ -8276,6 +8385,7 @@ log:
   say It's not very effective...
   say Foe Pidgeotto is confused!
     + Confused E0
+    + MomentShown E0 Moment=Confused From=none
   say It hurt itself in its confusion!
     ! Struck E0 Hp=67 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
@@ -8304,6 +8414,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Pidgeotto is confused!
     + Confused E0
+    + MomentShown E0 Moment=Confused From=none
   say Foe Pidgeotto used Wing Attack!
     + Lunged E0 Category=Physical
     + MoveShown Move=Wing Attack Type=Flying Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -8477,6 +8588,7 @@ log:
     ! Struck P0 Hp=30 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Tangrowth absorbed nutrients with its roots!
+    + MomentShown P0 Moment=Ingrain From=none
     + HpChanged P0 Hp=32 Healed=true
   say Tangrowth used Constrict!
     + Lunged P0 Category=Physical
@@ -8489,6 +8601,7 @@ log:
     ! Struck P0 Hp=29 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Tangrowth absorbed nutrients with its roots!
+    + MomentShown P0 Moment=Ingrain From=none
     + HpChanged P0 Hp=31 Healed=true
   say Tangrowth used Ingrain!
     + Lunged P0 Category=Status
@@ -8499,6 +8612,7 @@ log:
   say Tangrowth's Defense fell!
     + StageChanged P0 Stat=Defense Stage=-1 Rose=false
   say Tangrowth absorbed nutrients with its roots!
+    + MomentShown P0 Moment=Ingrain From=none
     + HpChanged P0 Hp=33 Healed=true
   say Tangrowth used Sleep Powder!
     + Lunged P0 Category=Status
@@ -8506,10 +8620,12 @@ log:
   say Foe Rattata fell asleep!
     + StatusChanged E0 Status=Sleep
   say Foe Rattata is fast asleep.
+    + MomentShown E0 Moment=Asleep From=none
   say Tangrowth used Ingrain!
     + Lunged P0 Category=Status
   say But it failed!
   say Foe Rattata is fast asleep.
+    + MomentShown E0 Moment=Asleep From=none
   say Tangrowth used Sleep Powder!
     + Lunged P0 Category=Status
     + MoveShown Move=Sleep Powder Type=Grass Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -8522,6 +8638,7 @@ log:
     ! Struck P0 Hp=30 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Tangrowth absorbed nutrients with its roots!
+    + MomentShown P0 Moment=Ingrain From=none
     + HpChanged P0 Hp=32 Healed=true
   say Foe Rattata used Quick Attack!
     + Lunged E0 Category=Physical
@@ -8534,12 +8651,15 @@ log:
   say Foe Rattata fell asleep!
     + StatusChanged E0 Status=Sleep
   say Tangrowth absorbed nutrients with its roots!
+    + MomentShown P0 Moment=Ingrain From=none
     + HpChanged P0 Hp=30 Healed=true
   say Tangrowth used Ingrain!
     + Lunged P0 Category=Status
   say But it failed!
   say Foe Rattata is fast asleep.
+    + MomentShown E0 Moment=Asleep From=none
   say Tangrowth absorbed nutrients with its roots!
+    + MomentShown P0 Moment=Ingrain From=none
     + HpChanged P0 Hp=32 Healed=true
   say Tangrowth used Constrict!
     + Lunged P0 Category=Physical
@@ -8547,13 +8667,17 @@ log:
     ! Struck E0 Hp=12 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Rattata is fast asleep.
+    + MomentShown E0 Moment=Asleep From=none
   say Tangrowth absorbed nutrients with its roots!
+    + MomentShown P0 Moment=Ingrain From=none
     + HpChanged P0 Hp=33 Healed=true
   say Tangrowth used Ingrain!
     + Lunged P0 Category=Status
   say But it failed!
   say Foe Rattata is fast asleep.
+    + MomentShown E0 Moment=Asleep From=none
   say Foe Rattata is fast asleep.
+    + MomentShown E0 Moment=Asleep From=none
   say Tangrowth used Sleep Powder!
     + Lunged P0 Category=Status
     + MoveShown Move=Sleep Powder Type=Grass Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -8569,6 +8693,7 @@ log:
     + Lunged P0 Category=Status
   say But it failed!
   say Tangrowth absorbed nutrients with its roots!
+    + MomentShown P0 Moment=Ingrain From=none
     + HpChanged P0 Hp=31 Healed=true
   say Tangrowth used Constrict!
     + Lunged P0 Category=Physical
@@ -8583,6 +8708,7 @@ log:
     ! Struck P0 Hp=28 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Tangrowth absorbed nutrients with its roots!
+    + MomentShown P0 Moment=Ingrain From=none
     + HpChanged P0 Hp=30 Healed=true
   say Foe Rattata used Quick Attack!
     + Lunged E0 Category=Physical
@@ -8595,16 +8721,20 @@ log:
   say Foe Rattata fell asleep!
     + StatusChanged E0 Status=Sleep
   say Tangrowth absorbed nutrients with its roots!
+    + MomentShown P0 Moment=Ingrain From=none
     + HpChanged P0 Hp=28 Healed=true
   say Foe Rattata is fast asleep.
+    + MomentShown E0 Moment=Asleep From=none
   say Tangrowth used Constrict!
     + Lunged P0 Category=Physical
     + MoveShown Move=Constrict Type=Normal Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
     ! Struck E0 Hp=6 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Tangrowth absorbed nutrients with its roots!
+    + MomentShown P0 Moment=Ingrain From=none
     + HpChanged P0 Hp=30 Healed=true
   say Foe Rattata is fast asleep.
+    + MomentShown E0 Moment=Asleep From=none
   say Tangrowth used Constrict!
     + Lunged P0 Category=Physical
     + MoveShown Move=Constrict Type=Normal Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -8612,18 +8742,22 @@ log:
     ! Struck E0 Hp=3 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Tangrowth absorbed nutrients with its roots!
+    + MomentShown P0 Moment=Ingrain From=none
     + HpChanged P0 Hp=32 Healed=true
   say Foe Rattata is fast asleep.
+    + MomentShown E0 Moment=Asleep From=none
   say Tangrowth used Sleep Powder!
     + Lunged P0 Category=Status
     + MoveShown Move=Sleep Powder Type=Grass Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Rattata is already asleep!
   say Tangrowth absorbed nutrients with its roots!
+    + MomentShown P0 Moment=Ingrain From=none
     + HpChanged P0 Hp=33 Healed=true
   say Tangrowth used Ingrain!
     + Lunged P0 Category=Status
   say But it failed!
   say Foe Rattata is fast asleep.
+    + MomentShown E0 Moment=Asleep From=none
   say Tangrowth used Sleep Powder!
     + Lunged P0 Category=Status
     + MoveShown Move=Sleep Powder Type=Grass Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -8817,6 +8951,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Arceus restored a little HP using its Leftovers!
     + ItemShown E0 Item=Leftovers
+    + MomentShown E0 Moment=HeldItem From=none
     + HpChanged E0 Hp=241 Healed=true
   say Foe Arceus used Hyper Voice!
     + Lunged E0 Category=Special
@@ -8827,6 +8962,7 @@ log:
     + Fainted P0
   say Foe Arceus restored a little HP using its Leftovers!
     + ItemShown E0 Item=Leftovers
+    + MomentShown E0 Moment=HeldItem From=none
     + HpChanged E0 Hp=252 Healed=true
   say Go! Persian!
     + Entered P0 Pokemon=mine#2 Persian FromBall=true
@@ -8914,6 +9050,7 @@ log:
     + Confused P0
   say Machamp is confused!
     + Confused P0
+    + MomentShown P0 Moment=Confused From=none
   say It hurt itself in its confusion!
     ! Struck P0 Hp=76 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
@@ -8945,6 +9082,7 @@ log:
     + Confused P0
   say Machamp is confused!
     + Confused P0
+    + MomentShown P0 Moment=Confused From=none
   say It hurt itself in its confusion!
     ! Struck P0 Hp=32 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
@@ -8956,6 +9094,7 @@ log:
   say It's super effective!
   say Machamp is confused!
     + Confused P0
+    + MomentShown P0 Moment=Confused From=none
   say Machamp used Vital Throw!
     + Lunged P0 Category=Physical
     + MoveShown Move=Vital Throw Type=Fighting Category=Physical From=P0 To=E0 Missed=false Blocked=true Critical=false SuperEffective=false
@@ -8968,6 +9107,7 @@ log:
     + HpChanged P0 Hp=44 Healed=false
   say Machamp is confused!
     + Confused P0
+    + MomentShown P0 Moment=Confused From=none
   say It hurt itself in its confusion!
     ! Struck P0 Hp=21 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
@@ -8999,6 +9139,7 @@ log:
     + Confused P0
   say Machamp is confused!
     + Confused P0
+    + MomentShown P0 Moment=Confused From=none
   say It hurt itself in its confusion!
     ! Struck P0 Hp=10 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
@@ -9010,6 +9151,7 @@ log:
     + HpChanged P0 Hp=21 Healed=false
   say Machamp is confused!
     + Confused P0
+    + MomentShown P0 Moment=Confused From=none
   say It hurt itself in its confusion!
     ! Struck P0 Hp=0 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
@@ -9024,6 +9166,7 @@ log:
     + Confused P0
   say Swablu is confused!
     + Confused P0
+    + MomentShown P0 Moment=Confused From=none
   say It hurt itself in its confusion!
     ! Struck P0 Hp=83 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
@@ -9035,6 +9178,7 @@ log:
     + HpChanged P0 Hp=52 Healed=false
   say Swablu is confused!
     + Confused P0
+    + MomentShown P0 Moment=Confused From=none
   say Swablu used Natural Gift!
   say But it failed!
   say Foe Misdreavus used Mean Look!
@@ -9043,6 +9187,7 @@ log:
   say Swablu can no longer escape!
   say Swablu is confused!
     + Confused P0
+    + MomentShown P0 Moment=Confused From=none
   say Swablu used Refresh!
     + Lunged P0 Category=Status
   say But it failed!
@@ -9062,6 +9207,7 @@ log:
     + Confused P0
   say Swablu is confused!
     + Confused P0
+    + MomentShown P0 Moment=Confused From=none
   say It hurt itself in its confusion!
     ! Struck P0 Hp=28 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
@@ -9072,6 +9218,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Swablu is confused!
     + Confused P0
+    + MomentShown P0 Moment=Confused From=none
   say It hurt itself in its confusion!
     ! Struck P0 Hp=3 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
@@ -9101,6 +9248,7 @@ log:
     + Confused P0
   say Swablu is confused!
     + Confused P0
+    + MomentShown P0 Moment=Confused From=none
   say Swablu used Dragon Pulse!
     + Lunged P0 Category=Special
     + MoveShown Move=Dragon Pulse Type=Dragon Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -9217,6 +9365,7 @@ log:
     + StageChanged P1 Stat=Attack Stage=2 Rose=true
   say Ivysaur is confused!
     + Confused P1
+    + MomentShown P1 Moment=Confused From=none
   say It hurt itself in its confusion!
     ! Struck P1 Hp=73 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
@@ -9296,6 +9445,7 @@ log:
     + Confused P0
   say Piloswine is confused!
     + Confused P0
+    + MomentShown P0 Moment=Confused From=none
   say It hurt itself in its confusion!
     ! Struck P0 Hp=9 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
@@ -9328,6 +9478,7 @@ log:
     + Confused P0
   say Smoochum is confused!
     + Confused P0
+    + MomentShown P0 Moment=Confused From=none
   say Smoochum used Lick!
     + Lunged P0 Category=Physical
     + MoveShown Move=Lick Type=Ghost Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=true SuperEffective=false
@@ -9424,6 +9575,7 @@ log:
     + StageChanged P0 Stat=SpAttack Stage=1 Rose=true
   say Beautifly is confused!
     + Confused P0
+    + MomentShown P0 Moment=Confused From=none
   say It hurt itself in its confusion!
     ! Struck P0 Hp=0 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
@@ -9590,6 +9742,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Loudred was caught in Foe Clamperl's Whirlpool!
   say Loudred is hurt by Whirlpool!
+    + MomentShown P0 Moment=Whirlpool From=none
     + HpChanged P0 Hp=110 Healed=false
   say Loudred used Rest!
     + Lunged P0 Category=Status
@@ -9602,6 +9755,7 @@ log:
     + MoveShown Move=Clamp Type=Water Category=Physical From=E0 To=P0 Missed=true Blocked=false Critical=false SuperEffective=false
   say Foe Clamperl's attack missed!
   say Loudred is hurt by Whirlpool!
+    + MomentShown P0 Moment=Whirlpool From=none
     + HpChanged P0 Hp=170 Healed=false
   say Foe Clamperl used Water Gun!
     + Lunged E0 Category=Special
@@ -9609,9 +9763,12 @@ log:
     ! Struck P0 Hp=164 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Loudred is fast asleep.
+    + MomentShown P0 Moment=Asleep From=none
   say Loudred is hurt by Whirlpool!
+    + MomentShown P0 Moment=Whirlpool From=none
     + HpChanged P0 Hp=153 Healed=false
   say Loudred is fast asleep.
+    + MomentShown P0 Moment=Asleep From=none
   say Loudred used Sleep Talk!
     + Lunged P0 Category=Status
     + MoveShown Move=Sleep Talk Type=Normal Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -9841,6 +9998,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Gallade was caught in Monferno's Fire Spin!
   say Foe Gallade is hurt by Fire Spin!
+    + MomentShown E0 Moment=FireSpin From=none
     + HpChanged E0 Hp=136 Healed=false
   say Foe Gallade used False Swipe!
     + Lunged E0 Category=Physical
@@ -9953,6 +10111,7 @@ log:
   ExpGained Pokemon=mine#1 Sharpedo Amount=60
   LevelRose Pokemon=mine#1 Sharpedo Level=4 Before=17/10/8/11/8/10 After=20/12/9/13/9/12
   say Sharpedo grew to Lv. 4!
+    + MomentShown P0 Moment=LevelUp From=none
   Won
   say Lucas defeated Waiter Mickey!
   say Lucas received $160 for winning!
@@ -9992,6 +10151,7 @@ log:
     + StageChanged P0 Stat=Defense Stage=-1 Rose=false
   say Machop returned its stats to normal using its White Herb!
     + ItemShown P0 Item=White Herb
+    + MomentShown P0 Moment=HeldItem From=none
   say Machop used Cross Chop!
     + Lunged P0 Category=Physical
     + MoveShown Move=Cross Chop Type=Fighting Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -10012,6 +10172,7 @@ log:
     + Confused E0
   say Foe Grotle is confused!
     + Confused E0
+    + MomentShown E0 Moment=Confused From=none
   say It hurt itself in its confusion!
     ! Struck E0 Hp=0 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
@@ -10459,6 +10620,7 @@ log:
   say Foe Rattata's Attack fell!
     + StageChanged E0 Stat=Attack Stage=-4 Rose=false
   say Foe Rattata is paralyzed! It can't move!
+    + MomentShown E0 Moment=Paralyzed From=none
   say Mareep used Tackle!
     + Lunged P0 Category=Physical
     + MoveShown Move=Tackle Type=Normal Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -10840,6 +11002,7 @@ log:
     ! Struck E0 Hp=130 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Burmy's health is sapped by Leech Seed!
+    + MomentShown P0 Moment=LeechSeed From=E0
     + HpChanged P0 Hp=111 Healed=false
   say Foe Roserade took in the sapped health!
     + HpChanged E0 Hp=143 Healed=true
@@ -11165,6 +11328,7 @@ log:
   say It's not very effective...
   say Breloom took the Future Sight attack!
     + PlaceConditionChanged P0 Condition=FutureSight Up=false
+    + AheadLanded Move=Future Sight Type=Psychic Category=Special From=E0 To=P0
   Struck P0 Hp=25 Hard=false
   HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Kirlia used Hypnosis!
@@ -11173,7 +11337,9 @@ log:
   say Breloom fell asleep!
     + StatusChanged P0 Status=Sleep
   say Breloom is fast asleep.
+    + MomentShown P0 Moment=Asleep From=none
   say Breloom is fast asleep.
+    + MomentShown P0 Moment=Asleep From=none
   say Foe Kirlia used Future Sight!
     + Lunged E0 Category=Special
     + MoveShown Move=Future Sight Type=Psychic Category=Special From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -11185,10 +11351,12 @@ log:
   say Breloom's Attack harshly fell!
     + StageChanged P0 Stat=Attack Stage=-6 Rose=false
   say Breloom is fast asleep.
+    + MomentShown P0 Moment=Asleep From=none
   say Foe Kirlia used Imprison!
     + Lunged E0 Category=Status
   say But it failed!
   say Breloom is fast asleep.
+    + MomentShown P0 Moment=Asleep From=none
   say Breloom took the Future Sight attack!
     + PlaceConditionChanged P0 Condition=FutureSight Up=false
   say But it failed!
@@ -11217,8 +11385,10 @@ log:
   say Breloom fell asleep!
     + StatusChanged P0 Status=Sleep
   say Breloom is fast asleep.
+    + MomentShown P0 Moment=Asleep From=none
   say Breloom took the Future Sight attack!
     + PlaceConditionChanged P0 Condition=FutureSight Up=false
+    + AheadLanded Move=Future Sight Type=Psychic Category=Special From=E0 To=P0
   Struck P0 Hp=0 Hard=false
   HitSounded SuperEffective=false NotVeryEffective=false
   say Breloom fainted!
@@ -11292,6 +11462,7 @@ log:
     + Confused E0
   say Foe Kirlia is confused!
     + Confused E0
+    + MomentShown E0 Moment=Confused From=none
   say It hurt itself in its confusion!
     ! Struck E0 Hp=22 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
@@ -11341,13 +11512,16 @@ log:
   say Lickitung fell asleep!
     + StatusChanged P0 Status=Sleep
   say Lickitung is fast asleep.
+    + MomentShown P0 Moment=Asleep From=none
   say Foe Kirlia used Charm!
     + Lunged E0 Category=Status
     + MoveShown Move=Charm Type=Normal Category=Status From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Lickitung's Attack won't go any lower!
   say Lickitung is fast asleep.
+    + MomentShown P0 Moment=Asleep From=none
   say Lickitung took the Future Sight attack!
     + PlaceConditionChanged P0 Condition=FutureSight Up=false
+    + AheadLanded Move=Future Sight Type=Psychic Category=Special From=E0 To=P0
   Struck P0 Hp=0 Hard=false
   HitSounded SuperEffective=false NotVeryEffective=false
   say Lickitung fainted!
@@ -11544,16 +11718,19 @@ log:
   say Foe Kadabra fell asleep!
     + StatusChanged E0 Status=Sleep
   say Foe Kadabra is fast asleep.
+    + MomentShown E0 Moment=Asleep From=none
   say Gengar used Mean Look!
     + Lunged P0 Category=Status
     + MoveShown Move=Mean Look Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Kadabra can no longer escape!
   say Foe Kadabra is fast asleep.
+    + MomentShown E0 Moment=Asleep From=none
   say Gengar used Hypnosis!
     + Lunged P0 Category=Status
     + MoveShown Move=Hypnosis Type=Psychic Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Gengar's attack missed!
   say Foe Kadabra is fast asleep.
+    + MomentShown E0 Moment=Asleep From=none
   say Gengar used Spite!
     + Lunged P0 Category=Status
     + MoveShown Move=Spite Type=Ghost Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -11660,6 +11837,7 @@ log:
     + StageChanged P0 Stat=Defense Stage=-2 Rose=false
   say Persian took the Future Sight attack!
     + PlaceConditionChanged P0 Condition=FutureSight Up=false
+    + AheadLanded Move=Future Sight Type=Psychic Category=Special From=E0 To=P0
   Struck P0 Hp=0 Hard=false
   HitSounded SuperEffective=false NotVeryEffective=false
   say Persian fainted!
@@ -12054,6 +12232,7 @@ log:
   say Misdreavus acquired Insomnia!
     + AbilityShown P0 Ability=Insomnia
   say Misdreavus is paralyzed! It can't move!
+    + MomentShown P0 Moment=Paralyzed From=none
   say The sunlight faded.
     + WeatherChanged Weather=None
   say Foe Budew's perish count fell to 1!
@@ -12584,6 +12763,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Electabuzz was hurt by Foe Froslass's Rowap Berry!
     + ItemShown E0 Item=Rowap Berry
+    + MomentShown E0 Moment=HeldItem From=none
     + HpChanged P0 Hp=37 Healed=false
   say Foe Froslass used Icy Wind!
     + Lunged E0 Category=Special
@@ -12608,6 +12788,7 @@ log:
   ExpGained Pokemon=mine#0 Electabuzz Amount=520
   LevelRose Pokemon=mine#0 Electabuzz Level=20 Before=55/41/27/49/38/50 After=58/43/29/52/39/52
   say Electabuzz grew to Lv. 20!
+    + MomentShown P0 Moment=LevelUp From=none
   say Ace Trainer Tester sent out Pikachu!
     + Seen Species=Pikachu
     + Entered E0 Pokemon=foe#1 Pikachu FromBall=true
@@ -12624,6 +12805,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
   say Foe Pikachu was badly poisoned!
+    + MomentShown E0 Moment=HeldItem From=none
     + StatusChanged E0 Status=Toxic
   say Foe Pikachu used Thunder!
     + Lunged E0 Category=Special
@@ -12634,6 +12816,7 @@ log:
   say Electabuzz fainted!
     + Fainted P0
   say Foe Pikachu is hurt by poison!
+    + MomentShown E0 Moment=Poisoned From=none
     + HpChanged E0 Hp=131 Healed=false
   say Go! Leafeon!
     + Entered P0 Pokemon=mine#1 Leafeon FromBall=true
@@ -12649,6 +12832,7 @@ log:
     ! Struck E0 Hp=104 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Pikachu is hurt by poison!
+    + MomentShown E0 Moment=Poisoned From=none
     + HpChanged E0 Hp=88 Healed=false
   say Foe Pikachu used Agility!
     + Lunged E0 Category=Status
@@ -12661,6 +12845,7 @@ log:
     ! Struck E0 Hp=61 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Pikachu is hurt by poison!
+    + MomentShown E0 Moment=Poisoned From=none
     + HpChanged E0 Hp=37 Healed=false
   say Foe Pikachu used Agility!
     + Lunged E0 Category=Status
@@ -12675,6 +12860,7 @@ log:
   say The foe's team's Light Screen wore off!
     + SideConditionChanged Side=Enemy Condition=LightScreen Layers=0
   say Foe Pikachu is hurt by poison!
+    + MomentShown E0 Moment=Poisoned From=none
     + HpChanged E0 Hp=5 Healed=false
     + TrainerReacts E0 Cue=LowHp
   say Leafeon used Quick Attack!
@@ -12733,6 +12919,7 @@ log:
     ! Struck P0 Hp=103 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Pinsir is hurt by poison!
+    + MomentShown P0 Moment=Poisoned From=none
     + HpChanged P0 Hp=96 Healed=false
   say Scyther used Fury Cutter!
     + Lunged P1 Category=Physical
@@ -12756,6 +12943,7 @@ log:
     ! Struck P0 Hp=67 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Pinsir is hurt by poison!
+    + MomentShown P0 Moment=Poisoned From=none
     + HpChanged P0 Hp=53 Healed=false
   say Scyther used Double Team!
     + Lunged P1 Category=Status
@@ -12783,6 +12971,7 @@ log:
     ! Struck P0 Hp=37 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Pinsir is hurt by poison!
+    + MomentShown P0 Moment=Poisoned From=none
     + HpChanged P0 Hp=16 Healed=false
   say Scyther used Slash!
     + Lunged P1 Category=Physical
@@ -12895,6 +13084,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
   say Foe Wooper's health is sapped by Leech Seed!
+    + MomentShown E0 Moment=LeechSeed From=P0
     + HpChanged E0 Hp=110 Healed=false
   say Turtwig took in the sapped health!
     + HpChanged P0 Hp=81 Healed=true
@@ -12909,6 +13099,7 @@ log:
   say The foe's team became shrouded in mist!
     + SideConditionChanged Side=Enemy Condition=Mist Layers=1
   say Foe Wooper's health is sapped by Leech Seed!
+    + MomentShown E0 Moment=LeechSeed From=P0
     + HpChanged E0 Hp=78 Healed=false
   say Turtwig took in the sapped health!
     + HpChanged P0 Hp=89 Healed=true
@@ -12922,6 +13113,7 @@ log:
     + MoveShown Move=Muddy Water Type=Water Category=Special From=E0 To=P0 Missed=true Blocked=false Critical=false SuperEffective=false
   say Foe Wooper's attack missed!
   say Foe Wooper's health is sapped by Leech Seed!
+    + MomentShown E0 Moment=LeechSeed From=P0
     + HpChanged E0 Hp=46 Healed=false
   say Turtwig used Bite!
     + Lunged P0 Category=Physical
@@ -12936,6 +13128,7 @@ log:
   say Rain continues to fall.
     + WeatherContinues Weather=Rain
   say Foe Wooper's health is sapped by Leech Seed!
+    + MomentShown E0 Moment=LeechSeed From=P0
     + HpChanged E0 Hp=13 Healed=false
   say Turtwig used Mega Drain!
     + Lunged P0 Category=Special
@@ -12997,7 +13190,9 @@ log:
     + MoveShown Move=Shadow Sneak Type=Ghost Category=Physical From=P0 To=E0 Missed=false Blocked=true Critical=false SuperEffective=false
   say It doesn't affect Foe Linoone...
   say Foe Linoone is fast asleep.
+    + MomentShown E0 Moment=Asleep From=none
   say Foe Linoone is fast asleep.
+    + MomentShown E0 Moment=Asleep From=none
   say Spinarak used Spider Web!
     + Lunged P0 Category=Status
     + MoveShown Move=Spider Web Type=Bug Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -13046,12 +13241,14 @@ log:
     ! Struck E0 Hp=171 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Linoone is fast asleep.
+    + MomentShown E0 Moment=Asleep From=none
   say Combee used Gust!
     + Lunged P0 Category=Special
     + MoveShown Move=Gust Type=Flying Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
     ! Struck E0 Hp=156 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Linoone is fast asleep.
+    + MomentShown E0 Moment=Asleep From=none
   say Combee used Bug Bite!
     + Lunged P0 Category=Physical
     + MoveShown Move=Bug Bite Type=Bug Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -13071,12 +13268,14 @@ log:
     ! Struck E0 Hp=165 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Linoone is fast asleep.
+    + MomentShown E0 Moment=Asleep From=none
   say Combee used Gust!
     + Lunged P0 Category=Special
     + MoveShown Move=Gust Type=Flying Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
     ! Struck E0 Hp=152 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Linoone is fast asleep.
+    + MomentShown E0 Moment=Asleep From=none
   say Combee used Bug Bite!
     + Lunged P0 Category=Physical
     + MoveShown Move=Bug Bite Type=Bug Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -13096,12 +13295,14 @@ log:
     ! Struck E0 Hp=171 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Linoone is fast asleep.
+    + MomentShown E0 Moment=Asleep From=none
   say Combee used Sweet Scent!
     + Lunged P0 Category=Status
     + MoveShown Move=Sweet Scent Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Linoone's evasiveness fell!
     + StageChanged E0 Stat=Evasion Stage=-1 Rose=false
   say Foe Linoone is fast asleep.
+    + MomentShown E0 Moment=Asleep From=none
   say Combee used Bug Bite!
     + Lunged P0 Category=Physical
     + MoveShown Move=Bug Bite Type=Bug Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -13384,6 +13585,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Quilava ate its Apicot Berry!
     + ItemShown E0 Item=Apicot Berry
+    + MomentShown E0 Moment=HeldItem From=none
   say Foe Quilava's Sp. Def rose!
     + StageChanged E0 Stat=SpDefense Stage=1 Rose=true
   say Hit 2 times!
@@ -13948,6 +14150,7 @@ log:
   say Jolteon is pelted by the hail!
     + HpChanged P0 Hp=86 Healed=false
   say Foe Abomasnow absorbed nutrients with its roots!
+    + MomentShown E0 Moment=Ingrain From=none
     + HpChanged E0 Hp=180 Healed=true
   say Foe Abomasnow used Blizzard!
     + Lunged E0 Category=Special
@@ -13960,6 +14163,7 @@ log:
   say Hail continues to fall.
     + WeatherContinues Weather=Hail
   say Foe Abomasnow absorbed nutrients with its roots!
+    + MomentShown E0 Moment=Ingrain From=none
     + HpChanged E0 Hp=193 Healed=true
   say Go! Raikou!
     + Entered P0 Pokemon=mine#2 Raikou FromBall=true
@@ -14270,6 +14474,7 @@ log:
     + Fainted P0
   say Foe Staraptor is confused!
     + Confused E0
+    + MomentShown E0 Moment=Confused From=none
   say It hurt itself in its confusion!
     ! Struck E0 Hp=85 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
@@ -14297,6 +14502,7 @@ log:
   say It's super effective!
   say Foe Staraptor is confused!
     + Confused E0
+    + MomentShown E0 Moment=Confused From=none
   say Foe Staraptor used Steel Wing!
     + Lunged E0 Category=Physical
     + MoveShown Move=Steel Wing Type=Steel Category=Physical From=E0 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -14463,6 +14669,7 @@ log:
     + StageChanged E0 Stat=Attack Stage=2 Rose=true
   say Foe Glalie is confused!
     + Confused E0
+    + MomentShown E0 Moment=Confused From=none
   say Foe Glalie used Hail!
     + Lunged E0 Category=Status
     + MoveShown Move=Hail Type=Ice Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -14482,6 +14689,7 @@ log:
     + HpChanged P0 Hp=105 Healed=false
   say Foe Glalie is confused!
     + Confused E0
+    + MomentShown E0 Moment=Confused From=none
   say Foe Glalie used Ice Beam!
     + Lunged E0 Category=Special
     + MoveShown Move=Ice Beam Type=Ice Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=true
@@ -14502,6 +14710,7 @@ log:
     + HpChanged P0 Hp=8 Healed=false
   say Foe Glalie is confused!
     + Confused E0
+    + MomentShown E0 Moment=Confused From=none
   say It hurt itself in its confusion!
     ! Struck E0 Hp=51 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
@@ -14531,6 +14740,7 @@ log:
   say Chimchar was frozen solid!
     + StatusChanged P0 Status=Freeze
   say Chimchar is frozen solid!
+    + MomentShown P0 Moment=Frozen From=none
   say Hail continues to fall.
     + WeatherContinues Weather=Hail
   say Foe Glalie's Ice Body restored a little HP!
@@ -14545,6 +14755,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
   say Chimchar is frozen solid!
+    + MomentShown P0 Moment=Frozen From=none
   say The hail stopped.
     + WeatherChanged Weather=None
   say Foe Glalie used Ice Beam!
@@ -14554,6 +14765,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
   say Chimchar is frozen solid!
+    + MomentShown P0 Moment=Frozen From=none
   say Foe Glalie used Ice Beam!
     + Lunged E0 Category=Special
     + MoveShown Move=Ice Beam Type=Ice Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -14561,12 +14773,14 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
   say Chimchar is frozen solid!
+    + MomentShown P0 Moment=Frozen From=none
   say Foe Glalie used Hail!
     + Lunged E0 Category=Status
     + MoveShown Move=Hail Type=Ice Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say It started to hail!
     + WeatherChanged Weather=Hail
   say Chimchar is frozen solid!
+    + MomentShown P0 Moment=Frozen From=none
   say Hail continues to fall.
     + WeatherContinues Weather=Hail
   say Foe Glalie's Ice Body restored a little HP!
@@ -14581,6 +14795,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
   say Chimchar is frozen solid!
+    + MomentShown P0 Moment=Frozen From=none
   say Hail continues to fall.
     + WeatherContinues Weather=Hail
   say Foe Glalie's Ice Body restored a little HP!
@@ -14595,6 +14810,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
   say Chimchar is frozen solid!
+    + MomentShown P0 Moment=Frozen From=none
   say Hail continues to fall.
     + WeatherContinues Weather=Hail
   say Foe Glalie's Ice Body restored a little HP!
@@ -14659,10 +14875,12 @@ log:
     ! Struck P0 Hp=34 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Electabuzz's health is sapped by Leech Seed!
+    + MomentShown E0 Moment=LeechSeed From=P0
     + HpChanged E0 Hp=73 Healed=false
   say Shaymin took in the sapped health!
     + HpChanged P0 Hp=44 Healed=true
   say Foe Electabuzz was badly poisoned!
+    + MomentShown E0 Moment=HeldItem From=none
     + StatusChanged E0 Status=Toxic
   say Go! Togetic!
     + Entered P1 Pokemon=mine#2 Togetic FromBall=true
@@ -14683,10 +14901,12 @@ log:
     + MoveShown Move=Leech Seed Type=Grass Category=Status From=P0 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Aron protected itself!
   say Foe Electabuzz's health is sapped by Leech Seed!
+    + MomentShown E0 Moment=LeechSeed From=P0
     + HpChanged E0 Hp=63 Healed=false
   say Shaymin took in the sapped health!
     + HpChanged P0 Hp=54 Healed=true
   say Foe Electabuzz is hurt by poison!
+    + MomentShown E0 Moment=Poisoned From=none
     + HpChanged E0 Hp=58 Healed=false
   say Foe Electabuzz used Swift!
     + Lunged E0 Category=Special
@@ -14751,6 +14971,7 @@ log:
     + Confused P0
   say Geodude is confused!
     + Confused P0
+    + MomentShown P0 Moment=Confused From=none
   say It hurt itself in its confusion!
     ! Struck P0 Hp=57 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
@@ -14762,6 +14983,7 @@ log:
   say A critical hit!
   say Geodude is confused!
     + Confused P0
+    + MomentShown P0 Moment=Confused From=none
   say Geodude used Stone Edge!
     + Lunged P0 Category=Physical
     + MoveShown Move=Stone Edge Type=Rock Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -14790,6 +15012,7 @@ log:
     + Confused P0
   say Sandslash is confused!
     + Confused P0
+    + MomentShown P0 Moment=Confused From=none
   say It hurt itself in its confusion!
     ! Struck P0 Hp=93 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
@@ -14800,6 +15023,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Sandslash is confused!
     + Confused P0
+    + MomentShown P0 Moment=Confused From=none
   say Sandslash used Crush Claw!
     + Lunged P0 Category=Physical
     + MoveShown Move=Crush Claw Type=Normal Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=true SuperEffective=false
@@ -14873,6 +15097,7 @@ log:
     + Confused P0
   say Phione is confused!
     + Confused P0
+    + MomentShown P0 Moment=Confused From=none
   say It hurt itself in its confusion!
     ! Struck P0 Hp=99 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
@@ -14883,6 +15108,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Phione is confused!
     + Confused P0
+    + MomentShown P0 Moment=Confused From=none
   say It hurt itself in its confusion!
     ! Struck P0 Hp=74 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false

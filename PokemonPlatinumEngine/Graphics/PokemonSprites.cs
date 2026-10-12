@@ -36,6 +36,24 @@ internal static class PokemonSprites
 
     private static readonly Dictionary<string, Texture2D> Baked = new(StringComparer.OrdinalIgnoreCase);
 
+    /// <summary>
+    /// How many species' sprites are held at most (plan 03 · D13): eight boxes' worth, about 34 MB of textures.
+    /// Beyond that the ones longest unasked for are freed, and read from the cache again when next asked for.
+    /// </summary>
+    public const int Kept = 240;
+
+    /// <summary>The frames a sprite is kept for after it was last asked for, whatever else is held: two seconds.</summary>
+    public const int FreshFrames = 120;
+
+    private static readonly SpriteLedger Ledger = new(Kept, FreshFrames);
+
+    /// <summary>
+    /// How many models are being built for the sprites' sake at a time. A screen can ask for thirty species' sprites
+    /// in one frame (a box), and a model is built much faster than a sprite is baked from it: asked for all at
+    /// once, they would all be in memory waiting their turn.
+    /// </summary>
+    public const int MostOnLoan = 16;
+
     // A soft studio light from the upper left, independent of the field's sun
     private static readonly SceneLighting Light = new(Vector3.Normalize(new Vector3(-0.55f, 0.7f, 0.55f)),
         new Vector3(0.6f, 0.58f, 0.53f), new Vector3(0.6f, 0.62f, 0.7f), new Vector3(0.42f, 0.4f, 0.38f));
@@ -143,8 +161,17 @@ internal static class PokemonSprites
     public static void BakeAll(RenderContext context, IEnumerable<string> species)
     {
         foreach (var name in new List<string>(species) { Fallback })
+        {
             if (!Baked.ContainsKey(Key(name, SpriteView.Front)) && !TryLoad(name))
+            {
+                // A model nobody had asked for is built for this baking alone, and let go after it
+                bool passing = !PokemonModels.Holds(name);
                 BakeAndKeep(context, name, PokemonModels.Get(name));
+                if (passing) PokemonModels.Release(name);
+            }
+            // What the start makes is never let go: the stand-in must always be there to show
+            Ledger.Keep(name, forGood: true);
+        }
     }
 
     /// <summary>Asks for a species' sprites: they are loaded or baked over the next frames by <see cref="Service"/>.</summary>
@@ -164,6 +191,9 @@ internal static class PokemonSprites
     /// </summary>
     public static void Service(RenderContext context, double budgetMs = 4.0)
     {
+        // Between frames, when nothing drawn is still on its way to the screen: the sprites longest unasked for go
+        Ledger.Tick();
+        foreach (var name in Ledger.Overflow()) Forget(name);
         if (Waiting.Count == 0) return;
         var clock = System.Diagnostics.Stopwatch.StartNew();
         int rounds = Waiting.Count;
@@ -179,9 +209,12 @@ internal static class PokemonSprites
             {
                 BakeAndKeep(context, name, model);
                 Queued.Remove(name);
+                // A model built for these sprites alone has done its work (plan 03 · D13)
+                PokemonModels.Return(name);
                 continue;
             }
-            PokemonModels.Request(name);
+            // (one already on its way, for this or for the game, is waited for; a new one is asked for while few are)
+            if (!PokemonModels.Holds(name) && PokemonModels.OnLoan < MostOnLoan) PokemonModels.Borrow(name);
             Waiting.Enqueue(name);
         }
     }
@@ -196,6 +229,9 @@ internal static class PokemonSprites
             if (!Baked.ContainsKey(Key(name, SpriteView.Front)) && !TryLoad(name)) BakeAndKeep(context, name, PokemonModels.Get(name));
         }
     }
+
+    /// <summary>How many species' menu sprites are held now (three textures each).</summary>
+    public static int KeptCount => Baked.Count / Views.Length;
 
     private static string Key(string name, SpriteView view) => $"{name}|{view}";
 
@@ -258,6 +294,7 @@ internal static class PokemonSprites
     {
         if (Baked.TryGetValue(Key(name, view), out var old)) Raylib.UnloadTexture(old);
         Baked[Key(name, view)] = texture;
+        Ledger.Keep(name);
     }
 
     private static PixelCanvas Bake(RenderContext context, PokeModel model, SpriteView view, RenderTexture2D target, bool hull)
@@ -277,7 +314,11 @@ internal static class PokemonSprites
     /// </summary>
     public static Texture2D? GetBaked(string name, SpriteView view)
     {
-        if (Baked.TryGetValue(Key(name, view), out var tex)) return tex;
+        if (Baked.TryGetValue(Key(name, view), out var tex))
+        {
+            Ledger.Touch(name);
+            return tex;
+        }
         Request(name);
         return null;
     }
@@ -287,6 +328,7 @@ internal static class PokemonSprites
     {
         foreach (var view in Views)
             if (Baked.Remove(Key(name, view), out var tex)) Raylib.UnloadTexture(tex);
+        Ledger.Forget(name);
     }
 }
 

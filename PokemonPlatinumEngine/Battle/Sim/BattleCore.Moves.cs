@@ -353,7 +353,7 @@ public sealed partial class BattleCore
                 else
                 {
                     // Snore and Sleep Talk are told the same way, and then go on
-                    Say($"{user.Name} is fast asleep.");
+                    Say($"{user.Name} is fast asleep.").With(Moment(user, BattleMoment.Asleep));
                     if (!UsableAsleep(move.Data)) return false;
                 }
             }
@@ -369,7 +369,7 @@ public sealed partial class BattleCore
             }
             else
             {
-                Say($"{user.Name} is frozen solid!");
+                Say($"{user.Name} is frozen solid!").With(Moment(user, BattleMoment.Frozen));
                 return false;
             }
         }
@@ -440,7 +440,7 @@ public sealed partial class BattleCore
             }
             else
             {
-                Say($"{user.Name} is confused!").With(new Confused(user.Place));
+                Say($"{user.Name} is confused!").With(new Confused(user.Place)).With(Moment(user, BattleMoment.Confused));
                 // It hurts itself one time in the rules' odds (the die's first face): a typeless 40-power hit
                 if (rng.Roll(RollKind.ConfusionSelfHit, Rules.ConfusionSelfHitOdds) == 0)
                 {
@@ -458,14 +458,14 @@ public sealed partial class BattleCore
         // One time in four; a Pokémon with Magic Guard is never held by it, as in Platinum
         if (p.Status == StatusCondition.Paralyze && !effects.Any(e => e.PreventsIndirectDamage) && rng.Roll(RollKind.FullParalysis, 4) == 0)
         {
-            Say($"{user.Name} is paralyzed! It can't move!");
+            Say($"{user.Name} is paralyzed! It can't move!").With(Moment(user, BattleMoment.Paralyzed));
             Unlock(user);
             return Lost(user);
         }
 
         if (v.InLoveWith is { } beloved)
         {
-            Say($"{user.Name} is in love with {At(beloved).Name}!");
+            Say($"{user.Name} is in love with {At(beloved).Name}!").With(Moment(user, BattleMoment.Infatuated));
             if (rng.Roll(RollKind.Infatuation, 2) == 0)
             {
                 Say($"{user.Name} is immobilized by love!");
@@ -624,7 +624,7 @@ public sealed partial class BattleCore
 
         Say(string.Format(charge.Line, use.User.Name));
         if (charge.RaisesDefense) ChangeStat(use.User, StatType.Defense, 1, use.User);
-        Say($"{use.User.Name} became fully charged due to its {ItemOf(use.User)}!");
+        Say($"{use.User.Name} became fully charged due to its {ItemAtWork(use.User)}!");
         ConsumeItem(use.User);
         return true;
     }
@@ -968,7 +968,7 @@ public sealed partial class BattleCore
             damage = Formulas.Divide(damage, 2);
             hit.Notes.AddRange(Capture(() =>
             {
-                Say($"The {ItemOf(t, berry)} weakened {move.Name}'s power!");
+                Say($"The {ItemAtWork(t, berry)} weakened {move.Name}'s power!");
                 ConsumeItem(t);
             }));
         }

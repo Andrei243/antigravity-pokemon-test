@@ -7,8 +7,9 @@
 # until FLAG_GAME_COMPLETED is first set). Cynthia welcomes the player to the machine and says what it keeps. Then, in
 # the original's order:
 #   - FLAG_UNLOCKED_VS_SEEKER_LVL_4, and the Spring Path on the map for whoever has the National Pokédex;
-#   - a Poké Ball for each of the team laid on the machine, and its chime (PlayHallOfFameHealingAnimation: the balls
-#     are the room's own piece, GymPieces, by VAR_HALL_OF_FAME_BALLS, a variable of ours);
+#   - a Poké Ball for each of the team laid on the machine, and all of them lit to its chime
+#     (PlayHallOfFameHealingAnimation: anim halloffame, the machine's own set piece of plan 09 · L12, whose balls the
+#     room's pieces draw, GymPieces);
 #   - the screen goes dark, and Victory sets what a victory sets (SetHallOfFameVictoryFlagsAndVars);
 #   - ClearGame: the Champion Ribbons and the record (halloffame), the game completed and the region done, the scene
 #     of the team's entry (halloffame show: each Pokémon in turn, then the Champion among them), the team healed and
@@ -62,20 +63,11 @@ label Welcome
   # PokemonLeagueHallOfFame_EnableHiddenLocationSpringPath (the Distortion World's way out shows it already, plan 02 · S12)
   if nationaldex setvar VAR_HIDDEN_LOCATION_SPRING_PATH 786
 
-  # PlayHallOfFameHealingAnimation: one ball for each of the team, and the machine's chime
-  setvar VAR_HALL_OF_FAME_BALLS 0
+  # PlayHallOfFameHealingAnimation: the machine's own set piece (plan 09 · L12). A ball for each of the team is set in
+  # its sockets, one after another, and all of them are lit to the machine's chime; the script waits for it
   wait 0.4
-  call LayBall
-  if var PARTY_COUNT >= 2 call LayBall
-  if var PARTY_COUNT >= 3 call LayBall
-  if var PARTY_COUNT >= 4 call LayBall
-  if var PARTY_COUNT >= 5 call LayBall
-  if var PARTY_COUNT >= 6 call LayBall
-  wait 0.3
-  fanfare heal
-  wait 2.2
+  anim halloffame
   fade out 0.8
-  setvar VAR_HALL_OF_FAME_BALLS 0
   call Victory
 
   # ClearGame (src/clear_game.c)
@@ -96,14 +88,6 @@ label NotSaved
 label Roll
   credits
   end
-
-
-# A Poké Ball set down on the machine
-script LayBall
-  addvar VAR_HALL_OF_FAME_BALLS 1
-  sound "ball_click"
-  wait 0.35
-  return
 
 
 # PokemonLeagueHallOfFame_SetHallOfFameVictoryFlagsAndVars: what every victory sets, each under the original's own

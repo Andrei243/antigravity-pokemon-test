@@ -332,12 +332,14 @@ public class VictoryRoadAndTheHallOfFameTests
         Assert.Contains(said, l => l.Speaker == "Cynthia" && l.Text.Contains("Welcome to the Hall of Fame"));
         Assert.Contains(said, l => l.Speaker == "Cynthia" && l.Text.Contains("This machine"));
 
-        // In the original's order: a ball for each of the team, the chime, the dark, the record, the scene of the
+        // In the original's order: the machine's own set piece with a ball for each of the team (plan 09 · L12:
+        // PlayHallOfFameHealingAnimation is given the whole team's count), the dark, the record, the scene of the
         // team's entry, home, the save, and the credits
         var log = hall.Log;
-        Assert.Equal(game.Party.Count, log.Count(l => l == "sound ball_click"));
+        string machine = $"anim halloffame {game.Party.Count}";
+        Assert.Single(log, l => l.StartsWith("anim "));
         int At(string line) => log.IndexOf(line) is >= 0 and var i ? i : throw new Xunit.Sdk.XunitException($"the scene never did '{line}': {string.Join("; ", log)}");
-        int[] order = { At("sound ball_click"), At("fanfare FanfareHeal"), At("fade out"), At("halloffame"), At("open Ceremony"), At("warp PlayerHouse2F 4 6"), At("save"), At("sound save"), At("open Credits") };
+        int[] order = { At(machine), At("fade out"), At("halloffame"), At("open Ceremony"), At("warp PlayerHouse2F 4 6"), At("save"), At("sound save"), At("open Credits") };
         Assert.Equal(order.OrderBy(i => i), order);
         Assert.DoesNotContain("open HallOfFame", log);
         Assert.Contains(said, l => l.Speaker == null && l.Text.Contains("saved the game"));
@@ -346,7 +348,7 @@ public class VictoryRoadAndTheHallOfFameTests
         Assert.Equal(1, hall.HallOfFame.Total);
         Assert.Equal(new[] { "Garchomp", "Staraptor" }, hall.HallOfFame.Entries.Single().Team.Select(m => m.Species));
         Assert.All(game.Party.Members, p => Assert.Contains(RibbonRules.SinnohChamp, p.Ribbons));
-        Assert.Contains("fanfare FanfareHeal", log);
+        Assert.All(game.Party.Members, p => Assert.Equal(p.MaxHP, p.CurrentHP));
 
         // The save is written in the player's own room with the victory already in it, so that is where the game
         // comes back to whenever it is next loaded
@@ -369,7 +371,6 @@ public class VictoryRoadAndTheHallOfFameTests
             Assert.False(story.Has(cleared), cleared);
         Assert.Equal(3, story.Var("VAR_ROAMING_MESPRIT_STATE"));
         Assert.Equal(1, story.Var(Postgame));
-        Assert.Equal(0, story.Var(GameEngine.MachineBallsVariable));
         // Without the National Pokédex the Spring Path is not shown by this room, and Regigigas is left as it is
         Assert.Equal(0, story.Var("VAR_HIDDEN_LOCATION_SPRING_PATH"));
     }
@@ -904,7 +905,7 @@ public class VictoryRoadAndTheHallOfFameTests
         Assert.True(card.Get(6, 3).R > 200 && card.Get(6, 3).G < 100);
         Assert.True(card.Get(6, 9) is { R: > 190, G: > 190, B: > 190 });
         Assert.True(card.IsOpaque(0, 6) && card.IsOpaque(11, 6));
-        Assert.Equal(GameEngine.MachineBallsVariable, "VAR_HALL_OF_FAME_BALLS");
-        Assert.Contains(Find("LayBall", Hall).Everything(), i => i.Op == Op.AddVar && i.Name == GameEngine.MachineBallsVariable);
+        // The room's scene lays the balls with the machine's own set piece, where the original calls it (plan 09 · L12)
+        Assert.Contains(Find("OnEnter", Hall).Everything(), i => i.Op == Op.Anim && i.Piece == SetPiece.HallOfFame);
     }
 }

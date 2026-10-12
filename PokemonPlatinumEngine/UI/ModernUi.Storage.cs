@@ -99,15 +99,33 @@ internal static partial class ModernUi
             UiIcons.ArrowH(at + new Vector2(side * 2, 0), 20, side, onName ? Selection : new Color(150, 162, 186, 255));
         }
 
-        // Eighteen dots: which box this is
-        const float dotStep = 20;
-        var dots = new Rectangle(box.X + box.Width / 2f - (dotStep * (PCScreen.BoxCount - 1)) / 2f - 18, plate.Y + plate.Height + 14, dotStep * (PCScreen.BoxCount - 1) + 36, 24);
-        UiShapes.Fill(dots, 12, new Color(255, 255, 255, 190));
-        for (int b = 0; b < PCScreen.BoxCount; b++)
+        // Which box this is. Platinum's eighteen are a dot each; the hundred that come with the National Pokédex
+        // (plan 03 · D13) are a track with a tick at every tenth box, a knob where this one stands and its number
+        if (pc.BoxCount <= PcBoxes.BoxCount)
         {
-            var c = new Vector2(dots.X + 18 + b * dotStep, dots.Y + dots.Height / 2f);
-            if (b == pc.Box) UiShapes.Circle(c, 6.5f, Selection);
-            else UiShapes.Circle(c, 4.5f, new Color(Frame.R, Frame.G, Frame.B, (byte)110));
+            const float dotStep = 20;
+            var dots = new Rectangle(box.X + box.Width / 2f - (dotStep * (pc.BoxCount - 1)) / 2f - 18, plate.Y + plate.Height + 14, dotStep * (pc.BoxCount - 1) + 36, 24);
+            UiShapes.Fill(dots, 12, new Color(255, 255, 255, 190));
+            for (int b = 0; b < pc.BoxCount; b++)
+            {
+                var c = new Vector2(dots.X + 18 + b * dotStep, dots.Y + dots.Height / 2f);
+                if (b == pc.Box) UiShapes.Circle(c, 6.5f, Selection);
+                else UiShapes.Circle(c, 4.5f, new Color(Frame.R, Frame.G, Frame.B, (byte)110));
+            }
+        }
+        else
+        {
+            const float pillWidth = 560, trackLength = 400;
+            var pill = new Rectangle(box.X + box.Width / 2f - pillWidth / 2f, plate.Y + plate.Height + 14, pillWidth, 24);
+            UiShapes.Fill(pill, 12, new Color(255, 255, 255, 190));
+            float trackX = pill.X + 22, middle = pill.Y + pill.Height / 2f;
+            var faint = new Color(Frame.R, Frame.G, Frame.B, (byte)110);
+            UiShapes.Fill(new Rectangle(trackX, middle - 2, trackLength, 4), 2, faint);
+            float At(int b) => trackX + trackLength * b / (pc.BoxCount - 1f);
+            for (int b = 9; b < pc.BoxCount - 1; b += 10) UiShapes.Circle(new Vector2(At(b), middle), 3.5f, faint);
+            UiShapes.Circle(new Vector2(At(pc.Box), middle), 6.5f, Selection);
+            string which = $"{pc.Box + 1} / {pc.BoxCount}";
+            UiFonts.DrawCentered(which, pill.X + pill.Width - 20 - UiFonts.Measure(which, 20, UiWeight.Black), middle, 20, Ink, UiWeight.Black);
         }
 
         float gridX = box.X + (box.Width - (BoxCell * PCScreen.Columns + BoxGap * (PCScreen.Columns - 1))) / 2f, gridY = box.Y + 164;

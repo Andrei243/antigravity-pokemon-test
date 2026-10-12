@@ -92,6 +92,9 @@ public enum Op
     Act, Mood,
     // The camera kit (plan 09 · L4): the cinema bars and slow motion (the camera's own moves are Camera's)
     Letterbox, SlowMotion,
+    // The original's set pieces (plan 09 · L12): a machine at work, a PC switched on or off, a lift's ride; someone
+    // shaken; someone flickering
+    Anim, Shake, Flicker,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>
@@ -167,6 +170,9 @@ public sealed class Instruction
     /// <summary>For <c>battle self rematch</c>: the trainer fights with the team the Vs. Seeker has them bring (plan 06 · R12).</summary>
     public bool Rematch { get; init; }
 
+    /// <summary>For <c>battle self inverse</c>: an inverse battle, its type chart turned round (plan 14 · B1).</summary>
+    public bool Inverse { get; init; }
+
     /// <summary>A count, a level, an amount, a value; and a tile where the line names one.</summary>
     public int Number { get; init; }
     public int X { get; init; }
@@ -209,6 +215,9 @@ public sealed class Instruction
 
     /// <summary>For <see cref="Op.Effect"/>: the kind lit (plan 09 · L11).</summary>
     public SceneEffect Effect { get; init; }
+
+    /// <summary>For <see cref="Op.Anim"/>: the set piece played (plan 09 · L12).</summary>
+    public SetPiece Piece { get; init; }
     public Audio.MusicRole Role { get; init; }
     public Badge Badge { get; init; }
 

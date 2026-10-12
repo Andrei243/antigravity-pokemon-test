@@ -319,6 +319,9 @@ partial class Harness
             Until(() => engine.ScriptRunning, "the lift's ride", 60);
             for (int i = 0; i < 70; i++) Quick();
             Frames(2); Shot("sy51_lighthouse_the_lift_on_its_way_up");
+            // The indicator's arrow runs the way the car goes (plan 09 · L12): close up, at the screen's own resolution
+            ShotCrop("sy51b_lighthouse_the_lifts_lights_up", 860, 190, 200, 110, 8);
+            Console.WriteLine($"lift: its indicator on frame {game.World.Pieces.Indicator(game.World.Life.Now)} (1 to 3 are the way up), the picture thrown {game.World.Pieces.Shudder(game.World.Life.Now)} texels");
             Until(() => game.Map.Name == "VistaLighthouse" && State() == GameState.Overworld && !engine.ScriptRunning, "the gallery", 1500);
             Frames(30); Shot("sy52_lighthouse_the_gallery");
             Where("the gallery");
@@ -355,6 +358,8 @@ partial class Harness
             Until(() => engine.ScriptRunning, "the lift's ride", 60);
             for (int i = 0; i < 70; i++) Quick();
             Frames(2); Shot("sy5f_lighthouse_the_lift_on_its_way_down");
+            ShotCrop("sy5fb_lighthouse_the_lifts_lights_down", 860, 190, 200, 110, 8);
+            Console.WriteLine($"lift: its indicator on frame {game.World.Pieces.Indicator(game.World.Life.Now)} (4 to 6 are the way down)");
             Until(() => game.Map.Name == "Sinnoh" && State() == GameState.Overworld && !engine.ScriptRunning, "the city", 1500);
             Frames(30); Shot("sy5g_lighthouse_out_at_its_foot");
             Where("down from the lighthouse");

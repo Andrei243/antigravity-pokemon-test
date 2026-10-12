@@ -954,7 +954,9 @@ public class StoryTests
 
         var (yes, _) = Play(FieldScripts.For(nurse)!, nurse, before: h => h.Party.Add(Hurt()));
         Assert.Equal(yes.Party.Members[0].MaxHP, yes.Party.Members[0].CurrentHP);
-        Assert.Contains($"fanfare {MusicRole.FanfareHeal}", yes.Log);
+        // She turns to her machine, which lays a ball for the one Pokémon and lights it to the heal's fanfare (plan 09 · L12)
+        Assert.Equal(new[] { "anim heal 1" }, yes.Log);
+        Assert.Equal(Direction.Down, nurse.Facing);
         Assert.Equal("Yes", yes.Asked.Single().Answer);
         Assert.All(yes.Transcript, line => Assert.Equal("Nurse Joy", line.Speaker));
 
@@ -964,7 +966,7 @@ public class StoryTests
             h.Answers.Enqueue(1);
         });
         Assert.Equal(1, no.Party.Members[0].CurrentHP);
-        Assert.DoesNotContain(no.Log, l => l.StartsWith("fanfare"));
+        Assert.Empty(no.Log);
         // Either way she sees the player off with the same words
         Assert.Equal(yes.Transcript[^1].Text, no.Transcript[^1].Text);
         Assert.True(no.Transcript.Count < yes.Transcript.Count);
@@ -1004,7 +1006,8 @@ public class StoryTests
     public void ThePcTheBriefcaseAndTheAttendantOpenWhatTheyAre()
     {
         var (pc, _) = Play(FieldScripts.Pc, new NPC { Name = "PC Terminal", IsPCTerminal = true }, before: h => h.PlayerName = "Ana");
-        Assert.Equal(new[] { "open Pc" }, pc.Log);
+        // The screen comes on before the line and goes off as the PC is left (plan 09 · L12)
+        Assert.Equal(new[] { "anim pc on", "open Pc", "anim pc off" }, pc.Log);
         Assert.Equal((null, "Ana switched the PC on."), pc.Transcript.Single());
 
         var (briefcase, runner) = Play(FieldScripts.Briefcase, new NPC { IsStarterBriefcase = true }, before: h => h.StarterChoice = 2);

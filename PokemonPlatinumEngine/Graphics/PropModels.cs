@@ -72,7 +72,7 @@ internal static class PropModels
             case PropType.StoreShelf: StoreShelf(kit, w, againstWall: p.Y <= map.RoomCorner().Back); break;
             case PropType.LabDesk: LabDesk(kit, w); break;
             case PropType.Bed: Bed(kit, d); break;
-            case PropType.Computer: BuildPc(kit, p.X, p.Y); break;
+            case PropType.Computer: BuildPc(kit, p.X, p.Y, IsTerminal(map, p.X, p.Y)); break;
             case PropType.LabMachine: LabMachine(kit, d, facesEast: p.X <= map.RoomCorner().Left, facesWest: p.X + p.Width >= map.Width - 1); break;
             case PropType.Rug: Rug(kit, w, d, map.Interior == InteriorStyle.PokemonCenter); break;
             case PropType.Window: Window(kit, w); break;
@@ -116,7 +116,7 @@ internal static class PropModels
             case PropType.FlowerStand: FlowerStand(kit, p); break;
             // A lift (plan 02 · S13, the Vista Lighthouse): its car open in the shaft, and the indicator inside it
             case PropType.LiftCar: LiftCar(kit); break;
-            case PropType.LiftIndicator: kit.Card(4, 28, 32.5f, 46, 58, kit.Face("lift.indicator", 24, 12, PaintLiftIndicator)); break;
+            case PropType.LiftIndicator: kit.Card(4, 28, 32.5f, 46, 58, kit.Held(LiftLights, 24, 12, SetPieces.IndicatorFrames, PaintLiftIndicator)); break;
             // Books piled on the floor (plan 01 · M11, part c)
             case PropType.BookPile:
             {
@@ -166,18 +166,30 @@ internal static class PropModels
         kit.Box(32 - jamb, 32, 32 - jamb, 32, 0, h, top, button, side, null);
     }
 
-    /// <summary>The indicator in a lift's car: a dark panel with an arrow up and an arrow down, lit amber.</summary>
-    private static void PaintLiftIndicator(PixelCanvas c)
+    /// <summary>The held face of a lift's indicator (plan 09 · L12; <see cref="MapScene.Hold"/>).</summary>
+    public const string LiftLights = "lift.indicator";
+
+    private static readonly Color AmberDim = Rgb(132, 100, 46);
+
+    /// <summary>
+    /// The indicator in a lift's car, in one of its frames (<see cref="SetPieces.IndicatorFrame"/>; style guide,
+    /// "Rooms", "Machines at work"): a dark panel with an arrow up and an arrow down, both dim at rest; on a ride the
+    /// arrow of the way it goes is lit and drawn at its place, a texel further on its way, or two.
+    /// </summary>
+    internal static void PaintLiftIndicator(PixelCanvas c, int frame)
     {
         Pix.Raised(c, 0, 0, c.Width, c.Height, Dark);
+        bool up = frame is >= 1 and <= SetPieces.IndicatorSteps, down = frame > SetPieces.IndicatorSteps;
+        int rise = up ? frame - 1 : 0, fall = down ? frame - 1 - SetPieces.IndicatorSteps : 0;
+        Color upLamp = up ? Amber : AmberDim, downLamp = down ? Amber : AmberDim;
         // An arrow up on the left and an arrow down on the right, each five texels wide and three tall with a stem
         for (int i = 0; i < 3; i++)
         {
-            c.HLine(6 - i, 3 + i, 1 + 2 * i, Amber);
-            c.HLine(17 - (2 - i), 6 + i, 1 + 2 * (2 - i), Amber);
+            c.HLine(6 - i, 3 + i - rise, 1 + 2 * i, upLamp);
+            c.HLine(17 - (2 - i), 6 + i + fall, 1 + 2 * (2 - i), downLamp);
         }
-        c.Rect(5, 6, 3, 3, Amber);
-        c.Rect(16, 3, 3, 3, Amber);
+        c.Rect(5, 6 - rise, 3, 3, upLamp);
+        c.Rect(16, 3 + fall, 3, 3, downLamp);
     }
 
     /// <summary>
@@ -1033,32 +1045,65 @@ internal static class PropModels
         kit.Box(x0 - 2, x1 + 2, z0 - 2, z1 + 2, 24, 27, top, edge, edgeSide, edgeSide);
     }
 
-    /// <summary>The machine behind a Center's counter: six Poké Balls in a tray over a console.</summary>
+    /// <summary>
+    /// The held faces of a Pokémon Center's machine (plan 09 · L12; <see cref="MapScene.Hold"/>): its tray, which
+    /// shows the balls a healing lays on it, and the console's front, whose screen changes while it works.
+    /// </summary>
+    public const string HealerTray = "healer.top", HealerFront = "healer.front";
+
+    /// <summary>
+    /// The machine behind a Center's counter (style guide, "Rooms", "Machines at work"): a tray of six sockets over a
+    /// console, empty until a healing lays the team's balls on it and lights them.
+    /// </summary>
     private static void HealingMachine(KitBuilder kit)
     {
-        var front = kit.Face("healer.front", 28, 28, c =>
-        {
-            Pix.Raised(c, 0, 0, 28, 28, Casing);
-            Screen(c, 3, 4, 14, 10);
-            c.Rect(20, 5, 2, 2, Rgb(236, 70, 70));
-            c.Rect(23, 5, 2, 2, Rgb(250, 208, 70));
-            c.Rect(20, 9, 2, 2, Rgb(98, 220, 120));
-            Pix.Sunken(c, 3, 18, 22, 6, Casing);
-        });
-        var top = kit.Face("healer.top", 28, 22, c =>
-        {
-            TopFace(c, Casing);
-            Pix.Sunken(c, 2, 2, 24, 18, Tone.Of(Casing.Dark));
-            for (int i = 0; i < 6; i++)
-            {
-                int x = 4 + i % 3 * 7, y = 4 + i / 3 * 8;
-                Pix.Disc(c, x, y, 6, Ink);
-                c.Rect(x + 1, y + 1, 4, 2, Rgb(236, 64, 56));
-                c.Rect(x + 1, y + 3, 4, 2, Rgb(250, 250, 252));
-            }
-        });
+        var front = kit.Held(HealerFront, 28, 28, 2, PaintHealerFront);
+        var top = kit.Held(HealerTray, 28, 22, SetPieces.TrayFrames, PaintHealerTray);
         var side = kit.Face("healer.side", 22, 28, c => Pix.Raised(c, 0, 0, 22, 28, Tone.Of(Casing.Dark)));
         kit.Box(2, 30, 0, 22, 0, 28, top, front, side, side);
+    }
+
+    /// <summary>The console's front: its screen with three lines of text at rest, and a white cross on a brighter blue while the machine works.</summary>
+    internal static void PaintHealerFront(PixelCanvas c, int frame)
+    {
+        Pix.Raised(c, 0, 0, 28, 28, Casing);
+        Screen(c, 3, 4, 14, 10);
+        if (frame == 1)
+        {
+            // (The cross stands in the screen's upper half: the counter before the machine hides the rest)
+            c.Rect(3, 4, 14, 10, Rgb(150, 206, 250));
+            c.Rect(9, 5, 2, 4, Rgb(250, 250, 252));
+            c.Rect(7, 6, 6, 2, Rgb(250, 250, 252));
+        }
+        c.Rect(20, 5, 2, 2, Rgb(236, 70, 70));
+        c.Rect(23, 5, 2, 2, Rgb(250, 208, 70));
+        c.Rect(20, 9, 2, 2, Rgb(98, 220, 120));
+        Pix.Sunken(c, 3, 18, 22, 6, Casing);
+    }
+
+    /// <summary>
+    /// The tray in one of its frames (<see cref="SetPieces.TrayFrame"/>): six sockets in two rows of three, a ball in
+    /// each of the first so many from the back row's left, and with the balls lit the tray's floor turned to light.
+    /// </summary>
+    internal static void PaintHealerTray(PixelCanvas c, int frame)
+    {
+        var (balls, lit) = SetPieces.OnTray(frame);
+        TopFace(c, Casing);
+        Pix.Sunken(c, 2, 2, 24, 18, lit ? Tone.Of(206, 236, 250) : Tone.Of(Casing.Dark));
+        for (int i = 0; i < SetPieces.MostBalls; i++)
+        {
+            int x = 4 + i % 3 * 7, y = 4 + i / 3 * 8;
+            if (i >= balls)
+            {
+                // An empty socket: a dimple with a darker lip along its top
+                Pix.Disc(c, x, y, 6, Rgb(104, 112, 138));
+                c.HLine(x + 1, y, 4, Rgb(80, 86, 110));
+                continue;
+            }
+            Pix.Disc(c, x, y, 6, Ink);
+            c.Rect(x + 1, y + 1, 4, 2, lit ? Rgb(255, 150, 130) : Rgb(236, 64, 56));
+            c.Rect(x + 1, y + 3, 4, 2, lit ? Rgb(255, 252, 230) : Rgb(250, 250, 252));
+        }
     }
 
     /// <summary>A waiting-room bench: a cushioned seat and back on steel legs.</summary>
@@ -1290,7 +1335,25 @@ internal static class PropModels
         kit.Box(2, 30, 0, 3, 0, 26, headTop, head, headSide, headSide);
     }
 
-    public static void BuildPc(KitBuilder kit, int tx, int ty)
+    /// <summary>
+    /// The held face of the screen of the PC on a tile (plan 09 · L12; <see cref="MapScene.Hold"/>): each PC that is
+    /// used has a screen of its own, so switching one on leaves the others dark.
+    /// </summary>
+    public static string PcScreen(int tx, int ty) => $"{PcScreenPrefix}{tx}.{ty}";
+
+    /// <summary>What every used PC's screen is keyed by, before its tile.</summary>
+    public const string PcScreenPrefix = "pc.screen.";
+
+    /// <summary>Whether the PC on a tile is one somebody uses (a terminal stands on it): its screen is dark until it is switched on.</summary>
+    public static bool IsTerminal(Map map, int tx, int ty)
+    {
+        foreach (var npc in map.Everyone)
+            if (npc.IsPCTerminal && npc.GridX == tx && npc.GridY == ty) return true;
+        return false;
+    }
+
+    /// <param name="terminal">A PC that is used: its screen is a held face, dark until a script switches it on. Any other computer keeps its lit screen.</param>
+    public static void BuildPc(KitBuilder kit, int tx, int ty, bool terminal = false)
     {
         kit.Origin = new Vector3(tx, 0, ty);
         var front = kit.Face("pc.desk.front", 28, 15, c => Pix.Raised(c, 0, 0, 28, 15, Wood));
@@ -1302,20 +1365,46 @@ internal static class PropModels
         });
         var side = kit.Face("pc.desk.side", 24, 15, c => Pix.Raised(c, 0, 0, 24, 15, WoodDark));
         kit.Box(2, 30, 0, 24, 0, 15, top, front, side, side);
-        Monitor(kit, 7, 3, 15);
+        Monitor(kit, 7, 3, 15, terminal ? PcScreen(tx, ty) : null);
     }
 
-    private static void Monitor(KitBuilder kit, float x, float z, float y)
+    private static void Monitor(KitBuilder kit, float x, float z, float y, string? held = null)
     {
-        var front = kit.Face("monitor.front", 18, 16, c =>
-        {
-            Pix.Raised(c, 0, 0, 18, 16, Casing);
-            Screen(c, 2, 2, 14, 10);
-            c.Rect(14, 13, 2, 2, Rgb(98, 220, 120));
-        });
+        var front = held != null
+            ? kit.Held(held, 18, 16, SetPieces.PcFrames, PaintMonitor)
+            : kit.Face("monitor.front", 18, 16, c => PaintMonitor(c, SetPieces.PcLit));
         var top = kit.Face("monitor.top", 18, 8, c => TopFace(c, Casing));
         var side = kit.Face("monitor.side", 8, 16, c => Pix.Raised(c, 0, 0, 8, 16, Tone.Of(Casing.Dark)));
         kit.Box(x, x + 18, z, z + 8, y, y + 16, top, front, side, side);
+    }
+
+    /// <summary>
+    /// A monitor's front in one of a PC's three frames (style guide, "Rooms", "Machines at work"): dark, with a line
+    /// of reflection and a red lamp; starting, a bright line across the deep blue and an amber lamp; on, the lit
+    /// screen with its three lines of text and a green lamp.
+    /// </summary>
+    internal static void PaintMonitor(PixelCanvas c, int frame)
+    {
+        Pix.Raised(c, 0, 0, 18, 16, Casing);
+        switch (frame)
+        {
+            case SetPieces.PcDark:
+                c.Rect(1, 1, 16, 12, Dark.Base);
+                c.Rect(2, 2, 14, 10, Rgb(36, 40, 58));
+                for (int i = 0; i < 3; i++) c.Rect(3 + i * 2, 5 - i, 2, 1, Rgb(58, 64, 88));
+                c.Rect(14, 13, 2, 2, Rgb(170, 70, 70));
+                break;
+            case SetPieces.PcStarting:
+                c.Rect(1, 1, 16, 12, Dark.Base);
+                c.Rect(2, 2, 14, 10, ScreenDeep);
+                c.HLine(2, 7, 14, ScreenLine);
+                c.Rect(14, 13, 2, 2, Amber);
+                break;
+            default:
+                Screen(c, 2, 2, 14, 10);
+                c.Rect(14, 13, 2, 2, Rgb(98, 220, 120));
+                break;
+        }
     }
 
     // ------------------------------------------------------------------ floor and walls

@@ -96,6 +96,24 @@ internal static class FieldSprites
         CacheFolders.Write(file, stream => stream.Write(png), () => Directory.GetFiles(PokemonSprites.CacheFolder, stem + "*.png"), CacheFolders.Prunes);
     }
 
+    /// <summary>
+    /// Whether every facing of a species can be had without its model (plan 03 · D13): held already, drawn by hand,
+    /// or baked on an earlier run. The start asks, so that it builds no model whose sprites are in the cache.
+    /// </summary>
+    public static bool Ready(string name)
+    {
+        for (int facing = 0; facing < 4; facing++)
+        {
+            if (Baked.ContainsKey((name, facing))) continue;
+            string folder = Path.Combine(OverrideFolder, name.ToUpperInvariant());
+            bool drawn = true;
+            for (int f = 0; f < IdleFrames && drawn; f++) drawn = File.Exists(Path.Combine(folder, OverrideName(facing, f)));
+            if (drawn) continue;
+            if (!PokemonSprites.CacheEnabled || !File.Exists(FileOf(name, facing))) return false;
+        }
+        return true;
+    }
+
     private static string SignatureOf(string name) => $"{PokemonModels.Signature(name)}{PokemonSprites.BakeVersion}{BakeVersion}";
 
     private static string FileOf(string name, int facing)

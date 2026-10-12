@@ -23,8 +23,9 @@
 # the Hall of Fame is next entered, whose script brings it back while it hasn't been caught
 # (PokemonLeagueHallOfFame.txt). Any battle not lost unlocks the Vs. Seeker's last level of rematches.
 #
-# Stood in for until plan 09 lands (L11, L12, L14): the tremor is the picture's shake and a rumble, where the original
-# has an effect of its own; Looker's tune (plan 05 · A6); Buck's and the policemen's looks (plan 11).
+# The tremor is the picture's shake and a rumble, as it is in the original (its ScrCmd_29F shakes the camera from side
+# to side for two seconds; nobody in the room is shaken, so plan 09 · L12's shake has no part in it). Stood in for:
+# Looker's tune (plan 05 · A6); Buck's and the policemen's looks (plan 11).
 
 
 # StarkMountainRoom3_OnTransition, and the frame table's scene

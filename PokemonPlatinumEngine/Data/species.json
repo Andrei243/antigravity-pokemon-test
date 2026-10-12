@@ -122423,6 +122423,10 @@
     "dexEntry": "Crabrawler is a Boxing Pokémon, Fighting-type, first found in Alola. It stands 0.6 m tall and weighs 7.0 kg. It evolves into Crabominable.",
     "learnset": [
       {
+        "level": 1,
+        "moveName": "Vise Grip"
+      },
+      {
         "level": 5,
         "moveName": "Rock Smash"
       },

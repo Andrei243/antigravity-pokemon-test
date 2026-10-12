@@ -68,7 +68,8 @@ public partial class GameEngine
         if (currentState == GameState.Transition) state = $"Transition ({stateBeforeTransition} to {stateAfterTransition})";
         string? renderer = Raylib.IsWindowReady() ? Gl.Renderer() : null;
         if (!gameStarted || currentMap == null || player == null) return new GameFacts(state, Renderer: renderer, Settings: Settings.Describe());
-        return new GameFacts(state, currentMap.Name, currentMap.AreaAt(player.GridX, player.GridY)?.Key, player.GridX, player.GridY, renderer, Settings.Describe());
+        return new GameFacts(state, currentMap.Name, currentMap.AreaAt(player.GridX, player.GridY)?.Key, player.GridX, player.GridY, renderer, Settings.Describe(),
+            SavePaths.SlotName(saveSlot));
     }
 
     /// <summary>

@@ -133,6 +133,14 @@
       ]
     }
   },
+  // Plan 14 · B1: a person of our own, a scientist at the plaza's east edge by the Mart, where no scene walks and
+  // nobody wanders, who offers one inverse battle a day (scripts/fight_area.txt, InverseBattle). He is there once
+  // the crowd before the gate has gone, which is the flag that sends them away. He carries no team on the map: the
+  // script battles him by one of Platinum's data
+  "npcs": [
+    { "id": "inverse_scientist", "name": "Scientist", "npcType": "Scientist", "x": 662, "y": 432, "facing": "Down",
+      "script": "InverseBattle", "shownBy": "FLAG_HIDE_FIGHT_AREA_BATTLERS_AND_SPECTATORS" }
+  ],
   "signs": {
     "map_signpost": "Fight Area\nWhere trainers gather to test their strength.",
     "arrow_signpost_rt_225": "Rt. 225\nNorth to the Survival Area.",

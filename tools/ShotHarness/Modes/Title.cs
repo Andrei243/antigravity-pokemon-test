@@ -43,7 +43,8 @@ partial class Harness
         Seconds(1.2f);
         saved.PressConfirm();
         Seconds(1f); Shot("title_9_menu_continue");
-        ShotCrop("title_9b_continue_native", 1016, 250, 824, 452, 2);
+        // (the lone save's card, wherever the column puts it: plan 12 · Q2 moved it up for the row under NEW GAME)
+        ShotCrop("title_9b_continue_native", 1016, (int)saved.EntryRects()[0].Y, 824, 452, 2);
         saved.Move(1);
         Seconds(0.2f); Shot("title_10_menu_new_game");
         saved.PressConfirm();
@@ -135,6 +136,133 @@ partial class Harness
         both.PressConfirm();
         Seconds(0.5f);
         Console.WriteLine($"... then phase {both.Phase}");
+
+        // The slots (plan 12 · Q2), after everything else so that nothing before it moves. A game is saved in one of
+        // three, and the menu has a card for each that holds a save. The saves are made up here, as the one above is:
+        // no file stands behind them, so the slot the mode deletes is one whose files were never there
+        SaveData Game(string name, PlayerLook look, int x, int y, float hours, int badges, int caught, RulesPreset rules, params (string, int)[] team) => new()
+        {
+            PlayerName = name,
+            Look = look,
+            CurrentMapName = "Sinnoh",
+            PlayerGridX = x,
+            PlayerGridY = y,
+            WorldVersion = SaveData.CurrentWorld,
+            PlayTimeSeconds = hours * 3600f,
+            Badges = (1 << badges) - 1,
+            Rules = rules,
+            CaughtSpecies = Enumerable.Range(387, caught).ToList(),
+            Party = team.Select(p => SavedPokemonData.FromPokemon(new Pokemon(PokemonDatabase.Get(p.Item1)!, p.Item2))).ToList()
+        };
+        save.Rules = RulesPreset.Platinum;
+        var second = Game("Dawn", PlayerLook.Girl, 305, 531, 31.75f, 2, 22, RulesPreset.Modern, ("Monferno", 21), ("Buizel", 19));
+        var third = Game("Barry", PlayerLook.Boy, 860, 785, 96.2f, 8, 151, RulesPreset.Platinum, ("Empoleon", 58), ("Staraptor", 56), ("Roserade", 55));
+        TitleScreen Slots(params TitleSlot[] taken)
+        {
+            var title = TitleScreen.WithSlots(taken);
+            game.Title = title;
+            game.State = GameState.Title;
+            title.PressConfirm();
+            Seconds(1.2f);
+            title.PressConfirm();
+            Seconds(1f);
+            return title;
+        }
+        string Told(TitleScreen title) =>
+            $"phase {title.Phase}, the cursor on {title.Entries[title.SelectedIndex]} (entry {title.SelectedIndex}), cards for slots {string.Join(", ", title.Cards.Select(c => c.Save != null ? $"{c.Number} ({c.Save.PlayerName})" : $"{c.Number} (can't be read)"))}; "
+            + $"a new game would take slot {title.FreeSlot?.ToString() ?? "none"}";
+
+        // Two saves: two short cards, and NEW GAME says which slot it takes
+        var two = Slots(new TitleSlot(1, save), new TitleSlot(2, second));
+        Shot("title_24_slots_two");
+        Console.WriteLine($"two saves: {Told(two)}; the column from {two.EntryRects()[0].Y:0} to {two.EntryRects()[^1].Y + two.EntryRects()[^1].Height:0}");
+        two.Move(2);
+        two.PressConfirm();
+        Seconds(0.2f); Shot("title_25_slots_new_game_asks");
+        Console.WriteLine($"NEW GAME with two saves: phase {two.Phase}; \"{TitleScreen.NewGameBlurb(two.FreeSlot ?? 0, two.Cards.Count)}\"");
+        two.PressCancel();
+
+        // Three saves, the cursor on each in turn; a card continues its own slot's game
+        var three = Slots(new TitleSlot(1, save), new TitleSlot(2, second), new TitleSlot(3, third));
+        Shot("title_26_slots_three_first");
+        Console.WriteLine($"three saves: {Told(three)}; the column from {three.EntryRects()[0].Y:0} to {three.EntryRects()[^1].Y + three.EntryRects()[^1].Height:0}");
+        ShotCrop("title_26b_slots_card_native", 1016, (int)three.EntryRects()[0].Y - 8, 824, 2 * 144 + 18 + 16, 2);
+        three.Move(1);
+        Seconds(0.2f); Shot("title_27_slots_three_second");
+        three.Move(1);
+        Seconds(0.2f); Shot("title_28_slots_three_third");
+        Console.WriteLine($"the cursor on the third card: {Told(three)}");
+
+        // NEW GAME with every slot taken starts nothing: a notice says a new game needs a slot of its own
+        three.Move(1);
+        three.PressConfirm();
+        Seconds(0.5f); Shot("title_29_slots_no_free_slot");
+        Console.WriteLine($"NEW GAME with every slot taken: phase {three.Phase}, \"{three.Notice?.Heading}\": {three.Notice?.Body}");
+        three.PressConfirm();
+        Seconds(0.5f);
+        Console.WriteLine($"... and after it: {Told(three)}");
+
+        // DELETE A SAVE: which, with the cursor on the cards alone; the question that names the slot; and the slot gone
+        three.Move(1);
+        three.PressConfirm();
+        Seconds(0.2f); Shot("title_30_slots_delete_which");
+        Console.WriteLine($"DELETE A SAVE: {Told(three)}");
+        three.Move(1);
+        Seconds(0.2f); Shot("title_31_slots_delete_which_second");
+        three.PressConfirm();
+        Seconds(0.2f); Shot("title_32_slots_delete_asks");
+        Console.WriteLine($"the question: phase {three.Phase}, \"{TitleScreen.DeleteHeading(three.DeletingSlot)}\", yes highlighted: {three.ConfirmYes}");
+        three.Move(1);
+        Seconds(0.2f); Shot("title_33_slots_delete_yes");
+        three.PressConfirm();
+        Seconds(0.5f); Shot("title_34_slots_deleted");
+        Console.WriteLine($"after YES: {Told(three)}");
+
+        // A slot that can't be read is a card too, which can only be deleted, and its notice names it
+        var broken = TitleScreen.WithSlots(new[] { new TitleSlot(1, save), new TitleSlot(2, null), new TitleSlot(3, third) },
+            TitleNotice.ForSlot(2, SaveLoad.Damaged), TitleNotice.ForSlot(3, SaveLoad.Recovered));
+        game.Title = broken;
+        broken.PressConfirm();
+        Seconds(1.2f);
+        broken.PressConfirm();
+        Seconds(0.5f); Shot("title_35_slots_notice_cant_be_read");
+        Console.WriteLine($"a slot that can't be read: \"{broken.Notice?.Heading}\": {broken.Notice?.Body}");
+        broken.PressConfirm();
+        Seconds(0.5f); Shot("title_36_slots_notice_last_save_damaged");
+        Console.WriteLine($"... then \"{broken.Notice?.Heading}\": {broken.Notice?.Body}");
+        broken.PressConfirm();
+        Seconds(1f);
+        broken.Move(1);
+        Seconds(0.2f); Shot("title_37_slots_unreadable_card");
+        Console.WriteLine($"its card: {Told(broken)}");
+        broken.PressConfirm();
+        Seconds(0.2f); Shot("title_38_slots_unreadable_delete_asks");
+        Console.WriteLine($"a press on it: phase {broken.Phase}, slot {broken.DeletingSlot}");
+        broken.PressCancel();
+
+        // One save alone keeps the whole card whichever slot it is in, with DELETE A SAVE under NEW GAME
+        var lone = Slots(new TitleSlot(3, third));
+        Shot("title_39_slots_lone_in_slot_3");
+        Console.WriteLine($"one save, in slot 3: {Told(lone)}");
+        ShotCrop("title_39b_slots_lone_native", 1016, (int)lone.EntryRects()[0].Y - 8, 824, 468, 2);
+        lone.Move(2);
+        lone.PressConfirm();
+        Seconds(0.2f); Shot("title_40_slots_lone_delete_asks");
+        Console.WriteLine($"DELETE A SAVE with one save: phase {lone.Phase}, slot {lone.DeletingSlot}");
+        lone.Move(1);
+        lone.PressConfirm();
+        Seconds(0.5f); Shot("title_41_slots_none_left");
+        Console.WriteLine($"and with it deleted: {Told(lone)}");
+
+        // After a crash, with several saves that all read whole
+        var several = TitleScreen.WithSlots(new[] { new TitleSlot(1, save), new TitleSlot(2, second) },
+            TitleNotice.ForCrash(new CrashNote($"{CrashReport.FolderName}/{CrashReport.FileNameAt(when)}", true, when), new[] { SaveLoad.Ok, SaveLoad.Ok, SaveLoad.None }));
+        game.Title = several;
+        several.PressConfirm();
+        Seconds(1.2f);
+        several.PressConfirm();
+        Seconds(0.5f); Shot("title_42_slots_notice_crashed");
+        Console.WriteLine($"after a crash with two saves: {several.Notice?.Body}");
 
         game.State = GameState.Overworld;
     }

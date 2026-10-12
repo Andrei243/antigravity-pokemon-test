@@ -795,6 +795,11 @@ public class MenuScreenTests
         Assert.Same(summary, screen.Summary);
         Assert.Equal("SAVE", SaveScreen.Answers[screen.AnswerIndex]);
         Assert.False(screen.TakeRequest());
+        // It names the slot the game is saved in (plan 12 · Q2): the first unless it is told another
+        Assert.Equal((1, "Save the game in slot 1?"), (screen.Slot, SaveScreen.Question(screen.Slot)));
+        screen.Cancel();
+        screen.Open(summary, 3);
+        Assert.Equal((3, "Save the game in slot 3?"), (screen.Slot, SaveScreen.Question(screen.Slot)));
 
         // CANCEL leaves without saving
         screen.Move(1);
@@ -884,7 +889,7 @@ public class MenuScreenTests
         pc.Move(0, -1, 3);
         Assert.Equal((StorageZone.BoxName, 0), (pc.Zone, pc.Box));
         pc.Move(-1, 0, 3);
-        Assert.Equal(PCScreen.BoxCount - 1, pc.Box);
+        Assert.Equal(pc.BoxCount - 1, pc.Box);
         pc.Move(1, 0, 3);
         pc.Move(1, 0, 3);
         Assert.Equal(1, pc.Box);
@@ -899,7 +904,7 @@ public class MenuScreenTests
         Assert.Equal(StorageZone.BoxName, pc.Zone);
 
         Assert.Equal(30, PCScreen.BoxSize);
-        Assert.Equal(18, PCScreen.BoxCount);
+        Assert.Equal(18, pc.BoxCount);
     }
 
     [Fact]

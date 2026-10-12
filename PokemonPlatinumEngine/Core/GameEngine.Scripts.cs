@@ -261,6 +261,8 @@ public partial class GameEngine
         showBattlePoints = false;
         // And so do a scene's effects, held or not (plan 09 · L11)
         world?.Life.ClearEffects();
+        // ... and its set pieces: a machine's balls, a PC left on, whoever was being shaken (plan 09 · L12)
+        world?.Pieces.Clear();
     }
 
     /// <summary>
@@ -979,11 +981,11 @@ public partial class GameEngine
 
         public int Answer => game.scriptAnswer;
 
-        public void Battle(NPC trainer, NPC? second, Trainer? partner, bool mayLose, bool first)
+        public void Battle(NPC trainer, NPC? second, Trainer? partner, bool mayLose, bool first, BattleTerms? terms = null)
         {
             game.scriptOutcome = BattleOutcome.None;
             game.battleMayBeLost = mayLose;
-            game.StartTrainerBattle(trainer, second, partner, first);
+            game.StartTrainerBattle(trainer, second, partner, first, terms);
         }
 
         public void WildBattle(Pokemon wild, BattleKind kind, bool cannotFlee)
@@ -1250,12 +1252,18 @@ public partial class GameEngine
 
         public bool NationalDex => game.playerPokedex.NationalUnlocked;
 
-        // The save is written where the player stands, as the start menu's is, with no question and no panel
-        public bool Save() => SaveManager.SaveGame(game.BuildSave());
+        // The save is written where the player stands, into the game's own slot as the start menu's is, with no question and no panel
+        public bool Save() => game.WriteSave();
 
         // ---- after the Hall of Fame (plan 02 · S15)
 
-        public void GiveNationalDex() => game.playerPokedex.UnlockNational();
+        public void GiveNationalDex()
+        {
+            game.playerPokedex.UnlockNational();
+            // The PC's boxes grow with it: eighteen held one of each of Platinum's species, and the National
+            // Pokédex's get a hundred (plan 03 · D13)
+            game.pcBoxStorage.Grow();
+        }
 
         public int LeagueVictories => game.hallOfFame.Total;
 

@@ -46,9 +46,11 @@ public sealed record BattleChoice(Place Who, ChoiceKind Kind)
 /// <summary>
 /// A battle as it can be kept or sent: the number its chance began from (a <see cref="BattleRandom"/>'s seed) and
 /// every answer it was given from outside, in the order they were given. Played again between the same teams
-/// (<see cref="BattleCore.Replay"/>) it gives the same log.
+/// (<see cref="BattleCore.Replay"/>) it gives the same log. An inverse battle (plan 14 · B1) says so, since the
+/// same seed and answers under the other chart are another battle: a record written before the flag reads as the
+/// plain chart's.
 /// </summary>
-public sealed record BattleRecord(uint Seed, IReadOnlyList<IReadOnlyList<BattleChoice>> Answers);
+public sealed record BattleRecord(uint Seed, IReadOnlyList<IReadOnlyList<BattleChoice>> Answers, bool Inverse = false);
 
 /// <summary>What the core is waiting for before it can go on.</summary>
 public abstract record BattleRequest;

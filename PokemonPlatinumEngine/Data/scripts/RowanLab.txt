@@ -293,6 +293,8 @@ script OakVisits
   fanfare keyitem
   text "{player}'s Pokédex was upgraded. It now has a National Mode!"
   say "It can now record the Pokémon of every land, not only Sinnoh's. Filling it will be no small task, mind."
+  # The PC grows with the Pokédex (plan 03 · D13: nationaldex gives it the boxes too)
+  say "You will want room to keep them, too. I have seen to it that your PC has a hundred boxes now."
   speaker "Prof. Rowan"
   say "Hmph! If anyone can do it, {player} will. I would stake my moustache on it."
   speaker "Prof. Oak"
