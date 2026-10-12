@@ -104,6 +104,13 @@ Every sound effect of the game (plan 05 · A3), what it stands for in the origin
 | `status_confusion` | — | Confused, and each turn it is confused. |
 | `faint` | `SEQ_SE_DP_POKE_DEAD3` | A Pokémon faints. |
 | `exp` | `SEQ_SE_DP_EXP` | The EXP bar fills. |
+| `weather_rain` | — | Rain begins over a battle, and each turn it goes on (plan 25 · Y1; the original plays its rain animation's own sounds, `BattleEngine` the weather's sound with its cue). |
+| `weather_sun` | — | The sunlight turns harsh over a battle, and each turn it stays strong. |
+| `weather_sandstorm` | — | A sandstorm kicks up over a battle, and each turn it rages. |
+| `weather_hail` | — | Hail begins over a battle, and each turn it goes on. |
+| `weather_fog` | — | A battle opens in deep fog, and each turn the fog stays. |
+| `substitute_in` | — | A Substitute's doll drops in front of its Pokémon, made or passed by Baton Pass (plan 25 · Y1). |
+| `substitute_out` | — | A Substitute's doll fades in a puff: broken, its Pokémon fainting or called back. |
 
 ## Moves
 

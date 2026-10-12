@@ -11,7 +11,7 @@ namespace PokemonPlatinumEngine.Graphics;
 /// trees, fireflies at night, dust in caves and rooms, glints on the sea, and in gyms and the League the matter of
 /// their type (embers, bubbles, leaves, sparks, wisps). Particles loop in time, so nothing is simulated; GPU-free.
 /// </summary>
-internal static class ArenaFx
+internal static partial class ArenaFx
 {
     private static float R(int i, int salt) => SoftCanvas.Rand(i, 0, salt);
 
@@ -31,15 +31,20 @@ internal static class ArenaFx
     /// <summary>Fades a looping particle in and out near the ends of its fall or flight (0..1 along it).</summary>
     private static float EdgeFade(float u) => Math.Clamp(Math.Min(u, 1f - u) * 6f, 0f, 1f);
 
-    public static void Emit(ArenaSpec spec, float time, bool night, FxList fx)
+    /// <param name="weatherCover">
+    /// How far a battle's weather has come in over the stage (plan 25 · Y1, 0..1): a snow or sand arena's own drift
+    /// gives way to it, so two weathers never fall at once.
+    /// </param>
+    public static void Emit(ArenaSpec spec, float time, bool night, FxList fx, float weatherCover = 0f)
     {
+        float own = 1f - Math.Clamp(weatherCover, 0f, 1f);
         switch (spec.Kind)
         {
             case BattleArena.Snow:
-                Snowfall(fx, time, 140, 1f);
+                if (own > 0f) Snowfall(fx, time, 140, own);
                 break;
             case BattleArena.Sand:
-                BlowingSand(fx, time);
+                if (own > 0f) BlowingSand(fx, time, own);
                 break;
             case BattleArena.Forest:
                 if (night) Fireflies(fx, time, 26);
@@ -83,7 +88,7 @@ internal static class ArenaFx
         }
     }
 
-    private static void BlowingSand(FxList fx, float time)
+    private static void BlowingSand(FxList fx, float time, float strength = 1f)
     {
         var min = new Vector3(-26f, 0f, -12f);
         var max = new Vector3(18f, 3.5f, 22f);
@@ -93,14 +98,14 @@ internal static class ArenaFx
             var p = Drift(i, time, min, max, speed, 20);
             p.Y += MathF.Sin(time * 3f + i) * 0.15f;
             float u = (p.X - min.X) / (max.X - min.X);
-            var color = Rgba(232, 206, 158, (int)(170 * EdgeFade(u)));
+            var color = Rgba(232, 206, 158, (int)(170 * EdgeFade(u) * strength));
             fx.Streak(FxShape.Streak, p, Vector3.UnitX, 0.03f + R(i, 4) * 0.03f, 6f + R(i, 5) * 6f, color, FxBlend.Alpha, depth: true);
         }
         for (int i = 0; i < 6; i++)
         {
             var p = Drift(i, time, min, max, new Vector3(4f, 0.1f, 0f), 30);
             float u = (p.X - min.X) / (max.X - min.X);
-            fx.Sprite(FxShape.Smoke, p + Vector3.UnitY, 1.4f + R(i, 6), Rgba(236, 214, 170, (int)(70 * EdgeFade(u))), FxBlend.Alpha, R(i, 7) * 6f, depth: true);
+            fx.Sprite(FxShape.Smoke, p + Vector3.UnitY, 1.4f + R(i, 6), Rgba(236, 214, 170, (int)(70 * EdgeFade(u) * strength)), FxBlend.Alpha, R(i, 7) * 6f, depth: true);
         }
     }
 

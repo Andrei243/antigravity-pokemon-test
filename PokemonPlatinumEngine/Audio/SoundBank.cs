@@ -80,6 +80,16 @@ public static partial class SoundBank
         _ => null
     };
 
+    /// <summary>The sound of a weather over a battle as it begins and on each turn it goes on (plan 25 · Y1).</summary>
+    public static string WeatherSound(Battle.Sim.BattleWeather weather) => weather switch
+    {
+        Battle.Sim.BattleWeather.Rain => "weather_rain",
+        Battle.Sim.BattleWeather.Sun => "weather_sun",
+        Battle.Sim.BattleWeather.Sandstorm => "weather_sandstorm",
+        Battle.Sim.BattleWeather.Hail => "weather_hail",
+        _ => "weather_fog"
+    };
+
     /// <summary>The sound of a status condition given, or null for none (a cure, a faint).</summary>
     public static string? StatusSound(StatusCondition status) => status switch
     {

@@ -4,14 +4,23 @@ partial class Harness
     public void ArenasMode()
     {
         var renderer = game.BattleRenderer;
-        void Arena(string name, BattleArena kind, PokemonType? theme = null, TreeStyle trees = TreeStyle.Round, bool lakeside = false, TimeOfDay time = TimeOfDay.Day)
+        void Arena(string name, BattleArena kind, PokemonType? theme = null, TreeStyle trees = TreeStyle.Round, bool lakeside = false, TimeOfDay time = TimeOfDay.Day,
+            BattleWeather sky = BattleWeather.None)
         {
             if (!Wanted(name)) return;
             engine.Settings.TimeOfDay = time;
             engine.ApplySettings(window: false);
             game.Map = MapDatabase.Get("Sinnoh");
             renderer.SetArena(kind, theme, trees, lakeside);
-            var b = new BattleEngine(party, new Pokemon(PokemonDatabase.Get("Shinx")!, 5, new Random(2)), inventory, pokedex);
+            var foe = new Pokemon(PokemonDatabase.Get("Shinx")!, 5, new Random(2));
+            // A battle's weather (plan 25 · Y1) comes in as the battle opens, as the field's does
+            var b = sky == BattleWeather.None
+                ? new BattleEngine(party, foe, inventory, pokedex)
+                : new BattleEngine(new BattleSetup
+                {
+                    PlayerParty = party, Inventory = inventory, Pokedex = pokedex, WildPokemon = new List<Pokemon> { foe },
+                    Conditions = new BattleConditions { Weather = sky }
+                });
             game.Battle = b;
             game.State = GameState.Battle;
             Skip(2.2); Confirm(b); Skip(1.2); Confirm(b); Skip(0.8);
@@ -28,6 +37,8 @@ partial class Harness
         Arena("a09_sand", BattleArena.Sand);
         Arena("a10_indoors", BattleArena.Indoors);
         Arena("a11_indoors_night", BattleArena.Indoors, time: TimeOfDay.Night);
+        Arena("a12_grass_rain", BattleArena.Grass, sky: BattleWeather.Rain);
+        Arena("a13_grass_harsh_sun", BattleArena.Grass, sky: BattleWeather.Sun);
         int g = 20;
         foreach (var type in new[] { PokemonType.Rock, PokemonType.Grass, PokemonType.Fighting, PokemonType.Water, PokemonType.Ghost, PokemonType.Steel, PokemonType.Ice, PokemonType.Electric })
             Arena($"a{g++}_gym_{type.ToString().ToLowerInvariant()}", BattleArena.Gym, type);

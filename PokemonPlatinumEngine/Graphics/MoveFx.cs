@@ -79,6 +79,9 @@ internal static class MoveFx
             case CueKind.Seals:
                 SealFx.Play(c, fx, SealScratch);
                 break;
+            case CueKind.Weather:
+                ArenaFx.WeatherCue(cue.Weather, c.Age, c.Seed, places, fx);
+                break;
         }
     }
 
