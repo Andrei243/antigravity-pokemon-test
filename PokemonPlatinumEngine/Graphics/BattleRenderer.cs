@@ -82,12 +82,16 @@ public sealed class BattleRenderer
         bool night = Arena.Outdoors && arenaRig.Sky.Stars > 0f;
         // The weather's light (plan 25 · Y1): the one clearing away under the one coming in, each by how far it has come
         var rig = ArtLook.InBattleWeather(ArtLook.InBattleWeather(arenaRig, anim.FadingWeather, anim.FadingStrength), anim.Weather, anim.WeatherStrength);
+        // Gravity lowers the stage's light for as long as it lasts (plan 25 · Y2)
+        rig = ArtLook.UnderGravity(rig, anim.FieldLook.Of(Battle.Sim.FieldCondition.Gravity).Presence);
 
         fx.Clear();
         MoveFx.Emit(anim, places, fx);
         ArenaFx.Emit(Arena, anim.Time, night, fx, Math.Max(anim.WeatherStrength, anim.FadingStrength));
         ArenaFx.Weather(anim.FadingWeather, BattleAnimator.WeatherFadeTime, anim.Time, places, fx, anim.FadingStrength);
         ArenaFx.Weather(anim.Weather, anim.WeatherAge, anim.Time, places, fx);
+        // What lies on the field: hazards, screens, the rooms, what was sent ahead (plan 25 · Y2)
+        BattleFieldFx.Emit(anim.FieldLook, anim.Time, places, anim.Slots, fx);
         DollEffects(anim);
         PlaceTrainers(anim);
         PlaceBalls(anim);

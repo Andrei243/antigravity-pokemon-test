@@ -1432,6 +1432,7 @@ log:
     + Lunged E0 Category=Special
     + MoveShown Move=Future Sight Type=Psychic Category=Special From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Barboach foresaw an attack!
+    + PlaceConditionChanged P0 Condition=FutureSight Up=true
   say Regice used Lock-On!
     + Lunged P0 Category=Status
     + MoveShown Move=Lock-On Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -2597,6 +2598,7 @@ log:
     + Lunged E0 Category=Status
     + MoveShown Move=Lucky Chant Type=Normal Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say The Lucky Chant shielded the foe's team from critical hits!
+    + SideConditionChanged Side=Enemy Condition=LuckyChant Layers=1
   say Bruxish used Screech!
     + Lunged P0 Category=Status
     + MoveShown Move=Screech Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -2642,12 +2644,14 @@ log:
   say Tirtouga fainted!
     + Fainted P0
   say The foe's team's Lucky Chant wore off!
+    + SideConditionChanged Side=Enemy Condition=LuckyChant Layers=0
   say Go! Baltoy!
     + Entered P0 Pokemon=mine#1 Baltoy FromBall=true
   say Foe Mismagius used Lucky Chant!
     + Lunged E0 Category=Status
     + MoveShown Move=Lucky Chant Type=Normal Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say The Lucky Chant shielded the foe's team from critical hits!
+    + SideConditionChanged Side=Enemy Condition=LuckyChant Layers=1
   say Baltoy used Earth Power!
     + Lunged P0 Category=Special
     + MoveShown Move=Earth Power Type=Ground Category=Special From=P0 To=E0 Missed=false Blocked=true Critical=false SuperEffective=false
@@ -3864,6 +3868,7 @@ log:
     + Lunged P0 Category=Status
     + MoveShown Move=Mist Type=Ice Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Your team became shrouded in mist!
+    + SideConditionChanged Side=Player Condition=Mist Layers=1
   say Foe Dracovish used Protect!
     + Lunged E0 Category=Status
     + MoveShown Move=Protect Type=Normal Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -3899,6 +3904,7 @@ log:
     ! Struck P0 Hp=96 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Your team's Mist wore off!
+    + SideConditionChanged Side=Player Condition=Mist Layers=0
   say Surskit used Baton Pass!
     + Lunged P0 Category=Status
   say But it failed!
@@ -3936,6 +3942,7 @@ log:
     + Lunged P0 Category=Status
     + MoveShown Move=Mist Type=Ice Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Your team became shrouded in mist!
+    + SideConditionChanged Side=Player Condition=Mist Layers=1
   say Foe Dracovish used Tackle!
     + Lunged E0 Category=Physical
     + MoveShown Move=Tackle Type=Normal Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -3974,6 +3981,7 @@ log:
     + Lunged P0 Category=Status
   say All stat changes were eliminated!
   say Your team's Mist wore off!
+    + SideConditionChanged Side=Player Condition=Mist Layers=0
   say Surskit used Agility!
     + Lunged P0 Category=Status
     + MoveShown Move=Agility Type=Psychic Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -4005,6 +4013,7 @@ log:
     + Lunged P0 Category=Status
     + MoveShown Move=Mist Type=Ice Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Your team became shrouded in mist!
+    + SideConditionChanged Side=Player Condition=Mist Layers=1
   say Foe Dracovish used Brutal Swing!
     + Lunged E0 Category=Physical
     + MoveShown Move=Brutal Swing Type=Dark Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -4262,6 +4271,7 @@ log:
     + Lunged E0 Category=Status
     + MoveShown Move=Light Screen Type=Psychic Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Light Screen raised the foe's team's Special Defense!
+    + SideConditionChanged Side=Enemy Condition=LightScreen Layers=1
   say Illumise used Zen Headbutt!
     + Lunged P0 Category=Physical
     + MoveShown Move=Zen Headbutt Type=Psychic Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -4307,6 +4317,7 @@ log:
     + MoveShown Move=Bind Type=Normal Category=Physical From=E0 To=P0 Missed=true Blocked=false Critical=false SuperEffective=false
   say Foe Pinsir's attack missed!
   say The foe's team's Light Screen wore off!
+    + SideConditionChanged Side=Enemy Condition=LightScreen Layers=0
   say Illumise used Covet!
     + Lunged P0 Category=Physical
     + MoveShown Move=Covet Type=Normal Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -7169,6 +7180,7 @@ log:
     + Lunged P0 Category=Status
     + MoveShown Move=Toxic Spikes Type=Poison Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Poison spikes were scattered all around the foe's team's feet!
+    + SideConditionChanged Side=Enemy Condition=ToxicSpikes Layers=1
   say Foe Dondozo used Supersonic!
     + Lunged E0 Category=Status
     + MoveShown Move=Supersonic Type=Normal Category=Status From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -7548,6 +7560,7 @@ log:
     + Lunged P0 Category=Status
     + MoveShown Move=Gravity Type=Psychic Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Gravity intensified!
+    + FieldConditionChanged Condition=Gravity Up=true
   say Foe Staravia couldn't stay airborne because of gravity!
   say Foe Staravia used Wing Attack!
     + Lunged E0 Category=Physical
@@ -7600,10 +7613,12 @@ log:
     ! Struck P0 Hp=41 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Gravity returned to normal!
+    + FieldConditionChanged Condition=Gravity Up=false
   say Arceus used Gravity!
     + Lunged P0 Category=Status
     + MoveShown Move=Gravity Type=Psychic Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Gravity intensified!
+    + FieldConditionChanged Condition=Gravity Up=true
   say Foe Ponyta used Stomp!
     + Lunged E0 Category=Physical
     + MoveShown Move=Stomp Type=Normal Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -7662,6 +7677,7 @@ log:
     ! Struck P0 Hp=154 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Gravity returned to normal!
+    + FieldConditionChanged Condition=Gravity Up=false
   say Snorlax used Body Slam!
     + Lunged P0 Category=Physical
     + MoveShown Move=Body Slam Type=Normal Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -8155,6 +8171,7 @@ log:
     + Lunged E1 Category=Status
     + MoveShown Move=Light Screen Type=Psychic Category=Status From=E1 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
   say Light Screen raised the foe's team's Special Defense!
+    + SideConditionChanged Side=Enemy Condition=LightScreen Layers=1
   say Foe Smeargle used Ominous Wind!
     + Lunged E0 Category=Special
     + MoveShown Move=Ominous Wind Type=Ghost Category=Special From=E0 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -8245,6 +8262,7 @@ log:
     + MoveShown Move=Rock Throw Type=Rock Category=Physical From=E1 To=P1 Missed=true Blocked=false Critical=false SuperEffective=false
   say Rapidash avoided the attack!
   say The foe's team's Light Screen wore off!
+    + SideConditionChanged Side=Enemy Condition=LightScreen Layers=0
   say Rapidash used Bounce!
     + Reappeared P1
     + Lunged P1 Category=Physical
@@ -8500,6 +8518,7 @@ log:
     + Lunged E0 Category=Status
     + MoveShown Move=Tailwind Type=Flying Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say The tailwind blew from behind the foe's team!
+    + SideConditionChanged Side=Enemy Condition=Tailwind Layers=1
   say Duskull used Will-O-Wisp!
     + Lunged P0 Category=Status
     + MoveShown Move=Will-O-Wisp Type=Fire Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -8531,6 +8550,7 @@ log:
     + Lunged P0 Category=Special
     + MoveShown Move=Future Sight Type=Psychic Category=Special From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Duskull foresaw an attack!
+    + PlaceConditionChanged E0 Condition=FutureSight Up=true
   say Foe Vullaby is hurt by its burn!
     + HpChanged E0 Hp=7 Healed=false
   say Foe Vullaby used Pluck!
@@ -8543,6 +8563,7 @@ log:
     + MoveShown Move=Will-O-Wisp Type=Fire Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Vullaby is already burned!
   say The foe's team's tailwind petered out!
+    + SideConditionChanged Side=Enemy Condition=Tailwind Layers=0
   say Foe Vullaby is hurt by its burn!
     + HpChanged E0 Hp=3 Healed=false
   say Foe Vullaby used Pluck!
@@ -8561,6 +8582,7 @@ log:
     + TrainerReacts E0 Cue=FirstDown
   say Duskull gained 199 EXP. Points!
   ExpGained Pokemon=mine#2 Duskull Amount=199
+  PlaceConditionChanged E0 Condition=FutureSight Up=false
   say Ace Trainer Tester sent out Smoochum!
     + Seen Species=Smoochum
     + Entered E0 Pokemon=foe#1 Smoochum FromBall=true
@@ -8816,6 +8838,7 @@ log:
     + Lunged E0 Category=Status
     + MoveShown Move=Reflect Type=Psychic Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Reflect raised the foe's team's Defense!
+    + SideConditionChanged Side=Enemy Condition=Reflect Layers=1
   say Comfey is confused!
     + Confused P0
   say It hurt itself in its confusion!
@@ -8874,6 +8897,7 @@ log:
   say Scyther gained 180 EXP. Points!
   ExpGained Pokemon=mine#2 Scyther Amount=180
   say The foe's team's Reflect wore off!
+    + SideConditionChanged Side=Enemy Condition=Reflect Layers=0
   say Policeman Danny sent out Machoke!
     + Seen Species=Machoke
     + Entered E0 Pokemon=foe#1 Machoke FromBall=true
@@ -9055,6 +9079,7 @@ log:
     + Lunged E0 Category=Status
     + MoveShown Move=Reflect Type=Psychic Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Reflect raised the foe's team's Defense!
+    + SideConditionChanged Side=Enemy Condition=Reflect Layers=1
   say Pachirisu used Super Fang!
     + Lunged P0 Category=Physical
     + MoveShown Move=Super Fang Type=Normal Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -9115,6 +9140,7 @@ log:
   say A critical hit!
   say It's not very effective...
   say The foe's team's Reflect wore off!
+    + SideConditionChanged Side=Enemy Condition=Reflect Layers=0
   say Centiskorch used Lunge!
     + Lunged P0 Category=Physical
     + MoveShown Move=Lunge Type=Bug Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -9874,6 +9900,7 @@ log:
     + Lunged E0 Category=Status
     + MoveShown Move=Light Screen Type=Psychic Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Light Screen raised the foe's team's Special Defense!
+    + SideConditionChanged Side=Enemy Condition=LightScreen Layers=1
   say Hail continues to fall.
     + WeatherContinues Weather=Hail
   say Lopunny is pelted by the hail!
@@ -10983,6 +11010,7 @@ log:
     + Lunged P1 Category=Status
     + MoveShown Move=Tailwind Type=Flying Category=Status From=P1 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
   say The tailwind blew from behind your team!
+    + SideConditionChanged Side=Player Condition=Tailwind Layers=1
   say Foe Hitmontop used Close Combat!
     + Lunged E1 Category=Physical
     + MoveShown Move=Close Combat Type=Fighting Category=Physical From=E1 To=P0 Missed=false Blocked=false Critical=false SuperEffective=true
@@ -11140,6 +11168,7 @@ log:
     + Lunged P0 Category=Status
     + MoveShown Move=Stealth Rock Type=Rock Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Pointed stones float in the air around the foe's team!
+    + SideConditionChanged Side=Enemy Condition=StealthRock Layers=1
   say Foe Brambleghast used Pain Split!
     + Lunged E0 Category=Status
     + MoveShown Move=Pain Split Type=Normal Category=Status From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -11438,6 +11467,7 @@ log:
     + Lunged P0 Category=Status
     + MoveShown Move=Safeguard Type=Normal Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Your team became cloaked in a mystical veil!
+    + SideConditionChanged Side=Player Condition=Safeguard Layers=1
   say Foe Kricketune used Slash!
     + Lunged E0 Category=Physical
     + MoveShown Move=Slash Type=Normal Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -11496,6 +11526,7 @@ log:
     + MoveShown Move=Lock-On Type=Normal Category=Status From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Magnemite took aim at Vivillon!
   say Your team is no longer protected by Safeguard!
+    + SideConditionChanged Side=Player Condition=Safeguard Layers=0
   say Vivillon used Draining Kiss!
     + Lunged P0 Category=Special
     + MoveShown Move=Draining Kiss Type=Fairy Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -12929,6 +12960,7 @@ log:
     + Lunged E1 Category=Special
     + MoveShown Move=Future Sight Type=Psychic Category=Special From=E1 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Mewtwo foresaw an attack!
+    + PlaceConditionChanged P1 Condition=FutureSight Up=true
   say Electrike used Roar!
     + Lunged P1 Category=Status
     + MoveShown Move=Roar Type=Normal Category=Status From=P1 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -13124,6 +13156,7 @@ log:
     + Lunged P0 Category=Status
     + MoveShown Move=Stealth Rock Type=Rock Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Pointed stones float in the air around the foe's team!
+    + SideConditionChanged Side=Enemy Condition=StealthRock Layers=1
   say Foe Patrat used Mean Look!
     + Lunged E1 Category=Status
     + MoveShown Move=Mean Look Type=Normal Category=Status From=E1 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -13259,6 +13292,7 @@ log:
     + Lunged P0 Category=Status
     + MoveShown Move=Safeguard Type=Normal Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Your team became cloaked in a mystical veil!
+    + SideConditionChanged Side=Player Condition=Safeguard Layers=1
   say Celebi used Magical Leaf!
     + Lunged P0 Category=Special
     + MoveShown Move=Magical Leaf Type=Grass Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -13307,6 +13341,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
   say Your team is no longer protected by Safeguard!
+    + SideConditionChanged Side=Player Condition=Safeguard Layers=0
   say Foe Wormadam snapped out of confusion!
   say Foe Wormadam used Protect!
     + Lunged E0 Category=Status
@@ -13316,6 +13351,7 @@ log:
     + Lunged P0 Category=Status
     + MoveShown Move=Safeguard Type=Normal Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Your team became cloaked in a mystical veil!
+    + SideConditionChanged Side=Player Condition=Safeguard Layers=1
   say Celebi used Magical Leaf!
     + Lunged P0 Category=Special
     + MoveShown Move=Magical Leaf Type=Grass Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -13361,6 +13397,7 @@ log:
   say Celebi fainted!
     + Fainted P0
   say Your team is no longer protected by Safeguard!
+    + SideConditionChanged Side=Player Condition=Safeguard Layers=0
   say Go! Spidops!
     + Entered P0 Pokemon=mine#1 Spidops FromBall=true
   say Foe Wormadam used Hidden Power!
@@ -14083,6 +14120,7 @@ log:
     + Lunged P0 Category=Status
     + MoveShown Move=Tailwind Type=Flying Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say The tailwind blew from behind your team!
+    + SideConditionChanged Side=Player Condition=Tailwind Layers=1
   say Foe Armaldo used Rock Blast!
     + Lunged E0 Category=Physical
     + MoveShown Move=Rock Blast Type=Rock Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=true
@@ -14132,6 +14170,7 @@ log:
     ! Struck P0 Hp=13 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Your team's tailwind petered out!
+    + SideConditionChanged Side=Player Condition=Tailwind Layers=0
   say Drapion used Bug Bite!
     + Lunged P0 Category=Physical
     + MoveShown Move=Bug Bite Type=Bug Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -14248,6 +14287,7 @@ log:
     + Lunged P1 Category=Status
     + MoveShown Move=Stealth Rock Type=Rock Category=Status From=P1 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
   say Pointed stones float in the air around the foe's team!
+    + SideConditionChanged Side=Enemy Condition=StealthRock Layers=1
   say Foe Mew used Pound!
     + Lunged E0 Category=Physical
     + MoveShown Move=Pound Type=Normal Category=Physical From=E0 To=P0 Missed=true Blocked=false Critical=false SuperEffective=false

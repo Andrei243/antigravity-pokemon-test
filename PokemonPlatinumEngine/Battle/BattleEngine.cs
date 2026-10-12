@@ -276,6 +276,8 @@ public partial class BattleEngine
         }
         Weather = core.Field.Weather;
         Anim.SettleWeather(Weather);
+        // What lies on the field (plan 25 · Y2): the lines have told all of it already; this catches a field changed from outside
+        Anim.FieldLook.Settle(core.Field);
     }
 
     /// <summary>
@@ -559,6 +561,10 @@ public partial class BattleEngine
                 Weather = goesOn.Weather;
                 Anim.WeatherGoesOn(goesOn.Weather);
                 AudioManager.PlaySound(SoundBank.WeatherSound(goesOn.Weather));
+                break;
+            case SideConditionChanged or FieldConditionChanged or PlaceConditionChanged:
+                // What lies on the field (plan 25 · Y2): the line sets the look, which is drawn for as long as it lasts
+                Anim.FieldLook.Tell(happening);
                 break;
             case SubstituteChanged doll:
                 // The doll's swaps (plan 25 · Y1): the line sets the view, never the rules
