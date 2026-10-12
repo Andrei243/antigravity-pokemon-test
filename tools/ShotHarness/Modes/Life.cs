@@ -187,7 +187,7 @@ partial class Harness
         foreach (var (name, kind) in new[]
                  {
                      ("wild", TransitionKind.Wild), ("wild_strong", TransitionKind.WildStrong), ("trainer", TransitionKind.Trainer),
-                     ("trainer_strong", TransitionKind.TrainerStrong), ("leader", TransitionKind.Leader)
+                     ("trainer_strong", TransitionKind.TrainerStrong)
                  })
         {
             Put(112, 880, Direction.Down);
@@ -198,6 +198,12 @@ partial class Harness
             Frames(18); Shot($"l30_{name}_4_opening");
             Frames(40);
         }
+        // (The diamonds that stood in for a Gym Leader's way went with the bands of plan 09 · L15, which are shot at
+        // the mode's end. The frames their four shots took are still spent here, on a trainer's way, so that the clock
+        // of every later shot stands where it did.)
+        Put(112, 880, Direction.Down);
+        game.StartTransition(GameState.Overworld, null, TransitionKind.Trainer);
+        Frames(2 + 36 + 10 + 18 + 40);
         // And the real thing: a wild Pokémon in the grass, from the flash to the battle's first frame
         Put(grassX, grassY, Direction.Right);
         game.StartWildBattle(new WildEncounterEntry { SpeciesName = "Starly", MinLevel = 3, MaxLevel = 3, Weight = 1 });
@@ -397,6 +403,55 @@ partial class Harness
         Frames(24); Shot("l35_into_battle_with_a_grunt_3_opening");
         Frames(40); Shot("l35_into_battle_with_a_grunt_4_battle_begins");
         game.State = GameState.Overworld;
+        Put(112, 880, Direction.Down);
+
+        // The bands (plan 09 · L15), last of all so that nothing before them moves: Roark's in his Gym and Cynthia's in
+        // her room, each begun as the game begins it, the person of the room carrying their team as their script's
+        // battle makes them. Five moments of the band, by its own beats, and the battle opening out of its white
+        void Band(string shots, string room, string who, string id, (string Name, float Since)[] moments)
+        {
+            var hall = MapDatabase.Get(room);
+            var person = hall.Everyone.First(n => n.Name.Equals(who, StringComparison.OrdinalIgnoreCase));
+            At(room, person.GridX, person.GridY + 1, Direction.Up);
+            walker.SetMode(TravelMode.OnFoot);
+            Frames(30);
+            var met = Carrying(id);
+            met.NpcType = person.NpcType;
+            game.StartTrainerBattle(met);
+            var kind = game.TransitionKind;
+            var whose = game.Band?.Band;
+            Console.WriteLine($"way in: {met.TrainerData!.FullTitle} in {room} -> {kind}; the band of {whose?.Class} {whose?.Name} in {whose?.Base.R},{whose?.Base.G},{whose?.Base.B}, "
+                + $"their portrait of {game.BandTheirLook}, the player's of {game.BandOwnLook ?? "nobody"}; {SceneTransition.OutSeconds(kind):0.00} s to the white");
+            int at = 0, n = 0, wanted = game.BandOwnLook != null ? 2 : 1;
+            void To(float seconds)
+            {
+                int frame = (int)MathF.Round(seconds * 60f);
+                Frames(frame - at);
+                at = frame;
+            }
+            // The portraits are rendered in the first frame that finds their rigs ready: the very first, where the
+            // person stands in the room and the player's rig is the field's own
+            To(1f / 60f);
+            Console.WriteLine($"  after the first frame: {game.BandRendered} of {wanted} portraits rendered");
+            foreach (var (name, since) in moments)
+            {
+                To(SceneTransition.FlashSeconds + since);
+                Shot($"{shots}_{++n}_{name}");
+                Console.WriteLine($"  {name}: {game.BandRendered} of {wanted} portraits rendered");
+            }
+            To(SceneTransition.OutSeconds(kind) + 0.2f); Shot($"{shots}_{++n}_opening");
+            Frames(40);
+            Console.WriteLine($"  the band over: {(game.Band == null ? "its portraits freed" : "!! its portraits still held")}");
+            game.State = GameState.Overworld;
+        }
+        Band("l38_band_roark", "OreburghGym", "Roark", "leader_roark", new[]
+        {
+            ("wiping_in", 0.12f), ("the_mark", 0.9f), ("silhouette", 1.45f), ("lit", 2.25f), ("the_white", 2.95f)
+        });
+        Band("l39_band_cynthia", "PokemonLeagueChampionRoom", "Cynthia", "champion_cynthia", new[]
+        {
+            ("halves", 0.1f), ("silhouettes", 0.75f), ("lit", 1.42f), ("trembling", 2.5f), ("the_white", 2.75f)
+        });
         Put(112, 880, Direction.Down);
     }
 }

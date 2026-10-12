@@ -131,6 +131,16 @@ internal sealed class CharacterStyles
     /// </summary>
     public string InBattle(string trainerClass, string? look) => OfClass(trainerClass, look) ?? look ?? trainerClass;
 
+    /// <summary>
+    /// The look a trainer of the game stands on the battle's platform in: <see cref="InBattle(string, string?)"/> of
+    /// their class and of the person who carries them (<see cref="Models.Trainer.Look"/>, the player's or the
+    /// assistant's read as whoever that is). It is the answer the battle's own screen gives for them, so whoever
+    /// shows the same trainer elsewhere (the rig built behind the fade, the portrait of the band a Gym Leader's
+    /// battle opens on, plan 09 · L15) shows the same person.
+    /// </summary>
+    public string InBattle(Models.Trainer trainer) =>
+        InBattle(trainer.TrainerClass, trainer.Look is { } look ? Core.PlayerIdentity.CharacterFor(look) : null);
+
     /// <summary>A colour written <c>#rrggbb</c> (or <c>#rrggbbaa</c>).</summary>
     private sealed class HexColor : JsonConverter<Color>
     {

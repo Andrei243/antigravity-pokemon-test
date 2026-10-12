@@ -77,6 +77,9 @@ partial class Harness
         }
         void IntoBattle(string what)
         {
+            // Each of the five is met on their band (plan 09 · L15), shot once it is lit; the same frames go by either way
+            ReadOn(() => State() == GameState.Battle || BandLit(), 1500);
+            ShotBand("lg");
             ReadOn(() => State() == GameState.Battle, 1500);
             if (State() != GameState.Battle) Console.WriteLine($"  !! never happened: {what}");
             else Skip(1.6);

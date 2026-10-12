@@ -268,6 +268,10 @@ public partial class GameEngine
     private bool isFadingOut = true;
     private Action? midTransitionCallback;
 
+    // The band a Gym Leader's, an Elite Four's or the Champion's battle opens on, and its portraits (plan 09 · L15):
+    // begun with the transition, rendered offscreen as its frames find the rigs ready, ended at the midpoint
+    private readonly BandPortraits band = new();
+
     /// <summary>Set when the player chose to leave the game from a menu; the main loop closes the window.</summary>
     public bool QuitRequested { get; private set; }
 
@@ -2107,6 +2111,8 @@ public partial class GameEngine
         transitionKind = kind;
         transitionTimer = 0f;
         isFadingOut = true;
+        // (A band left over from a transition that was never played out goes; whoever starts one begins it after this)
+        band.End();
     }
 
     private void UpdateTransition(float dt)
@@ -2118,6 +2124,8 @@ public partial class GameEngine
             {
                 isFadingOut = false;
                 transitionTimer = 0f;
+                // The band's show is over once the picture is shut: its portraits' targets are freed
+                band.End();
                 midTransitionCallback?.Invoke();
                 midTransitionCallback = null;
             }
@@ -2153,6 +2161,9 @@ public partial class GameEngine
 
         // Menu sprites asked for since the last frame are loaded or baked first, offscreen like the 3D scenes
         PokemonSprites.Service(renderContext);
+        // ... and so are a band's portraits (plan 09 · L15): each once, in the first frame of the closing that finds
+        // its rig ready, and before the scene, which sets the uniforms it needs after them
+        if (shown == GameState.Transition && isFadingOut) band.Render(renderContext);
 
         // The 3D scenes render into their own targets first (texture modes can't nest)
         if (showWorld)
@@ -2352,10 +2363,12 @@ public partial class GameEngine
 
         toast.Draw(VirtualWidth);
 
-        // The scene closing, or the next one opening; a cave's ring closes on the player, wherever the field shows them
+        // The scene closing, or the next one opening; a cave's ring closes on the player, wherever the field shows them,
+        // and a band is drawn with whose it is and the portraits rendered for it so far
         if (shown == GameState.Transition)
             SceneTransition.Draw(transitionKind, isFadingOut, transitionTimer, VirtualWidth, VirtualHeight,
-                isFadingOut && showWorld ? world.PlayerOnPicture * new Vector2(VirtualWidth, VirtualHeight) : null);
+                isFadingOut && showWorld ? world.PlayerOnPicture * new Vector2(VirtualWidth, VirtualHeight) : null,
+                isFadingOut ? band.Picture : null);
 
         // The close button's question over all of it, sliding away once answered
         closePrompt.Draw(VirtualWidth, VirtualHeight);
@@ -2401,6 +2414,7 @@ public partial class GameEngine
 
     public void Close()
     {
+        band.End();
         renderContext.Unload();
         RegionMapPictures.Unload();
         Raylib.UnloadRenderTexture(virtualScreen);

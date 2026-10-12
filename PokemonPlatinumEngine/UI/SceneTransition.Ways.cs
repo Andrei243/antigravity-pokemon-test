@@ -30,7 +30,7 @@ public readonly record struct TransitionPiece(TransitionPieceKind Kind, Vector2 
 // The ways into a battle by place and by whom (plan 09 · L13; style guide, "Life", "Into battle", "By place and by
 // whom"): twelve more shapes of the dark, each our own after the beats of the original's (the functions of
 // src/overlay005/encounter_effect_core.c named beside each), with what leads in and rides over the picture as the
-// field closes. Everything here is a function of the kind and the time, as the first five ways are.
+// field closes. Everything here is a function of the kind and the time, as the first four ways are.
 public static partial class SceneTransition
 {
     /// <summary>How wide a Poké Ball is at its full size, and the two marks.</summary>
@@ -94,6 +94,13 @@ public static partial class SceneTransition
         TransitionKind.Grunt => (0f, 1.75f),
         // EncounterEffect_GalacticBoss: the mark fades in over fifteen frames, stands for sixteen, sixteen of closing
         TransitionKind.GalacticBoss => (1f, 0.85f),
+        // EncounterEffect_GymLeader: the banner wiped in over six frames, ten of waiting, the mark's sixteen, the
+        // portrait's four, ten more, three up to white and three back, twenty-six held (eighty or so); fifteen of white
+        TransitionKind.LeaderBand => (2.7f, 0.5f),
+        // EncounterEffect_EliteFourChampion: the two portraits' six frames, the mark and the sparks behind it (thirty or
+        // so in all), three up to white and six back, eight held, thirty-two of trembling (nine for the Champion, which
+        // is not told apart here); eight of white
+        TransitionKind.EliteBand => (2.6f, 0.3f),
         _ => (0f, CloseSeconds - FlashSeconds)
     };
 
@@ -257,6 +264,12 @@ public static partial class SceneTransition
             }
             case TransitionKind.GalacticBoss:
                 return MathF.Abs(dx) + MathF.Abs(dy) < closed * (cx + cy) * 1.001f;
+            case TransitionKind.LeaderBand:
+                // The white: a bar widening from the band's middle row to the head and the foot of the picture
+                return MathF.Abs(dy) < closed * cy * 1.001f;
+            case TransitionKind.EliteBand:
+                // The white: a slash along the rising diagonal, widening to the two corners the portraits fly to
+                return MathF.Abs(dx / cx + dy / cy) < closed * 2.002f;
             default:
                 return false;
         }
@@ -264,12 +277,13 @@ public static partial class SceneTransition
 
     /// <summary>
     /// What rides over the picture <paramref name="seconds"/> into the closing of a way into a battle, added to
-    /// <paramref name="into"/> in the order it is drawn: nothing during the flashes, nothing for the first five
-    /// ways, and nothing as the battle opens, which is the dark's shape alone.
+    /// <paramref name="into"/> in the order it is drawn: nothing during the flashes, nothing for the first four
+    /// ways, and nothing as the battle opens, which is the dark's shape alone. (What a band shows is not pieces
+    /// but one look, <see cref="BandAt"/>.)
     /// </summary>
     public static void Pieces(TransitionKind kind, float seconds, float width, float height, List<TransitionPiece> into)
     {
-        if (kind <= TransitionKind.Leader || seconds < FlashSeconds || seconds >= OutSeconds(kind)) return;
+        if (Plain(kind) || IsBand(kind) || seconds < FlashSeconds || seconds >= OutSeconds(kind)) return;
         float lead = Lead(kind, seconds), closed = Closed(kind, true, seconds), since = seconds - FlashSeconds;
         var middle = new Vector2(width / 2f, height / 2f);
         switch (kind)
@@ -508,6 +522,20 @@ public static partial class SceneTransition
                 float r = closed * (cx + cy) * 1.001f;
                 Tri(new Vector2(cx, cy - r), new Vector2(cx - r, cy), new Vector2(cx + r, cy), Dark);
                 Tri(new Vector2(cx - r, cy), new Vector2(cx, cy + r), new Vector2(cx + r, cy), Dark);
+                break;
+            }
+            case TransitionKind.LeaderBand:
+            {
+                float half = closed * cy * 1.001f;
+                Raylib.DrawRectangleRec(new Rectangle(0f, cy - half, width, 2f * half), White);
+                break;
+            }
+            case TransitionKind.EliteBand:
+            {
+                // Between the two lines dx / cx + dy / cy = ±2·closed, each running up and to the right
+                var along = new Vector2(cx, -cy) * 3f;
+                var aside = new Vector2(closed * 2.002f * cx, 0f);
+                Quad(middle - aside - along, middle - aside + along, middle + aside + along, middle + aside - along, White);
                 break;
             }
         }

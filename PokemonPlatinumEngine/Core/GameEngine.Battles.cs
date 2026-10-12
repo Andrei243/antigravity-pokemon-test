@@ -333,7 +333,7 @@ public partial class GameEngine
         if (partner != null)
             partner.Look ??= (this.partner is { } beside && beside.TrainerId == partner.Id ? beside.Who : currentMap.Everyone.FirstOrDefault(n => n.TrainerData == partner))?.NpcType;
         CharacterModels.Preload(trainers.Concat(partner == null ? Enumerable.Empty<Trainer>() : new[] { partner })
-            .Select(t => CharacterStyles.Default.InBattle(t.TrainerClass, t.Look is { } look ? PlayerIdentity.CharacterFor(look) : null)));
+            .Select(t => CharacterStyles.Default.InBattle(t)));
 
         eyeThemePlaying = false;
         AudioManager.PlayMusic(MusicDirector.BattleRole(trainers.Select(t => t.TrainerClass)), immediate: true);
@@ -373,6 +373,11 @@ public partial class GameEngine
             battleTrainers.Add(trainerNpc);
             if (secondNpc?.TrainerData != null) battleTrainers.Add(secondNpc);
         }, SceneTransition.ForBattle(meeting));
+        // A Gym Leader, one of the Elite Four and the Champion are met on a band with their portrait (plan 09 · L15):
+        // of the look the battle itself will draw them in, and beside the player's own in the League's. The rigs
+        // are asked for above; the portraits are rendered as the closing's frames find them ready
+        if (SceneTransition.BandFor(meeting) is { } whose)
+            band.Begin(whose, CharacterStyles.Default.InBattle(trainer), transitionKind == TransitionKind.EliteBand ? PlayerIdentity.Character : null);
     }
 
     /// <summary>Whether the move cards say how a move will do: the option, with Rules following the game's own rules (plan 12 · Q10).</summary>
