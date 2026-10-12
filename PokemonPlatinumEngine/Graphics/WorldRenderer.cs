@@ -499,6 +499,8 @@ public sealed class WorldRenderer
             darkAt = new Vector2(at.X / 1920f, (at.Y - 0.5f * (south.Y - at.Y)) / 1080f);
             darkTile = new Vector2((east.X - at.X) / 1920f, (south.Y - at.Y) / 1080f);
         }
+        // Where the player's middle is on the picture, for whatever closes on them (a cave's way into a battle)
+        PlayerOnPicture = player != null ? OnPicture(new Vector3(px, groundY, pz), camera, out _) : new Vector2(0.5f, 0.5f);
 
         // In a dark room of the Hearthome Gym, where each light is on the picture: the player's and every trainer's
         gymLights.Clear();
@@ -633,16 +635,24 @@ public sealed class WorldRenderer
     /// Composites the last rendered frame into the current target with tilt-shift blur and grading, and draws
     /// the weather over it.
     /// </summary>
-    public void DrawToScreen(int destWidth, int destHeight)
+    /// <param name="wavers">A ripple from outside the field's own life (the way into a battle on water, plan 09 · L13): the further-reaching of it and a scene's own plays.</param>
+    public void DrawToScreen(int destWidth, int destHeight, SceneRipple wavers = default)
     {
         // A scene's ripple is read by the composite's own pass, and a burst's flash whitens everything over it
-        context.Composite(new Rectangle(0, 0, destWidth, destHeight), Life.Ripple);
+        var ripple = Life.Ripple;
+        context.Composite(new Rectangle(0, 0, destWidth, destHeight), wavers.Reach > ripple.Reach ? wavers : ripple);
         DrawWeather(destWidth, destHeight);
         if (dark) DrawDarkness(destWidth, destHeight);
         if (gymFog > 0f) DrawGymFog(destWidth, destHeight);
         if (Life.Flash is > 0f and var flash)
             Raylib.DrawRectangle(0, 0, destWidth, destHeight, new Color(255, 255, 255, (int)(flash * 255f)));
     }
+
+    /// <summary>
+    /// Where the player's middle was on the picture the last time the field was rendered, in shares of its width and
+    /// height: the picture's own middle where nobody is followed.
+    /// </summary>
+    public Vector2 PlayerOnPicture { get; private set; } = new(0.5f, 0.5f);
 
     private bool dark;
     private Vector2 darkAt, darkTile;

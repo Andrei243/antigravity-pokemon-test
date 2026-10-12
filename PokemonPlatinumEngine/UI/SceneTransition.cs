@@ -1,6 +1,7 @@
 using System;
 using System.Numerics;
 using Raylib_cs;
+using PokemonPlatinumEngine.Battle;
 
 namespace PokemonPlatinumEngine.UI;
 
@@ -18,15 +19,44 @@ public enum TransitionKind
     /// <summary>A trainer whose first Pokémon is of a higher level: shutters from the sides and from above and below.</summary>
     TrainerStrong,
     /// <summary>Into a battle with a Gym Leader: two flashes, diamonds growing from a grid.</summary>
-    Leader
+    Leader,
+
+    // The ways by place and by whom (plan 09 · L13; style guide, "Into battle", "By place and by whom")
+
+    /// <summary>A wild Pokémon met on water: the picture wavers and sinks into a dark that rises from its foot.</summary>
+    WildWater,
+    /// <summary>A stronger one on water: it wavers further, and the dark comes from the foot and the head at once.</summary>
+    WildWaterStrong,
+    /// <summary>A wild Pokémon in a cave: the dark closes in a ring on the player.</summary>
+    WildCave,
+    /// <summary>A stronger one in a cave: the ring is toothed.</summary>
+    WildCaveStrong,
+    /// <summary>A trainer on water: a Poké Ball spins in at the middle and the dark wells out from under it.</summary>
+    TrainerWater,
+    /// <summary>A stronger trainer on water: three balls rise from the foot, each drawing a third of the picture dark behind it.</summary>
+    TrainerWaterStrong,
+    /// <summary>A trainer in a cave: a ball falls to the middle and the dark shuts on it from above and below.</summary>
+    TrainerCave,
+    /// <summary>A stronger trainer in a cave: three balls fall, each tearing a strip of dark that widens.</summary>
+    TrainerCaveStrong,
+    /// <summary>Two at once: four pieces slide in from the corners.</summary>
+    Double,
+    /// <summary>The Battle Frontier, a Frontier Brain, a link battle: the Frontier's mark comes up and a five-bladed iris closes on it.</summary>
+    Frontier,
+    /// <summary>A Team Galactic grunt: six shards of the Galactic mark fly in, each with a sixth of the dark behind it.</summary>
+    Grunt,
+    /// <summary>A Commander or the boss: the Galactic mark rises out of the dimming picture and its dark core swallows it.</summary>
+    GalacticBoss
 }
 
 /// <summary>
 /// The shapes that close over one scene and open on the next (style guide, "Into battle"). What is covered at
 /// any moment is a function of the kind, the phase and the point (<see cref="Covers"/>), which is what tests
-/// check; <see cref="Draw"/> draws the same shapes.
+/// check; <see cref="Draw"/> draws the same shapes. The ways by place and by whom (plan 09 · L13) are in
+/// <c>SceneTransition.Ways.cs</c>: their shapes, and what rides over the picture as they close
+/// (<see cref="Pieces"/>, <see cref="Ripple"/>, <see cref="Veil"/>).
 /// </summary>
-public static class SceneTransition
+public static partial class SceneTransition
 {
     /// <summary>The dark a scene closes to: never pure black.</summary>
     public static readonly Color Dark = new(14, 14, 22, 255);
@@ -39,22 +69,60 @@ public static class SceneTransition
     private const float ShardGrows = 0.3f;
 
     /// <summary>
-    /// The way into a battle, as Platinum picks it: by who is met, and by whether the first Pokémon they send
-    /// out is of a higher level than the player's first.
+    /// The way into a battle, as Platinum picks it (<c>EncEffects_CutInEffect</c> of <c>src/enc_effects.c</c>): by
+    /// whom the meeting is with (<see cref="BattleMeeting.Row"/>, the original's <c>EncEffects_GetEffectPair</c>),
+    /// and for everyone with no way of their own by the ground and by whether the first Pokémon they send out is of
+    /// a higher level than the player's first (<see cref="Local"/>). The rows with a way of their own are
+    /// <c>sEncEffectsTable</c>'s: Team Galactic's two, the Frontier's for its battles, its Brains and a link battle,
+    /// and the double's for any two at once. A Gym Leader keeps the diamonds, and the Elite Four and the Champion
+    /// are met the trainer's way, until their bands are built (plan 09 · L15).
     /// </summary>
-    public static TransitionKind ForBattle(bool trainer, bool leader, int theirLevel, int ownLevel)
+    public static TransitionKind ForBattle(BattleMeeting meeting) => meeting.Row switch
     {
-        if (leader) return TransitionKind.Leader;
-        bool stronger = theirLevel > ownLevel;
-        if (trainer) return stronger ? TransitionKind.TrainerStrong : TransitionKind.Trainer;
-        return stronger ? TransitionKind.WildStrong : TransitionKind.Wild;
-    }
+        MeetingRow.Leader => TransitionKind.Leader,
+        MeetingRow.GalacticGrunt => TransitionKind.Grunt,
+        MeetingRow.GalacticCommander or MeetingRow.GalacticBoss => TransitionKind.GalacticBoss,
+        MeetingRow.Frontier or MeetingRow.Link or MeetingRow.FrontierBrain => TransitionKind.Frontier,
+        MeetingRow.DoubleBattle or MeetingRow.DoubleWild or MeetingRow.DoubleLeader => TransitionKind.Double,
+        // ENCEFF_CUTIN_USE_LOCAL: the rival, any other trainer, a wild Pokémon
+        _ => Local(meeting)
+    };
 
-    /// <summary>How long a kind takes to close over the scene it leaves.</summary>
-    public static float OutSeconds(TransitionKind kind) => kind == TransitionKind.Fade ? FadeSeconds : CloseSeconds;
+    /// <summary>
+    /// The way in by place (<c>CutInEffects_ForBattle</c> of <c>src/overlay005/encounter_effect.c</c>): a trainer's
+    /// or a wild Pokémon's, on water, in a cave or on any other ground, and the stronger one of each when their
+    /// first Pokémon is of a higher level than the player's first.
+    /// </summary>
+    public static TransitionKind Local(BattleMeeting meeting) => (meeting.WithTrainers, meeting.Ground, meeting.Stronger) switch
+    {
+        (false, MeetingGround.Grass, false) => TransitionKind.Wild,
+        (false, MeetingGround.Grass, true) => TransitionKind.WildStrong,
+        (false, MeetingGround.Water, false) => TransitionKind.WildWater,
+        (false, MeetingGround.Water, true) => TransitionKind.WildWaterStrong,
+        (false, MeetingGround.Cave, false) => TransitionKind.WildCave,
+        (false, MeetingGround.Cave, true) => TransitionKind.WildCaveStrong,
+        (true, MeetingGround.Grass, false) => TransitionKind.Trainer,
+        (true, MeetingGround.Grass, true) => TransitionKind.TrainerStrong,
+        (true, MeetingGround.Water, false) => TransitionKind.TrainerWater,
+        (true, MeetingGround.Water, true) => TransitionKind.TrainerWaterStrong,
+        (true, MeetingGround.Cave, false) => TransitionKind.TrainerCave,
+        _ => TransitionKind.TrainerCaveStrong
+    };
+
+    /// <summary>
+    /// How long a kind takes to close over the scene it leaves: the flashes, its lead and the dark's closing. The
+    /// first five ways into a battle take <see cref="CloseSeconds"/>; the ways by place and by whom about as long
+    /// as the original's do (<see cref="Pace"/>).
+    /// </summary>
+    public static float OutSeconds(TransitionKind kind) => kind == TransitionKind.Fade ? FadeSeconds
+        : kind <= TransitionKind.Leader ? CloseSeconds
+        : FlashSeconds + Pace(kind).Lead + Pace(kind).Shut;
 
     /// <summary>How long it takes to open on the scene it brings.</summary>
     public static float InSeconds(TransitionKind kind) => kind == TransitionKind.Fade ? FadeSeconds : OpenSeconds;
+
+    /// <summary>How long a way into a battle leads in after its flashes, before anything is dark: a ball spinning in, a mark coming up, the picture wavering.</summary>
+    public static float LeadSeconds(TransitionKind kind) => kind <= TransitionKind.Leader ? 0f : Pace(kind).Lead;
 
     /// <summary>
     /// How white the screen is <paramref name="seconds"/> into closing: two flashes in the first quarter of a
@@ -72,12 +140,16 @@ public static class SceneTransition
     {
         if (kind == TransitionKind.Fade) return Math.Clamp(closing ? seconds / FadeSeconds : 1f - seconds / FadeSeconds, 0f, 1f);
         if (!closing) return Math.Clamp(1f - seconds / OpenSeconds, 0f, 1f);
-        // The shapes wait for the flashes, then close with an ease
-        float t = Math.Clamp((seconds - FlashSeconds) / (CloseSeconds - FlashSeconds), 0f, 1f);
-        return t * t * (3f - 2f * t);
+        // The shapes wait for the flashes and for the way's lead, then close: with an ease, or at an even pace where
+        // several things come one after another
+        float from = FlashSeconds + LeadSeconds(kind), until = OutSeconds(kind);
+        if (seconds >= until) return 1f;
+        float t = Math.Clamp((seconds - from) / (until - from), 0f, 1f);
+        return EvenPace(kind) ? t : t * t * (3f - 2f * t);
     }
 
-    private static bool OpensAsIris(TransitionKind kind) => kind is TransitionKind.Wild or TransitionKind.WildStrong;
+    private static bool OpensAsIris(TransitionKind kind) => kind is TransitionKind.Wild or TransitionKind.WildStrong
+        or TransitionKind.WildWater or TransitionKind.WildWaterStrong or TransitionKind.WildCave or TransitionKind.WildCaveStrong;
 
     private static float Noise(int a, int b, int salt)
     {
@@ -127,8 +199,12 @@ public static class SceneTransition
         return !(negative && positive);
     }
 
-    /// <summary>Whether a point of a screen of the given size is under the dark, the shapes being <paramref name="closed"/> this far.</summary>
-    public static bool Covers(TransitionKind kind, bool closing, float closed, float x, float y, float width, float height)
+    /// <summary>
+    /// Whether a point of a screen of the given size is under the dark, the shapes being <paramref name="closed"/>
+    /// this far. <paramref name="focus"/> is where on that screen the player stands, for the ways that close on
+    /// them (a cave's ring); the screen's middle when none is given.
+    /// </summary>
+    public static bool Covers(TransitionKind kind, bool closing, float closed, float x, float y, float width, float height, Vector2? focus = null)
     {
         if (closed <= 0f) return false;
         if (closed >= 1f) return true;
@@ -178,12 +254,16 @@ public static class SceneTransition
                 return dx + dy < closed * 2.05f;
             }
             default:
-                return false;
+                // The ways by place and by whom; only as the field closes does a ring close on the player
+                return CoversByWay(kind, closed, x, y, width, height, closing ? focus : null);
         }
     }
 
-    /// <summary>Draws the transition over a screen of the given size, <paramref name="seconds"/> into its closing or opening half.</summary>
-    public static void Draw(TransitionKind kind, bool closing, float seconds, int width, int height)
+    /// <summary>
+    /// Draws the transition over a screen of the given size, <paramref name="seconds"/> into its closing or opening
+    /// half. <paramref name="focus"/> is where on that screen the player stands (<see cref="Covers"/>).
+    /// </summary>
+    public static void Draw(TransitionKind kind, bool closing, float seconds, int width, int height, Vector2? focus = null)
     {
         float closed = Closed(kind, closing, seconds);
         if (kind == TransitionKind.Fade)
@@ -194,6 +274,12 @@ public static class SceneTransition
 
         if (closing && Flash(kind, seconds) is > 0f and var white)
             Raylib.DrawRectangle(0, 0, width, height, new Color(255, 255, 255, (int)(white * 255)));
+        // A way by place or by whom has more to show as the field closes than its dark: what leads in and rides over it
+        if (closing && kind > TransitionKind.Leader)
+        {
+            DrawWay(kind, seconds, closed, width, height, focus);
+            return;
+        }
         if (closed <= 0f) return;
         if (closed >= 1f)
         {
@@ -258,6 +344,10 @@ public static class SceneTransition
                     }
                 break;
             }
+            default:
+                // A way by place or by whom, opening on the battle: its dark alone, in reverse
+                DrawDark(kind, closed, width, height, null);
+                break;
         }
     }
 }

@@ -2230,7 +2230,8 @@ public partial class GameEngine
                 if (showBattle) DrawBattle();
                 else if (showWorld)
                 {
-                    world.DrawToScreen(VirtualWidth, VirtualHeight);
+                    // On water the field wavers under the way into a battle as it closes (plan 09 · L13)
+                    world.DrawToScreen(VirtualWidth, VirtualHeight, SceneTransition.Ripple(transitionKind, isFadingOut, transitionTimer));
                     DrawScriptFade();
                     DrawLetterbox();
                 }
@@ -2245,9 +2246,10 @@ public partial class GameEngine
 
         toast.Draw(VirtualWidth);
 
-        // The scene closing, or the next one opening
+        // The scene closing, or the next one opening; a cave's ring closes on the player, wherever the field shows them
         if (shown == GameState.Transition)
-            SceneTransition.Draw(transitionKind, isFadingOut, transitionTimer, VirtualWidth, VirtualHeight);
+            SceneTransition.Draw(transitionKind, isFadingOut, transitionTimer, VirtualWidth, VirtualHeight,
+                isFadingOut && showWorld ? world.PlayerOnPicture * new Vector2(VirtualWidth, VirtualHeight) : null);
 
         // The close button's question over all of it, sliding away once answered
         closePrompt.Draw(VirtualWidth, VirtualHeight);

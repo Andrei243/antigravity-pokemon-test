@@ -233,16 +233,15 @@ internal static partial class BuildingArt
         c.Rect(x0 + 26, y0 + 14, 1, 2, Iron.Base);
     }
 
-    /// <summary>Team Galactic's mark as this game draws it: a yellow lozenge with a dark core, <paramref name="size"/> across.</summary>
-    private static void GalacticMark(PixelCanvas c, int cx, int y, int size, Color yellow)
+    /// <summary>
+    /// Team Galactic's mark as this game draws it (<see cref="GalacticMark"/>), <paramref name="size"/> across:
+    /// over a door it is small enough that only the yellow lozenge and its dark core are left. The lozenge is lit
+    /// after dark; its core is not.
+    /// </summary>
+    private static void GalacticSign(PixelCanvas c, int cx, int y, int size, Color yellow)
     {
         int half = size / 2;
-        for (int py = 0; py < size; py++)
-        {
-            int span = half - Math.Abs(py - half);
-            c.Rect(cx - span, y + py, Math.Max(1, span * 2), 1, yellow);
-        }
-        c.Rect(cx - 2, y + half - 2, 4, 4, Ink);
+        GalacticMark.Paint(c, cx, y, size, Ink, yellow);
         Pix.Lit(c, cx - half, y, size, size, ArtSheet.PublicLight);
         c.Rect(cx - 2, y + half - 2, 4, 4, Ink);
     }
