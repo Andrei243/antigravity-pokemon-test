@@ -301,6 +301,7 @@ partial class Harness
             Frames(60);
         }
         File.Delete("savegame.json");
+        File.Delete(SaveManager.BackupOf("savegame.json"));
 
         // ---- waking at home, where the game goes on
         ReadTo(null, 300);

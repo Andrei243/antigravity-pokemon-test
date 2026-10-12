@@ -12,9 +12,29 @@ namespace PokemonPlatinumEngine.UI;
 
 /// <summary>
 /// Where the opening is: the notice, the fly-over shots, Giratina's reveal, the idle title, then the menu and the
-/// two questions a new game asks (whether to leave a save behind, and whose rules to play by).
+/// two questions a new game asks (whether to leave a save behind, and whose rules to play by). Between the title and
+/// the menu, <see cref="Warning"/> tells what the player must know before choosing (a save that couldn't be read,
+/// plan 12 · Q1), one <see cref="TitleNotice"/> at a time.
 /// </summary>
-public enum TitlePhase { Notice, Journey, Reveal, Idle, Menu, ConfirmNewGame, ChooseRules, Leaving }
+public enum TitlePhase { Notice, Journey, Reveal, Idle, Menu, ConfirmNewGame, ChooseRules, Leaving, Warning }
+
+/// <summary>
+/// Something the title tells the player before its menu opens, as Platinum tells of a damaged save (plan 12 · Q1):
+/// a heading and a line or two of our own, put away with the A or the B button. A save's is
+/// <see cref="ForSave"/>; plan 16 · T3's word after a crash is another of the same kind.
+/// </summary>
+public sealed record TitleNotice(string Heading, string Body)
+{
+    /// <summary>What the title says of a save as it was read: nothing when it was whole or there was none.</summary>
+    public static TitleNotice? ForSave(SaveLoad load) => load switch
+    {
+        SaveLoad.Recovered => new("The last save couldn't be read",
+            "It was damaged, perhaps by the game closing while it was being written. The save made before it has been loaded instead."),
+        SaveLoad.Damaged => new("The save couldn't be read",
+            "The save and the one kept before it are both damaged, so there is no game to continue. A new game can still be started."),
+        _ => null
+    };
+}
 
 /// <summary>What the player picked on the title menu.</summary>
 public enum TitleChoice { None, Continue, NewGame, Options, Quit }
@@ -38,6 +58,7 @@ public sealed class TitleScreen
 
     private readonly SaveData? save;
     private readonly List<TitleChoice> entries = new();
+    private readonly Queue<TitleNotice> notices = new();
     private TitleChoice chosen = TitleChoice.None;
     private bool optionsRequested;
     private float phaseTime, totalTime, menuBlend, skipFlash;
@@ -58,9 +79,15 @@ public sealed class TitleScreen
     public bool HasSave => save != null;
     public IReadOnlyList<TitleChoice> Entries => entries;
 
-    public TitleScreen(SaveData? save)
+    /// <summary>The notice being shown in <see cref="TitlePhase.Warning"/>, or the next to be shown; null when none is left.</summary>
+    public TitleNotice? Notice => notices.Count > 0 ? notices.Peek() : null;
+
+    /// <param name="notices">What to tell before the menu opens (null entries are passed over).</param>
+    public TitleScreen(SaveData? save, params TitleNotice?[] notices)
     {
         this.save = save;
+        foreach (var notice in notices)
+            if (notice != null) this.notices.Enqueue(notice);
         if (save != null) entries.Add(TitleChoice.Continue);
         entries.Add(TitleChoice.NewGame);
         entries.Add(TitleChoice.Options);
@@ -119,11 +146,15 @@ public sealed class TitleScreen
                 skipFlash = 0.4f;
                 break;
             case TitlePhase.Idle:
-                Enter(TitlePhase.Menu);
+                // What the player must know comes before the menu, as Platinum tells of a damaged save
+                Enter(notices.Count > 0 ? TitlePhase.Warning : TitlePhase.Menu);
                 SelectedIndex = 0;
                 AudioManager.PlaySound("select");
                 // As in the original, Giratina answers the button
                 if (PokemonDatabase.Get("Giratina") is { } giratina) AudioManager.PlayCry(giratina);
+                break;
+            case TitlePhase.Warning:
+                PutNoticeAway();
                 break;
             case TitlePhase.Menu:
                 AudioManager.PlaySound("select");
@@ -158,9 +189,22 @@ public sealed class TitleScreen
         Enter(TitlePhase.ChooseRules);
     }
 
-    /// <summary>The B button: backs out of a prompt, then out of the menu.</summary>
+    /// <summary>A notice read: the next one, or the menu once none is left.</summary>
+    private void PutNoticeAway()
+    {
+        AudioManager.PlaySound("select");
+        if (notices.Count > 0) notices.Dequeue();
+        Enter(notices.Count > 0 ? TitlePhase.Warning : TitlePhase.Menu);
+    }
+
+    /// <summary>The B button: backs out of a prompt, then out of the menu; a notice is put away as with A.</summary>
     public void PressCancel()
     {
+        if (Phase == TitlePhase.Warning)
+        {
+            PutNoticeAway();
+            return;
+        }
         if (Phase is TitlePhase.ConfirmNewGame or TitlePhase.ChooseRules) Enter(TitlePhase.Menu);
         else if (Phase == TitlePhase.Menu) Enter(TitlePhase.Idle);
         else return;
@@ -282,6 +326,8 @@ public sealed class TitleScreen
         if (menuBlend > 0.01f) DrawMenu(sw, ease);
         if (Phase == TitlePhase.ConfirmNewGame) DrawConfirm(sw, sh);
         if (Phase == TitlePhase.ChooseRules) DrawRules(sw, sh);
+        if (Phase == TitlePhase.Warning && Notice is { } notice)
+            ModernUi.Notice(sw, sh, notice.Heading, notice.Body, "OK", Smooth(0f, 0.18f, phaseTime));
 
         const string credit = "A fan-made project, not affiliated with Nintendo, Creatures or GAME FREAK.";
         float cw = UiFonts.Measure(credit, 20, UiWeight.Bold);

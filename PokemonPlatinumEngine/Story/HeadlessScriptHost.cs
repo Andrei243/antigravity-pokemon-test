@@ -274,21 +274,49 @@ public sealed class HeadlessScriptHost : IScriptHost
         Map?.ApplyPresence(Story.Has);
     }
 
-    public void Walk(NPC? who, IReadOnlyList<Direction> steps, bool fast)
+    public void Walk(NPC? who, IReadOnlyList<ScriptStep> steps, bool fast)
     {
         Shown("walk someone");
         if (Pauses) Walking = true;
         var (x, y) = TileOf(who);
+        Direction? facing = null;
         foreach (var step in steps)
         {
-            var (dx, dy) = FieldMovement.Delta(step);
+            // A step on the spot stays on the tile, and a step back keeps the facing (plan 11 · C11)
+            if (step.Turns) facing = step.Way;
+            if (!step.Moves) continue;
+            var (dx, dy) = FieldMovement.Delta(step.Way);
             x += dx;
             y += dy;
             Check(who, x, y, "walks");
         }
         if (who == null) PlayerTile = (x, y);
         else (who.GridX, who.GridY) = (x, y);
-        if (steps.Count > 0) Face(who, steps[^1]);
+        if (facing is { } way) Face(who, way);
+        if (steps.Any(s => s.Kind != ScriptStepKind.Walk))
+            Log.Add($"walk {who?.Name ?? "player"} " + string.Join(" ", steps.Select(s => s.Kind switch
+            {
+                ScriptStepKind.OnSpot => "onspot " + s.Way.ToString().ToLowerInvariant(),
+                ScriptStepKind.Back => "back " + s.Way.ToString().ToLowerInvariant(),
+                _ => s.Way.ToString().ToLowerInvariant()
+            })));
+    }
+
+    /// <summary>The face a script has the player hold (plan 11 · C11); someone of the map holds theirs in <see cref="NPC.Mood"/>.</summary>
+    public Mood PlayerMood { get; private set; }
+
+    public void Act(NPC? who, Gesture gesture, int times)
+    {
+        Shown("make someone act");
+        Log.Add($"act {who?.Name ?? "player"} {gesture}" + (times > 1 ? $" {times}" : ""));
+    }
+
+    public void Mood(NPC? who, Mood mood)
+    {
+        Shown("give someone a face");
+        if (who == null) PlayerMood = mood;
+        else who.Mood = mood;
+        Log.Add($"mood {who?.Name ?? "player"} {mood}");
     }
 
     private void Check(NPC? who, int x, int y, string does)

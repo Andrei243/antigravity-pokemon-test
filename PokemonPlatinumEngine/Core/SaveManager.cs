@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Text.Json;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
@@ -14,6 +15,14 @@ public sealed record SafariSave(int Balls, int Steps, int Caught = 0);
 
 public class SaveData
 {
+    /// <summary>
+    /// The file's own check (plan 12 · Q1): FNV-1a of the file as written, this field read as <c>null</c>
+    /// (<see cref="SaveManager.Seal"/>). It is the first thing in the file, and a file without one (every save from
+    /// before) is taken on trust.
+    /// </summary>
+    [System.Text.Json.Serialization.JsonPropertyOrder(-1)]
+    public string? Checksum { get; set; }
+
     /// <summary>The <see cref="WorldVersion"/> from which Sinnoh's overworld is one map made from the imported world (plan 01 · M2).</summary>
     public const int ImportedWorld = 1;
 
@@ -564,44 +573,226 @@ public class SavedItemData
     public int Quantity { get; set; } = 5;
 }
 
+/// <summary>
+/// What became of a save as it was read (plan 12 · Q1): there was none, it was whole, it was damaged and the one
+/// before it was taken from the backup, or it and its backup were both damaged and nothing could be loaded.
+/// </summary>
+public enum SaveLoad { Ok, None, Recovered, Damaged }
+
+/// <summary>
+/// Where the game keeps its save, and how it writes and reads it so that nothing but the save being written can be
+/// lost (plan 12 · Q1). A save is written to <c>savegame.json.tmp</c> and moved over <c>savegame.json</c>, which is a
+/// rename on every platform, after the old file, if it reads whole, has been copied to <c>savegame.bak</c>; it carries
+/// its own <see cref="SaveData.Checksum"/>. Reading it says what happened (<see cref="SaveLoad"/>): a file that is cut
+/// short, won't parse or fails its checksum gives way to the backup. No drawing, no input.
+/// </summary>
 public static class SaveManager
 {
-    private static readonly string SaveFilePath = "savegame.json";
+    /// <summary>The save's file in the working directory (plan 12 · Q2 moves it to <c>SavePaths</c>).</summary>
+    public const string FileName = "savegame.json";
 
-    public static bool HasSaveFile() => File.Exists(SaveFilePath);
+    private static readonly JsonSerializerOptions Options = new() { WriteIndented = true };
 
-    /// <summary>A save as the game writes it to <c>savegame.json</c> (the harness's <c>saves</c> mode writes its own the same way: plan 24 · X3).</summary>
-    public static string Write(SaveData data) => JsonSerializer.Serialize(data, new JsonSerializerOptions { WriteIndented = true });
+    /// <summary>The backup kept beside a save: <c>savegame.json</c>'s is <c>savegame.bak</c>.</summary>
+    public static string BackupOf(string path) => Path.ChangeExtension(path, ".bak");
 
-    /// <summary>A save read as the game reads <c>savegame.json</c> (the tests read the saves of every version the same way: plan 24 · X3).</summary>
+    /// <summary>The file a save is written to before it takes the save's place: <c>savegame.json.tmp</c>.</summary>
+    public static string TempOf(string path) => path + ".tmp";
+
+    public static bool HasSaveFile() => File.Exists(FileName) || File.Exists(BackupOf(FileName));
+
+    /// <summary>
+    /// A save as the game writes it to <c>savegame.json</c>, its checksum in it (the harness's <c>saves</c> mode writes
+    /// its own the same way: plan 24 · X3). The data's own <see cref="SaveData.Checksum"/> is left as it was.
+    /// </summary>
+    public static string Write(SaveData data)
+    {
+        string? kept = data.Checksum;
+        data.Checksum = null;
+        try { return Seal(JsonSerializer.Serialize(data, Options)); }
+        finally { data.Checksum = kept; }
+    }
+
+    /// <summary>
+    /// A save read as the game reads <c>savegame.json</c>, with no check of its checksum (the tests read the saves of
+    /// every version the same way: plan 24 · X3). Throws on a file that isn't JSON.
+    /// </summary>
     public static SaveData? Read(string json) => JsonSerializer.Deserialize<SaveData>(json);
 
-    public static bool SaveGame(SaveData data)
+    // ------------------------------------------------------------------ the checksum
+
+    private const ulong FnvOffset = 14695981039346656037UL, FnvPrime = 1099511628211UL;
+
+    /// <summary>
+    /// FNV-1a, 64 bits, of the file as it is with its checksum read as <c>null</c>. Carriage returns are passed over,
+    /// so a file whose line endings a checkout has changed still checks.
+    /// </summary>
+    private static string ChecksumOf(byte[] utf8, int start, int length)
+    {
+        ulong hash = FnvOffset;
+        hash = Fnv(utf8.AsSpan(0, start), hash);
+        hash = Fnv("null"u8, hash);
+        hash = Fnv(utf8.AsSpan(start + length), hash);
+        return hash.ToString("x16");
+    }
+
+    private static ulong Fnv(ReadOnlySpan<byte> bytes, ulong hash)
+    {
+        foreach (byte b in bytes)
+        {
+            if (b == (byte)'\r') continue;
+            hash ^= b;
+            hash *= FnvPrime;
+        }
+        return hash;
+    }
+
+    /// <summary>
+    /// Where the value of the file's top-level <c>Checksum</c> stands in its bytes, and what it is (null for
+    /// <c>null</c>). False when the file has none; throws on a file that isn't JSON.
+    /// </summary>
+    private static bool FindChecksum(byte[] utf8, out int start, out int length, out string? value)
+    {
+        start = length = 0;
+        value = null;
+        var reader = new Utf8JsonReader(utf8);
+        if (!reader.Read() || reader.TokenType != JsonTokenType.StartObject) return false;
+        while (reader.Read() && reader.TokenType == JsonTokenType.PropertyName)
+        {
+            bool mine = reader.ValueTextEquals("Checksum");
+            reader.Read();
+            if (!mine)
+            {
+                reader.Skip();
+                continue;
+            }
+            start = (int)reader.TokenStartIndex;
+            switch (reader.TokenType)
+            {
+                case JsonTokenType.Null:
+                    length = 4;
+                    return true;
+                case JsonTokenType.String:
+                    // The quotes are the value's too
+                    if (utf8[start] != (byte)'"') start--;
+                    length = reader.ValueSpan.Length + 2;
+                    value = reader.GetString() ?? "";
+                    return true;
+                default:
+                    // Something else where the checksum should be: the file was changed by hand
+                    length = reader.ValueSpan.Length;
+                    value = "";
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    /// <summary>Writes a file's checksum into it, where it says <c>null</c>.</summary>
+    public static string Seal(string json)
+    {
+        byte[] utf8 = Encoding.UTF8.GetBytes(json);
+        if (!FindChecksum(utf8, out int start, out int length, out _)) return json;
+        string sum = ChecksumOf(utf8, start, length);
+        var sealedBytes = new byte[utf8.Length - length + sum.Length + 2];
+        utf8.AsSpan(0, start).CopyTo(sealedBytes);
+        sealedBytes[start] = (byte)'"';
+        Encoding.ASCII.GetBytes(sum).CopyTo(sealedBytes, start + 1);
+        sealedBytes[start + 1 + sum.Length] = (byte)'"';
+        utf8.AsSpan(start + length).CopyTo(sealedBytes.AsSpan(start + sum.Length + 2));
+        return Encoding.UTF8.GetString(sealedBytes);
+    }
+
+    /// <summary>
+    /// Whether a file is whole: it is JSON, and its checksum, where it has one, is the file's. A file without one (a
+    /// save from before) is whole when it parses.
+    /// </summary>
+    public static bool Intact(string json)
     {
         try
         {
-            string json = Write(data);
-            File.WriteAllText(SaveFilePath, json);
-            return true;
+            byte[] utf8 = Encoding.UTF8.GetBytes(json);
+            if (!FindChecksum(utf8, out int start, out int length, out string? value))
+            {
+                using var _ = JsonDocument.Parse(utf8);
+                return true;
+            }
+            if (value != null && !string.Equals(value, ChecksumOf(utf8, start, length), StringComparison.OrdinalIgnoreCase)) return false;
+            using var whole = JsonDocument.Parse(utf8);
+            return whole.RootElement.ValueKind == JsonValueKind.Object;
         }
-        catch
+        catch (Exception e) when (e is JsonException or ArgumentException or InvalidOperationException)
         {
             return false;
         }
     }
 
-    public static SaveData? LoadGame()
+    /// <summary>A file's save if it is whole and reads as one; null otherwise.</summary>
+    private static SaveData? ReadWhole(string path)
     {
         try
         {
-            if (!HasSaveFile()) return null;
-            return Read(File.ReadAllText(SaveFilePath));
+            if (!File.Exists(path)) return null;
+            string json = File.ReadAllText(path);
+            return Intact(json) ? Read(json) : null;
         }
-        catch
+        catch (Exception)
         {
+            // Whatever is wrong with it, a file that can't be read is damaged: it must never stop the game
             return null;
         }
     }
+
+    // ------------------------------------------------------------------ writing and reading the file
+
+    public static bool SaveGame(SaveData data) => SaveGame(data, FileName);
+
+    /// <summary>
+    /// Writes a save so that a crash at any moment loses nothing but this save: to the temporary file first, flushed
+    /// to the disk, then the old save, if it is whole, copied to the backup, then the temporary file moved over the
+    /// save. A damaged save is never copied over a good backup.
+    /// </summary>
+    public static bool SaveGame(SaveData data, string path)
+    {
+        string temp = TempOf(path);
+        try
+        {
+            byte[] utf8 = Encoding.UTF8.GetBytes(Write(data));
+            using (var stream = new FileStream(temp, FileMode.Create, FileAccess.Write, FileShare.None))
+            {
+                stream.Write(utf8);
+                stream.Flush(flushToDisk: true);
+            }
+            if (File.Exists(path) && Intact(File.ReadAllText(path))) File.Copy(path, BackupOf(path), overwrite: true);
+            File.Move(temp, path, overwrite: true);
+            return true;
+        }
+        catch (Exception)
+        {
+            return false;
+        }
+    }
+
+    /// <summary>The save if one can be loaded, from the backup if the save itself is damaged; null if neither.</summary>
+    public static SaveData? LoadGame() => Load(FileName).Save;
+
+    /// <summary>
+    /// Reads the save and says what happened: <see cref="SaveLoad.None"/> with no file at all, <see cref="SaveLoad.Ok"/>
+    /// with the save whole, <see cref="SaveLoad.Recovered"/> with the save gone or damaged and the backup whole (its
+    /// game is the one returned), <see cref="SaveLoad.Damaged"/> with nothing whole to load.
+    /// </summary>
+    public static (SaveLoad Outcome, SaveData? Save) Load(string path)
+    {
+        string backup = BackupOf(path);
+        bool hasSave = File.Exists(path), hasBackup = File.Exists(backup);
+        if (!hasSave && !hasBackup) return (SaveLoad.None, null);
+        if (hasSave && ReadWhole(path) is { } save) return (SaveLoad.Ok, save);
+        if (hasBackup && ReadWhole(backup) is { } before) return (SaveLoad.Recovered, before);
+        return (SaveLoad.Damaged, null);
+    }
+
+    /// <summary>The save in the working directory, read as <see cref="Load(string)"/> reads it.</summary>
+    public static (SaveLoad Outcome, SaveData? Save) Load() => Load(FileName);
 }
 
 /// <summary>The PC's boxes in a save (plan 06 · R12): the box the PC was left on, the wallpapers unlocked, and each box's name, wallpaper and Pokémon by place.</summary>

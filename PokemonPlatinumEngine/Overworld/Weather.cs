@@ -63,6 +63,20 @@ public static class Weathers
         _ => Battle.Sim.BattleWeather.None
     };
 
+    /// <summary>
+    /// The way back (plan 25 · Y1): the field's weather a battle's comes from, whose light the battle's stage takes
+    /// under it (<see cref="Graphics.ArtLook.InBattleWeather"/>): rain as the field's rain, hail as the field's hail,
+    /// a sandstorm and fog as themselves. The harsh sun has no weather of the field's and a light of its own: clear.
+    /// </summary>
+    public static FieldWeather FromBattle(Battle.Sim.BattleWeather weather) => weather switch
+    {
+        Battle.Sim.BattleWeather.Rain => FieldWeather.Rain,
+        Battle.Sim.BattleWeather.Hail => FieldWeather.Hail,
+        Battle.Sim.BattleWeather.Sandstorm => FieldWeather.Sandstorm,
+        Battle.Sim.BattleWeather.Fog => FieldWeather.Fog,
+        _ => FieldWeather.Clear
+    };
+
     /// <summary>How much harder than a breeze the wind blows: grass and leaves sway that much more.</summary>
     public static float Wind(FieldWeather weather) => weather switch
     {

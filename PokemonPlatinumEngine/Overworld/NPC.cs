@@ -114,6 +114,39 @@ public class NPC
         BubbleTimer -= dt;
         BubbleAge += dt;
     }
+    /// <summary>The gesture a script has them play (plan 11 · C11), null when none is under way.</summary>
+    public Gesture? Gesture { get; private set; }
+
+    /// <summary>Seconds since the gesture began, over every round of it.</summary>
+    public float GestureAge => gestureAge;
+
+    /// <summary>How many times in a row the gesture plays.</summary>
+    public int GestureTimes { get; private set; }
+
+    /// <summary>The face a script has them hold (plan 11 · C11) until it changes or the place is come to again.</summary>
+    public Mood Mood { get; set; }
+
+    private float gestureAge;
+
+    /// <summary>Plays a gesture <paramref name="times"/> times in a row, from its start.</summary>
+    public void Act(Gesture gesture, int times = 1)
+    {
+        Gesture = gesture;
+        GestureTimes = Math.Max(1, times);
+        gestureAge = 0f;
+    }
+
+    /// <summary>Runs the gesture's clock, as <see cref="TickBubble"/> runs the bubble's.</summary>
+    public void TickGesture(float dt) => Gesture = Acting.Tick(Gesture, ref gestureAge, GestureTimes, dt);
+
+    /// <summary>Ends any gesture and lets the face go: the place has been come to again.</summary>
+    public void StopActing()
+    {
+        Gesture = null;
+        gestureAge = 0f;
+        Mood = Mood.Neutral;
+    }
+
     public bool HasBattled { get; set; } = false;
 
     /// <summary>

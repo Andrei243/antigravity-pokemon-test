@@ -103,7 +103,104 @@ partial class Harness
         party.Members.Remove(learner);
         game.State = GameState.Overworld;
 
+        WeatherAndDollMode();
         SpeakingMode();
+    }
+
+    // The weather and the doll (plan 25 · Y1): a battle in each of the five weathers at its menu (96_weather_<kind>)
+    // and at the turn's line that says it goes on, with its cue playing again (96_weather_<kind>_turn); a Substitute's
+    // doll dropped in (96_substitute_up), stepped aside for its owner's own move (96_substitute_aside) and fading in its
+    // puff as a hit breaks it (96_substitute_faded)
+    void WeatherAndDollMode()
+    {
+        BattleEngine Wild(string foe, int level, string[] foeMoves, BattleWeather sky, BattleRandom chance)
+        {
+            var enemy = new Pokemon(PokemonDatabase.Get(foe)!, level);
+            enemy.Moves.Clear();
+            foreach (var m in foeMoves) enemy.Moves.Add(new Move(MoveDatabase.Get(m)));
+            var (name, x, y) = Place("Route201", -1, -1);
+            game.Map = MapDatabase.Get(name);
+            if (x >= 0) game.Player.SetPosition(x, y, Direction.Up);
+            var b = new BattleEngine(new BattleSetup
+            {
+                PlayerParty = party, Inventory = inventory, Pokedex = pokedex, WildPokemon = new List<Pokemon> { enemy }, Random = chance,
+                Conditions = new BattleConditions { Weather = sky }
+            });
+            game.BattleRenderer.SetArena(game.Map, x, y);
+            game.Battle = b;
+            game.State = GameState.Battle;
+            return b;
+        }
+
+        // Reads on to a line, then lets what it starts play for a while
+        void ReadTo(BattleEngine b, string line, double after)
+        {
+            for (int i = 0; i < 40 && b.CurrentMessage != line && !b.IsBattleOver; i++)
+            {
+                Confirm(b);
+                Skip(0.3);
+            }
+            Skip(after);
+            Console.WriteLine($"  line: {b.CurrentMessage}, weather {b.Anim.Weather}, doll {b.Anim[BattleSide.Player].Substitute?.Up.ToString() ?? "none"}");
+        }
+
+        BattleRandom Steady(uint seed) => new BattleRandom(seed).Force(RollKind.Critical, 1).Force(RollKind.Damage, 0).Force(RollKind.Accuracy, 0);
+
+        var weathers = new (BattleWeather Sky, string Kind, string GoesOn)[]
+        {
+            (BattleWeather.Rain, "rain", "Rain continues to fall."),
+            (BattleWeather.Sun, "sun", "The sunlight is strong."),
+            (BattleWeather.Sandstorm, "sandstorm", "The sandstorm rages."),
+            (BattleWeather.Hail, "hail", "Hail continues to fall."),
+            (BattleWeather.Fog, "fog", "The fog is deep...")
+        };
+        var growler = new Pokemon(PokemonDatabase.Get("Empoleon")!, 40);
+        growler.Moves.Clear();
+        growler.Moves.Add(new Move(MoveDatabase.Get("Growl")));
+        party.Members.Insert(0, growler);
+        foreach (var (sky, kind, goesOn) in weathers)
+        {
+            party.HealAll();
+            var wb = Wild("Bidoof", 12, new[] { "Growl" }, sky, Steady(25));
+            ToMainMenu(wb);
+            Skip(1.0);
+            Shot($"96_weather_{kind}");
+            wb.SelectMove(0);
+            ReadTo(wb, goesOn, 0.5);
+            Shot($"96_weather_{kind}_turn");
+            game.State = GameState.Overworld;
+        }
+        party.Members.Remove(growler);
+
+        // The doll: up, aside for its owner's Water Gun, and broken by a Machamp's Strength
+        var blastoise = new Pokemon(PokemonDatabase.Get("Blastoise")!, 40);
+        blastoise.Moves.Clear();
+        foreach (var m in new[] { "Substitute", "Water Gun" }) blastoise.Moves.Add(new Move(MoveDatabase.Get(m)));
+        party.Members.Insert(0, blastoise);
+        var sb = Wild("Bidoof", 12, new[] { "Growl" }, BattleWeather.None, Steady(26));
+        ToMainMenu(sb);
+        sb.SelectMove(0);
+        ReadTo(sb, "Blastoise made a substitute!", BattleAnimator.SubstituteInTime + 0.4);
+        Shot("96_substitute_up");
+        for (int i = 0; i < 40 && sb.HUD.MenuState != BattleMenuState.Main && !sb.IsBattleOver; i++)
+        {
+            Confirm(sb);
+            Skip(0.3);
+        }
+        Skip(0.5);
+        sb.SelectMove(1);
+        ReadTo(sb, "Blastoise used Water Gun!", 0.3);
+        Shot("96_substitute_aside");
+        game.State = GameState.Overworld;
+
+        party.HealAll();
+        var fb = Wild("Machamp", 40, new[] { "Strength" }, BattleWeather.None, Steady(27));
+        ToMainMenu(fb);
+        fb.SelectMove(0);
+        ReadTo(fb, "The substitute took damage for Blastoise!", BattleAnimator.SubstituteOutTime * 0.4);
+        Shot("96_substitute_faded");
+        party.Members.Remove(blastoise);
+        game.State = GameState.Overworld;
     }
 
     // Trainers who speak in battle (plan 11 · C12): Roark with his own team, a Gible's Dragon Rage taking forty HP a

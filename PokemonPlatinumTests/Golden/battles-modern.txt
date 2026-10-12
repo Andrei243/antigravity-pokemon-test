@@ -65,6 +65,7 @@ log:
     ! Struck P0 Hp=62 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Gyarados used Hyper Beam!
     + Lunged P0 Category=Special
     + MoveShown Move=Hyper Beam Type=Normal Category=Special From=P0 To=E0 Missed=true Blocked=false Critical=false SuperEffective=false
@@ -75,6 +76,7 @@ log:
     ! Struck P0 Hp=6 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Gyarados used Rain Dance!
     + Lunged P0 Category=Status
     + MoveShown Move=Rain Dance Type=Water Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -132,6 +134,7 @@ log:
   say It started to rain!
     + WeatherChanged Weather=Rain
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Go! Cloyster!
     + Entered P0 Pokemon=mine#2 Cloyster FromBall=true
   say Foe Scovillain used Seed Bomb!
@@ -156,6 +159,7 @@ log:
     + MoveShown Move=Hydro Pump Type=Water Category=Special From=P1 To=E0 Missed=true Blocked=false Critical=false SuperEffective=false
   say Foe Oinkologne avoided the attack!
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Carracosta fell asleep!
     + StatusChanged P1 Status=Sleep
   say Foe Scovillain used Overheat!
@@ -470,6 +474,7 @@ log:
     + MoveShown Move=Rock Slide Type=Rock Category=Physical From=E0 To=P0 Missed=true Blocked=false Critical=false SuperEffective=false
   say Foe Gigalith's attack missed!
   say The sandstorm rages.
+    + WeatherContinues Weather=Sandstorm
   say Bonsly used Double-Edge!
     + Lunged P0 Category=Physical
     + MoveShown Move=Double-Edge Type=Normal Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -975,6 +980,7 @@ log:
     ! Struck E0 Hp=167 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Foe Wartortle lowered its head!
     + Lunged E0 Category=Status
   say Foe Wartortle's Defense rose!
@@ -985,6 +991,7 @@ log:
     ! Struck E0 Hp=164 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Foe Wartortle used Skull Bash!
     + Lunged E0 Category=Physical
     + MoveShown Move=Skull Bash Type=Normal Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -993,6 +1000,7 @@ log:
   say Croagunk fainted!
     + Fainted P0
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Go! Staraptor!
     + Entered P0 Pokemon=mine#1 Staraptor FromBall=true
   say Staraptor's Intimidate cuts Foe Wartortle's Attack!
@@ -1009,6 +1017,7 @@ log:
   say Foe Wartortle's Defense sharply rose!
     + StageChanged E0 Stat=Defense Stage=3 Rose=true
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Staraptor used Take Down!
     + Lunged P0 Category=Physical
     + MoveShown Move=Take Down Type=Normal Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -1061,6 +1070,7 @@ log:
   say It started to rain!
     + WeatherChanged Weather=Rain
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Staraptor used Take Down!
     + Lunged P0 Category=Physical
     + MoveShown Move=Take Down Type=Normal Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -1073,6 +1083,7 @@ log:
     + MoveShown Move=Hydro Pump Type=Water Category=Special From=E0 To=P0 Missed=true Blocked=false Critical=false SuperEffective=false
   say Foe Wartortle's attack missed!
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Staraptor used Close Combat!
     + Lunged P0 Category=Physical
     + MoveShown Move=Close Combat Type=Fighting Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -1087,6 +1098,7 @@ log:
   say Foe Wartortle's Defense rose!
     + StageChanged E0 Stat=Defense Stage=5 Rose=true
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Staraptor used Brave Bird!
     + Lunged P0 Category=Physical
     + MoveShown Move=Brave Bird Type=Flying Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -1102,6 +1114,7 @@ log:
   say Staraptor fainted!
     + Fainted P0
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Go! Sableye!
     + Entered P0 Pokemon=mine#2 Sableye FromBall=true
   say Sableye used Shadow Sneak!
@@ -2109,6 +2122,7 @@ log:
     ! Struck E0 Hp=182 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say The sunlight is strong.
+    + WeatherContinues Weather=Sun
   say Foe Clawitzer used Aura Sphere!
     + Lunged E0 Category=Special
     + MoveShown Move=Aura Sphere Type=Fighting Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -2117,6 +2131,7 @@ log:
   say Groudon fainted!
     + Fainted P0
   say The sunlight is strong.
+    + WeatherContinues Weather=Sun
   say Go! Pidgeot!
     + Entered P0 Pokemon=mine#2 Pidgeot FromBall=true
   say Pidgeot used Quick Attack!
@@ -2128,6 +2143,7 @@ log:
     + Lunged E0 Category=Status
     + Vanished E0
   say The sunlight is strong.
+    + WeatherContinues Weather=Sun
   say Foe Clawitzer used Bounce!
     + Reappeared E0
     + Lunged E0 Category=Physical
@@ -3212,6 +3228,7 @@ log:
   say A sandstorm kicked up!
     + WeatherChanged Weather=Sandstorm
   say The sandstorm rages.
+    + WeatherContinues Weather=Sandstorm
   say Lickitung is buffeted by the sandstorm!
     + HpChanged P0 Hp=233 Healed=false
   say Lickitung used Screech!
@@ -3226,6 +3243,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say A critical hit!
   say The sandstorm rages.
+    + WeatherContinues Weather=Sandstorm
   say Lickitung is buffeted by the sandstorm!
     + HpChanged P0 Hp=215 Healed=false
   say Lickitung used Screech!
@@ -3239,6 +3257,7 @@ log:
     ! Struck P0 Hp=213 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say The sandstorm rages.
+    + WeatherContinues Weather=Sandstorm
   say Lickitung is buffeted by the sandstorm!
     + HpChanged P0 Hp=198 Healed=false
   say Lickitung used Refresh!
@@ -3250,6 +3269,7 @@ log:
     ! Struck P0 Hp=196 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say The sandstorm rages.
+    + WeatherContinues Weather=Sandstorm
   say Lickitung is buffeted by the sandstorm!
     + HpChanged P0 Hp=181 Healed=false
   say Lickitung used Refresh!
@@ -3411,6 +3431,7 @@ log:
   say Alcremie is paralyzed! It may be unable to move!
     + StatusChanged P1 Status=Paralyze
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Whimsicott used Cotton Guard!
     + Lunged P0 Category=Status
     + MoveShown Move=Cotton Guard Type=Grass Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -3429,6 +3450,7 @@ log:
   say Alcremie fainted!
     + Fainted P1
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Go! Staryu!
     + Entered P1 Pokemon=mine#2 Staryu FromBall=true
   say Whimsicott used Cotton Guard!
@@ -3448,6 +3470,7 @@ log:
   say Foe Quagsire made Staryu drowsy!
   say Foe Klink must recharge!
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Whimsicott fell asleep!
     + StatusChanged P0 Status=Sleep
   say Whimsicott is fast asleep.
@@ -3467,6 +3490,7 @@ log:
   say Staryu fainted!
     + Fainted P1
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Whimsicott is fast asleep.
   say Foe Quagsire used Amnesia!
     + Lunged E0 Category=Status
@@ -6884,6 +6908,7 @@ log:
   say It started to rain!
     + WeatherChanged Weather=Rain
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Alcremie used Attract!
     + Lunged P0 Category=Status
     + MoveShown Move=Attract Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -6891,6 +6916,7 @@ log:
   say Foe Gastrodon is in love with Alcremie!
   say Foe Gastrodon is immobilized by love!
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Alcremie used Attract!
     + Lunged P0 Category=Status
     + MoveShown Move=Attract Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -6904,6 +6930,7 @@ log:
   say Alcremie is paralyzed! It may be unable to move!
     + StatusChanged P0 Status=Paralyze
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Foe Gastrodon is in love with Alcremie!
   say Foe Gastrodon is immobilized by love!
   say Alcremie used Attract!
@@ -6911,6 +6938,7 @@ log:
     + MoveShown Move=Attract Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say But it failed!
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Foe Gastrodon is in love with Alcremie!
   say Foe Gastrodon is immobilized by love!
   say Alcremie used Attract!
@@ -6940,6 +6968,7 @@ log:
     ! Struck E0 Hp=91 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Foe Gastrodon is in love with Alcremie!
   say Foe Gastrodon used Muddy Water!
     + Lunged E0 Category=Special
@@ -6953,6 +6982,7 @@ log:
     + MoveShown Move=Attract Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say But it failed!
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Foe Gastrodon is in love with Alcremie!
   say Foe Gastrodon is immobilized by love!
   say Alcremie used Attract!
@@ -6960,6 +6990,7 @@ log:
     + MoveShown Move=Attract Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Alcremie's attack missed!
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Foe Gastrodon is in love with Alcremie!
   say Foe Gastrodon used Body Slam!
     + Lunged E0 Category=Physical
@@ -6971,6 +7002,7 @@ log:
     + MoveShown Move=Dazzling Gleam Type=Fairy Category=Special From=P0 To=E0 Missed=true Blocked=false Critical=false SuperEffective=false
   say Alcremie's attack missed!
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Foe Gastrodon is in love with Alcremie!
   say Foe Gastrodon is immobilized by love!
   say Alcremie used Recover!
@@ -7316,6 +7348,7 @@ log:
   say Foe Snover is hit with recoil!
     + HpChanged E0 Hp=110 Healed=false
   say Hail continues to fall.
+    + WeatherContinues Weather=Hail
   say Foe Simisage is pelted by the hail!
     + HpChanged E1 Hp=102 Healed=false
   say Dondozo is pelted by the hail!
@@ -7345,6 +7378,7 @@ log:
   say Dondozo fainted!
     + Fainted P1
   say Hail continues to fall.
+    + WeatherContinues Weather=Hail
   say Foe Simisage is pelted by the hail!
     + HpChanged E1 Hp=91 Healed=false
   say Go! Munchlax!
@@ -8637,6 +8671,7 @@ log:
     + MoveShown Move=Aqua Tail Type=Water Category=Physical From=P0 To=E0 Missed=true Blocked=false Critical=false SuperEffective=false
   say Foe Wartortle avoided the attack!
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Go! Combusken!
     + Entered P1 Pokemon=mine#2 Combusken FromBall=true
   say Foe Wartortle used Hydro Pump!
@@ -8659,6 +8694,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Foe Wartortle used Hydro Pump!
     + Lunged E0 Category=Special
     + MoveShown Move=Hydro Pump Type=Water Category=Special From=E0 To=P0 Missed=true Blocked=false Critical=false SuperEffective=false
@@ -8676,6 +8712,7 @@ log:
   say Dewott's Attack sharply rose!
     + StageChanged P0 Stat=Attack Stage=2 Rose=true
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Foe Altaria used Dragon Breath!
     + Lunged E1 Category=Special
     + MoveShown Move=Dragon Breath Type=Dragon Category=Special From=E1 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -9587,6 +9624,7 @@ log:
     + MoveShown Move=Leech Seed Type=Grass Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Hippowdon was seeded!
   say The sandstorm rages.
+    + WeatherContinues Weather=Sandstorm
   say Grotle is buffeted by the sandstorm!
     + HpChanged P0 Hp=71 Healed=false
   say Foe Hippowdon's health is sapped by Leech Seed!
@@ -9606,6 +9644,7 @@ log:
     ! Struck E0 Hp=91 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say The sandstorm rages.
+    + WeatherContinues Weather=Sandstorm
   say Grotle is buffeted by the sandstorm!
     + HpChanged P0 Hp=23 Healed=false
   say Foe Hippowdon's health is sapped by Leech Seed!
@@ -9621,6 +9660,7 @@ log:
   say Grotle fainted!
     + Fainted P0
   say The sandstorm rages.
+    + WeatherContinues Weather=Sandstorm
   say Go! Dewgong!
     + Entered P0 Pokemon=mine#1 Dewgong FromBall=true
   say Dewgong used Take Down!
@@ -9636,6 +9676,7 @@ log:
     ! Struck P0 Hp=40 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say The sandstorm rages.
+    + WeatherContinues Weather=Sandstorm
   say Dewgong is buffeted by the sandstorm!
     + HpChanged P0 Hp=33 Healed=false
   say Foe Hippowdon's health is sapped by Leech Seed!
@@ -9776,6 +9817,7 @@ log:
   say It started to hail!
     + WeatherChanged Weather=Hail
   say Hail continues to fall.
+    + WeatherContinues Weather=Hail
   say Foe Luxio is pelted by the hail!
     + HpChanged E1 Hp=169 Healed=false
   say Azumarill is pelted by the hail!
@@ -9808,6 +9850,7 @@ log:
     ! Struck P1 Hp=30 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Hail continues to fall.
+    + WeatherContinues Weather=Hail
   say Lopunny is pelted by the hail!
     + HpChanged P1 Hp=25 Healed=false
   say Foe Luxio is pelted by the hail!
@@ -9832,6 +9875,7 @@ log:
     + MoveShown Move=Light Screen Type=Psychic Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Light Screen raised the foe's team's Special Defense!
   say Hail continues to fall.
+    + WeatherContinues Weather=Hail
   say Lopunny is pelted by the hail!
     + HpChanged P1 Hp=20 Healed=false
   say Foe Luxio is pelted by the hail!
@@ -10378,6 +10422,7 @@ log:
   say Metapod's Defense rose!
     + StageChanged P0 Stat=Defense Stage=1 Rose=true
   say The sandstorm rages.
+    + WeatherContinues Weather=Sandstorm
   say Venonat is buffeted by the sandstorm!
     + HpChanged P1 Hp=51 Healed=false
   say Metapod is buffeted by the sandstorm!
@@ -10405,6 +10450,7 @@ log:
   say Metapod's Defense rose!
     + StageChanged P0 Stat=Defense Stage=2 Rose=true
   say The sandstorm rages.
+    + WeatherContinues Weather=Sandstorm
   say Metapod is buffeted by the sandstorm!
     + HpChanged P0 Hp=72 Healed=false
   say Go! Bulbasaur!
@@ -10433,6 +10479,7 @@ log:
   say Metapod's Defense rose!
     + StageChanged P0 Stat=Defense Stage=3 Rose=true
   say The sandstorm rages.
+    + WeatherContinues Weather=Sandstorm
   say Metapod is buffeted by the sandstorm!
     + HpChanged P0 Hp=67 Healed=false
   say Foe Probopass used Block!
@@ -12004,6 +12051,7 @@ log:
   say It started to rain!
     + WeatherChanged Weather=Rain
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Wingull used Agility!
     + Lunged P0 Category=Status
     + MoveShown Move=Agility Type=Psychic Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -12014,6 +12062,7 @@ log:
   say Foe Squirtle's Defense rose!
     + StageChanged E0 Stat=Defense Stage=4 Rose=true
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Wingull used Air Slash!
     + Lunged P0 Category=Special
     + MoveShown Move=Air Slash Type=Flying Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -12029,6 +12078,7 @@ log:
   say Cinderace gained 152 EXP. Points!
   ExpGained Pokemon=mine#2 Cinderace Amount=152
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Ace Trainer Tester sent out Terrakion!
     + Seen Species=Terrakion
     + Entered E0 Pokemon=foe#2 Terrakion FromBall=true
@@ -12043,6 +12093,7 @@ log:
   say Foe Terrakion's Attack sharply rose!
     + StageChanged E0 Stat=Attack Stage=2 Rose=true
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Wingull used Agility!
     + Lunged P0 Category=Status
     + MoveShown Move=Agility Type=Psychic Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -13078,6 +13129,7 @@ log:
     + MoveShown Move=Mean Look Type=Normal Category=Status From=E1 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Carkol can no longer escape!
   say The sandstorm rages.
+    + WeatherContinues Weather=Sandstorm
   say Foe Patrat is buffeted by the sandstorm!
     + HpChanged E1 Hp=97 Healed=false
   say Smoliv is buffeted by the sandstorm!
@@ -13100,6 +13152,7 @@ log:
   say Foe Patrat's Sp. Atk sharply rose!
     + StageChanged E1 Stat=SpAttack Stage=2 Rose=true
   say The sandstorm rages.
+    + WeatherContinues Weather=Sandstorm
   say Foe Patrat is buffeted by the sandstorm!
     + HpChanged E1 Hp=91 Healed=false
   say Smoliv is buffeted by the sandstorm!
@@ -13123,6 +13176,7 @@ log:
     + MoveShown Move=Grassy Terrain Type=Grass Category=Status From=P1 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
   say But nothing happened!
   say The sandstorm rages.
+    + WeatherContinues Weather=Sandstorm
   say Foe Patrat is buffeted by the sandstorm!
     + HpChanged E1 Hp=85 Healed=false
   say Smoliv is buffeted by the sandstorm!
@@ -13144,6 +13198,7 @@ log:
   say Foe Tyranitar had its energy drained!
     + HpChanged P1 Hp=48 Healed=true
   say The sandstorm rages.
+    + WeatherContinues Weather=Sandstorm
   say Foe Patrat is buffeted by the sandstorm!
     + HpChanged E1 Hp=79 Healed=false
   say Smoliv is buffeted by the sandstorm!
@@ -14303,6 +14358,7 @@ log:
     ! Struck P0 Hp=38 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say The sandstorm rages.
+    + WeatherContinues Weather=Sandstorm
   say Foe Rattata is buffeted by the sandstorm!
     + HpChanged E0 Hp=17 Healed=false
   say Hippowdon used Ice Fang!

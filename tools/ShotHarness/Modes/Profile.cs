@@ -146,6 +146,18 @@ partial class Harness
             ToMainMenu(wild);
             Profile("battle, at the menu");
 
+            // The same in the rain (plan 25 · Y1): the weather's layer over the whole stage
+            var rainy = new BattleEngine(new BattleSetup
+            {
+                PlayerParty = party, Inventory = inventory, Pokedex = pokedex, WildPokemon = new List<Pokemon> { Meet("Shinx", 5) },
+                Conditions = new BattleConditions { Weather = BattleWeather.Rain }
+            });
+            game.Battle = rainy;
+            game.State = GameState.Battle;
+            ToMainMenu(rainy);
+            Skip(1.0);
+            Profile("battle in rain, at the menu");
+
             var show = new Party();
             var lead = new Pokemon(PokemonDatabase.Get("Infernape")!, 60, new Random(3));
             show.Add(lead);
