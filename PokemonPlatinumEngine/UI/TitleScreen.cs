@@ -48,6 +48,12 @@ public sealed class TitleScreen
 {
     public const float NoticeTime = 3.4f, SegmentTime = 3.6f, RevealTime = 3.2f, LeaveTime = 0.8f;
 
+    /// <summary>
+    /// How long the title waits for a button before it plays its opening again (plan 09 · L4), as Platinum's title
+    /// returns to its film: the fly-over shots and the reveal, never the notice.
+    /// </summary>
+    public const float IdleTime = 30f;
+
     internal static readonly (string Map, Vector2 From, Vector2 To, float Hour)[] Segments =
     {
         // Up Twinleaf Town's road at dawn, east along Route 201 at midday, through Sandgem Town in the evening
@@ -115,7 +121,12 @@ public sealed class TitleScreen
     {
         Phase = phase;
         phaseTime = 0f;
+        readyForTheLoop = false;
     }
+
+    // How long before the opening plays again its first shot's ground is asked for, and whether it has been
+    private const float AheadOfTheLoop = 3f;
+    private bool readyForTheLoop;
 
     /// <summary>Moves the opening forward in time.</summary>
     public void Advance(float dt)
@@ -131,6 +142,8 @@ public sealed class TitleScreen
             case TitlePhase.Notice when phaseTime >= NoticeTime: Enter(TitlePhase.Journey); break;
             case TitlePhase.Journey when phaseTime >= SegmentTime * Segments.Length: Enter(TitlePhase.Reveal); break;
             case TitlePhase.Reveal when phaseTime >= RevealTime: Enter(TitlePhase.Idle); break;
+            // Left alone, the title plays its opening again: the attract loop (the menu and its prompts wait for good)
+            case TitlePhase.Idle when phaseTime >= IdleTime: Enter(TitlePhase.Journey); break;
         }
     }
 
@@ -289,6 +302,12 @@ public sealed class TitleScreen
                 world.RenderCinematic(MapDatabase.Get(map), focus.X, focus.Y, hour);
                 break;
             default:
+                // About to play the opening again: the first shot's ground starts baking behind the title
+                if (Phase == TitlePhase.Idle && phaseTime >= IdleTime - AheadOfTheLoop && !readyForTheLoop)
+                {
+                    readyForTheLoop = true;
+                    world.MakeReady(MapDatabase.Get(Segments[0].Map), Segments[0].From.X, Segments[0].From.Y);
+                }
                 float ease = menuBlend * menuBlend * (3f - 2f * menuBlend);
                 scene.Render(context, totalTime, Reveal, ease * 2.7f);
                 break;

@@ -76,10 +76,110 @@ public class TitleScreenTests
         Run(title, TitleScreen.RevealTime);
         Assert.Equal(TitlePhase.Idle, title.Phase);
 
-        // It then waits on the title for as long as it takes
-        Run(title, 30f);
+        // It then waits on the title, for most of half a minute
+        Run(title, TitleScreen.IdleTime - 1f);
         Assert.Equal(TitlePhase.Idle, title.Phase);
         Assert.Equal(TitleChoice.None, title.TakeChoice());
+    }
+
+    [Fact]
+    public void LeftAloneTheTitlePlaysItsOpeningAgain()
+    {
+        // The attract loop (plan 09 · L4): thirty seconds on the title with no button, and the fly-over shots and the
+        // reveal play again, never the notice, and so on for as long as nobody comes
+        Assert.Equal(30f, TitleScreen.IdleTime);
+        var title = new TitleScreen(null);
+        title.PressConfirm();
+        Assert.Equal(TitlePhase.Idle, title.Phase);
+
+        for (int round = 0; round < 3; round++)
+        {
+            Run(title, TitleScreen.IdleTime - 0.5f);
+            Assert.Equal(TitlePhase.Idle, title.Phase);
+            Run(title, 0.6f);
+            Assert.Equal(TitlePhase.Journey, title.Phase);
+            Run(title, TitleScreen.SegmentTime * TitleScreen.Segments.Length - 0.5f);
+            Assert.Equal(TitlePhase.Journey, title.Phase);
+            Run(title, 0.5f);
+            Assert.Equal(TitlePhase.Reveal, title.Phase);
+            Run(title, TitleScreen.RevealTime);
+            Assert.Equal(TitlePhase.Idle, title.Phase);
+            Assert.Equal(TitleChoice.None, title.TakeChoice());
+        }
+    }
+
+    [Theory]
+    [InlineData(2f)]   // in the first fly-over shot
+    [InlineData(9f)]   // in the last
+    [InlineData(12f)]  // while Giratina appears again
+    public void AButtonDuringTheOpeningPlayedAgainComesBackToTheTitle(float after)
+    {
+        var title = new TitleScreen(Save());
+        title.PressConfirm();
+        Run(title, TitleScreen.IdleTime + 0.1f + after);
+        Assert.NotEqual(TitlePhase.Idle, title.Phase);
+
+        // As the first time: the title, then the menu with its first entry highlighted
+        title.PressConfirm();
+        Assert.Equal(TitlePhase.Idle, title.Phase);
+        title.PressConfirm();
+        Assert.Equal(TitlePhase.Menu, title.Phase);
+        Assert.Equal(0, title.SelectedIndex);
+        Assert.Equal(TitleChoice.Continue, title.Entries[title.SelectedIndex]);
+    }
+
+    [Fact]
+    public void OnlyTheTitleItselfLoops()
+    {
+        // The menu, a prompt and a notice wait for as long as it takes
+        var menu = AtMenu(Save());
+        Run(menu, TitleScreen.IdleTime * 3f);
+        Assert.Equal(TitlePhase.Menu, menu.Phase);
+
+        menu.Move(1);
+        menu.PressConfirm();
+        Assert.Equal(TitlePhase.ConfirmNewGame, menu.Phase);
+        Run(menu, TitleScreen.IdleTime * 3f);
+        Assert.Equal(TitlePhase.ConfirmNewGame, menu.Phase);
+
+        menu.Move(1);
+        menu.PressConfirm();
+        Assert.Equal(TitlePhase.ChooseRules, menu.Phase);
+        Run(menu, TitleScreen.IdleTime * 3f);
+        Assert.Equal(TitlePhase.ChooseRules, menu.Phase);
+
+        var warned = new TitleScreen(Save(), TitleNotice.ForSave(SaveLoad.Recovered));
+        warned.PressConfirm();
+        warned.PressConfirm();
+        Assert.Equal(TitlePhase.Warning, warned.Phase);
+        Run(warned, TitleScreen.IdleTime * 3f);
+        Assert.Equal(TitlePhase.Warning, warned.Phase);
+
+        // Back on the title from the menu, the half minute begins again
+        menu.PressCancel();
+        menu.PressCancel();
+        Assert.Equal(TitlePhase.Idle, menu.Phase);
+        Run(menu, TitleScreen.IdleTime - 1f);
+        Assert.Equal(TitlePhase.Idle, menu.Phase);
+        Run(menu, 1.1f);
+        Assert.Equal(TitlePhase.Journey, menu.Phase);
+    }
+
+    [Fact]
+    public void ANoticeNotYetReadIsStillToldAfterTheLoop()
+    {
+        var title = new TitleScreen(Save(), TitleNotice.ForSave(SaveLoad.Recovered));
+        title.PressConfirm();
+        Run(title, TitleScreen.IdleTime + 3f);
+        Assert.Equal(TitlePhase.Journey, title.Phase);
+        Assert.NotNull(title.Notice);
+
+        title.PressConfirm();
+        Assert.Equal(TitlePhase.Idle, title.Phase);
+        title.PressConfirm();
+        Assert.Equal(TitlePhase.Warning, title.Phase);
+        title.PressConfirm();
+        Assert.Equal(TitlePhase.Menu, title.Phase);
     }
 
     [Theory]

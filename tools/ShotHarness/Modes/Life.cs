@@ -231,5 +231,45 @@ partial class Harness
         Put(112, 880, Direction.Down);
         engine.Steering = null;
         Timing("twinleaf with life");
+
+        // The camera kit's lens (plan 09 · L4), last so that nothing before it moves: Twinleaf Town zoomed in and out,
+        // where houses, lamps and trees stand at the picture's sides (a zoom changes the field of view alone, so they
+        // must stand as straight as at the place's own lens, and the wider view must be whole to its edges, shadows
+        // and all); the same on a row of people; and a room, where a zoom in lets the camera leave the room's middle
+        var rig = game.World.Camera;
+        game.World.ResetStreamingStats();
+        rig.ZoomTo(1.6f, 0.5f);
+        Frames(40); Shot("l50_zoom_in"); ShotCrop("l50b_zoom_in_native", 700, 300, 520, 420, 2);
+        rig.ZoomTo(0.5f, 0.5f);
+        Frames(40); Shot("l51_zoom_out");
+        // (Sent to the town's west side as well, so the view's edge is somewhere the player's own block of chunks ends)
+        rig.Pan(96.5f, 870.5f, 0.5f);
+        Frames(40); Shot("l52_zoom_out_sent_west");
+        Console.WriteLine($"zoomed out: zoom {rig.Zoom:0.00}, {game.World.Streaming}, {game.World.LoadedChunks} chunks loaded");
+        rig.Release(0.3f);
+        Frames(30);
+        Console.WriteLine($"lens released: zoom {rig.Zoom:0.00}, at rest {rig.AtRest}");
+
+        game.Map = BuildFocusLineup();
+        walker.SetPosition(10, 7, Direction.Down);
+        Frames(3);
+        rig.ZoomTo(2f, 0f);
+        rig.Pan(6.5f, 7.5f, 0f);
+        Frames(3); Shot("l53_zoom_in_on_people");
+        rig.ZoomTo(0.6f, 0f);
+        Frames(3); Shot("l54_zoom_out_on_people");
+        rig.Reset();
+
+        var room = MapDatabase.Get("PokemonCenter");
+        var pc = room.NPCs.First(n => n.IsPCTerminal);
+        game.Map = room;
+        walker.SetPosition(pc.GridX, pc.GridY + 1, Direction.Up);
+        Frames(3); Shot("l55_room_at_its_own_lens");
+        rig.ZoomTo(1.8f, 0.4f);
+        Frames(30); Shot("l56_room_zoomed_in");
+        rig.Release(0.2f);
+        Frames(20);
+        Console.WriteLine($"room: zoom {rig.Zoom:0.00}, at rest {rig.AtRest}");
+        Put(112, 880, Direction.Down);
     }
 }

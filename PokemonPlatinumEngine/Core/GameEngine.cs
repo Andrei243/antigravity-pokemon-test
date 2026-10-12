@@ -350,6 +350,9 @@ public partial class GameEngine
         MapDatabase.RestoreDefeatedTrainers(Array.Empty<string>());
         // The story starts over: the flags and variables every game begins with, and everyone where those put them
         runner.Abort();
+        // (Nothing of a scene's camera outlives the game it was played in, plan 09 · L4)
+        world.Camera.Reset();
+        cameraSent = false;
         story.Clear();
         StoryMigration.BeginNewGame(story, scripts);
         RefreshPresence(startOver: true);
@@ -539,6 +542,8 @@ public partial class GameEngine
 
         // The story as the save has it, brought up to date if an older game wrote it; then everyone where it puts them
         runner.Abort();
+        world.Camera.Reset();
+        cameraSent = false;
         story.Restore(save.ToStory());
         StoryMigration.Upgrade(story, save.StoryVersion, playerParty.Members.Concat(pcBoxStorage.All), scripts, playerInventory);
         story.RestoreGreetings(save.GreetedPeople);
@@ -723,7 +728,10 @@ public partial class GameEngine
         if (gameStarted && currentState is GameState.Overworld or GameState.Dialogue or GameState.Transition)
         {
             double before = world.Life.Now;
-            world.Life.Advance(dt);
+            // Slow motion slows the field's own time (plan 09 · L4); the camera's clock, the text, a bubble and a
+            // script's waits keep the clock's
+            world.Life.Advance(FieldTime(dt));
+            world.RunCamera(dt);
             // The poison's flash fades, and the Poké Radar's patches and the honey trees stir (plan 06 · R13)
             TickEncounters(dt);
             // Thunder follows a storm's lightning, a moment after the flash
@@ -733,15 +741,15 @@ public partial class GameEngine
             world.Life.Rainfall(currentMap, player.PixelX / Player.TileSize + 0.5f, player.PixelY / Player.TileSize + 0.5f,
                 Weathers.LandsABeat(currentMap.WeatherAt(player.GridX, player.GridY)));
             player.TickBubble(dt);
-            player.TickGesture(dt);
+            player.TickGesture(FieldTime(dt));
             // Only the people near the player are looked at each frame (plan 01 · M12): a bubble is shown over
             // someone in sight, and the map of Sinnoh holds everyone. A gesture's clock runs as a bubble's does (plan 11 · C11)
             foreach (var npc in currentMap.NPCs.Near(player.GridX, player.GridY, Wandering.Reach, peopleNear))
             {
                 npc.TickBubble(dt);
-                npc.TickGesture(dt);
+                npc.TickGesture(FieldTime(dt));
             }
-            KeepTheActorActing(dt, peopleNear);
+            KeepTheActorActing(FieldTime(dt), peopleNear);
             // A trainer waiting for a rematch spins where they stand (MOVEMENT_TYPE_VS_SEEKER_SPIN)
             rematchSpin += dt;
             if (rematchSpin >= 0.25f)
@@ -1080,14 +1088,16 @@ public partial class GameEngine
 
     private void UpdateOverworld(float dt)
     {
+        // What the field itself does runs at the field's pace, which a scene's slow motion lowers (plan 09 · L4)
+        float fieldDt = FieldTime(dt);
         // What field moves left in force (Strength, Flash, Defog), and boulders sliding on from a push
         KeepFieldMovesInForce();
-        KeepPuzzleInForce(dt);
+        KeepPuzzleInForce(fieldDt);
         KeepTheMachinesBalls();
         ShatterSnowball();
         KeepTheClock();
         KeepBerriesInView();
-        SlideBoulders(dt);
+        SlideBoulders(fieldDt);
         poketchView.Update(dt);
         // The app on the Pokétch runs on whether it is out or not, as the original's lower screen does
         if (poketch.Enabled) poketch.State?.Update(dt, PoketchNow());
@@ -1103,7 +1113,7 @@ public partial class GameEngine
         RefreshPresence();
 
         // Whoever travels with the player keeps up, whatever else has the field
-        along?.Update(dt, player.Stride);
+        along?.Update(fieldDt, player.Stride);
         KeepTheStroll(dt);
 
         // A warp panel has the player: they turn on the spot until the picture closes, and again as it opens
@@ -1117,7 +1127,7 @@ public partial class GameEngine
         // finish the step they are on
         if (runner.IsRunning)
         {
-            wandering.Continue(dt);
+            wandering.Continue(fieldDt);
             UpdateScript(dt);
             return;
         }
@@ -1960,6 +1970,9 @@ public partial class GameEngine
         player.SetMode(TravelMode.OnFoot);
         player.SetPosition(x, y, facing);
         if (SpawnLocations.Get(story.Var(SpawnLocations.Variable)) is { } town) exitSpot = new MapSpot("Sinnoh", town.X, town.Y, Direction.Down);
+        // A scene the battle was lost in left its camera, its bars and its pace behind with the place (plan 09 · L4)
+        world.Camera.Reset();
+        cameraSent = false;
         ArriveOnMap();
         AnnounceLocation();
         if (healer == null || !StartScript(home ? FieldScripts.BlackOutHome : FieldScripts.BlackOutCenter, healer)) playerParty.HealAll();
@@ -2096,6 +2109,8 @@ public partial class GameEngine
                 DrawTrap();
                 // A script's black screen covers the field and leaves the text over it
                 DrawScriptFade();
+                // ... and so do a scene's cinema bars (plan 09 · L4)
+                DrawLetterbox();
                 DrawCutIn();
                 // The Pokétch shows over the field while nothing else is on the screen
                 if (shown == GameState.Overworld && !startMenu.IsActive && !ScriptRunning) poketchView.Draw(VirtualWidth, VirtualHeight, poketch, PoketchNow());
@@ -2217,6 +2232,7 @@ public partial class GameEngine
                 {
                     world.DrawToScreen(VirtualWidth, VirtualHeight);
                     DrawScriptFade();
+                    DrawLetterbox();
                 }
                 else if (scene == GameState.Evolution) evolutionScreen.Draw(VirtualWidth, VirtualHeight);
                 else if (scene == GameState.Hatch) hatchScreen.Draw(VirtualWidth, VirtualHeight);
