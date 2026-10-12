@@ -135,48 +135,13 @@ public class WorldTests
     [Fact]
     public void EveryOverlayEntryPointsAtSomethingThatIsThere()
     {
-        MapDatabase.Initialize();
-        foreach (var (key, file, overlay, map) in OpenAreas())
-        {
-            var ids = file.Objects.Select(o => o.Id).ToHashSet();
-            foreach (string person in overlay.People?.Keys ?? Enumerable.Empty<string>())
-                Assert.True(ids.Contains(person), $"{key}: the overlay gives lines to '{person}', and nobody in the area is called that");
-            // (A Pokémon cries when spoken to, if nothing else: plan 10 · F1)
-            foreach (var (id, person) in overlay.People ?? new())
-                Assert.True(person.Dialog?.Count > 0 || person.Trainer != null || person.IsStarterBriefcase == true || person.Script != null
-                    || person.NpcType == null && WorldMapBuilder.SpeciesFor(file.Objects.First(o => o.Id == id).Looks) != null, $"{key}: {id} has nothing to say");
-
-            foreach (string held in overlay.HeldBack ?? new())
-                Assert.True(ids.Contains(held), $"{key}: the overlay holds back '{held}', and nothing in the area is called that");
-
-            foreach (string sign in overlay.Signs?.Keys ?? Enumerable.Empty<string>())
-            {
-                var named = file.Objects.FirstOrDefault(o => o.Id == sign);
-                Assert.True(named != null, $"{key}: the overlay writes on '{sign}', and the area has no such sign");
-                Assert.True(map.GetSignboardAt(named!.X, named.Z) == overlay.Signs![sign], $"{key}: '{sign}' is not a sign that can be read");
-            }
-
-            // A door may be listed as locked too: shut until the story opens it, it says where it will lead (the
-            // Valley Windworks', locked from inside until the Works Key)
-            foreach (var door in overlay.Doors ?? new())
-            {
-                Assert.InRange(door.Warp, 0, file.Warps.Count - 1);
-                Assert.True(MapDatabase.MapNames.Contains(door.Map), $"{key}: door {door.Warp} leads to {door.Map}, which is no map");
-                Assert.Single(overlay.Doors!, d => d.Warp == door.Warp);
-            }
-            foreach (int locked in overlay.Locked ?? new())
-                Assert.InRange(locked, 0, file.Warps.Count - 1);
-
-            foreach (var exit in overlay.Exits ?? new())
-            {
-                Assert.Equal(key, map.AreaAt(exit.X, exit.Z)?.Key);
-                Assert.True(MapDatabase.MapNames.Contains(exit.Map), $"{key}: the exit at ({exit.X},{exit.Z}) leads to {exit.Map}, which is no map");
-            }
-
-            // What the overlay adds of its own stands inside its area
-            foreach (var npc in overlay.Npcs ?? new()) Assert.Equal(key, map.AreaAt(npc.X, npc.Y)?.Key);
-            foreach (var prop in overlay.Props ?? new()) Assert.Equal(key, map.AreaAt(prop.X, prop.Y)?.Key);
-        }
+        // The rules this test held (the people, the held back and the signs are the area's own; a door and a locked
+        // warp name a warp of the area, a door and an exit a map; what the overlay adds stands inside its area) are
+        // tools/ContentCheck's since plan 16 · T8 (ContentCheck.Overlays), with those nothing held: one copy, which
+        // the tool prints from and ContentTests breaks on purpose
+        var found = ContentCheck.Checks.OfTheGame.Where(f => f.File.Contains("/overlays/", StringComparison.Ordinal)).ToList();
+        Assert.True(found.Count == 0, string.Join("\n", found));
+        Assert.All(OpenAreas(), area => Assert.Contains(ContentCheck.GameContent.OfTheGame.Regions.Single().Overlays, o => o.Key == area.Key && o.Overlay != null));
     }
 
     [Fact]

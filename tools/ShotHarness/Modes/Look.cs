@@ -49,9 +49,11 @@ partial class Harness
         game.State = GameState.Options;
         var options = game.Options;
         options.Open();
-        while (Enum.GetValues<OptionRow>()[options.SelectedIndex] != OptionRow.MoveHints) options.Move(1);
+        void GoToRow(OptionRow row) { while (Enum.GetValues<OptionRow>()[options.SelectedIndex] != row) options.Move(1); }
+        GoToRow(OptionRow.MoveHints);
         Frames(1); Shot("look_12_options_hints");
-        options.Move(1);
+        // HELP is the last row, whatever rows have come before it since
+        GoToRow(OptionRow.Help);
         options.Confirm();
         Frames(1); Shot("look_12_help");
         options.Help.Move(0, -1);
@@ -62,6 +64,25 @@ partial class Harness
         options.Help.Move(1, 0);
         Frames(1); Shot("look_12c_help_notes");
         options.Help.Cancel();
+        options.Open();
+
+        // The two rows of plan 16 · T3, at the end of the settings: as they are unless chosen, and each chosen otherwise.
+        // The option to wait behind another window is on for a shot here and the run goes on all the same: the engine
+        // never asks whether its window is in front, it is told (GameEngine.WindowFocused), and nobody here says it isn't
+        GoToRow(OptionRow.FocusPause);
+        Frames(1); Shot("look_13_options_pause");
+        OptionsScreen.Change(engine.Settings, OptionRow.FocusPause, 1);
+        Frames(30); Shot("look_13b_options_pause_on");
+        Console.WriteLine($"pause in the background {(engine.Settings.FocusPause ? "on" : "off")}, the window in front as far as the game is told: {engine.WindowFocused}, held: {engine.HeldForFocus}");
+        OptionsScreen.Change(engine.Settings, OptionRow.FocusPause, 1);
+        GoToRow(OptionRow.FrameCap);
+        Frames(1); Shot("look_13c_options_frame_limit");
+        OptionsScreen.Change(engine.Settings, OptionRow.FrameCap, -1);
+        Frames(1); Shot("look_13d_options_frame_limit_30");
+        OptionsScreen.Change(engine.Settings, OptionRow.FrameCap, -1);
+        Frames(1); Shot("look_13e_options_no_limit");
+        engine.Settings.FrameCap = 60;
+        Console.WriteLine($"the options as they were again: pause {engine.Settings.FocusPause}, frame limit {engine.Settings.FrameCap}");
         options.Open();
         game.State = GameState.Overworld;
 

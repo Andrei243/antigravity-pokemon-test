@@ -205,14 +205,18 @@
   },
   "active": "60bea4cf2718f9fa",
   "lastOpenFiles": [
-    "PokemonPlatinumTests/BattleItemTests.cs",
-    "PokemonPlatinumEngine/Battle/Sim/BattleCore.Items.cs",
-    "PokemonPlatinumTests/SoundTests.cs",
-    "PokemonPlatinumEngine/Audio/SoundBank.cs",
-    "PokemonPlatinumEngine/Audio/AudioMixer.cs",
+    "PokemonPlatinumEngine/bin/Debug/net9.0/cache/models/pokemon_psyduck-shell-15a2e384610d8af6.mesh",
+    "PokemonPlatinumEngine/bin/Debug/net9.0/cache/models/pokemon_psyduck-b56b1c35f55d30e7.mesh",
+    "PokemonPlatinumEngine/bin/Debug/net9.0/cache/models/pokemon_budew-shell-9270984c33840f8d.mesh",
+    "PokemonPlatinumEngine/bin/Debug/net9.0/cache/models/pokemon_budew-07148766dfeeefec.mesh",
+    "PokemonPlatinumEngine/bin/Debug/net9.0/cache/models/pokemon_magikarp-shell-f6172282d14ce6b0.mesh",
+    "PokemonPlatinumEngine/bin/Debug/net9.0/cache/models/pokemon_magikarp-b2f5ed37384301ea.mesh",
+    "PokemonPlatinumEngine/bin/Debug/net9.0/cache/models/pokemon_machop-shell-8ebed873305e1c99.mesh",
+    "PokemonPlatinumEngine/bin/Debug/net9.0/cache/models/pokemon_machop-1fd79c59e7189f4a.mesh",
+    "PokemonPlatinumTests/bin/Debug/net9.0/cache/models/pokemon_voltorb-ab6c9269a8f45d99.mesh",
+    "PokemonPlatinumTests/bin/Debug/net9.0/cache/models/pokemon_nidoran_-shell-b122df7ab494b05b.mesh",
+    "PokemonPlatinumTests/bin/Debug/net9.0/cache/models/pokemon_nidoran_-0af53fee00e4c33c.mesh",
     "docs/mechanics/evolution.md",
-    "PokemonPlatinumEngine/Graphics/PokemonModels.Kanto3.cs",
-    "docs/scripts.md",
-    "Untitled.base"
+    "docs/scripts.md"
   ]
 }

@@ -231,5 +231,172 @@ partial class Harness
         Put(112, 880, Direction.Down);
         engine.Steering = null;
         Timing("twinleaf with life");
+
+        // The camera kit's lens (plan 09 · L4), last so that nothing before it moves: Twinleaf Town zoomed in and out,
+        // where houses, lamps and trees stand at the picture's sides (a zoom changes the field of view alone, so they
+        // must stand as straight as at the place's own lens, and the wider view must be whole to its edges, shadows
+        // and all); the same on a row of people; and a room, where a zoom in lets the camera leave the room's middle
+        var rig = game.World.Camera;
+        game.World.ResetStreamingStats();
+        rig.ZoomTo(1.6f, 0.5f);
+        Frames(40); Shot("l50_zoom_in"); ShotCrop("l50b_zoom_in_native", 700, 300, 520, 420, 2);
+        rig.ZoomTo(0.5f, 0.5f);
+        Frames(40); Shot("l51_zoom_out");
+        // (Sent to the town's west side as well, so the view's edge is somewhere the player's own block of chunks ends)
+        rig.Pan(96.5f, 870.5f, 0.5f);
+        Frames(40); Shot("l52_zoom_out_sent_west");
+        Console.WriteLine($"zoomed out: zoom {rig.Zoom:0.00}, {game.World.Streaming}, {game.World.LoadedChunks} chunks loaded");
+        rig.Release(0.3f);
+        Frames(30);
+        Console.WriteLine($"lens released: zoom {rig.Zoom:0.00}, at rest {rig.AtRest}");
+
+        game.Map = BuildFocusLineup();
+        walker.SetPosition(10, 7, Direction.Down);
+        Frames(3);
+        rig.ZoomTo(2f, 0f);
+        rig.Pan(6.5f, 7.5f, 0f);
+        Frames(3); Shot("l53_zoom_in_on_people");
+        rig.ZoomTo(0.6f, 0f);
+        Frames(3); Shot("l54_zoom_out_on_people");
+        rig.Reset();
+
+        var room = MapDatabase.Get("PokemonCenter");
+        var pc = room.NPCs.First(n => n.IsPCTerminal);
+        game.Map = room;
+        walker.SetPosition(pc.GridX, pc.GridY + 1, Direction.Up);
+        Frames(3); Shot("l55_room_at_its_own_lens");
+        rig.ZoomTo(1.8f, 0.4f);
+        Frames(30); Shot("l56_room_zoomed_in");
+        rig.Release(0.2f);
+        Frames(20);
+        Console.WriteLine($"room: zoom {rig.Zoom:0.00}, at rest {rig.AtRest}");
+        Put(112, 880, Direction.Down);
+
+        // The ways into a battle by place and by whom (plan 09 · L13), last so that nothing before them moves: each
+        // caught in its flash, in its lead where it has one, three times as its dark closes, and as it opens. Those of
+        // the water are shot from the pond, those of the caves in Oreburgh Gate, the Frontier's in the Battle Tower's
+        // pale lobby and the boss's on Team Galactic's fourth floor, where their marks must still be read
+        void WayIn(string name, TransitionKind kind, Action stand)
+        {
+            stand();
+            game.StartTransition(GameState.Overworld, null, kind);
+            float flash = SceneTransition.FlashSeconds, lead = SceneTransition.LeadSeconds(kind), shut = SceneTransition.OutSeconds(kind) - flash - lead;
+            int at = 0;
+            void To(float seconds)
+            {
+                int frame = (int)MathF.Round(seconds * 60f);
+                Frames(frame - at);
+                at = frame;
+            }
+            To(2f / 60f); Shot($"l30_{name}_1_flash");
+            if (lead > 0f) { To(flash + lead * 0.7f); Shot($"l30_{name}_2_lead"); }
+            To(flash + lead + shut * 0.35f); Shot($"l30_{name}_3_closing");
+            To(flash + lead + shut * 0.6f); Shot($"l30_{name}_4_closing_on");
+            To(flash + lead + shut * 0.85f); Shot($"l30_{name}_5_nearly_shut");
+            To(flash + lead + shut + 0.2f); Shot($"l30_{name}_6_opening");
+            Frames(40);
+        }
+        // The open tile of a room nearest its middle
+        void InRoom(string name)
+        {
+            var hall = MapDatabase.Get(name);
+            var (x, y) = Enumerable.Range(0, hall.Width * hall.Height).Select(i => (X: i % hall.Width, Y: i / hall.Width))
+                .Where(t => hall.IsWalkable(t.X, t.Y) && hall.GetWarpAt(t.X, t.Y) == null)
+                .OrderBy(t => Math.Abs(t.X - hall.Width / 2) + Math.Abs(t.Y - hall.Height / 2)).First();
+            At(name, x, y, Direction.Up);
+            walker.SetMode(TravelMode.OnFoot);
+            Frames(30);
+        }
+        void OnThePond() { Put(pondX, pondY, Direction.Right, TravelMode.Surfing); Frames(10); }
+        void InTheCave() { At("OreburghGate1F", 16, 22, Direction.Right); walker.SetMode(TravelMode.OnFoot); Frames(40); }
+        void InTheStreet() => Put(112, 880, Direction.Down);
+        foreach (var (name, kind, stand) in new (string, TransitionKind, Action)[]
+                 {
+                     ("wild_water", TransitionKind.WildWater, OnThePond), ("wild_water_strong", TransitionKind.WildWaterStrong, OnThePond),
+                     ("wild_cave", TransitionKind.WildCave, InTheCave), ("wild_cave_strong", TransitionKind.WildCaveStrong, InTheCave),
+                     ("trainer_water", TransitionKind.TrainerWater, OnThePond), ("trainer_water_strong", TransitionKind.TrainerWaterStrong, OnThePond),
+                     ("trainer_cave", TransitionKind.TrainerCave, InTheCave), ("trainer_cave_strong", TransitionKind.TrainerCaveStrong, InTheCave),
+                     ("double", TransitionKind.Double, InTheStreet), ("frontier", TransitionKind.Frontier, () => InRoom("BattleTower")),
+                     ("grunt", TransitionKind.Grunt, InTheStreet), ("galactic_boss", TransitionKind.GalacticBoss, () => InRoom("GalacticHQ4F"))
+                 })
+            WayIn(name, kind, stand);
+
+        // A cave's ring closes on the player wherever the picture shows them: in a room the camera looks at the room's
+        // middle, and the player stands by its PC
+        game.Map = room;
+        walker.SetPosition(pc.GridX, pc.GridY + 1, Direction.Up);
+        walker.SetMode(TravelMode.OnFoot);
+        game.State = GameState.Overworld;
+        Frames(3);
+        game.StartTransition(GameState.Overworld, null, TransitionKind.WildCave);
+        Frames(50); Shot("l30_wild_cave_7_on_the_player_off_the_middle");
+        Frames(80);
+
+        // The real thing on water: a wild Pokémon met surfing, as l31 to l33 are in the grass
+        OnThePond();
+        game.StartWildBattle(new WildEncounterEntry { SpeciesName = "Magikarp", MinLevel = 3, MaxLevel = 3, Weight = 1 });
+        Console.WriteLine($"way in: a wild Pokémon met surfing -> {game.TransitionKind}");
+        Frames(54); Shot("l34_into_battle_on_the_water_1_closing");
+        Frames(30); Shot("l34_into_battle_on_the_water_2_opening");
+        Frames(40); Shot("l34_into_battle_on_the_water_3_battle_begins");
+        game.State = GameState.Overworld;
+
+        // And whom the game's own battles are met as: each begun as the game begins it, and given up at once
+        void Met(string who, Action begin)
+        {
+            begin();
+            Console.WriteLine($"way in: {who} -> {game.TransitionKind}");
+            game.State = GameState.Overworld;
+            Frames(2);
+        }
+        // Someone who carries a trainer of Platinum's data, as a script's battle makes them
+        NPC Carrying(string id)
+        {
+            var record = TrainerDatabase.Get(id) ?? throw new InvalidOperationException($"No trainer {id}");
+            var trainer = new Trainer { Id = record.Id };
+            TrainerDatabase.Fill(trainer, record);
+            return new NPC { Name = trainer.Name, NpcType = "Trainer", TrainerData = trainer };
+        }
+        void Versus(string where, string id, string? second = null)
+        {
+            var first = Carrying(id);
+            Met($"{first.TrainerData!.FullTitle}{(second != null ? " with " + Carrying(second).TrainerData!.FullTitle : "")} {where}",
+                () => game.StartTrainerBattle(first, second != null ? Carrying(second) : null));
+        }
+        InTheCave();
+        Met("a wild Pokémon in Oreburgh Gate", () => game.StartWildBattle(new WildEncounterEntry { SpeciesName = "Geodude", MinLevel = 2, MaxLevel = 2, Weight = 1 }));
+        Met("a stronger one there", () => game.StartWildBattle(new WildEncounterEntry { SpeciesName = "Geodude", MinLevel = 60, MaxLevel = 60, Weight = 1 }));
+        Versus("in Oreburgh Gate", "hiker_daniel");
+        OnThePond();
+        Versus("on Twinleaf's pond", "swimmer_evan");
+        InTheStreet();
+        Versus("in the street", "youngster_tristan");
+        Versus("in the street", "galactic_grunt_floaroma_meadow_1");
+        Versus("in the street", "galactic_grunt_jubilife_city_1", "galactic_grunt_jubilife_city_2");
+        Versus("in the street", "twins_liv_and_liz");
+        Versus("in the street", "leader_volkner_fight_area", "elite_four_flint_fight_area");
+        Versus("in the street", "rival_route_203_piplup");
+        InRoom("ValleyWindworksBuilding");
+        Versus("in the Valley Windworks", "commander_mars_valley_windworks");
+        InRoom("GalacticHQ4F");
+        Versus("on his fourth floor", "galactic_boss_cyrus_galactic_hq");
+        InRoom("OreburghGym");
+        Versus("in his Gym", "leader_roark");
+        InRoom("PokemonLeagueAaronRoom");
+        Versus("in his room", "elite_four_aaron");
+
+        // A battle with a grunt, from the flash to the battle's first frame
+        var grunt = Carrying("galactic_grunt_floaroma_meadow_1");
+        var (meadow, meadowX, meadowY) = AreaSpot("floaroma_meadow");
+        At(meadow.Name, meadowX, meadowY, Direction.Down);
+        walker.SetMode(TravelMode.OnFoot);
+        Frames(30);
+        game.StartTrainerBattle(grunt);
+        Frames(50); Shot("l35_into_battle_with_a_grunt_1_shards");
+        Frames(58); Shot("l35_into_battle_with_a_grunt_2_the_mark");
+        Frames(24); Shot("l35_into_battle_with_a_grunt_3_opening");
+        Frames(40); Shot("l35_into_battle_with_a_grunt_4_battle_begins");
+        game.State = GameState.Overworld;
+        Put(112, 880, Direction.Down);
     }
 }

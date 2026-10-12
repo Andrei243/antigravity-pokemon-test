@@ -11,3 +11,4 @@ M:Raylib_cs.Raylib.GetShaderLocation(Raylib_cs.Shader,System.String);Ask FieldSh
 M:Raylib_cs.Raylib.GetShaderLocation(Raylib_cs.Shader,System.SByte*);Ask FieldShaders.Location, which keeps every location: asking the driver waits for it (CLAUDE.md)
 M:Raylib_cs.Raylib.ToggleBorderlessWindowed;Full screen is WindowSettings' own borderless window: the driver flickers otherwise (CLAUDE.md)
 M:Raylib_cs.Raylib.UnloadMaterial(Raylib_cs.Material);Unloading a material frees the shared textures and shaders it points at (CLAUDE.md)
+T:System.Console;The engine writes to Core.Diagnostics.Log (Info, Warn, Error; Say for what a switch prints), which keeps the line for log.txt and a crash report (CLAUDE.md)

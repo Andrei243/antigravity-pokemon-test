@@ -34,6 +34,27 @@ public sealed record TitleNotice(string Heading, string Body)
             "The save and the one kept before it are both damaged, so there is no game to continue. A new game can still be started."),
         _ => null
     };
+
+    /// <summary>
+    /// What the title says, once, on the start after a crash (plan 16 · T3): that the game stopped, what became of
+    /// the save (it is intact, or there was none yet; a save that couldn't be read has its own notice, which comes
+    /// after this one), where the report is and whether the game as it stood was kept beside the save. Null when
+    /// the last run left no note: it ended as the player chose.
+    /// </summary>
+    public static TitleNotice? ForCrash(Core.Diagnostics.CrashNote? crash, SaveLoad load)
+    {
+        if (crash == null) return null;
+        string save = load switch
+        {
+            SaveLoad.Ok => "Your save is intact. ",
+            SaveLoad.None => "No game had been saved yet. ",
+            _ => ""
+        };
+        string kept = crash.SaveKept
+            ? $", and the game as it stood was kept beside your save as {Core.Diagnostics.CrashReport.SaveName}."
+            : ".";
+        return new("The game stopped unexpectedly", $"{save}A report was written to {crash.Report}{kept}");
+    }
 }
 
 /// <summary>What the player picked on the title menu.</summary>
@@ -47,6 +68,12 @@ public enum TitleChoice { None, Continue, NewGame, Options, Quit }
 public sealed class TitleScreen
 {
     public const float NoticeTime = 3.4f, SegmentTime = 3.6f, RevealTime = 3.2f, LeaveTime = 0.8f;
+
+    /// <summary>
+    /// How long the title waits for a button before it plays its opening again (plan 09 · L4), as Platinum's title
+    /// returns to its film: the fly-over shots and the reveal, never the notice.
+    /// </summary>
+    public const float IdleTime = 30f;
 
     internal static readonly (string Map, Vector2 From, Vector2 To, float Hour)[] Segments =
     {
@@ -115,7 +142,12 @@ public sealed class TitleScreen
     {
         Phase = phase;
         phaseTime = 0f;
+        readyForTheLoop = false;
     }
+
+    // How long before the opening plays again its first shot's ground is asked for, and whether it has been
+    private const float AheadOfTheLoop = 3f;
+    private bool readyForTheLoop;
 
     /// <summary>Moves the opening forward in time.</summary>
     public void Advance(float dt)
@@ -131,6 +163,8 @@ public sealed class TitleScreen
             case TitlePhase.Notice when phaseTime >= NoticeTime: Enter(TitlePhase.Journey); break;
             case TitlePhase.Journey when phaseTime >= SegmentTime * Segments.Length: Enter(TitlePhase.Reveal); break;
             case TitlePhase.Reveal when phaseTime >= RevealTime: Enter(TitlePhase.Idle); break;
+            // Left alone, the title plays its opening again: the attract loop (the menu and its prompts wait for good)
+            case TitlePhase.Idle when phaseTime >= IdleTime: Enter(TitlePhase.Journey); break;
         }
     }
 
@@ -289,6 +323,12 @@ public sealed class TitleScreen
                 world.RenderCinematic(MapDatabase.Get(map), focus.X, focus.Y, hour);
                 break;
             default:
+                // About to play the opening again: the first shot's ground starts baking behind the title
+                if (Phase == TitlePhase.Idle && phaseTime >= IdleTime - AheadOfTheLoop && !readyForTheLoop)
+                {
+                    readyForTheLoop = true;
+                    world.MakeReady(MapDatabase.Get(Segments[0].Map), Segments[0].From.X, Segments[0].From.Y);
+                }
                 float ease = menuBlend * menuBlend * (3f - 2f * menuBlend);
                 scene.Render(context, totalTime, Reveal, ease * 2.7f);
                 break;

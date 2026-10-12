@@ -61,12 +61,14 @@ internal static partial class ModernUi
     /// The team as the target of an item from the bag. <paramref name="tag"/> says what the item would come to for
     /// a Pokémon (null: nothing to say), shown on its card as the games do: ABLE, NOT ABLE, and for a TM LEARNED.
     /// </summary>
+    /// <param name="waiting">The prompt is a line that waits for a press, with the arrow that says so and no way back (a level's panel, plan 08 · P5).</param>
     public static void DrawPartyChoice(int sw, int sh, Party party, int selected, string prompt, Func<Pokemon, string?> tag, float appear = 1f,
-        string action = "Use")
+        string action = "Use", bool waiting = false)
     {
         Backdrop(sw, sh);
         ScreenTitle("POKÉMON");
-        Hints(sw - 64, 44, ("Z", action), ("Esc", "Back"));
+        if (waiting) Hints(sw - 64, 44, ("Z", action));
+        else Hints(sw - 64, 44, ("Z", action), ("Esc", "Back"));
 
         for (int i = 0; i < Party.MaxSize; i++)
         {
@@ -86,6 +88,7 @@ internal static partial class ModernUi
         var box = new Rectangle(64, 920, 1792, 112);
         Panel(box, 30);
         UiFonts.DrawCentered(prompt, box.X + 52, box.Y + box.Height / 2f, 40, Ink, UiWeight.ExtraBold);
+        if (waiting) AdvanceArrow(box.X + box.Width - 64, box.Y + box.Height / 2f - 10);
     }
 
     private static void PartyCard(Rectangle r, Pokemon p, bool selected, bool swapping, bool lead)

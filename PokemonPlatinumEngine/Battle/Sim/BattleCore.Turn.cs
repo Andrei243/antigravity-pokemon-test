@@ -53,7 +53,7 @@ public sealed partial class BattleCore
         if (Conditions.TrickRoom)
         {
             Field.TrickRoomTurns = 5;
-            Say("The dimensions became distorted!");
+            Say("The dimensions became distorted!").With(new FieldConditionChanged(FieldCondition.TrickRoom, Up: true));
         }
     }
 
@@ -75,19 +75,27 @@ public sealed partial class BattleCore
     private bool FieldConditions()
     {
         var sides = new[] { BattleSide.Player, BattleSide.Enemy };
-        foreach (var side in sides) if (RunsOut(ref Field.Side(side).ReflectTurns)) Say($"{TeamOf(side, true)}'s Reflect wore off!");
-        foreach (var side in sides) if (RunsOut(ref Field.Side(side).LightScreenTurns)) Say($"{TeamOf(side, true)}'s Light Screen wore off!");
-        foreach (var side in sides) if (RunsOut(ref Field.Side(side).MistTurns)) Say($"{TeamOf(side, true)}'s Mist wore off!");
-        foreach (var side in sides) if (RunsOut(ref Field.Side(side).SafeguardTurns)) Say($"{TeamOf(side, true)} is no longer protected by Safeguard!");
-        foreach (var side in sides) if (RunsOut(ref Field.Side(side).TailwindTurns)) Say($"{TeamOf(side, true)}'s tailwind petered out!");
-        foreach (var side in sides) if (RunsOut(ref Field.Side(side).LuckyChantTurns)) Say($"{TeamOf(side, true)}'s Lucky Chant wore off!");
+        // Each line that wears something off takes its look off the field (plan 25 · Y2)
+        foreach (var side in sides) if (RunsOut(ref Field.Side(side).ReflectTurns)) Say($"{TeamOf(side, true)}'s Reflect wore off!").With(Now(side, SideCondition.Reflect));
+        foreach (var side in sides) if (RunsOut(ref Field.Side(side).LightScreenTurns)) Say($"{TeamOf(side, true)}'s Light Screen wore off!").With(Now(side, SideCondition.LightScreen));
+        foreach (var side in sides) if (RunsOut(ref Field.Side(side).MistTurns)) Say($"{TeamOf(side, true)}'s Mist wore off!").With(Now(side, SideCondition.Mist));
+        foreach (var side in sides) if (RunsOut(ref Field.Side(side).SafeguardTurns)) Say($"{TeamOf(side, true)} is no longer protected by Safeguard!").With(Now(side, SideCondition.Safeguard));
+        foreach (var side in sides) if (RunsOut(ref Field.Side(side).TailwindTurns)) Say($"{TeamOf(side, true)}'s tailwind petered out!").With(Now(side, SideCondition.Tailwind));
+        foreach (var side in sides) if (RunsOut(ref Field.Side(side).LuckyChantTurns)) Say($"{TeamOf(side, true)}'s Lucky Chant wore off!").With(Now(side, SideCondition.LuckyChant));
 
         // A Wish comes true for whoever stands where it was made
         foreach (var b in speedOrder)
         {
             var place = Field.At(b.Place);
-            if (!RunsOut(ref place.WishTurns) || !b.IsActive) continue;
-            Say($"{place.WishFrom}'s wish came true!");
+            if (!RunsOut(ref place.WishTurns)) continue;
+            var wished = new PlaceConditionChanged(b.Place, PlaceCondition.Wish, Up: false);
+            if (!b.IsActive)
+            {
+                // Nobody stands there: the Wish is lost with no line, and the screen is told between lines
+                Emit(wished);
+                continue;
+            }
+            Say($"{place.WishFrom}'s wish came true!").With(wished);
             var p = b.Pokemon!;
             if (b.Volatile.HealBlockTurns > 0) Say($"{b.Name} was kept from healing!");
             else if (p.CurrentHP >= p.MaxHP) Say($"{b.Name}'s HP is full!");
@@ -107,7 +115,7 @@ public sealed partial class BattleCore
             if (!WeatherPasses()) return false;
         }
 
-        if (Field.GravityTurns > 0 && --Field.GravityTurns == 0) Say("Gravity returned to normal!");
+        if (Field.GravityTurns > 0 && --Field.GravityTurns == 0) Say("Gravity returned to normal!").With(new FieldConditionChanged(FieldCondition.Gravity, Up: false));
         return true;
     }
 
@@ -302,9 +310,16 @@ public sealed partial class BattleCore
         foreach (var b in speedOrder.ToList())
         {
             var place = Field.At(b.Place);
-            if (!RunsOut(ref place.DoomTurns) || !b.IsActive) continue;
+            if (!RunsOut(ref place.DoomTurns)) continue;
             var move = place.DoomMove!;
-            Say($"{b.Name} took the {move.Name} attack!");
+            var arrived = new PlaceConditionChanged(b.Place, PlaceState.AheadAs(move), Up: false);
+            if (!b.IsActive)
+            {
+                // Nobody stands there: the attack is lost with no line, and the screen is told between lines (plan 25 · Y2)
+                Emit(arrived);
+                continue;
+            }
+            Say($"{b.Name} took the {move.Name} attack!").With(arrived);
 
             // Its accuracy is rolled now, by the stages of whoever stands where it was sent from
             var sender = At(place.DoomFrom);
@@ -336,7 +351,8 @@ public sealed partial class BattleCore
             if (!Settle()) return;
         }
 
-        if (Field.TrickRoomTurns > 0 && --Field.TrickRoomTurns == 0) Say("The twisted dimensions returned to normal!");
+        if (Field.TrickRoomTurns > 0 && --Field.TrickRoomTurns == 0)
+            Say("The twisted dimensions returned to normal!").With(new FieldConditionChanged(FieldCondition.TrickRoom, Up: false));
     }
 
     /// <summary>Damage worked out turns ago arrives (<c>subscript_future_sight_damage</c>): a Substitute takes it if there is one, and a Focus Sash or Band can hold against it.</summary>

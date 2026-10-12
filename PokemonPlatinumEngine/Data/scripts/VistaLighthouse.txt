@@ -9,9 +9,12 @@
 #
 # The binoculars are read from the tile Volkner stands on, so nobody looks through them until he has gone.
 #
-# Stood in for until plan 09 lands (L12): the original's binoculars take the picture to the Pokémon League across the
-# sea, seen through their lenses (UseVistaLighthouseBinoculars: the map itself is changed, with a camera of its own);
-# here the view is told over a black screen. The lift's door doesn't open and shut (the car stands open in its shaft).
+# Stood in for still: the original's binoculars take the picture to the Pokémon League across the sea, seen through
+# their lenses (UseVistaLighthouseBinoculars: the map itself is changed, with a camera of its own); here the view is
+# told over a black screen. Plan 09 · L4's camera kit doesn't give it: its path and its lens move the camera over the
+# map the player stands on, and the gallery is a room, seen whole, while the view is of another map with nobody in it
+# (as the title's fly-over is). That wants a command of its own, which is still owed. The lift's door doesn't open and
+# shut (the car stands open in its shaft).
 
 
 # Our own, beside the original: the lift's car asks which way its rider came (VistaLighthouseElevator.txt)

@@ -76,8 +76,13 @@ public class ArchitectureTests
                 && !WalkedHeights.Any(w => w.Caller == u.Caller && w.Method == u.Method)),
         new("Rules read Battler.Ability, the ability in force: Battle reads Pokemon.Ability only in Battler.Ability",
             (root, u) => In(root, u, "Battle") && u.TargetType == $"{Engine}.Models.Pokemon" && u.Member == "get_Ability"
-                && !(u.Caller == "Battler" && u.Method == "get_Ability"))
+                && !(u.Caller == "Battler" && u.Method == "get_Ability")),
+        new("What is written about the game needs no window (plan 16 · T3): Core.Diagnostics and the command line use no raylib type",
+            (root, u) => (In(root, u, "Core.Diagnostics") || u.Namespace == $"{root}.Core" && CommandLineTypes.Contains(u.Caller)) && Raylib(u))
     };
+
+    // The command line and what it is read into (Core/CommandLine.cs)
+    private static readonly string[] CommandLineTypes = { "CommandLine", "LaunchOptions", "Switch" };
 
     [Fact]
     public void TheEngineKeepsEveryRule()

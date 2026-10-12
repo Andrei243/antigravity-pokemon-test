@@ -5,6 +5,7 @@ using System.Numerics;
 using Raylib_cs;
 using PokemonPlatinumEngine.Audio;
 using PokemonPlatinumEngine.Battle;
+using PokemonPlatinumEngine.Core.Diagnostics;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Models;
@@ -270,44 +271,58 @@ public partial class GameEngine
 
     public void Initialize()
     {
-        virtualScreen = Raylib.LoadRenderTexture(VirtualWidth * RenderScale, VirtualHeight * RenderScale);
-        UiShapes.PixelScale = RenderScale;
-        Raylib.SetTextureFilter(virtualScreen.Texture, TextureFilter.Bilinear);
+        // Each step of the start-up is timed for the log (plan 16 · T3); the harness's `profile` mode prints them
+        using var startUp = Log.Phase("start-up, in all");
+        using (Log.Phase("the screen"))
+        {
+            virtualScreen = Raylib.LoadRenderTexture(VirtualWidth * RenderScale, VirtualHeight * RenderScale);
+            UiShapes.PixelScale = RenderScale;
+            Raylib.SetTextureFilter(virtualScreen.Texture, TextureFilter.Bilinear);
+        }
 
-        AudioManager.Initialize();
-        MoveDatabase.Initialize();
-        PokemonDatabase.Initialize();
-        ItemDatabase.Initialize();
-        MapDatabase.Initialize();
-        LoadScripts();
+        using (Log.Phase("the sound")) AudioManager.Initialize();
+        using (Log.Phase("moves")) MoveDatabase.Initialize();
+        using (Log.Phase("species")) PokemonDatabase.Initialize();
+        using (Log.Phase("items")) ItemDatabase.Initialize();
+        using (Log.Phase("maps")) MapDatabase.Initialize();
+        using (Log.Phase("scripts")) LoadScripts();
 
-        // The characters of the introduction, sculpted and meshed in the background while the title screen plays; the
-        // people of the field are made ready where the player is (KeepCharactersNear, plan 11 · C1)
-        CharacterModels.Preload(new[] { "PLAYER", "DAWN", "ROWAN" });
-        // The Pokémon models of the story's opening too, meshed side by side; the menu sprites below wait for each one
         var modelled = PokemonModels.Preloaded.ToList();
-        PokemonModels.Preload(modelled.Append(PokemonSprites.Fallback));
-        // The Pokémon that stand in the field (plan 10 · F1), whose sprites are baked from their models when first in view
-        foreach (var species in MapDatabase.MapNames.SelectMany(n => MapDatabase.Get(n).Everyone).Where(n => n.IsPokemon).Select(n => n.Species!).Distinct())
-            PokemonModels.Request(species);
-        // And the balls the battles throw
-        BattleBall.Preload("Poké Ball", "Great Ball", "Ultra Ball", "Master Ball");
-        SubstituteDoll.Preload();
+        using (Log.Phase("models asked for"))
+        {
+            // The characters of the introduction, sculpted and meshed in the background while the title screen plays; the
+            // people of the field are made ready where the player is (KeepCharactersNear, plan 11 · C1)
+            CharacterModels.Preload(new[] { "PLAYER", "DAWN", "ROWAN" });
+            // The Pokémon models of the story's opening too, meshed side by side; the menu sprites below wait for each one
+            PokemonModels.Preload(modelled.Append(PokemonSprites.Fallback));
+            // The Pokémon that stand in the field (plan 10 · F1), whose sprites are baked from their models when first in view
+            foreach (var species in MapDatabase.MapNames.SelectMany(n => MapDatabase.Get(n).Everyone).Where(n => n.IsPokemon).Select(n => n.Species!).Distinct())
+                PokemonModels.Request(species);
+            // And the balls the battles throw
+            BattleBall.Preload("Poké Ball", "Great Ball", "Ultra Ball", "Master Ball");
+            SubstituteDoll.Preload();
+        }
 
-        ApplySettings(window: false);
+        using (Log.Phase("options")) ApplySettings(window: false);
 
         // The menu sprites of the species the story shows first are made up front (read from the sprite cache once
         // they have been baked); every other species' are made the first time a menu asks for them, showing the
         // stand-in (PokemonSprites.Fallback) for a frame or two meanwhile.
-        renderContext.EnsureLoaded();
-        PokemonSprites.BakeAll(renderContext, modelled);
+        using (Log.Phase("render targets and shaders")) renderContext.EnsureLoaded();
+        using (Log.Phase("menu sprites")) PokemonSprites.BakeAll(renderContext, modelled);
 
         // The game opens on the title screen, which offers the saved game if there is one
-        // A save that couldn't be read gives way to the one before it, and the title says so before its menu (plan 12 · Q1)
-        var (loaded, save) = SaveManager.Load();
-        titleSave = save;
-        titleScreen = new TitleScreen(titleSave, TitleNotice.ForSave(loaded));
-        AudioManager.PlayMusic(MusicRole.Title);
+        // A save that couldn't be read gives way to the one before it, and the title says so before its menu (plan 12 · Q1);
+        // and before that, once, that the last run stopped on a crash, if it did (plan 16 · T3)
+        using (Log.Phase("the save"))
+        {
+            var (loaded, save) = SaveManager.Load();
+            titleSave = save;
+            var crashed = CrashReport.TakePending(CrashReport.SaveFolder);
+            if (crashed != null) Log.Info($"The last run stopped on a crash ({crashed.Report}); the title says so. The save read as {loaded}.");
+            titleScreen = new TitleScreen(titleSave, TitleNotice.ForCrash(crashed, loaded), TitleNotice.ForSave(loaded));
+        }
+        using (Log.Phase("the title's music")) AudioManager.PlayMusic(MusicRole.Title);
     }
 
     /// <summary>Starts a new game at once as the boy with his own name: for tests and the screenshot harness.</summary>
@@ -350,6 +365,9 @@ public partial class GameEngine
         MapDatabase.RestoreDefeatedTrainers(Array.Empty<string>());
         // The story starts over: the flags and variables every game begins with, and everyone where those put them
         runner.Abort();
+        // (Nothing of a scene's camera outlives the game it was played in, plan 09 · L4)
+        world.Camera.Reset();
+        cameraSent = false;
         story.Clear();
         StoryMigration.BeginNewGame(story, scripts);
         RefreshPresence(startOver: true);
@@ -401,6 +419,8 @@ public partial class GameEngine
     /// <summary>Fades in on the field from the black the title screen left behind.</summary>
     private void EnterGame()
     {
+        // The log is told where a game begins or is taken up, so a report's last lines say what was being played
+        Log.Info($"A game is entered at {PlaceKey()} {player.GridX},{player.GridY}, by the {Ruleset.Current.Preset} rules.");
         gameStarted = true;
         trainersLookOnArrival = true;
         arrived = true;
@@ -539,6 +559,8 @@ public partial class GameEngine
 
         // The story as the save has it, brought up to date if an older game wrote it; then everyone where it puts them
         runner.Abort();
+        world.Camera.Reset();
+        cameraSent = false;
         story.Restore(save.ToStory());
         StoryMigration.Upgrade(story, save.StoryVersion, playerParty.Members.Concat(pcBoxStorage.All), scripts, playerInventory);
         story.RestoreGreetings(save.GreetedPeople);
@@ -651,7 +673,8 @@ public partial class GameEngine
     /// <param name="quiet">True when a panel says the game was saved, so no notice is needed.</param>
     private void SaveCurrentGame(bool quiet = false)
     {
-        SaveManager.SaveGame(BuildSave());
+        bool written = SaveManager.SaveGame(BuildSave());
+        Log.Info(written ? $"The game was saved at {PlaceKey()} {player.GridX},{player.GridY}." : "The game couldn't be saved.");
         if (quiet) return;
         ShowNotification("Game saved.");
         AudioManager.PlaySound("save");
@@ -708,6 +731,16 @@ public partial class GameEngine
 
     public void Update(float dt)
     {
+        // Behind another window, with the option on, the game waits where it is and its sound drops (plan 16 · T3)
+        bool held = HeldForFocus;
+        AudioManager.Away = held;
+        if (held != wasHeldForFocus)
+        {
+            wasHeldForFocus = held;
+            Log.Info(held ? "Another window is in front: the game waits (the options' Pause in the background)." : "The window is in front again: the game goes on.");
+        }
+        if (held) return;
+
         if (gameStarted && currentState != GameState.WindowClosing) playTime += dt;
 
         toast.Update(dt);
@@ -723,7 +756,10 @@ public partial class GameEngine
         if (gameStarted && currentState is GameState.Overworld or GameState.Dialogue or GameState.Transition)
         {
             double before = world.Life.Now;
-            world.Life.Advance(dt);
+            // Slow motion slows the field's own time (plan 09 · L4); the camera's clock, the text, a bubble and a
+            // script's waits keep the clock's
+            world.Life.Advance(FieldTime(dt));
+            world.RunCamera(dt);
             // The poison's flash fades, and the Poké Radar's patches and the honey trees stir (plan 06 · R13)
             TickEncounters(dt);
             // Thunder follows a storm's lightning, a moment after the flash
@@ -733,15 +769,15 @@ public partial class GameEngine
             world.Life.Rainfall(currentMap, player.PixelX / Player.TileSize + 0.5f, player.PixelY / Player.TileSize + 0.5f,
                 Weathers.LandsABeat(currentMap.WeatherAt(player.GridX, player.GridY)));
             player.TickBubble(dt);
-            player.TickGesture(dt);
+            player.TickGesture(FieldTime(dt));
             // Only the people near the player are looked at each frame (plan 01 · M12): a bubble is shown over
             // someone in sight, and the map of Sinnoh holds everyone. A gesture's clock runs as a bubble's does (plan 11 · C11)
             foreach (var npc in currentMap.NPCs.Near(player.GridX, player.GridY, Wandering.Reach, peopleNear))
             {
                 npc.TickBubble(dt);
-                npc.TickGesture(dt);
+                npc.TickGesture(FieldTime(dt));
             }
-            KeepTheActorActing(dt, peopleNear);
+            KeepTheActorActing(FieldTime(dt), peopleNear);
             // A trainer waiting for a rematch spins where they stand (MOVEMENT_TYPE_VS_SEEKER_SPIN)
             rematchSpin += dt;
             if (rematchSpin >= 0.25f)
@@ -1080,14 +1116,16 @@ public partial class GameEngine
 
     private void UpdateOverworld(float dt)
     {
+        // What the field itself does runs at the field's pace, which a scene's slow motion lowers (plan 09 · L4)
+        float fieldDt = FieldTime(dt);
         // What field moves left in force (Strength, Flash, Defog), and boulders sliding on from a push
         KeepFieldMovesInForce();
-        KeepPuzzleInForce(dt);
+        KeepPuzzleInForce(fieldDt);
         KeepTheMachinesBalls();
         ShatterSnowball();
         KeepTheClock();
         KeepBerriesInView();
-        SlideBoulders(dt);
+        SlideBoulders(fieldDt);
         poketchView.Update(dt);
         // The app on the Pokétch runs on whether it is out or not, as the original's lower screen does
         if (poketch.Enabled) poketch.State?.Update(dt, PoketchNow());
@@ -1103,7 +1141,7 @@ public partial class GameEngine
         RefreshPresence();
 
         // Whoever travels with the player keeps up, whatever else has the field
-        along?.Update(dt, player.Stride);
+        along?.Update(fieldDt, player.Stride);
         KeepTheStroll(dt);
 
         // A warp panel has the player: they turn on the spot until the picture closes, and again as it opens
@@ -1117,7 +1155,7 @@ public partial class GameEngine
         // finish the step they are on
         if (runner.IsRunning)
         {
-            wandering.Continue(dt);
+            wandering.Continue(fieldDt);
             UpdateScript(dt);
             return;
         }
@@ -1959,6 +1997,9 @@ public partial class GameEngine
         player.SetMode(TravelMode.OnFoot);
         player.SetPosition(x, y, facing);
         if (SpawnLocations.Get(story.Var(SpawnLocations.Variable)) is { } town) exitSpot = new MapSpot("Sinnoh", town.X, town.Y, Direction.Down);
+        // A scene the battle was lost in left its camera, its bars and its pace behind with the place (plan 09 · L4)
+        world.Camera.Reset();
+        cameraSent = false;
         ArriveOnMap();
         AnnounceLocation();
         if (healer == null || !StartScript(home ? FieldScripts.BlackOutHome : FieldScripts.BlackOutCenter, healer)) playerParty.HealAll();
@@ -2102,6 +2143,8 @@ public partial class GameEngine
                 DrawTrap();
                 // A script's black screen covers the field and leaves the text over it
                 DrawScriptFade();
+                // ... and so do a scene's cinema bars (plan 09 · L4)
+                DrawLetterbox();
                 DrawCutIn();
                 // The Pokétch shows over the field while nothing else is on the screen
                 if (shown == GameState.Overworld && !startMenu.IsActive && !ScriptRunning) poketchView.Draw(VirtualWidth, VirtualHeight, poketch, PoketchNow());
@@ -2221,8 +2264,10 @@ public partial class GameEngine
                 if (showBattle) DrawBattle();
                 else if (showWorld)
                 {
-                    world.DrawToScreen(VirtualWidth, VirtualHeight);
+                    // On water the field wavers under the way into a battle as it closes (plan 09 · L13)
+                    world.DrawToScreen(VirtualWidth, VirtualHeight, SceneTransition.Ripple(transitionKind, isFadingOut, transitionTimer));
                     DrawScriptFade();
+                    DrawLetterbox();
                 }
                 else if (scene == GameState.Evolution) evolutionScreen.Draw(VirtualWidth, VirtualHeight);
                 else if (scene == GameState.Hatch) hatchScreen.Draw(VirtualWidth, VirtualHeight);
@@ -2235,9 +2280,10 @@ public partial class GameEngine
 
         toast.Draw(VirtualWidth);
 
-        // The scene closing, or the next one opening
+        // The scene closing, or the next one opening; a cave's ring closes on the player, wherever the field shows them
         if (shown == GameState.Transition)
-            SceneTransition.Draw(transitionKind, isFadingOut, transitionTimer, VirtualWidth, VirtualHeight);
+            SceneTransition.Draw(transitionKind, isFadingOut, transitionTimer, VirtualWidth, VirtualHeight,
+                isFadingOut && showWorld ? world.PlayerOnPicture * new Vector2(VirtualWidth, VirtualHeight) : null);
 
         // The close button's question over all of it, sliding away once answered
         closePrompt.Draw(VirtualWidth, VirtualHeight);
@@ -2269,6 +2315,8 @@ public partial class GameEngine
         Raylib.EndDrawing();
         FrameProfiler.Lap(FrameSection.Swap);
         FrameProfiler.EndFrame();
+        // The first frame since a place was come to has been drawn: its arrival is timed to here (plan 16 · T3)
+        EndTheArrival();
     }
 
     /// <summary>The 3D battle field and Pokémon, then the HUD and menus on top.</summary>

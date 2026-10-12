@@ -9482,18 +9482,23 @@ way 0
   * battle commander_mars_spear_pillar and commander_jupiter_spear_pillar with rival_spear_pillar_turtwig Won
   * fanfare FanfareHeal
   * music area
+  * letterbox on
   * camera Pan 31 26
   * music stop
   * sound gear
   * camera Shake
+  * camera Path 31 25 at 1
+  * camera Zoom 0.85
   * effect Rift 29 21
   * sound thunder_rumble
   * camera Shake
+  * slowmo 0.4
   * effect Burst 29 21
   * cry Dialga
   * effect Rift 33 21
   * sound thunder_rumble
   * camera Shake
+  * slowmo 0.4
   * effect Burst 33 21
   * cry Palkia
   * seen Dialga
@@ -9505,6 +9510,7 @@ way 0
   * sound thunder_rumble
   * cry Giratina-Origin
   * fade in
+  * camera Zoom 1.15
   * effect Shadow 31 25 Down
   * camera Shake
   * fade out

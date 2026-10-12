@@ -322,5 +322,59 @@ partial class Harness
         Until(() => !engine.ScriptRunning, "the acting's end");
         Console.WriteLine($"acting: she is at {breeder.GridX - bx},{breeder.GridY - by} of where she stood (1,0 is right), facing {breeder.Facing} (Left is right), mood {breeder.Mood}, gesture {breeder.Gesture?.ToString() ?? "none"}; the player's gesture {me.Gesture?.ToString() ?? "none"}");
         breeder.GridX = bx; breeder.GridY = by;
+
+        // ---- the camera kit (plan 09 · L4), after everything else so that nothing before it moves: the bars and a
+        // zoom in with a line read across the lower bar, the camera kept on her while the player walks off and while
+        // she walks, a zoom out on a path toward the rival's house, slow motion over a walk, and everything released
+        At("Sinnoh", bx - 2, by, Direction.Right);
+        breeder.Facing = Direction.Left;
+        var rig = view.Camera;
+        var kit = ScriptParser.Parse("twinleaf_town", $"""
+            script Kit
+              letterbox on
+              camera zoom 1.6 0.6
+              text "The camera kit: a line is read across the lower bar."
+              camera follow pokemon_breeder_f 0.5
+              walk player left 3
+              walk pokemon_breeder_f left 2
+              camera zoom 0.6 0.8 nowait
+              camera path {bx - 9} {by - 2} {bx - 9} {by - 6} 3
+              wait 0.3
+              camera zoom 1 0.4
+              camera follow player 0.5
+              slowmo 0.25 2
+              walk player right 2
+              wait 0.4
+              letterbox off 0.3
+              camera pan {bx} {by} 0.3 nowait
+              camera shake 0.3
+              wait 0.4
+              camera release 0.5
+            """)[0];
+        string Rig() => $"zoom {rig.Zoom:0.00}, bars {rig.Bars:0}, pace {rig.Pace:0.00}, away {rig.Away}, moving {rig.Moving}";
+        view.ResetStreamingStats();
+        engine.StartScript(kit);
+        Until(() => Box().IsActive, "the kit's line"); Whole(); Shot("st80_kit_bars_and_zoom");
+        Console.WriteLine($"kit, zoomed in under the bars: {Rig()}");
+        Next();
+        Until(() => me.GridX == bx - 5 && !me.IsMoving, "the player walked off"); Frames(2); Shot("st81_kit_following");
+        Console.WriteLine($"kit, on her feet: {Rig()}; the player {me.GridX - bx},{me.GridY - by} of where she stood, she {breeder.GridX - bx},{breeder.GridY - by}");
+        Until(() => breeder.GridX == bx - 1 && MathF.Abs(breeder.StepOffsetX) is > 0.3f and < 0.7f, "her walk"); Shot("st82_kit_following_a_walk");
+        Until(() => rig.Zoom <= 0.6001f, "the lens out", 400); Shot("st83_kit_zoomed_out_on_a_path");
+        Console.WriteLine($"kit, on the path: {Rig()}");
+        Until(() => !rig.Moving, "the path's end", 600); Shot("st84_kit_path_end");
+        Console.WriteLine($"kit, at the path's end: {Rig()}; {view.Streaming}");
+        // The walk under slow motion: how long its two tiles take beside the two at the field's own pace before them
+        Until(() => rig.Pace < 0.3f && me.IsMoving, "slow motion");
+        int slowFrames = 0;
+        Frames(8); slowFrames += 8; Shot("st85_kit_slow_motion");
+        Console.WriteLine($"kit, slowed: {Rig()}");
+        for (; slowFrames < 900 && (me.IsMoving || me.GridX != bx - 3); slowFrames++) Frames(1);
+        Console.WriteLine($"kit: two tiles under slow motion took {slowFrames} frames and more (a walked tile takes about {60f / 4.5f:0} at the field's own pace)");
+        Until(() => !engine.ScriptRunning, "the kit's end", 600);
+        Until(() => rig.AtRest, "the rig at rest", 120);
+        Frames(4); Shot("st86_kit_released");
+        Console.WriteLine($"kit over: {Rig()}, at rest {rig.AtRest}; the player {me.GridX - bx},{me.GridY - by} of where she stood (-3,0 is right), she {breeder.GridX - bx},{breeder.GridY - by} (-2,0 is right)");
+        breeder.GridX = bx; breeder.GridY = by;
     }
 }

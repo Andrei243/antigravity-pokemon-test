@@ -20,6 +20,7 @@
     <None Include="Data\scripts\**\*.txt" CopyToOutputDirectory="PreserveNewest" />
     <InternalsVisibleTo Include="PokemonPlatinumTests" />
     <InternalsVisibleTo Include="ShotHarness" />
+    <InternalsVisibleTo Include="ContentCheck" />
   </ItemGroup>
 
 </Project>

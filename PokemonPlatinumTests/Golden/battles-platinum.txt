@@ -1184,6 +1184,7 @@ log:
     + Lunged E0 Category=Status
     + MoveShown Move=Safeguard Type=Normal Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say The foe's team became cloaked in a mystical veil!
+    + SideConditionChanged Side=Enemy Condition=Safeguard Layers=1
   say Shellos used Hidden Power!
     + Lunged P0 Category=Special
     + MoveShown Move=Hidden Power Type=Ground Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -1470,6 +1471,7 @@ log:
     + Lunged P0 Category=Status
     + MoveShown Move=Lucky Chant Type=Normal Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say The Lucky Chant shielded your team from critical hits!
+    + SideConditionChanged Side=Player Condition=LuckyChant Layers=1
   say Foe Machop used Vital Throw!
     + Lunged E0 Category=Physical
     + MoveShown Move=Vital Throw Type=Fighting Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -1531,6 +1533,7 @@ log:
   say Staraptor gained 450 EXP. Points!
   ExpGained Pokemon=mine#1 Staraptor Amount=450
   say Your team's Lucky Chant wore off!
+    + SideConditionChanged Side=Player Condition=LuckyChant Layers=0
   say Ace Trainer Tester sent out Seaking!
     + Seen Species=Seaking
     + Entered E0 Pokemon=foe#2 Seaking FromBall=true
@@ -2936,6 +2939,7 @@ log:
     + Lunged P0 Category=Status
     + MoveShown Move=Mist Type=Ice Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Your team became shrouded in mist!
+    + SideConditionChanged Side=Player Condition=Mist Layers=1
   say Foe Duskull used Curse!
     + Lunged E0 Category=Status
     + MoveShown Move=Curse Type=Ghost Category=Status From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -3243,6 +3247,7 @@ log:
     + Lunged P0 Category=Status
     + MoveShown Move=Spikes Type=Ground Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Spikes were scattered all around the foe's team's feet!
+    + SideConditionChanged Side=Enemy Condition=Spikes Layers=1
   say Foe Grimer used Minimize!
     + Lunged E0 Category=Status
   say Foe Grimer's evasiveness rose!
@@ -3412,6 +3417,7 @@ log:
     + Lunged E0 Category=Status
     + MoveShown Move=Mist Type=Ice Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say The foe's team became shrouded in mist!
+    + SideConditionChanged Side=Enemy Condition=Mist Layers=1
   say Slowbro used Rain Dance!
     + Lunged P0 Category=Status
     + MoveShown Move=Rain Dance Type=Water Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -3664,6 +3670,7 @@ log:
     + Lunged E0 Category=Status
     + MoveShown Move=Mist Type=Ice Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say The foe's team became shrouded in mist!
+    + SideConditionChanged Side=Enemy Condition=Mist Layers=1
   say Mamoswine used Ice Fang!
     + Lunged P0 Category=Physical
     + MoveShown Move=Ice Fang Type=Ice Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -3713,6 +3720,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say A critical hit!
   say The foe's team's Mist wore off!
+    + SideConditionChanged Side=Enemy Condition=Mist Layers=0
   say Foe Suicune used Aurora Beam!
     + Lunged E0 Category=Special
     + MoveShown Move=Aurora Beam Type=Ice Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -3737,6 +3745,7 @@ log:
     + Lunged P0 Category=Status
     + MoveShown Move=Mist Type=Ice Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Your team became shrouded in mist!
+    + SideConditionChanged Side=Player Condition=Mist Layers=1
   say Foe Suicune used Mirror Coat!
   say But it failed!
   say Foe Suicune used Aurora Beam!
@@ -3778,6 +3787,7 @@ log:
   say Foe Suicune used Mirror Coat!
   say But it failed!
   say Your team's Mist wore off!
+    + SideConditionChanged Side=Player Condition=Mist Layers=0
   say Foe Suicune used Gust!
     + Lunged E0 Category=Special
     + MoveShown Move=Gust Type=Flying Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -3787,10 +3797,12 @@ log:
     + Lunged P0 Category=Status
     + MoveShown Move=Mist Type=Ice Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Your team became shrouded in mist!
+    + SideConditionChanged Side=Player Condition=Mist Layers=1
   say Foe Suicune used Mist!
     + Lunged E0 Category=Status
     + MoveShown Move=Mist Type=Ice Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say The foe's team became shrouded in mist!
+    + SideConditionChanged Side=Enemy Condition=Mist Layers=1
   say Prinplup used Whirlpool!
     + Lunged P0 Category=Special
     + MoveShown Move=Whirlpool Type=Water Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -3907,6 +3919,7 @@ log:
     + Lunged P0 Category=Status
     + MoveShown Move=Tailwind Type=Flying Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say The tailwind blew from behind your team!
+    + SideConditionChanged Side=Player Condition=Tailwind Layers=1
   say Foe Skiploom used Giga Drain!
     + Lunged E0 Category=Special
     + MoveShown Move=Giga Drain Type=Grass Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=true
@@ -3960,6 +3973,7 @@ log:
   say Suicune used Mirror Coat!
   say But it failed!
   say Your team's tailwind petered out!
+    + SideConditionChanged Side=Player Condition=Tailwind Layers=0
   say Suicune used Ice Fang!
     + Lunged P0 Category=Physical
     + MoveShown Move=Ice Fang Type=Ice Category=Physical From=P0 To=E0 Missed=true Blocked=false Critical=false SuperEffective=false
@@ -5786,6 +5800,7 @@ log:
     + Lunged P0 Category=Status
     + MoveShown Move=Safeguard Type=Normal Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Your team became cloaked in a mystical veil!
+    + SideConditionChanged Side=Player Condition=Safeguard Layers=1
   say Foe Haunter used Dark Pulse!
     + Lunged E0 Category=Special
     + MoveShown Move=Dark Pulse Type=Dark Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -6403,7 +6418,7 @@ log:
     + Fainted E0
   say Mudkip gained 187 EXP. Points!
   ExpGained Pokemon=mine#0 Mudkip Amount=187
-  LevelRose Pokemon=mine#0 Mudkip Level=14
+  LevelRose Pokemon=mine#0 Mudkip Level=14 Before=37/20/20/18/22/17 After=39/22/21/19/24/18
   say Mudkip grew to Lv. 14!
   Won
   say Lucas defeated Hiker Daniel!
@@ -6438,14 +6453,17 @@ log:
     + Lunged P1 Category=Status
     + MoveShown Move=Reflect Type=Psychic Category=Status From=P1 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
   say Reflect raised your team's Defense!
+    + SideConditionChanged Side=Player Condition=Reflect Layers=1
   say Foe Espeon used Future Sight!
     + Lunged E0 Category=Special
     + MoveShown Move=Future Sight Type=Psychic Category=Special From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Espeon foresaw an attack!
+    + PlaceConditionChanged P1 Condition=FutureSight Up=true
   say Foe Cresselia used Safeguard!
     + Lunged E1 Category=Status
     + MoveShown Move=Safeguard Type=Normal Category=Status From=E1 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
   say The foe's team became cloaked in a mystical veil!
+    + SideConditionChanged Side=Enemy Condition=Safeguard Layers=1
   say Anorith used Harden!
     + Lunged P0 Category=Status
     + MoveShown Move=Harden Type=Normal Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -6492,6 +6510,7 @@ log:
   say Foe Cresselia's evasiveness rose!
     + StageChanged E1 Stat=Evasion Stage=1 Rose=true
   say Raikou took the Future Sight attack!
+    + PlaceConditionChanged P1 Condition=FutureSight Up=false
   Struck P1 Hp=52 Hard=false
   HitSounded SuperEffective=false NotVeryEffective=false
   say Raikou used Reflect!
@@ -6502,6 +6521,7 @@ log:
     + Lunged E0 Category=Special
     + MoveShown Move=Future Sight Type=Psychic Category=Special From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Espeon foresaw an attack!
+    + PlaceConditionChanged P1 Condition=FutureSight Up=true
   say Foe Cresselia used Confusion!
     + Lunged E1 Category=Special
     + MoveShown Move=Confusion Type=Psychic Category=Special From=E1 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -6731,6 +6751,7 @@ log:
     + Lunged E0 Category=Special
     + MoveShown Move=Future Sight Type=Psychic Category=Special From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Duskull foresaw an attack!
+    + PlaceConditionChanged P0 Condition=FutureSight Up=true
   say Jigglypuff used Wake-Up Slap!
     + Lunged P0 Category=Physical
     + MoveShown Move=Wake-Up Slap Type=Fighting Category=Physical From=P0 To=E0 Missed=false Blocked=true Critical=false SuperEffective=false
@@ -6760,6 +6781,7 @@ log:
   say Jigglypuff is hurt by its burn!
     + HpChanged P0 Hp=50 Healed=false
   say Jigglypuff took the Future Sight attack!
+    + PlaceConditionChanged P0 Condition=FutureSight Up=false
   Struck P0 Hp=26 Hard=false
   HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Duskull is in love with Jigglypuff!
@@ -7535,6 +7557,7 @@ log:
     + Lunged P1 Category=Special
     + MoveShown Move=Future Sight Type=Psychic Category=Special From=P1 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
   say Bronzong foresaw an attack!
+    + PlaceConditionChanged E0 Condition=FutureSight Up=true
   say Foe Mankey is confused!
     + Confused E0
   say Foe Mankey used Close Combat!
@@ -7997,6 +8020,7 @@ log:
     + Lunged P0 Category=Status
     + MoveShown Move=Tailwind Type=Flying Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say The tailwind blew from behind your team!
+    + SideConditionChanged Side=Player Condition=Tailwind Layers=1
   say Articuno used Blizzard!
     + Lunged P0 Category=Special
     + MoveShown Move=Blizzard Type=Ice Category=Special From=P0 To=E0 Missed=true Blocked=false Critical=false SuperEffective=false
@@ -8018,6 +8042,7 @@ log:
   say Articuno gained 3175 EXP. Points!
   ExpGained Pokemon=mine#2 Articuno Amount=3175
   say Your team's tailwind petered out!
+    + SideConditionChanged Side=Player Condition=Tailwind Layers=0
   say Ace Trainer Tester sent out Fearow!
     + Seen Species=Fearow
     + Entered E0 Pokemon=foe#1 Fearow FromBall=true
@@ -8025,6 +8050,7 @@ log:
     + Lunged P0 Category=Status
     + MoveShown Move=Tailwind Type=Flying Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say The tailwind blew from behind your team!
+    + SideConditionChanged Side=Player Condition=Tailwind Layers=1
   say Foe Fearow used Agility!
     + Lunged E0 Category=Status
     + MoveShown Move=Agility Type=Psychic Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -8034,6 +8060,7 @@ log:
     + Lunged P0 Category=Status
     + MoveShown Move=Reflect Type=Psychic Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Reflect raised your team's Defense!
+    + SideConditionChanged Side=Player Condition=Reflect Layers=1
   say Foe Fearow used Agility!
     + Lunged E0 Category=Status
     + MoveShown Move=Agility Type=Psychic Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -8050,6 +8077,7 @@ log:
   say Articuno regained health!
     + HpChanged P0 Hp=173 Healed=true
   say Your team's tailwind petered out!
+    + SideConditionChanged Side=Player Condition=Tailwind Layers=0
   say Foe Fearow used Assurance!
     + Lunged E0 Category=Physical
     + MoveShown Move=Assurance Type=Dark Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -8123,6 +8151,7 @@ log:
     + Lunged P0 Category=Status
     + MoveShown Move=Light Screen Type=Psychic Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Light Screen raised your team's Special Defense!
+    + SideConditionChanged Side=Player Condition=LightScreen Layers=1
   say Rhydon used Take Down!
     + Lunged P1 Category=Physical
     + MoveShown Move=Take Down Type=Normal Category=Physical From=P1 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -8149,6 +8178,7 @@ log:
     + Lunged E0 Category=Status
     + MoveShown Move=Tailwind Type=Flying Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say The tailwind blew from behind the foe's team!
+    + SideConditionChanged Side=Enemy Condition=Tailwind Layers=1
   say Chansey used Egg Bomb!
     + Lunged P0 Category=Physical
     + MoveShown Move=Egg Bomb Type=Normal Category=Physical From=P0 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -8207,6 +8237,7 @@ log:
     + MoveShown Move=Take Down Type=Normal Category=Physical From=P1 To=E0 Missed=true Blocked=false Critical=false SuperEffective=false
   say Foe Pidgeotto avoided the attack!
   say The foe's team's tailwind petered out!
+    + SideConditionChanged Side=Enemy Condition=Tailwind Layers=0
   say Foe Azelf is making an uproar!
   say Go! Nidorina!
     + Entered P0 Pokemon=mine#2 Nidorina FromBall=true
@@ -8235,6 +8266,7 @@ log:
     + MoveShown Move=Horn Drill Type=Normal Category=Physical From=P1 To=E1 Missed=true Blocked=false Critical=false SuperEffective=false
   say Foe Azelf avoided the attack!
   say Your team's Light Screen wore off!
+    + SideConditionChanged Side=Player Condition=LightScreen Layers=0
   say Foe Azelf is making an uproar!
   say Foe Azelf used Uproar!
     + Lunged E1 Category=Special
@@ -8383,6 +8415,7 @@ log:
     + Lunged E0 Category=Status
     + MoveShown Move=Mist Type=Ice Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say The foe's team became shrouded in mist!
+    + SideConditionChanged Side=Enemy Condition=Mist Layers=1
   say Remoraid used Ice Beam!
     + Lunged P0 Category=Special
     + MoveShown Move=Ice Beam Type=Ice Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -9095,6 +9128,7 @@ log:
     + Lunged E0 Category=Status
     + MoveShown Move=Lucky Chant Type=Normal Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say The Lucky Chant shielded the foe's team from critical hits!
+    + SideConditionChanged Side=Enemy Condition=LuckyChant Layers=1
   say Swablu used Natural Gift!
   say But it failed!
   say Foe Mismagius used Psywave!
@@ -9131,6 +9165,7 @@ log:
     + Lunged P0 Category=Status
   say But nothing happened!
   say The foe's team's Lucky Chant wore off!
+    + SideConditionChanged Side=Enemy Condition=LuckyChant Layers=0
   say Foe Mismagius used Growl!
     + Lunged E0 Category=Status
     + MoveShown Move=Growl Type=Normal Category=Status From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -9916,7 +9951,7 @@ log:
     + Fainted E0
   say Sharpedo gained 60 EXP. Points!
   ExpGained Pokemon=mine#1 Sharpedo Amount=60
-  LevelRose Pokemon=mine#1 Sharpedo Level=4
+  LevelRose Pokemon=mine#1 Sharpedo Level=4 Before=17/10/8/11/8/10 After=20/12/9/13/9/12
   say Sharpedo grew to Lv. 4!
   Won
   say Lucas defeated Waiter Mickey!
@@ -10106,6 +10141,7 @@ log:
     + Lunged P1 Category=Status
     + MoveShown Move=Mist Type=Ice Category=Status From=P1 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
   say Your team became shrouded in mist!
+    + SideConditionChanged Side=Player Condition=Mist Layers=1
   say Aerodactyl used Iron Head!
     + Lunged P0 Category=Physical
     + MoveShown Move=Iron Head Type=Steel Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=true
@@ -10210,6 +10246,7 @@ log:
     + Lunged E0 Category=Status
     + MoveShown Move=Light Screen Type=Psychic Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Light Screen raised the foe's team's Special Defense!
+    + SideConditionChanged Side=Enemy Condition=LightScreen Layers=1
   say Celebi used Ancient Power!
     + Lunged P0 Category=Special
     + MoveShown Move=Ancient Power Type=Rock Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -10258,6 +10295,7 @@ log:
   say Girafarig gained 619 EXP. Points!
   ExpGained Pokemon=mine#2 Girafarig Amount=619
   say The foe's team's Light Screen wore off!
+    + SideConditionChanged Side=Enemy Condition=LightScreen Layers=0
   say Ace Trainer Tester sent out Murkrow!
     + Seen Species=Murkrow
     + Entered E0 Pokemon=foe#1 Murkrow FromBall=true
@@ -11096,6 +11134,7 @@ log:
     + Lunged E0 Category=Special
     + MoveShown Move=Future Sight Type=Psychic Category=Special From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Kirlia foresaw an attack!
+    + PlaceConditionChanged P0 Condition=FutureSight Up=true
   say Breloom used Force Palm!
     + Lunged P0 Category=Physical
     + MoveShown Move=Force Palm Type=Fighting Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -11125,6 +11164,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
   say Breloom took the Future Sight attack!
+    + PlaceConditionChanged P0 Condition=FutureSight Up=false
   Struck P0 Hp=25 Hard=false
   HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Kirlia used Hypnosis!
@@ -11138,6 +11178,7 @@ log:
     + Lunged E0 Category=Special
     + MoveShown Move=Future Sight Type=Psychic Category=Special From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Kirlia foresaw an attack!
+    + PlaceConditionChanged P0 Condition=FutureSight Up=true
   say Foe Kirlia used Charm!
     + Lunged E0 Category=Status
     + MoveShown Move=Charm Type=Normal Category=Status From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -11149,11 +11190,13 @@ log:
   say But it failed!
   say Breloom is fast asleep.
   say Breloom took the Future Sight attack!
+    + PlaceConditionChanged P0 Condition=FutureSight Up=false
   say But it failed!
   say Foe Kirlia used Future Sight!
     + Lunged E0 Category=Special
     + MoveShown Move=Future Sight Type=Psychic Category=Special From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Kirlia foresaw an attack!
+    + PlaceConditionChanged P0 Condition=FutureSight Up=true
   say Breloom woke up!
     + StatusChanged P0 Status=None
   say Breloom used Counter!
@@ -11175,6 +11218,7 @@ log:
     + StatusChanged P0 Status=Sleep
   say Breloom is fast asleep.
   say Breloom took the Future Sight attack!
+    + PlaceConditionChanged P0 Condition=FutureSight Up=false
   Struck P0 Hp=0 Hard=false
   HitSounded SuperEffective=false NotVeryEffective=false
   say Breloom fainted!
@@ -11240,6 +11284,7 @@ log:
     + Lunged E0 Category=Special
     + MoveShown Move=Future Sight Type=Psychic Category=Special From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Kirlia foresaw an attack!
+    + PlaceConditionChanged P0 Condition=FutureSight Up=true
   say Lickitung used Supersonic!
     + Lunged P0 Category=Status
     + MoveShown Move=Supersonic Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -11267,6 +11312,7 @@ log:
   say It's super effective!
     + TrainerReacts E0 Cue=LowHp
   say Lickitung took the Future Sight attack!
+    + PlaceConditionChanged P0 Condition=FutureSight Up=false
   say But it failed!
   say Foe Kirlia used Hypnosis!
     + Lunged E0 Category=Status
@@ -11280,6 +11326,7 @@ log:
     + Lunged E0 Category=Special
     + MoveShown Move=Future Sight Type=Psychic Category=Special From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Kirlia foresaw an attack!
+    + PlaceConditionChanged P0 Condition=FutureSight Up=true
   say Lickitung used Lick!
     + Lunged P0 Category=Physical
     + MoveShown Move=Lick Type=Ghost Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=true
@@ -11300,6 +11347,7 @@ log:
   say Lickitung's Attack won't go any lower!
   say Lickitung is fast asleep.
   say Lickitung took the Future Sight attack!
+    + PlaceConditionChanged P0 Condition=FutureSight Up=false
   Struck P0 Hp=0 Hard=false
   HitSounded SuperEffective=false NotVeryEffective=false
   say Lickitung fainted!
@@ -11526,6 +11574,7 @@ log:
     + Lunged E0 Category=Special
     + MoveShown Move=Future Sight Type=Psychic Category=Special From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Kadabra foresaw an attack!
+    + PlaceConditionChanged P0 Condition=FutureSight Up=true
   say Persian used Assurance!
     + Lunged P0 Category=Physical
     + MoveShown Move=Assurance Type=Dark Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=true
@@ -11557,6 +11606,7 @@ log:
   say Persian's Sp. Atk sharply rose!
     + StageChanged P0 Stat=SpAttack Stage=2 Rose=true
   say Persian took the Future Sight attack!
+    + PlaceConditionChanged P0 Condition=FutureSight Up=false
   say But it failed!
   say Foe Kadabra used Psychic!
     + Lunged E0 Category=Special
@@ -11572,6 +11622,7 @@ log:
     + Lunged E0 Category=Special
     + MoveShown Move=Future Sight Type=Psychic Category=Special From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Kadabra foresaw an attack!
+    + PlaceConditionChanged P0 Condition=FutureSight Up=true
   say Persian used Nasty Plot!
     + Lunged P0 Category=Status
     + MoveShown Move=Nasty Plot Type=Dark Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -11608,6 +11659,7 @@ log:
   say Persian's Defense harshly fell!
     + StageChanged P0 Stat=Defense Stage=-2 Rose=false
   say Persian took the Future Sight attack!
+    + PlaceConditionChanged P0 Condition=FutureSight Up=false
   Struck P0 Hp=0 Hard=false
   HitSounded SuperEffective=false NotVeryEffective=false
   say Persian fainted!
@@ -12095,6 +12147,7 @@ log:
     + Lunged P0 Category=Status
     + MoveShown Move=Safeguard Type=Normal Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Your team became cloaked in a mystical veil!
+    + SideConditionChanged Side=Player Condition=Safeguard Layers=1
   say Foe Togekiss used Air Slash!
     + Lunged E0 Category=Special
     + MoveShown Move=Air Slash Type=Flying Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -12553,7 +12606,7 @@ log:
     + Fainted E0
   say Electabuzz gained 520 EXP. Points!
   ExpGained Pokemon=mine#0 Electabuzz Amount=520
-  LevelRose Pokemon=mine#0 Electabuzz Level=20
+  LevelRose Pokemon=mine#0 Electabuzz Level=20 Before=55/41/27/49/38/50 After=58/43/29/52/39/52
   say Electabuzz grew to Lv. 20!
   say Ace Trainer Tester sent out Pikachu!
     + Seen Species=Pikachu
@@ -12563,6 +12616,7 @@ log:
     + Lunged E0 Category=Status
     + MoveShown Move=Light Screen Type=Psychic Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Light Screen raised the foe's team's Special Defense!
+    + SideConditionChanged Side=Enemy Condition=LightScreen Layers=1
   say Electabuzz used Shock Wave!
     + Lunged P0 Category=Special
     + MoveShown Move=Shock Wave Type=Electric Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -12619,6 +12673,7 @@ log:
   say Leafeon regained health!
     + HpChanged P0 Hp=87 Healed=true
   say The foe's team's Light Screen wore off!
+    + SideConditionChanged Side=Enemy Condition=LightScreen Layers=0
   say Foe Pikachu is hurt by poison!
     + HpChanged E0 Hp=5 Healed=false
     + TrainerReacts E0 Cue=LowHp
@@ -12852,6 +12907,7 @@ log:
     + Lunged E0 Category=Status
     + MoveShown Move=Mist Type=Ice Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say The foe's team became shrouded in mist!
+    + SideConditionChanged Side=Enemy Condition=Mist Layers=1
   say Foe Wooper's health is sapped by Leech Seed!
     + HpChanged E0 Hp=78 Healed=false
   say Turtwig took in the sapped health!
@@ -12910,6 +12966,7 @@ log:
     + MoveShown Move=Synthesis Type=Grass Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Turtwig's HP is full!
   say The foe's team's Mist wore off!
+    + SideConditionChanged Side=Enemy Condition=Mist Layers=0
   say Rain continues to fall.
     + WeatherContinues Weather=Rain
   say Foe Linoone used Slash!
@@ -13091,6 +13148,7 @@ log:
     + Lunged P1 Category=Status
     + MoveShown Move=Light Screen Type=Psychic Category=Status From=P1 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
   say Light Screen raised your team's Special Defense!
+    + SideConditionChanged Side=Player Condition=LightScreen Layers=1
   say Foe Shiftry used Feint Attack!
     + Lunged E0 Category=Physical
     + MoveShown Move=Feint Attack Type=Dark Category=Physical From=E0 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -13944,6 +14002,7 @@ log:
     + Lunged P0 Category=Status
     + MoveShown Move=Safeguard Type=Normal Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Your team became cloaked in a mystical veil!
+    + SideConditionChanged Side=Player Condition=Safeguard Layers=1
   say Foe Bellossom used Leaf Storm!
     + Lunged E0 Category=Special
     + MoveShown Move=Leaf Storm Type=Grass Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -13956,6 +14015,7 @@ log:
     + Lunged P0 Category=Status
     + MoveShown Move=Light Screen Type=Psychic Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Light Screen raised your team's Special Defense!
+    + SideConditionChanged Side=Player Condition=LightScreen Layers=1
   say Foe Bellossom used Leaf Blade!
     + Lunged E0 Category=Physical
     + MoveShown Move=Leaf Blade Type=Grass Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -13998,6 +14058,7 @@ log:
   say Meganium had its energy drained!
     + HpChanged E0 Hp=207 Healed=true
   say Your team is no longer protected by Safeguard!
+    + SideConditionChanged Side=Player Condition=Safeguard Layers=0
   say Meganium used Light Screen!
     + Lunged P0 Category=Status
     + MoveShown Move=Light Screen Type=Psychic Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -14013,6 +14074,7 @@ log:
   say Meganium fainted!
     + Fainted P0
   say Your team's Light Screen wore off!
+    + SideConditionChanged Side=Player Condition=LightScreen Layers=0
   say Go! Ho-Oh!
     + Entered P0 Pokemon=mine#1 Ho-Oh FromBall=true
   say Ho-Oh is exerting its Pressure!

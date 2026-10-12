@@ -222,26 +222,9 @@ internal static partial class ModernUi
     // ------------------------------------------------------------------ text
 
     /// <summary>Breaks text into lines no wider than <paramref name="maxWidth"/>; "\n" forces a break.</summary>
-    public static List<string> Wrap(string text, float maxWidth, float size, UiWeight weight = UiWeight.Bold)
-    {
-        var lines = new List<string>();
-        foreach (var paragraph in text.Split('\n'))
-        {
-            string line = "";
-            foreach (var word in paragraph.Split(' '))
-            {
-                string test = line.Length == 0 ? word : line + " " + word;
-                if (line.Length > 0 && UiFonts.Measure(test, size, weight) > maxWidth)
-                {
-                    lines.Add(line);
-                    line = word;
-                }
-                else line = test;
-            }
-            lines.Add(line);
-        }
-        return lines;
-    }
+    public static List<string> Wrap(string text, float maxWidth, float size, UiWeight weight = UiWeight.Bold) =>
+        // The one way of wrapping, which a check with no window uses with a measure of its own (plan 16 · T8)
+        TextMetrics.Wrap(text, maxWidth, line => UiFonts.Measure(line, size, weight));
 
     public static void DrawWrapped(string text, float x, float y, float maxWidth, float size, Color color, float lineHeight, UiWeight weight = UiWeight.Bold)
     {

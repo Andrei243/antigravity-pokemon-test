@@ -168,6 +168,8 @@ What the game loads is in `PokemonPlatinumEngine/Data/world/sinnoh/`:
 
 So opening an area is: add its key to `world.json`, run the importer with `--data`, write its overlay. `WorldTests` then checks that every chunk in view has its file, that every entry of the overlay points at something that exists, and that the area can be walked into and out of.
 
+An overlay and a room are held to what this document says by `tools/ContentCheck` (plan 16 · T8; its README lists the checks): `dotnet run --project tools/ContentCheck` names, a line each, whatever an overlay refers to that its area hasn't, a door to no map or onto a blocked tile, a field these formats don't have (the reader skips one without a word, so `"dialogue"` for `"dialog"` leaves someone silent), a script, a look or a flag that isn't there, and a line that runs out of the text box's three rows or holds a character the interface can't draw. `--plan <out dir> <Room or area key>` draws the room or the area from above with everything the file places tagged and named, to hold the file against the picture.
+
 Lengths are in tiles and heights too (one tile is 16 of the original's units). x runs east and z south; a chunk's own coordinates start at its north-west corner.
 
 ### `world.json`

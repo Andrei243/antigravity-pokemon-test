@@ -970,15 +970,20 @@ public class EvolutionTests
         screen.Open();
         screen.BeginTargetChoice(Item("Rare Candy"));
 
-        // The lead Bidoof just grows
+        // The lead Bidoof just grows; the level's panel is read to its end (plan 08 · P5: its gains, then its new values)
         screen.UseOnTarget(bag, party, _ => { }, new EvolutionContext { Party = party, Bag = bag });
         Assert.Equal(6, party.Members[0].Level);
+        screen.ConfirmLevelUp(_ => { });
+        screen.ConfirmLevelUp(_ => { });
         Assert.Null(screen.TakeEvolution());
 
-        // Turtwig reaches level 18: it evolves, and the player may stop it
+        // Turtwig reaches level 18: it evolves once the panel has been read, and the player may stop it
         screen.BeginTargetChoice(Item("Rare Candy"));
         screen.MoveTarget(1, 0, party.Count);
         screen.UseOnTarget(bag, party, _ => { }, new EvolutionContext { Party = party, Bag = bag });
+        Assert.Null(screen.TakeEvolution());
+        screen.ConfirmLevelUp(_ => { });
+        screen.ConfirmLevelUp(_ => { });
         var request = screen.TakeEvolution()!;
         Assert.Equal((turtwig, "Grotle", true), (request.Pokemon, request.Evolution.TargetSpecies, request.Cancellable));
         Assert.Equal("Turtwig", turtwig.Species.Name);

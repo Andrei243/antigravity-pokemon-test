@@ -196,6 +196,20 @@ public class BattleWeatherAndDollTests
         Assert.Equal(0, WeatherCue(weather, BattleAnimator.WeatherCueTime + 0.01f, 7919).Count);
     }
 
+    [Theory]
+    [InlineData(BattleWeather.Rain, 0.05f)]
+    [InlineData(BattleWeather.Sandstorm, 0.06f)]
+    public void AWeathersStreaksAreWideEnoughToSeeAndFallWhereTheLensLooks(BattleWeather weather, float narrowest)
+    {
+        // Plan 25 · Y2, the first session to see the weather on a screen: the streak's shape shows a line about a
+        // sixth of its quad's width, and spread over the whole sky's box a shower left a handful of hairs in the picture
+        var streaks = Layer(weather, 2f, 7.3f).Quads.Where(q => q.Shape == FxShape.Streak).ToList();
+        Assert.True(streaks.Count >= 150);
+        Assert.All(streaks, q => Assert.True(q.Size >= narrowest, $"a streak of half-width {q.Size}"));
+        // Within the box the overview's lens takes in: between the camera and the far trees, and no higher than it sees
+        Assert.All(streaks, q => Assert.True(q.Center.X is >= -16.5f and <= 10.5f && q.Center.Z is >= -10.5f and <= 23.5f && q.Center.Y <= 6.5f, q.Center.ToString()));
+    }
+
     [Fact]
     public void TheDollsLookIsPureInItsAgesAndSeed()
     {
