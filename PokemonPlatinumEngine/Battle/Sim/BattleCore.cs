@@ -343,9 +343,42 @@ public sealed partial class BattleCore : IBattleContext
     private Said Say(string text)
     {
         var said = new Said(text);
+        // What the line names comes with it (plan 12 · Q11)
+        said.Shows.AddRange(named);
+        named.Clear();
         log.Add(said);
         return said;
     }
+
+    /// <summary>The abilities and items named for the next line said (<see cref="AbilityOf"/>, <see cref="ItemOf"/>).</summary>
+    private readonly List<BattleEvent> named = new();
+
+    /// <summary>
+    /// The ability in force of the Pokémon in a place, named in the next line said: the original's message tag
+    /// (<c>BattleMessage_AbilityTag</c>), which tells whoever reads the log of it by an <see cref="AbilityShown"/>
+    /// attached to the line (plan 12 · Q11). Every line that names a Pokémon's ability asks for its name here.
+    /// </summary>
+    public string AbilityOf(Battler holder)
+    {
+        string name = holder.Ability?.Name ?? holder.Pokemon?.AbilityName ?? "";
+        if (holder.Pokemon != null && name.Length > 0) named.Add(new AbilityShown(holder.Place, name));
+        return name;
+    }
+
+    /// <summary>
+    /// The held item of the Pokémon in a place, named in the next line said (<c>BattleMessage_ItemTag</c>), or the
+    /// one given when it has already left its hands (a berry eaten, an item knocked off).
+    /// </summary>
+    public string ItemOf(Battler holder, ItemData? item = null)
+    {
+        item ??= holder.Pokemon?.HeldItem;
+        if (item == null) return "";
+        if (holder.Pokemon != null) named.Add(new ItemShown(holder.Place, item.Name));
+        return item.Name;
+    }
+
+    /// <summary>A line made with a name in it isn't said after all: what it named goes unsaid too.</summary>
+    private void Unsaid() => named.Clear();
 
     private void Emit(BattleEvent happening) => log.Add(happening);
 

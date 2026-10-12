@@ -20,14 +20,14 @@ internal sealed class StatusImmunity(params StatusCondition[] blocked) : BattleE
 }
 
 /// <summary>Moves of one type heal a quarter of its HP instead of hurting it (Volt Absorb, Water Absorb).</summary>
-internal sealed class AbsorbType(PokemonType type, string abilityName) : BattleEffect
+internal sealed class AbsorbType(PokemonType type) : BattleEffect
 {
     public override bool AbsorbsMove(IBattleContext ctx, Battler self, Battler attacker, Move move, float effectiveness)
     {
         if (move.Type != type || attacker == self) return false;
         var p = self.Pokemon!;
-        if (p.CurrentHP >= p.MaxHP) ctx.Announce($"{self.Name}'s {abilityName} made {move.Name} useless!");
-        else ctx.RestoreHp(self, p.MaxHP / 4, $"{self.Name}'s {abilityName} restored its HP!");
+        if (p.CurrentHP >= p.MaxHP) ctx.Announce($"{self.Name}'s {ctx.AbilityOf(self)} made {move.Name} useless!");
+        else ctx.RestoreHp(self, p.MaxHP / 4, $"{self.Name}'s {ctx.AbilityOf(self)} restored its HP!");
         return true;
     }
 }
@@ -65,7 +65,7 @@ internal sealed class FlagEffect : BattleEffect
     public float Accuracy = 1f;
     public PokemonType? Draws;
 
-    /// <summary>Said as the holder comes in ("{0} breaks the mold!").</summary>
+    /// <summary>Said as the holder comes in ("{0} breaks the mold!"); a {1} in it names the ability, and tells of it.</summary>
     public string? EntryLine;
 
     public override bool PreventsCriticalHits => NoCrits;
@@ -97,7 +97,7 @@ internal sealed class FlagEffect : BattleEffect
 
     public override void OnEntry(IBattleContext ctx, Battler self)
     {
-        if (EntryLine != null) ctx.Announce(string.Format(EntryLine, self.Name));
+        if (EntryLine != null) ctx.Announce(string.Format(EntryLine, self.Name, EntryLine.Contains("{1}") ? ctx.AbilityOf(self) : null));
     }
 }
 
@@ -109,7 +109,7 @@ internal sealed class Intimidate : BattleEffect
     {
         foreach (var foe in ctx.ActiveFoes(self).ToList())
         {
-            ctx.Announce($"{self.Name}'s Intimidate cuts {foe.Name}'s Attack!");
+            ctx.Announce($"{self.Name}'s {ctx.AbilityOf(self)} cuts {foe.Name}'s Attack!");
             ctx.ChangeStat(foe, StatType.Attack, -1, self, announceFailure: true);
         }
     }
@@ -152,7 +152,9 @@ internal sealed class Trace : BattleEffect
             o.AbilityName = p.AbilityName;
         }
         p.AbilityName = foe.Pokemon!.AbilityName;
-        ctx.Announce($"{self.Name} traced {foe.Name}'s {p.AbilityName}!");
+        // The line tells of the ability in both places
+        _ = ctx.AbilityOf(self);
+        ctx.Announce($"{self.Name} traced {foe.Name}'s {ctx.AbilityOf(foe)}!");
         // The ability taken acts on entry in its own phase of the same check, as the original's flags let it
     }
 }
@@ -223,7 +225,7 @@ internal sealed class Forewarn : BattleEffect
             if (moves.Count == 0) return;
             strongest = moves[ctx.Random.Roll(RollKind.AbilityPick, moves.Count)];
         }
-        ctx.Announce($"{self.Name}'s Forewarn alerted it to {strongest.Name}!");
+        ctx.Announce($"{self.Name}'s {ctx.AbilityOf(self)} alerted it to {strongest.Name}!");
     }
 }
 
@@ -235,7 +237,7 @@ internal sealed class Frisk : BattleEffect
         var holders = ctx.ActiveFoes(self).Where(f => f.Pokemon!.HeldItem != null).ToList();
         if (holders.Count == 0) return;
         var foe = holders.Count == 1 ? holders[0] : holders[ctx.Random.Roll(RollKind.AbilityPick, 2)];
-        ctx.Announce($"{self.Name} frisked {foe.Name} and found its {foe.Pokemon!.HeldItem!.Name}!");
+        ctx.Announce($"{self.Name} frisked {foe.Name} and found its {ctx.ItemOf(foe)}!");
     }
 }
 
@@ -263,7 +265,7 @@ internal sealed class Aftermath : BattleEffect
     public override void AfterHit(IBattleContext ctx, Battler self, Battler attacker, Move move, int damage, bool critical)
     {
         if (self.Pokemon!.CurrentHP > 0 || !move.Data.MakesContact || !attacker.IsActive || attacker == self || ctx.AnyoneHas("Damp")) return;
-        ctx.LoseHp(attacker, Formulas.Divide(attacker.Pokemon!.MaxHP, 4), $"{attacker.Name} is hurt by {self.Name}'s Aftermath!");
+        ctx.LoseHp(attacker, Formulas.Divide(attacker.Pokemon!.MaxHP, 4), $"{attacker.Name} is hurt by {self.Name}'s {ctx.AbilityOf(self)}!");
     }
 }
 
@@ -285,7 +287,7 @@ internal sealed class Levitate : BattleEffect
         if (move.Type != PokemonType.Ground || move.Category == MoveCategory.Status) return false;
         // Gravity, its own roots or an Iron Ball bring it down
         if (DamageCalculator.IsHeldDown(self)) return false;
-        ctx.Announce($"{self.Name} makes Ground moves miss with Levitate!");
+        ctx.Announce($"{self.Name} makes Ground moves miss with {ctx.AbilityOf(self)}!");
         return true;
     }
 
@@ -300,9 +302,9 @@ internal sealed class FlashFire : BattleEffect
         if (!self.FlashFire)
         {
             self.FlashFire = true;
-            ctx.Announce($"{self.Name}'s Flash Fire raised its Fire power!");
+            ctx.Announce($"{self.Name}'s {ctx.AbilityOf(self)} raised its Fire power!");
         }
-        else ctx.Announce($"{self.Name}'s Flash Fire made {move.Name} useless!");
+        else ctx.Announce($"{self.Name}'s {ctx.AbilityOf(self)} made {move.Name} useless!");
         return true;
     }
 }
@@ -312,7 +314,7 @@ internal sealed class MotorDrive : BattleEffect
     public override bool AbsorbsMove(IBattleContext ctx, Battler self, Battler attacker, Move move, float effectiveness)
     {
         if (move.Type != PokemonType.Electric || attacker == self) return false;
-        ctx.Announce($"{self.Name}'s Motor Drive took in the electricity!");
+        ctx.Announce($"{self.Name}'s {ctx.AbilityOf(self)} took in the electricity!");
         ctx.ChangeStat(self, StatType.Speed, 1, self, announceFailure: true);
         return true;
     }
@@ -323,7 +325,7 @@ internal sealed class WonderGuard : BattleEffect
     public override bool AbsorbsMove(IBattleContext ctx, Battler self, Battler attacker, Move move, float effectiveness)
     {
         if (move.Category == MoveCategory.Status || effectiveness > 1f || attacker == self) return false;
-        ctx.Announce($"{self.Name} avoided damage with Wonder Guard!");
+        ctx.Announce($"{self.Name} avoided damage with {ctx.AbilityOf(self)}!");
         return true;
     }
 }
@@ -333,7 +335,7 @@ internal sealed class Soundproof : BattleEffect
     public override bool AbsorbsMove(IBattleContext ctx, Battler self, Battler attacker, Move move, float effectiveness)
     {
         if ((move.Data.Flags & MoveFlags.Sound) == 0 || attacker == self) return false;
-        ctx.Announce($"{self.Name}'s Soundproof blocks {move.Name}!");
+        ctx.Announce($"{self.Name}'s {ctx.AbilityOf(self)} blocks {move.Name}!");
         return true;
     }
 }
@@ -378,7 +380,7 @@ internal sealed class RoughSkin : BattleEffect
     public override void AfterHit(IBattleContext ctx, Battler self, Battler attacker, Move move, int damage, bool critical)
     {
         if (!move.Data.MakesContact || !attacker.IsActive || attacker == self) return;
-        ctx.LoseHp(attacker, Math.Max(1, attacker.Pokemon!.MaxHP / 8), $"{self.Name}'s Rough Skin hurt {attacker.Name}!");
+        ctx.LoseHp(attacker, Math.Max(1, attacker.Pokemon!.MaxHP / 8), $"{self.Name}'s {ctx.AbilityOf(self)} hurt {attacker.Name}!");
     }
 }
 
@@ -388,7 +390,7 @@ internal sealed class AngerPoint : BattleEffect
     {
         if (!critical || !self.IsActive) return;
         self.Pokemon!.StatStages[StatType.Attack] = 6;
-        ctx.Announce($"{self.Name}'s Anger Point maxed its Attack!");
+        ctx.Announce($"{self.Name}'s {ctx.AbilityOf(self)} maxed its Attack!");
     }
 }
 
@@ -410,7 +412,7 @@ internal sealed class ShedSkin : BattleEffect
     public override void AtEndOfTurn(IBattleContext ctx, Battler self)
     {
         if (self.Pokemon!.Status != StatusCondition.None && ctx.Random.Roll(RollKind.AbilityChance, 100) < 30)
-            ctx.CureStatus(self, $"{self.Name}'s Shed Skin cured its {BattleText.StatusName(self.Pokemon.Status)}!");
+            ctx.CureStatus(self, $"{self.Name}'s {ctx.AbilityOf(self)} cured its {BattleText.StatusName(self.Pokemon.Status)}!");
     }
 }
 
@@ -430,7 +432,7 @@ internal sealed class Synchronize : BattleEffect
         if (cause == null || cause == self || !cause.IsActive || cause.Pokemon!.Status != StatusCondition.None) return;
         if (status is StatusCondition.Burn or StatusCondition.Paralyze or StatusCondition.Poison or StatusCondition.Toxic)
         {
-            ctx.Announce($"{self.Name}'s Synchronize shares its condition!");
+            ctx.Announce($"{self.Name}'s {ctx.AbilityOf(self)} shares its condition!");
             ctx.TryInflictStatus(cause, status == StatusCondition.Toxic ? StatusCondition.Toxic : status, self, announceFailure: true);
         }
     }
@@ -553,7 +555,7 @@ internal sealed class WeatherBringer(BattleWeather weather, string rock, string 
     {
         int turns = ctx.Rules.AbilityWeatherTurns;
         if (turns > 0) turns += BattleEffects.Of(self).Sum(e => e.ExtraTurns(rock));
-        ctx.SetWeather(weather, turns, string.Format(line, self.Name));
+        ctx.SetWeather(weather, turns, string.Format(line, self.Name, ctx.AbilityOf(self)));
     }
 }
 
@@ -577,7 +579,7 @@ internal sealed class WeatherCloak(BattleWeather weather) : BattleEffect
 }
 
 /// <summary>Rain Dish, Ice Body: a sixteenth of its HP back at each turn's end in their weather (and hail doesn't hurt Ice Body).</summary>
-internal sealed class WeatherHealer(BattleWeather weather, string name) : BattleEffect
+internal sealed class WeatherHealer(BattleWeather weather) : BattleEffect
 {
     public override bool ShelteredFrom(BattleWeather from) => from == weather;
 
@@ -585,14 +587,14 @@ internal sealed class WeatherHealer(BattleWeather weather, string name) : Battle
     {
         var p = self.Pokemon!;
         if (over != weather || p.CurrentHP >= p.MaxHP) return;
-        ctx.RestoreHp(self, Formulas.Divide(p.MaxHP, 16), $"{self.Name}'s {name} restored a little HP!");
+        ctx.RestoreHp(self, Formulas.Divide(p.MaxHP, 16), $"{self.Name}'s {ctx.AbilityOf(self)} restored a little HP!");
     }
 }
 
 /// <summary>Water moves heal it by a quarter and rain by an eighth each turn; the sun takes an eighth each turn. Fire hurting it a quarter more is in the damage formula by name.</summary>
 internal sealed class DrySkin : BattleEffect
 {
-    private readonly AbsorbType water = new(PokemonType.Water, "Dry Skin");
+    private readonly AbsorbType water = new(PokemonType.Water);
 
     public override bool AbsorbsMove(IBattleContext ctx, Battler self, Battler attacker, Move move, float effectiveness) =>
         water.AbsorbsMove(ctx, self, attacker, move, effectiveness);
@@ -601,9 +603,9 @@ internal sealed class DrySkin : BattleEffect
     {
         var p = self.Pokemon!;
         if (over == BattleWeather.Rain && p.CurrentHP < p.MaxHP)
-            ctx.RestoreHp(self, Formulas.Divide(p.MaxHP, 8), $"{self.Name}'s Dry Skin took in the rain!");
+            ctx.RestoreHp(self, Formulas.Divide(p.MaxHP, 8), $"{self.Name}'s {ctx.AbilityOf(self)} took in the rain!");
         else if (over == BattleWeather.Sun)
-            ctx.LoseHp(self, Formulas.Divide(p.MaxHP, 8), $"{self.Name}'s Dry Skin suffers in the sun!");
+            ctx.LoseHp(self, Formulas.Divide(p.MaxHP, 8), $"{self.Name}'s {ctx.AbilityOf(self)} suffers in the sun!");
     }
 }
 
@@ -613,7 +615,7 @@ internal sealed class SolarPower : BattleEffect
     public override void UnderTheWeather(IBattleContext ctx, Battler self, BattleWeather over)
     {
         if (over == BattleWeather.Sun)
-            ctx.LoseHp(self, Formulas.Divide(self.Pokemon!.MaxHP, 8), $"{self.Name} is hurt by its Solar Power!");
+            ctx.LoseHp(self, Formulas.Divide(self.Pokemon!.MaxHP, 8), $"{self.Name} is hurt by its {ctx.AbilityOf(self)}!");
     }
 }
 
@@ -624,7 +626,7 @@ internal sealed class Hydration : BattleEffect
     {
         var status = self.Pokemon!.Status;
         if (over == BattleWeather.Rain && status is not (StatusCondition.None or StatusCondition.Faint))
-            ctx.CureStatus(self, $"{self.Name}'s Hydration cured its {BattleText.StatusName(status)}!");
+            ctx.CureStatus(self, $"{self.Name}'s {ctx.AbilityOf(self)} cured its {BattleText.StatusName(status)}!");
     }
 }
 

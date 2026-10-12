@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 
 namespace PokemonPlatinumEngine.Battle.Sim.Ai;
@@ -47,7 +48,9 @@ public sealed class AiMemory
 
     /// <summary>
     /// Reads what has happened since it last looked (<c>BattleAI_SetAbility</c>, <c>BattleAI_SetHeldItem</c>, the clearing
-    /// on a switch): a Pokémon coming in is new to the AI; a line that names a Pokémon's ability or item tells it.
+    /// on a switch): a Pokémon coming in is new to the AI; a line that names a Pokémon's ability or item tells it, by
+    /// the <see cref="Sim.AbilityShown"/> and <see cref="Sim.ItemShown"/> the line carries (plan 12 · Q11), never by its words.
+    /// What is told goes to whoever stood in the place when the line was said.
     /// </summary>
     internal void CatchUp(BattleCore battle)
     {
@@ -61,17 +64,22 @@ public sealed class AiMemory
                     case Entered entered:
                         seen[entered.Place] = new Seen { Who = entered.Pokemon };
                         break;
-                    case Said said:
-                        foreach (var b in battle.AllBattlers.Where(b => b.Pokemon != null))
-                        {
-                            var p = b.Pokemon!;
-                            if (p.AbilityName is { } ability && said.Text.Contains($"{b.Name}'s {ability}")) At(b.Place, p).Ability = ability;
-                            if (p.HeldItem is { } item && said.Text.Contains(b.Name) && said.Text.Contains(item.Name)) At(b.Place, p).Item = item;
-                        }
+                    case AbilityShown shown:
+                        Standing(shown.Place, battle).Ability = shown.Ability;
+                        break;
+                    case ItemShown shown:
+                        Standing(shown.Place, battle).Item = ItemDatabase.Get(shown.Item);
                         break;
                 }
             }
         }
+    }
+
+    /// <summary>What the AI knows of whoever the log last put in a place (or of whoever stands there, before anyone came in).</summary>
+    private Seen Standing(Place place, BattleCore battle)
+    {
+        if (!seen.TryGetValue(place, out var s)) seen[place] = s = new Seen { Who = battle.At(place).Pokemon };
+        return s;
     }
 
     private static IEnumerable<BattleEvent> Flatten(BattleEvent happening)

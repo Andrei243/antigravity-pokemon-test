@@ -83,5 +83,76 @@ partial class Harness
 
         StartBattle("Luxray", 30);
         Timing("battle");
+
+        // The information panel (plan 12 · Q11), last so that no shot before it moves: a team, a Pokédex and chance of
+        // its own, so neither the harness's team nor its dice are touched
+        InfoPanels();
+    }
+
+    // A single and a double battle played a turn or two into a field with something of everything on it, then the
+    // panel opened over the commands (23h_battle_info_*)
+    void InfoPanels()
+    {
+        Pokemon Own(string species, int level, int seed, string ability, string item, params string[] moves)
+        {
+            var p = new Pokemon(PokemonDatabase.Get(species)!, level, new Random(seed)) { AbilityName = ability };
+            if (item != null) p.HeldItem = ItemDatabase.Get(item);
+            p.Moves.Clear();
+            foreach (var move in moves) p.Moves.Add(new Move(MoveDatabase.Get(move)));
+            return p;
+        }
+        BattleEngine Start(Party team, BattleFormat format, params Pokemon[] wild)
+        {
+            game.Map = MapDatabase.Get("Sinnoh");
+            var e = new BattleEngine(new BattleSetup
+            {
+                PlayerParty = team, Inventory = new Inventory(), Pokedex = new Pokedex(), Format = format,
+                WildPokemon = wild.ToList(), Random = new PokemonPlatinumEngine.Battle.Sim.BattleRandom(12)
+            });
+            game.BattleRenderer.SetArena(game.Map);
+            game.Battle = e;
+            game.State = GameState.Battle;
+            return e;
+        }
+        void Play(BattleEngine e, params int[] moves)
+        {
+            foreach (int move in moves)
+            {
+                if (e.HUD.MenuState != BattleMenuState.Main || e.IsBattleOver) break;
+                e.SelectMove(move);
+                if (e.HUD.MenuState == BattleMenuState.SelectTarget) e.SelectTarget(0);
+            }
+            for (int guard = 0; guard < 30 && e.HUD.MenuState == BattleMenuState.Message && !e.IsBattleOver; guard++) { Confirm(e); Skip(25 / 60.0); }
+        }
+        void Open(BattleEngine e, string shot)
+        {
+            Skip(0.8);
+            e.OpenInfo();
+            Frames(1);
+            foreach (var line in e.InfoShown?.Lines ?? Enumerable.Empty<string>()) Console.WriteLine("  info: " + line);
+            Shot(shot);
+            e.CloseInfo();
+        }
+
+        // A single battle: the sand, Spikes and Reflect up, Swords Dance, and the foe's Leftovers gone off in the sand
+        var team = new Party();
+        team.Add(Own("Garchomp", 50, 31, "Sand Veil", "Muscle Band", "Sandstorm", "Spikes", "Swords Dance", "Reflect"));
+        var single = Start(team, BattleFormat.Single, Own("Snorlax", 50, 32, "Thick Fat", "Leftovers", "Light Screen", "Curse"));
+        ToMainMenu(single);
+        for (int move = 0; move < 4; move++) Play(single, move);
+        Open(single, "23h_battle_info_single");
+
+        // A double battle: Sand Stream named as Hippowdon comes in, Trick Room, hazards and stages on both sides
+        team = new Party();
+        team.Add(Own("Garchomp", 50, 33, "Sand Veil", null, "Swords Dance", "Spikes"));
+        team.Add(Own("Gyarados", 50, 34, "Intimidate", "Leftovers", "Dragon Dance", "Taunt"));
+        var doubles = Start(team, BattleFormat.Double,
+            Own("Hippowdon", 50, 35, "Sand Stream", "Smooth Rock", "Stealth Rock", "Yawn"),
+            Own("Bronzong", 50, 36, "Levitate", "Light Clay", "Trick Room", "Reflect"));
+        Skip(130 / 60.0);
+        for (int guard = 0; guard < 12 && doubles.HUD.MenuState == BattleMenuState.Message; guard++) { Confirm(doubles); Skip(50 / 60.0); }
+        Play(doubles, 0, 0);
+        Play(doubles, 1, 1);
+        Open(doubles, "23h_battle_info_double");
     }
 }
