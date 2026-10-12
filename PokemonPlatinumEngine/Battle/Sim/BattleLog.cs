@@ -111,6 +111,12 @@ public sealed record ItemShown(Place Place, string Item) : BattleEvent;
 
 /// <summary>The weather over the battle is now this (none: it cleared).</summary>
 public sealed record WeatherChanged(BattleWeather Weather) : BattleEvent;
+
+/// <summary>
+/// The weather goes on at the end of a turn (plan 25 · Y1): on the turn's weather line ("Rain continues to fall."), as the
+/// original plays the weather's animation on each turn it lasts. The rules change nothing by it; the screen plays the weather's cue again.
+/// </summary>
+public sealed record WeatherContinues(BattleWeather Weather) : BattleEvent;
 public sealed record ExpGained(Pokemon Pokemon, int Amount) : BattleEvent;
 public sealed record LevelRose(Pokemon Pokemon, int Level) : BattleEvent;
 

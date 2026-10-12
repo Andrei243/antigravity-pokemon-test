@@ -292,6 +292,7 @@ public partial class GameEngine
             PokemonModels.Request(species);
         // And the balls the battles throw
         BattleBall.Preload("Poké Ball", "Great Ball", "Ultra Ball", "Master Ball");
+        SubstituteDoll.Preload();
 
         ApplySettings(window: false);
 
