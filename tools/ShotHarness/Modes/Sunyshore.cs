@@ -155,7 +155,7 @@ partial class Harness
             Console.WriteLine($"valor lakefront before: collector there {Someone("Sinnoh", "collector", "valor_lakefront") != null}, {Vars("VAR_VALOR_LAKEFRONT_BLOCK_SUNYSHORE_STATE")}");
 
             // ---- the professor's lab: the two wait just inside the door, and the scene plays as the player comes in
-            ComeThrough("RowanLab", 5, 8, Direction.Up);
+            ComeThrough("RowanLab", 7, 15, Direction.Up);
             ReadTo("You are back"); Frames(4); Shot("sy02_lab_the_professor_and_the_assistant");
             ReadTo("Sixty years"); Frames(4); Shot("sy03_lab_never_pounded_so_hard");
             ReadTo("asking after you"); Frames(4); Shot("sy04_lab_the_assistant");
@@ -167,10 +167,10 @@ partial class Harness
             Where("the lab");
             Console.WriteLine("the lab: " + Vars("VAR_SANDGEM_TOWN_LAB_STATE", "VAR_EXITED_DISTORTION_WORLD_STATE", "VAR_VALOR_LAKEFRONT_BLOCK_SUNYSHORE_STATE") + ", "
                 + Flags("FLAG_HIDE_VALOR_LAKEFRONT_COLLECTOR", "FLAG_HIDE_VERITY_CAVERN_MESPRIT", "FLAG_HIDE_VALOR_CAVERN_AZELF", "FLAG_HIDE_ACUITY_CAVERN_UXIE"));
-            TalkTo("RowanLab", "prof_rowan", null, -1, 0);
+            TalkTo("RowanLab", "prof_rowan");
             ReadTo("Cynthia"); Frames(4); Shot("sy09_lab_regards_to_cynthia");
             ReadTo(null);
-            TalkTo("RowanLab", "counterpart", null, 1, 0);
+            TalkTo("RowanLab", "counterpart");
             ReadTo("Sinnoh began with"); Frames(4); Shot("sy0a_lab_the_assistant_wonders");
             ReadTo(null);
 
@@ -298,7 +298,7 @@ partial class Harness
             Frames(30); Shot("sy4e_mart");
 
             // ---- the lab once the player has been to Sunyshore: the professor behind his desk, the assistant gone
-            ComeThrough("RowanLab", 5, 8, Direction.Up);
+            ComeThrough("RowanLab", 7, 15, Direction.Up);
             ReadTo(null, 300); Frames(30); Shot("sy4f_lab_afterwards");
             Console.WriteLine($"the lab afterwards: the assistant there {Someone("RowanLab", "counterpart") != null}, the professor at {Someone("RowanLab", "prof_rowan")?.GridX},{Someone("RowanLab", "prof_rowan")?.GridY}");
         }

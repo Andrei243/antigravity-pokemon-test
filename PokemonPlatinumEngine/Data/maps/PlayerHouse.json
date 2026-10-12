@@ -4,143 +4,216 @@
   "bgmTrack": "sinnoh/twinleaf",
   "interior": "House",
   "trees": "Round",
-  "width": 10,
-  "height": 9,
+  "width": 13,
+  "height": 12,
   "ground": [
-    "##########",
-    "##########",
-    "#________#",
-    "#________#",
-    "#________#",
-    "#________#",
-    "#________#",
-    "#________#",
-    "####D#####"
+    "#############",
+    "#############",
+    "#############",
+    "#_____##____#",
+    "#_____##____#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "######D######"
   ],
   "solid": [
-    "##########",
-    "##########",
-    "####..#.##",
-    "#........#",
-    "#..###...#",
-    "#........#",
-    "#........#",
-    "##......##",
-    "####.#####"
+    "#############",
+    "#############",
+    "#############",
+    "###..#####..#",
+    "#.....####..#",
+    "####..##....#",
+    "#...........#",
+    "#...........#",
+    "#..##.......#",
+    "##.##......##",
+    "##.........##",
+    "######.######"
+  ],
+  "behaviours": [
+    { "x": 1, "y": 5, "width": 3, "depth": 1, "behaviour": "Counter" }
   ],
   "props": [
     {
-      "type": "Fridge",
-      "x": 1,
+      "type": "Window",
+      "x": 3,
       "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "KitchenCounter",
+      "x": 1,
+      "y": 3,
       "width": 1,
       "depth": 1
     },
     {
       "type": "KitchenCounter",
       "x": 2,
-      "y": 2,
+      "y": 3,
       "width": 1,
       "depth": 1
     },
     {
-      "type": "Stove",
-      "x": 3,
-      "y": 2,
+      "type": "Fridge",
+      "x": 5,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SideStairsUp",
+      "x": 8,
+      "y": 3,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Rug",
+      "x": 10,
+      "y": 3,
       "width": 1,
       "depth": 1
     },
     {
       "type": "Television",
       "x": 6,
-      "y": 2,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Stairs",
-      "x": 8,
-      "y": 2,
-      "width": 1,
-      "depth": 2
-    },
-    {
-      "type": "Table",
-      "x": 4,
-      "y": 4,
+      "y": 5,
       "width": 2,
       "depth": 1
     },
     {
-      "type": "Chair",
-      "x": 3,
-      "y": 4,
+      "type": "Cushion",
+      "x": 2,
+      "y": 8,
       "width": 1,
       "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 7,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 8,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 3,
+      "y": 8,
+      "width": 2,
+      "depth": 2
     },
     {
       "type": "Plant",
       "x": 1,
-      "y": 7,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Plant",
-      "x": 8,
-      "y": 7,
+      "y": 10,
       "width": 1,
       "depth": 1
     },
     {
       "type": "Rug",
-      "x": 3,
-      "y": 6,
-      "width": 3,
-      "depth": 2
-    },
-    {
-      "type": "Window",
-      "x": 4,
-      "y": 1,
-      "width": 2,
+      "x": 6,
+      "y": 10,
+      "width": 1,
       "depth": 1
     },
     {
-      "type": "Clock",
-      "x": 7,
-      "y": 1,
+      "type": "Plant",
+      "x": 11,
+      "y": 10,
       "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 1,
+      "y": 5,
+      "width": 3,
       "depth": 1
     }
   ],
   "warps": [
     {
-      "sourceX": 4,
-      "sourceY": 8,
+      "sourceX": 6,
+      "sourceY": 11,
       "targetMap": "Sinnoh",
       "targetX": 116,
       "targetY": 886,
       "targetFacing": "Down"
     },
     {
-      "sourceX": 8,
+      "sourceX": 10,
       "sourceY": 3,
       "targetMap": "PlayerHouse2F",
       "targetX": 7,
       "targetY": 4,
-      "targetFacing": "Down"
+      "targetFacing": "Left"
     }
   ],
-  "signboards": [],
+  "signboards": [
+    {
+      "x": 6,
+      "y": 5,
+      "text": "A contest round-up is on.",
+      "script": "TV"
+    },
+    {
+      "x": 7,
+      "y": 5,
+      "text": "A contest round-up is on.",
+      "script": "TV"
+    },
+    {
+      "x": 5,
+      "y": 3,
+      "text": "Mom's favourite pudding is in the refrigerator.\nBetter to leave it exactly where it is."
+    },
+    {
+      "x": 2,
+      "y": 3,
+      "text": "The kitchen sink gleams.\nMom keeps this kitchen so clean you could eat off the floor."
+    },
+    {
+      "x": 1,
+      "y": 3,
+      "text": "The kitchen sink gleams.\nMom keeps this kitchen so clean you could eat off the floor."
+    },
+    {
+      "x": 1,
+      "y": 5,
+      "text": "The counter where Mom does all her cooking.\nIt always smells good on this side of the room."
+    },
+    {
+      "x": 2,
+      "y": 5,
+      "text": "The counter where Mom does all her cooking.\nIt always smells good on this side of the room."
+    },
+    {
+      "x": 3,
+      "y": 5,
+      "text": "The counter where Mom does all her cooking.\nIt always smells good on this side of the room."
+    }
+  ],
   "npcs": [
     {
       "id": "mom",
       "name": "Mom",
       "npcType": "Mom",
-      "x": 6,
-      "y": 4,
-      "facing": "Left",
+      "x": 7,
+      "y": 8,
+      "facing": "Up",
       "dialog": [
         "Mom: Welcome home, honey! You and your Pokémon look like you could use a rest.",
         "Mom: ...There! Everyone's fit and well again."
@@ -152,16 +225,16 @@
       "id": "rival_mom",
       "name": "{rival}'s Mom",
       "npcType": "Lady",
-      "x": 5,
-      "y": 7,
+      "x": 6,
+      "y": 11,
       "facing": "Up",
       "hiddenBy": "FLAG_HIDE_TWINLEAF_TOWN_PLAYER_HOUSE_1F_RIVAL_MOM"
     }
   ],
   "triggers": [
     {
-      "x": 4,
-      "y": 7,
+      "x": 6,
+      "y": 10,
       "width": 1,
       "depth": 1,
       "script": "DoorWarning",

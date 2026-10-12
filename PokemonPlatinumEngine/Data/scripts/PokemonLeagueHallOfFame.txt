@@ -81,7 +81,7 @@ label Welcome
   halloffame show
   heal
   # SetPlayerStartLocation: the save is written in the player's own room, where the game begins again
-  warp "PlayerHouse2F" 4 4 up
+  warp "PlayerHouse2F" 4 6 up
   save
   if result == 0 goto NotSaved
   sound "save"

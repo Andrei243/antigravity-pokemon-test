@@ -14,6 +14,9 @@ partial class Harness
         game.LocationSign.Hide();
         var story = game.Story;
         var sinnoh = MapDatabase.Get("Sinnoh");
+        // Where the lab's people stand before any scene has walked them about: the scene skipped at the mode's end is
+        // told from there each time (plan 12 · Q20)
+        var labAtFirst = MapDatabase.Get("RowanLab").Everyone.Select(n => (Who: n, n.GridX, n.GridY, n.Facing)).ToList();
 
         DialogueManager Box() => game.Dialogue;
         GameState State() => game.State;
@@ -52,6 +55,9 @@ partial class Harness
         Until(() => engine.ScriptRunning, "the rival's entrance", 120);
         engine.Steering = null;
         ReadTo("Did you see it?"); Frames(10); Shot("op03_the_rival_bursts_in");
+        ReadTo("tons of them"); Frames(4); Shot("op03b_the_rival_runs_up");
+        ReadTo("new computer"); Frames(4); Shot("op03c_the_rival_at_the_computer");
+        ReadTo("ten-million fine"); Frames(4); Shot("op03d_the_rival_comes_back");
         ReadTo(null);
         Console.WriteLine($"bedroom: rival state {story.Var("VAR_PLAYER_HOUSE_RIVAL_STATE")}, rival on the map {game.Map.NPCs.Any(n => n.Key == "rival")}");
 
@@ -116,7 +122,7 @@ partial class Harness
         story.SetVar("VAR_SANDGEM_TOWN_LAB_STATE", 0);
         story.Unset("FLAG_HIDE_SANDGEM_TOWN_LAB_COUNTERPART");
         Scene("RowanLab");
-        At("RowanLab", 5, 8, Direction.Up);
+        At("RowanLab", 7, 15, Direction.Up);
         ReadTo("Let me have a look"); Frames(10); Shot("op16_lab_the_professor");
         ReadTo("Will you take this Pokédex");
         Until(() => engine.Choice.IsOpen, "the professor's request"); Frames(20); Shot("op17_lab_the_pokedex");
@@ -135,6 +141,47 @@ partial class Harness
         ReadTo(null);
         Console.WriteLine($"opening: Pokédex {story.Has(StoryState.PokedexFlag)}, TM27 {inventory.GetQuantity(ItemDatabase.Get("TM27")!)}, sandgem state {story.Var("VAR_SANDGEM_TOWN_STATE")}");
 
+        // ---- home, on the original's plan (plan 01 · M11, the last step): Mom's three scenes, each as its moment of the
+        // chapter finds the house (they come last here, so the shots above are the ones they were)
+        var house = MapDatabase.Get("PlayerHouse");
+        NPC Mom() => house.Everyone.First(n => n.Key == "mom");
+        string Where(NPC who) => $"{who.GridX},{who.GridY} facing {who.Facing}";
+        // The first morning: down the stairs, and she comes round to their foot
+        story.SetVar("VAR_PLAYER_HOUSE_STATE", 0);
+        At("PlayerHouse", 11, 3, Direction.Right);
+        game.ArriveOnMap();
+        ReadTo("was just here"); Frames(4); Shot("op22_home_mom_at_the_foot_of_the_stairs");
+        Console.WriteLine($"home, the first morning: Mom at {Where(Mom())}, the player at {game.Player.GridX},{game.Player.GridY}");
+        ReadTo(null);
+        Frames(20); Shot("op23_home_mom_back_at_her_television");
+        // The mat, the first time out
+        engine.Steering = (Direction.Down, false);
+        At("PlayerHouse", 6, 9, Direction.Down);
+        Until(() => engine.ScriptRunning, "the warning at the door", 120);
+        engine.Steering = null;
+        ReadTo("tall grass"); Frames(4); Shot("op24_home_the_warning_at_the_door");
+        ReadTo(null);
+        // Back from the first battle: in before the kitchen counter, and round to the cushions after her
+        story.SetVar("VAR_PLAYER_HOUSE_STATE", 3);
+        At("PlayerHouse", 2, 6, Direction.Up);
+        game.ArriveOnMap();
+        Frames(30); Shot("op25_home_mom_at_the_sink");
+        Until(() => Mom().GridX >= 5, "Mom leading the way", 600);
+        Frames(6); Shot("op26_home_following_mom");
+        ReadTo("Welcome home"); Frames(4); Shot("op27_home_on_the_cushions");
+        ReadTo("Running Shoes!"); Frames(4); Shot("op28_home_the_running_shoes");
+        ReadTo(null);
+        Console.WriteLine($"home, the Running Shoes: Mom at {Where(Mom())}, the player at {game.Player.GridX},{game.Player.GridY}, shoes {story.Has(StoryState.RunningShoesFlag)}, state {story.Var("VAR_PLAYER_HOUSE_STATE")}");
+        // The Journal and the parcel: spoken to from her east, the rival's mother comes in and over
+        story.Unset("FLAG_RECEIVED_PARCEL");
+        At("PlayerHouse", 8, 8, Direction.Left);
+        game.Interact();
+        ReadTo("gone already"); Frames(4); Shot("op29_home_the_rivals_mother_comes_in");
+        ReadTo("Would you really"); Frames(4); Shot("op30_home_the_parcel");
+        ReadTo(null);
+        Frames(20); Shot("op31_home_afterwards");
+        Console.WriteLine($"home, the parcel: Journal {inventory.GetQuantity(ItemDatabase.Get("Journal")!)}, Parcel {inventory.GetQuantity(ItemDatabase.Get("Parcel")!)}, the rival's mother on the map {house.NPCs.Any(n => n.Key == "rival_mom")}, state {story.Var("VAR_PLAYER_HOUSE_STATE")}");
+
         // ---- a scene skipped (plan 12 · Q20): the lab's scene played to its end, and then skipped by the hold
         // The scene as the chapter comes to it, in the lab's door: the story put back before it each time
         var lab = MapDatabase.Get("RowanLab");
@@ -145,7 +192,9 @@ partial class Harness
             story.Unset(StoryState.PokedexFlag);
             story.Unset("FLAG_HIDE_SANDGEM_TOWN_LAB_COUNTERPART");
             story.Set("FLAG_HIDE_SANDGEM_TOWN_COUNTERPART");
-            game.Place(lab, 5, 8, Direction.Up);
+            // (whoever a scene walks about a room stays where it left them: everyone back where the room has them)
+            foreach (var (who, x, y, facing) in labAtFirst) (who.GridX, who.GridY, who.Facing) = (x, y, facing);
+            game.Place(lab, 7, 15, Direction.Up);
             // (as a door brings the player: everyone back where the flags have them, and the lab's own scene started)
             game.ArriveOnMap();
             Until(() => engine.ScriptRunning, "the lab's scene", 120);
@@ -176,8 +225,8 @@ partial class Harness
         game.SkipHeld = true;
         Frames(33);
         Console.WriteLine($"skip, seen: scene {game.Scene}, may be skipped {game.SceneMayBeSkipped}, the ring's fill {game.SkipFill:0.00}");
-        Shot("op30_skip_held");
-        ShotCrop("op30b_skip_held_close", 1920 - 64 - 220, 0, 284, 124, 4);
+        Shot("op40_skip_held");
+        ShotCrop("op40b_skip_held_close", 1920 - 64 - 220, 0, 284, 124, 4);
         Until(() => game.Skipping, "the skip's dark closing", 120);
         Until(() => !game.Skipping, "the skip's dark opening", 240);
         game.SkipHeld = false;
@@ -192,7 +241,7 @@ partial class Harness
         game.SkipHeld = false;
         ReadTo(null);
         Frames(40);
-        Shot("op31_skip_done");
+        Shot("op41_skip_done");
         var skipped = WhatASceneLeft();
         Console.WriteLine($"skip: skipped {game.ScenesSkipped - skippedBefore} times in all");
 

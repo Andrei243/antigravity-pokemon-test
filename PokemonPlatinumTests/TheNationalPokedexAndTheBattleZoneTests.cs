@@ -96,14 +96,13 @@ public class TheNationalPokedexAndTheBattleZoneTests
         return game.Play(Find(trigger.Script, trigger.ScriptFile ?? game.Map.Name));
     }
 
-    /// <summary>The professor spoken to across his desk, which is the one place he can be spoken to from.</summary>
+    /// <summary>The professor spoken to from before him, on the tile Professor Oak's visit brings the player back to.</summary>
     private static HeadlessScriptHost AskTheProfessor(OpeningTests.Game game, params int[] answers)
     {
-        if (game.Map.Name != "RowanLab") game.Arrive("RowanLab", 5, 8);
+        if (game.Map.Name != "RowanLab") game.Arrive("RowanLab", 7, 15);
         var rowan = game.Present("prof_rowan")!;
-        Assert.Equal((5, 2), (rowan.GridX, rowan.GridY));
-        Assert.True(game.Map.IsCounter(5, 3));
-        game.Tile = (5, 4);
+        Assert.Equal((7, 5), (rowan.GridX, rowan.GridY));
+        game.Tile = (7, 6);
         game.Facing = Direction.Up;
         foreach (int answer in answers) game.Answers.Enqueue(answer);
         return game.Play(Find("Rowan", "RowanLab"), rowan);
@@ -163,8 +162,8 @@ public class TheNationalPokedexAndTheBattleZoneTests
         // The rooms' guests: Professor Oak three times, Byron, Lucian
         foreach (var (name, key, x, y, flag) in new[]
                  {
-                     // (in the lab his own tile is the door itself: the tile whoever comes in stands on is nobody's)
-                     ("RowanLab", "prof_oak", 5, 9, "FLAG_HIDE_SANDGEM_TOWN_LAB_PROF_OAK"), ("PalParkLobby", "prof_oak", 7, 15, "FLAG_HIDE_PAL_PARK_LOBBY_PROF_OAK"),
+                     // (in the lab he comes in on the original's tile, a step inside the mat: the tile whoever comes in stands on is nobody's)
+                     ("RowanLab", "prof_oak", 7, 14, "FLAG_HIDE_SANDGEM_TOWN_LAB_PROF_OAK"), ("PalParkLobby", "prof_oak", 7, 15, "FLAG_HIDE_PAL_PARK_LOBBY_PROF_OAK"),
                      ("EternaCitySouthHouse", "prof_oak", 4, 5, "FLAG_HIDE_ETERNA_CITY_SOUTH_HOUSE_PROF_OAK"), ("IronIslandHouse", "byron", 5, 5, "FLAG_HIDE_IRON_ISLAND_HOUSE_BYRON"),
                      ("CanalaveLibrary1F", "lucian", 16, 5, "FLAG_HIDE_CANALAVE_LIBRARY_1F_LUCIAN")
                  })
@@ -272,10 +271,10 @@ public class TheNationalPokedexAndTheBattleZoneTests
         Assert.True(upgraded >= 0);
         Assert.Equal(1, game.Bag.GetQuantity(Item("Poké Radar")));
         Assert.True(radar < 0 || upgraded < radar);
-        // He has gone again, for good, and the player is back before the desk
+        // He has gone again, for good, and the player is back before the professor
         Assert.Null(game.Present("prof_oak"));
         Assert.True(game.Story.Has("FLAG_HIDE_SANDGEM_TOWN_LAB_PROF_OAK"));
-        Assert.Equal((5, 4), game.Tile);
+        Assert.Equal((7, 6), game.Tile);
         // Nobody had won the tag battle yet: the Fight Area's blockades stand
         Assert.False(game.Story.Has(Blockade));
 

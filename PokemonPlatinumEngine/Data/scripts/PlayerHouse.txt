@@ -10,6 +10,10 @@
 # downstairs Mom has news. The rival has been round looking for them, shouting about a ship at Snowpoint City; and
 # until the National Pokédex is the player's she asks how the professor's Pokédex is coming along.
 # VAR_PLAYER_HOUSE_POSTGAME_STATE is 1 from the Hall of Fame's first victory and 2 once she has said it.
+#
+# The room is on the original's plan (plan 01 · M11, the last rooms), and the scenes walk on the original's tiles:
+# Mom sits on her cushion before the television at 7, 8, looking up at it; the stairs come down in the north-east
+# corner, onto 11, 3; the kitchen is the nook behind the counter in the north-west; the door's mat is 6, 10.
 
 
 script OnEnter
@@ -38,33 +42,51 @@ label MomHasNews
   # TwinleafTownPlayerHouse1F_IsYourProjectComingAlong
   setflag FLAG_TALKED_TO_MOM_ABOUT_NATIONAL_DEX_PROGRESS
   say "Well, never mind him. How are you getting on, Champion? Is that Pokédex of Professor Rowan's coming along?"
-  face mom left
+  face mom up
   endscene
   end
 label RivalCame
   # TwinleafTownPlayerHouse1F_RivalCameLookingForYou
   setflag FLAG_TALKED_TO_MOM_ABOUT_RIVAL_SNOWPOINT_CITY
-  face mom left
+  face mom up
   endscene
   end
 label RivalLeft
+  # TwinleafTownPlayerHouse1F_OnFrame_RivalAlreadyLeft: she looks round from the television, comes over to the foot
+  # of the stairs and goes back to her cushion (the original's two movements, a tile further east: the player comes
+  # off the stairs onto 11, 3, where the original leaves them on the stairs' own tile)
   scene "The rival has been"
-  walk mom right 1
-  face mom player
+  wait 0.15
+  face player down
+  emote mom exclaim
+  walk mom up 1 right 4 up 3
   speaker "Mom"
   say "Oh, you're up! {rival} was just here looking for you."
   say "He went straight back out again. Something about Professor Rowan. That boy is always in such a hurry!"
-  walk mom left 1
-  face mom left
+  walk mom down 2 left 4 down 2
+  face mom up
   setflag FLAG_TALKED_TO_MOM
   setvar VAR_PLAYER_HOUSE_STATE 1
   endscene
   end
 label RunningShoes
+  # TwinleafTownPlayerHouse1F_OnFrame_CutsceneAfterRivalBattle: the player is brought in before the kitchen counter
+  # (route_201.txt: 2, 6), Mom is at the sink behind it (the original's OnTransition puts her on 2, 4). She turns,
+  # leads the way round to the cushions, and the player follows her and sits down beside her
   scene "The Running Shoes"
-  walk mom down 2 left 3
-  face mom player
-  face player mom
+  place mom 2 4 up
+  wait 0.5
+  walk mom left 1
+  face mom up
+  wait 0.45
+  face player right
+  move mom right 3 down 2 right 3 down 2
+  # (the original sets the player off six steps after her, once she has passed the counter's end)
+  wait 1.3
+  walk player right 3 down 2 right 1
+  waitmoves
+  face mom left
+  wait 0.5
   speaker "Mom"
   say "{player}! Welcome home. ...Is that a Pokémon? Professor Rowan gave you a Pokémon of your own?"
   say "Oh, I'm so glad he happened to be there. You should go to his lab in Sandgem Town and thank him properly."
@@ -73,15 +95,15 @@ label RunningShoes
   fanfare keyitem
   text "{player} received the Running Shoes!"
   say "Hold down the run button as you walk, and off you'll go! Now, be careful out there."
-  walk mom right 3 up 2
-  face mom left
+  face mom up
   setvar VAR_PLAYER_HOUSE_STATE 4
   endscene
   end
 
 
-# The tile in front of the door, the first time the player heads out.
+# The door's mat, the first time the player heads out (the original's coordinate event is on the mat itself).
 script DoorWarning
+  face player mom
   face mom player
   speaker "Mom"
   say "Going out after {rival}? Remember, wild Pokémon live in the tall grass."
@@ -124,22 +146,63 @@ label Parcel
   give "Journal"
   say "It's a Journal. It keeps a note of everything you do, so you can always look back on your adventure."
   say "Honestly, I'd love to go on a journey like that myself. You take care of yourself out there."
+  # TwinleafTownPlayerHouse1F_RivalsMomEnters: she comes in at the door and stops a step inside it, on 6, 9. The
+  # original's scene goes four ways by the side of Mom the player spoke to her from, and so does this one: Mom is on
+  # her cushion at 7, 8, so the player is on 7, 9 (below her), 7, 7 (above), 8, 8 (to her east) or 6, 8 (west)
   sound "door_open"
   show rival_mom
+  face mom down
+  emote mom exclaim
+  face player down
+  walk rival_mom up 2
+  face rival_mom right
+  if var PLAYER_Y == 9 face player left
   speaker "{rival}'s Mom"
   say "Hello? Is {rival} here? ...Oh, he's gone already? That boy!"
-  walk rival_mom up 2
   say "He ran off without the parcel I'd put by for him. I so wanted him to have it..."
+  face mom player
+  face player mom
   speaker "Mom"
   say "Then {player} can take it to him! You will, won't you?"
+  # She comes over to whoever is to carry it: two steps up for someone above Mom, two east for someone beyond her
+  if var PLAYER_Y == 7 walk rival_mom up 2
+  if var PLAYER_X == 8 walk rival_mom right 2
+  face rival_mom player
+  face player rival_mom
   speaker "{rival}'s Mom"
   say "Would you really? Thank you, dear!"
   give "Parcel"
   setflag FLAG_RECEIVED_PARCEL
   say "I think he said he was going to Jubilife City. Please give it to him when you catch up with him."
+  # And out again by the way she came
+  if var PLAYER_Y == 7 walk rival_mom down 2
+  if var PLAYER_X == 8 walk rival_mom left 2
+  face player down
+  face mom down
   walk rival_mom down 2
   hide rival_mom
   sound "door_close"
+  face mom up
   setvar VAR_PLAYER_HOUSE_STATE 6
   endscene
+  end
+
+
+# The television Mom watches: the day's contest round-up, by the hour (the original's three digests: the Cute Contest
+# in the morning, the Smart Contest by day and at dusk, the Tough Contest at night).
+script TV
+  speaker "TV"
+  if time morning goto Cute
+  if time night goto Tough
+  if time latenight goto Tough
+  say "\"...and that was this afternoon's Normal Rank Smart Contest! The ribbon goes to a schoolboy from Jubilife, whose Pokémon out-thought the whole stage.\""
+  say "\"That's the Contest Round-up for today. See you next time!\""
+  end
+label Cute
+  say "\"...and that was this morning's Normal Rank Cute Contest! The ribbon goes to a young lady from Hearthome, whose Pokémon had all three judges cooing.\""
+  say "\"That's the Contest Round-up for this morning. See you next time!\""
+  end
+label Tough
+  say "\"...and that was tonight's Normal Rank Tough Contest! The ribbon goes to a hiker from Oreburgh, whose Pokémon looked fit to carry the stage away.\""
+  say "\"That's the Contest Round-up for tonight. See you next time!\""
   end

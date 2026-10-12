@@ -269,7 +269,7 @@ partial class Harness
             // The victory as the Hall of Fame's scene leaves it
             engine.StartScript(ScriptParser.Parse(Hall, "script Test\nsetflag FLAG_UNLOCKED_VS_SEEKER_LVL_4\ncall Victory\nhalloffame\nsetflag FLAG_GAME_COMPLETED\nsetflag SinnohHallOfFame\nheal")[0]);
             ReadTo(null, 300);
-            ComeThrough("PlayerHouse2F", 4, 4, Direction.Up);
+            ComeThrough("PlayerHouse2F", 4, 6, Direction.Up);
             ReadTo(null, 300);
         }
 
@@ -312,7 +312,7 @@ partial class Harness
         Console.WriteLine($"home: {game.Map.Name} at {Me().GridX},{Me().GridY} facing {Me().Facing}; " + Vars("VAR_PLAYER_HOUSE_POSTGAME_STATE"));
 
         // ---- downstairs: Mom's news
-        ComeThrough("PlayerHouse", 8, 4, Direction.Down);
+        ComeThrough("PlayerHouse", 11, 3, Direction.Right);
         ReadTo("looking for you"); Frames(4); Shot("ch61_home_mom_has_news");
         ReadTo("Snowpoint City"); Frames(4); Shot("ch62_home_a_ship_at_snowpoint");
         ReadTo("Pokédex"); Frames(4); Shot("ch63_home_the_professors_pokedex");
