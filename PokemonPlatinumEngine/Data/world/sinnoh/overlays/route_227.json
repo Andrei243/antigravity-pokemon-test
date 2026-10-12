@@ -19,7 +19,7 @@
   ],
   "people": {
     "rival": { "name": "{rival}", "dialog": [ "{rival}: Not now, {player}! I'm training!" ], "still": true },
-    "crasher_wake": { "name": "Crasher Wake", "npcType": "CrasherWake", "dialog": [ "Crasher Wake: Wahaha! The mountain air does a body good!" ], "still": true },
+    "crasher_wake": { "name": "Crasher Wake", "dialog": [ "Crasher Wake: Wahaha! The mountain air does a body good!" ], "still": true },
     "buck": { "name": "Buck", "script": "Buck", "still": true },
     "ace_trainer_saul": {
       "name": "Saul",
