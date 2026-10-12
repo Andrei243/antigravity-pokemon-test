@@ -332,7 +332,7 @@
     {
       "id": "teala",
       "name": "Teala",
-      "npcType": "Lady",
+      "npcType": "teala",
       "x": 16,
       "y": 6,
       "facing": "Down",

@@ -139,9 +139,9 @@ public class SunyshoreAndTheLakeGuardiansTests
         Assert.Equal((857, 741, Direction.Right), (Of("jasmine").GridX, Of("jasmine").GridY, Of("jasmine").Facing));
         Assert.Equal((855, 747, "FLAG_HIDE_SUNYSHORE_CITY_RIVAL"), (Of("rival").GridX, Of("rival").GridY, Of("rival").HiddenBy));
         Assert.DoesNotContain(sinnoh.NPCs, n => n.Key == "rival" && n.ScriptFile == "sunyshore_city");
-        // Nobody of the city stands as the boy the player is
+        // Nobody of the city stands as the boy the player is: Flint and Jasmine are their own looks (plan 11 · C6)
         Assert.All(sinnoh.Everyone.Where(n => n.ScriptFile == "sunyshore_city" && !n.IsThing && !n.IsItemBall && n.Key != "rival"),
-            n => Assert.Contains(n.NpcType, new[] { "Youngster", "Lass", "Lady", "Gentleman" }));
+            n => Assert.Contains(n.NpcType, new[] { "Youngster", "Lass", "Lady", "Gentleman", "flint", "jasmine" }));
         // The Gym's door is the tile behind Flint, with wall either side of it
         Assert.Equal("SunyshoreGym", sinnoh.GetWarpAt(845, 747)!.TargetMap);
         Assert.True(sinnoh.IsSolid(844, 747) && sinnoh.IsSolid(846, 747));

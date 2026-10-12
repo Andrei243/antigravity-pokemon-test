@@ -195,7 +195,7 @@
     {
       "id": "candice",
       "name": "Candice",
-      "npcType": "Lass",
+      "npcType": "candice",
       "x": 11,
       "y": 3,
       "facing": "Down",

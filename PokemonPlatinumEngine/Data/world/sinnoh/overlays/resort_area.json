@@ -24,7 +24,7 @@
     "roark": { "name": "Roark", "npcType": "Roark", "script": "Roark", "still": true },
     "gardenia": { "name": "Gardenia", "npcType": "Gardenia", "script": "Gardenia", "still": true },
     "maylene": { "name": "Maylene", "npcType": "Maylene", "script": "Maylene", "still": true },
-    "byron": { "name": "Byron", "npcType": "Gentleman", "script": "Byron", "still": true },
+    "byron": { "name": "Byron", "script": "Byron", "still": true },
     "beauty_1": {
       "name": "Beauty",
       "dialog": [

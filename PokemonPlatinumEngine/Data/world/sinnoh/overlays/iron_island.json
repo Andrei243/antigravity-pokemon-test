@@ -12,6 +12,6 @@
     "sailor": { "name": "Sailor", "script": "Ferry" },
     // Riley before the tunnels' door, who gives HM04 and goes in (plan 02 · S10). He stands as the clerk until he has
     // a look of his own (plan 11 · C6)
-    "riley": { "name": "Riley", "npcType": "Clerk", "script": "Riley", "still": true }
+    "riley": { "name": "Riley", "script": "Riley", "still": true }
   }
 }

@@ -119,7 +119,7 @@
     {
       "id": "volkner",
       "name": "Volkner",
-      "npcType": "Youngster",
+      "npcType": "volkner",
       "x": 6,
       "y": 4,
       "facing": "Up",

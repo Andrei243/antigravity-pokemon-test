@@ -16,7 +16,7 @@
     // (Looker stands east of the tile the player is put down on, where the original stands him north of it: from
     // the field's camera the player's own head would hide him there as he speaks)
     "looker": { "name": "Looker", "at": [ 752, 233 ], "dialog": [ "Looker: Kaff! This ash, it is everywhere!" ], "still": true },
-    "buck": { "name": "Buck", "npcType": "Youngster", "dialog": [ "Buck: Give me a minute to get my breath back!" ], "still": true },
+    "buck": { "name": "Buck", "dialog": [ "Buck: Give me a minute to get my breath back!" ], "still": true },
     "dragon_tamer_darien": {
       "name": "Darien",
       "trainer": {

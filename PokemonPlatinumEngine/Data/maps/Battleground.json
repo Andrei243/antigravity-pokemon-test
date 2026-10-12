@@ -199,7 +199,7 @@
     {
       "id": "buck",
       "name": "Buck",
-      "npcType": "Youngster",
+      "npcType": "buck",
       "x": 11,
       "y": 8,
       "facing": "Down",
@@ -259,7 +259,7 @@
     {
       "id": "candice",
       "name": "Candice",
-      "npcType": "Lass",
+      "npcType": "candice",
       "x": 2,
       "y": 9,
       "facing": "Right",
@@ -269,7 +269,7 @@
     {
       "id": "byron",
       "name": "Byron",
-      "npcType": "Gentleman",
+      "npcType": "byron",
       "x": 2,
       "y": 9,
       "facing": "Right",
@@ -279,7 +279,7 @@
     {
       "id": "volkner",
       "name": "Volkner",
-      "npcType": "Youngster",
+      "npcType": "volkner",
       "x": 2,
       "y": 9,
       "facing": "Right",
@@ -299,7 +299,7 @@
     {
       "id": "riley",
       "name": "Riley",
-      "npcType": "Clerk",
+      "npcType": "riley",
       "x": 11,
       "y": 5,
       "facing": "Up",
@@ -309,7 +309,7 @@
     {
       "id": "marley",
       "name": "Marley",
-      "npcType": "Lass",
+      "npcType": "marley",
       "x": 11,
       "y": 5,
       "facing": "Up",
@@ -319,7 +319,7 @@
     {
       "id": "buck_guest",
       "name": "Buck",
-      "npcType": "Youngster",
+      "npcType": "buck",
       "x": 11,
       "y": 5,
       "facing": "Up",

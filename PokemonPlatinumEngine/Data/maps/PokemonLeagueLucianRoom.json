@@ -83,7 +83,7 @@
     {
       "id": "lucian",
       "name": "Lucian",
-      "npcType": "Gentleman",
+      "npcType": "lucian",
       "x": 8,
       "y": 5,
       "facing": "Down",

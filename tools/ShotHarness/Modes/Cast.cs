@@ -2,8 +2,16 @@ partial class Harness
 {
     // ---------------------------------------------------------------- the character table's looks (plan 11 · C2 to C6)
 
-    /// <summary>The named cast who battle, each stood on the platform as a Leader or a Commander is: as themselves.</summary>
-    static readonly string[] CastInBattle = { "roark", "gardenia", "fantina", "maylene", "crasher_wake", "mars", "jupiter" };
+    /// <summary>
+    /// The named cast who battle, each stood on the platform as a Leader, a Commander, the Elite Four, the Champion, a
+    /// Frontier Brain or a partner met again at the Battleground is: as themselves (plan 11 · C5, C6).
+    /// </summary>
+    static readonly string[] CastInBattle =
+    {
+        "roark", "gardenia", "fantina", "maylene", "crasher_wake", "mars", "jupiter",
+        "saturn", "byron", "candice", "volkner", "aaron", "bertha", "flint", "lucian", "cynthia",
+        "riley", "marley", "buck", "palmer", "thorton", "argenta", "darach", "dahlia"
+    };
 
     // cast [look ...]: every look of the character table as a turntable (front, three-quarter, side and back), twenty
     // to a board (56_cast_NN), or only the looks named; then a trainer battle against each of the named cast who

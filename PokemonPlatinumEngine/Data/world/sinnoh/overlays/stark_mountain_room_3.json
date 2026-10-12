@@ -20,7 +20,7 @@
     "charon": { "name": "Charon", "script": "Galactic", "still": true },
     "grunt_m_1": { "name": "Grunt", "script": "Galactic", "still": true },
     "grunt_m_2": { "name": "Grunt", "script": "Galactic", "still": true },
-    "buck": { "name": "Buck", "npcType": "Youngster", "script": "BuckWaits", "still": true },
+    "buck": { "name": "Buck", "script": "BuckWaits", "still": true },
     "looker": { "name": "Looker", "script": "Galactic", "still": true },
     "croagunk": { "name": "Croagunk", "still": true },
     "policeman_1": { "name": "Policeman", "npcType": "Gentleman", "script": "Galactic", "still": true },

@@ -154,7 +154,7 @@
     {
       "id": "byron",
       "name": "Byron",
-      "npcType": "Gentleman",
+      "npcType": "byron",
       "x": 9,
       "y": 11,
       "facing": "Down",
@@ -167,7 +167,7 @@
     {
       "id": "crasher_wake",
       "name": "Crasher Wake",
-      "npcType": "CrasherWake",
+      "npcType": "crasher_wake",
       "x": 19,
       "y": 4,
       "facing": "Up",
@@ -177,7 +177,7 @@
     {
       "id": "candice",
       "name": "Candice",
-      "npcType": "Lass",
+      "npcType": "candice",
       "x": 6,
       "y": 6,
       "facing": "Down",
@@ -187,7 +187,7 @@
     {
       "id": "volkner",
       "name": "Volkner",
-      "npcType": "Youngster",
+      "npcType": "volkner",
       "x": 13,
       "y": 4,
       "facing": "Left",
@@ -207,7 +207,7 @@
     {
       "id": "flint",
       "name": "Flint",
-      "npcType": "Youngster",
+      "npcType": "flint",
       "x": 14,
       "y": 4,
       "facing": "Left",

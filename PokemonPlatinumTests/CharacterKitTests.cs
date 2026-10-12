@@ -19,7 +19,10 @@ public class CharacterKitTests
     {
         "PLAYER", "RIVAL", "ROWAN", "NURSE", "MOM", "LADY", "CLERK", "YOUNGSTER", "LASS", "CLOWN", "LOOKER", "GENTLEMAN", "TRAINER",
         // Plan 11 · C5's named cast
-        "POKETCH_PRESIDENT", "CHERYL", "MIRA", "BEBE", "CRASHER_WAKE"
+        "POKETCH_PRESIDENT", "CHERYL", "MIRA", "BEBE", "CRASHER_WAKE",
+        // Plan 11 · C6's: the second half's named cast and the Battle Frontier's
+        "SATURN", "RILEY", "BYRON", "CANDICE", "VOLKNER", "JASMINE", "MARLEY", "BUCK", "CHARON", "AARON", "BERTHA", "FLINT", "LUCIAN",
+        "PALMER", "TEALA", "PROF_OAK", "THORTON", "ARGENTA", "DARACH", "DAHLIA", "CAITLIN"
     };
 
     public static IEnumerable<object[]> HumanTypes => Humans.Select(h => new object[] { h });
@@ -83,6 +86,7 @@ public class CharacterKitTests
     [InlineData("YOUNGSTER")]
     [InlineData("MIRA")]
     [InlineData("CRASHER_WAKE")]
+    [InlineData("RILEY")]
     public void EveryHatShowsOverTheHair(string type)
     {
         // The hair is built before the hat, so a hat set too close to the head disappears into it without a trace
@@ -270,6 +274,32 @@ public class CharacterAnimationTests
         var back = new PixelCanvas(40, 58);
         CharacterFaces.Stamp(back, new Vector2(20f, 20f), 2, style, Expression.Neutral, blink: false);
         Assert.DoesNotContain(Enumerable.Range(0, 40 * 58), i => back.IsOpaque(i % 40, i / 40));
+    }
+
+    [Fact]
+    public void GlassesAreARimRoundEachEyeOnBothFaces()
+    {
+        // Plan 11 · C6: glasses are no shape but part of the face. On a sprite, a one-texel rim round each eye's two by
+        // three with the bridge between them on the eyes' top row, and the eyes stamped over it
+        var lucian = CharacterStyle.For("LUCIAN");
+        Assert.NotNull(lucian.Glasses);
+        var front = new PixelCanvas(40, 58);
+        CharacterFaces.Stamp(front, new Vector2(20.4f, 20.6f), 0, lucian, Expression.Neutral, blink: false);
+        Assert.Equal(new[] { 16, 17, 18, 19, 21, 22, 23, 24 }, Enumerable.Range(0, 40).Where(x => front.IsOpaque(x, 19)));
+        Assert.Equal(lucian.Glasses, front.Get(20, 20));
+        Assert.True(front.IsOpaque(16, 21) && front.IsOpaque(19, 21) && front.IsOpaque(21, 21) && front.IsOpaque(24, 21));
+        Assert.Equal(Color.White, front.Get(17, 21));   // the eye's highlight, over the rim's inside
+        var bare = lucian.Clone();
+        bare.Glasses = null;
+        var plain = new PixelCanvas(40, 58);
+        CharacterFaces.Stamp(plain, new Vector2(20.4f, 20.6f), 0, bare, Expression.Neutral, blink: false);
+        Assert.DoesNotContain(Enumerable.Range(0, 40), x => plain.IsOpaque(x, 19));
+
+        // In battle, the rims are painted round the eyes, open and shut
+        int Opaque(PixelCanvas c) => Enumerable.Range(0, CharacterFaces.TextureSize * CharacterFaces.TextureSize)
+            .Count(i => c.IsOpaque(i % CharacterFaces.TextureSize, i / CharacterFaces.TextureSize));
+        foreach (bool blink in new[] { false, true })
+            Assert.True(Opaque(CharacterFaces.Paint(lucian, Player.Face, Expression.Neutral, blink)) > Opaque(CharacterFaces.Paint(bare, Player.Face, Expression.Neutral, blink)) + 100);
     }
 
     [Fact]

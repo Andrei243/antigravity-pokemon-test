@@ -11,7 +11,7 @@
     { "trigger": 2, "script": "MarleyJoins" }
   ],
   "people": {
-    "marley": { "name": "Marley", "npcType": "Lass", "script": "Marley", "still": true },
+    "marley": { "name": "Marley", "script": "Marley", "still": true },
     "ace_trainer_micah": {
       "name": "Micah",
       "trainer": {

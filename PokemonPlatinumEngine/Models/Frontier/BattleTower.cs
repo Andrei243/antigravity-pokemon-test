@@ -66,8 +66,8 @@ public sealed class BattleTowerChallenge
 
     public static readonly string[] PartnerNames = { "Cheryl", "Mira", "Riley", "Marley", "Buck" };
 
-    /// <summary>How each stands in the field and in battle: their own look where this game has one, and a stand-in where it hasn't yet (plan 11).</summary>
-    public static readonly string[] PartnerLooks = { "Cheryl", "Mira", "Clerk", "Lass", "Youngster" };
+    /// <summary>How each stands in the field and in battle: their own look (plan 11 · C5, C6).</summary>
+    public static readonly string[] PartnerLooks = { "cheryl", "mira", "riley", "marley", "buck" };
 
     public TowerMode Mode { get; }
 

@@ -131,7 +131,7 @@
     {
       "id": "prof_oak",
       "name": "Prof. Oak",
-      "npcType": "Gentleman",
+      "npcType": "prof_oak",
       "x": 4,
       "y": 5,
       "facing": "Down",
