@@ -372,7 +372,12 @@ internal sealed class CureBerry(bool curesConfusion, params StatusCondition[] cu
 
         var berry = p.HeldItem!;
         ctx.ConsumeItem(self);
-        if (confusion) self.ConfusionTurns = 0;
+        if (confusion)
+        {
+            // The line that follows tells that the confusion is over, whichever of the two it is (plan 09 · L2)
+            self.ConfusionTurns = 0;
+            ctx.PassingChanged(self);
+        }
         if (status) ctx.CureStatus(self, $"{self.Name}'s {ctx.ItemAtWork(self, berry)} cured its {BattleText.StatusName(p.Status)}!");
         else ctx.Announce($"{self.Name}'s {ctx.ItemAtWork(self, berry)} snapped it out of its confusion!");
     }
@@ -480,6 +485,7 @@ internal sealed class MentalHerb : BattleEffect
         var herb = p.HeldItem!;
         ctx.ConsumeItem(self);
         self.Volatile.InLoveWith = null;
+        ctx.PassingChanged(self);
         ctx.Announce($"{self.Name} cured its infatuation using its {ctx.ItemAtWork(self, herb)}!");
     }
 }

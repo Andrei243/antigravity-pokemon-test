@@ -22,6 +22,12 @@ internal sealed class SpriteFraming
 
     /// <summary>World units covered by one sprite pixel.</summary>
     public float WorldPerPixel;
+
+    /// <summary>
+    /// Half the width of the model's silhouette as this view turns it, in model units (plan 09 · L2): how far from its
+    /// middle the edge of its body is, for what is drawn beside it in battle.
+    /// </summary>
+    public float HalfWidth;
 }
 
 /// <summary>
@@ -93,7 +99,8 @@ internal static class PokemonSprites
             Camera = new Camera3D(target - forward * 40f, target, up, frame, CameraProjection.Orthographic),
             Yaw = yaw,
             FeetRow = view == SpriteView.Icon ? 0.5f + (centerV - minV) / frame : 1f - margin,
-            WorldPerPixel = frame / size
+            WorldPerPixel = frame / size,
+            HalfWidth = (maxU - minU) / 2f
         };
         return model.Framings.GetOrAdd((view, size), f);
     }

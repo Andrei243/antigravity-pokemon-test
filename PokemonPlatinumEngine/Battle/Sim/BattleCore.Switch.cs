@@ -53,8 +53,13 @@ public sealed partial class BattleCore
     /// <c>BattleSystem_CleanupFaintedMon</c>): whoever it bound is free and whoever loved it no longer does; and,
     /// unless it passes the baton, whoever it trapped or took aim at is let go.
     /// </summary>
-    private void LetGoOf(Battler leaving, bool passesTheBaton = false)
+    /// <returns>
+    /// What it tells whoever shows the battle: a love that ends here has no line of its own (plan 09 · L2), so the
+    /// caller puts these on the line that tells of the leaving, or lets them stand in the log by themselves.
+    /// </returns>
+    private List<BattleEvent> LetGoOf(Battler leaving, bool passesTheBaton = false)
     {
+        var told = new List<BattleEvent>();
         foreach (var other in AllBattlers.Where(b => b != leaving))
         {
             var v = other.Volatile;
@@ -63,7 +68,11 @@ public sealed partial class BattleCore
                 v.BoundBy = null;
                 v.BindTurns = 0;
             }
-            if (v.InLoveWith == leaving.Place) v.InLoveWith = null;
+            if (v.InLoveWith == leaving.Place)
+            {
+                v.InLoveWith = null;
+                if (other.IsActive) told.Add(Passing(other));
+            }
             if (passesTheBaton) continue;
             if (v.TrappedBy == leaving.Place) v.TrappedBy = null;
             if (v.LockedOnBy == leaving.Place)
@@ -72,6 +81,7 @@ public sealed partial class BattleCore
                 v.LockOnTurns = 0;
             }
         }
+        return told;
     }
 
     /// <summary>What Baton Pass carries over, taken from a place as its Pokémon leaves it.</summary>
@@ -80,7 +90,8 @@ public sealed partial class BattleCore
     private Baton? Withdraw(Battler place, bool passesTheBaton = false)
     {
         foreach (var e in BattleEffects.Of(place)) e.OnWithdraw(place);
-        LetGoOf(place, passesTheBaton);
+        // Whoever loved it no longer does, and no line says so: the event stands by itself (plan 09 · L2)
+        foreach (var told in LetGoOf(place, passesTheBaton)) Emit(told);
         var baton = passesTheBaton
             ? new Baton(place.Volatile.Passed(), new Dictionary<StatType, int>(place.Pokemon!.StatStages), place.ConfusionTurns)
             : null;
@@ -264,7 +275,8 @@ public sealed partial class BattleCore
         if (baton != null) TakeUp(place, baton);
         var said = Say(line);
         if (!place.IsPlayerSide) said.With(new Seen(incoming.Species));
-        said.With(new Entered(place.Place, incoming, FromBall: true));
+        // The line tells what the newcomer brings: a condition it already had, a confusion passed to it (plan 09 · L2)
+        Bringing(said.With(new Entered(place.Place, incoming, FromBall: true)), place);
         // A Substitute passed by Baton Pass comes in with the Pokémon it now stands for, on the line that sends it out
         if (baton != null && place.HasSubstitute) said.With(new SubstituteChanged(place.Place, Up: true));
         SentOutTheLast(place, said);
@@ -470,7 +482,7 @@ public sealed partial class BattleCore
                 var next = picked;
                 entered.Add(place);
                 SendIn(place, next);
-                var sent = Say(SentOutLine(place, next)).With(new Seen(next.Species)).With(new Entered(place.Place, next, FromBall: true));
+                var sent = Bringing(Say(SentOutLine(place, next)).With(new Seen(next.Species)).With(new Entered(place.Place, next, FromBall: true)), place);
                 SentOutTheLast(place, sent);
             }
 
@@ -482,7 +494,7 @@ public sealed partial class BattleCore
                 var chosen = picked;
                 entered.Add(place);
                 SendIn(place, chosen);
-                Say(SentOutLine(place, chosen)).With(new Entered(place.Place, chosen, FromBall: true));
+                Bringing(Say(SentOutLine(place, chosen)).With(new Entered(place.Place, chosen, FromBall: true)), place);
             }
 
             if (entered.Count == 0) yield break;

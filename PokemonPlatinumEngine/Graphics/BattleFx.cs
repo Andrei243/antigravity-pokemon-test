@@ -109,6 +109,7 @@ internal sealed class FxPlaces
 {
     private readonly Vector3[,] feet = new Vector3[2, 2];
     private readonly float[,] height = new float[2, 2];
+    private readonly float[,] halfWidth = new float[2, 2];
 
     public FxPlaces()
     {
@@ -120,10 +121,26 @@ internal sealed class FxPlaces
         }
     }
 
-    public void Set(BattleSide side, int slot, Vector3 feetAt, float heightOf)
+    /// <param name="halfWidthOf">Half the width of its body as the battle sees it; a typical body's where it isn't known.</param>
+    public void Set(BattleSide side, int slot, Vector3 feetAt, float heightOf, float halfWidthOf = 0f)
     {
         feet[(int)side, slot] = feetAt;
         height[(int)side, slot] = Math.Max(0.2f, heightOf);
+        halfWidth[(int)side, slot] = halfWidthOf > 0f ? halfWidthOf : Math.Max(0.2f, heightOf) * TypicalHalfWidth;
+    }
+
+    /// <summary>Half a typical body's width, in its height: what stands in for a body nobody has measured.</summary>
+    public const float TypicalHalfWidth = 0.38f;
+
+    /// <summary>
+    /// How far from its middle the edge of the body standing there is, world units (plan 09 · L2): what is drawn beside
+    /// a Pokémon stands off it by this, so it hugs a narrow body and clears a wide one. Never under a fifth of its
+    /// height nor over three fifths, so a tail or a pair of wings doesn't send things far away.
+    /// </summary>
+    public float HalfWidth(BattleSide side, int slot)
+    {
+        float h = Height(side, slot);
+        return Math.Clamp(halfWidth[(int)side, Math.Clamp(slot, 0, 1)], h * 0.2f, h * 0.6f);
     }
 
     public Vector3 Feet(BattleSide side, int slot) => feet[(int)side, Math.Clamp(slot, 0, 1)];

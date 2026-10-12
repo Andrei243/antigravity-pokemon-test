@@ -48,6 +48,12 @@ public sealed class CombatantView
 
     /// <summary>Whether a doll stands here (or is dropping in): what hides a mark on the Pokémon behind it.</summary>
     public bool BehindDoll => Substitute is { Up: true };
+
+    /// <summary>
+    /// What the Pokémon here shows for as long as it has it (plan 09 · L2): its status condition, a confusion, a
+    /// love. Set by the log's lines (<see cref="ConditionLooks.Tell"/>), never read from the rules.
+    /// </summary>
+    public ConditionLook Condition { get; internal set; } = new();
 }
 
 /// <summary>
@@ -235,6 +241,17 @@ public sealed class BattleAnimator
     public const float FieldArriveTime = 0.6f;
     public const float FieldFadeTime = 0.5f;
 
+    /// <summary>
+    /// A condition that lasts on a Pokémon (plan 09 · L2): its mark eases in over <see cref="ConditionArriveTime"/>
+    /// from the line that tells of it and out over <see cref="ConditionFadeTime"/> on the line that ends it; and
+    /// while a moment or a mark plays on the Pokémon, the marks that last stand back, going over
+    /// <see cref="ConditionStandBackTime"/> and returning over the cue's last <see cref="ConditionReturnTime"/>.
+    /// </summary>
+    public const float ConditionArriveTime = 0.4f;
+    public const float ConditionFadeTime = 0.4f;
+    public const float ConditionStandBackTime = 0.15f;
+    public const float ConditionReturnTime = 0.25f;
+
     // The thrown ball: the trainer runs in and throws, the ball flies, opens over the foe and pulls it in, drops
     // onto the platform, wobbles once per successful shake check with a short pause after each, then clicks shut
     // or bursts open
@@ -399,6 +416,50 @@ public sealed class BattleAnimator
     /// have told of them: the engine sets it from the log's events and settles it with the rules once a menu opens.
     /// </summary>
     public FieldLook FieldLook { get; } = new();
+
+    // ------------------------------------------------------------------ a condition that lasts (plan 09 · L2)
+
+    /// <summary>
+    /// What each Pokémon shows for as long as it has it, as the lines have told of it: a status condition, a
+    /// confusion, a love. The engine hands it the log's events and settles it with the rules once a menu opens;
+    /// each place's look is also its view's <see cref="CombatantView.Condition"/>.
+    /// </summary>
+    public ConditionLooks Conditions { get; } = new();
+
+    public BattleAnimator()
+    {
+        for (int side = 0; side < 2; side++)
+            for (int slot = 0; slot < 2; slot++)
+                views[side, slot].Condition = Conditions.Of((BattleSide)side, slot);
+    }
+
+    /// <summary>
+    /// How much of the marks that last about the Pokémon in a place is drawn, 0..1 (style guide, "A condition that
+    /// lasts"). None about a Pokémon that can't be seen, as for every other mark on one (<see cref="Shows"/>, the
+    /// original's <c>BattleSystem_ShouldShowStatusEffect</c>): behind a doll, out of sight in the middle of a move,
+    /// still in its ball, fainting, being called back or drawn into a ball. And they stand back while a moment of
+    /// the turn or a mark given plays on that Pokémon, so the two never fight over it. The body's own (shut eyes,
+    /// the hold, the cast) isn't asked here: it shows wherever the body does.
+    /// </summary>
+    public float LastingShown(BattleSide side, int slot)
+    {
+        var v = this[side, Math.Clamp(slot, 0, 1)];
+        if (v.Shown == null || !v.Present || v.Away || v.BehindDoll) return 0f;
+        if (v.FaintAge >= 0f || v.RecallAge >= 0f || (v.CaptureAge >= 0f && v.CaptureDelay <= 0f)) return 0f;
+        float shown = 1f;
+        // Out of its ball first: they come with the last of its growing
+        if (v.SendOutAge >= 0f) shown = Math.Clamp(Emerge(v.SendOutAge) * 3f - 2f, 0f, 1f);
+        // A doll that fades lets them back as its Pokémon grows back
+        if (v.Substitute is { Up: false } fading) shown *= Math.Clamp(fading.Age / SubstituteOutTime, 0f, 1f);
+        foreach (var cue in cues)
+        {
+            if (cue.Kind is not (CueKind.Moment or CueKind.Status or CueKind.StatUp or CueKind.StatDown or CueKind.Heal)) continue;
+            if (cue.ToSide != side || cue.ToSlot != slot) continue;
+            float back = Math.Min(cue.Age / ConditionStandBackTime, (cue.Length - cue.Age) / ConditionReturnTime);
+            shown *= 1f - Math.Clamp(back, 0f, 1f);
+        }
+        return shown;
+    }
 
     // ------------------------------------------------------------------ the Substitute (plan 25 · Y1)
 
@@ -624,6 +685,7 @@ public sealed class BattleAnimator
             FadingWeather = Sim.BattleWeather.None;
         }
         FieldLook.Advance(dt);
+        Conditions.Advance(dt);
         if (Ball != null)
         {
             Ball.Age += dt;

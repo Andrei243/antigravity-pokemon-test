@@ -436,7 +436,7 @@ public sealed partial class BattleCore
         {
             if (--user.ConfusionTurns <= 0)
             {
-                Say($"{user.Name} snapped out of confusion!");
+                Say($"{user.Name} snapped out of confusion!").With(Passing(user));
             }
             else
             {

@@ -233,7 +233,7 @@ public sealed partial class BattleCore
         var theirs = by.Pokemon!.Gender;
         if (mine == theirs || mine == Gender.Genderless || theirs == Gender.Genderless || by.Volatile.InLoveWith != null) return;
         by.Volatile.InLoveWith = smitten.Place;
-        Say($"{smitten.Name}'s {ItemAtWork(smitten)} made {by.Name} fall in love!");
+        Say($"{smitten.Name}'s {ItemAtWork(smitten)} made {by.Name} fall in love!").With(Passing(by));
     }
 
     // ---------------------------------------------------------------- the prize
@@ -437,12 +437,12 @@ public sealed partial class BattleCore
         if (use.ContainsKey("healConfusion") && where is { IsConfused: true })
         {
             where.ConfusionTurns = 0;
-            Say($"{name} snapped out of its confusion!");
+            Say($"{name} snapped out of its confusion!").With(Passing(where));
         }
         if (use.ContainsKey("healAttract") && where?.Volatile.InLoveWith != null)
         {
             where.Volatile.InLoveWith = null;
-            Say($"{name} got over its infatuation!");
+            Say($"{name} got over its infatuation!").With(Passing(where));
         }
 
         if (use.ContainsKey("restorePPAllMoves"))

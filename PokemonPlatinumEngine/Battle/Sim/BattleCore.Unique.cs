@@ -487,7 +487,7 @@ public sealed partial class BattleCore
                 if (t.Volatile.InLoveWith != null)
                 {
                     t.Volatile.InLoveWith = null;
-                    Say($"{t.Name} got over its infatuation thanks to the {item.Name}!");
+                    Say($"{t.Name} got over its infatuation thanks to the {item.Name}!").With(Passing(t));
                 }
                 break;
             default:
@@ -538,7 +538,7 @@ public sealed partial class BattleCore
         {
             if (!eater.IsConfused) return;
             eater.ConfusionTurns = 0;
-            Say($"{eater.Name}'s {berry.Name} snapped it out of its confusion!");
+            Say($"{eater.Name}'s {berry.Name} snapped it out of its confusion!").With(Passing(eater));
         }
         void Raise(StatType stat, int by)
         {
