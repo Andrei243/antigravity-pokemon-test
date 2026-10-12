@@ -10,6 +10,7 @@ script Rival
   face rival player
   speaker "{rival}"
   if not item "Parcel" goto NoParcel
+  scene "The rival's parcel"
   say "Huh? {player}! What are you doing here? ...Wait, you've got something for me? From my mom?"
   fanfare item
   take "Parcel"
@@ -36,6 +37,7 @@ label Gone
   setvar VAR_POKETCH_CAMPAIGN_STATE 1
   clearflag FLAG_HIDE_JUBILIFE_CITY_POKETCH_CO_PRESIDENT
   clearflag FLAG_HIDE_JUBILIFE_CITY_CLOWNS_1_AND_2
+  endscene
   end
 label NoParcel
   say "This lesson's about status conditions. I knew all of it already. Obviously."

@@ -21,6 +21,7 @@
 
 script OnEnter
   if var VAR_SPEAR_PILLAR_DISTORTED_STATE != 1 end
+  scene "The torn pillar"
   place cynthia 32 34 up
   clearflag FLAG_HIDE_SPEAR_PILLAR_DISTORTED_CYNTHIA
   show cynthia
@@ -70,6 +71,8 @@ script OnEnter
   setflag FLAG_HIDE_GALACTIC_HQ_CONTROL_ROOM_CHARON
   music area
   face cynthia left
+  # (The scene ends before her question: it is asked again whenever she is spoken to, and ends the script itself)
+  endscene
   call Cynthia
   end
 

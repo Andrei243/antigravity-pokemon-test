@@ -24,6 +24,7 @@ script OnEnter
   if var VAR_VEILSTONE_CITY_GALACTIC_WAREHOUSE_STATE == 1 goto WithLooker
   end
 label WithLooker
+  scene "Looker in the warehouse"
   walk looker up 2
   speaker "Looker"
   say "Hmm. This door, it does not budge. Without the proper key, here our road ends."
@@ -48,6 +49,7 @@ label WithLooker
   say "Well. The warehouse has told us little. Never mind."
   say "In the Game Corner, I caught a whisper: a crate of Team Galactic's has gone off to Pastoria City."
   say "What is in it, I cannot say. But my nose for trouble, it is twitching."
+  endscene
   end
 
 
@@ -61,6 +63,7 @@ script Door
 # Up to the door with Looker's word given (the original's coordinate event, a row of two tiles): he comes in by the
 # way the player did, round them to the tile beside theirs, and opens the door.
 script LookerOpensDoor
+  scene "Looker opens the door"
   clearflag FLAG_HIDE_VEILSTONE_CITY_GALACTIC_WAREHOUSE_LOOKER
   place looker 8 11 up
   show looker
@@ -104,6 +107,7 @@ label Gone
   setflag FLAG_HIDE_VEILSTONE_CITY_GALACTIC_WAREHOUSE_LOOKER
   setflag FLAG_HIDE_VEILSTONE_CITY_LOOKER
   setvar VAR_VEILSTONE_CITY_GALACTIC_WAREHOUSE_STATE 4
+  endscene
   end
 
 

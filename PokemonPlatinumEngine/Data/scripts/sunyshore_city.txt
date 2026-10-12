@@ -42,6 +42,7 @@ label Elsewhere
 label Lower
   walk flint down 1
 label Comes
+  scene "Flint at the gate"
   walk flint left 3
   emote flint exclaim
   walk flint left 4
@@ -65,6 +66,7 @@ label Comes
   clearflag FLAG_HIDE_SUNYSHORE_CITY_FLINT
   show flint
   setvar VAR_SUNYSHORE_CITY_STATE 1
+  endscene
   end
 
 
@@ -78,6 +80,7 @@ script Flint
   say "It's all riding on you!"
   end
 label Back
+  scene "Flint leaves the door"
   say "Hey there! He's back at last! And in a good mood, for once."
   say "I'd bet he saw how tough you are the moment he laid eyes on you. He can't wait to battle you, I can tell."
   say "So you know what's wanted. A battle so hot it sets him alight again!"
@@ -102,12 +105,14 @@ label Side
 label Gone
   hide flint
   setflag FLAG_HIDE_SUNYSHORE_CITY_FLINT
+  endscene
   end
 
 
 # The beach north of the Gym, once the Badge is won (the original's SunyshoreCity_CoordEvent_RivalAndJasmine): from
 # each of the trigger's five tiles the rival runs up to the player, and Jasmine comes down to them afterwards.
 script RivalAndJasmine
+  scene "Jasmine on the beach"
   face jasmine down
   emote jasmine exclaim
   clearflag FLAG_HIDE_SUNYSHORE_CITY_RIVAL
@@ -177,6 +182,7 @@ label Meets
   if var PLAYER_X == 857 walk jasmine up 1
   face jasmine down
   setvar VAR_SUNYSHORE_CITY_STATE 3
+  endscene
   end
 
 

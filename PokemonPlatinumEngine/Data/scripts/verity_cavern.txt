@@ -25,6 +25,7 @@ script OnEnter
 
 # VerityCavern_Mesprit
 script Mesprit
+  scene "Mesprit"
   cry "Mesprit"
   speaker none
   say "Kyuoon!"
@@ -83,8 +84,10 @@ label Enters
   walk prof_rowan down 7
   hide prof_rowan
   setflag FLAG_HIDE_VERITY_CAVERN_PROF_OAK
+  endscene
   end
 # VerityCavern_ResetRoamingMespritState: set loose a second time, after the Hall of Fame
 label Again
   setvar VAR_ROAMING_MESPRIT_STATE 0
+  endscene
   end

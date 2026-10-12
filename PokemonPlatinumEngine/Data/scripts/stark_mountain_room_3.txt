@@ -54,6 +54,7 @@ label Hide
 script Charon
   # A game saved further up the hall before there was anyone here is brought down to the way in
   if var PLAYER_Y != 16 place player 7 16 up
+  scene "Charon"
   place buck 6 16 up
   face player up
   # The hall is longer than the picture is tall from the way in: the camera looks at its middle, where the stone and
@@ -198,6 +199,7 @@ script Charon
   clearflag FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_BUCK
   clearflag FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_LOOKER
   warp "Sinnoh" 751 233 up
+  endscene
   return
 
 

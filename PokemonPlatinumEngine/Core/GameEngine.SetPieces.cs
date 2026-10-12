@@ -109,10 +109,25 @@ public partial class GameEngine
 
     private sealed partial class FieldHost
     {
-        public float Anim(SetPiece piece, int count) => game.PlaySetPiece(piece, count);
+        public float Anim(SetPiece piece, int count)
+        {
+            float takes = game.PlaySetPiece(piece, count);
+            if (!Skipping) return takes;
+            // In a hurry the piece is at its end at once, unheard (plan 12 · Q20): what it leaves is left (a PC's
+            // screen on or dark, the balls in the Hall of Fame's sockets), and a tray's balls and a lift's ride are over
+            // (The time it would have taken is still told: it passes for whoever is walking)
+            game.world.Pieces.Settle(game.world.Life.Now);
+            return takes;
+        }
 
-        public float Shake(NPC? who, int times) => game.MoveSomeone(who, times, flicker: false);
+        // (Someone shaken or flickering stands as they stood once it is over: a hurry drops both, and tells their time)
+        public float Shake(NPC? who, int times) =>
+            !Skipping ? game.MoveSomeone(who, times, flicker: false) : Dropped(who) ? 0f : SetPieces.ShakeLength(times);
 
-        public float Flicker(NPC? who, int times) => game.MoveSomeone(who, times, flicker: true);
+        public float Flicker(NPC? who, int times) =>
+            !Skipping ? game.MoveSomeone(who, times, flicker: true) : Dropped(who) ? 0f : SetPieces.FlickerLength(times);
+
+        // (Nobody of that name on the map: the piece takes no time, played or not)
+        private bool Dropped(NPC? who) => who != null && !game.currentMap.NPCs.Contains(who);
     }
 }

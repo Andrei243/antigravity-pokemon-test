@@ -29,6 +29,7 @@ label ByTheLift
 
 # Walking up to him (trigger 0, a column of two tiles at x 35, state 0).
 script Join
+  scene "Riley joins"
   face riley right
   emote riley exclaim
   if var PLAYER_Y == 2 walk riley up 1
@@ -49,6 +50,7 @@ label Together
   speaker "Riley"
   say "I'll see to your Pokémon after every battle, so fight as hard as you like. Lead on!"
   partner riley "riley_iron_island"
+  endscene
   end
 
 
@@ -112,6 +114,7 @@ label Egg
 # The two grunts before the lift (trigger 3, a column of two tiles at x 21, state 1; or either of them spoken to).
 script Grunts
   if var VAR_IRON_ISLAND_B2F_LEFT_ROOM_FOLLOWER_RILEY_STATE != 1 goto Alone
+  scene "The grunts on Iron Island"
   partner off
   # Riley, a step behind, comes up beside the player, and they face the grunts together on the tiles before them
   if var PLAYER_X == 20 goto Close
@@ -173,6 +176,7 @@ label FacingSouth
   face player down
 label Offer
   call EggOffer
+  endscene
   end
 label Alone
   speaker "Galactic Grunt"

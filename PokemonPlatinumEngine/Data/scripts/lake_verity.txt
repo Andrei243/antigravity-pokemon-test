@@ -26,6 +26,7 @@ label After
   place counterpart 50 39 left
   end
 label Notice
+  scene "The lake held"
   place prof_rowan 46 50 up
   face prof_rowan down
   emote prof_rowan exclaim
@@ -36,6 +37,7 @@ label Notice
   if girl say "{player}! You came! Team Galactic was here before us. {assistant} went on ahead to stop them, and he is facing them alone!"
   say "This lout won't let me pass. Go, {player}! Hurry!"
   setvar VAR_LAKE_VERITY_PROF_ROWAN_STATE 1
+  endscene
   end
 
 
@@ -79,6 +81,7 @@ label After
 
 # Commander Mars (the original's script 6).
 script Mars
+  scene "Commander Mars at the lake"
   face self player
   face counterpart right
   speaker "Commander Mars"
@@ -105,4 +108,5 @@ script Mars
   speaker "Prof. Rowan"
   say "They are gone. Thank you, {player}. But all three lakes, she said..."
   say "Then what is happening at Lake Acuity? {rival} went there alone. {player}, I must ask you to go after him."
+  endscene
   end

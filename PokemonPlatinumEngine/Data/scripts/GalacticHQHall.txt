@@ -23,6 +23,7 @@ script OnEnter
 
 # Down the passage to the back of the hall (the original's coordinate event).
 script Speech
+  scene "The speech"
   face looker right
   emote looker exclaim
   speaker "Looker"
@@ -93,4 +94,5 @@ script Speech
   hide looker
   setflag FLAG_HIDE_GALACTIC_HQ_HALL_LOOKER
   setvar VAR_GALACTIC_HQ_HALL_STATE 1
+  endscene
   end

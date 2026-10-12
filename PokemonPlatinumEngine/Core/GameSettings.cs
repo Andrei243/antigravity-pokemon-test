@@ -33,6 +33,12 @@ public enum TextSpeed { Slow, Normal, Fast }
 /// </summary>
 public enum RulesDefault { Off, Rules, On }
 
+/// <summary>
+/// Which of the story's scenes may be skipped by holding the menu button (plan 12 · Q20): none, as Platinum has it;
+/// those this game or this machine has played to their end; or any.
+/// </summary>
+public enum SkipScenes { Off, Seen, Any }
+
 public static class RulesDefaults
 {
     /// <summary>Whether the help is on in a game played by these rules.</summary>
@@ -114,6 +120,34 @@ public sealed class GameSettings
 
     /// <summary>The frame limits the options offer, in their order: nought is none.</summary>
     public static readonly int[] FrameCaps = { 30, 60, 120, 0 };
+
+    /// <summary>
+    /// Which scenes of the story may be skipped by holding the menu button (plan 12 · Q20): off unless chosen, so
+    /// nothing is drawn and nothing can be skipped, as in Platinum.
+    /// </summary>
+    public SkipScenes SkipScenes { get; set; } = SkipScenes.Off;
+
+    /// <summary>
+    /// The scenes this machine has seen played to their end, in any game (plan 12 · Q20), each by its key
+    /// (<see cref="Story.SceneSkip.Key"/>), in the order of their keys: what a second game may skip under
+    /// <see cref="SkipScenes.Seen"/>. Kept whatever the row says, so that choosing it later knows what was seen.
+    /// </summary>
+    public List<string> ScenesSeen { get; set; } = new();
+
+    /// <summary>
+    /// Notes a scene as seen on this machine; true when it hadn't been, which is when the options are worth writing
+    /// to their file again (once for each scene, never a frame's work).
+    /// </summary>
+    public bool SeeScene(string key)
+    {
+        if (key.Length == 0) return false;
+        int at = ScenesSeen.BinarySearch(key, StringComparer.Ordinal);
+        if (at >= 0) return false;
+        // (A file edited by hand may hold them in any order: then the search finds nothing it should, and a plain look does)
+        if (ScenesSeen.Contains(key)) return false;
+        ScenesSeen.Insert(~at, key);
+        return true;
+    }
 
     /// <summary>True when there was no settings file to load, so the window still has to be sized for the monitor.</summary>
     [JsonIgnore]
@@ -226,5 +260,12 @@ public sealed class GameSettings
     }
 
     /// <summary>The options as they are in force now: what the log and a crash report say of them.</summary>
-    public string Describe() => JsonSerializer.Serialize(this, Json);
+    public string Describe()
+    {
+        if (ScenesSeen.Count == 0) return JsonSerializer.Serialize(this, Json);
+        // (Of the scenes this machine has seen, their number is all a log or a report needs: plan 12 · Q20)
+        var told = JsonSerializer.SerializeToNode(this, Json)!.AsObject();
+        told[nameof(ScenesSeen)] = ScenesSeen.Count;
+        return told.ToJsonString(Json);
+    }
 }

@@ -40,6 +40,7 @@ script DoorGuard
   if flag FLAG_POKEMON_LEAGUE_DOOR_GUARD_MOVED_AWAY goto Moved
   say "Beyond this door the Elite Four are waiting. Only a Trainer with all eight of Sinnoh's Gym Badges goes through. Let me have a look at yours."
   if badges < 8 goto Short
+  scene "The guard at the door"
   # PokemonLeagueNorthPokecenter1F_Text_ExamineGymBadges: he counts them off, town by town
   say "Oreburgh City's Coal Badge. Eterna City's Forest Badge. Hearthome City's Relic Badge. Veilstone City's Cobble Badge."
   say "Pastoria City's Fen Badge. Canalave City's Mine Badge. Snowpoint City's Icicle Badge. And... Sunyshore City's Beacon Badge!"
@@ -59,6 +60,7 @@ label Away
   setflag FLAG_POKEMON_LEAGUE_DOOR_GUARD_MOVED_AWAY
   say "All eight, and every one of them earned. You may go in."
   say "Make sure your Pokémon are rested first. Once you are through that door there is no coming back until you have won, or lost."
+  endscene
   end
 label Moved
   say "You will face the Elite Four one after another, and then the Champion. Nobody will heal your Pokémon between the rooms but you."
@@ -74,6 +76,7 @@ label Short
 # player's, as the original's three movements have him. The original stands him on its exit mat, which is its warp;
 # here the way out is the door in the row below the mat, so that is his own tile, a step further to come.
 script RivalBeforeTheDoor
+  scene "The rival before the door"
   show rival
   music "common/rival"
   if var PLAYER_X == 10 walk rival up 4 left 1 up 3 fast
@@ -106,4 +109,5 @@ label After
   hide rival
   music area
   setvar VAR_RIVAL_BEAT_SUNYSHORE_GYM 1
+  endscene
   end

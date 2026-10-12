@@ -318,6 +318,7 @@ public class SaveFileTests
             StoryVariables = new Dictionary<string, int> { ["VAR_ROAMING_MESPRIT_STATE"] = 2 },
             TakenItems = new List<string> { "route_201_potion" },
             GreetedPeople = new List<string> { "twinleaf_town.mom" },
+            ScenesSeen = new List<string> { "RowanLab.The Pokedex", "route_201.The professor" },
             PlayerStarter = "Turtwig",
             RivalStarter = "Chimchar"
         };

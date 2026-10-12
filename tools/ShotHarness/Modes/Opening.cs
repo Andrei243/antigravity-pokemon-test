@@ -14,6 +14,9 @@ partial class Harness
         game.LocationSign.Hide();
         var story = game.Story;
         var sinnoh = MapDatabase.Get("Sinnoh");
+        // Where the lab's people stand before any scene has walked them about: the scene skipped at the mode's end is
+        // told from there each time (plan 12 · Q20)
+        var labAtFirst = MapDatabase.Get("RowanLab").Everyone.Select(n => (Who: n, n.GridX, n.GridY, n.Facing)).ToList();
 
         DialogueManager Box() => game.Dialogue;
         GameState State() => game.State;
@@ -178,5 +181,75 @@ partial class Harness
         ReadTo(null);
         Frames(20); Shot("op31_home_afterwards");
         Console.WriteLine($"home, the parcel: Journal {inventory.GetQuantity(ItemDatabase.Get("Journal")!)}, Parcel {inventory.GetQuantity(ItemDatabase.Get("Parcel")!)}, the rival's mother on the map {house.NPCs.Any(n => n.Key == "rival_mom")}, state {story.Var("VAR_PLAYER_HOUSE_STATE")}");
+
+        // ---- a scene skipped (plan 12 · Q20): the lab's scene played to its end, and then skipped by the hold
+        // The scene as the chapter comes to it, in the lab's door: the story put back before it each time
+        var lab = MapDatabase.Get("RowanLab");
+        void BeforeTheLab()
+        {
+            story.SetVar("VAR_SANDGEM_TOWN_STATE", 1);
+            story.SetVar("VAR_SANDGEM_TOWN_LAB_STATE", 0);
+            story.Unset(StoryState.PokedexFlag);
+            story.Unset("FLAG_HIDE_SANDGEM_TOWN_LAB_COUNTERPART");
+            story.Set("FLAG_HIDE_SANDGEM_TOWN_COUNTERPART");
+            // (whoever a scene walks about a room stays where it left them: everyone back where the room has them)
+            foreach (var (who, x, y, facing) in labAtFirst) (who.GridX, who.GridY, who.Facing) = (x, y, facing);
+            game.Place(lab, 7, 15, Direction.Up);
+            // (as a door brings the player: everyone back where the flags have them, and the lab's own scene started)
+            game.ArriveOnMap();
+            Until(() => engine.ScriptRunning, "the lab's scene", 120);
+        }
+        // Under "Seen" a scene this game hasn't played to its end, and this machine neither, can't be skipped: the
+        // button held for a second and a half does nothing, and no ring is drawn
+        engine.Settings.SkipScenes = SkipScenes.Seen;
+        engine.Settings.ScenesSeen.Clear();
+        story.RestoreScenes(Array.Empty<string>());
+        int skippedBefore = game.ScenesSkipped;
+        BeforeTheLab();
+        ReadTo("Let me have a look");
+        game.SkipHeld = true;
+        Frames(90);
+        Console.WriteLine($"skip, under Seen, before the scene was ever played: scene {game.Scene}, may be skipped {game.SceneMayBeSkipped}, the ring's fill {game.SkipFill:0.00}, skipped {game.ScenesSkipped - skippedBefore}");
+        game.SkipHeld = false;
+        ReadTo(null);
+        Frames(40);
+        // (what the scene left: where everyone stands, what the story holds, the team and the bag: Modes/Skips.cs)
+        var played = WhatASceneLeft();
+        Console.WriteLine($"skip: played to its end, the game has seen [{string.Join(", ", story.ScenesSeen.Order(StringComparer.Ordinal))}], this machine [{string.Join(", ", engine.Settings.ScenesSeen)}]");
+
+        // Seen once, it may be skipped: the button held for a second closes the picture, and the scene is hurried
+        // through to its question, which is asked at its own pace; answered, the button held again skips on to the end
+        BeforeTheLab();
+        ReadTo("Let me have a look");
+        Frames(20);
+        game.SkipHeld = true;
+        Frames(33);
+        Console.WriteLine($"skip, seen: scene {game.Scene}, may be skipped {game.SceneMayBeSkipped}, the ring's fill {game.SkipFill:0.00}");
+        Shot("op40_skip_held");
+        ShotCrop("op40b_skip_held_close", 1920 - 64 - 220, 0, 284, 124, 4);
+        Until(() => game.Skipping, "the skip's dark closing", 120);
+        Until(() => !game.Skipping, "the skip's dark opening", 240);
+        game.SkipHeld = false;
+        Until(() => engine.Choice.IsOpen, "the professor's question after the skip", 240);
+        Console.WriteLine($"skip: the hurry stopped at the question \"{Box().CurrentLine}\", skipped {game.ScenesSkipped - skippedBefore}, scene {game.Scene}, Pokédex yet {story.Has(StoryState.PokedexFlag)}");
+        Frames(10);
+        engine.Choice.Confirm();
+        Frames(20);
+        game.SkipHeld = true;
+        Until(() => game.Skipping, "the second skip's dark closing", 180);
+        Until(() => !game.Skipping, "the second skip's dark opening", 240);
+        game.SkipHeld = false;
+        ReadTo(null);
+        Frames(40);
+        Shot("op41_skip_done");
+        var skipped = WhatASceneLeft();
+        Console.WriteLine($"skip: skipped {game.ScenesSkipped - skippedBefore} times in all");
+
+        // Side by side: a line begins with !! where the skipped scene left something else than the played one
+        TellBothWays("the lab", played, skipped);
+
+        // The options as they were: nothing is skipped unless a mode says so
+        engine.Settings.SkipScenes = SkipScenes.Off;
+        engine.Settings.ScenesSeen.Clear();
     }
 }

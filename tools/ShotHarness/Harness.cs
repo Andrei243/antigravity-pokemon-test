@@ -26,7 +26,10 @@ partial class Harness
         this.startDir = startDir;
 
         var startClock = System.Diagnostics.Stopwatch.StartNew();
-        engine = new GameEngine();
+        // The options are the game's defaults every run, whatever the output folder holds: since plan 12 · Q20 a scene
+        // played to its end is noted for the machine, which writes the options beside the saves (here, the output
+        // folder), and a run that read them back would start with whatever the run before had set
+        engine = new GameEngine(new GameSettings());
         engine.Initialize();
         game = engine.Drive;
         // People who move about of their own accord would stand elsewhere in every shot: they stay put but where a mode

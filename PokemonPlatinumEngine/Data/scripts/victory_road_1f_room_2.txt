@@ -22,6 +22,7 @@ script OnEnter
 
 # VictoryRoad1FRoom2_CoordEvent_MarleyStartFollowing: she comes up to whichever row the player is in
 script MarleyJoins
+  scene "Marley joins"
   face marley left
   emote marley exclaim
   if var PLAYER_Y == 55 walk marley up 3 left 1
@@ -46,6 +47,7 @@ label Together
   speaker "Marley"
   say "...I'll see to your Pokémon after every battle. It's the least I can do."
   partner marley "marley_victory_road"
+  endscene
   end
 
 

@@ -13,6 +13,7 @@
 script OnEnter
   if flag FLAG_TALKED_TO_CONTEST_HALL_LOBBY_RICH_BOY place rich_boy 24 6 down
   if var VAR_CONTEST_HALL_LOBBY_STATE != 0 end
+  scene "The Contest Hall"
   face keira down
   emote keira exclaim
   speaker "Keira"
@@ -52,6 +53,7 @@ script OnEnter
   hide mom
   setflag FLAG_HIDE_CONTEST_HALL_LOBBY_MOM
   setflag FLAG_CONTEST_HALL_VISITED
+  endscene
   end
 
 
@@ -228,6 +230,7 @@ script ReceptionistLink
 
 # Fantina by the tables (the original's script 11): a twirl, a word, and she goes back to her Gym.
 script Fantina
+  scene "Fantina in the Contest Hall"
   speaker "Fantina"
   wait 0.5
   face fantina left
@@ -252,6 +255,7 @@ label Gone
   hide fantina
   setflag FLAG_HIDE_CONTEST_HALL_LOBBY_FANTINA
   setflag FLAG_HIDE_HEARTHOME_CITY_GYM_GUIDE
+  endscene
   end
 
 

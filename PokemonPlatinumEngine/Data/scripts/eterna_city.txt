@@ -26,6 +26,7 @@ script OnEnter
 # The street before the Team Galactic building (the original's trigger 0, a column of tiles at x 303, state 0): the
 # rival comes running up the west street and straight into the player, and leads the way to the statue, where Cyrus is.
 script RivalAndCyrus
+  scene "The rival and Cyrus"
   clearflag FLAG_HIDE_ETERNA_CITY_RIVAL
   place rival 299 533 up
   show rival
@@ -103,6 +104,7 @@ label AtTheStatue
   hide rival
   setflag FLAG_HIDE_ETERNA_CITY_RIVAL
   setvar VAR_ETERNA_CITY_STATE 1
+  endscene
   end
 
 # The rival's last step, into the player: they are knocked a step east and turn round to see who it was.
@@ -121,6 +123,7 @@ script Bump
 # Before the Team Galactic building (the original's triggers 3 and 6, state 1): Cynthia comes along the street, asks
 # the player's name, and gives HM01 Cut.
 script CynthiaCut
+  scene "Cynthia and the HM"
   clearflag FLAG_HIDE_ETERNA_CITY_CYNTHIA
   if var PLAYER_Y != 522 goto Beside
   # In front of the trees: she comes up behind the player
@@ -170,6 +173,7 @@ label Talk
   hide cynthia
   setflag FLAG_HIDE_ETERNA_CITY_CYNTHIA
   setvar VAR_ETERNA_CITY_STATE 2
+  endscene
   end
 
 

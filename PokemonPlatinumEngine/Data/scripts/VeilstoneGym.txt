@@ -42,6 +42,7 @@ script Poster
 script Maylene
   speaker "Maylene"
   if badge cobble goto Won
+  scene "Maylene"
   say "I'm Maylene, the Leader of this Gym. My Pokémon and I train together every single day."
   say "I don't hold anything back, and I won't today. Let's begin!"
   battle self as "leader_maylene"
@@ -63,6 +64,7 @@ label Tm
   give "TM60"
   setflag FLAG_RECEIVED_MAYLENE_TM60
   say "TM60 is Drain Punch. The damage it does heals the Pokémon that throws it. It's a move I trust."
+  endscene
   end
 label Won
   if not flag FLAG_RECEIVED_MAYLENE_TM60 goto Tm

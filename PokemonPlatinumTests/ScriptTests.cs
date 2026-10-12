@@ -90,7 +90,7 @@ public class ScriptTests
     }
 
     /// <summary>One line for every command the language has: a new one without a line here has no reader, or no test.</summary>
-    private const string EveryCommand = """
+    internal const string EveryCommand = """
         script All
           say "a"
           text "b"
@@ -518,6 +518,8 @@ public class ScriptTests
           shake rival 3
           flicker self
           flicker player 4
+          scene "All of it"
+          endscene
         script Other
           end
         """;
@@ -1511,5 +1513,13 @@ public class ScriptTests
         public void GiveNationalDex() => inner.GiveNationalDex();
         public int LeagueVictories => inner.LeagueVictories;
         public bool Cycling => inner.Cycling;
+        // (A host that asks nothing of scenes: nothing is skipped here, plan 12 · Q20)
+        public bool Skipping => false;
+        public void Elapse(float seconds) { }
+        public void Arrive() { }
+        public void BeginSkipping() { }
+        public void EndSkipping() { }
+        public void SceneBegins(string key) { }
+        public void SceneEnds(string key, bool seen) { }
     }
 }

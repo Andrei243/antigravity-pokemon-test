@@ -22,6 +22,7 @@ script OnEnter
 
 
 script Meeting
+  scene "The meeting in the library"
   face rival player
   speaker "{rival}"
   say "{player}! Over here, over here! You're the last one in. As usual!"
@@ -132,6 +133,7 @@ script Meeting
   clearflag FLAG_HIDE_CANALAVE_CITY_PROF_ROWAN
   clearflag FLAG_HIDE_CANALAVE_CITY_COUNTERPART
   clearflag FLAG_HIDE_CANALAVE_CITY_RIVAL_BRIDGE
+  endscene
   return
 
 

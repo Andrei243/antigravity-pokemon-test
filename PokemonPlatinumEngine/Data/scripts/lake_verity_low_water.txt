@@ -8,6 +8,7 @@
 
 script OnEnter
   if var VAR_VISITED_LAKE_VERITY_WITH_RIVAL != 0 end
+  scene "The man in grey"
   show rival
   place rival 47 53 up
   wait 0.4
@@ -45,6 +46,7 @@ script OnEnter
   setflag FLAG_HIDE_LAKE_VERITY_LOW_WATER_RIVAL
   setvar VAR_FOLLOWER_RIVAL_STATE 4
   setvar VAR_VISITED_LAKE_VERITY_WITH_RIVAL 1
+  endscene
   end
 
 

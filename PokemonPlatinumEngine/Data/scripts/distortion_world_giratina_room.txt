@@ -68,6 +68,7 @@ script Arrival
 
 # Giratina (the original's DistortionWorldGiratinaRoom_Giratina).
 script Giratina
+  scene "Giratina"
   cry "Giratina-Origin"
   speaker none
   say "Gshrrraaaoooh!"
@@ -125,6 +126,7 @@ label After
   show portal
   wait 0.5
   say "Look, a way out, where Giratina was. Come on, {player}. Let's go home."
+  endscene
   end
 
 

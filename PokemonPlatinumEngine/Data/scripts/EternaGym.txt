@@ -81,6 +81,7 @@ script Clock
 script Gardenia
   speaker "Gardenia"
   if badge forest goto Won
+  scene "Gardenia"
   say "Welcome! I'm Gardenia, the Leader of the Eterna Gym, and I'm absolutely crazy about Grass-type Pokémon."
   say "You got through my clock, so you must have a good head on your shoulders. Let's see if your Pokémon do too!"
   battle self as "leader_gardenia"
@@ -100,6 +101,7 @@ label Tm
   setflag FLAG_RECEIVED_GARDENIA_TM86
   say "TM86 is Grass Knot. It trips the foe up, and the heavier the foe, the harder it falls!"
   call Clock
+  endscene
   end
 label Won
   if not flag FLAG_RECEIVED_GARDENIA_TM86 goto Tm

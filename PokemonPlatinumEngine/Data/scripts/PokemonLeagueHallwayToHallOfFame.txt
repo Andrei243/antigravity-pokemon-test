@@ -8,6 +8,7 @@
 
 # PokemonLeagueHallwayToHallOfFame_OnFrame_EnterHallOfFame
 script OnEnter
+  scene "The way to the Hall of Fame"
   walk player up 17
   wait 0.25
   face player down
@@ -51,4 +52,5 @@ label In
   walk player up 4
   sound "stairs"
   warp "PokemonLeagueHallOfFame" 8 15 up
+  endscene
   end

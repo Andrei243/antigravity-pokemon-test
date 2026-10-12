@@ -27,6 +27,7 @@ script OnEnter
 
 # The rival's trigger at the top of the road out of Twinleaf Town (the original's trigger 2).
 script RowanAppears
+  scene "The professor"
   face rival player
   music "common/rival"
   speaker "{rival}"
@@ -93,6 +94,7 @@ label Agreed
   face rival left
   music area
   setvar VAR_FOLLOWER_RIVAL_STATE 1
+  endscene
   end
 
 
@@ -122,6 +124,7 @@ script ChooseFirstSouth
 
 
 script Briefcase
+  scene "The briefcase"
   fade out
   setflag FLAG_HIDE_ROUTE_201_BRIEFCASE
   hide self
@@ -173,11 +176,13 @@ label Home
   fade out
   heal
   warp "PlayerHouse" 2 6 up
+  endscene
   end
 
 
 # Back on the road (the original's trigger 16): the rival is off to the lake.
 script OffToTheLake
+  scene "Off to the lake"
   face rival player
   music "common/rival"
   speaker "{rival}"
@@ -190,6 +195,7 @@ script OffToTheLake
   setflag FLAG_RIVAL_WAITS_AT_LAKEFRONT
   music area
   setvar VAR_FOLLOWER_RIVAL_STATE 3
+  endscene
   end
 
 

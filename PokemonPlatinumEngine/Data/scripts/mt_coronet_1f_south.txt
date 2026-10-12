@@ -6,6 +6,7 @@
 
 
 script Cyrus
+  scene "Cyrus in Mt Coronet"
   face player up
   walk cyrus down 6
   face cyrus left
@@ -28,4 +29,5 @@ script Cyrus
   hide cyrus
   setflag FLAG_HIDE_MT_CORONET_1F_SOUTH_CYRUS
   setvar VAR_MT_CORONET_1F_SOUTH_STATE 1
+  endscene
   end

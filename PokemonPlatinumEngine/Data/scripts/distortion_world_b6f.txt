@@ -169,6 +169,7 @@ script Cynthia
   say "They followed us in to help, I think. Give each of them what it is waiting for."
   end
 label Finished
+  scene "The stepping stones"
   say "I saw them go. The three of them have gone home to their lakes: they did what they came for."
   say "They were holding this place steady for us, each at its own corner. Emotion, knowledge and will..."
   setflag FLAG_DISTORTION_WORLD_STEPPING_STONES
@@ -182,6 +183,7 @@ label Finished
   walk self left 1
   face cynthia right
   setvar VAR_DISTORTION_WORLD_PROGRESS 7
+  endscene
   end
 label Close
   say "We're getting close. The air is heavier with every floor. Giratina is right under us."

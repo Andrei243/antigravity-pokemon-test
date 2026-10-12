@@ -24,6 +24,9 @@
 
 # PokemonLeagueHallOfFame_OnFrame_EnterHallOfFame
 script OnEnter
+  # The room's opening words may be skipped (plan 12 · Q20) and nothing after them: the machine, the team's entry,
+  # the save and the credits are the player's to see every time
+  scene "The Hall of Fame"
   walk player up 8
   # PokemonLeague_HallOfFame_Movement_TurnAroundInPlace: the professor looks the room over
   face prof_rowan up
@@ -58,6 +61,7 @@ label Welcome
   say "What you leave in this room is the memory of your journey so far."
   say "Think of them as you do it. They are your partners. They grew as you grew, through one hard battle after another."
   say "Now, {player}. This machine will make a lasting record of what you have done together."
+  endscene
 
   setflag FLAG_UNLOCKED_VS_SEEKER_LVL_4
   # PokemonLeagueHallOfFame_EnableHiddenLocationSpringPath (the Distortion World's way out shows it already, plan 02 · S12)

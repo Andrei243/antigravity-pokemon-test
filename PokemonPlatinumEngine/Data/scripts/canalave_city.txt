@@ -46,6 +46,7 @@ label OutsideTheGym
   # Out of the Gym's door he is waiting; anyone who came back some other way finds him gone to the library already
   if var PLAYER_X != 39 goto ToTheLibraryQuietly
   if var PLAYER_Y != 732 goto ToTheLibraryQuietly
+  scene "The rival outside the Gym"
   music "common/rival"
   speaker "{rival}"
   say "{player}! Took you long enough! So you got Byron's Badge too, huh?"
@@ -60,11 +61,13 @@ label ToTheLibraryQuietly
   setflag FLAG_HIDE_CANALAVE_CITY_RIVAL_BRIDGE
   setvar VAR_CANALAVE_CITY_STATE 3
   setvar VAR_CANALAVE_LIBRARY_STATE 1
+  endscene
   end
 label AfterTheExplosion
   place rival_bridge 37 721 down
   if var PLAYER_X != 37 goto NewsQuietly
   if var PLAYER_Y != 719 goto NewsQuietly
+  scene "The explosion's news"
   face prof_rowan down
   speaker "Prof. Rowan"
   say "Hmm... That was no ordinary tremor. The ground doesn't shake like that by itself."
@@ -105,6 +108,7 @@ label NewsQuietly
   clearflag FLAG_HIDE_LAKE_VERITY_LOW_WATER_COUNTERPART
   clearflag FLAG_HIDE_LAKE_VERITY_LOW_WATER_PROF_ROWAN
   clearflag FLAG_HIDE_LAKE_ACUITY_LOW_WATER_RIVAL
+  endscene
   end
 
 
@@ -114,6 +118,7 @@ script RivalOnTheBridge
   if var PLAYER_Y == 724 place rival_bridge 38 724 right
   if var PLAYER_Y == 725 place rival_bridge 38 725 right
   if var PLAYER_Y == 726 place rival_bridge 38 726 right
+  scene "The rival on the bridge"
   show rival_bridge
   walk rival_bridge right 4 fast
   emote rival_bridge exclaim
@@ -141,6 +146,7 @@ label After
   hide rival_bridge
   music area
   setvar VAR_CANALAVE_CITY_STATE 1
+  endscene
   end
 
 

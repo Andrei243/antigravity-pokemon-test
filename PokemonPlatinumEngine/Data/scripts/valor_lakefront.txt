@@ -38,6 +38,7 @@ label Moved
   setflag FLAG_TALKED_TO_VALOR_LAKEFRONT_GRUNT_M
   end
 label Cornered
+  scene "The grunt cornered"
   say "Ugh... still behind me? And with the lake so close I can almost touch it..."
   face self player
   say "Fine! Have it your way! My Pokémon will knock you flat!"
@@ -120,6 +121,7 @@ label Medicine
   setflag FLAG_HIDE_PASTORIA_CITY_RIVAL
   clearflag FLAG_HIDE_PASTORIA_CITY_GYM_CRASHER_WAKE
   setvar VAR_PASTORIA_CITY_STATE 6
+  endscene
   end
 
 

@@ -136,6 +136,64 @@ public interface IScriptHost
     /// </summary>
     float Flicker(NPC? who, int times);
 
+    // ------------------------------------------------------------------ a scene skipped (plan 12 · Q20)
+
+    /// <summary>
+    /// True while the runner hurries through a scene the player is skipping (<see cref="ScriptRunner.Hurrying"/>),
+    /// from <see cref="BeginSkipping"/> to <see cref="EndSkipping"/>. <b>Every method of a host that starts something
+    /// the player sees through says what it does meanwhile</b>, one of three things. What is only shown or heard is
+    /// dropped: lines (unread), a bubble, a gesture, a sound, a fanfare, a cry, a shake, an effect that passes, slow
+    /// motion. What leaves something behind is ended at once in the state it leaves: a warp arrives; a fade, the
+    /// script's black screen, a camera's move, the lens and the bars are where they were going; an effect that is
+    /// held is lit, a machine's frame is the one its piece ends on, the music is the song asked for. A walk is
+    /// neither: whoever is sent walking takes their own steps in the time the scene gives them, unseen
+    /// (<see cref="Elapse"/>, <see cref="Arrive"/>), because where a walk ends can hang on who stood where when, so
+    /// they end on the tile and facing the way a played scene leaves them. And what waits for the player (a
+    /// question, a battle, a screen, a save) or can't be ended at once (a puzzle's pieces, a field move) is never
+    /// reached in a hurry: its command is one <see cref="ScriptRunner.StopsAHurry"/> names, and the runner ends the
+    /// hurry before it. A host that turns <see cref="Busy"/> in a hurry all the same ends the hurry there.
+    /// Whatever a line does to the story, the bag, the team or the map happens exactly as when it is played.
+    /// </summary>
+    bool Skipping { get; }
+
+    /// <summary>
+    /// A hurry begins: whatever a script left going is brought to its end at once (text is put away unread, a fade
+    /// and the camera's moves are over, bubbles, gestures, passing effects and set pieces are gone), but for whoever
+    /// is walking, who goes on from where they are; and from here to <see cref="EndSkipping"/> the host shows nothing.
+    /// </summary>
+    void BeginSkipping();
+
+    /// <summary>
+    /// The hurry is over: at the scene's end, or before something that waits for the player. The host shows what it
+    /// is told again; whoever is still walking walks on, as they would be walking there with the scene played.
+    /// </summary>
+    void EndSkipping();
+
+    /// <summary>
+    /// In a hurry, the time the scene would have waited here: a pause, a bubble, a camera's move, an effect waited
+    /// for, a set piece. Nothing waits for it, but it passes all the same for whoever is walking, who take the steps
+    /// they would have taken meanwhile: someone sent ahead before a pause is as far ahead after it as when the scene
+    /// is played, and whoever follows finds nobody in their way. A host whose walks take no time has nothing to do.
+    /// </summary>
+    void Elapse(float seconds);
+
+    /// <summary>
+    /// In a hurry, where the scene waits for its walks (<c>walk</c>, <c>waitmoves</c>): everyone walking takes their
+    /// steps to the end, all together and each their own (the player's are the player's, which a wall or someone
+    /// standing in the way stops), so they stand where the scene played would have them.
+    /// </summary>
+    void Arrive();
+
+    /// <summary>A scene begins (<c>scene "Name"</c>): its key is the file it is written in and its name (<see cref="SceneSkip.Key"/>).</summary>
+    void SceneBegins(string key);
+
+    /// <summary>
+    /// A scene is over: <paramref name="seen"/> when it was played, or skipped, to its <c>endscene</c>, which the story
+    /// has noted already (<see cref="StoryState.ScenesSeen"/>) and the host notes for its machine; not when the
+    /// script ended some other way.
+    /// </summary>
+    void SceneEnds(string key, bool seen);
+
     // ------------------------------------------------------------------ what the script waits for
 
     /// <summary>

@@ -107,6 +107,7 @@ script INeedYourHelp
 # FightArea_BattleVolknerFlint and FightArea_PostBattleVolknerFlint. A battle lost is a white-out, as the original's:
 # the rival is back before the gate when the player comes again.
 script Battle
+  scene "The tag battle at the gate"
   speaker "{rival}"
   say "Yes! That's the spirit! The two of us can flatten them!"
   move rival up 1
@@ -203,6 +204,7 @@ label Won
   # FightArea_RemoveBlockade: the ways on are open to whoever has the National Pokédex too
   if nationaldex setflag FLAG_HIDE_FIGHT_AREA_BLOCKADE
   setvar VAR_FIGHT_AREA_STATE 2
+  endscene
   return
 
 

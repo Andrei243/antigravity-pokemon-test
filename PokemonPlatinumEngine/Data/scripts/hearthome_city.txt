@@ -8,6 +8,7 @@
 
 
 script Buneary
+  scene "The runaway Buneary"
   emote player exclaim
   # They come from the east, level with the player (the original's SetObjectEventPos 471, z)
   if var PLAYER_Y == 725 call From725
@@ -35,6 +36,7 @@ script Buneary
   setflag FLAG_HIDE_HEARTHOME_CITY_KEIRA
   setflag FLAG_HIDE_HEARTHOME_CITY_BUNEARY
   setvar VAR_HEARTHOME_CITY_STATE 1
+  endscene
   end
 
 script From725

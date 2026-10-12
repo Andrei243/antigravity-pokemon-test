@@ -26,6 +26,7 @@ label Cynthia
   # Out of the ruins' door she comes up to the player; anyone who came back some other way finds her where she stands
   if var PLAYER_X != 463 goto Quietly
   if var PLAYER_Y != 522 goto Quietly
+  scene "Cynthia in Celestic Town"
   emote cynthia exclaim
   walk cynthia left 2
   face player right
@@ -39,6 +40,7 @@ label Cynthia
   call Lifted
   wait 0.2
   call Library
+  endscene
   end
 label Quietly
   call Lifted
@@ -97,6 +99,7 @@ script Grunt
   say "This town's a relic! There's nothing here worth a thing. Nobody needs it, so I'm going to blow it sky-high with a Galactic Bomb!"
   ask "Get in my way and I'll knock you flat in a battle. So, what'll it be? You going to get in my way?"
   if no goto Smart
+  scene "The grunt in Celestic Town"
   say "You'd stand up to Team Galactic? Then you're standing up to the whole world... no, the whole universe!"
   battle self as "galactic_grunt_celestic_town"
   speaker "Galactic Grunt"
@@ -149,6 +152,7 @@ label Charm
 label Ruins
   setflag FLAG_DELIVERED_OLD_CHARM
   say "Now that you're here in Celestic Town, why not have a look inside the ruins?"
+  endscene
   end
 
 script Gone

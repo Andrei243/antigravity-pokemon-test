@@ -26,6 +26,7 @@ script OnEnter
 
 # The rival at the head of the rock face (the original's coordinate event, script 4).
 script RivalCallsDown
+  scene "The rival calls down"
   camera pan 310 238 1.0
   wait 0.25
   speaker "{rival}"
@@ -37,4 +38,5 @@ script RivalCallsDown
   setflag FLAG_HIDE_ACUITY_LAKEFRONT_RIVAL
   camera release 0.8
   setvar VAR_ACUITY_LAKEFRONT_STATE 1
+  endscene
   end

@@ -28,6 +28,7 @@ script BottomButtons
 script Volkner
   speaker "Volkner"
   if badge beacon goto Won
+  scene "Volkner"
   say "...So. A challenger."
   say "Every so often a Trainer makes it all the way up here. And every time, the battle bores me. I barely have to try."
   say "...Sigh. I'm Volkner, the Leader of this Gym. People call me the strongest Gym Leader in Sinnoh, but..."
@@ -56,6 +57,7 @@ label Tm
   give "TM57"
   setflag FLAG_RECEIVED_VOLKNER_TM57
   say "TM57 is Charge Beam. If it hits, it may raise your Pokémon's Special Attack. Pretty electrifying, right?"
+  endscene
   end
 label Won
   if not flag FLAG_RECEIVED_VOLKNER_TM57 goto Tm

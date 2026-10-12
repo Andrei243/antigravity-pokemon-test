@@ -23,6 +23,7 @@ script OnEnter
 script Grunt
   speaker "Galactic Grunt"
   if flag FLAG_TALKED_TO_ROUTE_213_GRUNT_M goto ByTheBeach
+  scene "The grunt by the gate"
   say "All the power we took from the Valley Windworks went into this little beauty..."
   say "Only a real brain could put something like it together. Our boss built it himself, you know. A genius, that man!"
   face self player
@@ -39,8 +40,10 @@ label Moved
   setflag FLAG_TALKED_TO_ROUTE_213_GRUNT_M
   place self 683 833 right
   show self
+  endscene
   end
 label ByTheBeach
+  scene "The grunt by the beach"
   say "One little Galactic Bomb, and what a bang! Give us a crate of them and we could flatten anything we liked."
   say "I wonder what the bosses mean to aim it at..."
   face self player
@@ -88,6 +91,7 @@ label LookerGone
   setflag FLAG_HIDE_ROUTE_213_LOOKER
   clearflag FLAG_HIDE_GRAND_LAKE_ROUTE_213_LOBBY_LOOKER
   clearflag FLAG_HIDE_VALOR_LAKEFRONT_GRUNT_M
+  endscene
   end
 
 script LookerTalks

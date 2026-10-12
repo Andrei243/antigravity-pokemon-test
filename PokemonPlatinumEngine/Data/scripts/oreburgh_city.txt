@@ -9,6 +9,7 @@
 
 # The way in from Oreburgh Gate (the original's trigger 3).
 script ToTheGym
+  scene "To the Gym"
   emote youngster exclaim
   if var PLAYER_Y == 748 walk youngster up 3
   if var PLAYER_Y == 749 walk youngster up 2
@@ -28,6 +29,7 @@ script ToTheGym
   face player up
   music area
   setvar VAR_OREBURGH_CITY_STATE 1
+  endscene
   end
 
 
@@ -48,6 +50,7 @@ label Again
 
 # The way out to Oreburgh Gate once the Badge is won (the original's trigger 4): the rival runs into the player.
 script RivalOnTheWayOut
+  scene "The rival on the way out"
   clearflag FLAG_HIDE_OREBURGH_CITY_RIVAL
   if var PLAYER_Y == 748 place rival 258 748 right
   if var PLAYER_Y == 749 place rival 258 749 right
@@ -67,6 +70,7 @@ script RivalOnTheWayOut
   setflag FLAG_HIDE_OREBURGH_CITY_RIVAL
   music area
   setvar VAR_OREBURGH_CITY_STATE 3
+  endscene
   end
 
 

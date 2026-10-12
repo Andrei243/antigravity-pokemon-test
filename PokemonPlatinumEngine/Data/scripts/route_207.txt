@@ -11,6 +11,7 @@ script Assistant
   if var PLAYER_Y == 712 place counterpart 331 712 right
   if var PLAYER_Y == 713 place counterpart 331 713 right
   if var PLAYER_Y == 714 place counterpart 331 714 right
+  scene "The assistant on Route 207"
   clearflag FLAG_HIDE_ROUTE_207_COUNTERPART
   show counterpart
   emote counterpart exclaim
@@ -38,4 +39,5 @@ script Assistant
   setflag FLAG_HIDE_ROUTE_207_COUNTERPART
   music area
   setvar VAR_ROUTE_207_COUNTERPART_TRIGGER_STATE 1
+  endscene
   end

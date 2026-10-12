@@ -28,6 +28,7 @@ script OnEnter
 
 # StarkMountainOutside_CoordEvent_Grunts: seen from across the lava
 script GruntsGoIn
+  scene "The grunts at Stark Mountain"
   camera pan 747 233 0.8
   move grunt_m_1 right 4
   wait 0.25
@@ -56,12 +57,14 @@ script GruntsGoIn
   setflag FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_GRUNTS
   setvar VAR_STARK_MOUNTAIN_OUTSIDE_STATE 1
   camera release 0.8
+  endscene
   end
 
 
 # StarkMountainOutside_OnFrame_LookerBuck: the player stands before the mouth (751, 233), Buck to the west and Looker
 # to the east (the original stands him to the north, where the player's own head would hide him from the field's camera)
 script Parting
+  scene "The parting"
   face player right
   face looker left
   face buck right
@@ -110,6 +113,7 @@ script Parting
   setflag FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_LOOKER
   fade in 0.6
   setvar VAR_STARK_MOUNTAIN_OUTSIDE_STATE 3
+  endscene
   return
 
 

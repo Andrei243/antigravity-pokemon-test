@@ -5,6 +5,7 @@
 
 script OnEnter
   if var VAR_RIVAL_HOUSE_STATE != 0 end
+  scene "The rival's room"
   speaker "{rival}"
   say "Bag... got it. Notebook... got it. Okay! Now all I need is..."
   emote rival exclaim
@@ -24,4 +25,5 @@ script OnEnter
   music area
   setvar VAR_RIVAL_HOUSE_STATE 1
   setvar VAR_TWINLEAF_TOWN_GUITARIST_TRIGGER_STATE 2
+  endscene
   end

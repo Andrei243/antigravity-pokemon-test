@@ -7,6 +7,7 @@
 
 
 script Rival
+  scene "The rival in Hearthome"
   emote rival exclaim
   music "common/rival"
   if var PLAYER_Y == 5 walk rival left 2 up 2 fast
@@ -42,4 +43,5 @@ label After
   setflag FLAG_HIDE_HEARTHOME_CITY_ROUTE_209_GATE_RIVAL
   music area
   setvar VAR_ROUTE_209_GATE_TO_HEARTHOME_CITY_STATE 2
+  endscene
   end

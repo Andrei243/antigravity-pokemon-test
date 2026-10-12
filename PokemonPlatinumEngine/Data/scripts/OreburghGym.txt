@@ -9,6 +9,7 @@ script Roark
   face roark player
   speaker "Roark"
   if badge coal goto Won
+  scene "Roark"
   say "Welcome to the Oreburgh Gym! I'm Roark, the Gym Leader."
   say "Down in the mine I dig for fossils and coal. Up here I dig for strong Trainers."
   say "My Rock-type Pokémon are as hard as the bedrock under this town. Let's see what you're made of!"
@@ -34,6 +35,7 @@ label Tm
   setflag FLAG_RECEIVED_ROARK_TM76
   say "TM76 holds Stealth Rock. It scatters sharp rocks around the other side, and they hurt every Pokémon that comes in."
   say "The next Gym is in Eterna City, north past Floaroma Town. Its Leader, Gardenia, uses Grass types. Good luck!"
+  endscene
   end
 label Won
   if not flag FLAG_RECEIVED_ROARK_TM76 goto Tm

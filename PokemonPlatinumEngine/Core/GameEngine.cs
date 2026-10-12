@@ -399,6 +399,8 @@ public partial class GameEngine
         // (Nothing of a scene's camera outlives the game it was played in, plan 09 · L4)
         world.Camera.Reset();
         cameraSent = false;
+        // (... nor of a scene being skipped, plan 12 · Q20)
+        ResetTheSkip();
         story.Clear();
         StoryMigration.BeginNewGame(story, scripts);
         RefreshPresence(startOver: true);
@@ -603,6 +605,8 @@ public partial class GameEngine
         story.Restore(save.ToStory());
         StoryMigration.Upgrade(story, save.StoryVersion, playerParty.Members.Concat(pcBoxStorage.All), scripts, playerInventory);
         story.RestoreGreetings(save.GreetedPeople);
+        story.RestoreScenes(save.ScenesSeen);
+        ResetTheSkip();
         OweTheFashionCase();
         MapDatabase.RestoreDefeatedTrainers(story.DefeatedTrainers);
         RefreshPresence(startOver: true);
@@ -701,6 +705,7 @@ public partial class GameEngine
             StoryVariables = told.Variables,
             TakenItems = told.TakenItems,
             GreetedPeople = story.Greeted.Order(StringComparer.Ordinal).ToList(),
+            ScenesSeen = story.ScenesSeen.Order(StringComparer.Ordinal).ToList(),
             PlayerStarter = told.PlayerStarter,
             RivalStarter = told.RivalStarter,
             Money = playerMoney,
@@ -1223,6 +1228,9 @@ public partial class GameEngine
             RideThePanel(dt);
             return;
         }
+
+        // A scene being skipped has the field while its dark closes and opens (plan 12 · Q20)
+        if (UpdateSkip(dt)) return;
 
         // A script has the field: the keys do nothing until it ends, and people moving of their own accord only
         // finish the step they are on
@@ -2243,6 +2251,8 @@ public partial class GameEngine
                 DrawCastlePoints();
                 dialogue.Draw(VirtualWidth, VirtualHeight);
                 DrawChoice();
+                // A scene being skipped: its dark over all of that, and the hold's ring while the button is down (plan 12 · Q20)
+                DrawSkip();
                 locationSign.Draw();
                 startMenu.Draw(VirtualWidth, VirtualHeight);
                 break;

@@ -29,6 +29,7 @@ label Postgame
   if not flag FLAG_TALKED_TO_MOM_ABOUT_NATIONAL_DEX_PROGRESS goto MomHasNews
   if not nationaldex end
 label MomHasNews
+  scene "Mom's news"
   wait 0.15
   face player mom
   face mom player
@@ -42,16 +43,19 @@ label MomHasNews
   setflag FLAG_TALKED_TO_MOM_ABOUT_NATIONAL_DEX_PROGRESS
   say "Well, never mind him. How are you getting on, Champion? Is that Pokédex of Professor Rowan's coming along?"
   face mom up
+  endscene
   end
 label RivalCame
   # TwinleafTownPlayerHouse1F_RivalCameLookingForYou
   setflag FLAG_TALKED_TO_MOM_ABOUT_RIVAL_SNOWPOINT_CITY
   face mom up
+  endscene
   end
 label RivalLeft
   # TwinleafTownPlayerHouse1F_OnFrame_RivalAlreadyLeft: she looks round from the television, comes over to the foot
   # of the stairs and goes back to her cushion (the original's two movements, a tile further east: the player comes
   # off the stairs onto 11, 3, where the original leaves them on the stairs' own tile)
+  scene "The rival has been"
   wait 0.15
   face player down
   emote mom exclaim
@@ -63,11 +67,13 @@ label RivalLeft
   face mom up
   setflag FLAG_TALKED_TO_MOM
   setvar VAR_PLAYER_HOUSE_STATE 1
+  endscene
   end
 label RunningShoes
   # TwinleafTownPlayerHouse1F_OnFrame_CutsceneAfterRivalBattle: the player is brought in before the kitchen counter
   # (route_201.txt: 2, 6), Mom is at the sink behind it (the original's OnTransition puts her on 2, 4). She turns,
   # leads the way round to the cushions, and the player follows her and sits down beside her
+  scene "The Running Shoes"
   place mom 2 4 up
   wait 0.5
   walk mom left 1
@@ -91,6 +97,7 @@ label RunningShoes
   say "Hold down the run button as you walk, and off you'll go! Now, be careful out there."
   face mom up
   setvar VAR_PLAYER_HOUSE_STATE 4
+  endscene
   end
 
 
@@ -130,6 +137,7 @@ label Rest
   say "You're mixed up in it somehow, aren't you? ...I thought so. Then be careful, and come home when it's done."
   end
 label Parcel
+  scene "The parcel"
   speaker "Mom"
   say "Welcome home! Let me look after your Pokémon first."
   heal
@@ -176,6 +184,7 @@ label Parcel
   sound "door_close"
   face mom up
   setvar VAR_PLAYER_HOUSE_STATE 6
+  endscene
   end
 
 

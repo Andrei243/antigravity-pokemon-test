@@ -22,6 +22,7 @@
 script OnEnter
   if var VAR_DISTORTION_WORLD_PROGRESS >= 3 hide cynthia
   if var VAR_DISTORTION_WORLD_PROGRESS != 0 end
+  scene "The Distortion World"
   # DistortionWorld1F_OnFrame_FirstEntry
   hide cynthia
   walk player left 1
@@ -67,6 +68,7 @@ script OnEnter
   place cynthia 18 42 right
   show cynthia
   setvar VAR_DISTORTION_WORLD_PROGRESS 1
+  endscene
   end
 
 

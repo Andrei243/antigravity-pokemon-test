@@ -191,16 +191,64 @@ public sealed class ScriptLibrary
         }
     }
 
+    /// <summary>The scenes the scripts mark (plan 12 · Q20), each by its key: the file it is written in and its name.</summary>
+    public IReadOnlySet<string> Scenes => All.SelectMany(s => s.Code.Where(i => i.Op == Op.Scene).Select(i => SceneSkip.Key(s.File, i.Name)))
+        .ToHashSet(StringComparer.Ordinal);
+
+    /// <summary>Whether a script begins a scene, itself or in anything it calls.</summary>
+    public bool BeginsAScene(Script script) => BeginsAScene(script, new HashSet<string>(StringComparer.Ordinal));
+
+    private bool BeginsAScene(Script script, HashSet<string> looked)
+    {
+        if (!looked.Add(script.FullName)) return false;
+        foreach (var i in script.Everything())
+        {
+            if (i.Op == Op.Scene) return true;
+            if (i.Op == Op.Call && Find(i.Name, script.File) is { } called && BeginsAScene(called, looked)) return true;
+        }
+        return false;
+    }
+
     /// <summary>
     /// What is wrong with the scripts beyond their grammar, a line each: a script called that doesn't exist, an
-    /// item, a species, a move, a song or a sound nobody has heard of, a map that isn't one. Empty when all is well.
+    /// item, a species, a move, a song or a sound nobody has heard of, a map that isn't one; and a scene left open,
+    /// an <c>endscene</c> with no scene, a scene inside a scene, two scenes of one name in a file (plan 12 · Q20).
+    /// Empty when all is well.
     /// </summary>
     public List<string> Problems(Func<string, bool>? mapExists = null, Func<string, bool>? songExists = null, Func<string, bool>? soundExists = null)
     {
         var problems = new List<string>();
+        // The scenes of each file by name (plan 12 · Q20): a scene's key in a save is its file and its name
+        var scenes = new HashSet<string>(StringComparer.Ordinal);
         foreach (var script in All.OrderBy(s => s.FullName, StringComparer.Ordinal))
         {
             void Wrong(Instruction at, string what) => problems.Add($"{script.File}.txt({at.Line}): {what}.");
+
+            // A scene is begun and ended in one script, read from top to bottom: each scene has an endscene below it
+            // before any other scene begins (and may have more, one to each way out), an endscene has a scene above
+            // it, and nothing called from inside a scene begins one of its own
+            Instruction? open = null;
+            bool begun = false;
+            foreach (var i in script.Code)
+            {
+                switch (i.Op)
+                {
+                    case Op.Scene:
+                        if (open != null) Wrong(i, $"scene '{i.Name}' begins inside scene '{open.Name}', which has no endscene before it");
+                        if (!scenes.Add(SceneSkip.Key(script.File, i.Name))) Wrong(i, $"{script.File}.txt has two scenes called '{i.Name}'");
+                        open = i;
+                        begun = true;
+                        break;
+                    case Op.EndScene:
+                        if (!begun) Wrong(i, $"an endscene with no scene above it in script {script.Name}");
+                        open = null;
+                        break;
+                    case Op.Call when open != null && Find(i.Name, script.File) is { } called && BeginsAScene(called, new HashSet<string>(StringComparer.Ordinal)):
+                        Wrong(i, $"scene '{open.Name}' calls '{i.Name}', which begins a scene of its own: a scene inside a scene");
+                        break;
+                }
+            }
+            if (open != null) Wrong(open, $"scene '{open.Name}' is left open: script {script.Name} has no endscene below it");
 
             foreach (var i in script.Everything())
             {

@@ -95,6 +95,8 @@ public enum Op
     // The original's set pieces (plan 09 · L12): a machine at work, a PC switched on or off, a lift's ride; someone
     // shaken; someone flickering
     Anim, Shake, Flicker,
+    // A scene that may be skipped (plan 12 · Q20): where it begins, and where it has been played to its end
+    Scene, EndScene,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

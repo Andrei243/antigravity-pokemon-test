@@ -46,6 +46,7 @@ label First
 
 # The original's DistortionWorldB7F_CoordEvent_CynthiaCyrus, from each of its three tiles.
 script CynthiaAndCyrus
+  scene "The argument"
   setvar VAR_DISTORTION_WORLD_PROGRESS 9
   place cyrus 11 38 down
   place cynthia 11 42 up
@@ -60,11 +61,13 @@ script CynthiaAndCyrus
   speaker "Cyrus"
   say "And leave it as it is? Spirit is the flaw. It makes people weak and cruel by turns, and it is in all of them."
   say "I will not hide from an imperfect world. I will end it and make it right. That is not cruelty. That is my justice."
+  endscene
   end
 
 
 # Cyrus (the original's DistortionWorldB7F_Cyrus), spoken to from the south or the east.
 script Cyrus
+  scene "Cyrus's last battle"
   face cyrus player
   speaker "Cyrus"
   say "You again, at the end of everything. Very well. I will not lose to you a third time. The shadow Pokémon is mine to bring down, and you are in my way!"
@@ -108,6 +111,7 @@ label There
   face player down
   say "It is just ahead of you, and it is furious: at Cyrus, at what was done to time and space, perhaps at all of us."
   say "It has to be shown that not everyone means it harm. Catch it or beat it, whichever you can. Either will quiet it. I'll be right behind you."
+  endscene
   end
 
 

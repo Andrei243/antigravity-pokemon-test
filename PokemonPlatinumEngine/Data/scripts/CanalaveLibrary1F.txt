@@ -35,6 +35,7 @@ label After
 
 # CanalaveLibrary1F_Lucian
 script Lucian
+  scene "Lucian in the library"
   face self player
   speaker "Lucian"
   say "Ah, the new Champion. Forgive me, I was miles away. Aren't books wonderful? An hour in here and I forget there is a League at all."
@@ -68,4 +69,5 @@ label Out
   sound "stairs"
   hide self
   setflag FLAG_HIDE_CANALAVE_LIBRARY_1F_LUCIAN
+  endscene
   end

@@ -18,6 +18,7 @@ script GuitaristStops
 
 # In front of the rival's door (the original's trigger 2): he runs straight into the player.
 script RivalRunsOut
+  scene "The rival runs out"
   sound "door_open"
   show rival
   sound "bump"
@@ -40,6 +41,7 @@ script RivalRunsOut
   sound "door_close"
   music area
   setvar VAR_TWINLEAF_TOWN_RIVAL_TRIGGER_STATE 1
+  endscene
   end
 
 
