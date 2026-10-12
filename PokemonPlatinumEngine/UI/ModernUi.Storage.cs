@@ -99,11 +99,12 @@ internal static partial class ModernUi
             UiIcons.ArrowH(at + new Vector2(side * 2, 0), 20, side, onName ? Selection : new Color(150, 162, 186, 255));
         }
 
-        // Eighteen dots: which box this is
-        const float dotStep = 20;
-        var dots = new Rectangle(box.X + box.Width / 2f - (dotStep * (PCScreen.BoxCount - 1)) / 2f - 18, plate.Y + plate.Height + 14, dotStep * (PCScreen.BoxCount - 1) + 36, 24);
+        // A dot for each box: which box this is. Platinum's eighteen stand a little apart; the National Pokédex's
+        // thirty-six (plan 03 · D13) closer, so the row stays within the box
+        float dotStep = pc.BoxCount > PcBoxes.BoxCount ? 16 : 20;
+        var dots = new Rectangle(box.X + box.Width / 2f - (dotStep * (pc.BoxCount - 1)) / 2f - 18, plate.Y + plate.Height + 14, dotStep * (pc.BoxCount - 1) + 36, 24);
         UiShapes.Fill(dots, 12, new Color(255, 255, 255, 190));
-        for (int b = 0; b < PCScreen.BoxCount; b++)
+        for (int b = 0; b < pc.BoxCount; b++)
         {
             var c = new Vector2(dots.X + 18 + b * dotStep, dots.Y + dots.Height / 2f);
             if (b == pc.Box) UiShapes.Circle(c, 6.5f, Selection);

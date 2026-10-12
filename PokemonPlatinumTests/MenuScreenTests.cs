@@ -889,7 +889,7 @@ public class MenuScreenTests
         pc.Move(0, -1, 3);
         Assert.Equal((StorageZone.BoxName, 0), (pc.Zone, pc.Box));
         pc.Move(-1, 0, 3);
-        Assert.Equal(PCScreen.BoxCount - 1, pc.Box);
+        Assert.Equal(pc.BoxCount - 1, pc.Box);
         pc.Move(1, 0, 3);
         pc.Move(1, 0, 3);
         Assert.Equal(1, pc.Box);
@@ -904,7 +904,7 @@ public class MenuScreenTests
         Assert.Equal(StorageZone.BoxName, pc.Zone);
 
         Assert.Equal(30, PCScreen.BoxSize);
-        Assert.Equal(18, PCScreen.BoxCount);
+        Assert.Equal(18, pc.BoxCount);
     }
 
     [Fact]

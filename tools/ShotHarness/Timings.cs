@@ -24,6 +24,10 @@ sealed class ProfileRun
     public string Window { get; set; } = "";
     public List<ProfileScene> Scenes { get; set; } = new();
 
+    /// <summary>Whether the scenes hold their frames' spread: not so a run read from what an old `profile` printed, whose one number is a mean.</summary>
+    [System.Text.Json.Serialization.JsonIgnore]
+    public bool HasSpread { get; private set; } = true;
+
     static readonly JsonSerializerOptions Options = new() { WriteIndented = true, PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
 
     public void Save(string path) => File.WriteAllText(path, JsonSerializer.Serialize(this, Options));
@@ -40,7 +44,7 @@ sealed class ProfileRun
         string json = Path.Combine(folder, "profile.json"), text = Path.Combine(folder, "profile.txt");
         if (File.Exists(json)) return Load(json);
         if (!File.Exists(text)) throw new FileNotFoundException($"{folder} holds no profile.json or profile.txt");
-        var run = new ProfileRun();
+        var run = new ProfileRun { HasSpread = false };
         string preset = "High";
         foreach (string line in File.ReadLines(text))
         {
@@ -66,12 +70,31 @@ sealed class ProfileRun
 
 static class Timings
 {
+    /// <summary>
+    /// What two runs of the same code differ by in a scene's floor when nothing else is going on, in milliseconds
+    /// (a hundredth or two on the Windows machine, plan 01 · M12): a change no bigger than this is never told as one.
+    /// </summary>
+    public const double FloorGrain = 0.05;
+
+    // A change with its sign, and one that rounds to nothing with none (a format of two sections writes -+0.00)
+    static string Signed(double value, int digits)
+    {
+        double rounded = Math.Round(value, digits);
+        return (rounded < 0 ? "-" : rounded > 0 ? "+" : "") + Math.Abs(rounded).ToString("F" + digits);
+    }
+
     //   dotnet run --project tools/ShotHarness -- <dir> ab <before> <after> <before again>
     //
-    // Each folder holds a run of `profile`. For each scene the three medians, the after's change against the mean of
-    // the two befores, and "within noise" where that change is smaller than the befores' own difference: the
-    // harness shares the graphics card with the desktop, so only a change bigger than the drift between two runs
-    // of the same code means something. Refuses runs made in software.
+    // Each folder holds a run of `profile`. A scene is judged by its floor, the 10th percentile of its frame times,
+    // and not by its median (plan 01 · M12). The harness shares the graphics card with the desktop, whose compositor
+    // takes the card once for every refresh of the display and holds the frame then in flight up by a millisecond or
+    // two. A scene's frames therefore fall in two groups, and the median lies in one or the other by how many were
+    // held up: of frames half a refresh long (8.3 ms at 60 Hz, which is where the battles are in a 4K window) that is
+    // every other one, and the median goes from one group to the other between two runs of the same code, half a
+    // millisecond at a time. The floor is the frames nothing held up, and two runs of the same code give it to a
+    // few hundredths. For each scene the three floors, the after's change against the mean of the two befores, and
+    // "within noise" where that change is smaller than the befores' own difference or than FloorGrain; the medians
+    // follow, to be read beside it and not instead of it. Refuses runs made in software.
     public static void Ab(string[] args, string startDir)
     {
         if (args.Length < 5) { Console.WriteLine("usage: <dir> ab <before> <after> <before again>"); Environment.ExitCode = 2; return; }
@@ -85,7 +108,20 @@ static class Timings
         if (runs.Select(r => r.Window).Distinct().Count() > 1)
             Console.WriteLine($"ab: the runs' windows differ ({string.Join(", ", runs.Select(r => r.Window))}): compare like with like");
         Console.WriteLine($"renderer {runs.Select(r => r.Renderer).FirstOrDefault(r => r != null) ?? "unknown"}, window {runs[0].Window}");
-        Console.WriteLine($"{"scene",-48} {"before",8} {"after",8} {"again",8} {"change",9}");
+        // A run read from what an old `profile` printed has one number a scene, a mean: the three are then compared
+        // by that number alone, as every run was before `ab` read the floor
+        bool spread = runs.All(r => r.HasSpread);
+        if (spread)
+        {
+            Console.WriteLine("a scene is judged by its floor (the 10th percentile of its frame times: the frames the desktop didn't hold up); its median is beside it");
+            Console.WriteLine($"{"",-48} {"floor",8}{"",48} | {"median",8}");
+            Console.WriteLine($"{"scene",-48} {"before",8} {"after",8} {"again",8} {"change",9}{"",21} | {"before",8} {"after",8} {"again",8} {"change",9}");
+        }
+        else
+        {
+            Console.WriteLine("a run here was read from what an old profile printed: the scenes are compared by its one number, a mean, which the desktop moves by tenths");
+            Console.WriteLine($"{"scene",-48} {"before",8} {"after",8} {"again",8} {"change",9}");
+        }
         static string Key(ProfileScene s) => s.Preset + "|" + s.Name;
         var after = runs[1].Scenes.ToDictionary(Key);
         var again = runs[2].Scenes.ToDictionary(Key);
@@ -95,9 +131,16 @@ static class Timings
             if (!after.TryGetValue(Key(before), out var a) || !again.TryGetValue(Key(before), out var b)) continue;
             if (before.Preset != preset) { preset = before.Preset; Console.WriteLine($"--- {preset}"); }
             double mean = (before.Median + b.Median) / 2, change = a.Median - mean, noise = Math.Abs(before.Median - b.Median);
-            string verdict = Math.Abs(change) <= noise ? "  within noise" : "";
-            string share = mean > 0 ? $" ({change / mean * 100:+0;-0}%)" : "";
-            Console.WriteLine($"{before.Name,-48} {before.Median,8:F2} {a.Median,8:F2} {b.Median,8:F2} {change,9:+0.00;-0.00}{share}{verdict}");
+            if (!spread)
+            {
+                string verdict = Math.Abs(change) <= noise ? "  within noise" : "";
+                string share = mean > 0 ? $" ({Signed(change / mean * 100, 0)}%)" : "";
+                Console.WriteLine($"{before.Name,-48} {before.Median,8:F2} {a.Median,8:F2} {b.Median,8:F2} {Signed(change, 2),9}{share}{verdict}");
+                continue;
+            }
+            double floor = (before.P10 + b.P10) / 2, moved = a.P10 - floor, drift = Math.Max(Math.Abs(before.P10 - b.P10), FloorGrain);
+            string told = (floor > 0 ? $" ({Signed(moved / floor * 100, 0)}%)" : "") + (Math.Abs(moved) <= drift ? "  within noise" : "");
+            Console.WriteLine($"{before.Name,-48} {before.P10,8:F2} {a.P10,8:F2} {b.P10,8:F2} {Signed(moved, 2),9}{told,-21} | {before.Median,8:F2} {a.Median,8:F2} {b.Median,8:F2} {Signed(change, 2),9}");
         }
         foreach (var missing in runs[0].Scenes.Select(Key).Except(after.Keys).Concat(after.Keys.Except(runs[0].Scenes.Select(Key))))
             Console.WriteLine($"only in one run: {missing.Replace('|', ' ')}");

@@ -584,7 +584,7 @@ Plan 02 · S15, part a.
 
 | Command | What it does |
 |---|---|
-| `nationaldex` | The Pokédex becomes the National one (`Pokedex.UnlockNational`; the original's `SetNationalDexEnabled`), as Professor Oak makes it in the professor's lab. It asks nothing and shows nothing: the words and the fanfare are the script's, and so is the question of whether it may be given (`RowanLab.Rowan` asks `flag FLAG_GAME_COMPLETED` and `var SEEN >= 210`, which a test holds to `Pokedex.CanUnlockNational`). `if nationaldex` holds from then on. |
+| `nationaldex` | The Pokédex becomes the National one (`Pokedex.UnlockNational`; the original's `SetNationalDexEnabled`), as Professor Oak makes it in the professor's lab. It asks nothing and shows nothing: the words and the fanfare are the script's, and so is the question of whether it may be given (`RowanLab.Rowan` asks `flag FLAG_GAME_COMPLETED` and `var SEEN >= 210`, which a test holds to `Pokedex.CanUnlockNational`). `if nationaldex` holds from then on. The PC grows with it, from Platinum's eighteen boxes to thirty-six (`PcBoxes.Grow`, plan 03 · D13), which Professor Oak's line after it says. |
 
 `LEAGUE_VICTORIES` is one more of the game's own variables (`if var LEAGUE_VICTORIES >= 20`): the times a team has entered the Hall of Fame (the original's `GetLeagueVictories`), by which the rival in the Survival Area brings the stronger of his two teams.
 

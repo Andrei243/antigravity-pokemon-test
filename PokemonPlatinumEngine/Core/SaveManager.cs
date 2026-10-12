@@ -355,6 +355,14 @@ public class SavedPokemonData
 {
     public string SpeciesName { get; set; } = "Turtwig";
 
+    /// <summary>
+    /// Its species' number in the National Pokédex (plan 03 · D13), kept beside the name: a species is found by its
+    /// name, and by this if the data no longer has the name (a name respelt by a later import: an apostrophe, an
+    /// accent, a gender sign). 0, left out, in saves from before it was kept.
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
+    public int DexNumber { get; set; }
+
     /// <summary>Still an Egg (plan 06 · R15): its friendship is the egg cycles it has left. Left out for a Pokémon.</summary>
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
     public bool IsEgg { get; set; }
@@ -433,6 +441,7 @@ public class SavedPokemonData
         var saved = new SavedPokemonData
         {
             SpeciesName = p.Species.Name,
+            DexNumber = p.Species.DexNumber,
             IsEgg = p.IsEgg,
             Form = p.Form,
             Nickname = p.Nickname,
@@ -488,10 +497,11 @@ public class SavedPokemonData
 
     public Pokemon ToPokemon()
     {
-        var sp = PokemonDatabase.Get(SpeciesName) ?? PokemonDatabase.Get("Turtwig")!;
+        var sp = PokemonDatabase.Get(SpeciesName) ?? PokemonDatabase.GetByDex(DexNumber) ?? PokemonDatabase.Get("Turtwig")!;
         var p = new Pokemon(sp, Level, Gender, Nature, IsShiny)
         {
-            Nickname = Nickname,
+            // One that was never given a name of its own is called what its species is called today
+            Nickname = Nickname == SpeciesName ? sp.Name : Nickname,
             CurrentHP = Math.Min(CurrentHP, 999),
             Status = (StatusCondition)Status,
             IvHP = IvHP,
@@ -812,8 +822,10 @@ public class SavedBoxes
 
     public PcBoxes ToBoxes()
     {
-        var pc = new PcBoxes { UnlockedWallpapers = UnlockedWallpapers, CurrentBox = Math.Clamp(CurrentBox, 0, PcBoxes.BoxCount - 1) };
-        for (int i = 0; i < Math.Min(Boxes.Count, PcBoxes.BoxCount); i++)
+        // As many boxes as the save had: Platinum's eighteen, or the National Pokédex's (plan 03 · D13)
+        var pc = new PcBoxes(Boxes.Count) { UnlockedWallpapers = UnlockedWallpapers };
+        pc.CurrentBox = Math.Clamp(CurrentBox, 0, pc.Boxes.Count - 1);
+        for (int i = 0; i < Math.Min(Boxes.Count, pc.Boxes.Count); i++)
         {
             var saved = Boxes[i];
             pc.Rename(i, saved.Name);

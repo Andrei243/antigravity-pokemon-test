@@ -1257,7 +1257,13 @@ public partial class GameEngine
 
         // ---- after the Hall of Fame (plan 02 · S15)
 
-        public void GiveNationalDex() => game.playerPokedex.UnlockNational();
+        public void GiveNationalDex()
+        {
+            game.playerPokedex.UnlockNational();
+            // The PC's boxes grow with it: eighteen held one of each of Platinum's species, and it takes twice as
+            // many for the National Pokédex's (plan 03 · D13)
+            game.pcBoxStorage.Grow();
+        }
 
         public int LeagueVictories => game.hallOfFame.Total;
 

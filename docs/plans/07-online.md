@@ -2,15 +2,18 @@
 
 **Goal**: two people playing the game on different computers can find each other over the internet, trade Pokémon and battle each other, the way Platinum's Union Room and Wi-Fi Club let friends do it. It has to work in every region of the chained game (Kanto first, then Johto, Hoenn, Sinnoh and onward), between players at different points of the story.
 
-It follows the shape of plans 01–06: where we are, design, sessions, decisions to take.
+It follows the shape of plans 01–06: where we are, design, sessions, decisions. Written 2026-10-01; brought up to date and given the user's decisions on 2026-10-12.
 
 ## Where we are
 
-- **Save** (`Core/SaveManager.cs`): one local `savegame.json`. A saved Pokémon has species, nickname, level, gender, nature, shiny flag, HP, status, IVs, EXP and moves. It has **no** unique id, original trainer (name and id), EVs, held item, ability, friendship, met location or Poké Ball, all of which trading needs. The player has a name but no trainer id.
-- **Battle** (`Battle/BattleEngine.cs`, ~1000 lines): rules, the enemy AI (`ChooseEnemyAction`), the message queue, the HUD, VFX, animation and audio all live in one class. Input is read inside `Update` (`InputManager`, `Raylib.IsKeyPressed`), the constructor plays music, and every random roll uses an unseeded `new Random()` (here and in `DamageCalculator`, `CatchCalculator`). Only the player side is chosen by a person; the other side is always the AI.
-- **Rules without a GPU**: CLAUDE.md already requires battle logic to be callable without raylib, and tests drive battles through `SelectMainMenuOption`, `SelectMove`, `ConfirmMessage`. That is most of what an online battle needs; the rest is listed under "Needs from the battle rework".
-- **Networking**: none. No server, accounts or online code exist.
-- **In flight elsewhere**: the "Complete the battle system" thread is reworking the battle engine right now, "Move game data to files" is moving species/moves to data files, and "Chain regions Kanto onward" is restructuring the world into chained regions. This plan is designed to land after those and asks them for a few cheap properties now (below).
+Rewritten 2026-10-12 (the first version, of 2026-10-01, described the game before plan 06).
+
+- **Save** (`Core/SaveManager.cs`): a saved Pokémon already carries what a trade shows and checks: its original trainer (`Pokemon.OriginalTrainer`, a `TrainerMark` of name, number and look), EVs, held item, ability, friendship, personality, ball, met place and met level. The player has a trainer number (`PlayerIdentity`, the card's ID with a hidden half, plan 06 · R15). Two things are still missing, and both are O2's: a Pokémon's own id (nothing tells two identical Pokémon apart, which a trade receipt needs) and a version for the save's Pokémon (the save has a world version and a story version, not one for its Pokémon). The overview names both as one seam O2 owns (`Pokemon.Id` and the save's version, lane 6).
+- **Battles** (`Battle/Sim/`): the rules are `BattleCore`, with no raylib, input or audio. A battle asks (`Request`) and is answered (`Submit` of `BattleChoice`s), writes a log of events (`BattleLog.cs`) that `BattleEngine` plays on screen, rolls every die with one seedable `BattleRandom`, and records itself as a seed and a list of answers (`BattleRecord`) that replays to the same battle. That is what plan 06 · R1 and R2 gave to this plan's first three asks. What a link battle still needs from the battles is plan 28 (below), which replaces O3.
+- **Trades**: `GameEngine.ReceiveTradedPokemon` and `Evolution.Find(..., EvolutionTrigger.Trade, ...)` apply a received Pokémon and its trade evolution (since 2026-10-02, notes under Trading).
+- **Places**: the upper floors of every Pokémon Center and Jubilife's Global Terminal are built to the original's plans (plan 01 · M11d), with nobody at the counters that were online in Platinum.
+- **Shared with other plans**: plan 13 · V12 (local versus) asks both sides of a battle from the menus and fights on copies; plan 14 · B11 writes `LevelScaling` (Flat 50 and Flat 100) and a shared legality check (`Models/Legality.cs`), which O5 and O6 use rather than writing their own; plan 08 · P10 writes the data version (`GameDataFiles.Version`). None of them is done yet; whichever comes first writes the shared piece.
+- **Networking**: none. No server or online code exists.
 
 ## Design
 
@@ -20,16 +23,16 @@ It follows the shape of plans 01–06: where we are, design, sessions, decisions
  Game (player A) ──WebSocket/TLS──┐                ┌──WebSocket/TLS── Game (player B)
                                   ▼                ▼
                          PokemonPlatinum.Server (ASP.NET Core, .NET 10)
-                         ├─ lobby: friend codes, link codes, presence
+                         ├─ lobby: friend codes by IP, link-code rooms
                          ├─ trade broker: offer → validate → commit → receipt
                          ├─ battle host: runs BattleRules headless, one per match
-                         └─ store: SQLite (accounts, friends, trade log, battle records)
+                         └─ store: SQLite (friend codes, hashed IPs, trade log, battle records)
 ```
 
 - **Why a server and not peer to peer**: home routers block direct connections (NAT), so P2P needs a relay anyway; a server can also check that a traded Pokémon is legal and keep a trade log so a crash mid-trade can never duplicate or lose a Pokémon.
 - **Why the server runs the battle**: the server is C# like the game, so it can run the exact same battle rules library. Each client only sends "I choose move 2" and receives the turn's events (who moved first, damage, crits, faint) to animate. Neither player can fake a crit or see the other's choice early, and both screens always agree. The alternative, both clients simulating with a shared seed (lockstep), is cheaper to host but breaks the moment the two builds differ by one bug fix and lets a modified client read the opponent's hidden choices; it is kept only as the replay format (seed + choices).
 - **Transport**: WebSockets over TLS (`System.Net.WebSockets` on the client, ASP.NET Core on the server), JSON messages with a `type` field and a protocol version. Traffic is tiny (a turn is a few hundred bytes), so JSON is fine and easy to debug.
-- **Hosting**: one small Linux VM or container (Fly.io, Hetzner, Azure Container Apps; roughly €5/month) is plenty for friends-scale use. The server address lives in `settings.json` so anyone can run their own server. A `--local` server mode lets two game windows on one machine test everything with no internet.
+- **Hosting** (decided 2026-10-12): one small Linux server of about $5 a month that the user runs, set up as [`docs/online/server-setup.pdf`](../online/server-setup.pdf) describes: Ubuntu, the .NET server as a systemd service, Caddy in front of it for HTTPS with a free DuckDNS name, a firewall, automatic security updates and a daily backup. The server address lives in `settings.json`, so anyone can run their own server. A `--local` server mode lets two game windows on one machine test everything with no internet.
 
 ### Shared code
 
@@ -37,15 +40,21 @@ A new GPU-free class library, **`PokemonPlatinum.Core`**, that both the game and
 
 ### Identity and finding each other
 
-- **No passwords at first.** On first going online the game creates a key pair and a random **trainer id** (also shown on the trainer card) and registers the public key with the server; the server issues a **friend code** (`1234-5678-9012`). Requests are signed, so nobody can act as someone else. The private key lives next to the save; losing it means a new friend code, not a lost save.
-- **Two ways to meet**, both at a new **Global Link counter** upstairs in every Pokémon Center (Platinum's Wi-Fi Club spot), in every region:
-  - **Link code**: both players type the same 8-digit code, as in modern Pokémon games. No friend list needed. Good default.
-  - **Friends**: add a friend code once; the list shows who is online and lets you invite them to trade or battle.
-- **No public matchmaking or global trade board in the first version.** Random strangers bring moderation, abuse and legal attention (see Risks). Wonder-trade and a GTS-style board are listed as later options.
+Decided by the user on 2026-10-12: no accounts and no passwords, a friend code made automatically the first time an IP address reaches the server, people meet by link code alone, and a link code is bound to the IP addresses of the two players in it.
+
+- **The friend code**: the first time a game connects from an IP address, the server creates a **friend code** (`1234-5678-9012`) and remembers the pair. The code is shown in the Global Link menu and to the other player in a room, so each knows who they are trading or battling with. Nothing has to be typed or remembered.
+- **An install token beside the IP**: the game also sends a random token it creates once and keeps next to `settings.json` (never shown, never typed), and the server recognises a player by IP and token together. Without it, two people playing from one house (one IP behind one router) would share one friend code, and a home connection whose IP changes would get a new friend code each time. With it, a new token from a known IP is a second player, and a known token from a new IP keeps its friend code, which then moves to the new IP. It is still no account and no password.
+- **The link code, bound to IPs**: the only way to meet. One player chooses "Make a code"; the server hands out an 8-digit code tied to that player's IP and friend code. The other player types it; the server binds the room to the second IP and friend code too. From then on the room accepts messages only from those two IPs with those two tokens; a third person who types the code is told the room is full; a dropped player may come back within 60 seconds only from the same IP or with the same token. A code works once and expires after 10 minutes if nobody joins.
+- **Guessing is limited**: ten wrong codes from one IP within ten minutes stop that IP joining rooms for ten minutes.
+- **IPv4 only**: the server's name has only an IPv4 address (an A record, no AAAA). Home IPv6 addresses change on their own every day (privacy addresses), which would make an IP binding useless. A player whose connection has no IPv4 at all (rare, a few mobile networks) can't connect in the first version.
+- **The real IP behind the proxy**: the server sits behind Caddy (the setup guide below), so it reads the player's address from `X-Forwarded-For` through ASP.NET Core's forwarded-headers middleware, trusting only the proxy on the same machine. Without that, every player would look like `127.0.0.1`.
+- **Privacy**: an IP address is personal data under the GDPR. The server stores a keyed hash of each address (HMAC-SHA256 with a secret from its configuration), never the address itself, which is enough to recognise a returning player and to check a room's binding. It forgets a player not seen for twelve months, and it stores nothing else about anyone.
+- **Where**: a **Global Link counter** on the upper floor of every Pokémon Center, in every region, and the Global Terminal in Jubilife.
+- **Not in the first version**: a friend list with invites (optional, O8), public matchmaking, a global trade board. Strangers bring moderation, abuse and legal attention (see Risks).
 
 ### Trading
 
-1. Both players enter the trade room (link code or invite). Each picks one Pokémon from party or PC boxes; both see the other's offer with a summary page (species, level, nature, moves, OT, held item).
+1. Both players enter the trade room by link code. Each picks one Pokémon from party or PC boxes; both see the other's offer with a summary page (species, level, nature, moves, OT, held item).
 2. Each presses **Offer**, then **Confirm**. Either can cancel until both confirm.
 3. The server **validates** each Pokémon (below), writes a trade record (`pending`), and sends each client the Pokémon it receives with a **trade receipt id**.
 4. Each client applies the trade: removes its Pokémon, adds the new one, **saves immediately**, then acknowledges. When both acknowledge, the record becomes `complete`.
@@ -75,63 +84,53 @@ After the trade, Platinum's rules apply: traded Pokémon gain 1.5× EXP; trade e
 
 ### Save additions (needed before anything goes online)
 
-Per Pokémon: `Id` (GUID), `OriginalTrainerName`, `OriginalTrainerId`, `EVs`, `HeldItem`, `Ability`, `Friendship`, `MetLocation`, `MetLevel`, `Ball`, `IsTraded` (derived from OT). Per player: `TrainerId`, `SecretId`, online key reference, link-battle record. IVs move to the real 0–31 range if they are still 0–15. Several of these the battle rework and the story plan need anyway (held items, abilities, friendship).
+Already in the save (Where we are): the original trainer, EVs, held item, ability, friendship, personality, ball, met place and level, and the player's trainer number. Still O2's: `Pokemon.Id` (a GUID, given when a Pokémon is made or first loaded), the version of the save's Pokémon with its migration, and the link-battle record (wins and losses by friend code).
 
-*Ready from plan 06 · R1 (2026-10-04), for asks 2 and 3 below and for the rule sets:* `Battle/Sim/BattleRandom.cs` is the one seedable source (Platinum's own generator; its whole state is one number, so a resynchronised battle carries on), handed to a battle through `BattleSetup.Random`; presentation draws its own numbers already. The game's own battles roll with it since R2. A game is played by Platinum's rules or the modern ones (`Data/Ruleset.cs`, kept in the save), and a battle is given its rules (`BattleSetup.Rules`): two players whose saves differ need one set for the room, so add it to the room's rule sets in O6 (Flat 50 under Platinum's rules is the natural default), and count it into the data version.
+*Ready from plan 06 · R1 (2026-10-04), for the battles (plan 28) and for the rule sets:* `Battle/Sim/BattleRandom.cs` is the one seedable source (Platinum's own generator; its whole state is one number, so a resynchronised battle carries on), handed to a battle through `BattleSetup.Random`; presentation draws its own numbers already. The game's own battles roll with it since R2. A game is played by Platinum's rules or the modern ones (`Data/Ruleset.cs`, kept in the save), and a battle is given its rules (`BattleSetup.Rules`): two players whose saves differ need one set for the room, so add it to the room's rule sets in O6 (Flat 50 under Platinum's rules is the natural default), and count it into the data version.
 
-### Needs from the battle rework (ask now, cheap if done during the rework)
+### What the battles still owe a link battle: plan 28
 
-1. **Rules separate from presentation**: a `BattleRules` (or similar) class with no raylib, `InputManager` or `AudioManager` calls, that takes both sides' choices and produces a list of events. `BattleEngine`'s HUD, VFX, animator and music stay on the client and play those events.
-2. **Both sides are chosen the same way**: an interface such as `IBattleController` with implementations for local input, the AI, and (later) a remote player. Today the AI is called inside `ExecuteTurn`.
-3. **One injectable random source** for the whole battle (damage, crits, accuracy, catch, speed ties, secondary effects), seedable. Presentation-only randomness (VFX particles) stays separate.
-4. **Battle state that can be serialised** (both parties, field effects, turn counter), so a reconnecting player can be resynced.
-
-If the rework already gives (1)–(3), session O3 shrinks to wiring.
-
-*Given by plan 06 · R2 (2026-10-05):* asks 1 to 3, and the replay.
-- **1.** The rules are `Battle/Sim/BattleCore`: no raylib, input or audio. It is asked (`Request`) and answered (`Submit` of `BattleChoice`s: a move by position and its target, a switch, an item by name, running) and writes a log of events (`BattleLog.cs`), which `BattleEngine` plays through the HUD, the animator and the sounds on the client. A server runs the core alone and sends each turn's `TakeLog()`.
-- **2.** `IBattleController` chooses for a side from inside the core, with the battle's own numbers (the opponents' `TrainerAi`). A local or a remote player is *not* one: their choices come in from outside through `Submit`, which is what keeps a battle a seed and a list of answers. For a link battle neither side has a controller (`CoreSetup.EnemyController = null`), and the core asks for both.
-- **3.** `BattleRandom` is the one source, and the game's own battles use it too now.
-- **The replay** is `BattleRecord` (the seed and every answer; plain data, it goes out as JSON and comes back the same battle) with `BattleCore.Record` and `Replay`; `BattleCoreTests.ARecordedBattleReplaysTheSame` is the "same seed + choices → same events" test O3 names.
-- **4 is half given.** A battle's state is plain objects with no screen attached, and a battle can be brought back anywhere by replaying its record, which is enough to resynchronise a reconnecting player as long as the server keeps the record. Nothing writes the state itself out; if O6 wants that (a long battle resumed without replaying it), it is a writer for `Battler` and the parties, with `BattleRandom.Resume` for the dice.
-- **Still O3's**: the events name Pokémon by reference (`Entered.Pokemon`, `ExpGained.Pokemon`), which a wire format has to turn into a side and a party position; a player sees the foe's log through the same events, so nothing hidden (the other side's choice before the turn is played) is in them, but that is worth a test of its own; the menus of `BattleEngine` assume the enemy side is chosen for; and a trainer's side sends its next Pokémon in the order of its party where a player would be asked.
+This plan first listed four asks of the battle rework. Plan 06 · R1 and R2 gave the first three: the rules apart from the screen (`BattleCore` and its log), one way to choose for a side (`IBattleController`, with both sides asked from outside when it is null) and one seedable source of chance (`BattleRandom`), plus the replay (`BattleRecord`). The fourth was half given. What is left (a log that names places instead of objects, a view of the log each side may see, both sides asked by the menus, a battle's state written out and read back, a link battle's own setup with its rules, clauses and timer) is collected in [plan 28 · Battles for two players](28-battles-for-two-players.md), which replaces session O3. O6 starts once plan 28's sessions I1 to I4 are done.
 
 ### Risks
 
-- **Takedowns**: an online service for a Pokémon fan game is far more visible than a downloadable one. Keep it friends-only (link codes, friend codes, no public listing or board), self-hostable, and with no Nintendo names or art on the server side.
+- **Takedowns**: an online service for a Pokémon fan game is far more visible than a downloadable one. Keep it friends-only (link codes, no public listing or board), self-hostable, and with no Nintendo names or art on the server side or in the server's domain name.
+- **Identity by IP**: an IP address says where a connection comes from, not who is behind it. The install token covers a shared house and a changing home IP; it does not cover someone who copies another player's `settings.json`, which between friends is not worth defending. Mobile connections behind carrier-grade NAT share one IP among many strangers, which the token also covers. Nothing about a player is secret enough to need more.
 - **Cheating**: local saves can be edited. Validation stops impossible Pokémon; nothing stops a hand-edited "perfect" one. Fine between friends; ranked play would need server-held saves, which is out of scope.
-- **Running cost and upkeep**: someone has to host and patch the server. The self-host option and SQLite keep this small.
-- **Scope**: it touches save, battle, UI and a new server. It should come after the battle rework and the data-files move, not alongside them.
+- **Running cost and upkeep**: the server costs about €5 a month and needs its updates applied. The setup guide turns on automatic security updates and a daily backup of the database; the self-host option and SQLite keep it small.
+- **Scope**: it touches save, battle, UI and a new server. It comes after plan 28 and the shared pieces of plans 08, 13 and 14, not alongside them.
 
 ## Sessions
 
 | # | Session | Delivers | Needs |
 |---|---|---|---|
-| O1 | Core library split | `PokemonPlatinum.Core` project (models, data, save DTOs, battle rules) referenced by game and tests; no behaviour change | Battle rework, data-files move landed |
-| O2 | Save for trading | Pokémon id, OT, trainer id, EVs, held item, ability, friendship, met data, ball; `SaveVersion` and migration of old saves; tests | O1 |
-| O3 | Network-ready battles | Rules/events split, `IBattleController`, seeded RNG, event replay test (same seed + choices → same events) | Battle rework |
-| O4 | Server skeleton | ASP.NET Core server, WebSocket protocol with versioning, key-pair registration, friend codes, link-code rooms, presence, SQLite; `--local` mode; protocol tests with two in-process clients | O1 |
-| O5 | Trading | Trade room UI at the Global Link counter (ModernUi kit), offer/confirm flow, server validation, receipts and crash recovery, trade evolutions, 1.5× EXP, obedience; tests for duplication and rollback | O2, O4 |
-| O6 | Battles | Team pick and preview, rule sets and clauses, server-hosted battle, turn timer, reconnect and forfeit, win/loss record; harness shots of the battle room | O3, O4 |
-| O7 | Friends and polish | Friend list with online status and invites, connection status in the menu, error messages, settings for server address, hosting guide in `docs/` | O5, O6 |
-| O8 | (Optional) More ways to trade | Wonder trade, a GTS-style board, double battles online, spectating | O7, decisions below |
+| O1 | Core library split | `PokemonPlatinum.Core` project (models, data, save DTOs, battle rules) referenced by game and tests; no behaviour change. The same library plan 27 (Unity) describes, so it is written once, for both | Plan 28 · I1 |
+| O2 | Save for trading | `Pokemon.Id` and the save's version for its Pokémon, with the migration of old saves; the link-battle record; tests | — |
+| O3 | Network-ready battles | Moved to plan 28 (I1 to I5) | — |
+| O4 | Server skeleton | ASP.NET Core server, WebSocket protocol with versioning, friend codes made on an IP's first visit with the install token, link-code rooms bound to their two IPs, guess limits, forwarded headers behind Caddy, hashed IPs, SQLite; `--local` mode; protocol tests with two in-process clients | O1 |
+| O5 | Trading | Trade room UI at the Global Link counter (ModernUi kit), offer/confirm flow, server validation (plan 14 · B11's legality check), receipts and crash recovery, trade evolutions, 1.5× EXP, obedience; tests for duplication and rollback | O2, O4 |
+| O6 | Battles | Team pick and preview, rule sets and clauses, server-hosted battle, turn timer, reconnect and forfeit, win/loss record; harness shots of the battle room | Plan 28 · I1–I4, O4 |
+| O7 | Going live | Connection status, error messages, the server's address in settings, the server's deployment files (Caddy config, systemd unit, backup script) as the setup guide describes, a first real deployment on the user's server | O5, O6 |
+| O8 | (Optional) More | A friend list with invites, wonder trade, a GTS-style board, double battles online, spectating | O7 |
 
 Every session runs the build and tests; O4 onward also adds a test that starts the server in-process and drives two fake clients through a full trade or battle.
 
-## Decisions for the user
+## Decisions
 
-1. **Who hosts the server?** Recommended: you run one small server (about €5/month), with the address in settings so friends can point at another one.
-2. **Friends only, or public?** Recommended: friends only (link codes and friend codes) for the first version; public matchmaking and a trade board stay optional.
-3. **Accounts**: recommended: no passwords, a key pair and friend code created automatically. A login (Discord, email) can come later if saves should move between computers.
-4. **When**: recommended after the battle rework and the move to data files land; O3's asks can go to the battle rework thread now so that work isn't redone.
+Taken by the user on 2026-10-12:
+
+1. **Hosting**: the user runs one small server of about $5 a month. The setup guide, with the provider recommended and every step from an empty account to a running server, is [`docs/online/server-setup.pdf`](../online/server-setup.pdf) (source: [`server-setup.html`](../online/server-setup.html)). Recommended there: Hetzner Cloud's smallest shared server; Vultr's or Akamai's $5 server if the budget must stay at exactly $5.
+2. **Who can connect**: people meet by link code; nothing public.
+3. **Accounts**: none, and no passwords. The friend code is made automatically the first time an IP reaches the server, and a link code is bound to the IPs of its two players. The install token beside the IP (Identity, above) was added on 2026-10-12 so that two players behind one router, or one whose IP changes, keep working under that decision.
+4. **The battle rework**: a plan of its own, plan 28, written 2026-10-12.
 
 ## Status
 
 - [ ] O1 Core library split
 - [ ] O2 Save for trading
-- [ ] O3 Network-ready battles
+- [x] O3 Network-ready battles (moved to plan 28 on 2026-10-12)
 - [ ] O4 Server skeleton
 - [ ] O5 Trading
 - [ ] O6 Battles
-- [ ] O7 Friends and polish
-- [ ] O8 More ways to trade (optional)
+- [ ] O7 Going live
+- [ ] O8 More (optional)

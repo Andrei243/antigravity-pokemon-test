@@ -56,7 +56,7 @@ public partial class GameEngine
                 if (VillaRules.Owned(story) == VillaRules.Furniture.Count) trainerScore = TrainerScore.Add(trainerScore, TrainerScore.BoughtAllVillaFurniture);
                 return 1;
             case "boxroom":
-                return PcBoxes.BoxCount * PcBoxes.BoxSize - pcBoxStorage.Count;
+                return pcBoxStorage.Free;
             case "store":
                 if (!pastimes.PalPark.Stocked) return 0;
                 foreach (var pokemon in pastimes.PalPark.TakeSix("Pal Park", GameClock.Today))

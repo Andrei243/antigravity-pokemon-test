@@ -437,7 +437,11 @@ internal static partial class PokemonModels
         Leaf = SurfaceMaterial.Leaf, Metal = SurfaceMaterial.Metal, Glow = SurfaceMaterial.Glow;
 
     /// <summary>The model for a species (built now if it isn't ready; waits for a background build under way).</summary>
-    public static PokeModel Get(string species) => Models.GetOrAdd(species, s => new Lazy<PokeModel>(() => Build(s))).Value;
+    public static PokeModel Get(string species)
+    {
+        Borrowed.TryRemove(species, out _);
+        return Models.GetOrAdd(species, s => new Lazy<PokeModel>(() => Build(s))).Value;
+    }
 
     /// <summary>Species preloaded at start-up, which <see cref="Trim"/> never lets go of.</summary>
     private static readonly ConcurrentDictionary<string, bool> Pinned = new(StringComparer.OrdinalIgnoreCase);
@@ -458,8 +462,47 @@ internal static partial class PokemonModels
     /// </summary>
     public static void Request(string species)
     {
+        Borrowed.TryRemove(species, out _);
+        Start(species);
+    }
+
+    private static void Start(string species)
+    {
         var lazy = Models.GetOrAdd(species, s => new Lazy<PokeModel>(() => Build(s)));
         if (!lazy.IsValueCreated) Task.Run(() => lazy.Value);
+    }
+
+    /// <summary>
+    /// Models that are being built only so that something can be baked from them (plan 03 · D13): nobody else has
+    /// asked for them, so whoever borrowed one gives it back once the baking is done (<see cref="Return"/>).
+    /// Walking down a complete National Pokédex asks for a sprite of every species: kept, their models came to
+    /// gigabytes.
+    /// </summary>
+    private static readonly ConcurrentDictionary<string, bool> Borrowed = new(StringComparer.OrdinalIgnoreCase);
+
+    /// <summary>
+    /// Starts building a species' model in the background for a baking's sake. If the game asks for it meanwhile
+    /// (<see cref="Request"/>, <see cref="Get"/>, <see cref="Preload"/>), it is the game's and stays.
+    /// </summary>
+    public static void Borrow(string species)
+    {
+        if (!Models.ContainsKey(species)) Borrowed[species] = true;
+        Start(species);
+    }
+
+    /// <summary>Whether a model is on loan to a baking and nobody else has asked for it.</summary>
+    public static bool IsBorrowed(string species) => Borrowed.ContainsKey(species);
+
+    /// <summary>How many models are on loan now, built or on their way.</summary>
+    public static int OnLoan => Borrowed.Count;
+
+    /// <summary>
+    /// Gives a borrowed model back: it is let go, with its GPU buffers (so call it on the main thread), unless the
+    /// game has asked for it since. A model nobody borrowed is left alone.
+    /// </summary>
+    public static void Return(string species)
+    {
+        if (Borrowed.TryRemove(species, out _) && !Pinned.ContainsKey(species)) Release(species);
     }
 
     /// <summary>The model if it is built, without waiting for it.</summary>
@@ -484,6 +527,9 @@ internal static partial class PokemonModels
         foreach (var name in Models.Keys)
             if (!wanted.Contains(name) && !Pinned.ContainsKey(name) && name != PokemonSprites.Fallback) Release(name);
     }
+
+    /// <summary>How many models are built and held now (plan 03 · D13: what a tool reads to see that none pile up).</summary>
+    public static int BuiltCount => Models.Count(m => m.Value.IsValueCreated);
 
     private static readonly ConcurrentDictionary<string, string> Signatures = new(StringComparer.OrdinalIgnoreCase);
 
@@ -778,10 +824,11 @@ internal static partial class PokemonModels
         Array.Exists(Forms, s => s.Equals(species, StringComparison.OrdinalIgnoreCase));
 
     /// <summary>
-    /// The species start-up meshes and keeps, with their menu sprites (the hand-built models of plan 04 · G7 and
-    /// G10): the title's Giratina, the introduction's Buneary, the starters and the Pokémon of the first routes.
-    /// Every other model, the later hand-built batches included, is made when a scene asks for it, as the generated
-    /// ones are; keeping them all would cost a few megabytes each for the whole game.
+    /// The species whose menu sprites the start makes ready (the hand-built models of plan 04 · G7 and G10): the
+    /// title's Giratina, the introduction's Buneary, the starters and the Pokémon of the first routes, so that no
+    /// menu of the opening shows the stand-in for a frame. Their models are no longer kept (plan 03 · D13): like
+    /// every other, each is made when a scene asks for it and let go after it; the start asks only for those of
+    /// <see cref="ShownAtOnce"/>.
     /// </summary>
     public static readonly string[] Preloaded =
     {
@@ -789,12 +836,19 @@ internal static partial class PokemonModels
         "Starly", "Staravia", "Staraptor", "Bidoof", "Bibarel", "Shinx", "Luxio", "Luxray", "Riolu", "Lucario", "Gible", "Gabite", "Garchomp"
     };
 
+    /// <summary>The models the start asks for ahead, because the first screens draw them at once: the title's and the introduction's.</summary>
+    public static readonly string[] ShownAtOnce = { "Giratina", "Buneary" };
+
+    /// <summary>Whether a species' model is built, on its way, or asked for by anyone.</summary>
+    public static bool Holds(string species) => Models.ContainsKey(species);
+
     /// <summary>
     /// Forgets a species' model so it is built again when next asked for, freeing its memory and its GPU buffers
     /// (so call it on the main thread). For tools that go through many species, like the harness's Pokédex boards.
     /// </summary>
     public static void Release(string species)
     {
+        Borrowed.TryRemove(species, out _);
         if (Models.TryRemove(species, out var lazy) && lazy.IsValueCreated) PokemonRenderer.Unload(lazy.Value);
     }
 

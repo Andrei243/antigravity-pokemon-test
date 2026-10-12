@@ -168,7 +168,7 @@ public sealed class HeadlessScriptHost : IScriptHost
                 if (SlotsLeave is { } coins) Pastimes.Coins.Set(coins);
                 return 1;
             case "boxroom":
-                return Models.PcBoxes.BoxCount * Models.PcBoxes.BoxSize - Boxes.Count;
+                return (NationalDex ? Models.PcBoxes.NationalBoxCount : Models.PcBoxes.BoxCount) * Models.PcBoxes.BoxSize - Boxes.Count;
             case "store":
                 if (!Pastimes.PalPark.Stocked) return 0;
                 Boxes.AddRange(Pastimes.PalPark.TakeSix("Pal Park", GameClock.Today));
