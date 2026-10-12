@@ -246,7 +246,11 @@ public class BagAndShopTests
         Choose(bag, BagAction.Use, inventory, party, notes);
         bag.UseOnTarget(inventory, party, notes.Add, new EvolutionContext { Party = party, Bag = inventory });
 
+        // The level's panel is read first (plan 08 · P5): its gains, then its new values
         Assert.Equal(9, turtwig.Level);
+        Assert.Null(bag.Teaching);
+        bag.ConfirmLevelUp(notes.Add);
+        bag.ConfirmLevelUp(notes.Add);
         Assert.Equal("Absorb", bag.Teaching!.Value.Move);
         for (int i = 0; i < 4; i++) bag.MoveForget(1);
         bag.ConfirmForget(inventory, notes.Add);

@@ -1113,13 +1113,15 @@ public sealed partial class BattleCore : IBattleContext
     {
         Say(boosted ? $"{p.DisplayName} gained a boosted {exp} EXP. Points!" : $"{p.DisplayName} gained {exp} EXP. Points!");
         EffortRules.Gain(p, foe.EvYield, Rules);
+        // The stats it had, for the level-up panel (plan 08 · P5): effort changes none of them until a level reckons them again
+        var before = p.Stats();
         bool rose = p.GainExp(exp, out var learned, out var wanted);
         Emit(new ExpGained(p, exp));
         if (!rose) return;
 
         // Evolution waits for the battle to end (see LeveledUp)
         if (!leveledUp.Contains(p)) leveledUp.Add(p);
-        Emit(new LevelRose(p, p.Level));
+        Emit(new LevelRose(p, p.Level, before, p.Stats()));
         Say($"{p.DisplayName} grew to Lv. {p.Level}!");
         foreach (string move in learned) Say($"{p.DisplayName} learned {move}!");
         foreach (string move in wanted) Emit(new MoveWanted(p, move));

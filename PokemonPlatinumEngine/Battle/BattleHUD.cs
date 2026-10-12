@@ -47,6 +47,12 @@ public class BattleHUD
     public int BagMoveIndex { get; set; } = 0;
     public int TargetMenuIndex { get; set; } = 0;
 
+    /// <summary>
+    /// The level-up panel over the message box (plan 08 · P5), while a Pokémon's level is being shown: the battle
+    /// puts it up with the level's line and takes it down once its two pages have been read. Null otherwise.
+    /// </summary>
+    public UI.Kit.LevelUpPanel? LevelUp { get; set; }
+
     /// <summary>Draws the HP boxes and the bottom panel over the battle field.</summary>
     /// <param name="anim">What the field shows: the HP boxes follow the Pokémon on the platforms and their draining bars.</param>
     public void Draw(int screenWidth, int screenHeight, BattleEngine battle, string battleMessage, BattleAnimator anim, Inventory inventory)

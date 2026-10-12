@@ -59,16 +59,7 @@ public static class EffortRules
 
     public static int Total(Pokemon p) => p.EvHP + p.EvAttack + p.EvDefense + p.EvSpAttack + p.EvSpDefense + p.EvSpeed;
 
-    public static int YieldOf(StatSpread? spread, StatType stat) => spread == null ? 0 : stat switch
-    {
-        StatType.HP => spread.HP,
-        StatType.Attack => spread.Attack,
-        StatType.Defense => spread.Defense,
-        StatType.SpAttack => spread.SpAttack,
-        StatType.SpDefense => spread.SpDefense,
-        StatType.Speed => spread.Speed,
-        _ => 0
-    };
+    public static int YieldOf(StatSpread? spread, StatType stat) => spread?.Of(stat) ?? 0;
 
     /// <summary>
     /// <c>BattleScript_CalcEffortValues</c>: what a Pokémon gains for a foe it helped beat, stat by stat in the
