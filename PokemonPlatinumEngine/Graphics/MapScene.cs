@@ -85,6 +85,9 @@ internal sealed class MapScene
     // Where a room's floor begins (Map.RoomCorner): its side wall stands west of it and its back wall north
     private readonly (int Left, int Back) roomCorner;
 
+    // The void of a room that lies outside its plan (OutsideThePlan); null in a room with none
+    private readonly bool[,]? outsideThePlan;
+
     /// <summary>The ground this scene can show something on: its tiles and what leans in from just outside them.</summary>
     public GroundRect Bounds => Reach(ground);
 
@@ -111,6 +114,7 @@ internal sealed class MapScene
         VS = VerticalScaleOf(map);
         Margin = map.IsIndoors || chunk != null ? 0 : OutdoorMargin;
         roomCorner = map.IsIndoors ? map.RoomCorner() : (1, 2);
+        outsideThePlan = OutsideThePlan(map);
         if (chunk is { } c)
         {
             ground = content = forest = c;
@@ -599,8 +603,46 @@ internal sealed class MapScene
         if (ty < roomCorner.Back) return false;
         if (ty == Map.Height - 1) return t == TileType.Door;
         // (the wall before a house's void is its front there, a kerb with no floor under it: style guide, "Rooms")
-        if (t == TileType.Wall && Map.Interior == InteriorStyle.House && Map.GetGroundTile(tx, ty + 1) == TileType.Void) return false;
+        if (t == TileType.Wall && Outside(tx, ty + 1)) return false;
         return tx >= roomCorner.Left && tx < Map.Width - 1;
+    }
+
+    /// <summary>Whether a tile of the room is void outside its plan (<see cref="OutsideThePlan"/>).</summary>
+    private bool Outside(int tx, int ty) => outsideThePlan != null && Map.InBounds(tx, ty) && outsideThePlan[tx, ty];
+
+    /// <summary>
+    /// The void tiles of a room that lie outside its plan (style guide, "Rooms": a room whose plan is no rectangle
+    /// has nothing where its plan has nothing). In a house every void tile is; in a laboratory's room only a run of
+    /// void that no floor touches, shut off from the room by its own walls (Professor Rowan's lab), since void the
+    /// floor runs up to is a well inside the room (Pal Park's gallery). Null where there is none. No GPU calls.
+    /// </summary>
+    internal static bool[,]? OutsideThePlan(Map map)
+    {
+        if (!map.IsIndoors || map.Interior is not (InteriorStyle.House or InteriorStyle.Lab)) return null;
+        bool Void(int x, int y) => map.InBounds(x, y) && map.GetGroundTile(x, y) == TileType.Void;
+        bool Floor(int x, int y) => map.InBounds(x, y) && map.GetGroundTile(x, y) is not (TileType.Wall or TileType.Void);
+        bool[,]? outside = null;
+        var seen = new bool[map.Width, map.Height];
+        var run = new List<(int X, int Y)>();
+        for (int y = 0; y < map.Height; y++)
+            for (int x = 0; x < map.Width; x++)
+            {
+                if (seen[x, y] || !Void(x, y)) continue;
+                run.Clear();
+                run.Add((x, y));
+                seen[x, y] = true;
+                bool touched = false;
+                for (int i = 0; i < run.Count; i++)
+                    foreach (var (nx, ny) in new[] { (run[i].X + 1, run[i].Y), (run[i].X - 1, run[i].Y), (run[i].X, run[i].Y + 1), (run[i].X, run[i].Y - 1) })
+                    {
+                        touched |= Floor(nx, ny);
+                        if (Void(nx, ny) && !seen[nx, ny]) { seen[nx, ny] = true; run.Add((nx, ny)); }
+                    }
+                if (touched && map.Interior != InteriorStyle.House) continue;
+                outside ??= new bool[map.Width, map.Height];
+                foreach (var (rx, ry) in run) outside[rx, ry] = true;
+            }
+        return outside;
     }
 
     /// <summary>
@@ -901,7 +943,7 @@ internal sealed class MapScene
         // A house whose plan is no rectangle (plan 01 · M11, part b: the Pokémon Mansion's cross; style guide, "Rooms")
         // has nothing where its plan has nothing: beyond the wall that bounds its floor the tiles are void. A side wall
         // stops where the void beside it begins, and the wall before the void is the room's front there: the same kerb
-        bool Nothing(int x, int y) => style == InteriorStyle.House && Map.GetGroundTile(x, y) == TileType.Void;
+        bool Nothing(int x, int y) => Outside(x, y);
         int SideEnd(int column)
         {
             int row = h - 1;

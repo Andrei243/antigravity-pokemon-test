@@ -346,9 +346,9 @@ public class DataFileTests
         // Furniture blocks the tiles under it, decoration doesn't
         var home = MapDatabase.Get("PlayerHouse");
         Assert.Equal(InteriorStyle.House, home.Interior);
-        Assert.Contains(home.Props, p => p.Type == PropType.Fridge && p.X == 1 && p.Y == 2);
-        Assert.False(home.IsWalkable(1, 2));
-        Assert.True(home.IsWalkable(3, 6)); // on the rug
+        Assert.Contains(home.Props, p => p.Type == PropType.Fridge && p.X == 5 && p.Y == 3);
+        Assert.False(home.IsWalkable(5, 3));
+        Assert.True(home.IsWalkable(6, 10)); // on the mat inside the door
     }
 
     [Fact]

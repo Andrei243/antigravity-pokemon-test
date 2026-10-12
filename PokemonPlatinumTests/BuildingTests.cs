@@ -609,11 +609,12 @@ public class BuildingTests
     {
         MapDatabase.Initialize();
         var planks = GroundBaker.BakeInterior(MapDatabase.Get("PlayerHouse"));
-        var groove = planks.Get(100, 7 + 96);
+        // (down a column of open floor from the room's second row: its first lies in the back wall's shade)
+        var groove = planks.Get(132, 7 + 128);
         // A groove every eight texels, right across the room
-        for (int y = 96 + 7; y < planks.Height - 40; y += 8)
-            Assert.Equal(groove, planks.Get(100, y));
-        Assert.NotEqual(groove, planks.Get(100, 96 + 3));
+        for (int y = 128 + 7; y < planks.Height - 40; y += 8)
+            Assert.Equal(groove, planks.Get(132, y));
+        Assert.NotEqual(groove, planks.Get(132, 128 + 3));
         Assert.True(Cleanliness(planks).Colours <= 32, $"{Cleanliness(planks).Colours} colours in a plank floor");
 
         // The floor by the back wall is shaded in two flat steps, never a gradient
@@ -623,7 +624,7 @@ public class BuildingTests
         Assert.True(tiles.Get(5 * 32 + 5, 96 + 2).R < tiles.Get(5 * 32 + 5, 96 + 20).R);
 
         // The mat at the door
-        var mat = planks.Get(4 * 32 + 16, 8 * 32 + 10);
+        var mat = planks.Get(6 * 32 + 16, 11 * 32 + 10);
         Assert.Equal(new Color(255, 255, 255, 255), mat);
     }
 

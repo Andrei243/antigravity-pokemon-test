@@ -7,7 +7,7 @@ partial class Harness
         GoTo("TwinleafTown", 6, 9, Direction.Up); Shot("02_twinleaf_house");
         GoTo("TwinleafTown", 11, 1, Direction.Up); Shot("02b_twinleaf_north");
         GoTo("TwinleafTown", 9, 14, Direction.Left); Shot("02c_twinleaf_pond");
-        GoTo("PlayerHouse", 4, 6, Direction.Up); Shot("03_player_house");
+        GoTo("PlayerHouse", 6, 9, Direction.Up); Shot("03_player_house");
         GoTo("RivalHouse", 6, 9, Direction.Up); Shot("03b_rival_house");
         GoTo("TwinleafTown", 17, 9, Direction.Up); Shot("03c_twinleaf_rival_door");
         GoTo("Route201", 14, 10, Direction.Left); Shot("04_route201");
@@ -17,7 +17,7 @@ partial class Harness
         GoTo("SandgemTown", 8, 19, Direction.Up); Shot("05b_sandgem_lab");
         GoTo("PokemonCenter", 8, 8, Direction.Up); Shot("06_pokecenter");
         GoTo("PokeMart", 5, 8, Direction.Up); Shot("06b_mart");
-        GoTo("RowanLab", 5, 7, Direction.Up); Shot("06c_lab");
+        GoTo("RowanLab", 7, 10, Direction.Up); Shot("06c_lab");
         GoTo("LakeVerity", 14, 11, Direction.Up); Shot("07_lake");
         GoTo("Route202", 14, 10, Direction.Up); Shot("07b_route202");
         GoTo("Route202", 15, 2, Direction.Up); Shot("07c_route202_north");

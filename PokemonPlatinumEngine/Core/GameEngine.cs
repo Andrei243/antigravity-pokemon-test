@@ -1955,8 +1955,7 @@ public partial class GameEngine
         currentMap = MapDatabase.Get(room);
         var healer = currentMap.Everyone.FirstOrDefault(n => n.IsHealingNurse);
         // In front of the nurse, the counter between them; at home, beside Mom
-        var (x, y, facing) = healer == null ? (4, 5, Direction.Down)
-            : home ? (healer.GridX - 1, healer.GridY, Direction.Right) : (healer.GridX, healer.GridY + 2, Direction.Up);
+        var (x, y, facing) = healer == null ? (4, 5, Direction.Down) : home ? HomeSpot(healer) : (healer.GridX, healer.GridY + 2, Direction.Up);
         player.SetMode(TravelMode.OnFoot);
         player.SetPosition(x, y, facing);
         if (SpawnLocations.Get(story.Var(SpawnLocations.Variable)) is { } town) exitSpot = new MapSpot("Sinnoh", town.X, town.Y, Direction.Down);
@@ -1964,6 +1963,13 @@ public partial class GameEngine
         AnnounceLocation();
         if (healer == null || !StartScript(home ? FieldScripts.BlackOutHome : FieldScripts.BlackOutCenter, healer)) playerParty.HealAll();
     }
+
+    /// <summary>
+    /// Where a white-out wakes the player at home: on the tile east of Mom, turned to her. In the player's house that
+    /// is the cushion beside hers before the television, 8, 8, the tile the original's table of spawn locations gives
+    /// (<c>sSpawnLocations</c>' first row).
+    /// </summary>
+    internal static (int X, int Y, Direction Facing) HomeSpot(NPC healer) => (healer.GridX + 1, healer.GridY, Direction.Left);
 
     /// <summary>The room the player comes round in: in Sinnoh the last Pokémon Center's (<see cref="SpawnLocations.Respawn"/>), elsewhere the region's home.</summary>
     private (string Room, bool Home) WhiteOutRoom()

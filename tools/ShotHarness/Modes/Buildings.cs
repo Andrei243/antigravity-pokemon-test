@@ -25,7 +25,7 @@ partial class Harness
         GoTo("TwinleafTown", 11, 9, Direction.Up); Frames(2); Shot("b20_twinleaf_night");
         GoTo("SandgemTown", 14, 8, Direction.Up); Frames(2); Shot("b21_sandgem_night");
         GoTo("JubilifeCity", 28, 28, Direction.Up); Frames(2); Shot("b22_jubilife_night");
-        GoTo("PlayerHouse", 4, 6, Direction.Up); Frames(2); Shot("b23_house_night");
+        GoTo("PlayerHouse", 6, 9, Direction.Up); Frames(2); Shot("b23_house_night");
         engine.Settings.TimeOfDay = TimeOfDay.LateNight;
         engine.ApplySettings(window: false);
         GoTo("TwinleafTown", 11, 9, Direction.Up); Frames(2); Shot("b24_twinleaf_late_night");
@@ -39,8 +39,8 @@ partial class Harness
         // Every room
         (string Name, string Map, int X, int Y)[] rooms =
         {
-            ("b30_player_house", "PlayerHouse", 4, 6), ("b31_rival_house", "RivalHouse", 6, 9), ("b32_pallet_house", "PalletPlayerHouse", 4, 6),
-            ("b33_pokemon_center", "PokemonCenter", 8, 8), ("b34_mart", "PokeMart", 5, 8), ("b35_lab", "RowanLab", 5, 7),
+            ("b30_player_house", "PlayerHouse", 6, 9), ("b31_rival_house", "RivalHouse", 6, 9), ("b32_pallet_house", "PalletPlayerHouse", 4, 6),
+            ("b33_pokemon_center", "PokemonCenter", 8, 8), ("b34_mart", "PokeMart", 5, 8), ("b35_lab", "RowanLab", 7, 10),
             ("b36_school", "TrainersSchool", 6, 9), ("b37_poketch", "PoketchCompany", 10, 9)
         };
         foreach (var (name, map, x, y) in rooms)

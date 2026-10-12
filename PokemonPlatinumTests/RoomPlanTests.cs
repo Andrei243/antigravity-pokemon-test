@@ -183,6 +183,10 @@ public class RoomPlanTests
         new object[] { "JubilifeTV1F", 1, 4, 9, 18 },
         // The rival's house on the original's plans (plan 01 · M11, the last rooms)
         new object[] { "RivalHouse", 1, 3, 6, 10 },
+        // The player's house and Professor Rowan's lab on the original's plans (plan 01 · M11, the last step): the lab's
+        // back row of floor holds its shelves, so its floor begins a row higher than a house's
+        new object[] { "PlayerHouse", 1, 3, 6, 10 },
+        new object[] { "RowanLab", 1, 2, 7, 15 },
     };
 
     /// <summary>Rooms on the original's plans whose door isn't in the last row of the room (plan 06 · R16b): the Oreburgh
@@ -222,6 +226,10 @@ public class RoomPlanTests
     /// <summary>The rival's room over his house (plan 01 · M11, the last rooms): no door, only the stairs, and the scene that
     /// plays as the player first comes up them (<c>RebuiltRoomTests</c>, <c>OpeningTests</c>).</summary>
     internal static readonly string[] RivalsRoom = { "RivalHouse2F" };
+
+    /// <summary>The player's room over the house (plan 01 · M11, the last step): no door, only the stairs; a new game
+    /// begins in it (<c>RebuiltRoomTests</c>, <c>OpeningTests</c>).</summary>
+    internal static readonly string[] PlayersRoom = { "PlayerHouse2F" };
 
     /// <summary>The Canalave Library's upper floors (plan 02 · S10): no door, only the stairs.</summary>
     internal static readonly string[] LibraryUpperFloors = { "CanalaveLibrary2F", "CanalaveLibrary3F" };
@@ -1076,6 +1084,17 @@ public class RoomPlanTests
         new object[] { "RivalHouse", "rival_mom", 4, 6, Direction.Down },
         // The rival's room over it (plan 01 · M11, the last rooms)
         new object[] { "RivalHouse2F", "rival", 9, 5, Direction.Up },
+        // The player's house (plan 01 · M11, the last step). Two who come in for a scene stand a tile from the original's:
+        // the rival's mother on the door's own tile, since the mat is where whoever comes in stands, and the rival at
+        // the head of the bedroom's stairs, where the original stands him on the flight itself (RebuiltRoomTests)
+        new object[] { "PlayerHouse", "mom", 7, 8, Direction.Up },
+        // Professor Rowan's lab (plan 01 · M11, the last step): the child who helps him and Professor Oak share a tile,
+        // as in the original, and are never there together
+        new object[] { "RowanLab", "prof_rowan", 7, 5, Direction.Down },
+        new object[] { "RowanLab", "scientist_m", 3, 12, Direction.Down },
+        new object[] { "RowanLab", "scientist_f", 10, 12, Direction.Down },
+        new object[] { "RowanLab", "counterpart", 7, 14, Direction.Down },
+        new object[] { "RowanLab", "prof_oak", 7, 14, Direction.Up },
     };
 
     [Theory]
@@ -1169,6 +1188,7 @@ public class RoomPlanTests
             BattleArcade,
             PoketchCompany,
             RivalsRoom,
+            PlayersRoom,
         }.SelectMany(names => names).ToHashSet();
         foreach (string path in Directory.GetFiles(GameDataFiles.PathOf(MapDatabase.Folder), "*.json"))
         {

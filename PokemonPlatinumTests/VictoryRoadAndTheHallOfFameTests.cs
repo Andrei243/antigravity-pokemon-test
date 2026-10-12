@@ -337,7 +337,7 @@ public class VictoryRoadAndTheHallOfFameTests
         var log = hall.Log;
         Assert.Equal(game.Party.Count, log.Count(l => l == "sound ball_click"));
         int At(string line) => log.IndexOf(line) is >= 0 and var i ? i : throw new Xunit.Sdk.XunitException($"the scene never did '{line}': {string.Join("; ", log)}");
-        int[] order = { At("sound ball_click"), At("fanfare FanfareHeal"), At("fade out"), At("halloffame"), At("open Ceremony"), At("warp PlayerHouse2F 4 4"), At("save"), At("sound save"), At("open Credits") };
+        int[] order = { At("sound ball_click"), At("fanfare FanfareHeal"), At("fade out"), At("halloffame"), At("open Ceremony"), At("warp PlayerHouse2F 4 6"), At("save"), At("sound save"), At("open Credits") };
         Assert.Equal(order.OrderBy(i => i), order);
         Assert.DoesNotContain("open HallOfFame", log);
         Assert.Contains(said, l => l.Speaker == null && l.Text.Contains("saved the game"));

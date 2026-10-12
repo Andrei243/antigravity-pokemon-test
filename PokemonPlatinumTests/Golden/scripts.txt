@@ -3371,35 +3371,43 @@ way 0
 way 1, from answer 1
   * battle leader_wake Lost
 === PlayerHouse.DoorWarning
-from the trigger at 4,7 of PlayerHouse
+from the trigger at 6,10 of PlayerHouse
 way -
   Mom> Going out after Barry? Remember, wild Pokémon live in the tall grass.
   Mom> Never walk into it without a Pokémon of your own!
   = VAR_PLAYER_HOUSE_STATE 0 -> 2
 === PlayerHouse.Mom
-from Mom at 6,4 of PlayerHouse
+from Mom at 7,8 of PlayerHouse
 way -
   Mom> Mom: Welcome home, honey! You and your Pokémon look like you could use a rest.
   Mom> Mom: ...There! Everyone's fit and well again.
   * fanfare FanfareHeal
+=== PlayerHouse.TV
+from the sign at 6,5 of PlayerHouse
+from the sign at 7,5 of PlayerHouse
+way -
+  TV> "...and that was this morning's Normal Rank Cute Contest! The ribbon goes to a young lady from Hearthome, whose Pokémon had all three judges cooing."
+  TV> "That's the Contest Round-up for this morning. See you next time!"
 === PlayerHouse2F.RivalRushesIn
-from the trigger at 3,4 of PlayerHouse2F
-from the trigger at 4,3 of PlayerHouse2F
+from the trigger at 3,6 of PlayerHouse2F
 from the trigger at 4,5 of PlayerHouse2F
-from the trigger at 5,4 of PlayerHouse2F
+from the trigger at 4,7 of PlayerHouse2F
+from the trigger at 5,6 of PlayerHouse2F
 way -
   Barry> Lucas! Did you see it? On TV, just now? The special on Professor Rowan!
   Barry> He's back in Sinnoh, and he studies Pokémon, so he's got to have tons of them! If we ask nicely, he's sure to give us one each!
-  Barry> ...Whoa, is that a new computer? Lucky! ...Huh? What was I saying?
+  Barry> ...Whoa, is that a new computer? Lucky!
+  Barry> ...Huh? What was I saying?
   Barry> Right! We're going to see Professor Rowan! I'll wait for you outside. If you're late, that's a ten-million fine!
   * sound stairs
   * music common/rival
+  * emote {rival} Exclaim
   * emote {rival} Exclaim
   * sound stairs
   * music area
   = VAR_PLAYER_HOUSE_RIVAL_STATE 0 -> 1
 === PlayerHouse2F.Wardrobe
-from the sign at 3,2 of PlayerHouse2F
+from the sign at 5,4 of PlayerHouse2F
 way -
   * open Wardrobe
 === PoffinHouse.Cook
@@ -4311,16 +4319,26 @@ way 1, from answer 1
   Old Gentleman> I had only hoped to ease a guilty mind a little...
   ? Would you... would you hear an old man's tale? = No
 === RowanLab.Assistant
-from {assistant} at 6,7 of RowanLab
+from {assistant} at 7,14 of RowanLab
 way -
   Dawn> I keep turning it over, Lucas. What you saw on the mountain...
   Dawn> Do you suppose those were the Pokémon the legends mean? The ones Sinnoh began with?
 === RowanLab.Rowan
-from Prof. Rowan at 5,2 of RowanLab
+from Prof. Rowan at 7,5 of RowanLab
 way -
   Prof. Rowan> Prof. Rowan: Ah, Lucas! Welcome to my research facility.
   Prof. Rowan> Prof. Rowan: The bond between trainers and Pokémon is truly limitless.
   Prof. Rowan> Prof. Rowan: Explore Sinnoh, complete the Pokédex, and unravel the secrets of the Distortion World!
+=== RowanLab.ScientistF
+from Scientist at 10,12 of RowanLab
+way -
+  Scientist> The professor designed the new Pokédex together with a professor from the Kanto region.
+  Scientist> I'm one of his assistants. It's hard work, and I wouldn't change places with anyone!
+=== RowanLab.ScientistM
+from Scientist at 3,12 of RowanLab
+way -
+  Scientist> Hello there! I'm Dawn's father. I work here with the professor.
+  Scientist> It's a comfort to know there are two of you out there, I can tell you. Look out for each other, won't you?
 === SandgemTownCounterpartHouse1F.Grandfather
 from Grandfather at 3,9 of SandgemTownCounterpartHouse1F
 way -
@@ -9335,7 +9353,7 @@ way -
   * music common/rival
   * music common/assistant
   * music area
-  * warp RowanLab 5 8
+  * warp RowanLab 7 15
   + FLAG_HIDE_SANDGEM_TOWN_COUNTERPART
   + FLAG_HIDE_SANDGEM_TOWN_RIVAL
   = VAR_SANDGEM_TOWN_STATE 0 -> 1

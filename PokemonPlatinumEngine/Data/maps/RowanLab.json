@@ -4,40 +4,47 @@
   "bgmTrack": "sinnoh/lab",
   "interior": "Lab",
   "trees": "Round",
-  "width": 11,
-  "height": 10,
+  "width": 22,
+  "height": 17,
   "ground": [
-    "###########",
-    "###########",
-    "#_________#",
-    "#_________#",
-    "#_________#",
-    "#_________#",
-    "#_________#",
-    "#_________#",
-    "#_________#",
-    "#####D#####"
+    "######################",
+    "######################",
+    "#________#___#_______#",
+    "#________#___#_______#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________#########",
+    "#____________#VVVVVVV#",
+    "#____________#VVVVVVV#",
+    "#____________#VVVVVVV#",
+    "#____________#VVVVVVV#",
+    "#____________#VVVVVVV#",
+    "#____________#VVVVVVV#",
+    "#____________#VVVVVVV#",
+    "#____________#VVVVVVV#",
+    "#######D##############"
   ],
   "solid": [
-    "###########",
-    "###########",
-    "###.....###",
-    "#..#####..#",
-    "#.........#",
-    "##.......##",
-    "##.......##",
-    "#.........#",
-    "##.......##",
-    "#####.#####"
+    "######################",
+    "######################",
+    "################.#####",
+    "#........#...##......#",
+    "#.###................#",
+    "#...................##",
+    "#.............#....###",
+    "###........###########",
+    "###........###########",
+    "###........###########",
+    "#............#########",
+    "##..........##########",
+    "##..........##########",
+    "###........###########",
+    "###........###########",
+    "###........###########",
+    "#######.##############"
   ],
   "props": [
-    {
-      "type": "LabDesk",
-      "x": 3,
-      "y": 3,
-      "width": 5,
-      "depth": 1
-    },
     {
       "type": "Bookshelf",
       "x": 1,
@@ -54,79 +61,299 @@
     },
     {
       "type": "Bookshelf",
-      "x": 8,
+      "x": 3,
       "y": 2,
       "width": 1,
       "depth": 1
     },
     {
       "type": "Bookshelf",
-      "x": 9,
+      "x": 4,
       "y": 2,
       "width": 1,
       "depth": 1
     },
     {
-      "type": "LabMachine",
-      "x": 1,
-      "y": 5,
-      "width": 1,
-      "depth": 2
-    },
-    {
-      "type": "LabMachine",
-      "x": 9,
-      "y": 5,
-      "width": 1,
-      "depth": 2
-    },
-    {
-      "type": "Plant",
-      "x": 1,
-      "y": 8,
+      "type": "Bookshelf",
+      "x": 5,
+      "y": 2,
       "width": 1,
       "depth": 1
     },
     {
-      "type": "Plant",
-      "x": 9,
-      "y": 8,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Window",
-      "x": 3,
-      "y": 1,
-      "width": 2,
-      "depth": 1
-    },
-    {
-      "type": "Window",
+      "type": "Bookshelf",
       "x": 6,
-      "y": 1,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 7,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 8,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "BookPile",
+      "x": 10,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 11,
+      "y": 2,
       "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 14,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 15,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 17,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "KitchenCounter",
+      "x": 18,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "KitchenCounter",
+      "x": 19,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fridge",
+      "x": 20,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 14,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 2,
+      "y": 4,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 20,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 14,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 19,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 20,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 1,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 1,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 2,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 2,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 11,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 11,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 12,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 12,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 1,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 12,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 1,
+      "y": 14,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 2,
+      "y": 14,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 11,
+      "y": 14,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 12,
+      "y": 14,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Rug",
+      "x": 7,
+      "y": 15,
+      "width": 1,
       "depth": 1
     }
   ],
   "warps": [
     {
-      "sourceX": 5,
-      "sourceY": 9,
+      "sourceX": 7,
+      "sourceY": 16,
       "targetMap": "Sinnoh",
       "targetX": 168,
       "targetY": 843,
       "targetFacing": "Down"
     }
   ],
-  "signboards": [],
+  "signboards": [
+    {
+      "x": 3,
+      "y": 2,
+      "text": "A note is tucked in between the books.\n\"Adventure Rule No. 1: the menu is a traveller's best friend. Open it often.\""
+    },
+    {
+      "x": 4,
+      "y": 2,
+      "text": "A second note, in the same hand.\n\"Adventure Rule No. 2: SAVE before anything daring, and after anything worth keeping.\""
+    },
+    {
+      "x": 5,
+      "y": 2,
+      "text": "The shelf is crammed with books on Pokémon: where they live, what they eat, how they grow."
+    },
+    {
+      "x": 6,
+      "y": 2,
+      "text": "Folders of field notes and research reports, every spine labelled in the professor's square hand."
+    },
+    {
+      "x": 11,
+      "y": 2,
+      "text": "{player} looked at the PC.\nThe screen is a wall of graphs and technical terms. It might as well be written in Unown."
+    },
+    {
+      "x": 20,
+      "y": 2,
+      "text": "The refrigerator is full of sweets, shelf upon shelf of them.\nSo that is what keeps a laboratory going..."
+    }
+  ],
   "npcs": [
     {
       "id": "prof_rowan",
       "name": "Prof. Rowan",
       "npcType": "Rowan",
-      "x": 5,
-      "y": 2,
+      "x": 7,
+      "y": 5,
       "facing": "Down",
       "dialog": [
         "Prof. Rowan: Ah, {player}! Welcome to my research facility.",
@@ -136,12 +363,34 @@
       "script": "Rowan"
     },
     {
+      "id": "scientist_m",
+      "name": "Scientist",
+      "npcType": "Scientist",
+      "x": 3,
+      "y": 12,
+      "facing": "Down",
+      "script": "ScientistM",
+      "movement": "wander_around",
+      "rangeX": 2
+    },
+    {
+      "id": "scientist_f",
+      "name": "Scientist",
+      "npcType": "Lady",
+      "x": 10,
+      "y": 12,
+      "facing": "Down",
+      "script": "ScientistF",
+      "movement": "look_north_south_and_west",
+      "rangeX": 2
+    },
+    {
       "id": "counterpart",
       "name": "{assistant}",
       "npcType": "Assistant",
-      "x": 6,
-      "y": 7,
-      "facing": "Up",
+      "x": 7,
+      "y": 14,
+      "facing": "Down",
       "script": "Assistant",
       "hiddenBy": "FLAG_HIDE_SANDGEM_TOWN_LAB_COUNTERPART"
     },
@@ -149,8 +398,8 @@
       "id": "prof_oak",
       "name": "Prof. Oak",
       "npcType": "prof_oak",
-      "x": 5,
-      "y": 9,
+      "x": 7,
+      "y": 14,
       "facing": "Up",
       "dialog": [
         "Prof. Oak: Well, I must be going!"
