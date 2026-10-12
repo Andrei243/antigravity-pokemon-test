@@ -2,7 +2,7 @@
 
 Written on 2026-10-07, after every one of the 26 plans was read in full and checked against the code. The plans keep what each session delivers, needs and leaves for the user to decide; this file says **when** each session runs and **what runs beside it**, so that several sessions (one agent each, in a worktree of its own) can be done at once and merged together. It replaces the README's "Order", which was written before any session.
 
-**On 2026-10-12 the user answered the decisions that gate sessions** ("Decisions that gate sessions", below, has every answer and what is still open). They changed the lanes after wave 11, the regions' section and the work no plan owned: every game begins in Sinnoh, the later regions without a decompilation are drawn by hand, Generations 5 to 9 live in their own regions and not in a zone of Sinnoh's, the four later mechanics are handed over in their own regions, Romanian is the first translation, and migration from the player's files is dropped. The plans' own decision lists still carry what they recommended before: "Stale lines found in the plans" names each, and a plan's next session rewrites its own.
+**On 2026-10-12 the user answered the decisions that gate sessions** ("Decisions that gate sessions", below, has every answer and what is still open). They changed the lanes after wave 11, the regions' section and the work no plan owned: every game begins in Sinnoh and is played by one set of rules, the modern ones (there are no Platinum rules any more), the later regions without a decompilation are drawn by hand, Generations 5 to 9 live in their own regions and not in a zone of Sinnoh's, the four later mechanics are handed over in their own regions, Romanian is the first translation, and migration from the player's files is dropped. The plans' own decision lists still carry what they recommended before: "Stale lines found in the plans" names each, and a plan's next session rewrites its own.
 
 The idea in one paragraph: the work is split into six **lanes** whose sessions touch different parts of the code, plus work that can go **beside** any of them. A **wave** is one round of sessions, at most one from each lane, started from the same commit and merged together at its end. Lanes 1 (the story) and 2 (the map and its rooms) are the spine: lane 2 stays a wave ahead of the chapter that needs its Gym or room. The other lanes have only soft gates: when one is behind, the chapter leaves the beat out and writes where it goes, as plan 02 already does.
 
@@ -159,13 +159,18 @@ From wave 12, each lane takes its next session whose gates are met. The waves ar
 - Then plan 18's readers: W6, then W7. The sources are agreed (2026-10-12): pinned commits of pret/pokefirered and pret/pokeemerald, and pret/pokeheartgold for Johto. Plan 01 is done, so the lane is free for them now.
 
 **Lane 3 · Rules**
-- 06 · R19 (the modern groundwork), first. On 2026-10-12 the user asked for the later generations' rules, the Fairy type among them, to be playable from Sinnoh on. They are the modern preset's, chosen at NEW GAME; Platinum's preset keeps giving what it gave (whether a game under Platinum's rules should have them too is asked back, in the decisions' table).
-- R24, R25 and R26, each with its effects in a partial file of its own. The data importer and the coverage are re-run after the merge, so two of them can share a wave. Then R27, R28a, R28b, R29. These go before R20 to R23 since 2026-10-12: they are what a game under the modern rules can already use in Sinnoh, and nothing in play can use the four mechanics until their regions stand.
+- 06 · R19 (the modern groundwork), first. It is a bigger session since 2026-10-12, when the user ruled that **there are no Platinum rules any more: one set of rules, the modern ones, in every region**. This replaces the ruling of 2026-10-04 (Platinum's rules by default, the modern ones as a choice at NEW GAME).
+  - What R19 does for it: the Fairy type and the rest of its own list; then the question after NEW GAME goes (`TitlePhase.ChooseRules`), every new game is played by the modern rules, and an older save is brought over to them as it loads (`SaveData.Rules` is read for that alone). An option that followed the rules (`RulesDefault.Rules`: the move hints, the trainers' lines in battle) takes what it had under the modern ones.
+  - Before it takes Platinum's column away, R19 shows the user the table of what the two sets say (`docs/mechanics/rulings.md`), for any rule the user wants kept as Platinum has it. The user asked for "the mechanics that have sense"; the modern EXP, which gives the whole team a share, is the one to look at twice, since it feeds the levels that 18 · W4 has to solve.
+  - The newest learnset (the user's "latest moveset for each pokemon") is new work: the importer gives species 1 to 493 the learnset of the newest game each is in (by `LearnsetVersionGroups`, as species 494 on already have theirs). It is whole in play only after R24 to R26, which give the later moves their effects; R19 says what a Pokémon learns until then.
+  - What stays Platinum's is the content: Sinnoh's story, maps, encounter tables and trainers ("Follow Platinum, not Diamond and Pearl"). Only the rules they are played by change.
+  - In the code, `Ruleset.Platinum` stays as the baseline the modern rules are written as differences from, with the tests R1 to R18 checked against the decompilation; no game is played by it. Whether it and `battles-platinum.txt` are removed for good is R30's question at the sign-off. Until R19 lands, CLAUDE.md's rule that Platinum's preset must not move holds as written.
+- R24, R25 and R26, each with its effects in a partial file of its own. The data importer and the coverage are re-run after the merge, so two of them can share a wave. Then R27, R28a, R28b, R29. These go before R20 to R23 since 2026-10-12: they are what every game now uses in Sinnoh (the newest learnsets teach their moves), and nothing in play can use the four mechanics until their regions stand.
 - R20 to R23, one after another: R20 sets the pattern the other three follow. The four are handed over in their own regions (06 · decision 2 as answered on 2026-10-12: Mega Evolution in Kalos, Z-Moves in Alola, Dynamax in Galar, Terastallization in Paldea). So no beat is written into S8, S9, S12 or S14, and Sinnoh's story owes no balance check. Each session builds its rules and the AI's use of them; the region's chapter in plan 23 hands the item over.
-- Then the two sessions of our own ("Work no plan owned", below): Megas of our own after R20, and Mega Dynamax after R20 and R22, each once the user has approved its list of species.
+- Then the two sessions of our own ("Work no plan owned", below): Megas of our own after R20, whose first list is the user's (2026-10-12: every region's starters), and Mega Dynamax after R20 and R22, once the user has approved its list of species.
 - 14 · B3, B4, B5, B6, B7, each one in a wave with no other core session. B4's horde slots lose the zone they were kept to (plan 03 · D12b is dropped): they are Kalos's own tables'.
 - B8 to B12 (R18 is done); B15, after B14.
-- 24 · X5, then X6 after R19. Node is allowed in CI (decided 2026-10-12): the oracle's answers are committed and a workflow regenerates them.
+- 24 · X6 right after R19: with one set of rules, the oracle of generation 9 is the check that matters. X5, the oracle of generation 4, only checks the baseline now and goes after it, or not at all if R30 removes the baseline. Node is allowed in CI (decided 2026-10-12): the oracle's answers are committed and a workflow regenerates them.
 - R30, last.
 
 **Lane 4 · Battle on screen.** While lane 3 changes the core, only these:
@@ -207,7 +212,7 @@ These are the plans the README put after Sinnoh's Hall of Fame, which has been i
 - **The team comes along.** The user's worry is the levels: the later regions have to be levelled for a team that has already won a League, as Gold and Silver levelled Kanto after Red and Blue, and the cap of 100 may have to rise a long way. 18 · W4 studies that first and brings it to the user before anything is built.
 - **A decompilation wherever one exists** (Kanto, Hoenn, Johto). Unova and everything after are drawn by hand with 16 · T9's editor and polished afterwards. No dump is read.
 - **Each later mechanic is handed over in its own region**: Mega Evolution in Kalos, Z-Moves in Alola, Dynamax in Galar, Terastallization in Paldea.
-- **Still open: the order after Sinnoh.** Until the user says otherwise the plans go by generation order with Sinnoh pulled to the front (Kanto, Johto, Hoenn, Unova, Kalos, Alola, Galar, Paldea, then the rift). That builds the three regions with a decompilation first, and brings the four mechanics in the order the games did.
+- **The order after Sinnoh is generation order** (confirmed by the user on 2026-10-12): Kanto, Johto, Hoenn, Unova, Kalos, Alola, Galar, Paldea, then the rift. That builds the three regions with a decompilation first, and brings the four mechanics in the order the games did.
 
 - **The groundwork (plan 18).**
   - W1, then W10, which is small now: every NEW GAME begins in Sinnoh, the chain is ordered with Sinnoh first, and no question is asked. It rewrites the README's "Regions" and plan 13's decision 4. Then W3.
@@ -232,10 +237,12 @@ These are the plans the README put after Sinnoh's Hall of Fame, which has been i
   - Then O1 (the core library split), alone like T11.
   - Then O4; O5, and O6 after plan 28 · I4; O7. O8 is optional.
 - **Voice (26).**
+  - The user's order (2026-10-12): synthesised voices for every character first, Barry among them, and the user's own voice put on Barry when the samples come. The voices speak Romanian as well as English.
   - V2 (NVorbis is allowed, 2026-10-12).
-  - V3 writes the sample script (`docs/voice/samples.md`), the recording guide and the booth first. Then the user records, about twenty passages, and V3's trial chooses the cloning engine by ear. Then V4, V5, V6.
-  - V7, chapter by chapter: first the chapters already written, then each region's.
-  - V8, after 17 · N6. With Romanian the first language, whether the voices speak it too is asked before V3's trial, because it decides which engines are tried and which language the samples are in.
+  - V4 before V3: the trial of the synthesised cast, among engines that speak both languages (which ones do is checked there, each licence with the user's OK). Barry gets a designed voice like everyone else, marked as a stand-in in the cast. Then V5, everyone else.
+  - V3 whenever the user is ready: it writes the sample script (`docs/voice/samples.md`, about twenty passages, in both languages), the recording guide and the booth; the user records; its trial chooses the cloning engine by ear; Barry's lines are made again from the clone and replace the stand-in's. Nothing else waits for it.
+  - V6. V7, chapter by chapter: first the chapters already written, then each region's.
+  - V8 (other languages) is no longer last: the Romanian pack is made as soon as 17 · N6 has a chapter's lines in Romanian, with the engine V4 chose.
 - **Localisation (17)**, wanted since 2026-10-12: Romanian first, and the language an options row the player changes at any time (so nothing of it is kept in the save, plan 17's decision 5).
   - N1 and N2 in wave 11's freeze; then N3. PokeAPI has no Romanian and the games were never sold in it, so species, moves, abilities and items keep their English names; whether their descriptions are written in Romanian is N6's question for the user.
   - N4, never in the same wave as 26 · V1, because both number the lines.
@@ -286,8 +293,11 @@ A seam is a piece several plans offer to write "if it hasn't been". Each has one
 | A nickname after a catch, and the starter's | 12 · Q19 |
 | A mouth that talks, for 26 · V6 | 11 · C11 (faces on cue) |
 | The later mechanics' beats in S8, S9, S12 and S14 | not written: each mechanic is handed over in its own region (2026-10-12), by that region's chapter in plan 23 |
-| Megas of our own: Mega forms the games never had (asked for on 2026-10-12) | a new session of plan 06 after R20: their data through `tools/DataImporter/Overrides`, behind the `Ruleset`; their sculpts as forms, in plan 03's way; their looks with 25 · Y14. The list of species is the user's to approve first |
-| Mega Dynamax, a mechanic of our own that joins Mega Evolution and Dynamax for some species (asked for on 2026-10-12) | a new session of plan 06 after R20 and R22. It changes 06 · decision 3 for those species ("a Mega Pokémon can't Dynamax"). Which species, what it does and where it is handed over are the user's to approve first |
+| Megas of our own: Mega forms the games never had (asked for on 2026-10-12) | a new session of plan 06 after R20: their data through `tools/DataImporter/Overrides`, behind the `Ruleset`; their sculpts as forms, in plan 03's way; their looks with 25 · Y14. The user's first list (2026-10-12) is every region's starters: the fifteen final forms the data has no Mega for (Typhlosion, Torterra, Infernape, Empoleon, Serperior, Samurott, Decidueye, Incineroar, Primarina, Rillaboom, Cinderace, Inteleon, Meowscarada, Skeledirge, Quaquaval; the other twelve have one). The session proposes each one's type, ability, stats and look for the user's approval, says what the Hisuian forms of three of them do, and their fifteen sculpts are a model batch beside it. More species may follow on the user's word |
+| Mega Dynamax, a mechanic of our own that joins Mega Evolution and Dynamax for some species (asked for on 2026-10-12) | a new session of plan 06 after R20 and R22. It changes 06 · decision 3 for those species ("a Mega Pokémon can't Dynamax"). Which species, what it does and where it is handed over are the user's to approve first; the session's own proposal starts from the species that have both a Mega and a Gigantamax form |
+| One set of rules: the question after NEW GAME gone, older saves brought over to the modern rules (ruled on 2026-10-12) | 06 · R19 |
+| The newest learnset of every species (asked for on 2026-10-12) | 06 · R19 for the data, whole in play after R24 to R26 |
+| Synthesised voices for the whole cast first, in English and Romanian, with Barry's stand-in replaced by the user's clone later | 26 · V4 and V5 before V3; V8's Romanian pack with 17 · N6 |
 | Every species of Diamond, Pearl and Platinum to be had in Sinnoh with no link, and the other two starters after the Hall of Fame | 03 · D12a |
 | Every later region holding every species of its own games | the last session of each region's plan, by D12a's test |
 | A level curve for a team carried from region to region, and a cap that may rise above 100 | 18 · W4 with 13 · V3, studied from how Gold and Silver levelled Kanto, and brought to the user first |
@@ -335,7 +345,12 @@ The user answered these on 2026-10-12, but for the first. Where an answer goes a
 | 16 · 4 and 24 · 4: a Windows runner, node in CI | whatever is easier: CI stays on Linux, and node runs in a CI workflow with the oracle's answers committed, so nothing is installed on the user's machine | 16 · T4 has no Windows job; 24 · X5 can run, X6 after R19 |
 | 16 · 1–3, 5: licence, posture, where releases go, the mesh cache | the plan's recommendations, taken for the least legal exposure: MIT for the code; the fan-game notice on the title and in the README with a contact for takedown, no donations, no store; GitHub Releases; the mesh cache shipped | 16 · T1 and T2 can run. T2 builds the release and stops there: the first public one is published on the user's word, since a public build is what draws a takedown |
 | 25 · 4: how far the move effects go | every move | 25 · Y11–Y15 stay |
-| 26: NVorbis | allowed | 26 · V2 can run. The samples and the engine are V3's: it writes the script the user reads, and its trial chooses the engine by ear |
+| 26: NVorbis, the order of the voices, their language | NVorbis allowed. Synthesised voices for every character first, Barry among them; the user's voice goes on Barry when the samples come. The voices speak Romanian as well as English | 26 · V2 can run; V4 and V5 go before V3, which waits for nothing but the user; V8's Romanian pack follows 17 · N6 and no longer comes last |
+| The order of the regions after Sinnoh | generation order: Kanto, Johto, Hoenn, Unova, Kalos, Alola, Galar, Paldea, then the rift | plans 18 to 23 go in the order they were written in; Paldea is the last region |
+| Megas of our own: which species first | every region's starters, so the fifteen final forms that have no Mega yet | the new session of plan 06 after R20, with a model batch beside it; each design is shown to the user before it is kept |
+| 06 · 1: whose rules | no Platinum rules any more: one set of rules, the modern ones, in every region, with the Fairy type and the newest learnset of each species. This replaces the ruling of 2026-10-04 (Platinum's by default, the modern ones as a choice) | 06 · R19 grows: the question after NEW GAME goes, older saves are brought over, the options that followed the rules take their modern value. Sinnoh's content stays Platinum's. 24 · X6 comes before X5. CLAUDE.md's project rule and the rulings' first ruling are rewritten by R19 |
+| 28 · 1: how much of the foe's HP a player sees in a link battle | the bar only | plan 28 · I2 |
+| 07 · 1–4: who hosts, for whom | taken by the user in plan 07 the same day: the user's own server of about $5 a month, link codes only, no accounts, plan 28 for the battles | plan 07 from O1 and plan 28 can run in their place in the order |
 | 08 · 7 and 9: migration from the player's files, the second slot | neither | 08 · P20–P23 are dropped; Pal Park's show and the second slot's species go to 03 · D12a |
 | 15 · 7: keep the Pokéathlon | keep it | 15 · E6–E8 run just before 20 · J13 |
 
@@ -345,13 +360,10 @@ Where a default is given, the session goes ahead on it unless the user says othe
 
 | Decision | Gates | Default |
 |---|---|---|
-| The order of the regions after Sinnoh, and so which region is last | plans 18 to 23's order, 18 · W10's chain, where the rift opens | generation order with Sinnoh first: Kanto, Johto, Hoenn, Unova, Kalos, Alola, Galar, Paldea, then the rift |
-| The later generations' rules from Sinnoh on: under the modern rules only, or in a game under Platinum's rules too | 06 · R19 | the modern rules only, as the user ruled on 2026-10-04; Platinum's preset doesn't move |
-| The level curve for a carried team, and whether the cap rises above 100 | 18 · W4, 13 · V3, every region's levels | wait: W4 brings the study |
-| Which species get Megas of our own, and which Mega Dynamax, what it does and where it is handed over | the two new sessions of plan 06 | wait: a list is proposed to the user |
-| Whether the voices speak Romanian too | 26 · V3's trial and samples, V8 | English voices under Romanian text, until the user says |
+| Which rules of the modern column the user wants kept as Platinum has them, if any | 06 · R19 | none: the whole modern column. R19 shows the table first |
+| The level curve for a carried team under the modern EXP, and whether the cap rises above 100 | 18 · W4, 13 · V3, every region's levels | wait: W4 brings the study |
+| Which species get Mega Dynamax, what it does and where it is handed over; and each new Mega's design | the two new sessions of plan 06 | wait: each session proposes, the user approves |
 | Where the second slot's species go in Sinnoh, and what Pal Park's show draws from | 03 · D12a | D12a proposes both |
-| 07 · 1–4: who hosts, for whom | plan 07 from O1 | decided 2026-10-12: the user's own $5 server, link codes only, no accounts (friend codes by IP), plan 28 for the battles |
 | 27 · 1–6: the move to Unity | plan 27 | deferred to the end by the user (2026-10-08) |
 
 ## Stale lines found in the plans
@@ -439,7 +451,18 @@ The plans were not edited when the user answered; this file holds the answers. E
 - **23**: decision 1 (sampling a dump), decisions 3, 9 and 10 (Hisui off Celestic's ruins and optional, the Lumiose era after Kalos's Hall of Fame), decision 11's alternative, the "optional" on Z17–Z20, and where each of the four mechanics is handed over, which its chapters now own.
 - **24**: decision 4, which is answered.
 - **25**: decision 4, which is answered.
-- **26**: V2's wait for NVorbis; V8, which Romanian brings forward as a question.
+- **26**: V2's wait for NVorbis; V3 before V4 (the synthesised cast comes first, Barry among it until the samples come); the sample script in English alone; V8 as the last session.
+- **06**, again: decision 1 and every line that keeps two sets of rules apart; R19's line, which gains the end of the choice, the older saves and the newest learnset of each species; and two sessions to write after R23, Megas of our own and Mega Dynamax.
+- **One set of rules** (R19 rewrites each as it lands, and until then they hold as written):
+  - CLAUDE.md: "Whose rules", and the project rule that Platinum's rules are the default and must not move;
+  - `docs/mechanics/rulings.md`: the first general ruling and "What the two sets of rules say";
+  - the style guide's "Opening and title screen", which draws the rules' question;
+  - **12**: `RulesDefault`'s middle value, "Rules", which has nothing left to follow (Q13, Q14, Q18, Q19, Q21, Q23 and Q26 name it);
+  - **13**: decision 1 and V1's place "after 'which rules?'";
+  - **14**: decision 1's "under both rule presets";
+  - **24**: X2's `battles-platinum.txt` as the file that must not move, X5 before X6, decision 5;
+  - **07** and **28**: a room's rules, which two players no longer have to agree on;
+  - **08**: P1 ("Platinum's battle options") and whatever else reads the preset.
 
 ## Starting a wave
 
