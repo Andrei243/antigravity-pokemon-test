@@ -298,6 +298,7 @@ public sealed record VolatileChanged(Place Place, bool Confused, bool InLove) : 
 /// before the battle began. It rides on the line that sends it out (or stands beside a wild Pokémon's
 /// <see cref="Entered"/>), so whoever shows the battle knows what the newcomer brings without asking the rules,
 /// which are a turn ahead. Nothing is given by it and nothing is played for it: <see cref="StatusChanged"/> is a
-/// condition given or cured on the field.
+/// condition given or cured on the field. A send-out that carries none brings none, whatever the Pokémon had when
+/// it was last seen: a cure on the bench (Heal Bell, Natural Cure, medicine out of the bag) has no event of its own.
 /// </summary>
 public sealed record CameInWith(Place Place, StatusCondition Status) : BattleEvent;

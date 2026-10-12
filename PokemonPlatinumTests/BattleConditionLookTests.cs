@@ -638,6 +638,192 @@ public class BattleConditionLookTests
         Assert.False(look.Any);
     }
 
+    // ------------------------------------------------------------------ the HP box's pill goes by the lines too
+
+    private static Pokemon Ailing(Pokemon p, StatusCondition status)
+    {
+        p.Status = status;
+        if (status == StatusCondition.Sleep) p.SleepTurns = 6;
+        return p;
+    }
+
+    /// <summary>
+    /// A battle on screen against a trainer who thinks about nothing: each of their Pokémon knows one move and uses
+    /// it. Not read on: its opening lines are still to come.
+    /// </summary>
+    private static BattleEngine OnScreen(Pokemon[] mine, Pokemon[] theirs, Inventory? bag = null)
+    {
+        var party = new Party();
+        foreach (var p in mine) party.Add(p);
+        var trainer = new Trainer { Id = "ace", Name = "Vera", TrainerClass = "Ace Trainer", PrizeMoney = 100, Ai = PokemonPlatinumEngine.Battle.Sim.Ai.AiFlags.None };
+        foreach (var p in theirs) trainer.Party.Add(p);
+        return new BattleEngine(new BattleSetup
+        {
+            PlayerParty = party, Inventory = bag ?? new Inventory(), Pokedex = new Pokedex(), Trainers = new List<Trainer> { trainer },
+            Random = Steady(), Rules = Ruleset.Platinum
+        });
+    }
+
+    /// <summary>
+    /// What a place's HP box says of its Pokémon: who it is and the condition on its pill. The boxes draw both from
+    /// the Pokémon the view shows (<c>ModernUi.StatusPill(…, view.Shown.Status)</c>), which is the screen's own copy.
+    /// </summary>
+    private static (string? Who, StatusCondition? Pill) Box(BattleEngine battle, Place place) =>
+        battle.Anim[place.Side, place.Slot].Shown is { } shown ? (shown.Species.Name, shown.Status) : (null, null);
+
+    private static (string? Who, StatusCondition? Pill) Says(string who, StatusCondition pill) => (who, pill);
+
+    /// <summary>Reads a battle on, with what a place's HP box says at each line and every sound asked for on the way.</summary>
+    private static (List<(string Line, (string? Who, StatusCondition? Pill) Seen)> Boxes, List<string> Heard) ReadTheBox(BattleEngine battle, Place place)
+    {
+        var heard = PokemonPlatinumEngine.Core.AudioManager.Listen();
+        try
+        {
+            return (ReadOn(battle, () => Box(battle, place)), heard.ToList());
+        }
+        finally
+        {
+            PokemonPlatinumEngine.Core.AudioManager.StopListening();
+        }
+    }
+
+    /// <summary>From the newcomer's line to the next menu its box names it with nothing on its pill, and its look agrees.</summary>
+    private static void ComesInWithNothing(BattleEngine battle, Place place, string who, string sendOut, List<(string Line, (string? Who, StatusCondition? Pill) Seen)> boxes)
+    {
+        string all = string.Join(" / ", boxes.Select(b => $"{b.Line} [{b.Seen.Who} {b.Seen.Pill}]"));
+        int from = boxes.FindIndex(b => b.Line == sendOut);
+        Assert.True(from >= 0, all);
+        Assert.All(boxes.Skip(from), b => Assert.True(b.Seen == Says(who, StatusCondition.None), $"at \"{b.Line}\" of: {all}"));
+        // And the menu that opens brings nothing new: the box already had it right
+        Assert.Equal(Says(who, StatusCondition.None), Box(battle, place));
+        Assert.Equal(StatusCondition.None, battle.Anim.Conditions.Of(place).Status);
+        Assert.Null(battle.Anim.Conditions.Difference(battle.Core));
+    }
+
+    [Theory]
+    [InlineData("Heal Bell", "A bell chimed!")]
+    [InlineData("Aromatherapy", "A soothing aroma wafted through the area!")]
+    public void APokemonCuredOnTheBenchAndDraggedOutTheSameTurnHasNothingOnItsPill(string cure, string chime)
+    {
+        // The party's cure is told of nobody on the bench (no event: nobody stands there to show it), and Roar, which
+        // goes last, drags the cured Pokémon out before any menu has brought the screen's copies level with the rules'
+        var burned = Ailing(Mon("Bidoof", 20), StatusCondition.Burn);
+        var battle = OnScreen(new[] { Mon("Miltank", 50, cure), burned }, new[] { Mon("Snorlax", 60, "Roar") });
+        Settle(battle);
+        battle.SelectMove(0);
+        // The rules are a turn ahead, with theirs cured and out already; the screen's own is on the bench as it was
+        Assert.Equal(("Bidoof", StatusCondition.None), (battle.Core.At(Mine).Pokemon!.Species.Name, battle.Core.At(Mine).Pokemon!.Status));
+        Assert.Equal(StatusCondition.Burn, burned.Status);
+        Assert.Equal(Says("Miltank", StatusCondition.None), Box(battle, Mine));
+
+        var (boxes, heard) = ReadTheBox(battle, Mine);
+        Assert.Contains(boxes, b => b.Line == chime && b.Seen.Who == "Miltank");
+        ComesInWithNothing(battle, Mine, "Bidoof", "Bidoof was dragged out!", boxes);
+        // It cries as one that is well, too: the cry goes by the same condition (Cries.SendOutMode)
+        Assert.Contains("cry Bidoof", heard);
+        Assert.DoesNotContain("cry Bidoof Pinch", heard);
+    }
+
+    [Fact]
+    public void MedicineGivenOnTheBenchShowsOnThePillOfOneDraggedOutTheSameTurn()
+    {
+        // A Full Heal used on the bench has nowhere to show, so no event tells of it; the foe's Roar then drags that
+        // Pokémon out
+        var bag = new Inventory();
+        bag.AddItem(ItemDatabase.Get("Full Heal")!);
+        var paralysed = Ailing(Mon("Bidoof", 20), StatusCondition.Paralyze);
+        var battle = OnScreen(new[] { Mon("Miltank", 50), paralysed }, new[] { Mon("Snorlax", 60, "Roar") }, bag);
+        Settle(battle);
+        battle.UseBagItem("Full Heal", onPartyMember: 1);
+        Assert.Equal(("Bidoof", StatusCondition.None), (battle.Core.At(Mine).Pokemon!.Species.Name, battle.Core.At(Mine).Pokemon!.Status));
+        Assert.Equal(StatusCondition.Paralyze, paralysed.Status);
+
+        var (boxes, heard) = ReadTheBox(battle, Mine);
+        ComesInWithNothing(battle, Mine, "Bidoof", "Bidoof was dragged out!", boxes);
+        Assert.Contains("cry Bidoof", heard);
+        Assert.DoesNotContain("cry Bidoof Pinch", heard);
+    }
+
+    [Fact]
+    public void ANaturalCureOnTheWayBackShowsOnThePillWhenTheSameTurnBringsItOutAgain()
+    {
+        // Called back, Starmie is cured with no line and no event; Roar then drags it out again, the only other there is
+        var poisoned = Ailing(With(Mon("Starmie", 50), ability: "Natural Cure"), StatusCondition.Poison);
+        var battle = OnScreen(new[] { poisoned, Mon("Bidoof", 20) }, new[] { Mon("Snorlax", 60, "Roar") });
+        var opening = ReadOn(battle, () => Box(battle, Mine));
+        Assert.Contains(("Go! Starmie!", Says("Starmie", StatusCondition.Poison)), opening);
+
+        battle.SelectSwitch(1);
+        Assert.Equal(StatusCondition.None, battle.Core.At(Mine).Pokemon!.Status);
+        Assert.Equal(StatusCondition.Poison, poisoned.Status);
+
+        var (boxes, heard) = ReadTheBox(battle, Mine);
+        // It goes back as it was: nothing has said otherwise yet
+        Assert.Contains(("Come back, Starmie!", Says("Starmie", StatusCondition.Poison)), boxes);
+        Assert.Contains(("Go! Bidoof!", Says("Bidoof", StatusCondition.None)), boxes);
+        ComesInWithNothing(battle, Mine, "Starmie", "Starmie was dragged out!", boxes);
+        Assert.Contains("cry Starmie", heard);
+        Assert.DoesNotContain("cry Starmie Pinch", heard);
+    }
+
+    [Fact]
+    public void ATrainersNextCuredOnTheBenchHasNothingOnItsPill()
+    {
+        // Chimecho (Speed 44) rings before Snorlax (35) strikes; Strength then fells it (132 of its 79 HP), and the
+        // trainer's next comes in with no menu between: the trainer chooses from inside the rules
+        var poisoned = Ailing(Mon("Bidoof", 20), StatusCondition.Poison);
+        var battle = OnScreen(new[] { Mon("Snorlax", 50, "Strength") }, new[] { Mon("Chimecho", 30, "Heal Bell"), poisoned });
+        Settle(battle);
+        battle.SelectMove(0);
+        Assert.Equal(("Bidoof", StatusCondition.None), (battle.Core.At(Foe).Pokemon!.Species.Name, battle.Core.At(Foe).Pokemon!.Status));
+        Assert.Equal(StatusCondition.Poison, poisoned.Status);
+
+        var (boxes, heard) = ReadTheBox(battle, Foe);
+        InOrder(boxes.Select(b => b.Line).ToList(), "A bell chimed!", "Snorlax used Strength!", "Foe Chimecho fainted!", "Ace Trainer Vera sent out Bidoof!");
+        ComesInWithNothing(battle, Foe, "Bidoof", "Ace Trainer Vera sent out Bidoof!", boxes);
+        Assert.Contains("cry Bidoof", heard);
+        Assert.DoesNotContain("cry Bidoof Pinch", heard);
+    }
+
+    [Fact]
+    public void ANewcomersPillShowsTheConditionItsLineSaysItBrings()
+    {
+        // The other way round: whoever does bring a condition has it on its pill from its own line on, whether it is
+        // a trainer's first, a trainer's next after a faint, the player's own switched in, or a wild Pokémon met
+        var asleep = Ailing(Mon("Snorlax", 50), StatusCondition.Sleep);
+        var battle = OnScreen(new[] { Mon("Machamp", 50, "Strength"), asleep },
+            new[] { Ailing(Mon("Machop", 5), StatusCondition.Burn), Ailing(Mon("Geodude", 5), StatusCondition.Paralyze) });
+        var opening = ReadOn(battle, () => Box(battle, Foe));
+        int first = opening.FindIndex(b => b.Line == "Ace Trainer Vera sent out Machop!");
+        Assert.True(first >= 0, string.Join(" / ", opening.Select(b => b.Line)));
+        Assert.All(opening.Skip(first), b => Assert.Equal(Says("Machop", StatusCondition.Burn), b.Seen));
+
+        battle.SelectMove(0);
+        var next = ReadOn(battle, () => Box(battle, Foe));
+        int second = next.FindIndex(b => b.Line == "Ace Trainer Vera sent out Geodude!");
+        Assert.True(second >= 0, string.Join(" / ", next.Select(b => b.Line)));
+        Assert.All(next.Skip(second), b => Assert.Equal(Says("Geodude", StatusCondition.Paralyze), b.Seen));
+
+        battle.SelectSwitch(1);
+        var switched = ReadOn(battle, () => Box(battle, Mine));
+        int mine = switched.FindIndex(b => b.Line == "Go! Snorlax!");
+        Assert.True(mine >= 0, string.Join(" / ", switched.Select(b => b.Line)));
+        Assert.All(switched.Skip(mine), b => Assert.Equal(Says("Snorlax", StatusCondition.Sleep), b.Seen));
+        Assert.Null(battle.Anim.Conditions.Difference(battle.Core));
+
+        // A wild Pokémon's condition stands beside its entry, by itself, before its line
+        var party = new Party();
+        party.Add(Mon("Turtwig", 20));
+        var wild = new BattleEngine(new BattleSetup
+        {
+            PlayerParty = party, Inventory = new Inventory(), Pokedex = new Pokedex(),
+            WildPokemon = new List<Pokemon> { Ailing(Mon("Bidoof", 5), StatusCondition.Poison) }, Random = Steady(), Rules = Ruleset.Platinum
+        });
+        var met = ReadOn(wild, () => Box(wild, Foe));
+        Assert.Equal("A wild Bidoof appeared!", met[0].Line);
+        Assert.All(met, b => Assert.Equal(Says("Bidoof", StatusCondition.Poison), b.Seen));
+    }
+
     [Fact]
     public void TheMarksStandBackBehindADollOutOfSightAndWhileAMomentPlays()
     {

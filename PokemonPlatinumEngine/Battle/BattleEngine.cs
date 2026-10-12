@@ -438,6 +438,12 @@ public partial class BattleEngine
             case Entered entered:
             {
                 var pokemon = mirror.Shown(entered.Pokemon);
+                // Its condition is what the log says it brings, and none where the log says nothing: a cure on the
+                // bench has no event (Heal Bell, Natural Cure on the way back, medicine out of the bag), so the
+                // screen's copy may still have what is gone, and its HP box's pill and its cry go by that copy. The
+                // event's own Pokémon is the rules', a turn ahead, and is not asked. One that stands beside a wild
+                // Pokémon's entry comes next, by itself
+                pokemon.Status = showing?.Shows.OfType<CameInWith>().FirstOrDefault(brings => brings.Place == entered.Place)?.Status ?? StatusCondition.None;
                 At(entered.Place).Pokemon = pokemon;
                 if (entered.FromBall)
                 {
@@ -457,6 +463,10 @@ public partial class BattleEngine
                 }
                 break;
             }
+            case CameInWith brought:
+                // Nothing is played for it: the screen's Pokémon has what the newcomer brings, from its line on
+                if (At(brought.Place).Pokemon is { } newcomer) newcomer.Status = brought.Status;
+                break;
             case Recalled recalled:
             {
                 // A doll in front of it fades as it goes (plan 25 · Y1)
