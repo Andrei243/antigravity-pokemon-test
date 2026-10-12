@@ -292,6 +292,21 @@ public static class ScriptParser
             }
             case "waitmoves":
                 return new Instruction { Op = Op.WaitMoves, Line = line };
+            case "act":
+            {
+                // act <who> <gesture> [times] (plan 11 · C11): played, and waited for as a walk is
+                string who = r.Who();
+                var gesture = r.Enum<Gesture>("a gesture");
+                int times = r.More ? r.Int("how many times") : 1;
+                if (times < 1 || times > Acting.MostTimes) throw r.Error($"a gesture is played 1 to {Acting.MostTimes} times in a row");
+                return new Instruction { Op = Op.Act, Line = line, Name = who, Gesture = gesture, Number = times };
+            }
+            case "mood":
+            {
+                // mood <who> <mood> (plan 11 · C11): the face held until it is changed or the place is come to again
+                string who = r.Who();
+                return new Instruction { Op = Op.Mood, Line = line, Name = who, Mood = r.Enum<Mood>("a mood") };
+            }
             case "emote":
             {
                 string who = r.Who();
@@ -1049,10 +1064,14 @@ public static class ScriptParser
             return token.Text;
         }
 
-        /// <summary>The steps of a walk: directions, each with how many tiles when more than one, and <c>fast</c> for a run.</summary>
-        public (List<Direction> Steps, bool Fast) Path()
+        /// <summary>
+        /// The steps of a walk: directions, each with how many tiles when more than one, and <c>fast</c> for a run.
+        /// <c>onspot</c> makes the next direction's steps on the spot, and <c>back</c> takes them keeping the facing
+        /// (plan 11 · C11; the original's <c>WalkOnSpot</c> and <c>LockDir</c>).
+        /// </summary>
+        public (List<ScriptStep> Steps, bool Fast) Path()
         {
-            var steps = new List<Direction>();
+            var steps = new List<ScriptStep>();
             bool fast = false;
             while (More)
             {
@@ -1062,10 +1081,18 @@ public static class ScriptParser
                     fast = true;
                     continue;
                 }
-                var direction = DirectionOf(word) ?? throw Error($"'{word}' is not a step: up, down, left, right, each with a count, or fast");
+                var kind = ScriptStepKind.Walk;
+                if (word is "onspot" or "back")
+                {
+                    kind = word == "onspot" ? ScriptStepKind.OnSpot : ScriptStepKind.Back;
+                    if (!More) throw Error($"'{word}' needs a direction after it: up, down, left, right");
+                    string next = Word("a direction");
+                    word = DirectionOf(next) != null ? next : throw Error($"'{word}' needs a direction after it, not '{next}': up, down, left, right");
+                }
+                var direction = DirectionOf(word) ?? throw Error($"'{word}' is not a step: up, down, left, right, each with a count, onspot or back before one, or fast");
                 int count = PeekNumber ? Int("how many tiles") : 1;
                 if (count is < 1 or > 64) throw Error("a walk goes 1 to 64 tiles one way");
-                for (int i = 0; i < count; i++) steps.Add(direction);
+                for (int i = 0; i < count; i++) steps.Add(new ScriptStep(direction, kind));
             }
             if (steps.Count == 0) throw Error("a walk needs steps: up, down, left, right");
             return (steps, fast);

@@ -5,6 +5,9 @@ using System.Linq;
 using System.Numerics;
 using PokemonPlatinumEngine.Graphics;
 using Raylib_cs;
+using Acting = PokemonPlatinumEngine.Overworld.Acting;
+using Gesture = PokemonPlatinumEngine.Overworld.Gesture;
+using Mood = PokemonPlatinumEngine.Overworld.Mood;
 
 namespace PokemonPlatinumTests;
 
@@ -161,6 +164,10 @@ public class CharacterAnimationTests
     [InlineData("Surprised", 6)]
     [InlineData("Nod", 6)]
     [InlineData("Cheer", 6)]
+    [InlineData("Bow", 6)]
+    [InlineData("Shrug", 6)]
+    [InlineData("Point", 6)]
+    [InlineData("Laugh", 6)]
     public void EveryFrameIsBakedFromAPoseThatShowsThatFrame(string anim, int frames)
     {
         var strip = Enum.Parse<SpriteAnim>(anim);
@@ -226,6 +233,10 @@ public class CharacterAnimationTests
     [InlineData("Nod")]
     [InlineData("Cheer")]
     [InlineData("Throw")]
+    [InlineData("Bow")]
+    [InlineData("Shrug")]
+    [InlineData("Point")]
+    [InlineData("Laugh")]
     public void EmotesStartAndEndInTheStandingPose(string name)
     {
         var emote = Enum.Parse<Emote>(name);
@@ -248,6 +259,72 @@ public class CharacterAnimationTests
             moved |= Enumerable.Range(0, during.Count).Any(b => MathF.Abs(Quaternion.Dot(during.Rotation[b], idle.Rotation[b])) < 0.999f);
         }
         Assert.True(moved, $"{name} never moves");
+    }
+
+    /// <summary>The middle of the head, and the way the face looks, in the pose last animated.</summary>
+    private static (Vector3 Middle, Vector3 Looking) HeadOf(CharacterRig rig)
+    {
+        // The hair's joint is set back and up from the middle of the head (CharacterModels.BuildHumanoid)
+        var middle = rig.Skeleton[HumanBones.Hair].Joint - new Vector3(0, 0.02f, -0.12f);
+        var at = Vector3.Transform(middle, rig.Skin[HumanBones.Head]);
+        var front = Vector3.Transform(middle + new Vector3(0, 0, 0.25f), rig.Skin[HumanBones.Head]);
+        return (at, Vector3.Normalize(front - at));
+    }
+
+    private static void Strike(Emote emote) =>
+        Player.Animate(new CharacterPose { Time = 0.4f, Emote = emote, EmoteTime = CharacterAnimation.Duration(emote) * 0.5f });
+
+    [Fact]
+    public void TheGesturesOnCueMoveWhatTheyShould()
+    {
+        // Plan 11 · C11; style guide, "Characters", "Animation". Each is held against the standing pose at its middle
+        Player.Animate(new CharacterPose { Time = 0.4f });
+        var (head, looking) = HeadOf(Player);
+        var elbowL = Joint(Player, HumanBones.ForeArmL);
+        var elbowR = Joint(Player, HumanBones.ForeArmR);
+        var handR = Joint(Player, HumanBones.HandR);
+
+        // A bow brings the head forward and down, and the face to the ground
+        Strike(Emote.Bow);
+        var (bowed, bowLooking) = HeadOf(Player);
+        Assert.True(bowed.Z > head.Z + 0.08f, $"the head is {bowed.Z - head.Z:F3} forward");
+        Assert.True(bowed.Y < head.Y - 0.02f, $"the head is {head.Y - bowed.Y:F3} down");
+        Assert.True(bowLooking.Y < looking.Y - 0.3f, $"the face looks {bowLooking.Y:F2} up, standing {looking.Y:F2}");
+
+        // A shrug lifts both shoulders, and the elbows with them
+        Strike(Emote.Shrug);
+        Assert.True(Joint(Player, HumanBones.ForeArmL).Y > elbowL.Y + 0.015f);
+        Assert.True(Joint(Player, HumanBones.ForeArmR).Y > elbowR.Y + 0.015f);
+
+        // A point holds one arm straight out ahead, its hand about as high as its shoulder; the other stays down
+        Strike(Emote.Point);
+        var shoulder = Joint(Player, HumanBones.UpperArmR);
+        var pointing = Joint(Player, HumanBones.HandR);
+        Assert.True(pointing.Z > shoulder.Z + 0.15f, $"the hand is {pointing.Z - shoulder.Z:F3} ahead of the shoulder");
+        Assert.InRange(pointing.Y - shoulder.Y, -0.08f, 0.08f);
+        Assert.True(pointing.Y > handR.Y + 0.15f);
+        Assert.True(Joint(Player, HumanBones.HandL).Y < shoulder.Y - 0.15f);
+
+        // A laugh tips the head back: the face looks up
+        Strike(Emote.Laugh);
+        var (_, laughLooking) = HeadOf(Player);
+        Assert.True(laughLooking.Y > looking.Y + 0.2f, $"the face looks {laughLooking.Y:F2} up, standing {looking.Y:F2}");
+        Assert.Equal(Expression.Happy, CharacterAnimation.ExpressionOf(new CharacterPose { Emote = Emote.Laugh, EmoteTime = 0.5f }));
+
+        // A script's words come to the rig's: a gesture to its emote, a jump to the hop on the spot, a mood to a face
+        Assert.Equal(Emote.Bow, CharacterAnimation.EmoteOf(Gesture.Bow));
+        Assert.Equal(Emote.None, CharacterAnimation.EmoteOf(Gesture.Jump));
+        Assert.Equal(Expression.Angry, CharacterAnimation.ExpressionOf(Mood.Angry));
+        var jump = new CharacterPose();
+        CharacterAnimation.Act(ref jump, Gesture.Jump, Acting.JumpSeconds / 2f);
+        Assert.Equal((0.5f, Emote.None), (jump.Hop, jump.Emote));
+        Assert.Equal(Acting.JumpTexels, CharacterAnimation.JumpLift(Acting.JumpSeconds / 2f));
+        Assert.Equal(0f, CharacterAnimation.JumpLift(Acting.JumpSeconds));
+        // And a mood is the face on whatever strip is shown, held over a gesture's own
+        var mood = new CharacterPose { Time = 0.4f };
+        WorldRenderer.Acted(ref mood, Gesture.Wave, 0.5f, Mood.Sad);
+        Assert.Equal((Emote.Wave, Expression.Sad), (mood.Emote, CharacterAnimation.ExpressionOf(mood)));
+        Assert.Equal(SpriteAnim.Wave, CharacterSprites.KeyOf(Player, mood, 0f).Anim);
     }
 
     [Fact]
@@ -330,6 +407,11 @@ public class CharacterAnimationTests
         Assert.Equal("down_walk_3.png", CharacterSprites.OverrideName(new SpriteKey(Player, 0, SpriteAnim.Walk, 3, false, Expression.Neutral)));
         Assert.Equal("left_idle_0_blink.png", CharacterSprites.OverrideName(new SpriteKey(Player, 3, SpriteAnim.Idle, 0, true, Expression.Neutral)));
         Assert.Equal("right_wave_2_happy.png", CharacterSprites.OverrideName(new SpriteKey(Player, 1, SpriteAnim.Wave, 2, false, Expression.Happy)));
+        // The strips of plan 11 · C11
+        Assert.Equal("down_bow_0.png", CharacterSprites.OverrideName(new SpriteKey(Player, 0, SpriteAnim.Bow, 0, false, Expression.Neutral)));
+        Assert.Equal("up_shrug_5.png", CharacterSprites.OverrideName(new SpriteKey(Player, 2, SpriteAnim.Shrug, 5, false, Expression.Neutral)));
+        Assert.Equal("left_point_1_blink.png", CharacterSprites.OverrideName(new SpriteKey(Player, 3, SpriteAnim.Point, 1, true, Expression.Neutral)));
+        Assert.Equal("right_laugh_3_happy.png", CharacterSprites.OverrideName(new SpriteKey(Player, 1, SpriteAnim.Laugh, 3, false, Expression.Happy)));
     }
 
     [Fact]

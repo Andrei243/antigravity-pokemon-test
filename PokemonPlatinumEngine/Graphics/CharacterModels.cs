@@ -13,8 +13,8 @@ internal enum RigKind { Humanoid, Briefcase, Rift }
 /// <summary>Faces a character can pull (smooth faces in battle, pixel faces on field sprites).</summary>
 internal enum Expression { Neutral, Happy, Surprised, Sad, Angry }
 
-/// <summary>Short animations played over the idle or the walk.</summary>
-internal enum Emote { None, Wave, Surprised, Nod, Cheer, Throw }
+/// <summary>Short animations played over the idle or the walk (Bow, Shrug, Point and Laugh came with plan 11 · C11).</summary>
+internal enum Emote { None, Wave, Surprised, Nod, Cheer, Throw, Bow, Shrug, Point, Laugh }
 
 /// <summary>Animation inputs for one frame of a character.</summary>
 internal struct CharacterPose

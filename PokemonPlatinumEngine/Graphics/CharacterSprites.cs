@@ -8,7 +8,7 @@ using Raylib_cs;
 namespace PokemonPlatinumEngine.Graphics;
 
 /// <summary>Which strip of sprite frames a pose takes its frame from.</summary>
-internal enum SpriteAnim { Idle, Walk, Run, Hop, Wave, Surprised, Nod, Cheer }
+internal enum SpriteAnim { Idle, Walk, Run, Hop, Wave, Surprised, Nod, Cheer, Bow, Shrug, Point, Laugh }
 
 /// <summary>One baked sprite frame: a character type, facing, strip, frame, and its face.</summary>
 internal readonly record struct SpriteKey(CharacterRig Rig, int Facing, SpriteAnim Anim, int Frame, bool Blink, Expression Expression);
@@ -17,7 +17,8 @@ internal readonly record struct SpriteKey(CharacterRig Rig, int Facing, SpriteAn
 /// HD-2D characters: each 3D rig is rendered once per facing and animation frame into a small pixel-art sprite (at
 /// the field's texel density, with a pixel face stamped on and a one-pixel outline), then drawn in the field as an
 /// upright billboard that is lit by the scene and casts a shadow. Frames: two breaths standing, eight each for
-/// the walk and the run, three for a ledge hop and six for each emote; blinking and expressions are their own
+/// the walk and the run, three for a ledge hop and six for each emote (eight strips of them since plan 11 · C11);
+/// blinking and expressions are their own
 /// frames. A PNG in <c>overrides/sprites/&lt;TYPE&gt;/</c> next to the game replaces any baked frame
 /// (<see cref="OverrideName"/>).
 /// </summary>
@@ -91,8 +92,7 @@ internal static class CharacterSprites
         if (pose.Emote != Emote.None && pose.EmoteTime < duration)
         {
             int f = Math.Clamp((int)(pose.EmoteTime / duration * EmoteFrames), 0, EmoteFrames - 1);
-            var anim = pose.Emote switch { Emote.Wave => SpriteAnim.Wave, Emote.Surprised => SpriteAnim.Surprised, Emote.Nod => SpriteAnim.Nod, _ => SpriteAnim.Cheer };
-            return new SpriteKey(rig, facing, anim, f, pose.Blink, expression);
+            return new SpriteKey(rig, facing, StripOf(pose.Emote), f, pose.Blink, expression);
         }
 
         if (pose.WalkBlend >= 0.5f)
@@ -106,6 +106,32 @@ internal static class CharacterSprites
     }
 
     private static float Fraction(float x) => ((x % 1f) + 1f) % 1f;
+
+    /// <summary>The strip an emote's frames are in: its own, but the battle's throw, which the field never plays and shows as a cheer.</summary>
+    private static SpriteAnim StripOf(Emote emote) => emote switch
+    {
+        Emote.Wave => SpriteAnim.Wave,
+        Emote.Surprised => SpriteAnim.Surprised,
+        Emote.Nod => SpriteAnim.Nod,
+        Emote.Bow => SpriteAnim.Bow,
+        Emote.Shrug => SpriteAnim.Shrug,
+        Emote.Point => SpriteAnim.Point,
+        Emote.Laugh => SpriteAnim.Laugh,
+        _ => SpriteAnim.Cheer
+    };
+
+    /// <summary>The emote a strip's frames are baked from.</summary>
+    private static Emote EmoteOf(SpriteAnim strip) => strip switch
+    {
+        SpriteAnim.Wave => Emote.Wave,
+        SpriteAnim.Surprised => Emote.Surprised,
+        SpriteAnim.Nod => Emote.Nod,
+        SpriteAnim.Bow => Emote.Bow,
+        SpriteAnim.Shrug => Emote.Shrug,
+        SpriteAnim.Point => Emote.Point,
+        SpriteAnim.Laugh => Emote.Laugh,
+        _ => Emote.Cheer
+    };
 
     /// <summary>The representative pose a frame is baked from: the middle of its slice of the clip.</summary>
     public static CharacterPose BakePose(SpriteKey key)
@@ -129,7 +155,7 @@ internal static class CharacterSprites
                 pose.Time = 0.4f;
                 break;
             default:
-                pose.Emote = key.Anim switch { SpriteAnim.Wave => Emote.Wave, SpriteAnim.Surprised => Emote.Surprised, SpriteAnim.Nod => Emote.Nod, _ => Emote.Cheer };
+                pose.Emote = EmoteOf(key.Anim);
                 pose.EmoteTime = (key.Frame + 0.5f) / EmoteFrames * CharacterAnimation.Duration(pose.Emote);
                 pose.Time = 0.4f;
                 break;

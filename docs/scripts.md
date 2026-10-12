@@ -233,7 +233,10 @@ on leaving any place), `FLAG_FLASH_ACTIVE` and `FLAG_DEFOG_ACTIVE` (cleared on g
 | `face <who> up` / `face <who> <whom>` | Turns someone a way, or to look at someone. |
 | `walk <who> up 2 left 3 [fast]` | Walks them there and waits. The player takes their own steps (stairs, ledges); other people go where they are sent. |
 | `move <who> ...` | Starts the same walk and goes on at once. `waitmoves` waits for everyone still walking. |
+| `walk <who> onspot down 2 back up [fast]` | Two more words of a walk's (plan 11 · C11), each before a direction: `onspot` takes that direction's steps on the spot, turned that way with the legs walking and the tile the same (the original's `WalkOnSpot`); `back` takes them with the facing kept, a step back when the way is behind (the original's `LockDir` … `UnlockDir`). The player's are their own: a step back that can't be taken is given up as a walk into a wall is. They go with `move` too. |
 | `emote <who> exclaim [0.9]` | A bubble over their head for that long: `exclaim`, `question`, `dots`, `note`, `heart`, `sleep`, `sweat`. |
+| `act <who> wave [times]` | A gesture played once, or that many times in a row (up to 9), and waited for to its end as a walk is (plan 11 · C11; style guide, "Characters", "Animation"): `wave`, `nod`, `cheer`, `surprised`, `bow`, `shrug`, `point`, `laugh`, or `jump`, a jump on the spot (the hop's clip where they stand; the original's `JumpOnSpot`, which no script of Platinum's uses). A trainer's start under the "!" goes before it. Coming to another place ends it. |
+| `mood <who> happy` | The face they hold from now on (plan 11 · C11): `neutral`, `happy`, `surprised`, `sad` or `angry`, over whatever they do, until a script changes it or the place is come to again. |
 | `hide <who>`, `show <who>` | Off the map or back on it at once, until the map is come to again. Who is there from one visit to the next is decided by the flags (`hiddenBy`, `shownBy`), so a script that sends someone away for good sets their flag as well. |
 | `place <who> X Y [down]` | Puts them on a tile. |
 | `warp "Map" X Y [up]` | Through a fade to a tile of another map. |
