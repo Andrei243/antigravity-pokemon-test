@@ -235,12 +235,15 @@ public static class ScriptParser
                 string who = r.Who();
                 if (who == "player") throw r.Error("the player can't be battled");
                 // What may follow, in any order: a second trainer, someone at the player's side, a battle that may be lost
-                bool mayLose = false, byId = false, first = false, rematch = false;
+                bool mayLose = false, byId = false, first = false, rematch = false, inverse = false;
                 string second = "", partner = "", asTrainer = "";
                 while (r.More)
                 {
-                    switch (r.OneOf("canlose", "first", "and", "with", "as", "rematch"))
+                    switch (r.OneOf("canlose", "first", "and", "with", "as", "rematch", "inverse"))
                     {
+                        case "inverse":
+                            inverse = true;
+                            break;
                         case "rematch":
                             rematch = true;
                             break;
@@ -264,7 +267,7 @@ public static class ScriptParser
                             break;
                     }
                 }
-                return new Instruction { Op = Op.Battle, Line = line, Name = who, Other = second, Partner = partner, PartnerById = byId, Option = mayLose, FirstBattle = first, AsTrainer = asTrainer, Rematch = rematch };
+                return new Instruction { Op = Op.Battle, Line = line, Name = who, Other = second, Partner = partner, PartnerById = byId, Option = mayLose, FirstBattle = first, AsTrainer = asTrainer, Rematch = rematch, Inverse = inverse };
             }
             case "wildbattle":
             case "catchinglesson":

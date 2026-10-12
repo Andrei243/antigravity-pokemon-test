@@ -128,6 +128,7 @@ public class ScriptTests
           battle self with helper
           battle self first
           battle self as "rival_route_201_piplup" first canlose
+          battle self as "scientist_shaun_rematch_3" inverse canlose
           wildbattle "Starly" 2
           wildbattle "Giratina" 47 nofleeing
           catchinglesson "Bidoof" 2
@@ -1462,7 +1463,7 @@ public class ScriptTests
         public bool Busy => false;
         public void Say(string? speaker, IReadOnlyList<string> lines) { }
         public int Answer => 0;
-        public void Battle(NPC trainer, NPC? second, Trainer? partner, bool mayLose, bool first) { }
+        public void Battle(NPC trainer, NPC? second, Trainer? partner, bool mayLose, bool first, BattleTerms? terms = null) { }
         public void WildBattle(Pokemon wild, BattleKind kind, bool cannotFlee) { }
         public BattleOutcome Outcome => BattleOutcome.Won;
         public void Open(ScriptScreen screen, NPC? subject, string? counter = null) { }

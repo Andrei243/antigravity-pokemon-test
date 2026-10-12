@@ -51,7 +51,9 @@ public static class DamageCalculator
     /// (<c>BattleSystem_ApplyTypeChart</c>): Scrappy and Foresight let Normal and Fighting moves hit a Ghost,
     /// Miracle Eye lets Psychic moves hit a Dark type, Gravity, Ingrain and an Iron Ball let Ground moves hit a
     /// Flying type, a Pokémon that roosted has no Flying type until the turn ends, and one risen on magnetism
-    /// can't be hit by Ground moves at all.
+    /// can't be hit by Ground moves at all. On the field of an inverse battle (<see cref="FieldState.Inverse"/>,
+    /// plan 14 · B1) the chart is asked turned round: no type stops a move there, so none of those immunities is
+    /// left to lift, and only magnetism (with the abilities, which are asked elsewhere) still keeps a move off.
     /// </summary>
     /// <param name="rules">The rules whose type chart is used; left out, those of the game in progress.</param>
     public static float Effectiveness(Battler attacker, Battler defender, Move move, Ruleset? rules = null)
@@ -77,11 +79,13 @@ public static class DamageCalculator
         bool seesGhosts = defender.Volatile.Identified || BattleEffects.Of(attacker).Any(e => e.HitsGhosts);
         // The types it has right now: a Conversion or a Transform may have changed them for the battle
         var types = defender.Types;
+        // An inverse battle's chart, where the target stands on such a battle's field (plan 14 · B1)
+        bool inverse = defender.Field?.Inverse == true;
 
         foreach (var type in types)
         {
             if (type == PokemonType.Flying && defender.Turn.Roosting) continue;
-            float multiplier = TypeChart.GetEffectiveness(move.Type, type, null, rules);
+            float multiplier = TypeChart.GetEffectiveness(move.Type, type, null, rules, inverse);
             if (multiplier == 0f)
             {
                 if (type == PokemonType.Ghost && move.Type is PokemonType.Normal or PokemonType.Fighting && seesGhosts) continue;

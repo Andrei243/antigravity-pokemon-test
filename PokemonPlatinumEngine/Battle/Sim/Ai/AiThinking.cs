@@ -679,7 +679,8 @@ internal sealed partial class AiThinking
         bool seesGhosts = defender.Volatile.Identified || mine == "Scrappy";
         foreach (var t in defender.Types.Distinct())
         {
-            float multiplier = Data.TypeChart.GetEffectiveness(type, t, null, Battle.Rules);
+            // The battle's own chart, as the original's commands ask it: turned round in an inverse battle (plan 14 · B1)
+            float multiplier = Data.TypeChart.GetEffectiveness(type, t, null, Battle.Rules, Battle.Field.Inverse);
             if (multiplier == 1f) continue;
             if (multiplier == 0f)
             {

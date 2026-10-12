@@ -135,9 +135,11 @@ public interface IScriptHost
     /// <summary>
     /// Battles a trainer of the map, or two at once (<paramref name="second"/>), perhaps with a trainer at the
     /// player's side (<paramref name="partner"/>, a tag battle). <see cref="Outcome"/> is how it went once the host is
-    /// no longer busy. The game's first battle (<paramref name="first"/>) has no critical hits.
+    /// no longer busy. The game's first battle (<paramref name="first"/>) has no critical hits. What the script asks
+    /// of the battle itself comes as its <paramref name="terms"/> (plan 14 · B1: an inverse battle), which the host
+    /// lays over the place's own conditions as it makes the battle; null asks nothing.
     /// </summary>
-    void Battle(NPC trainer, NPC? second, Trainer? partner, bool mayLose, bool first);
+    void Battle(NPC trainer, NPC? second, Trainer? partner, bool mayLose, bool first, BattleTerms? terms = null);
 
     /// <summary>A wild Pokémon in the player's way: one met as ever, one that can't be run from, or the assistant's catching lesson, which the player watches.</summary>
     void WildBattle(Pokemon wild, BattleKind kind, bool cannotFlee);
