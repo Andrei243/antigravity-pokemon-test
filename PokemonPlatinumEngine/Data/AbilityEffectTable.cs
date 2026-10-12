@@ -53,12 +53,12 @@ public static class AbilityEffectTable
         Add("Anticipation", new Anticipation());
         Add("Forewarn", new Forewarn());
         Add("Frisk", new Frisk());
-        Add("Pressure", new FlagEffect { PpPressure = 1, EntryLine = "{0} is exerting its Pressure!" });
+        Add("Pressure", new FlagEffect { PpPressure = 1, EntryLine = "{0} is exerting its {1}!" });
 
         // Defensive
         Add("Levitate", new Levitate());
-        Add("Volt Absorb", new AbsorbType(PokemonType.Electric, "Volt Absorb"));
-        Add("Water Absorb", new AbsorbType(PokemonType.Water, "Water Absorb"));
+        Add("Volt Absorb", new AbsorbType(PokemonType.Electric));
+        Add("Water Absorb", new AbsorbType(PokemonType.Water));
         Add("Flash Fire", new FlashFire());
         Add("Motor Drive", new MotorDrive());
         Add("Wonder Guard", new WonderGuard());
@@ -114,18 +114,18 @@ public static class AbilityEffectTable
         Add("Synchronize", new Synchronize());
 
         // The weather (plan 06 · R3)
-        Add("Drizzle", new WeatherBringer(BattleWeather.Rain, "Rain", "{0}'s Drizzle brought the rain!"));
-        Add("Drought", new WeatherBringer(BattleWeather.Sun, "Sun", "{0}'s Drought turned the sunlight harsh!"));
-        Add("Sand Stream", new WeatherBringer(BattleWeather.Sandstorm, "Sandstorm", "{0}'s Sand Stream whipped up a sandstorm!"));
-        Add("Snow Warning", new WeatherBringer(BattleWeather.Hail, "Hail", "{0}'s Snow Warning whipped up a hailstorm!"));
+        Add("Drizzle", new WeatherBringer(BattleWeather.Rain, "Rain", "{0}'s {1} brought the rain!"));
+        Add("Drought", new WeatherBringer(BattleWeather.Sun, "Sun", "{0}'s {1} turned the sunlight harsh!"));
+        Add("Sand Stream", new WeatherBringer(BattleWeather.Sandstorm, "Sandstorm", "{0}'s {1} whipped up a sandstorm!"));
+        Add("Snow Warning", new WeatherBringer(BattleWeather.Hail, "Hail", "{0}'s {1} whipped up a hailstorm!"));
         Add("Cloud Nine", new WeatherBlind());
         Add("Air Lock", new WeatherBlind());
         Add("Swift Swim", new WeatherSpeed(BattleWeather.Rain));
         Add("Chlorophyll", new WeatherSpeed(BattleWeather.Sun));
         Add("Sand Veil", new WeatherCloak(BattleWeather.Sandstorm));
         Add("Snow Cloak", new WeatherCloak(BattleWeather.Hail));
-        Add("Rain Dish", new WeatherHealer(BattleWeather.Rain, "Rain Dish"));
-        Add("Ice Body", new WeatherHealer(BattleWeather.Hail, "Ice Body"));
+        Add("Rain Dish", new WeatherHealer(BattleWeather.Rain));
+        Add("Ice Body", new WeatherHealer(BattleWeather.Hail));
         Add("Dry Skin", new DrySkin());
         Add("Solar Power", new SolarPower());
         Add("Hydration", new Hydration());

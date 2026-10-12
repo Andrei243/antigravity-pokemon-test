@@ -18,10 +18,10 @@ About 350 sittings are left, some twenty of them marked optional.
 | 06 · Game mechanics | R1–R18 | ~12 | every one of Platinum's mechanics is in (2026-10-11); R19 to R30 are the later generations' |
 | 07 · Online | — | 8 | most of O2 and O3 came with plan 06; O8 optional |
 | 08 · Platinum's details | P6 | 22 | P3's met data and markings came with R12 |
-| 09 · Looks | — | 15 | |
+| 09 · Looks | L11 | 14 | |
 | 10 · Companions | F1 | 11 | F8 optional |
 | 11 · People | C1, C5 (C9, C10 in part) | 11 | the looks are a table, `characters.json` |
-| 12 · Quality of life | — | 30 | |
+| 12 · Quality of life | Q10, Q11 | 28 | |
 | 13 · Ways to play | — | 26 | V11, V14, V25 optional |
 | 14 · Battle formats | — | 15 | B2, B13 optional |
 | 15 · Side activities | — | 8 | E6–E8 optional |
@@ -33,7 +33,7 @@ About 350 sittings are left, some twenty of them marked optional.
 | 21 · Hoenn | — | 12 | |
 | 22 · Unova | — | 12 | |
 | 23 · Later regions | — | 24 | Z17–Z20 (Hisui) optional |
-| 24 · Guards | — | 6 | X3 is overdue: story versions 3 and 4 shipped with no saves kept to test against |
+| 24 · Guards | X1, X2 | 4 | X3 is overdue: story versions 3 and 4 shipped with no saves kept to test against |
 | 25 · Battle presentation | — | 15 | |
 | 26 · Voice | — (only the plan is written) | 8 | |
 
@@ -387,7 +387,7 @@ The main session starts one agent per cell of the wave, each in its own worktree
 - [ ] Wave 0 · 16 · T5 (beside: 03 · Paldea 3a, done 2026-10-10)
 - [ ] Wave 1 · 08 · P7, 01 · M9 1b, 06 · R14a, 11 · C1, 10 · F1, 16 · T16 (beside: Paldea 3b, done 2026-10-10)
 - [ ] Wave 2 · 02 · S7 with 08 · P12 (done 2026-10-10), 01 · M9 2a (done 2026-10-10), 06 · R14b (done 2026-10-10), 12 · Q10 (done 2026-10-10), 11 · C5 (done 2026-10-10), 24 · X1 (done 2026-10-10) (beside: Paldea 3c, done 2026-10-10)
-- [ ] Wave 3 · 02 · S8 (done 2026-10-10: Veilstone and Pastoria to the Secret Potion; it took the Secret Potion from S9, as the original orders it), 01 · M9 2b (done 2026-10-10), 06 · R14c (done 2026-10-10), 12 · Q11, 09 · L11, 24 · X2
+- [x] Wave 3 · 02 · S8 (done 2026-10-10: Veilstone and Pastoria to the Secret Potion; it took the Secret Potion from S9, as the original orders it), 01 · M9 2b (done 2026-10-10), 06 · R14c (done 2026-10-10), 12 · Q11 (done 2026-10-12: the abilities and items a battle names are log events, `AiMemory` reads them, and the information panel opens from the commands), 09 · L11 (done 2026-10-12: six scene effects and the `effect` command, played in the scenes of Spear Pillar, the Distortion World, the headquarters' control room and Canalave's library), 24 · X2 (done 2026-10-12: 200 golden battles and every trainer's team, generated on the merged wave's tree, after Q11's events)
 - [ ] Wave 4 · 02 · S9 (done 2026-10-10: Route 210's Psyduck and Cynthia's Old Charm to the rival on Canalave City's bridge; Celestic's ruins and the Fuego Ironworks' floor opened as maps of the imported world, two entries of `world.json` to merge by hand), 01 · M9 2c (done 2026-10-10), 06 · R15 (done 2026-10-10), 11 · C12, 11 · C6, 24 · X3
 - [ ] Wave 5 · 02 · S10 (done 2026-10-10: Riley's HM04 on Iron Island to Maylene and HM08 on Route 217; the drained Lake Valor, Valor Cavern and the lake Team Galactic holds opened as maps of the imported world, three entries of `world.json`; story version 12), 01 · M9 2d (done 2026-10-10: the League's rooms and lifts to the Hall of Fame, whose scene, credits and the rival's battle before the door are S14's), 06 · R17a (done 2026-10-10: the Super Contests and `MoveData.Contest`), 25 · Y1, 11 · C11, 12 · Q1
 - [ ] Wave 6 · 02 · S11a (done 2026-10-10: the rival at Acuity Lakefront's rock face, Snowpoint City and Maylene, the scene at Lake Acuity, where Platinum has no battle with Jupiter; the lake Team Galactic leaves opened as a map of the imported world, one entry of `world.json`; story version 13), 01 · M10a (done 2026-10-10: the Fight, Survival and Resort Areas, Routes 224 to 230 and Victory Road's back rooms open, five of the fourteen stand-ins built; the ship from Snowpoint City is S15a's, and until it sails nobody comes there), 06 · R17b (done 2026-10-10: Ball Capsules, Seals and the ribbons, which finishes R17; the Ribbon Syndicate's two scripts wait for its room in the Resort Area, 01 · M10b (done 2026-10-11: Stark Mountain, Snowpoint Temple's floors, Fullmoon and Newmoon Islands, the Seabreak Path behind a chunk swap, Flower Paradise, the Battle Frontier's grounds, the Ribbon Syndicate's room; no stand-in model is left; M10 is done) or M11), 08 · P5, 09 · L4, 16 · T8

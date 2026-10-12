@@ -163,6 +163,9 @@ internal static class SceneTextures
     /// <summary>The cells of the field's small effects: prints, dust, leaves, drops, rings (<see cref="LifeArt.Atlas"/>).</summary>
     public static Texture2D Life => Get("life", LifeArt.Atlas, repeat: false);
 
+    /// <summary>The cells of the story's scene effects: bursts, beams, rifts, shadows, sparkles (<see cref="LifeArt.Scene"/>).</summary>
+    public static Texture2D Effects => Get("scene_fx", LifeArt.Scene, repeat: false);
+
     /// <summary>Mist, drawn large and smooth over the picture in drifting layers (<see cref="LifeArt.Haze"/>).</summary>
     public static Texture2D Haze
     {

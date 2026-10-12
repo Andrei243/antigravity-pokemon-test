@@ -72,6 +72,17 @@ public interface IScriptHost
     void Emote(NPC? who, EmoteBubble bubble, float seconds);
     void Camera(CameraMove move, int x, int y, float seconds);
 
+    /// <summary>
+    /// A scene effect lit on a tile (plan 09 · L11; style guide, "Life", "Scene effects"): it plays for
+    /// <paramref name="seconds"/> under whatever the script does next, or round after round until
+    /// <see cref="StopEffect"/> when <paramref name="hold"/>; a shadow crosses the ground <paramref name="way"/>
+    /// (east when none is given). The runner itself waits for one the script waits for.
+    /// </summary>
+    void Effect(SceneEffect kind, int x, int y, float seconds, Direction? way, bool hold);
+
+    /// <summary>Every effect held on a tile goes as it would at its end.</summary>
+    void StopEffect(int x, int y);
+
     // ------------------------------------------------------------------ what the script waits for
 
     /// <summary>

@@ -32,6 +32,8 @@ internal static partial class ModernUi
         var active = battle.PlayerPokemon;
         var party = battle.PlayerParty;
         bool choosing = hud.MenuState is BattleMenuState.Main or BattleMenuState.Moves or BattleMenuState.SelectTarget;
+        // The information panel dims the stage under the foes' boxes, which stay bright over it
+        if (hud.MenuState == BattleMenuState.Info) Dim(sw, sh, 150);
 
         if (battle.IsDouble)
         {
@@ -96,6 +98,9 @@ internal static partial class ModernUi
                 BagTargets(hud, sw, sh, party, battle);
                 if (battle.BagTarget >= 0 && battle.BagTarget < party.Count && battle.BagItemChosen is { } restoring)
                     MovePick(new Rectangle(sw - 64 - 760, 64, 760, 476), party.Members[battle.BagTarget], hud.BagMoveIndex, $"Use the {restoring.Name} on which move?");
+                break;
+            case BattleMenuState.Info:
+                if (battle.InfoShown is { } info) InfoPanel(info, battle.IsDouble);
                 break;
             case BattleMenuState.LearnMove:
                 // The question in the message box, and beside it its Yes and No or the moves to forget
@@ -469,8 +474,8 @@ internal static partial class ModernUi
     /// The battle's bag (plan 06 · R11): its four pockets as big buttons two to a row, each with how many items it
     /// holds, and under them the item used last, as Platinum's touch screen has them.
     /// </summary>
-    /// <summary>The menus whose panels stand where the player's HP box is: the team's cards, the bag's, a move to learn.</summary>
-    private static bool CoversPlayerBox(BattleMenuState state) => state is BattleMenuState.SwitchPokemon or BattleMenuState.LearnMove
+    /// <summary>The menus whose panels stand where the player's HP box is: the team's cards, the bag's, a move to learn, the information panel.</summary>
+    private static bool CoversPlayerBox(BattleMenuState state) => state is BattleMenuState.SwitchPokemon or BattleMenuState.LearnMove or BattleMenuState.Info
         or BattleMenuState.SelectBagPocket or BattleMenuState.SelectBagItem or BattleMenuState.SelectBagTarget or BattleMenuState.SelectBagMove;
 
     private static void BagPockets(BattleHUD hud, int sw, int sh, BattleEngine battle)
@@ -578,5 +583,123 @@ internal static partial class ModernUi
             StatusPill(tagX, r.Y + 120, p.IsFainted ? StatusCondition.Faint : p.Status, 32);
             if (p.IsFainted) UiShapes.Fill(r, 30, new Color(40, 40, 60, 90));
         }
+    }
+
+    // ------------------------------------------------------------------ the information panel
+
+    /// <summary>
+    /// The information panel (plan 12 · Q11; style guide, "Battle panels"): the field's state on a strip under the
+    /// foes' boxes, and under it a sheet of two columns, the foe's side on the left and the player's on the right as
+    /// they stand on the screen, each with what its side has up and a card for each of its Pokémon on the field.
+    /// </summary>
+    private static void InfoPanel(BattleInfo info, bool doubles)
+    {
+        HintsDark(1872, 52, ("X", "Close"));
+
+        // The strip: FIELD, then the weather, Trick Room and Gravity, or a word that nothing is
+        float x = 56, y = doubles ? 286 : 240;
+        x += Tag(x, y, "FIELD", Frame, 48) + 10;
+        if (info.Field.Count == 0) Tag(x, y, "NOTHING IN EFFECT", Muted, 48);
+        foreach (var line in info.Field) x += Tag(x, y, line.Text.ToUpperInvariant(), FieldColor(line.Name), 48) + 10;
+
+        const float top = 352, bottom = 1032;
+        InfoColumn(new Rectangle(48, top, 900, bottom - top), info.Side(BattleSide.Enemy), "FOE'S SIDE", Red);
+        InfoColumn(new Rectangle(972, top, 900, bottom - top), info.Side(BattleSide.Player), "YOUR SIDE", Blue);
+    }
+
+    /// <summary>The weather in its own colour; Trick Room and Gravity in theirs.</summary>
+    private static Color FieldColor(string name) => name switch
+    {
+        "Rain" => Blue,
+        "Harsh sunlight" => Selection,
+        "Sandstorm" => Darker(Gold, 0.1f),
+        "Hail" => new Color(96, 168, 214, 255),
+        "Fog" => Muted,
+        "Trick Room" => new Color(150, 96, 200, 255),
+        _ => Frame
+    };
+
+    private static Color ToneColor(InfoTone tone, Color good) => tone switch
+    {
+        InfoTone.Good => good,
+        InfoTone.Bad => Red,
+        _ => Frame
+    };
+
+    /// <summary>One side's column: its name on a tag, what it has up as tags under it, and a card for each Pokémon.</summary>
+    private static void InfoColumn(Rectangle r, SideInfo side, string title, Color color)
+    {
+        Panel(r, 28);
+        Tag(r.X + 32, r.Y + 28, title, color, 44);
+
+        float y = r.Y + 92;
+        if (side.Lines.Count == 0)
+        {
+            UiFonts.DrawCentered("No screens or hazards.", r.X + 36, y + 20, 26, Muted, UiWeight.ExtraBold);
+            y += 40;
+        }
+        else y = Chips(side.Lines.Select(l => (l.Text.ToUpperInvariant(), ToneColor(l.Tone, Blue))), r.X + 32, y, r.X + r.Width - 32, 40, r.Y + r.Height);
+        y += 16;
+
+        int n = Math.Max(1, side.Pokemon.Count);
+        float room = r.Y + r.Height - 24 - y;
+        float height = Math.Min(300, (room - 16 * (n - 1)) / n);
+        foreach (var card in side.Pokemon)
+        {
+            InfoCard(new Rectangle(r.X + 24, y, r.Width - 48, height), card);
+            y += height + 16;
+        }
+    }
+
+    /// <summary>
+    /// A Pokémon's card: its icon, name, status and level; its ability and item, or a word that the player hasn't
+    /// seen them; its stat stages and passing conditions as tags.
+    /// </summary>
+    private static void InfoCard(Rectangle r, PokemonInfo card)
+    {
+        var p = card.Pokemon;
+        Card(r, 26, false);
+        Portrait(new Vector2(r.X + 76, r.Y + 76), 56, p, 2, false);
+
+        float x = r.X + 152;
+        float nameW = NameWithGender(p, x, r.Y + 42, 32);
+        StatusPill(x + nameW + 12, r.Y + 26, p.Status, 30);
+        Level(r.X + r.Width - 30, r.Y + 42, p.Level, 30);
+
+        InfoFact(x, r.Y + 74, "ABILITY", card.Ability);
+        InfoFact(x + 320, r.Y + 74, "ITEM", card.Item);
+
+        var chips = card.Stages.Select(l => (l.Text.ToUpperInvariant(), ToneColor(l.Tone, Green)))
+            .Concat(card.Conditions.Select(l => (l.Text.ToUpperInvariant(), ToneColor(l.Tone, Blue))))
+            .ToList();
+        float y = r.Y + 148;
+        if (chips.Count == 0) UiFonts.DrawCentered("No changes.", r.X + 36, y + 18, 24, Muted, UiWeight.ExtraBold);
+        else Chips(chips, r.X + 32, y, r.X + r.Width - 28, 36, r.Y + r.Height - 12);
+    }
+
+    /// <summary>A caption over a value; a value the player hasn't seen is said so in Muted.</summary>
+    private static void InfoFact(float x, float y, string caption, string? value)
+    {
+        Label(caption, x, y);
+        if (value != null) UiFonts.DrawCentered(value, x, y + 40, 28, Ink, UiWeight.Black);
+        else UiFonts.DrawCentered("Not seen yet", x, y + 40, 28, Muted, UiWeight.ExtraBold);
+    }
+
+    /// <summary>Tags laid one after another, a new row where one would pass <paramref name="right"/>, none below <paramref name="bottom"/>; gives where the last row ends.</summary>
+    private static float Chips(IEnumerable<(string Text, Color Color)> chips, float left, float y, float right, float height, float bottom)
+    {
+        float x = left;
+        foreach (var (text, color) in chips)
+        {
+            float w = UiFonts.Measure(text, height * 0.58f, UiWeight.Black) + height * 0.9f;
+            if (x > left && x + w > right)
+            {
+                x = left;
+                y += height + 10;
+            }
+            if (y + height > bottom) break;
+            x += Tag(x, y, text, color, height) + 10;
+        }
+        return y + height;
     }
 }

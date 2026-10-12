@@ -87,6 +87,38 @@ public partial class BattleEngine
         return MoveHints.Of(DamageCalculator.Effectiveness(user, core.At(target.Place), move, core.Rules));
     }
 
+    /// <summary>
+    /// The abilities and held items the battle's lines have named (plan 12 · Q11): all the information panel says of
+    /// a Pokémon that isn't the player's own.
+    /// </summary>
+    public Revealed Revealed { get; } = new();
+
+    /// <summary>What the information panel shows, made as it opens: nothing changes while it is open.</summary>
+    public BattleInfo? InfoShown { get; private set; }
+
+    /// <summary>What the information panel would show now: the field, both sides and every Pokémon on it, as far as the player has been told.</summary>
+    public BattleInfo Info => BattleInfo.Of(core.Field, PlayerSlots, EnemySlots, Revealed);
+
+    /// <summary>
+    /// Opens the information panel over the commands (the <c>Item</c> action, C or the pad's left face button). It
+    /// changes no rule and answers nothing: closing it is back at the same commands.
+    /// </summary>
+    public bool OpenInfo()
+    {
+        if (HUD.MenuState != BattleMenuState.Main) return false;
+        InfoShown = Info;
+        HUD.MenuState = BattleMenuState.Info;
+        return true;
+    }
+
+    /// <summary>Closes the information panel, back at the commands.</summary>
+    public void CloseInfo()
+    {
+        if (HUD.MenuState != BattleMenuState.Info) return;
+        InfoShown = null;
+        HUD.MenuState = BattleMenuState.Main;
+    }
+
     /// <summary>The keys that answer a menu: the A button, and Enter, which reads a battle's messages on as well.</summary>
     private static bool ConfirmPressed =>
         InputManager.IsActionPressed(GameAction.Confirm) || Raylib_cs.Raylib.IsKeyPressed(Raylib_cs.KeyboardKey.Enter);
@@ -551,11 +583,24 @@ public partial class BattleEngine
                     AudioManager.PlaySound("cancel");
                     return;
                 }
+                if (InputManager.IsActionPressed(GameAction.Item) && OpenInfo())
+                {
+                    AudioManager.PlaySound("select");
+                    return;
+                }
                 MoveCursor(dx, dy);
                 if (confirm)
                 {
                     AudioManager.PlaySound("select");
                     SelectMainMenuOption(HUD.MainMenuIndex);
+                }
+                break;
+
+            case BattleMenuState.Info:
+                if (cancel || confirm || InputManager.IsActionPressed(GameAction.Item))
+                {
+                    AudioManager.PlaySound("cancel");
+                    CloseInfo();
                 }
                 break;
 

@@ -225,7 +225,7 @@ public sealed partial class BattleCore
         foreach (var t in use.Targets.Where(t => t.Turn.DrewTheMove))
         {
             t.Turn.DrewTheMove = false;
-            Say($"{t.Name}'s {t.Ability?.Name} took the attack!");
+            Say($"{t.Name}'s {AbilityOf(t)} took the attack!");
         }
 
         // Whoever it is aimed at can send it back with Mirror Move (the original's moveCopied)
@@ -624,7 +624,7 @@ public sealed partial class BattleCore
 
         Say(string.Format(charge.Line, use.User.Name));
         if (charge.RaisesDefense) ChangeStat(use.User, StatType.Defense, 1, use.User);
-        Say($"{use.User.Name} became fully charged due to its {use.User.Pokemon!.HeldItem!.Name}!");
+        Say($"{use.User.Name} became fully charged due to its {ItemOf(use.User)}!");
         ConsumeItem(use.User);
         return true;
     }
@@ -816,7 +816,7 @@ public sealed partial class BattleCore
     }
 
     /// <summary>The held item's effect, unless an Embargo or Klutz has put it out of use.</summary>
-    private static BattleEffect? ItemOf(Battler b) => BattleEffects.ItemOf(b);
+    private static BattleEffect? ItemEffectOf(Battler b) => BattleEffects.ItemOf(b);
 
     /// <summary>The move as its user makes it: Normal, whatever it was, for a user with Normalize (a copy; the Pokémon's own move is left as it is).</summary>
     private static Move Normalized(Battler user, Move move) =>
@@ -968,7 +968,7 @@ public sealed partial class BattleCore
             damage = Formulas.Divide(damage, 2);
             hit.Notes.AddRange(Capture(() =>
             {
-                Say($"The {berry.Name} weakened {move.Name}'s power!");
+                Say($"The {ItemOf(t, berry)} weakened {move.Name}'s power!");
                 ConsumeItem(t);
             }));
         }

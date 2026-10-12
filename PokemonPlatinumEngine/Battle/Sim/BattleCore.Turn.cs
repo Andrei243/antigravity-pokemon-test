@@ -166,8 +166,8 @@ public sealed partial class BattleCore
             // Its ability, then its item twice over, as the original has it: a berry it is time for
             // (BattleSystem_TriggerHeldItem), then Leftovers or Black Sludge (BattleSystem_TriggerLeftovers)
             b.Ability?.Effect?.AtEndOfTurn(this, b);
-            if (b.IsActive) ItemOf(b)?.OnConditionChanged(this, b, null);
-            if (b.IsActive) ItemOf(b)?.AtEndOfTurn(this, b);
+            if (b.IsActive) ItemEffectOf(b)?.OnConditionChanged(this, b, null);
+            if (b.IsActive) ItemEffectOf(b)?.AtEndOfTurn(this, b);
 
             // Leech Seed: an eighth of its HP goes to whoever stands where the seeder stood
             if (b.IsActive && v.SeededBy is { } to && At(to).IsActive && !guarded)
@@ -287,7 +287,7 @@ public sealed partial class BattleCore
 
             // Its berries look at what the turn left it with, and an orb does its harm last
             CheckConditionHooks(b, null);
-            if (b.IsActive) ItemOf(b)?.AfterTheTurn(this, b);
+            if (b.IsActive) ItemEffectOf(b)?.AfterTheTurn(this, b);
 
             if (!Settle()) return false;
         }
@@ -383,7 +383,7 @@ public sealed partial class BattleCore
     private void PoisonHeal(Battler b)
     {
         var p = b.Pokemon!;
-        if (p.CurrentHP < p.MaxHP) RestoreHp(b, Formulas.Divide(p.MaxHP, 8), $"{b.Name} restored HP using its Poison Heal!");
+        if (p.CurrentHP < p.MaxHP) RestoreHp(b, Formulas.Divide(p.MaxHP, 8), $"{b.Name} restored HP using its {AbilityOf(b)}!");
     }
 
     /// <summary><c>BattleSystem_SetupNextTurn</c>: a sleeper is in the middle of nothing.</summary>

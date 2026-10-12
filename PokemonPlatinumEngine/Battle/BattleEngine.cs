@@ -514,6 +514,13 @@ public partial class BattleEngine
                 }
                 break;
             }
+            case AbilityShown ability:
+                // Nothing is drawn or heard: the information panel remembers what the line named (plan 12 · Q11)
+                if (At(ability.Place).Pokemon is { } bearer) Revealed.Ability(bearer, ability.Ability);
+                break;
+            case ItemShown item:
+                if (At(item.Place).Pokemon is { } holder) Revealed.Item(holder, item.Item);
+                break;
             case WeatherChanged weather:
                 Weather = weather.Weather;
                 break;

@@ -993,7 +993,7 @@ public sealed partial class BattleCore
             bool breaks = BattleEffects.Of(user).Any(e => e.IgnoresTargetAbility);
             if (!breaks && t.Ability?.Effect is { HoldsItsGround: true })
             {
-                Say($"{t.Name} anchors itself with {t.Ability.Name}!");
+                Say($"{t.Name} anchors itself with {AbilityOf(t)}!");
                 return false;
             }
             if (t.Volatile.Ingrained)
@@ -1027,7 +1027,7 @@ public sealed partial class BattleCore
         bool breaks = BattleEffects.Of(user).Any(e => e.IgnoresTargetAbility);
         if (!breaks && t.Ability?.Effect is { BlocksInfatuation: true })
         {
-            Say($"{t.Name}'s {t.Ability.Name} prevents romance!");
+            Say($"{t.Name}'s {AbilityOf(t)} prevents romance!");
             return false;
         }
         var mine = user.Pokemon!.Gender;
@@ -1107,7 +1107,7 @@ public sealed partial class BattleCore
             return;
         }
         Say("All Pokémon hearing the song will faint in three turns!");
-        foreach (var b in deaf) Say($"{b.Name}'s Soundproof blocks {use.Move.Name}!");
+        foreach (var b in deaf) Say($"{b.Name}'s {AbilityOf(b)} blocks {use.Move.Name}!");
     }
 
     private static readonly HashSet<string> NotForEncore = new() { "Transform", "CopyMoveForBattle", "LearnMovePermanent", "CopyMove", "Encore" };
@@ -1144,7 +1144,7 @@ public sealed partial class BattleCore
         bool breaks = BattleEffects.Of(user).Any(e => e.IgnoresTargetAbility);
         if (!breaks && t.Ability?.Effect is { } guard && guard.BlocksStatus(t, StatusCondition.Sleep))
         {
-            Say($"{t.Name}'s {t.Ability.Name} made it ineffective!");
+            Say($"{t.Name}'s {AbilityOf(t)} made it ineffective!");
             return false;
         }
         if (t.HasSubstitute || t.Volatile.YawnTurns > 0 || t.Pokemon!.Status != StatusCondition.None || (UproarIsOn && !Has(t, "Soundproof"))) return Fails();
@@ -1180,7 +1180,7 @@ public sealed partial class BattleCore
         // Insomnia and Vital Spirit; Leaf Guard doesn't stop a Rest in Platinum
         if (Has(user, "Insomnia") || Has(user, "Vital Spirit"))
         {
-            Say($"{user.Name} stayed awake because of its {user.Ability!.Name}!");
+            Say($"{user.Name} stayed awake because of its {AbilityOf(user)}!");
             return;
         }
         if (p.Status == StatusCondition.Sleep)
@@ -1222,7 +1222,7 @@ public sealed partial class BattleCore
             var standing = onTheField.FirstOrDefault(b => b.Pokemon == p);
             if (standing != null && bell && Has(standing, "Soundproof"))
             {
-                Say($"{standing.Name}'s Soundproof blocks {use.Move.Name}!");
+                Say($"{standing.Name}'s {AbilityOf(standing)} blocks {use.Move.Name}!");
                 continue;
             }
             if (p.IsFainted || p.Status == StatusCondition.None) continue;

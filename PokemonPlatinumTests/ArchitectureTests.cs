@@ -104,7 +104,7 @@ public class ArchitectureTests
     [Fact]
     public void EveryEngineFileIsInItsFoldersNamespace()
     {
-        string engine = Path.Combine(Repo(), Engine);
+        string engine = Path.Combine(Repository.Root, Engine);
         var wrong = new List<string>();
         foreach (string file in Directory.EnumerateFiles(engine, "*.cs", SearchOption.AllDirectories))
         {
@@ -115,13 +115,6 @@ public class ArchitectureTests
             if (declared != expected) wrong.Add($"{Path.GetRelativePath(engine, file)}: {declared ?? "no namespace"}, not {expected}");
         }
         Assert.True(wrong.Count == 0, string.Join("\n", wrong));
-    }
-
-    private static string Repo()
-    {
-        for (var dir = new DirectoryInfo(AppContext.BaseDirectory); dir != null; dir = dir.Parent)
-            if (File.Exists(Path.Combine(dir.FullName, "PokemonPlatinum.sln"))) return dir.FullName;
-        throw new DirectoryNotFoundException("The tests don't run from inside the repository");
     }
 
     // ------------------------------------------------------------------ reading IL

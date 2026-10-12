@@ -628,6 +628,7 @@ uniform float contrast;
 uniform vec3 shadowTint;
 uniform vec3 highlightTint;
 uniform float vignette;
+uniform vec4 ripple;
 out vec4 finalColor;
 
 
@@ -669,6 +670,12 @@ float InverseDepth(vec2 uv)
 void main()
 {
     vec2 uv = fragTexCoord;
+    // A scene's ripple: each row of the field's texels pushed sideways by whole texels on a sine (SceneFx.RippleOffset)
+    if (ripple.x > 0.0)
+    {
+        float row = floor(uv.y * ripple.w);
+        uv.x = clamp(uv.x + floor(ripple.x * sin(6.2831853 * row / 24.0 + ripple.y) + 0.5) * ripple.z, 0.0, 1.0);
+    }
     vec3 color = fxaa > 0.5 ? Fxaa(uv) : texture(texture0, uv).rgb;
 
     float band = abs(uv.y - 0.5) * 2.0;
@@ -1031,8 +1038,10 @@ void main()
         Set(World, "glowColor", color);
     }
 
-    public void SetPost(Vector2 texel, PostSettings post, DepthRange depth, bool fxaa, float outlineWidth)
+    /// <param name="ripple">A scene's ripple (<see cref="SceneFx.Ripple"/>): the rows of the picture pushed sideways by whole texels of the field, nought when none plays.</param>
+    public void SetPost(Vector2 texel, PostSettings post, DepthRange depth, bool fxaa, float outlineWidth, SceneRipple ripple = default)
     {
+        Set(Post, "ripple", new Vector4(ripple.Reach, ripple.Phase, 1f / SceneFx.RippleColumns, SceneFx.RippleRows));
         Set(Post, "texel", texel);
         Set(Post, "blurStrength", post.TiltShift);
         Set(Post, "dof", post.Dof);

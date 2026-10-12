@@ -21,3 +21,6 @@ overrides/
 
 # The data importer's hand corrections are part of the repository
 !tools/DataImporter/Overrides/
+
+# What a golden file's check found the code giving instead (plan 24 · X2): looked at, then accepted or thrown away
+*.received.txt

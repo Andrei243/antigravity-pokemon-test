@@ -98,6 +98,17 @@ public sealed record Reshaped(Place Place) : BattleEvent;
 /// <summary>A Substitute is put up in a place, or is gone from it.</summary>
 public sealed record SubstituteChanged(Place Place, bool Up) : BattleEvent;
 
+/// <summary>
+/// A line names the ability of the Pokémon in a place (plan 12 · Q11): the original's message tag for a battler's
+/// ability (<c>BattleMessage_AbilityTag</c>), which tells the trainer AI of it (<c>BattleAI_SetAbility</c>). Whoever
+/// reads the log learns it from this, never from the line's words: the trainer AI's memory, and the screen's
+/// information panel, which says nothing the player hasn't been told.
+/// </summary>
+public sealed record AbilityShown(Place Place, string Ability) : BattleEvent;
+
+/// <summary>A line names the held item of the Pokémon in a place (<c>BattleMessage_ItemTag</c>, <c>BattleAI_SetHeldItem</c>): a berry eaten, Leftovers, a Focus Sash, a Frisk.</summary>
+public sealed record ItemShown(Place Place, string Item) : BattleEvent;
+
 /// <summary>The weather over the battle is now this (none: it cleared).</summary>
 public sealed record WeatherChanged(BattleWeather Weather) : BattleEvent;
 public sealed record ExpGained(Pokemon Pokemon, int Amount) : BattleEvent;
