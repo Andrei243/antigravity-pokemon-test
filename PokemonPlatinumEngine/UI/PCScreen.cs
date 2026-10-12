@@ -28,7 +28,10 @@ public class PCScreen
     private const float AppearTime = 0.3f;
 
     /// <summary>A box as Platinum has it: six across, five down, eighteen boxes.</summary>
-    public const int Columns = PcBoxes.Columns, Rows = PcBoxes.Rows, BoxSize = PcBoxes.BoxSize, BoxCount = PcBoxes.BoxCount;
+    public const int Columns = PcBoxes.Columns, Rows = PcBoxes.Rows, BoxSize = PcBoxes.BoxSize;
+
+    /// <summary>How many boxes the PC that was opened has: Platinum's eighteen, or the National Pokédex's (plan 03 · D13).</summary>
+    public int BoxCount { get; private set; } = PcBoxes.BoxCount;
 
     private float openAge;
 
@@ -71,7 +74,8 @@ public class PCScreen
         PartyIndex = 0;
         Cell = 0;
         // The PC opens on the box it was last left on
-        Box = pc?.CurrentBox ?? 0;
+        BoxCount = pc?.Boxes.Count ?? PcBoxes.BoxCount;
+        Box = Math.Clamp(pc?.CurrentBox ?? 0, 0, BoxCount - 1);
         Held = null;
         Changed = false;
         CloseMenus();

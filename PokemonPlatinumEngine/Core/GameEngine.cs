@@ -293,11 +293,13 @@ public partial class GameEngine
             // The characters of the introduction, sculpted and meshed in the background while the title screen plays; the
             // people of the field are made ready where the player is (KeepCharactersNear, plan 11 · C1)
             CharacterModels.Preload(new[] { "PLAYER", "DAWN", "ROWAN" });
-            // The Pokémon models of the story's opening too, meshed side by side; the menu sprites below wait for each one
-            PokemonModels.Preload(modelled.Append(PokemonSprites.Fallback));
-            // The Pokémon that stand in the field (plan 10 · F1), whose sprites are baked from their models when first in view
-            foreach (var species in MapDatabase.MapNames.SelectMany(n => MapDatabase.Get(n).Everyone).Where(n => n.IsPokemon).Select(n => n.Species!).Distinct())
-                PokemonModels.Request(species);
+            // The Pokémon the title and the introduction show at once are meshed meanwhile too. Only the stand-in is kept
+            // for good: every other model, those of the story's opening among them, is made when a scene asks for it and
+            // let go after it (plan 03 · D13: kept for the whole game, the opening's twenty-four held a few megabytes each)
+            PokemonModels.Preload(new[] { PokemonSprites.Fallback });
+            foreach (string shown in PokemonModels.ShownAtOnce) PokemonModels.Request(shown);
+            // (The Pokémon that stand in the field, plan 10 · F1, are made ready where the player is, as the people are:
+            // KeepCharactersNear. Asked for here, every start built the models of all of them, plan 03 · D13)
             // And the balls the battles throw
             BattleBall.Preload("Poké Ball", "Great Ball", "Ultra Ball", "Master Ball");
             SubstituteDoll.Preload();
@@ -556,6 +558,8 @@ public partial class GameEngine
         foreach (var caught in save.CaughtSpecies) playerPokedex.RegisterCaught(caught);
         playerPokedex.Restore(save.NationalPokedex,
             save.Diplomas.Select(d => Enum.TryParse<PokedexMode>(d, out var mode) ? mode : (PokedexMode?)null).OfType<PokedexMode>());
+        // A save that had the National Pokédex before the PC grew with it (plan 03 · D13) is given the boxes now
+        if (playerPokedex.NationalUnlocked) pcBoxStorage.Grow();
 
         // The story as the save has it, brought up to date if an older game wrote it; then everyone where it puts them
         runner.Abort();
@@ -1237,6 +1241,9 @@ public partial class GameEngine
             startMenu.HasPokedex = story.Has(StoryState.PokedexFlag);
             startMenu.HasPokemon = playerParty.Count > 0;
             startMenu.Open();
+            // The team's menu sprites are asked for as the menu opens, so that they are there by the time a screen
+            // shows them: only the opening's are made at the start, and a sprite long unshown is let go (plan 03 · D13)
+            foreach (var member in playerParty.Members.Where(p => !p.IsEgg)) PokemonSprites.Request(member.ModelName);
             return;
         }
 
@@ -1332,6 +1339,12 @@ public partial class GameEngine
             .ToList();
         if (trim) CharacterModels.Trim(looks);
         CharacterModels.Preload(looks);
+        // The Pokémon that stand in the field near the player (plan 10 · F1), whose sprites are baked from their
+        // models: only those no earlier run has baked (plan 03 · D13), so that they are there before they are in view
+        foreach (string species in currentMap.Everyone
+                     .Where(n => n.IsPokemon && n.Species != null && Math.Abs(n.GridX - player.GridX) <= CharacterReach && Math.Abs(n.GridY - player.GridY) <= CharacterReach)
+                     .Select(n => n.Species!).Distinct())
+            if (!FieldSprites.Ready(species)) PokemonModels.Request(species);
     }
 
     private readonly HeldKey poketchAcross = new(), poketchDown = new();

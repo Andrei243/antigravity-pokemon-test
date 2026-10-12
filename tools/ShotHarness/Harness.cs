@@ -387,9 +387,8 @@ partial class Harness
     static Pokemon Meet(string name, int level)
     {
         if (PokemonDatabase.Get(name) is { } species) return new Pokemon(species, level);
-        var p = new Pokemon(PokemonDatabase.SpeciesOfForm(name) ?? throw new ArgumentException($"No species or form is called {name}"), level);
-        p.ChangeForm(name);
-        return p;
+        // (with the form's own moves, where it has a learnset of its own: plan 03 · D13)
+        return Pokemon.InForm(PokemonDatabase.SpeciesOfForm(name) ?? throw new ArgumentException($"No species or form is called {name}"), name, level);
     }
 
     BattleEngine StartBattle(string foe, int level, Trainer trainer = null, string map = "Route201", Random chance = null, bool hints = false)

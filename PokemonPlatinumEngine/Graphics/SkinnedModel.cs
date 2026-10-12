@@ -60,6 +60,10 @@ internal sealed class SkinnedModel
 
     public Mesh Mesh;
     public int BoneCount { get; private init; }
+
+    // The buffers of the bone indices and weights. They are this class's own to keep and to free: a mesh of the
+    // raylib the game ships with has room for the ids of seven buffers and frees those seven (plan 03 · D13)
+    private uint boneIndexBuffer, boneWeightBuffer;
     private readonly Vector4[] rows = new Vector4[MaxBones * 3];
 
     private static readonly System.Collections.Generic.Dictionary<uint, int> BoneLocations = new();
@@ -103,8 +107,9 @@ internal sealed class SkinnedModel
         for (int i = 0; i < source.Indices.Length; i++) idx[i] = (ushort)source.Indices[i];
 
         Raylib.UploadMesh(ref mesh, false);
-        AttachBones(ref mesh, n);
-        return new SkinnedModel { Mesh = mesh, BoneCount = boneCount };
+        var uploaded = new SkinnedModel { Mesh = mesh, BoneCount = boneCount };
+        uploaded.AttachBones(n);
+        return uploaded;
     }
 
     // Where raylib binds the vertexBoneIndices and vertexBoneWeights attributes in every shader it loads
@@ -114,21 +119,21 @@ internal sealed class SkinnedModel
     /// <summary>
     /// Puts the bone indices and weights in buffers on the mesh's vertex array. The raylib this game ships with
     /// binds those attributes in its shaders but doesn't upload them in UploadMesh, so without this every vertex
-    /// reads the default values and follows a single bone. UnloadMesh frees the buffers with the rest.
+    /// reads the default values and follows a single bone. Their ids are kept here and never in the mesh's own
+    /// list: that list holds seven (raylib's <c>MAX_MESH_VERTEX_BUFFERS</c> with its GPU skinning compiled out),
+    /// so an eighth and a ninth were written past its end, and UnloadMesh, which frees seven, left both buffers
+    /// behind for every model let go.
     /// </summary>
-    private static unsafe void AttachBones(ref Mesh mesh, int vertexCount)
+    private unsafe void AttachBones(int vertexCount)
     {
-        if (mesh.VboId[BoneIndexLocation] != 0 && mesh.VboId[BoneWeightLocation] != 0) return;
-        Rlgl.EnableVertexArray(mesh.VaoId);
-        uint indices = Rlgl.LoadVertexBuffer(mesh.BoneIndices, vertexCount * 4, false);
+        Rlgl.EnableVertexArray(Mesh.VaoId);
+        boneIndexBuffer = Rlgl.LoadVertexBuffer(Mesh.BoneIndices, vertexCount * 4, false);
         Rlgl.SetVertexAttribute(BoneIndexLocation, 4, GlUnsignedByte, false, 0, 0);
         Rlgl.EnableVertexAttribute(BoneIndexLocation);
-        uint weights = Rlgl.LoadVertexBuffer(mesh.BoneWeights, vertexCount * 4 * sizeof(float), false);
+        boneWeightBuffer = Rlgl.LoadVertexBuffer(Mesh.BoneWeights, vertexCount * 4 * sizeof(float), false);
         Rlgl.SetVertexAttribute(BoneWeightLocation, 4, GlFloat, false, 0, 0);
         Rlgl.EnableVertexAttribute(BoneWeightLocation);
         Rlgl.DisableVertexArray();
-        mesh.VboId[BoneIndexLocation] = indices;
-        mesh.VboId[BoneWeightLocation] = weights;
     }
 
     /// <summary>
@@ -158,5 +163,12 @@ internal sealed class SkinnedModel
         FrameProfiler.Count(Mesh.TriangleCount);
     }
 
-    public void Unload() => Raylib.UnloadMesh(Mesh);
+    /// <summary>Frees the mesh and its buffers, the two of the bones among them. Call on the main thread, once.</summary>
+    public void Unload()
+    {
+        if (boneIndexBuffer != 0) Rlgl.UnloadVertexBuffer(boneIndexBuffer);
+        if (boneWeightBuffer != 0) Rlgl.UnloadVertexBuffer(boneWeightBuffer);
+        boneIndexBuffer = boneWeightBuffer = 0;
+        Raylib.UnloadMesh(Mesh);
+    }
 }

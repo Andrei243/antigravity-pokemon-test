@@ -41,6 +41,7 @@
 //   dotnet run --project tools/ShotHarness -- <output dir> amity              Amity Square's walk: the gate, the counter's check for a team that may not and one that may, a Pokémon let out and the walk with it through every turn, its mood, a find, the ruins' huts, the man of the park, the goodbye, every species behind the player, a game saved on a walk taken up again
 //   dotnet run --project tools/ShotHarness -- <output dir> saves              no shots: saves of today's game (a new game, past the first chapter, surfing, on a bridge, a Safari Game, the girl, the modern rules) into <output dir>/saves, for the tests' corpus
 //   dotnet run --project tools/ShotHarness -- <output dir> crash [thread]     the crash handler at work: an exception thrown on purpose in the game's own guarded loop (or on another thread, which ends the run), the report, the crash save and the log it leaves in <output dir>, the next start's notice on the title
+//   dotnet run --project tools/ShotHarness -- <output dir> fulldex            the game with every species in it: the start's steps, the National Pokédex walked whole, the boxes full, a save of it all, forty battles, with the memory and what is held after each
 //   dotnet run --project tools/ShotHarness -- <dir> diff <other dir>          two runs' shots compared pixel by pixel (exits 1 if any differ)
 //   dotnet run --project tools/ShotHarness -- <dir> ab <before> <after> <before again>   three runs of `profile` compared (tools/dev/ab.sh)
 //   dotnet run --project tools/ShotHarness -- <dir> contact [prefix]          every shot of a run on sheets of twenty
@@ -113,6 +114,7 @@ if (mode == "profile") h.ProfileMode();
 if (h.Run("times")) h.TimesMode();
 if (h.Run("pokemon")) h.PokemonMode();
 if (mode == "dex") h.DexMode();
+if (mode == "fulldex") h.FullDexMode();
 if (mode == "versus") h.VersusMode();
 if (mode == "conditions") h.ConditionsMode();
 if (h.Run("sheets")) h.SheetsMode();

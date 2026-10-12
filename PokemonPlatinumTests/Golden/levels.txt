@@ -1,0 +1,808 @@
+# The levels of every place with wild Pokémon or trainers in it (plan 03 · D13), made by GoldenLevelTests. Rewritten by: GOLDEN=accept dotnet test PokemonPlatinumTests --filter Golden
+# A place's wild Pokémon by how they are met, then its trainers with the levels of their teams, each trainer by id with the highest of its own.
+=== CafeCabin
+Café Cabin
+trainers 3, 25: collector_edwin 25, collector_fernando 25, waitress_kati 25
+=== CanalaveGym
+Canalave Gym
+trainers 7, 34-40: ace_trainer_breanna 38, ace_trainer_cesar 40, black_belt_david 37, black_belt_ricky 38, worker_gary 37, worker_gerardo 35, worker_jackson 34
+=== EternaGym
+Eterna Gym
+trainers 3, 15-19: aroma_lady_angela 19, aroma_lady_jenna 17, lass_caroline 17
+=== GalacticHQ1F
+Galactic HQ
+trainers 2, 40-41: galactic_grunt_galactic_hq_1f 41, scientist_fredrick 40
+=== GalacticHQ2F
+Galactic HQ
+trainers 4, 37-42: galactic_grunt_galactic_hq_2f_1 39, galactic_grunt_galactic_hq_2f_2 40, galactic_grunt_galactic_hq_2f_3 39, scientist_darrius 42
+=== GalacticHQ3F
+Galactic HQ
+trainers 4, 38-41: galactic_grunt_galactic_hq_3f_1 41, galactic_grunt_galactic_hq_3f_2 39, galactic_grunt_galactic_hq_3f_3 40, galactic_grunt_galactic_hq_3f_4 38
+=== GalacticHQB2F
+Galactic HQ
+trainers 2, 38-41: galactic_grunt_galactic_hq_b2f_1 41, galactic_grunt_galactic_hq_b2f_2 40
+=== HearthomeGymRoom1
+Hearthome Gym
+trainers 2, 20-23: lass_molly 23, youngster_donny 22
+=== HearthomeGymRoom2
+Hearthome Gym
+trainers 4, 21-24: ace_trainer_allen 24, ace_trainer_catherine 24, school_kid_chance 23, school_kid_mackenzie 21
+=== LostTower1F
+Lost Tower
+grass 17-20
+=== LostTower2F
+Lost Tower
+grass 17-20
+trainers 1, 19-21: youngster_oliver 21
+=== LostTower3F
+Lost Tower
+grass 18-21
+trainers 2, 19-23: pokefan_leonard 22, roughneck_kirby 23
+=== LostTower4F
+Lost Tower
+grass 18-21
+trainers 3, 23: belle_and_pa_beth_and_bob 23, pokefan_rebekah 23, young_couple_mike_and_nat 23
+=== LostTower5F
+Lost Tower
+grass 19-22
+=== OldChateau
+Old Chateau
+grass 14-17
+=== OldChateauBackEastRoom
+Old Chateau
+grass 14-17
+=== OldChateauBackMiddleEastRoom
+Old Chateau
+grass 14-17
+=== OldChateauBackMiddleRoom
+Old Chateau
+grass 14-17
+=== OldChateauBackMiddleWestRoom
+Old Chateau
+grass 14-17
+=== OldChateauBackWestRoom
+Old Chateau
+grass 14-17
+=== OldChateauCorridor
+Old Chateau
+grass 14-17
+=== OldChateauDiningArea
+Old Chateau
+grass 14-17
+=== OldChateauEastRoom
+Old Chateau
+grass 14-17
+=== OldChateauWestRoom
+Old Chateau
+grass 14-17
+=== OreburghGym
+Oreburgh Gym
+trainers 2, 9-11: youngster_darius 9, youngster_jonathon 11
+=== PastoriaGym
+Pastoria Gym
+trainers 6, 27-33: fisherman_erick 31, fisherman_walter 33, sailor_damian 31, sailor_samson 31, tuber_caitlyn 31, tuber_jacky 32
+=== PokemonMansion
+Pokémon Mansion
+trainers 3, 25-35: lady_celeste 35, maid_belinda 25, rich_boy_liam 35
+=== Route222WestHouse
+Pikachu Fan Club
+trainers 1, 42: poke_kid_janet 42
+=== SevenStarsRestaurant
+Seven Stars Restaurant
+trainers 18, 24-31: aroma_lady_alison 28, artist_ismael 28, beauty_gabriella 26, beauty_harley 26, breeder_kaylee 26, cameraman_darryl 26, collector_eugene 28, gentleman_leonardo 27, lady_kylie 26, lass_blythe 25, pi_kendrick 31, pokefan_meredith 26, reporter_valerie 26, rich_boy_roman 26, school_kid_esteban 26, scientist_emilio 27, socialite_rebecca 27, veteran_emanuel 28
+=== SnowpointGym
+Snowpoint Gym
+trainers 6, 39-44: ace_trainer_alicia 43, ace_trainer_anton 44, ace_trainer_brenna 41, ace_trainer_isaiah 44, ace_trainer_savannah 42, ace_trainer_sergio 42
+=== SunyshoreGym
+Sunyshore Gym
+trainers 1, 47: school_kid_tiera 47
+=== SunyshoreGymRoom2
+Sunyshore Gym
+trainers 3, 42-47: guitarist_jerry 44, poke_kid_meghan 42, school_kid_forrest 47
+=== SunyshoreGymRoom3
+Sunyshore Gym
+trainers 4, 45-48: ace_trainer_destiny 48, ace_trainer_zachery 48, guitarist_lonnie 47, guitarist_preston 45
+=== TeamGalacticEternaBuilding1F
+Team Galactic Eterna Building
+trainers 2, 16-18: galactic_grunt_team_galactic_eterna_building_1f_1 17, galactic_grunt_team_galactic_eterna_building_1f_2 18
+=== TeamGalacticEternaBuilding2F
+Team Galactic Eterna Building
+trainers 2, 19: galactic_grunt_team_galactic_eterna_building_2f_1 19, galactic_grunt_team_galactic_eterna_building_2f_2 19
+=== TeamGalacticEternaBuilding3F
+Team Galactic Eterna Building
+trainers 2, 16-20: galactic_grunt_team_galactic_eterna_building_3f 16, scientist_travon 20
+=== ValleyWindworksBuilding
+Valley Windworks
+trainers 2, 11-13: galactic_grunt_valley_windworks_2 13, galactic_grunt_valley_windworks_3 11
+=== VeilstoneGym
+Veilstone Gym
+trainers 4, 23-28: black_belt_colby 27, black_belt_darren 25, black_belt_jeffery 28, black_belt_rafael 26
+=== acuity_lakefront
+Acuity Lakefront
+grass 32-35
+=== canalave_city
+Canalave City
+surf 20-40
+old rod 3-15
+good rod 10-25
+super rod 20-55
+=== celestic_town
+Celestic Town
+surf 20-40
+old rod 3-15
+good rod 10-35
+super rod 30-55
+=== eterna_city
+Eterna City
+surf 20-40
+old rod 3-15
+good rod 10-25
+super rod 30-55
+=== eterna_forest
+Eterna Forest
+grass 10-14
+trainers 8, 11-17: bug_catcher_donald 14, bug_catcher_jack 15, bug_catcher_phillip 15, lass_briana 16, psychic_elijah 17, psychic_kody 17, psychic_lindsey 17, psychic_rachael 17
+=== fight_area
+Fight Area
+trainers 1, 56-58: elite_four_flint_fight_area 58
+=== fuego_ironworks_building
+Fuego Ironworks
+trainers 3, 32-35: worker_conrad 35, worker_dillan 33, worker_holden 32
+=== fuego_ironworks_outside
+Fuego Ironworks
+grass 28-31
+surf 20-40
+old rod 3-15
+good rod 10-25
+super rod 20-55
+=== great_marsh_1
+Great Marsh
+grass 28-31
+surf 20-40
+old rod 3-15
+good rod 10-25
+super rod 20-55
+=== great_marsh_2
+Great Marsh
+grass 28-31
+surf 20-40
+old rod 3-15
+good rod 10-25
+super rod 20-55
+=== great_marsh_3
+Great Marsh
+grass 27-30
+surf 20-40
+old rod 3-15
+good rod 10-25
+super rod 20-55
+=== great_marsh_4
+Great Marsh
+grass 27-30
+surf 20-40
+old rod 3-15
+good rod 10-25
+super rod 20-55
+=== great_marsh_5
+Great Marsh
+grass 26-29
+surf 20-40
+old rod 3-15
+good rod 10-25
+super rod 20-55
+=== great_marsh_6
+Great Marsh
+grass 26-29
+surf 20-40
+old rod 3-15
+good rod 10-25
+super rod 20-55
+=== iron_island
+Iron Island
+surf 20-40
+old rod 3-15
+good rod 10-25
+super rod 20-55
+=== iron_island_1f
+Iron Island
+grass 30-33
+=== iron_island_b1f_left_room
+Iron Island
+grass 30-33
+trainers 1, 34-36: camper_lawrence 36
+=== iron_island_b1f_right_room
+Iron Island
+grass 30-33
+trainers 1, 37: picnicker_summer 37
+=== iron_island_b2f_left_room
+Iron Island
+grass 31-35
+trainers 10, 33-38: ace_trainer_brenda 38, ace_trainer_jonah 38, battle_girl_tyler 38, black_belt_kendal 38, galactic_grunt_iron_island_1 34, galactic_grunt_iron_island_2 34, hiker_damon 35, hiker_maurice 35, worker_brendon 36, worker_quentin 34
+=== iron_island_b2f_right_room
+Iron Island
+grass 31-35
+trainers 2, 34-37: worker_braden 37, worker_noel 36
+=== iron_island_b3f
+Iron Island
+grass 31-35
+=== jubilife_city
+Jubilife City
+trainers 2, 11: galactic_grunt_jubilife_city_1 11, galactic_grunt_jubilife_city_2 11
+=== lake_acuity
+Lake Acuity
+grass 38-41
+surf 20-40
+old rod 3-15
+good rod 10-35
+super rod 30-55
+=== lake_valor
+Lake Valor
+grass 38-41
+surf 20-40
+old rod 3-15
+good rod 10-35
+super rod 30-55
+=== lake_valor_drained
+Lake Valor
+trainers 3, 33-37: galactic_grunt_lake_valor_1 37, galactic_grunt_lake_valor_2 33, galactic_grunt_lake_valor_3 35
+=== lake_verity
+Lake Verity
+grass 2-4
+surf 20-40
+old rod 3-15
+good rod 10-35
+super rod 30-55
+trainers 4, 33-37: galactic_grunt_lake_verity_1 37, galactic_grunt_lake_verity_2 36, galactic_grunt_lake_verity_3 35, galactic_grunt_lake_verity_4 36
+=== lake_verity_low_water
+Lake Verity
+grass 2-4
+surf 20-40
+old rod 3-15
+good rod 10-35
+super rod 30-55
+=== mt_coronet_1f_north_room_1
+Mt. Coronet
+grass 13-16
+=== mt_coronet_1f_north_room_2
+Mt. Coronet
+grass 32-35
+=== mt_coronet_1f_south
+Mt. Coronet
+grass 17-20
+surf 20-40
+old rod 3-15
+good rod 10-25
+super rod 20-55
+=== mt_coronet_1f_tunnel_room
+Mt. Coronet
+grass 36-39
+trainers 3, 38-43: galactic_grunt_mt_coronet_tunnel_room_1 42, galactic_grunt_mt_coronet_tunnel_room_2 43, galactic_grunt_mt_coronet_tunnel_room_3 42
+=== mt_coronet_2f
+Mt. Coronet
+grass 36-39
+=== mt_coronet_3f
+Mt. Coronet
+grass 36-39
+trainers 2, 43: galactic_grunt_mt_coronet_3f_1 43, galactic_grunt_mt_coronet_3f_2 43
+=== mt_coronet_4f_room_3
+Mt. Coronet
+grass 36-39
+=== mt_coronet_4f_rooms_1_and_2
+Mt. Coronet
+grass 36-39
+surf 20-40
+old rod 3-15
+good rod 10-25
+super rod 15-55
+trainers 2, 40-42: galactic_grunt_mt_coronet_4f_1 40, galactic_grunt_mt_coronet_4f_2 42
+=== mt_coronet_5f
+Mt. Coronet
+grass 36-40
+trainers 2, 40-42: galactic_grunt_mt_coronet_5f_1 41, galactic_grunt_mt_coronet_5f_2 42
+=== mt_coronet_6f
+Mt. Coronet
+grass 36-41
+trainers 1, 39-41: galactic_grunt_mt_coronet_6f 41
+=== mt_coronet_b1f
+Mt. Coronet
+grass 32-35
+surf 20-40
+old rod 3-15
+good rod 10-25
+super rod 30-55
+=== mt_coronet_outside_north
+Mt. Coronet
+grass 36-40
+=== mt_coronet_outside_south
+Mt. Coronet
+grass 36-40
+=== oreburgh_gate_1f
+Oreburgh Gate
+grass 5-8
+trainers 2, 7-9: camper_curtis 7, picnicker_diana 9
+=== oreburgh_gate_b1f
+Oreburgh Gate
+grass 6-10
+surf 20-40
+old rod 3-15
+good rod 10-25
+super rod 30-55
+trainers 1, 34: veteran_grant 34
+=== oreburgh_mine_b1f
+Oreburgh Mine
+grass 4-8
+=== oreburgh_mine_b2f
+Oreburgh Mine
+grass 5-9
+trainers 2, 6-9: worker_colin 8, worker_mason 9
+=== pastoria_city
+Pastoria City
+surf 20-40
+old rod 3-15
+good rod 10-25
+super rod 30-55
+=== pokemon_league
+Pokémon League
+surf 30-50
+old rod 3-15
+good rod 10-25
+super rod 20-55
+=== ravaged_path
+Ravaged Path
+grass 3-6
+surf 20-40
+old rod 3-15
+good rod 10-25
+super rod 30-55
+=== resort_area
+Resort Area
+surf 35-55
+old rod 3-15
+good rod 10-35
+super rod 1-100
+=== route_201
+Route 201
+grass 2-3
+=== route_202
+Route 202
+grass 2-4
+trainers 3, 5: lass_natalie 5, youngster_logan 5, youngster_tristan 5
+=== route_203
+Route 203
+grass 4-7
+surf 20-40
+old rod 3-15
+good rod 10-25
+super rod 30-55
+trainers 5, 4-8: lass_kaitlin 4, lass_madeline 8, youngster_dallas 8, youngster_michael 7, youngster_sebastian 8
+=== route_204_north
+Route 204
+grass 8-11
+surf 20-40
+old rod 3-15
+good rod 10-25
+super rod 30-55
+trainers 3, 9-11: aroma_lady_taylor 11, bug_catcher_brandon 11, twins_liv_and_liz 11
+=== route_204_south
+Route 204
+grass 3-6
+surf 20-40
+old rod 3-15
+good rod 10-25
+super rod 30-55
+trainers 3, 7-8: lass_samantha 7, lass_sarah 7, youngster_tyler 8
+=== route_205_north
+Route 205
+grass 12-15
+surf 20-40
+old rod 3-15
+good rod 10-25
+super rod 30-55
+trainers 3, 8-17: fisherman_andrew 16, fisherman_joseph 17, fisherman_zachary 16
+=== route_205_south
+Route 205
+grass 9-12
+surf 20-40
+old rod 3-15
+good rod 10-25
+super rod 20-55
+trainers 8, 10-15: aroma_lady_elizabeth 14, battle_girl_kelsey 15, camper_jacob 14, camper_zackary 14, hiker_daniel 12, hiker_nicholas 14, picnicker_karina 14, picnicker_siena 12
+=== route_206
+Route 206
+grass 16-19
+trainers 9, 17-21: cyclist_axel 21, cyclist_james 21, cyclist_john 20, cyclist_kayla 21, cyclist_megan 21, cyclist_nicole 19, cyclist_rachel 20, cyclist_ryan 21, hiker_theodore 20
+=== route_207
+Route 207
+grass 5-8
+trainers 6, 17-22: battle_girl_helen 21, camper_anthony 22, hiker_justin 20, hiker_kevin 19, picnicker_lauren 22, youngster_austin 21
+=== route_208
+Route 208
+grass 17-20
+surf 20-40
+old rod 3-15
+good rod 10-25
+super rod 30-55
+trainers 7, 18-40: aroma_lady_hannah 22, artist_william 20, black_belt_kyle 23, fisherman_cody 33, hiker_alexander 40, hiker_jonathan 22, hiker_robert 22
+=== route_209
+Route 209
+grass 17-20
+surf 20-40
+old rod 3-15
+good rod 10-25
+super rod 30-55
+trainers 8, 20-23: breeder_albert 20, breeder_jennifer 20, cowgirl_shelley 23, jogger_raul 23, jogger_richard 23, poke_kid_danielle 22, twins_emma_and_lil 22, young_couple_ty_and_sue 23
+=== route_210_north
+Route 210
+grass 27-30
+surf 20-40
+old rod 3-15
+good rod 10-35
+super rod 30-55
+trainers 10, 29-36: ace_trainer_alyssa 33, ace_trainer_ernest 34, bird_keeper_brianna 33, black_belt_adam 34, double_team_zac_and_jen 36, dragon_tamer_patrick 34, ninja_boy_davido 33, ninja_boy_joel 29, ninja_boy_nathan 31, veteran_brian 32
+=== route_210_south
+Route 210
+grass 18-21
+trainers 9, 23-33: belle_and_pa_ava_and_matt 24, breeder_amber 23, breeder_kahlil 23, jogger_wyatt 24, ninja_boy_brennan 32, ninja_boy_bruce 33, ninja_boy_fabian 31, rancher_marco 24, twins_teri_and_tia 23
+=== route_211_east
+Route 211
+grass 27-30
+trainers 4, 28-34: bird_keeper_katherine 34, black_belt_sean 31, ninja_boy_nick 32, ruin_maniac_harry 32
+=== route_211_west
+Route 211
+grass 13-16
+trainers 3, 14-18: bird_keeper_alexandra 17, hiker_louis 18, ninja_boy_zach 14
+=== route_212_north
+Route 212
+grass 21-24
+surf 20-40
+old rod 3-15
+good rod 10-25
+super rod 30-55
+trainers 8, 23-27: gentleman_jeremy 27, lady_melissa 27, policeman_alex 25, policeman_bobby 26, policeman_caleb 27, policeman_dylan 26, rich_boy_jason 27, socialite_reina 27
+=== route_212_south
+Route 212
+grass 23-26
+surf 20-40
+old rod 3-15
+good rod 10-25
+super rod 30-55
+trainers 12, 24-31: collector_dean 27, fisherman_josh 27, fisherman_juan 29, fisherman_travis 26, parasol_lady_alexa 27, parasol_lady_sabrina 28, policeman_danny 28, ranger_allison 29, ranger_jeffrey 31, ranger_taylor 30, scientist_shaun 30, scientist_stefano 30
+=== route_213
+Route 213
+grass 23-26
+surf 20-40
+old rod 3-15
+good rod 10-25
+super rod 30-55
+trainers 9, 25-35: beauty_cyndy 29, fisherman_kenneth 28, sailor_paul 34, swimmer_evan 34, swimmer_haley 35, swimmer_mary 33, swimmer_sheltin 32, tuber_chelsea 28, tuber_jared 26
+=== route_214
+Route 214
+grass 21-24
+surf 20-40
+old rod 3-15
+good rod 10-25
+super rod 30-55
+trainers 9, 21-30: beauty_devon 24, collector_brady 21, collector_douglas 24, collector_jamal 27, pi_carlos 30, psychic_abigail 27, psychic_mitchell 26, ruin_maniac_bryan 26, ruin_maniac_ronald 27
+=== route_215
+Route 215
+grass 19-22
+trainers 8, 21-26: ace_trainer_dennis 25, ace_trainer_maya 25, black_belt_derek 26, black_belt_gregory 23, black_belt_nathaniel 24, jogger_craig 24, jogger_scott 25, ruin_maniac_calvin 23
+=== route_216
+Route 216
+grass 32-35
+trainers 9, 36-42: ace_trainer_blake 40, ace_trainer_garrett 39, ace_trainer_laura 42, ace_trainer_maria 39, black_belt_philip 40, skier_andrea 39, skier_bradley 36, skier_edward 39, skier_kaitlyn 38
+=== route_217
+Route 217
+grass 32-35
+trainers 9, 35-40: ace_trainer_dalton 40, ace_trainer_olivia 39, black_belt_luke 37, ninja_boy_ethan 37, ninja_boy_matthew 39, skier_bjorn 38, skier_lexie 37, skier_madison 39, skier_shawn 37
+=== route_218
+Route 218
+grass 28-31
+surf 20-40
+old rod 3-15
+good rod 10-25
+super rod 30-55
+trainers 4, 29-34: fisherman_luc 31, fisherman_miguel 33, guitarist_tony 33, sailor_skyler 34
+=== route_219
+Route 219
+surf 20-40
+old rod 3-15
+good rod 10-35
+super rod 30-55
+trainers 2, 31-33: tuber_mariel 33, tuber_trenton 33
+=== route_220
+Route 220
+surf 20-40
+old rod 3-15
+good rod 10-35
+super rod 20-55
+trainers 7, 30-35: swimmer_adrian 34, swimmer_claire 35, swimmer_erica 35, swimmer_erik 35, swimmer_jessica 33, swimmer_katelyn 32, swimmer_vincent 33
+=== route_221
+Route 221
+grass 28-31
+surf 20-40
+old rod 3-15
+good rod 10-35
+super rod 30-55
+trainers 6, 30-36: ace_trainer_jake 36, ace_trainer_shannon 35, collector_ivan 35, fisherman_cory 34, swimmer_dillon 33, swimmer_vanessa 35
+=== route_222
+Route 222
+grass 38-41
+surf 30-50
+old rod 3-15
+good rod 10-25
+super rod 30-55
+trainers 11, 40-45: beauty_nicola 45, fisherman_alec 45, fisherman_brett 43, fisherman_cole 43, fisherman_george 42, policeman_thomas 43, rich_boy_trey 45, sailor_luther 43, sailor_marc 45, tuber_conner 44, tuber_holly 44
+=== route_223
+Route 223
+surf 30-50
+old rod 3-15
+good rod 10-35
+super rod 20-55
+trainers 13, 40-45: sailor_zachariah 44, swimmer_aubree 43, swimmer_cassandra 44, swimmer_colton 44, swimmer_crystal 44, swimmer_francisco 45, swimmer_gabrielle 45, swimmer_miranda 45, swimmer_oscar 43, swimmer_paige 43, swimmer_ricardo 45, swimmer_troy 45, swimmer_wesley 43
+=== route_224
+Route 224
+grass 49-52
+surf 35-55
+old rod 3-15
+good rod 10-25
+super rod 20-55
+trainers 8, 53-60: ace_trainer_jamie 60, ace_trainer_ruben 57, black_belt_carl 59, dragon_tamer_hayden 56, psychic_brittney 57, psychic_maxwell 58, ruin_maniac_larry 57, veteran_armando 56
+=== route_225
+Route 225
+grass 47-50
+surf 35-55
+old rod 3-15
+good rod 10-25
+super rod 30-55
+trainers 8, 51-56: ace_trainer_deanna 56, ace_trainer_quinn 56, ace_trainer_rodolfo 56, bird_keeper_audrey 55, dragon_tamer_geoffrey 55, psychic_daisy 56, ranger_ashlee 55, ranger_dwayne 54
+=== route_226
+Route 226
+grass 47-50
+surf 35-55
+old rod 3-15
+good rod 10-25
+super rod 20-55
+trainers 5, 53-59: ace_trainer_graham 59, bird_keeper_geneva 57, dragon_tamer_stanley 57, swimmer_lydia 54, swimmer_wade 56
+=== route_227
+Route 227
+grass 51-54
+surf 35-55
+old rod 3-15
+good rod 10-25
+super rod 30-55
+trainers 4, 56-61: ace_trainer_mikayla 56, ace_trainer_saul 61, black_belt_griffin 58, ranger_felicia 59
+=== route_228
+Route 228
+grass 49-52
+surf 35-55
+old rod 3-15
+good rod 10-35
+super rod 30-55
+trainers 8, 54-58: ace_trainer_jose 57, ace_trainer_meagan 58, ace_trainer_moira 57, black_belt_davon 57, dragon_tamer_keegan 57, psychic_corbin 56, ranger_krista 57, ranger_kyler 58
+=== route_229
+Route 229
+grass 47-50
+surf 35-55
+old rod 3-15
+good rod 10-25
+super rod 30-55
+trainers 4, 54-56: ace_trainer_dana 56, ace_trainer_felix 56, ace_trainer_sandra 55, ranger_deshawn 54
+=== route_230
+Route 230
+grass 47-50
+surf 35-55
+old rod 3-15
+good rod 10-25
+super rod 20-55
+trainers 6, 51-54: swimmer_glenn 53, swimmer_joanna 54, swimmer_kurt 54, swimmer_mallory 54, swimmer_sam 53, swimmer_sophia 53
+=== ruin_maniac_cave_short
+Ruin Maniac Cave
+grass 21-24
+=== sendoff_spring
+Sendoff Spring
+grass 37-40
+surf 20-40
+old rod 3-15
+good rod 10-25
+super rod 30-55
+=== snowpoint_temple_1f
+Snowpoint Temple
+grass 47-50
+=== snowpoint_temple_b1f
+Snowpoint Temple
+grass 47-50
+=== snowpoint_temple_b2f
+Snowpoint Temple
+grass 47-50
+=== snowpoint_temple_b3f
+Snowpoint Temple
+grass 47-50
+=== snowpoint_temple_b4f
+Snowpoint Temple
+grass 47-51
+=== snowpoint_temple_b5f
+Snowpoint Temple
+grass 47-51
+=== solaceon_ruins_room_1_northwest_dead_end
+Solaceon Ruins
+grass 20-30
+=== solaceon_ruins_room_1_southeast_dead_end
+Solaceon Ruins
+grass 20-30
+=== solaceon_ruins_room_2
+Solaceon Ruins
+grass 20-30
+=== solaceon_ruins_room_2_northeast_dead_end
+Solaceon Ruins
+grass 20-30
+=== solaceon_ruins_room_2_southeast_dead_end
+Solaceon Ruins
+grass 20-30
+=== solaceon_ruins_room_3
+Solaceon Ruins
+grass 20-30
+trainers 1, 19-23: ruin_maniac_karl 23
+=== solaceon_ruins_room_3_northwest_dead_end
+Solaceon Ruins
+grass 20-30
+=== solaceon_ruins_room_3_southwest_dead_end
+Solaceon Ruins
+grass 20-30
+=== solaceon_ruins_room_4
+Solaceon Ruins
+grass 20-30
+=== solaceon_ruins_room_4_southeast_dead_end
+Solaceon Ruins
+grass 20-30
+=== solaceon_ruins_room_5
+Solaceon Ruins
+grass 20-30
+=== solaceon_ruins_room_5_southeast_deadend
+Solaceon Ruins
+grass 20-30
+=== solaceon_ruins_room_5_southwest_dead_end
+Solaceon Ruins
+grass 20-30
+=== solaceon_ruins_room_6
+Solaceon Ruins
+grass 20-30
+=== solaceon_ruins_room_6_northwest_dead_end
+Solaceon Ruins
+grass 20-30
+=== solaceon_ruins_room_6_southeast_dead_end
+Solaceon Ruins
+grass 20-30
+=== solaceon_ruins_room_7
+Solaceon Ruins
+grass 20-30
+=== spear_pillar
+Spear Pillar
+trainers 4, 39-46: commander_jupiter_spear_pillar 46, commander_mars_spear_pillar 46, galactic_grunt_spear_pillar_1 43, galactic_grunt_spear_pillar_2 41
+=== stark_mountain_outside
+Stark Mountain
+grass 51-54
+trainers 1, 60: dragon_tamer_darien 60
+=== stark_mountain_room_1
+Stark Mountain
+grass 51-54
+=== stark_mountain_room_2
+Stark Mountain
+grass 52-55
+trainers 16, 55-61: ace_trainer_abel 60, ace_trainer_jasmin 61, ace_trainer_kassandra 59, ace_trainer_keenan 59, ace_trainer_monique 59, ace_trainer_natasha 59, ace_trainer_skylar 59, ace_trainer_stefan 61, bird_keeper_krystal 59, black_belt_jarrett 60, black_belt_ray 58, dragon_tamer_drake 57, dragon_tamer_kenny 57, psychic_chelsey 59, psychic_sterling 59, veteran_harlan 59
+=== sunyshore_city
+Sunyshore City
+surf 30-50
+old rod 3-15
+good rod 10-25
+super rod 20-55
+=== trophy_garden
+Trophy Garden
+grass 21-24
+=== turnback_cave_pillar_1_room_1
+Turnback Cave
+grass 15-18
+=== turnback_cave_pillar_1_room_2
+Turnback Cave
+grass 15-18
+=== turnback_cave_pillar_1_room_3
+Turnback Cave
+grass 15-18
+=== turnback_cave_pillar_1_room_4
+Turnback Cave
+grass 15-18
+=== turnback_cave_pillar_1_room_5
+Turnback Cave
+grass 15-18
+=== turnback_cave_pillar_1_room_6
+Turnback Cave
+grass 15-18
+=== turnback_cave_pillar_2_room_1
+Turnback Cave
+grass 25-28
+=== turnback_cave_pillar_2_room_2
+Turnback Cave
+grass 25-28
+=== turnback_cave_pillar_2_room_3
+Turnback Cave
+grass 25-28
+=== turnback_cave_pillar_2_room_4
+Turnback Cave
+grass 25-28
+=== turnback_cave_pillar_2_room_5
+Turnback Cave
+grass 25-28
+=== turnback_cave_pillar_2_room_6
+Turnback Cave
+grass 25-28
+=== turnback_cave_pillar_3_room_1
+Turnback Cave
+grass 35-38
+=== turnback_cave_pillar_3_room_2
+Turnback Cave
+grass 35-38
+=== turnback_cave_pillar_3_room_3
+Turnback Cave
+grass 35-38
+=== turnback_cave_pillar_3_room_4
+Turnback Cave
+grass 35-38
+=== turnback_cave_pillar_3_room_5
+Turnback Cave
+grass 35-38
+=== twinleaf_town
+Twinleaf Town
+surf 20-40
+old rod 3-15
+good rod 10-35
+super rod 30-55
+=== valley_windworks_outside
+Valley Windworks
+grass 9-12
+surf 20-40
+old rod 3-15
+good rod 10-25
+super rod 20-55
+=== valor_lakefront
+Valor Lakefront
+grass 25-28
+=== veilstone_city
+Veilstone City
+trainers 2, 24-26: galactic_grunt_veilstone_city_1 26, galactic_grunt_veilstone_city_2 26
+=== victory_road_1f
+Victory Road
+grass 40-43
+trainers 6, 43-48: ace_trainer_mariah 48, bird_keeper_hana 47, black_belt_miles 48, dragon_tamer_clinton 47, psychic_bryce 46, veteran_edgar 46
+=== victory_road_1f_room_1
+Victory Road
+grass 47-50
+=== victory_road_1f_room_2
+Victory Road
+grass 47-50
+surf 35-55
+old rod 3-15
+good rod 10-25
+super rod 30-55
+trainers 14, 51-57: ace_trainer_arthur 55, ace_trainer_brandi 57, ace_trainer_clarice 56, ace_trainer_micah 56, bird_keeper_autumn 54, black_belt_eddie 55, black_belt_willie 54, dragon_tamer_joe 56, psychic_deandre 56, psychic_desiree 54, psychic_kendra 55, psychic_landon 55, veteran_brenden 54, veteran_terrell 55
+=== victory_road_1f_room_3
+Victory Road
+grass 47-50
+=== victory_road_2f
+Victory Road
+grass 41-44
+trainers 4, 45-50: ace_trainer_omar 48, ace_trainer_sydney 48, double_team_al_and_kay 50, veteran_clayton 47
+=== victory_road_b1f
+Victory Road
+grass 41-44
+surf 30-50
+old rod 3-15
+good rod 10-25
+super rod 30-55
+trainers 4, 44-50: ace_trainer_henry 48, double_team_jo_and_pat 50, dragon_tamer_ondrej 47, psychic_valencia 46
+=== wayward_cave_1f
+Wayward Cave
+grass 17-20
+trainers 10, 17-22: camper_diego 22, camper_parker 20, collector_terry 22, hiker_lorenzo 22, hiker_reginald 20, lass_cassidy 22, picnicker_ana 22, picnicker_tori 22, ruin_maniac_gerald 21, youngster_wayne 20
+=== wayward_cave_b1f
+Wayward Cave
+grass 17-20

@@ -983,6 +983,22 @@ public class Pokemon
         if (CurrentHP > 0) CurrentHP = Math.Clamp(CurrentHP + MaxHP - oldMaxHP, 1, MaxHP);
     }
 
+    /// <summary>
+    /// A new Pokémon met in a form of its species (plan 03 · D13): one of the species put into the form, knowing
+    /// what the form itself learns by its level where the form has a learnset of its own (a regional form, a cloak
+    /// of Wormadam's, a forme of Deoxys's). <see cref="ChangeForm"/> alone leaves a Pokémon the moves it had, which
+    /// is right for one that changes form and is how the original makes a trainer's (its form is set after its
+    /// moves): so nothing of Platinum's is made this way, and whatever brings a form with moves of its own into the
+    /// game (plan 03 · D12a's sources of forms, the later regions' plans) is.
+    /// </summary>
+    public static Pokemon InForm(PokemonSpecies species, string form, int level, Random? rng = null)
+    {
+        var pokemon = new Pokemon(species, level, rng);
+        pokemon.ChangeForm(form);
+        if (pokemon.FormData?.Learnset != null) pokemon.PopulateMovesForLevel();
+        return pokemon;
+    }
+
     private string? FormOfGender() => FormOfGender(Species, Gender);
 
     /// <summary>

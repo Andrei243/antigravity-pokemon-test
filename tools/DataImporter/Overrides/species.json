@@ -7,5 +7,24 @@
       { "method": "LevelDay", "targetSpecies": "Solgaleo", "level": 53 },
       { "method": "LevelNight", "targetSpecies": "Lunala", "level": 53 }
     ]
+  },
+  // PokeAPI's table gives Crabrawler nothing before level 5 in its newest game, where it starts with Vise Grip:
+  // one hatched at level 1 knew a Tackle it never learns (plan 03 · D13, the full-dex check)
+  "Crabrawler": {
+    "learnset": [
+      { "level": 1, "moveName": "Vise Grip" },
+      { "level": 5, "moveName": "Rock Smash" },
+      { "level": 9, "moveName": "Leer" },
+      { "level": 13, "moveName": "Bubble Beam" },
+      { "level": 17, "moveName": "Protect" },
+      { "level": 22, "moveName": "Brick Break" },
+      { "level": 25, "moveName": "Slam" },
+      { "level": 29, "moveName": "Payback" },
+      { "level": 33, "moveName": "Reversal" },
+      { "level": 37, "moveName": "Crabhammer" },
+      { "level": 42, "moveName": "Iron Defense" },
+      { "level": 45, "moveName": "Dynamic Punch" },
+      { "level": 49, "moveName": "Close Combat" }
+    ]
   }
 }

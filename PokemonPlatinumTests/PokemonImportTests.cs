@@ -348,6 +348,48 @@ public class PokemonImportTests
     }
 
     [Fact]
+    public void AModelBuiltOnlyForABakingIsGivenBackAndOneTheGameAskedForStays()
+    {
+        // Plan 03 · D13: a walk down the National Pokédex bakes a sprite of every species, each from a model nobody
+        // else wants. Kept, they came to gigabytes
+        static void WaitFor(string species)
+        {
+            var clock = System.Diagnostics.Stopwatch.StartNew();
+            while (clock.Elapsed.TotalSeconds < 60 && !PokemonModels.TryGet(species, out _)) System.Threading.Thread.Sleep(20);
+            Assert.True(PokemonModels.TryGet(species, out _), $"{species} was never built");
+        }
+
+        PokemonModels.Release("Weedle");
+        PokemonModels.Borrow("Weedle");
+        Assert.True(PokemonModels.IsBorrowed("Weedle"));
+        WaitFor("Weedle");
+        PokemonModels.Return("Weedle");
+        Assert.False(PokemonModels.TryGet("Weedle", out _));
+        Assert.False(PokemonModels.IsBorrowed("Weedle"));
+
+        // Asked for by the game while it is on loan, it is the game's and stays
+        PokemonModels.Borrow("Weedle");
+        PokemonModels.Request("Weedle");
+        Assert.False(PokemonModels.IsBorrowed("Weedle"));
+        WaitFor("Weedle");
+        PokemonModels.Return("Weedle");
+        Assert.True(PokemonModels.TryGet("Weedle", out _));
+
+        // One the game had already is never on loan, and giving back what wasn't borrowed lets nothing go
+        PokemonModels.Borrow("Weedle");
+        Assert.False(PokemonModels.IsBorrowed("Weedle"));
+        PokemonModels.Return("Weedle");
+        Assert.True(PokemonModels.TryGet("Weedle", out _));
+
+        // Let go between scenes, a loan is forgotten with the model
+        PokemonModels.Release("Weedle");
+        PokemonModels.Borrow("Weedle");
+        PokemonModels.Trim(Array.Empty<string>());
+        Assert.False(PokemonModels.IsBorrowed("Weedle"));
+        Assert.False(PokemonModels.TryGet("Weedle", out _));
+    }
+
+    [Fact]
     public void SpriteCachesFollowTheirModels()
     {
         PokemonModels.ForgetSignatures();
