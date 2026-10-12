@@ -6403,7 +6403,7 @@ log:
     + Fainted E0
   say Mudkip gained 187 EXP. Points!
   ExpGained Pokemon=mine#0 Mudkip Amount=187
-  LevelRose Pokemon=mine#0 Mudkip Level=14
+  LevelRose Pokemon=mine#0 Mudkip Level=14 Before=37/20/20/18/22/17 After=39/22/21/19/24/18
   say Mudkip grew to Lv. 14!
   Won
   say Lucas defeated Hiker Daniel!
@@ -9916,7 +9916,7 @@ log:
     + Fainted E0
   say Sharpedo gained 60 EXP. Points!
   ExpGained Pokemon=mine#1 Sharpedo Amount=60
-  LevelRose Pokemon=mine#1 Sharpedo Level=4
+  LevelRose Pokemon=mine#1 Sharpedo Level=4 Before=17/10/8/11/8/10 After=20/12/9/13/9/12
   say Sharpedo grew to Lv. 4!
   Won
   say Lucas defeated Waiter Mickey!
@@ -12553,7 +12553,7 @@ log:
     + Fainted E0
   say Electabuzz gained 520 EXP. Points!
   ExpGained Pokemon=mine#0 Electabuzz Amount=520
-  LevelRose Pokemon=mine#0 Electabuzz Level=20
+  LevelRose Pokemon=mine#0 Electabuzz Level=20 Before=55/41/27/49/38/50 After=58/43/29/52/39/52
   say Electabuzz grew to Lv. 20!
   say Ace Trainer Tester sent out Pikachu!
     + Seen Species=Pikachu

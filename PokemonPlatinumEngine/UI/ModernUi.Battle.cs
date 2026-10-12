@@ -32,6 +32,8 @@ internal static partial class ModernUi
         var active = battle.PlayerPokemon;
         var party = battle.PlayerParty;
         bool choosing = hud.MenuState is BattleMenuState.Main or BattleMenuState.Moves or BattleMenuState.SelectTarget;
+        // A level's panel stands where the player's HP box is, as a move to learn does (plan 08 · P5)
+        bool boxCovered = CoversPlayerBox(hud.MenuState) || (hud.LevelUp != null && hud.MenuState == BattleMenuState.Message);
         // The information panel dims the stage under the foes' boxes, which stay bright over it
         if (hud.MenuState == BattleMenuState.Info) Dim(sw, sh, 150);
 
@@ -44,7 +46,7 @@ internal static partial class ModernUi
                 float slide = BattleHUD.BoxSlide(anim, foe);
                 if (slide >= 0f) CompactBox(56 + slot * 40 - 720 * slide, 36 + slot * 118, foe, false, false, -0.2f, battle.ShowsCaughtMark(foe.Shown!));
             }
-            if (!CoversPlayerBox(hud.MenuState))
+            if (!boxCovered)
             {
                 for (int slot = 0; slot < 2; slot++)
                 {
@@ -61,7 +63,7 @@ internal static partial class ModernUi
             if (enemySlide >= 0f) EnemyBox(56 - 720 * enemySlide, 52, anim.Enemy, battle.EnemyParty, battle.ShowsCaughtMark(anim.Enemy.Shown!));
             float playerSlide = BattleHUD.BoxSlide(anim, anim.Player);
             // The team's cards cover the player's box while switching, and a question about a move to learn takes its place
-            if (playerSlide >= 0f && !CoversPlayerBox(hud.MenuState)) PlayerBox(1240 + 760 * playerSlide, 650, anim.Player);
+            if (playerSlide >= 0f && !boxCovered) PlayerBox(1240 + 760 * playerSlide, 650, anim.Player);
         }
 
         switch (hud.MenuState)
@@ -113,7 +115,57 @@ internal static partial class ModernUi
                 break;
             default:
                 MessageBox(new Rectangle(48, 858, 1824, 172), message, null, battle.CurrentSpeaker);
+                // A level's panel stands on the message box's right end, over the line that tells of the level (plan 08 · P5)
+                if (hud.LevelUp is { } level) LevelUp(48 + 1824, 858 - 22, level);
                 break;
+        }
+    }
+
+    // ------------------------------------------------------------------ the level-up panel
+
+    /// <summary>The level-up panel's size (style guide, "Battle panels", "A level").</summary>
+    public const float LevelUpWidth = 560, LevelUpHeight = 484;
+
+    /// <summary>The six stats as the level-up panel names them, in <see cref="LevelUpPanel.Order"/>: the first row is the most HP, not the HP left.</summary>
+    private static readonly string[] LevelUpNames = { "Max HP", "Attack", "Defense", "Sp. Atk", "Sp. Def", "Speed" };
+
+    /// <summary>
+    /// The level-up panel (plan 08 · P5; style guide, "Battle panels", "A level"), its right edge at
+    /// <paramref name="right"/> and its foot at <paramref name="foot"/>: whose level it is and the level reached,
+    /// then the six stats with what the level added to each (the first page) or as they now stand (the second).
+    /// A battle draws it over its message box and the bag over the team's cards.
+    /// </summary>
+    public static void LevelUp(float right, float foot, LevelUpPanel panel)
+    {
+        float slide = (1f - UiMotion.EaseOut(panel.Appear)) * 80f;
+        var r = new Rectangle(right - LevelUpWidth + slide, foot - LevelUpHeight, LevelUpWidth, LevelUpHeight);
+        Panel(r, 30);
+
+        // The head: its icon, its name and the level it reached; a long name is set smaller to keep clear of the level
+        var p = panel.Pokemon;
+        Portrait(new Vector2(r.X + 76, r.Y + 70), 44, p, 2, false);
+        float nameX = r.X + 140, size = 34;
+        float levelW = UiFonts.Measure(panel.Level.ToString(), 34, UiWeight.Black) + UiFonts.Measure("Lv", 34 * 0.62f, UiWeight.ExtraBold) + 4;
+        float room = r.X + r.Width - 40 - levelW - 16 - nameX - 34 * 0.9f;
+        float nameW = UiFonts.Measure(p.DisplayName, size, UiWeight.Black);
+        if (nameW > room) size = MathF.Floor(size * room / nameW);
+        NameWithGender(p, nameX, r.Y + 70, size);
+        Level(r.X + r.Width - 40, r.Y + 70, panel.Level, 34);
+        UiShapes.Fill(new Rectangle(r.X + 36, r.Y + 132, r.Width - 72, 3), 1.5f, Rule);
+
+        // The rows: a caption over the numbers says which page this is
+        bool gains = panel.Page == LevelUpPage.Gains;
+        string caption = gains ? "GAINED" : "NOW";
+        UiFonts.Draw(caption, r.X + r.Width - 44 - UiFonts.Measure(caption, 20, UiWeight.Black), r.Y + 148, 20, Muted, UiWeight.Black);
+        for (int i = 0; i < LevelUpPanel.Order.Count; i++)
+        {
+            var stat = LevelUpPanel.Order[i];
+            float cy = r.Y + 204 + i * 48;
+            UiFonts.DrawCentered(LevelUpNames[i], r.X + 44, cy, 30, Ink, UiWeight.ExtraBold);
+            int gain = panel.Gain(stat);
+            string number = !gains ? panel.Value(stat).ToString() : gain >= 0 ? $"+{gain}" : gain.ToString();
+            var color = !gains ? Ink : gain > 0 ? Green : gain < 0 ? Red : Muted;
+            UiFonts.DrawCentered(number, r.X + r.Width - 44 - UiFonts.Measure(number, 32, UiWeight.Black), cy, 32, color, UiWeight.Black);
         }
     }
 
