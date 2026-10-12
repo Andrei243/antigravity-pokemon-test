@@ -18,7 +18,7 @@ About 350 sittings are left, a dozen or so of them marked optional (Hisui and th
 | 04 · Graphics | everything | 0 | what G11 owes (the M6–M9 cities in `profile`) goes to 01 · M12 |
 | 05 · Sound and music | A1–A5, A7 | ~3 | A6 rolls on inside the sessions that open places and scenes |
 | 06 · Game mechanics | R1–R18 | ~14 | every one of Platinum's mechanics is in (2026-10-11); R19 to R30 are the later generations', and two sessions of our own were asked for on 2026-10-12 (Megas of our own, Mega Dynamax) |
-| 07 · Online | — | 8 | most of O2 and O3 came with plan 06; O8 optional |
+| 07 · Online | — | 8 | most of O2 came with plan 06; O3 became plan 28 (2026-10-12); O8 optional |
 | 08 · Platinum's details | P5, P6, P7, P12 | 15 | P3's met data and markings came with R12; P20–P23 (migration, the second slot) were dropped on 2026-10-12 |
 | 09 · Looks | L4, L11, L13 | 12 | |
 | 10 · Companions | F1 | 11 | F8 optional |
@@ -228,9 +228,9 @@ These are the plans the README put after Sinnoh's Hall of Fame, which has been i
   - V15, then V16 to V19 one after another (one pair of data files). V26.
   - Optional: V11, V14, V25.
 - **Online (07).**
-  - O3, in a wave when lane 3 is away from the battle's log.
+  - Plan 28 · I1, in a wave when lane 3 is away from the battle's log (it replaces O3); then I2, I3 (with 13 · V12's menu change, whichever is first) and I4. I5 may follow O6.
   - Then O1 (the core library split), alone like T11.
-  - Then O4; O5 and O6; O7. O8 is optional.
+  - Then O4; O5, and O6 after plan 28 · I4; O7. O8 is optional.
 - **Voice (26).**
   - V2 (NVorbis is allowed, 2026-10-12).
   - V3 writes the sample script (`docs/voice/samples.md`), the recording guide and the booth first. Then the user records, about twenty passages, and V3's trial chooses the cloning engine by ear. Then V4, V5, V6.
@@ -351,7 +351,7 @@ Where a default is given, the session goes ahead on it unless the user says othe
 | Which species get Megas of our own, and which Mega Dynamax, what it does and where it is handed over | the two new sessions of plan 06 | wait: a list is proposed to the user |
 | Whether the voices speak Romanian too | 26 · V3's trial and samples, V8 | English voices under Romanian text, until the user says |
 | Where the second slot's species go in Sinnoh, and what Pal Park's show draws from | 03 · D12a | D12a proposes both |
-| 07 · 1–4: who hosts, for whom | plan 07 from O1 | wait |
+| 07 · 1–4: who hosts, for whom | plan 07 from O1 | decided 2026-10-12: the user's own $5 server, link codes only, no accounts (friend codes by IP), plan 28 for the battles |
 | 27 · 1–6: the move to Unity | plan 27 | deferred to the end by the user (2026-10-08) |
 
 ## Stale lines found in the plans
@@ -382,7 +382,6 @@ Each plan's next session fixes its own.
   - R27 says 191 abilities (190).
   - R24–R26's "919 of 919".
   - The optional raids in R22 and R23 are also 23 · Z10's and Z15's.
-- **07**: "Where we are" is wholly stale, and O2 and O3 are mostly done.
 - **08**
   - P3's fields exist (R12).
   - P7 counts 30 overlays (now 40).
