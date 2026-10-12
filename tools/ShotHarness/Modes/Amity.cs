@@ -314,8 +314,7 @@ partial class Harness
         Walk(Direction.Right, 2); Settle();
         Shot("am71_and_walks_on");
         Console.WriteLine($"and walks on: {Tell()}");
-        File.Delete("savegame.json");
-        File.Delete(SaveManager.BackupOf("savegame.json"));
+        game.DeleteSave();
 
         void FaceUp() { game.Player.Facing = Direction.Up; Frames(4); }
         static Direction ScriptWay((int X, int Y) from, (int X, int Y) to) =>

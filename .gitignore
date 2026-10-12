@@ -24,6 +24,17 @@ log.1.txt
 savegame.crash.json
 savegame.crash.bak
 
+# The slots a game is saved in where the saves are kept beside the game, a developer's among them (plan 12 · Q2),
+# with what a save and the old save's move leave for a moment, the old save's backup, and the marker that keeps them here
+save[1-3].json
+save[1-3].bak
+save[1-3].json.tmp
+autosave.json
+savegame.bak
+savegame.json.tmp
+savegame.moving
+portable.txt
+
 # Hand-made art that replaces generated art (plan 04: overrides/sprites, overrides/models)
 overrides/
 

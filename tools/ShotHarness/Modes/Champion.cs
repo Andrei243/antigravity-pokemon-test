@@ -256,8 +256,8 @@ partial class Harness
 
             // ---- the save, in the player's own room
             ReadTo("saved the game"); Frames(4); Shot("ch45_the_game_is_saved");
-            var saved = SaveManager.LoadGame();
-            Console.WriteLine(saved == null ? "  !! no save was written" : $"the save: {saved.CurrentMapName} at {saved.PlayerGridX},{saved.PlayerGridY}, story version {saved.StoryVersion}, completed {saved.StoryFlags.Contains("FLAG_GAME_COMPLETED")}");
+            var saved = SaveManager.Load(game.SaveFile).Save;
+            Console.WriteLine(saved == null ? "  !! no save was written" : $"the save, in slot {game.SaveSlot}: {saved.CurrentMapName} at {saved.PlayerGridX},{saved.PlayerGridY}, story version {saved.StoryVersion}, completed {saved.StoryFlags.Contains("FLAG_GAME_COMPLETED")}");
             Box().Advance();
         }
         else
@@ -300,8 +300,7 @@ partial class Harness
             Until(() => State() == GameState.Overworld && !engine.ScriptRunning, "the game going on at home", 900);
             Frames(60);
         }
-        File.Delete("savegame.json");
-        File.Delete(SaveManager.BackupOf("savegame.json"));
+        game.DeleteSave();
 
         // ---- waking at home, where the game goes on
         ReadTo(null, 300);
