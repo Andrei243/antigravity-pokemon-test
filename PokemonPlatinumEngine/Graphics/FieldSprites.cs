@@ -111,6 +111,7 @@ internal static class FieldSprites
 
     private static bool TryOverride(RenderContext context, string name, int facing)
     {
+        if (!Overrides.Enabled) return false;
         string folder = Path.Combine(OverrideFolder, name.ToUpperInvariant());
         if (!Directory.Exists(folder)) return false;
         PixelCanvas? sheet = null;

@@ -95,6 +95,47 @@ partial class Harness
         Seconds(1f);
         Console.WriteLine($"... and another: phase {alone.Phase}, entries {string.Join(", ", alone.Entries)}");
 
+        // The start after a crash (plan 16 · T3), after everything else so that nothing before it moves: the title says
+        // once that the game stopped, that the save is intact, where the report is and that the game as it stood was
+        // kept; and, for a game that had never been saved and stopped before one began, the short of it. The notes
+        // are made up here: the `crash` mode leaves a real one and shoots the title that takes it up
+        var when = new DateTime(2026, 6, 1, 12, 0, 0);
+        var crashed = NewTitle(save, TitleNotice.ForCrash(new CrashNote($"{CrashReport.FolderName}/{CrashReport.FileNameAt(when)}", true, when), SaveLoad.Ok));
+        crashed.PressConfirm();
+        Seconds(1.2f);
+        crashed.PressConfirm();
+        Seconds(0.5f); Shot("title_21_notice_crashed");
+        Console.WriteLine($"after a crash: \"{crashed.Notice?.Heading}\": {crashed.Notice?.Body}");
+        crashed.PressConfirm();
+        Seconds(1f);
+        Console.WriteLine($"after the notice: phase {crashed.Phase}, entries {string.Join(", ", crashed.Entries)}");
+
+        var early = new TitleScreen(null, TitleNotice.ForCrash(new CrashNote($"{CrashReport.FolderName}/{CrashReport.FileNameAt(when)}", false, when), SaveLoad.None),
+            TitleNotice.ForSave(SaveLoad.None));
+        game.Title = early;
+        game.State = GameState.Title;
+        early.PressConfirm();
+        Seconds(1.2f);
+        early.PressConfirm();
+        Seconds(0.5f); Shot("title_22_notice_crashed_no_save");
+        Console.WriteLine($"after a crash with nothing saved: {early.Notice?.Body}");
+
+        // And with a save that couldn't be read either: the crash's notice first, then the save's own
+        var both = new TitleScreen(save, TitleNotice.ForCrash(new CrashNote($"{CrashReport.FolderName}/{CrashReport.FileNameAt(when)}", true, when), SaveLoad.Recovered),
+            TitleNotice.ForSave(SaveLoad.Recovered));
+        game.Title = both;
+        both.PressConfirm();
+        Seconds(1.2f);
+        both.PressConfirm();
+        Seconds(0.5f); Shot("title_23_notice_crashed_then_recovered");
+        Console.WriteLine($"after a crash and a damaged save: first \"{both.Notice?.Heading}\": {both.Notice?.Body}");
+        both.PressConfirm();
+        Seconds(0.5f);
+        Console.WriteLine($"... then \"{both.Notice?.Heading}\", phase {both.Phase}");
+        both.PressConfirm();
+        Seconds(0.5f);
+        Console.WriteLine($"... then phase {both.Phase}");
+
         game.State = GameState.Overworld;
     }
 }

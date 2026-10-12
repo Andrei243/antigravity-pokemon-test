@@ -5,6 +5,7 @@ using System.Numerics;
 using Raylib_cs;
 using PokemonPlatinumEngine.Audio;
 using PokemonPlatinumEngine.Battle;
+using PokemonPlatinumEngine.Core.Diagnostics;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Models;
@@ -270,44 +271,58 @@ public partial class GameEngine
 
     public void Initialize()
     {
-        virtualScreen = Raylib.LoadRenderTexture(VirtualWidth * RenderScale, VirtualHeight * RenderScale);
-        UiShapes.PixelScale = RenderScale;
-        Raylib.SetTextureFilter(virtualScreen.Texture, TextureFilter.Bilinear);
+        // Each step of the start-up is timed for the log (plan 16 · T3); the harness's `profile` mode prints them
+        using var startUp = Log.Phase("start-up, in all");
+        using (Log.Phase("the screen"))
+        {
+            virtualScreen = Raylib.LoadRenderTexture(VirtualWidth * RenderScale, VirtualHeight * RenderScale);
+            UiShapes.PixelScale = RenderScale;
+            Raylib.SetTextureFilter(virtualScreen.Texture, TextureFilter.Bilinear);
+        }
 
-        AudioManager.Initialize();
-        MoveDatabase.Initialize();
-        PokemonDatabase.Initialize();
-        ItemDatabase.Initialize();
-        MapDatabase.Initialize();
-        LoadScripts();
+        using (Log.Phase("the sound")) AudioManager.Initialize();
+        using (Log.Phase("moves")) MoveDatabase.Initialize();
+        using (Log.Phase("species")) PokemonDatabase.Initialize();
+        using (Log.Phase("items")) ItemDatabase.Initialize();
+        using (Log.Phase("maps")) MapDatabase.Initialize();
+        using (Log.Phase("scripts")) LoadScripts();
 
-        // The characters of the introduction, sculpted and meshed in the background while the title screen plays; the
-        // people of the field are made ready where the player is (KeepCharactersNear, plan 11 · C1)
-        CharacterModels.Preload(new[] { "PLAYER", "DAWN", "ROWAN" });
-        // The Pokémon models of the story's opening too, meshed side by side; the menu sprites below wait for each one
         var modelled = PokemonModels.Preloaded.ToList();
-        PokemonModels.Preload(modelled.Append(PokemonSprites.Fallback));
-        // The Pokémon that stand in the field (plan 10 · F1), whose sprites are baked from their models when first in view
-        foreach (var species in MapDatabase.MapNames.SelectMany(n => MapDatabase.Get(n).Everyone).Where(n => n.IsPokemon).Select(n => n.Species!).Distinct())
-            PokemonModels.Request(species);
-        // And the balls the battles throw
-        BattleBall.Preload("Poké Ball", "Great Ball", "Ultra Ball", "Master Ball");
-        SubstituteDoll.Preload();
+        using (Log.Phase("models asked for"))
+        {
+            // The characters of the introduction, sculpted and meshed in the background while the title screen plays; the
+            // people of the field are made ready where the player is (KeepCharactersNear, plan 11 · C1)
+            CharacterModels.Preload(new[] { "PLAYER", "DAWN", "ROWAN" });
+            // The Pokémon models of the story's opening too, meshed side by side; the menu sprites below wait for each one
+            PokemonModels.Preload(modelled.Append(PokemonSprites.Fallback));
+            // The Pokémon that stand in the field (plan 10 · F1), whose sprites are baked from their models when first in view
+            foreach (var species in MapDatabase.MapNames.SelectMany(n => MapDatabase.Get(n).Everyone).Where(n => n.IsPokemon).Select(n => n.Species!).Distinct())
+                PokemonModels.Request(species);
+            // And the balls the battles throw
+            BattleBall.Preload("Poké Ball", "Great Ball", "Ultra Ball", "Master Ball");
+            SubstituteDoll.Preload();
+        }
 
-        ApplySettings(window: false);
+        using (Log.Phase("options")) ApplySettings(window: false);
 
         // The menu sprites of the species the story shows first are made up front (read from the sprite cache once
         // they have been baked); every other species' are made the first time a menu asks for them, showing the
         // stand-in (PokemonSprites.Fallback) for a frame or two meanwhile.
-        renderContext.EnsureLoaded();
-        PokemonSprites.BakeAll(renderContext, modelled);
+        using (Log.Phase("render targets and shaders")) renderContext.EnsureLoaded();
+        using (Log.Phase("menu sprites")) PokemonSprites.BakeAll(renderContext, modelled);
 
         // The game opens on the title screen, which offers the saved game if there is one
-        // A save that couldn't be read gives way to the one before it, and the title says so before its menu (plan 12 · Q1)
-        var (loaded, save) = SaveManager.Load();
-        titleSave = save;
-        titleScreen = new TitleScreen(titleSave, TitleNotice.ForSave(loaded));
-        AudioManager.PlayMusic(MusicRole.Title);
+        // A save that couldn't be read gives way to the one before it, and the title says so before its menu (plan 12 · Q1);
+        // and before that, once, that the last run stopped on a crash, if it did (plan 16 · T3)
+        using (Log.Phase("the save"))
+        {
+            var (loaded, save) = SaveManager.Load();
+            titleSave = save;
+            var crashed = CrashReport.TakePending(CrashReport.SaveFolder);
+            if (crashed != null) Log.Info($"The last run stopped on a crash ({crashed.Report}); the title says so. The save read as {loaded}.");
+            titleScreen = new TitleScreen(titleSave, TitleNotice.ForCrash(crashed, loaded), TitleNotice.ForSave(loaded));
+        }
+        using (Log.Phase("the title's music")) AudioManager.PlayMusic(MusicRole.Title);
     }
 
     /// <summary>Starts a new game at once as the boy with his own name: for tests and the screenshot harness.</summary>
@@ -404,6 +419,8 @@ public partial class GameEngine
     /// <summary>Fades in on the field from the black the title screen left behind.</summary>
     private void EnterGame()
     {
+        // The log is told where a game begins or is taken up, so a report's last lines say what was being played
+        Log.Info($"A game is entered at {PlaceKey()} {player.GridX},{player.GridY}, by the {Ruleset.Current.Preset} rules.");
         gameStarted = true;
         trainersLookOnArrival = true;
         arrived = true;
@@ -656,7 +673,8 @@ public partial class GameEngine
     /// <param name="quiet">True when a panel says the game was saved, so no notice is needed.</param>
     private void SaveCurrentGame(bool quiet = false)
     {
-        SaveManager.SaveGame(BuildSave());
+        bool written = SaveManager.SaveGame(BuildSave());
+        Log.Info(written ? $"The game was saved at {PlaceKey()} {player.GridX},{player.GridY}." : "The game couldn't be saved.");
         if (quiet) return;
         ShowNotification("Game saved.");
         AudioManager.PlaySound("save");
@@ -713,6 +731,16 @@ public partial class GameEngine
 
     public void Update(float dt)
     {
+        // Behind another window, with the option on, the game waits where it is and its sound drops (plan 16 · T3)
+        bool held = HeldForFocus;
+        AudioManager.Away = held;
+        if (held != wasHeldForFocus)
+        {
+            wasHeldForFocus = held;
+            Log.Info(held ? "Another window is in front: the game waits (the options' Pause in the background)." : "The window is in front again: the game goes on.");
+        }
+        if (held) return;
+
         if (gameStarted && currentState != GameState.WindowClosing) playTime += dt;
 
         toast.Update(dt);
@@ -2279,6 +2307,8 @@ public partial class GameEngine
         Raylib.EndDrawing();
         FrameProfiler.Lap(FrameSection.Swap);
         FrameProfiler.EndFrame();
+        // The first frame since a place was come to has been drawn: its arrival is timed to here (plan 16 · T3)
+        EndTheArrival();
     }
 
     /// <summary>The 3D battle field and Pokémon, then the HUD and menus on top.</summary>

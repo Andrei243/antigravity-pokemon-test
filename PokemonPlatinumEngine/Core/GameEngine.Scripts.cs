@@ -5,6 +5,7 @@ using Raylib_cs;
 using Gesture = PokemonPlatinumEngine.Overworld.Gesture;
 using PokemonPlatinumEngine.Audio;
 using PokemonPlatinumEngine.Battle;
+using PokemonPlatinumEngine.Core.Diagnostics;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Models;
@@ -109,7 +110,7 @@ public partial class GameEngine
         file ??= subject?.ScriptFile ?? currentMap.ScriptFileAt(subject?.GridX ?? player.GridX, subject?.GridY ?? player.GridY);
         if (scripts.Find(name, file) is not { } script)
         {
-            Console.Error.WriteLine($"No script '{name}' for {file}.");
+            Log.Error($"No script '{name}' for {file}.");
             return false;
         }
         runner.Start(script, subject, own, item, flag, pokemon, pair);
@@ -157,6 +158,8 @@ public partial class GameEngine
     /// <summary>The player has come to a map by a door, a warp or a save: whoever a script moved off it or onto it is back as the flags say.</summary>
     private void ArriveOnMap()
     {
+        // The first arrival in a place is timed for the log, from here to its first frame (plan 16 · T3)
+        TimeTheArrival();
         // A warp takes the player off the Cycling Road (FieldSystem_InitFlagsWarp)
         story.Unset(BicycleRules.OnCyclingRoadFlag);
         story.Unset(BicycleRules.ForcedInGateFlag);
@@ -314,6 +317,8 @@ public partial class GameEngine
     /// <summary>Arriving in a town for the first time is what lets one fly there (<c>TryUnlockFlyLocationByMap</c>).</summary>
     private void NoteArrival()
     {
+        // A place walked into, or the one a game begins in, is timed as one come to by a door is (plan 16 · T3)
+        TimeTheArrival();
         if (currentMap.AreaAt(player.GridX, player.GridY)?.Key is { } key && SpawnLocations.ArrivedIn(key) is { } town)
         {
             // A town come to for the first time is a line of the Journal (field_map_change_flags.c)
@@ -635,7 +640,7 @@ public partial class GameEngine
         catch (ScriptException e)
         {
             // A script that goes wrong ends there; the game goes on
-            Console.Error.WriteLine(e.Message);
+            Log.Error("A script went wrong: " + e.Message);
             ShowNotification("A script went wrong: " + e.Message);
             runner.Abort();
         }

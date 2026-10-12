@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using PokemonPlatinumEngine.Audio;
+using PokemonPlatinumEngine.Core.Diagnostics;
 using PokemonPlatinumEngine.Models;
 using Raylib_cs;
 
@@ -102,7 +103,7 @@ public static class AudioManager
         var sound = SoundBank.Get(soundName);
         if (sound == null)
         {
-            Console.WriteLine($"WARNING: AUDIO: no sound '{soundName}'");
+            Log.Warn($"AUDIO: no sound '{soundName}'");
             return;
         }
         mixer.PlaySound(sound, AudioBus.Sound, 1f, pan);
@@ -137,7 +138,7 @@ public static class AudioManager
         var song = MusicLibrary.Get(songId);
         if (song == null)
         {
-            Console.WriteLine($"WARNING: AUDIO: no song '{songId}'");
+            Log.Warn($"AUDIO: no song '{songId}'");
             return;
         }
         if (!isInitialized) return;
@@ -237,6 +238,16 @@ public static class AudioManager
     {
         get => mixer.Handheld;
         set => mixer.Handheld = value;
+    }
+
+    /// <summary>
+    /// Whether the game is waiting behind another window (plan 16 · T3): everything drops to a quarter
+    /// (<see cref="AudioMixer.AwayLevel"/>) until the player is back. The engine says so every frame.
+    /// </summary>
+    public static bool Away
+    {
+        get => mixer.Away;
+        set => mixer.Away = value;
     }
 
     public static void ToggleMute()
