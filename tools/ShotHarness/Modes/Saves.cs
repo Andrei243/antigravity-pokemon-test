@@ -51,9 +51,9 @@ partial class Harness
             }
             Console.WriteLine("  !! the script never ended");
         }
-        (int X, int Y)? Nearest(Map map, int x, int y, Func<int, int, bool> wanted)
+        (int X, int Y)? Nearest(Map map, int x, int y, Func<int, int, bool> wanted, int reach = 40)
         {
-            for (int r = 0; r < 40; r++)
+            for (int r = 0; r < reach; r++)
                 for (int dy = -r; dy <= r; dy++)
                     for (int dx = -r; dx <= r; dx++)
                         if (Math.Max(Math.Abs(dx), Math.Abs(dy)) == r && map.InBounds(x + dx, y + dy) && wanted(x + dx, y + dy)) return (x + dx, y + dy);
@@ -85,15 +85,15 @@ partial class Harness
         }
         else Console.WriteLine("  !! no water near Twinleaf Town");
 
-        // ---- on the deck of Canalave City's bridge, over the water
-        if (Nearest(sinnoh, 47, 725, (x, y) => sinnoh.DeckAt(x, y) != null && !sinnoh.IsSolid(x, y)) is { } bridge)
+        // ---- on the deck of the bridge nearest Canalave City (its own is drawn at the ground's height, so it may be another)
+        if (Nearest(sinnoh, 47, 725, (x, y) => sinnoh.DeckAt(x, y) != null && !sinnoh.IsSolid(x, y), reach: 960) is { } bridge)
         {
             game.Place(sinnoh, bridge.X, bridge.Y, Direction.Left);
             game.Player.SetMode(TravelMode.OnFoot);
             game.Player.SetHeight(sinnoh.DeckAt(bridge.X, bridge.Y)!.Value);
             Write("on-a-bridge");
         }
-        else Console.WriteLine("  !! no bridge near Canalave City");
+        else Console.WriteLine("  !! no bridge in Sinnoh");
 
         // ---- in the Great Marsh with a Safari Game under way: a few steps taken and a few balls thrown
         var (marsh, mx, my) = AreaSpot("great_marsh_1");
