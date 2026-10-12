@@ -102,6 +102,37 @@ public static partial class SoundBank
     };
 
     /// <summary>
+    /// The sound of a moment of the turn (plan 25 · Y3). A condition as it plays on its turn sounds as it did when it
+    /// was given; a bind sounds by its kind of grip; a level has no sound of its own, since its fanfare plays with it.
+    /// </summary>
+    public static string? MomentSound(Battle.Sim.BattleMoment moment) => moment switch
+    {
+        Battle.Sim.BattleMoment.Asleep => "status_sleep",
+        Battle.Sim.BattleMoment.Poisoned => "status_poison",
+        Battle.Sim.BattleMoment.Burned => "status_burn",
+        Battle.Sim.BattleMoment.Frozen => "status_freeze",
+        Battle.Sim.BattleMoment.Paralyzed => "status_paralysis",
+        Battle.Sim.BattleMoment.Confused => "status_confusion",
+        Battle.Sim.BattleMoment.Infatuated => "moment_infatuated",
+        Battle.Sim.BattleMoment.BagItem => "moment_bag_item",
+        Battle.Sim.BattleMoment.EscapeItem => "moment_escape_item",
+        Battle.Sim.BattleMoment.HeldItem => "moment_held_item",
+        Battle.Sim.BattleMoment.Happy => "moment_happy",
+        Battle.Sim.BattleMoment.Eating => "moment_eating",
+        Battle.Sim.BattleMoment.Angry => "moment_angry",
+        Battle.Sim.BattleMoment.Curse => "moment_curse",
+        Battle.Sim.BattleMoment.Nightmare => "moment_nightmare",
+        Battle.Sim.BattleMoment.LeechSeed => "moment_leech_seed",
+        Battle.Sim.BattleMoment.Ingrain => "moment_ingrain",
+        Battle.Sim.BattleMoment.Bind or Battle.Sim.BattleMoment.Wrap => "moment_bind",
+        Battle.Sim.BattleMoment.FireSpin or Battle.Sim.BattleMoment.MagmaStorm => "moment_fire_spin",
+        Battle.Sim.BattleMoment.Clamp => "moment_clamp",
+        Battle.Sim.BattleMoment.Whirlpool => "moment_whirlpool",
+        Battle.Sim.BattleMoment.SandTomb => "moment_sand_tomb",
+        _ => null
+    };
+
+    /// <summary>
     /// Brings a sound to its peak level and rounds its ends off (1.5 ms in, 4 ms out), so it never clicks, after
     /// taking out any offset its layers left.
     /// </summary>

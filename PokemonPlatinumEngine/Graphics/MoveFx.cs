@@ -20,7 +20,7 @@ internal delegate void FxRecipe(in FxCtx c, FxColors col, FxList fx);
 /// or send waves at the foe. The impact comes 0.35 s in, with the damage. Stat changes, heals and status conditions
 /// have effects too. GPU-free: recipes only fill an <see cref="FxList"/>.
 /// </summary>
-internal static class MoveFx
+internal static partial class MoveFx
 {
     private const float I = BattleAnimator.ImpactTime;
 
@@ -62,7 +62,9 @@ internal static class MoveFx
         switch (cue.Kind)
         {
             case CueKind.Move:
-                RecipeFor(cue.Move, cue.Type, cue.Category, cue.OnSelf)(c, ColorsOf(cue.Type), fx);
+                // An attack sent ahead plays its landing half (plan 25 · Y3)
+                if (cue.Arriving) Landing(c, ColorsOf(cue.Type), fx);
+                else RecipeFor(cue.Move, cue.Type, cue.Category, cue.OnSelf)(c, ColorsOf(cue.Type), fx);
                 break;
             case CueKind.StatUp:
                 StatChange(c, fx, up: true);
@@ -81,6 +83,9 @@ internal static class MoveFx
                 break;
             case CueKind.Weather:
                 ArenaFx.WeatherCue(cue.Weather, c.Age, c.Seed, places, fx);
+                break;
+            case CueKind.Moment:
+                Moment(c, fx);
                 break;
         }
     }

@@ -334,7 +334,10 @@ public partial class BattleEngine
             {
                 steps.Enqueue(new Line(said.Text, () =>
                 {
+                    // What a line shows is shown knowing its line: a moment on it takes its HP with it (plan 25 · Y3)
+                    showing = said;
                     foreach (var shown in said.Shows) Show(shown);
+                    showing = null;
                     foreach (var landing in said.OnImpact) After(HitDelay, () => Show(landing));
                 }));
             }
@@ -497,6 +500,14 @@ public partial class BattleEngine
             case HitSounded sound:
                 AudioManager.PlaySound(sound.SuperEffective ? "hit_super" : sound.NotVeryEffective ? "hit_weak" : "hit_normal");
                 break;
+            case HpChanged change when OnAMomentsLine:
+                // The moment comes first and its HP lands with it: the bar then drains or fills with no flinch, no
+                // shake, no sound of a hit and no aura of a heal (SYSCTL_SKIP_SPRITE_BLINK; plan 25 · Y3)
+                After(HitDelay, () =>
+                {
+                    if (At(change.Place).Pokemon is { } quietly) quietly.CurrentHP = change.Hp;
+                });
+                break;
             case HpChanged change:
                 if (At(change.Place).Pokemon is { } changed) changed.CurrentHP = change.Hp;
                 if (change.Healed)
@@ -521,7 +532,32 @@ public partial class BattleEngine
                 if (SoundBank.StatusSound(status.Status) is { } ailment) Sound(ailment, status.Place.Side);
                 break;
             case Confused confused:
-                Sound("status_confusion", confused.Place.Side);
+                // As it tries to move, the line's own moment shows it; becoming confused plays the same mark here,
+                // as subscript_confuse does (plan 25 · Y3)
+                if (showing?.Shows.Any(e => e is MomentShown { Moment: BattleMoment.Confused } own && own.Place == confused.Place) == true) break;
+                PlayMoment(new MomentShown(confused.Place, BattleMoment.Confused));
+                break;
+            case MomentShown moment:
+                PlayMoment(moment);
+                break;
+            case AheadLanded landed:
+                // An attack sent ahead lands with its own move's effect and sound, heard where it lands: nobody need
+                // stand where it was sent from (plan 25 · Y3)
+                Sound(SoundBank.MoveSound(landed.Type), landed.To.Side);
+                Anim.Cue(new EffectCue
+                {
+                    Kind = CueKind.Move,
+                    Move = landed.Move,
+                    Type = landed.Type,
+                    Category = landed.Category,
+                    FromSide = landed.From.Side,
+                    FromSlot = landed.From.Slot,
+                    ToSide = landed.To.Side,
+                    ToSlot = landed.To.Slot,
+                    Arriving = true
+                });
+                if (Anim[landed.To.Side, landed.To.Slot].BehindDoll)
+                    After(HitDelay, () => Anim.SubstituteHit(landed.To.Side, landed.To.Slot));
                 break;
             case Vanished gone:
                 Anim[gone.Place.Side, gone.Place.Slot].Away = true;
@@ -671,6 +707,28 @@ public partial class BattleEngine
                 Result = ended.Result;
                 break;
         }
+    }
+
+    /// <summary>The line whose events are being shown, while they are (null for an event that stands between lines).</summary>
+    private Said? showing;
+
+    /// <summary>The line being shown carries a moment of the turn: its HP changes land with the moment, quietly.</summary>
+    private bool OnAMomentsLine => showing?.Shows.Any(e => e is MomentShown) == true;
+
+    /// <summary>
+    /// A moment of the turn on its Pokémon, with its sound (plan 25 · Y3). Nothing is seen or heard of one on a
+    /// Pokémon that can't be seen, as the original's <c>BattleSystem_ShouldShowStatusEffect</c> has it. This is the
+    /// one place every moment goes through: an option that turns the battle's scene off skips it here.
+    /// </summary>
+    private void PlayMoment(MomentShown moment)
+    {
+        // A held item that goes off shows as what it is, and the line that tells of it names it: a berry is eaten
+        bool berry = moment.Moment == BattleMoment.HeldItem
+            && showing?.Shows.OfType<ItemShown>().FirstOrDefault(named => named.Place == moment.Place) is { } held
+            && ItemDatabase.Get(held.Item)?.Berry != null;
+        var cue = Anim.Moment(moment.Place.Side, moment.Place.Slot, moment.Moment,
+            moment.From is { } from ? (from.Side, from.Slot) : null, berry);
+        if (Anim.Shows(cue) && SoundBank.MomentSound(moment.Moment) is { } sound) Sound(sound, moment.Place.Side);
     }
 
     public void Update(float dt)
