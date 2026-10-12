@@ -324,6 +324,22 @@ internal static partial class ModernUi
             Button(new Rectangle(r.X + 56 + i * (bw + gap), r.Y + 216, bw, 84), 42, buttons[i].Color, buttons[i].Label, 32, i == selected);
     }
 
+    /// <summary>
+    /// A notice to be read and put away (plan 12 · Q1: the title's word on a damaged save, which plan 16 · T3's word
+    /// after a crash shares): the prompt's panel, room for three lines of words, and one button, highlighted, at its
+    /// bottom right.
+    /// </summary>
+    public static void Notice(int sw, int sh, string title, string body, string button, float appear = 1f)
+    {
+        Dim(sw, sh, (int)(150 * appear));
+        const float width = 1040, height = 380, bw = 280;
+        var r = new Rectangle(sw / 2f - width / 2f, sh / 2f - height / 2f + (1f - appear) * 60f, width, height);
+        Panel(r, 36);
+        UiFonts.Draw(title, r.X + 56, r.Y + 44, 48, Ink, UiWeight.Black);
+        DrawWrapped(body, r.X + 56, r.Y + 116, r.Width - 112, 30, Muted, 40, UiWeight.ExtraBold);
+        Button(new Rectangle(r.X + r.Width - 56 - bw, r.Y + height - 124, bw, 84), 42, Blue, button, 32, true);
+    }
+
     // ------------------------------------------------------------------ badges
 
     /// <summary>Sinnoh's eight Gym Badges in order (bit 0 of the badge mask is the Coal Badge).</summary>

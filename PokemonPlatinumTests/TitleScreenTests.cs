@@ -250,6 +250,75 @@ public class TitleScreenTests
         Assert.True(TitleScreen.Segments.Select(s => GameClock.ForHour((int)s.Hour)).Distinct().Count() >= 3);
     }
 
+    // ------------------------------------------------------------------ a save that couldn't be read (plan 12 · Q1)
+
+    [Fact]
+    public void OnlyASaveThatCouldntBeReadHasANotice()
+    {
+        Assert.Null(TitleNotice.ForSave(SaveLoad.Ok));
+        Assert.Null(TitleNotice.ForSave(SaveLoad.None));
+        Assert.NotNull(TitleNotice.ForSave(SaveLoad.Recovered));
+        Assert.NotNull(TitleNotice.ForSave(SaveLoad.Damaged));
+        Assert.NotEqual(TitleNotice.ForSave(SaveLoad.Recovered), TitleNotice.ForSave(SaveLoad.Damaged));
+    }
+
+    [Fact]
+    public void TheNoticeComesBeforeTheMenu()
+    {
+        var notice = TitleNotice.ForSave(SaveLoad.Recovered)!;
+        var title = new TitleScreen(Save(), notice);
+        title.PressConfirm();
+        Assert.Equal(TitlePhase.Idle, title.Phase);
+        title.PressConfirm();
+        Assert.Equal(TitlePhase.Warning, title.Phase);
+        Assert.Same(notice, title.Notice);
+
+        // The menu waits under it: a direction does nothing, and nothing is chosen
+        title.Move(1);
+        Run(title, 5f);
+        Assert.Equal(TitlePhase.Warning, title.Phase);
+        Assert.Equal(TitleChoice.None, title.TakeChoice());
+
+        title.PressConfirm();
+        Assert.Equal(TitlePhase.Menu, title.Phase);
+        Assert.Null(title.Notice);
+        Assert.Equal(TitleChoice.Continue, title.Entries[title.SelectedIndex]);
+    }
+
+    [Fact]
+    public void NoticesAreReadOneAfterAnotherAndBPutsThemAwayToo()
+    {
+        var first = new TitleNotice("First", "One.");
+        var second = new TitleNotice("Second", "Two.");
+        var title = new TitleScreen(null, first, null, second);
+        title.PressConfirm();
+        title.PressConfirm();
+        Assert.Same(first, title.Notice);
+        title.PressCancel();
+        Assert.Equal(TitlePhase.Warning, title.Phase);
+        Assert.Same(second, title.Notice);
+        title.PressCancel();
+        Assert.Equal(TitlePhase.Menu, title.Phase);
+
+        // Once read, they don't come back when the menu is backed out of and opened again
+        title.PressCancel();
+        Assert.Equal(TitlePhase.Idle, title.Phase);
+        title.PressConfirm();
+        Assert.Equal(TitlePhase.Menu, title.Phase);
+    }
+
+    [Fact]
+    public void ADamagedSaveLeavesNoGameToContinue()
+    {
+        var title = new TitleScreen(null, TitleNotice.ForSave(SaveLoad.Damaged));
+        Assert.DoesNotContain(TitleChoice.Continue, title.Entries);
+        title.PressConfirm();
+        title.PressConfirm();
+        Assert.Equal(TitlePhase.Warning, title.Phase);
+        title.PressConfirm();
+        Assert.Equal(TitleChoice.NewGame, title.Entries[title.SelectedIndex]);
+    }
+
     [Theory]
     [InlineData(1366, 768, 1280, 720)]   // too small for anything else: the smallest size
     [InlineData(1920, 1080, 1600, 900)]

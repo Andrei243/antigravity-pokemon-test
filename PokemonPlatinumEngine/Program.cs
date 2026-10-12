@@ -23,9 +23,11 @@ public static class Program
         engine.NewGameRegion = RegionArgument(args);
         engine.Initialize();
 
-        // Main Game Loop
-        while (!Raylib.WindowShouldClose() && !engine.QuitRequested)
+        // Main Game Loop: the window's close button asks first (plan 12 · Q1), and the game ends once it is answered
+        while (!engine.QuitRequested)
         {
+            if (Raylib.WindowShouldClose()) engine.RequestClose();
+
             // Toggle full screen on F11 or Alt+Enter
             if (Raylib.IsKeyPressed(KeyboardKey.F11) || (Raylib.IsKeyDown(KeyboardKey.LeftAlt) && Raylib.IsKeyPressed(KeyboardKey.Enter)))
             {

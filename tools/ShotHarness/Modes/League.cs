@@ -204,6 +204,7 @@ partial class Harness
         Until(() => { game.Credits.PressConfirm(); return State() != GameState.Credits; }, "the credits' end", 9000);
         ReadOn(() => Here().Name == "PlayerHouse2F" && State() == GameState.Overworld && !engine.ScriptRunning && !Box().IsActive);
         File.Delete("savegame.json");
+        File.Delete(SaveManager.BackupOf("savegame.json"));
         Frames(20);
         if (end) Shot("lg94_home");
         Console.WriteLine($"league: FLAG_DEFEATED_CYNTHIA {story.Has("FLAG_DEFEATED_CYNTHIA")}, the Hall of Fame holds {game.HallOfFame.Total}, " +
