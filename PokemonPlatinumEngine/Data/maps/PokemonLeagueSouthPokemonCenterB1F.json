@@ -235,7 +235,7 @@
     {
       "id": "teala_middle",
       "name": "Attendant",
-      "npcType": "Nurse",
+      "npcType": "teala",
       "x": 8,
       "y": 4,
       "facing": "Down",
@@ -247,7 +247,7 @@
     {
       "id": "teala_east",
       "name": "Attendant",
-      "npcType": "Nurse",
+      "npcType": "teala",
       "x": 12,
       "y": 4,
       "facing": "Down",

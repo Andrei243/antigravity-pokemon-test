@@ -15,7 +15,7 @@
     { "trigger": 2, "script": "BuckGoesAhead" }
   ],
   "people": {
-    "buck": { "name": "Buck", "npcType": "Youngster", "script": "Buck", "still": true },
+    "buck": { "name": "Buck", "script": "Buck", "still": true },
     "ace_trainer_keenan": {
       "name": "Keenan",
       "trainer": {

@@ -86,7 +86,7 @@
     "cynthia": { "name": "Cynthia", "npcType": "Cynthia", "dialog": [ "Cynthia: Safe travels." ], "still": true },
     // Candice, who comes up the street to the temple's steps for that scene alone (her look is plan 11's: a lass
     // stands for her, as in her Gym)
-    "candice": { "name": "Candice", "npcType": "Lass", "script": "Candice", "still": true },
+    "candice": { "name": "Candice", "script": "Candice", "still": true },
     "sailor_ss_spiral": {
       "name": "Sailor",
       "npcType": "Gentleman",

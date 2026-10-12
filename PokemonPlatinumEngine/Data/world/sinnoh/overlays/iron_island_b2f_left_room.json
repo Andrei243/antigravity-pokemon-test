@@ -17,7 +17,7 @@
   ],
   "people": {
     // He stands as the clerk until he has a look of his own (plan 11 · C6)
-    "riley": { "name": "Riley", "npcType": "Clerk", "script": "Riley", "still": true },
+    "riley": { "name": "Riley", "script": "Riley", "still": true },
     "grunt_m_west": {
       "name": "Grunt",
       "script": "Grunts",

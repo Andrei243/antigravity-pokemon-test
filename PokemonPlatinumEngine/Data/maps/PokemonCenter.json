@@ -286,7 +286,7 @@
     {
       "id": "teala",
       "name": "Attendant",
-      "npcType": "Nurse",
+      "npcType": "teala",
       "x": 13,
       "y": 10,
       "facing": "Left",

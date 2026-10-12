@@ -19,7 +19,7 @@
   // (scripts/survival_area.txt; plan 02 · S15, part a), come once Charon is caught at Stark Mountain: the original
   // hides both from the start (common.ChapterTwelve) and its last scene there clears their flags (plan 02 · S15, part b)
   "people": {
-    "buck": { "name": "Buck", "npcType": "Youngster", "script": "Buck", "still": true },
+    "buck": { "name": "Buck", "script": "Buck", "still": true },
     "rival": { "name": "{rival}", "script": "Rival", "still": true },
     "ruin_maniac": {
       "name": "Ruin Maniac",

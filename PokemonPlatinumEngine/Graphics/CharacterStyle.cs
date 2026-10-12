@@ -2,9 +2,9 @@ using Raylib_cs;
 
 namespace PokemonPlatinumEngine.Graphics;
 
-internal enum Headwear { None, Beret, Cap, NurseCap, Bow, Mask }
+internal enum Headwear { None, Beret, Cap, NurseCap, Bow, Mask, Fedora }
 
-internal enum HairCut { Short, Spiky, Long, Swept }
+internal enum HairCut { Short, Spiky, Long, Swept, Afro, Bun, Braids, Bunches }
 
 /// <summary>Body proportions: chibi children, and adults with a longer body and a slightly smaller head.</summary>
 internal enum BodyBuild { Kid, Adult }
@@ -39,6 +39,12 @@ internal sealed class CharacterStyle
 
     /// <summary>The accent colour is a scarf that hangs down in front, not a collar.</summary>
     public bool Scarf;
+
+    /// <summary>A full beard round the chin and jaw in the hair's colour, below the mouth (plan 11 · C6).</summary>
+    public bool Beard;
+
+    /// <summary>Glasses in this frame colour, drawn by the faces rather than sculpted (none when left out; plan 11 · C6).</summary>
+    public Color? Glasses;
 
     /// <summary>Relative size: adults stand a little taller than the kids.</summary>
     public float Height = 1f;

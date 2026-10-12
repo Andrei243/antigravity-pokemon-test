@@ -444,7 +444,7 @@
     {
       "id": "lucian",
       "name": "Lucian",
-      "npcType": "Gentleman",
+      "npcType": "lucian",
       "x": 16,
       "y": 5,
       "facing": "Up",

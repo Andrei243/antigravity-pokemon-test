@@ -124,7 +124,7 @@
     {
       "id": "byron",
       "name": "Byron",
-      "npcType": "Gentleman",
+      "npcType": "byron",
       "x": 5,
       "y": 5,
       "facing": "Down",
