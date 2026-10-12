@@ -79,6 +79,13 @@ Written 2026-10-06, before any session.
 - Tests: the above. No shots: `saves` writes JSON only.
 - **Done when** a save of every version the game has written loads under the tests, and a change to `StoryMigration` shows in `git diff` what it does to each.
 
+**Done (2026-10-12).** Built as above, with these choices:
+- `ScriptWalk` is a class, not a static one: each class that plays the scripts has a walk of its own with its own world and maps (`StoryTests` keeps one in `Walk`, `GoldenScriptTests` makes another), because test classes run side by side and a script walks people about on the maps it plays on. The map files are read in name order, so a walk plays in the same order on every machine. The playing itself moved with it (`PlayEveryScript`, the place scripts and the common ones exactly as the test played them), so the test and the golden file play the same; the Turtwig of each way and the field-move team are made on a seeded `Random`, so nothing a script says of them moves between runs.
+- `scripts.txt` has a block to each script by its full name; in it the starters that make it say and do the same are listed over one telling (`from ...`). Each way is its answers (`way 0.1.0`, a battle's 0 won and 1 lost), then `>` the lines said (speaker first), `?` the questions with the answers taken, `*` the log, `!` problems, and what it left changed against the story as it stood before (`+`/`-` a flag, `=` a variable, the trainers, items, badges and starters), not the whole `Snapshot`. To keep the file small, a way after the first is told only from the answer where it parts from the ways before it (`way 0.1, from answer 2`): what came before is the earlier way's. The file's size is not known yet (the session ran no tests); if it comes to tens of megabytes, the next step is to tell what a way left only where it differs from the way it parts from.
+- `SaveManager.Write` and `Read` are what `SaveGame` and `LoadGame` do to the text, so the harness writes and the tests read a save exactly as the game does; the `Driver` gained `BuildSave`. The corpus tests are in the `Golden` folder (`SaveCorpusTests`), so `--filter Golden` runs and accepts them with the rest.
+- The older saves (`w0-s0` to `w2-s18`, twenty files) were written by a script outside the repository from the saves the tests build inline (`WorldTests`, `SouthWestTests`, `StoryTests`' save from before the story, `OpeningTests`, `RebuiltRoomTests`) and from each chapter's upgrade test (the Coal Badge without HM06, the Psyduck cured, Snowpoint City reached, a Champion, the Battle Zone), one or more to each version, on tiles the tests already hold standable (the old maps' moved spots, Twinleaf Town's door, Jubilife City's Pokémon Center's door, Lake Verity's shore, and rooms laid out again, which wake inside their door). Their fields are those their versions had as near as the plans tell; the history before 2026-10-10 is squashed, so the cut-off of each field is a judgement, and objects the game makes afresh when null (the Pokétch, the berries, the encounters) are left out.
+- Today's seven (`w3-s18-*`) come from the harness's `saves`, which the merge runs: until they are copied in, `EveryVersionHasASave` fails for WorldVersion 3.
+
 ### X4 · Strict loading and schemas
 - `GameDataFiles.Strict` (`Json` with `UnmappedMemberHandling.Disallow`) and `Load<T>(path, strict: true)` for `world.json` (`WorldIndexFile`), the overlays (`WorldOverlayFile`), the map files (`MapFile`) and `sound-map.json` (`SoundMapFile`); `OneLine<T>.Read` refuses a key no property has when the options it is given are strict. The error names the file, the JSON path and the key (`overlays/route_204_south.json: $.people.lass_sarah.hidenBy`), and case counts: `BgmTrack` is refused, not read.
 - `ImportOptions.Read`: an unknown key is reported through `ImportedModels.Report` with the file and the key, and the file's settings are not used; `docs/model-files.md` says so.
@@ -134,7 +141,7 @@ Written 2026-10-06, before any session.
 
 - [x] X1 The rules as build errors
 - [x] X2 Golden battles and trainer teams
-- [ ] X3 Golden scripts and saves of every version
+- [x] X3 Golden scripts and saves of every version
 - [ ] X4 Strict loading and schemas
 - [ ] X5 The damage oracle: Platinum against generation 4
 - [ ] X6 The oracle under the modern rules

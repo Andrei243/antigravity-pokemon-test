@@ -1,0 +1,281 @@
+{
+  "PlayerName": "Lucas",
+  "Money": 3000,
+  "PlayTimeSeconds": 57600.0,
+  "Badges": 127,
+  "CurrentMapName": "Sinnoh",
+  "PlayerGridX": 180,
+  "PlayerGridY": 777,
+  "PlayerFacing": 0,
+  "WorldVersion": 2,
+  "Look": 0,
+  "RivalName": "Barry",
+  "TrainerId": 41350,
+  "Started": "2026-09-20T00:00:00",
+  "Travel": 0,
+  "Exit": null,
+  "LastDay": "2026-10-01T00:00:00",
+  "RegisteredItem": null,
+  "RepelSteps": 0,
+  "TrainerScore": 2250,
+  "HallOfFameTotal": 0,
+  "HallOfFameDebut": null,
+  "HallOfFame": [],
+  "Journal": [],
+  "Rules": "Platinum",
+  "GreetedPeople": [],
+  "Party": [
+    {
+      "SpeciesName": "Infernape",
+      "Nickname": "Infernape",
+      "Level": 50,
+      "Gender": 0,
+      "Nature": 0,
+      "IsShiny": false,
+      "CurrentHP": 146,
+      "Status": 0,
+      "IvHP": 20,
+      "IvAttack": 20,
+      "IvDefense": 20,
+      "IvSpAttack": 20,
+      "IvSpDefense": 20,
+      "IvSpeed": 20,
+      "CurrentExp": 117360,
+      "Ability": "Blaze",
+      "HeldItem": null,
+      "Friendship": 100,
+      "EvHP": 4,
+      "EvAttack": 8,
+      "EvDefense": 0,
+      "EvSpAttack": 0,
+      "EvSpDefense": 0,
+      "EvSpeed": 12,
+      "Personality": 789651038,
+      "Ball": "Poké Ball",
+      "Pokerus": 0,
+      "Marks": 0,
+      "MetLocation": "Route 201",
+      "MetLevel": 5,
+      "MetDate": "2026-09-20T00:00:00",
+      "Language": null,
+      "Cool": 0,
+      "Beauty": 0,
+      "Cute": 0,
+      "Smart": 0,
+      "Tough": 0,
+      "Sheen": 0,
+      "Moves": [
+        {
+          "MoveName": "Flamethrower",
+          "CurrentPP": 15
+        },
+        {
+          "MoveName": "Close Combat",
+          "CurrentPP": 5
+        },
+        {
+          "MoveName": "Mach Punch",
+          "CurrentPP": 30
+        },
+        {
+          "MoveName": "Shadow Claw",
+          "CurrentPP": 15
+        }
+      ]
+    },
+    {
+      "SpeciesName": "Azelf",
+      "Nickname": "Azelf",
+      "Level": 50,
+      "Gender": 2,
+      "Nature": 0,
+      "IsShiny": false,
+      "CurrentHP": 145,
+      "Status": 0,
+      "IvHP": 20,
+      "IvAttack": 20,
+      "IvDefense": 20,
+      "IvSpAttack": 20,
+      "IvSpDefense": 20,
+      "IvSpeed": 20,
+      "CurrentExp": 156250,
+      "Ability": "Levitate",
+      "HeldItem": null,
+      "Friendship": 170,
+      "EvHP": 4,
+      "EvAttack": 8,
+      "EvDefense": 0,
+      "EvSpAttack": 0,
+      "EvSpDefense": 0,
+      "EvSpeed": 12,
+      "Personality": 789651034,
+      "Ball": "Poké Ball",
+      "Pokerus": 0,
+      "Marks": 0,
+      "MetLocation": "Route 201",
+      "MetLevel": 5,
+      "MetDate": "2026-09-20T00:00:00",
+      "Language": null,
+      "Cool": 0,
+      "Beauty": 0,
+      "Cute": 0,
+      "Smart": 0,
+      "Tough": 0,
+      "Sheen": 0,
+      "Moves": [
+        {
+          "MoveName": "Confusion",
+          "CurrentPP": 25
+        },
+        {
+          "MoveName": "Uproar",
+          "CurrentPP": 10
+        },
+        {
+          "MoveName": "Future Sight",
+          "CurrentPP": 15
+        },
+        {
+          "MoveName": "Nasty Plot",
+          "CurrentPP": 20
+        }
+      ]
+    }
+  ],
+  "BoxStorage": [],
+  "Boxes": {
+    "CurrentBox": 0,
+    "UnlockedWallpapers": 0,
+    "Boxes": [
+      {
+        "Name": "BOX 1",
+        "Wallpaper": 0,
+        "Pokemon": []
+      },
+      {
+        "Name": "BOX 2",
+        "Wallpaper": 1,
+        "Pokemon": []
+      },
+      {
+        "Name": "BOX 3",
+        "Wallpaper": 2,
+        "Pokemon": []
+      },
+      {
+        "Name": "BOX 4",
+        "Wallpaper": 3,
+        "Pokemon": []
+      },
+      {
+        "Name": "BOX 5",
+        "Wallpaper": 4,
+        "Pokemon": []
+      },
+      {
+        "Name": "BOX 6",
+        "Wallpaper": 5,
+        "Pokemon": []
+      },
+      {
+        "Name": "BOX 7",
+        "Wallpaper": 6,
+        "Pokemon": []
+      },
+      {
+        "Name": "BOX 8",
+        "Wallpaper": 7,
+        "Pokemon": []
+      },
+      {
+        "Name": "BOX 9",
+        "Wallpaper": 8,
+        "Pokemon": []
+      },
+      {
+        "Name": "BOX 10",
+        "Wallpaper": 9,
+        "Pokemon": []
+      },
+      {
+        "Name": "BOX 11",
+        "Wallpaper": 10,
+        "Pokemon": []
+      },
+      {
+        "Name": "BOX 12",
+        "Wallpaper": 11,
+        "Pokemon": []
+      },
+      {
+        "Name": "BOX 13",
+        "Wallpaper": 12,
+        "Pokemon": []
+      },
+      {
+        "Name": "BOX 14",
+        "Wallpaper": 13,
+        "Pokemon": []
+      },
+      {
+        "Name": "BOX 15",
+        "Wallpaper": 14,
+        "Pokemon": []
+      },
+      {
+        "Name": "BOX 16",
+        "Wallpaper": 15,
+        "Pokemon": []
+      },
+      {
+        "Name": "BOX 17",
+        "Wallpaper": 0,
+        "Pokemon": []
+      },
+      {
+        "Name": "BOX 18",
+        "Wallpaper": 1,
+        "Pokemon": []
+      }
+    ]
+  },
+  "Inventory": [
+    {
+      "ItemName": "Max Potion",
+      "Quantity": 1
+    },
+    {
+      "ItemName": "HM06",
+      "Quantity": 1
+    }
+  ],
+  "SeenSpecies": [
+    392,
+    482
+  ],
+  "CaughtSpecies": [
+    392,
+    482
+  ],
+  "NationalPokedex": false,
+  "Diplomas": [],
+  "DefeatedTrainers": [],
+  "StoryFlags": [
+    "FLAG_TALKED_TO_MOM",
+    "FLAG_RIVAL_LEFT_HOME",
+    "FLAG_HAS_POKEDEX",
+    "FLAG_HAS_RUNNING_SHOES",
+    "FLAG_RECEIVED_PARCEL",
+    "FLAG_RECEIVED_HM06",
+    "FLAG_FIRST_ARRIVAL_SUNYSHORE_CITY"
+  ],
+  "StoryVersion": 15,
+  "StoryVariables": {
+    "VAR_PLAYER_HOUSE_STATE": 6,
+    "VAR_SANDGEM_TOWN_STATE": 2,
+    "VAR_ROUTE_202_STATE": 1
+  },
+  "TakenItems": [],
+  "PlayerStarter": "Chimchar",
+  "RivalStarter": "Piplup"
+}

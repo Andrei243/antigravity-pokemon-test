@@ -1,0 +1,102 @@
+{
+  "PlayerName": "Lucas",
+  "Money": 3000,
+  "PlayTimeSeconds": 18000.0,
+  "Badges": 1,
+  "CurrentMapName": "Sinnoh",
+  "PlayerGridX": 180,
+  "PlayerGridY": 777,
+  "PlayerFacing": 0,
+  "WorldVersion": 1,
+  "Look": 0,
+  "RivalName": "Barry",
+  "TrainerId": 41350,
+  "Started": "2026-09-20T00:00:00",
+  "Party": [
+    {
+      "SpeciesName": "Turtwig",
+      "Nickname": "Turtwig",
+      "Level": 16,
+      "Gender": 0,
+      "Nature": 0,
+      "IsShiny": false,
+      "CurrentHP": 46,
+      "Status": 0,
+      "IvHP": 20,
+      "IvAttack": 20,
+      "IvDefense": 20,
+      "IvSpAttack": 20,
+      "IvSpDefense": 20,
+      "IvSpeed": 20,
+      "CurrentExp": 2535,
+      "Ability": "Overgrow",
+      "HeldItem": null,
+      "Friendship": 100,
+      "EvHP": 4,
+      "EvAttack": 8,
+      "EvDefense": 0,
+      "EvSpAttack": 0,
+      "EvSpDefense": 0,
+      "EvSpeed": 12,
+      "Personality": 789381790,
+      "Ball": "Poké Ball",
+      "Moves": [
+        {
+          "MoveName": "Tackle",
+          "CurrentPP": 35
+        },
+        {
+          "MoveName": "Withdraw",
+          "CurrentPP": 40
+        },
+        {
+          "MoveName": "Absorb",
+          "CurrentPP": 25
+        },
+        {
+          "MoveName": "Razor Leaf",
+          "CurrentPP": 25
+        }
+      ]
+    }
+  ],
+  "BoxStorage": [],
+  "Inventory": [
+    {
+      "ItemName": "Potion",
+      "Quantity": 3
+    },
+    {
+      "ItemName": "Poké Ball",
+      "Quantity": 5
+    }
+  ],
+  "SeenSpecies": [
+    387
+  ],
+  "CaughtSpecies": [
+    387
+  ],
+  "NationalPokedex": false,
+  "Diplomas": [],
+  "DefeatedTrainers": [
+    "trainer_logan",
+    "youngster_tristan"
+  ],
+  "StoryFlags": [
+    "FLAG_TALKED_TO_MOM",
+    "FLAG_RIVAL_LEFT_HOME",
+    "FLAG_HAS_POKEDEX",
+    "FLAG_HAS_RUNNING_SHOES",
+    "FLAG_RECEIVED_PARCEL"
+  ],
+  "StoryVersion": 4,
+  "StoryVariables": {
+    "VAR_PLAYER_HOUSE_STATE": 6,
+    "VAR_SANDGEM_TOWN_STATE": 2,
+    "VAR_ROUTE_202_STATE": 1
+  },
+  "TakenItems": [],
+  "PlayerStarter": "Turtwig",
+  "RivalStarter": "Chimchar"
+}

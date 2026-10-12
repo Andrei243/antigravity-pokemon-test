@@ -1,0 +1,139 @@
+{
+  "PlayerName": "Lucas",
+  "Money": 3000,
+  "PlayTimeSeconds": 7200.0,
+  "Badges": 0,
+  "CurrentMapName": "Route201",
+  "PlayerGridX": 5,
+  "PlayerGridY": 5,
+  "PlayerFacing": 1,
+  "Party": [
+    {
+      "SpeciesName": "Turtwig",
+      "Nickname": "Turtwig",
+      "Level": 12,
+      "Gender": 0,
+      "Nature": 0,
+      "IsShiny": false,
+      "CurrentHP": 37,
+      "Status": 0,
+      "IvHP": 20,
+      "IvAttack": 20,
+      "IvDefense": 20,
+      "IvSpAttack": 20,
+      "IvSpDefense": 20,
+      "IvSpeed": 20,
+      "CurrentExp": 973,
+      "Ability": "Overgrow",
+      "HeldItem": null,
+      "Friendship": 100,
+      "Moves": [
+        {
+          "MoveName": "Tackle",
+          "CurrentPP": 35
+        },
+        {
+          "MoveName": "Withdraw",
+          "CurrentPP": 40
+        },
+        {
+          "MoveName": "Absorb",
+          "CurrentPP": 25
+        },
+        {
+          "MoveName": "Razor Leaf",
+          "CurrentPP": 25
+        }
+      ]
+    },
+    {
+      "SpeciesName": "Starly",
+      "Nickname": "Starly",
+      "Level": 6,
+      "Gender": 1,
+      "Nature": 0,
+      "IsShiny": false,
+      "CurrentHP": 22,
+      "Status": 0,
+      "IvHP": 20,
+      "IvAttack": 20,
+      "IvDefense": 20,
+      "IvSpAttack": 20,
+      "IvSpDefense": 20,
+      "IvSpeed": 20,
+      "CurrentExp": 179,
+      "Ability": "Keen Eye",
+      "HeldItem": null,
+      "Friendship": 100,
+      "Moves": [
+        {
+          "MoveName": "Tackle",
+          "CurrentPP": 35
+        },
+        {
+          "MoveName": "Growl",
+          "CurrentPP": 40
+        }
+      ]
+    }
+  ],
+  "BoxStorage": [
+    {
+      "SpeciesName": "Bidoof",
+      "Nickname": "Bidoof",
+      "Level": 4,
+      "Gender": 0,
+      "Nature": 0,
+      "IsShiny": false,
+      "CurrentHP": 19,
+      "Status": 0,
+      "IvHP": 20,
+      "IvAttack": 20,
+      "IvDefense": 20,
+      "IvSpAttack": 20,
+      "IvSpDefense": 20,
+      "IvSpeed": 20,
+      "CurrentExp": 64,
+      "Ability": "Simple",
+      "HeldItem": null,
+      "Friendship": 100,
+      "Moves": [
+        {
+          "MoveName": "Tackle",
+          "CurrentPP": 35
+        },
+        {
+          "MoveName": "Growl",
+          "CurrentPP": 40
+        }
+      ]
+    }
+  ],
+  "Inventory": [
+    {
+      "ItemName": "Potion",
+      "Quantity": 3
+    },
+    {
+      "ItemName": "Poké Ball",
+      "Quantity": 5
+    }
+  ],
+  "SeenSpecies": [
+    387,
+    396,
+    399
+  ],
+  "CaughtSpecies": [
+    387,
+    396,
+    399
+  ],
+  "DefeatedTrainers": [],
+  "StoryFlags": [],
+  "StoryVersion": 1,
+  "StoryVariables": {},
+  "TakenItems": [],
+  "PlayerStarter": "Turtwig",
+  "RivalStarter": "Chimchar"
+}
