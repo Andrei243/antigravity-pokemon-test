@@ -46,12 +46,13 @@ partial class Harness
         Compare("the rest", new[] { played.Else }, new[] { skipped.Else });
     }
 
-    // Three of the later chapters' biggest scenes, each played to its end and then, from the same story, skipped by
-    // the hold, with what each left told side by side: the speech in Team Galactic's hall (the camera kit, the roar's
-    // shake, the ranks leaving), the meeting in Canalave's library (eleven walks, three people sent off, the
-    // explosion's ripple and its lines over a black screen) and the torn pillar (the three of the lakes shown and
-    // gone, sparkles, a ripple, the camera sent and brought back), which ends at Cynthia's question. No shots: a line
-    // that begins with !! is something a skip left otherwise than the scene does. Not part of "all".
+    // Four of the story's scenes, each played to its end and then, from the same story, skipped by the hold, with
+    // what each left told side by side: the speech in Team Galactic's hall (the camera kit, the roar's shake, the
+    // ranks leaving), the meeting in Canalave's library (a leader and a follower round the stairwell, three people
+    // sent off, the explosion's ripple and its lines over a black screen), the torn pillar (the three of the lakes
+    // shown and gone, sparkles, a ripple, the camera sent and brought back), which ends at Cynthia's question, and
+    // the assistant at Sandgem Town's edge, whose scene warps into the lab, where the lab's own begins. No shots: a
+    // line that begins with !! is something a skip left otherwise than the scene does. Not part of "all".
     public void SkipsMode()
     {
         var story = game.Story;
@@ -83,13 +84,13 @@ partial class Harness
             Frames(3);
         }
 
-        void BothWays(string scene, string map, Action given, Action come, Func<bool> over, Action? after = null)
+        void BothWays(string scene, string[] rooms, Action given, Action come, Func<bool> over, Action? after = null)
         {
             given();
             var before = story.Snapshot();
             // Whoever a scene walks about a room stays where it left them until the room's own script puts them back,
             // so the second telling begins with everyone where the first found them: the story, and where each stands
-            var stood = MapDatabase.Get(map).Everyone.Select(n => (Who: n, n.GridX, n.GridY, n.Facing)).ToList();
+            var stood = rooms.SelectMany(room => MapDatabase.Get(room).Everyone).Select(n => (Who: n, n.GridX, n.GridY, n.Facing)).ToList();
             engine.Settings.SkipScenes = SkipScenes.Off;
             int skips = game.ScenesSkipped;
 
@@ -126,7 +127,7 @@ partial class Harness
         bool Quiet() => !engine.ScriptRunning && !Box().IsActive;
 
         // ---- Team Galactic's hall: Looker waves the player over, Cyrus's speech from the dais, the roar, the hall empty
-        BothWays("the speech", "GalacticHQHall",
+        BothWays("the speech", new[] { "GalacticHQHall" },
             () => story.SetVar("VAR_GALACTIC_HQ_HALL_STATE", 0),
             () =>
             {
@@ -140,7 +141,7 @@ partial class Harness
             Quiet);
 
         // ---- Canalave's library: the meeting at the table, the explosion, the three sent off
-        BothWays("the meeting", "CanalaveLibrary3F",
+        BothWays("the meeting", new[] { "CanalaveLibrary3F" },
             () =>
             {
                 foreach (string flag in new[] { "FLAG_HIDE_CANALAVE_LIBRARY_RIVAL", "FLAG_HIDE_CANALAVE_LIBRARY_COUNTERPART", "FLAG_HIDE_CANALAVE_LIBRARY_ROWAN" }) story.Unset(flag);
@@ -150,7 +151,7 @@ partial class Harness
             Quiet);
 
         // ---- the torn pillar: Cynthia too late, the three of the lakes, and her question, where the scene ends
-        BothWays("the torn pillar", "SpearPillarDistorted",
+        BothWays("the torn pillar", new[] { "SpearPillarDistorted" },
             () =>
             {
                 foreach (string flag in new[] { "FLAG_HIDE_SPEAR_PILLAR_GRUNTS", "FLAG_HIDE_SPEAR_PILLAR_MARS_JUPITER", "FLAG_HIDE_SPEAR_PILLAR_CYRUS", "FLAG_UNLOCKED_VS_SEEKER_LVL_3", "FLAG_SPEAR_PILLAR_IS_DISTORTED" })
@@ -162,5 +163,33 @@ partial class Harness
             () => engine.Choice.IsOpen,
             // "Are you ready?": not yet, so the scene's script ends where it stands
             () => { Frames(10); engine.Choice.Back(); Frames(4); });
+
+        // ---- Sandgem Town's edge: the assistant, the rival out of the lab's door, and in by a warp, which a hurry
+        // arrives by at once; the scene is over inside the lab, where the lab's own scene walks the two up to the
+        // professor and is told here as far as his first line
+        BothWays("the assistant", new[] { "Sinnoh", "RowanLab" },
+            () =>
+            {
+                foreach (string flag in new[] { "FLAG_HIDE_SANDGEM_TOWN_RIVAL", "FLAG_HIDE_SANDGEM_TOWN_COUNTERPART", "FLAG_HIDE_SANDGEM_TOWN_LAB_COUNTERPART", StoryState.PokedexFlag })
+                    story.Unset(flag);
+                story.SetVar("VAR_SANDGEM_TOWN_STATE", 0);
+                story.SetVar("VAR_SANDGEM_TOWN_LAB_STATE", 0);
+            },
+            () =>
+            {
+                Come("Sinnoh", 164, 845, Direction.Right);
+                ReadUntil(Quiet, "Sandgem Town's arrival");
+                // (the trigger at the town's edge, started as the step onto it starts it)
+                engine.StartScript(ScriptLibrary.Default.In("sandgem_town", "MeetAssistant")!);
+            },
+            () => game.Map.Name == "RowanLab" && game.Scene != null && Box().IsActive,
+            // The professor's question, answered yes, so that the lab's scene can be read to its end
+            () =>
+            {
+                ReadUntil(() => engine.Choice.IsOpen, "the professor's question");
+                Frames(10);
+                engine.Choice.Confirm();
+                Frames(4);
+            });
     }
 }

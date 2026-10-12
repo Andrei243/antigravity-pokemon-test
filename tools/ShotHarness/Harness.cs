@@ -26,7 +26,10 @@ partial class Harness
         this.startDir = startDir;
 
         var startClock = System.Diagnostics.Stopwatch.StartNew();
-        engine = new GameEngine();
+        // The options are the game's defaults every run, whatever the output folder holds: since plan 12 · Q20 a scene
+        // played to its end is noted for the machine, which writes the options beside the saves (here, the output
+        // folder), and a run that read them back would start with whatever the run before had set
+        engine = new GameEngine(new GameSettings());
         engine.Initialize();
         game = engine.Drive;
         // People who move about of their own accord would stand elsewhere in every shot: they stay put but where a mode
@@ -39,10 +42,6 @@ partial class Harness
         // Muted, and by day whatever the real time is (the "times" mode sets the other times of day)
         engine.Settings.Muted = true;
         engine.Settings.TimeOfDay = TimeOfDay.Day;
-        // Nothing is skipped and no scene counts as seen, whatever an earlier run left in the output folder's options
-        // (plan 12 · Q20: a scene played to its end is noted there for the machine)
-        engine.Settings.SkipScenes = SkipScenes.Off;
-        engine.Settings.ScenesSeen.Clear();
         engine.ApplySettings(window: false);
 
         // The game opens on its title screen; everything but the "title" mode wants a game in progress
