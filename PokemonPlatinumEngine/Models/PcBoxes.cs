@@ -9,7 +9,7 @@ namespace PokemonPlatinumEngine.Models;
 /// The Pokémon Storage System as Platinum keeps it (plan 06 · R12; the original's <c>pc_boxes.c</c> and the box
 /// application's rules): eighteen boxes of thirty places, each place empty or holding one Pokémon, each box with a
 /// name of up to eight letters and a wallpaper, and the box the PC was last left on, where a Pokémon caught with a
-/// full team goes first. Once the Pokédex is the National one the PC has twice as many boxes (plan 03 · D13,
+/// full team goes first. Once the Pokédex is the National one the PC has a hundred boxes (plan 03 · D13,
 /// <see cref="Grow"/>). No drawing or input: the PC's screen (<c>PCScreen</c>) asks these rules.
 /// </summary>
 public sealed class PcBoxes
@@ -21,9 +21,10 @@ public sealed class PcBoxes
 
     /// <summary>
     /// The boxes of a PC whose owner has the National Pokédex (plan 03 · D13). Platinum's eighteen hold one of each of
-    /// its 493 species with room to spare; it takes twice as many to say the same of the National Pokédex's 1,025.
+    /// its 493 species with room to spare; a hundred, the user's number (2026-10-12), hold the National Pokédex's
+    /// 1,025 nearly three times over: room for their forms and for more than one of a kind.
     /// </summary>
-    public const int NationalBoxCount = 36;
+    public const int NationalBoxCount = 100;
 
     /// <summary>The longest name a box can be given (<c>BOX_NAME_LEN</c>).</summary>
     public const int NameLength = 8;

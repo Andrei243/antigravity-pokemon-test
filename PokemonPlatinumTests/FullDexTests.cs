@@ -6,6 +6,7 @@ using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Models;
+using PokemonPlatinumEngine.UI;
 using Xunit;
 
 namespace PokemonPlatinumTests;
@@ -180,16 +181,43 @@ public class FullDexTests
     }
 
     [Fact]
+    public void ThePcsScreenGoesThroughAHundredBoxesAndAHeldKeyStopsAtTheEnds()
+    {
+        Assert.Equal(100, PcBoxes.NationalBoxCount);
+        var boxes = new PcBoxes(PcBoxes.NationalBoxCount);
+        // The last has a name that fits a box's eight letters
+        Assert.Equal("Box 100", boxes.Boxes[^1].Name);
+        var pc = new PCScreen();
+        pc.Open(boxes);
+        Assert.Equal(PcBoxes.NationalBoxCount, pc.BoxCount);
+        pc.Zone = StorageZone.BoxName;
+        // A press goes round from the first box to the last and back
+        pc.Move(-1, 0, 0);
+        Assert.Equal(PcBoxes.NationalBoxCount - 1, pc.Box);
+        pc.Move(1, 0, 0);
+        Assert.Equal(0, pc.Box);
+        // A key kept down runs on through them and stops at either end
+        for (int i = 0; i < PcBoxes.NationalBoxCount + 20; i++) pc.Move(1, 0, 0, held: true);
+        Assert.Equal(PcBoxes.NationalBoxCount - 1, pc.Box);
+        for (int i = 0; i < PcBoxes.NationalBoxCount + 20; i++) pc.Move(-1, 0, 0, held: true);
+        Assert.Equal(0, pc.Box);
+        // And a Pokémon put away goes into the box on the screen, or the next with room, however many there are
+        pc.Box = PcBoxes.NationalBoxCount - 1;
+        Assert.Equal((PcBoxes.NationalBoxCount - 1) * PCScreen.BoxSize, pc.StoredIndex - pc.Cell);
+    }
+
+    [Fact]
     public void ASaveKeepsAsManyBoxesAsThePcHas()
     {
-        var pc = new PcBoxes(PcBoxes.NationalBoxCount) { CurrentBox = 30 };
-        pc.PutIn(35, 29, new Pokemon(PokemonDatabase.Get("Pecharunt")!, 88));
-        pc.Rename(35, "THE END");
+        int last = PcBoxes.NationalBoxCount - 1;
+        var pc = new PcBoxes(PcBoxes.NationalBoxCount) { CurrentBox = last - 5 };
+        pc.PutIn(last, 29, new Pokemon(PokemonDatabase.Get("Pecharunt")!, 88));
+        pc.Rename(last, "THE END");
         var back = SaveManager.Read(SaveManager.Write(new SaveData { Boxes = SavedBoxes.From(pc) }))!.Boxes!.ToBoxes();
         Assert.Equal(PcBoxes.NationalBoxCount, back.Boxes.Count);
-        Assert.Equal(30, back.CurrentBox);
-        Assert.Equal("THE END", back.Boxes[35].Name);
-        Assert.Equal("Pecharunt", back[35, 29]!.Species.Name);
+        Assert.Equal(last - 5, back.CurrentBox);
+        Assert.Equal("THE END", back.Boxes[last].Name);
+        Assert.Equal("Pecharunt", back[last, 29]!.Species.Name);
 
         // A save of Platinum's eighteen stays at eighteen until the game gives the National Pokédex
         var plain = SaveManager.Read(SaveManager.Write(new SaveData { Boxes = SavedBoxes.From(new PcBoxes()) }))!.Boxes!.ToBoxes();

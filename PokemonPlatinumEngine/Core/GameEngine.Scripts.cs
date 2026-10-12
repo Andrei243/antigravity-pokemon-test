@@ -1258,8 +1258,8 @@ public partial class GameEngine
         public void GiveNationalDex()
         {
             game.playerPokedex.UnlockNational();
-            // The PC's boxes grow with it: eighteen held one of each of Platinum's species, and it takes twice as
-            // many for the National Pokédex's (plan 03 · D13)
+            // The PC's boxes grow with it: eighteen held one of each of Platinum's species, and the National
+            // Pokédex's get a hundred (plan 03 · D13)
             game.pcBoxStorage.Grow();
         }
 

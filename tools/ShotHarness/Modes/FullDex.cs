@@ -242,13 +242,17 @@ partial class Harness
             foreach (var species in everyone.Skip(stored)) boxes.Store(new Pokemon(species, 50));
             pc.Open(boxes);
             Wait(); Shot("fd11_boxes_national_first");
+            // The box the last species is in, the cursor on it, and the last box of all
+            int lastPlace = everyone.Count - 1;
             pc.Zone = StorageZone.BoxName;
-            pc.Move(-1, 0, party.Count);
-            Wait(); Shot("fd12_boxes_national_last");
-            pc.Move(-1, 0, party.Count);
+            pc.Box = lastPlace / PcBoxes.BoxSize;
+            Wait(); Shot("fd12_boxes_national_last_species");
             pc.Move(0, 1, party.Count);
-            for (int i = 0; i < 4; i++) pc.Move(1, 0, party.Count);
+            for (int i = 0; i < lastPlace % PcBoxes.BoxSize % PcBoxes.Columns; i++) pc.Move(1, 0, party.Count);
             Wait(); Shot("fd13_boxes_national_pecharunt");
+            pc.Zone = StorageZone.BoxName;
+            pc.Box = boxes.Boxes.Count - 1;
+            Wait(); Shot("fd14_boxes_national_hundredth");
             pc.Close();
             game.State = GameState.Overworld;
         }
