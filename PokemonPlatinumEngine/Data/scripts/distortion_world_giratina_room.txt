@@ -16,9 +16,9 @@
 # leads out at Sendoff Spring, and stepping into it shows the Spring Path on the map of Sinnoh
 # (VAR_HIDDEN_LOCATION_SPRING_PATH) and leaves VAR_EXITED_DISTORTION_WORLD_STATE 1 for the scene there.
 #
-# Stood in for until plan 09 lands (L11, L14): the shadows are Giratina's cry and a shake of the picture; its coming
-# down out of the dark (the original's EVENT_CMD_PLAY_GIRATINA_ARRIVAL, the sky darkening as it descends) is the
-# script's fade; the stones that rise and sink as the player comes and goes are there all the time. The Griseous Orb
+# Stood in for until plan 09 lands (L14): the shadows are a shadow sweeping across the room (plan 09 · L11's effect),
+# Giratina's cry and a shake of the picture; its coming down out of the dark (the original's
+# EVENT_CMD_PLAY_GIRATINA_ARRIVAL, the sky darkening as it descends) is the script's fade and the air wavering; the stones that rise and sink as the player comes and goes are there all the time. The Griseous Orb
 # is in the room Turnback Cave's portal leads to, as in the original.
 
 
@@ -30,6 +30,7 @@ script OnEnter
   if var VAR_DISTORTION_WORLD_PROGRESS != 10 end
   # DistortionWorldGiratinaRoom_CoordEvent_FirstShadow
   setvar VAR_DISTORTION_WORLD_PROGRESS 11
+  effect shadow 15 19 2 left
   cry "Giratina-Origin"
   camera shake 0.8
   speaker none
@@ -41,6 +42,7 @@ script OnEnter
 # The original's second shadow (EVENT_CMD_SHOW_GIRATINA_SHADOW on the middle stone).
 script SecondShadow
   setvar VAR_DISTORTION_WORLD_PROGRESS 12
+  effect shadow 15 15 1.6 right
   camera shake 1.0
   sound "thunder_rumble"
   emote player exclaim 0.8
@@ -57,6 +59,7 @@ script Arrival
   camera shake 1.0
   show giratina
   fade in 0.8
+  effect ripple 15 13
   wait 0.5
   speaker none
   say "Giratina hangs in the dark before {player}, and its eyes do not leave them."

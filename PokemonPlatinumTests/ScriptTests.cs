@@ -147,6 +147,10 @@ public class ScriptTests
           camera pan 3 4 0.5
           camera release
           camera shake
+          effect burst 3 4
+          effect shadow 3 4 2 left wait
+          effect beam 3 4 hold
+          effect stop 3 4
           usemove "Cut"
           surf
           climb
@@ -1376,6 +1380,8 @@ public class ScriptTests
         public bool Walking => false;
         public void Emote(NPC? who, EmoteBubble bubble, float seconds) { }
         public void Camera(CameraMove move, int x, int y, float seconds) { }
+        public void Effect(SceneEffect kind, int x, int y, float seconds, Direction? way, bool hold) { }
+        public void StopEffect(int x, int y) { }
         public bool Busy => false;
         public void Say(string? speaker, IReadOnlyList<string> lines) { }
         public int Answer => 0;

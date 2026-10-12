@@ -3,19 +3,22 @@
 # (FLAG_DISTORTION_WORLD_GIRATINA_SHADOW_1 and _2), and Cyrus is glimpsed walking off as a slab brings the player
 # down (VAR_DISTORTION_WORLD_CYRUS_APPEARANCE), without a word.
 #
-# Stood in for until plan 09 · L14: a shadow's passing is Giratina's cry and a shake of the picture. Cyrus's wordless
+# Stood in for until plan 09 · L14: a shadow's passing is a shadow sweeping over the stone (plan 09 · L11's effect),
+# Giratina's cry and a shake of the picture. Cyrus's wordless
 # appearance, which hangs on which slab the player rides, is left out with the slabs' own movement (plan 01 · M8).
 
 
 script ShadowWest
   setvar VAR_DISTORTION_WORLD_B4F_SHADOW_WEST 1
   setflag FLAG_DISTORTION_WORLD_GIRATINA_SHADOW_1
+  effect shadow 8 23 2 down
   call Passes
   end
 
 script ShadowEast
   setvar VAR_DISTORTION_WORLD_B4F_SHADOW_EAST 1
   setflag FLAG_DISTORTION_WORLD_GIRATINA_SHADOW_2
+  effect shadow 41 22 2 up
   call Passes
   end
 

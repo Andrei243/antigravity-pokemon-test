@@ -257,11 +257,11 @@ public sealed class RenderContext
     }
 
     /// <summary>Draws the scene target into the current target with the post effects and colour grading.</summary>
-    public void Composite(Rectangle destination)
+    public void Composite(Rectangle destination, SceneRipple ripple = default)
     {
         if (!targetsLoaded) return;
         bool fxaa = NeedsFxaa(Quality, Target.Texture.Width, OutputWidth);
-        Shaders.SetPost(Texel(Target.Texture), post, depthRange, fxaa, Quality.SceneScale);
+        Shaders.SetPost(Texel(Target.Texture), post, depthRange, fxaa, Quality.SceneScale, ripple);
         Raylib.BeginShaderMode(Shaders.Post);
         Shaders.BindPostTextures(blurA.Texture, bloomA.Texture, aoA.Texture, Target.Depth);
         var src = new Rectangle(0, 0, Target.Texture.Width, -Target.Texture.Height);

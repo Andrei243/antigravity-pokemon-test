@@ -69,6 +69,12 @@ Every sound effect of the game (plan 05 · A3), what it stands for in the origin
 | `gears` | `SEQ_SE_DP_GAGAGA` | The Sunyshore Gym's gears grind round as the player steps on a button on a hub (`SunyshoreGym_PressButton`). |
 | `thunder` | `SEQ_SE_DP_T_KAMI2` | Thunder cracking close, a fifth of a second after a storm's lightning (two strikes of three, as the original's storm chooses). |
 | `thunder_rumble` | `SEQ_SE_DP_T_KAMI` | Thunder rolling from further off, a second after the lightning (one strike of three). |
+| `effect_burst` | — | A story's scene throws out a burst of light (`effect burst`, plan 09 · L11): a rush of air, a deep knock and a shimmer. The original plays its own sound in each such scene; this one stands for all of them. |
+| `effect_beam` | — | A column of light stands on a tile (`effect beam`): a hum rising with a slow waver and air rushing up inside it. |
+| `effect_rift` | — | A rift tears open in the air (`effect rift`): noise climbing through a narrow band in fits, over a low growl. |
+| `effect_shadow` | — | A great shadow sweeps over the ground (`effect shadow`): a low rush of air swelling and dying over a deep note. |
+| `effect_ripple` | — | The picture wavers (`effect ripple`): two soft tones a little apart, wobbling against each other. |
+| `effect_sparkles` | — | Points of light rise round a tile (`effect sparkles`): high bells struck here and there, ringing out. |
 
 **The Underground** (plan 06 · R16a) has no sounds of its own yet, and plays ones the game already has until plan 05 · A6 gives it its own: `stairs` going down, coming up and through a base's way in; `poketch_beep` for the radar's pulse and as the wall's game begins; in the wall, `ledge` for a blow of the pick, `rock_smash` for one of the hammer, `bump` on bare dark rock, `select` as a thing is bared, `levelup` when the last is out and `boulder` when the wall falls in; `exclaim` as a trap goes off, `cursor` for a turn in a hole or a bubble burst and `bump` for a blow at a trap's boulder; `rock_smash` for the Digger Drill; `levelup` for a flag put up at home.
 

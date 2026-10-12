@@ -4,7 +4,8 @@ partial class Harness
 
     // Scripts at work in the field (plan 02 · S1): the nurse's question and its answers, a clerk, a PC, a signboard, a
     // clown's quiz and its coupon, a scene written here (bubbles, walks, the camera sent away, someone gone, text
-    // over a black screen), and a trainer who sees the player, challenges, is beaten and has a last word.
+    // over a black screen), each of the scene effects at its height and as it goes, and a trainer who sees the player,
+    // challenges, is beaten and has a last word.
     public void StoryMode()
     {
         engine.StartNewGame();
@@ -148,6 +149,28 @@ partial class Harness
         Frames(30); Shot("st21_scene_over");
         Console.WriteLine($"scene: player at {me.GridX - bx},{me.GridY - by} of where she stood (-3,0 is right), she at {breeder.GridX - bx},{breeder.GridY - by} (-2,0 is right), back on the map {sinnoh.NPCs.Contains(breeder)}");
         breeder.GridX = bx; breeder.GridY = by;
+
+        // ---- the scene effects (plan 09 · L11): each kind lit by a line, at its height and as it goes; a shadow
+        // crosses from the player's tile eastward, the rest stand two tiles east of the player and one north
+        foreach (var kind in Enum.GetValues<SceneEffect>())
+        {
+            string word = kind.ToString().ToLowerInvariant();
+            var (ex, ey) = kind == SceneEffect.Shadow ? (me.GridX, me.GridY) : (me.GridX + 2, me.GridY - 1);
+            var lit = ScriptParser.Parse("twinleaf_town", $"""
+                script Effect
+                  effect {word} {ex} {ey}
+                """)[0];
+            engine.StartScript(lit);
+            Until(() => view.Life.EffectCount > 0, $"the {word}");
+            double from = view.Life.Now;
+            // Counted by the field's own clock, which the frames move on a sixtieth of a second at a time
+            Until(() => view.Life.Now - from >= SceneEffects.Height(kind) - 0.001, $"the {word} at its height");
+            Shot($"st60_effect_{word}");
+            Until(() => view.Life.Now - from >= SceneEffects.Fading(kind) - 0.001, $"the {word} going");
+            Shot($"st61_effect_{word}_fading");
+            Until(() => view.Life.EffectCount == 0 && !engine.ScriptRunning, $"the {word}'s end");
+            Console.WriteLine($"effect {word}: lit at {ex - me.GridX},{ey - me.GridY} of the player, gone after {view.Life.Now - from:0.00} s");
+        }
 
         // ---- a trainer: seen, challenged, beaten, and a last word
         var tristan = sinnoh.FindPerson("youngster_tristan", "route_202")!;

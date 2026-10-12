@@ -12,8 +12,9 @@
 # the slab that leads down, where a step beside her brings her warning that it moves (the original's event, progress
 # 2), until the player has ridden it. The portal behind leads back to Spear Pillar.
 #
-# Stood in for until plan 09 lands (L11, L14): Giratina's shadow crossing the sky (the original's
-# StartDistortionWorldGiratinaShadowEvent) is its cry, a shake of the picture and the two looking round. Slabs do not
+# Stood in for until plan 09 lands (L14): Giratina's shadow crossing the sky (the original's
+# StartDistortionWorldGiratinaShadowEvent) is a shadow sweeping over the stone (plan 09 · L11's effect), its cry, a
+# shake of the picture and the two looking round. Slabs do not
 # move yet (plan 01 · M8): the one here is a way down through a fade, so Cynthia does not ride it with the player but
 # is met again at its foot.
 
@@ -46,6 +47,7 @@ script OnEnter
   face player down
   waitmoves
   # Giratina passes in the distance
+  effect shadow 35 31 2 right
   cry "Giratina-Origin"
   camera shake 0.8
   face player left

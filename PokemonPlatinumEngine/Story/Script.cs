@@ -86,6 +86,8 @@ public enum Op
     Arcade,
     // Amity Square's walk (plan 06 · R16c)
     Amity,
+    // The story's scene effects (plan 09 · L11): a burst, a beam, a rift, a shadow, a ripple, sparkles
+    Effect,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>
@@ -185,6 +187,9 @@ public sealed class Instruction
 
     public EmoteBubble Bubble { get; init; }
     public CameraMove Camera { get; init; }
+
+    /// <summary>For <see cref="Op.Effect"/>: the kind lit (plan 09 · L11).</summary>
+    public SceneEffect Effect { get; init; }
     public Audio.MusicRole Role { get; init; }
     public Badge Badge { get; init; }
 
