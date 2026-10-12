@@ -180,6 +180,8 @@ public partial class GameEngine
             game.StartTrainerBattle(trainer, second, partner, firstBattle);
         public void StartTransition(GameState next, Action? onMidpoint = null, TransitionKind kind = TransitionKind.Fade) =>
             game.StartTransition(next, onMidpoint, kind);
+        /// <summary>How the scene last closed, or is closing: the way into a battle the game picked for whom it met and where (plan 09 · L13).</summary>
+        public TransitionKind TransitionKind => game.transitionKind;
         /// <summary>The player presses the confirm key in the field: talking, reading, a field move's question.</summary>
         public void Interact() => game.TryInteract();
         /// <summary>What arriving on the current map does: its puzzle laid out, its <c>OnEnter</c>, its first arrival.</summary>
