@@ -760,7 +760,7 @@ public class VictoryRoadAndTheHallOfFameTests
         foreach (string named in new[] { "Nunito", "Vernon Adams", "SIL Open Font License 1.1", "PokéAPI", "Paul Hallett", "BSD 3-Clause", "pret/pokeplatinum",
             "Pokémon Showdown", "Guangcong Luo", "MIT", "raylib", "GAME FREAK", "Nintendo", "not affiliated", "trademarks of Nintendo" })
             Assert.Contains(named, all);
-        string repo = Repo();
+        string repo = Repository.Root;
         string records = File.ReadAllText(Path.Combine(repo, "docs", "art", "CREDITS.md")) + File.ReadAllText(Path.Combine(repo, "THIRD-PARTY-NOTICES.md"));
         foreach (string named in new[] { "Nunito", "Vernon Adams", "Paul Hallett", "pret/pokeplatinum", "Guangcong Luo" }) Assert.Contains(named, records);
 
@@ -768,13 +768,6 @@ public class VictoryRoadAndTheHallOfFameTests
         Assert.DoesNotContain(all + CreditsDatabase.End + CreditsDatabase.Farewell, c => c > 0xFF);
         Assert.Single(CreditsDatabase.Sections, s => s.Team);
         Assert.Equal("THE END", CreditsDatabase.End);
-    }
-
-    private static string Repo()
-    {
-        for (var dir = new DirectoryInfo(AppContext.BaseDirectory); dir != null; dir = dir.Parent)
-            if (File.Exists(Path.Combine(dir.FullName, "PokemonPlatinum.sln"))) return dir.FullName;
-        throw new DirectoryNotFoundException("The tests don't run from inside the repository");
     }
 
     [Fact]

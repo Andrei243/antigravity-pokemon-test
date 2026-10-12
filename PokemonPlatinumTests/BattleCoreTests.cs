@@ -38,11 +38,6 @@ public class BattleCoreTests
 
     private static List<string> Lines(IEnumerable<BattleEvent> log) => log.OfType<Said>().Select(s => s.Text).ToList();
 
-    /// <summary>A log as text, to compare two of them (a line's attachments are lists, which records compare by identity).</summary>
-    private static List<string> Written(IEnumerable<BattleEvent> log) => log.Select(e => e is Said s
-        ? $"{s.Text} | {string.Join("; ", s.Shows)} | {string.Join("; ", s.OnImpact)}"
-        : e.ToString()!).ToList();
-
     // ------------------------------------------------------------------ asked and answered
 
     [Fact]
@@ -99,7 +94,7 @@ public class BattleCoreTests
                 new BattleRandom(seed), TrainerAi.Instance, TrainerAi.Instance);
             Assert.Null(core.Request);
             Assert.NotEqual(BattleResult.None, core.Result);
-            return Written(core.TakeLog());
+            return Golden.BattleText.Written(core);
         }
 
         var first = Play(20261005);
@@ -183,7 +178,7 @@ public class BattleCoreTests
             return core;
         }
         var again = Again(record);
-        Assert.Equal(Written(battle.Core.Log), Written(again.Log));
+        Assert.Equal(Golden.BattleText.Written(battle.Core), Golden.BattleText.Written(again));
         Assert.Equal(battle.Result, again.Result);
         Assert.Null(again.Request);
 
@@ -200,7 +195,7 @@ public class BattleCoreTests
         Assert.Equal(record.Seed, restored.Seed);
         Assert.Equal(record.Answers.Select(a => a.Count), restored.Answers.Select(a => a.Count));
         Assert.Equal(record.Answers.SelectMany(a => a), restored.Answers.SelectMany(a => a));
-        Assert.Equal(Written(again.Log), Written(Again(restored).Log));
+        Assert.Equal(Golden.BattleText.Written(again), Golden.BattleText.Written(Again(restored)));
 
         // A replay is of its own seed, and of a battle that hasn't begun
         var (otherParty, otherWild) = Teams();

@@ -19,13 +19,6 @@ public class CoverageTests
     private static List<ItemData> Items => ItemDatabase.GetAll().OrderBy(i => i.Id).ToList();
     private static List<AbilityDatabase.AbilityRecord> Abilities => GameDataFiles.Load<List<AbilityDatabase.AbilityRecord>>(AbilityDatabase.FileName);
 
-    private static string Repo()
-    {
-        for (var dir = new DirectoryInfo(AppContext.BaseDirectory); dir != null; dir = dir.Parent)
-            if (File.Exists(Path.Combine(dir.FullName, "PokemonPlatinum.sln"))) return dir.FullName;
-        throw new DirectoryNotFoundException("The tests don't run from inside the repository");
-    }
-
     // ------------------------------------------------------------------ the report
 
     [Fact]
@@ -34,7 +27,7 @@ public class CoverageTests
         // Whoever gives an ability or an item its effect, or changes the data, runs the importer, which rewrites
         // the report: dotnet run --project tools/DataImporter
         string report = Coverage.Report(PokemonDatabase.GetAll().OrderBy(s => s.DexNumber).ToList(), Moves, Abilities, Items);
-        string onDisk = File.ReadAllText(Coverage.ReportPath(Repo()));
+        string onDisk = File.ReadAllText(Coverage.ReportPath(Repository.Root));
         Assert.True(report.ReplaceLineEndings("\n") == onDisk.ReplaceLineEndings("\n"),
             "docs/mechanics/coverage.md is out of date: run the data importer (dotnet run --project tools/DataImporter)");
     }

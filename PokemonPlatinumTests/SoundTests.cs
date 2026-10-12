@@ -278,7 +278,7 @@ public class SoundTests
     [Fact]
     public void EverySoundTheCodeAsksForIsInTheBank()
     {
-        string repo = Repo();
+        string repo = Repository.Root;
         var asked = new Regex(@"(?:PlaySound|Sound)\(\s*""([a-z_]+)""");
         var unknown = new List<string>();
         int found = 0;
@@ -295,15 +295,8 @@ public class SoundTests
     [Fact]
     public void TheListOfSoundsNamesEverySound()
     {
-        string doc = File.ReadAllText(Path.Combine(Repo(), "docs", "sound-effects.md"));
+        string doc = File.ReadAllText(Path.Combine(Repository.Root, "docs", "sound-effects.md"));
         Assert.All(SoundBank.Names, name => Assert.Contains($"`{name}`", doc));
-    }
-
-    private static string Repo()
-    {
-        for (var dir = new DirectoryInfo(AppContext.BaseDirectory); dir != null; dir = dir.Parent)
-            if (File.Exists(Path.Combine(dir.FullName, "PokemonPlatinum.sln"))) return dir.FullName;
-        throw new DirectoryNotFoundException("The tests don't run from inside the repository");
     }
 
     [Fact]
