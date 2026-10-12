@@ -979,11 +979,11 @@ public partial class GameEngine
 
         public int Answer => game.scriptAnswer;
 
-        public void Battle(NPC trainer, NPC? second, Trainer? partner, bool mayLose, bool first)
+        public void Battle(NPC trainer, NPC? second, Trainer? partner, bool mayLose, bool first, BattleTerms? terms = null)
         {
             game.scriptOutcome = BattleOutcome.None;
             game.battleMayBeLost = mayLose;
-            game.StartTrainerBattle(trainer, second, partner, first);
+            game.StartTrainerBattle(trainer, second, partner, first, terms);
         }
 
         public void WildBattle(Pokemon wild, BattleKind kind, bool cannotFlee)

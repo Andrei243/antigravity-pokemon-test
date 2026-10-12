@@ -142,10 +142,13 @@ public partial class GameEngine
     /// <summary>
     /// What a battle's rules ask of where and when it is fought: the Dive, Dusk and Repeat Balls do, and the
     /// weather of the place comes into the battle with it. And of the player (plan 06 · R10): the badges a traded
-    /// Pokémon obeys by, the money a loss takes a share of, and who the player is.
+    /// Pokémon obeys by, the money a loss takes a share of, and who the player is. What a script or a venue asks of
+    /// the battle itself (<paramref name="terms"/>, plan 14 · B1: an inverse battle) goes in with them, which is the
+    /// only way it reaches a battle: nothing sets it on one that is running.
     /// </summary>
-    private Battle.Sim.BattleConditions BattleConditionsHere() => new()
+    private Battle.Sim.BattleConditions BattleConditionsHere(BattleTerms? terms = null) => new()
     {
+        Inverse = terms?.Inverse ?? false,
         // A Pokémon hooked on a rod is fought on the water, wherever the player stands (FieldBattleDTO_SetWaterTerrain)
         Terrain = hooked ? Battle.Sim.BattleTerrain.Water : TerrainAt(currentMap, player.GridX, player.GridY),
         Night = GameClock.IsNight,
@@ -305,8 +308,11 @@ public partial class GameEngine
     /// <summary>The level of the first Pokémon the player would send out: what Platinum measures a foe against to pick the way into the battle.</summary>
     private int LeadLevel() => playerParty.Members.FirstOrDefault(p => !p.IsFainted)?.Level ?? 0;
 
-    /// <summary>A battle with a trainer of the map; with a <paramref name="partner"/>, a tag battle beside them (plan 06 · R9).</summary>
-    private void StartTrainerBattle(NPC trainerNpc, NPC? secondNpc = null, Trainer? partner = null, bool firstBattle = false)
+    /// <summary>
+    /// A battle with a trainer of the map; with a <paramref name="partner"/>, a tag battle beside them (plan 06 · R9);
+    /// with <paramref name="terms"/>, one of the formats a script may ask for (plan 14 · B1: an inverse battle).
+    /// </summary>
+    private void StartTrainerBattle(NPC trainerNpc, NPC? secondNpc = null, Trainer? partner = null, bool firstBattle = false, BattleTerms? terms = null)
     {
         // A trainer's battle ends the Poké Radar's chain (Encounter_NewVsTrainer)
         EndRadarChain();
@@ -358,7 +364,7 @@ public partial class GameEngine
                 Trainers = trainers,
                 Partner = partner,
                 FirstBattle = firstBattle,
-                Conditions = BattleConditionsHere(),
+                Conditions = BattleConditionsHere(terms),
                 MoveHints = MoveHintsOn,
                 TrainerLines = TrainerLinesOn
             });

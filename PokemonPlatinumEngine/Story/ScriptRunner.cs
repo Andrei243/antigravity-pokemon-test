@@ -437,6 +437,8 @@ public sealed partial class ScriptRunner
                     partner = beside.TrainerData ?? throw Wrong(i, $"{beside.Name} is no trainer and can't battle beside the player");
                 }
                 bool mayLose = i.Option;
+                // What the line asks of the battle itself (plan 14 · B1): an inverse battle
+                var terms = i.Inverse ? new BattleTerms(Inverse: true) : null;
                 // A rematch the Vs. Seeker found: the trainer brings the team of the level the story has reached, for
                 // this battle, and stops waiting for one (VsSeeker_GetRematchTrainerID, SetMoveCodeForFacingDirection)
                 var own = foe.TrainerData;
@@ -447,7 +449,7 @@ public sealed partial class ScriptRunner
                     TrainerDatabase.Fill(team, rematch);
                     foe.TrainerData = team;
                     foe.ReadyForRematch = false;
-                    host.Battle(foe, second, partner, mayLose, i.FirstBattle);
+                    host.Battle(foe, second, partner, mayLose, i.FirstBattle, terms);
                     afterBusy = () =>
                     {
                         foe.TrainerData = own;
@@ -457,7 +459,7 @@ public sealed partial class ScriptRunner
                 }
                 Refresh(foe);
                 Refresh(second);
-                host.Battle(foe, second, partner, mayLose, i.FirstBattle);
+                host.Battle(foe, second, partner, mayLose, i.FirstBattle, terms);
                 afterBusy = () => AfterBattle(mayLose);
                 break;
             }

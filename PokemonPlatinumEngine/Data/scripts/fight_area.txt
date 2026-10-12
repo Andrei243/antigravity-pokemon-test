@@ -263,3 +263,47 @@ label Advice
   say "Here's an angler's advice: the same water gives up different Pokémon to a different rod."
   say "So fish every pond three times over, with the Old Rod, the Good Rod and the Super Rod."
   end
+
+
+# The scientist at the plaza's east edge, by the Mart (plan 14 · B1): a person of our own, with nothing of the
+# original's behind him. He is there once the crowd before the gate has gone (the overlay's shownBy), and offers one
+# inverse battle a day: a battle whose type chart is turned round (docs/mechanics/rulings.md, "Formats of the later
+# games"). An inverse battle is X and Y's, not Platinum's, and nothing of it is met unless his offer is taken.
+#
+# FLAG_DAILY_FIGHT_AREA_INVERSE_BATTLE is the day's battle had, won or lost (a new day clears it with the other
+# daily flags, Models/DailyEvents.cs); FLAG_FIGHT_AREA_INVERSE_EXPLAINED keeps him from explaining it all twice.
+#
+# His team is one of Platinum's data (the last of Scientist Shaun's Vs. Seeker row, which nothing else reads once
+# beaten), chosen because its Magneton shows the whole of the rule: what Steel shrugged off hurts it, Poison reaches
+# it, Ground and Fire barely scratch it, and its own Electric moves strike a Ground type hard. A battle lost is no
+# white-out (canlose): nobody is carried to a Pokémon Center over an experiment.
+script InverseBattle
+  face self player
+  speaker self
+  if flag FLAG_DAILY_FIGHT_AREA_INVERSE_BATTLE goto Tomorrow
+  if flag FLAG_FIGHT_AREA_INVERSE_EXPLAINED goto Offer
+  say "Ah, a Champion! Just the person. I study what becomes of a battle when it is stood on its head."
+  say "In an inverse battle every matchup of types is turned round. What a Pokémon shrugs off hurts it badly."
+  say "What it fears barely stings. And a type that a move couldn't touch at all? It takes double!"
+  setflag FLAG_FIGHT_AREA_INVERSE_EXPLAINED
+label Offer
+  ask "One inverse battle a day is all my notes can keep up with. Will you fight today's, for science?"
+  if no goto Refused
+  say "Splendid! Remember: everything you know is backwards. Pencil at the ready... Begin!"
+  setflag FLAG_DAILY_FIGHT_AREA_INVERSE_BATTLE
+  battle self as "scientist_shaun_rematch_3" inverse canlose
+  speaker self
+  if lost goto Lost
+  say "Remarkable! You turned your whole way of thinking round in a single battle. That goes straight into my notes."
+  say "Do come back tomorrow. By then I shall have a fresh page, and very likely a fresh headache."
+  end
+label Lost
+  say "Ha! Old habits, you see. You reached for what has always worked, and here it never does."
+  say "Don't take it to heart. Sleep on it, and try me again tomorrow."
+  end
+label Refused
+  say "No? A pity. The offer stands, should you ever feel like unlearning everything you know."
+  end
+label Tomorrow
+  say "One inverse battle a day, I'm afraid. My Pokémon need their rest, and so do my notes. Come back tomorrow!"
+  end

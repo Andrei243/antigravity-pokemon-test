@@ -8059,6 +8059,31 @@ way 1, from answer 1
 from Flint at 654,424 of Sinnoh
 way -
   Flint> You there! Think you're up to it? Find yourself a partner and we'll see how hot you burn!
+=== fight_area.InverseBattle
+from Scientist at 662,432 of Sinnoh
+way 0.0
+  Scientist> Ah, a Champion! Just the person. I study what becomes of a battle when it is stood on its head.
+  Scientist> In an inverse battle every matchup of types is turned round. What a Pokémon shrugs off hurts it badly.
+  Scientist> What it fears barely stings. And a type that a move couldn't touch at all? It takes double!
+  Scientist> One inverse battle a day is all my notes can keep up with. Will you fight today's, for science?
+  Scientist> Splendid! Remember: everything you know is backwards. Pencil at the ready... Begin!
+  Scientist> Remarkable! You turned your whole way of thinking round in a single battle. That goes straight into my notes.
+  Scientist> Do come back tomorrow. By then I shall have a fresh page, and very likely a fresh headache.
+  ? One inverse battle a day is all my notes can keep up with. Will you fight today's, for science? = Yes
+  * battle scientist_shaun_rematch_3 inverse Won
+  + FLAG_DAILY_FIGHT_AREA_INVERSE_BATTLE
+  + FLAG_FIGHT_AREA_INVERSE_EXPLAINED
+  + beaten scientist_shaun_rematch_3
+way 0.1, from answer 2
+  Scientist> Ha! Old habits, you see. You reached for what has always worked, and here it never does.
+  Scientist> Don't take it to heart. Sleep on it, and try me again tomorrow.
+  * battle scientist_shaun_rematch_3 inverse Lost
+  + FLAG_DAILY_FIGHT_AREA_INVERSE_BATTLE
+  + FLAG_FIGHT_AREA_INVERSE_EXPLAINED
+way 1, from answer 1
+  Scientist> No? A pity. The offer stands, should you ever feel like unlearning everything you know.
+  ? One inverse battle a day is all my notes can keep up with. Will you fight today's, for science? = No
+  + FLAG_FIGHT_AREA_INVERSE_EXPLAINED
 === fight_area.Rival
 from {rival} at 628,434 of Sinnoh
 way 0.0

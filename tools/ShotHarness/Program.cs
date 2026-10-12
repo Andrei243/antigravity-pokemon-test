@@ -41,6 +41,7 @@
 //   dotnet run --project tools/ShotHarness -- <output dir> amity              Amity Square's walk: the gate, the counter's check for a team that may not and one that may, a Pokémon let out and the walk with it through every turn, its mood, a find, the ruins' huts, the man of the park, the goodbye, every species behind the player, a game saved on a walk taken up again
 //   dotnet run --project tools/ShotHarness -- <output dir> saves              no shots: saves of today's game (a new game, past the first chapter, surfing, on a bridge, a Safari Game, the girl, the modern rules) into <output dir>/saves, for the tests' corpus
 //   dotnet run --project tools/ShotHarness -- <output dir> crash [thread]     the crash handler at work: an exception thrown on purpose in the game's own guarded loop (or on another thread, which ends the run), the report, the crash save and the log it leaves in <output dir>, the next start's notice on the title
+//   dotnet run --project tools/ShotHarness -- <output dir> formats            the formats of the later games (plan 14): an inverse battle from the Fight Area's scientist, his offer refused and taken, the battle's opening line and hints, a resisted hit, an immunity and a weakness turned round, a win, the next day, a loss
 //   dotnet run --project tools/ShotHarness -- <dir> diff <other dir>          two runs' shots compared pixel by pixel (exits 1 if any differ)
 //   dotnet run --project tools/ShotHarness -- <dir> ab <before> <after> <before again>   three runs of `profile` compared (tools/dev/ab.sh)
 //   dotnet run --project tools/ShotHarness -- <dir> contact [prefix]          every shot of a run on sheets of twenty
@@ -157,6 +158,7 @@ if (mode == "epilogue") h.EpilogueMode();
 if (mode == "amity") h.AmityMode();
 if (mode == "saves") h.SavesMode();
 if (mode == "crash") h.CrashMode();
+if (mode == "formats") h.FormatsMode();
 
 h.Close();
 Raylib.CloseWindow();

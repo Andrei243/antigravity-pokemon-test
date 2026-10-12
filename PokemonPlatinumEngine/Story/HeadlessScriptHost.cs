@@ -425,12 +425,13 @@ public sealed class HeadlessScriptHost : IScriptHost
 
     public int Answer { get; private set; }
 
-    public void Battle(NPC trainer, NPC? second, Trainer? partner, bool mayLose, bool first)
+    public void Battle(NPC trainer, NPC? second, Trainer? partner, bool mayLose, bool first, BattleTerms? terms = null)
     {
         Shown("start a battle");
         Waits();
         Outcome = Fight?.Invoke(trainer) ?? BattleOutcome.Won;
-        string with = (second != null ? $" and {second.TrainerData?.Id}" : "") + (partner != null ? $" with {partner.Id}" : "") + (first ? " first" : "");
+        string with = (second != null ? $" and {second.TrainerData?.Id}" : "") + (partner != null ? $" with {partner.Id}" : "") + (first ? " first" : "")
+            + (terms is { Inverse: true } ? " inverse" : "");
         Log.Add($"battle {trainer.TrainerData?.Id}{with} {Outcome}");
         if (Outcome == BattleOutcome.Won)
         {
