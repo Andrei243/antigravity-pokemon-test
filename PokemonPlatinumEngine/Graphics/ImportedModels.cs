@@ -111,6 +111,8 @@ internal static class ModelOverrides
     /// <summary>The model file for a species, or null if there is none.</summary>
     public static string? Find(string species)
     {
+        // Safe mode reads no hand-made file (plan 16 · T3)
+        if (!Overrides.Enabled) return null;
         var map = Files();
         if (map.Count == 0) return null;
         if (map.TryGetValue(Key(species), out var path)) return path;
@@ -171,7 +173,7 @@ internal static class ImportedModels
     public static void Report(string message)
     {
         Problems.Enqueue(message);
-        Raylib.TraceLog(TraceLogLevel.Warning, "MODELS: " + message);
+        Core.Diagnostics.Log.Warn("MODELS: " + message);
     }
 
     public static PokeModel Load(string path, string species)

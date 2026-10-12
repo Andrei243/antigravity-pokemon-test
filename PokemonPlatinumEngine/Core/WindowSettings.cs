@@ -3,14 +3,23 @@ using Raylib_cs;
 
 namespace PokemonPlatinumEngine.Core;
 
-/// <summary>Applies the window part of the player's options: size, borderless full screen and V-Sync.</summary>
+/// <summary>
+/// Applies the window part of the player's options: size, borderless full screen, V-Sync and the frame limit (plan
+/// 16 · T3). Only the game's own window is given them (<c>Program.Main</c>, and the options through
+/// <c>ApplySettings(window: true)</c>): the screenshot harness's hidden window never is, so it draws as fast as it can.
+/// </summary>
 public static class WindowSettings
 {
     private static bool fullscreen;
     private static Vector2 windowedPosition;
 
+    /// <summary>What raylib is asked to hold the game to for a frame limit: the limit itself, and nought (no limit) for anything that is none.</summary>
+    public static int TargetFps(int frameCap) => frameCap > 0 ? frameCap : 0;
+
     public static void Apply(GameSettings settings)
     {
+        Raylib.SetTargetFPS(TargetFps(settings.FrameCap));
+
         if (settings.Fullscreen != fullscreen)
         {
             if (settings.Fullscreen) EnterFullscreen();

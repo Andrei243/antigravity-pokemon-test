@@ -34,6 +34,27 @@ public sealed record TitleNotice(string Heading, string Body)
             "The save and the one kept before it are both damaged, so there is no game to continue. A new game can still be started."),
         _ => null
     };
+
+    /// <summary>
+    /// What the title says, once, on the start after a crash (plan 16 · T3): that the game stopped, what became of
+    /// the save (it is intact, or there was none yet; a save that couldn't be read has its own notice, which comes
+    /// after this one), where the report is and whether the game as it stood was kept beside the save. Null when
+    /// the last run left no note: it ended as the player chose.
+    /// </summary>
+    public static TitleNotice? ForCrash(Core.Diagnostics.CrashNote? crash, SaveLoad load)
+    {
+        if (crash == null) return null;
+        string save = load switch
+        {
+            SaveLoad.Ok => "Your save is intact. ",
+            SaveLoad.None => "No game had been saved yet. ",
+            _ => ""
+        };
+        string kept = crash.SaveKept
+            ? $", and the game as it stood was kept beside your save as {Core.Diagnostics.CrashReport.SaveName}."
+            : ".";
+        return new("The game stopped unexpectedly", $"{save}A report was written to {crash.Report}{kept}");
+    }
 }
 
 /// <summary>What the player picked on the title menu.</summary>
