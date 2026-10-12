@@ -39,6 +39,7 @@ label Caught
 
 
 script Saturn
+  scene "Commander Saturn"
   speaker "Commander Saturn"
   say "...The mission is proceeding without a hitch. The boss will be pleased with this."
   face self player
@@ -57,4 +58,5 @@ script Saturn
   setflag FLAG_DEFEATED_COMMANDER_SATURN_VALOR_CAVERN
   setflag FLAG_ALT_MUSIC_LAKE_VALOR
   fade in
+  endscene
   end

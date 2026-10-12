@@ -343,6 +343,13 @@ public sealed class CameraRig
     public bool Moving => (away && ((rate > 0f && amount < 1f) || rate < 0f || shift < 1f || (aim == Aim.Path && routeTime < routeSeconds)))
         || zoomAmount < 1f || (barRate > 0f && bars < 1f) || (barRate < 0f && bars > 0f);
 
+    /// <summary>
+    /// Everything the rig is on its way to, it has reached (plan 12 · Q20: a scene skipped): the camera is where it
+    /// was sent, or home again; a path is at its last spot; the lens is at its factor; the bars are in or away; and
+    /// slow motion, which passes by itself, is over.
+    /// </summary>
+    public void Settle() => Advance(LongestSlow + 1f);
+
     /// <summary>Moves everything on by a time of the camera's clock.</summary>
     public void Advance(float dt)
     {

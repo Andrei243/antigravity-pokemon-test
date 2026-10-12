@@ -9,6 +9,7 @@
 
 script OnEnter
   if var VAR_TEAM_GALACTIC_ETERNA_BUILDING_1F_STATE != 0 end
+  scene "Looker in disguise"
   face grunt_m_looker left
   emote grunt_m_looker exclaim
   wait 0.3
@@ -30,6 +31,7 @@ script OnEnter
   show grunt_m_looker
   hide looker
   setvar VAR_TEAM_GALACTIC_ETERNA_BUILDING_1F_STATE 1
+  endscene
   end
 
 # A quick turn on the spot, as a disguise goes on or comes off

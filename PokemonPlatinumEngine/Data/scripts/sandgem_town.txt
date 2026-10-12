@@ -8,6 +8,7 @@
 
 # The west edge of town (the original's trigger 2).
 script MeetAssistant
+  scene "The assistant"
   music "common/assistant"
   face sandgem_counterpart player
   emote sandgem_counterpart exclaim
@@ -38,6 +39,7 @@ script MeetAssistant
   music area
   setvar VAR_SANDGEM_TOWN_STATE 1
   warp "RowanLab" 5 8 up
+  endscene
   end
 
 
@@ -45,6 +47,7 @@ script MeetAssistant
 script OnEnter
   if var VAR_SANDGEM_TOWN_STATE != 1 end
   if var VAR_SANDGEM_TOWN_LAB_STATE == 0 end
+  scene "The tour"
   sound "door_open"
   show prof_rowan
   speaker "Prof. Rowan"
@@ -76,6 +79,7 @@ script OnEnter
   setflag FLAG_HIDE_SANDGEM_TOWN_COUNTERPART
   music area
   setvar VAR_SANDGEM_TOWN_STATE 2
+  endscene
   end
 
 

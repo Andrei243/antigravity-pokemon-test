@@ -33,6 +33,10 @@ public static class ScriptParser
     // The original's own local variables keep its spelling (VAR_MAP_LOCAL_0x01), which its coordinate events name too
     private static readonly Regex VariableName = new("^(VAR_[A-Z0-9_]+|VAR_MAP_LOCAL_0x[0-9A-F]{2})$", RegexOptions.Compiled);
 
+    /// <summary>The longest a scene's name may be, and what it may be made of (plan 12 · Q20): it is part of a key a save keeps.</summary>
+    public const int MostSceneName = 40;
+    private static readonly Regex SceneName = new("^[A-Za-z0-9][A-Za-z0-9 _'-]{0,39}$", RegexOptions.Compiled);
+
     public const float EmoteSeconds = 0.9f, FadeSeconds = 0.4f, PanSeconds = 0.8f, ReleaseSeconds = 0.6f, ShakeSeconds = 0.5f;
 
     /// <summary>The most answers a <c>choose</c> may offer: what its box holds.</summary>
@@ -108,6 +112,8 @@ public static class ScriptParser
         var condition = ConditionOf(r);
         if (!r.More) throw r.Error("an 'if' with nothing to do after its question");
         if (r.PeekIs("if")) throw r.Error("an 'if' can't guard another 'if': jump to a label and ask there");
+        // (A scene begins and ends where its script says, whatever the story holds: what may be skipped is told from the file)
+        if (r.PeekIs("scene") || r.PeekIs("endscene")) throw r.Error("an 'if' can't guard a scene's beginning or its end: jump to a label and begin it there");
         return new Instruction { Op = Op.If, Line = r.Line, Condition = condition, Then = Command(r) };
     }
 
@@ -864,6 +870,18 @@ public static class ScriptParser
                     throw r.Error(shake ? $"someone is shaken 1 to {SetPieces.MostTimes} times" : $"someone flickers 1 to {SetPieces.MostTimes} times");
                 return new Instruction { Op = shake ? Op.Shake : Op.Flicker, Line = line, Name = who, Number = times };
             }
+
+            // A scene that may be skipped (plan 12 · Q20): scene "Name" where it begins, endscene where it has been
+            // played to its end. The name is the scene's own in its file, which with the file is its key in a save
+            case "scene":
+            {
+                string scene = r.Text("the scene's name");
+                if (!SceneName.IsMatch(scene))
+                    throw r.Error($"'{scene}' is no name for a scene: one to {MostSceneName} letters, digits, spaces, hyphens, apostrophes or underscores, beginning with a letter or a digit");
+                return new Instruction { Op = Op.Scene, Line = line, Name = scene };
+            }
+            case "endscene":
+                return new Instruction { Op = Op.EndScene, Line = line };
 
             case "script":
             case "label":

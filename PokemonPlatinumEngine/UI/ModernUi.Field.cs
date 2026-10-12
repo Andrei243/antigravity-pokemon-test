@@ -116,6 +116,43 @@ internal static partial class ModernUi
         UiFonts.DrawCentered(text, r.X + (w - tw) / 2f, r.Y + r.Height / 2f, 30, Color.White, UiWeight.ExtraBold);
     }
 
+    /// <summary>
+    /// The hold that skips a scene (plan 12 · Q20; style guide, "Story scenes"): how far its pill stands from the
+    /// screen's right edge, the height of its middle (the middle of a cinema bar), the pill's height, and the ring's
+    /// radius and width.
+    /// </summary>
+    public const float SkipRingMargin = 64f, SkipRingMiddle = 60f, SkipPillHeight = 56f, SkipRingRadius = 18f, SkipRingWidth = 5f;
+
+    /// <summary>The strokes a whole turn of the hold's ring is laid in.</summary>
+    private const int SkipRingStrokes = 48;
+
+    /// <summary>
+    /// The hold's ring: SKIP on a dark pill at the top right with a ring beside it that fills clockwise from twelve
+    /// o'clock as the button is held, <paramref name="fill"/> from 0 to 1. Drawn only while the button is down and
+    /// the scene may be skipped; <paramref name="right"/> is how far its right end stands from the screen's.
+    /// </summary>
+    public static void SkipRing(int sw, float fill, float right = SkipRingMargin)
+    {
+        const string label = "SKIP";
+        float tw = UiFonts.Measure(label, 24, UiWeight.Black);
+        float w = 24 + tw + 14 + SkipRingRadius * 2 + 12;
+        var r = new Rectangle(sw - right - w, SkipRingMiddle - SkipPillHeight / 2f, w, SkipPillHeight);
+        UiShapes.Shadow(r, SkipPillHeight / 2f, 18, new Vector2(0, 6), ShadowColor);
+        UiShapes.Shape(r, SkipPillHeight / 2f, new Color(58, 70, 104, 245), new Color(36, 44, 68, 245), new Color(255, 255, 255, 60), 3);
+        UiFonts.DrawCentered(label, r.X + 24, SkipRingMiddle, 24, Color.White, UiWeight.Black);
+
+        var centre = new Vector2(r.X + r.Width - 12 - SkipRingRadius, SkipRingMiddle);
+        UiShapes.Ring(centre, SkipRingRadius, SkipRingWidth, new Color(255, 255, 255, 70));
+        // What is filled so far, in short strokes with round ends along the ring's middle
+        float turn = Math.Clamp(fill, 0f, 1f) * MathF.Tau;
+        if (turn <= 0f) return;
+        float middle = SkipRingRadius - SkipRingWidth / 2f;
+        Vector2 At(float angle) => centre + new Vector2(MathF.Sin(angle), -MathF.Cos(angle)) * middle;
+        float step = MathF.Tau / SkipRingStrokes;
+        for (float from = 0f; from < turn; from += step)
+            UiShapes.Line(At(from), At(MathF.Min(turn, from + step)), SkipRingWidth, Color.White);
+    }
+
     /// <summary>The colour of a place's sign: green for routes, blue for lakes and water, gold for towns and cities.</summary>
     public static Color PlaceColor(string name) =>
         name.StartsWith("Route", StringComparison.OrdinalIgnoreCase) ? Green

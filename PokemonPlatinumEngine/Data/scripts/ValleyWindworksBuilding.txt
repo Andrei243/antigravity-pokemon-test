@@ -38,6 +38,7 @@ script Reunited
 
 # Beside the turbines' controls (the original's trigger 0, two tiles deep at x 19, state 1).
 script Mars
+  scene "Commander Mars"
   emote mars exclaim
   if var PLAYER_Y == 6 walk mars up 1
   face mars left
@@ -106,6 +107,7 @@ label Hug
   clearflag FLAG_HIDE_VALLEY_WINDWORKS_OUTSIDE_LOOKER
   setvar VAR_VALLEY_WINDWORKS_TEAM_GALACTIC_STATE 2
   setflag FLAG_ALT_MUSIC_VALLEY_WINDWORKS_BUILDING
+  endscene
   end
 
 

@@ -9,6 +9,7 @@
 # The first time the player comes in, the guide comes over to explain (VAR_HAS_ENTERED_HEARTHOME_GYM_BEFORE)
 script OnEnter
   if var VAR_HAS_ENTERED_HEARTHOME_GYM_BEFORE != 0 end
+  scene "The Gym's guide"
   emote gym_guide exclaim
   walk gym_guide left 1 down 1
   speaker "Gym Guide"
@@ -18,6 +19,7 @@ script OnEnter
   walk gym_guide up 1 right 1
   face gym_guide down
   setvar VAR_HAS_ENTERED_HEARTHOME_GYM_BEFORE 1
+  endscene
   end
 
 

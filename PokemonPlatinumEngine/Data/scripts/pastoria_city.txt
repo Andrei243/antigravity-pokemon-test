@@ -28,6 +28,7 @@ script OnEnter
 # The original's OnFrame (state 3): out of the Gym with the Fen Badge, the rival is waiting, and Crasher Wake comes
 # out after the player
 label WakeComesOut
+  scene "Crasher Wake comes out"
   place player 589 828 down
   place rival 595 819 down
   show rival
@@ -82,6 +83,7 @@ label WakeComesOut
   clearflag FLAG_HIDE_PASTORIA_CITY_RIVAL
   show rival
   setvar VAR_PASTORIA_CITY_STATE 4
+  endscene
   end
 
 script AfterTheGym
@@ -99,6 +101,7 @@ script SafariOver
 # Before the Gym's door once Looker has been to the warehouse (trigger 1, state 1): the rival comes down the street
 # and battles. He is shown for the scene alone: his flag still hides him, so a battle lost leaves the doorway clear.
 script RivalBattle
+  scene "The rival's battle in Pastoria"
   place rival 595 819 left
   show rival
   walk rival down 9 fast
@@ -128,6 +131,7 @@ label After
   hide rival
   music area
   setvar VAR_PASTORIA_CITY_STATE 2
+  endscene
   end
 
 
@@ -197,6 +201,7 @@ script Bomb
   end
 
 script Explosion
+  scene "The bomb at the Great Marsh"
   call AfterTheGym
   walk rival up 3 right 1 fast
   speaker "{rival}"
@@ -213,6 +218,7 @@ script Explosion
   clearflag FLAG_HIDE_PASTORIA_CITY_GRUNT_M
   place grunt_m 610 809 down
   show grunt_m
+  endscene
   return
 
 script ButtonPushed
@@ -238,6 +244,7 @@ script GruntRuns
   return
 
 script GoAfterTheGoon
+  scene "After the grunt"
   speaker "Crasher Wake"
   say "Stay here, both of you! I'm going in alone, and nobody else follows me. Got that?"
   say "If there's more of that bomb lying about in there, it could go off any second!"
@@ -255,6 +262,7 @@ script GoAfterTheGoon
   say "{player}! That Galactic creep went east. Go and get him!"
   say "I'll guard this door, like my master told us. Nobody's getting past me!"
   say "Now hurry, before he gets away!"
+  endscene
   return
 
 
@@ -282,6 +290,7 @@ script Grunt
   say "They'd better get a move on. The sooner it turns up, the sooner things go off with a bang. Heh heh..."
   end
 label StopFollowing
+  scene "The grunt runs"
   say "You again? Stop tailing me, will you?"
   say "I'd teach you a lesson, but I'm wanted at the lake and I'm late already. Count yourself lucky!"
   say "And stay put this time. I mean it!"
@@ -295,4 +304,5 @@ label Gone
   hide self
   setflag FLAG_HIDE_PASTORIA_CITY_GRUNT_M
   setflag FLAG_TALKED_TO_PASTORIA_CITY_GRUNT_M
+  endscene
   end

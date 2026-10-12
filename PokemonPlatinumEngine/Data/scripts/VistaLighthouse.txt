@@ -25,6 +25,7 @@ script OnEnter
 
 # VistaLighthouse_Volkner
 script Volkner
+  scene "Volkner at the lighthouse"
   face self player
   speaker "Volkner"
   say "... ..."
@@ -58,6 +59,7 @@ label Leaves
   setflag FLAG_HIDE_VISTA_LIGHTHOUSE_VOLKNER
   sound "lift"
   setflag FLAG_VOLKNER_RETURNED_TO_GYM
+  endscene
   end
 
 

@@ -150,6 +150,7 @@ last measured with `team size` and `{record}` the record it was held against, in
 | `return` | Back to the script that called this one; ends a script nobody called. |
 | `end` | Ends everything, whoever called. |
 | `if [not] <question> <command>` | Carries the command out when the answer is yes. Any one command may follow, most often `goto`. |
+| `scene "Name"`, `endscene` | Mark a scene that may be skipped, from its first line to where it has been played to its end (plan 12 · Q20). "Scenes that may be skipped", below, has both. |
 | `random 26` | A die of that many sides (one or more), rolled on the game's own chance: `RESULT` is 0 to one less than its sides (the original's `GetRandom`; plan 01 · M11, part a: the flower shop's berry of the day, the Berry Master's, the Old Chateau's ghosts). A test rolls for it (`HeadlessScriptHost.Rolls`, and 0 once they run out). |
 
 What an `if` can ask:
@@ -777,6 +778,83 @@ waiting on one. Coming to another place ends them all.
 
 The original's one-off pieces (the lake guardians' machines, the Vista Lighthouse's binoculars, Giratina's shadow over
 the Distortion World) are their chapters' own scenes, written with `effect` and the camera kit.
+
+### Scenes that may be skipped
+
+Plan 12 · Q20; style guide, "Field menus and notices", "A scene skipped". A scene is a stretch of a script that takes
+the field from the player for a while to show something: people walking, the camera, effects, a long talk, a boss's
+speech before a battle. A person who says two lines is not one. Two commands mark it, and nothing else about the
+script changes:
+
+| Command | What it does |
+|---|---|
+| `scene "Name"` | A scene begins. The name is the scene's own in its file (one to forty letters, digits, spaces, hyphens, apostrophes and underscores; quoted, or a bare word), and with the file it is the scene's key in a save: `route_201.The professor`. |
+| `endscene` | The scene has been played to its end. That is what makes it **seen**: by the game it was played in (`StoryState.ScenesSeen`, kept in the save) and by this machine (`GameSettings.ScenesSeen`, kept with the options, so a second game knows it). |
+
+```
+script OnEnter
+  if var VAR_LAKE_ACUITY_STATE != 1 end
+  scene "Lake Acuity"
+  camera pan 16 45 1.0
+  ...
+  setvar VAR_LAKE_ACUITY_STATE 2
+  endscene
+  end
+```
+
+**Where the two lines go.** `scene` goes after the questions of the story that lead the scene (`if var … end`, `if flag …
+goto Done`), so that a way through the script which never plays the scene never begins it; `endscene` goes after the
+last thing the scene sets, before the `end` (or the `return`) of every way out of it. A scene with two ways out has an
+`endscene` on each. Neither may be guarded by an `if`: jump to a label and begin the scene there. A scene's battle, its
+question and its warp are inside it: the scene goes on in the room it warped to, and after its battle. What it
+`call`s is inside it too, so a script called from a scene marks none of its own, and one that ends the whole script
+(`end`, as a talk that is also started by itself does) is called after the `endscene`.
+
+**What ends a scene.** Its `endscene`, seen. Or, unseen: the script's `end` on some other way out, a battle lost that
+the script couldn't go on from, the `return` of a called script that began it, the game stopping a script that went
+wrong, another script started in its place. A scene begun again while it is open (a jump back over its first line, as
+a question asked until it hears yes makes) goes on as it was.
+
+**What the files are held to** (`ScriptLibrary.Problems`, so the content check and `StoryTests` both tell it): a scene
+left open (no `endscene` below it in its script before another scene begins), an `endscene` with no scene above it, a
+scene inside a scene (written out, or begun by a script the scene calls), and two scenes of one name in one place's
+file.
+
+**Skipping.** The options' "Skip scenes" says what the player may skip: nothing (`Off`, unless chosen), the scenes this
+game or this machine has seen (`Seen`), or any (`Any`). While a scene that may be skipped runs, the menu button held
+for a second puts the runner in a **hurry** (`ScriptRunner.Hurry`) until the scene's `endscene`, or until something
+that waits for the player. In a hurry:
+
+- nothing is waited for: a `wait`, a walk, a camera's move, an effect, a set piece;
+- **a walk is still walked**, unseen: whoever a scene sends walking takes their own steps (the player the player's, so
+  a ledge is hopped and a wall, or someone standing in the way, is given up at), in the time the scene gives them.
+  The time a hurry doesn't wait (a `wait`, a bubble's seconds, a camera's move, a fade, a gesture, a set piece) passes
+  for whoever is walking (`IScriptHost.Elapse`), and where the scene waits for its walks (`walk`, `waitmoves`) everyone
+  walks to the end together (`Arrive`). So someone sent ahead with `move` before a `wait` is as far ahead when the
+  player's `walk` begins as when the scene is played, and everyone ends on the tile, and facing the way, a played
+  scene leaves them. Lines take no time in a hurry: a scene must not count on how long its text is read, played either;
+- what is only said, shown or heard is dropped: every `say` and `text` (and the lines `give` and `find` say) unread, a
+  bubble, a gesture, a sound, a fanfare, a cry, a shake, an effect that passes, slow motion;
+- what leaves something behind is ended at once in the state it leaves: a `warp` arrives, and the place come to runs
+  its `OnEnter` when the script is over, as ever; a `fade` is black or gone; the camera is where it was sent, at its
+  lens, with the bars in or away; an effect that is held is lit; a PC's screen is on or dark and the Hall of Fame's
+  balls lie in their sockets; a change of music is kept;
+- **every flag, variable, item, Pokémon, `hide`, `show` and `place` happens exactly as when the scene is played.**
+
+The hurry **stops** before anything that waits for the player or that can't be ended at once, which is then carried out
+at the scene's own pace: `ask` and `choose`; a battle (`battle`, `wildbattle`, `catchinglesson`, `sweetscent`,
+`honeytree battle`); a screen (`starter`, `shop`, `pc`, `wardrobe`, `travel`, `choosepokemon`, `chooseitem`, `halloffame
+show`, `credits`, `hatch`, `poffin cook`, `supercontest enter` and `photo`, `seal capsules` and `shop`, and everything of
+`fossil`, `gamecorner`, `villa`, `palpark`, `frontier`, `tower`, `factory`, `hall`, `castle`, `arcade`, `tutor`, `amity`
+and of the Underground's tunnels); `save`; a field move (`usemove`, `surf`, `climb`, `fly`, `teleport`, `escape`); and a
+puzzle's pieces on the move (`flowerclock`, `pressbutton`, `gearbutton`, `platformlift`). `ScriptRunner.StopsAHurry`
+names every command one way or the other, and throws for one it hasn't been told of. After the answer, the battle or
+the screen the scene goes on at its own pace, and the button held again skips on. A scene skipped to its `endscene`
+counts as seen.
+
+Outside a scene nothing can be skipped, and with the row off nothing is read or drawn. A test plays a script both
+ways with `ScriptRunner.Impatient` (someone who holds the button the whole time), and `HeadlessScriptHost` notes what a
+hurry dropped (`Unread`, `Dropped`) and tells as a problem anything it reached that it should have stopped before.
 
 ## Who is on the map
 

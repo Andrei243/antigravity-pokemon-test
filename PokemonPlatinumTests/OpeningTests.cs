@@ -76,10 +76,17 @@ public class OpeningTests
         public BattleOutcome Fight { get; init; } = BattleOutcome.Won;
         public const string Rival = "Kit";
 
-        public Game(int starter = 0, BattleOutcome fight = BattleOutcome.Won)
+        /// <summary>
+        /// Played by someone who holds the skip button the whole time (plan 12 · Q20): every scene of every script is
+        /// hurried through, up to each thing that waits for the player and on again after it.
+        /// </summary>
+        public bool Impatient { get; }
+
+        public Game(int starter = 0, BattleOutcome fight = BattleOutcome.Won, bool impatient = false)
         {
             Starter = starter;
             Fight = fight;
+            Impatient = impatient;
             foreach (string path in Directory.GetFiles(GameDataFiles.PathOf(MapDatabase.Folder), "*.json"))
             {
                 var map = GameDataFiles.Load<MapFile>(Path.Combine(MapDatabase.Folder, Path.GetFileName(path))).ToMap();
@@ -177,7 +184,7 @@ public class OpeningTests
             if (Time is { } time) host.TimeOfDay = time;
             while (Answers.Count > 0) host.Answers.Enqueue(Answers.Dequeue());
             while (Rolls.Count > 0) host.Rolls.Enqueue(Rolls.Dequeue());
-            var runner = new ScriptRunner(Scripts, host);
+            var runner = new ScriptRunner(Scripts, host) { Impatient = Impatient };
             runner.Start(script, subject);
             runner.RunToEnd();
             Played.Add((script.FullName, host));
@@ -340,6 +347,98 @@ public class OpeningTests
         Assert.Equal(done.Variables.OrderBy(v => v.Key), game.Story.Variables.OrderBy(v => v.Key));
         Assert.Empty(done.Flags.Except(game.Story.Flags));
         Assert.Equal(new[] { "FLAG_TALKED_TO_ROUTE_202_COUNTERPART" }, game.Story.Flags.Except(done.Flags).Order());
+    }
+
+    /// <summary>The whole chapter as a game goes through it, from the first step in the bedroom to the catching lesson.</summary>
+    private static void PlayTheChapter(Game game)
+    {
+        game.Step("RivalRushesIn");
+        game.Through("PlayerHouse");
+        game.Step("DoorWarning");
+        game.Through("Sinnoh");
+        game.Step("GuitaristStops");
+        game.Step("RivalRunsOut");
+        game.Through("RivalHouse");
+        game.Talk("rival_mom");
+        game.Through("RivalHouse2F");
+        game.Through("RivalHouse");
+        game.Through("Sinnoh");
+        game.Step("RowanAppears");
+        game.Step("ChooseFirst");
+        game.Talk("briefcase");
+        game.Through("Sinnoh");
+        game.Step("OffToTheLake");
+        game.Step("NotHome");
+        game.Step("NotSandgem");
+        game.Step("IntoTheLake");
+        game.Through("Sinnoh");
+        game.Step("MeetAssistant");
+        game.Through("Sinnoh");
+        game.Step("CatchingLesson");
+        game.Through("PlayerHouse");
+        game.Talk("mom");
+        game.Through("Sinnoh");
+        game.Step("CatchingLesson");
+    }
+
+    /// <summary>
+    /// What a game has come to, as text: the story, the scenes seen, the bag, the team, where the player stands, and
+    /// on every map everyone's tile and facing and whether they are on it. Two games that tell the same are the same.
+    /// </summary>
+    private static string Tell(Game game)
+    {
+        var text = new System.Text.StringBuilder();
+        text.Append(System.Text.Json.JsonSerializer.Serialize(game.Story.Snapshot())).Append('\n');
+        text.Append("seen: ").AppendJoin(", ", game.Story.ScenesSeen.Order(StringComparer.Ordinal)).Append('\n');
+        text.Append("bag: ").AppendJoin(", ", game.Bag.AllItems.Where(i => i.Quantity > 0).OrderBy(i => i.Name, StringComparer.Ordinal).Select(i => $"{i.Name} x{i.Quantity}")).Append('\n');
+        text.Append("team: ").AppendJoin(", ", game.Party.Members.Select(p => $"{p.Species.Name} Lv{p.Level} {(p.CurrentHP >= p.MaxHP ? "whole" : "hurt")}")).Append('\n');
+        text.Append($"on {game.Map.Name} at {game.Tile.X},{game.Tile.Y}\n");
+        foreach (var (name, map) in game.Maps.OrderBy(m => m.Key, StringComparer.Ordinal))
+        {
+            var on = map.NPCs.ToHashSet();
+            foreach (var person in map.Everyone)
+                text.Append($"{name}: {person.Key ?? person.Name} at {person.GridX},{person.GridY} {person.Facing} {(on.Contains(person) ? "on" : "off")}{(person.HasBattled ? " beaten" : "")}\n");
+        }
+        return text.ToString();
+    }
+
+    /// <summary>
+    /// Plan 12 · Q20: the chapter played by someone who holds the skip button the whole time leaves exactly what the
+    /// chapter leaves played: the story, the bag, the team, where the player wakes, everyone on every map. Its scenes'
+    /// lines go unread and nothing is waited for, but every question is still asked and every battle still fought.
+    /// </summary>
+    [Theory]
+    [InlineData(0, BattleOutcome.Won)]
+    [InlineData(1, BattleOutcome.Lost)]
+    [InlineData(2, BattleOutcome.Won)]
+    public void TheFirstChapterSkippedLeavesWhatItLeavesPlayed(int starter, BattleOutcome fight)
+    {
+        var played = new Game(starter, fight);
+        PlayTheChapter(played);
+        var skipped = new Game(starter, fight, impatient: true);
+        PlayTheChapter(skipped);
+
+        Assert.Equal(Tell(played), Tell(skipped));
+        // Every scene of the chapter was played to its end, and so was skipped to it
+        Assert.DoesNotContain(SceneSkipTests.OpeningScenes, scene => !played.Story.HasSeenScene(scene));
+        Assert.DoesNotContain(SceneSkipTests.OpeningScenes, scene => !skipped.Story.HasSeenScene(scene));
+
+        // The same scripts ran, asked the same questions and came to the same battles, screens and warps
+        Assert.Equal(played.Played.Select(p => p.Script), skipped.Played.Select(p => p.Script));
+        static IEnumerable<string> Waited(HeadlessScriptHost host) => host.Log.Where(l => l.StartsWith("battle ") || l.StartsWith("catchinglesson ") || l.StartsWith("open ") || l.StartsWith("warp "));
+        for (int i = 0; i < played.Played.Count; i++)
+        {
+            var (a, b) = (played.Played[i].Host, skipped.Played[i].Host);
+            Assert.Equal(a.Asked, b.Asked);
+            Assert.Equal(Waited(a), Waited(b));
+        }
+
+        // Skipped, the chapter's scenes said nothing aloud but their questions: what they say went unread
+        int read = played.Played.Sum(p => p.Host.Transcript.Count), unread = skipped.Played.Sum(p => p.Host.Unread.Count);
+        Assert.True(unread > 60, $"only {unread} lines went unread");
+        Assert.True(skipped.Played.Sum(p => p.Host.Transcript.Count) < read - 60);
+        Assert.True(skipped.Played.Sum(p => p.Host.Skips) >= SceneSkipTests.OpeningScenes.Length);
+        Assert.Equal(0, played.Played.Sum(p => p.Host.Skips));
     }
 
     /// <summary>A new game played as the chapter goes, to the professor's scene on Route 201: the briefcase waits.</summary>

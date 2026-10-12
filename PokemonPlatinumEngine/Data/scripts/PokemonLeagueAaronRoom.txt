@@ -22,6 +22,7 @@ script OnEnter
 script Aaron
   speaker "Aaron"
   if flag FLAG_DEFEATED_AARON goto Beaten
+  scene "Aaron"
   music "common/eye_elite_four"
   say "Hello there, and welcome to the Pokémon League! I'm Aaron, the first of the Elite Four."
   say "Let me ask you something. Do you know why I battle with Bug Pokémon? Because nothing is more beautiful, that's why. The shine of a shell, the hum of wings... They're perfect."
@@ -39,6 +40,7 @@ label Fought
   hide exit_door
   say "I lost, with the toughest and most beautiful Bug Pokémon there are... We aren't perfect yet, it seems."
   say "That was a wonderful battle, though. The door is open. Go on to the next room!"
+  endscene
   end
 label Beaten
   say "Battling goes deeper than I knew. I'll have to think it all through again with my Pokémon."

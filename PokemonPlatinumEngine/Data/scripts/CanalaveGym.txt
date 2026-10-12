@@ -32,6 +32,7 @@ label Won
 script Byron
   speaker "Byron"
   if badge mine goto Won
+  scene "Byron"
   say "Ho! You found your way up my shaft! I am Byron, Leader of this Gym, and father to Roark of Oreburgh."
   say "My boy and I both dig deep, but where he loves the rock, I love the steel inside it."
   say "Steel doesn't bend and doesn't break. Let's see if you can dent it!"
@@ -59,6 +60,7 @@ label Tm
   give "TM91"
   setflag FLAG_RECEIVED_BYRON_TM91
   say "TM91 is Flash Cannon. A beam of light off polished steel, and it may lower the foe's Special Defense."
+  endscene
   end
 label Won
   if not flag FLAG_RECEIVED_BYRON_TM91 goto Tm

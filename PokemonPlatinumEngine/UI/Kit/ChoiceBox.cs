@@ -115,5 +115,8 @@ public sealed class ScreenFade
 
     public void Update(float dt) => Level = UiMotion.Toward(Level, target, rate * dt);
 
+    /// <summary>The fade is where it was going, at once (plan 12 · Q20: a scene skipped).</summary>
+    public void Finish() => Level = target;
+
     public void Clear() => Level = target = 0f;
 }

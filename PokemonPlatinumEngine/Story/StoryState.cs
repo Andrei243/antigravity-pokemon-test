@@ -153,6 +153,30 @@ public sealed class StoryState
         foreach (string who in saved) Greet(who);
     }
 
+    // ------------------------------------------------------------------ scenes seen
+
+    private readonly HashSet<string> scenes = new(StringComparer.Ordinal);
+
+    /// <summary>
+    /// The scenes this game has played to their end (plan 12 · Q20), each by its key: the file it is written in and its
+    /// own name (<see cref="SceneSkip.Key"/>). They change nothing the story does and nobody is put anywhere for them:
+    /// they only say what may be skipped under the options' <c>Seen</c>, so seeing one is no change that
+    /// <see cref="Revision"/> counts.
+    /// </summary>
+    public IReadOnlyCollection<string> ScenesSeen => scenes;
+
+    public bool HasSeenScene(string key) => scenes.Contains(key);
+
+    /// <summary>Notes a scene as played to its end; true when it hadn't been.</summary>
+    public bool SeeScene(string key) => key.Length > 0 && scenes.Add(key);
+
+    /// <summary>The scenes a save kept (<c>SaveData.ScenesSeen</c>): none in a save from before they were kept.</summary>
+    public void RestoreScenes(IEnumerable<string> saved)
+    {
+        scenes.Clear();
+        foreach (string key in saved) SeeScene(key);
+    }
+
     // ------------------------------------------------------------------ badges
 
     /// <summary>The badges as the save and the Trainer Card keep them: one bit each, in <see cref="Badge"/>'s order.</summary>
@@ -224,6 +248,7 @@ public sealed class StoryState
         defeated.Clear();
         taken.Clear();
         greeted.Clear();
+        scenes.Clear();
         BadgeMask = 0;
         PlayerStarter = RivalStarter = null;
         Revision++;

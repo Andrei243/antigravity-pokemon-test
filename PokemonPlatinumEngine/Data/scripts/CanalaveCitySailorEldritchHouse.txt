@@ -53,6 +53,7 @@ script BoyInBed
   if not flag FLAG_TALKED_TO_CANALAVE_CITY_SAILOR_ELDRITCH_HOUSE_LITTLE_BOY goto First
   if not flag FLAG_MET_CRESSELIA goto Thrashing
   if not item "Lunar Wing" goto Thrashing
+  scene "The boy wakes"
   setflag FLAG_WOKE_UP_CANALAVE_CITY_SAILOR_ELDRITCH_HOUSE_LITTLE_BOY
   setvar VAR_LUNAR_WING_EVENT_STATE 3
   take "Lunar Wing"
@@ -93,6 +94,7 @@ script BoyInBed
   setflag FLAG_HIDE_CANALAVE_CITY_SAILOR_ELDRITCH_HOUSE_SAILOR_ELDRITCH
   sound "door_close"
   face player right
+  endscene
   end
 # CanalaveCitySailorEldritchHouse_FirstTimeBoyThrashingInSleep
 label First

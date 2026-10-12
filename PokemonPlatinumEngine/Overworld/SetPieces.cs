@@ -305,6 +305,20 @@ public sealed class SetPieceStage
         sounding.Clear();
     }
 
+    /// <summary>
+    /// Every piece playing is at its end now, unheard (plan 12 · Q20: a scene skipped): a healing machine's tray is
+    /// empty again, the Hall of Fame's balls lie in their sockets, a PC switched on is on and one switched off is
+    /// dark, a ride is over, and nobody is shaken or flickers. What a played piece leaves is what is left.
+    /// </summary>
+    public void Settle(double now)
+    {
+        if (machine is { } m) machine = m.Piece == SetPiece.HallOfFame ? m with { Born = now - SetPieces.MachineLength(m.Count) - 1.0 } : null;
+        if (pc is { } p) pc = p.On ? p with { Born = now - SetPieces.PcOnSeconds - 1.0 } : null;
+        lift = null;
+        moved.Clear();
+        sounding.Clear();
+    }
+
     /// <summary>Lets go of what is over: a ride ended, a shake done, a screen gone dark. A machine and a PC that is on are kept.</summary>
     public void Advance(double now)
     {

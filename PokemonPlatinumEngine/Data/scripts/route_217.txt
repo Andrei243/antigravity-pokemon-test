@@ -9,6 +9,7 @@
 
 
 script Maylene
+  scene "Maylene on Route 217"
   clearflag FLAG_HIDE_ROUTE_217_MAYLENE
   place maylene 305 383 up
   show maylene
@@ -38,4 +39,5 @@ label Watch
   setflag FLAG_HIDE_ROUTE_217_MAYLENE
   setvar VAR_ROUTE_217_STATE 1
   setflag FLAG_HIDE_VEILSTONE_CITY_GYM_MAYLENE
+  endscene
   end

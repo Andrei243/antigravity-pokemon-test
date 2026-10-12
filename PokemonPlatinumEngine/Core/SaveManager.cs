@@ -304,6 +304,13 @@ public class SaveData
     /// <summary>The people spoken to since the Hallowed Tower last stirred (plan 08 · P12; <c>StoryState.Greeted</c>).</summary>
     public List<string> GreetedPeople { get; set; } = new();
 
+    /// <summary>
+    /// The scenes this game has played to their end (plan 12 · Q20; <c>StoryState.ScenesSeen</c>), each by its key:
+    /// what may be skipped under the options' <c>Seen</c>. A save from before they were kept has none, and nothing
+    /// brings it up to date: its scenes are simply not seen yet.
+    /// </summary>
+    public List<string> ScenesSeen { get; set; } = new();
+
     /// <summary>The species taken from the professor's briefcase, and the one the rival took; null until then.</summary>
     public string? PlayerStarter { get; set; }
     public string? RivalStarter { get; set; }

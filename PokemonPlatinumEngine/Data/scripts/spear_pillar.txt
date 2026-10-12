@@ -44,12 +44,14 @@ script GruntsStop
   face grunt_m left
   speaker "Galactic Grunt"
   if party < 2 goto OnlyOne
+  scene "The grunts at Spear Pillar"
   say "Stop right there! The boss is making a new world up ahead, and we're here to see nobody spoils it."
   say "Two of us, one of you. We'll take you down together!"
   battle grunt_f and grunt_m
   setvar VAR_SPEAR_PILLAR_STATE 1
   speaker "Galactic Grunt"
   say "Go on, then. We've done our part: we kept you busy. You're too late to change a thing."
+  endscene
   end
 label OnlyOne
   say "One Pokémon? You came all the way up here with one Pokémon? Come back when there's something for the two of us to beat!"
@@ -80,6 +82,7 @@ script Mars
 
 # The original's SpearPillar_CoordEvent_MarsJupiter, from each of its three tiles, and SpearPillar_Cyrus after it.
 script MarsAndJupiter
+  scene "Spear Pillar"
   if var PLAYER_X == 30 goto FromWest
   if var PLAYER_X == 32 goto FromEast
   # From the middle: Mars steps in on the east, Jupiter turns
@@ -222,4 +225,5 @@ label Won
   setflag FLAG_SPEAR_PILLAR_IS_DISTORTED
   setvar VAR_SPEAR_PILLAR_DISTORTED_STATE 1
   warp "SpearPillarDistorted" 30 30 up
+  endscene
   end

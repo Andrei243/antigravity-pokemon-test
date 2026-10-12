@@ -78,6 +78,7 @@ label Oak
 
 # PalParkLobby_OnFrame_ProfOak: he sees whoever has just come in by the door, and they go up to him
 script OakWelcomes
+  scene "Professor Oak at Pal Park"
   clearflag FLAG_HIDE_ETERNA_CITY_SOUTH_HOUSE_PROF_OAK
   setvar VAR_CATCHING_SHOW_RECORD 2000
   emote prof_oak exclaim
@@ -103,6 +104,7 @@ script OakWelcomes
   hide prof_oak
   setflag FLAG_HIDE_PAL_PARK_LOBBY_PROF_OAK
   setvar VAR_PAL_PARK_LOBBY_STATE 1
+  endscene
   return
 
 

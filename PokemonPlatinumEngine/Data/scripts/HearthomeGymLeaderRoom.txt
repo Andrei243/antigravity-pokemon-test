@@ -12,6 +12,7 @@ script Fantina
   call Twirl
   speaker "Fantina"
   if badge relic goto Won
+  scene "Fantina"
   say "Bonjour! I am Fantina, the Leader of this Gym, and my Ghost Pokémon and I, we dance in the dark."
   say "You found the right doors, so you have good eyes and a good heart. Now, let us see you dance with us!"
   battle self as "leader_fantina"
@@ -36,6 +37,7 @@ label Tm
   give "TM65"
   setflag FLAG_RECEIVED_FANTINA_TM65
   say "TM65 is Shadow Claw. It strikes from the shadows, and it finds the weak spot more often than most."
+  endscene
   end
 label Won
   if not flag FLAG_RECEIVED_FANTINA_TM65 goto Tm

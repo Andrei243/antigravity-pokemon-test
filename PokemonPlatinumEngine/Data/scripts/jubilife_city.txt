@@ -11,6 +11,7 @@
 # assistant comes to meet the player, they walk up the street together and run into Looker, who hands over a
 # Vs. Recorder; the assistant points out the Trainers' School, where the rival is waiting, and goes back to the lab.
 script FirstArrival
+  scene "Looker in Jubilife City"
   place looker 177 774 down
   clearflag FLAG_HIDE_JUBILIFE_CITY_COUNTERPART
   show counterpart
@@ -63,6 +64,7 @@ label Recorder
   setflag FLAG_HIDE_JUBILIFE_CITY_COUNTERPART
   music area
   setvar VAR_JUBILIFE_CITY_STATE 1
+  endscene
   end
 
 
@@ -100,6 +102,7 @@ label Badges
 # The president of the Pokétch Company, out in the street once the rival has had his parcel (the original's
 # trigger 17): he stops the player, sees no Pokétch and starts the campaign.
 script PoketchCampaign
+  scene "The Poketch campaign"
   emote poketch_co_president exclaim
   if var PLAYER_X == 172 walk poketch_co_president down 4 left 2
   if var PLAYER_X == 173 walk poketch_co_president down 4 left 1
@@ -114,6 +117,7 @@ script PoketchCampaign
   say "We're holding a campaign! Three clowns in this city each have a quiz. Answer correctly, and each gives you a coupon."
   say "Bring me all three coupons, and I'll give you a Pokétch of your very own!"
   setvar VAR_POKETCH_CAMPAIGN_STATE 2
+  endscene
   end
 
 script PoketchCoPresident
@@ -150,6 +154,7 @@ label NotYet
 # Team Galactic by the north gate (the original's trigger 4, once the Coal Badge is won): two grunts are after the
 # professor's research; the assistant and the player beat them together, side by side.
 script TeamGalactic
+  scene "Team Galactic at the north gate"
   speaker "Galactic Grunt"
   say "Come on, old man! Hand over your research on Pokémon evolution!"
   if var PLAYER_X == 173 walk player right 1
@@ -242,6 +247,7 @@ label Beaten
   walk collector down 8
   hide collector
   setflag FLAG_HIDE_JUBILIFE_CITY_COLLECTOR
+  endscene
   end
 
 

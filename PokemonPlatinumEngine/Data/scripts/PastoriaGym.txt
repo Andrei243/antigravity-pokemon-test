@@ -70,6 +70,7 @@ label Won
 script Wake
   speaker "Crasher Wake"
   if badge fen goto Won
+  scene "Crasher Wake"
   say "Wahahaha! I am the masked marvel of the marsh! I am Crasher Wake!"
   say "My Water-type Pokémon and I crash through anything like a wave on the rocks!"
   say "Let's see if you can stand up to the tide! Here I come!"
@@ -93,6 +94,7 @@ label Tm
   give "TM55"
   setflag FLAG_RECEIVED_WAKE_TM55
   say "TM55 is Brine. It hits twice as hard when the foe is down to half its health or less. Finish them with a splash!"
+  endscene
   end
 label Won
   if not flag FLAG_RECEIVED_WAKE_TM55 goto Tm

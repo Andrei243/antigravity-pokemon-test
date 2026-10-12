@@ -129,6 +129,7 @@ label Stay
 # SnowpointCity_Cynthia: she comes down from the town to the head of the gangway, behind the player (a tile short of
 # the original's place, which is the tile at the player's back, where the player's own head would hide her)
 script CynthiaSeesOff
+  scene "Cynthia on the quay"
   clearflag FLAG_HIDE_SNOWPOINT_CITY_CYNTHIA
   place cynthia 366 241 left
   show cynthia
@@ -150,4 +151,5 @@ script CynthiaSeesOff
   setflag FLAG_HIDE_SNOWPOINT_CITY_CYNTHIA
   face player down
   setflag FLAG_SAILED_TO_BATTLE_ZONE
+  endscene
   return

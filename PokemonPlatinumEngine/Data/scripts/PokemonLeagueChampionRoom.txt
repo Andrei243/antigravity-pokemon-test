@@ -15,6 +15,7 @@
 # PokemonLeagueChampionRoom_OnFrame_EnterRoom. The original runs it while a local variable is nought, since its frame
 # table is asked every frame; here a place's script runs once as the player comes in, and nobody can save in this room.
 script OnEnter
+  scene "Cynthia"
   walk player up 4
   music "common/eye_champion"
   speaker "Cynthia"
@@ -54,4 +55,5 @@ label Fought
   walk player up 6
   sound "stairs"
   warp "PokemonLeagueHallwayToHallOfFame" 5 23 up
+  endscene
   end

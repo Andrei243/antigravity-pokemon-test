@@ -1,5 +1,5 @@
 # Every script of the game on every way through it (plan 24 · X3), made by GoldenScriptTests. Rewritten by: GOLDEN=accept dotnet test PokemonPlatinumTests --filter Golden
-# '>' a line said, '?' a question and the answer taken, '*' what the script did, '!' a problem, '+'/'-' a flag set or cleared, '=' a variable changed; a way after the first is told from the answer where it parts from those before it.
+# '>' a line said, '?' a question and the answer taken, '*' what the script did, '!' a problem, '+'/'-' a flag set or cleared, '=' a variable changed, '+ seen' a scene played to its end; a way after the first is told from the answer where it parts from those before it.
 === BattleArcade.Beauty
 from Beauty at 4,14 of BattleArcade
 way -
@@ -1133,6 +1133,7 @@ way 0
   > TM91 holds the move Flash Cannon.
   > Lucas put it away in the TMs & HMs pocket.
   Byron> TM91 is Flash Cannon. A beam of light off polished steel, and it may lower the foe's Special Defense.
+  * scene CanalaveGym.Byron
   * battle leader_byron Won
   * fanfare FanfareBadge
   * defeat worker_gerardo
@@ -1143,6 +1144,7 @@ way 0
   * defeat ace_trainer_cesar
   * defeat ace_trainer_breanna
   * fanfare FanfareTM
+  * endscene
   + FLAG_HIDE_SANDGEM_TOWN_LAB_PROF_ROWAN
   + FLAG_RECEIVED_BYRON_TM91
   = VAR_CANALAVE_CITY_STATE 0 -> 2
@@ -1155,8 +1157,10 @@ way 0
   + beaten worker_gerardo
   + beaten worker_jackson
   = badges 0 -> 100000
+  + seen CanalaveGym.Byron
 way 1, from answer 1
   * battle leader_byron Lost
+  * scene over, unseen
 === CanalaveGym.GymGuide
 from Gym Guide at 15,25 of CanalaveGym
 way -
@@ -1179,8 +1183,11 @@ way -
   Lucian> Ah, the new Champion. Forgive me, I was miles away. Aren't books wonderful? An hour in here and I forget there is a League at all.
   Lucian> This one is a bundle of letters, written long ago by someone who crossed Sinnoh on foot. Every page smells of rain.
   Lucian> But I have read long enough. Come and challenge us again, Champion. I shall be waiting at the Pokémon League.
+  * scene CanalaveLibrary1F.Lucian in the library
   * sound stairs
+  * endscene
   + FLAG_HIDE_CANALAVE_LIBRARY_1F_LUCIAN
+  + seen CanalaveLibrary1F.Lucian in the library
 === CanalaveLibrary1F.Receptionist
 from Librarian at 14,9 of CanalaveLibrary1F
 way -
@@ -1373,9 +1380,12 @@ way -
   Fantina> Ah, bonjour! You have the look of a Trainer about you. You want to battle Fantina, oui?
   Fantina> I come here to see the contests. The Pokémon, so graceful! But for you, I go back to my Gym.
   Fantina> I wait for you there. Come, and we shall dance, my Ghost Pokémon and yours!
+  * scene ContestHallLobby.Fantina in the Contest Hall
   * sound stairs
+  * endscene
   + FLAG_HIDE_CONTEST_HALL_LOBBY_FANTINA
   + FLAG_HIDE_HEARTHOME_CITY_GYM_GUIDE
+  + seen ContestHallLobby.Fantina in the Contest Hall
 === ContestHallLobby.FrameBeauty
 from the sign at 4,11 of ContestHallLobby
 way -
@@ -2280,6 +2290,7 @@ way 0
   > TM86 holds the move Grass Knot.
   > Lucas put it away in the TMs & HMs pocket.
   Gardenia> TM86 is Grass Knot. It trips the foe up, and the heavier the foe, the harder it falls!
+  * scene EternaGym.Gardenia
   * battle leader_gardenia Won
   * fanfare FanfareBadge
   * defeat aroma_lady_jenna
@@ -2289,6 +2300,7 @@ way 0
   * fanfare FanfareTM
   * flowerclock 0 1
   * camera Release
+  * endscene
   + FLAG_RECEIVED_GARDENIA_TM86
   = VAR_ETERNA_GYM_FLOWER_CLOCK_STATE 0 -> 1
   + beaten aroma_lady_angela
@@ -2297,8 +2309,10 @@ way 0
   + beaten lass_caroline
   + beaten leader_gardenia
   = badges 0 -> 10
+  + seen EternaGym.Gardenia
 way 1, from answer 1
   * battle leader_gardenia Lost
+  * scene over, unseen
 === EternaGym.GymGuide
 from Gym Guide at 9,25 of EternaGym
 way -
@@ -2699,14 +2713,18 @@ way 0
   Cyrus> If you want to save the Pokémon of the lakes, the warp panel ahead will take you to them.
   Cyrus> I am going to Mt. Coronet. At the summit of that mountain, what I am owed is waiting.
   Cyrus> That is where I will make my new world...
+  * scene GalacticHQ4F.Cyrus
   * battle galactic_boss_cyrus_galactic_hq Won
   * fanfare FanfareItem
   * sound warp
+  * endscene
   + FLAG_HIDE_GALACTIC_HQ_4F_CYRUS
   = VAR_GALACTIC_HQ_4F_STATE 0 -> 1
   + beaten galactic_boss_cyrus_galactic_hq
+  + seen GalacticHQ4F.Cyrus
 way 1, from answer 1
   * battle galactic_boss_cyrus_galactic_hq Lost
+  * scene over, unseen
 === GalacticHQ4F.Door
 from Door at 8,14 of GalacticHQ4F
 from Door at 9,14 of GalacticHQ4F
@@ -2799,12 +2817,16 @@ way 0
   Saturn> Still. You've gone to the trouble of coming. Let me give you a proper welcome. Call it payback for the cheek you gave me at the lake!
   Saturn> ...Gah! What is it that makes you so tough?
   Saturn> Fine. Do what you like with those three. The button on that machine sets them free.
+  * scene GalacticHQControlRoom.The control room
   * battle commander_saturn_galactic_hq Won
+  * endscene
   + FLAG_DEFEATED_GALACTIC_HQ_CONTROL_ROOM_SATURN
   = VAR_GALACTIC_HQ_CONTROL_ROOM_STATE 0 -> 1
   + beaten commander_saturn_galactic_hq
+  + seen GalacticHQControlRoom.The control room
 way 1, from answer 1
   * battle commander_saturn_galactic_hq Lost
+  * scene over, unseen
 === GalacticHQHall.Speech
 from the trigger at 20,12 of GalacticHQHall
 way -
@@ -2828,6 +2850,7 @@ way -
   Looker> This "new world": what is it? This "unfinished" world: what is that?
   Looker> Very well. To look into such things is the work of the International Police. And I am of the International Police, in good standing. So the work is mine.
   Looker> Here we part, my friend. Take every care!
+  * scene GalacticHQHall.The speech
   * emote Looker Exclaim
   * camera Pan 13 8
   * sound warp
@@ -2838,10 +2861,12 @@ way -
   * camera Release
   * fade in
   * sound warp
+  * endscene
   + FLAG_HIDE_GALACTIC_HQ_HALL_CYRUS
   + FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS
   + FLAG_HIDE_GALACTIC_HQ_HALL_LOOKER
   = VAR_GALACTIC_HQ_HALL_STATE 0 -> 1
+  + seen GalacticHQHall.The speech
 === GalacticHQLaboratory.Notice
 from the sign at 10,9 of GalacticHQLaboratory
 from the sign at 11,9 of GalacticHQLaboratory
@@ -3004,6 +3029,7 @@ way 0
   > TM65 holds the move Shadow Claw.
   > Lucas put it away in the TMs & HMs pocket.
   Fantina> TM65 is Shadow Claw. It strikes from the shadows, and it finds the weak spot more often than most.
+  * scene HearthomeGymLeaderRoom.Fantina
   * battle leader_fantina Won
   * fanfare FanfareBadge
   * defeat camper_drew
@@ -3015,6 +3041,7 @@ way 0
   * defeat school_kid_mackenzie
   * defeat youngster_donny
   * fanfare FanfareTM
+  * endscene
   + FLAG_HIDE_HEARTHOME_CITY_GYM_BOLLARDS
   + FLAG_HIDE_HEARTHOME_CITY_ROUTE_209_BLOCKADE
   + FLAG_RECEIVED_FANTINA_TM65
@@ -3029,8 +3056,10 @@ way 0
   + beaten school_kid_mackenzie
   + beaten youngster_donny
   = badges 0 -> 10000
+  + seen HearthomeGymLeaderRoom.Fantina
 way 1, from answer 1
   * battle leader_fantina Lost
+  * scene over, unseen
 === IronIslandHouse.Byron
 from Byron at 5,5 of IronIslandHouse
 way -
@@ -3039,10 +3068,13 @@ way -
   > Lucas received the Metal Coat!
   > Lucas put it away in the Items pocket.
   Byron> There are Pokémon that evolve when they are traded holding a Metal Coat. Steel suits them, you'll see! Gahaha!
+  * scene IronIslandHouse.Byron on Iron Island
   * fanfare FanfareItem
   * sound stairs
+  * endscene
   + FLAG_HIDE_IRON_ISLAND_HOUSE_BYRON
   + FLAG_RECEIVED_IRON_ISLAND_HOUSE_METAL_COAT
+  + seen IronIslandHouse.Byron on Iron Island
 === JubilifeBoutique.Clerk
 from Clerk at 5,2 of JubilifeBoutique
 way -
@@ -3131,10 +3163,12 @@ way 0
   > Lucas put it away in the TMs & HMs pocket.
   Roark> TM76 holds Stealth Rock. It scatters sharp rocks around the other side, and they hurt every Pokémon that comes in.
   Roark> The next Gym is in Eterna City, north past Floaroma Town. Its Leader, Gardenia, uses Grass types. Good luck!
+  * scene OreburghGym.Roark
   * battle leader_roark Won
   * fanfare FanfareBadge
   * fanfare FanfareBadge
   * fanfare FanfareTM
+  * endscene
   + FLAG_HIDE_POKECENTER_BASEMENT_BLOCKADE
   + FLAG_HIDE_SANDGEM_TOWN_LAB_PROF_ROWAN
   + FLAG_RECEIVED_ROARK_TM76
@@ -3144,8 +3178,10 @@ way 0
   = VAR_OREBURGH_CITY_STATE 0 -> 2
   + beaten leader_roark
   = badges 0 -> 1
+  + seen OreburghGym.Roark
 way 1, from answer 1
   * battle leader_roark Lost
+  * scene over, unseen
 === OreburghMiningMuseum.FossilResearcher
 from Scientist at 6,3 of OreburghMiningMuseum
 way -
@@ -3347,6 +3383,7 @@ way 0
   > TM55 holds the move Brine.
   > Lucas put it away in the TMs & HMs pocket.
   Crasher Wake> TM55 is Brine. It hits twice as hard when the foe is down to half its health or less. Finish them with a splash!
+  * scene PastoriaGym.Crasher Wake
   * battle leader_wake Won
   * fanfare FanfareBadge
   * defeat fisherman_erick
@@ -3356,6 +3393,7 @@ way 0
   * defeat tuber_jacky
   * defeat tuber_caitlyn
   * fanfare FanfareTM
+  * endscene
   + FLAG_BLOCK_PASTORIA_CITY_CROAGUNK_EVENT
   + FLAG_HIDE_PASTORIA_CITY_GRUNT_M
   + FLAG_RECEIVED_WAKE_TM55
@@ -3368,8 +3406,10 @@ way 0
   + beaten tuber_caitlyn
   + beaten tuber_jacky
   = badges 0 -> 1000
+  + seen PastoriaGym.Crasher Wake
 way 1, from answer 1
   * battle leader_wake Lost
+  * scene over, unseen
 === PlayerHouse.DoorWarning
 from the trigger at 4,7 of PlayerHouse
 way -
@@ -3392,12 +3432,15 @@ way -
   Barry> He's back in Sinnoh, and he studies Pokémon, so he's got to have tons of them! If we ask nicely, he's sure to give us one each!
   Barry> ...Whoa, is that a new computer? Lucky! ...Huh? What was I saying?
   Barry> Right! We're going to see Professor Rowan! I'll wait for you outside. If you're late, that's a ten-million fine!
+  * scene PlayerHouse2F.The rival bursts in
   * sound stairs
   * music common/rival
   * emote {rival} Exclaim
   * sound stairs
   * music area
+  * endscene
   = VAR_PLAYER_HOUSE_RIVAL_STATE 0 -> 1
+  + seen PlayerHouse2F.The rival bursts in
 === PlayerHouse2F.Wardrobe
 from the sign at 3,2 of PlayerHouse2F
 way -
@@ -3456,14 +3499,18 @@ way 0
   Aaron> I came to this room to become perfect too, alongside them. So come on! Let me measure myself against you!
   Aaron> I lost, with the toughest and most beautiful Bug Pokémon there are... We aren't perfect yet, it seems.
   Aaron> That was a wonderful battle, though. The door is open. Go on to the next room!
+  * scene PokemonLeagueAaronRoom.Aaron
   * music common/eye_elite_four
   * battle elite_four_aaron Won
   * sound lift_stop
+  * endscene
   + FLAG_DEFEATED_AARON
   + FLAG_HIDE_POKEMON_LEAGUE_AARON_ROOM_EXIT_DOOR
   + beaten elite_four_aaron
+  + seen PokemonLeagueAaronRoom.Aaron
 way 1, from answer 1
   * battle elite_four_aaron Lost
+  * scene over, unseen
 === PokemonLeagueBerthaRoom.Bertha
 from Bertha at 8,5 of PokemonLeagueBerthaRoom
 way 0
@@ -3472,14 +3519,18 @@ way 0
   Bertha> Now then. Would you show an old woman how much you've learned on your way here?
   Bertha> Well, I never! You and your Pokémon are quite something, dear. I'm glad I lived to see it.
   Bertha> Off you go, then. The next one burns a good deal hotter than I do.
+  * scene PokemonLeagueBerthaRoom.Bertha
   * music common/eye_elite_four
   * battle elite_four_bertha Won
   * sound lift_stop
+  * endscene
   + FLAG_DEFEATED_BERTHA
   + FLAG_HIDE_POKEMON_LEAGUE_BERTHA_ROOM_EXIT_DOOR
   + beaten elite_four_bertha
+  + seen PokemonLeagueBerthaRoom.Bertha
 way 1, from answer 1
   * battle elite_four_bertha Lost
+  * scene over, unseen
 === PokemonLeagueElevatorToAaronRoom.Lift
 from the trigger at 4,11 of PokemonLeagueElevatorToAaronRoom
 way -
@@ -3514,15 +3565,19 @@ way 0
   Flint> Come at me with everything you have!
   Flint> ...Whew. Burned right down to the ashes. And it feels great!
   Flint> I can see what Volkner saw in you. Go on! One more of us, and then the Champion.
+  * scene PokemonLeagueFlintRoom.Flint
   * music common/eye_elite_four
   * emote Flint Exclaim
   * battle elite_four_flint Won
   * sound lift_stop
+  * endscene
   + FLAG_DEFEATED_FLINT
   + FLAG_HIDE_POKEMON_LEAGUE_FLINT_ROOM_EXIT_DOOR
   + beaten elite_four_flint
+  + seen PokemonLeagueFlintRoom.Flint
 way 1, from answer 1
   * battle elite_four_flint Lost
+  * scene over, unseen
 === PokemonLeagueLucianRoom.Lucian
 from Lucian at 8,5 of PokemonLeagueLucianRoom
 way 0
@@ -3531,14 +3586,18 @@ way 0
   Lucian> Three of my colleagues have already lost to you, so I know how this is likely to end. I intend to enjoy finding out all the same. Shall we?
   Lucian> I see. So that is how it ends. Congratulations: you have beaten all four of us.
   Lucian> But there is one more room. The Champion is far stronger than any of us. Rest your mind a moment, then go through that door.
+  * scene PokemonLeagueLucianRoom.Lucian
   * music common/eye_elite_four
   * battle elite_four_lucian Won
   * sound lift_stop
+  * endscene
   + FLAG_DEFEATED_LUCIAN
   + FLAG_HIDE_POKEMON_LEAGUE_LUCIAN_ROOM_EXIT_DOOR
   + beaten elite_four_lucian
+  + seen PokemonLeagueLucianRoom.Lucian
 way 1, from answer 1
   * battle elite_four_lucian Lost
+  * scene over, unseen
 === PokemonLeagueNorthPokemonCenter.DoorGuard
 from Guard at 11,3 of PokemonLeagueNorthPokemonCenter
 way -
@@ -3554,14 +3613,18 @@ way 0
   Barry> But you just watch! I'm going to get a whole lot tougher, and then I'm coming back to beat every last one of them.
   Barry> The Champion is the toughest Trainer there is, and that's going to be me!
   Barry> So don't you dare lose to anybody in there before I've had my turn, Lucas!
+  * scene PokemonLeagueNorthPokemonCenter.The rival before the door
   * music common/rival
   * battle rival_pokemon_league_piplup Won
   * sound stairs
   * music area
+  * endscene
   = VAR_RIVAL_BEAT_SUNYSHORE_GYM 0 -> 1
   + beaten rival_pokemon_league_piplup
+  + seen PokemonLeagueNorthPokemonCenter.The rival before the door
 way 1, from answer 1
   * battle rival_pokemon_league_piplup Lost
+  * scene over, unseen
 === PokemonMansion.Challenge
 from Maid at 1,7 of PokemonMansion
 way 0.0.0.0.0.0.0
@@ -4051,16 +4114,20 @@ way 0
   Barry> Ladies and gentlemen, the show starts now! Let's see who's really been getting stronger!
   Barry> Argh! My plan was perfect! Why doesn't it ever work against you?!
   Barry> I'm off to Veilstone City. There's a Gym there with a Leader who fights hand to hand with her Pokémon. See ya!
+  * scene Route209GateToHearthomeCity.The rival in Hearthome
   * emote {rival} Exclaim
   * music common/rival
   * battle rival_route_209_piplup Won
   * sound stairs
   * music area
+  * endscene
   + FLAG_HIDE_HEARTHOME_CITY_ROUTE_209_GATE_RIVAL
   = VAR_ROUTE_209_GATE_TO_HEARTHOME_CITY_STATE 0 -> 2
   + beaten rival_route_209_piplup
+  + seen Route209GateToHearthomeCity.The rival in Hearthome
 way 1, from answer 1
   * battle rival_route_209_piplup Lost
+  * scene over, unseen
 === Route210GrandmaWilmaHouse.Wilma
 from Grandma Wilma at 5,5 of Route210GrandmaWilmaHouse
 way 0
@@ -4440,6 +4507,7 @@ way 0
   > Lucas put it away in the TMs & HMs pocket.
   Candice> TM72 is Avalanche. If the user gets hit before it moves, the move comes crashing back twice as hard!
   Candice> Can you imagine the focus it takes to stand there and wait for that hit?
+  * scene SnowpointGym.Candice
   * battle leader_candice Won
   * fanfare FanfareBadge
   * defeat ace_trainer_sergio
@@ -4449,6 +4517,7 @@ way 0
   * defeat ace_trainer_alicia
   * defeat ace_trainer_brenna
   * fanfare FanfareTM
+  * endscene
   + FLAG_HIDE_VEILSTONE_GALACTIC_GRUNTS
   + FLAG_RECEIVED_CANDICE_TM72
   + beaten ace_trainer_alicia
@@ -4459,8 +4528,10 @@ way 0
   + beaten ace_trainer_sergio
   + beaten leader_candice
   = badges 0 -> 1000000
+  + seen SnowpointGym.Candice
 way 1, from answer 1
   * battle leader_candice Lost
+  * scene over, unseen
 === SnowpointGym.GymGuide
 from Gym Guide at 12,27 of SnowpointGym
 way -
@@ -4604,6 +4675,7 @@ way 0
   > TM57 holds the move Charge Beam.
   > Lucas put it away in the TMs & HMs pocket.
   Volkner> TM57 is Charge Beam. If it hits, it may raise your Pokémon's Special Attack. Pretty electrifying, right?
+  * scene SunyshoreGymRoom3.Volkner
   * battle leader_volkner Won
   * fanfare FanfareBadge
   * defeat ace_trainer_zachery
@@ -4615,6 +4687,7 @@ way 0
   * defeat school_kid_forrest
   * defeat school_kid_tiera
   * fanfare FanfareTM
+  * endscene
   + FLAG_RECEIVED_VOLKNER_TM57
   = VAR_SUNYSHORE_CITY_STATE 0 -> 2
   + beaten ace_trainer_destiny
@@ -4627,8 +4700,10 @@ way 0
   + beaten school_kid_forrest
   + beaten school_kid_tiera
   = badges 0 -> 10000000
+  + seen SunyshoreGymRoom3.Volkner
 way 1, from answer 1
   * battle leader_volkner Lost
+  * scene over, unseen
 === SunyshoreMarket.BattleGirl
 from Battle Girl at 6,4 of SunyshoreMarket
 way -
@@ -4728,11 +4803,13 @@ way 0
   Manager> Those Team Galactic types told me, "That Clefairy came from outer space! Hand it over!" Who says things like that?
   Manager> If you ask me, they're the ones from outer space! Well, anyway, they're gone now. Thank you, thank you!
   Manager> I can't thank you properly in a place like this. Come by my cycle shop, will you?
+  * scene TeamGalacticEternaBuilding4F.Commander Jupiter
   * battle commander_jupiter_team_galactic_eterna_building Won
   * fade out
   * fade in
   * fade out
   * fade in
+  * endscene
   + FLAG_ALT_MUSIC_GALACTIC_ETERNA_BUILDING
   + FLAG_HIDE_ETERNA_CITY_GALACTIC_GRUNTS
   + FLAG_HIDE_TEAM_GALACTIC_ETERNA_BUILDING_1F_GRUNT_M_LOOKER
@@ -4741,8 +4818,10 @@ way 0
   + FLAG_TEAM_GALACTIC_LEFT_ETERNA_BUILDING
   = VAR_ETERNA_CITY_STATE 0 -> 3
   + beaten commander_jupiter_team_galactic_eterna_building
+  + seen TeamGalacticEternaBuilding4F.Commander Jupiter
 way 1, from answer 1
   * battle commander_jupiter_team_galactic_eterna_building Lost
+  * scene over, unseen
 === TeamGalacticEternaBuilding4F.Manager
 from Manager at 14,9 of TeamGalacticEternaBuilding4F
 way -
@@ -4828,10 +4907,12 @@ way 0
   Little Girl> Papa! Papa!! ...Eww, Papa, you're all stinky!
   Papa> Ha ha, sorry! I've been working without a break, you see.
   Little Girl> Now the balloon Pokémon will come and visit again!
+  * scene ValleyWindworksBuilding.Commander Mars
   * emote Mars Exclaim
   * battle commander_mars_valley_windworks Won
   * fade out
   * fade in
+  * endscene
   + FLAG_ALT_MUSIC_VALLEY_WINDWORKS_BUILDING
   + FLAG_HIDE_ROUTE_205_SOUTH_GRUNTS
   + FLAG_HIDE_ROUTE_205_SOUTH_LITTLE_GIRL
@@ -4840,8 +4921,10 @@ way 0
   = VAR_VALLEY_WINDWORKS_STATE 0 -> 2
   = VAR_VALLEY_WINDWORKS_TEAM_GALACTIC_STATE 0 -> 2
   + beaten commander_mars_valley_windworks
+  + seen ValleyWindworksBuilding.Commander Mars
 way 1, from answer 1
   * battle commander_mars_valley_windworks Lost
+  * scene over, unseen
 === ValleyWindworksBuilding.Notes
 from the sign at 19,9 of ValleyWindworksBuilding
 from the sign at 22,9 of ValleyWindworksBuilding
@@ -4908,13 +4991,16 @@ way -
   Looker> Now, the Storage Key that Team Galactic so kindly let fall... In it goes, and...
   Looker> ...clunk! There! It is open!
   Looker> I go on ahead, my friend. Do not put yourself in the way of harm!
+  * scene VeilstoneGalacticWarehouse.Looker opens the door
   * sound door_slide
   * sound stairs
+  * endscene
   + FLAG_HIDE_VEILSTONE_CITY_GALACTIC_WAREHOUSE_GALACTIC_HQ_DOOR
   + FLAG_HIDE_VEILSTONE_CITY_GALACTIC_WAREHOUSE_LOOKER
   + FLAG_HIDE_VEILSTONE_CITY_LOOKER
   + FLAG_USED_STORAGE_KEY
   = VAR_VEILSTONE_CITY_GALACTIC_WAREHOUSE_STATE 0 -> 4
+  + seen VeilstoneGalacticWarehouse.Looker opens the door
 === VeilstoneGameCorner.BonusSign
 from the sign at 10,2 of VeilstoneGameCorner
 way -
@@ -5034,6 +5120,7 @@ way 0
   > TM60 holds the move Drain Punch.
   > Lucas put it away in the TMs & HMs pocket.
   Maylene> TM60 is Drain Punch. The damage it does heals the Pokémon that throws it. It's a move I trust.
+  * scene VeilstoneGym.Maylene
   * battle leader_maylene Won
   * fanfare FanfareBadge
   * defeat black_belt_colby
@@ -5041,6 +5128,7 @@ way 0
   * defeat black_belt_rafael
   * defeat black_belt_jeffery
   * fanfare FanfareTM
+  * endscene
   + FLAG_HIDE_GAME_CORNER_LOOKER
   + FLAG_RECEIVED_MAYLENE_TM60
   = VAR_VEILSTONE_CITY_COUNTERPART_NEEDS_HELP_STATE 0 -> 1
@@ -5051,8 +5139,10 @@ way 0
   + beaten black_belt_rafael
   + beaten leader_maylene
   = badges 0 -> 100
+  + seen VeilstoneGym.Maylene
 way 1, from answer 1
   * battle leader_maylene Lost
+  * scene over, unseen
 === VeilstoneGym.Poster
 from the sign at 10,2 of VeilstoneGym
 from the sign at 12,2 of VeilstoneGym
@@ -5507,10 +5597,13 @@ way -
   Volkner> All right. I've made up my mind. If you turn out to be weak, I'm leaving, to challenge the Pokémon League myself.
   Volkner> The Gym is rebuilt, down to the last gear. Nothing keeps me here any more. What I want is a battle that makes my heart race again.
   Volkner> They call me the strongest Gym Leader in Sinnoh. So everything I have, I'm throwing at you.
+  * scene VistaLighthouse.Volkner at the lighthouse
   * sound door_slide
   * sound lift
+  * endscene
   + FLAG_HIDE_VISTA_LIGHTHOUSE_VOLKNER
   + FLAG_VOLKNER_RETURNED_TO_GYM
+  + seen VistaLighthouse.Volkner at the lighthouse
 === acuity_cavern.Uxie
 from Uxie at 14,10 of AcuityCavern
 way 0
@@ -5527,10 +5620,13 @@ way -
   Barry> Hey! Lucas! Down there! You're only getting here now? You're so slow it hurts to watch!
   Barry> Listen up! See how knobbly these rocks are? You can't climb them until you've got the Badge from Snowpoint's Gym. So go and get it!
   Barry> Anyway, I'm not standing about. Team Galactic! Ready or not, here I come!
+  * scene acuity_lakefront.The rival calls down
   * camera Pan 310 238
   * camera Release
+  * endscene
   + FLAG_HIDE_ACUITY_LAKEFRONT_RIVAL
   = VAR_ACUITY_LAKEFRONT_STATE 0 -> 1
+  + seen acuity_lakefront.The rival calls down
 === amity_square.EastGate
 from the trigger at 51,46 of AmitySquare
 way 0
@@ -6028,14 +6124,18 @@ way 0
   Barry> Yeah, yeah. You're a bit better than me. Same as always.
   Barry> But get this: guess who's going to take on the Pokémon League and be Champion? Right first time. It's me!
   Barry> Anyway, you should head over to Iron Island and toughen up some more. That's where I trained before the Gym!
+  * scene canalave_city.The rival on the bridge
   * emote {rival} Exclaim
   * music common/rival
   * battle rival_canalave_city_piplup Won
   * music area
+  * endscene
   = VAR_CANALAVE_CITY_STATE 0 -> 1
   + beaten rival_canalave_city_piplup
+  + seen canalave_city.The rival on the bridge
 way 1, from answer 1
   * battle rival_canalave_city_piplup Lost
+  * scene over, unseen
 === canalave_city.Rowan
 from Prof. Rowan at 38,720 of Sinnoh
 way -
@@ -6082,12 +6182,16 @@ way 0.0
   Elder> My, weren't you magnificent! Quite the Trainer, aren't you? As the elder of Celestic Town, you have my thanks.
   Elder> Now that you're here in Celestic Town, why not have a look inside the ruins?
   ? Get in my way and I'll knock you flat in a battle. So, what'll it be? You going to get in my way? = Yes
+  * scene celestic_town.The grunt in Celestic Town
   * battle galactic_grunt_celestic_town Won
+  * endscene
   + FLAG_DELIVERED_OLD_CHARM
   + FLAG_HIDE_CELESTIC_TOWN_GRUNT_M
   + beaten galactic_grunt_celestic_town
+  + seen celestic_town.The grunt in Celestic Town
 way 0.1, from answer 2
   * battle galactic_grunt_celestic_town Lost
+  * scene over, unseen
 way 1, from answer 1
   Galactic Grunt> Smart kid! You know what's good for you.
   Galactic Grunt> Team Galactic came all the way out to the sticks for everybody's sake. We appreciate your cooperation.
@@ -6171,25 +6275,31 @@ way 0.0
   Elder> Teach a Pokémon Surf, and it will carry you over lakes and the sea.
   Elder> You've been a great help to this town. Think of that as our thanks.
   ? If you believe I am, then challenge me. = Yes
+  * scene celestic_town_cave.The painting
   * battle galactic_boss_cyrus_celestic_town_ruins Won
   * fade out
   * fade in
   * fanfare FanfareTM
+  * endscene
   + FLAG_EXAMINED_CELESTIC_TOWN_CAVE_PAINTING
   + FLAG_HIDE_CELESTIC_TOWN_CAVE_CYRUS
   + FLAG_HIDE_CELESTIC_TOWN_CAVE_ELDER
   + FLAG_HIDE_CELESTIC_TOWN_ELDER
   = VAR_CELESTIC_TOWN_STATE 0 -> 1
   + beaten galactic_boss_cyrus_celestic_town_ruins
+  + seen celestic_town_cave.The painting
 way 0.1, from answer 2
   * battle galactic_boss_cyrus_celestic_town_ruins Lost
+  * scene over, unseen
   + FLAG_EXAMINED_CELESTIC_TOWN_CAVE_PAINTING
   + FLAG_HIDE_CELESTIC_TOWN_ELDER
 way 1, from answer 1
   Cyrus> ...You choose to be a coward. A sensible choice. Stand aside, then, and watch me change the world.
   ? If you believe I am, then challenge me. = No
+  * endscene
   + FLAG_EXAMINED_CELESTIC_TOWN_CAVE_PAINTING
   + FLAG_HIDE_CELESTIC_TOWN_ELDER
+  + seen celestic_town_cave.The painting
 === common.Attendant
 from a trainer with lines of their own
 way -
@@ -7580,14 +7690,19 @@ way 0
   Cyrus> So with these two worlds. The one we were born into and this one, bent the other way, prop each other up. That shadow of a Pokémon is the weight that keeps them balanced.
   Cyrus> Which makes it simple. Bring that Pokémon down, and this world goes. And when this world goes, the world outside goes with it. That is all that matters to me now.
   ? So you followed me even here. Tell me. Do you know what genes are, the blueprint every living thing is built from? = Yes
+  * scene distortion_world_b3f.Cyrus in the Distortion World
+  * endscene
   = VAR_DISTORTION_WORLD_PROGRESS 0 -> 6
+  + seen distortion_world_b3f.Cyrus in the Distortion World
 way 1, from answer 1
   Cyrus> No. Of course you don't. Why would a child?
   Cyrus> A gene is two strands wound round each other, each the mirror of the other. Lose one, and the other cannot stand.
   Cyrus> So with these two worlds. The one we were born into and this one, bent the other way, prop each other up. That shadow of a Pokémon is the weight that keeps them balanced.
   Cyrus> Which makes it simple. Bring that Pokémon down, and this world goes. And when this world goes, the world outside goes with it. That is all that matters to me now.
   ? So you followed me even here. Tell me. Do you know what genes are, the blueprint every living thing is built from? = No
+  * endscene
   = VAR_DISTORTION_WORLD_PROGRESS 0 -> 6
+  + seen distortion_world_b3f.Cyrus in the Distortion World
 === distortion_world_b3f.CyrusToo
 from the trigger at 18,20 of DistortionWorldB3F
 way 0
@@ -7597,14 +7712,19 @@ way 0
   Cyrus> So with these two worlds. The one we were born into and this one, bent the other way, prop each other up. That shadow of a Pokémon is the weight that keeps them balanced.
   Cyrus> Which makes it simple. Bring that Pokémon down, and this world goes. And when this world goes, the world outside goes with it. That is all that matters to me now.
   ? So you followed me even here. Tell me. Do you know what genes are, the blueprint every living thing is built from? = Yes
+  * scene distortion_world_b3f.Cyrus in the Distortion World
+  * endscene
   = VAR_DISTORTION_WORLD_PROGRESS 0 -> 6
+  + seen distortion_world_b3f.Cyrus in the Distortion World
 way 1, from answer 1
   Cyrus> No. Of course you don't. Why would a child?
   Cyrus> A gene is two strands wound round each other, each the mirror of the other. Lose one, and the other cannot stand.
   Cyrus> So with these two worlds. The one we were born into and this one, bent the other way, prop each other up. That shadow of a Pokémon is the weight that keeps them balanced.
   Cyrus> Which makes it simple. Bring that Pokémon down, and this world goes. And when this world goes, the world outside goes with it. That is all that matters to me now.
   ? So you followed me even here. Tell me. Do you know what genes are, the blueprint every living thing is built from? = No
+  * endscene
   = VAR_DISTORTION_WORLD_PROGRESS 0 -> 6
+  + seen distortion_world_b3f.Cyrus in the Distortion World
 === distortion_world_b4f.ShadowEast
 from the trigger at 41,22 of DistortionWorldB4F
 way -
@@ -7753,7 +7873,10 @@ way -
   Cynthia> Why? Why unmake a world to change it? If it is a world without spirit you want, you could have gone away by yourself and felt nothing, and troubled no one.
   Cyrus> And leave it as it is? Spirit is the flaw. It makes people weak and cruel by turns, and it is in all of them.
   Cyrus> I will not hide from an imperfect world. I will end it and make it right. That is not cruelty. That is my justice.
+  * scene distortion_world_b7f.The argument
+  * endscene
   = VAR_DISTORTION_WORLD_PROGRESS 0 -> 9
+  + seen distortion_world_b7f.The argument
 === distortion_world_b7f.Cyrus
 from Cyrus at 11,42 of DistortionWorldB7F
 way 0
@@ -7766,12 +7889,16 @@ way 0
   Cynthia> Now. Let's go and meet Giratina.
   Cynthia> It is just ahead of you, and it is furious: at Cyrus, at what was done to time and space, perhaps at all of us.
   Cynthia> It has to be shown that not everyone means it harm. Catch it or beat it, whichever you can. Either will quiet it. I'll be right behind you.
+  * scene distortion_world_b7f.Cyrus's last battle
   * battle galactic_boss_cyrus_distortion_world Won
   * fanfare FanfareHeal
+  * endscene
   = VAR_DISTORTION_WORLD_PROGRESS 0 -> 10
   + beaten galactic_boss_cyrus_distortion_world
+  + seen distortion_world_b7f.Cyrus's last battle
 way 1, from answer 1
   * battle galactic_boss_cyrus_distortion_world Lost
+  * scene over, unseen
 === distortion_world_giratina_room.Arrival
 from the trigger at 15,14 of DistortionWorldGiratinaRoom
 way -
@@ -7799,6 +7926,7 @@ way 0
   Cyrus> Enough. I have heard it all before, from weaker people than you. I will find the way to my world yet, and I will find it alone.
   Cynthia> He can't feel glad of anything. Not even of being alive. I hope he learns to, wherever he goes.
   Cynthia> Look, a way out, where Giratina was. Come on, Lucas. Let's go home.
+  * scene distortion_world_giratina_room.Giratina
   * cry Giratina-Origin
   * wildbattle Giratina 47 Won
   * camera Pan 15 19
@@ -7806,9 +7934,12 @@ way 0
   * emote player Exclaim
   * camera Release
   * sound warp
+  * endscene
   = VAR_DISTORTION_WORLD_PROGRESS 0 -> 14
+  + seen distortion_world_giratina_room.Giratina
 way 1, from answer 1
   * wildbattle Giratina 47 Lost
+  * scene over, unseen
 === distortion_world_giratina_room.Portal
 from Portal at 15,13 of DistortionWorldGiratinaRoom
 way 0
@@ -7882,10 +8013,13 @@ way -
   Cynthia> Don't forget, Cut can be used outside battle too. It clears the way to places you couldn't get to before.
   Cynthia> And that matters a great deal when you're filling a Pokédex, doesn't it? Good luck, Lucas!
   Cynthia> Oh, one last thing. Please give my regards to Professor Rowan.
+  * scene eterna_city.Cynthia and the HM
   * emote Cynthia Exclaim
   * fanfare FanfareTM
+  * endscene
   + FLAG_HIDE_ETERNA_CITY_CYNTHIA
   = VAR_ETERNA_CITY_STATE 0 -> 2
+  + seen eterna_city.Cynthia and the HM
 === eterna_city.CynthiaEgg
 from the trigger at 308,541 of Sinnoh
 way 0
@@ -7947,14 +8081,17 @@ way -
   Barry> The secret to being the greatest Trainer ever. Ready? Make sure every move you use hits!
   Barry> And make sure every move the other side uses misses! Do both, and you can never, ever lose!
   Barry> Unbeatable, that's what I'll be! Anyway, take a good look at the statue. Catch you later!
+  * scene eterna_city.The rival and Cyrus
   * sound bump
   * music common/rival
   * music area
   * camera Pan 327 525
   * camera Release
+  * endscene
   + FLAG_HIDE_ETERNA_CITY_CYRUS
   + FLAG_HIDE_ETERNA_CITY_RIVAL
   = VAR_ETERNA_CITY_STATE 0 -> 1
+  + seen eterna_city.The rival and Cyrus
 === eterna_city.Statue
 from the tile read at 327,525 of Sinnoh
 way -
@@ -7981,7 +8118,10 @@ way -
   Gardenia> I ought to go and look myself, but going in there is... well, a Gym Leader is a busy person, you know.
   Gardenia> Far too busy to go poking about old houses. That's the only reason, honest! I'm n-not frightened or anything!
   Gardenia> W-well then, have fun exploring!
+  * scene eterna_forest.Gardenia before the Old Chateau
+  * endscene
   + FLAG_HIDE_ETERNA_FOREST_GARDENIA
+  + seen eterna_forest.Gardenia before the Old Chateau
 === eterna_forest.Join
 from the trigger at 28,85 of EternaForest
 way -
@@ -7989,11 +8129,14 @@ way -
   Cheryl> Would you let me come along with you? My Pokémon is a fine healer, and I'll keep yours in good shape as we go.
   > Lucas decided to go through the forest with Cheryl.
   Cheryl> Thank you! I'll heal your Pokémon after every battle, so don't hold back.
+  * scene eterna_forest.Cheryl joins
   * emote Cheryl Exclaim
   * fanfare FanfareLevelUp
   * partner Cheryl cheryl_eterna_forest
+  * endscene
   + FLAG_TALKED_TO_ETERNA_FOREST_CHERYL
   = VAR_ETERNA_FOREST_FOLLOWER_CHERYL_STATE 0 -> 1
+  + seen eterna_forest.Cheryl joins
 === eterna_forest.Part
 from the trigger at 82,34 of EternaForest
 way -
@@ -8002,13 +8145,16 @@ way -
   > Lucas received the Soothe Bell!
   > Lucas put it away in the Items pocket.
   Cheryl> I'm sure we'll meet again somewhere. Take care of yourself, Lucas!
+  * scene eterna_forest.Cheryl parts
   * emote Cheryl Exclaim
   * fanfare FanfareItem
   * sound stairs
   * partner off
+  * endscene
   + FLAG_HIDE_ETERNA_FOREST_CHERYL
   + FLAG_TRAVELED_WITH_CHERYL
   = VAR_ETERNA_FOREST_FOLLOWER_CHERYL_STATE 0 -> 2
+  + seen eterna_forest.Cheryl parts
 === eterna_forest.Wait
 from the trigger at 28,86 of EternaForest
 way -
@@ -8101,11 +8247,13 @@ way 0.0
   * fade out
   * fade in
   * music area
+  * scene fight_area.The tag battle at the gate
   * battle leader_volkner_fight_area and elite_four_flint_fight_area with rival_fight_area_turtwig Won
   * fade out
   * fade in
   * sound bump
   * sound stairs
+  * endscene
   + FLAG_HIDE_FIGHT_AREA_BATTLERS_AND_SPECTATORS
   + FLAG_HIDE_FIGHT_AREA_BUCK
   + FLAG_HIDE_FIGHT_AREA_PALMER
@@ -8113,8 +8261,10 @@ way 0.0
   = VAR_FIGHT_AREA_STATE 0 -> 2
   + beaten elite_four_flint_fight_area
   + beaten leader_volkner_fight_area
+  + seen fight_area.The tag battle at the gate
 way 0.1, from answer 2
   * battle leader_volkner_fight_area and elite_four_flint_fight_area with rival_fight_area_turtwig Lost
+  * scene over, unseen
   = VAR_FIGHT_AREA_STATE 0 -> 1
 way 1, from answer 1
   Barry> What?! Come on, Lucas! I can't take those two on alone, and there's nobody I'd sooner have beside me!
@@ -8141,6 +8291,7 @@ way 0.0
   > Lucas received 10 × Honey!
   > Lucas put them away in the Items pocket.
   Honey Man> Spread Honey on a sweet-smelling tree and come back after a while. Pokémon can't resist it!
+  * scene floaroma_meadow.The grunts in the meadow
   * emote Galactic Grunt Exclaim
   * emote Galactic Grunt Exclaim
   * battle galactic_grunt_floaroma_meadow_1 Won
@@ -8149,6 +8300,7 @@ way 0.0
   * fade in
   * fanfare FanfareKeyItem
   * fanfare FanfareItem
+  * endscene
   + FLAG_DEFEATED_FLOAROMA_MEADOW_GRUNTS
   + FLAG_HIDE_FLOAROMA_MEADOW_GRUNT_M_EAST
   + FLAG_HIDE_FLOAROMA_MEADOW_GRUNT_M_WEST
@@ -8157,11 +8309,14 @@ way 0.0
   = VAR_FLOAROMA_MEADOW_STATE 0 -> 1
   + beaten galactic_grunt_floaroma_meadow_1
   + beaten galactic_grunt_floaroma_meadow_2
+  + seen floaroma_meadow.The grunts in the meadow
 way 0.1, from answer 2
   * battle galactic_grunt_floaroma_meadow_2 Lost
+  * scene over, unseen
   + beaten galactic_grunt_floaroma_meadow_1
 way 1, from answer 1
   * battle galactic_grunt_floaroma_meadow_1 Lost
+  * scene over, unseen
 === floaroma_meadow.HoneyMan
 from Honey Man at 12,46 of FloaromaMeadow
 way 0
@@ -8241,12 +8396,15 @@ way -
   Keira> That's enough running about for today, Buneary. Back in your ball!
   Keira> Phew... I'm Keira. Thank you so much! I'd have been chasing it all over Hearthome.
   Keira> I have to get to the Contest Hall. Bye now!
+  * scene hearthome_city.The runaway Buneary
   * emote player Exclaim
   * cry Buneary
   * cry Buneary
+  * endscene
   + FLAG_HIDE_HEARTHOME_CITY_BUNEARY
   + FLAG_HIDE_HEARTHOME_CITY_KEIRA
   = VAR_HEARTHOME_CITY_STATE 0 -> 1
+  + seen hearthome_city.The runaway Buneary
 === hearthome_city.Fisherman
 from Fisherman at 487,714 of Sinnoh
 way 0
@@ -8300,11 +8458,14 @@ way -
   Riley> The Pokémon are restless, far more than they should be. I mean to find out why. Shall we team up, the two of us?
   > Lucas decided to go with Riley.
   Riley> I'll see to your Pokémon after every battle, so fight as hard as you like. Lead on!
+  * scene iron_island_b2f_left_room.Riley joins
   * emote Riley Exclaim
   * fanfare FanfareLevelUp
   * partner Riley riley_iron_island
+  * endscene
   + FLAG_TALKED_TO_IRON_ISLAND_B2F_LEFT_ROOM_RILEY
   = VAR_IRON_ISLAND_B2F_LEFT_ROOM_FOLLOWER_RILEY_STATE 0 -> 1
+  + seen iron_island_b2f_left_room.Riley joins
 === iron_island_b2f_left_room.Leave
 from the trigger at 36,2 of IronIslandB2FLeft
 way -
@@ -8373,13 +8534,16 @@ way 0
   Dawn> You have his parcel, don't you? You'd better take it to him!
   Dawn> I have to get back to the professor. See you, Lucas!
   ? Looker! Surely the name is known to you? = Yes
+  * scene jubilife_city.Looker in Jubilife City
   * emote {assistant} Exclaim
   * music common/assistant
   * emote Looker Exclaim
   * fanfare FanfareKeyItem
   * music area
+  * endscene
   + FLAG_HIDE_JUBILIFE_CITY_COUNTERPART
   = VAR_JUBILIFE_CITY_STATE 0 -> 1
+  + seen jubilife_city.Looker in Jubilife City
 way 1, from answer 1
   Looker> Truly? Never? ...Then we shall call it a clever disguise. It is better so.
   Looker> A certain group is at work in Sinnoh. I am here to learn what they want.
@@ -8394,8 +8558,10 @@ way 1, from answer 1
   ? Looker! Surely the name is known to you? = No
   * fanfare FanfareKeyItem
   * music area
+  * endscene
   + FLAG_HIDE_JUBILIFE_CITY_COUNTERPART
   = VAR_JUBILIFE_CITY_STATE 0 -> 1
+  + seen jubilife_city.Looker in Jubilife City
 === jubilife_city.Grunt
 from Grunt at 174,739 of Sinnoh
 from Grunt at 174,740 of Sinnoh
@@ -8417,8 +8583,11 @@ way -
   President> I am the president of the Pokétch Company, and that simply won't do.
   President> We're holding a campaign! Three clowns in this city each have a quiz. Answer correctly, and each gives you a coupon.
   President> Bring me all three coupons, and I'll give you a Pokétch of your very own!
+  * scene jubilife_city.The Poketch campaign
   * emote President Exclaim
+  * endscene
   = VAR_POKETCH_CAMPAIGN_STATE 0 -> 2
+  + seen jubilife_city.The Poketch campaign
 === jubilife_city.PoketchCoPresident
 from President at 174,771 of Sinnoh
 way -
@@ -8445,10 +8614,12 @@ way 0
   > Lucas put it away in the Key Items pocket.
   > The Fashion Case came with Accessories and Backdrops in it.
   TV Producer> Dress your Pokémon up with what's inside. One day you'll want to, believe me. Hearthome City has a hall just for it!
+  * scene jubilife_city.Team Galactic at the north gate
   * battle galactic_grunt_jubilife_city_1 and galactic_grunt_jubilife_city_2 with dawn_jubilife_city_turtwig Won
   * music common/rowan
   * music area
   * fanfare FanfareKeyItem
+  * endscene
   + FLAG_HIDE_JUBILIFE_CITY_CLOWNS_1_AND_2
   + FLAG_HIDE_JUBILIFE_CITY_CLOWN_3
   + FLAG_HIDE_JUBILIFE_CITY_COLLECTOR
@@ -8460,8 +8631,10 @@ way 0
   = VAR_OREBURGH_CITY_STATE 0 -> 3
   + beaten galactic_grunt_jubilife_city_1
   + beaten galactic_grunt_jubilife_city_2
+  + seen jubilife_city.Team Galactic at the north gate
 way 1, from answer 1
   * battle galactic_grunt_jubilife_city_1 and galactic_grunt_jubilife_city_2 with dawn_jubilife_city_turtwig Lost
+  * scene over, unseen
 === lake_acuity_low_water.Rival
 from {rival} at 16,46 of LakeAcuity
 way -
@@ -8487,17 +8660,21 @@ way 0
   Commander Mars> Verity, Valor, and by now Acuity as well. Team Galactic has all three of the lakes' Pokémon. So long!
   Prof. Rowan> They are gone. Thank you, Lucas. But all three lakes, she said...
   Prof. Rowan> Then what is happening at Lake Acuity? Barry went there alone. Lucas, I must ask you to go after him.
+  * scene lake_verity.Commander Mars at the lake
   * battle commander_mars_lake_verity Won
   * fade out
   * fade in
+  * endscene
   + FLAG_ALT_MUSIC_LAKE_VERITY
   + FLAG_HIDE_LAKE_VERITY_TEAM_GALACTIC
   + FLAG_HIDE_MT_CORONET_1F_NORTH_ROOM_1_GRUNTS_M
   + FLAG_TEAM_GALACTIC_LEFT_LAKE_VERITY
   = VAR_LAKE_ACUITY_STATE 0 -> 1
   + beaten commander_mars_lake_verity
+  + seen lake_verity.Commander Mars at the lake
 way 1, from answer 1
   * battle commander_mars_lake_verity Lost
+  * scene over, unseen
 === lake_verity.Rowan
 from Prof. Rowan at 53,39 of LakeVerityGalactic
 way -
@@ -8531,8 +8708,11 @@ way -
   Cyrus> We meet again. Do you know what this mountain is? It is said that Sinnoh began here, at Mt. Coronet.
   Cyrus> In a world that had only just been made, time began to flow and space began to spread. Everything was new.
   Cyrus> And what became of that world? It filled with conflict and with spirit, and it was never made whole. A pity.
+  * scene mt_coronet_1f_south.Cyrus in Mt Coronet
+  * endscene
   + FLAG_HIDE_MT_CORONET_1F_SOUTH_CYRUS
   = VAR_MT_CORONET_1F_SOUTH_STATE 0 -> 1
+  + seen mt_coronet_1f_south.Cyrus in Mt Coronet
 === mt_coronet_1f_tunnel_room.LostGrunt
 from Grunt at 16,14 of MtCoronet1FTunnelRoom
 way -
@@ -8553,10 +8733,13 @@ way -
   > Lucas put it away in the Items pocket.
   Looker> That flute keeps wild Pokémon at a distance. It is the one thing I have that may be of use to you on the way up.
   Looker> Go. Stop Team Galactic! I shall hold this spot, so that no more of them come up behind you.
+  * scene mt_coronet_2f.Looker on Mt Coronet
   * emote Looker Exclaim
   * fanfare FanfareItem
+  * endscene
   + FLAG_RECEIVED_MT_CORONET_2F_BLACK_FLUTE
   = VAR_MT_CORONET_2F_STATE 0 -> 2
+  + seen mt_coronet_2f.Looker on Mt Coronet
 === mt_coronet_2f.LookerTalk
 from Looker at 10,26 of MtCoronet2F
 way -
@@ -8595,11 +8778,14 @@ way -
   Barry> Whoa! Lucas! Watch where you're going!
   Barry> Got the Coal Badge? Me too! Roark was tough, but me and my team were tougher. Obviously.
   Barry> Next stop: Eterna City and its Gym Badge. Out through Jubilife, then north. Bet I get there first!
+  * scene oreburgh_city.The rival on the way out
   * music common/rival
   * emote {rival} Exclaim
   * music area
+  * endscene
   + FLAG_HIDE_OREBURGH_CITY_RIVAL
   = VAR_OREBURGH_CITY_STATE 0 -> 3
+  + seen oreburgh_city.The rival on the way out
 === oreburgh_city.SchoolKidF
 from Schoolgirl at 288,754 of Sinnoh
 way -
@@ -8610,12 +8796,15 @@ way -
   Boy> Hey! You're a Trainer, right? You've come for the Gym? I knew it!
   Boy> I'll show you the way. Follow me!
   Boy> This is the Oreburgh Gym! The Leader, Roark, is really strong. ...Huh? There's someone at the door.
+  * scene oreburgh_city.To the Gym
   * emote Boy Exclaim
   * music common/assistant
   * fade out
   * fade in
   * music area
+  * endscene
   = VAR_OREBURGH_CITY_STATE 0 -> 1
+  + seen oreburgh_city.To the Gym
 === oreburgh_city.Worker2
 from Worker at 312,793 of Sinnoh
 way -
@@ -8662,13 +8851,16 @@ way -
   Roark> Hm? A Trainer, down here? ...Ah, you're here for the Gym. You'll have to wait while I clear this. Stand back and watch.
   Roark> Rocks like that block the tunnels, so they need smashing. Rock Smash does it. You can learn it too, you know.
   Roark> Right. If it's my Gym you want, I'll be waiting up there. Don't keep me long!
+  * scene oreburgh_mine_b2f.Roark down the mine
   * sound rock_smash
   * camera Shake
   * fade out
   * fade in
+  * endscene
   + FLAG_HIDE_OREBURGH_CITY_RIVAL
   + FLAG_HIDE_OREBURGH_MINE_B2F_ROARK
   + FLAG_ROARK_RETURNED_TO_OREBURGH_GYM
+  + seen oreburgh_mine_b2f.Roark down the mine
 === pal_park.RetireAtGate
 from the trigger at 22,48 of PalPark
 way 0
@@ -8712,12 +8904,18 @@ way -
   Barry> Lucas! That Galactic creep went east. Go and get him!
   Barry> I'll guard this door, like my master told us. Nobody's getting past me!
   Barry> Now hurry, before he gets away!
+  * scene pastoria_city.The bomb at the Great Marsh
   * sound thunder
   * camera Shake
+  * endscene
+  * scene pastoria_city.After the grunt
+  * endscene
   + FLAG_HIDE_PASTORIA_CITY_CRASHER_WAKE
   + FLAG_HIDE_VEILSTONE_CITY_GALACTIC_WAREHOUSE_LOOKER
   + FLAG_PASTORIA_CITY_GRUNT_M_MOVED_EAST
   = VAR_PASTORIA_CITY_STATE 0 -> 5
+  + seen pastoria_city.After the grunt
+  + seen pastoria_city.The bomb at the Great Marsh
 === pastoria_city.Grunt
 from Grunt at 614,810 of Sinnoh
 way -
@@ -8735,14 +8933,18 @@ way 0
   Barry> Been training, Lucas? Let's find out how much. Show me what your team's got!
   Barry> Huh. Fine, you've got stronger. I wasn't really trying, anyway!
   Barry> Oh, big news: Mr. Wake's taking me on as his apprentice! Someday I'll have a theme tune all my own!
+  * scene pastoria_city.The rival's battle in Pastoria
   * emote {rival} Exclaim
   * music common/rival
   * battle rival_pastoria_city_piplup Won
   * music area
+  * endscene
   = VAR_PASTORIA_CITY_STATE 0 -> 2
   + beaten rival_pastoria_city_piplup
+  + seen pastoria_city.The rival's battle in Pastoria
 way 1, from answer 1
   * battle rival_pastoria_city_piplup Lost
+  * scene over, unseen
 === pastoria_city.Wake
 from Crasher Wake at 589,827 of Sinnoh
 way -
@@ -8853,6 +9055,7 @@ way 0.0
   Barry> You're up for a battle, right?
   Barry> Whew... That wore me out! I'm going home to rest. My Pokémon too!
   ? You're up for a battle, right? = Yes
+  * scene route_201.The briefcase
   * fade out
   * fade in
   * open Starter
@@ -8860,6 +9063,7 @@ way 0.0
   * battle rival_route_201_turtwig first Won
   * fade out
   * warp PlayerHouse 2 6
+  * endscene
   + FLAG_HIDE_ROUTE_201_BRIEFCASE
   + FLAG_HIDE_ROUTE_201_COUNTERPART
   + FLAG_HIDE_ROUTE_201_PROF_ROWAN
@@ -8867,17 +9071,20 @@ way 0.0
   = VAR_PLAYER_HOUSE_STATE 0 -> 3
   + beaten rival_route_201_turtwig
   = starters none/none -> Turtwig/Chimchar
+  + seen route_201.The briefcase
 way 0.1, from answer 2
   Barry> Whoa, I won? I actually won! Battling with Pokémon is the best!
   * battle rival_route_201_turtwig first Lost
   * fade out
   * warp PlayerHouse 2 6
+  * endscene
   + FLAG_HIDE_ROUTE_201_BRIEFCASE
   + FLAG_HIDE_ROUTE_201_COUNTERPART
   + FLAG_HIDE_ROUTE_201_PROF_ROWAN
   = VAR_FOLLOWER_RIVAL_STATE 0 -> 2
   = VAR_PLAYER_HOUSE_STATE 0 -> 3
   = starters none/none -> Turtwig/Chimchar
+  + seen route_201.The briefcase
 way 1.0.0, from answer 1
   Barry> Come on, don't be like that! Just one battle!
   Barry> You're up for a battle, right?
@@ -8887,6 +9094,7 @@ way 1.0.0, from answer 1
   * battle rival_route_201_turtwig first Won
   * fade out
   * warp PlayerHouse 2 6
+  * endscene
   + FLAG_HIDE_ROUTE_201_BRIEFCASE
   + FLAG_HIDE_ROUTE_201_COUNTERPART
   + FLAG_HIDE_ROUTE_201_PROF_ROWAN
@@ -8894,17 +9102,20 @@ way 1.0.0, from answer 1
   = VAR_PLAYER_HOUSE_STATE 0 -> 3
   + beaten rival_route_201_turtwig
   = starters none/none -> Turtwig/Chimchar
+  + seen route_201.The briefcase
 way 1.0.1, from answer 3
   Barry> Whoa, I won? I actually won! Battling with Pokémon is the best!
   * battle rival_route_201_turtwig first Lost
   * fade out
   * warp PlayerHouse 2 6
+  * endscene
   + FLAG_HIDE_ROUTE_201_BRIEFCASE
   + FLAG_HIDE_ROUTE_201_COUNTERPART
   + FLAG_HIDE_ROUTE_201_PROF_ROWAN
   = VAR_FOLLOWER_RIVAL_STATE 0 -> 2
   = VAR_PLAYER_HOUSE_STATE 0 -> 3
   = starters none/none -> Turtwig/Chimchar
+  + seen route_201.The briefcase
 === route_201.ChooseFirst
 from the trigger at 113,855 of Sinnoh
 from the trigger at 115,852 of Sinnoh
@@ -8944,11 +9155,14 @@ way -
   Barry> Took you long enough! I want to go and thank Professor Rowan properly.
   Barry> But first! You know the lake past the western end of this road? They say a legendary Pokémon lives in it!
   Barry> If we caught it, the professor would be so impressed! Race you there!
+  * scene route_201.Off to the lake
   * music common/rival
   * music area
+  * endscene
   + FLAG_HIDE_ROUTE_201_RIVAL
   + FLAG_RIVAL_WAITS_AT_LAKEFRONT
   = VAR_FOLLOWER_RIVAL_STATE 0 -> 3
+  + seen route_201.Off to the lake
 === route_201.Rival
 from {rival} at 112,855 of Sinnoh
 way -
@@ -8981,11 +9195,14 @@ way 0.0
   Barry> Whoa, for real? You go first, Lucas! I'll take whichever's left. Well, the best one that's left!
   ? Tell me truthfully. Do you love Pokémon? = Yes
   ? Right? = Yes
+  * scene route_201.The professor
   * music common/rival
   * music common/rowan
   * music common/assistant
   * music area
+  * endscene
   = VAR_FOLLOWER_RIVAL_STATE 0 -> 1
+  + seen route_201.The professor
 way 0.1.0.0, from answer 2
   Barry> Ha ha, very funny. That joke's getting old already! Let's try that again.
   Prof. Rowan> Tell me truthfully. Do you love Pokémon?
@@ -9004,7 +9221,9 @@ way 0.1.0.0, from answer 2
   ? Right? = Yes
   * music common/assistant
   * music area
+  * endscene
   = VAR_FOLLOWER_RIVAL_STATE 0 -> 1
+  + seen route_201.The professor
 way 1.0.0, from answer 1
   Barry> Hey! What kind of answer is that? Tell him the truth!
   Prof. Rowan> Tell me truthfully. Do you love Pokémon?
@@ -9023,7 +9242,9 @@ way 1.0.0, from answer 1
   ? Right? = Yes
   * music common/assistant
   * music area
+  * endscene
   = VAR_FOLLOWER_RIVAL_STATE 0 -> 1
+  + seen route_201.The professor
 way 1.0.1.0.0, from answer 3
   Barry> Ha ha, very funny. That joke's getting old already! Let's try that again.
   Prof. Rowan> Tell me truthfully. Do you love Pokémon?
@@ -9042,7 +9263,9 @@ way 1.0.1.0.0, from answer 3
   ? Right? = Yes
   * music common/assistant
   * music area
+  * endscene
   = VAR_FOLLOWER_RIVAL_STATE 0 -> 1
+  + seen route_201.The professor
 === route_202.CatchingLesson
 from the trigger at 180,825 of Sinnoh
 way -
@@ -9060,15 +9283,19 @@ way 0
   Barry> My Pokémon and I learned loads at the Trainers' School. Let's see if you've been slacking!
   Barry> Gah! What was that?! ...Fine, whatever. The real test is the Oreburgh Gym!
   Barry> Through Oreburgh Gate and you're there. I'll be the first to get the Badge, you'll see!
+  * scene route_203.The rival on Route 203
   * music common/rival
   * emote {rival} Exclaim
   * battle rival_route_203_piplup Won
   * music area
+  * endscene
   + FLAG_HIDE_ROUTE_203_RIVAL
   = VAR_ROUTE_203_RIVAL_STATE 0 -> 1
   + beaten rival_route_203_piplup
+  + seen route_203.The rival on Route 203
 way 1, from answer 1
   * battle rival_route_203_piplup Lost
+  * scene over, unseen
 === route_205_south.BridgeGrunts
 from the trigger at 217,653 of Sinnoh
 way -
@@ -9111,14 +9338,17 @@ way 0
   Dawn> It finds items hidden in the ground nearby. Tap it now and then on your way, and you'll be surprised what turns up!
   Dawn> Right, I'm off back to the lab. Good luck on Mt. Coronet, Lucas!
   ? Here's a game first. Which hand do you think it's in? = Right
+  * scene route_207.The assistant on Route 207
   * emote {assistant} Exclaim
   * music common/assistant
   * fanfare FanfareKeyItem
   * fanfare FanfareKeyItem
   * music area
+  * endscene
   + FLAG_HIDE_ROUTE_207_COUNTERPART
   + FLAG_UNLOCKED_VS_SEEKER_LVL_1
   = VAR_ROUTE_207_COUNTERPART_TRIGGER_STATE 0 -> 1
+  + seen route_207.The assistant on Route 207
 way 1, from answer 1
   Dawn> ...Ha ha! It doesn't matter which, actually. You win either way!
   > Lucas received the Vs. Seeker!
@@ -9132,9 +9362,11 @@ way 1, from answer 1
   * fanfare FanfareKeyItem
   * fanfare FanfareKeyItem
   * music area
+  * endscene
   + FLAG_HIDE_ROUTE_207_COUNTERPART
   + FLAG_UNLOCKED_VS_SEEKER_LVL_1
   = VAR_ROUTE_207_COUNTERPART_TRIGGER_STATE 0 -> 1
+  + seen route_207.The assistant on Route 207
 === route_208.BlackBelt
 from Black Belt at 437,733 of Sinnoh
 way -
@@ -9213,8 +9445,11 @@ way -
   Galactic Grunt> Only a real brain could put something like it together. Our boss built it himself, you know. A genius, that man!
   Galactic Grunt> Wha--?! How long have you been standing there?! I was just muttering, that's all!
   Galactic Grunt> Bah. You're not worth the bother of a battle...
+  * scene route_213.The grunt by the gate
   * emote Grunt Exclaim
+  * endscene
   + FLAG_TALKED_TO_ROUTE_213_GRUNT_M
+  + seen route_213.The grunt by the gate
 === route_215.BlackBelt
 from Black Belt at 611,598 of Sinnoh
 way -
@@ -9232,10 +9467,13 @@ way -
   Maylene> Oh! Lucas! It's you!
   Maylene> Brrr, it's freezing out here! I'm on my way to Snowpoint City. Their Gym Leader is a friend of mine, and we train together.
   Maylene> Running barefoot through the snow is good training too. That's what I keep telling my feet, anyway. See you there!
+  * scene route_217.Maylene on Route 217
   * emote Maylene Exclaim
+  * endscene
   + FLAG_HIDE_ROUTE_217_MAYLENE
   + FLAG_HIDE_VEILSTONE_CITY_GYM_MAYLENE
   = VAR_ROUTE_217_STATE 0 -> 1
+  + seen route_217.Maylene on Route 217
 === route_218.ClefairyNorth
 from Clefairy at 72,755 of Sinnoh
 way -
@@ -9309,10 +9547,13 @@ way -
   Crasher Wake> Lucas! That mountain up the road is no place to stroll into. Go fully prepared, or don't go at all!
   Barry> Right! Training's over, so I'm off to the Battle Frontier. My dad's at the top of it, and I'm going to beat him!
   Barry> You'd better come too, Lucas. I'll be waiting, so don't make me wait long!
+  * scene route_227.Crasher Wake and the rival
   * emote Crasher Wake Exclaim
+  * endscene
   + FLAG_HIDE_ROUTE_227_CRASHER_WAKE
   + FLAG_HIDE_ROUTE_227_RIVAL
   = VAR_ROUTE_227_WAKE_RIVAL_STATE 0 -> 1
+  + seen route_227.Crasher Wake and the rival
 === route_229.Pokefan
 from Pokéfan at 814,431 of Sinnoh
 way -
@@ -9339,6 +9580,7 @@ way -
   Barry> Whoa, Lucas! Slow as ever. ...You know, the professor isn't scary at all. He's just kind of strange!
   Barry> Anyway, I'm off. Later!
   Dawn> Was that your friend? He's in a real hurry, isn't he? ...Well, in we go!
+  * scene sandgem_town.The assistant
   * music common/assistant
   * emote {assistant} Exclaim
   * fade out
@@ -9350,9 +9592,11 @@ way -
   * music common/assistant
   * music area
   * warp RowanLab 5 8
+  * endscene
   + FLAG_HIDE_SANDGEM_TOWN_COUNTERPART
   + FLAG_HIDE_SANDGEM_TOWN_RIVAL
   = VAR_SANDGEM_TOWN_STATE 0 -> 1
+  + seen sandgem_town.The assistant
 === sendoff_spring.Cynthia
 from Cynthia at 31,17 of SendoffSpring
 way -
@@ -9423,12 +9667,15 @@ way -
   Barry> Oh, that's right. It's because I was in the ruins!
   Barry> The ruins here are amazing. You've got to go and see. I even found a Hidden Machine in there. Defog!
   Barry> Anyway, we'll battle another time. See you!
+  * scene solaceon_town.The rival in Solaceon
   * emote player Exclaim
   * music common/rival
   * emote {rival} Exclaim
   * music area
+  * endscene
   + FLAG_HIDE_SOLACEON_TOWN_RIVAL
   = VAR_SOLACEON_TOWN_STATE 0 -> 1
+  + seen solaceon_town.The rival in Solaceon
 === solaceon_town.RuinManiac
 from Ruin Maniac at 558,659 of Sinnoh
 way -
@@ -9474,6 +9721,7 @@ way 0
   Cyrus> A Pokémon that comes as a shadow... So there was a third, set against the other two. Interesting.
   Cyrus> It changes nothing! I hold the power of Dialga and of Palkia. Whatever you are, you cannot...
   > The shadow closed over Cyrus and sank into the floor. Where it went down, the stone of Spear Pillar is gone.
+  * scene spear_pillar.Spear Pillar
   * music common/rival
   * battle commander_mars_spear_pillar and commander_jupiter_spear_pillar with rival_spear_pillar_turtwig Won
   * fanfare FanfareHeal
@@ -9514,6 +9762,7 @@ way 0
   * cry Giratina-Origin
   * camera Release
   * warp SpearPillarDistorted 30 30
+  * endscene
   + FLAG_HIDE_SPEAR_PILLAR_CYRUS
   + FLAG_HIDE_SPEAR_PILLAR_GRUNTS
   + FLAG_HIDE_SPEAR_PILLAR_MARS_JUPITER
@@ -9523,8 +9772,10 @@ way 0
   = VAR_SPEAR_PILLAR_STATE 0 -> 3
   + beaten commander_jupiter_spear_pillar
   + beaten commander_mars_spear_pillar
+  + seen spear_pillar.Spear Pillar
 way 1, from answer 1
   * battle commander_mars_spear_pillar and commander_jupiter_spear_pillar with rival_spear_pillar_turtwig Lost
+  * scene over, unseen
 === spear_pillar_dialga.Rift
 from the tile read at 29,16 of SpearPillarDialga
 from the tile read at 29,17 of SpearPillarDialga
@@ -9604,11 +9855,14 @@ way -
   Grunt> Sure, but... that old man. Can he really take over? He's no Master Cyrus, is he?
   Grunt> You're telling me. Old Charon may call himself a Commander, but nobody takes Master Cyrus's place.
   Grunt> ...I've been thinking this might be a good moment to be done with Team Galactic altogether.
+  * scene stark_mountain_outside.The grunts at Stark Mountain
   * camera Pan 747 233
   * sound stairs
   * camera Release
+  * endscene
   + FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_GRUNTS
   = VAR_STARK_MOUNTAIN_OUTSIDE_STATE 0 -> 1
+  + seen stark_mountain_outside.The grunts at Stark Mountain
 === stark_mountain_room_1.Galactic
 from Charon at 20,24 of StarkMountainRoom1
 from Grunt at 19,24 of StarkMountainRoom1
@@ -9716,11 +9970,14 @@ way -
   > Lucas put it away in the TMs & HMs pocket.
   Jasmine> ...That Hidden Machine holds Waterfall. With it you can climb to the Pokémon League.
   Jasmine> ...Um... I'm not good at saying these things, but... I hope it goes well for you.
+  * scene sunyshore_city.Jasmine on the beach
   * emote Jasmine Exclaim
   * fanfare FanfareTM
+  * endscene
   + FLAG_HIDE_SUNYSHORE_CITY_RIVAL
   + FLAG_RECEIVED_SUNYSHORE_CITY_HM07
   = VAR_SUNYSHORE_CITY_STATE 0 -> 3
+  + seen sunyshore_city.Jasmine on the beach
 === survival_area.BattlegroundDoor
 from the tile read at 652,338 of Sinnoh
 way -
@@ -9807,6 +10064,7 @@ way -
   Barry> Ow! Who's standing right outside my door? ...Oh, it's you, Lucas!
   Barry> Listen, I'm off to see Professor Rowan! You're coming too, right? Hurry up!
   Barry> Wait, wait! I forgot something! Don't go anywhere!
+  * scene twinleaf_town.The rival runs out
   * sound door_open
   * sound bump
   * camera Shake
@@ -9815,7 +10073,9 @@ way -
   * emote {rival} Exclaim
   * sound door_close
   * music area
+  * endscene
   = VAR_TWINLEAF_TOWN_RIVAL_TRIGGER_STATE 0 -> 1
+  + seen twinleaf_town.The rival runs out
 === underground.HikerGoods
 from Hiker at 175,279 of Underground
 from Hiker at 200,185 of Underground
@@ -9897,16 +10157,20 @@ way 0
   Commander Saturn> ...So that is why they complain. You are strong. And you are far too late.
   Commander Saturn> The Pokémon of this lake is already ours. By now Mars will have what she went to Lake Verity for, as well.
   Commander Saturn> Run there if you like. It will change nothing.
+  * scene valor_cavern.Commander Saturn
   * emote Saturn Exclaim
   * battle commander_saturn_valor_cavern Won
   * fade out
   * fade in
+  * endscene
   + FLAG_ALT_MUSIC_LAKE_VALOR
   + FLAG_DEFEATED_COMMANDER_SATURN_VALOR_CAVERN
   + FLAG_HIDE_LAKE_VALOR_GALACTIC
   + beaten commander_saturn_valor_cavern
+  + seen valor_cavern.Commander Saturn
 way 1, from answer 1
   * battle commander_saturn_valor_cavern Lost
+  * scene over, unseen
 === valor_lakefront.Beauty
 from Beauty at 715,782 of Sinnoh
 way -
@@ -9946,14 +10210,17 @@ way -
   Crasher Wake> Come and find me in my ring one of these days!
   Dawn> ...
   Dawn> Anyway... you'll do great at the Gym, Lucas!
+  * scene veilstone_city.Crasher Wake in Veilstone
   * emote {assistant} Exclaim
   * music common/assistant
   * music area
   * sound door_open
   * emote Crasher Wake Exclaim
+  * endscene
   + FLAG_HIDE_VEILSTONE_COUNTERPART
   + FLAG_HIDE_VEILSTONE_CRASHER_WAKE
   = VAR_VEILSTONE_CITY_CRASHER_WAKE_STATE 0 -> 1
+  + seen veilstone_city.Crasher Wake in Veilstone
 === veilstone_city.GruntNorth
 from Grunt at 697,595 of Sinnoh
 way -
@@ -9976,16 +10243,21 @@ way 0
   Looker> Very good. The warehouse of Team Galactic: inside it, we meet.
   Looker> Make yourself as ready as you can. I will be along directly.
   ? Well? You will come into the hideout with me? You have your own reasons to, I think. = Yes
+  * scene veilstone_city.The Storage Key
   * emote Grunt Exclaim
+  * endscene
   + FLAG_AGREED_WITH_LOOKER_TO_ENTER_HIDEOUT
   + FLAG_HIDE_VEILSTONE_CITY_GRUNT_M_STORAGE_KEY
   + FLAG_VEILSTONE_CITY_GRUNT_DROPPED_STORAGE_KEY
   = VAR_VEILSTONE_CITY_GALACTIC_WAREHOUSE_STATE 0 -> 3
+  + seen veilstone_city.The Storage Key
 way 1, from answer 1
   Looker> ...Yes. I take your point. To creep into the lair of Team Galactic... it is no small thing.
   ? Well? You will come into the hideout with me? You have your own reasons to, I think. = No
+  * endscene
   + FLAG_HIDE_VEILSTONE_CITY_GRUNT_M_STORAGE_KEY
   + FLAG_VEILSTONE_CITY_GRUNT_DROPPED_STORAGE_KEY
+  + seen veilstone_city.The Storage Key
 === veilstone_city.GruntsBlock
 from the trigger at 697,596 of Sinnoh
 way -
@@ -10040,9 +10312,12 @@ way -
   Prof. Rowan> You never picked up the Marking Map? ...The Pokétch Company keeps making new things, you know. Look in on them.
   Prof. Rowan> Off you go, Lucas. The road ahead is full of Pokémon and people you have yet to meet, and not one meeting will be like another.
   Prof. Rowan> Make the most of them all. Look after yourself.
+  * scene verity_cavern.Mesprit
   * cry Mesprit
+  * endscene
   + FLAG_HIDE_VERITY_CAVERN_MESPRIT
   + FLAG_HIDE_VERITY_CAVERN_PROF_OAK
+  + seen verity_cavern.Mesprit
 === verity_lakefront.IntoTheLake
 from the trigger at 80,844 of Sinnoh
 way -
@@ -10068,11 +10343,14 @@ way -
   Marley> ...Lucas, isn't it? Let me go with you. Please.
   > Lucas decided to go with Marley.
   Marley> ...I'll see to your Pokémon after every battle. It's the least I can do.
+  * scene victory_road_1f_room_2.Marley joins
   * emote Marley Exclaim
   * fanfare FanfareLevelUp
   * partner Marley marley_victory_road
+  * endscene
   + FLAG_TALKED_TO_VICTORY_ROAD_1F_ROOM_2_MARLEY
   = VAR_VICTORY_ROAD_1F_ROOM_2_FOLLOWER_MARLEY_STATE 0 -> 1
+  + seen victory_road_1f_room_2.Marley joins
 === victory_road_1f_room_2.MarleyParts
 from the trigger at 51,19 of VictoryRoad1FRoom2
 way -

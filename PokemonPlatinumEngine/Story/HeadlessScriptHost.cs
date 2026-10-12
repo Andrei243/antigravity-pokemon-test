@@ -117,6 +117,7 @@ public sealed class HeadlessScriptHost : IScriptHost
     public void HoldContest(int slot, ContestStat category, Models.SuperContests.ContestRank rank, Models.SuperContests.ContestMode mode)
     {
         Shown("hold a contest");
+        NeverInAHurry("a contest");
         Waits();
         ContestOutcome = Models.SuperContests.ContestAwards.Conclude(Party.Members[slot], category, rank, mode, ContestPlacement, FashionCase);
         ContestRecords.Count(ContestOutcome, Party.Members[slot], Array.Empty<int>(), PlayerName, GameClock.Today);
@@ -146,6 +147,7 @@ public sealed class HeadlessScriptHost : IScriptHost
     public int UndergroundAct(string what, NPC? subject)
     {
         Log.Add($"underground {what}");
+        NeverInAHurry($"the Underground's '{what}'");
         if (what is "down" or "up" or "mine" or "hiker" or "pc" or "bag") Waits();
         return UndergroundResults.GetValueOrDefault(what, 1);
     }
@@ -162,6 +164,7 @@ public sealed class HeadlessScriptHost : IScriptHost
     public int PastimeAct(string what, int number, NPC? subject)
     {
         Log.Add($"pastime {what} {number}");
+        NeverInAHurry($"a pastime's '{what}'");
         switch (what)
         {
             case "slots":
@@ -184,6 +187,7 @@ public sealed class HeadlessScriptHost : IScriptHost
     public bool Hatch()
     {
         Shown("hatch an Egg");
+        NeverInAHurry("an Egg hatching");
         if (Party.Members.FirstOrDefault(p => p.IsEgg && p.EggCycles == 0) is not { } egg) return false;
         Breeding.Hatch(egg, Map?.DisplayNameAt(PlayerTile.X, PlayerTile.Y), GameClock.Today);
         Hatched.Add(egg);
@@ -242,6 +246,98 @@ public sealed class HeadlessScriptHost : IScriptHost
         if (ShowsNothing) throw new ScriptException($"A script that may only set things up tried to {what}.");
     }
 
+    // ------------------------------------------------------------------ a scene skipped (plan 12 · Q20)
+
+    /// <summary>True while the runner hurries through a scene: what is only shown or heard is dropped (<see cref="Dropped"/>, <see cref="Unread"/>).</summary>
+    public bool Skipping { get; private set; }
+
+    /// <summary>How many hurries began: one for a scene skipped whole, one more for each thing in it that waited for the player.</summary>
+    public int Skips { get; private set; }
+
+    /// <summary>The lines a hurry put away unread, in order: who and what, as <see cref="Transcript"/> has the lines that were read.</summary>
+    public List<(string? Speaker, string Text)> Unread { get; } = new();
+
+    /// <summary>What a hurry dropped beside its lines, a word and its details each, as <see cref="Log"/> has what happened: <c>sound door_open</c>, <c>emote rival Exclaim</c>.</summary>
+    public List<string> Dropped { get; } = new();
+
+    /// <summary>The scenes this host's machine has seen to their end (the game's is <c>GameSettings.ScenesSeen</c>): what a second game may skip.</summary>
+    public HashSet<string> MachineScenes { get; } = new(StringComparer.Ordinal);
+
+    /// <summary>The seconds a hurry let pass for whoever was walking, in order, and how often it had its walks arrive.</summary>
+    public List<float> Elapsed { get; } = new();
+
+    public int Arrivals { get; private set; }
+
+    // (Here a walk is over as it is told, so there is nobody to move: both are only written down)
+    public void Elapse(float seconds) => Elapsed.Add(seconds);
+
+    public void Arrive()
+    {
+        Arrivals++;
+        Walking = false;
+    }
+
+    public void BeginSkipping()
+    {
+        Skipping = true;
+        Skips++;
+        // A test's hold on a walk is let go: nobody is waited for in a hurry
+        Walking = false;
+    }
+
+    public void EndSkipping() => Skipping = false;
+
+    public void SceneBegins(string key) => Log.Add($"scene {key}");
+
+    public void SceneEnds(string key, bool seen)
+    {
+        Log.Add(seen ? "endscene" : "scene over, unseen");
+        if (seen) MachineScenes.Add(key);
+    }
+
+    /// <summary>Notes what happened; in a hurry, something only shown or heard is dropped instead (true), and the caller does no more with it.</summary>
+    private bool Passing(string entry)
+    {
+        if (Skipping) Dropped.Add(entry);
+        else Log.Add(entry);
+        return Skipping;
+    }
+
+    /// <summary>
+    /// Something that waits for the player, or that no host ends at once, was reached in a hurry: its command must
+    /// stop one (<see cref="ScriptRunner.StopsAHurry"/>), and a test that plays the game's scenes both ways fails on this.
+    /// </summary>
+    private void NeverInAHurry(string what)
+    {
+        if (Skipping) Problems.Add($"a hurry reached {what}: the command that does it must stop a hurry (ScriptRunner.StopsAHurry)");
+    }
+
+    // What a scene leaves on the screen once it is over, which a skip must leave too: the script's black screen, the
+    // song playing, the camera kit (what the camera looks at, its lens, the bars), the effects held, a PC left on and
+    // the balls on the Hall of Fame's machine
+
+    /// <summary>Whether the script's fade has the field black.</summary>
+    public bool ScreenBlack { get; private set; }
+
+    /// <summary>The song a script asked for last: a song's id, <c>area</c> for the place's own, <c>stop</c> for silence; null before any.</summary>
+    public string? Song { get; private set; }
+
+    /// <summary>What the camera looks at: <c>player</c>, a tile (<c>31,26</c>) or whoever it keeps on.</summary>
+    public string CameraOn { get; private set; } = "player";
+
+    /// <summary>The lens's factor: 1 unless a scene zoomed.</summary>
+    public float Lens { get; private set; } = 1f;
+
+    /// <summary>Whether the cinema bars are in.</summary>
+    public bool Bars { get; private set; }
+
+    /// <summary>The effects held on their tiles: the kind and the tile each.</summary>
+    public SortedSet<string> HeldEffects { get; } = new(StringComparer.Ordinal);
+
+    /// <summary>Whether a PC's screen was left on, and the balls left on the Hall of Fame's machine.</summary>
+    public bool PcOn { get; private set; }
+    public int MachineBalls { get; private set; }
+
     private string Named(string text) => PlayerIdentity.Fill(text, PlayerName, PlayerLook, RivalName);
 
     // ------------------------------------------------------------------ the field
@@ -277,7 +373,7 @@ public sealed class HeadlessScriptHost : IScriptHost
     public void Walk(NPC? who, IReadOnlyList<ScriptStep> steps, bool fast)
     {
         Shown("walk someone");
-        if (Pauses) Walking = true;
+        if (Pauses && !Skipping) Walking = true;
         var (x, y) = TileOf(who);
         Direction? facing = null;
         foreach (var step in steps)
@@ -290,9 +386,16 @@ public sealed class HeadlessScriptHost : IScriptHost
             y += dy;
             Check(who, x, y, "walks");
         }
-        if (who == null) PlayerTile = (x, y);
-        else (who.GridX, who.GridY) = (x, y);
-        if (facing is { } way) Face(who, way);
+        // In a hurry someone of the map is put at the end of their walk by the game's own walk, taken to its end
+        // unseen as the field's host takes it (plan 12 · Q20): where that and the steps counted here part, a skip
+        // and a played scene part too
+        if (Skipping && who != null) new NpcWalk(who, steps, fast).Finish();
+        else
+        {
+            if (who == null) PlayerTile = (x, y);
+            else (who.GridX, who.GridY) = (x, y);
+            if (facing is { } way) Face(who, way);
+        }
         if (steps.Any(s => s.Kind != ScriptStepKind.Walk))
             Log.Add($"walk {who?.Name ?? "player"} " + string.Join(" ", steps.Select(s => s.Kind switch
             {
@@ -308,7 +411,7 @@ public sealed class HeadlessScriptHost : IScriptHost
     public void Act(NPC? who, Gesture gesture, int times)
     {
         Shown("make someone act");
-        Log.Add($"act {who?.Name ?? "player"} {gesture}" + (times > 1 ? $" {times}" : ""));
+        Passing($"act {who?.Name ?? "player"} {gesture}" + (times > 1 ? $" {times}" : ""));
     }
 
     public void Mood(NPC? who, Mood mood)
@@ -337,7 +440,7 @@ public sealed class HeadlessScriptHost : IScriptHost
     public void Emote(NPC? who, EmoteBubble bubble, float seconds)
     {
         Shown("show a bubble");
-        Log.Add($"emote {who?.Name ?? "player"} {bubble}");
+        Passing($"emote {who?.Name ?? "player"} {bubble}");
     }
 
     public float Camera(CameraMove move, int x, int y, float seconds, float factor = 1f, NPC? who = null, IReadOnlyList<(int X, int Y)>? path = null)
@@ -348,26 +451,38 @@ public sealed class HeadlessScriptHost : IScriptHost
         {
             case CameraMove.Pan:
                 Log.Add($"camera Pan {x} {y}");
+                CameraOn = $"{x},{y}";
                 return seconds;
             case CameraMove.Zoom:
                 Log.Add($"camera Zoom {Number(factor)}");
+                Lens = factor;
                 return seconds;
             case CameraMove.Follow:
                 Log.Add($"camera Follow {who?.Name ?? "player"}");
+                CameraOn = who?.Name ?? "player";
                 return seconds;
             case CameraMove.Path:
             {
                 // Everything happens at once here: the path's time is told from its own tiles, as if the camera began at the first
                 var tiles = path ?? Array.Empty<(int X, int Y)>();
                 Log.Add($"camera Path {string.Join(" ", tiles.Select(t => $"{t.X} {t.Y}"))} at {Number(factor)}");
+                if (tiles.Count > 0) CameraOn = $"{tiles[^1].X},{tiles[^1].Y}";
                 float length = 0f;
                 for (int i = 1; i < tiles.Count; i++)
                     length += MathF.Sqrt((tiles[i].X - tiles[i - 1].X) * (tiles[i].X - tiles[i - 1].X) + (tiles[i].Y - tiles[i - 1].Y) * (tiles[i].Y - tiles[i - 1].Y));
                 return CameraRig.PathSeconds(length, factor);
             }
-            default:
+            case CameraMove.Release:
+                // Everything the kit was told is back with it
                 Log.Add($"camera {move}");
-                return move == CameraMove.Release ? seconds : 0f;
+                CameraOn = "player";
+                Lens = 1f;
+                Bars = false;
+                return seconds;
+            default:
+                // (A shake passes: a hurry drops it)
+                Passing($"camera {move}");
+                return 0f;
         }
     }
 
@@ -375,24 +490,33 @@ public sealed class HeadlessScriptHost : IScriptHost
     {
         Shown("slide the bars");
         Log.Add(on ? "letterbox on" : "letterbox off");
+        Bars = on;
     }
 
     public void SlowMotion(float share, float seconds)
     {
         Shown("slow the field");
-        Log.Add($"slowmo {share.ToString(System.Globalization.CultureInfo.InvariantCulture)}");
+        Passing($"slowmo {share.ToString(System.Globalization.CultureInfo.InvariantCulture)}");
     }
 
     public void Effect(SceneEffect kind, int x, int y, float seconds, Direction? way, bool hold)
     {
         Shown("show an effect");
-        Log.Add($"effect {kind} {x} {y}" + (way is { } w ? $" {w}" : "") + (hold ? " hold" : ""));
+        string entry = $"effect {kind} {x} {y}" + (way is { } w ? $" {w}" : "") + (hold ? " hold" : "");
+        // An effect that passes is dropped by a hurry; one that is held is lit all the same, since it is there afterwards
+        if (!hold) Passing(entry);
+        else
+        {
+            Log.Add(entry);
+            HeldEffects.Add($"{kind} {x} {y}");
+        }
     }
 
     public void StopEffect(int x, int y)
     {
         Shown("stop an effect");
         Log.Add($"effect stop {x} {y}");
+        HeldEffects.RemoveWhere(held => held.EndsWith($" {x} {y}", StringComparison.Ordinal));
     }
 
     // The original's set pieces (plan 09 · L12): everything happens at once here, so each is a line of the log with
@@ -402,21 +526,38 @@ public sealed class HeadlessScriptHost : IScriptHost
     {
         Shown("play a set piece");
         bool counted = piece is not (SetPiece.PcOn or SetPiece.PcOff);
-        Log.Add($"anim {SetPieces.WordsOf(piece)}" + (counted ? $" {count}" : ""));
+        string entry = $"anim {SetPieces.WordsOf(piece)}" + (counted ? $" {count}" : "");
+        // What a piece leaves behind is left by a hurry too: a PC's screen on or dark, the balls in the Hall of Fame's
+        // sockets. A healing machine's tray is empty again and a lift's ride is over, so a hurry drops those
+        switch (piece)
+        {
+            case SetPiece.PcOn:
+            case SetPiece.PcOff:
+                PcOn = piece == SetPiece.PcOn;
+                Log.Add(entry);
+                break;
+            case SetPiece.HallOfFame:
+                MachineBalls = Math.Clamp(count, 0, SetPieces.MostBalls);
+                Log.Add(entry);
+                break;
+            default:
+                Passing(entry);
+                break;
+        }
         return SetPieces.Length(piece, count);
     }
 
     public float Shake(NPC? who, int times)
     {
         Shown("shake someone");
-        Log.Add($"shake {who?.Name ?? "player"} {times}");
+        Passing($"shake {who?.Name ?? "player"} {times}");
         return SetPieces.ShakeLength(times);
     }
 
     public float Flicker(NPC? who, int times)
     {
         Shown("make someone flicker");
-        Log.Add($"flicker {who?.Name ?? "player"} {times}");
+        Passing($"flicker {who?.Name ?? "player"} {times}");
         return SetPieces.FlickerLength(times);
     }
 
@@ -431,15 +572,22 @@ public sealed class HeadlessScriptHost : IScriptHost
     public void Say(string? speaker, IReadOnlyList<string> lines)
     {
         Shown("say something");
+        string? who = speaker != null ? Named(speaker) : null;
+        // In a hurry the lines are put away unread: no box opens and nothing is waited for
+        if (Skipping)
+        {
+            foreach (string line in lines) Unread.Add((who, Named(line)));
+            return;
+        }
         Waits();
         Talks++;
-        string? who = speaker != null ? Named(speaker) : null;
         foreach (string line in lines) Transcript.Add((who, Named(line)));
     }
 
     public void Ask(string? speaker, string question, IReadOnlyList<string> answers, int cancel)
     {
         Shown("ask something");
+        NeverInAHurry("a question");
         Waits();
         string asked = Named(question);
         Transcript.Add((speaker != null ? Named(speaker) : null, asked));
@@ -453,6 +601,7 @@ public sealed class HeadlessScriptHost : IScriptHost
     public void Battle(NPC trainer, NPC? second, Trainer? partner, bool mayLose, bool first, BattleTerms? terms = null)
     {
         Shown("start a battle");
+        NeverInAHurry("a battle");
         Waits();
         Outcome = Fight?.Invoke(trainer) ?? BattleOutcome.Won;
         string with = (second != null ? $" and {second.TrainerData?.Id}" : "") + (partner != null ? $" with {partner.Id}" : "") + (first ? " first" : "")
@@ -479,6 +628,7 @@ public sealed class HeadlessScriptHost : IScriptHost
     public void WildBattle(Pokemon wild, BattleKind kind, bool cannotFlee)
     {
         Shown("start a battle");
+        NeverInAHurry("a battle");
         Waits();
         // The lesson is the assistant's battle: their ball always catches, and what they catch is theirs
         Outcome = kind == BattleKind.CatchingLesson ? BattleOutcome.Caught : Fight?.Invoke(null) ?? BattleOutcome.Won;
@@ -495,6 +645,7 @@ public sealed class HeadlessScriptHost : IScriptHost
     public void Open(ScriptScreen screen, NPC? subject, string? counter = null)
     {
         Shown("open a screen");
+        NeverInAHurry($"a screen ({screen})");
         Waits();
         Log.Add(screen == ScriptScreen.Shop && (counter ?? subject?.Mart) is { } mart ? $"open {screen} {mart}"
             : screen == ScriptScreen.Wardrobe && counter != null ? $"open {screen} {counter}"
@@ -558,7 +709,8 @@ public sealed class HeadlessScriptHost : IScriptHost
     public void Warp(string map, int x, int y, Direction? facing)
     {
         Shown("go somewhere else");
-        Waits();
+        // (In a hurry the player arrives at once, with no fade to see through)
+        if (!Skipping) Waits();
         Log.Add($"warp {map} {x} {y}");
         if (MapNamed?.Invoke(map) is { } target)
         {
@@ -573,8 +725,10 @@ public sealed class HeadlessScriptHost : IScriptHost
     public void Fade(bool toBlack, float seconds)
     {
         Shown("fade the screen");
-        Waits();
+        // (In a hurry the screen is black, or the field again, at once)
+        if (!Skipping) Waits();
         Log.Add(toBlack ? "fade out" : "fade in");
+        ScreenBlack = toBlack;
     }
 
     // ------------------------------------------------------------------ field moves
@@ -585,13 +739,16 @@ public sealed class HeadlessScriptHost : IScriptHost
     public void UseMove(FieldMove move, Pokemon user, NPC? subject)
     {
         Shown("use a field move");
-        Waits();
+        // (A hurry begun while the move's line was being read finds its cut-in still to come: the move is used
+        // without one, and nothing is waited for)
+        if (!Skipping) Waits();
         Log.Add($"usemove {FieldMoveRules.MoveName(move)} {user.Nickname}{(subject != null ? " on " + subject.Name : "")}");
     }
 
     public bool Surf()
     {
         Shown("go out onto the water");
+        NeverInAHurry("a step out onto the water");
         var (x, y) = PlayerTile;
         if (Map != null && !FieldMovement.CanStartSurf(Map, x, y, PlayerFacing, new Walker(PlayerMode, Map.HeightAt(x, y))))
         {
@@ -617,6 +774,7 @@ public sealed class HeadlessScriptHost : IScriptHost
     public bool Fly()
     {
         Shown("fly");
+        NeverInAHurry("a flight");
         if (FlyTo is not { } town) return false;
         Warp("Sinnoh", town.X, town.Y, Direction.Down);
         return true;
@@ -625,6 +783,7 @@ public sealed class HeadlessScriptHost : IScriptHost
     public bool Teleport()
     {
         Shown("teleport");
+        NeverInAHurry("Teleport");
         var town = SpawnLocations.Respawn(Story);
         Warp("Sinnoh", town.X, town.Y, Direction.Down);
         return true;
@@ -633,6 +792,7 @@ public sealed class HeadlessScriptHost : IScriptHost
     public bool Escape()
     {
         Shown("escape");
+        NeverInAHurry("a way out of the caves");
         if (Exit is not { } exit) return false;
         Warp(exit.Map, exit.X, exit.Y, exit.Facing);
         return true;
@@ -657,6 +817,7 @@ public sealed class HeadlessScriptHost : IScriptHost
 
     public void TurnClock(int from, int to)
     {
+        NeverInAHurry("the flower clock's turn");
         Log.Add($"flowerclock {from} {to}");
         // The clock is at rest at once: the map's tiles follow the story's new state
         if (Map?.Puzzle is EternaClock clock) clock.Apply(Map, Story);
@@ -664,6 +825,7 @@ public sealed class HeadlessScriptHost : IScriptHost
 
     public void PressButton(PastoriaWater.Button button)
     {
+        NeverInAHurry("the Pastoria Gym's water");
         Log.Add($"pressbutton {button.ToString().ToLowerInvariant()}");
         // The water is at its level at once
         if (Map?.Puzzle is PastoriaWater water) water.Settle(button);
@@ -671,6 +833,7 @@ public sealed class HeadlessScriptHost : IScriptHost
 
     public void PressGearButton(SunyshoreGears.Button kind)
     {
+        NeverInAHurry("the Sunyshore Gym's gears");
         Log.Add($"gearbutton {kind.ToString().ToLowerInvariant()}");
         // The gears are in their new state at once
         if (Map?.Puzzle is SunyshoreGears gears)
@@ -682,6 +845,7 @@ public sealed class HeadlessScriptHost : IScriptHost
 
     public bool TriggerLift()
     {
+        NeverInAHurry("a platform's ride");
         Log.Add("platformlift");
         // The platform is at the top at once, and the player on it stands at its height
         if (Map?.Puzzle is not LeagueLift lift || !lift.Trigger()) return false;
@@ -705,6 +869,7 @@ public sealed class HeadlessScriptHost : IScriptHost
     public bool SweetScent()
     {
         Shown("draw a Pokémon out");
+        NeverInAHurry("Sweet Scent");
         if (Scented is not var (species, level)) return false;
         WildBattle(new Pokemon(PokemonDatabase.Get(species)!, level), BattleKind.Normal, cannotFlee: false);
         return true;
@@ -713,6 +878,7 @@ public sealed class HeadlessScriptHost : IScriptHost
     public bool Climb()
     {
         Shown("climb");
+        NeverInAHurry("a climb");
         if (Map == null)
         {
             Log.Add("climb");
@@ -736,25 +902,27 @@ public sealed class HeadlessScriptHost : IScriptHost
     public void Music(string? song)
     {
         Shown("change the music");
+        // (A change of music is kept by a hurry: the song is the one asked for last)
+        Song = song == null ? "area" : song.Length == 0 ? "stop" : song;
         Log.Add(song == null ? "music area" : song.Length == 0 ? "music stop" : $"music {song}");
     }
 
     public void Fanfare(MusicRole role)
     {
         Shown("play a fanfare");
-        Log.Add($"fanfare {role}");
+        Passing($"fanfare {role}");
     }
 
     public void Sound(string name)
     {
         Shown("play a sound");
-        Log.Add($"sound {name}");
+        Passing($"sound {name}");
     }
 
     public void Cry(string species)
     {
         Shown("play a cry");
-        Log.Add($"cry {species}");
+        Passing($"cry {species}");
     }
 
     // ------------------------------------------------------------------ the Battle Frontier (plan 06 · R18a)
@@ -803,6 +971,7 @@ public sealed class HeadlessScriptHost : IScriptHost
     public int FrontierAct(string what, int number, NPC? subject)
     {
         Log.Add($"frontier {what} {number}");
+        NeverInAHurry($"the Battle Frontier's '{what}'");
         switch (what)
         {
             case "enter":
@@ -889,6 +1058,7 @@ public sealed class HeadlessScriptHost : IScriptHost
     public void FrontierBattle(Party team, IReadOnlyList<Trainer> foes, Trainer? partner, bool doubles, Models.Frontier.FrontierConditions? conditions = null)
     {
         Shown("start a battle");
+        NeverInAHurry("a battle");
         Waits();
         FrontierBattles.Add((team, foes, partner, doubles));
         FrontierFields.Add(conditions);
@@ -913,6 +1083,7 @@ public sealed class HeadlessScriptHost : IScriptHost
     public bool Save()
     {
         Shown("save the game");
+        NeverInAHurry("a save");
         Log.Add(SaveFails ? "save failed" : "save");
         if (SaveFails) return false;
         Saves.Add((Story.Snapshot(), Map?.Name, PlayerTile));

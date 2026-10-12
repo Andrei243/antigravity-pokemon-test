@@ -8,6 +8,7 @@
 
 
 script RivalInTown
+  scene "The rival in Solaceon"
   emote player exclaim
   music "common/rival"
   clearflag FLAG_HIDE_SOLACEON_TOWN_RIVAL
@@ -37,6 +38,7 @@ script RivalInTown
   setflag FLAG_HIDE_SOLACEON_TOWN_RIVAL
   music area
   setvar VAR_SOLACEON_TOWN_STATE 1
+  endscene
   end
 
 

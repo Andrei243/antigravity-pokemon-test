@@ -34,6 +34,7 @@ label Won
 script Candice
   speaker "Candice"
   if badge icicle goto Won
+  scene "Candice"
   say "A challenger? For me? All right! I've been hoping somebody tough would come along!"
   say "Just so you know, I'm tough too. And it's because I know how to focus."
   say "Battling, picking out the perfect scarf, falling for someone... Whatever it is, it all comes down to focus!"
@@ -57,6 +58,7 @@ label Tm
   setflag FLAG_RECEIVED_CANDICE_TM72
   say "TM72 is Avalanche. If the user gets hit before it moves, the move comes crashing back twice as hard!"
   say "Can you imagine the focus it takes to stand there and wait for that hit?"
+  endscene
   end
 label Won
   if not flag FLAG_RECEIVED_CANDICE_TM72 goto Tm

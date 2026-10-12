@@ -33,6 +33,7 @@ script OnEnter
   if var VAR_VEILSTONE_CITY_COUNTERPART_NEEDS_HELP_STATE >= 2 place counterpart 696 596 right
   end
 label NeedsHelp
+  scene "The assistant's call for help"
   clearflag FLAG_HIDE_VEILSTONE_COUNTERPART
   place counterpart 682 614 up
   show counterpart
@@ -49,11 +50,13 @@ label NeedsHelp
   show counterpart
   music area
   setvar VAR_VEILSTONE_CITY_COUNTERPART_NEEDS_HELP_STATE 2
+  endscene
   end
 
 
 # Before the Gym's door (trigger 1): the assistant comes up to the player, and Crasher Wake comes out of the Gym.
 script CrasherWake
+  scene "Crasher Wake in Veilstone"
   emote counterpart exclaim
   music "common/assistant"
   if var PLAYER_X == 681 walk counterpart left 1 down 1
@@ -115,6 +118,7 @@ label WakeTalks
   hide counterpart
   setflag FLAG_HIDE_VEILSTONE_COUNTERPART
   setvar VAR_VEILSTONE_CITY_CRASHER_WAKE_STATE 1
+  endscene
   end
 
 
@@ -129,6 +133,7 @@ script Assistant
   say "Two of them are guarding that warehouse, and they've got my Pokédex!"
   ask "Will you take them on with me, two against two?"
   if no goto Later
+  scene "The tag battle by the warehouse"
   say "With your Pokémon and mine side by side, how could we possibly lose?"
   say "Let's get my Pokédex back!"
   if facing right goto FromTheWest
@@ -224,6 +229,7 @@ label Beaten
   setvar VAR_VEILSTONE_CITY_GALACTIC_WAREHOUSE_STATE 1
   sound "door_open"
   warp "VeilstoneGalacticWarehouse" 8 11 up
+  endscene
   end
 label Later
   say "All right. I'll wait here while you get ready. Don't be long!"
@@ -277,6 +283,7 @@ label Fight
 # from any side: he runs down the steps into the town, and Looker comes up them with the key the grunt let fall and
 # stops a tile south of the player.
 script GruntStorageKey
+  scene "The Storage Key"
   speaker "Galactic Grunt"
   say "Look at them! Just look at those antennae up there!"
   say "No idea what they're for, mind. But have you ever seen antennae like it?"
@@ -306,11 +313,13 @@ label GruntGone
   if var PLAYER_Y == 592 walk looker left 2 up 2
   if var PLAYER_X == 722 walk looker left 1 up 1
   call AskHideout
+  endscene
   end
 label LookerFromTheSouth
   walk looker left 2
   face looker up
   call AskHideout
+  endscene
   end
 
 

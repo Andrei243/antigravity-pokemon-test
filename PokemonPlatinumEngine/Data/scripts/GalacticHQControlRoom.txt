@@ -49,6 +49,7 @@ script Saturn
   speaker "Saturn"
   if flag FLAG_FREED_GALACTIC_HQ_POKEMON goto RedChain
   if flag FLAG_DEFEATED_GALACTIC_HQ_CONTROL_ROOM_SATURN goto PressIt
+  scene "The control room"
   say "You... You came all this way to save a few Pokémon?"
   say "It's nothing new, but I can't claim to understand our boss. Why let a child wander in and out of here as they please?"
   say "We of Team Galactic take what we need and throw out what we don't."
@@ -64,10 +65,12 @@ script Saturn
   walk saturn right 1
   if facing up face saturn down
   if facing right face saturn left
+  endscene
   end
 label StepsSouth
   walk saturn down 1
   face saturn up
+  endscene
   end
 label PressIt
   say "Press the button and set them free. That's what you came for, isn't it?"

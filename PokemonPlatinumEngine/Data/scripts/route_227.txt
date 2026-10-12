@@ -11,6 +11,7 @@
 
 # Route227_CoordEvent_WakeRival
 script WakeAndRival
+  scene "Crasher Wake and the rival"
   if var PLAYER_X == 739 walk player left 1
   face player up
   face crasher_wake down
@@ -53,6 +54,7 @@ script WakeAndRival
   hide rival
   setflag FLAG_HIDE_ROUTE_227_RIVAL
   setvar VAR_ROUTE_227_WAKE_RIVAL_STATE 1
+  endscene
   end
 
 

@@ -22,6 +22,7 @@ script OnEnter
 
 # Out of the corridor into Cyrus's room (the original's coordinate event), or Cyrus spoken to.
 script Cyrus
+  scene "Cyrus"
   face cyrus down
   speaker "Cyrus"
   say "...So. You have come. You will have heard what I told them in the hall."
@@ -71,6 +72,7 @@ label Gone
   hide cyrus
   setflag FLAG_HIDE_GALACTIC_HQ_4F_CYRUS
   setvar VAR_GALACTIC_HQ_4F_STATE 1
+  endscene
   end
 
 

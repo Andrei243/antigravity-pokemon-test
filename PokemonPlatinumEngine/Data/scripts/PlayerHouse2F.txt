@@ -7,6 +7,7 @@
 
 script OnEnter
   if var VAR_PLAYER_HOUSE_SPECIAL_PROGRAM_STATE != 0 end
+  scene "The television's special"
   setvar VAR_PLAYER_HOUSE_SPECIAL_PROGRAM_STATE 1
   wait 0.6
   speaker "TV"
@@ -14,11 +15,13 @@ script OnEnter
   say "After many years of research far away in the Kanto region, the professor has come home to Sinnoh, to his laboratory in Sandgem Town."
   say "We'll leave you with his own words: \"We share this world with Pokémon. Live alongside them, and you will come to understand them.\""
   say "This has been Jubilife TV. Good night, Sinnoh!"
+  endscene
   end
 
 
 # The first step off the starting tile, whichever way (the original's four triggers round it).
 script RivalRushesIn
+  scene "The rival bursts in"
   sound "stairs"
   show rival
   music "common/rival"
@@ -36,6 +39,7 @@ script RivalRushesIn
   sound "stairs"
   music area
   setvar VAR_PLAYER_HOUSE_RIVAL_STATE 1
+  endscene
   end
 
 

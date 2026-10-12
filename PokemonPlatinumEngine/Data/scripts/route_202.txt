@@ -26,6 +26,7 @@ script Counterpart
   call CatchingLesson
   end
 label Radar
+  scene "The Poke Radar's lesson"
   face self player
   speaker "{assistant}"
   say "{player}! You came! Right, the Poké Radar. Let me show you how it works."
@@ -48,6 +49,7 @@ label Radar
   setflag FLAG_HIDE_ROUTE_202_COUNTERPART
   clearflag FLAG_HIDE_SANDGEM_TOWN_COUNTERPART
   setvar VAR_ROUTE_202_STATE 3
+  endscene
   end
 
 
@@ -66,6 +68,7 @@ label Again
   walk player right 1
   end
 label Lesson
+  scene "The catching lesson"
   music "common/assistant"
   face counterpart player
   speaker "{assistant}"
@@ -79,4 +82,5 @@ label Lesson
   setflag FLAG_HIDE_ROUTE_202_COUNTERPART
   music area
   setvar VAR_ROUTE_202_STATE 1
+  endscene
   end

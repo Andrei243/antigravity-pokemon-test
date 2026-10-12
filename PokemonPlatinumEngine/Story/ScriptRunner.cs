@@ -129,6 +129,9 @@ public sealed partial class ScriptRunner
         Result = 0;
         EndedInDefeat = false;
         turns = 0;
+        // (A script started over another's leaves no scene of that one open)
+        EndTheScene(seen: false);
+        stoppedAt = null;
     }
 
     /// <summary>The turns of every battle this script has fought, added up (<c>TURNS</c>; plan 01 · M11, part b).</summary>
@@ -151,7 +154,7 @@ public sealed partial class ScriptRunner
     public void Update(float dt)
     {
         if (script == null) return;
-        if (waiting > 0f)
+        if (waiting > 0f && !Hurrying)
         {
             waiting -= dt;
             if (waiting > 0f) return;
@@ -161,12 +164,29 @@ public sealed partial class ScriptRunner
         int budget = MostLinesAtOnce;
         while (script != null)
         {
-            if (host.Busy) return;
+            if (host.Busy)
+            {
+                // Something has to be seen through after all: the scene goes on at its own pace from here
+                if (Hurrying) StopHurrying();
+                return;
+            }
             if (afterBusy is { } collect)
             {
                 afterBusy = null;
                 collect();
                 continue;
+            }
+            // Whoever holds the button the whole time (a test, a tool) hurries on again after each thing that waited
+            // for them, but never into the line the hurry has just stopped at
+            if (Impatient && scene != null && !Hurrying && stoppedAt == null) Hurry();
+            if (Hurrying)
+            {
+                // In a hurry nothing is waited for: a pause, a camera's move, an effect, a set piece. Their time
+                // passes all the same for whoever is walking, and where the scene waits for its walks they arrive
+                if (waiting > 0f) host.Elapse(waiting);
+                waiting = 0f;
+                if (waitingForWalks) host.Arrive();
+                waitingForWalks = false;
             }
             if (waitingForWalks)
             {
@@ -182,9 +202,141 @@ public sealed partial class ScriptRunner
             }
             if (--budget < 0)
                 throw new ScriptException($"{script.FullName} carried out {MostLinesAtOnce} lines without a pause: it goes round in circles.");
-            Execute(script.Code[at++]);
+            var next = script.Code[at];
+            if (Hurrying && StopsNow(next))
+            {
+                // What waits for the player is never hurried into: the hurry ends before it, and the line is carried
+                // out at the scene's own pace (once the host is ready for it: a skip's dark has opened)
+                StopHurrying();
+                stoppedAt = next;
+                continue;
+            }
+            if (ReferenceEquals(next, stoppedAt)) stoppedAt = null;
+            at++;
+            Execute(next);
         }
     }
+
+    // ------------------------------------------------------------------ scenes and the hurry (plan 12 · Q20)
+
+    // The scene the script is in: its key, and how deep the calls were when it began
+    private string? scene;
+    private int sceneDepth;
+
+    // The line a hurry stopped before, until it has been carried out
+    private Instruction? stoppedAt;
+
+    /// <summary>
+    /// The key of the scene the script is in, between its <c>scene "Name"</c> and its <c>endscene</c>
+    /// (<see cref="SceneSkip.Key"/>); null outside one. Only a scene can be hurried through.
+    /// </summary>
+    public string? Scene => scene;
+
+    /// <summary>
+    /// True while the runner hurries through a scene the player is skipping: it waits for nothing (a pause, a walk, a
+    /// camera's move), the host ends at once or drops whatever would be shown (<see cref="IScriptHost.Skipping"/>),
+    /// and every line still does to the story, the bag, the team and the map what it does when played.
+    /// </summary>
+    public bool Hurrying { get; private set; }
+
+    /// <summary>
+    /// A player who keeps the button down the whole time: every scene is hurried through from its first line, and
+    /// again after each thing that stopped the hurry. How a test plays a script both ways, and a tool that has no time.
+    /// </summary>
+    public bool Impatient { get; set; }
+
+    /// <summary>
+    /// Puts the runner in a hurry until the scene's <c>endscene</c>, or until something that waits for the player (a
+    /// question, a battle, a screen, a save: <see cref="StopsAHurry"/>), which is then carried out at the scene's own
+    /// pace; hurrying again afterwards skips on. False, with nothing changed, outside a scene.
+    /// </summary>
+    public bool Hurry()
+    {
+        if (script == null || scene == null) return false;
+        if (Hurrying) return true;
+        Hurrying = true;
+        host.BeginSkipping();
+        return true;
+    }
+
+    private void StopHurrying()
+    {
+        if (!Hurrying) return;
+        Hurrying = false;
+        host.EndSkipping();
+    }
+
+    /// <summary>
+    /// The scene ends: at its <c>endscene</c>, which is what makes it seen (by this game and by the host's machine),
+    /// or without one, when the script that began it ends or returns (an <c>end</c> on a way out, a battle lost, a
+    /// script gone wrong), which leaves it unseen. Either way a hurry ends with it.
+    /// </summary>
+    private void EndTheScene(bool seen)
+    {
+        StopHurrying();
+        if (scene is not { } key) return;
+        scene = null;
+        if (seen) host.Story.SeeScene(key);
+        host.SceneEnds(key, seen);
+    }
+
+    private bool StopsNow(Instruction next) =>
+        next.Op == Op.If ? Holds(next.Condition!, next) && StopsAHurry(next.Then!) : StopsAHurry(next);
+
+    /// <summary>
+    /// Whether a line stops a hurry: true for everything that waits for the player or that the host can't end at
+    /// once (a question, a battle, a screen, a save, a field move, a puzzle's pieces on the move), false for what is
+    /// only said, shown or heard (the host drops it or ends it at once) and for what changes the story, the bag, the
+    /// team or the map (which happens as ever). Every command says which it is: one added to the language is told of
+    /// here, or this throws for it.
+    /// </summary>
+    public static bool StopsAHurry(Instruction i) => i.Op switch
+    {
+        // What is said: dropped unread
+        Op.Say or Op.Text or Op.SayOwn or Op.TrainerLine or Op.Speaker => false,
+        // A question waits for its answer
+        Op.Ask or Op.Choose => true,
+        // Where the script goes, and what the story remembers
+        Op.If or Op.Goto or Op.Call or Op.Return or Op.End => false,
+        Op.SetFlag or Op.ClearFlag or Op.SetVar or Op.AddVar or Op.ClearGreetings => false,
+        // What is given and taken: the fanfare and the lines are dropped, the bag and the team are as ever
+        Op.Give or Op.Find or Op.AddItem or Op.Take or Op.GivePokemon or Op.GiveBadge or Op.GiveMoney or Op.TakeMoney or Op.Heal => false,
+        Op.GiveAccessory or Op.GiveEgg or Op.Seen or Op.NationalDex or Op.Trade => false,
+        // A battle is fought
+        Op.Battle or Op.WildBattle or Op.CatchingLesson or Op.SweetScent => true,
+        // People and the field: a walk ends where it would have, a warp arrives, a fade and a camera's move are over at once
+        Op.Face or Op.Walk or Op.Move or Op.WaitMoves or Op.Emote or Op.Act or Op.Mood or Op.Show or Op.Hide or Op.Place or Op.Warp or Op.Fade or Op.Wait => false,
+        Op.Camera or Op.Letterbox or Op.SlowMotion or Op.Effect or Op.Anim or Op.Shake or Op.Flicker => false,
+        // A field move's cut-in and what it does, a step out onto the water or up a face, a flight: the player's own to see
+        Op.UseMove or Op.Surf or Op.Climb or Op.Fly or Op.Teleport or Op.Escape => true,
+        Op.Poketch or Op.PoketchApp or Op.Safari or Op.Turnback or Op.Partner or Op.Defeat => false,
+        // A puzzle's pieces move while the field waits
+        Op.FlowerClock or Op.PressButton or Op.GearButton => true,
+        Op.PlatformLift => !i.Option,
+        // Sound: a change of music is kept, a fanfare, a sound and a cry are dropped
+        Op.Music or Op.Fanfare or Op.Sound or Op.Cry => false,
+        // The screens
+        Op.Starter or Op.Shop or Op.Pc or Op.Travel or Op.Wardrobe or Op.ChoosePokemon or Op.ChooseItem or Op.Credits or Op.Hatch => true,
+        Op.HallOfFame => i.Name == "show",
+        // The game written to its save is the player's to see
+        Op.Save => true,
+        // Wild Pokémon, the day's events, the berries, the team: asked and changed without a screen, but a tree's battle
+        Op.HoneyTree => i.Name == "battle",
+        Op.Swarms or Op.TrophyGarden or Op.Roamer or Op.SurvivePoison or Op.Lottery or Op.Berry or Op.DayCare or Op.Ribbon or Op.Team or Op.Random => false,
+        Op.Poffin => i.Name == "cook",
+        Op.SuperContest => i.Name is "enter" or "photo",
+        Op.Seal => i.Name is "capsules" or "shop",
+        // Below ground only what is handed over or counted needs no screen and no tunnel
+        Op.Underground => i.Name is not ("give" or "room" or "flags"),
+        // The pastimes, the Battle Frontier's facilities, the tutors and Amity Square's walk open screens, ask and
+        // battle on most of their words: none of them is hurried through
+        Op.Fossil or Op.GameCorner or Op.Villa or Op.PalPark => true,
+        Op.Frontier or Op.Tower or Op.Factory or Op.Hall or Op.Castle or Op.Arcade => true,
+        Op.Tutor or Op.Amity => true,
+        // A scene's own two lines
+        Op.Scene or Op.EndScene => false,
+        _ => throw new ArgumentOutOfRangeException(nameof(i), i.Op, "This command doesn't say what it does in a hurry: name it in ScriptRunner.StopsAHurry.")
+    };
 
     /// <summary>
     /// Runs the script to its end in a host that never keeps it waiting (see <see cref="HeadlessScriptHost"/>):
@@ -207,6 +359,9 @@ public sealed partial class ScriptRunner
         afterBusy = null;
         waiting = 0f;
         waitingForWalks = false;
+        // A scene still open ends with its script, unseen (plan 12 · Q20)
+        EndTheScene(seen: false);
+        stoppedAt = null;
     }
 
     private void Return()
@@ -217,6 +372,8 @@ public sealed partial class ScriptRunner
             return;
         }
         (script, at) = calls.Pop();
+        // A scene begun by a script that was called ends as that script returns, unseen
+        if (scene != null && calls.Count < sceneDepth) EndTheScene(seen: false);
     }
 
     // ------------------------------------------------------------------ a line
@@ -875,6 +1032,22 @@ public sealed partial class ScriptRunner
                 break;
             case Op.Flicker:
                 waiting = host.Flicker(Person(i.Name, i), i.Number);
+                break;
+
+            // A scene that may be skipped (plan 12 · Q20): from its first line to its endscene, which is what makes
+            // it seen. One begun again while it is open (a jump back over its first line) goes on as it was
+            case Op.Scene:
+            {
+                string key = SceneSkip.Key(script!.File, i.Name);
+                if (scene == key) break;
+                EndTheScene(seen: false);
+                scene = key;
+                sceneDepth = calls.Count;
+                host.SceneBegins(key);
+                break;
+            }
+            case Op.EndScene:
+                EndTheScene(seen: true);
                 break;
 
             default:

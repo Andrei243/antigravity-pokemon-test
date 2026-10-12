@@ -8,6 +8,7 @@
 
 # The way in from town (the original's trigger 0, two tiles wide, VAR_FLOAROMA_MEADOW_STATE 0).
 script Grunts
+  scene "The grunts in the meadow"
   speaker "Galactic Grunt"
   say "Come on, old man, hand over the Honey! The sweet stuff brings Pokémon running, and we need plenty of Pokémon."
   say "Do as we say, or else!"
@@ -51,6 +52,7 @@ script Grunts
   give "Honey" 10
   say "Spread Honey on a sweet-smelling tree and come back after a while. Pokémon can't resist it!"
   setflag FLAG_DEFEATED_FLOAROMA_MEADOW_GRUNTS
+  endscene
   end
 
 

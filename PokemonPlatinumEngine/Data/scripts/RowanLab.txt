@@ -35,6 +35,7 @@ script OnEnter
   if var VAR_SANDGEM_TOWN_LAB_STATE >= 4 place prof_rowan 5 2 down
   if var VAR_SANDGEM_TOWN_LAB_STATE != 0 end
   if var VAR_SANDGEM_TOWN_STATE == 0 end
+  scene "The Pokedex"
   walk counterpart up 3
   walk player up 4
   face counterpart prof_rowan
@@ -75,6 +76,7 @@ label Takes
   clearflag FLAG_HIDE_SANDGEM_TOWN_COUNTERPART
   music area
   setvar VAR_SANDGEM_TOWN_LAB_STATE 1
+  endscene
   end
 # SandgemTownLab_OnTransition in states 2 and 3
 label ByTheDoor
@@ -82,6 +84,7 @@ label ByTheDoor
   end
 # SandgemTownLab_OnFrame_ReturnedFromDistortionWorld
 label Returned
+  scene "Back from the Distortion World"
   call TheyWait
   if var VAR_EXITED_DISTORTION_WORLD_STATE == 2 setvar VAR_EXITED_DISTORTION_WORLD_STATE 3
   # A step in from the door, so that the player stands clear of the text
@@ -121,6 +124,7 @@ label League
   if not flag FLAG_CAUGHT_AZELF clearflag FLAG_HIDE_VALOR_CAVERN_AZELF
   if not flag FLAG_CAUGHT_UXIE clearflag FLAG_HIDE_ACUITY_CAVERN_UXIE
   setvar VAR_SANDGEM_TOWN_LAB_STATE 3
+  endscene
   end
 
 
@@ -241,6 +245,7 @@ label Upto209
 # SandgemTownLab_EnableNationalDex: Professor Oak's visit. The player stands before the desk, across it from
 # Professor Rowan.
 script OakVisits
+  scene "Professor Oak's visit"
   clearflag FLAG_HIDE_SANDGEM_TOWN_LAB_PROF_OAK
   place prof_oak 5 8 up
   show prof_oak
@@ -289,6 +294,7 @@ script OakVisits
   say "Now, {player}. Finishing the Sinnoh Pokédex deserves more than an old man's praise. This is for you."
   give "Poké Radar"
   say "That is the Poké Radar. Use it in tall grass, and it finds Pokémon that would never show themselves otherwise. You will need it for that new Pokédex."
+  endscene
   return
 
 

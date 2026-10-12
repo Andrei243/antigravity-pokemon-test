@@ -10,6 +10,7 @@
 
 # Commander Jupiter (the original's script 2), spoken to from the south or from either side.
 script Jupiter
+  scene "Commander Jupiter"
   face pokefan_m up
   speaker "Jupiter"
   say "Hm? Was there something you wanted? ...No, don't tell me. I can see it on your face. You want these Pokémon freed."
@@ -53,6 +54,7 @@ label Thanks
   setvar VAR_ETERNA_CITY_STATE 3
   fade in
   setflag FLAG_ALT_MUSIC_GALACTIC_ETERNA_BUILDING
+  endscene
   end
 
 script Grateful

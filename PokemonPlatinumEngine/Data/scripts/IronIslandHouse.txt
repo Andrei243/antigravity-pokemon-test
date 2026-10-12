@@ -18,6 +18,7 @@ label Gone
 
 # IronIslandHouse_Byron
 script Byron
+  scene "Byron on Iron Island"
   face self player
   speaker "Byron"
   say "Gahaha! So you found my hideaway! I come out here to dig, and to think, and nobody is supposed to know."
@@ -36,4 +37,5 @@ label Out
   sound "stairs"
   hide self
   setflag FLAG_HIDE_IRON_ISLAND_HOUSE_BYRON
+  endscene
   end

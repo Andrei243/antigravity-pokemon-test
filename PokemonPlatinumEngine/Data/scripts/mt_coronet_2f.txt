@@ -40,6 +40,7 @@ script Shards
 
 # The original's MtCoronet2F_CoordEvent_Looker (trigger 0, VAR_MT_CORONET_2F_STATE 1), from each of its three tiles.
 script Looker
+  scene "Looker on Mt Coronet"
   setvar VAR_MT_CORONET_2F_STATE 2
   place looker 20 25 left
   clearflag FLAG_HIDE_MT_CORONET_2F_LOOKER
@@ -73,6 +74,7 @@ label Meet
   give "Black Flute"
   say "That flute keeps wild Pokémon at a distance. It is the one thing I have that may be of use to you on the way up."
   say "Go. Stop Team Galactic! I shall hold this spot, so that no more of them come up behind you."
+  endscene
   end
 
 

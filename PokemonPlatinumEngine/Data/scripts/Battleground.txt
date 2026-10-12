@@ -199,6 +199,7 @@ script Leader
 # walks the player four tiles east, to the tile under Buck's own (11, 9), where the player's head would hide him: here
 # the walk stops a tile short, clear of him
 script Welcome
+  scene "The Battleground"
   setvar VAR_BATTLEGROUND_STATE 1
   emote expert_m exclaim
   # (whoever is not on the mat, a game saved in the room, is spoken to where they stand)
@@ -212,6 +213,7 @@ label Speak
   say "Well, my young friend, from today this door is open to you whenever you like."
   say "This is a private club. Sinnoh's Gym Leaders come here, and whoever a Gym Leader will vouch for. Nobody else."
   say "The best there are, come to get better still. Welcome to the Battleground!"
+  endscene
   return
 
 

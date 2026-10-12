@@ -18,6 +18,7 @@
 script OnEnter
   if flag FLAG_CAUGHT_GIRATINA clearflag FLAG_HIDE_TURNBACK_CAVE_GIRATINA_ROOM_ITEM
   if var VAR_EXITED_DISTORTION_WORLD_STATE != 1 end
+  scene "Sendoff Spring"
   # SendoffSpring_OnFrame_Cynthia
   setvar VAR_EXITED_DISTORTION_WORLD_STATE 2
   speaker "Cynthia"
@@ -42,6 +43,7 @@ script OnEnter
   setflag FLAG_ALT_MUSIC_GALACTIC_HQ_1F
   clearflag FLAG_HIDE_GALACTIC_HQ_1F_SATURN
   setflag FLAG_GALACTIC_LEFT_LAKE_VALOR
+  endscene
   end
 
 

@@ -25,6 +25,7 @@ label Postgame
   if not flag FLAG_TALKED_TO_MOM_ABOUT_NATIONAL_DEX_PROGRESS goto MomHasNews
   if not nationaldex end
 label MomHasNews
+  scene "Mom's news"
   wait 0.15
   face player mom
   face mom player
@@ -38,13 +39,16 @@ label MomHasNews
   setflag FLAG_TALKED_TO_MOM_ABOUT_NATIONAL_DEX_PROGRESS
   say "Well, never mind him. How are you getting on, Champion? Is that Pokédex of Professor Rowan's coming along?"
   face mom left
+  endscene
   end
 label RivalCame
   # TwinleafTownPlayerHouse1F_RivalCameLookingForYou
   setflag FLAG_TALKED_TO_MOM_ABOUT_RIVAL_SNOWPOINT_CITY
   face mom left
+  endscene
   end
 label RivalLeft
+  scene "The rival has been"
   walk mom right 1
   face mom player
   speaker "Mom"
@@ -54,8 +58,10 @@ label RivalLeft
   face mom left
   setflag FLAG_TALKED_TO_MOM
   setvar VAR_PLAYER_HOUSE_STATE 1
+  endscene
   end
 label RunningShoes
+  scene "The Running Shoes"
   walk mom down 2 left 3
   face mom player
   face player mom
@@ -70,6 +76,7 @@ label RunningShoes
   walk mom right 3 up 2
   face mom left
   setvar VAR_PLAYER_HOUSE_STATE 4
+  endscene
   end
 
 
@@ -108,6 +115,7 @@ label Rest
   say "You're mixed up in it somehow, aren't you? ...I thought so. Then be careful, and come home when it's done."
   end
 label Parcel
+  scene "The parcel"
   speaker "Mom"
   say "Welcome home! Let me look after your Pokémon first."
   heal
@@ -133,4 +141,5 @@ label Parcel
   hide rival_mom
   sound "door_close"
   setvar VAR_PLAYER_HOUSE_STATE 6
+  endscene
   end

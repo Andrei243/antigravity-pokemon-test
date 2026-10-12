@@ -616,6 +616,9 @@ public partial class GameEngine
     /// <summary>One frame of the field while a script has it.</summary>
     private void UpdateScript(float dt)
     {
+        // The menu button held while a scene runs skips it (plan 12 · Q20): the picture closes, and nothing more of
+        // this frame is the scene's
+        if (ReadTheSkip(dt)) return;
         AdvanceScriptedWalks(FieldTime(dt));
         UpdateCutIn(dt);
         RunScript(dt);
@@ -712,6 +715,8 @@ public partial class GameEngine
         // (Answers already given slide away by themselves; only a question left open is taken off the screen)
         if (choice.IsOpen) choice.Dismiss();
         pendingAnswers = null;
+        // A hold begun in a scene that is over counts for nothing (plan 12 · Q20)
+        skipHold.Reset();
         // A trainer's eye theme that no battle cut in on (their script had no battle) gives way to the place's own
         if (eyeThemePlaying && currentState is GameState.Overworld or GameState.Dialogue) PlayFieldMusic();
     }
@@ -722,6 +727,8 @@ public partial class GameEngine
     /// </summary>
     private void UpdateDialogue(float dt)
     {
+        // The menu button held while a scene's lines are on the screen skips it too: they are put away unread
+        if (ScriptRunning && ReadTheSkip(dt)) return;
         if (ScriptRunning) AdvanceScriptedWalks(FieldTime(dt));
 
         if (choice.IsOpen) choice.ReadKeys();
@@ -887,6 +894,8 @@ public partial class GameEngine
 
         public void Emote(NPC? who, EmoteBubble bubble, float seconds)
         {
+            // (A bubble passes: a hurry drops it)
+            if (Skipping) return;
             if (who == null) game.player.ShowBubble(bubble, seconds);
             else who.ShowBubble(bubble, seconds);
             if (bubble == EmoteBubble.Exclaim) AudioManager.PlaySound("exclaim", who == null ? 0f : game.PanAt(who.GridX));
@@ -894,6 +903,12 @@ public partial class GameEngine
 
         public void Act(NPC? who, Gesture gesture, int times)
         {
+            // (A gesture passes too; its time passes for whoever is walking)
+            if (Skipping)
+            {
+                game.WalkOnFor(Acting.Total(gesture, times));
+                return;
+            }
             if (who == null) game.player.Act(gesture, times);
             else who.Act(gesture, times);
             game.actor = (true, who);
@@ -906,6 +921,17 @@ public partial class GameEngine
         }
 
         public float Camera(CameraMove move, int x, int y, float seconds, float factor = 1f, NPC? who = null, IReadOnlyList<(int X, int Y)>? path = null)
+        {
+            // In a hurry the camera is told the same and is there at once: where it was sent, at its lens, or home
+            // again (a shake passes, and is dropped)
+            if (!Skipping) return Tell(move, x, y, seconds, factor, who, path);
+            // (The time the move would have taken is still told: it passes for whoever is walking)
+            float takes = move == CameraMove.Shake ? 0f : Tell(move, x, y, seconds, factor, who, path);
+            game.world.Camera.Settle();
+            return takes;
+        }
+
+        private float Tell(CameraMove move, int x, int y, float seconds, float factor, NPC? who, IReadOnlyList<(int X, int Y)>? path)
         {
             var rig = game.world.Camera;
             switch (move)
@@ -939,18 +965,22 @@ public partial class GameEngine
 
         public void Letterbox(bool on, float seconds)
         {
-            game.world.Camera.Letterbox(on, seconds);
+            game.world.Camera.Letterbox(on, Skipping ? 0f : seconds);
             game.cameraSent = true;
         }
 
         public void SlowMotion(float share, float seconds)
         {
+            // (Slow motion passes by itself: a hurry never begins it)
+            if (Skipping) return;
             game.world.Camera.SlowMotion(share, seconds);
             game.cameraSent = true;
         }
 
         public void Effect(SceneEffect kind, int x, int y, float seconds, Direction? way, bool hold)
         {
+            // In a hurry an effect that passes is dropped; one that is held is lit, since the scene leaves it lit
+            if (Skipping && !hold) return;
             game.world.Life.Effect(game.currentMap, kind, x, y, seconds, way ?? Direction.Right, hold);
             AudioManager.PlaySound(SceneEffects.SoundOf(kind), game.PanAt(x));
         }
@@ -960,11 +990,14 @@ public partial class GameEngine
         // ---- what the script waits for
 
         public bool Busy => game.currentState != GameState.Overworld || game.dialogue.IsActive || game.scriptFade.IsMoving || game.cutIn != null
-            || game.fieldMoveStep || game.PuzzleMoving || game.AwaitingStroll || game.ActorBusy;
+            || game.fieldMoveStep || game.PuzzleMoving || game.AwaitingStroll || game.ActorBusy
+            // A skip's dark keeps the script waiting while it closes and opens, but not the hurry in its middle (plan 12 · Q20)
+            || (game.skipPhase != SkipPhase.None && !game.skipRunning);
 
         public void Say(string? speaker, IReadOnlyList<string> lines)
         {
-            if (lines.Count == 0) return;
+            // (In a hurry the lines are dropped unread)
+            if (lines.Count == 0 || Skipping) return;
             game.dialogue.ShowDialogue(speaker ?? "", lines);
             game.currentState = GameState.Dialogue;
         }
@@ -1098,9 +1131,25 @@ public partial class GameEngine
             return false;
         }
 
-        public void Warp(string map, int x, int y, Direction? facing) => game.WarpTo(map, x, y, facing);
+        public void Warp(string map, int x, int y, Direction? facing)
+        {
+            // In a hurry the player arrives at once, behind the skip's dark, as at the middle of the warp's own fade
+            if (Skipping) game.ArriveAtOnce(map, x, y, facing);
+            else game.WarpTo(map, x, y, facing);
+        }
 
-        public void Fade(bool toBlack, float seconds) => game.scriptFade.To(toBlack, seconds);
+        public void Fade(bool toBlack, float seconds)
+        {
+            if (!Skipping)
+            {
+                game.scriptFade.To(toBlack, seconds);
+                return;
+            }
+            // In a hurry the screen is black, or the field again, at once; a fade's time passes for whoever is walking
+            bool moves = game.scriptFade.Level != (toBlack ? 1f : 0f);
+            game.scriptFade.To(toBlack, 0f);
+            if (moves) game.WalkOnFor(seconds);
+        }
 
         // ---- field moves
 
@@ -1109,6 +1158,8 @@ public partial class GameEngine
             game.journal.Tell(new JournalEvent(JournalEventKind.UsedFieldMove, FieldMoveRules.MoveName(move)));
             // Whose Surf it is carries the player (plan 10 · F1)
             if (move == FieldMove.Surf) game.player.Carrier = user.ModelName;
+            // (A hurry begun while the move's own line was being read uses the move without its cut-in)
+            if (Skipping) return;
             game.StartCutIn(move, user, subject);
         }
 

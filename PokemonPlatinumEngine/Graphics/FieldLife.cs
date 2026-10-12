@@ -422,6 +422,12 @@ internal sealed class FieldLife
     /// <summary>Forgets every effect: coming to another place.</summary>
     public void ClearEffects() => effects.Clear();
 
+    /// <summary>
+    /// Every effect that passes by itself is gone now, one that was stopped with it; an effect that is held stays
+    /// lit (plan 12 · Q20: a scene skipped leaves what a played one leaves, and a played one leaves only what it holds).
+    /// </summary>
+    public void EndPassingEffects() => effects.RemoveAll(e => !double.IsPositiveInfinity(e.Ends));
+
     /// <summary>The effects' pieces now, in the world (<see cref="SceneFx.Quads(SceneEffect, float, float, float, int, Direction, Vector3, List{SceneQuad})"/>).</summary>
     public void SceneQuads(List<SceneQuad> into)
     {

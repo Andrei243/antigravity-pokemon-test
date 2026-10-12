@@ -38,7 +38,7 @@ public class GoldenScriptTests
         var text = new StringBuilder("# Every script of the game on every way through it (plan 24 · X3), made by GoldenScriptTests. " +
             $"Rewritten by: {GoldenFile.AcceptCommand}\n" +
             "# '>' a line said, '?' a question and the answer taken, '*' what the script did, '!' a problem, " +
-            "'+'/'-' a flag set or cleared, '=' a variable changed; a way after the first is told from the answer where it parts from those before it.\n");
+            "'+'/'-' a flag set or cleared, '=' a variable changed, '+ seen' a scene played to its end; a way after the first is told from the answer where it parts from those before it.\n");
         foreach (var (name, starters) in told)
         {
             text.Append($"{GoldenFile.BlockMark}{name}\n");
@@ -80,6 +80,8 @@ public class GoldenScriptTests
             foreach (string entry in host.Log.Skip(logged)) text.Append($"  * {OneLine(entry)}\n");
             foreach (string problem in host.Problems) text.Append($"  ! {OneLine(problem)}\n");
             foreach (string change in Changes(way.Before, host.Story.Snapshot())) text.Append($"  {change}\n");
+            // The scenes the way played to their end (plan 12 · Q20): what a game that has gone this way may skip
+            foreach (string scene in host.Story.ScenesSeen.Order(StringComparer.Ordinal)) text.Append($"  + seen {scene}\n");
         }
         return text.ToString();
     }

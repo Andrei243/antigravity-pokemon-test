@@ -29,6 +29,7 @@ script OnEnter
 script TeamGalactic
   # A game saved further up the room before there was anyone here is brought down to meet them
   if var PLAYER_Y != 28 place player 20 28 up
+  scene "Mars and Jupiter"
   place mars 20 26 down
   place jupiter 21 26 down
   face player up
@@ -98,6 +99,7 @@ script TeamGalactic
   hide grunt_m_2
   setflag FLAG_HIDE_STARK_MOUNTAIN_ROOM_1_TEAM_GALACTIC
   setvar VAR_STARK_MOUNTAIN_ROOM_1_STATE 1
+  endscene
   return
 
 

@@ -95,9 +95,19 @@ public static class AudioManager
 
     public static void StopListening() => heard = null;
 
+    [ThreadStatic] private static bool hushed;
+
+    /// <summary>
+    /// While set, every sound effect, cry and fanfare asked for on this thread is dropped, unheard: a scene being
+    /// skipped (plan 12 · Q20) plays none of the sounds of what it hurries through, whoever would have asked for
+    /// them. A change of music is kept: the song is the one a played scene would have left.
+    /// </summary>
+    public static bool Hushed { get => hushed; set => hushed = value; }
+
     /// <summary>Plays a sound effect by name, over the music. <paramref name="pan"/> is -1 for the left, 1 for the right.</summary>
     public static void PlaySound(string soundName, float pan = 0f)
     {
+        if (hushed) return;
         heard?.Add(soundName);
         if (isMuted || !isInitialized) return;
         var sound = SoundBank.Get(soundName);
@@ -117,6 +127,7 @@ public static class AudioManager
 
     public static void PlayCry(PokemonSpecies species, string? form = null, CryMode mode = CryMode.Normal, float pan = 0f)
     {
+        if (hushed) return;
         string name = species.Form(form)?.Name ?? species.Name;
         heard?.Add(mode == CryMode.Normal ? $"cry {name}" : $"cry {name} {mode}");
         if (isMuted || !isInitialized) return;
@@ -195,7 +206,7 @@ public static class AudioManager
     /// <summary>Pauses the music for a jingle (healing, an item, a level-up), then lets it carry on.</summary>
     public static void PlayFanfare(MusicRole role)
     {
-        if (!isInitialized) return;
+        if (hushed || !isInitialized) return;
         string? id = MusicDirector.Resolve(role, Region, MusicLibrary.Exists);
         var song = id == null ? null : MusicLibrary.Get(id);
         if (song != null) mixer.PlayFanfare(song);

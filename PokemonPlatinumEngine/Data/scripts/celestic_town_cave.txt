@@ -41,6 +41,7 @@ script Painting
   end
 label Examine
   if flag FLAG_EXAMINED_CELESTIC_TOWN_CAVE_PAINTING goto Again
+  scene "The painting"
   text "{player} looked closely at the ancient painting." "Strange shapes cover a whole stretch of the rock." "Three figures stand in a triangle... and at their heart, a sphere of light?" "What could it all mean?"
   setflag FLAG_EXAMINED_CELESTIC_TOWN_CAVE_PAINTING
   # The elder comes in after the player and stands beside them
@@ -94,6 +95,7 @@ label Legend
   walk player right 1
   waitmoves
   face player left
+  endscene
   end
 label ShoveWest
   face elder left
@@ -102,18 +104,21 @@ label ShoveWest
   walk player left 1
   waitmoves
   face player right
+  endscene
   end
 label Again
   text "{player} looked closely at the ancient painting." "Strange shapes cover a whole stretch of the rock." "Three figures stand in a triangle... and at their heart, a sphere of light..."
   end
 label Fight
   call CyrusBattle
+  endscene
   end
 
 
 # Cynthia before the painting (the original's CelesticTownCave_PaintingCynthia). She comes in by the way the elder
 # once did and stands beside the player, on the other of the two tiles before the painting.
 script CynthiaReads
+  scene "Cynthia before the painting"
   setflag FLAG_TALKED_TO_CELESTIC_TOWN_CAVE_CYNTHIA
   clearflag FLAG_HIDE_CELESTIC_TOWN_CAVE_CYNTHIA
   place cynthia 4 11 up
@@ -179,6 +184,7 @@ label Watch
   waitmoves
   hide cynthia
   setflag FLAG_HIDE_CELESTIC_TOWN_CAVE_CYNTHIA
+  endscene
   return
 
 

@@ -30,6 +30,7 @@ script Psyduck
 label Potion
   ask "The Psyduck are clutching their heads and won't budge. Use the Secret Potion?"
   if no end
+  scene "The Psyduck"
   text "{player} used the Secret Potion!" "The Psyduck's headaches seem to have cleared up!"
   cry "Psyduck"
   emote psyduck_3 exclaim 0.5
@@ -77,6 +78,7 @@ label Yes
   hide cynthia
   setflag FLAG_HIDE_ROUTE_210_SOUTH_CYNTHIA
   setflag FLAG_USED_SECRETPOTION
+  endscene
   end
 
 

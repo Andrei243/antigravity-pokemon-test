@@ -39,6 +39,10 @@ partial class Harness
         // Muted, and by day whatever the real time is (the "times" mode sets the other times of day)
         engine.Settings.Muted = true;
         engine.Settings.TimeOfDay = TimeOfDay.Day;
+        // Nothing is skipped and no scene counts as seen, whatever an earlier run left in the output folder's options
+        // (plan 12 · Q20: a scene played to its end is noted there for the machine)
+        engine.Settings.SkipScenes = SkipScenes.Off;
+        engine.Settings.ScenesSeen.Clear();
         engine.ApplySettings(window: false);
 
         // The game opens on its title screen; everything but the "title" mode wants a game in progress

@@ -16,6 +16,7 @@ public enum OptionRow
     Sound, MusicVolume, SoundVolume, CryVolume, AmbienceVolume, Speakers,
     MoveHints, TrainerLines,
     FocusPause, FrameCap,
+    SkipScenes,
     Help
 }
 
@@ -23,7 +24,8 @@ public enum OptionRow
 /// The options screen: text speed, graphics quality, window size, full screen, V-Sync, time of day, and the sound:
 /// on or off, a volume for each of the mixer's buses (the music with its fanfares, the sound effects, the cries,
 /// the ambience) and the speakers it plays through; then the helps of plan 12 (the move hints), the trainers' lines in battle (plan 11 · C12),
-/// the two rows of plan 16 · T3 (whether the game waits behind another window, and the most frames it draws a second) and the HELP pages
+/// the two rows of plan 16 · T3 (whether the game waits behind another window, and the most frames it draws a second),
+/// which scenes of the story may be skipped (plan 12 · Q20) and the HELP pages
 /// (<see cref="HelpScreen"/>), which open over the options. Changes apply at once; the caller saves the settings
 /// when the screen reports a change. More rows than fit scroll in a window (<see cref="VisibleRows"/>).
 /// </summary>
@@ -165,6 +167,9 @@ public class OptionsScreen
                 int cap = Array.IndexOf(caps, s.FrameCap);
                 s.FrameCap = caps[Wrap((cap < 0 ? Array.IndexOf(caps, 60) : cap) + step, caps.Length)];
                 break;
+            case OptionRow.SkipScenes:
+                s.SkipScenes = (SkipScenes)Wrap((int)s.SkipScenes + step, 3);
+                break;
         }
     }
 
@@ -209,6 +214,17 @@ public class OptionsScreen
             ? "The most frames the game draws a second."
             : "The game draws as many frames a second as it can.")
             + " V-Sync, when it is on, still holds it to the display's refresh rate."),
+        OptionRow.SkipScenes => ("Skip scenes", s.SkipScenes switch
+        {
+            SkipScenes.Seen => "Seen",
+            SkipScenes.Any => "Any",
+            _ => "Off"
+        }, s.SkipScenes switch
+        {
+            SkipScenes.Seen => "Hold the menu button for a second to skip a scene of the story you have already seen to its end, in this game or another on this computer. Questions and battles are never skipped.",
+            SkipScenes.Any => "Hold the menu button for a second to skip any scene of the story, seen or not. Questions and battles are never skipped.",
+            _ => "Every scene of the story plays through, as in Platinum."
+        }),
         _ => ("Help", "Open", "The type chart, the controls and a few notes for the road.")
     };
 

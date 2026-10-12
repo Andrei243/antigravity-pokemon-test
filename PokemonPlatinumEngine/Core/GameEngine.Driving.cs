@@ -218,5 +218,20 @@ public partial class GameEngine
         public bool DeleteSave() => SaveSlots.Delete(SavePaths.Current, game.saveSlot);
         /// <summary>The game as it stands, as the save screen would write it (plan 24 · X3: the harness's <c>saves</c>).</summary>
         public SaveData BuildSave() => game.BuildSave();
+
+        // ------------------------------------------------------------ a scene skipped (plan 12 · Q20)
+
+        /// <summary>A tool's hand on the menu button: held down while set, as the key is, and read where the key is read.</summary>
+        public bool SkipHeld { get => game.SkipHeld; set => game.SkipHeld = value; }
+        /// <summary>The key of the scene the script running is in (its file and its name); null outside one.</summary>
+        public string? Scene => game.runner.Scene;
+        /// <summary>Whether that scene may be skipped now: the options allow it and nothing waits for the player.</summary>
+        public bool SceneMayBeSkipped => game.MaySkipNow;
+        /// <summary>How far the hold has come, 0 to 1: the ring's fill.</summary>
+        public float SkipFill => game.skipHold.Fill;
+        /// <summary>True from the hold's end until the skip's dark has opened again.</summary>
+        public bool Skipping => game.skipPhase != SkipPhase.None;
+        /// <summary>How many times a scene was hurried through since the game was made: once for each hold that did its work.</summary>
+        public int ScenesSkipped => game.scenesSkipped;
     }
 }

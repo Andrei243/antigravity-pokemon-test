@@ -21,6 +21,7 @@
 
 script OnEnter
   if var VAR_LAKE_ACUITY_STATE != 1 end
+  scene "Lake Acuity"
   camera pan 16 45 1.0
   wait 0.25
   face rival up
@@ -85,4 +86,5 @@ label Beaten
   setflag FLAG_HIDE_LAKE_VERITY_COUNTERPART
   setflag FLAG_HIDE_LAKE_VERITY_PROF_ROWAN
   clearflag FLAG_LAKE_VALOR_EXPLODED
+  endscene
   end
