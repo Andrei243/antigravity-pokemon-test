@@ -265,7 +265,7 @@ public sealed partial class BattleCore : IBattleContext
                     if (WhyNot(choice) is { } refusal) throw new ArgumentException(refusal);
                 break;
             case ReplacementRequest replacement:
-                if (choices.Count != 1 || choices[0].Kind != ChoiceKind.Switch || choices[0].Who != replacement.Place || !CanSendIn(choices[0].SwitchTo))
+                if (choices.Count != 1 || choices[0].Kind != ChoiceKind.Switch || choices[0].Who != replacement.Place || !CanSendIn(At(replacement.Place), choices[0].SwitchTo))
                     throw new ArgumentException($"A Pokémon able to fight is wanted for {replacement.Place}");
                 break;
         }
