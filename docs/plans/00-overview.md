@@ -16,7 +16,7 @@ About 350 sittings are left, some twenty of them marked optional.
 | 04 · Graphics | everything | 0 | what G11 owes (the M6–M9 cities in `profile`) goes to 01 · M12 |
 | 05 · Sound and music | A1–A5, A7 | ~3 | A6 rolls on inside the sessions that open places and scenes |
 | 06 · Game mechanics | R1–R18 | ~12 | every one of Platinum's mechanics is in (2026-10-11); R19 to R30 are the later generations' |
-| 07 · Online | — | 8 | most of O2 and O3 came with plan 06; O8 optional |
+| 07 · Online | — | 8 | most of O2 came with plan 06; O3 became plan 28 (2026-10-12); O8 optional |
 | 08 · Platinum's details | P6 | 22 | P3's met data and markings came with R12 |
 | 09 · Looks | L11 | 14 | |
 | 10 · Companions | F1 | 11 | F8 optional |
@@ -213,9 +213,9 @@ These are the plans the README put after Sinnoh's Hall of Fame. Plan 19 allows K
   - V15, then V16 to V19 one after another (one pair of data files). V26.
   - Optional: V11, V14, V25.
 - **Online (07).**
-  - O3, in a wave when lane 3 is away from the battle's log.
+  - Plan 28 · I1, in a wave when lane 3 is away from the battle's log (it replaces O3); then I2, I3 (with 13 · V12's menu change, whichever is first) and I4. I5 may follow O6.
   - Then O1 (the core library split), alone like T11.
-  - Then O4; O5 and O6; O7. O8 is optional.
+  - Then O4; O5, and O6 after plan 28 · I4; O7. O8 is optional.
 - **Voice (26).**
   - V2, after the user allows NVorbis; V3, once the user has recorded the samples; then V4, V5, V6.
   - V7, chapter by chapter: first the chapters already written, then each region's.
@@ -306,7 +306,7 @@ Each plan keeps its own list. These are the ones that hold a session in this ord
 | 17 · 1: a second language at all | plan 17 | no |
 | 08 · 7 and 9: migration from the player's files, the second slot | 08 · P20–P23 | wait |
 | 15 · 7: keep the Pokéathlon | 15 · E6–E8, 20 · J13's dome | drop, as the second check judged |
-| 07 · 1–4: who hosts, for whom | plan 07 from O1 | wait |
+| 07 · 1–4: who hosts, for whom | plan 07 from O1 | decided 2026-10-12: the user's own $5 server, link codes only, no accounts (friend codes by IP), plan 28 for the battles |
 | Regions before Sinnoh's Hall of Fame | 18 · W1, W6, W10 sooner | after |
 
 ## Stale lines found in the plans
@@ -337,7 +337,6 @@ Each plan's next session fixes its own.
   - R27 says 191 abilities (190).
   - R24–R26's "919 of 919".
   - The optional raids in R22 and R23 are also 23 · Z10's and Z15's.
-- **07**: "Where we are" is wholly stale, and O2 and O3 are mostly done.
 - **08**
   - P3's fields exist (R12).
   - P7 counts 30 overlays (now 40).

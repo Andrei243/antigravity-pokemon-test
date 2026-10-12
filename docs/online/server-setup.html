@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Setting up the online server</title>
+<style>
+  @page { size: A4; margin: 18mm 17mm 20mm 17mm; }
+  :root { --ink:#1d2330; --mute:#5b6475; --line:#d9dee7; --accent:#2f5fb3; --soft:#eef3fb; --warn:#fff6e0; --warnline:#e7c46a; }
+  * { box-sizing: border-box; }
+  body { font-family: "DejaVu Sans", "Segoe UI", Arial, sans-serif; color: var(--ink); font-size: 10.2pt; line-height: 1.5; margin: 0; }
+  h1 { font-size: 22pt; margin: 0 0 4pt; letter-spacing: -0.3pt; }
+  h2 { font-size: 14pt; margin: 20pt 0 6pt; padding-bottom: 3pt; border-bottom: 1.5pt solid var(--accent); break-after: avoid; }
+  h3 { font-size: 11pt; margin: 14pt 0 4pt; break-after: avoid; }
+  p { margin: 4pt 0 6pt; }
+  .sub { color: var(--mute); font-size: 10.5pt; margin-bottom: 12pt; }
+  code { font-family: "DejaVu Sans Mono", Consolas, monospace; font-size: 8.8pt; background: #f2f4f8; padding: 0.5pt 3pt; border-radius: 2pt; }
+  pre { font-family: "DejaVu Sans Mono", Consolas, monospace; font-size: 8.4pt; line-height: 1.45; background: #f5f7fa; border: 0.75pt solid var(--line); border-left: 3pt solid var(--accent); border-radius: 3pt; padding: 7pt 9pt; margin: 5pt 0 8pt; white-space: pre-wrap; word-break: break-all; break-inside: avoid; }
+  pre .c { color: #6b7385; }
+  table { border-collapse: collapse; width: 100%; margin: 6pt 0 10pt; font-size: 9.2pt; break-inside: avoid; }
+  th, td { border: 0.75pt solid var(--line); padding: 4pt 6pt; text-align: left; vertical-align: top; }
+  th { background: var(--soft); }
+  tr.pick td { background: #f3f8ee; }
+  .box { border: 0.75pt solid var(--line); background: var(--soft); border-radius: 4pt; padding: 7pt 10pt; margin: 8pt 0; break-inside: avoid; }
+  .warn { background: var(--warn); border-color: var(--warnline); }
+  .step { display: inline-block; background: var(--accent); color: #fff; border-radius: 3pt; padding: 0 5pt; font-size: 9pt; margin-right: 4pt; }
+  ol, ul { margin: 3pt 0 7pt; padding-left: 16pt; }
+  li { margin: 2pt 0; }
+  .two { display: flex; gap: 10pt; }
+  .two > div { flex: 1; }
+  .small { font-size: 8.8pt; color: var(--mute); }
+  .page-break { break-before: page; }
+</style>
+</head>
+<body>
+
+<h1>Setting up the online server</h1>
+<div class="sub">For online trading and battles (plan 07). Written 12 October 2026. About an hour the first time, and about $5 to $6 a month after that.</div>
+
+<div class="box">
+<b>What you end up with.</b> One small Linux server on the internet, with a free web address such as <code>yourname.duckdns.org</code>. Players' games connect to it over an encrypted connection (<code>wss://</code>). The server program runs as a service that restarts on its own, the operating system installs its security updates by itself, and the database is backed up every night.<br><br>
+<b>When to do what.</b> You can do steps 1 to 6 today. Steps 7 to 10 need the server program, which plan 07's session O4 builds. Until then the server sits ready and costs the monthly fee.
+</div>
+
+<h2>1. Which provider</h2>
+
+<p>The game's server is tiny. A trade or a battle turn is a few hundred bytes, and a battle takes a few milliseconds of work. Any of the providers below can serve dozens of friends at once. The table shows <b>prices as listed in October 2026</b>. Several providers raised their prices in 2026, so check the price on the order page before you buy.</p>
+
+<table>
+<tr><th>Provider and plan</th><th>CPU / memory / disk</th><th>Traffic a month</th><th>Price a month</th><th>Notes</th></tr>
+<tr class="pick"><td><b>Hetzner Cloud CX23</b> (recommended)</td><td>2 vCPU / 4 GB / 40 GB</td><td>20 TB</td><td>about €5 to €6, including the IPv4 address</td><td>The most server for the money. Data centres in Germany and Finland (Singapore and the US too). A European company, so GDPR is simple. It sometimes asks for ID when you sign up.</td></tr>
+<tr><td>Hetzner Cloud CAX11 (ARM)</td><td>2 vCPU / 4 GB / 40 GB</td><td>20 TB</td><td>about €4 to €5</td><td>Cheaper. .NET runs on ARM, so publish with <code>-r linux-arm64</code> in step 7. Some locations run out of these.</td></tr>
+<tr><td>Vultr Cloud Compute 1 GB</td><td>1 vCPU / 1 GB / 25 GB</td><td>about 1 TB</td><td>$5</td><td>Exactly $5, with 32 locations (Frankfurt, Warsaw, Amsterdam and others). 1 GB of memory is enough for this server.</td></tr>
+<tr><td>Akamai (Linode) Nanode 1 GB</td><td>1 vCPU / 1 GB / 25 GB</td><td>1 TB</td><td>$5</td><td>Also exactly $5, with free DDoS protection.</td></tr>
+<tr><td>DigitalOcean Basic 1 GB</td><td>1 vCPU / 1 GB / 25 GB</td><td>1 TB</td><td>$6</td><td>The best documentation, but the most expensive of the five.</td></tr>
+</table>
+
+<p><b>Recommendation: Hetzner Cloud CX23</b>, in the location closest to most of your players. It has four times the memory of the $5 plans for about the same money. If the budget has to stay at exactly $5, take <b>Vultr's $5 plan</b>. The steps below are written for Hetzner. Vultr and Akamai have the same choices under different names, which section 4 lists.</p>
+
+<h2>2. Before you start</h2>
+<ul>
+<li>A payment card, and an e-mail address for the provider account.</li>
+<li>Your own computer with a terminal. On Windows, PowerShell has <code>ssh</code> and <code>scp</code> built in, so you don't need to install anything.</li>
+<li>A name for the server that doesn't contain "Pokémon" or any other Nintendo name, for example <code>sinnoh-link</code> or <code>yourname-games</code>. Plan 07 explains why: a fan project's online service should not draw attention to itself.</li>
+</ul>
+
+<div class="box warn"><b>Keep two things private:</b> the SSH key file on your computer (<code>id_ed25519</code>, the one <i>without</i> <code>.pub</code>), and the server's secret from step 7. Never put either one in the repository.</div>
+
+<h2>3. The steps</h2>
+
+<h3><span class="step">1</span> Make an SSH key on your computer</h3>
+<p>The key is how you log in to the server, in place of a password. In PowerShell, or in a terminal on macOS or Linux:</p>
+<pre>ssh-keygen -t ed25519 -C "game server"
+<span class="c"># press Enter to keep the default file; choose a passphrase you will remember</span>
+cat ~/.ssh/id_ed25519.pub       <span class="c"># on Windows: type $env:USERPROFILE\.ssh\id_ed25519.pub</span></pre>
+<p>Copy the line it prints. It starts with <code>ssh-ed25519</code>. That is the public half, and it is safe to paste into the provider's website.</p>
+
+<h3><span class="step">2</span> Create the server (Hetzner)</h3>
+<ol>
+<li>Sign up at <b>console.hetzner.com</b>, confirm your e-mail and add a payment method.</li>
+<li>Create a <b>project</b> (for example "Games") and open it. Choose <b>Add Server</b>.</li>
+<li><b>Location</b>: the one closest to most players (Falkenstein or Nuremberg in Germany, or Helsinki).</li>
+<li><b>Image</b>: <b>Ubuntu</b>, the newest LTS version offered (26.04 or 24.04).</li>
+<li><b>Type</b>: Shared vCPU, <b>x86</b>, <b>CX23</b> (or Arm64, <b>CAX11</b>).</li>
+<li><b>Networking</b>: keep <b>Public IPv4</b> turned on. The game needs it, as step 3 explains. IPv6 can stay on.</li>
+<li><b>SSH keys</b>: <i>Add SSH key</i>, paste the line from step 1, and give it a name.</li>
+<li><b>Firewalls</b>: <i>Create Firewall</i> with three inbound rules, all TCP, from any IPv4 and IPv6 address: port <b>22</b> (SSH), port <b>80</b> (HTTP, which Caddy needs to get its certificate) and port <b>443</b> (HTTPS, where the game connects). Apply the firewall to this server.</li>
+<li><b>Backups</b>: optional. They cost 20% of the server price, and step 10 sets up a backup of its own anyway.</li>
+<li><b>Name</b>: for example <code>sinnoh-link</code>. Choose <b>Create &amp; Buy now</b>.</li>
+</ol>
+<p>After a few seconds the server shows its <b>IPv4 address</b>, for example <code>203.0.113.25</code>. Write it down.</p>
+
+<h3><span class="step">3</span> Give it a free name with DuckDNS</h3>
+<p>HTTPS certificates are issued to names, not to bare IP addresses, so the server needs a name. DuckDNS gives you one for free.</p>
+<ol>
+<li>Go to <b>www.duckdns.org</b> and sign in (with GitHub, Google or another account).</li>
+<li>Type a subdomain, for example <code>sinnoh-link</code>, and choose <b>add domain</b>.</li>
+<li>In the <b>current ip</b> box next to it, type the server's <b>IPv4</b> address and choose <b>update ip</b>.</li>
+<li>Leave the <b>IPv6</b> box empty. The game binds each link code to the players' IP addresses, and home IPv6 addresses change by themselves every day, so the server must be reached over IPv4 only.</li>
+</ol>
+<p>Your server's address is now <code>sinnoh-link.duckdns.org</code>. Hetzner's IP addresses don't change, so DuckDNS never needs updating. If you own a domain already, add an <b>A</b> record for a subdomain instead, with no AAAA record.</p>
+
+<h3><span class="step">4</span> Log in and lock it down</h3>
+<pre>ssh root@203.0.113.25           <span class="c"># your IPv4; answer "yes" the first time</span>
+
+apt update &amp;&amp; apt full-upgrade -y
+adduser admin                   <span class="c"># your everyday login; choose a password (it's for sudo only)</span>
+usermod -aG sudo admin
+rsync --archive --chown=admin:admin ~/.ssh /home/admin</pre>
+<p>Now turn off password logins and logins as root:</p>
+<pre>cat &gt; /etc/ssh/sshd_config.d/10-hardening.conf &lt;&lt;'EOF'
+PermitRootLogin no
+PasswordAuthentication no
+KbdInteractiveAuthentication no
+EOF
+systemctl restart ssh</pre>
+<p><b>Before you close this window</b>, open a second terminal and check that <code>ssh admin@203.0.113.25</code> works. If it does, the rest of the steps run as <code>admin</code>, with <code>sudo</code> in front.</p>
+<p>A second firewall on the server itself, in case the provider's firewall is ever removed:</p>
+<pre>sudo ufw allow OpenSSH
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+sudo ufw enable</pre>
+<p>Automatic security updates, with a restart at 4 a.m. when an update needs one:</p>
+<pre>sudo apt install -y unattended-upgrades
+sudo dpkg-reconfigure -plow unattended-upgrades      <span class="c"># answer Yes</span>
+echo 'Unattended-Upgrade::Automatic-Reboot "true";
+Unattended-Upgrade::Automatic-Reboot-Time "04:00";' | sudo tee /etc/apt/apt.conf.d/52auto-reboot</pre>
+
+<h3><span class="step">5</span> Install Caddy (HTTPS in front of the game server)</h3>
+<p>Caddy gets a free certificate from Let's Encrypt and renews it by itself. It passes the game's WebSocket connections through to the server program, along with the player's real IP address.</p>
+<pre>sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https curl
+curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' \
+  | sudo gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
+curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' \
+  | sudo tee /etc/apt/sources.list.d/caddy-stable.list
+sudo apt update &amp;&amp; sudo apt install -y caddy</pre>
+<p>Replace the whole of <code>/etc/caddy/Caddyfile</code> with this (use <code>sudo nano /etc/caddy/Caddyfile</code>):</p>
+<pre>sinnoh-link.duckdns.org {
+    reverse_proxy 127.0.0.1:5080
+}</pre>
+<pre>sudo systemctl reload caddy
+curl -I https://sinnoh-link.duckdns.org     <span class="c"># "502 Bad Gateway" is right for now: HTTPS works, nothing behind it yet</span></pre>
+
+<h3><span class="step">6</span> A user and folders for the game server</h3>
+<pre>sudo useradd --system --home /var/lib/linkserver --create-home --shell /usr/sbin/nologin linkserver
+sudo mkdir -p /opt/linkserver
+sudo apt install -y sqlite3           <span class="c"># for backups and for looking inside the database</span></pre>
+<p>Steps 1 to 6 are everything you can do before the server program exists.</p>
+
+<h3><span class="step">7</span> Put the server program on it (once plan 07 · O4 exists)</h3>
+<p>On your computer, in the repository folder, build a self-contained copy, so the server doesn't need .NET installed:</p>
+<pre>dotnet publish PokemonPlatinumServer -c Release -r linux-x64 --self-contained -o publish/server
+<span class="c"># for a CAX11 (ARM) server: -r linux-arm64</span>
+scp -r publish/server admin@203.0.113.25:/tmp/linkserver</pre>
+<p>On the server:</p>
+<pre>sudo rsync -a --delete /tmp/linkserver/ /opt/linkserver/
+sudo chmod +x /opt/linkserver/PokemonPlatinumServer
+
+<span class="c"># the secret that hashes players' IP addresses; made once, never changed, never shared</span>
+echo "LinkServer__IpHashSecret=$(openssl rand -hex 32)" | sudo tee /etc/linkserver.env
+sudo chmod 600 /etc/linkserver.env</pre>
+<p>A service, so the program starts with the machine and restarts if it stops. Create <code>/etc/systemd/system/linkserver.service</code>:</p>
+<pre>[Unit]
+Description=Game link server
+After=network-online.target
+
+[Service]
+User=linkserver
+WorkingDirectory=/var/lib/linkserver
+ExecStart=/opt/linkserver/PokemonPlatinumServer
+EnvironmentFile=/etc/linkserver.env
+Environment=ASPNETCORE_URLS=http://127.0.0.1:5080
+Environment=LinkServer__Database=/var/lib/linkserver/link.db
+Environment=LinkServer__TrustedProxy=127.0.0.1
+Restart=always
+RestartSec=5
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/linkserver
+
+[Install]
+WantedBy=multi-user.target</pre>
+<pre>sudo systemctl daemon-reload
+sudo systemctl enable --now linkserver
+systemctl status linkserver             <span class="c"># should say "active (running)"</span></pre>
+<p class="small">The exact setting names (<code>LinkServer__…</code>) and the program's name are fixed when O4 writes the server. O7 ships this file and the Caddyfile in the repository, so you copy them rather than type them.</p>
+
+<h3><span class="step">8</span> Check it works</h3>
+<pre>curl https://sinnoh-link.duckdns.org/health     <span class="c"># O4's health check: "ok" and the protocol version</span>
+journalctl -u linkserver -f                     <span class="c"># the server's log, live; Ctrl+C to stop</span></pre>
+<p>In the log, a player's first connection should show their real IP address being hashed, not <code>127.0.0.1</code>. If every player shows <code>127.0.0.1</code>, they would all get the same friend code, and section 5 has the fix.</p>
+
+<h3><span class="step">9</span> Point the game at it</h3>
+<p>In each player's <code>settings.json</code> (O7 adds this to the options screen too):</p>
+<pre>"OnlineServer": "wss://sinnoh-link.duckdns.org/link"</pre>
+<p>Then one player chooses <b>Make a code</b> at the Global Link counter upstairs in any Pokémon Center, and the other types the code.</p>
+
+<h3><span class="step">10</span> Nightly backup of the database</h3>
+<pre>sudo mkdir -p /var/backups/linkserver
+echo '30 3 * * * root sqlite3 /var/lib/linkserver/link.db ".backup /var/backups/linkserver/link-$(date +\%F).db" &amp;&amp; find /var/backups/linkserver -name "link-*.db" -mtime +14 -delete' \
+  | sudo tee /etc/cron.d/linkserver-backup</pre>
+<p>This keeps fourteen days of copies on the server. Now and then, keep one on your own computer too:</p>
+<pre>scp admin@203.0.113.25:/var/backups/linkserver/link-*.db ./backups/</pre>
+
+<h2>4. The same on Vultr or Akamai</h2>
+<table>
+<tr><th>Hetzner's name</th><th>Vultr</th><th>Akamai (Linode)</th></tr>
+<tr><td>Add Server</td><td>Deploy, then Cloud Compute (Shared CPU)</td><td>Create Linode</td></tr>
+<tr><td>CX23 / CAX11</td><td>the $5 plan, 1 vCPU and 1 GB</td><td>Nanode 1 GB</td></tr>
+<tr><td>Image: Ubuntu LTS</td><td>Operating system: Ubuntu LTS</td><td>Image: Ubuntu LTS</td></tr>
+<tr><td>SSH keys</td><td>SSH Keys</td><td>SSH Keys (Authorized Keys)</td></tr>
+<tr><td>Firewalls</td><td>Firewall group with TCP 22, 80, 443</td><td>Cloud Firewall with TCP 22, 80, 443</td></tr>
+</table>
+<p>From step 3 on, everything is the same.</p>
+
+<h2>5. When something goes wrong</h2>
+<table>
+<tr><th>What you see</th><th>Why, and what to do</th></tr>
+<tr><td><code>ssh</code> hangs or is refused</td><td>Port 22 isn't open in the provider's firewall, or the firewall isn't applied to the server. If you locked yourself out, the provider's web console (Hetzner: the server's <i>Console</i> tab) still logs you in.</td></tr>
+<tr><td>Caddy can't get a certificate</td><td>DuckDNS doesn't point at this IP yet, or port 80 is closed. Check with <code>journalctl -u caddy</code>, fix it, then run <code>sudo systemctl reload caddy</code>.</td></tr>
+<tr><td>Every player gets the same friend code</td><td>The server is reading Caddy's address instead of the player's. The <code>TrustedProxy</code> setting in step 7 must be <code>127.0.0.1</code>, and the server must use ASP.NET Core's forwarded-headers middleware (O4 does).</td></tr>
+<tr><td>A player's friend code changed</td><td>Their game lost its install token (a new computer, or a deleted <code>settings.json</code>) <i>and</i> their IP changed. Nothing is lost except the code.</td></tr>
+<tr><td>A player can't connect, but others can</td><td>They might reach the internet only over IPv6, which some mobile networks do. Plan 07 accepts that for now.</td></tr>
+<tr><td>Disk full</td><td>Run <code>sudo journalctl --vacuum-size=200M</code> and check <code>/var/backups/linkserver</code>.</td></tr>
+</table>
+
+<h2>6. Updating, costs, and stopping</h2>
+<ul>
+<li><b>A new server version</b>: repeat the <code>publish</code>, <code>scp</code> and <code>rsync</code> lines of step 7, then run <code>sudo systemctl restart linkserver</code>. Connected games drop and have to reconnect. A trade in progress finishes or rolls back through its receipt, but a battle in progress is lost (until plan 28 · I5 lets a battle outlive a restart), so update when nobody is playing.</li>
+<li><b>Once a month</b>: log in, run <code>sudo apt update &amp;&amp; sudo apt full-upgrade</code> (the automatic updates install only security fixes), and look at <code>df -h</code> and <code>systemctl status linkserver</code>.</li>
+<li><b>Costs</b>: the plan's monthly price, billed by the hour, with a cap. Traffic is far below every plan's allowance.</li>
+<li><b>Stopping</b>: in the provider's console, delete the server. A stopped server is still billed, a deleted one isn't. Download a backup first if you might start again.</li>
+</ul>
+
+<p class="small">Sources: the providers' price pages and comparisons published in September and October 2026. Hetzner's prices changed twice in 2026, so check on the order page. Caddy's install commands are from caddyserver.com/docs/install.</p>
+
+</body>
+</html>

@@ -1,6 +1,6 @@
 # Roadmap: from demo to the full Platinum
 
-Twenty-six plans, each worked through over several sessions. Plans 01 to 07 build Platinum and play it with friends; plans 08 to 25, written on 2026-10-06 before any of their sessions, add what those seven leave out, the other regions of the chain, and the guards and polish around them; plan 26, written on 2026-10-07 at the user's request, voices the characters' lines:
+Twenty-six plans, each worked through over several sessions. Plans 01 to 07 build Platinum and play it with friends; plans 08 to 25, written on 2026-10-06 before any of their sessions, add what those seven leave out, the other regions of the chain, and the guards and polish around them; plan 26, written on 2026-10-07 at the user's request, voices the characters' lines; plan 27 moves the game to Unity at the end; plan 28, written on 2026-10-12, makes the battles ready for two players online:
 
 | Plan | Delivers | First session | Rough size |
 |---|---|---|---|
@@ -32,6 +32,7 @@ Twenty-six plans, each worked through over several sessions. Plans 01 to 07 buil
 | [25 · Battle presentation, second pass](25-battle-presentation.md) | The field's state drawn on the stage (weather, the Substitute, hazards, screens), each Pokémon's own ball, body language, and a picture and a sound of its own for every move | Y1 | 15 sessions |
 | [26 · Voice](26-voice.md) | Every character's lines spoken: the rival Barry in the user's own voice, cloned from a few samples kept in the repository, the player silent as in Platinum, everyone else from synthesised voices the user chooses, the lines in a voice pack outside git, behind an option that gives back today's silent game | V1 | 7+ sessions |
 | [27 · Moving to Unity](27-unity-migration.md) | Porting the game from Raylib to Unity (written 2026-10-08; deferred to the end of the project): what carries over (about 80% of the code, the rules, data and generators), what is rebuilt (renderers, shaders, the interface back end, input, audio output, the harness), the C# version gap until Unity 6.8, a spike and a shared rules library first | Last | 7 sessions |
+| [28 · Battles for two players](28-battles-for-two-players.md) | The battle half of plan 07, in place of its O3 (written 2026-10-12): a log that travels as plain data, what each player may see of it, both sides asked, a link battle's setup with Flat 50, clauses, team preview, forfeit and timer, and a battle's state written out and read back | I1 | 5 sessions |
 
 ## Order
 
