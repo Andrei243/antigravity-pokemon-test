@@ -829,6 +829,39 @@ public static class ScriptParser
                 return new Instruction { Op = Op.SlowMotion, Line = line, Factor = share, Seconds = seconds };
             }
 
+            // The original's set pieces (plan 09 · L12): each is played where the player stands and waited for
+            case "anim":
+            {
+                // anim heal | anim pc on|off | anim elevator up|down [hums] | anim halloffame
+                switch (r.OneOf("heal", "pc", "elevator", "halloffame"))
+                {
+                    case "heal":
+                        return new Instruction { Op = Op.Anim, Line = line, Piece = SetPiece.Heal };
+                    case "pc":
+                        return new Instruction { Op = Op.Anim, Line = line, Piece = r.OneOf("on", "off") == "on" ? SetPiece.PcOn : SetPiece.PcOff };
+                    case "elevator":
+                    {
+                        var way = r.OneOf("up", "down") == "up" ? SetPiece.ElevatorUp : SetPiece.ElevatorDown;
+                        int hums = r.More ? r.Int("how many times the lift hums") : SetPieces.Hums;
+                        if (hums < 1 || hums > SetPieces.MostHums) throw r.Error($"a lift hums 1 to {SetPieces.MostHums} times on a ride");
+                        return new Instruction { Op = Op.Anim, Line = line, Piece = way, Number = hums };
+                    }
+                    default:
+                        return new Instruction { Op = Op.Anim, Line = line, Piece = SetPiece.HallOfFame };
+                }
+            }
+            case "shake":
+            case "flicker":
+            {
+                // shake <who> [times], flicker <who> [times]: the original's ShakeObject and FlickerObject
+                string who = r.Who();
+                bool shake = word == "shake";
+                int times = r.More ? r.Int("how many times") : shake ? SetPieces.Shakes : SetPieces.Flickers;
+                if (times < 1 || times > SetPieces.MostTimes)
+                    throw r.Error(shake ? $"someone is shaken 1 to {SetPieces.MostTimes} times" : $"someone flickers 1 to {SetPieces.MostTimes} times");
+                return new Instruction { Op = shake ? Op.Shake : Op.Flicker, Line = line, Name = who, Number = times };
+            }
+
             case "script":
             case "label":
                 throw r.Error($"'{word}' begins a line of its own");

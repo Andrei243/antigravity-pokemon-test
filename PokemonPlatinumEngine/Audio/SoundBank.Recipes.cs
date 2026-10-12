@@ -73,6 +73,9 @@ public static partial class SoundBank
         Add("effect_shadow", SoundGroup.Field, null, "A great shadow sweeps over the ground (`effect shadow`): Giratina's, in the Distortion World.");
         Add("effect_ripple", SoundGroup.Field, null, "The picture wavers (`effect ripple`): a weight in the air at Spear Pillar, an explosion felt far off.");
         Add("effect_sparkles", SoundGroup.Field, null, "Points of light rise round a tile (`effect sparkles`): the lake guardians set free and appearing.");
+        Add("machine_ball", SoundGroup.Field, "SEQ_SE_DP_BOWA", "A Poké Ball is laid on a Pokémon Center's machine (`anim heal`): one to each Pokémon of the team.");
+        Add("lift_hum", SoundGroup.Field, "SEQ_SE_DP_ELEBETA2", "A lift's car between floors (`anim elevator`): one hum to each round of its indicator's lights.");
+        Add("lift_ding", SoundGroup.Field, "SEQ_SE_DP_PINPON", "A lift arrives at its floor (`anim elevator`): two notes of a chime.");
 
         // ---- Battles
         Add("send_out", SoundGroup.Battle, "SEQ_SE_DP_BOWA4", "A ball opens and a Pokémon comes out.");
@@ -320,6 +323,27 @@ public static partial class SoundBank
                 d.Bell(0.28f, 0.4f, N(98), 3f, 1.4f, 0.22f);
                 d.Bell(0.38f, 0.4f, N(108), 3f, 1.4f, 0.24f);
                 d.Bell(0.45f, 0.38f, N(105), 3f, 1.4f, 0.2f);
+                return Finish(d.S, 0.36f);
+            case "machine_ball":
+                // A ball set down in its socket: a soft pop of air and a small round note under it
+                d = new SoundDesign(0.2f, 0x0BA1u);
+                d.Noise(0, 0.03f, Filter.Band, 1400f, 900f, 0.5f, 1.4f, 0.1f, 2.5f);
+                d.Tone(0, 0.16f, Wave.Sine, N(79), N(76), 0.5f, 0.03f, 2.4f);
+                d.Tone(0.01f, 0.12f, Wave.Triangle, N(91), N(88), 0.14f, 0.03f, 2.6f);
+                return Finish(d.S, 0.34f);
+            case "lift_hum":
+                // A car between floors: half a second of a motor's even hum, swelling a little and easing, with the
+                // faint rattle of its cables, made to follow itself round after round
+                d = new SoundDesign(0.5f, 0x11F2u);
+                d.Tone(0, 0.5f, Wave.Triangle, 92f, 96f, 0.42f, 0.3f, 0.7f, vibratoHz: 16f, vibratoDepth: 0.03f);
+                d.Tone(0, 0.5f, Wave.Sine, 184f, 192f, 0.16f, 0.3f, 0.7f);
+                d.Noise(0, 0.48f, Filter.Band, 700f, 760f, 0.14f, 1f, 0.3f, 0.8f, 22f, 0.35f);
+                return Finish(d.S, 0.32f);
+            case "lift_ding":
+                // The floor reached: two notes of a chime, the second a third below the first
+                d = new SoundDesign(0.62f);
+                d.Bell(0, 0.34f, N(88), 2f, 1.3f, 0.4f);
+                d.Bell(0.16f, 0.46f, N(84), 2f, 1.3f, 0.42f);
                 return Finish(d.S, 0.36f);
             case "save":
                 // A soft chime of three bells: written and kept

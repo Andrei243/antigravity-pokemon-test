@@ -3797,9 +3797,7 @@ way 0
   Lift Attendant> Certainly. Going up.
   Lift Attendant> Here we are!
   ? Welcome, and thank you for visiting us today. Which floor would you like? = 2F
-  * sound lift
-  * camera Shake
-  * sound lift_stop
+  * anim elevator up 4
   + FLAG_RIBBON_SYNDICATE_LIFT_UPSTAIRS
 way 2, from answer 1
   ? Welcome, and thank you for visiting us today. Which floor would you like? = EXIT
@@ -5446,9 +5444,7 @@ way 0
   Attendant> Certainly. Going up!
   Attendant> Fifth floor: the Rooftop Plaza, for a breath of air between purchases.
   ? To which floor may I take you? = 5F
-  * sound lift
-  * camera Shake
-  * sound lift_stop
+  * anim elevator up 4
   * warp VeilstoneStore5F 15 3
   = VAR_MAP_LOCAL_0x00 0 -> 6
 way 5, from answer 1
@@ -5460,9 +5456,7 @@ way 4.0, from answer 1
   Attendant> Ground floor: medicine and everything else an adventure calls for.
   ? To which floor may I take you? = 1F OR B1F
   ? The ground floor, or the basement? = 1F
-  * sound lift
-  * camera Shake
-  * sound lift_stop
+  * anim elevator up 4
   * warp VeilstoneStore1F 15 3
   = VAR_MAP_LOCAL_0x00 0 -> 2
 way 4.2, from answer 2
@@ -5472,36 +5466,28 @@ way 4.1, from answer 2
   Attendant> Certainly. Going up!
   Attendant> Basement floor: food and produce, with a good many treats you will find nowhere else.
   ? The ground floor, or the basement? = B1F
-  * sound lift
-  * camera Shake
-  * sound lift_stop
+  * anim elevator up 4
   * warp VeilstoneStoreB1F 14 3
   = VAR_MAP_LOCAL_0x00 0 -> 1
 way 3, from answer 1
   Attendant> Certainly. Going up!
   Attendant> Second floor: all that a Pokémon battle could ask for.
   ? To which floor may I take you? = 2F
-  * sound lift
-  * camera Shake
-  * sound lift_stop
+  * anim elevator up 4
   * warp VeilstoneStore2F 15 3
   = VAR_MAP_LOCAL_0x00 0 -> 3
 way 2, from answer 1
   Attendant> Certainly. Going up!
   Attendant> Third floor: Technical Machines, to make your Pokémon the stronger.
   ? To which floor may I take you? = 3F
-  * sound lift
-  * camera Shake
-  * sound lift_stop
+  * anim elevator up 4
   * warp VeilstoneStore3F 15 3
   = VAR_MAP_LOCAL_0x00 0 -> 4
 way 1, from answer 1
   Attendant> Certainly. Going up!
   Attendant> Fourth floor: furnishings to covet and Pokémon Dolls.
   ? To which floor may I take you? = 4F
-  * sound lift
-  * camera Shake
-  * sound lift_stop
+  * anim elevator up 4
   * warp VeilstoneStore4F 15 3
   = VAR_MAP_LOCAL_0x00 0 -> 5
 === VistaLighthouse.Binoculars
@@ -6352,7 +6338,7 @@ way -
   Anyone> Oh my, you came in looking exhausted. First, let me look after your Pokémon.
   Anyone> There we are. Every one of them is fit and well again.
   Anyone> Please be careful out there. We'll be here whenever you need us.
-  * fanfare FanfareHeal
+  * anim heal 1
 === common.BlackOutHome
 from a trainer with lines of their own
 way -
@@ -7165,7 +7151,7 @@ way 0
   Anyone> There we are! Every one of them is fit and well again.
   Anyone> Take care out there, and come back whenever you need us!
   ? Your Pokémon look as if they could do with a rest. Shall I see to them? = Yes
-  * fanfare FanfareHeal
+  * anim heal 1
 way 1, from answer 1
   Anyone> Take care out there, and come back whenever you need us!
   ? Your Pokémon look as if they could do with a rest. Shall I see to them? = No
@@ -7322,7 +7308,9 @@ way -
 from a trainer with lines of their own
 way -
   > Lucas switched the PC on.
+  * anim pc on
   * open Pc
+  * anim pc off
 === common.PoisonSurvived
 from a trainer with lines of their own
 way -
@@ -8218,6 +8206,7 @@ way -
   > The Pokémon rose over the trees and flew away...
   > Where it was resting, something is glittering.
   * cry Cresselia
+  * flicker Cresselia 6
   + FLAG_HIDE_FULLMOON_ISLAND_FOREST_CRESSELIA
   + FLAG_MET_CRESSELIA
 === hearthome_city.Buneary

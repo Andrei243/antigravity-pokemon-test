@@ -50,6 +50,10 @@ internal sealed class KitBuilder
     public Art Frames(string key, int width, int height, int frames, float rate, Action<PixelCanvas, int> paint) =>
         Sheet.PaintFrames(key, width, height, frames, rate, paint);
 
+    /// <summary>A face that is held on a frame of its own until it is told another (plan 09 · L12; <see cref="ArtSheet.PaintFrames(string, int, int, int, Action{PixelCanvas, int})"/>).</summary>
+    public Art Held(string key, int width, int height, int frames, Action<PixelCanvas, int> paint) =>
+        Sheet.PaintFrames(key, width, height, frames, paint);
+
     /// <summary>A point given in texels from the origin: x east, y up (in screen rows), z south.</summary>
     public Vector3 At(float x, float y, float z) => Origin + new Vector3(x * Texel, y * Texel * VS, z * Texel);
 

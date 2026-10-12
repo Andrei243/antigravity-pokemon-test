@@ -261,6 +261,8 @@ public partial class GameEngine
         showBattlePoints = false;
         // And so do a scene's effects, held or not (plan 09 · L11)
         world?.Life.ClearEffects();
+        // ... and its set pieces: a machine's balls, a PC left on, whoever was being shaken (plan 09 · L12)
+        world?.Pieces.Clear();
     }
 
     /// <summary>

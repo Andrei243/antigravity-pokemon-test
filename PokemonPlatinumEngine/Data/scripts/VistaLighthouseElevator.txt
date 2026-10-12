@@ -8,26 +8,26 @@
 # our own: 0 set by Sunyshore City's arrival script, 1 by the gallery's), so the car goes to the other one. The door
 # in its front wall leads out to the city, for whoever is ever left standing in it.
 #
-# Stood in for until plan 09 lands (L12): the ride is the lift's sounds and a tremor of the picture (the original's
-# PlayElevatorAnimation scrolls the car's lights).
+# The ride is the lift's own set piece (plan 09 · L12; the original's PlayElevatorAnimation with its four rounds of
+# the car's lights): the indicator's arrow runs the way the car goes, the car hums and shudders, and a chime says
+# it has arrived.
 
 
 # VistaLighthouseElevator_OnFrame_Init
 script OnEnter
   walk player up 2
   face player down
-  sound "lift"
-  camera shake 1.5
-  wait 1.5
-  sound "lift_stop"
-  wait 0.3
+  if var VAR_VISTA_LIGHTHOUSE_FLOOR == 1 goto Down
+  # VistaLighthouseElevator_ElevatorUp, and its ElevatorAnimation
+  anim elevator up 4
   walk player down 2
   sound "stairs"
-  if var VAR_VISTA_LIGHTHOUSE_FLOOR == 1 goto Down
-  # VistaLighthouseElevator_ElevatorUp
   warp "VistaLighthouse" 6 10 down
   end
 # VistaLighthouseElevator_ElevatorDown
 label Down
+  anim elevator down 4
+  walk player down 2
+  sound "stairs"
   warp "Sinnoh" 886 791 down
   end

@@ -324,6 +324,25 @@ public sealed class WorldRenderer
     internal FieldLife Life { get; } = new();
 
     /// <summary>
+    /// The set pieces playing (plan 09 · L12): a machine at work, a PC switched on, a lift on its ride, someone shaken
+    /// or flickering. The game tells it what begins, by <see cref="FieldLife.Now"/>; what is drawn asks it here: the
+    /// room's held faces, the picture's shudder, and where each person stands on the picture or whether they do.
+    /// </summary>
+    public SetPieceStage Pieces { get; } = new();
+
+    /// <summary>The frame each held face of a room's art should show now, by what the set pieces have come to.</summary>
+    private void HoldFaces(MapScene room)
+    {
+        var (balls, lit) = Pieces.Machine(SetPiece.Heal, Life.Now);
+        room.Hold(PropModels.HealerTray, SetPieces.TrayFrame(balls, lit));
+        room.Hold(PropModels.HealerFront, Pieces.MachineAtWork(Life.Now) ? 1 : 0);
+        room.Hold(PropModels.LiftLights, Pieces.Indicator(Life.Now));
+        // Every PC that is used is dark but the one switched on
+        if (Pieces.Screen(Life.Now) is { } on) room.HoldEach(PropModels.PcScreenPrefix, SetPieces.PcDark, PropModels.PcScreen(on.X, on.Y), on.Frame);
+        else room.HoldEach(PropModels.PcScreenPrefix, SetPieces.PcDark);
+    }
+
+    /// <summary>
     /// Tiles of grass that something unseen shakes (the Poké Radar's patches, plan 06 · R13), and whether hard: the
     /// grass there parts as round a walker's feet, from a point that jumps from side to side on the field's clock.
     /// The game sets it every frame.
@@ -481,7 +500,8 @@ public sealed class WorldRenderer
         Camera.Advance(step);
         var look = Camera.Look(new Vector2(px, pz));
         var camera = BuildCamera(map, room, look.X, look.Y, easedGround);
-        if (Shake(step) is var jolt && jolt != 0f)
+        // A scene's shake and a lift's shudder throw the picture up and down by whole texels (plan 09 · L12)
+        if (Shake(step) + Pieces.Shudder(Life.Now) / (float)CharacterSprites.TexelsPerUnit is var jolt && jolt != 0f)
         {
             camera.Position.Z += jolt;
             camera.Target.Z += jolt;
@@ -529,6 +549,8 @@ public sealed class WorldRenderer
         shaders.SetTime(time);
         shaders.SetWind(Weathers.Wind(weather));
         if (!indoors) SceneTextures.AnimateWaterfall(Life.Now);
+        // A room's machines show what the set pieces have come to (plan 09 · L12)
+        if (room != null) HoldFaces(room);
         foreach (var scene in scenes) scene.Animate(Life.Now);
         // On a map of the whole region only the people near the view are drawn
         sight = map.IsStreamed ? view : null;
@@ -986,6 +1008,12 @@ public sealed class WorldRenderer
     private readonly List<(Vector3 At, string Name, int Facing, int Frame)> pokemon = new();
     private int fieldBakes = 1;
 
+    /// <summary>Whether someone is drawn this frame (nobody is the player): not at the moments a flicker has them unseen (plan 09 · L12).</summary>
+    private bool Seen(NPC? who) => !Pieces.AnyoneMoved || Pieces.Seen(who, Life.Now);
+
+    /// <summary>How far east of their tile someone is drawn this frame, in tiles: the whole texels a shake throws them (plan 09 · L12).</summary>
+    private float NudgeOf(NPC? who) => Pieces.AnyoneMoved ? Pieces.OffsetOf(who, Life.Now) / (float)CharacterSprites.TexelsPerUnit : 0f;
+
     private void GatherActors(Map map, Player? player, float px, float pz, float groundY, float lift, float time)
     {
         actors.Clear();
@@ -997,6 +1025,10 @@ public sealed class WorldRenderer
         {
             if (npc.IsPCTerminal || !InSight(npc)) continue;
             if (map.Puzzle?.Hides(npc.Level ?? map.HeightAt(npc.GridX, npc.GridY), viewer) == true) continue;
+            // Whoever a scene shakes is drawn a few texels east or west of their tile, and whoever flickers is not
+            // drawn at the moments they don't show (plan 09 · L12; style guide, "Life", "Set pieces")
+            if (!Seen(npc)) continue;
+            float nudge = NudgeOf(npc);
             if (npc is { IsPokemon: true, Species: { } species })
             {
                 // A Pokémon of the map stands on its tile as a person does; on the move it hops a texel or two, a hop to
@@ -1005,7 +1037,7 @@ public sealed class WorldRenderer
                 bool moving = npc.WalkBlend >= 0.5f, up = moving && MathF.Sin(npc.WalkCycle * MathF.Tau * 2f) > 0f;
                 float hop = up ? Rows(2f) : 0f;
                 float ground = (npc.Level is { } deck ? Relief.Under(map, sx, sz, deck) : Relief.At(map, sx, sz)) - SinkAt(map, sx, sz);
-                pokemon.Add((new Vector3(sx, ground + hop, sz), species, CharacterSprites.FacingIndex(Player.YawOf(npc.Facing)),
+                pokemon.Add((new Vector3(sx + nudge, ground + hop, sz), species, CharacterSprites.FacingIndex(Player.YawOf(npc.Facing)),
                     moving ? (up ? 1 : 0) : FieldSprites.FrameAt(time + SeedOf(npc.Name + npc.Key) * 10f)));
                 continue;
             }
@@ -1028,7 +1060,7 @@ public sealed class WorldRenderer
                 // A boulder over a pit of the Distortion World sinks into its mouth (plan 02 · S12)
                 bool overPit = map.BoulderPits.ContainsKey((npc.GridX, npc.GridY)) && map.GetGroundTile(npc.GridX, npc.GridY) == TileType.Void;
                 float ground = overPit ? Relief.InPit(map, npc.GridX, npc.GridY, MathF.Abs(npc.StepOffsetX) + MathF.Abs(npc.StepOffsetY)) : Relief.At(map, bx, bz);
-                things.Add((new Vector3(bx, ground, bz), kind));
+                things.Add((new Vector3(bx + nudge, ground, bz), kind));
                 continue;
             }
             float seed = SeedOf(npc.Name);
@@ -1046,10 +1078,11 @@ public sealed class WorldRenderer
             }
             float nx = npc.DrawX + 0.5f, nz = npc.DrawY + 0.5f;
             actors.Add(new Actor(CharacterModels.Get(PlayerIdentity.CharacterFor(npc.NpcType), shaders),
-                new Vector3(nx, (npc.Level is { } level ? Relief.Under(map, nx, nz, level) : Relief.At(map, nx, nz)) - SinkAt(map, nx, nz) - Rows(npc.Wading) + Rows(jump), nz), Player.YawOf(npc.Facing), pose));
+                new Vector3(nx + nudge, (npc.Level is { } level ? Relief.Under(map, nx, nz, level) : Relief.At(map, nx, nz)) - SinkAt(map, nx, nz) - Rows(npc.Wading) + Rows(jump), nz), Player.YawOf(npc.Facing), pose));
         }
 
-        if (player == null) return;
+        // The player too may be shaken or flicker (nobody stands for them)
+        if (player == null || !Seen(null)) return;
 
         var playerPose = new CharacterPose
         {
@@ -1076,7 +1109,7 @@ public sealed class WorldRenderer
         }
         float seat = carrier != null ? CarrierSeat(carrier) : SurfMount.Seat;
         float feet = groundY + lift + Rows(seat) * saddle + bob * saddle - SinkAt(map, px, pz) * (1f - saddle) + Rows(playerJump);
-        actors.Add(new Actor(CharacterModels.Get(PlayerIdentity.Character, shaders), new Vector3(px, feet, pz), player.Yaw, playerPose));
+        actors.Add(new Actor(CharacterModels.Get(PlayerIdentity.Character, shaders), new Vector3(px + NudgeOf(null), feet, pz), player.Yaw, playerPose));
 
         if (player.Mount is { } ridden)
         {
@@ -1459,11 +1492,12 @@ public sealed class WorldRenderer
         foreach (var npc in PeopleInSight(map))
         {
             // (An item's ball has a smaller patch under it than a person, and an obstacle one a little smaller)
-            if (!npc.IsPCTerminal && InSight(npc))
-                Blob(npc.DrawX + 0.5f, npc.DrawY + 0.52f, npc.Level is { } level ? Relief.Under(map, npc.DrawX + 0.5f, npc.DrawY + 0.5f, level) : Relief.At(map, npc.DrawX + 0.5f, npc.DrawY + 0.5f),
+            // (Whoever is shaken takes their patch with them, and whoever flickers has none while they are unseen)
+            if (!npc.IsPCTerminal && InSight(npc) && Seen(npc))
+                Blob(npc.DrawX + 0.5f + NudgeOf(npc), npc.DrawY + 0.52f, npc.Level is { } level ? Relief.Under(map, npc.DrawX + 0.5f, npc.DrawY + 0.5f, level) : Relief.At(map, npc.DrawX + 0.5f, npc.DrawY + 0.5f),
                     npc.IsItemBall ? 0.6f : npc.IsObstacle ? 0.85f : npc.IsPokemon ? 0.75f : 1f);
         }
-        if (withPlayer) Blob(px, pz + 0.02f, playerGround, 1f - Math.Clamp(lift * 0.8f, 0f, 0.5f));
+        if (withPlayer && Seen(null)) Blob(px + NudgeOf(null), pz + 0.02f, playerGround, 1f - Math.Clamp(lift * 0.8f, 0f, 0.5f));
 
         Rlgl.SetTexture(0);
         Rlgl.DrawRenderBatchActive();

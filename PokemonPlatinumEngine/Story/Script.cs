@@ -92,6 +92,9 @@ public enum Op
     Act, Mood,
     // The camera kit (plan 09 · L4): the cinema bars and slow motion (the camera's own moves are Camera's)
     Letterbox, SlowMotion,
+    // The original's set pieces (plan 09 · L12): a machine at work, a PC switched on or off, a lift's ride; someone
+    // shaken; someone flickering
+    Anim, Shake, Flicker,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>
@@ -209,6 +212,9 @@ public sealed class Instruction
 
     /// <summary>For <see cref="Op.Effect"/>: the kind lit (plan 09 · L11).</summary>
     public SceneEffect Effect { get; init; }
+
+    /// <summary>For <see cref="Op.Anim"/>: the set piece played (plan 09 · L12).</summary>
+    public SetPiece Piece { get; init; }
     public Audio.MusicRole Role { get; init; }
     public Badge Badge { get; init; }
 

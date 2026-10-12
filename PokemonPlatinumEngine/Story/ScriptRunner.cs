@@ -854,6 +854,27 @@ public sealed partial class ScriptRunner
                 host.SlowMotion(i.Factor, i.Seconds);
                 break;
 
+            // The original's set pieces (plan 09 · L12): each is waited for by the runner itself, for as long as the
+            // host says it takes, which is nothing where it can't be played (a room with no machine, someone not on
+            // the map), so a script is never left waiting on one
+            case Op.Anim:
+                waiting = host.Anim(i.Piece, i.Piece switch
+                {
+                    // CountPartyNonEggs: a ball on the nurse's tray for every Pokémon that is no Egg
+                    SetPiece.Heal => host.Party.Members.Count(p => !p.IsEgg),
+                    // GetPartyCount: the Hall of Fame's machine takes the whole team's
+                    SetPiece.HallOfFame => host.Party.Count,
+                    SetPiece.ElevatorUp or SetPiece.ElevatorDown => i.Number,
+                    _ => 0
+                });
+                break;
+            case Op.Shake:
+                waiting = host.Shake(Person(i.Name, i), i.Number);
+                break;
+            case Op.Flicker:
+                waiting = host.Flicker(Person(i.Name, i), i.Number);
+                break;
+
             default:
                 throw Wrong(i, $"the runner doesn't know how to carry out '{i.Op}'");
         }

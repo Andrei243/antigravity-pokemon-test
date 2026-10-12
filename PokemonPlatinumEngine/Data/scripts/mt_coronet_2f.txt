@@ -11,8 +11,9 @@
 # set at Sendoff Spring).
 #
 # The painting is a thing of the map (the area's own cave_painting, a slab on the hole's tile that covers the dark
-# behind it); its breaking is a set piece that hasn't landed (plan 09 · L12), so it is whole before the button and
-# rubble after.
+# behind it). Nobody sees it break: the button swaps the painting for its shards by their flags while the player is in
+# Veilstone City, as the original's script does, so it is whole before the button and rubble after, and the set
+# pieces of plan 09 · L12 have none for it.
 
 
 # Arriving: once his scene has played Looker stands by the hole, where the original's object is, not where the scene

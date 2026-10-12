@@ -90,6 +90,15 @@ internal sealed class ArtSheet
         return art;
     }
 
+    /// <summary>
+    /// A face that is held (plan 09 · L12: a machine's tray, a PC's screen): painted on first use in
+    /// <paramref name="frames"/> frames of the same size, of which none follows another by the clock. The sheet holds
+    /// the first; whoever uploads the sheet redraws the face's rectangle with the frame it is told to hold
+    /// (<see cref="MapScene.Hold"/>). It is a moving face of no rate.
+    /// </summary>
+    public Art PaintFrames(string key, int width, int height, int frames, Action<PixelCanvas, int> paint) =>
+        PaintFrames(key, width, height, frames, 0f, paint);
+
     /// <summary>The whole sheet: every face in its place, its edge texels repeated once all round.</summary>
     public PixelCanvas ToCanvas()
     {

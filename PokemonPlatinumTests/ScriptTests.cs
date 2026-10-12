@@ -507,6 +507,16 @@ public class ScriptTests
           amity gift
           amity give
           amity leave
+          anim heal
+          anim pc on
+          anim pc off
+          anim elevator up
+          anim elevator down 3
+          anim halloffame
+          shake self
+          shake rival 3
+          flicker self
+          flicker player 4
         script Other
           end
         """;
@@ -1459,6 +1469,9 @@ public class ScriptTests
         public void SlowMotion(float share, float seconds) { }
         public void Effect(SceneEffect kind, int x, int y, float seconds, Direction? way, bool hold) { }
         public void StopEffect(int x, int y) { }
+        public float Anim(SetPiece piece, int count) => 0f;
+        public float Shake(NPC? who, int times) => 0f;
+        public float Flicker(NPC? who, int times) => 0f;
         public bool Busy => false;
         public void Say(string? speaker, IReadOnlyList<string> lines) { }
         public int Answer => 0;

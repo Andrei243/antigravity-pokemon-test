@@ -14,8 +14,8 @@
 # A Cresselia knocked out on the routes is back here once the Hall of Fame is next entered
 # (PokemonLeagueHallOfFame.txt: VAR_ROAMING_CRESSELIA_STATE 3): it flies off again, and that time it leaves nothing.
 #
-# Stood in for until plan 09 lands (L12, L14): the original shows Cresselia's picture over the field before its cry
-# (DrawPokemonPreview), which is left out.
+# Its going is the original's own set piece (plan 09 · L12: FlickerObject, six times). Not here: the original shows
+# Cresselia's picture over the field before its cry (DrawPokemonPreview), which no chapter has a screen for yet.
 
 
 # FullmoonIslandForest_Cresselia
@@ -24,19 +24,8 @@ script Cresselia
   wait 0.6
   # FullmoonIslandForest_CresseliaMoveAwayForLunarWing
   if facing up call DrawsBack
-  # It shimmers three times and is gone (the original's FlickerObject)
-  hide cresselia
-  wait 0.2
-  show cresselia
-  wait 0.2
-  hide cresselia
-  wait 0.2
-  show cresselia
-  wait 0.2
-  hide cresselia
-  wait 0.2
-  show cresselia
-  wait 0.2
+  # FlickerObject LOCALID_CRESSELIA, 6: it is gone and back three times over, and then gone for good
+  flicker cresselia 6
   hide cresselia
   setflag FLAG_HIDE_FULLMOON_ISLAND_FOREST_CRESSELIA
   roamer start "Cresselia"
