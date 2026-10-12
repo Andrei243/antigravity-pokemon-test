@@ -335,7 +335,8 @@ public partial class GameEngine
                 Partner = partner,
                 FirstBattle = firstBattle,
                 Conditions = BattleConditionsHere(),
-                MoveHints = MoveHintsOn
+                MoveHints = MoveHintsOn,
+                TrainerLines = TrainerLinesOn
             });
             battleRenderer.SetArena(currentMap, player.GridX, player.GridY);
             battleTrainers.Clear();
@@ -347,6 +348,9 @@ public partial class GameEngine
 
     /// <summary>Whether the move cards say how a move will do: the option, with Rules following the game's own rules (plan 12 · Q10).</summary>
     private bool MoveHintsOn => Settings.MoveHints.Holds(Ruleset.Current.Preset);
+
+    /// <summary>Whether the trainers across the field speak in battle: the option, with Rules following the game's own rules (plan 11 · C12).</summary>
+    private bool TrainerLinesOn => Settings.TrainerLines.Holds(Ruleset.Current.Preset);
 
     /// <summary>
     /// Starts building the models a battle will show (the foes and the whole team, who may be sent out), so they are

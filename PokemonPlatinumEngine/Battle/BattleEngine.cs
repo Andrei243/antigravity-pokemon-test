@@ -133,7 +133,8 @@ public partial class BattleEngine
 
     // What is still to be shown: lines that wait to be read, and things that happen between them
     private abstract record Step;
-    private sealed record Line(string Text, Action? OnShow) : Step;
+    /// <param name="Speaker">Who says the line, named on a pill over it (a trainer's line in battle, plan 11 · C12); null for the battle's own.</param>
+    private sealed record Line(string Text, Action? OnShow, string? Speaker = null) : Step;
     private sealed record Happening(Action Do) : Step;
     private readonly Queue<Step> steps = new();
     private bool playingTheLog;
@@ -209,6 +210,7 @@ public partial class BattleEngine
         // The species the Pokédex knew before the battle: its Seen events register the foes as they appear, and a
         // species met for the first time gets no hint (plan 12 · Q10, as Sun and Moon have it)
         ShowsMoveHints = setup.MoveHints;
+        SpeaksTrainerLines = setup.TrainerLines;
         seenBefore = PlayerParty.Members.Concat(setup.WildPokemon).Concat(setup.Trainers.SelectMany(t => t.Party.Members))
             .Concat(setup.Partner?.Party.Members ?? Enumerable.Empty<Pokemon>())
             .Select(p => p.Species.DexNumber).Where(Pokedex.IsSeen).ToHashSet();
@@ -360,6 +362,7 @@ public partial class BattleEngine
             {
                 case Line line:
                     currentMessage = line.Text;
+                    CurrentSpeaker = line.Speaker;
                     waitingForMessageConfirm = true;
                     HUD.MenuState = BattleMenuState.Message;
                     line.OnShow?.Invoke();
@@ -596,6 +599,12 @@ public partial class BattleEngine
                 else PlayerParty.Add(mine);
                 break;
             }
+            case TrainerReacts reacts:
+                // What the trainer says, read straight after the line it came with (plan 11 · C12): the face's own
+                // line, so the screen never takes the rules' state while it waits. Nothing with the option off.
+                if (SpeaksTrainerLines && At(reacts.Place).Trainer is { } speaker && TrainerLines.For(speaker.Id, reacts.Cue) is { } said)
+                    interlude.Enqueue(new Line(PlayerIdentity.Fill(said.Text), null, PlayerIdentity.Fill(speaker.Name)));
+                break;
             case Won:
                 AudioManager.PlayMusic(MusicDirector.VictoryRole(MusicDirector.BattleRole(Trainers.Select(t => t.TrainerClass))));
                 break;
@@ -644,6 +653,12 @@ public partial class BattleEngine
 
     /// <summary>The message currently on screen. A tool may set it to show a line the log did not say (the harness's critical hit).</summary>
     public string CurrentMessage { get => currentMessage; internal set => currentMessage = value; }
+
+    /// <summary>Who says the message on screen, named on a pill over it: a trainer speaking in battle (plan 11 · C12); null for the battle's own lines.</summary>
+    public string? CurrentSpeaker { get; private set; }
+
+    /// <summary>The trainers across the field speak at the moments the rules mark (<see cref="BattleSetup.TrainerLines"/>).</summary>
+    public bool SpeaksTrainerLines { get; }
 
     /// <summary>A message is on screen waiting to be dismissed, or a question about a move to learn waits for its answer.</summary>
     public bool IsWaitingForConfirm => waitingForMessageConfirm || IsLearningMove;

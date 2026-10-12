@@ -127,6 +127,26 @@ public sealed record BallThrown(string Ball, int Slot, int Shakes) : BattleEvent
 /// <summary>The wild Pokémon is the player's: in the party, or sent to the PC.</summary>
 public sealed record Caught(Pokemon Pokemon, string Ball, bool ToBox) : BattleEvent;
 
+/// <summary>The moments a trainer of the other side speaks at in battle (plan 11 · C12).</summary>
+public enum TrainerCue
+{
+    /// <summary>The last of their Pokémon able to fight comes out (never the opening's send-out).</summary>
+    LastPokemon,
+
+    /// <summary>The first of their Pokémon falls, with others still able to fight.</summary>
+    FirstDown,
+
+    /// <summary>Their last Pokémon is in the red: a fifth of its HP or under (<see cref="BattleCore.RedShare"/>).</summary>
+    LowHp
+}
+
+/// <summary>
+/// A trainer of the other side reacts to a moment of the battle (plan 11 · C12): the trainer of the place named.
+/// The rules write it whatever the options say, once per trainer and moment, with no roll and never after the end;
+/// what the trainer says, if anything, is the face's own (<see cref="Data.TrainerLines"/>).
+/// </summary>
+public sealed record TrainerReacts(Place Place, TrainerCue Cue) : BattleEvent;
+
 /// <summary>The other side has nobody left (the victory music starts before the last lines are read).</summary>
 public sealed record Won : BattleEvent;
 
