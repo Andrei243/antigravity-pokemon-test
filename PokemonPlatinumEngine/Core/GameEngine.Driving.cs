@@ -182,6 +182,18 @@ public partial class GameEngine
             game.StartTransition(next, onMidpoint, kind);
         /// <summary>How the scene last closed, or is closing: the way into a battle the game picked for whom it met and where (plan 09 · L13).</summary>
         public TransitionKind TransitionKind => game.transitionKind;
+        /// <summary>How long the scene has been closing, or opening on the next one, in seconds; and which of the two.</summary>
+        public float TransitionSeconds => game.transitionTimer;
+        public bool TransitionClosing => game.currentState == GameState.Transition && game.isFadingOut;
+        /// <summary>
+        /// The band the scene is closing on (plan 09 · L15): whose it is with the portraits rendered so far, the look
+        /// their portrait is of and the player's (null in a Leader's band), and how many of them are rendered; no
+        /// band when the game opened the battle any other way.
+        /// </summary>
+        public BandPicture? Band => game.band.Picture;
+        public string? BandTheirLook => game.band.TheirLook;
+        public string? BandOwnLook => game.band.OwnLook;
+        public int BandRendered => game.band.Rendered;
         /// <summary>The player presses the confirm key in the field: talking, reading, a field move's question.</summary>
         public void Interact() => game.TryInteract();
         /// <summary>What arriving on the current map does: its puzzle laid out, its <c>OnEnter</c>, its first arrival.</summary>

@@ -120,6 +120,20 @@ partial class Harness
         }
     }
 
+    // A battle is opening on a band (plan 09 · L15) whose portraits have lit and whose flash is over: the moment a mode
+    // that plays a Gym Leader's or the League's battle through its script shoots the band where the game plays it
+    bool BandLit() => game.TransitionClosing && game.Band != null
+        && game.TransitionSeconds >= SceneTransition.FlashSeconds + SceneTransition.Beats(game.TransitionKind).FlashEnds + 0.2f;
+
+    // The band's shot for such a mode, named after whose it is (`g_band_roark`); nothing when no band is on
+    void ShotBand(string prefix)
+    {
+        if (!BandLit()) return;
+        var whose = game.Band!.Value.Band;
+        Shot($"{prefix}_band_{whose.Name.ToLowerInvariant()}");
+        Console.WriteLine($"  the band of {whose.Class} {whose.Name}: their portrait of {game.BandTheirLook}, the player's of {game.BandOwnLook ?? "nobody"}, {game.BandRendered} rendered");
+    }
+
     Image Capture()
     {
         engine.Draw();

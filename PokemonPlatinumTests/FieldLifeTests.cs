@@ -1201,17 +1201,17 @@ public class FieldLifeTests
         Assert.Equal(TransitionKind.WildStrong, SceneTransition.ForBattle(Wild(6, 5)));
         Assert.Equal(TransitionKind.Trainer, SceneTransition.ForBattle(With("Youngster", "Tristan", 5, 5)));
         Assert.Equal(TransitionKind.TrainerStrong, SceneTransition.ForBattle(With("Youngster", "Tristan", 9, 5)));
-        // A Gym Leader has their own, however strong
-        Assert.Equal(TransitionKind.Leader, SceneTransition.ForBattle(With("Leader", "Roark", 3, 50)));
-        Assert.Equal(TransitionKind.Leader, SceneTransition.ForBattle(With("Leader", "Roark", 60, 5)));
+        // A Gym Leader has their own, however strong: their band (plan 09 · L15)
+        Assert.Equal(TransitionKind.LeaderBand, SceneTransition.ForBattle(With("Leader", "Roark", 3, 50)));
+        Assert.Equal(TransitionKind.LeaderBand, SceneTransition.ForBattle(With("Leader", "Roark", 60, 5)));
     }
 
     public static IEnumerable<object[]> BattleKinds() =>
         Enum.GetValues<TransitionKind>().Where(k => k != TransitionKind.Fade).Select(k => new object[] { k });
 
-    /// <summary>The five ways of plan 04 · G9, which a battle on grass still opens by.</summary>
-    private static readonly TransitionKind[] FirstFive =
-        { TransitionKind.Wild, TransitionKind.WildStrong, TransitionKind.Trainer, TransitionKind.TrainerStrong, TransitionKind.Leader };
+    /// <summary>The four ways of plan 04 · G9, which a battle on grass still opens by (its fifth, a Gym Leader's diamonds, went with the bands).</summary>
+    private static readonly TransitionKind[] FirstFour =
+        { TransitionKind.Wild, TransitionKind.WildStrong, TransitionKind.Trainer, TransitionKind.TrainerStrong };
 
     private static float Covered(TransitionKind kind, bool closing, float closed)
     {
@@ -1255,7 +1255,7 @@ public class FieldLifeTests
             Assert.True(SceneTransition.Covers(kind, closing: false, 0.6f, 20f, 20f, 1920f, 1080f));
             Assert.True(SceneTransition.Covers(kind, closing: false, 0.6f, 1900f, 1060f, 1920f, 1080f));
         }
-        foreach (var kind in new[] { TransitionKind.Trainer, TransitionKind.TrainerStrong, TransitionKind.Leader })
+        foreach (var kind in new[] { TransitionKind.Trainer, TransitionKind.TrainerStrong, TransitionKind.LeaderBand, TransitionKind.EliteBand })
             for (float closed = 0.1f; closed < 1f; closed += 0.2f)
                 Assert.Equal(Covered(kind, true, closed), Covered(kind, false, closed));
 
@@ -1293,7 +1293,8 @@ public class FieldLifeTests
         Assert.Equal(0f, SceneTransition.Flash(kind, SceneTransition.FlashSeconds));
 
         // Nothing closes while it flashes, nor while a way of its own leads in; then the shapes close and are shut
-        // on time. The first five take nine tenths of a second, as they always did; the others their own time
+        // on time. The first four take nine tenths of a second, as they always did; the others their own time, a
+        // band, whose lead is its whole show, the longest
         float shut = SceneTransition.OutSeconds(kind), lead = SceneTransition.LeadSeconds(kind);
         Assert.Equal(0f, SceneTransition.Closed(kind, closing: true, SceneTransition.FlashSeconds));
         Assert.Equal(0f, SceneTransition.Closed(kind, true, SceneTransition.FlashSeconds + lead));
@@ -1307,12 +1308,12 @@ public class FieldLifeTests
         Assert.True(SceneTransition.Closed(kind, true, SceneTransition.FlashSeconds + lead + 0.05f) > 0f);
         Assert.True(SceneTransition.Closed(kind, true, shut - 0.02f) < 1f);
         Assert.Equal(1f, SceneTransition.Closed(kind, true, shut));
-        if (FirstFive.Contains(kind))
+        if (FirstFour.Contains(kind))
         {
             Assert.Equal(SceneTransition.CloseSeconds, shut);
             Assert.Equal(0f, lead);
         }
-        else Assert.InRange(shut, SceneTransition.CloseSeconds, 2.2f);
+        else Assert.InRange(shut, SceneTransition.CloseSeconds, SceneTransition.IsBand(kind) ? 3.5f : 2.2f);
 
         // And they open at once on the other side, in half a second
         Assert.Equal(1f, SceneTransition.Closed(kind, closing: false, 0f));

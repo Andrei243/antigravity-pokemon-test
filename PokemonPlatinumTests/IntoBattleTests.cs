@@ -7,6 +7,7 @@ using PokemonPlatinumEngine.Battle;
 using PokemonPlatinumEngine.Battle.Sim;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
+using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.UI;
 
 namespace PokemonPlatinumTests;
@@ -14,7 +15,9 @@ namespace PokemonPlatinumTests;
 /// <summary>
 /// The ways into a battle by place and by whom (plan 09 · L13; style guide, "Life", "Into battle"): the choice,
 /// held to the original's row by row, the twelve ways' times, what leads in and rides over the picture, what
-/// their dark covers, and the Galactic mark. All of it runs without a window.
+/// their dark covers, and the Galactic mark; and the bands of the Gym Leaders, the Elite Four and the Champion
+/// (plan 09 · L15): their rows, what a band shows at each beat, what its white covers, and whose colours it wears.
+/// All of it runs without a window.
 /// </summary>
 public class IntoBattleTests
 {
@@ -53,6 +56,43 @@ public class IntoBattleTests
     [Fact]
     public void TheWayInIsTheOriginalsChoiceRowByRow()
     {
+        // enc_effects.c 215-238 (a class to each of the eight Gym Leaders) and the table's rows 75-82
+        // (ENCEFF_CUTIN_LEADER_ROARK to …_VOLKNER): a Leader alone is met on their band, and so are the teams they
+        // bring to the Battleground, which are the same class and the same person
+        foreach (string leader in new[] { "roark", "gardenia", "wake", "maylene", "fantina", "candice", "byron", "volkner" })
+        {
+            Meets(TransitionKind.LeaderBand, MeetingRow.Leader, With("leader_" + leader, BattleTerrain.Building, 14, 20));
+            Meets(TransitionKind.LeaderBand, MeetingRow.Leader, With($"leader_{leader}_rematch", BattleTerrain.Building, 62, 60));
+        }
+        // The band whatever the ground and however strong: a row with a way of its own never asks either (186-190)
+        Meets(TransitionKind.LeaderBand, MeetingRow.Leader, With("leader_roark", BattleTerrain.Cave, 14, 5));
+        Meets(TransitionKind.LeaderBand, MeetingRow.Leader, With("leader_wake", BattleTerrain.Water, 33, 60));
+        // 239-250 and rows 83-86 (ENCEFF_CUTIN_ELITE_FOUR_…): each of the Elite Four, and their rematches
+        foreach (string member in new[] { "aaron", "bertha", "flint", "lucian" })
+        {
+            Meets(TransitionKind.EliteBand, MeetingRow.EliteFour, With("elite_four_" + member, BattleTerrain.Special, 49, 60));
+            Meets(TransitionKind.EliteBand, MeetingRow.EliteFour, With($"elite_four_{member}_rematch", BattleTerrain.Special, 65, 60));
+        }
+        // 251-253 and row 87 (ENCEFF_CUTIN_CHAMPION_CYNTHIA): the Champion, and her rematch
+        Meets(TransitionKind.EliteBand, MeetingRow.Champion, With("champion_cynthia", BattleTerrain.Special, 58, 70));
+        Meets(TransitionKind.EliteBand, MeetingRow.Champion, With("champion_cynthia_rematch", BattleTerrain.Special, 74, 70));
+        // 148-158 stand before the class's own row of 164: in a double battle the band is lost (the slip the original's
+        // own comment owns), a Leader's and an Elite Four's alike; Volkner's beside Flint in the Fight Area is told
+        // apart only for its music (153-155, row 107: ENCEFF_CUTIN_DOUBLE)
+        Meets(TransitionKind.Double, MeetingRow.DoubleLeader, With(BattleTerrain.Plain, 59, 60, true, Of("leader_volkner_fight_area"), Of("elite_four_flint_fight_area")));
+        Meets(TransitionKind.Double, MeetingRow.DoubleBattle, With(BattleTerrain.Building, 14, 20, true, Of("leader_roark")));
+        Meets(TransitionKind.Double, MeetingRow.DoubleBattle, With(BattleTerrain.Special, 49, 60, true, Of("elite_four_aaron")));
+        // The first trainer's class alone is read (dto->trainer[1], 130): Flint first, and Volkner's own row is not met
+        Meets(TransitionKind.Double, MeetingRow.DoubleBattle, With(BattleTerrain.Plain, 59, 60, true, Of("elite_four_flint_fight_area"), Of("leader_volkner_fight_area")));
+        // 132-142 and 160-162 stand before 164 too: a Leader met at the Battle Frontier, or the Champion in a link
+        // battle, would be met the Frontier's way
+        Meets(TransitionKind.Frontier, MeetingRow.Frontier, new BattleMeeting { Trainers = new[] { Of("leader_roark") }, Frontier = true, Terrain = BattleTerrain.Special });
+        Meets(TransitionKind.Frontier, MeetingRow.Link, new BattleMeeting { Trainers = new[] { Of("champion_cynthia") }, Link = true, Terrain = BattleTerrain.Building });
+        // The band is the class's (EncEffects_TrainerClassEffect switches on the class alone, 214): someone named
+        // Roark or Cynthia of another class is met as anyone is, by the ground and the first levels
+        Meets(TransitionKind.Trainer, MeetingRow.Trainer, With(BattleTerrain.Building, 14, 20, false, new MetTrainer("Hiker", "Roark")));
+        Meets(TransitionKind.TrainerCaveStrong, MeetingRow.Trainer, With(BattleTerrain.Cave, 30, 20, false, new MetTrainer("Ace Trainer", "Cynthia")));
+
         // enc_effects.c 265-268 (the grunts' two classes) and 144-146 (Team Galactic's own): a grunt, alone
         Meets(TransitionKind.Grunt, MeetingRow.GalacticGrunt, With("galactic_grunt_floaroma_meadow_1"));
         // 144-146 stand before the doubles check of 152: a pair of grunts, or a grunt in a tag battle, is a grunt's still
@@ -129,29 +169,107 @@ public class IntoBattleTests
     }
 
     /// <summary>
-    /// The rows plan 09 · L14 and L15 will take up: a Gym Leader keeps the diamonds, the Elite Four and the Champion
-    /// are met the trainer's way, and a legendary Pokémon the wild one's. The original's slip is kept meanwhile:
-    /// a Leader in a double battle is met the double's way (enc_effects.c 148-158), Volkner's kept apart only for
-    /// its music (153-155, row 107).
+    /// The rows plan 09 · L14 will take up: until then a legendary and a mythical Pokémon are met the wild one's
+    /// way, by place.
     /// </summary>
     [Fact]
     public void TheRowsStillToComeKeepTheWaysTheyHad()
     {
-        Meets(TransitionKind.Leader, MeetingRow.Leader, With("leader_roark", BattleTerrain.Building, 14, 20));
-        Meets(TransitionKind.Leader, MeetingRow.Leader, With("leader_roark", BattleTerrain.Cave, 14, 5));
-        Meets(TransitionKind.Leader, MeetingRow.Leader, With("leader_volkner", BattleTerrain.Building, 46, 50));
-        Meets(TransitionKind.Double, MeetingRow.DoubleLeader, With(BattleTerrain.Plain, 59, 60, true, Of("leader_volkner_fight_area"), Of("elite_four_aaron")));
-        Meets(TransitionKind.Double, MeetingRow.DoubleBattle, With(BattleTerrain.Building, 14, 20, true, Of("leader_roark")));
-        // The first trainer's class alone is read (dto->trainer[1]): Flint first, and Volkner's own row is not met
-        Meets(TransitionKind.Double, MeetingRow.DoubleBattle, With(BattleTerrain.Plain, 59, 60, true, Of("elite_four_aaron"), Of("leader_volkner_fight_area")));
-
-        Meets(TransitionKind.Trainer, MeetingRow.EliteFour, With("elite_four_aaron", BattleTerrain.Special, 49, 60));
-        Meets(TransitionKind.TrainerStrong, MeetingRow.EliteFour, With("elite_four_aaron", BattleTerrain.Special, 49, 40));
-        Meets(TransitionKind.Trainer, MeetingRow.Champion, With("champion_cynthia", BattleTerrain.Special, 58, 70));
-
-        // The species' rows are L14's: until then Dialga and Giratina are met as any wild Pokémon is
         Meets(TransitionKind.WildStrong, MeetingRow.Wild, Wild(BattleTerrain.Special, 70, 60, species: "Dialga"));
         Meets(TransitionKind.WildCave, MeetingRow.Wild, Wild(BattleTerrain.Cave, 47, 60, species: "Giratina"));
+    }
+
+    /// <summary>
+    /// Whose band a meeting opens on is the first trainer's, by class and name (the original has a way in to each of
+    /// the thirteen); a meeting that opens any other way has none.
+    /// </summary>
+    [Fact]
+    public void ABandIsTheFirstTrainersOwn()
+    {
+        var roark = SceneTransition.BandFor(With("leader_roark", BattleTerrain.Building, 14, 20));
+        Assert.Equal(("Leader", "Roark"), (roark!.Value.Class, roark.Value.Name));
+        Assert.Equal(roark, SceneTransition.BandFor(With("leader_roark_rematch", BattleTerrain.Building, 62, 60)));
+        Assert.Equal(SceneTransition.BandOf("Champion", "Cynthia"), SceneTransition.BandFor(With("champion_cynthia", BattleTerrain.Special, 58, 70)));
+        Assert.Equal(SceneTransition.BandOf("Elite Four", "Flint"), SceneTransition.BandFor(With("elite_four_flint_rematch", BattleTerrain.Special, 68, 70)));
+        Assert.Null(SceneTransition.BandFor(With(BattleTerrain.Plain, 59, 60, true, Of("leader_volkner_fight_area"), Of("elite_four_flint_fight_area"))));
+        Assert.Null(SceneTransition.BandFor(With(BattleTerrain.Building, 14, 20, false, new MetTrainer("Hiker", "Roark"))));
+        Assert.Null(SceneTransition.BandFor(With("galactic_boss_cyrus_galactic_hq")));
+        Assert.Null(SceneTransition.BandFor(Wild(BattleTerrain.Grass)));
+        // A Leader the table doesn't name (another region's, before their band is written) wears the plain band under their own name
+        var brock = SceneTransition.BandFor(With(BattleTerrain.Building, 12, 14, false, new MetTrainer("Leader", "Brock")));
+        Assert.Equal(SceneTransition.PlainBand with { Class = "Leader", Name = "Brock" }, brock);
+        Assert.DoesNotContain(brock!.Value, SceneTransition.Bands);
+    }
+
+    /// <summary>
+    /// The thirteen bands (the style guide's table): every entry names a trainer of the game's data of that class,
+    /// every Gym Leader, Elite Four member and Champion of the data has one, and no two wear the same colours.
+    /// </summary>
+    [Fact]
+    public void EveryBandIsSomeonesAndEveryoneWithABandHasOne()
+    {
+        Assert.Equal(13, SceneTransition.Bands.Count);
+        Assert.Equal((8, 4, 1), (SceneTransition.Bands.Count(b => b.Class == "Leader"), SceneTransition.Bands.Count(b => b.Class == "Elite Four"), SceneTransition.Bands.Count(b => b.Class == "Champion")));
+        foreach (var band in SceneTransition.Bands)
+        {
+            Assert.Contains(TrainerDatabase.All, t => t.Class == band.Class && t.Name == band.Name);
+            Assert.Equal(band, SceneTransition.BandOf(band.Class, band.Name));
+            // Not the same name under another class
+            Assert.Equal(SceneTransition.PlainBand with { Class = "Hiker", Name = band.Name }, SceneTransition.BandOf("Hiker", band.Name));
+            // Its deep colour is darker than the band and its light one lighter, so lines of both read on it and white reads on the plate
+            int Light(Color c) => c.R * 3 + c.G * 6 + c.B;
+            Assert.True(Light(band.Deep) < Light(band.Base) - 300 && Light(band.Light) > Light(band.Base) + 300, $"{band.Name}'s colours");
+            Assert.True(Light(band.Deep) < 1200, $"{band.Name}'s plate is too pale for a white name");
+        }
+        foreach (var trainer in TrainerDatabase.All.Where(t => t.Class is "Leader" or "Elite Four" or "Champion"))
+            Assert.Contains(SceneTransition.Bands, b => b.Class == trainer.Class && b.Name == trainer.Name);
+        Assert.Equal(13, SceneTransition.Bands.Select(b => Rgb(b.Base)).Distinct().Count());
+        Assert.Equal(13, SceneTransition.Bands.Select(b => (b.Class, b.Name)).Distinct().Count());
+        // The style guide's rows, a few by hand
+        Assert.Equal(((172, 136, 92), (104, 76, 48), (232, 204, 152)), Colours("Leader", "Roark"));
+        Assert.Equal(((236, 184, 44), (152, 100, 20), (252, 236, 148)), Colours("Leader", "Volkner"));
+        Assert.Equal(((232, 100, 48), (148, 44, 28), (252, 188, 104)), Colours("Elite Four", "Flint"));
+        Assert.Equal(((52, 56, 84), (22, 24, 40), (236, 200, 108)), Colours("Champion", "Cynthia"));
+        Assert.Equal(((120, 132, 152), (64, 72, 92), (204, 212, 224)), (Rgb(SceneTransition.PlainBand.Base), Rgb(SceneTransition.PlainBand.Deep), Rgb(SceneTransition.PlainBand.Light)));
+        // The card behind a portrait is the band's light colour, but for the two whose hair is that colour
+        foreach (var band in SceneTransition.Bands.Where(b => b.Name is not ("Volkner" or "Cynthia")))
+            Assert.Equal(band.Light, band.Backing);
+        Assert.Equal(((196, 224, 252), (132, 140, 196)), (Rgb(SceneTransition.BandOf("Leader", "Volkner").Backing), Rgb(SceneTransition.BandOf("Champion", "Cynthia").Backing)));
+        Assert.Equal(SceneTransition.PlainBand.Light, SceneTransition.PlainBand.Backing);
+        // The white it all goes to, and the silhouette's one colour
+        Assert.Equal(((250, 250, 252), (32, 32, 40)), (Rgb(SceneTransition.White), Rgb(SceneTransition.Silhouette)));
+    }
+
+    private static ((int, int, int), (int, int, int), (int, int, int)) Colours(string trainerClass, string name)
+    {
+        var band = SceneTransition.BandOf(trainerClass, name);
+        return (Rgb(band.Base), Rgb(band.Deep), Rgb(band.Light));
+    }
+
+    /// <summary>
+    /// The portrait is of the person the battle itself stands on its platform: the look the band asks for
+    /// (<c>CharacterStyles.InBattle</c> of the trainer) is the one the battle's screen comes to for them.
+    /// </summary>
+    [Theory]
+    [InlineData("leader_roark", "Roark")]
+    [InlineData("leader_wake", "crasher_wake")]
+    [InlineData("elite_four_aaron", "aaron")]
+    [InlineData("champion_cynthia_rematch", "Cynthia")]
+    [InlineData("leader_gardenia", null)]
+    public void TheBandsPortraitIsOfWhomTheBattleDraws(string id, string? carriedBy)
+    {
+        var record = TrainerDatabase.Get(id)!;
+        var trainer = new Trainer { Id = record.Id };
+        TrainerDatabase.Fill(trainer, record);
+        trainer.Look = carriedBy;
+        var party = new Party();
+        party.Add(new Pokemon(PokemonDatabase.Get("Turtwig")!, 50));
+        var battle = new BattleEngine(party, trainer.Party.Members[0], new Inventory(), new Pokedex(), trainer);
+        string look = CharacterStyles.Default.InBattle(trainer);
+        Assert.Equal(battle.Anim.EnemyTrainer, look);
+        // The person who carries them, where there is one: a Leader's class names nobody in particular
+        Assert.Equal(carriedBy ?? record.Class, look);
+        if (carriedBy != null) Assert.True(CharacterStyles.Default.Has(look), $"{look} is no look of the table");
     }
 
     /// <summary>Every trainer of the game's data falls in the row its class has in the original, and every class with a row of its own is one the data has.</summary>
@@ -191,7 +309,9 @@ public class IntoBattleTests
         (TransitionKind.TrainerWater, 0.4f, 0.55f, 1.2f), (TransitionKind.TrainerWaterStrong, 0.2f, 0.9f, 1.35f),
         (TransitionKind.TrainerCave, 0.45f, 0.6f, 1.3f), (TransitionKind.TrainerCaveStrong, 0f, 1.2f, 1.45f),
         (TransitionKind.Double, 0f, 0.8f, 1.05f), (TransitionKind.Frontier, 0.45f, 0.55f, 1.25f),
-        (TransitionKind.Grunt, 0f, 1.75f, 2f), (TransitionKind.GalacticBoss, 1f, 0.85f, 2.1f)
+        (TransitionKind.Grunt, 0f, 1.75f, 2f), (TransitionKind.GalacticBoss, 1f, 0.85f, 2.1f),
+        // The bands (plan 09 · L15): the lead is the whole of the band's show, the closing its white
+        (TransitionKind.LeaderBand, 2.7f, 0.5f, 3.45f), (TransitionKind.EliteBand, 2.6f, 0.3f, 3.15f)
     }.Select(w => new object[] { w.Kind, w.Lead, w.Shut, w.Whole });
 
     /// <summary>The style guide's table: each way's lead, its closing and the whole, flashes included.</summary>
@@ -212,18 +332,25 @@ public class IntoBattleTests
     }
 
     [Fact]
-    public void TheTwelveWaysAreAllTheKindsButTheFirstFiveAndTheFade()
+    public void TheWaysWithAPaceOfTheirOwnAreAllTheKindsButTheFirstFourAndTheFade()
     {
-        var first = new[] { TransitionKind.Fade, TransitionKind.Wild, TransitionKind.WildStrong, TransitionKind.Trainer, TransitionKind.TrainerStrong, TransitionKind.Leader };
+        // (The fifth of plan 04 · G9's ways, a Gym Leader's diamonds, went with the bands: plan 09, decision 5)
+        var first = new[] { TransitionKind.Fade, TransitionKind.Wild, TransitionKind.WildStrong, TransitionKind.Trainer, TransitionKind.TrainerStrong };
         Assert.Equal(Enum.GetValues<TransitionKind>().Except(first).OrderBy(k => k), Ways().Select(w => (TransitionKind)w[0]).OrderBy(k => k));
-        // The first five lead in with nothing, and nothing rides over them
+        Assert.DoesNotContain("Leader", Enum.GetNames<TransitionKind>());
+        // The first four lead in with nothing, and nothing rides over them
         foreach (var kind in first)
         {
             Assert.Equal(0f, SceneTransition.LeadSeconds(kind));
             Assert.Empty(PiecesAt(kind, 0.5f));
             Assert.False(SceneTransition.Ripple(kind, true, 0.5f).Plays);
             Assert.Equal(0, SceneTransition.Veil(kind, true, 0.5f));
+            Assert.False(SceneTransition.IsBand(kind));
+            Assert.False(SceneTransition.BandAt(kind, 0.5f, W, H).Shown);
         }
+        // Only the bands close to white; every other way to the dark
+        foreach (var kind in Enum.GetValues<TransitionKind>())
+            Assert.Equal(SceneTransition.IsBand(kind) ? SceneTransition.White : SceneTransition.Dark, SceneTransition.CoverOf(kind));
     }
 
     // ------------------------------------------------------------------ what rides over the picture
@@ -598,6 +725,252 @@ public class IntoBattleTests
                 if (Covers(kind, 0.55f, x, y) != Covers(kind, 0.55f, x + 0.25f, y + 0.25f)) edges++;
             }
         Assert.True(edges < points / 50, $"{edges} of {points} points lie on an edge");
+    }
+
+    // ------------------------------------------------------------------ the bands
+
+    /// <summary>What a band shows this long after its flashes.</summary>
+    private static BandLook Band(TransitionKind kind, float since) => SceneTransition.BandAt(kind, SceneTransition.FlashSeconds + since, W, H);
+
+    /// <summary>The style guide's table of beats and its sizes, held to the code.</summary>
+    [Fact]
+    public void ABandsBeatsAndSizesAreTheStyleGuides()
+    {
+        Assert.Equal(new BandBeats(Opens: 0.2f, MarkFrom: 0.55f, MarkTakes: 0.5f, SlideFrom: 1.1f, SlideTakes: 0.15f, FlashFrom: 1.6f, LitAt: 1.7f,
+            FlashEnds: 1.8f, NameFrom: 1.7f, TrembleFrom: 2.7f, Lead: 2.7f, Shut: 0.5f), SceneTransition.Beats(TransitionKind.LeaderBand));
+        Assert.Equal(new BandBeats(Opens: 0.2f, MarkFrom: 0.2f, MarkTakes: 0.5f, SlideFrom: 0f, SlideTakes: 0.2f, FlashFrom: 1f, LitAt: 1.1f,
+            FlashEnds: 1.3f, NameFrom: 0.2f, TrembleFrom: 1.55f, Lead: 2.6f, Shut: 0.3f), SceneTransition.Beats(TransitionKind.EliteBand));
+        Assert.Equal(default, SceneTransition.Beats(TransitionKind.Grunt));
+        foreach (var kind in new[] { TransitionKind.LeaderBand, TransitionKind.EliteBand })
+        {
+            // The beats come in their order, and the transition's own two are the band's
+            var beats = SceneTransition.Beats(kind);
+            Assert.True(beats.Opens <= beats.MarkFrom && beats.MarkFrom + beats.MarkTakes <= beats.FlashFrom);
+            Assert.True(beats.SlideFrom + beats.SlideTakes < beats.FlashFrom && beats.FlashFrom < beats.LitAt && beats.LitAt < beats.FlashEnds);
+            Assert.True(beats.FlashEnds <= beats.TrembleFrom && beats.TrembleFrom <= beats.Lead);
+            Assert.Equal(beats.Lead, SceneTransition.LeadSeconds(kind));
+            Assert.Equal(SceneTransition.FlashSeconds + beats.Lead + beats.Shut, SceneTransition.OutSeconds(kind), 3);
+        }
+        // Near the original's frames at thirty a second: a Leader's eighty or so of show and fifteen of white, the Elite
+        // Four's eighty or so and eight (EncounterEffect_GymLeader, EncounterEffect_EliteFourChampion)
+        Assert.InRange(SceneTransition.Beats(TransitionKind.LeaderBand).Lead * 30f, 75f, 90f);
+        Assert.Equal(15f, SceneTransition.Beats(TransitionKind.LeaderBand).Shut * 30f, 1);
+        Assert.InRange(SceneTransition.Beats(TransitionKind.EliteBand).Lead * 30f, 70f, 90f);
+        Assert.InRange(SceneTransition.Beats(TransitionKind.EliteBand).Shut * 30f, 8f, 9.5f);
+
+        Assert.Equal((300f, 440f, 150f, 52f), (SceneTransition.BandHeight, SceneTransition.PortraitSize, SceneTransition.MarkSize, SceneTransition.NameSize));
+        // The card behind a portrait is narrower than the portrait's picture and wider than a head
+        Assert.Equal(380f, SceneTransition.CardWide);
+        Assert.Equal((0.78f, 0.22f, 0.28f), (SceneTransition.TheirPlace, SceneTransition.OwnPlace, SceneTransition.LeaderMarkPlace));
+        Assert.Equal((1500f, 200, 130, 15f), (SceneTransition.BandPace, SceneTransition.BandDim, SceneTransition.BandHalfDim, SceneTransition.TrembleReach));
+        // A portrait is rendered at the size it is drawn at on the 4K picture, turned 20° toward the middle, with the angry face
+        Assert.Equal(2 * (int)SceneTransition.PortraitSize, BandPortraits.Pixels);
+        Assert.Equal(20f, BandPortraits.Turn * 180f / MathF.PI, 0);
+        Assert.Equal(Expression.Angry, BandPortraits.Face);
+        Assert.Equal((0.84f, 0.04f), (CharacterStudio.BustHeight, CharacterStudio.BustLift));
+    }
+
+    [Fact]
+    public void ALeadersBandOpensThenTheirPortraitSlidesInAndLightsUpBesideTheirName()
+    {
+        var kind = TransitionKind.LeaderBand;
+        // Nothing during the flashes, nothing once the picture is shut, nothing for a kind that is no band
+        Assert.False(SceneTransition.BandAt(kind, 0.1f, W, H).Shown);
+        Assert.False(SceneTransition.BandAt(kind, SceneTransition.OutSeconds(kind), W, H).Shown);
+        Assert.False(SceneTransition.BandAt(TransitionKind.Grunt, 1f, W, H).Shown);
+        // The same moment gives the same look
+        Assert.Equal(Band(kind, 1.3f), Band(kind, 1.3f));
+
+        // The band: 300 units across the middle, wiped in at an even pace in a fifth of a second
+        var opening = Band(kind, 0.1f);
+        Assert.True(opening.Shown);
+        Assert.Equal((390f, 690f), (opening.Top, opening.Bottom));
+        Assert.Equal(0.5f, opening.Open, 3);
+        Assert.Equal(1f, Band(kind, 0.21f).Open);
+        Assert.Equal(1f, Band(kind, 2f).Open);
+        // Its lines run on in whole units, 1500 a second, from the first moment to the last
+        Assert.InRange(opening.Scroll, 149, 150);
+        Assert.InRange(Band(kind, 1f).Scroll, 1499, 1500);
+        Assert.InRange(Band(kind, 3f).Scroll, 4499, 4500);
+        // Nobody yet: no second portrait in a Leader's band, theirs beyond the right edge, no name, no mark, nothing dimmed
+        Assert.False(opening.Two);
+        Assert.True(opening.Theirs.X - SceneTransition.PortraitSize / 2f >= W);
+        Assert.Equal((false, 0, 0, 0f, 0f, 0f), (opening.Lit, opening.Dim, opening.NameAlpha, opening.MarkCome, opening.Flash, opening.White));
+
+        // The mark stamps in from 0.55 s for half a second, at 0.28 of the width on the band's middle row
+        Assert.Equal(0f, Band(kind, 0.54f).MarkCome);
+        Assert.Equal(0.5f, Band(kind, 0.8f).MarkCome, 3);
+        Assert.Equal(1f, Band(kind, 1.06f).MarkCome);
+        Assert.Equal(new Vector2(0.28f * W, H / 2f), Band(kind, 0.8f).Mark);
+
+        // Their portrait slides in from 1.1 s, fast and then slowing, to 0.78 of the width with its foot on the band's
+        // foot: a silhouette, and nothing else has changed
+        Assert.True(Band(kind, 1.09f).Theirs.X - SceneTransition.PortraitSize / 2f >= W);
+        float from = W + SceneTransition.PortraitSize / 2f + 20f, to = 0.78f * W;
+        var sliding = Band(kind, 1.175f);
+        Assert.InRange(sliding.Theirs.X, to, to + (from - to) * 0.3f);
+        var standing = Band(kind, 1.4f);
+        Assert.Equal(new Vector2(to, 690f), standing.Theirs);
+        Assert.Equal((false, 0, 0, 0f), (standing.Lit, standing.Dim, standing.NameAlpha, standing.Flash));
+
+        // The flash: three steps up to 1.7 s, where the silhouette lights, the name stands and the picture round the
+        // band lies under the dark, and three steps back
+        Assert.Equal(new[] { 0f, 0.25f, 0.5f, 0.75f, 0.75f, 0.5f, 0.25f, 0f },
+            new[] { 1.58f, 1.615f, 1.65f, 1.685f, 1.715f, 1.75f, 1.785f, 1.82f }.Select(s => Band(kind, s).Flash));
+        Assert.Equal((false, 0, 0), (Band(kind, 1.69f).Lit, Band(kind, 1.69f).Dim, Band(kind, 1.69f).NameAlpha));
+        var lit = Band(kind, 1.71f);
+        Assert.Equal((true, 200, 255), (lit.Lit, lit.Dim, lit.NameAlpha));
+        // The name's plate ends behind the portrait's picture, 96 units in from its edge, low in the band
+        Assert.Equal(new Vector2(to - 220f + 96f, 540f + 84f), lit.Name);
+        Assert.True(lit.Name.Y + 38f < lit.Bottom && lit.Name.X < standing.Theirs.X);
+
+        // Held to 2.7 s, nothing moving but the lines; then the white closes for half a second
+        var held = Band(kind, 2.6f);
+        Assert.Equal((standing.Theirs, lit.Name, lit.Mark, true, 200, 255, 0f, 0f), (held.Theirs, held.Name, held.Mark, held.Lit, held.Dim, held.NameAlpha, held.Flash, held.White));
+        Assert.InRange(Band(kind, 2.95f).White, 0.45f, 0.55f);
+        Assert.True(Band(kind, 3.19f).White > 0.99f);
+        Assert.Equal(standing.Theirs, Band(kind, 3.1f).Theirs);
+    }
+
+    [Fact]
+    public void TheLeaguesBandBringsBothPortraitsInThenTheyTrembleAndFlyApart()
+    {
+        var kind = TransitionKind.EliteBand;
+        float ownAt = 0.22f * W, theirAt = 0.78f * W, half = SceneTransition.PortraitSize / 2f;
+        // Two halves from the sides, slowing as they meet, each with its portrait riding it in: both silhouettes, and
+        // the picture round them half dimmed from the first moment
+        var first = Band(kind, 0.001f);
+        Assert.True(first.Two);
+        Assert.True(first.Own.X + half < 0f && first.Theirs.X - half > W);
+        var coming = Band(kind, 0.05f);
+        Assert.InRange(coming.Open, 0.4f, 0.48f);
+        float off = (1f - coming.Open) * W / 2f;
+        Assert.Equal(new Vector2(ownAt - off, 690f), coming.Own);
+        Assert.Equal(new Vector2(theirAt + off, 690f), coming.Theirs);
+        Assert.Equal((false, 130, 0, 0f), (coming.Lit, coming.Dim, coming.NameAlpha, coming.MarkCome));
+        var met = Band(kind, 0.21f);
+        Assert.Equal((1f, new Vector2(ownAt, 690f), new Vector2(theirAt, 690f)), (met.Open, met.Own, met.Theirs));
+        // Once they have met: the mark at the middle, and the name under theirs, hanging from the band's foot
+        Assert.Equal(new Vector2(W / 2f, H / 2f), met.Mark);
+        Assert.Equal((255, new Vector2(theirAt, 690f + 28f)), (met.NameAlpha, met.Name));
+        Assert.InRange(Band(kind, 0.45f).MarkCome, 0.45f, 0.55f);
+        Assert.Equal(1f, Band(kind, 0.71f).MarkCome);
+
+        // The flash: up to 1.1 s, where both light and the dark round the band deepens, and back by 1.3 s
+        Assert.Equal(new[] { 0f, 0.25f, 0.5f, 0.75f, 0.75f, 0.5f, 0.25f, 0f },
+            new[] { 0.98f, 1.015f, 1.05f, 1.085f, 1.13f, 1.2f, 1.27f, 1.32f }.Select(s => Band(kind, s).Flash));
+        Assert.Equal((false, 130), (Band(kind, 1.09f).Lit, Band(kind, 1.09f).Dim));
+        Assert.Equal((true, 200), (Band(kind, 1.11f).Lit, Band(kind, 1.11f).Dim));
+
+        // Held to 1.55 s. Then they tremble: thrown apart and at one another in turn every fifteenth of a second,
+        // further each time, in whole units, to 15; their feet stay on the band's foot and the name where it was
+        var held = Band(kind, 1.5f);
+        Assert.Equal((met.Own, met.Theirs, met.Name), (held.Own, held.Theirs, held.Name));
+        float last = 0f;
+        for (int step = 0; step < 15; step++)
+        {
+            var now = Band(kind, 1.55f + (step + 0.5f) / 15f);
+            float thrown = now.Own.X - ownAt;
+            Assert.Equal(-thrown, now.Theirs.X - theirAt, 3);
+            Assert.Equal((690f, 690f, 255, 0f), (now.Own.Y, now.Theirs.Y, now.NameAlpha, now.White));
+            Assert.Equal(MathF.Round(thrown), thrown, 3);
+            Assert.True(MathF.Abs(thrown) >= last, $"step {step} is thrown less far than the one before");
+            if (MathF.Abs(thrown) > 0.5f) Assert.Equal(step % 2 == 0 ? -1 : 1, MathF.Sign(thrown));
+            last = MathF.Abs(thrown);
+        }
+        Assert.InRange(last, 12f, SceneTransition.TrembleReach);
+
+        // Then the white, for three tenths of a second: the name gone, the portraits flying apart along the falling
+        // diagonal, the player's up and to the left and theirs down and to the right, fast at first, and out of the
+        // picture before it is shut
+        var flying = Band(kind, 2.75f);
+        Assert.InRange(flying.White, 0.45f, 0.55f);
+        Assert.Equal(0, flying.NameAlpha);
+        Assert.True(flying.Own.X < ownAt - 400f && flying.Own.Y < 690f - 300f);
+        Assert.True(flying.Theirs.X > theirAt + 400f && flying.Theirs.Y > 690f + 300f);
+        Assert.True(Vector2.Distance(flying.Own - met.Own, met.Theirs - flying.Theirs) < 0.01f);
+        float early = Vector2.Distance(Band(kind, 2.65f).Own, Band(kind, 2.61f).Own), late = Vector2.Distance(Band(kind, 2.89f).Own, Band(kind, 2.85f).Own);
+        Assert.True(early > late * 1.3f, $"{early} at first, {late} at the end");
+        var gone = Band(kind, 2.89f);
+        Assert.True(gone.Own.X + half < 0f && gone.Theirs.X - half > W);
+    }
+
+    [Fact]
+    public void ABandsWhiteClosesAsACleanShapeAndTheBattleOpensOnItInReverse()
+    {
+        // A Leader's: a bar that widens from the band's middle row to the head and the foot of the picture
+        var leader = TransitionKind.LeaderBand;
+        Assert.True(Covers(leader, 0.1f, 5f, Middle.Y + 40f));
+        Assert.True(Covers(leader, 0.1f, W - 5f, Middle.Y - 40f));
+        Assert.False(Covers(leader, 0.1f, Middle.X, Middle.Y + 60f));
+        // It has swallowed the band itself by 0.28 of the way (150 units of 540)
+        Assert.False(Covers(leader, 0.25f, Middle.X, 392f));
+        Assert.True(Covers(leader, 0.3f, Middle.X, 392f));
+        Assert.False(Covers(leader, 0.95f, Middle.X, 10f));
+        Assert.False(Covers(leader, 0.95f, 3f, H - 10f));
+        // The same all along a row, and the same above the middle row as below it
+        for (float x = 3f; x < W; x += 97f)
+            Assert.Equal(Covers(leader, 0.6f, 3f, 300f), Covers(leader, 0.6f, x, 300f));
+        for (float far = 5f; far < H / 2f; far += 31f)
+            Assert.Equal(Covers(leader, 0.6f, 700f, Middle.Y - far), Covers(leader, 0.6f, 700f, Middle.Y + far));
+
+        // The League's: a slash along the rising diagonal, from the lower left corner to the upper right, which
+        // widens to the two corners the portraits fly to
+        var league = TransitionKind.EliteBand;
+        Assert.True(Covers(league, 0.05f, 10f, H - 6f));
+        Assert.True(Covers(league, 0.05f, W - 10f, 6f));
+        Assert.True(Covers(league, 0.05f, Middle.X, Middle.Y));
+        Assert.False(Covers(league, 0.05f, Middle.X - 200f, Middle.Y));
+        Assert.False(Covers(league, 0.95f, 8f, 8f));
+        Assert.False(Covers(league, 0.95f, W - 8f, H - 8f));
+        Assert.True(Covers(league, 0.95f, 200f, 200f));
+        // The same on either side of the slash, and along it
+        for (float x = 40f; x < W; x += 173f)
+            for (float y = 30f; y < H; y += 119f)
+            {
+                Assert.Equal(Covers(league, 0.4f, x, y), Covers(league, 0.4f, W - x, H - y));
+                float along = 0.1f;
+                if (x + along * W / 2f < W && y - along * H / 2f > 0f)
+                    Assert.Equal(Covers(league, 0.4f, x, y), Covers(league, 0.4f, x + along * W / 2f, y - along * H / 2f));
+            }
+
+        // The battle opens on the same shape in reverse, out of the white; and where the player stands changes neither
+        foreach (var kind in new[] { leader, league })
+            for (float closed = 0.15f; closed < 1f; closed += 0.2f)
+                for (float x = 40f; x < W; x += 173f)
+                    for (float y = 30f; y < H; y += 119f)
+                    {
+                        Assert.Equal(Covers(kind, closed, x, y), Covers(kind, closed, x, y, closing: false));
+                        Assert.Equal(Covers(kind, closed, x, y), Covers(kind, closed, x, y, focus: new Vector2(300f, 800f)));
+                    }
+    }
+
+    /// <summary>
+    /// A band's portraits are asked for as it begins and gone when it ends; until a frame has rendered them the band is
+    /// drawn with plain busts, so nothing waits for a model. (Rendering itself needs a window: the harness's <c>life</c>
+    /// mode prints how many are rendered at each of its shots.)
+    /// </summary>
+    [Fact]
+    public void ABandsPortraitsAreAskedForAtItsBeginningAndGoneAtItsEnd()
+    {
+        var portraits = new BandPortraits();
+        Assert.False(portraits.Active);
+        Assert.Null(portraits.Picture);
+        var roark = SceneTransition.BandOf("Leader", "Roark");
+        portraits.Begin(roark, "Roark", null);
+        Assert.True(portraits.Active);
+        Assert.Equal(("Roark", null, 0), (portraits.TheirLook, portraits.OwnLook, portraits.Rendered));
+        Assert.Equal(new BandPicture(roark, null, null), portraits.Picture);
+        // Another band begun over it takes its place
+        var cynthia = SceneTransition.BandOf("Champion", "Cynthia");
+        portraits.Begin(cynthia, "Cynthia", "PLAYER");
+        Assert.Equal(("Cynthia", "PLAYER", 0, cynthia), (portraits.TheirLook, portraits.OwnLook, portraits.Rendered, portraits.Picture!.Value.Band));
+        portraits.End();
+        Assert.False(portraits.Active);
+        Assert.Null(portraits.Picture);
+        Assert.Equal((null, null), (portraits.TheirLook, portraits.OwnLook));
+        // Ending what was never begun is nothing
+        portraits.End();
     }
 
     // ------------------------------------------------------------------ the Galactic mark

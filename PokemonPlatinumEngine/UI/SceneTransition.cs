@@ -18,8 +18,6 @@ public enum TransitionKind
     Trainer,
     /// <summary>A trainer whose first Pokémon is of a higher level: shutters from the sides and from above and below.</summary>
     TrainerStrong,
-    /// <summary>Into a battle with a Gym Leader: two flashes, diamonds growing from a grid.</summary>
-    Leader,
 
     // The ways by place and by whom (plan 09 · L13; style guide, "Into battle", "By place and by whom")
 
@@ -46,7 +44,14 @@ public enum TransitionKind
     /// <summary>A Team Galactic grunt: six shards of the Galactic mark fly in, each with a sixth of the dark behind it.</summary>
     Grunt,
     /// <summary>A Commander or the boss: the Galactic mark rises out of the dimming picture and its dark core swallows it.</summary>
-    GalacticBoss
+    GalacticBoss,
+
+    // The bands (plan 09 · L15; style guide, "Into battle", "Bands")
+
+    /// <summary>A Gym Leader: a band opens across the picture, their portrait slides in as a silhouette and lights up beside their name, and all goes to white.</summary>
+    LeaderBand,
+    /// <summary>One of the Elite Four or the Champion: the band comes in as two halves, the player's portrait on the one and theirs on the other, and the white tears the picture between them.</summary>
+    EliteBand
 }
 
 /// <summary>
@@ -54,7 +59,8 @@ public enum TransitionKind
 /// any moment is a function of the kind, the phase and the point (<see cref="Covers"/>), which is what tests
 /// check; <see cref="Draw"/> draws the same shapes. The ways by place and by whom (plan 09 · L13) are in
 /// <c>SceneTransition.Ways.cs</c>: their shapes, and what rides over the picture as they close
-/// (<see cref="Pieces"/>, <see cref="Ripple"/>, <see cref="Veil"/>).
+/// (<see cref="Pieces"/>, <see cref="Ripple"/>, <see cref="Veil"/>); the bands of the Gym Leaders, the Elite Four
+/// and the Champion (plan 09 · L15) in <c>SceneTransition.Bands.cs</c> (<see cref="BandAt"/>, <see cref="Bands"/>).
 /// </summary>
 public static partial class SceneTransition
 {
@@ -62,7 +68,10 @@ public static partial class SceneTransition
     public static readonly Color Dark = new(14, 14, 22, 255);
 
     public const float FadeSeconds = 0.4f, FlashSeconds = 0.25f, CloseSeconds = 0.9f, OpenSeconds = 0.5f;
-    private const int Blades = 8, Bars = 12, Uprights = 16, Columns = 8, Rows = 5;
+    private const int Blades = 8, Bars = 12, Uprights = 16;
+
+    /// <summary>The plain fade and the four ways of plan 04 · G9, which lead in with nothing and take <see cref="CloseSeconds"/>: every later way has a pace of its own.</summary>
+    private static bool Plain(TransitionKind kind) => kind <= TransitionKind.TrainerStrong;
 
     // The shards: a grid of points pulled out of line, two triangles to each of its squares
     private const int ShardColumns = 10, ShardRows = 6;
@@ -73,13 +82,15 @@ public static partial class SceneTransition
     /// whom the meeting is with (<see cref="BattleMeeting.Row"/>, the original's <c>EncEffects_GetEffectPair</c>),
     /// and for everyone with no way of their own by the ground and by whether the first Pokémon they send out is of
     /// a higher level than the player's first (<see cref="Local"/>). The rows with a way of their own are
-    /// <c>sEncEffectsTable</c>'s: Team Galactic's two, the Frontier's for its battles, its Brains and a link battle,
-    /// and the double's for any two at once. A Gym Leader keeps the diamonds, and the Elite Four and the Champion
-    /// are met the trainer's way, until their bands are built (plan 09 · L15).
+    /// <c>sEncEffectsTable</c>'s: a band for each Gym Leader, each of the Elite Four and the Champion (plan 09 ·
+    /// L15; <see cref="BandFor"/> says whose), Team Galactic's two, the Frontier's for its battles, its Brains and a
+    /// link battle, and the double's for any two at once, a Leader's too.
     /// </summary>
     public static TransitionKind ForBattle(BattleMeeting meeting) => meeting.Row switch
     {
-        MeetingRow.Leader => TransitionKind.Leader,
+        // ENCEFF_CUTIN_LEADER_…, ENCEFF_CUTIN_ELITE_FOUR_… and ENCEFF_CUTIN_CHAMPION_CYNTHIA
+        MeetingRow.Leader => TransitionKind.LeaderBand,
+        MeetingRow.EliteFour or MeetingRow.Champion => TransitionKind.EliteBand,
         MeetingRow.GalacticGrunt => TransitionKind.Grunt,
         MeetingRow.GalacticCommander or MeetingRow.GalacticBoss => TransitionKind.GalacticBoss,
         MeetingRow.Frontier or MeetingRow.Link or MeetingRow.FrontierBrain => TransitionKind.Frontier,
@@ -111,18 +122,24 @@ public static partial class SceneTransition
 
     /// <summary>
     /// How long a kind takes to close over the scene it leaves: the flashes, its lead and the dark's closing. The
-    /// first five ways into a battle take <see cref="CloseSeconds"/>; the ways by place and by whom about as long
-    /// as the original's do (<see cref="Pace"/>).
+    /// first four ways into a battle take <see cref="CloseSeconds"/>; the ways by place and by whom and the bands
+    /// about as long as the original's do (<see cref="Pace"/>).
     /// </summary>
     public static float OutSeconds(TransitionKind kind) => kind == TransitionKind.Fade ? FadeSeconds
-        : kind <= TransitionKind.Leader ? CloseSeconds
+        : Plain(kind) ? CloseSeconds
         : FlashSeconds + Pace(kind).Lead + Pace(kind).Shut;
 
     /// <summary>How long it takes to open on the scene it brings.</summary>
     public static float InSeconds(TransitionKind kind) => kind == TransitionKind.Fade ? FadeSeconds : OpenSeconds;
 
-    /// <summary>How long a way into a battle leads in after its flashes, before anything is dark: a ball spinning in, a mark coming up, the picture wavering.</summary>
-    public static float LeadSeconds(TransitionKind kind) => kind <= TransitionKind.Leader ? 0f : Pace(kind).Lead;
+    /// <summary>
+    /// How long a way into a battle leads in after its flashes, before anything is covered: a ball spinning in, a
+    /// mark coming up, the picture wavering, the whole of a band's show before its white.
+    /// </summary>
+    public static float LeadSeconds(TransitionKind kind) => Plain(kind) ? 0f : Pace(kind).Lead;
+
+    /// <summary>What a kind closes to: the dark, or a band's white.</summary>
+    public static Color CoverOf(TransitionKind kind) => IsBand(kind) ? White : Dark;
 
     /// <summary>
     /// How white the screen is <paramref name="seconds"/> into closing: two flashes in the first quarter of a
@@ -247,23 +264,19 @@ public static partial class SceneTransition
                 int upright = Math.Clamp((int)(x / (width / Uprights)), 0, Uprights - 1);
                 return upright % 2 == 0 ? y < closed * height : y > (1f - closed) * height;
             }
-            case TransitionKind.Leader:
-            {
-                float cw = width / Columns, ch = height / Rows;
-                float dx = MathF.Abs(x % cw - cw / 2f) / (cw / 2f), dy = MathF.Abs(y % ch - ch / 2f) / (ch / 2f);
-                return dx + dy < closed * 2.05f;
-            }
             default:
-                // The ways by place and by whom; only as the field closes does a ring close on the player
+                // The ways by place and by whom, and the bands' white; only as the field closes does a ring close on the player
                 return CoversByWay(kind, closed, x, y, width, height, closing ? focus : null);
         }
     }
 
     /// <summary>
     /// Draws the transition over a screen of the given size, <paramref name="seconds"/> into its closing or opening
-    /// half. <paramref name="focus"/> is where on that screen the player stands (<see cref="Covers"/>).
+    /// half. <paramref name="focus"/> is where on that screen the player stands (<see cref="Covers"/>);
+    /// <paramref name="band"/> whose band it is and the portraits rendered for it, for the two kinds that are bands
+    /// (a plain band with no name and plain busts when none is given).
     /// </summary>
-    public static void Draw(TransitionKind kind, bool closing, float seconds, int width, int height, Vector2? focus = null)
+    public static void Draw(TransitionKind kind, bool closing, float seconds, int width, int height, Vector2? focus = null, BandPicture? band = null)
     {
         float closed = Closed(kind, closing, seconds);
         if (kind == TransitionKind.Fade)
@@ -274,8 +287,14 @@ public static partial class SceneTransition
 
         if (closing && Flash(kind, seconds) is > 0f and var white)
             Raylib.DrawRectangle(0, 0, width, height, new Color(255, 255, 255, (int)(white * 255)));
+        // A band is a show of its own as the field closes: the band, the portraits, the mark, the name, then its white
+        if (closing && IsBand(kind))
+        {
+            DrawBand(kind, seconds, closed, width, height, band);
+            return;
+        }
         // A way by place or by whom has more to show as the field closes than its dark: what leads in and rides over it
-        if (closing && kind > TransitionKind.Leader)
+        if (closing && !Plain(kind))
         {
             DrawWay(kind, seconds, closed, width, height, focus);
             return;
@@ -283,7 +302,7 @@ public static partial class SceneTransition
         if (closed <= 0f) return;
         if (closed >= 1f)
         {
-            Raylib.DrawRectangle(0, 0, width, height, Dark);
+            Raylib.DrawRectangle(0, 0, width, height, CoverOf(kind));
             return;
         }
 
@@ -330,22 +349,8 @@ public static partial class SceneTransition
                     Raylib.DrawRectangleRec(new Rectangle(i * upright, i % 2 == 0 ? 0f : height - h, upright + 1f, h), Dark);
                 break;
             }
-            case TransitionKind.Leader:
-            {
-                float cw = width / (float)Columns, ch = height / (float)Rows;
-                for (int row = 0; row < Rows; row++)
-                    for (int col = 0; col < Columns; col++)
-                    {
-                        // A diamond as wide and tall as the same share of its cell
-                        float rx = closed * 2.05f * cw / 2f, ry = closed * 2.05f * ch / 2f;
-                        var c = new Vector2((col + 0.5f) * cw, (row + 0.5f) * ch);
-                        Raylib.DrawTriangle(new Vector2(c.X, c.Y - ry), new Vector2(c.X - rx, c.Y), new Vector2(c.X + rx, c.Y), Dark);
-                        Raylib.DrawTriangle(new Vector2(c.X - rx, c.Y), new Vector2(c.X, c.Y + ry), new Vector2(c.X + rx, c.Y), Dark);
-                    }
-                break;
-            }
             default:
-                // A way by place or by whom, opening on the battle: its dark alone, in reverse
+                // A way by place or by whom, opening on the battle: its dark alone, in reverse; a band's white the same
                 DrawDark(kind, closed, width, height, null);
                 break;
         }

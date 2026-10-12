@@ -45,6 +45,44 @@ internal static class CharacterStudio
         Rlgl.SetClipPlanes(0.01, 1000.0);
     }
 
+    /// <summary>How much of a figure a bust shows, in model units, and how far over the point between the eyes its middle lies.</summary>
+    public const float BustHeight = 0.84f, BustLift = 0.04f;
+
+    // A bust is lit from the front more than from above: this close, the studio's high light leaves the neck and the
+    // jaw in a band of shade that reads as a beard
+    private static readonly SceneLighting BustLight = Light with { SunDirection = Vector3.Normalize(new Vector3(-0.3f, 0.3f, 0.9f)) };
+
+    /// <summary>
+    /// Renders a bust of a rig that is ready into <paramref name="target"/> over nothing (plan 09 · L15, a band's
+    /// portrait): from the chest to over the hair or the hat, framed by where the face is, so a child and an adult,
+    /// a short person and a tall one fill their pictures alike. It takes the rig itself and never waits for one:
+    /// whoever calls asked <see cref="CharacterModels.TryGet"/>. Call outside any other texture mode.
+    /// </summary>
+    public static void RenderBust(RenderContext context, CharacterRig rig, RenderTexture2D target, CharacterPose pose, float yaw = 0f)
+    {
+        context.EnsureLoaded();
+        var shaders = context.Shaders;
+        var look = new Vector3(0, (rig.Face.Anchor.Y + BustLift) * rig.Scale, 0);
+        float pitch = 4f * MathF.PI / 180f;
+        var camera = new Camera3D(look + new Vector3(0, MathF.Sin(pitch), MathF.Cos(pitch)) * 6f, look, Vector3.UnitY, BustHeight * rig.Scale, CameraProjection.Orthographic);
+
+        Raylib.BeginTextureMode(target);
+        Raylib.ClearBackground(new Color(0, 0, 0, 0));
+        Rlgl.SetClipPlanes(0.5, 30.0);
+        Raylib.BeginMode3D(camera);
+        shaders.SetLighting(Matrix4x4.Identity, BustLight, camera.Position, 1f);
+        shaders.SetCharacterStyle(shadowStrength: 0f, rimStrength: 0.3f);
+        shaders.SetStudio();
+        Rlgl.DisableBackfaceCulling();
+        var root = Matrix4x4.CreateRotationY(yaw);
+        CharacterRenderer.Draw(context, rig, pose, root, CharacterPass.Color);
+        CharacterRenderer.Draw(context, rig, pose, root, CharacterPass.Outline);
+        Rlgl.EnableBackfaceCulling();
+        Raylib.EndMode3D();
+        Raylib.EndTextureMode();
+        Rlgl.SetClipPlanes(0.01, 1000.0);
+    }
+
     /// <summary>
     /// Renders a Poké Ball into <paramref name="target"/> over nothing, as battles show one: its button turned
     /// to the eye by <paramref name="yaw"/>, its lid <paramref name="open"/> from 0 (shut) to 1. Call outside
