@@ -180,7 +180,9 @@ public sealed class ScriptLibrary
             if (i.Op is Op.Battle or Op.Face or Op.Walk or Op.Move or Op.Emote or Op.Show or Op.Hide or Op.Place
                 || i.Op == Op.Partner && i.Option
                 // (whoever the camera is told to keep on, plan 09 · L4)
-                || i.Op == Op.Camera && i.Camera == CameraMove.Follow)
+                || i.Op == Op.Camera && i.Camera == CameraMove.Follow
+                // (whoever a set piece shakes or has flicker, plan 09 · L12)
+                || i.Op is Op.Shake or Op.Flicker)
             {
                 if (i.Name is not ("player" or "self" or "pair")) yield return (i.Name, i.Line);
                 if (i.Op is Op.Face or Op.Battle && i.Other is not ("" or "player" or "self" or "pair")) yield return (i.Other, i.Line);

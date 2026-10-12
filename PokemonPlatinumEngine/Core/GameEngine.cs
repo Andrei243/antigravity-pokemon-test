@@ -820,6 +820,8 @@ public partial class GameEngine
             // script's waits keep the clock's
             world.Life.Advance(FieldTime(dt));
             world.RunCamera(dt);
+            // The set pieces playing are heard as they go, by the field's own clock (plan 09 · L12)
+            RunTheSetPieces();
             // The poison's flash fades, and the Poké Radar's patches and the honey trees stir (plan 06 · R13)
             TickEncounters(dt);
             // Thunder follows a storm's lightning, a moment after the flash
@@ -1185,7 +1187,6 @@ public partial class GameEngine
         // What field moves left in force (Strength, Flash, Defog), and boulders sliding on from a push
         KeepFieldMovesInForce();
         KeepPuzzleInForce(fieldDt);
-        KeepTheMachinesBalls();
         ShatterSnowball();
         KeepTheClock();
         KeepBerriesInView();

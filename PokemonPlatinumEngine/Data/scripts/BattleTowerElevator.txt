@@ -9,14 +9,13 @@
 script OnEnter
   place attendant 4 4 down
   if var VAR_BATTLE_TOWER_ELEVATOR_LOAD_ACTION == 0 end
-  # BattleTowerElevator_ElevatorAnimation: in, the ride, and out behind the attendant
+  # BattleTowerElevator_ElevatorAnimation: in, the ride, and out behind the attendant. The ride is the lift's own set
+  # piece (plan 09 · L12; PlayElevatorAnimation with three rounds of the car's lights, where every other lift has
+  # four): up to the Battle Rooms, down to the Battle Salon
   walk player up 2
   face player down
-  sound "lift"
-  camera shake 1.2
-  wait 1.2
-  sound "lift_stop"
-  wait 0.3
+  if var VAR_BATTLE_TOWER_ELEVATOR_LOAD_ACTION == 3 anim elevator down 3
+  if var VAR_BATTLE_TOWER_ELEVATOR_LOAD_ACTION != 3 anim elevator up 3
   walk attendant down 1 left 1 down 1
   hide attendant
   walk player down 2

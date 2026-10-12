@@ -32,7 +32,7 @@ public class BuildingTests
             foreach (var prop in map.Props) PropModels.Build(built.Kit, prop, map);
             for (int y = 0; y < map.Height; y++)
                 for (int x = 0; x < map.Width; x++)
-                    if (map.GetGroundTile(x, y) == TileType.PC) PropModels.BuildPc(built.Kit, x, y);
+                    if (map.GetGroundTile(x, y) == TileType.PC) PropModels.BuildPc(built.Kit, x, y, PropModels.IsTerminal(map, x, y));
             return built;
         }
 

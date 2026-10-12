@@ -43,12 +43,20 @@ script Attendant
   if result == 2 goto Bye
 label Ride
   if var VAR_MAP_LOCAL_0x00 == VAR_VEILSTONE_STORE_LIFT_FLOOR goto Same
-  if var VAR_MAP_LOCAL_0x00 > VAR_VEILSTONE_STORE_LIFT_FLOOR say "Certainly. Going up!"
-  if var VAR_MAP_LOCAL_0x00 < VAR_VEILSTONE_STORE_LIFT_FLOOR say "Certainly. Going down!"
-  sound "lift"
-  camera shake 0.6
-  wait 0.8
-  sound "lift_stop"
+  # VeilstoneStoreElevator_ElevatorAnimation: she turns to the door, and the ride is the lift's own set piece (plan
+  # 09 · L12; PlayElevatorAnimation with its four rounds of the car's lights)
+  if var VAR_MAP_LOCAL_0x00 > VAR_VEILSTONE_STORE_LIFT_FLOOR goto GoingUp
+  say "Certainly. Going down!"
+  face receptionist down
+  anim elevator down 4
+  goto Arrived
+label GoingUp
+  say "Certainly. Going up!"
+  face receptionist down
+  anim elevator up 4
+# VeilstoneStoreElevator_ElevatorArrived
+label Arrived
+  face receptionist player
   if var VAR_MAP_LOCAL_0x00 == 1 goto Basement
   if var VAR_MAP_LOCAL_0x00 == 2 goto Ground
   if var VAR_MAP_LOCAL_0x00 == 3 goto Second

@@ -14,8 +14,8 @@
 # Regigigas from one of its events, and here those rooms stay shut (docs/mechanics/rulings.md, "After the Hall of
 # Fame, part b"). A team that has the three by trade or from another region wakes it all the same.
 #
-# Stood in for until plan 09 lands (L12, L14): the original shakes the statue itself as it wakes; here the picture
-# shakes, with a rumble.
+# As it wakes the statue itself shakes, eight times, with a rumble: the original's own set piece (plan 09 · L12:
+# ShakeObject). Stood in for until plan 09 · L14: the way into its battle is the wild Pokémon's.
 
 
 # SnowpointTempleB5F_Regigigas
@@ -29,8 +29,9 @@ script Regigigas
   if not has "Registeel" end
   setflag FLAG_AWAKENED_REGIGIGAS
   wait 0.4
+  # ShakeObject LOCALID_REGIGIGAS, 8: the statue shakes where it stands
   sound "thunder_rumble"
-  camera shake 1.2
+  shake regigigas 8
   wait 0.3
 label Wakes
   cry "Regigigas"

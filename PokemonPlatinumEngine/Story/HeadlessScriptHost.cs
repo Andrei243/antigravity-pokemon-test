@@ -395,6 +395,31 @@ public sealed class HeadlessScriptHost : IScriptHost
         Log.Add($"effect stop {x} {y}");
     }
 
+    // The original's set pieces (plan 09 · L12): everything happens at once here, so each is a line of the log with
+    // the count it was played with, and the time it would take is told as the game tells it
+
+    public float Anim(SetPiece piece, int count)
+    {
+        Shown("play a set piece");
+        bool counted = piece is not (SetPiece.PcOn or SetPiece.PcOff);
+        Log.Add($"anim {SetPieces.WordsOf(piece)}" + (counted ? $" {count}" : ""));
+        return SetPieces.Length(piece, count);
+    }
+
+    public float Shake(NPC? who, int times)
+    {
+        Shown("shake someone");
+        Log.Add($"shake {who?.Name ?? "player"} {times}");
+        return SetPieces.ShakeLength(times);
+    }
+
+    public float Flicker(NPC? who, int times)
+    {
+        Shown("make someone flicker");
+        Log.Add($"flicker {who?.Name ?? "player"} {times}");
+        return SetPieces.FlickerLength(times);
+    }
+
     // ------------------------------------------------------------------ what a script waits for
 
     /// <summary>Never, unless a test holds the script up to see where it waits for the player.</summary>

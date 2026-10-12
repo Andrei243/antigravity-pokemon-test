@@ -67,6 +67,8 @@ partial class Harness
         Next(); Frames(20);
         Console.WriteLine($"pc: state {State()}");
         game.PcScreen.Close(); Frames(6);
+        // (The PC's screen goes dark in the field behind the boxes: its script is over once it has, plan 09 · L12)
+        Until(() => !engine.ScriptRunning, "the PC switched off", 120);
         Console.WriteLine($"pc closed: script running {engine.ScriptRunning}, state {State()}");
 
         // ---- a clerk: the greeting, the counter, a word on the way out
@@ -376,5 +378,53 @@ partial class Harness
         Frames(4); Shot("st86_kit_released");
         Console.WriteLine($"kit over: {Rig()}, at rest {rig.AtRest}; the player {me.GridX - bx},{me.GridY - by} of where she stood (-3,0 is right), she {breeder.GridX - bx},{breeder.GridY - by} (-2,0 is right)");
         breeder.GridX = bx; breeder.GridY = by;
+
+        // ---- the original's set pieces (plan 09 · L12), last of all, so that nothing before them is moved by the five
+        // Pokémon they add: a team of six seen to at a Pokémon Center's machine (the tray empty, with three balls, with
+        // six, and lit), and the PC's screen dark, starting, on, going and off again, each with the machine or the
+        // screen close up at the screen's own resolution. The lifts, the Hall of Fame's machine, the shake and the
+        // flicker are shot in the rooms that have them: sunyshore, champion and legends
+        var pieces = view.Pieces;
+        while (team.Members.Count < 6) team.Members.Add(new Pokemon(PokemonDatabase.Get("Starly")!, 5));
+        (int Balls, bool Lit) Tray() => pieces.Machine(SetPiece.Heal, view.Life.Now);
+        void Machine(string name)
+        {
+            Shot(name);
+            ShotCrop(name + "_close", 790, 250, 240, 150, 8);
+        }
+        At("PokemonCenter", 8, 6, Direction.Up);
+        team.Members[0].CurrentHP = 1;
+        Frames(10); Machine("st70_heal_machine_0");
+        Talk(); Whole(); Next(); Whole();
+        Until(() => engine.Choice.IsOpen, "the nurse's answers, for a team of six");
+        engine.Choice.Confirm(); Frames(20);
+        Whole(); Next();
+        double began = view.Life.Now;
+        Until(() => Tray().Balls == 3, "three balls on the tray"); Frames(4); Machine("st70_heal_machine_1");
+        Until(() => Tray().Balls == 6, "six balls on the tray"); Frames(4); Machine("st70_heal_machine_2");
+        Until(() => Tray().Lit, "the balls lit"); Frames(4); Machine("st70_heal_machine_3");
+        Console.WriteLine($"machine: {Tray().Balls} balls lit {Tray().Lit} after {view.Life.Now - began:0.00} s, the nurse facing {center.NPCs.First(n => n.IsHealingNurse).Facing} (Left is her machine)");
+        Whole();
+        Console.WriteLine($"machine: the line after it came {view.Life.Now - began:0.00} s after the first ball (a team of six takes {SetPieces.MachineLength(6):0.00} s), the tray then {Tray().Balls} balls, healed {team.Members[0].CurrentHP == team.Members[0].MaxHP}");
+        ReadOn();
+
+        void Screen(string name)
+        {
+            Shot(name);
+            ShotCrop(name + "_close", 1130, 210, 240, 150, 8);
+        }
+        int? Frame() => pieces.Screen(view.Life.Now)?.Frame;
+        At("PokemonCenter", terminal.GridX, terminal.GridY + 1, Direction.Up);
+        Frames(10); Screen("st71_pc_dark");
+        Talk();
+        Until(() => Frame() == SetPieces.PcStarting, "the PC's screen starting", 60); Frames(2); Screen("st71_pc_starting");
+        Whole(); Screen("st71_pc_on");
+        Console.WriteLine($"pc on: its screen's frame {Frame()} ({SetPieces.PcLit} is on), script running {engine.ScriptRunning}");
+        Next(); Frames(20);
+        game.PcScreen.Close();
+        Until(() => State() == GameState.Overworld && Frame() == SetPieces.PcStarting, "the PC's screen going", 60); Frames(2); Screen("st72_pc_going");
+        Until(() => !engine.ScriptRunning, "the PC switched off again", 120);
+        Frames(4); Screen("st72_pc_off");
+        Console.WriteLine($"pc off: its screen's frame {Frame()?.ToString() ?? "none (dark)"}, script running {engine.ScriptRunning}");
     }
 }

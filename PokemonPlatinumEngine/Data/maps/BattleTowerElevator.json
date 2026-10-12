@@ -33,6 +33,13 @@
       "y": 6,
       "width": 1,
       "depth": 1
+    },
+    {
+      "type": "LiftIndicator",
+      "x": 3,
+      "y": 2,
+      "width": 1,
+      "depth": 1
     }
   ],
   "warps": [

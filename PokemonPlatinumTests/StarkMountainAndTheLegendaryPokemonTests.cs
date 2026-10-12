@@ -789,7 +789,8 @@ public class StarkMountainAndTheLegendaryPokemonTests
         // The team's order doesn't matter, nor who else is in it
         var game = BeforeRegigigas(outcome, "Registeel,Regirock,Regice");
         var battle = TalkFrom(game, "regigigas", Direction.Up);
-        Assert.Contains("camera Shake", battle.Log);
+        // The statue itself shakes as it wakes, eight times (plan 09 · L12: the original's ShakeObject)
+        Assert.Contains("shake Regigigas 8", battle.Log);
         Assert.Contains("cry Regigigas", battle.Log);
         // At level 1, as Platinum has it
         Assert.Contains($"wildbattle Regigigas 1 {outcome}", battle.Log);
