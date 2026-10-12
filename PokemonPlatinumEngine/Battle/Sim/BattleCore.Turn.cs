@@ -103,7 +103,7 @@ public sealed partial class BattleCore
         }
         else if (Field.Weather != BattleWeather.None)
         {
-            Say(GoesOn(Field.Weather));
+            Say(GoesOn(Field.Weather)).With(new WeatherContinues(Field.Weather));
             if (!WeatherPasses()) return false;
         }
 

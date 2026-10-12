@@ -30,6 +30,8 @@
     <!-- The data importer's coverage report is checked against the data and the engine, and its reader of
          Pokémon Showdown's tables on small texts written in the tests -->
     <ProjectReference Include="..\tools\DataImporter\DataImporter.csproj" />
+    <!-- The content check's findings over the game's own files, and over broken ones written in the tests (plan 16 · T8) -->
+    <ProjectReference Include="..\tools\ContentCheck\ContentCheck.csproj" />
   </ItemGroup>
 
 </Project>

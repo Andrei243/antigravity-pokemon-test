@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Raylib_cs;
+using Gesture = PokemonPlatinumEngine.Overworld.Gesture;
 using PokemonPlatinumEngine.Audio;
 using PokemonPlatinumEngine.Battle;
 using PokemonPlatinumEngine.Data;
@@ -37,6 +38,23 @@ public partial class GameEngine
     // What a script set going: people walking, the player walking, the screen gone black, the camera sent away
     private readonly List<NpcWalk> npcWalks = new();
     private PlayerWalk? playerWalk;
+
+    // Whoever a script's last gesture was given to (plan 11 · C11; null for the player), while the script waits for it
+    private (bool Waiting, NPC? Who) actor;
+
+    /// <summary>True while someone plays the gesture a script waits for.</summary>
+    private bool ActorBusy => actor.Waiting && (actor.Who is { } who ? who.Gesture : player.Gesture) != null;
+
+    /// <summary>
+    /// Runs the clock of the gesture a script waits for when its actor is not among the people whose clocks run
+    /// anyway (those near the player), so a script never waits for one that can't end.
+    /// </summary>
+    private void KeepTheActorActing(float dt, List<NPC> near)
+    {
+        if (!actor.Waiting) return;
+        if (actor.Who is { } who && !near.Contains(who)) who.TickGesture(dt);
+        if (!ActorBusy) actor = default;
+    }
     private readonly ScreenFade scriptFade = new();
     private bool cameraSent;
 
@@ -150,6 +168,11 @@ public partial class GameEngine
         EndRadarChain();
         Roamers.NotePlace(encounters, PlaceKey());
         currentMap.ForgetForced();
+        // Whoever a scene's camera kept on stays on the map left behind: the camera is the player's again (plan 09 · L4)
+        if (world.Camera.Following is { } followed && !currentMap.Everyone.Contains(followed)) world.Camera.ComeHome();
+        // A face held and a gesture under way are let go on coming to a place, as the people's are (plan 11 · C11)
+        player.StopActing();
+        actor = default;
         currentMap.ApplyPresence(story.Has);
         // Whoever was still walking on the map left behind stands where they were going, not between two tiles
         foreach (var walk in npcWalks) walk.Finish();
@@ -586,9 +609,21 @@ public partial class GameEngine
     /// <summary>One frame of the field while a script has it.</summary>
     private void UpdateScript(float dt)
     {
-        AdvanceScriptedWalks(dt);
+        AdvanceScriptedWalks(FieldTime(dt));
         UpdateCutIn(dt);
         RunScript(dt);
+    }
+
+    /// <summary>
+    /// A frame's time as the field has it (plan 09 · L4; style guide, "The camera kit"): the clock's, unless a scene's
+    /// slow motion has lowered the field's pace. What the field does is handed this (people's steps and gestures, the
+    /// player's, life, weather, a puzzle's pieces); the camera, the bars, the text, a bubble, a fade and a script's own
+    /// waits are handed the clock's, so a scene's lines mean the same seconds at any pace.
+    /// </summary>
+    private float FieldTime(float dt)
+    {
+        float pace = world.Camera.Pace;
+        return pace == 1f ? dt : dt * pace;
     }
 
     private void RunScript(float dt)
@@ -652,7 +687,10 @@ public partial class GameEngine
         if (playerWalk.IsDone) playerWalk = null;
     }
 
-    /// <summary>Whatever a script left going is brought to its end: nobody is left mid-step, the screen comes back, the camera returns.</summary>
+    /// <summary>
+    /// Whatever a script left going is brought to its end: nobody is left mid-step, the screen comes back, the camera
+    /// returns, and with it the lens, the bars and the field's pace (plan 09 · L4), however the script ended.
+    /// </summary>
     private void EndScript()
     {
         foreach (var walk in npcWalks) walk.Finish();
@@ -677,7 +715,7 @@ public partial class GameEngine
     /// </summary>
     private void UpdateDialogue(float dt)
     {
-        if (ScriptRunning) AdvanceScriptedWalks(dt);
+        if (ScriptRunning) AdvanceScriptedWalks(FieldTime(dt));
 
         if (choice.IsOpen) choice.ReadKeys();
         else dialogue.Update(dt);
@@ -712,6 +750,18 @@ public partial class GameEngine
     {
         if (scriptFade.Level <= 0f) return;
         Raylib.DrawRectangle(0, 0, VirtualWidth, VirtualHeight, new Color(0, 0, 0, (int)MathF.Round(scriptFade.Level * 255f)));
+    }
+
+    /// <summary>
+    /// A scene's cinema bars (plan 09 · L4; style guide, "The camera kit"): the title's own, plain black at the top and
+    /// the bottom, over the field and a script's black screen and under the text box and every panel.
+    /// </summary>
+    private void DrawLetterbox()
+    {
+        int bar = (int)world.Camera.Bars;
+        if (bar <= 0) return;
+        Raylib.DrawRectangle(0, 0, VirtualWidth, bar, Color.Black);
+        Raylib.DrawRectangle(0, VirtualHeight - bar, VirtualWidth, bar, Color.Black);
     }
 
     private void DrawChoice()
@@ -806,7 +856,7 @@ public partial class GameEngine
             game.currentMap.ApplyPresence(game.story.Has);
         }
 
-        public void Walk(NPC? who, IReadOnlyList<Direction> steps, bool fast)
+        public void Walk(NPC? who, IReadOnlyList<ScriptStep> steps, bool fast)
         {
             if (who == null)
             {
@@ -835,22 +885,61 @@ public partial class GameEngine
             if (bubble == EmoteBubble.Exclaim) AudioManager.PlaySound("exclaim", who == null ? 0f : game.PanAt(who.GridX));
         }
 
-        public void Camera(CameraMove move, int x, int y, float seconds)
+        public void Act(NPC? who, Gesture gesture, int times)
         {
+            if (who == null) game.player.Act(gesture, times);
+            else who.Act(gesture, times);
+            game.actor = (true, who);
+        }
+
+        public void Mood(NPC? who, Mood mood)
+        {
+            if (who == null) game.player.Mood = mood;
+            else who.Mood = mood;
+        }
+
+        public float Camera(CameraMove move, int x, int y, float seconds, float factor = 1f, NPC? who = null, IReadOnlyList<(int X, int Y)>? path = null)
+        {
+            var rig = game.world.Camera;
             switch (move)
             {
                 case CameraMove.Pan:
-                    game.world.PanCamera(x + 0.5f, y + 0.5f, seconds);
+                    rig.Pan(x + 0.5f, y + 0.5f, seconds);
                     game.cameraSent = true;
-                    break;
+                    return seconds;
                 case CameraMove.Release:
-                    game.world.ReleaseCamera(seconds);
+                    rig.Release(seconds);
                     game.cameraSent = false;
-                    break;
+                    return seconds;
+                case CameraMove.Zoom:
+                    rig.ZoomTo(factor, seconds);
+                    game.cameraSent = true;
+                    return seconds;
+                case CameraMove.Follow:
+                    // The player followed is the camera back where it belongs, with the lens and the bars left alone
+                    if (who == null) rig.FollowPlayer(seconds);
+                    else rig.Follow(who, seconds);
+                    game.cameraSent = true;
+                    return seconds;
+                case CameraMove.Path:
+                    game.cameraSent = true;
+                    return rig.Path((path ?? Array.Empty<(int X, int Y)>()).Select(t => new System.Numerics.Vector2(t.X + 0.5f, t.Y + 0.5f)).ToList(), factor);
                 default:
                     game.world.ShakeCamera(seconds);
-                    break;
+                    return 0f;
             }
+        }
+
+        public void Letterbox(bool on, float seconds)
+        {
+            game.world.Camera.Letterbox(on, seconds);
+            game.cameraSent = true;
+        }
+
+        public void SlowMotion(float share, float seconds)
+        {
+            game.world.Camera.SlowMotion(share, seconds);
+            game.cameraSent = true;
         }
 
         public void Effect(SceneEffect kind, int x, int y, float seconds, Direction? way, bool hold)
@@ -864,7 +953,7 @@ public partial class GameEngine
         // ---- what the script waits for
 
         public bool Busy => game.currentState != GameState.Overworld || game.dialogue.IsActive || game.scriptFade.IsMoving || game.cutIn != null
-            || game.fieldMoveStep || game.PuzzleMoving || game.AwaitingStroll;
+            || game.fieldMoveStep || game.PuzzleMoving || game.AwaitingStroll || game.ActorBusy;
 
         public void Say(string? speaker, IReadOnlyList<string> lines)
         {

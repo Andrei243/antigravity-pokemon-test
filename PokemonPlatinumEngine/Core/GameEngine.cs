@@ -73,7 +73,12 @@ public enum GameState
     CastleCounter,
     /// <summary>The Battle Arcade's game board (plan 06 · R18d).</summary>
     ArcadeBoard,
-    Transition
+    Transition,
+    /// <summary>
+    /// The window's close button asked (plan 12 · Q1): its question over whatever was on screen, which waits under it
+    /// (<see cref="GameEngine.RequestClose"/>).
+    /// </summary>
+    WindowClosing
 }
 
 public partial class GameEngine
@@ -171,6 +176,13 @@ public partial class GameEngine
     private TitleScreen titleScreen = new(null);
     private readonly TitleScene titleScene = new();
     private SaveData? titleSave;
+
+    /// <summary>The close button's question, and the state it was asked over, which is drawn under it and comes back on KEEP PLAYING (plan 12 · Q1).</summary>
+    private readonly ClosePrompt closePrompt = new();
+    private GameState closingFrom = GameState.Title;
+
+    /// <summary>The state whose screen is shown: the one under the close button's question while it is asked.</summary>
+    private GameState ShownState => currentState == GameState.WindowClosing ? closingFrom : currentState;
     private GameState optionsReturnState = GameState.Overworld;
     private bool gameStarted;
 
@@ -280,6 +292,7 @@ public partial class GameEngine
             PokemonModels.Request(species);
         // And the balls the battles throw
         BattleBall.Preload("Poké Ball", "Great Ball", "Ultra Ball", "Master Ball");
+        SubstituteDoll.Preload();
 
         ApplySettings(window: false);
 
@@ -290,8 +303,10 @@ public partial class GameEngine
         PokemonSprites.BakeAll(renderContext, modelled);
 
         // The game opens on the title screen, which offers the saved game if there is one
-        titleSave = SaveManager.LoadGame();
-        titleScreen = new TitleScreen(titleSave);
+        // A save that couldn't be read gives way to the one before it, and the title says so before its menu (plan 12 · Q1)
+        var (loaded, save) = SaveManager.Load();
+        titleSave = save;
+        titleScreen = new TitleScreen(titleSave, TitleNotice.ForSave(loaded));
         AudioManager.PlayMusic(MusicRole.Title);
     }
 
@@ -335,6 +350,9 @@ public partial class GameEngine
         MapDatabase.RestoreDefeatedTrainers(Array.Empty<string>());
         // The story starts over: the flags and variables every game begins with, and everyone where those put them
         runner.Abort();
+        // (Nothing of a scene's camera outlives the game it was played in, plan 09 · L4)
+        world.Camera.Reset();
+        cameraSent = false;
         story.Clear();
         StoryMigration.BeginNewGame(story, scripts);
         RefreshPresence(startOver: true);
@@ -524,6 +542,8 @@ public partial class GameEngine
 
         // The story as the save has it, brought up to date if an older game wrote it; then everyone where it puts them
         runner.Abort();
+        world.Camera.Reset();
+        cameraSent = false;
         story.Restore(save.ToStory());
         StoryMigration.Upgrade(story, save.StoryVersion, playerParty.Members.Concat(pcBoxStorage.All), scripts, playerInventory);
         story.RestoreGreetings(save.GreetedPeople);
@@ -642,12 +662,62 @@ public partial class GameEngine
         AudioManager.PlaySound("save");
     }
 
+    /// <summary>
+    /// The window's close button (plan 12 · Q1): on the title before any game, the game ends at once; anywhere else the
+    /// question comes up over what is on screen (SAVE AND QUIT only where the game can be saved), and nothing under
+    /// it moves until it is answered. Esc is never this: it is "back".
+    /// </summary>
+    public void RequestClose()
+    {
+        if (currentState == GameState.WindowClosing || QuitRequested) return;
+        if (ClosePrompt.QuitsAtOnce(gameStarted, currentState))
+        {
+            QuitRequested = true;
+            return;
+        }
+        closingFrom = currentState;
+        currentState = GameState.WindowClosing;
+        closePrompt.Open(CanSaveNow);
+    }
+
+    /// <summary>
+    /// Whether the game can be saved this moment, as the start menu's SAVE would: in the field with nothing under way
+    /// (no script, fade, trainer walking up, rod, trap, puzzle or ride on a panel).
+    /// </summary>
+    private bool CanSaveNow => gameStarted && currentState == GameState.Overworld && !runner.IsRunning && !arrived
+        && trainerApproach == null && fishing == null && trap == null && panelRide == null && !PuzzleHoldsField;
+
+    /// <summary>The close button's question answered: back to the game, or out of it (after saving, for SAVE AND QUIT).</summary>
+    internal void AnswerClose(CloseChoice choice)
+    {
+        if (currentState != GameState.WindowClosing) return;
+        switch (choice)
+        {
+            case CloseChoice.KeepPlaying:
+                currentState = closingFrom;
+                break;
+            case CloseChoice.SaveAndQuit:
+                // A save that couldn't be written keeps the game open, so nothing is lost by quitting anyway
+                if (SaveManager.SaveGame(BuildSave())) QuitRequested = true;
+                else
+                {
+                    currentState = closingFrom;
+                    ShowNotification("The game couldn't be saved.");
+                }
+                break;
+            case CloseChoice.Quit:
+                QuitRequested = true;
+                break;
+        }
+    }
+
     public void Update(float dt)
     {
-        if (gameStarted) playTime += dt;
+        if (gameStarted && currentState != GameState.WindowClosing) playTime += dt;
 
         toast.Update(dt);
         startMenu.Animate(dt);
+        closePrompt.Animate(dt);
         scriptFade.Update(dt);
         choice.Update(dt);
 
@@ -658,7 +728,10 @@ public partial class GameEngine
         if (gameStarted && currentState is GameState.Overworld or GameState.Dialogue or GameState.Transition)
         {
             double before = world.Life.Now;
-            world.Life.Advance(dt);
+            // Slow motion slows the field's own time (plan 09 · L4); the camera's clock, the text, a bubble and a
+            // script's waits keep the clock's
+            world.Life.Advance(FieldTime(dt));
+            world.RunCamera(dt);
             // The poison's flash fades, and the Poké Radar's patches and the honey trees stir (plan 06 · R13)
             TickEncounters(dt);
             // Thunder follows a storm's lightning, a moment after the flash
@@ -668,9 +741,15 @@ public partial class GameEngine
             world.Life.Rainfall(currentMap, player.PixelX / Player.TileSize + 0.5f, player.PixelY / Player.TileSize + 0.5f,
                 Weathers.LandsABeat(currentMap.WeatherAt(player.GridX, player.GridY)));
             player.TickBubble(dt);
+            player.TickGesture(FieldTime(dt));
             // Only the people near the player are looked at each frame (plan 01 · M12): a bubble is shown over
-            // someone in sight, and the map of Sinnoh holds everyone
-            foreach (var npc in currentMap.NPCs.Near(player.GridX, player.GridY, Wandering.Reach, peopleNear)) npc.TickBubble(dt);
+            // someone in sight, and the map of Sinnoh holds everyone. A gesture's clock runs as a bubble's does (plan 11 · C11)
+            foreach (var npc in currentMap.NPCs.Near(player.GridX, player.GridY, Wandering.Reach, peopleNear))
+            {
+                npc.TickBubble(dt);
+                npc.TickGesture(FieldTime(dt));
+            }
+            KeepTheActorActing(FieldTime(dt), peopleNear);
             // A trainer waiting for a rematch spins where they stand (MOVEMENT_TYPE_VS_SEEKER_SPIN)
             rematchSpin += dt;
             if (rematchSpin >= 0.25f)
@@ -967,6 +1046,10 @@ public partial class GameEngine
             case GameState.Transition:
                 UpdateTransition(dt);
                 break;
+            case GameState.WindowClosing:
+                // Nothing under the question moves; the close button again does nothing more
+                if (closePrompt.Update() is var answer and not CloseChoice.None) AnswerClose(answer);
+                break;
         }
     }
 
@@ -981,7 +1064,7 @@ public partial class GameEngine
     private void UpdateAmbience()
     {
         bool heard = gameStarted && currentMap != null && player != null
-            && currentState is not (GameState.Title or GameState.Intro or GameState.Battle or GameState.Evolution or GameState.Hatch
+            && ShownState is not (GameState.Title or GameState.Intro or GameState.Battle or GameState.Evolution or GameState.Hatch
                 or GameState.HallOfFameCeremony or GameState.Credits);
         if (!heard)
         {
@@ -1005,14 +1088,16 @@ public partial class GameEngine
 
     private void UpdateOverworld(float dt)
     {
+        // What the field itself does runs at the field's pace, which a scene's slow motion lowers (plan 09 · L4)
+        float fieldDt = FieldTime(dt);
         // What field moves left in force (Strength, Flash, Defog), and boulders sliding on from a push
         KeepFieldMovesInForce();
-        KeepPuzzleInForce(dt);
+        KeepPuzzleInForce(fieldDt);
         KeepTheMachinesBalls();
         ShatterSnowball();
         KeepTheClock();
         KeepBerriesInView();
-        SlideBoulders(dt);
+        SlideBoulders(fieldDt);
         poketchView.Update(dt);
         // The app on the Pokétch runs on whether it is out or not, as the original's lower screen does
         if (poketch.Enabled) poketch.State?.Update(dt, PoketchNow());
@@ -1028,7 +1113,7 @@ public partial class GameEngine
         RefreshPresence();
 
         // Whoever travels with the player keeps up, whatever else has the field
-        along?.Update(dt, player.Stride);
+        along?.Update(fieldDt, player.Stride);
         KeepTheStroll(dt);
 
         // A warp panel has the player: they turn on the spot until the picture closes, and again as it opens
@@ -1042,7 +1127,7 @@ public partial class GameEngine
         // finish the step they are on
         if (runner.IsRunning)
         {
-            wandering.Continue(dt);
+            wandering.Continue(fieldDt);
             UpdateScript(dt);
             return;
         }
@@ -1885,6 +1970,9 @@ public partial class GameEngine
         player.SetMode(TravelMode.OnFoot);
         player.SetPosition(x, y, facing);
         if (SpawnLocations.Get(story.Var(SpawnLocations.Variable)) is { } town) exitSpot = new MapSpot("Sinnoh", town.X, town.Y, Direction.Down);
+        // A scene the battle was lost in left its camera, its bars and its pace behind with the place (plan 09 · L4)
+        world.Camera.Reset();
+        cameraSent = false;
         ArriveOnMap();
         AnnounceLocation();
         if (healer == null || !StartScript(home ? FieldScripts.BlackOutHome : FieldScripts.BlackOutCenter, healer)) playerParty.HealAll();
@@ -1947,10 +2035,12 @@ public partial class GameEngine
     {
         FrameProfiler.LapCpu(FrameSection.Update);
         renderContext.OutputWidth = Raylib.GetScreenWidth();
+        // Under the close button's question, what was on screen when it was asked (plan 12 · Q1)
+        GameState shown = ShownState;
         // During a fade, show the screen being left while fading out and the new one while fading in
-        GameState scene = currentState == GameState.Transition
+        GameState scene = shown == GameState.Transition
             ? (isFadingOut ? stateBeforeTransition : stateAfterTransition)
-            : currentState;
+            : shown;
         bool showWorld = scene is GameState.Overworld or GameState.Dialogue or GameState.SaveMenu;
         bool showBattle = scene == GameState.Battle && battle != null;
         bool showTitle = scene == GameState.Title;
@@ -2007,7 +2097,7 @@ public partial class GameEngine
         Rlgl.ColorMask(true, true, true, false);
         Raylib.BeginMode2D(new Camera2D { Zoom = RenderScale });
 
-        switch (currentState)
+        switch (shown)
         {
             case GameState.Title:
                 titleScreen.Draw(VirtualWidth, VirtualHeight, renderContext, world);
@@ -2019,9 +2109,11 @@ public partial class GameEngine
                 DrawTrap();
                 // A script's black screen covers the field and leaves the text over it
                 DrawScriptFade();
+                // ... and so do a scene's cinema bars (plan 09 · L4)
+                DrawLetterbox();
                 DrawCutIn();
                 // The Pokétch shows over the field while nothing else is on the screen
-                if (currentState == GameState.Overworld && !startMenu.IsActive && !ScriptRunning) poketchView.Draw(VirtualWidth, VirtualHeight, poketch, PoketchNow());
+                if (shown == GameState.Overworld && !startMenu.IsActive && !ScriptRunning) poketchView.Draw(VirtualWidth, VirtualHeight, poketch, PoketchNow());
                 if (safari.Active) ModernUi.SafariCount(VirtualWidth, safari.Balls, safari.Steps);
                 DrawParkCount();
                 DrawBattlePoints();
@@ -2140,6 +2232,7 @@ public partial class GameEngine
                 {
                     world.DrawToScreen(VirtualWidth, VirtualHeight);
                     DrawScriptFade();
+                    DrawLetterbox();
                 }
                 else if (scene == GameState.Evolution) evolutionScreen.Draw(VirtualWidth, VirtualHeight);
                 else if (scene == GameState.Hatch) hatchScreen.Draw(VirtualWidth, VirtualHeight);
@@ -2153,8 +2246,11 @@ public partial class GameEngine
         toast.Draw(VirtualWidth);
 
         // The scene closing, or the next one opening
-        if (currentState == GameState.Transition)
+        if (shown == GameState.Transition)
             SceneTransition.Draw(transitionKind, isFadingOut, transitionTimer, VirtualWidth, VirtualHeight);
+
+        // The close button's question over all of it, sliding away once answered
+        closePrompt.Draw(VirtualWidth, VirtualHeight);
 
         Raylib.EndMode2D();
         // (Ending the 2D mode drew what was batched; every other target is written whole)

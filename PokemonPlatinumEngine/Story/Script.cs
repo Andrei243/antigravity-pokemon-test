@@ -88,6 +88,10 @@ public enum Op
     Amity,
     // The story's scene effects (plan 09 · L11): a burst, a beam, a rift, a shadow, a ripple, sparkles
     Effect,
+    // Gestures and faces on cue (plan 11 · C11): a gesture played, waited for as a walk is, and a face held
+    Act, Mood,
+    // The camera kit (plan 09 · L4): the cinema bars and slow motion (the camera's own moves are Camera's)
+    Letterbox, SlowMotion,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>
@@ -124,8 +128,11 @@ public sealed class Condition
     };
 }
 
-/// <summary>The three things the field's camera can be told.</summary>
-public enum CameraMove { Pan, Release, Shake }
+/// <summary>
+/// What the field's camera can be told: to look at a spot, to come back (and bring everything else back with it), to
+/// shake, and with the camera kit (plan 09 · L4) to change its lens, to keep on someone's feet and to travel a path.
+/// </summary>
+public enum CameraMove { Pan, Release, Shake, Zoom, Follow, Path }
 
 /// <summary>One line of a script, checked and taken apart when its file was read.</summary>
 public sealed class Instruction
@@ -173,8 +180,14 @@ public sealed class Instruction
     /// <summary>The lines said, or a question followed by its answers.</summary>
     public IReadOnlyList<string> Lines { get; init; } = Array.Empty<string>();
 
-    /// <summary>The steps of a walk.</summary>
-    public IReadOnlyList<Direction> Path { get; init; } = Array.Empty<Direction>();
+    /// <summary>The steps of a walk, each onto the next tile, on the spot or keeping the facing (plan 11 · C11).</summary>
+    public IReadOnlyList<ScriptStep> Path { get; init; } = Array.Empty<ScriptStep>();
+
+    /// <summary>For <see cref="Op.Act"/>: the gesture played (plan 11 · C11).</summary>
+    public Gesture Gesture { get; init; }
+
+    /// <summary>For <see cref="Op.Mood"/>: the face held (plan 11 · C11).</summary>
+    public Mood Mood { get; init; }
 
     /// <summary>A word that changes how the line is carried out: a walk at a run, a battle that may be lost, a fade to black.</summary>
     public bool Option { get; init; }
@@ -187,6 +200,12 @@ public sealed class Instruction
 
     public EmoteBubble Bubble { get; init; }
     public CameraMove Camera { get; init; }
+
+    /// <summary>For the camera kit (plan 09 · L4): a zoom's factor, a path's pace in tiles a second, slow motion's share of the field's pace.</summary>
+    public float Factor { get; init; } = 1f;
+
+    /// <summary>For <c>camera path</c>: the tiles it goes through (plan 09 · L4).</summary>
+    public IReadOnlyList<(int X, int Y)> Tiles { get; init; } = Array.Empty<(int X, int Y)>();
 
     /// <summary>For <see cref="Op.Effect"/>: the kind lit (plan 09 · L11).</summary>
     public SceneEffect Effect { get; init; }

@@ -495,6 +495,13 @@ public sealed partial class ScriptRunner
                 host.Emote(Person(i.Name, i), i.Bubble, i.Seconds);
                 waiting = i.Seconds;
                 break;
+            case Op.Act:
+                // Waited for to its end (the host's Busy), as a walk is
+                host.Act(Person(i.Name, i), i.Gesture, i.Number);
+                break;
+            case Op.Mood:
+                host.Mood(Person(i.Name, i), i.Mood);
+                break;
             case Op.Show:
             case Op.Hide:
                 host.SetVisible(Person(i.Name, i)!, i.Op == Op.Show);
@@ -512,10 +519,13 @@ public sealed partial class ScriptRunner
                 waiting = i.Seconds;
                 break;
             case Op.Camera:
-                host.Camera(i.Camera, i.X, i.Y, i.Seconds);
-                // A shake goes on under whatever comes next; a pan is waited for
-                if (i.Camera != CameraMove.Shake) waiting = i.Seconds;
+            {
+                // (The host says how long the move takes: a path's time depends on where the camera is when it begins)
+                float takes = host.Camera(i.Camera, i.X, i.Y, i.Seconds, i.Factor, i.Camera == CameraMove.Follow ? Person(i.Name, i) : null, i.Tiles);
+                // A shake goes on under whatever comes next; any other move is waited for, unless its line says nowait
+                if (i.Camera != CameraMove.Shake && !i.Option) waiting = takes;
                 break;
+            }
             case Op.Effect:
                 if (i.Name == "stop")
                 {
@@ -834,6 +844,14 @@ public sealed partial class ScriptRunner
             // Amity Square's walk (plan 06 · R16c)
             case Op.Amity:
                 Amity(i);
+                break;
+
+            // The camera kit (plan 09 · L4): the bars slide and the field slows under whatever comes next
+            case Op.Letterbox:
+                host.Letterbox(i.Option, i.Seconds);
+                break;
+            case Op.SlowMotion:
+                host.SlowMotion(i.Factor, i.Seconds);
                 break;
 
             default:

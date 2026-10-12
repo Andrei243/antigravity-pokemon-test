@@ -113,6 +113,18 @@ public class BagScreen
     /// <summary>The cursor of the "forget which move?" panel: 0 to 3 a move, 4 "don't learn it".</summary>
     public int ForgetIndex { get; private set; }
 
+    // ---- a level a Rare Candy gave
+
+    /// <summary>
+    /// The level-up panel over the team's cards (plan 08 · P5), while a Rare Candy's level is being shown: the same
+    /// panel a battle shows, with the stats the Pokémon had and has. The move the level brings and its evolution
+    /// wait for its two presses (<see cref="ConfirmLevelUp"/>). Null otherwise.
+    /// </summary>
+    public LevelUpPanel? LevelUp { get; private set; }
+
+    // What the level taught into a free place, to tell once the panel has been read
+    private string? taughtByCandy;
+
     // An item used in the field itself (the Bicycle, a rod, an Escape Rope), for the game to carry out once the bag closes
     private ItemData? usedInField;
 
@@ -177,6 +189,8 @@ public class BagScreen
         ChoosingMove = false;
         teaching = null;
         toTeach.Clear();
+        LevelUp = null;
+        taughtByCandy = null;
         openAge = 0f;
         upDown.Release();
     }
@@ -198,6 +212,8 @@ public class BagScreen
         choosingFor = null;
         Tossing = false;
         ChoosingMove = false;
+        LevelUp = null;
+        taughtByCandy = null;
     }
 
     // ---------------------------------------------------------------- moving about
@@ -431,7 +447,13 @@ public class BagScreen
         if (choosingFor != null)
         {
             choiceAge += dt;
-            if (teaching != null)
+            if (LevelUp is { } panel)
+            {
+                // Either button reads the panel on, as either reads a battle's message on
+                panel.Advance(dt);
+                if (confirm || cancel) ConfirmLevelUp(onNotification);
+            }
+            else if (teaching != null)
             {
                 if (dy != 0) MoveForget(dy);
                 else if (cancel) { ForgetIndex = 4; ConfirmForget(inventory, onNotification); }
@@ -487,6 +509,8 @@ public class BagScreen
 
     public void MoveTarget(int dx, int dy, int count)
     {
+        // The cursor stays on the Pokémon whose level is being shown
+        if (LevelUp != null) return;
         int next = UiNav.Grid(TargetIndex, count, 2, dx, dy);
         if (next == TargetIndex) return;
         TargetIndex = next;
@@ -495,6 +519,8 @@ public class BagScreen
 
     public void CancelTarget()
     {
+        // A level's panel is read to its end first: its moves and its evolution wait behind it
+        if (LevelUp != null) return;
         choosingFor = null;
         ChoosingMove = false;
         AudioManager.PlaySound("cancel");
@@ -508,7 +534,8 @@ public class BagScreen
     /// </summary>
     public void UseOnTarget(Inventory inventory, Party party, Action<string> onNotification, EvolutionContext context)
     {
-        if (choosingFor == null || TargetIndex >= party.Count) return;
+        // Nothing more is used while a level's panel waits to be read
+        if (choosingFor == null || TargetIndex >= party.Count || LevelUp != null) return;
         var item = choosingFor;
         var target = party.Members[TargetIndex];
 
@@ -584,6 +611,7 @@ public class BagScreen
         else if (ItemUse.IsUsedOnPokemon(item) || EffortRules.IsEffortItem(item))
         {
             // Medicine, berries, vitamins and the Rare Candy, by the item table (Pokemon_ApplyItemEffects)
+            var before = target.Stats();
             var result = ItemUse.Apply(item, target);
             if (!result.Applied)
             {
@@ -592,8 +620,7 @@ public class BagScreen
                 return;
             }
             inventory.RemoveItem(item, 1);
-            onNotification(result.Message);
-            if (result.NewLevel != null)
+            if (result.NewLevel is { } level)
             {
                 AudioManager.PlayFanfare(MusicRole.FanfareLevelUp);
                 // The moves the level brings that don't fit are asked about one by one; the evolution waits for them
@@ -601,20 +628,41 @@ public class BagScreen
                 candyContext = context;
                 context.Item = null;
                 foreach (string wanted in result.Wanted) toTeach.Enqueue((target, wanted, null));
-                if (NextTeaching()) return;
-                CheckCandyEvolution();
+                // The panel first, as in a battle (plan 08 · P5): what the level added to its stats, then the stats;
+                // the moves and the evolution follow its two presses. The level's line stands in the prompt under
+                // the panel, and the moves it learned into a free place are told once the panel has been read, as a
+                // battle tells them after it
+                taughtByCandy = result.Learned.Count == 0 ? null : string.Join(" ", result.Learned.Select(m => $"{target.DisplayName} learned {m}!"));
+                LevelUp = new LevelUpPanel(target, level, before, target.Stats());
+                return;
             }
-            else
-            {
-                AudioManager.PlaySound("heal");
-                // While there is more of it, the party stays up for the next Pokémon, as in the games
-                if (inventory.GetQuantity(item) > 0) return;
-            }
+            onNotification(result.Message);
+            AudioManager.PlaySound("heal");
+            // While there is more of it, the party stays up for the next Pokémon, as in the games
+            if (inventory.GetQuantity(item) > 0) return;
         }
         else
         {
             GiveToHold(item, inventory, target, onNotification);
         }
+        choosingFor = null;
+    }
+
+    /// <summary>
+    /// The press a level's panel waits for (plan 08 · P5): the first turns it from the gains to the new values, the
+    /// second takes it down. Then the moves the level taught are told, the ones that don't fit are asked about and
+    /// its evolution is set off, as they were at once before the panel was there.
+    /// </summary>
+    public void ConfirmLevelUp(Action<string> onNotification)
+    {
+        if (LevelUp is not { } panel) return;
+        AudioManager.PlaySound("select");
+        if (!panel.Press()) return;
+        LevelUp = null;
+        if (taughtByCandy != null) onNotification(taughtByCandy);
+        taughtByCandy = null;
+        if (NextTeaching()) return;
+        CheckCandyEvolution();
         choosingFor = null;
     }
 
@@ -772,6 +820,14 @@ public class BagScreen
             var probe = context ?? new EvolutionContext { Party = party, Bag = inventory };
             string prompt = giving ? $"Give the {item.Name} to which Pokémon?"
                 : MoveTeaching.IsMachine(item) ? $"Teach {item.TeachesMove} to which Pokémon?" : $"Use the {item.Name} on which Pokémon?";
+            if (LevelUp is { } level)
+            {
+                // A level's panel over the team's cards (plan 08 · P5): the prompt says the level's line and waits for a press
+                ModernUi.DrawPartyChoice(screenWidth, screenHeight, party, TargetIndex, $"{level.Pokemon.DisplayName} grew to Lv. {level.Level}!",
+                    _ => null, Math.Clamp(choiceAge / ChoiceAppearTime, 0f, 1f), "Next", waiting: true);
+                ModernUi.LevelUpOverParty(screenWidth, TargetIndex, level);
+                return;
+            }
             ModernUi.DrawPartyChoice(screenWidth, screenHeight, party, TargetIndex, prompt, p => TagFor(p, probe),
                 Math.Clamp(choiceAge / ChoiceAppearTime, 0f, 1f), giving ? "Give" : "Use");
             var panel = new Rectangle(screenWidth - 780, 120, 716, 760);

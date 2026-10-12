@@ -222,26 +222,9 @@ internal static partial class ModernUi
     // ------------------------------------------------------------------ text
 
     /// <summary>Breaks text into lines no wider than <paramref name="maxWidth"/>; "\n" forces a break.</summary>
-    public static List<string> Wrap(string text, float maxWidth, float size, UiWeight weight = UiWeight.Bold)
-    {
-        var lines = new List<string>();
-        foreach (var paragraph in text.Split('\n'))
-        {
-            string line = "";
-            foreach (var word in paragraph.Split(' '))
-            {
-                string test = line.Length == 0 ? word : line + " " + word;
-                if (line.Length > 0 && UiFonts.Measure(test, size, weight) > maxWidth)
-                {
-                    lines.Add(line);
-                    line = word;
-                }
-                else line = test;
-            }
-            lines.Add(line);
-        }
-        return lines;
-    }
+    public static List<string> Wrap(string text, float maxWidth, float size, UiWeight weight = UiWeight.Bold) =>
+        // The one way of wrapping, which a check with no window uses with a measure of its own (plan 16 · T8)
+        TextMetrics.Wrap(text, maxWidth, line => UiFonts.Measure(line, size, weight));
 
     public static void DrawWrapped(string text, float x, float y, float maxWidth, float size, Color color, float lineHeight, UiWeight weight = UiWeight.Bold)
     {
@@ -322,6 +305,22 @@ internal static partial class ModernUi
         float bw = (r.Width - 112 - gap * (buttons.Length - 1)) / buttons.Length;
         for (int i = 0; i < buttons.Length; i++)
             Button(new Rectangle(r.X + 56 + i * (bw + gap), r.Y + 216, bw, 84), 42, buttons[i].Color, buttons[i].Label, 32, i == selected);
+    }
+
+    /// <summary>
+    /// A notice to be read and put away (plan 12 · Q1: the title's word on a damaged save, which plan 16 · T3's word
+    /// after a crash shares): the prompt's panel, room for three lines of words, and one button, highlighted, at its
+    /// bottom right.
+    /// </summary>
+    public static void Notice(int sw, int sh, string title, string body, string button, float appear = 1f)
+    {
+        Dim(sw, sh, (int)(150 * appear));
+        const float width = 1040, height = 380, bw = 280;
+        var r = new Rectangle(sw / 2f - width / 2f, sh / 2f - height / 2f + (1f - appear) * 60f, width, height);
+        Panel(r, 36);
+        UiFonts.Draw(title, r.X + 56, r.Y + 44, 48, Ink, UiWeight.Black);
+        DrawWrapped(body, r.X + 56, r.Y + 116, r.Width - 112, 30, Muted, 40, UiWeight.ExtraBold);
+        Button(new Rectangle(r.X + r.Width - 56 - bw, r.Y + height - 124, bw, 84), 42, Blue, button, 32, true);
     }
 
     // ------------------------------------------------------------------ badges

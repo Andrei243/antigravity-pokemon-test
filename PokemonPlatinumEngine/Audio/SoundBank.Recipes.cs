@@ -95,6 +95,13 @@ public static partial class SoundBank
         Add("status_confusion", SoundGroup.Battle, null, "Confused, and each turn it is confused.");
         Add("faint", SoundGroup.Battle, "SEQ_SE_DP_POKE_DEAD3", "A Pokémon faints.");
         Add("exp", SoundGroup.Battle, "SEQ_SE_DP_EXP", "The EXP bar fills.");
+        Add("weather_rain", SoundGroup.Battle, null, "Rain begins over a battle, and each turn it goes on (plan 25 · Y1).");
+        Add("weather_sun", SoundGroup.Battle, null, "The sunlight turns harsh over a battle, and each turn it stays strong.");
+        Add("weather_sandstorm", SoundGroup.Battle, null, "A sandstorm kicks up over a battle, and each turn it rages.");
+        Add("weather_hail", SoundGroup.Battle, null, "Hail begins over a battle, and each turn it goes on.");
+        Add("weather_fog", SoundGroup.Battle, null, "A battle opens in deep fog, and each turn the fog stays.");
+        Add("substitute_in", SoundGroup.Battle, null, "A Substitute's doll drops in front of its Pokémon.");
+        Add("substitute_out", SoundGroup.Battle, null, "A Substitute's doll fades in a puff.");
 
         // ---- A move's launch, one per type (the hit's sound comes as it lands)
         foreach (var type in Enum.GetValues<PokemonType>())
@@ -624,6 +631,59 @@ public static partial class SoundBank
                     d.Tone(k * 0.045f, 0.05f, Wave.Pulse, f, f, 0.35f * (0.6f + 0.4f * k / 15f), 0.15f, 0.8f, duty: 0.25f);
                 }
                 return Finish(d.S, 0.32f);
+
+            // ---------------------------------------------------------------- the weather and the doll in battle (plan 25 · Y1)
+            case "weather_rain":
+                // A shower sweeping in: a hiss that swells and passes, and drops pattering on top
+                d = new SoundDesign(0.95f, 0x2A1Du);
+                d.Noise(0, 0.92f, Filter.Band, 2200f, 3400f, 0.5f, 0.6f, 0.35f, 1.1f);
+                d.Noise(0.05f, 0.85f, Filter.Low, 900f, 600f, 0.25f, 0.7f, 0.3f, 1.2f);
+                d.Crackle(0.08f, 0.75f, 34, 3600f, 0.35f);
+                return Finish(d.S, 0.38f);
+            case "weather_sun":
+                // Heat coming on: a warm chord swelling up, and a shimmer of light over it
+                d = new SoundDesign(0.95f);
+                foreach (var f in Pitches(60, 67, 72, 76))
+                    d.Tone(0, 0.9f, Wave.Triangle, f * 0.98f, f, 0.22f, 0.45f, 1.1f, vibratoHz: 4f, vibratoDepth: 0.006f);
+                d.Bell(0.3f, 0.6f, N(96), 3.01f, 1.4f, 0.16f, 2.2f);
+                d.Bell(0.42f, 0.5f, N(100), 2.01f, 1.2f, 0.12f, 2.4f);
+                return Finish(d.S, 0.36f);
+            case "weather_sandstorm":
+                // A gust: low wind rising and falling, gusting, with grains hissing in it
+                d = new SoundDesign(0.95f, 0x5A4Du);
+                d.Noise(0, 0.92f, Filter.Band, 380f, 900f, 0.6f, 1.2f, 0.4f, 1.2f, flutterHz: 5f, flutterDepth: 0.45f);
+                d.Noise(0.1f, 0.8f, Filter.High, 5200f, 4200f, 0.2f, 0.7f, 0.35f, 1.3f);
+                d.Crackle(0.15f, 0.7f, 22, 5200f, 0.25f);
+                return Finish(d.S, 0.4f);
+            case "weather_hail":
+                // Hard little stones: sharp ticks and a few ringing off the ground, over a cold hiss
+                d = new SoundDesign(0.85f, 0x4A11u);
+                d.Noise(0, 0.8f, Filter.High, 6500f, 5000f, 0.2f, 0.7f, 0.2f, 1.3f);
+                d.Crackle(0.02f, 0.75f, 28, 4200f, 0.6f);
+                var stones = Pitches(96, 99, 94, 101);
+                for (int k = 0; k < stones.Length; k++) d.Bell(0.08f + k * 0.15f, 0.2f, stones[k], 3.7f, 1.2f, 0.18f, 3f);
+                return Finish(d.S, 0.4f);
+            case "weather_fog":
+                // Air thick and still: a hollow, wavering hum under a soft breath
+                d = new SoundDesign(0.95f, 0xF06u);
+                d.Tone(0, 0.92f, Wave.Sine, 196f, 185f, 0.4f, 0.4f, 1f, vibratoHz: 1.5f, vibratoDepth: 0.01f);
+                d.Tone(0, 0.92f, Wave.Sine, 294f, 277f, 0.22f, 0.45f, 1f, vibratoHz: 1.1f, vibratoDepth: 0.012f);
+                d.Noise(0, 0.9f, Filter.Low, 500f, 300f, 0.35f, 0.8f, 0.4f, 1f, flutterHz: 1.2f, flutterDepth: 0.4f);
+                return Finish(d.S, 0.34f);
+            case "substitute_in":
+                // A soft pop as the Pokémon goes, then the doll's plush landing
+                d = new SoundDesign(0.55f);
+                d.Tone(0, 0.12f, Wave.Sine, 320f, 760f, 0.45f, 0.1f, 2f);
+                d.Tone(0.03f, 0.1f, Wave.Triangle, 640f, 1500f, 0.2f, 0.1f, 2f);
+                d.Thump(0.28f, 0.22f, 190f, 80f, 0.7f, 0.25f);
+                d.Thump(0.43f, 0.1f, 160f, 90f, 0.3f, 0.15f);
+                return Finish(d.S, 0.4f);
+            case "substitute_out":
+                // A puff of smoke and the doll gone: a breath falling away, and a little falling note
+                d = new SoundDesign(0.55f, 0x5B07u);
+                d.Noise(0, 0.45f, Filter.Band, 1600f, 380f, 0.6f, 0.8f, 0.04f, 1.4f);
+                d.Tone(0.02f, 0.4f, Wave.Sine, 620f, 240f, 0.35f, 0.05f, 1.5f);
+                return Finish(d.S, 0.38f);
 
             // ---------------------------------------------------------------- a move's launch, by type
             case "move_normal":

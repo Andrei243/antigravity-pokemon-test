@@ -111,8 +111,22 @@ public sealed record ItemShown(Place Place, string Item) : BattleEvent;
 
 /// <summary>The weather over the battle is now this (none: it cleared).</summary>
 public sealed record WeatherChanged(BattleWeather Weather) : BattleEvent;
+
+/// <summary>
+/// The weather goes on at the end of a turn (plan 25 · Y1): on the turn's weather line ("Rain continues to fall."), as the
+/// original plays the weather's animation on each turn it lasts. The rules change nothing by it; the screen plays the weather's cue again.
+/// </summary>
+public sealed record WeatherContinues(BattleWeather Weather) : BattleEvent;
 public sealed record ExpGained(Pokemon Pokemon, int Amount) : BattleEvent;
-public sealed record LevelRose(Pokemon Pokemon, int Level) : BattleEvent;
+
+/// <summary>
+/// A Pokémon's EXP took it to a level (through every level it reached at once). <paramref name="Before"/> and
+/// <paramref name="After"/> are its six stats as they stood before the EXP and as they stand at the new level (plan
+/// 08 · P5; the original's level-up summary takes its two pages from the same two readings,
+/// <c>SEQ_GET_EXP_LEVEL_UP_SUMMARY_PRINT_DIFF</c> and <c>_PRINT_TRUE</c>). Whoever shows the level takes its numbers
+/// from here: the rules' copy has grown already, and the Pokémon the screen holds is behind it.
+/// </summary>
+public sealed record LevelRose(Pokemon Pokemon, int Level, StatSpread Before, StatSpread After) : BattleEvent;
 
 /// <summary>
 /// A Pokémon that knows four moves reached a level with a move to learn (plan 06 · R10): the screen asks the

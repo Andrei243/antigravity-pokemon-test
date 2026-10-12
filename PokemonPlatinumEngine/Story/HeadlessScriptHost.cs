@@ -274,21 +274,49 @@ public sealed class HeadlessScriptHost : IScriptHost
         Map?.ApplyPresence(Story.Has);
     }
 
-    public void Walk(NPC? who, IReadOnlyList<Direction> steps, bool fast)
+    public void Walk(NPC? who, IReadOnlyList<ScriptStep> steps, bool fast)
     {
         Shown("walk someone");
         if (Pauses) Walking = true;
         var (x, y) = TileOf(who);
+        Direction? facing = null;
         foreach (var step in steps)
         {
-            var (dx, dy) = FieldMovement.Delta(step);
+            // A step on the spot stays on the tile, and a step back keeps the facing (plan 11 · C11)
+            if (step.Turns) facing = step.Way;
+            if (!step.Moves) continue;
+            var (dx, dy) = FieldMovement.Delta(step.Way);
             x += dx;
             y += dy;
             Check(who, x, y, "walks");
         }
         if (who == null) PlayerTile = (x, y);
         else (who.GridX, who.GridY) = (x, y);
-        if (steps.Count > 0) Face(who, steps[^1]);
+        if (facing is { } way) Face(who, way);
+        if (steps.Any(s => s.Kind != ScriptStepKind.Walk))
+            Log.Add($"walk {who?.Name ?? "player"} " + string.Join(" ", steps.Select(s => s.Kind switch
+            {
+                ScriptStepKind.OnSpot => "onspot " + s.Way.ToString().ToLowerInvariant(),
+                ScriptStepKind.Back => "back " + s.Way.ToString().ToLowerInvariant(),
+                _ => s.Way.ToString().ToLowerInvariant()
+            })));
+    }
+
+    /// <summary>The face a script has the player hold (plan 11 · C11); someone of the map holds theirs in <see cref="NPC.Mood"/>.</summary>
+    public Mood PlayerMood { get; private set; }
+
+    public void Act(NPC? who, Gesture gesture, int times)
+    {
+        Shown("make someone act");
+        Log.Add($"act {who?.Name ?? "player"} {gesture}" + (times > 1 ? $" {times}" : ""));
+    }
+
+    public void Mood(NPC? who, Mood mood)
+    {
+        Shown("give someone a face");
+        if (who == null) PlayerMood = mood;
+        else who.Mood = mood;
+        Log.Add($"mood {who?.Name ?? "player"} {mood}");
     }
 
     private void Check(NPC? who, int x, int y, string does)
@@ -312,10 +340,47 @@ public sealed class HeadlessScriptHost : IScriptHost
         Log.Add($"emote {who?.Name ?? "player"} {bubble}");
     }
 
-    public void Camera(CameraMove move, int x, int y, float seconds)
+    public float Camera(CameraMove move, int x, int y, float seconds, float factor = 1f, NPC? who = null, IReadOnlyList<(int X, int Y)>? path = null)
     {
         Shown("move the camera");
-        Log.Add(move == CameraMove.Pan ? $"camera Pan {x} {y}" : $"camera {move}");
+        string Number(float value) => value.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        switch (move)
+        {
+            case CameraMove.Pan:
+                Log.Add($"camera Pan {x} {y}");
+                return seconds;
+            case CameraMove.Zoom:
+                Log.Add($"camera Zoom {Number(factor)}");
+                return seconds;
+            case CameraMove.Follow:
+                Log.Add($"camera Follow {who?.Name ?? "player"}");
+                return seconds;
+            case CameraMove.Path:
+            {
+                // Everything happens at once here: the path's time is told from its own tiles, as if the camera began at the first
+                var tiles = path ?? Array.Empty<(int X, int Y)>();
+                Log.Add($"camera Path {string.Join(" ", tiles.Select(t => $"{t.X} {t.Y}"))} at {Number(factor)}");
+                float length = 0f;
+                for (int i = 1; i < tiles.Count; i++)
+                    length += MathF.Sqrt((tiles[i].X - tiles[i - 1].X) * (tiles[i].X - tiles[i - 1].X) + (tiles[i].Y - tiles[i - 1].Y) * (tiles[i].Y - tiles[i - 1].Y));
+                return CameraRig.PathSeconds(length, factor);
+            }
+            default:
+                Log.Add($"camera {move}");
+                return move == CameraMove.Release ? seconds : 0f;
+        }
+    }
+
+    public void Letterbox(bool on, float seconds)
+    {
+        Shown("slide the bars");
+        Log.Add(on ? "letterbox on" : "letterbox off");
+    }
+
+    public void SlowMotion(float share, float seconds)
+    {
+        Shown("slow the field");
+        Log.Add($"slowmo {share.ToString(System.Globalization.CultureInfo.InvariantCulture)}");
     }
 
     public void Effect(SceneEffect kind, int x, int y, float seconds, Direction? way, bool hold)

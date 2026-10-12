@@ -17,10 +17,17 @@ public enum UiWeight { Bold, ExtraBold, Black }
 public static class UiFonts
 {
     // Large enough that 60-unit text stays sharp when the layout is rendered at 4K
-    private const int AtlasSize = 160;
+    internal const int AtlasSize = 160;
     private static readonly Dictionary<UiWeight, Font> Fonts = new();
 
-    private static string FileFor(UiWeight weight) => weight switch
+    /// <summary>
+    /// The characters the typeface is loaded with: Latin-1 plus the dashes, the ellipsis and the arrows the menus use.
+    /// Anything else is drawn as a question mark; <see cref="TextMetrics.CanDraw"/> answers for one character, with no
+    /// window (plan 16 · T8).
+    /// </summary>
+    internal static readonly int[] Codepoints = Enumerable.Range(32, 224).Concat(new[] { 0x2013, 0x2014, 0x2026, 0x2190, 0x2191, 0x2192, 0x2193 }).ToArray();
+
+    internal static string FileFor(UiWeight weight) => weight switch
     {
         UiWeight.Black => "Nunito-Black.ttf",
         UiWeight.ExtraBold => "Nunito-ExtraBold.ttf",
@@ -33,9 +40,7 @@ public static class UiFonts
         string path = Path.Combine(AppContext.BaseDirectory, "Assets", "Fonts", FileFor(weight));
         if (File.Exists(path))
         {
-            // Latin-1 plus the arrows and symbols the menus use
-            int[] codepoints = Enumerable.Range(32, 224).Concat(new[] { 0x2013, 0x2014, 0x2026, 0x2190, 0x2191, 0x2192, 0x2193 }).ToArray();
-            font = Raylib.LoadFontEx(path, AtlasSize, codepoints, codepoints.Length);
+            font = Raylib.LoadFontEx(path, AtlasSize, Codepoints, Codepoints.Length);
             if (font.Texture.Id != 0)
             {
                 Raylib.GenTextureMipmaps(ref font.Texture);
@@ -51,7 +56,7 @@ public static class UiFonts
     }
 
     /// <summary>Letter spacing: Nunito is set a touch open at small sizes and tighter at display sizes.</summary>
-    private static float Tracking(float size) => size >= 40 ? 0f : size <= 20 ? 0.8f : 0.4f;
+    internal static float Tracking(float size) => size >= 40 ? 0f : size <= 20 ? 0.8f : 0.4f;
 
     public static void Draw(string text, float x, float y, float size, Color color, UiWeight weight = UiWeight.Bold) =>
         Raylib.DrawTextEx(Get(weight), text, new Vector2(MathF.Round(x), MathF.Round(y)), size, Tracking(size), color);

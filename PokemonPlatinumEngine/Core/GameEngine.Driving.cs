@@ -126,6 +126,14 @@ public partial class GameEngine
         public TitleScreen Title { get => game.titleScreen; set => game.titleScreen = value; }
         public IntroScreen Intro => game.introScreen;
         public StartMenu StartMenu => game.startMenu;
+        /// <summary>The window's close button and its question (plan 12 · Q1): asked as the button asks it, answered as a key would.</summary>
+        public ClosePrompt ClosePrompt => game.closePrompt;
+        public void RequestClose() => game.RequestClose();
+        public void AnswerClose(CloseChoice choice)
+        {
+            if (game.closePrompt.IsOpen) game.closePrompt.Cancel();
+            game.AnswerClose(choice);
+        }
         public PartyScreen PartyScreen => game.partyScreen;
         public StarterSelectScreen StarterSelect => game.starterSelectScreen;
         public BagScreen BagScreen => game.bagScreen;

@@ -63,14 +63,45 @@ public interface IScriptHost
     /// <summary>Takes someone off the map or puts them back, whatever their flags say, until the map is come to again.</summary>
     void SetVisible(NPC who, bool visible);
 
-    /// <summary>Starts someone walking; the script carries on meanwhile unless it waits (<see cref="Walking"/>).</summary>
-    void Walk(NPC? who, IReadOnlyList<Direction> steps, bool fast);
+    /// <summary>
+    /// Starts someone walking; the script carries on meanwhile unless it waits (<see cref="Walking"/>). A step may be
+    /// on the spot, or keep the facing (plan 11 · C11).
+    /// </summary>
+    void Walk(NPC? who, IReadOnlyList<ScriptStep> steps, bool fast);
 
     /// <summary>Whether anyone a script set walking is still on their way.</summary>
     bool Walking { get; }
 
     void Emote(NPC? who, EmoteBubble bubble, float seconds);
-    void Camera(CameraMove move, int x, int y, float seconds);
+
+    /// <summary>
+    /// Someone plays a gesture <paramref name="times"/> times in a row (plan 11 · C11); the script waits for its end
+    /// (<see cref="Busy"/>) as it waits for a walk.
+    /// </summary>
+    void Act(NPC? who, Gesture gesture, int times);
+
+    /// <summary>Someone holds a face (plan 11 · C11) until a script changes it or the place is come to again.</summary>
+    void Mood(NPC? who, Mood mood);
+
+    /// <summary>
+    /// The field's camera is told something (<c>CameraRig</c>; plan 09 · L4 for all but the first three): to look at a
+    /// tile (<see cref="CameraMove.Pan"/>), to come back and bring the lens, the bars and the field's pace back with it
+    /// (<c>Release</c>), to shake, to take its lens to a <paramref name="factor"/> (<c>Zoom</c>), to keep on
+    /// <paramref name="who"/>'s feet (<c>Follow</c>; nobody is the player, which brings the camera home and leaves the
+    /// rest), or to travel through the tiles of a <paramref name="path"/> at <paramref name="factor"/> tiles a second
+    /// (<c>Path</c>). Returns how long the move takes, which the runner itself waits unless the line says otherwise:
+    /// a path's time depends on where the camera is when it begins, which only the host knows.
+    /// </summary>
+    float Camera(CameraMove move, int x, int y, float seconds, float factor = 1f, NPC? who = null, IReadOnlyList<(int X, int Y)>? path = null);
+
+    /// <summary>The cinema bars slide in or away over <paramref name="seconds"/>, under whatever the script does next (plan 09 · L4).</summary>
+    void Letterbox(bool on, float seconds);
+
+    /// <summary>
+    /// The field runs at a <paramref name="share"/> of its pace for <paramref name="seconds"/> and is back by itself
+    /// (plan 09 · L4): people, life and weather are slowed, never the camera, the text or the script's own waits.
+    /// </summary>
+    void SlowMotion(float share, float seconds);
 
     /// <summary>
     /// A scene effect lit on a tile (plan 09 · L11; style guide, "Life", "Scene effects"): it plays for

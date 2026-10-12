@@ -105,6 +105,40 @@ public class Player
     /// <summary>True while the player leans into a boulder that is sliding on.</summary>
     public bool IsPushing => pushing > 0f;
 
+    // A step on the spot a script asks for (plan 11 · C11, the original's WalkOnSpot): the legs walk where the
+    // player stands, as they do behind a boulder that slides on
+    private float onSpot;
+
+    /// <summary>True while the player takes a step on the spot.</summary>
+    public bool IsSteppingOnSpot => onSpot > 0f;
+
+    /// <summary>
+    /// Turns to <paramref name="way"/> and takes a step there on the spot, as long as a step at that pace takes (a
+    /// script's <c>onspot</c>). False in the middle of a step.
+    /// </summary>
+    public bool StepOnSpot(Direction way, bool fast)
+    {
+        if (IsMoving || carried != null || pushing > 0f) return false;
+        Facing = way;
+        onSpot = 1f / FieldMovement.TilesPerSecond(fast ? Pace.Fast : Pace.Walk);
+        stride = FieldMovement.TilesPerSecond(fast ? Pace.Fast : Pace.Walk);
+        return true;
+    }
+
+    /// <summary>
+    /// Takes a step <paramref name="way"/> facing as the player faces (a script's <c>back</c>, the original's
+    /// <c>LockDir</c>): a step back when the way is behind them. The field's rules say whether it can be taken. False
+    /// when it can't, or in the middle of a step.
+    /// </summary>
+    public bool StepKeepingFacing(Map map, Direction way)
+    {
+        if (IsMoving || carried != null || pushing > 0f || onSpot > 0f) return false;
+        var step = FieldMovement.Step(map, GridX, GridY, way, WalkerOn(map) with { Running = false });
+        if (!step.Moves) return false;
+        Begin(map, step, way);
+        return true;
+    }
+
     /// <summary>Counts the steps since the last wild battle or map change, for the odds of the next (<see cref="EncounterSteps"/>).</summary>
     public EncounterSteps Encounters { get; } = new();
 
@@ -178,6 +212,39 @@ public class Player
         BubbleAge += dt;
     }
 
+    /// <summary>The gesture a script has them play (plan 11 · C11), null when none is under way.</summary>
+    public Gesture? Gesture { get; private set; }
+
+    /// <summary>Seconds since the gesture began, over every round of it.</summary>
+    public float GestureAge => gestureAge;
+
+    /// <summary>How many times in a row the gesture plays.</summary>
+    public int GestureTimes { get; private set; }
+
+    /// <summary>The face a script has them hold (plan 11 · C11) until it changes or the place is come to again.</summary>
+    public Mood Mood { get; set; }
+
+    private float gestureAge;
+
+    /// <summary>Plays a gesture <paramref name="times"/> times in a row, from its start.</summary>
+    public void Act(Gesture gesture, int times = 1)
+    {
+        Gesture = gesture;
+        GestureTimes = Math.Max(1, times);
+        gestureAge = 0f;
+    }
+
+    /// <summary>Runs the gesture's clock, as <see cref="TickBubble"/> runs the bubble's.</summary>
+    public void TickGesture(float dt) => Gesture = Acting.Tick(Gesture, ref gestureAge, GestureTimes, dt);
+
+    /// <summary>Ends any gesture and lets the face go: the place has been come to again.</summary>
+    public void StopActing()
+    {
+        Gesture = null;
+        gestureAge = 0f;
+        Mood = Mood.Neutral;
+    }
+
     public bool InTallGrass { get; private set; }
     public float GrassRustleTimer { get; private set; }
 
@@ -207,6 +274,7 @@ public class Player
         carried = null;
         pushed = null;
         pushing = 0f;
+        onSpot = 0f;
         moveProgress = 0f;
         height = float.NaN;
         settled = false;
@@ -316,6 +384,15 @@ public class Player
         {
             pushing -= dt;
             WalkCycle += dt * 1.1f;
+            Settle(dt, walking: true);
+            return;
+        }
+
+        // A step on the spot a script asked for: the legs take one step's worth of the walk
+        if (onSpot > 0f)
+        {
+            onSpot -= dt;
+            WalkCycle += stride * dt * 0.5f;
             Settle(dt, walking: true);
             return;
         }

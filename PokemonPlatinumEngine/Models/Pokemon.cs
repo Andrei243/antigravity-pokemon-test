@@ -62,6 +62,21 @@ public class StatSpread
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)] public int SpAttack { get; set; }
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)] public int SpDefense { get; set; }
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)] public int Speed { get; set; }
+
+    /// <summary>The number of one stat (nought for accuracy and evasion, which a spread doesn't hold).</summary>
+    public int Of(StatType stat) => stat switch
+    {
+        StatType.HP => HP,
+        StatType.Attack => Attack,
+        StatType.Defense => Defense,
+        StatType.SpAttack => SpAttack,
+        StatType.SpDefense => SpDefense,
+        StatType.Speed => Speed,
+        _ => 0
+    };
+
+    /// <summary>The six numbers in the spread's own order, as a battle's log is written out (HP/Attack/Defense/Sp. Atk/Sp. Def/Speed).</summary>
+    public override string ToString() => $"{HP}/{Attack}/{Defense}/{SpAttack}/{SpDefense}/{Speed}";
 }
 
 /// <summary>The values that differ between the rules a game is played by (plan 06 · R1): types and base stats.</summary>
@@ -677,6 +692,30 @@ public class Pokemon
     {
         int oldMax = MaxHP;
         RecalculateStats();
+        if (CurrentHP > 0) CurrentHP = Math.Clamp(CurrentHP + MaxHP - oldMax, 1, MaxHP);
+    }
+
+    /// <summary>
+    /// Its six stats as they stand, in a spread of their own that doesn't follow the Pokémon afterwards: what a level
+    /// is measured from and to (plan 08 · P5: the log's <see cref="Battle.Sim.LevelRose"/>, a Rare Candy's panel).
+    /// </summary>
+    public StatSpread Stats() => new() { HP = MaxHP, Attack = Attack, Defense = Defense, SpAttack = SpAttack, SpDefense = SpDefense, Speed = Speed };
+
+    /// <summary>
+    /// Takes six stats worked out elsewhere, its HP moving by what its maximum moved (a fainted one stays down). A
+    /// battle's screen brings its Pokémon to the rules' numbers with it as a level is shown (plan 08 · P5): the
+    /// rules' copy was given the beaten foe's effort before its level and the screen's wasn't, so the screen's own
+    /// reckoning can be a point short until the two are made the same again.
+    /// </summary>
+    internal void TakeStats(StatSpread stats)
+    {
+        int oldMax = MaxHP;
+        MaxHP = stats.HP;
+        Attack = stats.Attack;
+        Defense = stats.Defense;
+        SpAttack = stats.SpAttack;
+        SpDefense = stats.SpDefense;
+        Speed = stats.Speed;
         if (CurrentHP > 0) CurrentHP = Math.Clamp(CurrentHP + MaxHP - oldMax, 1, MaxHP);
     }
 

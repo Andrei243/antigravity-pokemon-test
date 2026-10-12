@@ -134,9 +134,13 @@ public class ScriptTests
           face self player
           face player up
           walk player up 2 left fast
+          walk self onspot down 2 back up
           move self down
           waitmoves
           emote self exclaim 0.5
+          act self wave
+          act player laugh 2
+          mood self happy
           show self
           hide self
           place self 3 4 down
@@ -147,6 +151,15 @@ public class ScriptTests
           camera pan 3 4 0.5
           camera release
           camera shake
+          camera zoom 1.5
+          camera zoom 0.5 2 nowait
+          camera follow self 0.5
+          camera follow player
+          camera path 3 4 5 4 2 nowait
+          letterbox on
+          letterbox off 0.2
+          slowmo 0.25
+          slowmo 1 2
           effect burst 3 4
           effect shadow 3 4 2 left wait
           effect beam 3 4 hold
@@ -581,6 +594,12 @@ public class ScriptTests
     [InlineData("script A\n hide player", "never hidden")]
     [InlineData("script A\n battle player", "can't be battled")]
     [InlineData("script A\n give \"Potion\" 0", "one at a time at least")]
+    [InlineData("script A\n act self", "a gesture")]
+    [InlineData("script A\n act self dance", "is not a gesture")]
+    [InlineData("script A\n act self wave 0", "1 to 9 times")]
+    [InlineData("script A\n mood self giddy", "is not a mood")]
+    [InlineData("script A\n walk self onspot", "needs a direction after it")]
+    [InlineData("script A\n walk self back fast", "needs a direction after it")]
     public void WhatIsWrittenWrongIsToldWithItsLine(string source, string telling)
     {
         var wrong = Assert.Throws<ScriptException>(() => ScriptParser.Parse("town", source));
@@ -1219,6 +1238,60 @@ public class ScriptTests
     }
 
     [Fact]
+    public void ASceneMakesPeopleActHoldAFaceWalkOnTheSpotAndStepBack()
+    {
+        // Every word of plan 11 · C11 in one scene, played with no screen
+        var rival = Person("rival", 5, 5, "Barry");
+        var (runner, host) = Ready("""
+            script S
+              act rival wave
+              act rival nod 2
+              act rival cheer
+              act rival surprised
+              act rival bow
+              act rival shrug
+              act rival point
+              act rival laugh 3
+              act player jump
+              mood rival angry
+              mood player happy
+              walk rival onspot left 2
+              walk rival back down
+              walk player onspot up back right
+              walk player left
+            """);
+        host.Map = Room(rival);
+        host.PlayerTile = (8, 6);
+        runner.RunToEnd();
+
+        Assert.Equal(new[]
+        {
+            "act Barry Wave", "act Barry Nod 2", "act Barry Cheer", "act Barry Surprised", "act Barry Bow", "act Barry Shrug",
+            "act Barry Point", "act Barry Laugh 3", "act player Jump", "mood Barry Angry", "mood player Happy",
+            "walk Barry onspot left onspot left", "walk Barry back down", "walk player onspot up back right"
+        }, host.Log);
+        Assert.Equal(Mood.Angry, rival.Mood);
+        Assert.Equal(Mood.Happy, host.PlayerMood);
+        // On the spot he turned and stayed; a step back down kept him looking left
+        Assert.Equal((5, 6, Direction.Left), (rival.GridX, rival.GridY, rival.Facing));
+        // The player turned up on the spot, stepped back to the right still looking up, and then walked left as ever
+        Assert.Equal((8, 6), host.PlayerTile);
+        Assert.Equal(Direction.Left, host.PlayerFacing);
+        Assert.Empty(host.Problems);
+
+        // What each line read
+        var code = ScriptParser.Parse("test", "script S\n act rival laugh 3\n mood player sad\n walk self back up 2 onspot down")[0].Code;
+        Assert.Equal((Op.Act, "rival", Gesture.Laugh, 3), (code[0].Op, code[0].Name, code[0].Gesture, code[0].Number));
+        Assert.Equal((Op.Mood, "player", Mood.Sad), (code[1].Op, code[1].Name, code[1].Mood));
+        Assert.Equal(new[]
+        {
+            new ScriptStep(Direction.Up, ScriptStepKind.Back), new ScriptStep(Direction.Up, ScriptStepKind.Back),
+            new ScriptStep(Direction.Down, ScriptStepKind.OnSpot)
+        }, code[2].Path);
+        Assert.Equal(1, ScriptParser.Parse("test", "script S\n act self wave")[0].Code[0].Number);
+    }
+
+    [Fact]
     public void SomeoneTurnsToLookAtSomeoneElse()
     {
         Assert.Equal(Direction.Left, ScriptRunner.Toward((5, 5), (2, 5)));
@@ -1376,10 +1449,14 @@ public class ScriptTests
         public void Face(NPC? who, Direction direction) { }
         public void Place(NPC? who, int x, int y, Direction? facing) { }
         public void SetVisible(NPC who, bool visible) { }
-        public void Walk(NPC? who, IReadOnlyList<Direction> steps, bool fast) { }
+        public void Walk(NPC? who, IReadOnlyList<ScriptStep> steps, bool fast) { }
         public bool Walking => false;
         public void Emote(NPC? who, EmoteBubble bubble, float seconds) { }
-        public void Camera(CameraMove move, int x, int y, float seconds) { }
+        public void Act(NPC? who, Gesture gesture, int times) { }
+        public void Mood(NPC? who, Mood mood) { }
+        public float Camera(CameraMove move, int x, int y, float seconds, float factor = 1f, NPC? who = null, IReadOnlyList<(int X, int Y)>? path = null) => 0f;
+        public void Letterbox(bool on, float seconds) { }
+        public void SlowMotion(float share, float seconds) { }
         public void Effect(SceneEffect kind, int x, int y, float seconds, Direction? way, bool hold) { }
         public void StopEffect(int x, int y) { }
         public bool Busy => false;

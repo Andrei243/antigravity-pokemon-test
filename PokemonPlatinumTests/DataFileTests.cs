@@ -308,13 +308,10 @@ public class DataFileTests
             .Where(n => !moveNames.Contains(n)).Distinct().OrderBy(n => n).ToArray();
         Assert.Empty(missing);
 
-        foreach (var file in MapFiles())
-        {
-            foreach (var e in file.WildEncounters)
-                Assert.True(PokemonDatabase.Get(e.SpeciesName) != null, $"{file.Name}: unknown wild species {e.SpeciesName}");
-            foreach (var t in file.Npcs.Where(n => n.Trainer != null).Select(n => n.Trainer!))
-                Assert.All(t.Party, m => Assert.NotNull(PokemonDatabase.Get(m.Species)));
-        }
+        // A room's wild Pokémon and the teams it types are species, its counters counters and its looks looks: the
+        // rule is tools/ContentCheck's since plan 16 · T8 (Rooms.Check), which the tool prints from too
+        var unknown = ContentCheck.Checks.OfTheGame.Where(f => f.Kind == ContentCheck.Kind.Data && f.File.StartsWith(MapDatabase.Folder + "/", StringComparison.Ordinal)).ToList();
+        Assert.True(unknown.Count == 0, string.Join("\n", unknown));
     }
 
     [Fact]
@@ -354,19 +351,16 @@ public class DataFileTests
     [Fact]
     public void TestEveryWarpLandsOnOpenGround()
     {
-        MapDatabase.Initialize();
-        foreach (string name in MapDatabase.MapNames)
-        {
-            var map = MapDatabase.Get(name);
-            foreach (var warp in map.Warps)
-            {
-                // Furniture, fences and lamp posts must never stand where somebody arrives
-                Assert.Contains(warp.TargetMap, MapDatabase.MapNames);
-                var target = MapDatabase.Get(warp.TargetMap);
-                Assert.True(target.InBounds(warp.TargetX, warp.TargetY) && !target.IsSolid(warp.TargetX, warp.TargetY),
-                    $"{name}: the warp at {warp.SourceX},{warp.SourceY} lands on a blocked tile of {warp.TargetMap} ({warp.TargetX},{warp.TargetY})");
-            }
-        }
+        // Furniture, fences and lamp posts must never stand where somebody arrives, and a way leads to a map that is
+        // one: every warp of every room, every door and exit of an overlay and every way the world joins by itself.
+        // The rule is tools/ContentCheck's since plan 16 · T8 (Checks.Landing), which asks for the map by its own
+        // name: MapDatabase.Get answers with the map of Sinnoh for a name it doesn't know
+        var ways = ContentCheck.Checks.OfTheGame.Where(f => f.Kind == ContentCheck.Kind.Way).ToList();
+        Assert.True(ways.Count == 0, string.Join("\n", ways));
+        // (and it went through them all: the rooms' own, and those of the maps the world makes)
+        var content = ContentCheck.GameContent.OfTheGame;
+        Assert.True(content.Rooms.Sum(room => room.Source!.Warps.Count) > 300);
+        Assert.True(content.Regions.Single().Maps!.Sum(map => map.Warps.Count) > 300);
     }
 
     [Fact]
@@ -383,13 +377,13 @@ public class DataFileTests
     [Fact]
     public void TestMapFilesRoundTripWithoutLosingAnything()
     {
-        string folder = GameDataFiles.PathOf(MapDatabase.Folder);
-        foreach (string path in Directory.GetFiles(folder, "*.json"))
-        {
-            string text = File.ReadAllText(path).Replace("\r\n", "\n");
-            var file = GameDataFiles.Load<MapFile>(Path.Combine(MapDatabase.Folder, Path.GetFileName(path)));
-            Assert.Equal(text, GameDataFiles.Serialize(MapFile.FromMap(file.ToMap())));
-        }
+        // Each file is what the game writes of the map it makes of it (MapFile.FromMap), so nothing in it is lost on
+        // the way and no field is one the format doesn't have. The rule is tools/ContentCheck's since plan 16 · T8
+        // (Rooms.Check), which names the line a file parts at
+        var lost = ContentCheck.Checks.OfTheGame
+            .Where(f => f.Kind is ContentCheck.Kind.RoundTrip or ContentCheck.Kind.UnknownField && f.File.StartsWith(MapDatabase.Folder + "/", StringComparison.Ordinal)).ToList();
+        Assert.True(lost.Count == 0, string.Join("\n", lost));
+        Assert.Equal(Directory.GetFiles(GameDataFiles.PathOf(MapDatabase.Folder), "*.json").Length, ContentCheck.GameContent.OfTheGame.Rooms.Count(room => room.Map != null));
     }
 
     [Fact]
@@ -446,8 +440,4 @@ public class DataFileTests
         var e = Assert.Throws<FileNotFoundException>(() => GameDataFiles.Load<List<MoveData>>("does-not-exist.json"));
         Assert.Contains("does-not-exist.json", e.Message);
     }
-
-    private static IEnumerable<MapFile> MapFiles() =>
-        Directory.GetFiles(GameDataFiles.PathOf(MapDatabase.Folder), "*.json")
-            .Select(p => GameDataFiles.Load<MapFile>(Path.Combine(MapDatabase.Folder, Path.GetFileName(p))));
 }

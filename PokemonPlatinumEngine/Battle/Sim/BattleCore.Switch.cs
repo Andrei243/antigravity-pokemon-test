@@ -138,7 +138,6 @@ public sealed partial class BattleCore
         CountFrom(place);
         place.ConfusionTurns = baton.ConfusionTurns;
         foreach (var (stat, stage) in baton.Stages) place.Pokemon!.StatStages[stat] = stage;
-        if (place.HasSubstitute) Emit(new SubstituteChanged(place.Place, Up: true));
     }
 
     /// <summary>The phases of the original's switch-in check, in its order, and the abilities each is for.</summary>
@@ -266,6 +265,8 @@ public sealed partial class BattleCore
         var said = Say(line);
         if (!place.IsPlayerSide) said.With(new Seen(incoming.Species));
         said.With(new Entered(place.Place, incoming, FromBall: true));
+        // A Substitute passed by Baton Pass comes in with the Pokémon it now stands for, on the line that sends it out
+        if (baton != null && place.HasSubstitute) said.With(new SubstituteChanged(place.Place, Up: true));
         SentOutTheLast(place, said);
         Hazards(place);
         if (place.IsActive) beforeEntryEffects?.Invoke();

@@ -3,6 +3,7 @@ using System.Numerics;
 using Raylib_cs;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Overworld;
+using BattleWeather = PokemonPlatinumEngine.Battle.Sim.BattleWeather;
 
 namespace PokemonPlatinumEngine.Graphics;
 
@@ -452,6 +453,75 @@ internal static class ArtLook
         Overworld.BattleArena.Gym or Overworld.BattleArena.League => HallRig(spec.Theme, spec.Kind == Overworld.BattleArena.League),
         _ => BattleRig(hour)
     };
+
+    /// <summary>
+    /// The arena's light under a battle's weather (plan 25 · Y1; style guide, "Weather in battle"), eased in by
+    /// <paramref name="strength"/> (0..1): rain, hail, a sandstorm and fog take the light of the field's weather they
+    /// come from (<see cref="Weathers.FromBattle"/>, <see cref="Weathered"/>), with the sky drawn toward their own
+    /// colour at its own brightness and the stars hidden; the harsh sun has a rig of its own (<see cref="HarshSun"/>).
+    /// </summary>
+    public static LightRig InBattleWeather(LightRig rig, BattleWeather weather, float strength = 1f)
+    {
+        strength = Math.Clamp(strength, 0f, 1f);
+        if (weather == BattleWeather.None || strength <= 0f) return rig;
+        LightRig under;
+        if (weather == BattleWeather.Sun) under = HarshSun(rig);
+        else
+        {
+            under = Weathered(rig, Weathers.FromBattle(weather));
+            var (tint, cover) = weather switch
+            {
+                BattleWeather.Sandstorm => (V(1.12f, 0.98f, 0.76f), 0.75f),
+                BattleWeather.Fog => (V(0.98f, 1f, 1.02f), 0.85f),
+                BattleWeather.Hail => (V(0.96f, 1f, 1.06f), 0.6f),
+                _ => (V(0.94f, 0.98f, 1.04f), 0.7f)
+            };
+            var sky = new SkyColors(Clouded(rig.Sky.Zenith, tint, cover), Clouded(rig.Sky.Middle, tint, cover), Clouded(rig.Sky.Horizon, tint, cover),
+                Clouded(rig.Sky.CloudTint, tint, cover * 0.8f), rig.Sky.Stars * (1f - cover));
+            under = under with { Sky = sky, Background = sky.Horizon };
+        }
+        return strength >= 1f ? under : LightRig.Lerp(rig, under, strength);
+    }
+
+    /// <summary>A colour drawn <paramref name="cover"/> of the way to a grey of its own brightness, tinted.</summary>
+    private static Color Clouded(Color c, Vector3 tint, float cover)
+    {
+        float grey = (0.299f * c.R + 0.587f * c.G + 0.114f * c.B) / 255f;
+        var mixed = Vector3.Lerp(Of(c), tint * grey, cover);
+        return new Color((int)Math.Clamp(mixed.X * 255f, 0f, 255f), (int)Math.Clamp(mixed.Y * 255f, 0f, 255f), (int)Math.Clamp(mixed.Z * 255f, 0f, 255f), 255);
+    }
+
+    /// <summary>
+    /// The harsh sun in battle (plan 25 · Y1), which the field has no weather for: a stronger, warmer key, warm light
+    /// from the sky, more bloom on a lower threshold, warm highlights and a paler, warmer sky.
+    /// </summary>
+    public static LightRig HarshSun(LightRig r)
+    {
+        var sky = new SkyColors(PixelCanvas.Mix(r.Sky.Zenith, Rgb(150, 190, 236), 0.35f), PixelCanvas.Mix(r.Sky.Middle, Rgb(236, 226, 196), 0.45f),
+            PixelCanvas.Mix(r.Sky.Horizon, Rgb(255, 236, 196), 0.55f), PixelCanvas.Mix(r.Sky.CloudTint, Rgb(255, 246, 220), 0.4f), r.Sky.Stars * 0.5f);
+        return r with
+        {
+            Light = r.Light with
+            {
+                SunColor = r.Light.SunColor * V(1.34f, 1.18f, 0.9f),
+                SkyAmbient = r.Light.SkyAmbient * V(1.06f, 1.0f, 0.9f),
+                GroundAmbient = r.Light.GroundAmbient * V(1.12f, 1.04f, 0.9f)
+            },
+            Sky = sky,
+            Background = sky.Horizon,
+            FogColor = Vector3.Lerp(r.FogColor, V(1f, 0.9f, 0.74f), 0.4f),
+            FogAmount = r.FogAmount + 0.06f,
+            CloudShade = r.CloudShade * 0.5f,
+            Post = r.Post with
+            {
+                BloomThreshold = r.Post.BloomThreshold - 0.08f,
+                BloomStrength = r.Post.BloomStrength + 0.18f,
+                Saturation = r.Post.Saturation * 1.05f,
+                HighlightTint = r.Post.HighlightTint * V(1.05f, 1.01f, 0.92f),
+                ShadowTint = r.Post.ShadowTint * V(1.02f, 0.98f, 0.96f)
+            }
+        };
+    }
 
     /// <summary>
     /// Under the trees: less sun, green shade and haze, a stronger vignette. After dark only the green haze is

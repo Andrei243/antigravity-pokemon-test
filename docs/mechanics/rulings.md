@@ -2039,3 +2039,19 @@ Platinum's trainers speak before a battle and after it, never during it; from Bl
 | --- | --- | --- | --- |
 | The trainer on screen | Steps back onto the field as the line is read | The line in the message box under the trainer's name; nobody steps back | Plan 11 · C13 |
 | The moments | Some games also a line for the last Pokémon's Mega Evolution or Z-Move | The three above | Those mechanics are not in the game |
+
+## The level-up panel (2026-10-12, plan 08 · P5)
+
+Platinum shows what a level did to a Pokémon's stats (`BattleScript_GetExpTask`, `src/battle/battle_script.c`): the line that tells of the level, then a window with the six stats and what each gained, a press, the six stats as they now stand, a press, and only then the moves the level brings. This game shows the same under both sets of rules, with no option: it is Platinum's own.
+
+- **The order is the original's**: the level's line with its fanfare first (`SEQ_GET_EXP_WAIT_LEVEL_UP_MESSAGE_PRINT` waits for the text to be written, not for a key), the panel over it (`SEQ_GET_EXP_LEVEL_UP_SUMMARY_PRINT_DIFF`, then `_PRINT_TRUE`), and both pages before `SEQ_GET_EXP_CHECK_LEARN_MOVE`. Plan 08's design had the panel before the line; the original's order was kept, and the log's events stand where they stood (`LevelRose`, then the line, then `MoveWanted`).
+- **The six stats** stand in the original's order (its `statParams`: the most HP, Attack, Defense, Sp. Atk, Sp. Def, Speed), which is not the order effort is counted in.
+- **Before and after are read where the original reads them**: the beaten foe's effort is given first (`BattleScript_CalcEffortValues`, at the start of the task), the old stats are the ones the Pokémon had (effort moves no stat until a level reckons them again), and the new ones count that effort. So a level's gains can hold a point the last foe gave.
+- **Either button turns the page**, as the original's A, B, X, Y or a touch do.
+
+| What | Platinum | Here | Why |
+| --- | --- | --- | --- |
+| Several levels from one gain | A level at a time: the bar fills, the line, the window, the level's moves, and round again | One line and one panel for them all: the gains of every level reached, the stats at the last | The rules give a foe's EXP at once and write one `LevelRose` (plan 06 · R10); the shape of the log was not this session's to change |
+| Whose icon | The party's icon beside the window only for a Pokémon that isn't on the field | The icon, the name and the level in the panel's head, for every Pokémon | The panel stands where the player's HP box is, so the name would be nowhere but in the line |
+| A Rare Candy from the bag | The party menu's own window, the gains and then the stats, before the level's moves and its evolution | The battle's panel over the team's cards, on the half of the screen the Pokémon's card isn't on | One panel and one painter for both |
+| The level's line in the bag | In the party menu's message box | In the prompt under the panel; the moves the level taught into a free place are told by a notice once the panel has been read | The bag tells what an item did by notices at the top of the screen, and a notice and the prompt would have said the same line at once |

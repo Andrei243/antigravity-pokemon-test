@@ -78,11 +78,17 @@ public sealed class BattleRenderer
 
         platformTop = BattleStage.PlatformTopOf(Arena.Kind);
         UpdatePlaces(anim);
-        var rig = ArtLook.ArenaRig(Arena, GameClock.Hour);
+        var arenaRig = ArtLook.ArenaRig(Arena, GameClock.Hour);
+        bool night = Arena.Outdoors && arenaRig.Sky.Stars > 0f;
+        // The weather's light (plan 25 · Y1): the one clearing away under the one coming in, each by how far it has come
+        var rig = ArtLook.InBattleWeather(ArtLook.InBattleWeather(arenaRig, anim.FadingWeather, anim.FadingStrength), anim.Weather, anim.WeatherStrength);
 
         fx.Clear();
         MoveFx.Emit(anim, places, fx);
-        ArenaFx.Emit(Arena, anim.Time, Arena.Outdoors && rig.Sky.Stars > 0f, fx);
+        ArenaFx.Emit(Arena, anim.Time, night, fx, Math.Max(anim.WeatherStrength, anim.FadingStrength));
+        ArenaFx.Weather(anim.FadingWeather, BattleAnimator.WeatherFadeTime, anim.Time, places, fx, anim.FadingStrength);
+        ArenaFx.Weather(anim.Weather, anim.WeatherAge, anim.Time, places, fx);
+        DollEffects(anim);
         PlaceTrainers(anim);
         PlaceBalls(anim);
 
@@ -150,6 +156,13 @@ public sealed class BattleRenderer
                     var model = PokemonModels.Get(shown.ModelName);
                     height = model.Height * ModelScale(model, isPlayer, anim);
                 }
+                // Behind a doll, a move's effect lands on the doll: the place is as tall as what shows of the two
+                if (slot < anim.Slots)
+                {
+                    var look = DollOf(anim[s, slot]);
+                    if (look.Visible)
+                        height = height * look.PokemonGrow + DollSize(s, anim) * (1f - look.PokemonGrow);
+                }
                 places.Set(s, slot, feet, height);
             }
     }
@@ -176,6 +189,7 @@ public sealed class BattleRenderer
         stage.DrawDepth();
         DrawTrainers(CharacterPass.Depth);
         DrawPokemon3D(anim, CharacterPass.Depth);
+        DrawDolls(anim, CharacterPass.Depth);
         DrawBalls(CharacterPass.Depth);
         Rlgl.EnableBackfaceCulling();
         Raylib.EndMode3D();
@@ -207,10 +221,12 @@ public sealed class BattleRenderer
         DrawPokemonShadows(anim);
         DrawTrainers(CharacterPass.Color);
         DrawPokemon3D(anim, CharacterPass.Color);
+        DrawDolls(anim, CharacterPass.Color);
         DrawBalls(CharacterPass.Color);
         Rlgl.EnableBackfaceCulling();
         DrawTrainers(CharacterPass.Outline);
         DrawPokemon3D(anim, CharacterPass.Outline);
+        DrawDolls(anim, CharacterPass.Outline);
         DrawBalls(CharacterPass.Outline);
         FxRenderer.Draw(fx, camera);
 
@@ -249,6 +265,13 @@ public sealed class BattleRenderer
             var mine = anim[BattleSide.Player, slot];
             if (mine.Present && mine.Shown != null && Appear(anim, mine, true).Visible)
                 Blob(Spot(BattleSide.Player, slot, anim.Slots), BattleStage.PlayerPlatformRadius * 0.62f * fit * PokemonModels.Get(mine.Shown.ModelName).Fill);
+            for (int side = 0; side < 2; side++)
+            {
+                var s = (BattleSide)side;
+                var look = DollOf(anim[s, slot]);
+                if (look.Visible && look.Drop < 0.5f)
+                    Blob(DollFeet(s, slot, anim), DollSize(s, anim) * 0.42f * (1f - 0.7f * look.Fade));
+            }
         }
 
         Rlgl.SetTexture(0);
@@ -656,6 +679,10 @@ public sealed class BattleRenderer
             a.FlashColor = new Color(255, 70, 70, 255);
         }
 
+        // A Substitute's doll stands in front of it: it shrinks out as the doll drops in and grows back as it fades
+        // (a Pokémon that faints or is called back behind one shows as it goes)
+        if (v.Substitute != null && !fainting && !recalling) a.Grow *= DollOf(v).PokemonGrow;
+
         // Wild Pokémon start as a dark silhouette while the camera sweeps in
         if (!isPlayer && anim.EnemyTrainer == null && anim.Time < 1.6f && v.SendOutAge < 0f)
             a.Silhouette = 1f - Math.Clamp((anim.Time - 0.7f) / 0.8f, 0f, 1f);
@@ -719,5 +746,52 @@ public sealed class BattleRenderer
             DrawPokemon3D(anim, anim[BattleSide.Enemy, slot], isPlayer: false, slot, pass);
             DrawPokemon3D(anim, anim[BattleSide.Player, slot], isPlayer: true, slot, pass);
         }
+    }
+
+    // ------------------------------------------------------------------ the Substitute's doll (plan 25 · Y1)
+
+    /// <summary>How a place's doll looks this frame (none on a Pokémon that is fainting).</summary>
+    private static DollLook DollOf(CombatantView v) =>
+        v.FaintAge >= 0f ? DollLook.None : SubstituteDoll.LookOf(v.Substitute);
+
+    /// <summary>How tall a doll stands on its side's platform.</summary>
+    private static float DollSize(BattleSide side, BattleAnimator anim) =>
+        SubstituteDoll.SizeOn(side == BattleSide.Player ? BattleStage.PlayerPlatformRadius : BattleStage.EnemyPlatformRadius, SlotFit(anim));
+
+    /// <summary>Where a doll's feet are on the platform: on its Pokémon's spot, a little toward the other side.</summary>
+    private Vector3 DollFeet(BattleSide side, int slot, BattleAnimator anim)
+    {
+        var spot = Spot(side, slot, anim.Slots);
+        var other = side == BattleSide.Player ? BattleStage.EnemySpot : BattleStage.PlayerSpot;
+        var toward = Vector3.Normalize(new Vector3(other.X - spot.X, 0, other.Z - spot.Z));
+        return spot + new Vector3(0, platformTop, 0) + toward * DollSize(side, anim) * 0.15f;
+    }
+
+    private void DrawDolls(BattleAnimator anim, CharacterPass pass)
+    {
+        for (int slot = 0; slot < anim.Slots; slot++)
+            for (int side = 0; side < 2; side++)
+            {
+                var s = (BattleSide)side;
+                var look = DollOf(anim[s, slot]);
+                if (!look.Visible) continue;
+                var feet = DollFeet(s, slot, anim);
+                var spot = Spot(s, slot, anim.Slots);
+                var other = s == BattleSide.Player ? BattleStage.EnemySpot : BattleStage.PlayerSpot;
+                SubstituteDoll.Draw(context, SubstituteDoll.Place(feet, other - spot, DollSize(s, anim), look), pass, look.Fade);
+            }
+    }
+
+    /// <summary>The dust a doll lands in, the stars of its flinch and the puff it fades into.</summary>
+    private void DollEffects(BattleAnimator anim)
+    {
+        for (int slot = 0; slot < anim.Slots; slot++)
+            for (int side = 0; side < 2; side++)
+            {
+                var s = (BattleSide)side;
+                var v = anim[s, slot];
+                if (v.Substitute == null || v.FaintAge >= 0f) continue;
+                SubstituteDoll.Effects(v.Substitute, DollFeet(s, slot, anim), DollSize(s, anim), fx);
+            }
     }
 }

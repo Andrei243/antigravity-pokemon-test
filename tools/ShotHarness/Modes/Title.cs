@@ -4,9 +4,9 @@ partial class Harness
     public void TitleMode()
     {
         const float Dt = 1f / 60f;
-        TitleScreen NewTitle(SaveData? save)
+        TitleScreen NewTitle(SaveData? save, TitleNotice notice = null)
         {
-            var title = new TitleScreen(save);
+            var title = new TitleScreen(save, notice);
             game.Title = title;
             game.State = GameState.Title;
             return title;
@@ -63,6 +63,37 @@ partial class Harness
         Seconds(1.2f);
         modern.PressConfirm();
         Seconds(1f); Shot("title_14_continue_modern_rules");
+
+        // A save that couldn't be read: the one before it was loaded, and the title says so before its menu (plan 12 · Q1)
+        var recovered = NewTitle(save, TitleNotice.ForSave(SaveLoad.Recovered));
+        recovered.PressConfirm();
+        Seconds(1.2f);
+        recovered.PressConfirm();
+        Seconds(0.5f); Shot("title_15_notice_recovered");
+        Console.WriteLine($"title notice: {recovered.Notice?.Heading}, phase {recovered.Phase}");
+        recovered.PressConfirm();
+        Seconds(1f);
+        Console.WriteLine($"after the notice: phase {recovered.Phase}, entries {string.Join(", ", recovered.Entries)}");
+
+        // The attract loop (plan 09 · L4), last so that nothing before it moves: the title left alone for its half
+        // minute plays the opening again, without the notice; a button there comes back to the title, and on to the menu
+        var alone = NewTitle(null);
+        alone.PressConfirm();
+        Seconds(TitleScreen.IdleTime - 0.5f); Shot("title_16_idle_before_the_loop");
+        Console.WriteLine($"left alone for {TitleScreen.IdleTime - 0.5f:0.0} s: phase {alone.Phase}");
+        Seconds(0.5f + 1.9f); Shot("title_17_loop_journey_twinleaf");
+        Console.WriteLine($"... and for {TitleScreen.IdleTime + 1.9f:0.0} s: phase {alone.Phase}");
+        Seconds(TitleScreen.SegmentTime * 2f); Shot("title_18_loop_journey_sandgem");
+        Seconds(TitleScreen.SegmentTime - 1.9f + 1.9f); Shot("title_19_loop_reveal");
+        Console.WriteLine($"the opening played again: phase {alone.Phase}");
+        Seconds(TitleScreen.RevealTime + TitleScreen.IdleTime - 1.9f + 2.5f);
+        Console.WriteLine($"left alone again: phase {alone.Phase}");
+        alone.PressConfirm();
+        Seconds(0.1f); Shot("title_20_loop_skipped");
+        Console.WriteLine($"a button in it: phase {alone.Phase}");
+        alone.PressConfirm();
+        Seconds(1f);
+        Console.WriteLine($"... and another: phase {alone.Phase}, entries {string.Join(", ", alone.Entries)}");
 
         game.State = GameState.Overworld;
     }

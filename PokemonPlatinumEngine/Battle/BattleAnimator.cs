@@ -39,10 +39,45 @@ public sealed class CombatantView
 
     internal float FaintDelay;
     internal float CaptureDelay;
+
+    /// <summary>
+    /// The Substitute's doll standing in front of this place's Pokémon (plan 25 · Y1), or null when there is none and
+    /// none is fading. Set by the log's lines (<c>SubstituteChanged</c>), never read from the rules.
+    /// </summary>
+    public SubstituteView? Substitute { get; internal set; }
+
+    /// <summary>Whether a doll stands here (or is dropping in): what hides a mark on the Pokémon behind it.</summary>
+    public bool BehindDoll => Substitute is { Up: true };
 }
 
-/// <summary>What an effect cue shows: a move, or something that happens to one Pokémon.</summary>
-public enum CueKind { Move, StatUp, StatDown, Heal, Status, Seals }
+/// <summary>
+/// A Substitute's doll on one place (plan 25 · Y1; style guide, "The Substitute"): whether it stands, how long since
+/// its last swap began, and the flinch and the step aside it is in the middle of. What it looks like at these ages is
+/// <see cref="Graphics.SubstituteDoll.LookOf"/>, a pure function of them.
+/// </summary>
+public sealed class SubstituteView
+{
+    /// <summary>True while the doll stands (from the moment it drops in); false while it fades.</summary>
+    public bool Up { get; internal set; }
+
+    /// <summary>
+    /// Seconds since it dropped in (<see cref="Up"/>) or began to fade. Below nought it waits: a doll passed by Baton
+    /// Pass drops in once its new Pokémon is out of the ball.
+    /// </summary>
+    public float Age { get; internal set; }
+
+    /// <summary>Seconds since a hit made it flinch (-1 = none).</summary>
+    public float HitAge { get; internal set; } = -1f;
+
+    /// <summary>Seconds since it began to step aside for its owner's own move (-1 = standing in front).</summary>
+    public float AsideAge { get; internal set; } = -1f;
+
+    /// <summary>From the animator's own count, never the battle's chance: varies the puff and the dust.</summary>
+    public int Seed { get; internal set; }
+}
+
+/// <summary>What an effect cue shows: a move, something that happens to one Pokémon, or the weather over the field.</summary>
+public enum CueKind { Move, StatUp, StatDown, Heal, Status, Seals, Weather }
 
 /// <summary>
 /// An effect for the renderer to play (plan 04 · G8): a move from one place to another and how it landed, or a
@@ -63,6 +98,9 @@ public sealed class EffectCue
 
     /// <summary>For <see cref="CueKind.Seals"/> (plan 06 · R17b): the Ball Capsule whose Seals burst as the Pokémon comes out of its ball.</summary>
     public Models.BallCapsule? Capsule { get; init; }
+
+    /// <summary>For <see cref="CueKind.Weather"/> (plan 25 · Y1): the weather that begins or goes on.</summary>
+    public Sim.BattleWeather Weather { get; init; }
 
     public BattleSide FromSide { get; init; }
     public int FromSlot { get; init; }
@@ -89,7 +127,16 @@ public sealed class EffectCue
     public bool Landed => !Missed && !Blocked;
 
     /// <summary>How long this cue plays.</summary>
-    public float Length => Kind == CueKind.Move ? BattleAnimator.EffectTime : Kind == CueKind.Seals ? BattleAnimator.SealTime : BattleAnimator.MarkTime;
+    public float Length => Kind switch
+    {
+        CueKind.Move => BattleAnimator.EffectTime,
+        CueKind.Seals => BattleAnimator.SealTime,
+        CueKind.Weather => BattleAnimator.WeatherCueTime,
+        _ => BattleAnimator.MarkTime
+    };
+
+    /// <summary>A mark on one Pokémon: a stat's change, a heal, a condition given (what a doll hides).</summary>
+    public bool OnOnePokemon => Kind is CueKind.StatUp or CueKind.StatDown or CueKind.Heal or CueKind.Status;
 }
 
 /// <summary>The steps of a thrown Poké Ball, in order.</summary>
@@ -140,6 +187,22 @@ public sealed class BattleAnimator
 
     /// <summary>How long a stat change, a heal or a status condition shows on its Pokémon.</summary>
     public const float MarkTime = 1.1f;
+
+    /// <summary>
+    /// The weather in battle (plan 25 · Y1): its cue plays this long as it begins and on each turn it goes on, and
+    /// the layer that lasts eases in and out over <see cref="WeatherFadeTime"/>.
+    /// </summary>
+    public const float WeatherCueTime = 1.2f;
+    public const float WeatherFadeTime = 1.0f;
+
+    /// <summary>
+    /// The doll's swaps (plan 25 · Y1): the Pokémon shrinks out as the doll drops in; the doll fades in a puff as the
+    /// Pokémon grows back; a hit's flinch; a step aside for its owner's own move, held while the move plays.
+    /// </summary>
+    public const float SubstituteInTime = 0.7f;
+    public const float SubstituteOutTime = 0.6f;
+    public const float SubstituteHitTime = 0.45f;
+    public const float SubstituteAsideTime = EffectTime + 0.2f;
 
     // The thrown ball: the trainer runs in and throws, the ball flies, opens over the foe and pulls it in, drops
     // onto the platform, wobbles once per successful shake check with a short pause after each, then clicks shut
@@ -239,6 +302,122 @@ public sealed class BattleAnimator
     public CombatantView this[BattleSide side] => this[side, 0];
     public CombatantView this[BattleSide side, int slot] => views[(int)side, slot];
 
+    // ------------------------------------------------------------------ the weather (plan 25 · Y1)
+
+    /// <summary>The weather in the air over the stage, as the lines have told of it (none: a clear sky).</summary>
+    public Sim.BattleWeather Weather { get; private set; }
+
+    /// <summary>Seconds since <see cref="Weather"/> began to show (its layer eases in over <see cref="WeatherFadeTime"/>).</summary>
+    public float WeatherAge { get; private set; }
+
+    /// <summary>The weather that is clearing away, and for how long it has been (-1: none is).</summary>
+    public Sim.BattleWeather FadingWeather { get; private set; }
+    public float FadingAge { get; private set; } = -1f;
+
+    /// <summary>How far the weather's layer and light have come in, 0..1.</summary>
+    public float WeatherStrength => Weather == Sim.BattleWeather.None ? 0f : Math.Clamp(WeatherAge / WeatherFadeTime, 0f, 1f);
+
+    /// <summary>How much of the weather that is clearing is still there, 0..1.</summary>
+    public float FadingStrength => FadingAge < 0f ? 0f : Math.Clamp(1f - FadingAge / WeatherFadeTime, 0f, 1f);
+
+    /// <summary>A weather begins: its cue plays and its layer comes in (a weather already in the air is taken over at once).</summary>
+    public EffectCue WeatherBegins(Sim.BattleWeather weather)
+    {
+        SetSky(weather, instantly: false);
+        return Cue(new EffectCue { Kind = CueKind.Weather, Weather = weather });
+    }
+
+    /// <summary>The weather goes on at the end of a turn: its cue plays again over the layer that lasts.</summary>
+    public EffectCue WeatherGoesOn(Sim.BattleWeather weather)
+    {
+        if (Weather != weather) SetSky(weather, instantly: true);
+        return Cue(new EffectCue { Kind = CueKind.Weather, Weather = weather });
+    }
+
+    /// <summary>The weather stops: its layer eases away.</summary>
+    public void WeatherClears() => SetSky(Sim.BattleWeather.None, instantly: false);
+
+    /// <summary>The sky as the rules have it once a menu opens, with no cue (a battle the screen fell behind).</summary>
+    public void SettleWeather(Sim.BattleWeather weather)
+    {
+        if (Weather != weather) SetSky(weather, instantly: true);
+    }
+
+    private void SetSky(Sim.BattleWeather weather, bool instantly)
+    {
+        if (weather == Weather) return;
+        if (Weather != Sim.BattleWeather.None && !instantly)
+        {
+            FadingWeather = Weather;
+            // What had not finished easing in eases out from where it stood
+            FadingAge = (1f - WeatherStrength) * WeatherFadeTime;
+        }
+        else if (instantly)
+        {
+            FadingWeather = Sim.BattleWeather.None;
+            FadingAge = -1f;
+        }
+        Weather = weather;
+        WeatherAge = instantly ? WeatherFadeTime : 0f;
+    }
+
+    // ------------------------------------------------------------------ the Substitute (plan 25 · Y1)
+
+    private int dollCount;
+
+    /// <summary>A doll is put up in a place: the Pokémon shrinks out of sight as the doll drops in.</summary>
+    public SubstituteView SubstituteUp(BattleSide side, int slot = 0)
+    {
+        var v = this[side, slot];
+        var doll = new SubstituteView { Up = true, Seed = ++dollCount * 4099 + slot * 13 + (int)side };
+        // A doll passed by Baton Pass waits for its new Pokémon to come out of the ball
+        if (v.SendOutAge >= 0f) doll.Age = -(SendOutTime - v.SendOutAge);
+        v.Substitute = doll;
+        return doll;
+    }
+
+    /// <summary>The doll is gone: it fades in a puff and the Pokémon grows back.</summary>
+    public void SubstituteDown(BattleSide side, int slot = 0)
+    {
+        var v = this[side, slot];
+        if (v.Substitute is not { Up: true } doll) return;
+        doll.Up = false;
+        doll.Age = 0f;
+        doll.HitAge = doll.AsideAge = -1f;
+    }
+
+    /// <summary>A hit lands on the doll: it flinches.</summary>
+    public void SubstituteHit(BattleSide side, int slot = 0)
+    {
+        if (this[side, slot].Substitute is { Up: true } doll) doll.HitAge = 0f;
+    }
+
+    /// <summary>Its owner uses a move: the doll steps aside, and back once the move has played.</summary>
+    public void SubstituteAside(BattleSide side, int slot = 0)
+    {
+        if (this[side, slot].Substitute is { Up: true } doll) doll.AsideAge = 0f;
+    }
+
+    /// <summary>The doll as the rules have it once a menu opens: standing or not, with no swap played.</summary>
+    public void SettleSubstitute(BattleSide side, int slot, bool up)
+    {
+        var v = this[side, slot];
+        if (v.BehindDoll == up) return;
+        v.Substitute = up ? new SubstituteView { Up = true, Age = SubstituteInTime, Seed = ++dollCount * 4099 + slot * 13 + (int)side } : null;
+    }
+
+    /// <summary>
+    /// Whether a cue shows on its Pokémon, as the original's <c>BattleSystem_ShouldShowStatusEffect</c> decides: on a
+    /// Pokémon behind a doll or out of sight only the weather (and the doll's own swaps, which are no cue) shows; a
+    /// stat's change, a heal or a condition given is hidden. A move's own effect always plays: it lands on the doll.
+    /// </summary>
+    public bool Shows(EffectCue cue)
+    {
+        if (!cue.OnOnePokemon) return true;
+        var v = this[cue.ToSide, Math.Clamp(cue.ToSlot, 0, 1)];
+        return !v.BehindDoll && !v.Away;
+    }
+
     /// <summary>A Pokémon already on the field when the battle opens (wild encounters).</summary>
     public void Appear(BattleSide side, Pokemon pokemon, int slot = 0)
     {
@@ -273,12 +452,15 @@ public sealed class BattleAnimator
         ShakeStrength = strength;
     }
 
-    /// <summary>Starts an effect; it plays for <see cref="EffectCue.Length"/> seconds.</summary>
+    /// <summary>
+    /// Starts an effect; it plays for <see cref="EffectCue.Length"/> seconds. A mark on a Pokémon that can't be seen
+    /// (behind a doll, out of sight) isn't started (<see cref="Shows"/>), though it is counted and seeded as ever.
+    /// </summary>
     public EffectCue Cue(EffectCue cue)
     {
         cue.Seed = ++cueCount * 7919 + cue.Move.Length;
         cue.Age = 0f;
-        cues.Add(cue);
+        if (Shows(cue)) cues.Add(cue);
         return cue;
     }
 
@@ -313,7 +495,12 @@ public sealed class BattleAnimator
         v.FaintAge = 0f;
     }
 
-    public void Recall(BattleSide side, int slot = 0) => this[side, slot].RecallAge = 0f;
+    /// <summary>Called back into its ball: a doll standing in front of it goes as it does.</summary>
+    public void Recall(BattleSide side, int slot = 0)
+    {
+        this[side, slot].RecallAge = 0f;
+        SubstituteDown(side, slot);
+    }
 
     /// <summary>The foe is drawn into the Poké Ball once it lands (after <paramref name="delay"/> seconds).</summary>
     public void Capture(float delay, int slot = 0)
@@ -357,6 +544,12 @@ public sealed class BattleAnimator
             var cue = cues[i];
             if ((cue.Age += dt) >= cue.Length) cues.RemoveAt(i--);
         }
+        if (Weather != Sim.BattleWeather.None) WeatherAge += dt;
+        if (FadingAge >= 0f && (FadingAge += dt) >= WeatherFadeTime)
+        {
+            FadingAge = -1f;
+            FadingWeather = Sim.BattleWeather.None;
+        }
         if (Ball != null)
         {
             Ball.Age += dt;
@@ -371,6 +564,13 @@ public sealed class BattleAnimator
     private static void Advance(CombatantView v, float dt, Pokemon? logical)
     {
         v.SendOutAge = Tick(v.SendOutAge, dt, SendOutTime);
+        if (v.Substitute is { } doll)
+        {
+            doll.Age += dt;
+            doll.HitAge = Tick(doll.HitAge, dt, SubstituteHitTime);
+            doll.AsideAge = Tick(doll.AsideAge, dt, SubstituteAsideTime);
+            if (!doll.Up && doll.Age >= SubstituteOutTime) v.Substitute = null;
+        }
         v.AttackAge = Tick(v.AttackAge, dt, AttackTime);
         v.HitAge = Tick(v.HitAge, dt, HitTime);
 
@@ -413,6 +613,8 @@ public sealed class BattleAnimator
         v.Away = false;
         v.SendOutAge = v.AttackAge = v.HitAge = v.FaintAge = v.RecallAge = v.CaptureAge = -1f;
         v.FaintDelay = v.CaptureDelay = 0f;
+        // A new Pokémon on the place stands in front of nothing (a passed doll comes in after it, by its own line)
+        v.Substitute = null;
         v.DisplayedHp = pokemon.CurrentHP;
         v.DisplayedExp = pokemon.ExpProgressRatio;
     }

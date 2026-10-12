@@ -65,6 +65,7 @@ log:
     ! Struck P0 Hp=62 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Gyarados used Hyper Beam!
     + Lunged P0 Category=Special
     + MoveShown Move=Hyper Beam Type=Normal Category=Special From=P0 To=E0 Missed=true Blocked=false Critical=false SuperEffective=false
@@ -75,6 +76,7 @@ log:
     ! Struck P0 Hp=6 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Gyarados used Rain Dance!
     + Lunged P0 Category=Status
     + MoveShown Move=Rain Dance Type=Water Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -132,6 +134,7 @@ log:
   say It started to rain!
     + WeatherChanged Weather=Rain
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Go! Cloyster!
     + Entered P0 Pokemon=mine#2 Cloyster FromBall=true
   say Foe Scovillain used Seed Bomb!
@@ -156,6 +159,7 @@ log:
     + MoveShown Move=Hydro Pump Type=Water Category=Special From=P1 To=E0 Missed=true Blocked=false Critical=false SuperEffective=false
   say Foe Oinkologne avoided the attack!
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Carracosta fell asleep!
     + StatusChanged P1 Status=Sleep
   say Foe Scovillain used Overheat!
@@ -470,6 +474,7 @@ log:
     + MoveShown Move=Rock Slide Type=Rock Category=Physical From=E0 To=P0 Missed=true Blocked=false Critical=false SuperEffective=false
   say Foe Gigalith's attack missed!
   say The sandstorm rages.
+    + WeatherContinues Weather=Sandstorm
   say Bonsly used Double-Edge!
     + Lunged P0 Category=Physical
     + MoveShown Move=Double-Edge Type=Normal Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -975,6 +980,7 @@ log:
     ! Struck E0 Hp=167 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Foe Wartortle lowered its head!
     + Lunged E0 Category=Status
   say Foe Wartortle's Defense rose!
@@ -985,6 +991,7 @@ log:
     ! Struck E0 Hp=164 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Foe Wartortle used Skull Bash!
     + Lunged E0 Category=Physical
     + MoveShown Move=Skull Bash Type=Normal Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -993,6 +1000,7 @@ log:
   say Croagunk fainted!
     + Fainted P0
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Go! Staraptor!
     + Entered P0 Pokemon=mine#1 Staraptor FromBall=true
   say Staraptor's Intimidate cuts Foe Wartortle's Attack!
@@ -1009,6 +1017,7 @@ log:
   say Foe Wartortle's Defense sharply rose!
     + StageChanged E0 Stat=Defense Stage=3 Rose=true
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Staraptor used Take Down!
     + Lunged P0 Category=Physical
     + MoveShown Move=Take Down Type=Normal Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -1061,6 +1070,7 @@ log:
   say It started to rain!
     + WeatherChanged Weather=Rain
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Staraptor used Take Down!
     + Lunged P0 Category=Physical
     + MoveShown Move=Take Down Type=Normal Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -1073,6 +1083,7 @@ log:
     + MoveShown Move=Hydro Pump Type=Water Category=Special From=E0 To=P0 Missed=true Blocked=false Critical=false SuperEffective=false
   say Foe Wartortle's attack missed!
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Staraptor used Close Combat!
     + Lunged P0 Category=Physical
     + MoveShown Move=Close Combat Type=Fighting Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -1087,6 +1098,7 @@ log:
   say Foe Wartortle's Defense rose!
     + StageChanged E0 Stat=Defense Stage=5 Rose=true
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Staraptor used Brave Bird!
     + Lunged P0 Category=Physical
     + MoveShown Move=Brave Bird Type=Flying Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -1102,6 +1114,7 @@ log:
   say Staraptor fainted!
     + Fainted P0
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Go! Sableye!
     + Entered P0 Pokemon=mine#2 Sableye FromBall=true
   say Sableye used Shadow Sneak!
@@ -1849,7 +1862,7 @@ log:
   ExpGained Pokemon=mine#1 Kricketune Amount=475
   say Delibird gained 1042 EXP. Points!
   ExpGained Pokemon=mine#2 Delibird Amount=1042
-  LevelRose Pokemon=mine#2 Delibird Level=13
+  LevelRose Pokemon=mine#2 Delibird Level=13 Before=31/18/16/17/15/20 After=38/21/19/20/18/24
   say Delibird grew to Lv. 13!
   say Ace Trainer Tester sent out Sandy Shocks!
     + Seen Species=Sandy Shocks
@@ -1933,12 +1946,12 @@ log:
   ExpGained Pokemon=mine#0 Gothita Amount=127
   say Lickitung gained 1089 EXP. Points!
   ExpGained Pokemon=mine#1 Lickitung Amount=1089
-  LevelRose Pokemon=mine#1 Lickitung Level=13
+  LevelRose Pokemon=mine#1 Lickitung Level=13 Before=42/18/21/19/24/12 After=48/20/25/23/27/14
   say Lickitung grew to Lv. 13!
   say Lickitung learned Knock Off!
   say Metang gained 545 EXP. Points!
   ExpGained Pokemon=mine#2 Metang Amount=545
-  LevelRose Pokemon=mine#2 Metang Level=12
+  LevelRose Pokemon=mine#2 Metang Level=12 Before=36/22/27/20/26/14 After=38/24/29/21/28/15
   say Metang grew to Lv. 12!
   say Foe Cosmoem used Cosmic Power!
     + Lunged E1 Category=Status
@@ -2109,6 +2122,7 @@ log:
     ! Struck E0 Hp=182 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say The sunlight is strong.
+    + WeatherContinues Weather=Sun
   say Foe Clawitzer used Aura Sphere!
     + Lunged E0 Category=Special
     + MoveShown Move=Aura Sphere Type=Fighting Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -2117,6 +2131,7 @@ log:
   say Groudon fainted!
     + Fainted P0
   say The sunlight is strong.
+    + WeatherContinues Weather=Sun
   say Go! Pidgeot!
     + Entered P0 Pokemon=mine#2 Pidgeot FromBall=true
   say Pidgeot used Quick Attack!
@@ -2128,6 +2143,7 @@ log:
     + Lunged E0 Category=Status
     + Vanished E0
   say The sunlight is strong.
+    + WeatherContinues Weather=Sun
   say Foe Clawitzer used Bounce!
     + Reappeared E0
     + Lunged E0 Category=Physical
@@ -3212,6 +3228,7 @@ log:
   say A sandstorm kicked up!
     + WeatherChanged Weather=Sandstorm
   say The sandstorm rages.
+    + WeatherContinues Weather=Sandstorm
   say Lickitung is buffeted by the sandstorm!
     + HpChanged P0 Hp=233 Healed=false
   say Lickitung used Screech!
@@ -3226,6 +3243,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say A critical hit!
   say The sandstorm rages.
+    + WeatherContinues Weather=Sandstorm
   say Lickitung is buffeted by the sandstorm!
     + HpChanged P0 Hp=215 Healed=false
   say Lickitung used Screech!
@@ -3239,6 +3257,7 @@ log:
     ! Struck P0 Hp=213 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say The sandstorm rages.
+    + WeatherContinues Weather=Sandstorm
   say Lickitung is buffeted by the sandstorm!
     + HpChanged P0 Hp=198 Healed=false
   say Lickitung used Refresh!
@@ -3250,6 +3269,7 @@ log:
     ! Struck P0 Hp=196 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say The sandstorm rages.
+    + WeatherContinues Weather=Sandstorm
   say Lickitung is buffeted by the sandstorm!
     + HpChanged P0 Hp=181 Healed=false
   say Lickitung used Refresh!
@@ -3330,7 +3350,7 @@ log:
   ExpGained Pokemon=mine#1 Volbeat Amount=560
   say Piloswine gained 1635 EXP. Points!
   ExpGained Pokemon=mine#2 Piloswine Amount=1635
-  LevelRose Pokemon=mine#2 Piloswine Level=15
+  LevelRose Pokemon=mine#2 Piloswine Level=15 Before=51/33/23/20/23/20 After=58/37/27/23/26/23
   say Piloswine grew to Lv. 15!
   say Ace Trainer Tester sent out Pupitar!
     + Seen Species=Pupitar
@@ -3411,6 +3431,7 @@ log:
   say Alcremie is paralyzed! It may be unable to move!
     + StatusChanged P1 Status=Paralyze
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Whimsicott used Cotton Guard!
     + Lunged P0 Category=Status
     + MoveShown Move=Cotton Guard Type=Grass Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -3429,6 +3450,7 @@ log:
   say Alcremie fainted!
     + Fainted P1
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Go! Staryu!
     + Entered P1 Pokemon=mine#2 Staryu FromBall=true
   say Whimsicott used Cotton Guard!
@@ -3448,6 +3470,7 @@ log:
   say Foe Quagsire made Staryu drowsy!
   say Foe Klink must recharge!
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Whimsicott fell asleep!
     + StatusChanged P0 Status=Sleep
   say Whimsicott is fast asleep.
@@ -3467,6 +3490,7 @@ log:
   say Staryu fainted!
     + Fainted P1
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Whimsicott is fast asleep.
   say Foe Quagsire used Amnesia!
     + Lunged E0 Category=Status
@@ -4098,7 +4122,7 @@ log:
   ExpGained Pokemon=mine#1 Crabrawler Amount=405
   say Diancie gained 1145 EXP. Points!
   ExpGained Pokemon=mine#2 Diancie Amount=1145
-  LevelRose Pokemon=mine#2 Diancie Level=15
+  LevelRose Pokemon=mine#2 Diancie Level=15 Before=42/33/47/36/47/20 After=44/35/50/38/50/22
   say Diancie grew to Lv. 15!
   say Crabrawler used Iron Defense!
     + Lunged P1 Category=Status
@@ -4266,7 +4290,7 @@ log:
   ExpGained Pokemon=mine#0 Illumise Amount=893
   say Zigzagoon gained 1278 EXP. Points!
   ExpGained Pokemon=mine#1 Zigzagoon Amount=1278
-  LevelRose Pokemon=mine#1 Zigzagoon Level=17
+  LevelRose Pokemon=mine#1 Zigzagoon Level=17 Before=40/17/16/18/19/29 After=42/18/17/19/20/30
   say Zigzagoon grew to Lv. 17!
   MoveWanted Pokemon=mine#1 Zigzagoon Move=Odor Sleuth
   say Heliolisk gained 1084 EXP. Points!
@@ -4982,7 +5006,7 @@ log:
   ExpGained Pokemon=mine#0 Skuntank Amount=529
   say Tepig gained 671 EXP. Points!
   ExpGained Pokemon=mine#1 Tepig Amount=671
-  LevelRose Pokemon=mine#1 Tepig Level=14
+  LevelRose Pokemon=mine#1 Tepig Level=14 Before=39/21/14/17/19/18 After=44/24/16/18/21/20
   say Tepig grew to Lv. 14!
   MoveWanted Pokemon=mine#1 Tepig Move=Defense Curl
   say Braviary gained 431 EXP. Points!
@@ -5461,7 +5485,7 @@ log:
     + TrainerReacts E0 Cue=FirstDown
   say Floette gained 2092 EXP. Points!
   ExpGained Pokemon=mine#2 Floette Amount=2092
-  LevelRose Pokemon=mine#2 Floette Level=16
+  LevelRose Pokemon=mine#2 Floette Level=16 Before=39/19/19/29/28/20 After=43/21/22/32/32/22
   say Floette grew to Lv. 16!
   MoveWanted Pokemon=mine#2 Floette Move=Razor Leaf
   say Wobbuffet fainted!
@@ -5838,7 +5862,7 @@ log:
   ExpGained Pokemon=mine#1 Sneasel Amount=217
   say Sylveon gained 794 EXP. Points!
   ExpGained Pokemon=mine#2 Sylveon Amount=794
-  LevelRose Pokemon=mine#2 Sylveon Level=9
+  LevelRose Pokemon=mine#2 Sylveon Level=9 Before=25/12/12/17/16/11 After=37/19/18/28/25/16
   say Sylveon grew to Lv. 9!
   say Sneasel used Beat Up!
     + Lunged P1 Category=Physical
@@ -5932,7 +5956,7 @@ log:
   ExpGained Pokemon=mine#1 Sneasel Amount=40
   say Sylveon gained 300 EXP. Points!
   ExpGained Pokemon=mine#2 Sylveon Amount=300
-  LevelRose Pokemon=mine#2 Sylveon Level=10
+  LevelRose Pokemon=mine#2 Sylveon Level=10 Before=37/19/18/28/25/16 After=40/20/20/30/27/18
   say Sylveon grew to Lv. 10!
   MoveWanted Pokemon=mine#2 Sylveon Move=Quick Attack
   Won
@@ -6884,6 +6908,7 @@ log:
   say It started to rain!
     + WeatherChanged Weather=Rain
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Alcremie used Attract!
     + Lunged P0 Category=Status
     + MoveShown Move=Attract Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -6891,6 +6916,7 @@ log:
   say Foe Gastrodon is in love with Alcremie!
   say Foe Gastrodon is immobilized by love!
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Alcremie used Attract!
     + Lunged P0 Category=Status
     + MoveShown Move=Attract Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -6904,6 +6930,7 @@ log:
   say Alcremie is paralyzed! It may be unable to move!
     + StatusChanged P0 Status=Paralyze
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Foe Gastrodon is in love with Alcremie!
   say Foe Gastrodon is immobilized by love!
   say Alcremie used Attract!
@@ -6911,6 +6938,7 @@ log:
     + MoveShown Move=Attract Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say But it failed!
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Foe Gastrodon is in love with Alcremie!
   say Foe Gastrodon is immobilized by love!
   say Alcremie used Attract!
@@ -6940,6 +6968,7 @@ log:
     ! Struck E0 Hp=91 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Foe Gastrodon is in love with Alcremie!
   say Foe Gastrodon used Muddy Water!
     + Lunged E0 Category=Special
@@ -6953,6 +6982,7 @@ log:
     + MoveShown Move=Attract Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say But it failed!
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Foe Gastrodon is in love with Alcremie!
   say Foe Gastrodon is immobilized by love!
   say Alcremie used Attract!
@@ -6960,6 +6990,7 @@ log:
     + MoveShown Move=Attract Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Alcremie's attack missed!
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Foe Gastrodon is in love with Alcremie!
   say Foe Gastrodon used Body Slam!
     + Lunged E0 Category=Physical
@@ -6971,6 +7002,7 @@ log:
     + MoveShown Move=Dazzling Gleam Type=Fairy Category=Special From=P0 To=E0 Missed=true Blocked=false Critical=false SuperEffective=false
   say Alcremie's attack missed!
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Foe Gastrodon is in love with Alcremie!
   say Foe Gastrodon is immobilized by love!
   say Alcremie used Recover!
@@ -7159,7 +7191,7 @@ log:
   ExpGained Pokemon=mine#0 Cloyster Amount=76
   say Gimmighoul gained 618 EXP. Points!
   ExpGained Pokemon=mine#1 Gimmighoul Amount=618
-  LevelRose Pokemon=mine#1 Gimmighoul Level=9
+  LevelRose Pokemon=mine#1 Gimmighoul Level=9 Before=24/9/17/15/15/7 After=28/10/20/19/18/8
   say Gimmighoul grew to Lv. 9!
   say Chandelure gained 348 EXP. Points!
   ExpGained Pokemon=mine#2 Chandelure Amount=348
@@ -7210,11 +7242,11 @@ log:
   ExpGained Pokemon=mine#0 Cloyster Amount=409
   say Gimmighoul gained 1494 EXP. Points!
   ExpGained Pokemon=mine#1 Gimmighoul Amount=1494
-  LevelRose Pokemon=mine#1 Gimmighoul Level=12
+  LevelRose Pokemon=mine#1 Gimmighoul Level=12 Before=28/10/20/19/18/8 After=34/12/26/23/23/9
   say Gimmighoul grew to Lv. 12!
   say Chandelure gained 1131 EXP. Points!
   ExpGained Pokemon=mine#2 Chandelure Amount=1131
-  LevelRose Pokemon=mine#2 Chandelure Level=17
+  LevelRose Pokemon=mine#2 Chandelure Level=17 Before=45/24/31/53/34/29 After=50/26/35/59/38/32
   say Chandelure grew to Lv. 17!
   say Ace Trainer Tester sent out Weezing!
     + Seen Species=Weezing
@@ -7316,6 +7348,7 @@ log:
   say Foe Snover is hit with recoil!
     + HpChanged E0 Hp=110 Healed=false
   say Hail continues to fall.
+    + WeatherContinues Weather=Hail
   say Foe Simisage is pelted by the hail!
     + HpChanged E1 Hp=102 Healed=false
   say Dondozo is pelted by the hail!
@@ -7345,6 +7378,7 @@ log:
   say Dondozo fainted!
     + Fainted P1
   say Hail continues to fall.
+    + WeatherContinues Weather=Hail
   say Foe Simisage is pelted by the hail!
     + HpChanged E1 Hp=91 Healed=false
   say Go! Munchlax!
@@ -8606,7 +8640,7 @@ log:
   ExpGained Pokemon=mine#0 Dewott Amount=219
   say Chespin gained 1090 EXP. Points!
   ExpGained Pokemon=mine#1 Chespin Amount=1090
-  LevelRose Pokemon=mine#1 Chespin Level=20
+  LevelRose Pokemon=mine#1 Chespin Level=20 Before=53/31/34/24/24/25 After=55/33/35/25/25/26
   say Chespin grew to Lv. 20!
   say Combusken gained 124 EXP. Points!
   ExpGained Pokemon=mine#2 Combusken Amount=124
@@ -8637,6 +8671,7 @@ log:
     + MoveShown Move=Aqua Tail Type=Water Category=Physical From=P0 To=E0 Missed=true Blocked=false Critical=false SuperEffective=false
   say Foe Wartortle avoided the attack!
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Go! Combusken!
     + Entered P1 Pokemon=mine#2 Combusken FromBall=true
   say Foe Wartortle used Hydro Pump!
@@ -8659,6 +8694,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Foe Wartortle used Hydro Pump!
     + Lunged E0 Category=Special
     + MoveShown Move=Hydro Pump Type=Water Category=Special From=E0 To=P0 Missed=true Blocked=false Critical=false SuperEffective=false
@@ -8676,6 +8712,7 @@ log:
   say Dewott's Attack sharply rose!
     + StageChanged P0 Stat=Attack Stage=2 Rose=true
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Foe Altaria used Dragon Breath!
     + Lunged E1 Category=Special
     + MoveShown Move=Dragon Breath Type=Dragon Category=Special From=E1 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -9587,6 +9624,7 @@ log:
     + MoveShown Move=Leech Seed Type=Grass Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Hippowdon was seeded!
   say The sandstorm rages.
+    + WeatherContinues Weather=Sandstorm
   say Grotle is buffeted by the sandstorm!
     + HpChanged P0 Hp=71 Healed=false
   say Foe Hippowdon's health is sapped by Leech Seed!
@@ -9606,6 +9644,7 @@ log:
     ! Struck E0 Hp=91 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say The sandstorm rages.
+    + WeatherContinues Weather=Sandstorm
   say Grotle is buffeted by the sandstorm!
     + HpChanged P0 Hp=23 Healed=false
   say Foe Hippowdon's health is sapped by Leech Seed!
@@ -9621,6 +9660,7 @@ log:
   say Grotle fainted!
     + Fainted P0
   say The sandstorm rages.
+    + WeatherContinues Weather=Sandstorm
   say Go! Dewgong!
     + Entered P0 Pokemon=mine#1 Dewgong FromBall=true
   say Dewgong used Take Down!
@@ -9636,6 +9676,7 @@ log:
     ! Struck P0 Hp=40 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say The sandstorm rages.
+    + WeatherContinues Weather=Sandstorm
   say Dewgong is buffeted by the sandstorm!
     + HpChanged P0 Hp=33 Healed=false
   say Foe Hippowdon's health is sapped by Leech Seed!
@@ -9776,6 +9817,7 @@ log:
   say It started to hail!
     + WeatherChanged Weather=Hail
   say Hail continues to fall.
+    + WeatherContinues Weather=Hail
   say Foe Luxio is pelted by the hail!
     + HpChanged E1 Hp=169 Healed=false
   say Azumarill is pelted by the hail!
@@ -9808,6 +9850,7 @@ log:
     ! Struck P1 Hp=30 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Hail continues to fall.
+    + WeatherContinues Weather=Hail
   say Lopunny is pelted by the hail!
     + HpChanged P1 Hp=25 Healed=false
   say Foe Luxio is pelted by the hail!
@@ -9832,6 +9875,7 @@ log:
     + MoveShown Move=Light Screen Type=Psychic Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Light Screen raised the foe's team's Special Defense!
   say Hail continues to fall.
+    + WeatherContinues Weather=Hail
   say Lopunny is pelted by the hail!
     + HpChanged P1 Hp=20 Healed=false
   say Foe Luxio is pelted by the hail!
@@ -10378,6 +10422,7 @@ log:
   say Metapod's Defense rose!
     + StageChanged P0 Stat=Defense Stage=1 Rose=true
   say The sandstorm rages.
+    + WeatherContinues Weather=Sandstorm
   say Venonat is buffeted by the sandstorm!
     + HpChanged P1 Hp=51 Healed=false
   say Metapod is buffeted by the sandstorm!
@@ -10405,6 +10450,7 @@ log:
   say Metapod's Defense rose!
     + StageChanged P0 Stat=Defense Stage=2 Rose=true
   say The sandstorm rages.
+    + WeatherContinues Weather=Sandstorm
   say Metapod is buffeted by the sandstorm!
     + HpChanged P0 Hp=72 Healed=false
   say Go! Bulbasaur!
@@ -10433,6 +10479,7 @@ log:
   say Metapod's Defense rose!
     + StageChanged P0 Stat=Defense Stage=3 Rose=true
   say The sandstorm rages.
+    + WeatherContinues Weather=Sandstorm
   say Metapod is buffeted by the sandstorm!
     + HpChanged P0 Hp=67 Healed=false
   say Foe Probopass used Block!
@@ -10543,7 +10590,7 @@ log:
   ExpGained Pokemon=mine#1 Ninetales Amount=1346
   say Perrserker gained 2694 EXP. Points!
   ExpGained Pokemon=mine#2 Perrserker Amount=2694
-  LevelRose Pokemon=mine#2 Perrserker Level=29
+  LevelRose Pokemon=mine#2 Perrserker Level=29 Before=78/72/65/33/43/41 After=80/74/67/34/44/42
   say Perrserker grew to Lv. 29!
   say Ace Trainer Tester sent out Mimikyu!
     + Seen Species=Mimikyu
@@ -11645,7 +11692,7 @@ log:
   ExpGained Pokemon=mine#1 Fearow Amount=1190
   say Type: Null gained 1667 EXP. Points!
   ExpGained Pokemon=mine#2 Type: Null Amount=1667
-  LevelRose Pokemon=mine#2 Type: Null Level=39
+  LevelRose Pokemon=mine#2 Type: Null Level=39 Before=124/86/82/77/78/55 After=127/88/84/79/80/57
   say Type: Null grew to Lv. 39!
   Won
   say Lucas defeated Ace Trainer Tester!
@@ -11805,7 +11852,7 @@ log:
   ExpGained Pokemon=mine#1 Veluza Amount=1014
   say Braviary gained 1582 EXP. Points!
   ExpGained Pokemon=mine#2 Braviary Amount=1582
-  LevelRose Pokemon=mine#2 Braviary Level=24
+  LevelRose Pokemon=mine#2 Braviary Level=24 Before=80/67/47/32/41/44 After=83/70/48/33/43/46
   say Braviary grew to Lv. 24!
   MoveWanted Pokemon=mine#2 Braviary Move=Scary Face
   say Ace Trainer Tester sent out Glaceon!
@@ -12004,6 +12051,7 @@ log:
   say It started to rain!
     + WeatherChanged Weather=Rain
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Wingull used Agility!
     + Lunged P0 Category=Status
     + MoveShown Move=Agility Type=Psychic Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -12014,6 +12062,7 @@ log:
   say Foe Squirtle's Defense rose!
     + StageChanged E0 Stat=Defense Stage=4 Rose=true
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Wingull used Air Slash!
     + Lunged P0 Category=Special
     + MoveShown Move=Air Slash Type=Flying Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -12029,6 +12078,7 @@ log:
   say Cinderace gained 152 EXP. Points!
   ExpGained Pokemon=mine#2 Cinderace Amount=152
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Ace Trainer Tester sent out Terrakion!
     + Seen Species=Terrakion
     + Entered E0 Pokemon=foe#2 Terrakion FromBall=true
@@ -12043,6 +12093,7 @@ log:
   say Foe Terrakion's Attack sharply rose!
     + StageChanged E0 Stat=Attack Stage=2 Rose=true
   say Rain continues to fall.
+    + WeatherContinues Weather=Rain
   say Wingull used Agility!
     + Lunged P0 Category=Status
     + MoveShown Move=Agility Type=Psychic Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -12905,7 +12956,7 @@ log:
   ExpGained Pokemon=mine#0 Palkia Amount=1091
   say Electrike gained 1946 EXP. Points!
   ExpGained Pokemon=mine#2 Electrike Amount=1946
-  LevelRose Pokemon=mine#2 Electrike Level=44
+  LevelRose Pokemon=mine#2 Electrike Level=44 Before=91/56/45/64/44/80 After=93/57/46/65/45/81
   say Electrike grew to Lv. 44!
   MoveWanted Pokemon=mine#2 Electrike Move=Charge
   Won
@@ -13023,11 +13074,11 @@ log:
     + Fainted E0
   say Xatu gained 65 EXP. Points!
   ExpGained Pokemon=mine#0 Xatu Amount=65
-  LevelRose Pokemon=mine#0 Xatu Level=5
+  LevelRose Pokemon=mine#0 Xatu Level=5 Before=20/11/11/13/11/13 After=22/12/13/15/12/15
   say Xatu grew to Lv. 5!
   say Iron Moth gained 43 EXP. Points!
   ExpGained Pokemon=mine#1 Iron Moth Amount=43
-  LevelRose Pokemon=mine#1 Iron Moth Level=3
+  LevelRose Pokemon=mine#1 Iron Moth Level=3 Before=15/8/7/10/9/10 After=18/10/8/13/12/12
   say Iron Moth grew to Lv. 3!
   say Electrode gained 33 EXP. Points!
   ExpGained Pokemon=mine#2 Electrode Amount=33
@@ -13078,6 +13129,7 @@ log:
     + MoveShown Move=Mean Look Type=Normal Category=Status From=E1 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Carkol can no longer escape!
   say The sandstorm rages.
+    + WeatherContinues Weather=Sandstorm
   say Foe Patrat is buffeted by the sandstorm!
     + HpChanged E1 Hp=97 Healed=false
   say Smoliv is buffeted by the sandstorm!
@@ -13100,6 +13152,7 @@ log:
   say Foe Patrat's Sp. Atk sharply rose!
     + StageChanged E1 Stat=SpAttack Stage=2 Rose=true
   say The sandstorm rages.
+    + WeatherContinues Weather=Sandstorm
   say Foe Patrat is buffeted by the sandstorm!
     + HpChanged E1 Hp=91 Healed=false
   say Smoliv is buffeted by the sandstorm!
@@ -13123,6 +13176,7 @@ log:
     + MoveShown Move=Grassy Terrain Type=Grass Category=Status From=P1 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
   say But nothing happened!
   say The sandstorm rages.
+    + WeatherContinues Weather=Sandstorm
   say Foe Patrat is buffeted by the sandstorm!
     + HpChanged E1 Hp=85 Healed=false
   say Smoliv is buffeted by the sandstorm!
@@ -13144,6 +13198,7 @@ log:
   say Foe Tyranitar had its energy drained!
     + HpChanged P1 Hp=48 Healed=true
   say The sandstorm rages.
+    + WeatherContinues Weather=Sandstorm
   say Foe Patrat is buffeted by the sandstorm!
     + HpChanged E1 Hp=79 Healed=false
   say Smoliv is buffeted by the sandstorm!
@@ -13329,7 +13384,7 @@ log:
   ExpGained Pokemon=mine#1 Spidops Amount=414
   say Nymble gained 644 EXP. Points!
   ExpGained Pokemon=mine#2 Nymble Amount=644
-  LevelRose Pokemon=mine#2 Nymble Level=11
+  LevelRose Pokemon=mine#2 Nymble Level=11 Before=25/13/15/10/10/13 After=28/15/17/12/11/15
   say Nymble grew to Lv. 11!
   MoveWanted Pokemon=mine#2 Nymble Move=Double Kick
   say Ace Trainer Tester sent out Camerupt!
@@ -13365,7 +13420,7 @@ log:
   ExpGained Pokemon=mine#1 Spidops Amount=409
   say Nymble gained 575 EXP. Points!
   ExpGained Pokemon=mine#2 Nymble Amount=575
-  LevelRose Pokemon=mine#2 Nymble Level=12
+  LevelRose Pokemon=mine#2 Nymble Level=12 Before=28/15/17/12/11/15 After=30/16/18/12/12/16
   say Nymble grew to Lv. 12!
   say Ace Trainer Tester sent out Dusknoir!
     + Seen Species=Dusknoir
@@ -13413,7 +13468,7 @@ log:
   ExpGained Pokemon=mine#1 Spidops Amount=159
   say Nymble gained 253 EXP. Points!
   ExpGained Pokemon=mine#2 Nymble Amount=253
-  LevelRose Pokemon=mine#2 Nymble Level=13
+  LevelRose Pokemon=mine#2 Nymble Level=13 Before=30/16/18/12/12/16 After=31/17/19/13/13/17
   say Nymble grew to Lv. 13!
   Won
   say Lucas defeated Ace Trainer Tester!
@@ -14303,6 +14358,7 @@ log:
     ! Struck P0 Hp=38 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say The sandstorm rages.
+    + WeatherContinues Weather=Sandstorm
   say Foe Rattata is buffeted by the sandstorm!
     + HpChanged E0 Hp=17 Healed=false
   say Hippowdon used Ice Fang!
@@ -14509,7 +14565,7 @@ log:
   ExpGained Pokemon=mine#1 Basculegion Amount=435
   say Maushold gained 1759 EXP. Points!
   ExpGained Pokemon=mine#2 Maushold Amount=1759
-  LevelRose Pokemon=mine#2 Maushold Level=13
+  LevelRose Pokemon=mine#2 Maushold Level=13 Before=23/11/13/12/12/17 After=46/25/27/24/25/36
   say Maushold grew to Lv. 13!
   MoveWanted Pokemon=mine#2 Maushold Move=Helping Hand
   MoveWanted Pokemon=mine#2 Maushold Move=Super Fang
@@ -14949,12 +15005,12 @@ log:
     + Fainted E0
   say Geodude gained 75 EXP. Points!
   ExpGained Pokemon=mine#0 Geodude Amount=75
-  LevelRose Pokemon=mine#0 Geodude Level=4
+  LevelRose Pokemon=mine#0 Geodude Level=4 Before=15/10/11/7/7/6 After=17/12/14/7/8/7
   say Geodude grew to Lv. 4!
   say Geodude learned Mud Sport!
   say Arctovish gained 50 EXP. Points!
   ExpGained Pokemon=mine#1 Arctovish Amount=50
-  LevelRose Pokemon=mine#1 Arctovish Level=3
+  LevelRose Pokemon=mine#1 Arctovish Level=3 Before=12/7/7/6/5/6 After=18/11/11/11/9/9
   say Arctovish grew to Lv. 3!
   say Fletchinder gained 23 EXP. Points!
   ExpGained Pokemon=mine#2 Fletchinder Amount=23

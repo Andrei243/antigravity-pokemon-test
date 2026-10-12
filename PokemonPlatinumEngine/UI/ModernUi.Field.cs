@@ -11,7 +11,8 @@ internal static partial class ModernUi
 {
     public static void DrawDialogue(int sw, int sh, string speaker, string visibleText, bool complete)
     {
-        var r = new Rectangle(96, sh - 262, sw - 192, 222);
+        // The box's measures are DialogueBox's, which a check with no window reads too (plan 16 · T8)
+        var r = new Rectangle(DialogueBox.Side, sh - DialogueBox.Foot - DialogueBox.Height, sw - DialogueBox.Side * 2, DialogueBox.Height);
         Panel(r, 32);
         if (!string.IsNullOrEmpty(speaker))
         {
@@ -21,7 +22,7 @@ internal static partial class ModernUi
             UiShapes.Shape(tag, 29, Lighter(Red, 0.12f), Darker(Red, 0.08f), Darker(Red, 0.3f), 3);
             UiFonts.DrawCentered(speaker, tag.X + 28, tag.Y + 29, 30, Color.White, UiWeight.Black);
         }
-        DrawWrapped(visibleText, r.X + 60, r.Y + 58, r.Width - 170, 40, Ink, 58, UiWeight.ExtraBold);
+        DrawWrapped(visibleText, r.X + DialogueBox.TextLeft, r.Y + DialogueBox.TextTop, DialogueBox.TextWidth(sw), DialogueBox.TextSize, Ink, DialogueBox.RowHeight, DialogueBox.TextWeight);
         if (complete) AdvanceArrow(r.X + r.Width - 80, r.Y + r.Height - 60);
     }
 
@@ -35,10 +36,10 @@ internal static partial class ModernUi
 
     public static void DrawChoices(int sw, int sh, IReadOnlyList<string> options, int selected, float shown)
     {
-        const float row = 72, pad = 16, size = 34;
+        const float row = 72, pad = 16, size = DialogueBox.ChoiceSize;
         float widest = 0f;
-        foreach (string option in options) widest = Math.Max(widest, UiFonts.Measure(option, size, UiWeight.Black));
-        float width = Math.Max(260, widest + 116);
+        foreach (string option in options) widest = Math.Max(widest, UiFonts.Measure(option, size, DialogueBox.ChoiceWeight));
+        float width = Math.Max(DialogueBox.ChoiceWidth, widest + DialogueBox.ChoicePadding);
         // A long list (a catalogue, a counter's prizes) shows a window of its rows that follows the cursor (plan 06 · R16b)
         int rows = Math.Min(options.Count, MostChoiceRows), first = Math.Clamp(selected - MostChoiceRows / 2, 0, options.Count - rows);
         float height = pad * 2 + rows * row;

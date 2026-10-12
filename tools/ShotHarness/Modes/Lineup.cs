@@ -61,7 +61,9 @@ partial class Harness
         foreach (var (type, anim, frames) in new[]
         {
             ("Player", "Walk", 8), ("Player", "Run", 8), ("Player", "Idle", 2), ("Player", "Hop", 3), ("Player", "Wave", 6), ("Player", "Surprised", 6),
-            ("Player", "Cheer", 6), ("Player", "Nod", 6), ("Rival", "Walk", 8), ("Lass", "Walk", 8), ("Rowan", "Walk", 8), ("Nurse", "Idle", 2)
+            ("Player", "Cheer", 6), ("Player", "Nod", 6), ("Rival", "Walk", 8), ("Lass", "Walk", 8), ("Rowan", "Walk", 8), ("Nurse", "Idle", 2),
+            // The gestures a script plays on cue (plan 11 · C11)
+            ("Lass", "Bow", 6), ("Lass", "Shrug", 6), ("Lass", "Point", 6), ("Lass", "Laugh", 6)
         })
         {
             string name = $"38_sheet_{type.ToLowerInvariant()}_{anim.ToLowerInvariant()}";

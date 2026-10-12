@@ -6,6 +6,7 @@ using PokemonPlatinumEngine.Battle.Sim;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
+using PokemonPlatinumEngine.UI.Kit;
 
 namespace PokemonPlatinumEngine.Battle;
 
@@ -271,8 +272,10 @@ public partial class BattleEngine
             place.Pokemon = theirs.Pokemon == null ? null : mirror.Shown(theirs.Pokemon);
             place.CopyVolatileFrom(theirs);
             Anim[place.Side, place.Slot].Away = theirs.IsActive && theirs.IsElsewhere;
+            Anim.SettleSubstitute(place.Side, place.Slot, theirs.IsActive && theirs.HasSubstitute);
         }
         Weather = core.Field.Weather;
+        Anim.SettleWeather(Weather);
     }
 
     /// <summary>
@@ -369,6 +372,13 @@ public partial class BattleEngine
                     break;
                 case Happening happening:
                     happening.Do();
+                    // A level's panel stands over the line that tells of the level, which is what the log says next;
+                    // were anything else to come first, the panel waits for its presses over the line already there
+                    if (HUD.LevelUp != null && !(interlude.Count > 0 ? interlude.Peek() is Line : steps.Count > 0 && steps.Peek() is Line))
+                    {
+                        waitingForMessageConfirm = true;
+                        HUD.MenuState = BattleMenuState.Message;
+                    }
                     break;
             }
         }
@@ -438,11 +448,18 @@ public partial class BattleEngine
                 break;
             }
             case Recalled recalled:
+            {
+                // A doll in front of it fades as it goes (plan 25 · Y1)
+                bool doll = Anim[recalled.Place.Side, recalled.Place.Slot].BehindDoll;
                 Anim.Recall(recalled.Place.Side, recalled.Place.Slot);
                 Sound("recall", recalled.Place.Side);
+                if (doll) Sound("substitute_out", recalled.Place.Side);
                 break;
+            }
             case Lunged lunged:
                 Anim.Attack(lunged.Place.Side, lunged.Place.Slot, lunged.Category);
+                // A doll steps aside for its owner's own move, and back once it has played (plan 25 · Y1)
+                Anim.SubstituteAside(lunged.Place.Side, lunged.Place.Slot);
                 break;
             case MoveShown move:
                 // The move's own sound as it sets off, once however many it is aimed at
@@ -466,6 +483,10 @@ public partial class BattleEngine
                     Critical = move.Critical,
                     SuperEffective = move.SuperEffective
                 });
+                // A blow that lands on a doll makes it flinch as it lands: the rules say so with no Struck, since the
+                // Pokémon behind it takes nothing (subscript_hit_substitute's flicker)
+                if (move.Category != MoveCategory.Status && !move.Missed && !move.Blocked && move.To != move.From && Anim[move.To.Side, move.To.Slot].BehindDoll)
+                    After(HitDelay, () => Anim.SubstituteHit(move.To.Side, move.To.Slot));
                 break;
             case Struck struck:
                 if (At(struck.Place).Pokemon is { } hit) hit.CurrentHP = struck.Hp;
@@ -525,7 +546,32 @@ public partial class BattleEngine
                 if (At(item.Place).Pokemon is { } holder) Revealed.Item(holder, item.Item);
                 break;
             case WeatherChanged weather:
+                // The weather's cue and the layer that lasts (plan 25 · Y1), with its sound; a clear sky eases in
                 Weather = weather.Weather;
+                if (weather.Weather == BattleWeather.None) Anim.WeatherClears();
+                else
+                {
+                    Anim.WeatherBegins(weather.Weather);
+                    AudioManager.PlaySound(SoundBank.WeatherSound(weather.Weather));
+                }
+                break;
+            case WeatherContinues goesOn:
+                Weather = goesOn.Weather;
+                Anim.WeatherGoesOn(goesOn.Weather);
+                AudioManager.PlaySound(SoundBank.WeatherSound(goesOn.Weather));
+                break;
+            case SubstituteChanged doll:
+                // The doll's swaps (plan 25 · Y1): the line sets the view, never the rules
+                if (doll.Up)
+                {
+                    Anim.SubstituteUp(doll.Place.Side, doll.Place.Slot);
+                    Sound("substitute_in", doll.Place.Side);
+                }
+                else if (Anim[doll.Place.Side, doll.Place.Slot].BehindDoll)
+                {
+                    Anim.SubstituteDown(doll.Place.Side, doll.Place.Slot);
+                    Sound("substitute_out", doll.Place.Side);
+                }
                 break;
             case GotAway:
                 AudioManager.PlaySound("run_away", -0.3f);
@@ -561,7 +607,14 @@ public partial class BattleEngine
             {
                 var grown = mirror.Shown(level.Pokemon);
                 if (!leveledUpPokemon.Contains(grown)) leveledUpPokemon.Add(grown);
+                // The screen's Pokémon reckoned its own level as its EXP was shown, without the effort of the foe
+                // just beaten, which the rules' copy had by then: it takes the rules' numbers, so its HP box and
+                // the panel say the same
+                grown.TakeStats(level.After);
                 AudioManager.PlayFanfare(MusicRole.FanfareLevelUp);
+                // The panel goes up with the level's line, which comes next and stays under it (plan 08 · P5); its
+                // numbers are the event's, since the rules' copy is a whole turn ahead of this one
+                HUD.LevelUp = new LevelUpPanel(grown, level.Level, level.Before, level.After);
                 break;
             }
             case BallThrown ball:
@@ -618,6 +671,7 @@ public partial class BattleEngine
     {
         Anim.Update(dt, (side, slot) => SlotsOf(side).ElementAtOrDefault(slot)?.Pokemon);
         UpdatePendingEffects(dt);
+        HUD.LevelUp?.Advance(dt);
 
         if (IsLearningMove)
         {
@@ -665,7 +719,9 @@ public partial class BattleEngine
 
     /// <summary>
     /// Dismisses the message on screen and goes on to what follows it. A question about a move to learn is
-    /// answered with whatever keeps the moves as they are.
+    /// answered with whatever keeps the moves as they are. A level's panel (plan 08 · P5) is read on like a
+    /// message: the first press turns it from the gains to the new values, the second takes it down with the
+    /// level's line, so whatever reads a battle on with this gets past a level as it gets past any line.
     /// </summary>
     public void ConfirmMessage()
     {
@@ -679,9 +735,18 @@ public partial class BattleEngine
         // Anything the message started lands now, so what is shown never runs ahead of it
         FlushPendingEffects();
 
+        if (HUD.LevelUp is { } panel)
+        {
+            if (!panel.Press()) return;
+            HUD.LevelUp = null;
+        }
+
         waitingForMessageConfirm = false;
         Pump();
     }
+
+    /// <summary>The level-up panel on show, while a level's two pages wait to be read (null otherwise).</summary>
+    public LevelUpPanel? LevelUp => HUD.LevelUp;
 
     private void After(float delay, Action effect) => pendingEffects.Add((delay, effect));
 
