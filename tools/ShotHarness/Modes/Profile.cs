@@ -140,20 +140,38 @@ partial class Harness
             Frames(40); Profile("twinleaf town in fog");
             town.Weather = FieldWeather.Clear;
 
-            // A wild battle at its menu, then the scripted battle's heaviest moments, each held still
-            party.HealAll();
-            var wild = StartBattle("Shinx", 5);
+            // A wild battle at its menu, then the scripted battle's heaviest moments, each held still. Every battle
+            // here has a team, foes and a generator of its own, made from fixed numbers and not from the game's
+            // seeded chance: whatever puts more people on the maps moves that chance, and with it a Pokémon's gender,
+            // HP and ability, so a battle read a line more or less on its way to the menu and its scene was another
+            // picture from one commit to the next (plan 01 · M12)
+            static Pokemon Made(string species, int level, int seed) => new(PokemonDatabase.Get(species)!, level, new Random(seed));
+            var team = new Party();
+            team.Add(Made("Turtwig", 5, 21));
+            team.Add(Made("Chimchar", 7, 22));
+            team.Add(Made("Piplup", 6, 23));
+            BattleEngine Wild(int seed, BattleConditions conditions = null)
+            {
+                var battle = new BattleEngine(new BattleSetup
+                {
+                    PlayerParty = team, Inventory = inventory, Pokedex = pokedex, WildPokemon = new List<Pokemon> { Made("Shinx", 5, 24) },
+                    Random = new Random(seed), Conditions = conditions
+                });
+                game.Battle = battle;
+                game.State = GameState.Battle;
+                return battle;
+            }
+            // (On the map of Sinnoh the stage depends on where the battle starts: StartBattle's place on Route 201)
+            var (stage, stageX, stageY) = Harness.Place("Route201", -1, -1);
+            game.Map = MapDatabase.Get(stage);
+            if (stageX >= 0) game.Player.SetPosition(stageX, stageY, Direction.Up);
+            game.BattleRenderer.SetArena(game.Map, stageX, stageY);
+            var wild = Wild(31);
             ToMainMenu(wild);
             Profile("battle, at the menu");
 
             // The same in the rain (plan 25 · Y1): the weather's layer over the whole stage
-            var rainy = new BattleEngine(new BattleSetup
-            {
-                PlayerParty = party, Inventory = inventory, Pokedex = pokedex, WildPokemon = new List<Pokemon> { Meet("Shinx", 5) },
-                Conditions = new BattleConditions { Weather = BattleWeather.Rain }
-            });
-            game.Battle = rainy;
-            game.State = GameState.Battle;
+            var rainy = Wild(32, new BattleConditions { Weather = BattleWeather.Rain });
             ToMainMenu(rainy);
             Skip(1.0);
             Profile("battle in rain, at the menu");
@@ -196,14 +214,13 @@ partial class Harness
             }
 
             // Two trainers and four Pokémon
-            party.HealAll();
             var one = new Trainer { Name = "Ana", TrainerClass = "Youngster" };
-            one.Party.Add(new Pokemon(PokemonDatabase.Get("Shinx")!, 6));
+            one.Party.Add(Made("Shinx", 6, 25));
             var two = new Trainer { Name = "Cal", TrainerClass = "Lass" };
-            two.Party.Add(new Pokemon(PokemonDatabase.Get("Piplup")!, 6));
+            two.Party.Add(Made("Piplup", 6, 26));
             var d = new BattleEngine(new BattleSetup
             {
-                PlayerParty = party, Inventory = inventory, Pokedex = pokedex, Format = BattleFormat.Double,
+                PlayerParty = team, Inventory = inventory, Pokedex = pokedex, Format = BattleFormat.Double,
                 Trainers = new List<Trainer> { one, two }, WildPokemon = new List<Pokemon>(), Random = new Random(5)
             });
             game.BattleRenderer.SetArena(game.Map);
