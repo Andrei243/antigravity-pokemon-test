@@ -330,7 +330,7 @@ public sealed partial class BattleCore
                 if (b.HasType(PokemonType.Poison))
                 {
                     side.ToxicSpikes = 0;
-                    Say($"The poison spikes disappeared from around {TeamOf(b.Side)}'s feet!");
+                    Say($"The poison spikes disappeared from around {TeamOf(b.Side)}'s feet!").With(Now(b.Side, SideCondition.ToxicSpikes));
                 }
                 else if (!side.Safeguard)
                 {

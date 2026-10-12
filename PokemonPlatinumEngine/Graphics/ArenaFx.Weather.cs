@@ -15,6 +15,24 @@ internal static partial class ArenaFx
     private static readonly Vector3 SkyMin = new(-24f, 0f, -14f), SkyMax = new(16f, 12f, 23f);
 
     /// <summary>
+    /// The box rain falls in: what the overview's lens takes in, and a little round it (plan 25 · Y2). The sky's whole
+    /// box is four times its size, and a shower spread over that left a handful of streaks in the picture; a
+    /// sandstorm's own box is drawn in the same way.
+    /// </summary>
+    private static readonly Vector3 RainMin = new(-14f, 0f, -10f), RainMax = new(9f, 6f, 23f);
+
+    /// <summary>
+    /// How much wider than their first numbers the weather's streaks are drawn, at the same length (plan 25 · Y2, the
+    /// first session to see them): the Streak shape's line is about a sixth of its quad's width, and at those numbers
+    /// rain was a hair under a pixel wide and a sandstorm a dozen threads.
+    /// </summary>
+    private const float RainWidth = 2.5f, SandWidth = 2f, HailWidth = 2f;
+
+    /// <summary>A streak of weather, alpha-blended in the scene, <paramref name="wider"/> times its width at its own length.</summary>
+    private static void WeatherStreak(FxList fx, Vector3 at, Vector3 along, float size, float stretch, Color color, float wider) =>
+        fx.Streak(FxShape.Streak, at, along, size * wider, stretch / wider, color, FxBlend.Alpha, depth: true);
+
+    /// <summary>
     /// What lasts in the air while a weather does: rain in streaks with rings on the platforms, the harsh sun's motes
     /// and warm haze, sand blown across, hail bouncing off the platforms, fog lying in low layers. It eases in over
     /// <see cref="BattleAnimator.WeatherFadeTime"/> from <paramref name="age"/> nought, and <paramref name="strength"/>
@@ -63,8 +81,8 @@ internal static partial class ArenaFx
                 for (int i = 0; i < 80; i++)
                 {
                     var speed = new Vector3(2.2f, -19f, 0.8f);
-                    var p = Drift(i, age + Fx.Rand(seed, i, 1) * 3f, SkyMin, SkyMax, speed, 300 + seed % 97);
-                    fx.Streak(FxShape.Streak, p, speed, 0.03f, 16f, Rgba(214, 226, 244, (int)(150 * env)), FxBlend.Alpha, depth: true);
+                    var p = Drift(i, age + Fx.Rand(seed, i, 1) * 3f, RainMin, RainMax, speed, 300 + seed % 97);
+                    WeatherStreak(fx, p, speed, 0.03f, 16f, Rgba(214, 226, 244, (int)(150 * env)), RainWidth);
                 }
                 for (int side = 0; side < 2; side++)
                 {
@@ -106,8 +124,8 @@ internal static partial class ArenaFx
                 for (int i = 0; i < 90; i++)
                 {
                     var p = new Vector3(front - Fx.Rand(seed, i, 10) * 12f, Fx.Rand(seed, i, 11) * 4.5f, SkyMin.Z + Fx.Rand(seed, i, 12) * (SkyMax.Z - SkyMin.Z));
-                    fx.Streak(FxShape.Streak, p, Vector3.UnitX, 0.035f + Fx.Rand(seed, i, 13) * 0.03f, 8f + Fx.Rand(seed, i, 14) * 6f,
-                        Rgba(226, 196, 140, (int)(190 * env)), FxBlend.Alpha, depth: true);
+                    WeatherStreak(fx, p, Vector3.UnitX, 0.035f + Fx.Rand(seed, i, 13) * 0.03f, 8f + Fx.Rand(seed, i, 14) * 6f,
+                        Rgba(226, 196, 140, (int)(190 * env)), SandWidth);
                 }
                 for (int i = 0; i < 8; i++)
                 {
@@ -142,10 +160,10 @@ internal static partial class ArenaFx
         for (int i = 0; i < 150; i++)
         {
             var speed = new Vector3(1.6f, -15f - R(i, 81) * 4f, 0.6f);
-            var p = Drift(i, time, SkyMin, SkyMax, speed, 80);
-            float u = (p.Y - SkyMin.Y) / (SkyMax.Y - SkyMin.Y);
-            fx.Streak(FxShape.Streak, p, speed, 0.022f + R(i, 82) * 0.012f, 12f + R(i, 83) * 6f,
-                Rgba(206, 218, 236, (int)(120 * k * EdgeFade(u))), FxBlend.Alpha, depth: true);
+            var p = Drift(i, time, RainMin, RainMax, speed, 80);
+            float u = (p.Y - RainMin.Y) / (RainMax.Y - RainMin.Y);
+            WeatherStreak(fx, p, speed, 0.022f + R(i, 82) * 0.012f, 12f + R(i, 83) * 6f,
+                Rgba(206, 218, 236, (int)(120 * k * EdgeFade(u))), RainWidth);
         }
 
         // Rings spreading where drops land on the two platforms and the ground between
@@ -203,16 +221,16 @@ internal static partial class ArenaFx
     private static void SandLayer(FxList fx, float time, float k)
     {
         // Thicker and faster than a desert's own drift, and higher
-        var min = new Vector3(-26f, 0f, -12f);
-        var max = new Vector3(18f, 5f, 22f);
+        var min = new Vector3(-16f, 0f, -10f);
+        var max = new Vector3(10f, 4.5f, 22f);
         for (int i = 0; i < 150; i++)
         {
             var speed = new Vector3(9f + R(i, 101) * 7f, 0.3f * MathF.Sin(i), 0.5f);
             var p = Drift(i, time, min, max, speed, 100);
             p.Y += MathF.Sin(time * 3.5f + i) * 0.2f;
             float u = (p.X - min.X) / (max.X - min.X);
-            fx.Streak(FxShape.Streak, p, Vector3.UnitX, 0.03f + R(i, 102) * 0.03f, 7f + R(i, 103) * 7f,
-                Rgba(226, 196, 140, (int)(180 * EdgeFade(u) * k)), FxBlend.Alpha, depth: true);
+            WeatherStreak(fx, p, Vector3.UnitX, 0.03f + R(i, 102) * 0.03f, 7f + R(i, 103) * 7f,
+                Rgba(226, 196, 140, (int)(180 * EdgeFade(u) * k)), SandWidth);
         }
         for (int i = 0; i < 10; i++)
         {
@@ -251,7 +269,7 @@ internal static partial class ArenaFx
             {
                 float f = u / fall;
                 at = spot - drift * (1f - f) + Vector3.UnitY * (ground + (top - ground) * (1f - f * f));
-                fx.Streak(FxShape.Streak, at, new Vector3(0.1f, -1f, 0.04f), size * 0.7f, 5f, Rgba(236, 244, 255, (int)(150 * k)), FxBlend.Alpha, depth: true);
+                WeatherStreak(fx, at, new Vector3(0.1f, -1f, 0.04f), size * 0.7f, 5f, Rgba(236, 244, 255, (int)(150 * k)), HailWidth);
             }
             else
             {

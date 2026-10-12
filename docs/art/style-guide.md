@@ -583,6 +583,7 @@ Walls, rock faces and rooms take shadows but cast none, so they never darken the
 - **A snow or sand arena's own drift** gives way to a battle's weather as it comes in, so two weathers never fall at once.
 - **Sounds**: each weather has its own as it begins and as it goes on (`weather_rain`, `weather_sun`, `weather_sandstorm`, `weather_hail`, `weather_fog`; *docs/sound-effects.md*).
 - Everything is a pure function of the weather's age, the battle's clock and the cue's seed: nothing is simulated.
+- **A streak must be wide enough to see** (plan 25 · Y2, the first session to look at these on a screen): the streak's shape shows a line about a sixth of its quad's width, so at their first numbers rain was under a pixel wide at 1080p and a sandstorm a dozen threads. Rain's streaks are drawn 2.5 times those widths and a sandstorm's and hail's twice, each at its own length (`ArenaFx.WeatherStreak`): rain about two to four pixels wide near the camera, sand three to six. And they fall **where the lens looks**: rain in a box of 23 by 6 by 33 units from the camera to the far trees (`ArenaFx.RainMin`, `RainMax`), a sandstorm's sand in one of 26 by 4.5 by 32, where the sky's whole box is four times the rain's and left a handful of streaks in the picture.
 
 ### The Substitute (plan 25 · Y1)
 
@@ -592,6 +593,32 @@ Walls, rock faces and rooms take shadows but cast none, so they never darken the
 - **Down** (0.6 s): it whitens and shrinks into a puff of smoke while the Pokémon grows back. A doll passed by Baton Pass fades with the Pokémon that leaves and drops in again once the one that comes in is out of its ball.
 - **What shows behind a doll** (the original's `BattleSystem_ShouldShowStatusEffect`): a mark on the Pokémon (a stat's change, a heal, a condition given) isn't played while a doll stands in front of it or it is out of sight; the weather's cue and a move's own effect, which lands on the doll, play as ever.
 - The doll is put up and taken down by the log's lines (`SubstituteChanged`), never read from the rules; its looks are pure functions of its ages and the animator's seed. Sounds: `substitute_in`, `substitute_out`.
+
+### What lies on the field (plan 25 · Y2)
+
+Platinum draws a hazard, a screen or Trick Room only as its move is used, and afterwards only lines that have scrolled away tell of them. Here each is drawn for as long as it lasts. **All of these looks are our own**: none is the original's, and none is taken from a later game.
+
+- **Small and low, never over a body.** Everything lies on a platform or the ground, stands low on its rim, or hangs above a Pokémon's head. On the arc of a rim that faces the camera, where a thing comes between the lens and the Pokémon, nothing stands higher than a ninth of the platform's radius (the panes, which reach the feet and no further); what stands taller (the stones, the charms, a puff of mist) keeps to the rest of the rim, 65° clear of the camera either way. All of it sits in the scene (depth-tested), so a body hides what is behind it. Sizes are in the platform's radius *R* (the player's 1.2, the foe's 2.4), so both sides read the same on screen.
+- **Matter keeps its colour, light is added.** A caltrop, a stone, a pane's glass, the grid's lines, a star and a mote are alpha-blended in their own colour, because light alone washes out to white over a bright field; their edges, glints and halos are light added on top.
+- **What lies in wait**, on the side it was scattered on:
+  - *Spikes*: one ring of steel caltrops (`196,204,220`, their crossed point `120,128,150`) round the rim for each layer, at 0.95, 0.84 and 0.73 *R*, ten to a ring, each 0.06 *R* tall. A new layer falls from above, each caltrop in its own moment, and settles with a hop; fading, they sink into the ground.
+  - *Toxic Spikes*: the same caltrops in purple (`186,120,236`, their crossed point `120,64,160`), in rings between Spikes' at 0.895 and 0.785 *R*, with bubbles of poison (`214,150,255`) rising from three of them at a time.
+  - *Stealth Rock*: five pointed stones (`168,150,122`, a splinter of `196,180,150` standing out of each) hovering 0.22 to 0.39 *R* over the platform's top, just outside the rim at 1.08 *R*, on the flanks and the far side, each bobbing and turning on its own slow rhythm over a blot of shade.
+- **Screens and veils**, on the side that put them up:
+  - *Reflect*: a low pane of warm glass (`255,196,110`) along the 100° of the rim that face the other side, from the platform's top to 0.05 *R*, with a bright upper edge and a glint sliding along it. It rises from its foot and spreads from its middle as it comes in.
+  - *Light Screen*: the same pane in cool glass (`140,214,255`), standing on Reflect's: from 0.055 to 0.105 *R*. With both up the two make one pane of two colours.
+  - *Safeguard*: a pale green ring (`190,255,214`) lying round the platform's foot at 1.12 *R*, breathing slowly, with motes rising a hand's breadth from it. A veil is drawn as its foot: a dome over the Pokémon would cover it.
+  - *Mist*: wisps of white mist lying flat round the rim in two thin layers that drift opposite ways, and four low puffs standing on the rim clear of the camera.
+  - *Tailwind*: pale streaks of wind (`214,236,255`) running low along the ground past both flanks of the platform, from behind the side toward the other.
+  - *Lucky Chant*: three small charms, pink stars (`255,186,224`), hovering just over the rim on the flanks and the far side, bobbing, each with a twinkle now and then.
+- **The rooms**:
+  - *Trick Room*: a grid of violet lines (`214,120,255`) on the ground under the whole field, seven each way, rising as walls 3.2 units high behind the foe's platform and at both sides, with two rails along each. No wall stands between the camera and the field. Each line is a line of the world from end to end (a ribbon, not a sprite turned to the camera), so the grid runs away from the lens as the ground does; the lines grow out from the middle as it comes in, and a wave passes along them while it lasts.
+  - *Gravity*: the stage's light is lowered (`ArtLook.UnderGravity`: the key and both ambients to 84 %, the shadows drawn a little toward violet, the vignette 0.08 stronger), and short violet-grey streaks (`170,150,210`) sink to the ground round both platforms, faster as they fall.
+- **Sent ahead**, over the place it waits for:
+  - *A Wish*: a small gold star (`255,226,110`) in a soft halo over the head of whoever stands there, a little to the left, bobbing, its rays turning slowly.
+  - *Future Sight*: a mote of violet (`214,96,240`) beside the star's place, circling on the spot, a ring leaving it every second and a half. *Doom Desire* is the same in pale steel (`206,214,236`) with a cross of light.
+- **Coming and going.** A look comes in over 0.6 s from the line that tells of it (the move's own effect plays on the line before) and fades over 0.5 s on the line that says it is gone: a screen wearing off, Brick Break, Defog, Rapid Spin, a Poison type taking up the Toxic Spikes, a Wish coming true, an attack sent ahead landing. Where the rules drop a Wish or an attack sent ahead with no line (nobody stands in its place), an event between lines takes it down.
+- The looks are set by the log's events (`SideConditionChanged`, `FieldConditionChanged`, `PlaceConditionChanged`), never read from the rules, and brought level with them when a menu opens; each is a pure function of its ages, the battle's clock and a seed from the animator, and none draws more than its cap of quads (`BattleFieldFx.Cap`). No pass and no render target is added: the panes and the grid are quads and ribbons of the effects' own atlas.
 
 ### Light, shadow and grading (day)
 

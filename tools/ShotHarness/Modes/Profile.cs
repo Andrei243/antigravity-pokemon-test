@@ -215,6 +215,11 @@ partial class Harness
             for (int guard = 0; guard < 6 && d.HUD.MenuState == BattleMenuState.Message; guard++) { d.ConfirmMessage(); Frames(1); Skip(20 / 60.0); }
             Skip(0.8);
             Profile("double battle, at the menu");
+
+            // The same in a sandstorm with every hazard and screen on both sides (plan 25 · Y2): the most the field's
+            // look ever draws over the most a battle already draws (Modes/ConditionsField.cs)
+            EverythingOnTheField();
+            Profile("double battle in a sandstorm, everything on the field");
             game.State = GameState.Overworld;
         }
         engine.Settings.Quality = GraphicsQuality.High;

@@ -117,6 +117,24 @@ public sealed record WeatherChanged(BattleWeather Weather) : BattleEvent;
 /// original plays the weather's animation on each turn it lasts. The rules change nothing by it; the screen plays the weather's cue again.
 /// </summary>
 public sealed record WeatherContinues(BattleWeather Weather) : BattleEvent;
+
+/// <summary>
+/// A side of the field has more or less of something than it had (plan 25 · Y2): a screen, a veil, Tailwind or Lucky
+/// Chant up (1) or gone (0), Spikes at 0 to 3 layers, Toxic Spikes at 0 to 2, Stealth Rock there or not. It rides on
+/// the line that tells of it: the move that set it, the turn's end that wears it off, Brick Break, Defog, Rapid Spin,
+/// a Poison type taking the Toxic Spikes up. The rules change nothing by it; the screen draws what lasts from it.
+/// </summary>
+public sealed record SideConditionChanged(BattleSide Side, SideCondition Condition, int Layers) : BattleEvent;
+
+/// <summary>Trick Room or Gravity begins or ends, on its line (a battle that opens under Trick Room says so too).</summary>
+public sealed record FieldConditionChanged(FieldCondition Condition, bool Up) : BattleEvent;
+
+/// <summary>
+/// Something begins to wait for a place, or waits no longer: a Wish, or a Future Sight or Doom Desire on its way.
+/// It rides on the line that tells of it; where the rules let one go with no line (its turn comes and nobody stands
+/// there), it stands in the log by itself.
+/// </summary>
+public sealed record PlaceConditionChanged(Place Place, PlaceCondition Condition, bool Up) : BattleEvent;
 public sealed record ExpGained(Pokemon Pokemon, int Amount) : BattleEvent;
 
 /// <summary>
