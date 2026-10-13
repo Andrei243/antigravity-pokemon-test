@@ -58,6 +58,16 @@ public sealed partial class ScriptRunner
     // The Pokémon last left at the Day Care and last taken back (plan 06 · R15)
     private string lastLeft = "", lastTaken = "";
 
+    /// <summary>The Pokémon of the team <c>choosepokemon</c> chose last, which <c>{chosen}</c> names and <c>master</c> sends out (plan 14 · B14).</summary>
+    private Pokemon? chosenMember;
+
+    /// <summary>What <c>choosepokemon</c> leaves in RESULT when none was chosen (the party screen's own number).</summary>
+    public const int NoneChosen = 255;
+
+    /// <summary>Whether a Pokémon is one <c>choosepokemon "Species"</c> lets be chosen: of that species, and no Egg.</summary>
+    public static bool Fits(Pokemon pokemon, string species) =>
+        !pokemon.IsEgg && string.Equals(pokemon.Species.Name, species, StringComparison.OrdinalIgnoreCase);
+
     // The contest being entered and the Pokémon chosen for it, and the accessory last given (plan 06 · R17a)
     private Models.SuperContests.ContestRank contestRank;
     private ContestStat contestCategory;
@@ -127,6 +137,7 @@ public sealed partial class ScriptRunner
         afterBusy = null;
         lastOutcome = BattleOutcome.None;
         Result = 0;
+        chosenMember = null;
         EndedInDefeat = false;
         turns = 0;
         // (A script started over another's leaves no scene of that one open)
@@ -303,7 +314,7 @@ public sealed partial class ScriptRunner
         Op.Give or Op.Find or Op.AddItem or Op.Take or Op.GivePokemon or Op.GiveBadge or Op.GiveMoney or Op.TakeMoney or Op.Heal => false,
         Op.GiveAccessory or Op.GiveEgg or Op.Seen or Op.NationalDex or Op.Trade => false,
         // A battle is fought
-        Op.Battle or Op.WildBattle or Op.CatchingLesson or Op.SweetScent => true,
+        Op.Battle or Op.WildBattle or Op.CatchingLesson or Op.SweetScent or Op.Master => true,
         // People and the field: a walk ends where it would have, a warp arrives, a fade and a camera's move are over at once
         Op.Face or Op.Walk or Op.Move or Op.WaitMoves or Op.Emote or Op.Act or Op.Mood or Op.Show or Op.Hide or Op.Place or Op.Warp or Op.Fade or Op.Wait => false,
         Op.Camera or Op.Letterbox or Op.SlowMotion or Op.Effect or Op.Anim or Op.Shake or Op.Flicker => false,
@@ -620,6 +631,30 @@ public sealed partial class ScriptRunner
                 afterBusy = () => AfterBattle(mayLose);
                 break;
             }
+            // A Master Trainer's battle (plan 14 · B14; docs/mechanics/rulings.md, "Master Trainers"): the person
+            // fights as the master of the species of the Pokémon choosepokemon chose, and the player's side is that
+            // Pokémon alone, the team's own, so what the battle does to it stays; nothing may be used from the bag by
+            // either side. With nobody chosen who can fight, no battle is fought and RESULT is 255.
+            case Op.Master:
+            {
+                if (NoPokemonToBattle()) break;
+                var master = Person(i.Name, i) ?? throw Wrong(i, "the player can't be battled");
+                var member = chosenMember;
+                if (member == null || !host.Party.Members.Contains(member) || member.IsEgg || member.IsFainted)
+                {
+                    Result = NoneChosen;
+                    break;
+                }
+                var record = TrainerDatabase.Get(TrainerDatabase.MasterId(member.Species.Name))
+                    ?? throw Wrong(i, $"there is no master of {member.Species.Name}");
+                var team = new Trainer { Id = record.Id };
+                TrainerDatabase.Fill(team, record);
+                master.TrainerData = team;
+                bool mayLoseThis = i.Option;
+                host.Battle(master, null, null, mayLoseThis, false, new BattleTerms(NoBattleItems: true, Alone: member));
+                afterBusy = () => AfterBattle(mayLoseThis);
+                break;
+            }
             case Op.WildBattle:
             case Op.CatchingLesson:
             {
@@ -780,9 +815,24 @@ public sealed partial class ScriptRunner
                 afterBusy = () => Result = host.Answer;
                 break;
             case Op.ChoosePokemon:
-                host.Open(ScriptScreen.ChoosePokemon, Subject);
-                afterBusy = () => Result = host.Answer;
+            {
+                // With a species named (plan 14 · B14) only a Pokémon of it may be chosen, never an Egg: the screen
+                // greys the rest, and whatever a host hands back that the filter refuses is no choice
+                string only = i.Name;
+                host.Open(ScriptScreen.ChoosePokemon, Subject, only.Length > 0 ? only : null);
+                afterBusy = () =>
+                {
+                    Result = host.Answer;
+                    chosenMember = Result >= 0 && Result < host.Party.Count ? host.Party.Members[Result] : null;
+                    // (Without a species, RESULT is whatever the screen said, as it always was)
+                    if (only.Length > 0 && (chosenMember == null || !Fits(chosenMember, only)))
+                    {
+                        chosenMember = null;
+                        Result = NoneChosen;
+                    }
+                };
                 break;
+            }
             case Op.Trade:
                 // The Pokémon chosen last (choosepokemon's RESULT) for the trade's: 1 if it was the one asked for
                 Result = host.Trade(i.Name, Result) ? 1 : 0;
@@ -1781,6 +1831,8 @@ public sealed partial class ScriptRunner
             "user" => lastUser,
             "money" => host.Money.ToString(),
             "result" => Result.ToString(),
+            // The Pokémon choosepokemon chose last (plan 14 · B14)
+            "chosen" => chosenMember?.Nickname ?? "",
             // The team's Pokémon at the place a variable gives (poison's survivors)
             "member" when argument.Length > 0 => Value(argument) is var slot && slot >= 0 && slot < host.Party.Count ? host.Party.Members[slot].Nickname : "",
             // The day's swarm and where it is, and the Trophy Garden's newest (plan 06 · R13)

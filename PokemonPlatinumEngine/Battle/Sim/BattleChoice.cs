@@ -2,8 +2,11 @@ using System.Collections.Generic;
 
 namespace PokemonPlatinumEngine.Battle.Sim;
 
-/// <summary>What a choice is: a move, a switch, an item, running; in the Great Marsh also bait or mud thrown at the Pokémon.</summary>
-public enum ChoiceKind { Fight, Switch, Item, Run, Bait, Mud }
+/// <summary>
+/// What a choice is: a move, a switch, an item, running; in the Great Marsh also bait or mud thrown at the Pokémon;
+/// and staying in when Battle Style Shift offers a switch (plan 08 · P1).
+/// </summary>
+public enum ChoiceKind { Fight, Switch, Item, Run, Bait, Mud, Stay }
 
 /// <summary>
 /// What one Pokémon's trainer decides for a turn, as plain data: a seed and the choices made are a whole battle
@@ -41,6 +44,12 @@ public sealed record BattleChoice(Place Who, ChoiceKind Kind)
 
     /// <summary>The Great Marsh: mud thrown at the Pokémon (likelier to stay, harder to catch).</summary>
     public static BattleChoice Mud(Place who) => new(who, ChoiceKind.Mud);
+
+    /// <summary>
+    /// The answer to a <see cref="SwitchOfferRequest"/> that keeps the Pokémon in (plan 08 · P1); a
+    /// <see cref="Switch"/> is the other answer. (<see cref="GoOn"/> is the core's own answer for a Pokémon held to its move.)
+    /// </summary>
+    public static BattleChoice Stay(Place who) => new(who, ChoiceKind.Stay);
 }
 
 /// <summary>
@@ -48,9 +57,10 @@ public sealed record BattleChoice(Place Who, ChoiceKind Kind)
 /// every answer it was given from outside, in the order they were given. Played again between the same teams
 /// (<see cref="BattleCore.Replay"/>) it gives the same log. An inverse battle (plan 14 · B1) says so, since the
 /// same seed and answers under the other chart are another battle: a record written before the flag reads as the
-/// plain chart's.
+/// plain chart's. So does a battle that offered Battle Style Shift's switch (plan 08 · P1), whose answers include
+/// each offer's: a record written before the flag reads as a battle that offered none.
 /// </summary>
-public sealed record BattleRecord(uint Seed, IReadOnlyList<IReadOnlyList<BattleChoice>> Answers, bool Inverse = false);
+public sealed record BattleRecord(uint Seed, IReadOnlyList<IReadOnlyList<BattleChoice>> Answers, bool Inverse = false, bool OffersSwitch = false);
 
 /// <summary>What the core is waiting for before it can go on.</summary>
 public abstract record BattleRequest;
@@ -60,6 +70,14 @@ public sealed record ActionRequest(IReadOnlyList<Place> Places) : BattleRequest;
 
 /// <summary>A Pokémon to send into a place whose own has fainted: a <see cref="BattleChoice.Switch"/>.</summary>
 public sealed record ReplacementRequest(Place Place) : BattleRequest;
+
+/// <summary>
+/// Battle Style Shift (plan 08 · P1; the original's <c>subscript_replace_fainted</c>): the trainer across the field is
+/// about to send <paramref name="Upcoming"/> in for the one that fainted, and the player may switch the Pokémon in
+/// <paramref name="Place"/> first. Answered by <see cref="BattleChoice.Stay"/> or a <see cref="BattleChoice.Switch"/>.
+/// Asked only when <see cref="CoreSetup.OffersSwitch"/> is set, in a single battle against a trainer.
+/// </summary>
+public sealed record SwitchOfferRequest(Place Place, Models.Pokemon Upcoming) : BattleRequest;
 
 /// <summary>
 /// Chooses for one side from inside the core, with the battle's own random numbers, so that a seed and the other

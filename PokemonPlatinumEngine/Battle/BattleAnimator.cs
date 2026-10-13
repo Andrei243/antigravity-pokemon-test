@@ -382,6 +382,11 @@ public sealed class BattleAnimator
         return Cue(new EffectCue { Kind = CueKind.Weather, Weather = weather });
     }
 
+    /// <summary>
+    /// A weather begins with the battle's scene off (plan 08 · P1): its layer comes in as ever, and no cue plays over it.
+    /// </summary>
+    public void WeatherQuietly(Sim.BattleWeather weather) => SetSky(weather, instantly: false);
+
     /// <summary>The weather stops: its layer eases away.</summary>
     public void WeatherClears() => SetSky(Sim.BattleWeather.None, instantly: false);
 

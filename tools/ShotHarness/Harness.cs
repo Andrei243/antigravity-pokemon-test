@@ -392,6 +392,14 @@ partial class Harness
         // A battle a mode means to win can still cost it a Pokémon by chance. The game then asks who comes in next,
         // and confirming answers nothing: the next one able to fight goes in, as a player would send it. With nobody
         // left the battle is lost by itself
+        // The team opened at Battle Style Shift's offer: backing out of it stays in (plan 08 · P1)
+        if (b.IsOfferingSwitch && b.HUD.MenuState == BattleMenuState.SwitchPokemon)
+        {
+            Console.WriteLine("  offer: stays in");
+            b.StayIn();
+            Frames(1);
+            return;
+        }
         if (b.HUD.MenuState == BattleMenuState.SwitchPokemon)
         {
             int next = b.PlayerParty.Members.FindIndex(p => !p.IsFainted && !b.PlayerSlots.Any(s => s.Pokemon == p));
@@ -401,7 +409,19 @@ partial class Harness
         Console.WriteLine("  msg: " + b.CurrentMessage);
         b.ConfirmMessage();
         Frames(1);
+        // Battle Style Shift's offer (plan 08 · P1), which every trainer's battle the game starts now makes before the
+        // trainer's next Pokémon: the harness stays in, as a confirm at its question would, and reads on, so a loop
+        // that reads lines until a menu never stops at it (the battle mode shoots it: 23b_battle_offer)
+        if (b.IsOfferingSwitch && AnswersOffers)
+        {
+            Console.WriteLine("  offer: " + b.CurrentMessage + " -> stays in");
+            b.StayIn();
+            Frames(1);
+        }
     }
+
+    /// <summary>Whether <see cref="Confirm"/> answers Battle Style Shift's offer as it comes (plan 08 · P1); off only where a mode shoots it.</summary>
+    bool AnswersOffers = true;
 
     // A Pokémon of a species, or of a species' form by the form's name (Meowth-Galar, Charizard-Mega-X)
     static Pokemon Meet(string name, int level)

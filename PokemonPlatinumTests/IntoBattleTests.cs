@@ -9,6 +9,7 @@ using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.UI;
+using CameraRig = PokemonPlatinumEngine.Overworld.CameraRig;
 
 namespace PokemonPlatinumTests;
 
@@ -166,17 +167,53 @@ public class IntoBattleTests
         // 173-175 and row 105: two wild Pokémon at once, beside a partner
         Meets(TransitionKind.Double, MeetingRow.DoubleWild, Wild(BattleTerrain.Grass, 12, 14, two: true));
         Meets(TransitionKind.Double, MeetingRow.DoubleWild, Wild(BattleTerrain.Cave, 40, 14, two: true));
-    }
 
-    /// <summary>
-    /// The rows plan 09 · L14 will take up: until then a legendary and a mythical Pokémon are met the wild one's
-    /// way, by place.
-    /// </summary>
-    [Fact]
-    public void TheRowsStillToComeKeepTheWaysTheyHad()
-    {
-        Meets(TransitionKind.WildStrong, MeetingRow.Wild, Wild(BattleTerrain.Special, 70, 60, species: "Dialga"));
-        Meets(TransitionKind.WildCave, MeetingRow.Wild, Wild(BattleTerrain.Cave, 47, 60, species: "Giratina"));
+        // The wild species' rows (plan 09 · L14): EncEffects_WildPokemonEffect, enc_effects.c 283-336, and the table's
+        // rows 89-98. 320-322 and row 90 (ENCEFF_CUTIN_LEGENDARY): Dialga and Palkia, whatever the ground and however strong
+        Meets(TransitionKind.Legendary, MeetingRow.DialgaPalkia, Wild(BattleTerrain.Special, 47, 60, species: "Dialga"));
+        Meets(TransitionKind.Legendary, MeetingRow.DialgaPalkia, Wild(BattleTerrain.Special, 70, 60, species: "Palkia"));
+        // 316-318 and row 91: Uxie and Azelf in their caverns; 324-326 and row 93: Arceus
+        Meets(TransitionKind.Legendary, MeetingRow.UxieAzelf, Wild(BattleTerrain.Cave, 50, 40, species: "Uxie"));
+        Meets(TransitionKind.Legendary, MeetingRow.UxieAzelf, Wild(BattleTerrain.Cave, 50, 60, species: "Azelf"));
+        Meets(TransitionKind.Legendary, MeetingRow.Arceus, Wild(BattleTerrain.Special, 80, 60, species: "Arceus"));
+        // 297-299 and row 97 (ENCEFF_CUTIN_MYTHICAL): Giratina, in either Forme (the species is read, never the form)
+        Meets(TransitionKind.Mythical, MeetingRow.Giratina, Wild(BattleTerrain.Cave, 47, 60, species: "Giratina"));
+        Meets(TransitionKind.Mythical, MeetingRow.Giratina, Wild(BattleTerrain.Special, 47, 60, species: "Giratina"));
+        // 291-293 and row 89: Shaymin, to the wild battle's music but the mythical's way
+        Meets(TransitionKind.Mythical, MeetingRow.Shaymin, Wild(BattleTerrain.Grass, 30, 60, species: "Shaymin"));
+        // 307-312 and row 94: Regigigas, Heatran, Darkrai and Rotom (Rotom in the Old Chateau's room)
+        foreach (string species in new[] { "Regigigas", "Heatran", "Darkrai", "Rotom" })
+            Meets(TransitionKind.Mythical, MeetingRow.MinorLegendary, Wild(BattleTerrain.Building, 20, 60, species: species));
+        // 300-306 and row 98: the three Regis, but in Pal Park, which the original asks by its map (ZONE_ID_PAL_PARK)
+        foreach (string species in new[] { "Regirock", "Regice", "Registeel" })
+        {
+            Meets(TransitionKind.Mythical, MeetingRow.RegiTrio, Wild(BattleTerrain.Cave, 30, 60, species: species));
+            Meets(TransitionKind.Wild, MeetingRow.Wild, Wild(BattleTerrain.Grass, 30, 60, species: species, kind: BattleKind.PalPark));
+            Meets(TransitionKind.WildStrong, MeetingRow.Wild, Wild(BattleTerrain.Grass, 70, 60, species: species, kind: BattleKind.PalPark));
+        }
+        // 313-315 and row 92 (ENCEFF_CUTIN_USE_LOCAL): Mesprit, as it roams, met by place; 294-296 and row 95: Cresselia
+        Meets(TransitionKind.WildStrong, MeetingRow.Mesprit, Wild(BattleTerrain.Grass, 50, 40, species: "Mesprit", kind: BattleKind.Roamer));
+        Meets(TransitionKind.WildWater, MeetingRow.Mesprit, Wild(BattleTerrain.Water, 50, 60, species: "Mesprit", kind: BattleKind.Roamer));
+        Meets(TransitionKind.Wild, MeetingRow.Cresselia, Wild(BattleTerrain.Grass, 50, 60, species: "Cresselia", kind: BattleKind.Roamer));
+        Meets(TransitionKind.WildCaveStrong, MeetingRow.Cresselia, Wild(BattleTerrain.Cave, 50, 40, species: "Cresselia"));
+        // 327-333 and row 96: the three birds, by place, and in Pal Park a wild Pokémon's row like any other
+        foreach (string species in new[] { "Articuno", "Zapdos", "Moltres" })
+        {
+            Meets(TransitionKind.WildStrong, MeetingRow.KantoBirds, Wild(BattleTerrain.Grass, 60, 50, species: species, kind: BattleKind.Roamer));
+            Meets(TransitionKind.Wild, MeetingRow.Wild, Wild(BattleTerrain.Grass, 30, 60, species: species, kind: BattleKind.PalPark));
+        }
+        // 167-171 stand before the doubles check of 173: a species with a row of its own keeps it beside a partner, and
+        // a row that goes by place is met by place, never the double's way; a bird in Pal Park has no row and is
+        Meets(TransitionKind.Mythical, MeetingRow.Giratina, Wild(BattleTerrain.Cave, 47, 60, two: true, species: "Giratina"));
+        Meets(TransitionKind.Legendary, MeetingRow.UxieAzelf, Wild(BattleTerrain.Cave, 50, 60, two: true, species: "Uxie"));
+        Meets(TransitionKind.Wild, MeetingRow.Mesprit, Wild(BattleTerrain.Grass, 40, 60, two: true, species: "Mesprit"));
+        Meets(TransitionKind.WildStrong, MeetingRow.Cresselia, Wild(BattleTerrain.Grass, 60, 40, two: true, species: "Cresselia"));
+        Meets(TransitionKind.Double, MeetingRow.DoubleWild, Wild(BattleTerrain.Grass, 30, 60, two: true, species: "Zapdos", kind: BattleKind.PalPark));
+        // Any other species, legendary or not, has no row: Latias, Mew, Suicune
+        foreach (string species in new[] { "Latias", "Mew", "Suicune" })
+            Meets(TransitionKind.WildStrong, MeetingRow.Wild, Wild(BattleTerrain.Grass, 50, 40, species: species));
+        // And the species is the first wild Pokémon's (Party_FindFirstEligibleBattler, 287): a trainer's Pokémon has none
+        Assert.Equal(MeetingRow.Wild, BattleMeeting.SpeciesRow(null, BattleKind.Normal));
     }
 
     /// <summary>
@@ -311,7 +348,10 @@ public class IntoBattleTests
         (TransitionKind.Double, 0f, 0.8f, 1.05f), (TransitionKind.Frontier, 0.45f, 0.55f, 1.25f),
         (TransitionKind.Grunt, 0f, 1.75f, 2f), (TransitionKind.GalacticBoss, 1f, 0.85f, 2.1f),
         // The bands (plan 09 · L15): the lead is the whole of the band's show, the closing its white
-        (TransitionKind.LeaderBand, 2.7f, 0.5f, 3.45f), (TransitionKind.EliteBand, 2.6f, 0.3f, 3.15f)
+        (TransitionKind.LeaderBand, 2.7f, 0.5f, 3.45f), (TransitionKind.EliteBand, 2.6f, 0.3f, 3.15f),
+        // The legendary's and the mythical's (plan 09 · L14): the lead is the camera's fifty-seven frames, the closing
+        // the original's sixty frames of fading to white and its ten
+        (TransitionKind.Legendary, 1.9f, 2f, 4.15f), (TransitionKind.Mythical, 1.9f, 0.3333f, 2.4833f)
     }.Select(w => new object[] { w.Kind, w.Lead, w.Shut, w.Whole });
 
     /// <summary>The style guide's table: each way's lead, its closing and the whole, flashes included.</summary>
@@ -348,9 +388,15 @@ public class IntoBattleTests
             Assert.False(SceneTransition.IsBand(kind));
             Assert.False(SceneTransition.BandAt(kind, 0.5f, W, H).Shown);
         }
-        // Only the bands close to white; every other way to the dark
+        // Only the bands, the legendary's and the mythical's close to white; every other way to the dark
+        var white = new[] { TransitionKind.LeaderBand, TransitionKind.EliteBand, TransitionKind.Legendary, TransitionKind.Mythical };
         foreach (var kind in Enum.GetValues<TransitionKind>())
-            Assert.Equal(SceneTransition.IsBand(kind) ? SceneTransition.White : SceneTransition.Dark, SceneTransition.CoverOf(kind));
+        {
+            Assert.Equal(white.Contains(kind), SceneTransition.ClosesToWhite(kind));
+            Assert.Equal(white.Contains(kind) ? SceneTransition.White : SceneTransition.Dark, SceneTransition.CoverOf(kind));
+            // Only those two move the camera
+            Assert.Equal(kind is TransitionKind.Legendary or TransitionKind.Mythical, SceneTransition.MovesTheCamera(kind));
+        }
     }
 
     // ------------------------------------------------------------------ what rides over the picture
@@ -1101,5 +1147,214 @@ public class IntoBattleTests
         Assert.Equal(black, theirs.Get(36 + 6, 4 + 32));
         Assert.True(theirs.Get(36 + 8, 4 + 10).G > gold.G);
         Assert.True(theirs.Get(36 + 8, 4 + 54).G < gold.G);
+    }
+
+    // ------------------------------------------------------------------ the legendary's and the mythical's (plan 09 · L14)
+
+    /// <summary>
+    /// The legendary's camera, against <c>EncounterEffect_Legendary</c> of <c>src/overlay005/encounter_effect_core.c</c>
+    /// 2486-2549: the field of view 0x100 wider over forty frames (2526-2530, 2533-2541), six frames' wait
+    /// (<c>frameDelay = 5</c> counted below nought, 2544-2554), the distance 2350 units nearer over eight frames at an
+    /// opening rate of a half (2549-2560), then sixty frames of fading to white (2567). Here the rush is the lens's.
+    /// </summary>
+    [Fact]
+    public void TheLegendarysLensWidensThenRushesIn()
+    {
+        var kind = TransitionKind.Legendary;
+        float f = SceneTransition.FlashSeconds;
+        Assert.Equal(TransitionLens.None, SceneTransition.LensAt(kind, 0f));
+        Assert.Equal(TransitionLens.None, SceneTransition.LensAt(kind, f - 0.01f));
+        // The beats in the original's frames, thirty to the second
+        // (to a ten-thousandth: the beats are sums of the flashes' seconds and the frames, which round apart)
+        Assert.Equal(41f / 30f, SceneTransition.WidenUntil, 4);
+        Assert.Equal(47f / 30f, SceneTransition.RushFrom, 4);
+        Assert.Equal(56f / 30f, SceneTransition.RushUntil, 4);
+        Assert.Equal(57f / 30f, SceneTransition.CameraSeconds, 4);
+        Assert.Equal((2f, 1f / 3f), (SceneTransition.LegendaryWhiteSeconds, SceneTransition.MythicalWhiteSeconds), new FloatPair());
+        // 0x5C1 to 0x6C1 each side of the middle: 8.09° to 9.50°, a lens of 0.850; and the rush to the kit's tightest
+        Assert.Equal(0.850f, SceneTransition.LegendaryWide, 3);
+        Assert.Equal(4f, SceneTransition.LegendaryRush);
+        // Widening evenly, held, then rushing in on its ratio, and held at the tightest through the white
+        Assert.Equal(1f, SceneTransition.LensAt(kind, f).Zoom, 4);
+        Assert.Equal((1f + SceneTransition.LegendaryWide) / 2f, SceneTransition.LensAt(kind, f + SceneTransition.WidenUntil / 2f).Zoom, 4);
+        Assert.Equal(SceneTransition.LegendaryWide, SceneTransition.LensAt(kind, f + SceneTransition.WidenUntil).Zoom, 4);
+        Assert.Equal(SceneTransition.LegendaryWide, SceneTransition.LensAt(kind, f + (SceneTransition.WidenUntil + SceneTransition.RushFrom) / 2f).Zoom, 4);
+        Assert.Equal(4f, SceneTransition.LensAt(kind, f + SceneTransition.RushUntil).Zoom, 3);
+        Assert.Equal(4f, SceneTransition.LensAt(kind, f + SceneTransition.CameraSeconds + 1f).Zoom, 3);
+        Assert.Equal(4f, SceneTransition.LensAt(kind, SceneTransition.OutSeconds(kind)).Zoom, 3);
+        // Slow at first and headlong at the end: a quarter of the rush's time takes it a sixteenth of the way on its ratio
+        float rush = SceneTransition.RushUntil - SceneTransition.RushFrom;
+        float quarter = SceneTransition.LensAt(kind, f + SceneTransition.RushFrom + rush / 4f).Zoom;
+        Assert.InRange(MathF.Log(quarter / SceneTransition.LegendaryWide) / MathF.Log(4f / SceneTransition.LegendaryWide), 0.05f, 0.07f);
+        float last = 2f;
+        for (float t = f; t <= SceneTransition.OutSeconds(kind); t += 1f / 60f)
+        {
+            var lens = SceneTransition.LensAt(kind, t);
+            Assert.Equal(Vector2.Zero, lens.Step);
+            Assert.Equal(SceneTransition.LegendaryWide, lens.Widest);
+            Assert.True(lens.Zoom >= lens.Widest - 0.001f && lens.Zoom <= 4.0001f, $"{lens.Zoom} at {t}");
+            // Never tighter while it widens, never wider once it rushes
+            if (t - f < SceneTransition.WidenUntil) Assert.True(lens.Zoom <= last + 0.0001f);
+            if (t - f > SceneTransition.RushFrom + 0.02f) Assert.True(lens.Zoom >= last - 0.0001f);
+            last = lens.Zoom;
+        }
+        // The original's curve: a hair back, then all the way
+        Assert.Equal(0f, SceneTransition.RushShare(0f));
+        Assert.True(SceneTransition.RushShare(0.001f) < 0f);
+        Assert.Equal(1f, SceneTransition.RushShare(1f), 5);
+        Assert.Equal((2354f * 0.25f - 2f) / 2350f, SceneTransition.RushShare(0.5f), 5);
+    }
+
+    /// <summary>
+    /// The mythical's sixteen held lenses, against <c>sLegendaryEncounterCameraParams</c> (encounter_effect_core.c
+    /// 2261-2374) as <c>EncounterEffect_Mythical</c> (2404-2484) takes them: each after its <c>frameDelay</c> counted
+    /// down below nought (2433-2452), so one more frame than it says, the last held through ten frames of fading to
+    /// white (2457). The field of view a factor of the field camera's 0x5C1; the turns about the target steps of it.
+    /// </summary>
+    [Fact]
+    public void TheMythicalsLensesAreHeldForTheOriginalsFrames()
+    {
+        var kind = TransitionKind.Mythical;
+        float f = SceneTransition.FlashSeconds;
+        var lenses = SceneTransition.MythicalLenses;
+        Assert.Equal(16, lenses.Length);
+        int[] frames = { 5, 10, 15, 19, 23, 27, 31, 35, 39, 43, 46, 49, 51, 53, 55, 57 };
+        float[] zooms = { 1f, 0.958f, 0.874f, 0.811f, 0.764f, 0.783f, 0.715f, 0.714f, 0.715f, 0.783f, 1.213f, 1.539f, 0.910f, 2.567f, 1.153f, 2.567f };
+        for (int i = 0; i < 16; i++)
+        {
+            Assert.Equal(frames[i] / 30f, lenses[i].From, 4);
+            Assert.Equal(zooms[i], lenses[i].Zoom, 3);
+            // Steps in whole texels, never further than the reach
+            Assert.Equal(lenses[i].Step.X, MathF.Round(lenses[i].Step.X * 32f) / 32f);
+            Assert.Equal(lenses[i].Step.Y, MathF.Round(lenses[i].Step.Y * 32f) / 32f);
+            Assert.True(MathF.Abs(lenses[i].Step.X) <= SceneTransition.JoltReach && MathF.Abs(lenses[i].Step.Y) <= SceneTransition.JoltReach);
+            // Taken at once on its frame and held to the next one's
+            var taken = SceneTransition.LensAt(kind, f + lenses[i].From);
+            Assert.Equal((lenses[i].Zoom, lenses[i].Step), (taken.Zoom, taken.Step));
+            float until = i + 1 < 16 ? lenses[i + 1].From : SceneTransition.OutSeconds(kind) - f;
+            var held = SceneTransition.LensAt(kind, f + until - 0.01f);
+            Assert.Equal((lenses[i].Zoom, lenses[i].Step), (held.Zoom, held.Step));
+        }
+        // Before the first, the place's own; the first is the place's own too; the last is taken as the camera's frames end
+        Assert.Equal((1f, Vector2.Zero), (SceneTransition.LensAt(kind, f + 0.1f).Zoom, SceneTransition.LensAt(kind, f + 0.1f).Step));
+        Assert.Equal((1f, Vector2.Zero), (lenses[0].Zoom, lenses[0].Step));
+        Assert.Equal(SceneTransition.CameraSeconds, lenses[15].From, 4);
+        // The turns: 0x1000 a sixteenth of a turn (22.5°) both ways at the third, 0xA000 (−135°) at the fourteenth
+        Assert.Equal(new Vector2(1.53125f, -1.53125f), lenses[2].Step);
+        Assert.Equal(new Vector2(-2.84375f, -0.96875f), lenses[13].Step);
+        Assert.Equal(new Vector2(-0.09375f, 0.6875f), lenses[1].Step);
+        Assert.Equal(Vector2.Zero, lenses[7].Step);
+        // The widest, made ready from the start: the eighth's 0x802
+        Assert.Equal(0.714f, SceneTransition.MythicalWidest, 3);
+        Assert.All(lenses, l => Assert.True(l.Zoom >= SceneTransition.MythicalWidest));
+        Assert.Equal(SceneTransition.MythicalWidest, SceneTransition.LensAt(kind, f + 1f).Widest);
+        // Every other way leaves the camera be
+        foreach (var other in Enum.GetValues<TransitionKind>().Where(k => !SceneTransition.MovesTheCamera(k)))
+            Assert.Equal(TransitionLens.None, SceneTransition.LensAt(other, 1.5f));
+    }
+
+    /// <summary>
+    /// Both close to white as a shape: the legendary's a disc from the middle with the picture washed white under it,
+    /// the mythical's a frame closing in from the edges; the battle opens on the same shape in reverse.
+    /// </summary>
+    [Fact]
+    public void TheCamerasWaysCloseToWhite()
+    {
+        var legendary = TransitionKind.Legendary;
+        // The middle first, the corners last
+        Assert.True(Covers(legendary, 0.2f, Middle.X + 40f, Middle.Y - 40f));
+        Assert.False(Covers(legendary, 0.2f, 10f, 10f));
+        Assert.False(Covers(legendary, 0.9f, 1f, 1f));
+        Assert.True(Covers(legendary, 0.99f, 30f, 30f));
+        var mythical = TransitionKind.Mythical;
+        // The edges first, the middle last
+        Assert.True(Covers(mythical, 0.2f, 10f, Middle.Y));
+        Assert.True(Covers(mythical, 0.2f, Middle.X, H - 10f));
+        Assert.False(Covers(mythical, 0.2f, Middle.X + 300f, Middle.Y));
+        Assert.False(Covers(mythical, 0.95f, Middle.X + 10f, Middle.Y + 10f));
+        // The same shape as the battle opens, in reverse
+        foreach (var kind in new[] { legendary, mythical })
+            for (float closed = 0.1f; closed < 1f; closed += 0.2f)
+                for (float y = 20f; y < H; y += 140f)
+                    for (float x = 20f; x < W; x += 160f)
+                        Assert.Equal(Covers(kind, closed, x, y), Covers(kind, closed, x, y, closing: false));
+        // The wash: nothing through the lead, rising with the disc to 200, and none as the battle opens or for the mythical
+        float from = SceneTransition.FlashSeconds + SceneTransition.CameraSeconds;
+        Assert.Equal(0, SceneTransition.Wash(legendary, true, from));
+        Assert.InRange(SceneTransition.Wash(legendary, true, from + 1f), 90, 110);
+        Assert.Equal(200, SceneTransition.Wash(legendary, true, SceneTransition.OutSeconds(legendary)));
+        Assert.Equal(0, SceneTransition.Wash(legendary, false, 0.1f));
+        Assert.Equal(0, SceneTransition.Wash(mythical, true, from + 0.2f));
+        Assert.Equal(0, SceneTransition.Wash(TransitionKind.LeaderBand, true, 3f));
+        // And nothing rides over either, nor wavers, nor dims
+        foreach (var kind in new[] { legendary, mythical })
+        {
+            Assert.Empty(PiecesAt(kind, from + 0.1f));
+            Assert.False(SceneTransition.Ripple(kind, true, from).Plays);
+            Assert.Equal(0, SceneTransition.Veil(kind, true, from));
+            Assert.False(SceneTransition.BandAt(kind, from, W, H).Shown);
+        }
+    }
+
+    /// <summary>
+    /// What the game does with the lens (<c>GameEngine.DriveTheLens</c>, run each frame of a transition): the rig
+    /// holds the lens of the moment while the legendary's or the mythical's closes, and once the midpoint lets go the
+    /// field is looked at exactly as before the battle, whatever the rig was told besides.
+    /// </summary>
+    [Theory]
+    [InlineData(TransitionKind.Legendary)]
+    [InlineData(TransitionKind.Mythical)]
+    public void TheCameraIsWhereItWasOnceTheBattleIsOver(TransitionKind kind)
+    {
+        var player = new Vector2(112.5f, 880.5f);
+        foreach (float zoom in new[] { 1f, 1.6f })
+        {
+            var rig = new CameraRig();
+            var untouched = new CameraRig();
+            if (zoom != 1f) { rig.ZoomTo(zoom, 0f); untouched.ZoomTo(zoom, 0f); }
+            rig.Advance(0.5f); untouched.Advance(0.5f);
+            float t = 0f, step = 1f / 60f, shut = SceneTransition.OutSeconds(kind);
+            for (; t < shut; t += step)
+            {
+                PokemonPlatinumEngine.Core.GameEngine.DriveTheLens(rig, kind, closing: true, t);
+                var lens = SceneTransition.LensAt(kind, t);
+                Assert.True(rig.Holding);
+                Assert.Equal(zoom * Math.Clamp(lens.Zoom, CameraRig.WidestZoom, CameraRig.TightestZoom), rig.Lens, 4);
+                Assert.Equal(lens.Step, rig.HeldStep);
+                Assert.Equal(CameraRig.FovAt(MapScene.OutdoorFovYDeg, rig.Lens), rig.Fov(MapScene.OutdoorFovYDeg));
+                Assert.True(rig.WidestAhead <= zoom * lens.Widest + 0.0001f);
+                Assert.False(rig.AtRest);
+                // Where it looks for itself is never moved: the step goes onto the camera as it is built
+                Assert.Equal(untouched.Look(player), rig.Look(player));
+            }
+            // The midpoint, and the battle opening: nothing held, to the bit
+            PokemonPlatinumEngine.Core.GameEngine.DriveTheLens(rig, kind, closing: false, 0f);
+            PokemonPlatinumEngine.Core.GameEngine.DriveTheLens(rig, kind, closing: false, 0.25f);
+            Assert.False(rig.Holding);
+            Assert.Equal(untouched.Lens, rig.Lens);
+            Assert.Equal(untouched.Zoom, rig.Zoom);
+            Assert.Equal(Vector2.Zero, rig.HeldStep);
+            Assert.Equal(untouched.Fov(MapScene.OutdoorFovYDeg), rig.Fov(MapScene.OutdoorFovYDeg));
+            Assert.Equal(untouched.Fov(MapScene.IndoorFovYDeg), rig.Fov(MapScene.IndoorFovYDeg));
+            Assert.Equal(untouched.WidestAhead, rig.WidestAhead);
+            Assert.Equal(untouched.AtRest, rig.AtRest);
+            Assert.Equal(untouched.Look(player), rig.Look(player));
+        }
+        // Every other way never touches the rig
+        foreach (var other in Enum.GetValues<TransitionKind>().Where(k => !SceneTransition.MovesTheCamera(k)))
+        {
+            var rig = new CameraRig();
+            PokemonPlatinumEngine.Core.GameEngine.DriveTheLens(rig, other, closing: true, 1f);
+            Assert.False(rig.Holding);
+            Assert.True(rig.AtRest);
+            Assert.Equal(MapScene.OutdoorFovYDeg, rig.Fov(MapScene.OutdoorFovYDeg));
+        }
+    }
+
+    /// <summary>Compares two pairs of floats to four places.</summary>
+    private sealed class FloatPair : IEqualityComparer<(float, float)>
+    {
+        public bool Equals((float, float) a, (float, float) b) => MathF.Abs(a.Item1 - b.Item1) < 1e-4f && MathF.Abs(a.Item2 - b.Item2) < 1e-4f;
+        public int GetHashCode((float, float) p) => 0;
     }
 }

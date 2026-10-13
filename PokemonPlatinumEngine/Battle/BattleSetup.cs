@@ -34,9 +34,11 @@ public enum BattleFormat
 /// What a script or a venue asks of a battle beyond who fights it and where (plan 14): the formats of the later
 /// games that are a flag on the battle. The game lays them over the place's own conditions as the battle is made
 /// (<see cref="Sim.BattleConditions"/>), never into a battle that is running. B1: an inverse battle, whose type
-/// chart is turned round (<see cref="Sim.BattleConditions.Inverse"/>).
+/// chart is turned round (<see cref="Sim.BattleConditions.Inverse"/>). B14: a Master Trainer's battle, in which nothing
+/// may be used from the bag by either side (<see cref="NoBattleItems"/>) and the player's side is one Pokémon of the
+/// team alone (<see cref="Alone"/>): the team's own, not a copy, so what the battle does to it stays.
 /// </summary>
-public sealed record BattleTerms(bool Inverse = false);
+public sealed record BattleTerms(bool Inverse = false, bool NoBattleItems = false, Pokemon? Alone = null);
 
 /// <summary>Everything a battle starts from.</summary>
 public sealed class BattleSetup
@@ -116,6 +118,26 @@ public sealed class BattleSetup
     /// The team it is handed is the battle's own copy (<see cref="Models.Frontier.FrontierRules.TeamFor"/>).
     /// </summary>
     public bool Frontier { get; init; }
+
+    /// <summary>
+    /// Nothing may be used from the bag, by either side (plan 14 · B14: a Master Trainer's battle; plan 13 · V5's run
+    /// rule sets the same): the BAG command is greyed and says why (<see cref="Sim.CoreSetup.NoBattleItems"/>).
+    /// </summary>
+    public bool NoBattleItems { get; init; }
+
+    /// <summary>
+    /// Battle Style Shift (plan 08 · P1; the options' Battle Style): when a trainer's Pokémon faints with another to
+    /// come, the player is asked whether to switch first (<see cref="Sim.CoreSetup.OffersSwitch"/>). Off unless given,
+    /// which is Set: the game turns it on from its settings, and a battle a test or a tool builds itself asks nothing.
+    /// </summary>
+    public bool OffersSwitch { get; init; }
+
+    /// <summary>
+    /// The options' Battle Scene (plan 08 · P1): on unless given, the moves and the turn's animations play; off, the
+    /// face shows none of them and a line's hits land at once (<see cref="BattleEngine.Scene"/>). Presentation only,
+    /// never read by the rules.
+    /// </summary>
+    public bool Scene { get; init; } = true;
 
     /// <summary>The trainer's first Pokémon when it isn't the first in their party (the old constructor's foe argument).</summary>
     internal Pokemon? FirstTrainerPokemon { get; init; }

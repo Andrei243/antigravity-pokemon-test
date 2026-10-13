@@ -5,6 +5,7 @@
 //   dotnet run --project tools/DataImporter                         fetch the pinned sources (once) and import everything
 //   dotnet run --project tools/DataImporter -- --decomp <dir> --pokeapi <dir/data/v2/csv>   use existing checkouts
 //   dotnet run --project tools/DataImporter -- --last-species 493   stop after Platinum's National Pokédex
+//   dotnet run --project tools/DataImporter -- --check-entries      the written Pokédex entries against the games' own (plan 08 · P13)
 
 using System.Text.Json.Nodes;
 using DataImporter;
@@ -17,6 +18,19 @@ string? pokeApiDir = Arg("--pokeapi");
 int lastSpecies = int.Parse(Arg("--last-species") ?? "1025");
 string outDir = Arg("--out") ?? Path.Combine(repo, "PokemonPlatinumEngine", "Data");
 string cache = Path.Combine(repo, "tools", "DataImporter", ".cache");
+
+if (args.Contains("--check-entries"))
+{
+    // Only PokeAPI's flavour texts are read, and nothing is written: exit 1 on a run of words shared
+    string? entries = Arg("--check-entries");
+    if (entries == null || entries.StartsWith("--")) entries = Path.Combine(repo, "PokemonPlatinumEngine", "Data", DexEntries.FileName);
+    if (pokeApiDir == null)
+    {
+        Console.WriteLine("Fetching PokeAPI…");
+        pokeApiDir = Path.Combine(Sources.Checkout(cache, "pokeapi", Sources.PokeApiRepo, Sources.PokeApiCommit, Sources.PokeApiFolders), "data", "v2", "csv");
+    }
+    return EntryCheck.Check(entries, pokeApiDir) == 0 ? 0 : 1;
+}
 
 if (decompDir == null)
 {
@@ -61,6 +75,9 @@ var frontier = importer.Frontier();
 
 Console.WriteLine("Trainers…");
 var trainers = importer.Trainers(species);
+// The Master Trainers (plan 14 · B14): a master for every species, its moves from Showdown's random-battle sets
+var masters = MasterTrainers.Build(showdownDir, species, moves, items);
+Console.WriteLine($"  {masters.Masters.Count} masters: {masters.FromSets} with moves of a set ({masters.MadeUp} made up with what their level taught them), {masters.WithoutMoves} with none (they know what their level taught them)");
 
 Check(species, moves, abilities, items);
 
@@ -69,6 +86,7 @@ Write(Path.Combine(outDir, MoveDatabase.FileName), GameDataFiles.Serialize(moves
 Write(Path.Combine(outDir, AbilityDatabase.FileName), GameDataFiles.Serialize(abilities));
 Write(Path.Combine(outDir, ItemDatabase.FileName), GameDataFiles.Serialize(items));
 Write(Path.Combine(outDir, TrainerDatabase.FileName), GameDataFiles.Serialize(trainers));
+Write(Path.Combine(outDir, TrainerDatabase.MastersFileName), GameDataFiles.Serialize(masters.Masters));
 Write(Path.Combine(outDir, MartDatabase.FileName), GameDataFiles.Serialize(marts));
 Write(Path.Combine(outDir, SuperContestDatabase.FileName), GameDataFiles.Serialize(contests));
 Write(Path.Combine(outDir, SealDatabase.FileName), GameDataFiles.Serialize(seals));

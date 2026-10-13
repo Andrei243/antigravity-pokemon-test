@@ -110,6 +110,17 @@ public sealed class AudioMixer
     private bool handheld;
 
     /// <summary>
+    /// Whether the output is one channel (plan 08 · P1, the options' Mono): each sample of the two sides becomes their
+    /// middle, so nothing panned is lost to an ear that hears one side. The handheld's speakers, if also on, come first.
+    /// </summary>
+    public bool Mono
+    {
+        get { lock (gate) return mono; }
+        set { lock (gate) mono = value; }
+    }
+    private bool mono;
+
+    /// <summary>
     /// The music's low-HP arrangement (a battle theme turning agitated while the player's Pokémon is in the red).
     /// It holds across songs: the game sets it every frame of a battle and clears it when the battle ends.
     /// </summary>
@@ -342,6 +353,7 @@ public sealed class AudioMixer
             }
 
             if (handheld) Speakers(output);
+            if (mono) Fold(output);
             float gain = Muted ? 0f : Volume;
             // Behind another window everything drops to a quarter, gliding there and back sample by sample so nothing
             // clicks; with the player's ear (the gain at 1 and staying there) the samples are what they always were
@@ -418,6 +430,17 @@ public sealed class AudioMixer
                 handheldLow2[ch] += lp * (handheldLow1[ch] - handheldLow2[ch]);
                 output[i + ch] = handheldLow2[ch] * 1.2f;
             }
+        }
+    }
+
+    /// <summary>One channel: both sides take their middle.</summary>
+    private static void Fold(Span<float> output)
+    {
+        for (int i = 0; i + 1 < output.Length; i += 2)
+        {
+            float mid = (output[i] + output[i + 1]) * 0.5f;
+            output[i] = mid;
+            output[i + 1] = mid;
         }
     }
 

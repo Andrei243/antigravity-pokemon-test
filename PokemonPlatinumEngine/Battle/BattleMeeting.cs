@@ -12,8 +12,8 @@ public readonly record struct MetTrainer(string Class, string Name);
 /// <summary>
 /// Whom a meeting is with, as the original sorts them before it picks the way into the battle and its music
 /// (<c>enum EncEffectsPairID</c> of <c>src/enc_effects.c</c>, without the rows that tell one Gym Leader or one
-/// legendary Pokémon from another: a Leader's and an Elite Four's name is beside their class here, and the species'
-/// rows are plan 09 · L14's).
+/// legendary Pokémon from another: a Leader's and an Elite Four's name is beside their class here, and the wild
+/// species' rows are the original's groups, as its table gives each group its way in and its music; plan 09 · L14).
 /// </summary>
 public enum MeetingRow
 {
@@ -46,7 +46,30 @@ public enum MeetingRow
     /// <summary>Any other trainer (<c>ENCEFF_NORMAL_TRAINER</c>).</summary>
     Trainer,
     /// <summary>A wild Pokémon (<c>ENCEFF_NORMAL_WILD</c>).</summary>
-    Wild
+    Wild,
+
+    // The wild species with rows of their own (plan 09 · L14; EncEffects_WildPokemonEffect)
+
+    /// <summary>Shaymin (<c>ENCEFF_SHAYMIN</c>): the mythical's way.</summary>
+    Shaymin,
+    /// <summary>Dialga or Palkia (<c>ENCEFF_DIALGA_PALKIA</c>): the legendary's way.</summary>
+    DialgaPalkia,
+    /// <summary>Uxie or Azelf (<c>ENCEFF_UXIE_AZELF</c>): the legendary's way.</summary>
+    UxieAzelf,
+    /// <summary>Mesprit (<c>ENCEFF_MESPRIT</c>): met as anyone is, to the lakes' guardians' music.</summary>
+    Mesprit,
+    /// <summary>Arceus (<c>ENCEFF_ARCEUS</c>): the legendary's way.</summary>
+    Arceus,
+    /// <summary>Regigigas, Heatran, Darkrai or Rotom (<c>ENCEFF_MINOR_LEGENDARIES</c>): the mythical's way.</summary>
+    MinorLegendary,
+    /// <summary>Cresselia (<c>ENCEFF_CRESSELIA</c>): met as anyone is.</summary>
+    Cresselia,
+    /// <summary>Articuno, Zapdos or Moltres outside Pal Park (<c>ENCEFF_KANTO_BIRDS</c>): met as anyone is, to the legendary music.</summary>
+    KantoBirds,
+    /// <summary>Giratina (<c>ENCEFF_GIRATINA</c>): the mythical's way.</summary>
+    Giratina,
+    /// <summary>Regirock, Regice or Registeel outside Pal Park (<c>ENCEFF_REGI_TRIO</c>): the mythical's way.</summary>
+    RegiTrio
 }
 
 /// <summary>The ground a way into a battle goes by (<c>CutInEffects_ForBattle</c>): water, a cave's floor, and everything else.</summary>
@@ -130,13 +153,35 @@ public sealed record BattleMeeting
     };
 
     /// <summary>
+    /// The row of a wild Pokémon's species (<c>EncEffects_WildPokemonEffect</c> of <c>src/enc_effects.c</c>): by the
+    /// species alone, whatever its form, so a Giratina in its Origin Forme and a Rotom in an appliance are theirs; the
+    /// Regis and the birds met in Pal Park (the original asks its map, <c>ZONE_ID_PAL_PARK</c>; here the battle's
+    /// kind) are met as any wild Pokémon is. <see cref="MeetingRow.Wild"/> for every species with no row.
+    /// </summary>
+    public static MeetingRow SpeciesRow(string? species, BattleKind kind) => species switch
+    {
+        "Shaymin" => MeetingRow.Shaymin,
+        "Cresselia" => MeetingRow.Cresselia,
+        "Giratina" => MeetingRow.Giratina,
+        "Registeel" or "Regice" or "Regirock" => kind == BattleKind.PalPark ? MeetingRow.Wild : MeetingRow.RegiTrio,
+        "Regigigas" or "Heatran" or "Darkrai" or "Rotom" => MeetingRow.MinorLegendary,
+        "Mesprit" => MeetingRow.Mesprit,
+        "Uxie" or "Azelf" => MeetingRow.UxieAzelf,
+        "Dialga" or "Palkia" => MeetingRow.DialgaPalkia,
+        "Arceus" => MeetingRow.Arceus,
+        "Moltres" or "Articuno" or "Zapdos" => kind == BattleKind.PalPark ? MeetingRow.Wild : MeetingRow.KantoBirds,
+        _ => MeetingRow.Wild
+    };
+
+    /// <summary>
     /// Whom the meeting is with (<c>EncEffects_GetEffectPair</c>, in its order and with its quirks). Among trainers:
     /// at the Frontier a Brain is a Brain even in a double, anyone else a double battle in a double and the
     /// Frontier's alone; then Team Galactic's own, even in a double; then any other double, a Gym Leader's or the
     /// Elite Four's too (the slip the original's own comment owns), Volkner's kept apart for its music; then a link
-    /// battle; then the class. Among wild Pokémon two at once, or one. The species with rows of their own (the
-    /// legendary and mythical Pokémon, and those met as anyone is to music of their own) are plan 09 · L14's: they go
-    /// before the check for two at once, as <c>EncEffects_WildPokemonEffect</c>'s do.
+    /// battle; then the class. Among wild Pokémon the species with a row of its own first (<see cref="SpeciesRow"/>:
+    /// the legendary and mythical Pokémon, and those met as anyone is to music of their own), even two at once, as
+    /// the original returns any row below <c>ENCEFF_NORMAL_WILD</c> before its check for doubles (plan 09 · L14);
+    /// then two at once, or one.
     /// </summary>
     public MeetingRow Row
     {
@@ -155,6 +200,8 @@ public sealed record BattleMeeting
                 if (Link) return MeetingRow.Link;
                 return first;
             }
+            var species = SpeciesRow(WildSpecies, Kind);
+            if (species != MeetingRow.Wild) return species;
             return Double ? MeetingRow.DoubleWild : MeetingRow.Wild;
         }
     }

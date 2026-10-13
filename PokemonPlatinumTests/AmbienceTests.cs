@@ -245,6 +245,34 @@ public class AmbienceTests
         Assert.All(Render(muted, 0.5), x => Assert.Equal(0f, x));
     }
 
+    [Fact]
+    public void MonoPlaysBothSidesInEachEar()
+    {
+        // Platinum's MONO (plan 08 · P1): a sound panned hard left is heard the same on the right, each sample the two
+        // sides' middle, and nothing else changes: a sound in the middle comes out as it did
+        float[] Alone(bool mono, float pan)
+        {
+            var mixer = new AudioMixer { Mono = mono };
+            mixer.PlaySound(SoundBank.Get("exclaim")!, pan: pan);
+            return Render(mixer, 0.3);
+        }
+        var left = Alone(true, -1f);
+        Assert.Contains(left, x => MathF.Abs(x) > 1e-4f);
+        for (int i = 0; i + 1 < left.Length; i += 2) Assert.Equal(left[i], left[i + 1]);
+        var middle = Alone(false, 0f);
+        var folded = Alone(true, 0f);
+        Assert.Equal(middle.Length, folded.Length);
+        for (int i = 0; i < middle.Length; i++) Assert.Equal(middle[i], folded[i], 5);
+
+        var s = new GameSettings { Speakers = SpeakerMode.Mono, BattleScene = false, BattleStyle = BattleStyle.Set };
+        var options = new JsonSerializerOptions { Converters = { new System.Text.Json.Serialization.JsonStringEnumConverter() } };
+        var read = JsonSerializer.Deserialize<GameSettings>(JsonSerializer.Serialize(s, options), options)!;
+        Assert.Equal((SpeakerMode.Mono, false, BattleStyle.Set), (read.Speakers, read.BattleScene, read.BattleStyle));
+        // A file from before the rows reads as Platinum has them
+        var old = JsonSerializer.Deserialize<GameSettings>("{ \"Speakers\": \"Handheld\" }", options)!;
+        Assert.Equal((SpeakerMode.Handheld, true, BattleStyle.Shift), (old.Speakers, old.BattleScene, old.BattleStyle));
+    }
+
     // ------------------------------------------------------------------ the mixing pass
 
     [Fact]
@@ -285,6 +313,11 @@ public class AmbienceTests
         OptionsScreen.Change(s, OptionRow.Speakers, 1);
         Assert.Equal((90, 0, SpeakerMode.Handheld), (s.CryVolume, s.AmbienceVolume, s.Speakers));
         OptionsScreen.Change(s, OptionRow.Speakers, -1);
+        Assert.Equal(SpeakerMode.Stereo, s.Speakers);
+        // Platinum's MONO is the third way (plan 08 · P1): Stereo, Handheld, Mono and round again
+        OptionsScreen.Change(s, OptionRow.Speakers, -1);
+        Assert.Equal(SpeakerMode.Mono, s.Speakers);
+        OptionsScreen.Change(s, OptionRow.Speakers, 1);
         Assert.Equal(SpeakerMode.Stereo, s.Speakers);
 
         var options = new JsonSerializerOptions { Converters = { new System.Text.Json.Serialization.JsonStringEnumConverter() } };

@@ -16,6 +16,16 @@ dotnet run --project tools/DataImporter -- --decomp <pokeplatinum checkout> --po
 dotnet run --project tools/DataImporter -- --last-species 493  # stop after Platinum's National Pokédex
 ```
 
+## Checking the written entries
+
+```bash
+dotnet run --project tools/DataImporter -- --check-entries               # PokemonPlatinumEngine/Data/dex-entries.json
+dotnet run --project tools/DataImporter -- --check-entries <file>        # another file of the same shape
+dotnet run --project tools/DataImporter -- --check-entries --pokeapi <pokeapi>/data/v2/csv
+```
+
+The Pokédex's written entries (`PokemonPlatinumEngine/Data/dex-entries.json`, plan 08 · P13) are ours, written by hand, and must never be a paraphrase of a game's. `--check-entries` fetches only PokeAPI (into the same git-ignored cache, if it isn't there yet), reads every English flavour text in `pokemon_species_flavor_text.csv` (every game's Pokédex entries, Platinum's among them) into memory, and reports each run of six words an entry shares with any of them: the name, which of its entries, the six words and whose text they were found in. Words are compared in lower case with letters and digits only (accents and apostrophes dropped, dashes and line breaks as spaces). It exits with 1 on a finding and 0 when nothing is shared, and writes nothing: the games' text stays in the cache and never enters the repository, which is why this is a tool and not a test. A batch of entries is done only once it reports nothing.
+
 The run is deterministic: the same sources and overrides give the same files, so review a re-import as a diff. A file whose content didn't change is left untouched (the run says `unchanged`), so a session working on moves never rewrites `species.json`. It needs `git` on the path the first time, to fetch the sources into `tools/DataImporter/.cache` (ignored by git, about 130 MB). `--showdown <folder>` reads Pokémon Showdown's three tables from a folder of your own instead of fetching them.
 
 ## Sources
@@ -39,16 +49,17 @@ The run is deterministic: the same sources and overrides give the same files, so
 | The Battle Arcade's own tables (`frontier.json`'s `arcade`): each round's rows of trainers; the items and the berries the game board gives a side to hold, by the round; the board's thirty-two events with the rounds, and for seven of them the battles of a round, each may come up in; how likely a panel is to be one side's, the battle's or a bonus by the last battle's score, and the scores that set the row; the frames the cursor waits on a panel at each speed and the speed a round begins at; what a battle scores by statuses, by faints and by turns; and the Battle Points a round earns | the decompilation (`sBattleArcadeOpponentPools`, `sItemPools`, `sBerryPools`, `sRouletteSpeedByRound`, the three performance tables and `sBPPerRoundSolo` in `src/overlay104/battle_arcade.c` and `battle_arcade_helpers.c`; the events' availability by round and by battle, `sCategoryWeights`, the thresholds and `sCursorMoveFrames` in `src/applications/frontier/battle_arcade/main.c`; the events' numbers from `include/constants/battle_frontier.h`); `Importer.Frontier.cs`. Numbers and names only |
 | Descriptions of moves, abilities and items | PokeAPI's short effect texts (written by PokeAPI's contributors, not taken from the games) |
 | Descriptions of TMs and HMs | written here from the move Platinum's machine teaches: "Teaches Focus Punch to a compatible Pokémon." and that move's own description. PokeAPI's text for a machine names the move a later generation gave it (Hone Claws for TM01) |
-| Pokédex entries | generated from the data in our own words |
+| Pokédex entries | generated from the data in our own words (`dexEntry` in `species.json`): the fallback for a name `dex-entries.json` lacks, whose entries are written by hand (plan 08 · P13) and never by the importer |
 | The rest of Platinum's item table: the hold effect's number, Fling's power and effect, Natural Gift's power and type, what Pluck gets, what can be tossed or registered, how the bag and the battle use each item and with what parameters | the decompilation (`res/items/data/<item>.json`); never its descriptions or icons |
 | The newest games' power, accuracy, PP, priority, type and category for Platinum's moves, where they differ (`modern`) | PokeAPI's `moves.csv`, which holds the current values |
 | Each damaging move's power as a Z-Move and as a Max Move, each status move's Z-Power bonus, the Z-Moves, Max Moves and G-Max Moves themselves, and whose each Mega Stone and Z-Crystal is | [Pokémon Showdown](https://github.com/smogon/pokemon-showdown)'s `data/moves.ts` and `data/items.ts`, read by `Showdown.cs` for those numbers and names only; a move without a Z or Max power of its own gets one by Showdown's rule (`Importer.ZPowerOf`, `MaxPowerOf`) |
 | Forms: regional, Mega, Primal, Gigantamax, for battle only, and the rest (Rotom's appliances, Unown's letters) with whatever each doesn't share with its species, the evolutions that start from a form, lead into one or happen in one region, and the newest games' types and base stats for species and forms where they differ (`modern`) | PokeAPI (`pokemon_forms.csv`, `pokemon_form_types.csv`, a form's own `pokemon` entry, `pokemon_evolution.csv`); Platinum's twelve forms with data of their own from the decompilation (`res/pokemon/<species>/forms/<form>/data.json`) |
 | Each form's colour, where it isn't its species' | Pokémon Showdown's `data/pokedex.ts`, read for that field alone |
+| The Master Trainers' moves (plan 14 · B14, `master-trainers.json`) | Pokémon Showdown's random-battle sets (`data/random-battles/gen9/sets.json` back to `gen2/sets.json`, and `gen1/data.json`), read by `MasterTrainers.cs` for each species' movepools' move names alone; the four drawn are those the species can learn by the game's own data (`Models/Legality.cs`) and the engine runs in full, and everything else of a master (its name, level, personality) is ours |
 
 Both repositories are pinned to a commit in `Sources.cs`. To update, move a pin, run the importer and read the diff. `tools/MapImporter` reads the same commit of the decompilation, so move the pin for both and run both.
 
-All three are pinned to a commit in `Sources.cs` (Showdown's three files and its licence are downloaded one by one rather than checked out).
+All three are pinned to a commit in `Sources.cs` (Showdown's three files, its ten files of random-battle sets and its licence are downloaded one by one rather than checked out).
 
 PokeAPI's data is © Paul Hallett and PokéAPI contributors, used under its BSD 3-Clause licence (<https://github.com/PokeAPI/pokeapi/blob/master/LICENSE.md>). Pokémon Showdown is © Guangcong Luo and other contributors, used under the MIT licence; its notice is in `THIRD-PARTY-NOTICES.md` at the root of the repository. Pokémon and Pokémon character names are trademarks of Nintendo.
 

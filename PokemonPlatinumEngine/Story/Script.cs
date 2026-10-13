@@ -97,6 +97,8 @@ public enum Op
     Anim, Shake, Flicker,
     // A scene that may be skipped (plan 12 · Q20): where it begins, and where it has been played to its end
     Scene, EndScene,
+    // Master Trainers (plan 14 · B14): one of the team, the one choosepokemon chose, against its species' master
+    Master,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

@@ -66,8 +66,11 @@ internal static class CoreScenario
         return core;
     }
 
-    /// <summary>A battle against a trainer, both sides answered for from outside.</summary>
-    public static BattleCore Against(Pokemon[] mine, Pokemon[] theirs, BattleRandom? rolls = null, Ruleset? rules = null)
+    /// <summary>
+    /// A battle against a trainer, both sides answered for from outside; with <paramref name="offersSwitch"/>, under
+    /// Battle Style Shift (plan 08 · P1).
+    /// </summary>
+    public static BattleCore Against(Pokemon[] mine, Pokemon[] theirs, BattleRandom? rolls = null, Ruleset? rules = null, bool offersSwitch = false)
     {
         var party = new Party();
         foreach (var p in mine) party.Add(p);
@@ -76,7 +79,7 @@ internal static class CoreScenario
         var core = new BattleCore(new CoreSetup
         {
             PlayerParty = party, Trainers = new List<Trainer> { trainer }, Random = rolls ?? Calm(), Rules = rules ?? Ruleset.Platinum,
-            PlayerController = null, EnemyController = null, PlayerName = "Lucas"
+            PlayerController = null, EnemyController = null, PlayerName = "Lucas", OffersSwitch = offersSwitch
         });
         core.Start();
         return core;

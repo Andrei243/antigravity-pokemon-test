@@ -239,6 +239,12 @@ public partial class BattleEngine
                     Refuse(BattleCore.FrontierBagRefusal, BattleMenuState.Main);
                     return;
                 }
+                // A Master Trainer's battle closes the bag to both sides (plan 14 · B14)
+                if (BagClosed)
+                {
+                    Refuse(BattleCore.NoItemsRefusal, BattleMenuState.Main);
+                    return;
+                }
                 HUD.MenuState = BattleMenuState.SelectBagPocket;
                 break;
             case 2:
@@ -324,6 +330,12 @@ public partial class BattleEngine
 
         AudioManager.PlaySound("select");
         var place = MenuBattler.Place;
+        // Battle Style Shift's offer, answered with a switch (plan 08 · P1)
+        if (offerPanel)
+        {
+            SwitchAtOffer(partyIndex);
+            return;
+        }
         if (replacing)
         {
             replacing = false;
@@ -630,7 +642,13 @@ public partial class BattleEngine
             case BattleMenuState.SwitchPokemon:
                 if (cancel)
                 {
-                    if (!replacing)
+                    // The team opened by Battle Style Shift's Yes: backing out of it stays in (plan 08 · P1)
+                    if (offerPanel)
+                    {
+                        AudioManager.PlaySound("cancel");
+                        StayIn();
+                    }
+                    else if (!replacing)
                     {
                         AudioManager.PlaySound("cancel");
                         HUD.MenuState = BattleMenuState.Main;

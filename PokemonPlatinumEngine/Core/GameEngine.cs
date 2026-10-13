@@ -487,6 +487,10 @@ public partial class GameEngine
         if (AudioManager.IsMuted != Settings.Muted) AudioManager.ToggleMute();
         AudioManager.SetVolumes(Settings.MusicVolume / 100f, Settings.SoundVolume / 100f, Settings.CryVolume / 100f, Settings.AmbienceVolume / 100f);
         AudioManager.Handheld = Settings.Speakers == SpeakerMode.Handheld;
+        AudioManager.Mono = Settings.Speakers == SpeakerMode.Mono;
+        // A battle under way plays on with the scene as the options now have it (plan 08 · P1); the battle style is
+        // the next battle's, since an offer already asked stays asked
+        if (battle != null) battle.Scene = Settings.BattleScene;
         dialogue.CharactersPerSecond = GameSettings.CharactersPerSecond(Settings.TextSpeed);
         if (window) WindowSettings.Apply(Settings);
     }
@@ -2125,8 +2129,26 @@ public partial class GameEngine
         transitionKind = kind;
         transitionTimer = 0f;
         isFadingOut = true;
-        // (A band left over from a transition that was never played out goes; whoever starts one begins it after this)
+        // (A band left over from a transition that was never played out goes; whoever starts one begins it after this.
+        // So does a lens a way into a battle held, plan 09 · L14)
         band.End();
+        world.Camera.LetGo();
+    }
+
+    /// <summary>
+    /// What a way into a battle does to the field's camera (plan 09 · L14): while the legendary's or the mythical's
+    /// closes, the rig holds the lens <see cref="SceneTransition.LensAt"/> gives for the moment; at any other time it
+    /// holds none, so the field after the battle is looked at exactly as before. The transition's own timer, which
+    /// is the clock's time, never the field's: slow motion slows no way in.
+    /// </summary>
+    internal static void DriveTheLens(CameraRig rig, TransitionKind kind, bool closing, float seconds)
+    {
+        if (closing && SceneTransition.MovesTheCamera(kind))
+        {
+            var lens = SceneTransition.LensAt(kind, seconds);
+            rig.Hold(lens.Zoom, lens.Step, lens.Widest);
+        }
+        else if (rig.Holding) rig.LetGo();
     }
 
     private void UpdateTransition(float dt)
@@ -2138,11 +2160,14 @@ public partial class GameEngine
             {
                 isFadingOut = false;
                 transitionTimer = 0f;
-                // The band's show is over once the picture is shut: its portraits' targets are freed
+                // The band's show is over once the picture is shut: its portraits' targets are freed; and the camera a
+                // legendary's or a mythical's way moved is let go under its white
                 band.End();
+                DriveTheLens(world.Camera, transitionKind, closing: false, 0f);
                 midTransitionCallback?.Invoke();
                 midTransitionCallback = null;
             }
+            else DriveTheLens(world.Camera, transitionKind, closing: true, transitionTimer);
         }
         else
         {

@@ -395,7 +395,7 @@ internal static partial class ModernUi
         Panel(text, 34);
         UiFonts.DrawCentered($"No. {chosen.DexNumber:D3}", text.X + 48, text.Y + 52, 28, Muted, UiWeight.Black);
         UiFonts.DrawCentered(chosen.Name, text.X + 48 + UiFonts.Measure($"No. {chosen.DexNumber:D3}", 28, UiWeight.Black) + 24, text.Y + 50, 40, Ink, UiWeight.Black);
-        DrawWrapped(chosen.DexEntry, text.X + 48, text.Y + 96, text.Width - 96, 30, Ink, 42);
+        DrawWrapped(DexEntries.EntryFor(chosen), text.X + 48, text.Y + 96, text.Width - 96, 30, Ink, 42);
 
         if (askingVisible)
             Prompt(sw, sh, $"Choose {chosen.Name}?", $"The {chosen.Category} Pokémon will be your partner from here on.",

@@ -17,7 +17,12 @@ public enum LearnStep
     /// <summary>"Give up on learning it?" Yes (0) or No (1).</summary>
     GiveUp,
     /// <summary>The Battle Frontier's question on RUN (plan 06 · R18a): whether to give the match up. Yes (0) or No (1).</summary>
-    Forfeit
+    Forfeit,
+    /// <summary>
+    /// Battle Style Shift's offer (plan 08 · P1): the trainer's next Pokémon is coming; switch first? Yes (0) opens the
+    /// team to choose from, No (1) stays in.
+    /// </summary>
+    Shift
 }
 
 /// <summary>
@@ -38,8 +43,51 @@ public partial class BattleEngine
     private (Pokemon Pokemon, string Move)? learning;
     private readonly Queue<Step> interlude = new();
 
-    /// <summary>A question about a move to learn is open and waits for an answer.</summary>
-    public bool IsLearningMove => (learning != null || forfeiting) && HUD.MenuState == BattleMenuState.LearnMove;
+    /// <summary>
+    /// A question is open and waits for an answer: about a move to learn, the Frontier's forfeit, or Battle Style
+    /// Shift's offer (plan 08 · P1), which <see cref="ConfirmMessage"/> answers No to, staying in.
+    /// </summary>
+    public bool IsLearningMove => (learning != null || forfeiting || offered != null && !offerPanel) && HUD.MenuState == BattleMenuState.LearnMove;
+
+    // Battle Style Shift's offer (plan 08 · P1): the rules' request while it waits, and whether its Yes has opened the team
+    private SwitchOfferRequest? offered;
+    private bool offerPanel;
+
+    /// <summary>Battle Style Shift's offer is open (plan 08 · P1): its question, or the team opened by its Yes.</summary>
+    public bool IsOfferingSwitch => offered != null;
+
+    /// <summary>The trainer's Pokémon that comes next while the offer is open, as the screen holds it.</summary>
+    public Pokemon? OfferedFoe => offered == null ? null : mirror.Shown(offered.Upcoming);
+
+    /// <summary>The rules ask whether to switch before the trainer's next Pokémon: the line is the question, with the cursor on Yes, as the original's.</summary>
+    private void OfferSwitch(SwitchOfferRequest offer)
+    {
+        offered = offer;
+        offerPanel = false;
+        menuSlot = offer.Place.Slot;
+        LearnStep = LearnStep.Shift;
+        LearnCursor = 0;
+        CurrentSpeaker = null;
+        HUD.MenuState = BattleMenuState.LearnMove;
+    }
+
+    /// <summary>Answers Battle Style Shift's offer by staying in (its No, or a cancel on the team it opened).</summary>
+    public void StayIn()
+    {
+        if (offered is not { } offer) return;
+        offered = null;
+        offerPanel = false;
+        Submit(new[] { BattleChoice.Stay(offer.Place) });
+    }
+
+    /// <summary>Answers Battle Style Shift's offer with a switch to the party member at <paramref name="partyIndex"/>.</summary>
+    private void SwitchAtOffer(int partyIndex)
+    {
+        if (offered is not { } offer) return;
+        offered = null;
+        offerPanel = false;
+        Submit(new[] { BattleChoice.Switch(offer.Place, partyIndex) });
+    }
 
     // The Battle Frontier's question on RUN is open (the same Yes and No as a move to learn)
     private bool forfeiting;
@@ -111,6 +159,21 @@ public partial class BattleEngine
     public void ChooseLearn(int answer)
     {
         if (!IsLearningMove) return;
+        if (offered != null)
+        {
+            if (answer == 0)
+            {
+                // Yes: the team, to choose who goes in; a cancel there stays in all the same
+                AudioManager.PlaySound("select");
+                offerPanel = true;
+                HUD.SwitchMenuIndex = 0;
+                HUD.MenuState = BattleMenuState.SwitchPokemon;
+                return;
+            }
+            AudioManager.PlaySound("cancel");
+            StayIn();
+            return;
+        }
         if (forfeiting)
         {
             forfeiting = false;
@@ -168,6 +231,7 @@ public partial class BattleEngine
         LearnStep.Forget => 1,
         LearnStep.Choose => 4,
         LearnStep.Forfeit => 1,
+        LearnStep.Shift => 1,
         _ => 0
     };
 

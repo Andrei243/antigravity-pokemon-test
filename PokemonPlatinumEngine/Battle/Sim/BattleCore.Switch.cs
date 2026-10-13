@@ -480,6 +480,9 @@ public sealed partial class BattleCore
                 foreach (var request in PickReplacement(place)) yield return request;
                 if (picked == null) continue;
                 var next = picked;
+                // Battle Style Shift: the player may switch before it comes in (plan 08 · P1)
+                foreach (var request in OfferSwitch(place, next)) yield return request;
+                if (Result != BattleResult.None) yield break;
                 entered.Add(place);
                 SendIn(place, next);
                 var sent = Bringing(Say(SentOutLine(place, next)).With(new Seen(next.Species)).With(new Entered(place.Place, next, FromBall: true)), place);
@@ -505,6 +508,37 @@ public sealed partial class BattleCore
             SwitchInChecks();
             ResolveFaints();
         }
+    }
+
+    /// <summary>
+    /// Battle Style Shift (plan 08 · P1): the original's <c>BattleControllerPlayer_ReplaceFainted</c> loads
+    /// <c>subscript_replace_fainted</c> with the offer when the style is Shift, the battle isn't a double, a link or
+    /// the Frontier's (<c>BATTLE_TYPE_FORCED_SET_MODE</c>), the player's Pokémon still stands and someone could come
+    /// in for it. The trainer's next Pokémon is picked first, the line asks, and a switch made there is played as
+    /// <c>subscript_switch_pokemon</c> plays it (the recall, the newcomer out, what lies in wait for it, a faint)
+    /// before the foe's Pokémon is sent out. Only for a player answered from outside, and only under
+    /// <see cref="OffersSwitch"/>.
+    /// </summary>
+    private IEnumerable<BattleRequest> OfferSwitch(Battler foe, Pokemon upcoming)
+    {
+        if (!OffersSwitch || IsDouble || !IsTrainerBattle || Frontier || foe.Trainer == null) yield break;
+        var mine = PlayerSlots[0];
+        if (!mine.IsActive || mine.Trainer != null || ControllerOf(mine) != null || !HasReplacement(mine)) yield break;
+
+        Say($"{foe.Trainer.FullTitle} has {upcoming.DisplayName} coming out next. Will you change Pokémon?");
+        yield return new SwitchOfferRequest(mine.Place, upcoming);
+        var chosen = answer[0];
+        if (chosen.Kind != ChoiceKind.Switch || !CanSendIn(mine, chosen.SwitchTo)) yield break;
+
+        var outgoing = mine.Pokemon!;
+        var incoming = mine.Roster!.Members[chosen.SwitchTo];
+        Say($"Come back, {outgoing.DisplayName}!").With(new Recalled(mine.Place));
+        Withdraw(mine);
+        Emit(new Left(mine.Place));
+        SendIn(mine, incoming);
+        Bringing(Say(SentOutLine(mine, incoming)).With(new Entered(mine.Place, incoming, FromBall: true)), mine);
+        Hazards(mine);
+        ResolveFaints();
     }
 
     /// <summary>The next Pokémon of a place's roster that can fight and isn't already out.</summary>

@@ -605,7 +605,9 @@ public sealed class HeadlessScriptHost : IScriptHost
         Waits();
         Outcome = Fight?.Invoke(trainer) ?? BattleOutcome.Won;
         string with = (second != null ? $" and {second.TrainerData?.Id}" : "") + (partner != null ? $" with {partner.Id}" : "") + (first ? " first" : "")
-            + (terms is { Inverse: true } ? " inverse" : "");
+            + (terms is { Inverse: true } ? " inverse" : "")
+            // A Master Trainer's battle (plan 14 · B14): the one Pokémon put forward, and the bag closed
+            + (terms?.Alone is { } alone ? $" alone {alone.Species.Name}" : "") + (terms is { NoBattleItems: true } ? " noitems" : "");
         Log.Add($"battle {trainer.TrainerData?.Id}{with} {Outcome}");
         if (Outcome == BattleOutcome.Won)
         {
@@ -639,7 +641,11 @@ public sealed class HeadlessScriptHost : IScriptHost
 
     public BattleOutcome Outcome { get; private set; }
 
-    /// <summary>The place of the team's Pokémon chosen when a script asks for one (<c>choosepokemon</c>); 255 backs out.</summary>
+    /// <summary>
+    /// The place of the team's Pokémon chosen when a script asks for one (<c>choosepokemon</c>); 255 backs out. A place
+    /// whose Pokémon a species named on the line refuses is handed back as it is, and the runner refuses it, as the
+    /// game's screen would never let it be chosen (plan 14 · B14).
+    /// </summary>
     public int PokemonChoice { get; set; }
 
     public void Open(ScriptScreen screen, NPC? subject, string? counter = null)
@@ -649,6 +655,7 @@ public sealed class HeadlessScriptHost : IScriptHost
         Waits();
         Log.Add(screen == ScriptScreen.Shop && (counter ?? subject?.Mart) is { } mart ? $"open {screen} {mart}"
             : screen == ScriptScreen.Wardrobe && counter != null ? $"open {screen} {counter}"
+            : screen == ScriptScreen.ChoosePokemon && counter != null ? $"open {screen} {counter}"
             : $"open {screen}");
         Answer = 0;
         // The team's Pokémon a script asks to have chosen: the one the test says (none, 255, to back out)

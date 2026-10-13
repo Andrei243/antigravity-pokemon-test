@@ -67,8 +67,11 @@ public class SceneSkipTests
         Assert.Equal("The rival's welcome", script.Code[1].Name);
         // A scene's key is the file it is written in and its name
         Assert.Equal("town.The rival's welcome", SceneSkip.Key(script.File, script.Code[1].Name));
-        // They are the last two commands of the language: nothing before them moved
-        Assert.Equal(new[] { Op.Scene, Op.EndScene }, Enum.GetValues<Op>()[^2..]);
+        // They were added at the end of the language, one after the other: nothing before them moved
+        // (plan 14 · B14's master came after them)
+        var ops = Enum.GetValues<Op>();
+        Assert.Equal(Array.IndexOf(ops, Op.Scene) + 1, Array.IndexOf(ops, Op.EndScene));
+        Assert.True(Array.IndexOf(ops, Op.Scene) > Array.IndexOf(ops, Op.Letterbox));
     }
 
     [Theory]
@@ -447,6 +450,8 @@ public class SceneSkipTests
               wardrobe
               travel
               choosepokemon
+              choosepokemon "Bidoof"
+              master self
               chooseitem berries
               halloffame show
               credits
@@ -789,7 +794,8 @@ public class SceneSkipTests
         Assert.Equal(SkipScenes.Off, settings.SkipScenes);
         // A new row goes in before HELP, which stays the last
         var rows = Enum.GetValues<OptionRow>();
-        Assert.Equal(new[] { OptionRow.SkipScenes, OptionRow.Help }, rows[^2..]);
+        Assert.Equal(OptionRow.Help, rows[^1]);
+        Assert.True(Array.IndexOf(rows, OptionRow.SkipScenes) < Array.IndexOf(rows, OptionRow.Help));
     }
 
     // ------------------------------------------------------------------ what the engine ends at once

@@ -453,5 +453,44 @@ partial class Harness
             ("halves", 0.1f), ("silhouettes", 0.75f), ("lit", 1.42f), ("trembling", 2.5f), ("the_white", 2.75f)
         });
         Put(112, 880, Direction.Down);
+
+        // The legendary's and the mythical's (plan 09 · L14), after everything so that nothing before them moves: a
+        // Dialga met in the street and a Giratina in Oreburgh Gate, each begun as the game begins it. Four moments of
+        // the camera's closing and the white, and the battle opening, with the lens the rig holds at each
+        void Legendary(string shots, string species, string where, Action stand, (string Name, float Since)[] moments)
+        {
+            stand();
+            game.StartWildBattle(new WildEncounterEntry { SpeciesName = species, MinLevel = 70, MaxLevel = 70, Weight = 1 });
+            var kind = game.TransitionKind;
+            var rig = game.World.Camera;
+            Console.WriteLine($"way in: a wild {species} {where} -> {kind}; {SceneTransition.OutSeconds(kind):0.00} s to the white");
+            int at = 0, n = 0;
+            void To(float seconds)
+            {
+                int frame = (int)MathF.Round(seconds * 60f);
+                Frames(frame - at);
+                at = frame;
+            }
+            foreach (var (name, since) in moments)
+            {
+                To(SceneTransition.FlashSeconds + since);
+                Shot($"{shots}_{++n}_{name}");
+                Console.WriteLine($"  {name}: {(rig.Holding ? "held" : "!! not held")}, lens {rig.Lens:0.000} (the way's {SceneTransition.LensAt(kind, at / 60f).Zoom:0.000}), "
+                    + $"step {rig.HeldStep.X:0.000},{rig.HeldStep.Y:0.000}, widest ahead {rig.WidestAhead:0.000}");
+            }
+            To(SceneTransition.OutSeconds(kind) + 0.2f); Shot($"{shots}_{++n}_opening");
+            Console.WriteLine($"  the battle opening: {(rig.Holding ? "!! the lens still held" : "the camera let go")}, lens {rig.Lens:0.000}, at rest {rig.AtRest}");
+            Frames(40);
+            game.State = GameState.Overworld;
+        }
+        Legendary("l36_legendary", "Dialga", "in the street", InTheStreet, new[]
+        {
+            ("widening", 0.8f), ("the_rush", 1.7f), ("the_white", 2.4f), ("nearly_white", 3.6f)
+        });
+        Legendary("l37_mythical", "Giratina", "in Oreburgh Gate", InTheCave, new[]
+        {
+            ("first_lenses", 0.3f), ("widest", 1.2f), ("last_lenses", 1.75f), ("the_white", 2.08f)
+        });
+        Put(112, 880, Direction.Down);
     }
 }

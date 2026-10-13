@@ -419,9 +419,10 @@ public sealed class WorldRenderer
 
     /// <summary>
     /// The lens a map is looked through this frame: the place's own (<see cref="MapScene.ViewOf"/>) under the rig's
-    /// zoom, which changes its field of view and nothing else. Whatever asks what is in view asks this.
+    /// zoom and a held lens (<see cref="CameraRig.Lens"/>), which change its field of view and nothing else. Whatever
+    /// asks what is in view asks this.
     /// </summary>
-    private FieldView LensOf(Map? map) => LensOf(map, Camera.Zoom);
+    private FieldView LensOf(Map? map) => LensOf(map, Camera.Lens);
 
     private static FieldView LensOf(Map? map, float zoom)
     {
@@ -430,7 +431,7 @@ public sealed class WorldRenderer
     }
 
     /// <summary>How much of a room a zoom in has taken out of the picture, 0 to 1: nothing at the place's own lens or a wider one.</summary>
-    private float ZoomSlack => MathF.Max(0f, 1f - 1f / Camera.Zoom);
+    private float ZoomSlack => MathF.Max(0f, 1f - 1f / Camera.Lens);
 
     /// <summary>A character's field sprite facing the camera, for the interface to show large. Call outside any texture mode.</summary>
     public Texture2D Portrait(string characterType)
@@ -500,6 +501,14 @@ public sealed class WorldRenderer
         Camera.Advance(step);
         var look = Camera.Look(new Vector2(px, pz));
         var camera = BuildCamera(map, room, look.X, look.Y, easedGround);
+        // A held lens's step (a mythical Pokémon's way in, plan 09 · L14) moves the camera and what it looks at
+        // together, in whole texels, in a room as in the open
+        if (Camera.HeldStep is var held && held != Vector2.Zero)
+        {
+            var by = new Vector3(held.X, 0f, held.Y);
+            camera.Position += by;
+            camera.Target += by;
+        }
         // A scene's shake and a lift's shudder throw the picture up and down by whole texels (plan 09 · L12)
         if (Shake(step) + Pieces.Shudder(Life.Now) / (float)CharacterSprites.TexelsPerUnit is var jolt && jolt != 0f)
         {
@@ -577,7 +586,7 @@ public sealed class WorldRenderer
         var focus = room != null ? room.RoomCenter with { X = camera.Target.X, Y = 0 } : new Vector3(camera.Target.X, groundY, camera.Target.Z - 2f);
         // (A lens zoomed out shows more ground than the map covers at its own reach: it is spread over the wider view)
         float shadowReach = indoors ? 18f : 40f;
-        if (!indoors && Camera.Zoom < 1f) shadowReach /= Camera.Zoom;
+        if (!indoors && Camera.Lens < 1f) shadowReach /= Camera.Lens;
         var lightCamera = context.Shadows.LightCamera(focus, light.SunDirection, shadowReach);
 
         FrameProfiler.Lap(FrameSection.Prepare);

@@ -208,7 +208,9 @@ public partial class GameEngine
                     TrickRoom = conditions?.TrickRoom ?? false
                 },
                 MoveHints = MoveHintsOn,
-                TrainerLines = TrainerLinesOn
+                TrainerLines = TrainerLinesOn,
+                // The Frontier never offers a switch (BATTLE_TYPE_FORCED_SET_MODE; plan 08 · P1), but plays as the scene says
+                Scene = Settings.BattleScene
             });
             battleRenderer.SetArena(currentMap, player.GridX, player.GridY);
             battleTrainers.Clear();

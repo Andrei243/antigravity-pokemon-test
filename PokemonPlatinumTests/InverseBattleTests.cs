@@ -569,7 +569,7 @@ public class InverseBattleTests
     private const string Scientist = "inverse_scientist", Place = "fight_area";
     private const string CrowdGone = "FLAG_HIDE_FIGHT_AREA_BATTLERS_AND_SPECTATORS";
     private const string DaysBattle = "FLAG_DAILY_FIGHT_AREA_INVERSE_BATTLE", Explained = "FLAG_FIGHT_AREA_INVERSE_EXPLAINED";
-    private const string Team = "scientist_shaun_rematch_3";
+    private const string Team = "scientist_ingram";
 
     /// <summary>A game after the Fight Area's tag battle, the player standing below the scientist and facing him.</summary>
     private static OpeningTests.Game AfterTheTagBattle(BattleOutcome fight = BattleOutcome.Won)
@@ -657,24 +657,14 @@ public class InverseBattleTests
         Assert.Contains($"battle {Team} inverse Won", talk.Log);
         Assert.Contains("straight into my notes", string.Join(" ", talk.Transcript.Select(l => l.Text)));
         Assert.True(game.Story.Has(DaysBattle));
-        // He fought as the last team of Scientist Shaun's Vs. Seeker row, which nothing else reads once it is beaten
-        var shaun = TrainerDatabase.Get("scientist_shaun")!;
-        var row = shaun.Rematches!.Where(id => id != null).Select(id => id!).ToList();
-        Assert.Equal(Team, row[^1]);
-        StoryState Seeker(bool lastBeaten)
-        {
-            // Every level unlocked and every team before the last beaten: the Vs. Seeker has come to the last
-            var story = new StoryState();
-            for (int level = 1; level <= shaun.Rematches!.Count; level++) story.Set(VsSeeker.LevelFlag(level));
-            foreach (string id in row.Take(row.Count - 1)) story.Defeat(id);
-            if (lastBeaten) story.Defeat(Team);
-            return story;
-        }
-        Assert.Equal(Team, VsSeeker.RematchTeam(shaun, Seeker(lastBeaten: false)));
-        Assert.Equal(Team, VsSeeker.RematchTeam(shaun, Seeker(lastBeaten: true)));
-        // And the trainer on Route 212 is no more beaten than he was
+        // He fought as a trainer of our own (plan 14 · B14), with a name and a team of his own: the trainer on Route
+        // 212 whose team he borrowed in B1 is no more beaten than he was, and no table of Platinum's holds him
+        Assert.Contains(TrainerDatabase.Ours, t => t.Id == Team);
+        Assert.DoesNotContain(TrainerDatabase.All, t => t.Id == Team);
+        var ours = TrainerDatabase.Get(Team)!;
+        Assert.Equal(("Ingram", "Scientist"), (ours.Name, ours.Class));
         Assert.False(game.Story.HasDefeated("scientist_shaun"));
-        Assert.Equal(VsSeeker.RematchTeam(shaun, new StoryState()), VsSeeker.RematchTeam(shaun, game.Story));
+        Assert.False(game.Story.HasDefeated("scientist_shaun_rematch_3"));
         // Its Magneton is the point of it: Electric and Steel
         var magneton = TrainerDatabase.PartyOf(TrainerDatabase.Get(Team)!).Members[0];
         Assert.Equal(("Magneton", PokemonType.Electric, PokemonType.Steel), (magneton.Species.Name, magneton.PrimaryType, magneton.SecondaryType));

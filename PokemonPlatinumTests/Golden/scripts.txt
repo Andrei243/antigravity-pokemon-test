@@ -8222,14 +8222,14 @@ way 0.0
   Scientist> Remarkable! You turned your whole way of thinking round in a single battle. That goes straight into my notes.
   Scientist> Do come back tomorrow. By then I shall have a fresh page, and very likely a fresh headache.
   ? One inverse battle a day is all my notes can keep up with. Will you fight today's, for science? = Yes
-  * battle scientist_shaun_rematch_3 inverse Won
+  * battle scientist_ingram inverse Won
   + FLAG_DAILY_FIGHT_AREA_INVERSE_BATTLE
   + FLAG_FIGHT_AREA_INVERSE_EXPLAINED
-  + beaten scientist_shaun_rematch_3
+  + beaten scientist_ingram
 way 0.1, from answer 2
   Scientist> Ha! Old habits, you see. You reached for what has always worked, and here it never does.
   Scientist> Don't take it to heart. Sleep on it, and try me again tomorrow.
-  * battle scientist_shaun_rematch_3 inverse Lost
+  * battle scientist_ingram inverse Lost
   + FLAG_DAILY_FIGHT_AREA_INVERSE_BATTLE
   + FLAG_FIGHT_AREA_INVERSE_EXPLAINED
 way 1, from answer 1
