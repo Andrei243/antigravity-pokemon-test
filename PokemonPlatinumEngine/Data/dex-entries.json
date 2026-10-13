@@ -1,0 +1,1185 @@
+{
+  "Bulbasaur": {
+    "habitat": "Grassland",
+    "entries": [
+      "The bulb on its back holds a store of nutrients that keeps it going when food is scarce. It is happiest in quiet, sunny meadows.",
+      "It can lash out with thin vines that sprout from beside the bulb. Trainers prize it as a first partner because it is calm, sturdy and easy to raise."
+    ]
+  },
+  "Ivysaur": {
+    "habitat": "Grassland",
+    "entries": [
+      "The bud on its back is heavy, and Ivysaur walks with a slow, steady gait to keep it from bumping. It rarely breaks into a run.",
+      "Ivysaur uses its vines to reach fruit hanging from high branches. It is wary of fire and keeps well away from campsites."
+    ]
+  },
+  "Venusaur": {
+    "habitat": "Grassland",
+    "entries": [
+      "The great flower on its back takes years to reach its full size. Venusaur rests at the heart of the meadow while smaller Pokémon gather in its shade.",
+      "It moves slowly, held down by its own heavy frame. When threatened it plants its feet and fires bursts of energy gathered in the flower."
+    ]
+  },
+  "Charmander": {
+    "habitat": "Mountain",
+    "entries": [
+      "A small lizard whose tail ends in a flickering flame. It is curious and tags along after anything that moves, sniffing it with interest.",
+      "It prefers warm, rocky places and avoids getting caught in the rain. Charmander likes to curl up near hot stones, keeping its tail out of puddles."
+    ]
+  },
+  "Charmeleon": {
+    "habitat": "Mountain",
+    "entries": [
+      "Charmeleon is hot-tempered and eager to prove itself. It swipes at rivals with sharp claws and snarls when it loses.",
+      "Charmeleon grows fond only of trainers who have earned its respect. Its red scales are hot to the touch, even on cold days."
+    ]
+  },
+  "Charizard": {
+    "habitat": "Mountain",
+    "entries": [
+      "Charizard soars on broad wings high over mountains, and its roar echoes through the valleys below.",
+      "Its fiery breath can turn stone to slag. It spreads its wings wide when it wants to look as large as possible to a rival."
+    ]
+  },
+  "Squirtle": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "Squirtle naps in the sun on riverside rocks and slips into the water at the first sign of trouble.",
+      "Young Squirtle play together in shallow ponds, racing and spraying one another. They are fond of people and easy to befriend."
+    ]
+  },
+  "Wartortle": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "Wartortle's shell is a deeper blue than Squirtle's and bears the nicks of many scuffles. It can hold its breath for a long time.",
+      "When it surfaces, Wartortle often bares its teeth at onlookers, more out of pride than anger. Its tail is soft and fluffy."
+    ]
+  },
+  "Blastoise": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "Two cannons jut from Blastoise's shell, and it can turn them to point in any direction. It rarely loses its composure.",
+      "On land Blastoise walks slowly, but in water it moves with surprising grace. It rests in shallow bays with only its shell above the surface."
+    ]
+  },
+  "Caterpie": {
+    "habitat": "Forest",
+    "entries": [
+      "Caterpie wriggles along branches on its many short legs, nibbling as it goes. Its bright green body blends in with the foliage.",
+      "When threatened, Caterpie curls up and stays perfectly still. The round markings on its head look like big eyes to a hungry bird."
+    ]
+  },
+  "Metapod": {
+    "habitat": "Forest",
+    "entries": [
+      "Metapod clings to a branch and waits without moving, sometimes for many days. A thin thread holds it in place.",
+      "Its green shell hardens to shield it while it changes. If something knocks it loose, it simply lies still where it falls."
+    ]
+  },
+  "Butterfree": {
+    "habitat": "Forest",
+    "entries": [
+      "Butterfree flutters across wide fields, resting on tall flowers. In autumn, great numbers travel together toward warmer lands.",
+      "It shakes its wings to scatter dust that can make foes drowsy or numb. Its large eyes are made up of many tiny lenses."
+    ]
+  },
+  "Weedle": {
+    "habitat": "Forest",
+    "entries": [
+      "The pointed barb on its head carries a mild poison. It crawls through woods and fields, eating the leaves it hides beneath.",
+      "Its bright colors warn birds to stay away. Weedle are most common in thick woods, where many can be found on a single tree."
+    ]
+  },
+  "Kakuna": {
+    "habitat": "Forest",
+    "entries": [
+      "Kakuna can barely move, but it is not helpless: a barb inside its shell can jab anything that grabs it.",
+      "Kakuna hang from branches in clusters. A grove with many of them is quiet but dangerous, since Beedrill nearby will guard them fiercely."
+    ]
+  },
+  "Beedrill": {
+    "habitat": "Forest",
+    "entries": [
+      "Beedrill zips through the air at great speed and strikes with the venomous needles on its forelegs. Its wings hum loudly in flight.",
+      "Beedrill guard their hives from anything that comes near. Their bright stripes warn other creatures to keep their distance."
+    ]
+  },
+  "Pidgey": {
+    "habitat": "Forest",
+    "entries": [
+      "Pidgey would rather flee than fight, and it takes off with a flurry of wings at the first sign of trouble.",
+      "Flocks of Pidgey peck at seeds and small bugs along roadsides. They know their home area well and seldom stray far."
+    ]
+  },
+  "Pidgeotto": {
+    "habitat": "Forest",
+    "entries": [
+      "Pidgeotto is a skilled flyer that glides on rising warm air for long stretches. Its sharp eyes miss very little below.",
+      "It hunts small Pokémon in open fields, diving at them from a great height. Its talons are strong and sharply hooked."
+    ]
+  },
+  "Pidgeot": {
+    "habitat": "Forest",
+    "entries": [
+      "Pidgeot's long crest streams behind it as it flies. It can cruise for hours above the clouds without tiring.",
+      "Its wingbeats can whip up gales strong enough to bend trees. It nests on high crags with a wide view of its hunting grounds."
+    ]
+  },
+  "Rattata": {
+    "habitat": "Grassland",
+    "entries": [
+      "Rattata scurries through grass and alleys alike, nibbling whatever it finds. It is small, quick and hard to catch.",
+      "It breeds quickly, so a single pair can soon become a whole colony. Its tail curls up when it is content."
+    ]
+  },
+  "Raticate": {
+    "habitat": "Grassland",
+    "entries": [
+      "Raticate is much bolder than Rattata and will stand up to dogs and cats. Its fangs are thick and yellow.",
+      "Raticate is fierce when cornered. It builds its nest in hidden places and guards it, biting anything that comes too close."
+    ]
+  },
+  "Spearow": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "Spearow darts low over the grass in short, quick bursts. It quarrels noisily with other birds over the best perches.",
+      "Unlike Pidgey, it is short-tempered and bold. Spearow will chase anything that wanders near its nest, even a much larger Pokémon."
+    ]
+  },
+  "Fearow": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "Fearow screeches loudly as it circles above its territory. Its call carries a long way over open plains.",
+      "Fearow has a long, sharp beak and a fierce temper. It will drive off birds twice its size that stray too close."
+    ]
+  },
+  "Ekans": {
+    "habitat": "Grassland",
+    "entries": [
+      "Ekans hides in tall grass, flicking its tongue to taste the air. It strikes quickly and then slips away before the target can react.",
+      "Ekans basks on warm rocks during the day. Its purple scales are smooth and glossy, and they shed in one piece."
+    ]
+  },
+  "Arbok": {
+    "habitat": "Grassland",
+    "entries": [
+      "Arbok spreads its hood to show a startling face-like design that sends smaller creatures fleeing. It can hold that pose without moving for an hour.",
+      "Arbok guards its territory jealously and hisses at anyone who comes near. Its fangs carry a venom that numbs."
+    ]
+  },
+  "Sandshrew": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "Sandshrew's yellow hide is covered in small, hard plates like bricks. It scratches grubs out of the sand with its claws.",
+      "When dust storms blow, Sandshrew curls up in its burrow and waits for calm weather. It digs with surprising speed."
+    ]
+  },
+  "Sandslash": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "Sandslash's back bristles with sharp, brown spikes. It burrows into the sand and waits there with only its spikes showing.",
+      "Its claws are long and curved, made for digging. Sandslash living in the desert are quick to anger when disturbed."
+    ]
+  },
+  "Nidoran♀": {
+    "habitat": "Grassland",
+    "entries": [
+      "This small, gentle Pokémon prefers to stay close to its family in the grass. It nibbles on tender shoots and seeds.",
+      "Though it rarely starts a fight, the barbs along its back can deliver a nasty sting to anything that grabs it."
+    ]
+  },
+  "Nidorina": {
+    "habitat": "Grassland",
+    "entries": [
+      "Nidorina is a calm and caring Pokémon that keeps watch over the younger ones in its group.",
+      "It digs burrows in soft ground and lines them with dry grass. When cornered, it lets out a high cry to call others to its side."
+    ]
+  },
+  "Nidoqueen": {
+    "habitat": "Grassland",
+    "entries": [
+      "Nidoqueen's thick tail and sturdy legs make it hard to knock over. It lumbers about calmly unless provoked.",
+      "It leads its family through the grassland, the young following close behind. Few predators dare to challenge it."
+    ]
+  },
+  "Nidoran♂": {
+    "habitat": "Grassland",
+    "entries": [
+      "This small Pokémon is bold and curious, poking its horn into anything new. It roams the grassland in search of food.",
+      "Males of this kind compete over who has the biggest horn. They often clash head to head in playful contests."
+    ]
+  },
+  "Nidorino": {
+    "habitat": "Grassland",
+    "entries": [
+      "Nidorino storms about its territory and challenges any rival it meets. Its horn grows longer with every year.",
+      "Nidorino's ears twitch constantly, catching the slightest rustle. It sleeps lightly and wakes at once if something approaches."
+    ]
+  },
+  "Nidoking": {
+    "habitat": "Grassland",
+    "entries": [
+      "Nidoking stamps across the grassland with heavy steps. Its thick purple hide is tough enough to turn aside most claws.",
+      "Its horn is sharp and coated in poison. Nidoking is protective of its family and fights fiercely for them."
+    ]
+  },
+  "Vulpix": {
+    "habitat": "Grassland",
+    "entries": [
+      "Vulpix has six curled tails and soft russet fur. It is clever and alert, and it watches strangers closely before approaching.",
+      "It shelters in caves and hollow logs when the weather turns wet. A ball of fire it spits out lights the dark around it."
+    ]
+  },
+  "Ninetales": {
+    "habitat": "Grassland",
+    "entries": [
+      "Each of its nine golden tails sways gently as it walks. It is graceful and proud, and seldom lets people see it.",
+      "Many old tales tell of Ninetales leading travelers astray in misty woods. Its fur stays warm to the touch even in winter."
+    ]
+  },
+  "Jigglypuff": {
+    "habitat": "Grassland",
+    "entries": [
+      "Jigglypuff loves to perform and will sing for anyone who stops to listen. Few manage to stay awake until the end.",
+      "Its body is soft and stretchy, and it can puff up like a balloon. It sulks when it is ignored."
+    ]
+  },
+  "Wigglytuff": {
+    "habitat": "Grassland",
+    "entries": [
+      "Wigglytuff is gentle and loves to be hugged. Its long ears twitch with pleasure when it is stroked.",
+      "Its fluffy coat makes it a favorite cushion for napping children. It sings in a voice softer and warmer than Jigglypuff's."
+    ]
+  },
+  "Oddish": {
+    "habitat": "Grassland",
+    "entries": [
+      "Oddish hops about on two short feet, its leafy top bobbing as it goes. It is shy and hides when people walk past.",
+      "On clear nights it gathers with others in open fields. It grows sleepy and sluggish in dry weather."
+    ]
+  },
+  "Gloom": {
+    "habitat": "Grassland",
+    "entries": [
+      "Gloom shuffles along with its head drooping, as if it is always tired. Its round flower is heavy for its small body.",
+      "It grows dizzy in strong sunlight and prefers shaded woods. Bugs avoid the patches of ground where it lives."
+    ]
+  },
+  "Vileplume": {
+    "habitat": "Grassland",
+    "entries": [
+      "Its broad red petals are heavy and droop when it is tired. It keeps its flower turned toward the light whenever it can.",
+      "It is slow-moving, so it relies on its poison to keep enemies away. It prefers warm forests where rain falls often."
+    ]
+  },
+  "Paras": {
+    "habitat": "Forest",
+    "entries": [
+      "Paras scuttles across the forest floor on six short legs. The two orange mushrooms riding on it get bigger as it grows.",
+      "It favors damp, shady ground where fungi thrive. When startled, it backs away slowly with its pincers raised."
+    ]
+  },
+  "Parasect": {
+    "habitat": "Forest",
+    "entries": [
+      "The great mushroom cap on Parasect's back has grown so wide that it hides the bug underneath. Its eyes have turned a pale white.",
+      "A cloud of spores puffs from its cap whenever it is jostled. People walking in its woods cover their mouths."
+    ]
+  },
+  "Venonat": {
+    "habitat": "Forest",
+    "entries": [
+      "Venonat's round, fuzzy body is light enough to be tossed by the wind. It hops through the undergrowth in search of food.",
+      "Its huge red eyes are made of many tiny parts. Touching its fur can leave a painful rash."
+    ]
+  },
+  "Venomoth": {
+    "habitat": "Forest",
+    "entries": [
+      "Venomoth's pale wings beat silently as it glides through the dark. It shakes loose a fine dust whenever it is alarmed.",
+      "Venomoth is nervous by nature and darts erratically through the air. It sips tree sap and nectar between hunts for smaller insects."
+    ]
+  },
+  "Diglett": {
+    "habitat": "Cave",
+    "entries": [
+      "Diglett pops its head out of the ground to look around, then vanishes again in a flash. Its pink nose twitches as it sniffs the air.",
+      "Diglett travels in small family groups beneath fields and gardens. Nobody is sure what the rest of its body looks like."
+    ]
+  },
+  "Dugtrio": {
+    "habitat": "Cave",
+    "entries": [
+      "Three heads share one body hidden beneath the ground. They pop up together and look about in three directions at once.",
+      "Dugtrio can tunnel through hard clay faster than a person can run. Some say the three heads take turns deciding where to dig."
+    ]
+  },
+  "Meowth": {
+    "habitat": "Urban",
+    "entries": [
+      "Meowth is clever and sly, and it often hangs around markets hoping for scraps. It washes its face with its paws after every meal.",
+      "Meowth is lazy by day and active at dusk. The gold charm on its forehead is its pride, and it keeps it polished."
+    ]
+  },
+  "Persian": {
+    "habitat": "Urban",
+    "entries": [
+      "Persian walks with an elegant, unhurried grace, and the red gem on its forehead gleams. It is admired in many cities as a symbol of luxury.",
+      "Persian is quick and silent on its feet and stalks prey like a shadow. It purrs only for those it fully trusts."
+    ]
+  },
+  "Mankey": {
+    "habitat": "Mountain",
+    "entries": [
+      "Mankey has a fiery temper and stamps its feet when frustrated. Its round, fluffy body bounces as it hops about.",
+      "Mankey climbs trees nimbly and leaps between branches with ease. It is fond of fruit and will pick a fight over a single berry."
+    ]
+  },
+  "Primeape": {
+    "habitat": "Mountain",
+    "entries": [
+      "Primeape glares at everything around it and punches the air when it cannot find a target. Its fists are hard as stone.",
+      "Primeape lives alone in mountain forests. Its fur bristles when it is about to lose its temper."
+    ]
+  },
+  "Growlithe": {
+    "habitat": "Grassland",
+    "entries": [
+      "Growlithe is brave and devoted, and it stays close beside its trainer wherever they go. Its fluffy mane is warm to the touch.",
+      "It has a cheerful bark and a wagging tail. Growlithe is often seen keeping watch over farms and homes."
+    ]
+  },
+  "Arcanine": {
+    "habitat": "Grassland",
+    "entries": [
+      "Arcanine's bark carries across whole valleys. It leaps between rocky ledges with powerful bounds and lands without a sound.",
+      "It is loyal to a single trainer for life and will bound to their side at a call. Its thick mane ripples as it runs."
+    ]
+  },
+  "Poliwag": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "A swirl shows through the skin of its belly. It waddles awkwardly on land and is far happier swimming.",
+      "Poliwag swims by wagging its broad tail. It lives in ponds and puddles, and gathers in large numbers after heavy rain."
+    ]
+  },
+  "Poliwhirl": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "Poliwhirl is a strong swimmer with powerful arms and enjoys wrestling with others in shallow water.",
+      "It often sits on a riverbank, watching the current go by. Its round body wobbles when it croaks."
+    ]
+  },
+  "Poliwrath": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "Poliwrath has thick, powerful arms and a no-nonsense attitude. It practices its punches by striking waterfalls.",
+      "It guards the ponds where Poliwag hatch, chasing off anything that comes to cause trouble. Its swirl stands out boldly on its chest."
+    ]
+  },
+  "Bellsprout": {
+    "habitat": "Forest",
+    "entries": [
+      "Bellsprout sways back and forth on its thin stalk, as if dancing to music only it can hear.",
+      "It prefers hot, humid places. Bellsprout snaps up passing insects with its bell-shaped head and swallows them."
+    ]
+  },
+  "Weepinbell": {
+    "habitat": "Forest",
+    "entries": [
+      "Weepinbell's wide mouth is lined with a slippery coat that makes escape hard for anything caught inside.",
+      "It prefers dim, humid forests. Its body is light and hollow, and it sways in even the faintest breeze."
+    ]
+  },
+  "Victreebel": {
+    "habitat": "Forest",
+    "entries": [
+      "Victreebel's long vine curls up from behind its head and twitches like something alive. Its leaves are broad and sharp along the edges.",
+      "Victreebel rarely moves from its chosen spot in the forest, swaying gently as it waits for a meal to come near."
+    ]
+  },
+  "Slowpoke": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "Slowpoke yawns often and moves at its own easy pace. Nothing seems to hurry it, not even a storm.",
+      "Its pink tail is long and thick, and it drips with water when it comes ashore. It often naps with its mouth hanging open."
+    ]
+  },
+  "Slowbro": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "A Shellder bit its tail and has stayed attached ever since. The poison from the bite has made it even dreamier.",
+      "Slowbro wanders the shore in a happy daze. The weight hanging from its tail makes it walk upright, swaying with each step."
+    ]
+  },
+  "Farfetch'd": {
+    "habitat": "Grassland",
+    "entries": [
+      "Farfetch'd is never seen without its green stalk, which it treats as its most precious possession. It strikes a proud pose when challenged.",
+      "Farfetch'd keeps its feathers neatly preened and its stalk in good condition. It gets flustered when either is ruffled."
+    ]
+  },
+  "Doduo": {
+    "habitat": "Grassland",
+    "entries": [
+      "Doduo cannot fly, but its long, sturdy legs let it run very quickly across open ground.",
+      "The two heads seldom agree on which way to go, and it wobbles about as each pulls in its own direction."
+    ]
+  },
+  "Dodrio": {
+    "habitat": "Grassland",
+    "entries": [
+      "Its three heads give it a wide view of its surroundings, so it is almost impossible to sneak up on. It races across plains on powerful legs.",
+      "The heads sometimes squabble among themselves over food. When all three cry out together, the noise can be heard far across the grassland."
+    ]
+  },
+  "Seel": {
+    "habitat": "Sea",
+    "entries": [
+      "Seel loves the cold and naps on drifting floes. It claps its flippers together when it is excited.",
+      "Its thick fur and layer of fat protect it from the cold. Seel is playful and often follows boats along icy coastlines."
+    ]
+  },
+  "Dewgong": {
+    "habitat": "Sea",
+    "entries": [
+      "Dewgong's sleek white body slips through icy water with barely a ripple. Its tail fin is broad and strong.",
+      "Dewgong is a gentle Pokémon that sometimes guides lost swimmers to land. It stays comfortable in water that is below freezing."
+    ]
+  },
+  "Grimer": {
+    "habitat": "Urban",
+    "entries": [
+      "Grimer's body is a lump of purple goo that changes shape as it moves. It leaves a slimy trail wherever it crawls.",
+      "Grimer feeds on waste and grows bigger as it eats. It is so sticky that touching it can leave a stench on the skin for days."
+    ]
+  },
+  "Muk": {
+    "habitat": "Urban",
+    "entries": [
+      "Muk is a heaving mass of sludge that slowly spreads wherever it settles. Flies swarm around it day and night.",
+      "Muk smells so bad that people feel faint near it. It lies in still pools of waste, barely moving for days."
+    ]
+  },
+  "Shellder": {
+    "habitat": "Sea",
+    "entries": [
+      "Shellder rests on sandy seabeds with its shell slightly open, its long tongue lolling out. It snaps shut at the first hint of danger.",
+      "Shellder sometimes latches onto other Pokémon and refuses to let go. It feeds on tiny scraps that drift by in the current."
+    ]
+  },
+  "Cloyster": {
+    "habitat": "Sea",
+    "entries": [
+      "Cloyster's shell is ringed with sharp spikes and is darkly glossy. It lies on the seabed and filters seawater to catch tiny food.",
+      "It lives in cold seas, where its spikes are often coated in a thin crust of ice. Divers give it plenty of room."
+    ]
+  },
+  "Drowzee": {
+    "habitat": "Grassland",
+    "entries": [
+      "It feeds on the dreams of sleeping creatures, which it seeks out at night. Its long nose twitches when it senses a sweet dream nearby.",
+      "By day it ambles about in a drowsy daze. Its mild psychic power lets it make those it meets feel tired."
+    ]
+  },
+  "Hypno": {
+    "habitat": "Grassland",
+    "entries": [
+      "Hypno carries a gleaming pendulum on a string wherever it goes. Old stories warn children never to follow it.",
+      "Hypno's thick white mane bristles as it focuses its mind. It prefers to act at dusk, when shadows grow long."
+    ]
+  },
+  "Krabby": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "Krabby's two big pincers make up a good part of its weight. It waves them in the air to look larger when threatened.",
+      "Krabby scuttles sideways across the sand and ducks into the surf when danger comes. It nips at anything that steps too close."
+    ]
+  },
+  "Kingler": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "Kingler's huge claw can crush steel. Rivals size each other up by comparing claws, and the smaller one usually backs down.",
+      "Kingler lives along rocky shores and in river mouths. It snaps its claw shut with a loud crack to warn away intruders."
+    ]
+  },
+  "Voltorb": {
+    "habitat": "Urban",
+    "entries": [
+      "Voltorb's round body is smooth and shiny, and it hums softly when charged. It rolls to get about.",
+      "Voltorb dislikes being touched and may let off a sharp crackle of static. It gathers in places where electric current hums in the walls."
+    ]
+  },
+  "Electrode": {
+    "habitat": "Urban",
+    "entries": [
+      "Electrode wears a wide grin and rolls about at alarming speed. It bounces off walls without slowing down.",
+      "It is drawn to places thick with electricity and grows restless during thunderstorms. Workers at power stations keep a careful eye on it."
+    ]
+  },
+  "Exeggcute": {
+    "habitat": "Forest",
+    "entries": [
+      "Exeggcute is six pink seeds that cling together, each with its own little face. They chatter among themselves in faint squeaks.",
+      "When one of the six cracks, the others crowd around it until it mends. They nest near tropical trees."
+    ]
+  },
+  "Exeggutor": {
+    "habitat": "Forest",
+    "entries": [
+      "Exeggutor's three heads often argue among themselves about where to go. It settles the matter by walking toward the sun.",
+      "It stands as tall as a palm tree and sways in sea breezes. Its psychic powers grow sharper in the heat of the day."
+    ]
+  },
+  "Cubone": {
+    "habitat": "Mountain",
+    "entries": [
+      "Cubone wears a hard skull over its head like a helmet, and peers out through its eyeholes. It is shy and keeps to itself.",
+      "It carries a bone club and swings it at anything that startles it. Cubone that find a caring trainer slowly come out of their shells."
+    ]
+  },
+  "Marowak": {
+    "habitat": "Mountain",
+    "entries": [
+      "Marowak wields its bone club with great skill, swinging it hard and fast. The bone grows harder through years of battle.",
+      "Having outgrown its shyness, it faces danger head on. It keeps a collection of bones in its den and guards them closely."
+    ]
+  },
+  "Hitmonlee": {
+    "habitat": "Urban",
+    "entries": [
+      "Hitmonlee's legs coil like springs and lash out with blinding speed. Few foes see the kick coming.",
+      "Hitmonlee trains alone, polishing its techniques for hours on end. It keeps its balance perfectly on just one foot."
+    ]
+  },
+  "Hitmonchan": {
+    "habitat": "Urban",
+    "entries": [
+      "Hitmonchan bobs and weaves on light feet, slipping past blows before striking back. It wraps its fists in tough padding.",
+      "Hitmonchan keeps its arms raised to guard at all times. It can wear down even stronger foes with steady, patient jabs."
+    ]
+  },
+  "Koffing": {
+    "habitat": "Urban",
+    "entries": [
+      "Koffing drifts lazily through the air, bumping into things as it goes. The craters on its skin puff out little clouds of smoke.",
+      "Koffing grows bloated after a meal of fumes. People living near it keep their windows shut tight."
+    ]
+  },
+  "Weezing": {
+    "habitat": "Urban",
+    "entries": [
+      "Weezing's two heads drift side by side, one large and one small. They seldom bother each other and seem content together.",
+      "Weezing hovers over trash heaps, breathing in the stench of decay as if it were a feast. It avoids clean, fresh air."
+    ]
+  },
+  "Kangaskhan": {
+    "habitat": "Grassland",
+    "entries": [
+      "Kangaskhan is a devoted parent and teaches its young to forage as soon as it can walk. It is calm unless its family is threatened.",
+      "Kangaskhan travels slowly across grassy plains, grazing as it goes. The little one peeks out of the pouch to watch the world."
+    ]
+  },
+  "Horsea": {
+    "habitat": "Sea",
+    "entries": [
+      "Horsea squirts dark ink when frightened, then darts away to hide among the coral. Its snout is long and narrow.",
+      "Horsea lives in calm, warm seas. Its little fin beats quickly to keep it steady in the current."
+    ]
+  },
+  "Seadra": {
+    "habitat": "Sea",
+    "entries": [
+      "Sharp spines run along its back and carry poison. Swimmers who brush against one may feel faint.",
+      "Seadra spins its body to churn up the water and confuse its foes. It is short-tempered and stings without warning."
+    ]
+  },
+  "Staryu": {
+    "habitat": "Sea",
+    "entries": [
+      "Staryu's red core blinks in a slow, steady rhythm. It clings to rocks in tide pools when the sea goes out.",
+      "Staryu spins its body to swim through water. It is a curious creature and often drifts toward boats."
+    ]
+  },
+  "Starmie": {
+    "habitat": "Sea",
+    "entries": [
+      "Starmie's jewel-like core is set in two layers of stiff, star-shaped arms. It drifts through the sea alone and seldom gathers with others.",
+      "Nobody knows where Starmie first came from, and some people think it fell from the night sky. It sends out pulses of light no one has decoded."
+    ]
+  },
+  "Jynx": {
+    "habitat": "Urban",
+    "entries": [
+      "Jynx has a long golden mane that it tosses as it walks. Its gaze is calm and a little haughty.",
+      "Jynx prefers cold places and makes its home in icy lands. Its lips are its pride, and it uses them to deliver a freezing kiss."
+    ]
+  },
+  "Pinsir": {
+    "habitat": "Forest",
+    "entries": [
+      "Pinsir clacks its two great horns together to warn rivals away. It is short-tempered and battles any bug that comes near.",
+      "Rows of spikes line the inside of its horns, so whatever they catch cannot wriggle loose. It feeds on tree sap."
+    ]
+  },
+  "Tauros": {
+    "habitat": "Grassland",
+    "entries": [
+      "Tauros snorts and stamps the ground before every charge. Its horns are thick and curved, and its hide is tough as leather.",
+      "Tauros lives in herds on open plains. The bulls clash horns to decide which of them will lead the group."
+    ]
+  },
+  "Lapras": {
+    "habitat": "Sea",
+    "entries": [
+      "Lapras glides across calm seas with its long neck held high. Its broad shell is smooth and wide.",
+      "Lapras is clever and calm, and it remembers the faces of those who have treated it kindly. It enjoys swimming alongside ships."
+    ]
+  },
+  "Ditto": {
+    "habitat": "Urban",
+    "entries": [
+      "Left alone, Ditto settles into a lazy purple puddle with a simple face. It can stay that way for days, quite content.",
+      "Ditto is found in many places, often near Pokémon it can imitate. Two Ditto meeting each other struggle to decide which shape to take."
+    ]
+  },
+  "Omanyte": {
+    "habitat": "Sea",
+    "entries": [
+      "Omanyte's spiral shell is ridged and pale blue. It drifted through warm ancient seas, feeding on plankton and tiny creatures.",
+      "Researchers revive Omanyte from fossils found in old seabeds. In tanks, it bobs gently and waves its tentacles at visitors."
+    ]
+  },
+  "Omastar": {
+    "habitat": "Sea",
+    "entries": [
+      "Omastar's mouth is ringed by a sharp beak strong enough to crack open shellfish. It crept across the ancient seafloor in search of them.",
+      "Omastar was a fierce hunter of ancient seas. Fossils of it are often found in layers of old seabed rock."
+    ]
+  },
+  "Kabuto": {
+    "habitat": "Sea",
+    "entries": [
+      "Kabuto scuttled along ancient seashores hiding beneath its hard shell. Its glowing eyes peered out to spot food in the dark.",
+      "Kabuto molts its shell as it grows, and the old shells are sometimes found buried in sand."
+    ]
+  },
+  "Kabutops": {
+    "habitat": "Sea",
+    "entries": [
+      "Kabutops has scythes for arms and a hard, smooth carapace. It struck quickly from shadowy waters long ago.",
+      "Fossils show Kabutops crouched in the shallows of ancient bays. Revived ones are restless and pace their tanks at night."
+    ]
+  },
+  "Aerodactyl": {
+    "habitat": "Mountain",
+    "entries": [
+      "Aerodactyl's leathery wings carry it swiftly on high winds. Its jaws are lined with jagged teeth, and its temper is short.",
+      "Aerodactyl screeches loudly as it swoops down on prey. It is thought to have hunted from cliffs high above the sea."
+    ]
+  },
+  "Articuno": {
+    "habitat": "Rare",
+    "entries": [
+      "A legendary bird with long, flowing blue tail feathers. It lives alone on remote, frozen peaks and is rarely seen.",
+      "As Articuno flies, it leaves sparkling trails of ice crystals behind it. Travelers tell tales of glimpsing its blue plumage in blizzards."
+    ]
+  },
+  "Zapdos": {
+    "habitat": "Rare",
+    "entries": [
+      "Bolts of lightning crackle around this legendary bird as it flies. It is drawn to places where storms are raging.",
+      "The crackle of its feathers can be heard long before it comes into view. Its cry sounds like a peal of thunder."
+    ]
+  },
+  "Moltres": {
+    "habitat": "Rare",
+    "entries": [
+      "A legendary bird with a crest and tail of living flame. The sky around it glows orange as it passes overhead.",
+      "Moltres makes its home among volcanic peaks. Those who glimpse it say the air around it shimmers with heat."
+    ]
+  },
+  "Dratini": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "Dratini keeps out of sight in deep, clear water and is seldom seen. Its smooth blue body is surprisingly long for its weight.",
+      "Its body gives off a gentle energy. Fishermen who caught one long ago spoke of a slender blue serpent with a white snout."
+    ]
+  },
+  "Dragonair": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "Dragonair's long body glides through the air without wings, rippling like a ribbon. Its eyes are calm and gentle.",
+      "Dragonair lives in pure lakes and seas, far from people. Its long white horn and blue scales shimmer in clear water."
+    ]
+  },
+  "Dragonite": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "A kindly giant that flies over the sea on surprisingly small wings. Children who meet one often find it eager to play.",
+      "Dragonite is slow to anger, but when it finally loses its temper it can flatten everything around it."
+    ]
+  },
+  "Mewtwo": {
+    "habitat": "Rare",
+    "entries": [
+      "A Pokémon made by people who altered the genes of another. It possesses enormous psychic power and a fierce, wary nature.",
+      "Mewtwo rarely shows itself and prefers to stay hidden in caves. Its mind is said to be among the most powerful of any Pokémon."
+    ]
+  },
+  "Mew": {
+    "habitat": "Rare",
+    "entries": [
+      "Mew is playful and curious, and it tumbles through the air as if gravity meant nothing to it. Its long, thin tail helps it steer.",
+      "Mew lives in remote jungles where few people ever go. Some researchers believe many kinds of Pokémon descended from it."
+    ]
+  },
+  "Chikorita": {
+    "habitat": "Grassland",
+    "entries": [
+      "The large leaf on its head turns to follow the light. Chikorita is gentle and gets along well with other Pokémon.",
+      "It often runs in circles in sunny fields, playing with others. When annoyed it swats with its big head leaf."
+    ]
+  },
+  "Bayleef": {
+    "habitat": "Grassland",
+    "entries": [
+      "Bayleef is affectionate and likes to stay close to those it cares for, nudging them with its head.",
+      "It runs about on strong legs and enjoys long walks. Its neck stretches out when it reaches toward sunny spots."
+    ]
+  },
+  "Meganium": {
+    "habitat": "Grassland",
+    "entries": [
+      "Meganium walks slowly through meadows, and small Pokémon follow it for company. The bloom around its neck opens wide on sunny days.",
+      "Meganium is kind and takes care of injured Pokémon it finds in the wild. Its long stamens wave gently in the breeze."
+    ]
+  },
+  "Cyndaquil": {
+    "habitat": "Grassland",
+    "entries": [
+      "Cyndaquil is shy and easily startled, and it often hides behind its trainer's legs. It sniffs the air constantly with its pointed nose.",
+      "It keeps the flames on its back hidden when relaxed. It loves warm places and sleeps curled up near the hearth."
+    ]
+  },
+  "Quilava": {
+    "habitat": "Grassland",
+    "entries": [
+      "Quilava's flames flare out from its neck and rump in bright collars. It is restless and seldom sits still for long.",
+      "Quilava runs at a low crouch, its fire streaming behind it. It grows bolder and more outgoing as it gains experience."
+    ]
+  },
+  "Typhlosion": {
+    "habitat": "Grassland",
+    "entries": [
+      "Typhlosion's fiery collar roars higher whenever it is angered. Its fur is thick and dark along its back.",
+      "Typhlosion is a calm Pokémon until provoked. Its fiery mane can scorch everything nearby in an instant."
+    ]
+  },
+  "Totodile": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "Totodile is small but full of energy, and it charges at anything new to get a closer look. It loves splashing in puddles.",
+      "It hops and sways in a cheerful little dance when happy. In water it paddles strongly with its short limbs."
+    ]
+  },
+  "Croconaw": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "Croconaw lunges from the water with its mouth wide open. The spines on its back stand up when it is ready to fight.",
+      "It waits in rivers for prey to come close. It is quick to anger and splashes water at anything that annoys it."
+    ]
+  },
+  "Feraligatr": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "On land it walks upright, swinging its heavy tail for balance. Its huge jaws can crush rock with a single bite.",
+      "Feraligatr lurks in deep rivers with only its eyes above the surface. When prey comes near, it surges out with a roar."
+    ]
+  },
+  "Sentret": {
+    "habitat": "Grassland",
+    "entries": [
+      "Sentret sits upright on its thick striped tail, which is longer than its body. It chatters nervously when it is unsure.",
+      "It builds its home in burrows with many tunnels. Young Sentret learn to stand upright almost as soon as they can walk."
+    ]
+  },
+  "Furret": {
+    "habitat": "Grassland",
+    "entries": [
+      "Furret is quick and playful, bounding along in long, rippling leaps. Its stripes help it blend into tall grass.",
+      "Furret curls its long body around its young to keep them warm while they sleep. Its fur is soft and thick."
+    ]
+  },
+  "Ledyba": {
+    "habitat": "Forest",
+    "entries": [
+      "Ledyba is timid and feels safe only with many others of its kind. A swarm flutters through the woods at dawn, glinting red.",
+      "Its five spots are bright on a healthy Ledyba. It flies clumsily and often lands on flowers to rest its small wings."
+    ]
+  },
+  "Ledian": {
+    "habitat": "Forest",
+    "entries": [
+      "Ledian is most active on clear nights and rests by day under broad leaves. Its four arms let it throw punches in quick flurries.",
+      "When it is brave enough to fight alone, it shows its true strength. It wraps itself in its wings to sleep."
+    ]
+  },
+  "Spinarak": {
+    "habitat": "Forest",
+    "entries": [
+      "Spinarak hangs from a single strand in the shade of leaves. The markings on its back look like a scowling face and startle birds.",
+      "The thread it spins is tough, and people have used it to make fabric. It hunts mostly at night."
+    ]
+  },
+  "Ariados": {
+    "habitat": "Forest",
+    "entries": [
+      "Ariados creeps along on long, striped legs and moves surprisingly fast. The horn on its head can deliver a painful jab.",
+      "Its webs are wide and strong enough to hold a small bird. It is most active late at night."
+    ]
+  },
+  "Chinchou": {
+    "habitat": "Sea",
+    "entries": [
+      "Chinchou's round blue body is tipped with two bobbing antennae. It gives a sharp jolt to anything that grabs it.",
+      "Chinchou rises closer to the surface on dark nights. Fishermen sometimes spot its lights twinkling beneath the waves."
+    ]
+  },
+  "Lanturn": {
+    "habitat": "Sea",
+    "entries": [
+      "Lanturn's two glowing lures dangle above its face as it swims. Curious fish swim toward them, which is exactly what it wants.",
+      "Lanturn cruises slowly through the deep, its round body bobbing as it swims. It can live comfortably at great depths."
+    ]
+  },
+  "Igglybuff": {
+    "habitat": "Grassland",
+    "entries": [
+      "Igglybuff is round, pink and light as a feather. It giggles and wiggles whenever it is picked up.",
+      "It is fond of its trainer and follows them happily. Its round eyes sparkle when it is pleased."
+    ]
+  },
+  "Natu": {
+    "habitat": "Forest",
+    "entries": [
+      "Natu has short wings and a bright red crest. It is light enough to perch on the thinnest twig.",
+      "Natu is silent and watchful, and it seems to sense trouble before it arrives. It is said to know what others are thinking."
+    ]
+  },
+  "Xatu": {
+    "habitat": "Forest",
+    "entries": [
+      "Xatu's wings are marked with bold patterns of red, white and black. It folds them close like a cloak when it rests.",
+      "In some lands it is honored as a guardian of the village. People say it knows of storms long before they arrive."
+    ]
+  },
+  "Mareep": {
+    "habitat": "Grassland",
+    "entries": [
+      "Mareep is gentle and timid, and it bleats softly when it wants attention. Its fleece is thick and very fluffy.",
+      "Farmers raise Mareep in pastures and spin its wool into warm cloth. A sweater made from it crackles faintly in dry weather."
+    ]
+  },
+  "Flaaffy": {
+    "habitat": "Grassland",
+    "entries": [
+      "Flaaffy walks upright on two legs, and a bright orb hangs from the end of its tail. Its fleece covers only its head and middle now.",
+      "Flaaffy is gentle with people who treat it well, and it is often kept on farms to guard flocks of Mareep."
+    ]
+  },
+  "Ampharos": {
+    "habitat": "Grassland",
+    "entries": [
+      "Ampharos has smooth yellow skin and a calm, kindly face. A famous lighthouse in Johto is lit by one.",
+      "Ampharos has shed all of its wool. Electricity collects in the glowing red balls on its brow and tail."
+    ]
+  },
+  "Bellossom": {
+    "habitat": "Grassland",
+    "entries": [
+      "Its petals are glossy and bright, and the flowers on its head open wider in clear weather. It is cheerful and friendly.",
+      "Bellossom's flowers smell faintly sweet after a rain. Its leafy skirt rustles softly when it moves."
+    ]
+  },
+  "Politoed": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "Politoed sits on a sunny rock by the pond with its curl standing proudly. It hops with surprising height on its springy legs.",
+      "On rainy evenings it croaks for hours, and its voice carries a long way across fields and marshes."
+    ]
+  },
+  "Hoppip": {
+    "habitat": "Grassland",
+    "entries": [
+      "Hoppip weighs almost nothing and drifts on the breeze like a leaf. On calm days it stays close to the ground, sunbathing.",
+      "The leaves on its head spin to steer as it floats. Children love to chase it across fields in spring."
+    ]
+  },
+  "Skiploom": {
+    "habitat": "Grassland",
+    "entries": [
+      "Skiploom's yellow flower is its pride, and it turns its face toward the sky wherever it goes. It rests on rooftops and fences, waiting for a breeze.",
+      "Groups of Skiploom drift slowly across the countryside in summer. Farmers welcome them, since their visits come with fair weather."
+    ]
+  },
+  "Jumpluff": {
+    "habitat": "Grassland",
+    "entries": [
+      "Jumpluff's three cotton puffs are soft and almost weightless. It steers by tilting them into the wind.",
+      "In autumn, people sometimes find its loose fluff caught in the branches of tall trees. The fluff carries its spores."
+    ]
+  },
+  "Sunkern": {
+    "habitat": "Grassland",
+    "entries": [
+      "Sunkern looks like a large seed with a single leaf sprouting from its top. It is weak and often hides under taller plants.",
+      "It is often found in fields where sunflowers grow. In a year of good weather, many of them appear across the meadows."
+    ]
+  },
+  "Sunflora": {
+    "habitat": "Grassland",
+    "entries": [
+      "Sunflora's broad face is ringed with golden petals, and it smiles at anyone who passes. It waves its leafy arms in greeting.",
+      "In hot regions many gather in fields, all facing the same way. It feels limp on cloudy days."
+    ]
+  },
+  "Slowking": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "The Shellder clamped to its head is shaped like a crown. Slowking spends its days thinking about questions no one else would ask.",
+      "Other Slowpoke often gather near Slowking and seem to follow its lead. It speaks to them in low, slow murmurs."
+    ]
+  },
+  "Wobbuffet": {
+    "habitat": "Cave",
+    "entries": [
+      "Wobbuffet is endlessly patient and will stand in one place for hours without complaint. It salutes with one arm when it is ready.",
+      "Wobbuffet's body is soft and rubbery, and blows seem to bounce right off it. It lives in quiet caves."
+    ]
+  },
+  "Pineco": {
+    "habitat": "Forest",
+    "entries": [
+      "Pineco's shell is made of overlapping scales like a cone. It keeps its tiny face hidden in the gap between them.",
+      "When it feels threatened, its shell can burst open with a loud bang. It lives in forests of tall conifers."
+    ]
+  },
+  "Forretress": {
+    "habitat": "Forest",
+    "entries": [
+      "Forretress is wrapped in a heavy shell of steel-gray plates. The shell is so dense that it weighs more than a hundred kilograms.",
+      "Forretress seldom wanders far and spends long stretches sitting perfectly still. When it opens up, sharp spikes poke out to ward off foes."
+    ]
+  },
+  "Dunsparce": {
+    "habitat": "Cave",
+    "entries": [
+      "Dunsparce has a pale yellow body with blue stripes and tiny wings. It wriggles along the ground like a snake.",
+      "Few people have spotted one, since it keeps to dim, quiet places. Its stubby wings flutter when it is nervous."
+    ]
+  },
+  "Snubbull": {
+    "habitat": "Urban",
+    "entries": [
+      "Snubbull has a wide jaw and a gruff little growl. Despite its looks it loves to be petted and fussed over.",
+      "Snubbull is often kept as a pet in towns. It hates being alone and sulks if it is ignored."
+    ]
+  },
+  "Granbull": {
+    "habitat": "Urban",
+    "entries": [
+      "Its huge lower fangs make it look fierce, yet it is loyal to those it trusts. Many Granbull guard homes in towns.",
+      "Its jaw is very strong, and it can bite through thick wood. It prefers to frighten foes away with a deep growl."
+    ]
+  },
+  "Qwilfish": {
+    "habitat": "Sea",
+    "entries": [
+      "Qwilfish swells up into a spiky ball whenever it is alarmed. Its round eyes give it a permanently surprised look.",
+      "Its toxic spines can make a person ill for days. Fishermen handle it carefully when it ends up in their nets."
+    ]
+  },
+  "Shuckle": {
+    "habitat": "Mountain",
+    "entries": [
+      "Shuckle's red shell is dotted with holes, and its yellow limbs poke out through them. It moves very slowly.",
+      "Its shell is hard enough to protect it from almost any blow. It spends long days tucked into crevices among sea rocks."
+    ]
+  },
+  "Teddiursa": {
+    "habitat": "Mountain",
+    "entries": [
+      "The crescent mark on its forehead shines like a little moon. It wanders the woods snacking on sweet berries and nectar.",
+      "It looks cuddly, but it scratches hard if anything tries to take its food. Mothers keep their cubs close as they forage."
+    ]
+  },
+  "Ursaring": {
+    "habitat": "Mountain",
+    "entries": [
+      "The ring-shaped mark on Ursaring's chest stands out against its brown fur. It rips into hollow logs with its massive claws to reach grubs.",
+      "Ursaring hibernates through the coldest months. Before sleeping, it eats huge amounts to build up fat."
+    ]
+  },
+  "Slugma": {
+    "habitat": "Mountain",
+    "entries": [
+      "Slugma creeps through volcanic areas at a slow, steady crawl, leaving the ground scorched behind it.",
+      "Slugma's body is so hot that it can set dry grass on fire. It dislikes rain and hides in rocky hollows when clouds gather."
+    ]
+  },
+  "Magcargo": {
+    "habitat": "Mountain",
+    "entries": [
+      "Magcargo carries a lumpy shell of cooled magma on its back. Its whole body is hot enough to melt snow it touches in moments.",
+      "Magcargo lives in volcanic craters and moves slowly through the heat. Rain falling on it turns instantly into steam."
+    ]
+  },
+  "Corsola": {
+    "habitat": "Sea",
+    "entries": [
+      "Corsola clusters in warm, shallow reefs, where groups of them form colorful beds. Small fish dart in and out among their branches.",
+      "Corsola moves slowly along the seabed on stubby legs. When frightened, it pulls back into a crack in the reef."
+    ]
+  },
+  "Delibird": {
+    "habitat": "Mountain",
+    "entries": [
+      "Delibird is a cheerful bird of snowy mountains with a sack-like tail. It hops along icy ledges rather than flying.",
+      "Delibird sometimes leaves gifts for those who have treated it kindly. It nests in sheltered hollows among the rocks."
+    ]
+  },
+  "Skarmory": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "Skarmory's feathers are edged like blades of steel and ring when they clash. Its red-lined wings flash in sunlight.",
+      "Skarmory nests high on cliffs, out of reach of other Pokémon. Its cry is harsh and metallic."
+    ]
+  },
+  "Kingdra": {
+    "habitat": "Sea",
+    "entries": [
+      "Kingdra is a proud dragon of the sea with a long, curled tail. It moves with great power through the water.",
+      "Its scales are smooth and tough. Sailors who glimpse it consider the sight a sign of good fortune."
+    ]
+  },
+  "Phanpy": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "Phanpy loves to play in muddy rivers, and it rolls about on the banks until it is covered in mud.",
+      "Young Phanpy follow their parents in a line, each holding the tail in front with its trunk. They squeal when separated."
+    ]
+  },
+  "Donphan": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "Donphan's gray hide is thick and rough, like a suit of armor. It digs for roots with its tusks.",
+      "Herds of Donphan travel across dry plains in search of water. They rest together in the shade at midday."
+    ]
+  },
+  "Stantler": {
+    "habitat": "Forest",
+    "entries": [
+      "Stantler's antlers curve back into rings, and a dark orb sits in each one. It lowers its head and stares when it feels uneasy.",
+      "Stantler lives in herds in quiet woods and meadows. It is wary and bolts at any unusual noise."
+    ]
+  },
+  "Smeargle": {
+    "habitat": "Urban",
+    "entries": [
+      "Smeargle loves to draw and dabs its tail across rocks and walls. Each one paints in its own style.",
+      "It is curious and studies other Pokémon closely, copying what they do. Its tail fluid changes color with its mood."
+    ]
+  },
+  "Tyrogue": {
+    "habitat": "Urban",
+    "entries": [
+      "Tyrogue picks scuffles with anything it meets just to test itself. Its style of fighting changes as it learns, deciding what it will become.",
+      "Tyrogue is small but scrappy, and it hates sitting still. It is often found in gyms and dojos where people train."
+    ]
+  },
+  "Hitmontop": {
+    "habitat": "Urban",
+    "entries": [
+      "Hitmontop balances upside down on the horn on its head, with its legs pointed at the sky. It practices for hours.",
+      "Its head horn is worn smooth from all its spinning. It is calm and focused outside of battle."
+    ]
+  },
+  "Smoochum": {
+    "habitat": "Urban",
+    "entries": [
+      "Smoochum hums little tunes as it wanders through the snow. It prefers cold places and avoids the heat.",
+      "Its lips are cold to the touch and can numb whatever they press. It is fond of people who play gently with it."
+    ]
+  },
+  "Miltank": {
+    "habitat": "Grassland",
+    "entries": [
+      "Miltank is a steady, good-natured Pokémon that farmers have kept for generations. It hums contentedly while grazing.",
+      "When it feels threatened, Miltank tucks itself into a ball and rolls into foes at speed. Its pink hide is thick."
+    ]
+  },
+  "Raikou": {
+    "habitat": "Grassland",
+    "entries": [
+      "Raikou bounds across the land in great leaps, gone before the eye can follow. Storms seem to gather wherever it pauses.",
+      "The cloud-like mane on its back crackles with static. Old stories tie its first appearance to a tower that burned."
+    ]
+  },
+  "Entei": {
+    "habitat": "Grassland",
+    "entries": [
+      "Entei roams the land without rest, and the air around it shimmers with heat. Its eyes burn with a fierce, steady light.",
+      "Legends tie its birth to a great fire. Flames that it breathes are hotter than molten rock."
+    ]
+  },
+  "Suicune": {
+    "habitat": "Grassland",
+    "entries": [
+      "Suicune moves with quiet grace, its flowing tails trailing behind it like ribbons. It appears briefly and then is gone.",
+      "It is drawn to clear lakes and springs and lingers at their edges in the early morning. Few have seen it twice."
+    ]
+  },
+  "Larvitar": {
+    "habitat": "Mountain",
+    "entries": [
+      "Larvitar has a tough, mossy green hide and a single horn. It is small but very heavy for its size.",
+      "Its hide is as hard as stone. It fights with stubborn courage against much bigger foes."
+    ]
+  },
+  "Pupitar": {
+    "habitat": "Mountain",
+    "entries": [
+      "Pupitar's gray shell is sealed tight except for a few small holes. It sometimes shoots off without warning and crashes into things.",
+      "Inside its shell, its body is preparing for a dramatic change. It thrashes wildly when disturbed."
+    ]
+  },
+  "Tyranitar": {
+    "habitat": "Mountain",
+    "entries": [
+      "Tyranitar's armored body shrugs off almost any attack. Its heavy tail sweeps boulders aside as it walks.",
+      "When it stamps its feet, boulders tumble and cliffs collapse. It has little patience for weaker creatures."
+    ]
+  },
+  "Lugia": {
+    "habitat": "Rare",
+    "entries": [
+      "Lugia's silver-white body gleams as it glides above the waves. It surfaces only rarely, and its arrival calms the sea.",
+      "Old songs in coastal villages tell of a great silver bird rising from the sea. Its cry is low and haunting."
+    ]
+  },
+  "Ho-Oh": {
+    "habitat": "Rare",
+    "entries": [
+      "Ho-Oh's plumage shimmers in shifting hues of red, gold and green. A single feather it drops is said to stay warm for years.",
+      "It is said to have brought three Pokémon back to life after a great fire. It roosts atop a tall tower."
+    ]
+  },
+  "Celebi": {
+    "habitat": "Forest",
+    "entries": [
+      "Celebi drifts through time and visits peaceful woods. Its delicate wings shimmer like dew in the morning light.",
+      "Celebi is small and shy, and it vanishes in a shimmer of light when approached. Old shrines in the forest were built in its honor."
+    ]
+  }
+}
