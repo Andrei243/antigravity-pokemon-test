@@ -341,6 +341,12 @@ partial class Harness
         game.State = GameState.PokedexMenu;
         dexScreen.Open(pokedex, game.World.Portrait(PlayerIdentity.Character));
         Frames(30); Shot("26_pokedex_turtwig");
+        // The second opening of an entry shows the other of its two written entries (plan 08 · P13). Drawn without a
+        // frame of the game's clock, so that the shots after it are taken at the moments they always were
+        dexScreen.Confirm(); dexScreen.Cancel(); dexScreen.Confirm();
+        engine.Draw(); Shot("26m_pokedex_second_entry");
+        Console.WriteLine($"  Turtwig's entry opened {dexScreen.Openings(PokemonDatabase.Get("Turtwig")!)} times, showing the entry {dexScreen.EntryShown(PokemonDatabase.Get("Turtwig")!) + 1} of {DexEntries.CountFor(PokemonDatabase.Get("Turtwig")!)}");
+        dexScreen.Cancel();
         Pick("Starly");
         Frames(2); Shot("26c_pokedex_seen_only");
         Pick("Bibarel");

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -91,6 +92,73 @@ public class DataFileTests
         Assert.True(PokemonDatabase.Get("Giratina")!.Legendary);
         Assert.False(PokemonDatabase.Get("Giratina")!.Mythical);
         Assert.DoesNotContain(all, s => s.Legendary && s.Mythical);
+    }
+
+    /// <summary>
+    /// The written entries' floor (plan 08 · P13 to P17): every species of the Sinnoh Pokédex has its entries, and so
+    /// does every species to this National number. A batch raises it to its last species (P14: 251, Celebi; P15: 649,
+    /// Genesect; P16: 1025), and P17 holds every form too.
+    /// </summary>
+    private const int WrittenEntriesThrough = 0;
+
+    [Fact]
+    public void TheWrittenEntriesKeepTheirShape()
+    {
+        // dex-entries.json (plan 08 · P13): a species' or a form's name as species.json writes it, in National
+        // order; two entries of 15 to 45 words each, not alike, neither the generated sentence; a habitat of the nine
+        var all = DexEntries.All;
+        Assert.NotEmpty(all);
+        int previous = 0;
+        foreach (var (name, record) in all)
+        {
+            var species = PokemonDatabase.Get(name) ?? PokemonDatabase.SpeciesOfForm(name);
+            Assert.True(species != null, $"{name} in dex-entries.json is no species or form of the data");
+            Assert.True(species!.DexNumber >= previous, $"{name} is out of National order in dex-entries.json");
+            previous = species.DexNumber;
+
+            Assert.True(Enum.IsDefined(record.Habitat), $"{name}'s habitat is none of the nine");
+            Assert.True(record.Entries.Count == 2, $"{name} has {record.Entries.Count} entries, not two");
+            foreach (string entry in record.Entries)
+            {
+                int words = entry.Split(' ', StringSplitOptions.RemoveEmptyEntries).Length;
+                Assert.True(words is >= 15 and <= 45, $"{name}'s entry has {words} words: \"{entry}\"");
+                Assert.NotEqual(species.DexEntry, entry);
+                Assert.DoesNotContain("first found in", entry);
+                Assert.Equal(entry.Trim(), entry);
+            }
+            Assert.False(Alike(record.Entries[0], record.Entries[1]), $"{name}'s two entries say the same thing");
+        }
+    }
+
+    [Fact]
+    public void EverySpeciesUpToTheFloorHasItsWrittenEntries()
+    {
+        var wanted = PokemonDatabase.GetAll().Where(s => s.SinnohNumber != null || s.DexNumber <= WrittenEntriesThrough).ToList();
+        Assert.Equal(210, wanted.Count(s => s.SinnohNumber != null));
+        var missing = wanted.Where(s => DexEntries.Of(s.Name) == null).Select(s => s.Name).ToList();
+        Assert.True(missing.Count == 0, "No written entries for " + string.Join(", ", missing));
+
+        // What the INFO page shows: the two in turn, and the generated sentence for a name the file lacks
+        var turtwig = PokemonDatabase.Get("Turtwig")!;
+        Assert.Equal(DexEntries.EntriesOf("Turtwig")![0], DexEntries.EntryFor(turtwig, 0));
+        Assert.Equal(DexEntries.EntriesOf("Turtwig")![1], DexEntries.EntryFor(turtwig, 1));
+        Assert.Equal(DexEntries.EntryFor(turtwig, 0), DexEntries.EntryFor(turtwig, 2));
+        Assert.Equal("Forest", DexEntries.Word(DexHabitat.Forest));
+        Assert.Equal("Water's edge", DexEntries.Word(DexHabitat.WatersEdge));
+        Assert.Null(DexEntries.Of("Missingno"));
+    }
+
+    /// <summary>Two entries are alike when they are the same or share a run of five words (lower case, letters only).</summary>
+    private static bool Alike(string a, string b)
+    {
+        static List<string> Words(string text) => Regex.Split(text.ToLowerInvariant(), "[^\\p{L}\\p{N}]+").Where(w => w.Length > 0).ToList();
+        var x = Words(a);
+        var y = Words(b);
+        if (x.SequenceEqual(y)) return true;
+        var runs = new HashSet<string>();
+        for (int i = 0; i + 5 <= x.Count; i++) runs.Add(string.Join(' ', x.Skip(i).Take(5)));
+        for (int i = 0; i + 5 <= y.Count; i++) if (runs.Contains(string.Join(' ', y.Skip(i).Take(5)))) return true;
+        return false;
     }
 
     [Fact]

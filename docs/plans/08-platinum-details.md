@@ -202,6 +202,21 @@ Done by plan 06 · R9 on 2026-10-06, as this plan was written: `tools/DataImport
 - Shots: `26_pokedex_turtwig` (kept), `26m_pokedex_second_entry`.
 - **Done when** every species of the Sinnoh Pokédex has two entries and a habitat word, the check reports nothing shared, and the page shows them.
 
+**Outcome (2026-10-13).** What was built:
+- **The file**: `Data/dex-entries.json`, hand-written, a name to `{ "habitat": …, "entries": [ …, … ] }`, in National order and written as `GameDataFiles.Serialize` writes (two spaces, enums by name). `Data/DexEntries.cs` reads it once (`DexEntries.Of`, `EntriesOf`, `HabitatOf`, `CountFor`, `EntryFor(species, which)`, which goes round a species' entries and gives `PokemonSpecies.DexEntry` for a name the file lacks) and holds the nine words as `DexHabitat` (`Word` gives "Water's edge", "Rough terrain"); `Habitat` was taken by the area page's record. `docs/data-files.md` has its section.
+- **The 210 of the Sinnoh Pokédex**: 420 entries, 15 to 45 words each, written for this game, each held against what we remember of the games' entries for the same species as well as against the check, and rewritten where it came close in idea and not only in words (a crest that grows with age, a sac that churns poison, a body that is hollow). Habitats: forest 44, mountain 40, urban 27, grassland 24, water's edge 24, cave 20, sea 14, rough terrain 9, rare 8 (Unown, Spiritomb, the lakes' three, Dialga, Palkia, Giratina).
+- **The page**: `PokedexScreen` counts each species' openings while the game runs (`Openings`, `EntryShown`; not saved), and the INFO page shows the written entry by it, the first on the first opening and the next on each after; the habitat word stands as a third field after HEIGHT and WEIGHT, its size brought down to fit ("?????" until the species is caught), and two dots at the end of the rule over the entry say which of the two is showing (style guide, "Menu screens", the Pokédex entry's INFO page, first). The starter's briefcase, which showed `DexEntry`, shows the first written entry; the PC's summary never showed one.
+- **The check**: `tools/DataImporter`'s `--check-entries [file]` (`EntryCheck.cs`) reads PokeAPI's `pokemon_species_flavor_text.csv` from the importer's cache in memory, takes every run of six words of every English flavour text (lower case, accents off, apostrophes inside a word dropped) and names each run an entry shares, with the species whose text has it; it exits 1 on a finding and writes nothing. Its README section and CLAUDE.md's "Commands" say so. It found three runs over the batch ("tail as if it were a", "the longer and more curled the", "as if they were its own"), each rewritten; it now reports 420 entries of 210 names sharing nothing with 14,496 texts.
+- **Tests** (written, not run): `DataFileTests.TheWrittenEntriesKeepTheirShape` (every name a species or form, National order, a habitat of the nine, two entries of 15 to 45 words, trimmed, neither the generated sentence nor alike: the same or sharing a run of five words) and `EverySpeciesUpToTheFloorHasItsWrittenEntries` (the 210, and every species to `WrittenEntriesThrough`, 0 now; the round of `EntryFor`; the words; a name the file lacks).
+- **Shots** (written, not run): `26m_pokedex_second_entry` in `menus`, right after `26_pokedex_turtwig`: Turtwig's entry opened twice, drawn without a frame of the game's clock so that every later shot is taken at the moment it was; it prints the openings and which entry shows. `26_pokedex_turtwig` itself is the list, so it is kept; every later shot of an INFO page (and `21_starter*`'s briefcase) now shows a written entry and the habitat field, which `diff` will list.
+
+Decisions:
+- **The habitats are ours.** Platinum has no habitat word (FireRed's area screens do); each species takes the one of the nine its Sinnoh home and nature suggest, and the rare eight are the legendaries and the two that live in one place.
+- **A shared run of five words** is what the test calls two entries alike, a word shorter than the check's six, since two entries of one species may share a phrase only by chance.
+- **The order of the file is the test's**: P14's Kanto and Johto species go in among these by National number (Pikachu, Raichu and the others of the Sinnoh Pokédex below 252 are already here), so a merge must interleave the two files, not append one to the other, and P14 raises `WrittenEntriesThrough` to 251.
+
+Owed: the shots looked at, and the full suite run, once merged.
+
 ### P14 · Entries: the rest of Kanto and Johto
 - The 169 species from Bulbasaur to Celebi that the Sinnoh Pokédex leaves out: 338 entries, written and checked as the design's "Batches" says.
 - **Done when** every species to Celebi has two entries and a habitat word, and the check reports nothing shared.
@@ -298,7 +313,7 @@ Done by plan 06 · R9 on 2026-10-06, as this plan was written: `tools/DataImport
 - [ ] P10 The Vs. Recorder's file
 - [ ] P11 The replay viewer
 - [x] P12 Spiritomb's tower (2026-10-10, with plan 02 · S7: the overlay's `read` puts the tower's four tiles in `Map.TileScripts`; `route_209.txt`, `StoryState.Greeted` and `GREETINGS`, `greetings clear`, `special.json` read by `Habitats` as `HabitatWays.Special` with its `How`; `HearthomeTests` holds every way through and the count; the stand-in is in `docs/mechanics/rulings.md`, "The fourth chapter, second part")
-- [ ] P13 The entries file and the Sinnoh Pokédex
+- [x] P13 The entries file and the Sinnoh Pokédex (2026-10-13: `dex-entries.json` with the 210's 420 entries and habitats, `DexEntries`, the INFO page's entry in turn and its habitat, `--check-entries` clean)
 - [ ] P14 Entries: the rest of Kanto and Johto
 - [ ] P15 Entries: the rest of Hoenn, Sinnoh and Unova
 - [ ] P16 Entries: the rest of Kalos, Alola, Galar and Paldea

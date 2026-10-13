@@ -20,6 +20,7 @@ The game's species, moves, abilities, items and maps live as JSON in `PokemonPla
 | `characters.json` | `CharacterStyles` | Every look a person can have, the original's object looks that stand as one of ours for now, and the look of each trainer class in battle (plan 11 · C1); hand-written, see "Characters" below. |
 | `clothes.json` | `ClothingDatabase` | The garments the player can wear and the boutiques that sell them (plan 11 · C9, C10); hand-written, see "Clothes" below. |
 | `credits.json` | `CreditsDatabase` | This remake's credits (plan 02 · S14); hand-written, in our own words. `sections`, in the order they roll: each a `heading` and its `entries`, an entry a `name` and an optional `note` under it (a licence, what a source was read for); `"team": true` on the one section that lists the Champion's team after its own entries. `end` and `farewell` are the last card's two lines. A name may hold `{player}`. Latin-1 only (the interface's font), and no long dash. It names what `docs/art/CREDITS.md` and `THIRD-PARTY-NOTICES.md` list: a source added there is added here. |
+| `dex-entries.json` | `DexEntries` | The Pokédex's written entries (plan 08 · P13); hand-written, in our own words, never by the importer, see "Pokédex entries" below. |
 | `trainer-lines.json` | `TrainerLines` | What trainers say in battle (plan 11 · C12); hand-written, in our own words, see "Trainers' lines in battle" below. |
 | `maps/<Name>.json` | `MapDatabase` | One `MapFile` per hand-made map; the file name must match its `name`. |
 | `world/<region>/…` | `World`, then `MapDatabase` | The imported world of a region: `world.json` (what is built), generated `matrices/`, `chunks/` and `areas/`, and hand-written `overlays/`. `WorldMapBuilder` makes one `Map` of each matrix `world.json` lists. |
@@ -501,6 +502,28 @@ The engine builds the rigs of the people within two chunks of the player in the 
 - A boutique (`boutiques`) is a counter's key and the garments it sells, in the order its rows show them. A script opens it with `wardrobe "<key>"`; `wardrobe` alone opens the player's own clothes at home.
 
 What the player wears is an `Outfit` (`Core/Outfit.cs`): a garment's id in each slot, or nothing for the look's own. It is saved as `SaveData.Outfit` with the garments bought (`SaveData.Wardrobe`); a save without them loads in the look's own clothes. A character dressed in an outfit is named `PLAYER@<hat>.<top>.<bottoms>.<shoes>.<bag>` (a dash for the look's own), so its rig, sprites and mesh cache follow the outfit, and an outfit with nothing chosen is plain `PLAYER` or `DAWN`.
+
+## Pokédex entries
+
+`Data/dex-entries.json` (`Data/DexEntries.cs`) is what the Pokédex's INFO page says of a species (plan 08 · P13; the design's "Written entries" in `docs/plans/08-platinum-details.md`). It is hand-written, our own words in the manner of a Pokédex, never the games' text nor a paraphrase of it.
+
+```json
+{
+  "Turtwig": {
+    "habitat": "Forest",
+    "entries": [
+      "First entry ...",
+      "Second entry ..."
+    ]
+  }
+}
+```
+
+- One object keyed by a species' name exactly as `species.json` writes it (`Mr. Mime`, `Porygon-Z`), and from plan 08 · P17 a form's by its Showdown name (`Rotom-Heat`), in National Pokédex order (a form after its species), two spaces to an indent as `GameDataFiles.Serialize` writes.
+- `habitat` is one of Platinum's nine kinds of place by its name: `Grassland`, `Forest`, `WatersEdge`, `Sea`, `Cave`, `Mountain`, `RoughTerrain`, `Urban`, `Rare` (`DexHabitat`; the page says "Water's edge", "Rough terrain"). It is the kind of place, not where the species is met: that is `habitats.json`, for the AREA page.
+- `entries` are two, of 15 to 45 words each, saying different things (they share no run of five words), consistent with the species' types, category, size and evolutions in `species.json`. The page shows them in turn, one more at each opening of the entry.
+- A name the file lacks shows the sentence the importer generates (`dexEntry` in `species.json`). `DataFileTests` holds the shape and the floor: every species of the Sinnoh Pokédex, and every species to `WrittenEntriesThrough`, which each batch raises.
+- Before a batch is done, `dotnet run --project tools/DataImporter -- --check-entries` must report no run of six words shared with any English flavour text PokeAPI keeps (its README, "Checking the written entries").
 
 ## Trainers' lines in battle
 

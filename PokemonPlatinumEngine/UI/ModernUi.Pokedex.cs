@@ -67,7 +67,7 @@ internal static partial class ModernUi
                 {
                     case PokedexPage.Area: DexArea(detail, entry.Species); break;
                     case PokedexPage.Size: DexSize(detail, entry.Species, owned, dex.Portrait); break;
-                    default: DexInfo(detail, entry, owned); break;
+                    default: DexInfo(detail, entry, owned, dex.EntryShown(entry.Species)); break;
                 }
             }
         }
@@ -141,8 +141,12 @@ internal static partial class ModernUi
         UiFonts.Draw("Not seen yet.", detail.X + 44, detail.Y + 526, 30, Muted);
     }
 
-    /// <summary>INFO: the sprite on a disc, number, name, category, types, height, weight and the entry.</summary>
-    private static void DexInfo(Rectangle detail, PokedexEntry entry, bool owned)
+    /// <summary>
+    /// INFO: the sprite on a disc, number, name, category, types, height, weight, habitat and the written entry
+    /// (<see cref="DexEntries"/>; the <paramref name="which"/>th of its entries, the generated sentence where the file
+    /// has none), with a dot for each entry at the rule's right end, the one shown lit.
+    /// </summary>
+    private static void DexInfo(Rectangle detail, PokedexEntry entry, bool owned, int which = 0)
     {
         var s = entry.Species;
         var disc = new Vector2(detail.X + 44 + 180, detail.Y + 120 + 180);
@@ -160,13 +164,29 @@ internal static partial class ModernUi
         px += TypePill(px, detail.Y + 304, s.PrimaryType, 42) + 10;
         if (s.SecondaryType.HasValue) TypePill(px, detail.Y + 304, s.SecondaryType.Value, 42);
 
+        // Height, weight and the kind of place it lives in, three captions over values; the habitat's value is made
+        // smaller where it wouldn't fit before the panel's edge
         string height = owned ? s.Height.ToString("0.0", CultureInfo.InvariantCulture) + " m" : "?????";
         string weight = owned ? s.Weight.ToString("0.0", CultureInfo.InvariantCulture) + " kg" : "?????";
-        float hx = Field("HEIGHT", height, x, detail.Y + 384, 38, 64);
-        Field("WEIGHT", weight, hx, detail.Y + 384, 38);
+        var habitat = DexEntries.HabitatOf(s.Name);
+        float hx = Field("HEIGHT", height, x, detail.Y + 384, 34, 44);
+        hx = Field("WEIGHT", weight, hx, detail.Y + 384, 34, habitat.HasValue ? 44 : 64);
+        if (habitat is { } kind)
+        {
+            string word = owned ? DexEntries.Word(kind) : "?????";
+            float right = detail.X + detail.Width - 44, wordSize = 34;
+            float wordW = UiFonts.Measure(word, wordSize, UiWeight.Black);
+            if (hx + wordW > right) wordSize = MathF.Max(22, MathF.Floor(wordSize * (right - hx) / wordW));
+            Field("HABITAT", word, hx, detail.Y + 384, wordSize);
+        }
 
-        UiShapes.Fill(new Rectangle(detail.X + 44, detail.Y + 512, detail.Width - 88, 3), 1.5f, Rule);
-        if (owned) DrawWrapped(s.DexEntry, detail.X + 44, detail.Y + 540, detail.Width - 88, 30, Ink, 42);
+        // The rule under them, ending in a dot for each written entry where there is more than one, the one shown Blue
+        int count = owned ? DexEntries.CountFor(s) : 1;
+        float dots = count > 1 ? (count - 1) * 26 + 16 + 20 : 0, last = detail.X + detail.Width - 44 - 8;
+        UiShapes.Fill(new Rectangle(detail.X + 44, detail.Y + 512, detail.Width - 88 - dots, 3), 1.5f, Rule);
+        for (int i = 0; i < count && count > 1; i++)
+            UiShapes.Circle(new Vector2(last - (count - 1 - i) * 26, detail.Y + 513.5f), 8, i == which % count ? Blue : Rule);
+        if (owned) DrawWrapped(DexEntries.EntryFor(s, which), detail.X + 44, detail.Y + 540, detail.Width - 88, 30, Ink, 42);
         else UiFonts.Draw("Catch one to record what is known about it.", detail.X + 44, detail.Y + 540, 30, Muted);
     }
 

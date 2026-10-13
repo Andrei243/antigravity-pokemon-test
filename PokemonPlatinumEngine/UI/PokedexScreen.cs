@@ -74,6 +74,26 @@ public class PokedexScreen
     public Texture2D? Portrait { get; private set; }
 
     public Pokedex Pokedex => pokedex;
+
+    /// <summary>
+    /// How many times each species' entry has been opened (by its National number) while the game runs: the INFO
+    /// page shows its written entries in turn, one more each opening (plan 08 · P13). Not saved.
+    /// </summary>
+    private readonly Dictionary<int, int> openings = new();
+
+    /// <summary>
+    /// Which of a species' written entries the INFO page shows: the first until its entry has been opened, then the
+    /// next at each opening, round its entries (<see cref="DexEntries.EntryFor"/>).
+    /// </summary>
+    public int EntryShown(PokemonSpecies species) => Math.Max(0, openings.GetValueOrDefault(species.DexNumber) - 1);
+
+    /// <summary>How many times a species' entry has been opened.</summary>
+    public int Openings(PokemonSpecies species) => openings.GetValueOrDefault(species.DexNumber);
+
+    private void Opened()
+    {
+        if (Selected is { } entry) openings[entry.Species.DexNumber] = openings.GetValueOrDefault(entry.Species.DexNumber) + 1;
+    }
     public IReadOnlyList<PokedexEntry> Rows => rows;
     public IReadOnlyList<PokemonSpecies> Species => rows.Select(r => r.Species).ToList();
     public PokedexEntry? Selected => SelectedIndex >= 0 && SelectedIndex < rows.Count ? rows[SelectedIndex] : null;
@@ -151,6 +171,7 @@ public class PokedexScreen
                     {
                         SelectedIndex = i;
                         Follow();
+                        Opened();
                         Tick(held);
                     }
                     break;
@@ -207,6 +228,7 @@ public class PokedexScreen
                 if (Selected is { } entry && pokedex.IsSeen(entry.Species.DexNumber))
                 {
                     Focus = PokedexFocus.Entry;
+                    Opened();
                     AudioManager.PlaySound("select");
                     AudioManager.PlayCry(entry.Species, null, CryMode.Pokedex);
                 }
