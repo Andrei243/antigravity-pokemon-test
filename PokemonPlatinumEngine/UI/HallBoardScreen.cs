@@ -99,11 +99,11 @@ public sealed class HallBoardScreen
 
     public string Prompt => Step switch
     {
-        HallBoardStep.Confirm when MatronOpen => "Take on the Hall Matron?",
-        HallBoardStep.Confirm => $"Battle a {BattleHallChallenge.Board[Cursor]}-type Pokémon?",
-        HallBoardStep.MatronNotice => "The Hall Matron herself is coming to the stage!",
-        _ when MatronOpen => "The Hall Matron is waiting.",
-        _ => "Choose the type of Pokémon to battle."
+        HallBoardStep.Confirm when MatronOpen => Text.Of("hallBoard.prompt.matron"),
+        HallBoardStep.Confirm => Text.Of("hallBoard.prompt.type", ("type", Words.Type(BattleHallChallenge.Board[Cursor]))),
+        HallBoardStep.MatronNotice => Text.Of("hallBoard.prompt.matronComing"),
+        _ when MatronOpen => Text.Of("hallBoard.prompt.matronWaiting"),
+        _ => Text.Of("hallBoard.prompt.choose")
     };
 
     // ------------------------------------------------------------------ the buttons

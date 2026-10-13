@@ -21,7 +21,7 @@ public sealed class FashionCaseScreen
     /// <summary>The accessories' grid is so many wide; the backdrops' list shows so many rows.</summary>
     public const int Columns = 8, VisibleRows = 8;
 
-    public static readonly string[] TabNames = { "ACCESSORIES", "BACKDROPS" };
+    public static string[] TabNames => new[] { Text.Of("fashionCase.tab.accessories"), Text.Of("fashionCase.tab.backdrops") };
 
     public bool IsActive { get; private set; }
 

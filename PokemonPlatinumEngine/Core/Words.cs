@@ -30,6 +30,13 @@ public static class Words
     public static string ShortDate(DateTime day) =>
         Text.Of("summary.date", ("day", day.Day), ("month", Text.Of($"summary.monthShort.{day.Month}")), ("year", day.Year));
 
+    /// <summary>A month's name: January to December.</summary>
+    public static string Month(DateTime day)
+    {
+        int month = day.Month;
+        return Text.Of($"summary.month.{month}");
+    }
+
     /// <summary>A day's name: Monday to Sunday.</summary>
     public static string Weekday(DateTime day)
     {

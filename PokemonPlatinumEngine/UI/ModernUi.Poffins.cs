@@ -87,7 +87,12 @@ internal static partial class ModernUi
 
     // ------------------------------------------------------------------ the condition
 
-    private static readonly string[] ConditionNames = { "COOL", "BEAUTY", "CUTE", "SMART", "TOUGH" };
+    // A quality's name on the chart, in the chart's order
+    private static string ConditionName(int i)
+    {
+        var quality = (ContestStat)i;
+        return Text.Of($"condition.quality.{quality}");
+    }
 
     /// <summary>The colour of the condition's shape (the original's is a bright green).</summary>
     public static readonly Color ConditionGreen = new(72, 200, 112, 255);
@@ -135,7 +140,7 @@ internal static partial class ModernUi
         for (int i = 0; i < 5; i++)
         {
             var at = c + ConditionAxis(i) * (radius + 44);
-            string name = ConditionNames[i];
+            string name = ConditionName(i);
             float w = UiFonts.Measure(name, 26, UiWeight.Black);
             var chip = new Rectangle(at.X - w / 2f - 16, at.Y - 20, w + 32, 40);
             UiShapes.Fill(chip, 20, FlavorColor((Flavor)i));
@@ -165,14 +170,14 @@ internal static partial class ModernUi
     public static int[] ConditionOf(Pokemon p) => new[] { p.Cool, p.Beauty, p.Cute, p.Smart, p.Tough, p.Sheen };
 
     /// <summary>A panel with the condition's chart and the sheen under it.</summary>
-    public static void ConditionPanel(Rectangle r, int[] values, int[]? before = null, float grow = 1f, string title = "CONDITION")
+    public static void ConditionPanel(Rectangle r, int[] values, int[]? before = null, float grow = 1f, string? title = null)
     {
         Panel(r, 34);
-        Label(title, r.X + 44, r.Y + 30);
+        Label(title ?? Text.Of("condition.title"), r.X + 44, r.Y + 30);
         float radius = MathF.Min(r.Width * 0.3f, (r.Height - 220) / 2.4f);
         var c = new Vector2(r.X + r.Width / 2f, r.Y + 70 + radius * 1.25f);
         ConditionChart(c, radius, values, before, grow);
-        Label("SHEEN", r.X + 44, r.Y + r.Height - 74);
+        Label(Text.Of("condition.sheen"), r.X + 44, r.Y + r.Height - 74);
         float size = 15f;
         float width = Poffins.SheenSparkles * size * 2.3f;
         SheenSparkles(r.X + r.Width - 44 - width, r.Y + r.Height - 62, size, values[5]);
@@ -180,27 +185,25 @@ internal static partial class ModernUi
 
     // ------------------------------------------------------------------ the Poffin Case
 
-    private static readonly (string Label, UiIcon Icon, Color Color)[] CaseTabs =
+    private static (string Label, UiIcon Icon, Color Color)[] CaseTabs => new[]
     {
-        ("SPICY", UiIcon.Berry, FlavorColor(Flavor.Spicy)),
-        ("DRY", UiIcon.Berry, FlavorColor(Flavor.Dry)),
-        ("SWEET", UiIcon.Berry, FlavorColor(Flavor.Sweet)),
-        ("BITTER", UiIcon.Berry, FlavorColor(Flavor.Bitter)),
-        ("SOUR", UiIcon.Berry, FlavorColor(Flavor.Sour)),
-        ("ALL", UiIcon.Pouch, new Color(110, 120, 148, 255))
+        (Text.Of("poffinCase.flavour.Spicy"), UiIcon.Berry, FlavorColor(Flavor.Spicy)),
+        (Text.Of("poffinCase.flavour.Dry"), UiIcon.Berry, FlavorColor(Flavor.Dry)),
+        (Text.Of("poffinCase.flavour.Sweet"), UiIcon.Berry, FlavorColor(Flavor.Sweet)),
+        (Text.Of("poffinCase.flavour.Bitter"), UiIcon.Berry, FlavorColor(Flavor.Bitter)),
+        (Text.Of("poffinCase.flavour.Sour"), UiIcon.Berry, FlavorColor(Flavor.Sour)),
+        (Text.Of("poffinCase.flavour.all"), UiIcon.Pouch, new Color(110, 120, 148, 255))
     };
 
     /// <summary>How tall the case's prompt is under its list (and under the feeding), which leaves the list seven rows.</summary>
     public const float CasePrompt = 80;
-
-    private static readonly string[] Raises = { "Raises coolness", "Raises beauty", "Raises cuteness", "Raises smartness", "Raises toughness" };
 
     public static void DrawPoffinCase(int sw, int sh, PoffinCaseScreen screen, PoffinCase poffins, Party party, float appear)
     {
         switch (screen.Step)
         {
             case CaseStep.Choose:
-                DrawPartyChoice(sw, sh, party, screen.Target, screen.Prompt, _ => null, Math.Clamp(screen.StepAge / 0.35f, 0f, 1f), "Give");
+                DrawPartyChoice(sw, sh, party, screen.Target, screen.Prompt, _ => null, Math.Clamp(screen.StepAge / 0.35f, 0f, 1f), Text.Of("shared.hints.give"));
                 return;
             case CaseStep.Condition or CaseStep.Eating or CaseStep.After:
                 Feeding(sw, sh, screen, party.Members[screen.Target]);
@@ -208,8 +211,8 @@ internal static partial class ModernUi
         }
 
         Backdrop(sw, sh);
-        ScreenTitle("POFFIN CASE");
-        Hints(sw - Margin, 44, ("Left / Right", "Flavour"), ("Z", "Choose"), ("Esc", "Back"));
+        ScreenTitle(Text.Of("poffinCase.title"));
+        Hints(sw - Margin, 44, Hint("shared.keys.leftRight", "poffinCase.hint.flavour"), Hint("shared.keys.z", "shared.hints.choose"), Hint("shared.keys.esc", "shared.hints.back"));
         Tabs(new Rectangle(Margin, ContentTop, sw - Margin * 2, 76), CaseTabs, screen.Tab);
 
         float slide = (1f - UiMotion.EaseOut(appear)) * 60f;
@@ -220,7 +223,7 @@ internal static partial class ModernUi
         var list = new Rectangle(Margin - slide, top, 920, ContentBottom - top - CasePrompt - Gutter);
         Panel(list, 34);
         bool scrolls = listed.Count > PoffinCaseScreen.VisibleRows;
-        if (listed.Count == 0) EmptyNote(list, "No Poffins of this flavour.");
+        if (listed.Count == 0) EmptyNote(list, Text.Of("poffinCase.empty"));
         for (int row = 0; row < PoffinCaseScreen.VisibleRows && screen.First + row < listed.Count; row++)
         {
             int index = screen.First + row;
@@ -231,7 +234,7 @@ internal static partial class ModernUi
             var disc = new Vector2(r.X + 52, r.Y + r.Height / 2f);
             UiShapes.Circle(disc, 34, selected ? Color.White : Disc);
             PoffinIcon(disc + new Vector2(0, 4), 22, poffin.Type);
-            RowValue(r, $"Lv. {poffin.Level}", ink);
+            RowValue(r, Text.Of("poffinCase.level", ("level", poffin.Level)), ink);
         }
         ScrollBar(list, screen.First, PoffinCaseScreen.VisibleRows, listed.Count, 26);
 
@@ -255,7 +258,8 @@ internal static partial class ModernUi
             MenuPanel(detail.X + detail.Width - 360 - 28, detail.Y + detail.Height - height - 28, rows, screen.ActionIndex, 360);
         }
         if (screen.Step == CaseStep.Trash)
-            Prompt(sw, sh, "Throw it away?", $"The {screen.Current?.Name} will be gone for good.", new[] { ("YES", Red), ("NO", Blue) }, screen.TrashChoice);
+            Prompt(sw, sh, Text.Of("poffinCase.trashQuestion"), Text.Of("poffinCase.trashNote", ("poffin", screen.Current?.Name)),
+                new[] { (Text.Of("poffinCase.answer.yes"), Red), (Text.Of("poffinCase.answer.no"), Blue) }, screen.TrashChoice);
     }
 
     /// <summary>A Poffin large: its puff on a disc, name and level, smoothness, and its five flavours as bars with what each raises.</summary>
@@ -269,8 +273,8 @@ internal static partial class ModernUi
         float nameW = UiFonts.Measure(poffin.Name, size, UiWeight.Black);
         if (nameW > room) size = MathF.Floor(size * room / nameW);
         UiFonts.DrawCentered(poffin.Name, x, detail.Y + 124, size, Ink, UiWeight.Black);
-        float tx = x + Tag(x, detail.Y + 166, $"Lv. {poffin.Level}", PoffinColors(poffin.Type).Body, 38) + 12;
-        Tag(tx, detail.Y + 166, $"SMOOTH {poffin.Smoothness}", Frame, 38);
+        float tx = x + Tag(x, detail.Y + 166, Text.Of("poffinCase.level", ("level", poffin.Level)), PoffinColors(poffin.Type).Body, 38) + 12;
+        Tag(tx, detail.Y + 166, Text.Of("poffinCase.smooth", ("smoothness", poffin.Smoothness)), Frame, 38);
 
         float y = detail.Y + 300;
         UiShapes.Fill(new Rectangle(detail.X + 44, y, detail.Width - 88, 3), 1.5f, Rule);
@@ -280,8 +284,8 @@ internal static partial class ModernUi
             var flavor = (Flavor)i;
             int value = poffin[flavor];
             float cy = y + i * 74;
-            UiFonts.DrawCentered(Poffins.NameOf(flavor), detail.X + 44, cy, 28, value > 0 ? Ink : Muted, UiWeight.Black);
-            UiFonts.DrawCentered(Raises[i], detail.X + 44, cy + 28, 20, Muted, UiWeight.ExtraBold);
+            UiFonts.DrawCentered(Text.Of($"poffinCase.flavour.{flavor}"), detail.X + 44, cy, 28, value > 0 ? Ink : Muted, UiWeight.Black);
+            UiFonts.DrawCentered(Text.Of($"poffinCase.raises.{flavor}"), detail.X + 44, cy + 28, 20, Muted, UiWeight.ExtraBold);
             string n = value.ToString();
             UiFonts.DrawCentered(n, detail.X + 330 - UiFonts.Measure(n, 30, UiWeight.Black), cy + 8, 30, Ink, UiWeight.Black);
             Bar(new Rectangle(detail.X + 350, cy - 4, detail.Width - 350 - 44, 24), value / 60f, FlavorColor(flavor));
@@ -292,8 +296,8 @@ internal static partial class ModernUi
     private static void Feeding(int sw, int sh, PoffinCaseScreen screen, Pokemon p)
     {
         Backdrop(sw, sh);
-        ScreenTitle("POFFIN CASE");
-        Hints(sw - Margin, 44, ("Z", screen.Step == CaseStep.Condition ? "Give" : "Next"), ("Esc", "Back"));
+        ScreenTitle(Text.Of("poffinCase.title"));
+        Hints(sw - Margin, 44, Hint("shared.keys.z", screen.Step == CaseStep.Condition ? "shared.hints.give" : "shared.hints.next"), Hint("shared.keys.esc", "shared.hints.back"));
         const float top = ContentTop;
 
         var who = new Rectangle(Margin, top, 600, 640);
@@ -308,7 +312,7 @@ internal static partial class ModernUi
             Vector2.Zero, 0f, Color.White);
         NameWithGender(p, who.X + 44, who.Y + 470, 48);
         Level(who.X + who.Width - 44, who.Y + 470, p.Level, 40);
-        Label("NATURE", who.X + 44, who.Y + 528);
+        Label(Text.Of("summary.nature"), who.X + 44, who.Y + 528);
         UiFonts.Draw(Words.Nature(p.Nature), who.X + 44, who.Y + 552, 34, Ink, UiWeight.Black);
 
         // The Poffin it is given
@@ -320,7 +324,7 @@ internal static partial class ModernUi
             UiShapes.Circle(disc, 50, Disc);
             if (screen.Step == CaseStep.Condition) PoffinIcon(disc + new Vector2(0, 6), 32, poffin.Type);
             UiFonts.DrawCentered(poffin.Name, card.X + 170, card.Y + card.Height / 2f - 16, 32, Ink, UiWeight.Black);
-            UiFonts.DrawCentered($"Lv. {poffin.Level}  ·  Smooth {poffin.Smoothness}", card.X + 170, card.Y + card.Height / 2f + 22, 24, Muted, UiWeight.ExtraBold);
+            UiFonts.DrawCentered(Text.Of("poffinCase.levelAndSmooth", ("level", poffin.Level), ("smoothness", poffin.Smoothness)), card.X + 170, card.Y + card.Height / 2f + 22, 24, Muted, UiWeight.ExtraBold);
         }
 
         var chart = new Rectangle(Margin + 600 + Gutter, top, sw - Margin * 2 - 600 - Gutter, ContentBottom - CasePrompt - Gutter - top);
@@ -354,8 +358,8 @@ internal static partial class ModernUi
     {
         var pot = screen.Pot;
         Backdrop(sw, sh);
-        ScreenTitle("POFFIN COOKING");
-        if (screen.Phase == CookingPhase.Stir) Hints(sw - Margin, 44, ("Left / Right", "Stir"));
+        ScreenTitle(Text.Of("cooking.title"));
+        if (screen.Phase == CookingPhase.Stir) Hints(sw - Margin, 44, Hint("shared.keys.leftRight", "cooking.hint.stir"));
 
         // The table under the pot
         UiShapes.Shadow(new Rectangle(PotMiddle.X - 470, PotMiddle.Y - 430, 940, 900), 450, 40, new Vector2(0, 14), ShadowColor);
@@ -373,7 +377,7 @@ internal static partial class ModernUi
         {
             var side = new Rectangle(Margin, ContentTop + 40, 340, 520);
             Panel(side, 30);
-            Label("STAGE", side.X + 36, side.Y + 30);
+            Label(Text.Of("cooking.stage"), side.X + 36, side.Y + 30);
             for (int i = 0; i < PoffinPot.Stages; i++)
             {
                 var pip = new Vector2(side.X + 60 + i * 70, side.Y + 96);
@@ -382,9 +386,9 @@ internal static partial class ModernUi
                 UiFonts.DrawCentered((i + 1).ToString(), pip.X - UiFonts.Measure((i + 1).ToString(), 26, UiWeight.Black) / 2f, pip.Y, 26, past || now ? Color.White : Muted, UiWeight.Black);
             }
             var (m, s, h) = pot.Time;
-            Field("TIME", $"{m}:{s:D2}.{h:D2}", side.X + 36, side.Y + 150, 40);
-            Field("BURNED", pot.Burns.ToString(), side.X + 36, side.Y + 260, 40);
-            Field("OVERFLOWED", pot.Spills.ToString(), side.X + 36, side.Y + 370, 40);
+            Field(Text.Of("cooking.time"), $"{m}:{s:D2}.{h:D2}", side.X + 36, side.Y + 150, 40);
+            Field(Text.Of("cooking.burned"), pot.Burns.ToString(), side.X + 36, side.Y + 260, 40);
+            Field(Text.Of("cooking.overflowed"), pot.Spills.ToString(), side.X + 36, side.Y + 370, 40);
             SpeedGauge(new Rectangle(sw - Margin - 200, ContentTop + 40, 200, 700), pot);
         }
 
@@ -398,7 +402,7 @@ internal static partial class ModernUi
         if (screen.Phase == CookingPhase.Again)
         {
             DrawDialogue(sw, sh, "", screen.Line ?? "", false);
-            DrawChoices(sw, sh, new[] { "YES", "NO" }, screen.Choice, 1f);
+            DrawChoices(sw, sh, new[] { Text.Of("cooking.answer.yes"), Text.Of("cooking.answer.no") }, screen.Choice, 1f);
         }
     }
 
@@ -417,7 +421,7 @@ internal static partial class ModernUi
     private static void SpeedGauge(Rectangle r, PoffinPot pot)
     {
         Panel(r, 30);
-        Label("SPEED", r.X + 36, r.Y + 28);
+        Label(Text.Of("cooking.speed"), r.X + 36, r.Y + 28);
         var track = new Rectangle(r.X + r.Width / 2f - 26, r.Y + 80, 52, r.Height - 130);
         UiShapes.Fill(track, 26, Track);
         float Y(int speed) => track.Y + track.Height - 6 - (track.Height - 12) * speed / (float)PoffinPot.Top;
@@ -430,9 +434,10 @@ internal static partial class ModernUi
         var marker = new Rectangle(track.X - 18, at - 9, track.Width + 36, 18);
         UiShapes.Shadow(marker, 9, 8, new Vector2(0, 3), ShadowColor);
         UiShapes.Shape(marker, 9, Color.White, PanelBottom, Frame, 3);
-        string mark = spills ? "SPILLS" : "FAST";
+        string mark = Text.Of(spills ? "cooking.spills" : "cooking.fast");
         UiFonts.DrawCentered(mark, r.X + r.Width / 2f - UiFonts.Measure(mark, 18, UiWeight.Black) / 2f, r.Y + 64, 18, Muted, UiWeight.Black);
-        UiFonts.DrawCentered("BURNS", r.X + r.Width / 2f - UiFonts.Measure("BURNS", 18, UiWeight.Black) / 2f, r.Y + r.Height - 30, 18, Muted, UiWeight.Black);
+        string burns = Text.Of("cooking.burns");
+        UiFonts.DrawCentered(burns, r.X + r.Width / 2f - UiFonts.Measure(burns, 18, UiWeight.Black) / 2f, r.Y + r.Height - 30, 18, Muted, UiWeight.Black);
     }
 
     // The pot from above: flames round it, the iron ring, the batter turning with its swirls, the spoon, the arrow
@@ -582,7 +587,7 @@ internal static partial class ModernUi
         Dim(sw, sh, (int)(140 * appear));
         var r = new Rectangle(sw / 2f - 560, 170 + (1f - UiMotion.EaseOut(appear)) * 50f, 1120, 600);
         Panel(r, 36);
-        UiFonts.Draw("RESULTS", r.X + 56, r.Y + 40, 48, Ink, UiWeight.Black);
+        UiFonts.Draw(Text.Of("cooking.results"), r.X + 56, r.Y + 40, 48, Ink, UiWeight.Black);
 
         var (m, s, h) = pot.Time;
         float y = r.Y + 140;
@@ -593,10 +598,10 @@ internal static partial class ModernUi
             UiShapes.Fill(new Rectangle(r.X + 56, y + 34, 464, 3), 1.5f, Rule);
             y += 86;
         }
-        Row("Cooking time", $"{m}:{s:D2}.{h:D2}");
-        Row("Overflowed", pot.Spills == 1 ? "1 time" : $"{pot.Spills} times");
-        Row("Burned", pot.Burns == 1 ? "1 time" : $"{pot.Burns} times");
-        if (screen.Made is { } made) Row("Smoothness", made.Smoothness.ToString());
+        Row(Text.Of("cooking.row.time"), $"{m}:{s:D2}.{h:D2}");
+        Row(Text.Of("cooking.row.overflowed"), Text.Of("cooking.times", ("n", pot.Spills)));
+        Row(Text.Of("cooking.row.burned"), Text.Of("cooking.times", ("n", pot.Burns)));
+        if (screen.Made is { } made) Row(Text.Of("cooking.row.smoothness"), made.Smoothness.ToString());
 
         bool shown = screen.Phase != CookingPhase.Results || screen.PhaseTime >= PoffinCookingScreen.PoffinShown;
         if (shown && screen.Made is { } poffin)
@@ -607,7 +612,7 @@ internal static partial class ModernUi
             PoffinIcon(disc + new Vector2(0, 20), 96 * (0.6f + 0.4f * UiMotion.EaseOut(pop)), poffin.Type);
             string name = poffin.Name;
             UiFonts.DrawCentered(name, disc.X - UiFonts.Measure(name, 38, UiWeight.Black) / 2f, r.Y + 470, 38, Ink, UiWeight.Black);
-            string level = screen.Cooks == 1 ? $"Lv. {poffin.Level}" : $"Lv. {poffin.Level}  ×{screen.Cooks}";
+            string level = screen.Cooks == 1 ? Text.Of("cooking.level", ("level", poffin.Level)) : Text.Of("cooking.levelTimes", ("level", poffin.Level), ("cooks", screen.Cooks));
             UiFonts.DrawCentered(level, disc.X - UiFonts.Measure(level, 30, UiWeight.Black) / 2f, r.Y + 518, 30, Muted, UiWeight.Black);
         }
         if (screen.Phase == CookingPhase.Results && screen.PhaseTime >= PoffinCookingScreen.CardShown) AdvanceArrow(r.X + r.Width - 90, r.Y + r.Height - 60);

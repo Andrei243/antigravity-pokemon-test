@@ -2,6 +2,7 @@ using System.Text.RegularExpressions;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
+using PokemonPlatinumEngine.Models.PoketchApps;
 using PokemonPlatinumEngine.UI;
 
 namespace PokemonPlatinumTests;
@@ -25,7 +26,17 @@ public class TextTests
         "UI/BagScreen.cs", "UI/ShopScreen.cs", "UI/PartyScreen.cs", "UI/ModernUi.Items.cs", "UI/ModernUi.Party.cs", "Core/Words.cs",
         "UI/PokedexScreen.cs", "UI/ModernUi.Pokedex.cs", "Models/PokedexSearch.cs", "UI/ModernUi.Records.cs", "UI/TrainerCardScreen.cs",
         "UI/HallOfFameScreen.cs", "UI/JournalScreen.cs", "UI/PCScreen.cs", "UI/ModernUi.Storage.cs", "UI/ModernUi.Lists.cs",
-        "UI/StarterSelectScreen.cs", "UI/SaveScreen.cs"
+        "UI/StarterSelectScreen.cs", "UI/SaveScreen.cs",
+        "UI/ModernUi.TownMap.cs", "UI/ModernUi.Field.cs", "UI/ModernUi.Poketch.cs", "UI/ModernUi.Poketch.Time.cs", "UI/ModernUi.Poketch.Toys.cs",
+        "UI/ModernUi.Poketch.Map.cs", "UI/ModernUi.Poketch.Pokemon.cs", "Models/PoketchApps/ColorChangerApp.cs", "UI/HelpScreen.cs",
+        "UI/ModernUi.Help.cs", "UI/ModernUi.Wardrobe.cs", "UI/WardrobeScreen.cs", "UI/ModernUi.Hatch.cs", "UI/HatchScreen.cs",
+        "UI/ModernUi.Ceremony.cs", "UI/HallOfFameCeremony.cs", "UI/CreditsScreen.cs", "UI/SlotMachineScreen.cs",
+        "UI/ModernUi.Underground.cs", "UI/MiningScreen.cs", "UI/UndergroundScreen.cs", "UI/DecorationScreen.cs", "Models/Decorating.cs",
+        "UI/ModernUi.Frontier.cs", "UI/FrontierRecordsScreen.cs", "Models/Frontier/FrontierBoard.cs", "UI/ModernUi.Factory.cs", "UI/FactoryScreen.cs",
+        "UI/ModernUi.Hall.cs", "UI/HallBoardScreen.cs", "UI/ModernUi.Castle.cs", "UI/CastleScreen.cs", "UI/ModernUi.Arcade.cs", "UI/ArcadeBoardScreen.cs",
+        "UI/ModernUi.Pastimes.cs",
+        "UI/ModernUi.Poffins.cs", "UI/PoffinCookingScreen.cs", "UI/PoffinCaseScreen.cs", "UI/SuperContestScreen.cs", "UI/ModernUi.SuperContest.cs",
+        "UI/ModernUi.Capsules.cs", "UI/SealCaseScreen.cs", "UI/FashionCaseScreen.cs", "UI/ModernUi.Ribbons.cs"
     };
 
     /// <summary>What may stay in quotes in a file on the table: names of the data, and the logo, which is a picture (plan 17).</summary>
@@ -47,7 +58,43 @@ public class TextTests
             "ABC", "DEF", "GHI", "JKL", "MNO", "PQR", "STU", "VWX", "YZ",
             "Ball", "Squiggle", "Fish", "Arms", "Blob", "Upright", "Legs", "Quadruped", "Wings", "Tentacles", "Heads", "Humanoid", "Bug Wings", "Armor"
         },
-        ["UI/StarterSelectScreen.cs"] = new[] { "Turtwig", "Chimchar", "Piplup" }
+        ["UI/StarterSelectScreen.cs"] = new[] { "Turtwig", "Chimchar", "Piplup" },
+        // The words a place's name ends in, which tell a city from a town and a route's colour from a lake's
+        ["UI/ModernUi.TownMap.cs"] = new[] { "City" },
+        ["UI/ModernUi.Field.cs"] = new[] { "Route", "Lake", "Town", "City" },
+        ["UI/ModernUi.Ceremony.cs"] = new[] { "PLATINUM", "Pokémon", "A  FAN  REMAKE" },
+        // The bonus game's own Pokémon, whose cry it plays
+        ["UI/SlotMachineScreen.cs"] = new[] { "Clefairy" },
+        // The treasures' ids in the Underground's table, which a treasure's colour in the wall goes by
+        ["UI/ModernUi.Underground.cs"] = new[]
+        {
+            "_FOSSIL", "RARE_BONE", "OLD_AMBER", "RED_SHARD", "FIRE_STONE", "FLAME", "HEAT", "DRACO", "BLUE_SHARD", "WATER_STONE", "SPLASH", "DAMP", "SKY",
+            "YELLOW_SHARD", "THUNDER", "ZAP", "REVIVE", "STAR", "SUN", "GREEN_SHARD", "LEAF", "MEADOW", "INSECT", "HEART", "MIND", "ICY", "ICICLE", "MOON",
+            "LIGHT_CLAY", "SPOOKY", "TOXIC", "DREAD", "ODD_KEYSTONE", "EARTH", "FIST", "SMOOTH", "STONE_PLATE"
+        },
+        // A row's picture by its kind; the hikers' kinds of stock and the Digger Drill's id, which the lists go by
+        ["UI/UndergroundScreen.cs"] = new[] { "sphere:", "treasure:", "Traps", "Treasures", "TRAP_DIGGER_DRILL" },
+        // The same Pokémon, whose sprite the slot machine's display shows in the bonus game
+        ["UI/ModernUi.Pastimes.cs"] = new[] { "Clefairy" },
+        // A mistake of the code's own, never seen by a player
+        ["UI/PoffinCookingScreen.cs"] = new[] { "{berry.Name} is no berry." },
+        // The words of the accessories' names in contests.json, which tell how an accessory is drawn
+        ["UI/ModernUi.SuperContest.cs"] = new[]
+        {
+            "White", "Yellow", "Pink", "Brown", "Black", "Orange", "Blue", "Green", "Purple", "Red", "Gold", "Glass", "Silk", "Snow",
+            "Glitter", "Shiny", "Fire", "Leaf", "Tree", "Mushroom", "Scale", "Pebble", "Boulder", "Coin", "Candy", "Dewdrop", "Claw", "Hown",
+            "Stump", "Sparks", "Determination", "Spoon", "Smoke", "Poison", "Eerie", "Spring", "Seashell", "Note", "Confetti", "Parasol",
+            "Umbrella", "Spotlight", "Cape", "Mike", "Surfboard", "Carpet", "Pipe", "Bed", "Mirror", "Board", "Lace", "Top Hat", "Heroic",
+            "Professor", "Award", "Cube", "Turtwig", "Chimchar", "Piplup", "Flag", "Crown", "Tiara", "Comet", "Specs", "Fluff", "Mirror Ball",
+            "Feather", "Moustache", "Beard", "Barrette", "Headband", "Flower", "Crystal", "Powder", "Horn", "Extract", "Balloon",
+            "Hat", "Headdress", "Veil", "Mask"
+        },
+        // The backdrops' names in contests.json, which choose how each is painted
+        ["UI/ModernUi.Ribbons.cs"] = new[]
+        {
+            "Dress Up", "Ranch", "City at Night", "Snowy Town", "Fiery", "Outer Space", "Cumulus Cloud", "Desert", "Flower Patch",
+            "Future Room", "Open Sea", "Total Darkness", "Tatami Room", "Gingerbread Room", "Seafloor", "Underground", "Sky", "Theater"
+        }
     };
 
     private static readonly Regex Literal = new(@"(\$?)""((?:[^""\\\n]|\\.)*)""", RegexOptions.Compiled);
@@ -123,6 +170,8 @@ public class TextTests
                 if (!Regex.IsMatch(bare, @"\p{L}{2,}")) continue;            // no word in it: a format, a number
                 if (LooksLikeAKey(text, sections)) continue;                 // the table's key
                 if (Regex.IsMatch(text, @"^[a-z_]+$")) continue;             // a sound's or a song's name
+                if (Regex.IsMatch(text, @"^[X.]+$")) continue;               // a picture in blocks (the Pokétch's)
+                if (Regex.IsMatch(text, @"^[A-Z0-9]+(_[A-Z0-9]+)+$")) continue; // a constant's name (RIBBON_RED), which the data goes by
                 if (allowed.Contains(text)) continue;
                 said.Add($"{name}: \"{text}\"");
             }
@@ -168,6 +217,32 @@ public class TextTests
         Assert.Equal("9 Mar 2026", Words.ShortDate(new DateTime(2026, 3, 9)));
         Assert.Equal(new[] { "SAVE", "CANCEL" }, SaveScreen.Answers);
         Assert.Equal("SLOT 2", ModernUi.SlotLabel(2));
+        // N1d1: the Town Map, the Pokétch, help, the wardrobe and the Hall of Fame's scene
+        Assert.Equal("October", Words.Month(new DateTime(2026, 10, 12)));
+        Assert.Equal("GREEN", ColorChangerApp.Name(0));
+        Assert.Equal("FAI", HelpScreen.ShortName(PokemonType.Fairy));
+        var help = new HelpScreen();
+        help.Open();
+        Assert.Equal(("Super effective", "A Fire move against a Grass Pokémon does twice the damage."), help.Describe());
+        Assert.Equal("Your Own Bottoms", ModernUi.GarmentName(ClothingSlot.Bottoms, null));
+        Assert.Equal(new[] { "BUY", "NO" }, WardrobeScreen.BuyChoices);
+        Assert.Equal("Met at Wayward Cave, at Lv. 62.", Text.Of("ceremony.metAt", ("place", "Wayward Cave"), ("level", 62)));
+        // N1d3: the Underground and its mining game
+        Assert.Equal("The wall rings hollow in one place!", Text.Of("digging.ringsHollow", ("n", 1)));
+        Assert.Equal("The wall rings hollow in 3 places!", Text.Of("digging.ringsHollow", ("n", 3)));
+        Assert.Equal("Red 4", Text.Of("belowGround.price.Red", ("size", 4)));
+        Assert.Equal(new[] { "HIS WARES", "YOUR TREASURES" }, new[] { UndergroundScreen.TabName(UndergroundTab.Wares), UndergroundScreen.TabName(UndergroundTab.YourTreasures) });
+        Assert.Equal("PUT IN BAG", UndergroundScreen.ActionName(UndergroundAction.PutInBag));
+        Assert.Equal(new[] { "DECORATE", "PUT AWAY", "MOVE", "DONE" }, DecoratingSession.MenuRows);
+        Assert.Equal("OUT: 3 OF 10", Text.Of("decorating.countOf", ("out", 3), ("limit", 10)));
+        // N1d2: the contest condition, Poffins, Ball Capsules and Seals, the Fashion Case, the ribbons and the Super Contest
+        Assert.Equal(new[] { "GIVE", "TRASH", "CANCEL" }, PoffinCaseScreen.ActionNames);
+        Assert.Equal("Bidoof gobbled up the Poffin happily!", PoffinCaseScreen.EatenLine("Bidoof", PoffinTaste.Liked));
+        Assert.Equal(new[] { "ACCESSORIES", "BACKDROPS" }, FashionCaseScreen.TabNames);
+        Assert.Equal("ATTACH", SealCaseScreen.Label(CapsuleAction.Attach));
+        Assert.Equal(new[] { "1 heart", "0 hearts", "3 hearts" }, new[] { 1, 0, 3 }.Select(n => Text.Of("contest.hearts", ("n", n))));
+        Assert.Equal("It has won 2 ribbons.", Text.Of("ribbonPage.won", ("n", 2)));
+        Assert.Equal("1 time", Text.Of("cooking.times", ("n", 1)));
         // A placeholder the call names nothing for is left for whoever fills it later
         Assert.Equal("Hello {player}", Text.Fill("Hello {player}"));
     }

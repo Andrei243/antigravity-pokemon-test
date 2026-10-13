@@ -227,7 +227,7 @@ internal static partial class ModernUi
     /// </summary>
     private static void PoketchTrainerCounter(Rectangle screen, TrainerCounterApp app, PoketchContext context)
     {
-        LcdText(screen, "CHAIN", 8f, 1, 22);
+        LcdText(screen, Text.Of("poketch.chain"), 8f, 1, 22);
         if (TrainerCounterApp.Active(context.Radar) is var (species, count))
         {
             PoketchIcon(screen, species, 3, 4);

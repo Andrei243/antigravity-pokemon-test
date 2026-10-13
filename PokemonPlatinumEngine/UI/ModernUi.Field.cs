@@ -1,3 +1,4 @@
+using PokemonPlatinumEngine.Core;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
@@ -133,7 +134,7 @@ internal static partial class ModernUi
     /// </summary>
     public static void SkipRing(int sw, float fill, float right = SkipRingMargin)
     {
-        const string label = "SKIP";
+        string label = Text.Of("field.skip");
         float tw = UiFonts.Measure(label, 24, UiWeight.Black);
         float w = 24 + tw + 14 + SkipRingRadius * 2 + 12;
         var r = new Rectangle(sw - right - w, SkipRingMiddle - SkipPillHeight / 2f, w, SkipPillHeight);
@@ -222,7 +223,7 @@ internal static partial class ModernUi
             Label(label, x, r.Y + 18);
             UiFonts.Draw(value.ToString(), x, r.Y + 44, 36, value <= low ? Red : Ink, UiWeight.Black);
         }
-        Count("SAFARI BALLS", balls, Models.SafariGame.StartBalls / 5, r.X + 28);
-        Count("STEPS", steps, Models.SafariGame.StartSteps / 5, r.X + 184);
+        Count(Text.Of("field.safariBalls"), balls, Models.SafariGame.StartBalls / 5, r.X + 28);
+        Count(Text.Of("field.steps"), steps, Models.SafariGame.StartSteps / 5, r.X + 184);
     }
 }

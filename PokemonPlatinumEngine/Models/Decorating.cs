@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using PokemonPlatinumEngine.Core;
 
 namespace PokemonPlatinumEngine.Models;
 
@@ -100,7 +101,13 @@ public enum DecoratingStep
 /// </summary>
 public sealed class DecoratingSession
 {
-    public static readonly string[] MenuRows = { "DECORATE", "PUT AWAY", "MOVE", "DONE" };
+    public const int MenuRowCount = 4;
+
+    /// <summary>The menu's four rows, in the order <see cref="MenuCursor"/> counts them.</summary>
+    public static string[] MenuRows => new[]
+    {
+        Text.Of("decorating.menu.decorate"), Text.Of("decorating.menu.putAway"), Text.Of("decorating.menu.move"), Text.Of("decorating.menu.done")
+    };
 
     public DecorationRoom Room { get; }
     public IReadOnlyList<StoredDecoration> Store { get; }
@@ -152,7 +159,7 @@ public sealed class DecoratingSession
         switch (Step)
         {
             case DecoratingStep.Menu:
-                if (dy != 0) MenuCursor = ((MenuCursor + Math.Sign(dy)) % MenuRows.Length + MenuRows.Length) % MenuRows.Length;
+                if (dy != 0) MenuCursor = ((MenuCursor + Math.Sign(dy)) % MenuRowCount + MenuRowCount) % MenuRowCount;
                 break;
             case DecoratingStep.Choosing:
                 if (dy != 0 && Store.Count > 0) StoreCursor = Math.Clamp(StoreCursor + Math.Sign(dy), 0, Store.Count - 1);
@@ -182,8 +189,8 @@ public sealed class DecoratingSession
                 switch (MenuCursor)
                 {
                     case 0:
-                        if (Store.Count == 0) Refuse("There's nothing in store to put out.");
-                        else if (Room.Out + 1 > Room.Limit) Refuse("No more can be put out here.");
+                        if (Store.Count == 0) Refuse(Text.Of("decorating.nothingInStore"));
+                        else if (Room.Out + 1 > Room.Limit) Refuse(Text.Of("decorating.noMore"));
                         else
                         {
                             Step = DecoratingStep.Choosing;
@@ -206,7 +213,7 @@ public sealed class DecoratingSession
                 var entry = Store[StoreCursor];
                 if (entry.Out)
                 {
-                    Refuse("That one is out already.");
+                    Refuse(Text.Of("decorating.outAlready"));
                     break;
                 }
                 var kind = catalogue(entry.Kind);
@@ -218,14 +225,14 @@ public sealed class DecoratingSession
             case DecoratingStep.Placing when Held != null:
                 if (!Fits)
                 {
-                    Refuse("It can't be placed there.");
+                    Refuse(Text.Of("decorating.cantPlace"));
                     break;
                 }
                 Held.X = X;
                 Held.Y = Y;
                 Room.Pieces.Add(Held);
                 Store[Held.Slot].Out = true;
-                Message = $"The {Held.Name} was put out.";
+                Message = Text.Of("decorating.putOut", ("thing", Held.Name));
                 Held = null;
                 Changed = true;
                 Step = DecoratingStep.Menu;
@@ -242,13 +249,13 @@ public sealed class DecoratingSession
                 Changed = true;
                 if (piece.IsFixture)
                 {
-                    Message = Room.AfterTakingAway(piece) ?? $"The {piece.Name} was taken away.";
+                    Message = Room.AfterTakingAway(piece) ?? Text.Of("decorating.takenAway", ("thing", piece.Name));
                     Step = DecoratingStep.Menu;
                 }
                 else
                 {
                     Store[piece.Slot].Out = false;
-                    Message = $"The {piece.Name} was put away.";
+                    Message = Text.Of("decorating.putAway", ("thing", piece.Name));
                 }
                 break;
             }
@@ -269,7 +276,7 @@ public sealed class DecoratingSession
             case DecoratingStep.Moving when Held != null:
                 if (!Fits)
                 {
-                    Refuse("It can't be placed there.");
+                    Refuse(Text.Of("decorating.cantPlace"));
                     break;
                 }
                 Changed |= (Held.X, Held.Y) != (X, Y);

@@ -13,19 +13,19 @@ namespace PokemonPlatinumEngine.UI;
 // The help pages under OPTIONS (plan 12 · Q10; style guide, "Menu screens", Help)
 internal static partial class ModernUi
 {
-    private static readonly (string Label, UiIcon Icon, Color Color)[] HelpTabs =
+    private static (string Label, UiIcon Icon, Color Color)[] HelpTabs => new[]
     {
-        ("TYPES", UiIcon.Boost, new Color(232, 72, 76, 255)),
-        ("CONTROLS", UiIcon.Key, new Color(70, 136, 232, 255)),
-        ("NOTES", UiIcon.Letter, new Color(56, 182, 104, 255))
+        (Text.Of("help.tab.types"), UiIcon.Boost, new Color(232, 72, 76, 255)),
+        (Text.Of("help.tab.controls"), UiIcon.Key, new Color(70, 136, 232, 255)),
+        (Text.Of("help.tab.notes"), UiIcon.Letter, new Color(56, 182, 104, 255))
     };
 
     public static void DrawHelp(HelpScreen screen, int sw, int sh)
     {
         Backdrop(sw, sh);
-        ScreenTitle("HELP");
-        if (screen.Page == HelpPage.Types && !screen.OnTabs) Hints(sw - Margin, 44, ("Arrows", "Look"), ("Esc", "Back"));
-        else Hints(sw - Margin, 44, ("Left / Right", "Page"), ("Esc", "Back"));
+        ScreenTitle(Text.Of("help.title"));
+        if (screen.Page == HelpPage.Types && !screen.OnTabs) Hints(sw - Margin, 44, Hint("shared.keys.arrows", "shared.hints.look"), Hint("shared.keys.esc", "shared.hints.back"));
+        else Hints(sw - Margin, 44, Hint("shared.keys.leftRight", "shared.hints.page"), Hint("shared.keys.esc", "shared.hints.back"));
 
         var strip = new Rectangle(Margin, ContentTop, sw - Margin * 2, 76);
         // The tabs glow while the cursor is on them
@@ -107,8 +107,8 @@ internal static partial class ModernUi
         var side = new Rectangle(x, top, sw - Margin - x, ContentBottom - top);
         Panel(side, 30);
         float px = side.X + 44, py = side.Y + 44;
-        Label("ATTACKING", px, py);
-        Label("DEFENDING", px + 250, py);
+        Label(Text.Of("help.attacking"), px, py);
+        Label(Text.Of("help.defending"), px + 250, py);
         TypePill(px, py + 32, types[screen.Attack], 44, 200);
         TypePill(px + 250, py + 32, types[screen.Defend], 44, 200);
         var hint = HelpScreen.Hint(types[screen.Attack], types[screen.Defend]);
@@ -122,16 +122,16 @@ internal static partial class ModernUi
         UiShapes.Fill(new Rectangle(px, ly - 28, side.Width - 88, 3), 1.5f, Rule);
         (MoveHint Hint, string Text)[] legend =
         {
-            (MoveHint.SuperEffective, "Twice the damage"),
-            (MoveHint.NotVeryEffective, "Half the damage"),
-            (MoveHint.NoEffect, "No damage at all")
+            (MoveHint.SuperEffective, Text.Of("help.legend.twice")),
+            (MoveHint.NotVeryEffective, Text.Of("help.legend.half")),
+            (MoveHint.NoEffect, Text.Of("help.legend.none"))
         };
         for (int i = 0; i < legend.Length; i++)
         {
             ChartPill(new Rectangle(px, ly + i * 64, 64, 34), legend[i].Hint);
             UiFonts.DrawCentered(legend[i].Text, px + 88, ly + i * 64 + 17, 28, Ink, UiWeight.ExtraBold);
         }
-        DrawWrapped("Against two types, both count: ×2 and ×2 make four times, ×2 and ×½ cancel out.",
+        DrawWrapped(Text.Of("help.twoTypes"),
             px, ly + 3 * 64 - 6, side.Width - 88, 26, Muted, 34, UiWeight.ExtraBold);
     }
 

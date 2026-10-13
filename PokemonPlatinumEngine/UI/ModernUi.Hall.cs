@@ -1,6 +1,7 @@
 using System;
 using System.Numerics;
 using Raylib_cs;
+using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.Models.Frontier;
@@ -24,8 +25,8 @@ internal static partial class ModernUi
     {
         if (screen.Challenge is not { } challenge) return;
         Backdrop(sw, sh);
-        ScreenTitle("BATTLE HALL");
-        Hints(sw - Margin, 44, ("Z", "Choose"), ("Arrows", "Move"));
+        ScreenTitle(Text.Of("hallBoard.title"));
+        Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.choose"), Hint("shared.keys.arrows", "shared.hints.move"));
         float rise = (1f - UiMotion.EaseOut(appear)) * 60f;
 
         const float gap = 20, top = ContentTop, rowH = 136;
@@ -46,27 +47,27 @@ internal static partial class ModernUi
         // The foot: what is asked, the battle of the round and the streak
         var foot = new Rectangle(Margin, 916 + rise, sw - Margin * 2, 116);
         Panel(foot, 34);
-        UiFonts.DrawCentered(screen.Step == HallBoardStep.Pick ? screen.Prompt : "Choose the type of Pokémon to battle.", foot.X + 48, foot.Y + foot.Height / 2f, 38, Ink, UiWeight.ExtraBold);
+        UiFonts.DrawCentered(screen.Step == HallBoardStep.Pick ? screen.Prompt : Text.Of("hallBoard.prompt.choose"), foot.X + 48, foot.Y + foot.Height / 2f, 38, Ink, UiWeight.ExtraBold);
         string streak = $"{challenge.Streak:N0}", battle = $"{challenge.Battle + 1} / {BattleHallChallenge.BattlesPerRound}";
-        float sx = foot.X + foot.Width - 48 - Math.Max(UiFonts.Measure(streak, 44, UiWeight.Black), UiFonts.Measure("STREAK", 20, UiWeight.Black));
-        Label("STREAK", sx, foot.Y + 20);
+        float sx = foot.X + foot.Width - 48 - Math.Max(UiFonts.Measure(streak, 44, UiWeight.Black), UiFonts.Measure(Text.Of("records.streak"), 20, UiWeight.Black));
+        Label(Text.Of("records.streak"), sx, foot.Y + 20);
         UiFonts.Draw(streak, sx, foot.Y + 46, 44, Ink, UiWeight.Black);
-        float bx = sx - 56 - Math.Max(UiFonts.Measure(battle, 44, UiWeight.Black), UiFonts.Measure("BATTLE", 20, UiWeight.Black));
-        Label("BATTLE", bx, foot.Y + 20);
+        float bx = sx - 56 - Math.Max(UiFonts.Measure(battle, 44, UiWeight.Black), UiFonts.Measure(Text.Of("records.battle"), 20, UiWeight.Black));
+        Label(Text.Of("records.battle"), bx, foot.Y + 20);
         UiFonts.Draw(battle, bx, foot.Y + 46, 44, Ink, UiWeight.Black);
 
         // A yes or a no, or the Hall Matron's coming, over everything
         float asked = Math.Clamp(screen.StepAge / 0.2f, 0f, 1f);
-        (string, Color)[] yesNo = { ("YES", Green), ("NO", Red) };
+        (string, Color)[] yesNo = { (Text.Of("records.answer.yes"), Green), (Text.Of("records.answer.no"), Red) };
         if (screen.Step == HallBoardStep.Confirm && screen.MatronOpen)
-            Prompt(sw, sh, "The Hall Matron", "Argenta chooses her own Pokémon, whatever the type. " + screen.Prompt, yesNo, screen.MenuCursor, asked);
+            Prompt(sw, sh, Text.Of("hallBoard.matron"), Text.Of("hallBoard.matronChooses", ("prompt", screen.Prompt)), yesNo, screen.MenuCursor, asked);
         else if (screen.Step == HallBoardStep.Confirm)
         {
             var type = BattleHallChallenge.Board[screen.Cursor];
-            Prompt(sw, sh, $"{type} · Rank {challenge.ShownRank(screen.Cursor)}", screen.Prompt, yesNo, screen.MenuCursor, asked);
+            Prompt(sw, sh, Text.Of("hallBoard.typeRank", ("type", Words.Type(type)), ("rank", challenge.ShownRank(screen.Cursor))), screen.Prompt, yesNo, screen.MenuCursor, asked);
         }
         else if (screen.Step == HallBoardStep.MatronNotice)
-            Prompt(sw, sh, "The Hall Matron", screen.Prompt + " Only her place on the board is left to choose.", new[] { ("OK", Blue) }, 0, asked);
+            Prompt(sw, sh, Text.Of("hallBoard.matron"), Text.Of("hallBoard.matronNotice", ("prompt", screen.Prompt)), new[] { (Text.Of("shared.ok"), Blue) }, 0, asked);
     }
 
     // A type's card: its colour down the left edge, its name, the rank it stands at, and ten pips of which the wins over it are filled
@@ -77,13 +78,13 @@ internal static partial class ModernUi
         Card(r, 28, under && live || saved, saved ? Green : under && !open ? Muted : null);
         var strip = new Rectangle(r.X + 14, r.Y + 14, 22, r.Height - 28);
         UiShapes.Shape(strip, 11, Lighter(colour, 0.12f), Darker(colour, 0.1f));
-        UiFonts.DrawCentered(type.ToString().ToUpperInvariant(), r.X + 54, r.Y + 44, 36, open ? Ink : Muted, UiWeight.Black);
+        UiFonts.DrawCentered(Words.Type(type).ToUpperInvariant(), r.X + 54, r.Y + 44, 36, open ? Ink : Muted, UiWeight.Black);
 
         int wins = Math.Min(challenge.Ranks[cell], BattleHallChallenge.MaxRank);
         string rank = challenge.ShownRank(cell).ToString();
         float rw = UiFonts.Measure(rank, 54, UiWeight.Black);
         UiFonts.DrawCentered(rank, r.X + r.Width - 28 - rw, r.Y + 48, 54, open ? Ink : Muted, UiWeight.Black);
-        UiFonts.DrawCentered("RANK", r.X + r.Width - 36 - rw - UiFonts.Measure("RANK", 20, UiWeight.Black), r.Y + 56, 20, Muted, UiWeight.Black);
+        UiFonts.DrawCentered(Text.Of("hallBoard.rank"), r.X + r.Width - 36 - rw - UiFonts.Measure(Text.Of("hallBoard.rank"), 20, UiWeight.Black), r.Y + 56, 20, Muted, UiWeight.Black);
 
         // Ten pips along the foot of the card
         const float pip = 16, between = 8;
@@ -95,7 +96,7 @@ internal static partial class ModernUi
             else UiShapes.Ring(c, pip / 2f, 3, Rule);
         }
         // (clear of the tenth pip, which ends 286 units in)
-        if (challenge.Beaten(cell)) Tag(r.X + r.Width - 124, r.Y + r.Height - 46, "CLEARED", Muted, 30);
+        if (challenge.Beaten(cell)) Tag(r.X + r.Width - 124, r.Y + r.Height - 46, Text.Of("hallBoard.cleared"), Muted, 30);
         if (!open) UiShapes.Fill(r, 28, new Color(226, 232, 244, 120));
     }
 
@@ -118,10 +119,10 @@ internal static partial class ModernUi
         }
         var first = screen.Entered[0];
         NameWithGender(first, x + 8, r.Y + 46, 40);
-        string level = screen.Entered.Count > 1 ? $"Lv. {first.Level} and Lv. {screen.Entered[1].Level}" : $"Lv. {first.Level}";
+        string level = screen.Entered.Count > 1 ? Text.Of("hallBoard.levels", ("first", first.Level), ("second", screen.Entered[1].Level)) : Text.Of("hallBoard.level", ("level", first.Level));
         UiFonts.DrawCentered(level, x + 8, r.Y + 92, 26, Muted, UiWeight.Black);
         TypePills(x + 8 + UiFonts.Measure(level, 26, UiWeight.Black) + 20, r.Y + 76, first, 32);
-        Tag(r.X + r.Width - 190, r.Y + r.Height / 2f - 19, "SUMMARY", Blue, 38);
+        Tag(r.X + r.Width - 190, r.Y + r.Height / 2f - 19, Text.Of("hallBoard.summary"), Blue, 38);
     }
 
     // The Hall Matron's place: dark until she is announced
@@ -130,7 +131,7 @@ internal static partial class ModernUi
         bool open = screen.MatronOpen;
         Card(r, 28, under, open ? Gold : Muted);
         UiFonts.DrawCentered("? ? ?", r.X + 40, r.Y + 50, 48, open ? Ink : Muted, UiWeight.Black);
-        UiFonts.DrawCentered(open ? "HALL MATRON" : "NOBODY YET", r.X + 40, r.Y + 100, 24, open ? Gold : Muted, UiWeight.Black);
+        UiFonts.DrawCentered(open ? Text.Of("hallBoard.hallMatron") : Text.Of("hallBoard.nobodyYet"), r.X + 40, r.Y + 100, 24, open ? Gold : Muted, UiWeight.Black);
         if (!open) UiShapes.Fill(r, 28, new Color(226, 232, 244, 120));
     }
 }

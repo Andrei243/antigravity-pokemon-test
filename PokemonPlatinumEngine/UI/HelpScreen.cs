@@ -22,39 +22,19 @@ public sealed class HelpScreen
     public static readonly PokemonType[] Types = Enum.GetValues<PokemonType>();
 
     /// <summary>The types' three-letter names over the chart's columns.</summary>
-    public static string ShortName(PokemonType type) => type switch
-    {
-        PokemonType.Normal => "NOR",
-        PokemonType.Fire => "FIR",
-        PokemonType.Water => "WAT",
-        PokemonType.Grass => "GRS",
-        PokemonType.Electric => "ELE",
-        PokemonType.Ice => "ICE",
-        PokemonType.Fighting => "FIG",
-        PokemonType.Poison => "PSN",
-        PokemonType.Ground => "GRD",
-        PokemonType.Flying => "FLY",
-        PokemonType.Psychic => "PSY",
-        PokemonType.Bug => "BUG",
-        PokemonType.Rock => "RCK",
-        PokemonType.Ghost => "GHO",
-        PokemonType.Dragon => "DRA",
-        PokemonType.Steel => "STL",
-        PokemonType.Dark => "DRK",
-        _ => "FAI"
-    };
+    public static string ShortName(PokemonType type) => Text.Of($"help.short.{type}");
 
     /// <summary>The notes page: a few short paragraphs, each a title and its lines.</summary>
-    public static readonly (string Title, string Text)[] Notes =
+    public static (string Title, string Text)[] Notes => new[]
     {
-        ("Getting about", "Hold the run button once you have the Running Shoes. Talk to people and read signs with the confirm button: many have something to give or to say about the road ahead."),
-        ("In battle", "A move of a type the foe is weak to does twice the damage, and one its two types are both weak to four times. The TYPES page has every matchup; the move hints in the options can say it on the move's card."),
-        ("The Pokétch", "Once you have it, put it on the screen and change its app with their buttons, and take it in hand to touch it: the arrows move a cursor over its buttons."),
-        ("Saving", "Save from the menu whenever you like. A Pokémon Center heals your team for nothing, and the last one you visited is where you wake up after losing a battle.")
+        (Text.Of("help.note.about.title"), Text.Of("help.note.about.text")),
+        (Text.Of("help.note.battle.title"), Text.Of("help.note.battle.text")),
+        (Text.Of("help.note.poketch.title"), Text.Of("help.note.poketch.text")),
+        (Text.Of("help.note.saving.title"), Text.Of("help.note.saving.text"))
     };
 
     /// <summary>Keys the game reads beyond the actions: full screen and the sound.</summary>
-    public static readonly (string Name, string Key)[] OtherKeys = { ("Full screen", "F11"), ("Sound on or off", "M") };
+    public static (string Name, string Key)[] OtherKeys => new[] { (Text.Of("help.key.fullScreen"), "F11"), (Text.Of("help.key.sound"), "M") };
 
     public bool IsActive { get; private set; }
     public HelpPage Page { get; private set; }
@@ -135,12 +115,14 @@ public sealed class HelpScreen
     {
         var attack = Types[Attack];
         var defend = Types[Defend];
-        return Hint(attack, defend) switch
+        string matchup = Hint(attack, defend) switch
         {
-            MoveHint.SuperEffective => ("Super effective", $"A {attack} move against a {defend} Pokémon does twice the damage."),
-            MoveHint.NotVeryEffective => ("Not very effective", $"A {attack} move against a {defend} Pokémon does half the damage."),
-            MoveHint.NoEffect => ("No effect", $"A {attack} move does nothing at all to a {defend} Pokémon."),
-            _ => ("A plain matchup", $"A {attack} move against a {defend} Pokémon does its usual damage.")
+            MoveHint.SuperEffective => "super",
+            MoveHint.NotVeryEffective => "half",
+            MoveHint.NoEffect => "none",
+            _ => "plain"
         };
+        return (Text.Of($"help.matchup.{matchup}.headline"),
+            Text.Of($"help.matchup.{matchup}.line", ("attack", Words.Type(attack)), ("defend", Words.Type(defend))));
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Numerics;
+using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.UI.Kit;
@@ -36,7 +37,8 @@ internal static partial class ModernUi
                 var pill = new Rectangle(c.X - s * 0.62f, c.Y - s * 0.2f, s * 1.24f, s * 0.4f);
                 UiShapes.Shape(pill, pill.Height / 2f, A(Lighter(Green, 0.12f)), A(Darker(Green, 0.08f)), A(Darker(Green, 0.35f)), 3);
                 float size = s * 0.22f;
-                UiFonts.DrawCentered("REPLAY", c.X - UiFonts.Measure("REPLAY", size, UiWeight.Black) / 2f, c.Y, size, A(Color.White), UiWeight.Black);
+                string replay = Text.Of("slots.replay");
+                UiFonts.DrawCentered(replay, c.X - UiFonts.Measure(replay, size, UiWeight.Black) / 2f, c.Y, size, A(Color.White), UiWeight.Black);
                 break;
             }
             case SlotSymbol.Cherry:
@@ -96,7 +98,7 @@ internal static partial class ModernUi
         const float cellW = 232, cellH = 150, gap = 18;
         var cabinet = new Rectangle(sw / 2f - 450, 96 + drop, 900, 880);
         Panel(cabinet, 36, border: 6, frame: Gold);
-        UiFonts.Draw($"MACHINE {number + 1}", cabinet.X + 36, cabinet.Y + 22, 24, Muted, UiWeight.Black);
+        UiFonts.Draw(Text.Of("slots.machine", ("number", number + 1)), cabinet.X + 36, cabinet.Y + 22, 24, Muted, UiWeight.Black);
 
         // ---- the display over the reels
         var display = new Rectangle(cabinet.X + 36, cabinet.Y + 62, cabinet.Width - 72, 190);
@@ -143,7 +145,7 @@ internal static partial class ModernUi
         }
 
         // ---- the stop buttons, and in the bonus game the arrow over the reel to stop next
-        string[] keys = { "LEFT", "DOWN", "RIGHT" };
+        string[] keys = { Text.Of("slots.button.left"), Text.Of("slots.button.down"), Text.Of("slots.button.right") };
         int next = m.InBonus && m.Spinning && m.Presses < 3 ? SlotMachine.Orders[m.PointedOrder][m.Presses] : -1;
         for (int reel = 0; reel < 3; reel++)
         {
@@ -165,7 +167,7 @@ internal static partial class ModernUi
         // ---- what each symbol pays
         var pays = new Rectangle(48 - (1f - ease) * 200f, 150, 396, 620);
         Panel(pays, 30);
-        Label(m.InBonus ? "BONUS GAME" : "PAYS", pays.X + 30, pays.Y + 24);
+        Label(m.InBonus ? Text.Of("slots.bonusGame") : Text.Of("slots.pays"), pays.X + 30, pays.Y + 24);
         var table = m.InBonus ? SlotMachine.BonusPays : SlotMachine.Pays;
         SlotSymbol[] order = { SlotSymbol.RedSeven, SlotSymbol.BlueSeven, SlotSymbol.Moon, SlotSymbol.Ball, SlotSymbol.Cherry, SlotSymbol.Replay };
         for (int i = 0; i < order.Length; i++)
@@ -174,10 +176,10 @@ internal static partial class ModernUi
             bool bonusRow = m.InBonus && order[i] != SlotSymbol.Replay;
             SlotSymbolAt(order[i], new Vector2(pays.X + 96, y), 76, bonusRow ? 0.35f : 1f);
             int coins = table[(int)order[i]];
-            string what = order[i] == SlotSymbol.Replay && !m.InBonus ? "ANOTHER GO" : order[i] == SlotSymbol.Cherry ? $"{coins} A LINE" : coins.ToString();
+            string what = order[i] == SlotSymbol.Replay && !m.InBonus ? Text.Of("slots.anotherGo") : order[i] == SlotSymbol.Cherry ? Text.Of("slots.aLine", ("coins", coins)) : coins.ToString();
             UiFonts.DrawCentered(what, pays.X + 196, y, order[i] == SlotSymbol.Replay && !m.InBonus ? 26 : 34, bonusRow ? Muted : Ink, UiWeight.Black);
             if (!m.InBonus && order[i] is SlotSymbol.RedSeven or SlotSymbol.BlueSeven)
-                UiFonts.DrawCentered("+ BONUS", pays.X + 272, y, 20, Selection, UiWeight.Black);
+                UiFonts.DrawCentered(Text.Of("slots.plusBonus"), pays.X + 272, y, 20, Selection, UiWeight.Black);
         }
 
         // ---- the coins
@@ -188,15 +190,15 @@ internal static partial class ModernUi
             Label(label, purse.X + 30, purse.Y + y);
             UiFonts.Draw(value, purse.X + 30, purse.Y + y + 26, 56, ink, UiWeight.Black);
         }
-        Count("COINS", m.Coins.ToString("N0"), 24, Ink);
-        Count("WIN", m.Payout.ToString("N0"), 144, m.Payout > 0 ? Selection : Muted);
-        Count("BET", (m.WaitsForBet ? 0 : m.InBonus ? SlotMachine.BonusBet : SlotMachine.Bet).ToString(), 264, Ink);
+        Count(Text.Of("slots.coins"), m.Coins.ToString("N0"), 24, Ink);
+        Count(Text.Of("slots.win"), m.Payout.ToString("N0"), 144, m.Payout > 0 ? Selection : Muted);
+        Count(Text.Of("slots.bet"), (m.WaitsForBet ? 0 : m.InBonus ? SlotMachine.BonusBet : SlotMachine.Bet).ToString(), 264, Ink);
         if (m.InBonus)
         {
-            Count("ROUND", m.Rounds.ToString(), 384, Ink);
-            Label("GAMES LEFT", purse.X + 200, purse.Y + 384);
+            Count(Text.Of("slots.round"), m.Rounds.ToString(), 384, Ink);
+            Label(Text.Of("slots.gamesLeft"), purse.X + 200, purse.Y + 384);
             UiFonts.Draw(m.GamesLeft.ToString(), purse.X + 200, purse.Y + 410, 56, Ink, UiWeight.Black);
-            Count("BONUS WON", m.BonusCoins.ToString("N0"), 504, Gold);
+            Count(Text.Of("slots.bonusWon"), m.BonusCoins.ToString("N0"), 504, Gold);
         }
 
         // ---- the notice a machine stops with, and the keys
@@ -205,22 +207,22 @@ internal static partial class ModernUi
             Dim(sw, sh, 120);
             string text = m.Notice switch
             {
-                SlotNotice.NoCoins => "You've run out of Coins.",
-                SlotNotice.TooFewCoins => "You don't have enough Coins for another go.",
-                _ => "Your Coin Case is full!"
+                SlotNotice.NoCoins => Text.Of("slots.notice.noCoins"),
+                SlotNotice.TooFewCoins => Text.Of("slots.notice.tooFew"),
+                _ => Text.Of("slots.notice.full")
             };
             var box = new Rectangle(sw / 2f - 520, sh / 2f - 80, 1040, 160);
             Panel(box, 34);
             UiFonts.DrawCentered(text, box.X + (box.Width - UiFonts.Measure(text, 40, UiWeight.ExtraBold)) / 2f, box.Y + 80, 40, Ink, UiWeight.ExtraBold);
             AdvanceArrow(box.X + box.Width - 70, box.Y + box.Height - 54);
         }
-        string act = m.WaitsForBet ? "Bet" : m.WaitsForLever ? "Pull the lever" : m.Counting ? "Take the win" : "";
+        string act = m.WaitsForBet ? Text.Of("slots.hints.bet") : m.WaitsForLever ? Text.Of("slots.hints.lever") : m.Counting ? Text.Of("slots.hints.take") : "";
         if (act.Length > 0 && (m.WaitsForBet || m.WaitsForLever))
-            Hints(sw - 48, sh - 76, ("Z", act), ("X", "Leave"));
+            Hints(sw - 48, sh - 76, (Text.Of("shared.keys.z"), act), Hint("shared.keys.x", "shared.hints.leave"));
         else if (m.Spinning)
-            Hints(sw - 48, sh - 76, ("Left Down Right", "Stop the reels"));
+            Hints(sw - 48, sh - 76, Hint("slots.reelKeys", "slots.hints.stop"));
         else if (act.Length > 0)
-            Hints(sw - 48, sh - 76, ("Z", act));
+            Hints(sw - 48, sh - 76, (Text.Of("shared.keys.z"), act));
     }
 
     // What the display shows: the machine's sign of what it drew; the sevens the bonus waits for; and in the bonus game
@@ -255,7 +257,7 @@ internal static partial class ModernUi
             float size = 168;
             Raylib.DrawTexturePro(sprite, new Rectangle(0, 0, sprite.Width, sprite.Height),
                 new Rectangle(display.X + 70, display.Y + display.Height - size - 4 - hop, size, size), Vector2.Zero, 0f, Color.White);
-            string word = m.Moon == SlotMoon.Red ? "The moon is red..." : m.Moon == SlotMoon.Bright ? "The moon is shining!" : m.Spinning ? "Stop them as Clefairy points!" : "";
+            string word = m.Moon == SlotMoon.Red ? Text.Of("slots.moon.red") : m.Moon == SlotMoon.Bright ? Text.Of("slots.moon.bright") : m.Spinning ? Text.Of("slots.pointing") : "";
             if (word.Length > 0) UiFonts.DrawCentered(word, display.X + 270, display.Y + 44, 28, Color.White, UiWeight.ExtraBold);
             return;
         }
@@ -264,7 +266,7 @@ internal static partial class ModernUi
             // The bonus is won and waits: three sevens to line up
             float pulse = 0.75f + 0.25f * MathF.Sin(time * 8f);
             for (int i = -1; i <= 1; i++) SlotSymbolAt(sevens, new Vector2(centre.X + i * 130, centre.Y + 6), 150, pulse);
-            UiFonts.DrawCentered("LINE THEM UP!", display.X + 30, display.Y + 30, 24, Gold, UiWeight.Black);
+            UiFonts.DrawCentered(Text.Of("slots.lineThemUp"), display.X + 30, display.Y + 30, 24, Gold, UiWeight.Black);
             return;
         }
         if (m.Tell is { } tell)
@@ -293,9 +295,9 @@ internal static partial class ModernUi
     {
         var r = new Rectangle(32, 32, 440, 96);
         Panel(r, 24);
-        Label("COINS", r.X + 28, r.Y + 18);
+        Label(Text.Of("pastimes.coins"), r.X + 28, r.Y + 18);
         UiFonts.Draw(coins.ToString("N0"), r.X + 28, r.Y + 44, 36, Ink, UiWeight.Black);
-        Label("MONEY", r.X + 212, r.Y + 18);
+        Label(Text.Of("pastimes.money"), r.X + 212, r.Y + 18);
         Money(r.X + 212, r.Y + 64, money, 36, Ink);
     }
 
@@ -304,9 +306,9 @@ internal static partial class ModernUi
     {
         var r = new Rectangle(sw - 32 - 300, 32, 300, 96);
         Panel(r, 24);
-        Label("PARK BALLS", r.X + 28, r.Y + 18);
+        Label(Text.Of("pastimes.parkBalls"), r.X + 28, r.Y + 18);
         UiFonts.Draw(balls.ToString(), r.X + 28, r.Y + 44, 36, Ink, UiWeight.Black);
-        Label("TIME", r.X + 184, r.Y + 18);
+        Label(Text.Of("pastimes.time"), r.X + 184, r.Y + 18);
         UiFonts.Draw($"{seconds / 60}:{seconds % 60:D2}", r.X + 184, r.Y + 44, 36, Ink, UiWeight.Black);
     }
 }

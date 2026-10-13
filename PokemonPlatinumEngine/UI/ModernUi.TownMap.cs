@@ -92,10 +92,11 @@ internal static partial class ModernUi
         var view = region.View;
         bool fly = screen.Mode == TownMapMode.Fly;
         Backdrop(sw, sh);
-        ScreenTitle(screen.Mode switch { TownMapMode.Fly => "FLY", TownMapMode.Wall => "MAP", _ => "TOWN MAP" });
-        string zoom = screen.Zoomed ? "Whole map" : "Zoom in";
-        if (fly) Hints(sw - Margin, 44, ("Z", "Fly"), ("Enter", zoom), ("Esc", "Back"));
-        else Hints(sw - Margin, 44, ("Z", zoom), ("Esc", "Close"));
+        var mode = screen.Mode;
+        ScreenTitle(Text.Of($"townMap.title.{mode}"));
+        string zoom = screen.Zoomed ? "shared.hints.wholeMap" : "shared.hints.zoomIn";
+        if (fly) Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.fly"), Hint("shared.keys.enter", zoom), Hint("shared.keys.esc", "shared.hints.back"));
+        else Hints(sw - Margin, 44, Hint("shared.keys.z", zoom), Hint("shared.keys.esc", "shared.hints.close"));
         float slide = (1f - UiMotion.EaseOut(appear)) * 60f;
 
         // ---- The map
@@ -184,23 +185,23 @@ internal static partial class ModernUi
         var strip = new Rectangle(Margin - slide, ContentBottom - StripHeight, panel.Width, StripHeight);
         Panel(strip, 26);
         float sy0 = strip.Y + StripHeight / 2f;
-        if (fly) UiFonts.DrawCentered("Fly to where?", strip.X + 32, sy0, 30, Ink, UiWeight.ExtraBold);
+        if (fly) UiFonts.DrawCentered(Text.Of("townMap.flyTo"), strip.X + 32, sy0, 30, Ink, UiWeight.ExtraBold);
         else
         {
             float lx = strip.X + 36;
             UiShapes.Circle(new Vector2(lx, sy0), 9, Red);
             UiShapes.Circle(new Vector2(lx, sy0), 3.4f, Color.White);
-            lx = Legend("You", lx + 20, sy0);
+            lx = Legend(Text.Of("townMap.legend.you"), lx + 20, sy0);
             UiShapes.Circle(new Vector2(lx, sy0), 9, Gold);
             UiShapes.Circle(new Vector2(lx, sy0), 3.2f, Color.White);
-            lx = Legend("Visited", lx + 20, sy0);
+            lx = Legend(Text.Of("townMap.legend.visited"), lx + 20, sy0);
             UiShapes.Circle(new Vector2(lx, sy0), 9, Muted);
             UiShapes.Circle(new Vector2(lx, sy0), 3.2f, new Color(214, 220, 232, 255));
-            lx = Legend("Not yet visited", lx + 20, sy0);
+            lx = Legend(Text.Of("townMap.legend.notVisited"), lx + 20, sy0);
             if (screen.Mode != TownMapMode.Wall)
             {
                 TrailDot(new Vector2(lx, sy0), 6f, null, 255, onPanel: true);
-                Legend("The way you came", lx + 20, sy0);
+                Legend(Text.Of("townMap.legend.trail"), lx + 20, sy0);
             }
         }
 
@@ -212,25 +213,25 @@ internal static partial class ModernUi
         if (block == null)
         {
             UiFonts.Draw(RegionDatabase.Get(region.Region)?.Name ?? region.Region, x0, ty + 46, 52, Ink, UiWeight.Black);
-            DrawWrapped("Move the cursor over a town, a route or a landmark to read about it.", x0, ty + 150, wide, 30, Muted, 42, UiWeight.ExtraBold);
+            DrawWrapped(Text.Of("townMap.hover"), x0, ty + 150, wide, 30, Muted, 42, UiWeight.ExtraBold);
         }
         else
         {
             var (label, colour) = block.Kind switch
             {
-                RegionBlockKind.Route => ("ROUTE", Green),
-                RegionBlockKind.Town => (block.Name.EndsWith("City", StringComparison.Ordinal) ? "CITY" : "TOWN", Gold),
-                _ => ("LANDMARK", Blue)
+                RegionBlockKind.Route => (Text.Of("townMap.tag.route"), Green),
+                RegionBlockKind.Town => (block.Name.EndsWith("City", StringComparison.Ordinal) ? Text.Of("townMap.tag.city") : Text.Of("townMap.tag.town"), Gold),
+                _ => (Text.Of("townMap.tag.landmark"), Blue)
             };
             float tx = x0 + Tag(x0, ty, label, colour) + 10;
             if (hoveredSpot != null)
-                Tag(tx, ty, hoveredSpot.Open ? (fly ? "FLY HERE" : "VISITED") : "NOT YET VISITED", hoveredSpot.Open ? (fly ? Selection : Frame) : Muted);
+                Tag(tx, ty, Text.Of(hoveredSpot.Open ? (fly ? "townMap.tag.flyHere" : "townMap.tag.visited") : "townMap.tag.notVisited"), hoveredSpot.Open ? (fly ? Selection : Frame) : Muted);
             float size = UiFonts.Measure(block.Name, 52, UiWeight.Black) <= wide ? 52 : 42;
             UiFonts.Draw(block.Name, x0, ty + 50, size, Ink, UiWeight.Black);
             UiShapes.Fill(new Rectangle(x0, ty + 128, wide, 3), 1.5f, Rule);
             float y = ty + 154;
             if (state.Tells(block.Area)) y = Paragraph(block.Area.About, x0, y, wide, Ink);
-            else y = Paragraph("You haven't been here yet.", x0, y, wide, Muted);
+            else y = Paragraph(Text.Of("townMap.notBeen"), x0, y, wide, Muted);
             if (block.Landmark is { } landmark && state.TellsLandmark(block))
             {
                 y += 22;
@@ -260,8 +261,8 @@ internal static partial class ModernUi
                 UiShapes.Circle(c, 4.6f, Red);
             }
             float nx = locator.X + locator.Width + MapFrameWidth + 28;
-            Label("WHERE THIS IS", nx, locator.Y + 4);
-            DrawWrapped("The white frame is the part of the map shown on the left.", nx, locator.Y + 40, x0 + wide - nx, 24, Muted, 34, UiWeight.ExtraBold);
+            Label(Text.Of("townMap.whereThisIs"), nx, locator.Y + 4);
+            DrawWrapped(Text.Of("townMap.frame"), nx, locator.Y + 40, x0 + wide - nx, 24, Muted, 34, UiWeight.ExtraBold);
         }
         else
         {
@@ -288,10 +289,10 @@ internal static partial class ModernUi
             Raylib.EndScissorMode();
         }
         UiShapes.Fill(new Rectangle(x0, foot - 108, wide, 3), 1.5f, Rule);
-        Label(state.Here == null ? "YOU ARE" : "YOU ARE IN", x0, foot - 84);
+        Label(Text.Of(state.Here == null ? "townMap.youAre" : "townMap.youAreIn"), x0, foot - 84);
         UiShapes.Circle(new Vector2(x0 + 14, foot - 26), 13, Red);
         UiShapes.Circle(new Vector2(x0 + 14, foot - 26), 5, Color.White);
-        UiFonts.DrawCentered(state.HereName ?? (state.Here == null ? "Somewhere off the map" : "The wilds"), x0 + 40, foot - 26, 36, Ink, UiWeight.Black);
+        UiFonts.DrawCentered(state.HereName ?? Text.Of(state.Here == null ? "townMap.offTheMap" : "townMap.wilds"), x0 + 40, foot - 26, 36, Ink, UiWeight.Black);
     }
 
     /// <summary>A paragraph of a place's words, Bold 30 on 42 leading; returns where the next line would begin.</summary>

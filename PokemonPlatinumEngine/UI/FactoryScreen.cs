@@ -152,13 +152,13 @@ public sealed class FactoryScreen
     /// <summary>What the screen asks or says at this step.</summary>
     public string Prompt => Step switch
     {
-        FactoryStep.Confirm => "Are these three the ones you want?",
-        FactoryStep.Receive => "Which Pokémon will you take in exchange?",
-        FactoryStep.Accept => TheirCursor < Theirs.Count ? $"Take {Theirs[TheirCursor].DisplayName}?" : "",
-        FactoryStep.Quit => "Go on without trading?",
-        FactoryStep.Traded => Outcome.Count == 2 ? $"{Mine[Outcome[0]].DisplayName} was traded for {Theirs[Outcome[1]].DisplayName}." : "",
-        _ when Mode == FactoryScreenMode.Trade => "Which Pokémon will you give up?",
-        _ => chosen.Count switch { 0 => "Choose the first Pokémon.", 1 => "Choose the second Pokémon.", _ => "Choose the third Pokémon." }
+        FactoryStep.Confirm => Text.Of("factoryScreen.prompt.confirm"),
+        FactoryStep.Receive => Text.Of("factoryScreen.prompt.receive"),
+        FactoryStep.Accept => TheirCursor < Theirs.Count ? Text.Of("factoryScreen.prompt.accept", ("name", Theirs[TheirCursor].DisplayName)) : "",
+        FactoryStep.Quit => Text.Of("factoryScreen.prompt.quit"),
+        FactoryStep.Traded => Outcome.Count == 2 ? Text.Of("factoryScreen.prompt.traded", ("mine", Mine[Outcome[0]].DisplayName), ("theirs", Theirs[Outcome[1]].DisplayName)) : "",
+        _ when Mode == FactoryScreenMode.Trade => Text.Of("factoryScreen.prompt.give"),
+        _ => chosen.Count switch { 0 => Text.Of("factoryScreen.prompt.choose.first"), 1 => Text.Of("factoryScreen.prompt.choose.second"), _ => Text.Of("factoryScreen.prompt.choose.third") }
     };
 
     // ------------------------------------------------------------------ the buttons

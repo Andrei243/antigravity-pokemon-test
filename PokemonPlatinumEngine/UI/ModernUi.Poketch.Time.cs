@@ -1,3 +1,4 @@
+using PokemonPlatinumEngine.Core;
 using System;
 using Raylib_cs;
 using PokemonPlatinumEngine.Graphics;
@@ -8,9 +9,6 @@ namespace PokemonPlatinumEngine.UI;
 /// <summary>The Pokétch's apps of the clock and the calendar, and the link searcher (plan 06 · R14b; style guide, "The Pokétch").</summary>
 internal static partial class ModernUi
 {
-    private static readonly string[] Months =
-        { "JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER" };
-
     /// <summary>
     /// The analog watch: a round dial of blocks 33 across, a block of ink at each hour and two at the quarters, and
     /// the two hands drawn block by block from the middle (the hour hand 9 long, the minute hand 14); a touch lights
@@ -58,7 +56,7 @@ internal static partial class ModernUi
     private static void PoketchCalendar(Rectangle screen, CalendarApp app, PoketchContext context)
     {
         var now = context.Now;
-        LcdText(screen, Months[now.Month - 1], PoketchAppState.Columns / 2f, 1, 28);
+        LcdText(screen, Words.Month(now).ToUpperInvariant(), PoketchAppState.Columns / 2f, 1, 28);
         int first = CalendarApp.FirstCell(now);
         foreach (var cell in app.Buttons(context))
         {
@@ -80,7 +78,7 @@ internal static partial class ModernUi
     {
         if (app.Searching > 0f)
         {
-            LcdText(screen, "SEARCHING...", PoketchAppState.Columns / 2f, 3, 28);
+            LcdText(screen, Text.Of("poketch.searching"), PoketchAppState.Columns / 2f, 3, 28);
             float t = (float)(FrameClock.Now % 1.0);
             for (int wave = 0; wave < 2; wave++)
             {
@@ -94,11 +92,11 @@ internal static partial class ModernUi
         }
         if (!app.Searched)
         {
-            LcdText(screen, "TOUCH TO SEARCH", PoketchAppState.Columns / 2f, 14, 28);
-            LcdText(screen, "FOR PEOPLE NEARBY", PoketchAppState.Columns / 2f, 19, 28);
+            LcdText(screen, Text.Of("poketch.touchToSearch"), PoketchAppState.Columns / 2f, 14, 28);
+            LcdText(screen, Text.Of("poketch.forPeople"), PoketchAppState.Columns / 2f, 19, 28);
             return;
         }
         SegmentDigit(screen.X + 19 * Block, screen.Y + 7 * Block, app.Found);
-        LcdText(screen, "NOBODY NEARBY", PoketchAppState.Columns / 2f, 24, 28);
+        LcdText(screen, Text.Of("poketch.nobody"), PoketchAppState.Columns / 2f, 24, 28);
     }
 }

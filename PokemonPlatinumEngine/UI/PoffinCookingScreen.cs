@@ -153,7 +153,7 @@ public sealed class PoffinCookingScreen
         warning = null;
         warningAge = 99f;
         Enter(CookingPhase.Pour);
-        Line = $"The {berry.Name} went in!";
+        Line = Text.Of("cooking.wentIn", ("berry", berry.Name));
         AudioManager.PlaySound("step_puddle");
     }
 
@@ -296,7 +296,7 @@ public sealed class PoffinCookingScreen
             Made = pot.Finish(Berries, rng);
             cooked = true;
             warning = null;
-            Line = "Done!";
+            Line = Text.Of("cooking.done");
             Enter(CookingPhase.Finish);
             AudioManager.PlaySound("heal");
             return;
@@ -312,7 +312,7 @@ public sealed class PoffinCookingScreen
         if (pot.Spilled)
         {
             SinceSpill = 0f;
-            Warn(pot.Phase == 0 ? "Too fast! It's slopping over!" : "Easy there! Ease off a little!");
+            Warn(Text.Of(pot.Phase == 0 ? "cooking.tooFast" : "cooking.easy"));
             AudioManager.PlaySound("step_puddle");
         }
         if (pot.BurnSign == 1)
@@ -331,9 +331,9 @@ public sealed class PoffinCookingScreen
     // The original's lines for a burn (ov83_0223C600), on its beats in our own words: keep stirring, hurry, faster still
     private static string BurnLine(int phase) => phase switch
     {
-        0 => "It's starting to catch! Keep stirring!",
-        1 => "It's catching! Stir faster!",
-        _ => "Stir, stir, stir!"
+        0 => Text.Of("cooking.catching.starting"),
+        1 => Text.Of("cooking.catching.catching"),
+        _ => Text.Of("cooking.catching.stir")
     };
 
     private void Warn(string line)
@@ -350,16 +350,14 @@ public sealed class PoffinCookingScreen
         for (int i = 0; i < Cooks; i++)
             if (poffinCase?.Add(Made) == true) put++;
         PutAwayAll = put == Cooks;
-        Line = Cooks == 1
-            ? $"{player} put the {Made.Name} away in the Poffin Case."
-            : $"{player} put the {Made.Name}s away in the Poffin Case.";
+        Line = Text.Of("cooking.putAway", ("n", Cooks), ("player", player), ("poffin", Made.Name));
         Enter(CookingPhase.PutAway);
         AudioManager.PlaySound("select");
     }
 
     private void Ask()
     {
-        Line = "Would you like to cook another Poffin?";
+        Line = Text.Of("cooking.again");
         Choice = 0;
         Enter(CookingPhase.Again);
     }
@@ -373,8 +371,8 @@ public sealed class PoffinCookingScreen
             End(false);
             return;
         }
-        if (poffinCase?.IsFull == true) Notify("The Poffin Case is full.");
-        else if (bag != null && !bag.AllItems.Any(s => s.Quantity > 0 && s.Data.Berry != null)) Notify("There are no Berries left to cook.");
+        if (poffinCase?.IsFull == true) Notify(Text.Of("cooking.caseFull"));
+        else if (bag != null && !bag.AllItems.Any(s => s.Quantity > 0 && s.Data.Berry != null)) Notify(Text.Of("cooking.noBerries"));
         else End(true);
     }
 

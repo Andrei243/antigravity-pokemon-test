@@ -91,7 +91,7 @@ public static class CreditsRoll
     /// where it goes by its species' name).
     /// </summary>
     public static (string Name, string Note) Listing(Pokemon pokemon) =>
-        (pokemon.DisplayName, pokemon.DisplayName == pokemon.Species.Name ? $"Lv. {pokemon.Level}" : $"{pokemon.Species.Name} · Lv. {pokemon.Level}");
+        (pokemon.DisplayName, pokemon.DisplayName == pokemon.Species.Name ? Text.Of("creditsRoll.level", ("level", pokemon.Level)) : Text.Of("creditsRoll.speciesLevel", ("species", pokemon.Species.Name), ("level", pokemon.Level)));
 }
 
 public enum CreditsPhase

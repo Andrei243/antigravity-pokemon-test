@@ -1,3 +1,4 @@
+using PokemonPlatinumEngine.Core;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
@@ -114,14 +115,14 @@ internal static partial class ModernUi
 
             if (look.Title > 0.01f)
             {
-                const string title = "LEAGUE CHAMPION";
+                string title = Text.Of("ceremony.title");
                 const float size = 116f, spacing = 10f;
                 float width = UiFonts.MeasureDisplay(title, size, spacing), x = (sw - width) / 2f, y = 54f - (1f - look.Title) * 24f;
                 UiFonts.DrawDisplay(title, x + 4, y + 6, size, spacing, new Color(10, 6, 24, (int)(200 * look.Title)));
                 float sweep = time % 5.5f;
                 UiFonts.DrawDisplayGradient(title, x, y, size, spacing, new Color(255, 236, 170, 255), new Color(226, 160, 60, 255), look.Title,
                     sweep < 1.6f ? x - 200f + (width + 500f) * (sweep / 1.6f) : float.NaN);
-                Centred("Congratulations!", sw / 2f, y + size * 1.0f, 44, CeremonyCream with { A = (byte)(255 * look.Title) }, UiWeight.Black);
+                Centred(Text.Of("ceremony.congratulations"), sw / 2f, y + size * 1.0f, 44, CeremonyCream with { A = (byte)(255 * look.Title) }, UiWeight.Black);
 
                 // Who the Champion is: the name, the card's number and the time played
                 var pill = new Rectangle(sw / 2f - 520, 936 + (1f - look.Title) * 30f, 1040, 84);
@@ -129,7 +130,7 @@ internal static partial class ModernUi
                 UiShapes.Shape(pill, 42, new Color(16, 16, 44, (int)(226 * look.Title)), new Color(30, 14, 40, (int)(226 * look.Title)), CeremonyGold with { A = a }, 3);
                 float mid = pill.Y + pill.Height / 2f;
                 UiFonts.DrawCentered(scene.Champion, pill.X + 48, mid, 40, Color.White with { A = a }, UiWeight.Black);
-                string id = $"ID No. {scene.ChampionId}", played = $"TIME  {scene.TimePlayed}";
+                string id = Text.Of("ceremony.id", ("id", scene.ChampionId)), played = Text.Of("ceremony.time", ("time", scene.TimePlayed));
                 UiFonts.DrawCentered(id, pill.X + pill.Width / 2f - UiFonts.Measure(id, 30, UiWeight.ExtraBold) / 2f + 40, mid, 30, CeremonyGold with { A = a }, UiWeight.ExtraBold);
                 UiFonts.DrawCentered(played, pill.X + pill.Width - 48 - UiFonts.Measure(played, 30, UiWeight.ExtraBold), mid, 30, CeremonyCream with { A = a }, UiWeight.ExtraBold);
             }
@@ -150,7 +151,7 @@ internal static partial class ModernUi
         Panel(r, 34, frame: CeremonyGoldDeep);
         float x = r.X + 52, right = r.X + r.Width - 52;
         // The welcome is on the card as it comes; the rest is written onto it part by part
-        UiFonts.Draw("WELCOME TO THE HALL OF FAME", x, r.Y + 36, 22, CeremonyGoldDeep, UiWeight.Black);
+        UiFonts.Draw(Text.Of("ceremony.welcome"), x, r.Y + 36, 22, CeremonyGoldDeep, UiWeight.Black);
         if (parts >= 1)
         {
             // A long nickname gives way to the level beside it
@@ -170,9 +171,9 @@ internal static partial class ModernUi
         if (parts >= 3)
         {
             UiShapes.Fill(new Rectangle(x, r.Y + 296, r.Width - 104, 3), 1.5f, Rule);
-            Label("ORIGINAL TRAINER", x, r.Y + 316);
+            Label(Text.Of("ceremony.trainer"), x, r.Y + 316);
             UiFonts.Draw(card.Trainer, x, r.Y + 340, 36, Ink, UiWeight.Black);
-            string id = $"ID No. {card.TrainerId}";
+            string id = Text.Of("ceremony.id", ("id", card.TrainerId));
             UiFonts.Draw(id, right - UiFonts.Measure(id, 28, UiWeight.ExtraBold), r.Y + 348, 28, Muted, UiWeight.ExtraBold);
             DrawWrapped(card.Met, x, r.Y + 398, r.Width - 220, 28, Ink, 34, UiWeight.ExtraBold);
         }
