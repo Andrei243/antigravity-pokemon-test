@@ -37,6 +37,8 @@ Every bus's content is held to a window of loudness (`Audio/Loudness`, plan 05 Â
 
 An option (Speakers: Stereo or Handheld, `GameSettings.Speakers`, `AudioMixer.Handheld`), for a closer feel to the DS's own small speakers: the two sides are drawn together to 30% of their difference, nothing much under 350 Hz or over 6.5 kHz passes (a first-order high-pass and a second-order low-pass), and after the limiter the output is rounded to ten bits with a step of triangular dither. The output was at the DS's own rate already. `MusicRender --handheld` renders songs, sounds and beds that way.
 
+Its third value (plan 08 Â· P1, Platinum's MONO; `AudioMixer.Mono`, `AudioManager.Mono`) plays everything in one channel: after the mix (and the handheld's speakers, were both set) each pair of samples becomes their middle, so a sound panned to one side is heard in both ears, and one in the middle is as it was.
+
 ## Folders and roles
 
 ```

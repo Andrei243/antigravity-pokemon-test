@@ -125,6 +125,20 @@ public sealed class BattleSetup
     /// </summary>
     public bool NoBattleItems { get; init; }
 
+    /// <summary>
+    /// Battle Style Shift (plan 08 · P1; the options' Battle Style): when a trainer's Pokémon faints with another to
+    /// come, the player is asked whether to switch first (<see cref="Sim.CoreSetup.OffersSwitch"/>). Off unless given,
+    /// which is Set: the game turns it on from its settings, and a battle a test or a tool builds itself asks nothing.
+    /// </summary>
+    public bool OffersSwitch { get; init; }
+
+    /// <summary>
+    /// The options' Battle Scene (plan 08 · P1): on unless given, the moves and the turn's animations play; off, the
+    /// face shows none of them and a line's hits land at once (<see cref="BattleEngine.Scene"/>). Presentation only,
+    /// never read by the rules.
+    /// </summary>
+    public bool Scene { get; init; } = true;
+
     /// <summary>The trainer's first Pokémon when it isn't the first in their party (the old constructor's foe argument).</summary>
     internal Pokemon? FirstTrainerPokemon { get; init; }
 }

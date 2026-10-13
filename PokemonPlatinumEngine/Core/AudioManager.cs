@@ -244,6 +244,13 @@ public static class AudioManager
     /// <summary>A bus's volume as the options last set it.</summary>
     public static float VolumeOf(AudioBus bus) => mixer.VolumeOf(bus);
 
+    /// <summary>Whether everything plays in one channel (the options' Speakers on Mono, plan 08 · P1).</summary>
+    public static bool Mono
+    {
+        get => mixer.Mono;
+        set => mixer.Mono = value;
+    }
+
     /// <summary>Whether everything sounds as it would from the handheld's own speakers (the options' Speakers).</summary>
     public static bool Handheld
     {

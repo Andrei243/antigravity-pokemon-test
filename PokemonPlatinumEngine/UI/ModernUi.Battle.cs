@@ -491,8 +491,13 @@ internal static partial class ModernUi
         bool forced = active.IsFainted;
         var head = new Rectangle(48, 548, 1824, 84);
         Panel(head, 26);
-        UiFonts.DrawCentered(forced ? $"{active.DisplayName} fainted! Who goes next?" : "Send out which Pokémon?", head.X + 48, head.Y + head.Height / 2f, 36, Ink, UiWeight.ExtraBold);
+        string heading = forced ? $"{active.DisplayName} fainted! Who goes next?"
+            : battle.OfferedFoe is { } coming ? $"{coming.DisplayName} is coming out next. Send out which Pokémon?"
+            : "Send out which Pokémon?";
+        UiFonts.DrawCentered(heading, head.X + 48, head.Y + head.Height / 2f, 36, Ink, UiWeight.ExtraBold);
         if (forced) HintsDark(head.X + head.Width - 24, head.Y + 16, ("Z", "Send out"));
+        // Opened by Battle Style Shift's Yes (plan 08 · P1): backing out stays in, and says so
+        else if (battle.IsOfferingSwitch) HintsDark(head.X + head.Width - 24, head.Y + 16, ("Z", "Send out"), ("X", "Stay in"));
         else HintsDark(head.X + head.Width - 24, head.Y + 16, ("Z", "Send out"), ("X", "Back"));
 
         for (int i = 0; i < Party.MaxSize; i++)

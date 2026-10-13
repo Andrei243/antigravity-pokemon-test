@@ -487,6 +487,10 @@ public partial class GameEngine
         if (AudioManager.IsMuted != Settings.Muted) AudioManager.ToggleMute();
         AudioManager.SetVolumes(Settings.MusicVolume / 100f, Settings.SoundVolume / 100f, Settings.CryVolume / 100f, Settings.AmbienceVolume / 100f);
         AudioManager.Handheld = Settings.Speakers == SpeakerMode.Handheld;
+        AudioManager.Mono = Settings.Speakers == SpeakerMode.Mono;
+        // A battle under way plays on with the scene as the options now have it (plan 08 · P1); the battle style is
+        // the next battle's, since an offer already asked stays asked
+        if (battle != null) battle.Scene = Settings.BattleScene;
         dialogue.CharactersPerSecond = GameSettings.CharactersPerSecond(Settings.TextSpeed);
         if (window) WindowSettings.Apply(Settings);
     }

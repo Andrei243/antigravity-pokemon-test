@@ -17,6 +17,7 @@ public enum OptionRow
     MoveHints, TrainerLines,
     FocusPause, FrameCap,
     SkipScenes,
+    BattleScene, BattleStyle,
     Help
 }
 
@@ -25,7 +26,7 @@ public enum OptionRow
 /// on or off, a volume for each of the mixer's buses (the music with its fanfares, the sound effects, the cries,
 /// the ambience) and the speakers it plays through; then the helps of plan 12 (the move hints), the trainers' lines in battle (plan 11 · C12),
 /// the two rows of plan 16 · T3 (whether the game waits behind another window, and the most frames it draws a second),
-/// which scenes of the story may be skipped (plan 12 · Q20) and the HELP pages
+/// which scenes of the story may be skipped (plan 12 · Q20), Platinum's Battle Scene and Battle Style (plan 08 · P1) and the HELP pages
 /// (<see cref="HelpScreen"/>), which open over the options. Changes apply at once; the caller saves the settings
 /// when the screen reports a change. More rows than fit scroll in a window (<see cref="VisibleRows"/>).
 /// </summary>
@@ -150,7 +151,8 @@ public class OptionsScreen
                 s.AmbienceVolume = Math.Clamp(s.AmbienceVolume + step * GameSettings.VolumeStep, 0, 100);
                 break;
             case OptionRow.Speakers:
-                s.Speakers = s.Speakers == SpeakerMode.Stereo ? SpeakerMode.Handheld : SpeakerMode.Stereo;
+                // Stereo, the handheld's speakers, one channel (plan 08 · P1), and round again
+                s.Speakers = (SpeakerMode)Wrap((int)s.Speakers + step, 3);
                 break;
             case OptionRow.MoveHints:
                 s.MoveHints = (RulesDefault)Wrap((int)s.MoveHints + step, 3);
@@ -169,6 +171,12 @@ public class OptionsScreen
                 break;
             case OptionRow.SkipScenes:
                 s.SkipScenes = (SkipScenes)Wrap((int)s.SkipScenes + step, 3);
+                break;
+            case OptionRow.BattleScene:
+                s.BattleScene = !s.BattleScene;
+                break;
+            case OptionRow.BattleStyle:
+                s.BattleStyle = s.BattleStyle == BattleStyle.Shift ? BattleStyle.Set : BattleStyle.Shift;
                 break;
         }
     }
@@ -200,9 +208,12 @@ public class OptionsScreen
         OptionRow.SoundVolume => ("Sound effects", $"{s.SoundVolume}%", "How loud the sound effects play: menus, doors, footsteps, the moves in battle."),
         OptionRow.CryVolume => ("Cries", $"{s.CryVolume}%", "How loud the Pokémon's cries play."),
         OptionRow.AmbienceVolume => ("Ambience", $"{s.AmbienceVolume}%", "How loud the field's background sounds play: rain, wind, waterfalls, the sea, caves."),
-        OptionRow.Speakers => ("Speakers", s.Speakers == SpeakerMode.Handheld ? "Handheld" : "Stereo", s.Speakers == SpeakerMode.Handheld
-            ? "Sounds as the handheld's own small speakers would: no deep bass, a narrow stereo and ten-bit sound."
-            : "Full sound, for speakers or headphones."),
+        OptionRow.Speakers => ("Speakers", s.Speakers.ToString(), s.Speakers switch
+        {
+            SpeakerMode.Handheld => "Sounds as the handheld's own small speakers would: no deep bass, a narrow stereo and ten-bit sound.",
+            SpeakerMode.Mono => "Everything in one channel, the same in both ears: for a single speaker, or one ear.",
+            _ => "Full sound, for speakers or headphones."
+        }),
         OptionRow.MoveHints => ("Move hints", Value(s.MoveHints), "In battle, a move's card says whether it is super effective, not very effective or has no effect on a Pokémon you have seen before. "
             + RulesLine(s.MoveHints, "shows them", "goes without")),
         OptionRow.TrainerLines => ("Trainers speak", Value(s.TrainerLines), "In battle, Gym Leaders, your rival and other bosses say a line when their last Pokémon comes out, when their first one falls and when their last one is in the red. "
@@ -225,6 +236,12 @@ public class OptionsScreen
             SkipScenes.Any => "Hold the menu button for a second to skip any scene of the story, seen or not. Questions and battles are never skipped.",
             _ => "Every scene of the story plays through, as in Platinum."
         }),
+        OptionRow.BattleScene => ("Battle scene", s.BattleScene ? "On" : "Off", s.BattleScene
+            ? "Moves and the battle's other animations play, as in Platinum."
+            : "No moves or other animations play in battle: the lines and the HP bars alone, for quicker battles."),
+        OptionRow.BattleStyle => ("Battle style", s.BattleStyle.ToString(), s.BattleStyle == BattleStyle.Shift
+            ? "When a trainer's Pokémon faints, you are told which comes out next and asked whether to switch first, as in Platinum."
+            : "When a trainer's Pokémon faints, the next one comes straight out and you are not asked to switch."),
         _ => ("Help", "Open", "The type chart, the controls and a few notes for the road.")
     };
 

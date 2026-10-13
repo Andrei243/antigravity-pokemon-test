@@ -21,8 +21,17 @@ public readonly record struct QualityProfile(float SceneScale, bool AmbientOcclu
     };
 }
 
-/// <summary>What the sound comes out of: speakers or headphones as they are, or the handheld's own small speakers.</summary>
-public enum SpeakerMode { Stereo, Handheld }
+/// <summary>
+/// What the sound comes out of: speakers or headphones as they are, the handheld's own small speakers, or one
+/// channel (plan 08 · P1, Platinum's MONO: both sides of the stereo picture in each ear).
+/// </summary>
+public enum SpeakerMode { Stereo, Handheld, Mono }
+
+/// <summary>
+/// Platinum's Battle Style (plan 08 · P1): Shift asks, before a trainer's next Pokémon comes out, whether to switch
+/// first; Set doesn't.
+/// </summary>
+public enum BattleStyle { Shift, Set }
 
 /// <summary>How fast written lines are typed out.</summary>
 public enum TextSpeed { Slow, Normal, Fast }
@@ -72,8 +81,21 @@ public sealed class GameSettings
     /// <summary>How loud the field's ambience (rain, wind, water, caves) plays, 0 to 100.</summary>
     public int AmbienceVolume { get; set; } = 100;
 
-    /// <summary>Stereo, or the handheld's speakers.</summary>
+    /// <summary>Stereo, the handheld's speakers, or one channel.</summary>
     public SpeakerMode Speakers { get; set; } = SpeakerMode.Stereo;
+
+    /// <summary>
+    /// Platinum's Battle Scene (plan 08 · P1): on unless chosen, as Platinum has it. Off, a battle plays no lunge, no
+    /// move's effect and none of the battle's other animations, and a line's hits land as it is shown
+    /// (<see cref="Battle.BattleEngine.Scene"/>); the rules don't read it.
+    /// </summary>
+    public bool BattleScene { get; set; } = true;
+
+    /// <summary>
+    /// Platinum's Battle Style (plan 08 · P1): Shift unless chosen, as Platinum has it, so a trainer's battle offers a
+    /// switch before the trainer's next Pokémon comes out (<see cref="Battle.Sim.SwitchOfferRequest"/>).
+    /// </summary>
+    public BattleStyle BattleStyle { get; set; } = BattleStyle.Shift;
 
     /// <summary>The options move a volume by this much.</summary>
     public const int VolumeStep = 10;

@@ -75,7 +75,13 @@ public sealed partial class BattleCore
             case ChoiceKind.Switch:
                 if (Kind is BattleKind.Safari or BattleKind.PalPark) return "There's no Pokémon of yours here to switch.";
                 if (!CanSendIn(b, choice.SwitchTo)) return "That Pokémon can't be sent in.";
+                // At Battle Style Shift's offer nothing holds it: the original opens the team with nothing barred
+                // (BtlCmd_ChoosePokemonMenu), and whatever bound it fell with the foe
+                if (Request is SwitchOfferRequest offered && offered.Place == choice.Who) return null;
                 return TrapOn(b, forRunning: false);
+
+            case ChoiceKind.Stay:
+                return Request is SwitchOfferRequest offer && offer.Place == choice.Who ? null : "Nothing is being offered to stay in for.";
 
             case ChoiceKind.Run:
                 // In the Battle Frontier RUN gives the match up, whatever holds the Pokémon

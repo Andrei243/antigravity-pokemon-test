@@ -68,6 +68,13 @@ public sealed class CoreSetup
     /// rule of the same name): <see cref="BattleCore.WhyNot"/> refuses every item, and the trainer AI reaches for none.
     /// </summary>
     public bool NoBattleItems { get; init; }
+
+    /// <summary>
+    /// Battle Style Shift (plan 08 · P1; the original's <c>OPTIONS_BATTLE_STYLE_SHIFT</c>): when a trainer's Pokémon
+    /// faints with another to come, the player is asked whether to switch before it comes in
+    /// (<see cref="SwitchOfferRequest"/>). Off unless given, which is Set: nothing is asked.
+    /// </summary>
+    public bool OffersSwitch { get; init; }
 }
 
 /// <summary>
@@ -140,6 +147,9 @@ public sealed partial class BattleCore : IBattleContext
     /// <summary>Nothing may be used from the bag by either side (<see cref="CoreSetup.NoBattleItems"/>).</summary>
     public bool NoBattleItems { get; }
 
+    /// <summary>Battle Style Shift: the player is offered a switch before a trainer's next Pokémon comes in (<see cref="CoreSetup.OffersSwitch"/>).</summary>
+    public bool OffersSwitch { get; }
+
     /// <summary>No critical hit lands in the catching lesson or the first battle (<c>BtlCmd_CalcCrit</c>).</summary>
     internal bool NoCriticalHits => Kind == BattleKind.CatchingLesson || FirstBattle;
 
@@ -191,6 +201,7 @@ public sealed partial class BattleCore : IBattleContext
         CannotFlee = setup.CannotFlee;
         FirstBattle = setup.FirstBattle;
         Frontier = setup.Frontier;
+        OffersSwitch = setup.OffersSwitch;
         Field.Frontier = Frontier;
         NoBattleItems = setup.NoBattleItems;
         Field.Inverse = Conditions.Inverse;
@@ -279,6 +290,11 @@ public sealed partial class BattleCore : IBattleContext
                 if (choices.Count != 1 || choices[0].Kind != ChoiceKind.Switch || choices[0].Who != replacement.Place || !CanSendIn(At(replacement.Place), choices[0].SwitchTo))
                     throw new ArgumentException($"A Pokémon able to fight is wanted for {replacement.Place}");
                 break;
+            case SwitchOfferRequest offer:
+                if (choices.Count != 1 || choices[0].Who != offer.Place || choices[0].Kind is not (ChoiceKind.Stay or ChoiceKind.Switch))
+                    throw new ArgumentException($"Stay or a switch is wanted for {offer.Place}");
+                if (WhyNot(choices[0]) is { } refused) throw new ArgumentException(refused);
+                break;
         }
         answer = choices.ToList();
         answers.Add(answer);
@@ -292,7 +308,7 @@ public sealed partial class BattleCore : IBattleContext
     /// given from outside. Null when its numbers aren't a <see cref="BattleRandom"/>'s: nothing else comes out
     /// the same everywhere.
     /// </summary>
-    public BattleRecord? Record => startedFrom is uint seed ? new BattleRecord(seed, answers.ToList(), Inverse) : null;
+    public BattleRecord? Record => startedFrom is uint seed ? new BattleRecord(seed, answers.ToList(), Inverse, OffersSwitch) : null;
 
     /// <summary>
     /// Plays a record through. The battle must be new, between teams as they were when the recorded one began,
@@ -303,6 +319,7 @@ public sealed partial class BattleCore : IBattleContext
     {
         if (startedFrom != record.Seed) throw new ArgumentException("A replay starts from the record's own seed");
         if (Inverse != record.Inverse) throw new ArgumentException("A replay is fought under the record's own chart: an inverse battle's as an inverse battle");
+        if (OffersSwitch != record.OffersSwitch) throw new ArgumentException("A replay offers a switch where the recorded battle did (plan 08 · P1): Shift's as Shift's");
         Start();
         foreach (var answered in record.Answers) Submit(answered);
     }

@@ -87,6 +87,68 @@ partial class Harness
         // The information panel (plan 12 · Q11), last so that no shot before it moves: a team, a Pokédex and chance of
         // its own, so neither the harness's team nor its dice are touched
         InfoPanels();
+
+        // Battle Style Shift's offer (plan 08 · P1), last for the same reason, with its own team and chance
+        ShiftOffer();
+    }
+
+    // A trainer's first Pokémon knocked out under Battle Style Shift: the offer's question with the next one named
+    // (23b_battle_offer), the team its Yes opens (23c_battle_offer_team), and the switch made before the trainer's
+    // Pokémon comes out (23d_battle_offer_switched)
+    void ShiftOffer()
+    {
+        Pokemon Own(string species, int level, int seed, params string[] moves)
+        {
+            var p = new Pokemon(PokemonDatabase.Get(species)!, level, new Random(seed));
+            p.Moves.Clear();
+            foreach (var move in moves) p.Moves.Add(new Move(MoveDatabase.Get(move)));
+            return p;
+        }
+        var team = new Party();
+        team.Add(Own("Luxray", 40, 41, "Spark", "Crunch"));
+        team.Add(Own("Torterra", 40, 42, "Razor Leaf", "Earthquake"));
+        var ace = new Trainer { Name = "Ana", TrainerClass = "Youngster" };
+        ace.Party.Add(Own("Starly", 12, 43, "Tackle"));
+        ace.Party.Add(Own("Gyarados", 30, 44, "Bite"));
+        game.Map = MapDatabase.Get("Sinnoh");
+        var e = new BattleEngine(new BattleSetup
+        {
+            PlayerParty = team, Inventory = new Inventory(), Pokedex = new Pokedex(), Trainers = new List<Trainer> { ace },
+            WildPokemon = new List<Pokemon>(), Random = new PokemonPlatinumEngine.Battle.Sim.BattleRandom(13), OffersSwitch = true
+        });
+        game.BattleRenderer.SetArena(game.Map);
+        game.Battle = e;
+        game.State = GameState.Battle;
+        ToMainMenu(e);
+
+        AnswersOffers = false;
+        try
+        {
+            e.EnemyPokemon.CurrentHP = 1;
+            e.SelectMove(0);
+            for (int guard = 0; guard < 20 && !e.IsOfferingSwitch && e.HUD.MenuState == BattleMenuState.Message && !e.IsBattleOver; guard++)
+            {
+                Confirm(e);
+                Skip(25 / 60.0);
+            }
+            Console.WriteLine($"  offer: {e.IsOfferingSwitch}, {e.CurrentMessage} (next: {e.OfferedFoe?.Species.Name})");
+            Skip(0.4); Shot("23b_battle_offer");
+            if (!e.IsOfferingSwitch) return;
+            e.ChooseLearn(0);
+            Frames(2); Shot("23c_battle_offer_team");
+            e.SelectSwitch(1);
+            for (int guard = 0; guard < 12 && e.HUD.MenuState == BattleMenuState.Message && !e.IsBattleOver; guard++)
+            {
+                Confirm(e);
+                Skip(40 / 60.0);
+            }
+            Console.WriteLine($"  after the offer: {e.PlayerPokemon.Species.Name} against {e.EnemyPokemon.Species.Name}, menu {e.HUD.MenuState}");
+            Skip(0.3); Shot("23d_battle_offer_switched");
+        }
+        finally
+        {
+            AnswersOffers = true;
+        }
     }
 
     // A single and a double battle played a turn or two into a field with something of everything on it, then the

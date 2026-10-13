@@ -146,6 +146,22 @@ public partial class BattleEngine
 
     // Effects that land a moment after the message that started them, like a hit after the attacker's lunge
     private const float HitDelay = 0.35f;
+
+    /// <summary>
+    /// When what a line carries lands: <see cref="HitDelay"/> after it with the scene on, and at once with it off
+    /// (plan 08 · P1), through the same pending effects, so the order the log gives is kept either way.
+    /// </summary>
+    private float ImpactDelay => Scene ? HitDelay : 0f;
+
+    /// <summary>
+    /// The options' Battle Scene (plan 08 · P1; style guide, "Move effects (G8)", "With the scene off"): on, moves and
+    /// the battle's animations play. Off, as Platinum's own switch has it (<c>BattleSystem_AreAnimationsOn</c>), no
+    /// lunge and no move's effect play (but Transform's), nor a stat's change, a heal's aura, a condition given, the
+    /// turn's moments or the weather's cue, with their sounds; the move's own sound, a hit's flicker and sound, the
+    /// send-outs, the ball, a faint, the doll, the weather's layer and what lasts on the field and on a Pokémon stay,
+    /// and a line's hits land at once. Only the face reads it: the rules and the log are the same either way.
+    /// </summary>
+    public bool Scene { get; set; } = true;
     private readonly List<(float Delay, Action Effect)> pendingEffects = new();
 
     public BattleEngine(
@@ -202,7 +218,8 @@ public partial class BattleEngine
             FirstBattle = setup.FirstBattle,
             SpecialBalls = setup.SpecialBalls,
             Frontier = setup.Frontier,
-            NoBattleItems = setup.NoBattleItems
+            NoBattleItems = setup.NoBattleItems,
+            OffersSwitch = setup.OffersSwitch
         });
 
         Anim.Slots = core.PlayerSlots.Count;
@@ -213,6 +230,7 @@ public partial class BattleEngine
         // species met for the first time gets no hint (plan 12 · Q10, as Sun and Moon have it)
         ShowsMoveHints = setup.MoveHints;
         SpeaksTrainerLines = setup.TrainerLines;
+        Scene = setup.Scene;
         seenBefore = PlayerParty.Members.Concat(setup.WildPokemon).Concat(setup.Trainers.SelectMany(t => t.Party.Members))
             .Concat(setup.Partner?.Party.Members ?? Enumerable.Empty<Pokemon>())
             .Select(p => p.Species.DexNumber).Where(Pokedex.IsSeen).ToHashSet();
@@ -344,7 +362,7 @@ public partial class BattleEngine
                     showing = said;
                     foreach (var shown in said.Shows) Show(shown);
                     showing = null;
-                    foreach (var landing in said.OnImpact) After(HitDelay, () => Show(landing));
+                    foreach (var landing in said.OnImpact) After(ImpactDelay, () => Show(landing));
                 }));
             }
             else steps.Enqueue(new Happening(() => Show(happening)));
@@ -380,6 +398,10 @@ public partial class BattleEngine
                     waitingForMessageConfirm = true;
                     HUD.MenuState = BattleMenuState.Message;
                     line.OnShow?.Invoke();
+                    // Battle Style Shift's line is its question: Yes and No come up beside it as it is written, with
+                    // no press between (plan 08 · P1; the original's PrintMessage, Wait, YesNoMenu)
+                    if (steps.Count == 0 && interlude.Count == 0 && core.Request is SwitchOfferRequest && playingTheLog)
+                        waitingForMessageConfirm = false;
                     break;
                 case Happening happening:
                     happening.Do();
@@ -409,6 +431,9 @@ public partial class BattleEngine
                 menuSlot = replacement.Place.Slot;
                 HUD.SwitchMenuIndex = 0;
                 HUD.MenuState = BattleMenuState.SwitchPokemon;
+                break;
+            case SwitchOfferRequest offer:
+                OfferSwitch(offer);
                 break;
         }
     }
@@ -481,6 +506,8 @@ public partial class BattleEngine
                 break;
             }
             case Lunged lunged:
+                // With the scene off nobody lunges, and the doll stays where it is (plan 08 · P1)
+                if (!Scene) break;
                 Anim.Attack(lunged.Place.Side, lunged.Place.Slot, lunged.Category);
                 // A doll steps aside for its owner's own move, and back once it has played (plan 25 · Y1)
                 Anim.SubstituteAside(lunged.Place.Side, lunged.Place.Slot);
@@ -492,6 +519,9 @@ public partial class BattleEngine
                     moveSoundAt = Anim.Time;
                     Sound(SoundBank.MoveSound(move.Type), move.From.Side);
                 }
+                // With the scene off no move's effect plays but Transform's, as the original plays it all the same
+                // (BtlCmd_PlayMoveAnimation; plan 08 · P1); its sound above still does
+                if (Scene || move.Move == "Transform")
                 Anim.Cue(new EffectCue
                 {
                     Kind = CueKind.Move,
@@ -510,7 +540,7 @@ public partial class BattleEngine
                 // A blow that lands on a doll makes it flinch as it lands: the rules say so with no Struck, since the
                 // Pokémon behind it takes nothing (subscript_hit_substitute's flicker)
                 if (move.Category != MoveCategory.Status && !move.Missed && !move.Blocked && move.To != move.From && Anim[move.To.Side, move.To.Slot].BehindDoll)
-                    After(HitDelay, () => Anim.SubstituteHit(move.To.Side, move.To.Slot));
+                    After(ImpactDelay, () => Anim.SubstituteHit(move.To.Side, move.To.Slot));
                 break;
             case Struck struck:
                 if (At(struck.Place).Pokemon is { } hit) hit.CurrentHP = struck.Hp;
@@ -522,7 +552,7 @@ public partial class BattleEngine
             case HpChanged change when OnAMomentsLine:
                 // The moment comes first and its HP lands with it: the bar then drains or fills with no flinch, no
                 // shake, no sound of a hit and no aura of a heal (SYSCTL_SKIP_SPRITE_BLINK; plan 25 · Y3)
-                After(HitDelay, () =>
+                After(ImpactDelay, () =>
                 {
                     if (At(change.Place).Pokemon is { } quietly) quietly.CurrentHP = change.Hp;
                 });
@@ -531,6 +561,8 @@ public partial class BattleEngine
                 if (At(change.Place).Pokemon is { } changed) changed.CurrentHP = change.Hp;
                 if (change.Healed)
                 {
+                    // A heal's aura is one of the battle's animations: none with the scene off, nor its sound
+                    if (!Scene) break;
                     Anim.Heal(change.Place.Side, change.Place.Slot);
                     Sound("heal", change.Place.Side);
                 }
@@ -542,11 +574,13 @@ public partial class BattleEngine
                 break;
             case StageChanged stage:
                 if (At(stage.Place).Pokemon is { } staged) staged.StatStages[stage.Stat] = stage.Stage;
+                if (!Scene) break;
                 Anim.StatChange(stage.Place.Side, stage.Place.Slot, stage.Rose);
                 Sound(stage.Rose ? "stat_up" : "stat_down", stage.Place.Side);
                 break;
             case StatusChanged status:
                 if (At(status.Place).Pokemon is { } afflicted) afflicted.Status = status.Status;
+                if (!Scene) break;
                 if (status.Status != StatusCondition.None) Anim.StatusGiven(status.Place.Side, status.Place.Slot, status.Status);
                 if (SoundBank.StatusSound(status.Status) is { } ailment) Sound(ailment, status.Place.Side);
                 break;
@@ -561,8 +595,9 @@ public partial class BattleEngine
                 break;
             case AheadLanded landed:
                 // An attack sent ahead lands with its own move's effect and sound, heard where it lands: nobody need
-                // stand where it was sent from (plan 25 · Y3)
+                // stand where it was sent from (plan 25 · Y3). With the scene off, the sound alone (plan 08 · P1)
                 Sound(SoundBank.MoveSound(landed.Type), landed.To.Side);
+                if (Scene)
                 Anim.Cue(new EffectCue
                 {
                     Kind = CueKind.Move,
@@ -576,7 +611,7 @@ public partial class BattleEngine
                     Arriving = true
                 });
                 if (Anim[landed.To.Side, landed.To.Slot].BehindDoll)
-                    After(HitDelay, () => Anim.SubstituteHit(landed.To.Side, landed.To.Slot));
+                    After(ImpactDelay, () => Anim.SubstituteHit(landed.To.Side, landed.To.Slot));
                 break;
             case Vanished gone:
                 Anim[gone.Place.Side, gone.Place.Slot].Away = true;
@@ -606,6 +641,8 @@ public partial class BattleEngine
                 // The weather's cue and the layer that lasts (plan 25 · Y1), with its sound; a clear sky eases in
                 Weather = weather.Weather;
                 if (weather.Weather == BattleWeather.None) Anim.WeatherClears();
+                // With the scene off the layer comes in with no cue and no sound (plan 08 · P1)
+                else if (!Scene) Anim.WeatherQuietly(weather.Weather);
                 else
                 {
                     Anim.WeatherBegins(weather.Weather);
@@ -614,6 +651,11 @@ public partial class BattleEngine
                 break;
             case WeatherContinues goesOn:
                 Weather = goesOn.Weather;
+                if (!Scene)
+                {
+                    Anim.SettleWeather(goesOn.Weather);
+                    break;
+                }
                 Anim.WeatherGoesOn(goesOn.Weather);
                 AudioManager.PlaySound(SoundBank.WeatherSound(goesOn.Weather));
                 break;
@@ -741,6 +783,9 @@ public partial class BattleEngine
     /// </summary>
     private void PlayMoment(MomentShown moment)
     {
+        // With the scene off no moment plays, nor its sound: each is one of the original's battle animations
+        // (BtlCmd_PlayBattleAnimation; plan 08 · P1). Its HP still lands, quietly, with its line
+        if (!Scene) return;
         // A held item that goes off shows as what it is, and the line that tells of it names it: a berry is eaten
         bool berry = moment.Moment == BattleMoment.HeldItem
             && showing?.Shows.OfType<ItemShown>().FirstOrDefault(named => named.Place == moment.Place) is { } held
