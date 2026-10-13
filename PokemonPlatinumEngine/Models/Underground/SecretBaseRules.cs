@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Overworld;
 
@@ -149,8 +150,8 @@ public static class SecretBaseRules
         var room = state.Base ?? new SavedBase();
         int flags = state.Records.FlagsCaptured, stay = BouldersThatStay(flags);
         int boulder = BoulderGood, pc = PcGood(flags);
-        var pieces = new List<RoomPiece> { new() { Kind = pc, X = PcX, Y = PcZ, Width = 2, Depth = 1, Name = "PC" } };
-        pieces.AddRange(room.Boulders.Select(b => new RoomPiece { Kind = boulder, X = b.X, Y = b.Z, Width = 2, Depth = 2, Name = "Big Boulder" }));
+        var pieces = new List<RoomPiece> { new() { Kind = pc, X = PcX, Y = PcZ, Width = 2, Depth = 1, Name = UndergroundDatabase.GoodName(pc) } };
+        pieces.AddRange(room.Boulders.Select(b => new RoomPiece { Kind = boulder, X = b.X, Y = b.Z, Width = 2, Depth = 2, Name = UndergroundDatabase.GoodName(boulder) }));
         pieces.AddRange(room.Goods.Select(g => new RoomPiece
         {
             Kind = g.Good, X = g.X, Y = g.Z, Slot = g.Slot, Name = UndergroundDatabase.GoodName(g.Good),
@@ -164,16 +165,16 @@ public static class SecretBaseRules
             Pieces = pieces,
             Limit = GoodsLimit(flags),
             Start = (PcX + 1, PcZ + 1),
-            WhyNotMove = piece => piece.Kind == pc ? "The PC can't be moved." : piece.Kind == boulder && piece.IsFixture ? "The big boulder can't be moved." : null,
+            WhyNotMove = piece => piece.Kind == pc ? Text.Of("baseRules.pcStays") : piece.Kind == boulder && piece.IsFixture ? Text.Of("baseRules.boulderStays") : null,
             WhyNotTakeAway = piece =>
-                piece.Kind == pc ? "The PC can't be put away."
+                piece.Kind == pc ? Text.Of("baseRules.pcKept")
                 : piece.Kind != boulder || !piece.IsFixture ? null
-                : stay == MaxBoulders ? "The big boulder can't be taken away. Bring a flag home first."
-                : Boulders() - 1 < stay ? "No more boulders can be taken away for now." : null,
+                : stay == MaxBoulders ? Text.Of("baseRules.boulderKept")
+                : Boulders() - 1 < stay ? Text.Of("baseRules.noMoreBoulders") : null,
             AfterTakingAway = _ =>
             {
                 int more = Boulders() - stay;
-                return more <= 0 ? "The big boulder was taken away." : more == 1 ? "The big boulder was taken away. One more can go." : $"The big boulder was taken away. {more} more can go.";
+                return more <= 0 ? Text.Of("baseRules.boulderTaken") : Text.Of("baseRules.boulderTakenMore", ("n", more));
             }
         };
         var store = state.PcGoods.Select((good, slot) => new StoredDecoration { Kind = good, Out = state.IsDisplayed(slot) }).ToList();
@@ -194,16 +195,16 @@ public static class SecretBaseRules
     /// <summary>What a good shows of the records when read, in our own words; null for one with nothing written on it.</summary>
     public static string? RecordLine(int good, UndergroundRecords records) => UndergroundDatabase.Good(good)?.Record switch
     {
-        "FossilsDug" => $"Something is written on it... Fossils dug up: {records.FossilsDug}",
-        "SpheresDug" => $"Something is written on it... Spheres dug up: {records.SpheresDug}",
-        "TrapHits" => $"Something is written on it... Traps that caught someone: {records.TrapHits}",
-        "TrapsHit" => $"Something is written on it... Traps stepped on: {records.TrapsTriggered}",
-        "TimesBaseMoved" => $"Something is written on it... Times the base was moved: {records.TimesBaseMoved}",
-        "FlagsObtained" or "FlagsRegistered" => $"Something is written on it... Flags brought home: {records.FlagsCaptured}",
-        "TotalScore" => $"Something is written on it... Treasures dug up: {records.TreasuresDug}",
+        "FossilsDug" => Text.Of("baseRules.written.fossils", ("n", records.FossilsDug)),
+        "SpheresDug" => Text.Of("baseRules.written.spheres", ("n", records.SpheresDug)),
+        "TrapHits" => Text.Of("baseRules.written.trapHits", ("n", records.TrapHits)),
+        "TrapsHit" => Text.Of("baseRules.written.trapsHit", ("n", records.TrapsTriggered)),
+        "TimesBaseMoved" => Text.Of("baseRules.written.baseMoved", ("n", records.TimesBaseMoved)),
+        "FlagsObtained" or "FlagsRegistered" => Text.Of("baseRules.written.flags", ("n", records.FlagsCaptured)),
+        "TotalScore" => Text.Of("baseRules.written.treasures", ("n", records.TreasuresDug)),
         null => null,
         // What counted other players stays at nought: nobody else comes down here
-        _ => "Something is written on it... 0"
+        _ => Text.Of("baseRules.written.others")
     };
 }
 

@@ -1,8 +1,12 @@
 using System.Text.RegularExpressions;
+using PokemonPlatinumEngine.Battle.Effects;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.Models.PoketchApps;
+using PokemonPlatinumEngine.Models.SuperContests;
+using PokemonPlatinumEngine.Overworld;
+using PokemonPlatinumEngine.Story;
 using PokemonPlatinumEngine.UI;
 
 namespace PokemonPlatinumTests;
@@ -17,26 +21,47 @@ namespace PokemonPlatinumTests;
 public class TextTests
 {
     /// <summary>
-    /// The files whose words are all the table's. Each part of N1 adds the files it moves; a word written in quotes
-    /// in one of them fails <see cref="TheScreensOnTheTableSayNothingInQuotesOfTheirOwn"/>.
+    /// The files whose words are all the table's: every file of <c>UI/</c> and <c>Core/</c> but those
+    /// <see cref="NotOnTheTable"/> names, and the files of the rules outside them that hand a screen its words
+    /// (<see cref="AlsoOnTheTable"/>). A word written in quotes in one of them fails
+    /// <see cref="TheScreensOnTheTableSayNothingInQuotesOfTheirOwn"/>.
     /// </summary>
-    private static readonly string[] OnTheTable =
+    private static IEnumerable<string> OnTheTable =>
+        new[] { "UI", "Core" }
+            .SelectMany(folder => Directory.EnumerateFiles(Path.Combine(Engine, folder), "*.cs", SearchOption.AllDirectories))
+            .Select(file => Path.GetRelativePath(Engine, file).Replace(Path.DirectorySeparatorChar, '/'))
+            .Where(name => !NotOnTheTable.ContainsKey(name))
+            .Concat(AlsoOnTheTable)
+            .OrderBy(name => name, StringComparer.Ordinal);
+
+    /// <summary>The files of the rules outside <c>UI/</c> and <c>Core/</c> whose words a screen shows (plan 17 · N1d, N1e).</summary>
+    private static readonly string[] AlsoOnTheTable =
     {
-        "UI/OptionsScreen.cs", "UI/TitleScreen.cs", "UI/StartMenu.cs", "UI/ClosePrompt.cs",
-        "UI/BagScreen.cs", "UI/ShopScreen.cs", "UI/PartyScreen.cs", "UI/ModernUi.Items.cs", "UI/ModernUi.Party.cs", "Core/Words.cs",
-        "UI/PokedexScreen.cs", "UI/ModernUi.Pokedex.cs", "Models/PokedexSearch.cs", "UI/ModernUi.Records.cs", "UI/TrainerCardScreen.cs",
-        "UI/HallOfFameScreen.cs", "UI/JournalScreen.cs", "UI/PCScreen.cs", "UI/ModernUi.Storage.cs", "UI/ModernUi.Lists.cs",
-        "UI/StarterSelectScreen.cs", "UI/SaveScreen.cs",
-        "UI/ModernUi.TownMap.cs", "UI/ModernUi.Field.cs", "UI/ModernUi.Poketch.cs", "UI/ModernUi.Poketch.Time.cs", "UI/ModernUi.Poketch.Toys.cs",
-        "UI/ModernUi.Poketch.Map.cs", "UI/ModernUi.Poketch.Pokemon.cs", "Models/PoketchApps/ColorChangerApp.cs", "UI/HelpScreen.cs",
-        "UI/ModernUi.Help.cs", "UI/ModernUi.Wardrobe.cs", "UI/WardrobeScreen.cs", "UI/ModernUi.Hatch.cs", "UI/HatchScreen.cs",
-        "UI/ModernUi.Ceremony.cs", "UI/HallOfFameCeremony.cs", "UI/CreditsScreen.cs", "UI/SlotMachineScreen.cs",
-        "UI/ModernUi.Underground.cs", "UI/MiningScreen.cs", "UI/UndergroundScreen.cs", "UI/DecorationScreen.cs", "Models/Decorating.cs",
-        "UI/ModernUi.Frontier.cs", "UI/FrontierRecordsScreen.cs", "Models/Frontier/FrontierBoard.cs", "UI/ModernUi.Factory.cs", "UI/FactoryScreen.cs",
-        "UI/ModernUi.Hall.cs", "UI/HallBoardScreen.cs", "UI/ModernUi.Castle.cs", "UI/CastleScreen.cs", "UI/ModernUi.Arcade.cs", "UI/ArcadeBoardScreen.cs",
-        "UI/ModernUi.Pastimes.cs",
-        "UI/ModernUi.Poffins.cs", "UI/PoffinCookingScreen.cs", "UI/PoffinCaseScreen.cs", "UI/SuperContestScreen.cs", "UI/ModernUi.SuperContest.cs",
-        "UI/ModernUi.Capsules.cs", "UI/SealCaseScreen.cs", "UI/FashionCaseScreen.cs", "UI/ModernUi.Ribbons.cs"
+        "Models/PokedexSearch.cs", "Models/PoketchApps/ColorChangerApp.cs", "Models/Decorating.cs", "Models/Frontier/FrontierBoard.cs",
+        "Models/Poffins.cs", "Models/SuperContests/ContestRules.cs", "Models/Ribbons.cs", "Models/Underground/SecretBaseRules.cs",
+        "Overworld/FieldMoveRules.cs", "Overworld/Fishing.cs", "Overworld/Bicycle.cs", "Models/ItemUse.cs", "Models/MoveTeaching.cs",
+        "Models/EncounterAids.cs", "Models/Journal.cs"
+    };
+
+    /// <summary>
+    /// The files of <c>UI/</c> and <c>Core/</c> that are not on the table, each with why: the battle's, the evolution
+    /// scene's and the introduction's, which are plan 17 · N2's, and what speaks to a terminal or a report and never
+    /// to the screen, which stays in English.
+    /// </summary>
+    private static readonly Dictionary<string, string> NotOnTheTable = new()
+    {
+        ["UI/ModernUi.Battle.cs"] = "N2: the battle's menus and panels",
+        ["Core/GameEngine.Battles.cs"] = "N2: the battles the field starts",
+        ["UI/EvolutionScreen.cs"] = "N2: the evolution scene's lines",
+        ["UI/ModernUi.Evolution.cs"] = "N2: the evolution scene's lines",
+        ["UI/IntroScreen.cs"] = "N2: the introduction's lines",
+        ["UI/ModernUi.Intro.cs"] = "N2: the introduction's prompts",
+        ["Core/CommandLine.cs"] = "the switches and --help, said to the terminal",
+        ["Core/SavePaths.cs"] = "--where, said to the terminal",
+        ["Core/Diagnostics/Log.cs"] = "the log, for whoever reads log.txt",
+        ["Core/Diagnostics/CrashReport.cs"] = "a crash's report, for whoever reads it",
+        ["Core/Diagnostics/Manifest.cs"] = "--verify, said to the terminal",
+        ["Core/Diagnostics/GameVersion.cs"] = "the build's version as the log and --help write it"
     };
 
     /// <summary>What may stay in quotes in a file on the table: names of the data, and the logo, which is a picture (plan 17).</summary>
@@ -94,7 +119,109 @@ public class TextTests
         {
             "Dress Up", "Ranch", "City at Night", "Snowy Town", "Fiery", "Outer Space", "Cumulus Cloud", "Desert", "Flower Patch",
             "Future Room", "Open Sea", "Total Darkness", "Tatami Room", "Gingerbread Room", "Seafloor", "Underground", "Sky", "Theater"
-        }
+        },
+        // A mistake of the code's own, never seen by a player
+        ["Models/Poffins.cs"] = new[] { "A Poffin has five flavours." },
+        // The scarves the condition's score goes by, the accessories a first win puts in the Fashion Case (items.json's and
+        // contests.json's names) and the start of a ribbon's constant
+        ["Models/SuperContests/ContestRules.cs"] = new[]
+        {
+            "Red Scarf", "Blue Scarf", "Pink Scarf", "Green Scarf", "Yellow Scarf", "RIBBON_",
+            "Red Barrette", "Red Balloons", "Top Hat", "Gold Pedestal", "Blue Barrette", "Blue Balloons", "Silk Veil", "Glass Stage",
+            "Pink Barrette", "Pink Balloon", "Lace Headdress", "Flower Stage", "Green Barrette", "Green Balloons", "Professor Hat", "Cube Stage",
+            "Yellow Barrette", "Yellow Balloon", "Heroic Headband", "Award Podium"
+        },
+        // The parts of the ribbons' constants that tell a contest's ribbon, its region and its rank
+        ["Models/Ribbons.cs"] = new[] { "RIBBON_", "RIBBON_HOENN_", "SUPER", "GREAT", "HYPER", "ULTRA", "MASTER" },
+        // The parts of the goods' and traps' ids a tool goes by, the records underground.json says a good shows, the
+        // hikers' kinds of stock, and the other diggers' names, which stand for other players' and are kept in the save
+        ["Models/Underground/SecretBaseRules.cs"] = new[]
+        {
+            "_TOOL", "TRAP_", "UG_GOOD_", "TRAP_DIGGER_DRILL", "FossilsDug", "SpheresDug", "TrapHits", "TrapsHit", "TimesBaseMoved",
+            "FlagsObtained", "FlagsRegistered", "TotalScore", "Traps", "Goods", "Treasures",
+            "Bram", "Odette", "Corwin", "Mirela", "Tavish", "Ilse", "Rurik", "Nadia", "Per", "Zofia", "Emrys", "Linnea", "Dov", "Sabela",
+            "Kito", "Marit", "Anselm", "Yara", "Wim", "Tindra", "Oskar", "Beatrix", "Jarek", "Solveig"
+        },
+        // The field moves' names as the move data has them, which the party's moves are matched by
+        ["Overworld/FieldMoveRules.cs"] = new[]
+        {
+            "Cut", "Fly", "Surf", "Strength", "Defog", "Rock Smash", "Waterfall", "Rock Climb", "Flash", "Teleport", "Dig", "Sweet Scent",
+            "Milk Drink", "Soft-Boiled"
+        },
+        // The rods' uses in the field as the item table gives them
+        ["Overworld/Fishing.cs"] = new[] { "OldRod", "GoodRod", "SuperRod" },
+        // The item table's field uses and use parameters, which an item is used by
+        ["Models/ItemUse.cs"] = new[]
+        {
+            "Healing", "Berry", "friendshipLow", "friendshipMed", "friendshipHigh", "healSleep", "healPoison", "healBurn", "healFreeze",
+            "healParalysis", "hpRestored", "levelUp", "ppUp", "ppMax", "ppRestored", "restorePPAllMoves", "reviveAll"
+        },
+        // What an HM's name begins with, and a mistake of the code's own, never seen by a player
+        ["Models/MoveTeaching.cs"] = new[] { "HM", "A Pokémon with four moves forgets one to learn another" },
+        // The Repels' and the flutes' own names, which their use goes by
+        ["Models/EncounterAids.cs"] = new[] { "Repel", "Super Repel", "Max Repel", "Black Flute", "White Flute" },
+        // The vowels English says "an" before, which choose between the Journal's two lines of a catch
+        ["Models/Journal.cs"] = new[] { "AEIOU" },
+        // The looks the start makes ready, the items and Pokémon a game begins with or is owed, the items' uses the
+        // bag goes by, the trainer classes the Journal tells of, the region and the rooms the game asks about
+        ["Core/GameEngine.cs"] = new[]
+        {
+            "PLAYER", "DAWN", "ROWAN", "Poké Ball", "Great Ball", "Ultra Ball", "Master Ball", "Journal", "Potion", "Revive", "Turtwig",
+            "Glitter Powder", "PoffinCase", "TownMap", "Leader", "Elite Four", "Champion", "Sinnoh", "PlayerHouse",
+            "slot {s.Number} {s.Outcome}" // how the slots read, for the log's line after it
+        },
+        // The region, the starter and its move an old save was given, and the save's field of its checksum
+        ["Core/SaveManager.cs"] = new[] { "Lucas", "Sinnoh", "Turtwig", "Tackle", "Poké Ball", "Checksum" },
+        // English as languages.json names it and its script, the language every other falls back to
+        ["Core/Language.cs"] = new[] { "English", "Latin" },
+        // The folders the typeface is read from
+        ["UI/Kit/UiFonts.cs"] = new[] { "Assets", "Fonts" },
+        ["UI/Kit/TextMetrics.cs"] = new[] { "Assets", "Fonts" },
+        // The keyboard's rows of letters, which plan 17 · N5 gives each language its own of
+        ["UI/Kit/NameEntry.cs"] = new[] { "ABCDEFGHIJ", "KLMNOPQRST", "UVWXYZ.-' ", "uvwxyz.-' " },
+        // The bands' trainers by class and name as trainers.json has them, and the mark's lettering, a picture as the title's logo is
+        ["UI/SceneTransition.Bands.cs"] = new[]
+        {
+            "Leader", "Elite Four", "Champion", "Roark", "Gardenia", "Wake", "Maylene", "Fantina", "Candice", "Byron", "Volkner",
+            "Aaron", "Bertha", "Flint", "Lucian", "Cynthia", "VS"
+        },
+        // The region and the rooms the Journal goes by, the Gyms' towns it keeps in the save, the items' uses the bag goes by, and the move Surf
+        ["Core/GameEngine.Scripts.cs"] = new[]
+        {
+            "Sinnoh", "PlayerHouse", "RowanLab", "OreburghGym", "Oreburgh", "EternaGym", "Eterna", "HearthomeGym", "Hearthome", "VeilstoneGym",
+            "Veilstone", "SunyshoreGym", "Sunyshore", "Journal", "TownMap", "PoffinCase", "VsSeeker", "ExplorerKit", "PokeRadar", "Honey",
+            "Bicycle", "EscapeRope", "Surf"
+        },
+        // The map, the scripts the game itself starts there, the region, and the base's props by their art keys
+        ["Core/GameEngine.Underground.cs"] = new[]
+        {
+            "Underground", "Wall", "BasePC", "DiggerPC", "GoUp", "Sinnoh", "pc:{SecretBaseRules.FlagFor(flags)}", "good:{good.Good}"
+        },
+        // The maps and the script of Pal Park, the place a Pokémon of the park was met, the Villa's furniture by its
+        // names in the table, the start of its flags and its scripts' names, and the Game Corner's rooms and its case
+        ["Core/GameEngine.Pastimes.cs"] = new[]
+        {
+            "PalPark", "PalParkLobby", "CaughtAll", "Pal Park", "Table", "Big Sofa", "Small Sofa", "Bed", "Night Table", "TV", "Audio System",
+            "Bookshelf", "Rack", "Houseplant", "PC Desk", "Music Box", "Pokémon Bust", "Silver Pokémon Bust", "Piano", "Guest Set", "Wall Clock",
+            "Masterpiece", "Tea Set", "Look", "FLAG_VILLA_FURNITURE_", "Chandelier", "VeilstoneGameCorner", "VeilstonePrizeExchange", "Coin Case"
+        },
+        // The lobby's map, a person of the room by name, and the look a trainer with none takes
+        ["Core/GameEngine.Frontier.cs"] = new[] { "BattleTower", "opponent_2", "Trainer" },
+        ["Core/GameEngine.Capsules.cs"] = new[] { "Fashion Case" },
+        // The start of the Master Ranks' flags, and the region whose story is asked about
+        ["Core/GameEngine.SuperContests.cs"] = new[] { "FLAG_CONTEST_MASTER_", "Sinnoh" },
+        // The lobbies' maps
+        ["Core/GameEngine.Hall.cs"] = new[] { "BattleHall" },
+        ["Core/GameEngine.Factory.cs"] = new[] { "BattleFactory" },
+        ["Core/GameEngine.Castle.cs"] = new[] { "BattleCastle" },
+        ["Core/GameEngine.Arcade.cs"] = new[] { "BattleArcade" },
+        ["Core/GameEngine.Encounters.cs"] = new[] { "Poké Radar" },
+        // The characters' own names, which the save keeps as the player's and the rival's, and the looks by their names
+        ["Core/PlayerIdentity.cs"] = new[] { "Barry", "Dawn", "Lucas", "DAWN", "PLAYER", "Player", "Assistant" },
+        // What the tests hear of a cry, never on screen
+        ["Core/AudioManager.cs"] = new[] { "cry {name}", "cry {name} {mode}" },
+        // What a crash report says of the screen the game was on, for whoever reads the report
+        ["Core/GameEngine.Diagnostics.cs"] = new[] { "{flow.ClosingFrom} (the close button's question was up)", "Transition ({flow.Before} to {flow.After})" }
     };
 
     private static readonly Regex Literal = new(@"(\$?)""((?:[^""\\\n]|\\.)*)""", RegexOptions.Compiled);
@@ -111,6 +238,13 @@ public class TextTests
 
     private static IEnumerable<(string Text, bool Interpolated)> LiteralsOf(string path) =>
         CodeOf(path).SelectMany(line => Literal.Matches(line)).Select(m => (m.Groups[2].Value, m.Groups[1].Value == "$"));
+
+    // A line that writes to the log or throws says nothing on screen: the log and a mistake of the code's are read in English
+    private static readonly Regex NotForTheScreen = new(@"\bLog\.(Info|Warn|Error|Say|Phase)\(|Exception\(", RegexOptions.Compiled);
+
+    private static IEnumerable<(string Text, bool Interpolated)> LiteralsOnScreen(string path) =>
+        CodeOf(path).Where(line => !NotForTheScreen.IsMatch(line))
+            .SelectMany(line => Literal.Matches(line)).Select(m => (m.Groups[2].Value, m.Groups[1].Value == "$"));
 
     private static HashSet<string> Sections => Text.EnglishKeys.Select(k => k[..k.IndexOf('.')]).ToHashSet();
 
@@ -164,7 +298,7 @@ public class TextTests
         foreach (var name in OnTheTable)
         {
             var allowed = NotWords.GetValueOrDefault(name, Array.Empty<string>());
-            foreach (var (text, _) in LiteralsOf(Path.Combine(Engine, name)))
+            foreach (var (text, _) in LiteralsOnScreen(Path.Combine(Engine, name)))
             {
                 string bare = Regex.Replace(text, @"\{[^}]*\}", "");
                 if (!Regex.IsMatch(bare, @"\p{L}{2,}")) continue;            // no word in it: a format, a number
@@ -172,6 +306,9 @@ public class TextTests
                 if (Regex.IsMatch(text, @"^[a-z_]+$")) continue;             // a sound's or a song's name
                 if (Regex.IsMatch(text, @"^[X.]+$")) continue;               // a picture in blocks (the Pokétch's)
                 if (Regex.IsMatch(text, @"^[A-Z0-9]+(_[A-Z0-9]+)+$")) continue; // a constant's name (RIBBON_RED), which the data goes by
+                if (Regex.IsMatch(text, @"^[A-Za-z][a-z0-9]*([A-Z0-9][A-Za-z0-9]*)+$")) continue; // a name of the code's or the data's (TwinleafTown, halfSize)
+                if (Regex.IsMatch(text, @"^[a-z_]+\.[A-Z]\w*$")) continue;    // a script's name (common.UseFly)
+                if (Regex.IsMatch(bare, @"^\S*\.[a-z]+$")) continue;          // a file's name (settings.json, .bak)
                 if (allowed.Contains(text)) continue;
                 said.Add($"{name}: \"{text}\"");
             }
@@ -243,6 +380,29 @@ public class TextTests
         Assert.Equal(new[] { "1 heart", "0 hearts", "3 hearts" }, new[] { 1, 0, 3 }.Select(n => Text.Of("contest.hearts", ("n", n))));
         Assert.Equal("It has won 2 ribbons.", Text.Of("ribbonPage.won", ("n", 2)));
         Assert.Equal("1 time", Text.Of("cooking.times", ("n", 1)));
+        // N1e: the lines the contest's, the ribbons', the Poffins' and the secret base's rules hand their screens
+        Assert.Equal(new[] { "Mild Poffin", "Sour-Bitter Poffin", "Dry Poffin" }, new[] { PoffinType.Mild, PoffinType.SourBitter, PoffinType.Dry }.Select(Poffins.NameOf));
+        Assert.Equal("SPICY", Poffins.NameOf(Flavor.Spicy));
+        Assert.Equal("+2 if performed first.", ContestRules.Describe(ContestEffect.FirstPerformanceAdvantage));
+        Assert.Equal("", ContestRules.Describe(ContestEffect.None));
+        Assert.Equal("For winning a Smart Super Contest at the Ultra Rank.", RibbonRules.Describe("RIBBON_SMART_ULTRA"));
+        Assert.Equal("For winning Hoenn's Coolness Contest at the Hyper Rank.", RibbonRules.Describe("RIBBON_HOENN_COOL_HYPER"));
+        Assert.Equal("an event", RibbonRules.WaitsFor("RIBBON_CLASSIC"));
+        Assert.Equal("The big boulder was taken away. One more can go.", Text.Of("baseRules.boulderTakenMore", ("n", 1)));
+        Assert.Equal("The big boulder was taken away. 4 more can go.", Text.Of("baseRules.boulderTakenMore", ("n", 4)));
+        // N1e1: what the field's rules hand the screen
+        Assert.Equal("Not while someone is travelling with you.", FieldMoveRules.Why(FieldMoveError.Partner));
+        Assert.Equal("The Bicycle can't be ridden here.", BicycleRules.Why(BicycleCheck.NotHere));
+        Assert.Equal("It won't have any effect.", ItemUseResult.Nothing.Message);
+        Assert.Equal("Caught an Eevee on Route 201.", Text.Of("journal.line.caughtAn", ("species", "Eevee"), ("at", " on Route 201")));
+        Assert.Equal("{player} found 3 × Potion!", Text.Of("found.found", ("n", 3), ("item", "Potion")));
+        Assert.Equal("{player} put it away in the Medicine pocket.", Text.Of("found.putAway", ("n", 1), ("pocket", ScriptRunner.PocketName(ItemPocket.Medicine))));
+        Assert.Equal("Confirm, talk, read", InputManager.Bindings[(int)GameAction.Confirm].Name);
+        // N1e, part 3: the engine's own notices and the Underground's tunnels
+        Assert.Equal("The battery isn't charged enough. 12 steps to go!", Text.Of("engine.vsSeeker.charging", ("steps", 12)));
+        Assert.Equal("You dug up the Prism Sphere: size 9. It had grown by 2!",
+            Text.Of("tunnels.dugUpGrown", ("sphere", "Prism Sphere"), ("size", 9), ("grew", 2)));
+        Assert.Equal("It can't be set in a wall.", Text.Of("tunnels.refused.set.wall"));
         // A placeholder the call names nothing for is left for whoever fills it later
         Assert.Equal("Hello {player}", Text.Fill("Hello {player}"));
     }
