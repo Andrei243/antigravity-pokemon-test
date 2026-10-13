@@ -69,15 +69,60 @@ public sealed class TrainerPokemonRecord
     public int BallSeal { get; set; }
 }
 
-/// <summary>Platinum's trainers, read from <c>Data/trainers.json</c> the first time one is asked for.</summary>
+/// <summary>
+/// Platinum's trainers, read from <c>Data/trainers.json</c> the first time one is asked for, and beside them the
+/// trainers of this game's own (plan 14 · B14), read the same way: the Master Trainers of
+/// <c>Data/master-trainers.json</c> (written by <c>tools/DataImporter</c>, one for every species) and the people of
+/// ours in <c>Data/our-trainers.json</c> (written by hand). <see cref="Get"/> finds any of them; <see cref="All"/> is
+/// Platinum's table alone, so whatever goes through the original's trainers goes through those and no others.
+/// </summary>
 public static class TrainerDatabase
 {
     public const string FileName = "trainers.json";
 
-    private static readonly Dictionary<string, TrainerRecord> Trainers =
-        GameDataFiles.Load<List<TrainerRecord>>(FileName).ToDictionary(t => t.Id, StringComparer.OrdinalIgnoreCase);
+    /// <summary>The Master Trainers (plan 14 · B14): <c>master_&lt;species&gt;</c>, one Pokémon each at <see cref="MasterLevel"/>.</summary>
+    public const string MastersFileName = "master-trainers.json";
 
-    public static IEnumerable<TrainerRecord> All => Trainers.Values;
+    /// <summary>The trainers of our own people (plan 14 · B14 first): a team and a name the original never had.</summary>
+    public const string OursFileName = "our-trainers.json";
+
+    /// <summary>The level of a master's Pokémon, as Let's Go's masters' are.</summary>
+    public const int MasterLevel = 75;
+
+    private static readonly List<TrainerRecord> Platinum = GameDataFiles.Load<List<TrainerRecord>>(FileName);
+    private static readonly List<TrainerRecord> MasterList = GameDataFiles.Load<List<TrainerRecord>>(MastersFileName);
+    private static readonly List<TrainerRecord> OurList = GameDataFiles.Load<List<TrainerRecord>>(OursFileName);
+
+    private static readonly Dictionary<string, TrainerRecord> Trainers =
+        Platinum.Concat(MasterList).Concat(OurList).ToDictionary(t => t.Id, StringComparer.OrdinalIgnoreCase);
+
+    /// <summary>Platinum's trainers, in the original's order.</summary>
+    public static IEnumerable<TrainerRecord> All => Platinum;
+
+    /// <summary>The Master Trainers, in National Pokédex order.</summary>
+    public static IReadOnlyList<TrainerRecord> Masters => MasterList;
+
+    /// <summary>The trainers of our own people (the Fight Area's scientist).</summary>
+    public static IReadOnlyList<TrainerRecord> Ours => OurList;
+
+    /// <summary>
+    /// The id of a species' master: <c>master_</c> and the species' name in the table's own style, lower case with
+    /// words joined by underscores (<c>master_bidoof</c>, <c>master_mr_mime</c>, <c>master_nidoran_f</c>,
+    /// <c>master_farfetchd</c>, <c>master_flabebe</c>).
+    /// </summary>
+    public static string MasterId(string species)
+    {
+        var sb = new System.Text.StringBuilder("master_");
+        foreach (char c in species.Normalize(System.Text.NormalizationForm.FormD))
+        {
+            if (c == '\u2640') sb.Append("_f");
+            else if (c == '\u2642') sb.Append("_m");
+            else if (char.IsAsciiLetterOrDigit(c)) sb.Append(char.ToLowerInvariant(c));
+            else if (c is ' ' or '-' or '_' or ':' && sb[^1] != '_') sb.Append('_');
+        }
+        while (sb[^1] == '_') sb.Length--;
+        return sb.ToString();
+    }
 
     /// <summary>The rival's trainer class: his data's name stands for the one the player gives him.</summary>
     public const string RivalClass = "Rival";

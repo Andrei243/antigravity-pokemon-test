@@ -1057,7 +1057,9 @@ public partial class GameEngine
                     break;
                 case ScriptScreen.ChoosePokemon:
                     game.currentState = GameState.PartyMenu;
-                    game.partyScreen.OpenToChoose();
+                    // A species named on the line lets only that species be chosen (plan 14 · B14): the rest are greyed
+                    if (counter is { Length: > 0 } only) game.partyScreen.OpenToChoose(p => ScriptRunner.Fits(p, only), $"Only {only} can be chosen here.");
+                    else game.partyScreen.OpenToChoose();
                     break;
                 case ScriptScreen.ChooseItem:
                     // A berry to plant or a mulch to lay (plan 06 · R14a): the bag, on that pocket

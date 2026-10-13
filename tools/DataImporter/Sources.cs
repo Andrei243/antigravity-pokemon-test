@@ -20,11 +20,19 @@ public static class Sources
 
     /// <summary>
     /// Pokémon Showdown (MIT), for what PokeAPI lacks: Z-Move and Max Move power, the Z-Moves and Max Moves
-    /// themselves, whose each Mega Stone and Z-Crystal is, and the colour of each form. Four files, fetched one by one.
+    /// themselves, whose each Mega Stone and Z-Crystal is, and the colour of each form; and its random-battle sets, for
+    /// the Master Trainers' moves (plan 14 · B14, <c>MasterTrainers.cs</c>), newest generation first. The files are fetched one by one.
     /// </summary>
     public const string ShowdownRaw = "https://raw.githubusercontent.com/smogon/pokemon-showdown";
     public const string ShowdownCommit = "9fb3a5b99f1a0bea17f495c5cc1bfe04fdd19c3e";
-    public static readonly string[] ShowdownFiles = { "data/moves.ts", "data/items.ts", "data/pokedex.ts", "LICENSE" };
+    public static readonly string[] ShowdownSetFiles =
+    {
+        "data/random-battles/gen9/sets.json", "data/random-battles/gen8/sets.json", "data/random-battles/gen7/sets.json",
+        "data/random-battles/gen6/sets.json", "data/random-battles/gen5/sets.json", "data/random-battles/gen4/sets.json",
+        "data/random-battles/gen3/sets.json", "data/random-battles/gen2/sets.json", "data/random-battles/gen1/data.json"
+    };
+    public static readonly string[] ShowdownFiles = new[] { "data/moves.ts", "data/items.ts", "data/pokedex.ts", "LICENSE" }
+        .Concat(ShowdownSetFiles).ToArray();
 
     /// <summary>The named files of a pinned commit, downloaded once and reused until the commit or the list changes.</summary>
     public static string Download(string cache, string name, string rawBase, string commit, string[] files)

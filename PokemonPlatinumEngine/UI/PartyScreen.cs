@@ -117,13 +117,28 @@ public class PartyScreen
         return mayEnter(pokemon) ? null : "NOT ABLE";
     }
 
-    /// <summary>Opens the team for a Pokémon to be chosen (<see cref="Choosing"/>).</summary>
-    public void OpenToChoose()
+    /// <summary>
+    /// Opens the team for a Pokémon to be chosen (<see cref="Choosing"/>). With <paramref name="allowed"/> (plan 14 ·
+    /// B14: <c>choosepokemon "Bidoof"</c>) only those it lets may be: the rest are greyed and tagged NOT ABLE, and A on
+    /// one says <paramref name="refusal"/> in the prompt and chooses nothing.
+    /// </summary>
+    public void OpenToChoose(Func<Pokemon, bool>? allowed = null, string? refusal = null)
     {
         Open();
         Choosing = true;
         Chosen = NoneChosen;
+        mayChoose = allowed;
+        chooseRefusal = refusal;
     }
+
+    private Func<Pokemon, bool>? mayChoose;
+    private string? chooseRefusal;
+
+    /// <summary>Whether only some of the team may be chosen (a species named on <c>choosepokemon</c>).</summary>
+    public bool ChoosingSome => Choosing && mayChoose != null;
+
+    /// <summary>What a Pokémon's card says while only some may be chosen: NOT ABLE for one that may not, else nothing.</summary>
+    public string? ChooseTag(Pokemon pokemon) => mayChoose == null || mayChoose(pokemon) ? null : "NOT ABLE";
 
     public void Open()
     {
@@ -207,6 +222,12 @@ public class PartyScreen
         }
         if (Choosing)
         {
+            if (mayChoose != null && !mayChoose(party.Members[SelectedIndex]))
+            {
+                Message = chooseRefusal ?? (party.Members[SelectedIndex].IsEgg ? "An Egg can't be chosen." : $"{party.Members[SelectedIndex].DisplayName} can't be chosen.");
+                AudioManager.PlaySound("error");
+                return;
+            }
             Chosen = SelectedIndex;
             AudioManager.PlaySound("select");
             Close();
@@ -417,6 +438,12 @@ public class PartyScreen
         {
             ModernUi.DrawPartyChoice(screenWidth, screenHeight, party, SelectedIndex, Prompt, p => EnterTag(party, p), Math.Clamp(openAge / AppearTime, 0f, 1f),
                 Entered.Count == EnterCount ? "Go in" : "Enter");
+        }
+        else if (ChoosingSome)
+        {
+            // Only some may be chosen (plan 14 · B14): the rest greyed under NOT ABLE
+            ModernUi.DrawPartyChoice(screenWidth, screenHeight, party, SelectedIndex, Prompt, ChooseTag, Math.Clamp(openAge / AppearTime, 0f, 1f),
+                "Choose", greyRefused: true);
         }
         else
         {

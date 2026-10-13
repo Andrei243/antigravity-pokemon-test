@@ -56,7 +56,7 @@ public static class Lines
         "assistant" => Widest(new[] { PlayerIdentity.DefaultName(PlayerLook.Boy), PlayerIdentity.DefaultName(PlayerLook.Girl) }),
         // A Pokémon by its name
         "lead" or "starter" or "rivalstarter" or "assistantstarter" or "user" or "member" or "swarm" or "trophygarden" or "marsh" or "winner"
-            or "daycare" or "left" or "taken" or "wearer" or "rental" or "entrant" or "walker" or "contestant" or "ally" => widestSpecies.Value,
+            or "daycare" or "left" or "taken" or "wearer" or "rental" or "entrant" or "walker" or "contestant" or "ally" or "chosen" => widestSpecies.Value,
         // A move
         "forgotten" or "allymove" => widestMove.Value,
         // A trainer by class and name, or two of them

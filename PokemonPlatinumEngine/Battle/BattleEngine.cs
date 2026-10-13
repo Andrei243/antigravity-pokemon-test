@@ -201,7 +201,8 @@ public partial class BattleEngine
             CannotFlee = setup.CannotFlee,
             FirstBattle = setup.FirstBattle,
             SpecialBalls = setup.SpecialBalls,
-            Frontier = setup.Frontier
+            Frontier = setup.Frontier,
+            NoBattleItems = setup.NoBattleItems
         });
 
         Anim.Slots = core.PlayerSlots.Count;
@@ -239,6 +240,9 @@ public partial class BattleEngine
 
     /// <summary>A battle of the Battle Frontier (plan 06 · R18a): no bag, no EXP, no money, and RUN asks whether to give the match up.</summary>
     public bool IsFrontier => core.Frontier;
+
+    /// <summary>Nothing may be used from the bag (plan 14 · B14, a Master Trainer's battle): BAG is greyed and says why.</summary>
+    public bool BagClosed => core.NoBattleItems;
 
     /// <summary>The trainer beside the player in a tag battle (their Pokémon stand in the player's second place).</summary>
     public Trainer? Partner { get; }

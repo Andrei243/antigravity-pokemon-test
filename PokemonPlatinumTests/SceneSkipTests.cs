@@ -447,6 +447,8 @@ public class SceneSkipTests
               wardrobe
               travel
               choosepokemon
+              choosepokemon "Bidoof"
+              master self
               chooseitem berries
               halloffame show
               credits

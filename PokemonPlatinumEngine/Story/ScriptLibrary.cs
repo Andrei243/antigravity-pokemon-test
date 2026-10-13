@@ -266,6 +266,9 @@ public sealed class ScriptLibrary
                     case Op.WildBattle when PokemonDatabase.Get(i.Name) == null && PokemonDatabase.SpeciesOfForm(i.Name) == null:
                         Wrong(i, $"there is no species or form '{i.Name}'");
                         break;
+                    case Op.ChoosePokemon when i.Name.Length > 0 && PokemonDatabase.Get(i.Name) == null:
+                        Wrong(i, $"there is no species '{i.Name}'");
+                        break;
                     case Op.GivePokemon or Op.CatchingLesson or Op.GiveEgg or Op.Seen when PokemonDatabase.Get(i.Name) == null:
                         Wrong(i, $"there is no species '{i.Name}'");
                         break;

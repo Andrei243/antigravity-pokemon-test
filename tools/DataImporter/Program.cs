@@ -61,6 +61,9 @@ var frontier = importer.Frontier();
 
 Console.WriteLine("Trainers…");
 var trainers = importer.Trainers(species);
+// The Master Trainers (plan 14 · B14): a master for every species, its moves from Showdown's random-battle sets
+var masters = MasterTrainers.Build(showdownDir, species, moves, items);
+Console.WriteLine($"  {masters.Masters.Count} masters: {masters.FromSets} with moves of a set ({masters.MadeUp} made up with what their level taught them), {masters.WithoutMoves} with none (they know what their level taught them)");
 
 Check(species, moves, abilities, items);
 
@@ -69,6 +72,7 @@ Write(Path.Combine(outDir, MoveDatabase.FileName), GameDataFiles.Serialize(moves
 Write(Path.Combine(outDir, AbilityDatabase.FileName), GameDataFiles.Serialize(abilities));
 Write(Path.Combine(outDir, ItemDatabase.FileName), GameDataFiles.Serialize(items));
 Write(Path.Combine(outDir, TrainerDatabase.FileName), GameDataFiles.Serialize(trainers));
+Write(Path.Combine(outDir, TrainerDatabase.MastersFileName), GameDataFiles.Serialize(masters.Masters));
 Write(Path.Combine(outDir, MartDatabase.FileName), GameDataFiles.Serialize(marts));
 Write(Path.Combine(outDir, SuperContestDatabase.FileName), GameDataFiles.Serialize(contests));
 Write(Path.Combine(outDir, SealDatabase.FileName), GameDataFiles.Serialize(seals));

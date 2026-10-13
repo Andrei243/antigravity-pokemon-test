@@ -586,6 +586,8 @@ public sealed class TrainerAi : IBattleController
     private static string? ShouldUseItem(BattleCore battle, Battler mine)
     {
         if (mine.IsPlayerSide && battle.IsTrainerBattle) return null;
+        // Nobody reaches for an item in a battle with none (plan 14 · B14)
+        if (battle.NoBattleItems) return null;
         if (mine.Volatile.EmbargoTurns > 0) return null;
         if (mine.Trainer == null) return null;
         var items = battle.AiMemory.ItemsOf(mine.Trainer);

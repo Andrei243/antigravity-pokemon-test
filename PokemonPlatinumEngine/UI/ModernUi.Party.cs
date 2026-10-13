@@ -63,7 +63,7 @@ internal static partial class ModernUi
     /// </summary>
     /// <param name="waiting">The prompt is a line that waits for a press, with the arrow that says so and no way back (a level's panel, plan 08 · P5).</param>
     public static void DrawPartyChoice(int sw, int sh, Party party, int selected, string prompt, Func<Pokemon, string?> tag, float appear = 1f,
-        string action = "Use", bool waiting = false)
+        string action = "Use", bool waiting = false, bool greyRefused = false)
     {
         Backdrop(sw, sh);
         ScreenTitle("POKÉMON");
@@ -83,6 +83,8 @@ internal static partial class ModernUi
             PartyCard(r, p, i == selected, false, lead: false);
             // ABLE, and a place among those entered (1ST, 2ND: plan 06 · R18a), in the colour of what can be done
             if (tag(p) is { } said) Tag(r.X + 264, r.Y + 183, said, said == "ABLE" || char.IsDigit(said[0]) ? Green : Muted);
+            // A Pokémon that may not be chosen is greyed (plan 14 · B14; a fainted one is greyed by its card already)
+            if (greyRefused && !p.IsFainted && tag(p) == "NOT ABLE") UiShapes.Fill(r, 34, new Color(40, 40, 60, 90));
         }
 
         var box = new Rectangle(64, 920, 1792, 112);

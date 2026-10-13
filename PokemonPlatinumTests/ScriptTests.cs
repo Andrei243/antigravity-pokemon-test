@@ -129,6 +129,7 @@ public class ScriptTests
           battle self first
           battle self as "rival_route_201_piplup" first canlose
           battle self as "scientist_shaun_rematch_3" inverse canlose
+          master self canlose
           wildbattle "Starly" 2
           wildbattle "Giratina" 47 nofleeing
           catchinglesson "Bidoof" 2
@@ -184,6 +185,7 @@ public class ScriptTests
           partner cheryl "cheryl_eterna_forest"
           partner off
           choosepokemon
+          choosepokemon "Bidoof"
           trade kazza
           halloffame
           pc halloffame
