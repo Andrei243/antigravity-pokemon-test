@@ -97,16 +97,17 @@ public partial class GameEngine
     // The state the game is in, which the flow holds (named as it was before the flow, while the rest moves out)
     private GameState currentState { get => flow.State; set => flow.State = value; }
 
-    private Map currentMap = null!;
+    // The game's objects, which the flow holds (named as they were before the flow, while the rest moves out)
+    private Map currentMap { get => flow.Map; set => flow.Map = value; }
 
     /// <summary>The area of the overworld the player was last in; null on a small map, which is one place.</summary>
     private MapArea? currentArea;
-    private Player player = null!;
+    private Player player { get => flow.Player; set => flow.Player = value; }
     private readonly RenderContext renderContext = new(VirtualWidth, VirtualHeight);
     private readonly WorldRenderer world;
     private readonly BattleRenderer battleRenderer;
     private DialogueManager dialogue = new();
-    private BattleEngine? battle;
+    private BattleEngine? battle { get => flow.Battle; set => flow.Battle = value; }
 
     // A trainer who spotted the player and is walking up, and the one being battled
     private TrainerApproach? trainerApproach;
@@ -195,11 +196,11 @@ public partial class GameEngine
     public GameSettings Settings { get; }
 
     // Player Save State
-    private readonly Party playerParty = new();
-    private readonly Inventory playerInventory = new();
-    private readonly Pokedex playerPokedex = new();
-    private PcBoxes pcBoxStorage = new();
-    private int playerMoney = 3000;
+    private Party playerParty => flow.Party;
+    private Inventory playerInventory => flow.Bag;
+    private Pokedex playerPokedex => flow.Pokedex;
+    private PcBoxes pcBoxStorage { get => flow.Boxes; set => flow.Boxes = value; }
+    private ref int playerMoney => ref flow.Money;
     private float playTime = 0f;
     private int trainerId;
 
@@ -233,7 +234,7 @@ public partial class GameEngine
     private DateTime? adventureStarted;
 
     /// <summary>What the story remembers: flags, variables, trainers beaten, items taken, the badges, the starters (plan 02 · S1).</summary>
-    private readonly StoryState story = new();
+    private StoryState story => flow.Story;
 
     // The Pokétch (plan 02 · S2), and whether it is out on the screen
     private readonly Poketch poketch = new();

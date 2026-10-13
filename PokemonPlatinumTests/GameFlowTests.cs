@@ -103,4 +103,24 @@ public class GameFlowTests
         Assert.Equal(GameState.Overworld, flow.EvolutionReturn);
         Assert.Empty(flow.Evolutions);
     }
+
+    [Fact]
+    public void ANewFlowHoldsAnEmptyTeamBagAndStoryAndTheStartingMoney()
+    {
+        var flow = new GameFlow();
+        Assert.Equal(0, flow.Party.Count);
+        Assert.Equal(3000, flow.Money);
+        Assert.Null(flow.Battle);
+        Assert.Equal(0, flow.Story.Revision);
+    }
+
+    [Fact]
+    public void TheMoneyIsChangedWhereItIsKept()
+    {
+        var flow = new GameFlow();
+        Spend(ref flow.Money, 500);
+        Assert.Equal(2500, flow.Money);
+
+        static void Spend(ref int money, int price) => money -= price;
+    }
 }
