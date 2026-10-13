@@ -299,11 +299,11 @@ public partial class GameEngine
         switch (VsSeeker.Use(flow.Map, flow.Player.GridX, flow.Player.GridY, outdoors, flow.Story, Dice.Shared, out var ready, out var notYet))
         {
             case VsSeekerResult.NotCharged:
-                ShowNotification($"The battery isn't charged enough. {VsSeeker.FullBattery - flow.Story.Var(VsSeeker.Battery)} steps to go!");
+                ShowNotification(Text.Of("engine.vsSeeker.charging", ("steps", VsSeeker.FullBattery - flow.Story.Var(VsSeeker.Battery))));
                 AudioManager.PlaySound("error");
                 return;
             case VsSeekerResult.NoTrainers:
-                ShowNotification("There are no Trainers in range who want to battle.");
+                ShowNotification(Text.Of("engine.vsSeeker.noTrainers"));
                 AudioManager.PlaySound("error");
                 return;
         }
@@ -314,7 +314,7 @@ public partial class GameEngine
             npc.Facing = Direction.Down;
             npc.ShowBubble(EmoteBubble.Exclaim, 1.6f);
         }
-        if (ready.Count == 0 && notYet.Count == 0) ShowNotification("No Trainers are ready for a rematch yet.");
+        if (ready.Count == 0 && notYet.Count == 0) ShowNotification(Text.Of("engine.vsSeeker.noRematch"));
     }
 
     /// <summary>
@@ -326,15 +326,15 @@ public partial class GameEngine
         switch (flow.Radar.Use(flow.Encounters, flow.Map, flow.Player.GridX, flow.Player.GridY, flow.Player.HeightOn(flow.Map), flow.Player.Mode, partner != null, fieldRandom))
         {
             case RadarUse.CantUse:
-                ShowNotification(partner != null ? FieldMoveRules.Why(FieldMoveError.Partner) : "The Poké Radar can only be used standing in tall grass.");
+                ShowNotification(partner != null ? FieldMoveRules.Why(FieldMoveError.Partner) : Text.Of("engine.radar.notInGrass"));
                 AudioManager.PlaySound("error");
                 return;
             case RadarUse.NotCharged:
-                ShowNotification($"The battery has run dry! {RadarChain.BatterySteps - flow.Encounters.RadarCharge} more steps to charge it.");
+                ShowNotification(Text.Of("engine.radar.dry", ("steps", RadarChain.BatterySteps - flow.Encounters.RadarCharge)));
                 AudioManager.PlaySound("error");
                 return;
             case RadarUse.Quiet:
-                ShowNotification("The grass around stayed quiet...");
+                ShowNotification(Text.Of("engine.radar.quiet"));
                 return;
         }
         AudioManager.PlaySound("grass");
@@ -356,7 +356,7 @@ public partial class GameEngine
         // The Town Map off the item button: the map of the region, and back to the field (plan 01 · M12)
         if (item.FieldUse == "TownMap")
         {
-            if (!OpenTownMap(TownMapMode.Item, fromBag: false)) ShowNotification("There is no map of this place.");
+            if (!OpenTownMap(TownMapMode.Item, fromBag: false)) ShowNotification(Text.Of("engine.noMapHere"));
             return;
         }
         // The Seal Case and the Fashion Case from the item button (plan 06 · R17b)
@@ -427,7 +427,7 @@ public partial class GameEngine
         {
             if (!FishingAttempt.CanCast(flow.Map, x, y, flow.Player.Facing, flow.Player.HeightOn(flow.Map)))
             {
-                ShowNotification("There's no water here to fish in.");
+                ShowNotification(Text.Of("engine.noWater"));
                 AudioManager.PlaySound("error");
                 return;
             }
@@ -441,7 +441,7 @@ public partial class GameEngine
             var spot = FieldMoveRules.SpotOf(flow.Map, x, y, flow.Player.Facing, new Walker(flow.Player.Mode, flow.Player.HeightOn(flow.Map))) with { Partner = partner != null };
             if (!spot.CaveWithAWayOut || flow.ExitSpot == null)
             {
-                ShowNotification("There's no way out to be found with it here.");
+                ShowNotification(Text.Of("engine.noWayOut"));
                 AudioManager.PlaySound("error");
                 return;
             }
@@ -604,7 +604,7 @@ public partial class GameEngine
         {
             // A script that goes wrong ends there; the game goes on
             Log.Error("A script went wrong: " + e.Message);
-            ShowNotification("A script went wrong: " + e.Message);
+            ShowNotification(Text.Of("engine.scriptWentWrong", ("problem", e.Message)));
             flow.Runner.Abort();
         }
         RefreshPresence();
@@ -1013,7 +1013,7 @@ public partial class GameEngine
                 case ScriptScreen.ChoosePokemon:
                     game.flow.State = GameState.PartyMenu;
                     // A species named on the line lets only that species be chosen (plan 14 · B14): the rest are greyed
-                    if (counter is { Length: > 0 } only) game.flow.PartyScreen.OpenToChoose(p => ScriptRunner.Fits(p, only), $"Only {only} can be chosen here.");
+                    if (counter is { Length: > 0 } only) game.flow.PartyScreen.OpenToChoose(p => ScriptRunner.Fits(p, only), Text.Of("engine.onlyCanBeChosen", ("only", only)));
                     else game.flow.PartyScreen.OpenToChoose();
                     break;
                 case ScriptScreen.ChooseItem:

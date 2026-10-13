@@ -90,7 +90,7 @@ public partial class GameEngine
     private string? WhyNotGoUnderground()
     {
         int x = flow.Player.GridX, y = flow.Player.GridY;
-        const string no = "The Explorer Kit can't be used here.";
+        string no = Text.Of("tunnels.kitNotHere");
         if (!flow.Map.IsStreamed || flow.Map.Name != "Sinnoh") return no;
         if (flow.Story.Has(BicycleRules.OnCyclingRoadFlag) || flow.Safari.Active) return no;
         if (flow.Player.Mode == TravelMode.Surfing) return no;
@@ -290,7 +290,7 @@ public partial class GameEngine
         trapTap = false;
         flow.Player.ShowBubble(EmoteBubble.Exclaim);
         AudioManager.PlaySound("exclaim");
-        ShowNotification($"A trap! It's a {UndergroundDatabase.TrapName(which)}!");
+        ShowNotification(Text.Of("tunnels.trapSprung", ("trap", UndergroundDatabase.TrapName(which))));
         if (flow.Trap.Done) flow.Trap = null;
     }
 
@@ -304,7 +304,7 @@ public partial class GameEngine
             flow.Player.SetPosition(SecretBaseRules.ExitX, SecretBaseRules.FloorBottom, Direction.Up);
             LayOutBase();
             world.Life.Clear();
-            ShowNotification(digger is { } n && flow.Diggers.FirstOrDefault(d => d.Number == n) is { } owner ? $"{owner.Name}'s secret base" : "Your secret base");
+            ShowNotification(digger is { } n && flow.Diggers.FirstOrDefault(d => d.Number == n) is { } owner ? Text.Of("tunnels.baseOf", ("owner", owner.Name)) : Text.Of("tunnels.yourBase"));
         });
     }
 
@@ -363,7 +363,7 @@ public partial class GameEngine
         if (!wall && !floorTrap && !sphere) return false;
         if (flow.Underground.HeldFlag != null)
         {
-            ShowNotification("Not with a flag in your hands!");
+            ShowNotification(Text.Of("tunnels.flagInHands"));
             AudioManager.PlaySound("error");
             return true;
         }
@@ -371,16 +371,18 @@ public partial class GameEngine
         if (floorTrap)
         {
             int taken = Tunnels.Disarm(x, z);
-            ShowNotification(taken > 0 ? $"You found a {UndergroundDatabase.TrapName(taken)} and took it up!" : "A trap! But you have no room for it.");
+            ShowNotification(taken > 0 ? Text.Of("tunnels.trapTaken", ("trap", UndergroundDatabase.TrapName(taken))) : Text.Of("tunnels.trapNoRoom"));
             AudioManager.PlaySound(taken > 0 ? "select" : "error");
             return true;
         }
         var dug = Tunnels.DigUp(x, z);
-        if (dug == null) ShowNotification("There's no room for another Sphere.");
+        if (dug == null) ShowNotification(Text.Of("tunnels.sphereNoRoom"));
         else
         {
             int grew = Math.Min(dug.Growth, UndergroundState.MaxSphereSize - dug.Size);
-            ShowNotification($"You dug up the {UndergroundDatabase.SphereName(dug.Kind)}: size {dug.Worth}." + (grew > 0 ? $" It had grown by {grew}!" : ""));
+            ShowNotification(grew > 0
+                ? Text.Of("tunnels.dugUpGrown", ("sphere", UndergroundDatabase.SphereName(dug.Kind)), ("size", dug.Worth), ("grew", grew))
+                : Text.Of("tunnels.dugUp", ("sphere", UndergroundDatabase.SphereName(dug.Kind)), ("size", dug.Worth)));
         }
         AudioManager.PlaySound(dug != null ? "select" : "error");
         return true;
@@ -397,7 +399,7 @@ public partial class GameEngine
         foreach (var at in pulse.Walls) world.Life.Glint(flow.Map, at.X, at.Z, new Color(255, 232, 130, 255));
         foreach (var at in pulse.Traps) world.Life.Glint(flow.Map, at.X, at.Z, new Color(255, 110, 96, 255));
         foreach (var at in pulse.Spheres) world.Life.Glint(flow.Map, at.X, at.Z, new Color(130, 200, 255, 255));
-        if (pulse.Walls.Count + pulse.Traps.Count + pulse.Spheres.Count == 0) ShowNotification("Nothing answers nearby...");
+        if (pulse.Walls.Count + pulse.Traps.Count + pulse.Spheres.Count == 0) ShowNotification(Text.Of("tunnels.nothingAnswers"));
     }
 
     // ------------------------------------------------------------------ a trap at work
@@ -446,7 +448,7 @@ public partial class GameEngine
                     if (t.Done)
                     {
                         flow.Trap = null;
-                        ShowNotification("Your feet go where you tell them again.");
+                        ShowNotification(Text.Of("tunnels.feetFree"));
                     }
                     return OnStep();
                 });
@@ -484,7 +486,7 @@ public partial class GameEngine
         if (!t.Done) return;
         flow.Trap = null;
         AudioManager.PlaySound("select");
-        if (t.Family != TrapFamily.Alert) ShowNotification("You got free of the trap!");
+        if (t.Family != TrapFamily.Alert) ShowNotification(Text.Of("tunnels.gotFree"));
     }
 
     private void DrawTrap()
@@ -533,7 +535,7 @@ public partial class GameEngine
                     flow.Story.Set(SphereBuriedFlag);
                     world.Life.Glint(flow.Map, x, z, new Color(130, 200, 255, 255));
                     AudioManager.PlaySound("select");
-                    ShowNotification($"The {UndergroundDatabase.SphereName(sphere!.Kind)} of size {sphere.Size} was buried.");
+                    ShowNotification(Text.Of("tunnels.sphereBuried", ("sphere", UndergroundDatabase.SphereName(sphere!.Kind)), ("size", sphere.Size)));
                 }
                 else Refuse(result, "buried");
                 break;
@@ -545,7 +547,7 @@ public partial class GameEngine
                 if (result == BuryResult.Done)
                 {
                     AudioManager.PlaySound("select");
-                    ShowNotification($"The {UndergroundDatabase.TrapName(which)} was set.");
+                    ShowNotification(Text.Of("tunnels.trapSet", ("trap", UndergroundDatabase.TrapName(which))));
                 }
                 else Refuse(result, "set");
                 break;
@@ -561,11 +563,11 @@ public partial class GameEngine
         AudioManager.PlaySound("error");
         ShowNotification(why switch
         {
-            BuryResult.InTheBase => $"Nothing can be {done} in a secret base.",
-            BuryResult.SomeoneThere => "Someone is standing there.",
-            BuryResult.Wall => $"It can't be {done} in a wall.",
-            BuryResult.SomethingThere => "Something is buried there already.",
-            _ => $"No more can be {done}."
+            BuryResult.InTheBase => Text.Of($"tunnels.refused.{done}.inTheBase"),
+            BuryResult.SomeoneThere => Text.Of($"tunnels.refused.{done}.someoneThere"),
+            BuryResult.Wall => Text.Of($"tunnels.refused.{done}.wall"),
+            BuryResult.SomethingThere => Text.Of($"tunnels.refused.{done}.somethingThere"),
+            _ => Text.Of($"tunnels.refused.{done}.noMore")
         });
     }
 
@@ -578,13 +580,13 @@ public partial class GameEngine
         var (x, z) = AheadBelow();
         if (InTheBase)
         {
-            ShowNotification("The drill can't be used inside a base.");
+            ShowNotification(Text.Of("tunnels.drillInBase"));
             AudioManager.PlaySound("error");
             return;
         }
         if (baseEntrances.ContainsKey((x, z)) || !SecretBaseRules.CanDrill(UndergroundRock, x, z, flow.Player.Facing))
         {
-            ShowNotification("It can't be used here.");
+            ShowNotification(Text.Of("tunnels.cantUseHere"));
             AudioManager.PlaySound("error");
             return;
         }
@@ -596,7 +598,7 @@ public partial class GameEngine
         flow.TrainerScore = TrainerScore.Add(flow.TrainerScore, TrainerScore.NewSecretBase);
         AudioManager.PlaySound("rock_smash");
         LayOutEntrances();
-        ShowNotification(moved ? "The drill opened a cavern! Your secret base has moved here." : "The drill opened a cavern! It is your secret base.");
+        ShowNotification(moved ? Text.Of("tunnels.drill.moved") : Text.Of("tunnels.drill.opened"));
     }
 
     /// <summary>The wall ahead is dug at (<c>Mining_StartGameTask</c>): its place on the map is used up as the game begins.</summary>
@@ -691,7 +693,7 @@ public partial class GameEngine
             case "home":
             {
                 if (flow.Underground.HeldFlag is not { } held) return 0;
-                string owner = flow.Diggers.FirstOrDefault(d => d.Number == held)?.Name ?? "Someone";
+                string owner = flow.Diggers.FirstOrDefault(d => d.Number == held)?.Name ?? Text.Of("tunnels.flagOwner");
                 lastFlagOwner = owner;
                 var better = Diggers.BringHome(flow.Underground, owner);
                 flow.Story.Set(DeliveredFlagFlag);
@@ -705,7 +707,7 @@ public partial class GameEngine
     }
 
     /// <summary>The name a line's <c>{digger}</c> stands for: whose base the player is in, or whose flag they carry.</summary>
-    private string DiggerName => flow.Diggers.FirstOrDefault(d => d.Number == (visiting ?? flow.Underground.HeldFlag))?.Name ?? lastFlagOwner;
+    private string DiggerName => flow.Diggers.FirstOrDefault(d => d.Number == (visiting ?? flow.Underground.HeldFlag))?.Name ?? lastFlagOwner ?? Text.Of("tunnels.digger");
 
-    private string lastFlagOwner = "someone";
+    private string? lastFlagOwner;
 }

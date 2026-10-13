@@ -36,7 +36,10 @@ public class TextTests
         "UI/ModernUi.Hall.cs", "UI/HallBoardScreen.cs", "UI/ModernUi.Castle.cs", "UI/CastleScreen.cs", "UI/ModernUi.Arcade.cs", "UI/ArcadeBoardScreen.cs",
         "UI/ModernUi.Pastimes.cs",
         "UI/ModernUi.Poffins.cs", "UI/PoffinCookingScreen.cs", "UI/PoffinCaseScreen.cs", "UI/SuperContestScreen.cs", "UI/ModernUi.SuperContest.cs",
-        "UI/ModernUi.Capsules.cs", "UI/SealCaseScreen.cs", "UI/FashionCaseScreen.cs", "UI/ModernUi.Ribbons.cs"
+        "UI/ModernUi.Capsules.cs", "UI/SealCaseScreen.cs", "UI/FashionCaseScreen.cs", "UI/ModernUi.Ribbons.cs",
+        "Core/GameEngine.Underground.cs", "Core/GameEngine.Pastimes.cs", "Core/GameEngine.Frontier.cs", "Core/GameEngine.Capsules.cs",
+        "Core/GameEngine.SuperContests.cs", "Core/GameEngine.Poffins.cs", "Core/GameEngine.Hall.cs", "Core/GameEngine.Factory.cs",
+        "Core/GameEngine.Castle.cs", "Core/GameEngine.Arcade.cs", "Core/GameEngine.Encounters.cs", "Core/PlayerIdentity.cs"
     };
 
     /// <summary>What may stay in quotes in a file on the table: names of the data, and the logo, which is a picture (plan 17).</summary>
@@ -94,7 +97,51 @@ public class TextTests
         {
             "Dress Up", "Ranch", "City at Night", "Snowy Town", "Fiery", "Outer Space", "Cumulus Cloud", "Desert", "Flower Patch",
             "Future Room", "Open Sea", "Total Darkness", "Tatami Room", "Gingerbread Room", "Seafloor", "Underground", "Sky", "Theater"
-        }
+        },
+        // The looks the start makes ready, the items and Pokémon a game begins with or is owed, the items' uses the
+        // bag goes by, the trainer classes the Journal tells of, the region and the rooms the game asks about
+        ["Core/GameEngine.cs"] = new[]
+        {
+            "PLAYER", "DAWN", "ROWAN", "Poké Ball", "Great Ball", "Ultra Ball", "Master Ball", "Journal", "Potion", "Revive", "Turtwig",
+            "Glitter Powder", "PoffinCase", "TownMap", "Leader", "Elite Four", "Champion", "Sinnoh", "PlayerHouse"
+        },
+        // The region and the rooms the Journal goes by, the Gyms' towns it keeps in the save, the items' uses the bag goes by, and the move Surf
+        ["Core/GameEngine.Scripts.cs"] = new[]
+        {
+            "Sinnoh", "PlayerHouse", "RowanLab", "OreburghGym", "Oreburgh", "EternaGym", "Eterna", "HearthomeGym", "Hearthome", "VeilstoneGym",
+            "Veilstone", "SunyshoreGym", "Sunyshore", "Journal", "TownMap", "PoffinCase", "VsSeeker", "ExplorerKit", "PokeRadar", "Honey",
+            "Bicycle", "EscapeRope", "Surf"
+        },
+        // The map, the scripts the game itself starts there, the region, and the base's props by their art keys
+        ["Core/GameEngine.Underground.cs"] = new[]
+        {
+            "Underground", "Wall", "BasePC", "DiggerPC", "GoUp", "Sinnoh", "pc:{SecretBaseRules.FlagFor(flags)}", "good:{good.Good}"
+        },
+        // The maps and the script of Pal Park, the place a Pokémon of the park was met, the Villa's furniture by its
+        // names in the table, the start of its flags and its scripts' names, and the Game Corner's rooms and its case
+        ["Core/GameEngine.Pastimes.cs"] = new[]
+        {
+            "PalPark", "PalParkLobby", "CaughtAll", "Pal Park", "Table", "Big Sofa", "Small Sofa", "Bed", "Night Table", "TV", "Audio System",
+            "Bookshelf", "Rack", "Houseplant", "PC Desk", "Music Box", "Pokémon Bust", "Silver Pokémon Bust", "Piano", "Guest Set", "Wall Clock",
+            "Masterpiece", "Tea Set", "Look", "FLAG_VILLA_FURNITURE_", "Chandelier", "VeilstoneGameCorner", "VeilstonePrizeExchange", "Coin Case"
+        },
+        // The lobby's map, a person of the room by name, and the look a trainer with none takes
+        ["Core/GameEngine.Frontier.cs"] = new[] { "BattleTower", "opponent_2", "Trainer" },
+        ["Core/GameEngine.Capsules.cs"] = new[] { "Fashion Case" },
+        // The start of the Master Ranks' flags, and the region whose story is asked about
+        ["Core/GameEngine.SuperContests.cs"] = new[] { "FLAG_CONTEST_MASTER_", "Sinnoh" },
+        // The lobbies' maps
+        ["Core/GameEngine.Hall.cs"] = new[] { "BattleHall" },
+        ["Core/GameEngine.Factory.cs"] = new[] { "BattleFactory" },
+        ["Core/GameEngine.Castle.cs"] = new[] { "BattleCastle" },
+        ["Core/GameEngine.Arcade.cs"] = new[] { "BattleArcade" },
+        ["Core/GameEngine.Encounters.cs"] = new[] { "Poké Radar" },
+        // The characters' own names, which the save keeps as the player's and the rival's, and the looks by their names
+        ["Core/PlayerIdentity.cs"] = new[] { "Barry", "Dawn", "Lucas", "DAWN", "PLAYER", "Player", "Assistant" },
+        // What the tests hear of a cry, never on screen
+        ["Core/AudioManager.cs"] = new[] { "cry {name}", "cry {name} {mode}" },
+        // What a crash report says of the screen the game was on, for whoever reads the report
+        ["Core/GameEngine.Diagnostics.cs"] = new[] { "{flow.ClosingFrom} (the close button's question was up)", "Transition ({flow.Before} to {flow.After})" }
     };
 
     private static readonly Regex Literal = new(@"(\$?)""((?:[^""\\\n]|\\.)*)""", RegexOptions.Compiled);
@@ -243,6 +290,11 @@ public class TextTests
         Assert.Equal(new[] { "1 heart", "0 hearts", "3 hearts" }, new[] { 1, 0, 3 }.Select(n => Text.Of("contest.hearts", ("n", n))));
         Assert.Equal("It has won 2 ribbons.", Text.Of("ribbonPage.won", ("n", 2)));
         Assert.Equal("1 time", Text.Of("cooking.times", ("n", 1)));
+        // N1e, part 3: the engine's own notices and the Underground's tunnels
+        Assert.Equal("The battery isn't charged enough. 12 steps to go!", Text.Of("engine.vsSeeker.charging", ("steps", 12)));
+        Assert.Equal("You dug up the Prism Sphere: size 9. It had grown by 2!",
+            Text.Of("tunnels.dugUpGrown", ("sphere", "Prism Sphere"), ("size", 9), ("grew", 2)));
+        Assert.Equal("It can't be set in a wall.", Text.Of("tunnels.refused.set.wall"));
         // A placeholder the call names nothing for is left for whoever fills it later
         Assert.Equal("Hello {player}", Text.Fill("Hello {player}"));
     }

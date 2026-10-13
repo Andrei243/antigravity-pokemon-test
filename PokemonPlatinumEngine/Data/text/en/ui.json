@@ -1321,5 +1321,68 @@
     "none": "No ribbons yet.",
     "aboutRibbons": "Ribbons are won at contests, and given for deeds of all kinds.",
     "won": { "one": "It has won a ribbon.", "other": "It has won {n} ribbons." }
+  },
+  "engine": {
+    "saved": "Game saved.",
+    "notSaved": "The game couldn't be saved.",
+    "sound": { "off": "Sound off", "on": "Sound on" },
+    "registerOne": "A key item can be kept on this button: register one in the bag.",
+    "gear": { "top": "Top gear.", "low": "Low gear." },
+    "vsSeeker": {
+      "charging": "The battery isn't charged enough. {steps} steps to go!",
+      "noTrainers": "There are no Trainers in range who want to battle.",
+      "noRematch": "No Trainers are ready for a rematch yet."
+    },
+    "radar": {
+      "notInGrass": "The Poké Radar can only be used standing in tall grass.",
+      "dry": "The battery has run dry! {steps} more steps to charge it.",
+      "quiet": "The grass around stayed quiet..."
+    },
+    "noMapHere": "There is no map of this place.",
+    "noWater": "There's no water here to fish in.",
+    "noWayOut": "There's no way out to be found with it here.",
+    "scriptWentWrong": "A script went wrong: {problem}",
+    "onlyCanBeChosen": "Only {only} can be chosen here."
+  },
+  "tunnels": {
+    "kitNotHere": "The Explorer Kit can't be used here.",
+    "trapSprung": "A trap! It's a {trap}!",
+    "baseOf": "{owner}'s secret base",
+    "yourBase": "Your secret base",
+    "flagInHands": "Not with a flag in your hands!",
+    "trapTaken": "You found a {trap} and took it up!",
+    "trapNoRoom": "A trap! But you have no room for it.",
+    "sphereNoRoom": "There's no room for another Sphere.",
+    "dugUp": "You dug up the {sphere}: size {size}.",
+    "dugUpGrown": "You dug up the {sphere}: size {size}. It had grown by {grew}!",
+    "nothingAnswers": "Nothing answers nearby...",
+    "feetFree": "Your feet go where you tell them again.",
+    "gotFree": "You got free of the trap!",
+    "sphereBuried": "The {sphere} of size {size} was buried.",
+    "trapSet": "The {trap} was set.",
+    "refused": {
+      "buried": {
+        "inTheBase": "Nothing can be buried in a secret base.",
+        "someoneThere": "Someone is standing there.",
+        "wall": "It can't be buried in a wall.",
+        "somethingThere": "Something is buried there already.",
+        "noMore": "No more can be buried."
+      },
+      "set": {
+        "inTheBase": "Nothing can be set in a secret base.",
+        "someoneThere": "Someone is standing there.",
+        "wall": "It can't be set in a wall.",
+        "somethingThere": "Something is buried there already.",
+        "noMore": "No more can be set."
+      }
+    },
+    "drillInBase": "The drill can't be used inside a base.",
+    "cantUseHere": "It can't be used here.",
+    "drill": {
+      "moved": "The drill opened a cavern! Your secret base has moved here.",
+      "opened": "The drill opened a cavern! It is your secret base."
+    },
+    "flagOwner": "Someone",
+    "digger": "someone"
   }
 }
