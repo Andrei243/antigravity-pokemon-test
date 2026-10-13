@@ -24,8 +24,8 @@ namespace PokemonPlatinumEngine.Core;
 /// </summary>
 public partial class GameEngine
 {
-    private ScriptLibrary scripts = null!;
-    private ScriptRunner runner = null!;
+    private ScriptLibrary scripts { get => flow.Scripts; set => flow.Scripts = value; }
+    private ScriptRunner runner { get => flow.Runner; set => flow.Runner = value; }
 
     // A question's answers, shown beside the text box once the question is written out
     private readonly ChoiceBox choice = new();

@@ -148,7 +148,7 @@ More than one sitting (the overview's second look): whoever takes it up splits i
 - **Done when** `GameEngine` holds nothing but what draws, sounds and reads keys, and `diff` of `all` is empty.
 - **Split by state** (2026-10-13, wave 11, with little of the week's usage left), in four parts:
   - **T11a, done 2026-10-13.** `Core/GameFlow.cs` holds the frame every state hangs on: `State`, a transition (`StartTransition`, `OpenOn`, `Advance`, which says what the frame came to as a `TransitionStep` and runs the engine's `atShut` before the midpoint's callback), what the picture holds (`Shown` under the close button's question, `Scene` through a transition), the close button's `ClosingFrom`, `OptionsReturn`, `EvolutionReturn` and the queue of `Evolutions`. `GameEngine` keeps `currentState` as a property over `flow.State` while the rest moves out, so its hundred uses read as before; the band, the lens and the trainers' look on arrival stay the engine's, answered from the step. `GameFlowTests` drives it with no window. Nothing drawn changed on purpose; the harness wasn't run (`diff` of `all` is owed).
-  - **T11b**: the field's objects (the map, the player, the party, bag, Pokédex, boxes, money, `story`, `runner`, `battle`) move into the flow.
+  - **T11b, done 2026-10-13.** The field's objects move into the flow (`Core/GameFlow.Field.cs`): `Map`, `Player`, `Party`, `Bag`, `Pokedex`, `Boxes`, `Money` (returned by reference, since the shops' screens change it where it is kept), `Story`, `Scripts`, `Runner` and `Battle`. The engine's old names (`currentMap`, `player`, `playerParty`, `playerMoney`, `story`, `runner`, `battle`…) are properties over them until T11d takes them away. Build and `GameFlowTests` only; `diff` of `all` is owed.
   - **T11c**: the screens' logic and the actions (`Steer`, `Confirm`, `Cancel`, `Menu`, `Move`) the flow takes with `dt`; `Update` becomes reading the keys into actions.
   - **T11d**: the models wanted before a fade as an event the engine answers with `PokemonModels.Request`, `Driver` as the flow's own surface, `currentState` gone.
 
@@ -304,7 +304,7 @@ After T23 and plan 12 · Q8 (the page earns its place once text size and colours
 - [x] T8 The content check (2026-10-12: `tools/ContentCheck` in the solution, its checks driven by `ContentTests`; lines measured with no window; plans of rooms and areas; 16 findings in the repository, all settled)
 - [ ] T9 The room and overlay editor
 - [ ] T10 Performance budgets
-- [ ] T11 The state machine without the renderers (T11a done 2026-10-13: `GameFlow` with the state, transitions, return states and evolution queue)
+- [ ] T11 The state machine without the renderers (T11a and T11b done 2026-10-13: `GameFlow` with the state, transitions, return states and evolution queue, then the field's objects)
 - [ ] T12 The headless field
 - [ ] T13 The end-to-end test and the field fuzzer
 - [ ] T14 Data layers and the manifest
