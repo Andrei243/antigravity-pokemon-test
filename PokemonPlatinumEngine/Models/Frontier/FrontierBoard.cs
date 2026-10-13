@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Story;
 
 namespace PokemonPlatinumEngine.Models.Frontier;
@@ -27,11 +28,11 @@ public sealed record FrontierBoard(FrontierFacility Facility, string Title, IRea
 
     public static string NameOf(FrontierFacility facility) => facility switch
     {
-        FrontierFacility.Tower => "Battle Tower",
-        FrontierFacility.Factory or FrontierFacility.FactoryOpen => "Battle Factory",
-        FrontierFacility.Castle => "Battle Castle",
-        FrontierFacility.Hall => "Battle Hall",
-        _ => "Battle Arcade"
+        FrontierFacility.Tower => Text.Of("records.facility.tower"),
+        FrontierFacility.Factory or FrontierFacility.FactoryOpen => Text.Of("records.facility.factory"),
+        FrontierFacility.Castle => Text.Of("records.facility.castle"),
+        FrontierFacility.Hall => Text.Of("records.facility.hall"),
+        _ => Text.Of("records.facility.arcade")
     };
 
     /// <summary>The board of a facility as the records stand: every one of the five has rows of its own.</summary>
@@ -40,7 +41,7 @@ public sealed record FrontierBoard(FrontierFacility Facility, string Title, IRea
         var rows = new List<FrontierBoardRow>();
         if (facility == FrontierFacility.Tower)
         {
-            foreach (var (mode, label) in new[] { (TowerMode.Single, "Single Battle"), (TowerMode.Double, "Double Battle"), (TowerMode.Multi, "Multi Battle") })
+            foreach (var (mode, label) in new[] { (TowerMode.Single, Text.Of("records.row.single")), (TowerMode.Double, Text.Of("records.row.double")), (TowerMode.Multi, Text.Of("records.row.multi")) })
                 rows.Add(new FrontierBoardRow(label, records.Get(BattleTowerChallenge.RecordStat(mode)), records.Get(BattleTowerChallenge.LatestStat(mode)),
                     records.IsRunning(FrontierFacility.Tower, (int)mode)));
         }
@@ -48,13 +49,16 @@ public sealed record FrontierBoard(FrontierFacility Facility, string Title, IRea
         if (facility is FrontierFacility.Factory or FrontierFacility.FactoryOpen)
         {
             // The Battle Factory: its two levels, each taken alone with one Pokémon out or with two, and the trades of each streak
-            counted = "TRADES";
-            foreach (bool open in new[] { false, true })
-                foreach (var (way, label) in new[] { (FrontierChallenge.Single, "Single"), (FrontierChallenge.Double, "Double") })
-                    rows.Add(new FrontierBoardRow((open ? "Open Level " : "Lv. 50 ") + label,
-                        records.Get(BattleFactoryChallenge.RecordStreakStat(way, open)), records.Get(BattleFactoryChallenge.LatestStreakStat(way, open)),
-                        records.IsRunning(BattleFactoryChallenge.FacilityOf(open), (int)way),
-                        records.Get(BattleFactoryChallenge.RecordTradesStat(way, open)), records.Get(BattleFactoryChallenge.LatestTradesStat(way, open))));
+            counted = Text.Of("records.counted.trades");
+            foreach (var (open, way, label) in new[]
+            {
+                (false, FrontierChallenge.Single, Text.Of("records.row.lv50Single")), (false, FrontierChallenge.Double, Text.Of("records.row.lv50Double")),
+                (true, FrontierChallenge.Single, Text.Of("records.row.openSingle")), (true, FrontierChallenge.Double, Text.Of("records.row.openDouble"))
+            })
+                rows.Add(new FrontierBoardRow(label,
+                    records.Get(BattleFactoryChallenge.RecordStreakStat(way, open)), records.Get(BattleFactoryChallenge.LatestStreakStat(way, open)),
+                    records.IsRunning(BattleFactoryChallenge.FacilityOf(open), (int)way),
+                    records.Get(BattleFactoryChallenge.RecordTradesStat(way, open)), records.Get(BattleFactoryChallenge.LatestTradesStat(way, open))));
             facility = FrontierFacility.Factory;
         }
         var species = new List<FrontierSpeciesRow>();
@@ -62,7 +66,7 @@ public sealed record FrontierBoard(FrontierFacility Facility, string Title, IRea
         {
             // The Battle Hall (plan 06 · R18c): a streak is a species' own, so a row shows the best any species has
             // done, and the species follow, each with its two records
-            foreach (var (way, label) in new[] { (FrontierChallenge.Single, "Single Battle"), (FrontierChallenge.Double, "Double Battle") })
+            foreach (var (way, label) in new[] { (FrontierChallenge.Single, Text.Of("records.row.single")), (FrontierChallenge.Double, Text.Of("records.row.double")) })
             {
                 var kept = records.Hall.Of(way);
                 rows.Add(new FrontierBoardRow(label, kept.Count == 0 ? 0 : kept.Values.Max(), records.Get(BattleHallChallenge.LatestStreakStat(way)),
@@ -78,8 +82,8 @@ public sealed record FrontierBoard(FrontierFacility Facility, string Title, IRea
         if (facility == FrontierFacility.Castle)
         {
             // The Battle Castle (plan 06 · R18c): beside each streak, the Castle Points it was made with
-            counted = "CP";
-            foreach (var (way, label) in new[] { (FrontierChallenge.Single, "Single Battle"), (FrontierChallenge.Double, "Double Battle") })
+            counted = Text.Of("records.counted.points");
+            foreach (var (way, label) in new[] { (FrontierChallenge.Single, Text.Of("records.row.single")), (FrontierChallenge.Double, Text.Of("records.row.double")) })
                 rows.Add(new FrontierBoardRow(label, records.Get(BattleCastleChallenge.RecordStreakStat(way)), records.Get(BattleCastleChallenge.LatestStreakStat(way)),
                     records.IsRunning(FrontierFacility.Castle, (int)way),
                     records.Get(BattleCastleChallenge.RecordPointsStat(way)), records.Get(BattleCastleChallenge.LatestPointsStat(way))));
@@ -87,7 +91,7 @@ public sealed record FrontierBoard(FrontierFacility Facility, string Title, IRea
         if (facility == FrontierFacility.Arcade)
         {
             // The Battle Arcade (plan 06 · R18d): a streak and nothing beside it
-            foreach (var (way, label) in new[] { (FrontierChallenge.Single, "Single Battle"), (FrontierChallenge.Double, "Double Battle") })
+            foreach (var (way, label) in new[] { (FrontierChallenge.Single, Text.Of("records.row.single")), (FrontierChallenge.Double, Text.Of("records.row.double")) })
                 rows.Add(new FrontierBoardRow(label, records.Get(BattleArcadeChallenge.RecordStreakStat(way)), records.Get(BattleArcadeChallenge.LatestStreakStat(way)),
                     records.IsRunning(FrontierFacility.Arcade, (int)way)));
         }

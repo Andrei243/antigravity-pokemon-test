@@ -31,7 +31,10 @@ public class TextTests
         "UI/ModernUi.Poketch.Map.cs", "UI/ModernUi.Poketch.Pokemon.cs", "Models/PoketchApps/ColorChangerApp.cs", "UI/HelpScreen.cs",
         "UI/ModernUi.Help.cs", "UI/ModernUi.Wardrobe.cs", "UI/WardrobeScreen.cs", "UI/ModernUi.Hatch.cs", "UI/HatchScreen.cs",
         "UI/ModernUi.Ceremony.cs", "UI/HallOfFameCeremony.cs", "UI/CreditsScreen.cs", "UI/SlotMachineScreen.cs",
-        "UI/ModernUi.Underground.cs", "UI/MiningScreen.cs", "UI/UndergroundScreen.cs", "UI/DecorationScreen.cs", "Models/Decorating.cs"
+        "UI/ModernUi.Underground.cs", "UI/MiningScreen.cs", "UI/UndergroundScreen.cs", "UI/DecorationScreen.cs", "Models/Decorating.cs",
+        "UI/ModernUi.Frontier.cs", "UI/FrontierRecordsScreen.cs", "Models/Frontier/FrontierBoard.cs", "UI/ModernUi.Factory.cs", "UI/FactoryScreen.cs",
+        "UI/ModernUi.Hall.cs", "UI/HallBoardScreen.cs", "UI/ModernUi.Castle.cs", "UI/CastleScreen.cs", "UI/ModernUi.Arcade.cs", "UI/ArcadeBoardScreen.cs",
+        "UI/ModernUi.Pastimes.cs"
     };
 
     /// <summary>What may stay in quotes in a file on the table: names of the data, and the logo, which is a picture (plan 17).</summary>
@@ -68,7 +71,9 @@ public class TextTests
             "LIGHT_CLAY", "SPOOKY", "TOXIC", "DREAD", "ODD_KEYSTONE", "EARTH", "FIST", "SMOOTH", "STONE_PLATE"
         },
         // A row's picture by its kind; the hikers' kinds of stock and the Digger Drill's id, which the lists go by
-        ["UI/UndergroundScreen.cs"] = new[] { "sphere:", "treasure:", "Traps", "Treasures", "TRAP_DIGGER_DRILL" }
+        ["UI/UndergroundScreen.cs"] = new[] { "sphere:", "treasure:", "Traps", "Treasures", "TRAP_DIGGER_DRILL" },
+        // The same Pokémon, whose sprite the slot machine's display shows in the bonus game
+        ["UI/ModernUi.Pastimes.cs"] = new[] { "Clefairy" }
     };
 
     private static readonly Regex Literal = new(@"(\$?)""((?:[^""\\\n]|\\.)*)""", RegexOptions.Compiled);
