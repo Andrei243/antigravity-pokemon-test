@@ -62,6 +62,12 @@ public sealed class CoreSetup
     /// Pokémon obeys (<c>BattleSystem_CheckObedience</c>) and Burmy keeps its cloak (<c>BattleSystem_SetBurmyForm</c>).
     /// </summary>
     public bool Frontier { get; init; }
+
+    /// <summary>
+    /// Nothing may be used from the bag by either side (plan 14 · B14, Let's Go's Master Trainers; plan 13 · V5's run
+    /// rule of the same name): <see cref="BattleCore.WhyNot"/> refuses every item, and the trainer AI reaches for none.
+    /// </summary>
+    public bool NoBattleItems { get; init; }
 }
 
 /// <summary>
@@ -131,6 +137,9 @@ public sealed partial class BattleCore : IBattleContext
     /// <summary>A battle of the Battle Frontier, with the rules of its own (<see cref="CoreSetup.Frontier"/>).</summary>
     public bool Frontier { get; }
 
+    /// <summary>Nothing may be used from the bag by either side (<see cref="CoreSetup.NoBattleItems"/>).</summary>
+    public bool NoBattleItems { get; }
+
     /// <summary>No critical hit lands in the catching lesson or the first battle (<c>BtlCmd_CalcCrit</c>).</summary>
     internal bool NoCriticalHits => Kind == BattleKind.CatchingLesson || FirstBattle;
 
@@ -183,6 +192,7 @@ public sealed partial class BattleCore : IBattleContext
         FirstBattle = setup.FirstBattle;
         Frontier = setup.Frontier;
         Field.Frontier = Frontier;
+        NoBattleItems = setup.NoBattleItems;
         Field.Inverse = Conditions.Inverse;
         SpecialBalls = setup.SpecialBalls;
         Partner = Kind is BattleKind.Safari or BattleKind.PalPark ? null : setup.Partner;

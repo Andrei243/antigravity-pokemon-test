@@ -1,0 +1,38 @@
+[
+  {
+    "id": "scientist_ingram",
+    "name": "Ingram",
+    "class": "Scientist",
+    "ai": [
+      "Basic",
+      "Expert"
+    ],
+    "prizeMoney": 2544,
+    "party": [
+      {
+        "species": "Magneton",
+        "level": 55,
+        "ivScale": 120,
+        "personality": 4103816,
+        "moves": [
+          "Discharge",
+          "Flash Cannon",
+          "Tri Attack",
+          "Thunder Wave"
+        ]
+      },
+      {
+        "species": "Bronzong",
+        "level": 53,
+        "ivScale": 120,
+        "personality": 9230472,
+        "moves": [
+          "Gyro Ball",
+          "Extrasensory",
+          "Earthquake",
+          "Hypnosis"
+        ]
+      }
+    ]
+  }
+]

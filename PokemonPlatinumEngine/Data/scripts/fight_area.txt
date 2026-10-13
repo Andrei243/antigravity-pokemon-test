@@ -275,10 +275,11 @@ label Advice
 # FLAG_DAILY_FIGHT_AREA_INVERSE_BATTLE is the day's battle had, won or lost (a new day clears it with the other
 # daily flags, Models/DailyEvents.cs); FLAG_FIGHT_AREA_INVERSE_EXPLAINED keeps him from explaining it all twice.
 #
-# His team is one of Platinum's data (the last of Scientist Shaun's Vs. Seeker row, which nothing else reads once
-# beaten), chosen because its Magneton shows the whole of the rule: what Steel shrugged off hurts it, Poison reaches
-# it, Ground and Fire barely scratch it, and its own Electric moves strike a Ground type hard. A battle lost is no
-# white-out (canlose): nobody is carried to a Pokémon Center over an experiment.
+# His team is his own (plan 14 · B14: Scientist Ingram of Data/our-trainers.json, the first file of trainers of
+# ours), led by a Magneton because it shows the whole of the rule: what Steel shrugged off hurts it, Poison reaches
+# it, Ground and Fire barely scratch it, and its own Electric moves strike a Ground type hard; his Bronzong floats
+# over Ground moves on Levitate all the same. A battle lost is no white-out (canlose): nobody is carried to a Pokémon
+# Center over an experiment.
 script InverseBattle
   face self player
   speaker self
@@ -293,7 +294,7 @@ label Offer
   if no goto Refused
   say "Splendid! Remember: everything you know is backwards. Pencil at the ready... Begin!"
   setflag FLAG_DAILY_FIGHT_AREA_INVERSE_BATTLE
-  battle self as "scientist_shaun_rematch_3" inverse canlose
+  battle self as "scientist_ingram" inverse canlose
   speaker self
   if lost goto Lost
   say "Remarkable! You turned your whole way of thinking round in a single battle. That goes straight into my notes."

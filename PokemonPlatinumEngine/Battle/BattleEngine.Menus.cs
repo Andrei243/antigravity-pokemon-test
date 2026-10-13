@@ -239,6 +239,12 @@ public partial class BattleEngine
                     Refuse(BattleCore.FrontierBagRefusal, BattleMenuState.Main);
                     return;
                 }
+                // A Master Trainer's battle closes the bag to both sides (plan 14 · B14)
+                if (BagClosed)
+                {
+                    Refuse(BattleCore.NoItemsRefusal, BattleMenuState.Main);
+                    return;
+                }
                 HUD.MenuState = BattleMenuState.SelectBagPocket;
                 break;
             case 2:

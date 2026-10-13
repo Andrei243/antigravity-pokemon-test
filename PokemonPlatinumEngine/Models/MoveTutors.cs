@@ -115,6 +115,9 @@ public static class MoveTutors
     /// <summary>The strongest move of a starter fully grown (the original's <c>CheckFinalStageStarter</c>), or null for any other Pokémon.</summary>
     public static string? UltimateMoveOf(Pokemon p) => p.IsEgg ? null : Ultimate.GetValueOrDefault(p.Species.Name);
 
+    /// <summary>The strongest move of a species of the twelve, or null for any other (plan 14 · B14's legality check).</summary>
+    public static string? UltimateMoveOf(string species) => Ultimate.GetValueOrDefault(species);
+
     /// <summary>The old man's answer (the original's Route 228 script): one of the twelve, that doesn't know its move and trusts its Trainer fully.</summary>
     public static TutorAnswer ForUltimateMove(Pokemon? p) =>
         p == null ? TutorAnswer.Nobody

@@ -275,6 +275,14 @@ public static class ScriptParser
                 }
                 return new Instruction { Op = Op.Battle, Line = line, Name = who, Other = second, Partner = partner, PartnerById = byId, Option = mayLose, FirstBattle = first, AsTrainer = asTrainer, Rematch = rematch, Inverse = inverse };
             }
+            // A Master Trainer's battle (plan 14 · B14): the one choosepokemon chose, alone, with the bag closed
+            case "master":
+            {
+                string who = r.Who();
+                if (who == "player") throw r.Error("the player can't be battled");
+                bool mayLose = r.More && r.OneOf("canlose") == "canlose";
+                return new Instruction { Op = Op.Master, Line = line, Name = who, Option = mayLose };
+            }
             case "wildbattle":
             case "catchinglesson":
             {
@@ -517,7 +525,8 @@ public static class ScriptParser
             case "travel":
                 return new Instruction { Op = Op.Travel, Line = line };
             case "choosepokemon":
-                return new Instruction { Op = Op.ChoosePokemon, Line = line };
+                // "choosepokemon "Bidoof"" lets only that species be chosen (plan 14 · B14: a Master Trainer's)
+                return new Instruction { Op = Op.ChoosePokemon, Line = line, Name = r.More ? r.Text("a species' name") : "" };
             // Wild Pokémon (plan 06 · R13)
             case "honeytree":
                 return new Instruction { Op = Op.HoneyTree, Line = line, Name = r.OneOf("status", "slather", "battle") };

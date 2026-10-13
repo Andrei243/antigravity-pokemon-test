@@ -20,6 +20,9 @@ internal static partial class ModernUi
     /// The battle's four commands: FIGHT and BAG, POKÉMON, RUN; in the Great Marsh the Safari Ball (with how many are
     /// left), BAIT, MUD and RUN; in Pal Park the Park Ball and RUN (an empty label is a command that isn't there).
     /// </summary>
+    /// <summary>A command that can't be used in this battle (plan 14 · B14: BAG in a Master Trainer's battle).</summary>
+    public static readonly Color Closed = new(150, 156, 174, 255);
+
     public static (string Big, string[] Small) CommandLabels(BattleEngine battle) => battle.Kind switch
     {
         BattleKind.Safari => ($"SAFARI BALL ×{battle.SpecialBalls}", new[] { "BAIT", "MUD", "RUN" }),
@@ -75,6 +78,8 @@ internal static partial class ModernUi
                 var (big, labels) = CommandLabels(battle);
                 Color[] colors = { Gold, Green, Blue };
                 Button(new Rectangle(1140, 848, 432, 190), balls ? 30 : 34, Red, big, balls ? 40 : 60, hud.MainMenuIndex == 0);
+                // The bag closed (plan 14 · B14): BAG stands greyed in its place, and choosing it says why
+                if (battle.BagClosed) colors[0] = Closed;
                 for (int i = 0; i < 3; i++)
                     if (labels[i].Length > 0) Button(new Rectangle(1600, 848 + i * 66, 272, 58), 29, colors[i], labels[i], 28, hud.MainMenuIndex == i + 1);
                 break;

@@ -8,7 +8,8 @@ partial class Harness
     // type (ft04); his word after a win, the same day's "come back tomorrow", the next day's offer, and a battle lost.
     // The player's Pokémon and the scientist's are made whole at every menu, so each hit is seen on a full bar. It
     // prints what each left behind (the day's flag, the battle's chart and its record's, each hit with what was said
-    // of it, the money, who is beaten).
+    // of it, the money, who is beaten). B14, last: the party screen choosing a Bidoof with a Starly greyed (ft60), the
+    // Bidoof Master's battle with the bag shut (ft61), and what it left (the master beaten, the Bidoof's level, the money).
     public void FormatsMode()
     {
         engine.StartNewGame();
@@ -36,7 +37,7 @@ partial class Harness
         // The cards say how a move will do, of a species seen before (plan 12 · Q10): they must tell the truth here too
         engine.Settings.MoveHints = RulesDefault.On;
         engine.ApplySettings(window: false);
-        foreach (string seen in new[] { "Magneton", "Alakazam" }) game.Pokedex.RegisterSeen(PokemonDatabase.Get(seen)!.DexNumber);
+        foreach (string seen in new[] { "Magneton", "Bronzong" }) game.Pokedex.RegisterSeen(PokemonDatabase.Get(seen)!.DexNumber);
 
         DialogueManager Box() => game.Dialogue;
         GameState State() => game.State;
@@ -304,5 +305,40 @@ partial class Harness
         ReadTo(null);
         var where = game.Player;
         Console.WriteLine($"lost: {Flags(Day)}; the player still at {where.GridX},{where.GridY} of {game.Map.Name}, {Hp(weak)}; state {State()}");
+
+        // ---- plan 14 · B14, a Master Trainer: the party screen choosing with only Bidoof let through (a Starly greyed
+        // beside it), and the master's battle with the bag shut to both sides. No master stands in the world yet (plan
+        // 14, decision 8), so a script of the harness's own has the scientist fight as the Bidoof Master
+        team.Members.Clear();
+        var starly = new Pokemon(PokemonDatabase.Get("Starly")!, 30);
+        var bidoof = new Pokemon(PokemonDatabase.Get("Bidoof")!, 60);
+        team.Members.Add(starly);
+        team.Members.Add(bidoof);
+        int masterLevel = bidoof.Level, moneyBefore = game.Money;
+        var standing = Scientist();
+        if (standing != null) At(Sinnoh, standing.GridX - 1, standing.GridY, Direction.Right);
+        engine.StartScript(ScriptParser.Parse(Place, "script Master\n  choosepokemon \"Bidoof\"\n  if result == 255 end\n  master " + Who + " canlose\n  end\n")[0]);
+        Until(() => game.PartyScreen.IsActive, "the party screen choosing");
+        game.PartyScreen.SelectedIndex = 1;
+        Frames(30); Shot("ft60_master_choose");
+        Console.WriteLine($"choosing: only some {game.PartyScreen.ChoosingSome}; tags {string.Join(", ", team.Members.Select(p => $"{p.Species.Name} {game.PartyScreen.ChooseTag(p) ?? "-"}"))}");
+        game.PartyScreen.SelectedIndex = 0;
+        game.PartyScreen.Confirm(team);
+        Console.WriteLine($"the Starly chosen: {game.PartyScreen.Message}; still open {game.PartyScreen.IsActive}");
+        game.PartyScreen.SelectedIndex = 1;
+        game.PartyScreen.Confirm(team);
+        var master = IntoBattle(null);
+        if (master != null)
+        {
+            Skip(0.6); Shot("ft61_master_bag_closed");
+            Console.WriteLine($"the master's battle: bag closed {master.BagClosed}; the player's side {string.Join(", ", master.PlayerParty.Members.Select(p => $"{p.Species.Name} {p.Level}"))}; "
+                + $"{master.Trainers[0].FullTitle}'s {string.Join(", ", master.EnemyParty.Members.Select(p => $"{p.Species.Name} {p.Level} ({string.Join("/", p.Moves.Select(m => m.Name))})"))}");
+            master.SelectMainMenuOption(1);
+            Console.WriteLine($"BAG: {master.CurrentMessage}");
+            Finish(master, win: true);
+        }
+        ReadTo(null);
+        Console.WriteLine($"the master beaten: master_bidoof {story.HasDefeated("master_bidoof")}; the Bidoof {masterLevel} -> {bidoof.Level}, still the team's {team.Members.Contains(bidoof)}; "
+            + $"money {moneyBefore} -> {game.Money}");
     }
 }

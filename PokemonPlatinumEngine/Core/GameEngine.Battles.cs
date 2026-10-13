@@ -310,7 +310,8 @@ public partial class GameEngine
 
     /// <summary>
     /// A battle with a trainer of the map; with a <paramref name="partner"/>, a tag battle beside them (plan 06 · R9);
-    /// with <paramref name="terms"/>, one of the formats a script may ask for (plan 14 · B1: an inverse battle).
+    /// with <paramref name="terms"/>, one of the formats a script may ask for (plan 14 · B1: an inverse battle; B14: a
+    /// Master Trainer's, one Pokémon of the team alone and the bag closed).
     /// </summary>
     private void StartTrainerBattle(NPC trainerNpc, NPC? secondNpc = null, Trainer? partner = null, bool firstBattle = false, BattleTerms? terms = null)
     {
@@ -348,14 +349,22 @@ public partial class GameEngine
             Double = two,
             Terrain = BattleConditionsHere().Terrain,
             TheirLevel = (trainer.Party.Members.FirstOrDefault(p => !p.IsFainted) ?? trainer.Party.Members[0]).Level,
-            OwnLevel = LeadLevel()
+            OwnLevel = terms?.Alone?.Level ?? LeadLevel()
         };
+        // A Master Trainer's battle (plan 14 · B14): the player's side is the one Pokémon put forward, alone, the
+        // team's own object, so the EXP, friendship and PP the battle changes stay with it (decision 9)
+        var side = playerParty;
+        if (terms?.Alone is { } alone)
+        {
+            side = new Party();
+            side.Add(alone);
+        }
         StartTransition(GameState.Battle, () =>
         {
             AwaitModels(shown);
             battle = new BattleEngine(new BattleSetup
             {
-                PlayerParty = playerParty,
+                PlayerParty = side,
                 Inventory = playerInventory,
                 Pokedex = playerPokedex,
                 PcStorage = pcBoxStorage,
@@ -364,6 +373,7 @@ public partial class GameEngine
                 Trainers = trainers,
                 Partner = partner,
                 FirstBattle = firstBattle,
+                NoBattleItems = terms?.NoBattleItems ?? false,
                 Conditions = BattleConditionsHere(terms),
                 MoveHints = MoveHintsOn,
                 TrainerLines = TrainerLinesOn
