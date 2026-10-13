@@ -16,8 +16,6 @@ public partial class GameEngine
     /// <summary>The flags a win at the Master Rank sets, one for each quality (the original's <c>SystemFlag_SetContestMaster</c>).</summary>
     public static string ContestMasterFlag(ContestStat category) => "FLAG_CONTEST_MASTER_" + category.ToString().ToUpperInvariant();
 
-    /// <summary>How the last contest came out (<c>supercontest ribbon</c> and <c>prize</c> ask it); nothing is kept of it in a save.</summary>
-    private ContestOutcome? contestOutcome;
 
     /// <summary>
     /// A contest begins for a Pokémon of the team (<c>NewContest</c>, <c>RunContestApplication</c>): the screen opens
@@ -25,7 +23,7 @@ public partial class GameEngine
     /// </summary>
     private void HoldContest(int slot, ContestStat category, ContestRank rank, ContestMode mode)
     {
-        contestOutcome = null;
+        flow.ContestOutcome = null;
         if (slot < 0 || slot >= flow.Party.Count) return;
         var pokemon = flow.Party.Members[slot];
         bool afterGame = flow.Story.IsRegionComplete("Sinnoh") && flow.Pokedex.NationalUnlocked;
@@ -50,10 +48,10 @@ public partial class GameEngine
     /// </summary>
     private void FinishContest()
     {
-        contestOutcome = flow.SuperContestScreen.Outcome;
-        if (flow.SuperContestScreen.Contest is { } contest && contestOutcome is { } outcome)
+        flow.ContestOutcome = flow.SuperContestScreen.Outcome;
+        if (flow.SuperContestScreen.Contest is { } contest && flow.ContestOutcome is { } outcome)
         {
-            scriptAnswer = outcome.Placement;
+            flow.ScriptAnswer = outcome.Placement;
             // The records and the winner's photograph (plan 06 · R17b; RECORD_SUPER_CONTEST_PARTICIPATIONS and its fellows)
             flow.ContestRecords.Count(outcome, contest.Player.Pokemon, flow.SuperContestScreen.Worn, PlayerIdentity.Name, GameClock.Today);
             if (!contest.IsPractice)

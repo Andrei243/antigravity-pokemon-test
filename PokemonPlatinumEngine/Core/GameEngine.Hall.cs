@@ -21,8 +21,8 @@ public partial class GameEngine
     private void OpenHallBoard()
     {
         if (flow.Hall == null) return;
-        scriptAnswer = 0;
-        enteredSlots = Array.Empty<int>();
+        flow.ScriptAnswer = 0;
+        flow.EnteredSlots = Array.Empty<int>();
         var entered = flow.Hall.Slots.Where(s => s >= 0 && s < flow.Party.Count).Select(s => flow.Party.Members[s]).ToList();
         flow.HallBoardScreen.Open(flow.Hall, entered);
         flow.State = GameState.HallBoard;
@@ -33,8 +33,8 @@ public partial class GameEngine
         flow.HallBoardScreen.Update(dt);
         if (flow.HallBoardScreen.IsActive) return;
         // The script that opened the board hears which type was chosen
-        enteredSlots = new List<int> { flow.HallBoardScreen.Outcome };
-        scriptAnswer = 1;
+        flow.EnteredSlots = new List<int> { flow.HallBoardScreen.Outcome };
+        flow.ScriptAnswer = 1;
         flow.State = GameState.Overworld;
     }
 

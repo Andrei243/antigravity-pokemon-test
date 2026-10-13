@@ -24,17 +24,6 @@ namespace PokemonPlatinumEngine.Core;
 /// </summary>
 public partial class GameEngine
 {
-    private IReadOnlyList<string>? pendingAnswers;
-    private int pendingCancel;
-    private int scriptAnswer;
-
-    // The item the bag chose for a script's chooseitem (plan 06 · R14a)
-    private string? scriptItem;
-
-    // What a script set going: people walking, the player walking, the screen gone black, the camera sent away
-    private readonly List<NpcWalk> npcWalks = new();
-    private PlayerWalk? playerWalk;
-
     // Whoever a script's last gesture was given to (plan 11 · C11; null for the player), while the script waits for it
     private (bool Waiting, NPC? Who) actor;
 
@@ -51,28 +40,6 @@ public partial class GameEngine
         if (actor.Who is { } who && !near.Contains(who)) who.TickGesture(dt);
         if (!ActorBusy) actor = default;
     }
-    private readonly ScreenFade scriptFade = new();
-    private bool cameraSent;
-
-    // The battle a script started: how it came out, and whether losing it is part of the story
-    private BattleOutcome scriptOutcome;
-    private bool battleMayBeLost;
-    // ... and the turns it went on for before its last (the original's VAR_TOTAL_TURNS_LAST_BATTLE; plan 01 · M11, part b)
-    private int scriptTurns;
-
-    // The story as the maps last saw it, and whether the place the player came to has yet to run its own script
-    private int presenceRevision = -1;
-    private bool arrived;
-
-    // A field move being used (plan 02 · S2): its cut-in, and the obstacle it acts on as the band closes
-    private FieldCutIn? cutIn;
-    private NPC? cutInSubject;
-
-    // A step a field move began (out onto the water, a climb), which the script waits for
-    private bool fieldMoveStep;
-
-    // The town chosen on Fly's map, for the script that flies there
-    private SpawnLocation? flyTarget;
 
     // Boulders sliding on after a push: which, how long they have left, and which way they go
     private readonly List<(NPC Boulder, float Left, int Dx, int Dy)> slides = new();
@@ -134,8 +101,8 @@ public partial class GameEngine
     /// <summary>Puts everyone of every map where the story has them, when the story has changed since they were last put.</summary>
     private void RefreshPresence(bool startOver = false)
     {
-        if (!startOver && presenceRevision == flow.Story.Revision) return;
-        presenceRevision = flow.Story.Revision;
+        if (!startOver && flow.PresenceRevision == flow.Story.Revision) return;
+        flow.PresenceRevision = flow.Story.Revision;
         // Each badge won adds to the Trainer Card's score; a loaded save has counted its own already
         if (startOver) flow.ScoredBadges = flow.Story.BadgeCount;
         for (; flow.ScoredBadges < flow.Story.BadgeCount; flow.ScoredBadges++) flow.TrainerScore = TrainerScore.Add(flow.TrainerScore, TrainerScore.Badge);
@@ -173,12 +140,12 @@ public partial class GameEngine
         actor = default;
         flow.Map.ApplyPresence(flow.Story.Has);
         // Whoever was still walking on the map left behind stands where they were going, not between two tiles
-        foreach (var walk in npcWalks) walk.Finish();
-        npcWalks.Clear();
-        playerWalk = null;
+        foreach (var walk in flow.NpcWalks) walk.Finish();
+        flow.NpcWalks.Clear();
+        flow.PlayerWalk = null;
         // Those who move about of their own accord start again from where they first stood, as the original lays
         // its objects out afresh (plan 02 · S6)
-        wandering.Clear();
+        flow.Wandering.Clear();
         Wandering.SendHome(flow.Map);
         KeepPartnerAlong();
         // A Gym's puzzle is laid out afresh, as the original's room scripts do as the player comes in (plan 01 · M9)
@@ -186,21 +153,17 @@ public partial class GameEngine
         // The tunnels are laid out as the player comes to them (plan 06 · R16a)
         if (IsUnderground) ArriveUnderground();
         // A flag carried and a trap sprung stay below, however the player leaves
-        else if (flow.Underground.HeldFlag != null || trap != null)
+        else if (flow.Underground.HeldFlag != null || flow.Trap != null)
         {
             flow.Underground.HeldFlag = null;
-            trap = null;
+            flow.Trap = null;
         }
         // The Villa's furniture stands where it is owned (plan 06 · R16b)
         if (flow.Map.Name == VillaMap) FurnishVilla();
         // The people of the place come to are made ready behind the fade, and the rigs of the place left are let go
         KeepCharactersNear(trim: true);
-        arrived = true;
+        flow.Arrived = true;
     }
-
-    // Where the player was before the place they have come to: what the Journal says of leaving it
-    private string leftMap = "", leftPlace = "";
-    private bool leftCave;
 
     /// <summary>
     /// The Journal's lines for leaving a place (plan 06 · R12; the original's map transitions): out of a cave into
@@ -209,15 +172,15 @@ public partial class GameEngine
     private void NoteLeaving(bool cave)
     {
         bool outdoors = !cave && flow.Map.IsStreamed && flow.Map.Name == "Sinnoh";
-        if (leftCave && outdoors) flow.Journal.Tell(new JournalEvent(JournalEventKind.LeftCave, leftPlace));
-        if (leftMap == "PlayerHouse" && outdoors) flow.Journal.Tell(new JournalEvent(JournalEventKind.RestedAtHome));
-        if (leftMap == "RowanLab" && outdoors) flow.Journal.Tell(new JournalEvent(JournalEventKind.LeftResearchLab));
-        if (Gyms.TryGetValue(flow.Map.Name, out var gym) && leftMap == "Sinnoh" && !flow.Story.HasBadge(gym.Badge))
+        if (flow.LeftCave && outdoors) flow.Journal.Tell(new JournalEvent(JournalEventKind.LeftCave, flow.LeftPlace));
+        if (flow.LeftMap == "PlayerHouse" && outdoors) flow.Journal.Tell(new JournalEvent(JournalEventKind.RestedAtHome));
+        if (flow.LeftMap == "RowanLab" && outdoors) flow.Journal.Tell(new JournalEvent(JournalEventKind.LeftResearchLab));
+        if (Gyms.TryGetValue(flow.Map.Name, out var gym) && flow.LeftMap == "Sinnoh" && !flow.Story.HasBadge(gym.Badge))
             flow.Journal.Tell(new JournalEvent(JournalEventKind.GymWasTooTough, gym.Town));
         flow.Journal.ChangedPlace();
-        leftMap = flow.Map.Name;
-        leftPlace = PlaceName();
-        leftCave = cave;
+        flow.LeftMap = flow.Map.Name;
+        flow.LeftPlace = PlaceName();
+        flow.LeftCave = cave;
     }
 
     /// <summary>The Gyms built so far, by their room: the town and the Badge (the original's <c>sGymsInfo</c>).</summary>
@@ -246,7 +209,7 @@ public partial class GameEngine
         FieldMoveRules.LeavePlace(flow.Story, cave);
         // Where the Bicycle isn't allowed the player gets off it (field_map_change_flags.c)
         if (flow.Player.Mode == TravelMode.Cycling && !flow.Map.BikeAllowedAt(flow.Player.GridX, flow.Player.GridY)) flow.Player.SetCycling(false);
-        fishing = null;
+        flow.Fishing = null;
         // A flute's tune lasts only while the player stays where it was played (field_map_change_flags.c)
         flow.EncounterAids.ChangePlace();
         foreach (var (boulder, _, _, _) in slides) boulder.StepOffsetX = boulder.StepOffsetY = 0f;
@@ -360,7 +323,7 @@ public partial class GameEngine
     /// </summary>
     private void UsePokeRadar()
     {
-        switch (radar.Use(flow.Encounters, flow.Map, flow.Player.GridX, flow.Player.GridY, flow.Player.HeightOn(flow.Map), flow.Player.Mode, partner != null, fieldRandom))
+        switch (flow.Radar.Use(flow.Encounters, flow.Map, flow.Player.GridX, flow.Player.GridY, flow.Player.HeightOn(flow.Map), flow.Player.Mode, partner != null, fieldRandom))
         {
             case RadarUse.CantUse:
                 ShowNotification(partner != null ? FieldMoveRules.Why(FieldMoveError.Partner) : "The Poké Radar can only be used standing in tall grass.");
@@ -469,7 +432,7 @@ public partial class GameEngine
                 return;
             }
             var (dx, dy) = FieldMovement.Delta(flow.Player.Facing);
-            fishing = new FishingAttempt(rod, flow.Map.Fish(x + dx, y + dy, rod, flow.Player.Lead, EncounterMomentNow()), fieldRandom);
+            flow.Fishing = new FishingAttempt(rod, flow.Map.Fish(x + dx, y + dy, rod, flow.Player.Lead, EncounterMomentNow()), fieldRandom);
             AudioManager.PlaySound("fish_cast");
             return;
         }
@@ -492,7 +455,7 @@ public partial class GameEngine
     /// </summary>
     private void UpdateFishing(float dt)
     {
-        var cast = fishing!;
+        var cast = flow.Fishing!;
         var before = cast.Stage;
         cast.Update(dt, InputManager.IsActionPressed(GameAction.Confirm) || FishingPress);
         FishingPress = false;
@@ -518,11 +481,11 @@ public partial class GameEngine
             }
         }
         if (cast.Stage != FishingStage.Done) return;
-        fishing = null;
+        flow.Fishing = null;
         if (cast.Caught is { } fish)
         {
             flow.Player.Encounters.Reset();
-            hooked = true;
+            flow.Hooked = true;
             StartWildBattle(fish);
         }
     }
@@ -531,7 +494,7 @@ public partial class GameEngine
     public bool FishingPress { get; set; }
 
     /// <summary>Where a rod's cast has got to, for tools; null when no rod is out.</summary>
-    public FishingStage? CastStage => fishing?.Stage;
+    public FishingStage? CastStage => flow.Fishing?.Stage;
 
     /// <summary>What the field moves left in force, as the map and the player see it: boulders that can be pushed, a cave lit, fog lifted.</summary>
     private void KeepFieldMovesInForce()
@@ -548,8 +511,8 @@ public partial class GameEngine
     /// <summary>A field move is used: its cut-in plays (with the Pokémon's cry, as the original's), and the script waits for it.</summary>
     private void StartCutIn(FieldMove move, Pokemon user, NPC? subject)
     {
-        cutIn = new FieldCutIn(user.ModelName, move);
-        cutInSubject = subject;
+        flow.CutIn = new FieldCutIn(user.ModelName, move);
+        flow.CutInSubject = subject;
         PokemonSprites.GetBaked(user.ModelName, SpriteView.Front);
         AudioManager.PlayCry(user);
     }
@@ -557,23 +520,23 @@ public partial class GameEngine
     /// <summary>The cut-in runs on; as its band closes, what the move does to the obstacle in front happens.</summary>
     private void UpdateCutIn(float dt)
     {
-        if (cutIn == null) return;
-        cutIn.Advance(dt);
-        if (!cutIn.Done) return;
-        if (cutInSubject is { Obstacle: { } kind } subject && cutIn.FieldMove is FieldMove.Cut or FieldMove.RockSmash)
+        if (flow.CutIn == null) return;
+        flow.CutIn.Advance(dt);
+        if (!flow.CutIn.Done) return;
+        if (flow.CutInSubject is { Obstacle: { } kind } subject && flow.CutIn.FieldMove is FieldMove.Cut or FieldMove.RockSmash)
         {
             world.Life.GiveWay(flow.Map, subject.GridX, subject.GridY, kind);
             AudioManager.PlaySound(kind == PropType.CutTree ? "cut" : "rock_smash");
         }
-        cutIn = null;
-        cutInSubject = null;
+        flow.CutIn = null;
+        flow.CutInSubject = null;
     }
 
     private void DrawCutIn()
     {
-        if (cutIn == null) return;
-        var sprite = PixelArtGenerator.GetPokemonSprite(cutIn.Model, isBack: false);
-        ModernUi.DrawCutIn(VirtualWidth, VirtualHeight, sprite, cutIn.Move, cutIn.Band, cutIn.Slide, cutIn.Label);
+        if (flow.CutIn == null) return;
+        var sprite = PixelArtGenerator.GetPokemonSprite(flow.CutIn.Model, isBack: false);
+        ModernUi.DrawCutIn(VirtualWidth, VirtualHeight, sprite, flow.CutIn.Move, flow.CutIn.Band, flow.CutIn.Slide, flow.CutIn.Label);
     }
 
     /// <summary>A boulder the player pushed starts sliding on to its new tile (it is there already), with its sound.</summary>
@@ -649,27 +612,24 @@ public partial class GameEngine
         {
             EndScript();
             // The tiles a step into a new place ended on are tried once that place's own script is done (OnStep)
-            if (triggerAfterEnter)
+            if (flow.TriggerAfterEnter)
             {
-                triggerAfterEnter = false;
+                flow.TriggerAfterEnter = false;
                 if (flow.State == GameState.Overworld) TryStepTrigger();
             }
         }
     }
 
-    /// <summary>A step came into a new place, whose script runs first: the trigger under the player waits for it.</summary>
-    private bool triggerAfterEnter;
-
     /// <summary>People a script set walking take their steps, and the player theirs or stands still. Also under text.</summary>
     private void AdvanceScriptedWalks(float dt)
     {
-        for (int i = npcWalks.Count - 1; i >= 0; i--)
+        for (int i = flow.NpcWalks.Count - 1; i >= 0; i--)
         {
-            npcWalks[i].Update(dt);
-            if (npcWalks[i].IsDone) npcWalks.RemoveAt(i);
+            flow.NpcWalks[i].Update(dt);
+            if (flow.NpcWalks[i].IsDone) flow.NpcWalks.RemoveAt(i);
         }
 
-        if (playerWalk == null)
+        if (flow.PlayerWalk == null)
         {
             // A step a field move began (out onto the water, up a waterfall or a rock face) is taken to its end
             if (flow.Player.IsMoving)
@@ -682,14 +642,14 @@ public partial class GameEngine
                 if (!flow.Player.IsMoving && flow.Player.Mode != musicTravel) PlayFieldMusic();
             }
             else flow.Player.StandStill(dt);
-            if (!flow.Player.IsMoving) fieldMoveStep = false;
+            if (!flow.Player.IsMoving) flow.FieldMoveStep = false;
             return;
         }
-        playerWalk.Update(dt, flow.Player, flow.Map, StepLeavesItsMark);
+        flow.PlayerWalk.Update(dt, flow.Player, flow.Map, StepLeavesItsMark);
         // A Pokémon out of its ball keeps behind the player on a walk a script sends them on too (plan 06 · R16c); a
         // person who travels along is moved by the scene itself
         if (flow.Along?.Pokemon != null) TrailBehind();
-        if (playerWalk.IsDone) playerWalk = null;
+        if (flow.PlayerWalk.IsDone) flow.PlayerWalk = null;
     }
 
     /// <summary>
@@ -698,18 +658,18 @@ public partial class GameEngine
     /// </summary>
     private void EndScript()
     {
-        foreach (var walk in npcWalks) walk.Finish();
-        npcWalks.Clear();
-        playerWalk = null;
-        if (scriptFade.Level > 0f) scriptFade.To(false, ScriptParser.FadeSeconds);
-        if (cameraSent)
+        foreach (var walk in flow.NpcWalks) walk.Finish();
+        flow.NpcWalks.Clear();
+        flow.PlayerWalk = null;
+        if (flow.ScriptFade.Level > 0f) flow.ScriptFade.To(false, ScriptParser.FadeSeconds);
+        if (flow.CameraSent)
         {
             world.ReleaseCamera(ScriptParser.ReleaseSeconds);
-            cameraSent = false;
+            flow.CameraSent = false;
         }
         // (Answers already given slide away by themselves; only a question left open is taken off the screen)
         if (flow.Choice.IsOpen) flow.Choice.Dismiss();
-        pendingAnswers = null;
+        flow.PendingAnswers = null;
         // A hold begun in a scene that is over counts for nothing (plan 12 · Q20)
         skipHold.Reset();
         // A trainer's eye theme that no battle cut in on (their script had no battle) gives way to the place's own
@@ -744,21 +704,21 @@ public partial class GameEngine
         if (!flow.Dialogue.AwaitingAnswer || flow.Choice.IsOpen) return;
         if (flow.Choice.Take() is { } picked)
         {
-            scriptAnswer = picked;
+            flow.ScriptAnswer = picked;
             flow.Dialogue.Close();
         }
-        else if (pendingAnswers != null)
+        else if (flow.PendingAnswers != null)
         {
-            flow.Choice.Open(pendingAnswers, pendingCancel);
-            pendingAnswers = null;
+            flow.Choice.Open(flow.PendingAnswers, flow.PendingCancel);
+            flow.PendingAnswers = null;
         }
     }
 
     /// <summary>The script's own fade and its question's answers, drawn over the field: the text box is between them.</summary>
     private void DrawScriptFade()
     {
-        if (scriptFade.Level <= 0f) return;
-        Raylib.DrawRectangle(0, 0, VirtualWidth, VirtualHeight, new Color(0, 0, 0, (int)MathF.Round(scriptFade.Level * 255f)));
+        if (flow.ScriptFade.Level <= 0f) return;
+        Raylib.DrawRectangle(0, 0, VirtualWidth, VirtualHeight, new Color(0, 0, 0, (int)MathF.Round(flow.ScriptFade.Level * 255f)));
     }
 
     /// <summary>
@@ -869,23 +829,23 @@ public partial class GameEngine
         {
             if (who == null)
             {
-                game.playerWalk = new PlayerWalk(steps, fast);
+                game.flow.PlayerWalk = new PlayerWalk(steps, fast);
                 return;
             }
             StopWalk(who);
-            game.npcWalks.Add(new NpcWalk(who, steps, fast));
+            game.flow.NpcWalks.Add(new NpcWalk(who, steps, fast));
         }
 
         /// <summary>Whoever is told to go somewhere else first arrives where they were going.</summary>
         private void StopWalk(NPC who)
         {
-            game.wandering.Settle(who);
+            game.flow.Wandering.Settle(who);
             if (game.flow.Along?.Who == who) game.flow.Along.Settle();
-            foreach (var walk in game.npcWalks.Where(w => w.Who == who)) walk.Finish();
-            game.npcWalks.RemoveAll(w => w.Who == who);
+            foreach (var walk in game.flow.NpcWalks.Where(w => w.Who == who)) walk.Finish();
+            game.flow.NpcWalks.RemoveAll(w => w.Who == who);
         }
 
-        public bool Walking => game.playerWalk != null || game.npcWalks.Count > 0;
+        public bool Walking => game.flow.PlayerWalk != null || game.flow.NpcWalks.Count > 0;
 
         public void Emote(NPC? who, EmoteBubble bubble, float seconds)
         {
@@ -933,24 +893,24 @@ public partial class GameEngine
             {
                 case CameraMove.Pan:
                     rig.Pan(x + 0.5f, y + 0.5f, seconds);
-                    game.cameraSent = true;
+                    game.flow.CameraSent = true;
                     return seconds;
                 case CameraMove.Release:
                     rig.Release(seconds);
-                    game.cameraSent = false;
+                    game.flow.CameraSent = false;
                     return seconds;
                 case CameraMove.Zoom:
                     rig.ZoomTo(factor, seconds);
-                    game.cameraSent = true;
+                    game.flow.CameraSent = true;
                     return seconds;
                 case CameraMove.Follow:
                     // The player followed is the camera back where it belongs, with the lens and the bars left alone
                     if (who == null) rig.FollowPlayer(seconds);
                     else rig.Follow(who, seconds);
-                    game.cameraSent = true;
+                    game.flow.CameraSent = true;
                     return seconds;
                 case CameraMove.Path:
-                    game.cameraSent = true;
+                    game.flow.CameraSent = true;
                     return rig.Path((path ?? Array.Empty<(int X, int Y)>()).Select(t => new System.Numerics.Vector2(t.X + 0.5f, t.Y + 0.5f)).ToList(), factor);
                 default:
                     game.world.ShakeCamera(seconds);
@@ -961,7 +921,7 @@ public partial class GameEngine
         public void Letterbox(bool on, float seconds)
         {
             game.world.Camera.Letterbox(on, Skipping ? 0f : seconds);
-            game.cameraSent = true;
+            game.flow.CameraSent = true;
         }
 
         public void SlowMotion(float share, float seconds)
@@ -969,7 +929,7 @@ public partial class GameEngine
             // (Slow motion passes by itself: a hurry never begins it)
             if (Skipping) return;
             game.world.Camera.SlowMotion(share, seconds);
-            game.cameraSent = true;
+            game.flow.CameraSent = true;
         }
 
         public void Effect(SceneEffect kind, int x, int y, float seconds, Direction? way, bool hold)
@@ -984,8 +944,8 @@ public partial class GameEngine
 
         // ---- what the script waits for
 
-        public bool Busy => game.flow.State != GameState.Overworld || game.flow.Dialogue.IsActive || game.scriptFade.IsMoving || game.cutIn != null
-            || game.fieldMoveStep || game.PuzzleMoving || game.AwaitingStroll || game.ActorBusy
+        public bool Busy => game.flow.State != GameState.Overworld || game.flow.Dialogue.IsActive || game.flow.ScriptFade.IsMoving || game.flow.CutIn != null
+            || game.flow.FieldMoveStep || game.PuzzleMoving || game.AwaitingStroll || game.ActorBusy
             // A skip's dark keeps the script waiting while it closes and opens, but not the hurry in its middle (plan 12 · Q20)
             || (game.skipPhase != SkipPhase.None && !game.skipRunning);
 
@@ -1000,34 +960,34 @@ public partial class GameEngine
         public void Ask(string? speaker, string question, IReadOnlyList<string> answers, int cancel)
         {
             game.flow.Choice.Dismiss();
-            game.pendingAnswers = answers;
-            game.pendingCancel = cancel;
-            game.scriptAnswer = Math.Max(0, cancel);
+            game.flow.PendingAnswers = answers;
+            game.flow.PendingCancel = cancel;
+            game.flow.ScriptAnswer = Math.Max(0, cancel);
             game.flow.Dialogue.ShowQuestion(speaker ?? "", question);
             game.flow.State = GameState.Dialogue;
         }
 
-        public int Answer => game.scriptAnswer;
+        public int Answer => game.flow.ScriptAnswer;
 
         public void Battle(NPC trainer, NPC? second, Trainer? partner, bool mayLose, bool first, BattleTerms? terms = null)
         {
-            game.scriptOutcome = BattleOutcome.None;
-            game.battleMayBeLost = mayLose;
+            game.flow.ScriptOutcome = BattleOutcome.None;
+            game.flow.BattleMayBeLost = mayLose;
             game.StartTrainerBattle(trainer, second, partner, first, terms);
         }
 
         public void WildBattle(Pokemon wild, BattleKind kind, bool cannotFlee)
         {
-            game.scriptOutcome = BattleOutcome.None;
-            game.battleMayBeLost = false;
+            game.flow.ScriptOutcome = BattleOutcome.None;
+            game.flow.BattleMayBeLost = false;
             game.MeetWildPokemon(wild, kind, cannotFlee);
         }
 
-        public BattleOutcome Outcome => game.scriptOutcome;
+        public BattleOutcome Outcome => game.flow.ScriptOutcome;
 
         public void Open(ScriptScreen screen, NPC? subject, string? counter = null)
         {
-            game.scriptAnswer = 0;
+            game.flow.ScriptAnswer = 0;
             switch (screen)
             {
                 case ScriptScreen.Starter:
@@ -1058,7 +1018,7 @@ public partial class GameEngine
                     break;
                 case ScriptScreen.ChooseItem:
                     // A berry to plant or a mulch to lay (plan 06 · R14a): the bag, on that pocket
-                    game.scriptItem = null;
+                    game.flow.ScriptItem = null;
                     game.flow.State = GameState.BagMenu;
                     game.flow.BagScreen.Registered = game.flow.RegisteredItem;
                     game.flow.BagScreen.OpenToPick(counter ?? "berries");
@@ -1092,7 +1052,7 @@ public partial class GameEngine
                     // and the ship leaves when the story of this region is done
                     if (RegionDatabase.RegionOfMap(game.flow.Map.Name) is not { } here || RegionDatabase.LinkFrom(here.Id) is not { } link) break;
                     var check = RegionDatabase.CheckTravel(link, game.flow.Story);
-                    game.scriptAnswer = 1;
+                    game.flow.ScriptAnswer = 1;
                     game.flow.Dialogue.ShowDialogue(subject?.Name ?? "", RegionDatabase.AttendantLines(link, check),
                         check == TravelCheck.Ready ? () => game.TravelTo(RegionDatabase.Get(link.To)!) : null);
                     game.flow.State = GameState.Dialogue;
@@ -1139,12 +1099,12 @@ public partial class GameEngine
         {
             if (!Skipping)
             {
-                game.scriptFade.To(toBlack, seconds);
+                game.flow.ScriptFade.To(toBlack, seconds);
                 return;
             }
             // In a hurry the screen is black, or the field again, at once; a fade's time passes for whoever is walking
-            bool moves = game.scriptFade.Level != (toBlack ? 1f : 0f);
-            game.scriptFade.To(toBlack, 0f);
+            bool moves = game.flow.ScriptFade.Level != (toBlack ? 1f : 0f);
+            game.flow.ScriptFade.To(toBlack, 0f);
             if (moves) game.WalkOnFor(seconds);
         }
 
@@ -1166,16 +1126,16 @@ public partial class GameEngine
         {
             if (!game.flow.Player.StartSurf(game.flow.Map)) return false;
             AudioManager.PlaySound("surf");
-            game.fieldMoveStep = true;
+            game.flow.FieldMoveStep = true;
             return true;
         }
 
-        public bool Climb() => game.fieldMoveStep = game.flow.Player.Climb(game.flow.Map);
+        public bool Climb() => game.flow.FieldMoveStep = game.flow.Player.Climb(game.flow.Map);
 
         public bool Fly()
         {
-            if (game.flyTarget is not { } town) return false;
-            game.flyTarget = null;
+            if (game.flow.FlyTarget is not { } town) return false;
+            game.flow.FlyTarget = null;
             game.flow.Player.SetMode(TravelMode.OnFoot);
             // Flying sends every roamer anywhere (FieldSystem_SetFlyFlags; plan 06 · R13)
             Roamers.Scatter(game.flow.Encounters, game.fieldRandom);
@@ -1215,8 +1175,8 @@ public partial class GameEngine
             bool water = game.flow.Player.Mode == TravelMode.Surfing;
             if (!TileBehaviors.HasEncounters(underfoot) || water != TileBehaviors.IsSurfable(underfoot)) return false;
             if (map.DrawOutWild(x, y, water, game.flow.Player.Lead, game.EncounterMomentNow()) is not { } wild) return false;
-            game.scriptOutcome = BattleOutcome.None;
-            game.battleMayBeLost = false;
+            game.flow.ScriptOutcome = BattleOutcome.None;
+            game.flow.BattleMayBeLost = false;
             game.flow.Player.Encounters.Reset();
             game.StartWildBattle(wild);
             return true;
@@ -1253,7 +1213,7 @@ public partial class GameEngine
 
         public IEnumerable<Pokemon> Boxed => game.flow.Boxes.All;
         public BerryPatches Berries => game.flow.Berries;
-        public string? ChosenItem => game.scriptItem;
+        public string? ChosenItem => game.flow.ScriptItem;
 
         // ---- Poffins (plan 06 · R14c)
 
@@ -1264,7 +1224,7 @@ public partial class GameEngine
         // ---- the Super Contests (plan 06 · R17a)
 
         public Models.SuperContests.FashionCase FashionCase => game.flow.FashionCase;
-        public Models.SuperContests.ContestOutcome? ContestOutcome => game.contestOutcome;
+        public Models.SuperContests.ContestOutcome? ContestOutcome => game.flow.ContestOutcome;
 
         public void HoldContest(int slot, ContestStat category, Models.SuperContests.ContestRank rank, Models.SuperContests.ContestMode mode) =>
             game.HoldContest(slot, category, rank, mode);
@@ -1287,7 +1247,7 @@ public partial class GameEngine
         // A script's die is rolled on the game's chance, so the harness's runs repeat (plan 01 · M11)
         public int Random(int sides) => Dice.Shared.Next(Math.Max(1, sides));
 
-        public int BattleTurns => game.scriptTurns;
+        public int BattleTurns => game.flow.ScriptTurns;
 
         // The original's field cries (a legendary in its lair, a Pokémon a script brings out) have an echo beside them
         public void Cry(string species)

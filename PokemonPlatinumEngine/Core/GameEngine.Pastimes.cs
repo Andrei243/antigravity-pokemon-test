@@ -187,7 +187,7 @@ public partial class GameEngine
         int area = CatchingShow.AreaAt(x, y, flow.Map.IsTallGrass(x, y), flow.Player.Mode == TravelMode.Surfing);
         int met = show.Step(area);
         if (met < 0) return false;
-        fieldEncounter = false;
+        flow.FieldEncounter = false;
         MeetWildPokemon(show.Pokemon[met], BattleKind.PalPark);
         return true;
     }

@@ -14,17 +14,15 @@ namespace PokemonPlatinumEngine.Core;
 /// </summary>
 public partial class GameEngine
 {
-    // The Eterna Gym's clock turning on, which the script that turned it waits for
-    private EternaClock.Turn? clockTurn;
+    // Where the camera looks while the Eterna Gym's clock turns (GameFlow.ClockTurn)
     private (int X, int Y)? clockLook;
-    private int clockTicks;
 
     /// <summary>The room's puzzle as the story has it now, and what it has set moving.</summary>
     private void KeepPuzzleInForce(float dt)
     {
         if (flow.Map.Puzzle is not { } puzzle) return;
         puzzle.Apply(flow.Map, flow.Story);
-        if (clockTurn != null) PlayClockTurn(dt);
+        if (flow.ClockTurn != null) PlayClockTurn(dt);
         if (bagRun != null) PlayBagRun(dt);
         if (puzzle is PastoriaWater water) PlayWater(water, dt);
         if (puzzle is CanalaveLifts { Moving: not null } lifts) PlayLiftRide(lifts, dt);
@@ -44,7 +42,7 @@ public partial class GameEngine
     }
 
     /// <summary>Whether something a puzzle set moving is still being played out (the script waits for it).</summary>
-    private bool PuzzleMoving => clockTurn != null
+    private bool PuzzleMoving => flow.ClockTurn != null
         || flow.Map.Puzzle is PastoriaWater { Moving: true } or CanalaveLifts { Moving: not null } or SunyshoreGears { Turning: not null }
             or LeagueLift { Moving: true };
 
@@ -79,7 +77,7 @@ public partial class GameEngine
         if (kick.Distance > (kick.Way == Direction.Up ? 3 : 4))
         {
             world.PanCamera(npc.GridX + 0.5f, npc.GridY + 0.5f, BagWindup + run);
-            cameraSent = true;
+            flow.CameraSent = true;
         }
         return true;
     }
@@ -120,10 +118,10 @@ public partial class GameEngine
             VeilstoneBags.Topple(flow.Map, stack);
             AudioManager.PlaySound("boulder");
         }
-        if (cameraSent && !flow.Runner.IsRunning)
+        if (flow.CameraSent && !flow.Runner.IsRunning)
         {
             world.ReleaseCamera(0.8f);
-            cameraSent = false;
+            flow.CameraSent = false;
         }
         bagRun = null;
     }
@@ -196,7 +194,7 @@ public partial class GameEngine
 
     private void PlayClockTurn(float dt)
     {
-        var turn = clockTurn!;
+        var turn = flow.ClockTurn!;
         bool stopped = turn.HandsStopped, draining = turn.Draining;
         turn.Update(dt);
         // The camera goes where the clock's turn looks: its middle, then the fountain that drains
@@ -204,15 +202,15 @@ public partial class GameEngine
         {
             clockLook = turn.Look;
             world.PanCamera(turn.Look.X + 0.5f, turn.Look.Y + 0.5f, EternaClock.Turn.CameraSeconds);
-            cameraSent = true;
+            flow.CameraSent = true;
         }
         // The hands tick round, chime as they stop, and the fountain's water rushes away
-        if (!turn.HandsStopped && flow.Map.Puzzle is EternaClock { Turning: not null } && ++clockTicks % 12 == 0) AudioManager.PlaySound("cursor");
+        if (!turn.HandsStopped && flow.Map.Puzzle is EternaClock { Turning: not null } && ++flow.ClockTicks % 12 == 0) AudioManager.PlaySound("cursor");
         if (turn.HandsStopped && !stopped) AudioManager.PlaySound("select");
         if (turn.Draining && !draining) AudioManager.PlaySound("surf");
         if (turn.IsDone)
         {
-            clockTurn = null;
+            flow.ClockTurn = null;
             clockLook = null;
         }
     }
@@ -253,9 +251,9 @@ public partial class GameEngine
         public void TurnClock(int from, int to)
         {
             if (game.flow.Map.Puzzle is not EternaClock clock) return;
-            game.clockTurn = clock.StartTurn(from, to);
+            game.flow.ClockTurn = clock.StartTurn(from, to);
             game.clockLook = null;
-            game.clockTicks = 0;
+            game.flow.ClockTicks = 0;
             clock.Apply(game.flow.Map, game.flow.Story);
         }
     }

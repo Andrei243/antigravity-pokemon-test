@@ -27,7 +27,7 @@ public partial class GameEngine
         // ever reached, and a game where that went wrong must not start a battle it can't play (it ended the game)
         if (!flow.Party.HasUsablePokemon) return;
         // Met in the field: the roamers and the Poké Radar hear how it ends (plan 06 · R13)
-        fieldEncounter = true;
+        flow.FieldEncounter = true;
         // A roamer is battled as it is, and runs (AddRoamerToEnemyParty)
         if (entry.Roamer is { } roamer)
         {
@@ -52,7 +52,7 @@ public partial class GameEngine
         {
             if (flow.Map.MeetAnother(flow.Player.GridX, flow.Player.GridY, flow.Player.Lead, EncounterMomentNow()) is not { } other)
             {
-                fieldEncounter = false;
+                flow.FieldEncounter = false;
                 return;
             }
             var otherSpecies = PokemonDatabase.Get(other.SpeciesName)!;
@@ -98,7 +98,7 @@ public partial class GameEngine
         var wilds = second != null ? new List<Pokemon> { wildPkmn, second } : new List<Pokemon> { wildPkmn };
         // What wild Pokémon hold, and the Poké Radar's chain, which only a Pokémon of the field's own lets go on (plan 06 · R13)
         GiveWildItems(wilds, kind);
-        if (!fieldEncounter) EndRadarChain();
+        if (!flow.FieldEncounter) EndRadarChain();
         var shown = PrepareModels(wilds.Concat(beside?.Party.Members ?? Enumerable.Empty<Pokemon>()));
         // Who is met and where, which is what the way into the battle goes by (plan 09 · L13): the ground is the
         // battle's own, so a Pokémon hooked on a rod is met the water's way from any bank, and the first Pokémon
@@ -135,7 +135,7 @@ public partial class GameEngine
             });
             // A Pokémon hooked on a rod is fought on the water's stage, as a surfer's is (the original's water
             // terrain gives both the same platforms), whatever ground the player cast from
-            if (hooked) battleRenderer.SetArena(BattleArena.Water, trees: flow.Map.TreesAt(flow.Player.GridX, flow.Player.GridY));
+            if (flow.Hooked) battleRenderer.SetArena(BattleArena.Water, trees: flow.Map.TreesAt(flow.Player.GridX, flow.Player.GridY));
             else battleRenderer.SetArena(flow.Map, flow.Player.GridX, flow.Player.GridY);
         }, SceneTransition.ForBattle(meeting));
     }
@@ -151,7 +151,7 @@ public partial class GameEngine
     {
         Inverse = terms?.Inverse ?? false,
         // A Pokémon hooked on a rod is fought on the water, wherever the player stands (FieldBattleDTO_SetWaterTerrain)
-        Terrain = hooked ? Battle.Sim.BattleTerrain.Water : TerrainAt(flow.Map, flow.Player.GridX, flow.Player.GridY),
+        Terrain = flow.Hooked ? Battle.Sim.BattleTerrain.Water : TerrainAt(flow.Map, flow.Player.GridX, flow.Player.GridY),
         Night = GameClock.IsNight,
         HasCaught = species => flow.Pokedex.IsCaught(species.DexNumber),
         Weather = Weathers.InBattle(flow.Map.WeatherAt(flow.Player.GridX, flow.Player.GridY)),
@@ -168,17 +168,14 @@ public partial class GameEngine
     private void KeepTheClock()
     {
         var today = GameClock.Today;
-        int days = lastDay is { } before && today > before ? (today - before).Days : 0;
+        int days = flow.LastDay is { } before && today > before ? (today - before).Days : 0;
         if (days > 0) PokerusRules.DaysPass(flow.Party, days);
-        lastDay = today;
+        flow.LastDay = today;
         // The day's numbers, the daily flags and the honey trees' minutes (plan 06 · R13)
         KeepTheEncounterClock(days);
         if (FormRules.ShayminNight((int)GameClock.Hour))
             foreach (var p in flow.Party.Members) FormRules.BackToLand(p);
     }
-
-    // The day the clock was last looked at, for Pokérus's days (saved)
-    private DateTime? lastDay;
 
     /// <summary>Who the player is, as a Pokémon's original trainer is marked (plan 06 · R10).</summary>
     private TrainerMark PlayerMark => new(PlayerIdentity.Name, flow.TrainerId, PlayerIdentity.Look);
@@ -272,7 +269,7 @@ public partial class GameEngine
         if (flow.Along == null) return;
         // Off the Bicycle: nobody rides with someone walking beside them (SetPlayerBike FALSE as Cheryl joins)
         if (flow.Player.Mode == TravelMode.Cycling && flow.Player.SetCycling(false)) PlayFieldMusic();
-        wandering.Settle(flow.Along.Who);
+        flow.Wandering.Settle(flow.Along.Who);
         flow.Map.Follower = flow.Along.Who;
         partnerHeading = flow.Player.Heading;
     }
@@ -383,9 +380,9 @@ public partial class GameEngine
                 Scene = Settings.BattleScene
             });
             battleRenderer.SetArena(flow.Map, flow.Player.GridX, flow.Player.GridY);
-            battleTrainers.Clear();
-            battleTrainers.Add(trainerNpc);
-            if (secondNpc?.TrainerData != null) battleTrainers.Add(secondNpc);
+            flow.BattleTrainers.Clear();
+            flow.BattleTrainers.Add(trainerNpc);
+            if (secondNpc?.TrainerData != null) flow.BattleTrainers.Add(secondNpc);
         }, SceneTransition.ForBattle(meeting));
         // A Gym Leader, one of the Elite Four and the Champion are met on a band with their portrait (plan 09 · L15):
         // of the look the battle itself will draw them in, and beside the player's own in the League's. The rigs
@@ -444,8 +441,8 @@ public partial class GameEngine
         // Party_HealAllMembers when the partner flag is set)
         if (!isDefeat && partner != null && flow.Battle != null) flow.Party.HealAll();
         // A battle a script says may be lost is lost without waking up at home: the story goes on from the loss
-        bool goesOn = isDefeat && flow.Runner.IsRunning && battleMayBeLost;
-        battleMayBeLost = false;
+        bool goesOn = isDefeat && flow.Runner.IsRunning && flow.BattleMayBeLost;
+        flow.BattleMayBeLost = false;
 
         // Pokémon that gained a level evolve now that the battle is over, before the field comes back, and so do
         // those waiting for the battle's end (Sirfetch'd's critical hits)

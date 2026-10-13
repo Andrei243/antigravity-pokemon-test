@@ -17,16 +17,6 @@ namespace PokemonPlatinumEngine.Core;
 /// </summary>
 public partial class GameEngine
 {
-    /// <summary>The Poké Radar's chain, which the original doesn't save either.</summary>
-    private readonly RadarChain radar = new();
-
-    // Whether the battle under way was met in the field's grass, water or on a rod (not a script's, nor a honey
-    // tree's): only then do the roamers and the Poké Radar hear how it ended (FieldTask_WildEncounter)
-    private bool fieldEncounter;
-
-    // Whether the battle under way was hooked on a rod, and so is fought on the water (plan 06 · R13)
-    private bool hooked;
-
     // The moment, as the player's steps ask for it
     private Func<EncounterMoment?>? momentOf;
 
@@ -48,7 +38,7 @@ public partial class GameEngine
             MarshDaily = flow.Safari.Active ? flow.Encounters.MarshDaily : null,
             Marsh = SpecialEncounterTables.Sinnoh.GreatMarsh,
             Partner = partner != null,
-            Radar = radar.Active ? radar : null,
+            Radar = flow.Radar.Active ? flow.Radar : null,
             Height = flow.Player.HeightOn(flow.Map),
             State = flow.Encounters
         };
@@ -58,7 +48,7 @@ public partial class GameEngine
     private string PlaceKey() => flow.Map.AreaAt(flow.Player.GridX, flow.Player.GridY)?.Key ?? flow.Map.Name;
 
     /// <summary>The Poké Radar's chain is over, its patches still.</summary>
-    private void EndRadarChain() => radar.Clear();
+    private void EndRadarChain() => flow.Radar.Clear();
 
     /// <summary>
     /// A step's part in the wild Pokémon (<c>Field_ProcessStep</c>): poison bites every fourth step, the Poké Radar
@@ -68,7 +58,7 @@ public partial class GameEngine
     private bool EncountersStep()
     {
         if (flow.Bag.GetQuantity(ItemDatabase.Get("Poké Radar")!) > 0) RadarChain.Charge(flow.Encounters);
-        radar.KeepInView(flow.Player.GridX, flow.Player.GridY);
+        flow.Radar.KeepInView(flow.Player.GridX, flow.Player.GridY);
         switch (FieldPoison.Step(flow.Encounters, flow.Party, Ruleset.Current))
         {
             case PoisonStep.Hurt:
@@ -104,11 +94,11 @@ public partial class GameEngine
         if (poisonFlash > 0f) poisonFlash = Math.Max(0f, poisonFlash - dt);
         var life = world.Life;
         world.Stirring.Clear();
-        foreach (var patch in radar.Patches.Where(p => p.Active))
+        foreach (var patch in flow.Radar.Patches.Where(p => p.Active))
             world.Stirring.Add((patch.X, patch.Y, patch.Shake == PatchShake.Hard));
         if (life.Now < nextStir) return;
         nextStir = life.Now + StirEvery;
-        foreach (var patch in radar.Patches.Where(p => p.Active))
+        foreach (var patch in flow.Radar.Patches.Where(p => p.Active))
             life.Rustle(flow.Map, patch.X, patch.Y, patch.Shake == PatchShake.Hard, patch.Shiny);
         int px = flow.Player.GridX, py = flow.Player.GridY;
         foreach (var tree in flow.Map.Props)
@@ -154,13 +144,13 @@ public partial class GameEngine
     /// </summary>
     private void EncountersAfterBattle(BattleEngine fought, bool defeat)
     {
-        bool field = fieldEncounter;
-        fieldEncounter = hooked = false;
+        bool field = flow.FieldEncounter;
+        flow.FieldEncounter = flow.Hooked = false;
         if (!field) return;
         bool won = fought.Result == BattleResult.PlayerVictory, caught = fought.Result == BattleResult.EnemyCaught;
         if (!defeat && fought.EnemyPokemon is { } foe && fought.Kind is BattleKind.Normal or BattleKind.Roamer)
             Roamers.AfterBattle(flow.Encounters, foe, won, caught, PlaceKey(), flow.Story, fieldRandom);
-        radar.AfterBattle(won && !defeat, caught, fieldRandom);
+        flow.Radar.AfterBattle(won && !defeat, caught, fieldRandom);
     }
 
     /// <summary>
