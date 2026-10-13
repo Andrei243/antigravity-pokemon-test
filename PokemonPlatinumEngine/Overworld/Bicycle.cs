@@ -1,3 +1,5 @@
+using PokemonPlatinumEngine.Core;
+
 namespace PokemonPlatinumEngine.Overworld;
 
 /// <summary>Whether the Bicycle can be got on or off where the player is.</summary>
@@ -38,6 +40,6 @@ public static class BicycleRules
 
     /// <summary>What is said when it can't be done, in our own words.</summary>
     public static string Why(BicycleCheck check) => check == BicycleCheck.CannotDismount
-        ? "There's no getting off the Bicycle here."
-        : "The Bicycle can't be ridden here.";
+        ? Text.Of("cycling.cannotDismount")
+        : Text.Of("cycling.notHere");
 }

@@ -1,4 +1,5 @@
 using System;
+using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 
@@ -102,10 +103,10 @@ public sealed class FishingAttempt
     /// <summary>What is said, in our own words.</summary>
     public string Message => Stage switch
     {
-        FishingStage.Landed => "Hooked one! Here it comes!",
-        FishingStage.TooSoon => "The line came up too soon, with nothing on it.",
-        FishingStage.GotAway => "Whatever it was, it slipped away.",
-        FishingStage.NoNibble => "Nothing is biting.",
+        FishingStage.Landed => Text.Of("fishing.landed"),
+        FishingStage.TooSoon => Text.Of("fishing.tooSoon"),
+        FishingStage.GotAway => Text.Of("fishing.gotAway"),
+        FishingStage.NoNibble => Text.Of("fishing.noNibble"),
         _ => ""
     };
 

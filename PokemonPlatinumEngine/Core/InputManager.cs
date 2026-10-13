@@ -21,25 +21,29 @@ public enum GameAction
 }
 
 /// <summary>An action's keys and the pad's button for it, with the name the help page gives it.</summary>
-public readonly record struct Binding(GameAction Action, string Name, KeyboardKey[] Keys, GamepadButton Pad);
+public readonly record struct Binding(GameAction Action, KeyboardKey[] Keys, GamepadButton Pad)
+{
+    /// <summary>The action's name on the help page, in the language of the moment.</summary>
+    public string Name => Text.Of($"controls.action.{Action}");
+}
 
 public static class InputManager
 {
     /// <summary>Every action's keys and button: what the game reads and what the help page shows (plan 12 · Q10).</summary>
     public static readonly Binding[] Bindings =
     {
-        new(GameAction.Up, "Up", new[] { KeyboardKey.Up, KeyboardKey.W }, GamepadButton.LeftFaceUp),
-        new(GameAction.Down, "Down", new[] { KeyboardKey.Down, KeyboardKey.S }, GamepadButton.LeftFaceDown),
-        new(GameAction.Left, "Left", new[] { KeyboardKey.Left, KeyboardKey.A }, GamepadButton.LeftFaceLeft),
-        new(GameAction.Right, "Right", new[] { KeyboardKey.Right, KeyboardKey.D }, GamepadButton.LeftFaceRight),
-        new(GameAction.Confirm, "Confirm, talk, read", new[] { KeyboardKey.Z, KeyboardKey.Space }, GamepadButton.RightFaceDown),
-        new(GameAction.Cancel, "Back", new[] { KeyboardKey.X, KeyboardKey.Escape }, GamepadButton.RightFaceRight),
-        new(GameAction.Menu, "Menu", new[] { KeyboardKey.Enter, KeyboardKey.Tab }, GamepadButton.MiddleRight),
-        new(GameAction.Run, "Run (held)", new[] { KeyboardKey.LeftShift, KeyboardKey.X }, GamepadButton.RightFaceRight),
-        new(GameAction.Item, "Registered item", new[] { KeyboardKey.C }, GamepadButton.RightFaceLeft),
-        new(GameAction.Poketch, "Pokétch out or away", new[] { KeyboardKey.P }, GamepadButton.RightFaceUp),
-        new(GameAction.PoketchApp, "Next Pokétch app", new[] { KeyboardKey.O }, GamepadButton.RightTrigger1),
-        new(GameAction.PoketchTouch, "Touch the Pokétch", new[] { KeyboardKey.I }, GamepadButton.LeftTrigger1)
+        new(GameAction.Up, new[] { KeyboardKey.Up, KeyboardKey.W }, GamepadButton.LeftFaceUp),
+        new(GameAction.Down, new[] { KeyboardKey.Down, KeyboardKey.S }, GamepadButton.LeftFaceDown),
+        new(GameAction.Left, new[] { KeyboardKey.Left, KeyboardKey.A }, GamepadButton.LeftFaceLeft),
+        new(GameAction.Right, new[] { KeyboardKey.Right, KeyboardKey.D }, GamepadButton.LeftFaceRight),
+        new(GameAction.Confirm, new[] { KeyboardKey.Z, KeyboardKey.Space }, GamepadButton.RightFaceDown),
+        new(GameAction.Cancel, new[] { KeyboardKey.X, KeyboardKey.Escape }, GamepadButton.RightFaceRight),
+        new(GameAction.Menu, new[] { KeyboardKey.Enter, KeyboardKey.Tab }, GamepadButton.MiddleRight),
+        new(GameAction.Run, new[] { KeyboardKey.LeftShift, KeyboardKey.X }, GamepadButton.RightFaceRight),
+        new(GameAction.Item, new[] { KeyboardKey.C }, GamepadButton.RightFaceLeft),
+        new(GameAction.Poketch, new[] { KeyboardKey.P }, GamepadButton.RightFaceUp),
+        new(GameAction.PoketchApp, new[] { KeyboardKey.O }, GamepadButton.RightTrigger1),
+        new(GameAction.PoketchTouch, new[] { KeyboardKey.I }, GamepadButton.LeftTrigger1)
     };
 
     private static Binding Of(GameAction action) => Bindings[(int)action];
@@ -102,29 +106,29 @@ public static class InputManager
     /// <summary>A key's name as the help page writes it.</summary>
     public static string KeyName(KeyboardKey key) => key switch
     {
-        KeyboardKey.Escape => "Esc",
-        KeyboardKey.LeftShift => "Shift",
-        KeyboardKey.Up => "Up arrow",
-        KeyboardKey.Down => "Down arrow",
-        KeyboardKey.Left => "Left arrow",
-        KeyboardKey.Right => "Right arrow",
+        KeyboardKey.Escape => Text.Of("controls.key.esc"),
+        KeyboardKey.LeftShift => Text.Of("controls.key.shift"),
+        KeyboardKey.Up => Text.Of("controls.key.up"),
+        KeyboardKey.Down => Text.Of("controls.key.down"),
+        KeyboardKey.Left => Text.Of("controls.key.left"),
+        KeyboardKey.Right => Text.Of("controls.key.right"),
         _ => key.ToString()
     };
 
     /// <summary>A pad's button as the help page writes it (the face buttons by where they lie, as on any pad).</summary>
     public static string PadName(GamepadButton button) => button switch
     {
-        GamepadButton.LeftFaceUp => "D-pad up",
-        GamepadButton.LeftFaceDown => "D-pad down",
-        GamepadButton.LeftFaceLeft => "D-pad left",
-        GamepadButton.LeftFaceRight => "D-pad right",
-        GamepadButton.RightFaceDown => "Bottom button",
-        GamepadButton.RightFaceRight => "Right button",
-        GamepadButton.RightFaceLeft => "Left button",
-        GamepadButton.RightFaceUp => "Top button",
-        GamepadButton.MiddleRight => "Start",
-        GamepadButton.RightTrigger1 => "R",
-        GamepadButton.LeftTrigger1 => "L",
+        GamepadButton.LeftFaceUp => Text.Of("controls.pad.up"),
+        GamepadButton.LeftFaceDown => Text.Of("controls.pad.down"),
+        GamepadButton.LeftFaceLeft => Text.Of("controls.pad.left"),
+        GamepadButton.LeftFaceRight => Text.Of("controls.pad.right"),
+        GamepadButton.RightFaceDown => Text.Of("controls.pad.bottom"),
+        GamepadButton.RightFaceRight => Text.Of("controls.pad.rightButton"),
+        GamepadButton.RightFaceLeft => Text.Of("controls.pad.leftButton"),
+        GamepadButton.RightFaceUp => Text.Of("controls.pad.top"),
+        GamepadButton.MiddleRight => Text.Of("controls.pad.start"),
+        GamepadButton.RightTrigger1 => Text.Of("controls.pad.r"),
+        GamepadButton.LeftTrigger1 => Text.Of("controls.pad.l"),
         _ => button.ToString()
     };
 

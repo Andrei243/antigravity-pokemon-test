@@ -476,11 +476,14 @@ public sealed partial class ScriptRunner
                 host.Fanfare(FanfareFor(item));
                 // A ball picked up off the ground is a line of the Journal (scripts_visible_items.s); a gift or a hidden find isn't
                 if (i.Op == Op.Find && Subject?.IsItemBall == true) host.Note(new JournalEvent(JournalEventKind.ItemWasObtained, item.Name));
-                string verb = i.Op == Op.Find ? "found" : "received";
-                var lines = new List<string> { count == 1 ? $"{{player}} {verb} the {item.Name}!" : $"{{player}} {verb} {count} × {item.Name}!" };
+                string itemName = item.Name;
+                var lines = new List<string>
+                {
+                    i.Op == Op.Find ? Text.Of("found.found", ("n", count), ("item", itemName)) : Text.Of("found.received", ("n", count), ("item", itemName))
+                };
                 // A TM or an HM says what it holds
-                if (!string.IsNullOrEmpty(item.TeachesMove)) lines.Add($"{item.Name} holds the move {item.TeachesMove}.");
-                lines.Add($"{{player}} put {(count == 1 ? "it" : "them")} away in the {PocketName(item.Pocket)} pocket.");
+                if (!string.IsNullOrEmpty(item.TeachesMove)) lines.Add(Text.Of("found.holdsMove", ("item", itemName), ("move", item.TeachesMove)));
+                lines.Add(Text.Of("found.putAway", ("n", count), ("pocket", PocketName(item.Pocket))));
                 host.Say(null, lines);
                 break;
             }
@@ -738,7 +741,7 @@ public sealed partial class ScriptRunner
                 var user = ownPokemon != null && ownPokemon.Moves.Any(m => m.Name == i.Name) ? ownPokemon
                     : FieldMoveRules.Knower(host.Party, move) ?? throw Wrong(i, $"nobody on the team knows {i.Name}");
                 lastUser = user.Nickname;
-                host.Say(null, new[] { $"{user.Nickname} used {i.Name}!" });
+                host.Say(null, new[] { Text.Of("fieldMoves.used", ("name", user.Nickname), ("move", i.Name)) });
                 afterBusy = () => host.UseMove(move, user, Subject);
                 break;
             }
@@ -956,8 +959,8 @@ public sealed partial class ScriptRunner
                 host.Fanfare(MusicRole.FanfareItem);
                 host.Say(null, new List<string>
                 {
-                    i.Number == 1 ? $"{{player}} received the {lastAccessory}!" : $"{{player}} received {i.Number} × {lastAccessory}!",
-                    $"{{player}} put {(i.Number == 1 ? "it" : "them")} away in the Fashion Case."
+                    Text.Of("found.received", ("n", i.Number), ("item", lastAccessory)),
+                    Text.Of("found.putInCase", ("n", i.Number))
                 });
                 break;
             }
@@ -1716,14 +1719,14 @@ public sealed partial class ScriptRunner
     /// <summary>How the bag's pockets are called in a line.</summary>
     public static string PocketName(ItemPocket pocket) => pocket switch
     {
-        ItemPocket.Medicine => "Medicine",
-        ItemPocket.PokeBalls => "Poké Balls",
-        ItemPocket.TMsAndHMs => "TMs & HMs",
-        ItemPocket.KeyItems => "Key Items",
-        ItemPocket.Berries => "Berries",
-        ItemPocket.Mail => "Mail",
-        ItemPocket.BattleItems => "Battle Items",
-        _ => "Items"
+        ItemPocket.Medicine => Text.Of("found.pocket.Medicine"),
+        ItemPocket.PokeBalls => Text.Of("found.pocket.PokeBalls"),
+        ItemPocket.TMsAndHMs => Text.Of("found.pocket.TMsAndHMs"),
+        ItemPocket.KeyItems => Text.Of("found.pocket.KeyItems"),
+        ItemPocket.Berries => Text.Of("found.pocket.Berries"),
+        ItemPocket.Mail => Text.Of("found.pocket.Mail"),
+        ItemPocket.BattleItems => Text.Of("found.pocket.BattleItems"),
+        _ => Text.Of("found.pocket.Items")
     };
 
     // ------------------------------------------------------------------ conditions

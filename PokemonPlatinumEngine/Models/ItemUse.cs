@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 
 namespace PokemonPlatinumEngine.Models;
@@ -17,7 +18,8 @@ public sealed record ItemUseResult(bool Applied, string Message)
     /// <summary>Moves of those levels it couldn't learn, knowing four already: the bag asks about each.</summary>
     public IReadOnlyList<string> Wanted { get; init; } = Array.Empty<string>();
 
-    public static readonly ItemUseResult Nothing = new(false, "It won't have any effect.");
+    /// <summary>Nothing done: a new one each time, in the language of the moment.</summary>
+    public static ItemUseResult Nothing => new(false, Text.Of("bag.noEffect"));
 }
 
 /// <summary>
@@ -118,8 +120,8 @@ public static class ItemUse
         {
             int before = EffortRules.Total(p);
             if (!EffortRules.UseItem(item, p, rules)) return ItemUseResult.Nothing;
-            return new ItemUseResult(true, EffortRules.Total(p) > before ? $"{name}'s base stats grew from the {item.Name}."
-                : $"{name} grew friendlier, and its base stats came down a little.");
+            return new ItemUseResult(true, EffortRules.Total(p) > before ? Text.Of("itemUse.statsGrew", ("name", name), ("item", item.Name))
+                : Text.Of("itemUse.friendlier", ("name", name)));
         }
 
         var said = new List<string>();
@@ -136,11 +138,11 @@ public static class ItemUse
             applied = true;
             said.Add(status switch
             {
-                StatusCondition.Sleep => $"{name} woke up.",
-                StatusCondition.Poison or StatusCondition.Toxic => $"{name} was cured of its poisoning.",
-                StatusCondition.Burn => $"{name}'s burn was healed.",
-                StatusCondition.Freeze => $"{name} thawed out.",
-                _ => $"{name} was cured of its paralysis."
+                StatusCondition.Sleep => Text.Of("itemUse.woke", ("name", name)),
+                StatusCondition.Poison or StatusCondition.Toxic => Text.Of("itemUse.poisonCured", ("name", name)),
+                StatusCondition.Burn => Text.Of("itemUse.burnHealed", ("name", name)),
+                StatusCondition.Freeze => Text.Of("itemUse.thawed", ("name", name)),
+                _ => Text.Of("itemUse.paralysisCured", ("name", name))
             });
         }
 
@@ -159,7 +161,8 @@ public static class ItemUse
                 if (fainted) p.Revive(Math.Max(1, healed));
                 else p.CurrentHP = Math.Min(max, hp + healed);
                 applied = true;
-                said.Add(fainted ? $"{name} came round, with {p.CurrentHP} HP." : $"{name} recovered {p.CurrentHP - hp} HP.");
+                int gained = p.CurrentHP - hp;
+                said.Add(fainted ? Text.Of("itemUse.revived", ("name", name), ("hp", p.CurrentHP)) : Text.Of("itemUse.recovered", ("name", name), ("hp", gained)));
             }
             found = true;
         }
@@ -181,8 +184,8 @@ public static class ItemUse
                 learned = newMoves;
                 wanted = movesWanted;
                 applied = true;
-                said.Add($"{name} grew to Lv. {p.Level}!");
-                said.AddRange(newMoves.Select(m => $"{name} learned {m}!"));
+                said.Add(Text.Of("bag.grew", ("name", name), ("level", p.Level)));
+                said.AddRange(newMoves.Select(m => Text.Of("bag.learned", ("name", name), ("move", m))));
             }
             found = true;
         }
@@ -196,7 +199,7 @@ public static class ItemUse
                 m.PPUps = Has(item, "ppUp") ? Math.Min(3, m.PPUps + 1) : 3;
                 m.CurrentPP += m.MaxPP - oldMax;
                 applied = true;
-                said.Add($"{m.Name}'s PP rose.");
+                said.Add(Text.Of("itemUse.ppRose", ("move", m.Name)));
             }
             found = true;
         }
@@ -208,7 +211,8 @@ public static class ItemUse
             if (restored.Count > 0)
             {
                 applied = true;
-                said.Add(Has(item, "restorePPAllMoves") ? $"{name}'s PP was restored." : $"{p.Moves[restored[0]].Name}'s PP was restored.");
+                string first = p.Moves[restored[0]].Name;
+                said.Add(Has(item, "restorePPAllMoves") ? Text.Of("itemUse.allPpRestored", ("name", name)) : Text.Of("itemUse.ppRestored", ("move", first)));
             }
             found = true;
         }
