@@ -104,6 +104,8 @@ public partial class GameEngine
     /// <summary>The region's picture shows the hidden places the story has revealed, and is painted again when another is.</summary>
     private void KeepTheRegionsPicture()
     {
+        // (A game with no window has no picture to paint, plan 16 · T12)
+        if (IsHeadless) return;
         foreach (var region in RegionDatabase.All)
             if (RegionMap.Of(region.Id) is { } map)
                 RegionMapPictures.Show(map, map.Hidden.Where(h => flow.Story.Var(h.Variable) == h.Value).Select(h => h.Key));
