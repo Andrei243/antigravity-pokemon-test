@@ -644,7 +644,7 @@ public partial class GameEngine
     {
         if (flow.Underground.Base == null) return;
         flow.State = GameState.Decoration;
-        flow.DecorationScreen.Open(SecretBaseRules.Decorating(flow.Underground), "DECORATE THE BASE", piece => UndergroundArt.PlanLook(piece.Kind));
+        flow.DecorationScreen.Open(SecretBaseRules.Decorating(flow.Underground), Text.Of("decorating.title"), piece => UndergroundArt.PlanLook(piece.Kind));
     }
 
     private void UpdateDecoration(float dt)

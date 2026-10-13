@@ -69,7 +69,7 @@ public sealed class MiningScreen
         Kept = 0;
         shown = 0;
         Lesson = !into.HasMined;
-        Line = game.ItemCount == 1 ? "The wall rings hollow in one place!" : $"The wall rings hollow in {game.ItemCount} places!";
+        Line = Text.Of("digging.ringsHollow", ("n", game.ItemCount));
         AudioManager.PlaySound("poketch_beep");
     }
 
@@ -99,7 +99,7 @@ public sealed class MiningScreen
                 if (Lesson)
                 {
                     Lesson = false;
-                    Line = "Chip the wall away with the pick or the hammer. The hammer takes more off at a blow, and brings the wall down the sooner!";
+                    Line = Text.Of("digging.lesson");
                     break;
                 }
                 Phase = MiningPhase.Digging;
@@ -137,12 +137,12 @@ public sealed class MiningScreen
         PhaseAge = 0f;
         if (Game.AllDug)
         {
-            Line = "Every last thing is out of the wall!";
+            Line = Text.Of("digging.allDug");
             AudioManager.PlaySound("levelup");
         }
         else
         {
-            Line = "The wall came down!";
+            Line = Text.Of("digging.cameDown");
             AudioManager.PlaySound("boulder");
         }
     }
@@ -170,20 +170,20 @@ public sealed class MiningScreen
         if (UndergroundDatabase.IsSphere(find.Id))
         {
             var kind = UndergroundDatabase.SphereOf(find.Id);
-            Line = $"A {UndergroundDatabase.SphereName(kind)} of size {find.SphereSize} came out!";
+            Line = Text.Of("digging.sphereFound", ("sphere", UndergroundDatabase.SphereName(kind)), ("size", find.SphereSize));
             records.SpheresDug = UndergroundRecords.Add(records.SpheresDug, 1);
             kept = state.TryAddSphere(kind, find.SphereSize);
         }
         else
         {
-            Line = $"The {UndergroundDatabase.TreasureName(find.Id)} is yours!";
+            Line = Text.Of("digging.treasureFound", ("treasure", UndergroundDatabase.TreasureName(find.Id)));
             if (MiningGame.CountsAsFossil(find.Id)) records.FossilsDug = UndergroundRecords.Add(records.FossilsDug, 1);
             else records.TreasuresDug = UndergroundRecords.Add(records.TreasuresDug, 1);
             kept = state.TryAddTreasure(find.Id);
             if (kept) state.NotePlate(find.Id);
         }
         if (kept) Kept++;
-        else lines.Enqueue("There's no room for it in the bag. It was left behind.");
+        else lines.Enqueue(Text.Of("digging.noRoom"));
         AudioManager.PlaySound("select");
     }
 

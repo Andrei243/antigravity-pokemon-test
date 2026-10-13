@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.Models.Underground;
@@ -52,14 +53,14 @@ internal static partial class ModernUi
     public static void UndergroundIcon(Vector2 c, float r, string icon)
     {
         UiShapes.Circle(c, r, Disc);
-        if (icon.StartsWith("sphere:", StringComparison.Ordinal) && Enum.TryParse(icon[7..], out SphereKind kind))
+        if (icon.StartsWith(UndergroundRow.SpherePicture, StringComparison.Ordinal) && Enum.TryParse(icon[UndergroundRow.SpherePicture.Length..], out SphereKind kind))
         {
             SphereBall(c, r * 0.62f, kind);
             return;
         }
-        if (icon.StartsWith("treasure:", StringComparison.Ordinal))
+        if (icon.StartsWith(UndergroundRow.TreasurePicture, StringComparison.Ordinal))
         {
-            var colour = TreasureColour(int.Parse(icon[9..]));
+            var colour = TreasureColour(int.Parse(icon[UndergroundRow.TreasurePicture.Length..]));
             UiShapes.Turned(c, r * 0.46f, r * 0.46f, 5, 45, Darker(colour, 0.25f));
             UiShapes.Turned(c - new Vector2(1, 2), r * 0.36f, r * 0.36f, 4, 45, colour);
             return;
@@ -112,9 +113,9 @@ internal static partial class ModernUi
     {
         var game = screen.Game;
         Backdrop(sw, sh);
-        ScreenTitle("THE WALL");
-        if (screen.Phase == MiningPhase.Digging) Hints(sw - Margin, 44, ("Z", "Strike"), ("X", "Change tool"));
-        else Hints(sw - Margin, 44, ("Z", "Next"));
+        ScreenTitle(Text.Of("digging.title"));
+        if (screen.Phase == MiningPhase.Digging) Hints(sw - Margin, 44, Hint("shared.keys.z", "digging.hint.strike"), Hint("shared.keys.x", "digging.hint.changeTool"));
+        else Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.next"));
 
         const float cell = 68;
         float wallW = MiningGame.Width * cell, wallH = MiningGame.Height * cell;
@@ -140,7 +141,7 @@ internal static partial class ModernUi
                 from = to;
             }
         }
-        UiFonts.DrawCentered(game.Integrity == 0 ? "IT GAVE WAY" : "THE WALL HOLDS", strip.X + strip.Width - 230, strip.Y + 22, 20, new Color(214, 204, 196, 255), UiWeight.Black);
+        UiFonts.DrawCentered(game.Integrity == 0 ? Text.Of("digging.gaveWay") : Text.Of("digging.holds"), strip.X + strip.Width - 230, strip.Y + 22, 20, new Color(214, 204, 196, 255), UiWeight.Black);
 
         Raylib.DrawRectangle((int)wall.X, (int)wall.Y, (int)wall.Width, (int)wall.Height, Bedrock);
         // What is set in the wall, under the dirt
@@ -203,13 +204,13 @@ internal static partial class ModernUi
         float rx = frame.X + frame.Width + Gutter, rw = sw - Margin - rx;
         var tools = new Rectangle(rx, ContentTop, rw, 330);
         Panel(tools, 30);
-        Label("TOOLS", tools.X + 36, tools.Y + 26);
-        ToolButton(new Rectangle(tools.X + 28, tools.Y + 66, tools.Width - 56, 108), "PICK", "One layer round the blow. The wall loses a little.", game.PickSelected, hammer: false);
-        ToolButton(new Rectangle(tools.X + 28, tools.Y + 192, tools.Width - 56, 108), "HAMMER", "Two layers, and the corners. The wall loses more.", !game.PickSelected, hammer: true);
+        Label(Text.Of("digging.tools"), tools.X + 36, tools.Y + 26);
+        ToolButton(new Rectangle(tools.X + 28, tools.Y + 66, tools.Width - 56, 108), Text.Of("digging.pick.name"), Text.Of("digging.pick.note"), game.PickSelected, hammer: false);
+        ToolButton(new Rectangle(tools.X + 28, tools.Y + 192, tools.Width - 56, 108), Text.Of("digging.hammer.name"), Text.Of("digging.hammer.note"), !game.PickSelected, hammer: true);
 
         var held = new Rectangle(rx, tools.Y + tools.Height + 24, rw, ContentBottom - 150 - (tools.Y + tools.Height + 24) - 24);
         Panel(held, 30);
-        Label("IN THE WALL", held.X + 36, held.Y + 26);
+        Label(Text.Of("digging.inTheWall"), held.X + 36, held.Y + 26);
         for (int i = 0; i < game.ItemCount; i++)
         {
             var row = new Rectangle(held.X + 28, held.Y + 66 + i * 82, held.Width - 56, 70);
@@ -219,7 +220,7 @@ internal static partial class ModernUi
             // What a thing is isn't told until it lies bare
             if (bare)
             {
-                UndergroundIcon(new Vector2(row.X + 40, row.Y + 35), 26, UndergroundDatabase.IsSphere(id) ? $"sphere:{UndergroundDatabase.SphereOf(id)}" : $"treasure:{id}");
+                UndergroundIcon(new Vector2(row.X + 40, row.Y + 35), 26, UndergroundDatabase.IsSphere(id) ? UndergroundRow.SphereIcon(UndergroundDatabase.SphereOf(id)) : UndergroundRow.TreasureIcon(id));
                 string name = UndergroundDatabase.IsSphere(id) ? UndergroundDatabase.SphereName(UndergroundDatabase.SphereOf(id)) : UndergroundDatabase.TreasureName(id);
                 UiFonts.DrawCentered(name, row.X + 82, row.Y + 35, 28, Ink, UiWeight.Black);
             }
@@ -227,14 +228,14 @@ internal static partial class ModernUi
             {
                 UiShapes.Circle(new Vector2(row.X + 40, row.Y + 35), 26, Rule);
                 UiFonts.DrawCentered("?", row.X + 32, row.Y + 35, 30, Muted, UiWeight.Black);
-                UiFonts.DrawCentered("Something...", row.X + 82, row.Y + 35, 28, Muted, UiWeight.ExtraBold);
+                UiFonts.DrawCentered(Text.Of("digging.something"), row.X + 82, row.Y + 35, 28, Muted, UiWeight.ExtraBold);
             }
         }
 
         var box = new Rectangle(Margin, ContentBottom - 126 + 30, sw - Margin * 2, 126 - 30);
         if (frame.Y + frame.Height + 12 > box.Y) box = new Rectangle(rx, ContentBottom - 126, rw, 126);
         Panel(box, 28);
-        string line = screen.Line.Length > 0 ? screen.Line : game.PickSelected ? "The pick is in hand." : "The hammer is in hand.";
+        string line = screen.Line.Length > 0 ? screen.Line : game.PickSelected ? Text.Of("digging.inHand.pick") : Text.Of("digging.inHand.hammer");
         DrawWrapped(line, box.X + 36, box.Y + 22, box.Width - 72, 28, Ink, 36, UiWeight.ExtraBold);
     }
 
@@ -267,8 +268,8 @@ internal static partial class ModernUi
     public static void DrawUnderground(int sw, int sh, UndergroundScreen screen)
     {
         Backdrop(sw, sh);
-        ScreenTitle(screen.Mode switch { UndergroundMode.Hiker => "HIKER", UndergroundMode.Pc => "BASE PC", _ => "UNDERGROUND" });
-        Hints(sw - Margin, 44, ("Z", "Choose"), ("Esc", "Back"));
+        ScreenTitle(screen.Mode switch { UndergroundMode.Hiker => Text.Of("belowGround.title.hiker"), UndergroundMode.Pc => Text.Of("belowGround.title.pc"), _ => Text.Of("belowGround.title.bag") });
+        Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.choose"), Hint("shared.keys.esc", "shared.hints.back"));
 
         var strip = new Rectangle(Margin, ContentTop, Math.Min(sw - Margin * 2, 300f * screen.Tabs.Count + 60), 76);
         var colours = new[] { Gold, Blue, new Color(190, 142, 92, 255), Green, Frame };
@@ -278,7 +279,7 @@ internal static partial class ModernUi
         var list = new Rectangle(Margin, top, 940, ContentBottom - top);
         Panel(list, 34);
         var rows = screen.Rows;
-        if (rows.Count == 0) EmptyNote(list, "Nothing here.");
+        if (rows.Count == 0) EmptyNote(list, Text.Of("belowGround.nothingHere"));
         for (int i = 0; i < UndergroundScreen.VisibleRows && screen.First + i < rows.Count; i++)
         {
             int index = screen.First + i;
@@ -307,11 +308,11 @@ internal static partial class ModernUi
         // The Spheres on hand, which is what everything is paid in
         var purse = new Rectangle(rx, top + 380 + 24, rw, ContentBottom - top - 380 - 24);
         Panel(purse, 34);
-        Label(screen.Paying ? "PAY WITH WHICH SPHERE?" : "SPHERES ON HAND", purse.X + 36, purse.Y + 26);
+        Label(screen.Paying ? Text.Of("belowGround.payWith") : Text.Of("belowGround.spheresOnHand"), purse.X + 36, purse.Y + 26);
         var spheres = screen.State.Spheres;
         int perRow = Math.Max(1, (int)((purse.Width - 56) / 150)), shown = Math.Min(spheres.Count, perRow * 4);
         int firstSphere = screen.Paying ? Math.Max(0, Math.Min(screen.PayCursor / perRow * perRow - perRow, Math.Max(0, spheres.Count - shown))) : 0;
-        if (spheres.Count == 0) UiFonts.Draw("None yet. Dig some out of a wall.", purse.X + 36, purse.Y + 74, 26, Muted, UiWeight.ExtraBold);
+        if (spheres.Count == 0) UiFonts.Draw(Text.Of("belowGround.noSpheresYet"), purse.X + 36, purse.Y + 74, 26, Muted, UiWeight.ExtraBold);
         for (int i = 0; i < shown && firstSphere + i < spheres.Count; i++)
         {
             var sphere = spheres[firstSphere + i];
@@ -328,8 +329,8 @@ internal static partial class ModernUi
             MenuPanel(list.X + list.Width - 380, Math.Min(list.Y + 24 + at * RowPitch + 40, sh - 64 - MenuPanelHeight(actions.Count)), actions, screen.ActionCursor);
         }
         if (screen.Question is { } question)
-            Prompt(sw, sh, question, "", new[] { ("YES", Blue), ("NO", Red) }, screen.Answer);
-        else if (screen.Message is { } message) Prompt(sw, sh, message, "", new[] { ("OK", Blue) }, 0);
+            Prompt(sw, sh, question, "", new[] { (Text.Of("belowGround.answer.yes"), Blue), (Text.Of("belowGround.answer.no"), Red) }, screen.Answer);
+        else if (screen.Message is { } message) Prompt(sw, sh, message, "", new[] { (Text.Of("shared.ok"), Blue) }, 0);
     }
 
     // ------------------------------------------------------------------ a room being decorated
@@ -340,7 +341,7 @@ internal static partial class ModernUi
         var room = session.Room;
         Backdrop(sw, sh);
         ScreenTitle(screen.Title);
-        Hints(sw - Margin, 44, ("Z", session.Step is DecoratingStep.Placing or DecoratingStep.Moving ? "Set down" : "Choose"), ("Esc", "Back"));
+        Hints(sw - Margin, 44, Hint("shared.keys.z", session.Step is DecoratingStep.Placing or DecoratingStep.Moving ? "decorating.setDown" : "shared.hints.choose"), Hint("shared.keys.esc", "shared.hints.back"));
 
         float cell = MathF.Floor(Math.Min((ContentBottom - ContentTop - 56) / room.Height, 900f / room.Width));
         var plan = new Rectangle(Margin, ContentTop, room.Width * cell + 56, room.Height * cell + 56);
@@ -386,12 +387,13 @@ internal static partial class ModernUi
         switch (session.Step)
         {
             case DecoratingStep.Menu:
-                Label($"OUT: {room.Out}" + (room.Limit < int.MaxValue ? $" OF {room.Limit}" : ""), side.X + 40, side.Y + 30);
-                for (int i = 0; i < DecoratingSession.MenuRows.Length; i++)
-                    ListRow(RowRect(side, i, 72), i == session.MenuCursor, DecoratingSession.MenuRows[i], nameX: 44);
+                Label(room.Limit < int.MaxValue ? Text.Of("decorating.countOf", ("out", room.Out), ("limit", room.Limit)) : Text.Of("decorating.count", ("out", room.Out)), side.X + 40, side.Y + 30);
+                var menu = DecoratingSession.MenuRows;
+                for (int i = 0; i < menu.Length; i++)
+                    ListRow(RowRect(side, i, 72), i == session.MenuCursor, menu[i], nameX: 44);
                 break;
             case DecoratingStep.Choosing:
-                Label("IN STORE", side.X + 40, side.Y + 30);
+                Label(Text.Of("decorating.inStore"), side.X + 40, side.Y + 30);
                 for (int i = 0; i < DecorationScreen.VisibleRows && screen.First + i < session.Store.Count; i++)
                 {
                     int slot = screen.First + i;
@@ -399,7 +401,7 @@ internal static partial class ModernUi
                     var r = RowRect(side, i, 72, session.Store.Count > DecorationScreen.VisibleRows);
                     var kind = session.KindOf(entry.Kind);
                     var ink = ListRow(r, slot == session.StoreCursor, kind.Name, !entry.Out, 44);
-                    RowValue(r, entry.Out ? "OUT" : $"{kind.Width}×{kind.Depth}", ink, 26);
+                    RowValue(r, entry.Out ? Text.Of("decorating.out") : $"{kind.Width}×{kind.Depth}", ink, 26);
                 }
                 if (session.Store.Count > DecorationScreen.VisibleRows) ScrollBar(side, screen.First, DecorationScreen.VisibleRows, session.Store.Count, 72);
                 break;
@@ -407,12 +409,12 @@ internal static partial class ModernUi
             {
                 string doing = session.Step switch
                 {
-                    DecoratingStep.Placing => "Carry it where it should stand and set it down.",
-                    DecoratingStep.Moving => "Carry it to its new place and set it down.",
-                    DecoratingStep.PuttingAway => "Choose what to put away.",
-                    _ => "Choose what to move."
+                    DecoratingStep.Placing => Text.Of("decorating.doing.placing"),
+                    DecoratingStep.Moving => Text.Of("decorating.doing.moving"),
+                    DecoratingStep.PuttingAway => Text.Of("decorating.doing.puttingAway"),
+                    _ => Text.Of("decorating.doing.picking")
                 };
-                Label(session.Step is DecoratingStep.Placing or DecoratingStep.Moving ? "IN HAND" : "IN THE ROOM", side.X + 40, side.Y + 30);
+                Label(session.Step is DecoratingStep.Placing or DecoratingStep.Moving ? Text.Of("decorating.inHand") : Text.Of("decorating.inTheRoom"), side.X + 40, side.Y + 30);
                 var shown = session.Held ?? session.Under;
                 if (shown != null) UiFonts.Draw(shown.Name, side.X + 40, side.Y + 76, 40, Ink, UiWeight.Black);
                 DrawWrapped(doing, side.X + 40, side.Y + (shown != null ? 150 : 84), side.Width - 80, 28, Muted, 38, UiWeight.ExtraBold);

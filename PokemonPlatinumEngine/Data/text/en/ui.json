@@ -745,5 +745,112 @@
   "creditsRoll": {
     "level": "Lv. {level}",
     "speciesLevel": "{species} · Lv. {level}"
+  },
+  "digging": {
+    "title": "THE WALL",
+    "hint": { "strike": "Strike", "changeTool": "Change tool" },
+    "gaveWay": "IT GAVE WAY",
+    "holds": "THE WALL HOLDS",
+    "tools": "TOOLS",
+    "pick": { "name": "PICK", "note": "One layer round the blow. The wall loses a little." },
+    "hammer": { "name": "HAMMER", "note": "Two layers, and the corners. The wall loses more." },
+    "inTheWall": "IN THE WALL",
+    "something": "Something...",
+    "inHand": { "pick": "The pick is in hand.", "hammer": "The hammer is in hand." },
+    "ringsHollow": { "one": "The wall rings hollow in one place!", "other": "The wall rings hollow in {n} places!" },
+    "lesson": "Chip the wall away with the pick or the hammer. The hammer takes more off at a blow, and brings the wall down the sooner!",
+    "allDug": "Every last thing is out of the wall!",
+    "cameDown": "The wall came down!",
+    "sphereFound": "A {sphere} of size {size} came out!",
+    "treasureFound": "The {treasure} is yours!",
+    "noRoom": "There's no room for it in the bag. It was left behind."
+  },
+  "belowGround": {
+    "title": { "bag": "UNDERGROUND", "hiker": "HIKER", "pc": "BASE PC" },
+    "tab": {
+      "Traps": "TRAPS", "Spheres": "SPHERES", "Goods": "GOODS", "Treasures": "TREASURES", "Surface": "SURFACE",
+      "Wares": "HIS WARES", "YourTraps": "YOUR TRAPS", "YourGoods": "YOUR GOODS", "YourTreasures": "YOUR TREASURES",
+      "Decorate": "DECORATE", "Store": "STORE", "Take": "TAKE", "Flags": "FLAGS"
+    },
+    "action": { "Set": "SET", "Use": "USE", "Bury": "BURY", "PutInBag": "PUT IN BAG", "Trash": "TRASH", "Cancel": "CANCEL" },
+    "answer": { "yes": "YES", "no": "NO" },
+    "nothingHere": "Nothing here.",
+    "payWith": "PAY WITH WHICH SPHERE?",
+    "spheresOnHand": "SPHERES ON HAND",
+    "noSpheresYet": "None yet. Dig some out of a wall.",
+    "price": { "Prism": "Prism {size}", "Pale": "Pale {size}", "Red": "Red {size}", "Blue": "Blue {size}", "Green": "Green {size}" },
+    "sphereNote": "Buried in the floor of a tunnel, a Sphere grows a little every day. The hikers take them in trade.",
+    "treasureNote": "Dug out of a wall. Put in the bag, it is an item like any other above ground.",
+    "goUp": { "name": "GO UP", "note": "Back to the surface, where you went down." },
+    "record": {
+      "spheresDug": "Spheres dug up", "fossilsDug": "Fossils dug up", "treasuresDug": "Treasures dug up",
+      "trapsTriggered": "Traps stepped on", "timesBaseMoved": "Times the base moved"
+    },
+    "decorateNote": "Put goods out of the PC about the base, put them away again, or move them.",
+    "out": "OUT",
+    "flags": { "thisBase": "This base's flag", "broughtHome": "Flags brought home", "owner": "{owner}'s flag" },
+    "flag": { "Normal": "Normal", "Bronze": "Bronze", "Silver": "Silver", "Gold": "Gold", "Platinum": "Platinum" },
+    "trap": {
+      "drill": "Used facing a wall of the tunnels, it opens a secret base there. One drill, one base: a second base moves the first.",
+      "slide": "Whoever steps on it is sent sliding the way its arrow points, until something stops them.",
+      "hole": "Whoever steps on it falls in, and has to wriggle this way and that to climb out.",
+      "steering": "Whoever steps on it finds their steps going the wrong way for a while.",
+      "smoke": "Whoever steps on it is wrapped in smoke until they have wiped it away.",
+      "rock": "A boulder drops in front of whoever steps on it, and has to be broken up.",
+      "bubbles": "Whoever steps on it is buried in bubbles until every one is burst.",
+      "alert": "It calls out when someone steps on it. Nothing more.",
+      "leaves": "Whoever steps on it is covered in leaves until they are blown away.",
+      "fire": "A flame springs up before whoever steps on it, and has to be blown out."
+    },
+    "good": {
+      "oneTile": "It takes one tile",
+      "tiles": "It takes {width} tiles by {depth}",
+      "trap": "{size} of a secret base, and goes off like a trap under whoever steps on it.",
+      "floor": "{size} of a secret base's floor.",
+      "written": " Something is written on it."
+    },
+    "hiker": {
+      "noSpheres": "No Spheres on you? Come back when you've dug some up.",
+      "noUse": "I've no use for that.",
+      "trade": "Trade the {thing} for a {sphere} of size {size}?",
+      "fairSwap": "A fair swap! You got a {sphere} of size {size}.",
+      "nowhere": "Hold on, you've nowhere to put it!",
+      "done": "Done! The {thing} is yours.",
+      "wrongSphere": "No, no. It's another colour of Sphere I'm after.",
+      "tooSmall": "Too small, that one. I want a bigger Sphere for it."
+    },
+    "stored": "The {thing} was stored in the PC.",
+    "pcFull": "The PC is full.",
+    "onDisplay": "It's out on display. Put it away first.",
+    "taken": "The {thing} was taken out of the PC.",
+    "bagFull": "The bag is full.",
+    "putInBag": "The {thing} was put in the bag.",
+    "noRoomInBag": "The bag is full. It couldn't be put away.",
+    "throwAway": "Throw the {thing} away?",
+    "thrownAway": "The {thing} was thrown away."
+  },
+  "decorating": {
+    "title": "DECORATE THE BASE",
+    "menu": { "decorate": "DECORATE", "putAway": "PUT AWAY", "move": "MOVE", "done": "DONE" },
+    "setDown": "Set down",
+    "count": "OUT: {out}",
+    "countOf": "OUT: {out} OF {limit}",
+    "inStore": "IN STORE",
+    "out": "OUT",
+    "doing": {
+      "placing": "Carry it where it should stand and set it down.",
+      "moving": "Carry it to its new place and set it down.",
+      "puttingAway": "Choose what to put away.",
+      "picking": "Choose what to move."
+    },
+    "inHand": "IN HAND",
+    "inTheRoom": "IN THE ROOM",
+    "nothingInStore": "There's nothing in store to put out.",
+    "noMore": "No more can be put out here.",
+    "outAlready": "That one is out already.",
+    "cantPlace": "It can't be placed there.",
+    "putOut": "The {thing} was put out.",
+    "takenAway": "The {thing} was taken away.",
+    "putAway": "The {thing} was put away."
   }
 }

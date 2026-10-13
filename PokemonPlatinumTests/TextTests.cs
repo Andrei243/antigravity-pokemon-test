@@ -30,7 +30,8 @@ public class TextTests
         "UI/ModernUi.TownMap.cs", "UI/ModernUi.Field.cs", "UI/ModernUi.Poketch.cs", "UI/ModernUi.Poketch.Time.cs", "UI/ModernUi.Poketch.Toys.cs",
         "UI/ModernUi.Poketch.Map.cs", "UI/ModernUi.Poketch.Pokemon.cs", "Models/PoketchApps/ColorChangerApp.cs", "UI/HelpScreen.cs",
         "UI/ModernUi.Help.cs", "UI/ModernUi.Wardrobe.cs", "UI/WardrobeScreen.cs", "UI/ModernUi.Hatch.cs", "UI/HatchScreen.cs",
-        "UI/ModernUi.Ceremony.cs", "UI/HallOfFameCeremony.cs", "UI/CreditsScreen.cs", "UI/SlotMachineScreen.cs"
+        "UI/ModernUi.Ceremony.cs", "UI/HallOfFameCeremony.cs", "UI/CreditsScreen.cs", "UI/SlotMachineScreen.cs",
+        "UI/ModernUi.Underground.cs", "UI/MiningScreen.cs", "UI/UndergroundScreen.cs", "UI/DecorationScreen.cs", "Models/Decorating.cs"
     };
 
     /// <summary>What may stay in quotes in a file on the table: names of the data, and the logo, which is a picture (plan 17).</summary>
@@ -58,7 +59,16 @@ public class TextTests
         ["UI/ModernUi.Field.cs"] = new[] { "Route", "Lake", "Town", "City" },
         ["UI/ModernUi.Ceremony.cs"] = new[] { "PLATINUM", "Pokémon", "A  FAN  REMAKE" },
         // The bonus game's own Pokémon, whose cry it plays
-        ["UI/SlotMachineScreen.cs"] = new[] { "Clefairy" }
+        ["UI/SlotMachineScreen.cs"] = new[] { "Clefairy" },
+        // The treasures' ids in the Underground's table, which a treasure's colour in the wall goes by
+        ["UI/ModernUi.Underground.cs"] = new[]
+        {
+            "_FOSSIL", "RARE_BONE", "OLD_AMBER", "RED_SHARD", "FIRE_STONE", "FLAME", "HEAT", "DRACO", "BLUE_SHARD", "WATER_STONE", "SPLASH", "DAMP", "SKY",
+            "YELLOW_SHARD", "THUNDER", "ZAP", "REVIVE", "STAR", "SUN", "GREEN_SHARD", "LEAF", "MEADOW", "INSECT", "HEART", "MIND", "ICY", "ICICLE", "MOON",
+            "LIGHT_CLAY", "SPOOKY", "TOXIC", "DREAD", "ODD_KEYSTONE", "EARTH", "FIST", "SMOOTH", "STONE_PLATE"
+        },
+        // A row's picture by its kind; the hikers' kinds of stock and the Digger Drill's id, which the lists go by
+        ["UI/UndergroundScreen.cs"] = new[] { "sphere:", "treasure:", "Traps", "Treasures", "TRAP_DIGGER_DRILL" }
     };
 
     private static readonly Regex Literal = new(@"(\$?)""((?:[^""\\\n]|\\.)*)""", RegexOptions.Compiled);
@@ -190,6 +200,14 @@ public class TextTests
         Assert.Equal("Your Own Bottoms", ModernUi.GarmentName(ClothingSlot.Bottoms, null));
         Assert.Equal(new[] { "BUY", "NO" }, WardrobeScreen.BuyChoices);
         Assert.Equal("Met at Wayward Cave, at Lv. 62.", Text.Of("ceremony.metAt", ("place", "Wayward Cave"), ("level", 62)));
+        // N1d3: the Underground and its mining game
+        Assert.Equal("The wall rings hollow in one place!", Text.Of("digging.ringsHollow", ("n", 1)));
+        Assert.Equal("The wall rings hollow in 3 places!", Text.Of("digging.ringsHollow", ("n", 3)));
+        Assert.Equal("Red 4", Text.Of("belowGround.price.Red", ("size", 4)));
+        Assert.Equal(new[] { "HIS WARES", "YOUR TREASURES" }, new[] { UndergroundScreen.TabName(UndergroundTab.Wares), UndergroundScreen.TabName(UndergroundTab.YourTreasures) });
+        Assert.Equal("PUT IN BAG", UndergroundScreen.ActionName(UndergroundAction.PutInBag));
+        Assert.Equal(new[] { "DECORATE", "PUT AWAY", "MOVE", "DONE" }, DecoratingSession.MenuRows);
+        Assert.Equal("OUT: 3 OF 10", Text.Of("decorating.countOf", ("out", 3), ("limit", 10)));
         // A placeholder the call names nothing for is left for whoever fills it later
         Assert.Equal("Hello {player}", Text.Fill("Hello {player}"));
     }

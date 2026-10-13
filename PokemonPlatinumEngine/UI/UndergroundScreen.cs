@@ -32,8 +32,46 @@ public enum UndergroundRequestKind
 
 public readonly record struct UndergroundRequest(UndergroundRequestKind Kind, int Slot = -1);
 
+/// <summary>A tab of the Underground's screen: what its list holds.</summary>
+public enum UndergroundTab
+{
+    Traps,
+    Spheres,
+    Goods,
+    Treasures,
+    Surface,
+    /// <summary>A hiker's own stock.</summary>
+    Wares,
+    YourTraps,
+    YourGoods,
+    YourTreasures,
+    Decorate,
+    Store,
+    Take,
+    Flags
+}
+
+/// <summary>What can be done with a row of the bag below ground.</summary>
+public enum UndergroundAction
+{
+    Set,
+    Use,
+    Bury,
+    PutInBag,
+    Trash,
+    Cancel
+}
+
 /// <summary>A row of one of the screen's lists: a name, a word at its right, what the panel beside says of it, and its picture.</summary>
-public sealed record UndergroundRow(string Name, string Value, string Detail, string Icon, bool Enabled = true);
+public sealed record UndergroundRow(string Name, string Value, string Detail, string Icon, bool Enabled = true)
+{
+    /// <summary>A row's picture of a Sphere, and of a treasure, begins so; the rest of the name says which.</summary>
+    public const string SpherePicture = "sphere:", TreasurePicture = "treasure:";
+
+    public static string SphereIcon(SphereKind kind) => SpherePicture + kind;
+
+    public static string TreasureIcon(int id) => TreasurePicture + id;
+}
 
 /// <summary>
 /// The Underground's lists (plan 06 · R16a; the original's <c>src/underground/menus.c</c>, <c>vendors.c</c> and
@@ -49,14 +87,20 @@ public sealed class UndergroundScreen
     public bool IsActive { get; private set; }
     public UndergroundMode Mode { get; private set; }
     public int Vendor { get; private set; } = -1;
-    public IReadOnlyList<string> Tabs { get; private set; } = Array.Empty<string>();
+    public IReadOnlyList<UndergroundTab> TabKinds { get; private set; } = Array.Empty<UndergroundTab>();
+
+    /// <summary>The tabs' names, as the screen shows them.</summary>
+    public IReadOnlyList<string> Tabs => TabKinds.Select(TabName).ToList();
     public int Tab { get; private set; }
     public int Cursor { get; private set; }
     public int First { get; private set; }
     public IReadOnlyList<UndergroundRow> Rows { get; private set; } = Array.Empty<UndergroundRow>();
 
     /// <summary>The little menu open on a row, if any, and its cursor.</summary>
-    public IReadOnlyList<string>? Actions { get; private set; }
+    public IReadOnlyList<UndergroundAction>? ActionKinds { get; private set; }
+
+    /// <summary>The little menu's words, as the screen shows them.</summary>
+    public IReadOnlyList<string>? Actions => ActionKinds?.Select(ActionName).ToList();
     public int ActionCursor { get; private set; }
 
     /// <summary>Choosing a Sphere to pay a hiker with: the cursor in the bag's Spheres.</summary>
@@ -90,7 +134,7 @@ public sealed class UndergroundScreen
     /// <param name="putInBag">Puts an item of the bag above ground into it (a treasure taken out of the Underground's own bag); false when it can't.</param>
     public void OpenBag(UndergroundState state, Func<string, bool> putInBag, int tab = 0)
     {
-        Begin(state, UndergroundMode.Bag, new[] { "TRAPS", "SPHERES", "GOODS", "TREASURES", "SURFACE" }, tab);
+        Begin(state, UndergroundMode.Bag, new[] { UndergroundTab.Traps, UndergroundTab.Spheres, UndergroundTab.Goods, UndergroundTab.Treasures, UndergroundTab.Surface }, tab);
         this.putInBag = putInBag;
     }
 
@@ -100,19 +144,20 @@ public sealed class UndergroundScreen
         National = national;
         stock = UndergroundVendors.Stock(state.Seed, vendor, national);
         string kind = UndergroundVendors.KindOf(vendor);
-        Begin(state, UndergroundMode.Hiker, kind == "Treasures" ? new[] { "YOUR TREASURES" } : new[] { "HIS WARES", kind == "Traps" ? "YOUR TRAPS" : "YOUR GOODS" }, 0);
+        Begin(state, UndergroundMode.Hiker, kind == "Treasures" ? new[] { UndergroundTab.YourTreasures }
+            : new[] { UndergroundTab.Wares, kind == "Traps" ? UndergroundTab.YourTraps : UndergroundTab.YourGoods }, 0);
     }
 
-    public void OpenPc(UndergroundState state) => Begin(state, UndergroundMode.Pc, new[] { "DECORATE", "STORE", "TAKE", "FLAGS" }, 0);
+    public void OpenPc(UndergroundState state) => Begin(state, UndergroundMode.Pc, new[] { UndergroundTab.Decorate, UndergroundTab.Store, UndergroundTab.Take, UndergroundTab.Flags }, 0);
 
-    private void Begin(UndergroundState state, UndergroundMode mode, string[] tabs, int tab)
+    private void Begin(UndergroundState state, UndergroundMode mode, UndergroundTab[] tabs, int tab)
     {
         State = state;
         Mode = mode;
-        Tabs = tabs;
+        TabKinds = tabs;
         Tab = Math.Clamp(tab, 0, tabs.Length - 1);
         Cursor = First = 0;
-        Actions = null;
+        ActionKinds = null;
         Paying = false;
         Question = Message = null;
         request = default;
@@ -124,43 +169,47 @@ public sealed class UndergroundScreen
 
     public void Close() => IsActive = false;
 
-    private static string SphereWord(SphereKind kind, int size) => $"{kind} {size}";
+    public static string TabName(UndergroundTab tab) => Text.Of($"belowGround.tab.{tab}");
+
+    public static string ActionName(UndergroundAction action) => Text.Of($"belowGround.action.{action}");
+
+    private static string SphereWord(SphereKind kind, int size) => Text.Of($"belowGround.price.{kind}", ("size", size));
 
     /// <summary>The list under the tab, as things stand.</summary>
     private void Rebuild()
     {
         var rows = new List<UndergroundRow>();
-        string tab = Tabs[Tab];
+        var tab = TabKinds[Tab];
         switch (tab)
         {
-            case "TRAPS" or "YOUR TRAPS":
+            case UndergroundTab.Traps or UndergroundTab.YourTraps:
                 foreach (int trap in State.Traps)
                     rows.Add(new UndergroundRow(UndergroundDatabase.TrapName(trap), Worth(trap), TrapBlurb(trap), "trap"));
                 break;
-            case "SPHERES":
+            case UndergroundTab.Spheres:
                 foreach (var sphere in State.Spheres)
                     rows.Add(new UndergroundRow(UndergroundDatabase.SphereName(sphere.Kind), sphere.Size.ToString(),
-                        "Buried in the floor of a tunnel, a Sphere grows a little every day. The hikers take them in trade.", $"sphere:{sphere.Kind}"));
+                        Text.Of("belowGround.sphereNote"), UndergroundRow.SphereIcon(sphere.Kind)));
                 break;
-            case "GOODS" or "YOUR GOODS" or "STORE":
+            case UndergroundTab.Goods or UndergroundTab.YourGoods or UndergroundTab.Store:
                 foreach (int good in State.Goods)
                     rows.Add(new UndergroundRow(UndergroundDatabase.GoodName(good), Worth(good), GoodBlurb(good), "good"));
                 break;
-            case "TREASURES" or "YOUR TREASURES":
+            case UndergroundTab.Treasures or UndergroundTab.YourTreasures:
                 foreach (int treasure in State.Treasures)
                     rows.Add(new UndergroundRow(UndergroundDatabase.TreasureName(treasure), Worth(treasure),
-                        "Dug out of a wall. Put in the bag, it is an item like any other above ground.", $"treasure:{treasure}"));
+                        Text.Of("belowGround.treasureNote"), UndergroundRow.TreasureIcon(treasure)));
                 break;
-            case "SURFACE":
-                rows.Add(new UndergroundRow("GO UP", "", "Back to the surface, where you went down.", "up"));
-                rows.Add(new UndergroundRow("Spheres dug up", State.Records.SpheresDug.ToString(), "", "sphere:Prism", false));
-                rows.Add(new UndergroundRow("Fossils dug up", State.Records.FossilsDug.ToString(), "", "treasure:0", false));
-                rows.Add(new UndergroundRow("Treasures dug up", State.Records.TreasuresDug.ToString(), "", "treasure:0", false));
-                rows.Add(new UndergroundRow("Traps stepped on", State.Records.TrapsTriggered.ToString(), "", "trap", false));
-                rows.Add(new UndergroundRow("Flags brought home", State.Records.FlagsCaptured.ToString(), "", "flag", false));
-                rows.Add(new UndergroundRow("Times the base moved", State.Records.TimesBaseMoved.ToString(), "", "good", false));
+            case UndergroundTab.Surface:
+                rows.Add(new UndergroundRow(Text.Of("belowGround.goUp.name"), "", Text.Of("belowGround.goUp.note"), "up"));
+                rows.Add(new UndergroundRow(Text.Of("belowGround.record.spheresDug"), State.Records.SpheresDug.ToString(), "", UndergroundRow.SphereIcon(SphereKind.Prism), false));
+                rows.Add(new UndergroundRow(Text.Of("belowGround.record.fossilsDug"), State.Records.FossilsDug.ToString(), "", UndergroundRow.TreasureIcon(0), false));
+                rows.Add(new UndergroundRow(Text.Of("belowGround.record.treasuresDug"), State.Records.TreasuresDug.ToString(), "", UndergroundRow.TreasureIcon(0), false));
+                rows.Add(new UndergroundRow(Text.Of("belowGround.record.trapsTriggered"), State.Records.TrapsTriggered.ToString(), "", "trap", false));
+                rows.Add(new UndergroundRow(Text.Of("belowGround.flags.broughtHome"), State.Records.FlagsCaptured.ToString(), "", "flag", false));
+                rows.Add(new UndergroundRow(Text.Of("belowGround.record.timesBaseMoved"), State.Records.TimesBaseMoved.ToString(), "", "good", false));
                 break;
-            case "HIS WARES":
+            case UndergroundTab.Wares:
                 foreach (var offer in stock)
                 {
                     bool traps = UndergroundVendors.KindOf(Vendor) == "Traps";
@@ -168,19 +217,20 @@ public sealed class UndergroundScreen
                         SphereWord(offer.Kind, offer.Size), traps ? TrapBlurb(offer.Thing) : GoodBlurb(offer.Thing), traps ? "trap" : "good"));
                 }
                 break;
-            case "DECORATE":
-                rows.Add(new UndergroundRow("DECORATE THE BASE", "", "Put goods out of the PC about the base, put them away again, or move them.", "good"));
+            case UndergroundTab.Decorate:
+                rows.Add(new UndergroundRow(Text.Of("decorating.title"), "", Text.Of("belowGround.decorateNote"), "good"));
                 break;
-            case "TAKE":
+            case UndergroundTab.Take:
                 for (int slot = 0; slot < State.PcGoods.Count; slot++)
-                    rows.Add(new UndergroundRow(UndergroundDatabase.GoodName(State.PcGoods[slot]), State.IsDisplayed(slot) ? "OUT" : "", GoodBlurb(State.PcGoods[slot]), "good"));
+                    rows.Add(new UndergroundRow(UndergroundDatabase.GoodName(State.PcGoods[slot]), State.IsDisplayed(slot) ? Text.Of("belowGround.out") : "", GoodBlurb(State.PcGoods[slot]), "good"));
                 break;
-            case "FLAGS":
+            case UndergroundTab.Flags:
             {
                 int flags = State.Records.FlagsCaptured;
-                rows.Add(new UndergroundRow("This base's flag", SecretBaseRules.FlagFor(flags).ToString(), "", "flag", false));
-                rows.Add(new UndergroundRow("Flags brought home", flags.ToString(), "", "flag", false));
-                foreach (string owner in State.FlagOwners) rows.Add(new UndergroundRow($"{owner}'s flag", "", "", "flag", false));
+                var rank = SecretBaseRules.FlagFor(flags);
+                rows.Add(new UndergroundRow(Text.Of("belowGround.flags.thisBase"), Text.Of($"belowGround.flag.{rank}"), "", "flag", false));
+                rows.Add(new UndergroundRow(Text.Of("belowGround.flags.broughtHome"), flags.ToString(), "", "flag", false));
+                foreach (string owner in State.FlagOwners) rows.Add(new UndergroundRow(Text.Of("belowGround.flags.owner", ("owner", owner)), "", "", "flag", false));
                 break;
             }
         }
@@ -198,32 +248,35 @@ public sealed class UndergroundScreen
     }
 
     /// <summary>What a trap does, in our own words, by its family.</summary>
-    public static string TrapBlurb(int trap) => UndergroundDatabase.Trap(trap)?.Id == "TRAP_DIGGER_DRILL"
-        ? "Used facing a wall of the tunnels, it opens a secret base there. One drill, one base: a second base moves the first."
+    public static string TrapBlurb(int trap) => UndergroundDatabase.Trap(trap)?.Id == DiggerDrill
+        ? Text.Of("belowGround.trap.drill")
         : TrapEffect.FamilyOf(trap) switch
         {
-            TrapFamily.Slide => "Whoever steps on it is sent sliding the way its arrow points, until something stops them.",
-            TrapFamily.Hole => "Whoever steps on it falls in, and has to wriggle this way and that to climb out.",
-            TrapFamily.Steering => "Whoever steps on it finds their steps going the wrong way for a while.",
-            TrapFamily.Smoke => "Whoever steps on it is wrapped in smoke until they have wiped it away.",
-            TrapFamily.Rock => "A boulder drops in front of whoever steps on it, and has to be broken up.",
-            TrapFamily.Bubbles => "Whoever steps on it is buried in bubbles until every one is burst.",
-            TrapFamily.Alert => "It calls out when someone steps on it. Nothing more.",
-            TrapFamily.Leaves => "Whoever steps on it is covered in leaves until they are blown away.",
-            TrapFamily.Fire => "A flame springs up before whoever steps on it, and has to be blown out.",
+            TrapFamily.Slide => Text.Of("belowGround.trap.slide"),
+            TrapFamily.Hole => Text.Of("belowGround.trap.hole"),
+            TrapFamily.Steering => Text.Of("belowGround.trap.steering"),
+            TrapFamily.Smoke => Text.Of("belowGround.trap.smoke"),
+            TrapFamily.Rock => Text.Of("belowGround.trap.rock"),
+            TrapFamily.Bubbles => Text.Of("belowGround.trap.bubbles"),
+            TrapFamily.Alert => Text.Of("belowGround.trap.alert"),
+            TrapFamily.Leaves => Text.Of("belowGround.trap.leaves"),
+            TrapFamily.Fire => Text.Of("belowGround.trap.fire"),
             _ => ""
         };
+
+    // The Digger Drill's id in the trap table: it is used where the other traps are set
+    private const string DiggerDrill = "TRAP_DIGGER_DRILL";
 
     /// <summary>What a good is, in our own words.</summary>
     public static string GoodBlurb(int good)
     {
         var record = UndergroundDatabase.Good(good);
         if (record == null) return "";
-        string size = record.Width * record.Depth == 1 ? "It takes one tile" : $"It takes {record.Width} tiles by {record.Depth}";
+        string size = record.Width * record.Depth == 1 ? Text.Of("belowGround.good.oneTile") : Text.Of("belowGround.good.tiles", ("width", record.Width), ("depth", record.Depth));
         return SecretBaseRules.ToolTrap(good) != 0
-            ? $"{size} of a secret base, and goes off like a trap under whoever steps on it."
-            : $"{size} of a secret base's floor."
-              + (record.Record != null ? " Something is written on it." : "");
+            ? Text.Of("belowGround.good.trap", ("size", size))
+            : Text.Of("belowGround.good.floor", ("size", size))
+              + (record.Record != null ? Text.Of("belowGround.good.written") : "");
     }
 
     public UndergroundRow? Selected => Cursor < Rows.Count ? Rows[Cursor] : null;
@@ -237,9 +290,9 @@ public sealed class UndergroundScreen
             if (dy != 0 || dx != 0) Answer = 1 - Answer;
             return;
         }
-        if (Actions != null)
+        if (ActionKinds != null)
         {
-            if (dy != 0) ActionCursor = UiNav.Wrap(ActionCursor, Math.Sign(dy), Actions.Count);
+            if (dy != 0) ActionCursor = UiNav.Wrap(ActionCursor, Math.Sign(dy), ActionKinds.Count);
             return;
         }
         if (Paying)
@@ -249,7 +302,7 @@ public sealed class UndergroundScreen
         }
         if (dx != 0)
         {
-            Tab = UiNav.Wrap(Tab, Math.Sign(dx), Tabs.Count);
+            Tab = UiNav.Wrap(Tab, Math.Sign(dx), TabKinds.Count);
             Cursor = First = 0;
             Rebuild();
             AudioManager.PlaySound("page");
@@ -303,35 +356,35 @@ public sealed class UndergroundScreen
             Pay();
             return;
         }
-        if (Actions != null)
+        if (ActionKinds != null)
         {
-            string action = Actions[ActionCursor];
-            Actions = null;
+            var action = ActionKinds[ActionCursor];
+            ActionKinds = null;
             Act(action);
             Rebuild();
             return;
         }
         if (Selected is not { Enabled: true } row) return;
-        string tab = Tabs[Tab];
+        var tab = TabKinds[Tab];
         switch (tab)
         {
-            case "TRAPS":
-                Open(UndergroundDatabase.Trap(State.Traps[Cursor])?.Id == "TRAP_DIGGER_DRILL" ? "USE" : "SET", "TRASH", "CANCEL");
+            case UndergroundTab.Traps:
+                Open(UndergroundDatabase.Trap(State.Traps[Cursor])?.Id == DiggerDrill ? UndergroundAction.Use : UndergroundAction.Set, UndergroundAction.Trash, UndergroundAction.Cancel);
                 break;
-            case "SPHERES":
-                Open("BURY", "TRASH", "CANCEL");
+            case UndergroundTab.Spheres:
+                Open(UndergroundAction.Bury, UndergroundAction.Trash, UndergroundAction.Cancel);
                 break;
-            case "GOODS":
-                Open("TRASH", "CANCEL");
+            case UndergroundTab.Goods:
+                Open(UndergroundAction.Trash, UndergroundAction.Cancel);
                 break;
-            case "TREASURES":
-                Open("PUT IN BAG", "TRASH", "CANCEL");
+            case UndergroundTab.Treasures:
+                Open(UndergroundAction.PutInBag, UndergroundAction.Trash, UndergroundAction.Cancel);
                 break;
-            case "SURFACE":
+            case UndergroundTab.Surface:
                 Hand(UndergroundRequestKind.GoUp);
                 break;
-            case "HIS WARES":
-                if (State.Spheres.Count == 0) Say("No Spheres on you? Come back when you've dug some up.", false);
+            case UndergroundTab.Wares:
+                if (State.Spheres.Count == 0) Say(Text.Of("belowGround.hiker.noSpheres"), false);
                 else
                 {
                     Paying = true;
@@ -339,79 +392,82 @@ public sealed class UndergroundScreen
                     AudioManager.PlaySound("select");
                 }
                 break;
-            case "YOUR TRAPS" or "YOUR GOODS" or "YOUR TREASURES":
+            case UndergroundTab.YourTraps or UndergroundTab.YourGoods or UndergroundTab.YourTreasures:
             {
                 int slot = Cursor;
-                var list = tab == "YOUR TRAPS" ? State.Traps : tab == "YOUR GOODS" ? State.Goods : State.Treasures;
+                var list = tab == UndergroundTab.YourTraps ? State.Traps : tab == UndergroundTab.YourGoods ? State.Goods : State.Treasures;
                 var worth = UndergroundVendors.Worth(State.Seed, Vendor, list[slot]);
-                if (worth == null || worth.Size < 1) Say("I've no use for that.", false);
+                if (worth == null || worth.Size < 1) Say(Text.Of("belowGround.hiker.noUse"), false);
                 else
-                    Ask($"Trade the {row.Name} for a {UndergroundDatabase.SphereName(worth.Kind)} of size {worth.Size}?", () =>
+                {
+                    string sphere = UndergroundDatabase.SphereName(worth.Kind);
+                    Ask(Text.Of("belowGround.hiker.trade", ("thing", row.Name), ("sphere", sphere), ("size", worth.Size)), () =>
                     {
                         var result = UndergroundVendors.Sell(State, Vendor, slot);
-                        Say(result == TradeResult.Done ? $"A fair swap! You got a {UndergroundDatabase.SphereName(worth.Kind)} of size {worth.Size}."
-                            : result == TradeResult.BagFull ? "Hold on, you've nowhere to put it!" : "I've no use for that.", result == TradeResult.Done);
+                        Say(result == TradeResult.Done ? Text.Of("belowGround.hiker.fairSwap", ("sphere", sphere), ("size", worth.Size))
+                            : result == TradeResult.BagFull ? Text.Of("belowGround.hiker.nowhere") : Text.Of("belowGround.hiker.noUse"), result == TradeResult.Done);
                     });
+                }
                 break;
             }
-            case "DECORATE":
+            case UndergroundTab.Decorate:
                 Hand(UndergroundRequestKind.Decorate);
                 break;
-            case "STORE":
-                Say(State.Deposit(Cursor) ? $"The {row.Name} was stored in the PC." : "The PC is full.");
+            case UndergroundTab.Store:
+                Say(State.Deposit(Cursor) ? Text.Of("belowGround.stored", ("thing", row.Name)) : Text.Of("belowGround.pcFull"));
                 Rebuild();
                 break;
-            case "TAKE":
-                if (State.IsDisplayed(Cursor)) Say("It's out on display. Put it away first.", false);
-                else Say(State.Withdraw(Cursor) ? $"The {row.Name} was taken out of the PC." : "The bag is full.");
+            case UndergroundTab.Take:
+                if (State.IsDisplayed(Cursor)) Say(Text.Of("belowGround.onDisplay"), false);
+                else Say(State.Withdraw(Cursor) ? Text.Of("belowGround.taken", ("thing", row.Name)) : Text.Of("belowGround.bagFull"));
                 Rebuild();
                 break;
         }
     }
 
-    private void Open(params string[] actions)
+    private void Open(params UndergroundAction[] actions)
     {
-        Actions = actions;
+        ActionKinds = actions;
         ActionCursor = 0;
         AudioManager.PlaySound("select");
     }
 
-    private void Act(string action)
+    private void Act(UndergroundAction action)
     {
-        string tab = Tabs[Tab];
+        var tab = TabKinds[Tab];
         int slot = Cursor;
         switch (action)
         {
-            case "SET":
+            case UndergroundAction.Set:
                 Hand(UndergroundRequestKind.SetTrap, slot);
                 break;
-            case "USE":
+            case UndergroundAction.Use:
                 Hand(UndergroundRequestKind.UseDrill, slot);
                 break;
-            case "BURY":
+            case UndergroundAction.Bury:
                 Hand(UndergroundRequestKind.BurySphere, slot);
                 break;
-            case "PUT IN BAG":
+            case UndergroundAction.PutInBag:
             {
                 var treasure = UndergroundDatabase.Treasure(State.Treasures[slot]);
                 if (treasure?.Item != null && putInBag(treasure.Item))
                 {
                     State.Treasures.RemoveAt(slot);
-                    Say($"The {treasure.Name} was put in the bag.");
+                    Say(Text.Of("belowGround.putInBag", ("thing", treasure.Name)));
                 }
-                else Say("The bag is full. It couldn't be put away.", false);
+                else Say(Text.Of("belowGround.noRoomInBag"), false);
                 break;
             }
-            case "TRASH":
+            case UndergroundAction.Trash:
             {
                 string name = Rows[slot].Name;
-                Ask($"Throw the {name} away?", () =>
+                Ask(Text.Of("belowGround.throwAway", ("thing", name)), () =>
                 {
-                    if (tab == "TRAPS") State.Traps.RemoveAt(slot);
-                    else if (tab == "SPHERES") State.Spheres.RemoveAt(slot);
-                    else if (tab == "GOODS") State.Goods.RemoveAt(slot);
+                    if (tab == UndergroundTab.Traps) State.Traps.RemoveAt(slot);
+                    else if (tab == UndergroundTab.Spheres) State.Spheres.RemoveAt(slot);
+                    else if (tab == UndergroundTab.Goods) State.Goods.RemoveAt(slot);
                     else State.Treasures.RemoveAt(slot);
-                    Say($"The {name} was thrown away.");
+                    Say(Text.Of("belowGround.thrownAway", ("thing", name)));
                 });
                 break;
             }
@@ -427,10 +483,10 @@ public sealed class UndergroundScreen
         var result = UndergroundVendors.Buy(State, Vendor, offer, PayCursor);
         Say(result switch
         {
-            TradeResult.Done => $"Done! The {name} is yours.",
-            TradeResult.WrongSphere => "No, no. It's another colour of Sphere I'm after.",
-            TradeResult.SphereTooSmall => "Too small, that one. I want a bigger Sphere for it.",
-            _ => "Hold on, you've nowhere to put it!"
+            TradeResult.Done => Text.Of("belowGround.hiker.done", ("thing", name)),
+            TradeResult.WrongSphere => Text.Of("belowGround.hiker.wrongSphere"),
+            TradeResult.SphereTooSmall => Text.Of("belowGround.hiker.tooSmall"),
+            _ => Text.Of("belowGround.hiker.nowhere")
         }, result == TradeResult.Done);
         Rebuild();
     }
@@ -445,7 +501,7 @@ public sealed class UndergroundScreen
             onYes = null;
         }
         else if (Paying) Paying = false;
-        else if (Actions != null) Actions = null;
+        else if (ActionKinds != null) ActionKinds = null;
         else IsActive = false;
     }
 
