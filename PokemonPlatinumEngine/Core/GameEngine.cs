@@ -182,11 +182,7 @@ public partial class GameEngine
         }
 
         using (Log.Phase("the sound")) AudioManager.Initialize();
-        using (Log.Phase("moves")) MoveDatabase.Initialize();
-        using (Log.Phase("species")) PokemonDatabase.Initialize();
-        using (Log.Phase("items")) ItemDatabase.Initialize();
-        using (Log.Phase("maps")) MapDatabase.Initialize();
-        using (Log.Phase("scripts")) LoadScripts();
+        LoadTheData();
 
         var modelled = PokemonModels.Preloaded.ToList();
         using (Log.Phase("models asked for"))
@@ -214,6 +210,38 @@ public partial class GameEngine
         using (Log.Phase("render targets and shaders")) renderContext.EnsureLoaded();
         using (Log.Phase("menu sprites")) PokemonSprites.BakeAll(renderContext, modelled);
 
+        ReadTheSlots();
+        using (Log.Phase("the title's music")) AudioManager.PlayMusic(MusicRole.Title);
+    }
+
+    /// <summary>
+    /// The game with no window (plan 16 · T12): the data, the scripts, the options and the slots, and nothing that
+    /// needs a screen or a sound card. No model or sprite is asked for up front and <see cref="Draw"/> is never to be
+    /// called; <see cref="Update"/> runs the whole game, fed its actions as frames (<see cref="InputManager.Feed"/>).
+    /// What it saves goes to <see cref="SavePaths.Current"/>, which a test points at a folder of its own first.
+    /// </summary>
+    public void InitializeHeadless()
+    {
+        IsHeadless = true;
+        LoadTheData();
+        ApplySettings(window: false);
+        ReadTheSlots();
+    }
+
+    /// <summary>Whether this game was started with no window (<see cref="InitializeHeadless"/>).</summary>
+    public bool IsHeadless { get; private set; }
+
+    private void LoadTheData()
+    {
+        using (Log.Phase("moves")) MoveDatabase.Initialize();
+        using (Log.Phase("species")) PokemonDatabase.Initialize();
+        using (Log.Phase("items")) ItemDatabase.Initialize();
+        using (Log.Phase("maps")) MapDatabase.Initialize();
+        using (Log.Phase("scripts")) LoadScripts();
+    }
+
+    private void ReadTheSlots()
+    {
         // The game opens on the title screen, which offers the saved game if there is one
         // A save that couldn't be read gives way to the one before it, and the title says so before its menu (plan 12 · Q1);
         // and before that, once, that the last run stopped on a crash, if it did (plan 16 · T3)
@@ -236,7 +264,6 @@ public partial class GameEngine
             notices.AddRange(titleSlots.Select(s => TitleNotice.ForSlot(s.Number, s.Outcome)));
             flow.TitleScreen = TitleScreen.WithSlots(titleSlots.Where(s => s.Taken).Select(s => new TitleSlot(s.Number, s.Save)), notices.ToArray());
         }
-        using (Log.Phase("the title's music")) AudioManager.PlayMusic(MusicRole.Title);
     }
 
     /// <summary>Starts a new game at once as the boy with his own name: for tests and the screenshot harness.</summary>
@@ -356,7 +383,7 @@ public partial class GameEngine
         PlayAreaMusic(flow.Map, flow.Player.GridX, flow.Player.GridY);
         AnnounceLocation();
         // The region's map is painted behind the black the game opens from, so the Town Map never waits for it (plan 01 · M12)
-        if (RegionMapNow is { } regionMap) RegionMapPictures.Get(regionMap);
+        if (!IsHeadless && RegionMapNow is { } regionMap) RegionMapPictures.Get(regionMap);
 
         flow.OpenOn(GameState.Overworld);
     }
@@ -2061,6 +2088,7 @@ public partial class GameEngine
 
     public void Draw()
     {
+        if (IsHeadless) throw new InvalidOperationException("A game with no window draws nothing (InitializeHeadless).");
         FrameProfiler.LapCpu(FrameSection.Update);
         renderContext.OutputWidth = Raylib.GetScreenWidth();
         // Under the close button's question, what was on screen when it was asked (plan 12 · Q1)
@@ -2328,6 +2356,7 @@ public partial class GameEngine
 
     public void Close()
     {
+        if (IsHeadless) return;
         band.End();
         renderContext.Unload();
         RegionMapPictures.Unload();
