@@ -57,6 +57,28 @@ public static class InputManager
     /// <summary>The frame this thread is fed, if any.</summary>
     public static ActionFrame? Fed => fed;
 
+    /// <summary>
+    /// The keys and the pad as a frame (plan 16 · T11f): every action down now, and every action whose key or button
+    /// went down this frame, as raylib reports them. The engine reads it once a frame and feeds it to its update.
+    /// </summary>
+    public static ActionFrame ReadKeys()
+    {
+        uint down = 0, pressed = 0;
+        foreach (var binding in Bindings)
+        {
+            uint bit = 1u << (int)binding.Action;
+            bool isDown = Raylib.IsGamepadButtonDown(0, binding.Pad), isPressed = Raylib.IsGamepadButtonPressed(0, binding.Pad);
+            foreach (var key in binding.Keys)
+            {
+                isDown |= Raylib.IsKeyDown(key);
+                isPressed |= Raylib.IsKeyPressed(key);
+            }
+            if (isDown) down |= bit;
+            if (isPressed) pressed |= bit;
+        }
+        return new ActionFrame(down, pressed);
+    }
+
     public static bool IsActionPressed(GameAction action)
     {
         // Running is a key held, so it counts as pressed for as long as it is down

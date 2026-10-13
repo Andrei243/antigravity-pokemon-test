@@ -6,8 +6,9 @@ namespace PokemonPlatinumEngine.Core;
 /// <summary>
 /// The screens' logic (plan 16 · T11c): the menus, the text box and the field's notices, each a screen whose logic
 /// takes no window, held by the flow and drawn by the engine. The screens that render figures of their own offscreen
-/// (the title, the introduction, the evolution scene, the wardrobe) stay the engine's until their logic is parted
-/// from their pictures. A frame of actions reaches them all through <see cref="Act"/>.
+/// (the title, the introduction, the evolution scene, the wardrobe, plan 16 · T11f) make their pictures only when the
+/// engine asks them to render, so they are made and steered here with no window too. A frame of actions reaches them
+/// all through <see cref="Act"/>.
 /// </summary>
 public sealed partial class GameFlow
 {
@@ -22,6 +23,12 @@ public sealed partial class GameFlow
     public OptionsScreen OptionsScreen { get; } = new();
     public SaveScreen SaveScreen { get; } = new();
     public TownMapScreen TownMapScreen { get; } = new();
+
+    /// <summary>The title, made afresh with the slots as the game starts and after a save is deleted.</summary>
+    public TitleScreen TitleScreen { get; set; } = new(null);
+    public IntroScreen IntroScreen { get; } = new();
+    public EvolutionScreen EvolutionScreen { get; } = new();
+    public WardrobeScreen WardrobeScreen { get; } = new();
 
     /// <summary>The text box; a tool may hand the game another.</summary>
     public DialogueManager Dialogue { get; set; } = new();

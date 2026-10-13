@@ -139,12 +139,9 @@ public partial class GameEngine
     private string? registeredItem;
     private FishingAttempt? fishing;
     private bool runWasDown;
-    private readonly WardrobeScreen wardrobeScreen = new();
 
     /// <summary>The clothes the player owns and wears (plan 11 · C9).</summary>
     private readonly Wardrobe wardrobe = new();
-    private readonly IntroScreen introScreen = new();
-    private readonly EvolutionScreen evolutionScreen = new();
 
     // Steps since friendship last grew from walking, and the player's turns on the spot (one Pokémon evolves on a spin)
     private int friendshipSteps;
@@ -152,7 +149,6 @@ public partial class GameEngine
     private readonly Random fieldRandom = Dice.New();
 
     // The opening and title menu, the slots' saves it offers to continue from, and where the options screen returns to
-    private TitleScreen titleScreen = new(null);
     private readonly TitleScene titleScene = new();
     private IReadOnlyList<SaveSlot> titleSlots = Array.Empty<SaveSlot>();
 
@@ -308,7 +304,7 @@ public partial class GameEngine
             else Log.Info($"The saves read as: {read}.");
             var notices = new List<TitleNotice?> { TitleNotice.ForCrash(crashed, titleSlots.Select(s => s.Outcome).ToList()), TitleNotice.ForOldSave(old) };
             notices.AddRange(titleSlots.Select(s => TitleNotice.ForSlot(s.Number, s.Outcome)));
-            titleScreen = TitleScreen.WithSlots(titleSlots.Where(s => s.Taken).Select(s => new TitleSlot(s.Number, s.Save)), notices.ToArray());
+            flow.TitleScreen = TitleScreen.WithSlots(titleSlots.Where(s => s.Taken).Select(s => new TitleSlot(s.Number, s.Save)), notices.ToArray());
         }
         using (Log.Phase("the title's music")) AudioManager.PlayMusic(MusicRole.Title);
     }
@@ -703,12 +699,12 @@ public partial class GameEngine
         if (SaveSlots.Delete(SavePaths.Current, slot))
         {
             titleSlots = titleSlots.Select(s => s.Number == slot ? new SaveSlot(slot, SaveLoad.None, null) : s).ToList();
-            titleScreen.Forget(slot);
+            flow.TitleScreen.Forget(slot);
             Log.Info($"Slot {slot} was deleted at the player's word.");
         }
         else
         {
-            titleScreen.Tell(TitleNotice.CouldNotDelete(slot));
+            flow.TitleScreen.Tell(TitleNotice.CouldNotDelete(slot));
             Log.Warn($"Slot {slot} couldn't be deleted: its files are still there.");
         }
     }
@@ -762,6 +758,15 @@ public partial class GameEngine
     }
 
     public void Update(float dt)
+    {
+        // The frame's actions are read once, as a frame (plan 16 · T11f), unless a tool or a test hands the game its own
+        if (InputManager.Fed != null) { UpdateFrame(dt); return; }
+        InputManager.Feed(InputManager.ReadKeys());
+        try { UpdateFrame(dt); }
+        finally { InputManager.Feed(null); }
+    }
+
+    private void UpdateFrame(float dt)
     {
         // Behind another window, with the option on, the game waits where it is and its sound drops (plan 16 · T3)
         bool held = HeldForFocus;
@@ -836,21 +841,21 @@ public partial class GameEngine
         switch (flow.State)
         {
             case GameState.Title:
-                titleScreen.Update(dt);
+                flow.TitleScreen.Update(dt);
                 // A save the player asked to delete, and said yes to
-                if (titleScreen.TakeDeletion() is { } gone) DeleteSlot(gone);
-                switch (titleScreen.TakeChoice())
+                if (flow.TitleScreen.TakeDeletion() is { } gone) DeleteSlot(gone);
+                switch (flow.TitleScreen.TakeChoice())
                 {
                     case TitleChoice.Continue:
-                        ContinueGame(titleScreen.Slot);
+                        ContinueGame(flow.TitleScreen.Slot);
                         break;
                     case TitleChoice.NewGame:
                         // The professor's welcome comes first; the game begins when it ends, by the rules just chosen
                         // and in the slot the title found empty
-                        newGameSlot = titleScreen.Slot;
-                        newGameRules = titleScreen.Rules;
+                        newGameSlot = flow.TitleScreen.Slot;
+                        newGameRules = flow.TitleScreen.Rules;
                         flow.State = GameState.Intro;
-                        introScreen.Open(GameSettings.CharactersPerSecond(Settings.TextSpeed));
+                        flow.IntroScreen.Open(GameSettings.CharactersPerSecond(Settings.TextSpeed));
                         AudioManager.PlayMusic(MusicRole.Introduction);
                         break;
                     case TitleChoice.Options:
@@ -864,11 +869,11 @@ public partial class GameEngine
                 }
                 break;
             case GameState.Intro:
-                introScreen.Update(dt);
-                if (introScreen.Phase == IntroPhase.Done)
+                flow.IntroScreen.Update(dt);
+                if (flow.IntroScreen.Phase == IntroPhase.Done)
                 {
-                    introScreen.Close();
-                    StartNewGame(introScreen.Name, introScreen.Look, newGameRules, introScreen.RivalName);
+                    flow.IntroScreen.Close();
+                    StartNewGame(flow.IntroScreen.Name, flow.IntroScreen.Look, newGameRules, flow.IntroScreen.RivalName);
                 }
                 break;
             case GameState.Overworld:
@@ -976,8 +981,8 @@ public partial class GameEngine
                 }
                 break;
             case GameState.Evolution:
-                evolutionScreen.Update(dt);
-                if (!evolutionScreen.IsActive) FinishEvolution();
+                flow.EvolutionScreen.Update(dt);
+                if (!flow.EvolutionScreen.IsActive) FinishEvolution();
                 break;
             case GameState.Hatch:
                 hatchScreen.Update(dt);
@@ -1025,12 +1030,12 @@ public partial class GameEngine
                 }
                 break;
             case GameState.Wardrobe:
-                wardrobeScreen.Update(ref flow.Money, ShowNotification, dt);
-                if (!wardrobeScreen.IsActive)
+                flow.WardrobeScreen.Update(ref flow.Money, ShowNotification, dt);
+                if (!flow.WardrobeScreen.IsActive)
                 {
                     // The field and the battle draw the player as the outfit names them; what was only tried on is let go
                     PlayerIdentity.SetOutfit(wardrobe.Worn);
-                    foreach (string tried in wardrobeScreen.TakeTried()) CharacterModels.Forget(tried);
+                    foreach (string tried in flow.WardrobeScreen.TakeTried()) CharacterModels.Forget(tried);
                     flow.State = GameState.Overworld;
                 }
                 break;
@@ -1588,7 +1593,7 @@ public partial class GameEngine
                 if (Evolution.Find(request.Pokemon, trigger, context) is not { } still) continue;
                 evolution = still;
             }
-            evolutionScreen.Begin(request.Pokemon, evolution, context, request.Cancellable);
+            flow.EvolutionScreen.Begin(request.Pokemon, evolution, context, request.Cancellable);
             return true;
         }
         return false;
@@ -1597,7 +1602,7 @@ public partial class GameEngine
     /// <summary>The scene has ended: the new species goes into the Pokédex, then the next evolution or the way back.</summary>
     private void FinishEvolution()
     {
-        if (evolutionScreen.Outcome is { } outcome)
+        if (flow.EvolutionScreen.Outcome is { } outcome)
         {
             flow.Pokedex.RegisterCaught(outcome.Into.DexNumber);
             if (outcome.Shed != null) flow.Pokedex.RegisterCaught(outcome.Shed.Species.DexNumber);
@@ -2153,11 +2158,11 @@ public partial class GameEngine
         }
         else if (showTitle)
         {
-            titleScreen.Render(renderContext, world, titleScene);
+            flow.TitleScreen.Render(renderContext, world, titleScene);
         }
         else if (scene == GameState.Evolution)
         {
-            evolutionScreen.Render(renderContext);
+            flow.EvolutionScreen.Render(renderContext);
         }
         else if (scene == GameState.Hatch)
         {
@@ -2165,11 +2170,11 @@ public partial class GameEngine
         }
         else if (scene == GameState.Intro)
         {
-            introScreen.Render(renderContext);
+            flow.IntroScreen.Render(renderContext);
         }
         else if (scene == GameState.Wardrobe)
         {
-            wardrobeScreen.Render(renderContext);
+            flow.WardrobeScreen.Render(renderContext);
         }
         else if (scene == GameState.HallOfFameCeremony)
         {
@@ -2194,7 +2199,7 @@ public partial class GameEngine
         switch (shown)
         {
             case GameState.Title:
-                titleScreen.Draw(VirtualWidth, VirtualHeight, renderContext, world);
+                flow.TitleScreen.Draw(VirtualWidth, VirtualHeight, renderContext, world);
                 break;
             case GameState.Overworld:
             case GameState.Dialogue:
@@ -2232,7 +2237,7 @@ public partial class GameEngine
                 flow.BagScreen.Draw(VirtualWidth, VirtualHeight, flow.Bag, flow.Party, EvolutionContextNow());
                 break;
             case GameState.Evolution:
-                evolutionScreen.Draw(VirtualWidth, VirtualHeight);
+                flow.EvolutionScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.Hatch:
                 hatchScreen.Draw(VirtualWidth, VirtualHeight);
@@ -2248,7 +2253,7 @@ public partial class GameEngine
                 flow.SaveScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.Intro:
-                introScreen.Draw(VirtualWidth, VirtualHeight);
+                flow.IntroScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.StarterSelect:
                 flow.StarterSelectScreen.Draw(VirtualWidth, VirtualHeight);
@@ -2257,7 +2262,7 @@ public partial class GameEngine
                 flow.ShopScreen.Draw(VirtualWidth, VirtualHeight, flow.Money, flow.Bag);
                 break;
             case GameState.Wardrobe:
-                wardrobeScreen.Draw(VirtualWidth, VirtualHeight, flow.Money);
+                flow.WardrobeScreen.Draw(VirtualWidth, VirtualHeight, flow.Money);
                 break;
             case GameState.HallOfFame:
                 hallOfFameScreen.Draw(VirtualWidth, VirtualHeight, hallOfFame);
@@ -2331,7 +2336,7 @@ public partial class GameEngine
                     DrawScriptFade();
                     DrawLetterbox();
                 }
-                else if (scene == GameState.Evolution) evolutionScreen.Draw(VirtualWidth, VirtualHeight);
+                else if (scene == GameState.Evolution) flow.EvolutionScreen.Draw(VirtualWidth, VirtualHeight);
                 else if (scene == GameState.Hatch) hatchScreen.Draw(VirtualWidth, VirtualHeight);
                 else if (scene == GameState.BagMenu) flow.BagScreen.Draw(VirtualWidth, VirtualHeight, flow.Bag, flow.Party, EvolutionContextNow());
                 else if (scene == GameState.SuperContest) contestScreen.Draw(VirtualWidth, VirtualHeight);

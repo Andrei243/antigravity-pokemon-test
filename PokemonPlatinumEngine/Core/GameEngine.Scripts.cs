@@ -1046,7 +1046,7 @@ public partial class GameEngine
                 case ScriptScreen.Wardrobe:
                     // At home the clothes owned; at a boutique its stock as well, headed with the place's name
                     game.flow.State = GameState.Wardrobe;
-                    game.wardrobeScreen.Open(game.wardrobe, counter != null ? ClothingDatabase.Stock(counter) : null,
+                    game.flow.WardrobeScreen.Open(game.wardrobe, counter != null ? ClothingDatabase.Stock(counter) : null,
                         counter != null ? game.flow.Map.DisplayNameAt(game.flow.Player.GridX, game.flow.Player.GridY) : null);
                     break;
                 case ScriptScreen.HallOfFame:

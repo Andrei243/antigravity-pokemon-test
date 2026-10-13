@@ -125,8 +125,8 @@ public partial class GameEngine
         public BattleRenderer BattleRenderer => game.battleRenderer;
         public DialogueManager Dialogue { get => game.flow.Dialogue; set => game.flow.Dialogue = value; }
         public LocationSign LocationSign => game.flow.LocationSign;
-        public TitleScreen Title { get => game.titleScreen; set => game.titleScreen = value; }
-        public IntroScreen Intro => game.introScreen;
+        public TitleScreen Title { get => game.flow.TitleScreen; set => game.flow.TitleScreen = value; }
+        public IntroScreen Intro => game.flow.IntroScreen;
         public StartMenu StartMenu => game.flow.StartMenu;
         /// <summary>The window's close button and its question (plan 12 · Q1): asked as the button asks it, answered as a key would.</summary>
         public ClosePrompt ClosePrompt => game.closePrompt;
@@ -146,9 +146,9 @@ public partial class GameEngine
         public HallOfFameScreen HallOfFameScreen => game.hallOfFameScreen;
         public JournalScreen JournalScreen => game.journalScreen;
         public PokedexScreen PokedexScreen => game.flow.PokedexScreen;
-        public EvolutionScreen Evolution => game.evolutionScreen;
+        public EvolutionScreen Evolution => game.flow.EvolutionScreen;
         public OptionsScreen Options => game.flow.OptionsScreen;
-        public WardrobeScreen WardrobeScreen => game.wardrobeScreen;
+        public WardrobeScreen WardrobeScreen => game.flow.WardrobeScreen;
         /// <summary>The map of the region: the Town Map, a wall's map, and Fly's choice of a place (plan 01 · M12).</summary>
         public TownMapScreen TownMapScreen => game.flow.TownMapScreen;
 
