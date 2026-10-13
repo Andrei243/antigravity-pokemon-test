@@ -1,4 +1,5 @@
 using PokemonPlatinumEngine.Core;
+using PokemonPlatinumEngine.Story;
 using PokemonPlatinumEngine.UI;
 
 namespace PokemonPlatinumTests;
@@ -223,5 +224,26 @@ public class GameFlowTests
         flow.TrainerScore += 5;
         Assert.Equal(3, flow.SaveSlot);
         Assert.Equal(5, flow.TrainerScore);
+    }
+
+    [Fact]
+    public void TheFieldsRunningStateStartsAtRestInTheFlow()
+    {
+        // Plan 16 · T11h: what the field has going from frame to frame is the flow's, and a new flow has nothing going
+        var flow = new GameFlow();
+        Assert.Null(flow.PlayerWalk);
+        Assert.Empty(flow.NpcWalks);
+        Assert.Null(flow.TrainerApproach);
+        Assert.Null(flow.Fishing);
+        Assert.Null(flow.Trap);
+        Assert.Equal(-1, flow.PresenceRevision);
+        Assert.True(flow.TrainersLookOnArrival);
+        Assert.Equal(BattleOutcome.None, flow.ScriptOutcome);
+        Assert.Empty(flow.EnteredSlots);
+
+        flow.ScriptAnswer = 2;
+        flow.ClockTicks++;
+        Assert.Equal(2, flow.ScriptAnswer);
+        Assert.Equal(1, flow.ClockTicks);
     }
 }

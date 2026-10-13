@@ -31,7 +31,6 @@ public partial class GameEngine
     /// <summary>The variables the Tower's scripts keep its rooms' states in, which the game only reads; and the print's own.</summary>
     public const string TowerLobbyAction = "VAR_BATTLE_TOWER_LOBBY_LOAD_ACTION";
 
-    private IReadOnlyList<int> enteredSlots = Array.Empty<int>();
     private bool showBattlePoints;
 
     /// <summary>A new game's Frontier: nothing won, and the Tower's draws started from the day's number (<c>sub_0206C008</c> in <c>game_start.c</c>).</summary>
@@ -42,7 +41,7 @@ public partial class GameEngine
         flow.Hall = null;
         flow.Castle = null;
         flow.Arcade = null;
-        enteredSlots = Array.Empty<int>();
+        flow.EnteredSlots = Array.Empty<int>();
         if (saved != null)
         {
             flow.Frontier = saved;
@@ -58,8 +57,8 @@ public partial class GameEngine
         {
             case "enter":
                 // The team, for that many to be chosen in their order (BT_FUNC_UNK_30, the party menu's battle tower mode)
-                scriptAnswer = 0;
-                enteredSlots = Array.Empty<int>();
+                flow.ScriptAnswer = 0;
+                flow.EnteredSlots = Array.Empty<int>();
                 flow.PartyScreen.ShowCondition = flow.Story.Has(ContestHallVisitedFlag);
                 flow.PartyScreen.OpenToEnter(number, FrontierRules.MayEnter);
                 flow.State = GameState.PartyMenu;
@@ -107,8 +106,8 @@ public partial class GameEngine
                 return 1;
             case "enterhall":
                 // The team, for the Battle Hall's one Pokémon of level 30 or more to be chosen, or its two (PARTY_MENU_MODE_BATTLE_HALL)
-                scriptAnswer = 0;
-                enteredSlots = Array.Empty<int>();
+                flow.ScriptAnswer = 0;
+                flow.EnteredSlots = Array.Empty<int>();
                 flow.PartyScreen.ShowCondition = flow.Story.Has(ContestHallVisitedFlag);
                 flow.PartyScreen.OpenToEnter(number, BattleHallChallenge.MayEnter);
                 flow.State = GameState.PartyMenu;
@@ -162,7 +161,7 @@ public partial class GameEngine
     private void StartFrontierBattle(Party team, IReadOnlyList<Trainer> foes, Trainer? beside, bool doubles, FrontierConditions? conditions = null)
     {
         EndRadarChain();
-        scriptOutcome = BattleOutcome.None;
+        flow.ScriptOutcome = BattleOutcome.None;
         var trainers = foes.ToList();
         CharacterModels.Preload(trainers.Append(beside).OfType<Trainer>()
             .Select(t => CharacterStyles.Default.InBattle(t.TrainerClass, PlayerIdentity.CharacterFor(t.Look ?? "Trainer"))));
@@ -210,7 +209,7 @@ public partial class GameEngine
                 Scene = Settings.BattleScene
             });
             battleRenderer.SetArena(flow.Map, flow.Player.GridX, flow.Player.GridY);
-            battleTrainers.Clear();
+            flow.BattleTrainers.Clear();
         }, SceneTransition.ForBattle(meeting));
     }
 
@@ -220,10 +219,10 @@ public partial class GameEngine
     /// </summary>
     private void EndFrontierBattle()
     {
-        scriptOutcome = flow.Battle?.Result == BattleResult.PlayerVictory ? BattleOutcome.Won : BattleOutcome.Lost;
+        flow.ScriptOutcome = flow.Battle?.Result == BattleResult.PlayerVictory ? BattleOutcome.Won : BattleOutcome.Lost;
         // The turns it took, which the Battle Arcade scores a battle by (dto->totalTurnsElapsed)
-        scriptTurns = flow.Battle?.Core.Turn ?? 0;
-        battleMayBeLost = false;
+        flow.ScriptTurns = flow.Battle?.Core.Turn ?? 0;
+        flow.BattleMayBeLost = false;
         StartTransition(GameState.Overworld, () =>
         {
             PokemonModels.Trim(flow.Party.Members.Select(p => p.ModelName));
@@ -234,8 +233,8 @@ public partial class GameEngine
     /// <summary>The party screen closed after the team was opened for a challenge: the script hears who was entered.</summary>
     private void TakeEntered()
     {
-        enteredSlots = flow.PartyScreen.EnteredAll ? flow.PartyScreen.Entered.ToList() : Array.Empty<int>();
-        scriptAnswer = flow.PartyScreen.EnteredAll ? 1 : 0;
+        flow.EnteredSlots = flow.PartyScreen.EnteredAll ? flow.PartyScreen.Entered.ToList() : Array.Empty<int>();
+        flow.ScriptAnswer = flow.PartyScreen.EnteredAll ? 1 : 0;
     }
 
     private void UpdateFrontierRecords(float dt)
@@ -260,7 +259,7 @@ public partial class GameEngine
         public FrontierRecords Frontier => game.flow.Frontier;
         public BattleTowerChallenge? Tower { get => game.flow.Tower; set => game.flow.Tower = value; }
         public int FrontierAct(string what, int number, NPC? subject) => game.FrontierAct(what, number, subject);
-        public IReadOnlyList<int> Entered => game.enteredSlots;
+        public IReadOnlyList<int> Entered => game.flow.EnteredSlots;
         public void FrontierBattle(Party team, IReadOnlyList<Trainer> foes, Trainer? partner, bool doubles, FrontierConditions? conditions = null) =>
             game.StartFrontierBattle(team, foes, partner, doubles, conditions);
     }

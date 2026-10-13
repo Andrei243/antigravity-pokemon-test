@@ -46,7 +46,7 @@ public partial class GameEngine
     private bool MaySkipNow =>
         skipPhase == SkipPhase.None && gameStarted && flow.Runner.IsRunning && !flow.Runner.Hurrying && flow.Runner.Scene is { } scene
         && flow.State is GameState.Overworld or GameState.Dialogue
-        && !flow.Dialogue.IsQuestion && !flow.Choice.IsOpen && pendingAnswers == null
+        && !flow.Dialogue.IsQuestion && !flow.Choice.IsOpen && flow.PendingAnswers == null
         // (nor what a hurry couldn't end at once: a puzzle's pieces on the move, a Pokémon being let out of its ball)
         && !PuzzleMoving && !AwaitingStroll
         && SceneSkip.Allowed(Settings.SkipScenes, scene, flow.Story, Settings.ScenesSeen);
@@ -139,9 +139,9 @@ public partial class GameEngine
             }
             actor = default;
         }
-        cutIn = null;
-        cutInSubject = null;
-        scriptFade.Finish();
+        flow.CutIn = null;
+        flow.CutInSubject = null;
+        flow.ScriptFade.Finish();
         world.Camera.Settle();
         flow.Player.ShowBubble(EmoteBubble.None, 0f);
         foreach (var npc in flow.Map.NPCs.Near(flow.Player.GridX, flow.Player.GridY, Wandering.Reach, skipNear)) npc.ShowBubble(EmoteBubble.None, 0f);
@@ -152,7 +152,7 @@ public partial class GameEngine
     // A frame of the walks a hurry takes unseen, and the longest wait it lets pass for them
     private const float SkipFrame = 1f / 60f, LongestElapsed = 30f;
 
-    private bool SomeoneWalks => playerWalk != null || npcWalks.Count > 0 || flow.Player.IsMoving;
+    private bool SomeoneWalks => flow.PlayerWalk != null || flow.NpcWalks.Count > 0 || flow.Player.IsMoving;
 
     /// <summary>
     /// Everyone a script set walking takes their steps to the end, a frame at a time and all together, as they would
@@ -163,10 +163,10 @@ public partial class GameEngine
     {
         // (A walk gives up at a wall after three quarters of a second, so this ends by itself; the count is a guard)
         for (int i = 0; i < 60 * 120 && SomeoneWalks; i++) WalkAFrame();
-        foreach (var walk in npcWalks) walk.Finish();
-        npcWalks.Clear();
-        playerWalk = null;
-        fieldMoveStep = false;
+        foreach (var walk in flow.NpcWalks) walk.Finish();
+        flow.NpcWalks.Clear();
+        flow.PlayerWalk = null;
+        flow.FieldMoveStep = false;
     }
 
     /// <summary>

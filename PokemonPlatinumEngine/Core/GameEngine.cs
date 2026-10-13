@@ -94,45 +94,26 @@ public partial class GameEngine
     /// <summary>The game's states without the renderers (plan 16 · T11): the state, a transition, the menus' return states and the evolutions waiting.</summary>
     private readonly GameFlow flow = new();
 
-    /// <summary>The area of the overworld the player was last in; null on a small map, which is one place.</summary>
-    private MapArea? currentArea;
     private readonly RenderContext renderContext = new(VirtualWidth, VirtualHeight);
     private readonly WorldRenderer world;
     private readonly BattleRenderer battleRenderer;
 
-    // A trainer who spotted the player and is walking up, and the one being battled
-    private TrainerApproach? trainerApproach;
-
-    // The second of two trainers who saw the player at once (plan 02 · S6)
-    private TrainerApproach? pairApproach;
-
-    // The player came through a warp, onto the tile in front of it: a trigger there starts as a step onto it would
-    private bool steppedOutOfWarp;
-
     // Someone carried by a warp panel (plan 02 · S11, part b; Overworld/WarpPanels): the warp, the way they faced as
     // they stepped on, how long they have turned, and whether the picture has opened on the far panel yet
     private (Warp Warp, Direction Facing, float Clock, bool Arrived)? panelRide;
-    private readonly List<NPC> battleTrainers = new();
 
     // How the player was travelling when the field's music was last chosen, and whether a trainer's eye theme is on
     private TravelMode musicTravel = TravelMode.OnFoot;
     private bool eyeThemePlaying;
-
-    // Set on arriving somewhere without walking (through a door, from a save, after a battle): trainers look once
-    private bool trainersLookOnArrival = true;
 
     // Where the map of the region goes back to when it closes: the bag it was taken out of, or the field
     private bool townMapFromBag;
 
     private (int, string?, bool) radarFollowed;
 
-    // A rod's cast under way, and whether the run button was down last frame (on the Bicycle a press changes gear)
-    private FishingAttempt? fishing;
+    // Whether the run button was down last frame (on the Bicycle a press changes gear)
     private bool runWasDown;
 
-    // Steps since friendship last grew from walking, and the player's turns on the spot (one Pokémon evolves on a spin)
-    private int friendshipSteps;
-    private readonly SpinTracker spin = new();
     private readonly Random fieldRandom = Dice.New();
 
     // The opening and title menu, the slots' saves it offers to continue from, and where the options screen returns to
@@ -151,9 +132,8 @@ public partial class GameEngine
 
     private float rematchSpin;
 
-    // The people who move about of their own accord (plan 02 · S6), and their chance: drawn from Dice the first time
-    // anyone moves, so a run in which nobody does draws nothing
-    private readonly Wandering wandering = new();
+    // The chance of the people who move about of their own accord (GameFlow.Wandering): drawn from Dice the first
+    // time anyone moves, so a run in which nobody does draws nothing
     private Random? peopleRandom;
 
     /// <summary>Keeps everyone standing where they are: the harness, whose shots count on people being where they first stood.</summary>
@@ -293,26 +273,26 @@ public partial class GameEngine
         flow.Pastimes.Clear();
         LoadFrontier(null);
         flow.ContestRecords.Load(null);
-        contestOutcome = null;
-        radar.Clear();
+        flow.ContestOutcome = null;
+        flow.Radar.Clear();
         flow.RegisteredItem = null;
         flow.ExitSpot = null;
         flow.MapTrail.Clear();
-        lastDay = null;
+        flow.LastDay = null;
         flow.Along = null;
         MapDatabase.RestoreDefeatedTrainers(Array.Empty<string>());
         // The story starts over: the flags and variables every game begins with, and everyone where those put them
         flow.Runner.Abort();
         // (Nothing of a scene's camera outlives the game it was played in, plan 09 · L4)
         world.Camera.Reset();
-        cameraSent = false;
+        flow.CameraSent = false;
         // (... nor of a scene being skipped, plan 12 · Q20)
         ResetTheSkip();
         flow.Story.Clear();
         StoryMigration.BeginNewGame(flow.Story, flow.Scripts);
         RefreshPresence(startOver: true);
         flow.Evolutions.Clear();
-        friendshipSteps = 0;
+        flow.FriendshipSteps = 0;
         flow.Money = 3000;
         flow.PlayTime = 0f;
         // As in the games, the Trainer Card's number is drawn when the adventure begins
@@ -368,9 +348,9 @@ public partial class GameEngine
         // The log is told where a game begins or is taken up, so a report's last lines say what was being played
         Log.Info($"A game is entered at {PlaceKey()} {flow.Player.GridX},{flow.Player.GridY}, by the {Ruleset.Current.Preset} rules; it is saved in slot {flow.SaveSlot}.");
         gameStarted = true;
-        trainersLookOnArrival = true;
-        arrived = true;
-        scriptFade.Clear();
+        flow.TrainersLookOnArrival = true;
+        flow.Arrived = true;
+        flow.ScriptFade.Clear();
         flow.StartMenu.PlayerName = playerName;
         KeepCharactersNear(trim: false);
         PlayAreaMusic(flow.Map, flow.Player.GridX, flow.Player.GridY);
@@ -441,7 +421,7 @@ public partial class GameEngine
         if (save.PlayerHeight is { } standing) flow.Player.SetHeight(standing);
         flow.ExitSpot = save.Exit;
         flow.MapTrail.Restore(save.MapTrail);
-        lastDay = save.LastDay;
+        flow.LastDay = save.LastDay;
         flow.RegisteredItem = save.RegisteredItem;
         flow.Poketch.Load(save.Poketch);
         flow.PoketchView.Hide();
@@ -462,8 +442,8 @@ public partial class GameEngine
         flow.Pastimes.Load(save.Pastimes);
         LoadFrontier(save.Frontier);
         flow.ContestRecords.Load(save.ContestRecords);
-        contestOutcome = null;
-        radar.Clear();
+        flow.ContestOutcome = null;
+        flow.Radar.Clear();
         Roamers.Scatter(flow.Encounters, fieldRandom);
 
         flow.Party.Clear();
@@ -507,7 +487,7 @@ public partial class GameEngine
         // The story as the save has it, brought up to date if an older game wrote it; then everyone where it puts them
         flow.Runner.Abort();
         world.Camera.Reset();
-        cameraSent = false;
+        flow.CameraSent = false;
         flow.Story.Restore(save.ToStory());
         StoryMigration.Upgrade(flow.Story, save.StoryVersion, flow.Party.Members.Concat(flow.Boxes.All), flow.Scripts, flow.Bag);
         flow.Story.RestoreGreetings(save.GreetedPeople);
@@ -579,7 +559,7 @@ public partial class GameEngine
             PlayerHeight = flow.Player.HeightOn(flow.Map),
             Exit = flow.ExitSpot,
             MapTrail = flow.MapTrail.IsEmpty ? null : flow.MapTrail.ToSave(),
-            LastDay = lastDay,
+            LastDay = flow.LastDay,
             RegisteredItem = flow.RegisteredItem,
             Partner = partner?.TrainerId,
             PartnerPerson = partner?.Who.Key,
@@ -680,8 +660,8 @@ public partial class GameEngine
     /// Whether the game can be saved this moment, as the start menu's SAVE would: in the field with nothing under way
     /// (no script, fade, trainer walking up, rod, trap, puzzle or ride on a panel).
     /// </summary>
-    private bool CanSaveNow => gameStarted && flow.State == GameState.Overworld && !flow.Runner.IsRunning && !arrived
-        && trainerApproach == null && fishing == null && trap == null && panelRide == null && !PuzzleHoldsField;
+    private bool CanSaveNow => gameStarted && flow.State == GameState.Overworld && !flow.Runner.IsRunning && !flow.Arrived
+        && flow.TrainerApproach == null && flow.Fishing == null && flow.Trap == null && panelRide == null && !PuzzleHoldsField;
 
     /// <summary>The close button's question answered: back to the game, or out of it (after saving, for SAVE AND QUIT).</summary>
     internal void AnswerClose(CloseChoice choice)
@@ -733,7 +713,7 @@ public partial class GameEngine
         flow.Toast.Update(dt);
         flow.StartMenu.Animate(dt);
         closePrompt.Animate(dt);
-        scriptFade.Update(dt);
+        flow.ScriptFade.Update(dt);
         flow.Choice.Update(dt);
 
         // The location sign waits while a fade or another screen covers the field
@@ -854,7 +834,7 @@ public partial class GameEngine
 
                         // Only a beaten trainer is done; after a loss they wait for a rematch
                         bool beaten = flow.Battle.Result == BattleResult.PlayerVictory;
-                        foreach (var battleTrainer in battleTrainers)
+                        foreach (var battleTrainer in flow.BattleTrainers)
                         {
                             battleTrainer.FinishBattle(beaten);
                             // Two people who battle as one trainer (a pair of twins) are beaten together, and the story remembers it
@@ -864,9 +844,9 @@ public partial class GameEngine
                                 foreach (var other in flow.Map.Everyone.Where(n => n != battleTrainer && n.TrainerData?.Id == pair.Id)) other.FinishBattle(true);
                             }
                         }
-                        battleTrainers.Clear();
+                        flow.BattleTrainers.Clear();
                         // What a script that started the battle is told of it
-                        scriptOutcome = flow.Battle.Result switch
+                        flow.ScriptOutcome = flow.Battle.Result switch
                         {
                             BattleResult.PlayerVictory => BattleOutcome.Won,
                             BattleResult.PlayerDefeat => BattleOutcome.Lost,
@@ -874,7 +854,7 @@ public partial class GameEngine
                             BattleResult.PlayerRan or BattleResult.EnemyFled => BattleOutcome.Fled,
                             _ => BattleOutcome.None
                         };
-                        scriptTurns = flow.Battle.Core.Turn;
+                        flow.ScriptTurns = flow.Battle.Core.Turn;
                         // The Safari Game counts what it caught (the Matchup Checker is given for five in one game)
                         if (flow.Safari.Active && flow.Battle.Kind == BattleKind.Safari && flow.Battle.Result == BattleResult.EnemyCaught) flow.Safari.Caught++;
                         EndBattle();
@@ -888,7 +868,7 @@ public partial class GameEngine
                 {
                     // A script that asked for a Pokémon to be chosen hears which
                     if (flow.PartyScreen.Entering) TakeEntered();
-                    else if (flow.PartyScreen.Choosing) scriptAnswer = flow.PartyScreen.Chosen;
+                    else if (flow.PartyScreen.Choosing) flow.ScriptAnswer = flow.PartyScreen.Chosen;
                     flow.State = GameState.Overworld;
                 }
                 break;
@@ -896,7 +876,7 @@ public partial class GameEngine
                 flow.TownMapScreen.Update(dt);
                 if (flow.TownMapScreen.TakeChoice() is { } town)
                 {
-                    flyTarget = town;
+                    flow.FlyTarget = town;
                     flow.State = GameState.Overworld;
                     StartScript("common.UseFly", pokemon: flow.Party.Members[flow.TownMapScreen.Flier]);
                 }
@@ -910,8 +890,8 @@ public partial class GameEngine
                 else if (!flow.BagScreen.IsActive && flow.BagScreen.TakePick(out var picked))
                 {
                     // A script that asked for an item hears which (plan 06 · R14a)
-                    scriptItem = picked?.Name;
-                    scriptAnswer = picked != null ? 1 : 0;
+                    flow.ScriptItem = picked?.Name;
+                    flow.ScriptAnswer = picked != null ? 1 : 0;
                     flow.State = GameState.Overworld;
                 }
                 else if (!flow.BagScreen.IsActive)
@@ -966,7 +946,7 @@ public partial class GameEngine
                     flow.Pokedex.RegisterCaught(chosen.Species.DexNumber);
                     // The story remembers which was taken, and with it which the rival takes
                     flow.Story.ChooseStarter(chosen.Species.Name);
-                    scriptAnswer = Math.Max(0, Array.IndexOf(StoryState.Starters, chosen.Species.Name));
+                    flow.ScriptAnswer = Math.Max(0, Array.IndexOf(StoryState.Starters, chosen.Species.Name));
                     flow.State = GameState.Overworld;
                 }
                 break;
@@ -1122,10 +1102,10 @@ public partial class GameEngine
         // The app on the Pokétch runs on whether it is out or not, as the original's lower screen does
         if (flow.Poketch.Enabled) flow.Poketch.State?.Update(dt, PoketchNow());
         // The radar's chains count toward the Trainer Counter's records whichever app is showing
-        if (flow.Poketch.Has(PoketchApp.TrainerCounter) && (radar.Count, radar.Species, radar.Active) != radarFollowed)
+        if (flow.Poketch.Has(PoketchApp.TrainerCounter) && (flow.Radar.Count, flow.Radar.Species, flow.Radar.Active) != radarFollowed)
         {
-            radarFollowed = (radar.Count, radar.Species, radar.Active);
-            TrainerCounterApp.Follow(flow.Poketch, radar);
+            radarFollowed = (flow.Radar.Count, flow.Radar.Species, flow.Radar.Active);
+            TrainerCounterApp.Follow(flow.Poketch, flow.Radar);
         }
         // Who is on the map follows the story's flags as soon as they change, whatever changed them (a script, a
         // first arrival, a field move, a tool): only a script's end and an arrival looked before, so a flag set
@@ -1150,7 +1130,7 @@ public partial class GameEngine
         // finish the step they are on
         if (flow.Runner.IsRunning)
         {
-            wandering.Continue(fieldDt);
+            flow.Wandering.Continue(fieldDt);
             UpdateScript(dt);
             return;
         }
@@ -1159,31 +1139,31 @@ public partial class GameEngine
         if (PuzzleHoldsField) return;
 
         // A rod is out: the keys are the rod's until it is put away
-        if (fishing != null)
+        if (flow.Fishing != null)
         {
             UpdateFishing(dt);
             return;
         }
 
         // A trap of the Underground has the player until they are free of it (plan 06 · R16a)
-        if (trap != null && !arrived)
+        if (flow.Trap != null && !flow.Arrived)
         {
             UpdateTrap(dt);
             return;
         }
 
         // The place just come to runs its own script first, if it has one
-        if (arrived)
+        if (flow.Arrived)
         {
-            arrived = false;
+            flow.Arrived = false;
             RefreshPresence();
             // Out of a warp the original walks the player a step onto the tile in front, and that step can start a
             // trigger, once the place's own script is done (Cheryl at Eterna Forest's edge, plan 02 · S6)
-            bool stepped = steppedOutOfWarp;
-            steppedOutOfWarp = false;
+            bool stepped = flow.SteppedOutOfWarp;
+            flow.SteppedOutOfWarp = false;
             if (StartEnterScript())
             {
-                triggerAfterEnter |= stepped;
+                flow.TriggerAfterEnter |= stepped;
                 return;
             }
             if (stepped && TryStepTrigger()) return;
@@ -1191,25 +1171,25 @@ public partial class GameEngine
 
         // A trainer has spotted the player: nothing else happens until they have walked up (both of them, when two
         // came together)
-        if (trainerApproach != null)
+        if (flow.TrainerApproach != null)
         {
-            trainerApproach.Update(dt, flow.Player);
-            pairApproach?.Update(dt, flow.Player);
-            if (trainerApproach.IsDone && pairApproach?.IsDone != false)
+            flow.TrainerApproach.Update(dt, flow.Player);
+            flow.PairApproach?.Update(dt, flow.Player);
+            if (flow.TrainerApproach.IsDone && flow.PairApproach?.IsDone != false)
             {
-                var trainer = trainerApproach.Trainer;
-                var pair = pairApproach?.Trainer;
-                trainerApproach = null;
-                pairApproach = null;
+                var trainer = flow.TrainerApproach.Trainer;
+                var pair = flow.PairApproach?.Trainer;
+                flow.TrainerApproach = null;
+                flow.PairApproach = null;
                 if (pair != null) StartScript(FieldScripts.TrainerPair, trainer, pair: pair);
                 else ChallengeTrainer(trainer);
             }
             return;
         }
 
-        if (trainersLookOnArrival)
+        if (flow.TrainersLookOnArrival)
         {
-            trainersLookOnArrival = false;
+            flow.TrainersLookOnArrival = false;
             if (CheckTrainerSight()) return;
         }
 
@@ -1265,7 +1245,7 @@ public partial class GameEngine
         runWasDown = runDown;
 
         // People move about of their own accord, kept out of the player's way
-        if (!PeopleStayPut) wandering.Update(dt, flow.Map, (flow.Player.GridX, flow.Player.GridY), flow.Player.Heading, peopleRandom ??= Dice.New());
+        if (!PeopleStayPut) flow.Wandering.Update(dt, flow.Map, (flow.Player.GridX, flow.Player.GridY), flow.Player.Heading, peopleRandom ??= Dice.New());
 
         // Overworld Player Movement
         flow.Player.Moves = FieldMovement.MovesOf(flow.Party);
@@ -1289,10 +1269,10 @@ public partial class GameEngine
         if (world.Life.TakeShutting() is { } shutting && WorldRenderer.DoorPlace(shutting.Map, shutting.X, shutting.Y) is { } shut)
             AudioManager.PlaySound(shut.Glass ? "door_slide" : "door_close");
 
-        if (trainerApproach != null || flow.State != GameState.Overworld) return;
+        if (flow.TrainerApproach != null || flow.State != GameState.Overworld) return;
 
         // Turning a full circle is how one Pokémon evolves
-        if (spin.Update(flow.Player.Facing, dt) && PlayEvolutions(FindEvolutions(flow.Party.Members, EvolutionTrigger.Spin, cancellable: false), GameState.Overworld))
+        if (flow.Spin.Update(flow.Player.Facing, dt) && PlayEvolutions(FindEvolutions(flow.Party.Members, EvolutionTrigger.Spin, cancellable: false), GameState.Overworld))
             return;
 
         // Interaction (Z / Space)
@@ -1359,7 +1339,7 @@ public partial class GameEngine
         c.Story = flow.Story;
         c.Pokedex = flow.Pokedex;
         c.Encounters = flow.Encounters;
-        c.Radar = radar;
+        c.Radar = flow.Radar;
         c.Berries = flow.Berries;
         c.Rng = fieldRandom;
         // The Day Care's two, at the levels their steps have brought them to, and whether an Egg waits (plan 06 · R15)
@@ -1401,9 +1381,9 @@ public partial class GameEngine
         // SystemVars_IncrementAmitySquareStepCount, which the original counts everywhere and reads only in the square)
         if (flow.Story.Var(AmitySquare.ActiveVar) == 1) AmitySquare.CountStep(flow.Story);
         if (PalParkStep()) return true;
-        if (++friendshipSteps >= FriendshipRules.WalkCycleSteps)
+        if (++flow.FriendshipSteps >= FriendshipRules.WalkCycleSteps)
         {
-            friendshipSteps = 0;
+            flow.FriendshipSteps = 0;
             foreach (var p in flow.Party.Members) FriendshipRules.Apply(p, FriendshipEvent.WalkCycle, fieldRandom);
         }
         if (flow.Party.Count > 0) Evolution.CountStep(flow.Party.Members[0]);
@@ -1440,7 +1420,7 @@ public partial class GameEngine
         // script as it loads, before its coordinate events): the trigger is tried once that script has ended
         if (entered)
         {
-            triggerAfterEnter = true;
+            flow.TriggerAfterEnter = true;
             return true;
         }
         if (TryStepTrigger()) return true;
@@ -1458,9 +1438,9 @@ public partial class GameEngine
     private bool EnterArea()
     {
         var area = flow.Map.AreaAt(flow.Player.GridX, flow.Player.GridY);
-        if (area == currentArea) return false;
-        bool another = currentArea != null && area != null;
-        currentArea = area;
+        if (area == flow.CurrentArea) return false;
+        bool another = flow.CurrentArea != null && area != null;
+        flow.CurrentArea = area;
         if (area == null) return false;
         // Another place: what lasted only while the player stayed in the last one is forgotten, and the roamers move on
         // (FieldSystem_InitFlagsOnMapChange, not during a Safari Game; plan 06 · R13)
@@ -1595,16 +1575,16 @@ public partial class GameEngine
         var trainer = TrainerApproach.FindSpotter(flow.Map, flow.Player.GridX, flow.Player.GridY, height: flow.Player.HeightOn(flow.Map));
         if (trainer == null) return false;
 
-        wandering.Settle(trainer);
-        trainerApproach = new TrainerApproach(trainer, flow.Player);
+        flow.Wandering.Settle(trainer);
+        flow.TrainerApproach = new TrainerApproach(trainer, flow.Player);
         // Two trainers who see the player at once come together (APPROACH_TYPE_VS2): two against one when the
         // player has two Pokémon able to fight, or against the player and whoever travels with them
-        pairApproach = null;
+        flow.PairApproach = null;
         if (TrainerApproach.FindSpotter(flow.Map, flow.Player.GridX, flow.Player.GridY, except: trainer, height: flow.Player.HeightOn(flow.Map)) is { } second
             && (partner != null || flow.Party.Members.Count(p => !p.IsFainted) >= 2))
         {
-            wandering.Settle(second);
-            pairApproach = new TrainerApproach(second, flow.Player, turnPlayer: false);
+            flow.Wandering.Settle(second);
+            flow.PairApproach = new TrainerApproach(second, flow.Player, turnPlayer: false);
         }
         AudioManager.PlaySound("exclaim", PanAt(trainer.GridX));
 
@@ -1723,7 +1703,7 @@ public partial class GameEngine
             flow.Map = MapDatabase.Get(warp.TargetMap);
             flow.Player.SetPosition(warp.TargetX, warp.TargetY, warp.TargetFacing);
             ArriveOnMap();
-            steppedOutOfWarp = true;
+            flow.SteppedOutOfWarp = true;
             AnnounceLocation();
             // Through a gate onto the Cycling Road, the Bicycle stays under the player until the next warp
             if (warp.CyclistsOnly) flow.Story.Set(BicycleRules.OnCyclingRoadFlag);
@@ -1805,7 +1785,7 @@ public partial class GameEngine
         {
             flow.Map = MapDatabase.Get(spot.Map);
             flow.Player.SetPosition(spot.X, spot.Y, spot.Facing);
-            trainersLookOnArrival = true;
+            flow.TrainersLookOnArrival = true;
             ArriveOnMap();
             AnnounceLocation();
         });
@@ -1844,7 +1824,7 @@ public partial class GameEngine
     /// </summary>
     private void AnnounceLocation()
     {
-        currentArea = flow.Map.AreaAt(flow.Player.GridX, flow.Player.GridY);
+        flow.CurrentArea = flow.Map.AreaAt(flow.Player.GridX, flow.Player.GridY);
         NoteArrival();
         if (flow.Map.IsIndoors) flow.LocationSign.Hide();
         else flow.LocationSign.Show(flow.Map.DisplayNameAt(flow.Player.GridX, flow.Player.GridY));
@@ -2003,7 +1983,7 @@ public partial class GameEngine
         if (SpawnLocations.Get(flow.Story.Var(SpawnLocations.Variable)) is { } town) flow.ExitSpot = new MapSpot("Sinnoh", town.X, town.Y, Direction.Down);
         // A scene the battle was lost in left its camera, its bars and its pace behind with the place (plan 09 · L4)
         world.Camera.Reset();
-        cameraSent = false;
+        flow.CameraSent = false;
         ArriveOnMap();
         AnnounceLocation();
         if (healer == null || !StartScript(home ? FieldScripts.BlackOutHome : FieldScripts.BlackOutCenter, healer)) flow.Party.HealAll();
@@ -2069,7 +2049,7 @@ public partial class GameEngine
                 DriveTheLens(world.Camera, flow.Kind, closing: true, flow.Clock);
                 break;
             case TransitionStep.Opened:
-                trainersLookOnArrival = flow.State == GameState.Overworld;
+                flow.TrainersLookOnArrival = flow.State == GameState.Overworld;
                 break;
         }
     }

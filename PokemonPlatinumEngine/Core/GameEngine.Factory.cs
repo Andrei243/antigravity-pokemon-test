@@ -22,8 +22,8 @@ public partial class GameEngine
     private void OpenFactoryRentals(int count)
     {
         if (flow.Factory == null) return;
-        scriptAnswer = 0;
-        enteredSlots = Array.Empty<int>();
+        flow.ScriptAnswer = 0;
+        flow.EnteredSlots = Array.Empty<int>();
         flow.FactoryScreen.OpenToRent(flow.Factory.Offer.Select(flow.Factory.Build).ToList(), count);
         flow.State = GameState.FactoryRentals;
     }
@@ -32,8 +32,8 @@ public partial class GameEngine
     private void OpenFactoryTrade()
     {
         if (flow.Factory == null) return;
-        scriptAnswer = 0;
-        enteredSlots = Array.Empty<int>();
+        flow.ScriptAnswer = 0;
+        flow.EnteredSlots = Array.Empty<int>();
         // The trainer just beaten is the one before the battle to come
         var beaten = Data.FrontierDatabase.Trainer(flow.Factory.Trainers[Math.Max(0, flow.Factory.Battle - 1)]);
         flow.FactoryScreen.OpenToTrade(flow.Factory.Team.Select(flow.Factory.Build).ToList(), flow.Factory.Foe.Select(flow.Factory.Build).ToList(), beaten.Name);
@@ -59,8 +59,8 @@ public partial class GameEngine
         flow.FactoryScreen.Update(dt);
         if (flow.FactoryScreen.IsActive) return;
         // The script that opened the screen hears what was decided
-        enteredSlots = flow.FactoryScreen.Outcome.ToList();
-        scriptAnswer = enteredSlots.Count > 0 ? 1 : 0;
+        flow.EnteredSlots = flow.FactoryScreen.Outcome.ToList();
+        flow.ScriptAnswer = flow.EnteredSlots.Count > 0 ? 1 : 0;
         flow.State = GameState.Overworld;
     }
 

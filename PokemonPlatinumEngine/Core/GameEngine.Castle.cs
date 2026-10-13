@@ -22,7 +22,7 @@ public partial class GameEngine
     private void OpenCastleCounter(bool own)
     {
         if (flow.Castle == null) return;
-        scriptAnswer = 0;
+        flow.ScriptAnswer = 0;
         // The trainer to come was drawn since the challenge went in: their pictures are asked for as the counter opens
         AskForCastlePictures();
         flow.CastleScreen.Open(flow.Castle, flow.Frontier, own);
@@ -47,7 +47,7 @@ public partial class GameEngine
     {
         flow.CastleScreen.Update(dt);
         if (flow.CastleScreen.IsActive) return;
-        scriptAnswer = 1;
+        flow.ScriptAnswer = 1;
         flow.State = GameState.Overworld;
     }
 

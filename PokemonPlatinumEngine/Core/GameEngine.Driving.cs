@@ -37,8 +37,8 @@ public partial class GameEngine
         public Player Player => Flow.Player;
         public BattleEngine? Battle { get => Flow.Battle; set => Flow.Battle = value; }
         public StoryState Story => Flow.Story;
-        public bool TrainersLookOnArrival { get => game.trainersLookOnArrival; set => game.trainersLookOnArrival = value; }
-        public bool SteppedOutOfWarp { get => game.steppedOutOfWarp; set => game.steppedOutOfWarp = value; }
+        public bool TrainersLookOnArrival { get => game.flow.TrainersLookOnArrival; set => game.flow.TrainersLookOnArrival = value; }
+        public bool SteppedOutOfWarp { get => game.flow.SteppedOutOfWarp; set => game.flow.SteppedOutOfWarp = value; }
 
         // ------------------------------------------------------------ what the player has
 
@@ -61,7 +61,7 @@ public partial class GameEngine
         /// <summary>The Fashion Case, the Super Contest's screen and how the last contest came out (plan 06 · R17a).</summary>
         public Models.SuperContests.FashionCase FashionCase => game.flow.FashionCase;
         public SuperContestScreen SuperContest => game.flow.SuperContestScreen;
-        public Models.SuperContests.ContestOutcome? ContestOutcome => game.contestOutcome;
+        public Models.SuperContests.ContestOutcome? ContestOutcome => game.flow.ContestOutcome;
 
         /// <summary>The Seal Case, its screens, the Fashion Case's viewer and the contests' records (plan 06 · R17b).</summary>
         public SealCase SealCase => game.flow.SealCase;
@@ -94,8 +94,8 @@ public partial class GameEngine
         public MiningScreen Mining => game.flow.MiningScreen;
         public UndergroundScreen UndergroundLists => game.flow.UndergroundScreen;
         public DecorationScreen Decoration => game.flow.DecorationScreen;
-        public Models.Underground.TrapEffect? Trap => game.trap;
-        public IReadOnlyList<Models.Underground.Digger> Diggers => game.diggers;
+        public Models.Underground.TrapEffect? Trap => game.flow.Trap;
+        public IReadOnlyList<Models.Underground.Digger> Diggers => game.flow.Diggers;
         public void GoUnderground() => game.GoUnderground();
         public void ComeUp() => game.ComeUp();
         public void PulseRadar() => game.PulseRadar();
@@ -109,11 +109,11 @@ public partial class GameEngine
         public void OpenBallCapsules() => game.OpenBallCapsules(fromBag: false);
         public void OpenFashionCase() => game.OpenFashionCase(fromBag: false);
         public DayCare DayCare => game.flow.DayCare;
-        public RadarChain Radar => game.radar;
-        public FishingAttempt? Fishing { get => game.fishing; set => game.fishing = value; }
+        public RadarChain Radar => game.flow.Radar;
+        public FishingAttempt? Fishing { get => game.flow.Fishing; set => game.flow.Fishing = value; }
 
         /// <summary>The Eterna Gym's clock turning on, which its script waits for (plan 01 · M9).</summary>
-        public EternaClock.Turn? ClockTurn => game.clockTurn;
+        public EternaClock.Turn? ClockTurn => game.flow.ClockTurn;
         /// <summary>A Veilstone Gym bag is on its run, holding the field.</summary>
         public bool BagRunning => game.bagRun != null;
 

@@ -23,7 +23,7 @@ public partial class GameEngine
     private void StartCooking()
     {
         choosingBerryToCook = true;
-        scriptItem = null;
+        flow.ScriptItem = null;
         flow.State = GameState.BagMenu;
         flow.BagScreen.Registered = flow.RegisteredItem;
         flow.BagScreen.OpenToPick("berries");

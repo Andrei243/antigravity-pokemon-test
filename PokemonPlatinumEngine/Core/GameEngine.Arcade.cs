@@ -19,7 +19,7 @@ public partial class GameEngine
     private void OpenArcadeBoard()
     {
         if (flow.Arcade?.Board == null) return;
-        scriptAnswer = 0;
+        flow.ScriptAnswer = 0;
         // Both threes stand beside the board: their pictures are asked for as it opens
         foreach (var pokemon in flow.Arcade.Team.Members.Concat(flow.Arcade.Foe?.Pokemon ?? Enumerable.Empty<Models.Pokemon>()))
         {
@@ -35,7 +35,7 @@ public partial class GameEngine
         flow.ArcadeBoardScreen.Update(dt);
         if (flow.ArcadeBoardScreen.IsActive) return;
         // The script that opened the board goes on to carry out the event it stopped on
-        scriptAnswer = 1;
+        flow.ScriptAnswer = 1;
         flow.State = GameState.Overworld;
     }
 

@@ -36,16 +36,11 @@ public partial class GameEngine
     /// <summary>The scripts of the Underground's file the game starts itself: a wall faced, the two kinds of PC, the bag's way up.</summary>
     public static readonly string[] UndergroundScripts = { "Wall", "BasePC", "DiggerPC", "GoUp" };
 
-    private UndergroundField? tunnels;
-
-    /// <summary>The trap that has the player, and the frames of it still owed at the console's thirty a second.</summary>
-    private TrapEffect? trap;
-    private float trapFrames;
+    // Whether the trap's button went down this frame, and the keys a trap of smoke is wiped with
     private bool trapTap;
     private readonly HeldKey smokeX = new(), smokeY = new();
 
-    /// <summary>The day's other diggers, and whose cavern the base's room shows now: null for the player's own.</summary>
-    private List<Digger> diggers = new();
+    /// <summary>Whose cavern the base's room shows now: null for the player's own.</summary>
     private int? visiting { get => flow.Underground.Visiting; set => flow.Underground.Visiting = value; }
 
     /// <summary>The tiles of the tunnels' rock that are ways into a base now, each with the height the rock had.</summary>
@@ -58,13 +53,13 @@ public partial class GameEngine
         return !map.InBounds(x, z) || baseEntrances.ContainsKey((x, z)) || map.IsSolid(x, z);
     }
 
-    private UndergroundField Tunnels => tunnels ??= new UndergroundField(flow.Underground, UndergroundRock);
+    private UndergroundField Tunnels => flow.Tunnels ??= new UndergroundField(flow.Underground, UndergroundRock);
 
     private bool IsUnderground => flow.Map?.Name == UndergroundMap;
     private bool InTheBase => IsUnderground && flow.Player.GridX < SecretBaseRules.Size && flow.Player.GridY < SecretBaseRules.Size;
 
     /// <summary>The cavern the base's room shows: the player's own, or the digger's being visited.</summary>
-    private SavedBase? RoomShown => visiting is { } n ? diggers.FirstOrDefault(d => d.Number == n)?.Base : flow.Underground.Base;
+    private SavedBase? RoomShown => visiting is { } n ? flow.Diggers.FirstOrDefault(d => d.Number == n)?.Base : flow.Underground.Base;
 
     private void LoadUnderground(UndergroundState? saved)
     {
@@ -80,8 +75,8 @@ public partial class GameEngine
             }
         }
         flow.Underground = saved ?? UndergroundState.NewGame(flow.Encounters.DailyNumber);
-        tunnels = null;
-        trap = null;
+        flow.Tunnels = null;
+        flow.Trap = null;
         baseEntrances.Clear();
     }
 
@@ -150,7 +145,7 @@ public partial class GameEngine
     {
         if (!IsUnderground || flow.Underground.Surface is not { } spot) return;
         flow.Underground.HeldFlag = null;
-        trap = null;
+        flow.Trap = null;
         var above = MapDatabase.Get(spot.Map);
         AudioManager.PlaySound("stairs");
         PlayAreaMusic(above, spot.X, spot.Y);
@@ -173,7 +168,7 @@ public partial class GameEngine
     {
         var map = flow.Map;
         Tunnels.SpreadIfDue();
-        diggers = Diggers.Today(flow.Underground.Seed, UndergroundRock);
+        flow.Diggers = Diggers.Today(flow.Underground.Seed, UndergroundRock);
         LayOutEntrances();
         LayOutBase();
         // Roark is beside whoever comes down for the first time (Underground_PutRoarkNextToPlayer)
@@ -194,7 +189,7 @@ public partial class GameEngine
         var map = MapDatabase.Get(UndergroundMap);
         var wanted = new Dictionary<(int, int), int?>();
         if (flow.Underground.Base is { } own) wanted[(own.EntranceX, own.EntranceZ)] = null;
-        foreach (var digger in diggers) wanted.TryAdd((digger.Base.EntranceX, digger.Base.EntranceZ), digger.Number);
+        foreach (var digger in flow.Diggers) wanted.TryAdd((digger.Base.EntranceX, digger.Base.EntranceZ), digger.Number);
         foreach (var (at, was) in baseEntrances.ToList())
         {
             if (wanted.ContainsKey(at)) continue;
@@ -280,7 +275,7 @@ public partial class GameEngine
             }
             return false;
         }
-        if (trap == null && Tunnels.StepOn(x, z) is > 0 and var stepped)
+        if (flow.Trap == null && Tunnels.StepOn(x, z) is > 0 and var stepped)
         {
             SpringTrap(stepped);
             return true;
@@ -290,13 +285,13 @@ public partial class GameEngine
 
     private void SpringTrap(int which)
     {
-        trap = new TrapEffect(which, fieldRandom);
-        trapFrames = 0f;
+        flow.Trap = new TrapEffect(which, fieldRandom);
+        flow.TrapFrames = 0f;
         trapTap = false;
         flow.Player.ShowBubble(EmoteBubble.Exclaim);
         AudioManager.PlaySound("exclaim");
         ShowNotification($"A trap! It's a {UndergroundDatabase.TrapName(which)}!");
-        if (trap.Done) trap = null;
+        if (flow.Trap.Done) flow.Trap = null;
     }
 
     /// <summary>Into a base by its way in (<c>SecretBases_TryEnterBase</c>): the room is laid out for whoever's it is, behind the fade.</summary>
@@ -309,7 +304,7 @@ public partial class GameEngine
             flow.Player.SetPosition(SecretBaseRules.ExitX, SecretBaseRules.FloorBottom, Direction.Up);
             LayOutBase();
             world.Life.Clear();
-            ShowNotification(digger is { } n && diggers.FirstOrDefault(d => d.Number == n) is { } owner ? $"{owner.Name}'s secret base" : "Your secret base");
+            ShowNotification(digger is { } n && flow.Diggers.FirstOrDefault(d => d.Number == n) is { } owner ? $"{owner.Name}'s secret base" : "Your secret base");
         });
     }
 
@@ -430,7 +425,7 @@ public partial class GameEngine
     /// </summary>
     private void UpdateTrap(float dt)
     {
-        var t = trap!;
+        var t = flow.Trap!;
         var keys = TrapKeys;
         var way = keys != null ? keys.Value.Way : WantedWay();
         bool tap = keys?.Tap ?? InputManager.IsActionPressed(GameAction.Confirm), held = keys?.Held ?? InputManager.IsActionDown(GameAction.Confirm);
@@ -439,7 +434,7 @@ public partial class GameEngine
             case TrapFamily.Slide:
                 if (!flow.Player.IsMoving && !t.Slide(BlockedAhead(t.Way)))
                 {
-                    trap = null;
+                    flow.Trap = null;
                     return;
                 }
                 flow.Player.Advance(dt, flow.Map, t.Way, true, null, null, () => true);
@@ -450,7 +445,7 @@ public partial class GameEngine
                     t.Stepped();
                     if (t.Done)
                     {
-                        trap = null;
+                        flow.Trap = null;
                         ShowNotification("Your feet go where you tell them again.");
                     }
                     return OnStep();
@@ -475,26 +470,26 @@ public partial class GameEngine
             dx = keys != null ? ax : smokeX.Advance(dt, InputManager.Axis(GameAction.Left, GameAction.Right), InputManager.Axis(GameAction.Left, GameAction.Right, held: true));
             dy = keys != null ? ay : smokeY.Advance(dt, InputManager.Axis(GameAction.Up, GameAction.Down), InputManager.Axis(GameAction.Up, GameAction.Down, held: true));
         }
-        trapFrames += dt * TrapEffect.FramesPerSecond;
+        flow.TrapFrames += dt * TrapEffect.FramesPerSecond;
         bool first = true;
-        while (trapFrames >= 1f && !t.Done)
+        while (flow.TrapFrames >= 1f && !t.Done)
         {
-            trapFrames -= 1f;
+            flow.TrapFrames -= 1f;
             if (trapTap && t.Family is TrapFamily.Rock or TrapFamily.Bubbles) AudioManager.PlaySound(t.Family == TrapFamily.Rock ? "bump" : "cursor");
             t.Advance(turned: false, tap: trapTap, held: held, dx: first ? dx * 2 : 0, dy: first ? dy * 2 : 0);
             trapTap = false;
             first = false;
         }
-        if (dx != 0 || dy != 0) trapFrames = Math.Max(trapFrames, 0f);
+        if (dx != 0 || dy != 0) flow.TrapFrames = Math.Max(flow.TrapFrames, 0f);
         if (!t.Done) return;
-        trap = null;
+        flow.Trap = null;
         AudioManager.PlaySound("select");
         if (t.Family != TrapFamily.Alert) ShowNotification("You got free of the trap!");
     }
 
     private void DrawTrap()
     {
-        if (trap != null && flow.State == GameState.Overworld) ModernUi.DrawTrap(VirtualWidth, VirtualHeight, trap, (float)FrameClock.Now);
+        if (flow.Trap != null && flow.State == GameState.Overworld) ModernUi.DrawTrap(VirtualWidth, VirtualHeight, flow.Trap, (float)FrameClock.Now);
     }
 
     // ------------------------------------------------------------------ the screens
@@ -502,7 +497,7 @@ public partial class GameEngine
     /// <summary>The bag below ground, from the Explorer Kit: its lists, and what is done in the tunnels when it closes.</summary>
     private void OpenUndergroundBag(int tab = 0)
     {
-        if (trap != null) return;
+        if (flow.Trap != null) return;
         flow.State = GameState.Underground;
         flow.UndergroundScreen.OpenBag(flow.Underground, item =>
         {
@@ -696,7 +691,7 @@ public partial class GameEngine
             case "home":
             {
                 if (flow.Underground.HeldFlag is not { } held) return 0;
-                string owner = diggers.FirstOrDefault(d => d.Number == held)?.Name ?? "Someone";
+                string owner = flow.Diggers.FirstOrDefault(d => d.Number == held)?.Name ?? "Someone";
                 lastFlagOwner = owner;
                 var better = Diggers.BringHome(flow.Underground, owner);
                 flow.Story.Set(DeliveredFlagFlag);
@@ -710,7 +705,7 @@ public partial class GameEngine
     }
 
     /// <summary>The name a line's <c>{digger}</c> stands for: whose base the player is in, or whose flag they carry.</summary>
-    private string DiggerName => diggers.FirstOrDefault(d => d.Number == (visiting ?? flow.Underground.HeldFlag))?.Name ?? lastFlagOwner;
+    private string DiggerName => flow.Diggers.FirstOrDefault(d => d.Number == (visiting ?? flow.Underground.HeldFlag))?.Name ?? lastFlagOwner;
 
     private string lastFlagOwner = "someone";
 }
