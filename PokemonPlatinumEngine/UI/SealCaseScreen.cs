@@ -131,7 +131,7 @@ public sealed class SealCaseScreen
         : !sealCase.Capsule(capsule).IsEmpty ? new[] { CapsuleAction.Attach, CapsuleAction.Edit, CapsuleAction.Swap, CapsuleAction.Cancel }
         : new[] { CapsuleAction.Edit, CapsuleAction.Swap, CapsuleAction.Cancel };
 
-    public static string Label(CapsuleAction action) => action.ToString().ToUpperInvariant();
+    public static string Label(CapsuleAction action) => Text.Of($"capsules.action.{action}");
 
     /// <summary>The Seals of the page shown: up to eight kinds.</summary>
     public IReadOnlyList<int> PageKinds => Kinds.Skip(Page * PageSize).Take(PageSize).ToList();
@@ -144,14 +144,14 @@ public sealed class SealCaseScreen
     /// <summary>The prompt at the foot of the screen.</summary>
     public string Prompt => Message ?? Step switch
     {
-        CapsuleStep.Menu => "Do what with this Ball Capsule?",
-        CapsuleStep.Swap => "Swap it with which Ball Capsule?",
-        CapsuleStep.Attach => "Put the Ball Capsule on whose ball?",
-        CapsuleStep.Seals => Kinds.Count == 0 ? "The Seal Case is empty." : KindUnderCursor is var kind && kind != 0 ? SealDatabase.Name(kind) : "Choose a Seal.",
-        CapsuleStep.Holding => Edit != null && Held < Edit.Seals.Count && !Edit.Seals[Held].OnTheBall ? "Off the ball, it goes back in the case." : "Move the Seal and stick it on.",
-        CapsuleStep.OnBall => Edit != null && Held < Edit.Seals.Count ? SealDatabase.Name(Edit.Seals[Held].Seal) : "No Seals are on the ball.",
-        CapsuleStep.Quit => "Leave without keeping the changes?",
-        _ => "Choose a Ball Capsule."
+        CapsuleStep.Menu => Text.Of("capsules.prompt.menu"),
+        CapsuleStep.Swap => Text.Of("capsules.prompt.swap"),
+        CapsuleStep.Attach => Text.Of("capsules.prompt.attach"),
+        CapsuleStep.Seals => Kinds.Count == 0 ? Text.Of("capsules.prompt.caseEmpty") : KindUnderCursor is var kind && kind != 0 ? SealDatabase.Name(kind) : Text.Of("capsules.prompt.chooseSeal"),
+        CapsuleStep.Holding => Text.Of(Edit != null && Held < Edit.Seals.Count && !Edit.Seals[Held].OnTheBall ? "capsules.prompt.offTheBall" : "capsules.prompt.moveSeal"),
+        CapsuleStep.OnBall => Edit != null && Held < Edit.Seals.Count ? SealDatabase.Name(Edit.Seals[Held].Seal) : Text.Of("capsules.prompt.noneOnBall"),
+        CapsuleStep.Quit => Text.Of("capsules.prompt.quit"),
+        _ => Text.Of("capsules.prompt.choose")
     };
 
     // ---------------------------------------------------------------- the buttons
@@ -285,7 +285,7 @@ public sealed class SealCaseScreen
             case CapsuleStep.Swap:
                 CapsuleRules.Swap(sealCase, party, Cursor, Other);
                 Cursor = Other;
-                Message = "The Ball Capsules changed places.";
+                Message = Text.Of("capsules.swapped");
                 Go(CapsuleStep.Capsules);
                 AudioManager.PlaySound("select");
                 break;
@@ -334,7 +334,7 @@ public sealed class SealCaseScreen
             case CapsuleAction.Detach:
                 string? from = HolderOf(Cursor)?.DisplayName;
                 CapsuleRules.Free(party, Cursor);
-                Message = from != null ? $"The Ball Capsule was taken off {from}'s ball." : null;
+                Message = from != null ? Text.Of("capsules.takenOff", ("name", from)) : null;
                 Go(CapsuleStep.Capsules);
                 break;
             case CapsuleAction.Edit:
@@ -361,13 +361,13 @@ public sealed class SealCaseScreen
         var pokemon = party.Members[slot];
         if (!CapsuleRules.Attach(sealCase, Cursor, pokemon))
         {
-            Message = pokemon.IsEgg ? "An Egg's ball can't take a Ball Capsule." : "There are no Seals on that Ball Capsule.";
+            Message = Text.Of(pokemon.IsEgg ? "capsules.eggBall" : "capsules.noSealsOnIt");
             AudioManager.PlaySound("error");
             return;
         }
         // One capsule, one ball: whoever carried it before carries it no longer
         foreach (var other in party.Members.Where(p => p != pokemon && p.CapsuleId == Cursor + 1)) CapsuleRules.Detach(other);
-        Message = $"The Ball Capsule was put on {pokemon.DisplayName}'s ball.";
+        Message = Text.Of("capsules.putOnBall", ("name", pokemon.DisplayName));
         Go(CapsuleStep.Capsules);
         AudioManager.PlaySound("select");
     }
@@ -378,13 +378,13 @@ public sealed class SealCaseScreen
         if (Edit == null || KindUnderCursor is not (> 0 and var kind)) return;
         if (Edit.Full)
         {
-            Message = "A Ball Capsule holds eight Seals at most.";
+            Message = Text.Of("capsules.eightAtMost");
             AudioManager.PlaySound("error");
             return;
         }
         if (sealCase.Count(kind) == 0)
         {
-            Message = "There are no more of that Seal in the case.";
+            Message = Text.Of("capsules.noMore");
             AudioManager.PlaySound("error");
             return;
         }
@@ -399,7 +399,7 @@ public sealed class SealCaseScreen
     {
         if (Edit == null) return;
         bool stuck = Edit.Drop(Held);
-        Message = stuck ? null : "The Seal went back into the case.";
+        Message = stuck ? null : Text.Of("capsules.wentBack");
         AudioManager.PlaySound(stuck ? "select" : "cancel");
         Go(CapsuleStep.Seals);
     }
@@ -416,7 +416,7 @@ public sealed class SealCaseScreen
         {
             if (Edit.Seals.Count == 0)
             {
-                Message = "No Seals are on the ball.";
+                Message = Text.Of("capsules.prompt.noneOnBall");
                 AudioManager.PlaySound("error");
                 return;
             }
@@ -441,7 +441,7 @@ public sealed class SealCaseScreen
         CapsuleRules.Keep(Edit, party);
         Kept++;
         Edit = null;
-        Message = "The Ball Capsule was put away as it is.";
+        Message = Text.Of("capsules.putAway");
         Go(CapsuleStep.Capsules);
         AudioManager.PlaySound("levelup");
     }
@@ -479,7 +479,7 @@ public sealed class SealCaseScreen
             case CapsuleStep.Holding:
                 // Let go of for good: back into the case
                 Edit?.Remove(Held);
-                Message = "The Seal went back into the case.";
+                Message = Text.Of("capsules.wentBack");
                 Go(CapsuleStep.Seals);
                 break;
             case CapsuleStep.OnBall:
@@ -610,13 +610,13 @@ public sealed class SealShopScreen
         {
             if (sealCase.Room(seal) < 1)
             {
-                onNotification("The Seal Case has no room for more of those.");
+                onNotification(Text.Of("sealShop.noRoom"));
                 AudioManager.PlaySound("error");
                 return 0;
             }
             if (MostOf(seal, money) < 1)
             {
-                onNotification("You don't have enough money.");
+                onNotification(Text.Of("shop.notEnoughMoney"));
                 AudioManager.PlaySound("error");
                 return 0;
             }
@@ -633,7 +633,7 @@ public sealed class SealShopScreen
         if (cost > money || !sealCase.Give(seal, count)) return 0;
         Bought += count;
         AudioManager.PlaySound("select");
-        onNotification(count == 1 ? $"Bought a {SealDatabase.Name(seal)}." : $"Bought {count} × {SealDatabase.Name(seal)}.");
+        onNotification(Text.Of("shop.bought", ("n", count), ("item", SealDatabase.Name(seal))));
         return -cost;
     }
 

@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Numerics;
 using Raylib_cs;
@@ -175,7 +174,7 @@ internal static partial class ModernUi
     {
         Panel(r, 34);
         var ribbons = RibbonRules.Of(p);
-        Label("RIBBONS", r.X + 44, r.Y + 30);
+        Label(Text.Of("ribbonPage.title"), r.X + 44, r.Y + 30);
         string count = ribbons.Count.ToString();
         Tag(r.X + r.Width - 44 - UiFonts.Measure(count, 24, UiWeight.Black) - 34, r.Y + 26, count, ribbons.Count > 0 ? Frame : Muted, 40);
 
@@ -183,7 +182,7 @@ internal static partial class ModernUi
         var grid = new Rectangle(r.X + pad, r.Y + top, r.Width - pad * 2, r.Height - top - foot - 24);
         if (ribbons.Count == 0)
         {
-            EmptyNote(new Rectangle(r.X, r.Y, r.Width, r.Height - foot), "No ribbons yet.");
+            EmptyNote(new Rectangle(r.X, r.Y, r.Width, r.Height - foot), Text.Of("ribbonPage.none"));
         }
         int columns = PartyScreen.RibbonColumns, rows = PartyScreen.RibbonRows;
         float cw = (grid.Width - gap * (columns - 1)) / columns, ch = (grid.Height - gap * (rows - 1)) / rows;
@@ -214,8 +213,7 @@ internal static partial class ModernUi
         }
         else
         {
-            string note = ribbons.Count == 0 ? "Ribbons are won at contests, and given for deeds of all kinds."
-                : ribbons.Count == 1 ? "It has won a ribbon." : $"It has won {ribbons.Count} ribbons.";
+            string note = ribbons.Count == 0 ? Text.Of("ribbonPage.aboutRibbons") : Text.Of("ribbonPage.won", ("n", ribbons.Count));
             UiFonts.DrawCentered(note, box.X + 44, box.Y + box.Height / 2f, 32, Muted, UiWeight.ExtraBold);
         }
     }
@@ -364,17 +362,17 @@ internal static partial class ModernUi
 
     // ------------------------------------------------------------------ the Fashion Case
 
-    private static readonly (string Label, UiIcon Icon, Color Color)[] FashionTabs =
+    private static (string Label, UiIcon Icon, Color Color)[] FashionTabs => new[]
     {
-        ("ACCESSORIES", UiIcon.Hat, new Color(236, 110, 170, 255)),
-        ("BACKDROPS", UiIcon.Pin, new Color(70, 136, 232, 255))
+        (Text.Of("fashionCase.tab.accessories"), UiIcon.Hat, new Color(236, 110, 170, 255)),
+        (Text.Of("fashionCase.tab.backdrops"), UiIcon.Pin, new Color(70, 136, 232, 255))
     };
 
     public static void DrawFashionCase(int sw, int sh, FashionCaseScreen screen, float appear)
     {
         Backdrop(sw, sh);
-        ScreenTitle("FASHION CASE");
-        Hints(sw - Margin, 44, ("C", "Accessories / Backdrops"), ("Esc", "Back"));
+        ScreenTitle(Text.Of("fashionCase.title"));
+        Hints(sw - Margin, 44, Hint("capsules.keyC", "fashionCase.hint.tabs"), Hint("shared.keys.esc", "shared.hints.back"));
         Tabs(new Rectangle(Margin, ContentTop, 760, 76), FashionTabs, screen.Tab);
         float slide = (1f - UiMotion.EaseOut(appear)) * 60f;
         const float top = ContentTop + 76 + 24, listW = 1100;
@@ -387,7 +385,7 @@ internal static partial class ModernUi
         if (screen.Tab == 0)
         {
             var held = screen.Accessories;
-            if (held.Count == 0) EmptyNote(list, "No Accessories yet.");
+            if (held.Count == 0) EmptyNote(list, Text.Of("fashionCase.noAccessories"));
             const float pad = 28, gap = 14, cellH = 118;
             float cell = (list.Width - pad * 2 - gap * (FashionCaseScreen.Columns - 1)) / FashionCaseScreen.Columns;
             int rows = (int)((list.Height - pad * 2 + gap) / (cellH + gap));
@@ -401,8 +399,8 @@ internal static partial class ModernUi
                 UiFonts.DrawCentered(n, r.X + r.Width - 14 - UiFonts.Measure(n, 22, UiWeight.Black), r.Y + r.Height - 22, 22, Ink, UiWeight.Black);
             }
 
-            Label("ACCESSORY", detail.X + 44, detail.Y + 30);
-            string total = $"{fashion.Total} IN ALL";
+            Label(Text.Of("fashionCase.accessory"), detail.X + 44, detail.Y + 30);
+            string total = Text.Of("fashionCase.inAll", ("n", fashion.Total));
             Tag(detail.X + detail.Width - 44 - UiFonts.Measure(total, 24, UiWeight.Black) - 34, detail.Y + 26, total, Frame, 40);
             if (screen.Cursor < held.Count)
             {
@@ -415,14 +413,14 @@ internal static partial class ModernUi
                 float size = 44, nw = UiFonts.Measure(name, size, UiWeight.Black);
                 if (nw > detail.Width - 88) size = MathF.Floor(size * (detail.Width - 88) / nw);
                 UiFonts.DrawCentered(name, detail.X + (detail.Width - UiFonts.Measure(name, size, UiWeight.Black)) / 2f, detail.Y + 410, size, Ink, UiWeight.Black);
-                string has = $"×{count}  of {FashionCase.Limit(accessory)}";
+                string has = Text.Of("fashionCase.has", ("count", count), ("limit", FashionCase.Limit(accessory)));
                 UiFonts.DrawCentered(has, detail.X + (detail.Width - UiFonts.Measure(has, 28, UiWeight.ExtraBold)) / 2f, detail.Y + 458, 28, Muted, UiWeight.ExtraBold);
             }
         }
         else
         {
             var backdrops = fashion.Backdrops;
-            if (backdrops.Count == 0) EmptyNote(list, "No Backdrops yet.");
+            if (backdrops.Count == 0) EmptyNote(list, Text.Of("fashionCase.noBackdrops"));
             bool scrolls = backdrops.Count > FashionCaseScreen.VisibleRows;
             for (int row = 0; row < FashionCaseScreen.VisibleRows && screen.First + row < backdrops.Count; row++)
             {
@@ -436,7 +434,7 @@ internal static partial class ModernUi
             }
             ScrollBar(list, screen.First, FashionCaseScreen.VisibleRows, backdrops.Count, 26);
 
-            Label("BACKDROP", detail.X + 44, detail.Y + 30);
+            Label(Text.Of("fashionCase.backdrop"), detail.X + 44, detail.Y + 30);
             string total = $"{backdrops.Count} / {SuperContestDatabase.Backdrops.Count}";
             Tag(detail.X + detail.Width - 44 - UiFonts.Measure(total, 24, UiWeight.Black) - 34, detail.Y + 26, total, Frame, 40);
             if (screen.Cursor < backdrops.Count)
@@ -453,11 +451,11 @@ internal static partial class ModernUi
         var records = screen.Records;
         float fy = detail.Y + detail.Height - 232;
         UiShapes.Fill(new Rectangle(detail.X + 44, fy, detail.Width - 88, 3), 1.5f, Rule);
-        Label("SUPER CONTESTS", detail.X + 44, fy + 22);
+        Label(Text.Of("fashionCase.superContests"), detail.X + 44, fy + 22);
         float third = (detail.Width - 88) / 3f;
-        Field("ENTERED", records.Entered.ToString(), detail.X + 44, fy + 62, 44, 50);
-        Field("WON", records.Won.ToString(), detail.X + 44 + third, fy + 62, 44, 50);
-        Field("RIBBONS", records.Ribbons.ToString(), detail.X + 44 + third * 2, fy + 62, 44, 50);
+        Field(Text.Of("fashionCase.entered"), records.Entered.ToString(), detail.X + 44, fy + 62, 44, 50);
+        Field(Text.Of("fashionCase.won"), records.Won.ToString(), detail.X + 44 + third, fy + 62, 44, 50);
+        Field(Text.Of("fashionCase.ribbons"), records.Ribbons.ToString(), detail.X + 44 + third * 2, fy + 62, 44, 50);
     }
 
     // ------------------------------------------------------------------ a winner's photograph
@@ -469,8 +467,8 @@ internal static partial class ModernUi
     public static void DrawContestPhoto(int sw, int sh, ContestPhoto photo, float appear)
     {
         Backdrop(sw, sh);
-        ScreenTitle("CONTEST PHOTO");
-        Hints(sw - Margin, 44, ("Z", "Close"));
+        ScreenTitle(Text.Of("fashionCase.photo"));
+        Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.close"));
         float rise = (1f - UiMotion.EaseOut(appear)) * 50f;
         var print = new Rectangle(sw / 2f - 520, ContentTop + 6 + rise, 1040, ContentBottom - ContentTop - 12);
         UiShapes.Shadow(print, 14, 34, new Vector2(0, 12), new Color(6, 14, 34, 120));
@@ -502,9 +500,11 @@ internal static partial class ModernUi
 
         float ty = picture.Y + picture.Height + 30;
         UiFonts.Draw(photo.Name, print.X + 44, ty, 52, Ink, UiWeight.Black);
-        string won = $"{photo.Category} Contest, {photo.Rank} Rank";
+        var category = photo.Category;
+        var rank = photo.Rank;
+        string won = Text.Of("fashionCase.photoContest", ("category", Text.Of($"contest.category.{category}")), ("rank", Text.Of($"contest.rank.{rank}")));
         UiFonts.Draw(won, print.X + 44, ty + 62, 32, Muted, UiWeight.ExtraBold);
-        string by = $"{PlayerIdentity.Fill(photo.Trainer)}  ·  {photo.Date.ToString("d MMMM yyyy", CultureInfo.InvariantCulture)}";
+        string by = Text.Of("fashionCase.photoBy", ("trainer", PlayerIdentity.Fill(photo.Trainer)), ("date", Words.Date(photo.Date)));
         UiFonts.Draw(by, print.X + print.Width - 44 - UiFonts.Measure(by, 28, UiWeight.ExtraBold), ty + 66, 28, Muted, UiWeight.ExtraBold);
     }
 }

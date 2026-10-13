@@ -160,17 +160,18 @@ internal static partial class ModernUi
         if (screen.Step == CapsuleStep.Attach)
         {
             DrawPartyChoice(sw, sh, party, screen.Target, screen.Prompt,
-                p => p.IsEgg ? "NOT ABLE" : p.CapsuleId != 0 ? $"CAPSULE {p.CapsuleId}" : null, Math.Clamp(screen.StepAge / 0.35f, 0f, 1f), "Put on");
+                p => p.IsEgg ? Text.Of("party.tag.notAble") : p.CapsuleId != 0 ? Text.Of("capsules.capsuleTag", ("n", p.CapsuleId)) : null, Math.Clamp(screen.StepAge / 0.35f, 0f, 1f),
+                Text.Of("capsules.hint.putOn"));
             return;
         }
         Backdrop(sw, sh);
-        ScreenTitle("BALL CAPSULES");
+        ScreenTitle(Text.Of("capsules.title"));
         if (screen.Edit != null)
         {
             CapsuleEditing(sw, sh, screen, party);
             return;
         }
-        Hints(sw - Margin, 44, ("Z", screen.Step == CapsuleStep.Swap ? "Swap" : "Choose"), ("Esc", "Back"));
+        Hints(sw - Margin, 44, Hint("shared.keys.z", screen.Step == CapsuleStep.Swap ? "capsules.hint.swap" : "shared.hints.choose"), Hint("shared.keys.esc", "shared.hints.back"));
         float slide = (1f - UiMotion.EaseOut(appear)) * 60f;
         const float listW = 1000, promptH = 96;
 
@@ -208,17 +209,17 @@ internal static partial class ModernUi
         var detail = new Rectangle(Margin + listW + Gutter + slide, ContentTop, sw - Margin * 2 - listW - Gutter, ContentBottom - ContentTop);
         Panel(detail, 34);
         var shown = screen.Case.Capsule(screen.Cursor);
-        Label("BALL CAPSULE", detail.X + 44, detail.Y + 30);
-        UiFonts.Draw($"No. {screen.Cursor + 1}", detail.X + 44, detail.Y + 54, 46, Ink, UiWeight.Black);
-        string count = shown.IsEmpty ? "EMPTY" : $"{shown.Seals.Count} / {BallCapsule.MostSeals} SEALS";
+        Label(Text.Of("capsules.capsule"), detail.X + 44, detail.Y + 30);
+        UiFonts.Draw(Text.Of("capsules.number", ("n", screen.Cursor + 1)), detail.X + 44, detail.Y + 54, 46, Ink, UiWeight.Black);
+        string count = shown.IsEmpty ? Text.Of("capsules.empty") : Text.Of("capsules.seals", ("count", shown.Seals.Count), ("most", BallCapsule.MostSeals));
         Tag(detail.X + detail.Width - 44 - UiFonts.Measure(count, 24, UiWeight.Black) - 34, detail.Y + 40, count, shown.IsEmpty ? Muted : Frame, 42);
         CapsuleBall(new Vector2(detail.X + detail.Width / 2f, detail.Y + 300), 168, shown);
 
         var on = screen.HolderOf(screen.Cursor);
         float y = detail.Y + 500;
         UiShapes.Fill(new Rectangle(detail.X + 44, y, detail.Width - 88, 3), 1.5f, Rule);
-        Label("ON THE BALL OF", detail.X + 44, y + 22);
-        UiFonts.Draw(on?.DisplayName ?? "Nobody yet", detail.X + 44, y + 44, 34, on != null ? Ink : Muted, UiWeight.Black);
+        Label(Text.Of("capsules.onTheBallOf"), detail.X + 44, y + 22);
+        UiFonts.Draw(on?.DisplayName ?? Text.Of("capsules.nobody"), detail.X + 44, y + 44, 34, on != null ? Ink : Muted, UiWeight.Black);
         var stage = new Rectangle(detail.X + 28, y + 106, detail.Width - 56, detail.Height - (y - detail.Y) - 106 - 28);
         CapsuleStage(stage, shown, on ?? party.Members.FirstOrDefault(p => !p.IsEgg), screen.Age, 7 + screen.Cursor);
 
@@ -237,13 +238,13 @@ internal static partial class ModernUi
         switch (screen.Step)
         {
             case CapsuleStep.Holding:
-                Hints(sw - Margin, 44, ("Arrows", "Move"), ("Z", "Stick on"), ("Esc", "Put back"));
+                Hints(sw - Margin, 44, Hint("shared.keys.arrows", "shared.hints.move"), Hint("shared.keys.z", "capsules.hint.stickOn"), Hint("shared.keys.esc", "shared.hints.putBack"));
                 break;
             case CapsuleStep.OnBall:
-                Hints(sw - Margin, 44, ("Left / Right", "Seal"), ("Z", "Pick up"), ("C", "Case"), ("Enter", "Keep"));
+                Hints(sw - Margin, 44, Hint("shared.keys.leftRight", "capsules.hint.seal"), Hint("shared.keys.z", "capsules.hint.pickUp"), Hint("capsules.keyC", "capsules.hint.case"), Hint("shared.keys.enter", "capsules.hint.keep"));
                 break;
             default:
-                Hints(sw - Margin, 44, ("Z", "Take"), ("C", "Ball"), ("Enter", "Keep"), ("Esc", "Back"));
+                Hints(sw - Margin, 44, Hint("shared.keys.z", "capsules.hint.take"), Hint("capsules.keyC", "capsules.hint.ball"), Hint("shared.keys.enter", "capsules.hint.keep"), Hint("shared.keys.esc", "shared.hints.back"));
                 break;
         }
         const float listW = 700, promptH = 96;
@@ -251,11 +252,11 @@ internal static partial class ModernUi
         // ---- The case's Seals
         var list = new Rectangle(Margin, ContentTop, listW, ContentBottom - ContentTop - promptH - Gutter);
         Panel(list, 34);
-        Label("SEAL CASE", list.X + 44, list.Y + 30);
+        Label(Text.Of("capsules.sealCase"), list.X + 44, list.Y + 30);
         string page = $"{screen.Page + 1} / {screen.Pages}";
         Tag(list.X + list.Width - 44 - UiFonts.Measure(page, 24, UiWeight.Black) - 34, list.Y + 22, page, Frame, 38);
         var kinds = screen.PageKinds;
-        if (kinds.Count == 0) EmptyNote(list, "No Seals yet.");
+        if (kinds.Count == 0) EmptyNote(list, Text.Of("capsules.noSeals"));
         const float top = 78, pad = 28, gap = 14;
         float cw = (list.Width - pad * 2 - gap) / 2f, ch = (list.Height - top - pad - gap * 3) / 4f;
         bool here = screen.Step == CapsuleStep.Seals || screen.Step == CapsuleStep.Quit;
@@ -283,9 +284,9 @@ internal static partial class ModernUi
         // ---- The ball
         var ballPanel = new Rectangle(Margin + listW + Gutter, ContentTop, sw - Margin * 2 - listW - Gutter, ContentBottom - ContentTop);
         Panel(ballPanel, 34);
-        Label("BALL CAPSULE", ballPanel.X + 44, ballPanel.Y + 30);
-        UiFonts.Draw($"No. {edit.Capsule + 1}", ballPanel.X + 44, ballPanel.Y + 54, 46, Ink, UiWeight.Black);
-        string on = $"{edit.Seals.Count} / {BallCapsule.MostSeals} SEALS";
+        Label(Text.Of("capsules.capsule"), ballPanel.X + 44, ballPanel.Y + 30);
+        UiFonts.Draw(Text.Of("capsules.number", ("n", edit.Capsule + 1)), ballPanel.X + 44, ballPanel.Y + 54, 46, Ink, UiWeight.Black);
+        string on = Text.Of("capsules.seals", ("count", edit.Seals.Count), ("most", BallCapsule.MostSeals));
         Tag(ballPanel.X + ballPanel.Width - 44 - UiFonts.Measure(on, 24, UiWeight.Black) - 34, ballPanel.Y + 40, on, edit.Full ? Red : Frame, 42);
 
         const float radius = 264;
@@ -300,15 +301,15 @@ internal static partial class ModernUi
         var stage = new Rectangle(sx, ballPanel.Y + 140, ballPanel.X + ballPanel.Width - 28 - sx, 420);
         var holder = screen.HolderOf(edit.Capsule);
         CapsuleStage(stage, edit.Result, holder ?? party.Members.FirstOrDefault(p => !p.IsEgg), screen.Age, 7 + edit.Capsule);
-        Label("COMES OUT LIKE THIS", stage.X + 16, stage.Y + stage.Height + 16);
+        Label(Text.Of("capsules.comesOut"), stage.X + 16, stage.Y + stage.Height + 16);
         if (holder != null)
         {
-            Label("ON THE BALL OF", stage.X + 16, stage.Y + stage.Height + 70);
+            Label(Text.Of("capsules.onTheBallOf"), stage.X + 16, stage.Y + stage.Height + 70);
             UiFonts.Draw(holder.DisplayName, stage.X + 16, stage.Y + stage.Height + 92, 30, Ink, UiWeight.Black);
         }
 
         if (screen.Step == CapsuleStep.Quit)
-            Prompt(sw, sh, "Leave it as it was?", "The Seals you moved go back where they were.", new[] { ("YES", Red), ("NO", Blue) }, screen.QuitChoice);
+            Prompt(sw, sh, Text.Of("capsules.quitQuestion"), Text.Of("capsules.quitNote"), new[] { (Text.Of("capsules.answer.yes"), Red), (Text.Of("capsules.answer.no"), Blue) }, screen.QuitChoice);
     }
 
     // ------------------------------------------------------------------ the Seal merchant's stall
@@ -316,13 +317,13 @@ internal static partial class ModernUi
     public static void DrawSealShop(int sw, int sh, SealShopScreen shop, int money, float appear, float asking, bool askingVisible)
     {
         Backdrop(sw, sh);
-        ScreenTitle("SEAL MERCHANT");
-        Hints(sw - Margin, 44, ("Z", "Buy"), ("Esc", "Leave"));
+        ScreenTitle(Text.Of("sealShop.title"));
+        Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.buy"), Hint("shared.keys.esc", "shared.hints.leave"));
         float slide = (1f - UiMotion.EaseOut(appear)) * 60f;
 
         var list = new Rectangle(Margin - slide, ContentTop, 920, ContentBottom - ContentTop);
         Panel(list, 34);
-        Label("TODAY'S SEALS", list.X + 44, list.Y + 30);
+        Label(Text.Of("sealShop.today"), list.X + 44, list.Y + 30);
         for (int row = 0; row < shop.Stock.Count; row++)
         {
             int seal = shop.Stock[row];
@@ -337,7 +338,7 @@ internal static partial class ModernUi
         float rx = Margin + 920 + Gutter + slide, rw = sw - Margin * 2 - 920 - Gutter;
         var purse = new Rectangle(rx, ContentTop, rw, 132);
         Panel(purse, 34);
-        UiFonts.DrawCentered("MONEY", purse.X + 44, purse.Y + purse.Height / 2f, 26, Muted, UiWeight.Black);
+        UiFonts.DrawCentered(Text.Of("shop.money"), purse.X + 44, purse.Y + purse.Height / 2f, 26, Muted, UiWeight.Black);
         MoneyRight(purse.X + purse.Width - 44, purse.Y + purse.Height / 2f, money, 52, Ink);
 
         var detail = new Rectangle(rx, ContentTop + 132 + 24, rw, ContentBottom - ContentTop - 132 - 24);
@@ -349,7 +350,7 @@ internal static partial class ModernUi
             SealSticker(disc, 64, chosen);
             float x = detail.X + 44 + 192 + 36;
             UiFonts.DrawCentered(SealDatabase.Name(chosen), x, detail.Y + 112, 44, Ink, UiWeight.Black);
-            Tag(x, detail.Y + 152, $"IN CASE ×{shop.Case.Anywhere(chosen)}", Frame, 38);
+            Tag(x, detail.Y + 152, Text.Of("sealShop.inCase", ("n", shop.Case.Anywhere(chosen))), Frame, 38);
             UiShapes.Fill(new Rectangle(detail.X + 44, detail.Y + 280, detail.Width - 88, 3), 1.5f, Rule);
             DrawWrapped(SealBlurb(chosen), detail.X + 44, detail.Y + 310, detail.Width - 88, 30, Ink, 42, UiWeight.ExtraBold);
             // Tried out on nobody: just what bursts from it
@@ -363,20 +364,20 @@ internal static partial class ModernUi
     /// <summary>What a Seal gives, in our own words, by its kind.</summary>
     public static string SealBlurb(int seal) => SealFx.FamilyOf(seal) switch
     {
-        SealFamily.Heart => "Hearts float up as the Pokémon comes out of its ball.",
-        SealFamily.Star => "Stars fly out all round as the Pokémon comes out of its ball.",
-        SealFamily.Line => "Rays shoot out as the Pokémon comes out of its ball.",
-        SealFamily.Smoke => "Puffs of smoke roll out as the Pokémon comes out of its ball.",
-        SealFamily.Ele => "Sparks crackle as the Pokémon comes out of its ball.",
-        SealFamily.Foamy => "Bubbles drift up as the Pokémon comes out of its ball.",
-        SealFamily.Fire => "Flames lick up as the Pokémon comes out of its ball.",
-        SealFamily.Party => "Confetti is thrown as the Pokémon comes out of its ball.",
-        SealFamily.Flora => "Petals scatter as the Pokémon comes out of its ball.",
-        SealFamily.Song => "Notes dance out as the Pokémon comes out of its ball.",
-        SealFamily.Letter => "Its letter pops out as the Pokémon comes out of its ball. Several spell a word.",
-        SealFamily.Liquid => "Drops splash out as the Pokémon comes out of its ball.",
-        SealFamily.Burst => "It goes off with a bang as the Pokémon comes out of its ball.",
-        _ => "Twinkles wink as the Pokémon comes out of its ball."
+        SealFamily.Heart => Text.Of("capsules.blurb.heart"),
+        SealFamily.Star => Text.Of("capsules.blurb.star"),
+        SealFamily.Line => Text.Of("capsules.blurb.line"),
+        SealFamily.Smoke => Text.Of("capsules.blurb.smoke"),
+        SealFamily.Ele => Text.Of("capsules.blurb.ele"),
+        SealFamily.Foamy => Text.Of("capsules.blurb.foamy"),
+        SealFamily.Fire => Text.Of("capsules.blurb.fire"),
+        SealFamily.Party => Text.Of("capsules.blurb.party"),
+        SealFamily.Flora => Text.Of("capsules.blurb.flora"),
+        SealFamily.Song => Text.Of("capsules.blurb.song"),
+        SealFamily.Letter => Text.Of("capsules.blurb.letter"),
+        SealFamily.Liquid => Text.Of("capsules.blurb.liquid"),
+        SealFamily.Burst => Text.Of("capsules.blurb.burst"),
+        _ => Text.Of("capsules.blurb.twinkle")
     };
 
     private static void SealQuantity(int sw, int sh, int seal, int quantity, float appear)
@@ -384,18 +385,18 @@ internal static partial class ModernUi
         Dim(sw, sh, (int)(150 * appear));
         var r = new Rectangle(sw / 2f - 480, sh / 2f - 220 + (1f - appear) * 60f, 960, 440);
         Panel(r, 36);
-        UiFonts.Draw("Buy how many?", r.X + 56, r.Y + 44, 48, Ink, UiWeight.Black);
-        HintsDark(r.X + r.Width - 40, r.Y + 46, ("Z", "Buy"), ("Esc", "Back"));
+        UiFonts.Draw(Text.Of("shop.buyHowMany"), r.X + 56, r.Y + 44, 48, Ink, UiWeight.Black);
+        HintsDark(r.X + r.Width - 40, r.Y + 46, Hint("shared.keys.z", "shared.hints.buy"), Hint("shared.keys.esc", "shared.hints.back"));
         int each = SealDatabase.Price(seal);
         var c = new Vector2(r.X + 56 + 52, r.Y + 176);
         UiShapes.Circle(c, 52, Disc);
         SealSticker(c, 36, seal);
         UiFonts.DrawCentered(SealDatabase.Name(seal), r.X + 56 + 128, r.Y + 160, 40, Ink, UiWeight.Black);
         float width = Money(r.X + 56 + 128, r.Y + 204, each, 26, Muted);
-        UiFonts.DrawCentered("each", r.X + 56 + 128 + width + 10, r.Y + 204, 24, Muted, UiWeight.ExtraBold);
+        UiFonts.DrawCentered(Text.Of("shop.each"), r.X + 56 + 128 + width + 10, r.Y + 204, 24, Muted, UiWeight.ExtraBold);
         Stepper(new Vector2(r.X + r.Width - 56 - 44 - 120 - 24, r.Y + 180), $"× {quantity}");
         UiShapes.Fill(new Rectangle(r.X + 56, r.Y + 272, r.Width - 112, 3), 1.5f, Rule);
-        UiFonts.DrawCentered("TOTAL", r.X + 56, r.Y + 350, 28, Muted, UiWeight.Black);
+        UiFonts.DrawCentered(Text.Of("shop.total"), r.X + 56, r.Y + 350, 28, Muted, UiWeight.Black);
         MoneyRight(r.X + r.Width - 56, r.Y + 350, each * quantity, 60, Ink);
     }
 }

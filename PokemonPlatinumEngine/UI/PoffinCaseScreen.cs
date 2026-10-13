@@ -45,7 +45,7 @@ public sealed class PoffinCaseScreen
     /// <summary>The rows the case's list shows: as many as its panel holds over the prompt (<see cref="ModernUi.CasePrompt"/>).</summary>
     public const int VisibleRows = 7;
 
-    public static readonly string[] ActionNames = { "GIVE", "TRASH", "CANCEL" };
+    public static string[] ActionNames => new[] { Text.Of("poffinCase.action.give"), Text.Of("poffinCase.action.trash"), Text.Of("poffinCase.action.cancel") };
 
     public bool IsActive { get; private set; }
     public CaseStep Step { get; private set; }
@@ -121,21 +121,21 @@ public sealed class PoffinCaseScreen
     /// <summary>The prompt at the foot of the screen.</summary>
     public string Prompt => Message ?? Step switch
     {
-        CaseStep.Actions => $"Do what with the {Current?.Name}?",
-        CaseStep.Trash => $"Throw away the {Current?.Name}?",
-        CaseStep.Choose => $"Give the {Chosen?.Name} to which Pokémon?",
-        CaseStep.Condition => $"Give the {Chosen?.Name} to {party.Members[Target].DisplayName}?",
+        CaseStep.Actions => Text.Of("poffinCase.prompt.doWhat", ("poffin", Current?.Name)),
+        CaseStep.Trash => Text.Of("poffinCase.prompt.throwAway", ("poffin", Current?.Name)),
+        CaseStep.Choose => Text.Of("poffinCase.prompt.giveWhich", ("poffin", Chosen?.Name)),
+        CaseStep.Condition => Text.Of("poffinCase.prompt.giveTo", ("poffin", Chosen?.Name), ("name", party.Members[Target].DisplayName)),
         CaseStep.Eating => EatenLine(party.Members[Target].DisplayName, Taste),
-        CaseStep.After => $"{party.Members[Target].DisplayName}'s condition went up.",
-        _ => Listed.Count == 0 ? "There are no Poffins here." : "Choose a Poffin."
+        CaseStep.After => Text.Of("poffinCase.prompt.wentUp", ("name", party.Members[Target].DisplayName)),
+        _ => Text.Of(Listed.Count == 0 ? "poffinCase.prompt.none" : "poffinCase.prompt.choose")
     };
 
     /// <summary>What is said as a Pokémon eats, by how it takes the Poffin (our own words on the original's three).</summary>
     public static string EatenLine(string name, PoffinTaste taste) => taste switch
     {
-        PoffinTaste.Liked => $"{name} gobbled up the Poffin happily!",
-        PoffinTaste.Disliked => $"{name} ate the Poffin, but pulled a face...",
-        _ => $"{name} ate the Poffin."
+        PoffinTaste.Liked => Text.Of("poffinCase.eaten.liked", ("name", name)),
+        PoffinTaste.Disliked => Text.Of("poffinCase.eaten.disliked", ("name", name)),
+        _ => Text.Of("poffinCase.eaten.plain", ("name", name))
     };
 
     // ---------------------------------------------------------------- the buttons
@@ -218,7 +218,7 @@ public sealed class PoffinCaseScreen
                 {
                     poffinCase.RemoveAt(Listed[Cursor]);
                     Relist();
-                    Message = $"The {thrown.Name} was thrown away.";
+                    Message = Text.Of("poffinCase.thrown", ("poffin", thrown.Name));
                     AudioManager.PlaySound("select");
                 }
                 else AudioManager.PlaySound("cancel");
@@ -252,7 +252,7 @@ public sealed class PoffinCaseScreen
         if (Chosen == null || Current != Chosen) return;
         if (!Poffins.WouldEat(p))
         {
-            Message = $"{p.DisplayName} won't eat any more...";
+            Message = Text.Of("poffinCase.full", ("name", p.DisplayName));
             AudioManager.PlaySound("error");
             return;
         }

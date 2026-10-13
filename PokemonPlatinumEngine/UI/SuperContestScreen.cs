@@ -158,8 +158,8 @@ public sealed class SuperContestScreen
         Showing = -1;
         Enter(SuperContestPhase.Lineup);
         Line = Contest.IsPractice
-            ? $"A practice round: the {RoundName(mode)}. Here is who you're up against!"
-            : $"Welcome to the {rank} Rank Pokémon Super Contest: the {category} Contest! Let's meet our contestants!";
+            ? Text.Of("contest.practiceWelcome", ("round", RoundName(mode)))
+            : Text.Of("contest.welcome", ("rank", Text.Of($"contest.rank.{rank}")), ("category", Text.Of($"contest.category.{category}")));
         AudioManager.PlaySound("menu_open");
     }
 
@@ -179,9 +179,9 @@ public sealed class SuperContestScreen
 
     private static string RoundName(ContestMode mode) => mode switch
     {
-        ContestMode.PracticeVisual => "Visual Competition",
-        ContestMode.PracticeDance => "Dance Competition",
-        _ => "Acting Competition"
+        ContestMode.PracticeVisual => Text.Of("contest.competition.visual"),
+        ContestMode.PracticeDance => Text.Of("contest.competition.dance"),
+        _ => Text.Of("contest.competition.acting")
     };
 
     private void Enter(SuperContestPhase phase)
@@ -193,7 +193,7 @@ public sealed class SuperContestScreen
     private string Who(int contestant)
     {
         var c = Contest!.Contestants[contestant];
-        return $"{c.Trainer}'s {c.Pokemon.DisplayName}";
+        return Text.Of("contest.whose", ("trainer", c.Trainer), ("pokemon", c.Pokemon.DisplayName));
     }
 
     // ---------------------------------------------------------------- the buttons
@@ -327,8 +327,7 @@ public sealed class SuperContestScreen
         if (contest.HasVisual)
         {
             Enter(SuperContestPhase.Theme);
-            Line = $"First, the Visual Competition! The theme is \"{SuperContestDatabase.Themes[contest.Theme].Name}\". "
-                + $"You have {ContestRules.DressingSeconds} seconds to dress your Pokémon up: up to {Limit} Accessories.";
+            Line = Text.Of("contest.themeLine", ("theme", SuperContestDatabase.Themes[contest.Theme].Name), ("seconds", ContestRules.DressingSeconds), ("limit", Limit));
         }
         else if (contest.HasDance) AnnounceDance();
         else AnnounceActing();
@@ -339,7 +338,7 @@ public sealed class SuperContestScreen
         var c = Contest!.Contestants[contestant];
         Showing = contestant;
         PhaseTime = 0f;
-        Line = $"Entry number {SuperContest.EntryNumber(contestant)}: {c.Trainer} and {c.Pokemon.DisplayName}!";
+        Line = Text.Of("contest.entry", ("n", SuperContest.EntryNumber(contestant)), ("trainer", c.Trainer), ("pokemon", c.Pokemon.DisplayName));
         AudioManager.PlaySound("select");
     }
 
@@ -352,7 +351,7 @@ public sealed class SuperContestScreen
         TimeLeft = ContestRules.DressingSeconds;
         RefreshCase();
         Enter(SuperContestPhase.Dressing);
-        Line = inCase.Count == 0 ? "The Fashion Case is empty. Your Pokémon will go on as it is." : "";
+        Line = inCase.Count == 0 ? Text.Of("contest.emptyCase") : "";
         AudioManager.PlaySound("select");
     }
 
@@ -394,10 +393,10 @@ public sealed class SuperContestScreen
     private string LookLine(int contestant)
     {
         var c = Contest!.Contestants[contestant];
-        return $"Entry number {SuperContest.EntryNumber(contestant)}, {Who(contestant)}: {Hearts(c.VisualHearts)}!";
+        return Text.Of("contest.look", ("n", SuperContest.EntryNumber(contestant)), ("who", Who(contestant)), ("hearts", Hearts(c.VisualHearts)));
     }
 
-    private static string Hearts(int hearts) => hearts == 1 ? "1 heart" : $"{hearts} hearts";
+    private static string Hearts(int hearts) => Text.Of("contest.hearts", ("n", hearts));
 
     private void NextLook()
     {
@@ -420,7 +419,7 @@ public sealed class SuperContestScreen
         Dance = null;
         marks.Clear();
         Enter(SuperContestPhase.DanceLead);
-        Line = "Next, the Dance Competition! When your Pokémon leads, make up the steps on the beat. When another leads, repeat its steps half a bar later.";
+        Line = Text.Of("contest.danceIntro");
         AudioManager.PlaySound("select");
     }
 
@@ -435,7 +434,7 @@ public sealed class SuperContestScreen
     {
         Enter(SuperContestPhase.DanceLead);
         int lead = Dance!.Lead;
-        Line = lead == 0 ? $"{Contest!.Player.Pokemon.DisplayName} leads! Make up the steps!" : $"{Who(lead)} leads! Watch, then repeat!";
+        Line = lead == 0 ? Text.Of("contest.youLead", ("name", Contest!.Player.Pokemon.DisplayName)) : Text.Of("contest.otherLeads", ("name", Who(lead)));
         AudioManager.PlaySound("select");
     }
 
@@ -464,7 +463,7 @@ public sealed class SuperContestScreen
         if (dance.IsOver)
         {
             Enter(SuperContestPhase.DanceScores);
-            Line = $"The dance is over! {Contest!.Player.Pokemon.DisplayName} scored {dance.Score[0]} points.";
+            Line = Text.Of("contest.danceOver", ("name", Contest!.Player.Pokemon.DisplayName), ("points", dance.Score[0]));
             AudioManager.PlaySound("levelup");
         }
         else if (dance.Rotation != rotation) LeadIn();
@@ -488,7 +487,7 @@ public sealed class SuperContestScreen
         MarkUsable();
         Array.Clear(Chosen);
         Enter(SuperContestPhase.ActingStart);
-        Line = "And now, the Acting Competition! Choose a move and the judge to show it to. The fewer who choose your judge, the better!";
+        Line = Text.Of("contest.actingIntro");
         AudioManager.PlaySound("select");
     }
 
@@ -499,7 +498,7 @@ public sealed class SuperContestScreen
         for (int m = 0; m < Usable.Length; m++) Usable[m] = m < moves.Count && Acting.CanUse(0, moves[m].Data);
     }
 
-    private string MoveQuestion() => $"Turn {Acting!.Turn + 1} of {SuperContestActing.Turns}. Which move will {Contest!.Player.Pokemon.DisplayName} show?";
+    private string MoveQuestion() => Text.Of("contest.moveQuestion", ("turn", Acting!.Turn + 1), ("turns", SuperContestActing.Turns), ("name", Contest!.Player.Pokemon.DisplayName));
 
     private void AskMove()
     {
@@ -524,7 +523,7 @@ public sealed class SuperContestScreen
             return;
         }
         Enter(SuperContestPhase.ActingJudge);
-        Line = $"Which judge will see {move.Name}?";
+        Line = Text.Of("contest.judgeQuestion", ("move", move.Name));
         AudioManager.PlaySound("select");
     }
 
@@ -566,7 +565,7 @@ public sealed class SuperContestScreen
                 for (int j = 0; j < ShownVoltage.Length; j++)
                     if (ShownVoltage[j] >= ContestRules.FullVoltage) ShownVoltage[j] = 0;
                 TurnPoints[e.Contestant] = e.Score;
-                Line = $"{who} showed {judge} its {e.Move!.Name}!" + (e.Flag ? " Someone has performed for that judge already..." : "");
+                Line = Text.Of(e.Flag ? "contest.showedTaken" : "contest.showed", ("who", who), ("judge", judge), ("move", e.Move!.Name));
                 AudioManager.PlaySound("hit_normal");
                 break;
             case ActingStep.Effect or ActingStep.LateEffect:
@@ -576,7 +575,7 @@ public sealed class SuperContestScreen
                 break;
             case ActingStep.Doubled:
                 TurnPoints[e.Contestant] = e.Score;
-                Line = $"{who}'s score was doubled by the turn before!";
+                Line = Text.Of("contest.doubled", ("who", who));
                 AudioManager.PlaySound("stat_up");
                 break;
             case ActingStep.Voltage:
@@ -588,18 +587,18 @@ public sealed class SuperContestScreen
                     NextEvent();
                     return;
                 }
-                Line = e.Points > 0 ? $"{judge}'s voltage is at its peak! {who} earned {Hearts(e.Points / ContestRules.PointsPerHeart)} more!"
-                    : e.Change > 0 ? $"The crowd liked that! {judge}'s voltage went up."
-                    : $"That didn't suit the contest... {judge}'s voltage went down.";
+                Line = e.Points > 0 ? Text.Of("contest.peak", ("judge", judge), ("who", who), ("hearts", Hearts(e.Points / ContestRules.PointsPerHeart)))
+                    : e.Change > 0 ? Text.Of("contest.voltageRose", ("judge", judge))
+                    : Text.Of("contest.voltageFell", ("judge", judge));
                 AudioManager.PlaySound(e.Points > 0 ? "levelup" : e.Change > 0 ? "stat_up" : "stat_down");
                 break;
             case ActingStep.Judge:
                 foreach (int c in e.Others) TurnPoints[c] += e.Points;
                 Line = e.Others.Count switch
                 {
-                    1 => $"{judge} was very impressed: {Hearts(e.Points / ContestRules.PointsPerHeart)} for {contest.Contestants[e.Others[0]].Pokemon.DisplayName}!",
-                    4 => $"Everyone performed for {judge}! Nobody impressed.",
-                    _ => $"{judge} had {e.Others.Count} to watch: {Hearts(e.Points / ContestRules.PointsPerHeart)} each."
+                    1 => Text.Of("contest.impressed", ("judge", judge), ("hearts", Hearts(e.Points / ContestRules.PointsPerHeart)), ("name", contest.Contestants[e.Others[0]].Pokemon.DisplayName)),
+                    4 => Text.Of("contest.nobodyImpressed", ("judge", judge)),
+                    _ => Text.Of("contest.shared", ("judge", judge), ("count", e.Others.Count), ("hearts", Hearts(e.Points / ContestRules.PointsPerHeart)))
                 };
                 AudioManager.PlaySound("select");
                 break;
@@ -616,32 +615,38 @@ public sealed class SuperContestScreen
         string hearts = Hearts(e.Points / ContestRules.PointsPerHeart);
         return e.Effect switch
         {
-            ContestEffect.FirstNextTurn => e.Variant == 1 ? $"{who} took the first place of the next turn from {other}!" : $"{who} will go first in the next turn!",
-            ContestEffect.LastNextTurn => e.Variant == 1 ? $"{who} took the last place of the next turn from {other}!" : $"{who} will go last in the next turn!",
-            ContestEffect.DoubledJudge => e.Points > 0 ? $"{who} shared its judge: {hearts} more!" : $"{who} had its judge to itself: nothing more.",
-            ContestEffect.TwoHeartsWhenVoltageUp => $"{who} raised the voltage: {hearts} more!",
-            ContestEffect.UniqueJudge => e.Variant == 0 ? $"Nobody else chose {who}'s judge: {hearts} more!" : $"{who} was not alone with its judge...",
-            ContestEffect.ConsecutiveUse => $"{who} may show that move again next turn!",
-            ContestEffect.Voltage => $"{who} added the judge's voltage: {hearts} more!",
-            ContestEffect.AllSameJudge => e.Variant == 0 ? $"All four chose the same judge: {hearts} more for {who}!" : $"The four did not all choose {who}'s judge...",
-            ContestEffect.LowersVoltage => $"{who} cooled every judge's voltage!",
-            ContestEffect.StealVoltage => $"{who} took {other}'s voltage bonus too: {hearts} more!",
-            ContestEffect.SuppressVoltage => $"{who} keeps the voltage from rising for the rest of the turn!",
-            ContestEffect.RandomOrder => $"{who} shuffled the next turn's order!",
-            ContestEffect.DoubleFinalAct => $"{who} closed the turn: {hearts} more!",
-            ContestEffect.LowVoltageAdvantage => e.Points > 0 ? $"The judge's voltage was low: {hearts} more for {who}!" : $"The judge's voltage was too high for {who}'s move.",
-            ContestEffect.FirstPerformanceAdvantage => $"{who} opened the turn: {hearts} more!",
-            ContestEffect.FinalPerformanceAdvantage => $"{who} closed the turn: {hearts} more!",
-            ContestEffect.NoVoltageDown => $"{who} keeps the voltage from falling for the rest of the turn!",
-            ContestEffect.TwoVoltageInARowAdvantage => $"The voltage rose twice in a row: {hearts} more for {who}!",
-            ContestEffect.HighScoreLaterTurn => $"{who} performed {Place(e.Variant)}: {hearts} more!",
-            ContestEffect.MaxVoltageAdvantage => $"{who} followed a peak of voltage: {hearts} more!",
-            ContestEffect.PityPoints => $"{who} had the least of the turn: {hearts} to make up for it!",
+            ContestEffect.FirstNextTurn => Say(e.Variant == 1 ? "contest.effect.firstFrom" : "contest.effect.first"),
+            ContestEffect.LastNextTurn => Say(e.Variant == 1 ? "contest.effect.lastFrom" : "contest.effect.last"),
+            ContestEffect.DoubledJudge => Say(e.Points > 0 ? "contest.effect.sharedJudge" : "contest.effect.judgeAlone"),
+            ContestEffect.TwoHeartsWhenVoltageUp => Say("contest.effect.raised"),
+            ContestEffect.UniqueJudge => Say(e.Variant == 0 ? "contest.effect.unique" : "contest.effect.notUnique"),
+            ContestEffect.ConsecutiveUse => Say("contest.effect.again"),
+            ContestEffect.Voltage => Say("contest.effect.added"),
+            ContestEffect.AllSameJudge => Say(e.Variant == 0 ? "contest.effect.allSame" : "contest.effect.notAllSame"),
+            ContestEffect.LowersVoltage => Say("contest.effect.cooled"),
+            ContestEffect.StealVoltage => Say("contest.effect.stole"),
+            ContestEffect.SuppressVoltage => Say("contest.effect.noRise"),
+            ContestEffect.RandomOrder => Say("contest.effect.shuffled"),
+            ContestEffect.DoubleFinalAct => Say("contest.effect.closed"),
+            ContestEffect.LowVoltageAdvantage => Say(e.Points > 0 ? "contest.effect.lowVoltage" : "contest.effect.tooHigh"),
+            ContestEffect.FirstPerformanceAdvantage => Say("contest.effect.opened"),
+            ContestEffect.FinalPerformanceAdvantage => Say("contest.effect.closed"),
+            ContestEffect.NoVoltageDown => Say("contest.effect.noFall"),
+            ContestEffect.TwoVoltageInARowAdvantage => Say("contest.effect.twiceRose"),
+            ContestEffect.HighScoreLaterTurn => Say("contest.effect.performed"),
+            ContestEffect.MaxVoltageAdvantage => Say("contest.effect.followedPeak"),
+            ContestEffect.PityPoints => Say("contest.effect.least"),
             _ => ""
         };
+
+        string Say(string key) => Text.Of(key, ("who", who), ("other", other), ("hearts", hearts), ("place", Place(e.Variant)));
     }
 
-    private static string Place(int place) => place switch { 0 => "first", 1 => "second", 2 => "third", _ => "last" };
+    private static string Place(int place)
+    {
+        int at = place is >= 0 and <= 2 ? place : 3;
+        return Text.Of($"contest.turnPlace.{at}");
+    }
 
     private void EndTurn()
     {
@@ -656,7 +661,7 @@ public sealed class SuperContestScreen
             return;
         }
         Enter(SuperContestPhase.ActingScores);
-        Line = $"The judging is over! {Contest!.Player.Pokemon.DisplayName} earned {Hearts(acting.Total[0] / ContestRules.PointsPerHeart)}.";
+        Line = Text.Of("contest.judgingOver", ("name", Contest!.Player.Pokemon.DisplayName), ("hearts", Hearts(acting.Total[0] / ContestRules.PointsPerHeart)));
         AudioManager.PlaySound("levelup");
     }
 
@@ -674,16 +679,16 @@ public sealed class SuperContestScreen
             Enter(SuperContestPhase.PracticeResult);
             Line = contest.Player.Placement switch
             {
-                0 => "Nobody did better than you. Well done!",
-                1 => "Only one did better than you. Not bad at all!",
-                _ => $"{contest.Player.Placement} did better than you. Keep practising!"
+                0 => Text.Of("contest.practiceResult.best"),
+                1 => Text.Of("contest.practiceResult.second"),
+                _ => Text.Of("contest.practiceResult.lower", ("count", contest.Player.Placement))
             };
             AudioManager.PlaySound(contest.Player.Placement <= 1 ? "levelup" : "select");
             return;
         }
         ResultStage = 0;
         Enter(SuperContestPhase.Results);
-        Line = "The results are in! First, the Visual Competition...";
+        Line = Text.Of("contest.resultsIn");
         AudioManager.PlaySound("page");
     }
 
@@ -700,7 +705,7 @@ public sealed class SuperContestScreen
         {
             ResultStage++;
             PhaseTime = 0f;
-            Line = ResultStage == 1 ? "...the Dance Competition..." : "...and the Acting Competition!";
+            Line = Text.Of(ResultStage == 1 ? "contest.resultsDance" : "contest.resultsActing");
             AudioManager.PlaySound("page");
             return;
         }
@@ -710,7 +715,7 @@ public sealed class SuperContestScreen
             PhaseTime = 0f;
             int winner = contest.Contestants.ToList().IndexOf(contest.Winner);
             Outcome = ContestAwards.Conclude(contest.Player.Pokemon, contest.Category, contest.Rank, contest.Mode, contest.Player.Placement, fashionCase);
-            Line = $"The winner is entry number {SuperContest.EntryNumber(winner)}: {contest.Winner.Trainer} and {contest.Winner.Pokemon.DisplayName}! Congratulations!";
+            Line = Text.Of("contest.winner", ("n", SuperContest.EntryNumber(winner)), ("trainer", contest.Winner.Trainer), ("pokemon", contest.Winner.Pokemon.DisplayName));
             AudioManager.PlaySound("levelup");
             return;
         }
@@ -718,15 +723,19 @@ public sealed class SuperContestScreen
         lines.Clear();
         if (Outcome is { Won: true } won)
         {
-            if (won.NewRibbon != null) lines.Enqueue($"{won.Pokemon} received the {won.NewRibbon}!");
-            else lines.Enqueue($"{won.Pokemon} wears this ribbon already. We expect great things of our winners!");
+            if (won.NewRibbon != null) lines.Enqueue(Text.Of("contest.received", ("name", won.Pokemon), ("ribbon", won.NewRibbon)));
+            else lines.Enqueue(Text.Of("contest.wearsAlready", ("name", won.Pokemon)));
         }
-        else lines.Enqueue($"{contest.Player.Pokemon.DisplayName} came {Rank(contest.Player.Placement)}. We look forward to your next challenge!");
+        else lines.Enqueue(Text.Of("contest.came", ("name", contest.Player.Pokemon.DisplayName), ("place", Rank(contest.Player.Placement))));
         Enter(SuperContestPhase.Award);
         NextAwardLine();
     }
 
-    private static string Rank(int placement) => placement switch { 0 => "first", 1 => "second", 2 => "third", _ => "fourth" };
+    private static string Rank(int placement)
+    {
+        int at = placement is >= 0 and <= 2 ? placement : 3;
+        return Text.Of($"contest.placeWord.{at}");
+    }
 
     private void NextAwardLine()
     {
@@ -774,8 +783,8 @@ public sealed class SuperContestScreen
                 if (PhaseTime >= LeadTime)
                 {
                     Line = Dance.Lead == 0
-                        ? $"Your lead: up to {Dance.Song.Steps} steps a bar, each on a beat of the bar's first half."
-                        : "Watch the lead's steps, then repeat each one as the hand reaches its ring.";
+                        ? Text.Of("contest.yourLead", ("steps", Dance.Song.Steps))
+                        : Text.Of("contest.watchLead");
                     Enter(SuperContestPhase.Dance);
                 }
 
