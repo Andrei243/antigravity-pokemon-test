@@ -157,18 +157,7 @@ public sealed class CastleScreen
         _ => CastleRank.Summary
     };
 
-    public static string LabelOf(CastleOption option) => option switch
-    {
-        CastleOption.RestoreHp => "RESTORE HP",
-        CastleOption.RestorePp => "RESTORE PP",
-        CastleOption.RestoreAll => "RESTORE ALL",
-        CastleOption.RankUp => "RANK UP",
-        CastleOption.LevelUp => "LEVEL +5",
-        CastleOption.LevelDown => "LEVEL -5",
-        CastleOption.Check => "IDENTIFY",
-        CastleOption.Info => "INFO",
-        _ => option.ToString().ToUpperInvariant()
-    };
+    public static string LabelOf(CastleOption option) => Text.Of($"castleScreen.option.{option}");
 
     private static IReadOnlyList<CastleOption> MenuOf(CastleOption menu, bool own) => menu switch
     {
@@ -192,7 +181,7 @@ public sealed class CastleScreen
     public string NameOf(int place)
     {
         if (Challenge == null || place >= Shown.Count) return "";
-        return Own || Challenge.Identified[place] ? Shown[place].DisplayName : "the Pokémon";
+        return Own || Challenge.Identified[place] ? Shown[place].DisplayName : Text.Of("castleScreen.unknown");
     }
 
     // ------------------------------------------------------------------ the buttons
@@ -338,10 +327,10 @@ public sealed class CastleScreen
     private void Refused(CastleAnswer answer, string useless)
     {
         AudioManager.PlaySound("error");
-        Say("Not this time", answer switch
+        Say(Text.Of("castleScreen.notThisTime"), answer switch
         {
-            CastleAnswer.NotEnough => "There aren't enough Castle Points for that.",
-            CastleAnswer.RankTooLow => "This counter's rank is too low for that. Raise its rank first.",
+            CastleAnswer.NotEnough => Text.Of("castleScreen.notEnough"),
+            CastleAnswer.RankTooLow => Text.Of("castleScreen.rankTooLow"),
             _ => useless
         });
     }
@@ -373,16 +362,16 @@ public sealed class CastleScreen
             {
                 var what = option switch { CastleOption.RestoreHp => CastleHeal.Hp, CastleOption.RestorePp => CastleHeal.Pp, _ => CastleHeal.All };
                 if (challenge.Rank(records, CastleRank.Healing) < RankNeeded(option)) { Refused(CastleAnswer.RankTooLow, ""); return; }
-                Ask(LabelOf(option), $"That will cost {PriceOf(option)} CP. Is that all right?", () =>
+                Ask(LabelOf(option), Text.Of("castleScreen.cost", ("price", PriceOf(option))), () =>
                 {
                     var answer = challenge.Heal(records, place, what);
-                    if (answer != CastleAnswer.Done) { Refused(answer, "It would have no effect."); return; }
+                    if (answer != CastleAnswer.Done) { Refused(answer, Text.Of("castleScreen.noEffect")); return; }
                     AudioManager.PlaySound("heal");
-                    Say("Restored", what switch
+                    Say(Text.Of("castleScreen.restored"), what switch
                     {
-                        CastleHeal.Hp => $"{name}'s HP was restored.",
-                        CastleHeal.Pp => $"{name}'s PP was restored.",
-                        _ => $"{name}'s HP and PP were restored."
+                        CastleHeal.Hp => Text.Of("castleScreen.restoredHp", ("name", name)),
+                        CastleHeal.Pp => Text.Of("castleScreen.restoredPp", ("name", name)),
+                        _ => Text.Of("castleScreen.restoredAll", ("name", name))
                     });
                 });
                 break;
@@ -392,18 +381,18 @@ public sealed class CastleScreen
                 var rank = RankOf(Opened);
                 int price = challenge.RankPrice(records, rank);
                 if (price == 0) { AudioManager.PlaySound("error"); return; }
-                Ask("RANK UP", $"Raise this counter's rank for {price} CP?", () =>
+                Ask(LabelOf(CastleOption.RankUp), Text.Of("castleScreen.rankUpQuestion", ("price", price)), () =>
                 {
                     var answer = challenge.RankUp(records, rank);
-                    if (answer != CastleAnswer.Done) { Refused(answer, "The rank is as high as it goes."); return; }
+                    if (answer != CastleAnswer.Done) { Refused(answer, Text.Of("castleScreen.rankTop")); return; }
                     AudioManager.PlaySound("levelup");
-                    Say("The rank went up!", (rank, challenge.Rank(records, rank)) switch
+                    Say(Text.Of("castleScreen.rankWentUp"), (rank, challenge.Rank(records, rank)) switch
                     {
-                        (CastleRank.Healing, 2) => "PP can now be restored.",
-                        (CastleRank.Healing, _) => "HP and PP can now be restored together.",
-                        (CastleRank.Rentals, 2) => "Items can now be rented.",
-                        (CastleRank.Rentals, _) => "More berries and items can now be rented.",
-                        _ => "The moves of the trainer's Pokémon can now be told."
+                        (CastleRank.Healing, 2) => Text.Of("castleScreen.rankOpens.pp"),
+                        (CastleRank.Healing, _) => Text.Of("castleScreen.rankOpens.all"),
+                        (CastleRank.Rentals, 2) => Text.Of("castleScreen.rankOpens.items"),
+                        (CastleRank.Rentals, _) => Text.Of("castleScreen.rankOpens.more"),
+                        _ => Text.Of("castleScreen.rankOpens.moves")
                     });
                 });
                 break;
@@ -427,12 +416,12 @@ public sealed class CastleScreen
                 break;
 
             case CastleOption.Check:
-                if (challenge.Identified[place]) { Say("Identified", $"It is {Shown[place].DisplayName}."); return; }
-                Ask("IDENTIFY", $"Have the Pokémon identified for {BattleCastleChallenge.IdentifyPrice} CP?", () =>
+                if (challenge.Identified[place]) { Say(Text.Of("castleScreen.identified"), Text.Of("castleScreen.itIs", ("name", Shown[place].DisplayName))); return; }
+                Ask(LabelOf(CastleOption.Check), Text.Of("castleScreen.identifyQuestion", ("price", BattleCastleChallenge.IdentifyPrice)), () =>
                 {
                     var answer = challenge.Identify(records, place);
                     if (answer != CastleAnswer.Done) { Refused(answer, ""); return; }
-                    Say("Identified", $"It is {Shown[place].DisplayName}!");
+                    Say(Text.Of("castleScreen.identified"), Text.Of("castleScreen.itIsNow", ("name", Shown[place].DisplayName)));
                 });
                 break;
             case CastleOption.LevelUp:
@@ -441,20 +430,21 @@ public sealed class CastleScreen
                 bool up = option == CastleOption.LevelUp;
                 if (challenge.Levels[place] == (up ? CastleLevel.Up : CastleLevel.Down))
                 {
-                    Refused(CastleAnswer.NoUse, up ? "Its level can't go any higher." : "Its level can't go any lower.");
+                    Refused(CastleAnswer.NoUse, up ? Text.Of("castleScreen.levelTop") : Text.Of("castleScreen.levelBottom"));
                     return;
                 }
-                Ask(LabelOf(option), $"That will cost {PriceOf(option)} CP. Is that all right?", () =>
+                Ask(LabelOf(option), Text.Of("castleScreen.cost", ("price", PriceOf(option))), () =>
                 {
                     var answer = challenge.AdjustLevel(records, place, up);
                     if (answer != CastleAnswer.Done) { Refused(answer, ""); return; }
-                    Say(up ? "Five levels up" : "Five levels down", $"{char.ToUpperInvariant(name[0])}{name[1..]} is now at level {Shown[place].Level}.");
+                    string named = $"{char.ToUpperInvariant(name[0])}{name[1..]}";
+                    Say(up ? Text.Of("castleScreen.levelsUp") : Text.Of("castleScreen.levelsDown"), Text.Of("castleScreen.nowAtLevel", ("name", named), ("level", Shown[place].Level)));
                 });
                 break;
             }
             case CastleOption.Stats:
                 if (challenge.StatsShown[place]) { Remember(); Go(CastleStep.Summary); return; }
-                Ask("STATS", $"Its stats can be told for {BattleCastleChallenge.StatsPrice} CP. Is that all right?", () =>
+                Ask(LabelOf(CastleOption.Stats), Text.Of("castleScreen.statsQuestion", ("price", BattleCastleChallenge.StatsPrice)), () =>
                 {
                     var answer = challenge.ShowStats(records, place);
                     if (answer != CastleAnswer.Done) { Refused(answer, ""); return; }
@@ -465,7 +455,7 @@ public sealed class CastleScreen
             case CastleOption.Moves:
                 if (challenge.Rank(records, CastleRank.Summary) < 2) { Refused(CastleAnswer.RankTooLow, ""); return; }
                 if (challenge.MovesShown[place]) { Remember(); Go(CastleStep.Moves); return; }
-                Ask("MOVES", $"Its moves can be told for {BattleCastleChallenge.MovesPrice} CP. Is that all right?", () =>
+                Ask(LabelOf(CastleOption.Moves), Text.Of("castleScreen.movesQuestion", ("price", BattleCastleChallenge.MovesPrice)), () =>
                 {
                     var answer = challenge.ShowMoves(records, place);
                     if (answer != CastleAnswer.Done) { Refused(answer, ""); return; }
@@ -483,22 +473,22 @@ public sealed class CastleScreen
         int place = Cursor;
         string name = NameOf(place);
         AudioManager.PlaySound("select");
-        Ask(lent.Item, $"That will cost {lent.Price} CP. Is that all right?", () =>
+        Ask(lent.Item, Text.Of("castleScreen.cost", ("price", lent.Price)), () =>
         {
             var answer = challenge.Rent(records, place, lent.Item);
             if (answer == CastleAnswer.Holding)
             {
                 string holding = challenge.Team.Members[place].HeldItem?.Name ?? "";
-                Ask(lent.Item, $"{name} is already holding the {holding}. Swap the two?", () =>
+                Ask(lent.Item, Text.Of("castleScreen.swapQuestion", ("name", name), ("holding", holding)), () =>
                 {
                     var swapped = challenge.Rent(records, place, lent.Item, swap: true);
                     if (swapped != CastleAnswer.Done) { Refused(swapped, ""); return; }
-                    Say("Rented", $"The {holding} was handed back, and {name} was given the {lent.Item} to hold.");
+                    Say(Text.Of("castleScreen.rented"), Text.Of("castleScreen.swapped", ("holding", holding), ("name", name), ("item", lent.Item)));
                 });
                 return;
             }
             if (answer != CastleAnswer.Done) { Refused(answer, ""); return; }
-            Say("Rented", $"{name} was given the {lent.Item} to hold.");
+            Say(Text.Of("castleScreen.rented"), Text.Of("castleScreen.given", ("name", name), ("item", lent.Item)));
         });
     }
 
@@ -524,7 +514,7 @@ public sealed class CastleScreen
         // One's own Pokémon is read in full; the trainer's stats are a panel of the counter, since its moves are
         // another purchase (ModernUi.CastleStats)
         if (Step == CastleStep.Summary && Own && Subject is { } shown)
-            ModernUi.DrawSummary(screenWidth, screenHeight, shown, Cursor, Shown.Count, Math.Clamp(StepAge / AppearTime, 0f, 1f), rental: true, title: "YOUR POK\u00c9MON");
+            ModernUi.DrawSummary(screenWidth, screenHeight, shown, Cursor, Shown.Count, Math.Clamp(StepAge / AppearTime, 0f, 1f), rental: true, title: Text.Of("castleScreen.yourPokemon"));
         else ModernUi.DrawCastle(screenWidth, screenHeight, this, Math.Clamp(Age / AppearTime, 0f, 1f));
     }
 }

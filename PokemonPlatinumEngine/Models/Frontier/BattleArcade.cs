@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using PokemonPlatinumEngine.Battle.Sim;
 using PokemonPlatinumEngine.Battle.Sim.Ai;
+using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Story;
 
@@ -307,29 +308,29 @@ public sealed class ArcadeBoard
     /// <summary>What an event is called on the board and by the host: our own words.</summary>
     public static string NameOf(ArcadeEffect effect) => effect switch
     {
-        ArcadeEffect.LowerFoeHp or ArcadeEffect.LowerAllyHp => "HP Down",
-        ArcadeEffect.PoisonFoe or ArcadeEffect.PoisonAlly => "Poison",
-        ArcadeEffect.ParalyzeFoe or ArcadeEffect.ParalyzeAlly => "Paralysis",
-        ArcadeEffect.BurnFoe or ArcadeEffect.BurnAlly => "Burn",
-        ArcadeEffect.SleepFoe or ArcadeEffect.SleepAlly => "Sleep",
-        ArcadeEffect.FreezeFoe or ArcadeEffect.FreezeAlly => "Freeze",
-        ArcadeEffect.FoeGetBerry or ArcadeEffect.AllyGetBerry => "Berry",
-        ArcadeEffect.FoeGetItem or ArcadeEffect.AllyGetItem => "Item",
-        ArcadeEffect.FoeLevelUp or ArcadeEffect.AllyLevelUp => "Level Up",
-        ArcadeEffect.Sunny => "Sun",
-        ArcadeEffect.Rainy => "Rain",
-        ArcadeEffect.Sandy => "Sandstorm",
-        ArcadeEffect.Hail => "Hail",
-        ArcadeEffect.Foggy => "Fog",
-        ArcadeEffect.TrickRoom => "Trick Room",
-        ArcadeEffect.SpeedUp => "Speed Up",
-        ArcadeEffect.SlowDown => "Slow Down",
-        ArcadeEffect.RandomizeCursor => "Random",
-        ArcadeEffect.SwapMons => "Swap",
-        ArcadeEffect.Get1Bp => "1 BP",
-        ArcadeEffect.Get3Bp => "3 BP",
-        ArcadeEffect.NoBattle => "No Battle",
-        ArcadeEffect.NoEvent => "No Event",
+        ArcadeEffect.LowerFoeHp or ArcadeEffect.LowerAllyHp => Text.Of("arcadeBoard.effect.hpDown"),
+        ArcadeEffect.PoisonFoe or ArcadeEffect.PoisonAlly => Text.Of("arcadeBoard.effect.poison"),
+        ArcadeEffect.ParalyzeFoe or ArcadeEffect.ParalyzeAlly => Text.Of("arcadeBoard.effect.paralysis"),
+        ArcadeEffect.BurnFoe or ArcadeEffect.BurnAlly => Text.Of("arcadeBoard.effect.burn"),
+        ArcadeEffect.SleepFoe or ArcadeEffect.SleepAlly => Text.Of("arcadeBoard.effect.sleep"),
+        ArcadeEffect.FreezeFoe or ArcadeEffect.FreezeAlly => Text.Of("arcadeBoard.effect.freeze"),
+        ArcadeEffect.FoeGetBerry or ArcadeEffect.AllyGetBerry => Text.Of("arcadeBoard.effect.berry"),
+        ArcadeEffect.FoeGetItem or ArcadeEffect.AllyGetItem => Text.Of("arcadeBoard.effect.item"),
+        ArcadeEffect.FoeLevelUp or ArcadeEffect.AllyLevelUp => Text.Of("arcadeBoard.effect.levelUp"),
+        ArcadeEffect.Sunny => Text.Of("arcadeBoard.effect.sun"),
+        ArcadeEffect.Rainy => Text.Of("arcadeBoard.effect.rain"),
+        ArcadeEffect.Sandy => Text.Of("arcadeBoard.effect.sandstorm"),
+        ArcadeEffect.Hail => Text.Of("arcadeBoard.effect.hail"),
+        ArcadeEffect.Foggy => Text.Of("arcadeBoard.effect.fog"),
+        ArcadeEffect.TrickRoom => Text.Of("arcadeBoard.effect.trickRoom"),
+        ArcadeEffect.SpeedUp => Text.Of("arcadeBoard.effect.speedUp"),
+        ArcadeEffect.SlowDown => Text.Of("arcadeBoard.effect.slowDown"),
+        ArcadeEffect.RandomizeCursor => Text.Of("arcadeBoard.effect.random"),
+        ArcadeEffect.SwapMons => Text.Of("arcadeBoard.effect.swap"),
+        ArcadeEffect.Get1Bp => Text.Of("arcadeBoard.effect.oneBp"),
+        ArcadeEffect.Get3Bp => Text.Of("arcadeBoard.effect.threeBp"),
+        ArcadeEffect.NoBattle => Text.Of("arcadeBoard.effect.noBattle"),
+        ArcadeEffect.NoEvent => Text.Of("arcadeBoard.effect.noEvent"),
         _ => ""
     };
 }

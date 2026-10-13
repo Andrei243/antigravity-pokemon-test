@@ -30,7 +30,10 @@ public class TextTests
         "UI/ModernUi.TownMap.cs", "UI/ModernUi.Field.cs", "UI/ModernUi.Poketch.cs", "UI/ModernUi.Poketch.Time.cs", "UI/ModernUi.Poketch.Toys.cs",
         "UI/ModernUi.Poketch.Map.cs", "UI/ModernUi.Poketch.Pokemon.cs", "Models/PoketchApps/ColorChangerApp.cs", "UI/HelpScreen.cs",
         "UI/ModernUi.Help.cs", "UI/ModernUi.Wardrobe.cs", "UI/WardrobeScreen.cs", "UI/ModernUi.Hatch.cs", "UI/HatchScreen.cs",
-        "UI/ModernUi.Ceremony.cs", "UI/HallOfFameCeremony.cs", "UI/CreditsScreen.cs", "UI/SlotMachineScreen.cs"
+        "UI/ModernUi.Ceremony.cs", "UI/HallOfFameCeremony.cs", "UI/CreditsScreen.cs", "UI/SlotMachineScreen.cs",
+        "UI/ModernUi.Frontier.cs", "UI/FrontierRecordsScreen.cs", "Models/Frontier/FrontierBoard.cs", "UI/ModernUi.Factory.cs", "UI/FactoryScreen.cs",
+        "UI/ModernUi.Hall.cs", "UI/HallBoardScreen.cs", "UI/ModernUi.Castle.cs", "UI/CastleScreen.cs", "UI/ModernUi.Arcade.cs", "UI/ArcadeBoardScreen.cs",
+        "UI/ModernUi.Pastimes.cs"
     };
 
     /// <summary>What may stay in quotes in a file on the table: names of the data, and the logo, which is a picture (plan 17).</summary>
@@ -58,7 +61,9 @@ public class TextTests
         ["UI/ModernUi.Field.cs"] = new[] { "Route", "Lake", "Town", "City" },
         ["UI/ModernUi.Ceremony.cs"] = new[] { "PLATINUM", "Pokémon", "A  FAN  REMAKE" },
         // The bonus game's own Pokémon, whose cry it plays
-        ["UI/SlotMachineScreen.cs"] = new[] { "Clefairy" }
+        ["UI/SlotMachineScreen.cs"] = new[] { "Clefairy" },
+        // The same Pokémon, whose sprite the slot machine's display shows in the bonus game
+        ["UI/ModernUi.Pastimes.cs"] = new[] { "Clefairy" }
     };
 
     private static readonly Regex Literal = new(@"(\$?)""((?:[^""\\\n]|\\.)*)""", RegexOptions.Compiled);

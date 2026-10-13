@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Numerics;
 using Raylib_cs;
+using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Models;
@@ -34,15 +35,19 @@ internal static partial class ModernUi
     public static void DrawArcadeBoard(int sw, int sh, BattleArcadeChallenge challenge, ArcadeBoard board, float time, float appear = 1f)
     {
         Backdrop(sw, sh);
-        ScreenTitle("BATTLE ARCADE");
-        Hints(sw - Margin, 44, ("Z", "Stop"));
+        ScreenTitle(Text.Of("arcadeBoard.title"));
+        Hints(sw - Margin, 44, Hint("shared.keys.z", "arcadeBoard.stop"));
         float rise = (1f - UiMotion.EaseOut(appear)) * 60f;
 
         const float panelW = 200, panelH = 154, gap = 16, top = 196;
         float boardW = panelW * ArcadeBoard.Columns + gap * (ArcadeBoard.Columns - 1), left = sw / 2f - boardW / 2f;
 
         // The key: whom a colour stands for
-        (string, ArcadeCategory)[] key = { ("FOE", ArcadeCategory.Foe), ("YOU", ArcadeCategory.Ally), ("BOTH", ArcadeCategory.Field), ("BONUS", ArcadeCategory.Bonus) };
+        (string, ArcadeCategory)[] key =
+        {
+            (Text.Of("arcadeBoard.category.Foe"), ArcadeCategory.Foe), (Text.Of("arcadeBoard.category.Ally"), ArcadeCategory.Ally),
+            (Text.Of("arcadeBoard.category.Field"), ArcadeCategory.Field), (Text.Of("arcadeBoard.category.Bonus"), ArcadeCategory.Bonus)
+        };
         float keyW = 0f;
         foreach (var (word, _) in key) keyW += UiFonts.Measure(word, 34 * 0.58f, UiWeight.Black) + 34 * 0.9f + 16;
         float kx = sw / 2f - (keyW - 16) / 2f;
@@ -61,9 +66,9 @@ internal static partial class ModernUi
 
         // The two threes
         float sideW = left - Margin - 52, rowH = panelH + gap;
-        ArcadeSide(new Rectangle(Margin, top + rise, sideW, panelH), "YOU", "CHALLENGER", challenge.Team.Members, ArcadeColour(ArcadeCategory.Ally), rowH);
+        ArcadeSide(new Rectangle(Margin, top + rise, sideW, panelH), Text.Of("arcadeBoard.you"), Text.Of("arcadeBoard.challenger"), challenge.Team.Members, ArcadeColour(ArcadeCategory.Ally), rowH);
         if (challenge.Foe is { } foe)
-            ArcadeSide(new Rectangle(sw - Margin - sideW, top + rise, sideW, panelH), $"{foe.Record.Class} {foe.Record.Name}", "NEXT TRAINER", foe.Pokemon, ArcadeColour(ArcadeCategory.Foe), rowH);
+            ArcadeSide(new Rectangle(sw - Margin - sideW, top + rise, sideW, panelH), $"{foe.Record.Class} {foe.Record.Name}", Text.Of("arcadeBoard.nextTrainer"), foe.Pokemon, ArcadeColour(ArcadeCategory.Foe), rowH);
 
         // The foot: what is to be done, the cursor's speed, the battle of the round and the streak
         var foot = new Rectangle(Margin, 890 + rise, sw - Margin * 2, 116);
@@ -77,32 +82,32 @@ internal static partial class ModernUi
         }
         string prompt = board.Step switch
         {
-            ArcadeBoardStep.Opening => "The game board is starting up...",
-            ArcadeBoardStep.Three or ArcadeBoardStep.Two or ArcadeBoardStep.One => "Get ready!",
-            ArcadeBoardStep.Running => "Press Z to stop the cursor!",
-            _ => ArcadeBoard.NameOf(board.Effect) + "!"
+            ArcadeBoardStep.Opening => Text.Of("arcadeBoard.opening"),
+            ArcadeBoardStep.Three or ArcadeBoardStep.Two or ArcadeBoardStep.One => Text.Of("arcadeBoard.ready"),
+            ArcadeBoardStep.Running => Text.Of("arcadeBoard.running"),
+            _ => Text.Of("arcadeBoard.said", ("effect", ArcadeBoard.NameOf(board.Effect)))
         };
         var said = stopped ? Darker(ArcadeColour(ArcadeBoard.CategoryOf(board.Effect)), 0.25f) : Ink;
         UiFonts.DrawCentered(prompt, foot.X + 48, foot.Y + foot.Height / 2f + 4, 38, said, UiWeight.ExtraBold);
 
         string streak = $"{challenge.Streak:N0}", battle = $"{challenge.Battle + 1} / {BattleArcadeChallenge.BattlesPerRound}";
-        float sx = foot.X + foot.Width - 48 - Math.Max(UiFonts.Measure(streak, 44, UiWeight.Black), UiFonts.Measure("STREAK", 20, UiWeight.Black));
-        Label("STREAK", sx, foot.Y + 24);
+        float sx = foot.X + foot.Width - 48 - Math.Max(UiFonts.Measure(streak, 44, UiWeight.Black), UiFonts.Measure(Text.Of("records.streak"), 20, UiWeight.Black));
+        Label(Text.Of("records.streak"), sx, foot.Y + 24);
         UiFonts.Draw(streak, sx, foot.Y + 50, 44, Ink, UiWeight.Black);
-        float bx = sx - 56 - Math.Max(UiFonts.Measure(battle, 44, UiWeight.Black), UiFonts.Measure("BATTLE", 20, UiWeight.Black));
-        Label("BATTLE", bx, foot.Y + 24);
+        float bx = sx - 56 - Math.Max(UiFonts.Measure(battle, 44, UiWeight.Black), UiFonts.Measure(Text.Of("records.battle"), 20, UiWeight.Black));
+        Label(Text.Of("records.battle"), bx, foot.Y + 24);
         UiFonts.Draw(battle, bx, foot.Y + 50, 44, Ink, UiWeight.Black);
         // Eight pips for the cursor's eight speeds
         const float pip = 16, between = 8;
         float cx = bx - 56 - (pip + between) * (ArcadeBoard.FastestSpeed + 1) + between;
-        Label("CURSOR", cx, foot.Y + 24);
+        Label(Text.Of("arcadeBoard.cursor"), cx, foot.Y + 24);
         for (int n = 0; n <= ArcadeBoard.FastestSpeed; n++)
         {
             var c = new Vector2(cx + n * (pip + between) + pip / 2f, foot.Y + 74);
             if (n <= board.Speed) UiShapes.Circle(c, pip / 2f, Selection);
             else UiShapes.Ring(c, pip / 2f, 3, Rule);
         }
-        if (board.Randomized) Tag(cx + UiFonts.Measure("CURSOR", 20, UiWeight.Black) + 14, foot.Y + 22, "RANDOM", Gold, 26);
+        if (board.Randomized) Tag(cx + UiFonts.Measure(Text.Of("arcadeBoard.cursor"), 20, UiWeight.Black) + 14, foot.Y + 22, Text.Of("arcadeBoard.random"), Gold, 26);
     }
 
     // A panel while the board counts down: the digit and nothing else
@@ -152,22 +157,16 @@ internal static partial class ModernUi
                 Vector2.Zero, 0f, Color.White);
             float tx = r.X + 152;
             UiFonts.Draw(p.Species.Name, tx, r.Y + 24, 28, Ink, UiWeight.ExtraBold);
-            UiFonts.Draw($"Lv. {p.Level}", tx, r.Y + 60, 22, Muted, UiWeight.Black);
-            if (p.Status != StatusCondition.None) Tag(tx + UiFonts.Measure($"Lv. {p.Level}", 22, UiWeight.Black) + 14, r.Y + 58, StatusWord(p.Status), Selection, 28);
+            string level = Text.Of("arcadeBoard.level", ("level", p.Level));
+            UiFonts.Draw(level, tx, r.Y + 60, 22, Muted, UiWeight.Black);
+            if (p.Status != StatusCondition.None) Tag(tx + UiFonts.Measure(level, 22, UiWeight.Black) + 14, r.Y + 58, StatusWord(p.Status), Selection, 28);
             if (p.HeldItem != null) Tag(tx, r.Y + 98, p.HeldItem.Name.ToUpperInvariant(), colour, 32);
-            else UiFonts.Draw("NOTHING HELD", tx, r.Y + 102, 20, Muted, UiWeight.Black);
+            else UiFonts.Draw(Text.Of("arcadeBoard.nothingHeld"), tx, r.Y + 102, 20, Muted, UiWeight.Black);
         }
     }
 
-    private static string StatusWord(StatusCondition status) => status switch
-    {
-        StatusCondition.Poison or StatusCondition.Toxic => "PSN",
-        StatusCondition.Burn => "BRN",
-        StatusCondition.Paralyze => "PAR",
-        StatusCondition.Sleep => "SLP",
-        StatusCondition.Freeze => "FRZ",
-        _ => ""
-    };
+    // A status as the pill writes it; a fainted Pokémon has none here
+    private static string StatusWord(StatusCondition status) => status == StatusCondition.Faint ? "" : Words.Status(status);
 
     /// <summary>
     /// An event's sign (our own, drawn from the kit's shapes): <paramref name="s"/> is half its height,
@@ -220,7 +219,7 @@ internal static partial class ModernUi
                 UiShapes.Circle(P(0f, 0.42f), s * 0.22f, back);
                 break;
             case ArcadeEffect.SleepFoe or ArcadeEffect.SleepAlly:
-                Words("Zzz", s * 1.15f);
+                Words(Text.Of("arcadeBoard.zzz"), s * 1.15f);
                 break;
             case ArcadeEffect.FreezeFoe or ArcadeEffect.FreezeAlly:
                 // A flake: three bars through one point
