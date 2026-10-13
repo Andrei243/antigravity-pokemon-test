@@ -549,6 +549,13 @@ What the player wears is an `Outfit` (`Core/Outfit.cs`): a garment's id in each 
 - `mood` and `act` are the face and the gesture the line is said with, by plan 11 · C11's names, for C13's trainer on the platform; nothing reads them yet.
 - The lines are read only where the `TrainerLines` option holds (On, or Rules in a game played by the modern rules). Whoever is beside the player (a partner) never speaks: the moments are the other side's.
 
+## Text
+
+What the interface says (plan 17 · N1) is a table of strings by key, read by `Core/Text.cs`; the code holds the keys only (`Text.Of("options.title")`).
+
+- `text/languages.json`: a row to a language: `tag` (its IETF tag, the folder's name), `name` (the language's own name for itself, which the options' first row shows), `script` (`Latin`; a language whose script the faces don't draw is listed but not offered until plan 17 · N5), `plural` (`english`, `french` or `none`: how a word's form is chosen by a number), `decimal` (the mark before a fraction), `breaks` and, for the pseudo-language `xx` only, `pseudo` (English with every string in brackets, for the tests and the harness's `SHOTS_LANGUAGE`; never offered).
+- `text/<tag>/ui.json`: sections, a screen to each (`shared` holds the words several say), flattened into dotted keys (`options.textSpeed.label`). A value is a string, or an object of forms: `one` and `other` (also `zero`, `two`, `few`, `many`), chosen by the argument `n` under the language's rule, or `boy` and `girl`, chosen by the player's look. Arguments are named in braces (`"Delete slot {slot}?"`), so a translation may move them; a brace no argument is named for is left for whoever fills it later (`{player}`). A language's file holds only what it translates: a key it lacks is English's. English's is the one every key must be in, and every entry of it must be asked for (`TextTests`).
+
 ## Sound map
 
 `Data/audio/sound-map.json` is what music a trainer class brings (`Data/SoundMap.cs`; `docs/music-format.md` has the roles):

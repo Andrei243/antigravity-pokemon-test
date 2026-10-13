@@ -392,6 +392,8 @@ public partial class GameEngine
     public void ApplySettings(bool window)
     {
         renderContext.SetQuality(Settings.Quality);
+        // The language every later string is given in (plan 17 · N1)
+        Text.Use(Settings.Language);
         GameClock.Fixed = Settings.TimeOfDay;
         if (AudioManager.IsMuted != Settings.Muted) AudioManager.ToggleMute();
         AudioManager.SetVolumes(Settings.MusicVolume / 100f, Settings.SoundVolume / 100f, Settings.CryVolume / 100f, Settings.AmbienceVolume / 100f);

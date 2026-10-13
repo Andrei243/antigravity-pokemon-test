@@ -42,6 +42,9 @@ partial class Harness
         // Muted, and by day whatever the real time is (the "times" mode sets the other times of day)
         engine.Settings.Muted = true;
         engine.Settings.TimeOfDay = TimeOfDay.Day;
+        // SHOTS_LANGUAGE=xx shoots in another language (plan 17 · N1): the pseudo-language brackets every string, so a
+        // word the table doesn't give shows bare
+        if (Environment.GetEnvironmentVariable("SHOTS_LANGUAGE") is { Length: > 0 } language) engine.Settings.Language = language;
         engine.ApplySettings(window: false);
 
         // The game opens on its title screen; everything but the "title" mode wants a game in progress

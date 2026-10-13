@@ -100,6 +100,9 @@ public sealed class GameSettings
     /// <summary>The options move a volume by this much.</summary>
     public const int VolumeStep = 10;
 
+    /// <summary>The language the game speaks (plan 17 · N1): a tag of <c>Data/text/languages.json</c>, English unless chosen.</summary>
+    public string Language { get; set; } = Text.English;
+
     /// <summary>How fast what people say is written out.</summary>
     public TextSpeed TextSpeed { get; set; } = TextSpeed.Normal;
 
