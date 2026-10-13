@@ -196,10 +196,13 @@ internal static partial class ModernUi
     {
         var contest = screen.Contest!;
         Backdrop(sw, sh);
-        ScreenTitle("SUPER CONTEST");
-        float x = 64 + UiFonts.Measure("SUPER CONTEST", 52, UiWeight.Black) + 32;
-        x += Tag(x, 50, contest.IsPractice ? "PRACTICE" : $"{contest.Rank.ToString().ToUpperInvariant()} RANK", Frame, 42) + 12;
-        Tag(x, 50, contest.Category.ToString().ToUpperInvariant(), QualityColor(contest.Category), 42);
+        string title = Text.Of("contest.title");
+        ScreenTitle(title);
+        float x = 64 + UiFonts.Measure(title, 52, UiWeight.Black) + 32;
+        var rank = contest.Rank;
+        var category = contest.Category;
+        x += Tag(x, 50, contest.IsPractice ? Text.Of("contest.practice") : Text.Of($"contest.rankTag.{rank}"), Frame, 42) + 12;
+        Tag(x, 50, Text.Of($"condition.quality.{category}"), QualityColor(contest.Category), 42);
         if (hints.Length > 0) Hints(sw - Margin, 44, hints);
     }
 
@@ -214,7 +217,7 @@ internal static partial class ModernUi
         if (arrow) AdvanceArrow(r.X + r.Width - 70, r.Y + r.Height - 52);
     }
 
-    private static string EntryTag(int contestant) => $"No. {SuperContest.EntryNumber(contestant)}";
+    private static string EntryTag(int contestant) => Text.Of("contest.entryTag", ("n", SuperContest.EntryNumber(contestant)));
 
     // A contestant's card: the entry number, the Pokémon on its disc, its name and its trainer's
     private static void ContestantCard(Rectangle r, SuperContestScreen screen, int contestant, bool selected, float hop = 0f, bool dressed = false)
@@ -276,7 +279,7 @@ internal static partial class ModernUi
 
     private static void ContestLineup(int sw, int sh, SuperContestScreen screen)
     {
-        ContestFrame(sw, sh, screen, ("Z", "Next"));
+        ContestFrame(sw, sh, screen, Hint("shared.keys.z", "shared.hints.next"));
         float top = ContentTop, height = ContentBottom - ContestBox - Gutter - top;
         float t = (float)FrameClock.Now;
         for (int c = 0; c < ContestRules.Contestants; c++)
@@ -290,10 +293,10 @@ internal static partial class ModernUi
             Dim(sw, sh, 110);
             var band = new Rectangle(Margin + 160, top + height / 2f - 110, sw - Margin * 2 - 320, 220);
             Panel(band, 40, 0f, 6f, QualityColor(screen.Contest!.Category));
-            Label("THE THEME", band.X + 56, band.Y + 34);
+            Label(Text.Of("contest.theTheme"), band.X + 56, band.Y + 34);
             string theme = SuperContestDatabase.Themes[screen.Contest.Theme].Name;
             UiFonts.DrawCentered(theme, band.X + 56, band.Y + 118, 76, Ink, UiWeight.Black);
-            string limit = $"{screen.Limit} ACCESSORIES  ·  {ContestRules.DressingSeconds} SECONDS";
+            string limit = Text.Of("contest.limit", ("n", screen.Limit), ("seconds", ContestRules.DressingSeconds));
             Tag(band.X + band.Width - 56 - UiFonts.Measure(limit, 24, UiWeight.Black) - 38, band.Y + 150, limit, Frame, 42);
         }
         ContestLine(sw, screen.Line, true);
@@ -302,13 +305,13 @@ internal static partial class ModernUi
     private static void ContestDressing(int sw, int sh, SuperContestScreen screen)
     {
         var contest = screen.Contest!;
-        ContestFrame(sw, sh, screen, ("Z", "Put on"), ("X", "Take off"), ("Enter", "Done"));
+        ContestFrame(sw, sh, screen, Hint("shared.keys.z", "contest.hint.putOn"), Hint("shared.keys.x", "contest.hint.takeOff"), Hint("shared.keys.enter", "shared.hints.done"));
         float top = ContentTop, bottom = ContentBottom;
 
         // ---- The Pokémon and what it wears
         var stage = new Rectangle(Margin, top, 700, bottom - top);
         Panel(stage, 34);
-        Label("THEME", stage.X + 44, stage.Y + 30);
+        Label(Text.Of("contest.theme"), stage.X + 44, stage.Y + 30);
         UiFonts.Draw(SuperContestDatabase.Themes[contest.Theme].Name, stage.X + 44, stage.Y + 54, 46, Ink, UiWeight.Black);
         var c = new Vector2(stage.X + stage.Width / 2f, stage.Y + 420);
         BallDisc(c, 250);
@@ -316,7 +319,7 @@ internal static partial class ModernUi
         string worn = $"{screen.Worn.Count} / {screen.Limit}";
         Tag(stage.X + stage.Width - 44 - UiFonts.Measure(worn, 24, UiWeight.Black) - 38, stage.Y + 34, worn, screen.Worn.Count >= screen.Limit ? Red : Frame, 42);
         // The clock: a bar that runs down, red for the last ten seconds
-        Label("TIME", stage.X + 44, stage.Y + stage.Height - 96);
+        Label(Text.Of("contest.time"), stage.X + 44, stage.Y + stage.Height - 96);
         string seconds = $"{(int)MathF.Ceiling(screen.TimeLeft)}";
         UiFonts.DrawCentered(seconds, stage.X + stage.Width - 44 - UiFonts.Measure(seconds, 40, UiWeight.Black), stage.Y + stage.Height - 86, 40, screen.TimeLeft <= 10 ? Red : Ink, UiWeight.Black);
         Bar(new Rectangle(stage.X + 44, stage.Y + stage.Height - 60, stage.Width - 88, 24), screen.TimeLeft / ContestRules.DressingSeconds, screen.TimeLeft <= 10 ? Red : Green);
@@ -324,9 +327,9 @@ internal static partial class ModernUi
         // ---- The Fashion Case
         var box = new Rectangle(Margin + 700 + Gutter, top, sw - Margin * 2 - 700 - Gutter, bottom - top);
         Panel(box, 34);
-        Label("FASHION CASE", box.X + 44, box.Y + 30);
+        Label(Text.Of("contest.fashionCase"), box.X + 44, box.Y + 30);
         var held = screen.InCase;
-        if (held.Count == 0) EmptyNote(new Rectangle(box.X, box.Y, box.Width, box.Height - 120), "No Accessories yet.");
+        if (held.Count == 0) EmptyNote(new Rectangle(box.X, box.Y, box.Width, box.Height - 120), Text.Of("contest.noAccessories"));
         float cell = (box.Width - 88 - (SuperContestScreen.CaseColumns - 1) * 16) / SuperContestScreen.CaseColumns;
         float cellH = 114;
         int rows = (int)((box.Height - 70 - 132) / (cellH + 16));
@@ -353,7 +356,7 @@ internal static partial class ModernUi
     private static void ContestLooks(int sw, int sh, SuperContestScreen screen)
     {
         var contest = screen.Contest!;
-        ContestFrame(sw, sh, screen, ("Z", "Next"));
+        ContestFrame(sw, sh, screen, Hint("shared.keys.z", "shared.hints.next"));
         float top = ContentTop, bottom = ContentBottom - ContestBox - Gutter;
         int showing = Math.Clamp(screen.Showing, 0, ContestRules.Contestants - 1);
         var who = contest.Contestants[showing];
@@ -375,12 +378,12 @@ internal static partial class ModernUi
 
         // The hearts come up one after another: the condition's first, then the dressing-up's
         float shown = screen.PhaseTime * 6f;
-        Label("CONDITION", card.X + 52, card.Y + 206);
+        Label(Text.Of("condition.title"), card.X + 52, card.Y + 206);
         HeartRow(card.X + 52, card.Y + 270, who.ConditionHearts, 8, 22, shown);
-        Label("DRESSING UP", card.X + 52, card.Y + 336);
+        Label(Text.Of("contest.dressingUp"), card.X + 52, card.Y + 336);
         HeartRow(card.X + 52, card.Y + 400, who.DressHearts, 4, 22, shown - who.ConditionHearts);
-        if (who.Accessories.Count == 0) UiFonts.DrawCentered("Nothing on.", card.X + 52 + 4 * 55 + 24, card.Y + 400, 26, Muted, UiWeight.ExtraBold);
-        Label("THE VISUAL COMPETITION", card.X + 52, card.Y + 470);
+        if (who.Accessories.Count == 0) UiFonts.DrawCentered(Text.Of("contest.nothingOn"), card.X + 52 + 4 * 55 + 24, card.Y + 400, 26, Muted, UiWeight.ExtraBold);
+        Label(Text.Of("contest.visualCompetition"), card.X + 52, card.Y + 470);
         string total = who.VisualHearts.ToString();
         UiFonts.Draw(total, card.X + 52, card.Y + 492, 84, Ink, UiWeight.Black);
         Heart(new Vector2(card.X + 52 + UiFonts.Measure(total, 84, UiWeight.Black) + 44, card.Y + 540), 26, HeartRed);
@@ -406,8 +409,8 @@ internal static partial class ModernUi
     {
         var contest = screen.Contest!;
         var dance = screen.Dance;
-        if (screen.Phase == SuperContestPhase.Dance) ContestFrame(sw, sh, screen, ("Arrows", "Step"));
-        else ContestFrame(sw, sh, screen, ("Z", "Next"));
+        if (screen.Phase == SuperContestPhase.Dance) ContestFrame(sw, sh, screen, Hint("shared.keys.arrows", "contest.hint.step"));
+        else ContestFrame(sw, sh, screen, Hint("shared.keys.z", "shared.hints.next"));
         float top = ContentTop;
 
         // ---- The bar: the lead's half and the others', the beats ruled, the frame's hand moving across
@@ -416,12 +419,12 @@ internal static partial class ModernUi
         var track = new Rectangle(bar.X + 44, bar.Y + 86, bar.Width - 88, 96);
         UiShapes.Fill(track, 22, StageDark);
         UiShapes.Fill(new Rectangle(track.X + track.Width / 2f, track.Y, track.Width / 2f, track.Height), 22, new Color(44, 50, 84, 255));
-        Label("THE LEAD'S STEPS", track.X, bar.Y + 34);
-        Label("REPEAT THEM HERE", track.X + track.Width / 2f + 12, bar.Y + 34);
+        Label(Text.Of("contest.leadSteps"), track.X, bar.Y + 34);
+        Label(Text.Of("contest.repeatHere"), track.X + track.Width / 2f + 12, bar.Y + 34);
         if (dance != null && !dance.IsOver)
         {
             var song = dance.Song;
-            string turn = $"LEAD {dance.Rotation + 1} / {SuperContestDance.Rotations}  ·  BAR {dance.Bar + 1} / {song.Bars}";
+            string turn = Text.Of("contest.danceTurn", ("lead", dance.Rotation + 1), ("leads", SuperContestDance.Rotations), ("bar", dance.Bar + 1), ("bars", song.Bars));
             Tag(bar.X + bar.Width - 44 - UiFonts.Measure(turn, 20, UiWeight.Black) - 32, bar.Y + 28, turn, Frame, 36);
             float perSlot = track.Width / song.Slots;
             for (int beat = 0; beat <= song.BeatsPerBar; beat++)
@@ -468,10 +471,10 @@ internal static partial class ModernUi
                 StepArrow(sign, 20, last.Mark.Step, Color.White);
             }
             Tag(floor.X + column * floor.Width / 4f + 28, floor.Y + 24, EntryTag(c), who.IsPlayer ? Selection : Frame, 36);
-            if (leads) Tag(floor.X + column * floor.Width / 4f + 28 + 110, floor.Y + 24, "LEAD", QualityColor(contest.Category), 36);
+            if (leads) Tag(floor.X + column * floor.Width / 4f + 28 + 110, floor.Y + 24, Text.Of("contest.lead"), QualityColor(contest.Category), 36);
             string name = who.Pokemon.DisplayName;
             UiFonts.DrawCentered(name, cx - UiFonts.Measure(name, 28, UiWeight.Black) / 2f, floor.Y + floor.Height - 76, 28, Ink, UiWeight.Black);
-            string points = $"{(dance != null ? dance.Score[c] : 0)} pts";
+            string points = Text.Of("contest.points", ("n", dance != null ? dance.Score[c] : 0));
             UiFonts.DrawCentered(points, cx - UiFonts.Measure(points, 26, UiWeight.ExtraBold) / 2f, floor.Y + floor.Height - 40, 26, Muted, UiWeight.ExtraBold);
         }
         ContestLine(sw, screen.Line, screen.Phase != SuperContestPhase.Dance && !(screen.Phase == SuperContestPhase.DanceLead && dance != null));
@@ -485,9 +488,9 @@ internal static partial class ModernUi
         var acting = screen.Acting!;
         switch (screen.Phase)
         {
-            case SuperContestPhase.ActingMove: ContestFrame(sw, sh, screen, ("Up / Down", "Move"), ("Z", "Choose")); break;
-            case SuperContestPhase.ActingJudge: ContestFrame(sw, sh, screen, ("Left / Right", "Judge"), ("Z", "Choose"), ("X", "Back")); break;
-            default: ContestFrame(sw, sh, screen, ("Z", "Next")); break;
+            case SuperContestPhase.ActingMove: ContestFrame(sw, sh, screen, Hint("shared.keys.upDown", "shared.hints.move"), Hint("shared.keys.z", "shared.hints.choose")); break;
+            case SuperContestPhase.ActingJudge: ContestFrame(sw, sh, screen, Hint("shared.keys.leftRight", "contest.hint.judge"), Hint("shared.keys.z", "shared.hints.choose"), Hint("shared.keys.x", "shared.hints.back")); break;
+            default: ContestFrame(sw, sh, screen, Hint("shared.keys.z", "shared.hints.next")); break;
         }
         float top = ContentTop;
         const float left = 1040;
@@ -502,8 +505,8 @@ internal static partial class ModernUi
             Card(r, 28, chosen || speaking, chosen ? Selection : QualityColor(contest.Category));
             string name = contest.Judges[j].Name;
             UiFonts.DrawCentered(name, r.X + 28, r.Y + 44, 34, Ink, UiWeight.Black);
-            if (j == ContestRules.MainJudge) Tag(r.X + r.Width - 28 - 96, r.Y + 26, "HEAD", Gold, 36);
-            Label("VOLTAGE", r.X + 28, r.Y + 78);
+            if (j == ContestRules.MainJudge) Tag(r.X + r.Width - 28 - 96, r.Y + 26, Text.Of("contest.head"), Gold, 36);
+            Label(Text.Of("contest.voltage"), r.X + 28, r.Y + 78);
             int lit = screen.ShownVoltage[j] / 10;
             for (int v = 0; v < 5; v++)
                 Star(new Vector2(r.X + 46 + v * 46, r.Y + 122), 18, v < lit ? Gold : Rule);
@@ -536,12 +539,13 @@ internal static partial class ModernUi
             if (screen.Chosen[c] is { } choice)
             {
                 float mx = r.X + 370;
-                mx += Tag(mx, r.Y + r.Height / 2f - 40, choice.Move.Contest!.Type.ToString().ToUpperInvariant(), QualityColor(choice.Move.Contest.Type), 34) + 12;
+                var shownType = choice.Move.Contest!.Type;
+                mx += Tag(mx, r.Y + r.Height / 2f - 40, Text.Of($"condition.quality.{shownType}"), QualityColor(shownType), 34) + 12;
                 UiFonts.DrawCentered(choice.Move.Name, r.X + 370, r.Y + r.Height / 2f + 18, 28, Ink, UiWeight.Black);
-                UiFonts.DrawCentered($"for {contest.Judges[choice.Judge].Name}", mx, r.Y + r.Height / 2f - 23, 22, Muted, UiWeight.ExtraBold);
+                UiFonts.DrawCentered(Text.Of("contest.forJudge", ("judge", contest.Judges[choice.Judge].Name)), mx, r.Y + r.Height / 2f - 23, 22, Muted, UiWeight.ExtraBold);
             }
             else if (acting.IsDoubled(c) && screen.Phase is SuperContestPhase.ActingMove or SuperContestPhase.ActingJudge)
-                Tag(r.X + 370, r.Y + r.Height / 2f - 17, "DOUBLE THIS TURN", Gold, 34);
+                Tag(r.X + 370, r.Y + r.Height / 2f - 17, Text.Of("contest.doubleThisTurn"), Gold, 34);
             // The turn's hearts, and the total at the right
             int turn = screen.TurnPoints[c] / ContestRules.PointsPerHeart;
             if (turn > 0 || screen.Chosen[c] != null)
@@ -551,14 +555,14 @@ internal static partial class ModernUi
             }
             string total = (screen.ShownTotal[c] / ContestRules.PointsPerHeart).ToString();
             UiFonts.DrawCentered(total, r.X + r.Width - 36 - UiFonts.Measure(total, 44, UiWeight.Black), r.Y + r.Height / 2f, 44, Ink, UiWeight.Black);
-            Label("TOTAL", r.X + r.Width - 36 - 150, r.Y + r.Height / 2f - 10);
+            Label(Text.Of("contest.total"), r.X + r.Width - 36 - 150, r.Y + r.Height / 2f - 10);
         }
 
         // ---- The player's moves, to choose from or to keep in view
         var moves = new Rectangle(Margin + left + Gutter, top, sw - Margin * 2 - left - Gutter, rowsBottom - top);
         Panel(moves, 34);
-        string turnTag = screen.Phase == SuperContestPhase.ActingScores ? "OVER" : $"TURN {screen.ShownTurn + 1} / {SuperContestActing.Turns}";
-        Label($"{contest.Player.Pokemon.DisplayName.ToUpperInvariant()}'S MOVES", moves.X + 40, moves.Y + 30);
+        string turnTag = screen.Phase == SuperContestPhase.ActingScores ? Text.Of("contest.over") : Text.Of("contest.turnTag", ("turn", screen.ShownTurn + 1), ("turns", SuperContestActing.Turns));
+        Label(Text.Of("contest.movesOf", ("name", contest.Player.Pokemon.DisplayName.ToUpperInvariant())), moves.X + 40, moves.Y + 30);
         Tag(moves.X + moves.Width - 40 - UiFonts.Measure(turnTag, 20, UiWeight.Black) - 32, moves.Y + 22, turnTag, Frame, 36);
         var list = contest.Player.Pokemon.Moves;
         float moveH = (moves.Height - 72 - 24) / 4f;
@@ -573,12 +577,14 @@ internal static partial class ModernUi
             UiFonts.DrawCentered(move.Name, r.X + 28, r.Y + 38, 32, ink, UiWeight.Black);
             if (move.Contest is { } stage)
             {
-                Tag(r.X + r.Width - 28 - UiFonts.Measure(stage.Type.ToString().ToUpperInvariant(), 20, UiWeight.Black) - 32, r.Y + 20, stage.Type.ToString().ToUpperInvariant(), usable ? QualityColor(stage.Type) : Muted, 36);
+                var moveType = stage.Type;
+                string typeName = Text.Of($"condition.quality.{moveType}");
+                Tag(r.X + r.Width - 28 - UiFonts.Measure(typeName, 20, UiWeight.Black) - 32, r.Y + 20, typeName, usable ? QualityColor(stage.Type) : Muted, 36);
                 HeartRow(r.X + 28, r.Y + 84, stage.Hearts, Math.Max(stage.Hearts, 3), 12);
                 int rise = ContestRules.Voltage(contest.Category, stage.Type);
-                string voltage = rise > 0 ? "VOLTAGE UP" : rise < 0 ? "VOLTAGE DOWN" : "";
+                string voltage = rise > 0 ? Text.Of("contest.voltageUp") : rise < 0 ? Text.Of("contest.voltageDown") : "";
                 if (voltage.Length > 0) UiFonts.DrawCentered(voltage, r.X + 150, r.Y + 84, 20, rise > 0 ? Green : Red, UiWeight.Black);
-                string what = usable ? ContestRules.Describe(stage.Effect) : "Shown last turn: not twice running.";
+                string what = usable ? ContestRules.Describe(stage.Effect) : Text.Of("contest.shownLastTurn");
                 DrawWrapped(what, r.X + 28, r.Y + 106, r.Width - 56, 22, Muted, 28, UiWeight.ExtraBold);
             }
         }
@@ -588,26 +594,26 @@ internal static partial class ModernUi
     // ------------------------------------------------------------------ the results
 
     private static readonly Color[] RoundColors = { new(238, 118, 172, 255), new(74, 132, 228, 255), new(240, 176, 56, 255) };
-    private static readonly string[] RoundNames = { "VISUAL", "DANCE", "ACTING" };
+    private static string RoundName(int round) => Text.Of($"contest.round.{round}");
 
     private static void ContestResults(int sw, int sh, SuperContestScreen screen)
     {
         var contest = screen.Contest!;
-        ContestFrame(sw, sh, screen, ("Z", "Next"));
+        ContestFrame(sw, sh, screen, Hint("shared.keys.z", "shared.hints.next"));
         float top = ContentTop, bottom = ContentBottom - ContestBox - Gutter;
         var board = new Rectangle(Margin, top, sw - Margin * 2, bottom - top);
         Panel(board, 34);
         bool practice = contest.IsPractice;
         bool decided = practice || screen.Phase is SuperContestPhase.Award or SuperContestPhase.Done || screen.ResultStage >= 3;
         float x = board.X + 44;
-        Label(practice ? "PRACTICE" : "THE RESULTS", x, board.Y + 30);
+        Label(Text.Of(practice ? "contest.practice" : "contest.results"), x, board.Y + 30);
         if (!practice)
         {
             float kx = board.X + board.Width - 44;
             for (int round = 2; round >= 0; round--)
             {
-                kx -= UiFonts.Measure(RoundNames[round], 20, UiWeight.Black) + 32;
-                Tag(kx, board.Y + 22, RoundNames[round], RoundColors[round], 36);
+                kx -= UiFonts.Measure(RoundName(round), 20, UiWeight.Black) + 32;
+                Tag(kx, board.Y + 22, RoundName(round), RoundColors[round], 36);
                 kx -= 12;
             }
         }
@@ -652,7 +658,8 @@ internal static partial class ModernUi
             }
             if (decided)
             {
-                string place = who.Placement switch { 0 => "1st", 1 => "2nd", 2 => "3rd", _ => "4th" };
+                int placing = who.Placement is >= 0 and <= 2 ? who.Placement : 3;
+                string place = Text.Of($"contest.placing.{placing}");
                 UiFonts.DrawCentered(place, track.X + track.Width + 24, r.Y + r.Height / 2f, 36, wins ? Darker(Gold, 0.25f) : Ink, UiWeight.Black);
             }
         }
