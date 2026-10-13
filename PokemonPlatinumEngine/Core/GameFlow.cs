@@ -65,6 +65,15 @@ public sealed partial class GameFlow
     /// <summary>Evolutions waiting to be played one after the other.</summary>
     public Queue<EvolutionRequest> Evolutions { get; } = new();
 
+    /// <summary>
+    /// A Pokémon's model the flow wants built before the picture closes on it (a battle's, an evolution's, a hatching's,
+    /// a walk's): the engine answers with <c>PokemonModels.Request</c>, so the flow asks for pictures without making any.
+    /// </summary>
+    public event Action<string>? ModelWanted;
+
+    /// <summary>Says that the model of <paramref name="name"/> (a species or a form) is wanted soon.</summary>
+    public void WantModel(string name) => ModelWanted?.Invoke(name);
+
     /// <summary>The state whose screen is shown: the one under the close button's question while it is asked.</summary>
     public GameState Shown => State == GameState.WindowClosing ? ClosingFrom : State;
 

@@ -57,7 +57,7 @@ public partial class GameEngine
         if (TownMapNow() is not { } state) return false;
         townMapFromBag = fromBag;
         townMapScreen.Open(state, mode, flier);
-        currentState = GameState.FlyMap;
+        flow.State = GameState.FlyMap;
         return true;
     }
 
@@ -66,15 +66,15 @@ public partial class GameEngine
     {
         if (townMapScreen.Mode == TownMapMode.Fly)
         {
-            currentState = GameState.PartyMenu;
+            flow.State = GameState.PartyMenu;
             partyScreen.IsActive = true;
         }
         else if (townMapFromBag)
         {
-            currentState = GameState.BagMenu;
+            flow.State = GameState.BagMenu;
             bagScreen.Resume();
         }
-        else currentState = GameState.Overworld;
+        else flow.State = GameState.Overworld;
     }
 
     /// <summary>

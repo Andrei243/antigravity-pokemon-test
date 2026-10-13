@@ -32,7 +32,7 @@ public partial class GameEngine
     private System.Collections.Generic.List<string> ChampionsModels()
     {
         var shown = playerParty.Members.Where(p => !p.IsEgg).Select(p => p.ModelName).Distinct().ToList();
-        foreach (string name in shown) PokemonModels.Request(name);
+        foreach (string name in shown) flow.WantModel(name);
         return shown;
     }
 
@@ -51,7 +51,7 @@ public partial class GameEngine
     {
         ceremony.Update(dt);
         // It closes to black by itself, and the script that opened it has the field dark behind it
-        if (!ceremony.IsActive) currentState = GameState.Overworld;
+        if (!ceremony.IsActive) flow.State = GameState.Overworld;
     }
 
     /// <summary>Fades into the credits; a script waits for them.</summary>
@@ -69,7 +69,7 @@ public partial class GameEngine
     {
         credits.Update(dt);
         if (credits.IsActive) return;
-        currentState = GameState.Overworld;
+        flow.State = GameState.Overworld;
         PlayFieldMusic();
     }
 }

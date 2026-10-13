@@ -65,11 +65,11 @@ public partial class GameEngine
                 enteredSlots = Array.Empty<int>();
                 partyScreen.ShowCondition = story.Has(ContestHallVisitedFlag);
                 partyScreen.OpenToEnter(number, FrontierRules.MayEnter);
-                currentState = GameState.PartyMenu;
+                flow.State = GameState.PartyMenu;
                 return 0;
             case "records":
                 frontierRecordsScreen.Open(FrontierBoard.For((FrontierFacility)number, frontier, story));
-                currentState = GameState.FrontierRecords;
+                flow.State = GameState.FrontierRecords;
                 return 1;
             case "seen":
                 return playerPokedex.IsSeen(number) ? 1 : 0;
@@ -114,7 +114,7 @@ public partial class GameEngine
                 enteredSlots = Array.Empty<int>();
                 partyScreen.ShowCondition = story.Has(ContestHallVisitedFlag);
                 partyScreen.OpenToEnter(number, BattleHallChallenge.MayEnter);
-                currentState = GameState.PartyMenu;
+                flow.State = GameState.PartyMenu;
                 return 0;
             case "board":
                 OpenHallBoard();
@@ -244,7 +244,7 @@ public partial class GameEngine
     private void UpdateFrontierRecords(float dt)
     {
         frontierRecordsScreen.Update(dt);
-        if (!frontierRecordsScreen.IsActive) currentState = GameState.Overworld;
+        if (!frontierRecordsScreen.IsActive) flow.State = GameState.Overworld;
     }
 
     /// <summary>The Battle Points stand over the field while a script speaks of them, and go as it ends.</summary>

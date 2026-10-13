@@ -363,7 +363,7 @@ public partial class GameEngine
             if (SecretBaseRules.GoodBlocking(room, x, z) is { } good && SecretBaseRules.RecordLine(good.Good, underground.Records) is { } line)
             {
                 dialogue.ShowDialogue("", new[] { line });
-                currentState = GameState.Dialogue;
+                flow.State = GameState.Dialogue;
                 return true;
             }
             return false;
@@ -498,7 +498,7 @@ public partial class GameEngine
 
     private void DrawTrap()
     {
-        if (trap != null && currentState == GameState.Overworld) ModernUi.DrawTrap(VirtualWidth, VirtualHeight, trap, (float)FrameClock.Now);
+        if (trap != null && flow.State == GameState.Overworld) ModernUi.DrawTrap(VirtualWidth, VirtualHeight, trap, (float)FrameClock.Now);
     }
 
     // ------------------------------------------------------------------ the screens
@@ -507,7 +507,7 @@ public partial class GameEngine
     private void OpenUndergroundBag(int tab = 0)
     {
         if (trap != null) return;
-        currentState = GameState.Underground;
+        flow.State = GameState.Underground;
         undergroundScreen.OpenBag(underground, item =>
         {
             if (ItemDatabase.Get(item) is not { } data) return false;
@@ -520,7 +520,7 @@ public partial class GameEngine
     {
         undergroundScreen.Update(dt);
         if (undergroundScreen.IsActive) return;
-        currentState = GameState.Overworld;
+        flow.State = GameState.Overworld;
         var asked = undergroundScreen.TakeRequest();
         var (x, z) = AheadBelow();
         bool someone = currentMap.GetNpcAt(x, z) != null;
@@ -616,7 +616,7 @@ public partial class GameEngine
         story.Set(DugForFossilsFlag);
         var game = new MiningGame(new Rand32((ulong)fieldRandom.NextInt64()), PlayerIdentity.Number % 2 == 1, playerPokedex.NationalUnlocked,
             !underground.HasMined, underground.NeverMined);
-        currentState = GameState.Mining;
+        flow.State = GameState.Mining;
         miningScreen.Open(game, underground);
         return true;
     }
@@ -627,20 +627,20 @@ public partial class GameEngine
         if (miningScreen.IsActive) return;
         // Everything out of the wall counts on the Trainer Card (TRAINER_SCORE_EVENT_UNDERGROUND_UNCOVER_FOSSIL)
         if (miningScreen.Game.AllDug) trainerScore = TrainerScore.Add(trainerScore, TrainerScore.UncoveredWall);
-        currentState = GameState.Overworld;
+        flow.State = GameState.Overworld;
     }
 
     private void OpenHiker(NPC? hiker)
     {
         int vendor = hiker != null ? UndergroundVendors.At(hiker.GridX, hiker.GridY) : -1;
         if (vendor < 0) return;
-        currentState = GameState.Underground;
+        flow.State = GameState.Underground;
         undergroundScreen.OpenHiker(underground, vendor, playerPokedex.NationalUnlocked);
     }
 
     private void OpenBasePc()
     {
-        currentState = GameState.Underground;
+        flow.State = GameState.Underground;
         undergroundScreen.OpenPc(underground);
     }
 
@@ -652,7 +652,7 @@ public partial class GameEngine
     private void OpenDecoration()
     {
         if (underground.Base == null) return;
-        currentState = GameState.Decoration;
+        flow.State = GameState.Decoration;
         decorationScreen.Open(SecretBaseRules.Decorating(underground), "DECORATE THE BASE", piece => UndergroundArt.PlanLook(piece.Kind));
     }
 

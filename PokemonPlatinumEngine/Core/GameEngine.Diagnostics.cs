@@ -23,7 +23,7 @@ public partial class GameEngine
     /// stand where they were, and the sound drops (<see cref="AudioManager.Away"/>). The picture is still drawn. The
     /// close button's question is never kept waiting: whoever asked it is there to answer.
     /// </summary>
-    public bool HeldForFocus => WaitsForFocus(Settings.FocusPause, WindowFocused, currentState);
+    public bool HeldForFocus => WaitsForFocus(Settings.FocusPause, WindowFocused, flow.State);
 
     // Whether the last frame waited, so the log is told once when the wait begins and once when it ends
     private bool wasHeldForFocus;
@@ -64,8 +64,8 @@ public partial class GameEngine
     /// </summary>
     internal GameFacts DescribeForCrash()
     {
-        string state = currentState == GameState.WindowClosing ? $"{flow.ClosingFrom} (the close button's question was up)" : currentState.ToString();
-        if (currentState == GameState.Transition) state = $"Transition ({flow.Before} to {flow.After})";
+        string state = flow.State == GameState.WindowClosing ? $"{flow.ClosingFrom} (the close button's question was up)" : flow.State.ToString();
+        if (flow.State == GameState.Transition) state = $"Transition ({flow.Before} to {flow.After})";
         string? renderer = Raylib.IsWindowReady() ? Gl.Renderer() : null;
         if (!gameStarted || currentMap == null || player == null) return new GameFacts(state, Renderer: renderer, Settings: Settings.Describe());
         return new GameFacts(state, currentMap.Name, currentMap.AreaAt(player.GridX, player.GridY)?.Key, player.GridX, player.GridY, renderer, Settings.Describe(),
