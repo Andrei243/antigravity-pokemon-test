@@ -1165,7 +1165,11 @@ public class IntoBattleTests
         Assert.Equal(TransitionLens.None, SceneTransition.LensAt(kind, 0f));
         Assert.Equal(TransitionLens.None, SceneTransition.LensAt(kind, f - 0.01f));
         // The beats in the original's frames, thirty to the second
-        Assert.Equal((41f / 30f, 47f / 30f, 56f / 30f, 57f / 30f), (SceneTransition.WidenUntil, SceneTransition.RushFrom, SceneTransition.RushUntil, SceneTransition.CameraSeconds));
+        // (to a ten-thousandth: the beats are sums of the flashes' seconds and the frames, which round apart)
+        Assert.Equal(41f / 30f, SceneTransition.WidenUntil, 4);
+        Assert.Equal(47f / 30f, SceneTransition.RushFrom, 4);
+        Assert.Equal(56f / 30f, SceneTransition.RushUntil, 4);
+        Assert.Equal(57f / 30f, SceneTransition.CameraSeconds, 4);
         Assert.Equal((2f, 1f / 3f), (SceneTransition.LegendaryWhiteSeconds, SceneTransition.MythicalWhiteSeconds), new FloatPair());
         // 0x5C1 to 0x6C1 each side of the middle: 8.09° to 9.50°, a lens of 0.850; and the rush to the kit's tightest
         Assert.Equal(0.850f, SceneTransition.LegendaryWide, 3);

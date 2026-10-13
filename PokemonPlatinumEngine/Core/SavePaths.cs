@@ -43,7 +43,7 @@ public sealed record SaveEnvironment(string WorkingDirectory, string BaseDirecto
     /// </summary>
     public string? PerUserFolder => Platform switch
     {
-        SavePlatform.Windows => Known(AppData) ? Path.Combine(AppData!, "PokemonPlatinum") : null,
+        SavePlatform.Windows => KnownOnWindows(AppData) ? Path.Combine(AppData!, "PokemonPlatinum") : null,
         SavePlatform.MacOS => Known(Home) ? Path.Combine(Home!, "Library", "Application Support", "PokemonPlatinum") : null,
         _ => Known(XdgDataHome) ? Path.Combine(XdgDataHome!, "pokemon-platinum")
             : Known(Home) ? Path.Combine(Home!, ".local", "share", "pokemon-platinum") : null
@@ -51,6 +51,12 @@ public sealed record SaveEnvironment(string WorkingDirectory, string BaseDirecto
 
     // (An environment variable that is set to nothing, or to a folder's bare name, names no folder)
     private static bool Known(string? folder) => !string.IsNullOrWhiteSpace(folder) && Path.IsPathRooted(folder);
+
+    // A Windows folder is rooted by its drive or its server whatever system asks: on Linux, which the tests and the
+    // cloud run on, .NET calls C:\Users a bare name
+    private static bool KnownOnWindows(string? folder) => Known(folder)
+        || folder is { Length: >= 3 } f && char.IsAsciiLetter(f[0]) && f[1] == ':' && f[2] is '\\' or '/'
+        || folder is { Length: >= 3 } u && u.StartsWith(@"\\", StringComparison.Ordinal);
 }
 
 /// <summary>Why the saves are where they are.</summary>

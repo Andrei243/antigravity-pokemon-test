@@ -40,7 +40,7 @@ public class FocusAndFrameCapTests
         Assert.Equal(9, OptionsScreen.VisibleRows);
         var screen = new OptionsScreen();
         screen.Open();
-        foreach (var row in new[] { OptionRow.FocusPause, OptionRow.FrameCap, OptionRow.SkipScenes })
+        foreach (var row in new[] { OptionRow.FocusPause, OptionRow.FrameCap, OptionRow.SkipScenes, OptionRow.BattleScene, OptionRow.BattleStyle })
         {
             while (Rows[screen.SelectedIndex] != row) screen.Move(1);
             Assert.InRange(screen.SelectedIndex, screen.FirstRow, screen.FirstRow + OptionsScreen.VisibleRows - 1);

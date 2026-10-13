@@ -25,13 +25,28 @@ public class BattleOptionsTests
     private static List<BattleEvent> Flat(IEnumerable<BattleEvent> log) =>
         log.SelectMany(e => e is Said said ? new[] { e }.Concat(said.Shows).Concat(said.OnImpact) : new[] { e }).ToList();
 
+    /// <summary>
+    /// A turn in which the Garchomp knocks the Bidoof out, and the trainer's next Pokémon picked: both sides are
+    /// answered from outside, so the rules ask for it (the offer comes after it is picked).
+    /// </summary>
+    private static List<string> KnockOut(BattleCore core)
+    {
+        var said = Turn(core);
+        if (core.Request is ReplacementRequest { Place: var place } && place == Foe)
+        {
+            core.Submit(BattleChoice.Switch(Foe, 1));
+            said.AddRange(Lines(core.TakeLog()));
+        }
+        return said;
+    }
+
     // ------------------------------------------------------------------ Battle Style
 
     [Fact]
     public void ShiftOffersASwitchBeforeTheTrainersNextPokemonComesOut()
     {
         var core = Against(MyTeam(), TheirTeam(), offersSwitch: true);
-        var said = Turn(core);
+        var said = KnockOut(core);
 
         // subscript_replace_fainted: the trainer's next Pokémon is picked, the question asked, and nothing of it is
         // out yet
@@ -48,7 +63,7 @@ public class BattleOptionsTests
     public void SetOffersNothing()
     {
         var core = Against(MyTeam(), TheirTeam());
-        var said = Turn(core);
+        var said = KnockOut(core);
         Assert.IsType<ActionRequest>(core.Request);
         Assert.DoesNotContain(said, line => line.Contains("Will you change"));
         Assert.Equal("Starly", core.EnemySlots[0].Pokemon!.Species.Name);
@@ -59,7 +74,7 @@ public class BattleOptionsTests
     public void NobodyToSwitchToMeansNoOffer()
     {
         var core = Against(new[] { Of(Gender.Male, "Garchomp", 80, "Earthquake") }, TheirTeam(), offersSwitch: true);
-        Turn(core);
+        KnockOut(core);
         Assert.IsType<ActionRequest>(core.Request);
     }
 
@@ -67,7 +82,7 @@ public class BattleOptionsTests
     public void StayingInSendsOutTheTrainersPokemonAndGoesOn()
     {
         var core = Against(MyTeam(), TheirTeam(), offersSwitch: true);
-        Turn(core);
+        KnockOut(core);
         core.Submit(BattleChoice.Stay(Mine));
         var events = Flat(core.TakeLog());
         Assert.Contains(events, e => e is Entered entered && entered.Place == Foe && entered.Pokemon.Species.Name == "Starly");
@@ -80,7 +95,7 @@ public class BattleOptionsTests
     public void ASwitchAtTheOfferComesInBeforeTheTrainersPokemon()
     {
         var core = Against(MyTeam(), TheirTeam(), offersSwitch: true);
-        Turn(core);
+        KnockOut(core);
         core.Submit(BattleChoice.Switch(Mine, 1));
         var events = Flat(core.TakeLog());
         // subscript_switch_pokemon: the recall, the newcomer, then the trainer's Pokémon
@@ -101,7 +116,7 @@ public class BattleOptionsTests
         Assert.NotNull(core.WhyNot(BattleChoice.Stay(Mine)));
         Assert.Throws<ArgumentException>(() => core.Submit(BattleChoice.Stay(Mine), BattleChoice.Fight(Foe, 0)));
 
-        Turn(core);
+        KnockOut(core);
         Assert.IsType<SwitchOfferRequest>(core.Request);
         Assert.Null(core.WhyNot(BattleChoice.Stay(Mine)));
         Assert.Throws<ArgumentException>(() => core.Submit(BattleChoice.Fight(Mine, 0)));
@@ -127,7 +142,7 @@ public class BattleOptionsTests
         }
         var played = Fresh();
         played.Start();
-        Turn(played);
+        KnockOut(played);
         played.Submit(BattleChoice.Switch(Mine, 1));
         Turn(played);
 
