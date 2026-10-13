@@ -645,7 +645,7 @@ public partial class GameEngine
     {
         WriteSave();
         if (quiet) return;
-        ShowNotification("Game saved.");
+        ShowNotification(Text.Of("engine.saved"));
         AudioManager.PlaySound("save");
     }
 
@@ -707,7 +707,7 @@ public partial class GameEngine
                 else
                 {
                     flow.KeepPlaying();
-                    ShowNotification("The game couldn't be saved.");
+                    ShowNotification(Text.Of("engine.notSaved"));
                 }
                 break;
             case CloseChoice.Quit:
@@ -794,7 +794,7 @@ public partial class GameEngine
             Settings.Muted = !Settings.Muted;
             ApplySettings(window: false);
             Settings.Save();
-            ShowNotification(Settings.Muted ? "Sound off" : "Sound on");
+            ShowNotification(Settings.Muted ? Text.Of("engine.sound.off") : Text.Of("engine.sound.on"));
         }
 
         switch (flow.State)
@@ -1256,7 +1256,7 @@ public partial class GameEngine
         if (InputManager.IsActionPressed(GameAction.Item) && !flow.Player.IsMoving)
         {
             if (flow.RegisteredItem != null && ItemDatabase.Get(flow.RegisteredItem) is { } kept && flow.Bag.GetQuantity(kept) > 0) UseFieldItem(kept);
-            else ShowNotification("A key item can be kept on this button: register one in the bag.");
+            else ShowNotification(Text.Of("engine.registerOne"));
             return;
         }
 
@@ -1269,7 +1269,7 @@ public partial class GameEngine
         {
             flow.Player.FastGear = !flow.Player.FastGear;
             AudioManager.PlaySound("gear");
-            ShowNotification(flow.Player.FastGear ? "Top gear." : "Low gear.");
+            ShowNotification(flow.Player.FastGear ? Text.Of("engine.gear.top") : Text.Of("engine.gear.low"));
         }
         runWasDown = runDown;
 
