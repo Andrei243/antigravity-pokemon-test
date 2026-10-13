@@ -24,14 +24,14 @@ public partial class GameEngine
     /// </summary>
     private void KeepTheMachinesBalls()
     {
-        if (currentMap.Hall != HallStyle.HallOfFame) return;
-        (currentMap.MachineBalls, currentMap.MachineLit) = world.Pieces.Machine(SetPiece.HallOfFame, world.Life.Now);
+        if (flow.Map.Hall != HallStyle.HallOfFame) return;
+        (flow.Map.MachineBalls, flow.Map.MachineLit) = world.Pieces.Machine(SetPiece.HallOfFame, world.Life.Now);
     }
 
     /// <summary>The team's models, asked for before a fade and waited on at its midpoint, as a battle's are.</summary>
     private System.Collections.Generic.List<string> ChampionsModels()
     {
-        var shown = playerParty.Members.Where(p => !p.IsEgg).Select(p => p.ModelName).Distinct().ToList();
+        var shown = flow.Party.Members.Where(p => !p.IsEgg).Select(p => p.ModelName).Distinct().ToList();
         foreach (string name in shown) flow.WantModel(name);
         return shown;
     }
@@ -43,7 +43,7 @@ public partial class GameEngine
         StartTransition(GameState.HallOfFameCeremony, () =>
         {
             AwaitModels(shown);
-            ceremony.Begin(playerParty.Members, playerName, trainerId, playTime, PlayerIdentity.Character);
+            ceremony.Begin(flow.Party.Members, playerName, trainerId, playTime, PlayerIdentity.Character);
         });
     }
 
@@ -61,7 +61,7 @@ public partial class GameEngine
         StartTransition(GameState.Credits, () =>
         {
             AwaitModels(shown);
-            credits.Begin(playerName, playerParty.Members, note => ModernUi.WrapEvenly(note, CreditsRoll.ColumnWidth, CreditsRoll.NoteSize));
+            credits.Begin(playerName, flow.Party.Members, note => ModernUi.WrapEvenly(note, CreditsRoll.ColumnWidth, CreditsRoll.NoteSize));
         });
     }
 

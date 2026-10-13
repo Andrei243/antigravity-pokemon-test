@@ -30,9 +30,9 @@ public partial class GameEngine
     private void HoldContest(int slot, ContestStat category, ContestRank rank, ContestMode mode)
     {
         contestOutcome = null;
-        if (slot < 0 || slot >= playerParty.Count) return;
-        var pokemon = playerParty.Members[slot];
-        bool afterGame = story.IsRegionComplete("Sinnoh") && playerPokedex.NationalUnlocked;
+        if (slot < 0 || slot >= flow.Party.Count) return;
+        var pokemon = flow.Party.Members[slot];
+        bool afterGame = flow.Story.IsRegionComplete("Sinnoh") && flow.Pokedex.NationalUnlocked;
         StartTransition(GameState.SuperContest, () =>
         {
             contestScreen.Begin(pokemon, PlayerIdentity.Name, PlayerIdentity.Look == PlayerLook.Girl, category, rank, mode, afterGame, fashionCase, fieldRandom);
@@ -63,11 +63,11 @@ public partial class GameEngine
             if (!contest.IsPractice)
             {
                 foreach (var rival in contest.Contestants.Where(c => !c.IsPlayer))
-                    playerPokedex.RegisterSeen(rival.Pokemon.Species.DexNumber);
+                    flow.Pokedex.RegisterSeen(rival.Pokemon.Species.DexNumber);
                 if (outcome.Won)
                 {
                     trainerScore = TrainerScore.Add(trainerScore, TrainerScore.WonContest);
-                    if (contest.Rank == ContestRank.Master) story.Set(ContestMasterFlag(contest.Category));
+                    if (contest.Rank == ContestRank.Master) flow.Story.Set(ContestMasterFlag(contest.Category));
                 }
             }
         }

@@ -45,20 +45,20 @@ public partial class GameEngine
             Time = GameClock.Now,
             Today = GameClock.Today,
             SwarmArea = Swarms.Today(encounters),
-            NationalDex = playerPokedex.NationalUnlocked,
+            NationalDex = flow.Pokedex.NationalUnlocked,
             TrophyFirst = TrophyGardenRules.SpeciesIn(encounters.TrophyFirst, garden),
             TrophySecond = TrophyGardenRules.SpeciesIn(encounters.TrophySecond, garden),
             MarshDaily = safari.Active ? encounters.MarshDaily : null,
             Marsh = SpecialEncounterTables.Sinnoh.GreatMarsh,
             Partner = partner != null,
             Radar = radar.Active ? radar : null,
-            Height = player.HeightOn(currentMap),
+            Height = flow.Player.HeightOn(flow.Map),
             State = encounters
         };
     }
 
     /// <summary>The place the player is in, as the roamers know places: its area's key, or a hand-made map's name.</summary>
-    private string PlaceKey() => currentMap.AreaAt(player.GridX, player.GridY)?.Key ?? currentMap.Name;
+    private string PlaceKey() => flow.Map.AreaAt(flow.Player.GridX, flow.Player.GridY)?.Key ?? flow.Map.Name;
 
     /// <summary>The Poké Radar's chain is over, its patches still.</summary>
     private void EndRadarChain() => radar.Clear();
@@ -70,9 +70,9 @@ public partial class GameEngine
     /// </summary>
     private bool EncountersStep()
     {
-        if (playerInventory.GetQuantity(ItemDatabase.Get("Poké Radar")!) > 0) RadarChain.Charge(encounters);
-        radar.KeepInView(player.GridX, player.GridY);
-        switch (FieldPoison.Step(encounters, playerParty, Ruleset.Current))
+        if (flow.Bag.GetQuantity(ItemDatabase.Get("Poké Radar")!) > 0) RadarChain.Charge(encounters);
+        radar.KeepInView(flow.Player.GridX, flow.Player.GridY);
+        switch (FieldPoison.Step(encounters, flow.Party, Ruleset.Current))
         {
             case PoisonStep.Hurt:
                 AudioManager.PlaySound("status_poison");
@@ -112,14 +112,14 @@ public partial class GameEngine
         if (life.Now < nextStir) return;
         nextStir = life.Now + StirEvery;
         foreach (var patch in radar.Patches.Where(p => p.Active))
-            life.Rustle(currentMap, patch.X, patch.Y, patch.Shake == PatchShake.Hard, patch.Shiny);
-        int px = player.GridX, py = player.GridY;
-        foreach (var tree in currentMap.Props)
+            life.Rustle(flow.Map, patch.X, patch.Y, patch.Shake == PatchShake.Hard, patch.Shiny);
+        int px = flow.Player.GridX, py = flow.Player.GridY;
+        foreach (var tree in flow.Map.Props)
         {
             if (tree.Type != PropType.HoneyTree || Math.Abs(tree.X - px) > 12 || Math.Abs(tree.Y - py) > 9) continue;
             int x = tree.X + tree.Width / 2, y = tree.Y + tree.Depth - 1;
-            if (HoneyTrees.IdOf(currentMap.AreaAt(x, y)?.Key) is { } id && HoneyTrees.Shaking(encounters.Trees[id]))
-                life.ShakeTree(currentMap, x, y, CrownTexels / 32f * Graphics.MapScene.VerticalScaleOf(currentMap), encounters.Trees[id].Shakes);
+            if (HoneyTrees.IdOf(flow.Map.AreaAt(x, y)?.Key) is { } id && HoneyTrees.Shaking(encounters.Trees[id]))
+                life.ShakeTree(flow.Map, x, y, CrownTexels / 32f * Graphics.MapScene.VerticalScaleOf(flow.Map), encounters.Trees[id].Shakes);
         }
     }
 
@@ -145,7 +145,7 @@ public partial class GameEngine
     private void GiveWildItems(IEnumerable<Pokemon> wilds, BattleKind kind)
     {
         if (kind is not (BattleKind.Normal or BattleKind.Safari)) return;
-        var lead = WildLead.Of(playerParty);
+        var lead = WildLead.Of(flow.Party);
         foreach (var wild in wilds)
             if (wild.HeldItem == null) wild.HeldItem = WildEncounterRules.HeldItem(wild.Species, lead, fieldRandom);
     }
@@ -162,7 +162,7 @@ public partial class GameEngine
         if (!field) return;
         bool won = fought.Result == BattleResult.PlayerVictory, caught = fought.Result == BattleResult.EnemyCaught;
         if (!defeat && fought.EnemyPokemon is { } foe && fought.Kind is BattleKind.Normal or BattleKind.Roamer)
-            Roamers.AfterBattle(encounters, foe, won, caught, PlaceKey(), story, fieldRandom);
+            Roamers.AfterBattle(encounters, foe, won, caught, PlaceKey(), flow.Story, fieldRandom);
         radar.AfterBattle(won && !defeat, caught, fieldRandom);
     }
 
@@ -173,7 +173,7 @@ public partial class GameEngine
     /// </summary>
     private void KeepTheEncounterClock(int daysPassed)
     {
-        if (daysPassed > 0) DailyEvents.DaysPass(daysPassed, story, encounters, PlaceKey(), fieldRandom, underground, frontier);
+        if (daysPassed > 0) DailyEvents.DaysPass(daysPassed, flow.Story, encounters, PlaceKey(), fieldRandom, underground, frontier);
         encounters.ClockTo(GameClock.Moment);
         berries.ClockTo(GameClock.Moment);
     }

@@ -29,12 +29,12 @@ public partial class GameEngine
     /// </summary>
     private void KeepBerriesInView()
     {
-        foreach (var npc in currentMap.NPCs.Near(player.GridX, player.GridY, BerrySight, soilInSight))
+        foreach (var npc in flow.Map.NPCs.Near(flow.Player.GridX, flow.Player.GridY, BerrySight, soilInSight))
             if (npc.BerryPatch is { } seen) berries.Seen(seen);
-        if (berries.Revision == berryRevision && berryMap == currentMap) return;
+        if (berries.Revision == berryRevision && berryMap == flow.Map) return;
         berryRevision = berries.Revision;
-        berryMap = currentMap;
-        ShowBerries(currentMap, berries);
+        berryMap = flow.Map;
+        ShowBerries(flow.Map, berries);
     }
 
     /// <summary>Gives every patch of soil on a map what its berry patch shows.</summary>

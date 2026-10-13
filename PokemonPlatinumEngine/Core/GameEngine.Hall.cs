@@ -26,7 +26,7 @@ public partial class GameEngine
         if (hall == null) return;
         scriptAnswer = 0;
         enteredSlots = Array.Empty<int>();
-        var entered = hall.Slots.Where(s => s >= 0 && s < playerParty.Count).Select(s => playerParty.Members[s]).ToList();
+        var entered = hall.Slots.Where(s => s >= 0 && s < flow.Party.Count).Select(s => flow.Party.Members[s]).ToList();
         hallBoard.Open(hall, entered);
         flow.State = GameState.HallBoard;
     }

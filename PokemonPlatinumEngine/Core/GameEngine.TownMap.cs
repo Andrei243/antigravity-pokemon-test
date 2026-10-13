@@ -21,7 +21,7 @@ public partial class GameEngine
     private string? regionPlacesOf;
 
     /// <summary>The map of the region the player is in; null in a region that has none.</summary>
-    private RegionMap? RegionMapNow => RegionMap.ForMap(currentMap.Name);
+    private RegionMap? RegionMapNow => RegionMap.ForMap(flow.Map.Name);
 
     /// <summary>
     /// The cell of the region's map the player is in (<c>TownMapContext_Init</c>): their own on the overworld; off
@@ -30,14 +30,14 @@ public partial class GameEngine
     /// </summary>
     private (int X, int Y)? RegionCellNow(RegionMap region)
     {
-        if (currentMap.Name == region.Map) return RegionMap.CellOf(player.GridX, player.GridY);
+        if (flow.Map.Name == region.Map) return RegionMap.CellOf(flow.Player.GridX, flow.Player.GridY);
         if (exitSpot is { } exit && exit.Map == region.Map) return RegionMap.CellOf(exit.X, exit.Y);
         if (regionPlaces == null || regionPlacesOf != region.Region)
         {
             regionPlaces = region.PlacesOf(MapDatabase.MapNames.Select(MapDatabase.Get));
             regionPlacesOf = region.Region;
         }
-        return regionPlaces.TryGetValue(currentMap.Name, out var cell) ? cell : null;
+        return regionPlaces.TryGetValue(flow.Map.Name, out var cell) ? cell : null;
     }
 
     /// <summary>What the game has put on the region's map now.</summary>
@@ -45,7 +45,7 @@ public partial class GameEngine
     {
         if (RegionMapNow is not { } region) return null;
         var overworld = MapDatabase.Get(region.Map);
-        return new TownMapState(region, story, RegionCellNow(region), mapTrail, town => overworld.Areas.Any(a => a.Key == town.Area && a.Open));
+        return new TownMapState(region, flow.Story, RegionCellNow(region), mapTrail, town => overworld.Areas.Any(a => a.Key == town.Area && a.Open));
     }
 
     /// <summary>
@@ -56,7 +56,7 @@ public partial class GameEngine
     {
         if (TownMapNow() is not { } state) return false;
         townMapFromBag = fromBag;
-        townMapScreen.Open(state, mode, flier);
+        flow.TownMapScreen.Open(state, mode, flier);
         flow.State = GameState.FlyMap;
         return true;
     }
@@ -64,15 +64,15 @@ public partial class GameEngine
     /// <summary>The map is put away: back to the team Fly was chosen from, the bag the Town Map came out of, or the field.</summary>
     private void CloseTownMap()
     {
-        if (townMapScreen.Mode == TownMapMode.Fly)
+        if (flow.TownMapScreen.Mode == TownMapMode.Fly)
         {
             flow.State = GameState.PartyMenu;
-            partyScreen.IsActive = true;
+            flow.PartyScreen.IsActive = true;
         }
         else if (townMapFromBag)
         {
             flow.State = GameState.BagMenu;
-            bagScreen.Resume();
+            flow.BagScreen.Resume();
         }
         else flow.State = GameState.Overworld;
     }
@@ -85,9 +85,9 @@ public partial class GameEngine
     private void NoteArrivalOnTheMap()
     {
         if (RegionMapNow is not { } region) return;
-        foreach (string flag in region.ArrivalFlags(currentMap.Name)) story.Set(flag);
-        if (currentMap.AreaAt(player.GridX, player.GridY)?.Key is { Length: > 0 } key)
-            foreach (string flag in region.ArrivalFlags(key)) story.Set(flag);
+        foreach (string flag in region.ArrivalFlags(flow.Map.Name)) flow.Story.Set(flag);
+        if (flow.Map.AreaAt(flow.Player.GridX, flow.Player.GridY)?.Key is { Length: > 0 } key)
+            foreach (string flag in region.ArrivalFlags(key)) flow.Story.Set(flag);
     }
 
     /// <summary>
@@ -96,8 +96,8 @@ public partial class GameEngine
     /// </summary>
     private void NoteTheTrailOnArrival()
     {
-        if (RegionMapNow is not { } region || region.Map != currentMap.Name) return;
-        var (x, y) = RegionMap.CellOf(player.GridX, player.GridY);
+        if (RegionMapNow is not { } region || region.Map != flow.Map.Name) return;
+        var (x, y) = RegionMap.CellOf(flow.Player.GridX, flow.Player.GridY);
         mapTrail.PushViaWarp(x, y);
     }
 
@@ -106,6 +106,6 @@ public partial class GameEngine
     {
         foreach (var region in RegionDatabase.All)
             if (RegionMap.Of(region.Id) is { } map)
-                RegionMapPictures.Show(map, map.Hidden.Where(h => story.Var(h.Variable) == h.Value).Select(h => h.Key));
+                RegionMapPictures.Show(map, map.Hidden.Where(h => flow.Story.Var(h.Variable) == h.Value).Select(h => h.Key));
     }
 }

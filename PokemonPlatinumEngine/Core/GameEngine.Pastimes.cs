@@ -40,8 +40,8 @@ public partial class GameEngine
     /// a battle won at each of the five facilities, and a silver print or better at any, so each comes true as the
     /// facilities are built.
     /// </summary>
-    private VillaRecords VillaRecordsNow => new(FrontierEverywhere: frontier.WonEverywhere, FrontierPrint: Models.Frontier.FrontierBrains.AnyPrint(story), hallOfFame.Total,
-        story.Var(VillaRules.BattlegroundVariable), pastimes.BerriesPlanted, pastimes.EggsHatched, pastimes.Steps);
+    private VillaRecords VillaRecordsNow => new(FrontierEverywhere: frontier.WonEverywhere, FrontierPrint: Models.Frontier.FrontierBrains.AnyPrint(flow.Story), hallOfFame.Total,
+        flow.Story.Var(VillaRules.BattlegroundVariable), pastimes.BerriesPlanted, pastimes.EggsHatched, pastimes.Steps);
 
     private int PastimeAct(string what, int number, NPC? subject)
     {
@@ -53,16 +53,16 @@ public partial class GameEngine
             case "furnish":
                 FurnishVilla();
                 // The delivery that leaves the catalogue nothing more to sell (Villa_HasAllFurniture)
-                if (VillaRules.Owned(story) == VillaRules.Furniture.Count) trainerScore = TrainerScore.Add(trainerScore, TrainerScore.BoughtAllVillaFurniture);
+                if (VillaRules.Owned(flow.Story) == VillaRules.Furniture.Count) trainerScore = TrainerScore.Add(trainerScore, TrainerScore.BoughtAllVillaFurniture);
                 return 1;
             case "boxroom":
-                return pcBoxStorage.Free;
+                return flow.Boxes.Free;
             case "store":
                 if (!pastimes.PalPark.Stocked) return 0;
                 foreach (var pokemon in pastimes.PalPark.TakeSix("Pal Park", GameClock.Today))
                 {
-                    playerPokedex.RegisterCaught(pokemon.Species.DexNumber);
-                    pcBoxStorage.Store(pokemon);
+                    flow.Pokedex.RegisterCaught(pokemon.Species.DexNumber);
+                    flow.Boxes.Store(pokemon);
                 }
                 return 1;
             default:
@@ -93,7 +93,7 @@ public partial class GameEngine
         if (slotScreen.Machine is { } machine)
         {
             pastimes.Coins.Set(machine.Coins);
-            if (machine.MostRounds > story.Var(GameCornerPrizes.StreakVariable)) story.SetVar(GameCornerPrizes.StreakVariable, machine.MostRounds);
+            if (machine.MostRounds > flow.Story.Var(GameCornerPrizes.StreakVariable)) flow.Story.SetVar(GameCornerPrizes.StreakVariable, machine.MostRounds);
         }
         flow.State = GameState.Overworld;
     }
@@ -139,7 +139,7 @@ public partial class GameEngine
         villaProps.Clear();
         foreach (var piece in VillaRules.Furniture)
         {
-            bool owned = VillaRules.Owns(story, piece);
+            bool owned = VillaRules.Owns(flow.Story, piece);
             foreach (var place in piece.Places)
             {
                 if (place.Blocks)
@@ -169,7 +169,7 @@ public partial class GameEngine
 
     // ------------------------------------------------------------------ Pal Park
 
-    private bool InPalPark => currentMap.Name == PalParkMap;
+    private bool InPalPark => flow.Map.Name == PalParkMap;
 
     /// <summary>The Catching Show's clock runs while the field is the player's.</summary>
     private void TickPalPark(float dt)
@@ -185,8 +185,8 @@ public partial class GameEngine
     {
         var park = pastimes.PalPark;
         if (!InPalPark || park.Show is not { } show || !park.Running) return false;
-        int x = player.GridX, y = player.GridY;
-        int area = CatchingShow.AreaAt(x, y, currentMap.IsTallGrass(x, y), player.Mode == TravelMode.Surfing);
+        int x = flow.Player.GridX, y = flow.Player.GridY;
+        int area = CatchingShow.AreaAt(x, y, flow.Map.IsTallGrass(x, y), flow.Player.Mode == TravelMode.Surfing);
         int met = show.Step(area);
         if (met < 0) return false;
         fieldEncounter = false;
@@ -197,8 +197,8 @@ public partial class GameEngine
     /// <summary>A battle in the park is over: a catch is the show's next, and the sixth ends it.</summary>
     private void AfterParkBattle()
     {
-        if (battle?.Kind != BattleKind.PalPark || pastimes.PalPark.Show is not { } show) return;
-        if (battle.Caught == null) return;
+        if (flow.Battle?.Kind != BattleKind.PalPark || pastimes.PalPark.Show is not { } show) return;
+        if (flow.Battle.Caught == null) return;
         show.CaughtCurrent();
         if (show.Caught >= CatchingShow.Size)
         {
@@ -212,8 +212,8 @@ public partial class GameEngine
         var park = pastimes.PalPark;
         if (InPalPark && park.Show is { } show) ModernUi.ParkCount(VirtualWidth, show.ParkBalls, (int)park.Seconds);
         // The Coin Case's count stands on the screen while someone of the Game Corner or its exchange is spoken to
-        if (ScriptRunning && currentMap.Name is "VeilstoneGameCorner" or "VeilstonePrizeExchange" && playerInventory.GetQuantity(ItemDatabase.Get("Coin Case")!) > 0)
-            ModernUi.CoinCount(pastimes.Coins.Coins, playerMoney);
+        if (ScriptRunning && flow.Map.Name is "VeilstoneGameCorner" or "VeilstonePrizeExchange" && flow.Bag.GetQuantity(ItemDatabase.Get("Coin Case")!) > 0)
+            ModernUi.CoinCount(pastimes.Coins.Coins, flow.Money);
     }
 
     private sealed partial class FieldHost

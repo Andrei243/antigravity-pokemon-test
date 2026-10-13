@@ -25,7 +25,7 @@ public partial class GameEngine
     {
         // No wild Pokémon is met by a player with none able to fight: the story gives the first before the grass is
         // ever reached, and a game where that went wrong must not start a battle it can't play (it ended the game)
-        if (!playerParty.HasUsablePokemon) return;
+        if (!flow.Party.HasUsablePokemon) return;
         // Met in the field: the roamers and the Poké Radar hear how it ends (plan 06 · R13)
         fieldEncounter = true;
         // A roamer is battled as it is, and runs (AddRoamerToEnemyParty)
@@ -43,14 +43,14 @@ public partial class GameEngine
             ? new Pokemon(wildSpecies, lvl, Personality.ShinyWith(wildSpecies, PlayerIdentity.Number, rng, entry.Gender, entry.Nature), rng)
             : new Pokemon(wildSpecies, lvl, gender: entry.Gender, nature: entry.Nature);
         // Shellos and Gastrodon east of Mt. Coronet, Unown in their room's letters (AddWildMonToParty; plan 06 · R10)
-        var area = currentMap.AreaAt(player.GridX, player.GridY);
+        var area = flow.Map.AreaAt(flow.Player.GridX, flow.Player.GridY);
         if (FormRules.WildForm(wildSpecies, area?.EastSea ?? false, area?.UnownTable ?? 0, rng) is { } form) wild.ChangeForm(form);
         // Beside a partner every Pokémon of the grass comes with a second (TryGenerateGrassEncounter_DoubleBattle): both
         // are drawn as the first was, and the lead's ability scaring either off leaves the grass quiet
         Pokemon? second = null;
-        if (partner != null && player.Mode != TravelMode.Surfing && !safari.Active)
+        if (partner != null && flow.Player.Mode != TravelMode.Surfing && !safari.Active)
         {
-            if (currentMap.MeetAnother(player.GridX, player.GridY, player.Lead, EncounterMomentNow()) is not { } other)
+            if (flow.Map.MeetAnother(flow.Player.GridX, flow.Player.GridY, flow.Player.Lead, EncounterMomentNow()) is not { } other)
             {
                 fieldEncounter = false;
                 return;
@@ -71,17 +71,17 @@ public partial class GameEngine
     /// </summary>
     private void MeetWildPokemon(Pokemon wildPkmn, BattleKind kind = BattleKind.Normal, bool cannotFlee = false, Pokemon? second = null)
     {
-        if (second != null) playerPokedex.RegisterSeen(second.Species.DexNumber);
+        if (second != null) flow.Pokedex.RegisterSeen(second.Species.DexNumber);
         // The lesson is fought with a Pokédex of its own (FieldBattleDTO_NewCatchingTutorial): the player's isn't told
-        if (kind != BattleKind.CatchingLesson) playerPokedex.RegisterSeen(wildPkmn.Species.DexNumber);
+        if (kind != BattleKind.CatchingLesson) flow.Pokedex.RegisterSeen(wildPkmn.Species.DexNumber);
         // The lesson is the assistant's: their own Pokémon, their name, a bag of twenty Poké Balls (FieldBattleDTO_NewCatchingTutorial)
-        var party = playerParty;
-        var bag = playerInventory;
+        var party = flow.Party;
+        var bag = flow.Bag;
         string? name = null;
         if (kind == BattleKind.CatchingLesson)
         {
             party = new Party();
-            party.Add(new Pokemon(PokemonDatabase.Get(story.AssistantStarter ?? "Piplup")!, 5));
+            party.Add(new Pokemon(PokemonDatabase.Get(flow.Story.AssistantStarter ?? "Piplup")!, 5));
             bag = new Inventory();
             bag.AddItem(ItemDatabase.Get("Poké Ball")!, 20);
             name = PlayerIdentity.Fill("{assistant}");
@@ -110,17 +110,17 @@ public partial class GameEngine
             Kind = kind,
             Terrain = BattleConditionsHere().Terrain,
             TheirLevel = wildPkmn.Level,
-            OwnLevel = party == playerParty ? LeadLevel() : party.Members.FirstOrDefault(p => !p.IsFainted)?.Level ?? 0
+            OwnLevel = party == flow.Party ? LeadLevel() : party.Members.FirstOrDefault(p => !p.IsFainted)?.Level ?? 0
         };
         StartTransition(GameState.Battle, () =>
         {
             AwaitModels(shown);
-            battle = new BattleEngine(new BattleSetup
+            flow.Battle = new BattleEngine(new BattleSetup
             {
                 PlayerParty = party,
                 Inventory = bag,
-                Pokedex = playerPokedex,
-                PcStorage = pcBoxStorage,
+                Pokedex = flow.Pokedex,
+                PcStorage = flow.Boxes,
                 Place = PlaceName(),
                 WildPokemon = wilds,
                 Format = second != null ? BattleFormat.Double : BattleFormat.Single,
@@ -135,8 +135,8 @@ public partial class GameEngine
             });
             // A Pokémon hooked on a rod is fought on the water's stage, as a surfer's is (the original's water
             // terrain gives both the same platforms), whatever ground the player cast from
-            if (hooked) battleRenderer.SetArena(BattleArena.Water, trees: currentMap.TreesAt(player.GridX, player.GridY));
-            else battleRenderer.SetArena(currentMap, player.GridX, player.GridY);
+            if (hooked) battleRenderer.SetArena(BattleArena.Water, trees: flow.Map.TreesAt(flow.Player.GridX, flow.Player.GridY));
+            else battleRenderer.SetArena(flow.Map, flow.Player.GridX, flow.Player.GridY);
         }, SceneTransition.ForBattle(meeting));
     }
 
@@ -151,12 +151,12 @@ public partial class GameEngine
     {
         Inverse = terms?.Inverse ?? false,
         // A Pokémon hooked on a rod is fought on the water, wherever the player stands (FieldBattleDTO_SetWaterTerrain)
-        Terrain = hooked ? Battle.Sim.BattleTerrain.Water : TerrainAt(currentMap, player.GridX, player.GridY),
+        Terrain = hooked ? Battle.Sim.BattleTerrain.Water : TerrainAt(flow.Map, flow.Player.GridX, flow.Player.GridY),
         Night = GameClock.IsNight,
-        HasCaught = species => playerPokedex.IsCaught(species.DexNumber),
-        Weather = Weathers.InBattle(currentMap.WeatherAt(player.GridX, player.GridY)),
-        Badges = story.BadgeCount,
-        Money = playerMoney,
+        HasCaught = species => flow.Pokedex.IsCaught(species.DexNumber),
+        Weather = Weathers.InBattle(flow.Map.WeatherAt(flow.Player.GridX, flow.Player.GridY)),
+        Badges = flow.Story.BadgeCount,
+        Money = flow.Money,
         Player = PlayerMark
     };
 
@@ -169,12 +169,12 @@ public partial class GameEngine
     {
         var today = GameClock.Today;
         int days = lastDay is { } before && today > before ? (today - before).Days : 0;
-        if (days > 0) PokerusRules.DaysPass(playerParty, days);
+        if (days > 0) PokerusRules.DaysPass(flow.Party, days);
         lastDay = today;
         // The day's numbers, the daily flags and the honey trees' minutes (plan 06 · R13)
         KeepTheEncounterClock(days);
         if (FormRules.ShayminNight((int)GameClock.Hour))
-            foreach (var p in playerParty.Members) FormRules.BackToLand(p);
+            foreach (var p in flow.Party.Members) FormRules.BackToLand(p);
     }
 
     // The day the clock was last looked at, for Pokérus's days (saved)
@@ -192,10 +192,10 @@ public partial class GameEngine
     {
         if (fought.Kind != BattleKind.CatchingLesson)
         {
-            PokerusRules.TryInfect(playerParty, fieldRandom);
-            PokerusRules.Spread(playerParty, fieldRandom);
+            PokerusRules.TryInfect(flow.Party, fieldRandom);
+            PokerusRules.Spread(flow.Party, fieldRandom);
         }
-        foreach (var p in playerParty.Members) FormRules.ByHeldItem(p);
+        foreach (var p in flow.Party.Members) FormRules.ByHeldItem(p);
         // One caught in a form its item doesn't give it (Giratina, met in its Origin Forme in the Distortion World, plan
         // 02 · S12) is in the form it has outside, wherever the catch was put: the team or a box
         if (fought.Caught is { } caught) FormRules.ByHeldItem(caught);
@@ -271,27 +271,27 @@ public partial class GameEngine
         along = next;
         if (along == null) return;
         // Off the Bicycle: nobody rides with someone walking beside them (SetPlayerBike FALSE as Cheryl joins)
-        if (player.Mode == TravelMode.Cycling && player.SetCycling(false)) PlayFieldMusic();
+        if (flow.Player.Mode == TravelMode.Cycling && flow.Player.SetCycling(false)) PlayFieldMusic();
         wandering.Settle(along.Who);
-        currentMap.Follower = along.Who;
-        partnerHeading = player.Heading;
+        flow.Map.Follower = along.Who;
+        partnerHeading = flow.Player.Heading;
     }
 
     /// <summary>The player has come to a map: whoever walks behind them is behind them if they belong to it.</summary>
     private void KeepPartnerAlong()
     {
         if (along == null) return;
-        if (!currentMap.Everyone.Contains(along.Who)) return;
-        currentMap.Follower = along.Who;
-        PutBehind(along, player.GridX, player.GridY, player.Facing);
-        partnerHeading = player.Heading;
+        if (!flow.Map.Everyone.Contains(along.Who)) return;
+        flow.Map.Follower = along.Who;
+        PutBehind(along, flow.Player.GridX, flow.Player.GridY, flow.Player.Facing);
+        partnerHeading = flow.Player.Heading;
     }
 
     /// <summary>Whoever follows is put behind a tile of the player's, as far back as their gap where the ground there is open, else a tile.</summary>
     private void PutBehind(Follower who, int x, int y, Direction facing)
     {
         var (dx, dy) = FieldMovement.Delta(facing);
-        bool room = who.Gap > 1 && Enumerable.Range(1, who.Gap).All(k => currentMap.InBounds(x - dx * k, y - dy * k) && !currentMap.IsSolid(x - dx * k, y - dy * k));
+        bool room = who.Gap > 1 && Enumerable.Range(1, who.Gap).All(k => flow.Map.InBounds(x - dx * k, y - dy * k) && !flow.Map.IsSolid(x - dx * k, y - dy * k));
         who.Behind(x, y, facing, room ? who.Gap : 1);
     }
 
@@ -307,7 +307,7 @@ public partial class GameEngine
     }
 
     /// <summary>The level of the first Pokémon the player would send out: what Platinum measures a foe against to pick the way into the battle.</summary>
-    private int LeadLevel() => playerParty.Members.FirstOrDefault(p => !p.IsFainted)?.Level ?? 0;
+    private int LeadLevel() => flow.Party.Members.FirstOrDefault(p => !p.IsFainted)?.Level ?? 0;
 
     /// <summary>
     /// A battle with a trainer of the map; with a <paramref name="partner"/>, a tag battle beside them (plan 06 · R9);
@@ -333,7 +333,7 @@ public partial class GameEngine
         // Whoever battles beside the player stands on the platform too, as the person they are in the field: whoever
         // travels along, or someone of the map a script named (plan 06 · R16c)
         if (partner != null)
-            partner.Look ??= (this.partner is { } beside && beside.TrainerId == partner.Id ? beside.Who : currentMap.Everyone.FirstOrDefault(n => n.TrainerData == partner))?.NpcType;
+            partner.Look ??= (this.partner is { } beside && beside.TrainerId == partner.Id ? beside.Who : flow.Map.Everyone.FirstOrDefault(n => n.TrainerData == partner))?.NpcType;
         CharacterModels.Preload(trainers.Concat(partner == null ? Enumerable.Empty<Trainer>() : new[] { partner })
             .Select(t => CharacterStyles.Default.InBattle(t)));
 
@@ -354,7 +354,7 @@ public partial class GameEngine
         };
         // A Master Trainer's battle (plan 14 · B14): the player's side is the one Pokémon put forward, alone, the
         // team's own object, so the EXP, friendship and PP the battle changes stay with it (decision 9)
-        var side = playerParty;
+        var side = flow.Party;
         if (terms?.Alone is { } alone)
         {
             side = new Party();
@@ -363,12 +363,12 @@ public partial class GameEngine
         StartTransition(GameState.Battle, () =>
         {
             AwaitModels(shown);
-            battle = new BattleEngine(new BattleSetup
+            flow.Battle = new BattleEngine(new BattleSetup
             {
                 PlayerParty = side,
-                Inventory = playerInventory,
-                Pokedex = playerPokedex,
-                PcStorage = pcBoxStorage,
+                Inventory = flow.Bag,
+                Pokedex = flow.Pokedex,
+                PcStorage = flow.Boxes,
                 Place = PlaceName(),
                 Format = two ? BattleFormat.Double : BattleFormat.Single,
                 Trainers = trainers,
@@ -382,7 +382,7 @@ public partial class GameEngine
                 OffersSwitch = Settings.BattleStyle == BattleStyle.Shift,
                 Scene = Settings.BattleScene
             });
-            battleRenderer.SetArena(currentMap, player.GridX, player.GridY);
+            battleRenderer.SetArena(flow.Map, flow.Player.GridX, flow.Player.GridY);
             battleTrainers.Clear();
             battleTrainers.Add(trainerNpc);
             if (secondNpc?.TrainerData != null) battleTrainers.Add(secondNpc);
@@ -406,7 +406,7 @@ public partial class GameEngine
     /// </summary>
     private List<string> PrepareModels(IEnumerable<Pokemon> foes)
     {
-        var all = foes.Concat(playerParty.Members).ToList();
+        var all = foes.Concat(flow.Party.Members).ToList();
         var species = all.Select(p => p.ModelName).Concat(all.SelectMany(BattleShapesOf)).Distinct().ToList();
         foreach (var name in species) flow.WantModel(name);
         return species;
@@ -436,33 +436,33 @@ public partial class GameEngine
 
     private void EndBattle()
     {
-        bool isDefeat = battle?.Result == BattleResult.PlayerDefeat;
+        bool isDefeat = flow.Battle?.Result == BattleResult.PlayerDefeat;
         ScoreBattle();
         // The roamers and the Poké Radar hear how a battle met in the field ended (plan 06 · R13)
-        if (battle != null) EncountersAfterBattle(battle, isDefeat);
+        if (flow.Battle != null) EncountersAfterBattle(flow.Battle, isDefeat);
         // Travelling with someone, the team is healed after every battle that isn't lost (encounter.c,
         // Party_HealAllMembers when the partner flag is set)
-        if (!isDefeat && partner != null && battle != null) playerParty.HealAll();
+        if (!isDefeat && partner != null && flow.Battle != null) flow.Party.HealAll();
         // A battle a script says may be lost is lost without waking up at home: the story goes on from the loss
-        bool goesOn = isDefeat && runner.IsRunning && battleMayBeLost;
+        bool goesOn = isDefeat && flow.Runner.IsRunning && battleMayBeLost;
         battleMayBeLost = false;
 
         // Pokémon that gained a level evolve now that the battle is over, before the field comes back, and so do
         // those waiting for the battle's end (Sirfetch'd's critical hits)
-        if (!isDefeat && battle != null)
+        if (!isDefeat && flow.Battle != null)
         {
-            var evolutions = FindEvolutions(battle.LeveledUp, EvolutionTrigger.LevelUp, cancellable: true);
-            evolutions.AddRange(FindEvolutions(playerParty.Members.Where(p => evolutions.All(r => r.Pokemon != p)), EvolutionTrigger.BattleEnd, cancellable: true));
+            var evolutions = FindEvolutions(flow.Battle.LeveledUp, EvolutionTrigger.LevelUp, cancellable: true);
+            evolutions.AddRange(FindEvolutions(flow.Party.Members.Where(p => evolutions.All(r => r.Pokemon != p)), EvolutionTrigger.BattleEnd, cancellable: true));
             if (PlayEvolutions(evolutions, GameState.Overworld)) return;
         }
 
         StartTransition(GameState.Overworld, () =>
         {
             // The foes' models are no longer needed; the team's stay for the next battle
-            PokemonModels.Trim(playerParty.Members.Select(p => p.ModelName));
+            PokemonModels.Trim(flow.Party.Members.Select(p => p.ModelName));
             if (goesOn)
             {
-                playerParty.HealAll();
+                flow.Party.HealAll();
             }
             else if (isDefeat)
             {
@@ -470,9 +470,9 @@ public partial class GameEngine
             }
             PlayFieldMusic();
             // The Safari Game keeps the balls the battle didn't throw, and ends with the last of them
-            if (safari.Active && battle?.Kind == BattleKind.Safari)
+            if (safari.Active && flow.Battle?.Kind == BattleKind.Safari)
             {
-                safari.Balls = battle.SpecialBalls;
+                safari.Balls = flow.Battle.SpecialBalls;
                 if (safari.OutOfBalls) StartScript(FieldScripts.SafariOutOfBalls);
             }
             // A catch in Pal Park is the Catching Show's next (plan 06 · R16b)

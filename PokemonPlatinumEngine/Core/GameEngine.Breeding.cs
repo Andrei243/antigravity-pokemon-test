@@ -30,7 +30,7 @@ public partial class GameEngine
     /// </summary>
     private bool DayCareStep()
     {
-        if (dayCare.Step(playerParty, fieldRandom, GameClock.Today, Ruleset.Current) == null) return false;
+        if (dayCare.Step(flow.Party, fieldRandom, GameClock.Today, Ruleset.Current) == null) return false;
         return StartScript(FieldScripts.HatchEgg);
     }
 
@@ -40,7 +40,7 @@ public partial class GameEngine
     /// </summary>
     private bool HatchFirstEgg()
     {
-        if (playerParty.Members.FirstOrDefault(p => p.IsEgg && p.EggCycles == 0) is not { } egg) return false;
+        if (flow.Party.Members.FirstOrDefault(p => p.IsEgg && p.EggCycles == 0) is not { } egg) return false;
         flow.WantModel(egg.ModelName);
         string place = PlaceName();
         var day = GameClock.Today;
@@ -57,8 +57,8 @@ public partial class GameEngine
     {
         if (hatchScreen.Pokemon is { IsEgg: false } hatched)
         {
-            playerPokedex.RegisterSeen(hatched.Species.DexNumber);
-            playerPokedex.RegisterCaught(hatched.Species.DexNumber);
+            flow.Pokedex.RegisterSeen(hatched.Species.DexNumber);
+            flow.Pokedex.RegisterCaught(hatched.Species.DexNumber);
             poketch.Remember(hatched);
             trainerScore = TrainerScore.Add(trainerScore, TrainerScore.HatchedEgg);
         }

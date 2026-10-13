@@ -44,12 +44,12 @@ public partial class GameEngine
     /// waits for the player (a question is never skipped, nor the answers beside it).
     /// </summary>
     private bool MaySkipNow =>
-        skipPhase == SkipPhase.None && gameStarted && runner.IsRunning && !runner.Hurrying && runner.Scene is { } scene
+        skipPhase == SkipPhase.None && gameStarted && flow.Runner.IsRunning && !flow.Runner.Hurrying && flow.Runner.Scene is { } scene
         && flow.State is GameState.Overworld or GameState.Dialogue
-        && !dialogue.IsQuestion && !choice.IsOpen && pendingAnswers == null
+        && !flow.Dialogue.IsQuestion && !choice.IsOpen && pendingAnswers == null
         // (nor what a hurry couldn't end at once: a puzzle's pieces on the move, a Pokémon being let out of its ball)
         && !PuzzleMoving && !AwaitingStroll
-        && SceneSkip.Allowed(Settings.SkipScenes, scene, story, Settings.ScenesSeen);
+        && SceneSkip.Allowed(Settings.SkipScenes, scene, flow.Story, Settings.ScenesSeen);
 
     /// <summary>The hold is read while a script has the field or its text is on the screen; complete, the skip begins. True when it did.</summary>
     private bool ReadTheSkip(float dt)
@@ -63,7 +63,7 @@ public partial class GameEngine
     /// <summary>The text on the screen is put away unread and the picture goes dark; the scene is hurried through once it is.</summary>
     private void BeginSkip()
     {
-        if (dialogue.IsActive) dialogue.Close();
+        if (flow.Dialogue.IsActive) flow.Dialogue.Close();
         if (flow.State == GameState.Dialogue) flow.State = GameState.Overworld;
         skipVeil.Clear();
         skipVeil.To(true, SkipCloseSeconds);
@@ -104,7 +104,7 @@ public partial class GameEngine
         skipRunning = true;
         try
         {
-            if (!runner.Hurry()) return;
+            if (!flow.Runner.Hurry()) return;
             scenesSkipped++;
             RunScript(0f);
         }
@@ -133,9 +133,9 @@ public partial class GameEngine
             }
             else
             {
-                var held = player.Mood;
-                player.StopActing();
-                player.Mood = held;
+                var held = flow.Player.Mood;
+                flow.Player.StopActing();
+                flow.Player.Mood = held;
             }
             actor = default;
         }
@@ -143,8 +143,8 @@ public partial class GameEngine
         cutInSubject = null;
         scriptFade.Finish();
         world.Camera.Settle();
-        player.ShowBubble(EmoteBubble.None, 0f);
-        foreach (var npc in currentMap.NPCs.Near(player.GridX, player.GridY, Wandering.Reach, skipNear)) npc.ShowBubble(EmoteBubble.None, 0f);
+        flow.Player.ShowBubble(EmoteBubble.None, 0f);
+        foreach (var npc in flow.Map.NPCs.Near(flow.Player.GridX, flow.Player.GridY, Wandering.Reach, skipNear)) npc.ShowBubble(EmoteBubble.None, 0f);
         world.Life.EndPassingEffects();
         world.Pieces.Settle(world.Life.Now);
     }
@@ -152,7 +152,7 @@ public partial class GameEngine
     // A frame of the walks a hurry takes unseen, and the longest wait it lets pass for them
     private const float SkipFrame = 1f / 60f, LongestElapsed = 30f;
 
-    private bool SomeoneWalks => playerWalk != null || npcWalks.Count > 0 || player.IsMoving;
+    private bool SomeoneWalks => playerWalk != null || npcWalks.Count > 0 || flow.Player.IsMoving;
 
     /// <summary>
     /// Everyone a script set walking takes their steps to the end, a frame at a time and all together, as they would
@@ -182,7 +182,7 @@ public partial class GameEngine
     private void WalkAFrame()
     {
         AdvanceScriptedWalks(SkipFrame);
-        along?.Update(SkipFrame, player.Stride);
+        along?.Update(SkipFrame, flow.Player.Stride);
     }
 
     /// <summary>Goes to a tile of a map at once, behind a skip's dark: what a script's warp does at the middle of its own fade.</summary>
@@ -190,8 +190,8 @@ public partial class GameEngine
     {
         var target = MapDatabase.Get(mapName);
         PlayAreaMusic(target, x, y);
-        currentMap = target;
-        player.SetPosition(x, y, facing ?? player.Facing);
+        flow.Map = target;
+        flow.Player.SetPosition(x, y, facing ?? flow.Player.Facing);
         world.Life.Clear();
         ArriveOnMap();
         AnnounceLocation();

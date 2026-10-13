@@ -30,8 +30,8 @@ public partial class GameEngine
         choosingBerryToCook = true;
         scriptItem = null;
         flow.State = GameState.BagMenu;
-        bagScreen.Registered = registeredItem;
-        bagScreen.OpenToPick("berries");
+        flow.BagScreen.Registered = registeredItem;
+        flow.BagScreen.OpenToPick("berries");
     }
 
     // PoffinBerrySelection_RunBagApp: the berry chosen goes from the bag into the pot; backing out of the bag ends the
@@ -39,12 +39,12 @@ public partial class GameEngine
     private void BerryChosenToCook(ItemData? berry)
     {
         choosingBerryToCook = false;
-        if (berry?.Berry == null || !playerInventory.RemoveItem(berry, 1))
+        if (berry?.Berry == null || !flow.Bag.RemoveItem(berry, 1))
         {
             flow.State = GameState.Overworld;
             return;
         }
-        cookingScreen.Begin(berry, PlayerIdentity.Name, fieldRandom, poffinCase, playerInventory);
+        cookingScreen.Begin(berry, PlayerIdentity.Name, fieldRandom, poffinCase, flow.Bag);
         flow.State = GameState.PoffinCooking;
     }
 
@@ -63,7 +63,7 @@ public partial class GameEngine
     {
         caseFromBag = fromBag;
         flow.State = GameState.PoffinCase;
-        poffinCaseScreen.Open(poffinCase, playerParty);
+        poffinCaseScreen.Open(poffinCase, flow.Party);
     }
 
     private void UpdatePoffinCase(float dt)
@@ -73,7 +73,7 @@ public partial class GameEngine
         if (caseFromBag)
         {
             flow.State = GameState.BagMenu;
-            bagScreen.Resume();
+            flow.BagScreen.Resume();
         }
         else flow.State = GameState.Overworld;
     }
