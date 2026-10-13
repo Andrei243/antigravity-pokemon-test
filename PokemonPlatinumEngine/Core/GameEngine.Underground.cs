@@ -36,11 +36,7 @@ public partial class GameEngine
     /// <summary>The scripts of the Underground's file the game starts itself: a wall faced, the two kinds of PC, the bag's way up.</summary>
     public static readonly string[] UndergroundScripts = { "Wall", "BasePC", "DiggerPC", "GoUp" };
 
-    private UndergroundState underground = new();
     private UndergroundField? tunnels;
-    private readonly MiningScreen miningScreen = new();
-    private readonly UndergroundScreen undergroundScreen = new();
-    private readonly DecorationScreen decorationScreen = new();
 
     /// <summary>The trap that has the player, and the frames of it still owed at the console's thirty a second.</summary>
     private TrapEffect? trap;
@@ -50,7 +46,7 @@ public partial class GameEngine
 
     /// <summary>The day's other diggers, and whose cavern the base's room shows now: null for the player's own.</summary>
     private List<Digger> diggers = new();
-    private int? visiting { get => underground.Visiting; set => underground.Visiting = value; }
+    private int? visiting { get => flow.Underground.Visiting; set => flow.Underground.Visiting = value; }
 
     /// <summary>The tiles of the tunnels' rock that are ways into a base now, each with the height the rock had.</summary>
     private readonly Dictionary<(int X, int Z), (float Height, int? Digger)> baseEntrances = new();
@@ -62,13 +58,13 @@ public partial class GameEngine
         return !map.InBounds(x, z) || baseEntrances.ContainsKey((x, z)) || map.IsSolid(x, z);
     }
 
-    private UndergroundField Tunnels => tunnels ??= new UndergroundField(underground, UndergroundRock);
+    private UndergroundField Tunnels => tunnels ??= new UndergroundField(flow.Underground, UndergroundRock);
 
     private bool IsUnderground => flow.Map?.Name == UndergroundMap;
     private bool InTheBase => IsUnderground && flow.Player.GridX < SecretBaseRules.Size && flow.Player.GridY < SecretBaseRules.Size;
 
     /// <summary>The cavern the base's room shows: the player's own, or the digger's being visited.</summary>
-    private SavedBase? RoomShown => visiting is { } n ? diggers.FirstOrDefault(d => d.Number == n)?.Base : underground.Base;
+    private SavedBase? RoomShown => visiting is { } n ? diggers.FirstOrDefault(d => d.Number == n)?.Base : flow.Underground.Base;
 
     private void LoadUnderground(UndergroundState? saved)
     {
@@ -83,7 +79,7 @@ public partial class GameEngine
                 world?.Forget(map, at.X, at.Z, 1, 1);
             }
         }
-        underground = saved ?? UndergroundState.NewGame(encounters.DailyNumber);
+        flow.Underground = saved ?? UndergroundState.NewGame(flow.Encounters.DailyNumber);
         tunnels = null;
         trap = null;
         baseEntrances.Clear();
@@ -101,7 +97,7 @@ public partial class GameEngine
         int x = flow.Player.GridX, y = flow.Player.GridY;
         const string no = "The Explorer Kit can't be used here.";
         if (!flow.Map.IsStreamed || flow.Map.Name != "Sinnoh") return no;
-        if (flow.Story.Has(BicycleRules.OnCyclingRoadFlag) || safari.Active) return no;
+        if (flow.Story.Has(BicycleRules.OnCyclingRoadFlag) || flow.Safari.Active) return no;
         if (flow.Player.Mode == TravelMode.Surfing) return no;
         if (flow.Map.DeckAt(x, y) != null || flow.Map.BehaviourAt(x, y) == TileBehavior.NoExplorerKit) return no;
         return null;
@@ -130,7 +126,7 @@ public partial class GameEngine
     /// </summary>
     private void GoUnderground()
     {
-        underground.Surface = new SurfaceSpot { Map = flow.Map.Name, X = flow.Player.GridX, Y = flow.Player.GridY, Facing = flow.Player.Facing };
+        flow.Underground.Surface = new SurfaceSpot { Map = flow.Map.Name, X = flow.Player.GridX, Y = flow.Player.GridY, Facing = flow.Player.Facing };
         var (x, z) = UndergroundField.Below(flow.Player.GridX, flow.Player.GridY);
         if (flow.Player.Mode == TravelMode.Cycling) flow.Player.SetCycling(false);
         var below = MapDatabase.Get(UndergroundMap);
@@ -142,7 +138,7 @@ public partial class GameEngine
             flow.Player.SetPosition(x, z, Direction.Down);
             visiting = null;
             flow.Story.Set(EnteredUndergroundFlag);
-            trainerScore = TrainerScore.Add(trainerScore, TrainerScore.WentUnderground);
+            flow.TrainerScore = TrainerScore.Add(flow.TrainerScore, TrainerScore.WentUnderground);
             ArriveOnMap();
             AnnounceLocation();
             world.Life.Clear();
@@ -152,8 +148,8 @@ public partial class GameEngine
     /// <summary>Back up to where the player went down (<c>FieldTask_MapChangeFromUnderground</c>). A flag being carried is left behind.</summary>
     private void ComeUp()
     {
-        if (!IsUnderground || underground.Surface is not { } spot) return;
-        underground.HeldFlag = null;
+        if (!IsUnderground || flow.Underground.Surface is not { } spot) return;
+        flow.Underground.HeldFlag = null;
         trap = null;
         var above = MapDatabase.Get(spot.Map);
         AudioManager.PlaySound("stairs");
@@ -177,7 +173,7 @@ public partial class GameEngine
     {
         var map = flow.Map;
         Tunnels.SpreadIfDue();
-        diggers = Diggers.Today(underground.Seed, UndergroundRock);
+        diggers = Diggers.Today(flow.Underground.Seed, UndergroundRock);
         LayOutEntrances();
         LayOutBase();
         // Roark is beside whoever comes down for the first time (Underground_PutRoarkNextToPlayer)
@@ -197,7 +193,7 @@ public partial class GameEngine
     {
         var map = MapDatabase.Get(UndergroundMap);
         var wanted = new Dictionary<(int, int), int?>();
-        if (underground.Base is { } own) wanted[(own.EntranceX, own.EntranceZ)] = null;
+        if (flow.Underground.Base is { } own) wanted[(own.EntranceX, own.EntranceZ)] = null;
         foreach (var digger in diggers) wanted.TryAdd((digger.Base.EntranceX, digger.Base.EntranceZ), digger.Number);
         foreach (var (at, was) in baseEntrances.ToList())
         {
@@ -244,7 +240,7 @@ public partial class GameEngine
                 map.SetGroundTile(x, z, TileType.CaveFloor, blocked.Contains((x, z)));
         if (room != null)
         {
-            int flags = visiting != null ? 0 : underground.Records.FlagsCaptured;
+            int flags = visiting != null ? 0 : flow.Underground.Records.FlagsCaptured;
             map.Props.Add(BaseProp($"pc:{SecretBaseRules.FlagFor(flags)}", SecretBaseRules.PcX, SecretBaseRules.PcZ, 2, 1));
             foreach (var boulder in room.Boulders) map.Props.Add(BaseProp("boulder", boulder.X, boulder.Z, 2, 2));
             foreach (var good in room.Goods)
@@ -262,8 +258,8 @@ public partial class GameEngine
     private bool UndergroundStep()
     {
         int x = flow.Player.GridX, z = flow.Player.GridY;
-        underground.Step();
-        if (underground.Steps == 0) trainerScore = TrainerScore.Add(trainerScore, TrainerScore.UndergroundSteps);
+        flow.Underground.Step();
+        if (flow.Underground.Steps == 0) flow.TrainerScore = TrainerScore.Add(flow.TrainerScore, TrainerScore.UndergroundSteps);
         if (baseEntrances.TryGetValue((x, z), out var way))
         {
             EnterBase(way.Digger);
@@ -323,7 +319,7 @@ public partial class GameEngine
         if (RoomShown is not { } room)
         {
             // A base that is no more (it was moved from inside): out where the player went down
-            var (x, z) = underground.Surface is { } spot ? UndergroundField.Below(spot.X, spot.Y) : (40, 104);
+            var (x, z) = flow.Underground.Surface is { } spot ? UndergroundField.Below(spot.X, spot.Y) : (40, 104);
             room = new SavedBase { EntranceX = x, EntranceZ = z - 1, EntranceFacing = Direction.Down };
         }
         var (dx, dz) = FieldMovement.Delta(room.EntranceFacing);
@@ -360,7 +356,7 @@ public partial class GameEngine
             if (RoomShown is not { } room) return false;
             if (z == SecretBaseRules.PcZ && x is SecretBaseRules.PcX or SecretBaseRules.PcX + 1)
                 return StartScript(visiting == null ? "BasePC" : "DiggerPC", file: "underground");
-            if (SecretBaseRules.GoodBlocking(room, x, z) is { } good && SecretBaseRules.RecordLine(good.Good, underground.Records) is { } line)
+            if (SecretBaseRules.GoodBlocking(room, x, z) is { } good && SecretBaseRules.RecordLine(good.Good, flow.Underground.Records) is { } line)
             {
                 flow.Dialogue.ShowDialogue("", new[] { line });
                 flow.State = GameState.Dialogue;
@@ -370,7 +366,7 @@ public partial class GameEngine
         }
         bool wall = Tunnels.MiningSpotAt(x, z) != null, floorTrap = Tunnels.TrapAt(x, z) != null, sphere = Tunnels.SphereAt(x, z) != null;
         if (!wall && !floorTrap && !sphere) return false;
-        if (underground.HeldFlag != null)
+        if (flow.Underground.HeldFlag != null)
         {
             ShowNotification("Not with a flag in your hands!");
             AudioManager.PlaySound("error");
@@ -508,7 +504,7 @@ public partial class GameEngine
     {
         if (trap != null) return;
         flow.State = GameState.Underground;
-        undergroundScreen.OpenBag(underground, item =>
+        flow.UndergroundScreen.OpenBag(flow.Underground, item =>
         {
             if (ItemDatabase.Get(item) is not { } data) return false;
             flow.Bag.AddItem(data, 1);
@@ -518,10 +514,10 @@ public partial class GameEngine
 
     private void UpdateUndergroundScreen(float dt)
     {
-        undergroundScreen.Update(dt);
-        if (undergroundScreen.IsActive) return;
+        flow.UndergroundScreen.Update(dt);
+        if (flow.UndergroundScreen.IsActive) return;
         flow.State = GameState.Overworld;
-        var asked = undergroundScreen.TakeRequest();
+        var asked = flow.UndergroundScreen.TakeRequest();
         var (x, z) = AheadBelow();
         bool someone = flow.Map.GetNpcAt(x, z) != null;
         switch (asked.Kind)
@@ -534,7 +530,7 @@ public partial class GameEngine
                 break;
             case UndergroundRequestKind.BurySphere:
             {
-                var sphere = asked.Slot >= 0 && asked.Slot < underground.Spheres.Count ? underground.Spheres[asked.Slot] : null;
+                var sphere = asked.Slot >= 0 && asked.Slot < flow.Underground.Spheres.Count ? flow.Underground.Spheres[asked.Slot] : null;
                 var result = Tunnels.Bury(asked.Slot, x, z, someone);
                 if (result == BuryResult.Done)
                 {
@@ -549,7 +545,7 @@ public partial class GameEngine
             }
             case UndergroundRequestKind.SetTrap:
             {
-                int which = asked.Slot >= 0 && asked.Slot < underground.Traps.Count ? underground.Traps[asked.Slot] : 0;
+                int which = asked.Slot >= 0 && asked.Slot < flow.Underground.Traps.Count ? flow.Underground.Traps[asked.Slot] : 0;
                 var result = Tunnels.SetTrap(asked.Slot, x, z, someone);
                 if (result == BuryResult.Done)
                 {
@@ -597,12 +593,12 @@ public partial class GameEngine
             AudioManager.PlaySound("error");
             return;
         }
-        underground.Traps.RemoveAt(slot);
-        bool moved = underground.Base != null;
-        underground.Base = SecretBaseRules.Create(x, z, flow.Player.Facing, new Rand32((ulong)fieldRandom.NextInt64()));
-        if (moved) underground.Records.TimesBaseMoved = UndergroundRecords.Add(underground.Records.TimesBaseMoved, 1);
+        flow.Underground.Traps.RemoveAt(slot);
+        bool moved = flow.Underground.Base != null;
+        flow.Underground.Base = SecretBaseRules.Create(x, z, flow.Player.Facing, new Rand32((ulong)fieldRandom.NextInt64()));
+        if (moved) flow.Underground.Records.TimesBaseMoved = UndergroundRecords.Add(flow.Underground.Records.TimesBaseMoved, 1);
         flow.Story.Set(CreatedBaseFlag);
-        trainerScore = TrainerScore.Add(trainerScore, TrainerScore.NewSecretBase);
+        flow.TrainerScore = TrainerScore.Add(flow.TrainerScore, TrainerScore.NewSecretBase);
         AudioManager.PlaySound("rock_smash");
         LayOutEntrances();
         ShowNotification(moved ? "The drill opened a cavern! Your secret base has moved here." : "The drill opened a cavern! It is your secret base.");
@@ -615,18 +611,18 @@ public partial class GameEngine
         if (!Tunnels.StartMining(x, z)) return false;
         flow.Story.Set(DugForFossilsFlag);
         var game = new MiningGame(new Rand32((ulong)fieldRandom.NextInt64()), PlayerIdentity.Number % 2 == 1, flow.Pokedex.NationalUnlocked,
-            !underground.HasMined, underground.NeverMined);
+            !flow.Underground.HasMined, flow.Underground.NeverMined);
         flow.State = GameState.Mining;
-        miningScreen.Open(game, underground);
+        flow.MiningScreen.Open(game, flow.Underground);
         return true;
     }
 
     private void UpdateMining(float dt)
     {
-        miningScreen.Update(dt);
-        if (miningScreen.IsActive) return;
+        flow.MiningScreen.Update(dt);
+        if (flow.MiningScreen.IsActive) return;
         // Everything out of the wall counts on the Trainer Card (TRAINER_SCORE_EVENT_UNDERGROUND_UNCOVER_FOSSIL)
-        if (miningScreen.Game.AllDug) trainerScore = TrainerScore.Add(trainerScore, TrainerScore.UncoveredWall);
+        if (flow.MiningScreen.Game.AllDug) flow.TrainerScore = TrainerScore.Add(flow.TrainerScore, TrainerScore.UncoveredWall);
         flow.State = GameState.Overworld;
     }
 
@@ -635,13 +631,13 @@ public partial class GameEngine
         int vendor = hiker != null ? UndergroundVendors.At(hiker.GridX, hiker.GridY) : -1;
         if (vendor < 0) return;
         flow.State = GameState.Underground;
-        undergroundScreen.OpenHiker(underground, vendor, flow.Pokedex.NationalUnlocked);
+        flow.UndergroundScreen.OpenHiker(flow.Underground, vendor, flow.Pokedex.NationalUnlocked);
     }
 
     private void OpenBasePc()
     {
         flow.State = GameState.Underground;
-        undergroundScreen.OpenPc(underground);
+        flow.UndergroundScreen.OpenPc(flow.Underground);
     }
 
     /// <summary>
@@ -651,19 +647,19 @@ public partial class GameEngine
     /// </summary>
     private void OpenDecoration()
     {
-        if (underground.Base == null) return;
+        if (flow.Underground.Base == null) return;
         flow.State = GameState.Decoration;
-        decorationScreen.Open(SecretBaseRules.Decorating(underground), "DECORATE THE BASE", piece => UndergroundArt.PlanLook(piece.Kind));
+        flow.DecorationScreen.Open(SecretBaseRules.Decorating(flow.Underground), "DECORATE THE BASE", piece => UndergroundArt.PlanLook(piece.Kind));
     }
 
     private void UpdateDecoration(float dt)
     {
-        decorationScreen.Update(dt);
-        if (decorationScreen.IsActive) return;
+        flow.DecorationScreen.Update(dt);
+        if (flow.DecorationScreen.IsActive) return;
         // What stands in the room now is the base's (BaseDecoration_SaveBaseGoods), and the mission's flag is set whatever was done
-        if (underground.Base is { } room)
+        if (flow.Underground.Base is { } room)
         {
-            SecretBaseRules.Keep(room, decorationScreen.Session.Room);
+            SecretBaseRules.Keep(room, flow.DecorationScreen.Session.Room);
             flow.Story.Set(DecoratedBaseFlag);
             LayOutBase();
         }
@@ -694,17 +690,17 @@ public partial class GameEngine
                 OpenUndergroundBag();
                 return 1;
             case "takeflag":
-                return visiting is { } n && Diggers.Take(underground, n) ? 1 : 0;
+                return visiting is { } n && Diggers.Take(flow.Underground, n) ? 1 : 0;
             case "cantake":
-                return visiting is { } m && Diggers.CanTake(underground, m) ? 1 : 0;
+                return visiting is { } m && Diggers.CanTake(flow.Underground, m) ? 1 : 0;
             case "home":
             {
-                if (underground.HeldFlag is not { } held) return 0;
+                if (flow.Underground.HeldFlag is not { } held) return 0;
                 string owner = diggers.FirstOrDefault(d => d.Number == held)?.Name ?? "Someone";
                 lastFlagOwner = owner;
-                var better = Diggers.BringHome(underground, owner);
+                var better = Diggers.BringHome(flow.Underground, owner);
                 flow.Story.Set(DeliveredFlagFlag);
-                trainerScore = TrainerScore.Add(trainerScore, TrainerScore.CapturedFlag);
+                flow.TrainerScore = TrainerScore.Add(flow.TrainerScore, TrainerScore.CapturedFlag);
                 if (better != null) LayOutBase();
                 return better != null ? 2 : 1;
             }
@@ -714,7 +710,7 @@ public partial class GameEngine
     }
 
     /// <summary>The name a line's <c>{digger}</c> stands for: whose base the player is in, or whose flag they carry.</summary>
-    private string DiggerName => diggers.FirstOrDefault(d => d.Number == (visiting ?? underground.HeldFlag))?.Name ?? lastFlagOwner;
+    private string DiggerName => diggers.FirstOrDefault(d => d.Number == (visiting ?? flow.Underground.HeldFlag))?.Name ?? lastFlagOwner;
 
     private string lastFlagOwner = "someone";
 }

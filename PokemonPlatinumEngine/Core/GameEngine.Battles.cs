@@ -48,7 +48,7 @@ public partial class GameEngine
         // Beside a partner every Pokémon of the grass comes with a second (TryGenerateGrassEncounter_DoubleBattle): both
         // are drawn as the first was, and the lead's ability scaring either off leaves the grass quiet
         Pokemon? second = null;
-        if (partner != null && flow.Player.Mode != TravelMode.Surfing && !safari.Active)
+        if (partner != null && flow.Player.Mode != TravelMode.Surfing && !flow.Safari.Active)
         {
             if (flow.Map.MeetAnother(flow.Player.GridX, flow.Player.GridY, flow.Player.Lead, EncounterMomentNow()) is not { } other)
             {
@@ -60,7 +60,7 @@ public partial class GameEngine
             if (FormRules.WildForm(otherSpecies, area?.EastSea ?? false, area?.UnownTable ?? 0, rng) is { } otherForm) second.ChangeForm(otherForm);
         }
         // In the Great Marsh's game every Pokémon is met in a Safari battle (plan 01 · M7)
-        MeetWildPokemon(wild, safari.Active ? BattleKind.Safari : BattleKind.Normal, second: second);
+        MeetWildPokemon(wild, flow.Safari.Active ? BattleKind.Safari : BattleKind.Normal, second: second);
     }
 
     /// <summary>
@@ -129,7 +129,7 @@ public partial class GameEngine
                 Kind = kind,
                 CannotFlee = cannotFlee,
                 PlayerName = name,
-                SpecialBalls = kind == BattleKind.Safari ? safari.Balls : kind == BattleKind.PalPark ? pastimes.PalPark.Show?.ParkBalls ?? 0 : 0,
+                SpecialBalls = kind == BattleKind.Safari ? flow.Safari.Balls : kind == BattleKind.PalPark ? flow.Pastimes.PalPark.Show?.ParkBalls ?? 0 : 0,
                 MoveHints = MoveHintsOn,
                 Scene = Settings.BattleScene
             });
@@ -181,7 +181,7 @@ public partial class GameEngine
     private DateTime? lastDay;
 
     /// <summary>Who the player is, as a Pokémon's original trainer is marked (plan 06 · R10).</summary>
-    private TrainerMark PlayerMark => new(PlayerIdentity.Name, trainerId, PlayerIdentity.Look);
+    private TrainerMark PlayerMark => new(PlayerIdentity.Name, flow.TrainerId, PlayerIdentity.Look);
 
     /// <summary>
     /// What follows any battle in the field (plan 06 · R10): Pokérus may come to the team and spread through it
@@ -263,27 +263,27 @@ public partial class GameEngine
     /// </summary>
     private void SetAlong(Follower? next)
     {
-        if (along != null)
+        if (flow.Along != null)
         {
-            along.Settle();
-            foreach (var map in MapDatabase.MapNames.Select(MapDatabase.Get)) if (map.Follower == along.Who) map.Follower = null;
+            flow.Along.Settle();
+            foreach (var map in MapDatabase.MapNames.Select(MapDatabase.Get)) if (map.Follower == flow.Along.Who) map.Follower = null;
         }
-        along = next;
-        if (along == null) return;
+        flow.Along = next;
+        if (flow.Along == null) return;
         // Off the Bicycle: nobody rides with someone walking beside them (SetPlayerBike FALSE as Cheryl joins)
         if (flow.Player.Mode == TravelMode.Cycling && flow.Player.SetCycling(false)) PlayFieldMusic();
-        wandering.Settle(along.Who);
-        flow.Map.Follower = along.Who;
+        wandering.Settle(flow.Along.Who);
+        flow.Map.Follower = flow.Along.Who;
         partnerHeading = flow.Player.Heading;
     }
 
     /// <summary>The player has come to a map: whoever walks behind them is behind them if they belong to it.</summary>
     private void KeepPartnerAlong()
     {
-        if (along == null) return;
-        if (!flow.Map.Everyone.Contains(along.Who)) return;
-        flow.Map.Follower = along.Who;
-        PutBehind(along, flow.Player.GridX, flow.Player.GridY, flow.Player.Facing);
+        if (flow.Along == null) return;
+        if (!flow.Map.Everyone.Contains(flow.Along.Who)) return;
+        flow.Map.Follower = flow.Along.Who;
+        PutBehind(flow.Along, flow.Player.GridX, flow.Player.GridY, flow.Player.Facing);
         partnerHeading = flow.Player.Heading;
     }
 
@@ -470,10 +470,10 @@ public partial class GameEngine
             }
             PlayFieldMusic();
             // The Safari Game keeps the balls the battle didn't throw, and ends with the last of them
-            if (safari.Active && flow.Battle?.Kind == BattleKind.Safari)
+            if (flow.Safari.Active && flow.Battle?.Kind == BattleKind.Safari)
             {
-                safari.Balls = flow.Battle.SpecialBalls;
-                if (safari.OutOfBalls) StartScript(FieldScripts.SafariOutOfBalls);
+                flow.Safari.Balls = flow.Battle.SpecialBalls;
+                if (flow.Safari.OutOfBalls) StartScript(FieldScripts.SafariOutOfBalls);
             }
             // A catch in Pal Park is the Catching Show's next (plan 06 · R16b)
             AfterParkBattle();

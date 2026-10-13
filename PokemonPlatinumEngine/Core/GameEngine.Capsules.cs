@@ -18,13 +18,6 @@ public partial class GameEngine
     /// <summary>The flag the Fashion Case is given under (the original's, set by Jubilife TV's man).</summary>
     public const string FashionCaseFlag = "FLAG_RECEIVED_FASHION_CASE";
 
-    /// <summary>The Seal Case's Seals and capsules, and the contests' records and photographs (saved).</summary>
-    private readonly SealCase sealCase = new();
-    private readonly ContestRecords contestRecords = new();
-    private readonly SealCaseScreen sealCaseScreen = new();
-    private readonly SealShopScreen sealShopScreen = new();
-    private readonly FashionCaseScreen fashionScreen = new();
-
     // A case opened from the bag goes back to the bag when it closes; from a script or the item button, to the field
     private bool capsulesFromBag, fashionFromBag;
 
@@ -33,16 +26,16 @@ public partial class GameEngine
     {
         capsulesFromBag = fromBag;
         flow.State = GameState.SealCase;
-        sealCaseScreen.Open(sealCase, flow.Party);
+        flow.SealCaseScreen.Open(flow.SealCase, flow.Party);
         foreach (var p in flow.Party.Members.Where(p => !p.IsEgg)) Graphics.PokemonSprites.Request(p.ModelName);
     }
 
     private void UpdateBallCapsules(float dt)
     {
-        sealCaseScreen.Update(dt);
-        if (sealCaseScreen.IsActive) return;
+        flow.SealCaseScreen.Update(dt);
+        if (flow.SealCaseScreen.IsActive) return;
         // Each capsule changed and kept adds to the Trainer Card's score (TRAINER_SCORE_EVENT_UNK_06)
-        for (int i = 0; i < sealCaseScreen.Kept; i++) trainerScore = TrainerScore.Add(trainerScore, TrainerScore.MadeCapsule);
+        for (int i = 0; i < flow.SealCaseScreen.Kept; i++) flow.TrainerScore = TrainerScore.Add(flow.TrainerScore, TrainerScore.MadeCapsule);
         if (capsulesFromBag)
         {
             flow.State = GameState.BagMenu;
@@ -55,13 +48,13 @@ public partial class GameEngine
     private void OpenSealShop()
     {
         flow.State = GameState.SealShop;
-        sealShopScreen.Open(SealDatabase.Market(GameClock.Today.DayOfWeek), sealCase);
+        flow.SealShopScreen.Open(SealDatabase.Market(GameClock.Today.DayOfWeek), flow.SealCase);
     }
 
     private void UpdateSealShop(float dt)
     {
-        sealShopScreen.Update(ref flow.Money, ShowNotification, dt);
-        if (!sealShopScreen.IsActive) flow.State = GameState.Overworld;
+        flow.SealShopScreen.Update(ref flow.Money, ShowNotification, dt);
+        if (!flow.SealShopScreen.IsActive) flow.State = GameState.Overworld;
     }
 
     /// <summary>Opens the Fashion Case to look into, from the bag or the item button.</summary>
@@ -69,23 +62,23 @@ public partial class GameEngine
     {
         fashionFromBag = fromBag;
         flow.State = GameState.FashionCase;
-        fashionScreen.Open(fashionCase, contestRecords);
+        flow.FashionCaseScreen.Open(flow.FashionCase, flow.ContestRecords);
     }
 
     /// <summary>Shows the photograph in a contest's frame (the Contest Hall's wall); the script waits for it.</summary>
     private void ShowContestPhoto(ContestStat category)
     {
-        if (contestRecords.PhotoOf(category) is not { } photo) return;
+        if (flow.ContestRecords.PhotoOf(category) is not { } photo) return;
         fashionFromBag = false;
         Graphics.PokemonSprites.Request(photo.Form ?? photo.Species);
         flow.State = GameState.FashionCase;
-        fashionScreen.OpenPhoto(photo);
+        flow.FashionCaseScreen.OpenPhoto(photo);
     }
 
     private void UpdateFashionCase(float dt)
     {
-        fashionScreen.Update(dt);
-        if (fashionScreen.IsActive) return;
+        flow.FashionCaseScreen.Update(dt);
+        if (flow.FashionCaseScreen.IsActive) return;
         if (fashionFromBag)
         {
             flow.State = GameState.BagMenu;
@@ -106,6 +99,6 @@ public partial class GameEngine
         if (flow.Story.Has(FashionCaseFlag) || flow.Story.Var("VAR_JUBILIFE_CITY_STATE") < 4) return;
         flow.Story.Set(FashionCaseFlag);
         if (ItemDatabase.Get("Fashion Case") is { } item && flow.Bag.GetQuantity(item) == 0) flow.Bag.AddItem(item, 1);
-        fashionCase.FillAsGiven(fieldRandom);
+        flow.FashionCase.FillAsGiven(fieldRandom);
     }
 }

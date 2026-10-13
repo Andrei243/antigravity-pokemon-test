@@ -31,7 +31,7 @@ public partial class GameEngine
     private (int X, int Y)? RegionCellNow(RegionMap region)
     {
         if (flow.Map.Name == region.Map) return RegionMap.CellOf(flow.Player.GridX, flow.Player.GridY);
-        if (exitSpot is { } exit && exit.Map == region.Map) return RegionMap.CellOf(exit.X, exit.Y);
+        if (flow.ExitSpot is { } exit && exit.Map == region.Map) return RegionMap.CellOf(exit.X, exit.Y);
         if (regionPlaces == null || regionPlacesOf != region.Region)
         {
             regionPlaces = region.PlacesOf(MapDatabase.MapNames.Select(MapDatabase.Get));
@@ -45,7 +45,7 @@ public partial class GameEngine
     {
         if (RegionMapNow is not { } region) return null;
         var overworld = MapDatabase.Get(region.Map);
-        return new TownMapState(region, flow.Story, RegionCellNow(region), mapTrail, town => overworld.Areas.Any(a => a.Key == town.Area && a.Open));
+        return new TownMapState(region, flow.Story, RegionCellNow(region), flow.MapTrail, town => overworld.Areas.Any(a => a.Key == town.Area && a.Open));
     }
 
     /// <summary>
@@ -98,7 +98,7 @@ public partial class GameEngine
     {
         if (RegionMapNow is not { } region || region.Map != flow.Map.Name) return;
         var (x, y) = RegionMap.CellOf(flow.Player.GridX, flow.Player.GridY);
-        mapTrail.PushViaWarp(x, y);
+        flow.MapTrail.PushViaWarp(x, y);
     }
 
     /// <summary>The region's picture shows the hidden places the story has revealed, and is painted again when another is.</summary>

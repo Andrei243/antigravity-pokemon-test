@@ -16,10 +16,6 @@ public partial class GameEngine
     /// <summary>The flags a win at the Master Rank sets, one for each quality (the original's <c>SystemFlag_SetContestMaster</c>).</summary>
     public static string ContestMasterFlag(ContestStat category) => "FLAG_CONTEST_MASTER_" + category.ToString().ToUpperInvariant();
 
-    /// <summary>The Fashion Case's accessories (saved).</summary>
-    private readonly FashionCase fashionCase = new();
-    private readonly SuperContestScreen contestScreen = new();
-
     /// <summary>How the last contest came out (<c>supercontest ribbon</c> and <c>prize</c> ask it); nothing is kept of it in a save.</summary>
     private ContestOutcome? contestOutcome;
 
@@ -35,15 +31,15 @@ public partial class GameEngine
         bool afterGame = flow.Story.IsRegionComplete("Sinnoh") && flow.Pokedex.NationalUnlocked;
         StartTransition(GameState.SuperContest, () =>
         {
-            contestScreen.Begin(pokemon, PlayerIdentity.Name, PlayerIdentity.Look == PlayerLook.Girl, category, rank, mode, afterGame, fashionCase, fieldRandom);
-            foreach (var c in contestScreen.Contest!.Contestants) Graphics.PokemonSprites.Request(c.Pokemon.ModelName);
+            flow.SuperContestScreen.Begin(pokemon, PlayerIdentity.Name, PlayerIdentity.Look == PlayerLook.Girl, category, rank, mode, afterGame, flow.FashionCase, fieldRandom);
+            foreach (var c in flow.SuperContestScreen.Contest!.Contestants) Graphics.PokemonSprites.Request(c.Pokemon.ModelName);
         });
     }
 
     private void UpdateContest(float dt)
     {
-        contestScreen.Update(dt);
-        if (contestScreen.IsActive) return;
+        flow.SuperContestScreen.Update(dt);
+        if (flow.SuperContestScreen.IsActive) return;
         FinishContest();
     }
 
@@ -54,19 +50,19 @@ public partial class GameEngine
     /// </summary>
     private void FinishContest()
     {
-        contestOutcome = contestScreen.Outcome;
-        if (contestScreen.Contest is { } contest && contestOutcome is { } outcome)
+        contestOutcome = flow.SuperContestScreen.Outcome;
+        if (flow.SuperContestScreen.Contest is { } contest && contestOutcome is { } outcome)
         {
             scriptAnswer = outcome.Placement;
             // The records and the winner's photograph (plan 06 · R17b; RECORD_SUPER_CONTEST_PARTICIPATIONS and its fellows)
-            contestRecords.Count(outcome, contest.Player.Pokemon, contestScreen.Worn, PlayerIdentity.Name, GameClock.Today);
+            flow.ContestRecords.Count(outcome, contest.Player.Pokemon, flow.SuperContestScreen.Worn, PlayerIdentity.Name, GameClock.Today);
             if (!contest.IsPractice)
             {
                 foreach (var rival in contest.Contestants.Where(c => !c.IsPlayer))
                     flow.Pokedex.RegisterSeen(rival.Pokemon.Species.DexNumber);
                 if (outcome.Won)
                 {
-                    trainerScore = TrainerScore.Add(trainerScore, TrainerScore.WonContest);
+                    flow.TrainerScore = TrainerScore.Add(flow.TrainerScore, TrainerScore.WonContest);
                     if (contest.Rank == ContestRank.Master) flow.Story.Set(ContestMasterFlag(contest.Category));
                 }
             }
@@ -74,7 +70,7 @@ public partial class GameEngine
         // The board stays up until the screen has gone dark
         StartTransition(GameState.Overworld, () =>
         {
-            contestScreen.Close();
+            flow.SuperContestScreen.Close();
             PlayFieldMusic();
         });
     }

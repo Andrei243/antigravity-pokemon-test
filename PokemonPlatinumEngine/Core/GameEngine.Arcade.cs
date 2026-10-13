@@ -15,28 +15,25 @@ public partial class GameEngine
 {
     public const string ArcadeLobbyMap = "BattleArcade";
 
-    private BattleArcadeChallenge? arcade;
-    private readonly ArcadeBoardScreen arcadeBoard = new();
-
     /// <summary>The game board the challenge has brought up is played (<c>OpenBattleArcadeApp</c>); the script waits.</summary>
     private void OpenArcadeBoard()
     {
-        if (arcade?.Board == null) return;
+        if (flow.Arcade?.Board == null) return;
         scriptAnswer = 0;
         // Both threes stand beside the board: their pictures are asked for as it opens
-        foreach (var pokemon in arcade.Team.Members.Concat(arcade.Foe?.Pokemon ?? Enumerable.Empty<Models.Pokemon>()))
+        foreach (var pokemon in flow.Arcade.Team.Members.Concat(flow.Arcade.Foe?.Pokemon ?? Enumerable.Empty<Models.Pokemon>()))
         {
             flow.WantModel(pokemon.ModelName);
             Graphics.PokemonSprites.Request(pokemon.ModelName);
         }
-        arcadeBoard.Open(arcade);
+        flow.ArcadeBoardScreen.Open(flow.Arcade);
         flow.State = GameState.ArcadeBoard;
     }
 
     private void UpdateArcadeBoard(float dt)
     {
-        arcadeBoard.Update(dt);
-        if (arcadeBoard.IsActive) return;
+        flow.ArcadeBoardScreen.Update(dt);
+        if (flow.ArcadeBoardScreen.IsActive) return;
         // The script that opened the board goes on to carry out the event it stopped on
         scriptAnswer = 1;
         flow.State = GameState.Overworld;
@@ -44,6 +41,6 @@ public partial class GameEngine
 
     private sealed partial class FieldHost
     {
-        public BattleArcadeChallenge? Arcade { get => game.arcade; set => game.arcade = value; }
+        public BattleArcadeChallenge? Arcade { get => game.flow.Arcade; set => game.flow.Arcade = value; }
     }
 }

@@ -31,8 +31,6 @@ public partial class GameEngine
     public static IEnumerable<string> PastimeFlags => VillaRules.Furniture.Select(f => f.Flag);
     public static readonly string[] PastimeVariables = { GameCornerPrizes.StreakVariable, VillaRules.MessageVariable, VillaRules.VisitorVariable, PalParkState.RecordVariable };
 
-    private readonly Pastimes pastimes = new();
-    private readonly SlotMachineScreen slotScreen = new();
     private readonly List<Prop> villaProps = new();
 
     /// <summary>
@@ -40,8 +38,8 @@ public partial class GameEngine
     /// a battle won at each of the five facilities, and a silver print or better at any, so each comes true as the
     /// facilities are built.
     /// </summary>
-    private VillaRecords VillaRecordsNow => new(FrontierEverywhere: frontier.WonEverywhere, FrontierPrint: Models.Frontier.FrontierBrains.AnyPrint(flow.Story), hallOfFame.Total,
-        flow.Story.Var(VillaRules.BattlegroundVariable), pastimes.BerriesPlanted, pastimes.EggsHatched, pastimes.Steps);
+    private VillaRecords VillaRecordsNow => new(FrontierEverywhere: flow.Frontier.WonEverywhere, FrontierPrint: Models.Frontier.FrontierBrains.AnyPrint(flow.Story), flow.HallOfFame.Total,
+        flow.Story.Var(VillaRules.BattlegroundVariable), flow.Pastimes.BerriesPlanted, flow.Pastimes.EggsHatched, flow.Pastimes.Steps);
 
     private int PastimeAct(string what, int number, NPC? subject)
     {
@@ -53,13 +51,13 @@ public partial class GameEngine
             case "furnish":
                 FurnishVilla();
                 // The delivery that leaves the catalogue nothing more to sell (Villa_HasAllFurniture)
-                if (VillaRules.Owned(flow.Story) == VillaRules.Furniture.Count) trainerScore = TrainerScore.Add(trainerScore, TrainerScore.BoughtAllVillaFurniture);
+                if (VillaRules.Owned(flow.Story) == VillaRules.Furniture.Count) flow.TrainerScore = TrainerScore.Add(flow.TrainerScore, TrainerScore.BoughtAllVillaFurniture);
                 return 1;
             case "boxroom":
                 return flow.Boxes.Free;
             case "store":
-                if (!pastimes.PalPark.Stocked) return 0;
-                foreach (var pokemon in pastimes.PalPark.TakeSix("Pal Park", GameClock.Today))
+                if (!flow.Pastimes.PalPark.Stocked) return 0;
+                foreach (var pokemon in flow.Pastimes.PalPark.TakeSix("Pal Park", GameClock.Today))
                 {
                     flow.Pokedex.RegisterCaught(pokemon.Species.DexNumber);
                     flow.Boxes.Store(pokemon);
@@ -75,24 +73,24 @@ public partial class GameEngine
     // sub_0203E414: the coins go to the machine, whose mood is the day's deal for its number
     private void OpenSlotMachine(int machine)
     {
-        slotScreen.Open(machine, pastimes.Coins.Coins, SlotMachine.MoodOf(machine, encounters.DailyNumber), fieldRandom);
-        journal.Tell(new JournalEvent(JournalEventKind.GameCorner));
+        flow.SlotMachineScreen.Open(machine, flow.Pastimes.Coins.Coins, SlotMachine.MoodOf(machine, flow.Encounters.DailyNumber), fieldRandom);
+        flow.Journal.Tell(new JournalEvent(JournalEventKind.GameCorner));
         flow.State = GameState.SlotMachine;
     }
 
     // sub_0203E35C: the coins come back, and the longest run of bonus rounds is kept if it is the longest yet
     private void UpdateSlotMachine(float dt)
     {
-        slotScreen.Update(dt);
-        if (slotScreen.IsActive) return;
+        flow.SlotMachineScreen.Update(dt);
+        if (flow.SlotMachineScreen.IsActive) return;
         CloseSlotMachine();
     }
 
     private void CloseSlotMachine()
     {
-        if (slotScreen.Machine is { } machine)
+        if (flow.SlotMachineScreen.Machine is { } machine)
         {
-            pastimes.Coins.Set(machine.Coins);
+            flow.Pastimes.Coins.Set(machine.Coins);
             if (machine.MostRounds > flow.Story.Var(GameCornerPrizes.StreakVariable)) flow.Story.SetVar(GameCornerPrizes.StreakVariable, machine.MostRounds);
         }
         flow.State = GameState.Overworld;
@@ -174,7 +172,7 @@ public partial class GameEngine
     /// <summary>The Catching Show's clock runs while the field is the player's.</summary>
     private void TickPalPark(float dt)
     {
-        if (InPalPark && !ScriptRunning) pastimes.PalPark.Tick(dt);
+        if (InPalPark && !ScriptRunning) flow.Pastimes.PalPark.Tick(dt);
     }
 
     /// <summary>
@@ -183,7 +181,7 @@ public partial class GameEngine
     /// </summary>
     private bool PalParkStep()
     {
-        var park = pastimes.PalPark;
+        var park = flow.Pastimes.PalPark;
         if (!InPalPark || park.Show is not { } show || !park.Running) return false;
         int x = flow.Player.GridX, y = flow.Player.GridY;
         int area = CatchingShow.AreaAt(x, y, flow.Map.IsTallGrass(x, y), flow.Player.Mode == TravelMode.Surfing);
@@ -197,28 +195,28 @@ public partial class GameEngine
     /// <summary>A battle in the park is over: a catch is the show's next, and the sixth ends it.</summary>
     private void AfterParkBattle()
     {
-        if (flow.Battle?.Kind != BattleKind.PalPark || pastimes.PalPark.Show is not { } show) return;
+        if (flow.Battle?.Kind != BattleKind.PalPark || flow.Pastimes.PalPark.Show is not { } show) return;
         if (flow.Battle.Caught == null) return;
         show.CaughtCurrent();
         if (show.Caught >= CatchingShow.Size)
         {
-            pastimes.PalPark.Stop();
+            flow.Pastimes.PalPark.Stop();
             StartScript(ParkCaughtAllScript);
         }
     }
 
     private void DrawParkCount()
     {
-        var park = pastimes.PalPark;
+        var park = flow.Pastimes.PalPark;
         if (InPalPark && park.Show is { } show) ModernUi.ParkCount(VirtualWidth, show.ParkBalls, (int)park.Seconds);
         // The Coin Case's count stands on the screen while someone of the Game Corner or its exchange is spoken to
         if (ScriptRunning && flow.Map.Name is "VeilstoneGameCorner" or "VeilstonePrizeExchange" && flow.Bag.GetQuantity(ItemDatabase.Get("Coin Case")!) > 0)
-            ModernUi.CoinCount(pastimes.Coins.Coins, flow.Money);
+            ModernUi.CoinCount(flow.Pastimes.Coins.Coins, flow.Money);
     }
 
     private sealed partial class FieldHost
     {
-        public Pastimes Pastimes => game.pastimes;
+        public Pastimes Pastimes => game.flow.Pastimes;
         public VillaRecords VillaRecords => game.VillaRecordsNow;
         public int PastimeAct(string what, int number, NPC? subject) => game.PastimeAct(what, number, subject);
     }

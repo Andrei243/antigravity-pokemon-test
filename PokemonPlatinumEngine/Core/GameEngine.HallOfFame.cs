@@ -14,9 +14,6 @@ namespace PokemonPlatinumEngine.Core;
 /// </summary>
 public partial class GameEngine
 {
-    private readonly HallOfFameCeremony ceremony = new();
-    private readonly CreditsScreen credits = new();
-
     /// <summary>
     /// The room's machine shows the balls its own piece has laid on it, plain or lit (plan 09 · L12: the script's
     /// <c>anim halloffame</c>, the original's <c>PlayHallOfFameHealingAnimation</c>): none until the piece begins, one
@@ -43,15 +40,15 @@ public partial class GameEngine
         StartTransition(GameState.HallOfFameCeremony, () =>
         {
             AwaitModels(shown);
-            ceremony.Begin(flow.Party.Members, playerName, trainerId, playTime, PlayerIdentity.Character);
+            flow.Ceremony.Begin(flow.Party.Members, playerName, flow.TrainerId, flow.PlayTime, PlayerIdentity.Character);
         });
     }
 
     private void UpdateCeremony(float dt)
     {
-        ceremony.Update(dt);
+        flow.Ceremony.Update(dt);
         // It closes to black by itself, and the script that opened it has the field dark behind it
-        if (!ceremony.IsActive) flow.State = GameState.Overworld;
+        if (!flow.Ceremony.IsActive) flow.State = GameState.Overworld;
     }
 
     /// <summary>Fades into the credits; a script waits for them.</summary>
@@ -61,14 +58,14 @@ public partial class GameEngine
         StartTransition(GameState.Credits, () =>
         {
             AwaitModels(shown);
-            credits.Begin(playerName, flow.Party.Members, note => ModernUi.WrapEvenly(note, CreditsRoll.ColumnWidth, CreditsRoll.NoteSize));
+            flow.Credits.Begin(playerName, flow.Party.Members, note => ModernUi.WrapEvenly(note, CreditsRoll.ColumnWidth, CreditsRoll.NoteSize));
         });
     }
 
     private void UpdateCredits(float dt)
     {
-        credits.Update(dt);
-        if (credits.IsActive) return;
+        flow.Credits.Update(dt);
+        if (flow.Credits.IsActive) return;
         flow.State = GameState.Overworld;
         PlayFieldMusic();
     }
