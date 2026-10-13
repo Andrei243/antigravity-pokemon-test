@@ -177,4 +177,26 @@ public class GameFlowTests
         flow.WantModel("Charizard-Mega-X");
         Assert.Equal(new[] { "Turtwig", "Charizard-Mega-X" }, asked);
     }
+
+    [Fact]
+    public void TheScreensThatRenderFiguresAreMadeAndSteeredWithNoWindow()
+    {
+        var flow = new GameFlow();
+        try
+        {
+            flow.IntroScreen.Open();
+            flow.Act(ActionFrame.None);
+            for (int i = 0; i < 30; i++) flow.IntroScreen.Update(1f / 30f);
+            Assert.True(flow.IntroScreen.Appearance().Backdrop >= 0f);
+            Assert.False(flow.TitleScreen.HasSave);
+            flow.TitleScreen = TitleScreen.WithSlots(new[] { new TitleSlot(2, null) });
+            Assert.False(flow.TitleScreen.HasSave);
+            Assert.NotNull(flow.EvolutionScreen);
+            Assert.NotNull(flow.WardrobeScreen);
+        }
+        finally
+        {
+            flow.Act(null);
+        }
+    }
 }
