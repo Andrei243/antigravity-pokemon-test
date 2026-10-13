@@ -106,7 +106,7 @@ public partial class GameEngine
     private readonly RenderContext renderContext = new(VirtualWidth, VirtualHeight);
     private readonly WorldRenderer world;
     private readonly BattleRenderer battleRenderer;
-    private DialogueManager dialogue = new();
+    private DialogueManager dialogue { get => flow.Dialogue; set => flow.Dialogue = value; }
     private BattleEngine? battle { get => flow.Battle; set => flow.Battle = value; }
 
     // A trainer who spotted the player and is walking up, and the one being battled
@@ -131,9 +131,9 @@ public partial class GameEngine
     private bool trainersLookOnArrival = true;
 
     // UI Sub-screens
-    private readonly StartMenu startMenu = new();
-    private readonly PartyScreen partyScreen = new();
-    private readonly TownMapScreen townMapScreen = new();
+    private StartMenu startMenu => flow.StartMenu;
+    private PartyScreen partyScreen => flow.PartyScreen;
+    private TownMapScreen townMapScreen => flow.TownMapScreen;
 
     // The cells of the region's map the player last passed through, which the Town Map marks (plan 01 · M12)
     private readonly MapTrail mapTrail = new();
@@ -151,22 +151,22 @@ public partial class GameEngine
     private string? registeredItem;
     private FishingAttempt? fishing;
     private bool runWasDown;
-    private readonly BagScreen bagScreen = new();
-    private readonly PokedexScreen pokedexScreen = new();
-    private readonly TrainerCardScreen trainerCardScreen = new();
-    private readonly StarterSelectScreen starterSelectScreen = new();
-    private readonly ShopScreen shopScreen = new();
+    private BagScreen bagScreen => flow.BagScreen;
+    private PokedexScreen pokedexScreen => flow.PokedexScreen;
+    private TrainerCardScreen trainerCardScreen => flow.TrainerCardScreen;
+    private StarterSelectScreen starterSelectScreen => flow.StarterSelectScreen;
+    private ShopScreen shopScreen => flow.ShopScreen;
     private readonly WardrobeScreen wardrobeScreen = new();
 
     /// <summary>The clothes the player owns and wears (plan 11 · C9).</summary>
     private readonly Wardrobe wardrobe = new();
-    private readonly PCScreen pcScreen = new();
-    private readonly OptionsScreen optionsScreen = new();
-    private readonly SaveScreen saveScreen = new();
+    private PCScreen pcScreen => flow.PCScreen;
+    private OptionsScreen optionsScreen => flow.OptionsScreen;
+    private SaveScreen saveScreen => flow.SaveScreen;
     private readonly IntroScreen introScreen = new();
     private readonly EvolutionScreen evolutionScreen = new();
-    private readonly LocationSign locationSign = new();
-    private readonly Toast toast = new();
+    private LocationSign locationSign => flow.LocationSign;
+    private Toast toast => flow.Toast;
 
     // Steps since friendship last grew from walking, and the player's turns on the spot (one Pokémon evolves on a spin)
     private int friendshipSteps;

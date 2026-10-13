@@ -1,3 +1,4 @@
+using System;
 using System.Numerics;
 using Raylib_cs;
 
@@ -43,10 +44,24 @@ public static class InputManager
 
     private static Binding Of(GameAction action) => Bindings[(int)action];
 
+    /// <summary>
+    /// The actions a tool, a test or a headless game hands this thread in place of the keys (plan 16 · T11c): while
+    /// one is set, every read below answers from it and no key or button is looked at. Null in the game itself. Kept
+    /// per thread, so tests that run side by side don't feed each other.
+    /// </summary>
+    [ThreadStatic] private static ActionFrame? fed;
+
+    /// <summary>Hands this thread's reads a frame of actions in place of the keys; null gives the keys back.</summary>
+    public static void Feed(ActionFrame? frame) => fed = frame;
+
+    /// <summary>The frame this thread is fed, if any.</summary>
+    public static ActionFrame? Fed => fed;
+
     public static bool IsActionPressed(GameAction action)
     {
         // Running is a key held, so it counts as pressed for as long as it is down
         if (action == GameAction.Run) return IsActionDown(action);
+        if (fed is { } frame) return frame.IsPressed(action);
         var binding = Of(action);
         foreach (var key in binding.Keys)
             if (Raylib.IsKeyPressed(key)) return true;
@@ -55,6 +70,7 @@ public static class InputManager
 
     public static bool IsActionDown(GameAction action)
     {
+        if (fed is { } frame) return frame.IsDown(action);
         var binding = Of(action);
         foreach (var key in binding.Keys)
             if (Raylib.IsKeyDown(key)) return true;
