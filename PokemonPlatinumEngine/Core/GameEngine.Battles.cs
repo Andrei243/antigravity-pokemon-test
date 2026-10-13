@@ -391,7 +391,7 @@ public partial class GameEngine
         // of the look the battle itself will draw them in, and beside the player's own in the League's. The rigs
         // are asked for above; the portraits are rendered as the closing's frames find them ready
         if (SceneTransition.BandFor(meeting) is { } whose)
-            band.Begin(whose, CharacterStyles.Default.InBattle(trainer), transitionKind == TransitionKind.EliteBand ? PlayerIdentity.Character : null);
+            band.Begin(whose, CharacterStyles.Default.InBattle(trainer), flow.Kind == TransitionKind.EliteBand ? PlayerIdentity.Character : null);
     }
 
     /// <summary>Whether the move cards say how a move will do: the option, with Rules following the game's own rules (plan 12 · Q10).</summary>

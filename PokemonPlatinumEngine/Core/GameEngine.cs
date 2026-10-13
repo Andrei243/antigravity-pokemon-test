@@ -90,9 +90,12 @@ public partial class GameEngine
     public const int RenderScale = 2;
 
     private RenderTexture2D virtualScreen;
-    private GameState currentState = GameState.Title;
-    private GameState stateBeforeTransition = GameState.Overworld;
-    private GameState stateAfterTransition = GameState.Overworld;
+
+    /// <summary>The game's states without the renderers (plan 16 · T11): the state, a transition, the menus' return states and the evolutions waiting.</summary>
+    private readonly GameFlow flow = new();
+
+    // The state the game is in, which the flow holds (named as it was before the flow, while the rest moves out)
+    private GameState currentState { get => flow.State; set => flow.State = value; }
 
     private Map currentMap = null!;
 
@@ -164,10 +167,6 @@ public partial class GameEngine
     private readonly LocationSign locationSign = new();
     private readonly Toast toast = new();
 
-    // Evolutions waiting to be played one after the other, and the screen the game goes back to after the last
-    private readonly Queue<EvolutionRequest> pendingEvolutions = new();
-    private GameState evolutionReturnState = GameState.Overworld;
-
     // Steps since friendship last grew from walking, and the player's turns on the spot (one Pokémon evolves on a spin)
     private int friendshipSteps;
     private readonly SpinTracker spin = new();
@@ -188,13 +187,8 @@ public partial class GameEngine
     // The slot the title's NEW GAME chose, until the game it is for begins
     private int? newGameSlot;
 
-    /// <summary>The close button's question, and the state it was asked over, which is drawn under it and comes back on KEEP PLAYING (plan 12 · Q1).</summary>
+    /// <summary>The close button's question (plan 12 · Q1); the state it was asked over is the flow's.</summary>
     private readonly ClosePrompt closePrompt = new();
-    private GameState closingFrom = GameState.Title;
-
-    /// <summary>The state whose screen is shown: the one under the close button's question while it is asked.</summary>
-    private GameState ShownState => currentState == GameState.WindowClosing ? closingFrom : currentState;
-    private GameState optionsReturnState = GameState.Overworld;
     private bool gameStarted;
 
     /// <summary>Player options (graphics, window, time of day, sound), kept in settings.json.</summary>
@@ -261,12 +255,6 @@ public partial class GameEngine
     /// (--region Sinnoh) to test a later region without playing through the ones before it.
     /// </summary>
     public string? NewGameRegion { get; set; }
-
-    // Screen Transitions
-    private float transitionTimer = 0f;
-    private TransitionKind transitionKind = TransitionKind.Fade;
-    private bool isFadingOut = true;
-    private Action? midTransitionCallback;
 
     // The band a Gym Leader's, an Elite Four's or the Champion's battle opens on, and its portraits (plan 09 · L15):
     // begun with the transition, rendered offscreen as its frames find the rigs ready, ended at the midpoint
@@ -404,7 +392,7 @@ public partial class GameEngine
         story.Clear();
         StoryMigration.BeginNewGame(story, scripts);
         RefreshPresence(startOver: true);
-        pendingEvolutions.Clear();
+        flow.Evolutions.Clear();
         friendshipSteps = 0;
         playerMoney = 3000;
         playTime = 0f;
@@ -450,7 +438,7 @@ public partial class GameEngine
         EnterGame();
         if (showJournal)
         {
-            stateAfterTransition = GameState.Journal;
+            flow.After = GameState.Journal;
             journalScreen.Open();
         }
     }
@@ -471,12 +459,7 @@ public partial class GameEngine
         // The region's map is painted behind the black the game opens from, so the Town Map never waits for it (plan 01 · M12)
         if (RegionMapNow is { } regionMap) RegionMapPictures.Get(regionMap);
 
-        stateBeforeTransition = GameState.Overworld;
-        stateAfterTransition = GameState.Overworld;
-        midTransitionCallback = null;
-        currentState = GameState.Transition;
-        isFadingOut = false;
-        transitionTimer = 0f;
+        flow.OpenOn(GameState.Overworld);
     }
 
     /// <summary>Applies the options to the renderer, the clock and the sound, and optionally to the window.</summary>
@@ -770,8 +753,7 @@ public partial class GameEngine
             QuitRequested = true;
             return;
         }
-        closingFrom = currentState;
-        currentState = GameState.WindowClosing;
+        flow.AskToClose();
         closePrompt.Open(CanSaveNow);
     }
 
@@ -789,14 +771,14 @@ public partial class GameEngine
         switch (choice)
         {
             case CloseChoice.KeepPlaying:
-                currentState = closingFrom;
+                flow.KeepPlaying();
                 break;
             case CloseChoice.SaveAndQuit:
                 // A save that couldn't be written keeps the game open, so nothing is lost by quitting anyway
                 if (WriteSave()) QuitRequested = true;
                 else
                 {
-                    currentState = closingFrom;
+                    flow.KeepPlaying();
                     ShowNotification("The game couldn't be saved.");
                 }
                 break;
@@ -899,7 +881,7 @@ public partial class GameEngine
                         AudioManager.PlayMusic(MusicRole.Introduction);
                         break;
                     case TitleChoice.Options:
-                        optionsReturnState = GameState.Title;
+                        flow.OptionsReturn = GameState.Title;
                         currentState = GameState.Options;
                         optionsScreen.Open();
                         break;
@@ -1152,7 +1134,7 @@ public partial class GameEngine
                     ApplySettings(window: true);
                     Settings.Save();
                 }
-                if (!optionsScreen.IsActive) currentState = optionsReturnState;
+                if (!optionsScreen.IsActive) currentState = flow.OptionsReturn;
                 break;
             case GameState.Transition:
                 UpdateTransition(dt);
@@ -1175,7 +1157,7 @@ public partial class GameEngine
     private void UpdateAmbience()
     {
         bool heard = gameStarted && currentMap != null && player != null
-            && ShownState is not (GameState.Title or GameState.Intro or GameState.Battle or GameState.Evolution or GameState.Hatch
+            && flow.Shown is not (GameState.Title or GameState.Intro or GameState.Battle or GameState.Evolution or GameState.Hatch
                 or GameState.HallOfFameCeremony or GameState.Credits);
         if (!heard)
         {
@@ -1604,12 +1586,12 @@ public partial class GameEngine
         var shown = new List<string>();
         foreach (var request in requests)
         {
-            pendingEvolutions.Enqueue(request);
+            flow.Evolutions.Enqueue(request);
             shown.Add(request.Pokemon.ModelName);
             shown.Add(Evolution.ModelAfter(request.Pokemon, request.Evolution));
         }
         foreach (var name in shown) PokemonModels.Request(name);
-        evolutionReturnState = returnTo;
+        flow.EvolutionReturn = returnTo;
         StartTransition(GameState.Evolution, () =>
         {
             AwaitModels(shown);
@@ -1620,9 +1602,9 @@ public partial class GameEngine
 
     private bool BeginNextEvolution()
     {
-        while (pendingEvolutions.Count > 0)
+        while (flow.Evolutions.Count > 0)
         {
-            var request = pendingEvolutions.Dequeue();
+            var request = flow.Evolutions.Dequeue();
             var context = EvolutionContextNow();
             var evolution = request.Evolution;
 
@@ -1650,7 +1632,7 @@ public partial class GameEngine
         if (BeginNextEvolution()) return;
 
         // The evolution's theme gives way to the field's again, wherever the scene goes back to
-        StartTransition(evolutionReturnState, PlayFieldMusic);
+        StartTransition(flow.EvolutionReturn, PlayFieldMusic);
     }
 
     /// <summary>
@@ -1673,7 +1655,7 @@ public partial class GameEngine
         received.Friendship = received.Species.BaseFriendship;
         playerPokedex.RegisterCaught(received.Species.DexNumber);
 
-        var returnTo = currentState == GameState.Transition ? stateAfterTransition : currentState;
+        var returnTo = currentState == GameState.Transition ? flow.After : currentState;
         PlayEvolutions(FindEvolutions(new[] { received }, EvolutionTrigger.Trade, cancellable: false, given?.Species), returnTo);
     }
 
@@ -1968,7 +1950,7 @@ public partial class GameEngine
                 trainerCardScreen.Open(world.Portrait(PlayerIdentity.Character));
                 break;
             case StartMenuChoice.Options:
-                optionsReturnState = GameState.Overworld;
+                flow.OptionsReturn = GameState.Overworld;
                 currentState = GameState.Options;
                 optionsScreen.Open();
                 break;
@@ -2122,13 +2104,7 @@ public partial class GameEngine
 
     private void StartTransition(GameState nextState, Action? onMidpoint = null, TransitionKind kind = TransitionKind.Fade)
     {
-        stateBeforeTransition = currentState;
-        stateAfterTransition = nextState;
-        midTransitionCallback = onMidpoint;
-        currentState = GameState.Transition;
-        transitionKind = kind;
-        transitionTimer = 0f;
-        isFadingOut = true;
+        flow.StartTransition(nextState, onMidpoint, kind);
         // (A band left over from a transition that was never played out goes; whoever starts one begins it after this.
         // So does a lens a way into a battle held, plan 09 · L14)
         band.End();
@@ -2153,29 +2129,20 @@ public partial class GameEngine
 
     private void UpdateTransition(float dt)
     {
-        transitionTimer += dt;
-        if (isFadingOut)
+        // The band's show is over once the picture is shut: its portraits' targets are freed; and the camera a
+        // legendary's or a mythical's way moved is let go under its white, before the midpoint's callback runs
+        switch (flow.Advance(dt, () =>
+                {
+                    band.End();
+                    DriveTheLens(world.Camera, flow.Kind, closing: false, 0f);
+                }))
         {
-            if (transitionTimer >= SceneTransition.OutSeconds(transitionKind))
-            {
-                isFadingOut = false;
-                transitionTimer = 0f;
-                // The band's show is over once the picture is shut: its portraits' targets are freed; and the camera a
-                // legendary's or a mythical's way moved is let go under its white
-                band.End();
-                DriveTheLens(world.Camera, transitionKind, closing: false, 0f);
-                midTransitionCallback?.Invoke();
-                midTransitionCallback = null;
-            }
-            else DriveTheLens(world.Camera, transitionKind, closing: true, transitionTimer);
-        }
-        else
-        {
-            if (transitionTimer >= SceneTransition.InSeconds(transitionKind))
-            {
-                currentState = stateAfterTransition;
+            case TransitionStep.Closing:
+                DriveTheLens(world.Camera, flow.Kind, closing: true, flow.Clock);
+                break;
+            case TransitionStep.Opened:
                 trainersLookOnArrival = currentState == GameState.Overworld;
-            }
+                break;
         }
     }
 
@@ -2189,11 +2156,9 @@ public partial class GameEngine
         FrameProfiler.LapCpu(FrameSection.Update);
         renderContext.OutputWidth = Raylib.GetScreenWidth();
         // Under the close button's question, what was on screen when it was asked (plan 12 · Q1)
-        GameState shown = ShownState;
+        GameState shown = flow.Shown;
         // During a fade, show the screen being left while fading out and the new one while fading in
-        GameState scene = shown == GameState.Transition
-            ? (isFadingOut ? stateBeforeTransition : stateAfterTransition)
-            : shown;
+        GameState scene = flow.Scene;
         bool showWorld = scene is GameState.Overworld or GameState.Dialogue or GameState.SaveMenu;
         bool showBattle = scene == GameState.Battle && battle != null;
         bool showTitle = scene == GameState.Title;
@@ -2202,7 +2167,7 @@ public partial class GameEngine
         PokemonSprites.Service(renderContext);
         // ... and so are a band's portraits (plan 09 · L15): each once, in the first frame of the closing that finds
         // its rig ready, and before the scene, which sets the uniforms it needs after them
-        if (shown == GameState.Transition && isFadingOut) band.Render(renderContext);
+        if (shown == GameState.Transition && flow.Closing) band.Render(renderContext);
 
         // The 3D scenes render into their own targets first (texture modes can't nest)
         if (showWorld)
@@ -2389,7 +2354,7 @@ public partial class GameEngine
                 else if (showWorld)
                 {
                     // On water the field wavers under the way into a battle as it closes (plan 09 · L13)
-                    world.DrawToScreen(VirtualWidth, VirtualHeight, SceneTransition.Ripple(transitionKind, isFadingOut, transitionTimer));
+                    world.DrawToScreen(VirtualWidth, VirtualHeight, SceneTransition.Ripple(flow.Kind, flow.Closing, flow.Clock));
                     DrawScriptFade();
                     DrawLetterbox();
                 }
@@ -2407,9 +2372,9 @@ public partial class GameEngine
         // The scene closing, or the next one opening; a cave's ring closes on the player, wherever the field shows them,
         // and a band is drawn with whose it is and the portraits rendered for it so far
         if (shown == GameState.Transition)
-            SceneTransition.Draw(transitionKind, isFadingOut, transitionTimer, VirtualWidth, VirtualHeight,
-                isFadingOut && showWorld ? world.PlayerOnPicture * new Vector2(VirtualWidth, VirtualHeight) : null,
-                isFadingOut ? band.Picture : null);
+            SceneTransition.Draw(flow.Kind, flow.Closing, flow.Clock, VirtualWidth, VirtualHeight,
+                flow.Closing && showWorld ? world.PlayerOnPicture * new Vector2(VirtualWidth, VirtualHeight) : null,
+                flow.Closing ? band.Picture : null);
 
         // The close button's question over all of it, sliding away once answered
         closePrompt.Draw(VirtualWidth, VirtualHeight);

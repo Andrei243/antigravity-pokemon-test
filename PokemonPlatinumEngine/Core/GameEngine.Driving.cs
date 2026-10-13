@@ -181,10 +181,10 @@ public partial class GameEngine
         public void StartTransition(GameState next, Action? onMidpoint = null, TransitionKind kind = TransitionKind.Fade) =>
             game.StartTransition(next, onMidpoint, kind);
         /// <summary>How the scene last closed, or is closing: the way into a battle the game picked for whom it met and where (plan 09 · L13).</summary>
-        public TransitionKind TransitionKind => game.transitionKind;
+        public TransitionKind TransitionKind => game.flow.Kind;
         /// <summary>How long the scene has been closing, or opening on the next one, in seconds; and which of the two.</summary>
-        public float TransitionSeconds => game.transitionTimer;
-        public bool TransitionClosing => game.currentState == GameState.Transition && game.isFadingOut;
+        public float TransitionSeconds => game.flow.Clock;
+        public bool TransitionClosing => game.currentState == GameState.Transition && game.flow.Closing;
         /// <summary>
         /// The band the scene is closing on (plan 09 · L15): whose it is with the portraits rendered so far, the look
         /// their portrait is of and the player's (null in a Leader's band), and how many of them are rendered; no
