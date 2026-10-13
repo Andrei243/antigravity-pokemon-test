@@ -22,8 +22,8 @@ public partial class GameEngine
     /// <summary>The room's puzzle as the story has it now, and what it has set moving.</summary>
     private void KeepPuzzleInForce(float dt)
     {
-        if (currentMap.Puzzle is not { } puzzle) return;
-        puzzle.Apply(currentMap, story);
+        if (flow.Map.Puzzle is not { } puzzle) return;
+        puzzle.Apply(flow.Map, flow.Story);
         if (clockTurn != null) PlayClockTurn(dt);
         if (bagRun != null) PlayBagRun(dt);
         if (puzzle is PastoriaWater water) PlayWater(water, dt);
@@ -35,22 +35,22 @@ public partial class GameEngine
     /// <summary>The player has come into a room by a door or a warp: its puzzle is laid out as the original lays it out on arrival.</summary>
     private void ArrivePuzzle()
     {
-        if (currentMap.Puzzle is not { } puzzle) return;
-        puzzle.ArriveAt(currentMap, story, Dice.Shared, player.GridX, player.GridY);
+        if (flow.Map.Puzzle is not { } puzzle) return;
+        puzzle.ArriveAt(flow.Map, flow.Story, Dice.Shared, flow.Player.GridX, flow.Player.GridY);
         // A League lift is laid out by the height the player stands at, which a save keeps (a game saved on the
         // platform at the top comes back with it there)
-        if (puzzle is LeagueLift lift) lift.StandAt(player.HeightOn(currentMap));
-        puzzle.Apply(currentMap, story);
+        if (puzzle is LeagueLift lift) lift.StandAt(flow.Player.HeightOn(flow.Map));
+        puzzle.Apply(flow.Map, flow.Story);
     }
 
     /// <summary>Whether something a puzzle set moving is still being played out (the script waits for it).</summary>
     private bool PuzzleMoving => clockTurn != null
-        || currentMap.Puzzle is PastoriaWater { Moving: true } or CanalaveLifts { Moving: not null } or SunyshoreGears { Turning: not null }
+        || flow.Map.Puzzle is PastoriaWater { Moving: true } or CanalaveLifts { Moving: not null } or SunyshoreGears { Turning: not null }
             or LeagueLift { Moving: true };
 
     /// <summary>Whether a puzzle has the field to itself for now, as the original's tasks do: a punching bag on its run.</summary>
     private bool PuzzleHoldsField => bagRun != null
-        || currentMap.Puzzle is PastoriaWater { Moving: true } or CanalaveLifts { Moving: not null } or SunyshoreGears { Turning: not null }
+        || flow.Map.Puzzle is PastoriaWater { Moving: true } or CanalaveLifts { Moving: not null } or SunyshoreGears { Turning: not null }
             or LeagueLift { Moving: true };
 
     // ------------------------------------------------------------------ the Veilstone Gym's punching bags
@@ -67,8 +67,8 @@ public partial class GameEngine
     /// </summary>
     private bool TryKickBag(NPC npc)
     {
-        if (currentMap.Puzzle is not VeilstoneBags || !VeilstoneBags.IsBag(npc) || bagRun != null) return false;
-        var kick = VeilstoneBags.KickBag(currentMap, npc, player.Facing, toppleNow: false);
+        if (flow.Map.Puzzle is not VeilstoneBags || !VeilstoneBags.IsBag(npc) || bagRun != null) return false;
+        var kick = VeilstoneBags.KickBag(flow.Map, npc, flow.Player.Facing, toppleNow: false);
         AudioManager.PlaySound("hit_normal");
         var (dx, dy) = FieldMovement.Delta(kick.Way);
         npc.StepOffsetX = -dx * kick.Distance;
@@ -117,10 +117,10 @@ public partial class GameEngine
         if (kick.Distance > 0) AudioManager.PlaySound("bump");
         if (kick.Toppled is { } stack)
         {
-            VeilstoneBags.Topple(currentMap, stack);
+            VeilstoneBags.Topple(flow.Map, stack);
             AudioManager.PlaySound("boulder");
         }
-        if (cameraSent && !runner.IsRunning)
+        if (cameraSent && !flow.Runner.IsRunning)
         {
             world.ReleaseCamera(0.8f);
             cameraSent = false;
@@ -146,8 +146,8 @@ public partial class GameEngine
     /// </summary>
     private void ShatterSnowball()
     {
-        if (player.TakeBroken() is not { } ball) return;
-        world.Life.GiveWay(currentMap, ball.GridX, ball.GridY, PropType.Snowball);
+        if (flow.Player.TakeBroken() is not { } ball) return;
+        world.Life.GiveWay(flow.Map, ball.GridX, ball.GridY, PropType.Snowball);
         AudioManager.PlaySound("snowball");
     }
 
@@ -159,8 +159,8 @@ public partial class GameEngine
     /// </summary>
     private bool TryRideLift()
     {
-        if (currentMap.Puzzle is not CanalaveLifts lifts || lifts.Moving != null) return false;
-        if (lifts.PlatformAt(player.GridX, player.GridY, player.HeightOn(currentMap)) is not { } index) return false;
+        if (flow.Map.Puzzle is not CanalaveLifts lifts || lifts.Moving != null) return false;
+        if (lifts.PlatformAt(flow.Player.GridX, flow.Player.GridY, flow.Player.HeightOn(flow.Map)) is not { } index) return false;
         lifts.Board(index);
         AudioManager.PlaySound("lift");
         return true;
@@ -172,7 +172,7 @@ public partial class GameEngine
         var ride = lifts.Moving!;
         lifts.Update(dt);
         var (x, h, y) = ride.Now;
-        player.CarryTo(x, y, h, dt);
+        flow.Player.CarryTo(x, y, h, dt);
         if (lifts.Moving == null) AudioManager.PlaySound("lift_stop");
     }
 
@@ -190,7 +190,7 @@ public partial class GameEngine
     private void PlayLeagueLift(LeagueLift lift, float dt)
     {
         lift.Update(dt);
-        player.CarryTo(player.GridX, player.GridY, lift.Height, dt);
+        flow.Player.CarryTo(flow.Player.GridX, flow.Player.GridY, lift.Height, dt);
         if (!lift.Moving) AudioManager.PlaySound("lift_stop");
     }
 
@@ -207,7 +207,7 @@ public partial class GameEngine
             cameraSent = true;
         }
         // The hands tick round, chime as they stop, and the fountain's water rushes away
-        if (!turn.HandsStopped && currentMap.Puzzle is EternaClock { Turning: not null } && ++clockTicks % 12 == 0) AudioManager.PlaySound("cursor");
+        if (!turn.HandsStopped && flow.Map.Puzzle is EternaClock { Turning: not null } && ++clockTicks % 12 == 0) AudioManager.PlaySound("cursor");
         if (turn.HandsStopped && !stopped) AudioManager.PlaySound("select");
         if (turn.Draining && !draining) AudioManager.PlaySound("surf");
         if (turn.IsDone)
@@ -228,7 +228,7 @@ public partial class GameEngine
 
         public void PressButton(PastoriaWater.Button button)
         {
-            if (game.currentMap.Puzzle is not PastoriaWater water) return;
+            if (game.flow.Map.Puzzle is not PastoriaWater water) return;
             water.Press(button);
             AudioManager.PlaySound("select");
             if (water.Moving) AudioManager.PlaySound("surf");
@@ -236,27 +236,27 @@ public partial class GameEngine
 
         public void PressGearButton(SunyshoreGears.Button kind)
         {
-            if (game.currentMap.Puzzle is not SunyshoreGears gears) return;
+            if (game.flow.Map.Puzzle is not SunyshoreGears gears) return;
             gears.Press(kind);
             AudioManager.PlaySound("gears");
         }
 
         public bool TriggerLift()
         {
-            if (game.currentMap.Puzzle is not LeagueLift lift || !lift.Trigger()) return false;
+            if (game.flow.Map.Puzzle is not LeagueLift lift || !lift.Trigger()) return false;
             AudioManager.PlaySound("lift");
             return true;
         }
 
-        public bool LiftNotUsed() => game.currentMap.Puzzle is not LeagueLift lift || lift.NotUsedWhenEntered;
+        public bool LiftNotUsed() => game.flow.Map.Puzzle is not LeagueLift lift || lift.NotUsedWhenEntered;
 
         public void TurnClock(int from, int to)
         {
-            if (game.currentMap.Puzzle is not EternaClock clock) return;
+            if (game.flow.Map.Puzzle is not EternaClock clock) return;
             game.clockTurn = clock.StartTurn(from, to);
             game.clockLook = null;
             game.clockTicks = 0;
-            clock.Apply(game.currentMap, game.story);
+            clock.Apply(game.flow.Map, game.flow.Story);
         }
     }
 }

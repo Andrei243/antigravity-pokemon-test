@@ -42,7 +42,7 @@ public partial class GameEngine
     /// <summary>The player has come to a place: the first time this run, how long that takes goes to the log.</summary>
     private void TimeTheArrival()
     {
-        if (currentMap == null || player == null) return;
+        if (flow.Map == null || flow.Player == null) return;
         string place = PlaceKey();
         if (!placesArrivedIn.Add(place) || arrivalPhase != null) return;
         arrivalPhase = Log.Phase($"first arrival in {place}");
@@ -67,8 +67,8 @@ public partial class GameEngine
         string state = flow.State == GameState.WindowClosing ? $"{flow.ClosingFrom} (the close button's question was up)" : flow.State.ToString();
         if (flow.State == GameState.Transition) state = $"Transition ({flow.Before} to {flow.After})";
         string? renderer = Raylib.IsWindowReady() ? Gl.Renderer() : null;
-        if (!gameStarted || currentMap == null || player == null) return new GameFacts(state, Renderer: renderer, Settings: Settings.Describe());
-        return new GameFacts(state, currentMap.Name, currentMap.AreaAt(player.GridX, player.GridY)?.Key, player.GridX, player.GridY, renderer, Settings.Describe(),
+        if (!gameStarted || flow.Map == null || flow.Player == null) return new GameFacts(state, Renderer: renderer, Settings: Settings.Describe());
+        return new GameFacts(state, flow.Map.Name, flow.Map.AreaAt(flow.Player.GridX, flow.Player.GridY)?.Key, flow.Player.GridX, flow.Player.GridY, renderer, Settings.Describe(),
             SavePaths.SlotName(saveSlot));
     }
 
@@ -77,5 +77,5 @@ public partial class GameEngine
     /// progress. It is whatever <see cref="BuildSave"/> gives in the middle of whatever was happening, which is why it
     /// is never written over the player's own save.
     /// </summary>
-    internal SaveData? CrashSave() => gameStarted && currentMap != null && player != null ? BuildSave() : null;
+    internal SaveData? CrashSave() => gameStarted && flow.Map != null && flow.Player != null ? BuildSave() : null;
 }

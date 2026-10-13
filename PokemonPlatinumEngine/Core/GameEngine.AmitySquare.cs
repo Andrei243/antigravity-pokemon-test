@@ -43,7 +43,7 @@ public partial class GameEngine
         }
         var stroller = new Follower(body, pokemon) { Gap = StrollGap(pokemon) };
         SetAlong(stroller);
-        PutBehind(stroller, player.GridX, player.GridY, player.Facing);
+        PutBehind(stroller, flow.Player.GridX, flow.Player.GridY, flow.Player.Facing);
         flow.WantModel(pokemon.ModelName);
         strollModel = pokemon.ModelName;
         strollWait = StrollPatience;
@@ -57,9 +57,9 @@ public partial class GameEngine
     {
         if (strollModel != null && ((strollWait -= dt) <= 0f || PokemonModels.TryGet(strollModel, out _))) strollModel = null;
         if (along?.Pokemon is not { } walker) return;
-        int slot = playerParty.Members.IndexOf(walker);
+        int slot = flow.Party.Members.IndexOf(walker);
         if (slot < 0) EndStroll();
-        else if (story.Var(AmitySquare.PartyVar) != slot) story.SetVar(AmitySquare.PartyVar, slot);
+        else if (flow.Story.Var(AmitySquare.PartyVar) != slot) flow.Story.SetVar(AmitySquare.PartyVar, slot);
     }
 
     /// <summary>The walk is over without the receptionist's goodbye: the Pokémon is back in its ball and its object off the map.</summary>
@@ -67,8 +67,8 @@ public partial class GameEngine
     {
         if (along?.Pokemon != null) SetAlong(null);
         strollModel = null;
-        if (story.Var(AmitySquare.ActiveVar) != 0) story.SetVar(AmitySquare.ActiveVar, 0);
-        if (!story.Has(AmitySquare.HideFlag)) story.Set(AmitySquare.HideFlag);
+        if (flow.Story.Var(AmitySquare.ActiveVar) != 0) flow.Story.SetVar(AmitySquare.ActiveVar, 0);
+        if (!flow.Story.Has(AmitySquare.HideFlag)) flow.Story.Set(AmitySquare.HideFlag);
     }
 
     /// <summary>
@@ -77,8 +77,8 @@ public partial class GameEngine
     /// </summary>
     private void LeaveStrollBehind()
     {
-        if (currentMap.Name == AmitySquare.Map) return;
-        if (along?.Pokemon != null || story.Var(AmitySquare.ActiveVar) == 1) EndStroll();
+        if (flow.Map.Name == AmitySquare.Map) return;
+        if (along?.Pokemon != null || flow.Story.Var(AmitySquare.ActiveVar) == 1) EndStroll();
     }
 
     /// <summary>
@@ -87,8 +87,8 @@ public partial class GameEngine
     /// </summary>
     private void ResumeStroll()
     {
-        if (currentMap.Name != AmitySquare.Map || story.Var(AmitySquare.ActiveVar) != 1) return;
-        if (AmitySquare.Walker(story, playerParty) is not { } pokemon || currentMap.FindPerson(AmitySquare.Body) is not { } body)
+        if (flow.Map.Name != AmitySquare.Map || flow.Story.Var(AmitySquare.ActiveVar) != 1) return;
+        if (AmitySquare.Walker(flow.Story, flow.Party) is not { } pokemon || flow.Map.FindPerson(AmitySquare.Body) is not { } body)
         {
             EndStroll();
             return;

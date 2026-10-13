@@ -63,16 +63,16 @@ public partial class GameEngine
                 // The team, for that many to be chosen in their order (BT_FUNC_UNK_30, the party menu's battle tower mode)
                 scriptAnswer = 0;
                 enteredSlots = Array.Empty<int>();
-                partyScreen.ShowCondition = story.Has(ContestHallVisitedFlag);
-                partyScreen.OpenToEnter(number, FrontierRules.MayEnter);
+                flow.PartyScreen.ShowCondition = flow.Story.Has(ContestHallVisitedFlag);
+                flow.PartyScreen.OpenToEnter(number, FrontierRules.MayEnter);
                 flow.State = GameState.PartyMenu;
                 return 0;
             case "records":
-                frontierRecordsScreen.Open(FrontierBoard.For((FrontierFacility)number, frontier, story));
+                frontierRecordsScreen.Open(FrontierBoard.For((FrontierFacility)number, frontier, flow.Story));
                 flow.State = GameState.FrontierRecords;
                 return 1;
             case "seen":
-                return playerPokedex.IsSeen(number) ? 1 : 0;
+                return flow.Pokedex.IsSeen(number) ? 1 : 0;
             case "score":
                 trainerScore = TrainerScore.Add(trainerScore, number);
                 return 1;
@@ -81,7 +81,7 @@ public partial class GameEngine
                 return 1;
             case "partner":
                 // Whoever stands as the partner in a room of the Tower takes the look and the name of the one chosen
-                if (number >= 0 && number < BattleTowerChallenge.PartnerNames.Length && currentMap.FindPerson(TowerPartnerPerson) is { } beside)
+                if (number >= 0 && number < BattleTowerChallenge.PartnerNames.Length && flow.Map.FindPerson(TowerPartnerPerson) is { } beside)
                 {
                     beside.NpcType = BattleTowerChallenge.PartnerLooks[number];
                     beside.Name = BattleTowerChallenge.PartnerNames[number];
@@ -112,8 +112,8 @@ public partial class GameEngine
                 // The team, for the Battle Hall's one Pokémon of level 30 or more to be chosen, or its two (PARTY_MENU_MODE_BATTLE_HALL)
                 scriptAnswer = 0;
                 enteredSlots = Array.Empty<int>();
-                partyScreen.ShowCondition = story.Has(ContestHallVisitedFlag);
-                partyScreen.OpenToEnter(number, BattleHallChallenge.MayEnter);
+                flow.PartyScreen.ShowCondition = flow.Story.Has(ContestHallVisitedFlag);
+                flow.PartyScreen.OpenToEnter(number, BattleHallChallenge.MayEnter);
                 flow.State = GameState.PartyMenu;
                 return 0;
             case "board":
@@ -148,10 +148,10 @@ public partial class GameEngine
     /// </summary>
     private void StandOpponents()
     {
-        var foes = runner.TowerFoes;
+        var foes = flow.Runner.TowerFoes;
         for (int i = 0; i < foes.Count && i < TowerOpponentPeople.Length; i++)
         {
-            if (currentMap.FindPerson(TowerOpponentPeople[i]) is not { } person) continue;
+            if (flow.Map.FindPerson(TowerOpponentPeople[i]) is not { } person) continue;
             person.NpcType = FrontierTrainers.LookOf(foes[i].Record);
             person.Name = $"{foes[i].Record.Class} {foes[i].Record.Name}";
         }
@@ -185,11 +185,11 @@ public partial class GameEngine
         StartTransition(GameState.Battle, () =>
         {
             AwaitModels(shown);
-            battle = new BattleEngine(new BattleSetup
+            flow.Battle = new BattleEngine(new BattleSetup
             {
                 PlayerParty = team,
-                Inventory = playerInventory,
-                Pokedex = playerPokedex,
+                Inventory = flow.Bag,
+                Pokedex = flow.Pokedex,
                 Place = PlaceName(),
                 Format = doubles ? BattleFormat.Double : BattleFormat.Single,
                 Trainers = trainers,
@@ -200,8 +200,8 @@ public partial class GameEngine
                 {
                     Terrain = Battle.Sim.BattleTerrain.Special,
                     Night = GameClock.IsNight,
-                    HasCaught = species => playerPokedex.IsCaught(species.DexNumber),
-                    Badges = story.BadgeCount,
+                    HasCaught = species => flow.Pokedex.IsCaught(species.DexNumber),
+                    Badges = flow.Story.BadgeCount,
                     Player = PlayerMark,
                     // The weather or the Trick Room a facility's own rules open the battle under (the Battle Arcade's board, plan 06 · R18d)
                     Weather = conditions?.Weather ?? Battle.Sim.BattleWeather.None,
@@ -212,7 +212,7 @@ public partial class GameEngine
                 // The Frontier never offers a switch (BATTLE_TYPE_FORCED_SET_MODE; plan 08 · P1), but plays as the scene says
                 Scene = Settings.BattleScene
             });
-            battleRenderer.SetArena(currentMap, player.GridX, player.GridY);
+            battleRenderer.SetArena(flow.Map, flow.Player.GridX, flow.Player.GridY);
             battleTrainers.Clear();
         }, SceneTransition.ForBattle(meeting));
     }
@@ -223,13 +223,13 @@ public partial class GameEngine
     /// </summary>
     private void EndFrontierBattle()
     {
-        scriptOutcome = battle?.Result == BattleResult.PlayerVictory ? BattleOutcome.Won : BattleOutcome.Lost;
+        scriptOutcome = flow.Battle?.Result == BattleResult.PlayerVictory ? BattleOutcome.Won : BattleOutcome.Lost;
         // The turns it took, which the Battle Arcade scores a battle by (dto->totalTurnsElapsed)
-        scriptTurns = battle?.Core.Turn ?? 0;
+        scriptTurns = flow.Battle?.Core.Turn ?? 0;
         battleMayBeLost = false;
         StartTransition(GameState.Overworld, () =>
         {
-            PokemonModels.Trim(playerParty.Members.Select(p => p.ModelName));
+            PokemonModels.Trim(flow.Party.Members.Select(p => p.ModelName));
             PlayFieldMusic();
         });
     }
@@ -237,8 +237,8 @@ public partial class GameEngine
     /// <summary>The party screen closed after the team was opened for a challenge: the script hears who was entered.</summary>
     private void TakeEntered()
     {
-        enteredSlots = partyScreen.EnteredAll ? partyScreen.Entered.ToList() : Array.Empty<int>();
-        scriptAnswer = partyScreen.EnteredAll ? 1 : 0;
+        enteredSlots = flow.PartyScreen.EnteredAll ? flow.PartyScreen.Entered.ToList() : Array.Empty<int>();
+        scriptAnswer = flow.PartyScreen.EnteredAll ? 1 : 0;
     }
 
     private void UpdateFrontierRecords(float dt)

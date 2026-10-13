@@ -123,11 +123,11 @@ public partial class GameEngine
         public RenderContext RenderContext => game.renderContext;
         public WorldRenderer World => game.world;
         public BattleRenderer BattleRenderer => game.battleRenderer;
-        public DialogueManager Dialogue { get => game.dialogue; set => game.dialogue = value; }
-        public LocationSign LocationSign => game.locationSign;
+        public DialogueManager Dialogue { get => game.flow.Dialogue; set => game.flow.Dialogue = value; }
+        public LocationSign LocationSign => game.flow.LocationSign;
         public TitleScreen Title { get => game.titleScreen; set => game.titleScreen = value; }
         public IntroScreen Intro => game.introScreen;
-        public StartMenu StartMenu => game.startMenu;
+        public StartMenu StartMenu => game.flow.StartMenu;
         /// <summary>The window's close button and its question (plan 12 · Q1): asked as the button asks it, answered as a key would.</summary>
         public ClosePrompt ClosePrompt => game.closePrompt;
         public void RequestClose() => game.RequestClose();
@@ -136,21 +136,21 @@ public partial class GameEngine
             if (game.closePrompt.IsOpen) game.closePrompt.Cancel();
             game.AnswerClose(choice);
         }
-        public PartyScreen PartyScreen => game.partyScreen;
-        public StarterSelectScreen StarterSelect => game.starterSelectScreen;
-        public BagScreen BagScreen => game.bagScreen;
-        public TrainerCardScreen TrainerCard => game.trainerCardScreen;
-        public SaveScreen SaveScreen => game.saveScreen;
-        public ShopScreen Shop => game.shopScreen;
-        public PCScreen PcScreen => game.pcScreen;
+        public PartyScreen PartyScreen => game.flow.PartyScreen;
+        public StarterSelectScreen StarterSelect => game.flow.StarterSelectScreen;
+        public BagScreen BagScreen => game.flow.BagScreen;
+        public TrainerCardScreen TrainerCard => game.flow.TrainerCardScreen;
+        public SaveScreen SaveScreen => game.flow.SaveScreen;
+        public ShopScreen Shop => game.flow.ShopScreen;
+        public PCScreen PcScreen => game.flow.PCScreen;
         public HallOfFameScreen HallOfFameScreen => game.hallOfFameScreen;
         public JournalScreen JournalScreen => game.journalScreen;
-        public PokedexScreen PokedexScreen => game.pokedexScreen;
+        public PokedexScreen PokedexScreen => game.flow.PokedexScreen;
         public EvolutionScreen Evolution => game.evolutionScreen;
-        public OptionsScreen Options => game.optionsScreen;
+        public OptionsScreen Options => game.flow.OptionsScreen;
         public WardrobeScreen WardrobeScreen => game.wardrobeScreen;
         /// <summary>The map of the region: the Town Map, a wall's map, and Fly's choice of a place (plan 01 · M12).</summary>
-        public TownMapScreen TownMapScreen => game.townMapScreen;
+        public TownMapScreen TownMapScreen => game.flow.TownMapScreen;
 
         /// <summary>Opens the map of the region as the game does, in a mode: out of the bag, on a wall, or for Fly with the first of the team.</summary>
         public bool OpenTownMap(TownMapMode mode) => game.OpenTownMap(mode, fromBag: false);
@@ -172,8 +172,8 @@ public partial class GameEngine
         /// <summary>Puts the player on a tile of the map in the field.</summary>
         public void Place(Map map, int x, int y, Direction facing)
         {
-            game.currentMap = map;
-            game.player.SetPosition(x, y, facing);
+            game.flow.Map = map;
+            game.flow.Player.SetPosition(x, y, facing);
             game.flow.State = GameState.Overworld;
         }
 

@@ -30,7 +30,7 @@ public partial class GameEngine
         {
             case SetPiece.Heal:
                 // A room with no machine has the heal's fanfare, as a healing always had, and nothing to wait for
-                if (currentMap.Props.FirstOrDefault(p => p.Type == PropType.HealingMachine) is not { } machine)
+                if (flow.Map.Props.FirstOrDefault(p => p.Type == PropType.HealingMachine) is not { } machine)
                 {
                     AudioManager.PlayFanfare(MusicRole.FanfareHeal);
                     return 0f;
@@ -38,8 +38,8 @@ public partial class GameEngine
                 return world.Pieces.Play(piece, count, now, (machine.X, machine.Y));
 
             case SetPiece.HallOfFame:
-                if (!GymPieces.HasMachine(currentMap)) return 0f;
-                return world.Pieces.Play(piece, count, now, (currentMap.Width / 2, currentMap.RoomCorner().Back));
+                if (!GymPieces.HasMachine(flow.Map)) return 0f;
+                return world.Pieces.Play(piece, count, now, (flow.Map.Width / 2, flow.Map.RoomCorner().Back));
 
             case SetPiece.PcOn:
                 // The PC before the player, or the nearest that is used; with none there is its sound alone
@@ -60,18 +60,18 @@ public partial class GameEngine
 
             default:
                 // A lift's ride is the car's own: it hums and shudders wherever it is, and its indicator runs where it has one
-                return world.Pieces.Play(piece, count, now, (player.GridX, player.GridY));
+                return world.Pieces.Play(piece, count, now, (flow.Player.GridX, flow.Player.GridY));
         }
     }
 
     /// <summary>The PC that is used nearest the player on this map (the one faced is the nearest), or null where there is none.</summary>
     private NPC? TerminalNear()
     {
-        var (dx, dy) = FieldMovement.Delta(player.Facing);
-        int fx = player.GridX + dx, fy = player.GridY + dy;
+        var (dx, dy) = FieldMovement.Delta(flow.Player.Facing);
+        int fx = flow.Player.GridX + dx, fy = flow.Player.GridY + dy;
         NPC? nearest = null;
         int best = int.MaxValue;
-        foreach (var npc in currentMap.NPCs.Near(player.GridX, player.GridY, Wandering.Reach, new List<NPC>()))
+        foreach (var npc in flow.Map.NPCs.Near(flow.Player.GridX, flow.Player.GridY, Wandering.Reach, new List<NPC>()))
         {
             if (!npc.IsPCTerminal) continue;
             int far = Math.Abs(npc.GridX - fx) + Math.Abs(npc.GridY - fy);
@@ -83,7 +83,7 @@ public partial class GameEngine
     /// <summary>Someone is shaken or flickers, if they are on the map (nobody is the player); says how long the script waits.</summary>
     private float MoveSomeone(NPC? who, int times, bool flicker)
     {
-        if (who != null && !currentMap.NPCs.Contains(who)) return 0f;
+        if (who != null && !flow.Map.NPCs.Contains(who)) return 0f;
         return flicker ? world.Pieces.Flicker(who, times, world.Life.Now) : world.Pieces.Shake(who, times, world.Life.Now);
     }
 
@@ -128,6 +128,6 @@ public partial class GameEngine
             !Skipping ? game.MoveSomeone(who, times, flicker: true) : Dropped(who) ? 0f : SetPieces.FlickerLength(times);
 
         // (Nobody of that name on the map: the piece takes no time, played or not)
-        private bool Dropped(NPC? who) => who != null && !game.currentMap.NPCs.Contains(who);
+        private bool Dropped(NPC? who) => who != null && !game.flow.Map.NPCs.Contains(who);
     }
 }

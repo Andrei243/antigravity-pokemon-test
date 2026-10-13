@@ -33,8 +33,8 @@ public partial class GameEngine
     {
         capsulesFromBag = fromBag;
         flow.State = GameState.SealCase;
-        sealCaseScreen.Open(sealCase, playerParty);
-        foreach (var p in playerParty.Members.Where(p => !p.IsEgg)) Graphics.PokemonSprites.Request(p.ModelName);
+        sealCaseScreen.Open(sealCase, flow.Party);
+        foreach (var p in flow.Party.Members.Where(p => !p.IsEgg)) Graphics.PokemonSprites.Request(p.ModelName);
     }
 
     private void UpdateBallCapsules(float dt)
@@ -46,7 +46,7 @@ public partial class GameEngine
         if (capsulesFromBag)
         {
             flow.State = GameState.BagMenu;
-            bagScreen.Resume();
+            flow.BagScreen.Resume();
         }
         else flow.State = GameState.Overworld;
     }
@@ -60,7 +60,7 @@ public partial class GameEngine
 
     private void UpdateSealShop(float dt)
     {
-        sealShopScreen.Update(ref playerMoney, ShowNotification, dt);
+        sealShopScreen.Update(ref flow.Money, ShowNotification, dt);
         if (!sealShopScreen.IsActive) flow.State = GameState.Overworld;
     }
 
@@ -89,13 +89,13 @@ public partial class GameEngine
         if (fashionFromBag)
         {
             flow.State = GameState.BagMenu;
-            bagScreen.Resume();
+            flow.BagScreen.Resume();
         }
         else flow.State = GameState.Overworld;
     }
 
     /// <summary>Whether a Master Rank contest has been won, in any of the five: the Trainer Card's star for contests (<c>SystemFlag_CheckContestMaster</c>).</summary>
-    private bool IsContestMaster => System.Enum.GetValues<ContestStat>().Any(q => story.Has(ContestMasterFlag(q)));
+    private bool IsContestMaster => System.Enum.GetValues<ContestStat>().Any(q => flow.Story.Has(ContestMasterFlag(q)));
 
     /// <summary>
     /// A save from before the Fashion Case was given (plan 06 · R17b) that is past Jubilife City's scene with Team
@@ -103,9 +103,9 @@ public partial class GameEngine
     /// </summary>
     private void OweTheFashionCase()
     {
-        if (story.Has(FashionCaseFlag) || story.Var("VAR_JUBILIFE_CITY_STATE") < 4) return;
-        story.Set(FashionCaseFlag);
-        if (ItemDatabase.Get("Fashion Case") is { } item && playerInventory.GetQuantity(item) == 0) playerInventory.AddItem(item, 1);
+        if (flow.Story.Has(FashionCaseFlag) || flow.Story.Var("VAR_JUBILIFE_CITY_STATE") < 4) return;
+        flow.Story.Set(FashionCaseFlag);
+        if (ItemDatabase.Get("Fashion Case") is { } item && flow.Bag.GetQuantity(item) == 0) flow.Bag.AddItem(item, 1);
         fashionCase.FillAsGiven(fieldRandom);
     }
 }
