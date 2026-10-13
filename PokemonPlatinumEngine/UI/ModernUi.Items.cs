@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Numerics;
 using Raylib_cs;
+using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Models;
@@ -13,16 +14,16 @@ namespace PokemonPlatinumEngine.UI;
 internal static partial class ModernUi
 {
     /// <summary>A pocket's name, sign and colour, in the order of <see cref="BagScreen.Pockets"/>.</summary>
-    public static readonly (string Label, UiIcon Icon, Color Color)[] PocketTabs =
+    public static (string Label, UiIcon Icon, Color Color)[] PocketTabs => new[]
     {
-        ("ITEMS", UiIcon.Pouch, Gold),
-        ("MEDICINE", UiIcon.Cross, new Color(238, 108, 140, 255)),
-        ("POKÉ BALLS", UiIcon.Ball, Red),
-        ("TMs & HMs", UiIcon.Disc, new Color(126, 110, 222, 255)),
-        ("BERRIES", UiIcon.Berry, Green),
-        ("MAIL", UiIcon.Letter, new Color(84, 168, 216, 255)),
-        ("BATTLE ITEMS", UiIcon.Boost, new Color(238, 134, 60, 255)),
-        ("KEY ITEMS", UiIcon.Key, new Color(150, 104, 200, 255))
+        (Text.Of("bag.pocket.Items"), UiIcon.Pouch, Gold),
+        (Text.Of("bag.pocket.Medicine"), UiIcon.Cross, new Color(238, 108, 140, 255)),
+        (Text.Of("bag.pocket.PokeBalls"), UiIcon.Ball, Red),
+        (Text.Of("bag.pocket.TMsHMs"), UiIcon.Disc, new Color(126, 110, 222, 255)),
+        (Text.Of("bag.pocket.Berries"), UiIcon.Berry, Green),
+        (Text.Of("bag.pocket.Mail"), UiIcon.Letter, new Color(84, 168, 216, 255)),
+        (Text.Of("bag.pocket.BattleItems"), UiIcon.Boost, new Color(238, 134, 60, 255)),
+        (Text.Of("bag.pocket.KeyItems"), UiIcon.Key, new Color(150, 104, 200, 255))
     };
 
     public static (string Label, UiIcon Icon, Color Color) PocketTab(ItemPocket pocket) =>
@@ -35,8 +36,8 @@ internal static partial class ModernUi
     public static void DrawBag(int sw, int sh, BagScreen bag, Inventory inventory, float appear = 1f)
     {
         Backdrop(sw, sh);
-        ScreenTitle("BAG");
-        Hints(sw - Margin, 44, ("Left / Right", "Pocket"), ("Z", "Choose"), ("Esc", "Back"));
+        ScreenTitle(Text.Of("bag.title"));
+        Hints(sw - Margin, 44, Hint("shared.keys.leftRight", "shared.hints.pocket"), Hint("shared.keys.z", "shared.hints.choose"), Hint("shared.keys.esc", "shared.hints.back"));
 
         int pocket = Math.Max(0, Array.IndexOf(BagScreen.Pockets, bag.CurrentPocket));
         Tabs(new Rectangle(Margin, ContentTop, sw - Margin * 2, 76), PocketTabs, pocket);
@@ -49,7 +50,7 @@ internal static partial class ModernUi
         var list = new Rectangle(Margin - slide, top, 920, ContentBottom - top);
         Panel(list, 34);
         bool scrolls = items.Count > BagScreen.VisibleRows;
-        if (items.Count == 0) EmptyNote(list, "Nothing in this pocket.");
+        if (items.Count == 0) EmptyNote(list, Text.Of("bag.empty"));
         for (int row = 0; row < BagScreen.VisibleRows && bag.FirstRow + row < items.Count; row++)
         {
             int index = bag.FirstRow + row;
@@ -58,7 +59,7 @@ internal static partial class ModernUi
             bool selected = index == bag.SelectedIndex;
             var ink = ListRow(r, selected, stack.Name);
             RowIcon(r, PixelArtGenerator.GetItemIcon(stack.Data), 1.5f, selected);
-            if (bag.CurrentPocket != ItemPocket.KeyItems) RowValue(r, $"×{stack.Quantity}", ink);
+            if (bag.CurrentPocket != ItemPocket.KeyItems) RowValue(r, Text.Of("bag.count", ("n", stack.Quantity)), ink);
         }
         ScrollBar(list, bag.FirstRow, BagScreen.VisibleRows, items.Count, 26);
 
@@ -67,7 +68,7 @@ internal static partial class ModernUi
         Panel(detail, 34);
         if (items.Count == 0 || bag.SelectedIndex >= items.Count) return;
         var item = items[bag.SelectedIndex].Data;
-        ItemDetail(detail, item, PocketTab(item.Pocket), item.Pocket == ItemPocket.KeyItems ? null : ("IN BAG", $"×{items[bag.SelectedIndex].Quantity}"));
+        ItemDetail(detail, item, PocketTab(item.Pocket), item.Pocket == ItemPocket.KeyItems ? null : (Text.Of("bag.inBag"), Text.Of("bag.count", ("n", items[bag.SelectedIndex].Quantity))));
 
         if (bag.Actions is { } actions) ActionMenu(detail, actions, bag.ActionIndex);
     }
@@ -106,27 +107,18 @@ internal static partial class ModernUi
         y += 22;
         UiShapes.Fill(new Rectangle(detail.X + 44, y, detail.Width - 88, 3), 1.5f, Rule);
         y += 26;
-        Label("TEACHES", detail.X + 44, y);
+        Label(Text.Of("bag.teaches"), detail.X + 44, y);
         UiFonts.Draw(move.Name, detail.X + 44, y + 24, 40, Ink, UiWeight.Black);
         float px = detail.X + 44;
         px += TypePill(px, y + 84, move.Type, 42) + 12;
-        Tag(px, y + 84, move.Category.ToString().ToUpperInvariant(), Muted, 42);
+        Tag(px, y + 84, Words.Category(move.Category), Muted, 42);
         float fx = detail.X + 44;
-        fx = Field("POWER", move.Power > 0 ? move.Power.ToString() : "—", fx, y + 148, 36);
-        fx = Field("ACCURACY", move.Accuracy > 0 ? move.Accuracy.ToString() : "—", fx, y + 148, 36);
-        Field("PP", move.MaxPP.ToString(), fx, y + 148, 36);
+        fx = Field(Text.Of("summary.power"), move.Power > 0 ? move.Power.ToString() : "—", fx, y + 148, 36);
+        fx = Field(Text.Of("summary.accuracy"), move.Accuracy > 0 ? move.Accuracy.ToString() : "—", fx, y + 148, 36);
+        Field(Text.Of("summary.pp"), move.MaxPP.ToString(), fx, y + 148, 36);
     }
 
-    private static string ActionLabel(BagAction action) => action switch
-    {
-        BagAction.Use => "USE",
-        BagAction.Give => "GIVE",
-        BagAction.Toss => "TOSS",
-        BagAction.Register => "REGISTER",
-        BagAction.Deselect => "DESELECT",
-        BagAction.Open => "OPEN",
-        _ => "CANCEL"
-    };
+    private static string ActionLabel(BagAction action) => Text.Of($"bag.action.{action}");
 
     /// <summary>What can be done with the chosen item: a small panel at the foot of the detail panel, one row for each.</summary>
     private static void ActionMenu(Rectangle detail, IReadOnlyList<BagAction> actions, int selected)
@@ -152,7 +144,8 @@ internal static partial class ModernUi
         Backdrop(sw, sh);
         ScreenTitle(shop.Name);
         bool selling = shop.Mode == ShopMode.Selling;
-        Hints(sw - Margin, 44, ("Z", shop.Mode == ShopMode.Choosing ? "Choose" : selling ? "Sell" : "Buy"), ("Esc", shop.Mode == ShopMode.Choosing ? "Leave" : "Back"));
+        Hints(sw - Margin, 44, Hint("shared.keys.z", shop.Mode == ShopMode.Choosing ? "shared.hints.choose" : selling ? "shared.hints.sell" : "shared.hints.buy"),
+            Hint("shared.keys.esc", shop.Mode == ShopMode.Choosing ? "shared.hints.leave" : "shared.hints.back"));
 
         float slide = (1f - UiMotion.EaseOut(appear)) * 60f;
         var listed = shop.Listed;
@@ -169,7 +162,7 @@ internal static partial class ModernUi
             bool selected = shop.Mode != ShopMode.Choosing && index == shop.SelectedIndex;
             int price = selling ? ShopScreen.SellPrice(item) : item.Price;
             bool affordable = selling || item.Price <= money;
-            var ink = ListRow(r, selected, selling ? $"{item.Name}  ×{inventory.GetQuantity(item)}" : item.Name);
+            var ink = ListRow(r, selected, selling ? Text.Of("shop.listedCount", ("item", item.Name), ("n", inventory.GetQuantity(item))) : item.Name);
             RowIcon(r, PixelArtGenerator.GetItemIcon(item), 1.5f, selected);
             MoneyRight(r.X + r.Width - 32, r.Y + r.Height / 2f, price, 30, selected ? Color.White : affordable ? ink : Red);
         }
@@ -179,14 +172,14 @@ internal static partial class ModernUi
         float rx = Margin + 920 + Gutter + slide, rw = sw - Margin * 2 - 920 - Gutter;
         var purse = new Rectangle(rx, ContentTop, rw, 132);
         Panel(purse, 34);
-        UiFonts.DrawCentered("MONEY", purse.X + 44, purse.Y + purse.Height / 2f, 26, Muted, UiWeight.Black);
+        UiFonts.DrawCentered(Text.Of("shop.money"), purse.X + 44, purse.Y + purse.Height / 2f, 26, Muted, UiWeight.Black);
         MoneyRight(purse.X + purse.Width - 44, purse.Y + purse.Height / 2f, money, 52, Ink);
 
         // ---- The chosen item
         var detail = new Rectangle(rx, ContentTop + 132 + 24, rw, ContentBottom - ContentTop - 132 - 24);
         Panel(detail, 34);
         if (shop.Mode != ShopMode.Choosing && shop.Selected is { } chosen)
-            ItemDetail(detail, chosen, PocketTab(chosen.Pocket), ("IN BAG", $"×{inventory.GetQuantity(chosen)}"));
+            ItemDetail(detail, chosen, PocketTab(chosen.Pocket), (Text.Of("bag.inBag"), Text.Of("bag.count", ("n", inventory.GetQuantity(chosen)))));
 
         if (shop.Mode == ShopMode.Choosing) ShopQuestion(sw, sh, shop.ChoiceIndex);
         if (askingVisible && shop.Selected is { } buying) QuantityPrompt(sw, sh, buying, shop.Quantity, asking, selling);
@@ -198,7 +191,7 @@ internal static partial class ModernUi
         Dim(sw, sh, 120);
         var r = new Rectangle(sw / 2f - 300, sh / 2f - 230, 600, 460);
         Panel(r, 36);
-        UiFonts.Draw("What can I do for you?", r.X + 48, r.Y + 40, 40, Ink, UiWeight.Black);
+        UiFonts.Draw(Text.Of("shop.question"), r.X + 48, r.Y + 40, 40, Ink, UiWeight.Black);
         for (int i = 0; i < ShopScreen.Choices.Length; i++)
             Button(new Rectangle(r.X + 48, r.Y + 120 + i * 104, r.Width - 96, 84), 34, i == 2 ? Blue : Green, ShopScreen.Choices[i], 32, cursor == i);
     }
@@ -209,8 +202,8 @@ internal static partial class ModernUi
         Dim(sw, sh, (int)(150 * appear));
         var r = new Rectangle(sw / 2f - 480, sh / 2f - 220 + (1f - appear) * 60f, 960, 440);
         Panel(r, 36);
-        UiFonts.Draw(selling ? "Sell how many?" : "Buy how many?", r.X + 56, r.Y + 44, 48, Ink, UiWeight.Black);
-        HintsDark(r.X + r.Width - 40, r.Y + 46, ("Z", selling ? "Sell" : "Buy"), ("Esc", "Back"));
+        UiFonts.Draw(Text.Of(selling ? "shop.sellHowMany" : "shop.buyHowMany"), r.X + 56, r.Y + 44, 48, Ink, UiWeight.Black);
+        HintsDark(r.X + r.Width - 40, r.Y + 46, Hint("shared.keys.z", selling ? "shared.hints.sell" : "shared.hints.buy"), Hint("shared.keys.esc", "shared.hints.back"));
 
         int each = selling ? ShopScreen.SellPrice(item) : item.Price;
         var c = new Vector2(r.X + 56 + 52, r.Y + 176);
@@ -218,12 +211,12 @@ internal static partial class ModernUi
         PixelArt(PixelArtGenerator.GetItemIcon(item), c, 2);
         UiFonts.DrawCentered(item.Name, r.X + 56 + 128, r.Y + 160, 40, Ink, UiWeight.Black);
         float width = Money(r.X + 56 + 128, r.Y + 204, each, 26, Muted);
-        UiFonts.DrawCentered("each", r.X + 56 + 128 + width + 10, r.Y + 204, 24, Muted, UiWeight.ExtraBold);
+        UiFonts.DrawCentered(Text.Of("shop.each"), r.X + 56 + 128 + width + 10, r.Y + 204, 24, Muted, UiWeight.ExtraBold);
 
-        Stepper(new Vector2(r.X + r.Width - 56 - 44 - 120 - 24, r.Y + 180), $"× {quantity}");
+        Stepper(new Vector2(r.X + r.Width - 56 - 44 - 120 - 24, r.Y + 180), Text.Of("bag.howMany", ("n", quantity)));
 
         UiShapes.Fill(new Rectangle(r.X + 56, r.Y + 272, r.Width - 112, 3), 1.5f, Rule);
-        UiFonts.DrawCentered(selling ? "YOU GET" : "TOTAL", r.X + 56, r.Y + 350, 28, Muted, UiWeight.Black);
+        UiFonts.DrawCentered(Text.Of(selling ? "shop.youGet" : "shop.total"), r.X + 56, r.Y + 350, 28, Muted, UiWeight.Black);
         MoneyRight(r.X + r.Width - 56, r.Y + 350, each * quantity, 60, Ink);
     }
 
@@ -245,12 +238,12 @@ internal static partial class ModernUi
         Dim(sw, sh, 140);
         var r = new Rectangle(sw / 2f - 440, sh / 2f - 160, 880, 320);
         Panel(r, 36);
-        UiFonts.Draw("Throw away how many?", r.X + 56, r.Y + 44, 44, Ink, UiWeight.Black);
-        HintsDark(r.X + r.Width - 40, r.Y + 46, ("Z", "Toss"), ("Esc", "Back"));
+        UiFonts.Draw(Text.Of("bag.tossHowMany"), r.X + 56, r.Y + 44, 44, Ink, UiWeight.Black);
+        HintsDark(r.X + r.Width - 40, r.Y + 46, Hint("shared.keys.z", "shared.hints.toss"), Hint("shared.keys.esc", "shared.hints.back"));
         var c = new Vector2(r.X + 56 + 52, r.Y + 200);
         UiShapes.Circle(c, 52, Disc);
         PixelArt(PixelArtGenerator.GetItemIcon(item), c, 2);
         UiFonts.DrawCentered(item.Name, r.X + 56 + 128, r.Y + 200, 40, Ink, UiWeight.Black);
-        Stepper(new Vector2(r.X + r.Width - 56 - 44 - 120 - 24, r.Y + 200), $"× {count}");
+        Stepper(new Vector2(r.X + r.Width - 56 - 44 - 120 - 24, r.Y + 200), Text.Of("bag.howMany", ("n", count)));
     }
 }

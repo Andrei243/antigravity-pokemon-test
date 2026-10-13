@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Numerics;
 using Raylib_cs;
+using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.Models.Frontier;
@@ -268,7 +269,7 @@ internal static partial class ModernUi
             y += 74;
         }
         y += 14;
-        foreach (var (caption, told) in new[] { ("NATURE", p.Nature.ToString()), ("ABILITY", p.AbilityName ?? "None"), ("HOLDING", p.HeldItem?.Name ?? "Nothing") })
+        foreach (var (caption, told) in new[] { ("NATURE", Words.Nature(p.Nature)), ("ABILITY", p.AbilityName ?? "None"), ("HOLDING", p.HeldItem?.Name ?? "Nothing") })
         {
             Label(caption, side.X + 40, y);
             UiFonts.Draw(told, side.X + 40, y + 24, 32, Ink, UiWeight.Black);

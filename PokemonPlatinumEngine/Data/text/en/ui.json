@@ -7,12 +7,32 @@
     "keys": {
       "z": "Z",
       "esc": "Esc",
-      "leftRight": "Left / Right"
+      "leftRight": "Left / Right",
+      "upDown": "Up / Down",
+      "shift": "Shift",
+      "arrows": "Arrows"
     },
     "hints": {
       "open": "Open",
       "back": "Back",
-      "change": "Change"
+      "change": "Change",
+      "choose": "Choose",
+      "menu": "Menu",
+      "move": "Move",
+      "use": "Use",
+      "give": "Give",
+      "next": "Next",
+      "enter": "Enter",
+      "goIn": "Go in",
+      "look": "Look",
+      "page": "Page",
+      "nextPokemon": "Next Pokémon",
+      "ribbon": "Ribbon",
+      "pocket": "Pocket",
+      "buy": "Buy",
+      "sell": "Sell",
+      "toss": "Toss",
+      "leave": "Leave"
     }
   },
 
@@ -251,5 +271,150 @@
   "close": {
     "heading": "Close the game?",
     "cantSave": "The game can't be saved right now: anything since your last save will be lost."
+  },
+
+  "types": {
+    "Normal": "Normal", "Fire": "Fire", "Water": "Water", "Grass": "Grass", "Electric": "Electric", "Ice": "Ice",
+    "Fighting": "Fighting", "Poison": "Poison", "Ground": "Ground", "Flying": "Flying", "Psychic": "Psychic", "Bug": "Bug",
+    "Rock": "Rock", "Ghost": "Ghost", "Dragon": "Dragon", "Steel": "Steel", "Dark": "Dark", "Fairy": "Fairy"
+  },
+
+  "natures": {
+    "Hardy": "Hardy", "Lonely": "Lonely", "Brave": "Brave", "Adamant": "Adamant", "Naughty": "Naughty",
+    "Bold": "Bold", "Docile": "Docile", "Relaxed": "Relaxed", "Impish": "Impish", "Lax": "Lax",
+    "Timid": "Timid", "Hasty": "Hasty", "Serious": "Serious", "Jolly": "Jolly", "Naive": "Naive",
+    "Modest": "Modest", "Mild": "Mild", "Quiet": "Quiet", "Bashful": "Bashful", "Rash": "Rash",
+    "Calm": "Calm", "Gentle": "Gentle", "Sassy": "Sassy", "Careful": "Careful", "Quirky": "Quirky"
+  },
+
+  "statuses": {
+    "Poison": "PSN", "Toxic": "PSN", "Burn": "BRN", "Paralyze": "PAR", "Sleep": "SLP", "Freeze": "FRZ", "Faint": "FNT"
+  },
+
+  "categories": {
+    "Physical": "PHYSICAL", "Special": "SPECIAL", "Status": "STATUS"
+  },
+
+  "party": {
+    "title": "POKÉMON",
+    "hp": "HP",
+    "level": "Lv",
+    "hpValue": "{hp} / {max}",
+    "lead": "LEAD",
+    "waitingToHatch": "Waiting to hatch",
+    "action": { "summary": "SUMMARY", "switch": "SWITCH", "cancel": "CANCEL" },
+    "tag": {
+      "able": "ABLE",
+      "notAble": "NOT ABLE",
+      "learned": "LEARNED",
+      "place": { "1": "1ST", "2": "2ND", "3": "3RD", "4": "4TH" }
+    },
+    "prompt": {
+      "choose": "Choose a Pokémon.",
+      "moveTo": "Move to where?",
+      "doWhat": "Do what with this Pokémon?",
+      "giveHp": "Give HP to which Pokémon?",
+      "goIn": "Go in with these Pokémon?",
+      "enter": "Choose {count} Pokémon to enter. ({left} to go)",
+      "chooseWhich": "Choose which Pokémon?"
+    },
+    "eggCantTakePart": "An Egg can't take part.",
+    "cantTakePart": "{name} can't take part.",
+    "eggCantBeChosen": "An Egg can't be chosen.",
+    "cantBeChosen": "{name} can't be chosen.",
+    "cantDoThat": "That can't be done for that Pokémon.",
+    "recovered": "{name} recovered {hp} HP.",
+    "notEnoughHp": "It hasn't enough HP to share."
+  },
+
+  "summary": {
+    "title": "SUMMARY",
+    "rental": "RENTAL POKÉMON",
+    "number": "No. {number}",
+    "category": "{category} Pokémon",
+    "place": "{index} / {count}",
+    "nature": "NATURE",
+    "ability": "ABILITY",
+    "heldItem": "HELD ITEM",
+    "none": "None",
+    "expPoints": "EXP. POINTS",
+    "topLevel": "TOP LEVEL",
+    "toLevel": "TO Lv {level}",
+    "stats": "STATS",
+    "stat": { "HP": "HP", "Attack": "Attack", "Defense": "Defense", "SpAttack": "Sp. Atk", "SpDefense": "Sp. Def", "Speed": "Speed" },
+    "moves": "MOVES",
+    "power": "POWER",
+    "accuracy": "ACCURACY",
+    "pp": "PP",
+    "ppValue": "{pp} / {max}",
+    "egg": "A Pokémon Egg",
+    "receivedFrom": "RECEIVED FROM",
+    "on": "ON",
+    "date": "{day} {month} {year}",
+    "month": {
+      "1": "January", "2": "February", "3": "March", "4": "April", "5": "May", "6": "June",
+      "7": "July", "8": "August", "9": "September", "10": "October", "11": "November", "12": "December"
+    }
+  },
+
+  "bag": {
+    "title": "BAG",
+    "pocket": {
+      "Items": "ITEMS",
+      "Medicine": "MEDICINE",
+      "PokeBalls": "POKÉ BALLS",
+      "TMsHMs": "TMs & HMs",
+      "Berries": "BERRIES",
+      "Mail": "MAIL",
+      "BattleItems": "BATTLE ITEMS",
+      "KeyItems": "KEY ITEMS"
+    },
+    "action": {
+      "Use": "USE", "Give": "GIVE", "Toss": "TOSS", "Register": "REGISTER", "Deselect": "DESELECT", "Open": "OPEN", "Cancel": "CANCEL"
+    },
+    "empty": "Nothing in this pocket.",
+    "count": "×{n}",
+    "inBag": "IN BAG",
+    "teaches": "TEACHES",
+    "tossHowMany": "Throw away how many?",
+    "howMany": "× {n}",
+    "threwAway": { "one": "Threw away the {item}.", "other": "Threw away {n} × {item}." },
+    "cantUseThatHere": "That can't be used here.",
+    "cantUseHere": "It can't be used here.",
+    "registered": "The {item} is ready on the item button.",
+    "deselected": "The {item} is off the item button.",
+    "noEffect": "It won't have any effect.",
+    "cameRound": "{names} came round, fully healed.",
+    "noOneToGive": "There is no Pokémon to give it to.",
+    "knowsAlready": "{name} knows {move} already.",
+    "cantLearn": "{name} can't learn {move}.",
+    "skyForme": "{name} changed into its Sky Forme!",
+    "learned": "{name} learned {move}!",
+    "didNotLearn": "{name} did not learn {move}.",
+    "changedForm": "{name} changed its form!",
+    "swapped": "{name} swapped its {previous} for the {item}.",
+    "given": "{name} was given the {item} to hold.",
+    "giveTo": "Give the {item} to which Pokémon?",
+    "teach": "Teach {move} to which Pokémon?",
+    "useOn": "Use the {item} on which Pokémon?",
+    "grew": "{name} grew to Lv. {level}!",
+    "useOnMove": "Use the {item} on which move?"
+  },
+
+  "shop": {
+    "title": "POKÉ MART",
+    "choice": { "buy": "BUY", "sell": "SELL", "leave": "SEE YA!" },
+    "question": "What can I do for you?",
+    "nothingToSell": "You don't have anything we can buy from you.",
+    "notEnoughMoney": "You don't have enough money.",
+    "sold": { "one": "Sold a {item} for {money}.", "other": "Sold {n} × {item} for {money}." },
+    "bought": { "one": "Bought a {item}.", "other": "Bought {n} × {item}." },
+    "listedCount": "{item}  ×{n}",
+    "money": "MONEY",
+    "buyHowMany": "Buy how many?",
+    "sellHowMany": "Sell how many?",
+    "each": "each",
+    "youGet": "YOU GET",
+    "total": "TOTAL"
   }
 }

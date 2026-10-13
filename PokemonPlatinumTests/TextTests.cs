@@ -20,14 +20,21 @@ public class TextTests
     /// </summary>
     private static readonly string[] OnTheTable =
     {
-        "UI/OptionsScreen.cs", "UI/TitleScreen.cs", "UI/StartMenu.cs", "UI/ClosePrompt.cs"
+        "UI/OptionsScreen.cs", "UI/TitleScreen.cs", "UI/StartMenu.cs", "UI/ClosePrompt.cs",
+        "UI/BagScreen.cs", "UI/ShopScreen.cs", "UI/PartyScreen.cs", "UI/ModernUi.Items.cs", "UI/ModernUi.Party.cs", "Core/Words.cs"
     };
 
     /// <summary>What may stay in quotes in a file on the table: names of the data, and the logo, which is a picture (plan 17).</summary>
     private static readonly Dictionary<string, string[]> NotWords = new()
     {
         ["UI/TitleScreen.cs"] = new[] { "Sinnoh", "Giratina", "PLATINUM", "Pokémon", "A  FAN  REMAKE" },
-        ["UI/StartMenu.cs"] = new[] { "Trainer" }
+        ["UI/StartMenu.cs"] = new[] { "Trainer" },
+        // The items' own names and the uses the item table gives them, which the bag goes by
+        ["UI/BagScreen.cs"] = new[]
+        {
+            "Gracidea", "Bicycle", "OldRod", "GoodRod", "SuperRod", "EscapeRope", "Journal", "VsSeeker", "PokeRadar", "Honey",
+            "PoffinCase", "ExplorerKit", "TownMap", "Seal Case", "Fashion Case", "Flute", "Shaymin-Sky"
+        }
     };
 
     private static readonly Regex Literal = new(@"(\$?)""((?:[^""\\\n]|\\.)*)""", RegexOptions.Compiled);
@@ -120,6 +127,19 @@ public class TextTests
         Assert.Equal("It will be saved in slot 3. The saves you have are kept as they are.", TitleScreen.NewGameBlurb(3, 0));
         Assert.Equal(new[] { "KEEP PLAYING", "SAVE AND QUIT", "QUIT" }, StartMenu.QuitAnswers);
         Assert.Equal("1280 × 720", Text.Of("options.windowSize.value", ("width", 1280), ("height", 720)));
+        // N1b: the bag, the shop, the party and the names of the game's enums
+        Assert.Equal(new[] { "BUY", "SELL", "SEE YA!" }, ShopScreen.Choices);
+        Assert.Equal("Sold a Potion for 150.", Text.Of("shop.sold", ("n", 1), ("item", "Potion"), ("money", 150)));
+        Assert.Equal("Sold 3 × Potion for 450.", Text.Of("shop.sold", ("n", 3), ("item", "Potion"), ("money", 450)));
+        Assert.Equal("Choose 3 Pokémon to enter. (2 to go)", Text.Of("party.prompt.enter", ("count", 3), ("left", 2)));
+        Assert.Equal("PSN", Words.Status(StatusCondition.Toxic));
+        Assert.Equal("", Words.Status(StatusCondition.None));
+        Assert.Equal("Sp. Atk", Words.Stat(StatType.SpAttack));
+        Assert.Equal("Quirky", Words.Nature(Nature.Quirky));
+        Assert.Equal("9 March 2026", Words.Date(new DateTime(2026, 3, 9)));
+        Assert.Equal(new DateTime(2026, 3, 9).ToString("d MMMM yyyy", System.Globalization.CultureInfo.InvariantCulture), Words.Date(new DateTime(2026, 3, 9)));
+        Assert.All(Enum.GetValues<PokemonType>(), t => Assert.Equal(t.ToString(), Words.Type(t)));
+        Assert.All(Enum.GetValues<Nature>(), n => Assert.Equal(n.ToString(), Words.Nature(n)));
         // A placeholder the call names nothing for is left for whoever fills it later
         Assert.Equal("Hello {player}", Text.Fill("Hello {player}"));
     }

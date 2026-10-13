@@ -17,9 +17,9 @@ public readonly record struct PartyAction(PartyActionKind Kind, FieldMove Move =
 {
     public string Label => Kind switch
     {
-        PartyActionKind.Summary => "SUMMARY",
-        PartyActionKind.Switch => "SWITCH",
-        PartyActionKind.Cancel => "CANCEL",
+        PartyActionKind.Summary => Text.Of("party.action.summary"),
+        PartyActionKind.Switch => Text.Of("party.action.switch"),
+        PartyActionKind.Cancel => Text.Of("party.action.cancel"),
         _ => FieldMoveRules.MoveName(Move).ToUpperInvariant()
     };
 }
@@ -113,8 +113,9 @@ public class PartyScreen
     public string? EnterTag(Party party, Pokemon pokemon)
     {
         int place = Entered.IndexOf(party.Members.IndexOf(pokemon));
-        if (place >= 0) return place switch { 0 => "1ST", 1 => "2ND", 2 => "3RD", _ => "4TH" };
-        return mayEnter(pokemon) ? null : "NOT ABLE";
+        int nth = Math.Min(place + 1, 4);
+        if (place >= 0) return Text.Of($"party.tag.place.{nth}");
+        return mayEnter(pokemon) ? null : Text.Of("party.tag.notAble");
     }
 
     /// <summary>
@@ -138,7 +139,7 @@ public class PartyScreen
     public bool ChoosingSome => Choosing && mayChoose != null;
 
     /// <summary>What a Pokémon's card says while only some may be chosen: NOT ABLE for one that may not, else nothing.</summary>
-    public string? ChooseTag(Pokemon pokemon) => mayChoose == null || mayChoose(pokemon) ? null : "NOT ABLE";
+    public string? ChooseTag(Pokemon pokemon) => mayChoose == null || mayChoose(pokemon) ? null : Text.Of("party.tag.notAble");
 
     public void Open()
     {
@@ -187,12 +188,12 @@ public class PartyScreen
     }
 
     /// <summary>The prompt under the team: the message if there is one, or what the player is choosing.</summary>
-    public string Prompt => Message ?? (Sharing != null ? "Give HP to which Pokémon?"
-        : SwapSourceIndex.HasValue ? "Move to where?"
-        : Actions != null ? "Do what with this Pokémon?"
-        : Entering ? Entered.Count == EnterCount ? "Go in with these Pokémon?" : $"Choose {EnterCount} Pokémon to enter. ({EnterCount - Entered.Count} to go)"
-        : Choosing ? "Choose which Pokémon?"
-        : "Choose a Pokémon.");
+    public string Prompt => Message ?? (Sharing != null ? Text.Of("party.prompt.giveHp")
+        : SwapSourceIndex.HasValue ? Text.Of("party.prompt.moveTo")
+        : Actions != null ? Text.Of("party.prompt.doWhat")
+        : Entering ? Entered.Count == EnterCount ? Text.Of("party.prompt.goIn") : Text.Of("party.prompt.enter", ("count", EnterCount), ("left", EnterCount - Entered.Count))
+        : Choosing ? Text.Of("party.prompt.chooseWhich")
+        : Text.Of("party.prompt.choose"));
 
     /// <summary>The confirm button: opens a Pokémon's menu, carries out the entry chosen in it, puts a Pokémon down, or gives HP.</summary>
     public void Confirm(Party party)
@@ -210,7 +211,7 @@ public class PartyScreen
             else if (Entered.Remove(SelectedIndex)) AudioManager.PlaySound("cancel");
             else if (!mayEnter(party.Members[SelectedIndex]))
             {
-                Message = party.Members[SelectedIndex].IsEgg ? "An Egg can't take part." : $"{party.Members[SelectedIndex].DisplayName} can't take part.";
+                Message = party.Members[SelectedIndex].IsEgg ? Text.Of("party.eggCantTakePart") : Text.Of("party.cantTakePart", ("name", party.Members[SelectedIndex].DisplayName));
                 AudioManager.PlaySound("error");
             }
             else
@@ -224,7 +225,7 @@ public class PartyScreen
         {
             if (mayChoose != null && !mayChoose(party.Members[SelectedIndex]))
             {
-                Message = chooseRefusal ?? (party.Members[SelectedIndex].IsEgg ? "An Egg can't be chosen." : $"{party.Members[SelectedIndex].DisplayName} can't be chosen.");
+                Message = chooseRefusal ?? (party.Members[SelectedIndex].IsEgg ? Text.Of("party.eggCantBeChosen") : Text.Of("party.cantBeChosen", ("name", party.Members[SelectedIndex].DisplayName)));
                 AudioManager.PlaySound("error");
                 return;
             }
@@ -238,12 +239,12 @@ public class PartyScreen
             int healed = FieldMoveRules.ShareHp(party.Members[giver], party.Members[SelectedIndex]);
             if (healed == 0)
             {
-                Message = "That can't be done for that Pokémon.";
+                Message = Text.Of("party.cantDoThat");
                 AudioManager.PlaySound("error");
                 return;
             }
             AudioManager.PlaySound("heal");
-            Message = $"{party.Members[SelectedIndex].Nickname} recovered {healed} HP.";
+            Message = Text.Of("party.recovered", ("name", party.Members[SelectedIndex].Nickname), ("hp", healed));
             Sharing = null;
             SelectedIndex = giver;
             return;
@@ -280,7 +281,7 @@ public class PartyScreen
                 break;
             case PartyActionKind.FieldMove when action.Move is FieldMove.MilkDrink or FieldMove.Softboiled:
                 // A fifth of its most HP for another of the team (PartyMenu_StartFieldMoveHPTransfer)
-                if (!FieldMoveRules.CanShareHp(party.Members[SelectedIndex])) Message = "It hasn't enough HP to share.";
+                if (!FieldMoveRules.CanShareHp(party.Members[SelectedIndex])) Message = Text.Of("party.notEnoughHp");
                 else Sharing = (SelectedIndex, action.Move);
                 break;
             case PartyActionKind.FieldMove:
@@ -437,13 +438,13 @@ public class PartyScreen
         else if (Entering)
         {
             ModernUi.DrawPartyChoice(screenWidth, screenHeight, party, SelectedIndex, Prompt, p => EnterTag(party, p), Math.Clamp(openAge / AppearTime, 0f, 1f),
-                Entered.Count == EnterCount ? "Go in" : "Enter");
+                Text.Of(Entered.Count == EnterCount ? "shared.hints.goIn" : "shared.hints.enter"));
         }
         else if (ChoosingSome)
         {
             // Only some may be chosen (plan 14 · B14): the rest greyed under NOT ABLE
             ModernUi.DrawPartyChoice(screenWidth, screenHeight, party, SelectedIndex, Prompt, ChooseTag, Math.Clamp(openAge / AppearTime, 0f, 1f),
-                "Choose", greyRefused: true);
+                Text.Of("shared.hints.choose"), greyRefused: true);
         }
         else
         {
