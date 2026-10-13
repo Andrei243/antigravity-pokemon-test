@@ -74,7 +74,7 @@ internal static partial class ModernUi
                 PartyStatus(screen, context.Party, party);
                 break;
             case null:
-                UiFonts.DrawCentered("No apps yet.", screen.X + 40, screen.Y + screen.Height / 2f, 28, LcdInk, UiWeight.Black);
+                UiFonts.DrawCentered(Text.Of("poketch.noApps"), screen.X + 40, screen.Y + screen.Height / 2f, 28, LcdInk, UiWeight.Black);
                 break;
             default:
                 DrawPoketchApp(screen, state, context);
@@ -204,8 +204,6 @@ internal static partial class ModernUi
         LcdBlock(x + Block, y + 6 * Block, 5, 1, On(6));
     }
 
-    private static readonly string[] Days = { "SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY" };
-
     /// <summary>The digital watch: hours and minutes, a colon that blinks each second, the day under them.</summary>
     private static void DigitalWatch(Rectangle screen, DateTime now)
     {
@@ -224,7 +222,7 @@ internal static partial class ModernUi
         SegmentDigit(minutes, y, now.Minute / 10);
         SegmentDigit(minutes + digit + gap, y, now.Minute % 10);
 
-        string day = Days[(int)now.DayOfWeek];
+        string day = Words.Weekday(now).ToUpperInvariant();
         float w = UiFonts.Measure(day, 28, UiWeight.Black);
         UiFonts.DrawCentered(day, screen.X + (screen.Width - w) / 2f, screen.Y + 240, 28, LcdInk, UiWeight.Black);
     }
@@ -237,10 +235,11 @@ internal static partial class ModernUi
         float x = screen.X + MathF.Round((screen.Width - total) / 2f / Block) * Block, y = screen.Y + 64;
         string figures = Math.Clamp(steps, 0, Poketch.MostSteps).ToString("D5");
         for (int i = 0; i < figures.Length; i++) SegmentDigit(x + i * (digit + gap), y, figures[i] - '0');
-        float w = UiFonts.Measure("STEPS", 28, UiWeight.Black);
-        UiFonts.DrawCentered("STEPS", screen.X + (screen.Width - w) / 2f, screen.Y + 196, 28, LcdInk, UiWeight.Black);
+        string label = Text.Of("poketch.steps");
+        float w = UiFonts.Measure(label, 28, UiWeight.Black);
+        UiFonts.DrawCentered(label, screen.X + (screen.Width - w) / 2f, screen.Y + 196, 28, LcdInk, UiWeight.Black);
         LcdButton(screen, PedometerApp.Reset, app.PressedFor > 0f);
-        LcdText(screen, "RESET", PedometerApp.Reset.CentreX, PedometerApp.Reset.Y + 1, 24);
+        LcdText(screen, Text.Of("poketch.reset"), PedometerApp.Reset.CentreX, PedometerApp.Reset.Y + 1, 24);
     }
 
     /// <summary>The team: two rows of three, each icon over a bar of its HP; a fainted one dark, a status marked.</summary>

@@ -214,9 +214,9 @@ public sealed class HallOfFameCeremony
     public CeremonyCard CardOf(Pokemon pokemon)
     {
         var (name, id) = pokemon.OriginalTrainer is { } mark ? (mark.Name, mark.Id) : (player, trainerId);
-        string met = pokemon.MetLocation is not { Length: > 0 } place ? "Met along the way."
-            : pokemon.MetLevel == 0 ? $"Hatched at {place}."
-            : $"Met at {place}, at Lv. {pokemon.MetLevel}.";
+        string met = pokemon.MetLocation is not { Length: > 0 } place ? Text.Of("ceremony.metAlong")
+            : pokemon.MetLevel == 0 ? Text.Of("ceremony.hatchedAt", ("place", place))
+            : Text.Of("ceremony.metAt", ("place", place), ("level", pokemon.MetLevel));
         var types = new List<PokemonType> { pokemon.PrimaryType };
         if (pokemon.SecondaryType is { } second) types.Add(second);
         return new CeremonyCard(pokemon.DisplayName, pokemon.Gender, pokemon.Level, pokemon.Species.Name, types, name, id.ToString("D5"), met);

@@ -2,6 +2,7 @@ using System.Text.RegularExpressions;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
+using PokemonPlatinumEngine.Models.PoketchApps;
 using PokemonPlatinumEngine.UI;
 
 namespace PokemonPlatinumTests;
@@ -25,7 +26,11 @@ public class TextTests
         "UI/BagScreen.cs", "UI/ShopScreen.cs", "UI/PartyScreen.cs", "UI/ModernUi.Items.cs", "UI/ModernUi.Party.cs", "Core/Words.cs",
         "UI/PokedexScreen.cs", "UI/ModernUi.Pokedex.cs", "Models/PokedexSearch.cs", "UI/ModernUi.Records.cs", "UI/TrainerCardScreen.cs",
         "UI/HallOfFameScreen.cs", "UI/JournalScreen.cs", "UI/PCScreen.cs", "UI/ModernUi.Storage.cs", "UI/ModernUi.Lists.cs",
-        "UI/StarterSelectScreen.cs", "UI/SaveScreen.cs"
+        "UI/StarterSelectScreen.cs", "UI/SaveScreen.cs",
+        "UI/ModernUi.TownMap.cs", "UI/ModernUi.Field.cs", "UI/ModernUi.Poketch.cs", "UI/ModernUi.Poketch.Time.cs", "UI/ModernUi.Poketch.Toys.cs",
+        "UI/ModernUi.Poketch.Map.cs", "UI/ModernUi.Poketch.Pokemon.cs", "Models/PoketchApps/ColorChangerApp.cs", "UI/HelpScreen.cs",
+        "UI/ModernUi.Help.cs", "UI/ModernUi.Wardrobe.cs", "UI/WardrobeScreen.cs", "UI/ModernUi.Hatch.cs", "UI/HatchScreen.cs",
+        "UI/ModernUi.Ceremony.cs", "UI/HallOfFameCeremony.cs", "UI/CreditsScreen.cs", "UI/SlotMachineScreen.cs"
     };
 
     /// <summary>What may stay in quotes in a file on the table: names of the data, and the logo, which is a picture (plan 17).</summary>
@@ -47,7 +52,13 @@ public class TextTests
             "ABC", "DEF", "GHI", "JKL", "MNO", "PQR", "STU", "VWX", "YZ",
             "Ball", "Squiggle", "Fish", "Arms", "Blob", "Upright", "Legs", "Quadruped", "Wings", "Tentacles", "Heads", "Humanoid", "Bug Wings", "Armor"
         },
-        ["UI/StarterSelectScreen.cs"] = new[] { "Turtwig", "Chimchar", "Piplup" }
+        ["UI/StarterSelectScreen.cs"] = new[] { "Turtwig", "Chimchar", "Piplup" },
+        // The words a place's name ends in, which tell a city from a town and a route's colour from a lake's
+        ["UI/ModernUi.TownMap.cs"] = new[] { "City" },
+        ["UI/ModernUi.Field.cs"] = new[] { "Route", "Lake", "Town", "City" },
+        ["UI/ModernUi.Ceremony.cs"] = new[] { "PLATINUM", "Pokémon", "A  FAN  REMAKE" },
+        // The bonus game's own Pokémon, whose cry it plays
+        ["UI/SlotMachineScreen.cs"] = new[] { "Clefairy" }
     };
 
     private static readonly Regex Literal = new(@"(\$?)""((?:[^""\\\n]|\\.)*)""", RegexOptions.Compiled);
@@ -123,6 +134,7 @@ public class TextTests
                 if (!Regex.IsMatch(bare, @"\p{L}{2,}")) continue;            // no word in it: a format, a number
                 if (LooksLikeAKey(text, sections)) continue;                 // the table's key
                 if (Regex.IsMatch(text, @"^[a-z_]+$")) continue;             // a sound's or a song's name
+                if (Regex.IsMatch(text, @"^[X.]+$")) continue;               // a picture in blocks (the Pokétch's)
                 if (allowed.Contains(text)) continue;
                 said.Add($"{name}: \"{text}\"");
             }
@@ -168,6 +180,16 @@ public class TextTests
         Assert.Equal("9 Mar 2026", Words.ShortDate(new DateTime(2026, 3, 9)));
         Assert.Equal(new[] { "SAVE", "CANCEL" }, SaveScreen.Answers);
         Assert.Equal("SLOT 2", ModernUi.SlotLabel(2));
+        // N1d1: the Town Map, the Pokétch, help, the wardrobe and the Hall of Fame's scene
+        Assert.Equal("October", Words.Month(new DateTime(2026, 10, 12)));
+        Assert.Equal("GREEN", ColorChangerApp.Name(0));
+        Assert.Equal("FAI", HelpScreen.ShortName(PokemonType.Fairy));
+        var help = new HelpScreen();
+        help.Open();
+        Assert.Equal(("Super effective", "A Fire move against a Grass Pokémon does twice the damage."), help.Describe());
+        Assert.Equal("Your Own Bottoms", ModernUi.GarmentName(ClothingSlot.Bottoms, null));
+        Assert.Equal(new[] { "BUY", "NO" }, WardrobeScreen.BuyChoices);
+        Assert.Equal("Met at Wayward Cave, at Lv. 62.", Text.Of("ceremony.metAt", ("place", "Wayward Cave"), ("level", 62)));
         // A placeholder the call names nothing for is left for whoever fills it later
         Assert.Equal("Hello {player}", Text.Fill("Hello {player}"));
     }

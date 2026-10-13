@@ -1,3 +1,4 @@
+using PokemonPlatinumEngine.Core;
 using System;
 using Raylib_cs;
 using PokemonPlatinumEngine.Models;
@@ -244,8 +245,8 @@ internal static partial class ModernUi
     private static void PoketchColorChanger(Rectangle screen, ColorChangerApp app, PoketchContext context)
     {
         int chosen = Math.Clamp(context.Poketch.ScreenColor, 0, Poketch.ScreenColors - 1);
-        LcdText(screen, ColorChangerApp.Names[chosen], PoketchAppState.Columns / 2f, 6, 40);
-        LcdText(screen, "SCREEN COLOR", PoketchAppState.Columns / 2f, 13, 24, LcdMid);
+        LcdText(screen, ColorChangerApp.Name(chosen), PoketchAppState.Columns / 2f, 6, 40);
+        LcdText(screen, Text.Of("poketch.screenColor"), PoketchAppState.Columns / 2f, 13, 24, LcdMid);
 
         for (int i = 0; i < Poketch.ScreenColors; i++)
         {
@@ -297,9 +298,9 @@ internal static partial class ModernUi
 
         (PoketchButton Button, string Label, bool Down)[] row =
         {
-            (KitchenTimerApp.StartButton, "START", app.StartDown),
-            (KitchenTimerApp.StopButton, "STOP", app.StopDown),
-            (KitchenTimerApp.ResetButton, "RESET", false),
+            (KitchenTimerApp.StartButton, Text.Of("poketch.start"), app.StartDown),
+            (KitchenTimerApp.StopButton, Text.Of("poketch.stop"), app.StopDown),
+            (KitchenTimerApp.ResetButton, Text.Of("poketch.reset"), false),
         };
         foreach (var (b, label, down) in row)
         {

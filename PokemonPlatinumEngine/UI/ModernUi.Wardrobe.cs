@@ -11,20 +11,20 @@ namespace PokemonPlatinumEngine.UI;
 internal static partial class ModernUi
 {
     /// <summary>A slot's name, sign and colour, in the order of <see cref="Outfit.Slots"/>.</summary>
-    public static readonly (string Label, UiIcon Icon, Color Color)[] SlotTabs =
+    public static (string Label, UiIcon Icon, Color Color)[] SlotTabs => new[]
     {
-        ("HATS", UiIcon.Hat, Red),
-        ("TOPS", UiIcon.Shirt, Blue),
-        ("BOTTOMS", UiIcon.Trousers, new Color(126, 110, 222, 255)),
-        ("SHOES", UiIcon.Shoe, new Color(238, 134, 60, 255)),
-        ("BAGS", UiIcon.Bag, Green)
+        (Text.Of("outfits.tab.Hat"), UiIcon.Hat, Red),
+        (Text.Of("outfits.tab.Top"), UiIcon.Shirt, Blue),
+        (Text.Of("outfits.tab.Bottoms"), UiIcon.Trousers, new Color(126, 110, 222, 255)),
+        (Text.Of("outfits.tab.Shoes"), UiIcon.Shoe, new Color(238, 134, 60, 255)),
+        (Text.Of("outfits.tab.Bag"), UiIcon.Bag, Green)
     };
 
-    private static readonly string[] OwnNames = { "Your Own Hat", "Your Own Top", "Your Own Bottoms", "Your Own Shoes", "Your Own Bag" };
+    private static string OwnName(ClothingSlot slot) => Text.Of($"outfits.own.{slot}");
 
     /// <summary>What a row of the wardrobe is called: the garment's name, or the look's own.</summary>
     public static string GarmentName(ClothingSlot slot, string? garment) =>
-        ClothingDatabase.Get(garment)?.Name ?? OwnNames[(int)slot];
+        ClothingDatabase.Get(garment)?.Name ?? OwnName(slot);
 
     /// <summary>
     /// The wardrobe: the slots as tabs, the player's figure on the left in what the cursor is on, the slot's clothes
@@ -37,7 +37,7 @@ internal static partial class ModernUi
         Backdrop(sw, sh);
         ScreenTitle(screen.Name);
         bool forSale = screen.Selected is { } g && !screen.Owns(g.Id);
-        Hints(sw - Margin, 44, ("Left / Right", "Slot"), ("Z", forSale ? "Buy" : "Wear"), ("Esc", "Done"));
+        Hints(sw - Margin, 44, Hint("shared.keys.leftRight", "shared.hints.slot"), Hint("shared.keys.z", forSale ? "shared.hints.buy" : "shared.hints.wear"), Hint("shared.keys.esc", "shared.hints.done"));
         Tabs(new Rectangle(Margin, ContentTop, sw - Margin * 2, 76), SlotTabs, screen.Tab);
 
         float slide = (1f - UiMotion.EaseOut(appear)) * 60f;
@@ -79,8 +79,8 @@ internal static partial class ModernUi
             var ink = ListRow(r, selected, GarmentName(screen.Slot, id));
             Swatch(new Vector2(r.X + 52, r.Y + r.Height / 2f), garment, selected);
             bool worn = string.Equals(screen.Worn[screen.Slot], id, StringComparison.OrdinalIgnoreCase);
-            if (worn) RowTag(r, "WORN", selected ? Color.White : Green, selected ? Selection : Color.White);
-            else if (screen.Owns(id)) RowValue(r, "OWNED", selected ? Color.White : Muted, 26);
+            if (worn) RowTag(r, Text.Of("outfits.worn"), selected ? Color.White : Green, selected ? Selection : Color.White);
+            else if (screen.Owns(id)) RowValue(r, Text.Of("outfits.owned"), selected ? Color.White : Muted, 26);
             else MoneyRight(r.X + r.Width - 32, r.Y + r.Height / 2f, garment!.Price, 30, selected ? Color.White : garment.Price <= money ? ink : Red);
         }
         ScrollBar(list, screen.FirstRow, WardrobeScreen.VisibleRows, rows.Count, 26);
@@ -89,7 +89,7 @@ internal static partial class ModernUi
         float rx = list.X + listW + Gutter + slide * 2, rw = sw - Margin - rx;
         var purse = new Rectangle(rx, top, rw, 112);
         Panel(purse, 34);
-        UiFonts.DrawCentered("MONEY", purse.X + 36, purse.Y + purse.Height / 2f, 24, Muted, UiWeight.Black);
+        UiFonts.DrawCentered(Text.Of("outfits.money"), purse.X + 36, purse.Y + purse.Height / 2f, 24, Muted, UiWeight.Black);
         MoneyRight(purse.X + purse.Width - 36, purse.Y + purse.Height / 2f, money, 44, Ink);
 
         var card = new Rectangle(rx, top + 112 + 24, rw, ContentBottom - top - 112 - 24);
@@ -144,12 +144,12 @@ internal static partial class ModernUi
         var tab = SlotTabs[screen.Tab];
         float tx = x + Tag(x, card.Y + 100, tab.Label, tab.Color, 38) + 12;
         bool worn = string.Equals(screen.Worn[screen.Slot], id, StringComparison.OrdinalIgnoreCase);
-        if (worn) Tag(tx, card.Y + 100, "WORN", Green, 38);
-        else if (screen.Owns(id)) Tag(tx, card.Y + 100, "OWNED", Muted, 38);
+        if (worn) Tag(tx, card.Y + 100, Text.Of("outfits.worn"), Green, 38);
+        else if (screen.Owns(id)) Tag(tx, card.Y + 100, Text.Of("outfits.owned"), Muted, 38);
 
         if (garment is { IsFree: false } && !screen.Owns(id))
         {
-            Label("PRICE", x, card.Y + 166);
+            Label(Text.Of("outfits.price"), x, card.Y + 166);
             Money(x, card.Y + 214, garment.Price, 40, garment.Price <= money ? Ink : Red);
         }
 
@@ -157,7 +157,7 @@ internal static partial class ModernUi
         UiShapes.Fill(new Rectangle(x, y, room, 3), 1.5f, Rule);
         y += 28;
         string text = garment?.Description is { Length: > 0 } d ? d
-            : "What you set out in. You can always change back into it.";
+            : Text.Of("outfits.ownDescription");
         foreach (var line in Wrap(text, room, 28))
         {
             UiFonts.Draw(line, x, y, 28, Ink);
@@ -171,9 +171,9 @@ internal static partial class ModernUi
         Dim(sw, sh, (int)(150 * appear));
         var r = new Rectangle(sw / 2f - 520, sh / 2f - 180 + (1f - appear) * 60f, 1040, 360);
         Panel(r, 36);
-        UiFonts.Draw($"Buy the {garment.Name}?", r.X + 56, r.Y + 44, 48, Ink, UiWeight.Black);
+        UiFonts.Draw(Text.Of("outfits.buyQuestion", ("garment", garment.Name)), r.X + 56, r.Y + 44, 48, Ink, UiWeight.Black);
         float w = Money(r.X + 56, r.Y + 142, garment.Price, 40, Ink);
-        UiFonts.DrawCentered("Yours for good, to wear at home too.", r.X + 56 + w + 16, r.Y + 142, 28, Muted, UiWeight.ExtraBold);
+        UiFonts.DrawCentered(Text.Of("outfits.buyNote"), r.X + 56 + w + 16, r.Y + 142, 28, Muted, UiWeight.ExtraBold);
         const float gap = 32;
         float bw = (r.Width - 112 - gap) / 2f;
         for (int i = 0; i < WardrobeScreen.BuyChoices.Length; i++)

@@ -126,7 +126,7 @@ public sealed class HatchScreen
                 if (phaseTime >= RevealTime)
                 {
                     AudioManager.PlayFanfare(MusicRole.FanfarePokemon);
-                    Go(HatchPhase.Announce, $"{pokemon.Species.Name} hatched from the Egg!");
+                    Go(HatchPhase.Announce, Text.Of("hatching.hatched", ("species", pokemon.Species.Name)));
                 }
                 break;
         }

@@ -57,7 +57,13 @@
       "box": "Box",
       "pick": "Pick",
       "delete": "Delete",
-      "toOk": "To OK"
+      "toOk": "To OK",
+      "fly": "Fly",
+      "zoomIn": "Zoom in",
+      "wholeMap": "Whole map",
+      "slot": "Slot",
+      "wear": "Wear",
+      "done": "Done"
     }
   },
 
@@ -623,5 +629,121 @@
       "heading": "This save can't be read",
       "body": "It and the save kept before it are both damaged."
     }
+  },
+
+  "townMap": {
+    "title": { "Item": "TOWN MAP", "Fly": "FLY", "Wall": "MAP" },
+    "flyTo": "Fly to where?",
+    "legend": { "you": "You", "visited": "Visited", "notVisited": "Not yet visited", "trail": "The way you came" },
+    "hover": "Move the cursor over a town, a route or a landmark to read about it.",
+    "tag": {
+      "route": "ROUTE", "city": "CITY", "town": "TOWN", "landmark": "LANDMARK",
+      "flyHere": "FLY HERE", "visited": "VISITED", "notVisited": "NOT YET VISITED"
+    },
+    "notBeen": "You haven't been here yet.",
+    "whereThisIs": "WHERE THIS IS",
+    "frame": "The white frame is the part of the map shown on the left.",
+    "youAre": "YOU ARE",
+    "youAreIn": "YOU ARE IN",
+    "offTheMap": "Somewhere off the map",
+    "wilds": "The wilds"
+  },
+  "field": {
+    "skip": "SKIP",
+    "safariBalls": "SAFARI BALLS",
+    "steps": "STEPS"
+  },
+  "poketch": {
+    "noApps": "No apps yet.",
+    "steps": "STEPS",
+    "reset": "RESET",
+    "start": "START",
+    "stop": "STOP",
+    "searching": "SEARCHING...",
+    "touchToSearch": "TOUCH TO SEARCH",
+    "forPeople": "FOR PEOPLE NEARBY",
+    "nobody": "NOBODY NEARBY",
+    "screenColor": "SCREEN COLOR",
+    "color": { "0": "GREEN", "1": "YELLOW", "2": "ORANGE", "3": "RED", "4": "PURPLE", "5": "BLUE", "6": "TEAL", "7": "WHITE" },
+    "chain": "CHAIN",
+    "noPokemon": "NO POKéMON",
+    "none": "NONE",
+    "move": "MOVE",
+    "effect": {
+      "0": "IT HAS NO EFFECT", "1": "IT BARELY WORKS", "2": "NOT VERY EFFECTIVE",
+      "3": "IT HITS NORMALLY", "4": "SUPER EFFECTIVE", "5": "EXTREMELY EFFECTIVE"
+    }
+  },
+  "help": {
+    "title": "HELP",
+    "tab": { "types": "TYPES", "controls": "CONTROLS", "notes": "NOTES" },
+    "short": {
+      "Normal": "NOR", "Fire": "FIR", "Water": "WAT", "Grass": "GRS", "Electric": "ELE", "Ice": "ICE",
+      "Fighting": "FIG", "Poison": "PSN", "Ground": "GRD", "Flying": "FLY", "Psychic": "PSY", "Bug": "BUG",
+      "Rock": "RCK", "Ghost": "GHO", "Dragon": "DRA", "Steel": "STL", "Dark": "DRK", "Fairy": "FAI"
+    },
+    "note": {
+      "about": {
+        "title": "Getting about",
+        "text": "Hold the run button once you have the Running Shoes. Talk to people and read signs with the confirm button: many have something to give or to say about the road ahead."
+      },
+      "battle": {
+        "title": "In battle",
+        "text": "A move of a type the foe is weak to does twice the damage, and one its two types are both weak to four times. The TYPES page has every matchup; the move hints in the options can say it on the move's card."
+      },
+      "poketch": {
+        "title": "The Pokétch",
+        "text": "Once you have it, put it on the screen and change its app with their buttons, and take it in hand to touch it: the arrows move a cursor over its buttons."
+      },
+      "saving": {
+        "title": "Saving",
+        "text": "Save from the menu whenever you like. A Pokémon Center heals your team for nothing, and the last one you visited is where you wake up after losing a battle."
+      }
+    },
+    "key": { "fullScreen": "Full screen", "sound": "Sound on or off" },
+    "matchup": {
+      "super": { "headline": "Super effective", "line": "A {attack} move against a {defend} Pokémon does twice the damage." },
+      "half": { "headline": "Not very effective", "line": "A {attack} move against a {defend} Pokémon does half the damage." },
+      "none": { "headline": "No effect", "line": "A {attack} move does nothing at all to a {defend} Pokémon." },
+      "plain": { "headline": "A plain matchup", "line": "A {attack} move against a {defend} Pokémon does its usual damage." }
+    },
+    "attacking": "ATTACKING",
+    "defending": "DEFENDING",
+    "legend": { "twice": "Twice the damage", "half": "Half the damage", "none": "No damage at all" },
+    "twoTypes": "Against two types, both count: ×2 and ×2 make four times, ×2 and ×½ cancel out."
+  },
+  "outfits": {
+    "tab": { "Hat": "HATS", "Top": "TOPS", "Bottoms": "BOTTOMS", "Shoes": "SHOES", "Bag": "BAGS" },
+    "own": { "Hat": "Your Own Hat", "Top": "Your Own Top", "Bottoms": "Your Own Bottoms", "Shoes": "Your Own Shoes", "Bag": "Your Own Bag" },
+    "ownDescription": "What you set out in. You can always change back into it.",
+    "worn": "WORN",
+    "owned": "OWNED",
+    "money": "MONEY",
+    "price": "PRICE",
+    "buyQuestion": "Buy the {garment}?",
+    "buyNote": "Yours for good, to wear at home too.",
+    "answer": { "buy": "BUY", "no": "NO" },
+    "wardrobe": "WARDROBE",
+    "boutique": "BOUTIQUE",
+    "bought": "You bought the {garment} and put it on!"
+  },
+  "hatching": {
+    "eggWatch": "THE EGG WATCH",
+    "hatched": "{species} hatched from the Egg!"
+  },
+  "ceremony": {
+    "title": "LEAGUE CHAMPION",
+    "congratulations": "Congratulations!",
+    "id": "ID No. {id}",
+    "time": "TIME  {time}",
+    "welcome": "WELCOME TO THE HALL OF FAME",
+    "trainer": "ORIGINAL TRAINER",
+    "metAlong": "Met along the way.",
+    "hatchedAt": "Hatched at {place}.",
+    "metAt": "Met at {place}, at Lv. {level}."
+  },
+  "creditsRoll": {
+    "level": "Lv. {level}",
+    "speciesLevel": "{species} · Lv. {level}"
   }
 }

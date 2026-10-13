@@ -1,3 +1,4 @@
+using PokemonPlatinumEngine.Core;
 using System;
 using System.Numerics;
 using Raylib_cs;
@@ -82,7 +83,7 @@ internal static partial class ModernUi
 
         if (app.Team.Count == 0)
         {
-            LcdText(screen, "NO POKéMON", PoketchAppState.Columns / 2f, 16, 24);
+            LcdText(screen, Text.Of("poketch.noPokemon"), PoketchAppState.Columns / 2f, 16, 24);
             return;
         }
 
@@ -171,10 +172,10 @@ internal static partial class ModernUi
         }
     }
 
-    private static readonly string[] EffectWords =
-    {
-        "IT HAS NO EFFECT", "IT BARELY WORKS", "NOT VERY EFFECTIVE", "IT HITS NORMALLY", "SUPER EFFECTIVE", "EXTREMELY EFFECTIVE"
-    };
+    /// <summary>The Move Tester's words for how far a move works, by its marks lit (0 to 5).</summary>
+    private const int EffectWords = 6;
+
+    private static string EffectWord(int marks) => Text.Of($"poketch.effect.{marks}");
 
     /// <summary>
     /// The Move Tester: the target's two types at the top right between their arrows, the move's type at the bottom
@@ -191,18 +192,18 @@ internal static partial class ModernUi
         }
 
         LcdText(screen, TypeName(app.First), 31.5f, 3, 22);
-        LcdText(screen, app.Second is { } second ? TypeName(second) : "NONE", 31.5f, 11, 22);
-        LcdText(screen, "MOVE", 13.5f, 18, 20, LcdMid);
+        LcdText(screen, app.Second is { } second ? TypeName(second) : Text.Of("poketch.none"), 31.5f, 11, 22);
+        LcdText(screen, Text.Of("poketch.move"), 13.5f, 18, 20, LcdMid);
         LcdText(screen, TypeName(app.Attack), 13.5f, 24, 22);
 
         int marks = app.Marks;
         for (int i = 0; i < MoveTesterApp.MostMarks; i++)
             LcdPattern(screen, 4 + i * 2, 3, Exclamation, i < marks ? LcdInk : LcdMid with { A = 70 });
 
-        LcdText(screen, EffectWords[Math.Clamp(marks, 0, EffectWords.Length - 1)], PoketchAppState.Columns / 2f, 32, 22);
+        LcdText(screen, EffectWord(Math.Clamp(marks, 0, EffectWords - 1)), PoketchAppState.Columns / 2f, 32, 22);
     }
 
-    private static string TypeName(PokemonType type) => type.ToString().ToUpperInvariant();
+    private static string TypeName(PokemonType type) => Words.Type(type).ToUpperInvariant();
 
     /// <summary>
     /// The Matchup Checker: the meter's three hearts at the top, the two heart-shaped fish swimming toward one another,

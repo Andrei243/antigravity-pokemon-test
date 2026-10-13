@@ -26,7 +26,7 @@ public class WardrobeScreen
     public const int VisibleRows = 8;
 
     /// <summary>The buying question's answers, in their order.</summary>
-    public static readonly string[] BuyChoices = { "BUY", "NO" };
+    public static string[] BuyChoices => new[] { Text.Of("outfits.answer.buy"), Text.Of("outfits.answer.no") };
 
     private readonly List<Garment> stock = new();
     private readonly List<string?> rows = new();
@@ -43,7 +43,7 @@ public class WardrobeScreen
     public bool IsActive { get; private set; }
 
     /// <summary>The heading: the boutique's name, or WARDROBE at home.</summary>
-    public string Name { get; private set; } = "WARDROBE";
+    public string Name { get; private set; } = Text.Of("outfits.wardrobe");
 
     /// <summary>True where clothes are sold.</summary>
     public bool IsBoutique => stock.Count > 0;
@@ -85,7 +85,7 @@ public class WardrobeScreen
         wardrobe = owned;
         stock.Clear();
         stock.AddRange(sells ?? Enumerable.Empty<Garment>());
-        Name = string.IsNullOrWhiteSpace(name) ? IsBoutique ? "BOUTIQUE" : "WARDROBE" : name.ToUpperInvariant();
+        Name = string.IsNullOrWhiteSpace(name) ? Text.Of(IsBoutique ? "outfits.boutique" : "outfits.wardrobe") : name.ToUpperInvariant();
         IsActive = true;
         Asking = false;
         asking.Snap(false);
@@ -166,14 +166,14 @@ public class WardrobeScreen
             int cost = wardrobe.Buy(buying, money);
             if (cost < 0)
             {
-                onNotification("You don't have enough money.");
+                onNotification(Text.Of("shop.notEnoughMoney"));
                 AudioManager.PlaySound("error");
                 return 0;
             }
             Bought++;
             Spent += cost;
             AudioManager.PlaySound("select");
-            onNotification($"You bought the {buying.Name} and put it on!");
+            onNotification(Text.Of("outfits.bought", ("garment", buying.Name)));
             return -cost;
         }
 
@@ -189,7 +189,7 @@ public class WardrobeScreen
         var g = Selected!;
         if (g.Price > money)
         {
-            onNotification("You don't have enough money.");
+            onNotification(Text.Of("shop.notEnoughMoney"));
             AudioManager.PlaySound("error");
             return 0;
         }

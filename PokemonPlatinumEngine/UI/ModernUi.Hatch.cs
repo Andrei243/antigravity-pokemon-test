@@ -1,3 +1,4 @@
+using PokemonPlatinumEngine.Core;
 using System;
 using System.Numerics;
 using Raylib_cs;
@@ -119,7 +120,7 @@ internal static partial class ModernUi
     /// <summary>What an Egg's summary shows in place of its stats: its watch, by the cycles it has left (<see cref="Breeding.Watch"/>).</summary>
     public static void EggWatch(Rectangle r, Pokemon egg)
     {
-        UiFonts.Draw("THE EGG WATCH", r.X + 36, r.Y + 30, 30, Muted, UiWeight.Black);
+        UiFonts.Draw(Text.Of("hatching.eggWatch"), r.X + 36, r.Y + 30, 30, Muted, UiWeight.Black);
         float y = r.Y + 84;
         foreach (string line in Wrap(Breeding.Watch(egg), r.Width - 72, 34))
         {

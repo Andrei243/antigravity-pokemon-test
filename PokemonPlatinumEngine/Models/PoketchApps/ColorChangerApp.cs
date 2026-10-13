@@ -1,3 +1,4 @@
+using PokemonPlatinumEngine.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace PokemonPlatinumEngine.Models.PoketchApps;
 public sealed class ColorChangerApp : PoketchAppState
 {
     /// <summary>The colours' names, in the original's order (<c>PoketchScreenColor</c>).</summary>
-    public static readonly string[] Names = { "GREEN", "YELLOW", "ORANGE", "RED", "PURPLE", "BLUE", "TEAL", "WHITE" };
+    public static string Name(int color) => Text.Of($"poketch.color.{color}");
 
     /// <summary>The slider's eight places in blocks, a swatch 4 wide each, a block apart, in the lower half.</summary>
     public static PoketchButton Swatch(int color) => new(color, 3 + color * 5, 22, 4, 6);
