@@ -119,9 +119,13 @@ public partial class BattleEngine
         HUD.MenuState = BattleMenuState.Main;
     }
 
-    /// <summary>The keys that answer a menu: the A button, and Enter, which reads a battle's messages on as well.</summary>
+    /// <summary>
+    /// What answers a menu: the A button, and the Menu action (Enter among its keys), which reads a battle's messages
+    /// on as well. Folded into the Menu action (plan 16 · T11c, as plan 12 · Q4 describes) so a game steered by actions
+    /// alone can answer it too.
+    /// </summary>
     private static bool ConfirmPressed =>
-        InputManager.IsActionPressed(GameAction.Confirm) || Raylib_cs.Raylib.IsKeyPressed(Raylib_cs.KeyboardKey.Enter);
+        InputManager.IsActionPressed(GameAction.Confirm) || InputManager.IsActionPressed(GameAction.Menu);
 
     /// <summary>The switch menu is open because a fainted Pokémon has to be replaced.</summary>
     public bool IsChoosingReplacement => replacing;

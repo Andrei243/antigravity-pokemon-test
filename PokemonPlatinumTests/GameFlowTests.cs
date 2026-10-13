@@ -123,4 +123,46 @@ public class GameFlowTests
 
         static void Spend(ref int money, int price) => money -= price;
     }
+
+    [Fact]
+    public void AnActionPressedIsDownForItsFirstFrameOnly()
+    {
+        var first = ActionFrame.Press(GameAction.Up);
+        Assert.True(first.IsPressed(GameAction.Up));
+        Assert.True(first.IsDown(GameAction.Up));
+        var held = first.Next(GameAction.Up, GameAction.Run);
+        Assert.False(held.IsPressed(GameAction.Up));
+        Assert.True(held.IsDown(GameAction.Up));
+        Assert.True(held.IsPressed(GameAction.Run));
+        var let = held.Next();
+        Assert.False(let.IsDown(GameAction.Up));
+        Assert.False(let.IsPressed(GameAction.Up));
+    }
+
+    [Fact]
+    public void AScreenOfTheFlowIsSteeredByTheActionsItIsHanded()
+    {
+        var flow = new GameFlow();
+        try
+        {
+            flow.StartMenu.Open();
+            flow.Act(ActionFrame.Press(GameAction.Down));
+            Assert.Equal(StartMenuChoice.None, flow.StartMenu.Update());
+            Assert.Equal(1, flow.StartMenu.SelectedIndex);
+
+            flow.Act(ActionFrame.Press(GameAction.Confirm));
+            Assert.Equal(StartMenuChoice.Pokemon, flow.StartMenu.Update());
+
+            // Run is a held action, pressed for as long as it is down
+            flow.Act(ActionFrame.Press(GameAction.Run).Next(GameAction.Run));
+            Assert.True(InputManager.IsActionPressed(GameAction.Run));
+            flow.Act(ActionFrame.None);
+            Assert.Equal(0, InputManager.Axis(GameAction.Left, GameAction.Right, held: true));
+        }
+        finally
+        {
+            flow.Act(null);
+        }
+        Assert.Null(InputManager.Fed);
+    }
 }
