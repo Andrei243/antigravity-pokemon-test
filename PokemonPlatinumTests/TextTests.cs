@@ -3,6 +3,8 @@ using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.Models.PoketchApps;
+using PokemonPlatinumEngine.Overworld;
+using PokemonPlatinumEngine.Story;
 using PokemonPlatinumEngine.UI;
 
 namespace PokemonPlatinumTests;
@@ -36,7 +38,9 @@ public class TextTests
         "UI/ModernUi.Hall.cs", "UI/HallBoardScreen.cs", "UI/ModernUi.Castle.cs", "UI/CastleScreen.cs", "UI/ModernUi.Arcade.cs", "UI/ArcadeBoardScreen.cs",
         "UI/ModernUi.Pastimes.cs",
         "UI/ModernUi.Poffins.cs", "UI/PoffinCookingScreen.cs", "UI/PoffinCaseScreen.cs", "UI/SuperContestScreen.cs", "UI/ModernUi.SuperContest.cs",
-        "UI/ModernUi.Capsules.cs", "UI/SealCaseScreen.cs", "UI/FashionCaseScreen.cs", "UI/ModernUi.Ribbons.cs"
+        "UI/ModernUi.Capsules.cs", "UI/SealCaseScreen.cs", "UI/FashionCaseScreen.cs", "UI/ModernUi.Ribbons.cs",
+        "Overworld/FieldMoveRules.cs", "Overworld/Fishing.cs", "Overworld/Bicycle.cs", "Models/ItemUse.cs", "Models/MoveTeaching.cs",
+        "Models/EncounterAids.cs", "Models/Journal.cs", "Core/InputManager.cs"
     };
 
     /// <summary>What may stay in quotes in a file on the table: names of the data, and the logo, which is a picture (plan 17).</summary>
@@ -94,7 +98,27 @@ public class TextTests
         {
             "Dress Up", "Ranch", "City at Night", "Snowy Town", "Fiery", "Outer Space", "Cumulus Cloud", "Desert", "Flower Patch",
             "Future Room", "Open Sea", "Total Darkness", "Tatami Room", "Gingerbread Room", "Seafloor", "Underground", "Sky", "Theater"
-        }
+        },
+        // The field moves' names as the move data has them, which the party's moves are matched by
+        ["Overworld/FieldMoveRules.cs"] = new[]
+        {
+            "Cut", "Fly", "Surf", "Strength", "Defog", "Rock Smash", "Waterfall", "Rock Climb", "Flash", "Teleport", "Dig", "Sweet Scent",
+            "Milk Drink", "Soft-Boiled"
+        },
+        // The rods' uses in the field as the item table gives them
+        ["Overworld/Fishing.cs"] = new[] { "OldRod", "GoodRod", "SuperRod" },
+        // The item table's field uses and use parameters, which an item is used by
+        ["Models/ItemUse.cs"] = new[]
+        {
+            "Healing", "Berry", "friendshipLow", "friendshipMed", "friendshipHigh", "healSleep", "healPoison", "healBurn", "healFreeze",
+            "healParalysis", "hpRestored", "levelUp", "ppUp", "ppMax", "ppRestored", "restorePPAllMoves", "reviveAll"
+        },
+        // What an HM's name begins with, and a mistake of the code's own, never seen by a player
+        ["Models/MoveTeaching.cs"] = new[] { "HM", "A Pokémon with four moves forgets one to learn another" },
+        // The Repels' and the flutes' own names, which their use goes by
+        ["Models/EncounterAids.cs"] = new[] { "Repel", "Super Repel", "Max Repel", "Black Flute", "White Flute" },
+        // The vowels English says "an" before, which choose between the Journal's two lines of a catch
+        ["Models/Journal.cs"] = new[] { "AEIOU" }
     };
 
     private static readonly Regex Literal = new(@"(\$?)""((?:[^""\\\n]|\\.)*)""", RegexOptions.Compiled);
@@ -243,6 +267,14 @@ public class TextTests
         Assert.Equal(new[] { "1 heart", "0 hearts", "3 hearts" }, new[] { 1, 0, 3 }.Select(n => Text.Of("contest.hearts", ("n", n))));
         Assert.Equal("It has won 2 ribbons.", Text.Of("ribbonPage.won", ("n", 2)));
         Assert.Equal("1 time", Text.Of("cooking.times", ("n", 1)));
+        // N1e1: what the field's rules hand the screen
+        Assert.Equal("Not while someone is travelling with you.", FieldMoveRules.Why(FieldMoveError.Partner));
+        Assert.Equal("The Bicycle can't be ridden here.", BicycleRules.Why(BicycleCheck.NotHere));
+        Assert.Equal("It won't have any effect.", ItemUseResult.Nothing.Message);
+        Assert.Equal("Caught an Eevee on Route 201.", Text.Of("journal.line.caughtAn", ("species", "Eevee"), ("at", " on Route 201")));
+        Assert.Equal("{player} found 3 × Potion!", Text.Of("found.found", ("n", 3), ("item", "Potion")));
+        Assert.Equal("{player} put it away in the Medicine pocket.", Text.Of("found.putAway", ("n", 1), ("pocket", ScriptRunner.PocketName(ItemPocket.Medicine))));
+        Assert.Equal("Confirm, talk, read", InputManager.Bindings[(int)GameAction.Confirm].Name);
         // A placeholder the call names nothing for is left for whoever fills it later
         Assert.Equal("Hello {player}", Text.Fill("Hello {player}"));
     }

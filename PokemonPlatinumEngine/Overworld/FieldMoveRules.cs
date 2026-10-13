@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.Story;
@@ -203,10 +204,10 @@ public static class FieldMoveRules
     /// <summary>What the party menu says when a field move can't be used, in our own words.</summary>
     public static string Why(FieldMoveError error) => error switch
     {
-        FieldMoveError.Badge => "A new Badge is needed before it can be used outside battle.",
-        FieldMoveError.Partner => "Not while someone is travelling with you.",
-        FieldMoveError.State => "That's already being done.",
-        _ => "There's nothing here to use it on."
+        FieldMoveError.Badge => Text.Of("fieldMoves.why.badge"),
+        FieldMoveError.Partner => Text.Of("fieldMoves.why.partner"),
+        FieldMoveError.State => Text.Of("fieldMoves.why.state"),
+        _ => Text.Of("fieldMoves.why.location")
     };
 
     /// <summary>

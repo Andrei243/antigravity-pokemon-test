@@ -539,7 +539,37 @@
   },
   "journal": {
     "title": "JOURNAL",
-    "empty": "Nothing has been written yet."
+    "empty": "Nothing has been written yet.",
+    "line": {
+      "tookUp": "Took up the adventure {place}.",
+      "caught": "Caught a {species}{at}.",
+      "caughtAn": "Caught an {species}{at}.",
+      "battledWild": "Battled lots of wild Pokémon{at}, {species} among them.",
+      "battledTrainer": "Battled {trainer}{at}.",
+      "restedAtHome": "Had a rest at home.",
+      "researchLab": "Called in at the Pokémon Research Lab.",
+      "pcBox": "Sorted the Pokémon in the PC's boxes.",
+      "shopped": "Did some shopping at the Poké Mart.",
+      "lotsOfShopping": "Bought plenty at the Poké Mart.",
+      "soldALittle": "Sold a few things at the Poké Mart.",
+      "soldALot": "Sold a lot at the Poké Mart.",
+      "business": "Bought and sold at the Poké Mart.",
+      "gymTooTough": "Tried the {leader} Gym, and it was too tough.",
+      "beatLeader": "Beat {leader} and won a Gym Badge!",
+      "beatEliteFour": "Beat {name} of the Elite Four.",
+      "beatChampion": "Beat the Champion, {name}!",
+      "arrived": "Arrived {place}.",
+      "leftCave": "Made it out of {place}.",
+      "leftBuilding": "Left {place}.",
+      "found": "Found {item}.",
+      "usedFieldMove": "Used {move} in the field.",
+      "gameCorner": "Played the slots at the Game Corner.",
+      "tower": "Took a challenge at the Battle Tower.",
+      "factory": "Took a challenge at the Battle Factory.",
+      "hall": "Took a challenge at the Battle Hall.",
+      "castle": "Took a challenge at the Battle Castle.",
+      "arcade": "Took a challenge at the Battle Arcade."
+    }
   },
   "badges": {
     "Coal": "Coal", "Forest": "Forest", "Cobble": "Cobble", "Fen": "Fen", "Relic": "Relic", "Mine": "Mine", "Icicle": "Icicle", "Beacon": "Beacon"
@@ -1321,5 +1351,71 @@
     "none": "No ribbons yet.",
     "aboutRibbons": "Ribbons are won at contests, and given for deeds of all kinds.",
     "won": { "one": "It has won a ribbon.", "other": "It has won {n} ribbons." }
+  },
+  "fieldMoves": {
+    "why": {
+      "badge": "A new Badge is needed before it can be used outside battle.",
+      "partner": "Not while someone is travelling with you.",
+      "state": "That's already being done.",
+      "location": "There's nothing here to use it on."
+    },
+    "used": "{name} used {move}!"
+  },
+  "fishing": {
+    "landed": "Hooked one! Here it comes!",
+    "tooSoon": "The line came up too soon, with nothing on it.",
+    "gotAway": "Whatever it was, it slipped away.",
+    "noNibble": "Nothing is biting."
+  },
+  "cycling": {
+    "cannotDismount": "There's no getting off the Bicycle here.",
+    "notHere": "The Bicycle can't be ridden here."
+  },
+  "itemUse": {
+    "statsGrew": "{name}'s base stats grew from the {item}.",
+    "friendlier": "{name} grew friendlier, and its base stats came down a little.",
+    "woke": "{name} woke up.",
+    "poisonCured": "{name} was cured of its poisoning.",
+    "burnHealed": "{name}'s burn was healed.",
+    "thawed": "{name} thawed out.",
+    "paralysisCured": "{name} was cured of its paralysis.",
+    "revived": "{name} came round, with {hp} HP.",
+    "recovered": "{name} recovered {hp} HP.",
+    "ppRose": "{move}'s PP rose.",
+    "allPpRestored": "{name}'s PP was restored.",
+    "ppRestored": "{move}'s PP was restored."
+  },
+  "teaching": {
+    "hmMove": "HM moves can't be forgotten now.",
+    "forgot": "1, 2, and... Poof! {name} forgot {old}. And... {name} learned {move}!"
+  },
+  "aids": {
+    "blackFlute": "{player} played the {item}. Wild Pokémon will be less likely to appear.",
+    "whiteFlute": "{player} played the {item}. Wild Pokémon will be more likely to appear.",
+    "lingering": "The effects of the last Repel are still lingering.",
+    "repel": "{player} used the {item}. Weak wild Pokémon will stay away."
+  },
+  "controls": {
+    "action": {
+      "Up": "Up", "Down": "Down", "Left": "Left", "Right": "Right", "Confirm": "Confirm, talk, read", "Cancel": "Back", "Menu": "Menu",
+      "Run": "Run (held)", "Item": "Registered item", "Poketch": "Pokétch out or away", "PoketchApp": "Next Pokétch app",
+      "PoketchTouch": "Touch the Pokétch"
+    },
+    "key": { "esc": "Esc", "shift": "Shift", "up": "Up arrow", "down": "Down arrow", "left": "Left arrow", "right": "Right arrow" },
+    "pad": {
+      "up": "D-pad up", "down": "D-pad down", "left": "D-pad left", "right": "D-pad right", "bottom": "Bottom button",
+      "rightButton": "Right button", "leftButton": "Left button", "top": "Top button", "start": "Start", "r": "R", "l": "L"
+    }
+  },
+  "found": {
+    "found": { "one": "{player} found the {item}!", "other": "{player} found {n} × {item}!" },
+    "received": { "one": "{player} received the {item}!", "other": "{player} received {n} × {item}!" },
+    "holdsMove": "{item} holds the move {move}.",
+    "putAway": { "one": "{player} put it away in the {pocket} pocket.", "other": "{player} put them away in the {pocket} pocket." },
+    "putInCase": { "one": "{player} put it away in the Fashion Case.", "other": "{player} put them away in the Fashion Case." },
+    "pocket": {
+      "Items": "Items", "Medicine": "Medicine", "PokeBalls": "Poké Balls", "TMsAndHMs": "TMs & HMs", "KeyItems": "Key Items",
+      "Berries": "Berries", "Mail": "Mail", "BattleItems": "Battle Items"
+    }
   }
 }

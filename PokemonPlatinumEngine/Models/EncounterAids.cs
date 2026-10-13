@@ -1,3 +1,4 @@
+using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 
 namespace PokemonPlatinumEngine.Models;
@@ -33,14 +34,14 @@ public sealed class EncounterAids
         {
             case "Black Flute":
                 Flute = Flute.Black;
-                return ($"{player} played the {item.Name}. Wild Pokémon will be less likely to appear.", false);
+                return (Text.Of("aids.blackFlute", ("player", player), ("item", item.Name)), false);
             case "White Flute":
                 Flute = Flute.White;
-                return ($"{player} played the {item.Name}. Wild Pokémon will be more likely to appear.", false);
+                return (Text.Of("aids.whiteFlute", ("player", player), ("item", item.Name)), false);
         }
-        if (RepelActive) return ("The effects of the last Repel are still lingering.", false);
+        if (RepelActive) return (Text.Of("aids.lingering"), false);
         RepelSteps = item.EffectParam;
-        return ($"{player} used the {item.Name}. Weak wild Pokémon will stay away.", true);
+        return (Text.Of("aids.repel", ("player", player), ("item", item.Name)), true);
     }
 
     /// <summary><c>Repel_UpdateSteps</c>: a step taken. True on the step that ends the Repel, when the game says it wore off.</summary>

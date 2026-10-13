@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using PokemonPlatinumEngine.Core;
 
 namespace PokemonPlatinumEngine.Models;
 
@@ -134,42 +135,56 @@ public sealed class Journal
     /// <summary>A page told in words of our own: one line for each thing it keeps.</summary>
     public static IEnumerable<string> Lines(JournalPage page)
     {
-        yield return $"Took up the adventure {PlaceWords.In(page.Place)}.";
+        yield return Text.Of("journal.line.tookUp", ("place", PlaceWords.In(page.Place)));
         foreach (var e in page.Events) yield return Line(e);
         if (page.Pokemon is { } p)
-            yield return p.Caught ? $"Caught {Article(p.Species)} {p.Species}{At(p.Place)}." : $"Battled lots of wild Pokémon{At(p.Place)}, {p.Species} among them.";
-        if (page.Trainer is { } trainer) yield return $"Battled {trainer.Name}{At(trainer.Place)}.";
+        {
+            string at = At(p.Place);
+            yield return !p.Caught ? Text.Of("journal.line.battledWild", ("at", at), ("species", p.Species))
+                : StartsWithAVowel(p.Species) ? Text.Of("journal.line.caughtAn", ("species", p.Species), ("at", at))
+                : Text.Of("journal.line.caught", ("species", p.Species), ("at", at));
+        }
+        if (page.Trainer is { } trainer)
+        {
+            string at = At(trainer.Place);
+            yield return Text.Of("journal.line.battledTrainer", ("trainer", trainer.Name), ("at", at));
+        }
     }
 
     private static string At(string? place) => string.IsNullOrEmpty(place) ? "" : " " + PlaceWords.In(place);
 
-    private static string Article(string word) => "AEIOU".Contains(char.ToUpperInvariant(word[0])) ? "an" : "a";
+    // Whether English says "an" before the word
+    private static bool StartsWithAVowel(string word) => "AEIOU".Contains(char.ToUpperInvariant(word[0]));
 
-    public static string Line(JournalEvent e) => e.Kind switch
+    public static string Line(JournalEvent e)
     {
-        JournalEventKind.RestedAtHome => "Had a rest at home.",
-        JournalEventKind.LeftResearchLab => "Called in at the Pokémon Research Lab.",
-        JournalEventKind.UsedPcBox => "Sorted the Pokémon in the PC's boxes.",
-        JournalEventKind.ShoppedAtMart => "Did some shopping at the Poké Mart.",
-        JournalEventKind.LotsOfShopping => "Bought plenty at the Poké Mart.",
-        JournalEventKind.SoldALittle => "Sold a few things at the Poké Mart.",
-        JournalEventKind.SoldALot => "Sold a lot at the Poké Mart.",
-        JournalEventKind.BusinessAtMart => "Bought and sold at the Poké Mart.",
-        JournalEventKind.GymWasTooTough => $"Tried the {e.Subject} Gym, and it was too tough.",
-        JournalEventKind.BeatGymLeader => $"Beat {e.Subject} and won a Gym Badge!",
-        JournalEventKind.BeatEliteFourMember => $"Beat {e.Subject} of the Elite Four.",
-        JournalEventKind.BeatChampion => $"Beat the Champion, {e.Subject}!",
-        JournalEventKind.ArrivedInLocation => $"Arrived {PlaceWords.In(e.Subject ?? "")}.",
-        JournalEventKind.LeftCave => $"Made it out of {PlaceWords.Named(e.Subject ?? "")}.",
-        JournalEventKind.LeftBuilding => $"Left {PlaceWords.Named(e.Subject ?? "")}.",
-        JournalEventKind.ItemWasObtained => $"Found {e.Subject}.",
-        JournalEventKind.UsedFieldMove => $"Used {e.Subject} in the field.",
-        JournalEventKind.GameCorner => "Played the slots at the Game Corner.",
-        JournalEventKind.BattleTower => "Took a challenge at the Battle Tower.",
-        JournalEventKind.BattleFactory => "Took a challenge at the Battle Factory.",
-        JournalEventKind.BattleHall => "Took a challenge at the Battle Hall.",
-        JournalEventKind.BattleCastle => "Took a challenge at the Battle Castle.",
-        JournalEventKind.BattleArcade => "Took a challenge at the Battle Arcade.",
-        _ => ""
-    };
+        string subject = e.Subject ?? "";
+        return e.Kind switch
+        {
+            JournalEventKind.RestedAtHome => Text.Of("journal.line.restedAtHome"),
+            JournalEventKind.LeftResearchLab => Text.Of("journal.line.researchLab"),
+            JournalEventKind.UsedPcBox => Text.Of("journal.line.pcBox"),
+            JournalEventKind.ShoppedAtMart => Text.Of("journal.line.shopped"),
+            JournalEventKind.LotsOfShopping => Text.Of("journal.line.lotsOfShopping"),
+            JournalEventKind.SoldALittle => Text.Of("journal.line.soldALittle"),
+            JournalEventKind.SoldALot => Text.Of("journal.line.soldALot"),
+            JournalEventKind.BusinessAtMart => Text.Of("journal.line.business"),
+            JournalEventKind.GymWasTooTough => Text.Of("journal.line.gymTooTough", ("leader", e.Subject)),
+            JournalEventKind.BeatGymLeader => Text.Of("journal.line.beatLeader", ("leader", e.Subject)),
+            JournalEventKind.BeatEliteFourMember => Text.Of("journal.line.beatEliteFour", ("name", e.Subject)),
+            JournalEventKind.BeatChampion => Text.Of("journal.line.beatChampion", ("name", e.Subject)),
+            JournalEventKind.ArrivedInLocation => Text.Of("journal.line.arrived", ("place", PlaceWords.In(subject))),
+            JournalEventKind.LeftCave => Text.Of("journal.line.leftCave", ("place", PlaceWords.Named(subject))),
+            JournalEventKind.LeftBuilding => Text.Of("journal.line.leftBuilding", ("place", PlaceWords.Named(subject))),
+            JournalEventKind.ItemWasObtained => Text.Of("journal.line.found", ("item", e.Subject)),
+            JournalEventKind.UsedFieldMove => Text.Of("journal.line.usedFieldMove", ("move", e.Subject)),
+            JournalEventKind.GameCorner => Text.Of("journal.line.gameCorner"),
+            JournalEventKind.BattleTower => Text.Of("journal.line.tower"),
+            JournalEventKind.BattleFactory => Text.Of("journal.line.factory"),
+            JournalEventKind.BattleHall => Text.Of("journal.line.hall"),
+            JournalEventKind.BattleCastle => Text.Of("journal.line.castle"),
+            JournalEventKind.BattleArcade => Text.Of("journal.line.arcade"),
+            _ => ""
+        };
+    }
 }

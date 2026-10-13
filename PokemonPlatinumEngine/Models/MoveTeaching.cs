@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 
 namespace PokemonPlatinumEngine.Models;
@@ -38,7 +39,7 @@ public static class MoveTeaching
 
     /// <summary>Why the move in this place can't be forgotten to make room, or null when it can.</summary>
     public static string? WhyNotForget(Pokemon p, int slot) =>
-        slot >= 0 && slot < p.Moves.Count && IsHmMove(p.Moves[slot].Name) ? "HM moves can't be forgotten now." : null;
+        slot >= 0 && slot < p.Moves.Count && IsHmMove(p.Moves[slot].Name) ? Text.Of("teaching.hmMove") : null;
 
     /// <summary>
     /// Teaches the move: into a free place, or in place of the move at <paramref name="forget"/> (with all its PP).
@@ -50,11 +51,11 @@ public static class MoveTeaching
         if (p.Moves.Count < 4)
         {
             p.Moves.Add(learned);
-            return $"{p.DisplayName} learned {move}!";
+            return Text.Of("bag.learned", ("name", p.DisplayName), ("move", move));
         }
         if (forget < 0 || forget >= p.Moves.Count) throw new ArgumentOutOfRangeException(nameof(forget), "A Pokémon with four moves forgets one to learn another");
         string old = p.Moves[forget].Name;
         p.Moves[forget] = learned;
-        return $"1, 2, and... Poof! {p.DisplayName} forgot {old}. And... {p.DisplayName} learned {move}!";
+        return Text.Of("teaching.forgot", ("name", p.DisplayName), ("old", old), ("move", move));
     }
 }
