@@ -51,7 +51,14 @@ public enum TransitionKind
     /// <summary>A Gym Leader: a band opens across the picture, their portrait slides in as a silhouette and lights up beside their name, and all goes to white.</summary>
     LeaderBand,
     /// <summary>One of the Elite Four or the Champion: the band comes in as two halves, the player's portrait on the one and theirs on the other, and the white tears the picture between them.</summary>
-    EliteBand
+    EliteBand,
+
+    // The camera's ways (plan 09 · L14; style guide, "Into battle", "The legendary's and the mythical's")
+
+    /// <summary>A legendary Pokémon (Dialga, Palkia, Uxie, Azelf, Arceus): the lens widens, then rushes in, and a disc of white grows from the middle.</summary>
+    Legendary,
+    /// <summary>A mythical Pokémon (Shaymin, Giratina, Regigigas, Heatran, Darkrai, Rotom, the Regis): the camera jolts through sixteen held lenses, and the white closes in from the edges.</summary>
+    Mythical
 }
 
 /// <summary>
@@ -60,7 +67,9 @@ public enum TransitionKind
 /// check; <see cref="Draw"/> draws the same shapes. The ways by place and by whom (plan 09 · L13) are in
 /// <c>SceneTransition.Ways.cs</c>: their shapes, and what rides over the picture as they close
 /// (<see cref="Pieces"/>, <see cref="Ripple"/>, <see cref="Veil"/>); the bands of the Gym Leaders, the Elite Four
-/// and the Champion (plan 09 · L15) in <c>SceneTransition.Bands.cs</c> (<see cref="BandAt"/>, <see cref="Bands"/>).
+/// and the Champion (plan 09 · L15) in <c>SceneTransition.Bands.cs</c> (<see cref="BandAt"/>, <see cref="Bands"/>);
+/// the legendary's and the mythical's (plan 09 · L14), which are the field's camera, in <c>SceneTransition.Lenses.cs</c>
+/// (<see cref="LensAt"/>).
 /// </summary>
 public static partial class SceneTransition
 {
@@ -84,7 +93,8 @@ public static partial class SceneTransition
     /// a higher level than the player's first (<see cref="Local"/>). The rows with a way of their own are
     /// <c>sEncEffectsTable</c>'s: a band for each Gym Leader, each of the Elite Four and the Champion (plan 09 ·
     /// L15; <see cref="BandFor"/> says whose), Team Galactic's two, the Frontier's for its battles, its Brains and a
-    /// link battle, and the double's for any two at once, a Leader's too.
+    /// link battle, the double's for any two at once, a Leader's too, and the legendary's and the mythical's for the
+    /// wild species with a row of their own (plan 09 · L14).
     /// </summary>
     public static TransitionKind ForBattle(BattleMeeting meeting) => meeting.Row switch
     {
@@ -95,7 +105,10 @@ public static partial class SceneTransition
         MeetingRow.GalacticCommander or MeetingRow.GalacticBoss => TransitionKind.GalacticBoss,
         MeetingRow.Frontier or MeetingRow.Link or MeetingRow.FrontierBrain => TransitionKind.Frontier,
         MeetingRow.DoubleBattle or MeetingRow.DoubleWild or MeetingRow.DoubleLeader => TransitionKind.Double,
-        // ENCEFF_CUTIN_USE_LOCAL: the rival, any other trainer, a wild Pokémon
+        // ENCEFF_CUTIN_LEGENDARY and ENCEFF_CUTIN_MYTHICAL (the table's rows 89-98)
+        MeetingRow.DialgaPalkia or MeetingRow.UxieAzelf or MeetingRow.Arceus => TransitionKind.Legendary,
+        MeetingRow.Shaymin or MeetingRow.MinorLegendary or MeetingRow.Giratina or MeetingRow.RegiTrio => TransitionKind.Mythical,
+        // ENCEFF_CUTIN_USE_LOCAL: the rival, any other trainer, a wild Pokémon, and Mesprit, Cresselia and the birds
         _ => Local(meeting)
     };
 
@@ -138,8 +151,11 @@ public static partial class SceneTransition
     /// </summary>
     public static float LeadSeconds(TransitionKind kind) => Plain(kind) ? 0f : Pace(kind).Lead;
 
-    /// <summary>What a kind closes to: the dark, or a band's white.</summary>
-    public static Color CoverOf(TransitionKind kind) => IsBand(kind) ? White : Dark;
+    /// <summary>What a kind closes to: the dark, or the white of a band, a legendary and a mythical.</summary>
+    public static Color CoverOf(TransitionKind kind) => ClosesToWhite(kind) ? White : Dark;
+
+    /// <summary>True for the ways that close to white: the two bands, the legendary's and the mythical's.</summary>
+    public static bool ClosesToWhite(TransitionKind kind) => IsBand(kind) || MovesTheCamera(kind);
 
     /// <summary>
     /// How white the screen is <paramref name="seconds"/> into closing: two flashes in the first quarter of a
