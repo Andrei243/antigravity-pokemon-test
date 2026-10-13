@@ -64,8 +64,8 @@ public partial class GameEngine
     /// </summary>
     internal GameFacts DescribeForCrash()
     {
-        string state = currentState == GameState.WindowClosing ? $"{closingFrom} (the close button's question was up)" : currentState.ToString();
-        if (currentState == GameState.Transition) state = $"Transition ({stateBeforeTransition} to {stateAfterTransition})";
+        string state = currentState == GameState.WindowClosing ? $"{flow.ClosingFrom} (the close button's question was up)" : currentState.ToString();
+        if (currentState == GameState.Transition) state = $"Transition ({flow.Before} to {flow.After})";
         string? renderer = Raylib.IsWindowReady() ? Gl.Renderer() : null;
         if (!gameStarted || currentMap == null || player == null) return new GameFacts(state, Renderer: renderer, Settings: Settings.Describe());
         return new GameFacts(state, currentMap.Name, currentMap.AreaAt(player.GridX, player.GridY)?.Key, player.GridX, player.GridY, renderer, Settings.Describe(),

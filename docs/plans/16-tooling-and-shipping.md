@@ -146,6 +146,11 @@ More than one sitting (the overview's second look): whoever takes it up splits i
 - `Core/GameFlow.cs` (partial, GPU-free), the way plan 06 · R2 split `BattleCore` from `BattleEngine`: `GameState`, the transition's clock and callback, the menus' return states, `pendingEvolutions`, the map, the player, the party, bag, Pokédex, boxes, money, `story`, `runner`, `battle` and the screens' logic move in; it takes actions (`Steer`, `Confirm`, `Cancel`, `Menu`, `Move`) and `dt` and exposes what is on screen. `GameEngine` keeps the renderers, the window, the keys, the settings and the sound, asks the flow each frame and draws it; models wanted before a fade are an event the engine answers with `PokemonModels.Request`. `Driver` becomes the flow's own surface. Done in place, state by state, with `diff` of `all` empty at each step.
 - Tests: `GameFlowTests` on the transitions, the menus' return states and the evolution queue, no window.
 - **Done when** `GameEngine` holds nothing but what draws, sounds and reads keys, and `diff` of `all` is empty.
+- **Split by state** (2026-10-13, wave 11, with little of the week's usage left), in four parts:
+  - **T11a, done 2026-10-13.** `Core/GameFlow.cs` holds the frame every state hangs on: `State`, a transition (`StartTransition`, `OpenOn`, `Advance`, which says what the frame came to as a `TransitionStep` and runs the engine's `atShut` before the midpoint's callback), what the picture holds (`Shown` under the close button's question, `Scene` through a transition), the close button's `ClosingFrom`, `OptionsReturn`, `EvolutionReturn` and the queue of `Evolutions`. `GameEngine` keeps `currentState` as a property over `flow.State` while the rest moves out, so its hundred uses read as before; the band, the lens and the trainers' look on arrival stay the engine's, answered from the step. `GameFlowTests` drives it with no window. Nothing drawn changed on purpose; the harness wasn't run (`diff` of `all` is owed).
+  - **T11b**: the field's objects (the map, the player, the party, bag, Pokédex, boxes, money, `story`, `runner`, `battle`) move into the flow.
+  - **T11c**: the screens' logic and the actions (`Steer`, `Confirm`, `Cancel`, `Menu`, `Move`) the flow takes with `dt`; `Update` becomes reading the keys into actions.
+  - **T11d**: the models wanted before a fade as an event the engine answers with `PokemonModels.Request`, `Driver` as the flow's own surface, `currentState` gone.
 
 ### T12 · The headless field
 - A flow with no window: a new game, steps through `Steer`, a wild battle with `Dice` seeded (a `BattleEngine` that is never drawn), a warp's fade and midpoint over two `Update`s, talking through `TryInteract` and the `FieldHost`, the location sign and the toast, saving through `SaveManager` to a temp folder (plan 12 · Q2's `--save`) and continuing. `AudioManager` stands in with `Listen`.
@@ -299,7 +304,7 @@ After T23 and plan 12 · Q8 (the page earns its place once text size and colours
 - [x] T8 The content check (2026-10-12: `tools/ContentCheck` in the solution, its checks driven by `ContentTests`; lines measured with no window; plans of rooms and areas; 16 findings in the repository, all settled)
 - [ ] T9 The room and overlay editor
 - [ ] T10 Performance budgets
-- [ ] T11 The state machine without the renderers
+- [ ] T11 The state machine without the renderers (T11a done 2026-10-13: `GameFlow` with the state, transitions, return states and evolution queue)
 - [ ] T12 The headless field
 - [ ] T13 The end-to-end test and the field fuzzer
 - [ ] T14 Data layers and the manifest
