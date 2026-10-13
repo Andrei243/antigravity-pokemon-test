@@ -14,10 +14,6 @@ namespace PokemonPlatinumEngine.Core;
 /// </summary>
 public partial class GameEngine
 {
-    /// <summary>Solaceon Town's Day Care (saved).</summary>
-    private readonly DayCare dayCare = new();
-    private readonly HatchScreen hatchScreen = new();
-
     /// <summary>
     /// The player's whole number as a Pokémon's shininess reads it: the hidden half the card doesn't show and the card's
     /// ID (<see cref="PlayerIdentity.Number"/>), given out as a game begins or loads.
@@ -30,7 +26,7 @@ public partial class GameEngine
     /// </summary>
     private bool DayCareStep()
     {
-        if (dayCare.Step(flow.Party, fieldRandom, GameClock.Today, Ruleset.Current) == null) return false;
+        if (flow.DayCare.Step(flow.Party, fieldRandom, GameClock.Today, Ruleset.Current) == null) return false;
         return StartScript(FieldScripts.HatchEgg);
     }
 
@@ -47,7 +43,7 @@ public partial class GameEngine
         StartTransition(GameState.Hatch, () =>
         {
             AwaitModels(new[] { egg.ModelName });
-            hatchScreen.Begin(egg, place, day);
+            flow.HatchScreen.Begin(egg, place, day);
         });
         return true;
     }
@@ -55,12 +51,12 @@ public partial class GameEngine
     /// <summary>The scene has ended: the Pokémon is in the Pokédex and the Pokétch's history, and the field comes back.</summary>
     private void FinishHatch()
     {
-        if (hatchScreen.Pokemon is { IsEgg: false } hatched)
+        if (flow.HatchScreen.Pokemon is { IsEgg: false } hatched)
         {
             flow.Pokedex.RegisterSeen(hatched.Species.DexNumber);
             flow.Pokedex.RegisterCaught(hatched.Species.DexNumber);
-            poketch.Remember(hatched);
-            trainerScore = TrainerScore.Add(trainerScore, TrainerScore.HatchedEgg);
+            flow.Poketch.Remember(hatched);
+            flow.TrainerScore = TrainerScore.Add(flow.TrainerScore, TrainerScore.HatchedEgg);
         }
         StartTransition(GameState.Overworld, PlayFieldMusic);
     }

@@ -1,0 +1,111 @@
+using System;
+using PokemonPlatinumEngine.Data;
+using PokemonPlatinumEngine.Models;
+using PokemonPlatinumEngine.Models.Frontier;
+using PokemonPlatinumEngine.Models.SuperContests;
+using PokemonPlatinumEngine.Models.Underground;
+using PokemonPlatinumEngine.Overworld;
+
+namespace PokemonPlatinumEngine.Core;
+
+/// <summary>
+/// What a game keeps beside the field's objects (plan 16 · T11g): the save's own records and cases, the slot it is
+/// saved in, who walks behind the player and the Battle Frontier's challenge under way. The flow holds them, so a game
+/// with no window keeps them as the game does; the engine reads and writes them through the flow.
+/// </summary>
+public sealed partial class GameFlow
+{
+    /// <summary>
+    /// The slot this game is saved in (plan 12 · Q2): the one it was continued from, or the empty one a new game took.
+    /// Every save the game writes goes there (<see cref="GameEngine.WriteSave"/>): the save screen's, SAVE AND QUIT's,
+    /// the close button's, a script's.
+    /// </summary>
+    public int SaveSlot { get; set; } = 1;
+
+    /// <summary>The time played, in seconds (saved).</summary>
+    public float PlayTime { get; set; }
+
+    /// <summary>The Trainer Card's ID (saved).</summary>
+    public int TrainerId { get; set; }
+
+    /// <summary>The Trainer Card's score (plan 06 · R12), and the badges it has counted.</summary>
+    public int TrainerScore { get; set; }
+    public int ScoredBadges { get; set; }
+
+    /// <summary>The day the adventure began (saved).</summary>
+    public DateTime? AdventureStarted { get; set; }
+
+    /// <summary>The teams entered into the Hall of Fame (plan 06 · R12).</summary>
+    public HallOfFame HallOfFame { get; set; } = new();
+
+    /// <summary>The Journal's pages (plan 06 · R12).</summary>
+    public Journal Journal { get; set; } = new();
+
+    /// <summary>The cells of the region's map the player last passed through, which the Town Map marks (plan 01 · M12).</summary>
+    public MapTrail MapTrail { get; } = new();
+
+    /// <summary>
+    /// Where Dig and an Escape Rope lead out of the caves: outside the way the player went into them (the original's
+    /// exit location), saved with the game.
+    /// </summary>
+    public MapSpot? ExitSpot { get; set; }
+
+    /// <summary>The key item kept on the item button (saved).</summary>
+    public string? RegisteredItem { get; set; }
+
+    /// <summary>The clothes the player owns and wears (plan 11 · C9).</summary>
+    public Wardrobe Wardrobe { get; } = new();
+
+    /// <summary>
+    /// Whoever walks behind the player (Overworld.Follower), one at a time: someone of the story who travels along and
+    /// battles beside the player (plan 02 · S6: Cheryl through Eterna Forest), or a Pokémon of the team out of its
+    /// ball, which only walks (plan 06 · R16c: Amity Square).
+    /// </summary>
+    public Follower? Along { get; set; }
+
+    /// <summary>The Pokétch (plan 02 · S2).</summary>
+    public Poketch Poketch { get; } = new();
+
+    /// <summary>The Great Marsh's Safari Game, while one is on (plan 01 · M7; saved).</summary>
+    public SafariGame Safari { get; } = new();
+
+    /// <summary>The Repel's steps and the flute played here (plan 06 · R11); the Repel's steps are saved.</summary>
+    public EncounterAids EncounterAids { get; } = new();
+
+    /// <summary>What the game remembers of its wild Pokémon (saved as <see cref="SaveData.Encounters"/>).</summary>
+    public SpecialEncounters Encounters { get; set; } = new();
+
+    /// <summary>Sinnoh's berry patches (saved as <see cref="SaveData.Berries"/>).</summary>
+    public BerryPatches Berries { get; set; } = BerryPatches.NewGame();
+
+    /// <summary>Solaceon Town's Day Care (saved).</summary>
+    public DayCare DayCare { get; } = new();
+
+    /// <summary>The Seal Case's Seals and capsules (saved).</summary>
+    public SealCase SealCase { get; } = new();
+
+    /// <summary>The contests' records and photographs (saved).</summary>
+    public ContestRecords ContestRecords { get; } = new();
+
+    /// <summary>The Fashion Case's accessories (saved).</summary>
+    public FashionCase FashionCase { get; } = new();
+
+    /// <summary>The Poffin Case's Poffins (saved).</summary>
+    public PoffinCase PoffinCase { get; } = new();
+
+    /// <summary>The coins, Pal Park's six, the Villa and the game records kept beside the story (saved).</summary>
+    public Pastimes Pastimes { get; } = new();
+
+    /// <summary>The Underground's own: the bag below ground, the base, the buried Spheres, the day's walls (saved).</summary>
+    public UndergroundState Underground { get; set; } = new();
+
+    /// <summary>The Battle Frontier's records (saved).</summary>
+    public FrontierRecords Frontier { get; set; } = new();
+
+    /// <summary>A challenge of each facility under way, which lives between the scripts that play it.</summary>
+    public BattleTowerChallenge? Tower { get; set; }
+    public BattleFactoryChallenge? Factory { get; set; }
+    public BattleHallChallenge? Hall { get; set; }
+    public BattleCastleChallenge? Castle { get; set; }
+    public BattleArcadeChallenge? Arcade { get; set; }
+}

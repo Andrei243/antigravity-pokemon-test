@@ -47,53 +47,53 @@ public partial class GameEngine
         public Pokedex Pokedex => Flow.Pokedex;
         public PcBoxes Boxes { get => Flow.Boxes; set => Flow.Boxes = value; }
         public int Money { get => Flow.Money; set => Flow.Money = value; }
-        public int TrainerScore { get => game.trainerScore; set => game.trainerScore = value; }
-        public HallOfFame HallOfFame { get => game.hallOfFame; set => game.hallOfFame = value; }
-        public Journal Journal { get => game.journal; set => game.journal = value; }
-        public Wardrobe Wardrobe => game.wardrobe;
-        public Poketch Poketch => game.poketch;
+        public int TrainerScore { get => game.flow.TrainerScore; set => game.flow.TrainerScore = value; }
+        public HallOfFame HallOfFame { get => game.flow.HallOfFame; set => game.flow.HallOfFame = value; }
+        public Journal Journal { get => game.flow.Journal; set => game.flow.Journal = value; }
+        public Wardrobe Wardrobe => game.flow.Wardrobe;
+        public Poketch Poketch => game.flow.Poketch;
         /// <summary>The Great Marsh's Safari Game (plan 01 · M7; its catches, plan 01 · M11, part b).</summary>
-        public SafariGame Safari => game.safari;
-        public SpecialEncounters Encounters => game.encounters;
-        public BerryPatches Berries => game.berries;
-        public PoffinCase Poffins => game.poffinCase;
+        public SafariGame Safari => game.flow.Safari;
+        public SpecialEncounters Encounters => game.flow.Encounters;
+        public BerryPatches Berries => game.flow.Berries;
+        public PoffinCase Poffins => game.flow.PoffinCase;
 
         /// <summary>The Fashion Case, the Super Contest's screen and how the last contest came out (plan 06 · R17a).</summary>
-        public Models.SuperContests.FashionCase FashionCase => game.fashionCase;
-        public SuperContestScreen SuperContest => game.contestScreen;
+        public Models.SuperContests.FashionCase FashionCase => game.flow.FashionCase;
+        public SuperContestScreen SuperContest => game.flow.SuperContestScreen;
         public Models.SuperContests.ContestOutcome? ContestOutcome => game.contestOutcome;
 
         /// <summary>The Seal Case, its screens, the Fashion Case's viewer and the contests' records (plan 06 · R17b).</summary>
-        public SealCase SealCase => game.sealCase;
-        public SealCaseScreen BallCapsules => game.sealCaseScreen;
+        public SealCase SealCase => game.flow.SealCase;
+        public SealCaseScreen BallCapsules => game.flow.SealCaseScreen;
 
         /// <summary>The Underground (plan 06 · R16a): its state and rules, its screens, the trap that has the player, and the game's own ways down and up.</summary>
-        public Models.Underground.UndergroundState Underground => game.underground;
-        public Models.Pastimes Pastimes => game.pastimes;
-        public UI.SlotMachineScreen Slots => game.slotScreen;
+        public Models.Underground.UndergroundState Underground => game.flow.Underground;
+        public Models.Pastimes Pastimes => game.flow.Pastimes;
+        public UI.SlotMachineScreen Slots => game.flow.SlotMachineScreen;
         /// <summary>A step of Pal Park's Catching Show where the player stands (the engine's own, as a step in the grass takes it).</summary>
         public bool ParkStep() => game.PalParkStep();
         /// <summary>Stands the Villa's furniture in its room as the flags say (the engine's own, as arriving there does).</summary>
         public void FurnishVilla() => game.FurnishVilla();
         /// <summary>The Battle Frontier (plan 06 · R18a): its records, the Tower's challenge under way and a facility's board.</summary>
-        public Models.Frontier.FrontierRecords Frontier => game.frontier;
-        public Models.Frontier.BattleTowerChallenge? Tower => game.tower;
-        public FrontierRecordsScreen FrontierBoard => game.frontierRecordsScreen;
+        public Models.Frontier.FrontierRecords Frontier => game.flow.Frontier;
+        public Models.Frontier.BattleTowerChallenge? Tower => game.flow.Tower;
+        public FrontierRecordsScreen FrontierBoard => game.flow.FrontierRecordsScreen;
         /// <summary>The Battle Factory (plan 06 · R18b): the challenge under way and the screen its rentals are chosen and traded on.</summary>
-        public Models.Frontier.BattleFactoryChallenge? Factory => game.factory;
-        public FactoryScreen FactoryRentals => game.factoryScreen;
+        public Models.Frontier.BattleFactoryChallenge? Factory => game.flow.Factory;
+        public FactoryScreen FactoryRentals => game.flow.FactoryScreen;
         /// <summary>The Battle Hall and the Battle Castle (plan 06 · R18c): the challenges under way, the board of types and the valet's counters.</summary>
-        public Models.Frontier.BattleHallChallenge? Hall => game.hall;
-        public HallBoardScreen HallBoard => game.hallBoard;
-        public Models.Frontier.BattleCastleChallenge? Castle => game.castle;
-        public CastleScreen CastleCounter => game.castleScreen;
+        public Models.Frontier.BattleHallChallenge? Hall => game.flow.Hall;
+        public HallBoardScreen HallBoard => game.flow.HallBoardScreen;
+        public Models.Frontier.BattleCastleChallenge? Castle => game.flow.Castle;
+        public CastleScreen CastleCounter => game.flow.CastleScreen;
         /// <summary>The Battle Arcade (plan 06 · R18d): the challenge under way and its game board.</summary>
-        public Models.Frontier.BattleArcadeChallenge? Arcade => game.arcade;
-        public ArcadeBoardScreen ArcadeBoard => game.arcadeBoard;
+        public Models.Frontier.BattleArcadeChallenge? Arcade => game.flow.Arcade;
+        public ArcadeBoardScreen ArcadeBoard => game.flow.ArcadeBoardScreen;
         public Models.Underground.UndergroundField Tunnels => game.Tunnels;
-        public MiningScreen Mining => game.miningScreen;
-        public UndergroundScreen UndergroundLists => game.undergroundScreen;
-        public DecorationScreen Decoration => game.decorationScreen;
+        public MiningScreen Mining => game.flow.MiningScreen;
+        public UndergroundScreen UndergroundLists => game.flow.UndergroundScreen;
+        public DecorationScreen Decoration => game.flow.DecorationScreen;
         public Models.Underground.TrapEffect? Trap => game.trap;
         public IReadOnlyList<Models.Underground.Digger> Diggers => game.diggers;
         public void GoUnderground() => game.GoUnderground();
@@ -103,12 +103,12 @@ public partial class GameEngine
         public void SpringTrap(int trap) => game.SpringTrap(trap);
         public void OpenBaseDecoration() => game.OpenDecoration();
         public void UseDiggerDrill(int slot) => game.UseDiggerDrill(slot);
-        public SealShopScreen SealShop => game.sealShopScreen;
-        public FashionCaseScreen FashionCaseScreen => game.fashionScreen;
-        public Models.SuperContests.ContestRecords ContestRecords => game.contestRecords;
+        public SealShopScreen SealShop => game.flow.SealShopScreen;
+        public FashionCaseScreen FashionCaseScreen => game.flow.FashionCaseScreen;
+        public Models.SuperContests.ContestRecords ContestRecords => game.flow.ContestRecords;
         public void OpenBallCapsules() => game.OpenBallCapsules(fromBag: false);
         public void OpenFashionCase() => game.OpenFashionCase(fromBag: false);
-        public DayCare DayCare => game.dayCare;
+        public DayCare DayCare => game.flow.DayCare;
         public RadarChain Radar => game.radar;
         public FishingAttempt? Fishing { get => game.fishing; set => game.fishing = value; }
 
@@ -143,8 +143,8 @@ public partial class GameEngine
         public SaveScreen SaveScreen => game.flow.SaveScreen;
         public ShopScreen Shop => game.flow.ShopScreen;
         public PCScreen PcScreen => game.flow.PCScreen;
-        public HallOfFameScreen HallOfFameScreen => game.hallOfFameScreen;
-        public JournalScreen JournalScreen => game.journalScreen;
+        public HallOfFameScreen HallOfFameScreen => game.flow.HallOfFameScreen;
+        public JournalScreen JournalScreen => game.flow.JournalScreen;
         public PokedexScreen PokedexScreen => game.flow.PokedexScreen;
         public EvolutionScreen Evolution => game.flow.EvolutionScreen;
         public OptionsScreen Options => game.flow.OptionsScreen;
@@ -156,15 +156,15 @@ public partial class GameEngine
         public bool OpenTownMap(TownMapMode mode) => game.OpenTownMap(mode, fromBag: false);
 
         /// <summary>The cells of the region's map the player last passed through.</summary>
-        public MapTrail MapTrail => game.mapTrail;
-        public PoffinCookingScreen Cooking => game.cookingScreen;
-        public PoffinCaseScreen PoffinCaseScreen => game.poffinCaseScreen;
-        public HatchScreen Hatch => game.hatchScreen;
+        public MapTrail MapTrail => game.flow.MapTrail;
+        public PoffinCookingScreen Cooking => game.flow.PoffinCookingScreen;
+        public PoffinCaseScreen PoffinCaseScreen => game.flow.PoffinCaseScreen;
+        public HatchScreen Hatch => game.flow.HatchScreen;
 
         /// <summary>The Hall of Fame's ceremony and the credits (plan 02 · S14).</summary>
-        public HallOfFameCeremony Ceremony => game.ceremony;
-        public CreditsScreen Credits => game.credits;
-        public PoketchView PoketchView => game.poketchView;
+        public HallOfFameCeremony Ceremony => game.flow.Ceremony;
+        public CreditsScreen Credits => game.flow.Credits;
+        public PoketchView PoketchView => game.flow.PoketchView;
         public PoketchContext PoketchContext => game.PoketchNow();
 
         // ------------------------------------------------------------ the game's own steps
@@ -216,7 +216,7 @@ public partial class GameEngine
         /// </summary>
         public bool EnterArea() => game.EnterArea();
         /// <summary>Whoever walks behind the player now (plan 06 · R16c): a partner of the story or a Pokémon out of its ball; null with nobody.</summary>
-        public Follower? Along => game.along;
+        public Follower? Along => game.flow.Along;
         /// <summary>A Pokémon of the team walks behind the player as a thing of the map, as <c>amity walk</c> has it (plan 06 · R16c).</summary>
         public void WalkWith(NPC body, Pokemon pokemon) => game.WalkWith(body, pokemon);
         /// <summary>The game written to its slot's save where the player stands, as the save screen writes it.</summary>
@@ -225,11 +225,11 @@ public partial class GameEngine
         /// The slot the game is saved in (plan 12 · Q2). A tool that wants its saves in one place whatever an earlier
         /// run left in its folder sets it.
         /// </summary>
-        public int SaveSlot { get => game.saveSlot; set => game.saveSlot = SavePaths.IsSlot(value) ? value : throw new ArgumentOutOfRangeException(nameof(value)); }
+        public int SaveSlot { get => game.flow.SaveSlot; set => game.flow.SaveSlot = SavePaths.IsSlot(value) ? value : throw new ArgumentOutOfRangeException(nameof(value)); }
         /// <summary>The file of the slot the game is saved in, in the folder the saves are kept in.</summary>
-        public string SaveFile => SavePaths.Current.Slot(game.saveSlot);
+        public string SaveFile => SavePaths.Current.Slot(game.flow.SaveSlot);
         /// <summary>The slot the game is saved in deleted, its backup with it: a tool that saved takes its save away again.</summary>
-        public bool DeleteSave() => SaveSlots.Delete(SavePaths.Current, game.saveSlot);
+        public bool DeleteSave() => SaveSlots.Delete(SavePaths.Current, game.flow.SaveSlot);
         /// <summary>The game as it stands, as the save screen would write it (plan 24 · X3: the harness's <c>saves</c>).</summary>
         public SaveData BuildSave() => game.BuildSave();
 

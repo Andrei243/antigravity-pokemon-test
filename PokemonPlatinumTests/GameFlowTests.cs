@@ -199,4 +199,29 @@ public class GameFlowTests
             flow.Act(null);
         }
     }
+
+    [Fact]
+    public void AGamesRecordsAndItsOtherScreensAreTheFlowsWithNoWindow()
+    {
+        // Plan 16 · T11g: what a save keeps beside the field's objects, and the screens of the game's other corners,
+        // are made with the flow and need no window
+        var flow = new GameFlow();
+        Assert.Equal(1, flow.SaveSlot);
+        Assert.Empty(flow.HallOfFame.Entries);
+        Assert.Equal(0, flow.DayCare.Count);
+        Assert.Null(flow.Along);
+        Assert.Null(flow.Tower);
+        Assert.Null(flow.Arcade);
+        Assert.NotNull(flow.Berries);
+        Assert.NotNull(flow.Ceremony);
+        Assert.NotNull(flow.Credits);
+        Assert.NotNull(flow.HatchScreen);
+        Assert.NotNull(flow.DecorationScreen);
+        Assert.NotNull(flow.Choice);
+
+        flow.SaveSlot = 3;
+        flow.TrainerScore += 5;
+        Assert.Equal(3, flow.SaveSlot);
+        Assert.Equal(5, flow.TrainerScore);
+    }
 }

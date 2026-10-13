@@ -10,9 +10,6 @@ namespace PokemonPlatinumEngine.Core;
 /// </summary>
 public partial class GameEngine
 {
-    /// <summary>Sinnoh's berry patches (saved as <see cref="SaveData.Berries"/>).</summary>
-    private BerryPatches berries = BerryPatches.NewGame();
-
     /// <summary>How far from the player a patch counts as seen: the original's is "in the camera's view".</summary>
     private const int BerrySight = 8;
 
@@ -30,11 +27,11 @@ public partial class GameEngine
     private void KeepBerriesInView()
     {
         foreach (var npc in flow.Map.NPCs.Near(flow.Player.GridX, flow.Player.GridY, BerrySight, soilInSight))
-            if (npc.BerryPatch is { } seen) berries.Seen(seen);
-        if (berries.Revision == berryRevision && berryMap == flow.Map) return;
-        berryRevision = berries.Revision;
+            if (npc.BerryPatch is { } seen) flow.Berries.Seen(seen);
+        if (flow.Berries.Revision == berryRevision && berryMap == flow.Map) return;
+        berryRevision = flow.Berries.Revision;
         berryMap = flow.Map;
-        ShowBerries(flow.Map, berries);
+        ShowBerries(flow.Map, flow.Berries);
     }
 
     /// <summary>Gives every patch of soil on a map what its berry patch shows.</summary>

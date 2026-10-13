@@ -18,28 +18,25 @@ public partial class GameEngine
 {
     public const string FactoryLobbyMap = "BattleFactory";
 
-    private BattleFactoryChallenge? factory;
-    private readonly FactoryScreen factoryScreen = new();
-
     /// <summary>The six on offer are opened for three to be chosen (<c>OpenBattleFactoryAppInitial</c>); the script waits.</summary>
     private void OpenFactoryRentals(int count)
     {
-        if (factory == null) return;
+        if (flow.Factory == null) return;
         scriptAnswer = 0;
         enteredSlots = Array.Empty<int>();
-        factoryScreen.OpenToRent(factory.Offer.Select(factory.Build).ToList(), count);
+        flow.FactoryScreen.OpenToRent(flow.Factory.Offer.Select(flow.Factory.Build).ToList(), count);
         flow.State = GameState.FactoryRentals;
     }
 
     /// <summary>A trade is offered after a battle won (<c>OpenBattleFactoryAppForTrade</c>): the three in hand and the beaten trainer's three.</summary>
     private void OpenFactoryTrade()
     {
-        if (factory == null) return;
+        if (flow.Factory == null) return;
         scriptAnswer = 0;
         enteredSlots = Array.Empty<int>();
         // The trainer just beaten is the one before the battle to come
-        var beaten = Data.FrontierDatabase.Trainer(factory.Trainers[Math.Max(0, factory.Battle - 1)]);
-        factoryScreen.OpenToTrade(factory.Team.Select(factory.Build).ToList(), factory.Foe.Select(factory.Build).ToList(), beaten.Name);
+        var beaten = Data.FrontierDatabase.Trainer(flow.Factory.Trainers[Math.Max(0, flow.Factory.Battle - 1)]);
+        flow.FactoryScreen.OpenToTrade(flow.Factory.Team.Select(flow.Factory.Build).ToList(), flow.Factory.Foe.Select(flow.Factory.Build).ToList(), beaten.Name);
         flow.State = GameState.FactoryRentals;
     }
 
@@ -49,8 +46,8 @@ public partial class GameEngine
     /// </summary>
     private void AskForRentalPictures()
     {
-        if (factory == null) return;
-        foreach (var rental in factory.Offer.Concat(factory.Team).Concat(factory.Foe).Concat(factory.NextFoe))
+        if (flow.Factory == null) return;
+        foreach (var rental in flow.Factory.Offer.Concat(flow.Factory.Team).Concat(flow.Factory.Foe).Concat(flow.Factory.NextFoe))
         {
             flow.WantModel(rental.Species);
             Graphics.PokemonSprites.Request(rental.Species);
@@ -59,16 +56,16 @@ public partial class GameEngine
 
     private void UpdateFactoryRentals(float dt)
     {
-        factoryScreen.Update(dt);
-        if (factoryScreen.IsActive) return;
+        flow.FactoryScreen.Update(dt);
+        if (flow.FactoryScreen.IsActive) return;
         // The script that opened the screen hears what was decided
-        enteredSlots = factoryScreen.Outcome.ToList();
+        enteredSlots = flow.FactoryScreen.Outcome.ToList();
         scriptAnswer = enteredSlots.Count > 0 ? 1 : 0;
         flow.State = GameState.Overworld;
     }
 
     private sealed partial class FieldHost
     {
-        public BattleFactoryChallenge? Factory { get => game.factory; set => game.factory = value; }
+        public BattleFactoryChallenge? Factory { get => game.flow.Factory; set => game.flow.Factory = value; }
     }
 }

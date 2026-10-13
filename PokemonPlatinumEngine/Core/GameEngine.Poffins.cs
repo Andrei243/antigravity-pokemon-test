@@ -13,11 +13,6 @@ public partial class GameEngine
     /// <summary>The flag that shows a Pokémon's condition in its summary (the original's <c>SystemFlag_CheckContestHallVisited</c>).</summary>
     public const string ContestHallVisitedFlag = "FLAG_CONTEST_HALL_VISITED";
 
-    /// <summary>The Poffin Case's Poffins (saved).</summary>
-    private readonly PoffinCase poffinCase = new();
-    private readonly PoffinCookingScreen cookingScreen = new();
-    private readonly PoffinCaseScreen poffinCaseScreen = new();
-
     // The bag is open to choose a berry for the pot; the case goes back to the bag it was opened from
     private bool choosingBerryToCook, caseFromBag;
 
@@ -30,7 +25,7 @@ public partial class GameEngine
         choosingBerryToCook = true;
         scriptItem = null;
         flow.State = GameState.BagMenu;
-        flow.BagScreen.Registered = registeredItem;
+        flow.BagScreen.Registered = flow.RegisteredItem;
         flow.BagScreen.OpenToPick("berries");
     }
 
@@ -44,17 +39,17 @@ public partial class GameEngine
             flow.State = GameState.Overworld;
             return;
         }
-        cookingScreen.Begin(berry, PlayerIdentity.Name, fieldRandom, poffinCase, flow.Bag);
+        flow.PoffinCookingScreen.Begin(berry, PlayerIdentity.Name, fieldRandom, flow.PoffinCase, flow.Bag);
         flow.State = GameState.PoffinCooking;
     }
 
     private void UpdateCooking(float dt)
     {
-        cookingScreen.Update(dt);
+        flow.PoffinCookingScreen.Update(dt);
         // A Poffin cooked alone adds to the Trainer Card's score (TRAINER_SCORE_EVENT_UNK_12, ov83_0223BCEC)
-        if (cookingScreen.TakeCooked()) trainerScore = TrainerScore.Add(trainerScore, TrainerScore.CookedPoffin);
-        if (cookingScreen.IsActive) return;
-        if (cookingScreen.WantsBerry) StartCooking();
+        if (flow.PoffinCookingScreen.TakeCooked()) flow.TrainerScore = TrainerScore.Add(flow.TrainerScore, TrainerScore.CookedPoffin);
+        if (flow.PoffinCookingScreen.IsActive) return;
+        if (flow.PoffinCookingScreen.WantsBerry) StartCooking();
         else flow.State = GameState.Overworld;
     }
 
@@ -63,13 +58,13 @@ public partial class GameEngine
     {
         caseFromBag = fromBag;
         flow.State = GameState.PoffinCase;
-        poffinCaseScreen.Open(poffinCase, flow.Party);
+        flow.PoffinCaseScreen.Open(flow.PoffinCase, flow.Party);
     }
 
     private void UpdatePoffinCase(float dt)
     {
-        poffinCaseScreen.Update(dt);
-        if (poffinCaseScreen.IsActive) return;
+        flow.PoffinCaseScreen.Update(dt);
+        if (flow.PoffinCaseScreen.IsActive) return;
         if (caseFromBag)
         {
             flow.State = GameState.BagMenu;

@@ -31,28 +31,25 @@ public partial class GameEngine
     /// <summary>The variables the Tower's scripts keep its rooms' states in, which the game only reads; and the print's own.</summary>
     public const string TowerLobbyAction = "VAR_BATTLE_TOWER_LOBBY_LOAD_ACTION";
 
-    private FrontierRecords frontier = new();
-    private BattleTowerChallenge? tower;
     private IReadOnlyList<int> enteredSlots = Array.Empty<int>();
-    private readonly FrontierRecordsScreen frontierRecordsScreen = new();
     private bool showBattlePoints;
 
     /// <summary>A new game's Frontier: nothing won, and the Tower's draws started from the day's number (<c>sub_0206C008</c> in <c>game_start.c</c>).</summary>
     private void LoadFrontier(FrontierRecords? saved)
     {
-        tower = null;
-        factory = null;
-        hall = null;
-        castle = null;
-        arcade = null;
+        flow.Tower = null;
+        flow.Factory = null;
+        flow.Hall = null;
+        flow.Castle = null;
+        flow.Arcade = null;
         enteredSlots = Array.Empty<int>();
         if (saved != null)
         {
-            frontier = saved;
+            flow.Frontier = saved;
             return;
         }
-        frontier = new FrontierRecords();
-        frontier.NewDay(encounters.DailyNumber);
+        flow.Frontier = new FrontierRecords();
+        flow.Frontier.NewDay(flow.Encounters.DailyNumber);
     }
 
     private int FrontierAct(string what, int number, NPC? subject)
@@ -68,13 +65,13 @@ public partial class GameEngine
                 flow.State = GameState.PartyMenu;
                 return 0;
             case "records":
-                frontierRecordsScreen.Open(FrontierBoard.For((FrontierFacility)number, frontier, flow.Story));
+                flow.FrontierRecordsScreen.Open(FrontierBoard.For((FrontierFacility)number, flow.Frontier, flow.Story));
                 flow.State = GameState.FrontierRecords;
                 return 1;
             case "seen":
                 return flow.Pokedex.IsSeen(number) ? 1 : 0;
             case "score":
-                trainerScore = TrainerScore.Add(trainerScore, number);
+                flow.TrainerScore = TrainerScore.Add(flow.TrainerScore, number);
                 return 1;
             case "opponents":
                 StandOpponents();
@@ -90,14 +87,14 @@ public partial class GameEngine
                 return 1;
             case "points":
                 showBattlePoints = number != 0;
-                return frontier.BattlePoints;
+                return flow.Frontier.BattlePoints;
             case "save":
                 SaveCurrentGame(quiet: true);
                 AudioManager.PlaySound("save");
                 return 1;
             case "journal":
                 // The facility whose challenge goes up, by its number; the Tower's commands hand over none
-                journal.Tell(new JournalEvent((FrontierFacility)number switch
+                flow.Journal.Tell(new JournalEvent((FrontierFacility)number switch
                 {
                     FrontierFacility.Factory => JournalEventKind.BattleFactory,
                     FrontierFacility.Hall => JournalEventKind.BattleHall,
@@ -127,7 +124,7 @@ public partial class GameEngine
                 return 0;
             case "castlepoints":
                 showCastlePoints = number != 0;
-                return castle?.Points(frontier) ?? 0;
+                return flow.Castle?.Points(flow.Frontier) ?? 0;
             case "rent":
                 OpenFactoryRentals(number);
                 return 0;
@@ -243,25 +240,25 @@ public partial class GameEngine
 
     private void UpdateFrontierRecords(float dt)
     {
-        frontierRecordsScreen.Update(dt);
-        if (!frontierRecordsScreen.IsActive) flow.State = GameState.Overworld;
+        flow.FrontierRecordsScreen.Update(dt);
+        if (!flow.FrontierRecordsScreen.IsActive) flow.State = GameState.Overworld;
     }
 
     /// <summary>The Battle Points stand over the field while a script speaks of them, and go as it ends.</summary>
     private void DrawBattlePoints()
     {
         if (!ScriptRunning) showBattlePoints = false;
-        if (showBattlePoints) ModernUi.PointsCount(frontier.BattlePoints);
+        if (showBattlePoints) ModernUi.PointsCount(flow.Frontier.BattlePoints);
     }
 
     /// <summary>The longest streak of any way the Tower is taken: the Trainer Card's star asks for a hundred (<c>TrainerCase_CalculateTrainerCardLevel</c>).</summary>
     private int TowerBestStreak => new[] { TowerMode.Single, TowerMode.Double, TowerMode.Multi, TowerMode.LinkMulti, TowerMode.Wifi }
-        .Max(mode => frontier.Get(BattleTowerChallenge.RecordStat(mode)));
+        .Max(mode => flow.Frontier.Get(BattleTowerChallenge.RecordStat(mode)));
 
     private sealed partial class FieldHost
     {
-        public FrontierRecords Frontier => game.frontier;
-        public BattleTowerChallenge? Tower { get => game.tower; set => game.tower = value; }
+        public FrontierRecords Frontier => game.flow.Frontier;
+        public BattleTowerChallenge? Tower { get => game.flow.Tower; set => game.flow.Tower = value; }
         public int FrontierAct(string what, int number, NPC? subject) => game.FrontierAct(what, number, subject);
         public IReadOnlyList<int> Entered => game.enteredSlots;
         public void FrontierBattle(Party team, IReadOnlyList<Trainer> foes, Trainer? partner, bool doubles, FrontierConditions? conditions = null) =>

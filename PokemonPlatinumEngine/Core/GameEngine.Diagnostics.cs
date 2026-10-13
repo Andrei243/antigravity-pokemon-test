@@ -69,7 +69,7 @@ public partial class GameEngine
         string? renderer = Raylib.IsWindowReady() ? Gl.Renderer() : null;
         if (!gameStarted || flow.Map == null || flow.Player == null) return new GameFacts(state, Renderer: renderer, Settings: Settings.Describe());
         return new GameFacts(state, flow.Map.Name, flow.Map.AreaAt(flow.Player.GridX, flow.Player.GridY)?.Key, flow.Player.GridX, flow.Player.GridY, renderer, Settings.Describe(),
-            SavePaths.SlotName(saveSlot));
+            SavePaths.SlotName(flow.SaveSlot));
     }
 
     /// <summary>

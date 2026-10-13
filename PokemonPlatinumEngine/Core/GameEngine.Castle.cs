@@ -16,18 +16,16 @@ public partial class GameEngine
 {
     public const string CastleLobbyMap = "BattleCastle";
 
-    private BattleCastleChallenge? castle;
-    private readonly CastleScreen castleScreen = new();
     private bool showCastlePoints;
 
     /// <summary>One of the valet's counters is opened (<c>OpenBattleCastleSelfApp</c>, <c>OpenBattleCastleOpponentApp</c>); the script waits.</summary>
     private void OpenCastleCounter(bool own)
     {
-        if (castle == null) return;
+        if (flow.Castle == null) return;
         scriptAnswer = 0;
         // The trainer to come was drawn since the challenge went in: their pictures are asked for as the counter opens
         AskForCastlePictures();
-        castleScreen.Open(castle, frontier, own);
+        flow.CastleScreen.Open(flow.Castle, flow.Frontier, own);
         flow.State = GameState.CastleCounter;
     }
 
@@ -37,8 +35,8 @@ public partial class GameEngine
     /// </summary>
     private void AskForCastlePictures()
     {
-        if (castle == null) return;
-        foreach (var pokemon in castle.Team.Members.Concat(castle.Foe?.Pokemon ?? Enumerable.Empty<Models.Pokemon>()))
+        if (flow.Castle == null) return;
+        foreach (var pokemon in flow.Castle.Team.Members.Concat(flow.Castle.Foe?.Pokemon ?? Enumerable.Empty<Models.Pokemon>()))
         {
             flow.WantModel(pokemon.ModelName);
             Graphics.PokemonSprites.Request(pokemon.ModelName);
@@ -47,8 +45,8 @@ public partial class GameEngine
 
     private void UpdateCastleCounter(float dt)
     {
-        castleScreen.Update(dt);
-        if (castleScreen.IsActive) return;
+        flow.CastleScreen.Update(dt);
+        if (flow.CastleScreen.IsActive) return;
         scriptAnswer = 1;
         flow.State = GameState.Overworld;
     }
@@ -56,12 +54,12 @@ public partial class GameEngine
     /// <summary>The Castle Points stand over the field while the valet speaks of them, and go as the script ends.</summary>
     private void DrawCastlePoints()
     {
-        if (!ScriptRunning || castle == null) showCastlePoints = false;
-        if (showCastlePoints && castle != null) ModernUi.CastlePointsCount(castle.Points(frontier));
+        if (!ScriptRunning || flow.Castle == null) showCastlePoints = false;
+        if (showCastlePoints && flow.Castle != null) ModernUi.CastlePointsCount(flow.Castle.Points(flow.Frontier));
     }
 
     private sealed partial class FieldHost
     {
-        public BattleCastleChallenge? Castle { get => game.castle; set => game.castle = value; }
+        public BattleCastleChallenge? Castle { get => game.flow.Castle; set => game.flow.Castle = value; }
     }
 }

@@ -17,9 +17,6 @@ namespace PokemonPlatinumEngine.Core;
 /// </summary>
 public partial class GameEngine
 {
-    /// <summary>What the game remembers of its wild Pokémon (saved as <see cref="SaveData.Encounters"/>).</summary>
-    private SpecialEncounters encounters = new();
-
     /// <summary>The Poké Radar's chain, which the original doesn't save either.</summary>
     private readonly RadarChain radar = new();
 
@@ -34,7 +31,7 @@ public partial class GameEngine
     private Func<EncounterMoment?>? momentOf;
 
     /// <summary>The trainer's whole number: the card's and its hidden half (the original's 32 bits).</summary>
-    internal uint TrainerNumber => ((uint)encounters.SecretId << 16) | (uint)(trainerId & 0xffff);
+    internal uint TrainerNumber => ((uint)flow.Encounters.SecretId << 16) | (uint)(flow.TrainerId & 0xffff);
 
     /// <summary>What the moment brings to the wild Pokémon met where the player stands (<see cref="EncounterMoment"/>).</summary>
     private EncounterMoment EncounterMomentNow()
@@ -44,16 +41,16 @@ public partial class GameEngine
         {
             Time = GameClock.Now,
             Today = GameClock.Today,
-            SwarmArea = Swarms.Today(encounters),
+            SwarmArea = Swarms.Today(flow.Encounters),
             NationalDex = flow.Pokedex.NationalUnlocked,
-            TrophyFirst = TrophyGardenRules.SpeciesIn(encounters.TrophyFirst, garden),
-            TrophySecond = TrophyGardenRules.SpeciesIn(encounters.TrophySecond, garden),
-            MarshDaily = safari.Active ? encounters.MarshDaily : null,
+            TrophyFirst = TrophyGardenRules.SpeciesIn(flow.Encounters.TrophyFirst, garden),
+            TrophySecond = TrophyGardenRules.SpeciesIn(flow.Encounters.TrophySecond, garden),
+            MarshDaily = flow.Safari.Active ? flow.Encounters.MarshDaily : null,
             Marsh = SpecialEncounterTables.Sinnoh.GreatMarsh,
             Partner = partner != null,
             Radar = radar.Active ? radar : null,
             Height = flow.Player.HeightOn(flow.Map),
-            State = encounters
+            State = flow.Encounters
         };
     }
 
@@ -70,9 +67,9 @@ public partial class GameEngine
     /// </summary>
     private bool EncountersStep()
     {
-        if (flow.Bag.GetQuantity(ItemDatabase.Get("Poké Radar")!) > 0) RadarChain.Charge(encounters);
+        if (flow.Bag.GetQuantity(ItemDatabase.Get("Poké Radar")!) > 0) RadarChain.Charge(flow.Encounters);
         radar.KeepInView(flow.Player.GridX, flow.Player.GridY);
-        switch (FieldPoison.Step(encounters, flow.Party, Ruleset.Current))
+        switch (FieldPoison.Step(flow.Encounters, flow.Party, Ruleset.Current))
         {
             case PoisonStep.Hurt:
                 AudioManager.PlaySound("status_poison");
@@ -118,8 +115,8 @@ public partial class GameEngine
         {
             if (tree.Type != PropType.HoneyTree || Math.Abs(tree.X - px) > 12 || Math.Abs(tree.Y - py) > 9) continue;
             int x = tree.X + tree.Width / 2, y = tree.Y + tree.Depth - 1;
-            if (HoneyTrees.IdOf(flow.Map.AreaAt(x, y)?.Key) is { } id && HoneyTrees.Shaking(encounters.Trees[id]))
-                life.ShakeTree(flow.Map, x, y, CrownTexels / 32f * Graphics.MapScene.VerticalScaleOf(flow.Map), encounters.Trees[id].Shakes);
+            if (HoneyTrees.IdOf(flow.Map.AreaAt(x, y)?.Key) is { } id && HoneyTrees.Shaking(flow.Encounters.Trees[id]))
+                life.ShakeTree(flow.Map, x, y, CrownTexels / 32f * Graphics.MapScene.VerticalScaleOf(flow.Map), flow.Encounters.Trees[id].Shakes);
         }
     }
 
@@ -135,7 +132,7 @@ public partial class GameEngine
     private Pokemon RoamerToBattle(int slot)
     {
         EndRadarChain();
-        return Roamers.ToBattle(encounters.Roamers[slot]);
+        return Roamers.ToBattle(flow.Encounters.Roamers[slot]);
     }
 
     /// <summary>
@@ -162,7 +159,7 @@ public partial class GameEngine
         if (!field) return;
         bool won = fought.Result == BattleResult.PlayerVictory, caught = fought.Result == BattleResult.EnemyCaught;
         if (!defeat && fought.EnemyPokemon is { } foe && fought.Kind is BattleKind.Normal or BattleKind.Roamer)
-            Roamers.AfterBattle(encounters, foe, won, caught, PlaceKey(), flow.Story, fieldRandom);
+            Roamers.AfterBattle(flow.Encounters, foe, won, caught, PlaceKey(), flow.Story, fieldRandom);
         radar.AfterBattle(won && !defeat, caught, fieldRandom);
     }
 
@@ -173,8 +170,8 @@ public partial class GameEngine
     /// </summary>
     private void KeepTheEncounterClock(int daysPassed)
     {
-        if (daysPassed > 0) DailyEvents.DaysPass(daysPassed, flow.Story, encounters, PlaceKey(), fieldRandom, underground, frontier);
-        encounters.ClockTo(GameClock.Moment);
-        berries.ClockTo(GameClock.Moment);
+        if (daysPassed > 0) DailyEvents.DaysPass(daysPassed, flow.Story, flow.Encounters, PlaceKey(), fieldRandom, flow.Underground, flow.Frontier);
+        flow.Encounters.ClockTo(GameClock.Moment);
+        flow.Berries.ClockTo(GameClock.Moment);
     }
 }

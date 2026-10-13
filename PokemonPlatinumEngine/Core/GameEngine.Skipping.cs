@@ -46,7 +46,7 @@ public partial class GameEngine
     private bool MaySkipNow =>
         skipPhase == SkipPhase.None && gameStarted && flow.Runner.IsRunning && !flow.Runner.Hurrying && flow.Runner.Scene is { } scene
         && flow.State is GameState.Overworld or GameState.Dialogue
-        && !flow.Dialogue.IsQuestion && !choice.IsOpen && pendingAnswers == null
+        && !flow.Dialogue.IsQuestion && !flow.Choice.IsOpen && pendingAnswers == null
         // (nor what a hurry couldn't end at once: a puzzle's pieces on the move, a Pokémon being let out of its ball)
         && !PuzzleMoving && !AwaitingStroll
         && SceneSkip.Allowed(Settings.SkipScenes, scene, flow.Story, Settings.ScenesSeen);
@@ -182,7 +182,7 @@ public partial class GameEngine
     private void WalkAFrame()
     {
         AdvanceScriptedWalks(SkipFrame);
-        along?.Update(SkipFrame, flow.Player.Stride);
+        flow.Along?.Update(SkipFrame, flow.Player.Stride);
     }
 
     /// <summary>Goes to a tile of a map at once, behind a skip's dark: what a script's warp does at the middle of its own fade.</summary>
@@ -203,7 +203,7 @@ public partial class GameEngine
         if (skipVeil.Level > 0f)
             Raylib.DrawRectangle(0, 0, VirtualWidth, VirtualHeight, new Color(0, 0, 0, (int)MathF.Round(skipVeil.Level * 255f)));
         // Beside a Safari Game's panel, whose corner the ring's is
-        if (skipHold.Showing && MaySkipNow) ModernUi.SkipRing(VirtualWidth, skipHold.Fill, safari.Active ? 32f + 300f + 24f : ModernUi.SkipRingMargin);
+        if (skipHold.Showing && MaySkipNow) ModernUi.SkipRing(VirtualWidth, skipHold.Fill, flow.Safari.Active ? 32f + 300f + 24f : ModernUi.SkipRingMargin);
     }
 
     /// <summary>A new game, a loaded one: no skip is under way and no hold is counted.</summary>

@@ -94,7 +94,6 @@ public partial class GameEngine
     /// <summary>The game's states without the renderers (plan 16 · T11): the state, a transition, the menus' return states and the evolutions waiting.</summary>
     private readonly GameFlow flow = new();
 
-
     /// <summary>The area of the overworld the player was last in; null on a small map, which is one place.</summary>
     private MapArea? currentArea;
     private readonly RenderContext renderContext = new(VirtualWidth, VirtualHeight);
@@ -122,26 +121,14 @@ public partial class GameEngine
     // Set on arriving somewhere without walking (through a door, from a save, after a battle): trainers look once
     private bool trainersLookOnArrival = true;
 
-
-    // The cells of the region's map the player last passed through, which the Town Map marks (plan 01 · M12)
-    private readonly MapTrail mapTrail = new();
-
     // Where the map of the region goes back to when it closes: the bag it was taken out of, or the field
     private bool townMapFromBag;
 
-    // Where Dig and an Escape Rope lead out of the caves: outside the way the player went into them (the
-    // original's exit location), saved with the game
-    private MapSpot? exitSpot;
     private (int, string?, bool) radarFollowed;
 
-    // The key item kept on the item button (saved), a rod's cast under way, and whether the run button was down
-    // last frame (on the Bicycle a press changes gear)
-    private string? registeredItem;
+    // A rod's cast under way, and whether the run button was down last frame (on the Bicycle a press changes gear)
     private FishingAttempt? fishing;
     private bool runWasDown;
-
-    /// <summary>The clothes the player owns and wears (plan 11 · C9).</summary>
-    private readonly Wardrobe wardrobe = new();
 
     // Steps since friendship last grew from walking, and the player's turns on the spot (one Pokémon evolves on a spin)
     private int friendshipSteps;
@@ -151,13 +138,6 @@ public partial class GameEngine
     // The opening and title menu, the slots' saves it offers to continue from, and where the options screen returns to
     private readonly TitleScene titleScene = new();
     private IReadOnlyList<SaveSlot> titleSlots = Array.Empty<SaveSlot>();
-
-    /// <summary>
-    /// The slot this game is saved in (plan 12 · Q2): the one it was continued from, or the empty one a new game
-    /// took. Every save the game writes goes there (<see cref="WriteSave"/>): the save screen's, SAVE AND QUIT's, the
-    /// close button's, a script's.
-    /// </summary>
-    private int saveSlot = 1;
 
     // The slot the title's NEW GAME chose, until the game it is for begins
     private int? newGameSlot;
@@ -169,20 +149,6 @@ public partial class GameEngine
     /// <summary>Player options (graphics, window, time of day, sound), kept in settings.json.</summary>
     public GameSettings Settings { get; }
 
-    // Player Save State
-    private float playTime = 0f;
-    private int trainerId;
-
-    /// <summary>The Trainer Card's score (plan 06 · R12, <see cref="TrainerScore"/>), and the badges it has counted.</summary>
-    private int trainerScore, scoredBadges;
-
-    /// <summary>The teams entered into the Hall of Fame (plan 06 · R12).</summary>
-    private HallOfFame hallOfFame = new();
-    private readonly HallOfFameScreen hallOfFameScreen = new();
-
-    /// <summary>The Journal's pages (plan 06 · R12) and the screen that shows them.</summary>
-    private Journal journal = new();
-    private readonly JournalScreen journalScreen = new();
     private float rematchSpin;
 
     // The people who move about of their own accord (plan 02 · S6), and their chance: drawn from Dice the first time
@@ -193,25 +159,10 @@ public partial class GameEngine
     /// <summary>Keeps everyone standing where they are: the harness, whose shots count on people being where they first stood.</summary>
     public bool PeopleStayPut { get; set; }
 
-    // Whoever walks behind the player (Overworld.Follower), one at a time: someone of the story who travels along and
-    // battles beside the player (plan 02 · S6: Cheryl through Eterna Forest), or a Pokémon of the team out of its ball,
-    // which only walks (plan 06 · R16c: Amity Square). `partner` is the first kind alone, which is what everything
-    // that changes for a partner asks. The tile the player was last seen heading for tells when they set off from another
-    private Follower? along;
-    private Follower? partner => along is { TrainerId: not null } ? along : null;
+    // The one of GameFlow.Along who battles beside the player, which is what everything that changes for a partner
+    // asks. The tile the player was last seen heading for tells when they set off from another
+    private Follower? partner => flow.Along is { TrainerId: not null } ? flow.Along : null;
     private (int X, int Y) partnerHeading;
-    private DateTime? adventureStarted;
-
-
-    // The Pokétch (plan 02 · S2), and whether it is out on the screen
-    private readonly Poketch poketch = new();
-
-    /// <summary>The Great Marsh's Safari Game, while one is on (plan 01 · M7; saved).</summary>
-    private readonly SafariGame safari = new();
-
-    /// <summary>The Repel's steps and the flute played here (plan 06 · R11); the Repel's steps are saved.</summary>
-    private readonly EncounterAids encounterAids = new();
-    private readonly PoketchView poketchView = new();
 
     private static string playerName => PlayerIdentity.Name;
 
@@ -230,7 +181,6 @@ public partial class GameEngine
 
     /// <summary>Set when the player chose to leave the game from a menu; the main loop closes the window.</summary>
     public bool QuitRequested { get; private set; }
-
 
     public GameEngine(GameSettings? settings = null)
     {
@@ -320,7 +270,7 @@ public partial class GameEngine
     {
         // The new game is saved in the slot the title chose for it, the first empty one; a game begun without the
         // title (a test, a tool) takes the first empty one too, and with none keeps the slot it had (plan 12 · Q2)
-        saveSlot = newGameSlot ?? SaveSlots.FirstEmpty(SavePaths.Current) ?? saveSlot;
+        flow.SaveSlot = newGameSlot ?? SaveSlots.FirstEmpty(SavePaths.Current) ?? flow.SaveSlot;
         newGameSlot = null;
         // Before any Pokémon is made: the moves they learn take their values from the rules
         Ruleset.Use(rules);
@@ -328,28 +278,28 @@ public partial class GameEngine
         flow.Bag.Clear();
         flow.Pokedex.Clear();
         flow.Boxes = new PcBoxes();
-        poketch.Clear();
-        poketchView.Hide();
-        safari.End();
-        encounterAids.RepelSteps = 0;
-        encounterAids.Flute = Flute.None;
+        flow.Poketch.Clear();
+        flow.PoketchView.Hide();
+        flow.Safari.End();
+        flow.EncounterAids.RepelSteps = 0;
+        flow.EncounterAids.Flute = Flute.None;
         // What the game remembers of its wild Pokémon starts over: the day's numbers drawn, no roamer loose (plan 06 · R13)
-        encounters = SpecialEncounters.NewGame(fieldRandom);
-        berries = BerryPatches.NewGame();
-        poffinCase.Clear();
-        fashionCase.Load(null);
-        sealCase.Load(null);
+        flow.Encounters = SpecialEncounters.NewGame(fieldRandom);
+        flow.Berries = BerryPatches.NewGame();
+        flow.PoffinCase.Clear();
+        flow.FashionCase.Load(null);
+        flow.SealCase.Load(null);
         LoadUnderground(null);
-        pastimes.Clear();
+        flow.Pastimes.Clear();
         LoadFrontier(null);
-        contestRecords.Load(null);
+        flow.ContestRecords.Load(null);
         contestOutcome = null;
         radar.Clear();
-        registeredItem = null;
-        exitSpot = null;
-        mapTrail.Clear();
+        flow.RegisteredItem = null;
+        flow.ExitSpot = null;
+        flow.MapTrail.Clear();
         lastDay = null;
-        along = null;
+        flow.Along = null;
         MapDatabase.RestoreDefeatedTrainers(Array.Empty<string>());
         // The story starts over: the flags and variables every game begins with, and everyone where those put them
         flow.Runner.Abort();
@@ -364,23 +314,23 @@ public partial class GameEngine
         flow.Evolutions.Clear();
         friendshipSteps = 0;
         flow.Money = 3000;
-        playTime = 0f;
+        flow.PlayTime = 0f;
         // As in the games, the Trainer Card's number is drawn when the adventure begins
         PlayerIdentity.Set(name, look);
         PlayerIdentity.SetRival(rival);
-        wardrobe.Clear();
-        PlayerIdentity.SetOutfit(wardrobe.Worn);
-        trainerId = fieldRandom.Next(0, 65536);
+        flow.Wardrobe.Clear();
+        PlayerIdentity.SetOutfit(flow.Wardrobe.Worn);
+        flow.TrainerId = fieldRandom.Next(0, 65536);
         // Whose Pokémon are shiny for whom: the card's number and its hidden half (plan 06 · R15)
         KeepTrainerNumber();
-        dayCare.Clear();
-        adventureStarted = GameClock.Today;
-        trainerScore = scoredBadges = 0;
-        hallOfFame = new HallOfFame();
-        journal = new Journal();
+        flow.DayCare.Clear();
+        flow.AdventureStarted = GameClock.Today;
+        flow.TrainerScore = flow.ScoredBadges = 0;
+        flow.HallOfFame = new HallOfFame();
+        flow.Journal = new Journal();
 
         InitializeNewGame();
-        journal.TakenUp(GameClock.Today, PlaceName());
+        flow.Journal.TakenUp(GameClock.Today, PlaceName());
         EnterGame();
     }
 
@@ -391,7 +341,7 @@ public partial class GameEngine
     /// </summary>
     public void ContinueGame(int? slot = null)
     {
-        int from = slot ?? saveSlot;
+        int from = slot ?? flow.SaveSlot;
         var save = slot != null ? titleSlots.FirstOrDefault(s => s.Number == from)?.Save : SaveSlots.Read(SavePaths.Current, from).Save;
         if (save == null)
         {
@@ -399,16 +349,16 @@ public partial class GameEngine
             return;
         }
 
-        saveSlot = from;
+        flow.SaveSlot = from;
         ApplySaveData(save);
         // The Journal opens by itself on a game left two days or more (Journal_CheckOpenOnContinue), and today's page is begun
-        bool showJournal = flow.Bag.GetQuantity(ItemDatabase.Get("Journal")!) > 0 && journal.OpensOnContinue(GameClock.Today);
-        journal.TakenUp(GameClock.Today, PlaceName());
+        bool showJournal = flow.Bag.GetQuantity(ItemDatabase.Get("Journal")!) > 0 && flow.Journal.OpensOnContinue(GameClock.Today);
+        flow.Journal.TakenUp(GameClock.Today, PlaceName());
         EnterGame();
         if (showJournal)
         {
             flow.After = GameState.Journal;
-            journalScreen.Open();
+            flow.JournalScreen.Open();
         }
     }
 
@@ -416,7 +366,7 @@ public partial class GameEngine
     private void EnterGame()
     {
         // The log is told where a game begins or is taken up, so a report's last lines say what was being played
-        Log.Info($"A game is entered at {PlaceKey()} {flow.Player.GridX},{flow.Player.GridY}, by the {Ruleset.Current.Preset} rules; it is saved in slot {saveSlot}.");
+        Log.Info($"A game is entered at {PlaceKey()} {flow.Player.GridX},{flow.Player.GridY}, by the {Ruleset.Current.Preset} rules; it is saved in slot {flow.SaveSlot}.");
         gameStarted = true;
         trainersLookOnArrival = true;
         arrived = true;
@@ -489,32 +439,32 @@ public partial class GameEngine
         // A save made out on the water wakes up there, still on its Pokémon's back; one made on a bridge, on its deck
         flow.Player.SetMode(save.Travel);
         if (save.PlayerHeight is { } standing) flow.Player.SetHeight(standing);
-        exitSpot = save.Exit;
-        mapTrail.Restore(save.MapTrail);
+        flow.ExitSpot = save.Exit;
+        flow.MapTrail.Restore(save.MapTrail);
         lastDay = save.LastDay;
-        registeredItem = save.RegisteredItem;
-        poketch.Load(save.Poketch);
-        poketchView.Hide();
-        if (save.Safari is { } game) safari.Resume(game.Balls, game.Steps, game.Caught);
-        else safari.End();
-        encounterAids.RepelSteps = Math.Max(0, save.RepelSteps);
-        encounterAids.Flute = Flute.None;
+        flow.RegisteredItem = save.RegisteredItem;
+        flow.Poketch.Load(save.Poketch);
+        flow.PoketchView.Hide();
+        if (save.Safari is { } game) flow.Safari.Resume(game.Balls, game.Steps, game.Caught);
+        else flow.Safari.End();
+        flow.EncounterAids.RepelSteps = Math.Max(0, save.RepelSteps);
+        flow.EncounterAids.Flute = Flute.None;
         // What the game remembered of its wild Pokémon (a save from before plan 06 · R13 is given a new start); a
         // game come back to sends every roamer anywhere (the original's continue task)
-        encounters = save.Encounters ?? SpecialEncounters.NewGame(fieldRandom);
-        berries = save.Berries ?? BerryPatches.NewGame();
-        poffinCase.Restore(save.Poffins);
+        flow.Encounters = save.Encounters ?? SpecialEncounters.NewGame(fieldRandom);
+        flow.Berries = save.Berries ?? BerryPatches.NewGame();
+        flow.PoffinCase.Restore(save.Poffins);
         // A save from before the Fashion Case that has been through the Contest Hall's first scene is owed its Glitter Powder (plan 06 · R17a)
-        fashionCase.Load(save.FashionCase, save.Backdrops);
-        if (save.FashionCase == null && save.StoryFlags.Contains(ContestHallVisitedFlag)) fashionCase.Add("Glitter Powder");
-        sealCase.Load(save.SealCase);
+        flow.FashionCase.Load(save.FashionCase, save.Backdrops);
+        if (save.FashionCase == null && save.StoryFlags.Contains(ContestHallVisitedFlag)) flow.FashionCase.Add("Glitter Powder");
+        flow.SealCase.Load(save.SealCase);
         LoadUnderground(save.Underground);
-        pastimes.Load(save.Pastimes);
+        flow.Pastimes.Load(save.Pastimes);
         LoadFrontier(save.Frontier);
-        contestRecords.Load(save.ContestRecords);
+        flow.ContestRecords.Load(save.ContestRecords);
         contestOutcome = null;
         radar.Clear();
-        Roamers.Scatter(encounters, fieldRandom);
+        Roamers.Scatter(flow.Encounters, fieldRandom);
 
         flow.Party.Clear();
         foreach (var pData in save.Party)
@@ -568,30 +518,30 @@ public partial class GameEngine
         RefreshPresence(startOver: true);
 
         flow.Money = save.Money;
-        playTime = save.PlayTimeSeconds;
+        flow.PlayTime = save.PlayTimeSeconds;
         PlayerIdentity.Set(save.PlayerName, save.Look);
         PlayerIdentity.SetRival(save.RivalName);
         // What the player wears: a save from before the wardrobe is the look's own clothes
-        wardrobe.Restore(save.Outfit, save.Wardrobe);
-        PlayerIdentity.SetOutfit(wardrobe.Worn);
+        flow.Wardrobe.Restore(save.Outfit, save.Wardrobe);
+        PlayerIdentity.SetOutfit(flow.Wardrobe.Worn);
         CharacterModels.Preload(new[] { PlayerIdentity.Character });
         // A save from before the card had a number gets one now, and keeps it
-        trainerId = save.TrainerId != 0 ? save.TrainerId : fieldRandom.Next(1, 65536);
+        flow.TrainerId = save.TrainerId != 0 ? save.TrainerId : fieldRandom.Next(1, 65536);
         KeepTrainerNumber();
         // The Day Care as it was left (plan 06 · R15): an older save's is empty
-        DayCareSave.Restore(save.DayCare, dayCare);
-        adventureStarted = save.Started;
-        trainerScore = save.TrainerScore;
-        hallOfFame = new HallOfFame();
-        hallOfFame.Restore(save.HallOfFameTotal, save.HallOfFameDebut, save.HallOfFame.Select(e => e.ToEntry()));
-        journal = new Journal();
-        journal.Restore(save.Journal);
+        DayCareSave.Restore(save.DayCare, flow.DayCare);
+        flow.AdventureStarted = save.Started;
+        flow.TrainerScore = save.TrainerScore;
+        flow.HallOfFame = new HallOfFame();
+        flow.HallOfFame.Restore(save.HallOfFameTotal, save.HallOfFameDebut, save.HallOfFame.Select(e => e.ToEntry()));
+        flow.Journal = new Journal();
+        flow.Journal.Restore(save.Journal);
 
         // Whoever was travelling with the player goes on doing so, behind them
-        along = null;
+        flow.Along = null;
         if (save.Partner is { } partnerId && save.PartnerPerson is { } person && flow.Map.FindPerson(person) is { } beside)
         {
-            along = new Follower(beside, partnerId);
+            flow.Along = new Follower(beside, partnerId);
             KeepPartnerAlong();
         }
         // And so does the Pokémon out of its ball in Amity Square, which the story's own variables remember (plan 06 · R16c)
@@ -611,15 +561,15 @@ public partial class GameEngine
             PlayerName = playerName,
             Look = PlayerIdentity.Look,
             RivalName = PlayerIdentity.RivalName,
-            Outfit = wardrobe.Worn.IsOwn ? null : wardrobe.Worn,
-            Wardrobe = wardrobe.Owned.Count > 0 ? wardrobe.Owned.ToList() : null,
-            TrainerId = trainerId,
-            Started = adventureStarted,
-            TrainerScore = trainerScore,
-            HallOfFameTotal = hallOfFame.Total,
-            HallOfFameDebut = hallOfFame.Debut,
-            HallOfFame = hallOfFame.Entries.Select(SavedHallOfFameEntry.From).ToList(),
-            Journal = journal.All.ToList(),
+            Outfit = flow.Wardrobe.Worn.IsOwn ? null : flow.Wardrobe.Worn,
+            Wardrobe = flow.Wardrobe.Owned.Count > 0 ? flow.Wardrobe.Owned.ToList() : null,
+            TrainerId = flow.TrainerId,
+            Started = flow.AdventureStarted,
+            TrainerScore = flow.TrainerScore,
+            HallOfFameTotal = flow.HallOfFame.Total,
+            HallOfFameDebut = flow.HallOfFame.Debut,
+            HallOfFame = flow.HallOfFame.Entries.Select(SavedHallOfFameEntry.From).ToList(),
+            Journal = flow.Journal.All.ToList(),
             Rules = Ruleset.Current.Preset,
             CurrentMapName = flow.Map.Name,
             PlayerGridX = flow.Player.GridX,
@@ -627,26 +577,26 @@ public partial class GameEngine
             PlayerFacing = flow.Player.Facing,
             Travel = flow.Player.Mode,
             PlayerHeight = flow.Player.HeightOn(flow.Map),
-            Exit = exitSpot,
-            MapTrail = mapTrail.IsEmpty ? null : mapTrail.ToSave(),
+            Exit = flow.ExitSpot,
+            MapTrail = flow.MapTrail.IsEmpty ? null : flow.MapTrail.ToSave(),
             LastDay = lastDay,
-            RegisteredItem = registeredItem,
+            RegisteredItem = flow.RegisteredItem,
             Partner = partner?.TrainerId,
             PartnerPerson = partner?.Who.Key,
-            RepelSteps = encounterAids.RepelSteps,
-            Poketch = poketch.Save(),
-            Safari = safari.Active ? new SafariSave(safari.Balls, safari.Steps, safari.Caught) : null,
-            Encounters = encounters,
-            Berries = berries,
-            Poffins = poffinCase.Count > 0 ? poffinCase.All.ToList() : null,
-            FashionCase = fashionCase.ToSave(),
-            Backdrops = fashionCase.Backdrops.Count > 0 ? fashionCase.BackdropsToSave() : null,
-            SealCase = sealCase.Total > 0 ? sealCase.ToSave() : null,
-            Underground = underground,
-            Pastimes = pastimes.ToSave(),
-            Frontier = frontier,
-            ContestRecords = contestRecords.IsEmpty ? null : contestRecords,
-            DayCare = DayCareSave.From(dayCare),
+            RepelSteps = flow.EncounterAids.RepelSteps,
+            Poketch = flow.Poketch.Save(),
+            Safari = flow.Safari.Active ? new SafariSave(flow.Safari.Balls, flow.Safari.Steps, flow.Safari.Caught) : null,
+            Encounters = flow.Encounters,
+            Berries = flow.Berries,
+            Poffins = flow.PoffinCase.Count > 0 ? flow.PoffinCase.All.ToList() : null,
+            FashionCase = flow.FashionCase.ToSave(),
+            Backdrops = flow.FashionCase.Backdrops.Count > 0 ? flow.FashionCase.BackdropsToSave() : null,
+            SealCase = flow.SealCase.Total > 0 ? flow.SealCase.ToSave() : null,
+            Underground = flow.Underground,
+            Pastimes = flow.Pastimes.ToSave(),
+            Frontier = flow.Frontier,
+            ContestRecords = flow.ContestRecords.IsEmpty ? null : flow.ContestRecords,
+            DayCare = DayCareSave.From(flow.DayCare),
             WorldVersion = SaveData.CurrentWorld,
             Party = flow.Party.Members.Select(SavedPokemonData.FromPokemon).ToList(),
             Boxes = SavedBoxes.From(flow.Boxes),
@@ -666,7 +616,7 @@ public partial class GameEngine
             RivalStarter = told.RivalStarter,
             Money = flow.Money,
             Badges = told.Badges,
-            PlayTimeSeconds = playTime
+            PlayTimeSeconds = flow.PlayTime
         };
     }
 
@@ -676,8 +626,8 @@ public partial class GameEngine
     /// </summary>
     private bool WriteSave()
     {
-        bool written = SaveSlots.Write(SavePaths.Current, saveSlot, BuildSave());
-        Log.Info(written ? $"The game was saved in slot {saveSlot} at {PlaceKey()} {flow.Player.GridX},{flow.Player.GridY}." : $"The game couldn't be saved in slot {saveSlot}.");
+        bool written = SaveSlots.Write(SavePaths.Current, flow.SaveSlot, BuildSave());
+        Log.Info(written ? $"The game was saved in slot {flow.SaveSlot} at {PlaceKey()} {flow.Player.GridX},{flow.Player.GridY}." : $"The game couldn't be saved in slot {flow.SaveSlot}.");
         return written;
     }
 
@@ -778,13 +728,13 @@ public partial class GameEngine
         }
         if (held) return;
 
-        if (gameStarted && flow.State != GameState.WindowClosing) playTime += dt;
+        if (gameStarted && flow.State != GameState.WindowClosing) flow.PlayTime += dt;
 
         flow.Toast.Update(dt);
         flow.StartMenu.Animate(dt);
         closePrompt.Animate(dt);
         scriptFade.Update(dt);
-        choice.Update(dt);
+        flow.Choice.Update(dt);
 
         // The location sign waits while a fade or another screen covers the field
         if (flow.State is GameState.Overworld or GameState.Dialogue) flow.LocationSign.Update(dt);
@@ -926,7 +876,7 @@ public partial class GameEngine
                         };
                         scriptTurns = flow.Battle.Core.Turn;
                         // The Safari Game counts what it caught (the Matchup Checker is given for five in one game)
-                        if (safari.Active && flow.Battle.Kind == BattleKind.Safari && flow.Battle.Result == BattleResult.EnemyCaught) safari.Caught++;
+                        if (flow.Safari.Active && flow.Battle.Kind == BattleKind.Safari && flow.Battle.Result == BattleResult.EnemyCaught) flow.Safari.Caught++;
                         EndBattle();
                     }
                 }
@@ -954,7 +904,7 @@ public partial class GameEngine
                 break;
             case GameState.BagMenu:
                 flow.BagScreen.Update(flow.Bag, flow.Party, ShowNotification, EvolutionContextNow(), dt);
-                registeredItem = flow.BagScreen.Registered;
+                flow.RegisteredItem = flow.BagScreen.Registered;
                 if (flow.BagScreen.TakeEvolution() is { } fromBag) PlayEvolutions(new[] { fromBag }, GameState.BagMenu);
                 else if (!flow.BagScreen.IsActive && choosingBerryToCook && flow.BagScreen.TakePick(out var toCook)) BerryChosenToCook(toCook);
                 else if (!flow.BagScreen.IsActive && flow.BagScreen.TakePick(out var picked))
@@ -985,8 +935,8 @@ public partial class GameEngine
                 if (!flow.EvolutionScreen.IsActive) FinishEvolution();
                 break;
             case GameState.Hatch:
-                hatchScreen.Update(dt);
-                if (!hatchScreen.IsActive) FinishHatch();
+                flow.HatchScreen.Update(dt);
+                if (!flow.HatchScreen.IsActive) FinishHatch();
                 break;
             case GameState.PokedexMenu:
                 flow.PokedexScreen.Update(dt);
@@ -1025,7 +975,7 @@ public partial class GameEngine
                 if (!flow.ShopScreen.IsActive)
                 {
                     // What the visit came to is a line of the Journal (shop_menu.c)
-                    if (ShopLine(flow.ShopScreen.Purchases, flow.ShopScreen.UnitsSold) is { } line) journal.Tell(new JournalEvent(line));
+                    if (ShopLine(flow.ShopScreen.Purchases, flow.ShopScreen.UnitsSold) is { } line) flow.Journal.Tell(new JournalEvent(line));
                     flow.State = GameState.Overworld;
                 }
                 break;
@@ -1034,7 +984,7 @@ public partial class GameEngine
                 if (!flow.WardrobeScreen.IsActive)
                 {
                     // The field and the battle draw the player as the outfit names them; what was only tried on is let go
-                    PlayerIdentity.SetOutfit(wardrobe.Worn);
+                    PlayerIdentity.SetOutfit(flow.Wardrobe.Worn);
                     foreach (string tried in flow.WardrobeScreen.TakeTried()) CharacterModels.Forget(tried);
                     flow.State = GameState.Overworld;
                 }
@@ -1091,18 +1041,18 @@ public partial class GameEngine
                 UpdateArcadeBoard(dt);
                 break;
             case GameState.Journal:
-                journalScreen.Update(journal, dt);
-                if (!journalScreen.IsActive) flow.State = GameState.Overworld;
+                flow.JournalScreen.Update(flow.Journal, dt);
+                if (!flow.JournalScreen.IsActive) flow.State = GameState.Overworld;
                 break;
             case GameState.HallOfFame:
-                hallOfFameScreen.Update(hallOfFame, dt);
-                if (!hallOfFameScreen.IsActive) flow.State = GameState.Overworld;
+                flow.HallOfFameScreen.Update(flow.HallOfFame, dt);
+                if (!flow.HallOfFameScreen.IsActive) flow.State = GameState.Overworld;
                 break;
             case GameState.PCStorage:
                 flow.PCScreen.Update(flow.Party, flow.Boxes, ShowNotification, dt);
                 if (!flow.PCScreen.IsActive)
                 {
-                    if (flow.PCScreen.Changed) journal.Tell(new JournalEvent(JournalEventKind.UsedPcBox));
+                    if (flow.PCScreen.Changed) flow.Journal.Tell(new JournalEvent(JournalEventKind.UsedPcBox));
                     flow.State = GameState.Overworld;
                 }
                 break;
@@ -1168,14 +1118,14 @@ public partial class GameEngine
         KeepTheClock();
         KeepBerriesInView();
         SlideBoulders(fieldDt);
-        poketchView.Update(dt);
+        flow.PoketchView.Update(dt);
         // The app on the Pokétch runs on whether it is out or not, as the original's lower screen does
-        if (poketch.Enabled) poketch.State?.Update(dt, PoketchNow());
+        if (flow.Poketch.Enabled) flow.Poketch.State?.Update(dt, PoketchNow());
         // The radar's chains count toward the Trainer Counter's records whichever app is showing
-        if (poketch.Has(PoketchApp.TrainerCounter) && (radar.Count, radar.Species, radar.Active) != radarFollowed)
+        if (flow.Poketch.Has(PoketchApp.TrainerCounter) && (radar.Count, radar.Species, radar.Active) != radarFollowed)
         {
             radarFollowed = (radar.Count, radar.Species, radar.Active);
-            TrainerCounterApp.Follow(poketch, radar);
+            TrainerCounterApp.Follow(flow.Poketch, radar);
         }
         // Who is on the map follows the story's flags as soon as they change, whatever changed them (a script, a
         // first arrival, a field move, a tool): only a script's end and an arrival looked before, so a flag set
@@ -1183,7 +1133,7 @@ public partial class GameEngine
         RefreshPresence();
 
         // Whoever travels with the player keeps up, whatever else has the field
-        along?.Update(fieldDt, flow.Player.Stride);
+        flow.Along?.Update(fieldDt, flow.Player.Stride);
         KeepTheStroll(dt);
 
         // A warp panel has the player: they turn on the spot until the picture closes, and again as it opens
@@ -1271,7 +1221,7 @@ public partial class GameEngine
         }
 
         // The Pokétch in hand: the arrows and buttons are its, and the player stands still
-        if (poketchView.InHand)
+        if (flow.PoketchView.InHand)
         {
             UpdatePoketchInHand(dt);
             return;
@@ -1289,14 +1239,14 @@ public partial class GameEngine
         }
 
         // The Pokétch comes out or goes away; its side button changes the app
-        if (InputManager.IsActionPressed(GameAction.Poketch)) poketchView.Toggle(poketch);
-        if (InputManager.IsActionPressed(GameAction.PoketchApp)) poketchView.NextApp(poketch);
-        if (InputManager.IsActionPressed(GameAction.PoketchTouch) && !flow.Player.IsMoving && poketchView.TakeInHand(poketch, PoketchNow())) return;
+        if (InputManager.IsActionPressed(GameAction.Poketch)) flow.PoketchView.Toggle(flow.Poketch);
+        if (InputManager.IsActionPressed(GameAction.PoketchApp)) flow.PoketchView.NextApp(flow.Poketch);
+        if (InputManager.IsActionPressed(GameAction.PoketchTouch) && !flow.Player.IsMoving && flow.PoketchView.TakeInHand(flow.Poketch, PoketchNow())) return;
 
         // The key item kept on the item button (the original's Y button)
         if (InputManager.IsActionPressed(GameAction.Item) && !flow.Player.IsMoving)
         {
-            if (registeredItem != null && ItemDatabase.Get(registeredItem) is { } kept && flow.Bag.GetQuantity(kept) > 0) UseFieldItem(kept);
+            if (flow.RegisteredItem != null && ItemDatabase.Get(flow.RegisteredItem) is { } kept && flow.Bag.GetQuantity(kept) > 0) UseFieldItem(kept);
             else ShowNotification("A key item can be kept on this button: register one in the bag.");
             return;
         }
@@ -1319,7 +1269,7 @@ public partial class GameEngine
 
         // Overworld Player Movement
         flow.Player.Moves = FieldMovement.MovesOf(flow.Party);
-        flow.Player.Lead = WildLead.Of(flow.Party, encounterAids);
+        flow.Player.Lead = WildLead.Of(flow.Party, flow.EncounterAids);
         flow.Player.Moment = momentOf ??= EncounterMomentNow;
         if (Steering is { } steer) flow.Player.Advance(dt, flow.Map, steer.Want, steer.Run, StartWildBattle, HandleWarp, OnStep);
         else flow.Player.Update(dt, flow.Map, StartWildBattle, HandleWarp, OnStep);
@@ -1396,7 +1346,7 @@ public partial class GameEngine
     {
         var c = poketchContext ??= new PoketchContext
         {
-            Poketch = poketch,
+            Poketch = flow.Poketch,
             Sound = name => AudioManager.PlaySound(name),
             Cry = p => AudioManager.PlayCry(p)
         };
@@ -1405,17 +1355,17 @@ public partial class GameEngine
         c.Map = flow.Map;
         c.X = flow.Player?.GridX ?? 0;
         c.Y = flow.Player?.GridY ?? 0;
-        c.Outside = exitSpot is { } outside ? (outside.X, outside.Y) : null;
+        c.Outside = flow.ExitSpot is { } outside ? (outside.X, outside.Y) : null;
         c.Story = flow.Story;
         c.Pokedex = flow.Pokedex;
-        c.Encounters = encounters;
+        c.Encounters = flow.Encounters;
         c.Radar = radar;
-        c.Berries = berries;
+        c.Berries = flow.Berries;
         c.Rng = fieldRandom;
         // The Day Care's two, at the levels their steps have brought them to, and whether an Egg waits (plan 06 · R15)
-        c.DayCare = dayCare.Left;
-        c.DayCareLevels = Enumerable.Range(0, DayCare.Places).Where(i => dayCare[i] != null).Select(dayCare.LevelNow).ToList();
-        c.DayCareEgg = dayCare.HasEgg;
+        c.DayCare = flow.DayCare.Left;
+        c.DayCareLevels = Enumerable.Range(0, DayCare.Places).Where(i => flow.DayCare[i] != null).Select(flow.DayCare.LevelNow).ToList();
+        c.DayCareEgg = flow.DayCare.HasEgg;
         return c;
     }
 
@@ -1425,18 +1375,18 @@ public partial class GameEngine
         var context = PoketchNow();
         int across = poketchAcross.Advance(dt, InputManager.Axis(GameAction.Left, GameAction.Right), InputManager.Axis(GameAction.Left, GameAction.Right, held: true));
         int down = poketchDown.Advance(dt, InputManager.Axis(GameAction.Up, GameAction.Down), InputManager.Axis(GameAction.Up, GameAction.Down, held: true));
-        for (int i = 0; i < Math.Abs(across); i++) poketchView.MoveCursor(poketch, context, Math.Sign(across), 0);
-        for (int i = 0; i < Math.Abs(down); i++) poketchView.MoveCursor(poketch, context, 0, Math.Sign(down));
-        if (InputManager.IsActionPressed(GameAction.Confirm)) poketchView.Touch(poketch, context);
-        else if (InputManager.IsActionPressed(GameAction.Cancel) || InputManager.IsActionPressed(GameAction.PoketchTouch)) poketchView.LetGo();
+        for (int i = 0; i < Math.Abs(across); i++) flow.PoketchView.MoveCursor(flow.Poketch, context, Math.Sign(across), 0);
+        for (int i = 0; i < Math.Abs(down); i++) flow.PoketchView.MoveCursor(flow.Poketch, context, 0, Math.Sign(down));
+        if (InputManager.IsActionPressed(GameAction.Confirm)) flow.PoketchView.Touch(flow.Poketch, context);
+        else if (InputManager.IsActionPressed(GameAction.Cancel) || InputManager.IsActionPressed(GameAction.PoketchTouch)) flow.PoketchView.LetGo();
     }
 
     /// <summary>The player has set off from a tile: whoever walks behind them goes there next.</summary>
     private void TrailBehind()
     {
-        if (along == null || flow.Map.Follower != along.Who) return;
+        if (flow.Along == null || flow.Map.Follower != flow.Along.Who) return;
         var head = flow.Player.Heading;
-        if (head != (flow.Player.GridX, flow.Player.GridY) && head != partnerHeading) along.PlayerLeft(flow.Player.GridX, flow.Player.GridY, head);
+        if (head != (flow.Player.GridX, flow.Player.GridY) && head != partnerHeading) flow.Along.PlayerLeft(flow.Player.GridX, flow.Player.GridY, head);
         partnerHeading = head;
     }
 
@@ -1446,7 +1396,7 @@ public partial class GameEngine
         // A step below ground: a base's way in or out, a trap (plan 06 · R16a)
         if (IsUnderground && UndergroundStep()) return true;
         // The steps the game has counted (RECORD_STEPS), and a step of Pal Park's Catching Show (plan 06 · R16b)
-        pastimes.Steps++;
+        flow.Pastimes.Steps++;
         // And the steps a Pokémon out of its ball has walked since it last turned something up (plan 06 · R16c;
         // SystemVars_IncrementAmitySquareStepCount, which the original counts everywhere and reads only in the square)
         if (flow.Story.Var(AmitySquare.ActiveVar) == 1) AmitySquare.CountStep(flow.Story);
@@ -1457,12 +1407,12 @@ public partial class GameEngine
             foreach (var p in flow.Party.Members) FriendshipRules.Apply(p, FriendshipEvent.WalkCycle, fieldRandom);
         }
         if (flow.Party.Count > 0) Evolution.CountStep(flow.Party.Members[0]);
-        poketch.Step();
+        flow.Poketch.Step();
         // The cell of the region's map stood in is written down as it changes (OverworldMapHistory_Push, plan 01 · M12)
         if (RegionMap.ForMap(flow.Map.Name) is { } region && region.Map == flow.Map.Name)
         {
             var (cellX, cellY) = RegionMap.CellOf(flow.Player.GridX, flow.Player.GridY);
-            mapTrail.Push(cellX, cellY, flow.Player.Facing);
+            flow.MapTrail.Push(cellX, cellY, flow.Player.Facing);
         }
         // The Vs. Seeker charges in the bag, and the rematches it found end after a hundred steps (plan 06 · R12)
         if (VsSeeker.Step(flow.Story, flow.Bag.GetQuantity(ItemDatabase.Get(VsSeeker.Item)!) > 0)) StopRematches(Direction.Down);
@@ -1479,11 +1429,11 @@ public partial class GameEngine
         // Poison bites every fourth step, the Poké Radar charges and its patches out of sight go still (plan 06 · R13)
         if (EncountersStep()) return true;
         // The Safari Game counts its steps, and its last one ends it (plan 01 · M7)
-        if (safari.Step() && StartScript(FieldScripts.SafariTimeUp)) return true;
+        if (flow.Safari.Step() && StartScript(FieldScripts.SafariTimeUp)) return true;
         // The Day Care's couple walk the step too, and an Egg of the team may hatch (Field_UpdateDaycare, plan 06 · R15)
         if (DayCareStep()) return true;
         // A Repel's last step says it has worn off (Repel_UpdateSteps, plan 06 · R11)
-        if (encounterAids.Step() && StartScript(FieldScripts.RepelWoreOff)) return true;
+        if (flow.EncounterAids.Step() && StartScript(FieldScripts.RepelWoreOff)) return true;
 
         // The story comes first: the script of the place walked into, then of the tiles stepped on; only then do trainers
         // look. A step into a place onto a trigger does both, the place's first (as the original runs a map's own
@@ -1515,7 +1465,7 @@ public partial class GameEngine
         // Another place: what lasted only while the player stayed in the last one is forgotten, and the roamers move on
         // (FieldSystem_InitFlagsOnMapChange, not during a Safari Game; plan 06 · R13)
         if (another) ChangePlace();
-        if (another && !safari.Active) Roamers.PlayerWalkedInto(encounters, area.Key, fieldRandom);
+        if (another && !flow.Safari.Active) Roamers.PlayerWalkedInto(flow.Encounters, area.Key, fieldRandom);
         NoteArrival();
         PlayFieldMusic();
         if (!string.IsNullOrEmpty(area.DisplayName)) flow.LocationSign.Show(area.DisplayName);
@@ -1918,8 +1868,8 @@ public partial class GameEngine
                 break;
             case StartMenuChoice.Bag:
                 flow.State = GameState.BagMenu;
-                flow.BagScreen.Registered = registeredItem;
-                flow.BagScreen.Aids = encounterAids;
+                flow.BagScreen.Registered = flow.RegisteredItem;
+                flow.BagScreen.Aids = flow.EncounterAids;
                 flow.BagScreen.PlayerName = PlayerIdentity.Name;
                 flow.BagScreen.Open();
                 break;
@@ -1935,7 +1885,7 @@ public partial class GameEngine
             case StartMenuChoice.Save:
                 // The save as it will be, with the question under it
                 flow.State = GameState.SaveMenu;
-                flow.SaveScreen.Open(BuildSave(), saveSlot);
+                flow.SaveScreen.Open(BuildSave(), flow.SaveSlot);
                 break;
             case StartMenuChoice.SaveAndQuit:
                 SaveCurrentGame();
@@ -1972,17 +1922,17 @@ public partial class GameEngine
     /// <summary>What the Trainer Card shows now: who the player is, what they have, and its colour by what they have done.</summary>
     private TrainerCardInfo TrainerCardNow()
     {
-        bool famous = hallOfFame.Total > 0 || RegionDatabase.All.Any(r => flow.Story.Has(r.StoryCompleteFlag));
+        bool famous = flow.HallOfFame.Total > 0 || RegionDatabase.All.Any(r => flow.Story.Has(r.StoryCompleteFlag));
         int stars = TrainerCardRules.Level(famous, TrainerCardRules.NationalCaught(flow.Pokedex.CaughtSpecies), TowerBestStreak, IsContestMaster, 0);
-        return new TrainerCardInfo(playerName, trainerId, flow.Money, flow.Pokedex.SeenCount, flow.Pokedex.CaughtCount, playTime,
-            flow.Story.BadgeMask, adventureStarted)
+        return new TrainerCardInfo(playerName, flow.TrainerId, flow.Money, flow.Pokedex.SeenCount, flow.Pokedex.CaughtCount, flow.PlayTime,
+            flow.Story.BadgeMask, flow.AdventureStarted)
         {
-            Score = trainerScore,
+            Score = flow.TrainerScore,
             Stars = stars,
             Colour = TrainerCardRules.Colour(flow.Story.Has(StoryState.PokedexFlag), stars),
-            HallOfFameDebut = hallOfFame.Debut,
-            ContestsEntered = contestRecords.Entered,
-            ContestsWon = contestRecords.Won
+            HallOfFameDebut = flow.HallOfFame.Debut,
+            ContestsEntered = flow.ContestRecords.Entered,
+            ContestsWon = flow.ContestRecords.Won
         };
     }
 
@@ -1998,17 +1948,17 @@ public partial class GameEngine
         if (flow.Battle.Result == BattleResult.PlayerVictory && flow.Battle.IsTrainerBattle)
         {
             var foe = flow.Battle.Trainers[0];
-            if (foe.TrainerClass == "Leader") journal.Tell(new JournalEvent(JournalEventKind.BeatGymLeader, foe.Name));
-            else if (foe.TrainerClass == "Elite Four") journal.Tell(new JournalEvent(JournalEventKind.BeatEliteFourMember, foe.Name));
-            else if (foe.TrainerClass == "Champion") journal.Tell(new JournalEvent(JournalEventKind.BeatChampion, foe.Name));
-            else journal.BeatTrainer(PlayerIdentity.Fill(foe.FullTitle), place);
+            if (foe.TrainerClass == "Leader") flow.Journal.Tell(new JournalEvent(JournalEventKind.BeatGymLeader, foe.Name));
+            else if (foe.TrainerClass == "Elite Four") flow.Journal.Tell(new JournalEvent(JournalEventKind.BeatEliteFourMember, foe.Name));
+            else if (foe.TrainerClass == "Champion") flow.Journal.Tell(new JournalEvent(JournalEventKind.BeatChampion, foe.Name));
+            else flow.Journal.BeatTrainer(PlayerIdentity.Fill(foe.FullTitle), place);
         }
         else if (flow.Battle.Result == BattleResult.EnemyCaught && flow.Battle.Caught is { } caught)
         {
-            journal.Caught(caught.Species.Name, place);
-            poketch.Remember(caught);
+            flow.Journal.Caught(caught.Species.Name, place);
+            flow.Poketch.Remember(caught);
         }
-        else if (flow.Battle.Result == BattleResult.PlayerVictory && flow.Battle.EnemyPokemon is { } wild) journal.Defeated(wild.Species.Name, place);
+        else if (flow.Battle.Result == BattleResult.PlayerVictory && flow.Battle.EnemyPokemon is { } wild) flow.Journal.Defeated(wild.Species.Name, place);
     }
 
     /// <summary>
@@ -2028,7 +1978,7 @@ public partial class GameEngine
                 + (flow.Battle.CaughtNewSpecies ? TrainerScore.CaughtNewSpecies : 0),
             _ => 0
         };
-        trainerScore = TrainerScore.Add(trainerScore, points);
+        flow.TrainerScore = TrainerScore.Add(flow.TrainerScore, points);
     }
 
     /// <summary>
@@ -2050,7 +2000,7 @@ public partial class GameEngine
         var (x, y, facing) = healer == null ? (4, 5, Direction.Down) : home ? HomeSpot(healer) : (healer.GridX, healer.GridY + 2, Direction.Up);
         flow.Player.SetMode(TravelMode.OnFoot);
         flow.Player.SetPosition(x, y, facing);
-        if (SpawnLocations.Get(flow.Story.Var(SpawnLocations.Variable)) is { } town) exitSpot = new MapSpot("Sinnoh", town.X, town.Y, Direction.Down);
+        if (SpawnLocations.Get(flow.Story.Var(SpawnLocations.Variable)) is { } town) flow.ExitSpot = new MapSpot("Sinnoh", town.X, town.Y, Direction.Down);
         // A scene the battle was lost in left its camera, its bars and its pace behind with the place (plan 09 · L4)
         world.Camera.Reset();
         cameraSent = false;
@@ -2166,7 +2116,7 @@ public partial class GameEngine
         }
         else if (scene == GameState.Hatch)
         {
-            hatchScreen.Render(renderContext);
+            flow.HatchScreen.Render(renderContext);
         }
         else if (scene == GameState.Intro)
         {
@@ -2178,11 +2128,11 @@ public partial class GameEngine
         }
         else if (scene == GameState.HallOfFameCeremony)
         {
-            ceremony.Render(renderContext);
+            flow.Ceremony.Render(renderContext);
         }
         else if (scene == GameState.Credits)
         {
-            credits.Render(renderContext);
+            flow.Credits.Render(renderContext);
         }
         // (The field and the battle have told the profiler of their own passes; this takes whatever else was rendered)
         FrameProfiler.Lap(FrameSection.Scene);
@@ -2212,8 +2162,8 @@ public partial class GameEngine
                 DrawLetterbox();
                 DrawCutIn();
                 // The Pokétch shows over the field while nothing else is on the screen
-                if (shown == GameState.Overworld && !flow.StartMenu.IsActive && !ScriptRunning) poketchView.Draw(VirtualWidth, VirtualHeight, poketch, PoketchNow());
-                if (safari.Active) ModernUi.SafariCount(VirtualWidth, safari.Balls, safari.Steps);
+                if (shown == GameState.Overworld && !flow.StartMenu.IsActive && !ScriptRunning) flow.PoketchView.Draw(VirtualWidth, VirtualHeight, flow.Poketch, PoketchNow());
+                if (flow.Safari.Active) ModernUi.SafariCount(VirtualWidth, flow.Safari.Balls, flow.Safari.Steps);
                 DrawParkCount();
                 DrawBattlePoints();
                 DrawCastlePoints();
@@ -2240,7 +2190,7 @@ public partial class GameEngine
                 flow.EvolutionScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.Hatch:
-                hatchScreen.Draw(VirtualWidth, VirtualHeight);
+                flow.HatchScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.PokedexMenu:
                 flow.PokedexScreen.Draw(VirtualWidth, VirtualHeight, flow.Pokedex);
@@ -2265,61 +2215,61 @@ public partial class GameEngine
                 flow.WardrobeScreen.Draw(VirtualWidth, VirtualHeight, flow.Money);
                 break;
             case GameState.HallOfFame:
-                hallOfFameScreen.Draw(VirtualWidth, VirtualHeight, hallOfFame);
+                flow.HallOfFameScreen.Draw(VirtualWidth, VirtualHeight, flow.HallOfFame);
                 break;
             case GameState.Journal:
-                journalScreen.Draw(VirtualWidth, VirtualHeight, journal);
+                flow.JournalScreen.Draw(VirtualWidth, VirtualHeight, flow.Journal);
                 break;
             case GameState.PoffinCooking:
-                cookingScreen.Draw(VirtualWidth, VirtualHeight);
+                flow.PoffinCookingScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.PoffinCase:
-                poffinCaseScreen.Draw(VirtualWidth, VirtualHeight);
+                flow.PoffinCaseScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.SuperContest:
-                contestScreen.Draw(VirtualWidth, VirtualHeight);
+                flow.SuperContestScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.SealCase:
-                sealCaseScreen.Draw(VirtualWidth, VirtualHeight);
+                flow.SealCaseScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.SealShop:
-                sealShopScreen.Draw(VirtualWidth, VirtualHeight, flow.Money);
+                flow.SealShopScreen.Draw(VirtualWidth, VirtualHeight, flow.Money);
                 break;
             case GameState.FashionCase:
-                fashionScreen.Draw(VirtualWidth, VirtualHeight);
+                flow.FashionCaseScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.Mining:
-                miningScreen.Draw(VirtualWidth, VirtualHeight);
+                flow.MiningScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.Underground:
-                undergroundScreen.Draw(VirtualWidth, VirtualHeight);
+                flow.UndergroundScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.Decoration:
-                decorationScreen.Draw(VirtualWidth, VirtualHeight);
+                flow.DecorationScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.FrontierRecords:
-                frontierRecordsScreen.Draw(VirtualWidth, VirtualHeight);
+                flow.FrontierRecordsScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.FactoryRentals:
-                factoryScreen.Draw(VirtualWidth, VirtualHeight);
+                flow.FactoryScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.HallBoard:
-                hallBoard.Draw(VirtualWidth, VirtualHeight);
+                flow.HallBoardScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.CastleCounter:
-                castleScreen.Draw(VirtualWidth, VirtualHeight);
+                flow.CastleScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.ArcadeBoard:
-                arcadeBoard.Draw(VirtualWidth, VirtualHeight);
+                flow.ArcadeBoardScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.SlotMachine:
-                slotScreen.Draw(VirtualWidth, VirtualHeight);
+                flow.SlotMachineScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.HallOfFameCeremony:
-                ceremony.Draw(VirtualWidth, VirtualHeight);
+                flow.Ceremony.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.Credits:
-                credits.Draw(VirtualWidth, VirtualHeight);
+                flow.Credits.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.PCStorage:
                 flow.PCScreen.Draw(VirtualWidth, VirtualHeight, flow.Party, flow.Boxes);
@@ -2337,11 +2287,11 @@ public partial class GameEngine
                     DrawLetterbox();
                 }
                 else if (scene == GameState.Evolution) flow.EvolutionScreen.Draw(VirtualWidth, VirtualHeight);
-                else if (scene == GameState.Hatch) hatchScreen.Draw(VirtualWidth, VirtualHeight);
+                else if (scene == GameState.Hatch) flow.HatchScreen.Draw(VirtualWidth, VirtualHeight);
                 else if (scene == GameState.BagMenu) flow.BagScreen.Draw(VirtualWidth, VirtualHeight, flow.Bag, flow.Party, EvolutionContextNow());
-                else if (scene == GameState.SuperContest) contestScreen.Draw(VirtualWidth, VirtualHeight);
-                else if (scene == GameState.HallOfFameCeremony) ceremony.Draw(VirtualWidth, VirtualHeight);
-                else if (scene == GameState.Credits) credits.Draw(VirtualWidth, VirtualHeight);
+                else if (scene == GameState.SuperContest) flow.SuperContestScreen.Draw(VirtualWidth, VirtualHeight);
+                else if (scene == GameState.HallOfFameCeremony) flow.Ceremony.Draw(VirtualWidth, VirtualHeight);
+                else if (scene == GameState.Credits) flow.Credits.Draw(VirtualWidth, VirtualHeight);
                 break;
         }
 
