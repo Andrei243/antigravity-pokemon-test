@@ -12,7 +12,7 @@ namespace PokemonPlatinumEngine.UI;
 /// </summary>
 public enum OptionRow
 {
-    TextSpeed, Quality, WindowSize, Fullscreen, VSync, TimeOfDay,
+    Language, TextSpeed, Quality, WindowSize, Fullscreen, VSync, TimeOfDay,
     Sound, MusicVolume, SoundVolume, CryVolume, AmbienceVolume, Speakers,
     MoveHints, TrainerLines,
     FocusPause, FrameCap,
@@ -22,7 +22,7 @@ public enum OptionRow
 }
 
 /// <summary>
-/// The options screen: text speed, graphics quality, window size, full screen, V-Sync, time of day, and the sound:
+/// The options screen: the language (plan 17 · N1), text speed, graphics quality, window size, full screen, V-Sync, time of day, and the sound:
 /// on or off, a volume for each of the mixer's buses (the music with its fanfares, the sound effects, the cries,
 /// the ambience) and the speakers it plays through; then the helps of plan 12 (the move hints), the trainers' lines in battle (plan 11 · C12),
 /// the two rows of plan 16 · T3 (whether the game waits behind another window, and the most frames it draws a second),
@@ -110,6 +110,12 @@ public class OptionsScreen
     {
         switch (row)
         {
+            case OptionRow.Language:
+                // Only the languages a player can read with the faces the game has, and never the pseudo-language
+                var offered = Core.Language.Offered;
+                int at = offered.ToList().FindIndex(l => string.Equals(l.Tag, s.Language, StringComparison.OrdinalIgnoreCase));
+                s.Language = offered[Wrap((at < 0 ? 0 : at) + step, offered.Count)].Tag;
+                break;
             case OptionRow.TextSpeed:
                 s.TextSpeed = (TextSpeed)Wrap((int)s.TextSpeed + step, 3);
                 break;
@@ -185,81 +191,49 @@ public class OptionsScreen
 
     private static (string Label, string Value, string Help) Describe(GameSettings s, OptionRow row) => row switch
     {
-        OptionRow.TextSpeed => ("Text speed", s.TextSpeed.ToString(), "How fast what people say is written out. The A button always finishes a line at once."),
-        OptionRow.Quality => ("Graphics quality", s.Quality.ToString(), s.Quality switch
-        {
-            GraphicsQuality.High => "Sharpest picture: the 3D scenes render at 4K (3840 × 2160) with soft shadows and ambient occlusion.",
-            GraphicsQuality.Medium => "3D scenes render at 2880 × 1620 with anti-aliasing; keeps soft shadows and ambient occlusion.",
-            _ => "Fastest: 3D scenes render at 1920 × 1080 with simple shadows, no ambient occlusion or depth of field."
-        }),
-        OptionRow.WindowSize => ("Window size", $"{s.WindowWidth} × {s.WindowHeight}", "Size of the game window when it isn't full screen."),
-        OptionRow.Fullscreen => ("Full screen", s.Fullscreen ? "On" : "Off", "Fills the whole display (also F11)."),
-        OptionRow.VSync => ("V-Sync", s.VSync ? "On" : "Off", "Matches the display's refresh rate to avoid tearing."),
-        OptionRow.TimeOfDay => ("Time of day", s.TimeOfDay switch
-        {
-            null => "Clock",
-            TimeOfDay.LateNight => "Late night",
-            var t => t.ToString()!
-        }, s.TimeOfDay.HasValue
-            ? "The world stays at this time of day."
-            : "Follows your computer's clock, like the original: morning from 4, day from 10, twilight from 17, night from 20."),
-        OptionRow.Sound => ("Sound", s.Muted ? "Off" : "On", "Music and sound effects (also the M key)."),
-        OptionRow.MusicVolume => ("Music", $"{s.MusicVolume}%", "How loud the music and the fanfares play."),
-        OptionRow.SoundVolume => ("Sound effects", $"{s.SoundVolume}%", "How loud the sound effects play: menus, doors, footsteps, the moves in battle."),
-        OptionRow.CryVolume => ("Cries", $"{s.CryVolume}%", "How loud the Pokémon's cries play."),
-        OptionRow.AmbienceVolume => ("Ambience", $"{s.AmbienceVolume}%", "How loud the field's background sounds play: rain, wind, waterfalls, the sea, caves."),
-        OptionRow.Speakers => ("Speakers", s.Speakers.ToString(), s.Speakers switch
-        {
-            SpeakerMode.Handheld => "Sounds as the handheld's own small speakers would: no deep bass, a narrow stereo and ten-bit sound.",
-            SpeakerMode.Mono => "Everything in one channel, the same in both ears: for a single speaker, or one ear.",
-            _ => "Full sound, for speakers or headphones."
-        }),
-        OptionRow.MoveHints => ("Move hints", Value(s.MoveHints), "In battle, a move's card says whether it is super effective, not very effective or has no effect on a Pokémon you have seen before. "
-            + RulesLine(s.MoveHints, "shows them", "goes without")),
-        OptionRow.TrainerLines => ("Trainers speak", Value(s.TrainerLines), "In battle, Gym Leaders, your rival and other bosses say a line when their last Pokémon comes out, when their first one falls and when their last one is in the red. "
-            + RulesLine(s.TrainerLines, "has them speak", "keeps them quiet, as Platinum did")),
-        OptionRow.FocusPause => ("Pause in the background", s.FocusPause ? "On" : "Off", s.FocusPause
-            ? "While another window is in front, the game waits where it is and its sound drops; it goes on when you come back to it."
-            : "The game runs on, sound and all, while another window is in front."),
-        OptionRow.FrameCap => ("Frame limit", s.FrameCap > 0 ? $"{s.FrameCap} fps" : "No limit", (s.FrameCap > 0
-            ? "The most frames the game draws a second."
-            : "The game draws as many frames a second as it can.")
-            + " V-Sync, when it is on, still holds it to the display's refresh rate."),
-        OptionRow.SkipScenes => ("Skip scenes", s.SkipScenes switch
-        {
-            SkipScenes.Seen => "Seen",
-            SkipScenes.Any => "Any",
-            _ => "Off"
-        }, s.SkipScenes switch
-        {
-            SkipScenes.Seen => "Hold the menu button for a second to skip a scene of the story you have already seen to its end, in this game or another on this computer. Questions and battles are never skipped.",
-            SkipScenes.Any => "Hold the menu button for a second to skip any scene of the story, seen or not. Questions and battles are never skipped.",
-            _ => "Every scene of the story plays through, as in Platinum."
-        }),
-        OptionRow.BattleScene => ("Battle scene", s.BattleScene ? "On" : "Off", s.BattleScene
-            ? "Moves and the battle's other animations play, as in Platinum."
-            : "No moves or other animations play in battle: the lines and the HP bars alone, for quicker battles."),
-        OptionRow.BattleStyle => ("Battle style", s.BattleStyle.ToString(), s.BattleStyle == BattleStyle.Shift
-            ? "When a trainer's Pokémon faints, you are told which comes out next and asked whether to switch first, as in Platinum."
-            : "When a trainer's Pokémon faints, the next one comes straight out and you are not asked to switch."),
-        _ => ("Help", "Open", "The type chart, the controls and a few notes for the road.")
+        OptionRow.Language => (Text.Of("options.language.label"), (Core.Language.Of(s.Language) ?? Text.Language).Name, Text.Of("options.language.help")),
+        OptionRow.TextSpeed => (Text.Of("options.textSpeed.label"), Text.Of($"options.textSpeed.value.{s.TextSpeed}"), Text.Of("options.textSpeed.help")),
+        OptionRow.Quality => (Text.Of("options.quality.label"), Text.Of($"options.quality.value.{s.Quality}"), Text.Of($"options.quality.help.{s.Quality}")),
+        OptionRow.WindowSize => (Text.Of("options.windowSize.label"), Text.Of("options.windowSize.value", ("width", s.WindowWidth), ("height", s.WindowHeight)), Text.Of("options.windowSize.help")),
+        OptionRow.Fullscreen => (Text.Of("options.fullscreen.label"), OnOff(s.Fullscreen), Text.Of("options.fullscreen.help")),
+        OptionRow.VSync => (Text.Of("options.vsync.label"), OnOff(s.VSync), Text.Of("options.vsync.help")),
+        OptionRow.TimeOfDay => (Text.Of("options.timeOfDay.label"), s.TimeOfDay is { } time ? Text.Of($"options.timeOfDay.value.{time}") : Text.Of("options.timeOfDay.value.Clock"),
+            Text.Of(s.TimeOfDay.HasValue ? "options.timeOfDay.help.fixed" : "options.timeOfDay.help.clock")),
+        OptionRow.Sound => (Text.Of("options.sound.label"), OnOff(!s.Muted), Text.Of("options.sound.help")),
+        OptionRow.MusicVolume => (Text.Of("options.music.label"), Percent(s.MusicVolume), Text.Of("options.music.help")),
+        OptionRow.SoundVolume => (Text.Of("options.soundEffects.label"), Percent(s.SoundVolume), Text.Of("options.soundEffects.help")),
+        OptionRow.CryVolume => (Text.Of("options.cries.label"), Percent(s.CryVolume), Text.Of("options.cries.help")),
+        OptionRow.AmbienceVolume => (Text.Of("options.ambience.label"), Percent(s.AmbienceVolume), Text.Of("options.ambience.help")),
+        OptionRow.Speakers => (Text.Of("options.speakers.label"), Text.Of($"options.speakers.value.{s.Speakers}"), Text.Of($"options.speakers.help.{s.Speakers}")),
+        OptionRow.MoveHints => (Text.Of("options.moveHints.label"), Value(s.MoveHints), Text.Of("options.moveHints.help") + " " + RulesLine(s.MoveHints, "options.moveHints.modern", "options.moveHints.platinum")),
+        OptionRow.TrainerLines => (Text.Of("options.trainerLines.label"), Value(s.TrainerLines), Text.Of("options.trainerLines.help") + " " + RulesLine(s.TrainerLines, "options.trainerLines.modern", "options.trainerLines.platinum")),
+        OptionRow.FocusPause => (Text.Of("options.focusPause.label"), OnOff(s.FocusPause), Text.Of(s.FocusPause ? "options.focusPause.help.on" : "options.focusPause.help.off")),
+        OptionRow.FrameCap => (Text.Of("options.frameCap.label"),
+            s.FrameCap > 0 ? Text.Of("options.frameCap.value", ("n", s.FrameCap)) : Text.Of("options.frameCap.none"),
+            Text.Of(s.FrameCap > 0 ? "options.frameCap.help.capped" : "options.frameCap.help.none")),
+        OptionRow.SkipScenes => (Text.Of("options.skipScenes.label"), Text.Of($"options.skipScenes.value.{s.SkipScenes}"), Text.Of($"options.skipScenes.help.{s.SkipScenes}")),
+        OptionRow.BattleScene => (Text.Of("options.battleScene.label"), OnOff(s.BattleScene), Text.Of(s.BattleScene ? "options.battleScene.help.on" : "options.battleScene.help.off")),
+        OptionRow.BattleStyle => (Text.Of("options.battleStyle.label"), Text.Of($"options.battleStyle.value.{s.BattleStyle}"), Text.Of($"options.battleStyle.help.{s.BattleStyle}")),
+        _ => (Text.Of("options.help.label"), Text.Of("options.help.value"), Text.Of("options.help.help"))
     };
+
+    private static string OnOff(bool on) => Text.Of(on ? "shared.on" : "shared.off");
+
+    private static string Percent(int volume) => Text.Of("shared.percent", ("n", volume));
 
     /// <summary>A three-way row's value (style guide, "Options").</summary>
     private static string Value(RulesDefault value) => value switch
     {
-        RulesDefault.Off => "Off",
-        RulesDefault.On => "On",
-        _ => "Rules"
+        RulesDefault.Off => Text.Of("shared.off"),
+        RulesDefault.On => Text.Of("shared.on"),
+        _ => Text.Of("options.rules.value")
     };
 
     /// <summary>What Rules gives in the game in progress, for a three-way row's help line.</summary>
     private static string RulesLine(RulesDefault value, string modern, string platinum) => value switch
     {
-        RulesDefault.Rules => Data.Ruleset.Current.Preset == Data.RulesPreset.Modern
-            ? $"Rules: this game is played by the modern rules, so it {modern}."
-            : $"Rules: this game is played by Platinum's rules, so it {platinum}.",
-        _ => "Rules follows the rules the game was begun under."
+        RulesDefault.Rules => Text.Of(Data.Ruleset.Current.Preset == Data.RulesPreset.Modern ? modern : platinum),
+        _ => Text.Of("options.rules.other")
     };
 
     public void Draw(int sw, int sh, GameSettings settings)
@@ -271,9 +245,9 @@ public class OptionsScreen
             return;
         }
         ModernUi.Backdrop(sw, sh);
-        ModernUi.ScreenTitle("OPTIONS");
-        if (Rows[SelectedIndex] == OptionRow.Help) ModernUi.Hints(sw - 64, 44, ("Z", "Open"), ("Esc", "Back"));
-        else ModernUi.Hints(sw - 64, 44, ("Left / Right", "Change"), ("Esc", "Back"));
+        ModernUi.ScreenTitle(Text.Of("options.title"));
+        if (Rows[SelectedIndex] == OptionRow.Help) ModernUi.Hints(sw - 64, 44, (Text.Of("shared.keys.z"), Text.Of("shared.hints.open")), (Text.Of("shared.keys.esc"), Text.Of("shared.hints.back")));
+        else ModernUi.Hints(sw - 64, 44, (Text.Of("shared.keys.leftRight"), Text.Of("shared.hints.change")), (Text.Of("shared.keys.esc"), Text.Of("shared.hints.back")));
 
         const float pitch = 86, height = 78;
         bool scrolls = Rows.Length > VisibleRows;

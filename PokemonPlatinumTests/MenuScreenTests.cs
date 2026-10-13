@@ -1202,9 +1202,10 @@ public class MenuScreenTests
     // ------------------------------------------------------------------ options and written lines
 
     [Fact]
-    public void TextSpeedIsTheFirstOptionAndLinesAreWrittenAtItWhateverTheFrameRate()
+    public void TextSpeedFollowsTheLanguageAndLinesAreWrittenAtItWhateverTheFrameRate()
     {
-        Assert.Equal(OptionRow.TextSpeed, Enum.GetValues<OptionRow>()[0]);
+        // The language is the first row (plan 17 · N1), the text speed the second
+        Assert.Equal(new[] { OptionRow.Language, OptionRow.TextSpeed }, Enum.GetValues<OptionRow>()[..2]);
         var settings = new GameSettings();
         Assert.Equal(TextSpeed.Normal, settings.TextSpeed);
         OptionsScreen.Change(settings, OptionRow.TextSpeed, 1);

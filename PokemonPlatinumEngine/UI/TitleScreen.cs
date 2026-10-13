@@ -38,10 +38,8 @@ public sealed record TitleNotice(string Heading, string Body)
     /// </summary>
     public static TitleNotice? ForSlot(int slot, SaveLoad load) => load switch
     {
-        SaveLoad.Recovered => new($"Slot {slot}'s last save was damaged",
-            "It couldn't be read, perhaps because the game closed while it was being written. The save made before it has been loaded instead."),
-        SaveLoad.Damaged => new($"Slot {slot} can't be read",
-            "Its save and the one kept before it are both damaged, so that game can't be continued. DELETE A SAVE frees the slot for another."),
+        SaveLoad.Recovered => new(Text.Of("title.notice.recovered.heading", ("slot", slot)), Text.Of("title.notice.recovered.body")),
+        SaveLoad.Damaged => new(Text.Of("title.notice.damaged.heading", ("slot", slot)), Text.Of("title.notice.damaged.body")),
         _ => null
     };
 
@@ -49,12 +47,11 @@ public sealed record TitleNotice(string Heading, string Body)
     public static TitleNotice? ForSave(SaveLoad load) => ForSlot(1, load);
 
     /// <summary>NEW GAME with every slot taken: a new game needs a slot of its own.</summary>
-    public static TitleNotice NoFreeSlot => new("Every slot holds a save",
-        "A new game needs a slot of its own, and all three are taken. DELETE A SAVE, on this menu, frees one of them.");
+    public static TitleNotice NoFreeSlot => new(Text.Of("title.notice.noFreeSlot.heading"), Text.Of("title.notice.noFreeSlot.body"));
 
     /// <summary>A slot the player asked to delete is still there: something holds its files.</summary>
-    public static TitleNotice CouldNotDelete(int slot) => new($"Slot {slot} couldn't be deleted",
-        "Its files are still there: something else may be using them. Nothing was changed; try again once it is closed.");
+    public static TitleNotice CouldNotDelete(int slot) =>
+        new(Text.Of("title.notice.couldNotDelete.heading", ("slot", slot)), Text.Of("title.notice.couldNotDelete.body"));
 
     /// <summary>
     /// What the title says of a save from before there were slots that couldn't be made one (plan 12 · Q2): nothing
@@ -62,10 +59,8 @@ public sealed record TitleNotice(string Heading, string Body)
     /// </summary>
     public static TitleNotice? ForOldSave(OldSaveOutcome moved) => moved.Move switch
     {
-        OldSaveMove.NoRoom => new("An older save was left where it is",
-            $"{SavePaths.OldSaveName} is from before the game had slots, and all three slots hold a save. Once one is deleted, the next start gives it that slot."),
-        OldSaveMove.Failed => new("An older save couldn't be moved",
-            $"{SavePaths.OldSaveName} is from before the game had slots and couldn't be given one. It is where it was, untouched; the next start tries again."),
+        OldSaveMove.NoRoom => new(Text.Of("title.notice.oldSaveNoRoom.heading"), Text.Of("title.notice.oldSaveNoRoom.body", ("file", SavePaths.OldSaveName))),
+        OldSaveMove.Failed => new(Text.Of("title.notice.oldSaveFailed.heading"), Text.Of("title.notice.oldSaveFailed.body", ("file", SavePaths.OldSaveName))),
         _ => null
     };
 
@@ -82,13 +77,13 @@ public sealed record TitleNotice(string Heading, string Body)
     {
         if (crash == null) return null;
         var taken = slots.Where(s => s != SaveLoad.None).ToList();
-        string save = taken.Count == 0 ? "No game had been saved yet. "
-            : taken.Any(s => s != SaveLoad.Ok) ? ""
-            : taken.Count == 1 ? "Your save is intact. " : "Your saves are intact. ";
-        string kept = crash.SaveKept
-            ? $", and the game as it stood was kept beside your save as {Core.Diagnostics.CrashReport.SaveName}."
-            : ".";
-        return new("The game stopped unexpectedly", $"{save}A report was written to {crash.Report}{kept}");
+        string? save = taken.Count == 0 ? Text.Of("title.notice.crash.noSave")
+            : taken.Any(s => s != SaveLoad.Ok) ? null
+            : Text.Of("title.notice.crash.intact", ("n", taken.Count));
+        string report = crash.SaveKept
+            ? Text.Of("title.notice.crash.reportKept", ("report", crash.Report), ("file", Core.Diagnostics.CrashReport.SaveName))
+            : Text.Of("title.notice.crash.report", ("report", crash.Report));
+        return new(Text.Of("title.notice.crash.heading"), save == null ? report : save + " " + report);
     }
 }
 
@@ -526,7 +521,7 @@ public sealed class TitleScreen
         if (Phase == TitlePhase.Idle)
         {
             float pulse = 0.55f + 0.45f * MathF.Sin(totalTime * 3.2f);
-            const string prompt = "PRESS  Z  OR  ENTER";
+            string prompt = Text.Of("title.press");
             float w = UiFonts.Measure(prompt, 40, UiWeight.Black);
             UiFonts.Draw(prompt, (sw - w) / 2f + 2, 954, 40, new Color(0, 0, 0, (int)(120 * pulse)), UiWeight.Black);
             UiFonts.Draw(prompt, (sw - w) / 2f, 952, 40, new Color(255, 255, 255, (int)(255 * pulse)), UiWeight.Black);
@@ -536,9 +531,9 @@ public sealed class TitleScreen
         if (Phase == TitlePhase.ChooseRules) DrawRules(sw, sh);
         if (Phase == TitlePhase.ConfirmDelete) DrawDelete(sw, sh);
         if (Phase == TitlePhase.Warning && Notice is { } notice)
-            ModernUi.Notice(sw, sh, notice.Heading, notice.Body, "OK", Smooth(0f, 0.18f, phaseTime));
+            ModernUi.Notice(sw, sh, notice.Heading, notice.Body, Text.Of("shared.ok"), Smooth(0f, 0.18f, phaseTime));
 
-        const string credit = "A fan-made project, not affiliated with Nintendo, Creatures or GAME FREAK.";
+        string credit = Text.Of("title.credit");
         float cw = UiFonts.Measure(credit, 20, UiWeight.Bold);
         UiFonts.Draw(credit, (sw - cw) / 2f, sh - 44, 20, new Color(220, 214, 240, (int)(150 * logoAlpha)), UiWeight.Bold);
 
@@ -566,9 +561,9 @@ public sealed class TitleScreen
             float w = UiFonts.Measure(text, size, weight);
             UiFonts.Draw(text, (sw - w) / 2f, y, size, color, weight);
         }
-        Centered("A fan-made remake", sh / 2f - 96, 54, white, UiWeight.Black);
-        Centered("This project is not affiliated with or endorsed by Nintendo, Creatures Inc. or GAME FREAK inc.", sh / 2f, 26, dim, UiWeight.Bold);
-        Centered("Pokémon and its characters are trademarks of their owners. All art, models and music here are original.", sh / 2f + 42, 26, dim, UiWeight.Bold);
+        Centered(Text.Of("title.disclaimer.heading"), sh / 2f - 96, 54, white, UiWeight.Black);
+        Centered(Text.Of("title.disclaimer.owners"), sh / 2f, 26, dim, UiWeight.Bold);
+        Centered(Text.Of("title.disclaimer.original"), sh / 2f + 42, 26, dim, UiWeight.Bold);
     }
 
     private void DrawJourney(int sw, int sh, WorldRenderer world)
@@ -685,16 +680,16 @@ public sealed class TitleScreen
 
             if (card != null)
             {
-                if (LoneCard) ModernUi.SaveSummary(r, card.Save!, "CONTINUE", card.Number);
+                if (LoneCard) ModernUi.SaveSummary(r, card.Save!, Text.Of("title.menu.continue"), card.Number);
                 else ModernUi.SaveCard(r, card.Number, card.Save);
                 continue;
             }
             string label = entries[i] switch
             {
-                TitleChoice.NewGame => "NEW GAME",
-                TitleChoice.Delete => Phase == TitlePhase.ChooseDelete ? "DELETE WHICH SAVE?" : "DELETE A SAVE",
-                TitleChoice.Options => "OPTIONS",
-                _ => "QUIT"
+                TitleChoice.NewGame => Text.Of("title.menu.newGame"),
+                TitleChoice.Delete => Text.Of(Phase == TitlePhase.ChooseDelete ? "title.menu.deleteWhich" : "title.menu.delete"),
+                TitleChoice.Options => Text.Of("title.menu.options"),
+                _ => Text.Of("title.menu.quit")
             };
             UiFonts.DrawCentered(label, r.X + 48, r.Y + r.Height / 2f, cards.Count > 0 ? 36 : 40, ModernUi.Ink, UiWeight.Black);
         }
@@ -702,23 +697,26 @@ public sealed class TitleScreen
 
     /// <summary>What "start a new game?" says under its heading: the slot the new game takes, and that nothing is lost.</summary>
     public static string NewGameBlurb(int slot, int saves) =>
-        $"It will be saved in slot {slot}. " + (saves == 1 ? "The save you have is kept as it is." : "The saves you have are kept as they are.");
+        Text.Of("title.newGame.blurb", ("slot", slot), ("n", saves));
 
     // (Yes is Green since the slots: a new game takes an empty slot, so nothing is lost by it. Red is the delete question's)
     private void DrawConfirm(int sw, int sh) =>
-        ModernUi.Prompt(sw, sh, "Start a new game?", NewGameBlurb(FreeSlot ?? 1, cards.Count),
-            new[] { ("NO, GO BACK", ModernUi.Blue), ("YES, NEW GAME", ModernUi.Green) }, ConfirmYes ? 1 : 0);
+        ModernUi.Prompt(sw, sh, Text.Of("title.newGame.heading"), NewGameBlurb(FreeSlot ?? 1, cards.Count),
+            new[] { (Text.Of("title.newGame.no"), ModernUi.Blue), (Text.Of("title.newGame.yes"), ModernUi.Green) }, ConfirmYes ? 1 : 0);
 
-    public static readonly string[] DeleteAnswers = { "NO, KEEP IT", "YES, DELETE" };
+    /// <summary>The delete question's two answers, in the language of the moment.</summary>
+    public static string[] DeleteAnswers => new[] { Text.Of("title.delete.no"), Text.Of("title.delete.yes") };
 
     /// <summary>The delete question's heading: it names the slot.</summary>
-    public static string DeleteHeading(int slot) => $"Delete slot {slot}?";
+    public static string DeleteHeading(int slot) => Text.Of("title.delete.heading", ("slot", slot));
 
     /// <summary>What the delete question says under its heading: whose game it is and where it stands, and that it can't be undone.</summary>
     /// <param name="place">Where the game was saved, as the card names it.</param>
     public static string DeleteBlurb(SaveData? save, string? place) => save == null
-        ? "This save can't be read, nor can the one before it. Deleting it frees the slot."
-        : $"{save.PlayerName}{(string.IsNullOrEmpty(place) ? "" : $" in {place}")}, {FormatPlayTime(save.PlayTimeSeconds)} played. The save and its backup are deleted for good.";
+        ? Text.Of("title.delete.unreadable")
+        : string.IsNullOrEmpty(place)
+            ? Text.Of("title.delete.blurb", ("name", save.PlayerName), ("time", FormatPlayTime(save.PlayTimeSeconds)))
+            : Text.Of("title.delete.blurbIn", ("name", save.PlayerName), ("place", place), ("time", FormatPlayTime(save.PlayTimeSeconds)));
 
     private void DrawDelete(int sw, int sh)
     {
@@ -729,10 +727,10 @@ public sealed class TitleScreen
 
     /// <summary>What the "which rules?" prompt says about the answer that is highlighted.</summary>
     public static string RulesBlurb(RulesPreset rules) => rules == RulesPreset.Modern
-        ? "Battles use the newest games' numbers for critical hits, burns, paralysis and moves. This can't be changed later."
-        : "Battles play exactly as they do in Platinum, which the story is balanced for. This can't be changed later.";
+        ? Text.Of("title.rules.modernBlurb")
+        : Text.Of("title.rules.platinumBlurb");
 
     private void DrawRules(int sw, int sh) =>
-        ModernUi.Prompt(sw, sh, "Which rules?", RulesBlurb(Rules),
-            new[] { ("PLATINUM RULES", ModernUi.Blue), ("MODERN RULES", ModernUi.Green) }, Rules == RulesPreset.Modern ? 1 : 0);
+        ModernUi.Prompt(sw, sh, Text.Of("title.rules.heading"), RulesBlurb(Rules),
+            new[] { (Text.Of("title.rules.platinum"), ModernUi.Blue), (Text.Of("title.rules.modern"), ModernUi.Green) }, Rules == RulesPreset.Modern ? 1 : 0);
 }

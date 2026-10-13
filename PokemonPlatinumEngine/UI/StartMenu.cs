@@ -31,7 +31,7 @@ public class StartMenu
     private Entry[] Shown => Entries.Where(e => (e != Entry.Pokedex || HasPokedex) && (e != Entry.Pokemon || HasPokemon)).ToArray();
 
     /// <summary>The answers to "Quit the game?", in button order; the first (staying) is highlighted when it opens.</summary>
-    public static readonly string[] QuitAnswers = { "KEEP PLAYING", "SAVE AND QUIT", "QUIT" };
+    public static string[] QuitAnswers => new[] { Text.Of("start.quit.keepPlaying"), Text.Of("start.quit.saveAndQuit"), Text.Of("start.quit.quit") };
 
     private readonly UiReveal reveal = new(0.2f, 0.12f);
     private readonly UiReveal prompt = new(0.18f, 0.1f);
@@ -161,14 +161,14 @@ public class StartMenu
 
     private (string Label, UiIcon Icon, Color Color) Describe(Entry entry) => entry switch
     {
-        Entry.Pokedex => ("POKÉDEX", UiIcon.Dex, ModernUi.Red),
-        Entry.Pokemon => ("POKÉMON", UiIcon.Ball, ModernUi.Green),
-        Entry.Bag => ("BAG", UiIcon.Bag, ModernUi.Gold),
+        Entry.Pokedex => (Text.Of("start.pokedex"), UiIcon.Dex, ModernUi.Red),
+        Entry.Pokemon => (Text.Of("start.pokemon"), UiIcon.Ball, ModernUi.Green),
+        Entry.Bag => (Text.Of("start.bag"), UiIcon.Bag, ModernUi.Gold),
         Entry.Trainer => (PlayerName.ToUpperInvariant(), UiIcon.Trainer, ModernUi.Blue),
-        Entry.Save => ("SAVE", UiIcon.Save, new Color(126, 110, 222, 255)),
-        Entry.Options => ("OPTIONS", UiIcon.Options, ModernUi.Muted),
-        Entry.Close => ("CLOSE", UiIcon.Close, ModernUi.Frame),
-        _ => ("QUIT GAME", UiIcon.Quit, new Color(196, 58, 84, 255))
+        Entry.Save => (Text.Of("start.save"), UiIcon.Save, new Color(126, 110, 222, 255)),
+        Entry.Options => (Text.Of("start.options"), UiIcon.Options, ModernUi.Muted),
+        Entry.Close => (Text.Of("start.close"), UiIcon.Close, ModernUi.Frame),
+        _ => (Text.Of("start.quitGame"), UiIcon.Quit, new Color(196, 58, 84, 255))
     };
 
     public void Draw(int screenWidth, int screenHeight)
@@ -177,7 +177,7 @@ public class StartMenu
         ModernUi.DrawStartMenu(screenWidth, Shown.Select(Describe).ToList(), SelectedIndex, reveal.Shown);
 
         if (!prompt.Visible) return;
-        ModernUi.Prompt(screenWidth, screenHeight, "Quit the game?", "Anything since your last save will be lost unless you save first.",
+        ModernUi.Prompt(screenWidth, screenHeight, Text.Of("start.quit.heading"), Text.Of("start.quit.body"),
             new[] { (QuitAnswers[0], ModernUi.Blue), (QuitAnswers[1], ModernUi.Green), (QuitAnswers[2], ModernUi.Red) },
             QuitIndex, prompt.Shown);
     }

@@ -1,0 +1,255 @@
+{
+  "shared": {
+    "on": "On",
+    "off": "Off",
+    "ok": "OK",
+    "percent": "{n}%",
+    "keys": {
+      "z": "Z",
+      "esc": "Esc",
+      "leftRight": "Left / Right"
+    },
+    "hints": {
+      "open": "Open",
+      "back": "Back",
+      "change": "Change"
+    }
+  },
+
+  "options": {
+    "title": "OPTIONS",
+    "language": {
+      "label": "Language",
+      "help": "The language the game's words are written in. Others come as they are translated."
+    },
+    "textSpeed": {
+      "label": "Text speed",
+      "help": "How fast what people say is written out. The A button always finishes a line at once.",
+      "value": { "Slow": "Slow", "Normal": "Normal", "Fast": "Fast" }
+    },
+    "quality": {
+      "label": "Graphics quality",
+      "value": { "Low": "Low", "Medium": "Medium", "High": "High" },
+      "help": {
+        "High": "Sharpest picture: the 3D scenes render at 4K (3840 × 2160) with soft shadows and ambient occlusion.",
+        "Medium": "3D scenes render at 2880 × 1620 with anti-aliasing; keeps soft shadows and ambient occlusion.",
+        "Low": "Fastest: 3D scenes render at 1920 × 1080 with simple shadows, no ambient occlusion or depth of field."
+      }
+    },
+    "windowSize": {
+      "label": "Window size",
+      "value": "{width} × {height}",
+      "help": "Size of the game window when it isn't full screen."
+    },
+    "fullscreen": {
+      "label": "Full screen",
+      "help": "Fills the whole display (also F11)."
+    },
+    "vsync": {
+      "label": "V-Sync",
+      "help": "Matches the display's refresh rate to avoid tearing."
+    },
+    "timeOfDay": {
+      "label": "Time of day",
+      "value": {
+        "Clock": "Clock",
+        "Morning": "Morning",
+        "Day": "Day",
+        "Twilight": "Twilight",
+        "Night": "Night",
+        "LateNight": "Late night"
+      },
+      "help": {
+        "fixed": "The world stays at this time of day.",
+        "clock": "Follows your computer's clock, like the original: morning from 4, day from 10, twilight from 17, night from 20."
+      }
+    },
+    "sound": {
+      "label": "Sound",
+      "help": "Music and sound effects (also the M key)."
+    },
+    "music": {
+      "label": "Music",
+      "help": "How loud the music and the fanfares play."
+    },
+    "soundEffects": {
+      "label": "Sound effects",
+      "help": "How loud the sound effects play: menus, doors, footsteps, the moves in battle."
+    },
+    "cries": {
+      "label": "Cries",
+      "help": "How loud the Pokémon's cries play."
+    },
+    "ambience": {
+      "label": "Ambience",
+      "help": "How loud the field's background sounds play: rain, wind, waterfalls, the sea, caves."
+    },
+    "speakers": {
+      "label": "Speakers",
+      "value": { "Stereo": "Stereo", "Handheld": "Handheld", "Mono": "Mono" },
+      "help": {
+        "Stereo": "Full sound, for speakers or headphones.",
+        "Handheld": "Sounds as the handheld's own small speakers would: no deep bass, a narrow stereo and ten-bit sound.",
+        "Mono": "Everything in one channel, the same in both ears: for a single speaker, or one ear."
+      }
+    },
+    "rules": {
+      "value": "Rules",
+      "other": "Rules follows the rules the game was begun under."
+    },
+    "moveHints": {
+      "label": "Move hints",
+      "help": "In battle, a move's card says whether it is super effective, not very effective or has no effect on a Pokémon you have seen before.",
+      "modern": "Rules: this game is played by the modern rules, so it shows them.",
+      "platinum": "Rules: this game is played by Platinum's rules, so it goes without."
+    },
+    "trainerLines": {
+      "label": "Trainers speak",
+      "help": "In battle, Gym Leaders, your rival and other bosses say a line when their last Pokémon comes out, when their first one falls and when their last one is in the red.",
+      "modern": "Rules: this game is played by the modern rules, so it has them speak.",
+      "platinum": "Rules: this game is played by Platinum's rules, so it keeps them quiet, as Platinum did."
+    },
+    "focusPause": {
+      "label": "Pause in the background",
+      "help": {
+        "on": "While another window is in front, the game waits where it is and its sound drops; it goes on when you come back to it.",
+        "off": "The game runs on, sound and all, while another window is in front."
+      }
+    },
+    "frameCap": {
+      "label": "Frame limit",
+      "value": "{n} fps",
+      "none": "No limit",
+      "help": {
+        "capped": "The most frames the game draws a second. V-Sync, when it is on, still holds it to the display's refresh rate.",
+        "none": "The game draws as many frames a second as it can. V-Sync, when it is on, still holds it to the display's refresh rate."
+      }
+    },
+    "skipScenes": {
+      "label": "Skip scenes",
+      "value": { "Off": "Off", "Seen": "Seen", "Any": "Any" },
+      "help": {
+        "Off": "Every scene of the story plays through, as in Platinum.",
+        "Seen": "Hold the menu button for a second to skip a scene of the story you have already seen to its end, in this game or another on this computer. Questions and battles are never skipped.",
+        "Any": "Hold the menu button for a second to skip any scene of the story, seen or not. Questions and battles are never skipped."
+      }
+    },
+    "battleScene": {
+      "label": "Battle scene",
+      "help": {
+        "on": "Moves and the battle's other animations play, as in Platinum.",
+        "off": "No moves or other animations play in battle: the lines and the HP bars alone, for quicker battles."
+      }
+    },
+    "battleStyle": {
+      "label": "Battle style",
+      "value": { "Shift": "Shift", "Set": "Set" },
+      "help": {
+        "Shift": "When a trainer's Pokémon faints, you are told which comes out next and asked whether to switch first, as in Platinum.",
+        "Set": "When a trainer's Pokémon faints, the next one comes straight out and you are not asked to switch."
+      }
+    },
+    "help": {
+      "label": "Help",
+      "value": "Open",
+      "help": "The type chart, the controls and a few notes for the road."
+    }
+  },
+
+  "title": {
+    "press": "PRESS  Z  OR  ENTER",
+    "credit": "A fan-made project, not affiliated with Nintendo, Creatures or GAME FREAK.",
+    "disclaimer": {
+      "heading": "A fan-made remake",
+      "owners": "This project is not affiliated with or endorsed by Nintendo, Creatures Inc. or GAME FREAK inc.",
+      "original": "Pokémon and its characters are trademarks of their owners. All art, models and music here are original."
+    },
+    "menu": {
+      "continue": "CONTINUE",
+      "newGame": "NEW GAME",
+      "delete": "DELETE A SAVE",
+      "deleteWhich": "DELETE WHICH SAVE?",
+      "options": "OPTIONS",
+      "quit": "QUIT"
+    },
+    "notice": {
+      "recovered": {
+        "heading": "Slot {slot}'s last save was damaged",
+        "body": "It couldn't be read, perhaps because the game closed while it was being written. The save made before it has been loaded instead."
+      },
+      "damaged": {
+        "heading": "Slot {slot} can't be read",
+        "body": "Its save and the one kept before it are both damaged, so that game can't be continued. DELETE A SAVE frees the slot for another."
+      },
+      "noFreeSlot": {
+        "heading": "Every slot holds a save",
+        "body": "A new game needs a slot of its own, and all three are taken. DELETE A SAVE, on this menu, frees one of them."
+      },
+      "couldNotDelete": {
+        "heading": "Slot {slot} couldn't be deleted",
+        "body": "Its files are still there: something else may be using them. Nothing was changed; try again once it is closed."
+      },
+      "oldSaveNoRoom": {
+        "heading": "An older save was left where it is",
+        "body": "{file} is from before the game had slots, and all three slots hold a save. Once one is deleted, the next start gives it that slot."
+      },
+      "oldSaveFailed": {
+        "heading": "An older save couldn't be moved",
+        "body": "{file} is from before the game had slots and couldn't be given one. It is where it was, untouched; the next start tries again."
+      },
+      "crash": {
+        "heading": "The game stopped unexpectedly",
+        "noSave": "No game had been saved yet.",
+        "intact": { "one": "Your save is intact.", "other": "Your saves are intact." },
+        "report": "A report was written to {report}.",
+        "reportKept": "A report was written to {report}, and the game as it stood was kept beside your save as {file}."
+      }
+    },
+    "newGame": {
+      "heading": "Start a new game?",
+      "blurb": {
+        "one": "It will be saved in slot {slot}. The save you have is kept as it is.",
+        "other": "It will be saved in slot {slot}. The saves you have are kept as they are."
+      },
+      "no": "NO, GO BACK",
+      "yes": "YES, NEW GAME"
+    },
+    "delete": {
+      "heading": "Delete slot {slot}?",
+      "no": "NO, KEEP IT",
+      "yes": "YES, DELETE",
+      "unreadable": "This save can't be read, nor can the one before it. Deleting it frees the slot.",
+      "blurb": "{name}, {time} played. The save and its backup are deleted for good.",
+      "blurbIn": "{name} in {place}, {time} played. The save and its backup are deleted for good."
+    },
+    "rules": {
+      "heading": "Which rules?",
+      "platinum": "PLATINUM RULES",
+      "modern": "MODERN RULES",
+      "platinumBlurb": "Battles play exactly as they do in Platinum, which the story is balanced for. This can't be changed later.",
+      "modernBlurb": "Battles use the newest games' numbers for critical hits, burns, paralysis and moves. This can't be changed later."
+    }
+  },
+
+  "start": {
+    "pokedex": "POKÉDEX",
+    "pokemon": "POKÉMON",
+    "bag": "BAG",
+    "save": "SAVE",
+    "options": "OPTIONS",
+    "close": "CLOSE",
+    "quitGame": "QUIT GAME",
+    "quit": {
+      "heading": "Quit the game?",
+      "body": "Anything since your last save will be lost unless you save first.",
+      "keepPlaying": "KEEP PLAYING",
+      "saveAndQuit": "SAVE AND QUIT",
+      "quit": "QUIT"
+    }
+  },
+
+  "close": {
+    "heading": "Close the game?",
+    "cantSave": "The game can't be saved right now: anything since your last save will be lost."
+  }
+}

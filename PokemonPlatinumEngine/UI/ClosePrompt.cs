@@ -52,8 +52,8 @@ public sealed class ClosePrompt
 
     /// <summary>What the question says under its heading.</summary>
     public string Body => CanSave
-        ? "Anything since your last save will be lost unless you save first."
-        : "The game can't be saved right now: anything since your last save will be lost.";
+        ? Text.Of("start.quit.body")
+        : Text.Of("close.cantSave");
 
     public void Open(bool canSave)
     {
@@ -122,6 +122,6 @@ public sealed class ClosePrompt
                 CloseChoice.Quit => ModernUi.Red,
                 _ => ModernUi.Blue
             });
-        ModernUi.Prompt(screenWidth, screenHeight, "Close the game?", Body, buttons, Index, reveal.Shown);
+        ModernUi.Prompt(screenWidth, screenHeight, Text.Of("close.heading"), Body, buttons, Index, reveal.Shown);
     }
 }
