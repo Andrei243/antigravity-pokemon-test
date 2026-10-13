@@ -83,6 +83,25 @@ partial class Harness
         Frames(1); Shot("look_13e_options_no_limit");
         engine.Settings.FrameCap = 60;
         Console.WriteLine($"the options as they were again: pause {engine.Settings.FocusPause}, frame limit {engine.Settings.FrameCap}");
+
+        // Platinum's battle options and the speakers' third way (plan 08 · P1), at the end of the settings: as they are
+        // unless chosen, then each the other way, then put back
+        GoToRow(OptionRow.BattleScene);
+        Frames(1); Shot("look_14_options_battle_scene");
+        OptionsScreen.Change(engine.Settings, OptionRow.BattleScene, 1);
+        Frames(1); Shot("look_14b_options_battle_scene_off");
+        GoToRow(OptionRow.BattleStyle);
+        Frames(1); Shot("look_14c_options_battle_style");
+        OptionsScreen.Change(engine.Settings, OptionRow.BattleStyle, 1);
+        Frames(1); Shot("look_14d_options_battle_style_set");
+        GoToRow(OptionRow.Speakers);
+        OptionsScreen.Change(engine.Settings, OptionRow.Speakers, -1);
+        Frames(1); Shot("look_14e_options_speakers_mono");
+        engine.Settings.BattleScene = true;
+        engine.Settings.BattleStyle = BattleStyle.Shift;
+        engine.Settings.Speakers = SpeakerMode.Stereo;
+        engine.ApplySettings(window: false);
+        Console.WriteLine($"the options as they were again: battle scene {engine.Settings.BattleScene}, battle style {engine.Settings.BattleStyle}, speakers {engine.Settings.Speakers}");
         options.Open();
         game.State = GameState.Overworld;
 

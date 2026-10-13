@@ -218,6 +218,17 @@ public class LightingAndSettingsTests
             OptionsScreen.Change(s, timeOfDay, 1);
         }
         Assert.Equal(new TimeOfDay?[] { null, TimeOfDay.Morning, TimeOfDay.Day, TimeOfDay.Twilight, TimeOfDay.Night, TimeOfDay.LateNight, null }, seen);
+
+        // Platinum's battle options (plan 08 · P1): on and Shift unless chosen, as Platinum has them, each a toggle
+        Assert.Equal((true, BattleStyle.Shift), (s.BattleScene, s.BattleStyle));
+        OptionsScreen.Change(s, OptionRow.BattleScene, 1);
+        Assert.False(s.BattleScene);
+        OptionsScreen.Change(s, OptionRow.BattleScene, -1);
+        Assert.True(s.BattleScene);
+        OptionsScreen.Change(s, OptionRow.BattleStyle, 1);
+        Assert.Equal(BattleStyle.Set, s.BattleStyle);
+        OptionsScreen.Change(s, OptionRow.BattleStyle, 1);
+        Assert.Equal(BattleStyle.Shift, s.BattleStyle);
     }
 
     [Theory]

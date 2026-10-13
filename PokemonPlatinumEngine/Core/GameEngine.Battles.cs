@@ -130,7 +130,8 @@ public partial class GameEngine
                 CannotFlee = cannotFlee,
                 PlayerName = name,
                 SpecialBalls = kind == BattleKind.Safari ? safari.Balls : kind == BattleKind.PalPark ? pastimes.PalPark.Show?.ParkBalls ?? 0 : 0,
-                MoveHints = MoveHintsOn
+                MoveHints = MoveHintsOn,
+                Scene = Settings.BattleScene
             });
             // A Pokémon hooked on a rod is fought on the water's stage, as a surfer's is (the original's water
             // terrain gives both the same platforms), whatever ground the player cast from
@@ -366,7 +367,10 @@ public partial class GameEngine
                 FirstBattle = firstBattle,
                 Conditions = BattleConditionsHere(terms),
                 MoveHints = MoveHintsOn,
-                TrainerLines = TrainerLinesOn
+                TrainerLines = TrainerLinesOn,
+                // Platinum's two battle options (plan 08 · P1): the core offers only where a single battle allows it
+                OffersSwitch = Settings.BattleStyle == BattleStyle.Shift,
+                Scene = Settings.BattleScene
             });
             battleRenderer.SetArena(currentMap, player.GridX, player.GridY);
             battleTrainers.Clear();

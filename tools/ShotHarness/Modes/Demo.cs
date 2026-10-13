@@ -147,5 +147,57 @@ partial class Harness
         Skip(2.0); Shot("d36_ball_click");
         Skip(0.8); Shot("d37_gotcha");
         Console.WriteLine("  msg: " + c.CurrentMessage);
+
+        // The options' Battle Scene off (plan 08 · P1), last so that no shot before it moves: the same rival with a
+        // team and chance of their own, and three moves at the moments the scene's own shots are taken. Nobody lunges,
+        // no effect plays and the hit lands with its line; the move's sound, the flicker and the bars go on
+        DemoSceneOff();
+    }
+
+    void DemoSceneOff()
+    {
+        var team = new Party();
+        var lead = new Pokemon(PokemonDatabase.Get("Infernape")!, 60, new Random(3));
+        team.Add(lead);
+        var rival = new Trainer { Name = "Barry", TrainerClass = "Rival" };
+        var torterra = new Pokemon(PokemonDatabase.Get("Torterra")!, 90, new Random(4));
+        rival.Party.Add(torterra);
+        game.Map = MapDatabase.Get("Sinnoh");
+        game.BattleRenderer.SetArena(BattleArena.Grass);
+        var b = new BattleEngine(new BattleSetup
+        {
+            PlayerParty = team, Inventory = new Inventory(), Pokedex = new Pokedex(), Trainers = new List<Trainer> { rival },
+            Random = new Random(11), Scene = false
+        });
+        game.Battle = b;
+        game.State = GameState.Battle;
+        ToMainMenu(b);
+        Skip(0.6); Shot("d40_menu_scene_off");
+        foreach (var (move, tag) in new[] { ("Flamethrower", "d41_flamethrower_scene_off"), ("Swords Dance", "d42_swords_dance_scene_off"), ("Will-O-Wisp", "d43_will_o_wisp_scene_off") })
+        {
+            Skip(1.0);
+            lead.Moves.Clear();
+            lead.Moves.Add(new Move(MoveDatabase.Get(move)!));
+            torterra.Moves.Clear();
+            torterra.Moves.Add(new Move(MoveDatabase.Get("Splash")!));
+            lead.CurrentHP = lead.MaxHP;
+            torterra.CurrentHP = torterra.MaxHP;
+            torterra.Status = StatusCondition.None;
+            torterra.StatStages[StatType.Speed] = -6;
+            int before = torterra.CurrentHP;
+            b.SelectMove(0);
+            Console.WriteLine("  msg: " + b.CurrentMessage);
+            // Where the scene's own shots catch the windup, the cut and the impact (d10_*): here the line alone, and
+            // what it carries already landed
+            Skip(0.12); Shot($"{tag}_a");
+            Skip(0.28); Shot($"{tag}_b");
+            Console.WriteLine($"  scene off: {move}, the foe's HP {before} -> {b.EnemyPokemon.CurrentHP} at 0.4 s, cues {b.Anim.Cues.Count}");
+            for (int guard = 0; guard < 12 && b.HUD.MenuState == BattleMenuState.Message && !b.IsBattleOver; guard++)
+            {
+                Confirm(b);
+                Skip(0.35);
+            }
+        }
+        Skip(0.3); Shot("d44_after_scene_off");
     }
 }

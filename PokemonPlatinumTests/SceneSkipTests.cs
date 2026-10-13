@@ -789,7 +789,8 @@ public class SceneSkipTests
         Assert.Equal(SkipScenes.Off, settings.SkipScenes);
         // A new row goes in before HELP, which stays the last
         var rows = Enum.GetValues<OptionRow>();
-        Assert.Equal(new[] { OptionRow.SkipScenes, OptionRow.Help }, rows[^2..]);
+        Assert.Equal(OptionRow.Help, rows[^1]);
+        Assert.True(Array.IndexOf(rows, OptionRow.SkipScenes) < Array.IndexOf(rows, OptionRow.Help));
     }
 
     // ------------------------------------------------------------------ what the engine ends at once

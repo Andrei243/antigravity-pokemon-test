@@ -117,8 +117,60 @@ partial class Harness
         FieldLookMode();
         // The turn's moments (plan 25 · Y3, Modes/ConditionsMoments.cs), after it for the same reason
         MomentsMode();
-        // A condition that lasts (plan 09 · L2, Modes/ConditionsStatus.cs), the very last for the same reason
+        // A condition that lasts (plan 09 · L2, Modes/ConditionsStatus.cs), after it for the same reason
         StatusLooksMode();
+        // The options' Battle Scene off (plan 08 · P1), the very last for the same reason
+        SceneOffMode();
+    }
+
+    // A battle with the scene off (plan 08 · P1): in the rain, whose layer comes in with no cue (96_scene_off_menu); a
+    // condition given with no cue of its own (96_scene_off_status_given); poison's bite with no moment and its HP
+    // landed with the line (96_scene_off_poison); and the mark that lasts, which stays (96_scene_off_marks). A team,
+    // a Pokédex and chance of their own, so nothing of the harness's is touched
+    void SceneOffMode()
+    {
+        var team = new Party();
+        var mine = new Pokemon(PokemonDatabase.Get("Venusaur")!, 50, new Random(51));
+        mine.Moves.Clear();
+        mine.Moves.Add(new Move(MoveDatabase.Get("Toxic")));
+        mine.Moves.Add(new Move(MoveDatabase.Get("Leech Seed")));
+        team.Add(mine);
+        var foe = new Pokemon(PokemonDatabase.Get("Bidoof")!, 30, new Random(52));
+        foe.Moves.Clear();
+        foe.Moves.Add(new Move(MoveDatabase.Get("Splash")));
+        var (name, x, y) = Place("Route201", -1, -1);
+        game.Map = MapDatabase.Get(name);
+        if (x >= 0) game.Player.SetPosition(x, y, Direction.Up);
+        var b = new BattleEngine(new BattleSetup
+        {
+            PlayerParty = team, Inventory = new Inventory(), Pokedex = new Pokedex(), WildPokemon = new List<Pokemon> { foe },
+            Random = new BattleRandom(53).Force(RollKind.Critical, 1).Force(RollKind.Accuracy, 0),
+            Conditions = new BattleConditions { Weather = BattleWeather.Rain }, Scene = false
+        });
+        game.BattleRenderer.SetArena(game.Map, x, y);
+        game.Battle = b;
+        game.State = GameState.Battle;
+        ToMainMenu(b);
+        Skip(0.6); Shot("96_scene_off_menu");
+        Console.WriteLine($"  scene off: weather {b.Anim.Weather}, cues {b.Anim.Cues.Count}");
+
+        void ReadUntil(Func<string, bool> line, string shot)
+        {
+            for (int i = 0; i < 30 && !line(b.CurrentMessage) && b.HUD.MenuState == BattleMenuState.Message && !b.IsBattleOver; i++)
+            {
+                Confirm(b);
+                Skip(0.3);
+            }
+            Skip(0.4);
+            Console.WriteLine($"  scene off: \"{b.CurrentMessage}\", the foe's HP {b.EnemyPokemon.CurrentHP}/{b.EnemyPokemon.MaxHP}, bar {b.Anim[BattleSide.Enemy].DisplayedHp:0.0}, cues {b.Anim.Cues.Count}");
+            Shot(shot);
+        }
+        b.SelectMove(0);
+        ReadUntil(line => line.Contains("poisoned"), "96_scene_off_status_given");
+        ReadUntil(line => line.Contains("hurt by poison"), "96_scene_off_poison");
+        for (int i = 0; i < 20 && b.HUD.MenuState == BattleMenuState.Message && !b.IsBattleOver; i++) { Confirm(b); Skip(0.3); }
+        Skip(0.6); Shot("96_scene_off_marks");
+        game.State = GameState.Overworld;
     }
 
     // The weather and the doll (plan 25 · Y1): a battle in each of the five weathers at its menu (96_weather_<kind>)
