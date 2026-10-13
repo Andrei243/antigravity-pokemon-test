@@ -16,13 +16,22 @@ namespace PokemonPlatinumEngine.UI;
 internal static partial class ModernUi
 {
     /// <summary>The pages of an entry as tabs: INFO in Blue, AREA in Green, SIZE in Gold.</summary>
-    private static readonly (string Label, UiIcon Icon, Color Color)[] DexPages =
+    private static (string Label, UiIcon Icon, Color Color)[] DexPages => new[]
     {
-        ("INFO", UiIcon.Dex, Blue), ("AREA", UiIcon.Pin, Green), ("SIZE", UiIcon.Size, Gold)
+        (Text.Of("pokedex.page.Info"), UiIcon.Dex, Blue), (Text.Of("pokedex.page.Area"), UiIcon.Pin, Green), (Text.Of("pokedex.page.Size"), UiIcon.Size, Gold)
     };
 
     /// <summary>The player's height on the size page, in metres.</summary>
     public const float PlayerHeight = 1.4f;
+
+    /// <summary>A Pokédex number as the list and the entries write it: No. 001.</summary>
+    public static string DexNumber(int number) => Text.Of("summary.number", ("number", number.ToString("D3", CultureInfo.InvariantCulture)));
+
+    /// <summary>A height in metres, to a tenth: 0.4 m.</summary>
+    public static string Metres(float metres) => Text.Of("pokedex.metres", ("n", metres.ToString("0.0", CultureInfo.InvariantCulture)));
+
+    /// <summary>A weight in kilograms, to a tenth: 10.2 kg.</summary>
+    public static string Kilograms(float kilograms) => Text.Of("pokedex.kilograms", ("n", kilograms.ToString("0.0", CultureInfo.InvariantCulture)));
 
     private static readonly Color Cream = new(252, 246, 228, 255);
     private static readonly Color DeepGold = new(176, 120, 30, 255);
@@ -33,20 +42,21 @@ internal static partial class ModernUi
     public static void DrawPokedex(int sw, int sh, PokedexScreen dex, Pokedex pokedex, float appear = 1f)
     {
         Backdrop(sw, sh);
-        ScreenTitle("POKÉDEX");
+        ScreenTitle(Text.Of("pokedex.title"));
         switch (dex.Focus)
         {
             case PokedexFocus.Entry:
-                Hints(sw - Margin, 44, ("Left / Right", "Page"), ("Up / Down", "Species"), ("Esc", "Back"));
+                Hints(sw - Margin, 44, Hint("shared.keys.leftRight", "shared.hints.page"), Hint("shared.keys.upDown", "shared.hints.species"), Hint("shared.keys.esc", "shared.hints.back"));
                 break;
             case PokedexFocus.Search:
-                Hints(sw - Margin, 44, ("Left / Right", "Change"), ("Enter", "Search"), ("Esc", "Close"));
+                Hints(sw - Margin, 44, Hint("shared.keys.leftRight", "shared.hints.change"), Hint("shared.keys.enter", "shared.hints.search"), Hint("shared.keys.esc", "shared.hints.close"));
                 break;
             case PokedexFocus.Diploma:
-                Hints(sw - Margin, 44, ("Z", "Close"));
+                Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.close"));
                 break;
             default:
-                Hints(sw - Margin, 44, ("Z", "Entry"), ("Left / Right", "Jump 10"), ("Enter", "Search"), ("Esc", dex.Results != null ? "All" : "Back"));
+                Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.entry"), Hint("shared.keys.leftRight", "shared.hints.jump"), Hint("shared.keys.enter", "shared.hints.search"),
+                    Hint("shared.keys.esc", dex.Results != null ? "shared.hints.all" : "shared.hints.back"));
                 break;
         }
 
@@ -82,16 +92,16 @@ internal static partial class ModernUi
     {
         Panel(list, 34);
         var mode = dex.Mode;
-        float x = list.X + 44 + Tag(list.X + 44, list.Y + 50, mode == PokedexMode.Sinnoh ? "SINNOH" : "NATIONAL", mode == PokedexMode.Sinnoh ? Blue : Red, 40) + 36;
+        float x = list.X + 44 + Tag(list.X + 44, list.Y + 50, Text.Of($"pokedex.mode.{mode}"), mode == PokedexMode.Sinnoh ? Blue : Red, 40) + 36;
         if (dex.Results is { } query)
         {
-            x = Field("FOUND", dex.Rows.Count.ToString(CultureInfo.InvariantCulture), x, list.Y + 28, 40, 56);
-            Field("ORDER", PokedexSearch.NameOf(query.Order), x, list.Y + 28, 40);
+            x = Field(Text.Of("pokedex.found"), dex.Rows.Count.ToString(CultureInfo.InvariantCulture), x, list.Y + 28, 40, 56);
+            Field(Text.Of("pokedex.order"), PokedexSearch.NameOf(query.Order), x, list.Y + 28, 40);
         }
         else
         {
-            x = Field("SEEN", pokedex.SeenIn(mode).ToString(CultureInfo.InvariantCulture), x, list.Y + 28, 40, 56);
-            Field("CAUGHT", pokedex.CaughtIn(mode).ToString(CultureInfo.InvariantCulture), x, list.Y + 28, 40);
+            x = Field(Text.Of("pokedex.seen"), pokedex.SeenIn(mode).ToString(CultureInfo.InvariantCulture), x, list.Y + 28, 40, 56);
+            Field(Text.Of("pokedex.caught"), pokedex.CaughtIn(mode).ToString(CultureInfo.InvariantCulture), x, list.Y + 28, 40);
         }
         UiShapes.Fill(new Rectangle(list.X + 36, list.Y + 114, list.Width - 72, 3), 1.5f, Rule);
 
@@ -99,7 +109,7 @@ internal static partial class ModernUi
         var rows = dex.Rows;
         if (rows.Count == 0)
         {
-            EmptyNote(new Rectangle(list.X, list.Y + top, list.Width, list.Height - top), "Nothing found.");
+            EmptyNote(new Rectangle(list.X, list.Y + top, list.Width, list.Height - top), Text.Of("pokedex.nothingFound"));
             return;
         }
         var order = dex.Results?.Order ?? PokedexOrder.Number;
@@ -111,7 +121,7 @@ internal static partial class ModernUi
             bool selected = index == dex.SelectedIndex;
             bool seen = pokedex.IsSeen(s.DexNumber), caught = pokedex.IsCaught(s.DexNumber);
             var ink = ListRow(r, selected, seen ? s.Name : "— — —", seen, nameX: 232);
-            UiFonts.DrawCentered($"No. {number:D3}", r.X + 100, r.Y + r.Height / 2f, 24, selected ? Color.White : Muted, UiWeight.Black);
+            UiFonts.DrawCentered(DexNumber(number), r.X + 100, r.Y + r.Height / 2f, 24, selected ? Color.White : Muted, UiWeight.Black);
             if (seen) RowIcon(r, PixelArtGenerator.GetPokemonIcon(s.Name), 1f, selected, hop: Hop(selected));
             else UiShapes.Circle(new Vector2(r.X + 52, r.Y + r.Height / 2f), 8, Rule);
             if (PokedexSearch.SizeLabel(order, s) is { } size) RowValue(r, size, ink, 26);
@@ -133,12 +143,12 @@ internal static partial class ModernUi
         var disc = new Vector2(detail.X + 44 + 204, detail.Y + 44 + 204);
         BallDisc(disc, 204);
         float x = detail.X + 44 + 408 + 44;
-        UiFonts.DrawCentered($"No. {entry.Number:D3}", x, detail.Y + 78, 30, Muted, UiWeight.Black);
+        UiFonts.DrawCentered(DexNumber(entry.Number), x, detail.Y + 78, 30, Muted, UiWeight.Black);
         float qw = UiFonts.Measure("?", 220, UiWeight.Black);
         UiFonts.DrawCentered("?", disc.X - qw / 2f, disc.Y, 220, Rule, UiWeight.Black);
         UiFonts.DrawCentered("— — —", x, detail.Y + 138, 56, Muted, UiWeight.Black);
         UiShapes.Fill(new Rectangle(detail.X + 44, detail.Y + 496, detail.Width - 88, 3), 1.5f, Rule);
-        UiFonts.Draw("Not seen yet.", detail.X + 44, detail.Y + 526, 30, Muted);
+        UiFonts.Draw(Text.Of("pokedex.notSeen"), detail.X + 44, detail.Y + 526, 30, Muted);
     }
 
     /// <summary>
@@ -154,30 +164,30 @@ internal static partial class ModernUi
         PixelArt(PixelArtGenerator.GetPokemonSprite(s.Name, isBack: false), disc, 3, Hop(true) * 3);
 
         float x = detail.X + 44 + 360 + 44;
-        UiFonts.DrawCentered($"No. {entry.Number:D3}", x, detail.Y + 160, 30, Muted, UiWeight.Black);
+        UiFonts.DrawCentered(DexNumber(entry.Number), x, detail.Y + 160, 30, Muted, UiWeight.Black);
         float size = 56, room = detail.X + detail.Width - 44 - x;
         float nameW = UiFonts.Measure(s.Name, size, UiWeight.Black);
         if (nameW > room) size = MathF.Floor(size * room / nameW);
         UiFonts.DrawCentered(s.Name, x, detail.Y + 218, size, Ink, UiWeight.Black);
-        UiFonts.DrawCentered(owned ? $"{s.Category} Pokémon" : "????? Pokémon", x, detail.Y + 270, 28, Muted, UiWeight.ExtraBold);
+        UiFonts.DrawCentered(owned ? Text.Of("pokedex.kind", ("category", s.Category)) : Text.Of("pokedex.unknownKind"), x, detail.Y + 270, 28, Muted, UiWeight.ExtraBold);
         float px = x;
         px += TypePill(px, detail.Y + 304, s.PrimaryType, 42) + 10;
         if (s.SecondaryType.HasValue) TypePill(px, detail.Y + 304, s.SecondaryType.Value, 42);
 
         // Height, weight and the kind of place it lives in, three captions over values; the habitat's value is made
         // smaller where it wouldn't fit before the panel's edge
-        string height = owned ? s.Height.ToString("0.0", CultureInfo.InvariantCulture) + " m" : "?????";
-        string weight = owned ? s.Weight.ToString("0.0", CultureInfo.InvariantCulture) + " kg" : "?????";
+        string height = owned ? Metres(s.Height) : "?????";
+        string weight = owned ? Kilograms(s.Weight) : "?????";
         var habitat = DexEntries.HabitatOf(s.Name);
-        float hx = Field("HEIGHT", height, x, detail.Y + 384, 34, 44);
-        hx = Field("WEIGHT", weight, hx, detail.Y + 384, 34, habitat.HasValue ? 44 : 64);
+        float hx = Field(Text.Of("pokedex.height"), height, x, detail.Y + 384, 34, 44);
+        hx = Field(Text.Of("pokedex.weight"), weight, hx, detail.Y + 384, 34, habitat.HasValue ? 44 : 64);
         if (habitat is { } kind)
         {
             string word = owned ? DexEntries.Word(kind) : "?????";
             float right = detail.X + detail.Width - 44, wordSize = 34;
             float wordW = UiFonts.Measure(word, wordSize, UiWeight.Black);
             if (hx + wordW > right) wordSize = MathF.Max(22, MathF.Floor(wordSize * (right - hx) / wordW));
-            Field("HABITAT", word, hx, detail.Y + 384, wordSize);
+            Field(Text.Of("pokedex.habitat"), word, hx, detail.Y + 384, wordSize);
         }
 
         // The rule under them, ending in a dot for each written entry where there is more than one, the one shown Blue
@@ -187,7 +197,7 @@ internal static partial class ModernUi
         for (int i = 0; i < count && count > 1; i++)
             UiShapes.Circle(new Vector2(last - (count - 1 - i) * 26, detail.Y + 513.5f), 8, i == which % count ? Blue : Rule);
         if (owned) DrawWrapped(DexEntries.EntryFor(s, which), detail.X + 44, detail.Y + 540, detail.Width - 88, 30, Ink, 42);
-        else UiFonts.Draw("Catch one to record what is known about it.", detail.X + 44, detail.Y + 540, 30, Muted);
+        else UiFonts.Draw(Text.Of("pokedex.catchToRecord"), detail.X + 44, detail.Y + 540, 30, Muted);
     }
 
     /// <summary>
@@ -203,11 +213,11 @@ internal static partial class ModernUi
 
         // The places, in the region's order, with how the species is met there
         float lx = map.X + map.Width + 28, room = detail.X + detail.Width - 44 - lx, ly = map.Y;
-        Label("WHERE IT LIVES", lx, ly);
+        Label(Text.Of("pokedex.whereItLives"), lx, ly);
         ly += 40;
         if (places.Count == 0)
         {
-            UiFonts.Draw("Area unknown.", lx, ly, 30, Muted, UiWeight.ExtraBold);
+            UiFonts.Draw(Text.Of("pokedex.areaUnknown"), lx, ly, 30, Muted, UiWeight.ExtraBold);
             return;
         }
         float bottom = detail.Y + detail.Height - 44;
@@ -217,7 +227,7 @@ internal static partial class ModernUi
             float need = 34 + lines.Count * 28 + 14;
             if (ly + need > bottom)
             {
-                UiFonts.Draw($"and {places.Count - i} more", lx, ly, 24, Muted, UiWeight.ExtraBold);
+                UiFonts.Draw(Text.Of("pokedex.more", ("count", places.Count - i)), lx, ly, 24, Muted, UiWeight.ExtraBold);
                 break;
             }
             UiFonts.Draw(places[i].Name, lx, ly, 28, Ink, UiWeight.Black);
@@ -226,12 +236,12 @@ internal static partial class ModernUi
         }
 
         // Under the map, how many places in all
-        string summary = places.Count == 1 ? $"{s.Name} lives in one place." : $"{s.Name} lives in {places.Count} places.";
+        string summary = Text.Of("pokedex.livesIn", ("name", s.Name), ("n", places.Count));
         UiFonts.Draw(summary, map.X, map.Y + map.Height + 28, 28, Ink, UiWeight.ExtraBold);
         float kx = map.X;
         float ky = map.Y + map.Height + 92;
         UiShapes.Shape(new Rectangle(kx, ky, 26, 26), 5, Selection, Selection, Color.White, 2.5f);
-        UiFonts.DrawCentered("Where it lives", map.X + 38, ky + 13, 22, Muted, UiWeight.ExtraBold);
+        UiFonts.DrawCentered(Text.Of("pokedex.mapKey"), map.X + 38, ky + 13, 22, Muted, UiWeight.ExtraBold);
     }
 
     /// <summary>A place's name from its key: <c>eterna_city</c> is Eterna City.</summary>
@@ -251,17 +261,17 @@ internal static partial class ModernUi
     {
         var parts = new List<string>();
         var times = new List<string>();
-        if (ways.HasFlag(HabitatWays.Morning)) times.Add("morning");
-        if (ways.HasFlag(HabitatWays.Day)) times.Add("day");
-        if (ways.HasFlag(HabitatWays.Night)) times.Add("night");
-        if (times.Count == 3) parts.Add("Grass, all day");
-        else if (times.Count > 0) parts.Add("Grass: " + string.Join(", ", times));
-        if (ways.HasFlag(HabitatWays.Surfing)) parts.Add("Surfing");
+        if (ways.HasFlag(HabitatWays.Morning)) times.Add(Text.Of("pokedex.way.morning"));
+        if (ways.HasFlag(HabitatWays.Day)) times.Add(Text.Of("pokedex.way.day"));
+        if (ways.HasFlag(HabitatWays.Night)) times.Add(Text.Of("pokedex.way.night"));
+        if (times.Count == 3) parts.Add(Text.Of("pokedex.way.allDay"));
+        else if (times.Count > 0) parts.Add(Text.Of("pokedex.way.grass", ("times", string.Join(", ", times))));
+        if (ways.HasFlag(HabitatWays.Surfing)) parts.Add(Text.Of("pokedex.way.surfing"));
         var rods = new List<string>();
-        if (ways.HasFlag(HabitatWays.OldRod)) rods.Add("Old");
-        if (ways.HasFlag(HabitatWays.GoodRod)) rods.Add("Good");
-        if (ways.HasFlag(HabitatWays.SuperRod)) rods.Add("Super");
-        if (rods.Count > 0) parts.Add(string.Join(", ", rods) + (rods.Count == 1 ? " Rod" : " Rods"));
+        if (ways.HasFlag(HabitatWays.OldRod)) rods.Add(Text.Of("pokedex.way.Old"));
+        if (ways.HasFlag(HabitatWays.GoodRod)) rods.Add(Text.Of("pokedex.way.Good"));
+        if (ways.HasFlag(HabitatWays.SuperRod)) rods.Add(Text.Of("pokedex.way.Super"));
+        if (rods.Count > 0) parts.Add(Text.Of("pokedex.way.rods", ("rods", string.Join(", ", rods)), ("n", rods.Count)));
         return string.Join(" · ", parts);
     }
 
@@ -270,11 +280,11 @@ internal static partial class ModernUi
     {
         if (!owned)
         {
-            EmptyNote(new Rectangle(detail.X, detail.Y + 92, detail.Width, detail.Height - 92), "Catch one to compare its size.");
+            EmptyNote(new Rectangle(detail.X, detail.Y + 92, detail.Width, detail.Height - 92), Text.Of("pokedex.catchToCompare"));
             return;
         }
-        float hx = Field("HEIGHT", s.Height.ToString("0.0", CultureInfo.InvariantCulture) + " m", detail.X + 44, detail.Y + 124, 38, 64);
-        Field("WEIGHT", s.Weight.ToString("0.0", CultureInfo.InvariantCulture) + " kg", hx, detail.Y + 124, 38);
+        float hx = Field(Text.Of("pokedex.height"), Metres(s.Height), detail.X + 44, detail.Y + 124, 38, 64);
+        Field(Text.Of("pokedex.weight"), Kilograms(s.Weight), hx, detail.Y + 124, 38);
 
         float floor = detail.Y + detail.Height - 150;
         UiShapes.Fill(new Rectangle(detail.X + 60, floor, detail.Width - 120, 4), 2, Rule);
@@ -290,7 +300,7 @@ internal static partial class ModernUi
             Raylib.DrawTexturePro(art, new Rectangle(0, 0, art.Width, art.Height), dest, Vector2.Zero, 0f, Silhouette);
             float w = UiFonts.Measure(name, 28, UiWeight.Black);
             UiFonts.DrawCentered(name, centerX - w / 2f, floor + 44, 28, Ink, UiWeight.Black);
-            string text = metres.ToString("0.0", CultureInfo.InvariantCulture) + " m";
+            string text = Metres(metres);
             float tw = UiFonts.Measure(text, 24, UiWeight.ExtraBold);
             UiFonts.DrawCentered(text, centerX - tw / 2f, floor + 82, 24, Muted, UiWeight.ExtraBold);
         }
@@ -309,7 +319,7 @@ internal static partial class ModernUi
         float panelH = 116 + (rows.Count - 1) * pitch + 92 + 48;
         var panel = new Rectangle(sw / 2f - 620, sh / 2f - panelH / 2f + 20, 1240, panelH);
         Panel(panel, 36);
-        UiFonts.Draw("Search the Pokédex", panel.X + 56, panel.Y + 36, 44, Ink, UiWeight.Black);
+        UiFonts.Draw(Text.Of("pokedex.search.title"), panel.X + 56, panel.Y + 36, 44, Ink, UiWeight.Black);
 
         float y = panel.Y + 116;
         for (int i = 0; i < rows.Count; i++)
@@ -322,25 +332,14 @@ internal static partial class ModernUi
                 float bw = (panel.Width - 112 - gap * (buttons.Count - 1)) / buttons.Count;
                 for (int b = 0; b < buttons.Count; b++)
                 {
-                    var (label, color) = buttons[b] switch
-                    {
-                        PokedexSearchButton.Search => ("SEARCH", Green),
-                        PokedexSearchButton.Reset => ("RESET", Blue),
-                        _ => ("DIPLOMA", Gold)
-                    };
+                    var button = buttons[b];
+                    string label = Text.Of($"pokedex.search.button.{button}");
+                    var color = button switch { PokedexSearchButton.Search => Green, PokedexSearchButton.Reset => Blue, _ => Gold };
                     Button(new Rectangle(panel.X + 56 + b * (bw + gap), y + 12, bw, 80), 40, color, label, 30, i == dex.SearchIndex && b == dex.ButtonIndex);
                 }
                 continue;
             }
-            string name = row switch
-            {
-                PokedexSearchRow.Mode => "Pokédex",
-                PokedexSearchRow.Order => "Order",
-                PokedexSearchRow.Name => "Name",
-                PokedexSearchRow.Type1 => "Type",
-                PokedexSearchRow.Type2 => "Second type",
-                _ => "Shape"
-            };
+            string name = Text.Of($"pokedex.search.row.{row}");
             ValueRow(new Rectangle(panel.X + 40, y, panel.Width - 80, height), name, dex.ValueOf(row), i == dex.SearchIndex, 440);
             y += pitch;
         }
@@ -363,17 +362,15 @@ internal static partial class ModernUi
             UiFonts.DrawCentered(text, r.X + (r.Width - w) / 2f, y, size, color, weight);
         }
 
-        Centred("DIPLOMA", r.Y + 118, 84, DeepGold, UiWeight.Black);
-        Centred(mode == PokedexMode.Sinnoh ? "SINNOH POKÉDEX" : "NATIONAL POKÉDEX", r.Y + 196, 34, Ink, UiWeight.Black);
+        Centred(Text.Of("pokedex.diploma.title"), r.Y + 118, 84, DeepGold, UiWeight.Black);
+        Centred(Text.Of($"pokedex.diploma.{mode}"), r.Y + 196, 34, Ink, UiWeight.Black);
         UiShapes.Fill(new Rectangle(r.X + r.Width / 2f - 160, r.Y + 234, 320, 3), 1.5f, Gold);
         Centred(PlayerIdentity.Name, r.Y + 312, 64, Ink, UiWeight.Black);
-        string line = mode == PokedexMode.Sinnoh
-            ? $"has seen every one of the {Pokedex.Entries(PokedexMode.Sinnoh).Count} Pokémon of the Sinnoh Pokédex. A full record of the region's wild life, kept with care."
-            : $"has caught every Pokémon of the National Pokédex that a trainer can meet. The work of a true Pokémon Master.";
+        string line = Text.Of($"pokedex.diploma.line.{mode}", ("count", Pokedex.Entries(PokedexMode.Sinnoh).Count));
         var lines = Wrap(line, 900, 32, UiWeight.ExtraBold);
         for (int i = 0; i < lines.Count; i++) Centred(lines[i], r.Y + 400 + i * 46, 32, Ink, UiWeight.ExtraBold);
 
-        string day = GameClock.Today.ToString("d MMMM yyyy", CultureInfo.InvariantCulture);
+        string day = Words.Date(GameClock.Today);
         UiFonts.Draw(day, r.X + 92, r.Y + r.Height - 120, 28, Muted, UiWeight.ExtraBold);
 
         // The seal: a gold medallion with the Pokédex's sign

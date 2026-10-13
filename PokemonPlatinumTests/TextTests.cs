@@ -1,6 +1,7 @@
 using System.Text.RegularExpressions;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
+using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.UI;
 
 namespace PokemonPlatinumTests;
@@ -21,7 +22,10 @@ public class TextTests
     private static readonly string[] OnTheTable =
     {
         "UI/OptionsScreen.cs", "UI/TitleScreen.cs", "UI/StartMenu.cs", "UI/ClosePrompt.cs",
-        "UI/BagScreen.cs", "UI/ShopScreen.cs", "UI/PartyScreen.cs", "UI/ModernUi.Items.cs", "UI/ModernUi.Party.cs", "Core/Words.cs"
+        "UI/BagScreen.cs", "UI/ShopScreen.cs", "UI/PartyScreen.cs", "UI/ModernUi.Items.cs", "UI/ModernUi.Party.cs", "Core/Words.cs",
+        "UI/PokedexScreen.cs", "UI/ModernUi.Pokedex.cs", "Models/PokedexSearch.cs", "UI/ModernUi.Records.cs", "UI/TrainerCardScreen.cs",
+        "UI/HallOfFameScreen.cs", "UI/JournalScreen.cs", "UI/PCScreen.cs", "UI/ModernUi.Storage.cs", "UI/ModernUi.Lists.cs",
+        "UI/StarterSelectScreen.cs", "UI/SaveScreen.cs"
     };
 
     /// <summary>What may stay in quotes in a file on the table: names of the data, and the logo, which is a picture (plan 17).</summary>
@@ -34,7 +38,16 @@ public class TextTests
         {
             "Gracidea", "Bicycle", "OldRod", "GoodRod", "SuperRod", "EscapeRope", "Journal", "VsSeeker", "PokeRadar", "Honey",
             "PoffinCase", "ExplorerKit", "TownMap", "Seal Case", "Fashion Case", "Flute", "Shaymin-Sky"
-        }
+        },
+        // A place's name made from its key says Pokémon with its accent
+        ["UI/ModernUi.Pokedex.cs"] = new[] { "Pokémon" },
+        // The search's groups of first letters, and the shapes as species.json names them, which it searches by
+        ["Models/PokedexSearch.cs"] = new[]
+        {
+            "ABC", "DEF", "GHI", "JKL", "MNO", "PQR", "STU", "VWX", "YZ",
+            "Ball", "Squiggle", "Fish", "Arms", "Blob", "Upright", "Legs", "Quadruped", "Wings", "Tentacles", "Heads", "Humanoid", "Bug Wings", "Armor"
+        },
+        ["UI/StarterSelectScreen.cs"] = new[] { "Turtwig", "Chimchar", "Piplup" }
     };
 
     private static readonly Regex Literal = new(@"(\$?)""((?:[^""\\\n]|\\.)*)""", RegexOptions.Compiled);
@@ -140,6 +153,21 @@ public class TextTests
         Assert.Equal(new DateTime(2026, 3, 9).ToString("d MMMM yyyy", System.Globalization.CultureInfo.InvariantCulture), Words.Date(new DateTime(2026, 3, 9)));
         Assert.All(Enum.GetValues<PokemonType>(), t => Assert.Equal(t.ToString(), Words.Type(t)));
         Assert.All(Enum.GetValues<Nature>(), n => Assert.Equal(n.ToString(), Words.Nature(n)));
+        // N1c: the Pokédex, the records, the PC, the starters and saving
+        Assert.Equal(new[] { "Number", "A to Z", "Heaviest" }, new[] { PokedexOrder.Number, PokedexOrder.Alphabet, PokedexOrder.Heaviest }.Select(PokedexSearch.NameOf));
+        Assert.All(PokedexSearch.Shapes, shape => Assert.Equal(shape, PokedexSearch.NameOfShape(shape)));
+        Assert.Equal("Any", PokedexSearch.NameOfGroup(-1));
+        Assert.Equal("Grass: morning, night · Surfing · Old, Good Rods",
+            ModernUi.WaysOf(HabitatWays.Morning | HabitatWays.Night | HabitatWays.Surfing | HabitatWays.OldRod | HabitatWays.GoodRod));
+        Assert.Equal("Grass, all day · Super Rod", ModernUi.WaysOf(HabitatWays.Morning | HabitatWays.Day | HabitatWays.Night | HabitatWays.SuperRod));
+        Assert.Equal("No. 007", ModernUi.DexNumber(7));
+        Assert.Equal("10.5 kg", ModernUi.Kilograms(10.5f));
+        Assert.Equal("Bidoof lives in one place.", Text.Of("pokedex.livesIn", ("name", "Bidoof"), ("n", 1)));
+        Assert.Equal(Enumerable.Range(0, PcBoxes.WallpaperNames.Count).Select(i => PcBoxes.WallpaperNames[i]), Enumerable.Range(0, PcBoxes.WallpaperNames.Count).Select(i => Text.Of($"boxes.wallpaper.{i}")));
+        Assert.Equal("Monday", Words.Weekday(new DateTime(2026, 10, 12)));
+        Assert.Equal("9 Mar 2026", Words.ShortDate(new DateTime(2026, 3, 9)));
+        Assert.Equal(new[] { "SAVE", "CANCEL" }, SaveScreen.Answers);
+        Assert.Equal("SLOT 2", ModernUi.SlotLabel(2));
         // A placeholder the call names nothing for is left for whoever fills it later
         Assert.Equal("Hello {player}", Text.Fill("Hello {player}"));
     }

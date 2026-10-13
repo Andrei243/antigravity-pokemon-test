@@ -26,22 +26,23 @@ internal static partial class ModernUi
     public static void DrawHallOfFame(int sw, int sh, HallOfFameScreen screen, HallOfFame records, float appear = 1f)
     {
         Backdrop(sw, sh);
-        ScreenTitle("HALL OF FAME");
-        Hints(sw - Margin, 44, ("Left / Right", "Team"), ("Up / Down", "Pokémon"), ("Z", screen.ShowingMoves ? "Profile" : "Moves"), ("Esc", "Back"));
+        ScreenTitle(Text.Of("hallOfFame.title"));
+        Hints(sw - Margin, 44, Hint("shared.keys.leftRight", "shared.hints.team"), Hint("shared.keys.upDown", "shared.hints.pokemon"),
+            Hint("shared.keys.z", screen.ShowingMoves ? "shared.hints.profile" : "shared.hints.moves"), Hint("shared.keys.esc", "shared.hints.back"));
         float rise = (1f - UiMotion.EaseOut(appear)) * 60f;
         var panel = new Rectangle(Margin, ContentTop + rise, sw - Margin * 2, ContentBottom - ContentTop);
         Panel(panel, 40);
         if (screen.Shown(records) is not var (number, entry))
         {
-            EmptyNote(panel, "No team has entered the Hall of Fame yet.");
+            EmptyNote(panel, Text.Of("hallOfFame.empty"));
             return;
         }
 
         // ---- The head: the team's number, its day, which of the teams kept it is
         float hx = panel.X + 48;
-        float tagW = Tag(hx, panel.Y + 34, $"No. {number}", Gold, 56);
-        UiFonts.DrawCentered(entry.Date.ToString("d MMMM yyyy", CultureInfo.InvariantCulture), hx + tagW + 28, panel.Y + 62, 40, Ink, UiWeight.Black);
-        string which = $"TEAM {screen.Entry + 1} OF {records.Entries.Count}";
+        float tagW = Tag(hx, panel.Y + 34, Text.Of("hallOfFame.number", ("number", number)), Gold, 56);
+        UiFonts.DrawCentered(Words.Date(entry.Date), hx + tagW + 28, panel.Y + 62, 40, Ink, UiWeight.Black);
+        string which = Text.Of("hallOfFame.which", ("entry", screen.Entry + 1), ("count", records.Entries.Count));
         UiFonts.DrawCentered(which, panel.X + panel.Width - 48 - UiFonts.Measure(which, 24, UiWeight.Black), panel.Y + 62, 24, Muted, UiWeight.Black);
 
         // ---- The team, a card each
@@ -66,14 +67,14 @@ internal static partial class ModernUi
             float size = 32;
             while (size > 22 && UiFonts.Measure(m.Nickname, size, UiWeight.Black) > cardW - 28) size -= 2;
             UiFonts.DrawCentered(m.Nickname, r.X + (cardW - UiFonts.Measure(m.Nickname, size, UiWeight.Black)) / 2f, r.Y + 286, size, Ink, UiWeight.Black);
-            string level = $"Lv. {m.Level}";
+            string level = Text.Of("hallOfFame.level", ("level", m.Level));
             UiFonts.DrawCentered(level, r.X + (cardW - UiFonts.Measure(level, 26, UiWeight.ExtraBold)) / 2f, r.Y + 324, 26, Muted, UiWeight.ExtraBold);
         }
 
         // ---- The one chosen: who it is, or its moves
         var shown = entry.Team[member];
         float top = panel.Y + 124 + cardH + 36;
-        Tabs(new Rectangle(hx, top, 520, 64), new[] { ("PROFILE", UiIcon.Trainer, Blue), ("MOVES", UiIcon.Disc, Red) }, screen.ShowingMoves ? 1 : 0);
+        Tabs(new Rectangle(hx, top, 520, 64), new[] { (Text.Of("hallOfFame.profile"), UiIcon.Trainer, Blue), (Text.Of("hallOfFame.moves"), UiIcon.Disc, Red) }, screen.ShowingMoves ? 1 : 0);
         float y = top + 100;
         float wide = panel.Width - 96;
         if (!screen.ShowingMoves)
@@ -87,13 +88,13 @@ internal static partial class ModernUi
             }
             if (shown.Shiny) Star(new Vector2(after + 34, y + 34), 20, Gold);
             float fx = hx;
-            fx = Field("SPECIES", shown.Species, fx, y + 92, 36, 72);
-            fx = Field("LEVEL", shown.Level.ToString(), fx, y + 92, 36, 72);
-            fx = Field("ORIGINAL TRAINER", shown.TrainerName, fx, y + 92, 36, 72);
-            fx = Field("ID No.", TrainerCardScreen.FormatId(shown.TrainerId), fx, y + 92, 36, 72);
+            fx = Field(Text.Of("hallOfFame.species"), shown.Species, fx, y + 92, 36, 72);
+            fx = Field(Text.Of("hallOfFame.levelCaption"), shown.Level.ToString(), fx, y + 92, 36, 72);
+            fx = Field(Text.Of("hallOfFame.trainer"), shown.TrainerName, fx, y + 92, 36, 72);
+            fx = Field(Text.Of("hallOfFame.id"), TrainerCardScreen.FormatId(shown.TrainerId), fx, y + 92, 36, 72);
             if (PokemonDatabase.Get(shown.Species) is { } species)
             {
-                Label("TYPE", fx, y + 92);
+                Label(Text.Of("hallOfFame.type"), fx, y + 92);
                 float px = fx + TypePill(fx, y + 120, species.PrimaryType, 40) + 10;
                 if (species.SecondaryType is { } second) TypePill(px, y + 120, second, 40);
             }
@@ -154,22 +155,22 @@ internal static partial class ModernUi
     public static void DrawJournal(int sw, int sh, JournalScreen screen, Journal journal, float appear = 1f)
     {
         Backdrop(sw, sh);
-        ScreenTitle("JOURNAL");
-        Hints(sw - Margin, 44, ("Left / Right", "Turn the page"), ("Esc", "Close"));
+        ScreenTitle(Text.Of("journal.title"));
+        Hints(sw - Margin, 44, Hint("shared.keys.leftRight", "shared.hints.turnPage"), Hint("shared.keys.esc", "shared.hints.close"));
         float rise = (1f - UiMotion.EaseOut(appear)) * 60f;
         var page = new Rectangle(sw / 2f - 760, ContentTop + 6 + rise, 1520, ContentBottom - ContentTop - 6);
         float textX = page.X + 196, firstRule = page.Y + 250;
         NotebookPage(page, firstRule, page.X + 168);
         if (screen.Page >= journal.All.Count)
         {
-            EmptyNote(page, "Nothing has been written yet.");
+            EmptyNote(page, Text.Of("journal.empty"));
             return;
         }
         var day = journal.All[screen.Page];
 
         // ---- Its day
-        UiFonts.Draw(day.Date.ToString("dddd", CultureInfo.InvariantCulture).ToUpperInvariant(), textX, page.Y + 60, 24, Muted, UiWeight.Black);
-        UiFonts.Draw(day.Date.ToString("d MMMM yyyy", CultureInfo.InvariantCulture), textX, page.Y + 90, 48, Ink, UiWeight.Black);
+        UiFonts.Draw(Words.Weekday(day.Date).ToUpperInvariant(), textX, page.Y + 60, 24, Muted, UiWeight.Black);
+        UiFonts.Draw(Words.Date(day.Date), textX, page.Y + 90, 48, Ink, UiWeight.Black);
 
         // ---- The day's Pokémon, pinned at the top right
         float textRight = page.X + page.Width - 60;
@@ -246,8 +247,8 @@ internal static partial class ModernUi
     public static void DrawTrainerCard(int sw, int sh, TrainerCardInfo info, Texture2D? portrait, float appear = 1f, bool back = false, float flip = 1f)
     {
         Backdrop(sw, sh);
-        ScreenTitle("TRAINER CARD");
-        Hints(sw - Margin, 44, ("Z", "Turn over"), ("Esc", "Back"));
+        ScreenTitle(Text.Of("card.title"));
+        Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.turnOver"), Hint("shared.keys.esc", "shared.hints.back"));
 
         float rise = (1f - UiMotion.EaseOut(appear)) * 60f;
         var card = new Rectangle(200, 150 + rise, sw - 400, 840);
@@ -280,7 +281,7 @@ internal static partial class ModernUi
         float bandY = band.Y + band.Height / 2f;
         UiFonts.DrawCentered(info.Name, band.X + 44, bandY + 3, 52, new Color(0, 0, 0, 60), UiWeight.Black);
         UiFonts.DrawCentered(info.Name, band.X + 44, bandY, 52, Color.White, UiWeight.Black);
-        string id = $"ID No. {TrainerCardScreen.FormatId(info.TrainerId)}";
+        string id = Text.Of("card.id", ("id", TrainerCardScreen.FormatId(info.TrainerId)));
         float idX = band.X + band.Width - 44 - UiFonts.Measure(id, 32, UiWeight.Black);
         UiFonts.DrawCentered(id, idX, bandY, 32, Color.White, UiWeight.Black);
         for (int k = 0; k < 5; k++)
@@ -297,12 +298,12 @@ internal static partial class ModernUi
         // ---- Records
         bool dex = info.Colour != TrainerCardRules.CardColour.NoPokedex;
         float x = card.X + 72, y = card.Y + 176;
-        Label("MONEY", x, y);
+        Label(Text.Of("card.money"), x, y);
         Money(x, y + 24 + 40 * 0.56f, info.Money, 40, Ink);
-        Field("TIME PLAYED", TitleScreen.FormatPlayTime(info.PlayTimeSeconds), x + 440, y);
-        Field("POKÉMON CAUGHT", dex ? info.Caught.ToString() : "—", x, y + 124);
-        Field("POKÉMON SEEN", dex ? info.Seen.ToString() : "—", x + 440, y + 124);
-        Field("SCORE", info.Score.ToString("N0", CultureInfo.InvariantCulture), x, y + 248);
+        Field(Text.Of("card.timePlayed"), TitleScreen.FormatPlayTime(info.PlayTimeSeconds), x + 440, y);
+        Field(Text.Of("card.caught"), dex ? info.Caught.ToString() : "—", x, y + 124);
+        Field(Text.Of("card.seen"), dex ? info.Seen.ToString() : "—", x + 440, y + 124);
+        Field(Text.Of("card.score"), info.Score.ToString("N0", CultureInfo.InvariantCulture), x, y + 248);
 
         // ---- The player's own field sprite, on a pale plate
         var plate = new Rectangle(card.X + card.Width - 72 - 340, card.Y + 160, 340, 392);
@@ -320,14 +321,14 @@ internal static partial class ModernUi
         // ---- Badges
         float by = card.Y + 590;
         UiShapes.Fill(new Rectangle(card.X + 72, by, card.Width - 144, 3), 1.5f, Rule);
-        Label($"BADGES  {TitleScreen.CountBadges(info.Badges)} / 8", card.X + 72, by + 24);
+        Label(Text.Of("card.badges", ("count", TitleScreen.CountBadges(info.Badges))), card.X + 72, by + 24);
         float step = (card.Width - 144 - 88) / 7f;
         for (int b = 0; b < 8; b++)
         {
             bool earned = (info.Badges & (1 << b)) != 0;
             var c = new Vector2(card.X + 72 + 44 + b * step, by + 116);
             Badge(c, 44, b, earned);
-            string name = BadgeNames[b];
+            string name = Words.Badge((PokemonPlatinumEngine.Story.Badge)b);
             UiFonts.DrawCentered(name, c.X - UiFonts.Measure(name, 22, UiWeight.Black) / 2f, c.Y + 76, 22, earned ? Ink : Muted, UiWeight.Black);
         }
     }
@@ -338,11 +339,12 @@ internal static partial class ModernUi
         const float rowH = 88;
         var rows = new (string Caption, string Value)[]
         {
-            ("HALL OF FAME DEBUT", info.HallOfFameDebut is { } debut ? debut.ToString("d MMMM yyyy   HH:mm", CultureInfo.InvariantCulture) : "—"),
-            ("LINK BATTLES", $"{info.LinkWins} won,  {info.LinkLosses} lost"),
-            ("LINK TRADES", info.LinkTrades.ToString()),
-            ("SUPER CONTESTS", $"{info.ContestsWon} won of {info.ContestsEntered}"),
-            ("ADVENTURE STARTED", info.Started is { } day ? day.ToString("d MMMM yyyy", CultureInfo.InvariantCulture) : "—")
+            (Text.Of("card.debut"), info.HallOfFameDebut is { } debut
+                ? Text.Of("card.debutWhen", ("date", Words.Date(debut)), ("time", $"{debut.Hour:D2}:{debut.Minute:D2}")) : "—"),
+            (Text.Of("card.linkBattles"), Text.Of("card.linkBattlesValue", ("won", info.LinkWins), ("lost", info.LinkLosses))),
+            (Text.Of("card.linkTrades"), info.LinkTrades.ToString()),
+            (Text.Of("card.contests"), Text.Of("card.contestsValue", ("won", info.ContestsWon), ("entered", info.ContestsEntered))),
+            (Text.Of("card.started"), info.Started is { } day ? Words.Date(day) : "—")
         };
         for (int i = 0; i < rows.Length; i++)
         {
@@ -355,12 +357,12 @@ internal static partial class ModernUi
         // ---- The stars again, at the foot
         float by = card.Y + 630;
         UiShapes.Fill(new Rectangle(x, by, right - x, 3), 1.5f, Rule);
-        Label("STARS", x, by + 26);
+        Label(Text.Of("card.stars"), x, by + 26);
         for (int k = 0; k < 5; k++)
             CardStar(new Vector2(x + 36 + k * 88, by + 118), 32, k < info.Stars, Darker(colour, 0.5f), Rule);
         string count = $"{info.Stars} / 5";
         UiFonts.DrawCentered(count, x + 36 + 4 * 88 + 72, by + 118, 40, Ink, UiWeight.Black);
-        const string note = "A star for each of five great feats.";
+        string note = Text.Of("card.starsNote");
         UiFonts.DrawCentered(note, right - UiFonts.Measure(note, 26, UiWeight.ExtraBold), by + 118, 26, Muted, UiWeight.ExtraBold);
     }
 
@@ -376,14 +378,14 @@ internal static partial class ModernUi
         Dim(sw, sh, (int)(150 * shown));
         var r = new Rectangle(sw / 2f - 540, 140 + (1f - shown) * 60f, 1080, 780);
         Panel(r, 36);
-        SaveSummary(new Rectangle(r.X, r.Y, r.Width, SaveSummaryHeight), save, "SAVE", slot);
+        SaveSummary(new Rectangle(r.X, r.Y, r.Width, SaveSummaryHeight), save, Text.Of("saving.heading"), slot);
         UiShapes.Fill(new Rectangle(r.X + 48, r.Y + SaveSummaryHeight + 12, r.Width - 96, 3), 1.5f, Rule);
 
         float cy = r.Y + SaveSummaryHeight + 82;
         if (saved)
         {
-            float tw = Tag(r.X + 56, cy + 34, "SAVED", Green, 52);
-            UiFonts.DrawCentered($"{save.PlayerName} saved the game.", r.X + 56 + tw + 28, cy + 60, 40, Ink, UiWeight.ExtraBold);
+            float tw = Tag(r.X + 56, cy + 34, Text.Of("saving.saved"), Green, 52);
+            UiFonts.DrawCentered(Text.Of("saving.savedLine", ("name", save.PlayerName)), r.X + 56 + tw + 28, cy + 60, 40, Ink, UiWeight.ExtraBold);
             return;
         }
 

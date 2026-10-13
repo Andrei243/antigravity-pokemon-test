@@ -1133,8 +1133,9 @@ public class MenuScreenTests
         Assert.Equal(colours.Count, colours.Distinct().Count());
 
         // The marks the PC draws are the six the boxes keep, in their order
-        Assert.Equal(Enum.GetValues<Markings>().Length - 1, ModernUi.MarkNames.Length);
-        for (int m = 0; m < ModernUi.MarkNames.Length; m++) Assert.Equal(ModernUi.MarkNames[m], ((Markings)(1 << m)).ToString());
+        Assert.Equal(ModernUi.MarkCount, Enum.GetValues<Markings>().Length - 1);
+        var shapes = new[] { "Circle", "Triangle", "Square", "Heart", "Star", "Diamond" };
+        for (int m = 0; m < ModernUi.MarkCount; m++) Assert.Equal(shapes[m], ((Markings)(1 << m)).ToString());
     }
 
     [Fact]
