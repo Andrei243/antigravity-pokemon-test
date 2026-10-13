@@ -27,7 +27,7 @@ public class ShopScreen
     public const int VisibleRows = 9, MostAtOnce = 99;
 
     /// <summary>The first question's answers, in their order.</summary>
-    public static readonly string[] Choices = { "BUY", "SELL", "SEE YA!" };
+    public static string[] Choices => new[] { Text.Of("shop.choice.buy"), Text.Of("shop.choice.sell"), Text.Of("shop.choice.leave") };
 
     private readonly List<ItemData> stock = new();
     private readonly List<ItemData> selling = new();
@@ -46,7 +46,7 @@ public class ShopScreen
     public bool IsActive { get; set; }
 
     /// <summary>The name over the door: what the screen is headed with.</summary>
-    public string Name { get; private set; } = "POKÉ MART";
+    public string Name { get; private set; } = Text.Of("shop.title");
 
     public IReadOnlyList<ItemData> Stock => stock;
 
@@ -87,7 +87,7 @@ public class ShopScreen
         asking.Snap(false);
         openAge = 0f;
         upDown.Release();
-        Name = string.IsNullOrWhiteSpace(name) ? "POKÉ MART" : name.ToUpperInvariant();
+        Name = string.IsNullOrWhiteSpace(name) ? Text.Of("shop.title") : name.ToUpperInvariant();
         stock.Clear();
         stock.AddRange(sells ?? MartDatabase.Stock(null, 0));
         selling.Clear();
@@ -168,7 +168,7 @@ public class ShopScreen
                     if (selling.Count == 0)
                     {
                         Mode = ShopMode.Choosing;
-                        onNotification("You don't have anything we can buy from you.");
+                        onNotification(Text.Of("shop.nothingToSell"));
                         AudioManager.PlaySound("error");
                         return 0;
                     }
@@ -189,7 +189,7 @@ public class ShopScreen
         {
             if (Mode == ShopMode.Buying && MostAffordable(item, money) < 1)
             {
-                onNotification("You don't have enough money.");
+                onNotification(Text.Of("shop.notEnoughMoney"));
                 AudioManager.PlaySound("error");
                 return 0;
             }
@@ -209,7 +209,7 @@ public class ShopScreen
             int earned = count * SellPrice(item);
             UnitsSold += count;
             AudioManager.PlaySound("select");
-            onNotification(count == 1 ? $"Sold a {item.Name} for {earned}." : $"Sold {count} × {item.Name} for {earned}.");
+            onNotification(Text.Of("shop.sold", ("n", count), ("item", item.Name), ("money", earned)));
             selling.Clear();
             selling.AddRange(Sellable(inventory));
             SelectedIndex = Math.Min(SelectedIndex, Math.Max(0, selling.Count - 1));
@@ -222,7 +222,7 @@ public class ShopScreen
         inventory.AddItem(item, count);
         Purchases = count > 1 ? 2 : Purchases + 1;
         AudioManager.PlaySound("select");
-        onNotification(count == 1 ? $"Bought a {item.Name}." : $"Bought {count} × {item.Name}.");
+        onNotification(Text.Of("shop.bought", ("n", count), ("item", item.Name)));
         return -cost;
     }
 

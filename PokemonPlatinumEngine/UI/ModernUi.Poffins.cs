@@ -309,7 +309,7 @@ internal static partial class ModernUi
         NameWithGender(p, who.X + 44, who.Y + 470, 48);
         Level(who.X + who.Width - 44, who.Y + 470, p.Level, 40);
         Label("NATURE", who.X + 44, who.Y + 528);
-        UiFonts.Draw(p.Nature.ToString(), who.X + 44, who.Y + 552, 34, Ink, UiWeight.Black);
+        UiFonts.Draw(Words.Nature(p.Nature), who.X + 44, who.Y + 552, 34, Ink, UiWeight.Black);
 
         // The Poffin it is given
         if (screen.Chosen is { } poffin)

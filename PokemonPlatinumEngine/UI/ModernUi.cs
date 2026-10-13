@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Numerics;
 using Raylib_cs;
+using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
@@ -89,7 +90,8 @@ internal static partial class ModernUi
         var tag = new Rectangle(x, y, tagW, h);
         UiShapes.Shape(tag, h / 2f, new Color(255, 200, 80, 255), new Color(236, 160, 40, 255));
         float ts = h * 0.72f;
-        UiFonts.DrawCentered("HP", x + (tagW - UiFonts.Measure("HP", ts, UiWeight.Black)) / 2f, y + h / 2f, ts, new Color(110, 60, 16, 255), UiWeight.Black);
+        string hp = Text.Of("party.hp");
+        UiFonts.DrawCentered(hp, x + (tagW - UiFonts.Measure(hp, ts, UiWeight.Black)) / 2f, y + h / 2f, ts, new Color(110, 60, 16, 255), UiWeight.Black);
         Bar(new Rectangle(x + tagW + 6, y, w - tagW - 6, h), ratio, HpColor(ratio));
     }
 
@@ -118,8 +120,9 @@ internal static partial class ModernUi
     {
         string n = level.ToString();
         float nw = UiFonts.Measure(n, size, UiWeight.Black);
-        float lw = UiFonts.Measure("Lv", size * 0.62f, UiWeight.ExtraBold);
-        UiFonts.DrawCentered("Lv", rightX - nw - lw - 4, centerY + size * 0.12f, size * 0.62f, Muted, UiWeight.ExtraBold);
+        string lv = Text.Of("party.level");
+        float lw = UiFonts.Measure(lv, size * 0.62f, UiWeight.ExtraBold);
+        UiFonts.DrawCentered(lv, rightX - nw - lw - 4, centerY + size * 0.12f, size * 0.62f, Muted, UiWeight.ExtraBold);
         UiFonts.DrawCentered(n, rightX - nw, centerY, size, Ink, UiWeight.Black);
     }
 
@@ -138,7 +141,7 @@ internal static partial class ModernUi
     public static float TypePill(float x, float y, PokemonType type, float height = 34f, float? width = null)
     {
         var color = Palette.GetTypeColor(type.ToString());
-        string name = type.ToString().ToUpperInvariant();
+        string name = Words.Type(type).ToUpperInvariant();
         float size = height * 0.6f;
         float textW = UiFonts.Measure(name, size, UiWeight.Black);
         float w = width ?? textW + height * 1.05f;
@@ -165,14 +168,15 @@ internal static partial class ModernUi
     public static float StatusPill(float x, float y, StatusCondition status, float height = 34f)
     {
         if (status == StatusCondition.None) return 0f;
-        var (code, color) = status switch
+        string code = Words.Status(status);
+        var color = status switch
         {
-            StatusCondition.Poison or StatusCondition.Toxic => ("PSN", Palette.StatusPoison),
-            StatusCondition.Burn => ("BRN", Palette.StatusBurn),
-            StatusCondition.Paralyze => ("PAR", Palette.StatusParalyze),
-            StatusCondition.Sleep => ("SLP", Palette.StatusSleep),
-            StatusCondition.Freeze => ("FRZ", Palette.StatusFreeze),
-            _ => ("FNT", Palette.StatusFaint)
+            StatusCondition.Poison or StatusCondition.Toxic => Palette.StatusPoison,
+            StatusCondition.Burn => Palette.StatusBurn,
+            StatusCondition.Paralyze => Palette.StatusParalyze,
+            StatusCondition.Sleep => Palette.StatusSleep,
+            StatusCondition.Freeze => Palette.StatusFreeze,
+            _ => Palette.StatusFaint
         };
         float size = height * 0.6f;
         float textW = UiFonts.Measure(code, size, UiWeight.Black);
@@ -275,6 +279,9 @@ internal static partial class ModernUi
 
     private static float HintWidth(string key, string label) =>
         Math.Max(44, UiFonts.Measure(key, 22, UiWeight.Black) + 24) + UiFonts.Measure(label, 24, UiWeight.ExtraBold) + 34;
+
+    /// <summary>A key hint whose key and label are both keys of the string table (<c>shared.keys.z</c>, <c>shared.hints.back</c>).</summary>
+    public static (string Key, string Label) Hint(string key, string label) => (Text.Of(key), Text.Of(label));
 
     /// <summary>The key hints of a screen, right-aligned so the last one ends at <paramref name="rightX"/>.</summary>
     public static void Hints(float rightX, float y, params (string Key, string Label)[] hints)

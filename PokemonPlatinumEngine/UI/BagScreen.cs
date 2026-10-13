@@ -324,7 +324,7 @@ public class BagScreen
             inventory.RemoveItem(item, count);
             Tossing = false;
             AudioManager.PlaySound("select");
-            onNotification(count == 1 ? $"Threw away the {item.Name}." : $"Threw away {count} × {item.Name}.");
+            onNotification(Text.Of("bag.threwAway", ("n", count), ("item", item.Name)));
             Follow(inventory.GetPocketItems(CurrentPocket).Count);
             return;
         }
@@ -333,7 +333,7 @@ public class BagScreen
         {
             if (!Fits(what, item))
             {
-                onNotification("That can't be used here.");
+                onNotification(Text.Of("bag.cantUseThatHere"));
                 AudioManager.PlaySound("error");
                 return;
             }
@@ -348,7 +348,7 @@ public class BagScreen
             var actions = ActionsFor(item, Registered);
             if (actions.Count == 1)
             {
-                onNotification("It can't be used here.");
+                onNotification(Text.Of("bag.cantUseHere"));
                 AudioManager.PlaySound("error");
                 return;
             }
@@ -368,7 +368,7 @@ public class BagScreen
             case BagAction.Register or BagAction.Deselect:
                 Registered = action == BagAction.Register ? item.Name : null;
                 AudioManager.PlaySound("select");
-                onNotification(action == BagAction.Register ? $"The {item.Name} is ready on the item button." : $"The {item.Name} is off the item button.");
+                onNotification(Text.Of(action == BagAction.Register ? "bag.registered" : "bag.deselected", ("item", item.Name)));
                 return;
             case BagAction.Toss:
                 Tossing = true;
@@ -393,19 +393,19 @@ public class BagScreen
                 var revived = ItemUse.ReviveAll(item, party);
                 if (revived.Count == 0)
                 {
-                    onNotification("It won't have any effect.");
+                    onNotification(Text.Of("bag.noEffect"));
                     AudioManager.PlaySound("error");
                     return;
                 }
                 inventory.RemoveItem(item, 1);
                 AudioManager.PlaySound("heal");
-                onNotification(revived.Count == 1 ? $"{revived[0]} came round, fully healed." : $"{string.Join(", ", revived)} came round, fully healed.");
+                onNotification(Text.Of("bag.cameRound", ("names", string.Join(", ", revived))));
                 Follow(inventory.GetPocketItems(CurrentPocket).Count);
                 return;
         }
         if (party.Count == 0)
         {
-            onNotification("There is no Pokémon to give it to.");
+            onNotification(Text.Of("bag.noOneToGive"));
             return;
         }
         BeginTargetChoice(item, give: action == BagAction.Give);
@@ -550,11 +550,11 @@ public class BagScreen
             switch (MoveTeaching.Answer(target, item))
             {
                 case TeachAnswer.Learned:
-                    onNotification($"{target.DisplayName} knows {move} already.");
+                    onNotification(Text.Of("bag.knowsAlready", ("name", target.DisplayName), ("move", move)));
                     AudioManager.PlaySound("error");
                     return;
                 case TeachAnswer.NotAble:
-                    onNotification($"{target.DisplayName} can't learn {move}.");
+                    onNotification(Text.Of("bag.cantLearn", ("name", target.DisplayName), ("move", move)));
                     AudioManager.PlaySound("error");
                     return;
             }
@@ -575,7 +575,7 @@ public class BagScreen
             // An Ether, a PP Up, a Leppa Berry: on to the Pokémon's moves
             if (!ItemUse.WouldHelpAnyMove(item, target))
             {
-                onNotification("It won't have any effect.");
+                onNotification(Text.Of("bag.noEffect"));
                 AudioManager.PlaySound("error");
                 return;
             }
@@ -590,7 +590,7 @@ public class BagScreen
             var evolution = Evolution.Find(target, EvolutionTrigger.UseItem, context);
             if (evolution == null)
             {
-                onNotification("It won't have any effect.");
+                onNotification(Text.Of("bag.noEffect"));
                 return;
             }
             inventory.RemoveItem(item, 1);
@@ -601,12 +601,12 @@ public class BagScreen
             // Shaymin takes to the sky by day (Pokemon_CanShayminSkyForm); the flower stays in the bag
             if (!FormRules.CanTakeToTheSky(target, (int)GameClock.Hour))
             {
-                onNotification("It won't have any effect.");
+                onNotification(Text.Of("bag.noEffect"));
                 return;
             }
             target.ChangeForm("Shaymin-Sky");
             AudioManager.PlayCry(target);
-            onNotification($"{target.DisplayName} changed into its Sky Forme!");
+            onNotification(Text.Of("bag.skyForme", ("name", target.DisplayName)));
         }
         else if (ItemUse.IsUsedOnPokemon(item) || EffortRules.IsEffortItem(item))
         {
@@ -632,7 +632,7 @@ public class BagScreen
                 // the moves and the evolution follow its two presses. The level's line stands in the prompt under
                 // the panel, and the moves it learned into a free place are told once the panel has been read, as a
                 // battle tells them after it
-                taughtByCandy = result.Learned.Count == 0 ? null : string.Join(" ", result.Learned.Select(m => $"{target.DisplayName} learned {m}!"));
+                taughtByCandy = result.Learned.Count == 0 ? null : string.Join(" ", result.Learned.Select(m => Text.Of("bag.learned", ("name", target.DisplayName), ("move", m))));
                 LevelUp = new LevelUpPanel(target, level, before, target.Stats());
                 return;
             }
@@ -740,7 +740,7 @@ public class BagScreen
         if (teaching is not var (p, move, machine)) return;
         if (ForgetIndex >= 4 || ForgetIndex >= p.Moves.Count)
         {
-            onNotification($"{p.DisplayName} did not learn {move}.");
+            onNotification(Text.Of("bag.didNotLearn", ("name", p.DisplayName), ("move", move)));
             AudioManager.PlaySound("cancel");
         }
         else if (MoveTeaching.WhyNotForget(p, ForgetIndex) is { } why)
@@ -777,13 +777,13 @@ public class BagScreen
         holder.HeldItem = item;
         AudioManager.PlaySound("select");
         // Giratina with the Griseous Orb and Arceus with a plate change form as they take it (plan 06 · R10)
-        string changed = FormRules.ByHeldItem(holder) ? $" {holder.DisplayName} changed its form!" : "";
+        string changed = FormRules.ByHeldItem(holder) ? " " + Text.Of("bag.changedForm", ("name", holder.DisplayName)) : "";
         if (previous != null)
         {
             inventory.AddItem(previous, 1);
-            onNotification($"{holder.DisplayName} swapped its {previous.Name} for the {item.Name}.{changed}");
+            onNotification(Text.Of("bag.swapped", ("name", holder.DisplayName), ("previous", previous.Name), ("item", item.Name)) + changed);
         }
-        else onNotification($"{holder.DisplayName} was given the {item.Name} to hold.{changed}");
+        else onNotification(Text.Of("bag.given", ("name", holder.DisplayName), ("item", item.Name)) + changed);
     }
 
     /// <summary>Whether the waiting item would do anything for a Pokémon: ABLE or NOT ABLE on its card (null: nothing to say).</summary>
@@ -805,8 +805,8 @@ public class BagScreen
     public string? TagFor(Pokemon p, EvolutionContext probe)
     {
         if (choosingFor is { } item && !giving && MoveTeaching.IsMachine(item))
-            return MoveTeaching.Answer(p, item) switch { TeachAnswer.Able => "ABLE", TeachAnswer.Learned => "LEARNED", _ => "NOT ABLE" };
-        return WouldWorkOn(p, probe) is { } can ? (can ? "ABLE" : "NOT ABLE") : null;
+            return MoveTeaching.Answer(p, item) switch { TeachAnswer.Able => Text.Of("party.tag.able"), TeachAnswer.Learned => Text.Of("party.tag.learned"), _ => Text.Of("party.tag.notAble") };
+        return WouldWorkOn(p, probe) is { } can ? Text.Of(can ? "party.tag.able" : "party.tag.notAble") : null;
     }
 
     public void Draw(int screenWidth, int screenHeight, Inventory inventory, Party party, EvolutionContext? context = null)
@@ -818,22 +818,22 @@ public class BagScreen
             // An item used on a Pokémon says who it would work on, as the games do
             var item = choosingFor;
             var probe = context ?? new EvolutionContext { Party = party, Bag = inventory };
-            string prompt = giving ? $"Give the {item.Name} to which Pokémon?"
-                : MoveTeaching.IsMachine(item) ? $"Teach {item.TeachesMove} to which Pokémon?" : $"Use the {item.Name} on which Pokémon?";
+            string prompt = giving ? Text.Of("bag.giveTo", ("item", item.Name))
+                : MoveTeaching.IsMachine(item) ? Text.Of("bag.teach", ("move", item.TeachesMove)) : Text.Of("bag.useOn", ("item", item.Name));
             if (LevelUp is { } level)
             {
                 // A level's panel over the team's cards (plan 08 · P5): the prompt says the level's line and waits for a press
-                ModernUi.DrawPartyChoice(screenWidth, screenHeight, party, TargetIndex, $"{level.Pokemon.DisplayName} grew to Lv. {level.Level}!",
-                    _ => null, Math.Clamp(choiceAge / ChoiceAppearTime, 0f, 1f), "Next", waiting: true);
+                ModernUi.DrawPartyChoice(screenWidth, screenHeight, party, TargetIndex, Text.Of("bag.grew", ("name", level.Pokemon.DisplayName), ("level", level.Level)),
+                    _ => null, Math.Clamp(choiceAge / ChoiceAppearTime, 0f, 1f), Text.Of("shared.hints.next"), waiting: true);
                 ModernUi.LevelUpOverParty(screenWidth, TargetIndex, level);
                 return;
             }
             ModernUi.DrawPartyChoice(screenWidth, screenHeight, party, TargetIndex, prompt, p => TagFor(p, probe),
-                Math.Clamp(choiceAge / ChoiceAppearTime, 0f, 1f), giving ? "Give" : "Use");
+                Math.Clamp(choiceAge / ChoiceAppearTime, 0f, 1f), Text.Of(giving ? "shared.hints.give" : "shared.hints.use"));
             var panel = new Rectangle(screenWidth - 780, 120, 716, 760);
             if (teaching is var (p, move, _)) ModernUi.MoveChoice(panel, p, move, ForgetIndex, 1f);
             else if (ChoosingMove && TargetIndex < party.Count)
-                ModernUi.MovePick(panel, party.Members[TargetIndex], MoveIndex, $"Use the {item.Name} on which move?");
+                ModernUi.MovePick(panel, party.Members[TargetIndex], MoveIndex, Text.Of("bag.useOnMove", ("item", item.Name)));
             return;
         }
 

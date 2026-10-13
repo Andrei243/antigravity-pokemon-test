@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Numerics;
 using Raylib_cs;
+using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Models;
@@ -259,7 +260,7 @@ internal static partial class ModernUi
         HpBar(x, y + 394, wide, 22, (float)shown.CurrentHP / Math.Max(1, shown.MaxHP));
         string hp = $"{shown.CurrentHP} / {shown.MaxHP}";
         UiFonts.DrawCentered(hp, detail.X + detail.Width - 36 - UiFonts.Measure(hp, 26, UiWeight.Black), y + 442, 26, Ink, UiWeight.Black);
-        UiFonts.DrawCentered(shown.Nature.ToString(), x, y + 442, 26, Muted, UiWeight.ExtraBold);
+        UiFonts.DrawCentered(Words.Nature(shown.Nature), x, y + 442, 26, Muted, UiWeight.ExtraBold);
 
         UiShapes.Fill(new Rectangle(x, y + 470, wide, 3), 1.5f, Rule);
         Label("MOVES", x, y + 486);
