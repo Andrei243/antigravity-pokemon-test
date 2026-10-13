@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 
 namespace PokemonPlatinumEngine.Models;
@@ -31,7 +32,7 @@ public sealed class PcBoxes
 
     /// <summary>
     /// The wallpapers, in the original's order: sixteen every game has, then eight a word game at Jubilife TV
-    /// unlocks (<see cref="UnlockedWallpapers"/>).
+    /// unlocks (<see cref="UnlockedWallpapers"/>). The screen names each by its number, a key of the string table (<c>boxes.wallpaper.N</c>).
     /// </summary>
     public static readonly IReadOnlyList<string> WallpaperNames = new[]
     {
@@ -200,16 +201,17 @@ public sealed class PcBoxes
 
     /// <summary>
     /// Why a member of the team can't go into a box, or null if it can (<c>BoxAppMan_OnLastAliveMon</c> and the
-    /// Mail check): the last Pokémon able to battle stays, as does one holding Mail; and a full PC has no room.
+    /// Mail check): the last Pokémon able to battle stays, as does one holding Mail; and a full PC has no room, unless
+    /// <paramref name="intoABox"/> is false (a Pokémon picked up to be moved needs none yet).
     /// </summary>
-    public string? WhyNotDeposit(Party party, int index)
+    public string? WhyNotDeposit(Party party, int index, bool intoABox = true)
     {
         var pokemon = party.Members[index];
-        if (CanBattle(pokemon) && party.Members.Count(CanBattle) < 2) return "That's your last Pokémon able to battle!";
-        if (HoldsMail(pokemon)) return "Please remove the Mail first.";
+        if (CanBattle(pokemon) && party.Members.Count(CanBattle) < 2) return Text.Of("boxes.lastAble");
+        if (HoldsMail(pokemon)) return Text.Of("boxes.removeMail");
         // BoxText_DetachBallCapsule: a Pokémon goes into a box with a plain ball (plan 06 · R17b)
-        if (pokemon.CapsuleId != 0) return "Please take the Ball Capsule off first.";
-        if (IsFull) return "The boxes are full.";
+        if (pokemon.CapsuleId != 0) return Text.Of("boxes.removeCapsule");
+        if (intoABox && IsFull) return Text.Of("boxes.full");
         return null;
     }
 

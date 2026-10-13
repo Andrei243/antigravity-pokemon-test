@@ -332,9 +332,6 @@ internal static partial class ModernUi
 
     // ------------------------------------------------------------------ badges
 
-    /// <summary>Sinnoh's eight Gym Badges in order (bit 0 of the badge mask is the Coal Badge).</summary>
-    public static readonly string[] BadgeNames = { "Coal", "Forest", "Cobble", "Fen", "Relic", "Mine", "Icicle", "Beacon" };
-
     private static readonly Color[] BadgeColors =
     {
         new(150, 112, 92, 255), new(72, 172, 98, 255), new(218, 138, 76, 255), new(70, 138, 216, 255),

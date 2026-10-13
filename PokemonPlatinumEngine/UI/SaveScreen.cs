@@ -15,7 +15,7 @@ public class SaveScreen
     /// <summary>How long "saved" stays up before the panel goes by itself.</summary>
     public const float SavedTime = 1.3f;
 
-    public static readonly string[] Answers = { "SAVE", "CANCEL" };
+    public static string[] Answers => new[] { Text.Of("saving.answer.save"), Text.Of("saving.answer.cancel") };
 
     private readonly UiReveal reveal = new(0.2f, 0.12f);
     private bool requested;
@@ -39,7 +39,7 @@ public class SaveScreen
     public int Slot { get; private set; } = 1;
 
     /// <summary>The panel's question: it names the slot.</summary>
-    public static string Question(int slot) => $"Save the game in slot {slot}?";
+    public static string Question(int slot) => Text.Of("saving.question", ("slot", slot));
 
     public void Open(SaveData summary, int slot = 1)
     {

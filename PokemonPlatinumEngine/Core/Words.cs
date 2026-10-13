@@ -1,10 +1,11 @@
 using PokemonPlatinumEngine.Data;
+using PokemonPlatinumEngine.Story;
 
 namespace PokemonPlatinumEngine.Core;
 
 /// <summary>
 /// The names the interface gives the game's own enums (plan 17 · N1b): a type, a nature, a status's three letters,
-/// a move's category and a stat, each a key of the string table by the enum's name. GPU-free.
+/// a move's category, a stat and a Badge (plan 17 · N1c), each a key of the string table by the enum's name. GPU-free.
 /// </summary>
 public static class Words
 {
@@ -24,4 +25,18 @@ public static class Words
     /// <summary>A day as the summary writes it: its number, its month's name and its year.</summary>
     public static string Date(DateTime day) =>
         Text.Of("summary.date", ("day", day.Day), ("month", Text.Of($"summary.month.{day.Month}")), ("year", day.Year));
+
+    /// <summary>A day as a stored Pokémon's MET writes it: its number, its month's short name and its year.</summary>
+    public static string ShortDate(DateTime day) =>
+        Text.Of("summary.date", ("day", day.Day), ("month", Text.Of($"summary.monthShort.{day.Month}")), ("year", day.Year));
+
+    /// <summary>A day's name: Monday to Sunday.</summary>
+    public static string Weekday(DateTime day)
+    {
+        var name = day.DayOfWeek;
+        return Text.Of($"summary.weekday.{name}");
+    }
+
+    /// <summary>A Badge's name as the Trainer Card writes it under its medallion (Coal to Beacon).</summary>
+    public static string Badge(Badge badge) => Text.Of($"badges.{badge}");
 }

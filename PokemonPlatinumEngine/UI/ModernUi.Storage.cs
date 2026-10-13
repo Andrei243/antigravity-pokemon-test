@@ -35,15 +35,17 @@ internal static partial class ModernUi
         }
 
         Backdrop(sw, sh);
-        ScreenTitle("PC BOXES");
+        ScreenTitle(Text.Of("boxes.title"));
         var under = pc.Under(party, stored);
-        if (pc.AskingRelease) Hints(sw - Margin, 44, ("Z", "Release"), ("Esc", "Keep it"));
-        else if (pc.Marking != null) Hints(sw - Margin, 44, ("Arrows", "Choose"), ("Z", "Mark"), ("Esc", "Back"));
-        else if (pc.Menu != null || pc.BoxMenu != null) Hints(sw - Margin, 44, ("Up / Down", "Choose"), ("Z", "Do it"), ("Esc", "Back"));
-        else if (pc.Held != null) Hints(sw - Margin, 44, ("Z", "Put down"), ("Esc", "Put back"));
-        else if (pc.Zone == StorageZone.BoxName) Hints(sw - Margin, 44, ("Left / Right", "Change box"), ("Z", "Box"), ("Esc", "Close"));
-        else if (under != null) Hints(sw - Margin, 44, ("Z", "Choose"), ("Esc", "Close"));
-        else Hints(sw - Margin, 44, ("Esc", "Close"));
+        if (pc.AskingRelease) Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.release"), Hint("shared.keys.esc", "shared.hints.keepIt"));
+        else if (pc.Marking != null) Hints(sw - Margin, 44, Hint("shared.keys.arrows", "shared.hints.choose"), Hint("shared.keys.z", "shared.hints.mark"), Hint("shared.keys.esc", "shared.hints.back"));
+        else if (pc.Menu != null || pc.BoxMenu != null)
+            Hints(sw - Margin, 44, Hint("shared.keys.upDown", "shared.hints.choose"), Hint("shared.keys.z", "shared.hints.doIt"), Hint("shared.keys.esc", "shared.hints.back"));
+        else if (pc.Held != null) Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.putDown"), Hint("shared.keys.esc", "shared.hints.putBack"));
+        else if (pc.Zone == StorageZone.BoxName)
+            Hints(sw - Margin, 44, Hint("shared.keys.leftRight", "shared.hints.changeBox"), Hint("shared.keys.z", "shared.hints.box"), Hint("shared.keys.esc", "shared.hints.close"));
+        else if (under != null) Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.choose"), Hint("shared.keys.esc", "shared.hints.close"));
+        else Hints(sw - Margin, 44, Hint("shared.keys.esc", "shared.hints.close"));
 
         float slide = (1f - UiMotion.EaseOut(appear)) * 60f;
         float height = ContentBottom - ContentTop;
@@ -51,7 +53,7 @@ internal static partial class ModernUi
         // ---- The party
         var team = new Rectangle(Margin - slide, ContentTop, 500, height);
         Panel(team, 34);
-        Label($"PARTY  {party.Count} / {Party.MaxSize}", team.X + 40, team.Y + 30);
+        Label(Text.Of("boxes.party", ("count", party.Count), ("max", Party.MaxSize)), team.X + 40, team.Y + 30);
         Rectangle PartyCard(int i) => new(team.X + 20, team.Y + 66 + i * 136, team.Width - 40, 124);
         for (int i = 0; i < Party.MaxSize; i++)
         {
@@ -151,7 +153,8 @@ internal static partial class ModernUi
         float tagY = gridY + PCScreen.Rows * (BoxCell + BoxGap) + 12;
         var tagInk = Frame with { A = 225 };
         Tag(gridX, tagY, $"{current.Count} / {PCScreen.BoxSize}", tagInk, 44);
-        string paper = PcBoxes.WallpaperNames[Math.Clamp(current.Wallpaper, 0, PcBoxes.WallpaperNames.Count - 1)].ToUpperInvariant();
+        int paperIndex = Math.Clamp(current.Wallpaper, 0, PcBoxes.WallpaperNames.Count - 1);
+        string paper = Text.Of($"boxes.wallpaper.{paperIndex}").ToUpperInvariant();
         float paperW = UiFonts.Measure(paper, 44 * 0.58f, UiWeight.Black) + 44 * 0.9f;
         float gridRight = gridX + BoxCell * PCScreen.Columns + BoxGap * (PCScreen.Columns - 1);
         Tag(gridRight - paperW, tagY, paper, tagInk, 44);
@@ -162,7 +165,7 @@ internal static partial class ModernUi
         if ((pc.Held ?? under) is { } shown) StoredPokemon(detail, shown);
         else
         {
-            string note = onName ? "Left and right change box." : "An empty place.";
+            string note = Text.Of(onName ? "boxes.changeBoxNote" : "boxes.emptyPlace");
             UiFonts.DrawCentered(note, detail.X + (detail.Width - UiFonts.Measure(note, 26, UiWeight.ExtraBold)) / 2f, detail.Y + detail.Height / 2f, 26, Muted, UiWeight.ExtraBold);
         }
 
@@ -202,7 +205,7 @@ internal static partial class ModernUi
         else if (pc.BoxMenu is { } boxMenu)
         {
             var rows = new List<string>();
-            foreach (var action in boxMenu) rows.Add(action switch { PcBoxAction.Name => "NAME", PcBoxAction.Wallpaper => "WALLPAPER", _ => "CANCEL" });
+            foreach (var action in boxMenu) rows.Add(Text.Of($"boxes.menu.{action}"));
             MenuPanel(plate.X + plate.Width / 2f - 170, plate.Y + plate.Height + 16, rows, pc.MenuIndex);
         }
         else if (pc.Marking is { } marks)
@@ -212,19 +215,11 @@ internal static partial class ModernUi
         }
 
         if (pc.AskingRelease && under != null)
-            Prompt(sw, sh, $"Release {under.DisplayName}?", "Once it goes back to the wild, it won't come back to you.",
-                new[] { ("RELEASE  (Z)", Red), ("KEEP IT  (ESC)", Blue) }, -1);
+            Prompt(sw, sh, Text.Of("boxes.release.question", ("name", under.DisplayName)), Text.Of("boxes.release.body"),
+                new[] { (Text.Of("boxes.release.yes"), Red), (Text.Of("boxes.release.no"), Blue) }, -1);
     }
 
-    private static string PcActionLabel(PcAction action) => action switch
-    {
-        PcAction.Move => "MOVE",
-        PcAction.Withdraw => "WITHDRAW",
-        PcAction.Store => "STORE",
-        PcAction.Mark => "MARK",
-        PcAction.Release => "RELEASE",
-        _ => "CANCEL"
-    };
+    private static string PcActionLabel(PcAction action) => Text.Of($"boxes.action.{action}");
 
     /// <summary>
     /// A stored Pokémon told in the detail column: its sprite on a disc, its marks, name, level, types and condition,
@@ -238,7 +233,7 @@ internal static partial class ModernUi
 
         // The six marks, the ones set in Ink
         const float markStep = 42;
-        for (int m = 0; m < MarkNames.Length; m++)
+        for (int m = 0; m < MarkCount; m++)
         {
             bool set = (shown.Marks & (1 << m)) != 0;
             MarkShape(new Vector2(detail.X + detail.Width / 2f + (m - 2.5f) * markStep, detail.Y + 268), 24, m, set ? Ink : Rule);
@@ -263,7 +258,7 @@ internal static partial class ModernUi
         UiFonts.DrawCentered(Words.Nature(shown.Nature), x, y + 442, 26, Muted, UiWeight.ExtraBold);
 
         UiShapes.Fill(new Rectangle(x, y + 470, wide, 3), 1.5f, Rule);
-        Label("MOVES", x, y + 486);
+        Label(Text.Of("boxes.moves"), x, y + 486);
         for (int i = 0; i < shown.Moves.Count && i < 4; i++)
         {
             float my = y + 530 + i * 40;
@@ -274,13 +269,13 @@ internal static partial class ModernUi
         if (shown.MetLocation != null || shown.HeldItem != null) UiShapes.Fill(new Rectangle(x, y + 680, wide, 3), 1.5f, Rule);
         if (shown.MetLocation is { } place)
         {
-            Label(shown.MetDate is { } day ? $"MET  {day.ToString("d MMM yyyy", CultureInfo.InvariantCulture).ToUpperInvariant()}" : "MET", x, y + 696);
-            var lines = Wrap($"Met {PlaceWords.In(place)} at Lv. {shown.MetLevel}.", wide, 26, UiWeight.ExtraBold);
+            Label(shown.MetDate is { } day ? Text.Of("boxes.metOn", ("date", Words.ShortDate(day).ToUpperInvariant())) : Text.Of("boxes.met"), x, y + 696);
+            var lines = Wrap(Text.Of("boxes.metLine", ("where", PlaceWords.In(place)), ("level", shown.MetLevel)), wide, 26, UiWeight.ExtraBold);
             for (int i = 0; i < lines.Count && i < 2; i++) UiFonts.Draw(lines[i], x, y + 722 + i * 34, 26, Ink, UiWeight.ExtraBold);
         }
         if (shown.HeldItem is { } item)
         {
-            Label("HOLDING", x, y + 806);
+            Label(Text.Of("boxes.holding"), x, y + 806);
             UiFonts.Draw(item.Name, x, y + 830, 28, Ink, UiWeight.ExtraBold);
         }
     }
@@ -292,13 +287,13 @@ internal static partial class ModernUi
     {
         var panel = new Rectangle(at.X, at.Y, MarksPanelWidth, MarksPanelHeight);
         Panel(panel, 30);
-        UiFonts.DrawCentered("MARKS", panel.X + 28, panel.Y + 40, 26, Ink, UiWeight.Black);
+        UiFonts.DrawCentered(Text.Of("boxes.marks"), panel.X + 28, panel.Y + 40, 26, Ink, UiWeight.Black);
         int count = 0;
-        for (int m = 0; m < MarkNames.Length; m++) if (((int)marks & (1 << m)) != 0) count++;
-        string set = count == 0 ? "None set" : $"{count} set";
+        for (int m = 0; m < MarkCount; m++) if (((int)marks & (1 << m)) != 0) count++;
+        string set = count == 0 ? Text.Of("boxes.noneSet") : Text.Of("boxes.set", ("count", count));
         UiFonts.DrawCentered(set, panel.X + panel.Width - 28 - UiFonts.Measure(set, 22, UiWeight.ExtraBold), panel.Y + 40, 22, Muted, UiWeight.ExtraBold);
 
-        for (int m = 0; m < MarkNames.Length; m++)
+        for (int m = 0; m < MarkCount; m++)
         {
             var key = new Rectangle(panel.X + 24 + m * (MarkKey + MarkGap), panel.Y + 64, MarkKey, MarkKey);
             var ring = new Rectangle(key.X - 6, key.Y - 6, key.Width + 12, key.Height + 12);
@@ -311,16 +306,17 @@ internal static partial class ModernUi
         }
 
         var ok = new Rectangle(panel.X + 14, panel.Y + 64 + MarkKey + 16, panel.Width - 28, 62);
-        float okW = UiFonts.Measure("OK", 32, UiWeight.Black);
-        ListRow(ok, cursor >= MarkNames.Length, "OK", nameX: (ok.Width - okW) / 2f, size: 32);
+        string okay = Text.Of("shared.ok");
+        float okW = UiFonts.Measure(okay, 32, UiWeight.Black);
+        ListRow(ok, cursor >= MarkCount, okay, nameX: (ok.Width - okW) / 2f, size: 32);
     }
 
     /// <summary>The keyboard for a box's name, with the box's wallpaper and name on the left where a portrait would be.</summary>
     private static void DrawBoxNaming(int sw, int sh, NameEntry entry, string boxName, int wallpaper)
     {
         Backdrop(sw, sh);
-        ScreenTitle("BOX NAME");
-        Hints(sw - Margin, 44, ("Z", "Pick"), ("X", "Delete"), ("Enter", "To OK"));
+        ScreenTitle(Text.Of("boxes.naming.title"));
+        Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.pick"), Hint("shared.keys.x", "shared.hints.delete"), Hint("shared.keys.enter", "shared.hints.toOk"));
 
         var who = new Rectangle(Margin, ContentTop, 500, ContentBottom - ContentTop);
         Panel(who, 34);
@@ -333,7 +329,7 @@ internal static partial class ModernUi
         UiShapes.Shadow(tag, 32, 12, new Vector2(0, 4), ShadowColor);
         UiShapes.Shape(tag, 32, SlotTop, SlotBottom, Rule, 3);
         UiFonts.DrawCentered(shown, tag.X + (tag.Width - UiFonts.Measure(shown, 34, UiWeight.Black)) / 2f, tag.Y + tag.Height / 2f, 34, Ink, UiWeight.Black);
-        DrawWrapped($"Eight letters at most. Leave it empty to keep the name {boxName}.", who.X + 50, plate.Y + plate.Height + 36, who.Width - 100,
+        DrawWrapped(Text.Of("boxes.naming.note", ("name", boxName)), who.X + 50, plate.Y + plate.Height + 36, who.Width - 100,
             28, Muted, 40, UiWeight.ExtraBold);
 
         NameBoard(new Rectangle(who.X + who.Width + Gutter, ContentTop, sw - Margin - (who.X + who.Width + Gutter), ContentBottom - ContentTop), entry);
@@ -365,8 +361,8 @@ internal static partial class ModernUi
     public static void DrawStarters(int sw, int sh, StarterSelectScreen screen, float appear, float asking, bool askingVisible)
     {
         Backdrop(sw, sh);
-        ScreenTitle("CHOOSE A PARTNER");
-        Hints(sw - Margin, 44, ("Left / Right", "Look"), ("Z", "Choose"));
+        ScreenTitle(Text.Of("starters.title"));
+        Hints(sw - Margin, 44, Hint("shared.keys.leftRight", "shared.hints.look"), Hint("shared.keys.z", "shared.hints.choose"));
 
         const float gap = 40;
         float w = (sw - Margin * 2 - gap * 2) / 3f;
@@ -385,7 +381,7 @@ internal static partial class ModernUi
 
             float nameW = UiFonts.Measure(species.Name, 48, UiWeight.Black);
             UiFonts.DrawCentered(species.Name, r.X + (r.Width - nameW) / 2f, r.Y + 480, 48, Ink, UiWeight.Black);
-            string kind = $"{species.Category} Pokémon";
+            string kind = Text.Of("pokedex.kind", ("category", species.Category));
             UiFonts.DrawCentered(kind, r.X + (r.Width - UiFonts.Measure(kind, 26, UiWeight.ExtraBold)) / 2f, r.Y + 524, 26, Muted, UiWeight.ExtraBold);
             float pillW = 150;
             TypePill(r.X + (r.Width - pillW) / 2f, r.Y + 548, species.PrimaryType, 38, pillW);
@@ -394,12 +390,13 @@ internal static partial class ModernUi
         var chosen = PokemonDatabase.Get(names[screen.SelectedIndex])!;
         var text = new Rectangle(Margin, ContentTop + 616 + 28, sw - Margin * 2, ContentBottom - ContentTop - 644);
         Panel(text, 34);
-        UiFonts.DrawCentered($"No. {chosen.DexNumber:D3}", text.X + 48, text.Y + 52, 28, Muted, UiWeight.Black);
-        UiFonts.DrawCentered(chosen.Name, text.X + 48 + UiFonts.Measure($"No. {chosen.DexNumber:D3}", 28, UiWeight.Black) + 24, text.Y + 50, 40, Ink, UiWeight.Black);
+        string number = DexNumber(chosen.DexNumber);
+        UiFonts.DrawCentered(number, text.X + 48, text.Y + 52, 28, Muted, UiWeight.Black);
+        UiFonts.DrawCentered(chosen.Name, text.X + 48 + UiFonts.Measure(number, 28, UiWeight.Black) + 24, text.Y + 50, 40, Ink, UiWeight.Black);
         DrawWrapped(DexEntries.EntryFor(chosen), text.X + 48, text.Y + 96, text.Width - 96, 30, Ink, 42);
 
         if (askingVisible)
-            Prompt(sw, sh, $"Choose {chosen.Name}?", $"The {chosen.Category} Pokémon will be your partner from here on.",
-                new[] { ("NO, LOOK AGAIN", Blue), ($"YES, {chosen.Name.ToUpperInvariant()}", Green) }, screen.AnswerYes ? 1 : 0, asking);
+            Prompt(sw, sh, Text.Of("starters.question", ("name", chosen.Name)), Text.Of("starters.body", ("category", chosen.Category)),
+                new[] { (Text.Of("starters.no"), Blue), (Text.Of("starters.yes", ("name", chosen.Name.ToUpperInvariant())), Green) }, screen.AnswerYes ? 1 : 0, asking);
     }
 }

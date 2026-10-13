@@ -275,7 +275,7 @@ public class PCScreen
         {
             case PcAction.Move:
                 // Taken off the team, it must be one the team can spare
-                if (Zone == StorageZone.Party && pc.WhyNotDeposit(party, PartyIndex) is { } stays && !stays.StartsWith("The boxes"))
+                if (Zone == StorageZone.Party && pc.WhyNotDeposit(party, PartyIndex, intoABox: false) is { } stays)
                 {
                     onNotification(stays);
                     return;
@@ -285,12 +285,12 @@ public class PCScreen
             case PcAction.Withdraw:
                 if (party.IsFull)
                 {
-                    onNotification("Your party is full.");
+                    onNotification(Text.Of("boxes.partyFull"));
                     return;
                 }
                 pc.Withdraw(party, Box, Cell);
                 AudioManager.PlaySound("select");
-                onNotification($"{pokemon.DisplayName} joined your party.");
+                onNotification(Text.Of("boxes.joined", ("name", pokemon.DisplayName)));
                 break;
             case PcAction.Store:
             {
@@ -308,7 +308,7 @@ public class PCScreen
                 Box = box;
                 PartyIndex = Math.Max(0, Math.Min(PartyIndex, party.Count - 1));
                 AudioManager.PlaySound("select");
-                onNotification($"{pokemon.DisplayName} was put in {pc.Boxes[box].Name}.");
+                onNotification(Text.Of("boxes.putIn", ("name", pokemon.DisplayName), ("box", pc.Boxes[box].Name)));
                 break;
             }
             case PcAction.Mark:
@@ -331,16 +331,16 @@ public class PCScreen
             case ReleaseOutcome.Released:
                 Changed = true;
                 PartyIndex = Math.Max(0, Math.Min(PartyIndex, party.Count - 1));
-                onNotification($"{pokemon.DisplayName} was released outside. Bye-bye, {pokemon.DisplayName}!");
+                onNotification(Text.Of("boxes.released", ("name", pokemon.DisplayName)));
                 break;
             case ReleaseOutcome.CameBack:
-                onNotification($"{pokemon.DisplayName} came back! It must not want to leave you.");
+                onNotification(Text.Of("boxes.cameBack", ("name", pokemon.DisplayName)));
                 break;
             case ReleaseOutcome.HoldsMail:
-                onNotification("Please remove the Mail first.");
+                onNotification(Text.Of("boxes.removeMail"));
                 break;
             default:
-                onNotification("That's your last Pokémon able to battle!");
+                onNotification(Text.Of("boxes.lastAble"));
                 break;
         }
     }

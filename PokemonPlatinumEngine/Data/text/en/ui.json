@@ -10,7 +10,9 @@
       "leftRight": "Left / Right",
       "upDown": "Up / Down",
       "shift": "Shift",
-      "arrows": "Arrows"
+      "arrows": "Arrows",
+      "enter": "Enter",
+      "x": "X"
     },
     "hints": {
       "open": "Open",
@@ -32,7 +34,30 @@
       "buy": "Buy",
       "sell": "Sell",
       "toss": "Toss",
-      "leave": "Leave"
+      "leave": "Leave",
+      "close": "Close",
+      "search": "Search",
+      "species": "Species",
+      "entry": "Entry",
+      "jump": "Jump 10",
+      "all": "All",
+      "team": "Team",
+      "pokemon": "Pokémon",
+      "profile": "Profile",
+      "moves": "Moves",
+      "turnPage": "Turn the page",
+      "turnOver": "Turn over",
+      "release": "Release",
+      "keepIt": "Keep it",
+      "mark": "Mark",
+      "doIt": "Do it",
+      "putDown": "Put down",
+      "putBack": "Put back",
+      "changeBox": "Change box",
+      "box": "Box",
+      "pick": "Pick",
+      "delete": "Delete",
+      "toOk": "To OK"
     }
   },
 
@@ -354,6 +379,14 @@
     "month": {
       "1": "January", "2": "February", "3": "March", "4": "April", "5": "May", "6": "June",
       "7": "July", "8": "August", "9": "September", "10": "October", "11": "November", "12": "December"
+    },
+    "monthShort": {
+      "1": "Jan", "2": "Feb", "3": "Mar", "4": "Apr", "5": "May", "6": "Jun",
+      "7": "Jul", "8": "Aug", "9": "Sep", "10": "Oct", "11": "Nov", "12": "Dec"
+    },
+    "weekday": {
+      "Monday": "Monday", "Tuesday": "Tuesday", "Wednesday": "Wednesday", "Thursday": "Thursday",
+      "Friday": "Friday", "Saturday": "Saturday", "Sunday": "Sunday"
     }
   },
 
@@ -416,5 +449,179 @@
     "each": "each",
     "youGet": "YOU GET",
     "total": "TOTAL"
+  },
+  "pokedex": {
+    "title": "POKÉDEX",
+    "page": { "Info": "INFO", "Area": "AREA", "Size": "SIZE" },
+    "mode": { "Sinnoh": "SINNOH", "National": "NATIONAL" },
+    "modeName": { "Sinnoh": "Sinnoh", "National": "National" },
+    "found": "FOUND",
+    "order": "ORDER",
+    "seen": "SEEN",
+    "caught": "CAUGHT",
+    "nothingFound": "Nothing found.",
+    "notSeen": "Not seen yet.",
+    "kind": "{category} Pokémon",
+    "unknownKind": "????? Pokémon",
+    "metres": "{n} m",
+    "kilograms": "{n} kg",
+    "height": "HEIGHT",
+    "weight": "WEIGHT",
+    "habitat": "HABITAT",
+    "catchToRecord": "Catch one to record what is known about it.",
+    "catchToCompare": "Catch one to compare its size.",
+    "whereItLives": "WHERE IT LIVES",
+    "areaUnknown": "Area unknown.",
+    "more": "and {count} more",
+    "livesIn": {
+      "one": "{name} lives in one place.",
+      "other": "{name} lives in {n} places."
+    },
+    "mapKey": "Where it lives",
+    "way": {
+      "allDay": "Grass, all day",
+      "grass": "Grass: {times}",
+      "morning": "morning",
+      "day": "day",
+      "night": "night",
+      "surfing": "Surfing",
+      "Old": "Old",
+      "Good": "Good",
+      "Super": "Super",
+      "rods": {
+        "one": "{rods} Rod",
+        "other": "{rods} Rods"
+      }
+    },
+    "search": {
+      "title": "Search the Pokédex",
+      "button": { "Search": "SEARCH", "Reset": "RESET", "Diploma": "DIPLOMA" },
+      "row": { "Mode": "Pokédex", "Order": "Order", "Name": "Name", "Type1": "Type", "Type2": "Second type", "Shape": "Shape" },
+      "any": "Any"
+    },
+    "orderName": {
+      "Number": "Number", "Alphabet": "A to Z", "Heaviest": "Heaviest", "Lightest": "Lightest", "Tallest": "Tallest", "Smallest": "Smallest"
+    },
+    "shape": {
+      "Ball": "Ball", "Squiggle": "Squiggle", "Fish": "Fish", "Arms": "Arms", "Blob": "Blob", "Upright": "Upright", "Legs": "Legs",
+      "Quadruped": "Quadruped", "Wings": "Wings", "Tentacles": "Tentacles", "Heads": "Heads", "Humanoid": "Humanoid",
+      "BugWings": "Bug Wings", "Armor": "Armor"
+    },
+    "diploma": {
+      "title": "DIPLOMA",
+      "Sinnoh": "SINNOH POKÉDEX",
+      "National": "NATIONAL POKÉDEX",
+      "line": {
+        "Sinnoh": "has seen every one of the {count} Pokémon of the Sinnoh Pokédex. A full record of the region's wild life, kept with care.",
+        "National": "has caught every Pokémon of the National Pokédex that a trainer can meet. The work of a true Pokémon Master."
+      }
+    }
+  },
+  "hallOfFame": {
+    "title": "HALL OF FAME",
+    "empty": "No team has entered the Hall of Fame yet.",
+    "number": "No. {number}",
+    "which": "TEAM {entry} OF {count}",
+    "level": "Lv. {level}",
+    "profile": "PROFILE",
+    "moves": "MOVES",
+    "species": "SPECIES",
+    "levelCaption": "LEVEL",
+    "trainer": "ORIGINAL TRAINER",
+    "id": "ID No.",
+    "type": "TYPE"
+  },
+  "journal": {
+    "title": "JOURNAL",
+    "empty": "Nothing has been written yet."
+  },
+  "badges": {
+    "Coal": "Coal", "Forest": "Forest", "Cobble": "Cobble", "Fen": "Fen", "Relic": "Relic", "Mine": "Mine", "Icicle": "Icicle", "Beacon": "Beacon"
+  },
+  "card": {
+    "title": "TRAINER CARD",
+    "id": "ID No. {id}",
+    "money": "MONEY",
+    "timePlayed": "TIME PLAYED",
+    "caught": "POKÉMON CAUGHT",
+    "seen": "POKÉMON SEEN",
+    "score": "SCORE",
+    "badges": "BADGES  {count} / 8",
+    "debut": "HALL OF FAME DEBUT",
+    "debutWhen": "{date}   {time}",
+    "linkBattles": "LINK BATTLES",
+    "linkBattlesValue": "{won} won,  {lost} lost",
+    "linkTrades": "LINK TRADES",
+    "contests": "SUPER CONTESTS",
+    "contestsValue": "{won} won of {entered}",
+    "started": "ADVENTURE STARTED",
+    "stars": "STARS",
+    "starsNote": "A star for each of five great feats."
+  },
+  "boxes": {
+    "title": "PC BOXES",
+    "party": "PARTY  {count} / {max}",
+    "changeBoxNote": "Left and right change box.",
+    "emptyPlace": "An empty place.",
+    "menu": { "Name": "NAME", "Wallpaper": "WALLPAPER", "Cancel": "CANCEL" },
+    "wallpaper": {
+      "0": "Forest", "1": "City", "2": "Desert", "3": "Savanna", "4": "Crag", "5": "Volcano",
+      "6": "Snow", "7": "Cave", "8": "Beach", "9": "Seafloor", "10": "River", "11": "Sky",
+      "12": "Poké Center", "13": "Machine", "14": "Checks", "15": "Simple", "16": "Distortion", "17": "Contest",
+      "18": "Nostalgic", "19": "Croagunk", "20": "Trio", "21": "PikaPika", "22": "Legend", "23": "Team Galactic"
+    },
+    "action": { "Move": "MOVE", "Withdraw": "WITHDRAW", "Store": "STORE", "Mark": "MARK", "Release": "RELEASE", "Cancel": "CANCEL" },
+    "release": {
+      "question": "Release {name}?",
+      "body": "Once it goes back to the wild, it won't come back to you.",
+      "yes": "RELEASE  (Z)",
+      "no": "KEEP IT  (ESC)"
+    },
+    "moves": "MOVES",
+    "met": "MET",
+    "metOn": "MET  {date}",
+    "metLine": "Met {where} at Lv. {level}.",
+    "holding": "HOLDING",
+    "marks": "MARKS",
+    "noneSet": "None set",
+    "set": "{count} set",
+    "naming": {
+      "title": "BOX NAME",
+      "note": "Eight letters at most. Leave it empty to keep the name {name}."
+    },
+    "partyFull": "Your party is full.",
+    "joined": "{name} joined your party.",
+    "putIn": "{name} was put in {box}.",
+    "released": "{name} was released outside. Bye-bye, {name}!",
+    "cameBack": "{name} came back! It must not want to leave you.",
+    "removeMail": "Please remove the Mail first.",
+    "removeCapsule": "Please take the Ball Capsule off first.",
+    "lastAble": "That's your last Pokémon able to battle!",
+    "full": "The boxes are full."
+  },
+  "starters": {
+    "title": "CHOOSE A PARTNER",
+    "question": "Choose {name}?",
+    "body": "The {category} Pokémon will be your partner from here on.",
+    "no": "NO, LOOK AGAIN",
+    "yes": "YES, {name}"
+  },
+  "saving": {
+    "heading": "SAVE",
+    "question": "Save the game in slot {slot}?",
+    "answer": { "save": "SAVE", "cancel": "CANCEL" },
+    "saved": "SAVED",
+    "savedLine": "{name} saved the game.",
+    "player": "PLAYER",
+    "timePlayed": "TIME PLAYED",
+    "pokedex": "POKÉDEX",
+    "badges": "BADGES  {count} / 8",
+    "modernRules": "MODERN RULES",
+    "party": "PARTY",
+    "slot": "SLOT {slot}",
+    "unreadable": {
+      "heading": "This save can't be read",
+      "body": "It and the save kept before it are both damaged."
+    }
   }
 }

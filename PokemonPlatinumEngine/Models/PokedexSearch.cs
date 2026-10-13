@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 
 namespace PokemonPlatinumEngine.Models;
@@ -64,21 +65,23 @@ public static class PokedexSearch
     }
 
     /// <summary>What an order is called on the screen.</summary>
-    public static string NameOf(PokedexOrder order) => order switch
+    public static string NameOf(PokedexOrder order) => Text.Of($"pokedex.orderName.{order}");
+
+    /// <summary>What a body shape is called on the screen (the data's name, <c>Bug Wings</c>, is the key without its space).</summary>
+    public static string NameOfShape(string shape)
     {
-        PokedexOrder.Number => "Number",
-        PokedexOrder.Alphabet => "A to Z",
-        _ => order.ToString()
-    };
+        string key = shape.Replace(" ", "");
+        return Text.Of($"pokedex.shape.{key}");
+    }
 
     /// <summary>Every name group's label: "A B C".</summary>
-    public static string NameOfGroup(int group) => group < 0 ? "Any" : string.Join(' ', NameGroups[group].ToCharArray());
+    public static string NameOfGroup(int group) => group < 0 ? Text.Of("pokedex.search.any") : string.Join(' ', NameGroups[group].ToCharArray());
 
     /// <summary>The weight a list sorted by size shows beside each species, or null when the order isn't by size.</summary>
     public static string? SizeLabel(PokedexOrder order, PokemonSpecies s) => order switch
     {
-        PokedexOrder.Heaviest or PokedexOrder.Lightest => s.Weight.ToString("0.0", CultureInfo.InvariantCulture) + " kg",
-        PokedexOrder.Tallest or PokedexOrder.Smallest => s.Height.ToString("0.0", CultureInfo.InvariantCulture) + " m",
+        PokedexOrder.Heaviest or PokedexOrder.Lightest => Text.Of("pokedex.kilograms", ("n", s.Weight.ToString("0.0", CultureInfo.InvariantCulture))),
+        PokedexOrder.Tallest or PokedexOrder.Smallest => Text.Of("pokedex.metres", ("n", s.Height.ToString("0.0", CultureInfo.InvariantCulture))),
         _ => null
     };
 }

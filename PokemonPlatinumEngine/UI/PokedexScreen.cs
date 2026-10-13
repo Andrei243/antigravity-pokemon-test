@@ -345,12 +345,12 @@ public class PokedexScreen
     /// <summary>What a row of the search panel says now.</summary>
     public string ValueOf(PokedexSearchRow row) => row switch
     {
-        PokedexSearchRow.Mode => DraftMode == PokedexMode.Sinnoh ? "Sinnoh" : "National",
+        PokedexSearchRow.Mode => Text.Of($"pokedex.modeName.{DraftMode}"),
         PokedexSearchRow.Order => PokedexSearch.NameOf(Draft.Order),
         PokedexSearchRow.Name => PokedexSearch.NameOfGroup(Draft.NameGroup),
-        PokedexSearchRow.Type1 => Draft.Type1?.ToString() ?? "Any",
-        PokedexSearchRow.Type2 => Draft.Type2?.ToString() ?? "Any",
-        PokedexSearchRow.Shape => Draft.Shape ?? "Any",
+        PokedexSearchRow.Type1 => Draft.Type1 is { } first ? Words.Type(first) : Text.Of("pokedex.search.any"),
+        PokedexSearchRow.Type2 => Draft.Type2 is { } second ? Words.Type(second) : Text.Of("pokedex.search.any"),
+        PokedexSearchRow.Shape => Draft.Shape is { } shape ? PokedexSearch.NameOfShape(shape) : Text.Of("pokedex.search.any"),
         _ => ""
     };
 

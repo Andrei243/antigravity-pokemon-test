@@ -57,7 +57,9 @@ public class StoryTests
     [Fact]
     public void TheBadgesAreInTheOrderTheTrainerCardShowsThem()
     {
-        Assert.Equal(PokemonPlatinumEngine.UI.ModernUi.BadgeNames, Enum.GetNames<Badge>());
+        // The card names each by the Badge itself (plan 17 · N1c), in English the enum's own name
+        Assert.Equal(new[] { "Coal", "Forest", "Cobble", "Fen", "Relic", "Mine", "Icicle", "Beacon" }, Enum.GetNames<Badge>());
+        Assert.Equal(Enum.GetNames<Badge>(), Enum.GetValues<Badge>().Select(PokemonPlatinumEngine.Core.Words.Badge));
     }
 
     [Fact]
