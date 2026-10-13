@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
+using PokemonPlatinumEngine.Models.SuperContests;
 
 namespace PokemonPlatinumEngine.Models;
 
@@ -171,77 +173,69 @@ public static class RibbonRules
     {
         RibbonKind.Contest or RibbonKind.Daily or RibbonKind.Footprint => null,
         RibbonKind.Effort => null,
-        RibbonKind.Champion => ribbon == SinnohChamp ? null : "a Pokémon brought over from Hoenn",
-        RibbonKind.Syndicate => "the Resort Area's Ribbon Syndicate",
+        RibbonKind.Champion => ribbon == SinnohChamp ? null : Text.Of("ribbonDeeds.waitsFor.hoenn"),
+        RibbonKind.Syndicate => Text.Of("ribbonDeeds.waitsFor.syndicate"),
         // The Battle Tower gives its four (plan 06 · R18a); the two that take another player wait for one (plan 07)
-        RibbonKind.Tower => ribbon.StartsWith("RIBBON_HOENN_", StringComparison.Ordinal) ? "a Pokémon brought over from Hoenn"
-            : ribbon == "RIBBON_PAIR_ABILITY" ? "a friend to battle beside in the Battle Tower"
-            : ribbon == "RIBBON_WORLD_ABILITY" ? "the Battle Tower's battles with the world" : null,
-        RibbonKind.HoennContest => "a Pokémon brought over from Hoenn",
-        _ => "an event"
+        RibbonKind.Tower => ribbon.StartsWith("RIBBON_HOENN_", StringComparison.Ordinal) ? Text.Of("ribbonDeeds.waitsFor.hoenn")
+            : ribbon == "RIBBON_PAIR_ABILITY" ? Text.Of("ribbonDeeds.waitsFor.friend")
+            : ribbon == "RIBBON_WORLD_ABILITY" ? Text.Of("ribbonDeeds.waitsFor.world") : null,
+        RibbonKind.HoennContest => Text.Of("ribbonDeeds.waitsFor.hoenn"),
+        _ => Text.Of("ribbonDeeds.waitsFor.event")
     };
-
-    private static readonly string[] HoennRanks = { "Normal", "Super", "Hyper", "Master" };
-    private static readonly string[] SinnohRanks = { "Normal", "Great", "Ultra", "Master" };
 
     /// <summary>What a ribbon's page says of it, in our own words.</summary>
     public static string Describe(string ribbon)
     {
         if (ContestOf(ribbon) is var (quality, rank))
         {
-            bool hoenn = ribbon.StartsWith("RIBBON_HOENN_", StringComparison.Ordinal);
-            string kind = quality == ContestStat.Smart ? (hoenn ? "Smartness" : "Smart") : hoenn ? quality switch
-            {
-                ContestStat.Cool => "Coolness",
-                ContestStat.Beauty => "Beauty",
-                ContestStat.Cute => "Cuteness",
-                _ => "Toughness"
-            } : quality.ToString();
-            return hoenn
-                ? $"For winning Hoenn's {kind} Contest at the {HoennRanks[rank]} Rank."
-                : $"For winning a {kind} Super Contest at the {SinnohRanks[rank]} Rank.";
+            // Hoenn's contests are named for the quality's noun (Coolness) and have ranks of their own; a Super
+            // Contest's ribbon says the quality and the rank as the contest's screen does
+            if (ribbon.StartsWith("RIBBON_HOENN_", StringComparison.Ordinal))
+                return Text.Of("ribbonDeeds.hoennContest", ("kind", Text.Of($"ribbonDeeds.hoennKind.{quality}")), ("rank", Text.Of($"ribbonDeeds.hoennRank.{rank}")));
+            var sinnohRank = (ContestRank)rank;
+            return Text.Of("ribbonDeeds.superContest", ("kind", Text.Of($"contest.category.{quality}")), ("rank", Text.Of($"contest.rank.{sinnohRank}")));
         }
         return ribbon switch
         {
-            "RIBBON_HOENN_CHAMPION" => "For beating Hoenn's Champion and entering its Hall of Fame.",
-            "RIBBON_HOENN_WINNING" => "For clearing the Level 50 challenge of Hoenn's Battle Tower.",
-            "RIBBON_HOENN_VICTORY" => "For clearing the Level 100 challenge of Hoenn's Battle Tower.",
-            "RIBBON_HOENN_ARTIST" => "For being chosen as the model of a painting in Hoenn.",
-            Effort => "For a Pokémon that has worked as hard as a Pokémon can.",
-            "RIBBON_HOENN_MARINE" => "A ribbon of the sea, given at a gathering far away.",
-            "RIBBON_HOENN_LAND" => "A ribbon of the land, given at a gathering far away.",
-            "RIBBON_HOENN_SKY" => "A ribbon of the sky, given at a gathering far away.",
-            "RIBBON_HOENN_COUNTRY" => "For a champion of a tournament held across a country.",
-            "RIBBON_HOENN_NATIONAL" => "For a Pokémon that came through every hardship set before it.",
-            "RIBBON_HOENN_EARTH" => "For a hundred battles won in a row.",
-            "RIBBON_HOENN_WORLD" => "For a champion of a tournament held across the world.",
-            SinnohChamp => "For beating Sinnoh's Champion and entering the Hall of Fame.",
-            "RIBBON_ABILITY" => "For beating the Tower Tycoon at the Battle Tower.",
-            "RIBBON_GREAT_ABILITY" => "For beating the Tower Tycoon a second, harder time.",
-            "RIBBON_DOUBLE_ABILITY" => "For a long streak in the Battle Tower's Double Battles.",
-            "RIBBON_MULTI_ABILITY" => "For a long streak in the Battle Tower's Multi Battles.",
-            "RIBBON_PAIR_ABILITY" => "For a long streak in the Battle Tower beside a friend.",
-            "RIBBON_WORLD_ABILITY" => "For rising through the ranks of the Battle Tower's battles with the world.",
-            "RIBBON_ALERT" => "A ribbon for remembering a moment of being wide awake.",
-            "RIBBON_SHOCK" => "A ribbon for remembering a moment that came as a shock.",
-            "RIBBON_DOWNCAST" => "A ribbon for remembering a moment of feeling low.",
-            "RIBBON_CARELESS" => "A ribbon for remembering a slip that couldn't be taken back.",
-            "RIBBON_RELAX" => "A ribbon for remembering a moment of ease.",
-            "RIBBON_SNOOZE" => "A ribbon for remembering a deep, deep sleep.",
-            "RIBBON_SMILE" => "A ribbon for remembering a moment that brought a smile.",
-            Gorgeous => "A ribbon of dazzling make, and a dazzling price.",
-            Royal => "A ribbon fit for royalty, at a price to match.",
-            GorgeousRoyal => "The most lavish ribbon there is. Few have ever seen its price paid.",
-            Footprint => "For a Pokémon whose heart is wholly open to its Trainer.",
-            "RIBBON_RECORD" => "For a record that had never been set before.",
-            "RIBBON_HISTORY" => "For a deed that went down in history.",
-            "RIBBON_LEGEND" => "For a deed that became a legend.",
-            "RIBBON_RED" or "RIBBON_GREEN" or "RIBBON_BLUE" => "A ribbon of one colour, from a gathering nobody remembers.",
-            "RIBBON_FESTIVAL" => "A keepsake of a festival.",
-            "RIBBON_CARNIVAL" => "A keepsake of a carnival.",
-            "RIBBON_CLASSIC" => "A ribbon given at a classic gathering of Pokémon.",
-            "RIBBON_PREMIER" => "A ribbon for a day set apart from all the others.",
-            _ => "A ribbon."
+            "RIBBON_HOENN_CHAMPION" => Text.Of("ribbonDeeds.hoennChampion"),
+            "RIBBON_HOENN_WINNING" => Text.Of("ribbonDeeds.hoennWinning"),
+            "RIBBON_HOENN_VICTORY" => Text.Of("ribbonDeeds.hoennVictory"),
+            "RIBBON_HOENN_ARTIST" => Text.Of("ribbonDeeds.hoennArtist"),
+            Effort => Text.Of("ribbonDeeds.effort"),
+            "RIBBON_HOENN_MARINE" => Text.Of("ribbonDeeds.hoennMarine"),
+            "RIBBON_HOENN_LAND" => Text.Of("ribbonDeeds.hoennLand"),
+            "RIBBON_HOENN_SKY" => Text.Of("ribbonDeeds.hoennSky"),
+            "RIBBON_HOENN_COUNTRY" => Text.Of("ribbonDeeds.hoennCountry"),
+            "RIBBON_HOENN_NATIONAL" => Text.Of("ribbonDeeds.hoennNational"),
+            "RIBBON_HOENN_EARTH" => Text.Of("ribbonDeeds.hoennEarth"),
+            "RIBBON_HOENN_WORLD" => Text.Of("ribbonDeeds.hoennWorld"),
+            SinnohChamp => Text.Of("ribbonDeeds.sinnohChampion"),
+            "RIBBON_ABILITY" => Text.Of("ribbonDeeds.ability"),
+            "RIBBON_GREAT_ABILITY" => Text.Of("ribbonDeeds.greatAbility"),
+            "RIBBON_DOUBLE_ABILITY" => Text.Of("ribbonDeeds.doubleAbility"),
+            "RIBBON_MULTI_ABILITY" => Text.Of("ribbonDeeds.multiAbility"),
+            "RIBBON_PAIR_ABILITY" => Text.Of("ribbonDeeds.pairAbility"),
+            "RIBBON_WORLD_ABILITY" => Text.Of("ribbonDeeds.worldAbility"),
+            "RIBBON_ALERT" => Text.Of("ribbonDeeds.alert"),
+            "RIBBON_SHOCK" => Text.Of("ribbonDeeds.shock"),
+            "RIBBON_DOWNCAST" => Text.Of("ribbonDeeds.downcast"),
+            "RIBBON_CARELESS" => Text.Of("ribbonDeeds.careless"),
+            "RIBBON_RELAX" => Text.Of("ribbonDeeds.relax"),
+            "RIBBON_SNOOZE" => Text.Of("ribbonDeeds.snooze"),
+            "RIBBON_SMILE" => Text.Of("ribbonDeeds.smile"),
+            Gorgeous => Text.Of("ribbonDeeds.gorgeous"),
+            Royal => Text.Of("ribbonDeeds.royal"),
+            GorgeousRoyal => Text.Of("ribbonDeeds.gorgeousRoyal"),
+            Footprint => Text.Of("ribbonDeeds.footprint"),
+            "RIBBON_RECORD" => Text.Of("ribbonDeeds.record"),
+            "RIBBON_HISTORY" => Text.Of("ribbonDeeds.history"),
+            "RIBBON_LEGEND" => Text.Of("ribbonDeeds.legend"),
+            "RIBBON_RED" or "RIBBON_GREEN" or "RIBBON_BLUE" => Text.Of("ribbonDeeds.colour"),
+            "RIBBON_FESTIVAL" => Text.Of("ribbonDeeds.festival"),
+            "RIBBON_CARNIVAL" => Text.Of("ribbonDeeds.carnival"),
+            "RIBBON_CLASSIC" => Text.Of("ribbonDeeds.classic"),
+            "RIBBON_PREMIER" => Text.Of("ribbonDeeds.premier"),
+            _ => Text.Of("ribbonDeeds.any")
         };
     }
 }

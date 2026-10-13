@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using PokemonPlatinumEngine.Battle.Effects;
+using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 
 namespace PokemonPlatinumEngine.Models;
@@ -149,21 +150,11 @@ public static class Poffins
         return new Poffin(PoffinType.Foul, f[0], f[1], f[2], f[3], f[4], smoothness);
     }
 
-    private static readonly string[] FlavorNames = { "Spicy", "Dry", "Sweet", "Bitter", "Sour" };
-
     /// <summary>A kind's name (the original's <c>poffin_types</c> list): its flavours and "Poffin".</summary>
-    public static string NameOf(PoffinType type) => type switch
-    {
-        PoffinType.Rich => "Rich Poffin",
-        PoffinType.Overripe => "Overripe Poffin",
-        PoffinType.Foul => "Foul Poffin",
-        PoffinType.Mild => "Mild Poffin",
-        _ when (int)type / 5 == (int)type % 5 => FlavorNames[(int)type / 5] + " Poffin",
-        _ => FlavorNames[(int)type / 5] + "-" + FlavorNames[(int)type % 5] + " Poffin"
-    };
+    public static string NameOf(PoffinType type) => Text.Of($"poffinNames.{type}");
 
     /// <summary>A flavour's name in capitals, as the case's tabs show it.</summary>
-    public static string NameOf(Flavor flavor) => FlavorNames[(int)flavor].ToUpperInvariant();
+    public static string NameOf(Flavor flavor) => Text.Of($"poffinCase.flavour.{flavor}");
 
     /// <summary>The quality of the condition a flavour raises: spicy cool, dry beauty, sweet cute, bitter smart, sour tough.</summary>
     public static ContestStat Raises(Flavor flavor) => (ContestStat)(int)flavor;

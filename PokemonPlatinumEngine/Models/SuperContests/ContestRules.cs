@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using PokemonPlatinumEngine.Core;
+using PokemonPlatinumEngine.Data;
 
 namespace PokemonPlatinumEngine.Models.SuperContests;
 
@@ -149,9 +151,8 @@ public static class ContestRules
     public static string Ribbon(ContestStat contest, ContestRank rank) =>
         "RIBBON_" + contest.ToString().ToUpperInvariant() + (rank == ContestRank.Normal ? "" : "_" + rank.ToString().ToUpperInvariant());
 
-    /// <summary>The ribbon's name as it is said: "Cool Ribbon", "Cute Ribbon Great".</summary>
-    public static string RibbonName(ContestStat contest, ContestRank rank) =>
-        contest + " Ribbon" + (rank == ContestRank.Normal ? "" : " " + rank);
+    /// <summary>The ribbon's name as <c>ribbons.json</c> gives it: "Cool Ribbon", "Cute Ribbon Great".</summary>
+    public static string RibbonName(ContestStat contest, ContestRank rank) => RibbonDatabase.Name(Ribbon(contest, rank));
 
     /// <summary>How many of a quality's four ribbons a Pokémon has (<c>CountEarnedRibbonsForContestType</c>).</summary>
     public static int RibbonsOf(Pokemon pokemon, ContestStat contest)
@@ -210,33 +211,7 @@ public static class ContestRules
     /// What an effect does, in our own words on the original's two lines (<c>contest_effects.json</c>'s beats), for
     /// the list of moves.
     /// </summary>
-    public static string Describe(ContestEffect effect) => effect switch
-    {
-        ContestEffect.FirstNextTurn => "Goes first in the next turn.",
-        ContestEffect.LastNextTurn => "Goes last in the next turn.",
-        ContestEffect.DoubledJudge => "+2 for each rival who chose the same judge.",
-        ContestEffect.TwoHeartsWhenVoltageUp => "+2 if it raises the voltage.",
-        ContestEffect.Basic => "A plain performance.",
-        ContestEffect.UniqueJudge => "+3 if no rival chose the same judge.",
-        ContestEffect.ConsecutiveUse => "May be performed two turns running.",
-        ContestEffect.Voltage => "Adds the judge's voltage to the score.",
-        ContestEffect.AllSameJudge => "+15 if all four chose the same judge.",
-        ContestEffect.LowersVoltage => "Lowers every judge's voltage by one.",
-        ContestEffect.DoubleNextTurn => "Doubles the next turn's score.",
-        ContestEffect.StealVoltage => "Takes the voltage bonus of the act before.",
-        ContestEffect.SuppressVoltage => "No voltage goes up for the rest of the turn.",
-        ContestEffect.RandomOrder => "Shuffles the next turn's order.",
-        ContestEffect.DoubleFinalAct => "Double score if performed last.",
-        ContestEffect.LowVoltageAdvantage => "Scores more the lower the judge's voltage.",
-        ContestEffect.FirstPerformanceAdvantage => "+2 if performed first.",
-        ContestEffect.FinalPerformanceAdvantage => "+2 if performed last.",
-        ContestEffect.NoVoltageDown => "No voltage goes down for the rest of the turn.",
-        ContestEffect.TwoVoltageInARowAdvantage => "+3 if the voltage rises twice in a row.",
-        ContestEffect.HighScoreLaterTurn => "Scores more the later it is performed.",
-        ContestEffect.MaxVoltageAdvantage => "+3 right after a voltage is filled.",
-        ContestEffect.PityPoints => "+3 if it scores the least of the turn.",
-        _ => ""
-    };
+    public static string Describe(ContestEffect effect) => effect == ContestEffect.None ? "" : Text.Of($"contestEffects.{effect}");
 }
 
 /// <summary>

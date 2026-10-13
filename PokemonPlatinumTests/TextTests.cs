@@ -1,8 +1,10 @@
 using System.Text.RegularExpressions;
+using PokemonPlatinumEngine.Battle.Effects;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.Models.PoketchApps;
+using PokemonPlatinumEngine.Models.SuperContests;
 using PokemonPlatinumEngine.UI;
 
 namespace PokemonPlatinumTests;
@@ -36,7 +38,8 @@ public class TextTests
         "UI/ModernUi.Hall.cs", "UI/HallBoardScreen.cs", "UI/ModernUi.Castle.cs", "UI/CastleScreen.cs", "UI/ModernUi.Arcade.cs", "UI/ArcadeBoardScreen.cs",
         "UI/ModernUi.Pastimes.cs",
         "UI/ModernUi.Poffins.cs", "UI/PoffinCookingScreen.cs", "UI/PoffinCaseScreen.cs", "UI/SuperContestScreen.cs", "UI/ModernUi.SuperContest.cs",
-        "UI/ModernUi.Capsules.cs", "UI/SealCaseScreen.cs", "UI/FashionCaseScreen.cs", "UI/ModernUi.Ribbons.cs"
+        "UI/ModernUi.Capsules.cs", "UI/SealCaseScreen.cs", "UI/FashionCaseScreen.cs", "UI/ModernUi.Ribbons.cs",
+        "Models/Poffins.cs", "Models/SuperContests/ContestRules.cs", "Models/Ribbons.cs", "Models/Underground/SecretBaseRules.cs"
     };
 
     /// <summary>What may stay in quotes in a file on the table: names of the data, and the logo, which is a picture (plan 17).</summary>
@@ -94,6 +97,28 @@ public class TextTests
         {
             "Dress Up", "Ranch", "City at Night", "Snowy Town", "Fiery", "Outer Space", "Cumulus Cloud", "Desert", "Flower Patch",
             "Future Room", "Open Sea", "Total Darkness", "Tatami Room", "Gingerbread Room", "Seafloor", "Underground", "Sky", "Theater"
+        },
+        // A mistake of the code's own, never seen by a player
+        ["Models/Poffins.cs"] = new[] { "A Poffin has five flavours." },
+        // The scarves the condition's score goes by, the accessories a first win puts in the Fashion Case (items.json's and
+        // contests.json's names) and the start of a ribbon's constant
+        ["Models/SuperContests/ContestRules.cs"] = new[]
+        {
+            "Red Scarf", "Blue Scarf", "Pink Scarf", "Green Scarf", "Yellow Scarf", "RIBBON_",
+            "Red Barrette", "Red Balloons", "Top Hat", "Gold Pedestal", "Blue Barrette", "Blue Balloons", "Silk Veil", "Glass Stage",
+            "Pink Barrette", "Pink Balloon", "Lace Headdress", "Flower Stage", "Green Barrette", "Green Balloons", "Professor Hat", "Cube Stage",
+            "Yellow Barrette", "Yellow Balloon", "Heroic Headband", "Award Podium"
+        },
+        // The parts of the ribbons' constants that tell a contest's ribbon, its region and its rank
+        ["Models/Ribbons.cs"] = new[] { "RIBBON_", "RIBBON_HOENN_", "SUPER", "GREAT", "HYPER", "ULTRA", "MASTER" },
+        // The parts of the goods' and traps' ids a tool goes by, the records underground.json says a good shows, the
+        // hikers' kinds of stock, and the other diggers' names, which stand for other players' and are kept in the save
+        ["Models/Underground/SecretBaseRules.cs"] = new[]
+        {
+            "_TOOL", "TRAP_", "UG_GOOD_", "TRAP_DIGGER_DRILL", "FossilsDug", "SpheresDug", "TrapHits", "TrapsHit", "TimesBaseMoved",
+            "FlagsObtained", "FlagsRegistered", "TotalScore", "Traps", "Goods", "Treasures",
+            "Bram", "Odette", "Corwin", "Mirela", "Tavish", "Ilse", "Rurik", "Nadia", "Per", "Zofia", "Emrys", "Linnea", "Dov", "Sabela",
+            "Kito", "Marit", "Anselm", "Yara", "Wim", "Tindra", "Oskar", "Beatrix", "Jarek", "Solveig"
         }
     };
 
@@ -243,6 +268,16 @@ public class TextTests
         Assert.Equal(new[] { "1 heart", "0 hearts", "3 hearts" }, new[] { 1, 0, 3 }.Select(n => Text.Of("contest.hearts", ("n", n))));
         Assert.Equal("It has won 2 ribbons.", Text.Of("ribbonPage.won", ("n", 2)));
         Assert.Equal("1 time", Text.Of("cooking.times", ("n", 1)));
+        // N1e: the lines the contest's, the ribbons', the Poffins' and the secret base's rules hand their screens
+        Assert.Equal(new[] { "Mild Poffin", "Sour-Bitter Poffin", "Dry Poffin" }, new[] { PoffinType.Mild, PoffinType.SourBitter, PoffinType.Dry }.Select(Poffins.NameOf));
+        Assert.Equal("SPICY", Poffins.NameOf(Flavor.Spicy));
+        Assert.Equal("+2 if performed first.", ContestRules.Describe(ContestEffect.FirstPerformanceAdvantage));
+        Assert.Equal("", ContestRules.Describe(ContestEffect.None));
+        Assert.Equal("For winning a Smart Super Contest at the Ultra Rank.", RibbonRules.Describe("RIBBON_SMART_ULTRA"));
+        Assert.Equal("For winning Hoenn's Coolness Contest at the Hyper Rank.", RibbonRules.Describe("RIBBON_HOENN_COOL_HYPER"));
+        Assert.Equal("an event", RibbonRules.WaitsFor("RIBBON_CLASSIC"));
+        Assert.Equal("The big boulder was taken away. One more can go.", Text.Of("baseRules.boulderTakenMore", ("n", 1)));
+        Assert.Equal("The big boulder was taken away. 4 more can go.", Text.Of("baseRules.boulderTakenMore", ("n", 4)));
         // A placeholder the call names nothing for is left for whoever fills it later
         Assert.Equal("Hello {player}", Text.Fill("Hello {player}"));
     }
