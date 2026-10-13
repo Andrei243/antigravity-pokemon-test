@@ -21,32 +21,47 @@ namespace PokemonPlatinumTests;
 public class TextTests
 {
     /// <summary>
-    /// The files whose words are all the table's. Each part of N1 adds the files it moves; a word written in quotes
-    /// in one of them fails <see cref="TheScreensOnTheTableSayNothingInQuotesOfTheirOwn"/>.
+    /// The files whose words are all the table's: every file of <c>UI/</c> and <c>Core/</c> but those
+    /// <see cref="NotOnTheTable"/> names, and the files of the rules outside them that hand a screen its words
+    /// (<see cref="AlsoOnTheTable"/>). A word written in quotes in one of them fails
+    /// <see cref="TheScreensOnTheTableSayNothingInQuotesOfTheirOwn"/>.
     /// </summary>
-    private static readonly string[] OnTheTable =
+    private static IEnumerable<string> OnTheTable =>
+        new[] { "UI", "Core" }
+            .SelectMany(folder => Directory.EnumerateFiles(Path.Combine(Engine, folder), "*.cs", SearchOption.AllDirectories))
+            .Select(file => Path.GetRelativePath(Engine, file).Replace(Path.DirectorySeparatorChar, '/'))
+            .Where(name => !NotOnTheTable.ContainsKey(name))
+            .Concat(AlsoOnTheTable)
+            .OrderBy(name => name, StringComparer.Ordinal);
+
+    /// <summary>The files of the rules outside <c>UI/</c> and <c>Core/</c> whose words a screen shows (plan 17 · N1d, N1e).</summary>
+    private static readonly string[] AlsoOnTheTable =
     {
-        "UI/OptionsScreen.cs", "UI/TitleScreen.cs", "UI/StartMenu.cs", "UI/ClosePrompt.cs",
-        "UI/BagScreen.cs", "UI/ShopScreen.cs", "UI/PartyScreen.cs", "UI/ModernUi.Items.cs", "UI/ModernUi.Party.cs", "Core/Words.cs",
-        "UI/PokedexScreen.cs", "UI/ModernUi.Pokedex.cs", "Models/PokedexSearch.cs", "UI/ModernUi.Records.cs", "UI/TrainerCardScreen.cs",
-        "UI/HallOfFameScreen.cs", "UI/JournalScreen.cs", "UI/PCScreen.cs", "UI/ModernUi.Storage.cs", "UI/ModernUi.Lists.cs",
-        "UI/StarterSelectScreen.cs", "UI/SaveScreen.cs",
-        "UI/ModernUi.TownMap.cs", "UI/ModernUi.Field.cs", "UI/ModernUi.Poketch.cs", "UI/ModernUi.Poketch.Time.cs", "UI/ModernUi.Poketch.Toys.cs",
-        "UI/ModernUi.Poketch.Map.cs", "UI/ModernUi.Poketch.Pokemon.cs", "Models/PoketchApps/ColorChangerApp.cs", "UI/HelpScreen.cs",
-        "UI/ModernUi.Help.cs", "UI/ModernUi.Wardrobe.cs", "UI/WardrobeScreen.cs", "UI/ModernUi.Hatch.cs", "UI/HatchScreen.cs",
-        "UI/ModernUi.Ceremony.cs", "UI/HallOfFameCeremony.cs", "UI/CreditsScreen.cs", "UI/SlotMachineScreen.cs",
-        "UI/ModernUi.Underground.cs", "UI/MiningScreen.cs", "UI/UndergroundScreen.cs", "UI/DecorationScreen.cs", "Models/Decorating.cs",
-        "UI/ModernUi.Frontier.cs", "UI/FrontierRecordsScreen.cs", "Models/Frontier/FrontierBoard.cs", "UI/ModernUi.Factory.cs", "UI/FactoryScreen.cs",
-        "UI/ModernUi.Hall.cs", "UI/HallBoardScreen.cs", "UI/ModernUi.Castle.cs", "UI/CastleScreen.cs", "UI/ModernUi.Arcade.cs", "UI/ArcadeBoardScreen.cs",
-        "UI/ModernUi.Pastimes.cs",
-        "UI/ModernUi.Poffins.cs", "UI/PoffinCookingScreen.cs", "UI/PoffinCaseScreen.cs", "UI/SuperContestScreen.cs", "UI/ModernUi.SuperContest.cs",
-        "UI/ModernUi.Capsules.cs", "UI/SealCaseScreen.cs", "UI/FashionCaseScreen.cs", "UI/ModernUi.Ribbons.cs",
+        "Models/PokedexSearch.cs", "Models/PoketchApps/ColorChangerApp.cs", "Models/Decorating.cs", "Models/Frontier/FrontierBoard.cs",
         "Models/Poffins.cs", "Models/SuperContests/ContestRules.cs", "Models/Ribbons.cs", "Models/Underground/SecretBaseRules.cs",
         "Overworld/FieldMoveRules.cs", "Overworld/Fishing.cs", "Overworld/Bicycle.cs", "Models/ItemUse.cs", "Models/MoveTeaching.cs",
-        "Models/EncounterAids.cs", "Models/Journal.cs", "Core/InputManager.cs",
-        "Core/GameEngine.Underground.cs", "Core/GameEngine.Pastimes.cs", "Core/GameEngine.Frontier.cs", "Core/GameEngine.Capsules.cs",
-        "Core/GameEngine.SuperContests.cs", "Core/GameEngine.Poffins.cs", "Core/GameEngine.Hall.cs", "Core/GameEngine.Factory.cs",
-        "Core/GameEngine.Castle.cs", "Core/GameEngine.Arcade.cs", "Core/GameEngine.Encounters.cs", "Core/PlayerIdentity.cs"
+        "Models/EncounterAids.cs", "Models/Journal.cs"
+    };
+
+    /// <summary>
+    /// The files of <c>UI/</c> and <c>Core/</c> that are not on the table, each with why: the battle's, the evolution
+    /// scene's and the introduction's, which are plan 17 · N2's, and what speaks to a terminal or a report and never
+    /// to the screen, which stays in English.
+    /// </summary>
+    private static readonly Dictionary<string, string> NotOnTheTable = new()
+    {
+        ["UI/ModernUi.Battle.cs"] = "N2: the battle's menus and panels",
+        ["Core/GameEngine.Battles.cs"] = "N2: the battles the field starts",
+        ["UI/EvolutionScreen.cs"] = "N2: the evolution scene's lines",
+        ["UI/ModernUi.Evolution.cs"] = "N2: the evolution scene's lines",
+        ["UI/IntroScreen.cs"] = "N2: the introduction's lines",
+        ["UI/ModernUi.Intro.cs"] = "N2: the introduction's prompts",
+        ["Core/CommandLine.cs"] = "the switches and --help, said to the terminal",
+        ["Core/SavePaths.cs"] = "--where, said to the terminal",
+        ["Core/Diagnostics/Log.cs"] = "the log, for whoever reads log.txt",
+        ["Core/Diagnostics/CrashReport.cs"] = "a crash's report, for whoever reads it",
+        ["Core/Diagnostics/Manifest.cs"] = "--verify, said to the terminal",
+        ["Core/Diagnostics/GameVersion.cs"] = "the build's version as the log and --help write it"
     };
 
     /// <summary>What may stay in quotes in a file on the table: names of the data, and the logo, which is a picture (plan 17).</summary>
@@ -152,7 +167,23 @@ public class TextTests
         ["Core/GameEngine.cs"] = new[]
         {
             "PLAYER", "DAWN", "ROWAN", "Poké Ball", "Great Ball", "Ultra Ball", "Master Ball", "Journal", "Potion", "Revive", "Turtwig",
-            "Glitter Powder", "PoffinCase", "TownMap", "Leader", "Elite Four", "Champion", "Sinnoh", "PlayerHouse"
+            "Glitter Powder", "PoffinCase", "TownMap", "Leader", "Elite Four", "Champion", "Sinnoh", "PlayerHouse",
+            "slot {s.Number} {s.Outcome}" // how the slots read, for the log's line after it
+        },
+        // The region, the starter and its move an old save was given, and the save's field of its checksum
+        ["Core/SaveManager.cs"] = new[] { "Lucas", "Sinnoh", "Turtwig", "Tackle", "Poké Ball", "Checksum" },
+        // English as languages.json names it and its script, the language every other falls back to
+        ["Core/Language.cs"] = new[] { "English", "Latin" },
+        // The folders the typeface is read from
+        ["UI/Kit/UiFonts.cs"] = new[] { "Assets", "Fonts" },
+        ["UI/Kit/TextMetrics.cs"] = new[] { "Assets", "Fonts" },
+        // The keyboard's rows of letters, which plan 17 · N5 gives each language its own of
+        ["UI/Kit/NameEntry.cs"] = new[] { "ABCDEFGHIJ", "KLMNOPQRST", "UVWXYZ.-' ", "uvwxyz.-' " },
+        // The bands' trainers by class and name as trainers.json has them, and the mark's lettering, a picture as the title's logo is
+        ["UI/SceneTransition.Bands.cs"] = new[]
+        {
+            "Leader", "Elite Four", "Champion", "Roark", "Gardenia", "Wake", "Maylene", "Fantina", "Candice", "Byron", "Volkner",
+            "Aaron", "Bertha", "Flint", "Lucian", "Cynthia", "VS"
         },
         // The region and the rooms the Journal goes by, the Gyms' towns it keeps in the save, the items' uses the bag goes by, and the move Surf
         ["Core/GameEngine.Scripts.cs"] = new[]
@@ -208,6 +239,13 @@ public class TextTests
     private static IEnumerable<(string Text, bool Interpolated)> LiteralsOf(string path) =>
         CodeOf(path).SelectMany(line => Literal.Matches(line)).Select(m => (m.Groups[2].Value, m.Groups[1].Value == "$"));
 
+    // A line that writes to the log or throws says nothing on screen: the log and a mistake of the code's are read in English
+    private static readonly Regex NotForTheScreen = new(@"\bLog\.(Info|Warn|Error|Say|Phase)\(|Exception\(", RegexOptions.Compiled);
+
+    private static IEnumerable<(string Text, bool Interpolated)> LiteralsOnScreen(string path) =>
+        CodeOf(path).Where(line => !NotForTheScreen.IsMatch(line))
+            .SelectMany(line => Literal.Matches(line)).Select(m => (m.Groups[2].Value, m.Groups[1].Value == "$"));
+
     private static HashSet<string> Sections => Text.EnglishKeys.Select(k => k[..k.IndexOf('.')]).ToHashSet();
 
     private static bool LooksLikeAKey(string text, HashSet<string> sections) =>
@@ -260,7 +298,7 @@ public class TextTests
         foreach (var name in OnTheTable)
         {
             var allowed = NotWords.GetValueOrDefault(name, Array.Empty<string>());
-            foreach (var (text, _) in LiteralsOf(Path.Combine(Engine, name)))
+            foreach (var (text, _) in LiteralsOnScreen(Path.Combine(Engine, name)))
             {
                 string bare = Regex.Replace(text, @"\{[^}]*\}", "");
                 if (!Regex.IsMatch(bare, @"\p{L}{2,}")) continue;            // no word in it: a format, a number
@@ -268,6 +306,9 @@ public class TextTests
                 if (Regex.IsMatch(text, @"^[a-z_]+$")) continue;             // a sound's or a song's name
                 if (Regex.IsMatch(text, @"^[X.]+$")) continue;               // a picture in blocks (the Pokétch's)
                 if (Regex.IsMatch(text, @"^[A-Z0-9]+(_[A-Z0-9]+)+$")) continue; // a constant's name (RIBBON_RED), which the data goes by
+                if (Regex.IsMatch(text, @"^[A-Za-z][a-z0-9]*([A-Z0-9][A-Za-z0-9]*)+$")) continue; // a name of the code's or the data's (TwinleafTown, halfSize)
+                if (Regex.IsMatch(text, @"^[a-z_]+\.[A-Z]\w*$")) continue;    // a script's name (common.UseFly)
+                if (Regex.IsMatch(bare, @"^\S*\.[a-z]+$")) continue;          // a file's name (settings.json, .bak)
                 if (allowed.Contains(text)) continue;
                 said.Add($"{name}: \"{text}\"");
             }
