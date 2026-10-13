@@ -28,7 +28,7 @@ public partial class GameEngine
         scriptAnswer = 0;
         enteredSlots = Array.Empty<int>();
         factoryScreen.OpenToRent(factory.Offer.Select(factory.Build).ToList(), count);
-        currentState = GameState.FactoryRentals;
+        flow.State = GameState.FactoryRentals;
     }
 
     /// <summary>A trade is offered after a battle won (<c>OpenBattleFactoryAppForTrade</c>): the three in hand and the beaten trainer's three.</summary>
@@ -40,7 +40,7 @@ public partial class GameEngine
         // The trainer just beaten is the one before the battle to come
         var beaten = Data.FrontierDatabase.Trainer(factory.Trainers[Math.Max(0, factory.Battle - 1)]);
         factoryScreen.OpenToTrade(factory.Team.Select(factory.Build).ToList(), factory.Foe.Select(factory.Build).ToList(), beaten.Name);
-        currentState = GameState.FactoryRentals;
+        flow.State = GameState.FactoryRentals;
     }
 
     /// <summary>
@@ -52,7 +52,7 @@ public partial class GameEngine
         if (factory == null) return;
         foreach (var rental in factory.Offer.Concat(factory.Team).Concat(factory.Foe).Concat(factory.NextFoe))
         {
-            Graphics.PokemonModels.Request(rental.Species);
+            flow.WantModel(rental.Species);
             Graphics.PokemonSprites.Request(rental.Species);
         }
     }
@@ -64,7 +64,7 @@ public partial class GameEngine
         // The script that opened the screen hears what was decided
         enteredSlots = factoryScreen.Outcome.ToList();
         scriptAnswer = enteredSlots.Count > 0 ? 1 : 0;
-        currentState = GameState.Overworld;
+        flow.State = GameState.Overworld;
     }
 
     private sealed partial class FieldHost

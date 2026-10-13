@@ -41,7 +41,7 @@ public partial class GameEngine
     private bool HatchFirstEgg()
     {
         if (playerParty.Members.FirstOrDefault(p => p.IsEgg && p.EggCycles == 0) is not { } egg) return false;
-        PokemonModels.Request(egg.ModelName);
+        flow.WantModel(egg.ModelName);
         string place = PlaceName();
         var day = GameClock.Today;
         StartTransition(GameState.Hatch, () =>

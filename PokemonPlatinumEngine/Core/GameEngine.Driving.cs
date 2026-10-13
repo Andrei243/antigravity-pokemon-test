@@ -30,21 +30,23 @@ public partial class GameEngine
 
         // ------------------------------------------------------------ where the game is
 
-        public GameState State { get => game.currentState; set => game.currentState = value; }
-        public Map Map { get => game.currentMap; set => game.currentMap = value; }
-        public Player Player => game.player;
-        public BattleEngine? Battle { get => game.battle; set => game.battle = value; }
-        public StoryState Story => game.story;
+        /// <summary>The game's states without the renderers, which everything below that is the game's and not its pictures reads (plan 16 · T11).</summary>
+        public GameFlow Flow => game.flow;
+        public GameState State { get => Flow.State; set => Flow.State = value; }
+        public Map Map { get => Flow.Map; set => Flow.Map = value; }
+        public Player Player => Flow.Player;
+        public BattleEngine? Battle { get => Flow.Battle; set => Flow.Battle = value; }
+        public StoryState Story => Flow.Story;
         public bool TrainersLookOnArrival { get => game.trainersLookOnArrival; set => game.trainersLookOnArrival = value; }
         public bool SteppedOutOfWarp { get => game.steppedOutOfWarp; set => game.steppedOutOfWarp = value; }
 
         // ------------------------------------------------------------ what the player has
 
-        public Party Party => game.playerParty;
-        public Inventory Bag => game.playerInventory;
-        public Pokedex Pokedex => game.playerPokedex;
-        public PcBoxes Boxes { get => game.pcBoxStorage; set => game.pcBoxStorage = value; }
-        public int Money { get => game.playerMoney; set => game.playerMoney = value; }
+        public Party Party => Flow.Party;
+        public Inventory Bag => Flow.Bag;
+        public Pokedex Pokedex => Flow.Pokedex;
+        public PcBoxes Boxes { get => Flow.Boxes; set => Flow.Boxes = value; }
+        public int Money { get => Flow.Money; set => Flow.Money = value; }
         public int TrainerScore { get => game.trainerScore; set => game.trainerScore = value; }
         public HallOfFame HallOfFame { get => game.hallOfFame; set => game.hallOfFame = value; }
         public Journal Journal { get => game.journal; set => game.journal = value; }
@@ -172,7 +174,7 @@ public partial class GameEngine
         {
             game.currentMap = map;
             game.player.SetPosition(x, y, facing);
-            game.currentState = GameState.Overworld;
+            game.flow.State = GameState.Overworld;
         }
 
         public void StartWildBattle(WildEncounterEntry entry) => game.StartWildBattle(entry);
@@ -184,7 +186,7 @@ public partial class GameEngine
         public TransitionKind TransitionKind => game.flow.Kind;
         /// <summary>How long the scene has been closing, or opening on the next one, in seconds; and which of the two.</summary>
         public float TransitionSeconds => game.flow.Clock;
-        public bool TransitionClosing => game.currentState == GameState.Transition && game.flow.Closing;
+        public bool TransitionClosing => game.flow.State == GameState.Transition && game.flow.Closing;
         /// <summary>
         /// The band the scene is closing on (plan 09 · L15): whose it is with the portraits rendered so far, the look
         /// their portrait is of and the player's (null in a Leader's band), and how many of them are rendered; no
@@ -236,7 +238,7 @@ public partial class GameEngine
         /// <summary>A tool's hand on the menu button: held down while set, as the key is, and read where the key is read.</summary>
         public bool SkipHeld { get => game.SkipHeld; set => game.SkipHeld = value; }
         /// <summary>The key of the scene the script running is in (its file and its name); null outside one.</summary>
-        public string? Scene => game.runner.Scene;
+        public string? Scene => Flow.Runner.Scene;
         /// <summary>Whether that scene may be skipped now: the options allow it and nothing waits for the player.</summary>
         public bool SceneMayBeSkipped => game.MaySkipNow;
         /// <summary>How far the hold has come, 0 to 1: the ring's fill.</summary>

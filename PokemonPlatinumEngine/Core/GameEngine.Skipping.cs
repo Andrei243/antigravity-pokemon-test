@@ -45,7 +45,7 @@ public partial class GameEngine
     /// </summary>
     private bool MaySkipNow =>
         skipPhase == SkipPhase.None && gameStarted && runner.IsRunning && !runner.Hurrying && runner.Scene is { } scene
-        && currentState is GameState.Overworld or GameState.Dialogue
+        && flow.State is GameState.Overworld or GameState.Dialogue
         && !dialogue.IsQuestion && !choice.IsOpen && pendingAnswers == null
         // (nor what a hurry couldn't end at once: a puzzle's pieces on the move, a Pokémon being let out of its ball)
         && !PuzzleMoving && !AwaitingStroll
@@ -64,7 +64,7 @@ public partial class GameEngine
     private void BeginSkip()
     {
         if (dialogue.IsActive) dialogue.Close();
-        if (currentState == GameState.Dialogue) currentState = GameState.Overworld;
+        if (flow.State == GameState.Dialogue) flow.State = GameState.Overworld;
         skipVeil.Clear();
         skipVeil.To(true, SkipCloseSeconds);
         skipPhase = SkipPhase.Closing;
@@ -88,7 +88,7 @@ public partial class GameEngine
         HurryThroughTheScene();
         // What the hurry stopped before is carried out once the picture is back. If something has the screen all the
         // same (a host that had to be seen through after all), the dark is gone at once rather than left over it
-        if (currentState != GameState.Overworld)
+        if (flow.State != GameState.Overworld)
         {
             skipVeil.Clear();
             skipPhase = SkipPhase.None;

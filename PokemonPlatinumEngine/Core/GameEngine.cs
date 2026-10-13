@@ -94,9 +94,6 @@ public partial class GameEngine
     /// <summary>The game's states without the renderers (plan 16 · T11): the state, a transition, the menus' return states and the evolutions waiting.</summary>
     private readonly GameFlow flow = new();
 
-    // The state the game is in, which the flow holds (named as it was before the flow, while the rest moves out)
-    private GameState currentState { get => flow.State; set => flow.State = value; }
-
     // The game's objects, which the flow holds (named as they were before the flow, while the rest moves out)
     private Map currentMap { get => flow.Map; set => flow.Map = value; }
 
@@ -268,6 +265,7 @@ public partial class GameEngine
     public GameEngine(GameSettings? settings = null)
     {
         Settings = settings ?? GameSettings.Load();
+        flow.ModelWanted += PokemonModels.Request;
         world = new WorldRenderer(renderContext);
         battleRenderer = new BattleRenderer(renderContext);
     }
@@ -748,8 +746,8 @@ public partial class GameEngine
     /// </summary>
     public void RequestClose()
     {
-        if (currentState == GameState.WindowClosing || QuitRequested) return;
-        if (ClosePrompt.QuitsAtOnce(gameStarted, currentState))
+        if (flow.State == GameState.WindowClosing || QuitRequested) return;
+        if (ClosePrompt.QuitsAtOnce(gameStarted, flow.State))
         {
             QuitRequested = true;
             return;
@@ -762,13 +760,13 @@ public partial class GameEngine
     /// Whether the game can be saved this moment, as the start menu's SAVE would: in the field with nothing under way
     /// (no script, fade, trainer walking up, rod, trap, puzzle or ride on a panel).
     /// </summary>
-    private bool CanSaveNow => gameStarted && currentState == GameState.Overworld && !runner.IsRunning && !arrived
+    private bool CanSaveNow => gameStarted && flow.State == GameState.Overworld && !runner.IsRunning && !arrived
         && trainerApproach == null && fishing == null && trap == null && panelRide == null && !PuzzleHoldsField;
 
     /// <summary>The close button's question answered: back to the game, or out of it (after saving, for SAVE AND QUIT).</summary>
     internal void AnswerClose(CloseChoice choice)
     {
-        if (currentState != GameState.WindowClosing) return;
+        if (flow.State != GameState.WindowClosing) return;
         switch (choice)
         {
             case CloseChoice.KeepPlaying:
@@ -801,7 +799,7 @@ public partial class GameEngine
         }
         if (held) return;
 
-        if (gameStarted && currentState != GameState.WindowClosing) playTime += dt;
+        if (gameStarted && flow.State != GameState.WindowClosing) playTime += dt;
 
         toast.Update(dt);
         startMenu.Animate(dt);
@@ -810,10 +808,10 @@ public partial class GameEngine
         choice.Update(dt);
 
         // The location sign waits while a fade or another screen covers the field
-        if (currentState is GameState.Overworld or GameState.Dialogue) locationSign.Update(dt);
+        if (flow.State is GameState.Overworld or GameState.Dialogue) locationSign.Update(dt);
 
         // The field's small life runs on while a dialogue or a fade covers it: dust settles, a door finishes opening
-        if (gameStarted && currentState is GameState.Overworld or GameState.Dialogue or GameState.Transition)
+        if (gameStarted && flow.State is GameState.Overworld or GameState.Dialogue or GameState.Transition)
         {
             double before = world.Life.Now;
             // Slow motion slows the field's own time (plan 09 · L4); the camera's clock, the text, a bubble and a
@@ -861,7 +859,7 @@ public partial class GameEngine
             ShowNotification(Settings.Muted ? "Sound off" : "Sound on");
         }
 
-        switch (currentState)
+        switch (flow.State)
         {
             case GameState.Title:
                 titleScreen.Update(dt);
@@ -877,13 +875,13 @@ public partial class GameEngine
                         // and in the slot the title found empty
                         newGameSlot = titleScreen.Slot;
                         newGameRules = titleScreen.Rules;
-                        currentState = GameState.Intro;
+                        flow.State = GameState.Intro;
                         introScreen.Open(GameSettings.CharactersPerSecond(Settings.TextSpeed));
                         AudioManager.PlayMusic(MusicRole.Introduction);
                         break;
                     case TitleChoice.Options:
                         flow.OptionsReturn = GameState.Title;
-                        currentState = GameState.Options;
+                        flow.State = GameState.Options;
                         optionsScreen.Open();
                         break;
                     case TitleChoice.Quit:
@@ -962,7 +960,7 @@ public partial class GameEngine
                     // A script that asked for a Pokémon to be chosen hears which
                     if (partyScreen.Entering) TakeEntered();
                     else if (partyScreen.Choosing) scriptAnswer = partyScreen.Chosen;
-                    currentState = GameState.Overworld;
+                    flow.State = GameState.Overworld;
                 }
                 break;
             case GameState.FlyMap:
@@ -970,7 +968,7 @@ public partial class GameEngine
                 if (townMapScreen.TakeChoice() is { } town)
                 {
                     flyTarget = town;
-                    currentState = GameState.Overworld;
+                    flow.State = GameState.Overworld;
                     StartScript("common.UseFly", pokemon: playerParty.Members[townMapScreen.Flier]);
                 }
                 else if (!townMapScreen.IsActive) CloseTownMap();
@@ -985,11 +983,11 @@ public partial class GameEngine
                     // A script that asked for an item hears which (plan 06 · R14a)
                     scriptItem = picked?.Name;
                     scriptAnswer = picked != null ? 1 : 0;
-                    currentState = GameState.Overworld;
+                    flow.State = GameState.Overworld;
                 }
                 else if (!bagScreen.IsActive)
                 {
-                    currentState = GameState.Overworld;
+                    flow.State = GameState.Overworld;
                     // The Poffin Case opened from the bag goes back to the bag when it closes (StartMenu_ExitPoffinCase)
                     if (bagScreen.TakeFieldUse() is { } usedHere)
                     {
@@ -1013,11 +1011,11 @@ public partial class GameEngine
                 break;
             case GameState.PokedexMenu:
                 pokedexScreen.Update(dt);
-                if (!pokedexScreen.IsActive) currentState = GameState.Overworld;
+                if (!pokedexScreen.IsActive) flow.State = GameState.Overworld;
                 break;
             case GameState.TrainerCard:
                 trainerCardScreen.Update(dt);
-                if (!trainerCardScreen.IsActive) currentState = GameState.Overworld;
+                if (!trainerCardScreen.IsActive) flow.State = GameState.Overworld;
                 break;
             case GameState.SaveMenu:
                 saveScreen.Update(dt);
@@ -1027,7 +1025,7 @@ public partial class GameEngine
                     saveScreen.MarkSaved();
                 }
                 // Back to the field once the panel has slid away
-                if (!saveScreen.Visible) currentState = GameState.Overworld;
+                if (!saveScreen.Visible) flow.State = GameState.Overworld;
                 break;
             case GameState.StarterSelect:
                 var chosen = starterSelectScreen.Update(dt);
@@ -1040,7 +1038,7 @@ public partial class GameEngine
                     // The story remembers which was taken, and with it which the rival takes
                     story.ChooseStarter(chosen.Species.Name);
                     scriptAnswer = Math.Max(0, Array.IndexOf(StoryState.Starters, chosen.Species.Name));
-                    currentState = GameState.Overworld;
+                    flow.State = GameState.Overworld;
                 }
                 break;
             case GameState.Shop:
@@ -1049,7 +1047,7 @@ public partial class GameEngine
                 {
                     // What the visit came to is a line of the Journal (shop_menu.c)
                     if (ShopLine(shopScreen.Purchases, shopScreen.UnitsSold) is { } line) journal.Tell(new JournalEvent(line));
-                    currentState = GameState.Overworld;
+                    flow.State = GameState.Overworld;
                 }
                 break;
             case GameState.Wardrobe:
@@ -1059,7 +1057,7 @@ public partial class GameEngine
                     // The field and the battle draw the player as the outfit names them; what was only tried on is let go
                     PlayerIdentity.SetOutfit(wardrobe.Worn);
                     foreach (string tried in wardrobeScreen.TakeTried()) CharacterModels.Forget(tried);
-                    currentState = GameState.Overworld;
+                    flow.State = GameState.Overworld;
                 }
                 break;
             case GameState.PoffinCooking:
@@ -1115,18 +1113,18 @@ public partial class GameEngine
                 break;
             case GameState.Journal:
                 journalScreen.Update(journal, dt);
-                if (!journalScreen.IsActive) currentState = GameState.Overworld;
+                if (!journalScreen.IsActive) flow.State = GameState.Overworld;
                 break;
             case GameState.HallOfFame:
                 hallOfFameScreen.Update(hallOfFame, dt);
-                if (!hallOfFameScreen.IsActive) currentState = GameState.Overworld;
+                if (!hallOfFameScreen.IsActive) flow.State = GameState.Overworld;
                 break;
             case GameState.PCStorage:
                 pcScreen.Update(playerParty, pcBoxStorage, ShowNotification, dt);
                 if (!pcScreen.IsActive)
                 {
                     if (pcScreen.Changed) journal.Tell(new JournalEvent(JournalEventKind.UsedPcBox));
-                    currentState = GameState.Overworld;
+                    flow.State = GameState.Overworld;
                 }
                 break;
             case GameState.Options:
@@ -1135,7 +1133,7 @@ public partial class GameEngine
                     ApplySettings(window: true);
                     Settings.Save();
                 }
-                if (!optionsScreen.IsActive) currentState = flow.OptionsReturn;
+                if (!optionsScreen.IsActive) flow.State = flow.OptionsReturn;
                 break;
             case GameState.Transition:
                 UpdateTransition(dt);
@@ -1362,7 +1360,7 @@ public partial class GameEngine
         if (world.Life.TakeShutting() is { } shutting && WorldRenderer.DoorPlace(shutting.Map, shutting.X, shutting.Y) is { } shut)
             AudioManager.PlaySound(shut.Glass ? "door_slide" : "door_close");
 
-        if (trainerApproach != null || currentState != GameState.Overworld) return;
+        if (trainerApproach != null || flow.State != GameState.Overworld) return;
 
         // Turning a full circle is how one Pokémon evolves
         if (spin.Update(player.Facing, dt) && PlayEvolutions(FindEvolutions(playerParty.Members, EvolutionTrigger.Spin, cancellable: false), GameState.Overworld))
@@ -1408,7 +1406,7 @@ public partial class GameEngine
         foreach (string species in currentMap.Everyone
                      .Where(n => n.IsPokemon && n.Species != null && Math.Abs(n.GridX - player.GridX) <= CharacterReach && Math.Abs(n.GridY - player.GridY) <= CharacterReach)
                      .Select(n => n.Species!).Distinct())
-            if (!FieldSprites.Ready(species)) PokemonModels.Request(species);
+            if (!FieldSprites.Ready(species)) flow.WantModel(species);
     }
 
     private readonly HeldKey poketchAcross = new(), poketchDown = new();
@@ -1591,7 +1589,7 @@ public partial class GameEngine
             shown.Add(request.Pokemon.ModelName);
             shown.Add(Evolution.ModelAfter(request.Pokemon, request.Evolution));
         }
-        foreach (var name in shown) PokemonModels.Request(name);
+        foreach (var name in shown) flow.WantModel(name);
         flow.EvolutionReturn = returnTo;
         StartTransition(GameState.Evolution, () =>
         {
@@ -1656,7 +1654,7 @@ public partial class GameEngine
         received.Friendship = received.Species.BaseFriendship;
         playerPokedex.RegisterCaught(received.Species.DexNumber);
 
-        var returnTo = currentState == GameState.Transition ? flow.After : currentState;
+        var returnTo = flow.State == GameState.Transition ? flow.After : flow.State;
         PlayEvolutions(FindEvolutions(new[] { received }, EvolutionTrigger.Trade, cancellable: false, given?.Species), returnTo);
     }
 
@@ -1930,34 +1928,34 @@ public partial class GameEngine
             case StartMenuChoice.None:
                 return;
             case StartMenuChoice.Pokedex:
-                currentState = GameState.PokedexMenu;
+                flow.State = GameState.PokedexMenu;
                 pokedexScreen.Open(playerPokedex, world.Portrait(PlayerIdentity.Character));
                 break;
             case StartMenuChoice.Pokemon:
-                currentState = GameState.PartyMenu;
+                flow.State = GameState.PartyMenu;
                 partyScreen.Open();
                 // The summary's condition page, once the Contest Hall has been visited (plan 06 · R14c)
                 partyScreen.ShowCondition = story.Has(ContestHallVisitedFlag);
                 break;
             case StartMenuChoice.Bag:
-                currentState = GameState.BagMenu;
+                flow.State = GameState.BagMenu;
                 bagScreen.Registered = registeredItem;
                 bagScreen.Aids = encounterAids;
                 bagScreen.PlayerName = PlayerIdentity.Name;
                 bagScreen.Open();
                 break;
             case StartMenuChoice.Trainer:
-                currentState = GameState.TrainerCard;
+                flow.State = GameState.TrainerCard;
                 trainerCardScreen.Open(world.Portrait(PlayerIdentity.Character));
                 break;
             case StartMenuChoice.Options:
                 flow.OptionsReturn = GameState.Overworld;
-                currentState = GameState.Options;
+                flow.State = GameState.Options;
                 optionsScreen.Open();
                 break;
             case StartMenuChoice.Save:
                 // The save as it will be, with the question under it
-                currentState = GameState.SaveMenu;
+                flow.State = GameState.SaveMenu;
                 saveScreen.Open(BuildSave(), saveSlot);
                 break;
             case StartMenuChoice.SaveAndQuit:
@@ -2142,7 +2140,7 @@ public partial class GameEngine
                 DriveTheLens(world.Camera, flow.Kind, closing: true, flow.Clock);
                 break;
             case TransitionStep.Opened:
-                trainersLookOnArrival = currentState == GameState.Overworld;
+                trainersLookOnArrival = flow.State == GameState.Overworld;
                 break;
         }
     }

@@ -26,11 +26,11 @@ public partial class GameEngine
         // Both threes stand beside the board: their pictures are asked for as it opens
         foreach (var pokemon in arcade.Team.Members.Concat(arcade.Foe?.Pokemon ?? Enumerable.Empty<Models.Pokemon>()))
         {
-            Graphics.PokemonModels.Request(pokemon.ModelName);
+            flow.WantModel(pokemon.ModelName);
             Graphics.PokemonSprites.Request(pokemon.ModelName);
         }
         arcadeBoard.Open(arcade);
-        currentState = GameState.ArcadeBoard;
+        flow.State = GameState.ArcadeBoard;
     }
 
     private void UpdateArcadeBoard(float dt)
@@ -39,7 +39,7 @@ public partial class GameEngine
         if (arcadeBoard.IsActive) return;
         // The script that opened the board goes on to carry out the event it stopped on
         scriptAnswer = 1;
-        currentState = GameState.Overworld;
+        flow.State = GameState.Overworld;
     }
 
     private sealed partial class FieldHost

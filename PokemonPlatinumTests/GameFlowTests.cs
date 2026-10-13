@@ -165,4 +165,16 @@ public class GameFlowTests
         }
         Assert.Null(InputManager.Fed);
     }
+
+    [Fact]
+    public void AModelWantedIsAskedOfWhoeverAnswers()
+    {
+        var flow = new GameFlow();
+        flow.WantModel("Turtwig");
+        var asked = new List<string>();
+        flow.ModelWanted += asked.Add;
+        flow.WantModel("Turtwig");
+        flow.WantModel("Charizard-Mega-X");
+        Assert.Equal(new[] { "Turtwig", "Charizard-Mega-X" }, asked);
+    }
 }

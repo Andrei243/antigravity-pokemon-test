@@ -292,10 +292,10 @@ public partial class GameEngine
             // Fly's choice is the map of the region in its own mode (TOWN_MAP_MODE_FLY; plan 01 · M12)
             townMapFromBag = false;
             townMapScreen.Open(regionMap!, TownMapMode.Fly, index);
-            currentState = GameState.FlyMap;
+            flow.State = GameState.FlyMap;
             return;
         }
-        currentState = GameState.Overworld;
+        flow.State = GameState.Overworld;
         // Cut, Rock Smash and Strength act on the obstacle in front, which is whose script it is
         var (dx, dy) = FieldMovement.Delta(player.Facing);
         int ax = player.GridX + dx, ay = player.GridY + dy;
@@ -391,7 +391,7 @@ public partial class GameEngine
         int x = player.GridX, y = player.GridY;
         if (item.FieldUse == "Journal")
         {
-            currentState = GameState.Journal;
+            flow.State = GameState.Journal;
             journalScreen.Open();
             return;
         }
@@ -517,7 +517,7 @@ public partial class GameEngine
             {
                 if (cast.Stage == FishingStage.Landed) AudioManager.PlaySound("fish_reel");
                 dialogue.ShowDialogue("", new[] { cast.Message });
-                currentState = GameState.Dialogue;
+                flow.State = GameState.Dialogue;
                 cast.Read();
                 return;
             }
@@ -657,7 +657,7 @@ public partial class GameEngine
             if (triggerAfterEnter)
             {
                 triggerAfterEnter = false;
-                if (currentState == GameState.Overworld) TryStepTrigger();
+                if (flow.State == GameState.Overworld) TryStepTrigger();
             }
         }
     }
@@ -718,7 +718,7 @@ public partial class GameEngine
         // A hold begun in a scene that is over counts for nothing (plan 12 · Q20)
         skipHold.Reset();
         // A trainer's eye theme that no battle cut in on (their script had no battle) gives way to the place's own
-        if (eyeThemePlaying && currentState is GameState.Overworld or GameState.Dialogue) PlayFieldMusic();
+        if (eyeThemePlaying && flow.State is GameState.Overworld or GameState.Dialogue) PlayFieldMusic();
     }
 
     /// <summary>
@@ -736,9 +736,9 @@ public partial class GameEngine
         AnswerQuestion();
 
         // Back to the field, unless the last line led somewhere else (a ship leaving for another region)
-        if (!dialogue.IsActive && currentState == GameState.Dialogue)
+        if (!dialogue.IsActive && flow.State == GameState.Dialogue)
         {
-            currentState = GameState.Overworld;
+            flow.State = GameState.Overworld;
             if (ScriptRunning) RunScript(0f);
         }
     }
@@ -989,7 +989,7 @@ public partial class GameEngine
 
         // ---- what the script waits for
 
-        public bool Busy => game.currentState != GameState.Overworld || game.dialogue.IsActive || game.scriptFade.IsMoving || game.cutIn != null
+        public bool Busy => game.flow.State != GameState.Overworld || game.dialogue.IsActive || game.scriptFade.IsMoving || game.cutIn != null
             || game.fieldMoveStep || game.PuzzleMoving || game.AwaitingStroll || game.ActorBusy
             // A skip's dark keeps the script waiting while it closes and opens, but not the hurry in its middle (plan 12 · Q20)
             || (game.skipPhase != SkipPhase.None && !game.skipRunning);
@@ -999,7 +999,7 @@ public partial class GameEngine
             // (In a hurry the lines are dropped unread)
             if (lines.Count == 0 || Skipping) return;
             game.dialogue.ShowDialogue(speaker ?? "", lines);
-            game.currentState = GameState.Dialogue;
+            game.flow.State = GameState.Dialogue;
         }
 
         public void Ask(string? speaker, string question, IReadOnlyList<string> answers, int cancel)
@@ -1009,7 +1009,7 @@ public partial class GameEngine
             game.pendingCancel = cancel;
             game.scriptAnswer = Math.Max(0, cancel);
             game.dialogue.ShowQuestion(speaker ?? "", question);
-            game.currentState = GameState.Dialogue;
+            game.flow.State = GameState.Dialogue;
         }
 
         public int Answer => game.scriptAnswer;
@@ -1036,27 +1036,27 @@ public partial class GameEngine
             switch (screen)
             {
                 case ScriptScreen.Starter:
-                    game.currentState = GameState.StarterSelect;
+                    game.flow.State = GameState.StarterSelect;
                     game.starterSelectScreen.Open();
                     break;
                 case ScriptScreen.Shop:
-                    game.currentState = GameState.Shop;
+                    game.flow.State = GameState.Shop;
                     // The counter's own stock: the clerk's specialties, or the common list by the badges (plan 06 · R11)
                     game.shopScreen.Open(game.currentMap.DisplayNameAt(game.player.GridX, game.player.GridY),
                         MartDatabase.Stock(counter ?? subject?.Mart, game.story.BadgeCount));
                     break;
                 case ScriptScreen.Wardrobe:
                     // At home the clothes owned; at a boutique its stock as well, headed with the place's name
-                    game.currentState = GameState.Wardrobe;
+                    game.flow.State = GameState.Wardrobe;
                     game.wardrobeScreen.Open(game.wardrobe, counter != null ? ClothingDatabase.Stock(counter) : null,
                         counter != null ? game.currentMap.DisplayNameAt(game.player.GridX, game.player.GridY) : null);
                     break;
                 case ScriptScreen.HallOfFame:
-                    game.currentState = GameState.HallOfFame;
+                    game.flow.State = GameState.HallOfFame;
                     game.hallOfFameScreen.Open();
                     break;
                 case ScriptScreen.ChoosePokemon:
-                    game.currentState = GameState.PartyMenu;
+                    game.flow.State = GameState.PartyMenu;
                     // A species named on the line lets only that species be chosen (plan 14 · B14): the rest are greyed
                     if (counter is { Length: > 0 } only) game.partyScreen.OpenToChoose(p => ScriptRunner.Fits(p, only), $"Only {only} can be chosen here.");
                     else game.partyScreen.OpenToChoose();
@@ -1064,7 +1064,7 @@ public partial class GameEngine
                 case ScriptScreen.ChooseItem:
                     // A berry to plant or a mulch to lay (plan 06 · R14a): the bag, on that pocket
                     game.scriptItem = null;
-                    game.currentState = GameState.BagMenu;
+                    game.flow.State = GameState.BagMenu;
                     game.bagScreen.Registered = game.registeredItem;
                     game.bagScreen.OpenToPick(counter ?? "berries");
                     break;
@@ -1082,7 +1082,7 @@ public partial class GameEngine
                     if (System.Enum.TryParse<ContestStat>(counter, out var framed)) game.ShowContestPhoto(framed);
                     break;
                 case ScriptScreen.Pc:
-                    game.currentState = GameState.PCStorage;
+                    game.flow.State = GameState.PCStorage;
                     game.pcScreen.Open(game.pcBoxStorage);
                     break;
                 // The Hall of Fame's end (plan 02 · S14): the scene of the team's entry, and the credits
@@ -1100,7 +1100,7 @@ public partial class GameEngine
                     game.scriptAnswer = 1;
                     game.dialogue.ShowDialogue(subject?.Name ?? "", RegionDatabase.AttendantLines(link, check),
                         check == TravelCheck.Ready ? () => game.TravelTo(RegionDatabase.Get(link.To)!) : null);
-                    game.currentState = GameState.Dialogue;
+                    game.flow.State = GameState.Dialogue;
                     break;
             }
         }

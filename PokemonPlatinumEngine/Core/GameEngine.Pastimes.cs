@@ -77,7 +77,7 @@ public partial class GameEngine
     {
         slotScreen.Open(machine, pastimes.Coins.Coins, SlotMachine.MoodOf(machine, encounters.DailyNumber), fieldRandom);
         journal.Tell(new JournalEvent(JournalEventKind.GameCorner));
-        currentState = GameState.SlotMachine;
+        flow.State = GameState.SlotMachine;
     }
 
     // sub_0203E35C: the coins come back, and the longest run of bonus rounds is kept if it is the longest yet
@@ -95,7 +95,7 @@ public partial class GameEngine
             pastimes.Coins.Set(machine.Coins);
             if (machine.MostRounds > story.Var(GameCornerPrizes.StreakVariable)) story.SetVar(GameCornerPrizes.StreakVariable, machine.MostRounds);
         }
-        currentState = GameState.Overworld;
+        flow.State = GameState.Overworld;
     }
 
     // ------------------------------------------------------------------ the Villa

@@ -44,7 +44,7 @@ public partial class GameEngine
         var stroller = new Follower(body, pokemon) { Gap = StrollGap(pokemon) };
         SetAlong(stroller);
         PutBehind(stroller, player.GridX, player.GridY, player.Facing);
-        PokemonModels.Request(pokemon.ModelName);
+        flow.WantModel(pokemon.ModelName);
         strollModel = pokemon.ModelName;
         strollWait = StrollPatience;
     }
@@ -95,7 +95,7 @@ public partial class GameEngine
         }
         along = new Follower(body, pokemon) { Gap = StrollGap(pokemon) };
         KeepPartnerAlong();
-        PokemonModels.Request(pokemon.ModelName);
+        flow.WantModel(pokemon.ModelName);
     }
 
     private sealed partial class FieldHost

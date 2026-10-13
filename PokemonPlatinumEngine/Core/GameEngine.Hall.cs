@@ -28,7 +28,7 @@ public partial class GameEngine
         enteredSlots = Array.Empty<int>();
         var entered = hall.Slots.Where(s => s >= 0 && s < playerParty.Count).Select(s => playerParty.Members[s]).ToList();
         hallBoard.Open(hall, entered);
-        currentState = GameState.HallBoard;
+        flow.State = GameState.HallBoard;
     }
 
     private void UpdateHallBoard(float dt)
@@ -38,7 +38,7 @@ public partial class GameEngine
         // The script that opened the board hears which type was chosen
         enteredSlots = new List<int> { hallBoard.Outcome };
         scriptAnswer = 1;
-        currentState = GameState.Overworld;
+        flow.State = GameState.Overworld;
     }
 
     private sealed partial class FieldHost

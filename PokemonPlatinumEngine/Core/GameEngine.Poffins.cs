@@ -29,7 +29,7 @@ public partial class GameEngine
     {
         choosingBerryToCook = true;
         scriptItem = null;
-        currentState = GameState.BagMenu;
+        flow.State = GameState.BagMenu;
         bagScreen.Registered = registeredItem;
         bagScreen.OpenToPick("berries");
     }
@@ -41,11 +41,11 @@ public partial class GameEngine
         choosingBerryToCook = false;
         if (berry?.Berry == null || !playerInventory.RemoveItem(berry, 1))
         {
-            currentState = GameState.Overworld;
+            flow.State = GameState.Overworld;
             return;
         }
         cookingScreen.Begin(berry, PlayerIdentity.Name, fieldRandom, poffinCase, playerInventory);
-        currentState = GameState.PoffinCooking;
+        flow.State = GameState.PoffinCooking;
     }
 
     private void UpdateCooking(float dt)
@@ -55,14 +55,14 @@ public partial class GameEngine
         if (cookingScreen.TakeCooked()) trainerScore = TrainerScore.Add(trainerScore, TrainerScore.CookedPoffin);
         if (cookingScreen.IsActive) return;
         if (cookingScreen.WantsBerry) StartCooking();
-        else currentState = GameState.Overworld;
+        else flow.State = GameState.Overworld;
     }
 
     /// <summary>Opens the Poffin Case, from the bag (which it goes back to) or from the item button (back to the field).</summary>
     private void OpenPoffinCase(bool fromBag)
     {
         caseFromBag = fromBag;
-        currentState = GameState.PoffinCase;
+        flow.State = GameState.PoffinCase;
         poffinCaseScreen.Open(poffinCase, playerParty);
     }
 
@@ -72,9 +72,9 @@ public partial class GameEngine
         if (poffinCaseScreen.IsActive) return;
         if (caseFromBag)
         {
-            currentState = GameState.BagMenu;
+            flow.State = GameState.BagMenu;
             bagScreen.Resume();
         }
-        else currentState = GameState.Overworld;
+        else flow.State = GameState.Overworld;
     }
 }

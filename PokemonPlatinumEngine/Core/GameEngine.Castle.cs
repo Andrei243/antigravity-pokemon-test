@@ -28,7 +28,7 @@ public partial class GameEngine
         // The trainer to come was drawn since the challenge went in: their pictures are asked for as the counter opens
         AskForCastlePictures();
         castleScreen.Open(castle, frontier, own);
-        currentState = GameState.CastleCounter;
+        flow.State = GameState.CastleCounter;
     }
 
     /// <summary>
@@ -40,7 +40,7 @@ public partial class GameEngine
         if (castle == null) return;
         foreach (var pokemon in castle.Team.Members.Concat(castle.Foe?.Pokemon ?? Enumerable.Empty<Models.Pokemon>()))
         {
-            Graphics.PokemonModels.Request(pokemon.ModelName);
+            flow.WantModel(pokemon.ModelName);
             Graphics.PokemonSprites.Request(pokemon.ModelName);
         }
     }
@@ -50,7 +50,7 @@ public partial class GameEngine
         castleScreen.Update(dt);
         if (castleScreen.IsActive) return;
         scriptAnswer = 1;
-        currentState = GameState.Overworld;
+        flow.State = GameState.Overworld;
     }
 
     /// <summary>The Castle Points stand over the field while the valet speaks of them, and go as the script ends.</summary>

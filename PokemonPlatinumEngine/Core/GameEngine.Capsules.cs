@@ -32,7 +32,7 @@ public partial class GameEngine
     private void OpenBallCapsules(bool fromBag)
     {
         capsulesFromBag = fromBag;
-        currentState = GameState.SealCase;
+        flow.State = GameState.SealCase;
         sealCaseScreen.Open(sealCase, playerParty);
         foreach (var p in playerParty.Members.Where(p => !p.IsEgg)) Graphics.PokemonSprites.Request(p.ModelName);
     }
@@ -45,30 +45,30 @@ public partial class GameEngine
         for (int i = 0; i < sealCaseScreen.Kept; i++) trainerScore = TrainerScore.Add(trainerScore, TrainerScore.MadeCapsule);
         if (capsulesFromBag)
         {
-            currentState = GameState.BagMenu;
+            flow.State = GameState.BagMenu;
             bagScreen.Resume();
         }
-        else currentState = GameState.Overworld;
+        else flow.State = GameState.Overworld;
     }
 
     /// <summary>The Seal merchant's stall (<c>PokeMartSeal</c>): the day's seven Seals.</summary>
     private void OpenSealShop()
     {
-        currentState = GameState.SealShop;
+        flow.State = GameState.SealShop;
         sealShopScreen.Open(SealDatabase.Market(GameClock.Today.DayOfWeek), sealCase);
     }
 
     private void UpdateSealShop(float dt)
     {
         sealShopScreen.Update(ref playerMoney, ShowNotification, dt);
-        if (!sealShopScreen.IsActive) currentState = GameState.Overworld;
+        if (!sealShopScreen.IsActive) flow.State = GameState.Overworld;
     }
 
     /// <summary>Opens the Fashion Case to look into, from the bag or the item button.</summary>
     private void OpenFashionCase(bool fromBag)
     {
         fashionFromBag = fromBag;
-        currentState = GameState.FashionCase;
+        flow.State = GameState.FashionCase;
         fashionScreen.Open(fashionCase, contestRecords);
     }
 
@@ -78,7 +78,7 @@ public partial class GameEngine
         if (contestRecords.PhotoOf(category) is not { } photo) return;
         fashionFromBag = false;
         Graphics.PokemonSprites.Request(photo.Form ?? photo.Species);
-        currentState = GameState.FashionCase;
+        flow.State = GameState.FashionCase;
         fashionScreen.OpenPhoto(photo);
     }
 
@@ -88,10 +88,10 @@ public partial class GameEngine
         if (fashionScreen.IsActive) return;
         if (fashionFromBag)
         {
-            currentState = GameState.BagMenu;
+            flow.State = GameState.BagMenu;
             bagScreen.Resume();
         }
-        else currentState = GameState.Overworld;
+        else flow.State = GameState.Overworld;
     }
 
     /// <summary>Whether a Master Rank contest has been won, in any of the five: the Trainer Card's star for contests (<c>SystemFlag_CheckContestMaster</c>).</summary>

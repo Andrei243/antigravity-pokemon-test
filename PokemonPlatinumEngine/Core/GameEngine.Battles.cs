@@ -408,7 +408,7 @@ public partial class GameEngine
     {
         var all = foes.Concat(playerParty.Members).ToList();
         var species = all.Select(p => p.ModelName).Concat(all.SelectMany(BattleShapesOf)).Distinct().ToList();
-        foreach (var name in species) PokemonModels.Request(name);
+        foreach (var name in species) flow.WantModel(name);
         return species;
     }
 
