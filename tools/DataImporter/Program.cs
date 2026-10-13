@@ -5,6 +5,7 @@
 //   dotnet run --project tools/DataImporter                         fetch the pinned sources (once) and import everything
 //   dotnet run --project tools/DataImporter -- --decomp <dir> --pokeapi <dir/data/v2/csv>   use existing checkouts
 //   dotnet run --project tools/DataImporter -- --last-species 493   stop after Platinum's National Pokédex
+//   dotnet run --project tools/DataImporter -- --check-entries      the written Pokédex entries against the games' own (plan 08 · P13)
 
 using System.Text.Json.Nodes;
 using DataImporter;
@@ -17,6 +18,19 @@ string? pokeApiDir = Arg("--pokeapi");
 int lastSpecies = int.Parse(Arg("--last-species") ?? "1025");
 string outDir = Arg("--out") ?? Path.Combine(repo, "PokemonPlatinumEngine", "Data");
 string cache = Path.Combine(repo, "tools", "DataImporter", ".cache");
+
+if (args.Contains("--check-entries"))
+{
+    // Only PokeAPI's flavour texts are read, and nothing is written: exit 1 on a run of words shared
+    string? entries = Arg("--check-entries");
+    if (entries == null || entries.StartsWith("--")) entries = Path.Combine(repo, "PokemonPlatinumEngine", "Data", DexEntries.FileName);
+    if (pokeApiDir == null)
+    {
+        Console.WriteLine("Fetching PokeAPI…");
+        pokeApiDir = Path.Combine(Sources.Checkout(cache, "pokeapi", Sources.PokeApiRepo, Sources.PokeApiCommit, Sources.PokeApiFolders), "data", "v2", "csv");
+    }
+    return EntryCheck.Check(entries, pokeApiDir) == 0 ? 0 : 1;
+}
 
 if (decompDir == null)
 {
