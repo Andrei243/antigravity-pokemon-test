@@ -242,10 +242,10 @@ public sealed class CameraRig
     }
 
     /// <summary>
-    /// A lens's field of view (in degrees) under the zoom: the tangent of its half is divided by the factor, which
-    /// is what makes everything that much larger. The pitch and the distance are never touched.
+    /// A lens's field of view (in degrees) under the zoom and a held lens: the tangent of its half is divided by the
+    /// factor, which is what makes everything that much larger. The pitch and the distance are never touched.
     /// </summary>
-    public float Fov(float degrees) => FovAt(degrees, Zoom);
+    public float Fov(float degrees) => FovAt(degrees, Lens);
 
     /// <summary>A lens's field of view (in degrees) at a zoom's factor; the lens itself at a factor of 1.</summary>
     public static float FovAt(float degrees, float zoom)
@@ -258,7 +258,46 @@ public sealed class CameraRig
     /// The widest the lens is or is on its way to: what it will show before long has to be made ready before it
     /// is in view (the chunks of a streamed map).
     /// </summary>
-    public float WidestAhead => MathF.Min(Zoom, zoomTo);
+    public float WidestAhead => held ? MathF.Min(MathF.Min(Zoom, zoomTo) * heldWidest, Lens) : MathF.Min(Zoom, zoomTo);
+
+    // ------------------------------------------------------------------ a held lens
+
+    // A way into a battle's own camera (plan 09 · L14): a factor over the zoom, a step of the point looked at, and the
+    // widest the factor will come to, all taken at once and held until let go
+    private bool held;
+    private float heldZoom = 1f, heldWidest = 1f;
+    private Vector2 heldStep;
+
+    /// <summary>
+    /// Takes a lens at once and holds it, over whatever the rig's own zoom is: a factor of it, a step of the point
+    /// the camera looks at (in tiles, in whole texels), and the widest factor it will be given before it is let go,
+    /// which is made ready ahead (<see cref="WidestAhead"/>). A way into a battle drives it frame by frame as it
+    /// closes (the legendary's and the mythical's, plan 09 · L14) and lets go at the midpoint.
+    /// </summary>
+    public void Hold(float zoom, Vector2 step, float widest)
+    {
+        held = true;
+        heldZoom = Math.Clamp(zoom, WidestZoom, TightestZoom);
+        heldWidest = Math.Clamp(MathF.Min(widest, heldZoom), WidestZoom, TightestZoom);
+        heldStep = step;
+    }
+
+    /// <summary>Lets go of a held lens: the camera is at once what it would have been had nothing been held.</summary>
+    public void LetGo()
+    {
+        held = false;
+        heldZoom = heldWidest = 1f;
+        heldStep = Vector2.Zero;
+    }
+
+    /// <summary>True while a lens is held.</summary>
+    public bool Holding => held;
+
+    /// <summary>The lens the camera looks through: the zoom, under a held lens's factor while one is held; the zoom itself, to the bit, while none is.</summary>
+    public float Lens => held ? Zoom * heldZoom : Zoom;
+
+    /// <summary>How far a held lens steps the point the camera looks at, in tiles (east, south): nothing while none is held.</summary>
+    public Vector2 HeldStep => held ? heldStep : Vector2.Zero;
 
     // ------------------------------------------------------------------ the bars
 
@@ -326,6 +365,7 @@ public sealed class CameraRig
         bars = barRate = 0f;
         slowLeft = slowLevel = 0f;
         hasLooked = false;
+        LetGo();
     }
 
     private void Home()
@@ -337,7 +377,7 @@ public sealed class CameraRig
     }
 
     /// <summary>True while nothing of the rig is in force: the camera on the player, the place's own lens, no bars, time at its pace.</summary>
-    public bool AtRest => !away && Zoom == 1f && bars <= 0f && slowLevel <= 0f && slowLeft <= 0f;
+    public bool AtRest => !away && !held && Zoom == 1f && bars <= 0f && slowLevel <= 0f && slowLeft <= 0f;
 
     /// <summary>True while something of the rig is still on its way: a pan, a path, a zoom, the bars.</summary>
     public bool Moving => (away && ((rate > 0f && amount < 1f) || rate < 0f || shift < 1f || (aim == Aim.Path && routeTime < routeSeconds)))

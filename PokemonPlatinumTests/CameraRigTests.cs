@@ -405,6 +405,55 @@ public class CameraRigTests
         Assert.Equal(1f, rig.Pace);
     }
 
+    [Fact]
+    public void AHeldLensIsTakenAtOnceAndLetGoToTheBit()
+    {
+        // Plan 09 · L14: a way into a battle holds a lens over whatever the rig's own zoom is, steps the point looked
+        // at, and lets go at the midpoint, after which the camera is what it would have been had nothing been held
+        var rig = new CameraRig();
+        rig.ZoomTo(1.5f, 0f);
+        Run(rig, 0.1f);
+        rig.Hold(2f, new Vector2(1.25f, -0.5f), 0.7f);
+        Assert.True(rig.Holding);
+        Assert.Equal(1.5f, rig.Zoom);
+        Assert.Equal(3f, rig.Lens, 4);
+        Assert.Equal(CameraRig.FovAt(MapScene.OutdoorFovYDeg, 3f), rig.Fov(MapScene.OutdoorFovYDeg), 4);
+        Assert.Equal(new Vector2(1.25f, -0.5f), rig.HeldStep);
+        // The step is the renderer's to add to the camera: the point the rig looks at is the player's still
+        Assert.Equal(Player, rig.Look(Player));
+        // What the widest held lens will show is made ready ahead
+        Assert.Equal(1.5f * 0.7f, rig.WidestAhead, 4);
+        Assert.False(rig.AtRest);
+        Assert.False(rig.Moving);
+
+        // Held within the kit's own bounds
+        rig.Hold(10f, Vector2.Zero, 10f);
+        Assert.Equal(1.5f * CameraRig.TightestZoom, rig.Lens, 4);
+
+        rig.LetGo();
+        Assert.False(rig.Holding);
+        Assert.Equal(1.5f, rig.Lens);
+        Assert.Equal(Vector2.Zero, rig.HeldStep);
+
+        // A rig that held something and let it go is the rig nobody told anything, to the bit
+        var fresh = new CameraRig();
+        Run(fresh, 0.2f);
+        fresh.Hold(0.8f, new Vector2(0.5f, 0.5f), 0.8f);
+        Run(fresh, 0.2f);
+        fresh.LetGo();
+        Assert.True(fresh.AtRest);
+        Assert.Equal(1f, fresh.Lens);
+        Assert.Equal(Player, fresh.Look(Player));
+        Assert.Equal(MapScene.OutdoorFovYDeg, fresh.Fov(MapScene.OutdoorFovYDeg));
+        Assert.Equal(1f, fresh.WidestAhead);
+
+        // And a game left behind lets go too
+        fresh.Hold(2f, Vector2.One, 2f);
+        fresh.Reset();
+        Assert.False(fresh.Holding);
+        Assert.True(fresh.AtRest);
+    }
+
     // ------------------------------------------------------------------ the script's words
 
     [Fact]

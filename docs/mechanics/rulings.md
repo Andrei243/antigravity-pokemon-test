@@ -2103,6 +2103,27 @@ What a band looks like is our own (style guide, "Life", "Into battle", "Bands").
 | The battle's first frames | Faded in from white | The same shape opening in reverse, out of the white; no dark frame between | As every way of L13 opens on its own shape |
 | Length, with the flash | Some 3.6 s for a Leader, 3.2 s for the Elite Four, 2.5 s for the Champion | 3.45 s, 3.15 s, 3.15 s | Counted from the frames above |
 
+## The legendary's and the mythical's ways in (2026-10-13, plan 09 · L14)
+
+Who is met on them is the original's choice: `EncEffects_WildPokemonEffect` (`src/enc_effects.c` 283-336) gives ten species' rows of their own, by species whatever the form, and `EncEffects_GetEffectPair` returns any of them before its check for two at once (167-175); `sEncEffectsTable` (89-98) gives each row its way. Dialga and Palkia, Uxie and Azelf, and Arceus are met on `ENCEFF_CUTIN_LEGENDARY`; Shaymin, Giratina, the Regis and the four it calls minor legendaries (Regigigas, Heatran, Darkrai, Rotom) on `ENCEFF_CUTIN_MYTHICAL`; Mesprit, Cresselia and the three birds have rows only for their music and are met by place (`ENCEFF_CUTIN_USE_LOCAL`). The Regis and the birds have no row of their own in Pal Park (`mapHeaderID != ZONE_ID_PAL_PARK`), which here is asked of the battle's kind (`BattleKind.PalPark`), since a battle of the park is one.
+
+What the camera does is read from `EncounterEffect_Legendary` and `EncounterEffect_Mythical` (`src/overlay005/encounter_effect_core.c` 2404-2549), the table of sixteen lenses `sLegendaryEncounterCameraParams` (2261-2374) and the interpolation tasks they start (`src/overlay005/encounter_effect.c` 280-366), thirty frames to the second. No picture, palette or sound was opened.
+
+- **The legendary's, as the original plays it.** One flash. The camera's field of view is widened by 0x100 over forty frames; six frames later its distance is pulled in by 2350 units over eight frames along a quadratic whose rate opens at half a unit a frame the other way, with the screen's motion blur on; the screen's brightness then goes to white over sixty frames.
+- **The mythical's.** One flash. The camera is set to each of sixteen sets of pitch, turn about the upright and field of view in turn, held for one more frame than its `frameDelay` each (the first is the field camera's own), with motion blur on; then white over ten frames.
+
+| What | Platinum | Here | Why |
+| --- | --- | --- | --- |
+| The flash | One | The two of every way, a quarter of a second | One `Flash` for every way in, as plan 09 · L13 left it |
+| The legendary's rush | The camera's distance, 2350 units nearer | The lens, from 0.85 to 4 on its ratio, along the same curve's share of the way | The field's upright things are straightened for one camera; the rig changes its field of view and nothing else. 4 is the tightest the kit's lens goes |
+| The mythical's turns | The camera turned about the point it looks at, its pitch and its yaw | That point stepped as far as the turn would swing a point four tiles off, in whole texels (`JoltReach`), and its field of view as the table has it | As above: a turn would change the pitch the field is straightened for |
+| The motion blur | On through both | None | A smear is not pixel art |
+| The white | The screen's brightness faded up | A shape that closes: a disc from the middle for the legendary, with a wash of the whole picture to alpha 200 under it; a frame closing in from the edges for the mythical, in the original's sixty and ten frames | Every way's cover is a shape a point is under or not (`Covers`), as the bands' |
+| The battle's first frames | Faded in from white | The same shape opening in reverse | As every way of L13 and L15 opens on its own shape |
+| The camera afterwards | Restored from the copy kept as the effect began | Let go at the midpoint (`CameraRig.LetGo`), under the white: the lens is held over the rig's own zoom and never written into it | The rig's own state, a script's zoom included, is never touched |
+| Pal Park's exception | By the map's header | By `BattleKind.PalPark` | The battle says where it is fought |
+| Length, flashes included | Some 3.9 s and 2.2 s after the flash | 4.15 s and 2.483 s | Counted from the frames above, with our flashes |
+
 ## Formats of the later games (2026-10-12, plan 14)
 
 The formats Platinum never had are extras of ours. Each is a change to the rules that a battle is handed as it is made, and none is met unless the player goes looking for it: under either ruleset Sinnoh's routes, trainers and facilities keep Platinum's formats (plan 14, decision 1), and the golden battles and teams (`PokemonPlatinumTests/Golden`) hold that a battle with no such flag is fought as it was. Where a later game has a rule of its own for a format, it is taken from Pokémon Showdown at the commit the data importer pins (`Sources.ShowdownCommit`), the project's source for the rules after Generation 4; a section below says what was read and where this game does otherwise.

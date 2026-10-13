@@ -101,6 +101,10 @@ public static partial class SceneTransition
         // so in all), three up to white and six back, eight held, thirty-two of trembling (nine for the Champion, which
         // is not told apart here); eight of white
         TransitionKind.EliteBand => (2.6f, 0.3f),
+        // EncounterEffect_Legendary and EncounterEffect_Mythical: the camera's fifty-seven frames, then sixty of fading
+        // to white and ten (SceneTransition.Lenses.cs)
+        TransitionKind.Legendary => (CameraSeconds, LegendaryWhiteSeconds),
+        TransitionKind.Mythical => (CameraSeconds, MythicalWhiteSeconds),
         _ => (0f, CloseSeconds - FlashSeconds)
     };
 
@@ -270,6 +274,12 @@ public static partial class SceneTransition
             case TransitionKind.EliteBand:
                 // The white: a slash along the rising diagonal, widening to the two corners the portraits fly to
                 return MathF.Abs(dx / cx + dy / cy) < closed * 2.002f;
+            case TransitionKind.Legendary:
+                // The white: a disc from the middle, where the lens rushed in, to the furthest corner
+                return dx * dx + dy * dy < MathF.Pow(closed * Reach(middle, width, height), 2f);
+            case TransitionKind.Mythical:
+                // The white: a frame closing in from the four edges on the middle
+                return MathF.Abs(dx) > (1f - closed) * cx || MathF.Abs(dy) > (1f - closed) * cy;
             default:
                 return false;
         }
@@ -359,11 +369,14 @@ public static partial class SceneTransition
     {
         if (closed >= 1f)
         {
-            Raylib.DrawRectangle(0, 0, width, height, Dark);
+            Raylib.DrawRectangle(0, 0, width, height, CoverOf(kind));
             return;
         }
         if (Veil(kind, true, seconds) is > 0 and var veil)
             Raylib.DrawRectangle(0, 0, width, height, new Color(Dark.R, Dark.G, Dark.B, (byte)veil));
+        // The legendary's long white washes over the whole picture as its disc grows (plan 09 · L14)
+        if (Wash(kind, true, seconds) is > 0 and var wash)
+            Raylib.DrawRectangle(0, 0, width, height, new Color(White.R, White.G, White.B, (byte)wash));
         shown.Clear();
         Pieces(kind, seconds, width, height, shown);
         foreach (var piece in shown)
@@ -528,6 +541,19 @@ public static partial class SceneTransition
             {
                 float half = closed * cy * 1.001f;
                 Raylib.DrawRectangleRec(new Rectangle(0f, cy - half, width, 2f * half), White);
+                break;
+            }
+            case TransitionKind.Legendary:
+                Raylib.DrawCircleSector(middle, closed * Reach(middle, width, height), 0f, 360f, 96, White);
+                break;
+            case TransitionKind.Mythical:
+            {
+                // The frame: two bars across the head and the foot, two down the sides between them
+                float side = closed * cx, top = closed * cy;
+                Raylib.DrawRectangleRec(new Rectangle(0f, 0f, width, top), White);
+                Raylib.DrawRectangleRec(new Rectangle(0f, height - top, width, top), White);
+                Raylib.DrawRectangleRec(new Rectangle(0f, top, side, height - 2f * top), White);
+                Raylib.DrawRectangleRec(new Rectangle(width - side, top, side, height - 2f * top), White);
                 break;
             }
             case TransitionKind.EliteBand:

@@ -1255,7 +1255,7 @@ public class FieldLifeTests
             Assert.True(SceneTransition.Covers(kind, closing: false, 0.6f, 20f, 20f, 1920f, 1080f));
             Assert.True(SceneTransition.Covers(kind, closing: false, 0.6f, 1900f, 1060f, 1920f, 1080f));
         }
-        foreach (var kind in new[] { TransitionKind.Trainer, TransitionKind.TrainerStrong, TransitionKind.LeaderBand, TransitionKind.EliteBand })
+        foreach (var kind in new[] { TransitionKind.Trainer, TransitionKind.TrainerStrong, TransitionKind.LeaderBand, TransitionKind.EliteBand, TransitionKind.Legendary, TransitionKind.Mythical })
             for (float closed = 0.1f; closed < 1f; closed += 0.2f)
                 Assert.Equal(Covered(kind, true, closed), Covered(kind, false, closed));
 
@@ -1313,7 +1313,8 @@ public class FieldLifeTests
             Assert.Equal(SceneTransition.CloseSeconds, shut);
             Assert.Equal(0f, lead);
         }
-        else Assert.InRange(shut, SceneTransition.CloseSeconds, SceneTransition.IsBand(kind) ? 3.5f : 2.2f);
+        // (the legendary's, whose white alone takes two seconds, the longest of all: plan 09 · L14)
+        else Assert.InRange(shut, SceneTransition.CloseSeconds, SceneTransition.MovesTheCamera(kind) ? 4.2f : SceneTransition.IsBand(kind) ? 3.5f : 2.2f);
 
         // And they open at once on the other side, in half a second
         Assert.Equal(1f, SceneTransition.Closed(kind, closing: false, 0f));
