@@ -1,3 +1,4 @@
+using PokemonPlatinumEngine.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -149,7 +150,7 @@ public sealed partial class BattleCore
             {
                 if (!hit.Landed) return;
                 hit.Target.Turn.Protecting = false;
-                b.Say($"{hit.Target.Name} fell for the feint!");
+                b.Say(Text.Of("battle.fellForTheFeint", ("target", hit.Target.Name)));
             }
         },
         ["SetSubstitute"] = new() { Does = (b, use) => b.MakeSubstitute(use) },
@@ -161,7 +162,7 @@ public sealed partial class BattleCore
         ["WeatherHail"] = new() { Does = (b, use) => b.CallWeather(use, BattleWeather.Hail, "Hail") },
         ["Thunder"] = new() { SureIn = BattleWeather.Rain, Follows = IntoTheAir, Accuracy = (weather, accuracy) => weather == BattleWeather.Sun ? 50 : accuracy },
         ["Blizzard"] = new() { SureIn = BattleWeather.Hail },
-        ["SkipChargeTurnInSun"] = new() { Charge = new("{0} took in sunlight!", NotInTheSun: true) },
+        ["SkipChargeTurnInSun"] = new() { Charge = new("battle.tookInSunlight", NotInTheSun: true) },
         ["HealHalfMoreInSun"] = new() { Does = (b, use) => b.HealByTheSky(use) },
         ["ChangeTypeWithWeather"] = new()
         {
@@ -182,12 +183,12 @@ public sealed partial class BattleCore
         },
 
         // ---- what a side puts up, and the rooms
-        ["SetReflect"] = new() { Does = (b, use) => b.RaiseScreen(use, SideCondition.Reflect, s => s.Reflect, (s, t) => s.ReflectTurns = t, "Screens", "Reflect raised {0}'s Defense!") },
-        ["SetLightScreen"] = new() { Does = (b, use) => b.RaiseScreen(use, SideCondition.LightScreen, s => s.LightScreen, (s, t) => s.LightScreenTurns = t, "Screens", "Light Screen raised {0}'s Special Defense!") },
-        ["PreventStatReduction"] = new() { Does = (b, use) => b.RaiseScreen(use, SideCondition.Mist, s => s.Mist, (s, t) => s.MistTurns = t, "", "{1} became shrouded in mist!") },
-        ["PreventStatus"] = new() { Does = (b, use) => b.RaiseScreen(use, SideCondition.Safeguard, s => s.Safeguard, (s, t) => s.SafeguardTurns = t, "", "{1} became cloaked in a mystical veil!") },
-        ["PreventCrits"] = new() { Does = (b, use) => b.RaiseScreen(use, SideCondition.LuckyChant, s => s.LuckyChant, (s, t) => s.LuckyChantTurns = t, "", "The Lucky Chant shielded {0} from critical hits!") },
-        ["DoubleSpeed3Turns"] = new() { Does = (b, use) => b.RaiseScreen(use, SideCondition.Tailwind, s => s.Tailwind, (s, t) => s.TailwindTurns = t, "Tailwind", "The tailwind blew from behind {0}!") },
+        ["SetReflect"] = new() { Does = (b, use) => b.RaiseScreen(use, SideCondition.Reflect, s => s.Reflect, (s, t) => s.ReflectTurns = t, "Screens", "battle.reflectRaisedDefense") },
+        ["SetLightScreen"] = new() { Does = (b, use) => b.RaiseScreen(use, SideCondition.LightScreen, s => s.LightScreen, (s, t) => s.LightScreenTurns = t, "Screens", "battle.lightScreenRaisedSpecial") },
+        ["PreventStatReduction"] = new() { Does = (b, use) => b.RaiseScreen(use, SideCondition.Mist, s => s.Mist, (s, t) => s.MistTurns = t, "", "battle.becameShroudedInMist2") },
+        ["PreventStatus"] = new() { Does = (b, use) => b.RaiseScreen(use, SideCondition.Safeguard, s => s.Safeguard, (s, t) => s.SafeguardTurns = t, "", "battle.becameCloakedInA") },
+        ["PreventCrits"] = new() { Does = (b, use) => b.RaiseScreen(use, SideCondition.LuckyChant, s => s.LuckyChant, (s, t) => s.LuckyChantTurns = t, "", "battle.theLuckyChantShielded") },
+        ["DoubleSpeed3Turns"] = new() { Does = (b, use) => b.RaiseScreen(use, SideCondition.Tailwind, s => s.Tailwind, (s, t) => s.TailwindTurns = t, "Tailwind", "battle.theTailwindBlewFrom") },
         ["TrickRoom"] = new() { Does = (b, use) => b.TwistTheRoom(use) },
         ["Gravity"] = new() { Does = (b, use) => b.Intensify(use) },
         ["RemoveScreens"] = new()
@@ -199,7 +200,7 @@ public sealed partial class BattleCore
                 if (!side.Reflect && !side.LightScreen) return;
                 bool reflect = side.Reflect, lightScreen = side.LightScreen;
                 side.ReflectTurns = side.LightScreenTurns = 0;
-                var shattered = b.Say("It shattered the barrier!");
+                var shattered = b.Say(Text.Of("battle.itShatteredTheBarrier"));
                 if (reflect) shattered.With(new SideConditionChanged(t.Side, SideCondition.Reflect, 0));
                 if (lightScreen) shattered.With(new SideConditionChanged(t.Side, SideCondition.LightScreen, 0));
             }
@@ -208,9 +209,9 @@ public sealed partial class BattleCore
         ["RemoveHazardsAndBinding"] = new() { Then = (b, use) => b.SpinFree(use.User) },
 
         // ---- what lies in wait
-        ["SetSpikes"] = new() { Does = (b, use) => b.Scatter(use, SideCondition.Spikes, s => s.Spikes < 3, s => s.Spikes++, "Spikes were scattered all around {0}'s feet!") },
-        ["ToxicSpikes"] = new() { Does = (b, use) => b.Scatter(use, SideCondition.ToxicSpikes, s => s.ToxicSpikes < 2, s => s.ToxicSpikes++, "Poison spikes were scattered all around {0}'s feet!") },
-        ["StealthRock"] = new() { Does = (b, use) => b.Scatter(use, SideCondition.StealthRock, s => !s.StealthRock, s => s.StealthRock = true, "Pointed stones float in the air around {0}!") },
+        ["SetSpikes"] = new() { Does = (b, use) => b.Scatter(use, SideCondition.Spikes, s => s.Spikes < 3, s => s.Spikes++, "battle.spikesWereScatteredAll") },
+        ["ToxicSpikes"] = new() { Does = (b, use) => b.Scatter(use, SideCondition.ToxicSpikes, s => s.ToxicSpikes < 2, s => s.ToxicSpikes++, "battle.poisonSpikesWereScattered") },
+        ["StealthRock"] = new() { Does = (b, use) => b.Scatter(use, SideCondition.StealthRock, s => !s.StealthRock, s => s.StealthRock = true, "battle.pointedStonesFloatIn") },
 
         // ---- sent ahead
         ["HealIn3Turns"] = new() { Does = (b, use) => b.MakeAWish(use) },
@@ -220,24 +221,24 @@ public sealed partial class BattleCore
         ["HealHalfRemoveFlyingType"] = new() { Does = (b, use) => b.Roost(use) },
 
         // ---- two turns
-        ["Fly"] = new() { Charge = new("{0} flew up high!", Elsewhere.InTheAir) },
-        ["Bounce"] = new() { Charge = new("{0} sprang up!", Elsewhere.InTheAir) },
-        ["Dig"] = new() { Charge = new("{0} burrowed its way under the ground!", Elsewhere.Underground) },
-        ["Dive"] = new() { Charge = new("{0} hid underwater!", Elsewhere.Underwater) },
+        ["Fly"] = new() { Charge = new("battle.flewUpHigh", Elsewhere.InTheAir) },
+        ["Bounce"] = new() { Charge = new("battle.sprangUp", Elsewhere.InTheAir) },
+        ["Dig"] = new() { Charge = new("battle.burrowedItsWayUnder", Elsewhere.Underground) },
+        ["Dive"] = new() { Charge = new("battle.hidUnderwater", Elsewhere.Underwater) },
         ["ShadowForce"] = new()
         {
-            Charge = new("{0} vanished instantly!", Elsewhere.Vanished),
+            Charge = new("battle.vanishedInstantly", Elsewhere.Vanished),
             Protectable = _ => false,
             Hit = (b, use, hit) =>
             {
                 if (!hit.Landed || !hit.Target.Turn.Protecting) return;
                 hit.Target.Turn.Protecting = false;
-                b.Say($"It broke through {hit.Target.Name}'s protection!");
+                b.Say(Text.Of("battle.itBrokeThroughProtection", ("target", hit.Target.Name)));
             }
         },
-        ["ChargeTurnHighCrit"] = new() { Charge = new("{0} whipped up a whirlwind!") },
-        ["ChargeTurnHighCritFlinch"] = new() { Charge = new("{0} is glowing!") },
-        ["ChargeTurnDefUp"] = new() { Charge = new("{0} lowered its head!", RaisesDefense: true) },
+        ["ChargeTurnHighCrit"] = new() { Charge = new("battle.whippedUpAWhirlwind") },
+        ["ChargeTurnHighCritFlinch"] = new() { Charge = new("battle.isGlowing") },
+        ["ChargeTurnDefUp"] = new() { Charge = new("battle.loweredItsHead", RaisesDefense: true) },
         ["DoubleDamageDig"] = new() { Follows = new[] { Elsewhere.Underground }, Power = (b, use, t) => t.Volatile.Elsewhere == Elsewhere.Underground ? 20 : 10 },
         ["DoubleDamageDive"] = new() { Follows = new[] { Elsewhere.Underwater }, Power = (b, use, t) => t.Volatile.Elsewhere == Elsewhere.Underwater ? 20 : 10 },
         ["DoubleDamageFlyOrBounce"] = new() { Follows = IntoTheAir, Power = (b, use, t) => t.Volatile.Elsewhere == Elsewhere.InTheAir ? 20 : 10 },
@@ -274,7 +275,7 @@ public sealed partial class BattleCore
                 if (v.UproarTurns > 0) return;
                 v.UproarTurns = b.Lasting(b.Rules.UproarTurns);
                 v.LockedMove = use.Own ?? use.Data;
-                b.Say($"{use.User.Name} caused an uproar!");
+                b.Say(Text.Of("battle.causedAnUproar", ("user", use.User.Name)));
             }
         },
         ["Bide"] = new() { OwnLinesAfterFirst = true, Does = (b, use) => b.Bide(use) },
@@ -301,7 +302,7 @@ public sealed partial class BattleCore
                     b.Fails();
                     return;
                 }
-                b.Say($"{use.User.Name} fled from battle!");
+                b.Say(Text.Of("battle.fledFromBattle", ("user", use.User.Name)));
                 b.End(BattleResult.PlayerRan);
             }
         },
@@ -315,7 +316,7 @@ public sealed partial class BattleCore
             {
                 if (t.HasSubstitute || t.Volatile.Nightmare || t.Pokemon!.Status != StatusCondition.Sleep) return b.Fails();
                 t.Volatile.Nightmare = true;
-                b.Say($"{t.Name} began having a nightmare!");
+                b.Say(Text.Of("battle.beganHavingANightmare", ("target", t.Name)));
                 return true;
             })
         },
@@ -332,7 +333,7 @@ public sealed partial class BattleCore
             {
                 if (t.Volatile.TauntTurns > 0) return b.Fails();
                 t.Volatile.TauntTurns = b.Lasting(b.Rules.TauntTurns);
-                b.Say($"{t.Name} fell for the taunt!");
+                b.Say(Text.Of("battle.fellForTheTaunt", ("target", t.Name)));
                 return true;
             })
         },
@@ -342,7 +343,7 @@ public sealed partial class BattleCore
             {
                 if (t.Volatile.Tormented) return b.Fails();
                 t.Volatile.Tormented = true;
-                b.Say($"{t.Name} was subjected to torment!");
+                b.Say(Text.Of("battle.wasSubjectedToTorment", ("target", t.Name)));
                 return true;
             })
         },
@@ -355,11 +356,11 @@ public sealed partial class BattleCore
             {
                 if (t.HasSubstitute || t.Volatile.HealBlockTurns > 0)
                 {
-                    b.Say($"It failed to affect {t.Name}!");
+                    b.Say(Text.Of("battle.itFailedToAffect", ("target", t.Name)));
                     return false;
                 }
                 t.Volatile.HealBlockTurns = 5;
-                b.Say($"{t.Name} was prevented from healing!");
+                b.Say(Text.Of("battle.wasPreventedFromHealing", ("target", t.Name)));
                 return true;
             })
         },
@@ -370,7 +371,7 @@ public sealed partial class BattleCore
                 // subscript_embargo_start: not on Arceus, nor on the holder of Giratina's orb, nor on one whose Quick Claw or Custap Berry went off this turn and hasn't moved yet
                 if (t.HasSubstitute || t.Volatile.EmbargoTurns > 0 || t.Volatile.ItemWentOff || t.Pokemon!.AbilityName == "Multitype" || t.Pokemon.HeldItem?.Name == "Griseous Orb") return b.Fails();
                 t.Volatile.EmbargoTurns = 5;
-                b.Say($"{t.Name} can't use items anymore!");
+                b.Say(Text.Of("battle.cantUseItemsAnymore", ("target", t.Name)));
                 return true;
             })
         },
@@ -387,7 +388,7 @@ public sealed partial class BattleCore
             {
                 if (t.Volatile.TrappedBy != null || t.HasSubstitute) return b.Fails();
                 t.Volatile.TrappedBy = use.User.Place;
-                b.Say($"{t.Name} can no longer escape!");
+                b.Say(Text.Of("battle.canNoLongerEscape", ("target", t.Name)));
                 return true;
             })
         },
@@ -398,7 +399,7 @@ public sealed partial class BattleCore
                 if (t.HasSubstitute) return b.Fails();
                 t.Volatile.LockedOnBy = use.User.Place;
                 t.Volatile.LockOnTurns = 2;
-                b.Say($"{use.User.Name} took aim at {t.Name}!");
+                b.Say(Text.Of("battle.tookAimAt", ("user", use.User.Name), ("target", t.Name)));
                 return true;
             })
         },
@@ -407,7 +408,7 @@ public sealed partial class BattleCore
             Does = (b, use) => b.OnEach(use, t =>
             {
                 t.Volatile.Identified = true;
-                b.Say($"{use.User.Name} identified {t.Name}!");
+                b.Say(Text.Of("battle.identified", ("user", use.User.Name), ("target", t.Name)));
                 return true;
             })
         },
@@ -416,7 +417,7 @@ public sealed partial class BattleCore
             Does = (b, use) => b.OnEach(use, t =>
             {
                 t.Volatile.MiracleEye = true;
-                b.Say($"{use.User.Name} identified {t.Name}!");
+                b.Say(Text.Of("battle.identified", ("user", use.User.Name), ("target", t.Name)));
                 return true;
             })
         },
@@ -426,7 +427,7 @@ public sealed partial class BattleCore
             {
                 if (t.HasSubstitute || t.Volatile.AbilitySuppressed || t.Pokemon!.AbilityName == "Multitype") return b.Fails();
                 t.Volatile.AbilitySuppressed = true;
-                b.Say($"{t.Name}'s ability was suppressed!");
+                b.Say(Text.Of("battle.abilityWasSuppressed", ("target", t.Name)));
                 return true;
             })
         },
@@ -437,22 +438,22 @@ public sealed partial class BattleCore
                 var mine = use.User.Pokemon!;
                 if (mine.Status == StatusCondition.None || t.Pokemon!.Status != StatusCondition.None) return b.Fails();
                 if (!b.TryInflictStatus(t, mine.Status, use.User, true, By.Move)) return false;
-                b.CureStatus(use.User, $"{use.User.Name} moved its condition onto {t.Name}!");
+                b.CureStatus(use.User, Text.Of("battle.movedItsConditionOnto", ("user", use.User.Name), ("target", t.Name)));
                 return true;
             })
         },
 
         // ---- conditions of its own
-        ["CritUp2"] = new() { Does = (b, use) => b.Once(use.User.Volatile.FocusEnergy, () => use.User.Volatile.FocusEnergy = true, $"{use.User.Name} is getting pumped!") },
-        ["GroundTrapUserContinuousHeal"] = new() { Does = (b, use) => b.Once(use.User.Volatile.Ingrained, () => use.User.Volatile.Ingrained = true, $"{use.User.Name} planted its roots!") },
-        ["RestoreHpEveryTurn"] = new() { Does = (b, use) => b.Once(use.User.Volatile.AquaRing, () => use.User.Volatile.AquaRing = true, $"{use.User.Name} surrounded itself with a veil of water!") },
+        ["CritUp2"] = new() { Does = (b, use) => b.Once(use.User.Volatile.FocusEnergy, () => use.User.Volatile.FocusEnergy = true, Text.Of("battle.isGettingPumped", ("user", use.User.Name))) },
+        ["GroundTrapUserContinuousHeal"] = new() { Does = (b, use) => b.Once(use.User.Volatile.Ingrained, () => use.User.Volatile.Ingrained = true, Text.Of("battle.plantedItsRoots", ("user", use.User.Name))) },
+        ["RestoreHpEveryTurn"] = new() { Does = (b, use) => b.Once(use.User.Volatile.AquaRing, () => use.User.Volatile.AquaRing = true, Text.Of("battle.surroundedItselfWithA", ("user", use.User.Name))) },
         ["GiveGroundImmunity"] = new()
         {
             Does = (b, use) => b.Once(use.User.Volatile.MagnetRiseTurns > 0 || use.User.Volatile.Ingrained || BattleEffects.Of(use.User).Any(e => e.Levitates),
-                () => use.User.Volatile.MagnetRiseTurns = 5, $"{use.User.Name} levitated on electromagnetism!")
+                () => use.User.Volatile.MagnetRiseTurns = 5, Text.Of("battle.levitatedOnElectromagnetism", ("user", use.User.Name)))
         },
-        ["KoMonThatDefeatedUser"] = new() { Does = (b, use) => b.Once(false, () => use.User.Volatile.DestinyBond = true, $"{use.User.Name} is trying to take its foe down with it!") },
-        ["RemoveAllPpOnDefeat"] = new() { Does = (b, use) => b.Once(use.User.Volatile.Grudge, () => use.User.Volatile.Grudge = true, $"{use.User.Name} wants its foe to bear a grudge!") },
+        ["KoMonThatDefeatedUser"] = new() { Does = (b, use) => b.Once(false, () => use.User.Volatile.DestinyBond = true, Text.Of("battle.isTryingToTake", ("user", use.User.Name))) },
+        ["RemoveAllPpOnDefeat"] = new() { Does = (b, use) => b.Once(use.User.Volatile.Grudge, () => use.User.Volatile.Grudge = true, Text.Of("battle.wantsItsFoeTo", ("user", use.User.Name))) },
         ["MakeSharedMovesUnuseable"] = new()
         {
             Does = (b, use) =>
@@ -460,11 +461,11 @@ public sealed partial class BattleCore
                 // The foes are marked before anything is checked (BtlCmd_TryImprison); only the AI reads the mark
                 foreach (var foe in b.SlotsOf(Other(use.User.Side)).Where(f => f.Pokemon != null)) foe.Volatile.Imprisoned = true;
                 b.Once(use.User.Volatile.Imprisoning || !b.ActiveFoes(use.User).Any(foe => foe.Pokemon!.Moves.Any(m => use.User.Pokemon!.Moves.Any(own => own.Data == m.Data))),
-                    () => use.User.Volatile.Imprisoning = true, $"{use.User.Name} sealed the moves it shares with its foe!");
+                    () => use.User.Volatile.Imprisoning = true, Text.Of("battle.sealedTheMovesIt", ("user", use.User.Name)));
             }
         },
-        ["HalveElectricDamage"] = new() { Does = (b, use) => b.Once(use.User.Volatile.MudSport, () => use.User.Volatile.MudSport = true, "Electricity's power was weakened!") },
-        ["HalveFireDamage"] = new() { Does = (b, use) => b.Once(use.User.Volatile.WaterSport, () => use.User.Volatile.WaterSport = true, "Fire's power was weakened!") },
+        ["HalveElectricDamage"] = new() { Does = (b, use) => b.Once(use.User.Volatile.MudSport, () => use.User.Volatile.MudSport = true, Text.Of("battle.electricityPowerWasWeakened")) },
+        ["HalveFireDamage"] = new() { Does = (b, use) => b.Once(use.User.Volatile.WaterSport, () => use.User.Volatile.WaterSport = true, Text.Of("battle.firePowerWasWeakened")) },
         ["EvaUp2Minimize"] = new()
         {
             Does = (b, use) =>
@@ -487,7 +488,7 @@ public sealed partial class BattleCore
             Does = (b, use) =>
             {
                 use.User.Volatile.ChargeTurns = 2;
-                b.Say($"{use.User.Name} began charging power!");
+                b.Say(Text.Of("battle.beganChargingPower", ("user", use.User.Name)));
                 b.ByItsFields(use);
             }
         },
@@ -499,7 +500,7 @@ public sealed partial class BattleCore
             Does = (b, use) =>
             {
                 if (use.User.Pokemon!.Status is StatusCondition.Poison or StatusCondition.Toxic or StatusCondition.Burn or StatusCondition.Paralyze)
-                    b.CureStatus(use.User, $"{use.User.Name}'s status returned to normal!");
+                    b.CureStatus(use.User, Text.Of("battle.statusReturnedToNormal", ("user", use.User.Name)));
                 else b.Fails();
             }
         },
@@ -509,7 +510,7 @@ public sealed partial class BattleCore
             Does = (b, use) =>
             {
                 foreach (var each in b.AllBattlers.Where(o => o.IsActive)) each.Pokemon!.ResetStatStages();
-                b.Say("All stat changes were eliminated!");
+                b.Say(Text.Of("battle.allStatChangesWere"));
             }
         },
         ["DoublePowerAndCureParalysis"] = new()
@@ -518,7 +519,7 @@ public sealed partial class BattleCore
             Hit = (b, use, hit) =>
             {
                 if (hit.Touched && hit.Target.IsActive && hit.Target.Pokemon!.Status == StatusCondition.Paralyze)
-                    b.CureStatus(hit.Target, $"{hit.Target.Name} was healed of paralysis!");
+                    b.CureStatus(hit.Target, Text.Of("battle.wasHealedOfParalysis", ("target", hit.Target.Name)));
             }
         },
         ["DoublePowerHealSleep"] = new()
@@ -527,7 +528,7 @@ public sealed partial class BattleCore
             Hit = (b, use, hit) =>
             {
                 if (hit.Touched && hit.Target.IsActive && hit.Target.Pokemon!.Status == StatusCondition.Sleep)
-                    b.WakeUp(hit.Target, "{0} woke up!");
+                    b.WakeUp(hit.Target, "battle.wokeUp");
             }
         },
         ["DamageWhileAsleep"] = new()
@@ -548,7 +549,7 @@ public sealed partial class BattleCore
             {
                 var t = use.Targets[0];
                 if (t.Pokemon!.Status == StatusCondition.Sleep && !t.HasSubstitute) return true;
-                b.Say($"{t.Name} wasn't affected!");
+                b.Say(Text.Of("battle.wasntAffected", ("target", t.Name)));
                 return false;
             },
             Then = (b, use) =>
@@ -557,18 +558,18 @@ public sealed partial class BattleCore
                 if (use.DamageDealt == 0) return;
                 if (user.Volatile.HealBlockTurns > 0)
                 {
-                    b.Say($"{user.Name} was kept from healing!");
+                    b.Say(Text.Of("battle.wasKeptFromHealing", ("user", user.Name)));
                     return;
                 }
                 int amount = Formulas.Divide(use.DamageDealt, 2) * BattleEffects.Of(user).Select(e => e.DrainHundredths).DefaultIfEmpty(100).Max() / 100;
-                b.RestoreHp(user, amount, $"{use.Hits[0].Target.Name}'s dream was eaten!");
+                b.RestoreHp(user, amount, Text.Of("battle.dreamWasEaten", ("target", use.Hits[0].Target.Name)));
             }
         },
         ["DoublePowerWhenStatused"] = new()
         {
             Power = (b, use, t) => use.User.Pokemon!.Status is StatusCondition.Poison or StatusCondition.Toxic or StatusCondition.Burn or StatusCondition.Paralyze ? 20 : 10
         },
-        ["DoNothing"] = new() { Does = (b, use) => b.Say("But nothing happened!") }
+        ["DoNothing"] = new() { Does = (b, use) => b.Say(Text.Of("battle.butNothingHappened")) }
     };
 
     // ---------------------------------------------------------------- shared by several effects
@@ -576,7 +577,7 @@ public sealed partial class BattleCore
     /// <summary>"But it failed!" Returns false, so an effect can end on it.</summary>
     private bool Fails()
     {
-        Say("But it failed!");
+        Say(Text.Of("battle.butItFailed"));
         return false;
     }
 
@@ -640,7 +641,7 @@ public sealed partial class BattleCore
         if (endure) user.Turn.Enduring = true;
         else user.Turn.Protecting = true;
         if (v.ProtectChain < rates.Count - 1) v.ProtectChain++;
-        Say(endure ? $"{user.Name} braced itself!" : $"{user.Name} protected itself!");
+        Say(endure ? Text.Of("battle.bracedItself", ("user", user.Name)) : Text.Of("battle.protectedItself", ("user", user.Name)));
     }
 
     /// <summary><c>BtlCmd_TrySubstitute</c>: a quarter of its HP makes a Substitute of as much, and frees it from a binding move.</summary>
@@ -650,20 +651,20 @@ public sealed partial class BattleCore
         var p = user.Pokemon!;
         if (user.HasSubstitute)
         {
-            Say($"{user.Name} already has a substitute!");
+            Say(Text.Of("battle.alreadyHasASubstitute", ("user", user.Name)));
             return;
         }
         int cost = Formulas.Divide(p.MaxHP, 4);
         if (p.CurrentHP <= cost)
         {
-            Say("It was too weak to make a substitute!");
+            Say(Text.Of("battle.itWasTooWeak"));
             return;
         }
         p.CurrentHP -= cost;
         user.Volatile.SubstituteHp = cost;
         user.Volatile.BindTurns = 0;
         user.Volatile.BoundBy = null;
-        Say($"{user.Name} made a substitute!").With(new HpChanged(user.Place, p.CurrentHP, Healed: false)).With(new SubstituteChanged(user.Place, Up: true));
+        Say(Text.Of("battle.madeASubstitute", ("user", user.Name))).With(new HpChanged(user.Place, p.CurrentHP, Healed: false)).With(new SubstituteChanged(user.Place, Up: true));
     }
 
     // ---------------------------------------------------------------- the weather and the field
@@ -683,7 +684,7 @@ public sealed partial class BattleCore
         use.Line.With(Shown(user, user, use.Move, null));
         if (p.CurrentHP >= p.MaxHP)
         {
-            Say($"{user.Name}'s HP is full!");
+            Say(Text.Of("battle.hpIsFull", ("user", user.Name)));
             return;
         }
         int amount = Field.WeatherInEffect switch
@@ -692,7 +693,7 @@ public sealed partial class BattleCore
             BattleWeather.Sun => Formulas.Divide(p.MaxHP * 20, 30),
             _ => Formulas.Divide(p.MaxHP, 4)
         };
-        RestoreHp(user, Math.Max(1, amount), $"{user.Name} regained health!");
+        RestoreHp(user, Math.Max(1, amount), Text.Of("battle.regainedHealth", ("user", user.Name)));
     }
 
     /// <summary>What a side has of a condition now, for the line that tells of the change (plan 25 · Y2): the screen draws what lasts from it.</summary>
@@ -711,7 +712,7 @@ public sealed partial class BattleCore
         }
         int turns = kind == "Tailwind" ? Rules.TailwindTurns : 5 + (kind.Length > 0 ? BattleEffects.Of(user).Sum(e => e.ExtraTurns(kind)) : 0);
         raise(side, turns);
-        Say(string.Format(line, TeamOf(user.Side), TeamOf(user.Side, capital: true))).With(Now(user.Side, what));
+        Say(string.Format(Text.Of(line), TeamOf(user.Side), TeamOf(user.Side, capital: true))).With(Now(user.Side, what));
     }
 
     /// <summary>Trick Room for five turns; used again while it is up, it takes it down. Either way the rest of the turn is put in order again.</summary>
@@ -721,12 +722,12 @@ public sealed partial class BattleCore
         if (Field.TrickRoom)
         {
             Field.TrickRoomTurns = 0;
-            Say($"{use.User.Name} restored the twisted dimensions!").With(new FieldConditionChanged(FieldCondition.TrickRoom, Up: false));
+            Say(Text.Of("battle.restoredTheTwistedDimensions", ("user", use.User.Name))).With(new FieldConditionChanged(FieldCondition.TrickRoom, Up: false));
         }
         else
         {
             Field.TrickRoomTurns = 5;
-            Say($"{use.User.Name} twisted the dimensions!").With(new FieldConditionChanged(FieldCondition.TrickRoom, Up: true));
+            Say(Text.Of("battle.twistedTheDimensions", ("user", use.User.Name))).With(new FieldConditionChanged(FieldCondition.TrickRoom, Up: true));
         }
         orderChanged = true;
     }
@@ -741,7 +742,7 @@ public sealed partial class BattleCore
             return;
         }
         Field.GravityTurns = 5;
-        Say("Gravity intensified!").With(new FieldConditionChanged(FieldCondition.Gravity, Up: true));
+        Say(Text.Of("battle.gravityIntensified")).With(new FieldConditionChanged(FieldCondition.Gravity, Up: true));
         foreach (var b in BySpeed().Where(b => b.IsActive))
         {
             var v = b.Volatile;
@@ -749,7 +750,7 @@ public sealed partial class BattleCore
                 (!v.Ingrained && (b.HasType(PokemonType.Flying) || BattleEffects.Of(b).Any(e => e.Levitates)));
             v.MagnetRiseTurns = 0;
             if (v.Elsewhere == Elsewhere.InTheAir) Unlock(b);
-            if (floated) Say($"{b.Name} couldn't stay airborne because of gravity!");
+            if (floated) Say(Text.Of("battle.couldntStayAirborneBecause", ("pokemon", b.Name)));
         }
     }
 
@@ -765,7 +766,7 @@ public sealed partial class BattleCore
             return;
         }
         add(side);
-        Say(string.Format(line, TeamOf(theirs))).With(Now(theirs, what));
+        Say(string.Format(Text.Of(line), TeamOf(theirs))).With(Now(theirs, what));
     }
 
     /// <summary><c>subscript_defog</c>: the target's evasion falls, and its side loses its screens, its veils and what lies at its feet; the fog lifts.</summary>
@@ -778,13 +779,13 @@ public sealed partial class BattleCore
             string team = TeamOf(t.Side, capital: true);
             // Each line takes its own look off the field (plan 25 · Y2)
             SideConditionChanged Gone(SideCondition what) => new(t.Side, what, 0);
-            if (side.Reflect) Say($"{team}'s Reflect was blown away!").With(Gone(SideCondition.Reflect));
-            if (side.LightScreen) Say($"{team}'s Light Screen was blown away!").With(Gone(SideCondition.LightScreen));
-            if (side.Mist) Say($"{team}'s Mist was blown away!").With(Gone(SideCondition.Mist));
-            if (side.Safeguard) Say($"{team}'s Safeguard was blown away!").With(Gone(SideCondition.Safeguard));
-            if (side.Spikes > 0) Say($"The spikes around {TeamOf(t.Side)} were blown away!").With(Gone(SideCondition.Spikes));
-            if (side.ToxicSpikes > 0) Say($"The poison spikes around {TeamOf(t.Side)} were blown away!").With(Gone(SideCondition.ToxicSpikes));
-            if (side.StealthRock) Say($"The pointed stones around {TeamOf(t.Side)} were blown away!").With(Gone(SideCondition.StealthRock));
+            if (side.Reflect) Say(Text.Of("battle.reflectWasBlownAway", ("team", team))).With(Gone(SideCondition.Reflect));
+            if (side.LightScreen) Say(Text.Of("battle.lightScreenWasBlown", ("team", team))).With(Gone(SideCondition.LightScreen));
+            if (side.Mist) Say(Text.Of("battle.mistWasBlownAway", ("team", team))).With(Gone(SideCondition.Mist));
+            if (side.Safeguard) Say(Text.Of("battle.safeguardWasBlownAway", ("team", team))).With(Gone(SideCondition.Safeguard));
+            if (side.Spikes > 0) Say(Text.Of("battle.theSpikesAroundWere", ("team", TeamOf(t.Side)))).With(Gone(SideCondition.Spikes));
+            if (side.ToxicSpikes > 0) Say(Text.Of("battle.thePoisonSpikesAround", ("team", TeamOf(t.Side)))).With(Gone(SideCondition.ToxicSpikes));
+            if (side.StealthRock) Say(Text.Of("battle.thePointedStonesAround", ("team", TeamOf(t.Side)))).With(Gone(SideCondition.StealthRock));
             side.ReflectTurns = side.LightScreenTurns = side.MistTurns = side.SafeguardTurns = 0;
             side.Spikes = side.ToxicSpikes = 0;
             side.StealthRock = false;
@@ -794,7 +795,7 @@ public sealed partial class BattleCore
         {
             Field.Weather = BattleWeather.None;
             Field.WeatherLasts = false;
-            Say($"{use.User.Name} blew away the deep fog!").With(new WeatherChanged(BattleWeather.None));
+            Say(Text.Of("battle.blewAwayTheDeep", ("user", use.User.Name))).With(new WeatherChanged(BattleWeather.None));
         }
     }
 
@@ -805,29 +806,29 @@ public sealed partial class BattleCore
         var side = Field.Side(user.Side);
         if (v.BindTurns > 0)
         {
-            Say($"{user.Name} got free of {v.BindingMove}!");
+            Say(Text.Of("battle.gotFreeOf", ("user", user.Name), ("bindingMove", v.BindingMove)));
             v.BindTurns = 0;
             v.BoundBy = null;
         }
         if (v.SeededBy != null)
         {
             v.SeededBy = null;
-            Say($"{user.Name} blew away Leech Seed!");
+            Say(Text.Of("battle.blewAwayLeechSeed", ("user", user.Name)));
         }
         if (side.Spikes > 0)
         {
             side.Spikes = 0;
-            Say($"{user.Name} blew away Spikes!").With(Now(user.Side, SideCondition.Spikes));
+            Say(Text.Of("battle.blewAwaySpikes", ("user", user.Name))).With(Now(user.Side, SideCondition.Spikes));
         }
         if (side.ToxicSpikes > 0)
         {
             side.ToxicSpikes = 0;
-            Say($"{user.Name} blew away Toxic Spikes!").With(Now(user.Side, SideCondition.ToxicSpikes));
+            Say(Text.Of("battle.blewAwayToxicSpikes", ("user", user.Name))).With(Now(user.Side, SideCondition.ToxicSpikes));
         }
         if (side.StealthRock)
         {
             side.StealthRock = false;
-            Say($"{user.Name} blew away Stealth Rock!").With(Now(user.Side, SideCondition.StealthRock));
+            Say(Text.Of("battle.blewAwayStealthRock", ("user", user.Name))).With(Now(user.Side, SideCondition.StealthRock));
         }
     }
 
@@ -844,7 +845,7 @@ public sealed partial class BattleCore
         }
         place.WishTurns = 2;
         place.WishFrom = use.User.Name;
-        Say($"{use.User.Name} made a wish!").With(new PlaceConditionChanged(use.User.Place, PlaceCondition.Wish, Up: true));
+        Say(Text.Of("battle.madeAWish", ("user", use.User.Name))).With(new PlaceConditionChanged(use.User.Place, PlaceCondition.Wish, Up: true));
     }
 
     /// <summary>
@@ -868,7 +869,7 @@ public sealed partial class BattleCore
         place.DoomDamage = DamageCalculator.Calculate(user, t, use.Move, rng, spread: false, rules: Rules, noCrit: true, typeless: true).Damage;
         // An ally's Helping Hand counts twice here: once in the formula, and once more on what it gives (the original's own doing)
         if (user.Turn.HelpingHand) place.DoomDamage = place.DoomDamage * 15 / 10;
-        Say(use.Data.Name == "Doom Desire" ? $"{user.Name} chose Doom Desire as its destiny!" : $"{user.Name} foresaw an attack!")
+        Say(use.Data.Name == "Doom Desire" ? Text.Of("battle.choseDoomDesireAs", ("user", user.Name)) : Text.Of("battle.foresawAnAttack", ("user", user.Name)))
             .With(new PlaceConditionChanged(t.Place, PlaceState.AheadAs(use.Data), Up: true));
     }
 
@@ -895,10 +896,10 @@ public sealed partial class BattleCore
         use.Line.With(Shown(user, user, use.Move, null));
         if (p.CurrentHP >= p.MaxHP)
         {
-            Say($"{user.Name}'s HP is full!");
+            Say(Text.Of("battle.hpIsFull", ("user", user.Name)));
             return;
         }
-        RestoreHp(user, Formulas.Divide(p.MaxHP, 2), $"{user.Name} regained health!");
+        RestoreHp(user, Formulas.Divide(p.MaxHP, 2), Text.Of("battle.regainedHealth", ("user", user.Name)));
         user.Turn.Roosting = true;
     }
 
@@ -915,13 +916,13 @@ public sealed partial class BattleCore
         if (!user.IsActive || BattleEffects.Of(user).Any(e => e.PreventsIndirectDamage)) return;
         if (hit.Immune)
         {
-            Say($"{user.Name} kept going and crashed!");
+            Say(Text.Of("battle.keptGoingAndCrashed", ("user", user.Name)));
             return;
         }
         int would = DamageCalculator.Calculate(user, hit.Target, use.Move, rng, spread: false, rules: Rules,
             powerTenths: use.Effect.PowerTenths(this, use, hit.Target)).Damage;
         int crash = Math.Min(Formulas.Divide(would, 2), Formulas.Divide(hit.Target.Pokemon!.MaxHP, 2));
-        LoseHp(user, crash, $"{user.Name} kept going and crashed!", direct: true);
+        LoseHp(user, crash, Text.Of("battle.keptGoingAndCrashed", ("user", user.Name)), direct: true);
     }
 
     /// <summary>
@@ -944,7 +945,7 @@ public sealed partial class BattleCore
 
         if (--v.BideTurns > 0)
         {
-            Say($"{user.Name} is storing energy!");
+            Say(Text.Of("battle.isStoringEnergy", ("user", user.Name)));
             return;
         }
 
@@ -954,7 +955,7 @@ public sealed partial class BattleCore
         v.Charging = false;
         v.BideDamage = 0;
         if (!user.IsHeldToItsMove) v.LockedMove = null;
-        Say($"{user.Name} unleashed energy!");
+        Say(Text.Of("battle.unleashedEnergy", ("user", user.Name)));
         if (damage == 0 || target == null)
         {
             Fails();
@@ -964,15 +965,15 @@ public sealed partial class BattleCore
         var hit = new MoveHit { Target = target };
         if (!Reaches(use, target, hit))
         {
-            Say(hit.Protected ? $"{target.Name} protected itself!" : $"{user.Name}'s attack missed!");
+            Say(hit.Protected ? Text.Of("battle.protectedItself", ("user", target.Name)) : Text.Of("battle.attackMissed", ("user", user.Name)));
             return;
         }
-        var struck = Say($"{target.Name} took the energy!");
+        var struck = Say(Text.Of("battle.tookTheEnergy", ("target", target.Name)));
         if (target.HasSubstitute)
         {
             target.Volatile.SubstituteHp = Math.Max(0, target.Volatile.SubstituteHp - damage);
-            Say($"The substitute took damage for {target.Name}!");
-            if (!target.HasSubstitute) Say($"{target.Name}'s substitute faded!").With(new SubstituteChanged(target.Place, Up: false));
+            Say(Text.Of("battle.theSubstituteTookDamage", ("target", target.Name)));
+            if (!target.HasSubstitute) Say(Text.Of("battle.substituteFaded", ("target", target.Name))).With(new SubstituteChanged(target.Place, Up: false));
         }
         else
         {
@@ -1002,12 +1003,12 @@ public sealed partial class BattleCore
             bool breaks = BattleEffects.Of(user).Any(e => e.IgnoresTargetAbility);
             if (!breaks && t.Ability?.Effect is { HoldsItsGround: true })
             {
-                Say($"{t.Name} anchors itself with {AbilityOf(t)}!");
+                Say(Text.Of("battle.anchorsItselfWith", ("target", t.Name), ("ability", AbilityOf(t))));
                 return false;
             }
             if (t.Volatile.Ingrained)
             {
-                Say($"{t.Name} anchored itself with its roots!");
+                Say(Text.Of("battle.anchoredItselfWithIts", ("target", t.Name)));
                 return false;
             }
             if (!IsTrainerBattle && IsDouble) return Fails();
@@ -1022,7 +1023,7 @@ public sealed partial class BattleCore
                 return true;
             }
             // Against or from a wild Pokémon it ends the meeting
-            Say($"{t.Name} was driven off!");
+            Say(Text.Of("battle.wasDrivenOff", ("target", t.Name)));
             End(BattleResult.PlayerRan);
             return true;
         });
@@ -1036,14 +1037,14 @@ public sealed partial class BattleCore
         bool breaks = BattleEffects.Of(user).Any(e => e.IgnoresTargetAbility);
         if (!breaks && t.Ability?.Effect is { BlocksInfatuation: true })
         {
-            Say($"{t.Name}'s {AbilityOf(t)} prevents romance!");
+            Say(Text.Of("battle.preventsRomance", ("target", t.Name), ("ability", AbilityOf(t))));
             return false;
         }
         var mine = user.Pokemon!.Gender;
         var theirs = t.Pokemon!.Gender;
         if (mine == theirs || mine == Gender.Genderless || theirs == Gender.Genderless || t.Volatile.InLoveWith != null) return Fails();
         t.Volatile.InLoveWith = user.Place;
-        Say($"{t.Name} fell in love!").With(Passing(t));
+        Say(Text.Of("battle.fellInLove", ("target", t.Name))).With(Passing(t));
         Reciprocate(t, user);
         return true;
     }
@@ -1054,16 +1055,16 @@ public sealed partial class BattleCore
         if (t.HasSubstitute) return Fails();
         if (t.HasType(PokemonType.Grass))
         {
-            Say($"It doesn't affect {t.Name}...");
+            Say(Text.Of("battle.itDoesntAffect", ("target", t.Name)));
             return false;
         }
         if (t.Volatile.SeededBy != null)
         {
-            Say($"{t.Name} evaded the attack!");
+            Say(Text.Of("battle.evadedTheAttack", ("target", t.Name)));
             return false;
         }
         t.Volatile.SeededBy = user.Place;
-        Say($"{t.Name} was seeded!");
+        Say(Text.Of("battle.wasSeeded", ("target", t.Name)));
         return true;
     }
 
@@ -1086,7 +1087,7 @@ public sealed partial class BattleCore
         {
             if (t.HasSubstitute || t.Volatile.Cursed) return Fails();
             t.Volatile.Cursed = true;
-            LoseHp(user, Formulas.Divide(user.Pokemon!.MaxHP, 2), $"{user.Name} cut its own HP and laid a curse on {t.Name}!", direct: true);
+            LoseHp(user, Formulas.Divide(user.Pokemon!.MaxHP, 2), Text.Of("battle.cutItsOwnHp", ("user", user.Name), ("target", t.Name)), direct: true);
             return true;
         });
     }
@@ -1115,8 +1116,8 @@ public sealed partial class BattleCore
             Fails();
             return;
         }
-        Say("All Pokémon hearing the song will faint in three turns!");
-        foreach (var b in deaf) Say($"{b.Name}'s {AbilityOf(b)} blocks {use.Move.Name}!");
+        Say(Text.Of("battle.allPokemonHearingThe"));
+        foreach (var b in deaf) Say(Text.Of("battle.blocks", ("pokemon", b.Name), ("ability", AbilityOf(b)), ("move", use.Move.Name)));
     }
 
     private static readonly HashSet<string> NotForEncore = new() { "Transform", "CopyMoveForBattle", "LearnMovePermanent", "CopyMove", "Encore" };
@@ -1130,7 +1131,7 @@ public sealed partial class BattleCore
         if (v.Encored != null || known == null || known.CurrentPP == 0 || (last!.Effect != null && NotForEncore.Contains(last.Effect))) return Fails();
         v.Encored = last;
         v.EncoreTurns = Lasting(Rules.EncoreTurns);
-        Say($"{t.Name} received an encore!");
+        Say(Text.Of("battle.receivedAnEncore", ("target", t.Name)));
         return true;
     }
 
@@ -1143,7 +1144,7 @@ public sealed partial class BattleCore
         if (v.Disabled != null || known == null || known.CurrentPP == 0) return Fails();
         v.Disabled = last;
         v.DisableTurns = Lasting(Rules.DisableTurns);
-        Say($"{t.Name}'s {last!.Name} was disabled!");
+        Say(Text.Of("battle.wasDisabled", ("target", t.Name), ("move", last!.Name)));
         return true;
     }
 
@@ -1153,17 +1154,17 @@ public sealed partial class BattleCore
         bool breaks = BattleEffects.Of(user).Any(e => e.IgnoresTargetAbility);
         if (!breaks && t.Ability?.Effect is { } guard && guard.BlocksStatus(t, StatusCondition.Sleep))
         {
-            Say($"{t.Name}'s {AbilityOf(t)} made it ineffective!");
+            Say(Text.Of("battle.madeItIneffective", ("target", t.Name), ("ability", AbilityOf(t))));
             return false;
         }
         if (t.HasSubstitute || t.Volatile.YawnTurns > 0 || t.Pokemon!.Status != StatusCondition.None || (UproarIsOn && !Has(t, "Soundproof"))) return Fails();
         if (Field.Side(t.Side).Safeguard)
         {
-            Say($"{t.Name} is protected by Safeguard!");
+            Say(Text.Of("battle.isProtectedBySafeguard", ("target", t.Name)));
             return false;
         }
         t.Volatile.YawnTurns = 2;
-        Say($"{user.Name} made {t.Name} drowsy!");
+        Say(Text.Of("battle.madeDrowsy", ("user", user.Name), ("target", t.Name)));
         return true;
     }
 
@@ -1175,7 +1176,7 @@ public sealed partial class BattleCore
         t.Volatile.BindTurns = BattleEffects.Of(use.User).Any(e => e.BindsToTheEnd) ? Rules.GripClawBindTurns : Lasting(Rules.BindTurns);
         t.Volatile.BoundBy = use.User.Place;
         t.Volatile.BindingMove = use.Data.Name;
-        Say($"{t.Name} was caught in {use.User.Name}'s {use.Data.Name}!");
+        Say(Text.Of("battle.wasCaughtIn", ("target", t.Name), ("user", use.User.Name), ("move", use.Data.Name)));
     }
 
     // ---------------------------------------------------------------- sleep, and what cures
@@ -1189,22 +1190,22 @@ public sealed partial class BattleCore
         // Insomnia and Vital Spirit; Leaf Guard doesn't stop a Rest in Platinum
         if (Has(user, "Insomnia") || Has(user, "Vital Spirit"))
         {
-            Say($"{user.Name} stayed awake because of its {AbilityOf(user)}!");
+            Say(Text.Of("battle.stayedAwakeBecauseOf", ("user", user.Name), ("ability", AbilityOf(user))));
             return;
         }
         if (p.Status == StatusCondition.Sleep)
         {
-            Say($"{user.Name} is already asleep!");
+            Say(Text.Of("battle.isAlreadyAsleep", ("user", user.Name)));
             return;
         }
         if (UproarIsOn && !Has(user, "Soundproof"))
         {
-            Say($"But the uproar kept {user.Name} awake!");
+            Say(Text.Of("battle.butTheUproarKept", ("target", user.Name)));
             return;
         }
         if (p.CurrentHP >= p.MaxHP)
         {
-            Say($"{user.Name}'s HP is full!");
+            Say(Text.Of("battle.hpIsFull", ("user", user.Name)));
             return;
         }
         bool ailing = p.Status != StatusCondition.None;
@@ -1212,7 +1213,7 @@ public sealed partial class BattleCore
         p.SleepTurns = 3;
         p.ToxicCounter = 0;
         p.CurrentHP = p.MaxHP;
-        Say(ailing ? $"{user.Name} slept and became healthy!" : $"{user.Name} went to sleep!")
+        Say(ailing ? Text.Of("battle.sleptAndBecameHealthy", ("user", user.Name)) : Text.Of("battle.wentToSleep", ("user", user.Name)))
             .With(new StatusChanged(user.Place, StatusCondition.Sleep)).With(new HpChanged(user.Place, p.CurrentHP, Healed: true));
     }
 
@@ -1222,7 +1223,7 @@ public sealed partial class BattleCore
         var user = use.User;
         bool bell = use.Data.Flags.HasFlag(MoveFlags.Sound);
         use.Line.With(Shown(user, user, use.Move, null));
-        Say(bell ? "A bell chimed!" : "A soothing aroma wafted through the area!");
+        Say(bell ? Text.Of("battle.aBellChimed") : Text.Of("battle.aSoothingAromaWafted"));
 
         var onTheField = SlotsOf(user.Side).Where(b => b.IsActive).ToList();
         var party = user.Roster?.Members ?? onTheField.Select(b => b.Pokemon!).ToList();
@@ -1231,7 +1232,7 @@ public sealed partial class BattleCore
             var standing = onTheField.FirstOrDefault(b => b.Pokemon == p);
             if (standing != null && bell && Has(standing, "Soundproof"))
             {
-                Say($"{standing.Name}'s {AbilityOf(standing)} blocks {use.Move.Name}!");
+                Say(Text.Of("battle.blocks", ("pokemon", standing.Name), ("ability", AbilityOf(standing)), ("move", use.Move.Name)));
                 continue;
             }
             if (p.IsFainted || p.Status == StatusCondition.None) continue;

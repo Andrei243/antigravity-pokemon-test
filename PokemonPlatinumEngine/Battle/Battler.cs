@@ -1,3 +1,4 @@
+using PokemonPlatinumEngine.Core;
 using System.Collections.Generic;
 using PokemonPlatinumEngine.Battle.Sim;
 using PokemonPlatinumEngine.Data;
@@ -45,7 +46,7 @@ public sealed class Battler
     public bool IsActive => Pokemon != null && !Pokemon.IsFainted;
 
     /// <summary>How the battle's messages name it: "Turtwig" for the player's, "Foe Starly" for the other side's.</summary>
-    public string Name => Pokemon == null ? "" : IsPlayerSide ? Pokemon.DisplayName : $"Foe {Pokemon.DisplayName}";
+    public string Name => Pokemon == null ? "" : IsPlayerSide ? Pokemon.DisplayName : Text.Of("battle.foe", ("pokemon", Pokemon.DisplayName));
 
     // ---- Conditions that end when the Pokémon leaves the field
 

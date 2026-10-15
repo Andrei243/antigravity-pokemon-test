@@ -55,43 +55,24 @@ public class IntroScreen
     /// <summary>The Pokémon the professor shows, as in Platinum.</summary>
     public const string ShownSpecies = "Buneary";
 
-    public const string Professor = "Prof. Rowan";
+    /// <summary>The name over the professor's lines.</summary>
+    public static string Professor => Text.Of("intro.professor");
 
     /// <summary>The character type the rival is drawn as.</summary>
     public const string Rival = "RIVAL";
 
-    private static readonly string[] Greeting =
-    {
-        "Hello there! I'm glad you could come.",
-        "Welcome to the world of Pokémon!",
-        "My name is Rowan. People call me the Pokémon Professor."
-    };
+    // The professor's lines (plan 17 · N2): properties, so that each is read in the language of the moment
+    private static string[] Greeting => new[] { Text.Of("intro.greeting.hello"), Text.Of("intro.greeting.welcome"), Text.Of("intro.greeting.name") };
 
-    private static readonly string[] World =
-    {
-        "This world is home to the creatures we call Pokémon. They live in the tall grass, in caves, in the sea and in the sky."
-    };
+    private static string[] World => new[] { Text.Of("intro.world") };
 
-    private static readonly string[] Alongside =
-    {
-        "This is one of them. Friendly, isn't it?",
-        "We people live alongside Pokémon. Some of us keep them as friends and some battle together with them.",
-        "As for me, I study them. There is still so much about them that nobody knows."
-    };
+    private static string[] Alongside => new[] { Text.Of("intro.alongside.oneOfThem"), Text.Of("intro.alongside.liveAlongside"), Text.Of("intro.alongside.study") };
 
-    private static readonly string[] AboutYou =
-    {
-        "But that's enough about me. Tell me about yourself.",
-        "Are you a boy, or are you a girl?"
-    };
+    private static string[] AboutYou => new[] { Text.Of("intro.aboutYou.enough"), Text.Of("intro.aboutYou.boyOrGirl") };
 
-    private static readonly string[] AskName = { "And what is your name?" };
+    private static string[] AskName => new[] { Text.Of("intro.askName") };
 
-    private static readonly string[] AboutRival =
-    {
-        "And this is the boy from next door. You two have been friends for as long as either of you can remember.",
-        "He's never still for a moment, that one. Now, what was his name again?"
-    };
+    private static string[] AboutRival => new[] { Text.Of("intro.aboutRival.nextDoor"), Text.Of("intro.aboutRival.neverStill") };
 
     private readonly DialogueManager talk = new();
     private float time, phaseTime;
@@ -153,7 +134,8 @@ public class IntroScreen
         {
             case IntroPhase.Greeting:
                 // He hasn't said who he is until the last line of his greeting
-                Say("", new[] { Greeting[0], Greeting[1] }, () => Say(Professor, new[] { Greeting[2] }, () => Enter(IntroPhase.World)));
+                var greeting = Greeting;
+                Say("", new[] { greeting[0], greeting[1] }, () => Say(Professor, new[] { greeting[2] }, () => Enter(IntroPhase.World)));
                 break;
             case IntroPhase.World:
                 Say(Professor, World, () => Enter(IntroPhase.BallOpens));
@@ -177,7 +159,7 @@ public class IntroScreen
                 else Entry.Reopen();
                 break;
             case IntroPhase.AskRival:
-                Say(Professor, new[] { $"{Name}! That's a fine name." }.Concat(AboutRival), () => Enter(IntroPhase.EnterRival));
+                Say(Professor, new[] { Text.Of("intro.fineName", ("name", Name)) }.Concat(AboutRival), () => Enter(IntroPhase.EnterRival));
                 break;
             case IntroPhase.EnterRival:
                 if (RivalEntry == null) RivalEntry = new NameEntry();
@@ -186,9 +168,9 @@ public class IntroScreen
             case IntroPhase.Farewell:
                 Say(Professor, new[]
                 {
-                    $"{RivalName}, of course! How could I forget?",
-                    $"{Name}, your very own story is about to begin. You will meet many Pokémon and many people on your way.",
-                    "Now, off you go. The world of Pokémon is waiting!"
+                    Text.Of("intro.farewell.ofCourse", ("rival", RivalName)),
+                    Text.Of("intro.farewell.story", ("name", Name)),
+                    Text.Of("intro.farewell.offYouGo")
                 }, () => Enter(IntroPhase.SendOff));
                 break;
             case IntroPhase.Done:

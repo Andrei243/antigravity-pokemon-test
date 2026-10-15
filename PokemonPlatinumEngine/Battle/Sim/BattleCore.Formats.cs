@@ -1,3 +1,4 @@
+using PokemonPlatinumEngine.Core;
 namespace PokemonPlatinumEngine.Battle.Sim;
 
 /// <summary>
@@ -7,7 +8,7 @@ namespace PokemonPlatinumEngine.Battle.Sim;
 public sealed partial class BattleCore
 {
     /// <summary>What an inverse battle says as it opens: a line of our own, since the later games' say nothing.</summary>
-    public const string InverseLine = "Every type matchup is turned upside down!";
+    public static string InverseLine => Text.Of("battle.everyTypeMatchupIs");
 
     /// <summary>
     /// An inverse battle (<see cref="BattleConditions.Inverse"/>): the type chart is turned round from the first

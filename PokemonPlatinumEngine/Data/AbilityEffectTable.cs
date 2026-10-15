@@ -1,3 +1,4 @@
+using PokemonPlatinumEngine.Core;
 using System;
 using System.Collections.Generic;
 using PokemonPlatinumEngine.Battle.Effects;
@@ -32,7 +33,7 @@ public static class AbilityEffectTable
         Add("No Guard", new NoGuard());
         Add("Serene Grace", new FlagEffect { SideEffectMultiplier = 2 });
         Add("Rock Head", new FlagEffect { NoRecoil = true });
-        Add("Mold Breaker", new FlagEffect { BreakAbilities = true, EntryLine = "{0} breaks the mold!" });
+        Add("Mold Breaker", new FlagEffect { BreakAbilities = true, EntryLine = "battle.breaksTheMold" });
         Add("Unaware", new FlagEffect { Unaware = true });
         Add("Run Away", new FlagEffect { Escapes = true });
         Add("Scrappy", new Scrappy());
@@ -53,7 +54,7 @@ public static class AbilityEffectTable
         Add("Anticipation", new Anticipation());
         Add("Forewarn", new Forewarn());
         Add("Frisk", new Frisk());
-        Add("Pressure", new FlagEffect { PpPressure = 1, EntryLine = "{0} is exerting its {1}!" });
+        Add("Pressure", new FlagEffect { PpPressure = 1, EntryLine = "battle.isExertingIts" });
 
         // Defensive
         Add("Levitate", new Levitate());
@@ -114,10 +115,10 @@ public static class AbilityEffectTable
         Add("Synchronize", new Synchronize());
 
         // The weather (plan 06 · R3)
-        Add("Drizzle", new WeatherBringer(BattleWeather.Rain, "Rain", "{0}'s {1} brought the rain!"));
-        Add("Drought", new WeatherBringer(BattleWeather.Sun, "Sun", "{0}'s {1} turned the sunlight harsh!"));
-        Add("Sand Stream", new WeatherBringer(BattleWeather.Sandstorm, "Sandstorm", "{0}'s {1} whipped up a sandstorm!"));
-        Add("Snow Warning", new WeatherBringer(BattleWeather.Hail, "Hail", "{0}'s {1} whipped up a hailstorm!"));
+        Add("Drizzle", new WeatherBringer(BattleWeather.Rain, "Rain", "battle.broughtTheRain"));
+        Add("Drought", new WeatherBringer(BattleWeather.Sun, "Sun", "battle.turnedTheSunlightHarsh"));
+        Add("Sand Stream", new WeatherBringer(BattleWeather.Sandstorm, "Sandstorm", "battle.whippedUpASandstorm"));
+        Add("Snow Warning", new WeatherBringer(BattleWeather.Hail, "Hail", "battle.whippedUpAHailstorm"));
         Add("Cloud Nine", new WeatherBlind());
         Add("Air Lock", new WeatherBlind());
         Add("Swift Swim", new WeatherSpeed(BattleWeather.Rain));

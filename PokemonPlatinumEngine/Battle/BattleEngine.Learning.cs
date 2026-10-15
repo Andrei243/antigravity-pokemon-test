@@ -98,7 +98,7 @@ public partial class BattleEngine
         forfeiting = true;
         LearnStep = LearnStep.Forfeit;
         LearnCursor = 1;
-        currentMessage = "Give the match up and end the challenge here?";
+        currentMessage = Text.Of("battle.giveTheMatchUp");
         CurrentSpeaker = null;
         HUD.MenuState = BattleMenuState.LearnMove;
     }
@@ -122,9 +122,9 @@ public partial class BattleEngine
     private void AskToLearn()
     {
         var (p, move) = learning!.Value;
-        Interlude($"{p.DisplayName} is trying to learn {move}.");
-        Interlude($"But {p.DisplayName} already knows four moves.");
-        Open(LearnStep.Forget, $"Forget one of them to make room for {move}?");
+        Interlude(Text.Of("battle.isTryingToLearn", ("pokemon", p.DisplayName), ("move", move)));
+        Interlude(Text.Of("battle.butAlreadyKnowsFour", ("pokemon", p.DisplayName)));
+        Open(LearnStep.Forget, Text.Of("battle.forgetOneOfThem", ("move", move)));
     }
 
     private void Interlude(string line, Action? then = null)
@@ -188,8 +188,8 @@ public partial class BattleEngine
         {
             case LearnStep.Forget when answer == 0:
                 AudioManager.PlaySound("select");
-                Interlude($"Which move should {p.DisplayName} forget?");
-                Open(LearnStep.Choose, $"Which move should {p.DisplayName} forget?");
+                Interlude(Text.Of("battle.whichMoveShouldForget", ("pokemon", p.DisplayName)));
+                Open(LearnStep.Choose, Text.Of("battle.whichMoveShouldForget", ("pokemon", p.DisplayName)));
                 break;
             case LearnStep.Choose when answer >= 0 && answer < p.Moves.Count:
             {
@@ -199,22 +199,22 @@ public partial class BattleEngine
                 // with the place's PP Ups gone)
                 p.ReplaceMove(answer, move);
                 mirror.Copy(p).ReplaceMove(answer, move);
-                Interlude("One... two... three... and...");
-                Interlude($"{p.DisplayName} has forgotten {forgotten}.");
-                Interlude("And in its place...");
-                Interlude($"{p.DisplayName} learned {move}!");
+                Interlude(Text.Of("battle.oneTwoThreeAnd"));
+                Interlude(Text.Of("battle.hasForgotten", ("pokemon", p.DisplayName), ("forgotten", forgotten)));
+                Interlude(Text.Of("battle.andInItsPlace"));
+                Interlude(Text.Of("battle.learned", ("pokemon", p.DisplayName), ("move", move)));
                 learning = null;
                 break;
             }
             case LearnStep.Forget:
             case LearnStep.Choose:
                 AudioManager.PlaySound("cancel");
-                Interlude("Then...");
-                Open(LearnStep.GiveUp, $"Give up on learning {move}?");
+                Interlude(Text.Of("battle.then"));
+                Open(LearnStep.GiveUp, Text.Of("battle.giveUpOnLearning", ("move", move)));
                 break;
             case LearnStep.GiveUp when answer == 0:
                 AudioManager.PlaySound("select");
-                Interlude($"{p.DisplayName} did not learn {move}.");
+                Interlude(Text.Of("battle.didNotLearn", ("pokemon", p.DisplayName), ("move", move)));
                 learning = null;
                 break;
             case LearnStep.GiveUp:

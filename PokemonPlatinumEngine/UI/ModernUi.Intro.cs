@@ -56,10 +56,10 @@ internal static partial class ModernUi
         if (phase is IntroPhase.EnterRival or IntroPhase.ConfirmRival)
         {
             DrawNameEntry(sw, sh, intro.RivalEntry!, sprite, intro.Look, UiMotion.EaseOut(Math.Clamp(intro.PhaseTime / 0.3f, 0f, 1f)),
-                "HIS NAME", PlayerIdentity.DefaultRivalName);
+                Text.Of("intro.hisName"), PlayerIdentity.DefaultRivalName);
             if (phase == IntroPhase.ConfirmRival)
-                Prompt(sw, sh, $"So his name is {intro.RivalName}?", "Your friend from next door, and your rival.",
-                    new[] { ("YES, THAT'S HIM", Green), ("NO, CHANGE IT", Blue) }, intro.AnswerYes ? 0 : 1,
+                Prompt(sw, sh, Text.Of("intro.confirmRival.question", ("name", intro.RivalName)), Text.Of("intro.confirmRival.blurb"),
+                    new[] { (Text.Of("intro.confirmRival.yes"), Green), (Text.Of("intro.changeIt"), Blue) }, intro.AnswerYes ? 0 : 1,
                     UiMotion.EaseOut(Math.Clamp(intro.PhaseTime / 0.18f, 0f, 1f)));
             return;
         }
@@ -67,8 +67,8 @@ internal static partial class ModernUi
         {
             DrawNameEntry(sw, sh, intro.Entry!, sprite, intro.Look, UiMotion.EaseOut(Math.Clamp(intro.PhaseTime / 0.3f, 0f, 1f)));
             if (phase == IntroPhase.ConfirmName)
-                Prompt(sw, sh, $"So you're {intro.Name}?", "This is the name everyone will call you by.",
-                    new[] { ("YES, THAT'S ME", Green), ("NO, CHANGE IT", Blue) }, intro.AnswerYes ? 0 : 1,
+                Prompt(sw, sh, Text.Of("intro.confirmName.question", ("name", intro.Name)), Text.Of("intro.confirmName.blurb"),
+                    new[] { (Text.Of("intro.confirmName.yes"), Green), (Text.Of("intro.changeIt"), Blue) }, intro.AnswerYes ? 0 : 1,
                     UiMotion.EaseOut(Math.Clamp(intro.PhaseTime / 0.18f, 0f, 1f)));
             return;
         }
@@ -120,7 +120,7 @@ internal static partial class ModernUi
                 var plate = new Rectangle(r.X + 30, r.Y + 30, r.Width - 60, r.Height - 150);
                 UiShapes.Shape(plate, 26, Disc, Disc, Rule, 3);
                 IntroFigure(i == 0 ? first : second, r.X + r.Width / 2f, plate.Y + plate.Height + 34, 560, look.Choice);
-                string label = which == PlayerLook.Boy ? "A BOY" : "A GIRL";
+                string label = Text.Of(which == PlayerLook.Boy ? "intro.aBoy" : "intro.aGirl");
                 float lw = UiFonts.Measure(label, 44, UiWeight.Black);
                 UiFonts.DrawCentered(label, r.X + (r.Width - lw) / 2f, r.Y + r.Height - 62, 44, selected ? Selection : Ink, UiWeight.Black);
             }
@@ -129,12 +129,12 @@ internal static partial class ModernUi
         // ---- What is being said
         if (intro.Talking) DrawDialogue(sw, sh, intro.Speaker, intro.SpokenText, intro.LineComplete);
         else if (phase is IntroPhase.ChooseLook or IntroPhase.ConfirmLook)
-            DrawDialogue(sw, sh, IntroScreen.Professor, "Are you a boy, or are you a girl?", false);
+            DrawDialogue(sw, sh, IntroScreen.Professor, Text.Of("intro.aboutYou.boyOrGirl"), false);
 
-        if (phase == IntroPhase.ChooseLook) Hints(sw - Margin, 44, ("Left / Right", "Choose"), ("Z", "This one"));
+        if (phase == IntroPhase.ChooseLook) Hints(sw - Margin, 44, Hint("shared.keys.leftRight", "shared.hints.choose"), Hint("shared.keys.z", "intro.thisOne"));
         if (phase == IntroPhase.ConfirmLook)
-            Prompt(sw, sh, intro.Look == PlayerLook.Boy ? "So you're a boy?" : "So you're a girl?", "This is who you will be for the whole adventure.",
-                new[] { ("YES", Green), ("NO, GO BACK", Blue) }, intro.AnswerYes ? 0 : 1, UiMotion.EaseOut(Math.Clamp(intro.PhaseTime / 0.18f, 0f, 1f)));
+            Prompt(sw, sh, Text.Of(intro.Look == PlayerLook.Boy ? "intro.confirmLook.boy" : "intro.confirmLook.girl"), Text.Of("intro.confirmLook.blurb"),
+                new[] { (Text.Of("intro.confirmLook.yes"), Green), (Text.Of("intro.confirmLook.goBack"), Blue) }, intro.AnswerYes ? 0 : 1, UiMotion.EaseOut(Math.Clamp(intro.PhaseTime / 0.18f, 0f, 1f)));
 
         // ---- The send-off: the dark closes in round the player's own sprite, which shrinks away into the world
         if (look.Dark > 0.004f) Raylib.DrawRectangle(0, 0, sw, sh, new Color(0, 0, 0, (int)(255 * look.Dark)));
@@ -159,10 +159,10 @@ internal static partial class ModernUi
     /// far in seven slots over the keyboard.
     /// </summary>
     public static void DrawNameEntry(int sw, int sh, NameEntry entry, Texture2D? sprite, PlayerLook look, float appear = 1f,
-        string title = "YOUR NAME", string? fallbackName = null)
+        string? title = null, string? fallbackName = null)
     {
-        ScreenTitle(title);
-        Hints(sw - Margin, 44, ("Z", "Pick"), ("X", "Delete"), ("Enter", "To OK"));
+        ScreenTitle(title ?? Text.Of("intro.yourName"));
+        Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.pick"), Hint("shared.keys.x", "shared.hints.delete"), Hint("shared.keys.enter", "shared.hints.toOk"));
         float slide = (1f - appear) * 60f;
 
         // ---- Who
@@ -179,7 +179,7 @@ internal static partial class ModernUi
                 new Rectangle(MathF.Round(plate.X + (plate.Width - w) / 2f), MathF.Round(plate.Y + plate.Height - 52 - h), w, h), Vector2.Zero, 0f, Color.White);
         }
         string fallback = fallbackName ?? PlayerIdentity.DefaultName(look);
-        DrawWrapped($"Seven letters at most. Leave it empty to be called {fallback}.", who.X + 50, plate.Y + plate.Height + 36, who.Width - 100,
+        DrawWrapped(Text.Of("intro.sevenLetters", ("name", fallback)), who.X + 50, plate.Y + plate.Height + 36, who.Width - 100,
             28, Muted, 40, UiWeight.ExtraBold);
 
         // ---- The name and the keyboard
@@ -255,8 +255,8 @@ internal static partial class ModernUi
             string label = NameEntry.WideKeys[i] switch
             {
                 NameKey.Case => entry.UpperCase ? "abc" : "ABC",
-                NameKey.Delete => "DELETE",
-                _ => "OK"
+                NameKey.Delete => Text.Of("intro.key.delete"),
+                _ => Text.Of("shared.ok")
             };
             bool selected = (entry.Row == NameEntry.LetterRows && entry.WideIndex == i) || (entry.Done && NameEntry.WideKeys[i] == NameKey.Done);
             Key(r, label, selected, 34);

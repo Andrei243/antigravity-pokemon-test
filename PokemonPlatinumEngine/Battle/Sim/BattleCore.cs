@@ -421,15 +421,15 @@ public sealed partial class BattleCore : IBattleContext
         return written;
     }
 
-    private static string JoinNames(IEnumerable<string> names)
+    internal static string JoinNames(IEnumerable<string> names)
     {
         var list = names.ToList();
-        return list.Count <= 1 ? list.FirstOrDefault() ?? "" : string.Join(", ", list.Take(list.Count - 1)) + " and " + list[^1];
+        return list.Count <= 1 ? list.FirstOrDefault() ?? "" : Text.Of("battle.names", ("some", string.Join(Text.Of("battle.namesComma"), list.Take(list.Count - 1))), ("last", list[^1]));
     }
 
     /// <summary>"your team" for the player's side and "the foe's team" for the other, as the field's lines say it.</summary>
     private static string TeamOf(BattleSide side, bool capital = false) =>
-        side == BattleSide.Player ? (capital ? "Your team" : "your team") : (capital ? "The foe's team" : "the foe's team");
+        side == BattleSide.Player ? Text.Of(capital ? "battle.team.yoursCapital" : "battle.team.yours") : Text.Of(capital ? "battle.team.foesCapital" : "battle.team.foes");
 
     // ---------------------------------------------------------------- the course of a battle
 
@@ -472,13 +472,14 @@ public sealed partial class BattleCore : IBattleContext
         if (IsTrainerBattle)
         {
             Emit(new TrainersStand(Trainers[0].TrainerClass, Trainers.Count > 1 ? Trainers[1].TrainerClass : null));
-            string who = Trainers.Count > 1 ? $"{Trainers[0].FullTitle} and {Trainers[1].FullTitle} would like" : $"{Trainers[0].FullTitle} wants";
-            Say($"{who} to battle!");
+            Say(Trainers.Count > 1
+                ? Text.Of("battle.wouldLikeToBattle", ("trainer", Trainers[0].FullTitle), ("trainer2", Trainers[1].FullTitle))
+                : Text.Of("battle.wantsToBattle", ("trainer", Trainers[0].FullTitle)));
 
             // Each trainer announces their own Pokémon
             foreach (var group in foes.GroupBy(b => b.Trainer!))
             {
-                var said = Say($"{group.Key.FullTitle} sent out {JoinNames(group.Select(b => b.Pokemon!.DisplayName))}!");
+                var said = Say(Text.Of("battle.sentOut", ("trainer", group.Key.FullTitle), ("pokemon", JoinNames(group.Select(b => b.Pokemon!.DisplayName)))));
                 foreach (var b in group)
                 {
                     OnEntered(b, opening: true);
@@ -496,8 +497,8 @@ public sealed partial class BattleCore : IBattleContext
                 foreach (var brought in Brought(b)) Emit(brought);
             }
             Say(foes.Count > 1
-                ? $"Wild {JoinNames(foes.Select(b => b.Pokemon!.DisplayName))} appeared!"
-                : $"A wild {foes[0].Pokemon!.DisplayName} appeared!");
+                ? Text.Of("battle.wildAppeared", ("pokemon", JoinNames(foes.Select(b => b.Pokemon!.DisplayName))))
+                : Text.Of("battle.aWildAppeared", ("pokemon", foes[0].Pokemon!.DisplayName)));
         }
 
         // The Great Marsh and Pal Park are played with balls alone: none of the player's Pokémon comes out
@@ -509,7 +510,7 @@ public sealed partial class BattleCore : IBattleContext
 
         // A partner sends theirs out with their own line
         var own = mine.Where(b => b.Trainer == null).ToList();
-        var go = Say($"Go! {JoinNames(own.Select(b => b.Pokemon!.DisplayName))}!");
+        var go = Say(Text.Of("battle.go", ("pokemon", JoinNames(own.Select(b => b.Pokemon!.DisplayName)))));
         foreach (var b in own)
         {
             OnEntered(b, opening: true);
@@ -518,7 +519,7 @@ public sealed partial class BattleCore : IBattleContext
         foreach (var b in mine.Where(b => b.Trainer != null))
         {
             OnEntered(b, opening: true);
-            Bringing(Say($"{b.Trainer!.FullTitle} sent out {b.Pokemon!.DisplayName}!").With(new Entered(b.Place, b.Pokemon!, FromBall: true)), b);
+            Bringing(Say(Text.Of("battle.sentOut", ("trainer", b.Trainer!.FullTitle), ("pokemon", b.Pokemon!.DisplayName))).With(new Entered(b.Place, b.Pokemon!, FromBall: true)), b);
         }
 
         AnnounceFormat();
@@ -546,7 +547,7 @@ public sealed partial class BattleCore : IBattleContext
 
         // Whoever chose Focus Punch tightens its focus first (BattleControllerPlayer_CheckPreMoveActions)
         foreach (var act in waiting.Where(a => a.Choice.Kind == ChoiceKind.Fight && a.Move?.Data.Effect == "HitLastWhiffIfHit" && a.User.IsActive && a.User.Pokemon!.Status != StatusCondition.Sleep && !Loafs(a.User)))
-            Say($"{act.User.Name} is tightening its focus!");
+            Say(Text.Of("battle.isTighteningItsFocus", ("user", act.User.Name)));
 
         while (waiting.Count > 0)
         {
@@ -802,12 +803,12 @@ public sealed partial class BattleCore : IBattleContext
         var target = EnemySlots.FirstOrDefault(b => b.IsActive);
         if (target == null) return;
         var foe = target.Pokemon!;
-        Say($"{playerName} used one {(Kind == BattleKind.PalPark ? "Park Ball" : ball.Name)}!");
+        Say(Text.Of("battle.usedOne", ("player", playerName), ("item", Kind == BattleKind.PalPark ? "Park Ball" : ball.Name)));
 
         // A Pokémon that isn't there to be hit can't be caught either
         if (target.IsElsewhere)
         {
-            Say("The Pokémon couldn't be reached!");
+            Say(Text.Of("battle.thePokemonCouldntBe"));
             return;
         }
 
@@ -819,10 +820,10 @@ public sealed partial class BattleCore : IBattleContext
         {
             Say(shakes switch
             {
-                0 => "Oh no! The Pokémon broke free!",
-                1 => "Aww! It appeared to be caught!",
-                2 => "Aargh! Almost had it!",
-                _ => "Gah! It was so close, too!"
+                0 => Text.Of("battle.ohNoThePokemon"),
+                1 => Text.Of("battle.awwItAppearedTo"),
+                2 => Text.Of("battle.aarghAlmostHadIt"),
+                _ => Text.Of("battle.gahItWasSo")
             });
             if (Kind == BattleKind.Safari) SafariGameOver();
             return;
@@ -832,7 +833,7 @@ public sealed partial class BattleCore : IBattleContext
         if (Kind == BattleKind.CatchingLesson)
         {
             Emit(new Caught(foe, ball.Name, ToBox: false));
-            Say($"Gotcha! {foe.DisplayName} was caught!");
+            Say(Text.Of("battle.gotchaWasCaught", ("foe", foe.DisplayName)));
             End(BattleResult.EnemyCaught);
             return;
         }
@@ -842,8 +843,8 @@ public sealed partial class BattleCore : IBattleContext
         bool toBox = PlayerParty.IsFull;
         if (!toBox) PlayerParty.Add(foe);
         Emit(new Caught(foe, ball.Name, toBox));
-        Say($"Gotcha! {foe.DisplayName} was caught!");
-        if (toBox) Say($"{foe.DisplayName} was transferred to Box 1!");
+        Say(Text.Of("battle.gotchaWasCaught", ("foe", foe.DisplayName)));
+        if (toBox) Say(Text.Of("battle.wasTransferredToBox", ("foe", foe.DisplayName)));
         End(BattleResult.EnemyCaught);
     }
 
@@ -854,24 +855,24 @@ public sealed partial class BattleCore : IBattleContext
         // COMMAND_SELECTION_RUN_SELECT in the Battle Frontier: the match is given up, and lost
         if (Frontier)
         {
-            Say($"{playerName} forfeited the match.");
+            Say(Text.Of("battle.forfeitedTheMatch", ("player", playerName)));
             End(BattleResult.PlayerDefeat);
             return;
         }
         if (IsTrainerBattle)
         {
-            Say("No! There's no running from a Trainer battle!");
+            Say(Text.Of("battle.noThereNoRunning"));
             return;
         }
         if (CannotFlee)
         {
-            Say("There's no getting away from this one!");
+            Say(Text.Of("battle.thereNoGettingAway"));
             return;
         }
         // The Great Marsh and Pal Park can always be left
         if (Kind is BattleKind.Safari or BattleKind.PalPark)
         {
-            Say("Got away safely!").With(new GotAway());
+            Say(Text.Of("battle.gotAwaySafely")).With(new GotAway());
             End(BattleResult.PlayerRan);
             return;
         }
@@ -888,10 +889,10 @@ public sealed partial class BattleCore : IBattleContext
         }
         if (!away)
         {
-            Say("Can't escape!");
+            Say(Text.Of("battle.cantEscape"));
             return;
         }
-        Say("Got away safely!").With(new GotAway());
+        Say(Text.Of("battle.gotAwaySafely")).With(new GotAway());
         End(BattleResult.PlayerRan);
     }
 
@@ -917,13 +918,13 @@ public sealed partial class BattleCore : IBattleContext
                 if (down.Volatile.DestinyBond)
                 {
                     foe.Pokemon!.CurrentHP = 0;
-                    Say($"{down.Name} took {foe.Name} down with it!").With(new HpChanged(foe.Place, 0, Healed: false));
+                    Say(Text.Of("battle.tookDownWithIt", ("pokemon", down.Name), ("foe", foe.Name))).With(new HpChanged(foe.Place, 0, Healed: false));
                     Faint(foe);
                 }
                 else if (down.Volatile.Grudge && by.Data != StruggleData && foe.Pokemon!.Moves.FirstOrDefault(m => m.Name == by.Move.Name) is { } used)
                 {
                     used.CurrentPP = 0;
-                    Say($"{foe.Name}'s {used.Name} lost all its PP to the grudge!");
+                    Say(Text.Of("battle.lostAllItsPp", ("foe", foe.Name), ("move", used.Name)));
                 }
             }
             Faint(down);
@@ -941,7 +942,7 @@ public sealed partial class BattleCore : IBattleContext
         Revert(down);
         down.ClearVolatile();
         NoteFaint(down);
-        var fell = Say($"{down.Name} fainted!").With(new Fainted(down.Place));
+        var fell = Say(Text.Of("battle.fainted", ("pokemon", down.Name))).With(new Fainted(down.Place));
         // Whoever loved it no longer does, from the line that tells of its fall (plan 09 · L2)
         foreach (var told in letGo) fell.With(told);
         FellFirst(down, fell);
@@ -984,7 +985,7 @@ public sealed partial class BattleCore : IBattleContext
         {
             // subscript_battle_lost: a share of the money, by the team's highest level and the badges
             // (BtlCmd_PayPrizeMoney), dropped before a wild Pokémon or handed to a trainer
-            Say($"{playerName} has no Pokémon left that can fight!");
+            Say(Text.Of("battle.hasNoPokemonLeft", ("player", playerName)));
             // subscript_battle_lost in the Battle Frontier: no money changes hands and nobody blacks out
             if (Frontier)
             {
@@ -994,9 +995,9 @@ public sealed partial class BattleCore : IBattleContext
             int highest = PlayerParty.Members.Select(p => p.Level).DefaultIfEmpty(0).Max();
             MoneyLost = Formulas.MoneyPenalty(highest, Conditions.Badges, Conditions.Money);
             if (MoneyLost > 0)
-                Say(IsTrainerBattle ? $"{playerName} handed ${MoneyLost} over to the winner." : $"{playerName} dropped ${MoneyLost} in the panic!");
-            Say("...  ...  ...");
-            Say($"{playerName} whited out!");
+                Say(IsTrainerBattle ? Text.Of("battle.handedOverToThe", ("player", playerName), ("money", MoneyLost)) : Text.Of("battle.droppedInThePanic", ("player", playerName), ("money", MoneyLost)));
+            Say(Text.Of("battle.silence"));
+            Say(Text.Of("battle.whitedOut", ("player", playerName)));
             End(BattleResult.PlayerDefeat);
             return;
         }
@@ -1005,21 +1006,23 @@ public sealed partial class BattleCore : IBattleContext
         Emit(new Won());
         if (IsTrainerBattle)
         {
-            Say($"{playerName} defeated {string.Join(" and ", Trainers.Select(t => t.FullTitle))}!");
+            Say(Trainers.Count > 1
+                ? Text.Of("battle.defeatedBoth", ("player", playerName), ("trainer", Trainers[0].FullTitle), ("trainer2", Trainers[1].FullTitle))
+                : Text.Of("battle.defeated", ("player", playerName), ("trainer", Trainers[0].FullTitle)));
             // subscript_battle_won skips the prize, what Pay Day scattered and Pickup's find in the Battle Frontier
             if (Frontier)
             {
                 End(BattleResult.PlayerVictory);
                 return;
             }
-            Say($"{playerName} received ${PrizeMoney} for winning!");
+            Say(Text.Of("battle.receivedForWinning", ("player", playerName), ("money", PrizeMoney)));
         }
         else
         {
-            Say($"{playerName} defeated the wild {JoinNames(EnemySlots.Where(b => b.Pokemon != null).Select(b => b.Pokemon!.DisplayName))}!");
+            Say(Text.Of("battle.defeatedTheWild", ("player", playerName), ("pokemon", JoinNames(EnemySlots.Where(b => b.Pokemon != null).Select(b => b.Pokemon!.DisplayName)))));
         }
         // What Pay Day scattered, up to the original's most
-        if (PayDayMoney > 0) Say($"{playerName} picked up ${Math.Min(PayDayMoney, 65535)}!");
+        if (PayDayMoney > 0) Say(Text.Of("battle.pickedUp", ("player", playerName), ("money", Math.Min(PayDayMoney, 65535))));
         End(BattleResult.PlayerVictory);
     }
 
@@ -1145,7 +1148,7 @@ public sealed partial class BattleCore : IBattleContext
     /// </summary>
     private void Give(Pokemon p, int exp, bool boosted, Pokemon foe)
     {
-        Say(boosted ? $"{p.DisplayName} gained a boosted {exp} EXP. Points!" : $"{p.DisplayName} gained {exp} EXP. Points!");
+        Say(boosted ? Text.Of("battle.gainedABoostedExp", ("pokemon", p.DisplayName), ("exp", exp)) : Text.Of("battle.gainedExpPoints", ("pokemon", p.DisplayName), ("exp", exp)));
         EffortRules.Gain(p, foe.EvYield, Rules);
         // The stats it had, for the level-up panel (plan 08 · P5): effort changes none of them until a level reckons them again
         var before = p.Stats();
@@ -1156,10 +1159,10 @@ public sealed partial class BattleCore : IBattleContext
         // Evolution waits for the battle to end (see LeveledUp)
         if (!leveledUp.Contains(p)) leveledUp.Add(p);
         Emit(new LevelRose(p, p.Level, before, p.Stats()));
-        var grew = Say($"{p.DisplayName} grew to Lv. {p.Level}!");
+        var grew = Say(Text.Of("battle.grewToLv", ("pokemon", p.DisplayName), ("level", p.Level)));
         // Only a Pokémon standing on the field plays the level's animation (SEQ_GET_EXP_CHECK_LEVEL_UP; plan 25 · Y3)
         if (PlayerSlots.FirstOrDefault(b => b.IsActive && b.Pokemon == p) is { } standing) grew.With(Moment(standing, BattleMoment.LevelUp));
-        foreach (string move in learned) Say($"{p.DisplayName} learned {move}!");
+        foreach (string move in learned) Say(Text.Of("battle.learned", ("pokemon", p.DisplayName), ("move", move)));
         foreach (string move in wanted) Emit(new MoveWanted(p, move));
     }
 }

@@ -1,3 +1,4 @@
+using PokemonPlatinumEngine.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -197,7 +198,7 @@ public sealed partial class BattleCore
                     if (!v.SlowStartEnded && Turn - v.SlowStartTurn == 5)
                     {
                         v.SlowStartEnded = true;
-                        Say($"{b.Name} finally got going!");
+                        Say(Text.Of("battle.finallyGotGoing", ("pokemon", b.Name)));
                     }
                     continue;
                 }
@@ -253,7 +254,7 @@ public sealed partial class BattleCore
         if (!CanSendIn(place, partyIndex)) return;
         var outgoing = place.Pokemon!;
         var incoming = place.Roster!.Members[partyIndex];
-        var back = Say(place.Trainer == null ? $"Come back, {outgoing.DisplayName}!" : $"{place.Trainer.FullTitle} withdrew {outgoing.DisplayName}!");
+        var back = Say(place.Trainer == null ? Text.Of("battle.comeBack", ("pokemon", outgoing.DisplayName)) : Text.Of("battle.withdrew", ("trainer", place.Trainer.FullTitle), ("pokemon", outgoing.DisplayName)));
 
         // A foe that chose Pursuit catches it on its way out
         if (!Pursue(place)) back.With(new Recalled(place.Place));
@@ -316,7 +317,7 @@ public sealed partial class BattleCore
 
             var use = new MoveUse { User = foe, Move = Normalized(foe, move), Own = move.Data, Effect = EffectOf(move.Data), Boost = 20 };
             use.Targets.Add(leaving);
-            use.Line = Say($"{foe.Name} used {move.Name}!");
+            use.Line = Say(Text.Of("battle.used", ("user", foe.Name), ("move", move.Name)));
             leaving.Turn.SubstituteHit = false;
             Strike(use);
         }
@@ -342,7 +343,7 @@ public sealed partial class BattleCore
                 if (b.HasType(PokemonType.Poison))
                 {
                     side.ToxicSpikes = 0;
-                    Say($"The poison spikes disappeared from around {TeamOf(b.Side)}'s feet!").With(Now(b.Side, SideCondition.ToxicSpikes));
+                    Say(Text.Of("battle.thePoisonSpikesDisappeared", ("team", TeamOf(b.Side)))).With(Now(b.Side, SideCondition.ToxicSpikes));
                 }
                 else if (!side.Safeguard)
                 {
@@ -350,7 +351,7 @@ public sealed partial class BattleCore
                 }
             }
             if (side.Spikes > 0 && b.IsActive)
-                LoseHp(b, Formulas.Divide(b.Pokemon!.MaxHP, (5 - side.Spikes) * 2), $"{b.Name} is hurt by the spikes!");
+                LoseHp(b, Formulas.Divide(b.Pokemon!.MaxHP, (5 - side.Spikes) * 2), Text.Of("battle.isHurtByThe", ("pokemon", b.Name)));
         }
 
         if (side.StealthRock && b.IsActive)
@@ -359,7 +360,7 @@ public sealed partial class BattleCore
             var mon = b.Pokemon!;
             float matchup = TypeChart.GetEffectiveness(PokemonType.Rock, mon.PrimaryType, mon.SecondaryType, Rules, Field.Inverse);
             int divisor = matchup switch { >= 4f => 2, >= 2f => 4, >= 1f => 8, >= 0.5f => 16, > 0f => 32, _ => 0 };
-            if (divisor > 0) LoseHp(b, Formulas.Divide(mon.MaxHP, divisor), $"Pointed stones dug into {b.Name}!");
+            if (divisor > 0) LoseHp(b, Formulas.Divide(mon.MaxHP, divisor), Text.Of("battle.pointedStonesDugInto", ("pokemon", b.Name)));
         }
     }
 
@@ -382,7 +383,7 @@ public sealed partial class BattleCore
         Withdraw(target);
         Emit(new Recalled(target.Place));
         Emit(new Left(target.Place));
-        Arrive(target, dragged, $"{(target.IsPlayerSide ? dragged.DisplayName : "Foe " + dragged.DisplayName)} was dragged out!");
+        Arrive(target, dragged, Text.Of("battle.wasDraggedOut", ("pokemon", target.IsPlayerSide ? dragged.DisplayName : Text.Of("battle.foe", ("pokemon", dragged.DisplayName)))));
     }
 
     /// <summary>The party member that takes a place, asked of whoever chooses for its side; null when nobody can.</summary>
@@ -406,7 +407,7 @@ public sealed partial class BattleCore
     }
 
     private string SentOutLine(Battler place, Pokemon incoming) =>
-        place.Trainer == null ? $"Go! {incoming.DisplayName}!" : $"{place.Trainer.FullTitle} sent out {incoming.DisplayName}!";
+        place.Trainer == null ? Text.Of("battle.go", ("pokemon", incoming.DisplayName)) : Text.Of("battle.sentOut", ("trainer", place.Trainer.FullTitle), ("pokemon", incoming.DisplayName));
 
     /// <summary>
     /// A Pokémon leaves by its own move once the move is done: U-turn brings it back (Pursuit can catch it), Baton
@@ -423,7 +424,7 @@ public sealed partial class BattleCore
         if (use.Leaves == Leaving.Returns)
         {
             // Whose Pokémon it is: a partner's goes back to the partner, not to the player beside them
-            Say($"{place.Name} went back to {place.Trainer?.Name ?? playerName}!");
+            Say(Text.Of("battle.wentBackTo", ("pokemon", place.Name), ("trainer", place.Trainer?.Name ?? playerName)));
             if (Pursue(place))
             {
                 if (Result != BattleResult.None) yield break;
@@ -458,10 +459,10 @@ public sealed partial class BattleCore
             if (p.CurrentHP < p.MaxHP)
             {
                 p.CurrentHP = p.MaxHP;
-                Say(use.Leaves == Leaving.DancesAway ? $"{place.Name} became cloaked in mystical moonlight!" : $"The healing wish came true for {place.Name}!")
+                Say(use.Leaves == Leaving.DancesAway ? Text.Of("battle.becameCloakedInMystical", ("pokemon", place.Name)) : Text.Of("battle.theHealingWishCame", ("pokemon", place.Name)))
                     .With(new HpChanged(place.Place, p.CurrentHP, Healed: true));
             }
-            else Say(use.Leaves == Leaving.DancesAway ? $"{place.Name} became cloaked in mystical moonlight!" : $"The healing wish came true for {place.Name}!");
+            else Say(use.Leaves == Leaving.DancesAway ? Text.Of("battle.becameCloakedInMystical", ("pokemon", place.Name)) : Text.Of("battle.theHealingWishCame", ("pokemon", place.Name)));
         });
     }
 
@@ -525,14 +526,14 @@ public sealed partial class BattleCore
         var mine = PlayerSlots[0];
         if (!mine.IsActive || mine.Trainer != null || ControllerOf(mine) != null || !HasReplacement(mine)) yield break;
 
-        Say($"{foe.Trainer.FullTitle} has {upcoming.DisplayName} coming out next. Will you change Pokémon?");
+        Say(Text.Of("battle.hasComingOutNext", ("trainer", foe.Trainer.FullTitle), ("pokemon", upcoming.DisplayName)));
         yield return new SwitchOfferRequest(mine.Place, upcoming);
         var chosen = answer[0];
         if (chosen.Kind != ChoiceKind.Switch || !CanSendIn(mine, chosen.SwitchTo)) yield break;
 
         var outgoing = mine.Pokemon!;
         var incoming = mine.Roster!.Members[chosen.SwitchTo];
-        Say($"Come back, {outgoing.DisplayName}!").With(new Recalled(mine.Place));
+        Say(Text.Of("battle.comeBack", ("pokemon", outgoing.DisplayName))).With(new Recalled(mine.Place));
         Withdraw(mine);
         Emit(new Left(mine.Place));
         SendIn(mine, incoming);

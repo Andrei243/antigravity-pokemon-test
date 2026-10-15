@@ -1,3 +1,4 @@
+using PokemonPlatinumEngine.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -88,24 +89,24 @@ public sealed class BattleInfo
         return new BattleInfo(FieldLines(field), sides);
     }
 
-    private static string Turns(int turns) => turns == 1 ? "1 turn" : $"{turns} turns";
+    private static string Turns(int turns) => Text.Of("battleInfo.turns", ("n", turns));
 
     private static List<InfoLine> FieldLines(FieldState field)
     {
         var lines = new List<InfoLine>();
         if (WeatherName(field.Weather) is { } weather) lines.Add(new(weather));
-        if (field.TrickRoom) lines.Add(new("Trick Room", Turns(field.TrickRoomTurns)));
-        if (field.Gravity) lines.Add(new("Gravity", Turns(field.GravityTurns)));
+        if (field.TrickRoom) lines.Add(new(Text.Of("battleInfo.trickRoom"), Turns(field.TrickRoomTurns)));
+        if (field.Gravity) lines.Add(new(Text.Of("battleInfo.gravity"), Turns(field.GravityTurns)));
         return lines;
     }
 
     public static string? WeatherName(BattleWeather weather) => weather switch
     {
-        BattleWeather.Rain => "Rain",
-        BattleWeather.Sandstorm => "Sandstorm",
-        BattleWeather.Sun => "Harsh sunlight",
-        BattleWeather.Hail => "Hail",
-        BattleWeather.Fog => "Fog",
+        BattleWeather.Rain => Text.Of("battleInfo.rain"),
+        BattleWeather.Sandstorm => Text.Of("battleInfo.sandstorm"),
+        BattleWeather.Sun => Text.Of("battleInfo.sun"),
+        BattleWeather.Hail => Text.Of("battleInfo.hail"),
+        BattleWeather.Fog => Text.Of("battleInfo.fog"),
         _ => null
     };
 
@@ -115,15 +116,15 @@ public sealed class BattleInfo
         bool ours = side == BattleSide.Player;
         var lines = new List<InfoLine>();
         // Light Clay lengthens a screen, so the foe's are named without their count
-        if (s.Reflect) lines.Add(new("Reflect", ours ? Turns(s.ReflectTurns) : "", InfoTone.Good));
-        if (s.LightScreen) lines.Add(new("Light Screen", ours ? Turns(s.LightScreenTurns) : "", InfoTone.Good));
-        if (s.Mist) lines.Add(new("Mist", Turns(s.MistTurns), InfoTone.Good));
-        if (s.Safeguard) lines.Add(new("Safeguard", Turns(s.SafeguardTurns), InfoTone.Good));
-        if (s.Tailwind) lines.Add(new("Tailwind", Turns(s.TailwindTurns), InfoTone.Good));
-        if (s.LuckyChant) lines.Add(new("Lucky Chant", Turns(s.LuckyChantTurns), InfoTone.Good));
-        if (s.Spikes > 0) lines.Add(new("Spikes", $"×{s.Spikes}", InfoTone.Bad));
-        if (s.ToxicSpikes > 0) lines.Add(new("Toxic Spikes", $"×{s.ToxicSpikes}", InfoTone.Bad));
-        if (s.StealthRock) lines.Add(new("Stealth Rock", "", InfoTone.Bad));
+        if (s.Reflect) lines.Add(new(Text.Of("battleInfo.reflect"), ours ? Turns(s.ReflectTurns) : "", InfoTone.Good));
+        if (s.LightScreen) lines.Add(new(Text.Of("battleInfo.lightScreen"), ours ? Turns(s.LightScreenTurns) : "", InfoTone.Good));
+        if (s.Mist) lines.Add(new(Text.Of("battleInfo.mist"), Turns(s.MistTurns), InfoTone.Good));
+        if (s.Safeguard) lines.Add(new(Text.Of("battleInfo.safeguard"), Turns(s.SafeguardTurns), InfoTone.Good));
+        if (s.Tailwind) lines.Add(new(Text.Of("battleInfo.tailwind"), Turns(s.TailwindTurns), InfoTone.Good));
+        if (s.LuckyChant) lines.Add(new(Text.Of("battleInfo.luckyChant"), Turns(s.LuckyChantTurns), InfoTone.Good));
+        if (s.Spikes > 0) lines.Add(new(Text.Of("battleInfo.spikes"), Text.Of("battleInfo.times", ("n", s.Spikes)), InfoTone.Bad));
+        if (s.ToxicSpikes > 0) lines.Add(new(Text.Of("battleInfo.toxicSpikes"), Text.Of("battleInfo.times", ("n", s.ToxicSpikes)), InfoTone.Bad));
+        if (s.StealthRock) lines.Add(new(Text.Of("battleInfo.stealthRock"), "", InfoTone.Bad));
         return lines;
     }
 
@@ -133,8 +134,8 @@ public sealed class BattleInfo
 
     public static string StageName(StatType stat) => stat switch
     {
-        StatType.Accuracy => "Accuracy",
-        StatType.Evasion => "Evasion",
+        StatType.Accuracy => Text.Of("battleInfo.accuracy"),
+        StatType.Evasion => Text.Of("battleInfo.evasion"),
         _ => BattleText.StatName(stat)
     };
 
@@ -146,9 +147,9 @@ public sealed class BattleInfo
         string ability = b.Ability?.Name ?? p.AbilityName ?? "";
         string? item = p.HeldItem?.Name;
         string? shownAbility = own || revealed.AbilityOf(p) == ability ? ability : null;
-        string? shownItem = own ? item ?? "None"
+        string? shownItem = own ? item ?? Text.Of("battleInfo.none")
             : revealed.ItemOf(p) is not { } seen ? null
-            : item == null ? "None"
+            : item == null ? Text.Of("battleInfo.none")
             : seen == item ? item : null;
 
         var stages = new List<InfoLine>();
@@ -167,41 +168,41 @@ public sealed class BattleInfo
         void Bad(string name, string detail = "") => lines.Add(new(name, detail, InfoTone.Bad));
         void Good(string name, string detail = "") => lines.Add(new(name, detail, InfoTone.Good));
 
-        if (b.IsConfused) Bad("Confused");
-        if (v.InLoveWith != null) Bad("Infatuated");
-        if (v.SeededBy != null) Bad("Seeded");
-        if (v.Cursed) Bad("Cursed");
-        if (v.Nightmare) Bad("Nightmare");
-        if (v.YawnTurns > 0) Bad("Drowsy");
-        if (v.PerishCount >= 0) Bad("Perish count", v.PerishCount.ToString());
-        if (v.TauntTurns > 0) Bad("Taunted");
-        if (v.Tormented) Bad("Tormented");
-        if (v.Encored != null) Bad($"Encore: {v.Encored.Name}");
-        if (v.Disabled != null) Bad($"Disabled: {v.Disabled.Name}");
-        if (v.HealBlockTurns > 0) Bad("Heal Block", Turns(v.HealBlockTurns));
-        if (v.EmbargoTurns > 0) Bad("Embargo", Turns(v.EmbargoTurns));
-        if (v.BindTurns > 0 && v.BindingMove.Length > 0) Bad($"Bound: {v.BindingMove}");
-        if (v.TrappedBy != null) Bad("Can't escape");
-        if (v.Identified || v.MiracleEye) Bad("Identified");
-        if (v.LockedOnBy != null) Bad("Taken aim at");
-        if (v.AbilitySuppressed) Bad("Ability suppressed");
+        if (b.IsConfused) Bad(Text.Of("battleInfo.confused"));
+        if (v.InLoveWith != null) Bad(Text.Of("battleInfo.infatuated"));
+        if (v.SeededBy != null) Bad(Text.Of("battleInfo.seeded"));
+        if (v.Cursed) Bad(Text.Of("battleInfo.cursed"));
+        if (v.Nightmare) Bad(Text.Of("battleInfo.nightmare"));
+        if (v.YawnTurns > 0) Bad(Text.Of("battleInfo.drowsy"));
+        if (v.PerishCount >= 0) Bad(Text.Of("battleInfo.perishCount"), v.PerishCount.ToString());
+        if (v.TauntTurns > 0) Bad(Text.Of("battleInfo.taunted"));
+        if (v.Tormented) Bad(Text.Of("battleInfo.tormented"));
+        if (v.Encored != null) Bad(Text.Of("battleInfo.encore", ("move", v.Encored.Name)));
+        if (v.Disabled != null) Bad(Text.Of("battleInfo.disabled", ("move", v.Disabled.Name)));
+        if (v.HealBlockTurns > 0) Bad(Text.Of("battleInfo.healBlock"), Turns(v.HealBlockTurns));
+        if (v.EmbargoTurns > 0) Bad(Text.Of("battleInfo.embargo"), Turns(v.EmbargoTurns));
+        if (v.BindTurns > 0 && v.BindingMove.Length > 0) Bad(Text.Of("battleInfo.bound", ("move", v.BindingMove)));
+        if (v.TrappedBy != null) Bad(Text.Of("battleInfo.cantEscape"));
+        if (v.Identified || v.MiracleEye) Bad(Text.Of("battleInfo.identified"));
+        if (v.LockedOnBy != null) Bad(Text.Of("battleInfo.takenAimAt"));
+        if (v.AbilitySuppressed) Bad(Text.Of("battleInfo.abilitySuppressed"));
 
-        if (b.HasSubstitute) Good("Substitute");
-        if (v.FocusEnergy) Good("Focus Energy");
-        if (v.Ingrained) Good("Ingrained");
-        if (v.AquaRing) Good("Aqua Ring");
-        if (v.MagnetRiseTurns > 0) Good("Magnet Rise", Turns(v.MagnetRiseTurns));
-        if (v.ChargeTurns > 0) Good("Charged");
-        if (b.FlashFire) Good("Flash Fire");
-        if (v.Stockpile > 0) Good("Stockpile", $"×{v.Stockpile}");
-        if (v.DefenseCurl) Good("Defense Curl");
-        if (v.Minimized) Good("Minimized");
-        if (v.Rage) Good("Rage");
-        if (v.Transformed) Good("Transformed");
-        if (v.PowerTrick) Good("Power Trick");
+        if (b.HasSubstitute) Good(Text.Of("battleInfo.substitute"));
+        if (v.FocusEnergy) Good(Text.Of("battleInfo.focusEnergy"));
+        if (v.Ingrained) Good(Text.Of("battleInfo.ingrained"));
+        if (v.AquaRing) Good(Text.Of("battleInfo.aquaRing"));
+        if (v.MagnetRiseTurns > 0) Good(Text.Of("battleInfo.magnetRise"), Turns(v.MagnetRiseTurns));
+        if (v.ChargeTurns > 0) Good(Text.Of("battleInfo.charged"));
+        if (b.FlashFire) Good(Text.Of("battleInfo.flashFire"));
+        if (v.Stockpile > 0) Good(Text.Of("battleInfo.stockpile"), Text.Of("battleInfo.times", ("n", v.Stockpile)));
+        if (v.DefenseCurl) Good(Text.Of("battleInfo.defenseCurl"));
+        if (v.Minimized) Good(Text.Of("battleInfo.minimized"));
+        if (v.Rage) Good(Text.Of("battleInfo.rage"));
+        if (v.Transformed) Good(Text.Of("battleInfo.transformed"));
+        if (v.PowerTrick) Good(Text.Of("battleInfo.powerTrick"));
 
         // What waits for the place itself, whoever stands there when it comes
-        if (place.WishTurns > 0) Good("Wish", Turns(place.WishTurns));
+        if (place.WishTurns > 0) Good(Text.Of("battleInfo.wish"), Turns(place.WishTurns));
         if (place.DoomTurns > 0 && place.DoomMove != null) Bad(place.DoomMove.Name, Turns(place.DoomTurns));
         return lines;
     }

@@ -1,3 +1,4 @@
+using PokemonPlatinumEngine.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,28 +20,28 @@ public sealed partial class BattleCore
 
     private static string Starts(BattleWeather weather) => weather switch
     {
-        BattleWeather.Rain => "It started to rain!",
-        BattleWeather.Sandstorm => "A sandstorm kicked up!",
-        BattleWeather.Sun => "The sunlight turned harsh!",
-        BattleWeather.Hail => "It started to hail!",
-        _ => "The fog is deep..."
+        BattleWeather.Rain => Text.Of("battle.itStartedToRain"),
+        BattleWeather.Sandstorm => Text.Of("battle.aSandstormKickedUp"),
+        BattleWeather.Sun => Text.Of("battle.theSunlightTurnedHarsh"),
+        BattleWeather.Hail => Text.Of("battle.itStartedToHail"),
+        _ => Text.Of("battle.theFogIsDeep")
     };
 
     private static string GoesOn(BattleWeather weather) => weather switch
     {
-        BattleWeather.Rain => "Rain continues to fall.",
-        BattleWeather.Sandstorm => "The sandstorm rages.",
-        BattleWeather.Sun => "The sunlight is strong.",
-        BattleWeather.Hail => "Hail continues to fall.",
-        _ => "The fog is deep..."
+        BattleWeather.Rain => Text.Of("battle.rainContinuesToFall"),
+        BattleWeather.Sandstorm => Text.Of("battle.theSandstormRages"),
+        BattleWeather.Sun => Text.Of("battle.theSunlightIsStrong"),
+        BattleWeather.Hail => Text.Of("battle.hailContinuesToFall"),
+        _ => Text.Of("battle.theFogIsDeep")
     };
 
     private static string Stops(BattleWeather weather) => weather switch
     {
-        BattleWeather.Rain => "The rain stopped.",
-        BattleWeather.Sandstorm => "The sandstorm subsided.",
-        BattleWeather.Sun => "The sunlight faded.",
-        _ => "The hail stopped."
+        BattleWeather.Rain => Text.Of("battle.theRainStopped"),
+        BattleWeather.Sandstorm => Text.Of("battle.theSandstormSubsided"),
+        BattleWeather.Sun => Text.Of("battle.theSunlightFaded"),
+        _ => Text.Of("battle.theHailStopped")
     };
 
     /// <summary>
@@ -53,7 +54,7 @@ public sealed partial class BattleCore
         if (Conditions.TrickRoom)
         {
             Field.TrickRoomTurns = 5;
-            Say("The dimensions became distorted!").With(new FieldConditionChanged(FieldCondition.TrickRoom, Up: true));
+            Say(Text.Of("battle.theDimensionsBecameDistorted")).With(new FieldConditionChanged(FieldCondition.TrickRoom, Up: true));
         }
     }
 
@@ -76,12 +77,12 @@ public sealed partial class BattleCore
     {
         var sides = new[] { BattleSide.Player, BattleSide.Enemy };
         // Each line that wears something off takes its look off the field (plan 25 · Y2)
-        foreach (var side in sides) if (RunsOut(ref Field.Side(side).ReflectTurns)) Say($"{TeamOf(side, true)}'s Reflect wore off!").With(Now(side, SideCondition.Reflect));
-        foreach (var side in sides) if (RunsOut(ref Field.Side(side).LightScreenTurns)) Say($"{TeamOf(side, true)}'s Light Screen wore off!").With(Now(side, SideCondition.LightScreen));
-        foreach (var side in sides) if (RunsOut(ref Field.Side(side).MistTurns)) Say($"{TeamOf(side, true)}'s Mist wore off!").With(Now(side, SideCondition.Mist));
-        foreach (var side in sides) if (RunsOut(ref Field.Side(side).SafeguardTurns)) Say($"{TeamOf(side, true)} is no longer protected by Safeguard!").With(Now(side, SideCondition.Safeguard));
-        foreach (var side in sides) if (RunsOut(ref Field.Side(side).TailwindTurns)) Say($"{TeamOf(side, true)}'s tailwind petered out!").With(Now(side, SideCondition.Tailwind));
-        foreach (var side in sides) if (RunsOut(ref Field.Side(side).LuckyChantTurns)) Say($"{TeamOf(side, true)}'s Lucky Chant wore off!").With(Now(side, SideCondition.LuckyChant));
+        foreach (var side in sides) if (RunsOut(ref Field.Side(side).ReflectTurns)) Say(Text.Of("battle.reflectWoreOff", ("team", TeamOf(side, true)))).With(Now(side, SideCondition.Reflect));
+        foreach (var side in sides) if (RunsOut(ref Field.Side(side).LightScreenTurns)) Say(Text.Of("battle.lightScreenWoreOff", ("team", TeamOf(side, true)))).With(Now(side, SideCondition.LightScreen));
+        foreach (var side in sides) if (RunsOut(ref Field.Side(side).MistTurns)) Say(Text.Of("battle.mistWoreOff", ("team", TeamOf(side, true)))).With(Now(side, SideCondition.Mist));
+        foreach (var side in sides) if (RunsOut(ref Field.Side(side).SafeguardTurns)) Say(Text.Of("battle.isNoLongerProtected", ("team", TeamOf(side, true)))).With(Now(side, SideCondition.Safeguard));
+        foreach (var side in sides) if (RunsOut(ref Field.Side(side).TailwindTurns)) Say(Text.Of("battle.tailwindPeteredOut", ("team", TeamOf(side, true)))).With(Now(side, SideCondition.Tailwind));
+        foreach (var side in sides) if (RunsOut(ref Field.Side(side).LuckyChantTurns)) Say(Text.Of("battle.luckyChantWoreOff", ("team", TeamOf(side, true)))).With(Now(side, SideCondition.LuckyChant));
 
         // A Wish comes true for whoever stands where it was made
         foreach (var b in speedOrder)
@@ -95,11 +96,11 @@ public sealed partial class BattleCore
                 Emit(wished);
                 continue;
             }
-            Say($"{place.WishFrom}'s wish came true!").With(wished);
+            Say(Text.Of("battle.wishCameTrue", ("wishFrom", place.WishFrom))).With(wished);
             var p = b.Pokemon!;
-            if (b.Volatile.HealBlockTurns > 0) Say($"{b.Name} was kept from healing!");
-            else if (p.CurrentHP >= p.MaxHP) Say($"{b.Name}'s HP is full!");
-            else RestoreHp(b, Formulas.Divide(p.MaxHP, 2), $"{b.Name} regained health!");
+            if (b.Volatile.HealBlockTurns > 0) Say(Text.Of("battle.wasKeptFromHealing", ("user", b.Name)));
+            else if (p.CurrentHP >= p.MaxHP) Say(Text.Of("battle.hpIsFull", ("user", b.Name)));
+            else RestoreHp(b, Formulas.Divide(p.MaxHP, 2), Text.Of("battle.regainedHealth", ("user", b.Name)));
         }
 
         // The weather: it runs down unless it is there to stay, and passes over everyone
@@ -115,7 +116,7 @@ public sealed partial class BattleCore
             if (!WeatherPasses()) return false;
         }
 
-        if (Field.GravityTurns > 0 && --Field.GravityTurns == 0) Say("Gravity returned to normal!").With(new FieldConditionChanged(FieldCondition.Gravity, Up: false));
+        if (Field.GravityTurns > 0 && --Field.GravityTurns == 0) Say(Text.Of("battle.gravityReturnedToNormal")).With(new FieldConditionChanged(FieldCondition.Gravity, Up: false));
         return true;
     }
 
@@ -143,7 +144,7 @@ public sealed partial class BattleCore
                 _ => false
             };
             if (wears && !hidden && !effects.Any(e => e.ShelteredFrom(weather) || e.PreventsIndirectDamage))
-                LoseHp(b, Formulas.Divide(b.Pokemon!.MaxHP, 16), weather == BattleWeather.Sandstorm ? $"{b.Name} is buffeted by the sandstorm!" : $"{b.Name} is pelted by the hail!");
+                LoseHp(b, Formulas.Divide(b.Pokemon!.MaxHP, 16), weather == BattleWeather.Sandstorm ? Text.Of("battle.isBuffetedByThe", ("pokemon", b.Name)) : Text.Of("battle.isPeltedByThe", ("pokemon", b.Name)));
             // Under the ground or the water only the rain still reaches it
             if (b.IsActive && (!hidden || weather == BattleWeather.Rain)) foreach (var e in effects) e.UnderTheWeather(this, b, weather);
             if (!Settle()) return false;
@@ -165,11 +166,11 @@ public sealed partial class BattleCore
 
             // Roots and a ring of water give a sixteenth back
             // The roots have a moment of their own (subscript_ingrain_heal); the ring of water plays the heal's (plan 25 · Y3)
-            foreach (var (has, line, roots) in new[] { (v.Ingrained, "{0} absorbed nutrients with its roots!", true), (v.AquaRing, "{0}'s veil of water restored its HP!", false) })
+            foreach (var (has, line, roots) in new[] { (v.Ingrained, "battle.absorbedNutrientsWithIts", true), (v.AquaRing, "battle.veilOfWaterRestored", false) })
             {
                 if (!has || p.CurrentHP >= p.MaxHP) continue;
-                if (v.HealBlockTurns > 0) Say($"{b.Name} was kept from healing!");
-                else RestoreHp(roots ? Marked(b, BattleMoment.Ingrain) : b, Formulas.Divide(p.MaxHP, 16) * drain / 100, string.Format(line, b.Name));
+                if (v.HealBlockTurns > 0) Say(Text.Of("battle.wasKeptFromHealing", ("user", b.Name)));
+                else RestoreHp(roots ? Marked(b, BattleMoment.Ingrain) : b, Formulas.Divide(p.MaxHP, 16) * drain / 100, string.Format(Text.Of(line), b.Name));
             }
 
             // Its ability, then its item twice over, as the original has it: a berry it is time for
@@ -183,11 +184,11 @@ public sealed partial class BattleCore
             {
                 var taker = At(to);
                 int taken = Math.Min(p.CurrentHP, Formulas.Divide(p.MaxHP, 8));
-                LoseHp(Marked(b, BattleMoment.LeechSeed, taker), taken, $"{b.Name}'s health is sapped by Leech Seed!");
+                LoseHp(Marked(b, BattleMoment.LeechSeed, taker), taken, Text.Of("battle.healthIsSappedBy", ("pokemon", b.Name)));
                 int given = taken * BattleEffects.Of(taker).Select(e => e.DrainHundredths).DefaultIfEmpty(100).Max() / 100;
-                if (BattleEffects.Of(b).Any(e => e.HurtsDrainers)) LoseHp(taker, given, $"{taker.Name} sucked up the liquid ooze!");
+                if (BattleEffects.Of(b).Any(e => e.HurtsDrainers)) LoseHp(taker, given, Text.Of("battle.suckedUpTheLiquid", ("user", taker.Name)));
                 else if (taker.Volatile.HealBlockTurns == 0 && taker.Pokemon!.CurrentHP < taker.Pokemon.MaxHP)
-                    RestoreHp(taker, given, $"{taker.Name} took in the sapped health!");
+                    RestoreHp(taker, given, Text.Of("battle.tookInTheSapped", ("pokemon", taker.Name)));
             }
 
             if (b.IsActive)
@@ -198,15 +199,15 @@ public sealed partial class BattleCore
                 {
                     case StatusCondition.Poison:
                         if (poisonHeals) PoisonHeal(b);
-                        else LoseHp(Marked(b, BattleMoment.Poisoned), Formulas.Divide(p.MaxHP, 8), $"{b.Name} is hurt by poison!");
+                        else LoseHp(Marked(b, BattleMoment.Poisoned), Formulas.Divide(p.MaxHP, 8), Text.Of("battle.isHurtByPoison", ("pokemon", b.Name)));
                         break;
                     case StatusCondition.Toxic:
                         p.ToxicCounter = Math.Min(15, p.ToxicCounter + 1);
                         if (poisonHeals) PoisonHeal(b);
-                        else LoseHp(Marked(b, BattleMoment.Poisoned), Formulas.Divide(p.MaxHP, 16) * p.ToxicCounter, $"{b.Name} is hurt by poison!");
+                        else LoseHp(Marked(b, BattleMoment.Poisoned), Formulas.Divide(p.MaxHP, 16) * p.ToxicCounter, Text.Of("battle.isHurtByPoison", ("pokemon", b.Name)));
                         break;
                     case StatusCondition.Burn:
-                        LoseHp(Marked(b, BattleMoment.Burned), Formulas.Divide(p.MaxHP, Rules.BurnDamageDivisor), $"{b.Name} is hurt by its burn!");
+                        LoseHp(Marked(b, BattleMoment.Burned), Formulas.Divide(p.MaxHP, Rules.BurnDamageDivisor), Text.Of("battle.isHurtByIts", ("pokemon", b.Name)));
                         break;
                 }
             }
@@ -214,39 +215,39 @@ public sealed partial class BattleCore
             // A nightmare lasts as long as the sleep does
             if (b.IsActive && v.Nightmare)
             {
-                if (p.Status == StatusCondition.Sleep) LoseHp(Marked(b, BattleMoment.Nightmare), Formulas.Divide(p.MaxHP, 4), $"{b.Name} is locked in a nightmare!");
+                if (p.Status == StatusCondition.Sleep) LoseHp(Marked(b, BattleMoment.Nightmare), Formulas.Divide(p.MaxHP, 4), Text.Of("battle.isLockedInA", ("pokemon", b.Name)));
                 else v.Nightmare = false;
             }
 
-            if (b.IsActive && v.Cursed) LoseHp(Marked(b, BattleMoment.Curse), Formulas.Divide(p.MaxHP, 4), $"{b.Name} is afflicted by the curse!");
+            if (b.IsActive && v.Cursed) LoseHp(Marked(b, BattleMoment.Curse), Formulas.Divide(p.MaxHP, 4), Text.Of("battle.isAfflictedByThe", ("pokemon", b.Name)));
 
             // A binding move wears at it until its count is done, and the last count is the one that frees
             if (b.IsActive && v.BindTurns > 0)
             {
-                if (--v.BindTurns > 0) LoseHp(Marked(b, BindMoment(v.BindingMove)), Formulas.Divide(p.MaxHP, Rules.BindDamageDivisor), $"{b.Name} is hurt by {v.BindingMove}!");
+                if (--v.BindTurns > 0) LoseHp(Marked(b, BindMoment(v.BindingMove)), Formulas.Divide(p.MaxHP, Rules.BindDamageDivisor), Text.Of("battle.isHurtBy", ("pokemon", b.Name), ("bindingMove", v.BindingMove)));
                 else
                 {
-                    Say($"{b.Name} was freed from {v.BindingMove}!");
+                    Say(Text.Of("battle.wasFreedFrom", ("pokemon", b.Name), ("bindingMove", v.BindingMove)));
                     v.BoundBy = null;
                 }
             }
 
             // Bad Dreams across the field wears at a sleeper
             if (b.IsActive && p.Status == StatusCondition.Sleep && !guarded && ActiveFoes(b).Any(foe => Has(foe, "Bad Dreams")))
-                LoseHp(b, Formulas.Divide(p.MaxHP, 8), $"{b.Name} is tormented!");
+                LoseHp(b, Formulas.Divide(p.MaxHP, 8), Text.Of("battle.isTormented", ("pokemon", b.Name)));
 
             if (b.IsActive && v.UproarTurns > 0)
             {
                 foreach (var sleeper in AllBattlers.Where(o => o.IsActive && o.Pokemon!.Status == StatusCondition.Sleep && !Has(o, "Soundproof")).ToList())
-                    WakeUp(sleeper, "The uproar woke up {0}!");
+                    WakeUp(sleeper, "battle.theUproarWokeUp");
                 v.UproarTurns--;
                 if (b.Turn.MoveFailed || v.UproarTurns == 0)
                 {
                     v.UproarTurns = 0;
                     if (!b.IsHeldToItsMove) v.LockedMove = null;
-                    Say($"{b.Name} calmed down.");
+                    Say(Text.Of("battle.calmedDown", ("pokemon", b.Name)));
                 }
-                else Say($"{b.Name} is making an uproar!");
+                else Say(Text.Of("battle.isMakingAnUproar", ("pokemon", b.Name)));
             }
 
             // A rampage ends in confusion, unless it was cut short
@@ -254,7 +255,7 @@ public sealed partial class BattleCore
             {
                 v.RampageTurns--;
                 if (b.Turn.MoveFailed) v.RampageTurns = 0;
-                else if (v.RampageTurns == 0 && !b.IsConfused) Confuse(b, null, false, By.Other, $"{b.Name} became confused due to fatigue!");
+                else if (v.RampageTurns == 0 && !b.IsConfused) Confuse(b, null, false, By.Other, Text.Of("battle.becameConfusedDueTo", ("pokemon", b.Name)));
                 if (v.RampageTurns == 0 && !b.IsHeldToItsMove) v.LockedMove = null;
             }
 
@@ -265,7 +266,7 @@ public sealed partial class BattleCore
                 else
                 {
                     v.Disabled = null;
-                    Say($"{b.Name} is disabled no more!");
+                    Say(Text.Of("battle.isDisabledNoMore", ("pokemon", b.Name)));
                 }
             }
 
@@ -277,7 +278,7 @@ public sealed partial class BattleCore
                 else
                 {
                     v.Encored = null;
-                    Say($"{b.Name}'s encore ended!");
+                    Say(Text.Of("battle.encoreEnded", ("pokemon", b.Name)));
                 }
             }
 
@@ -285,10 +286,10 @@ public sealed partial class BattleCore
             if (v.ChargeTurns > 0) v.ChargeTurns--;
             if (b.IsActive)
             {
-                if (RunsOut(ref v.TauntTurns)) Say($"{b.Name}'s taunt wore off!");
-                if (RunsOut(ref v.MagnetRiseTurns)) Say($"{b.Name}'s magnetism wore off!");
-                if (RunsOut(ref v.HealBlockTurns)) Say($"{b.Name} can heal again!");
-                if (RunsOut(ref v.EmbargoTurns)) Say($"{b.Name} can use items again!");
+                if (RunsOut(ref v.TauntTurns)) Say(Text.Of("battle.tauntWoreOff", ("pokemon", b.Name)));
+                if (RunsOut(ref v.MagnetRiseTurns)) Say(Text.Of("battle.magnetismWoreOff", ("pokemon", b.Name)));
+                if (RunsOut(ref v.HealBlockTurns)) Say(Text.Of("battle.canHealAgain", ("pokemon", b.Name)));
+                if (RunsOut(ref v.EmbargoTurns)) Say(Text.Of("battle.canUseItemsAgain", ("pokemon", b.Name)));
 
                 // A yawn's sleep arrives
                 if (RunsOut(ref v.YawnTurns)) TryInflictStatus(b, StatusCondition.Sleep, null, false, By.Other);
@@ -320,7 +321,7 @@ public sealed partial class BattleCore
                 Emit(arrived);
                 continue;
             }
-            var took = Say($"{b.Name} took the {move.Name} attack!").With(arrived);
+            var took = Say(Text.Of("battle.tookTheAttack2", ("pokemon", b.Name), ("move", move.Name))).With(arrived);
 
             // Its accuracy is rolled now, by the stages of whoever stands where it was sent from
             var sender = At(place.DoomFrom);
@@ -329,7 +330,7 @@ public sealed partial class BattleCore
                 b.Pokemon!.StatStages.GetValueOrDefault(StatType.Evasion));
             if (b.Turn.Protecting || rng.Roll(RollKind.Accuracy, 100) >= rate)
             {
-                Say("But it failed!");
+                Say(Text.Of("battle.butItFailed"));
                 continue;
             }
             // It lands with its own move's effect, from the place it was sent from (plan 25 · Y3)
@@ -343,7 +344,7 @@ public sealed partial class BattleCore
         {
             if (!b.IsActive || b.Volatile.PerishCount < 0) continue;
             int count = b.Volatile.PerishCount;
-            Say($"{b.Name}'s perish count fell to {count}!");
+            Say(Text.Of("battle.perishCountFellTo", ("pokemon", b.Name), ("count", count)));
             if (count == 0)
             {
                 b.Volatile.PerishCount = -1;
@@ -355,7 +356,7 @@ public sealed partial class BattleCore
         }
 
         if (Field.TrickRoomTurns > 0 && --Field.TrickRoomTurns == 0)
-            Say("The twisted dimensions returned to normal!").With(new FieldConditionChanged(FieldCondition.TrickRoom, Up: false));
+            Say(Text.Of("battle.theTwistedDimensionsReturned")).With(new FieldConditionChanged(FieldCondition.TrickRoom, Up: false));
     }
 
     /// <summary>Damage worked out turns ago arrives (<c>subscript_future_sight_damage</c>): a Substitute takes it if there is one, and a Focus Sash or Band can hold against it.</summary>
@@ -366,11 +367,11 @@ public sealed partial class BattleCore
         if (b.HasSubstitute)
         {
             v.SubstituteHp = Math.Max(0, v.SubstituteHp - damage);
-            var took = Say($"The substitute took damage for {b.Name}!");
+            var took = Say(Text.Of("battle.theSubstituteTookDamage", ("target", b.Name)));
             if (v.SubstituteHp == 0)
             {
                 took.With(new SubstituteChanged(b.Place, Up: false));
-                Say($"{b.Name}'s substitute faded!");
+                Say(Text.Of("battle.substituteFaded", ("target", b.Name)));
             }
             return;
         }
@@ -392,7 +393,7 @@ public sealed partial class BattleCore
         {
             int stage = p.StatStages.GetValueOrDefault(StatType.Attack) + 1;
             p.StatStages[StatType.Attack] = stage;
-            Say($"{b.Name}'s rage is building!").With(new StageChanged(b.Place, StatType.Attack, stage, Rose: true));
+            Say(Text.Of("battle.rageIsBuilding", ("target", b.Name))).With(new StageChanged(b.Place, StatType.Attack, stage, Rose: true));
         }
         CheckConditionHooks(b, null);
     }
@@ -402,7 +403,7 @@ public sealed partial class BattleCore
     private void PoisonHeal(Battler b)
     {
         var p = b.Pokemon!;
-        if (p.CurrentHP < p.MaxHP) RestoreHp(b, Formulas.Divide(p.MaxHP, 8), $"{b.Name} restored HP using its {AbilityOf(b)}!");
+        if (p.CurrentHP < p.MaxHP) RestoreHp(b, Formulas.Divide(p.MaxHP, 8), Text.Of("battle.restoredHpUsingIts", ("pokemon", b.Name), ("ability", AbilityOf(b))));
     }
 
     /// <summary><c>BattleSystem_SetupNextTurn</c>: a sleeper is in the middle of nothing.</summary>

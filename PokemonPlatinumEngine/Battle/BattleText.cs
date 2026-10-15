@@ -1,64 +1,35 @@
+using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 
 namespace PokemonPlatinumEngine.Battle;
 
-/// <summary>Words the battle messages share.</summary>
+/// <summary>Words the battle messages share, each a key of the string table (plan 17 · N2).</summary>
 public static class BattleText
 {
-    public static string StatName(StatType stat) => stat switch
-    {
-        StatType.Attack => "Attack",
-        StatType.Defense => "Defense",
-        StatType.SpAttack => "Sp. Atk",
-        StatType.SpDefense => "Sp. Def",
-        StatType.Speed => "Speed",
-        StatType.Accuracy => "accuracy",
-        StatType.Evasion => "evasiveness",
-        _ => "HP"
-    };
+    /// <summary>A stat as a line names it: "Attack", "Sp. Atk", "accuracy".</summary>
+    public static string StatName(StatType stat) => Text.Of($"battle.stat.{stat}");
 
     /// <summary>The condition as a noun: "cured its burn".</summary>
-    public static string StatusName(StatusCondition status) => status switch
-    {
-        StatusCondition.Poison or StatusCondition.Toxic => "poison",
-        StatusCondition.Burn => "burn",
-        StatusCondition.Paralyze => "paralysis",
-        StatusCondition.Sleep => "sleep",
-        StatusCondition.Freeze => "freeze",
-        _ => "condition"
-    };
+    public static string StatusName(StatusCondition status) => Text.Of($"battle.condition.{status}");
 
     /// <summary>"Foe Starly was burned!"</summary>
-    public static string Inflicted(string name, StatusCondition status) => status switch
-    {
-        StatusCondition.Poison => $"{name} was poisoned!",
-        StatusCondition.Toxic => $"{name} was badly poisoned!",
-        StatusCondition.Burn => $"{name} was burned!",
-        StatusCondition.Paralyze => $"{name} is paralyzed! It may be unable to move!",
-        StatusCondition.Sleep => $"{name} fell asleep!",
-        StatusCondition.Freeze => $"{name} was frozen solid!",
-        _ => $"{name} is fine."
-    };
+    public static string Inflicted(string name, StatusCondition status) => Text.Of($"battle.inflicted.{status}", ("pokemon", name));
 
     /// <summary>"Turtwig is already burned!"</summary>
-    public static string AlreadyHas(string name, StatusCondition status) => status switch
-    {
-        StatusCondition.Poison or StatusCondition.Toxic => $"{name} is already poisoned!",
-        StatusCondition.Burn => $"{name} is already burned!",
-        StatusCondition.Paralyze => $"{name} is already paralyzed!",
-        StatusCondition.Sleep => $"{name} is already asleep!",
-        StatusCondition.Freeze => $"{name} is already frozen!",
-        _ => "But it failed!"
-    };
+    public static string AlreadyHas(string name, StatusCondition status) => Text.Of($"battle.alreadyHas.{status}", ("pokemon", name));
 
     /// <summary>"rose!", "sharply rose!", "harshly fell!"...</summary>
-    public static string StageChange(int amount) => amount switch
+    public static string StageChange(int amount)
     {
-        >= 3 => "rose drastically!",
-        2 => "sharply rose!",
-        1 => "rose!",
-        -1 => "fell!",
-        -2 => "harshly fell!",
-        _ => "severely fell!"
-    };
+        string change = amount switch
+        {
+            >= 3 => "roseDrastically",
+            2 => "roseSharply",
+            1 => "rose",
+            -1 => "fell",
+            -2 => "fellHarshly",
+            _ => "fellSeverely"
+        };
+        return Text.Of($"battle.stage.{change}");
+    }
 }

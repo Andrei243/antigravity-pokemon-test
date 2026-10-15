@@ -96,7 +96,7 @@ public sealed class EvolutionScreen
         movesToLearn.Clear();
         time = 0f;
         morphAngle = MathF.PI / 2f;
-        Go(EvolutionPhase.Notice, $"What? {oldName} is evolving!");
+        Go(EvolutionPhase.Notice, Text.Of("evolution.whatIsEvolving", ("pokemon", oldName)));
         AudioManager.PlayCry(pokemon);
         AudioManager.PlayMusic(MusicRole.Evolution);
     }
@@ -148,7 +148,7 @@ public sealed class EvolutionScreen
                 Go(EvolutionPhase.Reveal);
                 break;
             case EvolutionPhase.Reveal when phaseTime >= RevealTime:
-                Go(EvolutionPhase.Congratulate, $"Congratulations! Your {oldName} evolved into {pokemon!.Species.Name}!");
+                Go(EvolutionPhase.Congratulate, Text.Of("evolution.congratulationsYourEvolvedInto", ("pokemon", oldName), ("species", pokemon!.Species.Name)));
                 AudioManager.PlayFanfare(MusicRole.FanfareEvolution);
                 break;
         }
@@ -190,7 +190,7 @@ public sealed class EvolutionScreen
         {
             case EvolutionPhase.Gather or EvolutionPhase.Morph when Cancellable:
                 stoppedWhite = Look().White;
-                Go(EvolutionPhase.Stopped, $"Huh? {oldName} stopped evolving!");
+                Go(EvolutionPhase.Stopped, Text.Of("evolution.huhStoppedEvolving", ("pokemon", oldName)));
                 AudioManager.PlaySound("cancel");
                 break;
             case EvolutionPhase.MoveChoice:
@@ -219,13 +219,13 @@ public sealed class EvolutionScreen
             if (p.Knows(move)) continue;
             if (p.TryLearn(move))
             {
-                Go(EvolutionPhase.MoveNotice, $"{p.DisplayName} learned {move}!");
+                Go(EvolutionPhase.MoveNotice, Text.Of("evolution.learned", ("pokemon", p.DisplayName), ("move", move)));
                 AudioManager.PlaySound("select");
                 return;
             }
             MoveToLearn = move;
             Cursor = 0;
-            Go(EvolutionPhase.MoveChoice, $"{p.DisplayName} wants to learn {move}, but it already knows four moves. Should one be forgotten?");
+            Go(EvolutionPhase.MoveChoice, Text.Of("evolution.wantsToLearnBut", ("pokemon", p.DisplayName), ("move", move)));
             return;
         }
         MoveToLearn = null;
@@ -240,12 +240,12 @@ public sealed class EvolutionScreen
         {
             string forgotten = p.Moves[choice].Name;
             p.ReplaceMove(choice, move);
-            Go(EvolutionPhase.MoveNotice, $"{p.DisplayName} forgot {forgotten} and learned {move}!");
+            Go(EvolutionPhase.MoveNotice, Text.Of("evolution.forgotAndLearned", ("pokemon", p.DisplayName), ("forgotten", forgotten), ("move", move)));
             AudioManager.PlaySound("select");
         }
         else
         {
-            Go(EvolutionPhase.MoveNotice, $"{p.DisplayName} did not learn {move}.");
+            Go(EvolutionPhase.MoveNotice, Text.Of("evolution.didNotLearn", ("pokemon", p.DisplayName), ("move", move)));
             AudioManager.PlaySound("cancel");
         }
         MoveToLearn = null;
@@ -349,6 +349,6 @@ public sealed class EvolutionScreen
             ModernUi.DrawDialogue(sw, sh, "", Message.Substring(0, shown), waits && shown == Message.Length);
         }
 
-        if (Cancellable && Phase is EvolutionPhase.Gather or EvolutionPhase.Morph) ModernUi.Hints(sw - 64, 44, ("X", "Stop"));
+        if (Cancellable && Phase is EvolutionPhase.Gather or EvolutionPhase.Morph) ModernUi.Hints(sw - 64, 44, ModernUi.Hint("shared.keys.x", "evolution.stop"));
     }
 }

@@ -228,7 +228,7 @@ public partial class BattleEngine
                 {
                     // Nothing left to use: it struggles
                     var place = MenuBattler.Place;
-                    QueueMessage($"{MenuBattler.Name} has no moves left!", () => Commit(BattleChoice.Fight(place, -1)));
+                    QueueMessage(Text.Of("battle.hasNoMovesLeft", ("pokemon", MenuBattler.Name)), () => Commit(BattleChoice.Fight(place, -1)));
                     Pump();
                     return;
                 }
@@ -314,10 +314,10 @@ public partial class BattleEngine
         var chosen = PlayerParty.Members[partyIndex];
 
         string? refusal = null;
-        if (chosen.IsEgg) refusal = "An Egg can't battle!";
-        else if (PlayerSlots.Any(b => b.Pokemon == chosen && !chosen.IsFainted)) refusal = $"{chosen.DisplayName} is already in battle!";
-        else if (chosen.IsFainted) refusal = $"{chosen.DisplayName} has no energy left to battle!";
-        else if (choices.Values.Any(a => a.Kind == ChoiceKind.Switch && a.SwitchTo == partyIndex)) refusal = $"{chosen.DisplayName} is already going in!";
+        if (chosen.IsEgg) refusal = Text.Of("battle.anEggCantBattle");
+        else if (PlayerSlots.Any(b => b.Pokemon == chosen && !chosen.IsFainted)) refusal = Text.Of("battle.isAlreadyInBattle", ("pokemon", chosen.DisplayName));
+        else if (chosen.IsFainted) refusal = Text.Of("battle.hasNoEnergyLeft", ("pokemon", chosen.DisplayName));
+        else if (choices.Values.Any(a => a.Kind == ChoiceKind.Switch && a.SwitchTo == partyIndex)) refusal = Text.Of("battle.isAlreadyGoingIn", ("pokemon", chosen.DisplayName));
 
         // Something may be holding the Pokémon on the field (a fainted one's place is free to fill)
         if (refusal == null && !replacing)
@@ -356,7 +356,7 @@ public partial class BattleEngine
         if (pocket == BattleBag.LastUsed)
         {
             if (LastUsedItem is { } name && ItemDatabase.Get(name) is { } last && PlayerInventory.GetQuantity(last) > 0) ChooseBagItem(last);
-            else Refuse("There's no item to use again.", BattleMenuState.SelectBagPocket);
+            else Refuse(Text.Of("battle.thereNoItemTo"), BattleMenuState.SelectBagPocket);
             return;
         }
         if (pocket < 0 || pocket >= BattleBag.Pockets.Length) return;
@@ -425,7 +425,7 @@ public partial class BattleEngine
     {
         InCore(MenuBattler);
         var choice = BattleChoice.UseItem(MenuBattler.Place, item.Name, onPartyMember, onMove);
-        string? refusal = PlayerInventory.GetQuantity(item) <= 0 ? $"You don't have any {item.Name}s left!" : core.WhyNot(choice);
+        string? refusal = PlayerInventory.GetQuantity(item) <= 0 ? Text.Of("battle.youDontHaveAny", ("item", item.Name)) : core.WhyNot(choice);
         if (refusal != null)
         {
             Refuse(refusal, backTo);
@@ -470,7 +470,7 @@ public partial class BattleEngine
         }
         if (IsTrainerBattle)
         {
-            QueueMessage("No! There's no running from a Trainer battle!", () => HUD.MenuState = BattleMenuState.Main);
+            QueueMessage(Text.Of("battle.noThereNoRunning"), () => HUD.MenuState = BattleMenuState.Main);
             Pump();
             return;
         }

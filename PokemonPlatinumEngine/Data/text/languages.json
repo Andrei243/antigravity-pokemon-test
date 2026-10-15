@@ -1,4 +1,5 @@
 [
   { "tag": "en", "name": "English", "script": "Latin", "plural": "english", "decimal": ".", "breaks": "spaces" },
+  { "tag": "fr", "name": "Français", "script": "Latin", "plural": "french", "decimal": ",", "breaks": "spaces" },
   { "tag": "xx", "name": "Pseudo", "script": "Latin", "plural": "english", "decimal": ".", "breaks": "spaces", "pseudo": true }
 ]

@@ -1,3 +1,4 @@
+using PokemonPlatinumEngine.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,7 @@ public sealed partial class BattleCore
         Accuracy = 0,
         MaxPP = 1,
         Flags = MoveFlags.Contact,
+        // The data's own words, as every other move's description is (plan 17 · N3 gives them in every language)
         Description = "Used only when no other move has PP left. It also hurts the user."
     };
 
@@ -147,8 +149,8 @@ public sealed partial class BattleCore
         {
             if (move.CurrentPP <= 0)
             {
-                Say($"{user.Name} used {move.Name}!");
-                Say("But there was no PP left for the move!");
+                Say(Text.Of("battle.used", ("user", user.Name), ("move", move.Name)));
+                Say(Text.Of("battle.butThereWasNo"));
                 v.LastMove = null;
                 lastMoveShown = null;
                 yield break;
@@ -200,7 +202,7 @@ public sealed partial class BattleCore
         // A move that goes on by itself may tell its later turns in its own words (Bide); a bounced or snatched
         // move was told with the line that took it
         bool ownLines = goesOn && use.Effect.OwnLinesAfterFirst;
-        use.Line ??= ownLines ? new Said("") : Say($"{user.Name} used {move.Name}!");
+        use.Line ??= ownLines ? new Said("") : Say(Text.Of("battle.used", ("user", user.Name), ("move", move.Name)));
 
         // The second turn of a move that takes two: it is back where it can be seen, and hit
         if (use.Strikes && use.Effect.Charge != null)
@@ -216,7 +218,7 @@ public sealed partial class BattleCore
 
         if (use.Targets.Count == 0)
         {
-            Say("But there was no target...");
+            Say(Text.Of("battle.butThereWasNoTarget"));
             Unlock(user);
             return false;
         }
@@ -225,7 +227,7 @@ public sealed partial class BattleCore
         foreach (var t in use.Targets.Where(t => t.Turn.DrewTheMove))
         {
             t.Turn.DrewTheMove = false;
-            Say($"{t.Name}'s {AbilityOf(t)} took the attack!");
+            Say(Text.Of("battle.tookTheAttack", ("target", t.Name), ("ability", AbilityOf(t))));
         }
 
         // Whoever it is aimed at can send it back with Mirror Move (the original's moveCopied)
@@ -253,7 +255,7 @@ public sealed partial class BattleCore
             {
                 // A move whose effect isn't in the engine yet does nothing rather than a made-up something
                 use.Line.With(Shown(user, user, move, null));
-                Say("But nothing happened!");
+                Say(Text.Of("battle.butNothingHappened"));
             }
             else ByItsFields(use);
         }
@@ -286,13 +288,13 @@ public sealed partial class BattleCore
         if (data.Flags.HasFlag(MoveFlags.Reflectable) && use.Targets.FirstOrDefault(t => t != user && t.IsActive && t.Turn.MagicCoat) is { } coat)
         {
             coat.Turn.MagicCoat = false;
-            UseAs(coat, data, user, Say($"{user.Name}'s {use.Move.Name} was bounced back by Magic Coat!"));
+            UseAs(coat, data, user, Say(Text.Of("battle.wasBouncedBackBy", ("user", user.Name), ("move", use.Move.Name))));
             return true;
         }
         if (data.Flags.HasFlag(MoveFlags.Snatch) && speedOrder.Concat(AllBattlers).Distinct().FirstOrDefault(b => b != user && b.IsActive && b.Turn.Snatching) is { } snatcher)
         {
             snatcher.Turn.Snatching = false;
-            UseAs(snatcher, data, snatcher, Say($"{snatcher.Name} snatched {user.Name}'s move!"));
+            UseAs(snatcher, data, snatcher, Say(Text.Of("battle.snatchedMove", ("snatcher", snatcher.Name), ("user", user.Name))));
             return true;
         }
         return false;
@@ -345,15 +347,15 @@ public sealed partial class BattleCore
 
         if (p.Status == StatusCondition.Sleep)
         {
-            if (UproarIsOn && !Has(user, "Soundproof")) WakeUp(user, "The uproar woke up {0}!");
+            if (UproarIsOn && !Has(user, "Soundproof")) WakeUp(user, "battle.theUproarWokeUp");
             else
             {
                 p.SleepTurns = Math.Max(0, p.SleepTurns - effects.Select(e => e.SleepCountdownRate).DefaultIfEmpty(1).Max());
-                if (p.SleepTurns == 0) WakeUp(user, "{0} woke up!");
+                if (p.SleepTurns == 0) WakeUp(user, "battle.wokeUp");
                 else
                 {
                     // Snore and Sleep Talk are told the same way, and then go on
-                    Say($"{user.Name} is fast asleep.").With(Moment(user, BattleMoment.Asleep));
+                    Say(Text.Of("battle.isFastAsleep", ("user", user.Name))).With(Moment(user, BattleMoment.Asleep));
                     if (!UsableAsleep(move.Data)) return false;
                 }
             }
@@ -365,11 +367,11 @@ public sealed partial class BattleCore
             if (rng.Roll(RollKind.Thaw, 5) == 0 || move.Data.ThawsUser)
             {
                 p.Status = StatusCondition.None;
-                Say(move.Data.ThawsUser ? $"{user.Name}'s {move.Name} melted the ice!" : $"{user.Name} thawed out!").With(new StatusChanged(user.Place, StatusCondition.None));
+                Say(move.Data.ThawsUser ? Text.Of("battle.meltedTheIce", ("user", user.Name), ("move", move.Name)) : Text.Of("battle.thawedOut", ("user", user.Name))).With(new StatusChanged(user.Place, StatusCondition.None));
             }
             else
             {
-                Say($"{user.Name} is frozen solid!").With(Moment(user, BattleMoment.Frozen));
+                Say(Text.Of("battle.isFrozenSolid", ("user", user.Name))).With(Moment(user, BattleMoment.Frozen));
                 return false;
             }
         }
@@ -377,7 +379,7 @@ public sealed partial class BattleCore
         // Truant loafs every other turn, from the one after its first
         if (Loafs(user))
         {
-            Say($"{user.Name} is loafing around!");
+            Say(Text.Of("battle.isLoafingAround", ("user", user.Name)));
             Unlock(user);
             return false;
         }
@@ -385,7 +387,7 @@ public sealed partial class BattleCore
         if (v.Recharging)
         {
             v.Recharging = false;
-            Say($"{user.Name} must recharge!");
+            Say(Text.Of("battle.mustRecharge", ("user", user.Name)));
             Unlock(user);
             return false;
         }
@@ -393,7 +395,7 @@ public sealed partial class BattleCore
         if (user.Flinched)
         {
             user.Flinched = false;
-            Say($"{user.Name} flinched!");
+            Say(Text.Of("battle.flinched", ("user", user.Name)));
             Unlock(user);
             foreach (var e in effects) e.OnFlinch(this, user);
             return Lost(user);
@@ -401,34 +403,34 @@ public sealed partial class BattleCore
 
         if (v.Disabled != null && v.Disabled == move.Data)
         {
-            Say($"{user.Name}'s {move.Name} is disabled!");
+            Say(Text.Of("battle.isDisabled", ("pokemon", user.Name), ("move", move.Name)));
             Unlock(user);
             return Lost(user);
         }
 
         if (v.TauntTurns > 0 && move.Category == MoveCategory.Status)
         {
-            Say($"{user.Name} can't use {move.Name} after the taunt!");
+            Say(Text.Of("battle.cantUseAfterThe", ("pokemon", user.Name), ("move", move.Name)));
             Unlock(user);
             return Lost(user);
         }
 
         if (IsSealed(user, move.Data))
         {
-            Say($"{user.Name} can't use the sealed {move.Name}!");
+            Say(Text.Of("battle.cantUseTheSealed", ("pokemon", user.Name), ("move", move.Name)));
             Unlock(user);
             return Lost(user);
         }
 
         if (Field.Gravity && FailsUnderGravity(move.Data))
         {
-            Say($"{user.Name} can't use {move.Name} because of gravity!");
+            Say(Text.Of("battle.cantUseBecauseOf", ("pokemon", user.Name), ("move", move.Name)));
             return Lost(user);
         }
 
         if (v.HealBlockTurns > 0 && IsHealingMove(move.Data))
         {
-            Say($"{user.Name} can't use {move.Name} while it is kept from healing!");
+            Say(Text.Of("battle.cantUseWhileIt", ("pokemon", user.Name), ("move", move.Name)));
             return false;
         }
 
@@ -436,18 +438,18 @@ public sealed partial class BattleCore
         {
             if (--user.ConfusionTurns <= 0)
             {
-                Say($"{user.Name} snapped out of confusion!").With(Passing(user));
+                Say(Text.Of("battle.snappedOutOfConfusion", ("user", user.Name))).With(Passing(user));
             }
             else
             {
-                Say($"{user.Name} is confused!").With(new Confused(user.Place)).With(Moment(user, BattleMoment.Confused));
+                Say(Text.Of("battle.isConfused", ("user", user.Name))).With(new Confused(user.Place)).With(Moment(user, BattleMoment.Confused));
                 // It hurts itself one time in the rules' odds (the die's first face): a typeless 40-power hit
                 if (rng.Roll(RollKind.ConfusionSelfHit, Rules.ConfusionSelfHitOdds) == 0)
                 {
                     var self = DamageCalculator.Calculate(user, user, move, rng, spread: false, powerOverride: 40, rules: Rules);
                     p.CurrentHP -= Math.Min(p.CurrentHP, self.Damage);
                     user.Turn.TookDamage = true;
-                    Say("It hurt itself in its confusion!")
+                    Say(Text.Of("battle.itHurtItselfIn"))
                         .AtImpact(new Struck(user.Place, p.CurrentHP, Hard: false)).AtImpact(new HitSounded(false));
                     Unlock(user);
                     return Lost(user);
@@ -458,17 +460,17 @@ public sealed partial class BattleCore
         // One time in four; a Pokémon with Magic Guard is never held by it, as in Platinum
         if (p.Status == StatusCondition.Paralyze && !effects.Any(e => e.PreventsIndirectDamage) && rng.Roll(RollKind.FullParalysis, 4) == 0)
         {
-            Say($"{user.Name} is paralyzed! It can't move!").With(Moment(user, BattleMoment.Paralyzed));
+            Say(Text.Of("battle.isParalyzedItCant", ("user", user.Name))).With(Moment(user, BattleMoment.Paralyzed));
             Unlock(user);
             return Lost(user);
         }
 
         if (v.InLoveWith is { } beloved)
         {
-            Say($"{user.Name} is in love with {At(beloved).Name}!").With(Moment(user, BattleMoment.Infatuated));
+            Say(Text.Of("battle.isInLoveWith", ("user", user.Name), ("beloved", At(beloved).Name))).With(Moment(user, BattleMoment.Infatuated));
             if (rng.Roll(RollKind.Infatuation, 2) == 0)
             {
-                Say($"{user.Name} is immobilized by love!");
+                Say(Text.Of("battle.isImmobilizedByLove", ("user", user.Name)));
                 Unlock(user);
                 return Lost(user);
             }
@@ -496,7 +498,7 @@ public sealed partial class BattleCore
         if (move.Data.Effect == "RaiseAtkWhenHit") user.Volatile.Rage = false;
         if (p.Status == StatusCondition.Sleep && UsableAsleep(move.Data))
         {
-            Say($"{user.Name} ignored the order and slept on!");
+            Say(Text.Of("battle.ignoredTheOrderAnd", ("user", user.Name)));
             return true;
         }
 
@@ -517,7 +519,7 @@ public sealed partial class BattleCore
                 other = slot < p.Moves.Count ? p.Moves[slot] : chosen;
             }
             while (!others.Contains(other));
-            Say($"{user.Name} ignored the order and did as it liked!");
+            Say(Text.Of("battle.ignoredTheOrderAndDid", ("user", user.Name)));
             move = other;
             target = null;
             return false;
@@ -527,18 +529,18 @@ public sealed partial class BattleCore
         int roll = rng.Roll(RollKind.Obedience, 256);
         if (roll < over && p.Status == StatusCondition.None && !Has(user, "Vital Spirit") && !Has(user, "Insomnia") && !UproarIsOn)
         {
-            Say($"{user.Name} lay down for a nap!");
+            Say(Text.Of("battle.layDownForA", ("user", user.Name)));
             TryInflictStatus(user, StatusCondition.Sleep, null, false, By.Other);
             return true;
         }
         if (roll - over < over)
         {
             // A typeless hit of 40 on itself, as a confused Pokémon's
-            Say($"{user.Name} won't do as it's told!");
+            Say(Text.Of("battle.wontDoAsIt", ("user", user.Name)));
             var self = DamageCalculator.Calculate(user, user, move, rng, spread: false, powerOverride: 40, rules: Rules);
             p.CurrentHP -= Math.Min(p.CurrentHP, self.Damage);
             user.Turn.TookDamage = true;
-            Say("It hurt itself in its confusion!")
+            Say(Text.Of("battle.itHurtItselfIn"))
                 .AtImpact(new Struck(user.Place, p.CurrentHP, Hard: false)).AtImpact(new HitSounded(false));
             Unlock(user);
             return true;
@@ -550,10 +552,10 @@ public sealed partial class BattleCore
     /// <summary>One of four ways of not listening (<c>subscript_disobey_do_nothing</c>), drawn at random.</summary>
     private void DoesNothing(Battler user) => Say(rng.Roll(RollKind.Obedience, 4) switch
     {
-        1 => $"{user.Name} won't listen!",
-        2 => $"{user.Name} looked the other way!",
-        3 => $"{user.Name} acted as if it hadn't heard!",
-        _ => $"{user.Name} is lazing about!"
+        1 => Text.Of("battle.wontListen", ("user", user.Name)),
+        2 => Text.Of("battle.lookedTheOtherWay", ("user", user.Name)),
+        3 => Text.Of("battle.actedAsIfIt", ("user", user.Name)),
+        _ => Text.Of("battle.isLazingAbout", ("user", user.Name))
     });
 
     /// <summary>The move was lost in a way a rampage or an uproar ends on.</summary>
@@ -568,7 +570,7 @@ public sealed partial class BattleCore
         b.Pokemon!.Status = StatusCondition.None;
         b.Pokemon.SleepTurns = 0;
         b.Volatile.Nightmare = false;
-        Say(string.Format(line, b.Name)).With(new StatusChanged(b.Place, StatusCondition.None));
+        Say(string.Format(Text.Of(line), b.Name)).With(new StatusChanged(b.Place, StatusCondition.None));
     }
 
     private static bool Has(Battler b, string ability) => b.Ability?.Name == ability;
@@ -622,9 +624,9 @@ public sealed partial class BattleCore
         if (charge.NotInTheSun && Field.WeatherInEffect == BattleWeather.Sun) return true;
         if (!BattleEffects.Of(use.User).Any(e => e.SkipsChargeTurn)) return false;
 
-        Say(string.Format(charge.Line, use.User.Name));
+        Say(string.Format(Text.Of(charge.Line), use.User.Name));
         if (charge.RaisesDefense) ChangeStat(use.User, StatType.Defense, 1, use.User);
-        Say($"{use.User.Name} became fully charged due to its {ItemAtWork(use.User)}!");
+        Say(Text.Of("battle.becameFullyChargedDue", ("user", use.User.Name), ("item", ItemAtWork(use.User))));
         ConsumeItem(use.User);
         return true;
     }
@@ -632,7 +634,7 @@ public sealed partial class BattleCore
     private void BeginCharge(MoveUse use, ChargeTurn charge)
     {
         var user = use.User;
-        var said = Say(string.Format(charge.Line, user.Name));
+        var said = Say(string.Format(Text.Of(charge.Line), user.Name));
         said.With(new Lunged(user.Place, MoveCategory.Status));
         user.Volatile.Charging = true;
         user.Volatile.LockedMove = use.Own ?? use.Data;
@@ -968,7 +970,7 @@ public sealed partial class BattleCore
             damage = Formulas.Divide(damage, 2);
             hit.Notes.AddRange(Capture(() =>
             {
-                Say($"The {ItemAtWork(t, berry)} weakened {move.Name}'s power!");
+                Say(Text.Of("battle.theWeakenedPower", ("item", ItemAtWork(t, berry)), ("move", move.Name)));
                 ConsumeItem(t);
             }));
         }
@@ -1013,7 +1015,7 @@ public sealed partial class BattleCore
         log.AddRange(hit.Notes);
         hit.Notes.Clear();
         if (hit.IntoSubstitute) SubstituteLines(hit);
-        if (hit.LastCritical) Say(use.Hits.Count > 1 ? $"A critical hit on {t.Name}!" : "A critical hit!");
+        if (hit.LastCritical) Say(use.Hits.Count > 1 ? Text.Of("battle.aCriticalHitOn", ("target", t.Name)) : Text.Of("battle.aCriticalHit"));
         if (lastPlanned || !t.IsActive || use.User.Pokemon!.Status == StatusCondition.Sleep)
         {
             EffectivenessLine(use, hit);
@@ -1027,10 +1029,10 @@ public sealed partial class BattleCore
     private void SubstituteLines(MoveHit hit)
     {
         var t = hit.Target;
-        var took = Say($"The substitute took damage for {t.Name}!");
+        var took = Say(Text.Of("battle.theSubstituteTookDamage", ("target", t.Name)));
         if (!hit.BrokeSubstitute || t.HasSubstitute) return;
         took.With(new SubstituteChanged(t.Place, Up: false));
-        Say($"{t.Name}'s substitute faded!");
+        Say(Text.Of("battle.substituteFaded", ("target", t.Name)));
         hit.BrokeSubstitute = false;
     }
 
@@ -1039,9 +1041,9 @@ public sealed partial class BattleCore
     {
         var t = hit.Target;
         bool several = use.Hits.Count > 1;
-        if (hit.OneHitKo && !hit.Endured) Say("It's a one-hit KO!");
-        else if (hit.SuperEffective) Say(several ? $"It's super effective on {t.Name}!" : "It's super effective!");
-        else if (hit.NotVeryEffective) Say(several ? $"It's not very effective on {t.Name}..." : "It's not very effective...");
+        if (hit.OneHitKo && !hit.Endured) Say(Text.Of("battle.itAOneHit"));
+        else if (hit.SuperEffective) Say(several ? Text.Of("battle.itSuperEffectiveOn", ("target", t.Name)) : Text.Of("battle.itSuperEffective"));
+        else if (hit.NotVeryEffective) Say(several ? Text.Of("battle.itNotVeryEffective", ("target", t.Name)) : Text.Of("battle.itNotVeryEffective2"));
     }
 
     /// <summary>
@@ -1085,7 +1087,7 @@ public sealed partial class BattleCore
         {
             int stage = t.Pokemon.StatStages.GetValueOrDefault(StatType.Attack) + 1;
             t.Pokemon.StatStages[StatType.Attack] = stage;
-            Say($"{t.Name}'s rage is building!").With(new StageChanged(t.Place, StatType.Attack, stage, Rose: true));
+            Say(Text.Of("battle.rageIsBuilding", ("target", t.Name))).With(new StageChanged(t.Place, StatType.Attack, stage, Rose: true));
         }
 
         // The target's ability reacts to the hit (Static, Rough Skin), berries check its HP, and then the items
@@ -1102,7 +1104,7 @@ public sealed partial class BattleCore
         if (t.Pokemon.CurrentHP > 0 && hit.Touched && dealt > 0 && t != user && move.Type == PokemonType.Fire && t.Pokemon.Status == StatusCondition.Freeze)
         {
             t.Pokemon.Status = StatusCondition.None;
-            Say($"{t.Name} thawed out!").With(new StatusChanged(t.Place, StatusCondition.None));
+            Say(Text.Of("battle.thawedOut", ("user", t.Name))).With(new StatusChanged(t.Place, StatusCondition.None));
         }
     }
 
@@ -1124,20 +1126,20 @@ public sealed partial class BattleCore
             var t = hit.Target;
             if (hit.Protected)
             {
-                Say($"{t.Name} protected itself!");
+                Say(Text.Of("battle.protectedItself", ("user", t.Name)));
                 use.Effect.OnMiss(this, use, hit);
                 continue;
             }
             if (hit.Missed || hit.OutOfReach)
             {
-                Say(hit.FailLine ?? (several || IsDouble ? $"{t.Name} avoided the attack!" : $"{user.Name}'s attack missed!"));
+                Say(hit.FailLine ?? (several || IsDouble ? Text.Of("battle.avoidedTheAttack", ("target", t.Name)) : Text.Of("battle.attackMissed", ("user", user.Name))));
                 Unlock(user);
                 use.Effect.OnMiss(this, use, hit);
                 continue;
             }
             if (hit.Failed)
             {
-                Say("But it failed!");
+                Say(Text.Of("battle.butItFailed"));
                 Unlock(user);
                 use.Effect.OnMiss(this, use, hit);
                 continue;
@@ -1146,7 +1148,7 @@ public sealed partial class BattleCore
             if (hit.Absorbed) continue;
             if (hit.Immune)
             {
-                Say($"It doesn't affect {t.Name}...");
+                Say(Text.Of("battle.itDoesntAffect", ("target", t.Name)));
                 user.Turn.MoveFailed = true;
                 Unlock(user);
                 use.Effect.OnMiss(this, use, hit);
@@ -1157,13 +1159,13 @@ public sealed partial class BattleCore
             {
                 // Each hit told its own; the type's effect waits for the last, and then comes the count
                 if (!hit.MessagesTold) EffectivenessLine(use, hit);
-                if (!use.Effect.NoHitCount) Say($"Hit {hit.Strikes} time{(hit.Strikes == 1 ? "" : "s")}!");
+                if (!use.Effect.NoHitCount) Say(Text.Of("battle.hitTimes", ("n", hit.Strikes)));
                 continue;
             }
 
             if (hit.IntoSubstitute) SubstituteLines(hit);
-            if (hit.LastCritical) Say(several ? $"A critical hit on {t.Name}!" : "A critical hit!");
-            if (hit.EnduredByMove) Say($"{t.Name} endured the hit!");
+            if (hit.LastCritical) Say(several ? Text.Of("battle.aCriticalHitOn", ("target", t.Name)) : Text.Of("battle.aCriticalHit"));
+            if (hit.EnduredByMove) Say(Text.Of("battle.enduredTheHit", ("target", t.Name)));
             else if (hit.Endured) log.AddRange(hit.Notes);
             EffectivenessLine(use, hit);
             if (hit.LastCritical && hit.Touched) t.TookCriticalHit = true;
@@ -1184,16 +1186,16 @@ public sealed partial class BattleCore
                 int amount = Formulas.Divide(total * data.DrainPercent, 100);
                 amount = amount * userEffects.Select(e => e.DrainHundredths).DefaultIfEmpty(100).Max() / 100;
                 bool ooze = landed.Any(h => BattleEffects.Of(h.Target).Any(e => e.HurtsDrainers));
-                if (ooze) LoseHp(user, amount, $"{user.Name} sucked up the liquid ooze!");
-                else if (user.Volatile.HealBlockTurns > 0) Say($"{user.Name} was kept from healing!");
-                else RestoreHp(user, amount, $"{landed[0].Target.Name} had its energy drained!");
+                if (ooze) LoseHp(user, amount, Text.Of("battle.suckedUpTheLiquid", ("user", user.Name)));
+                else if (user.Volatile.HealBlockTurns > 0) Say(Text.Of("battle.wasKeptFromHealing", ("user", user.Name)));
+                else RestoreHp(user, amount, Text.Of("battle.hadItsEnergyDrained", ("target", landed[0].Target.Name)));
             }
 
             // Recoil
             int beforeRecoil = user.Pokemon!.CurrentHP;
-            if (data == StruggleData) LoseHp(user, Formulas.Divide(user.Pokemon!.MaxHP, 4), $"{user.Name} is hit with recoil!", direct: true);
+            if (data == StruggleData) LoseHp(user, Formulas.Divide(user.Pokemon!.MaxHP, 4), Text.Of("battle.isHitWithRecoil", ("user", user.Name)), direct: true);
             else if (data.RecoilPercent > 0 && total > 0 && !userEffects.Any(e => e.PreventsRecoil))
-                LoseHp(user, RecoilFor(total, data.RecoilPercent), $"{user.Name} is hit with recoil!");
+                LoseHp(user, RecoilFor(total, data.RecoilPercent), Text.Of("battle.isHitWithRecoil", ("user", user.Name)));
             if (user.IsPlayerSide) Evolution.CountRecoil(user.Pokemon!, beforeRecoil - user.Pokemon!.CurrentHP);
 
             // Changes to the user's own stats (Close Combat)
@@ -1251,7 +1253,7 @@ public sealed partial class BattleCore
                 if (move.Type == PokemonType.Electric && data.InflictStatus == StatusCondition.Paralyze &&
                     DamageCalculator.Effectiveness(user, t, move, Rules) == 0f)
                 {
-                    Say($"It doesn't affect {t.Name}...");
+                    Say(Text.Of("battle.itDoesntAffect", ("target", t.Name)));
                     continue;
                 }
             }
@@ -1268,12 +1270,12 @@ public sealed partial class BattleCore
             if (data.HealPercent > 0)
             {
                 var p = t.Pokemon!;
-                if (p.CurrentHP >= p.MaxHP) Say($"{t.Name}'s HP is full!");
-                else RestoreHp(t, Formulas.Divide(p.MaxHP * data.HealPercent, 100), $"{t.Name} regained health!");
+                if (p.CurrentHP >= p.MaxHP) Say(Text.Of("battle.hpIsFull", ("user", t.Name)));
+                else RestoreHp(t, Formulas.Divide(p.MaxHP * data.HealPercent, 100), Text.Of("battle.regainedHealth", ("user", t.Name)));
                 did = true;
             }
             if (!did && data.InflictStatus == StatusCondition.None && data.TargetStatChange == null && data.ConfuseChancePercent == 0)
-                Say("But nothing happened!");
+                Say(Text.Of("battle.butNothingHappened"));
         }
     }
 
@@ -1288,11 +1290,11 @@ public sealed partial class BattleCore
         {
             // From Generation 6 powders and spores do nothing to a Grass type
             if (!Rules.GrassTypesIgnorePowder || !use.Data.Flags.HasFlag(MoveFlags.Powder) || !target.HasType(PokemonType.Grass)) return true;
-            Say($"It doesn't affect {target.Name}...");
+            Say(Text.Of("battle.itDoesntAffect", ("target", target.Name)));
             return false;
         }
-        if (hit.Protected) Say($"{target.Name} protected itself!");
-        else Say(use.Targets.Count > 1 || IsDouble ? $"{target.Name} avoided the attack!" : $"{use.User.Name}'s attack missed!");
+        if (hit.Protected) Say(Text.Of("battle.protectedItself", ("user", target.Name)));
+        else Say(use.Targets.Count > 1 || IsDouble ? Text.Of("battle.avoidedTheAttack", ("target", target.Name)) : Text.Of("battle.attackMissed", ("user", use.User.Name)));
         return false;
     }
 

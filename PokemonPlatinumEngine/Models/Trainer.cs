@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using PokemonPlatinumEngine.Core;
 
 namespace PokemonPlatinumEngine.Models;
 
@@ -36,5 +38,30 @@ public class Trainer
     /// </summary>
     public string? Look { get; set; }
 
-    public string FullTitle => $"{TrainerClass} {Name}";
+    /// <summary>The class and the name as the battle's lines say them: "Youngster Tristan" (plan 17 · N2).</summary>
+    public string FullTitle => Text.Of("battle.fullTitle", ("class", ClassName(TrainerClass)), ("name", Name));
+
+    /// <summary>
+    /// A trainer class as the chosen language names it: the <c>classes</c> section keyed by the English class's
+    /// letters and digits ("Poké Kid" is <c>classes.PokeKid</c>), a Master Trainer's by its species, and a class the
+    /// table doesn't have as it is written.
+    /// </summary>
+    public static string ClassName(string trainerClass)
+    {
+        const string master = " Master";
+        if (trainerClass.EndsWith(master, StringComparison.Ordinal) && trainerClass.Length > master.Length)
+            return Text.Of("classes.master", ("species", trainerClass[..^master.Length]));
+        string name = KeyOf(trainerClass);
+        string key = $"classes.{name}";
+        return Text.Has(key) ? Text.Of(key) : trainerClass;
+    }
+
+    /// <summary>A class's key in the table: its letters without their accents, and its digits.</summary>
+    public static string KeyOf(string trainerClass)
+    {
+        var key = new System.Text.StringBuilder();
+        foreach (char c in trainerClass.Normalize(System.Text.NormalizationForm.FormD))
+            if (char.IsAsciiLetterOrDigit(c)) key.Append(c);
+        return key.ToString();
+    }
 }

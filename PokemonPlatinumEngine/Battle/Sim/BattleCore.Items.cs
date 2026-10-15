@@ -1,3 +1,4 @@
+using PokemonPlatinumEngine.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -88,7 +89,7 @@ public sealed partial class BattleCore
         // The claw's animation with no line (plan 25 · Y3): a moment between lines, unless its holder is the last to act anyway
         if (act.MovesFirst && waiting.Count > 0 && BattleEffects.HoldEffectOf(user) == "SometimesPriority") Emit(Moment(user, BattleMoment.HeldItem));
         if (!act.MovesFirst || BattleEffects.ItemInHand(user) is not { HoldEffect: "PinchPriority" } berry) return;
-        if (waiting.Count > 0) Say($"{user.Name}'s {ItemAtWork(user)} let it move first!");
+        if (waiting.Count > 0) Say(Text.Of("battle.letItMoveFirst", ("user", user.Name), ("item", ItemAtWork(user))));
         ConsumeItem(user);
     }
 
@@ -187,27 +188,27 @@ public sealed partial class BattleCore
                     user.Pokemon.HeldItem = item;
                     // The line tells of the barb in both places: where it was and where it is now
                     _ = ItemOf(user);
-                    Say($"{t.Name}'s {ItemOf(t, item)} was transferred to {user.Name}!");
+                    Say(Text.Of("battle.wasTransferredTo", ("target", t.Name), ("item", ItemOf(t, item)), ("user", user.Name)));
                 }
                 break;
             case "RecoilPhysical":
                 if (user.IsActive && !Has(user, "Magic Guard") && !leaving && physical)
                 {
-                    LoseHp(user, Formulas.Divide(user.Pokemon!.MaxHP, param), $"{user.Name} was hurt by {t.Name}'s {ItemAtWork(t)}!");
+                    LoseHp(user, Formulas.Divide(user.Pokemon!.MaxHP, param), Text.Of("battle.wasHurtBy", ("user", user.Name), ("target", t.Name), ("item", ItemAtWork(t))));
                     ConsumeItem(t);
                 }
                 break;
             case "RecoilSpecial":
                 if (user.IsActive && !Has(user, "Magic Guard") && !physical)
                 {
-                    LoseHp(user, Formulas.Divide(user.Pokemon!.MaxHP, param), $"{user.Name} was hurt by {t.Name}'s {ItemAtWork(t)}!");
+                    LoseHp(user, Formulas.Divide(user.Pokemon!.MaxHP, param), Text.Of("battle.wasHurtBy", ("user", user.Name), ("target", t.Name), ("item", ItemAtWork(t))));
                     ConsumeItem(t);
                 }
                 break;
             case "HpRestoreSe":
                 if (t.IsActive && hit.Damage.IsSuperEffective)
                 {
-                    RestoreHp(t, Formulas.Divide(t.Pokemon!.MaxHP, param), $"{t.Name} restored its health using its {ItemAtWork(t)}!");
+                    RestoreHp(t, Formulas.Divide(t.Pokemon!.MaxHP, param), Text.Of("battle.restoredItsHealthUsing", ("target", t.Name), ("item", ItemAtWork(t))));
                     ConsumeItem(t);
                 }
                 break;
@@ -226,14 +227,14 @@ public sealed partial class BattleCore
         if (BattleEffects.ItemInHand(smitten) is not { HoldEffect: "ReciprocateInfat" } knot || !by.IsActive || by == smitten) return;
         if (by.Ability is { Effect.BlocksInfatuation: true })
         {
-            Say($"{by.Name}'s {AbilityOf(by)} prevents romance!");
+            Say(Text.Of("battle.preventsRomance", ("target", by.Name), ("ability", AbilityOf(by))));
             return;
         }
         var mine = smitten.Pokemon!.Gender;
         var theirs = by.Pokemon!.Gender;
         if (mine == theirs || mine == Gender.Genderless || theirs == Gender.Genderless || by.Volatile.InLoveWith != null) return;
         by.Volatile.InLoveWith = smitten.Place;
-        Say($"{smitten.Name}'s {ItemAtWork(smitten)} made {by.Name} fall in love!").With(Passing(by));
+        Say(Text.Of("battle.madeFallInLove", ("pokemon", smitten.Name), ("item", ItemAtWork(smitten)), ("attacker", by.Name))).With(Passing(by));
     }
 
     // ---------------------------------------------------------------- the prize
@@ -311,10 +312,10 @@ public sealed partial class BattleCore
         index >= 0 && index < p.Moves.Count ? p.Moves[index] : p.Moves.FirstOrDefault(m => m.CurrentPP < m.MaxPP);
 
     /// <summary>What a battle of the Battle Frontier says of the Bag (plan 06 · R18a): nothing comes out of it there.</summary>
-    public const string FrontierBagRefusal = "Nothing from the Bag may be used here.";
+    public static string FrontierBagRefusal => Text.Of("battle.nothingFromTheBag");
 
     /// <summary>What a battle with no items says when one is reached for (plan 14 · B14): a line of our own.</summary>
-    public const string NoItemsRefusal = "No items may be used in this battle!";
+    public static string NoItemsRefusal => Text.Of("battle.noItemsMayBe");
 
     /// <summary>
     /// Why an item from the bag can't be used now; null when it can (<c>BattleSystem_CheckItemUsability</c> and the
@@ -325,28 +326,28 @@ public sealed partial class BattleCore
     private string? WhyNotItem(Battler b, BattleChoice choice)
     {
         var item = ItemDatabase.Get(choice.Item ?? "");
-        if (item == null) return $"There is no item called {choice.Item}.";
+        if (item == null) return Text.Of("battle.thereIsNoItem", ("item", choice.Item));
         // PLAYER_INPUT_ITEM in the Battle Frontier
         if (Frontier) return FrontierBagRefusal;
         // A Master Trainer's battle (plan 14 · B14): nothing from the bag, for either side
         if (NoBattleItems) return NoItemsRefusal;
         // The Great Marsh and Pal Park have their own balls and nothing else
         if (Kind is BattleKind.Safari or BattleKind.PalPark)
-            return item.Name != "Safari Ball" ? "Only the balls you were given can be used here." : SpecialBalls <= 0 ? "You have no balls left!" : null;
-        if (item.Name == "Safari Ball") return "Safari Balls are for the Great Marsh.";
+            return item.Name != "Safari Ball" ? Text.Of("battle.onlyTheBallsYou") : SpecialBalls <= 0 ? Text.Of("battle.youHaveNoBalls") : null;
+        if (item.Name == "Safari Ball") return Text.Of("battle.safariBallsAreFor");
         if (item.Pocket == ItemPocket.PokeBalls)
         {
-            if (IsTrainerBattle) return "The Trainer blocked the Ball! Don't be a thief!";
-            if (EnemySlots.Count(f => f.IsActive) > 1) return "There are two Pokémon out! The Ball can't be aimed!";
+            if (IsTrainerBattle) return Text.Of("battle.theTrainerBlockedThe");
+            if (EnemySlots.Count(f => f.IsActive) > 1) return Text.Of("battle.thereAreTwoPokemon");
             return null;
         }
-        if (!CanUseInBattle(item)) return "There's a time and place for everything, but not now.";
-        if (item.BattleUse == "Escaping") return IsTrainerBattle ? "It can't be used in a Trainer battle!" : null;
+        if (!CanUseInBattle(item)) return Text.Of("battle.thereATimeAnd");
+        if (item.BattleUse == "Escaping") return IsTrainerBattle ? Text.Of("battle.itCantBeUsed") : null;
 
         var (target, where) = TargetOfItem(b, choice);
-        if (target == null) return "There is no Pokémon to use it on.";
-        if ((where ?? b).Volatile.EmbargoTurns > 0) return $"Items can't be used on {(where ?? b).Name} now!";
-        return ItemWouldHelp(item, target, where, b, choice.Move) ? null : "It won't have any effect!";
+        if (target == null) return Text.Of("battle.thereIsNoPokemonTo");
+        if ((where ?? b).Volatile.EmbargoTurns > 0) return Text.Of("battle.itemsCantBeUsed", ("pokemon", (where ?? b).Name));
+        return ItemWouldHelp(item, target, where, b, choice.Move) ? null : Text.Of("battle.itWontHaveAny");
     }
 
     /// <summary>Whether using the item on this Pokémon now would change anything.</summary>
@@ -386,13 +387,13 @@ public sealed partial class BattleCore
             return;
         }
 
-        var used = Say($"{user.Trainer?.FullTitle ?? playerName} used the {item.Name}!");
+        var used = Say(Text.Of("battle.usedThe", ("trainer", user.Trainer?.FullTitle ?? playerName), ("item", item.Name)));
         if (item.BattleUse == "Escaping")
         {
             if (IsTrainerBattle) return;
             // subscript_escape_item plays its animation on the player's Pokémon before the line that follows (plan 25 · Y3)
             used.With(Moment(user, BattleMoment.EscapeItem));
-            Say("Got away safely!").With(new GotAway());
+            Say(Text.Of("battle.gotAwaySafely")).With(new GotAway());
             End(BattleResult.PlayerRan);
             return;
         }
@@ -408,7 +409,7 @@ public sealed partial class BattleCore
         {
             if (!target.IsFainted) return;
             target.Revive(HpAmount(use.GetValueOrDefault("hpRestored", -2), target));
-            Say($"{name} was revived!");
+            Say(Text.Of("battle.wasRevived", ("pokemon", name)));
             return;
         }
         if (target.IsFainted) return;
@@ -417,11 +418,11 @@ public sealed partial class BattleCore
         {
             int before = target.CurrentHP;
             int after = Math.Min(target.MaxHP, before + HpAmount(code, target));
-            if (where != null) RestoreHp(where, after - before, $"{name} recovered {after - before} HP!");
+            if (where != null) RestoreHp(where, after - before, Text.Of("battle.recoveredHp", ("pokemon", name), ("amount", after - before)));
             else
             {
                 target.CurrentHP = after;
-                Say($"{name} recovered {after - before} HP!");
+                Say(Text.Of("battle.recoveredHp", ("pokemon", name), ("amount", after - before)));
             }
         }
 
@@ -429,37 +430,37 @@ public sealed partial class BattleCore
         {
             if (!use.ContainsKey(key) || !cures.Contains(target.Status)) continue;
             string status = BattleText.StatusName(target.Status);
-            if (where != null) CureStatus(where, $"{name} was cured of {status}!");
+            if (where != null) CureStatus(where, Text.Of("battle.wasCuredOf", ("pokemon", name), ("status", status)));
             else
             {
                 target.Status = StatusCondition.None;
                 target.SleepTurns = 0;
                 target.ToxicCounter = 0;
-                Say($"{name} was cured of {status}!");
+                Say(Text.Of("battle.wasCuredOf", ("pokemon", name), ("status", status)));
             }
             break;
         }
         if (use.ContainsKey("healConfusion") && where is { IsConfused: true })
         {
             where.ConfusionTurns = 0;
-            Say($"{name} snapped out of its confusion!").With(Passing(where));
+            Say(Text.Of("battle.snappedOutOfIts", ("pokemon", name))).With(Passing(where));
         }
         if (use.ContainsKey("healAttract") && where?.Volatile.InLoveWith != null)
         {
             where.Volatile.InLoveWith = null;
-            Say($"{name} got over its infatuation!").With(Passing(where));
+            Say(Text.Of("battle.gotOverItsInfatuation", ("pokemon", name))).With(Passing(where));
         }
 
         if (use.ContainsKey("restorePPAllMoves"))
         {
             int pp = use.GetValueOrDefault("ppRestored", -1);
             foreach (var move in target.Moves) move.CurrentPP = pp < 0 ? move.MaxPP : Math.Min(move.MaxPP, move.CurrentPP + pp);
-            Say($"The PP of {name}'s moves was restored!");
+            Say(Text.Of("battle.thePpOfMoves", ("pokemon", name)));
         }
         else if (use.TryGetValue("ppRestored", out int pp) && MoveForPp(target, act.Choice.Move) is { } move && move.CurrentPP < move.MaxPP)
         {
             move.CurrentPP = pp < 0 ? move.MaxPP : Math.Min(move.MaxPP, move.CurrentPP + pp);
-            Say($"{name}'s {move.Name} had its PP restored!");
+            Say(Text.Of("battle.hadItsPpRestored", ("pokemon", name), ("move", move.Name)));
         }
 
         if (where == user)
@@ -469,12 +470,12 @@ public sealed partial class BattleCore
             if (use.ContainsKey("critStages") && !user.Volatile.FocusEnergy)
             {
                 user.Volatile.FocusEnergy = true;
-                Say($"{user.Name} is getting pumped!");
+                Say(Text.Of("battle.isGettingPumped", ("user", user.Name)));
             }
             if (use.ContainsKey("guardSpec") && !Field.Side(user.Side).Mist)
             {
                 Field.Side(user.Side).MistTurns = 5;
-                Say($"{TeamOf(user.Side, capital: true)} became shrouded in mist!").With(Now(user.Side, SideCondition.Mist));
+                Say(Text.Of("battle.becameShroudedInMist", ("team", TeamOf(user.Side, capital: true)))).With(Now(user.Side, SideCondition.Mist));
             }
         }
     }

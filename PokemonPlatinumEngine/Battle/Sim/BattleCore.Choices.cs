@@ -1,3 +1,4 @@
+using PokemonPlatinumEngine.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,18 +43,18 @@ public sealed partial class BattleCore
         var mine = At(b.Place);
         var v = mine.Volatile;
         var data = move.Data;
-        if (v.Disabled == data) return $"{mine.Name}'s {move.Name} is disabled!";
-        if (v.Tormented && v.LastMove == data) return $"{mine.Name} can't use the same move twice in a row under the torment!";
+        if (v.Disabled == data) return Text.Of("battle.isDisabled", ("pokemon", mine.Name), ("move", move.Name));
+        if (v.Tormented && v.LastMove == data) return Text.Of("battle.cantUseTheSame", ("pokemon", mine.Name));
         // The original keeps back the moves of power 0 in its table: the status moves (a move of variable power is 1 there)
-        if (v.TauntTurns > 0 && move.Category == MoveCategory.Status) return $"{mine.Name} can't use {move.Name} after the taunt!";
-        if (IsSealed(mine, data)) return $"{mine.Name} can't use the sealed {move.Name}!";
-        if (Field.Gravity && FailsUnderGravity(data)) return $"{mine.Name} can't use {move.Name} because of gravity!";
-        if (v.HealBlockTurns > 0 && IsHealingMove(data)) return $"{mine.Name} can't use {move.Name} while it is kept from healing!";
+        if (v.TauntTurns > 0 && move.Category == MoveCategory.Status) return Text.Of("battle.cantUseAfterThe", ("pokemon", mine.Name), ("move", move.Name));
+        if (IsSealed(mine, data)) return Text.Of("battle.cantUseTheSealed", ("pokemon", mine.Name), ("move", move.Name));
+        if (Field.Gravity && FailsUnderGravity(data)) return Text.Of("battle.cantUseBecauseOf", ("pokemon", mine.Name), ("move", move.Name));
+        if (v.HealBlockTurns > 0 && IsHealingMove(data)) return Text.Of("battle.cantUseWhileIt", ("pokemon", mine.Name), ("move", move.Name));
         if (v.Encored != null && v.Encored != data && mine.Pokemon!.Moves.Any(m => m.Data == v.Encored))
-            return $"{mine.Name} can only use {v.Encored.Name} after the encore!";
+            return Text.Of("battle.canOnlyUseAfter", ("pokemon", mine.Name), ("move", v.Encored.Name));
         if (mine.ChoiceLock != null && mine.ChoiceLock != move && mine.Pokemon!.Moves.Contains(mine.ChoiceLock) && BattleEffects.Of(mine).Any(e => e.LocksMoveChoice))
-            return $"{mine.Name} can only use {mine.ChoiceLock.Name}!";
-        if (!ignorePp && move.CurrentPP <= 0) return "There's no PP left for this move!";
+            return Text.Of("battle.canOnlyUse", ("pokemon", mine.Name), ("move", mine.ChoiceLock.Name));
+        if (!ignorePp && move.CurrentPP <= 0) return Text.Of("battle.thereNoPpLeft");
         return null;
     }
 
@@ -61,37 +62,37 @@ public sealed partial class BattleCore
     public string? WhyNot(BattleChoice choice)
     {
         var b = At(choice.Who);
-        if (!b.IsActive) return "There is no Pokémon there to act.";
+        if (!b.IsActive) return Text.Of("battle.thereIsNoPokemon");
         switch (choice.Kind)
         {
             case ChoiceKind.Fight:
-                if (Kind is BattleKind.Safari or BattleKind.PalPark) return "There's no Pokémon of yours here to fight.";
-                if (choice.Move == BattleChoice.HeldMove) return b.IsHeldToItsMove ? null : $"{b.Name} isn't in the middle of a move.";
+                if (Kind is BattleKind.Safari or BattleKind.PalPark) return Text.Of("battle.thereNoPokemonOf");
+                if (choice.Move == BattleChoice.HeldMove) return b.IsHeldToItsMove ? null : Text.Of("battle.isntInTheMiddle", ("pokemon", b.Name));
                 var moves = b.Pokemon!.Moves;
                 if (choice.Move < 0 || choice.Move >= moves.Count)
-                    return UsableMoves(b).Count == 0 ? null : $"{b.Name} still has moves it can use.";
+                    return UsableMoves(b).Count == 0 ? null : Text.Of("battle.stillHasMovesIt", ("pokemon", b.Name));
                 return WhyNotMove(b, moves[choice.Move]);
 
             case ChoiceKind.Switch:
-                if (Kind is BattleKind.Safari or BattleKind.PalPark) return "There's no Pokémon of yours here to switch.";
-                if (!CanSendIn(b, choice.SwitchTo)) return "That Pokémon can't be sent in.";
+                if (Kind is BattleKind.Safari or BattleKind.PalPark) return Text.Of("battle.thereNoPokemonOfYours");
+                if (!CanSendIn(b, choice.SwitchTo)) return Text.Of("battle.thatPokemonCantBe");
                 // At Battle Style Shift's offer nothing holds it: the original opens the team with nothing barred
                 // (BtlCmd_ChoosePokemonMenu), and whatever bound it fell with the foe
                 if (Request is SwitchOfferRequest offered && offered.Place == choice.Who) return null;
                 return TrapOn(b, forRunning: false);
 
             case ChoiceKind.Stay:
-                return Request is SwitchOfferRequest offer && offer.Place == choice.Who ? null : "Nothing is being offered to stay in for.";
+                return Request is SwitchOfferRequest offer && offer.Place == choice.Who ? null : Text.Of("battle.nothingIsBeingOffered");
 
             case ChoiceKind.Run:
                 // In the Battle Frontier RUN gives the match up, whatever holds the Pokémon
                 if (Frontier) return null;
-                if (CannotFlee && b.IsPlayerSide) return "There's no running from this battle!";
+                if (CannotFlee && b.IsPlayerSide) return Text.Of("battle.thereNoRunningFrom");
                 if (Kind is BattleKind.Safari or BattleKind.PalPark) return null;
                 return IsTrainerBattle ? null : TrapOn(b, forRunning: true);
 
             case ChoiceKind.Bait or ChoiceKind.Mud:
-                return Kind == BattleKind.Safari ? null : "There's nothing to throw that at here.";
+                return Kind == BattleKind.Safari ? null : Text.Of("battle.thereNothingToThrow");
 
             case ChoiceKind.Item:
                 return WhyNotItem(b, choice);
@@ -115,11 +116,11 @@ public sealed partial class BattleCore
         foreach (var foe in ActiveFoes(b))
         {
             if (foe.Ability?.Effect is { } trap && trap.Traps(foe, b, onTheGround))
-                return $"{foe.Name} prevents escape with {foe.Ability.Name}!";
+                return Text.Of("battle.preventsEscapeWith", ("foe", foe.Name), ("ability", foe.Ability.Name));
         }
         var v = b.Volatile;
         if (v.BindTurns > 0 || v.TrappedBy != null || v.Ingrained)
-            return forRunning ? "Can't escape!" : $"{b.Name} can't be called back!";
+            return forRunning ? Text.Of("battle.cantEscape") : Text.Of("battle.cantBeCalledBack", ("pokemon", b.Name));
         return null;
     }
 

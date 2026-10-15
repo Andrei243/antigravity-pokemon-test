@@ -1,3 +1,4 @@
+using PokemonPlatinumEngine.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -88,8 +89,8 @@ public sealed partial class BattleCore
 
         // ---- Stats and stat changes
         ["SwapAtkDef"] = new() { Does = (b, use) => b.PowerTrick(use) },
-        ["SwapAtkSpAtkStatChanges"] = new() { Does = (b, use) => b.OnEach(use, t => b.SwapStages(use, t, "Attack and Sp. Atk", StatType.Attack, StatType.SpAttack)) },
-        ["SwapDefSpDefStatChanges"] = new() { Does = (b, use) => b.OnEach(use, t => b.SwapStages(use, t, "Defense and Sp. Def", StatType.Defense, StatType.SpDefense)) },
+        ["SwapAtkSpAtkStatChanges"] = new() { Does = (b, use) => b.OnEach(use, t => b.SwapStages(use, t, Text.Of("battle.attackAndSpAtk"), StatType.Attack, StatType.SpAttack)) },
+        ["SwapDefSpDefStatChanges"] = new() { Does = (b, use) => b.OnEach(use, t => b.SwapStages(use, t, Text.Of("battle.defenseAndSpDef"), StatType.Defense, StatType.SpDefense)) },
         ["SwapStatChanges"] = new() { Does = (b, use) => b.OnEach(use, t => b.HeartSwap(use, t)) },
 
         // ---- The rest
@@ -266,7 +267,7 @@ public sealed partial class BattleCore
         o.MoveSlots.TryAdd(slot, (moves[slot].Data, moves[slot].CurrentPP, moves[slot].PPUps));
         moves[slot] = new Move(last, Math.Min(5, last.MaxPP));
         if (last.Name == "Last Resort") v.UsedMoveSlots = 0;
-        Say($"{user.Name} learned {last.Name}!");
+        Say(Text.Of("battle.learned", ("pokemon", user.Name), ("move", last.Name)));
         return true;
     }
 
@@ -284,7 +285,7 @@ public sealed partial class BattleCore
 
         moves[slot] = new Move(last);
         if (last.Name == "Last Resort") v.UsedMoveSlots = 0;
-        Say($"{user.Name} sketched {last.Name}!");
+        Say(Text.Of("battle.sketched", ("user", user.Name), ("pokemon", last.Name)));
         return true;
     }
 
@@ -305,12 +306,12 @@ public sealed partial class BattleCore
         if (snatch)
         {
             user.Turn.Snatching = true;
-            Say($"{user.Name} waits for a target to make a move!");
+            Say(Text.Of("battle.waitsForATarget", ("user", user.Name)));
         }
         else
         {
             user.Turn.MagicCoat = true;
-            Say($"{user.Name} shrouded itself with Magic Coat!");
+            Say(Text.Of("battle.shroudedItselfWithMagic", ("user", user.Name)));
         }
     }
 
@@ -330,7 +331,7 @@ public sealed partial class BattleCore
         if (t.Pokemon?.HeldItem == null) return false;
         bool breaks = BattleEffects.Of(user).Any(e => e.IgnoresTargetAbility);
         if (breaks || !BattleEffects.Of(t).Any(e => e.KeepsItem)) return false;
-        Say($"{t.Name}'s {AbilityOf(t)} made {move.Name} ineffective!");
+        Say(Text.Of("battle.madeIneffective", ("target", t.Name), ("ability", AbilityOf(t)), ("move", move.Name)));
         return true;
     }
 
@@ -356,7 +357,7 @@ public sealed partial class BattleCore
         p.HeldItem = item;
         // The line tells of the item where it was and where it is now
         _ = ItemOf(user);
-        Say($"{user.Name} stole {t.Name}'s {ItemOf(t, item)}!");
+        Say(Text.Of("battle.stole", ("user", user.Name), ("target", t.Name), ("item", ItemOf(t, item))));
     }
 
     /// <summary>
@@ -374,7 +375,7 @@ public sealed partial class BattleCore
         var item = q.HeldItem!;
         q.HeldItem = null;
         knockedOff[q] = item;
-        Say($"{user.Name} knocked off {t.Name}'s {ItemOf(t, item)}!");
+        Say(Text.Of("battle.knockedOff", ("user", user.Name), ("target", t.Name), ("item", ItemOf(t, item))));
     }
 
     /// <summary>
@@ -397,9 +398,9 @@ public sealed partial class BattleCore
         if (KeptByStickyHold(user, t, use.Move)) return false;
 
         (p.HeldItem, q.HeldItem) = (q.HeldItem, p.HeldItem);
-        Say($"{user.Name} switched items with its target!");
-        if (p.HeldItem != null) Say($"{user.Name} obtained one {ItemOf(user)}.");
-        if (q.HeldItem != null) Say($"{t.Name} obtained one {ItemOf(t)}.");
+        Say(Text.Of("battle.switchedItemsWithIts", ("user", user.Name)));
+        if (p.HeldItem != null) Say(Text.Of("battle.obtainedOne", ("user", user.Name), ("item", ItemOf(user))));
+        if (q.HeldItem != null) Say(Text.Of("battle.obtainedOne", ("user", t.Name), ("item", ItemOf(t))));
         return true;
     }
 
@@ -416,7 +417,7 @@ public sealed partial class BattleCore
         }
         p.HeldItem = item;
         user.Volatile.ConsumedItem = null;
-        Say($"{user.Name} found one {ItemOf(user)}!");
+        Say(Text.Of("battle.foundOne", ("user", user.Name), ("item", ItemOf(user))));
     }
 
     /// <summary>
@@ -432,7 +433,7 @@ public sealed partial class BattleCore
         var item = BattleEffects.ItemInHand(user);
         if (item == null || item.FlingPower == 0) return Fails();
         use.Scratch = item;
-        Say($"{user.Name} flung its {ItemOf(user, item)}!");
+        Say(Text.Of("battle.flungIts", ("user", user.Name), ("item", ItemOf(user, item))));
         return true;
     }
 
@@ -480,14 +481,14 @@ public sealed partial class BattleCore
                         q.StatStages[stat] = 0;
                         any = true;
                     }
-                if (any) Say($"{t.Name}'s lowered stats were put back to normal by the {item.Name}!");
+                if (any) Say(Text.Of("battle.loweredStatsWerePut", ("target", t.Name), ("item", item.Name)));
                 break;
             }
             case "HealInfatuation":
                 if (t.Volatile.InLoveWith != null)
                 {
                     t.Volatile.InLoveWith = null;
-                    Say($"{t.Name} got over its infatuation thanks to the {item.Name}!").With(Passing(t));
+                    Say(Text.Of("battle.gotOverItsInfatuationThanks", ("target", t.Name), ("item", item.Name))).With(Passing(t));
                 }
                 break;
             default:
@@ -512,7 +513,7 @@ public sealed partial class BattleCore
 
         q.HeldItem = null;
         t.Volatile.ConsumedItem = berry;
-        Say($"{user.Name} stole and ate {t.Name}'s {ItemOf(t, berry)}!");
+        Say(Text.Of("battle.stoleAndAte", ("user", user.Name), ("target", t.Name), ("item", ItemOf(t, berry))));
         // With Klutz or under an Embargo the berry is gone all the same and does nothing for whoever ate it
         if (user.IsActive && !Has(user, "Klutz") && user.Volatile.EmbargoTurns == 0) EatBerry(user, berry, berry.PluckEffect);
     }
@@ -528,17 +529,17 @@ public sealed partial class BattleCore
         int param = berry.HoldParam;
         void Heal(int amount)
         {
-            if (p.CurrentHP < p.MaxHP) RestoreHp(eater, Math.Max(1, amount), $"{eater.Name} restored its health using its {berry.Name}!");
+            if (p.CurrentHP < p.MaxHP) RestoreHp(eater, Math.Max(1, amount), Text.Of("battle.restoredItsHealthUsing", ("target", eater.Name), ("item", berry.Name)));
         }
         void Cure(params StatusCondition[] cures)
         {
-            if (cures.Contains(p.Status)) CureStatus(eater, $"{eater.Name}'s {berry.Name} cured its {BattleText.StatusName(p.Status)}!");
+            if (cures.Contains(p.Status)) CureStatus(eater, Text.Of("battle.curedIts", ("pokemon", eater.Name), ("item", berry.Name), ("condition", BattleText.StatusName(p.Status))));
         }
         void Unconfuse()
         {
             if (!eater.IsConfused) return;
             eater.ConfusionTurns = 0;
-            Say($"{eater.Name}'s {berry.Name} snapped it out of its confusion!").With(Passing(eater));
+            Say(Text.Of("battle.snappedItOutOf", ("pokemon", eater.Name), ("item", berry.Name))).With(Passing(eater));
         }
         void Raise(StatType stat, int by)
         {
@@ -554,13 +555,13 @@ public sealed partial class BattleCore
                 // A flavour its nature dislikes confuses it (subscript_held_item_dislike_flavor)
                 if (HeldItemEffects.FlavorOf(effect) is { } flavor && HeldItemEffects.DislikedBy(p.Nature) == flavor)
                 {
-                    Say($"For {eater.Name}, the {berry.Name} was too {flavor.ToString().ToLowerInvariant()}!");
+                    Say(Text.Of("battle.forTheWasToo", ("pokemon", eater.Name), ("item", berry.Name), ("flavour", Text.Of($"battle.flavour.{flavor}"))));
                     Confuse(eater, null, false, By.Other);
                 }
                 break;
             case "TempAccUp":
                 eater.Volatile.MicleBerry = true;
-                Say($"{eater.Name} boosted the accuracy of its next move using its {berry.Name}!");
+                Say(Text.Of("battle.boostedTheAccuracyOf", ("pokemon", eater.Name), ("item", berry.Name)));
                 break;
             case "PrzRestore": Cure(StatusCondition.Paralyze); break;
             case "SlpRestore": Cure(StatusCondition.Sleep); break;
@@ -579,7 +580,7 @@ public sealed partial class BattleCore
                 if (move != null && move.CurrentPP < move.MaxPP)
                 {
                     move.CurrentPP = Math.Min(move.MaxPP, move.CurrentPP + param);
-                    Say($"{eater.Name}'s {berry.Name} restored {move.Name}'s PP!");
+                    Say(Text.Of("battle.restoredPp", ("pokemon", eater.Name), ("item", berry.Name), ("move", move.Name)));
                 }
                 break;
             }
@@ -592,7 +593,7 @@ public sealed partial class BattleCore
                 if (!eater.Volatile.FocusEnergy)
                 {
                     eater.Volatile.FocusEnergy = true;
-                    Say($"{eater.Name} is getting pumped!");
+                    Say(Text.Of("battle.isGettingPumped", ("user", eater.Name)));
                 }
                 break;
             case "RandomUp2":
@@ -646,7 +647,7 @@ public sealed partial class BattleCore
         }
         var pick = candidates[rng.Roll(RollKind.Pick, candidates.Count)];
         user.Volatile.Types = new List<PokemonType> { pick };
-        Say($"{user.Name} transformed into the {pick} type!");
+        Say(Text.Of("battle.transformedIntoTheType", ("user", user.Name), ("pick", pick)));
     }
 
     /// <summary>
@@ -680,7 +681,7 @@ public sealed partial class BattleCore
         }
         var pick = candidates[rng.Roll(RollKind.Pick, candidates.Count)];
         v.Types = new List<PokemonType> { pick };
-        Say($"{user.Name} transformed into the {pick} type!");
+        Say(Text.Of("battle.transformedIntoTheType", ("user", user.Name), ("pick", pick)));
     }
 
     /// <summary>
@@ -743,7 +744,7 @@ public sealed partial class BattleCore
         v.SlowStartTurn = Turn + 1;
         v.SlowStartEnded = false;
         v.TruantParity = Turn & 1;
-        Say($"{user.Name} transformed into {t.Name}!").With(new Reshaped(user.Place));
+        Say(Text.Of("battle.transformedInto", ("user", user.Name), ("target", t.Name))).With(new Reshaped(user.Place));
         return true;
     }
 
@@ -776,7 +777,7 @@ public sealed partial class BattleCore
         p.AbilityName = q.AbilityName;
         // The line tells of the ability in both places
         _ = AbilityOf(user);
-        Say($"{user.Name} copied {t.Name}'s {AbilityOf(t)}!");
+        Say(Text.Of("battle.copied", ("user", user.Name), ("target", t.Name), ("ability", AbilityOf(t))));
         return true;
     }
 
@@ -792,7 +793,7 @@ public sealed partial class BattleCore
         KeepAbility(Keep(user), p);
         KeepAbility(Keep(t), q);
         (p.AbilityName, q.AbilityName) = (q.AbilityName, p.AbilityName);
-        Say($"{user.Name} swapped abilities with its target!");
+        Say(Text.Of("battle.swappedAbilitiesWithIts", ("user", user.Name)));
         return true;
     }
 
@@ -803,7 +804,7 @@ public sealed partial class BattleCore
         if (t.HasSubstitute || q.AbilityName is "Truant" or "Multitype" || q.HeldItem?.Name == "Griseous Orb") return Fails();
         KeepAbility(Keep(t), q);
         q.AbilityName = "Insomnia";
-        Say($"{t.Name} acquired {AbilityOf(t)}!");
+        Say(Text.Of("battle.acquired", ("target", t.Name), ("ability", AbilityOf(t))));
         return true;
     }
 
@@ -818,7 +819,7 @@ public sealed partial class BattleCore
         KeepStats(Keep(user), p);
         (p.Attack, p.Defense) = (p.Defense, p.Attack);
         user.Volatile.PowerTrick = !user.Volatile.PowerTrick;
-        Say($"{user.Name} switched its Attack and Defense!");
+        Say(Text.Of("battle.switchedItsAttackAnd", ("user", user.Name)));
     }
 
     /// <summary>Power Swap and Guard Swap: the changes to two stats trade places between the user and its target.</summary>
@@ -829,7 +830,7 @@ public sealed partial class BattleCore
         var q = t.Pokemon!;
         foreach (var stat in stats)
             (p.StatStages[stat], q.StatStages[stat]) = (q.StatStages.GetValueOrDefault(stat), p.StatStages.GetValueOrDefault(stat));
-        Say($"{user.Name} switched all changes to its {what} with the target!");
+        Say(Text.Of("battle.switchedAllChangesTo", ("user", user.Name), ("what", what)));
         return true;
     }
 
@@ -842,7 +843,7 @@ public sealed partial class BattleCore
         foreach (var stat in new[] { StatType.Attack, StatType.Defense, StatType.SpAttack, StatType.SpDefense, StatType.Speed, StatType.Accuracy, StatType.Evasion })
             (p.StatStages[stat], q.StatStages[stat]) = (q.StatStages.GetValueOrDefault(stat), p.StatStages.GetValueOrDefault(stat));
         (user.Volatile.FocusEnergy, t.Volatile.FocusEnergy) = (t.Volatile.FocusEnergy, user.Volatile.FocusEnergy);
-        Say($"{user.Name} switched stat changes with the target!");
+        Say(Text.Of("battle.switchedStatChangesWith", ("user", user.Name)));
         return true;
     }
 
@@ -854,7 +855,7 @@ public sealed partial class BattleCore
         var user = use.User;
         use.Line.With(Shown(user, user, use.Move, null));
         Field.Side(user.Side).FollowMe = user.Place;
-        Say($"{user.Name} became the center of attention!");
+        Say(Text.Of("battle.becameTheCenterOf", ("user", user.Name)));
     }
 
     /// <summary>
@@ -873,7 +874,7 @@ public sealed partial class BattleCore
             return;
         }
         partner.Turn.HelpingHand = true;
-        Say($"{user.Name} is ready to help {partner.Name}!");
+        Say(Text.Of("battle.isReadyToHelp", ("user", user.Name), ("partner", partner.Name)));
     }
 
     /// <summary><c>BtlCmd_TrySpite</c>: the target's last move loses 4 PP, or what it has left; nothing when it has no last move or none left.</summary>
@@ -884,7 +885,7 @@ public sealed partial class BattleCore
         if (move == null || move.CurrentPP == 0) return Fails();
         int taken = Math.Min(4, move.CurrentPP);
         move.CurrentPP -= taken;
-        Say($"It reduced the PP of {t.Name}'s {move.Name} by {taken}!");
+        Say(Text.Of("battle.itReducedThePp", ("target", t.Name), ("move", move.Name), ("taken", taken)));
         return true;
     }
 
@@ -917,7 +918,7 @@ public sealed partial class BattleCore
         }
         user.Volatile.Types = new List<PokemonType> { type };
         user.Volatile.Camouflaged = true;
-        Say($"{user.Name} transformed into the {type} type!");
+        Say(Text.Of("battle.transformedIntoTheType", ("user", user.Name), ("pick", type)));
     }
 
     /// <summary><c>BtlCmd_GetTerrainMove</c>: Nature Power becomes the ground's move and uses it.</summary>
@@ -926,7 +927,7 @@ public sealed partial class BattleCore
         var user = use.User;
         use.Line.With(Shown(user, user, use.Move, null));
         var move = MoveDatabase.Get(Ground.Move);
-        Say($"{use.Move.Name} turned into {move.Name}!");
+        Say(Text.Of("battle.turnedInto", ("move", use.Move.Name), ("newMove", move.Name)));
         CallMove(use, move, null);
     }
 

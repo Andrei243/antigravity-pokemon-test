@@ -40,8 +40,15 @@ public sealed record Language
     /// <summary>Every language of <c>languages.json</c>, English first.</summary>
     public static IReadOnlyList<Language> All => all ??= GameDataFiles.Load<List<Language>>("text/languages.json");
 
-    /// <summary>The languages the options' row goes through: those a player can read with the faces the game has.</summary>
-    public static IReadOnlyList<Language> Offered => All.Where(l => !l.Pseudo && DrawnScripts.Contains(l.Script)).ToList();
+    /// <summary>
+    /// The languages the options' row goes through: those a player can read with the faces the game has, and that
+    /// have a table of their own (a language listed before its translation, as French is for the tests of plan 17 ·
+    /// N2, would be English under another name).
+    /// </summary>
+    public static IReadOnlyList<Language> Offered => All.Where(l => !l.Pseudo && DrawnScripts.Contains(l.Script) && l.HasTable).ToList();
+
+    /// <summary>Whether the language has its own <c>ui.json</c>: English always does.</summary>
+    public bool HasTable => Tag == Text.English || File.Exists(GameDataFiles.PathOf(Path.Combine("text", Tag, "ui.json")));
 
     /// <summary>The language of a tag, or null for one the list doesn't have.</summary>
     public static Language? Of(string? tag) => All.FirstOrDefault(l => string.Equals(l.Tag, tag, StringComparison.OrdinalIgnoreCase));

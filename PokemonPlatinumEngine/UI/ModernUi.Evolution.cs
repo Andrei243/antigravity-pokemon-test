@@ -1,3 +1,4 @@
+using PokemonPlatinumEngine.Core;
 using System;
 using System.Numerics;
 using Raylib_cs;
@@ -118,15 +119,15 @@ internal static partial class ModernUi
         Panel(r, 34);
         float x = r.X + 28, w = r.Width - 56;
 
-        Label("WANTS TO LEARN", r.X + 44, r.Y + 30);
+        Label(Text.Of("evolution.wantsToLearn"), r.X + 44, r.Y + 30);
         MoveRow(new Rectangle(x, r.Y + 64, w, 86), MoveDatabase.Get(newMove), null, false, Gold);
 
-        Label("FORGET WHICH MOVE?", r.X + 44, r.Y + 178);
+        Label(Text.Of("evolution.forgetWhichMove"), r.X + 44, r.Y + 178);
         for (int i = 0; i < p.Moves.Count && i < 4; i++)
             MoveRow(new Rectangle(x, r.Y + 212 + i * 96, w, 86), p.Moves[i].Data, p.Moves[i].CurrentPP, cursor == i, Selection, p.Moves[i].MaxPP);
 
         var keep = new Rectangle(x, r.Y + 212 + 4 * 96 + 14, w, 78);
-        Button(keep, 39, Blue, $"Don't learn {newMove}", 30, cursor == 4);
+        Button(keep, 39, Blue, Text.Of("evolution.dontLearn", ("newMove", newMove)), 30, cursor == 4);
     }
 
     /// <summary>
@@ -153,11 +154,11 @@ internal static partial class ModernUi
         float cy = row.Y + row.Height / 2f;
         TypePill(row.X + 16, cy - 22, move.Type, 44, 150);
         UiFonts.DrawCentered(move.Name, row.X + 186, cy - 12, 30, Ink, UiWeight.Black);
-        string detail = move.Category.ToString().ToUpperInvariant() + (move.Power > 0 ? $"  ·  POWER {move.Power}" : "") +
-                        (move.Accuracy > 0 ? $"  ·  ACC {move.Accuracy}" : "");
+        string detail = Words.Category(move.Category).ToUpperInvariant() + (move.Power > 0 ? Text.Of("evolution.power", ("power", move.Power)) : "") +
+                        (move.Accuracy > 0 ? Text.Of("evolution.acc", ("accuracy", move.Accuracy)) : "");
         UiFonts.DrawCentered(detail, row.X + 186, cy + 22, 18, Muted, UiWeight.Black);
         int most = maxPP ?? move.MaxPP;
-        string points = pp is { } left ? $"{left} / {most}" : $"PP {most}";
+        string points = pp is { } left ? $"{left} / {most}" : Text.Of("evolution.pp", ("most", most));
         UiFonts.DrawCentered(points, row.X + row.Width - 28 - UiFonts.Measure(points, 28, UiWeight.Black), cy, 28, Ink, UiWeight.Black);
     }
 }

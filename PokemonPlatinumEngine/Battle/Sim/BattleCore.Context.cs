@@ -1,3 +1,4 @@
+using PokemonPlatinumEngine.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,13 +40,13 @@ public sealed partial class BattleCore
         {
             if (Field.Side(target.Side).Mist)
             {
-                if (announceFailure) Say($"{target.Name} is protected by the mist!");
+                if (announceFailure) Say(Text.Of("battle.isProtectedByThe", ("target", target.Name)));
                 return false;
             }
             bool breaks = BattleEffects.Of(source!).Any(e => e.IgnoresTargetAbility);
             if (!breaks && target.Ability?.Effect is { } guard && guard.BlocksStatDrop(target, stat))
             {
-                if (announceFailure) Say($"{target.Name}'s {AbilityOf(target)} prevents its {BattleText.StatName(stat)} from being lowered!");
+                if (announceFailure) Say(Text.Of("battle.preventsItsFromBeing", ("target", target.Name), ("ability", AbilityOf(target)), ("stat", BattleText.StatName(stat))));
                 return false;
             }
         }
@@ -56,13 +57,13 @@ public sealed partial class BattleCore
         int next = Math.Clamp(current + amount, -6, 6);
         if (next == current)
         {
-            if (announceFailure) Say($"{target.Name}'s {BattleText.StatName(stat)} won't go any {(amount > 0 ? "higher" : "lower")}!");
+            if (announceFailure) Say(Text.Of(amount > 0 ? "battle.wontGoHigher" : "battle.wontGoLower", ("target", target.Name), ("stat", BattleText.StatName(stat))));
             return false;
         }
 
         if (amount < 0 && byAnother && target.HasSubstitute)
         {
-            if (announceFailure) Say("But it failed!");
+            if (announceFailure) Say(Text.Of("battle.butItFailed"));
             return false;
         }
 
@@ -92,7 +93,7 @@ public sealed partial class BattleCore
         if (p.Status != StatusCondition.None)
         {
             if (announceFailure) Say(p.Status == status || (status == StatusCondition.Toxic && p.Status == StatusCondition.Poison)
-                ? BattleText.AlreadyHas(target.Name, p.Status) : "But it failed!");
+                ? BattleText.AlreadyHas(target.Name, p.Status) : Text.Of("battle.butItFailed"));
             return false;
         }
 
@@ -106,39 +107,39 @@ public sealed partial class BattleCore
         };
         if (typeImmune)
         {
-            if (announceFailure) Say($"It doesn't affect {target.Name}...");
+            if (announceFailure) Say(Text.Of("battle.itDoesntAffect", ("target", target.Name)));
             return false;
         }
 
         // Nothing freezes under a strong sun
         if (status == StatusCondition.Freeze && Field.WeatherInEffect == BattleWeather.Sun)
         {
-            if (announceFailure) Say("But it failed!");
+            if (announceFailure) Say(Text.Of("battle.butItFailed"));
             return false;
         }
 
         bool breaks = byAnother && BattleEffects.Of(source!).Any(e => e.IgnoresTargetAbility);
         if (!breaks && target.Ability?.Effect is { } guard && guard.BlocksStatus(target, status))
         {
-            if (announceFailure) Say($"{target.Name}'s {AbilityOf(target)} prevents {BattleText.StatusName(status)}!");
+            if (announceFailure) Say(Text.Of("battle.prevents", ("target", target.Name), ("ability", AbilityOf(target)), ("condition", BattleText.StatusName(status))));
             return false;
         }
 
         if (status == StatusCondition.Sleep && UproarIsOn && !Has(target, "Soundproof"))
         {
-            if (announceFailure) Say($"But the uproar kept {target.Name} awake!");
+            if (announceFailure) Say(Text.Of("battle.butTheUproarKept", ("target", target.Name)));
             return false;
         }
 
         if (byAnother && how != By.Ability && target.HasSubstitute)
         {
-            if (announceFailure) Say("But it failed!");
+            if (announceFailure) Say(Text.Of("battle.butItFailed"));
             return false;
         }
 
         if (byAnother && Field.Side(target.Side).Safeguard)
         {
-            if (announceFailure) Say($"{target.Name} is protected by Safeguard!");
+            if (announceFailure) Say(Text.Of("battle.isProtectedBySafeguard", ("target", target.Name)));
             return false;
         }
 
@@ -152,7 +153,7 @@ public sealed partial class BattleCore
         // Shaymin's Sky Forme can't stand the cold: frozen, it is back in its Land Forme for good
         // (subscript_check_shaymin_form, after the hit; plan 06 · R10)
         if (status == StatusCondition.Freeze && !target.HasSubstitute && FormRules.BackToLand(p))
-            Say($"{target.Name} changed back into its Land Forme!").With(new Reshaped(target.Place));
+            Say(Text.Of("battle.changedBackIntoIts", ("target", target.Name))).With(new Reshaped(target.Place));
         CheckConditionHooks(target, source);
         return true;
     }
@@ -167,28 +168,28 @@ public sealed partial class BattleCore
         bool byAnother = source != null && source != target;
         if (target.IsConfused)
         {
-            if (announceFailure) Say($"{target.Name} is already confused!");
+            if (announceFailure) Say(Text.Of("battle.isAlreadyConfused", ("target", target.Name)));
             return false;
         }
         bool breaks = byAnother && BattleEffects.Of(source!).Any(e => e.IgnoresTargetAbility);
         if (BattleEffects.Of(target, includeAbility: !breaks).Any(e => e.BlocksConfusion))
         {
-            if (announceFailure) Say($"{target.Name}'s {AbilityOf(target)} prevents confusion!");
+            if (announceFailure) Say(Text.Of("battle.preventsConfusion", ("target", target.Name), ("ability", AbilityOf(target))));
             return false;
         }
         if (byAnother && how != By.Ability && target.HasSubstitute)
         {
-            if (announceFailure) Say("But it failed!");
+            if (announceFailure) Say(Text.Of("battle.butItFailed"));
             return false;
         }
         if (byAnother && Field.Side(target.Side).Safeguard)
         {
-            if (announceFailure) Say($"{target.Name} is protected by Safeguard!");
+            if (announceFailure) Say(Text.Of("battle.isProtectedBySafeguard", ("target", target.Name)));
             return false;
         }
         target.ConfusionTurns = 2 + rng.Roll(RollKind.ConfusionTurns, 4);
         named.AddRange(naming);
-        Say(line ?? $"{target.Name} became confused!").With(new Confused(target.Place)).With(Passing(target));
+        Say(line ?? Text.Of("battle.becameConfused", ("target", target.Name))).With(new Confused(target.Place)).With(Passing(target));
         CheckConditionHooks(target, source);
         return true;
     }
@@ -253,14 +254,14 @@ public sealed partial class BattleCore
         if (!target.IsActive || !with.IsActive) return false;
         if (target.Ability is { Effect.BlocksInfatuation: true })
         {
-            Say($"{target.Name}'s {AbilityOf(target)} prevents romance!");
+            Say(Text.Of("battle.preventsRomance", ("target", target.Name), ("ability", AbilityOf(target))));
             return false;
         }
         var mine = with.Pokemon!.Gender;
         var theirs = target.Pokemon!.Gender;
         if (mine == theirs || mine == Gender.Genderless || theirs == Gender.Genderless || target.Volatile.InLoveWith != null) return false;
         target.Volatile.InLoveWith = with.Place;
-        Say($"{with.Name}'s {AbilityOf(with)} infatuated {target.Name}!").With(Passing(target));
+        Say(Text.Of("battle.infatuated", ("pokemon", with.Name), ("ability", AbilityOf(with)), ("target", target.Name))).With(Passing(target));
         Reciprocate(target, with);
         return true;
     }

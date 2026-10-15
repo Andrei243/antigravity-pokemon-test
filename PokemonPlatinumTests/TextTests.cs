@@ -1,5 +1,7 @@
 using System.Text.RegularExpressions;
+using PokemonPlatinumEngine.Battle;
 using PokemonPlatinumEngine.Battle.Effects;
+using PokemonPlatinumEngine.Battle.Sim;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
@@ -8,6 +10,7 @@ using PokemonPlatinumEngine.Models.SuperContests;
 using PokemonPlatinumEngine.Overworld;
 using PokemonPlatinumEngine.Story;
 using PokemonPlatinumEngine.UI;
+using PokemonPlatinumEngine.UI.Kit;
 
 namespace PokemonPlatinumTests;
 
@@ -40,22 +43,19 @@ public class TextTests
         "Models/PokedexSearch.cs", "Models/PoketchApps/ColorChangerApp.cs", "Models/Decorating.cs", "Models/Frontier/FrontierBoard.cs",
         "Models/Poffins.cs", "Models/SuperContests/ContestRules.cs", "Models/Ribbons.cs", "Models/Underground/SecretBaseRules.cs",
         "Overworld/FieldMoveRules.cs", "Overworld/Fishing.cs", "Overworld/Bicycle.cs", "Models/ItemUse.cs", "Models/MoveTeaching.cs",
-        "Models/EncounterAids.cs", "Models/Journal.cs"
+        "Models/EncounterAids.cs", "Models/Journal.cs",
+        // Plan 17 · N2: the battle's words that are no line of its log (which TheBattleSaysNothingInQuotesOfItsOwn holds)
+        "Battle/BattleText.cs", "Battle/BattleInfo.cs", "Battle/BattleBag.cs", "Battle/MoveHint.cs",
+        "Battle/BattleEngine.cs", "Battle/BattleEngine.Menus.cs", "Battle/BattleEngine.Learning.cs", "Battle/BattleHUD.cs", "Models/Trainer.cs"
     };
 
     /// <summary>
-    /// The files of <c>UI/</c> and <c>Core/</c> that are not on the table, each with why: the battle's, the evolution
-    /// scene's and the introduction's, which are plan 17 · N2's, and what speaks to a terminal or a report and never
-    /// to the screen, which stays in English.
+    /// The files of <c>UI/</c> and <c>Core/</c> that are not on the table, each with why: what speaks to a terminal or
+    /// a report and never to the screen, which stays in English. (Plan 17 · N2 put the battle's, the evolution
+    /// scene's and the introduction's on the table, which were the rest of this list.)
     /// </summary>
     private static readonly Dictionary<string, string> NotOnTheTable = new()
     {
-        ["UI/ModernUi.Battle.cs"] = "N2: the battle's menus and panels",
-        ["Core/GameEngine.Battles.cs"] = "N2: the battles the field starts",
-        ["UI/EvolutionScreen.cs"] = "N2: the evolution scene's lines",
-        ["UI/ModernUi.Evolution.cs"] = "N2: the evolution scene's lines",
-        ["UI/IntroScreen.cs"] = "N2: the introduction's lines",
-        ["UI/ModernUi.Intro.cs"] = "N2: the introduction's prompts",
         ["Core/CommandLine.cs"] = "the switches and --help, said to the terminal",
         ["Core/SavePaths.cs"] = "--where, said to the terminal",
         ["Core/Diagnostics/Log.cs"] = "the log, for whoever reads log.txt",
@@ -220,6 +220,24 @@ public class TextTests
         ["Core/PlayerIdentity.cs"] = new[] { "Barry", "Dawn", "Lucas", "DAWN", "PLAYER", "Player", "Assistant" },
         // What the tests hear of a cry, never on screen
         ["Core/AudioManager.cs"] = new[] { "cry {name}", "cry {name} {mode}" },
+        // Plan 17 · N2. The Pokémon the professor shows, the looks he and the rival are drawn as, and the ball's art
+        ["UI/IntroScreen.cs"] = new[] { "Buneary", "RIVAL", "ROWAN", "Poké Ball" },
+        // The keyboard's case key, which shows the letters it turns to (plan 17 · N5 gives each language its keyboard)
+        ["UI/ModernUi.Intro.cs"] = new[] { "abc", "ABC" },
+        // The ball whose art the foe's tray and the caught mark draw
+        ["UI/ModernUi.Battle.cs"] = new[] { "Poké Ball" },
+        // The Pokémon, the ball and the trainer the catching lesson is played with, the stages by their names, and the
+        // species, abilities and forms the field's weather turns
+        ["Core/GameEngine.Battles.cs"] = new[]
+        {
+            "Piplup", "Poké Ball", "Plain", "Water", "City", "Forest", "Mountain", "Snow", "Shinx", "Castform", "Forecast", "Castform-Sunny",
+            "Castform-Rainy", "Castform-Snowy", "Cherrim", "Cherrim-Sunshine", "Arceus", "Multitype", "Arceus-"
+        },
+        // The class a trainer with none is, and the end of a Master Trainer's class, which names its species
+        ["Models/Trainer.cs"] = new[] { "Trainer", " Master" },
+        // The balls the Great Marsh's battle throws, and the move whose effect the screen shows as a change of shape
+        ["Battle/BattleEngine.Menus.cs"] = new[] { "Safari Ball" },
+        ["Battle/BattleEngine.cs"] = new[] { "Transform" },
         // What a crash report says of the screen the game was on, for whoever reads the report
         ["Core/GameEngine.Diagnostics.cs"] = new[] { "{flow.ClosingFrom} (the close button's question was up)", "Transition ({flow.Before} to {flow.After})" }
     };
@@ -405,6 +423,231 @@ public class TextTests
         Assert.Equal("It can't be set in a wall.", Text.Of("tunnels.refused.set.wall"));
         // A placeholder the call names nothing for is left for whoever fills it later
         Assert.Equal("Hello {player}", Text.Fill("Hello {player}"));
+    }
+
+    // ------------------------------------------------------------------ plan 17 · N2: the battle's lines and the introduction
+
+    /// <summary>
+    /// The battle's rules, whose words are the log's lines (plan 17 · N2): every file of <c>Battle/</c> but the trainer
+    /// AI's (which says nothing), those <see cref="AlsoOnTheTable"/> holds as screens, and the two that describe for a
+    /// test where the screen and the rules part; and the abilities' table, which gives some of them their lines.
+    /// </summary>
+    private static IEnumerable<string> TheBattlesRules =>
+        Directory.EnumerateFiles(Path.Combine(Engine, "Battle"), "*.cs", SearchOption.AllDirectories)
+            .Select(file => Path.GetRelativePath(Engine, file).Replace(Path.DirectorySeparatorChar, '/'))
+            .Where(name => !name.StartsWith("Battle/Sim/Ai/", StringComparison.Ordinal) && !AlsoOnTheTable.Contains(name)
+                && name is not ("Battle/ConditionLook.cs" or "Battle/FieldLook.cs"))
+            .Append("Data/AbilityEffectTable.cs")
+            .OrderBy(name => name, StringComparer.Ordinal);
+
+    /// <summary>What may stay in quotes among the battle's rules though it has a word in lower case: the data's own words.</summary>
+    private static readonly Dictionary<string, string[]> BattleNotWords = new()
+    {
+        // Struggle's description, which is the data's like every other move's (plan 17 · N3)
+        ["Battle/Sim/BattleCore.Moves.cs"] = new[] { "Used only when no other move has PP left. It also hurts the user." }
+    };
+
+    [Fact]
+    public void TheBattleSaysNothingInQuotesOfItsOwn()
+    {
+        // A line of the log has words in lower case; the names of the data the rules go by (Griseous Orb, Sleep Talk) don't
+        var sections = Sections;
+        var said = new List<string>();
+        foreach (var name in TheBattlesRules)
+        {
+            var allowed = BattleNotWords.GetValueOrDefault(name, Array.Empty<string>());
+            foreach (var (text, _) in LiteralsOnScreen(Path.Combine(Engine, name)))
+            {
+                string bare = Regex.Replace(text, @"\{[^}]*\}", "");
+                if (LooksLikeAKey(text, sections)) continue;
+                if (Regex.IsMatch(text, @"^[a-z][A-Za-z0-9_]*$")) continue;   // a sound's name, an argument's
+                if (!Regex.IsMatch(bare, @"(?<!\p{L})\p{Ll}{2,}")) continue;
+                if (allowed.Contains(text)) continue;
+                said.Add($"{name}: \"{text}\"");
+            }
+        }
+        Assert.NotEmpty(TheBattlesRules);
+        Assert.True(said.Count == 0, "Lines in quotes among the battle's rules:\n" + string.Join("\n", said));
+    }
+
+    /// <summary>What stands in for each placeholder of a battle's line when it is measured: long names of Platinum's kind.</summary>
+    private static string StandIn(string placeholder) => placeholder switch
+    {
+        "player" or "rival" => "Barbara",
+        "trainer" or "trainer2" => "Pokémon Breeder Lorenzo",
+        "move" or "newMove" or "bindingMove" or "forgotten" => "Extreme Speed",
+        "item" => "Lagging Tail",
+        "ability" => "Compound Eyes",
+        "team" => "The foe's team",
+        "stat" => "evasiveness",
+        "condition" => "paralysis",
+        "flavour" => "bitter",
+        "what" => "Defense and Sp. Def",
+        "money" => "65535",
+        "exp" => "99999",
+        "level" => "100",
+        "n" or "count" or "hits" or "magnitude" or "stockpile" or "taken" or "amount" => "10",
+        "species" => "Kangaskhan",
+        "pick" => "Electric",
+        "some" => "Foe Kangaskhan",
+        "last" => "Foe Kangaskhan",
+        "class" => "Pokémon Breeder",
+        "name" => "Lorenzo",
+        _ => "Foe Kangaskhan"
+    };
+
+    [Fact]
+    public void EveryEnglishBattleLineFitsTheMessageBoxsTwoLines()
+    {
+        // The battle's box shows two lines of a message (style guide, "Battle panels"); this is the floor a translation is held to
+        var keys = Text.EnglishKeys.Where(k => k.StartsWith("battle.", StringComparison.Ordinal)).OrderBy(k => k).ToList();
+        Assert.True(keys.Count > 300, $"{keys.Count} lines");
+        var tooLong = new List<string>();
+        foreach (var key in keys)
+            foreach (long n in new long[] { 1, 10 })
+            {
+                string line = Text.Of(key, ("n", n));
+                foreach (Match hole in Regex.Matches(line, @"\{([A-Za-z0-9]+)\}"))
+                    line = line.Replace(hole.Value, StandIn(hole.Groups[1].Value));
+                var rows = TextMetrics.Wrap(line, ModernUi.MessageBoxWidth - ModernUi.MessageMargin, ModernUi.MessageSize, UiWeight.ExtraBold);
+                if (rows.Count > 2) tooLong.Add($"{key}: {line}");
+            }
+        Assert.True(tooLong.Count == 0, "Lines that run past the box's two lines:\n" + string.Join("\n", tooLong.Distinct()));
+    }
+
+    /// <summary>Plays a battle on the rules alone to its end: the player's lead uses its first move, and whoever faints is replaced.</summary>
+    private static BattleCore PlayOut(BattleCore core)
+    {
+        for (int guard = 0; guard < 200 && core.Request != null; guard++)
+        {
+            switch (core.Request)
+            {
+                case ActionRequest asked:
+                    core.Submit(asked.Places.Select(place => BattleChoice.Fight(place, 0)).ToList());
+                    break;
+                case ReplacementRequest replace:
+                    var party = replace.Place.Side == BattleSide.Player ? core.PlayerParty : core.Trainers[0].Party;
+                    int next = Enumerable.Range(0, party.Count).First(i => !party.Members[i].IsFainted && core.SlotsOf(replace.Place.Side).All(b => b.Pokemon != party.Members[i]));
+                    core.Submit(BattleChoice.Switch(replace.Place, next));
+                    break;
+                case SwitchOfferRequest offer:
+                    core.Submit(BattleChoice.Stay(offer.Place));
+                    break;
+            }
+        }
+        Assert.Null(core.Request);
+        return core;
+    }
+
+    private static List<string> LinesOf(BattleCore core) => core.Log.OfType<Said>().Select(s => s.Text).ToList();
+
+    [Fact]
+    public void ABattleUnderThePseudoLanguageSaysEveryLineInBrackets()
+    {
+        try
+        {
+            Text.Use(Text.Pseudo);
+            // A wild battle and a trainer's, played to their ends: every line the log says comes from the table
+            var wild = PlayOut(CoreScenario.Wild(Scenario.Mon("Luxray", 40, "Spark", "Bite"), Scenario.Mon("Bidoof", 12, "Tackle"), new BattleRandom(17)));
+            var trainer = PlayOut(CoreScenario.Against(
+                new[] { Scenario.Mon("Infernape", 45, "Flamethrower", "Close Combat") },
+                new[] { Scenario.Mon("Roserade", 30, "Toxic", "Magical Leaf"), Scenario.Mon("Budew", 20, "Growth") }, new BattleRandom(18)));
+            foreach (var core in new[] { wild, trainer })
+            {
+                var lines = LinesOf(core);
+                Assert.True(lines.Count > 4, string.Join("\n", lines));
+                Assert.All(lines, line => Assert.Matches(@"^\[.*\]$", line));
+            }
+            Assert.Contains(LinesOf(trainer), line => line.Contains("[[Ace Trainer] Vera]", StringComparison.Ordinal));
+        }
+        finally
+        {
+            Text.Use(Text.English);
+        }
+    }
+
+    [Fact]
+    public void ARecordedBattleReplaysTheSameInALanguageWithNoTableOfItsOwn()
+    {
+        // The record is the seed and the answers alone, so a battle played in English replays line for line in a
+        // language listed with no table yet (French, whose every line falls back to English), and to the same end
+        // in the pseudo-language, every line its own in brackets
+        static BattleCore Battle(BattleRandom rolls)
+        {
+            var party = new Party();
+            party.Add(Scenario.Mon("Staravia", 30, "Wing Attack", "Quick Attack"));
+            return new BattleCore(new CoreSetup
+            {
+                PlayerParty = party, WildPokemon = new List<Pokemon> { Scenario.Mon("Geodude", 28, "Rock Throw", "Tackle") }, Random = rolls,
+                Rules = Ruleset.Platinum, PlayerController = null, EnemyController = null, PlayerName = "Lucas"
+            });
+        }
+        var first = Battle(new BattleRandom(20261015));
+        first.Start();
+        var played = PlayOut(first);
+        var record = played.Record!;
+        Assert.NotEmpty(record.Answers);
+        try
+        {
+            Text.Use("fr");
+            Assert.Equal("fr", Text.Current);
+            Assert.DoesNotContain(Language.Offered, l => l.Tag == "fr");
+            var again = Battle(new BattleRandom(record.Seed));
+            again.Replay(record);
+            Assert.Equal(Golden.BattleText.Written(played), Golden.BattleText.Written(again));
+
+            Text.Use(Text.Pseudo);
+            var bracketed = Battle(new BattleRandom(record.Seed));
+            bracketed.Replay(record);
+            Assert.Equal(played.Result, bracketed.Result);
+            Assert.All(LinesOf(bracketed), line => Assert.Matches(@"^\[.*\]$", line));
+            Assert.Equal(LinesOf(played), LinesOf(bracketed).Select(line => line.Replace("[", "").Replace("]", "")));
+        }
+        finally
+        {
+            Text.Use(Text.English);
+        }
+    }
+
+    [Fact]
+    public void TheIntroductionUnderThePseudoLanguageSaysEveryLineInBrackets()
+    {
+        try
+        {
+            Text.Use(Text.Pseudo);
+            var intro = new IntroScreen();
+            intro.Open();
+            var said = new List<string>();
+            const float frame = 1f / 60f;
+            for (int guard = 0; guard < 20000 && intro.Phase != IntroPhase.Done; guard++)
+            {
+                if (intro.Talking)
+                {
+                    if (intro.LineComplete)
+                    {
+                        said.Add(intro.SpokenText);
+                        if (intro.Speaker.Length > 0) Assert.Matches(@"^\[.*\]$", intro.Speaker);
+                    }
+                    intro.PressConfirm();
+                }
+                else if (intro.Phase is IntroPhase.ChooseLook or IntroPhase.ConfirmLook or IntroPhase.ConfirmName or IntroPhase.ConfirmRival)
+                    intro.PressConfirm();
+                else if (intro.Phase is IntroPhase.EnterName or IntroPhase.EnterRival)
+                {
+                    intro.PressStart();
+                    intro.PressConfirm();
+                }
+                intro.Advance(frame);
+            }
+            Assert.Equal(IntroPhase.Done, intro.Phase);
+            Assert.True(said.Count >= 12, string.Join("\n", said));
+            Assert.All(said, line => Assert.Matches(@"^\[.*\]$", line));
+            Assert.Contains(said, line => line == "[Lucas! That's a fine name.]");
+        }
+        finally
+        {
+            Text.Use(Text.English);
+        }
     }
 
     [Fact]

@@ -74,7 +74,10 @@ public static class Text
     }
 
     /// <summary>Whether English has <paramref name="key"/>.</summary>
-    public static bool Has(string key) => EnglishKeys.Contains(key);
+    public static bool Has(string key)
+    {
+        lock (gate) return (english ??= Read(English)).ContainsKey(key);
+    }
 
     /// <summary>Every key of English's table.</summary>
     public static IReadOnlySet<string> EnglishKeys

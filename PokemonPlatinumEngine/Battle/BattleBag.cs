@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 
@@ -14,7 +15,10 @@ namespace PokemonPlatinumEngine.Battle;
 public static class BattleBag
 {
     /// <summary>The pockets in their order, and the fifth button: the item used last.</summary>
-    public static readonly string[] Pockets = { "HP/PP RESTORE", "STATUS RESTORE", "POKé BALLS", "BATTLE ITEMS" };
+    public static string[] Pockets => new[]
+    {
+        Text.Of("battleMenu.pocket.restore"), Text.Of("battleMenu.pocket.status"), Text.Of("battleMenu.pocket.balls"), Text.Of("battleMenu.pocket.battleItems")
+    };
 
     public const int LastUsed = 4;
 

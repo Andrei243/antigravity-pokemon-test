@@ -1,3 +1,4 @@
+using PokemonPlatinumEngine.Core;
 using System;
 using System.Linq;
 using PokemonPlatinumEngine.Models;
@@ -18,10 +19,10 @@ public sealed partial class BattleCore
         var v = runner.Volatile;
         if (v.BindTurns > 0 || v.TrappedBy != null)
         {
-            Say($"{runner.Name} tried to get away, but couldn't!");
+            Say(Text.Of("battle.triedToGetAway", ("pokemon", runner.Name)));
             return;
         }
-        Say($"{runner.Name} ran away!").With(new Left(runner.Place, Ran: true));
+        Say(Text.Of("battle.ranAway", ("pokemon", runner.Name))).With(new Left(runner.Place, Ran: true));
         End(BattleResult.EnemyFled);
     }
 
@@ -36,8 +37,8 @@ public sealed partial class BattleCore
         int roll = rng.Roll(RollKind.Safari, 10);
         if (SafariCatchStage < 12) SafariCatchStage++;
         if (roll != 0 && SafariEscapeCount < 12) SafariEscapeCount++;
-        Say($"{playerName} tossed some bait toward the wild {foe.Pokemon.DisplayName}!").With(Moment(foe, BattleMoment.Happy));
-        Say(roll == 0 ? $"The wild {foe.Pokemon.DisplayName} is too wrapped up in eating to notice anything!" : $"The wild {foe.Pokemon.DisplayName} is munching away!").With(Moment(foe, BattleMoment.Eating));
+        Say(Text.Of("battle.tossedSomeBaitToward", ("player", playerName), ("pokemon", foe.Pokemon.DisplayName))).With(Moment(foe, BattleMoment.Happy));
+        Say(roll == 0 ? Text.Of("battle.theWildIsToo", ("pokemon", foe.Pokemon.DisplayName)) : Text.Of("battle.theWildIsMunching", ("pokemon", foe.Pokemon.DisplayName))).With(Moment(foe, BattleMoment.Eating));
     }
 
     /// <summary>
@@ -51,8 +52,8 @@ public sealed partial class BattleCore
         int roll = rng.Roll(RollKind.Safari, 10);
         if (SafariEscapeCount > 0) SafariEscapeCount--;
         if (roll != 0 && SafariCatchStage > 0) SafariCatchStage--;
-        Say($"{playerName} flung some mud at the wild {foe.Pokemon.DisplayName}!");
-        Say(roll == 0 ? $"The wild {foe.Pokemon.DisplayName} is absolutely furious!" : $"The wild {foe.Pokemon.DisplayName} is fuming!").With(Moment(foe, BattleMoment.Angry));
+        Say(Text.Of("battle.flungSomeMudAt", ("player", playerName), ("pokemon", foe.Pokemon.DisplayName)));
+        Say(roll == 0 ? Text.Of("battle.theWildIsAbsolutely", ("pokemon", foe.Pokemon.DisplayName)) : Text.Of("battle.theWildIsFuming", ("pokemon", foe.Pokemon.DisplayName))).With(Moment(foe, BattleMoment.Angry));
     }
 
     /// <summary>
@@ -68,19 +69,19 @@ public sealed partial class BattleCore
         int fleeRate = p.Species.SafariFleeRate * num / den;
         if (rng.Roll(RollKind.Safari, 255) <= fleeRate)
         {
-            Say($"The wild {p.DisplayName} fled!").With(new Left(foe.Place, Ran: true));
+            Say(Text.Of("battle.theWildFled", ("pokemon", p.DisplayName))).With(new Left(foe.Place, Ran: true));
             End(BattleResult.EnemyFled);
             return;
         }
-        Say($"The wild {p.DisplayName} is keeping a close eye on you.");
+        Say(Text.Of("battle.theWildIsKeeping", ("pokemon", p.DisplayName)));
     }
 
     /// <summary><c>BtlCmd_CheckSafariGameDone</c>: with no Safari Ball left, or nowhere to put a catch, the game in the Marsh is over.</summary>
     private void SafariGameOver()
     {
         if (SpecialBalls > 0) return;
-        Say("You've thrown your last Safari Ball!");
-        Say("That's the end of your time in the Great Marsh.");
+        Say(Text.Of("battle.youveThrownYourLast"));
+        Say(Text.Of("battle.thatTheEndOf"));
         End(BattleResult.PlayerRan);
     }
 }

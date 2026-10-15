@@ -25,9 +25,9 @@ internal static partial class ModernUi
 
     public static (string Big, string[] Small) CommandLabels(BattleEngine battle) => battle.Kind switch
     {
-        BattleKind.Safari => ($"SAFARI BALL ×{battle.SpecialBalls}", new[] { "BAIT", "MUD", "RUN" }),
-        BattleKind.PalPark => ($"PARK BALL ×{battle.SpecialBalls}", new[] { "", "", "RUN" }),
-        _ => ("FIGHT", new[] { "BAG", "POKÉMON", "RUN" })
+        BattleKind.Safari => (Text.Of("battleMenu.safariBall", ("n", battle.SpecialBalls)), new[] { Text.Of("battleMenu.bait"), Text.Of("battleMenu.mud"), Text.Of("battleMenu.run") }),
+        BattleKind.PalPark => (Text.Of("battleMenu.parkBall", ("n", battle.SpecialBalls)), new[] { "", "", Text.Of("battleMenu.run") }),
+        _ => (Text.Of("battleMenu.fight"), new[] { Text.Of("battleMenu.bag"), Text.Of("battleMenu.pokemon"), Text.Of("battleMenu.run") })
     };
 
     public static void DrawBattle(BattleHUD hud, int sw, int sh, BattleEngine battle, Inventory inventory, string message, BattleAnimator anim)
@@ -104,22 +104,22 @@ internal static partial class ModernUi
             case BattleMenuState.SelectBagMove:
                 BagTargets(hud, sw, sh, party, battle);
                 if (battle.BagTarget >= 0 && battle.BagTarget < party.Count && battle.BagItemChosen is { } restoring)
-                    MovePick(new Rectangle(sw - 64 - 760, 64, 760, 476), party.Members[battle.BagTarget], hud.BagMoveIndex, $"Use the {restoring.Name} on which move?");
+                    MovePick(new Rectangle(sw - 64 - 760, 64, 760, 476), party.Members[battle.BagTarget], hud.BagMoveIndex, Text.Of("battleMenu.useOnWhichMove", ("item", restoring.Name)));
                 break;
             case BattleMenuState.Info:
                 if (battle.InfoShown is { } info) InfoPanel(info, battle.IsDouble);
                 break;
             case BattleMenuState.LearnMove:
                 // The question in the message box, and beside it its Yes and No or the moves to forget
-                MessageBox(new Rectangle(48, 858, 1824, 172), message, null);
+                MessageBox(new Rectangle(48, 858, MessageBoxWidth, 172), message, null);
                 if (battle.LearnStep == LearnStep.Choose && battle.Learner is { } learner && battle.MoveToLearn is { } wanted)
                     MoveChoice(new Rectangle(sw - 64 - 820, 64, 820, 716), learner, wanted, battle.LearnCursor, 1f);
                 else
                     // 22 above the message box, its right edge on the box's
-                    DrawChoices(sw + 48, sh + 40, new[] { "Yes", "No" }, battle.LearnCursor, 1f);
+                    DrawChoices(sw + 48, sh + 40, new[] { Text.Of("battleMenu.yes"), Text.Of("battleMenu.no") }, battle.LearnCursor, 1f);
                 break;
             default:
-                MessageBox(new Rectangle(48, 858, 1824, 172), message, null, battle.CurrentSpeaker);
+                MessageBox(new Rectangle(48, 858, MessageBoxWidth, 172), message, null, battle.CurrentSpeaker);
                 // A level's panel stands on the message box's right end, over the line that tells of the level (plan 08 · P5)
                 if (hud.LevelUp is { } level) LevelUp(48 + 1824, 858 - 22, level);
                 break;
@@ -132,7 +132,7 @@ internal static partial class ModernUi
     public const float LevelUpWidth = 560, LevelUpHeight = 484;
 
     /// <summary>The six stats as the level-up panel names them, in <see cref="LevelUpPanel.Order"/>: the first row is the most HP, not the HP left.</summary>
-    private static readonly string[] LevelUpNames = { "Max HP", "Attack", "Defense", "Sp. Atk", "Sp. Def", "Speed" };
+    private static string LevelUpName(StatType stat) => stat == StatType.HP ? Text.Of("battleMenu.maxHp") : Words.Stat(stat);
 
     /// <summary>
     /// The level-up panel (plan 08 · P5; style guide, "Battle panels", "A level"), its right edge at
@@ -150,7 +150,7 @@ internal static partial class ModernUi
         var p = panel.Pokemon;
         Portrait(new Vector2(r.X + 76, r.Y + 70), 44, p, 2, false);
         float nameX = r.X + 140, size = 34;
-        float levelW = UiFonts.Measure(panel.Level.ToString(), 34, UiWeight.Black) + UiFonts.Measure("Lv", 34 * 0.62f, UiWeight.ExtraBold) + 4;
+        float levelW = UiFonts.Measure(panel.Level.ToString(), 34, UiWeight.Black) + UiFonts.Measure(Text.Of("party.level"), 34 * 0.62f, UiWeight.ExtraBold) + 4;
         float room = r.X + r.Width - 40 - levelW - 16 - nameX - 34 * 0.9f;
         float nameW = UiFonts.Measure(p.DisplayName, size, UiWeight.Black);
         if (nameW > room) size = MathF.Floor(size * room / nameW);
@@ -160,13 +160,13 @@ internal static partial class ModernUi
 
         // The rows: a caption over the numbers says which page this is
         bool gains = panel.Page == LevelUpPage.Gains;
-        string caption = gains ? "GAINED" : "NOW";
+        string caption = Text.Of(gains ? "battleMenu.levelUp.gained" : "battleMenu.levelUp.now");
         UiFonts.Draw(caption, r.X + r.Width - 44 - UiFonts.Measure(caption, 20, UiWeight.Black), r.Y + 148, 20, Muted, UiWeight.Black);
         for (int i = 0; i < LevelUpPanel.Order.Count; i++)
         {
             var stat = LevelUpPanel.Order[i];
             float cy = r.Y + 204 + i * 48;
-            UiFonts.DrawCentered(LevelUpNames[i], r.X + 44, cy, 30, Ink, UiWeight.ExtraBold);
+            UiFonts.DrawCentered(LevelUpName(stat), r.X + 44, cy, 30, Ink, UiWeight.ExtraBold);
             int gain = panel.Gain(stat);
             string number = !gains ? panel.Value(stat).ToString() : gain >= 0 ? $"+{gain}" : gain.ToString();
             var color = !gains ? Ink : gain > 0 ? Green : gain < 0 ? Red : Muted;
@@ -250,15 +250,15 @@ internal static partial class ModernUi
 
         var info = new Rectangle(1172, 836, 700, 200);
         Panel(info, 28);
-        UiFonts.DrawCentered("TARGET", info.X + 44, info.Y + 44, 24, Muted, UiWeight.Black);
-        HintsDark(info.X + info.Width - 24, info.Y + 18, ("X", "Back"));
+        UiFonts.DrawCentered(Text.Of("battleMenu.target"), info.X + 44, info.Y + 44, 24, Muted, UiWeight.Black);
+        HintsDark(info.X + info.Width - 24, info.Y + 18, (Text.Of("shared.keys.x"), Text.Of("shared.hints.back")));
         var move = battle.TargetingMove;
         if (move != null)
         {
             UiFonts.DrawCentered(move.Name, info.X + 44, info.Y + 108, 38, Ink, UiWeight.Black);
             var target = choices.ElementAtOrDefault(hud.TargetMenuIndex);
             if (target?.Pokemon != null)
-                UiFonts.DrawCentered($"at {target.Name}", info.X + 44, info.Y + 156, 28, Muted, UiWeight.ExtraBold);
+                UiFonts.DrawCentered(Text.Of("battleMenu.atTarget", ("target", target.Name)), info.X + 44, info.Y + 156, 28, Muted, UiWeight.ExtraBold);
         }
     }
 
@@ -383,6 +383,9 @@ internal static partial class ModernUi
     /// The message panel: either "What will X do?" or a message waiting for the A button (two lines if it is long).
     /// A line someone says (a trainer speaking in battle, plan 11 · C12) has their name on a pill over the box.
     /// </summary>
+    /// <summary>The message box's width as the battle's lines are shown in it, and how much of it a line's two rows may take (plan 17 ? N2).</summary>
+    public const float MessageBoxWidth = 1824, MessageMargin = 190, MessageSize = 40;
+
     public static void MessageBox(Rectangle r, string? message, string? prompting, string? speaker = null)
     {
         Panel(r, 28);
@@ -390,15 +393,19 @@ internal static partial class ModernUi
         float x = r.X + 52, cy = r.Y + r.Height / 2f;
         if (prompting != null)
         {
-            UiFonts.DrawCentered("What will", x, cy, 40, Ink, UiWeight.ExtraBold);
-            float w = UiFonts.Measure("What will ", 40, UiWeight.ExtraBold);
+            // The question around the name, as the table has it: "What will {name} do?", the name in red
+            string question = Text.Of("battleMenu.whatWill");
+            int at = question.IndexOf("{name}", StringComparison.Ordinal);
+            string before = at < 0 ? question : question[..at], after = at < 0 ? "" : question[(at + "{name}".Length)..];
+            UiFonts.DrawCentered(before.TrimEnd(), x, cy, 40, Ink, UiWeight.ExtraBold);
+            float w = UiFonts.Measure(before, 40, UiWeight.ExtraBold);
             UiFonts.DrawCentered(prompting, x + w, cy, 40, Red, UiWeight.Black);
-            float w2 = UiFonts.Measure(prompting + " ", 40, UiWeight.Black);
-            UiFonts.DrawCentered("do?", x + w + w2, cy, 40, Ink, UiWeight.ExtraBold);
+            float w2 = UiFonts.Measure(prompting + (after.StartsWith(' ') ? " " : ""), 40, UiWeight.Black);
+            UiFonts.DrawCentered(after.TrimStart(), x + w + w2, cy, 40, Ink, UiWeight.ExtraBold);
             return;
         }
 
-        var lines = Wrap(message ?? "", r.Width - 190, 40, UiWeight.ExtraBold);
+        var lines = Wrap(message ?? "", r.Width - MessageMargin, MessageSize, UiWeight.ExtraBold);
         if (lines.Count <= 1) UiFonts.DrawCentered(message ?? "", x, cy, 40, Ink, UiWeight.ExtraBold);
         else
         {
@@ -441,14 +448,14 @@ internal static partial class ModernUi
             UiShapes.Shape(r, 26, PanelTop, PanelBottom, selected ? Darker(type, 0.15f) : Frame, selected ? 5f : 3f);
             var band = new Rectangle(r.X + 10, r.Y + 10, 124, r.Height - 20);
             UiShapes.Shape(band, 18, Lighter(type, 0.1f), Darker(type, 0.1f));
-            string typeName = move.Type.ToString().ToUpperInvariant();
+            string typeName = Words.Type(move.Type).ToUpperInvariant();
             float tw = UiFonts.Measure(typeName, 20, UiWeight.Black);
             UiFonts.DrawCentered(typeName, band.X + (band.Width - tw) / 2f, band.Y + band.Height / 2f, 20, Color.White, UiWeight.Black);
             UiFonts.DrawCentered(move.Name, r.X + 156, r.Y + r.Height / 2f, 32, move.CurrentPP > 0 ? Ink : Muted, UiWeight.Black);
             string pp = $"{move.CurrentPP}/{move.MaxPP}";
             float pw = UiFonts.Measure(pp, 26, UiWeight.Black);
             UiFonts.DrawCentered(pp, r.X + r.Width - 30 - pw, r.Y + r.Height / 2f, 26, move.CurrentPP > 0 ? Ink : Red, UiWeight.Black);
-            UiFonts.DrawCentered("PP", r.X + r.Width - 40 - pw - UiFonts.Measure("PP", 18, UiWeight.ExtraBold), r.Y + r.Height / 2f + 3, 18, Muted, UiWeight.ExtraBold);
+            UiFonts.DrawCentered(Text.Of("summary.pp"), r.X + r.Width - 40 - pw - UiFonts.Measure(Text.Of("summary.pp"), 18, UiWeight.ExtraBold), r.Y + r.Height / 2f + 3, 18, Muted, UiWeight.ExtraBold);
         }
 
         // How each move will do, hung on its card's top edge: one foe's at the right, two foes' as they stand (plan 12 · Q10)
@@ -469,13 +476,13 @@ internal static partial class ModernUi
         if (hud.MoveMenuIndex < p.Moves.Count)
         {
             var move = p.Moves[hud.MoveMenuIndex];
-            string cat = move.Category.ToString().ToUpperInvariant();
+            string cat = Words.Category(move.Category).ToUpperInvariant();
             UiFonts.DrawCentered(cat, info.X + 44, info.Y + 44, 24, Muted, UiWeight.Black);
             string pwr = move.Power > 0 ? move.Power.ToString() : "—";
             string acc = move.Accuracy > 0 ? move.Accuracy.ToString() : "—";
-            UiFonts.DrawCentered("POWER", info.X + 260, info.Y + 44, 20, Muted, UiWeight.ExtraBold);
+            UiFonts.DrawCentered(Text.Of("summary.power"), info.X + 260, info.Y + 44, 20, Muted, UiWeight.ExtraBold);
             UiFonts.DrawCentered(pwr, info.X + 350, info.Y + 44, 30, Ink, UiWeight.Black);
-            UiFonts.DrawCentered("ACCURACY", info.X + 440, info.Y + 44, 20, Muted, UiWeight.ExtraBold);
+            UiFonts.DrawCentered(Text.Of("summary.accuracy"), info.X + 440, info.Y + 44, 20, Muted, UiWeight.ExtraBold);
             UiFonts.DrawCentered(acc, info.X + 580, info.Y + 44, 30, Ink, UiWeight.Black);
             DrawWrapped(move.Description, info.X + 44, info.Y + 92, info.Width - 88, 26, Ink, 36);
         }
@@ -491,14 +498,15 @@ internal static partial class ModernUi
         bool forced = active.IsFainted;
         var head = new Rectangle(48, 548, 1824, 84);
         Panel(head, 26);
-        string heading = forced ? $"{active.DisplayName} fainted! Who goes next?"
-            : battle.OfferedFoe is { } coming ? $"{coming.DisplayName} is coming out next. Send out which Pokémon?"
-            : "Send out which Pokémon?";
+        string heading = forced ? Text.Of("battleMenu.whoGoesNext", ("pokemon", active.DisplayName))
+            : battle.OfferedFoe is { } coming ? Text.Of("battleMenu.comingOutNext", ("pokemon", coming.DisplayName))
+            : Text.Of("battleMenu.sendOutWhich");
         UiFonts.DrawCentered(heading, head.X + 48, head.Y + head.Height / 2f, 36, Ink, UiWeight.ExtraBold);
-        if (forced) HintsDark(head.X + head.Width - 24, head.Y + 16, ("Z", "Send out"));
+        string keyZ = Text.Of("shared.keys.z"), keyX = Text.Of("shared.keys.x"), sendOut = Text.Of("battleMenu.hint.sendOut");
+        if (forced) HintsDark(head.X + head.Width - 24, head.Y + 16, (keyZ, sendOut));
         // Opened by Battle Style Shift's Yes (plan 08 · P1): backing out stays in, and says so
-        else if (battle.IsOfferingSwitch) HintsDark(head.X + head.Width - 24, head.Y + 16, ("Z", "Send out"), ("X", "Stay in"));
-        else HintsDark(head.X + head.Width - 24, head.Y + 16, ("Z", "Send out"), ("X", "Back"));
+        else if (battle.IsOfferingSwitch) HintsDark(head.X + head.Width - 24, head.Y + 16, (keyZ, sendOut), (keyX, Text.Of("battleMenu.hint.stayIn")));
+        else HintsDark(head.X + head.Width - 24, head.Y + 16, (keyZ, sendOut), (keyX, Text.Of("shared.hints.back")));
 
         for (int i = 0; i < Party.MaxSize; i++)
         {
@@ -524,7 +532,7 @@ internal static partial class ModernUi
             UiFonts.DrawCentered(hpText, r.X + r.Width - 34 - UiFonts.Measure(hpText, 26, UiWeight.Black), r.Y + 136, 26, Ink, UiWeight.Black);
 
             float tagX = x;
-            if (battle.PlayerSlots.Any(b => b.Pokemon == p) && !p.IsFainted) tagX += Tag(tagX, r.Y + 120, "IN BATTLE", Blue, 32) + 8;
+            if (battle.PlayerSlots.Any(b => b.Pokemon == p) && !p.IsFainted) tagX += Tag(tagX, r.Y + 120, Text.Of("battleMenu.inBattle"), Blue, 32) + 8;
             StatusPill(tagX, r.Y + 120, p.IsFainted ? StatusCondition.Faint : p.Status, 32);
             if (p.IsFainted) UiShapes.Fill(r, 30, new Color(40, 40, 60, 90));
         }
@@ -563,20 +571,20 @@ internal static partial class ModernUi
         Dim(sw, sh, 120);
         var head = new Rectangle(48, 548, 1824, 84);
         Panel(head, 26);
-        UiFonts.DrawCentered("BAG", head.X + 48, head.Y + head.Height / 2f, 36, Ink, UiWeight.ExtraBold);
-        HintsDark(head.X + head.Width - 24, head.Y + 16, ("Z", "Open"), ("X", "Back"));
+        UiFonts.DrawCentered(Text.Of("battleMenu.bagTitle"), head.X + 48, head.Y + head.Height / 2f, 36, Ink, UiWeight.ExtraBold);
+        HintsDark(head.X + head.Width - 24, head.Y + 16, (Text.Of("shared.keys.z"), Text.Of("shared.hints.open")), (Text.Of("shared.keys.x"), Text.Of("shared.hints.back")));
 
         for (int i = 0; i < BattleBag.Pockets.Length; i++)
         {
             var r = new Rectangle(48 + (i % 2) * 920, 648 + (i / 2) * 132, 904, 116);
             int count = BattleBag.Items(battle.PlayerInventory, i).Count;
             Button(r, 34, PocketColors[i], BattleBag.Pockets[i], 38, hud.BagPocketIndex == i);
-            string held = count == 1 ? "1 KIND" : $"{count} KINDS";
+            string held = Text.Of("battleMenu.kinds", ("n", count));
             UiFonts.DrawCentered(held, r.X + r.Width - 40 - UiFonts.Measure(held, 24, UiWeight.Black), r.Y + r.Height / 2f, 24,
                 new Color(255, 255, 255, 220), UiWeight.Black);
         }
         var last = new Rectangle(48, 912, 1824, 108);
-        Button(last, 34, new Color(126, 132, 156, 255), battle.LastUsedItem is { } name ? $"LAST ITEM USED: {name.ToUpperInvariant()}" : "LAST ITEM USED",
+        Button(last, 34, new Color(126, 132, 156, 255), battle.LastUsedItem is { } name ? Text.Of("battleMenu.lastItemUsedWas", ("item", name.ToUpperInvariant())) : Text.Of("battleMenu.lastItemUsed"),
             34, hud.BagPocketIndex == BattleBag.LastUsed);
     }
 
@@ -591,7 +599,7 @@ internal static partial class ModernUi
         var head = new Rectangle(48, 548, 1824, 84);
         Panel(head, 26);
         UiFonts.DrawCentered(BattleBag.Pockets[battle.BagPocket], head.X + 48, head.Y + head.Height / 2f, 36, Ink, UiWeight.ExtraBold);
-        HintsDark(head.X + head.Width - 24, head.Y + 16, ("Z", "Use"), ("X", "Back"));
+        HintsDark(head.X + head.Width - 24, head.Y + 16, (Text.Of("shared.keys.z"), Text.Of("shared.hints.use")), (Text.Of("shared.keys.x"), Text.Of("shared.hints.back")));
 
         ItemData? chosen = null;
         int first = hud.BagFirstRow * BattleEngine.BagColumns;
@@ -617,7 +625,7 @@ internal static partial class ModernUi
             string count = $"×{listed[i].Quantity}";
             UiFonts.DrawCentered(count, r.X + r.Width - 30 - UiFonts.Measure(count, 28, UiWeight.Black), r.Y + r.Height / 2f, 28, Ink, UiWeight.Black);
         }
-        if (listed.Count == 0) UiFonts.DrawCentered("Nothing in this pocket.", 96, 648 + 2 * 96, 32, Muted, UiWeight.ExtraBold);
+        if (listed.Count == 0) UiFonts.DrawCentered(Text.Of("battleMenu.emptyPocket"), 96, 648 + 2 * 96, 32, Muted, UiWeight.ExtraBold);
 
         var info = new Rectangle(1232, 648, 640, 374);
         Panel(info, 28);
@@ -634,9 +642,9 @@ internal static partial class ModernUi
         Dim(sw, sh, 120);
         var head = new Rectangle(48, 548, 1824, 84);
         Panel(head, 26);
-        string item = battle.BagItemChosen?.Name ?? "it";
-        UiFonts.DrawCentered($"Use the {item} on which Pokémon?", head.X + 48, head.Y + head.Height / 2f, 36, Ink, UiWeight.ExtraBold);
-        HintsDark(head.X + head.Width - 24, head.Y + 16, ("Z", "Use"), ("X", "Back"));
+        string heading = battle.BagItemChosen is { } chosen ? Text.Of("battleMenu.useOnWhichPokemon", ("item", chosen.Name)) : Text.Of("battleMenu.useItOnWhichPokemon");
+        UiFonts.DrawCentered(heading, head.X + 48, head.Y + head.Height / 2f, 36, Ink, UiWeight.ExtraBold);
+        HintsDark(head.X + head.Width - 24, head.Y + 16, (Text.Of("shared.keys.z"), Text.Of("shared.hints.use")), (Text.Of("shared.keys.x"), Text.Of("shared.hints.back")));
 
         for (int i = 0; i < Party.MaxSize; i++)
         {
@@ -659,7 +667,7 @@ internal static partial class ModernUi
             string hpText = $"{p.CurrentHP} / {p.MaxHP}";
             UiFonts.DrawCentered(hpText, r.X + r.Width - 34 - UiFonts.Measure(hpText, 26, UiWeight.Black), r.Y + 136, 26, Ink, UiWeight.Black);
             float tagX = x;
-            if (battle.PlayerSlots.Any(b => b.Pokemon == p) && !p.IsFainted) tagX += Tag(tagX, r.Y + 120, "IN BATTLE", Blue, 32) + 8;
+            if (battle.PlayerSlots.Any(b => b.Pokemon == p) && !p.IsFainted) tagX += Tag(tagX, r.Y + 120, Text.Of("battleMenu.inBattle"), Blue, 32) + 8;
             StatusPill(tagX, r.Y + 120, p.IsFainted ? StatusCondition.Faint : p.Status, 32);
             if (p.IsFainted) UiShapes.Fill(r, 30, new Color(40, 40, 60, 90));
         }
@@ -674,30 +682,28 @@ internal static partial class ModernUi
     /// </summary>
     private static void InfoPanel(BattleInfo info, bool doubles)
     {
-        HintsDark(1872, 52, ("X", "Close"));
+        HintsDark(1872, 52, (Text.Of("shared.keys.x"), Text.Of("shared.hints.close")));
 
         // The strip: FIELD, then the weather, Trick Room and Gravity, or a word that nothing is
         float x = 56, y = doubles ? 286 : 240;
-        x += Tag(x, y, "FIELD", Frame, 48) + 10;
-        if (info.Field.Count == 0) Tag(x, y, "NOTHING IN EFFECT", Muted, 48);
+        x += Tag(x, y, Text.Of("battleMenu.info.field"), Frame, 48) + 10;
+        if (info.Field.Count == 0) Tag(x, y, Text.Of("battleMenu.info.nothing"), Muted, 48);
         foreach (var line in info.Field) x += Tag(x, y, line.Text.ToUpperInvariant(), FieldColor(line.Name), 48) + 10;
 
         const float top = 352, bottom = 1032;
-        InfoColumn(new Rectangle(48, top, 900, bottom - top), info.Side(BattleSide.Enemy), "FOE'S SIDE", Red);
-        InfoColumn(new Rectangle(972, top, 900, bottom - top), info.Side(BattleSide.Player), "YOUR SIDE", Blue);
+        InfoColumn(new Rectangle(48, top, 900, bottom - top), info.Side(BattleSide.Enemy), Text.Of("battleMenu.info.foesSide"), Red);
+        InfoColumn(new Rectangle(972, top, 900, bottom - top), info.Side(BattleSide.Player), Text.Of("battleMenu.info.yourSide"), Blue);
     }
 
     /// <summary>The weather in its own colour; Trick Room and Gravity in theirs.</summary>
-    private static Color FieldColor(string name) => name switch
-    {
-        "Rain" => Blue,
-        "Harsh sunlight" => Selection,
-        "Sandstorm" => Darker(Gold, 0.1f),
-        "Hail" => new Color(96, 168, 214, 255),
-        "Fog" => Muted,
-        "Trick Room" => new Color(150, 96, 200, 255),
-        _ => Frame
-    };
+    private static Color FieldColor(string name) =>
+        name == Text.Of("battleInfo.rain") ? Blue
+        : name == Text.Of("battleInfo.sun") ? Selection
+        : name == Text.Of("battleInfo.sandstorm") ? Darker(Gold, 0.1f)
+        : name == Text.Of("battleInfo.hail") ? new Color(96, 168, 214, 255)
+        : name == Text.Of("battleInfo.fog") ? Muted
+        : name == Text.Of("battleInfo.trickRoom") ? new Color(150, 96, 200, 255)
+        : Frame;
 
     private static Color ToneColor(InfoTone tone, Color good) => tone switch
     {
@@ -715,7 +721,7 @@ internal static partial class ModernUi
         float y = r.Y + 92;
         if (side.Lines.Count == 0)
         {
-            UiFonts.DrawCentered("No screens or hazards.", r.X + 36, y + 20, 26, Muted, UiWeight.ExtraBold);
+            UiFonts.DrawCentered(Text.Of("battleMenu.info.noScreens"), r.X + 36, y + 20, 26, Muted, UiWeight.ExtraBold);
             y += 40;
         }
         else y = Chips(side.Lines.Select(l => (l.Text.ToUpperInvariant(), ToneColor(l.Tone, Blue))), r.X + 32, y, r.X + r.Width - 32, 40, r.Y + r.Height);
@@ -746,14 +752,14 @@ internal static partial class ModernUi
         StatusPill(x + nameW + 12, r.Y + 26, p.Status, 30);
         Level(r.X + r.Width - 30, r.Y + 42, p.Level, 30);
 
-        InfoFact(x, r.Y + 74, "ABILITY", card.Ability);
-        InfoFact(x + 320, r.Y + 74, "ITEM", card.Item);
+        InfoFact(x, r.Y + 74, Text.Of("summary.ability"), card.Ability);
+        InfoFact(x + 320, r.Y + 74, Text.Of("battleMenu.info.item"), card.Item);
 
         var chips = card.Stages.Select(l => (l.Text.ToUpperInvariant(), ToneColor(l.Tone, Green)))
             .Concat(card.Conditions.Select(l => (l.Text.ToUpperInvariant(), ToneColor(l.Tone, Blue))))
             .ToList();
         float y = r.Y + 148;
-        if (chips.Count == 0) UiFonts.DrawCentered("No changes.", r.X + 36, y + 18, 24, Muted, UiWeight.ExtraBold);
+        if (chips.Count == 0) UiFonts.DrawCentered(Text.Of("battleMenu.info.noChanges"), r.X + 36, y + 18, 24, Muted, UiWeight.ExtraBold);
         else Chips(chips, r.X + 32, y, r.X + r.Width - 28, 36, r.Y + r.Height - 12);
     }
 
@@ -762,7 +768,7 @@ internal static partial class ModernUi
     {
         Label(caption, x, y);
         if (value != null) UiFonts.DrawCentered(value, x, y + 40, 28, Ink, UiWeight.Black);
-        else UiFonts.DrawCentered("Not seen yet", x, y + 40, 28, Muted, UiWeight.ExtraBold);
+        else UiFonts.DrawCentered(Text.Of("battleMenu.info.notSeen"), x, y + 40, 28, Muted, UiWeight.ExtraBold);
     }
 
     /// <summary>Tags laid one after another, a new row where one would pass <paramref name="right"/>, none below <paramref name="bottom"/>; gives where the last row ends.</summary>

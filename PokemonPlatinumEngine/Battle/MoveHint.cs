@@ -1,3 +1,5 @@
+using PokemonPlatinumEngine.Core;
+
 namespace PokemonPlatinumEngine.Battle;
 
 /// <summary>
@@ -20,9 +22,9 @@ public static class MoveHints
     /// <summary>The words on the pill, or null for a hint that shows nothing.</summary>
     public static string? Words(MoveHint hint) => hint switch
     {
-        MoveHint.SuperEffective => "SUPER EFFECTIVE",
-        MoveHint.NotVeryEffective => "NOT VERY EFFECTIVE",
-        MoveHint.NoEffect => "NO EFFECT",
+        MoveHint.SuperEffective => Text.Of("battleMenu.hint.superEffective"),
+        MoveHint.NotVeryEffective => Text.Of("battleMenu.hint.notVeryEffective"),
+        MoveHint.NoEffect => Text.Of("battleMenu.hint.noEffect"),
         _ => null
     };
 }
