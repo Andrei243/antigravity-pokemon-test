@@ -11,10 +11,14 @@
             "id": "60bea4cf2718f9fa",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "markdown",
+              "state": {
+                "file": "docs/plans/README.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "README"
             }
           }
         ]
@@ -205,17 +209,27 @@
   },
   "active": "60bea4cf2718f9fa",
   "lastOpenFiles": [
-    "PokemonPlatinumEngine/bin/Debug/net9.0/cache/models/pokemon_psyduck-shell-15a2e384610d8af6.mesh",
-    "PokemonPlatinumEngine/bin/Debug/net9.0/cache/models/pokemon_psyduck-b56b1c35f55d30e7.mesh",
-    "PokemonPlatinumEngine/bin/Debug/net9.0/cache/models/pokemon_budew-shell-9270984c33840f8d.mesh",
-    "PokemonPlatinumEngine/bin/Debug/net9.0/cache/models/pokemon_budew-07148766dfeeefec.mesh",
-    "PokemonPlatinumEngine/bin/Debug/net9.0/cache/models/pokemon_magikarp-shell-f6172282d14ce6b0.mesh",
-    "PokemonPlatinumEngine/bin/Debug/net9.0/cache/models/pokemon_magikarp-b2f5ed37384301ea.mesh",
-    "PokemonPlatinumEngine/bin/Debug/net9.0/cache/models/pokemon_machop-shell-8ebed873305e1c99.mesh",
-    "PokemonPlatinumEngine/bin/Debug/net9.0/cache/models/pokemon_machop-1fd79c59e7189f4a.mesh",
-    "PokemonPlatinumTests/bin/Debug/net9.0/cache/models/pokemon_voltorb-ab6c9269a8f45d99.mesh",
-    "PokemonPlatinumTests/bin/Debug/net9.0/cache/models/pokemon_nidoran_-shell-b122df7ab494b05b.mesh",
-    "PokemonPlatinumTests/bin/Debug/net9.0/cache/models/pokemon_nidoran_-0af53fee00e4c33c.mesh",
+    "PokemonPlatinumEngine/bin/Debug/net10.0/cache/models/character_nurse-shell-676be19ad2b00def.mesh",
+    "PokemonPlatinumEngine/bin/Debug/net10.0/cache/models/character_teala-shell-4f645867ac7a8f10.mesh",
+    "PokemonPlatinumEngine/bin/Debug/net10.0/cache/models/character_nurse-670665f8a163ef0e.mesh",
+    "PokemonPlatinumEngine/bin/Debug/net10.0/cache/models/character_teala-40401edce86fe4e2.mesh",
+    "PokemonPlatinumTests/bin/Debug/net10.0/cache/models/character_dawn-shell-a3c764abf73469d1.mesh",
+    "PokemonPlatinumTests/bin/Debug/net10.0/cache/models/character_dawn-eaed0e749e41c541.mesh",
+    "PokemonPlatinumEngine/bin/Debug/net10.0/cache/models/character_prof_oak-shell-440a8a1cd98960af.mesh",
+    "PokemonPlatinumEngine/bin/Debug/net10.0/cache/models/character_scientist-shell-5bc7cfe59858e62e.mesh",
+    "PokemonPlatinumEngine/bin/Debug/net10.0/cache/models/character_prof_oak-ff56c5545d13d28d.mesh",
+    "PokemonPlatinumEngine/bin/Debug/net10.0/cache/models/character_scientist-72a455dfd11fcf91.mesh",
+    "PokemonPlatinumTests/bin/Debug/net10.0/cache/models/pokemon_shellder-shell-4ff1575d16f5e110.mesh",
+    "tools/ShotHarness/bin/Debug/net10.0/cache/sprites/_-icon-323e8ac4355b41e81.png",
+    "tools/ShotHarness/bin/Debug/net10.0/cache/sprites/_-back-323e8ac4355b41e81.png",
+    "tools/ShotHarness/bin/Debug/net10.0/cache/sprites/_-front-323e8ac4355b41e81.png",
+    "tools/ShotHarness/bin/Debug/net10.0/cache/sprites/garchomp-icon-ac5aa5b130aec9991.png",
+    "tools/ShotHarness/bin/Debug/net10.0/cache/sprites/garchomp-back-ac5aa5b130aec9991.png",
+    "tools/ShotHarness/bin/Debug/net10.0/cache/sprites/garchomp-front-ac5aa5b130aec9991.png",
+    "tools/ShotHarness/bin/Debug/net10.0/cache/sprites/gabite-icon-b06deb6c7039e99b1.png",
+    "tools/ShotHarness/bin/Debug/net10.0/cache/sprites/gabite-back-b06deb6c7039e99b1.png",
+    "tools/ShotHarness/bin/Debug/net10.0/cache/sprites/gabite-front-b06deb6c7039e99b1.png",
+    "tools/ShotHarness/bin/Debug/net10.0/cache/sprites/gible-icon-2bcf07c3841029bb1.png",
     "docs/mechanics/evolution.md",
     "docs/scripts.md"
   ]
