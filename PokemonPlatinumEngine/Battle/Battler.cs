@@ -11,7 +11,7 @@ namespace PokemonPlatinumEngine.Battle;
 public enum Elsewhere { No, InTheAir, Underground, Underwater, Vanished }
 
 /// <summary>What a Protect of the later games does to whoever touches it (plan 06 · R25): nothing but Protect's own, or a shield's answer.</summary>
-public enum Shield { None, KingsShield, SpikyShield, BanefulBunker }
+public enum Shield { None, KingsShield, SpikyShield, BanefulBunker, MaxGuard }
 
 /// <summary>
 /// One place on the field (a side and a slot: one per side in a single battle, two in a double) and the
@@ -56,7 +56,9 @@ public sealed class Battler
 
     public int ConfusionTurns { get; internal set; }
     public bool IsConfused => ConfusionTurns > 0;
-    internal bool Flinched;
+    /// <summary>It flinched this turn; a Dynamaxed Pokémon never does (plan 06 · R22; Showdown's dynamax onTryAddVolatile).</summary>
+    internal bool Flinched { get => flinched; set => flinched = value && !Volatile.Dynamaxed; }
+    private bool flinched;
 
     /// <summary>The move a Choice item holds it to, until it leaves the field.</summary>
     public Move? ChoiceLock { get; internal set; }
@@ -378,6 +380,23 @@ internal sealed class Volatiles
     /// <summary>What has acted on entry since it came in (the original's <c>*Announced</c> flags, cleared by a Transform): each ability acts once per stay on the field.</summary>
     public EntryCheck Announced;
 
+    // ---- Dynamax (plan 06 · R22)
+
+    /// <summary>It is Dynamaxed: its moves are Max Moves, its HP is raised, and it can't flinch, be Encored, Tormented or dragged out.</summary>
+    public bool Dynamaxed;
+
+    /// <summary>The turn ends it has been Dynamaxed through (Showdown's <c>turns</c>): at the third it ends.</summary>
+    public int DynamaxTurns;
+
+    /// <summary>Its most HP before the Dynamax, and with it (what the Dynamax's end gives back, and by what share).</summary>
+    public int MaxHpBeforeDynamax, MaxHpDynamaxed;
+
+    /// <summary>It took its Gigantamax form, and the form and ability it had before (given back as the Dynamax ends).</summary>
+    public bool Gigantamaxed;
+    public string? FormBeforeGigantamax, AbilityBeforeGigantamax;
+
+    /// <summary>A layer of G-Max Chi Strike for each time it was given (up to three): so much higher its critical-hit stage.</summary>
+    public int ChiStrike;
     public Volatiles Copy() => (Volatiles)MemberwiseClone();
 
     /// <summary>What Baton Pass hands on to the Pokémon that takes its place (the original's two <c>BATON_PASSED</c> masks).</summary>

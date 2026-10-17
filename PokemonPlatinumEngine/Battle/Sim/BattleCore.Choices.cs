@@ -43,6 +43,8 @@ public sealed partial class BattleCore
         var mine = At(b.Place);
         var v = mine.Volatile;
         var data = move.Data;
+        // A Dynamaxed Pokémon's moves are its Max Moves, held back by less (plan 06 · R22)
+        if (v.Dynamaxed) return WhyNotMaxMove(mine, move, ignorePp);
         if (v.Disabled == data) return Text.Of("battle.isDisabled", ("pokemon", mine.Name), ("move", move.DisplayName));
         if (v.Tormented && v.LastMove == data) return Text.Of("battle.cantUseTheSame", ("pokemon", mine.Name));
         // The original keeps back the moves of power 0 in its table: the status moves (a move of variable power is 1 there)
@@ -71,6 +73,8 @@ public sealed partial class BattleCore
         if (choice.Mega && WhyNotMega(b) is { } noMega) return noMega;
         // So do a Z-Move and an Ultra Burst (plan 06 · R21)
         if (WhyNotZ(choice, b) is { } noZ) return noZ;
+        // And a Dynamax (plan 06 · R22)
+        if (choice.Dynamax && WhyNotDynamaxChoice(choice, b) is { } noDynamax) return noDynamax;
         switch (choice.Kind)
         {
             case ChoiceKind.Fight:
@@ -79,7 +83,8 @@ public sealed partial class BattleCore
                 var moves = b.Pokemon!.Moves;
                 if (choice.Move < 0 || choice.Move >= moves.Count)
                     return UsableMoves(b).Count == 0 ? null : Text.Of("battle.stillHasMovesIt", ("pokemon", b.Name));
-                return WhyNotMove(b, moves[choice.Move]);
+                // A move chosen to Dynamax with is held to what keeps a Max Move back (plan 06 · R22)
+                return choice.Dynamax ? WhyNotMaxMove(b, moves[choice.Move]) : WhyNotMove(b, moves[choice.Move]);
 
             case ChoiceKind.Switch:
                 if (Kind is BattleKind.Safari or BattleKind.PalPark) return Text.Of("battle.thereNoPokemonOfYours");

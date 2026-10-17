@@ -124,7 +124,8 @@ public sealed partial class BattleCore
         bool goesOn = act.Choice.Move == BattleChoice.HeldMove;
 
         // Under an Encore whatever was chosen comes out as the encored move
-        if (!goesOn && move.Data != StruggleData && v.Encored != null && user.Pokemon!.Moves.FirstOrDefault(m => m.Data == v.Encored) is { } encored && encored != move)
+        // (A Dynamaxed Pokémon's Max Move isn't turned aside: plan 06 · R22)
+        if (!goesOn && move.Data != StruggleData && !v.Dynamaxed && v.Encored != null && user.Pokemon!.Moves.FirstOrDefault(m => m.Data == v.Encored) is { } encored && encored != move)
         {
             move = encored;
             target = null;
@@ -161,7 +162,7 @@ public sealed partial class BattleCore
             move.CurrentPP = Math.Max(0, move.CurrentPP - pp);
             if (user.IsPlayerSide) Evolution.CountMoveUse(user.Pokemon!, move.Name);
         }
-        if (BattleEffects.Of(user).Any(e => e.LocksMoveChoice) && user.Pokemon!.Moves.Contains(move)) user.ChoiceLock = move;
+        if (BattleEffects.Of(user).Any(e => e.LocksMoveChoice) && user.Pokemon!.Moves.Contains(move) && !v.Dynamaxed) user.ChoiceLock = move;
         v.LastMove = move.Data == StruggleData ? null : move.Data;
         v.LastMoveTarget = target?.Place;
         // Using a move of its own forgets the one that hit it (BattleControllerPlayer_MoveEnd)
@@ -177,6 +178,8 @@ public sealed partial class BattleCore
         // it, or every target missed, protected or immune (Showdown's moveThisTurnResult)
         // A move chosen as a Z-Move becomes it, now that it is paid for (plan 06 · R21)
         if (act.Choice.ZMove && !goesOn) BecomeZMove(use, target);
+        // A Dynamaxed Pokémon's move becomes its Max Move (plan 06 · R22)
+        else if (v.Dynamaxed && !goesOn) BecomeMaxMove(use, target);
         failedNow = false;
         bool wentOn = Perform(use, goesOn);
         if (failedNow || (use.Hits.Count > 0 && !use.Hits.Any(h => h.Landed))) failedOnTurn[user.Pokemon!] = Turn;

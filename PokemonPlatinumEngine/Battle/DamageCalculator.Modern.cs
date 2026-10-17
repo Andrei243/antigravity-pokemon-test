@@ -129,7 +129,8 @@ public static partial class DamageCalculator
             if (physical && myHold == "CuboneAtkUp" && mySpecies is "Cubone" or "Marowak") at.Add(8192);
             if (!physical && myHold == "ClamperlSpatk" && mySpecies == "Clamperl") at.Add(8192);
             if (myHold == "PikaSpatkUp" && mySpecies == "Pikachu") at.Add(8192);
-            if ((physical && myHold == "ChoiceAtk") || (!physical && myHold == "ChoiceSpatk")) at.Add(6144);
+            // (A Choice item does nothing for a Dynamaxed Pokémon: plan 06 · R22, Showdown's choiceband onModifyAtk)
+            if (((physical && myHold == "ChoiceAtk") || (!physical && myHold == "ChoiceSpatk")) && !attacker.Volatile.Dynamaxed) at.Add(6144);
             attack = Math.Max(1, (int)Formulas.RoundHalfDown((long)attack * Formulas.Chain(at, 410, 131072)));
 
             // A sandstorm hardens Rock types against special moves and snow Ice types against physical ones, on the stat itself

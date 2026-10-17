@@ -30,7 +30,8 @@ public sealed class TrainerAi : IBattleController
     /// with its <c>mega</c> option at 1 (<c>sim/tools/random-player-ai.ts</c>). Nothing is drawn for it, so what the
     /// AI chose and every roll it made are what they were; under Platinum's rules, or with no Key Stone, nothing changes.
     /// The same for a Z-Move (plan 06 · R21): the move chosen is used as its Z-Move whenever it has one, and a Necrozma
-    /// that can Ultra Burst does so; with no Z-Ring nothing changes.
+    /// that can Ultra Burst does so; with no Z-Ring nothing changes. And Dynamax (plan 06 · R22): the first of its Pokémon
+    /// that can, with whatever move it chose; with no Dynamax Band nothing changes.
     /// </summary>
     private static BattleChoice WithTheLaterMechanics(BattleCore battle, Battler mine, BattleChoice choice)
     {
@@ -38,6 +39,8 @@ public sealed class TrainerAi : IBattleController
         if (battle.CanMegaEvolve(mine)) choice = choice with { Mega = true };
         if (battle.CanUltraBurst(mine)) choice = choice with { UltraBurst = true };
         if (choice.Move >= 0 && battle.CanUseZMove(mine, choice.Move)) choice = choice with { ZMove = true };
+        // And a Dynamax (plan 06 · R22) where none of those was chosen, with a move of its own, whenever it can
+        if (choice.Move >= 0 && !choice.Mega && !choice.ZMove && !choice.UltraBurst && battle.CanDynamax(mine)) choice = choice with { Dynamax = true };
         return choice;
     }
 

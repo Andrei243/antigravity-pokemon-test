@@ -43,7 +43,8 @@ internal sealed class BattleMirror
         Ai = trainer.Ai,
         Items = new List<string>(trainer.Items),
         KeyStone = trainer.KeyStone,
-        ZRing = trainer.ZRing
+        ZRing = trainer.ZRing,
+        DynamaxBand = trainer.DynamaxBand
     };
 
     /// <summary>The game's own Pokémon that one of the rules' copies stands for.</summary>

@@ -400,7 +400,7 @@ public static partial class DamageCalculator
         var attackerEffects = BattleEffects.Of(attacker).ToList();
         bool breaks = attackerEffects.Any(e => e.IgnoresTargetAbility);
         var defenderEffects = BattleEffects.Of(defender, includeAbility: !breaks).ToList();
-        int stage = move.Data.CritStage + critBonus + attackerEffects.Sum(e => e.CritStageBonus) + ItemCritStages(attacker) + (attacker.Volatile.FocusEnergy ? 2 : 0);
+        int stage = move.Data.CritStage + critBonus + attackerEffects.Sum(e => e.CritStageBonus) + ItemCritStages(attacker) + (attacker.Volatile.FocusEnergy ? 2 : 0) + attacker.Volatile.ChiStrike;
         // Storm Throw, Frost Breath and Wicked Blow are critical with no roll (Showdown's willCrit; plan 06 · R24)
         // Laser Focus makes its user's hits critical with no roll for the turn after it too (plan 06 · R25)
         bool focused = attacker.Volatile.LaserFocusUntil >= (attacker.Field?.Turn() ?? int.MaxValue);

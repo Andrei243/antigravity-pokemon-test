@@ -339,3 +339,25 @@ public sealed record UltraBursted(Place Place, string Form) : BattleEvent;
 /// is. Whoever shows the battle moves the two Pokémon, their boxes and their marks; the rules change nothing more.
 /// </summary>
 public sealed record PlacesSwapped(Place First, Place Second) : BattleEvent;
+
+/// <summary>
+/// A Pokémon Dynamaxes (plan 06 · R22): it rides on the line that says so, and from that line on the Pokémon in the
+/// place has <paramref name="MaxHp"/> and <paramref name="Hp"/>, raised by its Dynamax Level, and is in
+/// <paramref name="Form"/> (its Gigantamax form where <paramref name="Gigantamax"/>, or the form it was in). Whoever
+/// shows the battle takes the HP and the form from it (plan 25 · Y15 gives it a look of its own).
+/// </summary>
+public sealed record Dynamaxed(Place Place, string? Form, bool Gigantamax, int MaxHp, int Hp) : BattleEvent;
+
+/// <summary>
+/// A Dynamax ends (plan 06 · R22): at its third turn's end on the line that says so, or by itself as its Pokémon
+/// leaves, faints or the battle ends. From it on the Pokémon in the place has <paramref name="MaxHp"/> and
+/// <paramref name="Hp"/> again, and is in <paramref name="Form"/>.
+/// </summary>
+public sealed record DynamaxEnded(Place Place, string? Form, int MaxHp, int Hp) : BattleEvent;
+
+/// <summary>
+/// A Dynamaxed Pokémon's move becomes its Max Move (plan 06 · R22): it rides on the line "X used Y!", where the move
+/// is <paramref name="MaxMove"/> made of <paramref name="From"/>. Whoever shows the battle may show the Max Move by
+/// it (plan 25 · Y15); the rules change nothing by it.
+/// </summary>
+public sealed record MaxMoveUsed(Place Place, string MaxMove, string From) : BattleEvent;

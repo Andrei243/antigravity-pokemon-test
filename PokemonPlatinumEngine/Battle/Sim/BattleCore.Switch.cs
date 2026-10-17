@@ -98,6 +98,8 @@ public sealed partial class BattleCore
         var baton = passesTheBaton
             ? new Baton(place.Volatile.Passed(), new Dictionary<StatType, int>(place.Pokemon!.StatStages), place.ConfusionTurns)
             : null;
+        // A Dynamax ends as its Pokémon leaves (plan 06 · R22; Showdown's dynamax onBeforeSwitchOut)
+        Undynamax(place, said: false);
         ComeBack(place);
         // A Palafin that leaves in its Zero Form will be back as a hero (plan 06 · R19b)
         LeavesAHero(place);
@@ -381,6 +383,8 @@ public sealed partial class BattleCore
             int divisor = matchup switch { >= 4f => 2, >= 2f => 4, >= 1f => 8, >= 0.5f => 16, > 0f => 32, _ => 0 };
             if (divisor > 0) LoseHp(b, Formulas.Divide(mon.MaxHP, divisor), Text.Of("battle.pointedStonesDugInto", ("pokemon", b.Name)));
         }
+        // G-Max Steelsurge's steel, as Stealth Rock by the Steel type (plan 06 · R22)
+        SteelsurgeBites(b);
     }
 
     // ---------------------------------------------------------------- made to leave, and leaving by a move
@@ -397,6 +401,8 @@ public sealed partial class BattleCore
         var bench = target.Roster == null ? new List<Pokemon>()
             : Enumerable.Range(0, target.Roster.Count).Where(i => CanSendIn(target, i)).Select(i => target.Roster.Members[i]).ToList();
         if (bench.Count == 0) return;
+        // A Dynamaxed Pokémon stands its ground (plan 06 · R22; Showdown's dynamax onDragOut)
+        if (HoldsItsGroundDynamaxed(target)) return;
         var dragged = bench[rng.Roll(RollKind.DraggedOut, bench.Count)];
 
         Withdraw(target);

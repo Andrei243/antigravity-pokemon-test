@@ -17,7 +17,7 @@ public enum BattleWeather { None, Rain, Sandstorm, Sun, Hail, Fog, Snow, HarshSu
 /// its feet. The log tells of each as it comes and goes (<see cref="SideConditionChanged"/>); the later games' Aurora
 /// Veil and Sticky Web joined at the end (plan 06 · R19b).
 /// </summary>
-public enum SideCondition { Reflect, LightScreen, Mist, Safeguard, Tailwind, LuckyChant, Spikes, ToxicSpikes, StealthRock, AuroraVeil, StickyWeb, Rainbow, SeaOfFire, Swamp }
+public enum SideCondition { Reflect, LightScreen, Mist, Safeguard, Tailwind, LuckyChant, Spikes, ToxicSpikes, StealthRock, AuroraVeil, StickyWeb, Rainbow, SeaOfFire, Swamp, GMaxSteelsurge, GMaxWildfire, GMaxCannonade, GMaxVineLash, GMaxVolcalith }
 
 /// <summary>
 /// What the whole field can be under besides its weather (<see cref="FieldConditionChanged"/>): Trick Room, Gravity,
@@ -52,6 +52,11 @@ public sealed class SideState
         SideCondition.Rainbow => Rainbow ? 1 : 0,
         SideCondition.SeaOfFire => SeaOfFire ? 1 : 0,
         SideCondition.Swamp => Swamp ? 1 : 0,
+        SideCondition.GMaxSteelsurge => GMaxSteelsurge ? 1 : 0,
+        SideCondition.GMaxWildfire => GMaxWildfireTurns > 0 ? 1 : 0,
+        SideCondition.GMaxCannonade => GMaxCannonadeTurns > 0 ? 1 : 0,
+        SideCondition.GMaxVineLash => GMaxVineLashTurns > 0 ? 1 : 0,
+        SideCondition.GMaxVolcalith => GMaxVolcalithTurns > 0 ? 1 : 0,
         _ => 0
     };
 
@@ -89,6 +94,18 @@ public sealed class SideState
     public bool Rainbow => RainbowTurns > 0;
     public bool SeaOfFire => SeaOfFireTurns > 0;
     public bool Swamp => SwampTurns > 0;
+
+    /// <summary>
+    /// G-Max Steelsurge's sharp steel (plan 06 · R22; Showdown's gmaxsteelsurge): whoever comes in here takes what
+    /// Stealth Rock would do if it were of the Steel type. Defog and Rapid Spin clear it, as they clear Stealth Rock.
+    /// </summary>
+    public bool GMaxSteelsurge;
+
+    /// <summary>
+    /// What G-Max Wildfire, Cannonade, Vine Lash and Volcalith leave round the other side for four turns (plan 06 ·
+    /// R22): a sixth of every Pokémon's HP that isn't of the move's type, at each turn's end.
+    /// </summary>
+    public int GMaxWildfireTurns, GMaxCannonadeTurns, GMaxVineLashTurns, GMaxVolcalithTurns;
 }
 
 /// <summary>

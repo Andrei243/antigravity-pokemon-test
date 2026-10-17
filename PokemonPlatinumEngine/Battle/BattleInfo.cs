@@ -126,6 +126,9 @@ public sealed class BattleInfo
         _ => Text.Of("battleInfo.psychicTerrain")
     };
 
+    /// <summary>A G-Max Move's name in the language of the moment.</summary>
+    private static string GMaxName(SideCondition what) => BattleCore.GMaxMoveOf(what)?.DisplayName ?? "";
+
     private static List<InfoLine> SideLines(FieldState field, BattleSide side)
     {
         var s = field.Side(side);
@@ -147,6 +150,12 @@ public sealed class BattleInfo
         if (s.Rainbow) lines.Add(new(Text.Of("battleInfo.rainbow"), Turns(s.RainbowTurns), InfoTone.Good));
         if (s.SeaOfFire) lines.Add(new(Text.Of("battleInfo.seaOfFire"), Turns(s.SeaOfFireTurns), InfoTone.Bad));
         if (s.Swamp) lines.Add(new(Text.Of("battleInfo.swamp"), Turns(s.SwampTurns), InfoTone.Bad));
+        // What G-Max Moves leave (plan 06 · R22), by the moves' own names
+        if (s.GMaxSteelsurge) lines.Add(new(GMaxName(SideCondition.GMaxSteelsurge), "", InfoTone.Bad));
+        if (s.GMaxWildfireTurns > 0) lines.Add(new(GMaxName(SideCondition.GMaxWildfire), Turns(s.GMaxWildfireTurns), InfoTone.Bad));
+        if (s.GMaxCannonadeTurns > 0) lines.Add(new(GMaxName(SideCondition.GMaxCannonade), Turns(s.GMaxCannonadeTurns), InfoTone.Bad));
+        if (s.GMaxVineLashTurns > 0) lines.Add(new(GMaxName(SideCondition.GMaxVineLash), Turns(s.GMaxVineLashTurns), InfoTone.Bad));
+        if (s.GMaxVolcalithTurns > 0) lines.Add(new(GMaxName(SideCondition.GMaxVolcalith), Turns(s.GMaxVolcalithTurns), InfoTone.Bad));
         return lines;
     }
 

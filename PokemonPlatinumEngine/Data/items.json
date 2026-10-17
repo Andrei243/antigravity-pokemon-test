@@ -9697,6 +9697,17 @@
     "description": ""
   },
   {
+    "id": 2141,
+    "name": "Dynamax Band",
+    "pocket": "KeyItems",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A band that lets one of the player's Pokémon a battle Dynamax, growing huge for three turns."
+  },
+  {
     "id": 2161,
     "name": "Rusted Sword",
     "pocket": "Items",
