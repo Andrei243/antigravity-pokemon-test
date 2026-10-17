@@ -1,0 +1,42 @@
+{
+  "Grandmother": [
+    {
+      "en": [
+        "Have you heard? The Pokémon Professor is back in the next town over.",
+        "Four whole years he was away, they say. I wonder what marvellous Pokémon he found in all that time?"
+      ],
+      "text": [
+        "Ai auzit? Profesorul Pokémon s-a întors în orășelul de alături.",
+        "Patru ani întregi a lipsit, se zice. Oare ce Pokémoni minunați o fi găsit în tot timpul ăsta?"
+      ]
+    },
+    {
+      "en": [
+        "Well, well! So Professor Rowan trusted you with a Pokédex, did he?"
+      ],
+      "text": [
+        "Ia te uită! Deci profesorul Rowan ți-a încredințat un Pokédex, da?"
+      ]
+    }
+  ],
+  "LittleGirl": [
+    {
+      "en": [
+        "{player}, {player}, listen! I want a Pokémon! A cute one!"
+      ],
+      "text": [
+        "{player}, {player}, ascultă! Vreau un Pokémon! Unul drăguț!"
+      ]
+    },
+    {
+      "en": [
+        "{player}, {player}, listen!",
+        "Do you think Pokémon would be friends with me, the way they are with you?"
+      ],
+      "text": [
+        "{player}, {player}, ascultă!",
+        "Crezi că Pokémonii ar vrea să fie prietenii mei, cum sunt ai tăi?"
+      ]
+    }
+  ]
+}

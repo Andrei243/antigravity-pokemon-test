@@ -1,0 +1,308 @@
+{
+  "people": {
+    "little_girl": {
+      "name": {
+        "en": [
+          "Little Girl"
+        ],
+        "text": [
+          "Fetița"
+        ]
+      }
+    },
+    "grunt_m_west": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      }
+    },
+    "grunt_m_east": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          "Puștiul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Have you tried spreading Honey on a tree? Pokémon come to lick it off.",
+          "Leave it a while, then come back. You never know what you'll find!"
+        ],
+        "text": [
+          "Ai încercat să întinzi Honey pe un copac? Vin Pokémonii s-o lingă.",
+          "Las-o o vreme, apoi revino. Nu știi niciodată ce găsești!"
+        ]
+      }
+    },
+    "bug_catcher": {
+      "name": {
+        "en": [
+          "Bug Catcher"
+        ],
+        "text": [
+          "Vânătorul de insecte"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Eterna Forest is full of Poison Pokémon, and I haven't bought a single Antidote.",
+          "Do I go on? Do I go back? ...I've been standing here an hour."
+        ],
+        "text": [
+          "Pădurea Eterna e plină de Pokémoni Otravă, iar eu n-am cumpărat niciun Antidote.",
+          "Merg mai departe? Mă întorc? ...Stau aici de o oră."
+        ]
+      }
+    },
+    "camper_jacob": {
+      "name": {
+        "en": [
+          "Jacob"
+        ],
+        "text": [
+          "Jacob"
+        ]
+      },
+      "before": {
+        "en": [
+          "Camper Jacob: I'm heading into Eterna Forest. How about a battle before I go?"
+        ],
+        "text": [
+          "Campist Jacob: Mă duc în Pădurea Eterna. Ce zici de o luptă înainte să plec?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Camper Jacob: They say the Pokémon in the forest are tougher than this. I'd better get ready."
+        ],
+        "text": [
+          "Campist Jacob: Se zice că Pokémonii din pădure sunt mai tari decât ăștia. Ar fi bine să mă pregătesc."
+        ]
+      }
+    },
+    "hiker_daniel": {
+      "name": {
+        "en": [
+          "Daniel"
+        ],
+        "text": [
+          "Daniel"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Daniel: Not a mountain in sight, and here I am in my boots. Gahaha! Come on, then!"
+        ],
+        "text": [
+          "Drumeț Daniel: Niciun munte la orizont, iar eu sunt în bocanci. Ha-ha-ha! Hai, atunci!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Daniel: Now that cleared the head! You find the same Pokémon in the oddest places, you know."
+        ],
+        "text": [
+          "Drumeț Daniel: Asta mi-a limpezit mintea! Găsești aceiași Pokémoni în cele mai ciudate locuri, să știi."
+        ]
+      }
+    },
+    "aroma_lady_elizabeth": {
+      "name": {
+        "en": [
+          "Elizabeth"
+        ],
+        "text": [
+          "Elizabeth"
+        ]
+      },
+      "before": {
+        "en": [
+          "Aroma Lady Elizabeth: I adore a Pokémon with a sweet scent. Here, come and smell this one!"
+        ],
+        "text": [
+          "Doamna Aromelor Elizabeth: Ador Pokémonii care miros dulce. Vino să-l miroși pe ăsta!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Aroma Lady Elizabeth: Plant enough Berries and you can live in sweet scents all year round."
+        ],
+        "text": [
+          "Doamna Aromelor Elizabeth: Plantează destule Boabe și poți trăi printre arome dulci tot anul."
+        ]
+      }
+    },
+    "camper_zackary": {
+      "name": {
+        "en": [
+          "Zackary"
+        ],
+        "text": [
+          "Zackary"
+        ]
+      },
+      "before": {
+        "en": [
+          "Camper Zackary: It's a long road from Floaroma to Eterna City. A battle will shorten it!"
+        ],
+        "text": [
+          "Campist Zackary: E drum lung de la Floaroma la Orașul Eterna. O luptă îl scurtează!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Camper Zackary: Camping out with your Pokémon. Have you any idea how good that is?"
+        ],
+        "text": [
+          "Campist Zackary: Să campezi afară cu Pokémonii tăi. Ai idee cât de frumos e?"
+        ]
+      }
+    },
+    "picnicker_siena": {
+      "name": {
+        "en": [
+          "Siena"
+        ],
+        "text": [
+          "Siena"
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Siena: I wonder which Pokémon live round here. Shall we find out?"
+        ],
+        "text": [
+          "Excursionistă Siena: Mă întreb ce Pokémoni trăiesc pe aici. Aflăm?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Siena: I know lots about Pokémon! Some are male, some are female, and some are neither."
+        ],
+        "text": [
+          "Excursionistă Siena: Știu multe despre Pokémoni! Unii sunt masculi, alții femele, iar alții nici una, nici alta."
+        ]
+      }
+    },
+    "hiker_nicholas": {
+      "name": {
+        "en": [
+          "Nicholas"
+        ],
+        "text": [
+          "Nicholas"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Nicholas: I've lost my way. Here, of all places..."
+        ],
+        "text": [
+          "Drumeț Nicholas: M-am rătăcit. Tocmai aici..."
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Nicholas: I spent so long lost in the mountains that I turned into a hiker."
+        ],
+        "text": [
+          "Drumeț Nicholas: M-am rătăcit atâta prin munți, că am devenit drumeț."
+        ]
+      }
+    },
+    "battle_girl_kelsey": {
+      "name": {
+        "en": [
+          "Kelsey"
+        ],
+        "text": [
+          "Kelsey"
+        ]
+      },
+      "before": {
+        "en": [
+          "Battle Girl Kelsey: Hi-yah! I'm not holding anything back!"
+        ],
+        "text": [
+          "Luptătoare Kelsey: Hi-ia! Nu mă abțin deloc!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Battle Girl Kelsey: Hi-yah! You showed me how far I have to go. Thank you!"
+        ],
+        "text": [
+          "Luptătoare Kelsey: Hi-ia! Mi-ai arătat cât mai am de mers. Mulțumesc!"
+        ]
+      }
+    },
+    "picnicker_karina": {
+      "name": {
+        "en": [
+          "Karina"
+        ],
+        "text": [
+          "Karina"
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Karina: Hmm, I don't know. Shall I play with you for a bit?"
+        ],
+        "text": [
+          "Excursionistă Karina: Hmm, nu știu. Să mă joc puțin cu tine?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Karina: Stand quite still and listen. Can you hear the Pokémon calling?"
+        ],
+        "text": [
+          "Excursionistă Karina: Nu te mișca și ascultă. Auzi cum strigă Pokémonii?"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost_floaroma_town": {
+      "en": [
+        "Route 205\nWest: Floaroma Town"
+      ],
+      "text": [
+        "Ruta 205\nVest: Orășelul Floaroma"
+      ]
+    },
+    "arrow_signpost_eterna_forest": {
+      "en": [
+        "Route 205\nNorth: Eterna Forest"
+      ],
+      "text": [
+        "Ruta 205\nNord: Pădurea Eterna"
+      ]
+    },
+    "trainer_tips_signpost": {
+      "en": [
+        "Trainer Tips\nWhatever you pick up goes into the right pocket of your Bag by itself."
+      ],
+      "text": [
+        "Sfaturi pentru Antrenori\nOrice ridici ajunge singur în buzunarul potrivit al Rucsacului."
+      ]
+    }
+  }
+}

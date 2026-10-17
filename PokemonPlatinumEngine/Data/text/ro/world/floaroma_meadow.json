@@ -1,0 +1,61 @@
+{
+  "people": {
+    "pokefan_m": {
+      "name": {
+        "en": [
+          "Honey Man"
+        ],
+        "text": [
+          "Omul cu Miere"
+        ]
+      }
+    },
+    "grunt_m_west": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Buzz off, kid. We're busy here."
+        ],
+        "text": [
+          "Șterge-o, copile. Avem treabă aici."
+        ]
+      }
+    },
+    "grunt_m_east": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Buzz off, kid. We're busy here."
+        ],
+        "text": [
+          "Șterge-o, copile. Avem treabă aici."
+        ]
+      }
+    },
+    "item_works_key": {
+      "name": {
+        "en": [
+          "Works Key"
+        ],
+        "text": [
+          "Works Key"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

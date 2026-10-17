@@ -1,0 +1,89 @@
+{
+  "displayName": {
+    "en": [
+      "Poké Mart"
+    ],
+    "text": [
+      "Poké Mart"
+    ]
+  },
+  "people": {
+    "hiker": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Badges the Gyms hand out show what a Trainer is worth.",
+          "The more of them you carry, the more a Poké Mart will sell you."
+        ],
+        "text": [
+          "Insignele pe care le dau Arenele arată cât valorează un Antrenor.",
+          "Cu cât porți mai multe, cu atât îți vinde mai multe un Poké Mart."
+        ]
+      }
+    },
+    "collector": {
+      "name": {
+        "en": [
+          "Collector"
+        ],
+        "text": [
+          "Colecționarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A lady and a young fellow serve at this Poké Mart, side by side.",
+          "They don't sell the same things, you know. Had you noticed?"
+        ],
+        "text": [
+          "La Poké Martul ăsta servesc o doamnă și un tânăr, unul lângă altul.",
+          "Nu vând aceleași lucruri, să știi. Ai observat?"
+        ]
+      }
+    },
+    "cashier_f": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome to the Oreburgh Poké Mart! How may I serve you today?"
+        ],
+        "text": [
+          "Vânzătoarea: Bine ai venit la Poké Martul din Oreburgh! Cu ce te pot ajuta azi?"
+        ]
+      }
+    },
+    "cashier_m": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! This counter has goods you'll only find here in Oreburgh."
+        ],
+        "text": [
+          "Vânzătorul: Bine ai venit! La tejgheaua asta găsești mărfuri care se vând doar aici, în Oreburgh."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

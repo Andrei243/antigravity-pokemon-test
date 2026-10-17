@@ -1,0 +1,22 @@
+{
+  "Guitarist": [
+    {
+      "en": [
+        "Off to find {rival} again, are you? You two are thick as thieves!"
+      ],
+      "text": [
+        "Iar pleci după {rival}, da? Voi doi sunteți nedespărțiți!"
+      ]
+    },
+    {
+      "en": [
+        "I went on a journey with Pokémon once, a long time ago.",
+        "Only as far as Sandgem Town, mind you. The next town over. Still, those were good days..."
+      ],
+      "text": [
+        "Și eu am plecat odată într-o călătorie cu Pokémoni, de mult.",
+        "Doar până în Orășelul Sandgem, ce-i drept. Orășelul de alături. Dar ce vremuri frumoase..."
+      ]
+    }
+  ]
+}

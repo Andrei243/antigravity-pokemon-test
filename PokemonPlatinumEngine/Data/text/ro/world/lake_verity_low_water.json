@@ -1,0 +1,61 @@
+{
+  "people": {
+    "prof_rowan": {
+      "name": {
+        "en": [
+          "Prof. Rowan"
+        ],
+        "text": [
+          "Prof. Rowan"
+        ]
+      }
+    },
+    "counterpart": {
+      "name": {
+        "en": [
+          "{assistant}"
+        ],
+        "text": [
+          "{assistant}"
+        ]
+      }
+    },
+    "cyrus": {
+      "name": {
+        "en": [
+          "Cyrus"
+        ],
+        "text": [
+          "Cyrus"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "......"
+        ],
+        "text": [
+          "......"
+        ]
+      }
+    },
+    "rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "{rival}: The legendary Pokémon has to be around here somewhere!"
+        ],
+        "text": [
+          "{rival}: Pokémonul legendar trebuie să fie pe undeva pe aici!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

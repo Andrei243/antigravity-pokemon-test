@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "Twinleaf Town"
+    ],
+    "text": [
+      "Orășelul Twinleaf"
+    ]
+  },
+  "people": {
+    "expert_f": {
+      "name": {
+        "en": [
+          "Grandmother"
+        ],
+        "text": [
+          "Bunica"
+        ]
+      }
+    },
+    "twin": {
+      "name": {
+        "en": [
+          "Little Girl"
+        ],
+        "text": [
+          "Fetița"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

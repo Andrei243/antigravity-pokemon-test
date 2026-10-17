@@ -1,0 +1,113 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Center"
+    ],
+    "text": [
+      "Centrul Pokémon"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "ace_trainer_f": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          "Antrenoare As"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "You can go on catching Pokémon even with six of them travelling beside you.",
+          "The new one is sent straight to the PC. So there's something waiting for me in every Pokémon Center I walk into!"
+        ],
+        "text": [
+          "Poți prinde Pokémoni în continuare chiar dacă ai deja șase cu tine.",
+          "Cel nou e trimis direct în PC. Așa că în fiecare Centru Pokémon în care intru mă așteaptă ceva!"
+        ]
+      }
+    },
+    "school_kid_m": {
+      "name": {
+        "en": [
+          "Schoolboy"
+        ],
+        "text": [
+          "Școlarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "There's a room upstairs for chatting and trading with people from all over.",
+          "That isn't all it's for, either. Go up and have a look round!"
+        ],
+        "text": [
+          "Sus e o cameră unde stai la povești și faci schimburi cu oameni de peste tot.",
+          "Și nu e doar pentru atât. Urcă și uită-te puțin!"
+        ]
+      }
+    },
+    "twin": {
+      "name": {
+        "en": [
+          "Little Girl"
+        ],
+        "text": [
+          "Fetița"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Water, Fire, Grass... every Pokémon has a type, doesn't it?",
+          "And every type is strong against some of the others and weak against some. I'm learning them all by heart!"
+        ],
+        "text": [
+          "Apă, Foc, Iarbă... fiecare Pokémon are un tip, nu?",
+          "Și fiecare tip e puternic împotriva unora și slab împotriva altora. Le învăț pe toate pe de rost!"
+        ]
+      }
+    },
+    "teala": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm so sorry! The floor downstairs isn't open to visitors yet.",
+          "Do ask again once you've seen a little more of Sinnoh."
+        ],
+        "text": [
+          "Îmi pare tare rău! Etajul de jos nu e încă deschis vizitatorilor.",
+          "Mai întreabă după ce vezi ceva mai mult din Sinnoh."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

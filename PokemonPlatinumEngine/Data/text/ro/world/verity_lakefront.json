@@ -1,0 +1,32 @@
+{
+  "people": {
+    "rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "{rival}: Come on! The lake is right up there!"
+        ],
+        "text": [
+          "{rival}: Haide! Lacul e chiar acolo sus!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "trainer_tips_signpost": {
+      "en": [
+        "Lake Verity\nThey say a Pokémon of emotion sleeps at the bottom of this lake."
+      ],
+      "text": [
+        "Lacul Verity\nSe spune că pe fundul acestui lac doarme un Pokémon al emoțiilor."
+      ]
+    }
+  }
+}

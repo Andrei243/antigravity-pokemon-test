@@ -1,0 +1,184 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Huh? Who's that, down by the water?"
+      ],
+      "text": [
+        "Hă? Cine e ăla, jos lângă apă?"
+      ]
+    },
+    {
+      "en": [
+        "???"
+      ],
+      "text": [
+        "???"
+      ]
+    },
+    {
+      "en": [
+        "......"
+      ],
+      "text": [
+        "......"
+      ]
+    },
+    {
+      "en": [
+        "Time flows on without end, and space stretches on without limit... And one day, both will answer to me."
+      ],
+      "text": [
+        "Timpul curge la nesfârșit, iar spațiul se întinde fără margini... Și într-o zi, amândouă îmi vor da socoteală mie."
+      ]
+    },
+    {
+      "en": [
+        "My name is Cyrus."
+      ],
+      "text": [
+        "Numele meu e Cyrus."
+      ]
+    },
+    {
+      "en": [
+        "You who sleep beneath this lake. Sleep on, while you still can."
+      ],
+      "text": [
+        "Tu, care dormi sub acest lac. Dormi mai departe, cât încă mai poți."
+      ]
+    },
+    {
+      "en": [
+        "Cyrus"
+      ],
+      "text": [
+        "Cyrus"
+      ]
+    },
+    {
+      "en": [
+        "Step aside."
+      ],
+      "text": [
+        "Fă-mi loc."
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "...What was that about? What a weird guy."
+      ],
+      "text": [
+        "...Ce-a fost asta? Ce tip ciudat."
+      ]
+    },
+    {
+      "en": [
+        "Forget him! The legendary Pokémon! Let's find it and catch it!"
+      ],
+      "text": [
+        "Lasă-l! Pokémonul legendar! Hai să-l găsim și să-l prindem!"
+      ]
+    },
+    {
+      "en": [
+        "Something cried out, somewhere far out over the lake..."
+      ],
+      "text": [
+        "Ceva a strigat undeva, departe, peste lac..."
+      ]
+    },
+    {
+      "en": [
+        "Did you hear that? That had to be it! ...Oh, no. We don't have any Poké Balls!"
+      ],
+      "text": [
+        "Ai auzit? Sigur era el! ...O, nu. N-avem niciun Poké Ball!"
+      ]
+    },
+    {
+      "en": [
+        "Right! We'll ask Professor Rowan for some. Race you to his lab in Sandgem! Last one there pays the fine!"
+      ],
+      "text": [
+        "Gata! Îi cerem profesorului Rowan câteva. Hai la întrecere până la laboratorul lui din Sandgem! Ultimul plătește amenda!"
+      ]
+    }
+  ],
+  "Rowan": [
+    {
+      "en": [
+        "Prof. Rowan"
+      ],
+      "text": [
+        "Prof. Rowan"
+      ]
+    },
+    {
+      "en": [
+        "{player}? What brings you here? There is no sign of the lake's Pokémon. Not a ripple."
+      ],
+      "text": [
+        "{player}? Ce te aduce aici? Nici urmă de Pokémonul lacului. Nicio undă pe apă."
+      ]
+    },
+    {
+      "en": [
+        "And how was Lake Valor? You have been there, I trust?"
+      ],
+      "text": [
+        "Și cum a fost la Lacul Valor? Ai fost acolo, presupun?"
+      ]
+    },
+    {
+      "en": [
+        "Well, {player}? How was Lake Valor? I should like to hear it from someone who has seen it."
+      ],
+      "text": [
+        "Ei, {player}? Cum a fost la Lacul Valor? Aș vrea s-aud de la cineva care a văzut cu ochii lui."
+      ]
+    }
+  ],
+  "Assistant": [
+    {
+      "en": [
+        "{assistant}"
+      ],
+      "text": [
+        "{assistant}"
+      ]
+    },
+    {
+      "en": [
+        "{player}! It's so quiet here, it's almost eerie. How was Lake Valor? Is it true what they said on the television?"
+      ],
+      "text": [
+        "{player}! E atât de liniște aici, că-ți dă fiori. Cum a fost la Lacul Valor? E adevărat ce-au zis la televizor?"
+      ]
+    },
+    {
+      "en": [
+        "Hey, {player}. Nothing's happened here yet. How's Lake Valor? Was it as bad as the news made out?"
+      ],
+      "text": [
+        "Hei, {player}. Aici încă nu s-a întâmplat nimic. Cum e la Lacul Valor? A fost chiar așa de rău cum au zis la știri?"
+      ]
+    }
+  ]
+}

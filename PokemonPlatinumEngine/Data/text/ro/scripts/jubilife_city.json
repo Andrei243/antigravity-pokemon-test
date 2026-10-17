@@ -1,0 +1,736 @@
+{
+  "FirstArrival": [
+    {
+      "en": [
+        "{assistant}"
+      ],
+      "text": [
+        "{assistant}"
+      ]
+    },
+    {
+      "en": [
+        "{player}! There you are. The professor asked me to keep an eye out for you."
+      ],
+      "text": [
+        "{player}! Aici erai. Profesorul m-a rugat să te aștept."
+      ]
+    },
+    {
+      "en": [
+        "Welcome to Jubilife City, the biggest city in Sinnoh! Come on, I'll show you around."
+      ],
+      "text": [
+        "Bine ai venit în Orașul Jubilife, cel mai mare oraș din Sinnoh! Hai, îți arăt împrejurimile."
+      ]
+    },
+    {
+      "en": [
+        "???"
+      ],
+      "text": [
+        "???"
+      ]
+    },
+    {
+      "en": [
+        "...! You there. You did not see me just now, yes? I was only... admiring the street."
+      ],
+      "text": [
+        "...! Tu de acolo. Nu m-ai văzut adineauri, da? Eu doar... admiram strada."
+      ]
+    },
+    {
+      "en": [
+        "Looker"
+      ],
+      "text": [
+        "Looker"
+      ]
+    },
+    {
+      "en": [
+        "No. A detective does not lie to children. I am Looker, of the International Police."
+      ],
+      "text": [
+        "Nu. Un detectiv nu-i minte pe copii. Eu sunt Looker, de la Poliția Internațională."
+      ]
+    },
+    {
+      "en": [
+        "Looker! Surely the name is known to you?"
+      ],
+      "text": [
+        "Looker! Sigur ai auzit de numele ăsta?"
+      ]
+    },
+    {
+      "en": [
+        "Truly? Never? ...Then we shall call it a clever disguise. It is better so."
+      ],
+      "text": [
+        "Adevărat? Niciodată? ...Atunci să-i spunem o deghizare iscusită. Așa e mai bine."
+      ]
+    },
+    {
+      "en": [
+        "Of course it is. And yet you will tell no one you saw me here, yes?"
+      ],
+      "text": [
+        "Desigur. Și totuși, nu vei spune nimănui că m-ai văzut aici, da?"
+      ]
+    },
+    {
+      "en": [
+        "A certain group is at work in Sinnoh. I am here to learn what they want."
+      ],
+      "text": [
+        "Un anumit grup lucrează în Sinnoh. Eu sunt aici ca să aflu ce vor."
+      ]
+    },
+    {
+      "en": [
+        "You are a Trainer. Trainers see a great deal. Here, take this. Record your battles and study them."
+      ],
+      "text": [
+        "Tu ești Antrenor. Antrenorii văd multe. Poftim, ia asta. Înregistrează-ți luptele și studiază-le."
+      ]
+    },
+    {
+      "en": [
+        "If you notice anything suspicious, you will remember my face. Farewell!"
+      ],
+      "text": [
+        "Dacă observi ceva suspect, îți vei aminti fața mea. Rămas bun!"
+      ]
+    },
+    {
+      "en": [
+        "{assistant}"
+      ],
+      "text": [
+        "{assistant}"
+      ]
+    },
+    {
+      "en": [
+        "...What a strange man. Anyway!"
+      ],
+      "text": [
+        "...Ce om ciudat. În fine!"
+      ]
+    },
+    {
+      "en": [
+        "That building over there is the Trainers' School. {rival} ran in there a while ago, saying he'd learn everything in one go."
+      ],
+      "text": [
+        "Clădirea aceea de acolo e Școala de Antrenori. {rival} a dat fuga înăuntru mai adineauri, zicând că învață tot dintr-odată."
+      ]
+    },
+    {
+      "en": [
+        "You have his parcel, don't you? You'd better take it to him!"
+      ],
+      "text": [
+        "Ai coletul lui, nu? Mai bine i-l duci!"
+      ]
+    },
+    {
+      "en": [
+        "I have to get back to the professor. See you, {player}!"
+      ],
+      "text": [
+        "Trebuie să mă întorc la profesor. Pe curând, {player}!"
+      ]
+    }
+  ],
+  "LookerBlocks": [
+    {
+      "en": [
+        "Looker"
+      ],
+      "text": [
+        "Looker"
+      ]
+    }
+  ],
+  "LookerWhy": [
+    {
+      "en": [
+        "You have no Pokétch on your wrist yet. In this city, every Trainer has one."
+      ],
+      "text": [
+        "Încă n-ai un Pokétch la încheietură. În orașul ăsta, fiecare Antrenor are unul."
+      ]
+    },
+    {
+      "en": [
+        "Find the Pokétch Company's president. A detective's advice: never leave a city without its watch."
+      ],
+      "text": [
+        "Găsește-l pe președintele Companiei Pokétch. Un sfat de detectiv: nu pleca niciodată dintr-un oraș fără ceasul lui."
+      ]
+    },
+    {
+      "en": [
+        "You have business at the Trainers' School first, I think. Your friend is waiting there."
+      ],
+      "text": [
+        "Cred că ai întâi treabă la Școala de Antrenori. Prietenul tău te așteaptă acolo."
+      ]
+    }
+  ],
+  "Looker": [
+    {
+      "en": [
+        "Looker"
+      ],
+      "text": [
+        "Looker"
+      ]
+    },
+    {
+      "en": [
+        "Ah, the Pokétch. Good. Oreburgh City lies east, beyond Route 203."
+      ],
+      "text": [
+        "A, Pokétch-ul. Bun. Orașul Oreburgh e la est, dincolo de Ruta 203."
+      ]
+    },
+    {
+      "en": [
+        "A Gym is there. A Badge opens many doors... and people talk to a Trainer with a Badge."
+      ],
+      "text": [
+        "Acolo e o Arenă. O Insignă deschide multe uși... iar oamenii vorbesc cu un Antrenor care are Insignă."
+      ]
+    }
+  ],
+  "PoketchCampaign": [
+    {
+      "en": [
+        "President"
+      ],
+      "text": [
+        "Președintele"
+      ]
+    },
+    {
+      "en": [
+        "Hold on, young Trainer! Your wrist is bare! You have no Pokétch!"
+      ],
+      "text": [
+        "Stai puțin! Ai încheietura goală! N-ai Pokétch!"
+      ]
+    },
+    {
+      "en": [
+        "I am the president of the Pokétch Company, and that simply won't do."
+      ],
+      "text": [
+        "Eu sunt președintele Companiei Pokétch și așa ceva nu se poate."
+      ]
+    },
+    {
+      "en": [
+        "We're holding a campaign! Three clowns in this city each have a quiz. Answer correctly, and each gives you a coupon."
+      ],
+      "text": [
+        "Avem o campanie! Trei clovni din oraș au fiecare câte o întrebare. Răspunde corect și fiecare îți dă un cupon."
+      ]
+    },
+    {
+      "en": [
+        "Bring me all three coupons, and I'll give you a Pokétch of your very own!"
+      ],
+      "text": [
+        "Adu-mi toate cele trei cupoane și îți dau un Pokétch numai al tău!"
+      ]
+    }
+  ],
+  "PoketchCoPresident": [
+    {
+      "en": [
+        "President"
+      ],
+      "text": [
+        "Președintele"
+      ]
+    },
+    {
+      "en": [
+        "Oh ho! All three coupons! Splendid. Then, as promised..."
+      ],
+      "text": [
+        "Oho! Toate trei cupoanele! Splendid. Atunci, cum am promis..."
+      ]
+    },
+    {
+      "en": [
+        "{player} received a Pokétch!"
+      ],
+      "text": [
+        "{player} a primit un Pokétch!"
+      ]
+    },
+    {
+      "en": [
+        "It tells the time, counts your steps and keeps an eye on your team. Press P to look at it."
+      ],
+      "text": [
+        "Arată ora, îți numără pașii și are grijă de echipa ta. Apasă P ca să te uiți la el."
+      ]
+    },
+    {
+      "en": [
+        "We'll be adding more apps all the time. Come back and see us at the company!"
+      ],
+      "text": [
+        "O să adăugăm mereu aplicații noi. Mai treci pe la noi, la companie!"
+      ]
+    },
+    {
+      "en": [
+        "Find the three clowns around the city and answer their quizzes. Each gives a coupon. Collect all three!"
+      ],
+      "text": [
+        "Găsește cei trei clovni din oraș și răspunde la întrebările lor. Fiecare îți dă un cupon. Strânge-le pe toate trei!"
+      ]
+    }
+  ],
+  "TeamGalactic": [
+    {
+      "en": [
+        "Galactic Grunt"
+      ],
+      "text": [
+        "Galactic Grunt"
+      ]
+    },
+    {
+      "en": [
+        "Come on, old man! Hand over your research on Pokémon evolution!"
+      ],
+      "text": [
+        "Haide, moșule! Dă-ne cercetările tale despre evoluția Pokémonilor!"
+      ]
+    },
+    {
+      "en": [
+        "Prof. Rowan"
+      ],
+      "text": [
+        "Prof. Rowan"
+      ]
+    },
+    {
+      "en": [
+        "Out of the question. Research is to be shared, not stolen. What does your Team Galactic even want with it?"
+      ],
+      "text": [
+        "Nici vorbă. Cercetarea se împărtășește, nu se fură. Ce vrea Echipa Galactic cu ea, de fapt?"
+      ]
+    },
+    {
+      "en": [
+        "Galactic Grunt"
+      ],
+      "text": [
+        "Galactic Grunt"
+      ]
+    },
+    {
+      "en": [
+        "That's none of your business! If you won't hand it over, we'll just take it!"
+      ],
+      "text": [
+        "Nu e treaba ta! Dacă nu ni le dai, le luăm pur și simplu!"
+      ]
+    },
+    {
+      "en": [
+        "{assistant}"
+      ],
+      "text": [
+        "{assistant}"
+      ]
+    },
+    {
+      "en": [
+        "{player}! You came at just the right time. These two won't leave the professor alone."
+      ],
+      "text": [
+        "{player}! Ai venit exact la timp. Ăștia doi nu-l lasă pe profesor în pace."
+      ]
+    },
+    {
+      "en": [
+        "Come on, let's battle them together and teach them some manners!"
+      ],
+      "text": [
+        "Hai să ne luptăm cu ei împreună și să-i învățăm niște maniere!"
+      ]
+    },
+    {
+      "en": [
+        "Galactic Grunt"
+      ],
+      "text": [
+        "Galactic Grunt"
+      ]
+    },
+    {
+      "en": [
+        "Kids? Fine. Two on two! We'll flatten you both!"
+      ],
+      "text": [
+        "Niște copii? Fie. Doi contra doi! Vă facem praf pe amândoi!"
+      ]
+    },
+    {
+      "en": [
+        "Galactic Grunt"
+      ],
+      "text": [
+        "Galactic Grunt"
+      ]
+    },
+    {
+      "en": [
+        "We lost to a couple of kids?! This isn't over! Team Galactic will make a new world, and you'll see!"
+      ],
+      "text": [
+        "Am pierdut în fața unor copii?! Nu s-a terminat! Echipa Galactic va face o lume nouă, o să vedeți!"
+      ]
+    },
+    {
+      "en": [
+        "Prof. Rowan"
+      ],
+      "text": [
+        "Prof. Rowan"
+      ]
+    },
+    {
+      "en": [
+        "Hmm. You two are a good team. Thank you, {player}."
+      ],
+      "text": [
+        "Hmm. Faceți o echipă bună voi doi. Mulțumesc, {player}."
+      ]
+    },
+    {
+      "en": [
+        "Team Galactic... They spoke of evolution, and of a new world. I don't care for the sound of it."
+      ],
+      "text": [
+        "Echipa Galactic... Au vorbit despre evoluție și despre o lume nouă. Nu-mi place cum sună."
+      ]
+    },
+    {
+      "en": [
+        "{assistant}"
+      ],
+      "text": [
+        "{assistant}"
+      ]
+    },
+    {
+      "en": [
+        "The professor studies how Pokémon evolve. That must be what they were after."
+      ],
+      "text": [
+        "Profesorul studiază cum evoluează Pokémonii. Asta trebuie să fi urmărit."
+      ]
+    },
+    {
+      "en": [
+        "Prof. Rowan"
+      ],
+      "text": [
+        "Prof. Rowan"
+      ]
+    },
+    {
+      "en": [
+        "Pokémon grow and change, as people do. Keep filling your Pokédex, {player}. North of here lies Floaroma Town."
+      ],
+      "text": [
+        "Pokémonii cresc și se schimbă, ca oamenii. Continuă să-ți completezi Pokédexul, {player}. La nord de aici e Orășelul Floaroma."
+      ]
+    },
+    {
+      "en": [
+        "Come. We are going back to the lab."
+      ],
+      "text": [
+        "Haide. Ne întoarcem la laborator."
+      ]
+    },
+    {
+      "en": [
+        "{assistant}"
+      ],
+      "text": [
+        "{assistant}"
+      ]
+    },
+    {
+      "en": [
+        "Bye, {player}! Good luck out there!"
+      ],
+      "text": [
+        "Pa, {player}! Baftă pe drum!"
+      ]
+    },
+    {
+      "en": [
+        "TV Producer"
+      ],
+      "text": [
+        "Producătorul TV"
+      ]
+    },
+    {
+      "en": [
+        "Oh, that was very good! What a show! I'm with Jubilife TV, and I know a star when I see one."
+      ],
+      "text": [
+        "O, ce bine a fost! Ce spectacol! Sunt de la Jubilife TV și recunosc o vedetă când o văd."
+      ]
+    },
+    {
+      "en": [
+        "Here. Trainers who catch my eye get one of these."
+      ],
+      "text": [
+        "Poftim. Antrenorii care îmi atrag atenția primesc unul din ăsta."
+      ]
+    },
+    {
+      "en": [
+        "The Fashion Case came with Accessories and Backdrops in it."
+      ],
+      "text": [
+        "În Fashion Case erau Accesorii și Fundaluri."
+      ]
+    },
+    {
+      "en": [
+        "TV Producer"
+      ],
+      "text": [
+        "Producătorul TV"
+      ]
+    },
+    {
+      "en": [
+        "Dress your Pokémon up with what's inside. One day you'll want to, believe me. Hearthome City has a hall just for it!"
+      ],
+      "text": [
+        "Îmbracă-ți Pokémonii cu ce e înăuntru. Într-o zi o să vrei, crede-mă. Orașul Hearthome are o sală numai pentru asta!"
+      ]
+    }
+  ],
+  "Clown1": [
+    {
+      "en": [
+        "Ta-da! Welcome to the Pokétch campaign! Here's my question..."
+      ],
+      "text": [
+        "Ta-da! Bine ai venit la campania Pokétch! Iată întrebarea mea..."
+      ]
+    },
+    {
+      "en": [
+        "When a Pokémon wins a battle, does it grow stronger for it?"
+      ],
+      "text": [
+        "Când un Pokémon câștigă o luptă, devine mai puternic datorită ei?"
+      ]
+    },
+    {
+      "en": [
+        "Yes! Exactly right!"
+      ],
+      "text": [
+        "Da! Exact!"
+      ]
+    },
+    {
+      "en": [
+        "Every battle won is experience earned, and experience is what a Pokémon grows on."
+      ],
+      "text": [
+        "Fiecare luptă câștigată aduce experiență, iar din experiență crește un Pokémon."
+      ]
+    },
+    {
+      "en": [
+        "And a right answer earns you this!"
+      ],
+      "text": [
+        "Iar un răspuns corect îți aduce asta!"
+      ]
+    },
+    {
+      "en": [
+        "Bzzt! Not this time. Think of what a battle leaves a Pokémon with, and come and try again!"
+      ],
+      "text": [
+        "Bzzt! Nu de data asta. Gândește-te ce-i rămâne unui Pokémon după o luptă și mai încearcă!"
+      ]
+    },
+    {
+      "en": [
+        "Battle, win, grow stronger. It's the same for every Pokémon there is!"
+      ],
+      "text": [
+        "Lupți, câștigi, devii mai puternic. Așa e pentru orice Pokémon!"
+      ]
+    }
+  ],
+  "Clown2": [
+    {
+      "en": [
+        "Pokétch campaign quiz time! Pokémon have types, like Fire or Water..."
+      ],
+      "text": [
+        "E timpul pentru întrebarea campaniei Pokétch! Pokémonii au tipuri, ca Foc sau Apă..."
+      ]
+    },
+    {
+      "en": [
+        "...but do their moves have types as well?"
+      ],
+      "text": [
+        "...dar și mișcările lor au tipuri?"
+      ]
+    },
+    {
+      "en": [
+        "Yes, they do! Right you are!"
+      ],
+      "text": [
+        "Da, au! Ai dreptate!"
+      ]
+    },
+    {
+      "en": [
+        "And a move of the same type as the Pokémon that uses it hits harder than it otherwise would."
+      ],
+      "text": [
+        "Iar o mișcare de același tip cu Pokémonul care o folosește lovește mai tare decât ar lovi altfel."
+      ]
+    },
+    {
+      "en": [
+        "Here you go: one coupon, fairly won!"
+      ],
+      "text": [
+        "Poftim: un cupon, câștigat cinstit!"
+      ]
+    },
+    {
+      "en": [
+        "Ooh, sorry! Have a look at any of your Pokémon's moves, then come and tell me again."
+      ],
+      "text": [
+        "Of, îmi pare rău! Uită-te la mișcările oricăruia dintre Pokémonii tăi, apoi vino să-mi spui din nou."
+      ]
+    },
+    {
+      "en": [
+        "A Fire-type move from a Fire-type Pokémon: now that's a move with something behind it!"
+      ],
+      "text": [
+        "O mișcare de tip Foc de la un Pokémon de tip Foc: asta da mișcare cu putere în spate!"
+      ]
+    }
+  ],
+  "Clown3": [
+    {
+      "en": [
+        "Last question of the Pokétch campaign! Ready?"
+      ],
+      "text": [
+        "Ultima întrebare a campaniei Pokétch! Gata?"
+      ]
+    },
+    {
+      "en": [
+        "Can a Pokémon carry an item of its own?"
+      ],
+      "text": [
+        "Poate un Pokémon să țină un obiect al lui?"
+      ]
+    },
+    {
+      "en": [
+        "Correct! It can!"
+      ],
+      "text": [
+        "Corect! Poate!"
+      ]
+    },
+    {
+      "en": [
+        "One item to a Pokémon, mind. Give it something useful and it will use it by itself in battle."
+      ],
+      "text": [
+        "Un singur obiect de Pokémon, atenție. Dă-i ceva folositor și-l va folosi singur în luptă."
+      ]
+    },
+    {
+      "en": [
+        "And this one is yours!"
+      ],
+      "text": [
+        "Iar ăsta e al tău!"
+      ]
+    },
+    {
+      "en": [
+        "Not so! Open your team and look at what a Pokémon can be given. Then come back to me!"
+      ],
+      "text": [
+        "Ba nu! Deschide-ți echipa și uită-te ce i se poate da unui Pokémon. Apoi întoarce-te la mine!"
+      ]
+    },
+    {
+      "en": [
+        "One Pokémon, one item. Choose it well!"
+      ],
+      "text": [
+        "Un Pokémon, un obiect. Alege-l bine!"
+      ]
+    },
+    {
+      "en": [
+        "Oh! Something fun is about to happen in this city. Stick around and you'll see!"
+      ],
+      "text": [
+        "Oh! În orașul ăsta e pe cale să se întâmple ceva distractiv. Mai stai pe aici și o să vezi!"
+      ]
+    }
+  ],
+  "Grunt": [
+    {
+      "en": [
+        "Galactic Grunt"
+      ],
+      "text": [
+        "Galactic Grunt"
+      ]
+    },
+    {
+      "en": [
+        "Beat it, kid! This is Team Galactic business!"
+      ],
+      "text": [
+        "Șterge-o, puștiule! Asta e treaba Echipei Galactic!"
+      ]
+    }
+  ]
+}

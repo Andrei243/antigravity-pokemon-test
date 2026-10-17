@@ -1,0 +1,52 @@
+{
+  "RivalMom": [
+    {
+      "en": [
+        "{rival}'s Mom"
+      ],
+      "text": [
+        "Mama lui {rival}"
+      ]
+    },
+    {
+      "en": [
+        "Oh, {player}! {rival} came tearing in a moment ago. He's up in his room."
+      ],
+      "text": [
+        "A, {player}! {rival} a dat buzna adineauri. E sus, în camera lui."
+      ]
+    },
+    {
+      "en": [
+        "{rival}'s Mom"
+      ],
+      "text": [
+        "Mama lui {rival}"
+      ]
+    },
+    {
+      "en": [
+        "{rival} rocketed out of the door. He's probably halfway along Route 201 by now. That boy never slows down!"
+      ],
+      "text": [
+        "{rival} a țâșnit pe ușă ca o rachetă. Probabil e deja la jumătatea Rutei 201. Băiatul ăsta nu încetinește niciodată!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}'s Mom"
+      ],
+      "text": [
+        "Mama lui {rival}"
+      ]
+    },
+    {
+      "en": [
+        "Off on an adventure of your own? If you see {rival} out there, keep an eye on him for me."
+      ],
+      "text": [
+        "Pleci și tu într-o aventură? Dacă-l vezi pe {rival} pe acolo, ai grijă de el în locul meu."
+      ]
+    }
+  ]
+}

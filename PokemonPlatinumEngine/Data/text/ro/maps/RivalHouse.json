@@ -1,0 +1,23 @@
+{
+  "displayName": {
+    "en": [
+      "{rival}'s Home"
+    ],
+    "text": [
+      "Casa lui {rival}"
+    ]
+  },
+  "people": {
+    "rival_mom": {
+      "name": {
+        "en": [
+          "{rival}'s Mom"
+        ],
+        "text": [
+          "Mama lui {rival}"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

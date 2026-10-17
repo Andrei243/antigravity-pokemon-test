@@ -1,0 +1,67 @@
+{
+  "people": {
+    "hiker": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      }
+    },
+    "camper_curtis": {
+      "name": {
+        "en": [
+          "Curtis"
+        ],
+        "text": [
+          "Curtis"
+        ]
+      },
+      "before": {
+        "en": [
+          "Camper Curtis: A trainer takes a challenge wherever it finds him. Even in a tunnel!"
+        ],
+        "text": [
+          "Campist Curtis: Un antrenor acceptă o provocare oriunde l-ar prinde. Chiar și într-un tunel!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Camper Curtis: Careful in caves. Wild Pokémon turn up anywhere in here, not only in grass."
+        ],
+        "text": [
+          "Campist Curtis: Ai grijă în peșteri. Aici Pokémonii sălbatici apar peste tot, nu doar în iarbă."
+        ]
+      }
+    },
+    "picnicker_diana": {
+      "name": {
+        "en": [
+          "Diana"
+        ],
+        "text": [
+          "Diana"
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Diana: I made it all the way through the cave! Let's have a battle to celebrate!"
+        ],
+        "text": [
+          "Excursionistă Diana: Am trecut prin toată peștera! Hai să sărbătorim cu o luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Diana: Well... I suppose losing is something to remember the day by, too."
+        ],
+        "text": [
+          "Excursionistă Diana: Ei... Și o înfrângere e un motiv să-ți amintești ziua, presupun."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -2418,5 +2418,30 @@
     "in": "în {place}"
   },
   "places": {
+    "TwinleafTown": "Orășelul Twinleaf", "SandgemTown": "Orășelul Sandgem", "FloaromaTown": "Orășelul Floaroma",
+    "SolaceonTown": "Orășelul Solaceon", "CelesticTown": "Orășelul Celestic",
+    "JubilifeCity": "Orașul Jubilife", "OreburghCity": "Orașul Oreburgh", "EternaCity": "Orașul Eterna",
+    "HearthomeCity": "Orașul Hearthome", "PastoriaCity": "Orașul Pastoria", "VeilstoneCity": "Orașul Veilstone",
+    "CanalaveCity": "Orașul Canalave", "SnowpointCity": "Orașul Snowpoint", "SunyshoreCity": "Orașul Sunyshore",
+    "Route201": "Ruta 201", "Route202": "Ruta 202", "Route203": "Ruta 203", "Route204": "Ruta 204", "Route205": "Ruta 205",
+    "Route206": "Ruta 206", "Route207": "Ruta 207", "Route208": "Ruta 208", "Route209": "Ruta 209", "Route210": "Ruta 210",
+    "Route211": "Ruta 211", "Route212": "Ruta 212", "Route213": "Ruta 213", "Route214": "Ruta 214", "Route215": "Ruta 215",
+    "Route216": "Ruta 216", "Route217": "Ruta 217", "Route218": "Ruta 218", "Route219": "Ruta 219", "Route220": "Ruta 220",
+    "Route221": "Ruta 221", "Route222": "Ruta 222", "Route223": "Ruta 223", "Route224": "Ruta 224", "Route225": "Ruta 225",
+    "Route226": "Ruta 226", "Route227": "Ruta 227", "Route228": "Ruta 228", "Route229": "Ruta 229", "Route230": "Ruta 230",
+    "LakeVerity": "Lacul Verity", "LakeValor": "Lacul Valor", "LakeAcuity": "Lacul Acuity",
+    "VerityLakefront": "Malul Verity", "ValorLakefront": "Malul Valor", "AcuityLakefront": "Malul Acuity",
+    "VerityCavern": "Grota Verity", "ValorCavern": "Grota Valor", "AcuityCavern": "Grota Acuity",
+    "OreburghGate": "Poarta Oreburgh", "OreburghMine": "Mina Oreburgh", "RavagedPath": "Cărarea Devastată",
+    "ValleyWindworks": "Centrala Eoliană", "FloaromaMeadow": "Pajiștea Floaroma", "EternaForest": "Pădurea Eterna",
+    "WaywardCave": "Peștera Rătăcită", "MtCoronet": "Muntele Coronet", "SpearPillar": "Coloana Suliței",
+    "SolaceonRuins": "Ruinele Solaceon", "RuinManiacCave": "Peștera Maniacului", "GreatMarsh": "Marea Mlaștină",
+    "TrophyGarden": "Grădina Trofeelor", "AmitySquare": "Piața Amity", "FuegoIronworks": "Turnătoria Fuego",
+    "IronIsland": "Insula de Fier", "VictoryRoad": "Drumul Victoriei", "PokemonLeague": "Liga Pokémon",
+    "DistortionWorld": "Lumea Distorsionată", "SendoffSpring": "Izvorul Despărțirii", "TurnbackCave": "Peștera Întoarcerii",
+    "SpringPath": "Cărarea Izvorului", "SnowpointTemple": "Templul Snowpoint", "FightArea": "Zona de Luptă",
+    "SurvivalArea": "Zona de Supraviețuire", "ResortArea": "Zona de Odihnă", "StarkMountain": "Muntele Stark",
+    "FullmoonIsland": "Insula Lunii Pline", "NewmoonIsland": "Insula Lunii Noi", "FlowerParadise": "Paradisul Florilor",
+    "SeabreakPath": "Cărarea Valurilor", "underground": "Subteranul"
   }
 }

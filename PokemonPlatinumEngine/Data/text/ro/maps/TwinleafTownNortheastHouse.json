@@ -1,0 +1,23 @@
+{
+  "displayName": {
+    "en": [
+      "Twinleaf Town"
+    ],
+    "text": [
+      "Orășelul Twinleaf"
+    ]
+  },
+  "people": {
+    "guitarist": {
+      "name": {
+        "en": [
+          "Guitarist"
+        ],
+        "text": [
+          "Chitaristul"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

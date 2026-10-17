@@ -75,13 +75,31 @@ public static partial class Text
 
     /// <summary>
     /// A line a data file gives in English (a region's professor and his lines, plan 18 · W1) as the chosen language
-    /// shows it: itself, in brackets under the pseudo-language. Another language's own words for such files are a
-    /// later session's (a table per language beside the file); until then they are English in every language.
+    /// shows it: the language's own line from its <c>Data/text/&lt;tag&gt;/data.json</c> (plan 17 · N6, a table keyed
+    /// by the English line itself, so a line rewritten in English finds nothing and is shown in English until it is
+    /// translated again), the English where the table has none, and in brackets under the pseudo-language.
     /// </summary>
     public static string OfData(string line)
     {
-        lock (gate) return (language ??= Core.Language.Of(English) ?? new Language()).Pseudo ? $"[{line}]" : line;
+        Language lang;
+        lock (gate) lang = language ??= Core.Language.Of(English) ?? new Language();
+        if (lang.Pseudo) return $"[{line}]";
+        if (lang.Tag == English) return line;
+        return DataTable(lang.Tag).TryGetValue(line, out var own) && own.Length > 0 ? own : line;
     }
+
+    private static readonly System.Collections.Concurrent.ConcurrentDictionary<string, IReadOnlyDictionary<string, string>> dataTables = new();
+
+    /// <summary>A language's table of the data files' lines (<see cref="OfData"/>), English line to its own; empty where it has none.</summary>
+    public static IReadOnlyDictionary<string, string> DataTable(string tag) => dataTables.GetOrAdd(tag, t =>
+    {
+        string? text = TranslationFiles.Reader(Path.Combine("text", t, "data.json"));
+        return text == null ? new Dictionary<string, string>()
+            : JsonSerializer.Deserialize<Dictionary<string, string>>(text, GameDataFiles.Json) ?? new Dictionary<string, string>();
+    });
+
+    /// <summary>Lets go of the data files' tables read, so the next line reads again (a test that swaps the reader).</summary>
+    public static void ForgetDataTables() => dataTables.Clear();
 
     /// <summary>Whether English has <paramref name="key"/>.</summary>
     public static bool Has(string key)

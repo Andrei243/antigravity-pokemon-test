@@ -1,0 +1,320 @@
+{
+  "people": {
+    "machop_1": {
+      "name": {
+        "en": [
+          "Machop"
+        ],
+        "text": [
+          "Machop"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Ma-ma-MACHOP!"
+        ],
+        "text": [
+          "Ma-ma-MACHOP!"
+        ]
+      }
+    },
+    "machop_2": {
+      "name": {
+        "en": [
+          "Machop"
+        ],
+        "text": [
+          "Machop"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hrrngh... Chop! Choooop!"
+        ],
+        "text": [
+          "Hrrngh... Chop! Choooop!"
+        ]
+      }
+    },
+    "machop_3": {
+      "name": {
+        "en": [
+          "Machop"
+        ],
+        "text": [
+          "Machop"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Machop! Chop, chop!"
+        ],
+        "text": [
+          "Machop! Chop, chop!"
+        ]
+      }
+    },
+    "rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      }
+    },
+    "guitarist": {
+      "name": {
+        "en": [
+          "Guitarist"
+        ],
+        "text": [
+          "Chitaristul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A Fossil is a letter from long, long ago, posted in rock.",
+          "The miners dig them up with the coal now and then."
+        ],
+        "text": [
+          "O Fosilă e o scrisoare de demult, demult, trimisă prin piatră.",
+          "Minerii le mai scot uneori odată cu cărbunele."
+        ]
+      }
+    },
+    "school_kid_f": {
+      "name": {
+        "en": [
+          "Schoolgirl"
+        ],
+        "text": [
+          "Școlărița"
+        ]
+      }
+    },
+    "camper": {
+      "name": {
+        "en": [
+          "Camper"
+        ],
+        "text": [
+          "Campistul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When I run with my Running Shoes on, I feel like the whole street is watching.",
+          "...It probably is. People who look your way sometimes want a battle."
+        ],
+        "text": [
+          "Când alerg cu Pantofii de Alergare, simt că toată strada se uită la mine.",
+          "...Probabil chiar se uită. Cei care se uită la tine vor uneori o luptă."
+        ]
+      }
+    },
+    "battle_girl_1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Roark, the Gym Leader, is as often down the mine as in his Gym.",
+          "If the Gym is quiet, you know where to look."
+        ],
+        "text": [
+          "Roark, Liderul de Arenă, stă la fel de des în mină ca în Arena lui.",
+          "Dacă Arena e liniștită, știi unde să cauți."
+        ]
+      }
+    },
+    "battle_girl_2": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When I feel fit and strong I can't stop smiling.",
+          "And when I'm smiling I feel fit and strong. It works both ways!"
+        ],
+        "text": [
+          "Când mă simt în formă și puternică, nu mă pot opri din zâmbit.",
+          "Iar când zâmbesc, mă simt în formă și puternică. Merge în ambele sensuri!"
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "East of here a mountain stands over everything: Mt. Coronet.",
+          "It cuts Sinnoh in two, right down the middle."
+        ],
+        "text": [
+          "La est de aici se înalță un munte peste toate: Muntele Coronet.",
+          "Împarte Sinnoh-ul în două, chiar pe mijloc."
+        ]
+      }
+    },
+    "pokefan_f": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The whole city is proud of its mine.",
+          "The galleries run out under the sea these days. Under the sea! Imagine it."
+        ],
+        "text": [
+          "Tot orașul e mândru de mina lui.",
+          "Galeriile ajung acum până sub mare. Sub mare! Închipuie-ți."
+        ]
+      }
+    },
+    "worker_1": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          "Muncitorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "These vents let the hot air out of the mine and the fresh air in.",
+          "Every time I look down one I want to shout hello."
+        ],
+        "text": [
+          "Gurile astea de aerisire scot aerul cald din mină și bagă aer proaspăt.",
+          "De fiecare dată când mă uit într-una, îmi vine să strig „bună ziua”."
+        ]
+      }
+    },
+    "worker_2": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          "Muncitorul"
+        ]
+      }
+    },
+    "worker_3": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          "Muncitorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "It's hard work, this. No two ways about it.",
+          "But with a Pokémon working beside you the day goes twice as fast."
+        ],
+        "text": [
+          "E muncă grea, asta. N-ai ce zice.",
+          "Dar cu un Pokémon care muncește alături de tine, ziua trece de două ori mai repede."
+        ]
+      }
+    },
+    "worker_4": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          "Muncitorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Our Gym Leader is young, but he's the mine's safety supervisor as well.",
+          "Knows his rocks, that one, in battle and out of it."
+        ],
+        "text": [
+          "Liderul nostru de Arenă e tânăr, dar e și responsabilul cu siguranța minei.",
+          "Se pricepe la pietre, omul ăsta, și în luptă, și în afara ei."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "map_signpost_west": {
+      "en": [
+        "Oreburgh City\nThe city of energy, built on coal."
+      ],
+      "text": [
+        "Orașul Oreburgh\nOrașul energiei, clădit pe cărbune."
+      ]
+    },
+    "map_signpost_east": {
+      "en": [
+        "Oreburgh City\nThe city of energy, built on coal."
+      ],
+      "text": [
+        "Orașul Oreburgh\nOrașul energiei, clădit pe cărbune."
+      ]
+    },
+    "gym_signpost": {
+      "en": [
+        "Oreburgh City Pokémon Gym\nLeader: Roark\nThe rock-solid leader!"
+      ],
+      "text": [
+        "Arena Pokémon a Orașului Oreburgh\nLider: Roark\nLiderul solid ca stânca!"
+      ]
+    },
+    "signboard_oreburgh_mining_museum": {
+      "en": [
+        "Oreburgh Mining Museum\nCoal, and the people who dig it."
+      ],
+      "text": [
+        "Muzeul Mineritului din Oreburgh\nCărbunele și oamenii care îl scot."
+      ]
+    },
+    "signboard_oreburgh_mine": {
+      "en": [
+        "Oreburgh Mine\nMind the Pokémon at work!"
+      ],
+      "text": [
+        "Mina Oreburgh\nAtenție la Pokémonii la lucru!"
+      ]
+    }
+  }
+}

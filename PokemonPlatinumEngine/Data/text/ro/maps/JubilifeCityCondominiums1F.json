@@ -1,0 +1,79 @@
+{
+  "displayName": {
+    "en": [
+      "Jubilife City"
+    ],
+    "text": [
+      "Orașul Jubilife"
+    ]
+  },
+  "people": {
+    "expert_f": {
+      "name": {
+        "en": [
+          "Lady"
+        ],
+        "text": [
+          "Doamna"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Good day, dear. Do look at my Pokétch! The very newest model.",
+          "I had one on my wrist the day they came out. A Trainer without a Pokétch is simply lost, wouldn't you say?"
+        ],
+        "text": [
+          "Bună ziua, dragă. Ia uită-te la Pokétch-ul meu! Cel mai nou model.",
+          "Mi-am pus unul la încheietură din prima zi când au apărut. Un Antrenor fără Pokétch e pur și simplu pierdut, nu crezi?"
+        ]
+      }
+    },
+    "pachirisu": {
+      "name": {
+        "en": [
+          "Pachirisu"
+        ],
+        "text": [
+          "Pachirisu"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pachirisu: Chipa-chii?"
+        ],
+        "text": [
+          "Pachirisu: Chipa-chii?"
+        ]
+      }
+    },
+    "pikachu": {
+      "name": {
+        "en": [
+          "Pikachu"
+        ],
+        "text": [
+          "Pikachu"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pikachu: Pika pi!"
+        ],
+        "text": [
+          "Pikachu: Pika pi!"
+        ]
+      }
+    },
+    "beauty": {
+      "name": {
+        "en": [
+          "Beauty"
+        ],
+        "text": [
+          "Frumoasa"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

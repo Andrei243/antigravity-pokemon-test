@@ -1,0 +1,61 @@
+{
+  "displayName": {
+    "en": [
+      "Oreburgh City"
+    ],
+    "text": [
+      "Orașul Oreburgh"
+    ]
+  },
+  "people": {
+    "guitarist": {
+      "name": {
+        "en": [
+          "Guitarist"
+        ],
+        "text": [
+          "Chitaristul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every Pokémon has a knack of its own that works without being told. It's called an Ability."
+        ],
+        "text": [
+          "Fiecare Pokémon are un talent al lui care merge fără să-i spui nimic. I se spune Abilitate."
+        ]
+      }
+    },
+    "pokemon_breeder_f": {
+      "name": {
+        "en": [
+          "Pokémon Breeder"
+        ],
+        "text": [
+          "Crescătoare de Pokémoni"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Ability I like best is my Pachirisu's: Pickup.",
+          "My little darling keeps finding things people have dropped, and I never even see it happen!"
+        ],
+        "text": [
+          "Abilitatea mea preferată e cea a lui Pachirisu al meu: Pickup.",
+          "Micuțul meu tot găsește lucruri pierdute de oameni, și eu nici nu-l văd când le găsește!"
+        ]
+      }
+    },
+    "collector": {
+      "name": {
+        "en": [
+          "Collector"
+        ],
+        "text": [
+          "Colecționarul"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

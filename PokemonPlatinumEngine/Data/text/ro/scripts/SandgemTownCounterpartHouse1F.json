@@ -1,0 +1,62 @@
+{
+  "Grandfather": [
+    {
+      "en": [
+        "So that Rowan is back, is he? A remarkable man. He was studying Pokémon before I had a grey hair on my head.",
+        "My son and my grandchild both help him with his research these days."
+      ],
+      "text": [
+        "Deci Rowan s-a întors, zici? Un om remarcabil. Studia Pokémonii pe când eu n-aveam niciun fir alb în păr.",
+        "Fiul meu și nepotul meu îl ajută amândoi la cercetări în zilele noastre."
+      ]
+    },
+    {
+      "en": [
+        "My word! Every Pokémon of Sinnoh in your Pokédex? Rowan must be beside himself. Think what it means for his research!",
+        "But mark this, young Trainer. There are three hundred kinds of Pokémon in this world... no, four hundred...",
+        "No, no, no! Far, far more than that!"
+      ],
+      "text": [
+        "Ei, poftim! Toți Pokémonii din Sinnoh în Pokédexul tău? Rowan trebuie să fie în al nouălea cer. Gândește-te ce înseamnă asta pentru cercetarea lui!",
+        "Dar să știi un lucru, dragă. Pe lumea asta sunt trei sute de feluri de Pokémoni... nu, patru sute...",
+        "Nu, nu, nu! Mult, mult mai multe!"
+      ]
+    }
+  ],
+  "LittleSister": [
+    {
+      "en": [
+        "Who are you?",
+        "... Oh! You're {player}? You're doing that Pokédex thing for the professor!"
+      ],
+      "text": [
+        "Cine ești?",
+        "... A! Tu ești {player}? Tu faci chestia aia cu Pokédexul pentru profesor!"
+      ]
+    },
+    {
+      "en": [
+        "Wow! Just like my big sister! Go for it!"
+      ],
+      "text": [
+        "Uau! Exact ca sora mea mai mare! Spor!"
+      ]
+    },
+    {
+      "en": [
+        "Wow! Just like my big brother! Go for it!"
+      ],
+      "text": [
+        "Uau! Exact ca fratele meu mai mare! Spor!"
+      ]
+    },
+    {
+      "en": [
+        "Oh, hi, {player}! Wait till you hear what was on TV! I want you to do even better than {assistant}, so listen!"
+      ],
+      "text": [
+        "A, bună, {player}! Stai să auzi ce-a fost la TV! Vreau să te descurci chiar mai bine decât {assistant}, așa că ascultă!"
+      ]
+    }
+  ]
+}

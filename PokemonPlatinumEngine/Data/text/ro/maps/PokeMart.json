@@ -1,0 +1,71 @@
+{
+  "displayName": {
+    "en": [
+      "Poké Mart"
+    ],
+    "text": [
+      "Poké Mart"
+    ]
+  },
+  "people": {
+    "cashier_f": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome to the Sandgem Poké Mart! How may I serve you today?"
+        ],
+        "text": [
+          "Vânzătoarea: Bine ai venit la Poké Martul din Sandgem! Cu ce te pot ajuta azi?"
+        ]
+      }
+    },
+    "school_kid_m": {
+      "name": {
+        "en": [
+          "Schoolboy"
+        ],
+        "text": [
+          "Școlarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Seen a Pokémon you've simply got to have? Throw a Poké Ball at it!",
+          "I never leave home without a few."
+        ],
+        "text": [
+          "Ai văzut un Pokémon pe care pur și simplu trebuie să-l ai? Aruncă un Poké Ball în el!",
+          "Eu nu plec niciodată de acasă fără câteva."
+        ]
+      }
+    },
+    "pokemon_breeder_m": {
+      "name": {
+        "en": [
+          "Pokémon Breeder"
+        ],
+        "text": [
+          "Crescător de Pokémoni"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A Pokémon with no HP left can't battle on.",
+          "So I'm stocking up on Potions before that happens to any of mine!"
+        ],
+        "text": [
+          "Un Pokémon fără HP nu mai poate lupta.",
+          "Așa că îmi fac provizii de Potion înainte să i se întâmple asta vreunuia de-al meu!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

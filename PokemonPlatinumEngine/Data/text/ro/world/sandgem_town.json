@@ -1,0 +1,162 @@
+{
+  "people": {
+    "sandgem_counterpart": {
+      "name": {
+        "en": [
+          "{assistant}"
+        ],
+        "text": [
+          "{assistant}"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "{assistant}: The Pokémon Center has the red roof, and the Poké Mart the blue one.",
+          "{assistant}: Tell your family about the Pokédex before you go too far, {player}!"
+        ],
+        "text": [
+          "{assistant}: Centrul Pokémon are acoperiș roșu, iar Poké Martul albastru.",
+          "{assistant}: Spune-le alor tăi despre Pokédex înainte să pleci prea departe, {player}!"
+        ]
+      }
+    },
+    "rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "{rival}: Out of my way! I've got places to be!"
+        ],
+        "text": [
+          "{rival}: Fă-mi loc! Am treabă!"
+        ]
+      }
+    },
+    "prof_rowan": {
+      "name": {
+        "en": [
+          "Prof. Rowan"
+        ],
+        "text": [
+          "Prof. Rowan"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Prof. Rowan: Hm. Off you go, then."
+        ],
+        "text": [
+          "Prof. Rowan: Hm. Hai, la drum."
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Follow the sand south and you come to the sea.",
+          "You'd need a Pokémon that can swim to go any further, though."
+        ],
+        "text": [
+          "Dacă mergi pe nisip spre sud, ajungi la mare.",
+          "Ca să mergi mai departe îți trebuie însă un Pokémon care știe să înoate."
+        ]
+      }
+    },
+    "pokemon_breeder_m": {
+      "name": {
+        "en": [
+          "Breeder"
+        ],
+        "text": [
+          "Crescătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Pokémon Center heals your whole team, and it never costs a thing.",
+          "Look for the red roof."
+        ],
+        "text": [
+          "Centrul Pokémon îți vindecă toată echipa și nu te costă nimic.",
+          "Caută acoperișul roșu."
+        ]
+      }
+    },
+    "pokemon_breeder_f": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Professor studies how Pokémon evolve.",
+          "People bring him Pokémon from all over Sinnoh."
+        ],
+        "text": [
+          "Profesorul studiază cum evoluează Pokémonii.",
+          "Oamenii îi aduc Pokémoni din tot Sinnoh-ul."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "map_signpost": {
+      "en": [
+        "Sandgem Town\nTown of Sand and Sparkle!\nNorth: Route 202 | West: Route 201"
+      ],
+      "text": [
+        "Orășelul Sandgem\nOrășelul nisipului sclipitor!\nNord: Ruta 202 | Vest: Ruta 201"
+      ]
+    },
+    "signboard_pokemon_research_lab": {
+      "en": [
+        "Pokémon Research Lab"
+      ],
+      "text": [
+        "Laboratorul de Cercetare Pokémon"
+      ]
+    },
+    "signboard_counterpart_house": {
+      "en": [
+        "{assistant}'s House"
+      ],
+      "text": [
+        "Casa lui {assistant}"
+      ]
+    },
+    "signboard_pokemon_center": {
+      "en": [
+        "Pokémon Center\nRest your tired Pokémon here."
+      ],
+      "text": [
+        "Centrul Pokémon\nOdihnește-ți aici Pokémonii obosiți."
+      ]
+    },
+    "signboard_poke_mart": {
+      "en": [
+        "Poké Mart\nEverything a trainer needs."
+      ],
+      "text": [
+        "Poké Mart\nTot ce-i trebuie unui antrenor."
+      ]
+    }
+  }
+}

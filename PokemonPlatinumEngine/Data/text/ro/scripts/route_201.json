@@ -1,0 +1,560 @@
+{
+  "RowanAppears": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "There you are, {player}! Way too slow! That's a ten-million fine!"
+      ],
+      "text": [
+        "Aici erai, {player}! Prea încet! Amendă zece milioane!"
+      ]
+    },
+    {
+      "en": [
+        "Listen. Professor Rowan's back, right? So he's got to have loads of Pokémon. We ask him, he gives us one each. Easy!"
+      ],
+      "text": [
+        "Ascultă. Profesorul Rowan s-a întors, da? Deci sigur are o grămadă de Pokémoni. Noi îl rugăm, el ne dă câte unul. Simplu!"
+      ]
+    },
+    {
+      "en": [
+        "But the tall grass is in the way... So here's the plan: we run through it so fast the wild Pokémon can't catch us!"
+      ],
+      "text": [
+        "Dar ne stă în cale iarba înaltă... Deci uite planul: trecem prin ea atât de repede, că Pokémonii sălbatici nu ne pot prinde!"
+      ]
+    },
+    {
+      "en": [
+        "Ready? On three. One... two..."
+      ],
+      "text": [
+        "Gata? La trei. Unu... doi..."
+      ]
+    },
+    {
+      "en": [
+        "???"
+      ],
+      "text": [
+        "???"
+      ]
+    },
+    {
+      "en": [
+        "Wait! Stay right where you are!"
+      ],
+      "text": [
+        "Stați! Nu vă mișcați!"
+      ]
+    },
+    {
+      "en": [
+        "Prof. Rowan"
+      ],
+      "text": [
+        "Prof. Rowan"
+      ]
+    },
+    {
+      "en": [
+        "What do you think you are doing? Walking into tall grass without a Pokémon of your own is how people get hurt!"
+      ],
+      "text": [
+        "Ce credeți că faceți? Așa pățesc oamenii, intrând în iarba înaltă fără un Pokémon al lor!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "......Huh? Hey! You're Professor Rowan! From the TV!"
+      ],
+      "text": [
+        "......Hă? Hei! Sunteți profesorul Rowan! De la TV!"
+      ]
+    },
+    {
+      "en": [
+        "Prof. Rowan"
+      ],
+      "text": [
+        "Prof. Rowan"
+      ]
+    },
+    {
+      "en": [
+        "Hmm... Should I...? No. But then again..."
+      ],
+      "text": [
+        "Hmm... Oare să...? Nu. Totuși..."
+      ]
+    },
+    {
+      "en": [
+        "Prof. Rowan"
+      ],
+      "text": [
+        "Prof. Rowan"
+      ]
+    },
+    {
+      "en": [
+        "Tell me truthfully. Do you love Pokémon?"
+      ],
+      "text": [
+        "Spune-mi sincer. Iubești Pokémonii?"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Hey! What kind of answer is that? Tell him the truth!"
+      ],
+      "text": [
+        "Hei! Ce fel de răspuns e ăsta? Spune-i adevărul!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "See? We both love Pokémon! And that's never, ever going to change. Right, {player}?"
+      ],
+      "text": [
+        "Vedeți? Amândoi iubim Pokémonii! Și asta n-o să se schimbe niciodată. Așa-i, {player}?"
+      ]
+    },
+    {
+      "en": [
+        "Right?"
+      ],
+      "text": [
+        "Așa-i?"
+      ]
+    },
+    {
+      "en": [
+        "Ha ha, very funny. That joke's getting old already! Let's try that again."
+      ],
+      "text": [
+        "Ha, ha, foarte amuzant. Gluma asta s-a învechit deja! Hai încă o dată."
+      ]
+    },
+    {
+      "en": [
+        "Prof. Rowan"
+      ],
+      "text": [
+        "Prof. Rowan"
+      ]
+    },
+    {
+      "en": [
+        "Hmm... Two children charging into tall grass. What would they do with Pokémon of their own, I wonder?"
+      ],
+      "text": [
+        "Hmm... Doi copii care dau năvală în iarba înaltă. Oare ce-ar face ei cu Pokémoni numai ai lor?"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Then give one to my friend, at least! Running into the grass was my idea, not theirs."
+      ],
+      "text": [
+        "Atunci dați-i măcar celuilalt unul! Ideea cu iarba a fost a mea!"
+      ]
+    },
+    {
+      "en": [
+        "Prof. Rowan"
+      ],
+      "text": [
+        "Prof. Rowan"
+      ]
+    },
+    {
+      "en": [
+        "...You would speak up for your friend. Very well. I will trust you both with a Pokémon."
+      ],
+      "text": [
+        "...Iei apărarea celuilalt. Prea bine. Vă încredințez amândurora câte un Pokémon."
+      ]
+    },
+    {
+      "en": [
+        "But promise me you will never be so reckless again. Now, where has my briefcase got to...?"
+      ],
+      "text": [
+        "Dar promiteți-mi că nu veți mai fi niciodată atât de nesăbuiți. Acum, unde mi-o fi servieta...?"
+      ]
+    },
+    {
+      "en": [
+        "{assistant}"
+      ],
+      "text": [
+        "{assistant}"
+      ]
+    },
+    {
+      "en": [
+        "Professor! You left your briefcase by the lake! ...Wait. Are you giving those Pokémon to these two?"
+      ],
+      "text": [
+        "Profesore! V-ați lăsat servieta lângă lac! ...Stați. Le dați Pokémonii ăștia lor doi?"
+      ]
+    },
+    {
+      "en": [
+        "Prof. Rowan"
+      ],
+      "text": [
+        "Prof. Rowan"
+      ]
+    },
+    {
+      "en": [
+        "I am. Today is the day these two set out."
+      ],
+      "text": [
+        "Da. Azi e ziua în care pornesc la drum."
+      ]
+    },
+    {
+      "en": [
+        "{player}, the Pokémon are in that briefcase. Open it and choose the one you want."
+      ],
+      "text": [
+        "{player}, Pokémonii sunt în servieta aceea. Deschide-o și alege-l pe care-l vrei."
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Whoa, for real? You go first, {player}! I'll take whichever's left. Well, the best one that's left!"
+      ],
+      "text": [
+        "Uau, pe bune? Începe tu, {player}! Eu îl iau pe care rămâne. Adică pe cel mai bun care rămâne!"
+      ]
+    }
+  ],
+  "ChooseFirst": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Hey, where are you going? Open the briefcase and pick your Pokémon first!"
+      ],
+      "text": [
+        "Hei, unde pleci? Deschide servieta și alege-ți întâi Pokémonul!"
+      ]
+    }
+  ],
+  "ChooseFirstWest": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Hey, the lake can wait! Open the briefcase and pick your Pokémon first!"
+      ],
+      "text": [
+        "Hei, lacul mai poate aștepta! Deschide servieta și alege-ți întâi Pokémonul!"
+      ]
+    }
+  ],
+  "ChooseFirstSouth": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Whoa, you're not going home now, are you? Pick your Pokémon from the briefcase first!"
+      ],
+      "text": [
+        "Uau, doar nu pleci acasă acum, nu? Alege-ți întâi Pokémonul din servietă!"
+      ]
+    }
+  ],
+  "Briefcase": [
+    {
+      "en": [
+        "{player} received the {starter}!"
+      ],
+      "text": [
+        "{player} a primit {starter}!"
+      ]
+    },
+    {
+      "en": [
+        "Prof. Rowan"
+      ],
+      "text": [
+        "Prof. Rowan"
+      ]
+    },
+    {
+      "en": [
+        "And {rival} has chosen {rivalstarter}. Hm. You both chose well. Like you, those Pokémon have never seen the world."
+      ],
+      "text": [
+        "Iar {rival} l-a ales pe {rivalstarter}. Hm. Ați ales bine amândoi. La fel ca voi, Pokémonii aceștia n-au văzut încă lumea."
+      ]
+    },
+    {
+      "en": [
+        "If anything troubles you, come and see me at my lab in Sandgem Town."
+      ],
+      "text": [
+        "Dacă ceva vă îngrijorează, veniți la mine la laborator, în Orășelul Sandgem."
+      ]
+    },
+    {
+      "en": [
+        "{assistant}"
+      ],
+      "text": [
+        "{assistant}"
+      ]
+    },
+    {
+      "en": [
+        "Professor, wait for me! ...Sorry, coming through!"
+      ],
+      "text": [
+        "Profesore, așteptați-mă! ...Pardon, fac loc!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Professor Rowan's actually kind of nice, huh? He looks so scary on TV."
+      ],
+      "text": [
+        "Profesorul Rowan e chiar de treabă, nu? La TV pare atât de înfricoșător."
+      ]
+    },
+    {
+      "en": [
+        "Hey, {player}! Let's see what our Pokémon can do!"
+      ],
+      "text": [
+        "Hei, {player}! Hai să vedem ce pot Pokémonii noștri!"
+      ]
+    },
+    {
+      "en": [
+        "You're up for a battle, right?"
+      ],
+      "text": [
+        "Ești gata de o luptă, nu?"
+      ]
+    },
+    {
+      "en": [
+        "Come on, don't be like that! Just one battle!"
+      ],
+      "text": [
+        "Haide, nu fi așa! Doar o luptă!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Whew... That wore me out! I'm going home to rest. My Pokémon too!"
+      ],
+      "text": [
+        "Pfiu... Am obosit! Mă duc acasă să mă odihnesc. Și Pokémonul meu!"
+      ]
+    },
+    {
+      "en": [
+        "Whoa, I won? I actually won! Battling with Pokémon is the best!"
+      ],
+      "text": [
+        "Uau, am câștigat? Chiar am câștigat! Luptele cu Pokémoni sunt cele mai tari!"
+      ]
+    }
+  ],
+  "OffToTheLake": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Took you long enough! I want to go and thank Professor Rowan properly."
+      ],
+      "text": [
+        "Ți-a luat ceva timp! Vreau să-i mulțumesc cum se cuvine profesorului Rowan."
+      ]
+    },
+    {
+      "en": [
+        "But first! You know the lake past the western end of this road? They say a legendary Pokémon lives in it!"
+      ],
+      "text": [
+        "Dar întâi! Știi lacul de după capătul vestic al drumului? Se zice că în el trăiește un Pokémon legendar!"
+      ]
+    },
+    {
+      "en": [
+        "If we caught it, the professor would be so impressed! Race you there!"
+      ],
+      "text": [
+        "Dacă l-am prinde, profesorul ar fi uimit! Hai la întrecere până acolo!"
+      ]
+    }
+  ],
+  "NotHome": [
+    {
+      "en": [
+        "{rival} ran off toward the lake at the western end of this road. Better catch up with him!"
+      ],
+      "text": [
+        "{rival} a fugit spre lacul de la capătul vestic al drumului. Ar fi bine să-l prinzi din urmă!"
+      ]
+    }
+  ],
+  "NotSandgem": [
+    {
+      "en": [
+        "{rival} ran off toward the lake at the western end of this road. Better catch up with him!"
+      ],
+      "text": [
+        "{rival} a fugit spre lacul de la capătul vestic al drumului. Ar fi bine să-l prinzi din urmă!"
+      ]
+    }
+  ],
+  "Rival": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "My Pokémon and I are going to be the strongest ever. Just watch!"
+      ],
+      "text": [
+        "Eu și Pokémonul meu o să fim cei mai puternici din toate timpurile. O să vezi!"
+      ]
+    },
+    {
+      "en": [
+        "Go on, you choose first! Then I'll take the best one that's left!"
+      ],
+      "text": [
+        "Hai, alege tu întâi! Apoi îl iau eu pe cel mai bun care rămâne!"
+      ]
+    }
+  ],
+  "Rowan": [
+    {
+      "en": [
+        "Prof. Rowan"
+      ],
+      "text": [
+        "Prof. Rowan"
+      ]
+    },
+    {
+      "en": [
+        "The Pokémon are in the briefcase. Go on, choose one."
+      ],
+      "text": [
+        "Pokémonii sunt în servietă. Hai, alege unul."
+      ]
+    }
+  ],
+  "MartWorker": [
+    {
+      "en": [
+        "I work at the Poké Mart in Sandgem Town. Here's a free sample to try out!"
+      ],
+      "text": [
+        "Lucrez la Poké Martul din Orășelul Sandgem. Poftim o mostră gratuită, s-o încerci!"
+      ]
+    }
+  ]
+}

@@ -268,6 +268,28 @@ public class ContentTests
     }
 
     [Fact]
+    public void ATranslatedLineThatRunsOutOfTheBoxOrCannotBeDrawnIsNamed()
+    {
+        // Plan 17 · N6: a language's own lines are held to the text box as the English ones are
+        using var folder = Sound();
+        string wide = string.Join(" ", Enumerable.Repeat("Cuvintele acestea tot merg și merg până se umple caseta, apoi mai merg puțin.", 5));
+        folder.Write("text/ro/scripts/test_town.json",
+            "{ \"Hiker\": [ { \"en\": [ \"The mountain is that way.\" ], \"text\": [ \"" + wide + "\" ] } ],"
+            + " \"Door\": [ { \"en\": [ \"It is locked.\" ], \"text\": [ \"E încuiat ♪\" ] } ],"
+            + " \"Stops\": [ { \"en\": [ \"Stale English.\" ], \"text\": [ \"" + wide + "\" ] } ] }");
+        folder.Write("text/ro/world/test_town.json",
+            "{ \"people\": { \"lass\": { \"dialog\": { \"en\": [ \"x\" ], \"text\": [ \"" + wide + "\" ] } } }, \"signs\": { \"map_signpost\": { \"en\": [ \"x\" ], \"text\": [ \"Orășelul Test\\nE scurt.\" ] } } }");
+        var found = folder.Check();
+
+        Has(found, Kind.TooWide, "text/ro/scripts/test_town.json", "Hiker #0", "rows and the text box holds 3");
+        Has(found, Kind.Character, "text/ro/scripts/test_town.json", "Door #0", "U+266A");
+        Has(found, Kind.TooWide, "text/ro/world/test_town.json", "lass", "rows and the text box holds 3");
+        // A stale entry is shown in English, which the English check holds already; a sign that fits is no finding
+        Assert.DoesNotContain(found, f => f.Name == "Stops #0");
+        Assert.DoesNotContain(found, f => f.File == "text/ro/world/test_town.json" && f.Name == "map_signpost");
+    }
+
+    [Fact]
     public void WhatWouldStopTheGameIsNamedToo()
     {
         // A trainer the table lacks: the world would not load

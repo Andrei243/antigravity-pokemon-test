@@ -1,0 +1,51 @@
+{
+  "people": {
+    "cyclist_f": {
+      "name": {
+        "en": [
+          "Cyclist"
+        ],
+        "text": [
+          "Biciclista"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "See the humps in the floor down here?",
+          "Take them fast on a Bicycle and you fly. Nothing feels better!"
+        ],
+        "text": [
+          "Vezi cocoașele din podea de aici de jos?",
+          "Ia-le în viteză pe bicicletă și zbori. Nimic nu se compară!"
+        ]
+      }
+    },
+    "veteran_grant": {
+      "name": {
+        "en": [
+          "Grant"
+        ],
+        "text": [
+          "Grant"
+        ]
+      },
+      "before": {
+        "en": [
+          "Veteran Grant: A veteran, yes. An old man, no! Don't you go easy on me!"
+        ],
+        "text": [
+          "Veteran Grant: Veteran, da. Moș, nu! Să nu mă menajezi!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Veteran Grant: Hah! So young, and already this good. I'll stay young at heart and try again."
+        ],
+        "text": [
+          "Veteran Grant: Ha! Atâta tinerețe și deja atâta talent. Rămân tânăr la suflet și mai încerc o dată."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

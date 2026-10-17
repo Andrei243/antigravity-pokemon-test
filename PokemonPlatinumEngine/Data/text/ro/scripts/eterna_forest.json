@@ -1,0 +1,204 @@
+{
+  "Join": [
+    {
+      "en": [
+        "Cheryl"
+      ],
+      "text": [
+        "Cheryl"
+      ]
+    },
+    {
+      "en": [
+        "Oh, hello! My name is Cheryl. I wanted to go through the forest, but I heard Team Galactic is about, and..."
+      ],
+      "text": [
+        "O, bună! Mă numesc Cheryl. Voiam să trec prin pădure, dar am auzit că Echipa Galactic e pe aici, și..."
+      ]
+    },
+    {
+      "en": [
+        "Would you let me come along with you? My Pokémon is a fine healer, and I'll keep yours in good shape as we go."
+      ],
+      "text": [
+        "M-ai lăsa să vin cu tine? Pokémonul meu vindecă foarte bine și o să-ți țin Pokémonii în formă pe drum."
+      ]
+    },
+    {
+      "en": [
+        "There you are! Shall we go through the forest together after all?"
+      ],
+      "text": [
+        "Aici erai! Până la urmă, trecem prin pădure împreună?"
+      ]
+    },
+    {
+      "en": [
+        "{player} decided to go through the forest with Cheryl."
+      ],
+      "text": [
+        "{player} a hotărât să treacă prin pădure cu Cheryl."
+      ]
+    },
+    {
+      "en": [
+        "Cheryl"
+      ],
+      "text": [
+        "Cheryl"
+      ]
+    },
+    {
+      "en": [
+        "Thank you! I'll heal your Pokémon after every battle, so don't hold back."
+      ],
+      "text": [
+        "Mulțumesc! O să-ți vindec Pokémonii după fiecare luptă, așa că nu te abține."
+      ]
+    }
+  ],
+  "Wait": [
+    {
+      "en": [
+        "Cheryl"
+      ],
+      "text": [
+        "Cheryl"
+      ]
+    },
+    {
+      "en": [
+        "Oh, you're going back out? Then I'll wait for you here."
+      ],
+      "text": [
+        "O, ieși iar afară? Atunci te aștept aici."
+      ]
+    }
+  ],
+  "Part": [
+    {
+      "en": [
+        "Cheryl"
+      ],
+      "text": [
+        "Cheryl"
+      ]
+    },
+    {
+      "en": [
+        "We made it through! Thank you so much. I don't think I could have done it on my own."
+      ],
+      "text": [
+        "Am reușit! Mulțumesc mult. Nu cred că m-aș fi descurcat singură."
+      ]
+    },
+    {
+      "en": [
+        "Please take this, as a token of my thanks."
+      ],
+      "text": [
+        "Te rog, ia asta, ca semn de mulțumire."
+      ]
+    },
+    {
+      "en": [
+        "Cheryl"
+      ],
+      "text": [
+        "Cheryl"
+      ]
+    },
+    {
+      "en": [
+        "I'm sure we'll meet again somewhere. Take care of yourself, {player}!"
+      ],
+      "text": [
+        "Sigur o să ne mai întâlnim pe undeva. Ai grijă de tine, {player}!"
+      ]
+    }
+  ],
+  "Cheryl": [
+    {
+      "en": [
+        "Two Pokémon on the field at once, side by side! It still takes me by surprise, {player}."
+      ],
+      "text": [
+        "Doi Pokémoni deodată pe teren, unul lângă altul! Tot mă surprinde, {player}."
+      ]
+    },
+    {
+      "en": [
+        "My Pokémon may not look like much in battle, but there's no finer healer."
+      ],
+      "text": [
+        "Pokémonul meu poate nu arată cine știe ce în luptă, dar nu există vindecător mai bun."
+      ]
+    },
+    {
+      "en": [
+        "Battling beside you, {player}, my heart is racing! What a feeling!"
+      ],
+      "text": [
+        "Când lupt alături de tine, {player}, îmi bate inima tare! Ce senzație!"
+      ]
+    },
+    {
+      "en": [
+        "I'll wait for you here. Let's go through the forest together when you're ready."
+      ],
+      "text": [
+        "Te aștept aici. Trecem prin pădure împreună când ești gata."
+      ]
+    }
+  ],
+  "Gardenia": [
+    {
+      "en": [
+        "Gardenia"
+      ],
+      "text": [
+        "Gardenia"
+      ]
+    },
+    {
+      "en": [
+        "Oh, hi there! Did the rumours bring you out here as well?"
+      ],
+      "text": [
+        "O, bună! Și pe tine te-au adus încoace zvonurile?"
+      ]
+    },
+    {
+      "en": [
+        "Everyone's been whispering about the ghost Pokémon of the Old Chateau. And there's talk of creepy shadows too."
+      ],
+      "text": [
+        "Toată lumea șușotește despre Pokémonul-fantomă de la Old Chateau. Și se vorbește și despre niște umbre înfiorătoare."
+      ]
+    },
+    {
+      "en": [
+        "I ought to go and look myself, but going in there is... well, a Gym Leader is a busy person, you know."
+      ],
+      "text": [
+        "Ar trebui să mă duc să mă uit chiar eu, dar să intru acolo e... ei, un Lider de Arenă e un om ocupat, știi."
+      ]
+    },
+    {
+      "en": [
+        "Far too busy to go poking about old houses. That's the only reason, honest! I'm n-not frightened or anything!"
+      ],
+      "text": [
+        "Mult prea ocupat ca să umble prin case vechi. Ăsta e singurul motiv, zău! N-nu mi-e frică deloc!"
+      ]
+    },
+    {
+      "en": [
+        "W-well then, have fun exploring!"
+      ],
+      "text": [
+        "B-bine atunci, distracție plăcută la explorat!"
+      ]
+    }
+  ]
+}

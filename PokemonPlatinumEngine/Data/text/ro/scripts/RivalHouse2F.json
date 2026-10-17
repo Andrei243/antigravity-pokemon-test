@@ -1,0 +1,36 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Bag... got it. Notebook... got it. Okay! Now all I need is..."
+      ],
+      "text": [
+        "Rucsac... gata. Carnețel... gata. Bun! Acum nu-mi mai trebuie decât..."
+      ]
+    },
+    {
+      "en": [
+        "{player}! What are you doing in here? We're going to see Professor Rowan, remember?"
+      ],
+      "text": [
+        "{player}! Ce cauți aici? Mergem la profesorul Rowan, ții minte?"
+      ]
+    },
+    {
+      "en": [
+        "I'll be waiting on the road north of town. Don't be late, or it's a ten-million fine!"
+      ],
+      "text": [
+        "Te aștept pe drumul de la nord de oraș. Nu întârzia, că plătești amendă zece milioane!"
+      ]
+    }
+  ]
+}

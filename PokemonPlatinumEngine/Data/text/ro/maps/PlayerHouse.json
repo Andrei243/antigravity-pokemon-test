@@ -1,0 +1,108 @@
+{
+  "displayName": {
+    "en": [
+      "{player}'s Home"
+    ],
+    "text": [
+      "Casa lui {player}"
+    ]
+  },
+  "people": {
+    "mom": {
+      "name": {
+        "en": [
+          "Mom"
+        ],
+        "text": [
+          "Mama"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Mom: Welcome home, honey! You and your Pokémon look like you could use a rest.",
+          "Mom: ...There! Everyone's fit and well again."
+        ],
+        "text": [
+          "Mama: Bine ai venit acasă, puiule! Tu și Pokémonii tăi arătați de parcă v-ar prinde bine o pauză.",
+          "Mama: ...Gata! Toți sunt din nou în formă."
+        ]
+      }
+    },
+    "rival_mom": {
+      "name": {
+        "en": [
+          "{rival}'s Mom"
+        ],
+        "text": [
+          "Mama lui {rival}"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "6,5": {
+      "en": [
+        "A contest round-up is on."
+      ],
+      "text": [
+        "La televizor e o rubrică despre concursuri."
+      ]
+    },
+    "7,5": {
+      "en": [
+        "A contest round-up is on."
+      ],
+      "text": [
+        "La televizor e o rubrică despre concursuri."
+      ]
+    },
+    "5,3": {
+      "en": [
+        "Mom's favourite pudding is in the refrigerator.\nBetter to leave it exactly where it is."
+      ],
+      "text": [
+        "Budinca preferată a mamei e în frigider.\nMai bine o lași exact unde e."
+      ]
+    },
+    "2,3": {
+      "en": [
+        "The kitchen sink gleams.\nMom keeps this kitchen so clean you could eat off the floor."
+      ],
+      "text": [
+        "Chiuveta strălucește.\nMama ține bucătăria atât de curată, că ai putea mânca de pe jos."
+      ]
+    },
+    "1,3": {
+      "en": [
+        "The kitchen sink gleams.\nMom keeps this kitchen so clean you could eat off the floor."
+      ],
+      "text": [
+        "Chiuveta strălucește.\nMama ține bucătăria atât de curată, că ai putea mânca de pe jos."
+      ]
+    },
+    "1,5": {
+      "en": [
+        "The counter where Mom does all her cooking.\nIt always smells good on this side of the room."
+      ],
+      "text": [
+        "Blatul unde mama gătește tot.\nPartea asta a camerei miroase mereu frumos."
+      ]
+    },
+    "2,5": {
+      "en": [
+        "The counter where Mom does all her cooking.\nIt always smells good on this side of the room."
+      ],
+      "text": [
+        "Blatul unde mama gătește tot.\nPartea asta a camerei miroase mereu frumos."
+      ]
+    },
+    "3,5": {
+      "en": [
+        "The counter where Mom does all her cooking.\nIt always smells good on this side of the room."
+      ],
+      "text": [
+        "Blatul unde mama gătește tot.\nPartea asta a camerei miroase mereu frumos."
+      ]
+    }
+  }
+}

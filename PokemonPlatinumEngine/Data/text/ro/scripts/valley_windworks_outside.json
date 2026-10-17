@@ -1,0 +1,122 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Looker"
+      ],
+      "text": [
+        "Looker"
+      ]
+    },
+    {
+      "en": [
+        "Ah, it is you! Allow me: Looker, of the International Police. I shall investigate inside. Wait here a moment!"
+      ],
+      "text": [
+        "A, tu ești! Dă-mi voie: Looker, de la Poliția Internațională. Voi cerceta înăuntru. Așteaptă aici o clipă!"
+      ]
+    },
+    {
+      "en": [
+        "Nobody left inside but the staff. But listen: Team Galactic has a building of its own, in Eterna City."
+      ],
+      "text": [
+        "Înăuntru n-a mai rămas decât personalul. Dar ascultă: Echipa Galactic are o clădire a ei, în Orașul Eterna."
+      ]
+    },
+    {
+      "en": [
+        "Whatever they are planning, the answer must lie there. Until we meet again!"
+      ],
+      "text": [
+        "Orice ar plănui, răspunsul trebuie să fie acolo. Pe curând!"
+      ]
+    }
+  ],
+  "Drifloon": [
+    {
+      "en": [
+        "Fuwaaah!"
+      ],
+      "text": [
+        "Fuwaaah!"
+      ]
+    }
+  ],
+  "DoorGrunt": [
+    {
+      "en": [
+        "Galactic Grunt"
+      ],
+      "text": [
+        "Galactic Grunt"
+      ]
+    },
+    {
+      "en": [
+        "You want inside? You'll have to get past me. Let's battle for it!"
+      ],
+      "text": [
+        "Vrei înăuntru? Trebuie să treci de mine. Hai să ne luptăm pentru asta!"
+      ]
+    },
+    {
+      "en": [
+        "Galactic Grunt"
+      ],
+      "text": [
+        "Galactic Grunt"
+      ]
+    },
+    {
+      "en": [
+        "Owned by some kid... Fine! I'm locking myself in with my key, and you can't get through!"
+      ],
+      "text": [
+        "Bătut de un copil... Bine! Mă încui înăuntru cu cheia mea și nu poți trece!"
+      ]
+    },
+    {
+      "en": [
+        "The only other key is with my pals in the flower meadow. Ha!"
+      ],
+      "text": [
+        "Singura altă cheie e la prietenii mei din pajiștea cu flori. Ha!"
+      ]
+    },
+    {
+      "en": [
+        "Ka-chunk!"
+      ],
+      "text": [
+        "Ca-clanc!"
+      ]
+    }
+  ],
+  "Door": [
+    {
+      "en": [
+        "The door is locked from the inside. Use the Works Key?"
+      ],
+      "text": [
+        "Ușa e încuiată pe dinăuntru. Folosești Works Key?"
+      ]
+    },
+    {
+      "en": [
+        "Ka-chunk! The door is open!"
+      ],
+      "text": [
+        "Ca-clanc! Ușa s-a deschis!"
+      ]
+    },
+    {
+      "en": [
+        "The door is locked from the inside."
+      ],
+      "text": [
+        "Ușa e încuiată pe dinăuntru."
+      ]
+    }
+  ]
+}

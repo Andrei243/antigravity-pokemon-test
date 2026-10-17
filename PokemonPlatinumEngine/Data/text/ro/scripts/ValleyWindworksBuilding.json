@@ -1,0 +1,236 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Galactic Grunt"
+      ],
+      "text": [
+        "Galactic Grunt"
+      ]
+    },
+    {
+      "en": [
+        "Wha-? How did you get in here? You've got a key?! I've got to warn the Commander!"
+      ],
+      "text": [
+        "Ce-? Cum ai intrat aici? Ai o cheie?! Trebuie s-o anunț pe Comandantă!"
+      ]
+    }
+  ],
+  "Mars": [
+    {
+      "en": [
+        "Commander Mars"
+      ],
+      "text": [
+        "Comandant Mars"
+      ]
+    },
+    {
+      "en": [
+        "Oh, a visitor! I'm Mars, one of Team Galactic's Commanders. We're making a whole new world, you know."
+      ],
+      "text": [
+        "O, un vizitator! Eu sunt Mars, Comandant al Echipei Galactic. Facem o lume cu totul nouă, să știi."
+      ]
+    },
+    {
+      "en": [
+        "This place's power is ours now. You want it back? Then let's have a battle!"
+      ],
+      "text": [
+        "Energia locului ăstuia e a noastră acum. O vrei înapoi? Atunci hai să ne luptăm!"
+      ]
+    },
+    {
+      "en": [
+        "Commander Mars"
+      ],
+      "text": [
+        "Comandant Mars"
+      ]
+    },
+    {
+      "en": [
+        "Oh, I really messed that one up..."
+      ],
+      "text": [
+        "Of, chiar am dat-o în bară..."
+      ]
+    },
+    {
+      "en": [
+        "Charon"
+      ],
+      "text": [
+        "Charon"
+      ]
+    },
+    {
+      "en": [
+        "Losing to a child, Mars? Never mind. We've gathered more than enough electricity already."
+      ],
+      "text": [
+        "Să pierzi în fața unui copil, Mars? Nu contează. Am strâns deja electricitate mai mult decât destulă."
+      ]
+    },
+    {
+      "en": [
+        "Commander Mars"
+      ],
+      "text": [
+        "Comandant Mars"
+      ]
+    },
+    {
+      "en": [
+        "Will you be quiet, Charon!"
+      ],
+      "text": [
+        "Taci odată, Charon!"
+      ]
+    },
+    {
+      "en": [
+        "Fine. We'll leave this place for the time being. But Team Galactic isn't finished. See you around!"
+      ],
+      "text": [
+        "Fie. Plecăm de aici deocamdată. Dar Echipa Galactic n-a terminat. Ne mai vedem!"
+      ]
+    },
+    {
+      "en": [
+        "Papa"
+      ],
+      "text": [
+        "Tata"
+      ]
+    },
+    {
+      "en": [
+        "Thank you, oh, thank you! They wanted the windworks' energy, and Pokémon too, for some new universe of theirs."
+      ],
+      "text": [
+        "Mulțumesc, o, mulțumesc! Voiau energia centralei, și Pokémoni pe deasupra, pentru un univers nou de-al lor."
+      ]
+    },
+    {
+      "en": [
+        "Thanks to you I can go home to my little girl!"
+      ],
+      "text": [
+        "Datorită ție pot merge acasă la fetița mea!"
+      ]
+    },
+    {
+      "en": [
+        "Little Girl"
+      ],
+      "text": [
+        "Fetița"
+      ]
+    },
+    {
+      "en": [
+        "Papa! Papa!! ...Eww, Papa, you're all stinky!"
+      ],
+      "text": [
+        "Tati! Tatiii!! ...Iuu, tati, miroși urât!"
+      ]
+    },
+    {
+      "en": [
+        "Papa"
+      ],
+      "text": [
+        "Tata"
+      ]
+    },
+    {
+      "en": [
+        "Ha ha, sorry! I've been working without a break, you see."
+      ],
+      "text": [
+        "Ha, ha, scuze! Am lucrat fără pauză, vezi tu."
+      ]
+    },
+    {
+      "en": [
+        "Little Girl"
+      ],
+      "text": [
+        "Fetița"
+      ]
+    },
+    {
+      "en": [
+        "Now the balloon Pokémon will come and visit again!"
+      ],
+      "text": [
+        "Acum Pokémonul-balon o să vină iar în vizită!"
+      ]
+    }
+  ],
+  "Papa": [
+    {
+      "en": [
+        "A balloon Pokémon drifts in by the windworks on a certain day of the week. It loves the wind here."
+      ],
+      "text": [
+        "Un Pokémon-balon plutește pe lângă centrală într-o anumită zi a săptămânii. Îi place vântul de aici."
+      ]
+    },
+    {
+      "en": [
+        "The Valley Windworks turns the wind of the valley into electricity with its turbines. Clean power!"
+      ],
+      "text": [
+        "Centrala Eoliană transformă vântul văii în electricitate cu turbinele ei. Energie curată!"
+      ]
+    },
+    {
+      "en": [
+        "They've taken over the controls... Please, you have to stop them!"
+      ],
+      "text": [
+        "Au pus stăpânire pe comenzi... Te rog, trebuie să-i oprești!"
+      ]
+    }
+  ],
+  "Girl": [
+    {
+      "en": [
+        "Now the balloon Pokémon will come and visit again!"
+      ],
+      "text": [
+        "Acum Pokémonul-balon o să vină iar în vizită!"
+      ]
+    },
+    {
+      "en": [
+        "When the wind blows hard, the balloon Pokémon gets blown right away!"
+      ],
+      "text": [
+        "Când bate vântul tare, Pokémonul-balon e luat pe sus imediat!"
+      ]
+    }
+  ],
+  "Grunt": [
+    {
+      "en": [
+        "Galactic Grunt"
+      ],
+      "text": [
+        "Galactic Grunt"
+      ]
+    },
+    {
+      "en": [
+        "Go on, get closer. Our Commander will flatten you!"
+      ],
+      "text": [
+        "Hai, apropie-te. Comandanta noastră o să te facă praf!"
+      ]
+    }
+  ]
+}

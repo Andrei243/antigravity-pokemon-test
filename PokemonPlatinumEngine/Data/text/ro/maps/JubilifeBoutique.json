@@ -1,0 +1,43 @@
+{
+  "displayName": {
+    "en": [
+      "Jubilife Boutique"
+    ],
+    "text": [
+      "Buticul din Jubilife"
+    ]
+  },
+  "people": {
+    "5,2": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      }
+    },
+    "2,6": {
+      "name": {
+        "en": [
+          "Lass"
+        ],
+        "text": [
+          "Domnișoara"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Lass: I can never decide between the caps and the berets.",
+          "Maybe I'll just get both. A Trainer has to look the part!"
+        ],
+        "text": [
+          "Domnișoara: Nu mă pot hotărî niciodată între șepci și berete.",
+          "Poate le iau pe amândouă. Un Antrenor trebuie să arate cum trebuie!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

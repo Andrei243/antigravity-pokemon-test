@@ -1,0 +1,150 @@
+{
+  "LotteryClerk": [
+    {
+      "en": [
+        "Lottery Clerk"
+      ],
+      "text": [
+        "Funcționara de la Loterie"
+      ]
+    },
+    {
+      "en": [
+        "Hello, and welcome to the Jubilife TV Lottery Corner!"
+      ],
+      "text": [
+        "Bună ziua și bine ai venit la Colțul Loteriei de la Jubilife TV!"
+      ]
+    },
+    {
+      "en": [
+        "Every day we draw a lucky number. If it matches the ID number of any of your Pokémon, you win a prize!"
+      ],
+      "text": [
+        "În fiecare zi tragem un număr norocos. Dacă se potrivește cu numărul ID al vreunuia dintre Pokémonii tăi, câștigi un premiu!"
+      ]
+    },
+    {
+      "en": [
+        "Shall I check today's number against your Pokémon?"
+      ],
+      "text": [
+        "Să compar numărul de azi cu Pokémonii tăi?"
+      ]
+    },
+    {
+      "en": [
+        "Today's lucky number is {ticket}! Now then, let me look through your Pokémon's ID numbers..."
+      ],
+      "text": [
+        "Numărul norocos de azi e {ticket}! Ia să mă uit prin numerele ID ale Pokémonilor tăi..."
+      ]
+    },
+    {
+      "en": [
+        "Oh dear... Not a single digit matched today."
+      ],
+      "text": [
+        "Vai... Azi nu s-a potrivit nicio cifră."
+      ]
+    },
+    {
+      "en": [
+        "Every day brings a new number, though. Do come back tomorrow!"
+      ],
+      "text": [
+        "Dar în fiecare zi e un număr nou. Revino mâine!"
+      ]
+    },
+    {
+      "en": [
+        "The last digit is a match! That wins you our fifth prize."
+      ],
+      "text": [
+        "Ultima cifră se potrivește! Asta îți aduce premiul al cincilea."
+      ]
+    },
+    {
+      "en": [
+        "The last two digits are a match! That wins you our fourth prize."
+      ],
+      "text": [
+        "Ultimele două cifre se potrivesc! Asta îți aduce premiul al patrulea."
+      ]
+    },
+    {
+      "en": [
+        "The last three digits are a match! That wins you our third prize."
+      ],
+      "text": [
+        "Ultimele trei cifre se potrivesc! Asta îți aduce premiul al treilea."
+      ]
+    },
+    {
+      "en": [
+        "The last four digits are a match! That wins you our second prize!"
+      ],
+      "text": [
+        "Ultimele patru cifre se potrivesc! Asta îți aduce premiul al doilea!"
+      ]
+    },
+    {
+      "en": [
+        "All five digits are a match! Incredible! That wins you our first prize!"
+      ],
+      "text": [
+        "Toate cele cinci cifre se potrivesc! Incredibil! Asta îți aduce marele premiu!"
+      ]
+    },
+    {
+      "en": [
+        "Lottery Clerk"
+      ],
+      "text": [
+        "Funcționara de la Loterie"
+      ]
+    },
+    {
+      "en": [
+        "Congratulations! Do try your luck again tomorrow."
+      ],
+      "text": [
+        "Felicitări! Mai încearcă-ți norocul și mâine."
+      ]
+    },
+    {
+      "en": [
+        "Today's draw is done, I'm afraid. A new lucky number comes up tomorrow!"
+      ],
+      "text": [
+        "Tragerea de azi s-a încheiat, din păcate. Mâine iese un nou număr norocos!"
+      ]
+    },
+    {
+      "en": [
+        "Of course. Come back whenever you feel lucky!"
+      ],
+      "text": [
+        "Desigur. Revino oricând simți că ai noroc!"
+      ]
+    }
+  ],
+  "Whose": [
+    {
+      "en": [
+        "Oh! The ID number of {winner}, on your team, matches!"
+      ],
+      "text": [
+        "Oh! Numărul ID al lui {winner}, din echipa ta, se potrivește!"
+      ]
+    },
+    {
+      "en": [
+        "Oh! The ID number of {winner}, in your PC Boxes, matches!"
+      ],
+      "text": [
+        "Oh! Numărul ID al lui {winner}, din Cutiile PC-ului, se potrivește!"
+      ]
+    }
+  ]
+}

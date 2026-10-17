@@ -1,0 +1,53 @@
+{
+  "displayName": {
+    "en": [
+      "Jubilife City"
+    ],
+    "text": [
+      "Orașul Jubilife"
+    ]
+  },
+  "people": {
+    "bug_catcher": {
+      "name": {
+        "en": [
+          "Bug Catcher"
+        ],
+        "text": [
+          "Vânătorul de insecte"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "What I like best about Pokémon is their moves. No two battles go the same way!",
+          "And when they grow stronger they pick up new ones. It never gets old."
+        ],
+        "text": [
+          "Ce-mi place cel mai mult la Pokémoni sunt mișcările lor. Nu există două lupte la fel!",
+          "Iar când devin mai puternici, învață altele noi. Nu te plictisește niciodată."
+        ]
+      }
+    },
+    "pokemon_breeder_m": {
+      "name": {
+        "en": [
+          "Pokémon Breeder"
+        ],
+        "text": [
+          "Crescător de Pokémoni"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Have you tried a Heal Ball from the Poké Mart? Whatever it catches comes out as fresh as a daisy.",
+          "Catch a Pokémon and it's ready for battle on the spot. Not much use if your team already has six, mind you."
+        ],
+        "text": [
+          "Ai încercat un Heal Ball de la Poké Mart? Orice prinde iese proaspăt ca o floare.",
+          "Prinzi un Pokémon și e gata de luptă pe loc. Deși nu prea folosește dacă ai deja șase în echipă."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

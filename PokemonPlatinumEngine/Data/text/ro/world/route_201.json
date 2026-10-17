@@ -1,0 +1,158 @@
+{
+  "people": {
+    "rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      }
+    },
+    "prof_rowan": {
+      "name": {
+        "en": [
+          "Prof. Rowan"
+        ],
+        "text": [
+          "Prof. Rowan"
+        ]
+      }
+    },
+    "counterpart": {
+      "name": {
+        "en": [
+          "{assistant}"
+        ],
+        "text": [
+          "{assistant}"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "{assistant}: Go on, {player}! The Pokémon are in the briefcase."
+        ],
+        "text": [
+          "{assistant}: Hai, {player}! Pokémonii sunt în servietă."
+        ]
+      }
+    },
+    "briefcase": {
+      "name": {
+        "en": [
+          "Professor's Briefcase"
+        ],
+        "text": [
+          "Servieta profesorului"
+        ]
+      }
+    },
+    "pokemon_breeder_m": {
+      "name": {
+        "en": [
+          "Breeder"
+        ],
+        "text": [
+          "Crescătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pokémon grow stronger every time they battle.",
+          "Walk through the tall grass and you'll never be short of wild ones to battle."
+        ],
+        "text": [
+          "Pokémonii devin mai puternici cu fiecare luptă.",
+          "Plimbă-te prin iarba înaltă și n-o să-ți lipsească Pokémoni sălbatici cu care să lupți."
+        ]
+      }
+    },
+    "cashier_m": {
+      "name": {
+        "en": [
+          "Mart Clerk"
+        ],
+        "text": [
+          "Vânzătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I work at the Poké Mart in Sandgem Town, at the east end of this road.",
+          "Come by when your Pokémon need Potions!"
+        ],
+        "text": [
+          "Lucrez la Poké Martul din Orășelul Sandgem, la capătul estic al drumului.",
+          "Treci pe la noi când Pokémonii tăi au nevoie de Potion!"
+        ]
+      }
+    },
+    "school_kid_m": {
+      "name": {
+        "en": [
+          "Schoolboy"
+        ],
+        "text": [
+          "Școlarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "You can jump down a ledge, but you can't climb back up one.",
+          "It's the quick way back toward Twinleaf Town."
+        ],
+        "text": [
+          "Poți sări de pe o margine, dar nu te poți cățăra înapoi pe ea.",
+          "E drumul cel mai scurt înapoi spre Orășelul Twinleaf."
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Lass"
+        ],
+        "text": [
+          "Domnișoara"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Sandgem Town is where this road ends.",
+          "The Professor's lab is the big building on your left as you come in."
+        ],
+        "text": [
+          "Drumul ăsta se termină în Orășelul Sandgem.",
+          "Laboratorul profesorului e clădirea mare din stânga, cum intri."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost_twinleaf_town": {
+      "en": [
+        "Route 201\nSouth: Twinleaf Town"
+      ],
+      "text": [
+        "Ruta 201\nSud: Orășelul Twinleaf"
+      ]
+    },
+    "arrow_signpost_sandgem_town": {
+      "en": [
+        "Route 201\nEast: Sandgem Town"
+      ],
+      "text": [
+        "Ruta 201\nEst: Orășelul Sandgem"
+      ]
+    },
+    "trainer_tips_signpost": {
+      "en": [
+        "Trainer Tips\nWild Pokémon live in tall grass. Weaken one in battle, then throw a Poké Ball to catch it."
+      ],
+      "text": [
+        "Sfaturi pentru Antrenori\nPokémonii sălbatici trăiesc în iarba înaltă. Slăbește-l pe unul în luptă, apoi aruncă un Poké Ball ca să-l prinzi."
+      ]
+    }
+  }
+}

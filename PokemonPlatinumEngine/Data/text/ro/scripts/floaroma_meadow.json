@@ -1,0 +1,164 @@
+{
+  "Grunts": [
+    {
+      "en": [
+        "Galactic Grunt"
+      ],
+      "text": [
+        "Galactic Grunt"
+      ]
+    },
+    {
+      "en": [
+        "Come on, old man, hand over the Honey! The sweet stuff brings Pokémon running, and we need plenty of Pokémon."
+      ],
+      "text": [
+        "Haide, moșule, dă-ne Honey! Chestia dulce aduce Pokémonii în fugă, și ne trebuie o grămadă de Pokémoni."
+      ]
+    },
+    {
+      "en": [
+        "Do as we say, or else!"
+      ],
+      "text": [
+        "Fă ce-ți spunem, că altfel!"
+      ]
+    },
+    {
+      "en": [
+        "Huh? A kid! What do we do?"
+      ],
+      "text": [
+        "Hă? Un copil! Ce facem?"
+      ]
+    },
+    {
+      "en": [
+        "We make sure the brat keeps quiet, that's what!"
+      ],
+      "text": [
+        "Avem grijă ca țâncul să tacă, asta facem!"
+      ]
+    },
+    {
+      "en": [
+        "Galactic Grunt"
+      ],
+      "text": [
+        "Galactic Grunt"
+      ]
+    },
+    {
+      "en": [
+        "Aw, man... This is so lame."
+      ],
+      "text": [
+        "Of... Ce penibil."
+      ]
+    },
+    {
+      "en": [
+        "Heh heh. My turn! Your Pokémon are worn out after that, I bet."
+      ],
+      "text": [
+        "He, he. E rândul meu! Pun pariu că Pokémonii tăi sunt epuizați după aia."
+      ]
+    },
+    {
+      "en": [
+        "Galactic Grunt"
+      ],
+      "text": [
+        "Galactic Grunt"
+      ]
+    },
+    {
+      "en": [
+        "Forget the Honey! Back to the Windworks, quick!"
+      ],
+      "text": [
+        "Lasă mierea! Înapoi la Centrala Eoliană, repede!"
+      ]
+    },
+    {
+      "en": [
+        "Honey Man"
+      ],
+      "text": [
+        "Omul cu Miere"
+      ]
+    },
+    {
+      "en": [
+        "Thank you, thank you! Those ruffians dropped this as they ran off. It must be the key to the Valley Windworks."
+      ],
+      "text": [
+        "Mulțumesc, mulțumesc! Golanii ăia au scăpat asta când au fugit. Trebuie să fie cheia de la Centrala Eoliană."
+      ]
+    },
+    {
+      "en": [
+        "And please, take some Honey for your trouble. I've plenty to spare!"
+      ],
+      "text": [
+        "Și te rog, ia niște Honey pentru osteneală. Am destulă!"
+      ]
+    },
+    {
+      "en": [
+        "Spread Honey on a sweet-smelling tree and come back after a while. Pokémon can't resist it!"
+      ],
+      "text": [
+        "Întinde Honey pe un copac care miroase dulce și revino peste o vreme. Pokémonii nu-i pot rezista!"
+      ]
+    }
+  ],
+  "HoneyMan": [
+    {
+      "en": [
+        "Honey from this meadow is the sweetest there is. Would you like some?"
+      ],
+      "text": [
+        "Mierea din pajiștea asta e cea mai dulce din lume. Vrei puțină?"
+      ]
+    },
+    {
+      "en": [
+        "You have ${money}. How much Honey would you like?",
+        "One jar for $100",
+        "Ten jars for $1,000",
+        "No, thanks"
+      ],
+      "text": [
+        "Ai ${money}. Câtă Honey vrei?",
+        "Un borcan pentru $100",
+        "Zece borcane pentru $1.000",
+        "Nu, mersi"
+      ]
+    },
+    {
+      "en": [
+        "Oh, I see. Do come back if you change your mind."
+      ],
+      "text": [
+        "A, înțeleg. Revino dacă te răzgândești."
+      ]
+    },
+    {
+      "en": [
+        "Thank you kindly! Spread it on a tree, and wait."
+      ],
+      "text": [
+        "Mulțumesc frumos! Întinde-o pe un copac și așteaptă."
+      ]
+    },
+    {
+      "en": [
+        "Oh dear, you haven't quite enough money for that."
+      ],
+      "text": [
+        "Vai, nu prea ai destui bani pentru asta."
+      ]
+    }
+  ]
+}

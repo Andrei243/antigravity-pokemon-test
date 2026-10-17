@@ -1,0 +1,152 @@
+{
+  "displayName": {
+    "en": [
+      "Trainers' School"
+    ],
+    "text": [
+      "Școala de Antrenori"
+    ]
+  },
+  "people": {
+    "teacher": {
+      "name": {
+        "en": [
+          "Teacher"
+        ],
+        "text": [
+          "Profesoara"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Teacher: Welcome to the Trainers' School! Today's lesson is about status conditions.",
+          "Teacher: The blackboard has the details. Read it, then try what you've learned on my students!"
+        ],
+        "text": [
+          "Profesoara: Bine ai venit la Școala de Antrenori! Lecția de azi e despre afecțiuni.",
+          "Profesoara: Pe tablă găsești detaliile. Citește-le, apoi încearcă ce-ai învățat pe elevii mei!"
+        ]
+      }
+    },
+    "rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      }
+    },
+    "youngster_1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I come here every day after lunch. A Trainer can never know too much!"
+        ],
+        "text": [
+          "Vin aici în fiecare zi după prânz. Un Antrenor nu știe niciodată prea multe!"
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We're quizzing each other on types. Grass beats Water, Water beats Fire, Fire beats Grass... I think?"
+        ],
+        "text": [
+          "Ne ascultăm unul pe altul la tipuri. Iarba bate Apa, Apa bate Focul, Focul bate Iarba... cred?"
+        ]
+      }
+    },
+    "youngster_2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "She thinks she knows every type matchup. I'm going to find one she doesn't!"
+        ],
+        "text": [
+          "Ea crede că știe toate combinațiile de tipuri. O să găsesc eu una pe care n-o știe!"
+        ]
+      }
+    },
+    "school_kid_harrison": {
+      "name": {
+        "en": [
+          "Harrison"
+        ],
+        "text": [
+          "Harrison"
+        ]
+      }
+    },
+    "school_kid_christine": {
+      "name": {
+        "en": [
+          "Christine"
+        ],
+        "text": [
+          "Christine"
+        ]
+      }
+    },
+    "1,4": {
+      "name": {
+        "en": [
+          "X Attack"
+        ],
+        "text": [
+          "X Attack"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "5,2": {
+      "en": [
+        "The blackboard"
+      ],
+      "text": [
+        "Tabla"
+      ]
+    },
+    "6,2": {
+      "en": [
+        "The blackboard"
+      ],
+      "text": [
+        "Tabla"
+      ]
+    },
+    "4,9": {
+      "en": [
+        "Someone's notebook lies open: \"Status conditions stay after a battle. Healing at a Pokémon Center cures them all.\""
+      ],
+      "text": [
+        "Un caiet e lăsat deschis: „Afecțiunile rămân și după luptă. O vindecare la Centrul Pokémon le vindecă pe toate.”"
+      ]
+    }
+  }
+}

@@ -1,0 +1,224 @@
+{
+  "Berry": [
+    {
+      "en": [
+        "Plant a single berry and it grows into a plant that bears a handful more.",
+        "So every berry that goes into the ground means more berries in the world. Do help us spread them everywhere!"
+      ],
+      "text": [
+        "Plantezi o singură Boabă și crește o plantă care face încă un pumn de Boabe.",
+        "Deci fiecare Boabă pusă în pământ înseamnă mai multe Boabe pe lume. Ajută-ne să le răspândim peste tot!"
+      ]
+    },
+    {
+      "en": [
+        "Do plant that berry somewhere the soil is soft and loamy.",
+        "Come by again tomorrow and I'll have a different one for you."
+      ],
+      "text": [
+        "Plantează Boaba asta undeva unde pământul e moale și afânat.",
+        "Mai treci și mâine și o să am alta pentru tine."
+      ]
+    }
+  ],
+  "Sprayduck": [
+    {
+      "en": [
+        "You're a Trainer, aren't you? Please, water your berries with this. It's a watering can called the Sprayduck."
+      ],
+      "text": [
+        "Ești Antrenor, nu? Te rog, udă-ți Boabele cu asta. E o stropitoare care se cheamă Sprayduck."
+      ]
+    },
+    {
+      "en": [
+        "Sprinkle the soil with the Sprayduck wherever you've planted a berry.",
+        "The plants like a drink while they're growing, too."
+      ],
+      "text": [
+        "Stropește cu Sprayduck pământul oriunde ai plantat o Boabă.",
+        "Și plantelor le place să bea apă cât cresc."
+      ]
+    }
+  ],
+  "Accessories": [
+    {
+      "en": [
+        "Hello! Would you like to swap some of your berries for accessories?"
+      ],
+      "text": [
+        "Bună! Vrei să schimbi niște Boabe pe accesorii?"
+      ]
+    },
+    {
+      "en": [
+        "Which accessories would you like to see?",
+        "For 1 berry",
+        "For 10 berries",
+        "For 50 or 100",
+        "None"
+      ],
+      "text": [
+        "Ce accesorii vrei să vezi?",
+        "Pentru o Boabă",
+        "Pentru 10 Boabe",
+        "Pentru 50 sau 100",
+        "Niciunul"
+      ]
+    },
+    {
+      "en": [
+        "Please come again!"
+      ],
+      "text": [
+        "Să mai treci!"
+      ]
+    },
+    {
+      "en": [
+        "Flowers or specs?",
+        "Flowers",
+        "Specs",
+        "Neither"
+      ],
+      "text": [
+        "Flori sau ochelari?",
+        "Flori",
+        "Ochelari",
+        "Niciuna"
+      ]
+    },
+    {
+      "en": [
+        "Which would you like?",
+        "Googly Specs: 1 Leppa",
+        "Black Specs: 1 Persim",
+        "Neither"
+      ],
+      "text": [
+        "Pe care îl vrei?",
+        "Googly Specs: 1 Leppa",
+        "Black Specs: 1 Persim",
+        "Niciunul"
+      ]
+    },
+    {
+      "en": [
+        "Which flower would you like?",
+        "Red: 1 Cheri",
+        "Pink: 1 Chesto",
+        "White: 1 Pecha",
+        "Blue: 1 Oran",
+        "More flowers",
+        "None"
+      ],
+      "text": [
+        "Ce floare vrei?",
+        "Roșie: 1 Cheri",
+        "Roz: 1 Chesto",
+        "Albă: 1 Pecha",
+        "Albastră: 1 Oran",
+        "Mai multe flori",
+        "Niciuna"
+      ]
+    },
+    {
+      "en": [
+        "Which flower would you like?",
+        "Orange: 1 Rawst",
+        "Yellow: 1 Aspear",
+        "None"
+      ],
+      "text": [
+        "Ce floare vrei?",
+        "Portocalie: 1 Rawst",
+        "Galbenă: 1 Aspear",
+        "Niciuna"
+      ]
+    },
+    {
+      "en": [
+        "Which would you like?",
+        "Gorgeous Specs: 10 Razz",
+        "Sweet Candy: 10 Bluk",
+        "Confetti: 10 Nanab",
+        "Colored Parasol: 10 Wepear",
+        "Old Umbrella: 10 Pinap",
+        "None"
+      ],
+      "text": [
+        "Pe care îl vrei?",
+        "Gorgeous Specs: 10 Razz",
+        "Sweet Candy: 10 Bluk",
+        "Confetti: 10 Nanab",
+        "Colored Parasol: 10 Wepear",
+        "Old Umbrella: 10 Pinap",
+        "Niciunul"
+      ]
+    },
+    {
+      "en": [
+        "Which would you like?",
+        "Spotlight: 50 Cornn",
+        "Standing Mike: 50 Magost",
+        "Carpet: 50 Rabuta",
+        "Retro Pipe: 50 Nomel",
+        "The grand ones",
+        "None"
+      ],
+      "text": [
+        "Pe care îl vrei?",
+        "Spotlight: 50 Cornn",
+        "Standing Mike: 50 Magost",
+        "Carpet: 50 Rabuta",
+        "Retro Pipe: 50 Nomel",
+        "Cele mari",
+        "Niciunul"
+      ]
+    },
+    {
+      "en": [
+        "Which would you like?",
+        "Cape: 100 Pamtre",
+        "Surfboard: 100 Watmel",
+        "Fluffy Bed: 100 Durin",
+        "Mirror Ball: 100 Spelon",
+        "Photo Board: 100 Belue",
+        "None"
+      ],
+      "text": [
+        "Pe care îl vrei?",
+        "Cape: 100 Pamtre",
+        "Surfboard: 100 Watmel",
+        "Fluffy Bed: 100 Durin",
+        "Mirror Ball: 100 Spelon",
+        "Photo Board: 100 Belue",
+        "Niciunul"
+      ]
+    },
+    {
+      "en": [
+        "Oh... You haven't enough of those berries, I'm afraid."
+      ],
+      "text": [
+        "Oh... Nu ai destule Boabe din acelea, mă tem."
+      ]
+    },
+    {
+      "en": [
+        "Thank you! Do come again!"
+      ],
+      "text": [
+        "Mulțumesc! Să mai treci!"
+      ]
+    },
+    {
+      "en": [
+        "Oh! Your Fashion Case can't hold any more of that one. Here are your berries back."
+      ],
+      "text": [
+        "Oh! Fashion Case nu mai are loc pentru încă unul din ăsta. Poftim Boabele înapoi."
+      ]
+    }
+  ]
+}

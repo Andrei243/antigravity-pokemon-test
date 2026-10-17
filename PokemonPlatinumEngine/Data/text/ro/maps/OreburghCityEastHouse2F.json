@@ -1,0 +1,63 @@
+{
+  "displayName": {
+    "en": [
+      "Oreburgh City"
+    ],
+    "text": [
+      "Orașul Oreburgh"
+    ]
+  },
+  "people": {
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          "Puștiul"
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          "Gentlemanul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Oreburgh Mine is worked with the greatest care.",
+          "We take pains never to harm the places where wild Pokémon live."
+        ],
+        "text": [
+          "În Mina Oreburgh se lucrează cu cea mai mare grijă.",
+          "Ne străduim să nu stricăm niciodată locurile unde trăiesc Pokémonii sălbatici."
+        ]
+      }
+    },
+    "scientist_m": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          "Cercetătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The coal comes up out of the mine on a system that runs itself.",
+          "Machines do every bit of the carrying. Nothing could be easier."
+        ],
+        "text": [
+          "Cărbunele iese din mină pe un sistem care merge singur.",
+          "Mașinile fac tot căratul. Nimic mai simplu."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

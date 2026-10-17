@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "Sandgem Town"
+    ],
+    "text": [
+      "Orășelul Sandgem"
+    ]
+  },
+  "people": {
+    "expert_m": {
+      "name": {
+        "en": [
+          "Grandfather"
+        ],
+        "text": [
+          "Bunicul"
+        ]
+      }
+    },
+    "twin": {
+      "name": {
+        "en": [
+          "Little Sister"
+        ],
+        "text": [
+          "Sora mai mică"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,856 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Prof. Rowan"
+      ],
+      "text": [
+        "Prof. Rowan"
+      ]
+    },
+    {
+      "en": [
+        "Ah, there you are. Let me have a look at that Pokémon of yours."
+      ],
+      "text": [
+        "A, aici erai. Ia să mă uit la Pokémonul tău."
+      ]
+    },
+    {
+      "en": [
+        "...Hm. It seems happy to be with you."
+      ],
+      "text": [
+        "...Hm. Pare fericit să fie cu tine."
+      ]
+    },
+    {
+      "en": [
+        "Then trusting it to you was no mistake."
+      ],
+      "text": [
+        "Atunci n-am greșit când ți l-am încredințat."
+      ]
+    },
+    {
+      "en": [
+        "When I first saw you two charging into the tall grass, I was shocked. But a bond is already growing between you and your Pokémon."
+      ],
+      "text": [
+        "Când v-am văzut prima oară dând năvală în iarba înaltă, m-ați speriat. Dar între tine și Pokémonul tău crește deja o legătură."
+      ]
+    },
+    {
+      "en": [
+        "Cherish that Pokémon, and cherish that bond."
+      ],
+      "text": [
+        "Prețuiește-ți Pokémonul și prețuiește legătura asta."
+      ]
+    },
+    {
+      "en": [
+        "{assistant}"
+      ],
+      "text": [
+        "{assistant}"
+      ]
+    },
+    {
+      "en": [
+        "I'm glad! I could tell straight away that you're kind to Pokémon."
+      ],
+      "text": [
+        "Mă bucur! Mi-am dat seama imediat că te porți frumos cu Pokémonii."
+      ]
+    },
+    {
+      "en": [
+        "Prof. Rowan"
+      ],
+      "text": [
+        "Prof. Rowan"
+      ]
+    },
+    {
+      "en": [
+        "Now. As you know, I am Rowan, and I study Pokémon. There is something I would ask of you."
+      ],
+      "text": [
+        "Așadar. După cum știi, eu sunt Rowan și studiez Pokémonii. Aș avea să te rog ceva."
+      ]
+    },
+    {
+      "en": [
+        "Prof. Rowan"
+      ],
+      "text": [
+        "Prof. Rowan"
+      ]
+    },
+    {
+      "en": [
+        "Will you take this Pokédex, and record every kind of Pokémon you meet in Sinnoh for me?"
+      ],
+      "text": [
+        "Iei acest Pokédex și notezi pentru mine fiecare fel de Pokémon pe care îl întâlnești în Sinnoh?"
+      ]
+    },
+    {
+      "en": [
+        "...I see. Well, I am a patient man. I will ask you again."
+      ],
+      "text": [
+        "...Înțeleg. Ei bine, sunt un om răbdător. Te mai întreb o dată."
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Pokédex!"
+      ],
+      "text": [
+        "{player} a primit Pokédexul!"
+      ]
+    },
+    {
+      "en": [
+        "Go everywhere you can and meet every kind of Pokémon there is. That is what the Pokédex is for."
+      ],
+      "text": [
+        "Mergi peste tot unde poți și întâlnește fiecare fel de Pokémon care există. Pentru asta e Pokédexul."
+      ]
+    },
+    {
+      "en": [
+        "{assistant}"
+      ],
+      "text": [
+        "{assistant}"
+      ]
+    },
+    {
+      "en": [
+        "I'm helping the professor fill in a Pokédex too!"
+      ],
+      "text": [
+        "Și eu îl ajut pe profesor să completeze un Pokédex!"
+      ]
+    },
+    {
+      "en": [
+        "Prof. Rowan"
+      ],
+      "text": [
+        "Prof. Rowan"
+      ]
+    },
+    {
+      "en": [
+        "Tell me, {player}: how did it feel, walking along Route 201 with a Pokémon at your side?"
+      ],
+      "text": [
+        "Spune-mi, {player}: cum a fost să mergi pe Ruta 201 cu un Pokémon alături?"
+      ]
+    },
+    {
+      "en": [
+        "I have lived for sixty years, and I still feel that thrill. Your great adventure begins now."
+      ],
+      "text": [
+        "Am trăit șaizeci de ani și tot mai simt fiorul acela. Marea ta aventură începe acum."
+      ]
+    },
+    {
+      "en": [
+        "{assistant}"
+      ],
+      "text": [
+        "{assistant}"
+      ]
+    },
+    {
+      "en": [
+        "I'm {assistant}, by the way. I help the professor out. My first Pokémon is {assistantstarter}!"
+      ],
+      "text": [
+        "Eu sunt {assistant}, apropo. Îl ajut pe profesor. Primul meu Pokémon e {assistantstarter}!"
+      ]
+    },
+    {
+      "en": [
+        "We're both working on the Pokédex now, so let's do our best. See you outside!"
+      ],
+      "text": [
+        "Acum lucrăm amândoi la Pokédex, așa că hai să dăm tot ce putem. Ne vedem afară!"
+      ]
+    },
+    {
+      "en": [
+        "Prof. Rowan"
+      ],
+      "text": [
+        "Prof. Rowan"
+      ]
+    },
+    {
+      "en": [
+        "{player}! You are back!"
+      ],
+      "text": [
+        "{player}! Te-ai întors!"
+      ]
+    },
+    {
+      "en": [
+        "I... Words fail me. You saw it through. All of it!"
+      ],
+      "text": [
+        "Eu... Nu găsesc cuvinte. Ai dus totul la capăt. Totul!"
+      ]
+    },
+    {
+      "en": [
+        "Sixty years I have lived, and I have never spent so many days with my heart in my mouth."
+      ],
+      "text": [
+        "Am trăit șaizeci de ani și n-am petrecut niciodată atâtea zile cu inima cât un purice."
+      ]
+    },
+    {
+      "en": [
+        "{assistant}"
+      ],
+      "text": [
+        "{assistant}"
+      ]
+    },
+    {
+      "en": [
+        "The professor has been asking after you everywhere since you left, {player}. He was beside himself."
+      ],
+      "text": [
+        "De când ai plecat, profesorul a întrebat de tine peste tot, {player}. Nu-și găsea locul."
+      ]
+    },
+    {
+      "en": [
+        "He wrote to everyone he knows, trying to find someone who could go and help you... I'm so glad you're safe. Welcome back!"
+      ],
+      "text": [
+        "A scris tuturor cunoscuților, căutând pe cineva care să te poată ajuta... Ce bine că n-ai pățit nimic! Bine ai revenit!"
+      ]
+    },
+    {
+      "en": [
+        "He rang round everyone he knows to scrape up some help. Not that you needed it. I'm glad you're back in one piece, too."
+      ],
+      "text": [
+        "I-a sunat pe toți cunoscuții ca să-ți strângă ajutoare. Nu că ți-ar fi trebuit. Mă bucur și eu că ești bine."
+      ]
+    },
+    {
+      "en": [
+        "Prof. Rowan"
+      ],
+      "text": [
+        "Prof. Rowan"
+      ]
+    },
+    {
+      "en": [
+        "Now, I have news for you. Word has come from all three lakes: their Pokémon are home again, each in its own cave."
+      ],
+      "text": [
+        "Acum, am vești pentru tine. De la toate cele trei lacuri se spune același lucru: Pokémonii lor s-au întors acasă, fiecare în grota lui."
+      ]
+    },
+    {
+      "en": [
+        "And how do things stand with you? The Pokédex... Hm! {var:SEEN} seen! And your Badges?"
+      ],
+      "text": [
+        "Și cum stai tu? Pokédexul... Hm! {var:SEEN} văzuți! Și Insignele?"
+      ]
+    },
+    {
+      "en": [
+        "Seven! Only Sunyshore City's Gym is left, then. Having come all this way, you may as well have its Badge too."
+      ],
+      "text": [
+        "Șapte! Atunci a mai rămas doar Arena din Orașul Sunyshore. Dacă tot ai ajuns până aici, ia-i și Insigna."
+      ]
+    },
+    {
+      "en": [
+        "{var:BADGE_COUNT}, I see. Sunyshore City's Gym is open to you now: why not see how many you can win?"
+      ],
+      "text": [
+        "{var:BADGE_COUNT}, văd. Arena din Orașul Sunyshore îți e acum deschisă: de ce să nu vezi câte poți câștiga?"
+      ]
+    },
+    {
+      "en": [
+        "All eight! Then you have nothing left to prove to the Gyms of Sinnoh."
+      ],
+      "text": [
+        "Toate opt! Atunci nu mai ai nimic de dovedit Arenelor din Sinnoh."
+      ]
+    },
+    {
+      "en": [
+        "The Pokémon League is what lies beyond. Go and try yourself against it: you will see more of the world on that road than on all the others put together, and more Pokémon too."
+      ],
+      "text": [
+        "Mai departe e Liga Pokémon. Du-te și pune-te la încercare: pe drumul acela vei vedea mai mult din lume decât pe toate celelalte la un loc, și mai mulți Pokémoni."
+      ]
+    }
+  ],
+  "Rowan": [
+    {
+      "en": [
+        "Prof. Rowan"
+      ],
+      "text": [
+        "Prof. Rowan"
+      ]
+    },
+    {
+      "en": [
+        "Your adventure is waiting, {player}. Go and see the Pokémon of Sinnoh for yourself."
+      ],
+      "text": [
+        "Aventura ta te așteaptă, {player}. Du-te și vezi cu ochii tăi Pokémonii din Sinnoh."
+      ]
+    },
+    {
+      "en": [
+        "Ah, {player}. Have you come to show me how your Pokédex is getting on?"
+      ],
+      "text": [
+        "A, {player}. Ai venit să-mi arăți cum merge Pokédexul?"
+      ]
+    },
+    {
+      "en": [
+        "Hm? Are you afraid to show me? I don't bite, you know. Not as a rule."
+      ],
+      "text": [
+        "Hm? Ți-e teamă să mi-l arăți? Nu mușc, să știi. De obicei."
+      ]
+    },
+    {
+      "en": [
+        "One thing more, {player}. Should your road cross Cynthia's, tell her that an old professor remembers her kindly."
+      ],
+      "text": [
+        "Încă un lucru, {player}. Dacă îți iese în cale Cynthia, spune-i că un bătrân profesor își amintește de ea cu drag."
+      ]
+    },
+    {
+      "en": [
+        "The world holds many, many more kinds of Pokémon than Sinnoh does, {player}. Go and meet them. I envy you!"
+      ],
+      "text": [
+        "Lumea are mult, mult mai multe feluri de Pokémoni decât Sinnoh, {player}. Du-te și cunoaște-i. Te invidiez!"
+      ]
+    },
+    {
+      "en": [
+        "Ah, {player}. Before you go: the other two Pokémon from that briefcase have been waiting here all this time.",
+        "A Champion's lab should not keep them on a shelf. Take them both, and show them the world."
+      ],
+      "text": [
+        "A, {player}. Înainte să pleci: ceilalți doi Pokémoni din servieta aceea au așteptat aici în tot acest timp.",
+        "Laboratorul unui Campion nu-i poate ține pe raft. Ia-i pe amândoi și arată-le lumea."
+      ]
+    },
+    {
+      "en": [
+        "Raise them well. I expect to hear great things."
+      ],
+      "text": [
+        "Crește-i bine. Aștept să aud lucruri mărețe."
+      ]
+    },
+    {
+      "en": [
+        "{player}! You have the look of someone with something to show me. Is it your Pokédex?"
+      ],
+      "text": [
+        "{player}! Ai aerul cuiva care are ceva să-mi arate. E Pokédexul tău?"
+      ]
+    },
+    {
+      "en": [
+        "No? Then what is the matter? Speak up!"
+      ],
+      "text": [
+        "Nu? Atunci ce s-a întâmplat? Spune odată!"
+      ]
+    },
+    {
+      "en": [
+        "Let me see... Hm! So you have seen {var:SEEN} kinds of Pokémon in Sinnoh... Why, that is every one of them!"
+      ],
+      "text": [
+        "Ia să văd... Hm! Deci ai văzut {var:SEEN} feluri de Pokémoni în Sinnoh... Păi, ăștia sunt toți!"
+      ]
+    },
+    {
+      "en": [
+        "Excellent work, {player}! I could not have asked for more. In sixty years I have not..."
+      ],
+      "text": [
+        "Excelent, {player}! Nu puteam cere mai mult. În șaizeci de ani n-am..."
+      ]
+    }
+  ],
+  "Rating": [
+    {
+      "en": [
+        "Prof. Rowan"
+      ],
+      "text": [
+        "Prof. Rowan"
+      ]
+    },
+    {
+      "en": [
+        "Hm... {var:SEEN} kinds of Pokémon seen in Sinnoh so far."
+      ],
+      "text": [
+        "Hm... {var:SEEN} feluri de Pokémoni văzute în Sinnoh până acum."
+      ]
+    },
+    {
+      "en": [
+        "Every Pokémon of Sinnoh, and so soon! Remarkable. Make your name at the Pokémon League, {player}, and then show me this again. I shall have something for you."
+      ],
+      "text": [
+        "Toți Pokémonii din Sinnoh, și atât de repede! Remarcabil. Fă-ți un nume la Liga Pokémon, {player}, și apoi arată-mi-l din nou. O să am ceva pentru tine."
+      ]
+    },
+    {
+      "en": [
+        "You have hardly begun. Walk into tall grass wherever you find it: that is where Pokémon live."
+      ],
+      "text": [
+        "Abia ai început. Intră în iarba înaltă oriunde o găsești: acolo trăiesc Pokémonii."
+      ]
+    },
+    {
+      "en": [
+        "A start. Remember that some Pokémon show themselves only in the morning, and others only after dark."
+      ],
+      "text": [
+        "Un început. Ține minte că unii Pokémoni se arată doar dimineața, iar alții doar după lăsarea întunericului."
+      ]
+    },
+    {
+      "en": [
+        "It is coming along. Have you tried the trees that smell of honey? Some Pokémon are met nowhere else."
+      ],
+      "text": [
+        "Merge. Ai încercat copacii care miros a miere? Unii Pokémoni nu se întâlnesc nicăieri altundeva."
+      ]
+    },
+    {
+      "en": [
+        "Good. A fishing rod would show you what lives under the water. There is more of it than you would think."
+      ],
+      "text": [
+        "Bine. O undiță ți-ar arăta ce trăiește sub apă. E mai mult decât ai crede."
+      ]
+    },
+    {
+      "en": [
+        "You are putting your back into it. A Pokémon a Trainer sends out counts too, so battle everyone you meet."
+      ],
+      "text": [
+        "Te străduiești. Contează și Pokémonii pe care îi trimit în luptă Antrenorii, așa că luptă cu toți cei pe care îi întâlnești."
+      ]
+    },
+    {
+      "en": [
+        "Now it grows interesting. Look in the caves, and out on the sea routes, and wherever the weather is foul."
+      ],
+      "text": [
+        "Acum devine interesant. Caută în peșteri, pe rutele de pe mare și oriunde e vreme urâtă."
+      ]
+    },
+    {
+      "en": [
+        "More than a hundred! You have a real eye for this, {player}. Keep at it."
+      ],
+      "text": [
+        "Peste o sută! Chiar ai ochi pentru asta, {player}. Continuă."
+      ]
+    },
+    {
+      "en": [
+        "Splendid. Fewer and fewer people could tell me anything about Sinnoh's Pokémon that you could not."
+      ],
+      "text": [
+        "Splendid. Tot mai puțini oameni mi-ar putea spune despre Pokémonii din Sinnoh ceva ce nu știi tu."
+      ]
+    },
+    {
+      "en": [
+        "Most of Sinnoh, in one Pokédex. The ones you lack are the ones that hide well. Think where you have not been."
+      ],
+      "text": [
+        "Aproape tot Sinnoh-ul, într-un singur Pokédex. Cei care îți lipsesc sunt cei care se ascund bine. Gândește-te unde n-ai fost."
+      ]
+    },
+    {
+      "en": [
+        "Superb! You are close now. The strongest Trainers keep the rarest Pokémon: seek them out."
+      ],
+      "text": [
+        "Superb! Ești aproape. Cei mai puternici Antrenori au cei mai rari Pokémoni: caută-i."
+      ]
+    },
+    {
+      "en": [
+        "Hardly any are left! I find I am counting them with you. A professor should not be so excited."
+      ],
+      "text": [
+        "N-au mai rămas aproape deloc! Mă trezesc numărându-i odată cu tine. Un profesor n-ar trebui să fie atât de agitat."
+      ]
+    },
+    {
+      "en": [
+        "All but a few! Do not stop now, {player}. Legends are Pokémon too: where the stories lead, go and look."
+      ],
+      "text": [
+        "Mai sunt doar câțiva! Nu te opri acum, {player}. Și legendele sunt Pokémoni: unde te duc poveștile, du-te și caută."
+      ]
+    }
+  ],
+  "OakVisits": [
+    {
+      "en": [
+        "Prof. Oak"
+      ],
+      "text": [
+        "Prof. Oak"
+      ]
+    },
+    {
+      "en": [
+        "Good day to you, Professor Rowan! I hope I am not interrupting."
+      ],
+      "text": [
+        "Bună ziua, profesore Rowan! Sper că nu vă deranjez."
+      ]
+    },
+    {
+      "en": [
+        "Prof. Rowan"
+      ],
+      "text": [
+        "Prof. Rowan"
+      ]
+    },
+    {
+      "en": [
+        "Well, I'll be! Professor Oak! My old colleague, all the way from Kanto. It has been far too long!"
+      ],
+      "text": [
+        "Ei, poftim! Profesorul Oak! Vechiul meu coleg, tocmai din Kanto. Prea mult a trecut de când nu ne-am văzut!"
+      ]
+    },
+    {
+      "en": [
+        "Let me introduce {player}, who has been helping me with the Pokédex. Every Pokémon of Sinnoh is in it. Every one!"
+      ],
+      "text": [
+        "Să-ți fac cunoștință cu {player}, care m-a ajutat cu Pokédexul. Are în el toți Pokémonii din Sinnoh. Pe toți!"
+      ]
+    },
+    {
+      "en": [
+        "Prof. Oak"
+      ],
+      "text": [
+        "Prof. Oak"
+      ]
+    },
+    {
+      "en": [
+        "Is that so? Then you are just the person I hoped to meet. Allow me, {player}: I should like to upgrade that Pokédex of yours."
+      ],
+      "text": [
+        "Așa e? Atunci exact pe tine speram să te întâlnesc. Dă-mi voie, {player}: aș vrea să-ți îmbunătățesc Pokédexul."
+      ]
+    },
+    {
+      "en": [
+        "{player}'s Pokédex was upgraded. It now has a National Mode!"
+      ],
+      "text": [
+        "Pokédexul lui {player} a fost îmbunătățit. Acum are un Mod Național!"
+      ]
+    },
+    {
+      "en": [
+        "It can now record the Pokémon of every land, not only Sinnoh's. Filling it will be no small task, mind."
+      ],
+      "text": [
+        "Acum poate nota Pokémonii din toate ținuturile, nu doar pe cei din Sinnoh. Să-l completezi n-o să fie o treabă ușoară, ce-i drept."
+      ]
+    },
+    {
+      "en": [
+        "You will want room to keep them, too. I have seen to it that your PC has a hundred boxes now."
+      ],
+      "text": [
+        "O să-ți trebuiască și loc unde să-i ții. Am avut grijă ca PC-ul tău să aibă acum o sută de cutii."
+      ]
+    },
+    {
+      "en": [
+        "Prof. Rowan"
+      ],
+      "text": [
+        "Prof. Rowan"
+      ]
+    },
+    {
+      "en": [
+        "Hmph! If anyone can do it, {player} will. I would stake my moustache on it."
+      ],
+      "text": [
+        "Hm! Dacă poate cineva, {player} poate. Îmi pun mustața gaj."
+      ]
+    },
+    {
+      "en": [
+        "Prof. Oak"
+      ],
+      "text": [
+        "Prof. Oak"
+      ]
+    },
+    {
+      "en": [
+        "Ha! I believe you. One more piece of news: Pal Park, on Route 221, is open at last. Pokémon from far away are let loose there to be caught again."
+      ],
+      "text": [
+        "Ha! Te cred. Încă o veste: Pal Park, pe Ruta 221, s-a deschis în sfârșit. Acolo sunt eliberați Pokémoni de departe, ca să fie prinși din nou."
+      ]
+    },
+    {
+      "en": [
+        "Do pay it a visit, {player}. I shall be there myself for a while. Well, I must be going!"
+      ],
+      "text": [
+        "Treci pe acolo, {player}. Voi fi și eu acolo o vreme. Ei, eu trebuie să plec!"
+      ]
+    },
+    {
+      "en": [
+        "Prof. Rowan"
+      ],
+      "text": [
+        "Prof. Rowan"
+      ]
+    },
+    {
+      "en": [
+        "And off he goes. He never could stay in one place for more than five minutes."
+      ],
+      "text": [
+        "Și a plecat. N-a putut niciodată să stea într-un loc mai mult de cinci minute."
+      ]
+    },
+    {
+      "en": [
+        "Now, {player}. Finishing the Sinnoh Pokédex deserves more than an old man's praise. This is for you."
+      ],
+      "text": [
+        "Acum, {player}. Pokédexul din Sinnoh completat merită mai mult decât lauda unui bătrân. Asta e pentru tine."
+      ]
+    },
+    {
+      "en": [
+        "That is the Poké Radar. Use it in tall grass, and it finds Pokémon that would never show themselves otherwise. You will need it for that new Pokédex."
+      ],
+      "text": [
+        "Acesta e Poké Radar. Folosește-l în iarba înaltă și găsește Pokémoni care altfel nu s-ar arăta niciodată. O să-ți trebuiască pentru noul Pokédex."
+      ]
+    }
+  ],
+  "ScientistM": [
+    {
+      "en": [
+        "Scientist"
+      ],
+      "text": [
+        "Cercetătorul"
+      ]
+    },
+    {
+      "en": [
+        "Hello there! I'm {assistant}'s father. I work here with the professor."
+      ],
+      "text": [
+        "Bună! Eu sunt tatăl lui {assistant}. Lucrez aici cu profesorul."
+      ]
+    },
+    {
+      "en": [
+        "It's a comfort to know there are two of you out there, I can tell you. Look out for each other, won't you?"
+      ],
+      "text": [
+        "E o liniște să știu că sunteți doi pe drumuri, să știi. Aveți grijă unul de altul, da?"
+      ]
+    },
+    {
+      "en": [
+        "It still astonishes me. Every kind of Pokémon in Sinnoh, in a single Pokédex!"
+      ],
+      "text": [
+        "Încă mă uimește. Toate felurile de Pokémoni din Sinnoh, într-un singur Pokédex!"
+      ]
+    },
+    {
+      "en": [
+        "And my own {assistant} has been at it twice as long... Well. You have done wonders for the professor's work on how Pokémon evolve."
+      ],
+      "text": [
+        "Iar copilul meu, {assistant}, lucrează la asta de două ori mai mult timp... Ei bine. Ai făcut minuni pentru cercetarea profesorului despre evoluția Pokémonilor."
+      ]
+    },
+    {
+      "en": [
+        "I... I don't have the words. What you did up there!"
+      ],
+      "text": [
+        "Eu... Nu am cuvinte. Ce-ai făcut tu acolo sus!"
+      ]
+    },
+    {
+      "en": [
+        "I haven't been this shaken, or this glad, since the day my child was born. Oh, it's good to be alive!"
+      ],
+      "text": [
+        "N-am mai fost atât de zguduit, nici atât de bucuros, din ziua în care s-a născut copilul meu. Ce bine e să trăiești!"
+      ]
+    }
+  ],
+  "ScientistF": [
+    {
+      "en": [
+        "Scientist"
+      ],
+      "text": [
+        "Cercetătoarea"
+      ]
+    },
+    {
+      "en": [
+        "The professor designed the new Pokédex together with a professor from the Kanto region."
+      ],
+      "text": [
+        "Profesorul a proiectat noul Pokédex împreună cu un profesor din regiunea Kanto."
+      ]
+    },
+    {
+      "en": [
+        "I'm one of his assistants. It's hard work, and I wouldn't change places with anyone!"
+      ],
+      "text": [
+        "Sunt una dintre asistentele lui. E muncă grea, dar n-aș face schimb cu nimeni!"
+      ]
+    },
+    {
+      "en": [
+        "Yes, that's right: Professor Rowan and Professor Oak have been working on how a Pokédex should work, the two of them."
+      ],
+      "text": [
+        "Da, așa e: profesorul Rowan și profesorul Oak s-au gândit împreună la cum ar trebui să funcționeze un Pokédex."
+      ]
+    },
+    {
+      "en": [
+        "Professor Oak is the younger man, you know. He was Professor Rowan's junior, once upon a time."
+      ],
+      "text": [
+        "Profesorul Oak e cel mai tânăr dintre ei, să știi. A fost cândva învățăcelul profesorului Rowan."
+      ]
+    },
+    {
+      "en": [
+        "When the professor told us what was happening on the mountain, I went cold all over."
+      ],
+      "text": [
+        "Când profesorul ne-a spus ce se întâmplă pe munte, am înghețat de tot."
+      ]
+    },
+    {
+      "en": [
+        "But he said you would put it right, and he said it as if it were a plain fact. So I believed it. And here you are!"
+      ],
+      "text": [
+        "Dar a zis că o să îndrepți tu lucrurile, și a zis-o ca pe un fapt simplu. Așa că l-am crezut. Și iată-te!"
+      ]
+    }
+  ],
+  "Assistant": [
+    {
+      "en": [
+        "{assistant}"
+      ],
+      "text": [
+        "{assistant}"
+      ]
+    },
+    {
+      "en": [
+        "I keep turning it over, {player}. What you saw on the mountain..."
+      ],
+      "text": [
+        "Tot mă gândesc, {player}. Ce-ai văzut pe munte..."
+      ]
+    },
+    {
+      "en": [
+        "Do you suppose those were the Pokémon the legends mean? The ones Sinnoh began with?"
+      ],
+      "text": [
+        "Crezi că ăia erau Pokémonii despre care vorbesc legendele? Cei cu care a început Sinnoh-ul?"
+      ]
+    }
+  ],
+  "GiveTurtwig": [
+    {
+      "en": [
+        "{player} received the Turtwig!"
+      ],
+      "text": [
+        "{player} a primit Turtwig!"
+      ]
+    }
+  ],
+  "GiveChimchar": [
+    {
+      "en": [
+        "{player} received the Chimchar!"
+      ],
+      "text": [
+        "{player} a primit Chimchar!"
+      ]
+    }
+  ],
+  "GivePiplup": [
+    {
+      "en": [
+        "{player} received the Piplup!"
+      ],
+      "text": [
+        "{player} a primit Piplup!"
+      ]
+    }
+  ]
+}

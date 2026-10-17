@@ -1,0 +1,206 @@
+{
+  "Rival": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Huh? {player}! What are you doing here? ...Wait, you've got something for me? From my mom?"
+      ],
+      "text": [
+        "Hă? {player}! Ce faci aici? ...Stai, ai ceva pentru mine? De la mama?"
+      ]
+    },
+    {
+      "en": [
+        "{player} handed over the Parcel."
+      ],
+      "text": [
+        "{player} i-a predat Parcel."
+      ]
+    },
+    {
+      "en": [
+        "Whoa, it's a Town Map! Two of them! Mom must've packed one for you, too. Here, take it!"
+      ],
+      "text": [
+        "Uau, e un Town Map! Două! Mama sigur a pus una și pentru tine. Poftim, ia-o!"
+      ]
+    },
+    {
+      "en": [
+        "I've already learned everything this school has to teach, so I'm off to Oreburgh City for my first Gym Badge!"
+      ],
+      "text": [
+        "Am învățat deja tot ce avea școala asta de predat, așa că plec în Orașul Oreburgh după prima mea Insignă de Arenă!"
+      ]
+    },
+    {
+      "en": [
+        "You'd better hurry up, {player}! Or I'm fining you ten million!"
+      ],
+      "text": [
+        "Grăbește-te, {player}! Altfel îți dau amendă zece milioane!"
+      ]
+    },
+    {
+      "en": [
+        "This lesson's about status conditions. I knew all of it already. Obviously."
+      ],
+      "text": [
+        "Lecția asta e despre afecțiuni. Le știam pe toate deja. Evident."
+      ]
+    }
+  ],
+  "Blackboard": [
+    {
+      "en": [
+        "The blackboard lists the status conditions a Pokémon can suffer in battle."
+      ],
+      "text": [
+        "Pe tablă sunt scrise afecțiunile de care poate suferi un Pokémon în luptă."
+      ]
+    },
+    {
+      "en": [
+        "Read about which condition?",
+        "POISON",
+        "PARALYSIS",
+        "SLEEP",
+        "BURN",
+        "FREEZE",
+        "EXIT"
+      ],
+      "text": [
+        "Despre ce afecțiune citești?",
+        "OTRĂVIRE",
+        "PARALIZIE",
+        "SOMN",
+        "ARSURĂ",
+        "ÎNGHEȚ",
+        "IEȘIRE"
+      ]
+    },
+    {
+      "en": [
+        "Poison: the Pokémon loses HP each turn, and even as it walks in the field. An Antidote cures it."
+      ],
+      "text": [
+        "Otrăvirea: Pokémonul pierde HP în fiecare tură, ba chiar și când merge pe teren. Un Antidote îl vindecă."
+      ]
+    },
+    {
+      "en": [
+        "Paralysis: the Pokémon is slowed down, and sometimes can't move at all. A Paralyze Heal cures it."
+      ],
+      "text": [
+        "Paralizia: Pokémonul e încetinit și uneori nu se poate mișca deloc. Un Paralyze Heal îl vindecă."
+      ]
+    },
+    {
+      "en": [
+        "Sleep: the Pokémon can't use moves until it wakes up. An Awakening wakes it at once."
+      ],
+      "text": [
+        "Somnul: Pokémonul nu poate folosi mișcări până nu se trezește. Un Awakening îl trezește imediat."
+      ]
+    },
+    {
+      "en": [
+        "Burn: the Pokémon loses HP each turn, and its physical moves hit weaker. A Burn Heal cures it."
+      ],
+      "text": [
+        "Arsura: Pokémonul pierde HP în fiecare tură, iar mișcările lui fizice lovesc mai slab. Un Burn Heal o vindecă."
+      ]
+    },
+    {
+      "en": [
+        "Freeze: the Pokémon can't move until it thaws. Fire-type moves thaw it, and so does an Ice Heal."
+      ],
+      "text": [
+        "Înghețul: Pokémonul nu se poate mișca până nu se dezgheață. Mișcările de tip Foc îl dezgheață, la fel și un Ice Heal."
+      ]
+    }
+  ],
+  "Harrison": [
+    {
+      "en": [
+        "A real battle? Against a real Trainer? I've been studying for this!"
+      ],
+      "text": [
+        "O luptă adevărată? Cu un Antrenor adevărat? Pentru asta am învățat!"
+      ]
+    },
+    {
+      "en": [
+        "Wow, it's hard to win a real battle! Have you battled Christine over there yet?"
+      ],
+      "text": [
+        "Uau, e greu să câștigi o luptă adevărată! Te-ai luptat deja cu Christine de acolo?"
+      ]
+    },
+    {
+      "en": [
+        "Battling's the best way to learn. Go and battle Christine too!"
+      ],
+      "text": [
+        "Lupta e cel mai bun mod de a învăța. Du-te să te lupți și cu Christine!"
+      ]
+    },
+    {
+      "en": [
+        "You beat both of us! The teacher says a winner gets a prize. Here!"
+      ],
+      "text": [
+        "Ne-ai bătut pe amândoi! Profesorul zice că un câștigător primește un premiu. Poftim!"
+      ]
+    },
+    {
+      "en": [
+        "A Potion gives back 20 HP. Use it before your Pokémon gets too weak!"
+      ],
+      "text": [
+        "Un Potion îți dă înapoi 20 HP. Folosește-l înainte să slăbească prea tare Pokémonul tău!"
+      ]
+    }
+  ],
+  "Christine": [
+    {
+      "en": [
+        "Don't be shy! A Trainer battles anyone who asks. Let's go!"
+      ],
+      "text": [
+        "Nu te sfii! Un Antrenor se luptă cu oricine îl provoacă. Hai!"
+      ]
+    },
+    {
+      "en": [
+        "I could've done better... Have you tried Harrison yet?"
+      ],
+      "text": [
+        "Puteam mai bine... Ai încercat cu Harrison?"
+      ]
+    },
+    {
+      "en": [
+        "I could've done better. I'll study harder!"
+      ],
+      "text": [
+        "Puteam mai bine. O să învăț mai mult!"
+      ]
+    },
+    {
+      "en": [
+        "You beat Harrison too? Then go and talk to him. He has something for you!"
+      ],
+      "text": [
+        "L-ai bătut și pe Harrison? Atunci du-te să vorbești cu el. Are ceva pentru tine!"
+      ]
+    }
+  ]
+}

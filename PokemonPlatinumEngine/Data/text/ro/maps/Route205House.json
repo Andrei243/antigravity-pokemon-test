@@ -1,0 +1,43 @@
+{
+  "displayName": {
+    "en": [
+      "Route 205"
+    ],
+    "text": [
+      "Ruta 205"
+    ]
+  },
+  "people": {
+    "pokefan_f": {
+      "name": {
+        "en": [
+          "Pokéfan"
+        ],
+        "text": [
+          "Pokéfana"
+        ]
+      }
+    },
+    "bug_catcher": {
+      "name": {
+        "en": [
+          "Bug Catcher"
+        ],
+        "text": [
+          "Vânătorul de insecte"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Repels are handy, aren't they? Use one and the weak Pokémon stay out of your way.",
+          "... Which also means there's nothing about to catch."
+        ],
+        "text": [
+          "Repel-urile sunt utile, nu? Folosești unul și Pokémonii slabi nu-ți mai ies în cale.",
+          "... Ceea ce înseamnă și că n-ai ce prinde."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

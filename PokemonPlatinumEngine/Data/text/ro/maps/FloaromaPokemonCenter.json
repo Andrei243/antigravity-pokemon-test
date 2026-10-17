@@ -1,0 +1,81 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Center"
+    ],
+    "text": [
+      "Centrul Pokémon"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "ace_trainer_f": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          "Antrenor As"
+        ]
+      }
+    },
+    "battle_girl": {
+      "name": {
+        "en": [
+          "Battle Girl"
+        ],
+        "text": [
+          "Luptătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Pokémon was nearly done for in a battle the other day. I thought that was that.",
+          "Then it ate the Berry it was holding, all by itself, and was right back on its feet. Phew!"
+        ],
+        "text": [
+          "Pokémonul meu era cât pe ce să cadă într-o luptă zilele trecute. Credeam că s-a terminat.",
+          "Apoi a mâncat singur Boaba pe care o ținea și s-a pus imediat pe picioare. Pfiu!"
+        ]
+      }
+    },
+    "pokefan_m": {
+      "name": {
+        "en": [
+          "Pokéfan"
+        ],
+        "text": [
+          "Pokéfana"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "With Pokémon at your side, even a youngster like you can set off across the country alone and come to no harm."
+        ],
+        "text": [
+          "Cu Pokémoni alături, chiar și un copil ca tine poate străbate țara fără să pățească nimic."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

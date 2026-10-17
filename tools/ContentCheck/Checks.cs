@@ -37,6 +37,7 @@ public static class Checks
         }
         foreach (var room in content.Rooms) Rooms.Check(content, room, flags, found);
         Scripts.Check(content, found);
+        Translations.Check(content, found);
         flags.Stale(found);
         return found;
     }

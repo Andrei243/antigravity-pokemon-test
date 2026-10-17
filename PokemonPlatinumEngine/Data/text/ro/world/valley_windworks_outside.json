@@ -1,0 +1,52 @@
+{
+  "people": {
+    "grunt_m": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      }
+    },
+    "looker": {
+      "name": {
+        "en": [
+          "Looker"
+        ],
+        "text": [
+          "Looker"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Their base is in Eterna City. Remember it!"
+        ],
+        "text": [
+          "Baza lor e în Orașul Eterna. Ține minte!"
+        ]
+      }
+    },
+    "drifloon": {
+      "name": {
+        "en": [
+          "Drifloon"
+        ],
+        "text": [
+          "Drifloon"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "signboard": {
+      "en": [
+        "Valley Windworks\nClean power from the wind of the valley."
+      ],
+      "text": [
+        "Centrala Eoliană\nEnergie curată din vântul văii."
+      ]
+    }
+  }
+}

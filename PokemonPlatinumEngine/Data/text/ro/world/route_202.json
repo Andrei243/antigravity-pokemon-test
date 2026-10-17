@@ -1,0 +1,138 @@
+{
+  "people": {
+    "youngster_tristan": {
+      "name": {
+        "en": [
+          "Tristan"
+        ],
+        "text": [
+          "Tristan"
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Tristan: Our eyes met! That means we have to battle!"
+        ],
+        "text": [
+          "Puști Tristan: Ni s-au întâlnit privirile! Asta înseamnă că trebuie să ne luptăm!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Tristan: Aww, my Starly fought hard! You're really tough!"
+        ],
+        "text": [
+          "Puști Tristan: Of, Starly al meu s-a luptat din greu! Chiar ești tare!"
+        ]
+      }
+    },
+    "lass_natalie": {
+      "name": {
+        "en": [
+          "Natalie"
+        ],
+        "text": [
+          "Natalie"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Natalie: I spy a trainer! That means a battle, please!"
+        ],
+        "text": [
+          "Domnișoară Natalie: Văd un antrenor! Asta înseamnă o luptă, te rog!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Natalie: Wow, you're strong! Jubilife City is just up the road."
+        ],
+        "text": [
+          "Domnișoară Natalie: Uau, ce putere ai! Orașul Jubilife e chiar în susul drumului."
+        ]
+      }
+    },
+    "youngster_logan": {
+      "name": {
+        "en": [
+          "Logan"
+        ],
+        "text": [
+          "Logan"
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Logan: A battle! Come on! I warn you, though, I'm going to win!"
+        ],
+        "text": [
+          "Puști Logan: O luptă! Hai! Dar te avertizez, o să câștig eu!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Logan: You beat me? That was fun all the same. I'm going to battle everybody!"
+        ],
+        "text": [
+          "Puști Logan: M-ai bătut? A fost distractiv oricum. O să mă lupt cu toată lumea!"
+        ]
+      }
+    },
+    "counterpart": {
+      "name": {
+        "en": [
+          "{assistant}"
+        ],
+        "text": [
+          "{assistant}"
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Trainers on this route challenge you the moment they see you.",
+          "If your Pokémon are tired, turn back and rest them in Sandgem Town."
+        ],
+        "text": [
+          "Antrenorii de pe ruta asta te provoacă imediat ce te văd.",
+          "Dacă Pokémonii tăi sunt obosiți, întoarce-te și odihnește-i în Orășelul Sandgem."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost_sandgem_town": {
+      "en": [
+        "Route 202\nSouth: Sandgem Town"
+      ],
+      "text": [
+        "Ruta 202\nSud: Orășelul Sandgem"
+      ]
+    },
+    "arrow_signpost_jubilife_city": {
+      "en": [
+        "Route 202\nNorth: Jubilife City"
+      ],
+      "text": [
+        "Ruta 202\nNord: Orașul Jubilife"
+      ]
+    },
+    "trainer_tips_signpost": {
+      "en": [
+        "Trainer Tips\nA trainer who sees you will want a battle. Pick your path with care if your Pokémon are hurt."
+      ],
+      "text": [
+        "Sfaturi pentru Antrenori\nUn antrenor care te vede o să vrea o luptă. Alege-ți drumul cu grijă dacă Pokémonii tăi sunt răniți."
+      ]
+    }
+  }
+}

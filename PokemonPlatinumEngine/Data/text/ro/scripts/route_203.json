@@ -1,0 +1,52 @@
+{
+  "Rival": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "There you are, {player}! I've been waiting! You got a Pokétch? Me too. Obviously."
+      ],
+      "text": [
+        "Aici erai, {player}! Te-am așteptat! Ai primit un Pokétch? Și eu. Evident."
+      ]
+    },
+    {
+      "en": [
+        "My Pokémon and I learned loads at the Trainers' School. Let's see if you've been slacking!"
+      ],
+      "text": [
+        "Eu și Pokémonii mei am învățat o grămadă la Școala de Antrenori. Să vedem dacă ai lenevit!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Gah! What was that?! ...Fine, whatever. The real test is the Oreburgh Gym!"
+      ],
+      "text": [
+        "Ah! Ce-a fost asta?! ...Bine, fie. Adevăratul test e Arena din Oreburgh!"
+      ]
+    },
+    {
+      "en": [
+        "Through Oreburgh Gate and you're there. I'll be the first to get the Badge, you'll see!"
+      ],
+      "text": [
+        "Treci de Poarta Oreburgh și ai ajuns. O să fiu primul care ia Insigna, o să vezi!"
+      ]
+    }
+  ]
+}

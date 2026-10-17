@@ -1,0 +1,91 @@
+{
+  "displayName": {
+    "en": [
+      "Pokétch Company"
+    ],
+    "text": [
+      "Compania Pokétch"
+    ]
+  },
+  "people": {
+    "pokefan_m": {
+      "name": {
+        "en": [
+          "Designer"
+        ],
+        "text": [
+          "Designerul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We try to think the way a Trainer thinks.",
+          "That's how we work out which Pokétch apps would be worth making."
+        ],
+        "text": [
+          "Încercăm să gândim cum gândește un Antrenor.",
+          "Așa ne dăm seama ce aplicații Pokétch ar merita făcute."
+        ]
+      }
+    },
+    "old_man": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pokémon Watch! Pokétch, for short.",
+          "Say it the long way and... now, what is Pokémon short for again?",
+          "Never mind that. I am the father of the president of the Pokétch Company!"
+        ],
+        "text": [
+          "Pokémon Watch! Pe scurt, Pokétch.",
+          "Spus pe lung... ia stai, Pokémon de la ce vine prescurtarea?",
+          "Lasă asta. Eu sunt tatăl președintelui Companiei Pokétch!"
+        ]
+      }
+    },
+    "clefairy": {
+      "name": {
+        "en": [
+          "Clefairy"
+        ],
+        "text": [
+          "Clefairy"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clefairy: Pippi?"
+        ],
+        "text": [
+          "Clefairy: Pippi?"
+        ]
+      }
+    },
+    "pachirisu": {
+      "name": {
+        "en": [
+          "Pachirisu"
+        ],
+        "text": [
+          "Pachirisu"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pachirisu: Chipa chii?"
+        ],
+        "text": [
+          "Pachirisu: Chipa chii?"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

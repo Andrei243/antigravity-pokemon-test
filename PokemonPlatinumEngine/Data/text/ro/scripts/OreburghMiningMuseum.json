@@ -1,0 +1,102 @@
+{
+  "FossilResearcher": [
+    {
+      "en": [
+        "I study Fossils. More than study them: with the machine behind me, I can bring them back to life!"
+      ],
+      "text": [
+        "Eu studiez Fosilele. Ba chiar mai mult: cu aparatul din spatele meu, le pot readuce la viață!"
+      ]
+    },
+    {
+      "en": [
+        "You have a Fossil with you, I can smell the stone dust! Shall I bring it back to life?"
+      ],
+      "text": [
+        "Ai o Fosilă la tine, simt praful de piatră! S-o readuc la viață?"
+      ]
+    },
+    {
+      "en": [
+        "This takes a little while, and I work better unwatched.",
+        "Take a walk outside, then come and see me again."
+      ],
+      "text": [
+        "Durează puțin, iar eu lucrez mai bine când nu se uită nimeni.",
+        "Fă o plimbare afară, apoi vino iar la mine."
+      ]
+    },
+    {
+      "en": [
+        "There you are! Look what your Fossil turned out to be: {thing}!"
+      ],
+      "text": [
+        "Aici erai! Uite ce s-a dovedit a fi Fosila ta: {thing}!"
+      ]
+    },
+    {
+      "en": [
+        "{player} received {thing}!"
+      ],
+      "text": [
+        "{player} a primit {thing}!"
+      ]
+    },
+    {
+      "en": [
+        "But your team is full. Make room for one more, and it's yours."
+      ],
+      "text": [
+        "Dar echipa ta e plină. Fă loc pentru încă unul și e al tău."
+      ]
+    },
+    {
+      "en": [
+        "Bring me a Fossil, and I'll show you what once walked this land.",
+        "They turn up in the walls of the Underground, if you dig for them."
+      ],
+      "text": [
+        "Adu-mi o Fosilă și îți arăt ce umbla odată pe meleagurile astea.",
+        "Apar în pereții din Subteran, dacă sapi după ele."
+      ]
+    },
+    {
+      "en": [
+        "No? If you change your mind, you know where the machine is."
+      ],
+      "text": [
+        "Nu? Dacă te răzgândești, știi unde e aparatul."
+      ]
+    },
+    {
+      "en": [
+        "...But you've never dug anything up yourself, have you? Come back when you have. It will mean more."
+      ],
+      "text": [
+        "...Dar n-ai dezgropat niciodată nimic cu mâna ta, nu-i așa? Revino după ce o faci. O să însemne mai mult."
+      ]
+    }
+  ],
+  "Collector": [
+    {
+      "en": [
+        "A National Pokédex! Then you'll want both of the old armoured ones in it, and the wall only ever gives a digger one kind.",
+        "I dug these two up in my own day, one of each. The scientist at the desk can bring them back."
+      ],
+      "text": [
+        "Un Pokédex Național! Atunci o să vrei în el amândoi ăia vechi cu platoșe, iar peretele îi dă unui săpător doar un fel.",
+        "Pe ăștia doi i-am dezgropat pe vremuri, câte unul din fiecare. Cercetătorul de la birou îi poate readuce la viață."
+      ]
+    },
+    {
+      "en": [
+        "Digging takes a strong arm, they say. Nonsense. It takes a strong mind.",
+        "One blow too many and the whole wall comes down on your find. Patience, patience."
+      ],
+      "text": [
+        "Se zice că la săpat îți trebuie braț puternic. Prostii. Îți trebuie minte puternică.",
+        "O lovitură în plus și tot peretele se prăbușește peste ce-ai găsit. Răbdare, răbdare."
+      ]
+    }
+  ]
+}

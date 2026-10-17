@@ -1,0 +1,120 @@
+{
+  "displayName": {
+    "en": [
+      "Jubilife TV"
+    ],
+    "text": [
+      "Jubilife TV"
+    ]
+  },
+  "people": {
+    "beauty": {
+      "name": {
+        "en": [
+          "Beauty"
+        ],
+        "text": [
+          "Frumoasa"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This is where the official records are kept. Winning streaks, how many Pokémon you've caught, that sort of thing.",
+          "Everybody's records are up on the third floor for anyone to see."
+        ],
+        "text": [
+          "Aici se țin recordurile oficiale. Serii de victorii, câți Pokémoni ai prins, de-astea.",
+          "Recordurile tuturor sunt afișate la etajul trei, să le vadă oricine."
+        ]
+      }
+    },
+    "gym_guide": {
+      "name": {
+        "en": [
+          "Guide"
+        ],
+        "text": [
+          "Ghidul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Fancy dressing your Pokémon up? There's a Fitting Room on the second floor, with Accessories for every taste.",
+          "Or there will be. The studios upstairs are shut to visitors for the time being, I'm afraid."
+        ],
+        "text": [
+          "Ai vrea să-ți gătești Pokémonii? La etajul doi e o Cabină de Probă, cu Accesorii pe toate gusturile.",
+          "Adică va fi. Deocamdată studiourile de sus sunt închise pentru vizitatori, mă tem."
+        ]
+      }
+    },
+    "poketch_co_president": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm here to get our commercials on TV.",
+          "They'll bring more customers into the department store, you'll see."
+        ],
+        "text": [
+          "Sunt aici ca să ne bag reclamele la TV.",
+          "O să aducă mai mulți clienți în magazin, o să vezi."
+        ]
+      }
+    },
+    "ace_trainer_snow_f": {
+      "name": {
+        "en": [
+          "Lottery Clerk"
+        ],
+        "text": [
+          "Funcționara de la Loterie"
+        ]
+      }
+    },
+    "ace_trainer_m": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          "Antrenor As"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The station interviews Trainers of every kind for its shows. People like to hear what the good ones have to say, after all.",
+          "I'd like to hear from the Gym Leaders myself. And from the Elite Four of the Pokémon League!"
+        ],
+        "text": [
+          "Postul intervievează pentru emisiunile lui tot felul de Antrenori. Oamenilor le place să audă ce au de spus cei buni.",
+          "Eu aș vrea să-i aud pe Liderii de Arenă. Și pe Elita celor Patru de la Liga Pokémon!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "13,4": {
+      "en": [
+        "A rope hangs across the foot of the stairs.\nThe card on it reads: STUDIOS. NO VISITORS TODAY."
+      ],
+      "text": [
+        "La baza scărilor e întinsă o funie.\nPe cartonașul agățat de ea scrie: STUDIOURI. FĂRĂ VIZITATORI AZI."
+      ]
+    },
+    "18,3": {
+      "en": [
+        "The lift's doors are shut.\nA card beside them reads: STAFF ONLY."
+      ],
+      "text": [
+        "Ușile liftului sunt închise.\nPe un cartonaș de lângă ele scrie: DOAR PERSONALUL."
+      ]
+    }
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "people": {
+    "pokemon_breeder_f": {
+      "name": {
+        "en": [
+          "Neighbour"
+        ],
+        "text": [
+          "Vecina"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "You can save your adventure whenever you like from the Start Menu.",
+          "Press Enter or Tab to open it. Your Pokémon, your Bag and your Pokédex are in there too."
+        ],
+        "text": [
+          "Îți poți salva aventura oricând vrei, din Meniul Start.",
+          "Apasă Enter sau Tab ca să-l deschizi. Acolo sunt și Pokémonii tăi, Rucsacul și Pokédexul."
+        ]
+      }
+    },
+    "collector": {
+      "name": {
+        "en": [
+          "Collector"
+        ],
+        "text": [
+          "Colecționarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The snow never quite leaves Twinleaf, even in summer.",
+          "It's why the pond is so cold. I wouldn't swim in it!"
+        ],
+        "text": [
+          "Zăpada nu pleacă de tot din Twinleaf, nici măcar vara.",
+          "De-asta e iazul atât de rece. Eu n-aș înota în el!"
+        ]
+      }
+    },
+    "rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "{rival}: Can't stop now! Professor Rowan's waiting!"
+        ],
+        "text": [
+          "{rival}: Nu mă pot opri acum! Profesorul Rowan așteaptă!"
+        ]
+      }
+    },
+    "guitarist": {
+      "name": {
+        "en": [
+          "Guitarist"
+        ],
+        "text": [
+          "Chitaristul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Route 201 is straight up this road.",
+          "Wild Pokémon jump out of the tall grass there. Don't walk in without a Pokémon of your own!"
+        ],
+        "text": [
+          "Ruta 201 e drept înainte, pe drumul ăsta.",
+          "Acolo sar Pokémoni sălbatici din iarba înaltă. Nu intra fără un Pokémon al tău!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "map_signpost": {
+      "en": [
+        "Twinleaf Town\nFresh and free! The town where journeys begin."
+      ],
+      "text": [
+        "Orășelul Twinleaf\nProaspăt și liber! Orășelul de unde încep călătoriile."
+      ]
+    },
+    "mailbox_player": {
+      "en": [
+        "{player}'s mailbox.\nThere's nothing in it."
+      ],
+      "text": [
+        "Cutia poștală a lui {player}.\nNu e nimic în ea."
+      ]
+    },
+    "mailbox_rival": {
+      "en": [
+        "{rival}'s mailbox.\nIt's stuffed with letters nobody has opened."
+      ],
+      "text": [
+        "Cutia poștală a lui {rival}.\nE îndesată cu scrisori pe care nu le-a deschis nimeni."
+      ]
+    }
+  }
+}

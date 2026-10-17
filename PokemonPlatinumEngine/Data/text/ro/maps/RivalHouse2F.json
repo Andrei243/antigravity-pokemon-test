@@ -1,0 +1,40 @@
+{
+  "displayName": {
+    "en": [
+      "{rival}'s Home"
+    ],
+    "text": [
+      "Casa lui {rival}"
+    ]
+  },
+  "people": {
+    "rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "6,4": {
+      "en": [
+        "A game console sits on the floor, its controller flung down beside it.\nThe television is showing a battle replay with the sound turned all the way up."
+      ],
+      "text": [
+        "Pe jos stă o consolă, cu controlerul aruncat lângă ea.\nLa televizor rulează reluarea unei lupte, cu sonorul dat la maximum."
+      ]
+    },
+    "9,4": {
+      "en": [
+        "A note is up on the PC's screen.\n\"Adventure Rule No. 1: when in doubt, open the menu! Adventure Rule No. 2: SAVE your progress!\"\nThere is nothing else on it."
+      ],
+      "text": [
+        "Pe ecranul PC-ului e un bilețel.\n„Regula de aventură nr. 1: dacă ai dubii, deschide meniul! Regula nr. 2: SALVEAZĂ-ȚI progresul!”\nAltceva nu scrie nimic."
+      ]
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "displayName": {
+    "en": [
+      "Floaroma Town"
+    ],
+    "text": [
+      "Orășelul Floaroma"
+    ]
+  },
+  "people": {
+    "pokefan_f": {
+      "name": {
+        "en": [
+          "Pokéfan"
+        ],
+        "text": [
+          "Pokéfana"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pokémon must have wonderfully sharp noses.",
+          "They can pick up the scent of Honey from ever so far away."
+        ],
+        "text": [
+          "Pokémonii trebuie să aibă un nas grozav de fin.",
+          "Simt mirosul de miere de foarte, foarte departe."
+        ]
+      }
+    },
+    "pokefan_m": {
+      "name": {
+        "en": [
+          "Pokéfan"
+        ],
+        "text": [
+          "Pokéfanul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "There are Pokémon you will never see unless the sweet smell of Honey draws them out."
+        ],
+        "text": [
+          "Sunt Pokémoni pe care nu-i vezi niciodată dacă nu-i scoate la iveală mirosul dulce de miere."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}
