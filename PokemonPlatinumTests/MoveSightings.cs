@@ -139,7 +139,21 @@ internal static class MoveSightings
             return All.Where(s => s.Rank >= from && s.Rank < to).Select(s => s.Move).ToList();
         }
     }
-    private static readonly Lazy<Dictionary<string, int>> PlaceRanks = new(() => Ranks().Ranks);
+    /// <summary>
+    /// Platinum's moves, by name, that Y10's first part takes (plan 25 · Y10a): seen after Route 224, the post-game from
+    /// the Fuego Ironworks' sea (Canalave City's rod) to Stark Mountain. Camouflage, which Y6 took by its own rule, is
+    /// left out.
+    /// </summary>
+    public static IReadOnlyList<string> TenthBatchFirstPart
+    {
+        get
+        {
+            int from = PlaceRanks.Value[NinthBatchEnds] + 100;
+            return All.Where(s => s.Rank >= from && s.Move != "Camouflage").Select(s => s.Move).ToList();
+        }
+    }
+
+    private static readonly Lazy<Dictionary<string, int>> PlaceRanks =new(() => Ranks().Ranks);
 
     /// <summary>The areas in their order, then every room ranked by the place whose warp first leads into it.</summary>
     private static (Dictionary<string, int> Ranks, Func<string, Map> Maps) Ranks()

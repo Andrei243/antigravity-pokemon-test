@@ -511,6 +511,37 @@ One sound for each type, played as a move of that type sets off (`SoundBank.Move
 | `use_mega_kick` | `SEQ_SE_DP_140` | Mega Kick: a swing and a huge booming kick. |
 | `use_moonlight` | `SEQ_SE_DP_W236` | Moonlight: a soft rising hum and a slow twinkle of high notes. |
 | `use_trick` | `SEQ_SE_DP_166` | Trick: a puff, a quick run of notes and four sparkling pings. |
+| `use_clamp` | `SEQ_SE_DP_050` | Clamp: a shell's clack, a thud and a tighter second clack with bubbles. |
+| `use_crabhammer` | `SEQ_SE_DP_W233B` | Crabhammer: a watery gather, a very heavy hammer blow and a crashing splash. |
+| `use_double_kick` | `SEQ_SE_DP_030` | Double Kick: two swings, each ending in a thud. |
+| `use_icicle_spear` | `SEQ_SE_DP_W196` | Icicle Spear: four icy whooshes and four ringing shatters. |
+| `use_rapid_spin` | `SEQ_SE_DP_207` | Rapid Spin: a rising whirl and three rolling thuds. |
+| `use_water_spout` | `SEQ_SE_DP_W291` | Water Spout: a rising rush of water, a spout and a heavy falling splash. |
+| `use_belly_drum` | `SEQ_SE_DP_W187` | Belly Drum: six deep drum beats and a rising tone. |
+| `use_covet` | `SEQ_SE_DP_W204` | Covet: a pleading run of soft notes, a pat and a twinkle. |
+| `use_slack_off` | `SEQ_SE_DP_W281` | Slack Off: a long low yawn and a soft healing run of notes. |
+| `use_superpower` | `SEQ_SE_DP_W025` | Superpower: a rising growl of power and a huge booming blow with a crackle. |
+| `use_blaze_kick` | `SEQ_SE_DP_W172` | Blaze Kick: a roaring flame, a kick and a burning crackle. |
+| `use_eruption` | `SEQ_SE_DP_W153` | Eruption: two deep rumbles and a run of six booming blasts. |
+| `use_facade` | `SEQ_SE_DP_W207` | Facade: four pulsing tones that climb and a heavy blow. |
+| `use_seed_bomb` | `SEQ_SE_DP_HURU2` | Seed Bomb: five quick pings thrown and three booming bursts. |
+| `use_triple_kick` | `SEQ_SE_DP_W007` | Triple Kick: three quick kicks, each harder. |
+| `use_mega_punch` | `SEQ_SE_DP_140` | Mega Punch: a swing and a huge booming punch with a bell. |
+| `use_skull_bash` | `SEQ_SE_DP_W036` | Skull Bash: a tucking swish, a rushing charge and a ringing crack. |
+| `use_glare` | `SEQ_SE_DP_W043D` | Glare: a low menacing drone with sour notes and a crackle. |
+| `use_healing_wish` | `SEQ_SE_DP_W361` | Healing Wish: a long rising glow with a run of bright notes and a bell. |
+| `use_lava_plume` | `SEQ_SE_DP_W436` | Lava Plume: a thick roaring surge of lava with bubbling and crackling. |
+| `use_sky_uppercut` | `SEQ_SE_DP_W327` | Sky Uppercut: a rising rush, a booming blow and a second lighter one. |
+| `use_cotton_spore` | `SEQ_SE_DP_W199` | Cotton Spore: a long soft rustle with a gentle drifting tune. |
+| `use_crush_claw` | `SEQ_SE_DP_W013` | Crush Claw: two heavy slashes, each with a thud and a crack. |
+| `use_fissure` | `SEQ_SE_DP_W090` | Fissure: a long grinding rumble, a crackle of rock and a deep thud. |
+| `use_needle_arm` | `SEQ_SE_DP_W030` | Needle Arm: four quick prickling jabs and a last hard blow. |
+| `use_spikes` | `SEQ_SE_DP_W026` | Spikes: five thrown pings, each landing as a bright iron ring. |
+| `use_teeter_dance` | `SEQ_SE_DP_W298` | Teeter Dance: a wobbling tune that sways and a rising twinkle. |
+| `use_guillotine` | `SEQ_SE_DP_W011` | Guillotine: a swing, a snip of steel and a ringing chop. |
+| `use_present` | `SEQ_SE_DP_W039` | Present: a playful toss, a boom and a bright run of notes. |
+| `use_heal_block` | `SEQ_SE_DP_W377` | Heal Block: a low dark drone, falling notes and a dull toll. |
+| `use_psycho_shift` | `SEQ_SE_DP_W375` | Psycho Shift: a wavering rise, a spiral of notes and a falling tone with a bell. |
 
 ## Cries
 

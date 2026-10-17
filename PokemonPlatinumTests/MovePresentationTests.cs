@@ -370,6 +370,51 @@ public class MovePresentationTests
     }
 
     [Fact]
+    public void TheTenthBatchsFirstPartAllHaveALookAndASoundOfTheirOwn()
+    {
+        // Plan 25 - Y10a: the post-game, the Fuego Ironworks' sea to Stark Mountain
+        var part = MoveSightings.TenthBatchFirstPart;
+        output.WriteLine($"{part.Count} moves in Y10's first part: {string.Join(", ", part)}");
+        Assert.Equal(32, part.Count);
+        Assert.All(part, move => Assert.Equal("Y10", MoveFx.BatchOf(move)));
+        // Hyper Voice is the user's voice; every other has a sound of its own
+        Assert.All(part, move => Assert.True(SoundBank.CryModesOf(move) != null || SoundBank.Exists("use_" + SoundBank.MoveKey(move)), move));
+        Assert.Empty(part.Intersect(MoveSightings.NinthBatchFirstPart.Concat(MoveSightings.NinthBatchSecondPart), StringComparer.OrdinalIgnoreCase));
+        // The batch is these 32 and the moves of its second part, nothing else
+        var second = TenthBatchSecondPart();
+        Assert.All(MoveFx.Batches.Where(b => b.Value == "Y10"), b => Assert.Contains(b.Key, part.Concat(second), StringComparer.OrdinalIgnoreCase));
+    }
+
+    /// <summary>The Platinum moves that <see cref="MoveSightings"/> finds nowhere (plan 25 · Y10b): tutors, shop TMs, breeding, a legendary's own.</summary>
+    private IEnumerable<string> TenthBatchSecondPart()
+    {
+        var seen = new HashSet<string>(MoveSightings.All.Select(s => s.Move), StringComparer.OrdinalIgnoreCase);
+        return PlatinumMoves.Select(m => m.Name).Where(n => !seen.Contains(n)).ToList();
+    }
+
+    [Fact]
+    public void TheTenthBatchsFirstPartsMovesThatShareAParticleFileOrAKindLookDifferentHere()
+    {
+        foreach (var (a, b) in new[] { ("Double Kick", "Triple Kick"), ("Mega Punch", "Superpower"), ("Blaze Kick", "Triple Kick"), ("Eruption", "Lava Plume"),
+            ("Water Spout", "Crabhammer"), ("Clamp", "Guillotine"), ("Spikes", "Icicle Spear"), ("Glare", "Heal Block"), ("Sky Uppercut", "Mega Punch"),
+            ("Needle Arm", "Crush Claw"), ("Slack Off", "Healing Wish"), ("Skull Bash", "Facade"), ("Cotton Spore", "Teeter Dance"), ("Psycho Shift", "Covet"),
+            ("Seed Bomb", "Present"), ("Rapid Spin", "Fissure") })
+        {
+            var ma = MoveDatabase.Get(a)!;
+            var mb = MoveDatabase.Get(b)!;
+            int same = 0;
+            foreach (float age in new[] { 0.15f, 0.3f, 0.5f, 0.8f })
+            {
+                var ca = Cue(ma);
+                var cb = Cue(mb);
+                cb.Seed = ca.Seed;
+                if (Picture(Draw(ca, age)) == Picture(Draw(cb, age))) same++;
+            }
+            Assert.True(same < 4, $"{a} and {b} look alike");
+        }
+    }
+
+    [Fact]
     public void MovesThatShareAParticleFileInTheOriginalLookDifferentHere()
     {
         // Block and Imprison, Self-Destruct and Explosion, Snore and Rest, and two more that are alike in kind
@@ -454,7 +499,7 @@ public class MovePresentationTests
         int own = PlatinumMoves.Count(m => MoveFx.BatchOf(m.Name) != null &&
             (SoundBank.CryModesOf(m.Name) != null || SoundBank.Exists("use_" + SoundBank.MoveKey(m.Name))));
         output.WriteLine($"{own} of Platinum's 467 have a look and a sound of their own");
-        Assert.True(own >= 371, $"only {own}");
+        Assert.True(own >= 403, $"only {own}");
     }
 
     [Fact]
