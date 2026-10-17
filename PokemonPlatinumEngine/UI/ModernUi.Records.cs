@@ -65,8 +65,8 @@ internal static partial class ModernUi
             BallDisc(disc, 108);
             PixelArt(PixelArtGenerator.GetPokemonSprite(m.Form ?? m.Species, isBack: false), disc, 2, Hop(selected) * 2);
             float size = 32;
-            while (size > 22 && UiFonts.Measure(m.Nickname, size, UiWeight.Black) > cardW - 28) size -= 2;
-            UiFonts.DrawCentered(m.Nickname, r.X + (cardW - UiFonts.Measure(m.Nickname, size, UiWeight.Black)) / 2f, r.Y + 286, size, Ink, UiWeight.Black);
+            while (size > 22 && UiFonts.Measure(m.ShownName, size, UiWeight.Black) > cardW - 28) size -= 2;
+            UiFonts.DrawCentered(m.ShownName, r.X + (cardW - UiFonts.Measure(m.ShownName, size, UiWeight.Black)) / 2f, r.Y + 286, size, Ink, UiWeight.Black);
             string level = Text.Of("hallOfFame.level", ("level", m.Level));
             UiFonts.DrawCentered(level, r.X + (cardW - UiFonts.Measure(level, 26, UiWeight.ExtraBold)) / 2f, r.Y + 324, 26, Muted, UiWeight.ExtraBold);
         }
@@ -79,8 +79,8 @@ internal static partial class ModernUi
         float wide = panel.Width - 96;
         if (!screen.ShowingMoves)
         {
-            UiFonts.DrawCentered(shown.Nickname, hx, y + 34, 56, Ink, UiWeight.Black);
-            float after = hx + UiFonts.Measure(shown.Nickname, 56, UiWeight.Black);
+            UiFonts.DrawCentered(shown.ShownName, hx, y + 34, 56, Ink, UiWeight.Black);
+            float after = hx + UiFonts.Measure(shown.ShownName, 56, UiWeight.Black);
             if (shown.Gender is Gender.Male or Gender.Female)
             {
                 UiIcons.GenderMark(new Vector2(after + 34, y + 34), 44, shown.Gender);
@@ -115,7 +115,7 @@ internal static partial class ModernUi
                 var color = Palette.GetTypeColor(move.Type.ToString());
                 UiShapes.Shadow(r, pillH / 2f, 14, new Vector2(0, 5), ShadowColor);
                 UiShapes.Shape(r, pillH / 2f, Lighter(color, 0.12f), Darker(color, 0.1f), Darker(color, 0.32f), 3);
-                UiFonts.DrawCentered(shown.Moves[i], r.X + 40, r.Y + pillH / 2f, 34, Color.White, UiWeight.Black);
+                UiFonts.DrawCentered(LocalNames.Move(shown.Moves[i]), r.X + 40, r.Y + pillH / 2f, 34, Color.White, UiWeight.Black);
                 string type = move.Type.ToString().ToUpperInvariant();
                 UiFonts.DrawCentered(type, r.X + r.Width - 40 - UiFonts.Measure(type, 22, UiWeight.Black), r.Y + pillH / 2f, 22,
                     new Color(255, 255, 255, 200), UiWeight.Black);

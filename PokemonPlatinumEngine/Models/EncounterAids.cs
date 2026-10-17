@@ -34,14 +34,14 @@ public sealed class EncounterAids
         {
             case "Black Flute":
                 Flute = Flute.Black;
-                return (Text.Of("aids.blackFlute", ("player", player), ("item", item.Name)), false);
+                return (Text.Of("aids.blackFlute", ("player", player), ("item", item.DisplayName)), false);
             case "White Flute":
                 Flute = Flute.White;
-                return (Text.Of("aids.whiteFlute", ("player", player), ("item", item.Name)), false);
+                return (Text.Of("aids.whiteFlute", ("player", player), ("item", item.DisplayName)), false);
         }
         if (RepelActive) return (Text.Of("aids.lingering"), false);
         RepelSteps = item.EffectParam;
-        return (Text.Of("aids.repel", ("player", player), ("item", item.Name)), true);
+        return (Text.Of("aids.repel", ("player", player), ("item", item.DisplayName)), true);
     }
 
     /// <summary><c>Repel_UpdateSteps</c>: a step taken. True on the step that ends the Repel, when the game says it wore off.</summary>

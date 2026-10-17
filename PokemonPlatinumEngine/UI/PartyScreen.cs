@@ -1,3 +1,4 @@
+using PokemonPlatinumEngine.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ public readonly record struct PartyAction(PartyActionKind Kind, FieldMove Move =
         PartyActionKind.Summary => Text.Of("party.action.summary"),
         PartyActionKind.Switch => Text.Of("party.action.switch"),
         PartyActionKind.Cancel => Text.Of("party.action.cancel"),
-        _ => FieldMoveRules.MoveName(Move).ToUpperInvariant()
+        _ => LocalNames.Move(FieldMoveRules.MoveName(Move)).ToUpperInvariant()
     };
 }
 
@@ -244,7 +245,7 @@ public class PartyScreen
                 return;
             }
             AudioManager.PlaySound("heal");
-            Message = Text.Of("party.recovered", ("name", party.Members[SelectedIndex].Nickname), ("hp", healed));
+            Message = Text.Of("party.recovered", ("name", party.Members[SelectedIndex].DisplayName), ("hp", healed));
             Sharing = null;
             SelectedIndex = giver;
             return;

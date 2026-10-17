@@ -120,7 +120,7 @@ internal static partial class ModernUi
             var r = RowRect(list, row, top, scrolls: true);
             bool selected = index == dex.SelectedIndex;
             bool seen = pokedex.IsSeen(s.DexNumber), caught = pokedex.IsCaught(s.DexNumber);
-            var ink = ListRow(r, selected, seen ? s.Name : "— — —", seen, nameX: 232);
+            var ink = ListRow(r, selected, seen ? s.DisplayName : "— — —", seen, nameX: 232);
             UiFonts.DrawCentered(DexNumber(number), r.X + 100, r.Y + r.Height / 2f, 24, selected ? Color.White : Muted, UiWeight.Black);
             if (seen) RowIcon(r, PixelArtGenerator.GetPokemonIcon(s.Name), 1f, selected, hop: Hop(selected));
             else UiShapes.Circle(new Vector2(r.X + 52, r.Y + r.Height / 2f), 8, Rule);
@@ -166,9 +166,9 @@ internal static partial class ModernUi
         float x = detail.X + 44 + 360 + 44;
         UiFonts.DrawCentered(DexNumber(entry.Number), x, detail.Y + 160, 30, Muted, UiWeight.Black);
         float size = 56, room = detail.X + detail.Width - 44 - x;
-        float nameW = UiFonts.Measure(s.Name, size, UiWeight.Black);
+        float nameW = UiFonts.Measure(s.DisplayName, size, UiWeight.Black);
         if (nameW > room) size = MathF.Floor(size * room / nameW);
-        UiFonts.DrawCentered(s.Name, x, detail.Y + 218, size, Ink, UiWeight.Black);
+        UiFonts.DrawCentered(s.DisplayName, x, detail.Y + 218, size, Ink, UiWeight.Black);
         UiFonts.DrawCentered(owned ? Text.Of("pokedex.kind", ("category", s.Category)) : Text.Of("pokedex.unknownKind"), x, detail.Y + 270, 28, Muted, UiWeight.ExtraBold);
         float px = x;
         px += TypePill(px, detail.Y + 304, s.PrimaryType, 42) + 10;
@@ -236,7 +236,7 @@ internal static partial class ModernUi
         }
 
         // Under the map, how many places in all
-        string summary = Text.Of("pokedex.livesIn", ("name", s.Name), ("n", places.Count));
+        string summary = Text.Of("pokedex.livesIn", ("name", s.DisplayName), ("n", places.Count));
         UiFonts.Draw(summary, map.X, map.Y + map.Height + 28, 28, Ink, UiWeight.ExtraBold);
         float kx = map.X;
         float ky = map.Y + map.Height + 92;
@@ -306,7 +306,7 @@ internal static partial class ModernUi
         }
 
         if (portrait is { } player) Stand(player, PlayerHeight, detail.X + detail.Width * 0.3f, PlayerIdentity.Name);
-        Stand(PixelArtGenerator.GetPokemonSprite(s.Name, isBack: false), s.Height, detail.X + detail.Width * 0.68f, s.Name);
+        Stand(PixelArtGenerator.GetPokemonSprite(s.Name, isBack: false), s.Height, detail.X + detail.Width * 0.68f, s.DisplayName);
     }
 
     // ------------------------------------------------------------------ the search panel

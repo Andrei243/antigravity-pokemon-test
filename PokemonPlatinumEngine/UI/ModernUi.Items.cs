@@ -79,9 +79,9 @@ internal static partial class ModernUi
         ItemDisc(new Vector2(detail.X + 44 + 96, detail.Y + 44 + 96), item);
         float x = detail.X + 44 + 192 + 36;
         float size = 48, room = detail.X + detail.Width - 44 - x;
-        float nameW = UiFonts.Measure(item.Name, size, UiWeight.Black);
+        float nameW = UiFonts.Measure(item.DisplayName, size, UiWeight.Black);
         if (nameW > room) size = MathF.Floor(size * room / nameW);
-        UiFonts.DrawCentered(item.Name, x, detail.Y + 84, size, Ink, UiWeight.Black);
+        UiFonts.DrawCentered(item.DisplayName, x, detail.Y + 84, size, Ink, UiWeight.Black);
         Tag(x, detail.Y + 124, tab.Label, tab.Color, 38);
         if (fact is { } f)
         {
@@ -91,7 +91,7 @@ internal static partial class ModernUi
 
         // A TM or an HM is described by the move it teaches, as in the games
         var move = string.IsNullOrEmpty(item.TeachesMove) ? null : MoveDatabase.Get(item.TeachesMove);
-        string text = move != null && !string.IsNullOrWhiteSpace(move.Description) ? move.Description : item.Description;
+        string text = move != null && !string.IsNullOrWhiteSpace(move.DisplayDescription) ? move.DisplayDescription : item.DisplayDescription;
 
         float y = detail.Y + 276;
         UiShapes.Fill(new Rectangle(detail.X + 44, y, detail.Width - 88, 3), 1.5f, Rule);
@@ -108,7 +108,7 @@ internal static partial class ModernUi
         UiShapes.Fill(new Rectangle(detail.X + 44, y, detail.Width - 88, 3), 1.5f, Rule);
         y += 26;
         Label(Text.Of("bag.teaches"), detail.X + 44, y);
-        UiFonts.Draw(move.Name, detail.X + 44, y + 24, 40, Ink, UiWeight.Black);
+        UiFonts.Draw(move.DisplayName, detail.X + 44, y + 24, 40, Ink, UiWeight.Black);
         float px = detail.X + 44;
         px += TypePill(px, y + 84, move.Type, 42) + 12;
         Tag(px, y + 84, Words.Category(move.Category), Muted, 42);
@@ -162,7 +162,7 @@ internal static partial class ModernUi
             bool selected = shop.Mode != ShopMode.Choosing && index == shop.SelectedIndex;
             int price = selling ? ShopScreen.SellPrice(item) : item.Price;
             bool affordable = selling || item.Price <= money;
-            var ink = ListRow(r, selected, selling ? Text.Of("shop.listedCount", ("item", item.Name), ("n", inventory.GetQuantity(item))) : item.Name);
+            var ink = ListRow(r, selected, selling ? Text.Of("shop.listedCount", ("item", item.DisplayName), ("n", inventory.GetQuantity(item))) : item.DisplayName);
             RowIcon(r, PixelArtGenerator.GetItemIcon(item), 1.5f, selected);
             MoneyRight(r.X + r.Width - 32, r.Y + r.Height / 2f, price, 30, selected ? Color.White : affordable ? ink : Red);
         }
@@ -209,7 +209,7 @@ internal static partial class ModernUi
         var c = new Vector2(r.X + 56 + 52, r.Y + 176);
         UiShapes.Circle(c, 52, Disc);
         PixelArt(PixelArtGenerator.GetItemIcon(item), c, 2);
-        UiFonts.DrawCentered(item.Name, r.X + 56 + 128, r.Y + 160, 40, Ink, UiWeight.Black);
+        UiFonts.DrawCentered(item.DisplayName, r.X + 56 + 128, r.Y + 160, 40, Ink, UiWeight.Black);
         float width = Money(r.X + 56 + 128, r.Y + 204, each, 26, Muted);
         UiFonts.DrawCentered(Text.Of("shop.each"), r.X + 56 + 128 + width + 10, r.Y + 204, 24, Muted, UiWeight.ExtraBold);
 
@@ -243,7 +243,7 @@ internal static partial class ModernUi
         var c = new Vector2(r.X + 56 + 52, r.Y + 200);
         UiShapes.Circle(c, 52, Disc);
         PixelArt(PixelArtGenerator.GetItemIcon(item), c, 2);
-        UiFonts.DrawCentered(item.Name, r.X + 56 + 128, r.Y + 200, 40, Ink, UiWeight.Black);
+        UiFonts.DrawCentered(item.DisplayName, r.X + 56 + 128, r.Y + 200, 40, Ink, UiWeight.Black);
         Stepper(new Vector2(r.X + r.Width - 56 - 44 - 120 - 24, r.Y + 200), Text.Of("bag.howMany", ("n", count)));
     }
 }

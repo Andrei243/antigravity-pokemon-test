@@ -127,7 +127,7 @@ internal static partial class ModernUi
             MoveRow(new Rectangle(x, r.Y + 212 + i * 96, w, 86), p.Moves[i].Data, p.Moves[i].CurrentPP, cursor == i, Selection, p.Moves[i].MaxPP);
 
         var keep = new Rectangle(x, r.Y + 212 + 4 * 96 + 14, w, 78);
-        Button(keep, 39, Blue, Text.Of("evolution.dontLearn", ("newMove", newMove)), 30, cursor == 4);
+        Button(keep, 39, Blue, Text.Of("evolution.dontLearn", ("newMove", LocalNames.Move(newMove))), 30, cursor == 4);
     }
 
     /// <summary>
@@ -153,7 +153,7 @@ internal static partial class ModernUi
         UiShapes.Shape(row, 24, new Color(248, 250, 253, 255), new Color(236, 241, 248, 255), framed ? accent : Rule, framed ? 5 : 3);
         float cy = row.Y + row.Height / 2f;
         TypePill(row.X + 16, cy - 22, move.Type, 44, 150);
-        UiFonts.DrawCentered(move.Name, row.X + 186, cy - 12, 30, Ink, UiWeight.Black);
+        UiFonts.DrawCentered(move.DisplayName, row.X + 186, cy - 12, 30, Ink, UiWeight.Black);
         string detail = Words.Category(move.Category).ToUpperInvariant() + (move.Power > 0 ? Text.Of("evolution.power", ("power", move.Power)) : "") +
                         (move.Accuracy > 0 ? Text.Of("evolution.acc", ("accuracy", move.Accuracy)) : "");
         UiFonts.DrawCentered(detail, row.X + 186, cy + 22, 18, Muted, UiWeight.Black);

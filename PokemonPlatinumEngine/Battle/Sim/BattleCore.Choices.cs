@@ -43,17 +43,17 @@ public sealed partial class BattleCore
         var mine = At(b.Place);
         var v = mine.Volatile;
         var data = move.Data;
-        if (v.Disabled == data) return Text.Of("battle.isDisabled", ("pokemon", mine.Name), ("move", move.Name));
+        if (v.Disabled == data) return Text.Of("battle.isDisabled", ("pokemon", mine.Name), ("move", move.DisplayName));
         if (v.Tormented && v.LastMove == data) return Text.Of("battle.cantUseTheSame", ("pokemon", mine.Name));
         // The original keeps back the moves of power 0 in its table: the status moves (a move of variable power is 1 there)
-        if (v.TauntTurns > 0 && move.Category == MoveCategory.Status) return Text.Of("battle.cantUseAfterThe", ("pokemon", mine.Name), ("move", move.Name));
-        if (IsSealed(mine, data)) return Text.Of("battle.cantUseTheSealed", ("pokemon", mine.Name), ("move", move.Name));
-        if (Field.Gravity && FailsUnderGravity(data)) return Text.Of("battle.cantUseBecauseOf", ("pokemon", mine.Name), ("move", move.Name));
-        if (v.HealBlockTurns > 0 && IsHealingMove(data)) return Text.Of("battle.cantUseWhileIt", ("pokemon", mine.Name), ("move", move.Name));
+        if (v.TauntTurns > 0 && move.Category == MoveCategory.Status) return Text.Of("battle.cantUseAfterThe", ("pokemon", mine.Name), ("move", move.DisplayName));
+        if (IsSealed(mine, data)) return Text.Of("battle.cantUseTheSealed", ("pokemon", mine.Name), ("move", move.DisplayName));
+        if (Field.Gravity && FailsUnderGravity(data)) return Text.Of("battle.cantUseBecauseOf", ("pokemon", mine.Name), ("move", move.DisplayName));
+        if (v.HealBlockTurns > 0 && IsHealingMove(data)) return Text.Of("battle.cantUseWhileIt", ("pokemon", mine.Name), ("move", move.DisplayName));
         if (v.Encored != null && v.Encored != data && mine.Pokemon!.Moves.Any(m => m.Data == v.Encored))
-            return Text.Of("battle.canOnlyUseAfter", ("pokemon", mine.Name), ("move", v.Encored.Name));
+            return Text.Of("battle.canOnlyUseAfter", ("pokemon", mine.Name), ("move", v.Encored.DisplayName));
         if (mine.ChoiceLock != null && mine.ChoiceLock != move && mine.Pokemon!.Moves.Contains(mine.ChoiceLock) && BattleEffects.Of(mine).Any(e => e.LocksMoveChoice))
-            return Text.Of("battle.canOnlyUse", ("pokemon", mine.Name), ("move", mine.ChoiceLock.Name));
+            return Text.Of("battle.canOnlyUse", ("pokemon", mine.Name), ("move", mine.ChoiceLock.DisplayName));
         if (!ignorePp && move.CurrentPP <= 0) return Text.Of("battle.thereNoPpLeft");
         return null;
     }
@@ -116,7 +116,7 @@ public sealed partial class BattleCore
         foreach (var foe in ActiveFoes(b))
         {
             if (foe.Ability?.Effect is { } trap && trap.Traps(foe, b, onTheGround))
-                return Text.Of("battle.preventsEscapeWith", ("foe", foe.Name), ("ability", foe.Ability.Name));
+                return Text.Of("battle.preventsEscapeWith", ("foe", foe.Name), ("ability", foe.Ability.DisplayName));
         }
         var v = b.Volatile;
         if (v.BindTurns > 0 || v.TrappedBy != null || v.Ingrained)

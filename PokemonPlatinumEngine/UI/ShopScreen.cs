@@ -209,7 +209,7 @@ public class ShopScreen
             int earned = count * SellPrice(item);
             UnitsSold += count;
             AudioManager.PlaySound("select");
-            onNotification(Text.Of("shop.sold", ("n", count), ("item", item.Name), ("money", earned)));
+            onNotification(Text.Of("shop.sold", ("n", count), ("item", item.DisplayName), ("money", earned)));
             selling.Clear();
             selling.AddRange(Sellable(inventory));
             SelectedIndex = Math.Min(SelectedIndex, Math.Max(0, selling.Count - 1));
@@ -222,7 +222,7 @@ public class ShopScreen
         inventory.AddItem(item, count);
         Purchases = count > 1 ? 2 : Purchases + 1;
         AudioManager.PlaySound("select");
-        onNotification(Text.Of("shop.bought", ("n", count), ("item", item.Name)));
+        onNotification(Text.Of("shop.bought", ("n", count), ("item", item.DisplayName)));
         return -cost;
     }
 

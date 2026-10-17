@@ -156,11 +156,11 @@ internal static partial class ModernUi
                 new Rectangle(MathF.Round(c.X - sprite.Width * scale / 2f), MathF.Round(c.Y - sprite.Height * scale / 2f), MathF.Round(sprite.Width * scale), MathF.Round(sprite.Height * scale)),
                 Vector2.Zero, 0f, Color.White);
             float tx = r.X + 152;
-            UiFonts.Draw(p.Species.Name, tx, r.Y + 24, 28, Ink, UiWeight.ExtraBold);
+            UiFonts.Draw(p.Species.DisplayName, tx, r.Y + 24, 28, Ink, UiWeight.ExtraBold);
             string level = Text.Of("arcadeBoard.level", ("level", p.Level));
             UiFonts.Draw(level, tx, r.Y + 60, 22, Muted, UiWeight.Black);
             if (p.Status != StatusCondition.None) Tag(tx + UiFonts.Measure(level, 22, UiWeight.Black) + 14, r.Y + 58, StatusWord(p.Status), Selection, 28);
-            if (p.HeldItem != null) Tag(tx, r.Y + 98, p.HeldItem.Name.ToUpperInvariant(), colour, 32);
+            if (p.HeldItem != null) Tag(tx, r.Y + 98, p.HeldItem.DisplayName.ToUpperInvariant(), colour, 32);
             else UiFonts.Draw(Text.Of("arcadeBoard.nothingHeld"), tx, r.Y + 102, 20, Muted, UiWeight.Black);
         }
     }

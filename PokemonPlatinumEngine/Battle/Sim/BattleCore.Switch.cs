@@ -317,7 +317,7 @@ public sealed partial class BattleCore
 
             var use = new MoveUse { User = foe, Move = Normalized(foe, move), Own = move.Data, Effect = EffectOf(move.Data), Boost = 20 };
             use.Targets.Add(leaving);
-            use.Line = Say(Text.Of("battle.used", ("user", foe.Name), ("move", move.Name)));
+            use.Line = Say(Text.Of("battle.used", ("user", foe.Name), ("move", move.DisplayName)));
             leaving.Turn.SubstituteHit = false;
             Strike(use);
         }

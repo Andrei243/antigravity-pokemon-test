@@ -572,3 +572,18 @@ Nothing here runs yet: it is what plan 06 · R20–R23 write their rules from.
 | UseItemFemale | 1 | an item used on it |  |
 | UseItemMale | 1 | an item used on it |  |
 | UseItemNight | 1 | an item used on it |  |
+
+## Languages
+
+Names and descriptions per language (plan 17 · N3), counted from `Data/text/<tag>/names.json`, which the importer writes from PokeAPI's own tables: a name the file lacks is shown in English. Descriptions are PokeAPI's short prose where a language has it; the games' own text is never read.
+
+| Language | Species (1025) | Forms | Moves (934) | Abilities (313) | Items (773) | Places | Move descriptions | Ability descriptions | Item descriptions |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| de | 1025 | 365 | 901 | 310 | 770 | 913 | 0 | 191 | 0 |
+| es | 1025 | 0 | 901 | 310 | 770 | 232 | 0 | 0 | 0 |
+| fr | 1025 | 481 | 901 | 310 | 771 | 958 | 764 | 305 | 516 |
+| it | 1025 | 0 | 901 | 310 | 770 | 232 | 0 | 0 | 0 |
+| ja | 1025 | 1 | 901 | 310 | 771 | 328 | 0 | 0 | 0 |
+| ko | 1025 | 0 | 901 | 310 | 757 | 232 | 0 | 0 | 0 |
+| zh-Hans | 1025 | 0 | 901 | 310 | 756 | 62 | 0 | 0 | 0 |
+| zh-Hant | 1025 | 0 | 901 | 310 | 756 | 62 | 0 | 0 | 0 |

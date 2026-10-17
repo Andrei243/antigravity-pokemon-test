@@ -146,11 +146,11 @@ public sealed class BattleInfo
         bool own = b.IsPlayerSide && b.Trainer == null;
         string ability = b.Ability?.Name ?? p.AbilityName ?? "";
         string? item = p.HeldItem?.Name;
-        string? shownAbility = own || revealed.AbilityOf(p) == ability ? ability : null;
-        string? shownItem = own ? item ?? Text.Of("battleInfo.none")
+        string? shownAbility = own || revealed.AbilityOf(p) == ability ? (ability.Length > 0 ? LocalNames.Ability(ability) : ability) : null;
+        string? shownItem = own ? item == null ? Text.Of("battleInfo.none") : LocalNames.Item(item)
             : revealed.ItemOf(p) is not { } seen ? null
             : item == null ? Text.Of("battleInfo.none")
-            : seen == item ? item : null;
+            : seen == item ? LocalNames.Item(item) : null;
 
         var stages = new List<InfoLine>();
         foreach (var stat in StageOrder)
@@ -177,11 +177,11 @@ public sealed class BattleInfo
         if (v.PerishCount >= 0) Bad(Text.Of("battleInfo.perishCount"), v.PerishCount.ToString());
         if (v.TauntTurns > 0) Bad(Text.Of("battleInfo.taunted"));
         if (v.Tormented) Bad(Text.Of("battleInfo.tormented"));
-        if (v.Encored != null) Bad(Text.Of("battleInfo.encore", ("move", v.Encored.Name)));
-        if (v.Disabled != null) Bad(Text.Of("battleInfo.disabled", ("move", v.Disabled.Name)));
+        if (v.Encored != null) Bad(Text.Of("battleInfo.encore", ("move", v.Encored.DisplayName)));
+        if (v.Disabled != null) Bad(Text.Of("battleInfo.disabled", ("move", v.Disabled.DisplayName)));
         if (v.HealBlockTurns > 0) Bad(Text.Of("battleInfo.healBlock"), Turns(v.HealBlockTurns));
         if (v.EmbargoTurns > 0) Bad(Text.Of("battleInfo.embargo"), Turns(v.EmbargoTurns));
-        if (v.BindTurns > 0 && v.BindingMove.Length > 0) Bad(Text.Of("battleInfo.bound", ("move", v.BindingMove)));
+        if (v.BindTurns > 0 && v.BindingMove.Length > 0) Bad(Text.Of("battleInfo.bound", ("move", LocalNames.Move(v.BindingMove))));
         if (v.TrappedBy != null) Bad(Text.Of("battleInfo.cantEscape"));
         if (v.Identified || v.MiracleEye) Bad(Text.Of("battleInfo.identified"));
         if (v.LockedOnBy != null) Bad(Text.Of("battleInfo.takenAimAt"));
@@ -203,7 +203,7 @@ public sealed class BattleInfo
 
         // What waits for the place itself, whoever stands there when it comes
         if (place.WishTurns > 0) Good(Text.Of("battleInfo.wish"), Turns(place.WishTurns));
-        if (place.DoomTurns > 0 && place.DoomMove != null) Bad(place.DoomMove.Name, Turns(place.DoomTurns));
+        if (place.DoomTurns > 0 && place.DoomMove != null) Bad(place.DoomMove.DisplayName, Turns(place.DoomTurns));
         return lines;
     }
 }

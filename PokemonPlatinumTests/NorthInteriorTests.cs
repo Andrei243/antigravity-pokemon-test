@@ -489,7 +489,7 @@ public class NorthInteriorTests
         host.Party.Add(serious);
         Run("Scientist", "SunyshoreCityEastHouse", host);
         Assert.Equal(new[] { PoketchApp.Calendar }, host.Poketch.Apps);
-        Assert.Contains(serious.Nickname, Said(host));
+        Assert.Contains(serious.DisplayName, Said(host));
 
         // Then a Naive one, then a Quirky one; a Quirky one shown early earns nothing yet
         host.Party.Add(Mon("Shinx", nature: Nature.Quirky));
@@ -825,7 +825,7 @@ public class NorthInteriorTests
         Assert.Equal(75, lead.Friendship);
         Assert.True(host.Story.Has("FLAG_DAILY_GOT_SPA_TREATMENT_RESORT_AREA_RIBBON_SYNDICATE_2F"));
         Assert.Contains("diamonds", Said(host));
-        Assert.Contains(lead.Nickname, Said(host));
+        Assert.Contains(lead.DisplayName, Said(host));
     }
 
     [Fact]

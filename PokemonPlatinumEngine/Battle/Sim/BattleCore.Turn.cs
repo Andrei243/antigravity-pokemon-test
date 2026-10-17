@@ -321,7 +321,7 @@ public sealed partial class BattleCore
                 Emit(arrived);
                 continue;
             }
-            var took = Say(Text.Of("battle.tookTheAttack2", ("pokemon", b.Name), ("move", move.Name))).With(arrived);
+            var took = Say(Text.Of("battle.tookTheAttack2", ("pokemon", b.Name), ("move", move.DisplayName))).With(arrived);
 
             // Its accuracy is rolled now, by the stages of whoever stands where it was sent from
             var sender = At(place.DoomFrom);

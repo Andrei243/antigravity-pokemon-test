@@ -324,7 +324,7 @@ public class BagScreen
             inventory.RemoveItem(item, count);
             Tossing = false;
             AudioManager.PlaySound("select");
-            onNotification(Text.Of("bag.threwAway", ("n", count), ("item", item.Name)));
+            onNotification(Text.Of("bag.threwAway", ("n", count), ("item", item.DisplayName)));
             Follow(inventory.GetPocketItems(CurrentPocket).Count);
             return;
         }
@@ -368,7 +368,7 @@ public class BagScreen
             case BagAction.Register or BagAction.Deselect:
                 Registered = action == BagAction.Register ? item.Name : null;
                 AudioManager.PlaySound("select");
-                onNotification(Text.Of(action == BagAction.Register ? "bag.registered" : "bag.deselected", ("item", item.Name)));
+                onNotification(Text.Of(action == BagAction.Register ? "bag.registered" : "bag.deselected", ("item", item.DisplayName)));
                 return;
             case BagAction.Toss:
                 Tossing = true;
@@ -781,9 +781,9 @@ public class BagScreen
         if (previous != null)
         {
             inventory.AddItem(previous, 1);
-            onNotification(Text.Of("bag.swapped", ("name", holder.DisplayName), ("previous", previous.Name), ("item", item.Name)) + changed);
+            onNotification(Text.Of("bag.swapped", ("name", holder.DisplayName), ("previous", previous.DisplayName), ("item", item.DisplayName)) + changed);
         }
-        else onNotification(Text.Of("bag.given", ("name", holder.DisplayName), ("item", item.Name)) + changed);
+        else onNotification(Text.Of("bag.given", ("name", holder.DisplayName), ("item", item.DisplayName)) + changed);
     }
 
     /// <summary>Whether the waiting item would do anything for a Pokémon: ABLE or NOT ABLE on its card (null: nothing to say).</summary>
@@ -818,8 +818,8 @@ public class BagScreen
             // An item used on a Pokémon says who it would work on, as the games do
             var item = choosingFor;
             var probe = context ?? new EvolutionContext { Party = party, Bag = inventory };
-            string prompt = giving ? Text.Of("bag.giveTo", ("item", item.Name))
-                : MoveTeaching.IsMachine(item) ? Text.Of("bag.teach", ("move", item.TeachesMove)) : Text.Of("bag.useOn", ("item", item.Name));
+            string prompt = giving ? Text.Of("bag.giveTo", ("item", item.DisplayName))
+                : MoveTeaching.IsMachine(item) ? Text.Of("bag.teach", ("move", item.TeachesMove)) : Text.Of("bag.useOn", ("item", item.DisplayName));
             if (LevelUp is { } level)
             {
                 // A level's panel over the team's cards (plan 08 · P5): the prompt says the level's line and waits for a press
@@ -833,7 +833,7 @@ public class BagScreen
             var panel = new Rectangle(screenWidth - 780, 120, 716, 760);
             if (teaching is var (p, move, _)) ModernUi.MoveChoice(panel, p, move, ForgetIndex, 1f);
             else if (ChoosingMove && TargetIndex < party.Count)
-                ModernUi.MovePick(panel, party.Members[TargetIndex], MoveIndex, Text.Of("bag.useOnMove", ("item", item.Name)));
+                ModernUi.MovePick(panel, party.Members[TargetIndex], MoveIndex, Text.Of("bag.useOnMove", ("item", item.DisplayName)));
             return;
         }
 

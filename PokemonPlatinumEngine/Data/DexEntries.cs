@@ -63,7 +63,7 @@ public static class DexEntries
     public static string EntryFor(PokemonSpecies species, int which = 0)
     {
         var entries = EntriesOf(species.Name);
-        if (entries == null || entries.Count == 0) return species.DexEntry;
+        if (entries == null || entries.Count == 0) return DexText.Compose(species);
         int n = entries.Count;
         return entries[((which % n) + n) % n];
     }

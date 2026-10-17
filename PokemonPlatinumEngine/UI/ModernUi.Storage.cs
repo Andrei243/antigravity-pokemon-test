@@ -263,7 +263,7 @@ internal static partial class ModernUi
         {
             float my = y + 530 + i * 40;
             UiShapes.Circle(new Vector2(x + 10, my), 9, Palette.GetTypeColor(shown.Moves[i].Type.ToString()));
-            UiFonts.DrawCentered(shown.Moves[i].Name, x + 32, my, 26, Ink, UiWeight.ExtraBold);
+            UiFonts.DrawCentered(shown.Moves[i].DisplayName, x + 32, my, 26, Ink, UiWeight.ExtraBold);
         }
 
         if (shown.MetLocation != null || shown.HeldItem != null) UiShapes.Fill(new Rectangle(x, y + 680, wide, 3), 1.5f, Rule);
@@ -276,7 +276,7 @@ internal static partial class ModernUi
         if (shown.HeldItem is { } item)
         {
             Label(Text.Of("boxes.holding"), x, y + 806);
-            UiFonts.Draw(item.Name, x, y + 830, 28, Ink, UiWeight.ExtraBold);
+            UiFonts.Draw(item.DisplayName, x, y + 830, 28, Ink, UiWeight.ExtraBold);
         }
     }
 
@@ -379,8 +379,8 @@ internal static partial class ModernUi
             BallDisc(disc, 196);
             PixelArt(PixelArtGenerator.GetPokemonSprite(species.Name, isBack: false), disc, 3, Hop(selected, !selected) * 3);
 
-            float nameW = UiFonts.Measure(species.Name, 48, UiWeight.Black);
-            UiFonts.DrawCentered(species.Name, r.X + (r.Width - nameW) / 2f, r.Y + 480, 48, Ink, UiWeight.Black);
+            float nameW = UiFonts.Measure(species.DisplayName, 48, UiWeight.Black);
+            UiFonts.DrawCentered(species.DisplayName, r.X + (r.Width - nameW) / 2f, r.Y + 480, 48, Ink, UiWeight.Black);
             string kind = Text.Of("pokedex.kind", ("category", species.Category));
             UiFonts.DrawCentered(kind, r.X + (r.Width - UiFonts.Measure(kind, 26, UiWeight.ExtraBold)) / 2f, r.Y + 524, 26, Muted, UiWeight.ExtraBold);
             float pillW = 150;
@@ -392,11 +392,11 @@ internal static partial class ModernUi
         Panel(text, 34);
         string number = DexNumber(chosen.DexNumber);
         UiFonts.DrawCentered(number, text.X + 48, text.Y + 52, 28, Muted, UiWeight.Black);
-        UiFonts.DrawCentered(chosen.Name, text.X + 48 + UiFonts.Measure(number, 28, UiWeight.Black) + 24, text.Y + 50, 40, Ink, UiWeight.Black);
+        UiFonts.DrawCentered(chosen.DisplayName, text.X + 48 + UiFonts.Measure(number, 28, UiWeight.Black) + 24, text.Y + 50, 40, Ink, UiWeight.Black);
         DrawWrapped(DexEntries.EntryFor(chosen), text.X + 48, text.Y + 96, text.Width - 96, 30, Ink, 42);
 
         if (askingVisible)
-            Prompt(sw, sh, Text.Of("starters.question", ("name", chosen.Name)), Text.Of("starters.body", ("category", chosen.Category)),
-                new[] { (Text.Of("starters.no"), Blue), (Text.Of("starters.yes", ("name", chosen.Name.ToUpperInvariant())), Green) }, screen.AnswerYes ? 1 : 0, asking);
+            Prompt(sw, sh, Text.Of("starters.question", ("name", chosen.DisplayName)), Text.Of("starters.body", ("category", chosen.Category)),
+                new[] { (Text.Of("starters.no"), Blue), (Text.Of("starters.yes", ("name", chosen.DisplayName.ToUpperInvariant())), Green) }, screen.AnswerYes ? 1 : 0, asking);
     }
 }

@@ -96,12 +96,12 @@ public sealed partial class ScriptRunner
                 var learner = pupil;
                 string move = tutorMove;
                 host.Ask(speaker, $"{learner.DisplayName} knows four moves already. Which is to make room for {move}?",
-                    learner.Moves.Select(m => m.Name).Append("Give up").ToList(), cancel: learner.Moves.Count);
+                    learner.Moves.Select(m => m.DisplayName).Append("Give up").ToList(), cancel: learner.Moves.Count);
                 afterBusy = () =>
                 {
                     int slot = host.Answer;
                     if (slot < 0 || slot >= learner.Moves.Count) { Result = 0; return; }
-                    lastForgotten = learner.Moves[slot].Name;
+                    lastForgotten = learner.Moves[slot].DisplayName;
                     if (MoveTeaching.WhyNotForget(learner, slot) != null) { Result = 2; return; }
                     MoveTeaching.Learn(learner, move, slot);
                     Result = 3;
@@ -117,12 +117,12 @@ public sealed partial class ScriptRunner
                 if (pupil.IsEgg) { Result = 3; break; }
                 if (!MoveTutors.CanForget(pupil)) { Result = 2; break; }
                 var learner = pupil;
-                host.Ask(speaker, "Which move should be forgotten?", learner.Moves.Select(m => m.Name).Append("Cancel").ToList(), cancel: learner.Moves.Count);
+                host.Ask(speaker, "Which move should be forgotten?", learner.Moves.Select(m => m.DisplayName).Append("Cancel").ToList(), cancel: learner.Moves.Count);
                 afterBusy = () =>
                 {
                     if (host.Answer < 0 || host.Answer >= learner.Moves.Count) { Result = 0; return; }
                     forgetSlot = host.Answer;
-                    lastThing = learner.Moves[forgetSlot].Name;
+                    lastThing = learner.Moves[forgetSlot].DisplayName;
                     Result = 1;
                 };
                 break;

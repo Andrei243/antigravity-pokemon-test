@@ -123,7 +123,7 @@ internal static partial class ModernUi
         string pp = $"{p.Moves.Sum(m => m.CurrentPP)} / {p.Moves.Sum(m => m.MaxPP)}";
         UiFonts.Draw(pp, r.X + r.Width - 32 - UiFonts.Measure(pp, 28, UiWeight.Black), r.Y + 414, 28, Ink, UiWeight.Black);
         Label(Text.Of("castleScreen.holding"), x, r.Y + 464);
-        string item = p.HeldItem?.Name ?? Text.Of("castleScreen.nothing");
+        string item = p.HeldItem?.DisplayName ?? Text.Of("castleScreen.nothing");
         UiFonts.Draw(item, r.X + r.Width - 32 - UiFonts.Measure(item, 28, UiWeight.Black), r.Y + 458, 28, p.HeldItem != null ? Ink : Muted, UiWeight.Black);
     }
 
@@ -226,7 +226,7 @@ internal static partial class ModernUi
             UiShapes.Fill(new Rectangle(track.X, thumbY, 10, thumbH), 5, Muted);
         }
         if (screen.MenuCursor < screen.Listed.Count && Data.ItemDatabase.Get(screen.Listed[screen.MenuCursor].Item) is { } item)
-            DrawWrapped(item.Description, side.X + 40, top + CastleScreen.VisibleRows * (rowH + 8) + 12, side.Width - 80, 24, Muted, 32, UiWeight.ExtraBold);
+            DrawWrapped(item.DisplayDescription, side.X + 40, top + CastleScreen.VisibleRows * (rowH + 8) + 12, side.Width - 80, 24, Muted, 32, UiWeight.ExtraBold);
     }
 
     // A Pokémon's moves: each with its type and the PP it has left
@@ -238,7 +238,7 @@ internal static partial class ModernUi
         {
             var r = new Rectangle(side.X + 32, y, side.Width - 64, 108);
             Card(r, 26, false);
-            UiFonts.DrawCentered(move.Name, r.X + 28, r.Y + 36, 32, Ink, UiWeight.Black);
+            UiFonts.DrawCentered(move.DisplayName, r.X + 28, r.Y + 36, 32, Ink, UiWeight.Black);
             TypePill(r.X + 28, r.Y + 62, move.Type, 32);
             string pp = Text.Of("castleScreen.ppLeft", ("pp", move.CurrentPP), ("max", move.MaxPP));
             UiFonts.DrawCentered(pp, r.X + r.Width - 28 - UiFonts.Measure(pp, 28, UiWeight.Black), r.Y + r.Height / 2f, 28, move.CurrentPP == 0 ? Red : Ink, UiWeight.Black);
@@ -268,8 +268,8 @@ internal static partial class ModernUi
         y += 14;
         foreach (var (caption, told) in new[]
         {
-            (Text.Of("castleScreen.nature"), Words.Nature(p.Nature)), (Text.Of("castleScreen.ability"), p.AbilityName ?? Text.Of("castleScreen.none")),
-            (Text.Of("castleScreen.holding"), p.HeldItem?.Name ?? Text.Of("castleScreen.nothing"))
+            (Text.Of("castleScreen.nature"), Words.Nature(p.Nature)), (Text.Of("castleScreen.ability"), p.AbilityName is { } shownAbility ? LocalNames.Ability(shownAbility) : Text.Of("castleScreen.none")),
+            (Text.Of("castleScreen.holding"), p.HeldItem?.DisplayName ?? Text.Of("castleScreen.nothing"))
         })
         {
             Label(caption, side.X + 40, y);

@@ -523,7 +523,7 @@ public sealed class SuperContestScreen
             return;
         }
         Enter(SuperContestPhase.ActingJudge);
-        Line = Text.Of("contest.judgeQuestion", ("move", move.Name));
+        Line = Text.Of("contest.judgeQuestion", ("move", move.DisplayName));
         AudioManager.PlaySound("select");
     }
 
@@ -565,7 +565,7 @@ public sealed class SuperContestScreen
                 for (int j = 0; j < ShownVoltage.Length; j++)
                     if (ShownVoltage[j] >= ContestRules.FullVoltage) ShownVoltage[j] = 0;
                 TurnPoints[e.Contestant] = e.Score;
-                Line = Text.Of(e.Flag ? "contest.showedTaken" : "contest.showed", ("who", who), ("judge", judge), ("move", e.Move!.Name));
+                Line = Text.Of(e.Flag ? "contest.showedTaken" : "contest.showed", ("who", who), ("judge", judge), ("move", e.Move!.DisplayName));
                 AudioManager.PlaySound("hit_normal");
                 break;
             case ActingStep.Effect or ActingStep.LateEffect:

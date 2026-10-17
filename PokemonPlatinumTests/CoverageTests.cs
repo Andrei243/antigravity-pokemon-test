@@ -26,7 +26,8 @@ public class CoverageTests
     {
         // Whoever gives an ability or an item its effect, or changes the data, runs the importer, which rewrites
         // the report: dotnet run --project tools/DataImporter
-        string report = Coverage.Report(PokemonDatabase.GetAll().OrderBy(s => s.DexNumber).ToList(), Moves, Abilities, Items);
+        string report = Coverage.Report(PokemonDatabase.GetAll().OrderBy(s => s.DexNumber).ToList(), Moves, Abilities, Items,
+            Path.Combine(Repository.Root, "PokemonPlatinumEngine", "Data", "text"));
         string onDisk = File.ReadAllText(Coverage.ReportPath(Repository.Root));
         Assert.True(report.ReplaceLineEndings("\n") == onDisk.ReplaceLineEndings("\n"),
             "docs/mechanics/coverage.md is out of date: run the data importer (dotnet run --project tools/DataImporter)");

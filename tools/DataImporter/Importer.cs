@@ -413,7 +413,6 @@ public sealed partial class Importer
         foreach (var s in list)
         {
             if (s.HiddenAbility != null && s.Abilities.Contains(s.HiddenAbility)) s.HiddenAbility = null;
-            s.DexEntry = DexEntry(s, list);
         }
 
         // Plan 03 · D11: the newest games' values beside Platinum's, every form, and the evolutions that start from
@@ -421,6 +420,9 @@ public sealed partial class Importer
         AddModernValues(list);
         AddForms(list);
         AddFormEvolutions(list);
+
+        // The Pokédex text is the engine's own composition (plan 17 · N3), made once every evolution is known, the forms' too
+        foreach (var s in list) s.DexEntry = DexText.Compose(s, list);
 
         // Platinum's regional numbers (its table's first entry is a placeholder, not number 0)
         var sinnoh = decomp.SinnohPokedex();
@@ -1159,31 +1161,6 @@ public sealed partial class Importer
         foreach (var species in list)
             foreach (var form in species.Forms ?? new())
                 if (colors.TryGetValue(form.Name, out var color) && color != species.Color) form.Color = color;
-    }
-
-    /// <summary>
-    /// The Pokédex text, generated from the data in our own words (the games' entries are not used): what it is,
-    /// its size and how it evolves.
-    /// </summary>
-    private static string DexEntry(PokemonSpecies s, List<PokemonSpecies> all)
-    {
-        string region = s.Generation switch
-        {
-            1 => "Kanto", 2 => "Johto", 3 => "Hoenn", 4 => "Sinnoh", 5 => "Unova", 6 => "Kalos", 7 => "Alola", 8 => "Galar", _ => "Paldea"
-        };
-        string types = s.SecondaryType is { } second ? $"{s.PrimaryType}- and {second}-type" : $"{s.PrimaryType}-type";
-        string article = "AEIOU".Contains(s.Category.FirstOrDefault()) ? "an" : "a";
-        var text = $"{s.Name} is {article} {s.Category} Pokémon, {types}, first found in {region}. " +
-                   $"It stands {s.Height:0.0#} m tall and weighs {s.Weight:0.0#} kg.";
-
-        var from = all.FirstOrDefault(o => o.Evolutions?.Any(e => e.TargetSpecies == s.Name) == true);
-        if (from != null) text += $" It evolves from {from.Name}.";
-        if (s.Evolutions is { Count: > 0 } evos)
-        {
-            var into = evos.Select(e => e.TargetSpecies).Distinct().ToList();
-            text += into.Count == 1 ? $" It evolves into {into[0]}." : $" It can evolve into {string.Join(", ", into.SkipLast(1))} or {into[^1]}.";
-        }
-        return text;
     }
 
     // ================================================================== items

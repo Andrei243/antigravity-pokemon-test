@@ -322,7 +322,7 @@ public class PokedexScreen
                 Draft = Draft with { Order = orders[UiNav.Wrap(Array.IndexOf(orders, Draft.Order), step, orders.Length)] };
                 break;
             case PokedexSearchRow.Name:
-                Draft = Draft with { NameGroup = UiNav.Wrap(Draft.NameGroup + 1, step, PokedexSearch.NameGroups.Length + 1) - 1 };
+                Draft = Draft with { NameGroup = UiNav.Wrap(Draft.NameGroup + 1, step, PokedexSearch.NameGroups.Count + 1) - 1 };
                 break;
             case PokedexSearchRow.Type1:
                 Draft = Draft with { Type1 = Cycle(Draft.Type1, SearchTypes, step) };

@@ -478,17 +478,17 @@ public sealed class CastleScreen
             var answer = challenge.Rent(records, place, lent.Item);
             if (answer == CastleAnswer.Holding)
             {
-                string holding = challenge.Team.Members[place].HeldItem?.Name ?? "";
+                string holding = challenge.Team.Members[place].HeldItem?.DisplayName ?? "";
                 Ask(lent.Item, Text.Of("castleScreen.swapQuestion", ("name", name), ("holding", holding)), () =>
                 {
                     var swapped = challenge.Rent(records, place, lent.Item, swap: true);
                     if (swapped != CastleAnswer.Done) { Refused(swapped, ""); return; }
-                    Say(Text.Of("castleScreen.rented"), Text.Of("castleScreen.swapped", ("holding", holding), ("name", name), ("item", lent.Item)));
+                    Say(Text.Of("castleScreen.rented"), Text.Of("castleScreen.swapped", ("holding", holding), ("name", name), ("item", LocalNames.Item(lent.Item))));
                 });
                 return;
             }
             if (answer != CastleAnswer.Done) { Refused(answer, ""); return; }
-            Say(Text.Of("castleScreen.rented"), Text.Of("castleScreen.given", ("name", name), ("item", lent.Item)));
+            Say(Text.Of("castleScreen.rented"), Text.Of("castleScreen.given", ("name", name), ("item", LocalNames.Item(lent.Item))));
         });
     }
 

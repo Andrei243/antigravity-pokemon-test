@@ -101,6 +101,9 @@ public class PokemonForm
     public string Name { get; set; } = string.Empty;
     public FormKind Kind { get; set; }
 
+    /// <summary>The form's name as the chosen language shows it (plan 17 · N3), given its species' name.</summary>
+    public string DisplayName(string speciesName) => LocalNames.Form(Name, speciesName);
+
     /// <summary>One type or two.</summary>
     public List<PokemonType>? Types { get; set; }
     public StatSpread? BaseStats { get; set; }
@@ -181,6 +184,21 @@ public class PokemonSpecies
     public int? SinnohNumber { get; set; }
     public string Name { get; set; } = string.Empty;
     public string Category { get; set; } = "Pokémon"; // e.g. "Tiny Leaf Pokémon"
+
+    /// <summary>
+    /// Its name as the chosen language shows it (plan 17 · N3). <see cref="Name"/> is the identifier the data, the save,
+    /// the scripts and the rules go by and is never drawn.
+    /// </summary>
+    [JsonIgnore]
+    public string DisplayName => LocalNames.Species(Name);
+
+    /// <summary>Its category as the <c>{category}</c> of the language's kind phrase: PokeAPI's whole genus in a language that has one, else the English word.</summary>
+    [JsonIgnore]
+    public string DisplayCategory => LocalNames.Category(Name, Category);
+
+    /// <summary>The whole phrase the Pokédex and the summary show for its kind ("Seed Pokémon", "Pokémon Graine").</summary>
+    [JsonIgnore]
+    public string DisplayKind => LocalNames.Kind(Name, Category);
     /// <summary>The generation that introduced the species.</summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public int Generation { get; set; }
@@ -371,7 +389,12 @@ public class PokemonSpecies
 public class Pokemon
 {
     public PokemonSpecies Species { get; internal set; }
-    public string Nickname { get; set; }
+    /// <summary>
+    /// The name its trainer gave it; empty for none (plan 17 · N3), so that a Pokémon without one is called its species'
+    /// name in whatever language is chosen (<see cref="DisplayName"/>). A nickname equal to the species' English name
+    /// is no nickname: older saves wrote the species' name in for every Pokémon, and a save read that way gives none.
+    /// </summary>
+    public string Nickname { get; set; } = string.Empty;
     public int Level { get; private set; }
     public Gender Gender { get; set; }
     public Nature Nature { get; set; }
@@ -532,7 +555,8 @@ public class Pokemon
 
     public List<Move> Moves { get; private set; } = new();
 
-    public string DisplayName => IsEgg ? EggName : string.IsNullOrWhiteSpace(Nickname) ? Species.Name : Nickname;
+    /// <summary>What it is called wherever it is named: an Egg's name, its nickname, or its species' name in the chosen language.</summary>
+    public string DisplayName => IsEgg ? EggName : string.IsNullOrWhiteSpace(Nickname) ? Species.DisplayName : Nickname;
 
     /// <summary>What an Egg is called wherever it is named.</summary>
     public const string EggName = "Egg";
@@ -622,7 +646,6 @@ public class Pokemon
     private Pokemon(PokemonSpecies species, int level, uint personality, Random rng, Gender? gender, Nature? nature, bool choose)
     {
         Species = species;
-        Nickname = species.Name;
         Level = Math.Clamp(level, 1, 100);
         Personality = choose ? Models.Personality.Choose(species, rng, gender, nature) : personality;
         // A gender the species can't help having is its own whatever the personality (Cute Charm on one of them)
@@ -655,7 +678,6 @@ public class Pokemon
     public Pokemon(PokemonSpecies species, int level, Gender gender, Nature nature, bool isShiny)
     {
         Species = species;
-        Nickname = species.Name;
         Level = Math.Clamp(level, 1, 100);
         Gender = gender;
         Form = FormOfGender();
@@ -976,7 +998,8 @@ public class Pokemon
         Form = FormOfGender();
         var abilities = Abilities;
         if (abilities.Count > 0) AbilityName = abilities[Math.Min(abilitySlot, abilities.Count - 1)];
-        if (string.IsNullOrWhiteSpace(Nickname) || Nickname == oldName) Nickname = Species.Name;
+        // A Pokémon with no nickname is called what its species is; one called by its old species' name (older saves wrote it in) has none either
+        if (string.IsNullOrWhiteSpace(Nickname) || Nickname == oldName) Nickname = string.Empty;
 
         RecalculateStats();
         if (CurrentHP > 0) CurrentHP = Math.Clamp(CurrentHP + MaxHP - oldMaxHP, 1, MaxHP);

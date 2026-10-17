@@ -166,7 +166,7 @@ public sealed partial class BattleCore
                 bool breaks = BattleEffects.Of(use.User).Any(e => e.IgnoresTargetAbility);
                 var damp = breaks ? null : b.AllBattlers.FirstOrDefault(o => o.IsActive && Has(o, "Damp"));
                 if (damp == null) return true;
-                b.Say(Text.Of("battle.preventsFromUsing", ("pokemon", damp.Name), ("ability", b.AbilityOf(damp)), ("user", use.User.Name), ("move", use.Move.Name)));
+                b.Say(Text.Of("battle.preventsFromUsing", ("pokemon", damp.Name), ("ability", b.AbilityOf(damp)), ("user", use.User.Name), ("move", use.Move.DisplayName)));
                 return false;
             },
             SelfKo = true
@@ -611,7 +611,7 @@ public sealed partial class BattleCore
             bool breaks = BattleEffects.Of(user).Any(e => e.IgnoresTargetAbility);
             if (!breaks && Has(t, "Oblivious"))
             {
-                Say(Text.Of("battle.madeIneffective", ("target", t.Name), ("ability", AbilityOf(t)), ("move", use.Move.Name)));
+                Say(Text.Of("battle.madeIneffective", ("target", t.Name), ("ability", AbilityOf(t)), ("move", use.Move.DisplayName)));
                 return false;
             }
             var mine = user.Pokemon!.Gender;

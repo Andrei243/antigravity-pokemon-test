@@ -149,7 +149,7 @@ public sealed partial class BattleCore
         {
             if (move.CurrentPP <= 0)
             {
-                Say(Text.Of("battle.used", ("user", user.Name), ("move", move.Name)));
+                Say(Text.Of("battle.used", ("user", user.Name), ("move", move.DisplayName)));
                 Say(Text.Of("battle.butThereWasNo"));
                 v.LastMove = null;
                 lastMoveShown = null;
@@ -202,7 +202,7 @@ public sealed partial class BattleCore
         // A move that goes on by itself may tell its later turns in its own words (Bide); a bounced or snatched
         // move was told with the line that took it
         bool ownLines = goesOn && use.Effect.OwnLinesAfterFirst;
-        use.Line ??= ownLines ? new Said("") : Say(Text.Of("battle.used", ("user", user.Name), ("move", move.Name)));
+        use.Line ??= ownLines ? new Said("") : Say(Text.Of("battle.used", ("user", user.Name), ("move", move.DisplayName)));
 
         // The second turn of a move that takes two: it is back where it can be seen, and hit
         if (use.Strikes && use.Effect.Charge != null)
@@ -288,7 +288,7 @@ public sealed partial class BattleCore
         if (data.Flags.HasFlag(MoveFlags.Reflectable) && use.Targets.FirstOrDefault(t => t != user && t.IsActive && t.Turn.MagicCoat) is { } coat)
         {
             coat.Turn.MagicCoat = false;
-            UseAs(coat, data, user, Say(Text.Of("battle.wasBouncedBackBy", ("user", user.Name), ("move", use.Move.Name))));
+            UseAs(coat, data, user, Say(Text.Of("battle.wasBouncedBackBy", ("user", user.Name), ("move", use.Move.DisplayName))));
             return true;
         }
         if (data.Flags.HasFlag(MoveFlags.Snatch) && speedOrder.Concat(AllBattlers).Distinct().FirstOrDefault(b => b != user && b.IsActive && b.Turn.Snatching) is { } snatcher)
@@ -367,7 +367,7 @@ public sealed partial class BattleCore
             if (rng.Roll(RollKind.Thaw, 5) == 0 || move.Data.ThawsUser)
             {
                 p.Status = StatusCondition.None;
-                Say(move.Data.ThawsUser ? Text.Of("battle.meltedTheIce", ("user", user.Name), ("move", move.Name)) : Text.Of("battle.thawedOut", ("user", user.Name))).With(new StatusChanged(user.Place, StatusCondition.None));
+                Say(move.Data.ThawsUser ? Text.Of("battle.meltedTheIce", ("user", user.Name), ("move", move.DisplayName)) : Text.Of("battle.thawedOut", ("user", user.Name))).With(new StatusChanged(user.Place, StatusCondition.None));
             }
             else
             {
@@ -403,34 +403,34 @@ public sealed partial class BattleCore
 
         if (v.Disabled != null && v.Disabled == move.Data)
         {
-            Say(Text.Of("battle.isDisabled", ("pokemon", user.Name), ("move", move.Name)));
+            Say(Text.Of("battle.isDisabled", ("pokemon", user.Name), ("move", move.DisplayName)));
             Unlock(user);
             return Lost(user);
         }
 
         if (v.TauntTurns > 0 && move.Category == MoveCategory.Status)
         {
-            Say(Text.Of("battle.cantUseAfterThe", ("pokemon", user.Name), ("move", move.Name)));
+            Say(Text.Of("battle.cantUseAfterThe", ("pokemon", user.Name), ("move", move.DisplayName)));
             Unlock(user);
             return Lost(user);
         }
 
         if (IsSealed(user, move.Data))
         {
-            Say(Text.Of("battle.cantUseTheSealed", ("pokemon", user.Name), ("move", move.Name)));
+            Say(Text.Of("battle.cantUseTheSealed", ("pokemon", user.Name), ("move", move.DisplayName)));
             Unlock(user);
             return Lost(user);
         }
 
         if (Field.Gravity && FailsUnderGravity(move.Data))
         {
-            Say(Text.Of("battle.cantUseBecauseOf", ("pokemon", user.Name), ("move", move.Name)));
+            Say(Text.Of("battle.cantUseBecauseOf", ("pokemon", user.Name), ("move", move.DisplayName)));
             return Lost(user);
         }
 
         if (v.HealBlockTurns > 0 && IsHealingMove(move.Data))
         {
-            Say(Text.Of("battle.cantUseWhileIt", ("pokemon", user.Name), ("move", move.Name)));
+            Say(Text.Of("battle.cantUseWhileIt", ("pokemon", user.Name), ("move", move.DisplayName)));
             return false;
         }
 
@@ -970,7 +970,7 @@ public sealed partial class BattleCore
             damage = Formulas.Divide(damage, 2);
             hit.Notes.AddRange(Capture(() =>
             {
-                Say(Text.Of("battle.theWeakenedPower", ("item", ItemAtWork(t, berry)), ("move", move.Name)));
+                Say(Text.Of("battle.theWeakenedPower", ("item", ItemAtWork(t, berry)), ("move", move.DisplayName)));
                 ConsumeItem(t);
             }));
         }

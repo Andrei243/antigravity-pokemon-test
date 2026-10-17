@@ -201,9 +201,9 @@ internal static partial class ModernUi
         if (rental)
         {
             Label(Text.Of("summary.ability"), x + 260, who.Y + 752);
-            UiFonts.Draw(p.AbilityName ?? "", x + 260, who.Y + 776, 34, Ink, UiWeight.Black);
+            UiFonts.Draw(p.AbilityName is { } shownAbility ? LocalNames.Ability(shownAbility) : "", x + 260, who.Y + 776, 34, Ink, UiWeight.Black);
             Label(Text.Of("summary.heldItem"), x, who.Y + 824);
-            UiFonts.Draw(p.HeldItem?.Name ?? Text.Of("summary.none"), x, who.Y + 848, 34, Ink, UiWeight.Black);
+            UiFonts.Draw(p.HeldItem?.DisplayName ?? Text.Of("summary.none"), x, who.Y + 848, 34, Ink, UiWeight.Black);
         }
         else
         {
@@ -270,7 +270,7 @@ internal static partial class ModernUi
             UiShapes.Shape(row, 24, new Color(248, 250, 253, 255), new Color(236, 241, 248, 255), Rule, 3);
             float cy = row.Y + row.Height / 2f;
             TypePill(row.X + 16, cy - 22, move.Type, 44, 150);
-            UiFonts.DrawCentered(move.Name, row.X + 190, cy - 12, 32, Ink, UiWeight.Black);
+            UiFonts.DrawCentered(move.DisplayName, row.X + 190, cy - 12, 32, Ink, UiWeight.Black);
             UiFonts.DrawCentered(Words.Category(move.Category), row.X + 190, cy + 22, 18, Muted, UiWeight.Black);
             UiFonts.DrawCentered(move.Power > 0 ? move.Power.ToString() : "—", moves.X + 664, cy, 32, Ink, UiWeight.Black);
             UiFonts.DrawCentered(move.Accuracy > 0 ? move.Accuracy.ToString() : "—", moves.X + 808, cy, 32, Ink, UiWeight.Black);

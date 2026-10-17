@@ -8,6 +8,14 @@ public class MoveData
 {
     public int Id { get; set; }
     public string Name { get; set; } = string.Empty;
+
+    /// <summary>Its name as the chosen language shows it (plan 17 · N3); <see cref="Name"/> is the identifier.</summary>
+    [JsonIgnore]
+    public string DisplayName => LocalNames.Move(Name);
+
+    /// <summary>Its description in the chosen language: PokeAPI's own prose where the language has it, English otherwise.</summary>
+    [JsonIgnore]
+    public string DisplayDescription => LocalNames.MoveDescription(Name, Description);
     /// <summary>The generation that introduced the move (0 for a move made for this game).</summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public int Generation { get; set; }
@@ -224,6 +232,10 @@ public class Move
     public static int MaxPPWith(MoveData data, int ppUps) => data.MaxPP + data.MaxPP * 20 * Math.Clamp(ppUps, 0, 3) / 100;
 
     public string Name => Data.Name;
+    [JsonIgnore]
+    public string DisplayName => Data.DisplayName;
+    [JsonIgnore]
+    public string DisplayDescription => Data.DisplayDescription;
     public PokemonType Type => Data.Type;
     public MoveCategory Category => Data.Category;
     public int Power => Data.Power;

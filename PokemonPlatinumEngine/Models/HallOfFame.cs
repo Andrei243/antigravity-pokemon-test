@@ -8,7 +8,11 @@ namespace PokemonPlatinumEngine.Models;
 /// <summary>One Pokémon of a team in the Hall of Fame, as the original keeps it: what it was, never its stats.</summary>
 public sealed record HallOfFameMember(
     string Species, string? Form, int Level, string Nickname, Gender Gender, bool Shiny, uint Personality,
-    string TrainerName, int TrainerId, IReadOnlyList<string> Moves);
+    string TrainerName, int TrainerId, IReadOnlyList<string> Moves)
+{
+    /// <summary>What it is called: its nickname, or its species' name in the chosen language (older records wrote the species' name in as the nickname; plan 17 · N3).</summary>
+    public string ShownName => string.IsNullOrWhiteSpace(Nickname) || Nickname == Species ? LocalNames.Species(Species) : Nickname;
+}
 
 /// <summary>A team entered into the Hall of Fame, and the day it was.</summary>
 public sealed record HallOfFameEntry(DateTime Date, IReadOnlyList<HallOfFameMember> Team);

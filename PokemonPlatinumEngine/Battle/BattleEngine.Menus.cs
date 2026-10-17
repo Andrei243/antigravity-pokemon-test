@@ -425,7 +425,7 @@ public partial class BattleEngine
     {
         InCore(MenuBattler);
         var choice = BattleChoice.UseItem(MenuBattler.Place, item.Name, onPartyMember, onMove);
-        string? refusal = PlayerInventory.GetQuantity(item) <= 0 ? Text.Of("battle.youDontHaveAny", ("item", item.Name)) : core.WhyNot(choice);
+        string? refusal = PlayerInventory.GetQuantity(item) <= 0 ? Text.Of("battle.youDontHaveAny", ("item", item.DisplayName)) : core.WhyNot(choice);
         if (refusal != null)
         {
             Refuse(refusal, backTo);
