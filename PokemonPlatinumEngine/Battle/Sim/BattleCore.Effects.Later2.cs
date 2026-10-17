@@ -296,7 +296,8 @@ public sealed partial class BattleCore
         bool protectable = use.Data.Flags.HasFlag(MoveFlags.Protect);
         bool status = use.Move.Category == MoveCategory.Status;
         // King's Shield and Obstruct (plan 06 · R26) let a status move through
-        if (target.Turn.Protecting && protectable && !(target.Turn.Shield is Shield.KingsShield or Shield.Obstruct or Shield.SilkTrap or Shield.BurningBulwark && status)) return true;
+        // (Unseen Fist and Piercing Drill touch past Protect and the shields: plan 06 · R27)
+        if (target.Turn.Protecting && protectable && !PiercesProtect(use) && !(target.Turn.Shield is Shield.KingsShield or Shield.Obstruct or Shield.SilkTrap or Shield.BurningBulwark && status)) return true;
 
         var up = GuardsOf(target.Side);
         if (up == SideGuard.None) return false;

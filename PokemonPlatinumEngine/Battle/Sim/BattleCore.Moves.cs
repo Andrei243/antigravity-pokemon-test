@@ -207,6 +207,9 @@ public sealed partial class BattleCore
         use.Move = move = Normalized(user, move);
         // Ion Deluge, Plasma Fists and Electrify make it Electric (plan 06 · R25)
         use.Move = move = Electrified(user, move);
+        // The later abilities' say on the move (plan 06 · R27): its type, its touch, its side effects, Protean
+        ShapedByAbility(use);
+        move = use.Move;
 
         // Aegislash draws or sheathes its blade before the move (plan 06 · R19b)
         StanceChange(user, move);
@@ -307,6 +310,8 @@ public sealed partial class BattleCore
     {
         var user = use.User;
         var data = use.Own ?? use.Data;
+        // Magic Bounce sends it back before Magic Coat would (plan 06 · R27)
+        if (BouncedByAbility(use)) return true;
         if (data.Flags.HasFlag(MoveFlags.Reflectable) && use.Targets.FirstOrDefault(t => t != user && t.IsActive && t.Turn.MagicCoat) is { } coat)
         {
             coat.Turn.MagicCoat = false;
@@ -726,14 +731,14 @@ public sealed partial class BattleCore
                 return foes.Count == 0 ? foes : Drawn(foes[rng.Roll(RollKind.Target, foes.Count)]);
         }
 
-        Battler? Centre() => !TracksItsTarget(move.Data) && Field.Side(Other(user.Side)).FollowMe is { } place && At(place) is { IsActive: true } centre ? centre : null;
+        Battler? Centre() => !(TracksItsTarget(move.Data) || KeepsItsAim(user)) && Field.Side(Other(user.Side)).FollowMe is { } place && At(place) is { IsActive: true } centre ? centre : null;
 
         // Lightning Rod and Storm Drain (BattleSystem_CheckRedirectionAbilities): an Electric or a Water move aimed
         // at one Pokémon goes to the fastest holder that isn't its user, unless it is on its turn of getting ready
         // or its user has Normalize or Mold Breaker. Nothing is said when it was aimed at the holder already.
         List<Battler> Drawn(Battler target)
         {
-            if (Has(user, "Normalize") || Has(user, "Mold Breaker") || TracksItsTarget(move.Data) || move.Type is not (PokemonType.Electric or PokemonType.Water)) return new List<Battler> { target };
+            if (Has(user, "Normalize") || Has(user, "Mold Breaker") || (TracksItsTarget(move.Data) || KeepsItsAim(user)) || move.Type is not (PokemonType.Electric or PokemonType.Water)) return new List<Battler> { target };
             if (EffectOf(move.Data).Charge != null && !user.Volatile.Charging) return new List<Battler> { target };
             var holder = BySpeed().FirstOrDefault(b => b.IsActive && b != user && b.Ability?.Effect?.DrawsMovesOf(move.Type) == true);
             if (holder == null || holder == target) return new List<Battler> { target };
@@ -779,6 +784,9 @@ public sealed partial class BattleCore
             }
             return use.Effect.Decides(this, use, target, hit);
         }
+
+        // A later ability on the target's side stops it before it lands (plan 06 · R27)
+        if (StoppedByAbility(use, target, hit)) return false;
 
         // Psychic Terrain keeps a move that goes first off a foe on the ground (plan 06 · R19b; Showdown's psychicterrain onTryHit)
         if (Field.Has(FieldCondition.PsychicTerrain) && use.Data.Priority > 0 && target.Side != user.Side && DamageCalculator.OnTheTerrain(target))
@@ -865,6 +873,7 @@ public sealed partial class BattleCore
             rate = rate * 120 / 100;
         }
         if (Field.Gravity) rate = rate * 10 / 6;
+        rate = LaterAccuracy(use, target, rate);
 
         return rng.Roll(RollKind.Accuracy, 100) < rate;
     }
@@ -920,6 +929,7 @@ public sealed partial class BattleCore
         }
 
         use.StrikeCount = Math.Max(1, effect.Strikes?.Invoke(this, use) ?? 1);
+        ParentalBond(use);
         bool userBreaks = BattleEffects.Of(user).Any(e => e.IgnoresTargetAbility) || DamageCalculator.IgnoresAbilities(use.Data);
         foreach (var t in use.Targets)
         {
@@ -952,6 +962,7 @@ public sealed partial class BattleCore
                     }
                 }
                 if (effect.StrikeLine?.Invoke(this, use) is { } line) Say(line);
+                StrikingAs(use, n);
                 if (!StrikeOnce(use, hit, userBreaks)) break;
                 // A Cramorant with its catch spits it back (plan 06 · R19b)
                 SpitsTheCatch(use, hit);
@@ -1019,7 +1030,7 @@ public sealed partial class BattleCore
         int damage = result.Damage;
 
         // A Substitute takes the hit in the Pokémon's place
-        if (t.HasSubstitute && t != user)
+        if (t.HasSubstitute && t != user && !Infiltrates(use))
         {
             int taken = Math.Min(t.Volatile.SubstituteHp, damage);
             t.Volatile.SubstituteHp -= taken;
@@ -1384,7 +1395,7 @@ public sealed partial class BattleCore
             Say(hit.FailLine ?? Text.Of("battle.protectedItself", ("user", target.Name)));
             ShieldBites(use, hit);
         }
-        else Say(use.Targets.Count > 1 || IsDouble ? Text.Of("battle.avoidedTheAttack", ("target", target.Name)) : Text.Of("battle.attackMissed", ("user", use.User.Name)));
+        else Say(hit.FailLine ?? (use.Targets.Count > 1 || IsDouble ? Text.Of("battle.avoidedTheAttack", ("target", target.Name)) : Text.Of("battle.attackMissed", ("user", use.User.Name))));
         return false;
     }
 

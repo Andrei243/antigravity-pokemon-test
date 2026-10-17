@@ -35,6 +35,8 @@ public sealed partial class BattleCore
         if (hold == "PinchPriority" && user.Pokemon.CurrentHP <= user.Pokemon.MaxHP / HeldItemEffects.PinchParam(user, param)) act.MovesFirst = true;
         if (act.MovesFirst) user.Volatile.ItemWentOff = true;
         if (hold == "PriorityDown") act.Lags = true;
+        // Quick Draw and Mycelium Might (plan 06 · R27)
+        AbilitiesInTheOrder(act);
     }
 
     /// <summary>

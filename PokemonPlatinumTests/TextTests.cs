@@ -450,7 +450,10 @@ public class TextTests
         // An ability's name, which the shapes of the later games go by (plan 06 · R19b)
         ["Battle/Sim/BattleCore.Shapes.cs"] = new[] { "Zero to Hero" },
         // The abilities Simple Beam and Entrainment can't replace or hand on, by name (plan 06 · R24)
-        ["Battle/Sim/BattleCore.Effects.Later1.cs"] = new[] { "Zero to Hero", "Power of Alchemy" }
+        ["Battle/Sim/BattleCore.Effects.Later1.cs"] = new[] { "Zero to Hero", "Power of Alchemy" },
+        // The later abilities' names, which the formula and the core go by (plan 06 · R27)
+        ["Battle/DamageCalculator.Abilities.cs"] = new[] { "Tablets of Ruin", "Vessel of Ruin", "Sword of Ruin", "Beads of Ruin" },
+        ["Battle/Sim/BattleCore.Abilities.cs"] = new[] { "Good as Gold" }
     };
 
     [Fact]

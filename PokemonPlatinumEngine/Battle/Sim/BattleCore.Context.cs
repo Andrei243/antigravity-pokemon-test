@@ -49,6 +49,9 @@ public sealed partial class BattleCore
                 if (announceFailure) Say(Text.Of("battle.preventsItsFromBeing", ("target", target.Name), ("ability", AbilityOf(target)), ("stat", BattleText.StatName(stat))));
                 return false;
             }
+            // Mirror Armor turns it back on whoever tried (plan 06 · R27)
+            if (!breaks && MirrorsTheDrop(target, source!, stat, amount, announceFailure, how)) return false;
+            if (!breaks && GuardDogStands(target, source!, stat, how)) return false;
         }
 
         // By the modern rules Simple doubles the change itself; under Platinum's its stages count double where they are read
@@ -72,6 +75,8 @@ public sealed partial class BattleCore
         else target.Turn.StatsLowered = true;
         Say(Text.Of("battle.statChange", ("pokemon", target.Name), ("stat", BattleText.StatName(stat)), ("stage", BattleText.StageChange(next - current))))
             .With(new StageChanged(target.Place, stat, next, next > current));
+        // Defiant and Competitive answer a stage a foe took (plan 06 · R27)
+        if (next < current && byAnother) AnswersTheDrop(target, source!);
         return true;
     }
 
@@ -103,7 +108,8 @@ public sealed partial class BattleCore
         {
             StatusCondition.Burn => target.HasType(PokemonType.Fire),
             StatusCondition.Freeze => target.HasType(PokemonType.Ice),
-            StatusCondition.Poison or StatusCondition.Toxic => target.HasType(PokemonType.Poison) || target.HasType(PokemonType.Steel),
+            // (Corrosion poisons them all the same: plan 06 · R27)
+            StatusCondition.Poison or StatusCondition.Toxic => (target.HasType(PokemonType.Poison) || target.HasType(PokemonType.Steel)) && !(byAnother && Corrodes(source)),
             StatusCondition.Paralyze => Rules.ElectricTypesCantBeParalyzed && target.HasType(PokemonType.Electric),
             _ => false
         };
@@ -160,6 +166,8 @@ public sealed partial class BattleCore
         if (status == StatusCondition.Freeze && !target.HasSubstitute && FormRules.BackToLand(p))
             Say(Text.Of("battle.changedBackIntoIts", ("target", target.Name))).With(new Reshaped(target.Place));
         CheckConditionHooks(target, source);
+        // Poison Puppeteer confuses whoever it poisons (plan 06 · R27)
+        if (byAnother && status is StatusCondition.Poison or StatusCondition.Toxic && Has(source!, "Poison Puppeteer")) Confuse(target, source, false, By.Ability);
         return true;
     }
 

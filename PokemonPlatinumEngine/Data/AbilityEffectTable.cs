@@ -13,7 +13,7 @@ namespace PokemonPlatinumEngine.Data;
 /// the damage formula is applied by <c>DamageCalculator</c> by the ability's name, in the original's place; an
 /// ability that works only in the field (Pickup, Stench…) has a bare entry here and its code in the field, by name.
 /// </summary>
-public static class AbilityEffectTable
+public static partial class AbilityEffectTable
 {
     private static readonly Dictionary<string, BattleEffect> Effects = new(StringComparer.OrdinalIgnoreCase);
 
@@ -153,6 +153,9 @@ public static class AbilityEffectTable
 
         // In the field alone (plan 06 · R7): the wild Pokémon met, and what the party picks up after a battle, go by these names
         foreach (var name in new[] { "Stench", "Illuminate", "Pickup", "Honey Gather" }) Add(name, new FlagEffect());
+
+        // The later generations' (plan 06 · R27): AbilityEffectTable.Later.cs
+        AddLater();
     }
 
     private static void Add(string name, BattleEffect effect) => Effects[name] = effect;

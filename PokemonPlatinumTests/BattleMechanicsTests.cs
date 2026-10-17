@@ -405,7 +405,7 @@ public class BattleMechanicsTests
         Assert.Equal(123, platinums.Count);
         var pending = AbilityDatabase.GetAll().Where(a => !a.IsImplemented).Select(a => a.Name).ToList();
         Assert.Empty(platinums.Intersect(pending));
-        Assert.Contains("Sheer Force", pending);
+        Assert.Contains("Neutralizing Gas", pending);
     }
 
     [Fact]

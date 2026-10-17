@@ -425,7 +425,8 @@ public static partial class DamageCalculator
         // Storm Throw, Frost Breath and Wicked Blow are critical with no roll (Showdown's willCrit; plan 06 · R24)
         // Laser Focus makes its user's hits critical with no roll for the turn after it too (plan 06 · R25)
         bool focused = attacker.Volatile.LaserFocusUntil >= (attacker.Field?.Turn() ?? int.MaxValue);
-        bool rolled = AlwaysCritical(move.Data) || focused || rng.Roll(RollKind.Critical, rules.CriticalOdds[Math.Clamp(stage, 0, 4)]) == 0;
+        // Merciless against a poisoned target (plan 06 · R27; DamageCalculator.Abilities.cs)
+        bool rolled = AlwaysCritical(move.Data) || focused || Merciless(attacker, defender) || rng.Roll(RollKind.Critical, rules.CriticalOdds[Math.Clamp(stage, 0, 4)]) == 0;
         return rolled && !defenderEffects.Any(e => e.PreventsCriticalHits) && defender.Field?.Side(defender.Side).LuckyChant != true;
     }
 

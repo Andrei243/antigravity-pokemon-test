@@ -2413,6 +2413,8 @@ log:
     + MoveShown Move=Tail Whip Type=Normal Category=Status From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Gothita's Defense fell!
     + StageChanged P0 Stat=Defense Stage=-1 Rose=false
+  say Gothita's Sp. Atk sharply rose!
+    + StageChanged P0 Stat=SpAttack Stage=2 Rose=true
   say Gothita used Flatter!
     + Lunged P0 Category=Status
     + MoveShown Move=Flatter Type=Dark Category=Status From=P0 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -2455,7 +2457,7 @@ log:
   say Gothita used Psychic!
     + Lunged P0 Category=Special
     + MoveShown Move=Psychic Type=Psychic Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck E0 Hp=170 Hard=false
+    ! Struck E0 Hp=96 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Dudunsparce used Double-Edge!
     + Lunged E0 Category=Physical
@@ -2463,7 +2465,7 @@ log:
     ! Struck P0 Hp=0 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Dudunsparce is hit with recoil!
-    + HpChanged E0 Hp=132 Healed=false
+    + HpChanged E0 Hp=58 Healed=false
   say Gothita fainted!
     + Fainted P0
   say Lucas has no Pokémon left that can fight!
@@ -2529,46 +2531,6 @@ log:
   say Foe Clawitzer used Aura Sphere!
     + Lunged E0 Category=Special
     + MoveShown Move=Aura Sphere Type=Fighting Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=28 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=false
-  say Groudon used Bulk Up!
-    + Lunged P0 Category=Status
-    + MoveShown Move=Bulk Up Type=Fighting Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Groudon's Attack rose!
-    + StageChanged P0 Stat=Attack Stage=1 Rose=true
-  say Groudon's Defense rose!
-    + StageChanged P0 Stat=Defense Stage=1 Rose=true
-  say The sunlight is strong.
-    + WeatherContinues Weather=Sun
-  say Foe Clawitzer sprang up!
-    + Lunged E0 Category=Status
-    + Charging E0 Move=Bounce
-    + Vanished E0
-  say Groudon used Bulk Up!
-    + Lunged P0 Category=Status
-    + MoveShown Move=Bulk Up Type=Fighting Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Groudon's Attack rose!
-    + StageChanged P0 Stat=Attack Stage=2 Rose=true
-  say Groudon's Defense rose!
-    + StageChanged P0 Stat=Defense Stage=2 Rose=true
-  say The sunlight is strong.
-    + WeatherContinues Weather=Sun
-  say Foe Clawitzer used Bounce!
-    + Reappeared E0
-    + Lunged E0 Category=Physical
-    + MoveShown Move=Bounce Type=Flying Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=3 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=false
-  say Groudon used Earthquake!
-    + Lunged P0 Category=Physical
-    + MoveShown Move=Earthquake Type=Ground Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck E0 Hp=105 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=false
-  say The sunlight is strong.
-    + WeatherContinues Weather=Sun
-  say Foe Clawitzer used Aura Sphere!
-    + Lunged E0 Category=Special
-    + MoveShown Move=Aura Sphere Type=Fighting Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
     ! Struck P0 Hp=0 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Groudon fainted!
@@ -2577,19 +2539,33 @@ log:
     + WeatherContinues Weather=Sun
   say Go! Pidgeot!
     + Entered P0 Pokemon=mine#2 Pidgeot FromBall=true
-  say Foe Clawitzer used Aura Sphere!
-    + Lunged E0 Category=Special
-    + MoveShown Move=Aura Sphere Type=Fighting Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=true SuperEffective=false
-    ! Struck P0 Hp=0 Hard=true
+  say Foe Clawitzer sprang up!
+    + Lunged E0 Category=Status
+    + Charging E0 Move=Bounce
+    + Vanished E0
+  say Pidgeot used Sand Attack!
+    + Lunged P0 Category=Status
+    + MoveShown Move=Sand Attack Type=Ground Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Pidgeot's attack missed!
+  say The sunlight is strong.
+    + WeatherContinues Weather=Sun
+  say Pidgeot used Quick Attack!
+    + Lunged P0 Category=Physical
+    + MoveShown Move=Quick Attack Type=Normal Category=Physical From=P0 To=E0 Missed=true Blocked=false Critical=false SuperEffective=false
+  say Pidgeot's attack missed!
+  say Foe Clawitzer used Bounce!
+    + Reappeared E0
+    + Lunged E0 Category=Physical
+    + MoveShown Move=Bounce Type=Flying Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck P0 Hp=0 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
-  say A critical hit!
   say Pidgeot fainted!
     + Fainted P0
   say Lucas has no Pokémon left that can fight!
   say ...  ...  ...
   say Lucas whited out!
   Ended Result=PlayerDefeat
-result: PlayerDefeat after 7 turns
+result: PlayerDefeat after 5 turns
 === battle 116
 rules: Modern rules
 format: Single
@@ -4980,8 +4956,8 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Amaura used Hyper Beam!
     + Lunged E0 Category=Special
-    + MoveShown Move=Hyper Beam Type=Normal Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=96 Hard=false
+    + MoveShown Move=Hyper Beam Type=Ice Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck P0 Hp=50 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Illumise used Play Rough!
     + Lunged P0 Category=Physical
@@ -5022,8 +4998,11 @@ log:
   say Foe Pinsir used Seismic Toss!
     + Lunged E0 Category=Physical
     + MoveShown Move=Seismic Toss Type=Fighting Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=81 Hard=false
+    ! Struck P0 Hp=35 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
+  say Illumise boosted the accuracy of its next move using its Micle Berry!
+    + ItemShown P0 Item=Micle Berry
+    + MomentShown P0 Moment=HeldItem From=none
   say The foe's team's Light Screen wore off!
     + SideConditionChanged Side=Enemy Condition=LightScreen Layers=0
   say Illumise used Helping Hand!
@@ -5031,14 +5010,14 @@ log:
   say Foe Pinsir used Vise Grip!
     + Lunged E0 Category=Physical
     + MoveShown Move=Vise Grip Type=Normal Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=77 Hard=false
+    ! Struck P0 Hp=31 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Illumise used Helping Hand!
   say But there was no target...
   say Foe Pinsir used Vise Grip!
     + Lunged E0 Category=Physical
     + MoveShown Move=Vise Grip Type=Normal Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=73 Hard=false
+    ! Struck P0 Hp=27 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Illumise used Bug Buzz!
     + Lunged P0 Category=Special
@@ -6280,8 +6259,8 @@ log:
   say Wobbuffet used Charm!
     + Lunged P0 Category=Status
     + MoveShown Move=Charm Type=Fairy Category=Status From=P0 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Foe Inkay's Attack harshly fell!
-    + StageChanged E1 Stat=Attack Stage=-2 Rose=false
+  say Foe Inkay's Attack sharply rose!
+    + StageChanged E1 Stat=Attack Stage=2 Rose=true
   say Foe Inkay used Foul Play!
     + Lunged E1 Category=Physical
     + MoveShown Move=Foul Play Type=Dark Category=Physical From=E1 To=P0 Missed=false Blocked=false Critical=false SuperEffective=true
@@ -6584,6 +6563,7 @@ log:
     + Seen Species=Komala
     + Entered E0 Pokemon=foe#2 Komala FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
+  say Foe Komala is drowsing!
   say Foe Komala used Flail!
     + Lunged E0 Category=Physical
     + MoveShown Move=Flail Type=Normal Category=Physical From=E0 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -6691,24 +6671,25 @@ log:
     ! Struck P0 Hp=44 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
+  say Virizion's Attack rose!
+    + StageChanged P0 Stat=Attack Stage=1 Rose=true
   say Virizion snapped out of confusion!
     + VolatileChanged P0 Confused=false InLove=false
   say Virizion used Double Kick!
     + Lunged P0 Category=Physical
     + MoveShown Move=Double Kick Type=Fighting Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck E0 Hp=47 Hard=false
-    ! Struck E0 Hp=30 Hard=false
+    ! Struck E0 Hp=38 Hard=false
+    ! Struck E0 Hp=13 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
   say Hit 2 times!
   say Virizion used Double Kick!
     + Lunged P0 Category=Physical
     + MoveShown Move=Double Kick Type=Fighting Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck E0 Hp=13 Hard=false
     ! Struck E0 Hp=0 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
-  say Hit 2 times!
+  say Hit 1 time!
   say Foe Croagunk fainted!
     + Fainted E0
     + TrainerReacts E0 Cue=FirstDown
@@ -6739,32 +6720,103 @@ log:
     + Seen Species=Emolga
     + Entered E0 Pokemon=foe#2 Emolga FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
-  say Foe Emolga used Quick Attack!
-    + Lunged E0 Category=Physical
-    + MoveShown Move=Quick Attack Type=Normal Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=40 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=false
-  say Virizion used Leer!
+  say Virizion used Quick Guard!
     + Lunged P0 Category=Status
-    + MoveShown Move=Leer Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Foe Emolga's Defense fell!
-    + StageChanged E0 Stat=Defense Stage=-1 Rose=false
-  say Virizion used Leer!
-    + Lunged P0 Category=Status
-    + MoveShown Move=Leer Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Foe Emolga's Defense fell!
-    + StageChanged E0 Stat=Defense Stage=-2 Rose=false
+    + MoveShown Move=Quick Guard Type=Fighting Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Quick Guard shields Virizion's side!
   say Foe Emolga used Tail Whip!
     + Lunged E0 Category=Status
     + MoveShown Move=Tail Whip Type=Normal Category=Status From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Virizion's Defense fell!
     + StageChanged P0 Stat=Defense Stage=-1 Rose=false
-  say Virizion used Magical Leaf!
-    + Lunged P0 Category=Special
-    + MoveShown Move=Magical Leaf Type=Grass Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Virizion used Quick Guard!
+    + Lunged P0 Category=Status
+    + MoveShown Move=Quick Guard Type=Fighting Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Quick Guard shields Virizion's side!
+  say Foe Emolga used Tail Whip!
+    + Lunged E0 Category=Status
+    + MoveShown Move=Tail Whip Type=Normal Category=Status From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Virizion's Defense fell!
+    + StageChanged P0 Stat=Defense Stage=-2 Rose=false
+  say Virizion used Quick Guard!
+    + Lunged P0 Category=Status
+    + MoveShown Move=Quick Guard Type=Fighting Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Quick Guard shields Virizion's side!
+  say Foe Emolga used Quick Attack!
+    + Lunged E0 Category=Physical
+    + MoveShown Move=Quick Attack Type=Normal Category=Physical From=E0 To=P0 Missed=false Blocked=true Critical=false SuperEffective=false
+  say Quick Guard protected Virizion!
+  say Virizion used Leer!
+    + Lunged P0 Category=Status
+    + MoveShown Move=Leer Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Foe Emolga's Defense fell!
+    + StageChanged E0 Stat=Defense Stage=-1 Rose=false
+  say Foe Emolga used Nuzzle!
+    + Lunged E0 Category=Physical
+    + MoveShown Move=Nuzzle Type=Electric Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck P0 Hp=41 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=true
+  say It's not very effective...
+  say Virizion is paralyzed! It may be unable to move!
+    + StatusChanged P0 Status=Paralyze
+  say Foe Emolga used Double Team!
+    + Lunged E0 Category=Status
+    + MoveShown Move=Double Team Type=Normal Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Foe Emolga's evasiveness rose!
+    + StageChanged E0 Stat=Evasion Stage=1 Rose=true
+  say Virizion used Leer!
+    + Lunged P0 Category=Status
+    + MoveShown Move=Leer Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Foe Emolga's Defense fell!
+    + StageChanged E0 Stat=Defense Stage=-2 Rose=false
+  say Virizion used Quick Guard!
+    + Lunged P0 Category=Status
+    + MoveShown Move=Quick Guard Type=Fighting Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Quick Guard shields Virizion's side!
+  say Foe Emolga used Nuzzle!
+    + Lunged E0 Category=Physical
+    + MoveShown Move=Nuzzle Type=Electric Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck P0 Hp=38 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=true
+  say It's not very effective...
+  say Foe Emolga used Nuzzle!
+    + Lunged E0 Category=Physical
+    + MoveShown Move=Nuzzle Type=Electric Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck P0 Hp=35 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=true
+  say It's not very effective...
+  say Virizion is paralyzed! It can't move!
+    + MomentShown P0 Moment=Paralyzed From=none
+  say Foe Emolga used Tail Whip!
+    + Lunged E0 Category=Status
+    + MoveShown Move=Tail Whip Type=Normal Category=Status From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Virizion's Defense fell!
+    + StageChanged P0 Stat=Defense Stage=-3 Rose=false
+  say Virizion used Leer!
+    + Lunged P0 Category=Status
+    + MoveShown Move=Leer Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Foe Emolga's Defense fell!
+    + StageChanged E0 Stat=Defense Stage=-3 Rose=false
+  say Virizion is paralyzed! It can't move!
+    + MomentShown P0 Moment=Paralyzed From=none
+  say Foe Emolga used Tail Whip!
+    + Lunged E0 Category=Status
+    + MoveShown Move=Tail Whip Type=Normal Category=Status From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Virizion's Defense fell!
+    + StageChanged P0 Stat=Defense Stage=-4 Rose=false
+  say Foe Emolga used Nuzzle!
+    + Lunged E0 Category=Physical
+    + MoveShown Move=Nuzzle Type=Electric Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck P0 Hp=32 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=true
+  say It's not very effective...
+  say Virizion used Double Kick!
+    + Lunged P0 Category=Physical
+    + MoveShown Move=Double Kick Type=Fighting Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
     ! Struck E0 Hp=0 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
+  say Hit 1 time!
   say Foe Emolga fainted!
     + Fainted E0
   say Virizion gained 190 EXP. Points!
@@ -6777,7 +6829,7 @@ log:
   say Lucas defeated Ace Trainer Tester!
   say Lucas received $600 for winning!
   Ended Result=PlayerVictory
-result: PlayerVictory after 8 turns
+result: PlayerVictory after 15 turns
 === battle 140
 rules: Modern rules
 format: Single
@@ -6810,6 +6862,9 @@ log:
     ! Struck P0 Hp=55 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
+  say Ferroseed's Iron Barbs hurt Foe Buneary!
+    + AbilityShown P0 Ability=Iron Barbs
+    + HpChanged E0 Hp=1 Healed=false
   say Ferroseed used Pin Missile!
     + Lunged P0 Category=Physical
     + MoveShown Move=Pin Missile Type=Bug Category=Physical From=P0 To=E0 Missed=true Blocked=false Critical=false SuperEffective=false
@@ -6865,12 +6920,9 @@ log:
     ! Struck P0 Hp=61 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
-  say Ferroseed used Pin Missile!
-    + Lunged P0 Category=Physical
-    + MoveShown Move=Pin Missile Type=Bug Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck E0 Hp=0 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=false
-  say Hit 1 time!
+  say Ferroseed's Iron Barbs hurt Foe Buneary!
+    + AbilityShown P0 Ability=Iron Barbs
+    + HpChanged E0 Hp=0 Healed=false
   say Foe Buneary fainted!
     + Fainted E0
   say Ferroseed gained 297 EXP. Points!
@@ -7045,12 +7097,21 @@ log:
     ! Struck E0 Hp=196 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Octillery must recharge!
-  say Seismitoad used Uproar!
-    + Lunged P0 Category=Special
-    + MoveShown Move=Uproar Type=Normal Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck E0 Hp=182 Hard=false
+  say Seismitoad used Flail!
+    + Lunged P0 Category=Physical
+    + MoveShown Move=Flail Type=Normal Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck E0 Hp=189 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
-  say Seismitoad caused an uproar!
+  say Foe Octillery used Soak!
+    + Lunged E0 Category=Status
+    + MoveShown Move=Soak Type=Water Category=Status From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Seismitoad transformed into the Water type!
+  say Seismitoad used Bubble Beam!
+    + Lunged P0 Category=Special
+    + MoveShown Move=Bubble Beam Type=Water Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck E0 Hp=181 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=true
+  say It's not very effective...
   say Foe Octillery used Hyper Beam!
     + Lunged E0 Category=Special
     + MoveShown Move=Hyper Beam Type=Normal Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -7064,7 +7125,7 @@ log:
   say Xatu used Air Slash!
     + Lunged P0 Category=Special
     + MoveShown Move=Air Slash Type=Flying Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck E0 Hp=178 Hard=false
+    ! Struck E0 Hp=177 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Octillery used Hyper Beam!
     + Lunged E0 Category=Special
@@ -7077,7 +7138,7 @@ log:
   say ...  ...  ...
   say Lucas whited out!
   Ended Result=PlayerDefeat
-result: PlayerDefeat after 4 turns
+result: PlayerDefeat after 5 turns
 === battle 143
 rules: Modern rules
 format: Single
@@ -7432,6 +7493,8 @@ log:
     ! Struck E0 Hp=0 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
+  say Scizor's Speed fell!
+    + StageChanged P0 Stat=Speed Stage=-1 Rose=false
   say Foe Wiglett fainted!
     + Fainted E0
   say Scizor gained 98 EXP. Points!
@@ -8527,6 +8590,8 @@ log:
     + HpChanged E0 Hp=60 Healed=false
   say Cyclizar fainted!
     + Fainted P0
+  say Foe Scrafty's Attack rose!
+    + StageChanged E0 Stat=Attack Stage=1 Rose=true
   say Go! Pinsir!
     + Entered P0 Pokemon=mine#2 Pinsir FromBall=true
   say Pinsir breaks the mold!
@@ -8547,6 +8612,8 @@ log:
   say It's not very effective...
   say Pinsir fainted!
     + Fainted P0
+  say Foe Scrafty's Attack rose!
+    + StageChanged E0 Stat=Attack Stage=2 Rose=true
   say Go! Bayleef!
     + Entered P0 Pokemon=mine#1 Bayleef FromBall=true
   say Foe Scrafty used High Jump Kick!
@@ -10170,6 +10237,10 @@ log:
     + MoveShown Move=Swift Type=Normal Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
     ! Struck E0 Hp=52 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
+  say Foe Eldegoss's Cotton Down scattered cotton everywhere!
+    + AbilityShown E0 Ability=Cotton Down
+  say Pachirisu's Speed fell!
+    + StageChanged P0 Stat=Speed Stage=-1 Rose=false
   say Foe Eldegoss is paralyzed! It can't move!
     + MomentShown E0 Moment=Paralyzed From=none
   say Pachirisu used Swift!
@@ -10177,6 +10248,10 @@ log:
     + MoveShown Move=Swift Type=Normal Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
     ! Struck E0 Hp=40 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
+  say Foe Eldegoss's Cotton Down scattered cotton everywhere!
+    + AbilityShown E0 Ability=Cotton Down
+  say Pachirisu's Speed fell!
+    + StageChanged P0 Stat=Speed Stage=-2 Rose=false
   say Foe Eldegoss is paralyzed! It can't move!
     + MomentShown E0 Moment=Paralyzed From=none
   say Pachirisu used Electro Ball!
@@ -10191,14 +10266,18 @@ log:
   say Pachirisu used Electro Ball!
     + Lunged P0 Category=Special
     + MoveShown Move=Electro Ball Type=Electric Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck E0 Hp=22 Hard=false
+    ! Struck E0 Hp=31 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
+  say Foe Eldegoss's Cotton Down scattered cotton everywhere!
+    + AbilityShown E0 Ability=Cotton Down
+  say Pachirisu's Speed fell!
+    + StageChanged P0 Stat=Speed Stage=-3 Rose=false
   say Foe Eldegoss used Cotton Spore!
     + Lunged E0 Category=Status
     + MoveShown Move=Cotton Spore Type=Grass Category=Status From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Pachirisu's Speed harshly fell!
-    + StageChanged P0 Stat=Speed Stage=-2 Rose=false
+    + StageChanged P0 Stat=Speed Stage=-5 Rose=false
   say Pachirisu used Sweet Kiss!
     + Lunged P0 Category=Status
     + MoveShown Move=Sweet Kiss Type=Fairy Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -10209,7 +10288,7 @@ log:
     + Confused E0
     + MomentShown E0 Moment=Confused From=none
   say It hurt itself in its confusion!
-    ! Struck E0 Hp=17 Hard=false
+    ! Struck E0 Hp=26 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Pachirisu used Sweet Kiss!
     + Lunged P0 Category=Status
@@ -10219,13 +10298,8 @@ log:
     + Confused E0
     + MomentShown E0 Moment=Confused From=none
   say It hurt itself in its confusion!
-    ! Struck E0 Hp=12 Hard=false
+    ! Struck E0 Hp=21 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
-  say Foe Eldegoss ate its Apicot Berry!
-    + ItemShown E0 Item=Apicot Berry
-    + MomentShown E0 Moment=HeldItem From=none
-  say Foe Eldegoss's Sp. Def rose!
-    + StageChanged E0 Stat=SpDefense Stage=1 Rose=true
   say Pachirisu used Thunder Wave!
     + Lunged P0 Category=Status
     + MoveShown Move=Thunder Wave Type=Electric Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -10249,13 +10323,44 @@ log:
     + Confused E0
     + MomentShown E0 Moment=Confused From=none
   say It hurt itself in its confusion!
-    ! Struck E0 Hp=7 Hard=false
+    ! Struck E0 Hp=16 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=false
+  say Pachirisu used Swift!
+    + Lunged P0 Category=Special
+    + MoveShown Move=Swift Type=Normal Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck E0 Hp=4 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=false
+  say Foe Eldegoss's Cotton Down scattered cotton everywhere!
+    + AbilityShown E0 Ability=Cotton Down
+  say Pachirisu's Speed fell!
+    + StageChanged P0 Stat=Speed Stage=-6 Rose=false
+  say Foe Eldegoss ate its Apicot Berry!
+    + ItemShown E0 Item=Apicot Berry
+    + MomentShown E0 Moment=HeldItem From=none
+  say Foe Eldegoss's Sp. Def rose!
+    + StageChanged E0 Stat=SpDefense Stage=1 Rose=true
+  say Foe Eldegoss snapped out of confusion!
+    + VolatileChanged E0 Confused=false InLove=false
+  say Foe Eldegoss used Cotton Spore!
+    + Lunged E0 Category=Status
+    + MoveShown Move=Cotton Spore Type=Grass Category=Status From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Pachirisu's Speed won't go any lower!
+  say Pachirisu used Thunder Wave!
+    + Lunged P0 Category=Status
+    + MoveShown Move=Thunder Wave Type=Electric Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Pachirisu's attack missed!
+  say Foe Eldegoss used Round!
+    + Lunged E0 Category=Special
+    + MoveShown Move=Round Type=Normal Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck P0 Hp=15 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Pachirisu used Swift!
     + Lunged P0 Category=Special
     + MoveShown Move=Swift Type=Normal Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
     ! Struck E0 Hp=0 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
+  say Foe Eldegoss's Cotton Down scattered cotton everywhere!
+    + AbilityShown E0 Ability=Cotton Down
   say Foe Eldegoss fainted!
     + Fainted E0
     + TrainerReacts E0 Cue=FirstDown
@@ -10268,80 +10373,45 @@ log:
   say Ace Trainer Tester sent out Hoothoot!
     + Seen Species=Hoothoot
     + Entered E0 Pokemon=foe#1 Hoothoot FromBall=true
-  say Pachirisu used Thunder Wave!
-    + Lunged P0 Category=Status
-    + MoveShown Move=Thunder Wave Type=Electric Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Pachirisu's attack missed!
-  say Foe Hoothoot used Take Down!
-    + Lunged E0 Category=Physical
-    + MoveShown Move=Take Down Type=Normal Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=13 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=false
-  say Foe Hoothoot is hit with recoil!
-    + HpChanged E0 Hp=65 Healed=false
-  say Pachirisu used Sweet Kiss!
-    + Lunged P0 Category=Status
-    + MoveShown Move=Sweet Kiss Type=Fairy Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Foe Hoothoot became confused!
-    + Confused E0
-    + VolatileChanged E0 Confused=true InLove=false
-  say Foe Hoothoot is confused!
-    + Confused E0
-    + MomentShown E0 Moment=Confused From=none
-  say It hurt itself in its confusion!
-    ! Struck E0 Hp=56 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=false
+  say Foe Hoothoot used Air Slash!
+    + Lunged E0 Category=Special
+    + MoveShown Move=Air Slash Type=Flying Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck P0 Hp=9 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=true
+  say It's not very effective...
   say Pachirisu used Electro Ball!
     + Lunged P0 Category=Special
-    + MoveShown Move=Electro Ball Type=Electric Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=true
-    ! Struck E0 Hp=0 Hard=true
-    ! HitSounded SuperEffective=true NotVeryEffective=false
-  say It's super effective!
-  say Foe Hoothoot fainted!
-    + Fainted E0
-  say Pachirisu gained 205 EXP. Points!
-  ExpGained Pokemon=mine#0 Pachirisu Amount=205
-  say Beheeyem gained 76 EXP. Points!
-  ExpGained Pokemon=mine#1 Beheeyem Amount=76
-  say Centiskorch gained 36 EXP. Points!
-  ExpGained Pokemon=mine#2 Centiskorch Amount=36
-  say Ace Trainer Tester sent out Machoke!
-    + Seen Species=Machoke
-    + Entered E0 Pokemon=foe#2 Machoke FromBall=true
-    + TrainerReacts E0 Cue=LastPokemon
-  say Foe Machoke used Dynamic Punch!
-    + Lunged E0 Category=Physical
-    + MoveShown Move=Dynamic Punch Type=Fighting Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+    + MoveShown Move=Electro Ball Type=Electric Category=Special From=P0 To=E0 Missed=true Blocked=false Critical=false SuperEffective=false
+  say Pachirisu's attack missed!
+  say Foe Hoothoot used Extrasensory!
+    + Lunged E0 Category=Special
+    + MoveShown Move=Extrasensory Type=Psychic Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
     ! Struck P0 Hp=0 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Pachirisu fainted!
     + Fainted P0
-  say Go! Beheeyem!
-    + Entered P0 Pokemon=mine#1 Beheeyem FromBall=true
-  say Foe Machoke used Cross Chop!
-    + Lunged E0 Category=Physical
-    + MoveShown Move=Cross Chop Type=Fighting Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=52 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=true
-  say It's not very effective...
-  say Beheeyem used Guard Split!
-    + Lunged P0 Category=Status
-    + MoveShown Move=Guard Split Type=Psychic Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Beheeyem shared its guard with the target!
-  say Foe Machoke used Dynamic Punch!
-    + Lunged E0 Category=Physical
-    + MoveShown Move=Dynamic Punch Type=Fighting Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=0 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=true
-  say It's not very effective...
-  say Beheeyem fainted!
-    + Fainted P0
   say Go! Centiskorch!
     + Entered P0 Pokemon=mine#2 Centiskorch FromBall=true
+  say Centiskorch used Burn Up!
+    + Lunged P0 Category=Special
+    + MoveShown Move=Burn Up Type=Fire Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck E0 Hp=0 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=false
+  say Centiskorch burned itself out!
+  say Foe Hoothoot fainted!
+    + Fainted E0
+  say Beheeyem gained 76 EXP. Points!
+  ExpGained Pokemon=mine#1 Beheeyem Amount=76
+  say Centiskorch gained 72 EXP. Points!
+  ExpGained Pokemon=mine#2 Centiskorch Amount=72
+  say Ace Trainer Tester sent out Machoke!
+    + Seen Species=Machoke
+    + Entered E0 Pokemon=foe#2 Machoke FromBall=true
+    + TrainerReacts E0 Cue=LastPokemon
   say Centiskorch used Crunch!
     + Lunged P0 Category=Physical
     + MoveShown Move=Crunch Type=Dark Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck E0 Hp=136 Hard=false
+    ! Struck E0 Hp=142 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
   say Foe Machoke used Bulk Up!
@@ -10351,32 +10421,74 @@ log:
     + StageChanged E0 Stat=Attack Stage=1 Rose=true
   say Foe Machoke's Defense rose!
     + StageChanged E0 Stat=Defense Stage=1 Rose=true
+  say Centiskorch used Fire Lash!
+    + Lunged P0 Category=Physical
+    + MoveShown Move=Fire Lash Type=Fire Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck E0 Hp=82 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=false
+  say Foe Machoke's Defense fell!
+    + StageChanged E0 Stat=Defense Stage=0 Rose=false
+  say Foe Machoke used Bulk Up!
+    + Lunged E0 Category=Status
+    + MoveShown Move=Bulk Up Type=Fighting Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Foe Machoke's Attack rose!
+    + StageChanged E0 Stat=Attack Stage=2 Rose=true
+  say Foe Machoke's Defense rose!
+    + StageChanged E0 Stat=Defense Stage=1 Rose=true
   say Centiskorch used Crunch!
     + Lunged P0 Category=Physical
     + MoveShown Move=Crunch Type=Dark Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck E0 Hp=103 Hard=false
+    ! Struck E0 Hp=51 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
-  say Foe Machoke used Seismic Toss!
+  say Foe Machoke used Cross Chop!
     + Lunged E0 Category=Physical
-    + MoveShown Move=Seismic Toss Type=Fighting Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=166 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=false
+    + MoveShown Move=Cross Chop Type=Fighting Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck P0 Hp=114 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=true
+  say It's not very effective...
   say Centiskorch used Burn Up!
-    + Lunged P0 Category=Special
-    + MoveShown Move=Burn Up Type=Fire Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck E0 Hp=0 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=false
-  say Centiskorch burned itself out!
-  say Foe Machoke fainted!
-    + Fainted E0
-  say Centiskorch gained 1681 EXP. Points!
-  ExpGained Pokemon=mine#2 Centiskorch Amount=1681
-  Won
-  say Lucas defeated Ace Trainer Tester!
-  say Lucas received $300 for winning!
-  Ended Result=PlayerVictory
-result: PlayerVictory after 21 turns
+  say But it failed!
+  say Foe Machoke used Dynamic Punch!
+    + Lunged E0 Category=Physical
+    + MoveShown Move=Dynamic Punch Type=Fighting Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck P0 Hp=0 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=true
+  say It's not very effective...
+  say Centiskorch fainted!
+    + Fainted P0
+  say Go! Beheeyem!
+    + Entered P0 Pokemon=mine#1 Beheeyem FromBall=true
+  say Foe Machoke used Bulk Up!
+    + Lunged E0 Category=Status
+    + MoveShown Move=Bulk Up Type=Fighting Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Foe Machoke's Attack rose!
+    + StageChanged E0 Stat=Attack Stage=3 Rose=true
+  say Foe Machoke's Defense rose!
+    + StageChanged E0 Stat=Defense Stage=2 Rose=true
+  say Beheeyem used Zen Headbutt!
+    + Lunged P0 Category=Physical
+    + MoveShown Move=Zen Headbutt Type=Psychic Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=true
+    ! Struck E0 Hp=13 Hard=true
+    ! HitSounded SuperEffective=true NotVeryEffective=false
+  say It's super effective!
+  say Foe Machoke boosted the accuracy of its next move using its Micle Berry!
+    + ItemShown E0 Item=Micle Berry
+    + MomentShown E0 Moment=HeldItem From=none
+    + TrainerReacts E0 Cue=LowHp
+  say Foe Machoke used Dynamic Punch!
+    + Lunged E0 Category=Physical
+    + MoveShown Move=Dynamic Punch Type=Fighting Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck P0 Hp=0 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=true
+  say It's not very effective...
+  say Beheeyem fainted!
+    + Fainted P0
+  say Lucas has no Pokémon left that can fight!
+  say ...  ...  ...
+  say Lucas whited out!
+  Ended Result=PlayerDefeat
+result: PlayerDefeat after 23 turns
 === battle 162
 rules: Modern rules
 format: Double
@@ -10933,6 +11045,8 @@ log:
     + ItemShown P0 Item=Deep Sea Scale
   say Golurk fainted!
     + Fainted P0
+  say Foe Guzzlord's Attack rose!
+    + StageChanged E0 Stat=Attack Stage=1 Rose=true
   say Foe Guzzlord is afflicted by the curse!
     + MomentShown E0 Moment=Curse From=none
     + HpChanged E0 Hp=58 Healed=false
@@ -11090,14 +11204,36 @@ log:
   say It's super effective!
   say Clefable was badly poisoned!
     + StatusChanged P0 Status=Toxic
+  say Clefable became confused!
+    + Confused P0
+    + VolatileChanged P0 Confused=true InLove=false
+  say Clefable is confused!
+    + Confused P0
+    + MomentShown P0 Moment=Confused From=none
   say Clefable used Moonblast!
     + Lunged P0 Category=Special
     + MoveShown Move=Moonblast Type=Fairy Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck E0 Hp=173 Hard=false
+    ! Struck E0 Hp=169 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
   say Foe Pecharunt's Sp. Atk fell!
     + StageChanged E0 Stat=SpAttack Stage=-1 Rose=false
+  say Foe Pecharunt used Nasty Plot!
+    + Lunged E0 Category=Status
+    + MoveShown Move=Nasty Plot Type=Dark Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Foe Pecharunt's Sp. Atk sharply rose!
+    + StageChanged E0 Stat=SpAttack Stage=1 Rose=true
+  say Clefable is confused!
+    + Confused P0
+    + MomentShown P0 Moment=Confused From=none
+  say Clefable used Metronome!
+    + Lunged P0 Category=Status
+    + MoveShown Move=Metronome Type=Normal Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Clefable used Flash Cannon!
+    + Lunged P0 Category=Special
+    + MoveShown Move=Flash Cannon Type=Steel Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck E0 Hp=119 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Pecharunt used Malignant Chain!
     + Lunged E0 Category=Special
     + MoveShown Move=Malignant Chain Type=Poison Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=true
@@ -11109,35 +11245,10 @@ log:
   say Foe Pecharunt restored a little HP using its Shell Bell!
     + ItemShown E0 Item=Shell Bell
     + MomentShown E0 Moment=HeldItem From=none
-    + HpChanged E0 Hp=178 Healed=true
+    + HpChanged E0 Hp=124 Healed=true
   say Go! Rampardos!
     + Entered P0 Pokemon=mine#1 Rampardos FromBall=true
   say Rampardos breaks the mold!
-  say Foe Pecharunt used Toxic!
-    + Lunged E0 Category=Status
-    + MoveShown Move=Toxic Type=Poison Category=Status From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Rampardos was badly poisoned!
-    + StatusChanged P0 Status=Toxic
-  say Rampardos used Slam!
-    + Lunged P0 Category=Physical
-    + MoveShown Move=Slam Type=Normal Category=Physical From=P0 To=E0 Missed=false Blocked=true Critical=false SuperEffective=false
-  say It doesn't affect Foe Pecharunt...
-  say Rampardos is hurt by poison!
-    + MomentShown P0 Moment=Poisoned From=none
-    + HpChanged P0 Hp=112 Healed=false
-  say Foe Pecharunt used Nasty Plot!
-    + Lunged E0 Category=Status
-    + MoveShown Move=Nasty Plot Type=Dark Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Foe Pecharunt's Sp. Atk sharply rose!
-    + StageChanged E0 Stat=SpAttack Stage=1 Rose=true
-  say Rampardos used Scary Face!
-    + Lunged P0 Category=Status
-    + MoveShown Move=Scary Face Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Foe Pecharunt's Speed harshly fell!
-    + StageChanged E0 Stat=Speed Stage=-2 Rose=false
-  say Rampardos is hurt by poison!
-    + MomentShown P0 Moment=Poisoned From=none
-    + HpChanged P0 Hp=98 Healed=false
   say Foe Pecharunt used Shadow Ball!
     + Lunged E0 Category=Special
     + MoveShown Move=Shadow Ball Type=Ghost Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -11148,46 +11259,28 @@ log:
   say Foe Pecharunt restored a little HP using its Shell Bell!
     + ItemShown E0 Item=Shell Bell
     + MomentShown E0 Moment=HeldItem From=none
-    + HpChanged E0 Hp=190 Healed=true
+    + HpChanged E0 Hp=138 Healed=true
   say Go! Ledyba!
     + Entered P0 Pokemon=mine#2 Ledyba FromBall=true
-  say Ledyba used Bug Buzz!
-    + Lunged P0 Category=Special
-    + MoveShown Move=Bug Buzz Type=Bug Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck E0 Hp=178 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=true
-  say It's not very effective...
-  say Foe Pecharunt used Nasty Plot!
-    + Lunged E0 Category=Status
-    + MoveShown Move=Nasty Plot Type=Dark Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Foe Pecharunt's Sp. Atk sharply rose!
-    + StageChanged E0 Stat=SpAttack Stage=3 Rose=true
+  say Foe Pecharunt used Shadow Ball!
+    + Lunged E0 Category=Special
+    + MoveShown Move=Shadow Ball Type=Ghost Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck P0 Hp=11 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=false
+  say Foe Pecharunt restored a little HP using its Shell Bell!
+    + ItemShown E0 Item=Shell Bell
+    + MomentShown E0 Moment=HeldItem From=none
+    + HpChanged E0 Hp=153 Healed=true
   say Ledyba used Agility!
     + Lunged P0 Category=Status
     + MoveShown Move=Agility Type=Psychic Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Ledyba's Speed sharply rose!
     + StageChanged P0 Stat=Speed Stage=2 Rose=true
-  say Foe Pecharunt used Toxic!
-    + Lunged E0 Category=Status
-    + MoveShown Move=Toxic Type=Poison Category=Status From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Ledyba was badly poisoned!
-    + StatusChanged P0 Status=Toxic
-  say Ledyba is hurt by poison!
-    + MomentShown P0 Moment=Poisoned From=none
-    + HpChanged P0 Hp=129 Healed=false
-  say Ledyba used Air Slash!
-    + Lunged P0 Category=Special
-    + MoveShown Move=Air Slash Type=Flying Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck E0 Hp=142 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=false
-  say Foe Pecharunt flinched!
-  say Ledyba is hurt by poison!
-    + MomentShown P0 Moment=Poisoned From=none
-    + HpChanged P0 Hp=113 Healed=false
-  say Ledyba used Double-Edge!
-    + Lunged P0 Category=Physical
-    + MoveShown Move=Double-Edge Type=Normal Category=Physical From=P0 To=E0 Missed=false Blocked=true Critical=false SuperEffective=false
-  say It doesn't affect Foe Pecharunt...
+  say Ledyba used Agility!
+    + Lunged P0 Category=Status
+    + MoveShown Move=Agility Type=Psychic Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Ledyba's Speed sharply rose!
+    + StageChanged P0 Stat=Speed Stage=4 Rose=true
   say Foe Pecharunt used Shadow Ball!
     + Lunged E0 Category=Special
     + MoveShown Move=Shadow Ball Type=Ghost Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -11199,7 +11292,7 @@ log:
   say ...  ...  ...
   say Lucas whited out!
   Ended Result=PlayerDefeat
-result: PlayerDefeat after 9 turns
+result: PlayerDefeat after 6 turns
 === battle 168
 rules: Modern rules
 format: Double
@@ -11349,6 +11442,7 @@ log:
     + Entered E0 Pokemon=foe#0 Komala FromBall=true
   say Go! Dondozo!
     + Entered P0 Pokemon=mine#0 Dondozo FromBall=true
+  say Foe Komala is drowsing!
   say Foe Komala used Rapid Spin!
     + Lunged E0 Category=Physical
     + MoveShown Move=Rapid Spin Type=Normal Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -12608,16 +12702,16 @@ log:
     + Seen Species=Bidoof
     + Entered E0 Pokemon=foe#2 Bidoof FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
-  say Toedscruel used Growth!
-    + Lunged P0 Category=Status
-    + MoveShown Move=Growth Type=Normal Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Toedscruel's Sp. Atk rose!
-    + StageChanged P0 Stat=SpAttack Stage=2 Rose=true
   say Foe Bidoof used Swords Dance!
     + Lunged E0 Category=Status
     + MoveShown Move=Swords Dance Type=Normal Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Bidoof's Attack sharply rose!
     + StageChanged E0 Stat=Attack Stage=2 Rose=true
+  say Toedscruel used Growth!
+    + Lunged P0 Category=Status
+    + MoveShown Move=Growth Type=Normal Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Toedscruel's Sp. Atk rose!
+    + StageChanged P0 Stat=SpAttack Stage=2 Rose=true
   say Toedscruel used Earth Power!
     + Lunged P0 Category=Special
     + MoveShown Move=Earth Power Type=Ground Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -12665,15 +12759,15 @@ log:
   say Go! Veluza!
     + Entered P0 Pokemon=mine#1 Veluza FromBall=true
   say Veluza breaks the mold!
+  say Foe Klefki used Imprison!
+    + Lunged E0 Category=Status
+  say But it failed!
   say Veluza used Psycho Cut!
     + Lunged P0 Category=Physical
     + MoveShown Move=Psycho Cut Type=Psychic Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
     ! Struck E0 Hp=57 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
-  say Foe Klefki used Imprison!
-    + Lunged E0 Category=Status
-  say But it failed!
   say Veluza used Liquidation!
     + Lunged P0 Category=Physical
     + MoveShown Move=Liquidation Type=Water Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -12811,6 +12905,8 @@ log:
     + MoveShown Move=Scary Face Type=Normal Category=Status From=E1 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
   say Ogerpon's Speed harshly fell!
     + StageChanged P1 Stat=Speed Stage=-2 Rose=false
+  say Ogerpon's Attack sharply rose!
+    + StageChanged P1 Stat=Attack Stage=2 Rose=true
   say Foe Mantine sprang up!
     + Lunged E0 Category=Status
     + Charging E0 Move=Bounce
@@ -12838,51 +12934,48 @@ log:
   say Ogerpon used Superpower!
     + Lunged P1 Category=Physical
     + MoveShown Move=Superpower Type=Fighting Category=Physical From=P1 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck E1 Hp=46 Hard=false
+    ! Struck E1 Hp=0 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Ogerpon's Attack fell!
-    + StageChanged P1 Stat=Attack Stage=-1 Rose=false
+    + StageChanged P1 Stat=Attack Stage=1 Rose=false
   say Ogerpon's Defense fell!
     + StageChanged P1 Stat=Defense Stage=-1 Rose=false
-  say Foe Machoke used Dynamic Punch!
-    + Lunged E1 Category=Physical
-    + MoveShown Move=Dynamic Punch Type=Fighting Category=Physical From=E1 To=P1 Missed=true Blocked=false Critical=false SuperEffective=false
-  say Ogerpon avoided the attack!
+  say Foe Machoke fainted!
+    + Fainted E1
+    + TrainerReacts E1 Cue=FirstDown
+  say Ogerpon gained 1537 EXP. Points!
+  ExpGained Pokemon=mine#1 Ogerpon Amount=1537
+  say Sailor Marc sent out Lanturn!
+    + Seen Species=Lanturn
+    + Entered E1 Pokemon=foe#2 Lanturn FromBall=true
+    + TrainerReacts E1 Cue=LastPokemon
   say Foe Mantine sprang up!
     + Lunged E0 Category=Status
     + Charging E0 Move=Bounce
     + Vanished E0
-  say Ogerpon used Synthesis!
-    + Lunged P1 Category=Status
-    + MoveShown Move=Synthesis Type=Grass Category=Status From=P1 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Ogerpon regained health!
-    + HpChanged P1 Hp=160 Healed=true
-  say Foe Machoke used Dynamic Punch!
-    + Lunged E1 Category=Physical
-    + MoveShown Move=Dynamic Punch Type=Fighting Category=Physical From=E1 To=P1 Missed=true Blocked=false Critical=false SuperEffective=false
-  say Ogerpon avoided the attack!
+  say Foe Lanturn used Hydro Pump!
+    + Lunged E1 Category=Special
+    + MoveShown Move=Hydro Pump Type=Water Category=Special From=E1 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck P1 Hp=47 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=true
+  say It's not very effective...
+  say Ogerpon used Power Whip!
+    + Lunged P1 Category=Physical
+    + MoveShown Move=Power Whip Type=Grass Category=Physical From=P1 To=E1 Missed=false Blocked=false Critical=false SuperEffective=true
+    ! Struck E1 Hp=0 Hard=true
+    ! HitSounded SuperEffective=true NotVeryEffective=false
+  say It's super effective!
+  say Foe Lanturn fainted!
+    + Fainted E1
+  say Ogerpon gained 1642 EXP. Points!
+  ExpGained Pokemon=mine#1 Ogerpon Amount=1642
   say Foe Mantine used Bounce!
     + Reappeared E0
     + Lunged E0 Category=Physical
     + MoveShown Move=Bounce Type=Flying Category=Physical From=E0 To=P1 Missed=false Blocked=false Critical=false SuperEffective=true
-    ! Struck P1 Hp=76 Hard=true
+    ! Struck P1 Hp=0 Hard=true
     ! HitSounded SuperEffective=true NotVeryEffective=false
   say It's super effective!
-  say Ogerpon used Superpower!
-    + Lunged P1 Category=Physical
-    + MoveShown Move=Superpower Type=Fighting Category=Physical From=P1 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck E0 Hp=122 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=true
-  say It's not very effective...
-  say Ogerpon's Attack fell!
-    + StageChanged P1 Stat=Attack Stage=-2 Rose=false
-  say Ogerpon's Defense fell!
-    + StageChanged P1 Stat=Defense Stage=-2 Rose=false
-  say Foe Machoke used Cross Chop!
-    + Lunged E1 Category=Physical
-    + MoveShown Move=Cross Chop Type=Fighting Category=Physical From=E1 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P1 Hp=0 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=false
   say Ogerpon fainted!
     + Fainted P1
   say Lucas has no Pokémon left that can fight!
@@ -13057,6 +13150,8 @@ log:
     + Entered E0 Pokemon=foe#0 Cleffa FromBall=true
   say Go! Yveltal!
     + Entered P0 Pokemon=mine#0 Yveltal FromBall=true
+  say Yveltal is radiating a dark aura!
+    + AbilityShown P0 Ability=Dark Aura
   say Yveltal used Taunt!
     + Lunged P0 Category=Status
     + MoveShown Move=Taunt Type=Dark Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -13075,7 +13170,7 @@ log:
   say Yveltal used Sucker Punch!
     + Lunged P0 Category=Physical
     + MoveShown Move=Sucker Punch Type=Dark Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck E0 Hp=43 Hard=false
+    ! Struck E0 Hp=35 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
   say Foe Cleffa used Disarming Voice!
@@ -13088,7 +13183,7 @@ log:
   say Yveltal used Snarl!
     + Lunged P0 Category=Special
     + MoveShown Move=Snarl Type=Dark Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck E0 Hp=28 Hard=false
+    ! Struck E0 Hp=16 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
   say Foe Cleffa's Sp. Atk fell!
@@ -13107,114 +13202,48 @@ log:
   say Yveltal used Sucker Punch!
     + Lunged P0 Category=Physical
     + MoveShown Move=Sucker Punch Type=Dark Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck E0 Hp=3 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=true
-  say It's not very effective...
-  say Foe Cleffa used Disarming Voice!
-    + Lunged E0 Category=Special
-    + MoveShown Move=Disarming Voice Type=Fairy Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=true
-    ! Struck P0 Hp=0 Hard=true
-    ! HitSounded SuperEffective=true NotVeryEffective=false
-  say It's super effective!
-  say Yveltal fainted!
-    + Fainted P0
-  say Go! Magneton!
-    + Entered P0 Pokemon=mine#2 Magneton FromBall=true
-  say Magneton used Metal Sound!
-    + Lunged P0 Category=Status
-    + MoveShown Move=Metal Sound Type=Steel Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Magneton's attack missed!
-  say Foe Cleffa used Disarming Voice!
-    + Lunged E0 Category=Special
-    + MoveShown Move=Disarming Voice Type=Fairy Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=139 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=true
-  say It's not very effective...
-  say Foe Cleffa's taunt wore off!
-  say Magneton used Light Screen!
-    + Lunged P0 Category=Status
-    + MoveShown Move=Light Screen Type=Psychic Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Light Screen raised your team's Special Defense!
-    + SideConditionChanged Side=Player Condition=LightScreen Layers=1
-  say Foe Cleffa used Disarming Voice!
-    + Lunged E0 Category=Special
-    + MoveShown Move=Disarming Voice Type=Fairy Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=138 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=true
-  say It's not very effective...
-  say Magneton used Metal Sound!
-    + Lunged P0 Category=Status
-    + MoveShown Move=Metal Sound Type=Steel Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Foe Cleffa's Sp. Def harshly fell!
-    + StageChanged E0 Stat=SpDefense Stage=-2 Rose=false
-  say Foe Cleffa used Charm!
-    + Lunged E0 Category=Status
-    + MoveShown Move=Charm Type=Fairy Category=Status From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Magneton's Attack harshly fell!
-    + StageChanged P0 Stat=Attack Stage=-2 Rose=false
-  say Magneton used Lock-On!
-    + Lunged P0 Category=Status
-    + MoveShown Move=Lock-On Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Magneton took aim at Foe Cleffa!
-  say Foe Cleffa used Encore!
-    + Lunged E0 Category=Status
-    + MoveShown Move=Encore Type=Normal Category=Status From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Magneton received an encore!
-  say Magneton used Lock-On!
-    + Lunged P0 Category=Status
-    + MoveShown Move=Lock-On Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Magneton took aim at Foe Cleffa!
-  say Foe Cleffa used Disarming Voice!
-    + Lunged E0 Category=Special
-    + MoveShown Move=Disarming Voice Type=Fairy Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=137 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=true
-  say It's not very effective...
-  say Magneton used Lock-On!
-    + Lunged P0 Category=Status
-    + MoveShown Move=Lock-On Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Magneton took aim at Foe Cleffa!
-  say Foe Cleffa used Sweet Kiss!
-    + Lunged E0 Category=Status
-    + MoveShown Move=Sweet Kiss Type=Fairy Category=Status From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Magneton became confused!
-    + Confused P0
-    + VolatileChanged P0 Confused=true InLove=false
-  say Your team's Light Screen wore off!
-    + SideConditionChanged Side=Player Condition=LightScreen Layers=0
-  say Magneton's encore ended!
-  say Magneton is confused!
-    + Confused P0
-    + MomentShown P0 Moment=Confused From=none
-  say Magneton used Discharge!
-    + Lunged P0 Category=Special
-    + MoveShown Move=Discharge Type=Electric Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
     ! Struck E0 Hp=0 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=false
+    ! HitSounded SuperEffective=false NotVeryEffective=true
+  say It's not very effective...
   say Foe Cleffa fainted!
     + Fainted E0
     + TrainerReacts E0 Cue=FirstDown
+  say Yveltal gained 275 EXP. Points!
+  ExpGained Pokemon=mine#0 Yveltal Amount=275
   say Crocalor gained 93 EXP. Points!
   ExpGained Pokemon=mine#1 Crocalor Amount=93
-  say Magneton gained 76 EXP. Points!
-  ExpGained Pokemon=mine#2 Magneton Amount=76
+  say Magneton gained 38 EXP. Points!
+  ExpGained Pokemon=mine#2 Magneton Amount=38
+  say Ace Trainer Tester sent out Swinub!
+    + Seen Species=Swinub
+    + Entered E0 Pokemon=foe#1 Swinub FromBall=true
+  say Yveltal used Disable!
+    + Lunged P0 Category=Status
+    + MoveShown Move=Disable Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say But it failed!
+  say Foe Swinub used Powder Snow!
+    + Lunged E0 Category=Special
+    + MoveShown Move=Powder Snow Type=Ice Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=true
+    ! Struck P0 Hp=2 Hard=true
+    ! HitSounded SuperEffective=true NotVeryEffective=false
+  say It's super effective!
+  say Yveltal used Sucker Punch!
+    + Lunged P0 Category=Physical
+    + MoveShown Move=Sucker Punch Type=Dark Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck E0 Hp=0 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=false
+  say Foe Swinub fainted!
+    + Fainted E0
+  say Yveltal gained 328 EXP. Points!
+  ExpGained Pokemon=mine#0 Yveltal Amount=328
+  say Crocalor gained 106 EXP. Points!
+  ExpGained Pokemon=mine#1 Crocalor Amount=106
+  say Magneton gained 40 EXP. Points!
+  ExpGained Pokemon=mine#2 Magneton Amount=40
   say Ace Trainer Tester sent out Rayquaza!
     + Seen Species=Rayquaza
     + Entered E0 Pokemon=foe#2 Rayquaza FromBall=true
-  say Foe Rayquaza used Dragon Pulse!
-    + Lunged E0 Category=Special
-    + MoveShown Move=Dragon Pulse Type=Dragon Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=104 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=true
-  say It's not very effective...
-  say Magneton is confused!
-    + Confused P0
-    + MomentShown P0 Moment=Confused From=none
-  say Magneton used Light Screen!
-    + Lunged P0 Category=Status
-    + MoveShown Move=Light Screen Type=Psychic Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Light Screen raised your team's Special Defense!
-    + SideConditionChanged Side=Player Condition=LightScreen Layers=1
+    + TrainerReacts E0 Cue=LastPokemon
   say Foe Rayquaza used Dragon Dance!
     + Lunged E0 Category=Status
     + MoveShown Move=Dragon Dance Type=Dragon Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -13222,86 +13251,21 @@ log:
     + StageChanged E0 Stat=Attack Stage=1 Rose=true
   say Foe Rayquaza's Speed rose!
     + StageChanged E0 Stat=Speed Stage=1 Rose=true
-  say Magneton snapped out of confusion!
-    + VolatileChanged P0 Confused=false InLove=false
-  say Magneton used Lock-On!
+  say Yveltal used Taunt!
     + Lunged P0 Category=Status
-    + MoveShown Move=Lock-On Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Magneton took aim at Foe Rayquaza!
-  say Foe Rayquaza used Dragon Dance!
-    + Lunged E0 Category=Status
-    + MoveShown Move=Dragon Dance Type=Dragon Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Foe Rayquaza's Attack rose!
-    + StageChanged E0 Stat=Attack Stage=2 Rose=true
-  say Foe Rayquaza's Speed rose!
-    + StageChanged E0 Stat=Speed Stage=2 Rose=true
-  say Magneton used Lock-On!
-    + Lunged P0 Category=Status
-    + MoveShown Move=Lock-On Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Magneton took aim at Foe Rayquaza!
-  say Foe Rayquaza used Hyper Voice!
-    + Lunged E0 Category=Special
-    + MoveShown Move=Hyper Voice Type=Normal Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=91 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=true
-  say It's not very effective...
-  say Magneton used Light Screen!
-    + Lunged P0 Category=Status
-    + MoveShown Move=Light Screen Type=Psychic Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say But it failed!
+    + MoveShown Move=Taunt Type=Dark Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Foe Rayquaza fell for the taunt!
+  say Yveltal used Sucker Punch!
+    + Lunged P0 Category=Physical
+    + MoveShown Move=Sucker Punch Type=Dark Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck E0 Hp=133 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Rayquaza used Dragon Pulse!
     + Lunged E0 Category=Special
     + MoveShown Move=Dragon Pulse Type=Dragon Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=75 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=true
-  say It's not very effective...
-  say Magneton used Light Screen!
-    + Lunged P0 Category=Status
-    + MoveShown Move=Light Screen Type=Psychic Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say But it failed!
-  say Your team's Light Screen wore off!
-    + SideConditionChanged Side=Player Condition=LightScreen Layers=0
-  say Foe Rayquaza used Dragon Pulse!
-    + Lunged E0 Category=Special
-    + MoveShown Move=Dragon Pulse Type=Dragon Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=40 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=true
-  say It's not very effective...
-  say Magneton used Metal Sound!
-    + Lunged P0 Category=Status
-    + MoveShown Move=Metal Sound Type=Steel Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Foe Rayquaza's Sp. Def harshly fell!
-    + StageChanged E0 Stat=SpDefense Stage=-2 Rose=false
-  say Foe Rayquaza used Hyper Voice!
-    + Lunged E0 Category=Special
-    + MoveShown Move=Hyper Voice Type=Normal Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=17 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=true
-  say It's not very effective...
-  say Magneton used Metal Sound!
-    + Lunged P0 Category=Status
-    + MoveShown Move=Metal Sound Type=Steel Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Foe Rayquaza's Sp. Def harshly fell!
-    + StageChanged E0 Stat=SpDefense Stage=-4 Rose=false
-  say Foe Rayquaza used Dragon Dance!
-    + Lunged E0 Category=Status
-    + MoveShown Move=Dragon Dance Type=Dragon Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Foe Rayquaza's Attack rose!
-    + StageChanged E0 Stat=Attack Stage=3 Rose=true
-  say Foe Rayquaza's Speed rose!
-    + StageChanged E0 Stat=Speed Stage=3 Rose=true
-  say Magneton used Metal Sound!
-    + Lunged P0 Category=Status
-    + MoveShown Move=Metal Sound Type=Steel Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Foe Rayquaza's Sp. Def harshly fell!
-    + StageChanged E0 Stat=SpDefense Stage=-6 Rose=false
-  say Foe Rayquaza used Hyper Voice!
-    + Lunged E0 Category=Special
-    + MoveShown Move=Hyper Voice Type=Normal Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
     ! Struck P0 Hp=0 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=true
-  say It's not very effective...
-  say Magneton fainted!
+    ! HitSounded SuperEffective=false NotVeryEffective=false
+  say Yveltal fainted!
     + Fainted P0
   say Go! Crocalor!
     + Entered P0 Pokemon=mine#1 Crocalor FromBall=true
@@ -13312,11 +13276,87 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Crocalor fainted!
     + Fainted P0
+  say Foe Rayquaza's taunt wore off!
+  say Go! Magneton!
+    + Entered P0 Pokemon=mine#2 Magneton FromBall=true
+  say Foe Rayquaza used Dragon Pulse!
+    + Lunged E0 Category=Special
+    + MoveShown Move=Dragon Pulse Type=Dragon Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck P0 Hp=105 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=true
+  say It's not very effective...
+  say Magneton used Metal Sound!
+    + Lunged P0 Category=Status
+    + MoveShown Move=Metal Sound Type=Steel Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Foe Rayquaza's Sp. Def harshly fell!
+    + StageChanged E0 Stat=SpDefense Stage=-2 Rose=false
+  say Foe Rayquaza used Dragon Pulse!
+    + Lunged E0 Category=Special
+    + MoveShown Move=Dragon Pulse Type=Dragon Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck P0 Hp=68 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=true
+  say It's not very effective...
+  say Magneton used Light Screen!
+    + Lunged P0 Category=Status
+    + MoveShown Move=Light Screen Type=Psychic Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Light Screen raised your team's Special Defense!
+    + SideConditionChanged Side=Player Condition=LightScreen Layers=1
+  say Foe Rayquaza used Dragon Dance!
+    + Lunged E0 Category=Status
+    + MoveShown Move=Dragon Dance Type=Dragon Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Foe Rayquaza's Attack rose!
+    + StageChanged E0 Stat=Attack Stage=2 Rose=true
+  say Foe Rayquaza's Speed rose!
+    + StageChanged E0 Stat=Speed Stage=2 Rose=true
+  say Magneton used Light Screen!
+    + Lunged P0 Category=Status
+    + MoveShown Move=Light Screen Type=Psychic Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say But it failed!
+  say Foe Rayquaza used Extreme Speed!
+    + Lunged E0 Category=Physical
+    + MoveShown Move=Extreme Speed Type=Normal Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck P0 Hp=35 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=true
+  say It's not very effective...
+  say Magneton used Light Screen!
+    + Lunged P0 Category=Status
+    + MoveShown Move=Light Screen Type=Psychic Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say But it failed!
+  say Foe Rayquaza used Dragon Pulse!
+    + Lunged E0 Category=Special
+    + MoveShown Move=Dragon Pulse Type=Dragon Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck P0 Hp=19 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=true
+  say It's not very effective...
+  say Magneton used Lock-On!
+    + Lunged P0 Category=Status
+    + MoveShown Move=Lock-On Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Magneton took aim at Foe Rayquaza!
+  say Foe Rayquaza used Dragon Pulse!
+    + Lunged E0 Category=Special
+    + MoveShown Move=Dragon Pulse Type=Dragon Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck P0 Hp=1 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=true
+  say It's not very effective...
+  say Magneton used Lock-On!
+    + Lunged P0 Category=Status
+    + MoveShown Move=Lock-On Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Magneton took aim at Foe Rayquaza!
+  say Your team's Light Screen wore off!
+    + SideConditionChanged Side=Player Condition=LightScreen Layers=0
+  say Foe Rayquaza used Hyper Voice!
+    + Lunged E0 Category=Special
+    + MoveShown Move=Hyper Voice Type=Normal Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck P0 Hp=0 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=true
+  say It's not very effective...
+  say Magneton fainted!
+    + Fainted P0
   say Lucas has no Pokémon left that can fight!
   say ...  ...  ...
   say Lucas whited out!
   Ended Result=PlayerDefeat
-result: PlayerDefeat after 22 turns
+result: PlayerDefeat after 17 turns
 === battle 183
 rules: Modern rules
 format: Double
@@ -13699,7 +13739,7 @@ log:
   say Bruxish used Psychic Fangs!
     + Lunged P0 Category=Physical
     + MoveShown Move=Psychic Fangs Type=Psychic Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck E0 Hp=64 Hard=false
+    ! Struck E0 Hp=49 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
   say Foe Klinklang used Zap Cannon!
@@ -15312,26 +15352,24 @@ log:
     + StageChanged P0 Stat=Defense Stage=-2 Rose=false
   say Unfezant used Quick Attack!
     + Lunged P0 Category=Physical
-    + MoveShown Move=Quick Attack Type=Normal Category=Physical From=P0 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
-    + TrainerReacts E1 Cue=LowHp
-    ! Struck E1 Hp=4 Hard=false
+    + MoveShown Move=Quick Attack Type=Normal Category=Physical From=P0 To=E1 Missed=false Blocked=false Critical=true SuperEffective=false
+    ! Struck E1 Hp=1 Hard=true
     ! HitSounded SuperEffective=false NotVeryEffective=false
+  say A critical hit!
+    + TrainerReacts E1 Cue=LowHp
   say Nacli used Stealth Rock!
     + Lunged P1 Category=Status
     + MoveShown Move=Stealth Rock Type=Rock Category=Status From=P1 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
   say Pointed stones float in the air around the foe's team!
     + SideConditionChanged Side=Enemy Condition=StealthRock Layers=1
-  say Foe Axew used Leer!
-    + Lunged E1 Category=Status
-    + MoveShown Move=Leer Type=Normal Category=Status From=E1 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
-    + MoveShown Move=Leer Type=Normal Category=Status From=E1 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Nacli's Defense fell!
-    + StageChanged P1 Stat=Defense Stage=-3 Rose=false
-  say Unfezant's Defense fell!
-    + StageChanged P0 Stat=Defense Stage=-3 Rose=false
-  say Nacli used Stone Edge!
-    + Lunged P1 Category=Physical
-    + MoveShown Move=Stone Edge Type=Rock Category=Physical From=P1 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Foe Axew used Bite!
+    + Lunged E1 Category=Physical
+    + MoveShown Move=Bite Type=Dark Category=Physical From=E1 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck P1 Hp=171 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=false
+  say Unfezant used Quick Attack!
+    + Lunged P0 Category=Physical
+    + MoveShown Move=Quick Attack Type=Normal Category=Physical From=P0 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
     ! Struck E1 Hp=0 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Axew fainted!
