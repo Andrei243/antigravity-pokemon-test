@@ -7,7 +7,8 @@
 //   dotnet run --project tools/MapImporter -- --quick           the mosaics and reports only: no per-chunk or per-area pictures, no world files
 //   dotnet run --project tools/MapImporter -- --data            only rewrite the game's own world files (PokemonPlatinumEngine/Data/world/sinnoh)
 //   dotnet run --project tools/MapImporter -- --room <key>      print a room of the original as text, to write its map file from
-//   dotnet run --project tools/MapImporter -- --game firered|emerald [--quick]   a Game Boy Advance game into out/kanto or out/hoenn (plan 18 · W6)
+//   dotnet run --project tools/MapImporter -- --game firered|emerald [--quick]   a Game Boy Advance game into out/kanto or out/hoenn (plan 18 · W6, W7)
+//   dotnet run --project tools/MapImporter -- --game firered|emerald --data      rewrite what the region's world.json opens in Data/world/<region> (W7)
 //   dotnet run --project tools/MapImporter -- --chunk <id>     print which texture lies over each tile of a chunk (the names only), to sort a new area's ground by
 
 using System.Diagnostics;
@@ -24,7 +25,9 @@ bool quick = args.Contains("--quick");
 
 // A Game Boy Advance game (plan 18 · W6): its own pin, its own folder under out/
 if (Arg("--game") is { } game)
-    return MapImporter.Gba.GbaImport.Run(repo, game, decompDir, Path.Combine(outDir, MapImporter.Gba.GbaImport.RegionOf(game)), quick);
+    return args.Contains("--data")
+        ? MapImporter.Gba.GbaImport.Data(repo, game, decompDir, Arg("--data-dir"))
+        : MapImporter.Gba.GbaImport.Run(repo, game, decompDir, Path.Combine(outDir, MapImporter.Gba.GbaImport.RegionOf(game)), quick);
 
 if (decompDir == null)
 {

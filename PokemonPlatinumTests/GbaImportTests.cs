@@ -268,7 +268,7 @@ public sealed class GbaImportTests : IDisposable
     {
         var world = new GbaWorld(Build());
         string folder = Path.Combine(dir, "out", "world");
-        GbaImport.WriteWorld(world, folder);
+        GbaImport.WriteWorld(world, new GbaTables(), folder);
         var index = GameDataFiles.Load<WorldIndexFile>(Path.Combine(folder, World.IndexFile));
         var map = WorldMapBuilder.Build(World.Open(folder, index), index.Maps.Single());
 

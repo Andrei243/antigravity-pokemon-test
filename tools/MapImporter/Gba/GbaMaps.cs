@@ -27,7 +27,27 @@ public sealed record GbaGame(string Name, string Region, string RegionName, int 
 /// <summary>A map's join to another (<c>connections</c> of its <c>map.json</c>): up, down, left, right, dive or emerge.</summary>
 public sealed record GbaConnection(string Map, int Offset, string Direction);
 
-/// <summary>What the importer keeps of a map's <c>map.json</c> for W6: what it is, and how it joins the others.</summary>
+/// <summary>
+/// A person or a thing of a map's <c>object_events</c> (plan 18 · W7): its looks, where it stands (tiles of its own
+/// map), how it moves, whether it is a trainer, its script's label and the flag that hides it ("0" for none). A
+/// <c>clone</c> (a neighbour's object shown across the border) is not kept: the neighbour has it.
+/// </summary>
+public sealed record GbaObject(string LocalId, string Graphics, int X, int Y, int Elevation, string Movement, int RangeX, int RangeY,
+    string TrainerType, string SightOrBerryTree, string Script, string Flag);
+
+/// <summary>A tile of a map's <c>warp_events</c>: it leads to the warp numbered <see cref="DestWarp"/> of <see cref="DestMap"/>.</summary>
+public sealed record GbaWarp(int X, int Y, int Elevation, string DestMap, int DestWarp);
+
+/// <summary>A tile of a map's <c>coord_events</c>: a trigger (a script while a variable has a value) or a change of weather.</summary>
+public sealed record GbaCoord(string Type, int X, int Y, int Elevation, string Var, string VarValue, string Script, string Weather);
+
+/// <summary>
+/// A tile of a map's <c>bg_events</c>: a sign (a script read facing it), a hidden item (its item, how many, the flag
+/// set once found) or a secret base's spot.
+/// </summary>
+public sealed record GbaBg(string Type, int X, int Y, int Elevation, string Script, string Item, int Quantity, string Flag);
+
+/// <summary>What the importer keeps of a map's <c>map.json</c>: what it is, how it joins the others, and its four lists of events (W7).</summary>
 public sealed class GbaMap
 {
     public string Id { get; init; } = "";
@@ -42,6 +62,10 @@ public sealed class GbaMap
     public bool Escaping { get; init; }
     public string Group { get; init; } = "";
     public List<GbaConnection> Connections { get; init; } = new();
+    public List<GbaObject> Objects { get; init; } = new();
+    public List<GbaWarp> Warps { get; init; } = new();
+    public List<GbaCoord> Coords { get; init; } = new();
+    public List<GbaBg> Bgs { get; init; } = new();
 
     /// <summary>The key the world files know it by: <c>PalletTown</c> is <c>pallet_town</c>, <c>Route1</c> <c>route_1</c>.</summary>
     public string Key => GbaMaps.KeyOf(Name);
@@ -198,11 +222,35 @@ public sealed class GbaMaps
         if (r.TryGetProperty("connections", out var list) && list.ValueKind == JsonValueKind.Array)
             foreach (var c in list.EnumerateArray())
                 connections.Add(new GbaConnection(c.GetProperty("map").GetString()!, c.GetProperty("offset").GetInt32(), c.GetProperty("direction").GetString()!));
+
+        // Each event's fields, read the same way whichever game wrote it: a number may be written as a string ("0")
+        static string S(JsonElement e, string name) => e.TryGetProperty(name, out var v)
+            ? v.ValueKind switch { JsonValueKind.String => v.GetString()!, JsonValueKind.Number => v.GetRawText(), JsonValueKind.True => "1", JsonValueKind.False => "0", _ => "" }
+            : "";
+        static int I(JsonElement e, string name, int otherwise = 0) => e.TryGetProperty(name, out var v)
+            ? v.ValueKind == JsonValueKind.Number ? v.GetInt32()
+              : v.ValueKind == JsonValueKind.String && int.TryParse(v.GetString(), NumberStyles.Integer, CultureInfo.InvariantCulture, out int n) ? n : otherwise
+            : otherwise;
+        IEnumerable<JsonElement> List(string name) => r.TryGetProperty(name, out var l) && l.ValueKind == JsonValueKind.Array ? l.EnumerateArray() : Enumerable.Empty<JsonElement>();
+
+        var objects = new List<GbaObject>();
+        foreach (var o in List("object_events"))
+        {
+            if (S(o, "type") == "clone") continue;
+            objects.Add(new GbaObject(S(o, "local_id"), S(o, "graphics_id"), I(o, "x"), I(o, "y"), I(o, "elevation"), S(o, "movement_type"),
+                I(o, "movement_range_x"), I(o, "movement_range_y"), S(o, "trainer_type"), S(o, "trainer_sight_or_berry_tree_id"), S(o, "script"), S(o, "flag")));
+        }
+        var warps = List("warp_events").Select(w => new GbaWarp(I(w, "x"), I(w, "y"), I(w, "elevation"), S(w, "dest_map"), I(w, "dest_warp_id"))).ToList();
+        var coords = List("coord_events").Select(c => new GbaCoord(S(c, "type"), I(c, "x"), I(c, "y"), I(c, "elevation"), S(c, "var"), S(c, "var_value"),
+            S(c, "script"), S(c, "weather"))).ToList();
+        var bgs = List("bg_events").Select(b => new GbaBg(S(b, "type"), I(b, "x"), I(b, "y"), I(b, "elevation"), S(b, "script"), S(b, "item"),
+            I(b, "quantity", 1), S(b, "flag"))).ToList();
         return new GbaMap
         {
             Id = Str("id"), Name = Str("name"), Layout = Str("layout"), Music = Str("music"), Section = Str("region_map_section"),
             Weather = Str("weather"), MapType = Str("map_type"), Cycling = Bool("allow_cycling"), Running = Bool("allow_running"),
-            Escaping = Bool("allow_escaping"), Group = group, Connections = connections
+            Escaping = Bool("allow_escaping"), Group = group, Connections = connections,
+            Objects = objects, Warps = warps, Coords = coords, Bgs = bgs
         };
     }
 

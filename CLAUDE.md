@@ -26,7 +26,8 @@ dotnet run --project tools/DataImporter -- --check-entries                      
 dotnet run --project tools/MapImporter -- [--quick] [--out <dir>]                     # Sinnoh's maps from the decompilation: pictures, world files, reports
 dotnet run --project tools/MapImporter -- --data                                      # rewrite the world files the game loads (Data/world/sinnoh), after opening an area
 dotnet run --project tools/MapImporter -- --room <key>                                # a room of the original (contest_hall_lobby): its grid, props, people, warps and triggers, to build a room file from
-dotnet run --project tools/MapImporter -- --game firered|emerald [--quick]             # a GBA game's maps (plan 18 · W6) into out/kanto or out/hoenn: mosaics by cover, behaviour and height, every map, world files, report.md
+dotnet run --project tools/MapImporter -- --game firered|emerald [--quick]             # a GBA game's maps (plan 18 · W6, W7) into out/kanto or out/hoenn: mosaics by cover, behaviour and height, every map, world files with events, wild Pokémon, trainers and spawns, report.md
+dotnet run --project tools/MapImporter -- --game firered|emerald --data                # what Data/world/<region>/world.json opens, written beside it (nothing until a region has one)
 dotnet run --project tools/MapImporter -- --chunk <id>                                # a chunk's textures tile by tile, ground and above, and how Cover.cs sorts each name
 dotnet run --project tools/ContentCheck                                               # the hand-written files held to their rules: every overlay, room and script, a line to a finding (the file, the thing, what is wrong); ends with 1 on a finding
 dotnet run --project tools/ContentCheck -- --plan <out dir> <Room or area key> ...    # a room (PlayerHouse) or an open area (twinleaf_town) from above, its props, warps, people, signs and triggers tagged and named in a key: PNGs to open with the Read tool
@@ -34,6 +35,7 @@ dotnet run --project tools/ContentCheck -- --plan <out dir> Sinnoh@96,864,20,12 
 dotnet run --project tools/ContentCheck -- --rows "<line>"                            # a line as the text box breaks it (\n for a break), row by row with each row's width
 dotnet run --project tools/ShotHarness -- <out dir> [all|field|lineup|battle|doubles|demo|arenas|flow|menus|intro|evolution|look|title|terrain|buildings|lab|life|world|times|sheets|pokemon|story|opening|jubilife|windworks|eterna|veilstone|celestic|rooms|distortion|boutique] [before dir]
 dotnet run --project tools/ShotHarness -- <out dir> area <key>                        # one shot of an area of the imported world (twinleaf_town, route_201…)
+dotnet run --project tools/ShotHarness -- <out dir> area <region>:<key>               # an area of a GBA import (kanto:pallet_town, from tools/MapImporter/out/<region>/world or SHOTS_IMPORT), and inside each room its doors lead into
 dotnet run --project tools/ShotHarness -- <out dir> cities [key ...]                  # every town of Sinnoh from the importer's last full run: a shot per building and prop, a sheet per town
 dotnet run --project tools/ShotHarness -- <out dir> dex [--back] [species ...]        # boards of every species' 3D model (or the species and forms named), sixty to a page; --back from behind
 dotnet run --project tools/ShotHarness -- <out dir> export [species ...]              # species' models as .glb files, to refine in Blender and drop into overrides/models

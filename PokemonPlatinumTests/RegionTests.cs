@@ -165,4 +165,23 @@ public class RegionTests
         Assert.Empty(loaded.StoryFlags);
         Assert.Equal(RegionDatabase.Sinnoh, RegionDatabase.RegionOfMap(loaded.Place().Map)!.Id);
     }
+
+    /// <summary>
+    /// Plan 18 · W7: a built region whose world is imported has where its wild Pokémon live beside it, for the
+    /// Pokédex's area page (the importer's <c>--data</c> writes it with the areas, for a GBA game as for Sinnoh).
+    /// </summary>
+    [Fact]
+    public void TestEveryBuiltRegionsWorldFolderHasItsHabitats()
+    {
+        int worlds = 0;
+        foreach (var region in RegionDatabase.All.Where(r => r.IsBuilt))
+        {
+            string folder = System.IO.Path.Combine(World.Folder, region.Folder);
+            if (!System.IO.File.Exists(GameDataFiles.PathOf(System.IO.Path.Combine(folder, World.IndexFile)))) continue;
+            worlds++;
+            Assert.True(System.IO.File.Exists(GameDataFiles.PathOf(System.IO.Path.Combine(folder, WorldHabitatsFile.FileName))),
+                $"{region.Id}'s world has no {WorldHabitatsFile.FileName}");
+        }
+        Assert.True(worlds >= 1);
+    }
 }

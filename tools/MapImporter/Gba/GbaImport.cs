@@ -28,9 +28,12 @@ public static class GbaImport
         var clock = System.Diagnostics.Stopwatch.StartNew();
         var game = GbaGame.Of(gameName);
         Console.WriteLine($"Fetching {(game == GbaGame.FireRed ? "pret/pokefirered" : "pret/pokeemerald")}…");
-        var maps = new GbaMaps(dir ?? Fetch(repo, game), game);
+        string checkout = dir ?? Fetch(repo, game);
+        var maps = new GbaMaps(checkout, game);
         var world = new GbaWorld(maps);
-        Console.WriteLine($"Read {maps.Maps.Count} maps and {maps.Layouts.Count} layouts into {world.Matrices.Count} matrices ({clock.Elapsed.TotalSeconds:F1} s)");
+        var tables = new GbaTables(checkout, maps.Maps);
+        Console.WriteLine($"Read {maps.Maps.Count} maps and {maps.Layouts.Count} layouts into {world.Matrices.Count} matrices, "
+            + $"{tables.Wild.Count} tables of wild Pokémon, {tables.Trainers.Count} trainers ({clock.Elapsed.TotalSeconds:F1} s)");
 
         Directory.CreateDirectory(outDir);
         var overworld = world.Matrices[0];
@@ -46,9 +49,10 @@ public static class GbaImport
                     MapPicture(matrix, placed, 8).Save(Path.Combine(outDir, "maps", placed.Map.Name + ".png"));
                     pictures++;
                 }
-            int files = WriteWorld(world, Path.Combine(outDir, "world"));
+            int files = WriteWorld(world, tables, Path.Combine(outDir, "world"));
             Console.WriteLine($"Wrote {files} world files ({clock.Elapsed.TotalSeconds:F1} s)");
         }
+        world.Problems.AddRange(tables.Problems);
         Console.WriteLine($"Drew {pictures} pictures ({clock.Elapsed.TotalSeconds:F1} s)");
         File.WriteAllText(Path.Combine(outDir, "report.md"), Report(world));
 
@@ -67,52 +71,127 @@ public static class GbaImport
     // ---------------------------------------------------------------- world files
 
     /// <summary>
-    /// Writes the matrices, chunks and areas of a GBA world under <paramref name="directory"/> with a
-    /// <c>world.json</c> that makes a map of every matrix (the overworld named after the region) and opens every area,
-    /// so a tool can build it as the game builds Sinnoh's. Returns how many files.
+    /// Writes the matrices, chunks and areas of a GBA world under <paramref name="directory"/>, with the region's
+    /// trainers (<c>trainers.json</c>, decision 8), its heal locations as the region's spawns (<c>spawns.json</c>, to
+    /// copy into its <c>Data/regions</c> file) and its <c>habitats.json</c>. With no <paramref name="open"/> it writes
+    /// everything and a <c>world.json</c> that makes a map of every matrix (the overworld named after the region) and
+    /// opens every area, so a tool can build it as the game builds Sinnoh's; with one (<c>--data</c>, by the region's
+    /// own <c>world.json</c>) only the open areas, their matrices and the chunks in view of them, and no
+    /// <c>world.json</c>, which is written by hand. Chunks are numbered the same either way. Returns how many files.
     /// </summary>
-    public static int WriteWorld(GbaWorld world, string directory)
+    public static int WriteWorld(GbaWorld world, GbaTables tables, string directory, ISet<string>? open = null)
     {
         int files = 0;
         void Write<T>(string folder, string name, T value)
         {
             string path = Path.Combine(directory, folder, name + ".json");
             Directory.CreateDirectory(Path.GetDirectoryName(path)!);
-            File.WriteAllText(path, GameDataFiles.Serialize(value));
+            string text = GameDataFiles.Serialize(value);
+            // A file whose content didn't change is left alone, as the Sinnoh run leaves it
+            if (File.Exists(path) && File.ReadAllText(path) == text) return;
+            File.WriteAllText(path, text);
             files++;
         }
 
-        var index = new WorldIndexFile { Region = world.Source.Game.RegionName };
+        var index = new WorldIndexFile { Region = world.Source.Game.RegionName, BuildingsAtDoors = true };
+        var areas =new Dictionary<string, WorldAreaFile>(StringComparer.Ordinal);
         int nextChunk = 0, mapIndex = 0;
         foreach (var matrix in world.Matrices)
         {
+            bool any = open == null || matrix.Maps.Any(p => open.Contains(p.Map.Key));
+            var owners = new int[matrix.ChunksWide, matrix.ChunksHigh];
+            for (int cy = 0; cy < matrix.ChunksHigh; cy++)
+                for (int cx = 0; cx < matrix.ChunksWide; cx++) owners[cx, cy] = GbaWorld.Owner(matrix, cx, cy);
+            // The chunks in view of an open area: its own and the ring round them
+            bool InView(int cx, int cy)
+            {
+                if (open == null) return true;
+                for (int y = cy - 1; y <= cy + 1; y++)
+                    for (int x = cx - 1; x <= cx + 1; x++)
+                        if (x >= 0 && y >= 0 && x < matrix.ChunksWide && y < matrix.ChunksHigh && owners[x, y] >= 0
+                            && open.Contains(matrix.Maps[owners[x, y]].Map.Key))
+                            return true;
+                return false;
+            }
             var ids = new int[matrix.ChunksWide, matrix.ChunksHigh];
             for (int cy = 0; cy < matrix.ChunksHigh; cy++)
                 for (int cx = 0; cx < matrix.ChunksWide; cx++)
                 {
-                    if (GbaWorld.Owner(matrix, cx, cy) < 0) { ids[cx, cy] = -1; continue; }
+                    if (owners[cx, cy] < 0) { ids[cx, cy] = -1; continue; }
                     ids[cx, cy] = nextChunk;
-                    Write("chunks", nextChunk.ToString("000", CultureInfo.InvariantCulture), GbaWorld.Chunk(matrix, cx, cy, nextChunk));
+                    if (any && InView(cx, cy)) Write("chunks", nextChunk.ToString("000", CultureInfo.InvariantCulture), GbaWorld.Chunk(matrix, cx, cy, nextChunk));
                     nextChunk++;
                 }
-            Write("matrices", matrix.Id.ToString("000", CultureInfo.InvariantCulture), GbaWorld.MatrixFile(matrix, (cx, cy) => ids[cx, cy]));
+            if (any) Write("matrices", matrix.Id.ToString("000", CultureInfo.InvariantCulture), GbaWorld.MatrixFile(matrix, (cx, cy) => ids[cx, cy]));
             foreach (var placed in matrix.Maps)
             {
-                Write("areas", placed.Map.Key, GbaWorld.AreaFile(placed.Map, mapIndex++, matrix.Id));
+                var area = GbaWorld.AreaFile(placed.Map, mapIndex++, matrix.Id);
+                GbaEvents.Fill(area, placed, tables, id => world.Source.ById.GetValueOrDefault(id), world.Problems);
+                areas[placed.Map.Key] = area;
+                if (open != null && !open.Contains(placed.Map.Key)) continue;
+                Write("areas", placed.Map.Key, area);
                 index.Areas.Add(placed.Map.Key);
             }
             var first = matrix.Maps[0].Map;
             index.Maps.Add(new WorldMapEntry
             {
-                Name = matrix.Id == 0 ? world.Source.Game.RegionName : first.Name,
+                Name = MapNameOf(world, matrix),
                 Matrix = matrix.Id,
                 Area = matrix.Maps.Count == 1 ? first.Key : null,
                 Trees = TreeStyle.Round,
-                Setting = first.MapType == "MAP_TYPE_UNDERGROUND" ? MapSetting.Cave : MapSetting.Outdoors
+                Setting = SettingOf(first)
             });
         }
-        File.WriteAllText(Path.Combine(directory, World.IndexFile), GameDataFiles.Serialize(index));
-        return files + 1;
+        Write("", "trainers", tables.Trainers);
+        Write("", "spawns", GbaEvents.Spawns(world, tables, map => MapNameOf(world, map)));
+        Write("", Path.GetFileNameWithoutExtension(WorldHabitatsFile.FileName), GbaEvents.Habitats(world, areas));
+        if (open == null)
+        {
+            File.WriteAllText(Path.Combine(directory, World.IndexFile), GameDataFiles.Serialize(index));
+            files++;
+        }
+        return files;
+    }
+
+    /// <summary>What a GBA map's matrix is made into: a room of a house, a cave, or open country (plan 18 · W7).</summary>
+    public static MapSetting SettingOf(GbaMap map) => map.MapType switch
+    {
+        "MAP_TYPE_INDOOR" or "MAP_TYPE_SECRET_BASE" => MapSetting.Indoors,
+        "MAP_TYPE_UNDERGROUND" => MapSetting.Cave,
+        _ => MapSetting.Outdoors
+    };
+
+    /// <summary>The name of the map a matrix is made into: the region's for the overworld, its first map's for the rest.</summary>
+    public static string MapNameOf(GbaWorld world, GbaMatrix matrix) => matrix.Id == 0 ? world.Source.Game.RegionName : matrix.Maps[0].Map.Name;
+
+    /// <summary>The name of the map a GBA map lies on.</summary>
+    public static string MapNameOf(GbaWorld world, GbaMap map) =>
+        world.Matrices.FirstOrDefault(m => m.Maps.Any(p => p.Map.Id == map.Id)) is { } matrix ? MapNameOf(world, matrix) : map.Name;
+
+    /// <summary>
+    /// <c>--game … --data</c> (plan 18 · W7): the region's world files the game loads, rewritten for the areas its own
+    /// <c>world.json</c> opens (<c>Data/world/&lt;region&gt;</c>, or <paramref name="dataDir"/>). A region with no
+    /// <c>world.json</c> yet has nothing open: the run says so and writes nothing.
+    /// </summary>
+    public static int Data(string repo, string gameName, string? dir, string? dataDir)
+    {
+        var game = GbaGame.Of(gameName);
+        string data = dataDir ?? Path.Combine(repo, "PokemonPlatinumEngine", "Data", World.Folder, game.Region);
+        string indexFile = Path.Combine(data, World.IndexFile);
+        if (!File.Exists(indexFile))
+        {
+            Console.WriteLine($"{indexFile} isn't there: a region's world.json is written by hand, with the areas it opens, before --data writes their files.");
+            return 1;
+        }
+        var index = GameDataFiles.Deserialize<WorldIndexFile>(File.ReadAllText(indexFile));
+        string checkout = dir ?? Fetch(repo, game);
+        var maps = new GbaMaps(checkout, game);
+        var world = new GbaWorld(maps);
+        var tables = new GbaTables(checkout, maps.Maps);
+        int files = WriteWorld(world, tables, data, new HashSet<string>(index.Areas, StringComparer.Ordinal));
+        foreach (string problem in world.Problems.Take(20)) Console.WriteLine("  " + problem);
+        Console.WriteLine($"Wrote {files} files of {index.Areas.Count} open areas into {data}");
+        return 0;
     }
 
     // ---------------------------------------------------------------- pictures
