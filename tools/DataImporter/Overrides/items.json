@@ -32,5 +32,9 @@
   // The ring of Z-Moves (plan 06 · R21): our own words for what it does
   "Z-Ring": {
     "description": "A ring that lets the player's Pokémon unleash one Z-Move a battle through a held Z-Crystal."
+  },
+  // The band of Dynamax (plan 06 · R22): our own words for what it does
+  "Dynamax Band": {
+    "description": "A band that lets one of the player's Pokémon a battle Dynamax, growing huge for three turns."
   }
 }

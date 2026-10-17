@@ -219,5 +219,11 @@ public sealed partial class BattleCore
             state.StickyWeb = false;
             line.With(new SideConditionChanged(side, SideCondition.StickyWeb, 0));
         }
+        // And G-Max Steelsurge's steel goes where the web does (plan 06 · R22; Showdown's defog and rapidspin)
+        if (web && state.GMaxSteelsurge)
+        {
+            state.GMaxSteelsurge = false;
+            line.With(new SideConditionChanged(side, SideCondition.GMaxSteelsurge, 0));
+        }
     }
 }

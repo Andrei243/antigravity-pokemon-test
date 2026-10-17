@@ -44,6 +44,12 @@ public sealed record BattleChoice(Place Who, ChoiceKind Kind)
     /// </summary>
     public bool UltraBurst { get; init; }
 
+    /// <summary>
+    /// With a move: the Pokémon Dynamaxes first (plan 06 · R22; Showdown's <c>move 1 dynamax</c>), after the turn's
+    /// Mega Evolutions, and the move is used as its Max Move. Refused where it can't (<see cref="BattleCore.WhyNotDynamax"/>).
+    /// </summary>
+    public bool Dynamax { get; init; }
+
     /// <summary>In place of a move's position: the move the Pokémon is in the middle of or held to.</summary>
     public const int HeldMove = -2;
 

@@ -81,6 +81,8 @@ public sealed partial class BattleCore
     {
         speedOrder = BySpeed();
         if (FieldConditions() && PokemonConditions()) SideConditions();
+        // A Dynamax counts its turns and ends at its third (plan 06 · R22; Showdown's endTurn)
+        DynamaxRunsDown();
     }
 
     // ---------------------------------------------------------------- the sides and the sky
@@ -186,6 +188,8 @@ public sealed partial class BattleCore
             // Leftovers, as Showdown's residual order 5.2 has it)
             // A sea of fire burns first (plan 06 · R25's leftovers; Showdown's residual order 5.1)
             if (b.IsActive) SeaOfFireBurns(b);
+            // And the G-Max Moves' fires, vines, rocks and waters (plan 06 · R22; Showdown's residual order 5.1)
+            if (b.IsActive) GMaxBurns(b);
             if (b.IsActive) GrassyTerrainHeals(b);
 
             // Roots and a ring of water give a sixteenth back
@@ -385,6 +389,8 @@ public sealed partial class BattleCore
 
         // A rainbow, a sea of fire and a swamp run down before the rooms (plan 06 · R25's leftovers; Showdown's order 26)
         PledgesRunDown();
+        // And the G-Max Moves' four (plan 06 · R22; Showdown's order 26.11)
+        GMaxRunDown();
         if (Field.TrickRoomTurns > 0 && --Field.TrickRoomTurns == 0)
             Say(Text.Of("battle.theTwistedDimensionsReturned")).With(new FieldConditionChanged(FieldCondition.TrickRoom, Up: false));
         // Wonder Room and Magic Room run down with Trick Room (plan 06 · R25; Showdown's residual order 27)

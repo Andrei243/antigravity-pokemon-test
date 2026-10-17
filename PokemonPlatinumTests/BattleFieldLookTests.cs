@@ -663,11 +663,11 @@ public class BattleFieldLookTests
         int most = 0;
         for (int step = 0; step < 120; step++) most = Math.Max(most, Drawn(fx => BattleFieldFx.Emit(look, step * 0.21f, Places, 2, fx)).Count);
         Assert.InRange(most, BattleFieldFx.MaxQuads / 2, BattleFieldFx.MaxQuads);
-        // Small things, for all that there are many kinds of them: under five hundred and fifty with every kind up at once,
-        // Aurora Veil, Sticky Web and the Pledges' three on both sides and the heaviest terrain among them (plan 06 · R19b, R25)
-        Assert.True(BattleFieldFx.MaxQuads <= 550, $"{BattleFieldFx.MaxQuads} quads at the most");
+        // Small things, for all that there are many kinds of them: under six hundred and fifty with every kind up at once,
+        // Aurora Veil, Sticky Web, the Pledges' three and the G-Max Moves' five on both sides and the heaviest terrain among them (plan 06 · R19b, R25, R22)
+        Assert.True(BattleFieldFx.MaxQuads <= 650, $"{BattleFieldFx.MaxQuads} quads at the most");
         // (The number the plan and CLAUDE.md give: a look made heavier changes it, and them)
-        Assert.Equal(533, BattleFieldFx.MaxQuads);
+        Assert.Equal(627, BattleFieldFx.MaxQuads);
         Assert.Equal(BattleFieldFx.Cap(FieldCondition.GrassyTerrain),
             Enum.GetValues<FieldCondition>().Where(FieldState.IsTerrain).Max(BattleFieldFx.Cap));
 

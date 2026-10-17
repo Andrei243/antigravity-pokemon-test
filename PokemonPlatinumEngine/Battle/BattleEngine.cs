@@ -225,7 +225,9 @@ public partial class BattleEngine
             // A Key Stone in the bag lets one of the player's Pokémon Mega Evolve (plan 06 · R20)
             KeyStone = setup.Inventory.AllItems.Any(s => s.Name == BattleCore.KeyStoneItem),
             // And a Z-Ring lets one use a Z-Move and Ultra Burst (plan 06 · R21)
-            ZRing = setup.Inventory.AllItems.Any(s => s.Name == BattleCore.ZRingItem)
+            ZRing = setup.Inventory.AllItems.Any(s => s.Name == BattleCore.ZRingItem),
+            // And a Dynamax Band lets one Dynamax (plan 06 · R22)
+            DynamaxBand = setup.Inventory.AllItems.Any(s => s.Name == BattleCore.DynamaxBandItem)
         });
 
         Anim.Slots = core.PlayerSlots.Count;
@@ -674,6 +676,10 @@ public partial class BattleEngine
                 }
                 break;
             }
+            case Dynamaxed or DynamaxEnded:
+                // A Dynamax and its end (plan 06 · R22)
+                ShowDynamax(happening);
+                break;
             case UltraBursted burst:
                 // An Ultra Burst (plan 06 · R21): the form taken as a Mega Evolution's is
                 TakeTheForm(burst.Place);

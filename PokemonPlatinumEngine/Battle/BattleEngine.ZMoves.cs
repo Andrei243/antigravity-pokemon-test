@@ -45,7 +45,8 @@ public partial class BattleEngine
         if (!CanZMoveNow)
         {
             ZArmed = false;
-            return false;
+            // A Dynamax where no Z-Move can be had either (plan 06 · R22)
+            return ToggleDynamax();
         }
         ZArmed = !ZArmed;
         return true;

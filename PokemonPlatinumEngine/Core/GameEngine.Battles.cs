@@ -418,6 +418,9 @@ public partial class GameEngine
         // And the form an Ultra Burst gives (plan 06 · R21)
         if (Ruleset.Current.ZMoves && PokemonPlatinumEngine.Battle.Sim.BattleCore.UltraBurstFormOf(p) is { } ultra)
             return new[] { ultra };
+        // And the Gigantamax form a Dynamax gives (plan 06 · R22)
+        if (Ruleset.Current.Dynamax && PokemonPlatinumEngine.Battle.Sim.BattleCore.GigantamaxFormOf(p) is { } gmax)
+            return new[] { gmax };
         switch (p.Species.Name)
         {
             case "Castform" when p.AbilityName == "Forecast":

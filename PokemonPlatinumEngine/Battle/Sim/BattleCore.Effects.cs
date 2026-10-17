@@ -1024,6 +1024,8 @@ public sealed partial class BattleCore
                 Say(Text.Of("battle.anchorsItselfWith", ("target", t.Name), ("ability", AbilityOf(t))));
                 return false;
             }
+            // A Dynamaxed Pokémon stands its ground (plan 06 · R22)
+            if (HoldsItsGroundDynamaxed(t)) return false;
             if (t.Volatile.Ingrained)
             {
                 Say(Text.Of("battle.anchoredItselfWithIts", ("target", t.Name)));

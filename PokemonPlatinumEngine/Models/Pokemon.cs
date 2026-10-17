@@ -493,6 +493,22 @@ public class Pokemon
     public BallCapsule? Capsule { get; set; }
 
     /// <summary>
+    /// Its Dynamax Level (plan 06 · R22; Showdown's <c>dynamaxLevel</c>), 0 to 10: a Dynamax raises its HP by half and
+    /// a twentieth more for each level, so twice at 10. A Dynamax Candy raises it a level.
+    /// </summary>
+    public int DynamaxLevel { get; set; }
+
+    /// <summary>It has the Gigantamax Factor (plan 06 · R22): a species with a Gigantamax form takes it as it Dynamaxes, and its moves of one type become its G-Max Move.</summary>
+    public bool GigantamaxFactor { get; set; }
+
+    /// <summary>A Dynamax raises or lowers both its HP and its most HP at once (plan 06 · R22): only a battle's rules do it, and give the most back as the Dynamax ends.</summary>
+    internal void TakeHp(int max, int current)
+    {
+        MaxHP = max;
+        CurrentHP = Math.Clamp(current, 0, max);
+    }
+
+    /// <summary>
     /// Where it was met (plan 06 · R12): the name of the place, as the original writes the location's name, or a
     /// name of its own for how it came ("a trade"); null for one met before this was kept.
     /// </summary>
@@ -1144,6 +1160,8 @@ public class Pokemon
         Marks = other.Marks;
         CapsuleId = other.CapsuleId;
         Capsule = other.Capsule;
+        DynamaxLevel = other.DynamaxLevel;
+        GigantamaxFactor = other.GigantamaxFactor;
         MetLocation = other.MetLocation;
         MetLevel = other.MetLevel;
         MetDate = other.MetDate;

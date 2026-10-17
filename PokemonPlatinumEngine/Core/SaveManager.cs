@@ -525,6 +525,12 @@ public class SavedPokemonData
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
     public int CapsuleId { get; set; }
     public List<string>? Capsule { get; set; }
+
+    /// <summary>Its Dynamax Level and the Gigantamax Factor (plan 06 · R22); left out for one with neither.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
+    public int DynamaxLevel { get; set; }
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
+    public bool GigantamaxFactor { get; set; }
     public List<SavedMoveData> Moves { get; set; } = new();
 
     public static SavedPokemonData FromPokemon(Pokemon p)
@@ -577,7 +583,9 @@ public class SavedPokemonData
             EvolutionProgress = p.EvolutionProgress.Count > 0 ? new Dictionary<string, int>(p.EvolutionProgress) : null,
             Ribbons = p.Ribbons.Count > 0 ? p.Ribbons.ToList() : null,
             CapsuleId = p.CapsuleId,
-            Capsule = p.CapsuleId != 0 ? (p.Capsule ?? BallCapsule.Empty).ToSave() : null
+            Capsule = p.CapsuleId != 0 ? (p.Capsule ?? BallCapsule.Empty).ToSave() : null,
+            DynamaxLevel = p.DynamaxLevel,
+            GigantamaxFactor = p.GigantamaxFactor
         };
 
         foreach (var m in p.Moves)
@@ -626,7 +634,9 @@ public class SavedPokemonData
             MetLocation = MetLocation,
             MetLevel = MetLevel,
             MetDate = MetDate,
-            Language = Language
+            Language = Language,
+            DynamaxLevel = Math.Clamp(DynamaxLevel, 0, 10),
+            GigantamaxFactor = GigantamaxFactor
         };
         p.IsEgg = IsEgg;
         p.Id = Id ?? Guid.Empty;

@@ -241,6 +241,14 @@ public sealed class Ruleset
     /// </summary>
     public bool ZMoves { get; private init; }
 
+    /// <summary>
+    /// Dynamax and Gigantamax (plan 06 · R22; Pokémon Showdown's <c>dynamax</c> condition, <c>getMaxMove</c>,
+    /// <c>getActiveMaxMove</c> and the Max Moves' and G-Max Moves' own effects): a trainer with a Dynamax Band may
+    /// Dynamax one Pokémon a battle for three turns, its HP raised by its Dynamax Level and its moves become Max Moves
+    /// (G-Max Moves for one with the Gigantamax Factor). Platinum has none of it, and the band is Galar's to hand over.
+    /// </summary>
+    public bool Dynamax { get; private init; }
+
     /// <summary>The weather these rules make of one asked for: snow for hail where <see cref="SnowInPlaceOfHail"/> holds.</summary>
     public Battle.Sim.BattleWeather Sky(Battle.Sim.BattleWeather weather) =>
         SnowInPlaceOfHail && weather == Battle.Sim.BattleWeather.Hail ? Battle.Sim.BattleWeather.Snow : weather;
@@ -296,7 +304,8 @@ public sealed class Ruleset
         LaterMoveReach = true,
         ModernDamageFormula = true,
         MegaEvolution = true,
-        ZMoves = true
+        ZMoves = true,
+        Dynamax = true
     };
 
     public static Ruleset Of(RulesPreset preset) => preset == RulesPreset.Modern ? Modern : Platinum;

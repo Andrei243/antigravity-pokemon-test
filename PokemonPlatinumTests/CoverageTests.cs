@@ -76,10 +76,10 @@ public class CoverageTests
         Assert.Equal(Moves.Count, Moves.Select(m => m.Name).Distinct().Count());
 
         var special = Moves.Where(m => m.Kind != MoveKind.Standard).ToList();
-        // The Z-Moves run since plan 06 · R21; the Max Moves wait for R22
+        // The Z-Moves run since plan 06 · R21, the Max Moves and G-Max Moves since R22
         Assert.All(special, m =>
         {
-            Assert.Equal(m.Kind == MoveKind.ZMove ? MoveEffectSupport.Full : MoveEffectSupport.None, m.Support);
+            Assert.Equal(MoveEffectSupport.Full, m.Support);
             Assert.NotNull(m.Effect);
             Assert.True(m.Description.Length > 0, m.Name);
         });

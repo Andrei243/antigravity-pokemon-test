@@ -279,7 +279,7 @@ public sealed partial class BattleCore
 
     /// <summary>The moves that count toward Protect's chain (Showdown's <c>stall</c>): Protect's kin, and Wide Guard and Quick Guard.</summary>
     private static bool Stalls(MoveData? move) =>
-        move?.Effect is "Protect" or "SurviveWith1Hp" or "KingsShield" or "SpikyShield" or "BanefulBunker" or "WideGuard" or "QuickGuard";
+        move?.Effect is "Protect" or "SurviveWith1Hp" or "KingsShield" or "SpikyShield" or "BanefulBunker" or "WideGuard" or "QuickGuard" or "MaxGuard";
 
     /// <summary>
     /// Whether Protect, a shield or the target's side's guard stops a move at its target (each guard's
@@ -290,6 +290,8 @@ public sealed partial class BattleCore
     private bool Guarded(MoveUse use, Battler target, MoveHit hit)
     {
         var user = use.User;
+        // Max Guard, and what a Dynamaxed target can't be made to do (plan 06 · R22)
+        if (DynamaxGuards(use, target, hit) is { } decided) return decided;
         if (target == user || !use.Effect.StoppedByProtect(user)) return false;
         bool protectable = use.Data.Flags.HasFlag(MoveFlags.Protect);
         bool status = use.Move.Category == MoveCategory.Status;

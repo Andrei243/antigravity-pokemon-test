@@ -776,7 +776,8 @@
     "Key Stone": "Piatra-Cheie",
     "Red Orb": "Globul Roșu",
     "Blue Orb": "Globul Albastru",
-    "Z-Ring": "Inelul Z"
+    "Z-Ring": "Inelul Z",
+    "Dynamax Band": "Brățara Dynamax"
   },
   "descriptions": {
     "items": {
@@ -1556,7 +1557,8 @@
       "Key Stone": "O piatră care le permite Pokémonilor tăi să facă Megaevoluția în luptă.",
       "Red Orb": "Ținut de Groudon, îl aduce la forma sa primordială când intră în luptă.",
       "Blue Orb": "Ținut de Kyogre, îl aduce la forma sa primordială când intră în luptă.",
-      "Z-Ring": "Un inel care le permite Pokémonilor tăi să dezlănțuie o mișcare Z pe luptă, prin Cristalul Z ținut."
+      "Z-Ring": "Un inel care le permite Pokémonilor tăi să dezlănțuie o mișcare Z pe luptă, prin Cristalul Z ținut.",
+      "Dynamax Band": "O brățară care îi permite unui Pokémon de-al tău să se Dynamaxeze o dată pe luptă, uriaș timp de trei ture."
     }
   }
 }

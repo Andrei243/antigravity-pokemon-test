@@ -35,13 +35,13 @@ public sealed partial class Importer
     private const int MegaStones = 44, ZCrystals = 46;
 
     /// <summary>
-    /// Single items of other categories that a mechanic of plan 06 needs (R20, R21): the Key Stone a trainer Mega Evolves
-    /// with and the Z-Ring a trainer uses Z-Moves with (key items), and the two orbs Primal Reversion goes by, which are held and so go in the Items pocket,
+    /// Single items of other categories that a mechanic of plan 06 needs (R20 to R22): the Key Stone a trainer Mega Evolves
+    /// with, the Z-Ring a trainer uses Z-Moves with and the Dynamax Band a trainer Dynamaxes with (key items), and the two orbs Primal Reversion goes by, which are held and so go in the Items pocket,
     /// although Generation 3 first had them as key items.
     /// </summary>
     private static readonly Dictionary<string, ItemPocket> LaterItemsByName = new()
     {
-        ["key-stone"] = ItemPocket.KeyItems, ["z-ring"] = ItemPocket.KeyItems, ["red-orb"] = ItemPocket.Items, ["blue-orb"] = ItemPocket.Items
+        ["key-stone"] = ItemPocket.KeyItems, ["z-ring"] = ItemPocket.KeyItems, ["dynamax-band"] = ItemPocket.KeyItems, ["red-orb"] = ItemPocket.Items, ["blue-orb"] = ItemPocket.Items
     };
 
     private readonly Decomp decomp;
@@ -290,6 +290,12 @@ public sealed partial class Importer
                     : $"The {type}-type Max Move. Its power comes from the move it is made out of."
             };
             if (isZ) ZMoveFields(m, e);
+            else
+            {
+                // A Max Move or G-Max Move runs by the engine's code for it (R22); Max Guard by Protect's kin
+                if (m.Name == "Max Guard") m.Effect = "MaxGuard";
+                m.Support = BattleCore.HasMoveEffect(m.Effect!) ? MoveEffectSupport.Full : MoveEffectSupport.None;
+            }
             moves.Add(m);
         }
     }

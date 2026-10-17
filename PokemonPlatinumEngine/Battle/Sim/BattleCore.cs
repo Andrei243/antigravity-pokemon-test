@@ -87,6 +87,12 @@ public sealed class CoreSetup
     /// may use a Z-Move once in the battle, and one may Ultra Burst. A trainer has theirs as <see cref="Trainer.ZRing"/>.
     /// </summary>
     public bool ZRing { get; init; }
+
+    /// <summary>
+    /// The player has a Dynamax Band (plan 06 · R22): under rules with <see cref="Ruleset.Dynamax"/> one of their own
+    /// Pokémon may Dynamax once in the battle. A trainer has theirs as <see cref="Trainer.DynamaxBand"/>.
+    /// </summary>
+    public bool DynamaxBand { get; init; }
 }
 
 /// <summary>
@@ -216,6 +222,7 @@ public sealed partial class BattleCore : IBattleContext
         OffersSwitch = setup.OffersSwitch;
         KeyStone = setup.KeyStone;
         ZRing = setup.ZRing;
+        DynamaxBand = setup.DynamaxBand;
         Field.Frontier = Frontier;
         NoBattleItems = setup.NoBattleItems;
         Field.Inverse = Conditions.Inverse;
@@ -304,6 +311,8 @@ public sealed partial class BattleCore : IBattleContext
                     throw new ArgumentException(Text.Of("battle.megaOnlyOnce"));
                 // And one Z-Move and one Ultra Burst (plan 06 · R21)
                 RefuseTwoZ(choices);
+                // And one Dynamax (plan 06 · R22)
+                RefuseTwoDynamax(choices);
                 break;
             case ReplacementRequest replacement:
                 if (choices.Count != 1 || choices[0].Kind != ChoiceKind.Switch || choices[0].Who != replacement.Place || !CanSendIn(At(replacement.Place), choices[0].SwitchTo))
@@ -467,6 +476,7 @@ public sealed partial class BattleCore : IBattleContext
             var asked = free.Where(b => ControllerOf(b) == null).Select(b => b.Place).ToList();
             megaChosen.Clear();
             zChosen.Clear();
+            dynamaxChosen.Clear();
             if (asked.Count > 0)
             {
                 yield return new ActionRequest(asked);
@@ -480,6 +490,8 @@ public sealed partial class BattleCore : IBattleContext
                 if (chosen.Mega && !CanMegaEvolve(b)) chosen = chosen with { Mega = false };
                 // And use a Z-Move or Ultra Burst only where they let it (plan 06 · R21)
                 chosen = AsTheZRulesLet(b, chosen);
+                // And Dynamax only where they let it (plan 06 · R22)
+                chosen = AsTheDynamaxRulesLet(b, chosen);
                 ChooseMegas(new[] { chosen });
                 choices.Add(chosen);
             }
@@ -590,7 +602,8 @@ public sealed partial class BattleCore : IBattleContext
             if (!megasDone && act.Choice.Kind is not (ChoiceKind.Item or ChoiceKind.Switch or ChoiceKind.Run))
             {
                 megasDone = true;
-                if (MegaEvolutions(waiting))
+                // The Dynamaxes come after them (plan 06 · R22; Showdown's runDynamax, order 105)
+                if (MegaEvolutions(waiting) | Dynamaxes(waiting))
                 {
                     if (Result != BattleResult.None) yield break;
                     waiting = Order(waiting);
@@ -760,7 +773,8 @@ public sealed partial class BattleCore : IBattleContext
         if (a.CurrentHP <= 0 && b.CurrentHP > 0) return true;
         if (a.CurrentHP > 0 && b.CurrentHP <= 0) return false;
 
-        int priorityA = first.Move?.Priority ?? 0, priorityB = second.Move?.Priority ?? 0;
+        // (A Max Move goes by its own priority, Max Guard's +4 and the rest's 0: plan 06 · R22)
+        int priorityA = ActPriority(first), priorityB = ActPriority(second);
         if (priorityA != priorityB) return priorityA < priorityB;
 
         // A Quick Claw or a Custap Berry that went off (two: by Speed alone, Trick Room or not), then a Lagging
@@ -831,7 +845,7 @@ public sealed partial class BattleCore : IBattleContext
         if (b.Ability?.Effect is { } own) speed = Formulas.Scale(speed, own.SpeedMultiplier(b));
         if (p.HeldItem?.HoldEffect is { } raw && HeldItemEffects.HalvesSpeed(raw)) speed /= 2;
         string? hold = BattleEffects.HoldEffectOf(b);
-        if (hold == "ChoiceSpeed") speed = speed * 15 / 10;
+        if (hold == "ChoiceSpeed" && !b.Volatile.Dynamaxed) speed = speed * 15 / 10;
         if (hold == "DittoSpeedUp" && p.Species.Name == "Ditto") speed *= 2;
         if (ability == "Quick Feet" && p.Status != StatusCondition.None) speed = speed * 15 / 10;
         else if (p.Status == StatusCondition.Paralyze) speed /= Rules.ParalysisSpeedDivisor;
@@ -962,7 +976,8 @@ public sealed partial class BattleCore : IBattleContext
             if (by != null && by.User.Side != down.Side && by.User.IsActive && by.Hits.Any(h => h.Target == down && h.Touched))
             {
                 var foe = by.User;
-                if (down.Volatile.DestinyBond)
+                // A Dynamaxed Pokémon isn't taken down (plan 06 · R22; Showdown's destinybond onFaint)
+                if (down.Volatile.DestinyBond && !foe.Volatile.Dynamaxed)
                 {
                     foe.Pokemon!.CurrentHP = 0;
                     Say(Text.Of("battle.tookDownWithIt", ("pokemon", down.Name), ("foe", foe.Name))).With(new HpChanged(foe.Place, 0, Healed: false));
@@ -986,6 +1001,7 @@ public sealed partial class BattleCore : IBattleContext
         var letGo = LetGoOf(down);
         ComeBack(down);
         if (down.HasSubstitute) Emit(new SubstituteChanged(down.Place, Up: false));
+        Undynamax(down, said: false);
         Revert(down);
         down.ClearVolatile();
         NoteFaint(down);
@@ -1079,6 +1095,8 @@ public sealed partial class BattleCore : IBattleContext
     {
         // Whatever a move changed for the battle is put back (the original's party data was never touched), and
         // a knocked-off item is in its holder's hands again
+        // A Dynamax ends with the battle (plan 06 · R22)
+        foreach (var b in AllBattlers.Where(b => b.Pokemon != null)) Undynamax(b, said: false);
         foreach (var b in AllBattlers.Where(b => b.Pokemon != null)) Revert(b);
         // And the shapes that last the battle out are given back (plan 06 · R19b: Disguise, Ice Face, Zero to Hero)
         GiveBackLastingShapes();

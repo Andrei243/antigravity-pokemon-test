@@ -108,6 +108,8 @@ public sealed partial class BattleCore
             if (!megaChosen.Add(MegaKey(At(choice.Who)))) throw new ArgumentException(Text.Of("battle.megaOnlyOnce"));
         // And the Z-Moves and Ultra Bursts (plan 06 · R21)
         ChooseZ(chosen);
+        // And the Dynamaxes (plan 06 · R22)
+        ChooseDynamax(chosen);
     }
 
     /// <summary>

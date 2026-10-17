@@ -71,11 +71,17 @@ internal static class BattleFieldFx
         SideCondition.Rainbow => RainbowBands,
         SideCondition.SeaOfFire => 2 + Flames,
         SideCondition.Swamp => 2 + SwampBubbles * 2,
+        // What G-Max Moves leave (plan 06 · R22)
+        SideCondition.GMaxSteelsurge => Stones * 3,
+        SideCondition.GMaxWildfire or SideCondition.GMaxCannonade or SideCondition.GMaxVineLash or SideCondition.GMaxVolcalith => 2 + GMaxPieces,
         _ => 0
     };
 
     /// <summary>The pieces of what two Pledges leave: a rainbow's bands, a sea of fire's tongues, a swamp's bubbles.</summary>
     public const int RainbowBands = 5, Flames = 6, SwampBubbles = 3;
+
+    /// <summary>The pieces of G-Max Wildfire's, Cannonade's, Vine Lash's and Volcalith's rings (plan 06 · R22).</summary>
+    public const int GMaxPieces = 6;
 
     public static int Cap(FieldCondition what) => what switch
     {
@@ -194,6 +200,13 @@ internal static class BattleFieldFx
                 break;
             case SideCondition.Swamp:
                 Mire(p, view, time, fx, fire: false);
+                break;
+            // What G-Max Moves leave (plan 06 · R22)
+            case SideCondition.GMaxSteelsurge:
+                SteelShards(p, view, time, fx);
+                break;
+            case SideCondition.GMaxWildfire or SideCondition.GMaxCannonade or SideCondition.GMaxVineLash or SideCondition.GMaxVolcalith:
+                GMaxRing(p, what, view, time, fx);
                 break;
         }
     }
@@ -793,6 +806,61 @@ internal static class BattleFieldFx
                     fx.Sprite(FxShape.Orb, at, p.R * 0.07f, Fx.Fade(piece, k * grow * MathF.Sin(u * MathF.PI)), FxBlend.Alpha, time, depth: true);
                 }
                 break;
+        }
+    }
+
+    // ------------------------------------------------------------------ what G-Max Moves leave (plan 06 · R22)
+
+    /// <summary>G-Max Steelsurge's steel: five splinters hovering over the rim as Stealth Rock's stones do, each with a glint.</summary>
+    private static void SteelShards(Platform p, ConditionView view, float time, FxList fx)
+    {
+        float k = view.Strength;
+        int seed = view.Seed;
+        for (int i = 0; i < Stones; i++)
+        {
+            float u = Fx.EaseOut(Math.Clamp((view.Arrival - i * 0.1f) / 0.6f, 0f, 1f));
+            if (u <= 0f) continue;
+            float angle = p.Open((i + 0.5f + Fx.Signed(seed, i, 1) * 0.2f) / Stones);
+            float size = p.R * (0.08f + 0.03f * Fx.Rand(seed, i, 3));
+            float hover = p.R * (0.24f + 0.14f * Fx.Rand(seed, i, 2)) + p.R * 0.03f * MathF.Sin(time * (1.1f + 0.4f * Fx.Rand(seed, i, 4)) + i * 1.3f);
+            float turn = Fx.Signed(seed, i, 5) * 0.6f + 0.3f * MathF.Sin(time * 0.6f + i);
+            var ground = p.At(angle, p.R * 1.08f, 0.02f);
+            var at = ground + Vector3.UnitY * (p.Top + hover * u - (1f - k) * size);
+            fx.Flat(FxShape.Glow, ground, Vector3.UnitY, size * 1.2f, Rgba(18, 20, 28, 70f * k * u), FxBlend.Alpha);
+            fx.Sprite(FxShape.Shard, at, size, Rgba(176, 188, 206, 255f * k * u), FxBlend.Alpha, turn, depth: true);
+            fx.Sprite(FxShape.Spark, at + Vector3.UnitY * size * 0.3f, size * 0.35f, Rgba(236, 242, 250, 200f * k * u * (0.5f + 0.5f * MathF.Sin(time * 2.5f + i))), FxBlend.Alpha, 0f, depth: true);
+        }
+    }
+
+    /// <summary>G-Max Wildfire's, Cannonade's, Vine Lash's or Volcalith's ring: a wash and a low band as a Pledge's sea of fire, with six of its own pieces on the far rim.</summary>
+    private static void GMaxRing(Platform p, SideCondition what, ConditionView view, float time, FxList fx)
+    {
+        float k = view.Strength, grow = Fx.EaseOut(view.Arrival);
+        if (grow <= 0f) return;
+        int seed = view.Seed;
+        var (shape, piece, wash) = what switch
+        {
+            SideCondition.GMaxWildfire => (FxShape.Flame, Rgba(255, 120, 40), Rgba(236, 96, 32)),
+            SideCondition.GMaxCannonade => (FxShape.Drop, Rgba(120, 184, 255), Rgba(64, 128, 220)),
+            SideCondition.GMaxVineLash => (FxShape.Leaf, Rgba(112, 212, 96), Rgba(64, 150, 72)),
+            _ => (FxShape.Rock, Rgba(255, 150, 90), Rgba(150, 88, 64))
+        };
+        float breathe = 0.8f + 0.2f * MathF.Sin(time * 1.9f + seed);
+        fx.Flat(FxShape.Glow, p.At(0f, 0f, p.Top + 0.01f), Vector3.UnitY, p.R * 2.3f * (0.6f + 0.4f * grow), Fx.Fade(wash, 0.4f * k * breathe), FxBlend.Alpha);
+        const int segments = 12;
+        var band = new Vector3[segments + 1];
+        for (int i = 0; i <= segments; i++) band[i] = p.At(p.Open(i / (float)segments), p.R * 1.01f, p.Top + p.R * 0.05f * grow);
+        fx.Ribbon(band, p.R * 0.12f * grow, Fx.Fade(wash, 0.6f * k * breathe), FxBlend.Alpha, depth: true);
+        for (int i = 0; i < GMaxPieces; i++)
+        {
+            float beat = 0.5f + 0.5f * MathF.Sin(time * (3f + 1.5f * Fx.Rand(seed, i, 1)) + i * 1.7f);
+            float angle = p.Open((i + 0.5f + Fx.Signed(seed, i, 2) * 0.25f) / GMaxPieces);
+            float size = p.R * (0.06f + 0.04f * beat) * grow;
+            // A drop falls onto the rim, a leaf whips across it, a flame licks up, a rock bobs
+            float rise = what == SideCondition.GMaxCannonade ? p.R * 0.25f * (1f - Frac(time * 0.8f + Fx.Rand(seed, i, 4))) : p.R * 0.06f * beat;
+            float tilt = what == SideCondition.GMaxVineLash ? 0.6f * MathF.Sin(time * 4f + i) : Fx.Signed(seed, i, 3) * 0.2f;
+            var at = p.At(angle, p.R, p.Top + size * 0.5f + rise);
+            fx.Sprite(shape, at, size, Fx.Fade(piece, 0.9f * k), FxBlend.Alpha, tilt, depth: true);
         }
     }
 }
