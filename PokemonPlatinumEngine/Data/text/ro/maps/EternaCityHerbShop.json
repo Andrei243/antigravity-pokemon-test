@@ -1,0 +1,71 @@
+{
+  "displayName": {
+    "en": [
+      "Herb Shop"
+    ],
+    "text": [
+      "Magazinul de ierburi"
+    ]
+  },
+  "people": {
+    "expert_f": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          "Bătrâna"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Herbal medicine works wonders. Your Pokémon won't thank you for it, mind.",
+          "It is dreadfully bitter, and it smells worse!"
+        ],
+        "text": [
+          "Leacurile din ierburi fac minuni. Doar că Pokémonii tăi n-o să-ți mulțumească.",
+          "Sunt amare de-a binelea și miros și mai rău!"
+        ]
+      }
+    },
+    "cashier_f": {
+      "name": {
+        "en": [
+          "Herbalist"
+        ],
+        "text": [
+          "Vânzătoarea de ierburi"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the Herb Shop! Medicine that works, at prices that don't hurt."
+        ],
+        "text": [
+          "Bun venit la Magazinul de ierburi! Leacuri care funcționează, la prețuri care nu dor."
+        ]
+      }
+    },
+    "expert_m": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Somebody ought to invent a herbal medicine that isn't bitter.",
+          "Now that would be a breakthrough!"
+        ],
+        "text": [
+          "Cineva ar trebui să inventeze un leac din ierburi care să nu fie amar.",
+          "Asta da descoperire!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

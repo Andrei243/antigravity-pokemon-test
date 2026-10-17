@@ -1,0 +1,118 @@
+{
+  "Chairman": [
+    {
+      "en": [
+        "Chairman"
+      ],
+      "text": [
+        "Președintele"
+      ]
+    },
+    {
+      "en": [
+        "Welcome, welcome! I am the chairman of the Pokémon Fan Club!"
+      ],
+      "text": [
+        "Bun venit, bun venit! Sunt președintele Clubului Fanilor Pokémon!"
+      ]
+    },
+    {
+      "en": [
+        "You love your Pokémon too, I can tell. Then you simply must have one of these!"
+      ],
+      "text": [
+        "Și tu îți iubești Pokémonii, se vede. Atunci trebuie neapărat să ai una ca asta!"
+      ]
+    },
+    {
+      "en": [
+        "Fill it with Poffins and treat your Pokémon. The Poffin House is just next door, you know!"
+      ],
+      "text": [
+        "Umple-o cu Poffinuri și răsfață-ți Pokémonii. Casa Poffinurilor e chiar alături, să știi!"
+      ]
+    },
+    {
+      "en": [
+        "We are, without question, the finest fan club in all of Sinnoh!"
+      ],
+      "text": [
+        "Suntem, fără nicio îndoială, cel mai bun club de fani din tot Sinnoh-ul!"
+      ]
+    }
+  ],
+  "Beauty": [
+    {
+      "en": [
+        "Woman"
+      ],
+      "text": [
+        "Femeia"
+      ]
+    },
+    {
+      "en": [
+        "Oh, is that your Pokémon? Let me have a look..."
+      ],
+      "text": [
+        "O, ăsta e Pokémonul tău? Ia să mă uit..."
+      ]
+    },
+    {
+      "en": [
+        "Oh dear... {lead} looks thoroughly fed up with you. Please be kinder to it."
+      ],
+      "text": [
+        "Vai... {lead} pare sătul de tine până peste cap. Te rog să ai mai multă grijă de el."
+      ]
+    },
+    {
+      "en": [
+        "My, my! {lead} simply adores you. I can't imagine a happier Pokémon!"
+      ],
+      "text": [
+        "Vai, vai! {lead} pur și simplu te adoră. Nu-mi pot închipui un Pokémon mai fericit!"
+      ]
+    },
+    {
+      "en": [
+        "{lead} is very fond of you. You can see it in its eyes."
+      ],
+      "text": [
+        "{lead} ține foarte mult la tine. I se vede în ochi."
+      ]
+    },
+    {
+      "en": [
+        "{lead} is quite friendly with you. Keep it up!"
+      ],
+      "text": [
+        "{lead} e destul de prietenos cu tine. Continuă tot așa!"
+      ]
+    },
+    {
+      "en": [
+        "{lead} is warming to you. Give it a little more time."
+      ],
+      "text": [
+        "{lead} începe să se apropie de tine. Mai dă-i puțin timp."
+      ]
+    },
+    {
+      "en": [
+        "{lead} isn't quite used to you yet."
+      ],
+      "text": [
+        "{lead} încă nu s-a obișnuit de tot cu tine."
+      ]
+    },
+    {
+      "en": [
+        "{lead} seems a bit wary of you. Try spending more time together."
+      ],
+      "text": [
+        "{lead} pare cam neîncrezător față de tine. Încercați să petreceți mai mult timp împreună."
+      ]
+    }
+  ]
+}

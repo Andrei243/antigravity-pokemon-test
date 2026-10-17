@@ -1,0 +1,55 @@
+{
+  "displayName": {
+    "en": [
+      "Solaceon Town"
+    ],
+    "text": [
+      "Orășelul Solaceon"
+    ]
+  },
+  "people": {
+    "old_woman": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          "Bătrâna"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every so often an Egg turns up at the Pokémon Day Care.",
+          "Nobody ever sees how it got there. It has been a mystery for as long as I can remember.",
+          "Is somebody leaving them?"
+        ],
+        "text": [
+          "Din când în când apare un Ou la Pensiunea Pokémon.",
+          "Nimeni nu vede vreodată cum a ajuns acolo. E un mister de când mă știu.",
+          "Le lasă cineva acolo?"
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Lass"
+        ],
+        "text": [
+          "Domnișoara"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "They say nobody has ever actually watched a Pokémon lay an Egg.",
+          "So nobody can prove that Pokémon lay Eggs at all."
+        ],
+        "text": [
+          "Se zice că nimeni n-a văzut cu adevărat un Pokémon făcând un Ou.",
+          "Așa că nimeni nu poate dovedi că Pokémonii fac Ouă."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

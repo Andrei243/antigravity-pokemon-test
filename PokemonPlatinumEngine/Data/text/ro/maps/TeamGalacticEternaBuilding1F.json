@@ -1,0 +1,114 @@
+{
+  "displayName": {
+    "en": [
+      "Team Galactic Eterna Building"
+    ],
+    "text": [
+      "Clădirea Echipei Galactic din Eterna"
+    ]
+  },
+  "people": {
+    "grunt_m_1": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      }
+    },
+    "grunt_m_2": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      }
+    },
+    "galactic_grunt_1": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: A kid in our building? Visiting hours are over. Permanently!"
+        ],
+        "text": [
+          "Galactic Grunt: Un copil în clădirea noastră? Programul de vizită s-a încheiat. Pentru totdeauna!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: Hmph. Get past me if you like. The stairs will finish you off."
+        ],
+        "text": [
+          "Galactic Grunt: Hmf. Treci de mine dacă vrei. Scările o să te termine."
+        ]
+      }
+    },
+    "galactic_grunt_2": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: You walked right in? Then you can be carried right out!"
+        ],
+        "text": [
+          "Galactic Grunt: Ai intrat pur și simplu? Atunci poți ieși pe sus!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: Ugh... Our Commander upstairs won't lose like I did."
+        ],
+        "text": [
+          "Galactic Grunt: Of... Comandantul de sus n-o să piardă ca mine."
+        ]
+      }
+    },
+    "grunt_m_looker": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      }
+    },
+    "looker": {
+      "name": {
+        "en": [
+          "Looker"
+        ],
+        "text": [
+          "Looker"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "22,5": {
+      "en": [
+        "A poster on the wall: \"The road you walk ends in glory!\" Team Galactic"
+      ],
+      "text": [
+        "Un afiș pe perete: „Drumul pe care mergi duce la glorie!” Echipa Galactic"
+      ]
+    }
+  }
+}

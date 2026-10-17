@@ -1,0 +1,75 @@
+{
+  "displayName": {
+    "en": [
+      "Lost Tower"
+    ],
+    "text": [
+      "Turnul Pierdut"
+    ]
+  },
+  "people": {
+    "1,13": {
+      "name": {
+        "en": [
+          "Revive"
+        ],
+        "text": [
+          "Revive"
+        ]
+      }
+    },
+    "pokefan_leonard": {
+      "name": {
+        "en": [
+          "Leonard"
+        ],
+        "text": [
+          "Leonard"
+        ]
+      },
+      "before": {
+        "en": [
+          "Poké Fan Leonard: I bring my Pikachu family up here every year. Let's show you what they can do!"
+        ],
+        "text": [
+          "Pokéfan Leonard: Îmi aduc familia de Pikachu aici sus în fiecare an. Hai să-ți arătăm ce pot!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Poké Fan Leonard: Ah, well. They tried their very best, and that's what counts."
+        ],
+        "text": [
+          "Pokéfan Leonard: Ah, fie. Au dat tot ce au putut, și asta contează."
+        ]
+      }
+    },
+    "roughneck_kirby": {
+      "name": {
+        "en": [
+          "Kirby"
+        ],
+        "text": [
+          "Kirby"
+        ]
+      },
+      "before": {
+        "en": [
+          "Roughneck Kirby: What, you think a tough guy can't come up here and pay his respects? Battle me!"
+        ],
+        "text": [
+          "Bătăuș Kirby: Ce, crezi că unul dur ca mine nu poate urca aici să-și aducă omagiul? Luptă-te cu mine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Roughneck Kirby: All right, all right. You win. Keep your voice down, though."
+        ],
+        "text": [
+          "Bătăuș Kirby: Bine, bine. Ai câștigat. Dar vorbește mai încet."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

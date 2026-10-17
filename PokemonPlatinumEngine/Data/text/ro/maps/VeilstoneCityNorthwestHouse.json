@@ -1,0 +1,71 @@
+{
+  "displayName": {
+    "en": [
+      "Veilstone City"
+    ],
+    "text": [
+      "Orașul Veilstone"
+    ]
+  },
+  "people": {
+    "ace_trainer_f": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          "Antrenoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "An old tale says Mt. Coronet split Sinnoh into two halves.",
+          "When I see how different the Shellos of the east and the west have grown, I think the tale may well be true."
+        ],
+        "text": [
+          "O poveste veche spune că Muntele Coronet a împărțit Sinnoh-ul în două jumătăți.",
+          "Când văd cât de diferiți s-au făcut Shellos din est și cei din vest, cred că povestea poate fi adevărată."
+        ]
+      }
+    },
+    "old_woman": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          "Bătrâna"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Where there are people who long to see them, Pokémon show themselves.",
+          "And they come in more shapes than anyone could count."
+        ],
+        "text": [
+          "Acolo unde sunt oameni care tânjesc să-i vadă, Pokémonii se arată.",
+          "Și vin în mai multe forme decât ar putea număra cineva."
+        ]
+      }
+    },
+    "buneary": {
+      "name": {
+        "en": [
+          "Buneary"
+        ],
+        "text": [
+          "Buneary"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Buneary: Nii! Nii!"
+        ],
+        "text": [
+          "Buneary: Nii! Nii!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

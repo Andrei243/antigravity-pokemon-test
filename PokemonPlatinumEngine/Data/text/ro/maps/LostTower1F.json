@@ -1,0 +1,53 @@
+{
+  "displayName": {
+    "en": [
+      "Lost Tower"
+    ],
+    "text": [
+      "Turnul Pierdut"
+    ]
+  },
+  "people": {
+    "pokemon_breeder_f_1": {
+      "name": {
+        "en": [
+          "Pokémon Breeder"
+        ],
+        "text": [
+          "Crescătoare de Pokémoni"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This is where the spirits of Pokémon rest. People come to remember the ones they've lost.",
+          "Please, go quietly on the stairs."
+        ],
+        "text": [
+          "Aici se odihnesc spiritele Pokémonilor. Oamenii vin să-și amintească de cei pe care i-au pierdut.",
+          "Te rog, mergi încet pe scări."
+        ]
+      }
+    },
+    "pokemon_breeder_f_2": {
+      "name": {
+        "en": [
+          "Pokémon Breeder"
+        ],
+        "text": [
+          "Crescătoare de Pokémoni"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This is the Lost Tower. Each floor is a little quieter than the one below it.",
+          "Something seems to hang over the very top, though. I've never been able to see through it."
+        ],
+        "text": [
+          "Ăsta e Turnul Pierdut. Fiecare etaj e puțin mai liniștit decât cel de sub el.",
+          "Totuși, ceva pare să plutească deasupra, chiar în vârf. N-am reușit niciodată să văd prin el."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

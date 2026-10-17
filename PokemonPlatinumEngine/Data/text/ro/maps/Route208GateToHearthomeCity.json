@@ -1,0 +1,88 @@
+{
+  "displayName": {
+    "en": [
+      "Route 208"
+    ],
+    "text": [
+      "Ruta 208"
+    ]
+  },
+  "people": {
+    "pokemon_breeder_m": {
+      "name": {
+        "en": [
+          "Breeder"
+        ],
+        "text": [
+          "Crescătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hearthome City is a wonderful place.",
+          "Year after year, people vote it the town in Sinnoh they'd most like to live in."
+        ],
+        "text": [
+          "Orașul Hearthome e un loc minunat.",
+          "An de an, oamenii îl votează drept orașul din Sinnoh în care le-ar plăcea cel mai mult să locuiască."
+        ]
+      }
+    },
+    "middle_aged_woman": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Say Hearthome City to me, and I'll say one thing back: Pokémon Contests!",
+          "My darling here is going to be a star."
+        ],
+        "text": [
+          "Spune-mi „Orașul Hearthome” și-ți răspund un singur lucru: Concursurile Pokémon!",
+          "Comoara mea de aici o să fie o vedetă."
+        ]
+      }
+    },
+    "clefairy": {
+      "name": {
+        "en": [
+          "Clefairy"
+        ],
+        "text": [
+          "Clefairy"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pippii?!"
+        ],
+        "text": [
+          "Pippii?!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "5,4": {
+      "en": [
+        "A map of Sinnoh. Hearthome City lies east of here, and Route 208 runs west to the foot of Mt. Coronet."
+      ],
+      "text": [
+        "O hartă a Sinnoh-ului. Orașul Hearthome se află la est de aici, iar Ruta 208 merge spre vest, până la poalele Muntelui Coronet."
+      ]
+    },
+    "6,4": {
+      "en": [
+        "A map of Sinnoh. Hearthome City lies east of here, and Route 208 runs west to the foot of Mt. Coronet."
+      ],
+      "text": [
+        "O hartă a Sinnoh-ului. Orașul Hearthome se află la est de aici, iar Ruta 208 merge spre vest, până la poalele Muntelui Coronet."
+      ]
+    }
+  }
+}

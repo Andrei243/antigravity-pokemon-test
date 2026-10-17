@@ -1,0 +1,53 @@
+{
+  "displayName": {
+    "en": [
+      "Eterna City"
+    ],
+    "text": [
+      "Orașul Eterna"
+    ]
+  },
+  "people": {
+    "ninja_boy": {
+      "name": {
+        "en": [
+          "Ninja Boy"
+        ],
+        "text": [
+          "Micul Ninja"
+        ]
+      }
+    },
+    "pokefan_m": {
+      "name": {
+        "en": [
+          "Pokéfan"
+        ],
+        "text": [
+          "Pokéfana"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Everybody in these condominiums keeps a Pokémon or three.",
+          "The walls are thin, so you hear them chattering at all hours. I wouldn't have it any other way!"
+        ],
+        "text": [
+          "Toată lumea din blocurile astea are un Pokémon, doi sau trei.",
+          "Pereții sunt subțiri, așa că-i auzi trăncănind la orice oră. Nici nu mi-aș dori altfel!"
+        ]
+      }
+    },
+    "expert_m": {
+      "name": {
+        "en": [
+          "Name Rater"
+        ],
+        "text": [
+          "Evaluatorul de nume"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,52 @@
+{
+  "Rival": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "There you are, {player}! I heard you beat Fantina. So did I, obviously. Now it's time for the main event!"
+      ],
+      "text": [
+        "Aici erai, {player}! Am auzit că ai învins-o pe Fantina. Și eu, evident. Acum e timpul pentru numărul principal!"
+      ]
+    },
+    {
+      "en": [
+        "Ladies and gentlemen, the show starts now! Let's see who's really been getting stronger!"
+      ],
+      "text": [
+        "Doamnelor și domnilor, spectacolul începe acum! Să vedem cine s-a făcut cu adevărat mai puternic!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Argh! My plan was perfect! Why doesn't it ever work against you?!"
+      ],
+      "text": [
+        "Argh! Planul meu era perfect! De ce nu merge niciodată împotriva ta?!"
+      ]
+    },
+    {
+      "en": [
+        "I'm off to Veilstone City. There's a Gym there with a Leader who fights hand to hand with her Pokémon. See ya!"
+      ],
+      "text": [
+        "Plec în Orașul Veilstone. E acolo o Arenă cu o Lideră care se luptă corp la corp alături de Pokémonii ei. Pa!"
+      ]
+    }
+  ]
+}

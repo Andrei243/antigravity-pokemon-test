@@ -1,0 +1,180 @@
+{
+  "BerryMaster": [
+    {
+      "en": [
+        "Folk hereabouts have taken to calling me the Berry Master.",
+        "I give a berry away every day, so that people learn what marvellous things they are. And you have earned today's!"
+      ],
+      "text": [
+        "Oamenii de pe-aici au început să-mi spună Maestrul Boabelor.",
+        "Dau o boabă în fiecare zi, ca lumea să afle ce lucruri minunate sunt. Iar tu ai câștigat-o pe cea de azi!"
+      ]
+    },
+    {
+      "en": [
+        "Berries are a gift of nature. Feed them to your Pokémon, I say!",
+        "Happy Pokémon make people want to plant more berries, and more berries make Sinnoh a greener place for us all."
+      ],
+      "text": [
+        "Boabele sunt un dar al naturii. Hrănește-ți Pokémonii cu ele, zic eu!",
+        "Pokémonii fericiți îi fac pe oameni să planteze mai multe boabe, iar mai multe boabe fac Sinnoh-ul mai verde pentru toți."
+      ]
+    }
+  ],
+  "BerrySearcher": [
+    {
+      "en": [
+        "Are you the forgetful sort, who plants berries and then can't remember where?"
+      ],
+      "text": [
+        "Ți se întâmplă să plantezi boabe și apoi să nu-ți mai amintești unde?"
+      ]
+    },
+    {
+      "en": [
+        "I knew it! So am I! We're two of a kind, you and me. You can have this app for your Pokétch!"
+      ],
+      "text": [
+        "Știam eu! Și mie! Suntem la fel, noi doi. Poți lua aplicația asta pentru Pokétch-ul tău!"
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Berry Searcher for the Pokétch!"
+      ],
+      "text": [
+        "Aplicația Berry Searcher a fost adăugată în Pokétch!"
+      ]
+    },
+    {
+      "en": [
+        "The Berry Searcher shows you where berries are ripe and waiting to be picked."
+      ],
+      "text": [
+        "Berry Searcher îți arată unde sunt boabele coapte care așteaptă să fie culese."
+      ]
+    },
+    {
+      "en": [
+        "Oh... You haven't got a Pokétch to put it on. Come back when you have one!"
+      ],
+      "text": [
+        "O... N-ai un Pokétch pe care s-o pui. Revino când ai unul!"
+      ]
+    },
+    {
+      "en": [
+        "Oh, is that so. Then you'll manage perfectly well without this lovely thing."
+      ],
+      "text": [
+        "A, așa deci. Atunci te descurci de minune și fără lucrul ăsta drăguț."
+      ]
+    },
+    {
+      "en": [
+        "Some kinds of berries want lots and lots of water."
+      ],
+      "text": [
+        "Unele feluri de boabe vor multă, multă apă."
+      ]
+    }
+  ],
+  "Mulch": [
+    {
+      "en": [
+        "Um... Would you like some mulch? It's good for growing berries. You have ${money}.",
+        "Growth Mulch: $200",
+        "Damp Mulch: $200",
+        "Stable Mulch: $200",
+        "Gooey Mulch: $200",
+        "No, thanks"
+      ],
+      "text": [
+        "Ăă... N-ai vrea niște mulci? E bun pentru crescut boabe. Ai ${money}.",
+        "Growth Mulch: $200",
+        "Damp Mulch: $200",
+        "Stable Mulch: $200",
+        "Gooey Mulch: $200",
+        "Nu, mulțumesc"
+      ]
+    },
+    {
+      "en": [
+        "Um... Please come again."
+      ],
+      "text": [
+        "Ăă... Te rog să mai treci."
+      ]
+    },
+    {
+      "en": [
+        "I make it myself, from the best soil and, um... what Pokémon leave behind. You know.",
+        "It helps berries grow up healthy."
+      ],
+      "text": [
+        "Îl fac eu, din cel mai bun pământ și, ăă... ce lasă Pokémonii în urmă. Știi tu.",
+        "Ajută boabele să crească sănătoase."
+      ]
+    },
+    {
+      "en": [
+        "Um... You don't seem to have enough money..."
+      ],
+      "text": [
+        "Ăă... Se pare că nu ai destui bani..."
+      ]
+    }
+  ],
+  "Book": [
+    {
+      "en": [
+        "Which mulch would you like to read about?",
+        "Growth Mulch",
+        "Damp Mulch",
+        "Stable Mulch",
+        "Gooey Mulch",
+        "Close the book"
+      ],
+      "text": [
+        "Despre ce mulci vrei să citești?",
+        "Growth Mulch",
+        "Damp Mulch",
+        "Stable Mulch",
+        "Gooey Mulch",
+        "Închide cartea"
+      ]
+    },
+    {
+      "en": [
+        "Growth Mulch makes berries grow faster. The soil dries out faster too, so water it more often."
+      ],
+      "text": [
+        "Growth Mulch face boabele să crească mai repede. Și solul se usucă mai repede, așa că udă-l mai des."
+      ]
+    },
+    {
+      "en": [
+        "Damp Mulch keeps the soil from drying out. The berries grow more slowly for it."
+      ],
+      "text": [
+        "Damp Mulch împiedică solul să se usuce. În schimb, boabele cresc mai încet."
+      ]
+    },
+    {
+      "en": [
+        "Stable Mulch keeps ripe berries on the plant for longer. Some growers lay it where they seldom pass."
+      ],
+      "text": [
+        "Stable Mulch ține boabele coapte pe plantă mai mult timp. Unii cultivatori îl pun unde trec rar."
+      ]
+    },
+    {
+      "en": [
+        "Gooey Mulch lets a plant come up again more times from where the old one withered."
+      ],
+      "text": [
+        "Gooey Mulch face o plantă să răsară de mai multe ori din locul unde s-a uscat cea veche."
+      ]
+    }
+  ]
+}

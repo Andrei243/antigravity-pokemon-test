@@ -1,0 +1,64 @@
+{
+  "OnlyBicycles": [
+    {
+      "en": [
+        "Gate Keeper"
+      ],
+      "text": [
+        "Paznicul porții"
+      ]
+    },
+    {
+      "en": [
+        "Hold on! The Cycling Road is for Bicycles and nothing else. Come back riding one!"
+      ],
+      "text": [
+        "Stai! Drumul Bicicliștilor e doar pentru biciclete. Revino pe o bicicletă!"
+      ]
+    }
+  ],
+  "Assistant": [
+    {
+      "en": [
+        "Assistant"
+      ],
+      "text": [
+        "Asistentul"
+      ]
+    },
+    {
+      "en": [
+        "Hello, {player}! I'm one of Professor Rowan's assistants. How is the Pokédex coming along?",
+        "Let me see how many Pokémon you've met so far..."
+      ],
+      "text": [
+        "Salut, {player}! Sunt unul dintre asistenții Profesorului Rowan. Cum merge Pokédexul?",
+        "Stai să văd câți Pokémoni ai întâlnit până acum..."
+      ]
+    },
+    {
+      "en": [
+        "{var:SEEN} already! That's splendid. I have something here for a Trainer like you."
+      ],
+      "text": [
+        "Deja {var:SEEN}! Splendid. Am aici ceva pentru un Antrenor ca tine."
+      ]
+    },
+    {
+      "en": [
+        "{var:SEEN}... Hmm. Come and see me once you've met at least 35. I'll have something for you then."
+      ],
+      "text": [
+        "{var:SEEN}... Hmm. Vino să mă vezi când ai întâlnit măcar 35. Atunci o să am ceva pentru tine."
+      ]
+    },
+    {
+      "en": [
+        "A Pokémon holding the Exp. Share gets a share of the Exp. Points from a battle, even if it never set foot in it."
+      ],
+      "text": [
+        "Un Pokémon care ține Exp. Share primește o parte din Punctele EXP. ale unei lupte, chiar dacă n-a pus piciorul în ea."
+      ]
+    }
+  ]
+}

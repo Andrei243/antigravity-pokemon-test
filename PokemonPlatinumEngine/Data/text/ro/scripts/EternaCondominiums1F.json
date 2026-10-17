@@ -1,0 +1,82 @@
+{
+  "Charap": [
+    {
+      "en": [
+        "Buizel is the coolest Pokémon ever! Will you trade me one for my Chatot?"
+      ],
+      "text": [
+        "Buizel e cel mai tare Pokémon din lume! Mi-l dai pe unul la schimb pe Chatot-ul meu?"
+      ]
+    },
+    {
+      "en": [
+        "Yes! A Buizel, all mine! This is the best day ever!"
+      ],
+      "text": [
+        "Da! Un Buizel, numai al meu! E cea mai bună zi din viața mea!"
+      ]
+    },
+    {
+      "en": [
+        "That's not a Buizel! I only want a Buizel."
+      ],
+      "text": [
+        "Ăsta nu e Buizel! Eu vreau doar un Buizel."
+      ]
+    },
+    {
+      "en": [
+        "Aww. Come back if you ever find a Buizel, OK?"
+      ],
+      "text": [
+        "Of. Revino dacă găsești vreodată un Buizel, bine?"
+      ]
+    },
+    {
+      "en": [
+        "Has Chatot learned Chatter yet? It can say anything you teach it!"
+      ],
+      "text": [
+        "A învățat Chatot Chatter? Poate să spună orice-l înveți!"
+      ]
+    }
+  ],
+  "NameRater": [
+    {
+      "en": [
+        "Hello, hello! I am the official Name Rater! Shall I rate the nicknames of your Pokémon?"
+      ],
+      "text": [
+        "Bună, bună! Eu sunt Evaluatorul oficial de nume! Să evaluez poreclele Pokémonilor tăi?"
+      ]
+    },
+    {
+      "en": [
+        "Whose nickname am I to judge?"
+      ],
+      "text": [
+        "A cui poreclă s-o judec?"
+      ]
+    },
+    {
+      "en": [
+        "{member:RESULT}, is it? Now that is a decent name!",
+        "A better one still? Ah... there you have me. My great book of names is away at the binder's.",
+        "Take good care of {member:RESULT} in the meantime!"
+      ],
+      "text": [
+        "{member:RESULT}, zici? Ăsta da nume cumsecade!",
+        "Unul și mai bun? A... aici m-ai prins. Marea mea carte de nume e la legătorie.",
+        "Ai grijă de {member:RESULT} până atunci!"
+      ]
+    },
+    {
+      "en": [
+        "I see. Do come and visit again."
+      ],
+      "text": [
+        "Înțeleg. Mai treci pe la mine."
+      ]
+    }
+  ]
+}

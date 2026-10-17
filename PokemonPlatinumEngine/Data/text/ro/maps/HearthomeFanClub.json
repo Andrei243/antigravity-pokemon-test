@@ -1,0 +1,87 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Fan Club"
+    ],
+    "text": [
+      "Clubul Fanilor Pokémon"
+    ]
+  },
+  "people": {
+    "gentleman": {
+      "name": {
+        "en": [
+          "Chairman"
+        ],
+        "text": [
+          "Președintele"
+        ]
+      }
+    },
+    "beauty": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      }
+    },
+    "psyduck": {
+      "name": {
+        "en": [
+          "Psyduck"
+        ],
+        "text": [
+          "Psyduck"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Psy... ay?"
+        ],
+        "text": [
+          "Psy... ai?"
+        ]
+      }
+    },
+    "buneary": {
+      "name": {
+        "en": [
+          "Buneary"
+        ],
+        "text": [
+          "Buneary"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Bun! Buneary!"
+        ],
+        "text": [
+          "Bun! Buneary!"
+        ]
+      }
+    },
+    "clefairy": {
+      "name": {
+        "en": [
+          "Clefairy"
+        ],
+        "text": [
+          "Clefairy"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pippi! Pi!"
+        ],
+        "text": [
+          "Pippi! Pi!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

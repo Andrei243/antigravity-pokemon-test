@@ -1,0 +1,41 @@
+{
+  "displayName": {
+    "en": [
+      "Celestic Town"
+    ],
+    "text": [
+      "Orășelul Celestic"
+    ]
+  },
+  "people": {
+    "happiny": {
+      "name": {
+        "en": [
+          "Happiny"
+        ],
+        "text": [
+          "Happiny"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Happiny: Pinny! Haa!"
+        ],
+        "text": [
+          "Happiny: Pinny! Haa!"
+        ]
+      }
+    },
+    "black_belt": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          "Centură Neagră"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,231 @@
+{
+  "displayName": {
+    "en": [
+      "The Underground"
+    ],
+    "text": [
+      "Subteranul"
+    ]
+  },
+  "people": {
+    "goods_vendor_1": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      }
+    },
+    "goods_vendor_2": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      }
+    },
+    "goods_vendor_3": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      }
+    },
+    "goods_vendor_4": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      }
+    },
+    "goods_vendor_5": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      }
+    },
+    "goods_vendor_6": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      }
+    },
+    "goods_vendor_7": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      }
+    },
+    "goods_vendor_8": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      }
+    },
+    "traps_vendor_1": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      }
+    },
+    "traps_vendor_2": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      }
+    },
+    "traps_vendor_3": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      }
+    },
+    "traps_vendor_4": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      }
+    },
+    "traps_vendor_5": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      }
+    },
+    "traps_vendor_6": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      }
+    },
+    "traps_vendor_7": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      }
+    },
+    "traps_vendor_8": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      }
+    },
+    "treasures_vendor_1": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      }
+    },
+    "treasures_vendor_2": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      }
+    },
+    "treasures_vendor_3": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      }
+    },
+    "treasures_vendor_4": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      }
+    },
+    "roark": {
+      "name": {
+        "en": [
+          "Roark"
+        ],
+        "text": [
+          "Roark"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Watch where you tread down here!"
+        ],
+        "text": [
+          "Ai grijă pe unde calci aici jos!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

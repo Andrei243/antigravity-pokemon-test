@@ -1,0 +1,49 @@
+{
+  "displayName": {
+    "en": [
+      "Lost Tower"
+    ],
+    "text": [
+      "Turnul Pierdut"
+    ]
+  },
+  "people": {
+    "8,7": {
+      "name": {
+        "en": [
+          "Oval Stone"
+        ],
+        "text": [
+          "Oval Stone"
+        ]
+      }
+    },
+    "youngster_oliver": {
+      "name": {
+        "en": [
+          "Oliver"
+        ],
+        "text": [
+          "Oliver"
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Oliver: I came up here to say hello to my old pal. Now I'll show him how strong I've got!"
+        ],
+        "text": [
+          "Puști Oliver: Am urcat aici să-mi salut vechiul prieten. Acum o să-i arăt cât de puternic m-am făcut!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Oliver: I hope he wasn't watching that one."
+        ],
+        "text": [
+          "Puști Oliver: Sper că n-a văzut lupta asta."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

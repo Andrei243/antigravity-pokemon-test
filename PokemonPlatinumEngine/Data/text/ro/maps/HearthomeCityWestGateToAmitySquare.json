@@ -1,0 +1,69 @@
+{
+  "displayName": {
+    "en": [
+      "Hearthome City"
+    ],
+    "text": [
+      "Orașul Hearthome"
+    ]
+  },
+  "people": {
+    "receptionist": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to Amity Square! It's a park for taking a stroll with a cute Pokémon at your side."
+        ],
+        "text": [
+          "Bun venit în Piața Amity! E un parc unde te plimbi cu un Pokémon drăguț alături."
+        ]
+      }
+    },
+    "beauty": {
+      "name": {
+        "en": [
+          "Beauty"
+        ],
+        "text": [
+          "Frumoasa"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Pikachu is beside itself to be out of its Poké Ball and walking in the open air.",
+          "Look at its cheeks twitching! That's how you can tell."
+        ],
+        "text": [
+          "Pikachu-ul meu nu-și mai încape în piele că a ieșit din Poké Ball și se plimbă în aer liber.",
+          "Uite cum îi zvâcnesc obrajii! Așa îți dai seama."
+        ]
+      }
+    },
+    "pikachu": {
+      "name": {
+        "en": [
+          "Pikachu"
+        ],
+        "text": [
+          "Pikachu"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pika pi!"
+        ],
+        "text": [
+          "Pika pi!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

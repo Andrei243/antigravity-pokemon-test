@@ -1,0 +1,65 @@
+{
+  "displayName": {
+    "en": [
+      "Hearthome Gym"
+    ],
+    "text": [
+      "Arena Hearthome"
+    ]
+  },
+  "people": {
+    "youngster_donny": {
+      "name": {
+        "en": [
+          "Donny"
+        ],
+        "text": [
+          "Donny"
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Donny: It's so dark in here... Wh-who's there?! A Trainer? Then let's battle!"
+        ],
+        "text": [
+          "Puști Donny: E așa de întuneric aici... C-cine e acolo?! Un Antrenor? Atunci hai la luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Donny: Phew. At least now I know it was only you."
+        ],
+        "text": [
+          "Puști Donny: Pfu. Măcar acum știu că erai doar tu."
+        ]
+      }
+    },
+    "lass_molly": {
+      "name": {
+        "en": [
+          "Molly"
+        ],
+        "text": [
+          "Molly"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Molly: Ghost Pokémon love the dark, and so do I! Let me show you why."
+        ],
+        "text": [
+          "Domnișoară Molly: Pokémonii Fantomă iubesc întunericul, și eu la fel! Hai să-ți arăt de ce."
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Molly: The candlelight suits you. Maybe you'll find the right door."
+        ],
+        "text": [
+          "Domnișoară Molly: Lumina lumânării îți stă bine. Poate găsești ușa bună."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

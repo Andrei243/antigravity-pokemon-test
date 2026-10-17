@@ -1,0 +1,778 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Keira"
+      ],
+      "text": [
+        "Keira"
+      ]
+    },
+    {
+      "en": [
+        "Oh! It's you! The one who caught my Buneary!"
+      ],
+      "text": [
+        "O! Tu erai! Tu mi-ai prins Buneary-ul!"
+      ]
+    },
+    {
+      "en": [
+        "Mom"
+      ],
+      "text": [
+        "Mama"
+      ]
+    },
+    {
+      "en": [
+        "Why, {player}! Fancy seeing you here!"
+      ],
+      "text": [
+        "Ia te uită, {player}! Ce surpriză să te văd aici!"
+      ]
+    },
+    {
+      "en": [
+        "Keira"
+      ],
+      "text": [
+        "Keira"
+      ]
+    },
+    {
+      "en": [
+        "Wait... {player}? Johanna, this is your child?"
+      ],
+      "text": [
+        "Stai... {player}? Johanna, ăsta e copilul tău?"
+      ]
+    },
+    {
+      "en": [
+        "Your mom is the one who taught me everything about contests, {player}! She never said she had a Trainer in the family!"
+      ],
+      "text": [
+        "Mama ta m-a învățat tot ce știu despre concursuri, {player}! Nu mi-a zis niciodată că are un Antrenor în familie!"
+      ]
+    },
+    {
+      "en": [
+        "And thank you again for earlier. If Buneary had run off for good, I don't know what I'd have done."
+      ],
+      "text": [
+        "Și mulțumesc încă o dată pentru mai devreme. Dacă Buneary fugea de tot, nu știu ce m-aș fi făcut."
+      ]
+    },
+    {
+      "en": [
+        "Here, take this. It's not much, but it's a start for your Fashion Case."
+      ],
+      "text": [
+        "Uite, ia asta. Nu e mare lucru, dar e un început pentru Fashion Case-ul tău."
+      ]
+    },
+    {
+      "en": [
+        "Keira"
+      ],
+      "text": [
+        "Keira"
+      ]
+    },
+    {
+      "en": [
+        "Put Accessories like that on a Pokémon before a contest, and the judges take notice!"
+      ],
+      "text": [
+        "Pune Accesorii de-astea pe un Pokémon înainte de concurs și jurații observă!"
+      ]
+    },
+    {
+      "en": [
+        "I'd better go and rehearse. See you, Johanna!"
+      ],
+      "text": [
+        "Mai bine mă duc să repet. Pe curând, Johanna!"
+      ]
+    },
+    {
+      "en": [
+        "Mom"
+      ],
+      "text": [
+        "Mama"
+      ]
+    },
+    {
+      "en": [
+        "Surprised? Before you were born, your mom was on that stage every week. I still come to cheer on the young ones."
+      ],
+      "text": [
+        "Te miri? Înainte să te naști, mama ta era pe scena aia în fiecare săptămână. Încă vin să-i încurajez pe cei tineri."
+      ]
+    },
+    {
+      "en": [
+        "Contests are a whole other way to shine with your Pokémon. Who knows? One day it might be your turn up there."
+      ],
+      "text": [
+        "Concursurile sunt cu totul alt fel de a străluci cu Pokémonii tăi. Cine știe? Într-o zi poate vine rândul tău acolo sus."
+      ]
+    },
+    {
+      "en": [
+        "Well, I'll be getting home. Take care of yourself and your Pokémon, {player}!"
+      ],
+      "text": [
+        "Ei, eu mă duc acasă. Ai grijă de tine și de Pokémonii tăi, {player}!"
+      ]
+    }
+  ],
+  "ReceptionistOfficial": [
+    {
+      "en": [
+        "Welcome to the Pokémon Contest Hall! This is the counter for the Super Contests."
+      ],
+      "text": [
+        "Bun venit la Sala Concursurilor Pokémon! Ăsta e ghișeul pentru Super Concursuri."
+      ]
+    },
+    {
+      "en": [
+        "Would you like to enter a Pokémon in a contest?",
+        "ENTER",
+        "INFO",
+        "EXIT"
+      ],
+      "text": [
+        "Vrei să înscrii un Pokémon într-un concurs?",
+        "ÎNSCRIE",
+        "INFO",
+        "IEȘIRE"
+      ]
+    },
+    {
+      "en": [
+        "We look forward to seeing you and your Pokémon on our stage!"
+      ],
+      "text": [
+        "Abia așteptăm să te vedem pe scena noastră, pe tine și pe Pokémonul tău!"
+      ]
+    },
+    {
+      "en": [
+        "What would you like to know?",
+        "THE BASICS",
+        "THE CONTESTS",
+        "THE RANKS",
+        "CANCEL"
+      ],
+      "text": [
+        "Ce ai vrea să afli?",
+        "NOȚIUNI DE BAZĂ",
+        "CONCURSURILE",
+        "RANGURILE",
+        "ANULEAZĂ"
+      ]
+    },
+    {
+      "en": [
+        "There are five contests, one for each quality a Pokémon can show: Cool, Beauty, Cute, Smart and Tough."
+      ],
+      "text": [
+        "Sunt cinci concursuri, câte unul pentru fiecare calitate pe care o poate arăta un Pokémon: Stil, Frumusețe, Drăgălășenie, Istețime și Duritate."
+      ]
+    },
+    {
+      "en": [
+        "Enter the one your Pokémon's condition suits best. Poffins are what raise a Pokémon's condition."
+      ],
+      "text": [
+        "Înscrie-te la cel care se potrivește cel mai bine cu forma Pokémonului tău. Poffinurile sunt cele care îi îmbunătățesc forma."
+      ]
+    },
+    {
+      "en": [
+        "There are four ranks: Normal, Great, Ultra and Master. Any Pokémon may enter the Normal Rank."
+      ],
+      "text": [
+        "Sunt patru ranguri: Normal, Mare, Ultra și Maestru. Orice Pokémon se poate înscrie la Rangul Normal."
+      ]
+    },
+    {
+      "en": [
+        "To go on to a higher rank, a Pokémon must have won the rank under it in the same contest."
+      ],
+      "text": [
+        "Ca să treacă la un rang mai mare, un Pokémon trebuie să fi câștigat rangul de dedesubt la același concurs."
+      ]
+    },
+    {
+      "en": [
+        "Which part shall I explain?",
+        "A CONTEST",
+        "VISUAL",
+        "DANCE",
+        "ACTING",
+        "CANCEL"
+      ],
+      "text": [
+        "Ce parte să-ți explic?",
+        "UN CONCURS",
+        "VIZUALĂ",
+        "DANS",
+        "ACTORIE",
+        "ANULEAZĂ"
+      ]
+    },
+    {
+      "en": [
+        "Four Pokémon take the stage and are judged three times: on their looks, on their dancing and on their moves."
+      ],
+      "text": [
+        "Patru Pokémoni urcă pe scenă și sunt jurizați de trei ori: după înfățișare, după dans și după mișcări."
+      ]
+    },
+    {
+      "en": [
+        "The three count the same. Whoever does best over all three wins the contest's ribbon."
+      ],
+      "text": [
+        "Cele trei contează la fel. Cine se descurcă cel mai bine la toate trei câștigă panglica concursului."
+      ]
+    },
+    {
+      "en": [
+        "In the Visual Competition a Pokémon is judged on its condition and on how it is dressed up."
+      ],
+      "text": [
+        "La Proba vizuală, un Pokémon e jurizat după formă și după cum e gătit."
+      ]
+    },
+    {
+      "en": [
+        "You are given a theme and sixty seconds to put Accessories from your Fashion Case on your Pokémon. The better they fit the theme, the better the score."
+      ],
+      "text": [
+        "Primești o temă și șaizeci de secunde ca să pui pe Pokémonul tău Accesorii din Fashion Case. Cu cât se potrivesc mai bine cu tema, cu atât e mai mare scorul."
+      ]
+    },
+    {
+      "en": [
+        "In the Dance Competition each Pokémon leads in turn. The leader makes up steps on the beat, and the others repeat them half a bar later."
+      ],
+      "text": [
+        "La Proba de dans, fiecare Pokémon conduce pe rând. Cel care conduce inventează pași pe ritm, iar ceilalți îi repetă o jumătate de măsură mai târziu."
+      ]
+    },
+    {
+      "en": [
+        "A step right on the beat scores most. The wrong step scores nothing at all."
+      ],
+      "text": [
+        "Un pas chiar pe ritm aduce cele mai multe puncte. Pasul greșit nu aduce nimic."
+      ]
+    },
+    {
+      "en": [
+        "In the Acting Competition each Pokémon shows a move to one of three judges, four turns running. No move may be shown twice in a row."
+      ],
+      "text": [
+        "La Proba de actorie, fiecare Pokémon arată o mișcare unuia dintre cei trei jurați, patru ture la rând. Nicio mișcare nu poate fi arătată de două ori la rând."
+      ]
+    },
+    {
+      "en": [
+        "A judge gives more to a Pokémon the fewer others chose them. A move of the contest's own quality raises the judge's voltage, and filling it up earns a bonus."
+      ],
+      "text": [
+        "Un jurat dă mai mult unui Pokémon cu cât l-au ales mai puțini alții. O mișcare de aceeași calitate cu concursul crește entuziasmul juratului, iar dacă-l umpli primești un bonus."
+      ]
+    },
+    {
+      "en": [
+        "Come and see me again whenever you'd like to hear more, or to enter!"
+      ],
+      "text": [
+        "Vino să mă vezi oricând vrei să afli mai multe sau să te înscrii!"
+      ]
+    },
+    {
+      "en": [
+        "Which rank will you enter?",
+        "NORMAL RANK",
+        "GREAT RANK",
+        "ULTRA RANK",
+        "MASTER RANK",
+        "EXIT"
+      ],
+      "text": [
+        "La ce rang te înscrii?",
+        "RANG NORMAL",
+        "RANG MARE",
+        "RANG ULTRA",
+        "RANG MAESTRU",
+        "IEȘIRE"
+      ]
+    },
+    {
+      "en": [
+        "Which Pokémon will you enter? Please choose one."
+      ],
+      "text": [
+        "Ce Pokémon înscrii? Te rog să alegi unul."
+      ]
+    },
+    {
+      "en": [
+        "Will you cancel your entry?"
+      ],
+      "text": [
+        "Îți anulezi înscrierea?"
+      ]
+    },
+    {
+      "en": [
+        "{contestant} has been entered! You are entry number 4."
+      ],
+      "text": [
+        "{contestant} a fost înscris! Ai numărul de concurs 4."
+      ]
+    },
+    {
+      "en": [
+        "The contest is about to begin. Right this way, please!"
+      ],
+      "text": [
+        "Concursul e pe cale să înceapă. Pe aici, te rog!"
+      ]
+    },
+    {
+      "en": [
+        "Congratulations on your win! Please accept this prize from the Contest Hall."
+      ],
+      "text": [
+        "Felicitări pentru victorie! Te rog să primești premiul ăsta din partea Sălii Concursurilor."
+      ]
+    },
+    {
+      "en": [
+        "{player} received the {accessory}!"
+      ],
+      "text": [
+        "{player} a primit {accessory}!"
+      ]
+    },
+    {
+      "en": [
+        "{player} put it away in the Fashion Case."
+      ],
+      "text": [
+        "{player} l-a pus în Fashion Case."
+      ]
+    },
+    {
+      "en": [
+        "Thank you for taking part. We hope to see you again soon!"
+      ],
+      "text": [
+        "Mulțumim că ai participat. Sperăm să te revedem curând!"
+      ]
+    }
+  ],
+  "ChooseQuality": [
+    {
+      "en": [
+        "Which contest will you enter?",
+        "COOL",
+        "BEAUTY",
+        "CUTE",
+        "SMART",
+        "TOUGH",
+        "EXIT"
+      ],
+      "text": [
+        "La ce concurs te înscrii?",
+        "STIL",
+        "FRUMUSEȚE",
+        "DRĂGĂLĂȘENIE",
+        "ISTEȚIME",
+        "DURITATE",
+        "IEȘIRE"
+      ]
+    }
+  ],
+  "NotThatOne": [
+    {
+      "en": [
+        "An Egg can't go on stage, and neither can a Pokémon that has fainted."
+      ],
+      "text": [
+        "Un Ou nu poate urca pe scenă, și nici un Pokémon care a leșinat."
+      ]
+    },
+    {
+      "en": [
+        "That Pokémon hasn't won the rank under this one in this contest yet."
+      ],
+      "text": [
+        "Pokémonul ăsta n-a câștigat încă rangul de dedesubt la concursul ăsta."
+      ]
+    },
+    {
+      "en": [
+        "A Pokémon needs two moves at least to enter: no move may be shown twice in a row."
+      ],
+      "text": [
+        "Un Pokémon are nevoie de cel puțin două mișcări ca să se înscrie: nicio mișcare nu poate fi arătată de două ori la rând."
+      ]
+    }
+  ],
+  "ReceptionistPractice": [
+    {
+      "en": [
+        "Welcome! This is the counter for practice. Here a Pokémon can try one part of a contest by itself."
+      ],
+      "text": [
+        "Bun venit! Ăsta e ghișeul pentru antrenament. Aici un Pokémon poate încerca singur o parte dintr-un concurs."
+      ]
+    },
+    {
+      "en": [
+        "Would you like to practise?",
+        "PRACTICE",
+        "INFO",
+        "EXIT"
+      ],
+      "text": [
+        "Vrei să te antrenezi?",
+        "ANTRENAMENT",
+        "INFO",
+        "IEȘIRE"
+      ]
+    },
+    {
+      "en": [
+        "Come by whenever you'd like to practise!"
+      ],
+      "text": [
+        "Treci oricând vrei să te antrenezi!"
+      ]
+    },
+    {
+      "en": [
+        "A practice round is one part of a contest held by itself: the dressing up, the dance or the acting."
+      ],
+      "text": [
+        "O rundă de antrenament e o singură parte a unui concurs, ținută separat: gătitul, dansul sau actoria."
+      ]
+    },
+    {
+      "en": [
+        "It wins no ribbon, and any Pokémon may try it as often as it likes."
+      ],
+      "text": [
+        "Nu câștigă nicio panglică, și orice Pokémon o poate încerca de câte ori vrea."
+      ]
+    },
+    {
+      "en": [
+        "Which part will you practise?",
+        "VISUAL",
+        "DANCE",
+        "ACTING",
+        "CANCEL"
+      ],
+      "text": [
+        "Ce parte vrei să exersezi?",
+        "VIZUALĂ",
+        "DANS",
+        "ACTORIE",
+        "ANULEAZĂ"
+      ]
+    },
+    {
+      "en": [
+        "Which Pokémon will practise? Please choose one."
+      ],
+      "text": [
+        "Ce Pokémon se antrenează? Te rog să alegi unul."
+      ]
+    },
+    {
+      "en": [
+        "Will you give up the practice?"
+      ],
+      "text": [
+        "Renunți la antrenament?"
+      ]
+    },
+    {
+      "en": [
+        "{contestant} it is. Right this way, please!"
+      ],
+      "text": [
+        "Deci {contestant}. Pe aici, te rog!"
+      ]
+    },
+    {
+      "en": [
+        "Well done! That went nicely. Would you like to practise again?",
+        "NO, THANKS",
+        "ONCE MORE"
+      ],
+      "text": [
+        "Bravo! A mers frumos. Vrei să te mai antrenezi o dată?",
+        "NU, MERSI",
+        "ÎNCĂ O DATĂ"
+      ]
+    },
+    {
+      "en": [
+        "It takes a little getting used to. Would you like to practise again?",
+        "NO, THANKS",
+        "ONCE MORE"
+      ],
+      "text": [
+        "Trebuie să te obișnuiești puțin. Vrei să te mai antrenezi o dată?",
+        "NU, MERSI",
+        "ÎNCĂ O DATĂ"
+      ]
+    }
+  ],
+  "ReceptionistLink": [
+    {
+      "en": [
+        "Welcome! This is the counter for Link Contests, where friends bring their Pokémon to one stage."
+      ],
+      "text": [
+        "Bun venit! Ăsta e ghișeul Concursurilor prin Link, unde prietenii își aduc Pokémonii pe aceeași scenă."
+      ]
+    },
+    {
+      "en": [
+        "I'm afraid no Link Contests are being held for now. The counter in the middle holds Super Contests every day!"
+      ],
+      "text": [
+        "Din păcate, deocamdată nu se țin Concursuri prin Link. Ghișeul din mijloc ține Super Concursuri în fiecare zi!"
+      ]
+    }
+  ],
+  "Fantina": [
+    {
+      "en": [
+        "Fantina"
+      ],
+      "text": [
+        "Fantina"
+      ]
+    },
+    {
+      "en": [
+        "Ah, bonjour! You have the look of a Trainer about you. You want to battle Fantina, oui?"
+      ],
+      "text": [
+        "Ah, bonjour! Ai aerul unui Antrenor. Vrei să te lupți cu Fantina, oui?"
+      ]
+    },
+    {
+      "en": [
+        "I come here to see the contests. The Pokémon, so graceful! But for you, I go back to my Gym."
+      ],
+      "text": [
+        "Vin aici să văd concursurile. Pokémonii, așa grațioși! Dar pentru tine, mă întorc la Arena mea."
+      ]
+    },
+    {
+      "en": [
+        "I wait for you there. Come, and we shall dance, my Ghost Pokémon and yours!"
+      ],
+      "text": [
+        "Te aștept acolo. Vino, și o să dansăm, Pokémonii mei Fantomă și ai tăi!"
+      ]
+    }
+  ],
+  "RichBoy": [
+    {
+      "en": [
+        "Boy"
+      ],
+      "text": [
+        "Băiatul"
+      ]
+    },
+    {
+      "en": [
+        "Same as with anything, the basics come first. It takes practice to win a contest!"
+      ],
+      "text": [
+        "Ca la orice, întâi vin noțiunile de bază. E nevoie de antrenament ca să câștigi un concurs!"
+      ]
+    },
+    {
+      "en": [
+        "You're entering contests? And yes, you've got a Poffin Case."
+      ],
+      "text": [
+        "Te înscrii la concursuri? Și da, ai o Poffin Case."
+      ]
+    },
+    {
+      "en": [
+        "Then let me give you this simply splendid Poffin!"
+      ],
+      "text": [
+        "Atunci lasă-mă să-ți dau Poffinul ăsta pur și simplu splendid!"
+      ]
+    },
+    {
+      "en": [
+        "Feed it to the Pokémon you mean to enter. And take my advice: practise at the counter on the right first!"
+      ],
+      "text": [
+        "Dă-i-l Pokémonului pe care vrei să-l înscrii. Și ascultă-mi sfatul: exersează mai întâi la ghișeul din dreapta!"
+      ]
+    },
+    {
+      "en": [
+        "Oh, no. Your Poffin Case is full."
+      ],
+      "text": [
+        "O, nu. Poffin Case-ul tău e plin."
+      ]
+    },
+    {
+      "en": [
+        "You're entering contests? And yes, you've got a Poffin Case."
+      ],
+      "text": [
+        "Te înscrii la concursuri? Și da, ai o Poffin Case."
+      ]
+    },
+    {
+      "en": [
+        "Then let me give you this simply splendid Poffin!"
+      ],
+      "text": [
+        "Atunci lasă-mă să-ți dau Poffinul ăsta pur și simplu splendid!"
+      ]
+    },
+    {
+      "en": [
+        "Feed it to the Pokémon you mean to enter. And take my advice: practise at the counter on the right first!"
+      ],
+      "text": [
+        "Dă-i-l Pokémonului pe care vrei să-l înscrii. Și ascultă-mi sfatul: exersează mai întâi la ghișeul din dreapta!"
+      ]
+    },
+    {
+      "en": [
+        "Oh, no. Your Poffin Case is full. I'll give it to you another time."
+      ],
+      "text": [
+        "O, nu. Poffin Case-ul tău e plin. Ți-l dau altă dată."
+      ]
+    },
+    {
+      "en": [
+        "A word of advice, though: don't just rush into a contest. Practise at the counter on the right first!"
+      ],
+      "text": [
+        "Un sfat, totuși: nu te arunca direct într-un concurs. Exersează mai întâi la ghișeul din dreapta!"
+      ]
+    },
+    {
+      "en": [
+        "You're entering contests? But I don't see a Poffin Case..."
+      ],
+      "text": [
+        "Te înscrii la concursuri? Dar nu văd nicio Poffin Case..."
+      ]
+    },
+    {
+      "en": [
+        "It's hard to win without one. Still, if you're set on it, I won't stop you."
+      ],
+      "text": [
+        "E greu să câștigi fără una. Totuși, dacă ți-ai pus asta în cap, nu te opresc."
+      ]
+    },
+    {
+      "en": [
+        "You could always practise at the counter on the right."
+      ],
+      "text": [
+        "Poți oricând să exersezi la ghișeul din dreapta."
+      ]
+    }
+  ],
+  "GiveMild": [
+    {
+      "en": [
+        "{player} received a Mild Poffin!"
+      ],
+      "text": [
+        "{player} a primit un Poffin blând!"
+      ]
+    },
+    {
+      "en": [
+        "The Mild Poffin was put away in the Poffin Case."
+      ],
+      "text": [
+        "Poffinul blând a fost pus în Poffin Case."
+      ]
+    }
+  ],
+  "FrameCool": [
+    {
+      "en": [
+        "It's a photo frame. The winner of a contest has their picture hung here."
+      ],
+      "text": [
+        "E o ramă de fotografie. Aici se agață poza câștigătorului unui concurs."
+      ]
+    }
+  ],
+  "FrameBeauty": [
+    {
+      "en": [
+        "It's a photo frame. The winner of a contest has their picture hung here."
+      ],
+      "text": [
+        "E o ramă de fotografie. Aici se agață poza câștigătorului unui concurs."
+      ]
+    }
+  ],
+  "FrameCute": [
+    {
+      "en": [
+        "It's a photo frame. The winner of a contest has their picture hung here."
+      ],
+      "text": [
+        "E o ramă de fotografie. Aici se agață poza câștigătorului unui concurs."
+      ]
+    }
+  ],
+  "FrameSmart": [
+    {
+      "en": [
+        "It's a photo frame. The winner of a contest has their picture hung here."
+      ],
+      "text": [
+        "E o ramă de fotografie. Aici se agață poza câștigătorului unui concurs."
+      ]
+    }
+  ],
+  "FrameTough": [
+    {
+      "en": [
+        "It's a photo frame. The winner of a contest has their picture hung here."
+      ],
+      "text": [
+        "E o ramă de fotografie. Aici se agață poza câștigătorului unui concurs."
+      ]
+    }
+  ]
+}

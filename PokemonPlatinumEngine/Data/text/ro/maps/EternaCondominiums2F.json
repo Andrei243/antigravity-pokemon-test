@@ -1,0 +1,63 @@
+{
+  "displayName": {
+    "en": [
+      "Eterna City"
+    ],
+    "text": [
+      "Orașul Eterna"
+    ]
+  },
+  "people": {
+    "expert_f": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          "Bătrâna"
+        ]
+      }
+    },
+    "twin": {
+      "name": {
+        "en": [
+          "Little Girl"
+        ],
+        "text": [
+          "Fetița"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Gardenia, our Gym Leader, slips off to Eterna Forest every now and then.",
+          "I always wonder what she gets up to in there."
+        ],
+        "text": [
+          "Gardenia, Lidera Arenei noastre, se strecoară din când în când în Pădurea Eterna.",
+          "Mereu mă întreb ce face acolo."
+        ]
+      }
+    },
+    "expert_m": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Recycle is a move for the middle of a battle.",
+          "The Pokémon that uses it gets back the item it has just used up."
+        ],
+        "text": [
+          "Recycle e o mișcare pentru mijlocul luptei.",
+          "Pokémonul care o folosește primește înapoi obiectul pe care tocmai l-a consumat."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

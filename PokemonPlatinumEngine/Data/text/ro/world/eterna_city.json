@@ -1,0 +1,270 @@
+{
+  "people": {
+    "rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "{player}! The statue's this way. Come on, come on!"
+        ],
+        "text": [
+          "{player}! Statuia e pe aici. Hai, hai!"
+        ]
+      }
+    },
+    "cyrus": {
+      "name": {
+        "en": [
+          "Cyrus"
+        ],
+        "text": [
+          "Cyrus"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "......",
+          "Time, space... and the Pokémon said to have made them. A myth worth looking into."
+        ],
+        "text": [
+          "......",
+          "Timpul, spațiul... și Pokémonul despre care se spune că le-a creat. Un mit care merită cercetat."
+        ]
+      }
+    },
+    "cynthia": {
+      "name": {
+        "en": [
+          "Cynthia"
+        ],
+        "text": [
+          "Cynthia"
+        ]
+      }
+    },
+    "gardenia": {
+      "name": {
+        "en": [
+          "Gardenia"
+        ],
+        "text": [
+          "Gardenia"
+        ]
+      }
+    },
+    "grunt_m_1": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      }
+    },
+    "grunt_m_2": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      }
+    },
+    "grunt_m_3": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      }
+    },
+    "pokemon_breeder_m": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Nobody leaves Eterna without trying the Cycling Road.",
+          "You'll want wheels for it, mind. The cycle shop is just up the street."
+        ],
+        "text": [
+          "Nimeni nu pleacă din Eterna fără să încerce Drumul Bicicliștilor.",
+          "Doar că-ți trebuie roți pentru el. Magazinul de biciclete e chiar în susul străzii."
+        ]
+      }
+    },
+    "expert_m": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Eterna City is nothing like the town I grew up in.",
+          "Back in my day, you could hear the forest from every street."
+        ],
+        "text": [
+          "Orașul Eterna nu seamănă deloc cu orașul în care am crescut.",
+          "Pe vremea mea, auzeai pădurea de pe orice stradă."
+        ]
+      }
+    },
+    "ninja_boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Long ago, people really saw the Pokémon this statue shows. Can you imagine?",
+          "I stand here every day, in case it comes back."
+        ],
+        "text": [
+          "Demult, oamenii chiar vedeau Pokémonul din statuia asta. Îți închipui?",
+          "Stau aici în fiecare zi, în caz că se întoarce."
+        ]
+      }
+    },
+    "bug_catcher_1": {
+      "name": {
+        "en": [
+          "Bug Catcher"
+        ],
+        "text": [
+          "Vânătorul de insecte"
+        ]
+      }
+    },
+    "bug_catcher_2": {
+      "name": {
+        "en": [
+          "Bug Catcher"
+        ],
+        "text": [
+          "Vânătorul de insecte"
+        ]
+      }
+    },
+    "pokemon_breeder_f_1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      }
+    },
+    "ace_trainer_f": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          "Antrenoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Eterna's meant to be ancient, you know.",
+          "Funny, with all these tall blocks of flats about."
+        ],
+        "text": [
+          "Eterna ar trebui să fie un oraș străvechi, să știi.",
+          "Ciudat, cu toate blocurile astea înalte de jur împrejur."
+        ]
+      }
+    },
+    "pokemon_breeder_f_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "map_signpost_west": {
+      "en": [
+        "Eterna City\nOld stones, green streets, and a statue older than anyone can say."
+      ],
+      "text": [
+        "Orașul Eterna\nPietre vechi, străzi verzi și o statuie mai bătrână decât știe oricine."
+      ]
+    },
+    "map_signpost_east": {
+      "en": [
+        "Eterna City\nOld stones, green streets, and a statue older than anyone can say."
+      ],
+      "text": [
+        "Orașul Eterna\nPietre vechi, străzi verzi și o statuie mai bătrână decât știe oricine."
+      ]
+    },
+    "gym_signpost": {
+      "en": [
+        "Eterna City Pokémon Gym\nLeader: Gardenia\nGreen fingers and a will of iron!"
+      ],
+      "text": [
+        "Arena Pokémon din Orașul Eterna\nLideră: Gardenia\nMână verde și voință de fier!"
+      ]
+    },
+    "signboard_rad_rickshaws_cycle_shop": {
+      "en": [
+        "Rad Rickshaw's Cycle Shop\nBicycles for every road in Sinnoh."
+      ],
+      "text": [
+        "Magazinul de biciclete Rad Rickshaw\nBiciclete pentru orice drum din Sinnoh."
+      ]
+    },
+    "signboard_team_galactic_eterna_building": {
+      "en": [
+        "Team Galactic Eterna Building\nBring us your Pokémon!"
+      ],
+      "text": [
+        "Clădirea Echipei Galactic din Eterna\nAduceți-ne Pokémonii voștri!"
+      ]
+    },
+    "signboard_underground_mans_house": {
+      "en": [
+        "Underground Man's House\nAsk here about the tunnels under Sinnoh."
+      ],
+      "text": [
+        "Casa Omului din Subteran\nÎntreabă aici despre tunelurile de sub Sinnoh."
+      ]
+    },
+    "signboard_eterna_condominiums": {
+      "en": [
+        "Eterna Condominiums\nQuiet homes, and a man who rates nicknames."
+      ],
+      "text": [
+        "Blocurile din Eterna\nCase liniștite și un domn care evaluează porecle."
+      ]
+    }
+  }
+}

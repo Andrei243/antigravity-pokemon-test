@@ -1,0 +1,153 @@
+{
+  "displayName": {
+    "en": [
+      "Lost Tower"
+    ],
+    "text": [
+      "Turnul Pierdut"
+    ]
+  },
+  "people": {
+    "6,12": {
+      "name": {
+        "en": [
+          "TM27"
+        ],
+        "text": [
+          "TM27"
+        ]
+      }
+    },
+    "pokefan_rebekah": {
+      "name": {
+        "en": [
+          "Rebekah"
+        ],
+        "text": [
+          "Rebekah"
+        ]
+      },
+      "before": {
+        "en": [
+          "Poké Fan Rebekah: My little Bonsly cries at the drop of a hat, but it's braver than it looks!"
+        ],
+        "text": [
+          "Pokéfan Rebekah: Micuțul meu Bonsly plânge din orice, dar e mai curajos decât pare!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Poké Fan Rebekah: There, there, Bonsly. No tears now."
+        ],
+        "text": [
+          "Pokéfan Rebekah: Gata, gata, Bonsly. Fără lacrimi."
+        ]
+      }
+    },
+    "young_couple_trainer_mike": {
+      "name": {
+        "en": [
+          "Mike"
+        ],
+        "text": [
+          "Mike"
+        ]
+      },
+      "before": {
+        "en": [
+          "Mike: Nat and I came here together. We'll battle together, too!"
+        ],
+        "text": [
+          "Mike: Eu și Nat am venit aici împreună. O să și luptăm împreună!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Mike: We'll do better next time, won't we, Nat?"
+        ],
+        "text": [
+          "Mike: Data viitoare o să ne descurcăm mai bine, nu-i așa, Nat?"
+        ]
+      }
+    },
+    "young_couple_trainer_nat": {
+      "name": {
+        "en": [
+          "Nat"
+        ],
+        "text": [
+          "Nat"
+        ]
+      },
+      "before": {
+        "en": [
+          "Nat: The two of us against you. Ready?"
+        ],
+        "text": [
+          "Nat: Noi doi împotriva ta. Gata?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Nat: Oh, Mike. At least we lost side by side."
+        ],
+        "text": [
+          "Nat: Of, Mike. Măcar am pierdut unul lângă altul."
+        ]
+      }
+    },
+    "pa_bob": {
+      "name": {
+        "en": [
+          "Bob"
+        ],
+        "text": [
+          "Bob"
+        ]
+      },
+      "before": {
+        "en": [
+          "Pa Bob: My girl and I came up to visit her old Ponyta's resting place. Now let's see some spirit!"
+        ],
+        "text": [
+          "Tata Bob: Eu și fata mea am urcat să vizităm locul de odihnă al bătrânului ei Ponyta. Acum să vedem ceva curaj!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Pa Bob: That's a fine team you've got there."
+        ],
+        "text": [
+          "Tata Bob: Ai o echipă pe cinste."
+        ]
+      }
+    },
+    "belle_beth": {
+      "name": {
+        "en": [
+          "Beth"
+        ],
+        "text": [
+          "Beth"
+        ]
+      },
+      "before": {
+        "en": [
+          "Belle Beth: Pa and I battle as one! Giddy-up!"
+        ],
+        "text": [
+          "Fiica Beth: Tata și cu mine luptăm ca unul singur! Hi-ha!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Belle Beth: Aw, shucks. We'll get you next time."
+        ],
+        "text": [
+          "Fiica Beth: Of, păcat. Te prindem data viitoare."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

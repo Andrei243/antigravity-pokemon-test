@@ -1,0 +1,21 @@
+{
+  "displayName": {
+    "en": [
+      "Old Chateau"
+    ],
+    "text": [
+      "Old Chateau"
+    ]
+  },
+  "people": {},
+  "signs": {
+    "7,8": {
+      "en": [
+        "An old notebook. Something is scrawled in it: \"... anything so peculiar ought to make off with the mot...\"\nThe rest of the pages are blank."
+      ],
+      "text": [
+        "Un caiet vechi. Cineva a mâzgălit în el: „... ceva atât de ciudat ar trebui să plece cu mot...”\nRestul paginilor sunt goale."
+      ]
+    }
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "displayName": {
+    "en": [
+      "Hearthome Gym"
+    ],
+    "text": [
+      "Arena Hearthome"
+    ]
+  },
+  "people": {
+    "school_kid_mackenzie": {
+      "name": {
+        "en": [
+          "Mackenzie"
+        ],
+        "text": [
+          "Mackenzie"
+        ]
+      },
+      "before": {
+        "en": [
+          "School Kid Mackenzie: There's a sign on the floor somewhere in here. It matches one of the doors!"
+        ],
+        "text": [
+          "Școlar Mackenzie: E un semn undeva pe podeaua de aici. Se potrivește cu una dintre uși!"
+        ]
+      },
+      "after": {
+        "en": [
+          "School Kid Mackenzie: I shouldn't have told you about the sign, should I..."
+        ],
+        "text": [
+          "Școlar Mackenzie: Nu trebuia să-ți spun de semn, nu-i așa..."
+        ]
+      }
+    },
+    "ace_trainer_allen": {
+      "name": {
+        "en": [
+          "Allen"
+        ],
+        "text": [
+          "Allen"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Allen: Only the Trainers who keep their heads in the dark ever reach Fantina."
+        ],
+        "text": [
+          "Antrenor As Allen: Numai Antrenorii care-și păstrează mintea limpede în întuneric ajung la Fantina."
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Allen: You kept yours. Now look for the sign that shows the way."
+        ],
+        "text": [
+          "Antrenor As Allen: Ți-ai păstrat-o. Acum caută semnul care arată drumul."
+        ]
+      }
+    },
+    "school_kid_chance": {
+      "name": {
+        "en": [
+          "Chance"
+        ],
+        "text": [
+          "Chance"
+        ]
+      },
+      "before": {
+        "en": [
+          "School Kid Chance: Boo! Ha, did I scare you?"
+        ],
+        "text": [
+          "Școlar Chance: Bau! Ha, te-am speriat?"
+        ]
+      },
+      "after": {
+        "en": [
+          "School Kid Chance: You weren't scared at all. That's no fun."
+        ],
+        "text": [
+          "Școlar Chance: Nu te-ai speriat deloc. Nu-i nicio distracție."
+        ]
+      }
+    },
+    "ace_trainer_catherine": {
+      "name": {
+        "en": [
+          "Catherine"
+        ],
+        "text": [
+          "Catherine"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Catherine: The wrong door takes you right back to the start. Don't make the same mistake with me!"
+        ],
+        "text": [
+          "Antrenor As Catherine: Ușa greșită te duce direct înapoi la început. Nu face aceeași greșeală cu mine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Catherine: Well fought. I hope you choose your door as well as you chose your moves."
+        ],
+        "text": [
+          "Antrenor As Catherine: Bine luptat. Sper să-ți alegi ușa la fel de bine cum ți-ai ales mișcările."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

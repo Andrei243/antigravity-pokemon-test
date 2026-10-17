@@ -1,0 +1,276 @@
+{
+  "people": {
+    "hiker": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The riders up on the Cycling Road never look down. They don't know what they're missing.",
+          "There's a cave mouth tucked away under the bridge that most of them have never even seen."
+        ],
+        "text": [
+          "Bicicliștii de sus, de pe Drumul Bicicliștilor, nu se uită niciodată în jos. Nu știu ce pierd.",
+          "Sub pod e ascunsă intrarea unei peșteri pe care cei mai mulți dintre ei n-au văzut-o niciodată."
+        ]
+      }
+    },
+    "cyclist_axel": {
+      "name": {
+        "en": [
+          "Axel"
+        ],
+        "text": [
+          "Axel"
+        ]
+      },
+      "before": {
+        "en": [
+          "Cyclist Axel: Brakes are for people who don't want to battle! Pikachu, go!"
+        ],
+        "text": [
+          "Biciclist Axel: Frânele sunt pentru cine nu vrea să lupte! Pikachu, înainte!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Cyclist Axel: Maybe I should have used the brakes after all. Ride safely, won't you?"
+        ],
+        "text": [
+          "Biciclist Axel: Poate trebuia totuși să frânez. Mergi cu grijă, da?"
+        ]
+      }
+    },
+    "cyclist_megan": {
+      "name": {
+        "en": [
+          "Megan"
+        ],
+        "text": [
+          "Megan"
+        ]
+      },
+      "before": {
+        "en": [
+          "Cyclist Megan: My Staravia races me along this bridge every day. Today it can race you!"
+        ],
+        "text": [
+          "Biciclist Megan: Staravia al meu se ia la întrecere cu mine pe podul ăsta în fiecare zi. Azi se întrece cu tine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Cyclist Megan: At least Staravia is still faster than both of us. That's something."
+        ],
+        "text": [
+          "Biciclist Megan: Măcar Staravia e tot mai rapid decât amândoi. Și asta e ceva."
+        ]
+      }
+    },
+    "cyclist_james": {
+      "name": {
+        "en": [
+          "James"
+        ],
+        "text": [
+          "James"
+        ]
+      },
+      "before": {
+        "en": [
+          "Cyclist James: My Ponyta gallops beside my front wheel all the way down the road. Can you keep up?"
+        ],
+        "text": [
+          "Biciclist James: Ponyta meu galopează lângă roata din față tot drumul. Ții pasul?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Cyclist James: Outpaced! Ponyta's mane is still flickering from the effort."
+        ],
+        "text": [
+          "Biciclist James: Depășit! Coama lui Ponyta încă pâlpâie de efort."
+        ]
+      }
+    },
+    "cyclist_nicole": {
+      "name": {
+        "en": [
+          "Nicole"
+        ],
+        "text": [
+          "Nicole"
+        ]
+      },
+      "before": {
+        "en": [
+          "Cyclist Nicole: One Starly, two Starly, three Starly! Count them as they fly at you!"
+        ],
+        "text": [
+          "Biciclist Nicole: Un Starly, doi Starly, trei Starly! Numără-i cum zboară spre tine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Cyclist Nicole: They'll be Staravia one day, all three of them. Then we'll see!"
+        ],
+        "text": [
+          "Biciclist Nicole: Toți trei o să fie Staravia într-o zi. Atunci mai vorbim!"
+        ]
+      }
+    },
+    "cyclist_john": {
+      "name": {
+        "en": [
+          "John"
+        ],
+        "text": [
+          "John"
+        ]
+      },
+      "before": {
+        "en": [
+          "Cyclist John: I ride this road from end to end every morning, and you're in my lane!"
+        ],
+        "text": [
+          "Biciclist John: Străbat drumul ăsta de la un capăt la altul în fiecare dimineață, iar tu ești pe banda mea!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Cyclist John: All right, all right. The road's wide enough for the two of us."
+        ],
+        "text": [
+          "Biciclist John: Bine, bine. Drumul e destul de lat pentru amândoi."
+        ]
+      }
+    },
+    "cyclist_kayla": {
+      "name": {
+        "en": [
+          "Kayla"
+        ],
+        "text": [
+          "Kayla"
+        ]
+      },
+      "before": {
+        "en": [
+          "Cyclist Kayla: Hold it right there! Let's see whose Pokémon is quicker off the mark!"
+        ],
+        "text": [
+          "Biciclist Kayla: Stai pe loc! Să vedem al cui Pokémon pornește mai repede!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Cyclist Kayla: Yours, it seems. My Pikachu wants a rematch already."
+        ],
+        "text": [
+          "Biciclist Kayla: Al tău, se pare. Pikachu al meu vrea deja revanșa."
+        ]
+      }
+    },
+    "cyclist_ryan": {
+      "name": {
+        "en": [
+          "Ryan"
+        ],
+        "text": [
+          "Ryan"
+        ]
+      },
+      "before": {
+        "en": [
+          "Cyclist Ryan: My Shinx gives off sparks every time we go over a bump. Want to feel one?"
+        ],
+        "text": [
+          "Biciclist Ryan: Shinx al meu scoate scântei de fiecare dată când trecem peste un hop. Vrei să simți una?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Cyclist Ryan: Ow, my hair's standing on end. Was that your doing or Shinx's?"
+        ],
+        "text": [
+          "Biciclist Ryan: Au, mi s-a făcut părul măciucă. Tu ai fost sau Shinx?"
+        ]
+      }
+    },
+    "cyclist_rachel": {
+      "name": {
+        "en": [
+          "Rachel"
+        ],
+        "text": [
+          "Rachel"
+        ]
+      },
+      "before": {
+        "en": [
+          "Cyclist Rachel: The gate's just ahead, but a battle comes first! My Pokémon are raring to go!"
+        ],
+        "text": [
+          "Biciclist Rachel: Poarta e chiar în față, dar mai întâi o luptă! Pokémonii mei abia așteaptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Cyclist Rachel: That was over quickly. I'd better pump up my tyres and try again."
+        ],
+        "text": [
+          "Biciclist Rachel: S-a terminat repede. Ar fi bine să-mi umflu cauciucurile și să mai încerc."
+        ]
+      }
+    },
+    "hiker_theodore": {
+      "name": {
+        "en": [
+          "Theodore"
+        ],
+        "text": [
+          "Theodore"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Theodore: Bikes rattle over that bridge all day, but down here it's just me and my Onix. Let's rumble!"
+        ],
+        "text": [
+          "Drumeț Theodore: Bicicletele zdrăngăne pe podul ăla toată ziua, dar aici jos suntem doar eu și Onix-ul meu. Hai la trântă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Theodore: Hah! You hit like a rockfall. My Onix needs a lie-down."
+        ],
+        "text": [
+          "Drumeț Theodore: Ha! Lovești ca o avalanșă de pietre. Onix-ul meu trebuie să se întindă puțin."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost_eterna_city": {
+      "en": [
+        "Route 206\nNorth: Eterna City"
+      ],
+      "text": [
+        "Ruta 206\nNord: Orașul Eterna"
+      ]
+    },
+    "arrow_signpost_oreburgh_city": {
+      "en": [
+        "Route 206\nSouth: Route 207, Oreburgh City"
+      ],
+      "text": [
+        "Ruta 206\nSud: Ruta 207, Orașul Oreburgh"
+      ]
+    }
+  }
+}

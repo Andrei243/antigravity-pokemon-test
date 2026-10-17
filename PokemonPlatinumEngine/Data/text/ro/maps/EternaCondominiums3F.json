@@ -1,0 +1,89 @@
+{
+  "displayName": {
+    "en": [
+      "Eterna City"
+    ],
+    "text": [
+      "Orașul Eterna"
+    ]
+  },
+  "people": {
+    "pokefan_m": {
+      "name": {
+        "en": [
+          "Pokéfan"
+        ],
+        "text": [
+          "Pokéfana"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Badges from the Gyms, ribbons from the Contests... there's more than one way to come out on top, it seems.",
+          "Here's hoping you find the one where you're the winner."
+        ],
+        "text": [
+          "Insigne de la Arene, panglici de la Concursuri... se pare că sunt mai multe feluri de a ieși învingător.",
+          "Sper să-l găsești pe cel în care câștigi tu."
+        ]
+      }
+    },
+    "school_kid_m": {
+      "name": {
+        "en": [
+          "School Kid"
+        ],
+        "text": [
+          "Școlărița"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Ha ha ha! Got you now! Your flag is mine!"
+        ],
+        "text": [
+          "Ha, ha, ha! Te-am prins! Steagul tău e al meu!"
+        ]
+      }
+    },
+    "bug_catcher": {
+      "name": {
+        "en": [
+          "Bug Catcher"
+        ],
+        "text": [
+          "Vânătorul de insecte"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I've picked berries by the armful, and I'm swapping the lot for accessories.",
+          "Next stop, Hearthome City! I'm going to enter a Contest!"
+        ],
+        "text": [
+          "Am cules boabe cu brațele și le dau pe toate la schimb pe accesorii.",
+          "Următoarea oprire: Orașul Hearthome! Mă înscriu la un Concurs!"
+        ]
+      }
+    },
+    "ninja_boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "You'll never catch me! I've laid traps everywhere!"
+        ],
+        "text": [
+          "N-o să mă prinzi niciodată! Am pus capcane peste tot!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

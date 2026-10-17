@@ -69,7 +69,7 @@ partial class Harness
             }
             Console.WriteLine("  !! the script never got there");
         }
-        bool Says(string word) => Box().IsActive && Box().CurrentLine.Contains(word);
+        bool Says(string word) => Box().IsActive && Translated.Saying(Box().CurrentLine, word);
         void Line(string word, string shot)
         {
             ReadOn(() => Says(word));

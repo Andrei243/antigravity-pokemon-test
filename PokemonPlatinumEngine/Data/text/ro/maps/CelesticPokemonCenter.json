@@ -1,0 +1,81 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Center"
+    ],
+    "text": [
+      "Centrul Pokémon"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "expert_f": {
+      "name": {
+        "en": [
+          "Old Lady"
+        ],
+        "text": [
+          "Bătrâna"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Now what would bring a young thing like you to a sleepy old place like ours?",
+          "Since you've come all this way, do go and see the cave painting."
+        ],
+        "text": [
+          "Ce aduce pe cineva atât de tânăr într-un loc bătrân și adormit ca al nostru?",
+          "Dacă tot ai venit până aici, du-te să vezi pictura din peșteră."
+        ]
+      }
+    },
+    "twin": {
+      "name": {
+        "en": [
+          "Little Girl"
+        ],
+        "text": [
+          "Fetița"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "They say this town has stood here ever since Sinnoh was made."
+        ],
+        "text": [
+          "Se zice că orășelul ăsta stă aici de când a fost făcut Sinnoh-ul."
+        ]
+      }
+    },
+    "pokefan_m": {
+      "name": {
+        "en": [
+          "Pokéfan"
+        ],
+        "text": [
+          "Pokéfana"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

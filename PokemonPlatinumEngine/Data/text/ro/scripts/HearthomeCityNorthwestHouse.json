@@ -1,0 +1,88 @@
+{
+  "Bebe": [
+    {
+      "en": [
+        "Hiya! Oh, you're a Trainer! Then you use the Pokémon Boxes! I love meeting the people who use my work!",
+        "... Why the blank look? Oh, right, sorry! There I go, rattling on again.",
+        "I'm Bebe! You know the Boxes on the PC? I'm the one who keeps them running!"
+      ],
+      "text": [
+        "Salutare! O, ești Antrenor! Atunci folosești Cutiile Pokémon! Ador să-i cunosc pe cei care-mi folosesc munca!",
+        "... De ce te uiți așa? A, da, scuze! Iar o iau razna cu vorba.",
+        "Sunt Bebe! Știi Cutiile din PC? Eu sunt cea care le ține în funcțiune!"
+      ]
+    },
+    {
+      "en": [
+        "This is out of the blue, I know, but would you like a Pokémon called Eevee?"
+      ],
+      "text": [
+        "Știu că vine din senin, dar n-ai vrea un Pokémon pe nume Eevee?"
+      ]
+    },
+    {
+      "en": [
+        "Bebe: So, how about it? Would you like that Eevee?"
+      ],
+      "text": [
+        "Bebe: Deci, ce zici? Vrei Eevee-ul ăsta?"
+      ]
+    },
+    {
+      "en": [
+        "Bebe: Here you go! A good friend of mine in Johto gave it to me. He has more Eevee than he can count.",
+        "Sorry, that won't mean a thing to you. Just be good to it, please!"
+      ],
+      "text": [
+        "Bebe: Poftim! Mi l-a dat un prieten bun din Johto. Are mai mulți Eevee decât poate număra.",
+        "Scuze, asta nu-ți spune nimic. Doar să ai grijă de el, te rog!"
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Eevee!"
+      ],
+      "text": [
+        "{player} a primit Eevee!"
+      ]
+    },
+    {
+      "en": [
+        "Bebe: Here you go! ... No, wait, I can't! You haven't room for another Pokémon!",
+        "Now that's exactly what my Boxes are for!"
+      ],
+      "text": [
+        "Bebe: Poftim! ... Nu, stai, nu pot! N-ai loc pentru încă un Pokémon!",
+        "Exact pentru asta sunt Cutiile mele!"
+      ]
+    },
+    {
+      "en": [
+        "Bebe: Oh, OK... Then I suppose I'll raise it myself."
+      ],
+      "text": [
+        "Bebe: A, bine... Atunci cred că o să-l cresc eu."
+      ]
+    },
+    {
+      "en": [
+        "Bebe: My friend Bill built the first Pokémon storage system.",
+        "I've tinkered with it here and there since, to make it easier to use."
+      ],
+      "text": [
+        "Bebe: Prietenul meu Bill a construit primul sistem de stocare pentru Pokémoni.",
+        "De atunci l-am tot meșterit pe ici, pe colo, ca să fie mai ușor de folosit."
+      ]
+    },
+    {
+      "en": [
+        "Bebe: Oh? You've filled the whole Sinnoh Pokédex? Good for you! You'll be needing my Boxes more than ever.",
+        "Mind you, I always did think a good Trainer juggles Boxes cleverly. Not that I'm one to say so."
+      ],
+      "text": [
+        "Bebe: O? Ai completat tot Pokédexul din Sinnoh? Bravo ție! O să ai nevoie de Cutiile mele mai mult ca oricând.",
+        "Și, să știi, mereu am crezut că un Antrenor bun jonglează isteț cu Cutiile. Nu că aș spune-o eu."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Day Care"
+    ],
+    "text": [
+      "Pensiunea Pokémon"
+    ]
+  },
+  "people": {
+    "day_care_lady": {
+      "name": {
+        "en": [
+          "Day-Care Lady"
+        ],
+        "text": [
+          "Doamna de la Pensiune"
+        ]
+      }
+    },
+    "gym_guide": {
+      "name": {
+        "en": [
+          "Day-Care Fan"
+        ],
+        "text": [
+          "Fanul Pensiunii"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "11,7": {
+      "en": [
+        "Your Pokémon grow along with you on every road you travel. Stay the best of friends!\nThe Pokémon Day Care"
+      ],
+      "text": [
+        "Pokémonii tăi cresc odată cu tine pe fiecare drum pe care mergi. Rămâneți cei mai buni prieteni!\nPensiunea Pokémon"
+      ]
+    },
+    "4,3": {
+      "en": [
+        "The PC's screen lists the Pokémon in the couple's care, with a note on how each one is getting on."
+      ],
+      "text": [
+        "Ecranul PC-ului îi arată pe Pokémonii aflați în grija cuplului, cu o notă despre cum îi merge fiecăruia."
+      ]
+    }
+  }
+}

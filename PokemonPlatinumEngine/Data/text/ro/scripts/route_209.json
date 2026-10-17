@@ -1,0 +1,134 @@
+{
+  "HallowedTower": [
+    {
+      "en": [
+        "There is a gap in the little tower of stones. Set the Odd Keystone in it?"
+      ],
+      "text": [
+        "E un gol în turnulețul de pietre. Pui Odd Keystone acolo?"
+      ]
+    },
+    {
+      "en": [
+        "{player} set the Odd Keystone in the tower."
+      ],
+      "text": [
+        "{player} a pus Odd Keystone în turn."
+      ]
+    },
+    {
+      "en": [
+        "A little tower of stones. One of them is missing, and the rest lean round the gap."
+      ],
+      "text": [
+        "Un turnuleț de pietre. Lipsește una, iar celelalte se apleacă în jurul golului."
+      ]
+    },
+    {
+      "en": [
+        "A little tower of stones, set up long ago. Nobody knows who set it up, or why."
+      ],
+      "text": [
+        "Un turnuleț de pietre, ridicat demult. Nimeni nu știe cine l-a ridicat și nici de ce."
+      ]
+    },
+    {
+      "en": [
+        "The stones of the tower seem to have moved a little since it was last looked at."
+      ],
+      "text": [
+        "Pietrele turnului par să se fi mișcat puțin de ultima dată când te-ai uitat la el."
+      ]
+    },
+    {
+      "en": [
+        "Something like a faint sobbing comes from between the stones..."
+      ],
+      "text": [
+        "Dintre pietre se aude ceva ca un suspin slab..."
+      ]
+    },
+    {
+      "en": [
+        "The tower is trembling. Or is it only the wind?"
+      ],
+      "text": [
+        "Turnul tremură. Sau e doar vântul?"
+      ]
+    },
+    {
+      "en": [
+        "Someone is there, inside the tower. It can be felt more than seen."
+      ],
+      "text": [
+        "E cineva acolo, înăuntrul turnului. Se simte mai mult decât se vede."
+      ]
+    },
+    {
+      "en": [
+        "Hoo-oooh..."
+      ],
+      "text": [
+        "Hu-uuuh..."
+      ]
+    }
+  ],
+  "Fisherman": [
+    {
+      "en": [
+        "Fishing is all very well, but a Good Rod is something else again! Would you like one?"
+      ],
+      "text": [
+        "Pescuitul e bun și frumos, dar un Good Rod e cu totul altceva! Vrei unul?"
+      ]
+    },
+    {
+      "en": [
+        "Then this is yours. Look after it!"
+      ],
+      "text": [
+        "Atunci e al tău. Ai grijă de el!"
+      ]
+    },
+    {
+      "en": [
+        "Shall I tell you how to fish with the Good Rod?"
+      ],
+      "text": [
+        "Să-ți spun cum se pescuiește cu Good Rod?"
+      ]
+    },
+    {
+      "en": [
+        "Stand facing the water and use the rod from your bag. When something bites, press the button straight away!"
+      ],
+      "text": [
+        "Stai cu fața la apă și folosește undița din rucsac. Când trage ceva, apasă butonul imediat!"
+      ]
+    },
+    {
+      "en": [
+        "Leave it too long and the Pokémon gets away with the bait."
+      ],
+      "text": [
+        "Dacă aștepți prea mult, Pokémonul fuge cu momeala."
+      ]
+    },
+    {
+      "en": [
+        "Reel one in and you'll be battling it. Fishing's a battle of nerves before it's a battle of Pokémon!"
+      ],
+      "text": [
+        "Scoate unul și te lupți cu el. Pescuitul e o luptă a nervilor înainte să fie una a Pokémonilor!"
+      ]
+    },
+    {
+      "en": [
+        "You don't like fishing? Well, there's no accounting for taste."
+      ],
+      "text": [
+        "Nu-ți place pescuitul? Ei, gusturile nu se discută."
+      ]
+    }
+  ]
+}

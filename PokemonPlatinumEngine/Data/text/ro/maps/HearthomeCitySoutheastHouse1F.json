@@ -1,0 +1,89 @@
+{
+  "displayName": {
+    "en": [
+      "Hearthome City"
+    ],
+    "text": [
+      "Orașul Hearthome"
+    ]
+  },
+  "people": {
+    "middle_aged_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "First the Contests! Then Amity Square!",
+          "People come to Hearthome from all over, so we keep the place spick and span."
+        ],
+        "text": [
+          "Întâi Concursurile! Apoi Piața Amity!",
+          "Oamenii vin în Hearthome de peste tot, așa că ținem orașul lună."
+        ]
+      }
+    },
+    "lady": {
+      "name": {
+        "en": [
+          "Lady"
+        ],
+        "text": [
+          "Doamna"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The whole world follows the Pokémon Contests.",
+          "Oh, what am I to do? I could have the whole world at my feet!"
+        ],
+        "text": [
+          "Toată lumea urmărește Concursurile Pokémon.",
+          "Vai, ce mă fac? Aș putea avea toată lumea la picioarele mele!"
+        ]
+      }
+    },
+    "shroomish": {
+      "name": {
+        "en": [
+          "Shroomish"
+        ],
+        "text": [
+          "Shroomish"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Shroomish: Pofwaaah!"
+        ],
+        "text": [
+          "Shroomish: Pofwaaah!"
+        ]
+      }
+    },
+    "twin": {
+      "name": {
+        "en": [
+          "Little Girl"
+        ],
+        "text": [
+          "Fetița"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When we go to Amity Square, my Shroomish finds berries and all sorts of things."
+        ],
+        "text": [
+          "Când mergem în Piața Amity, Shroomish-ul meu găsește boabe și tot felul de lucruri."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

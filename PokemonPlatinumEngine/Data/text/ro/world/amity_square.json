@@ -1,0 +1,189 @@
+{
+  "people": {
+    "drifloon": {
+      "name": {
+        "en": [
+          "Drifloon"
+        ],
+        "text": [
+          "Drifloon"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Fuwaaa..."
+        ],
+        "text": [
+          "Fuwaaa..."
+        ]
+      }
+    },
+    "pikachu": {
+      "name": {
+        "en": [
+          "Pikachu"
+        ],
+        "text": [
+          "Pikachu"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pika! Pikachu!"
+        ],
+        "text": [
+          "Pika! Pikachu!"
+        ]
+      }
+    },
+    "clefairy": {
+      "name": {
+        "en": [
+          "Clefairy"
+        ],
+        "text": [
+          "Clefairy"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clefairy is holding something shiny in both hands."
+        ],
+        "text": [
+          "Clefairy ține ceva strălucitor în ambele mâini."
+        ]
+      }
+    },
+    "happiny": {
+      "name": {
+        "en": [
+          "Happiny"
+        ],
+        "text": [
+          "Happiny"
+        ]
+      }
+    },
+    "follower_mon": {
+      "name": {
+        "en": [
+          "Pokémon"
+        ],
+        "text": [
+          "Pokémon"
+        ]
+      }
+    },
+    "receptionist_west": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      }
+    },
+    "receptionist_east": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      }
+    },
+    "pokemon_breeder_m": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The old stones round this square were standing long before anyone built Hearthome.",
+          "Nobody knows who raised them. My Drifloon likes to float about them all afternoon."
+        ],
+        "text": [
+          "Pietrele vechi din jurul pieței stăteau aici cu mult înainte să construiască cineva Hearthome-ul.",
+          "Nimeni nu știe cine le-a ridicat. Drifloon-ului meu îi place să plutească în jurul lor toată după-amiaza."
+        ]
+      }
+    },
+    "pokemon_breeder_f": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Happiny and I come here every single day.",
+          "The fresh air does us both good. Then it naps all the way home."
+        ],
+        "text": [
+          "Eu și Happiny venim aici în fiecare zi, fără excepție.",
+          "Aerul curat ne face bine la amândoi. Apoi doarme tot drumul spre casă."
+        ]
+      }
+    },
+    "collector": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "All my life I dreamt of strolling round this park with a Pikachu.",
+          "And today, at last, here we are! I could burst!"
+        ],
+        "text": [
+          "Toată viața am visat să mă plimb prin parcul ăsta cu un Pikachu.",
+          "Și azi, în sfârșit, iată-ne! Să plesnesc de bucurie!"
+        ]
+      }
+    },
+    "twin": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Do you talk to your Pokémon? You should!",
+          "My Clefairy understands every word I say. Well, nearly every word."
+        ],
+        "text": [
+          "Vorbești cu Pokémonul tău? Ar trebui!",
+          "Clefairy-ul meu înțelege fiecare cuvânt pe care-l spun. Ei, aproape fiecare cuvânt."
+        ]
+      }
+    },
+    "gift_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

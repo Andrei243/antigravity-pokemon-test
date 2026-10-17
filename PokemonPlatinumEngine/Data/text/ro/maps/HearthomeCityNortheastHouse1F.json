@@ -1,0 +1,147 @@
+{
+  "displayName": {
+    "en": [
+      "Hearthome City"
+    ],
+    "text": [
+      "Orașul Hearthome"
+    ]
+  },
+  "people": {
+    "pokefan_f": {
+      "name": {
+        "en": [
+          "Mother"
+        ],
+        "text": [
+          "Mamă"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Well now, a Trainer! Then you are father and mother both to your Pokémon.",
+          "You know how living with Pokémon keeps showing you things you never knew?",
+          "It's the same with children. Mine teach me something new every day."
+        ],
+        "text": [
+          "Ia te uită, un Antrenor! Atunci le ești și mamă, și tată Pokémonilor tăi.",
+          "Știi cum trăitul cu Pokémonii îți tot arată lucruri pe care nu le știai?",
+          "La fel e și cu copiii. Ai mei mă învață ceva nou în fiecare zi."
+        ]
+      }
+    },
+    "pikachu": {
+      "name": {
+        "en": [
+          "Pikachu"
+        ],
+        "text": [
+          "Pikachu"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pikachu: Pika pii?"
+        ],
+        "text": [
+          "Pikachu: Pika pii?"
+        ]
+      }
+    },
+    "battle_girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Babies and Pokémon get on perfectly.",
+          "When the baby has a nap, the Pokémon curls up asleep right beside the pram."
+        ],
+        "text": [
+          "Bebelușii și Pokémonii se înțeleg de minune.",
+          "Când bebelușul doarme, Pokémonul se face ghem și adoarme chiar lângă cărucior."
+        ]
+      }
+    },
+    "ninja_boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When I'm bigger I'm going to be a Trainer too!"
+        ],
+        "text": [
+          "Când o să fiu mare, o să fiu și eu Antrenor!"
+        ]
+      }
+    },
+    "twin": {
+      "name": {
+        "en": [
+          "Little Girl"
+        ],
+        "text": [
+          "Fetița"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When I grow up I want to be a Pokémon Coordinator."
+        ],
+        "text": [
+          "Când o să fiu mare, vreau să fiu Coordonatoare Pokémon."
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Lass"
+        ],
+        "text": [
+          "Domnișoara"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Oh, wow, a Pokémon Trainer!",
+          "Looking after that many Pokémon must be a lot of work. But a lot of fun comes with it!"
+        ],
+        "text": [
+          "O, uau, un Antrenor de Pokémoni!",
+          "Să ai grijă de atâția Pokémoni trebuie să fie multă muncă. Dar vine și cu multă distracție!"
+        ]
+      }
+    },
+    "school_kid_m": {
+      "name": {
+        "en": [
+          "School Kid"
+        ],
+        "text": [
+          "Școlărița"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "... My sisters make such a racket that nobody ever notices me."
+        ],
+        "text": [
+          "... Surorile mele fac așa o gălăgie că nimeni nu mă observă vreodată."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,25 @@
+{
+  "people": {
+    "pokemon_breeder_f": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Somebody looks after this soft soil. You can tell by how dark and damp it is.",
+          "Plant a Berry in it, water it now and then, and it gives you back more than you put in."
+        ],
+        "text": [
+          "Cineva îngrijește solul ăsta moale. Se vede după cât e de închis la culoare și de umed.",
+          "Plantează o Boabă, ud-o din când în când și-ți dă înapoi mai mult decât ai pus."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

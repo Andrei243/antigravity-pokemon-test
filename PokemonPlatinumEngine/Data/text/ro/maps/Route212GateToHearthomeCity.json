@@ -1,0 +1,108 @@
+{
+  "displayName": {
+    "en": [
+      "Route 212"
+    ],
+    "text": [
+      "Ruta 212"
+    ]
+  },
+  "people": {
+    "collector": {
+      "name": {
+        "en": [
+          "Collector"
+        ],
+        "text": [
+          "Colecționarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came all the way across Sinnoh to enter Hearthome's Contests.",
+          "My feet ache, but my Pokémon are raring to go on stage!"
+        ],
+        "text": [
+          "Am străbătut tot Sinnoh-ul ca să mă înscriu la Concursurile din Hearthome.",
+          "Mă dor picioarele, dar Pokémonii mei abia așteaptă să urce pe scenă!"
+        ]
+      }
+    },
+    "cowgirl": {
+      "name": {
+        "en": [
+          "Cowgirl"
+        ],
+        "text": [
+          "Cowgirl"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Pokémon have had Poffin after Poffin after Poffin.",
+          "With a shine like theirs, we're bound to bring a ribbon or two home!"
+        ],
+        "text": [
+          "Pokémonii mei au mâncat Poffin după Poffin după Poffin.",
+          "Cu o strălucire ca a lor, sigur ducem acasă o panglică-două!"
+        ]
+      }
+    },
+    "reporter": {
+      "name": {
+        "en": [
+          "Reporter"
+        ],
+        "text": [
+          "Reporterița"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Sorry, the gate's closed for a little while. We're filming a programme down on Route 212!",
+          "Come back once we've wrapped up, won't you?"
+        ],
+        "text": [
+          "Ne pare rău, poarta e închisă o vreme. Filmăm o emisiune jos, pe Ruta 212!",
+          "Revino după ce terminăm, bine?"
+        ]
+      }
+    },
+    "cameraman": {
+      "name": {
+        "en": [
+          "Cameraman"
+        ],
+        "text": [
+          "Cameramanul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Sorry, nobody gets through the gate for now. We're on location for a television shoot."
+        ],
+        "text": [
+          "Ne pare rău, deocamdată nu trece nimeni pe poartă. Filmăm o emisiune de televiziune."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "8,2": {
+      "en": [
+        "A map of Sinnoh. Hearthome City lies north of here, and Route 212 runs south past the Pokémon Mansion toward Pastoria City."
+      ],
+      "text": [
+        "O hartă a Sinnoh-ului. Orașul Hearthome se află la nord de aici, iar Ruta 212 merge spre sud, pe lângă Conacul Pokémon, spre Orașul Pastoria."
+      ]
+    },
+    "9,2": {
+      "en": [
+        "A map of Sinnoh. Hearthome City lies north of here, and Route 212 runs south past the Pokémon Mansion toward Pastoria City."
+      ],
+      "text": [
+        "O hartă a Sinnoh-ului. Orașul Hearthome se află la nord de aici, iar Ruta 212 merge spre sud, pe lângă Conacul Pokémon, spre Orașul Pastoria."
+      ]
+    }
+  }
+}

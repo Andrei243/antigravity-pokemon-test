@@ -1,0 +1,80 @@
+{
+  "PokefanF": [
+    {
+      "en": [
+        "Oh, a Trainer! You don't have a Seal Case, do you? I can tell by looking. Here, take this one. I've more than I'll ever use."
+      ],
+      "text": [
+        "O, un Antrenor! N-ai o Seal Case, nu? Se vede cu ochiul liber. Poftim, ia-o pe asta. Am mai multe decât o să folosesc vreodată."
+      ]
+    },
+    {
+      "en": [
+        "And a case with nothing in it is a sad thing, so here are a few Seals to start you off."
+      ],
+      "text": [
+        "Și o cutie fără nimic în ea e un lucru trist, așa că uite câteva Stickere să începi."
+      ]
+    },
+    {
+      "en": [
+        "{player} put the Seals away in the Seal Case."
+      ],
+      "text": [
+        "{player} a pus Stickerele în Seal Case."
+      ]
+    },
+    {
+      "en": [
+        "Seals go on a Ball Capsule, and a Ball Capsule goes on a Poké Ball. When the Pokémon comes out in battle, out they all burst!"
+      ],
+      "text": [
+        "Stickerele se pun pe o Capsulă de Ball, iar Capsula se pune pe un Poké Ball. Când Pokémonul iese în luptă, toate izbucnesc odată!"
+      ]
+    },
+    {
+      "en": [
+        "You stick them on at a PC. Where you put each Seal changes how it goes off, so try them out."
+      ],
+      "text": [
+        "Le lipești la un PC. Locul în care pui fiecare Sticker schimbă felul în care izbucnește, așa că încearcă."
+      ]
+    }
+  ],
+  "NinjaBoy": [
+    {
+      "en": [
+        "Show me an Unown and I'll give you Seals that look just like it! A different shape each time, mind."
+      ],
+      "text": [
+        "Arată-mi un Unown și-ți dau Stickere care arată exact ca el! O formă diferită de fiecare dată, ține minte."
+      ]
+    },
+    {
+      "en": [
+        "Whoa! That {wearer} looks just like my Seals! Here, these are the ones. Take them!"
+      ],
+      "text": [
+        "Uau! {wearer} ăsta arată exact ca Stickerele mele! Uite, astea sunt. Ia-le!"
+      ]
+    },
+    {
+      "en": [
+        "{player} received {seals} × {seal}!",
+        "{player} put them away in the Seal Case."
+      ],
+      "text": [
+        "{player} a primit {seals} × {seal}!",
+        "{player} le-a pus în Seal Case."
+      ]
+    },
+    {
+      "en": [
+        "I've got loads of Seals with letters on them. But you've nothing to keep them in... Go and talk to my mom!"
+      ],
+      "text": [
+        "Am o grămadă de Stickere cu litere pe ele. Dar n-ai în ce să le ții... Du-te și vorbește cu mama!"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "displayName": {
+    "en": [
+      "Hearthome City"
+    ],
+    "text": [
+      "Orașul Hearthome"
+    ]
+  },
+  "people": {
+    "ace_trainer_f": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          "Antrenor As"
+        ]
+      }
+    },
+    "clefairy": {
+      "name": {
+        "en": [
+          "Clefairy"
+        ],
+        "text": [
+          "Clefairy"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clefairy: Pippi!"
+        ],
+        "text": [
+          "Clefairy: Pippi!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

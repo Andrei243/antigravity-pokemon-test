@@ -1,0 +1,130 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Looker"
+      ],
+      "text": [
+        "Looker"
+      ]
+    },
+    {
+      "en": [
+        "Psst! It is I! Looker! Ha ha! You did not know me, yes? You jumped!"
+      ],
+      "text": [
+        "Pst! Sunt eu! Looker! Ha, ha! Nu m-ai recunoscut, da? Ai tresărit!"
+      ]
+    },
+    {
+      "en": [
+        "But of course. A man of the International Police must be a master of disguise."
+      ],
+      "text": [
+        "Dar desigur. Un om al Poliției Internaționale trebuie să fie maestru al deghizării."
+      ]
+    },
+    {
+      "en": [
+        "...Now. You are a fine Trainer, this I know very well. All the same, take care in here."
+      ],
+      "text": [
+        "...Acum. Ești un Antrenor bun, asta știu foarte bine. Totuși, ai grijă aici."
+      ]
+    },
+    {
+      "en": [
+        "And a word of advice. On every floor of this building there are two staircases, and one of them is a trap."
+      ],
+      "text": [
+        "Și un sfat. Pe fiecare etaj al clădirii sunt două scări, și una din ele e o capcană."
+      ]
+    },
+    {
+      "en": [
+        "But these Team Galactic crooks, they are not, how do you say, very bright. The right way should not be hard to find!"
+      ],
+      "text": [
+        "Dar escrocii ăștia de la Echipa Galactic nu sunt, cum se zice, foarte deștepți. Drumul bun nu ar trebui să fie greu de găsit!"
+      ]
+    }
+  ],
+  "Looker": [
+    {
+      "en": [
+        "Looker"
+      ],
+      "text": [
+        "Looker"
+      ]
+    },
+    {
+      "en": [
+        "I am investigating Team Galactic, but who they are and what they want, I still cannot say."
+      ],
+      "text": [
+        "Cercetez Echipa Galactic, dar cine sunt și ce vor, încă nu pot să spun."
+      ]
+    },
+    {
+      "en": [
+        "Their underlings, it seems, know nothing of their boss's plans."
+      ],
+      "text": [
+        "Subalternii lor, se pare, nu știu nimic de planurile șefului."
+      ]
+    },
+    {
+      "en": [
+        "Remember: two staircases, and one is a trap. These crooks are not clever. The right way should be easy to spot!"
+      ],
+      "text": [
+        "Ține minte: două scări, și una e o capcană. Escrocii ăștia nu sunt isteți. Drumul bun trebuie să fie ușor de văzut!"
+      ]
+    }
+  ],
+  "Welcome": [
+    {
+      "en": [
+        "Galactic Grunt"
+      ],
+      "text": [
+        "Galactic Grunt"
+      ]
+    },
+    {
+      "en": [
+        "Hello and welcome to Team Galactic! Come to hand over your Pokémon?"
+      ],
+      "text": [
+        "Bună și bun venit la Echipa Galactic! Ai venit să ne dai Pokémonii?"
+      ]
+    },
+    {
+      "en": [
+        "...You haven't? Then clear off our property! Unless you'd like what the cycle shop's manager got."
+      ],
+      "text": [
+        "...Nu? Atunci cară-te de pe proprietatea noastră! Doar dacă nu vrei să pățești ce-a pățit directorul magazinului de biciclete."
+      ]
+    }
+  ],
+  "Stars": [
+    {
+      "en": [
+        "Galactic Grunt"
+      ],
+      "text": [
+        "Galactic Grunt"
+      ]
+    },
+    {
+      "en": [
+        "This little world isn't enough for Team Galactic. We look to the stars!"
+      ],
+      "text": [
+        "Lumea asta mică nu-i ajunge Echipei Galactic. Noi privim spre stele!"
+      ]
+    }
+  ]
+}

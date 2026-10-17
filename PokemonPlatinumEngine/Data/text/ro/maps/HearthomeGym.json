@@ -1,0 +1,40 @@
+{
+  "displayName": {
+    "en": [
+      "Hearthome Gym"
+    ],
+    "text": [
+      "Arena Hearthome"
+    ]
+  },
+  "people": {
+    "gym_guide": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          "Ghidul Arenei"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "2,6": {
+      "en": [
+        "HEARTHOME CITY POKéMON GYM\nLeader: Fantina"
+      ],
+      "text": [
+        "ARENA POKéMON DIN ORAȘUL HEARTHOME\nLideră: Fantina"
+      ]
+    },
+    "6,6": {
+      "en": [
+        "HEARTHOME CITY POKéMON GYM\nLeader: Fantina"
+      ],
+      "text": [
+        "ARENA POKéMON DIN ORAȘUL HEARTHOME\nLideră: Fantina"
+      ]
+    }
+  }
+}

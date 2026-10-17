@@ -1,0 +1,23 @@
+{
+  "displayName": {
+    "en": [
+      "Hearthome City"
+    ],
+    "text": [
+      "Orașul Hearthome"
+    ]
+  },
+  "people": {
+    "bebe": {
+      "name": {
+        "en": [
+          "Bebe"
+        ],
+        "text": [
+          "Bebe"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

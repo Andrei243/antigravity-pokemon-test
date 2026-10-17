@@ -1,0 +1,59 @@
+{
+  "displayName": {
+    "en": [
+      "Celestic Town"
+    ],
+    "text": [
+      "Orășelul Celestic"
+    ]
+  },
+  "people": {
+    "expert_m": {
+      "name": {
+        "en": [
+          "Shopkeeper"
+        ],
+        "text": [
+          "Negustorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Come in, come in. This counter has the things you'll find nowhere but Celestic."
+        ],
+        "text": [
+          "Intră, intră. La ghișeul ăsta găsești lucruri care nu se găsesc nicăieri în afară de Celestic."
+        ]
+      }
+    },
+    "expert_f": {
+      "name": {
+        "en": [
+          "Shopkeeper"
+        ],
+        "text": [
+          "Negustoreasa"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome, dear. What can I get you?"
+        ],
+        "text": [
+          "Bun venit, dragă. Ce să-ți dau?"
+        ]
+      }
+    },
+    "gym_guide": {
+      "name": {
+        "en": [
+          "Man in Glasses"
+        ],
+        "text": [
+          "Bărbatul cu ochelari"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

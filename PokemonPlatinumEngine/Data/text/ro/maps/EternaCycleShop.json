@@ -1,0 +1,84 @@
+{
+  "displayName": {
+    "en": [
+      "Rad Rickshaw's Cycle Shop"
+    ],
+    "text": [
+      "Magazinul de biciclete Rad Rickshaw"
+    ]
+  },
+  "people": {
+    "pokefan_m": {
+      "name": {
+        "en": [
+          "Manager"
+        ],
+        "text": [
+          "Directorul"
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Shop Boy"
+        ],
+        "text": [
+          "Băiatul din magazin"
+        ]
+      }
+    },
+    "clefairy": {
+      "name": {
+        "en": [
+          "Clefairy"
+        ],
+        "text": [
+          "Clefairy"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clefairy: Pip-piih!"
+        ],
+        "text": [
+          "Clefairy: Pip-piih!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "10,3": {
+      "en": [
+        "A manual for the newest Bicycle. \"Change gear with the run button: the low gear steers easily, the high gear flies!\""
+      ],
+      "text": [
+        "Manualul celei mai noi biciclete. „Schimbi viteza cu butonul de alergare: cea mică se conduce ușor, cea mare zboară!”"
+      ]
+    },
+    "11,3": {
+      "en": [
+        "A manual for the newest Bicycle. \"Change gear with the run button: the low gear steers easily, the high gear flies!\""
+      ],
+      "text": [
+        "Manualul celei mai noi biciclete. „Schimbi viteza cu butonul de alergare: cea mică se conduce ușor, cea mare zboară!”"
+      ]
+    },
+    "12,3": {
+      "en": [
+        "A catalogue of bicycles from the Hoenn region: one built for nothing but speed, and one built for tricks and jumps."
+      ],
+      "text": [
+        "Un catalog de biciclete din regiunea Hoenn: una făcută doar pentru viteză și una pentru trucuri și sărituri."
+      ]
+    },
+    "13,3": {
+      "en": [
+        "A catalogue of bicycles from the Hoenn region: one built for nothing but speed, and one built for tricks and jumps."
+      ],
+      "text": [
+        "Un catalog de biciclete din regiunea Hoenn: una făcută doar pentru viteză și una pentru trucuri și sărituri."
+      ]
+    }
+  }
+}

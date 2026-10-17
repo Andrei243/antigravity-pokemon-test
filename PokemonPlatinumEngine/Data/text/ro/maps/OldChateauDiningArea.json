@@ -1,0 +1,51 @@
+{
+  "displayName": {
+    "en": [
+      "Old Chateau"
+    ],
+    "text": [
+      "Old Chateau"
+    ]
+  },
+  "people": {
+    "old_man": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "item_rare_candy": {
+      "name": {
+        "en": [
+          "Rare Candy"
+        ],
+        "text": [
+          "Rare Candy"
+        ]
+      }
+    },
+    "item_big_pearl": {
+      "name": {
+        "en": [
+          "Big Pearl"
+        ],
+        "text": [
+          "Big Pearl"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

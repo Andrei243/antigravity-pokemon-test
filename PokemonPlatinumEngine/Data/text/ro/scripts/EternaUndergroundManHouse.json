@@ -1,0 +1,764 @@
+{
+  "UndergroundMan": [
+    {
+      "en": [
+        "Underground Man"
+      ],
+      "text": [
+        "Omul din Subteran"
+      ]
+    },
+    {
+      "en": [
+        "Yes, it's me! The first man ever to go down below and dig himself a tunnel!"
+      ],
+      "text": [
+        "Da, eu sunt! Primul om care a coborât vreodată sub pământ și și-a săpat singur un tunel!"
+      ]
+    },
+    {
+      "en": [
+        "Underground Man, they call me. Everybody does. Here, a present for you."
+      ],
+      "text": [
+        "Omul din Subteran, așa îmi zice. Toată lumea. Poftim, un cadou pentru tine."
+      ]
+    },
+    {
+      "en": [
+        "Mind you keep your side of the bargain and make good use of it!"
+      ],
+      "text": [
+        "Ai grijă să-ți ții partea de înțelegere și să-l folosești cum trebuie!"
+      ]
+    },
+    {
+      "en": [
+        "Underground Man"
+      ],
+      "text": [
+        "Omul din Subteran"
+      ]
+    },
+    {
+      "en": [
+        "That Explorer Kit will take you straight down into the Underground. Just use it, and there you are!"
+      ],
+      "text": [
+        "Explorer Kit-ul ăla te duce direct jos, în Subteran. Doar îl folosești și gata, ai ajuns!"
+      ]
+    },
+    {
+      "en": [
+        "Down there is a whole other world. You can do all sorts of things!"
+      ],
+      "text": [
+        "Acolo jos e o cu totul altă lume. Poți face tot felul de lucruri!"
+      ]
+    },
+    {
+      "en": [
+        "So how about it? Shall I teach you everything it takes to be a real spelunker?"
+      ],
+      "text": [
+        "Deci, ce zici? Să te învăț tot ce-i trebuie unui speolog adevărat?"
+      ]
+    },
+    {
+      "en": [
+        "Outstanding, the lot of it! I've nothing left to teach you."
+      ],
+      "text": [
+        "Excepțional, tot! Nu mai am ce să te învăț."
+      ]
+    },
+    {
+      "en": [
+        "From this day on, you're the master spelunker!"
+      ],
+      "text": [
+        "Din ziua asta, ești maestru-speolog!"
+      ]
+    },
+    {
+      "en": [
+        "Ah... I'd hoped to show a young one like you all the wonders of the tunnels."
+      ],
+      "text": [
+        "Ah... speram să-i arăt cuiva tânăr ca tine toate minunile tunelurilor."
+      ]
+    },
+    {
+      "en": [
+        "But I can't make you, can I? Sigh... It does get lonely down here sometimes."
+      ],
+      "text": [
+        "Dar nu te pot obliga, nu? Of... Uneori e cam singuratic aici jos."
+      ]
+    },
+    {
+      "en": [
+        "Aha! You've been down in the tunnels, I can tell by your boots! Well done! Take these."
+      ],
+      "text": [
+        "Aha! Ai fost jos în tunele, se vede după bocanci! Bravo! Ia astea."
+      ]
+    },
+    {
+      "en": [
+        "{player} was handed a Move Trap, a Bubble Trap and a Leaf Trap!"
+      ],
+      "text": [
+        "{player} a primit un Move Trap, un Bubble Trap și un Leaf Trap!"
+      ]
+    },
+    {
+      "en": [
+        "Underground Man"
+      ],
+      "text": [
+        "Omul din Subteran"
+      ]
+    },
+    {
+      "en": [
+        "Traps, those are. Whoever treads on one sets it off. Lay them in the tunnels and see who comes along!"
+      ],
+      "text": [
+        "Capcane, asta sunt. Cine calcă pe una o declanșează. Pune-le prin tunele și vezi cine trece!"
+      ]
+    },
+    {
+      "en": [
+        "Come and speak to me again for your next mission."
+      ],
+      "text": [
+        "Mai vino să vorbim pentru următoarea misiune."
+      ]
+    },
+    {
+      "en": [
+        "Ha! That's what I like to hear! I'll teach you with missions, one at a time."
+      ],
+      "text": [
+        "Ha! Asta vreau să aud! Te învăț prin misiuni, una câte una."
+      ]
+    },
+    {
+      "en": [
+        "Your first: go down into the Underground. Nothing to it. Use your Explorer Kit, out of doors and not in a cave."
+      ],
+      "text": [
+        "Prima: coboară în Subteran. Nimic mai simplu. Folosește Explorer Kit-ul afară, nu într-o peșteră."
+      ]
+    },
+    {
+      "en": [
+        "Manage that, and I'll set you your next test."
+      ],
+      "text": [
+        "Reușești asta și-ți dau următorul test."
+      ]
+    },
+    {
+      "en": [
+        "Not been down yet? All it takes is your Explorer Kit!"
+      ],
+      "text": [
+        "N-ai coborât încă? Îți trebuie doar Explorer Kit-ul!"
+      ]
+    },
+    {
+      "en": [
+        "Out of doors, mind. It's no use inside a house, or in a cave. Off you go!"
+      ],
+      "text": [
+        "Afară, ține minte. Nu merge în casă sau într-o peșteră. Hai, du-te!"
+      ]
+    },
+    {
+      "en": [
+        "There! You've been at a wall, just as I asked! Good work! Your reward."
+      ],
+      "text": [
+        "Gata! Ai săpat la un perete, cum ți-am cerut! Bună treabă! Recompensa ta."
+      ]
+    },
+    {
+      "en": [
+        "{player} was handed a Prism Sphere, a Red Sphere and a Blue Sphere!"
+      ],
+      "text": [
+        "{player} a primit o Prism Sphere, o Red Sphere și o Blue Sphere!"
+      ]
+    },
+    {
+      "en": [
+        "Underground Man"
+      ],
+      "text": [
+        "Omul din Subteran"
+      ]
+    },
+    {
+      "en": [
+        "The walls down there are full of things. Fossils and stones you can carry up to the surface with you."
+      ],
+      "text": [
+        "Pereții de acolo sunt plini de lucruri. Fosile și pietre pe care le poți lua cu tine la suprafață."
+      ]
+    },
+    {
+      "en": [
+        "Spheres stay below. They're gems, and down there they pass for money. Come back for your next mission."
+      ],
+      "text": [
+        "Sferele rămân jos. Sunt pietre prețioase și acolo țin loc de bani. Revino pentru următoarea misiune."
+      ]
+    },
+    {
+      "en": [
+        "Well? Big and empty, was it? That's only because you don't know where to look yet!"
+      ],
+      "text": [
+        "Ei? Mare și gol, nu? Doar pentru că încă nu știi unde să cauți!"
+      ]
+    },
+    {
+      "en": [
+        "The tunnels hide a great deal the eye can't see. Your next test: dig some Treasure or a Sphere out of a wall."
+      ],
+      "text": [
+        "Tunelurile ascund multe pe care ochiul nu le vede. Următorul test: scoate dintr-un perete o Comoară sau o Sferă."
+      ]
+    },
+    {
+      "en": [
+        "Nothing found yet? Send out your radar's pulse as you go, and watch the walls for a glint."
+      ],
+      "text": [
+        "N-ai găsit nimic încă? Trimite pulsul radarului pe măsură ce mergi și urmărește pereții să vezi o sclipire."
+      ]
+    },
+    {
+      "en": [
+        "Stand right before the glint, face the wall, and dig!"
+      ],
+      "text": [
+        "Stai chiar în fața sclipirii, cu fața la perete, și sapă!"
+      ]
+    },
+    {
+      "en": [
+        "Good, good! Your Spheres are in the ground! Next time you go down, they'll be the bigger for it."
+      ],
+      "text": [
+        "Bine, bine! Sferele tale sunt în pământ! Data viitoare când cobori, o să fie mai mari."
+      ]
+    },
+    {
+      "en": [
+        "Only don't forget where you put them! Here, your reward."
+      ],
+      "text": [
+        "Numai să nu uiți unde le-ai pus! Poftim, recompensa ta."
+      ]
+    },
+    {
+      "en": [
+        "{player} was handed a Digger Drill!"
+      ],
+      "text": [
+        "{player} a primit un Digger Drill!"
+      ]
+    },
+    {
+      "en": [
+        "Underground Man"
+      ],
+      "text": [
+        "Omul din Subteran"
+      ]
+    },
+    {
+      "en": [
+        "You'll have met the hikers down there. Sphere collectors, every one. They'll swap you things for a good big Sphere."
+      ],
+      "text": [
+        "Ai dat de drumeții de acolo, sigur. Toți colecționează Sfere. Îți dau lucruri la schimb pe o Sferă mare și frumoasă."
+      ]
+    },
+    {
+      "en": [
+        "Come back for your next mission."
+      ],
+      "text": [
+        "Revino pentru următoarea misiune."
+      ]
+    },
+    {
+      "en": [
+        "I'm not done with you yet! Next, those Spheres. Peculiar things, they are."
+      ],
+      "text": [
+        "N-am terminat cu tine! Acum, Sferele. Ciudate lucruri."
+      ]
+    },
+    {
+      "en": [
+        "Bury one in the floor of a tunnel and it grows, a little every day. So: go and bury the Spheres I gave you."
+      ],
+      "text": [
+        "Îngroapă una în podeaua unui tunel și crește, câte puțin în fiecare zi. Deci: du-te și îngroapă Sferele pe care ți le-am dat."
+      ]
+    },
+    {
+      "en": [
+        "Still carrying them? Afraid you'll lose them? No fear of that! A Sphere goes in easily and comes out as easily."
+      ],
+      "text": [
+        "Încă le cari după tine? Ți-e frică să nu le pierzi? N-ai de ce! O Sferă intră ușor și iese la fel de ușor."
+      ]
+    },
+    {
+      "en": [
+        "Just remember the spot. The Underground is a big place."
+      ],
+      "text": [
+        "Doar ține minte locul. Subteranul e mare."
+      ]
+    },
+    {
+      "en": [
+        "A Secret Base of your own! Splendid! I wondered if I was asking too much, and here you are. Your reward!"
+      ],
+      "text": [
+        "O Bază Secretă numai a ta! Splendid! Mă întrebam dacă nu cer prea mult, și uite-te la tine. Recompensa ta!"
+      ]
+    },
+    {
+      "en": [
+        "A Plain Table, a Wooden Chair, a Small Bookshelf and a Buneary Doll were sent to the PC in {player}'s base!"
+      ],
+      "text": [
+        "O Plain Table, un Wooden Chair, un Small Bookshelf și o Buneary Doll au fost trimise la PC-ul din baza lui {player}!"
+      ]
+    },
+    {
+      "en": [
+        "Underground Man"
+      ],
+      "text": [
+        "Omul din Subteran"
+      ]
+    },
+    {
+      "en": [
+        "A Digger Drill is good for one base, mind. To move house you'll want another, and a hiker will swap you one for a Sphere."
+      ],
+      "text": [
+        "Un Digger Drill e bun pentru o singură bază. Ca să te muți îți trebuie altul, iar un drumeț ți-l dă la schimb pe o Sferă."
+      ]
+    },
+    {
+      "en": [
+        "Come back for your next mission."
+      ],
+      "text": [
+        "Revino pentru următoarea misiune."
+      ]
+    },
+    {
+      "en": [
+        "Tired of going down and coming up again? We're not finished! Next comes a Secret Base, a place of your own down there."
+      ],
+      "text": [
+        "Te-ai săturat să tot cobori și să urci? N-am terminat! Urmează o Bază Secretă, un loc numai al tău acolo jos."
+      ]
+    },
+    {
+      "en": [
+        "The Digger Drill I gave you is all it takes. Go below and make yourself a base!"
+      ],
+      "text": [
+        "Digger Drill-ul pe care ți l-am dat e tot ce-ți trebuie. Coboară și fă-ți o bază!"
+      ]
+    },
+    {
+      "en": [
+        "Stuck on the drill? It's in among your Traps. Stand facing a good solid wall and use it. That's all there is to it."
+      ],
+      "text": [
+        "Te-ai împotmolit cu burghiul? E printre Capcanele tale. Stai cu fața la un perete bun și solid și folosește-l. Asta-i tot."
+      ]
+    },
+    {
+      "en": [
+        "And you've made the place your own! I knew I saw a spelunker in you. This one is for your base."
+      ],
+      "text": [
+        "Și ți-ai făcut locul pe gustul tău! Știam că văd un speolog în tine. Asta e pentru baza ta."
+      ]
+    },
+    {
+      "en": [
+        "A {starter} Doll was sent to the PC in {player}'s base!"
+      ],
+      "text": [
+        "O {starter} Doll a fost trimisă la PC-ul din baza lui {player}!"
+      ]
+    },
+    {
+      "en": [
+        "Underground Man"
+      ],
+      "text": [
+        "Omul din Subteran"
+      ]
+    },
+    {
+      "en": [
+        "There are ways to come by more goods. Grow your Spheres, and swap them with the hikers."
+      ],
+      "text": [
+        "Sunt și alte feluri de a face rost de mai multe mărfuri. Crește-ți Sferele și dă-le la schimb drumeților."
+      ]
+    },
+    {
+      "en": [
+        "You've seen it through to the end! This is my last test. That base of yours: bare as a rock, isn't it?"
+      ],
+      "text": [
+        "Ai dus-o până la capăt! Ăsta e ultimul meu test. Baza ta: goală ca o piatră, nu?"
+      ]
+    },
+    {
+      "en": [
+        "So make it yours! Use the PC in your base, and put out the goods I sent you."
+      ],
+      "text": [
+        "Așa că fă-o a ta! Folosește PC-ul din bază și pune la vedere mărfurile pe care ți le-am trimis."
+      ]
+    },
+    {
+      "en": [
+        "Have I stumped you at last? The PC in your base is where it's done. DECORATE, then carry each thing where you'd have it."
+      ],
+      "text": [
+        "Te-am încurcat în sfârșit? Totul se face din PC-ul din bază. DECOREAZĂ, apoi du fiecare lucru unde vrei să stea."
+      ]
+    },
+    {
+      "en": [
+        "Ah! This is yours, I believe!"
+      ],
+      "text": [
+        "Ah! Asta e a ta, cred!"
+      ]
+    },
+    {
+      "en": [
+        "Don't tell me... you've brought a flag home! Then the first of your big boulders can go. Put it away like any piece of furniture. Your reward!"
+      ],
+      "text": [
+        "Nu-mi spune... ai adus un steag acasă! Atunci primul bolovan mare poate pleca. Strânge-l ca pe orice mobilă. Recompensa ta!"
+      ]
+    },
+    {
+      "en": [
+        "A Pretty Gem was sent to the PC in {player}'s base!"
+      ],
+      "text": [
+        "O Pretty Gem a fost trimisă la PC-ul din baza lui {player}!"
+      ]
+    },
+    {
+      "en": [
+        "Underground Man"
+      ],
+      "text": [
+        "Omul din Subteran"
+      ]
+    },
+    {
+      "en": [
+        "There truly is nothing more I can teach you. To clear more boulders and put out more goods, keep bringing flags home."
+      ],
+      "text": [
+        "Chiar nu mai am ce să te învăț. Ca să scapi de mai mulți bolovani și să pui mai multe mărfuri, adu în continuare steaguri acasă."
+      ]
+    },
+    {
+      "en": [
+        "Become the master spelunker, for my sake!"
+      ],
+      "text": [
+        "Devino maestru-speolog, de dragul meu!"
+      ]
+    },
+    {
+      "en": [
+        "I've taught you all I know... but if you insist, there is one thing more."
+      ],
+      "text": [
+        "Te-am învățat tot ce știu... dar dacă insiști, mai e un lucru."
+      ]
+    },
+    {
+      "en": [
+        "Those big boulders cluttering your base. There is a way to shift them. It isn't for the faint of heart, mind..."
+      ],
+      "text": [
+        "Bolovanii ăia mari care-ți încurcă baza. Există o cale să-i muți. Nu e pentru cei slabi de înger, totuși..."
+      ]
+    },
+    {
+      "en": [
+        "...Very well! You're a born spelunker, so I'll tell you. Others dig down there too, and every one has a base with a flag on its PC."
+      ],
+      "text": [
+        "...Fie! Ești speolog din născare, așa că-ți spun. Și alții sapă acolo jos, și fiecare are o bază cu un steag pe PC."
+      ]
+    },
+    {
+      "en": [
+        "Find one of their bases, take the flag, and carry it home to your own PC. Your base grows with every flag you bring back."
+      ],
+      "text": [
+        "Găsește una dintre bazele lor, ia steagul și du-l acasă, la PC-ul tău. Baza ta crește cu fiecare steag pe care-l aduci."
+      ]
+    },
+    {
+      "en": [
+        "My spelunker! Found another digger's base yet? Each day brings new ones to the tunnels."
+      ],
+      "text": [
+        "Speologul meu! Ai găsit baza altui săpător? În fiecare zi apar altele noi prin tunele."
+      ]
+    },
+    {
+      "en": [
+        "Bring a flag home to your own PC, then come and tell me!"
+      ],
+      "text": [
+        "Adu un steag acasă, la PC-ul tău, apoi vino să-mi spui!"
+      ]
+    },
+    {
+      "en": [
+        "Ah! This is yours, I believe!"
+      ],
+      "text": [
+        "Ah! Asta e a ta, cred!"
+      ]
+    },
+    {
+      "en": [
+        "Three flags brought home! Well done! Your reward!"
+      ],
+      "text": [
+        "Trei steaguri aduse acasă! Bravo! Recompensa ta!"
+      ]
+    },
+    {
+      "en": [
+        "A Shiny Gem was sent to the PC in {player}'s base!"
+      ],
+      "text": [
+        "O Shiny Gem a fost trimisă la PC-ul din baza lui {player}!"
+      ]
+    },
+    {
+      "en": [
+        "Ah! This is yours, I believe!"
+      ],
+      "text": [
+        "Ah! Asta e a ta, cred!"
+      ]
+    },
+    {
+      "en": [
+        "Ten flags brought home! Well done indeed! Your reward!"
+      ],
+      "text": [
+        "Zece steaguri aduse acasă! Bravo, chiar așa! Recompensa ta!"
+      ]
+    },
+    {
+      "en": [
+        "A Mystic Gem was sent to the PC in {player}'s base!"
+      ],
+      "text": [
+        "O Mystic Gem a fost trimisă la PC-ul din baza lui {player}!"
+      ]
+    },
+    {
+      "en": [
+        "Ah! This is yours, I believe!"
+      ],
+      "text": [
+        "Ah! Asta e a ta, cred!"
+      ]
+    },
+    {
+      "en": [
+        "Oh! Oh, my word! Fifty flags! Magnificent! Your reward!"
+      ],
+      "text": [
+        "O! Vai de mine! Cincizeci de steaguri! Magnific! Recompensa ta!"
+      ]
+    },
+    {
+      "en": [
+        "A Glitter Gem was sent to the PC in {player}'s base!"
+      ],
+      "text": [
+        "O Glitter Gem a fost trimisă la PC-ul din baza lui {player}!"
+      ]
+    },
+    {
+      "en": [
+        "Off below again, my spelunker? The tunnels are wide, and there's always another digger's base to be found."
+      ],
+      "text": [
+        "Iar pleci jos, speologul meu? Tunelurile sunt largi și mereu e de găsit baza altui săpător."
+      ]
+    },
+    {
+      "en": [
+        "Oh? The PC in your base seems to be full. Throw a thing or two away, then come and see me again."
+      ],
+      "text": [
+        "O? PC-ul din baza ta pare plin. Aruncă un lucru-două, apoi mai treci pe la mine."
+      ]
+    }
+  ],
+  "Scientist": [
+    {
+      "en": [
+        "Scientist"
+      ],
+      "text": [
+        "Cercetătorul"
+      ]
+    },
+    {
+      "en": [
+        "Treasure hunting, that's the thing! I work at the mining museum over in Oreburgh."
+      ],
+      "text": [
+        "Vânătoarea de comori, asta da! Lucrez la muzeul de minerit de la Oreburgh."
+      ]
+    },
+    {
+      "en": [
+        "The Underground Man taught me a thing or two about digging up Treasure and Spheres. Here's his best tip."
+      ],
+      "text": [
+        "Omul din Subteran m-a învățat câte ceva despre scos Comori și Sfere. Uite cel mai bun sfat al lui."
+      ]
+    },
+    {
+      "en": [
+        "Now and then you'll strike dark rock. It's terribly hard, and if you keep hammering at it, the whole wall comes down!"
+      ],
+      "text": [
+        "Din când în când dai de rocă întunecată. E grozav de tare, și dacă tot lovești în ea, se surpă tot peretele!"
+      ]
+    },
+    {
+      "en": [
+        "Remember that, and you'll be bringing up Treasure in no time."
+      ],
+      "text": [
+        "Ține minte asta și o să scoți Comori cât ai clipi."
+      ]
+    },
+    {
+      "en": [
+        "More advice? Your Explorer Kit has a hammer and a pick. Whatever you uncover before the wall falls in is yours to keep."
+      ],
+      "text": [
+        "Alte sfaturi? Explorer Kit-ul tău are un ciocan și un târnăcop. Tot ce descoperi înainte să se surpe peretele e al tău."
+      ]
+    },
+    {
+      "en": [
+        "Leave the dark rock alone, though. It won't break, and every blow brings the wall nearer to collapse."
+      ],
+      "text": [
+        "Lasă însă roca întunecată în pace. Nu se sparge și fiecare lovitură aduce peretele mai aproape de prăbușire."
+      ]
+    }
+  ],
+  "PC": [
+    {
+      "en": [
+        "\"A Shortcut to the Underground\" is on the screen."
+      ],
+      "text": [
+        "Pe ecran scrie „O scurtătură spre Subteran”."
+      ]
+    },
+    {
+      "en": [
+        "Which heading will you read?",
+        "FLAGS",
+        "SPHERES",
+        "TRAPS",
+        "GOODS",
+        "TREASURES",
+        "EXIT"
+      ],
+      "text": [
+        "Ce capitol citești?",
+        "STEAGURI",
+        "SFERE",
+        "CAPCANE",
+        "MĂRFURI",
+        "COMORI",
+        "IEȘIRE"
+      ]
+    },
+    {
+      "en": [
+        "FLAGS: Every Secret Base has a flag on its PC. Take another digger's flag and carry it to your own PC, and your base is the better for it."
+      ],
+      "text": [
+        "STEAGURI: Fiecare Bază Secretă are un steag pe PC. Ia steagul altui săpător și du-l la PC-ul tău, iar baza ta devine mai bună."
+      ]
+    },
+    {
+      "en": [
+        "SPHERES: Bright stones dug out of the tunnels' walls. The hikers below take them like money, for goods and for traps. Buried in the floor, a Sphere grows day by day."
+      ],
+      "text": [
+        "SFERE: Pietre strălucitoare scoase din pereții tunelurilor. Drumeții de jos le iau drept bani, pentru mărfuri și capcane. Îngropată, o Sferă crește zi de zi."
+      ]
+    },
+    {
+      "en": [
+        "TRAPS: Things laid under the tunnels' floor for the unwary. Some have to be blown away, and some cleared by hand."
+      ],
+      "text": [
+        "CAPCANE: Lucruri puse sub podeaua tunelurilor pentru cei neatenți. Pe unele trebuie să le sufli, pe altele să le cureți cu mâna."
+      ]
+    },
+    {
+      "en": [
+        "GOODS: Furniture and ornaments for a Secret Base. The hikers swap them for Spheres."
+      ],
+      "text": [
+        "MĂRFURI: Mobilă și ornamente pentru o Bază Secretă. Drumeții le dau la schimb pe Sfere."
+      ]
+    },
+    {
+      "en": [
+        "TREASURES: Rare things that turn up as you dig. Put in the bag below ground, they can be carried up to the surface."
+      ],
+      "text": [
+        "COMORI: Lucruri rare care apar când sapi. Puse în rucsac sub pământ, pot fi duse la suprafață."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Looker"
+      ],
+      "text": [
+        "Looker"
+      ]
+    },
+    {
+      "en": [
+        "Hmm. This door, it does not budge. Without the proper key, here our road ends."
+      ],
+      "text": [
+        "Hmm. Ușa aceasta, nu se clintește. Fără cheia potrivită, aici se termină drumul nostru."
+      ]
+    },
+    {
+      "en": [
+        "Whoever fled through it is beyond our reach... for now."
+      ],
+      "text": [
+        "Cine a fugit prin ea e dincolo de puterea noastră... deocamdată."
+      ]
+    },
+    {
+      "en": [
+        "What is this? A Hidden Machine, for the move Fly!"
+      ],
+      "text": [
+        "Ce e asta? O Mașină Ascunsă, pentru mișcarea Fly!"
+      ]
+    },
+    {
+      "en": [
+        "Take it, {player}. Team Galactic will make no use of it if it is in your bag."
+      ],
+      "text": [
+        "Ia-o, {player}. Echipa Galactic nu se va folosi de ea dacă e în rucsacul tău."
+      ]
+    },
+    {
+      "en": [
+        "Well. The warehouse has told us little. Never mind."
+      ],
+      "text": [
+        "Ei bine. Depozitul nu ne-a spus mare lucru. Nu contează."
+      ]
+    },
+    {
+      "en": [
+        "In the Game Corner, I caught a whisper: a crate of Team Galactic's has gone off to Pastoria City."
+      ],
+      "text": [
+        "La Sala de Jocuri am prins o șoaptă: o ladă a Echipei Galactic a plecat spre Orașul Pastoria."
+      ]
+    },
+    {
+      "en": [
+        "What is in it, I cannot say. But my nose for trouble, it is twitching."
+      ],
+      "text": [
+        "Ce e în ea, nu pot spune. Dar nasul meu pentru necazuri, el se strâmbă."
+      ]
+    }
+  ],
+  "Door": [
+    {
+      "en": [
+        "Rust has crept all over this heavy door. It won't open without some special key."
+      ],
+      "text": [
+        "Rugina a acoperit toată ușa asta grea. Nu se deschide fără o cheie anume."
+      ]
+    }
+  ],
+  "LookerOpensDoor": [
+    {
+      "en": [
+        "Looker"
+      ],
+      "text": [
+        "Looker"
+      ]
+    },
+    {
+      "en": [
+        "Ah, there you are! I have kept you waiting."
+      ],
+      "text": [
+        "Ah, aici erai! Te-am lăsat să aștepți."
+      ]
+    },
+    {
+      "en": [
+        "Now, the Storage Key that Team Galactic so kindly let fall... In it goes, and..."
+      ],
+      "text": [
+        "Acum, Storage Key pe care Echipa Galactic a fost atât de amabilă să-l scape... Intră în broască, și..."
+      ]
+    },
+    {
+      "en": [
+        "...clunk! There! It is open!"
+      ],
+      "text": [
+        "...clanc! Gata! E deschisă!"
+      ]
+    },
+    {
+      "en": [
+        "I go on ahead, my friend. Do not put yourself in the way of harm!"
+      ],
+      "text": [
+        "Eu merg înainte, prietene. Nu te pune în calea primejdiei!"
+      ]
+    }
+  ],
+  "Looker": [
+    {
+      "en": [
+        "Looker"
+      ],
+      "text": [
+        "Looker"
+      ]
+    },
+    {
+      "en": [
+        "A crate of Team Galactic's, on its way to Pastoria City... I do not like it, my friend. Not one bit."
+      ],
+      "text": [
+        "O ladă a Echipei Galactic, în drum spre Orașul Pastoria... Nu-mi place, prietene. Deloc."
+      ]
+    },
+    {
+      "en": [
+        "If you go that way, keep your eyes open for me."
+      ],
+      "text": [
+        "Dacă mergi într-acolo, fii cu ochii-n patru pentru mine."
+      ]
+    }
+  ]
+}

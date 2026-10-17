@@ -1,0 +1,328 @@
+{
+  "people": {
+    "black_belt": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          "Centură Neagră"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I come up here to train in the fog. When you can't see, you learn to listen.",
+          "My reflexes have never been sharper!"
+        ],
+        "text": [
+          "Urc aici să mă antrenez în ceață. Când nu vezi, înveți să asculți.",
+          "Reflexele mele n-au fost niciodată mai ascuțite!"
+        ]
+      }
+    },
+    "ace_trainer_ernest": {
+      "name": {
+        "en": [
+          "Ernest"
+        ],
+        "text": [
+          "Ernest"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Ernest: Fog or no fog, I know a strong trainer when I see one. Let's battle!"
+        ],
+        "text": [
+          "Antrenor As Ernest: Ceață sau nu, recunosc un antrenor puternic când îl văd. Hai la luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Ernest: I saw that coming... about three moves too late."
+        ],
+        "text": [
+          "Antrenor As Ernest: Am văzut-o venind... cu vreo trei mișcări prea târziu."
+        ]
+      }
+    },
+    "ace_trainer_alyssa": {
+      "name": {
+        "en": [
+          "Alyssa"
+        ],
+        "text": [
+          "Alyssa"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Alyssa: Training in the fog sharpens every sense. Shall we put mine to the test?"
+        ],
+        "text": [
+          "Antrenor As Alyssa: Antrenamentul în ceață ascute toate simțurile. Le punem pe ale mele la încercare?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Alyssa: My senses are sharp. Yours are sharper, it seems."
+        ],
+        "text": [
+          "Antrenor As Alyssa: Simțurile mele sunt ascuțite. Ale tale sunt și mai ascuțite, se pare."
+        ]
+      }
+    },
+    "ninja_boy_joel": {
+      "name": {
+        "en": [
+          "Joel"
+        ],
+        "text": [
+          "Joel"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ninja Boy Joel: Out of the grass and into battle! You'll never see us coming!"
+        ],
+        "text": [
+          "Băiat ninja Joel: Din iarbă direct în luptă! N-o să ne vezi venind!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ninja Boy Joel: You saw all four of us coming. How?"
+        ],
+        "text": [
+          "Băiat ninja Joel: Ne-ai văzut venind pe toți patru. Cum?"
+        ]
+      }
+    },
+    "ninja_boy_nathan": {
+      "name": {
+        "en": [
+          "Nathan"
+        ],
+        "text": [
+          "Nathan"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ninja Boy Nathan: In fog like this, a ninja hardly needs to hide at all! Ha!"
+        ],
+        "text": [
+          "Băiat ninja Nathan: Pe o ceață ca asta, un ninja aproape că nici nu trebuie să se ascundă! Ha!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ninja Boy Nathan: Maybe I should have hidden properly after all."
+        ],
+        "text": [
+          "Băiat ninja Nathan: Poate trebuia totuși să mă ascund ca lumea."
+        ]
+      }
+    },
+    "ninja_boy_davido": {
+      "name": {
+        "en": [
+          "Davido"
+        ],
+        "text": [
+          "Davido"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ninja Boy Davido: You thought I was a rock, didn't you? Everybody does!"
+        ],
+        "text": [
+          "Băiat ninja Davido: Ai crezut că sunt o piatră, nu? Toată lumea crede!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ninja Boy Davido: Back to being a rock, then. A quiet, beaten rock."
+        ],
+        "text": [
+          "Băiat ninja Davido: Înapoi la a fi piatră, atunci. O piatră tăcută și învinsă."
+        ]
+      }
+    },
+    "dragon_tamer_patrick": {
+      "name": {
+        "en": [
+          "Patrick"
+        ],
+        "text": [
+          "Patrick"
+        ]
+      },
+      "before": {
+        "en": [
+          "Dragon Tamer Patrick: Dragons raised in these mountains grow up tough. Mine's no exception!"
+        ],
+        "text": [
+          "Îmblânzitor de dragoni Patrick: Dragonii crescuți în munții ăștia se fac duri. Al meu nu face excepție!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Dragon Tamer Patrick: It's still young. One day it'll be a dragon nobody can stand against."
+        ],
+        "text": [
+          "Îmblânzitor de dragoni Patrick: E încă tânăr. Într-o zi o să fie un dragon de care nu se va putea apropia nimeni."
+        ]
+      }
+    },
+    "bird_keeper_brianna": {
+      "name": {
+        "en": [
+          "Brianna"
+        ],
+        "text": [
+          "Brianna"
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Brianna: My owls see through fog as if it were broad daylight. Can you?"
+        ],
+        "text": [
+          "Crescător de păsări Brianna: Bufnițele mele văd prin ceață ca în plină zi. Tu poți?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Brianna: They saw you clearly enough. They just couldn't stop you."
+        ],
+        "text": [
+          "Crescător de păsări Brianna: Te-au văzut destul de clar. Doar că n-au putut să te oprească."
+        ]
+      }
+    },
+    "double_team_trainer_zac": {
+      "name": {
+        "en": [
+          "Zac"
+        ],
+        "text": [
+          "Zac"
+        ]
+      },
+      "before": {
+        "en": [
+          "Zac: Jen and I train together and battle together. Two against two!"
+        ],
+        "text": [
+          "Zac: Eu și Jen ne antrenăm împreună și luptăm împreună. Doi contra doi!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Zac: Sorry, Jen. That one was my fault."
+        ],
+        "text": [
+          "Zac: Scuze, Jen. Aia a fost vina mea."
+        ]
+      }
+    },
+    "double_team_trainer_jen": {
+      "name": {
+        "en": [
+          "Jen"
+        ],
+        "text": [
+          "Jen"
+        ]
+      },
+      "before": {
+        "en": [
+          "Jen: Zac's always one step behind me. That's how we like it!"
+        ],
+        "text": [
+          "Jen: Zac e mereu cu un pas în urma mea. Așa ne place!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Jen: Zac, we need to have a little talk about teamwork."
+        ],
+        "text": [
+          "Jen: Zac, trebuie să avem o mică discuție despre lucrul în echipă."
+        ]
+      }
+    },
+    "veteran_brian": {
+      "name": {
+        "en": [
+          "Brian"
+        ],
+        "text": [
+          "Brian"
+        ]
+      },
+      "before": {
+        "en": [
+          "Veteran Brian: I've battled on this road for longer than you've been alive. Come, show me what the young can do."
+        ],
+        "text": [
+          "Veteran Brian: Mă lupt pe drumul ăsta de mai mult timp decât trăiești tu. Hai, arată-mi ce pot tinerii."
+        ]
+      },
+      "after": {
+        "en": [
+          "Veteran Brian: Splendid. Every year the young ones get better. That's just as it should be."
+        ],
+        "text": [
+          "Veteran Brian: Splendid. Tinerii sunt mai buni în fiecare an. Exact cum trebuie să fie."
+        ]
+      }
+    },
+    "black_belt_adam": {
+      "name": {
+        "en": [
+          "Adam"
+        ],
+        "text": [
+          "Adam"
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Adam: I run up this slope every morning to build my legs. You'll do nicely as the last stretch!"
+        ],
+        "text": [
+          "Centură Neagră Adam: Urc panta asta în fiecare dimineață ca să-mi întăresc picioarele. Ești numai bun pentru ultima porțiune!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Adam: Ugh... my legs gave out before my spirit did."
+        ],
+        "text": [
+          "Centură Neagră Adam: Of... picioarele au cedat înaintea spiritului."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost_celestic_town": {
+      "en": [
+        "Route 210\nWest: Celestic Town"
+      ],
+      "text": [
+        "Ruta 210\nVest: Orășelul Celestic"
+      ]
+    },
+    "signboard_grandma_wilmas_house": {
+      "en": [
+        "Grandma Wilma's House\nKnock and come in: the kettle is always on."
+      ],
+      "text": [
+        "Casa Bunicii Wilma\nBate și intră: ceainicul e mereu pe foc."
+      ]
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "displayName": {
+    "en": [
+      "Eterna City"
+    ],
+    "text": [
+      "Orașul Eterna"
+    ]
+  },
+  "people": {
+    "prof_oak": {
+      "name": {
+        "en": [
+          "Prof. Oak"
+        ],
+        "text": [
+          "Prof. Oak"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

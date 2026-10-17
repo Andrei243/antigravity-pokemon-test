@@ -1,0 +1,23 @@
+{
+  "people": {
+    "cyrus": {
+      "name": {
+        "en": [
+          "Cyrus"
+        ],
+        "text": [
+          "Cyrus"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

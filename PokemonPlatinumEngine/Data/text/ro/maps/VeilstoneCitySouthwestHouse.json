@@ -1,0 +1,61 @@
+{
+  "displayName": {
+    "en": [
+      "Veilstone City"
+    ],
+    "text": [
+      "Orașul Veilstone"
+    ]
+  },
+  "people": {
+    "beauty": {
+      "name": {
+        "en": [
+          "Massage Girl"
+        ],
+        "text": [
+          "Maseuza"
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My sister's boyfriend is the Scarf Guy over in Pastoria City.",
+          "They write to each other all the time. Their Pokémon carry the Mail back and forth."
+        ],
+        "text": [
+          "Iubitul surorii mele e Tipul cu Fular din Orașul Pastoria.",
+          "Își scriu tot timpul. Pokémonii lor duc Mail-urile încoace și încolo."
+        ]
+      }
+    },
+    "pachirisu": {
+      "name": {
+        "en": [
+          "Pachirisu"
+        ],
+        "text": [
+          "Pachirisu"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pachirisu: Pachi! Chii!"
+        ],
+        "text": [
+          "Pachirisu: Pachi! Chii!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

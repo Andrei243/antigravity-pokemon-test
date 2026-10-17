@@ -1,0 +1,104 @@
+{
+  "displayName": {
+    "en": [
+      "Team Galactic Eterna Building"
+    ],
+    "text": [
+      "Clădirea Echipei Galactic din Eterna"
+    ]
+  },
+  "people": {
+    "grunt_m": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Ordinary folk like you could never grasp Team Galactic's great plan!",
+          "...Mind you, nobody's ever explained it to me either."
+        ],
+        "text": [
+          "Oamenii de rând ca tine n-ar putea pricepe niciodată marele plan al Echipei Galactic!",
+          "...Drept să-ți spun, nici mie nu mi l-a explicat nimeni."
+        ]
+      }
+    },
+    "galactic_grunt": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: Wrong turn, kid! This floor is a dead end, and so are you!"
+        ],
+        "text": [
+          "Galactic Grunt: Ai cotit greșit, puștiule! Etajul ăsta e o fundătură, și tu la fel!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: A dead end for me, then. The way up is on the other side."
+        ],
+        "text": [
+          "Galactic Grunt: Fundătură pentru mine, atunci. Drumul în sus e în partea cealaltă."
+        ]
+      }
+    },
+    "scientist_travon": {
+      "name": {
+        "en": [
+          "Travon"
+        ],
+        "text": [
+          "Travon"
+        ]
+      },
+      "before": {
+        "en": [
+          "Scientist Travon: My research needs a subject. You and your Pokémon will do nicely."
+        ],
+        "text": [
+          "Om de știință Travon: Cercetarea mea are nevoie de un subiect. Tu și Pokémonii tăi sunteți perfecți."
+        ]
+      },
+      "after": {
+        "en": [
+          "Scientist Travon: Fascinating. My notes did not predict that at all."
+        ],
+        "text": [
+          "Om de știință Travon: Fascinant. Notițele mele nu prevedeau deloc asta."
+        ]
+      }
+    },
+    "10,8": {
+      "name": {
+        "en": [
+          "X Sp. Atk"
+        ],
+        "text": [
+          "X Sp. Atk"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "16,2": {
+      "en": [
+        "A poster on the wall: \"Ask nothing. Follow the path. Success awaits!\" Team Galactic"
+      ],
+      "text": [
+        "Un afiș pe perete: „Nu întreba nimic. Urmează drumul. Succesul te așteaptă!” Echipa Galactic"
+      ]
+    }
+  }
+}

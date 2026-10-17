@@ -1,0 +1,71 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Center"
+    ],
+    "text": [
+      "Centrul Pokémon"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "socialite": {
+      "name": {
+        "en": [
+          "Socialite"
+        ],
+        "text": [
+          "Mondena"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Teach a Pokémon the hidden move Fly, and it will carry you in a moment to any town you have visited before."
+        ],
+        "text": [
+          "Învață un Pokémon mișcarea ascunsă Fly și o să te ducă într-o clipă în orice oraș pe care l-ai vizitat."
+        ]
+      }
+    },
+    "school_kid_m": {
+      "name": {
+        "en": [
+          "Schoolboy"
+        ],
+        "text": [
+          "Școlarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Maylene, the Gym Leader, looks like a sweet girl.",
+          "Don't let that fool you. Grown-ups twice her size can't lay a finger on her."
+        ],
+        "text": [
+          "Maylene, Lidera Arenei, arată ca o fată dulce.",
+          "Să nu te păcălească asta. Oameni mari de două ori cât ea nu se pot atinge de ea."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,230 @@
+{
+  "people": {
+    "black_belt": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          "Centură Neagră"
+        ]
+      }
+    },
+    "hiker_robert": {
+      "name": {
+        "en": [
+          "Robert"
+        ],
+        "text": [
+          "Robert"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Robert: Fresh down off Mt. Coronet and itching for a battle! Nosepass, show them!"
+        ],
+        "text": [
+          "Drumeț Robert: Abia am coborât de pe Muntele Coronet și mă mănâncă palmele de o luptă! Nosepass, arată-le!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Robert: Beaten, and turned round too. Good thing Nosepass always points north."
+        ],
+        "text": [
+          "Drumeț Robert: Învins, și pe deasupra rătăcit. Noroc că Nosepass arată mereu spre nord."
+        ]
+      }
+    },
+    "hiker_alexander": {
+      "name": {
+        "en": [
+          "Alexander"
+        ],
+        "text": [
+          "Alexander"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Alexander: Few trainers ever find this quiet corner. Let's see whether you deserve to!"
+        ],
+        "text": [
+          "Drumeț Alexander: Puțini antrenori găsesc colțul ăsta liniștit. Să vedem dacă meriți!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Alexander: You're tougher than any rock I've met, and I've met a great many."
+        ],
+        "text": [
+          "Drumeț Alexander: Ești mai tare decât orice stâncă am întâlnit, și am întâlnit o mulțime."
+        ]
+      }
+    },
+    "hiker_jonathan": {
+      "name": {
+        "en": [
+          "Jonathan"
+        ],
+        "text": [
+          "Jonathan"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Jonathan: My legs are like jelly after that mountain, but my Onix is as solid as ever!"
+        ],
+        "text": [
+          "Drumeț Jonathan: Picioarele mele sunt ca piftia după muntele ăla, dar Onix-ul meu e la fel de solid ca întotdeauna!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Jonathan: Onix and I will sit a while. Hearthome City's just down the road, if you're heading that way."
+        ],
+        "text": [
+          "Drumeț Jonathan: Eu și Onix o să stăm puțin. Orașul Hearthome e chiar în josul drumului, dacă într-acolo te duci."
+        ]
+      }
+    },
+    "black_belt_kyle": {
+      "name": {
+        "en": [
+          "Kyle"
+        ],
+        "text": [
+          "Kyle"
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Kyle: Hup! I train on this road between the mountain and the city. Spar with me!"
+        ],
+        "text": [
+          "Centură Neagră Kyle: Hop! Mă antrenez pe drumul ăsta, între munte și oraș. Hai la un meci!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Kyle: A fine bout! Machop and I will train twice as hard tomorrow."
+        ],
+        "text": [
+          "Centură Neagră Kyle: Un meci frumos! Eu și Machop o să ne antrenăm dublu mâine."
+        ]
+      }
+    },
+    "fisherman_cody": {
+      "name": {
+        "en": [
+          "Cody"
+        ],
+        "text": [
+          "Cody"
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Cody: Shh, they're biting! ...Oh, very well. One battle, and then you let me fish in peace."
+        ],
+        "text": [
+          "Pescar Cody: Ssst, trage peștele! ...Of, fie. O luptă, și apoi mă lași să pescuiesc în pace."
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Cody: Well, that's frightened off every fish for a mile around. Thanks ever so much."
+        ],
+        "text": [
+          "Pescar Cody: Ei, acum ai speriat toți peștii pe o rază de un kilometru. Mulțumesc frumos."
+        ]
+      }
+    },
+    "aroma_lady_hannah": {
+      "name": {
+        "en": [
+          "Hannah"
+        ],
+        "text": [
+          "Hannah"
+        ]
+      },
+      "before": {
+        "en": [
+          "Aroma Lady Hannah: Berry flowers smell wonderful in bloom. My Combee can't stay away, and neither can I!"
+        ],
+        "text": [
+          "Doamna Aromelor Hannah: Florile de Boabe miros minunat când înfloresc. Combee nu le poate rezista, și nici eu!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Aroma Lady Hannah: Lovely battle! Do plant a Berry of your own. The flowers are half the fun."
+        ],
+        "text": [
+          "Doamna Aromelor Hannah: Ce luptă frumoasă! Plantează și tu o Boabă. Florile sunt jumătate din farmec."
+        ]
+      }
+    },
+    "artist_william": {
+      "name": {
+        "en": [
+          "William"
+        ],
+        "text": [
+          "William"
+        ]
+      },
+      "before": {
+        "en": [
+          "Artist William: I'm painting the mountain. Stand still a moment, would you? ...No? Then let's battle!"
+        ],
+        "text": [
+          "Artist William: Pictez muntele. Nu te mișca o clipă, te rog! ...Nu? Atunci hai să ne luptăm!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Artist William: Now I'll have to paint you into the picture: a trainer, victorious, on Route 208."
+        ],
+        "text": [
+          "Artist William: Acum va trebui să te pictez în tablou: un antrenor, victorios, pe Ruta 208."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost_12": {
+      "en": [
+        "Route 208\nWest: Mt. Coronet"
+      ],
+      "text": [
+        "Ruta 208\nVest: Muntele Coronet"
+      ]
+    },
+    "arrow_signpost_10": {
+      "en": [
+        "Route 208\nEast: Hearthome City"
+      ],
+      "text": [
+        "Ruta 208\nEst: Orașul Hearthome"
+      ]
+    },
+    "signboard": {
+      "en": [
+        "Berry Master's House\nA Berry a day for anyone who calls."
+      ],
+      "text": [
+        "Casa Maestrului Boabelor\nO Boabă pe zi pentru oricine trece pe aici."
+      ]
+    },
+    "trainer_tips_signpost": {
+      "en": [
+        "Trainer Tips\nBerries grow best in soft soil. Plant one, water it now and then, and you'll pick more than you planted."
+      ],
+      "text": [
+        "Sfaturi pentru Antrenori\nBoabele cresc cel mai bine în sol moale. Plantează una, ud-o din când în când și o să culegi mai mult decât ai plantat."
+      ]
+    }
+  }
+}

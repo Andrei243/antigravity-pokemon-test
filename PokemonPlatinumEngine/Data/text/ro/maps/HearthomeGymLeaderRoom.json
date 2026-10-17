@@ -1,0 +1,43 @@
+{
+  "displayName": {
+    "en": [
+      "Hearthome Gym"
+    ],
+    "text": [
+      "Arena Hearthome"
+    ]
+  },
+  "people": {
+    "fantina": {
+      "name": {
+        "en": [
+          "Fantina"
+        ],
+        "text": [
+          "Fantina"
+        ]
+      }
+    },
+    "bollard_1": {
+      "name": {
+        "en": [
+          "Bollard"
+        ],
+        "text": [
+          "Stâlpișor"
+        ]
+      }
+    },
+    "bollard_2": {
+      "name": {
+        "en": [
+          "Bollard"
+        ],
+        "text": [
+          "Stâlpișor"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

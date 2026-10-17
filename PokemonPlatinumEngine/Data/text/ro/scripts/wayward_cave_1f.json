@@ -1,0 +1,110 @@
+{
+  "Mira": [
+    {
+      "en": [
+        "Mira"
+      ],
+      "text": [
+        "Mira"
+      ]
+    },
+    {
+      "en": [
+        "Oh! Hello... I'm Mira. I came in here exploring, and now every tunnel looks the same. I'm lost."
+      ],
+      "text": [
+        "O! Bună... Sunt Mira. Am intrat aici să explorez și acum toate tunelurile arată la fel. M-am rătăcit."
+      ]
+    },
+    {
+      "en": [
+        "Please, could you take me to the way out? I'll keep your Pokémon healthy all the way, I promise!"
+      ],
+      "text": [
+        "Te rog, mă duci până la ieșire? O să-ți țin Pokémonii sănătoși tot drumul, promit!"
+      ]
+    },
+    {
+      "en": [
+        "{player}... I like that name. Will you take me to the way out after all?"
+      ],
+      "text": [
+        "{player}... Îmi place numele ăsta. Până la urmă mă duci până la ieșire?"
+      ]
+    },
+    {
+      "en": [
+        "{player} decided to go with Mira."
+      ],
+      "text": [
+        "{player} a hotărât să meargă cu Mira."
+      ]
+    },
+    {
+      "en": [
+        "Mira"
+      ],
+      "text": [
+        "Mira"
+      ]
+    },
+    {
+      "en": [
+        "Thank you! My Kadabra will heal your Pokémon after every battle. And I can battle too, you'll see!"
+      ],
+      "text": [
+        "Mulțumesc! Kadabra al meu o să-ți vindece Pokémonii după fiecare luptă. Și știu să lupt și eu, o să vezi!"
+      ]
+    },
+    {
+      "en": [
+        "I like moves that help, {player}. Moves that heal, and moves that show the way."
+      ],
+      "text": [
+        "Îmi plac mișcările care ajută, {player}. Mișcările care vindecă și mișcările care arată drumul."
+      ]
+    },
+    {
+      "en": [
+        "It's so easy to get mixed up in here. Left, right, up, down... they all look alike!"
+      ],
+      "text": [
+        "E așa de ușor să te încurci aici. Stânga, dreapta, sus, jos... toate arată la fel!"
+      ]
+    },
+    {
+      "en": [
+        "Mira will be a Trainer like {player} one day. A really strong one. Just watch!"
+      ],
+      "text": [
+        "Mira o să fie Antrenoare ca {player} într-o zi. Una foarte puternică. O să vezi!"
+      ]
+    }
+  ],
+  "Thanks": [
+    {
+      "en": [
+        "Mira"
+      ],
+      "text": [
+        "Mira"
+      ]
+    },
+    {
+      "en": [
+        "Oh! There's the way out! I can see the light! Thank you, {player}. You're really, really strong."
+      ],
+      "text": [
+        "O! Uite ieșirea! Văd lumina! Mulțumesc, {player}. Ai o putere grozavă, chiar grozavă."
+      ]
+    },
+    {
+      "en": [
+        "Mira is going to get strong too. Then we'll battle, OK? Bye-bye!"
+      ],
+      "text": [
+        "Și Mira o să se facă puternică. Atunci ne luptăm, bine? Pa-pa!"
+      ]
+    }
+  ]
+}

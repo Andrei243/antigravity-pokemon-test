@@ -1,0 +1,53 @@
+{
+  "displayName": {
+    "en": [
+      "Solaceon Town"
+    ],
+    "text": [
+      "Orășelul Solaceon"
+    ]
+  },
+  "people": {
+    "pokemon_breeder_f": {
+      "name": {
+        "en": [
+          "Pokémon Breeder"
+        ],
+        "text": [
+          "Crescătoare de Pokémoni"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Pokémon at the head of your team has a nature all its own. You can see it at a glance.",
+          "Did you know a Pokémon's nature decides how it grows?"
+        ],
+        "text": [
+          "Pokémonul din fruntea echipei tale are o fire numai a lui. Se vede dintr-o privire.",
+          "Știai că firea unui Pokémon hotărăște cum crește?"
+        ]
+      }
+    },
+    "cowgirl": {
+      "name": {
+        "en": [
+          "Cowgirl"
+        ],
+        "text": [
+          "Cowgirl"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "There have been Pokémon in these parts since the old days.",
+          "They say there were great ranches of them all round here."
+        ],
+        "text": [
+          "Pe meleagurile astea au fost Pokémoni din vremuri vechi.",
+          "Se zice că erau ferme mari cu ei peste tot pe-aici."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,104 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Gym Guide"
+      ],
+      "text": [
+        "Ghidul Arenei"
+      ]
+    },
+    {
+      "en": [
+        "Hey, champ in the making! Welcome to the Hearthome Gym! Fair warning: it's pitch dark in there."
+      ],
+      "text": [
+        "Salutare! Bun venit la Arena Hearthome! Te previn: înăuntru e beznă."
+      ]
+    },
+    {
+      "en": [
+        "Every room has a few doors, and only one of them goes on. Somewhere on the floor is a sign that matches the right door."
+      ],
+      "text": [
+        "Fiecare cameră are câteva uși și doar una duce mai departe. Undeva pe podea e un semn care se potrivește cu ușa bună."
+      ]
+    },
+    {
+      "en": [
+        "Find the sign, pick the door that wears it, and you'll get to Fantina. Pick wrong, and it's back to the start!"
+      ],
+      "text": [
+        "Găsește semnul, alege ușa care îl poartă și ajungi la Fantina. Alegi greșit și te întorci la început!"
+      ]
+    }
+  ],
+  "GymGuide": [
+    {
+      "en": [
+        "Gym Guide"
+      ],
+      "text": [
+        "Ghidul Arenei"
+      ]
+    },
+    {
+      "en": [
+        "Want to hear how this Gym works one more time?"
+      ],
+      "text": [
+        "Vrei să auzi încă o dată cum merge Arena asta?"
+      ]
+    },
+    {
+      "en": [
+        "In each dark room, look for a sign on the floor. It's a shape, and one of the doors in the back wall has the same shape."
+      ],
+      "text": [
+        "În fiecare cameră întunecată, caută un semn pe podea. E o formă, iar una dintre ușile din peretele din spate are aceeași formă."
+      ]
+    },
+    {
+      "en": [
+        "That door goes on. Every other door brings you straight back here. And Fantina's Ghost types hate Dark and Ghost moves!"
+      ],
+      "text": [
+        "Ușa aia duce mai departe. Toate celelalte te aduc direct înapoi aici. Iar Pokémonii Fantomă ai Fantinei urăsc mișcările Întuneric și Fantomă!"
+      ]
+    },
+    {
+      "en": [
+        "Right, then! Off you go, and keep your eyes open in there!"
+      ],
+      "text": [
+        "Bun, atunci! Hai, du-te și fii cu ochii-n patru acolo!"
+      ]
+    },
+    {
+      "en": [
+        "{player}! You found your way through the dark and beat Fantina! What a performance!"
+      ],
+      "text": [
+        "{player}! Ți-ai găsit drumul prin întuneric și ai învins-o pe Fantina! Ce spectacol!"
+      ]
+    }
+  ],
+  "GymStatue": [
+    {
+      "en": [
+        "HEARTHOME CITY POKéMON GYM. Leader: Fantina. Certified Trainers: {rival}"
+      ],
+      "text": [
+        "ARENA POKéMON DIN ORAȘUL HEARTHOME. Lideră: Fantina. Antrenori atestați: {rival}"
+      ]
+    },
+    {
+      "en": [
+        "HEARTHOME CITY POKéMON GYM. Leader: Fantina. Certified Trainers: {rival}, {player}"
+      ],
+      "text": [
+        "ARENA POKéMON DIN ORAȘUL HEARTHOME. Lideră: Fantina. Antrenori atestați: {rival}, {player}"
+      ]
+    }
+  ]
+}

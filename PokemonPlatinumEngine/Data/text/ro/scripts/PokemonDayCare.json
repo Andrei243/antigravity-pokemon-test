@@ -1,0 +1,32 @@
+{
+  "AppFan": [
+    {
+      "en": [
+        "Are you a fan of the Day-Care couple too? I've got hold of something rather handy.",
+        "It's the Pokétch Company's newest app, made with the couple's help. Here, you have it!"
+      ],
+      "text": [
+        "Ești și tu fan al cuplului de la Pensiune? Am pus mâna pe ceva tare util.",
+        "E cea mai nouă aplicație a Companiei Pokétch, făcută cu ajutorul cuplului. Poftim, a ta să fie!"
+      ]
+    },
+    {
+      "en": [
+        "{player}'s Pokétch now has the Day-Care Checker app!"
+      ],
+      "text": [
+        "Aplicația Day-Care Checker a fost adăugată în Pokétch!"
+      ]
+    },
+    {
+      "en": [
+        "With the Day-Care Checker you can see how the Pokémon you left here are getting on, wherever you are.",
+        "As for me, I can't bring myself to leave mine with them... So here I stay."
+      ],
+      "text": [
+        "Cu Day-Care Checker vezi cum le merge Pokémonilor pe care i-ai lăsat aici, oriunde ai fi.",
+        "Cât despre mine, nu mă îndur să-i las pe ai mei la ei... Așa că stau aici."
+      ]
+    }
+  ]
+}

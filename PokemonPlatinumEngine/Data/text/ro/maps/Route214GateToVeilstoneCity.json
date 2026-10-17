@@ -1,0 +1,52 @@
+{
+  "displayName": {
+    "en": [
+      "Route 214"
+    ],
+    "text": [
+      "Ruta 214"
+    ]
+  },
+  "people": {
+    "middle_aged_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "You mean to take Route 214? You are serious, aren't you?",
+          "It's churned to pieces, and there is nothing down there to see.",
+          "Well, nothing but that Ruin Maniac. He's digging his way through solid rock, all on his own!"
+        ],
+        "text": [
+          "Vrei s-o iei pe Ruta 214? Vorbești serios, da?",
+          "E răscolită de tot și n-ai nimic de văzut acolo.",
+          "Ei, nimic în afară de Pasionatul de ruine ăla. Își sapă drum prin stânca solidă, de unul singur!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "8,2": {
+      "en": [
+        "A map of Sinnoh. Veilstone City lies north of here, and Route 214 runs south toward Valor Lakefront."
+      ],
+      "text": [
+        "O hartă a Sinnoh-ului. Orașul Veilstone se află la nord de aici, iar Ruta 214 merge spre sud, spre Malul Valor."
+      ]
+    },
+    "9,2": {
+      "en": [
+        "A map of Sinnoh. Veilstone City lies north of here, and Route 214 runs south toward Valor Lakefront."
+      ],
+      "text": [
+        "O hartă a Sinnoh-ului. Orașul Veilstone se află la nord de aici, iar Ruta 214 merge spre sud, spre Malul Valor."
+      ]
+    }
+  }
+}

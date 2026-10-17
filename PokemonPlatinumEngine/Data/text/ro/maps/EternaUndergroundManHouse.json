@@ -1,0 +1,86 @@
+{
+  "displayName": {
+    "en": [
+      "Underground Man's House"
+    ],
+    "text": [
+      "Casa Omului din Subteran"
+    ]
+  },
+  "people": {
+    "youngster": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "There are tunnels under every part of Sinnoh. They say you can get anywhere down there!"
+        ],
+        "text": [
+          "Sunt tuneluri sub fiecare colț din Sinnoh. Se zice că poți ajunge oriunde pe acolo!"
+        ]
+      }
+    },
+    "scientist_m": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          "Cercetătorul"
+        ]
+      }
+    },
+    "underground_man": {
+      "name": {
+        "en": [
+          "Underground Man"
+        ],
+        "text": [
+          "Omul din Subteran"
+        ]
+      }
+    },
+    "bug_catcher": {
+      "name": {
+        "en": [
+          "Bug Catcher"
+        ],
+        "text": [
+          "Vânătorul de insecte"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I dig and dig, but all that ever comes out of the walls is Armor Fossils!"
+        ],
+        "text": [
+          "Sap și tot sap, dar din pereți nu ies decât Armor Fossil!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "5,2": {
+      "en": [
+        "A poster on the wall: \"Never lose your way below ground again! Ask about the Underground Radar.\""
+      ],
+      "text": [
+        "Un afiș pe perete: „Nu te mai rătăci niciodată sub pământ! Întreabă de Radarul Subteran.”"
+      ]
+    },
+    "1,5": {
+      "en": [
+        "Notes on the Underground fill the PC's screen: Spheres that grow in the walls, traps that catch the careless, and the flags of Secret Bases."
+      ],
+      "text": [
+        "Notițe despre Subteran umplu ecranul PC-ului: Sfere care cresc în pereți, capcane care-i prind pe cei neatenți și steagurile Bazelor Secrete."
+      ]
+    }
+  }
+}

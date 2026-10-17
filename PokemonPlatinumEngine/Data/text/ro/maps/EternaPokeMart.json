@@ -1,0 +1,91 @@
+{
+  "displayName": {
+    "en": [
+      "Poké Mart"
+    ],
+    "text": [
+      "Poké Mart"
+    ]
+  },
+  "people": {
+    "guitarist": {
+      "name": {
+        "en": [
+          "Guitarist"
+        ],
+        "text": [
+          "Chitaristul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The more Gym Badges you have, the more a Poké Mart puts on its shelves for you.",
+          "And I haven't got a single one. Gardenia is just too much for me!",
+          "I never want to see another Grass-type as long as I live. Now, if I only had a Flying-type or two..."
+        ],
+        "text": [
+          "Cu cât ai mai multe Insigne de Arenă, cu atât un Poké Mart îți pune mai multe pe rafturi.",
+          "Iar eu n-am niciuna. Gardenia e prea tare pentru mine!",
+          "Nu mai vreau să văd un Pokémon de tip Iarbă cât trăiesc. Dacă aș avea măcar unul-doi de tip Zbor..."
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Never set out without an Escape Rope!",
+          "I got into a real fix in Eterna Forest. With a rope I'd have been back at the way in before I knew it."
+        ],
+        "text": [
+          "Să nu pleci niciodată la drum fără un Escape Rope!",
+          "Am dat de belea în Pădurea Eterna. Cu o frânghie aș fi fost înapoi la intrare cât ai clipi."
+        ]
+      }
+    },
+    "cashier_f": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome to the Eterna Poké Mart! How may I serve you today?"
+        ],
+        "text": [
+          "Vânzătoarea: Bun venit la Poké Martul din Eterna! Cu ce te pot ajuta azi?"
+        ]
+      }
+    },
+    "cashier_m": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! This counter has goods you'll only find here in Eterna."
+        ],
+        "text": [
+          "Vânzătorul: Bun venit! La ghișeul ăsta găsești mărfuri care sunt doar aici, în Eterna."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,198 @@
+{
+  "people": {
+    "buneary_1": {
+      "name": {
+        "en": [
+          "Buneary"
+        ],
+        "text": [
+          "Buneary"
+        ]
+      }
+    },
+    "buneary_2": {
+      "name": {
+        "en": [
+          "Buneary"
+        ],
+        "text": [
+          "Buneary"
+        ]
+      }
+    },
+    "pachirisu": {
+      "name": {
+        "en": [
+          "Pachirisu"
+        ],
+        "text": [
+          "Pachirisu"
+        ]
+      }
+    },
+    "rancher_1": {
+      "name": {
+        "en": [
+          "Rancher"
+        ],
+        "text": [
+          "Fermierul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Take a deep breath. Go on!",
+          "Air like this, you don't get in the big cities. It's the grass and the open sky that do it."
+        ],
+        "text": [
+          "Trage aer în piept. Hai!",
+          "Aer ca ăsta nu găsești în orașele mari. Iarba și cerul liber îl fac așa."
+        ]
+      }
+    },
+    "cowgirl_1": {
+      "name": {
+        "en": [
+          "Cowgirl"
+        ],
+        "text": [
+          "Cowgirl"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to Solaceon Town! Nothing here is in a hurry, and we like it that way.",
+          "Have a wander round. The old ruins at the east end of town are well worth a look."
+        ],
+        "text": [
+          "Bun venit în Orășelul Solaceon! Nimic de aici nu se grăbește, și așa ne place.",
+          "Plimbă-te prin jur. Ruinele vechi din capătul de est al orășelului merită văzute."
+        ]
+      }
+    },
+    "twin": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The grown-ups go into the ruins and come out talking about Unown.",
+          "I'm not allowed in on my own. I'm too little, they say. Hmph!"
+        ],
+        "text": [
+          "Oamenii mari intră în ruine și ies vorbind despre Unown.",
+          "Pe mine nu mă lasă înăuntru singură. Sunt prea mică, zic ei. Hmf!"
+        ]
+      }
+    },
+    "cowgirl_2": {
+      "name": {
+        "en": [
+          "Cowgirl"
+        ],
+        "text": [
+          "Cowgirl"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every so often I walk down to the Lost Tower on Route 209.",
+          "A Pokémon I grew up with is remembered there. I like to go and say hello."
+        ],
+        "text": [
+          "Din când în când merg până la Turnul Pierdut, pe Ruta 209.",
+          "Acolo e pomenit un Pokémon cu care am crescut. Îmi place să mă duc să-l salut."
+        ]
+      }
+    },
+    "rancher_2": {
+      "name": {
+        "en": [
+          "Rancher"
+        ],
+        "text": [
+          "Fermierul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When I was a lad there was nothing here but fields and those old stones.",
+          "Then folk started bringing their Pokémon to the Day Care, and a town grew up round it."
+        ],
+        "text": [
+          "Când eram flăcău, aici nu erau decât câmpuri și pietrele alea vechi.",
+          "Apoi oamenii au început să-și aducă Pokémonii la Pensiune, și un orășel a crescut în jurul ei."
+        ]
+      }
+    },
+    "ruin_maniac": {
+      "name": {
+        "en": [
+          "Ruin Maniac"
+        ],
+        "text": [
+          "Pasionatul de ruine"
+        ]
+      }
+    },
+    "rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The ruins are amazing, {player}. Go and see!"
+        ],
+        "text": [
+          "Ruinele sunt uimitoare, {player}. Du-te și vezi!"
+        ]
+      }
+    },
+    "day_care_man": {
+      "name": {
+        "en": [
+          "Day-Care Man"
+        ],
+        "text": [
+          "Omul de la Pensiune"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "map_signpost": {
+      "en": [
+        "Solaceon Town\nWhere the days pass gently among fields and old stones."
+      ],
+      "text": [
+        "Orășelul Solaceon\nUnde zilele trec domol printre câmpuri și pietre vechi."
+      ]
+    },
+    "signboard_pokemon_day_care": {
+      "en": [
+        "Pokémon Day Care\nToo busy to train? We'll raise your Pokémon for you."
+      ],
+      "text": [
+        "Pensiunea Pokémon\nN-ai timp să antrenezi? Îți creștem noi Pokémonii."
+      ]
+    },
+    "signboard_pokemon_news_press": {
+      "en": [
+        "Pokémon News Press\nSinnoh's Pokémon news, written up fresh every day."
+      ],
+      "text": [
+        "Presa de Știri Pokémon\nȘtirile Pokémon din Sinnoh, scrise proaspăt în fiecare zi."
+      ]
+    }
+  }
+}

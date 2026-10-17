@@ -1,0 +1,162 @@
+{
+  "GymGuide": [
+    {
+      "en": [
+        "Gym Guide"
+      ],
+      "text": [
+        "Ghidul Arenei"
+      ]
+    },
+    {
+      "en": [
+        "Hey, champ in the making! Welcome to the Eterna Gym!"
+      ],
+      "text": [
+        "Salutare! Bun venit la Arena Eterna, unde se nasc campioni!"
+      ]
+    },
+    {
+      "en": [
+        "Gardenia's Pokémon are Grass types. Fire, Flying, Ice, Poison and Bug moves all hit them hard."
+      ],
+      "text": [
+        "Pokémonii Gardeniei sunt de tip Iarbă. Mișcările de Foc, Zbor, Gheață, Otravă și Insectă îi lovesc din plin."
+      ]
+    },
+    {
+      "en": [
+        "See the big flower clock? Its hands are the only paths across it. Beat a trainer here and the hands move on."
+      ],
+      "text": [
+        "Vezi ceasul mare din flori? Acele lui sunt singurele cărări peste el. Învinge un antrenor de aici și acele se mută."
+      ]
+    },
+    {
+      "en": [
+        "Keep at it until a hand points the way to Gardenia!"
+      ],
+      "text": [
+        "Continuă până când un ac îți arată drumul spre Gardenia!"
+      ]
+    },
+    {
+      "en": [
+        "You beat Gardenia! The way you read that clock was something else, {player}."
+      ],
+      "text": [
+        "Ai învins-o pe Gardenia! Felul în care ai citit ceasul ăla a fost ceva de speriat, {player}."
+      ]
+    }
+  ],
+  "GymStatue": [
+    {
+      "en": [
+        "ETERNA CITY POKéMON GYM. Leader: Gardenia. Certified Trainers: {rival}"
+      ],
+      "text": [
+        "ARENA POKéMON DIN ORAȘUL ETERNA. Lideră: Gardenia. Antrenori atestați: {rival}"
+      ]
+    },
+    {
+      "en": [
+        "ETERNA CITY POKéMON GYM. Leader: Gardenia. Certified Trainers: {rival}, {player}"
+      ],
+      "text": [
+        "ARENA POKéMON DIN ORAȘUL ETERNA. Lideră: Gardenia. Antrenori atestați: {rival}, {player}"
+      ]
+    }
+  ],
+  "Clock": [
+    {
+      "en": [
+        "The water level in the fountain dropped!"
+      ],
+      "text": [
+        "Nivelul apei din fântână a scăzut!"
+      ]
+    }
+  ],
+  "Gardenia": [
+    {
+      "en": [
+        "Gardenia"
+      ],
+      "text": [
+        "Gardenia"
+      ]
+    },
+    {
+      "en": [
+        "Welcome! I'm Gardenia, the Leader of the Eterna Gym, and I'm absolutely crazy about Grass-type Pokémon."
+      ],
+      "text": [
+        "Bun venit! Sunt Gardenia, Lidera Arenei Eterna, și mă dau în vânt după Pokémonii de tip Iarbă."
+      ]
+    },
+    {
+      "en": [
+        "You got through my clock, so you must have a good head on your shoulders. Let's see if your Pokémon do too!"
+      ],
+      "text": [
+        "Ai trecut de ceasul meu, deci ai minte bună pe umeri. Să vedem dacă și Pokémonii tăi au!"
+      ]
+    },
+    {
+      "en": [
+        "Wow, you're strong! My Pokémon and I did our best, and you were still better. You've won this fair and square."
+      ],
+      "text": [
+        "Uau, ce putere! Pokémonii mei și cu mine ne-am dat silința, și tot ne-ai întrecut. Ai câștigat cinstit."
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Forest Badge from Gardenia!"
+      ],
+      "text": [
+        "{player} a primit Insigna Pădure de la Gardenia!"
+      ]
+    },
+    {
+      "en": [
+        "With the Forest Badge, Pokémon up to level 30 will listen to you, even ones you got in trades."
+      ],
+      "text": [
+        "Cu Insigna Pădure, Pokémonii până la nivelul 30 te vor asculta, chiar și cei primiți la schimb."
+      ]
+    },
+    {
+      "en": [
+        "And it lets you use Cut outside of battle, so thin trees won't stand in your way any more."
+      ],
+      "text": [
+        "Și te lasă să folosești Cut în afara luptei, așa că arborii subțiri nu-ți mai stau în cale."
+      ]
+    },
+    {
+      "en": [
+        "Oh, and take this as well. It's one of my favourite moves."
+      ],
+      "text": [
+        "A, și ia și asta. E una dintre mișcările mele preferate."
+      ]
+    },
+    {
+      "en": [
+        "TM86 is Grass Knot. It trips the foe up, and the heavier the foe, the harder it falls!"
+      ],
+      "text": [
+        "TM86 e Grass Knot. Îl împiedică pe adversar, și cu cât adversarul e mai greu, cu atât cade mai rău!"
+      ]
+    },
+    {
+      "en": [
+        "I lost, but my Pokémon and I had a great time. Next time, my Grass types will bloom even brighter!"
+      ],
+      "text": [
+        "Am pierdut, dar Pokémonii mei și cu mine ne-am distrat de minune. Data viitoare, Pokémonii mei de tip Iarbă o să înflorească și mai frumos!"
+      ]
+    }
+  ]
+}

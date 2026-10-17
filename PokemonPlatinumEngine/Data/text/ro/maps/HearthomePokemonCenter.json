@@ -1,0 +1,93 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Center"
+    ],
+    "text": [
+      "Centrul Pokémon"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          "Puștiul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Have you been to the Global Terminal in Jubilife City?",
+          "It's meant to link you up with the whole world! I can't explain it, but it's wicked!"
+        ],
+        "text": [
+          "Ai fost la Global Terminal din Orașul Jubilife?",
+          "Se zice că te leagă cu toată lumea! Nu știu să explic, dar e beton!"
+        ]
+      }
+    },
+    "socialite": {
+      "name": {
+        "en": [
+          "Socialite"
+        ],
+        "text": [
+          "Mondena"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hello, dear. Do you have a Poffin Case?",
+          "If you haven't, you simply must call at the Pokémon Fan Club."
+        ],
+        "text": [
+          "Bună, dragă. Ai o Poffin Case?",
+          "Dacă n-ai, trebuie neapărat să treci pe la Clubul Fanilor Pokémon."
+        ]
+      }
+    },
+    "guitarist": {
+      "name": {
+        "en": [
+          "Guitarist"
+        ],
+        "text": [
+          "Chitaristul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Fantina, the Gym Leader, is mad about Contests as well.",
+          "That lady wants a taste of everything life has to offer!"
+        ],
+        "text": [
+          "Fantina, Lidera Arenei, e și ea înnebunită după Concursuri.",
+          "Doamna aia vrea să guste din tot ce are viața de oferit!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

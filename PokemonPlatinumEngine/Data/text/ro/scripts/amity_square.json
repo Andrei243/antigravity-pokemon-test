@@ -1,0 +1,360 @@
+{
+  "Reception": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        "Recepționera"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to Amity Square! Would you like to take {walker} out for a stroll?"
+      ],
+      "text": [
+        "Bun venit în Piața Amity! Vrei să-l scoți pe {walker} la plimbare?"
+      ]
+    },
+    {
+      "en": [
+        "Oh, not that one? Then would you rather stroll with {walker}?"
+      ],
+      "text": [
+        "A, nu pe acela? Atunci ai prefera să te plimbi cu {walker}?"
+      ]
+    },
+    {
+      "en": [
+        "I see. Do come back whenever you fancy a stroll."
+      ],
+      "text": [
+        "Înțeleg. Revino oricând ai chef de o plimbare."
+      ]
+    },
+    {
+      "en": [
+        "Welcome to Amity Square! I'm afraid only certain Pokémon may be walked here.",
+        "Pikachu, Clefairy, Psyduck, Pachirisu, Drifloon, Buneary and Happiny, and Turtwig, Chimchar and Piplup with whatever they grow into.",
+        "Do come back with one of them!"
+      ],
+      "text": [
+        "Bun venit în Piața Amity! Din păcate, aici se pot plimba doar anumiți Pokémoni.",
+        "Pikachu, Clefairy, Psyduck, Pachirisu, Drifloon, Buneary și Happiny, plus Turtwig, Chimchar și Piplup cu tot ce devin ei.",
+        "Revino cu unul dintre ei!"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to Amity Square! I'm afraid only certain Pokémon may be walked here.",
+        "Pikachu, Clefairy, Psyduck, Pachirisu, Drifloon, Buneary, Happiny, Jigglypuff, Torchic, Skitty and Shroomish, and Turtwig, Chimchar and Piplup with whatever they grow into.",
+        "Do come back with one of them!"
+      ],
+      "text": [
+        "Bun venit în Piața Amity! Din păcate, aici se pot plimba doar anumiți Pokémoni.",
+        "Pikachu, Clefairy, Psyduck, Pachirisu, Drifloon, Buneary, Happiny, Jigglypuff, Torchic, Skitty și Shroomish, plus Turtwig, Chimchar și Piplup cu tot ce devin ei.",
+        "Revino cu unul dintre ei!"
+      ]
+    }
+  ],
+  "Welcome": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        "Recepționera"
+      ]
+    },
+    {
+      "en": [
+        "There we are! Enjoy your time together, you and {walker}."
+      ],
+      "text": [
+        "Gata! Petreceți-vă frumos timpul împreună, tu și {walker}."
+      ]
+    }
+  ],
+  "Leave": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        "Recepționera"
+      ]
+    },
+    {
+      "en": [
+        "Do you both feel the better for it? Please come again!"
+      ],
+      "text": [
+        "Vă simțiți mai bine amândoi? Vă mai așteptăm!"
+      ]
+    }
+  ],
+  "FollowerMon": [
+    {
+      "en": [
+        "Oh? {walker} is holding something!"
+      ],
+      "text": [
+        "O? {walker} ține ceva!"
+      ]
+    },
+    {
+      "en": [
+        "{walker} is keeping up with a spring in its step."
+      ],
+      "text": [
+        "{walker} ține pasul cu tine, țopăind de bucurie."
+      ]
+    },
+    {
+      "en": [
+        "{walker} looks as happy as can be."
+      ],
+      "text": [
+        "{walker} pare cât se poate de fericit."
+      ]
+    },
+    {
+      "en": [
+        "{walker} seems to be in fine spirits."
+      ],
+      "text": [
+        "{walker} pare să fie bine dispus."
+      ]
+    },
+    {
+      "en": [
+        "{walker} is gazing up at you fondly."
+      ],
+      "text": [
+        "{walker} se uită la tine cu drag."
+      ]
+    },
+    {
+      "en": [
+        "{walker} is scratching at the ground for some reason."
+      ],
+      "text": [
+        "{walker} scurmă în pământ, cine știe de ce."
+      ]
+    },
+    {
+      "en": [
+        "{walker} nearly tripped over its own feet!"
+      ],
+      "text": [
+        "{walker} era cât pe ce să se împiedice în propriile picioare!"
+      ]
+    },
+    {
+      "en": [
+        "{walker} is skipping along."
+      ],
+      "text": [
+        "{walker} merge țopăind."
+      ]
+    },
+    {
+      "en": [
+        "{walker} is so happy that it can't keep still."
+      ],
+      "text": [
+        "{walker} e atât de fericit că nu poate sta locului."
+      ]
+    },
+    {
+      "en": [
+        "{walker} seems to be enjoying the walk."
+      ],
+      "text": [
+        "{walker} pare să se bucure de plimbare."
+      ]
+    },
+    {
+      "en": [
+        "{walker} is ambling along at its ease."
+      ],
+      "text": [
+        "{walker} se plimbă agale, în tihnă."
+      ]
+    },
+    {
+      "en": [
+        "{walker} looks as happy as can be."
+      ],
+      "text": [
+        "{walker} pare cât se poate de fericit."
+      ]
+    },
+    {
+      "en": [
+        "{walker} seems to be in fine spirits."
+      ],
+      "text": [
+        "{walker} pare să fie bine dispus."
+      ]
+    },
+    {
+      "en": [
+        "{walker} pressed up close against you."
+      ],
+      "text": [
+        "{walker} s-a lipit de tine."
+      ]
+    },
+    {
+      "en": [
+        "{walker} is scratching at the ground for some reason."
+      ],
+      "text": [
+        "{walker} scurmă în pământ, cine știe de ce."
+      ]
+    },
+    {
+      "en": [
+        "{walker} made a great show of stumbling. It's only playing!"
+      ],
+      "text": [
+        "{walker} s-a prefăcut că se împiedică. Doar se joacă!"
+      ]
+    },
+    {
+      "en": [
+        "{walker} gave a long, contented yawn."
+      ],
+      "text": [
+        "{walker} a căscat lung, mulțumit."
+      ]
+    },
+    {
+      "en": [
+        "{walker} is sniffing at the grass."
+      ],
+      "text": [
+        "{walker} adulmecă iarba."
+      ]
+    },
+    {
+      "en": [
+        "{walker} seems to be enjoying the walk."
+      ],
+      "text": [
+        "{walker} pare să se bucure de plimbare."
+      ]
+    }
+  ],
+  "ReceptionistTalk": [
+    {
+      "en": [
+        "{walker} looks ever so pleased to be trotting about after you."
+      ],
+      "text": [
+        "{walker} pare tare mulțumit să alerge după tine."
+      ]
+    },
+    {
+      "en": [
+        "The owner of Amity Square asks only that people and Pokémon enjoy themselves here."
+      ],
+      "text": [
+        "Proprietarul Pieței Amity nu cere decât ca oamenii și Pokémonii să se simtă bine aici."
+      ]
+    },
+    {
+      "en": [
+        "Keep an eye on the ground as you go. Your Pokémon may turn up something useful."
+      ],
+      "text": [
+        "Uită-te la pământ pe unde mergi. Pokémonul tău poate găsi ceva folositor."
+      ]
+    },
+    {
+      "en": [
+        "Are you enjoying your stroll?"
+      ],
+      "text": [
+        "Îți place plimbarea?"
+      ]
+    },
+    {
+      "en": [
+        "Seeing so many sweet Pokémon go by makes me happy all day long."
+      ],
+      "text": [
+        "Când văd atâția Pokémoni drăguți trecând, sunt fericită toată ziua."
+      ]
+    },
+    {
+      "en": [
+        "Stay in Amity Square for as long as you like."
+      ],
+      "text": [
+        "Rămâi în Piața Amity cât vrei."
+      ]
+    },
+    {
+      "en": [
+        "Welcome to Amity Square, a park for strolling with a Pokémon at your side."
+      ],
+      "text": [
+        "Bun venit în Piața Amity, un parc pentru plimbări cu un Pokémon alături."
+      ]
+    }
+  ],
+  "Happiny": [
+    {
+      "en": [
+        "Happiny's eyelids are drooping. It looks ready for a nap."
+      ],
+      "text": [
+        "Lui Happiny i se închid pleoapele. Pare gata de un pui de somn."
+      ]
+    }
+  ],
+  "GiftMan": [
+    {
+      "en": [
+        "Good day to you! How I love this park. I walk here every day, rain or shine."
+      ],
+      "text": [
+        "Bună ziua! Ce mult iubesc parcul ăsta. Mă plimb aici în fiecare zi, fie ploaie, fie soare."
+      ]
+    },
+    {
+      "en": [
+        "Do you know the {thing}? I came across it on the paths this morning. Would you like what I found?"
+      ],
+      "text": [
+        "Știi ce e {thing}? Am dat de așa ceva pe alei azi-dimineață. Vrei ce am găsit?"
+      ]
+    },
+    {
+      "en": [
+        "Ha ha ha! Perhaps we shall meet again tomorrow."
+      ],
+      "text": [
+        "Ha, ha, ha! Poate ne mai vedem mâine."
+      ]
+    },
+    {
+      "en": [
+        "Oh! Well, it's no trouble to me."
+      ],
+      "text": [
+        "O! Ei, pentru mine nu e nicio problemă."
+      ]
+    },
+    {
+      "en": [
+        "Oh dear, your Fashion Case has no room for another of those. Find me again once it has."
+      ],
+      "text": [
+        "Vai, nu mai e loc în Fashion Case pentru încă unul. Caută-mă din nou când o să fie."
+      ]
+    }
+  ]
+}
