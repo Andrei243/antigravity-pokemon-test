@@ -1740,6 +1740,7 @@ public static class WorldMapBuilder
             {
                 map.SetGroundTile(o.X, o.Z, TileType.Signpost, isSolid: true);
                 map.Signboards[(o.X, o.Z)] = overlay?.Signs?.GetValueOrDefault(o.Id) ?? area.DisplayName;
+                map.SignKeys[(o.X, o.Z)] = o.Id;
                 if (overlay?.SignScripts?.GetValueOrDefault(o.Id) is { Length: > 0 } read) map.SignScripts[(o.X, o.Z)] = read;
                 continue;
             }
@@ -1747,6 +1748,7 @@ public static class WorldMapBuilder
             {
                 map.AddProp(PropType.Mailbox, o.X, o.Z);
                 map.Signboards[(o.X, o.Z)] = overlay?.Signs?.GetValueOrDefault(o.Id) ?? "A mailbox.";
+                map.SignKeys[(o.X, o.Z)] = o.Id;
                 if (overlay?.SignScripts?.GetValueOrDefault(o.Id) is { Length: > 0 } opened) map.SignScripts[(o.X, o.Z)] = opened;
                 continue;
             }
@@ -1844,6 +1846,8 @@ public static class WorldMapBuilder
             if (o.Y is > 0 && map.DeckAt(o.X, o.Z) is { } deck) npc.Level = deck;
             // Scripts call them by their id in the area's file, and look their own scripts up in the area's
             npc.Key = o.Id;
+            npc.LinesPlace = key;
+            npc.LinesKey = o.Id;
             npc.ScriptFile = key;
             // How they move about of their own accord, within the original's range round where they stand (plan 02 · S6)
             if (!person.Still) npc.Movement = PersonMovement.Parse(o.Movement, o.RangeX, o.RangeZ, o.X, o.Z, npc.Facing);
@@ -1860,6 +1864,7 @@ public static class WorldMapBuilder
         foreach (var record in people ? overlay?.Npcs ?? new() : new())
         {
             var npc = MapFile.BuildNpc(record, map.Name);
+            npc.LinesPlace = key;
             npc.ScriptFile = key;
             // A boulder among them is put back where it stood when the player leaves, as every boulder is
             map.Add(npc);

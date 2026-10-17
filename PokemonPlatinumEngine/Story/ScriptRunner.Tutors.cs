@@ -1,4 +1,5 @@
 using System.Linq;
+using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 
@@ -50,7 +51,8 @@ public sealed partial class ScriptRunner
                 if (pupil.IsEgg) { Result = 3; break; }
                 var moves = MoveTutors.Teachable(pupil, i.Other);
                 if (moves.Count == 0) { Result = 2; break; }
-                host.Ask(speaker, $"Which move should {pupil.DisplayName} be taught?", moves.Select(m => $"{m.Move}   {m.Price}").Append("Cancel").ToList(), cancel: moves.Count);
+                host.Ask(speakerShown, Text.Of("scriptLines.whichMove", ("pokemon", pupil.DisplayName)),
+                    moves.Select(m => Text.Of("scriptLines.moveRow", ("move", LocalNames.Move(m.Move)), ("price", m.Price))).Append(Text.Of("scriptLines.cancel")).ToList(), cancel: moves.Count);
                 afterBusy = () =>
                 {
                     if (host.Answer < 0 || host.Answer >= moves.Count) { Result = 0; return; }
@@ -95,8 +97,8 @@ public sealed partial class ScriptRunner
                 }
                 var learner = pupil;
                 string move = tutorMove;
-                host.Ask(speaker, $"{learner.DisplayName} knows four moves already. Which is to make room for {move}?",
-                    learner.Moves.Select(m => m.DisplayName).Append("Give up").ToList(), cancel: learner.Moves.Count);
+                host.Ask(speakerShown, Text.Of("scriptLines.knowsFour", ("pokemon", learner.DisplayName), ("move", LocalNames.Move(move))),
+                    learner.Moves.Select(m => m.DisplayName).Append(Text.Of("scriptLines.giveUp")).ToList(), cancel: learner.Moves.Count);
                 afterBusy = () =>
                 {
                     int slot = host.Answer;
@@ -117,7 +119,7 @@ public sealed partial class ScriptRunner
                 if (pupil.IsEgg) { Result = 3; break; }
                 if (!MoveTutors.CanForget(pupil)) { Result = 2; break; }
                 var learner = pupil;
-                host.Ask(speaker, "Which move should be forgotten?", learner.Moves.Select(m => m.DisplayName).Append("Cancel").ToList(), cancel: learner.Moves.Count);
+                host.Ask(speakerShown, Text.Of("scriptLines.whichForgotten"), learner.Moves.Select(m => m.DisplayName).Append(Text.Of("scriptLines.cancel")).ToList(), cancel: learner.Moves.Count);
                 afterBusy = () =>
                 {
                     if (host.Answer < 0 || host.Answer >= learner.Moves.Count) { Result = 0; return; }

@@ -19,7 +19,7 @@ namespace PokemonPlatinumEngine.Core;
 /// has no file: it is English with every string in brackets, so whatever slipped past the table shows bare.
 /// GPU-free.
 /// </summary>
-public static class Text
+public static partial class Text
 {
     public const string English = "en";
 
@@ -99,6 +99,13 @@ public static class Text
     public static IReadOnlySet<string> EnglishKeys
     {
         get { lock (gate) return (english ??= Read(English)).Keys.ToHashSet(); }
+    }
+
+    /// <summary>The keys of a language's own <c>ui.json</c> (none for a language with no file), for the localisation report.</summary>
+    public static IReadOnlySet<string> KeysOf(string tag)
+    {
+        if (tag == English) return EnglishKeys;
+        lock (gate) return Read(tag).Keys.ToHashSet();
     }
 
     /// <summary>A whole number as the language writes it.</summary>

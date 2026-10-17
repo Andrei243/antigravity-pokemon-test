@@ -269,6 +269,16 @@ public class Map
     public string DisplayNameAt(int x, int y) =>
         Core.PlayerIdentity.Fill(AreaAt(x, y)?.DisplayName is { Length: > 0 } name ? name : DisplayName);
 
+    /// <summary>
+    /// <see cref="DisplayNameAt"/> as the chosen language writes it (plan 17 · N4): what a sign over the field, a shop's
+    /// title and a save's card show. <see cref="DisplayNameAt"/> stays the identifier a Pokémon is "met at" and a save keeps.
+    /// </summary>
+    public string ShownNameAt(int x, int y)
+    {
+        string english = AreaAt(x, y)?.DisplayName is { Length: > 0 } name ? name : DisplayName;
+        return Core.PlayerIdentity.Fill(Data.LocalNames.PlaceShown(ScriptFileAt(x, y), english));
+    }
+
     public string BgmTrackAt(int x, int y) => AreaAt(x, y)?.BgmTrack is { Length: > 0 } track ? track : BgmTrack;
 
     /// <summary>
@@ -648,6 +658,9 @@ public class Map
     public TrackedList<Warp> Warps { get; } = new();
     public List<WildEncounterEntry> WildEncounters { get; } = new();
     public Dictionary<(int X, int Y), string> Signboards { get; } = new();
+
+    /// <summary>Where a signboard is found in the translation files: its id in the area's file, or <c>x,y</c> on a hand-made map (plan 17 · N4).</summary>
+    public Dictionary<(int X, int Y), string> SignKeys { get; } = new();
 
     private readonly Random rng = Core.Dice.New();
 

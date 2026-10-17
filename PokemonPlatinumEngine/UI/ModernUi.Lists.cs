@@ -347,7 +347,7 @@ internal static partial class ModernUi
     public static string PlaceOf(SaveData save)
     {
         var place = save.Place();
-        return MapDatabase.Get(place.Map).DisplayNameAt(place.X, place.Y);
+        return MapDatabase.Get(place.Map).ShownNameAt(place.X, place.Y);
     }
 
     /// <summary>

@@ -26,7 +26,7 @@ public sealed partial class ScriptRunner
     public const int MostCalls = 32;
 
     /// <summary>The answers of a plain question, in the order they are shown: the first is yes.</summary>
-    public static readonly string[] YesNo = { "Yes", "No" };
+    public static string[] YesNo => new[] { Text.Of("scriptLines.yes"), Text.Of("scriptLines.no") };
 
     private readonly ScriptLibrary library;
     private readonly IScriptHost host;
@@ -37,6 +37,13 @@ public sealed partial class ScriptRunner
     private int at;
     private IReadOnlyList<string> ownLines = Array.Empty<string>();
     private string? speaker;
+
+    // The speaker as the chosen language writes the name; `speaker` stays the identifier a save may keep (an Egg's met-by)
+    private string? speakerShown;
+
+    // Where the lines `sayown` says are found in the translation files (plan 17 · N4): a signboard's, else the subject's own
+    private (string Place, string Key)? ownSign;
+    private bool ownFromSubject;
     private float waiting;
     private bool waitingForWalks;
     private Action? afterBusy;
@@ -117,8 +124,9 @@ public sealed partial class ScriptRunner
     /// <param name="item">The item <c>find own</c> gives; left out, what the subject holds (an item ball's).</param>
     /// <param name="flag">The flag <c>setflag own</c> sets; left out, the one that hides the subject.</param>
     /// <param name="pokemon">The Pokémon of the team the script was started for: the one whose field move was chosen in the party menu.</param>
+    /// <param name="sign">Where a signboard's lines are found in the translation files: the place and the sign's id there.</param>
     public void Start(Script start, NPC? subject = null, IReadOnlyList<string>? own = null, (string Item, int Count)? item = null, string? flag = null,
-        Pokemon? pokemon = null, NPC? pair = null)
+        Pokemon? pokemon = null, NPC? pair = null, (string Place, string Key)? sign = null)
     {
         ownPokemon = pokemon;
         Pair = pair;
@@ -131,7 +139,10 @@ public sealed partial class ScriptRunner
         // Whose people a name means: those of the place the script is written for, or of whoever started a common one
         place = start.File != ScriptLibrary.Common ? start.File : subject?.ScriptFile ?? "";
         ownLines = own ?? subject?.DialogLines ?? (IReadOnlyList<string>)Array.Empty<string>();
+        ownSign = own != null ? sign : null;
+        ownFromSubject = own == null && subject != null;
         speaker = subject?.Name;
+        speakerShown = ShownNameOf(subject);
         waiting = 0f;
         waitingForWalks = false;
         afterBusy = null;
@@ -402,13 +413,13 @@ public sealed partial class ScriptRunner
             case Op.Text:
             {
                 // Lines one after another are one talk: the box doesn't close between them
-                var lines = new List<string>(i.Lines);
-                while (at < script!.Code.Count && script.Code[at].Op == i.Op) lines.AddRange(script.Code[at++].Lines);
-                host.Say(i.Op == Op.Say ? speaker : null, lines.Select(Fill).ToList());
+                var lines = new List<string>(Spoken(i));
+                while (at < script!.Code.Count && script.Code[at].Op == i.Op) lines.AddRange(Spoken(script.Code[at++]));
+                host.Say(i.Op == Op.Say ? speakerShown : null, lines.Select(Fill).ToList());
                 break;
             }
             case Op.SayOwn:
-                if (ownLines.Count > 0) host.Say(speaker, ownLines.Select(Fill).ToList());
+                if (ownLines.Count > 0) host.Say(speakerShown, OwnSpoken().Select(Fill).ToList());
                 break;
             case Op.TrainerLine:
             {
@@ -417,20 +428,22 @@ public sealed partial class ScriptRunner
                 string line = i.Option ? trainer.DialogueAfter : trainer.DialogueBefore;
                 Result = string.IsNullOrEmpty(line) ? 0 : 1;
                 // A line written "Youngster Tristan: ..." is said under that whole title, as the text box shows who speaks
-                string? title = line.StartsWith(trainer.FullTitle + ": ", StringComparison.Ordinal) ? trainer.FullTitle : whose == Subject ? speaker : whose.Name;
-                if (Result == 1) host.Say(title, new[] { Fill(line) });
+                string? title = line.StartsWith(trainer.FullTitle + ": ", StringComparison.Ordinal) ? trainer.FullTitle : whose == Subject ? speakerShown : ShownNameOf(whose);
+                if (Result == 1)
+                    host.Say(title, new[] { Fill(Text.PersonLine(whose.LinesPlace, whose.LinesKey, i.Option ? PersonField.After : PersonField.Before, 0, new[] { line })) });
                 break;
             }
             case Op.Speaker:
                 speaker = i.Option ? Subject?.Name : i.Name.Length > 0 ? i.Name : null;
+                speakerShown = i.Option ? ShownNameOf(Subject) : i.Name.Length > 0 ? Text.Line(script!.FullName, i.TextIndex, 0, i.Words) : null;
                 break;
             case Op.Ask:
-                host.Ask(speaker, Fill(i.Lines[0]), YesNo, cancel: 1);
+                host.Ask(speakerShown, Fill(Spoken(i)[0]), YesNo, cancel: 1);
                 afterBusy = () => Result = host.Answer == 0 ? 1 : 0;
                 break;
             case Op.Choose:
                 // Backing out of a menu picks its last answer, which is where a script puts its way out
-                host.Ask(speaker, Fill(i.Lines[0]), i.Lines.Skip(1).Select(Fill).ToList(), cancel: i.Lines.Count - 2);
+                host.Ask(speakerShown, Fill(Spoken(i)[0]), Spoken(i).Skip(1).Select(Fill).ToList(), cancel: i.Lines.Count - 2);
                 afterBusy = () => Result = host.Answer;
                 break;
 
@@ -1117,7 +1130,7 @@ public sealed partial class ScriptRunner
     private bool NoPokemonToBattle()
     {
         if (host.CanBattle) return false;
-        host.Say(null, new[] { "{player} has no Pokémon that can battle!" });
+        host.Say(null, new[] { Text.Of("scriptLines.noPokemonToBattle") });
         Finish();
         return true;
     }
@@ -1680,7 +1693,7 @@ public sealed partial class ScriptRunner
                 lastAccessory = SuperContestDatabase.AccessoryName(accessory);
                 Result = 1;
                 host.Fanfare(MusicRole.FanfareItem);
-                host.Say(null, new List<string> { $"{{player}} received the {lastAccessory}!", "{player} put it away in the Fashion Case." });
+                host.Say(null, new List<string> { Text.Of("found.received", ("n", 1), ("item", lastAccessory)), Text.Of("found.putInCase", ("n", 1)) });
                 break;
             }
         }
@@ -1822,6 +1835,41 @@ public sealed partial class ScriptRunner
     /// <summary>An item named by the data, as the chosen language shows it (plan 17 · N3); nothing for none.</summary>
     private static string NameOfItem(string? item) => string.IsNullOrEmpty(item) ? "" : LocalNames.Item(item);
 
+    // ------------------------------------------------------------------ the words of a script in the chosen language (plan 17 · N4)
+
+    /// <summary>The lines of a text-bearing instruction as the chosen language says them: the script's own English where its translation has none.</summary>
+    private IReadOnlyList<string> Spoken(Instruction i)
+    {
+        if (i.TextIndex < 0 || script == null) return i.Lines;
+        var words = i.Lines;
+        var said = new string[words.Count];
+        for (int k = 0; k < said.Length; k++) said[k] = Text.Line(script.FullName, i.TextIndex, k, words);
+        return said;
+    }
+
+    /// <summary>What <c>sayown</c> says: a signboard's or the subject's own lines, translated by where they are written.</summary>
+    private IReadOnlyList<string> OwnSpoken()
+    {
+        var said = new string[ownLines.Count];
+        for (int k = 0; k < said.Length; k++)
+            said[k] = ownSign is { } sign ? Text.SignLine(sign.Place, sign.Key, k, ownLines)
+                : ownFromSubject && Subject != null ? Text.PersonLine(Subject.LinesPlace, Subject.LinesKey, PersonField.Dialog, k, ownLines)
+                : Text.SignLine(null, null, k, ownLines);
+        return said;
+    }
+
+    /// <summary>One row of a prize list: the item (a TM with the move it holds) and its price, written by the key given.</summary>
+    private static string PrizeRow(string itemName, string priceKey, string priceArgument, string price)
+    {
+        var item = ItemDatabase.Get(itemName);
+        string shown = item?.DisplayName ?? itemName;
+        if (item?.TeachesMove is { Length: > 0 } move) shown = Text.Of("scriptLines.tmRow", ("item", shown), ("move", LocalNames.Move(move)));
+        return Text.Of(priceKey, ("name", shown), (priceArgument, price));
+    }
+
+    /// <summary>A person's name as the chosen language writes it (their English name where it has no other).</summary>
+    private static string? ShownNameOf(NPC? who) => who == null ? null : Text.PersonName(who.LinesPlace, who.LinesKey, who.Name);
+
     public string Fill(string text) => text.Contains('{') ? Placeholder.Replace(text, match =>
     {
         string argument = match.Groups[2].Value;
@@ -1832,7 +1880,7 @@ public sealed partial class ScriptRunner
             "starter" => NameOfSpecies(host.Story.PlayerStarter),
             "rivalstarter" => NameOfSpecies(host.Story.RivalStarter),
             "assistantstarter" => NameOfSpecies(host.Story.AssistantStarter),
-            "self" => Subject?.Name ?? "",
+            "self" => ShownNameOf(Subject) ?? "",
             "item" => NameOfItem(lastItem),
             "berry" => NameOfItem(berryName),
             "yield" => berryYield.ToString(),

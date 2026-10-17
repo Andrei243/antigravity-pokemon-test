@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Development tool (plan 17 · N4): writes the skeleton of a language's translation files for the scripts, the
+       overlays and the hand-made maps, and reports what each language still lacks. No window. -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../../PokemonPlatinumEngine/PokemonPlatinumEngine.csproj" />
+  </ItemGroup>
+
+</Project>

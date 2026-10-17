@@ -190,6 +190,19 @@ public sealed class Instruction
     /// <summary>The lines said, or a question followed by its answers.</summary>
     public IReadOnlyList<string> Lines { get; init; } = Array.Empty<string>();
 
+    /// <summary>
+    /// Which text-bearing line of its script this is, counted from nought in the order they are written (a line an
+    /// <c>if</c> guards counts after the <c>if</c>): <c>say</c>, <c>text</c>, <c>ask</c>, <c>choose</c> with its answers and a
+    /// <c>speaker</c> given a name (plan 17 · N4). A translation file lists these in this order; -1 for a line that says nothing.
+    /// </summary>
+    public int TextIndex { get; set; } = -1;
+
+    /// <summary>Whether the line carries words a translation may replace.</summary>
+    public bool SpeaksText => Op is Op.Say or Op.Text or Op.Ask or Op.Choose || (Op == Op.Speaker && Name.Length > 0);
+
+    /// <summary>The words of a speaker line, which are <see cref="Name"/> and not <see cref="Lines"/>: what a translation file lists for it.</summary>
+    public IReadOnlyList<string> Words => Op == Op.Speaker ? new[] { Name } : Lines;
+
     /// <summary>The steps of a walk, each onto the next tile, on the spot or keeping the facing (plan 11 · C11).</summary>
     public IReadOnlyList<ScriptStep> Path { get; init; } = Array.Empty<ScriptStep>();
 

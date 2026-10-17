@@ -304,6 +304,7 @@ public sealed class MapFile
         foreach (var s in Signboards)
         {
             map.Signboards[(s.X, s.Y)] = s.Text;
+            map.SignKeys[(s.X, s.Y)] = $"{s.X},{s.Y}";
             if (!string.IsNullOrEmpty(s.Script)) map.SignScripts[(s.X, s.Y)] = s.Script;
         }
 
@@ -416,6 +417,8 @@ public sealed class MapFile
             IsTransportAttendant = n.IsTransportAttendant ?? false,
             Mart = n.Mart,
             Key = n.Id,
+            LinesPlace = mapName,
+            LinesKey = n.Id ?? $"{n.X},{n.Y}",
             Script = n.Script,
             HiddenBy = n.HiddenBy,
             ShownBy = n.ShownBy,

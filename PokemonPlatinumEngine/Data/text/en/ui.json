@@ -2371,5 +2371,34 @@
     "Worker": "Worker",
     "YoungCouple": "Young Couple",
     "Youngster": "Youngster"
+  },
+  "scriptLines": {
+    "yes": "Yes",
+    "no": "No",
+    "cancel": "Cancel",
+    "giveUp": "Give up",
+    "noThanks": "No thanks",
+    "whichPrize": "Which prize would you like?",
+    "whichFossil": "Which Fossil is it to be?",
+    "whichPiece": "Which piece will it be?",
+    "whichMove": "Which move should {pokemon} be taught?",
+    "whichForgotten": "Which move should be forgotten?",
+    "knowsFour": "{pokemon} knows four moves already. Which is to make room for {move}?",
+    "moveRow": "{move}   {price}",
+    "tmRow": "{item} {move}",
+    "priceBp": "{name}   {price} BP",
+    "priceCoins": "{name}   {price} C",
+    "priceDollars": "{name}   ${price}",
+    "soldOut": "{name}   sold out",
+    "free": "{name}   free",
+    "noPokemonToBattle": "{player} has no Pokémon that can battle!"
+  },
+  "placeWords": {
+    "the": "the {place}",
+    "on": "on {place}",
+    "at": "at {place}",
+    "in": "in {place}"
+  },
+  "places": {
   }
 }

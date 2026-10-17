@@ -61,6 +61,9 @@ public static class ScriptParser
                     throw new ScriptException($"{file}.txt({i.Line}): script {name} has no label '{i.Name}'.");
                 i.Target = target;
             }
+            // The lines that speak are numbered in the order they are written, for the translation files (plan 17 · N4)
+            int textIndex = 0;
+            foreach (var spoken in code.SelectMany(c => c.Then != null ? new[] { c, c.Then } : new[] { c }).Where(c => c.SpeaksText)) spoken.TextIndex = textIndex++;
             scripts.Add(new Script(file, name, startLine, code.ToList(), new Dictionary<string, int>(labels, StringComparer.Ordinal)));
             code.Clear();
             labels.Clear();

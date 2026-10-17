@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using PokemonPlatinumEngine.Audio;
+using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.Overworld;
@@ -128,14 +129,14 @@ public sealed partial class ScriptRunner
     private bool HandOverAmityThing()
     {
         if (amityThing.Length == 0) return false;
-        string received = amityCount == 1 ? $"{{player}} received the {amityThing}!" : $"{{player}} received {amityCount} × {amityThing}!";
-        string it = amityCount == 1 ? "it" : "them";
+        // (An accessory's name is the data's; a berry or an item is shown by its display name)
+        string received = Text.Of("found.received", ("n", amityCount), ("item", amityAccessory ? amityThing : ItemDatabase.Get(amityThing)?.DisplayName ?? amityThing));
         if (amityAccessory)
         {
             lastAccessory = amityThing;
             if (!host.FashionCase.Add(SuperContestDatabase.Accessory(amityThing), amityCount)) return false;
             host.Fanfare(MusicRole.FanfareItem);
-            host.Say(null, new List<string> { received, $"{{player}} put {it} away in the Fashion Case." });
+            host.Say(null, new List<string> { received, Text.Of("found.putInCase", ("n", amityCount)) });
             return true;
         }
         var item = ItemDatabase.Get(amityThing);
@@ -143,7 +144,7 @@ public sealed partial class ScriptRunner
         host.Bag.AddItem(item, amityCount);
         lastItem = item.Name;
         host.Fanfare(FanfareFor(item));
-        host.Say(null, new List<string> { received, $"{{player}} put {it} away in the {PocketName(item.Pocket)} pocket." });
+        host.Say(null, new List<string> { received, Text.Of("found.putAway", ("n", amityCount), ("pocket", PocketName(item.Pocket))) });
         return true;
     }
 }
