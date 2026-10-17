@@ -1,0 +1,9 @@
+{
+  "name": "calc-oracle",
+  "private": true,
+  "description": "Pokemon Showdown's damage calculator as the oracle of plan 24 X6: reads the scenarios the tests draw and writes the calculator's rolls.",
+  "type": "module",
+  "license": "MIT",
+  "scripts": { "oracle": "node oracle.mjs" },
+  "dependencies": { "@smogon/calc": "0.12.0" }
+}

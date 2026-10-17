@@ -43,3 +43,6 @@ overrides/
 
 # What a golden file's check found the code giving instead (plan 24 · X2): looked at, then accepted or thrown away
 *.received.txt
+
+# The damage oracle's calculator (plan 24 · X6), fetched by `npm ci`: only its answers are committed
+node_modules/

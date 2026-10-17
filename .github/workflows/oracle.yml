@@ -1,0 +1,50 @@
+name: Damage oracle
+
+# Plan 24 · X6: Pokémon Showdown's damage calculator answers the scenarios the tests draw. The answers are committed
+# (PokemonPlatinumTests/Oracle/damage-gen9.json) and the tests read them, so no other job runs node. This one gives
+# the answers afresh with the pinned calculator and fails when they are not what is committed; the answers it gave
+# are kept as the run's artifact, ready to be committed. Plan 16 · T4's nightly calls it too.
+
+on:
+  workflow_dispatch:
+  workflow_call:
+  push:
+    branches: [main]
+    paths:
+      - "tools/CalcOracle/**"
+      - "PokemonPlatinumTests/Oracle/scenarios-gen9.json"
+      - "PokemonPlatinumTests/Oracle/damage-gen9.json"
+  pull_request:
+    paths:
+      - "tools/CalcOracle/**"
+      - "PokemonPlatinumTests/Oracle/scenarios-gen9.json"
+      - "PokemonPlatinumTests/Oracle/damage-gen9.json"
+
+jobs:
+  oracle:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: tools/CalcOracle
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install the pinned calculator
+        run: npm ci
+
+      - name: Answer the scenarios
+        run: node oracle.mjs
+
+      - name: Keep the answers
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: damage-gen9
+          path: PokemonPlatinumTests/Oracle/damage-gen9.json
+
+      - name: The committed answers are the calculator's
+        run: git diff --exit-code -- ../../PokemonPlatinumTests/Oracle/damage-gen9.json
