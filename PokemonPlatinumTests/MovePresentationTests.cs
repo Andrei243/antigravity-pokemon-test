@@ -206,6 +206,57 @@ public class MovePresentationTests
     }
 
     [Fact]
+    public void TheSeventhBatchsSecondPartAllHaveALookAndASoundOfTheirOwn()
+    {
+        // Plan 25 · Y7b: Route 206 to Route 208
+        var part = MoveSightings.SeventhBatchSecondPart;
+        output.WriteLine($"{part.Count} moves in Y7's second part: {string.Join(", ", part)}");
+        Assert.Equal(39, part.Count);
+        Assert.All(part, move => Assert.Equal("Y7b", MoveFx.BatchOf(move)));
+        // Roar is the user's voice and has the look alone
+        Assert.All(part, move => Assert.True(SoundBank.CryModesOf(move) != null || SoundBank.Exists("use_" + SoundBank.MoveKey(move)), move));
+        Assert.Contains("Roar", part);
+        Assert.False(SoundBank.Exists("use_roar"));
+        // And nothing of either part has run into the other
+        Assert.All(MoveFx.Batches.Where(b => b.Value == "Y7b"), b => Assert.Contains(b.Key, part, StringComparer.OrdinalIgnoreCase));
+        Assert.Empty(part.Intersect(MoveSightings.SeventhBatchFirstPart, StringComparer.OrdinalIgnoreCase));
+    }
+
+    [Fact]
+    public void MovesThatShareAParticleFileInTheOriginalLookDifferentHere()
+    {
+        // Block and Imprison, Self-Destruct and Explosion, Snore and Rest, and two more that are alike in kind
+        foreach (var (a, b) in new[] { ("Block", "Imprison"), ("Self-Destruct", "Explosion"), ("Snore", "Rest"), ("Bug Bite", "Ice Fang"), ("Mind Reader", "Detect") })
+        {
+            var ma = MoveDatabase.Get(a)!;
+            var mb = MoveDatabase.Get(b)!;
+            int same = 0;
+            foreach (float age in new[] { 0.15f, 0.3f, 0.5f, 0.8f })
+            {
+                var ca = Cue(ma);
+                var cb = Cue(mb);
+                cb.Seed = ca.Seed;
+                if (Picture(Draw(ca, age)) == Picture(Draw(cb, age))) same++;
+            }
+            Assert.True(same < 4, $"{a} and {b} look alike");
+        }
+    }
+
+    [Fact]
+    public void MagnitudesStrengthIsTheSeedsAndShowsInTheShake()
+    {
+        var move = MoveDatabase.Get("Magnitude")!;
+        var shakes = Enumerable.Range(1, 40).Select(seed =>
+        {
+            var cue = Cue(move);
+            cue.Seed = seed;
+            return Enumerable.Range(0, 30).Max(i => Draw(cue, 0.05f + i * 0.03f).Shake);
+        }).ToList();
+        Assert.InRange(shakes.Min(), 0.4f, 0.7f);
+        Assert.InRange(shakes.Max(), 0.8f, 1.01f);
+    }
+
+    [Fact]
     public void TheNewShapesOfTheSeventhBatchAreDrawn()
     {
         // Y7's five cells of the atlas: each covers its middle and leaves its edge empty
@@ -256,7 +307,7 @@ public class MovePresentationTests
         int own = PlatinumMoves.Count(m => MoveFx.BatchOf(m.Name) != null &&
             (SoundBank.CryModesOf(m.Name) != null || SoundBank.Exists("use_" + SoundBank.MoveKey(m.Name))));
         output.WriteLine($"{own} of Platinum's 467 have a look and a sound of their own");
-        Assert.True(own >= 114, $"only {own}");
+        Assert.True(own >= 153, $"only {own}");
     }
 
     [Fact]

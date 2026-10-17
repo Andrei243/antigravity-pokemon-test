@@ -411,6 +411,6 @@ public static partial class SoundBank
                 }
                 return Finish(d.S, 0.42f);
         }
-        return null;
+        return MakeMoveSoundY7b(name);
     }
 }

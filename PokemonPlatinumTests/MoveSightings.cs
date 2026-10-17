@@ -58,6 +58,23 @@ internal static class MoveSightings
         }
     }
 
+
+    /// <summary>The last area of Y7's second part (plan 25 · Y7b): Route 208, with its rooms; the next place's moves are Y8's.</summary>
+    public const string SeventhBatchEnds = "route_208";
+
+    /// <summary>
+    /// Platinum's moves, by name, that Y7's second part takes (plan 25 · Y7b): seen from <see cref="SeventhBatchSplits"/>
+    /// to the end of <see cref="SeventhBatchEnds"/> (Route 206 to Route 208, its rooms with it).
+    /// </summary>
+    public static IReadOnlyList<string> SeventhBatchSecondPart
+    {
+        get
+        {
+            int from = PlaceRanks.Value[SeventhBatchSplits], to = PlaceRanks.Value[SeventhBatchEnds] + 100;
+            return All.Where(s => s.Rank >= from && s.Rank < to).Select(s => s.Move).ToList();
+        }
+    }
+
     private static readonly Lazy<Dictionary<string, int>> PlaceRanks = new(() => Ranks().Ranks);
 
     /// <summary>The areas in their order, then every room ranked by the place whose warp first leads into it.</summary>
