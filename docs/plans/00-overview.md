@@ -198,7 +198,7 @@ From wave 12, each lane takes its next session whose gates are met. The waves ar
 - 12 · Q13, Q15, Q16, Q19, Q21, Q22, Q23, Q24, Q25 (after 08 · P10), Q26 to Q30.
 - 16 · T6, T7, T13 (after T7 and T12), T10, T17 to T22, T4 (Linux only: decision 16 · 4), T1 and T2 (decisions 16 · 1–3 and 5 are taken; the first public release is published only on the user's word), T23, T24, T14, T15 (optional).
 - 16 · T9, the editor. M11d went without it. Since 2026-10-12 it is a hard gate of plans 22 and 23, whose regions are drawn with it (decision 18 · 5): it grows from rooms and overlays to outdoor areas (chunks, heights, behaviours, the models that stand on them) and lands before 22 · U1.
-- 17 · N5's Latin half, then N6 in Romanian (N4 is done, the section below says what each needs).
+- 17 · N6 in Romanian (N4 and N5's Latin half are done, the section below says what N6 needs; the name keyboard's Romanian letters are N6's to decide).
 - 15 · E3, E4.
 
 **Beside**: 08 · P15, P16 and P17 (after P19), 09 · L6, L7 and L8 (after L1), and 05 · A6 as scenes ask for songs.
@@ -247,7 +247,7 @@ These are the plans the README put after Sinnoh's Hall of Fame, which has been i
 - **Localisation (17)**, wanted since 2026-10-12: Romanian first, and the language an options row the player changes at any time (so nothing of it is kept in the save, plan 17's decision 5).
   - N1 and N2 in wave 11's freeze; N3 done in wave 13 (the names files of the eight languages PokeAPI has, the display names, empty nicknames, the composed entry; Romanian has none and shows English until N6). PokeAPI has no Romanian and the games were never sold in it, so species, moves, abilities and items keep their English names; whether their descriptions are written in Romanian is N6's question for the user.
   - N4 done in wave 14 (the scripts, overlays and rooms translated through sibling files, `tools/TextTool`, `docs/localisation.md`; it numbers the lines as 26 · V1 will address them, so V1 takes N4's keys as they are). It was kept out of the same wave as V1 for that reason.
-  - N5's Latin half before N6: Romanian's ă, ș and ț are outside the Latin-1 that `UiFonts` loads. Nunito has them (its `cmap` was read on 2026-10-12), so no face is downloaded. Its CJK half waits for a language that needs it.
+  - N5's Latin half done in wave 15 (a second atlas of Nunito for Latin Extended-A and the marks, made when a text first needs it, so English pays nothing; no face downloaded; the no-break spaces drawn as spaces). Its CJK half waits for a language that needs it.
   - N6, in Romanian.
 - **Side activities (15)**: E6 to E8 (the Pokéathlon) are kept (decided 2026-10-12) and run just before 20 · J13, which stands the dome in Johto; E5 runs just before 20 · J7.
 - **Unity (27)**: deferred by the user to the end, after everything above. Its spike (S0) is where its own six decisions begin.
@@ -304,7 +304,7 @@ A seam is a piece several plans offer to write "if it hasn't been". Each has one
 | A level curve for a team carried from region to region, and a cap that may rise above 100 | 18 · W4 with 13 · V3, studied from how Gold and Silver levelled Kanto, and brought to the user first |
 | Pal Park's Catching Show, with nothing migrated to stock it | 03 · D12a proposes what it draws from |
 | Outdoor areas drawn by hand, for Unova and after | 16 · T9, grown from rooms and overlays to areas |
-| Romanian's letters beyond Latin-1 | 17 · N5's Latin half, before N6 |
+| Romanian's letters beyond Latin-1 | done: 17 · N5's Latin half (wave 15) |
 | The objectives and the skippable scenes of S4 to S14 | 12 · Q14 and Q20, backfilling |
 | S5's and S6's bosses' lines in battle | 11 · C12 |
 | The Azure Flute and the Hall of Origin | 03 · D12c |

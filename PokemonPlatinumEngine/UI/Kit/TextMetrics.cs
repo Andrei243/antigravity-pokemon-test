@@ -23,6 +23,9 @@ public static class TextMetrics
     {
         public readonly Dictionary<int, int> Advance = new();
 
+        /// <summary>The same for <see cref="UiFonts.ExtraCodepoints"/>, the second face (its atlas is the same size, so the same scale).</summary>
+        public readonly Dictionary<int, int> Extra = new();
+
         /// <summary>The codepoints the file has but draws nothing for and gives no width.</summary>
         public readonly HashSet<int> Blank = new();
         public int Fallback;
@@ -47,23 +50,28 @@ public static class TextMetrics
     public static float Measure(string text, float size, UiWeight weight = UiWeight.Bold)
     {
         if (text.Length == 0) return 0f;
+        text = UiFonts.Spaced(text);
         var face = Get(weight);
         float width = 0f;
         int count = 0;
         foreach (var rune in text.EnumerateRunes())
         {
             count++;
-            width += face.Advance.TryGetValue(rune.Value, out int advance) ? advance : face.Fallback;
+            width += face.Advance.TryGetValue(rune.Value, out int advance) || face.Extra.TryGetValue(rune.Value, out advance) ? advance : face.Fallback;
         }
         return width * (size / UiFonts.AtlasSize) + (count - 1) * UiFonts.Tracking(size);
     }
 
     /// <summary>
     /// Whether the interface draws a character as itself. Anything else comes out as a question mark (a character the
-    /// typeface wasn't loaded with or has no glyph for), or as nothing at all (the non-breaking space).
+    /// typeface wasn't loaded with or has no glyph for). The no-break spaces are drawn as the plain space
+    /// (<see cref="UiFonts.Spaced"/>).
     /// </summary>
     public static bool CanDraw(Rune character, UiWeight weight = UiWeight.Bold) =>
-        Get(weight) is var face && face.Advance.ContainsKey(character.Value) && !face.Blank.Contains(character.Value);
+        character.Value is 0xA0 or 0x202F || Get(weight) is var face && (face.Advance.ContainsKey(character.Value) && !face.Blank.Contains(character.Value) || face.Extra.ContainsKey(character.Value));
+
+    /// <summary>Whether the second face (<see cref="UiFonts.ExtraCodepoints"/>) has a glyph for a codepoint in this weight's file.</summary>
+    internal static bool HasExtra(int codepoint, UiWeight weight) => Get(weight).Extra.ContainsKey(codepoint);
 
     /// <summary>The characters of a text the interface can't draw, each once, in the order they are met.</summary>
     public static List<Rune> Undrawable(string text, UiWeight weight = UiWeight.Bold)
@@ -182,6 +190,8 @@ public static class TextMetrics
             face.Advance[codepoint] = blank ? 0 : (int)(AdvanceOf(glyph) * scale);
             if (blank) face.Blank.Add(codepoint);
         }
+        foreach (int codepoint in UiFonts.ExtraCodepoints)
+            if (GlyphOf(codepoint) is > 0 and var glyph) face.Extra[codepoint] = (int)(AdvanceOf(glyph) * scale);
         face.Fallback = face.Advance.GetValueOrDefault('?');
         return face;
     }
