@@ -81,7 +81,8 @@ public class LocalNamesTests
     {
         Assert.NotNull(Language.Of("ro"));
         Assert.False(LocalNames.Has("ro"));
-        Assert.DoesNotContain(Language.Offered, l => l.Tag == "ro");
+        // Offered since plan 17 · N6 for its ui.json; the names stay English all the same
+        Assert.Contains(Language.Offered, l => l.Tag == "ro");
         Assert.Equal(("Bulbasaur", "Tackle", "Potion"), InLanguage("ro", () => (PokemonDatabase.Get("Bulbasaur")!.DisplayName, MoveDatabase.Get("Tackle")!.DisplayName, ItemDatabase.Get("Potion")!.DisplayName)));
     }
 

@@ -471,6 +471,10 @@
     "height": "HEIGHT",
     "weight": "WEIGHT",
     "habitat": "HABITAT",
+    "habitatWord": {
+      "Grassland": "Grassland", "Forest": "Forest", "WatersEdge": "Water's edge", "Sea": "Sea", "Cave": "Cave",
+      "Mountain": "Mountain", "RoughTerrain": "Rough terrain", "Urban": "Urban", "Rare": "Rare"
+    },
     "catchToRecord": "Catch one to record what is known about it.",
     "catchToCompare": "Catch one to compare its size.",
     "whereItLives": "WHERE IT LIVES",
@@ -2127,7 +2131,8 @@
       "fell": "fell!",
       "fellHarshly": "harshly fell!",
       "fellSeverely": "severely fell!"
-    }
+    },
+    "statChange": "{pokemon}'s {stat} {stage}"
   },
 
   "battleInfo": {
