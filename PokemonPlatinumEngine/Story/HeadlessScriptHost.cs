@@ -168,15 +168,10 @@ public sealed class HeadlessScriptHost : IScriptHost
     public Models.Pastimes Pastimes { get; } = new();
     public Models.VillaRecords VillaRecords { get; set; }
 
-    /// <summary>The National numbers a test has the Pokédex hold as caught (plan 03 · D12a: Pal Park's visitors).</summary>
-    public HashSet<int> CaughtDex { get; } = new();
     public int? SlotsLeave { get; set; }
 
     public int PastimeAct(string what, int number, NPC? subject)
     {
-        // Plan 03 · D12a: whether the Pokédex has caught a species, which Pal Park's visitors are drawn by; asked of
-        // every species of the pool, so it is written nowhere
-        if (what == "caught") return CaughtDex.Contains(number) ? 1 : 0;
         Log.Add($"pastime {what} {number}");
         NeverInAHurry($"a pastime's '{what}'");
         switch (what)

@@ -3,6 +3,10 @@
   // The mossy rock stands in the forest: Eevee become Leafeon here, as the original's table of places says (plan
   // 03 · D12a found Leafeon with no way to it). The rock itself is an object of the original's that nothing draws yet
   "evolutionSites": [ "Moss Rock" ],
+  // Plan 03 · D12a: Diamond's Murkrow and Pearl's Misdreavus, which Platinum's tables leave out, where Diamond and
+  // Pearl have them (this forest at night, and the Lost Tower): in the grass's slots 8 and 9 once the National
+  // Pokédex is had, at those slots' levels (13)
+  "national": { "land": [ "Murkrow", "Misdreavus" ] },
   "bgmTrack": "sinnoh/forest",
   // Plan 01 · M11, part a: rooms on the original's plans
   "doors": [

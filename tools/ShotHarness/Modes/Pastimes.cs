@@ -332,7 +332,8 @@ partial class Harness
             Shot("pt60_pal_park_door");
             Enter("PalParkLobby", 7, 19, Direction.Up);
             Shot("pt61_pal_park_lobby");
-            // Nothing waits, so six visitors come of the species Sinnoh has no other way to (plan 03 · D12a, in place of
+            // Nothing waits, so the day's six visitors come of the species Sinnoh has no other way to, by the rotation
+            // the harness's fixed date picks (plan 03 · D12a, in place of
             // the migration and of pt62, the attendant's "nothing brought over", which no game reaches any more)
             Talk(7, 12, Direction.Up, "Park Balls", "pt63_park_balls", 0);
             var six = pastimes.PalPark.Waiting;

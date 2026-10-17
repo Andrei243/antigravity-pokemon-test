@@ -460,7 +460,7 @@ own flags and variables (`FLAG_VILLA_FURNITURE_…`, `VAR_RESORT_VILLA_VISITOR`)
 | `villa buy` | Pays for the piece chosen, and it is the player's: `RESULT` 0 with too little money. |
 | `villa furnish` | Stands what is owned in the room, each piece in its place. |
 | `villa owned` | `RESULT` is how many pieces are owned. |
-| `palpark check` | `RESULT` 0 when a Catching Show can begin, 1 when the boxes haven't six free places, 2 when six Pokémon don't wait in the park. With nothing waiting it first lets six visitors come of the species Sinnoh has no other way to (plan 03 · D12a, `PalParkState.Visitors`). |
+| `palpark check` | `RESULT` 0 when a Catching Show can begin, 1 when the boxes haven't six free places, 2 when six Pokémon don't wait in the park. With nothing waiting, or another day's six, it first lets the day's six visitors come of the species Sinnoh has no other way to, by a fixed rotation by the date (plan 03 · D12a, `PalParkState.Welcome`). |
 | `palpark start` | Lets the six loose and hands over six Park Balls: `RESULT` 0 if it couldn't. |
 | `palpark go` | Starts the show's clock. |
 | `palpark active` | `RESULT` 1 while a show is on. |

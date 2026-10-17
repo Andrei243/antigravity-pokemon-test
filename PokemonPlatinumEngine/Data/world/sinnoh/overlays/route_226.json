@@ -1,9 +1,5 @@
 {
   "area": "route_226",
-  // Plan 03 · D12a: Diamond's Murkrow and Pearl's Misdreavus, which Platinum's tables leave out, in the grass's
-  // slots 8 and 9 once the National Pokédex is had, at those slots' levels (47); and Diamond's and Pearl's Clamperl
-  // on the Super Rod's slot 3 (40 to 55)
-  "national": { "land": [ "Murkrow", "Misdreavus" ], "superRod": [ "Clamperl" ] },
   // The original's role (Routes 225 to 227) has no song yet (plan 05 · A6): Routes 206 to 208's stands in
   "bgmTrack": "sinnoh/route206",
   "trees": "Round",

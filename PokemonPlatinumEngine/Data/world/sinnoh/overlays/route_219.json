@@ -1,5 +1,8 @@
 {
   "area": "route_219",
+  // Plan 03 · D12a: Clamperl, which Platinum's tables leave out, where Diamond and Pearl have it (the Super Rod on
+  // Routes 219 and 221): the Super Rod's slot 3 once the National Pokédex is had, at that slot's levels (40 to 55)
+  "national": { "superRod": [ "Clamperl" ] },
   "bgmTrack": "sinnoh/route201",
   "trees": "Round",
   // The two tubers on the beach, the first trainers the sea road south of Sandgem Town brings (plan 02 · S9)

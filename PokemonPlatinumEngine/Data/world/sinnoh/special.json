@@ -18,11 +18,12 @@
     { "key": "old_chateau_rotom", "name": "Old Chateau", "cells": "6,18 8,16", "special": [ "Rotom" ], "how": "The television, after dark" },
     { "key": "spear_pillar", "name": "Spear Pillar", "cells": "11,16", "special": [ "Dialga", "Palkia" ], "how": "With its orb, after the Hall of Fame" },
     { "key": "turnback_cave_giratina", "name": "Turnback Cave", "cells": "23,22", "special": [ "Giratina" ], "how": "Its last room" },
-    // Plan 03 · D12a: Diamond's and Pearl's species that Platinum's tables leave out, met in the Battle Zone's grass
-    // (and Clamperl on its Super Rod) once the National Pokédex is had: the overlays' "national"
-    { "key": "route_225", "name": "Route 225", "cells": "19,10 19,11 19,12", "special": [ "Stunky", "Skuntank" ], "how": "With the National Pokédex" },
-    { "key": "route_226", "name": "Route 226", "cells": "21,10 22,10 23,10", "special": [ "Murkrow", "Misdreavus", "Clamperl" ], "how": "With the National Pokédex" },
-    { "key": "route_228", "name": "Route 228", "cells": "24,10 24,11 24,12", "special": [ "Trapinch", "Vibrava" ], "how": "With the National Pokédex" },
-    { "key": "route_229", "name": "Route 229", "cells": "24,13 25,13", "special": [ "Glameow", "Purugly" ], "how": "With the National Pokédex" }
+    // Plan 03 · D12a: Diamond's and Pearl's species that Platinum's tables leave out, met where those two versions
+    // have them (grass, and Clamperl on the Super Rod) once the National Pokédex is had: the overlays' "national"
+    { "key": "eterna_forest", "name": "Eterna Forest", "cells": "6,18 8,16", "special": [ "Murkrow", "Misdreavus" ], "how": "With the National Pokédex" },
+    { "key": "route_219", "name": "Route 219", "cells": "5,27", "special": [ "Clamperl" ], "how": "With the National Pokédex" },
+    { "key": "route_221", "name": "Route 221", "cells": "7,28 8,28 9,28", "special": [ "Stunky", "Skuntank", "Clamperl" ], "how": "With the National Pokédex" },
+    { "key": "route_222", "name": "Route 222", "cells": "23,24 24,24 25,24", "special": [ "Glameow", "Purugly" ], "how": "With the National Pokédex" },
+    { "key": "route_228", "name": "Route 228", "cells": "24,10 24,11 24,12", "special": [ "Trapinch", "Vibrava" ], "how": "With the National Pokédex" }
   ]
 }

@@ -1,7 +1,8 @@
 {
   "area": "route_228",
-  // Plan 03 · D12a: the Trapinch line, which Diamond's and Pearl's Poké Radar found here and Platinum's tables
-  // leave out, in the grass's slots 8 and 9 once the National Pokédex is had, at those slots' levels (49 and 50)
+  // Plan 03 · D12a: the Trapinch line, which Platinum's tables leave out, where Diamond and Pearl have it (both
+  // versions, by the Poké Radar on this route and nowhere else): in the grass's slots 8 and 9 once the National
+  // Pokédex is had, at those slots' levels (49 and 50)
   "national": { "land": [ "Trapinch", "Vibrava" ] },
   // The original's role is ROAD_BZA (Routes 228 to 230), which has no song yet (plan 05 · A6): Route 209's stands in
   "bgmTrack": "sinnoh/route209",

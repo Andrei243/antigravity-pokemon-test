@@ -213,7 +213,8 @@ public sealed partial class ScriptRunner
     /// <summary>
     /// Pal Park's Catching Show (<c>scrcmd_catching_show.c</c>, <c>scripts_pal_park_lobby.s</c>): <c>check</c> is 0
     /// when a show can begin, 1 when the boxes haven't six free places, 2 when six Pokémon don't wait in the park (with
-    /// nothing waiting it first lets six visitors come, plan 03 · D12a: <see cref="PalParkState.Visitors"/>);
+    /// nothing waiting, or another day's six, it first lets the day's six visitors come, plan 03 · D12a:
+    /// <see cref="PalParkState.Welcome"/>);
     /// <c>start</c> lets the six loose; <c>go</c> starts the clock; <c>active</c> is 1 while a show is on;
     /// <c>caught</c> how many are caught; <c>points catching|time|type|total</c> the score's parts
     /// (<c>CalcCatchingShowPoints</c>; <c>{number}</c> too), which stops the clock; <c>record</c> is 1 when the total
@@ -226,9 +227,9 @@ public sealed partial class ScriptRunner
         switch (i.Name)
         {
             case "check":
-                // Plan 03 · D12a: with nothing brought over, six visitors come of the species Sinnoh has no other way to
-                if (!park.Stocked)
-                    park.Stock(PalParkState.Visitors(SpeciesSources.Sinnoh.PalParkPool, dex => host.PastimeAct("caught", dex, null) == 1, host.Chance));
+                // Plan 03 · D12a: with nothing brought over, the day's six visitors come, by a fixed rotation of the
+                // species Sinnoh has no other way to
+                park.Welcome(SpeciesSources.Sinnoh.PalParkPool, Core.GameClock.Today, host.Chance);
                 Result = host.PastimeAct("boxroom", 0, Subject) < Overworld.CatchingShow.Size ? 1 : park.Stocked ? 0 : 2;
                 break;
             case "start":
