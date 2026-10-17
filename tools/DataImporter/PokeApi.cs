@@ -94,6 +94,57 @@ public sealed class PokeApi
         return text;
     }
 
+    // ------------------------------------------------------------------ other languages (plan 17 · N3)
+
+    /// <summary>
+    /// The languages the game lists that PokeAPI names things in: the game's tag, then PokeAPI's language ids in the
+    /// order a name is looked for (Japanese in kanji, then in kana). PokeAPI has no Romanian, so a Romanian game keeps
+    /// the English names (the overview's decision of 2026-10-12).
+    /// </summary>
+    public static readonly IReadOnlyDictionary<string, int[]> Languages = new Dictionary<string, int[]>
+    {
+        ["fr"] = new[] { 5 }, ["de"] = new[] { 6 }, ["es"] = new[] { 7 }, ["it"] = new[] { 8 },
+        ["ja"] = new[] { 11, 1 }, ["ko"] = new[] { 3 }, ["zh-Hant"] = new[] { 4 }, ["zh-Hans"] = new[] { 12 }
+    };
+
+    /// <summary>A names table in a language: the first of <paramref name="languages"/> with a row for an id gives it; ids none has are left out.</summary>
+    public Dictionary<int, string> LocalNames(string table, string idColumn, int[] languages, string nameColumn = "name")
+    {
+        var rows = Table(table);
+        var result = new Dictionary<int, string>();
+        foreach (int language in languages)
+            foreach (var r in rows)
+            {
+                if (r.Int("local_language_id") != language) continue;
+                string name = Names.Clean(r[nameColumn]);
+                if (name.Length > 0) result.TryAdd(r.Int(idColumn), name);
+            }
+        return result;
+    }
+
+    /// <summary>The English names of a table, to the ids they are PokeAPI's.</summary>
+    public Dictionary<string, int> IdsByEnglishName(string table, string idColumn)
+    {
+        var result = new Dictionary<string, int>();
+        foreach (var (id, name) in EnglishNames(table, idColumn)) result.TryAdd(name, id);
+        return result;
+    }
+
+    /// <summary>PokeAPI's own short prose in a language, or null where it has none (French has it for moves, abilities and items).</summary>
+    public string? LocalProse(string table, string idColumn, int id, int[] languages, int? effectChance = null)
+    {
+        foreach (int language in languages)
+        {
+            var row = Table(table).FirstOrDefault(r => r.Int(idColumn) == id && r.Int("local_language_id") == language);
+            if (row == null) continue;
+            string text = Names.StripMarkup(row["short_effect"]);
+            if (text.Length == 0) continue;
+            if (effectChance != null) text = text.Replace("$effect_chance", effectChance.Value.ToString());
+            return text;
+        }
+        return null;
+    }
+
     /// <summary>The generation an item first appeared in, from the games' item indices.</summary>
     public int ItemGeneration(int itemId)
     {

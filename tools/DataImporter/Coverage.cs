@@ -129,7 +129,7 @@ public static class Coverage
 
     // ------------------------------------------------------------------ the report
 
-    public static string Report(IReadOnlyList<PokemonSpecies> species, IReadOnlyList<MoveData> moves, IReadOnlyList<AbilityDatabase.AbilityRecord> abilities, IReadOnlyList<ItemData> items)
+    public static string Report(IReadOnlyList<PokemonSpecies> species, IReadOnlyList<MoveData> moves, IReadOnlyList<AbilityDatabase.AbilityRecord> abilities, IReadOnlyList<ItemData> items, string? textFolder = null)
     {
         var implementedAbilities = AbilityEffectTable.Names.ToHashSet(StringComparer.OrdinalIgnoreCase);
         var n = Tally(moves, abilities, items);
@@ -277,7 +277,34 @@ public static class Coverage
             };
             Line($"| {group.Key} | {group.Count()} | {trigger} | {WaitsFor(group.Key)} |");
         }
+        if (textFolder != null) Languages(sb, textFolder, species, moves, abilities, items);
         return sb.ToString();
+    }
+
+    /// <summary>
+    /// Plan 17 · N3: the names each language has (<c>Data/text/&lt;tag&gt;/names.json</c>, from the importer) against what the
+    /// data holds, and the descriptions PokeAPI's contributors wrote where a language has them. English is the data itself;
+    /// a language with no file (Romanian: PokeAPI has none) shows the English names.
+    /// </summary>
+    private static void Languages(StringBuilder sb, string textFolder, IReadOnlyList<PokemonSpecies> species, IReadOnlyList<MoveData> moves,
+        IReadOnlyList<AbilityDatabase.AbilityRecord> abilities, IReadOnlyList<ItemData> items)
+    {
+        sb.Append("\n## Languages\n\n");
+        sb.Append("Names and descriptions per language (plan 17 · N3), counted from `Data/text/<tag>/names.json`, which the importer writes from PokeAPI's own tables: ");
+        sb.Append("a name the file lacks is shown in English. Descriptions are PokeAPI's short prose where a language has it; the games' own text is never read.\n\n");
+        sb.Append($"| Language | Species ({species.Count}) | Forms | Moves ({moves.Count}) | Abilities ({abilities.Count}) | Items ({items.Count}) | Places | Move descriptions | Ability descriptions | Item descriptions |\n");
+        sb.Append("| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n");
+        foreach (var dir in Directory.GetDirectories(textFolder).OrderBy(d => Path.GetFileName(d), StringComparer.Ordinal))
+        {
+            string file = Path.Combine(dir, "names.json");
+            if (!File.Exists(file)) continue;
+            using var document = System.Text.Json.JsonDocument.Parse(File.ReadAllText(file));
+            var root = document.RootElement;
+            int Count(System.Text.Json.JsonElement element, string name) => element.TryGetProperty(name, out var section) ? section.EnumerateObject().Count() : 0;
+            var descriptions = root.GetProperty("descriptions");
+            sb.Append($"| {Path.GetFileName(dir)} | {Count(root, "species")} | {Count(root, "forms")} | {Count(root, "moves")} | {Count(root, "abilities")} | {Count(root, "items")} | {Count(root, "places")} | " +
+                      $"{Count(descriptions, "moves")} | {Count(descriptions, "abilities")} | {Count(descriptions, "items")} |\n");
+        }
     }
 
     /// <summary>What has to exist before an evolution method can be met in play (empty: it already can).</summary>

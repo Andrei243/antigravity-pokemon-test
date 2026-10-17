@@ -1,3 +1,4 @@
+using PokemonPlatinumEngine.Data;
 using System;
 using PokemonPlatinumEngine.Overworld;
 
@@ -27,7 +28,7 @@ public sealed class FieldCutIn
     {
         Model = model;
         FieldMove = move;
-        Move = FieldMoveRules.MoveName(move);
+        Move = LocalNames.Move(FieldMoveRules.MoveName(move));
     }
 
     public bool Done => Age >= Total;

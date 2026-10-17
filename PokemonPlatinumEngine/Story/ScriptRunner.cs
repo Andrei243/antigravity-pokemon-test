@@ -476,13 +476,13 @@ public sealed partial class ScriptRunner
                 host.Fanfare(FanfareFor(item));
                 // A ball picked up off the ground is a line of the Journal (scripts_visible_items.s); a gift or a hidden find isn't
                 if (i.Op == Op.Find && Subject?.IsItemBall == true) host.Note(new JournalEvent(JournalEventKind.ItemWasObtained, item.Name));
-                string itemName = item.Name;
+                string itemName = item.DisplayName;
                 var lines = new List<string>
                 {
                     i.Op == Op.Find ? Text.Of("found.found", ("n", count), ("item", itemName)) : Text.Of("found.received", ("n", count), ("item", itemName))
                 };
                 // A TM or an HM says what it holds
-                if (!string.IsNullOrEmpty(item.TeachesMove)) lines.Add(Text.Of("found.holdsMove", ("item", itemName), ("move", item.TeachesMove)));
+                if (!string.IsNullOrEmpty(item.TeachesMove)) lines.Add(Text.Of("found.holdsMove", ("item", itemName), ("move", LocalNames.Move(item.TeachesMove))));
                 lines.Add(Text.Of("found.putAway", ("n", count), ("pocket", PocketName(item.Pocket))));
                 host.Say(null, lines);
                 break;
@@ -740,8 +740,8 @@ public sealed partial class ScriptRunner
                 var move = FieldMoveRules.Of(i.Name) ?? throw Wrong(i, $"'{i.Name}' is no field move");
                 var user = ownPokemon != null && ownPokemon.Moves.Any(m => m.Name == i.Name) ? ownPokemon
                     : FieldMoveRules.Knower(host.Party, move) ?? throw Wrong(i, $"nobody on the team knows {i.Name}");
-                lastUser = user.Nickname;
-                host.Say(null, new[] { Text.Of("fieldMoves.used", ("name", user.Nickname), ("move", i.Name)) });
+                lastUser = user.DisplayName;
+                host.Say(null, new[] { Text.Of("fieldMoves.used", ("name", user.DisplayName), ("move", LocalNames.Move(i.Name))) });
                 afterBusy = () => host.UseMove(move, user, Subject);
                 break;
             }
@@ -1816,36 +1816,42 @@ public sealed partial class ScriptRunner
     /// <c>{user}</c> (the Pokémon the last <c>usemove</c> named), <c>{money}</c> and <c>{result}</c>. <c>{player}</c>, <c>{assistant}</c> and <c>{rival}</c> are left for the host, which
     /// knows who the player is.
     /// </summary>
+    /// <summary>A species named by the data, as the chosen language shows it (plan 17 · N3); nothing for none.</summary>
+    private static string NameOfSpecies(string? species) => string.IsNullOrEmpty(species) ? "" : LocalNames.Species(species);
+
+    /// <summary>An item named by the data, as the chosen language shows it (plan 17 · N3); nothing for none.</summary>
+    private static string NameOfItem(string? item) => string.IsNullOrEmpty(item) ? "" : LocalNames.Item(item);
+
     public string Fill(string text) => text.Contains('{') ? Placeholder.Replace(text, match =>
     {
         string argument = match.Groups[2].Value;
         return match.Groups[1].Value switch
         {
             "var" when argument.Length > 0 => Value(argument).ToString(),
-            "lead" => host.Party.Members.FirstOrDefault()?.Nickname ?? "your Pokémon",
-            "starter" => host.Story.PlayerStarter ?? "",
-            "rivalstarter" => host.Story.RivalStarter ?? "",
-            "assistantstarter" => host.Story.AssistantStarter ?? "",
+            "lead" => host.Party.Members.FirstOrDefault()?.DisplayName ?? "your Pokémon",
+            "starter" => NameOfSpecies(host.Story.PlayerStarter),
+            "rivalstarter" => NameOfSpecies(host.Story.RivalStarter),
+            "assistantstarter" => NameOfSpecies(host.Story.AssistantStarter),
             "self" => Subject?.Name ?? "",
-            "item" => lastItem,
-            "berry" => berryName,
+            "item" => NameOfItem(lastItem),
+            "berry" => NameOfItem(berryName),
             "yield" => berryYield.ToString(),
-            "mulch" => mulchName,
+            "mulch" => NameOfItem(mulchName),
             "user" => lastUser,
             "money" => host.Money.ToString(),
             "result" => Result.ToString(),
             // The Pokémon choosepokemon chose last (plan 14 · B14)
-            "chosen" => chosenMember?.Nickname ?? "",
+            "chosen" => chosenMember?.DisplayName ?? "",
             // The team's Pokémon at the place a variable gives (poison's survivors)
-            "member" when argument.Length > 0 => Value(argument) is var slot && slot >= 0 && slot < host.Party.Count ? host.Party.Members[slot].Nickname : "",
+            "member" when argument.Length > 0 => Value(argument) is var slot && slot >= 0 && slot < host.Party.Count ? host.Party.Members[slot].DisplayName : "",
             // The day's swarm and where it is, and the Trophy Garden's newest (plan 06 · R13)
-            "swarm" => Swarms.Species(Swarms.AreaOf(host.Encounters.SwarmDaily)),
+            "swarm" => NameOfSpecies(Swarms.Species(Swarms.AreaOf(host.Encounters.SwarmDaily))),
             "swarmplace" => Swarms.PlaceName(Swarms.AreaOf(host.Encounters.SwarmDaily)),
-            "trophygarden" => TrophyGardenRules.SpeciesIn(host.Encounters.TrophyFirst, SpecialEncounterTables.Sinnoh.TrophyGarden) ?? "",
+            "trophygarden" => NameOfSpecies(TrophyGardenRules.SpeciesIn(host.Encounters.TrophyFirst, SpecialEncounterTables.Sinnoh.TrophyGarden)),
             // The Pokémon the day has put in one of the Great Marsh's six areas, {marsh:1} to {marsh:6} (plan 01 · M11,
             // part b: the observatory's binoculars); the Sinnoh list's, as nothing a script can ask says the National one
             "marsh" when int.TryParse(argument, out int marshArea) && marshArea >= 1 && marshArea <= GreatMarsh.Areas.Length =>
-                GreatMarsh.DailySpecies(SpecialEncounterTables.Sinnoh.GreatMarsh, host.Encounters.MarshDaily, GreatMarsh.Areas[marshArea - 1], nationalDex: false) ?? "",
+                NameOfSpecies(GreatMarsh.DailySpecies(SpecialEncounterTables.Sinnoh.GreatMarsh, host.Encounters.MarshDaily, GreatMarsh.Areas[marshArea - 1], nationalDex: false)),
             // The day's lottery ticket, and whose Pokémon matched it (plan 06 · R14a)
             "ticket" => Ticket.ToString("D5"),
             "winner" => lottery.Winner?.DisplayName ?? "",

@@ -289,6 +289,18 @@
     "cantSave": "The game can't be saved right now: anything since your last save will be lost."
   },
 
+  "dexText": {
+    "entry": "{name} is {article} {kind}, {types}, first found in {region}. It stands {height} m tall and weighs {weight} kg.",
+    "typeOne": "{type}-type",
+    "typeTwo": "{first}- and {second}-type",
+    "from": "It evolves from {species}.",
+    "intoOne": "It evolves into {species}.",
+    "intoMany": "It can evolve into {list}.",
+    "listSeparator": ", ",
+    "listEnd": "{rest} or {last}",
+    "region": { "1": "Kanto", "2": "Johto", "3": "Hoenn", "4": "Sinnoh", "5": "Unova", "6": "Kalos", "7": "Alola", "8": "Galar", "9": "Paldea" }
+  },
+
   "types": {
     "Normal": "Normal", "Fire": "Fire", "Water": "Water", "Grass": "Grass", "Electric": "Electric", "Ice": "Ice",
     "Fighting": "Fighting", "Poison": "Poison", "Ground": "Ground", "Flying": "Flying", "Psychic": "Psychic", "Bug": "Bug",

@@ -389,7 +389,7 @@ public class EastInteriorTests
         Assert.True(host.Story.Has("FLAG_DAILY_GOT_MASSAGE_VEILSTONE_CITY_SOUTHWEST_HOUSE"));
         // The sixteenth of her accessories, by the die: Glitter Powder
         Assert.Equal(1, host.FashionCase.Count(SuperContestDatabase.Accessory("Glitter Powder")));
-        Assert.Contains(host.Transcript, t => t.Text.Contains(second.Nickname) && t.Text.Contains("content"));
+        Assert.Contains(host.Transcript, t => t.Text.Contains(second.DisplayName) && t.Text.Contains("content"));
 
         // Nothing more today
         Run("Massage", "VeilstoneCitySouthwestHouse", host);

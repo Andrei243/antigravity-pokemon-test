@@ -12,6 +12,12 @@ public sealed class Ability
     public string Name { get; }
     public string Description { get; }
 
+    /// <summary>Its name as the chosen language shows it (plan 17 · N3); <see cref="Name"/> is the identifier.</summary>
+    public string DisplayName => LocalNames.Ability(Name);
+
+    /// <summary>Its description in the chosen language: PokeAPI's own prose where the language has it, English otherwise.</summary>
+    public string DisplayDescription => LocalNames.AbilityDescription(Name, Description);
+
     /// <summary>What it does in battle; null while it isn't implemented yet (it then shows up but does nothing).</summary>
     public BattleEffect? Effect { get; }
 

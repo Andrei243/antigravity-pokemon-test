@@ -749,7 +749,7 @@ public sealed class HeadlessScriptHost : IScriptHost
         // (A hurry begun while the move's line was being read finds its cut-in still to come: the move is used
         // without one, and nothing is waited for)
         if (!Skipping) Waits();
-        Log.Add($"usemove {FieldMoveRules.MoveName(move)} {user.Nickname}{(subject != null ? " on " + subject.Name : "")}");
+        Log.Add($"usemove {FieldMoveRules.MoveName(move)} {user.DisplayName}{(subject != null ? " on " + subject.Name : "")}");
     }
 
     public bool Surf()

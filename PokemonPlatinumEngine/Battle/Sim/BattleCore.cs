@@ -391,7 +391,7 @@ public sealed partial class BattleCore : IBattleContext
     {
         string name = holder.Ability?.Name ?? holder.Pokemon?.AbilityName ?? "";
         if (holder.Pokemon != null && name.Length > 0) named.Add(new AbilityShown(holder.Place, name));
-        return name;
+        return name.Length == 0 ? name : LocalNames.Ability(name);
     }
 
     /// <summary>
@@ -403,7 +403,7 @@ public sealed partial class BattleCore : IBattleContext
         item ??= holder.Pokemon?.HeldItem;
         if (item == null) return "";
         if (holder.Pokemon != null) named.Add(new ItemShown(holder.Place, item.Name));
-        return item.Name;
+        return item.DisplayName;
     }
 
     /// <summary>A line made with a name in it isn't said after all: what it named goes unsaid too.</summary>
@@ -803,7 +803,7 @@ public sealed partial class BattleCore : IBattleContext
         var target = EnemySlots.FirstOrDefault(b => b.IsActive);
         if (target == null) return;
         var foe = target.Pokemon!;
-        Say(Text.Of("battle.usedOne", ("player", playerName), ("item", Kind == BattleKind.PalPark ? "Park Ball" : ball.Name)));
+        Say(Text.Of("battle.usedOne", ("player", playerName), ("item", Kind == BattleKind.PalPark ? "Park Ball" : ball.DisplayName)));
 
         // A Pokémon that isn't there to be hit can't be caught either
         if (target.IsElsewhere)
@@ -924,7 +924,7 @@ public sealed partial class BattleCore : IBattleContext
                 else if (down.Volatile.Grudge && by.Data != StruggleData && foe.Pokemon!.Moves.FirstOrDefault(m => m.Name == by.Move.Name) is { } used)
                 {
                     used.CurrentPP = 0;
-                    Say(Text.Of("battle.lostAllItsPp", ("foe", foe.Name), ("move", used.Name)));
+                    Say(Text.Of("battle.lostAllItsPp", ("foe", foe.Name), ("move", used.DisplayName)));
                 }
             }
             Faint(down);

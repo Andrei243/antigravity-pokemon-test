@@ -148,7 +148,7 @@ public sealed class EvolutionScreen
                 Go(EvolutionPhase.Reveal);
                 break;
             case EvolutionPhase.Reveal when phaseTime >= RevealTime:
-                Go(EvolutionPhase.Congratulate, Text.Of("evolution.congratulationsYourEvolvedInto", ("pokemon", oldName), ("species", pokemon!.Species.Name)));
+                Go(EvolutionPhase.Congratulate, Text.Of("evolution.congratulationsYourEvolvedInto", ("pokemon", oldName), ("species", pokemon!.Species.DisplayName)));
                 AudioManager.PlayFanfare(MusicRole.FanfareEvolution);
                 break;
         }
@@ -238,7 +238,7 @@ public sealed class EvolutionScreen
         string move = MoveToLearn!;
         if (choice >= 0 && choice < p.Moves.Count)
         {
-            string forgotten = p.Moves[choice].Name;
+            string forgotten = p.Moves[choice].DisplayName;
             p.ReplaceMove(choice, move);
             Go(EvolutionPhase.MoveNotice, Text.Of("evolution.forgotAndLearned", ("pokemon", p.DisplayName), ("forgotten", forgotten), ("move", move)));
             AudioManager.PlaySound("select");

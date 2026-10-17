@@ -1117,7 +1117,7 @@ public sealed partial class BattleCore
             return;
         }
         Say(Text.Of("battle.allPokemonHearingThe"));
-        foreach (var b in deaf) Say(Text.Of("battle.blocks", ("pokemon", b.Name), ("ability", AbilityOf(b)), ("move", use.Move.Name)));
+        foreach (var b in deaf) Say(Text.Of("battle.blocks", ("pokemon", b.Name), ("ability", AbilityOf(b)), ("move", use.Move.DisplayName)));
     }
 
     private static readonly HashSet<string> NotForEncore = new() { "Transform", "CopyMoveForBattle", "LearnMovePermanent", "CopyMove", "Encore" };
@@ -1144,7 +1144,7 @@ public sealed partial class BattleCore
         if (v.Disabled != null || known == null || known.CurrentPP == 0) return Fails();
         v.Disabled = last;
         v.DisableTurns = Lasting(Rules.DisableTurns);
-        Say(Text.Of("battle.wasDisabled", ("target", t.Name), ("move", last!.Name)));
+        Say(Text.Of("battle.wasDisabled", ("target", t.Name), ("move", last!.DisplayName)));
         return true;
     }
 
@@ -1176,7 +1176,7 @@ public sealed partial class BattleCore
         t.Volatile.BindTurns = BattleEffects.Of(use.User).Any(e => e.BindsToTheEnd) ? Rules.GripClawBindTurns : Lasting(Rules.BindTurns);
         t.Volatile.BoundBy = use.User.Place;
         t.Volatile.BindingMove = use.Data.Name;
-        Say(Text.Of("battle.wasCaughtIn", ("target", t.Name), ("user", use.User.Name), ("move", use.Data.Name)));
+        Say(Text.Of("battle.wasCaughtIn", ("target", t.Name), ("user", use.User.Name), ("move", use.Data.DisplayName)));
     }
 
     // ---------------------------------------------------------------- sleep, and what cures
@@ -1232,7 +1232,7 @@ public sealed partial class BattleCore
             var standing = onTheField.FirstOrDefault(b => b.Pokemon == p);
             if (standing != null && bell && Has(standing, "Soundproof"))
             {
-                Say(Text.Of("battle.blocks", ("pokemon", standing.Name), ("ability", AbilityOf(standing)), ("move", use.Move.Name)));
+                Say(Text.Of("battle.blocks", ("pokemon", standing.Name), ("ability", AbilityOf(standing)), ("move", use.Move.DisplayName)));
                 continue;
             }
             if (p.IsFainted || p.Status == StatusCondition.None) continue;

@@ -186,7 +186,7 @@ public class SaveCorpusTests
                 var p = saved.ToPokemon();
                 string form = p.Form != null ? $" ({p.Form})" : "";
                 string moves = string.Join(", ", p.Moves.Select(m => $"{m.Name} {m.CurrentPP}/{m.MaxPP}"));
-                text.Append($"  {where}: {p.Species.Name}{form} Lv{p.Level} \"{p.Nickname}\" {p.Gender} {p.Nature}{(p.IsEgg ? " Egg" : "")}{(p.IsShiny ? " shiny" : "")}, " +
+                text.Append($"  {where}: {p.Species.Name}{form} Lv{p.Level} \"{p.DisplayName}\" {p.Gender} {p.Nature}{(p.IsEgg ? " Egg" : "")}{(p.IsShiny ? " shiny" : "")}, " +
                     $"{p.AbilityName ?? "no ability"}, holds {p.HeldItem?.Name ?? "nothing"}, HP {p.CurrentHP}/{p.MaxHP}, {moves}\n");
             }
             var (before, after, bag) = Upgraded(save);

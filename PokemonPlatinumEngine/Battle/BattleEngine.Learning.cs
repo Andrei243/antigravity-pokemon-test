@@ -1,3 +1,4 @@
+using PokemonPlatinumEngine.Data;
 using System;
 using System.Collections.Generic;
 using PokemonPlatinumEngine.Audio;
@@ -124,7 +125,7 @@ public partial class BattleEngine
         var (p, move) = learning!.Value;
         Interlude(Text.Of("battle.isTryingToLearn", ("pokemon", p.DisplayName), ("move", move)));
         Interlude(Text.Of("battle.butAlreadyKnowsFour", ("pokemon", p.DisplayName)));
-        Open(LearnStep.Forget, Text.Of("battle.forgetOneOfThem", ("move", move)));
+        Open(LearnStep.Forget, Text.Of("battle.forgetOneOfThem", ("move", LocalNames.Move(move))));
     }
 
     private void Interlude(string line, Action? then = null)
@@ -194,7 +195,7 @@ public partial class BattleEngine
             case LearnStep.Choose when answer >= 0 && answer < p.Moves.Count:
             {
                 AudioManager.PlaySound("select");
-                string forgotten = p.Moves[answer].Name;
+                string forgotten = p.Moves[answer].DisplayName;
                 // The game's Pokémon and the rules' copy learn it together (the original's Pokemon_SetMoveSlot,
                 // with the place's PP Ups gone)
                 p.ReplaceMove(answer, move);
@@ -210,7 +211,7 @@ public partial class BattleEngine
             case LearnStep.Choose:
                 AudioManager.PlaySound("cancel");
                 Interlude(Text.Of("battle.then"));
-                Open(LearnStep.GiveUp, Text.Of("battle.giveUpOnLearning", ("move", move)));
+                Open(LearnStep.GiveUp, Text.Of("battle.giveUpOnLearning", ("move", LocalNames.Move(move))));
                 break;
             case LearnStep.GiveUp when answer == 0:
                 AudioManager.PlaySound("select");

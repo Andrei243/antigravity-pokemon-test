@@ -89,6 +89,12 @@ public static class Text
         lock (gate) return (english ??= Read(English)).ContainsKey(key);
     }
 
+    /// <summary>Whether the chosen language's own table has <paramref name="key"/> (English's table doesn't count for another language).</summary>
+    public static bool HasOwn(string key)
+    {
+        lock (gate) return chosen != null && chosen.ContainsKey(key);
+    }
+
     /// <summary>Every key of English's table.</summary>
     public static IReadOnlySet<string> EnglishKeys
     {

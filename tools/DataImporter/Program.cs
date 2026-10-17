@@ -93,7 +93,15 @@ Write(Path.Combine(outDir, SealDatabase.FileName), GameDataFiles.Serialize(seals
 Write(Path.Combine(outDir, RibbonDatabase.FileName), GameDataFiles.Serialize(ribbons));
 Write(Path.Combine(outDir, UndergroundDatabase.FileName), GameDataFiles.Serialize(underground));
 Write(Path.Combine(outDir, FrontierDatabase.FileName), GameDataFiles.Serialize(frontier));
-Write(Coverage.ReportPath(repo), Coverage.Report(species, moves, abilities, items));
+// Plan 17 · N3: the names in every language PokeAPI has them in, one file each beside the language's interface table
+var pokeApi = new PokeApi(pokeApiDir);
+foreach (var (tag, ids) in PokeApi.Languages)
+{
+    string folder = Path.Combine(outDir, "text", tag);
+    Directory.CreateDirectory(folder);
+    Write(Path.Combine(folder, NameFiles.FileName), NameFiles.Build(pokeApi, ids, species, moves, abilities, items));
+}
+Write(Coverage.ReportPath(repo), Coverage.Report(species, moves, abilities, items, Path.Combine(outDir, "text")));
 Console.WriteLine($"{species.Count} species, {moves.Count} moves, {abilities.Count} abilities, {items.Count} items and {trainers.Count} trainers in {outDir}");
 return 0;
 

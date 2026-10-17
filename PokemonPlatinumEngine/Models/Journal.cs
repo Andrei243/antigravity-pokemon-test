@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using PokemonPlatinumEngine.Core;
+using PokemonPlatinumEngine.Data;
 
 namespace PokemonPlatinumEngine.Models;
 
@@ -140,9 +141,9 @@ public sealed class Journal
         if (page.Pokemon is { } p)
         {
             string at = At(p.Place);
-            yield return !p.Caught ? Text.Of("journal.line.battledWild", ("at", at), ("species", p.Species))
-                : StartsWithAVowel(p.Species) ? Text.Of("journal.line.caughtAn", ("species", p.Species), ("at", at))
-                : Text.Of("journal.line.caught", ("species", p.Species), ("at", at));
+            yield return !p.Caught ? Text.Of("journal.line.battledWild", ("at", at), ("species", LocalNames.Species(p.Species)))
+                : StartsWithAVowel(p.Species) ? Text.Of("journal.line.caughtAn", ("species", LocalNames.Species(p.Species)), ("at", at))
+                : Text.Of("journal.line.caught", ("species", LocalNames.Species(p.Species)), ("at", at));
         }
         if (page.Trainer is { } trainer)
         {
@@ -176,8 +177,8 @@ public sealed class Journal
             JournalEventKind.ArrivedInLocation => Text.Of("journal.line.arrived", ("place", PlaceWords.In(subject))),
             JournalEventKind.LeftCave => Text.Of("journal.line.leftCave", ("place", PlaceWords.Named(subject))),
             JournalEventKind.LeftBuilding => Text.Of("journal.line.leftBuilding", ("place", PlaceWords.Named(subject))),
-            JournalEventKind.ItemWasObtained => Text.Of("journal.line.found", ("item", e.Subject)),
-            JournalEventKind.UsedFieldMove => Text.Of("journal.line.usedFieldMove", ("move", e.Subject)),
+            JournalEventKind.ItemWasObtained => Text.Of("journal.line.found", ("item", LocalNames.Item(e.Subject))),
+            JournalEventKind.UsedFieldMove => Text.Of("journal.line.usedFieldMove", ("move", LocalNames.Move(e.Subject))),
             JournalEventKind.GameCorner => Text.Of("journal.line.gameCorner"),
             JournalEventKind.BattleTower => Text.Of("journal.line.tower"),
             JournalEventKind.BattleFactory => Text.Of("journal.line.factory"),

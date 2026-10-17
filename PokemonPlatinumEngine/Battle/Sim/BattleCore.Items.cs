@@ -387,7 +387,7 @@ public sealed partial class BattleCore
             return;
         }
 
-        var used = Say(Text.Of("battle.usedThe", ("trainer", user.Trainer?.FullTitle ?? playerName), ("item", item.Name)));
+        var used = Say(Text.Of("battle.usedThe", ("trainer", user.Trainer?.FullTitle ?? playerName), ("item", item.DisplayName)));
         if (item.BattleUse == "Escaping")
         {
             if (IsTrainerBattle) return;
@@ -460,7 +460,7 @@ public sealed partial class BattleCore
         else if (use.TryGetValue("ppRestored", out int pp) && MoveForPp(target, act.Choice.Move) is { } move && move.CurrentPP < move.MaxPP)
         {
             move.CurrentPP = pp < 0 ? move.MaxPP : Math.Min(move.MaxPP, move.CurrentPP + pp);
-            Say(Text.Of("battle.hadItsPpRestored", ("pokemon", name), ("move", move.Name)));
+            Say(Text.Of("battle.hadItsPpRestored", ("pokemon", name), ("move", move.DisplayName)));
         }
 
         if (where == user)

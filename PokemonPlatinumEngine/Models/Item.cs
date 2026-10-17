@@ -30,6 +30,14 @@ public class ItemData
     public bool CanUseInOverworld { get; set; } = true;
     public string Description { get; set; } = string.Empty;
 
+    /// <summary>Its name as the chosen language shows it (plan 17 · N3); <see cref="Name"/> is the identifier.</summary>
+    [JsonIgnore]
+    public string DisplayName => LocalNames.Item(Name);
+
+    /// <summary>Its description in the chosen language: PokeAPI's own prose where the language has it, English otherwise.</summary>
+    [JsonIgnore]
+    public string DisplayDescription => LocalNames.ItemDescription(Name, Description);
+
     /// <summary>What it does when held, as the decompilation names it (<c>HpRestoreGradual</c>); null for none.
     /// The ones the battle engine runs are in <c>Battle/Effects/HeldItemEffects.cs</c>.</summary>
     public string? HoldEffect { get; set; }

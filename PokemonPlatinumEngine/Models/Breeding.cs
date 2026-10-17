@@ -441,7 +441,7 @@ public static class Breeding
         if (!egg.IsEgg) return;
         egg.IsEgg = false;
         egg.Friendship = HatchedFriendship;
-        egg.Nickname = egg.Species.Name;
+        egg.Nickname = string.Empty; // called what its species is called, in whatever language
         egg.Ball = EggBall;
         egg.Met(place, day);
         egg.MetLevel = 0;

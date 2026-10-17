@@ -267,7 +267,7 @@ public sealed partial class BattleCore
         o.MoveSlots.TryAdd(slot, (moves[slot].Data, moves[slot].CurrentPP, moves[slot].PPUps));
         moves[slot] = new Move(last, Math.Min(5, last.MaxPP));
         if (last.Name == "Last Resort") v.UsedMoveSlots = 0;
-        Say(Text.Of("battle.learned", ("pokemon", user.Name), ("move", last.Name)));
+        Say(Text.Of("battle.learned", ("pokemon", user.Name), ("move", last.DisplayName)));
         return true;
     }
 
@@ -285,7 +285,7 @@ public sealed partial class BattleCore
 
         moves[slot] = new Move(last);
         if (last.Name == "Last Resort") v.UsedMoveSlots = 0;
-        Say(Text.Of("battle.sketched", ("user", user.Name), ("pokemon", last.Name)));
+        Say(Text.Of("battle.sketched", ("user", user.Name), ("pokemon", last.DisplayName)));
         return true;
     }
 
@@ -331,7 +331,7 @@ public sealed partial class BattleCore
         if (t.Pokemon?.HeldItem == null) return false;
         bool breaks = BattleEffects.Of(user).Any(e => e.IgnoresTargetAbility);
         if (breaks || !BattleEffects.Of(t).Any(e => e.KeepsItem)) return false;
-        Say(Text.Of("battle.madeIneffective", ("target", t.Name), ("ability", AbilityOf(t)), ("move", move.Name)));
+        Say(Text.Of("battle.madeIneffective", ("target", t.Name), ("ability", AbilityOf(t)), ("move", move.DisplayName)));
         return true;
     }
 
@@ -481,14 +481,14 @@ public sealed partial class BattleCore
                         q.StatStages[stat] = 0;
                         any = true;
                     }
-                if (any) Say(Text.Of("battle.loweredStatsWerePut", ("target", t.Name), ("item", item.Name)));
+                if (any) Say(Text.Of("battle.loweredStatsWerePut", ("target", t.Name), ("item", item.DisplayName)));
                 break;
             }
             case "HealInfatuation":
                 if (t.Volatile.InLoveWith != null)
                 {
                     t.Volatile.InLoveWith = null;
-                    Say(Text.Of("battle.gotOverItsInfatuationThanks", ("target", t.Name), ("item", item.Name))).With(Passing(t));
+                    Say(Text.Of("battle.gotOverItsInfatuationThanks", ("target", t.Name), ("item", item.DisplayName))).With(Passing(t));
                 }
                 break;
             default:
@@ -529,17 +529,17 @@ public sealed partial class BattleCore
         int param = berry.HoldParam;
         void Heal(int amount)
         {
-            if (p.CurrentHP < p.MaxHP) RestoreHp(eater, Math.Max(1, amount), Text.Of("battle.restoredItsHealthUsing", ("target", eater.Name), ("item", berry.Name)));
+            if (p.CurrentHP < p.MaxHP) RestoreHp(eater, Math.Max(1, amount), Text.Of("battle.restoredItsHealthUsing", ("target", eater.Name), ("item", berry.DisplayName)));
         }
         void Cure(params StatusCondition[] cures)
         {
-            if (cures.Contains(p.Status)) CureStatus(eater, Text.Of("battle.curedIts", ("pokemon", eater.Name), ("item", berry.Name), ("condition", BattleText.StatusName(p.Status))));
+            if (cures.Contains(p.Status)) CureStatus(eater, Text.Of("battle.curedIts", ("pokemon", eater.Name), ("item", berry.DisplayName), ("condition", BattleText.StatusName(p.Status))));
         }
         void Unconfuse()
         {
             if (!eater.IsConfused) return;
             eater.ConfusionTurns = 0;
-            Say(Text.Of("battle.snappedItOutOf", ("pokemon", eater.Name), ("item", berry.Name))).With(Passing(eater));
+            Say(Text.Of("battle.snappedItOutOf", ("pokemon", eater.Name), ("item", berry.DisplayName))).With(Passing(eater));
         }
         void Raise(StatType stat, int by)
         {
@@ -555,13 +555,13 @@ public sealed partial class BattleCore
                 // A flavour its nature dislikes confuses it (subscript_held_item_dislike_flavor)
                 if (HeldItemEffects.FlavorOf(effect) is { } flavor && HeldItemEffects.DislikedBy(p.Nature) == flavor)
                 {
-                    Say(Text.Of("battle.forTheWasToo", ("pokemon", eater.Name), ("item", berry.Name), ("flavour", Text.Of($"battle.flavour.{flavor}"))));
+                    Say(Text.Of("battle.forTheWasToo", ("pokemon", eater.Name), ("item", berry.DisplayName), ("flavour", Text.Of($"battle.flavour.{flavor}"))));
                     Confuse(eater, null, false, By.Other);
                 }
                 break;
             case "TempAccUp":
                 eater.Volatile.MicleBerry = true;
-                Say(Text.Of("battle.boostedTheAccuracyOf", ("pokemon", eater.Name), ("item", berry.Name)));
+                Say(Text.Of("battle.boostedTheAccuracyOf", ("pokemon", eater.Name), ("item", berry.DisplayName)));
                 break;
             case "PrzRestore": Cure(StatusCondition.Paralyze); break;
             case "SlpRestore": Cure(StatusCondition.Sleep); break;
@@ -580,7 +580,7 @@ public sealed partial class BattleCore
                 if (move != null && move.CurrentPP < move.MaxPP)
                 {
                     move.CurrentPP = Math.Min(move.MaxPP, move.CurrentPP + param);
-                    Say(Text.Of("battle.restoredPp", ("pokemon", eater.Name), ("item", berry.Name), ("move", move.Name)));
+                    Say(Text.Of("battle.restoredPp", ("pokemon", eater.Name), ("item", berry.DisplayName), ("move", move.DisplayName)));
                 }
                 break;
             }
@@ -720,7 +720,7 @@ public sealed partial class BattleCore
             o.MoveSlots = null;
         }
 
-        if (string.IsNullOrWhiteSpace(p.Nickname)) p.Nickname = p.Species.Name;
+        if (string.IsNullOrWhiteSpace(p.Nickname)) p.Nickname = p.Species.DisplayName; // it keeps the name it had while it wears another shape
         p.Species = q.Species;
         p.Form = q.Form;
         p.Attack = q.Attack;
@@ -885,7 +885,7 @@ public sealed partial class BattleCore
         if (move == null || move.CurrentPP == 0) return Fails();
         int taken = Math.Min(4, move.CurrentPP);
         move.CurrentPP -= taken;
-        Say(Text.Of("battle.itReducedThePp", ("target", t.Name), ("move", move.Name), ("taken", taken)));
+        Say(Text.Of("battle.itReducedThePp", ("target", t.Name), ("move", move.DisplayName), ("taken", taken)));
         return true;
     }
 
@@ -927,7 +927,7 @@ public sealed partial class BattleCore
         var user = use.User;
         use.Line.With(Shown(user, user, use.Move, null));
         var move = MoveDatabase.Get(Ground.Move);
-        Say(Text.Of("battle.turnedInto", ("move", use.Move.Name), ("newMove", move.Name)));
+        Say(Text.Of("battle.turnedInto", ("move", use.Move.DisplayName), ("newMove", move.DisplayName)));
         CallMove(use, move, null);
     }
 

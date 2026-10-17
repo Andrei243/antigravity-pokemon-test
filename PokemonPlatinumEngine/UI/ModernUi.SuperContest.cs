@@ -541,7 +541,7 @@ internal static partial class ModernUi
                 float mx = r.X + 370;
                 var shownType = choice.Move.Contest!.Type;
                 mx += Tag(mx, r.Y + r.Height / 2f - 40, Text.Of($"condition.quality.{shownType}"), QualityColor(shownType), 34) + 12;
-                UiFonts.DrawCentered(choice.Move.Name, r.X + 370, r.Y + r.Height / 2f + 18, 28, Ink, UiWeight.Black);
+                UiFonts.DrawCentered(choice.Move.DisplayName, r.X + 370, r.Y + r.Height / 2f + 18, 28, Ink, UiWeight.Black);
                 UiFonts.DrawCentered(Text.Of("contest.forJudge", ("judge", contest.Judges[choice.Judge].Name)), mx, r.Y + r.Height / 2f - 23, 22, Muted, UiWeight.ExtraBold);
             }
             else if (acting.IsDoubled(c) && screen.Phase is SuperContestPhase.ActingMove or SuperContestPhase.ActingJudge)
@@ -574,7 +574,7 @@ internal static partial class ModernUi
             bool selected = screen.Phase is SuperContestPhase.ActingMove or SuperContestPhase.ActingJudge && screen.MoveCursor == m;
             Card(r, 22, selected);
             var ink = usable ? Ink : Muted;
-            UiFonts.DrawCentered(move.Name, r.X + 28, r.Y + 38, 32, ink, UiWeight.Black);
+            UiFonts.DrawCentered(move.DisplayName, r.X + 28, r.Y + 38, 32, ink, UiWeight.Black);
             if (move.Contest is { } stage)
             {
                 var moveType = stage.Type;

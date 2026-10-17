@@ -10,7 +10,9 @@ public enum PluralRule
     /// <summary>One for nought and one, other for the rest (French).</summary>
     French,
     /// <summary>Other for every number (Japanese, Korean, Chinese).</summary>
-    None
+    None,
+    /// <summary>One for exactly one, few for nought and for any other number whose last two digits are 1 to 19, other for the rest (Romanian, CLDR's rule).</summary>
+    Romanian
 }
 
 /// <summary>
@@ -31,6 +33,13 @@ public sealed record Language
     public string Breaks { get; init; } = "spaces";
     /// <summary>The pseudo-language, which brackets every string for the tests and is never offered to a player.</summary>
     public bool Pseudo { get; init; }
+
+    /// <summary>
+    /// The groups of first letters the Pokédex search offers for this language's names (plan 17 · N3), one string of
+    /// the letters of each group (kana rows for Japanese, initial consonants for Korean); null for the Latin alphabet's
+    /// nine groups. See <see cref="Models.PokedexSearch"/>.
+    /// </summary>
+    public string[]? NameGroups { get; init; }
 
     /// <summary>The scripts the interface's faces can draw; another language is listed but not offered until plan 17 · N5.</summary>
     public static readonly IReadOnlySet<string> DrawnScripts = new HashSet<string> { "Latin" };
@@ -58,6 +67,15 @@ public sealed record Language
     {
         PluralRule.English => n == 1 ? "one" : "other",
         PluralRule.French => n is 0 or 1 ? "one" : "other",
+        PluralRule.Romanian => n == 1 ? "one" : n == 0 || (Math.Abs(n) % 100 is >= 1 and <= 19) ? "few" : "other",
         _ => "other"
     };
+
+    /// <summary>
+    /// The indefinite article English puts before a word (<c>a</c>, or <c>an</c> before a vowel): the one article rule
+    /// the Pokédex's generated entry needs (<see cref="Models.DexText"/>). Another language's template carries its own
+    /// articles in its words, so this gives nothing for it.
+    /// </summary>
+    public string IndefiniteArticle(string word) =>
+        Tag == Text.English || Pseudo ? ("AEIOUaeiou".Contains(word.FirstOrDefault()) ? "an" : "a") : "";
 }

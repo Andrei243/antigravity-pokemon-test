@@ -559,6 +559,9 @@ public class TextTests
                 Assert.All(lines, line => Assert.Matches(@"^\[.*\]$", line));
             }
             Assert.Contains(LinesOf(trainer), line => line.Contains("[[Ace Trainer] Vera]", StringComparison.Ordinal));
+            // Plan 17 · N3: the Pokémon and the moves a line names are the language's own names, in brackets as every string is
+            Assert.Contains(LinesOf(wild), line => line.Contains("[Luxray]", StringComparison.Ordinal) && line.Contains("[Spark]", StringComparison.Ordinal));
+            Assert.Contains(LinesOf(wild), line => line.Contains("Bidoof]", StringComparison.Ordinal));
         }
         finally
         {
@@ -570,7 +573,7 @@ public class TextTests
     public void ARecordedBattleReplaysTheSameInALanguageWithNoTableOfItsOwn()
     {
         // The record is the seed and the answers alone, so a battle played in English replays line for line in a
-        // language listed with no table yet (French, whose every line falls back to English), and to the same end
+        // language listed with no table yet (Romanian, whose every line falls back to English: PokeAPI has no Romanian names either), and to the same end
         // in the pseudo-language, every line its own in brackets
         static BattleCore Battle(BattleRandom rolls)
         {
@@ -589,9 +592,9 @@ public class TextTests
         Assert.NotEmpty(record.Answers);
         try
         {
-            Text.Use("fr");
-            Assert.Equal("fr", Text.Current);
-            Assert.DoesNotContain(Language.Offered, l => l.Tag == "fr");
+            Text.Use("ro");
+            Assert.Equal("ro", Text.Current);
+            Assert.DoesNotContain(Language.Offered, l => l.Tag == "ro");
             var again = Battle(new BattleRandom(record.Seed));
             again.Replay(record);
             Assert.Equal(Golden.BattleText.Written(played), Golden.BattleText.Written(again));

@@ -153,7 +153,7 @@ public sealed class PoffinCookingScreen
         warning = null;
         warningAge = 99f;
         Enter(CookingPhase.Pour);
-        Line = Text.Of("cooking.wentIn", ("berry", berry.Name));
+        Line = Text.Of("cooking.wentIn", ("berry", berry.DisplayName));
         AudioManager.PlaySound("step_puddle");
     }
 

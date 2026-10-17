@@ -11918,7 +11918,7 @@
     "weight": 4.2,
     "color": "Yellow",
     "shape": "Quadruped",
-    "dexEntry": "Meowth is a Scratch Cat Pokémon, Normal-type, first found in Kanto. It stands 0.4 m tall and weighs 4.2 kg. It evolves into Persian.",
+    "dexEntry": "Meowth is a Scratch Cat Pokémon, Normal-type, first found in Kanto. It stands 0.4 m tall and weighs 4.2 kg. It can evolve into Persian or Perrserker.",
     "learnset": [
       {
         "level": 1,
@@ -19759,7 +19759,7 @@
     "weight": 15,
     "color": "Brown",
     "shape": "Wings",
-    "dexEntry": "Farfetch'd is a Wild Duck Pokémon, Normal- and Flying-type, first found in Kanto. It stands 0.8 m tall and weighs 15.0 kg.",
+    "dexEntry": "Farfetch'd is a Wild Duck Pokémon, Normal- and Flying-type, first found in Kanto. It stands 0.8 m tall and weighs 15.0 kg. It evolves into Sirfetch'd.",
     "learnset": [
       {
         "level": 1,
@@ -29378,7 +29378,7 @@
     "weight": 54.5,
     "color": "Pink",
     "shape": "Humanoid",
-    "dexEntry": "Mr. Mime is a Barrier Pokémon, Psychic-type, first found in Kanto. It stands 1.3 m tall and weighs 54.5 kg. It evolves from Mime Jr..",
+    "dexEntry": "Mr. Mime is a Barrier Pokémon, Psychic-type, first found in Kanto. It stands 1.3 m tall and weighs 54.5 kg. It evolves from Mime Jr.. It evolves into Mr. Rime.",
     "learnset": [
       {
         "level": 1,
@@ -46339,7 +46339,7 @@
     "weight": 8.5,
     "color": "Blue",
     "shape": "Legs",
-    "dexEntry": "Wooper is a Water Fish Pokémon, Water- and Ground-type, first found in Johto. It stands 0.4 m tall and weighs 8.5 kg. It evolves into Quagsire.",
+    "dexEntry": "Wooper is a Water Fish Pokémon, Water- and Ground-type, first found in Johto. It stands 0.4 m tall and weighs 8.5 kg. It can evolve into Quagsire or Clodsire.",
     "learnset": [
       {
         "level": 1,
@@ -50362,7 +50362,7 @@
     "weight": 3.9,
     "color": "Gray",
     "shape": "Fish",
-    "dexEntry": "Qwilfish is a Balloon Pokémon, Water- and Poison-type, first found in Johto. It stands 0.5 m tall and weighs 3.9 kg.",
+    "dexEntry": "Qwilfish is a Balloon Pokémon, Water- and Poison-type, first found in Johto. It stands 0.5 m tall and weighs 3.9 kg. It evolves into Overqwil.",
     "learnset": [
       {
         "level": 1,
@@ -51409,7 +51409,7 @@
     "weight": 28,
     "color": "Black",
     "shape": "Upright",
-    "dexEntry": "Sneasel is a Sharp Claw Pokémon, Dark- and Ice-type, first found in Johto. It stands 0.9 m tall and weighs 28.0 kg. It evolves into Weavile.",
+    "dexEntry": "Sneasel is a Sharp Claw Pokémon, Dark- and Ice-type, first found in Johto. It stands 0.9 m tall and weighs 28.0 kg. It can evolve into Weavile or Sneasler.",
     "learnset": [
       {
         "level": 1,
@@ -53073,7 +53073,7 @@
     "weight": 5,
     "color": "Pink",
     "shape": "Armor",
-    "dexEntry": "Corsola is a Coral Pokémon, Water- and Rock-type, first found in Johto. It stands 0.6 m tall and weighs 5.0 kg.",
+    "dexEntry": "Corsola is a Coral Pokémon, Water- and Rock-type, first found in Johto. It stands 0.6 m tall and weighs 5.0 kg. It evolves into Cursola.",
     "learnset": [
       {
         "level": 1,
@@ -62569,7 +62569,7 @@
     "weight": 32.5,
     "color": "White",
     "shape": "Quadruped",
-    "dexEntry": "Linoone is a Rushing Pokémon, Normal-type, first found in Hoenn. It stands 0.5 m tall and weighs 32.5 kg. It evolves from Zigzagoon.",
+    "dexEntry": "Linoone is a Rushing Pokémon, Normal-type, first found in Hoenn. It stands 0.5 m tall and weighs 32.5 kg. It evolves from Zigzagoon. It evolves into Obstagoon.",
     "learnset": [
       {
         "level": 1,
@@ -122772,7 +122772,7 @@
     "weight": 18,
     "color": "Green",
     "shape": "Fish",
-    "dexEntry": "Basculin is a Hostile Pokémon, Water-type, first found in Unova. It stands 1.0 m tall and weighs 18.0 kg.",
+    "dexEntry": "Basculin is a Hostile Pokémon, Water-type, first found in Unova. It stands 1.0 m tall and weighs 18.0 kg. It evolves into Basculegion.",
     "learnset": [
       {
         "level": 1,
@@ -124959,7 +124959,7 @@
     "weight": 1.5,
     "color": "Black",
     "shape": "Arms",
-    "dexEntry": "Yamask is a Spirit Pokémon, Ghost-type, first found in Unova. It stands 0.5 m tall and weighs 1.5 kg. It evolves into Cofagrigus.",
+    "dexEntry": "Yamask is a Spirit Pokémon, Ghost-type, first found in Unova. It stands 0.5 m tall and weighs 1.5 kg. It can evolve into Cofagrigus or Runerigus.",
     "learnset": [
       {
         "level": 1,
@@ -170460,7 +170460,7 @@
     "weight": 46,
     "color": "Gray",
     "shape": "Upright",
-    "dexEntry": "Obstagoon is a Blocking Pokémon, Dark- and Normal-type, first found in Galar. It stands 1.6 m tall and weighs 46.0 kg.",
+    "dexEntry": "Obstagoon is a Blocking Pokémon, Dark- and Normal-type, first found in Galar. It stands 1.6 m tall and weighs 46.0 kg. It evolves from Linoone.",
     "learnset": [
       {
         "level": 0,
@@ -170617,7 +170617,7 @@
     "weight": 28,
     "color": "Brown",
     "shape": "Upright",
-    "dexEntry": "Perrserker is a Viking Pokémon, Steel-type, first found in Galar. It stands 0.8 m tall and weighs 28.0 kg.",
+    "dexEntry": "Perrserker is a Viking Pokémon, Steel-type, first found in Galar. It stands 0.8 m tall and weighs 28.0 kg. It evolves from Meowth.",
     "learnset": [
       {
         "level": 0,
@@ -170751,7 +170751,7 @@
     "weight": 0.4,
     "color": "White",
     "shape": "Arms",
-    "dexEntry": "Cursola is a Coral Pokémon, Ghost-type, first found in Galar. It stands 1.0 m tall and weighs 0.4 kg.",
+    "dexEntry": "Cursola is a Coral Pokémon, Ghost-type, first found in Galar. It stands 1.0 m tall and weighs 0.4 kg. It evolves from Corsola.",
     "learnset": [
       {
         "level": 1,
@@ -170878,7 +170878,7 @@
     "weight": 117,
     "color": "White",
     "shape": "Wings",
-    "dexEntry": "Sirfetch'd is a Wild Duck Pokémon, Fighting-type, first found in Galar. It stands 0.8 m tall and weighs 117.0 kg.",
+    "dexEntry": "Sirfetch'd is a Wild Duck Pokémon, Fighting-type, first found in Galar. It stands 0.8 m tall and weighs 117.0 kg. It evolves from Farfetch'd.",
     "learnset": [
       {
         "level": 0,
@@ -171006,7 +171006,7 @@
     "weight": 58.2,
     "color": "Purple",
     "shape": "Humanoid",
-    "dexEntry": "Mr. Rime is a Comedian Pokémon, Ice- and Psychic-type, first found in Galar. It stands 1.5 m tall and weighs 58.2 kg.",
+    "dexEntry": "Mr. Rime is a Comedian Pokémon, Ice- and Psychic-type, first found in Galar. It stands 1.5 m tall and weighs 58.2 kg. It evolves from Mr. Mime.",
     "learnset": [
       {
         "level": 1,
@@ -171204,7 +171204,7 @@
     "weight": 66.6,
     "color": "Gray",
     "shape": "Blob",
-    "dexEntry": "Runerigus is a Grudge Pokémon, Ground- and Ghost-type, first found in Galar. It stands 1.6 m tall and weighs 66.6 kg.",
+    "dexEntry": "Runerigus is a Grudge Pokémon, Ground- and Ghost-type, first found in Galar. It stands 1.6 m tall and weighs 66.6 kg. It evolves from Yamask.",
     "learnset": [
       {
         "level": 0,
@@ -176363,7 +176363,7 @@
     "weight": 110,
     "color": "Green",
     "shape": "Fish",
-    "dexEntry": "Basculegion is a Big Fish Pokémon, Water- and Ghost-type, first found in Galar. It stands 3.0 m tall and weighs 110.0 kg.",
+    "dexEntry": "Basculegion is a Big Fish Pokémon, Water- and Ghost-type, first found in Galar. It stands 3.0 m tall and weighs 110.0 kg. It evolves from Basculin.",
     "learnset": [
       {
         "level": 1,
@@ -176508,7 +176508,7 @@
     "weight": 43,
     "color": "Gray",
     "shape": "Upright",
-    "dexEntry": "Sneasler is a Free Climb Pokémon, Fighting- and Poison-type, first found in Galar. It stands 1.3 m tall and weighs 43.0 kg.",
+    "dexEntry": "Sneasler is a Free Climb Pokémon, Fighting- and Poison-type, first found in Galar. It stands 1.3 m tall and weighs 43.0 kg. It evolves from Sneasel.",
     "learnset": [
       {
         "level": 0,
@@ -176641,7 +176641,7 @@
     "weight": 60.5,
     "color": "Black",
     "shape": "Fish",
-    "dexEntry": "Overqwil is a Pin Cluster Pokémon, Dark- and Poison-type, first found in Galar. It stands 2.5 m tall and weighs 60.5 kg.",
+    "dexEntry": "Overqwil is a Pin Cluster Pokémon, Dark- and Poison-type, first found in Galar. It stands 2.5 m tall and weighs 60.5 kg. It evolves from Qwilfish.",
     "learnset": [
       {
         "level": 1,
@@ -186213,7 +186213,7 @@
     "weight": 223,
     "color": "Brown",
     "shape": "Quadruped",
-    "dexEntry": "Clodsire is a Spiny Fish Pokémon, Poison- and Ground-type, first found in Paldea. It stands 1.8 m tall and weighs 223.0 kg.",
+    "dexEntry": "Clodsire is a Spiny Fish Pokémon, Poison- and Ground-type, first found in Paldea. It stands 1.8 m tall and weighs 223.0 kg. It evolves from Wooper.",
     "learnset": [
       {
         "level": 0,

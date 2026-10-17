@@ -396,7 +396,7 @@ internal sealed class LeppaBerry(int param) : BattleEffect
         var berry = p.HeldItem!;
         ctx.ConsumeItem(self);
         move.CurrentPP = Math.Min(move.MaxPP, move.CurrentPP + param);
-        ctx.Announce(Text.Of("battle.restoredPp", ("pokemon", self.Name), ("item", ctx.ItemAtWork(self, berry)), ("move", move.Name)));
+        ctx.Announce(Text.Of("battle.restoredPp", ("pokemon", self.Name), ("item", ctx.ItemAtWork(self, berry)), ("move", move.DisplayName)));
     }
 }
 

@@ -9,9 +9,12 @@ namespace PokemonPlatinumEngine.Core;
 /// </summary>
 public static class Words
 {
-    public static string Type(PokemonType type) => Text.Of($"types.{type}");
+    /// <summary>A type's name: the language's own table first, then PokeAPI's name for it (plan 17 · N3), then English's.</summary>
+    public static string Type(PokemonType type) =>
+        Text.HasOwn($"types.{type}") ? Text.Of($"types.{type}") : LocalNames.TypeName(type) ?? Text.Of($"types.{type}");
 
-    public static string Nature(Nature nature) => Text.Of($"natures.{nature}");
+    public static string Nature(Nature nature) =>
+        Text.HasOwn($"natures.{nature}") ? Text.Of($"natures.{nature}") : LocalNames.NatureName(nature) ?? Text.Of($"natures.{nature}");
 
     /// <summary>A status as the pill shows it (PSN, BRN…); nothing for none.</summary>
     public static string Status(StatusCondition status) => status == StatusCondition.None ? "" : Text.Of($"statuses.{status}");

@@ -27,7 +27,7 @@ internal sealed class AbsorbType(PokemonType type) : BattleEffect
     {
         if (move.Type != type || attacker == self) return false;
         var p = self.Pokemon!;
-        if (p.CurrentHP >= p.MaxHP) ctx.Announce(Text.Of("battle.madeUseless", ("pokemon", self.Name), ("ability", ctx.AbilityOf(self)), ("move", move.Name)));
+        if (p.CurrentHP >= p.MaxHP) ctx.Announce(Text.Of("battle.madeUseless", ("pokemon", self.Name), ("ability", ctx.AbilityOf(self)), ("move", move.DisplayName)));
         else ctx.RestoreHp(self, p.MaxHP / 4, Text.Of("battle.restoredItsHp", ("pokemon", self.Name), ("ability", ctx.AbilityOf(self))));
         return true;
     }
@@ -230,7 +230,7 @@ internal sealed class Forewarn : BattleEffect
             if (moves.Count == 0) return;
             strongest = moves[ctx.Random.Roll(RollKind.AbilityPick, moves.Count)];
         }
-        ctx.Announce(Text.Of("battle.alertedItTo", ("pokemon", self.Name), ("ability", ctx.AbilityOf(self)), ("move", strongest.Name)));
+        ctx.Announce(Text.Of("battle.alertedItTo", ("pokemon", self.Name), ("ability", ctx.AbilityOf(self)), ("move", strongest.DisplayName)));
     }
 }
 
@@ -309,7 +309,7 @@ internal sealed class FlashFire : BattleEffect
             self.FlashFire = true;
             ctx.Announce(Text.Of("battle.raisedItsFirePower", ("pokemon", self.Name), ("ability", ctx.AbilityOf(self))));
         }
-        else ctx.Announce(Text.Of("battle.madeUseless", ("pokemon", self.Name), ("ability", ctx.AbilityOf(self)), ("move", move.Name)));
+        else ctx.Announce(Text.Of("battle.madeUseless", ("pokemon", self.Name), ("ability", ctx.AbilityOf(self)), ("move", move.DisplayName)));
         return true;
     }
 }
@@ -340,7 +340,7 @@ internal sealed class Soundproof : BattleEffect
     public override bool AbsorbsMove(IBattleContext ctx, Battler self, Battler attacker, Move move, float effectiveness)
     {
         if ((move.Data.Flags & MoveFlags.Sound) == 0 || attacker == self) return false;
-        ctx.Announce(Text.Of("battle.blocks", ("pokemon", self.Name), ("ability", ctx.AbilityOf(self)), ("move", move.Name)));
+        ctx.Announce(Text.Of("battle.blocks", ("pokemon", self.Name), ("ability", ctx.AbilityOf(self)), ("move", move.DisplayName)));
         return true;
     }
 }

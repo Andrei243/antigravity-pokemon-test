@@ -120,7 +120,7 @@ public static class ItemUse
         {
             int before = EffortRules.Total(p);
             if (!EffortRules.UseItem(item, p, rules)) return ItemUseResult.Nothing;
-            return new ItemUseResult(true, EffortRules.Total(p) > before ? Text.Of("itemUse.statsGrew", ("name", name), ("item", item.Name))
+            return new ItemUseResult(true, EffortRules.Total(p) > before ? Text.Of("itemUse.statsGrew", ("name", name), ("item", item.DisplayName))
                 : Text.Of("itemUse.friendlier", ("name", name)));
         }
 
@@ -185,7 +185,7 @@ public static class ItemUse
                 wanted = movesWanted;
                 applied = true;
                 said.Add(Text.Of("bag.grew", ("name", name), ("level", p.Level)));
-                said.AddRange(newMoves.Select(m => Text.Of("bag.learned", ("name", name), ("move", m))));
+                said.AddRange(newMoves.Select(m => Text.Of("bag.learned", ("name", name), ("move", LocalNames.Move(m)))));
             }
             found = true;
         }
@@ -199,7 +199,7 @@ public static class ItemUse
                 m.PPUps = Has(item, "ppUp") ? Math.Min(3, m.PPUps + 1) : 3;
                 m.CurrentPP += m.MaxPP - oldMax;
                 applied = true;
-                said.Add(Text.Of("itemUse.ppRose", ("move", m.Name)));
+                said.Add(Text.Of("itemUse.ppRose", ("move", m.DisplayName)));
             }
             found = true;
         }
@@ -211,7 +211,7 @@ public static class ItemUse
             if (restored.Count > 0)
             {
                 applied = true;
-                string first = p.Moves[restored[0]].Name;
+                string first = p.Moves[restored[0]].DisplayName;
                 said.Add(Has(item, "restorePPAllMoves") ? Text.Of("itemUse.allPpRestored", ("name", name)) : Text.Of("itemUse.ppRestored", ("move", first)));
             }
             found = true;

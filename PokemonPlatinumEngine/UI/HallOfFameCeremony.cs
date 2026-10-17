@@ -219,7 +219,7 @@ public sealed class HallOfFameCeremony
             : Text.Of("ceremony.metAt", ("place", place), ("level", pokemon.MetLevel));
         var types = new List<PokemonType> { pokemon.PrimaryType };
         if (pokemon.SecondaryType is { } second) types.Add(second);
-        return new CeremonyCard(pokemon.DisplayName, pokemon.Gender, pokemon.Level, pokemon.Species.Name, types, name, id.ToString("D5"), met);
+        return new CeremonyCard(pokemon.DisplayName, pokemon.Gender, pokemon.Level, pokemon.Species.DisplayName, types, name, id.ToString("D5"), met);
     }
 
     /// <summary>Renders whoever stands on the stage. Call outside any other texture mode.</summary>

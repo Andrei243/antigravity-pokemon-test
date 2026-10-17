@@ -198,7 +198,7 @@ From wave 12, each lane takes its next session whose gates are met. The waves ar
 - 12 · Q13, Q15, Q16, Q19, Q21, Q22, Q23, Q24, Q25 (after 08 · P10), Q26 to Q30.
 - 16 · T6, T7, T13 (after T7 and T12), T10, T17 to T22, T4 (Linux only: decision 16 · 4), T1 and T2 (decisions 16 · 1–3 and 5 are taken; the first public release is published only on the user's word), T23, T24, T14, T15 (optional).
 - 16 · T9, the editor. M11d went without it. Since 2026-10-12 it is a hard gate of plans 22 and 23, whose regions are drawn with it (decision 18 · 5): it grows from rooms and overlays to outdoor areas (chunks, heights, behaviours, the models that stand on them) and lands before 22 · U1.
-- 17 · N3 and N4, then N5's Latin half, then N6 in Romanian (the section below says what each needs).
+- 17 · N4 (N3 is done), then N5's Latin half, then N6 in Romanian (the section below says what each needs).
 - 15 · E3, E4.
 
 **Beside**: 08 · P15, P16 and P17 (after P19), 09 · L6, L7 and L8 (after L1), and 05 · A6 as scenes ask for songs.
@@ -245,7 +245,7 @@ These are the plans the README put after Sinnoh's Hall of Fame, which has been i
   - V6. V7, chapter by chapter: first the chapters already written, then each region's.
   - V8 (other languages) is no longer last: the Romanian pack is made as soon as 17 · N6 has a chapter's lines in Romanian, with the engine V4 chose.
 - **Localisation (17)**, wanted since 2026-10-12: Romanian first, and the language an options row the player changes at any time (so nothing of it is kept in the save, plan 17's decision 5).
-  - N1 and N2 in wave 11's freeze; then N3. PokeAPI has no Romanian and the games were never sold in it, so species, moves, abilities and items keep their English names; whether their descriptions are written in Romanian is N6's question for the user.
+  - N1 and N2 in wave 11's freeze; N3 done in wave 13 (the names files of the eight languages PokeAPI has, the display names, empty nicknames, the composed entry; Romanian has none and shows English until N6). PokeAPI has no Romanian and the games were never sold in it, so species, moves, abilities and items keep their English names; whether their descriptions are written in Romanian is N6's question for the user.
   - N4, never in the same wave as 26 · V1, because both number the lines.
   - N5's Latin half before N6: Romanian's ă, ș and ț are outside the Latin-1 that `UiFonts` loads. Nunito has them (its `cmap` was read on 2026-10-12), so no face is downloaded. Its CJK half waits for a language that needs it.
   - N6, in Romanian.

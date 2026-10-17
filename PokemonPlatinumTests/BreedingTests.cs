@@ -408,7 +408,7 @@ public class BreedingTests
         var moves = egg.Moves.Select(m => m.Name).ToList();
         Breeding.Hatch(egg, "Solaceon Town", OrdinaryDay);
         Assert.False(egg.IsEgg);
-        Assert.Equal(("Shinx", 1, 120, "Shinx", "Shinx"), (egg.Species.Name, egg.Level, egg.Friendship, egg.Nickname, egg.DisplayName));
+        Assert.Equal(("Shinx", 1, 120, "", "Shinx"), (egg.Species.Name, egg.Level, egg.Friendship, egg.Nickname, egg.DisplayName));
         Assert.Equal(("Solaceon Town", 0, OrdinaryDay), (egg.MetLocation, egg.MetLevel, egg.MetDate!.Value));
         Assert.Equal((Nature.Gentle, Gender.Female), (egg.Nature, egg.Gender));
         Assert.Equal(moves, egg.Moves.Select(m => m.Name));

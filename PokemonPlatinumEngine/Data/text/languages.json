@@ -1,5 +1,15 @@
 [
   { "tag": "en", "name": "English", "script": "Latin", "plural": "english", "decimal": ".", "breaks": "spaces" },
+  { "tag": "ro", "name": "Română", "script": "Latin", "plural": "romanian", "decimal": ",", "breaks": "spaces" },
   { "tag": "fr", "name": "Français", "script": "Latin", "plural": "french", "decimal": ",", "breaks": "spaces" },
+  { "tag": "de", "name": "Deutsch", "script": "Latin", "plural": "english", "decimal": ",", "breaks": "spaces" },
+  { "tag": "es", "name": "Español", "script": "Latin", "plural": "english", "decimal": ",", "breaks": "spaces" },
+  { "tag": "it", "name": "Italiano", "script": "Latin", "plural": "english", "decimal": ",", "breaks": "spaces" },
+  { "tag": "ja", "name": "日本語", "script": "Japanese", "plural": "none", "decimal": ".", "breaks": "anywhere",
+    "nameGroups": ["あいうえおぁぃぅぇぉ", "かきくけこ", "さしすせそ", "たちつてとっ", "なにぬねの", "はひふへほ", "まみむめも", "やゆよゃゅょ", "らりるれろ", "わをんゐゑ"] },
+  { "tag": "ko", "name": "한국어", "script": "Korean", "plural": "none", "decimal": ".", "breaks": "spaces",
+    "nameGroups": ["ㄱㄲ", "ㄴ", "ㄷㄸ", "ㄹ", "ㅁ", "ㅂㅃ", "ㅅㅆ", "ㅇ", "ㅈㅉ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"] },
+  { "tag": "zh-Hant", "name": "繁體中文", "script": "Chinese", "plural": "none", "decimal": ".", "breaks": "anywhere" },
+  { "tag": "zh-Hans", "name": "简体中文", "script": "Chinese", "plural": "none", "decimal": ".", "breaks": "anywhere" },
   { "tag": "xx", "name": "Pseudo", "script": "Latin", "plural": "english", "decimal": ".", "breaks": "spaces", "pseudo": true }
 ]

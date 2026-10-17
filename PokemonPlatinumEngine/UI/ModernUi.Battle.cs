@@ -104,7 +104,7 @@ internal static partial class ModernUi
             case BattleMenuState.SelectBagMove:
                 BagTargets(hud, sw, sh, party, battle);
                 if (battle.BagTarget >= 0 && battle.BagTarget < party.Count && battle.BagItemChosen is { } restoring)
-                    MovePick(new Rectangle(sw - 64 - 760, 64, 760, 476), party.Members[battle.BagTarget], hud.BagMoveIndex, Text.Of("battleMenu.useOnWhichMove", ("item", restoring.Name)));
+                    MovePick(new Rectangle(sw - 64 - 760, 64, 760, 476), party.Members[battle.BagTarget], hud.BagMoveIndex, Text.Of("battleMenu.useOnWhichMove", ("item", restoring.DisplayName)));
                 break;
             case BattleMenuState.Info:
                 if (battle.InfoShown is { } info) InfoPanel(info, battle.IsDouble);
@@ -255,7 +255,7 @@ internal static partial class ModernUi
         var move = battle.TargetingMove;
         if (move != null)
         {
-            UiFonts.DrawCentered(move.Name, info.X + 44, info.Y + 108, 38, Ink, UiWeight.Black);
+            UiFonts.DrawCentered(move.DisplayName, info.X + 44, info.Y + 108, 38, Ink, UiWeight.Black);
             var target = choices.ElementAtOrDefault(hud.TargetMenuIndex);
             if (target?.Pokemon != null)
                 UiFonts.DrawCentered(Text.Of("battleMenu.atTarget", ("target", target.Name)), info.X + 44, info.Y + 156, 28, Muted, UiWeight.ExtraBold);
@@ -451,7 +451,7 @@ internal static partial class ModernUi
             string typeName = Words.Type(move.Type).ToUpperInvariant();
             float tw = UiFonts.Measure(typeName, 20, UiWeight.Black);
             UiFonts.DrawCentered(typeName, band.X + (band.Width - tw) / 2f, band.Y + band.Height / 2f, 20, Color.White, UiWeight.Black);
-            UiFonts.DrawCentered(move.Name, r.X + 156, r.Y + r.Height / 2f, 32, move.CurrentPP > 0 ? Ink : Muted, UiWeight.Black);
+            UiFonts.DrawCentered(move.DisplayName, r.X + 156, r.Y + r.Height / 2f, 32, move.CurrentPP > 0 ? Ink : Muted, UiWeight.Black);
             string pp = $"{move.CurrentPP}/{move.MaxPP}";
             float pw = UiFonts.Measure(pp, 26, UiWeight.Black);
             UiFonts.DrawCentered(pp, r.X + r.Width - 30 - pw, r.Y + r.Height / 2f, 26, move.CurrentPP > 0 ? Ink : Red, UiWeight.Black);
@@ -484,7 +484,7 @@ internal static partial class ModernUi
             UiFonts.DrawCentered(pwr, info.X + 350, info.Y + 44, 30, Ink, UiWeight.Black);
             UiFonts.DrawCentered(Text.Of("summary.accuracy"), info.X + 440, info.Y + 44, 20, Muted, UiWeight.ExtraBold);
             UiFonts.DrawCentered(acc, info.X + 580, info.Y + 44, 30, Ink, UiWeight.Black);
-            DrawWrapped(move.Description, info.X + 44, info.Y + 92, info.Width - 88, 26, Ink, 36);
+            DrawWrapped(move.DisplayDescription, info.X + 44, info.Y + 92, info.Width - 88, 26, Ink, 36);
         }
     }
 
@@ -621,7 +621,7 @@ internal static partial class ModernUi
             var icon = PixelArtGenerator.GetItemIcon(item);
             UiShapes.Circle(new Vector2(r.X + 52, r.Y + r.Height / 2f), 34, new Color(226, 234, 246, 255));
             Raylib.DrawTexturePro(icon, new Rectangle(0, 0, icon.Width, icon.Height), new Rectangle(r.X + 26, r.Y + 17, 52, 52), Vector2.Zero, 0f, Color.White);
-            UiFonts.DrawCentered(item.Name, r.X + 104, r.Y + r.Height / 2f, 30, Ink, UiWeight.Black);
+            UiFonts.DrawCentered(item.DisplayName, r.X + 104, r.Y + r.Height / 2f, 30, Ink, UiWeight.Black);
             string count = $"×{listed[i].Quantity}";
             UiFonts.DrawCentered(count, r.X + r.Width - 30 - UiFonts.Measure(count, 28, UiWeight.Black), r.Y + r.Height / 2f, 28, Ink, UiWeight.Black);
         }
@@ -631,8 +631,8 @@ internal static partial class ModernUi
         Panel(info, 28);
         if (chosen != null)
         {
-            UiFonts.DrawCentered(chosen.Name, info.X + 40, info.Y + 52, 34, Ink, UiWeight.Black);
-            DrawWrapped(chosen.Description, info.X + 40, info.Y + 104, info.Width - 80, 26, Ink, 36);
+            UiFonts.DrawCentered(chosen.DisplayName, info.X + 40, info.Y + 52, 34, Ink, UiWeight.Black);
+            DrawWrapped(chosen.DisplayDescription, info.X + 40, info.Y + 104, info.Width - 80, 26, Ink, 36);
         }
     }
 
@@ -642,7 +642,7 @@ internal static partial class ModernUi
         Dim(sw, sh, 120);
         var head = new Rectangle(48, 548, 1824, 84);
         Panel(head, 26);
-        string heading = battle.BagItemChosen is { } chosen ? Text.Of("battleMenu.useOnWhichPokemon", ("item", chosen.Name)) : Text.Of("battleMenu.useItOnWhichPokemon");
+        string heading = battle.BagItemChosen is { } chosen ? Text.Of("battleMenu.useOnWhichPokemon", ("item", chosen.DisplayName)) : Text.Of("battleMenu.useItOnWhichPokemon");
         UiFonts.DrawCentered(heading, head.X + 48, head.Y + head.Height / 2f, 36, Ink, UiWeight.ExtraBold);
         HintsDark(head.X + head.Width - 24, head.Y + 16, (Text.Of("shared.keys.z"), Text.Of("shared.hints.use")), (Text.Of("shared.keys.x"), Text.Of("shared.hints.back")));
 

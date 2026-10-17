@@ -388,7 +388,7 @@ public class SavedPokemonData
 
     /// <summary>The form it is in (plan 03 · D11); null for its species' own, and in saves from before forms.</summary>
     public string? Form { get; set; }
-    public string Nickname { get; set; } = "Turtwig";
+    public string Nickname { get; set; } = "";
     public int Level { get; set; } = 5;
     public Gender Gender { get; set; } = Gender.Male;
     public Nature Nature { get; set; } = Nature.Hardy;
@@ -522,8 +522,8 @@ public class SavedPokemonData
         int cap = (rules ?? Ruleset.Current).EvStatCap;
         var p = new Pokemon(sp, Level, Gender, Nature, IsShiny)
         {
-            // One that was never given a name of its own is called what its species is called today
-            Nickname = Nickname == SpeciesName ? sp.Name : Nickname,
+            // One that was never given a name of its own (older saves wrote the species' name in) has none: it is called what its species is called, in whatever language
+            Nickname = Nickname == SpeciesName || Nickname == sp.Name ? "" : Nickname,
             CurrentHP = Math.Min(CurrentHP, 999),
             Status = (StatusCondition)Status,
             IvHP = IvHP,
