@@ -12,7 +12,8 @@
       "shift": "Shift",
       "arrows": "Arrows",
       "enter": "Enter",
-      "x": "X"
+      "x": "X",
+      "c": "C"
     },
     "hints": {
       "open": "Open",
@@ -2342,6 +2343,11 @@
   },
 
   "battleMenu": {
+    "later": {
+      "mega": "Mega Evolution",
+      "zPower": "Z-Power",
+      "ultraBurst": "Ultra Burst"
+    },
     "fight": "FIGHT",
     "bag": "BAG",
     "pokemon": "POKÉMON",

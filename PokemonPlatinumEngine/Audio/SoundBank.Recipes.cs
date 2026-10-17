@@ -122,6 +122,8 @@ public static partial class SoundBank
         Add("moment_clamp", SoundGroup.Battle, null, "Clamp snaps shut at the turn's end.");
         Add("moment_whirlpool", SoundGroup.Battle, null, "Whirlpool turns under a Pokémon at the turn's end.");
         Add("moment_sand_tomb", SoundGroup.Battle, null, "Sand Tomb draws a Pokémon down at the turn's end.");
+        // The later mechanics' set pieces (plan 25 · Y14): SoundBank.Later.cs
+        AddLaterSounds(Add);
 
         // ---- A move's launch, one per type (the hit's sound comes as it lands)
         foreach (var type in Enum.GetValues<PokemonType>())
@@ -972,7 +974,7 @@ public static partial class SoundBank
                 return Finish(d.S, 0.36f);
 
             default:
-                return MakeMoveSound(name) ?? throw new ArgumentOutOfRangeException(nameof(name), name, "not a sound of the bank");
+                return MakeLaterSound(name) ?? MakeMoveSound(name) ?? throw new ArgumentOutOfRangeException(nameof(name), name, "not a sound of the bank");
         }
     }
 }

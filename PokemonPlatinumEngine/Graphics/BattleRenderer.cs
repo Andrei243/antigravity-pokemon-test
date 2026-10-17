@@ -720,6 +720,19 @@ public sealed class BattleRenderer
 
     private static readonly Color SilhouetteColor = new(34, 30, 46, 255);
 
+    /// <summary>What a Mega Evolution, an Ultra Burst or the Z-Power playing on this place shows of the body itself (plan 25 · Y14).</summary>
+    private static (Color Color, float Amount) ChangeCast(BattleAnimator anim, BattleSide side, int slot)
+    {
+        (Color Color, float Amount) strongest = (default, 0f);
+        foreach (var cue in anim.Cues)
+        {
+            if (cue.Kind is not (CueKind.Mega or CueKind.UltraBurst or CueKind.ZPower) || cue.ToSide != side || cue.ToSlot != slot) continue;
+            var cast = MoveFx.BodyCast(cue);
+            if (cast.Amount > strongest.Amount) strongest = cast;
+        }
+        return strongest;
+    }
+
     /// <summary>
     /// The Pokémon as a 3D model standing on its platform, lit and shadowed with the scene. It is sized
     /// so it covers the same part of the screen as the sprite would.
@@ -775,7 +788,10 @@ public sealed class BattleRenderer
 
         if (pass == CharacterPass.Color)
         {
+            // A change of shape's light, or the Z-Power's cast (plan 25 · Y14), gives way only to a send-out's or a recall's flash
+            var change = ChangeCast(anim, isPlayer ? BattleSide.Player : BattleSide.Enemy, slot);
             if (a.Flash > 0f) context.Shaders.SetFlash(a.FlashColor, Math.Clamp(a.Flash, 0f, 1f) * 0.85f);
+            else if (change.Amount > 0f) context.Shaders.SetFlash(change.Color, Math.Clamp(change.Amount, 0f, 1f));
             else if (a.Silhouette > 0f) context.Shaders.SetFlash(SilhouetteColor, a.Silhouette * 0.92f);
             else
             {

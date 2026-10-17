@@ -27,6 +27,7 @@ public static partial class SoundBank
 
     /// <summary>The sound a move makes as it sets off: its own <c>use_</c> sound, or its type's.</summary>
     public static string MoveSound(string move, PokemonType type) =>
+        IsZMove(move) ? ZMoveSound(type) :
         move.Length > 0 && Exists("use_" + MoveKey(move)) ? "use_" + MoveKey(move) : MoveSound(type);
 
     /// <summary>The moves whose animation is the user's own voice, with the cry modes the original plays them in, in order.</summary>

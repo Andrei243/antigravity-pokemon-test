@@ -568,7 +568,9 @@ public partial class BattleEngine
                     Blocked = move.Blocked,
                     Critical = move.Critical,
                     SuperEffective = move.SuperEffective,
-                    Terrain = terrain
+                    Terrain = terrain,
+                    // A Z-Move plays its own set piece, a little longer than a move's (plan 25 · Y14)
+                    ZMove = MoveDatabase.Get(move.Move)?.Kind == MoveKind.ZMove
                 });
                 // A blow that lands on a doll makes it flinch as it lands: the rules say so with no Struck, since the
                 // Pokémon behind it takes nothing (subscript_hit_substitute's flicker)
@@ -681,35 +683,20 @@ public partial class BattleEngine
                 ShowDynamax(happening);
                 break;
             case UltraBursted burst:
-                // An Ultra Burst (plan 06 · R21): the form taken as a Mega Evolution's is
-                TakeTheForm(burst.Place);
+                // An Ultra Burst (plan 06 · R21): its own look and sound, the form taken inside its light (plan 25 · Y14)
+                Change(burst.Place, burst.Form, CueKind.UltraBurst, "ultra_burst", BattleAnimator.UltraBurstSwapTime);
                 break;
             case MegaEvolved mega:
-            {
-                // A Mega Evolution or a Primal Reversion (plan 06 · R20): the screen's Pokémon takes the form as the line
-                // appears, and plays Transform's cue on itself until plan 25 · Y14 gives the change a look of its own
-                if (core.At(mega.Place).Pokemon is { } megaTheirs && At(mega.Place).Pokemon is { } megaShown)
-                {
-                    megaShown.Species = megaTheirs.Species;
-                    megaShown.Form = megaTheirs.Form;
-                    megaShown.AbilityName = megaTheirs.AbilityName;
-                    (megaShown.Attack, megaShown.Defense, megaShown.SpAttack, megaShown.SpDefense, megaShown.Speed) =
-                        (megaTheirs.Attack, megaTheirs.Defense, megaTheirs.SpAttack, megaTheirs.SpDefense, megaTheirs.Speed);
-                }
-                if (Scene)
-                    Anim.Cue(new EffectCue
-                    {
-                        Kind = CueKind.Move,
-                        Move = "Transform",
-                        Type = PokemonType.Normal,
-                        Category = MoveCategory.Status,
-                        FromSide = mega.Place.Side,
-                        FromSlot = mega.Place.Slot,
-                        ToSide = mega.Place.Side,
-                        ToSlot = mega.Place.Slot
-                    });
+                // A Mega Evolution or a Primal Reversion (plan 06 · R20): its own look and sound, the form taken inside
+                // its light (plan 25 · Y14)
+                Change(mega.Place, mega.Form, CueKind.Mega, mega.Primal ? "primal_reversion" : "mega_evolve", BattleAnimator.MegaSwapTime, mega.Primal);
                 break;
-            }
+            case ZPowerUsed zPower:
+                // The Z-Power gathered before a Z-Move (plan 06 · R21; plan 25 · Y14): the pose and the frame in the
+                // colour of its Z-Move's type, with its sound; nothing to see with the scene off
+                Sound("z_power", zPower.Place.Side);
+                if (Scene) Anim.ZPower(zPower.Place.Side, zPower.Place.Slot, MoveDatabase.Get(zPower.ZMove)?.Type ?? MoveDatabase.Get(zPower.From)?.Type ?? PokemonType.Normal);
+                break;
             case PlacesSwapped swap:
                 // Ally Switch (plan 06 · R25's leftovers): the screen's two places change Pokémon, and the views go
                 // with them (the marks that last were moved by Conditions.Tell above)

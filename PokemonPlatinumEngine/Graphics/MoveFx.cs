@@ -66,6 +66,8 @@ internal static partial class MoveFx
                 if (cue.Arriving) Landing(c, ColorsOf(cue.Type), fx);
                 // A charge turn plays the move's charge half on its user (plan 25 · Y5)
                 else if (cue.Charging) ChargeHalf(c, ColorsOf(cue.Type), fx);
+                // A Z-Move plays its own set piece (plan 25 · Y14)
+                else if (cue.ZMove) ZMoveRecipe(cue.Move, cue.Type)(c, ColorsOf(cue.Type), fx);
                 else RecipeFor(cue.Move, cue.Type, cue.Category, cue.OnSelf)(c, ColorsOf(cue.Type), fx);
                 break;
             case CueKind.StatUp:
@@ -88,6 +90,15 @@ internal static partial class MoveFx
                 break;
             case CueKind.Moment:
                 Moment(c, fx);
+                break;
+            case CueKind.Mega:
+                MegaEvolution(c, fx);
+                break;
+            case CueKind.UltraBurst:
+                UltraBurst(c, fx);
+                break;
+            case CueKind.ZPower:
+                ZPower(c, ColorsOf(cue.Type), fx);
                 break;
         }
     }
