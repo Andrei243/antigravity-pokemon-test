@@ -448,7 +448,9 @@ public class TextTests
         // Struggle's description, which is the data's like every other move's (plan 17 · N3)
         ["Battle/Sim/BattleCore.Moves.cs"] = new[] { "Used only when no other move has PP left. It also hurts the user." },
         // An ability's name, which the shapes of the later games go by (plan 06 · R19b)
-        ["Battle/Sim/BattleCore.Shapes.cs"] = new[] { "Zero to Hero" }
+        ["Battle/Sim/BattleCore.Shapes.cs"] = new[] { "Zero to Hero" },
+        // The abilities Simple Beam and Entrainment can't replace or hand on, by name (plan 06 · R24)
+        ["Battle/Sim/BattleCore.Effects.Later1.cs"] = new[] { "Zero to Hero", "Power of Alchemy" }
     };
 
     [Fact]

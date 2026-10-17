@@ -168,6 +168,15 @@ public class MoveData
         return copy;
     }
 
+    /// <summary>A copy of the move made of another category, for its user alone (Photon Geyser's physical side).</summary>
+    public MoveData OfCategory(MoveCategory category)
+    {
+        if (category == Category) return this;
+        var copy = (MoveData)MemberwiseClone();
+        copy.Category = category;
+        return copy;
+    }
+
     private MoveValues Values() =>
         new() { Power = Power, Accuracy = Accuracy, MaxPP = MaxPP, Priority = Priority, Type = Type, Category = Category };
 

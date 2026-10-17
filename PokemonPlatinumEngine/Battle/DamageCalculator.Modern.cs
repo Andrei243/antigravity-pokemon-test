@@ -41,6 +41,7 @@ public static partial class DamageCalculator
             int myParam = BattleEffects.HoldParamOf(attacker);
             string mySpecies = atkPokemon.Species.Name, theirSpecies = defPokemon.Species.Name;
             bool physical = move.Category == MoveCategory.Physical;
+            bool defensePhysical = physical || HitsTheDefense(move.Data);
             bool typed = !typeless;
             var type = move.Type;
             bool frontier = field?.Frontier ?? false;
@@ -94,8 +95,11 @@ public static partial class DamageCalculator
             power = Math.Max(1, (int)Formulas.RoundHalfDown((long)power * Formulas.Chain(bp, 41, 2097152)));
 
             // ---- The stats: the stage first, then the bonuses (onModifyAtk and its kin)
-            int attackStage = atkPokemon.StatStages.GetValueOrDefault(physical ? StatType.Attack : StatType.SpAttack);
-            int defenseStage = defPokemon.StatStages.GetValueOrDefault(physical ? StatType.Defense : StatType.SpDefense);
+            // Foul Play takes the target's Attack and its stage, Psyshock the target's Defense, Chip Away no notice of
+            // the target's stages (plan 06 · R24; Showdown's overrideOffensivePokemon, overrideDefensiveStat, ignoreDefensive)
+            var offense = TakesTheTargetsAttack(move.Data) ? defPokemon : atkPokemon;
+            int attackStage = offense.StatStages.GetValueOrDefault(physical ? StatType.Attack : StatType.SpAttack);
+            int defenseStage = IgnoresDefenseStages(move.Data) ? 0 : defPokemon.StatStages.GetValueOrDefault(defensePhysical ? StatType.Defense : StatType.SpDefense);
             if (theirs == "Unaware") attackStage = 0;
             if (mine == "Unaware") defenseStage = 0;
             if (result.IsCritical)
@@ -103,8 +107,8 @@ public static partial class DamageCalculator
                 attackStage = Math.Max(0, attackStage);
                 defenseStage = Math.Min(0, defenseStage);
             }
-            int attack = Formulas.Staged(physical ? atkPokemon.Attack : atkPokemon.SpAttack, attackStage);
-            int defense = Formulas.Staged(physical ? defPokemon.Defense : defPokemon.SpDefense, defenseStage);
+            int attack = Formulas.Staged(physical ? offense.Attack : offense.SpAttack, attackStage);
+            int defense = Formulas.Staged(defensePhysical ? defPokemon.Defense : defPokemon.SpDefense, defenseStage);
 
             // Hustle is applied to the stat itself, before the chain
             if (physical && mine == "Hustle") attack = attack * 3 / 2;
@@ -129,13 +133,13 @@ public static partial class DamageCalculator
             attack = Math.Max(1, (int)Formulas.RoundHalfDown((long)attack * Formulas.Chain(at, 410, 131072)));
 
             // A sandstorm hardens Rock types against special moves and snow Ice types against physical ones, on the stat itself
-            if (!physical && weather == BattleWeather.Sandstorm && defender.HasType(PokemonType.Rock)) defense = defense * 3 / 2;
-            if (physical && !selfHit && field?.SkyInEffect == BattleWeather.Snow && defender.HasType(PokemonType.Ice)) defense = defense * 3 / 2;
+            if (!defensePhysical && weather == BattleWeather.Sandstorm && defender.HasType(PokemonType.Rock)) defense = defense * 3 / 2;
+            if (defensePhysical && !selfHit && field?.SkyInEffect == BattleWeather.Snow && defender.HasType(PokemonType.Ice)) defense = defense * 3 / 2;
             var df = new List<int>();
-            if (physical && theirs == "Marvel Scale" && defPokemon.Status != StatusCondition.None) df.Add(6144);
-            if (!physical && weather == BattleWeather.Sun && !breaksAbility && SideHas(defender, "Flower Gift")) df.Add(6144);
-            if (!physical && theirHold == "ClamperlSpdef" && theirSpecies == "Clamperl") df.Add(8192);
-            if (physical && theirHold == "DittoDefUp" && theirSpecies == "Ditto" && !defender.Volatile.Transformed) df.Add(8192);
+            if (defensePhysical && theirs == "Marvel Scale" && defPokemon.Status != StatusCondition.None) df.Add(6144);
+            if (!defensePhysical && weather == BattleWeather.Sun && !breaksAbility && SideHas(defender, "Flower Gift")) df.Add(6144);
+            if (!defensePhysical && theirHold == "ClamperlSpdef" && theirSpecies == "Clamperl") df.Add(8192);
+            if (defensePhysical && theirHold == "DittoDefUp" && theirSpecies == "Ditto" && !defender.Volatile.Transformed) df.Add(8192);
             defense = Math.Max(1, (int)Formulas.RoundHalfDown((long)defense * Formulas.Chain(df, 410, 131072)));
 
             // ---- The base damage, then a spread hit, the weather and a critical hit

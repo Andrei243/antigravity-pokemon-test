@@ -1,4 +1,5 @@
 using System.Text.Json;
+using PokemonPlatinumEngine.Battle.Sim;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 
@@ -150,6 +151,18 @@ public sealed partial class Importer
             {
                 support = MoveEffectSupport.None;
                 effect = Names.Pascal(FirstMoveWithEffect(effectId) ?? ident, "");
+            }
+            // A move PokeAPI's effect says too little of, named so the engine can find its code (plan 06 · R24)
+            if (MoveEffects.LaterEffectNames.TryGetValue(m.Name, out var named)) effect = named;
+            // A move the engine has code for runs whole, whatever the meta fields could say of it: its code does
+            // what they couldn't (several hits, a binding, a change of type), and keeps what they did say
+            if (effect != null && BattleCore.HasMoveEffect(effect))
+            {
+                m.Effect = effect;
+                if (effectChance > 0) m.EffectChance = effectChance;
+                m.Support = MoveEffectSupport.Full;
+                moves.Add(m);
+                continue;
             }
             if (support == MoveEffectSupport.Full && !expressible)
             {

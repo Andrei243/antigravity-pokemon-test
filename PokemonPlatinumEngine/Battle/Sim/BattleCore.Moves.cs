@@ -805,7 +805,7 @@ public sealed partial class BattleCore
             if (!breaks && Has(target, "Simple")) evasion *= 2;
         }
         if (targetEffects.Any(e => e.IgnoresOthersStatStages)) accuracy = 0;
-        if (userEffects.Any(e => e.IgnoresOthersStatStages)) evasion = 0;
+        if (userEffects.Any(e => e.IgnoresOthersStatStages) || DamageCalculator.IgnoresDefenseStages(move.Data)) evasion = 0;
         // A target that has been identified can't hide behind raised evasion
         if ((target.Volatile.Identified || target.Volatile.MiracleEye) && evasion > 0) evasion = 0;
         int rate = Formulas.HitRate(use.Effect.AccuracyUnder(weather, move.Accuracy), accuracy, evasion);
@@ -883,7 +883,7 @@ public sealed partial class BattleCore
         }
 
         use.StrikeCount = Math.Max(1, effect.Strikes?.Invoke(this, use) ?? 1);
-        bool userBreaks = BattleEffects.Of(user).Any(e => e.IgnoresTargetAbility);
+        bool userBreaks = BattleEffects.Of(user).Any(e => e.IgnoresTargetAbility) || DamageCalculator.IgnoresAbilities(use.Data);
         foreach (var t in use.Targets)
         {
             var hit = new MoveHit { Target = t };
@@ -931,6 +931,7 @@ public sealed partial class BattleCore
             use.Line.AtImpact(new HitSounded(super, !super && use.Hits.Where(h => h.Landed).All(h => h.NotVeryEffective)));
         }
         use.DamageDealt = use.Hits.Where(h => h.Landed).Sum(h => h.Dealt);
+        NoteLanded(use);
 
         AfterStrike(use);
         // Relic Song turns Meloetta (plan 06 · R19b)

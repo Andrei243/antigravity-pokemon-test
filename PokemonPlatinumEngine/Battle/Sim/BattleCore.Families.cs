@@ -19,6 +19,7 @@ public sealed partial class BattleCore
     {
         foreach (var (name, effect) in FamilyEffects) MoveEffects[name] = effect;
         foreach (var (name, effect) in UniqueEffects) MoveEffects[name] = effect;
+        foreach (var (name, effect) in LaterEffects1) MoveEffects[name] = effect;
     }
 
     private static readonly Elsewhere[] Underground = { Elsewhere.Underground };
@@ -84,7 +85,7 @@ public sealed partial class BattleCore
         ["IncreasePowerWithLessHp"] = new() { BasePower = (b, use, t) => FlailPower(use.User.Pokemon!) },
         ["IncreasePowerWithMoreHp"] = new() { BasePower = (b, use, t) => 1 + 120 * t.Pokemon!.CurrentHP / t.Pokemon.MaxHP },
         ["DecreasePowerWithLessUserHp"] = new() { BasePower = (b, use, t) => Math.Max(1, use.Data.Power * use.User.Pokemon!.CurrentHP / use.User.Pokemon.MaxHP) },
-        ["IncreasePowerWithWeight"] = new() { BasePower = (b, use, t) => WeightPower(t.Pokemon!) },
+        ["IncreasePowerWithWeight"] = new() { BasePower = (b, use, t) => WeightPower(WeightOf(t)) },
         ["PowerBasedOnLowSpeed"] = new()
         {
             // Gyro Ball: 1 + 25 × the target's Speed over the user's, no more than 150
@@ -283,9 +284,11 @@ public sealed partial class BattleCore
         return PlatinumTypeOrder[id];
     }
 
-    internal static int WeightPower(Pokemon p)
+    internal static int WeightPower(Pokemon p) => WeightPower(p.Weight);
+
+    internal static int WeightPower(float kg)
     {
-        int weight = (int)Math.Round(p.Weight * 10f);
+        int weight = (int)Math.Round(kg * 10f);
         return weight <= 100 ? 20 : weight <= 250 ? 40 : weight <= 500 ? 60 : weight <= 1000 ? 80 : weight <= 2000 ? 100 : 120;
     }
 

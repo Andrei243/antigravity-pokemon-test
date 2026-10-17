@@ -298,6 +298,14 @@ internal sealed class Volatiles
     /// <summary>The held item it used up or threw, which Recycle brings back.</summary>
     public ItemData? ConsumedItem;
 
+    // ---- The later moves (plan 06 · R24)
+
+    /// <summary>Smack Down brought it down: it is on the ground whatever its type, ability or Magnet Rise say.</summary>
+    public bool SmackedDown;
+
+    /// <summary>Autotomize's uses: each takes 100 kg off its weight, to no less than 0.1 kg.</summary>
+    public int Autotomized;
+
     // ---- Abilities (plan 06 · R7)
 
     /// <summary>Unburden: it came in holding an item, so losing it doubles its Speed (the original's <c>canUnburden</c>).</summary>

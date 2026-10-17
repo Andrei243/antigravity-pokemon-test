@@ -6,13 +6,6 @@
       "reason": "From generation 5 Lightning Rod and Storm Drain make their holder immune to the type they draw and raise its Sp. Atk; the engine still runs Platinum's ability, which only draws the move.",
       "when": { "defenderAbility": ["Lightning Rod", "Storm Drain"] },
       "kind": "damage"
-    },
-    {
-      "name": "Photon Geyser's physical side",
-      "owner": "plan 06 · R24 to R26",
-      "reason": "Photon Geyser is physical when its user's Attack is higher than its Sp. Atk, and ignores abilities; the data gives it no effect, so the engine runs it as a plain special move and counts it fully run.",
-      "when": { "move": "Photon Geyser" },
-      "kind": "damage"
     }
   ]
 }
