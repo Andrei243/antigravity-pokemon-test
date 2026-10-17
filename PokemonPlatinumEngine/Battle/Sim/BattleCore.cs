@@ -75,6 +75,12 @@ public sealed class CoreSetup
     /// (<see cref="SwitchOfferRequest"/>). Off unless given, which is Set: nothing is asked.
     /// </summary>
     public bool OffersSwitch { get; init; }
+
+    /// <summary>
+    /// The player has a Key Stone (plan 06 · R20): under rules with <see cref="Ruleset.MegaEvolution"/> one of their
+    /// own Pokémon may Mega Evolve once in the battle. A trainer has theirs as <see cref="Trainer.KeyStone"/>.
+    /// </summary>
+    public bool KeyStone { get; init; }
 }
 
 /// <summary>
@@ -202,6 +208,7 @@ public sealed partial class BattleCore : IBattleContext
         FirstBattle = setup.FirstBattle;
         Frontier = setup.Frontier;
         OffersSwitch = setup.OffersSwitch;
+        KeyStone = setup.KeyStone;
         Field.Frontier = Frontier;
         NoBattleItems = setup.NoBattleItems;
         Field.Inverse = Conditions.Inverse;
@@ -285,6 +292,9 @@ public sealed partial class BattleCore : IBattleContext
                     throw new ArgumentException($"One choice is wanted for each of: {string.Join(", ", asked.Places)}");
                 foreach (var choice in choices)
                     if (WhyNot(choice) is { } refusal) throw new ArgumentException(refusal);
+                // One Mega Evolution a trainer (plan 06 · R20): two in one answer are refused
+                if (choices.Where(c => c.Mega).GroupBy(c => MegaKey(At(c.Who))).Any(g => g.Count() > 1))
+                    throw new ArgumentException(Text.Of("battle.megaOnlyOnce"));
                 break;
             case ReplacementRequest replacement:
                 if (choices.Count != 1 || choices[0].Kind != ChoiceKind.Switch || choices[0].Who != replacement.Place || !CanSendIn(At(replacement.Place), choices[0].SwitchTo))
@@ -446,13 +456,21 @@ public sealed partial class BattleCore : IBattleContext
             var choices = new List<BattleChoice>();
             var free = InTurnOrderOfPlaces().Where(b => b.IsActive && !b.IsHeldToItsMove).ToList();
             var asked = free.Where(b => ControllerOf(b) == null).Select(b => b.Place).ToList();
+            megaChosen.Clear();
             if (asked.Count > 0)
             {
                 yield return new ActionRequest(asked);
                 choices.AddRange(answer);
+                ChooseMegas(answer);
             }
             foreach (var b in free.Where(b => ControllerOf(b) != null))
-                choices.Add(ControllerOf(b)!.ChooseAction(this, b));
+            {
+                var chosen = ControllerOf(b)!.ChooseAction(this, b);
+                // A chooser inside may only Mega Evolve where the rules let it (plan 06 · R20)
+                if (chosen.Mega && !CanMegaEvolve(b)) chosen = chosen with { Mega = false };
+                ChooseMegas(new[] { chosen });
+                choices.Add(chosen);
+            }
             // The Great Marsh's Pokémon and Pal Park's have no moves to choose: they watch, or run
             if (Kind is BattleKind.Safari or BattleKind.PalPark) choices.RemoveAll(c => c.Who.Side == BattleSide.Enemy);
             foreach (var b in InTurnOrderOfPlaces().Where(b => b.IsActive && b.IsHeldToItsMove))
@@ -551,9 +569,22 @@ public sealed partial class BattleCore : IBattleContext
         // Beak Blast heats its beak and Shell Trap is set before anyone moves (plan 06 · R25; Showdown's priorityChargeCallback)
         GetReady();
 
+        bool megasDone = false;
         while (waiting.Count > 0)
         {
             var act = waiting[0];
+            // The turn's Mega Evolutions come once its switches and items are done, before its first move (plan 06 ·
+            // R20); the moves still to come are then put in order again by the Speeds they gave
+            if (!megasDone && act.Choice.Kind is not (ChoiceKind.Item or ChoiceKind.Switch or ChoiceKind.Run))
+            {
+                megasDone = true;
+                if (MegaEvolutions(waiting))
+                {
+                    if (Result != BattleResult.None) yield break;
+                    waiting = Order(waiting);
+                    continue;
+                }
+            }
             waiting.RemoveAt(0);
             if (Result != BattleResult.None) yield break;
             speedOrder = BySpeed();
@@ -1037,6 +1068,8 @@ public sealed partial class BattleCore : IBattleContext
         foreach (var b in AllBattlers.Where(b => b.Pokemon != null)) Revert(b);
         // And the shapes that last the battle out are given back (plan 06 · R19b: Disguise, Ice Face, Zero to Hero)
         GiveBackLastingShapes();
+        // And so are the Mega and primal forms (plan 06 · R20)
+        GiveBackMegas();
         foreach (var (pokemon, item) in knockedOff) pokemon.HeldItem ??= item;
         knockedOff.Clear();
         if (result == BattleResult.PlayerVictory && !Frontier) PickUp();

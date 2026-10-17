@@ -310,3 +310,11 @@ public sealed record CameInWith(Place Place, StatusCondition Status) : BattleEve
 /// move is let go next turn. The rules change nothing by it.
 /// </summary>
 public sealed record Charging(Place Place, string Move) : BattleEvent;
+
+/// <summary>
+/// A Pokémon Mega Evolves, or reverts to its primal form (plan 06 · R20): it rides on the line that says so, and from
+/// that line on the Pokémon in the place is in <paramref name="Form"/>, with that form's stats, ability and types.
+/// Whoever shows the battle takes the new form from it (plan 25 · Y14 gives it a look of its own); the rules change
+/// nothing more by it.
+/// </summary>
+public sealed record MegaEvolved(Place Place, string Form, bool Primal) : BattleEvent;

@@ -64,7 +64,7 @@ public sealed partial class BattleCore
         ["RemoveHeldItem"] = new()
         {
             // Knock Off: by the modern rules, half as strong again against an item it can knock off
-            Power = (b, use, t) => b.Rules.KnockOffStrongerOnItem && CanKnockOff(t) ? 15 : 10,
+            Power = (b, use, t) => b.Rules.KnockOffStrongerOnItem && b.CanKnockOff(t) ? 15 : 10,
             Hit = (b, use, hit) => b.KnockOff(use, hit)
         },
         ["SwitchHeldItems"] = new() { Does = (b, use) => b.OnEach(use, t => b.Trick(use, t)) },
@@ -334,9 +334,9 @@ public sealed partial class BattleCore
     private bool CanTake(Battler t) =>
         t.Pokemon?.HeldItem is { } item && !knockedOff.ContainsKey(t.Pokemon) && item.Pocket != ItemPocket.Mail;
 
-    /// <summary>An item Knock Off can knock off: anything held but Arceus's plate and Giratina's orb.</summary>
-    private static bool CanKnockOff(Battler t) =>
-        t.Pokemon?.HeldItem is { } item && t.Pokemon.AbilityName != "Multitype" && item.Name != "Griseous Orb";
+    /// <summary>An item Knock Off can knock off: anything held but Arceus's plate and Giratina's orb, and a Mega Stone or an orb in its own species' hands (plan 06 · R20).</summary>
+    private bool CanKnockOff(Battler t) =>
+        t.Pokemon?.HeldItem is { } item && t.Pokemon.AbilityName != "Multitype" && item.Name != "Griseous Orb" && !ClingsTo(item, t.Pokemon);
 
     /// <summary>Sticky Hold keeps the target's item against a move, unless the user's ability breaks through, and says so.</summary>
     private bool KeptByStickyHold(Battler user, Battler t, Move move)
@@ -362,6 +362,7 @@ public sealed partial class BattleCore
         var q = t.Pokemon!;
         if (!user.IsPlayerSide && !Rules.FoesCanTakeItems && !Frontier) return;
         if (knockedOff.ContainsKey(p) || p.AbilityName == "Multitype" || q.AbilityName == "Multitype" || q.HeldItem?.Name == "Griseous Orb") return;
+        if (ClingsTo(q.HeldItem, q) || ClingsTo(q.HeldItem, p)) return;
         if (KeptByStickyHold(user, t, use.Move)) return;
         if (p.HeldItem != null || !CanTake(t)) return;
 
@@ -404,6 +405,7 @@ public sealed partial class BattleCore
         var q = t.Pokemon!;
         if (t.HasSubstitute || t.Volatile.ItemWentOff) return Fails();
         if (p.AbilityName == "Multitype" || q.AbilityName == "Multitype" || p.HeldItem?.Name == "Griseous Orb" || q.HeldItem?.Name == "Griseous Orb") return Fails();
+        if (ClingsTo(p.HeldItem, p) || ClingsTo(q.HeldItem, q) || ClingsTo(p.HeldItem, q) || ClingsTo(q.HeldItem, p)) return Fails();
         if (!user.IsPlayerSide && !Rules.FoesCanTakeItems && !Frontier) return Fails();
         if (knockedOff.ContainsKey(p) || knockedOff.ContainsKey(q)) return Fails();
         if (p.HeldItem == null && q.HeldItem == null) return Fails();
@@ -442,7 +444,7 @@ public sealed partial class BattleCore
     {
         var user = use.User;
         var p = user.Pokemon!;
-        if (p.AbilityName == "Multitype" || p.HeldItem?.Name == "Griseous Orb") return Fails();
+        if (p.AbilityName == "Multitype" || p.HeldItem?.Name == "Griseous Orb" || ClingsTo(p.HeldItem, p)) return Fails();
         var item = BattleEffects.ItemInHand(user);
         if (item == null || item.FlingPower == 0) return Fails();
         use.Scratch = item;

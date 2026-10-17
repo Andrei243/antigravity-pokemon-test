@@ -41,7 +41,8 @@ internal sealed class BattleMirror
         PrizeMoney = trainer.PrizeMoney,
         DoubleBattle = trainer.DoubleBattle,
         Ai = trainer.Ai,
-        Items = new List<string>(trainer.Items)
+        Items = new List<string>(trainer.Items),
+        KeyStone = trainer.KeyStone
     };
 
     /// <summary>The game's own Pokémon that one of the rules' copies stands for.</summary>

@@ -26,6 +26,12 @@ public class Trainer
     public List<string> Items { get; set; } = new();
 
     /// <summary>
+    /// The trainer has a Key Stone and may Mega Evolve one Pokémon a battle (plan 06 · R20), under rules that have
+    /// it. None of Platinum's trainers has one; the region that hands Mega Evolution over gives its trainers theirs.
+    /// </summary>
+    public bool KeyStone { get; set; }
+
+    /// <summary>
     /// The team, prize money and mind were taken from Platinum's data (<c>trainers.json</c>), because the map wrote
     /// only the trainer's id: a map written back out leaves them to the data again (<c>MapFile.FromMap</c>).
     /// </summary>

@@ -221,7 +221,9 @@ public partial class BattleEngine
             SpecialBalls = setup.SpecialBalls,
             Frontier = setup.Frontier,
             NoBattleItems = setup.NoBattleItems,
-            OffersSwitch = setup.OffersSwitch
+            OffersSwitch = setup.OffersSwitch,
+            // A Key Stone in the bag lets one of the player's Pokémon Mega Evolve (plan 06 · R20)
+            KeyStone = setup.Inventory.AllItems.Any(s => s.Name == BattleCore.KeyStoneItem)
         });
 
         Anim.Slots = core.PlayerSlots.Count;
@@ -668,6 +670,32 @@ public partial class BattleEngine
                     shown.Form = theirs.Form;
                     shown.Nickname = theirs.Nickname;
                 }
+                break;
+            }
+            case MegaEvolved mega:
+            {
+                // A Mega Evolution or a Primal Reversion (plan 06 · R20): the screen's Pokémon takes the form as the line
+                // appears, and plays Transform's cue on itself until plan 25 · Y14 gives the change a look of its own
+                if (core.At(mega.Place).Pokemon is { } megaTheirs && At(mega.Place).Pokemon is { } megaShown)
+                {
+                    megaShown.Species = megaTheirs.Species;
+                    megaShown.Form = megaTheirs.Form;
+                    megaShown.AbilityName = megaTheirs.AbilityName;
+                    (megaShown.Attack, megaShown.Defense, megaShown.SpAttack, megaShown.SpDefense, megaShown.Speed) =
+                        (megaTheirs.Attack, megaTheirs.Defense, megaTheirs.SpAttack, megaTheirs.SpDefense, megaTheirs.Speed);
+                }
+                if (Scene)
+                    Anim.Cue(new EffectCue
+                    {
+                        Kind = CueKind.Move,
+                        Move = "Transform",
+                        Type = PokemonType.Normal,
+                        Category = MoveCategory.Status,
+                        FromSide = mega.Place.Side,
+                        FromSlot = mega.Place.Slot,
+                        ToSide = mega.Place.Side,
+                        ToSlot = mega.Place.Slot
+                    });
                 break;
             }
             case AbilityShown ability:

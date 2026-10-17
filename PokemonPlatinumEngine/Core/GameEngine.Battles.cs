@@ -412,6 +412,9 @@ public partial class GameEngine
     /// <summary>The shapes a Pokémon may take in the battle itself (plan 06 · R7): Castform's weather, Cherrim's sun, Arceus's plate. Their models are asked for with its own.</summary>
     private static IEnumerable<string> BattleShapesOf(Pokemon p)
     {
+        // A Mega or primal form it may take (plan 06 · R20), only where the rules of the game have them
+        if (Ruleset.Current.MegaEvolution && (PokemonPlatinumEngine.Battle.Sim.BattleCore.MegaFormOf(p) ?? PokemonPlatinumEngine.Battle.Sim.BattleCore.PrimalFormOf(p)) is { } mega)
+            return new[] { mega };
         switch (p.Species.Name)
         {
             case "Castform" when p.AbilityName == "Forecast":

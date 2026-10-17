@@ -22,7 +22,18 @@ public sealed class TrainerAi : IBattleController
 {
     public static TrainerAi Instance { get; } = new();
 
-    public BattleChoice ChooseAction(BattleCore battle, Battler mine)
+    public BattleChoice ChooseAction(BattleCore battle, Battler mine) => WithTheLaterMechanics(battle, mine, Choose(battle, mine));
+
+    /// <summary>
+    /// The later mechanics laid over the move chosen (plan 06 · R20, the pattern R21 to R23 follow): a trainer who
+    /// can Mega Evolve the Pokémon does so with the move, whenever it can, as Pokémon Showdown's random player does
+    /// with its <c>mega</c> option at 1 (<c>sim/tools/random-player-ai.ts</c>). Nothing is drawn for it, so what the
+    /// AI chose and every roll it made are what they were; under Platinum's rules, or with no Key Stone, nothing changes.
+    /// </summary>
+    private static BattleChoice WithTheLaterMechanics(BattleCore battle, Battler mine, BattleChoice choice) =>
+        choice.Kind == ChoiceKind.Fight && choice.Move != BattleChoice.HeldMove && battle.CanMegaEvolve(mine) ? choice with { Mega = true } : choice;
+
+    private static BattleChoice Choose(BattleCore battle, Battler mine)
     {
         var memory = battle.AiMemory;
         memory.CatchUp(battle);

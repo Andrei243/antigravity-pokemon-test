@@ -772,7 +772,10 @@
     "Lycanium Z": "Cristal Z Lycanroc",
     "Kommonium Z": "Cristal Z Kommo-o",
     "Running Shoes": "Pantofii de Alergare",
-    "Distortion Orb": "Globul Distorsiunii"
+    "Distortion Orb": "Globul Distorsiunii",
+    "Key Stone": "Piatra-Cheie",
+    "Red Orb": "Globul Roșu",
+    "Blue Orb": "Globul Albastru"
   },
   "descriptions": {
     "items": {
@@ -1548,7 +1551,10 @@
       "Lycanium Z": "Ținut de Lycanroc, îi transformă o anumită mișcare într-o mișcare Z unică.",
       "Kommonium Z": "Ținut de Kommo-o, îi transformă o anumită mișcare într-o mișcare Z unică.",
       "Running Shoes": "Pantofi de alergare: ține apăsat butonul de alergat ca să mergi repede.",
-      "Distortion Orb": "Un glob întunecat care pare să tragă spre el spațiul din jur."
+      "Distortion Orb": "Un glob întunecat care pare să tragă spre el spațiul din jur.",
+      "Key Stone": "O piatră care le permite Pokémonilor tăi să facă Megaevoluția în luptă.",
+      "Red Orb": "Ținut de Groudon, îl aduce la forma sa primordială când intră în luptă.",
+      "Blue Orb": "Ținut de Kyogre, îl aduce la forma sa primordială când intră în luptă."
     }
   }
 }

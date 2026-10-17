@@ -66,6 +66,9 @@ public sealed partial class BattleCore
     {
         var b = At(choice.Who);
         if (!b.IsActive) return Text.Of("battle.thereIsNoPokemon");
+        // A Mega Evolution goes with a move and where the rules let it (plan 06 · R20)
+        if (choice.Mega && (choice.Kind != ChoiceKind.Fight || choice.Move == BattleChoice.HeldMove)) return Text.Of("battle.cantMegaEvolve", ("pokemon", b.Name));
+        if (choice.Mega && WhyNotMega(b) is { } noMega) return noMega;
         switch (choice.Kind)
         {
             case ChoiceKind.Fight:

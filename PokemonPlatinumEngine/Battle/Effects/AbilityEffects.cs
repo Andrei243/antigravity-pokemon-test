@@ -569,6 +569,16 @@ internal sealed class WeatherBringer(BattleWeather weather, string rock, string 
     }
 }
 
+/// <summary>
+/// Desolate Land, Primordial Sea, Delta Stream (plan 06 · R20, with the primal forms and Mega Rayquaza that have them;
+/// Showdown's onStart): the strong weather comes in with the holder and lasts while one with the ability is on the
+/// field (<see cref="IBattleContext.SetStrongWeather"/>, plan 06 · R19b).
+/// </summary>
+internal sealed class StrongWeatherBringer(BattleWeather weather) : BattleEffect
+{
+    public override void OnEntry(IBattleContext ctx, Battler self) => ctx.SetStrongWeather(self, weather);
+}
+
 /// <summary>Cloud Nine, Air Lock: while the holder is out the weather is there and does nothing.</summary>
 internal sealed class WeatherBlind : BattleEffect
 {

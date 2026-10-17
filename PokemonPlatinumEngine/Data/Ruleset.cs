@@ -214,6 +214,15 @@ public sealed class Ruleset
     /// </summary>
     public bool ModernDamageFormula { get; private init; }
 
+    /// <summary>
+    /// Mega Evolution and Primal Reversion (plan 06 · R20; Pokémon Showdown's <c>canMegaEvo</c>, <c>runMegaEvo</c> and
+    /// the orbs' <c>onSwitchIn</c>): a trainer with a Key Stone may Mega Evolve one Pokémon holding its own Mega Stone
+    /// (or a Rayquaza that knows Dragon Ascent) once a battle, before the turn's moves; Kyogre and Groudon holding
+    /// their orbs revert as they come in; a Mega Stone or an orb never leaves its own species' hands. Platinum has none
+    /// of it, and where it is handed over is each region's (Kalos's for the Key Stone).
+    /// </summary>
+    public bool MegaEvolution { get; private init; }
+
     /// <summary>The weather these rules make of one asked for: snow for hail where <see cref="SnowInPlaceOfHail"/> holds.</summary>
     public Battle.Sim.BattleWeather Sky(Battle.Sim.BattleWeather weather) =>
         SnowInPlaceOfHail && weather == Battle.Sim.BattleWeather.Hail ? Battle.Sim.BattleWeather.Snow : weather;
@@ -266,7 +275,8 @@ public sealed class Ruleset
         ModernInheritance = true,
         MasudaRerolls = 5,
         SnowInPlaceOfHail = true,
-        ModernDamageFormula = true
+        ModernDamageFormula = true,
+        MegaEvolution = true
     };
 
     public static Ruleset Of(RulesPreset preset) => preset == RulesPreset.Modern ? Modern : Platinum;

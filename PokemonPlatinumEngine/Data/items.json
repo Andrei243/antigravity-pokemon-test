@@ -7301,6 +7301,28 @@
     "cantBeTossed": true
   },
   {
+    "id": 1467,
+    "name": "Red Orb",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "Held by Groudon, it brings out its primal form when it enters battle."
+  },
+  {
+    "id": 1468,
+    "name": "Blue Orb",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "Held by Kyogre, it brings out its primal form when it enters battle."
+  },
+  {
     "id": 1563,
     "name": "Douse Drive",
     "pocket": "Items",
@@ -8631,6 +8653,17 @@
       "species": "Beedrill",
       "form": "Beedrill-Mega"
     }
+  },
+  {
+    "id": 1814,
+    "name": "Key Stone",
+    "pocket": "KeyItems",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "Allows the player's Pokémon to Mega Evolve."
   },
   {
     "id": 1817,

@@ -315,6 +315,7 @@ public sealed partial class BattleCore
         var q = t.Pokemon!;
         if (q.HeldItem != null || p.HeldItem is not { } item || knockedOff.ContainsKey(p) || knockedOff.ContainsKey(q)) return Fails();
         if (item.Pocket == ItemPocket.Mail || p.AbilityName == "Multitype" || q.AbilityName == "Multitype" || item.Name == "Griseous Orb") return Fails();
+        if (ClingsTo(item, p) || ClingsTo(item, q)) return Fails();
         p.HeldItem = null;
         q.HeldItem = item;
         Say(Text.Of("battle.receivedFrom", ("target", t.Name), ("item", ItemOf(t)), ("user", user.Name)));
