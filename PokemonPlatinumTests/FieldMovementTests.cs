@@ -149,12 +149,14 @@ public class FieldMovementTests
     }
 
     [Fact]
-    public void NoLedgeIsHoppedNorthward()
+    public void OnlyPlatinumsOwnJumpNorthIsHoppedNorthward()
     {
         Assert.Equal(Direction.Down, FieldMovement.LedgeDirection(TileBehavior.LedgeSouth));
         Assert.Equal(Direction.Left, FieldMovement.LedgeDirection(TileBehavior.LedgeWest));
         Assert.Equal(Direction.Right, FieldMovement.LedgeDirection(TileBehavior.LedgeEast));
-        foreach (var behaviour in Enum.GetValues<TileBehavior>())
+        // No map of Sinnoh has one; the GBA's maps do (plan 18 · W6)
+        Assert.Equal(Direction.Up, FieldMovement.LedgeDirection(TileBehavior.LedgeNorth));
+        foreach (var behaviour in Enum.GetValues<TileBehavior>().Where(b => b != TileBehavior.LedgeNorth))
             Assert.NotEqual(Direction.Up, FieldMovement.LedgeDirection(behaviour));
     }
 

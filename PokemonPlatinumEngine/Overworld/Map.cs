@@ -210,10 +210,25 @@ public class Map
         if (!areas.Contains(area)) areas.Add(area);
     }
 
+    /// <summary>
+    /// Says which area one tile belongs to, where it isn't its chunk's (plan 18 · W6: a Game Boy Advance map is not
+    /// cut to the chunks' grid). A map none of whose chunks says so (Sinnoh's) keeps no grid of tiles at all.
+    /// </summary>
+    public void SetTileArea(int x, int y, MapArea area)
+    {
+        if (!InBounds(x, y)) return;
+        tileAreas ??= new MapArea?[Width * Height];
+        tileAreas[y * Width + x] = area;
+        if (!areas.Contains(area)) areas.Add(area);
+    }
+
+    private MapArea?[]? tileAreas;
+
     /// <summary>The area a tile lies in; null on a small map, which is one place.</summary>
     public MapArea? AreaAt(int x, int y)
     {
         if (areaGrid == null || !InBounds(x, y)) return null;
+        if (tileAreas != null && tileAreas[y * Width + x] is { } own) return own;
         return areaGrid[y / ChunkTiles * ChunkColumns + x / ChunkTiles];
     }
 
@@ -231,8 +246,23 @@ public class Map
                 x0 = Math.Min(x0, cx); x1 = Math.Max(x1, cx);
                 y0 = Math.Min(y0, cy); y1 = Math.Max(y1, cy);
             }
+        if (x1 >= 0)
+        {
+            x0 *= ChunkTiles; y0 *= ChunkTiles;
+            x1 = (x1 + 1) * ChunkTiles - 1;
+            y1 = (y1 + 1) * ChunkTiles - 1;
+        }
+        // The tiles of an area that lies on other areas' chunks (a Game Boy Advance map's edge)
+        if (tileAreas != null)
+            for (int i = 0; i < tileAreas.Length; i++)
+            {
+                if (tileAreas[i] != area) continue;
+                int x = i % Width, y = i / Width;
+                x0 = Math.Min(x0, x); x1 = Math.Max(x1, x);
+                y0 = Math.Min(y0, y); y1 = Math.Max(y1, y);
+            }
         if (x1 < 0) return null;
-        return (x0 * ChunkTiles, y0 * ChunkTiles, (x1 - x0 + 1) * ChunkTiles, (y1 - y0 + 1) * ChunkTiles);
+        return (x0, y0, x1 - x0 + 1, y1 - y0 + 1);
     }
 
     /// <summary>The name of the place a tile is in: its area's, or the map's own.</summary>
@@ -740,6 +770,7 @@ public class Map
         internal TileBehavior[]? Behaviours;
         internal float[]? Heights, SlopesX, SlopesZ, Decks;
         internal MapArea?[] AreaCells = Array.Empty<MapArea?>();
+        internal MapArea?[]? TileAreas;
         internal List<Warp> Warps = new();
         internal List<Prop> Props = new();
         internal List<NPC> People = new();
@@ -772,6 +803,7 @@ public class Map
         place.SlopesX = slopesX != null ? Copy(slopesX) : null;
         place.SlopesZ = slopesZ != null ? Copy(slopesZ) : null;
         place.Decks = decks != null ? Copy(decks) : null;
+        place.TileAreas = tileAreas != null ? Copy(tileAreas) : null;
         place.AreaCells = new MapArea?[chunksWide * chunksHigh];
         for (int cy = 0; cy < chunksHigh; cy++)
             for (int cx = 0; cx < chunksWide; cx++)
@@ -826,6 +858,9 @@ public class Map
             for (int cy = 0; cy < rows; cy++)
                 for (int cx = 0; cx < columns; cx++)
                     areaGrid[(place.Y / ChunkTiles + cy) * ChunkColumns + place.X / ChunkTiles + cx] = null;
+        if (tileAreas != null)
+            for (int y = place.Y; y < place.Y + place.Height; y++)
+                for (int x = place.X; x < place.X + place.Width; x++) tileAreas[y * Width + x] = null;
         Warps.RemoveAll(place.Warps.Contains);
         Props.RemoveAll(place.Props.Contains);
         NPCs.RemoveAll(place.People.Contains);
@@ -856,6 +891,7 @@ public class Map
             for (int cy = 0; cy < rows; cy++)
                 for (int cx = 0; cx < columns; cx++)
                     areaGrid[(place.Y / ChunkTiles + cy) * ChunkColumns + place.X / ChunkTiles + cx] = place.AreaCells[cy * columns + cx];
+        if (place.TileAreas != null && tileAreas != null) Put(place.TileAreas, tileAreas);
         Warps.AddRange(place.Warps);
         Props.AddRange(place.Props);
         // Whoever the flags hide goes back among the absent at the next presence check

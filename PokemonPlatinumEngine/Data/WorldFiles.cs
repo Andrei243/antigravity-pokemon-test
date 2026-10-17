@@ -109,6 +109,31 @@ public sealed class WorldChunkFile
 
     public List<ChunkProp> Props { get; set; } = new();
 
+    /// <summary>
+    /// The area of each tile, where a chunk holds more than one (plan 18 · W6: a Game Boy Advance map is not cut to
+    /// the chunks' grid): one character a tile from <see cref="AreaCodes"/>, an index into the matrix's
+    /// <see cref="WorldMatrixFile.AreaKeys"/>, and <see cref="NoArea"/> where the tile is the cell's own area. Left
+    /// out, as on every chunk of Sinnoh, when the whole chunk is its cell's area.
+    /// </summary>
+    public List<string>? Areas { get; set; }
+
+    /// <summary>The characters of <see cref="Areas"/>, the first for the matrix's first area: 89 areas at most.</summary>
+    public const string AreaCodes = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&()*+,./:;<=>?@[]^_{|}~";
+
+    public const char NoArea = '-';
+
+    public static char AreaCode(int index) => index >= 0 && index < AreaCodes.Length
+        ? AreaCodes[index]
+        : throw new ArgumentOutOfRangeException(nameof(index), $"A chunk can name {AreaCodes.Length} areas, not {index + 1}.");
+
+    /// <summary>The index into the matrix's areas of a tile's own area, or null where it is the cell's.</summary>
+    public int? AreaIndexAt(int x, int z)
+    {
+        if (Areas == null || Areas[z][x] == NoArea) return null;
+        int i = AreaCodes.IndexOf(Areas[z][x], StringComparison.Ordinal);
+        return i >= 0 ? i : throw new InvalidDataException($"Chunk {Id}: areas row {z} has '{Areas[z][x]}' at tile {x}.");
+    }
+
     public TileBehavior BehaviourAt(int x, int z) =>
         (TileBehavior)byte.Parse(Behaviours[z].AsSpan(x * 2, 2), NumberStyles.HexNumber, CultureInfo.InvariantCulture);
 
@@ -144,6 +169,12 @@ public sealed class WorldChunkFile
         Rows(Behaviours, "behaviours", Tiles * 2);
         Rows(Solid, "solid", Tiles);
         Rows(Cover, "cover", Tiles);
+        if (Areas != null)
+        {
+            Rows(Areas, "areas", Tiles);
+            for (int z = 0; z < Tiles; z++)
+                for (int x = 0; x < Tiles; x++) AreaIndexAt(x, z);
+        }
         for (int z = 0; z < Tiles; z++)
             for (int x = 0; x < Tiles; x++)
             {
