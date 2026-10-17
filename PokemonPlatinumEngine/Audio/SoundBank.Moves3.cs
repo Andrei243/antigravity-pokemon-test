@@ -316,6 +316,6 @@ public static partial class SoundBank
                 d.Tone(0.58f, 0.22f, Wave.Pulse, N(66), N(64), 0.16f, 0.03f, 1.4f, duty: 0.3f, vibratoHz: 12f, vibratoDepth: 0.04f);
                 return Finish(d.S, 0.36f);
         }
-        return null;
+        return MakeMoveSoundY8(name);
     }
 }

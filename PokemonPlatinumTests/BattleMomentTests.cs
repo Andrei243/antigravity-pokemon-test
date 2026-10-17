@@ -544,7 +544,8 @@ public class BattleMomentTests
         Assert.True(cue.Arriving);
         Assert.Equal("Future Sight", cue.Move);
         Assert.Equal((BattleSide.Player, BattleSide.Enemy), (cue.FromSide, cue.ToSide));
-        Assert.Contains("move_psychic", heard);
+        // Future Sight has a sound of its own since plan 25 · Y8a (its type's was heard before)
+        Assert.Contains("use_future_sight", heard);
 
         // The camera goes to the target at once: nobody need stand where it was sent from
         var (_, kind, followed) = BattleCamera.Direct(battle.Anim, new FxPlaces());
