@@ -20,6 +20,7 @@ public sealed partial class BattleCore
         foreach (var (name, effect) in FamilyEffects) MoveEffects[name] = effect;
         foreach (var (name, effect) in UniqueEffects) MoveEffects[name] = effect;
         foreach (var (name, effect) in LaterEffects1) MoveEffects[name] = effect;
+        foreach (var (name, effect) in LaterEffects2) MoveEffects[name] = effect;
     }
 
     private static readonly Elsewhere[] Underground = { Elsewhere.Underground };

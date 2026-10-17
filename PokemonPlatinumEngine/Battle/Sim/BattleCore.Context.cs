@@ -246,6 +246,8 @@ public sealed partial class BattleCore
     public void ConsumeItem(Battler holder)
     {
         if (holder.Pokemon?.HeldItem is not { } item) return;
+        // A berry eaten lets Belch be used, for the rest of the battle (plan 06 · R25; Showdown's ateBerry)
+        if (item.Pocket == ItemPocket.Berries) ateBerry.Add(holder.Pokemon);
         holder.Volatile.ConsumedItem = item;
         holder.Pokemon.HeldItem = null;
     }

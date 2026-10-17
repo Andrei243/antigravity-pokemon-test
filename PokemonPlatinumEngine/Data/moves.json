@@ -10598,7 +10598,6 @@
     "target": "UserSide",
     "flags": "Snatch",
     "effect": "WideGuard",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Defense"
@@ -10657,7 +10656,6 @@
     "target": "Field",
     "flags": "Mirror",
     "effect": "WonderRoom",
-    "support": "None",
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -10746,7 +10744,6 @@
     "description": "Moves have 100% accuracy against the target for three turns.",
     "flags": "Protect, Reflectable, Mirror",
     "effect": "Telekinesis",
-    "support": "None",
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -10767,7 +10764,6 @@
     "target": "Field",
     "flags": "Mirror",
     "effect": "MagicRoom",
-    "support": "None",
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -11067,7 +11063,6 @@
     "maxPP": 15,
     "description": "Makes the target act next this turn.",
     "effect": "AfterYou",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Speed"
@@ -11087,7 +11082,6 @@
     "description": "Has double power if it's used more than once per turn.",
     "flags": "Sound, Protect, Mirror",
     "effect": "Round",
-    "support": "Partial",
     "zPower": 120,
     "maxPower": 110
   },
@@ -11165,7 +11159,6 @@
     "target": "UserSide",
     "flags": "Snatch",
     "effect": "QuickGuard",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Defense"
@@ -11336,7 +11329,6 @@
     "description": "Makes the target act last this turn.",
     "flags": "Protect, Mirror",
     "effect": "Quash",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Speed"
@@ -12153,7 +12145,6 @@
     "description": "Deals both Fighting and Flying-type damage.",
     "flags": "Contact, Protect, Mirror",
     "effect": "FlyingPress",
-    "support": "Partial",
     "zPower": 170,
     "maxPower": 90
   },
@@ -12170,7 +12161,6 @@
     "target": "UserSide",
     "flags": "Snatch",
     "effect": "MatBlock",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Defense"
@@ -12190,7 +12180,6 @@
     "description": "Can only be used after the user has eaten a berry.",
     "flags": "Protect",
     "effect": "Belch",
-    "support": "Partial",
     "zPower": 190,
     "maxPower": 95
   },
@@ -12204,10 +12193,15 @@
     "accuracy": 0,
     "maxPP": 10,
     "description": "Raises the Attack and Special Attack of all Grass Pokémon in battle.",
+    "targetStatChange": "Attack",
+    "statStageAmount": 1,
+    "statChangeChancePercent": 100,
+    "alsoChangesStats": [
+      "SpAttack"
+    ],
     "target": "AllPokemon",
     "effect": "Rototiller",
     "effectChance": 100,
-    "support": "None",
     "zBonus": {
       "stats": [
         "Attack"
@@ -12247,7 +12241,6 @@
     "description": "Raises the user's Attack by two stages if it KOs the target.",
     "flags": "Contact, Protect, Mirror",
     "effect": "FellStinger",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 100
   },
@@ -12278,7 +12271,6 @@
     "description": "Adds Ghost to the target's types.",
     "flags": "Protect, Reflectable, Mirror",
     "effect": "TrickOrTreat",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Attack",
@@ -12327,7 +12319,6 @@
     "description": "Changes all Normal moves to Electric moves for the rest of the turn.",
     "target": "Field",
     "effect": "IonDeluge",
-    "support": "None",
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -12363,7 +12354,6 @@
     "description": "Adds Grass to the target's types.",
     "flags": "Protect, Reflectable, Mirror",
     "effect": "ForestsCurse",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Attack",
@@ -12405,7 +12395,6 @@
     "flags": "Protect, Mirror",
     "effect": "FreezeDry",
     "effectChance": 10,
-    "support": "Partial",
     "zPower": 140,
     "maxPower": 120
   },
@@ -12434,10 +12423,15 @@
     "accuracy": 100,
     "maxPP": 20,
     "description": "Lowers all targets' Attack and Special Attack by one stage. Makes the user switch out.",
+    "targetStatChange": "Attack",
+    "statStageAmount": -1,
+    "statChangeChancePercent": 100,
+    "alsoChangesStats": [
+      "SpAttack"
+    ],
     "flags": "Sound, Protect, Reflectable, Mirror",
     "effect": "PartingShot",
     "effectChance": 100,
-    "support": "None",
     "zBonus": {
       "effect": "HealReplacement"
     }
@@ -12454,7 +12448,6 @@
     "description": "Inverts the target's stat modifiers.",
     "flags": "Protect, Reflectable, Mirror",
     "effect": "TopsyTurvy",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Attack"
@@ -12490,7 +12483,6 @@
     "description": "Protects all friendly Pokémon from non-damaging moves.",
     "target": "UserSide",
     "effect": "CraftyShield",
-    "support": "None",
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -12508,10 +12500,12 @@
     "accuracy": 0,
     "maxPP": 10,
     "description": "Raises the Defense of all Grass Pokémon in battle.",
+    "targetStatChange": "Defense",
+    "statStageAmount": 1,
+    "statChangeChancePercent": 100,
     "target": "AllPokemon",
     "effect": "FlowerShield",
     "effectChance": 100,
-    "support": "None",
     "zBonus": {
       "stats": [
         "Defense"
@@ -12569,7 +12563,6 @@
     "description": "Changes the target's move's type to Electric if it hasn't moved yet this turn.",
     "flags": "Protect, Mirror",
     "effect": "Electrify",
-    "support": "None",
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -12653,7 +12646,6 @@
     "target": "Field",
     "flags": "Mirror",
     "effect": "FairyLock",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Defense"
@@ -12674,7 +12666,6 @@
     "description": "Blocks damaging attacks and lowers attacking Pokémon's Attack by two stages on contact. Switches Aegislash to Shield Forme.",
     "target": "User",
     "effect": "KingsShield",
-    "support": "None",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -12768,7 +12759,6 @@
     "description": "Ignores and destroys protection effects.",
     "flags": "Mirror",
     "effect": "HyperspaceHole",
-    "support": "Partial",
     "zPower": 160,
     "maxPower": 130
   },
@@ -12785,7 +12775,6 @@
     "description": "Hits 2–5 times.",
     "flags": "Protect, Mirror",
     "effect": "WaterShuriken",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 90
   },
@@ -12819,7 +12808,6 @@
     "description": "Blocks damaging attacks and damages attacking Pokémon for 1/8 their max HP.",
     "target": "User",
     "effect": "SpikyShield",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Defense"
@@ -12837,9 +12825,11 @@
     "accuracy": 0,
     "maxPP": 20,
     "description": "Raises a selected ally's Special Defense by one stage.",
+    "targetStatChange": "SpDefense",
+    "statStageAmount": 1,
+    "statChangeChancePercent": 100,
     "target": "Ally",
     "effect": "AromaticMist",
-    "support": "None",
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -12878,11 +12868,17 @@
     "accuracy": 100,
     "maxPP": 20,
     "description": "Lowers the target's Attack, Special Attack, and Speed by one stage if it is poisoned.",
+    "targetStatChange": "Attack",
+    "statStageAmount": -1,
+    "statChangeChancePercent": 100,
+    "alsoChangesStats": [
+      "SpAttack",
+      "Speed"
+    ],
     "target": "AllFoes",
     "flags": "Protect, Reflectable, Mirror",
     "effect": "VenomDrench",
     "effectChance": 100,
-    "support": "None",
     "zBonus": {
       "stats": [
         "Defense"
@@ -12903,7 +12899,6 @@
     "description": "Explodes if the target uses a Fire move this turn, damaging it for 1/4 its max HP and preventing the move.",
     "flags": "Powder, Protect, Reflectable, Mirror",
     "effect": "Powder",
-    "support": "None",
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -12921,9 +12916,16 @@
     "accuracy": 0,
     "maxPP": 10,
     "description": "Takes one turn to charge, then raises the user's Special Attack, Special Defense, and Speed by two stages.",
+    "targetStatChange": "SpAttack",
+    "statStageAmount": 2,
+    "statChangeTargetSelf": true,
+    "statChangeChancePercent": 100,
+    "alsoChangesStats": [
+      "SpDefense",
+      "Speed"
+    ],
     "target": "User",
     "effect": "Geomancy",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Attack",
@@ -12945,10 +12947,16 @@
     "accuracy": 0,
     "maxPP": 20,
     "description": "Raises the Defense and Special Defense of all friendly Pokémon with Plus or Minus by one stage.",
+    "targetStatChange": "Defense",
+    "statStageAmount": 1,
+    "statChangeTargetSelf": true,
+    "statChangeChancePercent": 100,
+    "alsoChangesStats": [
+      "SpDefense"
+    ],
     "target": "UserAndAllies",
     "flags": "Snatch",
     "effect": "MagneticFlux",
-    "support": "None",
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -12968,7 +12976,6 @@
     "description": "Doubles prize money.",
     "target": "UserSide",
     "effect": "HappyHour",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Attack",
@@ -13026,7 +13033,6 @@
     "description": "Does nothing.",
     "target": "User",
     "effect": "Celebrate",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Attack",
@@ -13050,7 +13056,6 @@
     "description": "Does nothing.",
     "target": "Ally",
     "effect": "HoldHands",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Attack",
@@ -13178,7 +13183,6 @@
     "flags": "Protect, Mirror",
     "effect": "ThousandArrows",
     "effectChance": 100,
-    "support": "Partial",
     "zPower": 180,
     "maxPower": 130
   },
@@ -13195,7 +13199,6 @@
     "target": "AllFoes",
     "flags": "Protect, Mirror",
     "effect": "ThousandWaves",
-    "support": "Partial",
     "zPower": 175,
     "maxPower": 130
   },
@@ -13297,7 +13300,6 @@
     "flags": "Mirror",
     "effect": "HyperspaceHole",
     "effectChance": 100,
-    "support": "Partial",
     "zPower": 180,
     "maxPower": 130
   },
@@ -13579,8 +13581,8 @@
     "description": "Heals the user for ½ its max HP, or ⅔ during a sandstorm.",
     "target": "User",
     "flags": "Snatch",
+    "healPercent": 50,
     "effect": "ShoreUp",
-    "support": "None",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -13598,7 +13600,6 @@
     "description": "Can only be used as the first move after the user enters battle.",
     "flags": "Contact, Protect, Mirror",
     "effect": "FirstImpression",
-    "support": "Partial",
     "zPower": 175,
     "maxPower": 130
   },
@@ -13615,7 +13616,6 @@
     "description": "Grants the user protection for the rest of the turn and poisons any Pokémon that tries to use a contact move on it.",
     "target": "User",
     "effect": "BanefulBunker",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Defense"
@@ -13635,7 +13635,6 @@
     "description": "Traps the target.",
     "flags": "Protect, Mirror",
     "effect": "SpiritShackle",
-    "support": "Partial",
     "zPower": 160,
     "maxPower": 130
   },
@@ -13667,7 +13666,6 @@
     "target": "AllOthers",
     "flags": "Sound, Protect, Mirror",
     "effect": "SparklingAria",
-    "support": "Partial",
     "zPower": 175,
     "maxPower": 130
   },
@@ -13700,8 +13698,8 @@
     "maxPP": 10,
     "description": "Heals the target for ½ its max HP, or ⅔ on Grassy Terrain.",
     "flags": "Protect, Reflectable",
+    "healPercent": 50,
     "effect": "FloralHealing",
-    "support": "None",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -13730,10 +13728,12 @@
     "accuracy": 100,
     "maxPP": 10,
     "description": "Heals the user by the target's current Attack stat and lowers the target's Attack by one stage.",
+    "targetStatChange": "Attack",
+    "statStageAmount": -1,
+    "statChangeChancePercent": 100,
     "flags": "Protect, Reflectable, Mirror",
     "effect": "StrengthSap",
     "effectChance": 100,
-    "support": "None",
     "zBonus": {
       "stats": [
         "Defense"
@@ -13783,7 +13783,6 @@
     "description": "Forces the target's opponents to aim at the target for the rest of the turn.",
     "flags": "Protect, Reflectable",
     "effect": "Spotlight",
-    "support": "None",
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -13827,7 +13826,6 @@
     "target": "User",
     "flags": "Snatch",
     "effect": "LaserFocus",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Attack"
@@ -13845,10 +13843,16 @@
     "accuracy": 0,
     "maxPP": 20,
     "description": "Raises the Attack and Special Attack of all friendly Pokémon with Plus or Minus by one stage.",
+    "targetStatChange": "Attack",
+    "statStageAmount": 1,
+    "statChangeTargetSelf": true,
+    "statChangeChancePercent": 100,
+    "alsoChangesStats": [
+      "SpAttack"
+    ],
     "target": "UserAndAllies",
     "flags": "Snatch",
     "effect": "GearUp",
-    "support": "None",
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -13869,7 +13873,6 @@
     "flags": "Contact, Protect, Mirror",
     "effect": "ThroatChop",
     "effectChance": 100,
-    "support": "Partial",
     "zPower": 160,
     "maxPower": 130
   },
@@ -13885,7 +13888,6 @@
     "description": "Damages opponents, but heals allies for 50% of their max HP.",
     "flags": "Ballistic, Protect, Mirror",
     "effect": "PollenPuff",
-    "support": "Partial",
     "zPower": 175,
     "maxPower": 130
   },
@@ -13901,7 +13903,6 @@
     "description": "Traps the target.",
     "flags": "Contact, Protect, Mirror",
     "effect": "SpiritShackle",
-    "support": "Partial",
     "zPower": 160,
     "maxPower": 130
   },
@@ -13985,7 +13986,6 @@
     "description": "Removes the user's Fire type after inflicting damage.",
     "flags": "Protect, Mirror",
     "effect": "BurnUp",
-    "support": "Partial",
     "zPower": 195,
     "maxPower": 140
   },
@@ -14001,7 +14001,6 @@
     "description": "Exchanges the user's Speed with the target's.",
     "flags": "Protect, Mirror",
     "effect": "SpeedSwap",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Speed"
@@ -14034,8 +14033,8 @@
     "maxPP": 20,
     "description": "Cures the target of a major status ailment and heals the user for 50% of its max HP.",
     "flags": "Protect, Reflectable",
+    "healPercent": 50,
     "effect": "Purify",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Attack",
@@ -14059,7 +14058,6 @@
     "description": "Has the same type as the user.",
     "flags": "Dance, Protect, Mirror",
     "effect": "RevelationDance",
-    "support": "Partial",
     "zPower": 175,
     "maxPower": 130
   },
@@ -14076,7 +14074,6 @@
     "target": "AllFoes",
     "flags": "Protect, Mirror",
     "effect": "CoreEnforcer",
-    "support": "Partial",
     "zPower": 140,
     "maxPower": 130
   },
@@ -14109,7 +14106,6 @@
     "description": "Forces the target to repeat its last used move.",
     "flags": "Protect",
     "effect": "Instruct",
-    "support": "None",
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -14130,7 +14126,6 @@
     "description": "Inflicts a burn on any Pokémon that makes contact before the attack.",
     "flags": "Ballistic, Protect",
     "effect": "BeakBlast",
-    "support": "Partial",
     "zPower": 180,
     "maxPower": 130
   },
@@ -14342,7 +14337,6 @@
     "target": "AllFoes",
     "flags": "Protect",
     "effect": "ShellTrap",
-    "support": "Partial",
     "zPower": 200,
     "maxPower": 150
   },
@@ -14391,7 +14385,6 @@
     "description": "Has double power if the user's last move failed.",
     "flags": "Contact, Protect, Mirror",
     "effect": "StompingTantrum",
-    "support": "Partial",
     "zPower": 140,
     "maxPower": 130
   },
@@ -14471,7 +14464,6 @@
     "description": "Steals the target's stat increases, then inflicts damage.",
     "flags": "Contact, Protect, Mirror",
     "effect": "SpectralThief",
-    "support": "Partial",
     "zPower": 175,
     "maxPower": 130
   },
@@ -14601,7 +14593,6 @@
     "target": "AllOthers",
     "flags": "Protect, Mirror",
     "effect": "MindBlown",
-    "support": "Partial",
     "zPower": 200,
     "maxPower": 150
   },
@@ -14617,7 +14608,6 @@
     "description": "After inflicting damage, causes all Normal-type moves to become Electric-type for the remainder of the turn.",
     "flags": "Contact, Punch, Protect, Mirror",
     "effect": "PlasmaFists",
-    "support": "Partial",
     "zPower": 180,
     "maxPower": 130
   },
@@ -15775,7 +15765,6 @@
     "flags": "Protect, Mirror",
     "effect": "MindBlown",
     "effectChance": 100,
-    "support": "Partial",
     "zPower": 200,
     "maxPower": 140
   },

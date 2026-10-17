@@ -79,11 +79,16 @@ internal static class BattleFieldFx
         FieldCondition.GrassyTerrain => 2 * (2 + Blades),
         FieldCondition.MistyTerrain => 2 * (2 + Wisps + 2),
         FieldCondition.PsychicTerrain => 2 * (2 + 2 + Motes),
+        // Wonder Room's shields and Magic Room's motes, three on each platform (plan 06 · R25)
+        FieldCondition.WonderRoom or FieldCondition.MagicRoom => 2 * RoomPieces,
         _ => 0
     };
 
     /// <summary>The pieces of the later games' looks (plan 06 · R19b): Sticky Web's threads, and each terrain's on a platform.</summary>
     public const int WebSpokes = 8, WebRings = 2, Sparks = 6, Blades = 9, Wisps = 5, Motes = 4;
+
+    /// <summary>Wonder Room's shields and Magic Room's motes on a platform (plan 06 · R25).</summary>
+    public const int RoomPieces = 3;
 
     public static int Cap(PlaceCondition what) => what switch
     {
@@ -183,6 +188,8 @@ internal static class BattleFieldFx
         if (!view.Visible) return;
         if (what == FieldCondition.TrickRoom) Grid(view, time, fx);
         else if (what == FieldCondition.Gravity) SinkingDust(view, time, places, fx);
+        else if (what is FieldCondition.WonderRoom or FieldCondition.MagicRoom)
+            for (int s = 0; s < 2; s++) Room(what, PlatformOf((BattleSide)s, places), s, view, time, fx);
         else if (FieldState.IsTerrain(what))
             for (int s = 0; s < 2; s++) Terrain(what, PlatformOf((BattleSide)s, places), s, view, time, fx);
     }
@@ -510,6 +517,34 @@ internal static class BattleFieldFx
     }
 
     // ------------------------------------------------------------------ the later games' (plan 06 · R19b)
+
+    /// <summary>
+    /// Wonder Room and Magic Room (plan 06 · R25): three pieces over the rim on the flanks and the far side, clear of
+    /// the camera. Wonder Room's are hexagonal shields turning over, teal on one face and indigo on the other;
+    /// Magic Room's pink motes dimming and brightening. They rise into place as the room comes in.
+    /// </summary>
+    private static void Room(FieldCondition what, Platform p, int side, ConditionView view, float time, FxList fx)
+    {
+        float k = view.Strength, grow = Fx.EaseOut(view.Arrival);
+        if (grow <= 0f) return;
+        for (int i = 0; i < RoomPieces; i++)
+        {
+            float bob = 0.03f * MathF.Sin(time * 1.3f + i * 2.1f + side + view.Seed);
+            var at = p.At(p.Open((i + 0.5f) / RoomPieces), p.R * 1.06f, p.Top + p.R * (0.26f + 0.06f * i + bob) * grow);
+            if (what == FieldCondition.WonderRoom)
+            {
+                float turn = time * MathF.PI / 2f + i * 1.3f + view.Seed * 0.1f;
+                float face = MathF.Cos(turn);
+                var colour = face >= 0f ? Rgba(110, 230, 220, 230f * k) : Rgba(130, 120, 255, 230f * k);
+                fx.Sprite(FxShape.Hex, at, p.R * 0.09f * (0.35f + 0.65f * MathF.Abs(face)), colour, FxBlend.Alpha, turn * 0.5f, depth: true);
+            }
+            else
+            {
+                float pulse = 0.65f + 0.35f * MathF.Sin(time * 1.1f + i * 1.7f + side + view.Seed);
+                fx.Sprite(FxShape.Orb, at, p.R * 0.07f, Rgba(236, 140, 214, 230f * k * pulse), FxBlend.Alpha, time * 0.3f, depth: true);
+            }
+        }
+    }
 
     /// <summary>
     /// Aurora Veil: two curtains of the northern lights hanging over the rim on the flanks and the far side, green

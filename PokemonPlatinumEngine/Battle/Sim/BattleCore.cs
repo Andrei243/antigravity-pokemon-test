@@ -548,6 +548,8 @@ public sealed partial class BattleCore : IBattleContext
         // Whoever chose Focus Punch tightens its focus first (BattleControllerPlayer_CheckPreMoveActions)
         foreach (var act in waiting.Where(a => a.Choice.Kind == ChoiceKind.Fight && a.Move?.Data.Effect == "HitLastWhiffIfHit" && a.User.IsActive && a.User.Pokemon!.Status != StatusCondition.Sleep && !Loafs(a.User)))
             Say(Text.Of("battle.isTighteningItsFocus", ("user", act.User.Name)));
+        // Beak Blast heats its beak and Shell Trap is set before anyone moves (plan 06 · R25; Showdown's priorityChargeCallback)
+        GetReady();
 
         while (waiting.Count > 0)
         {

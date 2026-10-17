@@ -312,6 +312,7 @@ public sealed partial class BattleCore
                 if (RunsOut(ref v.MagnetRiseTurns)) Say(Text.Of("battle.magnetismWoreOff", ("pokemon", b.Name)));
                 if (RunsOut(ref v.HealBlockTurns)) Say(Text.Of("battle.canHealAgain", ("pokemon", b.Name)));
                 if (RunsOut(ref v.EmbargoTurns)) Say(Text.Of("battle.canUseItemsAgain", ("pokemon", b.Name)));
+                if (RunsOut(ref v.TelekinesisTurns)) Say(Text.Of("battle.wasFreedFromTheTelekinesis", ("pokemon", b.Name)));
 
                 // A yawn's sleep arrives
                 if (RunsOut(ref v.YawnTurns)) TryInflictStatus(b, StatusCondition.Sleep, null, false, By.Other);
@@ -382,6 +383,8 @@ public sealed partial class BattleCore
 
         if (Field.TrickRoomTurns > 0 && --Field.TrickRoomTurns == 0)
             Say(Text.Of("battle.theTwistedDimensionsReturned")).With(new FieldConditionChanged(FieldCondition.TrickRoom, Up: false));
+        // Wonder Room and Magic Room run down with Trick Room (plan 06 · R25; Showdown's residual order 27)
+        RoomsRunDown();
     }
 
     /// <summary>Damage worked out turns ago arrives (<c>subscript_future_sight_damage</c>): a Substitute takes it if there is one, and a Focus Sash or Band can hold against it.</summary>
