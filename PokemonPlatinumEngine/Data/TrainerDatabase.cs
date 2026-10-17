@@ -29,6 +29,10 @@ public sealed class TrainerRecord
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public bool DoubleBattle { get; set; }
 
+    /// <summary>The trainer has a Key Stone and Mega Evolves under rules that have it (plan 06 · R20); none of Platinum's does.</summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public bool KeyStone { get; set; }
+
     public int PrizeMoney { get; set; }
     public List<TrainerPokemonRecord> Party { get; set; } = new();
 
@@ -144,6 +148,7 @@ public static class TrainerDatabase
     {
         trainer.Ai = AiFlagNames.Parse(record.Ai);
         trainer.Items = record.Items.ToList();
+        trainer.KeyStone = record.KeyStone;
         var mine = trainer.Party.Members;
         bool same = mine.Count == 0 || (mine.Count == record.Party.Count &&
             mine.Zip(record.Party).All(pair => pair.First.Species.Name == pair.Second.Species && pair.First.Level == pair.Second.Level));

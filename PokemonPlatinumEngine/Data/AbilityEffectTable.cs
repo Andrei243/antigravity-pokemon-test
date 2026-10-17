@@ -119,6 +119,10 @@ public static class AbilityEffectTable
         Add("Drought", new WeatherBringer(BattleWeather.Sun, "Sun", "battle.turnedTheSunlightHarsh"));
         Add("Sand Stream", new WeatherBringer(BattleWeather.Sandstorm, "Sandstorm", "battle.whippedUpASandstorm"));
         Add("Snow Warning", new WeatherBringer(BattleWeather.Hail, "Hail", "battle.whippedUpAHailstorm"));
+        // The strong weathers of the primal forms and Mega Rayquaza (plan 06 · R20)
+        Add("Desolate Land", new StrongWeatherBringer(BattleWeather.HarshSun));
+        Add("Primordial Sea", new StrongWeatherBringer(BattleWeather.HeavyRain));
+        Add("Delta Stream", new StrongWeatherBringer(BattleWeather.StrongWinds));
         Add("Cloud Nine", new WeatherBlind());
         Add("Air Lock", new WeatherBlind());
         Add("Swift Swim", new WeatherSpeed(BattleWeather.Rain));

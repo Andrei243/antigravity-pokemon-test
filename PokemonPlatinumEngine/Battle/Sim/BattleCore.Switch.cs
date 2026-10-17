@@ -185,6 +185,8 @@ public sealed partial class BattleCore
         // In the Great Marsh and Pal Park nobody is sent out: no ability has anyone to act on
         if (Kind is BattleKind.Safari or BattleKind.PalPark) return;
         var order = BySpeed();
+        // Primal Reversion before anything acts on entry (plan 06 · R20)
+        PrimalReversions(order);
         foreach (var (flag, abilities) in EntryPhases)
         {
             foreach (var b in order)

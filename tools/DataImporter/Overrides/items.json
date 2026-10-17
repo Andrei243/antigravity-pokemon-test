@@ -21,5 +21,12 @@
     "canUseInBattle": false,
     "canUseInOverworld": true,
     "description": "A dark orb that seems to pull at the space around it."
+  },
+  // The orbs of Primal Reversion (plan 06 · R20): PokeAPI's words are a story's; ours say what they do when held
+  "Blue Orb": {
+    "description": "Held by Kyogre, it brings out its primal form when it enters battle."
+  },
+  "Red Orb": {
+    "description": "Held by Groudon, it brings out its primal form when it enters battle."
   }
 }

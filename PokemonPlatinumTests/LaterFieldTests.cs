@@ -91,8 +91,10 @@ public class LaterFieldTests
         var core = Wild(groudon, Mon("Kyogre", 50, "Water Gun", "Rain Dance"), bench: Mon("Snorlax", 50));
         var look = new FieldLook();
         int read = 0;
-        Assert.True(core.SetStrongWeather(core.At(Mine), BattleWeather.HarshSun));
-        Assert.Equal(new WeatherChanged(BattleWeather.HarshSun), Assert.Single(core.Log.OfType<Said>().Last().Shows.OfType<WeatherChanged>()));
+        // Desolate Land brings it as Groudon comes in (plan 06 · R20), on a line of its own; asked again it is there already
+        Assert.Equal(BattleWeather.HarshSun, core.Field.Weather);
+        Assert.Contains(core.Log.OfType<Said>().SelectMany(s => s.Shows), e => e is WeatherChanged { Weather: BattleWeather.HarshSun });
+        Assert.False(core.SetStrongWeather(core.At(Mine), BattleWeather.HarshSun));
         Assert.Equal(BattleWeather.Sun, core.Field.WeatherInEffect);
         Follows(core, look, ref read);
 
@@ -122,7 +124,8 @@ public class LaterFieldTests
     [Fact]
     public void TheStrongWindsTakeTheFlyingTypesWeaknessesAway()
     {
-        var core = Wild(With(Mon("Rayquaza", 50), ability: "Delta Stream"), Mon("Glalie", 50, "Ice Beam", "Rock Throw"));
+        // A holder with an ability that brings nothing, so the winds come only when they are asked for
+        var core = Wild(With(Mon("Rayquaza", 50), ability: "Pressure"), Mon("Glalie", 50, "Ice Beam", "Rock Throw"));
         var zapdos = core.At(Mine);
         var iceBeam = core.At(Foe).Pokemon!.Moves[0];
         Assert.Equal(4f, DamageCalculator.Effectiveness(core.At(Foe), zapdos, iceBeam));

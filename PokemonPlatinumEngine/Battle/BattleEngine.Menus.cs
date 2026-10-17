@@ -135,15 +135,41 @@ public partial class BattleEngine
     {
         choices.Clear();
         targetingMove = null;
+        MegaArmed = false;
         // Only the Pokémon the rules ask about: one in the middle of a move has nothing to choose
         asked = core.Request is ActionRequest request ? request.Places.Where(p => p.Side == BattleSide.Player).Select(p => p.Slot).ToList() : new List<int>();
         menuSlot = asked.Count > 0 ? asked[0] : 0;
         HUD.MenuState = BattleMenuState.Main;
     }
 
+    /// <summary>
+    /// The move menu's Mega Evolution is armed (plan 06 · R20): the move chosen next goes with it. Toggled with the
+    /// item button in the move menu (<see cref="ToggleMega"/>); plan 25 · Y14 draws the button.
+    /// </summary>
+    public bool MegaArmed { get; private set; }
+
+    /// <summary>The Pokémon whose moves are being chosen may Mega Evolve with its move: the rules let it, and no other of the player's has been chosen to this turn.</summary>
+    public bool CanMegaEvolveNow =>
+        core.Request is ActionRequest && !playingTheLog && MenuBattler.Pokemon != null && !choices.Values.Any(c => c.Mega) && core.CanMegaEvolve(InCore(MenuBattler));
+
+    /// <summary>Arms or disarms the Mega Evolution for the move to be chosen; false (and disarmed) where it can't be had.</summary>
+    public bool ToggleMega()
+    {
+        if (!CanMegaEvolveNow)
+        {
+            MegaArmed = false;
+            return false;
+        }
+        MegaArmed = !MegaArmed;
+        return true;
+    }
+
     /// <summary>Stores the choice for the Pokémon whose menu is open and moves on to the next one, or hands the turn to the rules.</summary>
     private void Commit(BattleChoice choice)
     {
+        // A move goes with the Mega Evolution armed for it (plan 06 · R20)
+        if (MegaArmed && choice.Kind == ChoiceKind.Fight && CanMegaEvolveNow) choice = choice with { Mega = true };
+        MegaArmed = false;
         choices[menuSlot] = choice;
 
         // Running is for the whole side: nobody else is asked
@@ -625,6 +651,12 @@ public partial class BattleEngine
                 {
                     AudioManager.PlaySound("cancel");
                     HUD.MenuState = BattleMenuState.Main;
+                    return;
+                }
+                // The item button arms the Mega Evolution for the move (plan 06 · R20)
+                if (InputManager.IsActionPressed(GameAction.Item))
+                {
+                    AudioManager.PlaySound(ToggleMega() ? "select" : "cancel");
                     return;
                 }
                 MoveCursor(dx, dy);

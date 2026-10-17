@@ -34,6 +34,16 @@ public sealed partial class Importer
     /// <summary>PokeAPI's categories for the Mega Stones and the Z-Crystals (R1: brought in with whose they are).</summary>
     private const int MegaStones = 44, ZCrystals = 46;
 
+    /// <summary>
+    /// Single items of other categories that a mechanic of plan 06 needs (R20): the Key Stone a trainer Mega Evolves
+    /// with (a key item), and the two orbs Primal Reversion goes by, which are held and so go in the Items pocket,
+    /// although Generation 3 first had them as key items.
+    /// </summary>
+    private static readonly Dictionary<string, ItemPocket> LaterItemsByName = new()
+    {
+        ["key-stone"] = ItemPocket.KeyItems, ["red-orb"] = ItemPocket.Items, ["blue-orb"] = ItemPocket.Items
+    };
+
     private readonly Decomp decomp;
     private readonly PokeApi api;
     private readonly int lastSpecies;
@@ -1235,12 +1245,13 @@ public sealed partial class Importer
         {
             int id = row.Int("id");
             if (id >= FirstAlternateForm || !api.HasItemName(id)) continue;
-            if (!LaterItemCategories.Contains(row.Int("category_id")) && !evolutionItems.Contains(api.ItemName(id))) continue;
-            if (api.ItemGeneration(id) is var gen && (gen <= 4 && gen != 0)) continue;
+            bool byName = LaterItemsByName.TryGetValue(row["identifier"], out var namedPocket);
+            if (!byName && !LaterItemCategories.Contains(row.Int("category_id")) && !evolutionItems.Contains(api.ItemName(id))) continue;
+            if (!byName && api.ItemGeneration(id) is var gen && (gen <= 4 && gen != 0)) continue;
             string name = api.ItemName(id);
             if (!names.Add(name)) continue;
             int pocketId = api.Table("item_categories").First(c => c.Int("id") == row.Int("category_id")).Int("pocket_id");
-            var pocket = pocketId switch
+            var pocket = byName ? namedPocket : pocketId switch
             {
                 2 => ItemPocket.Medicine, 3 => ItemPocket.PokeBalls, 4 => ItemPocket.TMsAndHMs, 5 => ItemPocket.Berries,
                 6 => ItemPocket.Mail, 7 => ItemPocket.BattleItems, 8 => ItemPocket.KeyItems, _ => ItemPocket.Items

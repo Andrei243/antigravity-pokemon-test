@@ -26,6 +26,12 @@ public sealed record BattleChoice(Place Who, ChoiceKind Kind)
     /// <summary>The item used, by name.</summary>
     public string? Item { get; init; }
 
+    /// <summary>
+    /// With a move: the Pokémon Mega Evolves first (plan 06 · R20; Showdown's <c>move 1 mega</c>), before the turn's
+    /// moves. Refused where it can't (<see cref="BattleCore.WhyNotMega"/>).
+    /// </summary>
+    public bool Mega { get; init; }
+
     /// <summary>In place of a move's position: the move the Pokémon is in the middle of or held to.</summary>
     public const int HeldMove = -2;
 
