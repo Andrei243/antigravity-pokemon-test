@@ -34,6 +34,12 @@ public interface IScriptHost
     /// </summary>
     bool CanBattle => Party.HasUsablePokemon;
 
+    /// <summary>
+    /// The region the player is in, by its id (plan 18 · W2): whose badges <c>givebadge</c>, <c>if badge</c>,
+    /// <c>if badges</c> and <c>BADGE_COUNT</c> mean. Sinnoh's unless a host says otherwise.
+    /// </summary>
+    string Region => RegionDatabase.Sinnoh;
+
     /// <summary>The player's Pokétch: whether they have it and its apps (plan 02 · S2).</summary>
     Poketch Poketch { get; }
 

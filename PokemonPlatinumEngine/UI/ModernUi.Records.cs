@@ -244,18 +244,25 @@ internal static partial class ModernUi
     /// badges, the back the Hall of Fame debut, the link battles and trades and the day the adventure began.
     /// <paramref name="flip"/> runs from 0 to 1 as the card is turned over to the side <paramref name="back"/> says.
     /// </summary>
-    public static void DrawTrainerCard(int sw, int sh, TrainerCardInfo info, Texture2D? portrait, float appear = 1f, bool back = false, float flip = 1f)
+    public static void DrawTrainerCard(int sw, int sh, TrainerCardInfo info, Texture2D? portrait, float appear = 1f, bool back = false, float flip = 1f) =>
+        DrawTrainerCard(sw, sh, info, portrait, appear, new CardSide(back ? CardPage.Back : CardPage.Front),
+            new CardSide(back ? CardPage.Front : CardPage.Back), flip);
+
+    /// <summary>The card on any of its pages (plan 18 · W2): <paramref name="shown"/> as it turns from <paramref name="from"/>.</summary>
+    public static void DrawTrainerCard(int sw, int sh, TrainerCardInfo info, Texture2D? portrait, float appear, CardSide shown, CardSide from, float flip)
     {
         Backdrop(sw, sh);
         ScreenTitle(Text.Of("card.title"));
-        Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.turnOver"), Hint("shared.keys.esc", "shared.hints.back"));
+        if (info.RegionPages.Count > 0)
+            Hints(sw - Margin, 44, Hint("shared.keys.leftRight", "card.page"), Hint("shared.keys.z", "shared.hints.turnOver"), Hint("shared.keys.esc", "shared.hints.back"));
+        else Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.turnOver"), Hint("shared.keys.esc", "shared.hints.back"));
 
         float rise = (1f - UiMotion.EaseOut(appear)) * 60f;
         var card = new Rectangle(200, 150 + rise, sw - 400, 840);
 
         // Turning over: the card narrows to its edge showing the side it had, then opens on the other
         bool turning = flip < 1f;
-        bool showBack = turning && flip < 0.5f ? !back : back;
+        var side = turning && flip < 0.5f ? from : shown;
         if (turning)
         {
             float cx = card.X + card.Width / 2f;
@@ -287,8 +294,18 @@ internal static partial class ModernUi
         for (int k = 0; k < 5; k++)
             CardStar(new Vector2(idX - 70 - (4 - k) * 52, bandY), 20, k < info.Stars, Darker(colour, 0.5f), Lighter(colour, 0.32f));
 
-        if (showBack) CardBack(card, info, colour);
-        else CardFront(card, info, portrait, colour);
+        switch (side.Page)
+        {
+            case CardPage.Back:
+                CardBack(card, info, colour);
+                break;
+            case CardPage.Region when side.Region >= 0 && side.Region < info.RegionPages.Count:
+                CardRegionPage(card, info.RegionPages[side.Region]);
+                break;
+            default:
+                CardFront(card, info, portrait, colour);
+                break;
+        }
 
         if (turning) Rlgl.PopMatrix();
     }
@@ -321,16 +338,69 @@ internal static partial class ModernUi
         // ---- Badges
         float by = card.Y + 590;
         UiShapes.Fill(new Rectangle(card.X + 72, by, card.Width - 144, 3), 1.5f, Rule);
-        Label(Text.Of("card.badges", ("count", TitleScreen.CountBadges(info.Badges))), card.X + 72, by + 24);
-        float step = (card.Width - 144 - 88) / 7f;
-        for (int b = 0; b < 8; b++)
+        // The badges of the region the player is in (plan 18 · W2), at the eight places' spacing from the left
+        var here = info.Here;
+        Label(Text.Of("card.badges", ("count", here.Count), ("of", here.BadgeNames.Count)), card.X + 72, by + 24);
+        if (info.RegionPages.Count > 0)
         {
-            bool earned = (info.Badges & (1 << b)) != 0;
+            string region = RegionName(here);
+            UiFonts.Draw(region, card.X + card.Width - 72 - UiFonts.Measure(region, 26, UiWeight.Black), by + 24, 26, Muted, UiWeight.Black);
+        }
+        float step = (card.Width - 144 - 88) / 7f;
+        for (int b = 0; b < here.BadgeNames.Count && b < 8; b++)
+        {
+            bool earned = here.Has(b);
             var c = new Vector2(card.X + 72 + 44 + b * step, by + 116);
             Badge(c, 44, b, earned);
-            string name = Words.Badge((PokemonPlatinumEngine.Story.Badge)b);
+            string name = Words.Badge(here.BadgeNames[b]);
             UiFonts.DrawCentered(name, c.X - UiFonts.Measure(name, 22, UiWeight.Black) / 2f, c.Y + 76, 22, earned ? Ink : Muted, UiWeight.Black);
         }
+    }
+
+    /// <summary>A region's name as the card writes it: in capitals.</summary>
+    private static string RegionName(CardRegion region)
+    {
+        int generation = region.Generation;
+        return Text.Of($"dexText.region.{generation}").ToUpperInvariant();
+    }
+
+    /// <summary>
+    /// A region's page of the card (plan 18 · W2, decision 1): its name and how many of its badges are won, CHAMPION once
+    /// its Hall of Fame is entered, and its medallions in a row with their names.
+    /// </summary>
+    private static void CardRegionPage(Rectangle card, CardRegion region)
+    {
+        float x = card.X + 72, right = card.X + card.Width - 72, top = card.Y + 176;
+        string name = RegionName(region);
+        UiFonts.Draw(name, x, top, 64, Ink, UiWeight.Black);
+        float after = x + UiFonts.Measure(name, 64, UiWeight.Black) + 28;
+        string count = Text.Of("card.outOf", ("count", region.Count), ("of", region.BadgeNames.Count));
+        UiFonts.Draw(count, after, top + 22, 36, Muted, UiWeight.Black);
+        if (region.Champion)
+        {
+            string champion = Text.Of("card.champion");
+            Tag(right - UiFonts.Measure(champion, 44 * 0.58f, UiWeight.Black) - 44 * 0.9f, top + 18, champion, Gold, 44);
+        }
+        UiShapes.Fill(new Rectangle(x, top + 110, right - x, 3), 1.5f, Rule);
+
+        int n = Math.Min(region.BadgeNames.Count, 8);
+        if (n == 0) UiFonts.Draw(Text.Of("card.noBadges"), x, top + 150, 30, Muted, UiWeight.ExtraBold);
+        float step = (right - x - 112) / 7f;
+        for (int b = 0; b < n; b++)
+        {
+            bool earned = region.Has(b);
+            var c = new Vector2(x + 56 + b * step, top + 230);
+            Badge(c, 56, b, earned);
+            string badge = Words.Badge(region.BadgeNames[b]);
+            UiFonts.DrawCentered(badge, c.X - UiFonts.Measure(badge, 24, UiWeight.Black) / 2f, c.Y + 96, 24, earned ? Ink : Muted, UiWeight.Black);
+        }
+
+        // The region's own Pokédex, once the player has it (plan 18 · W3)
+        if (region.Pokedex is not { } dex) return;
+        float y = top + 420;
+        UiShapes.Fill(new Rectangle(x, y, right - x, 3), 1.5f, Rule);
+        Field(Text.Of("card.regionSeen"), Text.Of("card.outOf", ("count", dex.Seen), ("of", dex.Of)), x, y + 40);
+        Field(Text.Of("card.regionCaught"), Text.Of("card.outOf", ("count", dex.Caught), ("of", dex.Of)), x + 440, y + 40);
     }
 
     private static void CardBack(Rectangle card, TrainerCardInfo info, Color colour)

@@ -61,7 +61,7 @@ public class IronIslandAndTheLakesTests
     {
         game.Arrive("CanalaveGym", 16, 26);
         game.Talk("byron");
-        Assert.True(game.Story.HasBadge(Badge.Mine));
+        Assert.True(game.Story.HasBadge("Sinnoh", "Mine"));
         Assert.Equal(2, game.Story.Var("VAR_CANALAVE_CITY_STATE"));
         game.Through("Sinnoh");
         return game.Last;
@@ -176,7 +176,7 @@ public class IronIslandAndTheLakesTests
     public void RileyGivesStrengthBeforeTheTunnelsAndGoesIn(bool badge)
     {
         var game = NewGame();
-        if (badge) game.Story.GiveBadge(Badge.Mine);
+        if (badge) game.Story.GiveBadge("Sinnoh", "Mine");
         game.Arrive("Sinnoh", 117, 493);
         // He stands in the tunnels' doorway until spoken to
         Assert.Equal("IronIsland1F", game.Map.GetWarpAt(117, 489)!.TargetMap);
@@ -192,7 +192,7 @@ public class IronIslandAndTheLakesTests
         // HM04 teaches Strength, which the Mine Badge lets a Pokémon use outside battle
         var machoke = new Pokemon(PokemonDatabase.Get("Machoke")!, 30);
         Assert.True(MoveTeaching.CanLearn(machoke, Item("HM04")));
-        Assert.Equal(Badge.Mine, FieldMoveRules.BadgeFor(FieldMove.Strength));
+        Assert.Equal("Mine", FieldMoveRules.BadgeFor(FieldMove.Strength, "Sinnoh"));
     }
 
     [Theory]
@@ -848,7 +848,7 @@ public class IronIslandAndTheLakesTests
         Assert.True(game.Story.Has("FLAG_OBTAINED_ROUTE_217_HM08"));
         var torterra = game.Party.Members[0];
         if (torterra.Species.Name == "Torterra") Assert.True(MoveTeaching.CanLearn(torterra, Item("HM08")));
-        Assert.Equal(Badge.Icicle, FieldMoveRules.BadgeFor(FieldMove.RockClimb));
+        Assert.Equal("Icicle", FieldMoveRules.BadgeFor(FieldMove.RockClimb, "Sinnoh"));
     }
 
     // ------------------------------------------------------------------ ways the story switches
@@ -941,7 +941,7 @@ public class IronIslandAndTheLakesTests
 
         // Byron beaten already: the library's people are as his Gym's script left them
         var badge = new StoryState();
-        badge.GiveBadge(Badge.Mine);
+        badge.GiveBadge("Sinnoh", "Mine");
         badge.SetVar("VAR_CANALAVE_CITY_STATE", 2);
         StoryMigration.Upgrade(badge, 11, Array.Empty<Pokemon>(), Scripts, new Inventory());
         foreach (string flag in always) Assert.True(badge.Has(flag), flag);
@@ -951,7 +951,7 @@ public class IronIslandAndTheLakesTests
         foreach (bool byBadge in new[] { false, true })
         {
             var north = new StoryState();
-            if (byBadge) north.GiveBadge(Badge.Icicle);
+            if (byBadge) north.GiveBadge("Sinnoh", "Icicle");
             else north.Set(StoryMigration.ArrivedInSnowpointFlag);
             StoryMigration.Upgrade(north, 11, Array.Empty<Pokemon>(), Scripts, new Inventory());
             Assert.True(north.Has(StoryMigration.CoronetGruntsGoneFlag));

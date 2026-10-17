@@ -326,9 +326,11 @@ internal static partial class ModernUi
         Label(Text.Of("saving.pokedex"), x + 540, r.Y + 122);
         UiFonts.Draw(save.CaughtSpecies.Count.ToString(), x + 540, r.Y + 146, 40, Ink, UiWeight.Black);
 
-        Label(Text.Of("saving.badges", ("count", TitleScreen.CountBadges(save.Badges))), x, r.Y + 216);
-        for (int b = 0; b < 8; b++)
-            Badge(new Vector2(x + 34 + b * 92, r.Y + 286), 34, b, (save.Badges & (1 << b)) != 0);
+        // The badges of the region the game was saved in (plan 18 · W2), a medallion for each it has
+        var (badges, of) = save.BadgesHere();
+        Label(Text.Of("saving.badges", ("count", TitleScreen.CountBadges(badges)), ("of", of)), x, r.Y + 216);
+        for (int b = 0; b < of; b++)
+            Badge(new Vector2(x + 34 + b * 92, r.Y + 286), 34, b, (badges & (1 << b)) != 0);
 
         // The party as 2D sprites, like the main games' save panel
         Label(Text.Of("saving.party"), x, r.Y + 340);
@@ -373,9 +375,10 @@ internal static partial class ModernUi
         UiFonts.Draw(TitleScreen.FormatPlayTime(save.PlayTimeSeconds), x + 300, r.Y + 44, 40, Ink, UiWeight.Black);
 
         // (The eighth medallion ends at the card's right margin: 504 + 13 + 7 × 28 + 13 = 726 of the 728 between them)
-        Label(Text.Of("saving.badges", ("count", TitleScreen.CountBadges(save.Badges))), x + 504, r.Y + 22);
-        for (int b = 0; b < 8; b++)
-            Badge(new Vector2(x + 517 + b * 28, r.Y + 68), 13, b, (save.Badges & (1 << b)) != 0);
+        var (badges, of) = save.BadgesHere();
+        Label(Text.Of("saving.badges", ("count", TitleScreen.CountBadges(badges)), ("of", of)), x + 504, r.Y + 22);
+        for (int b = 0; b < of; b++)
+            Badge(new Vector2(x + 517 + b * 28, r.Y + 68), 13, b, (badges & (1 << b)) != 0);
 
         // Along the foot: where it was saved (every game is played by the modern rules since plan 06 · R19, so no card
         // says whose rules it is)

@@ -20,7 +20,7 @@ partial class Harness
         foreach (string move in new[] { "Surf", "Drill Peck", "Metal Claw", "Brine" }) empoleon.Moves.Add(new Move(MoveDatabase.Get(move)!));
         team.Members.Insert(0, empoleon);
         // The Badges of the chapters before: the Relic Badge lets Defog be used, the Fen Badge Surf
-        foreach (var badge in new[] { Badge.Coal, Badge.Forest, Badge.Relic, Badge.Cobble, Badge.Fen }) story.GiveBadge(badge);
+        foreach (var badge in new[] { "Coal", "Forest", "Relic", "Cobble", "Fen" }) story.GiveBadge("Sinnoh", badge);
         bag.AddItem(ItemDatabase.Get("Secret Potion")!, 1);
 
         DialogueManager Box() => game.Dialogue;

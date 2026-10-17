@@ -33,7 +33,7 @@ partial class Harness
         }
         team.Members.Clear();
         for (int i = 0; i < 3; i++) team.Members.Add(Lead());
-        foreach (var badge in Enum.GetValues<Badge>()) story.GiveBadge(badge);
+        story.SetBadges("Sinnoh", 0xFF);
         // The cards say how a move will do, of a species seen before (plan 12 · Q10): they must tell the truth here too
         engine.Settings.MoveHints = RulesDefault.On;
         engine.ApplySettings(window: false);

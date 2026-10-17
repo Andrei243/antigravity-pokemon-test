@@ -111,7 +111,7 @@ public class SunyshoreAndTheLakeGuardiansTests
     {
         game.Arrive("SunyshoreGymRoom3", 11, 4);
         game.Talk("volkner");
-        Assert.True(game.Story.HasBadge(Badge.Beacon));
+        Assert.True(game.Story.HasBadge("Sinnoh", "Beacon"));
         Assert.Equal(2, game.Story.Var(CityState));
         game.Arrive("Sinnoh", 845, 748);
     }
@@ -200,7 +200,7 @@ public class SunyshoreAndTheLakeGuardiansTests
     {
         var game = NewGame(look: look);
         game.Seen = 143;
-        game.Story.SetBadges(0x7F);
+        game.Story.SetBadges("Sinnoh", 0x7F);
         // Until Sendoff Spring nothing waits in the lab: the professor is at the head of his hall and the assistant long gone
         Run(game, "RowanLab", "setvar VAR_SANDGEM_TOWN_LAB_STATE 1\nsetvar VAR_SANDGEM_TOWN_STATE 2\nsetflag FLAG_HIDE_SANDGEM_TOWN_LAB_COUNTERPART");
         Assert.Empty(IntoTheLab(game).Transcript);
@@ -259,7 +259,7 @@ public class SunyshoreAndTheLakeGuardiansTests
     public void TheProfessorCountsWhateverBadgesThePlayerHas(int badges, string said)
     {
         var game = NewGame();
-        game.Story.SetBadges(badges);
+        game.Story.SetBadges("Sinnoh", badges);
         OutOfTheDistortionWorld(game);
         Assert.Contains(IntoTheLab(game).Transcript, l => l.Text.Contains(said));
         Assert.Equal(3, game.Story.Var(LabState));
@@ -709,7 +709,7 @@ public class SunyshoreAndTheLakeGuardiansTests
         foreach (string key in new[] { "old_man", "ninja_boy", "middle_aged_man" }) Assert.NotNull(game.Present(key));
         Assert.Contains(game.Talk("ninja_boy").Transcript, l => l.Text.Contains("seven Gym Badges"));
         Assert.Contains(game.Talk("middle_aged_man").Transcript, l => l.Text.Contains("solar panels"));
-        game.Story.SetBadges(0xFF);
+        game.Story.SetBadges("Sinnoh", 0xFF);
         Assert.Contains(game.Talk("ninja_boy").Transcript, l => l.Text.Contains("All eight Gym Badges"));
         game.Arrive("SunyshorePokeMart", 3, 11);
         Assert.Contains(game.Talk("ruin_maniac").Transcript, l => l.Text.Contains("Victory Road"));
@@ -749,7 +749,7 @@ public class SunyshoreAndTheLakeGuardiansTests
 
         Assert.Equal(3, game.Story.Var(CityState));
         Assert.Equal(4, game.Story.Var(LabState));
-        Assert.True(game.Story.HasBadge(Badge.Beacon));
+        Assert.True(game.Story.HasBadge("Sinnoh", "Beacon"));
         Assert.Equal(1, game.Bag.GetQuantity(Item("HM07")));
         Assert.Equal(1, game.Bag.GetQuantity(Item("TM57")));
         foreach (string flag in new[] { "FLAG_HIDE_VERITY_CAVERN_MESPRIT", "FLAG_HIDE_VALOR_CAVERN_AZELF", "FLAG_HIDE_ACUITY_CAVERN_UXIE", "FLAG_VOLKNER_RETURNED_TO_GYM",
@@ -810,7 +810,7 @@ public class SunyshoreAndTheLakeGuardiansTests
         foreach (int state in new[] { 0, 2 })
         {
             var champion = new StoryState();
-            champion.GiveBadge(Badge.Beacon);
+            champion.GiveBadge("Sinnoh", "Beacon");
             champion.SetVar(CityState, state);
             StoryMigration.Upgrade(champion, 15, Array.Empty<Pokemon>(), Scripts, new Inventory());
             foreach (string flag in always.Concat(past)) Assert.True(champion.Has(flag), flag);

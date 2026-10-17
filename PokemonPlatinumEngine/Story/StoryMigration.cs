@@ -84,6 +84,9 @@ public static class StoryMigration
         // Route 227's first scenes counted as had, with the roads out of the town open, for a save that has already
         // been to the Battle Zone
         if (savedVersion < 18) ChapterTwelve(story, scripts);
+        // Version 19: the badges by region (plan 18 · W2). A save from before kept one mask of Sinnoh's eight; it is
+        // given to the region the save was made in as the story is read (Core.SaveData.RegionalBadges), before the first
+        // step here, since the steps above ask for the Coal, Icicle and Beacon Badges. Nothing is left to do here.
     }
 
     /// <summary>The flags that first arriving in the Battle Zone's three towns sets (<see cref="Data.SpawnLocation.ArrivalFlag"/>).</summary>
@@ -176,7 +179,7 @@ public static class StoryMigration
         string mesprit = Overworld.Roamers.StateVariable("Mesprit");
         if (mine.Contains("Mesprit") && story.Var(mesprit) == Overworld.Roamers.Roaming) story.SetVar(mesprit, Overworld.Roamers.Captured);
 
-        bool badge = story.HasBadge(Badge.Beacon);
+        bool badge = story.HasBadge(RegionDatabase.Sinnoh, "Beacon");
         if (!badge && !story.Has(ArrivedInSunyshoreFlag)) return;
         story.Set("FLAG_HIDE_VALOR_LAKEFRONT_COLLECTOR");
         if (story.Var("VAR_VALOR_LAKEFRONT_BLOCK_SUNYSHORE_STATE") == 0) story.SetVar("VAR_VALOR_LAKEFRONT_BLOCK_SUNYSHORE_STATE", 1);
@@ -234,7 +237,7 @@ public static class StoryMigration
     private static void ChapterEight(StoryState story, ScriptLibrary scripts)
     {
         Run(story, scripts, ScriptLibrary.ChapterEight);
-        if (!story.Has(ArrivedInSnowpointFlag) && !story.HasBadge(Badge.Icicle)) return;
+        if (!story.Has(ArrivedInSnowpointFlag) && !story.HasBadge(RegionDatabase.Sinnoh, "Icicle")) return;
         story.Set(LakefrontRivalGoneFlag);
         if (story.Var("VAR_ACUITY_LAKEFRONT_STATE") == 0) story.SetVar("VAR_ACUITY_LAKEFRONT_STATE", 1);
     }
@@ -265,7 +268,7 @@ public static class StoryMigration
     /// </summary>
     private static void BeyondTheGrunts(StoryState story)
     {
-        if (!story.Has(ArrivedInSnowpointFlag) && !story.HasBadge(Badge.Icicle)) return;
+        if (!story.Has(ArrivedInSnowpointFlag) && !story.HasBadge(RegionDatabase.Sinnoh, "Icicle")) return;
         story.Set(CoronetGruntsGoneFlag);
         if (story.Var("VAR_ROUTE_217_STATE") == 0) story.SetVar("VAR_ROUTE_217_STATE", 1);
     }
@@ -323,7 +326,7 @@ public static class StoryMigration
     /// </summary>
     private static void HandOverRockSmash(StoryState story, Inventory? bag)
     {
-        if (!story.HasBadge(Badge.Coal) || story.Has(ReceivedRockSmashFlag)) return;
+        if (!story.HasBadge(RegionDatabase.Sinnoh, "Coal") || story.Has(ReceivedRockSmashFlag)) return;
         if (ItemDatabase.Get("HM06") is { } hm && bag != null && bag.GetQuantity(hm) == 0) bag.AddItem(hm);
         story.Set(ReceivedRockSmashFlag);
         story.SetVar("VAR_OREBURGH_GATE_1F_HIKER_STATE", 2);

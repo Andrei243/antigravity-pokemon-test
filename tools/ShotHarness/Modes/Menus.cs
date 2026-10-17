@@ -119,7 +119,7 @@ partial class Harness
 
         // The Trainer Card, opened as the start menu opens it (so it has the player's portrait), with two badges won
         game.State = GameState.Overworld;
-        game.Story.SetBadges(0b11);
+        game.Story.SetBadges("Sinnoh", 0b11);
         game.ChooseFromStartMenu(StartMenuChoice.Trainer);
         Frames(40); Shot("28_trainer_card");
         // Turned over (plan 06 · R12): halfway, then its back
@@ -141,7 +141,7 @@ partial class Harness
         Frames(30); Shot("28d_trainer_card_cobalt_back");
         trainerCard.Close();
         game.TrainerScore = scoreBefore;
-        game.Story.SetBadges(0);
+        game.Story.SetBadges("Sinnoh", 0);
 
         // Saving: the question over the field, and the moment after
         game.State = GameState.Overworld;
@@ -495,6 +495,31 @@ partial class Harness
             + $"the first slot's {File.Exists(SavePaths.Current.Slot(1))}; the slots read as {string.Join(", ", SaveSlots.Read(SavePaths.Current).Select(s => $"{s.Number} {s.Outcome}"))}");
         game.DeleteSave();
         game.SaveSlot = 1;
+        game.State = GameState.Overworld;
+
+        // The Trainer Card with two regions (plan 18 · W2), last so that no shot before it moves: Kanto's Pokédex was
+        // entered for 26p, so the card has a page for each region; three of Sinnoh's badges and Sinnoh's Hall of Fame,
+        // two of Kanto's. The front shows Sinnoh's row, the region the player is in, with its name beside the caption
+        var story = game.Story;
+        int sinnohBefore = story.BadgeMask("Sinnoh"), kantoBefore = story.BadgeMask("Kanto");
+        bool championBefore = story.IsRegionComplete("Sinnoh");
+        story.SetBadges("Sinnoh", 0b111);
+        story.SetBadges("Kanto", 0b101);
+        story.CompleteRegion("Sinnoh");
+        game.ChooseFromStartMenu(StartMenuChoice.Trainer);
+        var card = game.TrainerCard;
+        Frames(40); Shot("28h_trainer_card_regions_front");
+        card.Turn(1);
+        card.Turn(1);
+        Frames(30); Shot("28h_trainer_card_regions_sinnoh");
+        card.Turn(1);
+        Frames(6); Shot("28h_trainer_card_regions_turning");
+        Frames(30); Shot("28h_trainer_card_regions_kanto");
+        Console.WriteLine($"trainer card: {card.RegionPages} regions' pages, on {card.Page} {card.RegionShown}; a turn past the last {(card.Turn(1) ? "!! went on" : "stays")}");
+        card.Close();
+        story.SetBadges("Sinnoh", sinnohBefore);
+        story.SetBadges("Kanto", kantoBefore);
+        if (!championBefore) story.Unset(RegionDatabase.Get("Sinnoh")!.StoryCompleteFlag);
         game.State = GameState.Overworld;
     }
 }

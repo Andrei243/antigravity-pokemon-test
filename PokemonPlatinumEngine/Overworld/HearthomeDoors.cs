@@ -71,7 +71,7 @@ public sealed class HearthomeDoors : GymPuzzle
     // Where each door leads when it is the right one, as the map file says
     private readonly Dictionary<Warp, (string Map, int X, int Y, Direction Facing)> ways = new();
 
-    public override void Apply(Map map, StoryState story) => Dimmed = story.HasBadge(Badge.Relic);
+    public override void Apply(Map map, StoryState story) => Dimmed = story.HasBadge(RegionDatabase.Sinnoh, "Relic");
 
     /// <summary>
     /// How dark the room is away from every light, 0 to 1: the original's black fog, 109 of 127 in the first room and

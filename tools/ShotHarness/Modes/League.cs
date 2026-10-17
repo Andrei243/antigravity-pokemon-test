@@ -105,7 +105,7 @@ partial class Harness
         string RoomOf(string who) => $"PokemonLeague{who}Room";
 
         // ---- the Pokémon Center: the door and its guard
-        story.SetBadges(0x7F);
+        story.SetBadges("Sinnoh", 0x7F);
         Enter(Center, 11, 11);
         if (Want("center"))
         {
@@ -117,7 +117,7 @@ partial class Harness
             ReadOn();
             var guard = Here().Everyone.Single(n => n.Key == "door_guard");
             Console.WriteLine($"league: with seven Badges the guard stands at {guard.GridX},{guard.GridY}, moved away {story.Has("FLAG_POKEMON_LEAGUE_DOOR_GUARD_MOVED_AWAY")}");
-            story.SetBadges(0xFF);
+            story.SetBadges("Sinnoh", 0xFF);
             TalkFrom(Center, "door_guard", 11, 4, Direction.Up);
             ReadOn();
             Frames(10); Shot("lg04_center_the_guard_steps_aside");
@@ -125,7 +125,7 @@ partial class Harness
             At(Center, 4, 3, Direction.Up); Frames(4); Shot("lg05_center_the_nurse");
             At(Center, 16, 3, Direction.Up); Frames(4); Shot("lg06_center_the_counters");
         }
-        story.SetBadges(0xFF);
+        story.SetBadges("Sinnoh", 0xFF);
 
         // A passage: its foot, the platform rising with the player on it, and the top
         void Ride(string who, string? prefix)

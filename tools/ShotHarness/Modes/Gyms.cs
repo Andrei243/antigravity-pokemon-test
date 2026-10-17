@@ -122,7 +122,7 @@ partial class Harness
         IntoBattle("Roark's battle"); Shot("g57_oreburgh_battle_roark");
         ReadOn();
         At("OreburghGym", 5, 21, Direction.Up); Frames(4); Shot("g58_oreburgh_from_the_mat");
-        Console.WriteLine($"oreburgh: Coal Badge {story.HasBadge(Badge.Coal)}");
+        Console.WriteLine($"oreburgh: Coal Badge {story.HasBadge("Sinnoh", "Coal")}");
         }
 
         // ---- the Eterna Gym: the flower clock
@@ -157,7 +157,7 @@ partial class Harness
         IntoBattle("Gardenia's battle"); Shot("g11_eterna_battle_gardenia");
         ReadOn();
         At("EternaGym", 11, 20, Direction.Up); Frames(4); Shot("g12_eterna_half_past_twelve");
-        Console.WriteLine($"eterna: Forest Badge {story.HasBadge(Badge.Forest)}, clock {story.Var(EternaClock.StateVar)}, TM86 {game.Bag.GetQuantity(ItemDatabase.Get("TM86")!)}");
+        Console.WriteLine($"eterna: Forest Badge {story.HasBadge("Sinnoh", "Forest")}, clock {story.Var(EternaClock.StateVar)}, TM86 {game.Bag.GetQuantity(ItemDatabase.Get("TM86")!)}");
         }
 
         Map Here() => game.Map;
@@ -213,7 +213,7 @@ partial class Harness
         ReadOn(() => Box().IsActive && Box().CurrentLine.Contains("Maylene")); Box().FinishLine(); Frames(4); Shot("g27_veilstone_maylene");
         IntoBattle("Maylene's battle"); Shot("g28_veilstone_battle_maylene");
         ReadOn();
-        Console.WriteLine($"veilstone: Cobble Badge {story.HasBadge(Badge.Cobble)}, TM60 {game.Bag.GetQuantity(ItemDatabase.Get("TM60")!)}");
+        Console.WriteLine($"veilstone: Cobble Badge {story.HasBadge("Sinnoh", "Cobble")}, TM60 {game.Bag.GetQuantity(ItemDatabase.Get("TM60")!)}");
         }
 
         // ---- the Pastoria Gym: the water and its buttons
@@ -267,7 +267,7 @@ partial class Harness
         ReadOn(() => Box().IsActive && Box().CurrentLine.Contains("Wake")); Box().FinishLine(); Frames(4); Shot("g68_pastoria_wake");
         IntoBattle("Wake's battle"); Shot("g69_pastoria_battle_wake");
         ReadOn();
-        Console.WriteLine($"pastoria: Fen Badge {story.HasBadge(Badge.Fen)}, TM55 {game.Bag.GetQuantity(ItemDatabase.Get("TM55")!)}");
+        Console.WriteLine($"pastoria: Fen Badge {story.HasBadge("Sinnoh", "Fen")}, TM55 {game.Bag.GetQuantity(ItemDatabase.Get("TM55")!)}");
         }
 
         // ---- the Canalave Gym: its floors and lifts
@@ -327,7 +327,7 @@ partial class Harness
         ReadOn(() => Box().IsActive && Box().CurrentLine.Contains("Byron")); Box().FinishLine(); Frames(4); Shot("g79_canalave_byron");
         IntoBattle("Byron's battle"); Shot("g7a_canalave_battle_byron");
         ReadOn();
-        Console.WriteLine($"canalave: Mine Badge {story.HasBadge(Badge.Mine)}, TM91 {game.Bag.GetQuantity(ItemDatabase.Get("TM91")!)}");
+        Console.WriteLine($"canalave: Mine Badge {story.HasBadge("Sinnoh", "Mine")}, TM91 {game.Bag.GetQuantity(ItemDatabase.Get("TM91")!)}");
         }
 
         // ---- the Hearthome Gym: the dark rooms and their doors
@@ -380,7 +380,7 @@ partial class Harness
         IntoBattle("Fantina's battle"); Shot("g43_hearthome_battle_fantina");
         ReadOn();
         At("HearthomeGymLeaderRoom", 7, 10, Direction.Right); Frames(4); Shot("g44_hearthome_bollards_gone");
-        Console.WriteLine($"hearthome: Relic Badge {story.HasBadge(Badge.Relic)}, TM65 {game.Bag.GetQuantity(ItemDatabase.Get("TM65")!)}, bollards {Here().NPCs.Count(n => n.Key.StartsWith("bollard"))}");
+        Console.WriteLine($"hearthome: Relic Badge {story.HasBadge("Sinnoh", "Relic")}, TM65 {game.Bag.GetQuantity(ItemDatabase.Get("TM65")!)}, bollards {Here().NPCs.Count(n => n.Key.StartsWith("bollard"))}");
         Enter("HearthomeGymRoom1", 8, 10);
         Frames(4); Shot("g45_hearthome_first_room_after_the_badge");
         }
@@ -433,7 +433,7 @@ partial class Harness
         ReadOn(() => Box().IsActive && Box().CurrentLine.Contains("challenger")); Box().FinishLine(); Frames(4); Shot("g89_snowpoint_candice");
         IntoBattle("Candice's battle"); Shot("g8a_snowpoint_battle_candice");
         ReadOn();
-        Console.WriteLine($"snowpoint: Icicle Badge {story.HasBadge(Badge.Icicle)}, TM72 {game.Bag.GetQuantity(ItemDatabase.Get("TM72")!)}, " +
+        Console.WriteLine($"snowpoint: Icicle Badge {story.HasBadge("Sinnoh", "Icicle")}, TM72 {game.Bag.GetQuantity(ItemDatabase.Get("TM72")!)}, " +
             $"the grunts in Veilstone hidden {story.Has("FLAG_HIDE_VEILSTONE_GALACTIC_GRUNTS")}");
         }
 
@@ -489,7 +489,7 @@ partial class Harness
         ReadOn(() => Box().IsActive && Box().CurrentLine.Contains("Volkner")); Box().FinishLine(); Frames(4); Shot("g9a_sunyshore_volkner");
         IntoBattle("Volkner's battle"); Shot("g9b_sunyshore_battle_volkner");
         ReadOn();
-        Console.WriteLine($"sunyshore: Beacon Badge {story.HasBadge(Badge.Beacon)}, TM57 {game.Bag.GetQuantity(ItemDatabase.Get("TM57")!)}, " +
+        Console.WriteLine($"sunyshore: Beacon Badge {story.HasBadge("Sinnoh", "Beacon")}, TM57 {game.Bag.GetQuantity(ItemDatabase.Get("TM57")!)}, " +
             $"VAR_SUNYSHORE_CITY_STATE {story.Var("VAR_SUNYSHORE_CITY_STATE")}, FLAG_RECEIVED_VOLKNER_TM57 {story.Has("FLAG_RECEIVED_VOLKNER_TM57")}");
         }
     }

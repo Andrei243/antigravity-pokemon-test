@@ -193,7 +193,7 @@ public class CelesticAndTheSeaTests
         var spot = FieldMoveRules.SpotOf(game.Map, 530, 530, Direction.Up, new Walker(TravelMode.OnFoot, game.Map.HeightAt(530, 530)));
         Assert.True(spot.Fog);
         Assert.Equal(FieldMoveError.Badge, FieldMoveRules.Check(FieldMove.Defog, spot, game.Story));
-        game.Story.GiveBadge(Badge.Relic);
+        game.Story.GiveBadge("Sinnoh", "Relic");
         Assert.Equal(FieldMoveError.None, FieldMoveRules.Check(FieldMove.Defog, spot, game.Story));
         // Celestic Town beyond it is clear
         Assert.NotEqual(FieldWeather.Fog, game.Map.WeatherAt(463, 530));
@@ -433,7 +433,7 @@ public class CelesticAndTheSeaTests
         game.Arrive("Sinnoh", 456, 539);
         var spot = FieldMoveRules.SpotOf(game.Map, 456, 539, Direction.Right, new Walker(TravelMode.OnFoot, game.Map.HeightAt(456, 539)));
         Assert.Equal(FieldMoveError.Badge, FieldMoveRules.Check(FieldMove.Surf, spot, game.Story));
-        game.Story.GiveBadge(Badge.Fen);
+        game.Story.GiveBadge("Sinnoh", "Fen");
         Assert.Equal(FieldMoveError.None, FieldMoveRules.Check(FieldMove.Surf, spot, game.Story));
         // Faced, the water asks, and a yes rides out
         game.Tile = (456, 539);
@@ -629,7 +629,7 @@ public class CelesticAndTheSeaTests
         var ahead = new StoryState();
         ahead.Set(StoryMigration.PsyduckCuredFlag);
         ahead.Set(StoryMigration.ArrivedInCanalaveFlag);
-        ahead.GiveBadge(Badge.Mine);
+        ahead.GiveBadge("Sinnoh", "Mine");
         var bag = new Inventory();
         bag.AddItem(Item(VsSeeker.Item));
         StoryMigration.Upgrade(ahead, 10, Array.Empty<Pokemon>(), Scripts, bag);

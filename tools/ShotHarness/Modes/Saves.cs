@@ -108,6 +108,13 @@ partial class Harness
         PastTheOpening();
         Write("the-girl");
 
+        // ---- badges in two regions (plan 18 · W2): three of Sinnoh's and one of Kanto's, each region's mask its own
+        game.Story.SetBadges("Sinnoh", 0b111);
+        game.Story.SetBadges("Kanto", 0b1);
+        Write("badges-in-two-regions");
+        game.Story.SetBadges("Sinnoh", 0);
+        game.Story.SetBadges("Kanto", 0);
+
         // A game past the first chapter again, as every mode expects
         Begin();
         PastTheOpening();

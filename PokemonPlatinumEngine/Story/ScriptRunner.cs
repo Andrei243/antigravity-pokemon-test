@@ -522,7 +522,8 @@ public sealed partial class ScriptRunner
                 break;
             }
             case Op.GiveBadge:
-                story.GiveBadge(i.Badge);
+                if (StoryState.FindBadge(host.Region, i.Name) < 0) throw Wrong(i, $"{host.Region} has no badge '{i.Name}'");
+                story.GiveBadge(host.Region, i.Name);
                 host.Fanfare(MusicRole.FanfareBadge);
                 break;
             case Op.GiveMoney:
@@ -1751,7 +1752,7 @@ public sealed partial class ScriptRunner
         "PLAYER_Y" => host.TileOf(null).Y,
         "MONEY" => host.Money,
         "PARTY_COUNT" => host.Party.Count,
-        "BADGE_COUNT" => host.Story.BadgeCount,
+        "BADGE_COUNT" => host.Story.BadgeCount(host.Region),
         "GREETINGS" => host.Story.Greetings,
         "SEEN" => host.SeenInSinnoh,
         // The friendship of the first of the team (the original's GetFirstNonEggInParty and GetPartyMonFriendship)
@@ -1776,8 +1777,8 @@ public sealed partial class ScriptRunner
         {
             Query.Flag => story.Has(c.Name),
             Query.Var => Condition.Holds(Value(c.Name), c.Compare, c.Other != null ? Value(c.Other) : c.Number),
-            Query.Badge => story.HasBadge(Enum.Parse<Badge>(c.Name)),
-            Query.Badges => Condition.Holds(story.BadgeCount, c.Compare, c.Number),
+            Query.Badge => StoryState.FindBadge(host.Region, c.Name) is var badge and >= 0 ? story.HasBadge(host.Region, badge) : throw Wrong(at, $"{host.Region} has no badge '{c.Name}'"),
+            Query.Badges => Condition.Holds(story.BadgeCount(host.Region), c.Compare, c.Number),
             Query.Item => Condition.Holds(ItemDatabase.Get(c.Name) is { } item ? host.Bag.GetQuantity(item) : 0, c.Compare, c.Number),
             Query.Party => Condition.Holds(host.Party.Count, c.Compare, c.Number),
             Query.Knows => host.Party.Members.Any(p => p.Moves.Any(m => m.Name == c.Name)),

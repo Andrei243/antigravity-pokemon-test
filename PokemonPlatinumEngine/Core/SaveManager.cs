@@ -79,7 +79,16 @@ public class SaveData
 
     public int Money { get; set; } = 3000;
     public float PlayTimeSeconds { get; set; } = 0;
+    /// <summary>
+    /// The badges as a save from before plan 18 · W2 kept them: Sinnoh's eight as one mask, for whatever region the save
+    /// stood in. Read for nothing but <see cref="RegionalBadges"/>, and never written again (nought is left out).
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
     public int Badges { get; set; } = 0;
+
+    /// <summary>Each region's badges, a mask by the region's id (plan 18 · W2; <c>StoryState.RegionBadges</c>).</summary>
+    public Dictionary<string, int> RegionBadges { get; set; } = new();
+
     public string CurrentMapName { get; set; } = "Sinnoh";
     public int PlayerGridX { get; set; } = 116;
     public int PlayerGridY { get; set; } = 886;
@@ -332,7 +341,31 @@ public class SaveData
 
     /// <summary>The story as the save has it.</summary>
     public Story.StorySnapshot ToStory() =>
-        new(StoryFlags, StoryVariables, DefeatedTrainers, TakenItems, Badges, PlayerStarter, RivalStarter);
+        new(StoryFlags, StoryVariables, DefeatedTrainers, TakenItems, RegionalBadges(), PlayerStarter, RivalStarter);
+
+    /// <summary>The region the save was made in: that of the map its player stands on today, Sinnoh's for a map no region lists.</summary>
+    public string RegionId => RegionDatabase.RegionOfMap(Place().Map)?.Id ?? RegionDatabase.Sinnoh;
+
+    /// <summary>
+    /// Each region's badges as the save has them (plan 18 · W2, story version 19). A save from before kept one mask, its
+    /// eight bits Sinnoh's order, and it goes to the region the save was made in (<see cref="RegionId"/>, of
+    /// <see cref="Place"/>). It is carried here, as the story is read and before <c>StoryMigration.Upgrade</c>, and not
+    /// as a step of its own at version 19, because the older steps ask the badges (the Coal Badge for HM06, the Icicle
+    /// Badge for Snowpoint City's people, the Beacon Badge for Sunyshore's).
+    /// </summary>
+    public Dictionary<string, int> RegionalBadges()
+    {
+        if (RegionBadges.Count > 0 || Badges == 0) return new Dictionary<string, int>(RegionBadges, StringComparer.OrdinalIgnoreCase);
+        return new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase) { [RegionId] = Badges };
+    }
+
+    /// <summary>The badges of the region the save was made in, and how many that region has: what its summary shows.</summary>
+    public (int Mask, int Of) BadgesHere()
+    {
+        string region = RegionId;
+        int mask = RegionalBadges().FirstOrDefault(b => string.Equals(b.Key, region, StringComparison.OrdinalIgnoreCase)).Value;
+        return (mask, RegionDatabase.Get(region)?.BadgeNames.Count ?? 0);
+    }
 }
 
 /// <summary>

@@ -163,7 +163,7 @@ What an `if` can ask:
 | `yes`, `no` | The answer to the last `ask`. |
 | `result == 1` | What the last question, battle, handing-over or taking came to. |
 | `won`, `lost` | The last battle. |
-| `badge coal`, `badges >= 3` | |
+| `badge coal`, `badges >= 3` | The badges of the region the player is in (plan 18 · W2): a badge by its name in that region's file (`coal` in Sinnoh, `boulder` in Kanto), and how many of that region's are won. A name no region has is a mistake the parser tells; one the place's own region hasn't, `ScriptLibrary.Problems` tells. |
 | `item "Potion"`, `item "Coupon 1" >= 3` | The bag holds it (that many). |
 | `party < 6`, `has "Starly"`, `knows "Cut"` | The team's size, a species on it, a move one of them knows. |
 | `defeated self`, `defeated "trainer_id"` | The trainer has been beaten. |
@@ -205,7 +205,7 @@ on leaving any place), `FLAG_FLASH_ACTIVE` and `FLAG_DEFOG_ACTIVE` (cleared on g
 | `additem "Potion" [3]` | Into the bag without a word. |
 | `take "Coupon 1" [3]` | Out of the bag: all of them or none. `RESULT` is 1 if they were taken. |
 | `givepokemon "Starly" 4` | Onto the team, or to the PC when the team is full. `RESULT` is 1 or 2. The words and the fanfare are the script's. |
-| `givebadge coal` | |
+| `givebadge coal` | Gives a badge of the region the player is in, by its name in that region's file (plan 18 · W2), with its fanfare. |
 | `givemoney 500`, `takemoney 500` | `takemoney` takes all of it or nothing; `RESULT` says which. |
 | `heal` | The whole team. |
 | `seen "Dialga"` | The Pokédex has the species as seen, without a word and without a battle (plan 02 · S12; the original's `SetSpeciesSeen`, for a Pokémon a scene shows: Dialga and Palkia at Spear Pillar). |

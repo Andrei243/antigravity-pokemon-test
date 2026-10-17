@@ -571,7 +571,8 @@
     }
   },
   "badges": {
-    "Coal": "Coal", "Forest": "Forest", "Cobble": "Cobble", "Fen": "Fen", "Relic": "Relic", "Mine": "Mine", "Icicle": "Icicle", "Beacon": "Beacon"
+    "Coal": "Coal", "Forest": "Forest", "Cobble": "Cobble", "Fen": "Fen", "Relic": "Relic", "Mine": "Mine", "Icicle": "Icicle", "Beacon": "Beacon",
+    "Boulder": "Boulder", "Cascade": "Cascade", "Thunder": "Thunder", "Rainbow": "Rainbow", "Soul": "Soul", "Marsh": "Marsh", "Volcano": "Volcano", "Earth": "Earth"
   },
   "card": {
     "title": "TRAINER CARD",
@@ -581,7 +582,13 @@
     "caught": "POKÉMON CAUGHT",
     "seen": "POKÉMON SEEN",
     "score": "SCORE",
-    "badges": "BADGES  {count} / 8",
+    "badges": "BADGES  {count} / {of}",
+    "page": "Page",
+    "outOf": "{count} / {of}",
+    "regionSeen": "SEEN IN ITS POKÉDEX",
+    "regionCaught": "CAUGHT IN ITS POKÉDEX",
+    "champion": "CHAMPION",
+    "noBadges": "This region has no badges to win.",
     "debut": "HALL OF FAME DEBUT",
     "debutWhen": "{date}   {time}",
     "linkBattles": "LINK BATTLES",
@@ -650,7 +657,7 @@
     "player": "PLAYER",
     "timePlayed": "TIME PLAYED",
     "pokedex": "POKÉDEX",
-    "badges": "BADGES  {count} / 8",
+    "badges": "BADGES  {count} / {of}",
     "party": "PARTY",
     "slot": "SLOT {slot}",
     "unreadable": {

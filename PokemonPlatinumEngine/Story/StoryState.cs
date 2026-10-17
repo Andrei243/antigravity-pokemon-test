@@ -5,12 +5,9 @@ using PokemonPlatinumEngine.Data;
 
 namespace PokemonPlatinumEngine.Story;
 
-/// <summary>Sinnoh's eight badges, in the order the Trainer Card shows them and the original numbers them.</summary>
-public enum Badge { Coal, Forest, Cobble, Fen, Relic, Mine, Icicle, Beacon }
-
 /// <summary>
 /// Everything the story remembers, saved with the game (plan 02 · S1): flags that are set or not, variables that
-/// count, the trainers beaten, the items picked up off the ground, the badges, and which starter the player and
+/// count, the trainers beaten, the items picked up off the ground, each region's badges, and which starter the player and
 /// the rival took. Flags and variables are named after the original's (<c>FLAG_...</c>, <c>VAR_...</c>) so its
 /// scripts stay easy to follow; a region's Hall of Fame is a flag too (<see cref="Region.StoryCompleteFlag"/>).
 /// It draws nothing and knows nothing of the screen: scripts change it and the engine asks it.
@@ -21,7 +18,7 @@ public sealed class StoryState
     /// How much of the story a save knows about. A save from before story state existed is 0; every chapter that
     /// needs older saves brought up to date raises it and adds a step to <see cref="Story.StoryMigration"/>.
     /// </summary>
-    public const int CurrentVersion = 18;
+    public const int CurrentVersion = 19;
 
     /// <summary>The Pokédex is the player's (the original's own flag, set as Rowan hands it over).</summary>
     public const string PokedexFlag = "FLAG_HAS_POKEDEX";
@@ -179,27 +176,63 @@ public sealed class StoryState
 
     // ------------------------------------------------------------------ badges
 
-    /// <summary>The badges as the save and the Trainer Card keep them: one bit each, in <see cref="Badge"/>'s order.</summary>
-    public int BadgeMask { get; private set; }
+    // Each region's badges as the save and the Trainer Card keep them (plan 18 · W2): one bit each, in the order of the
+    // region's own list (Region.BadgeNames, from its file), under the region's id
+    private readonly Dictionary<string, int> badges = new(StringComparer.OrdinalIgnoreCase);
 
-    public bool HasBadge(Badge badge) => (BadgeMask & (1 << (int)badge)) != 0;
+    /// <summary>Every region's badges, by the region's id: a mask each, none for a region with no badge won.</summary>
+    public IReadOnlyDictionary<string, int> RegionBadges => badges;
 
-    public int BadgeCount => System.Numerics.BitOperations.PopCount((uint)BadgeMask);
+    /// <summary>A region's badges, one bit each in the order of its Trainer Card.</summary>
+    public int BadgeMask(string region) => badges.GetValueOrDefault(RegionKey(region));
 
-    public void GiveBadge(Badge badge)
+    public bool HasBadge(string region, int index) => index >= 0 && (BadgeMask(region) & (1 << index)) != 0;
+
+    /// <summary>Whether the player has a region's badge, by its name in the region's list (<c>Coal</c>, in any case).</summary>
+    public bool HasBadge(string region, string name) => HasBadge(region, BadgeIndex(region, name));
+
+    /// <summary>How many of a region's badges the player has: what obedience, the Marts and a script's <c>BADGE_COUNT</c> read of the region the player is in.</summary>
+    public int BadgeCount(string region) => System.Numerics.BitOperations.PopCount((uint)BadgeMask(region));
+
+    /// <summary>Every badge of every region (the Trainer Card's score counts each one won).</summary>
+    public int TotalBadges => badges.Values.Sum(m => System.Numerics.BitOperations.PopCount((uint)m));
+
+    public void GiveBadge(string region, int index)
     {
-        if (HasBadge(badge)) return;
-        BadgeMask |= 1 << (int)badge;
+        if (index < 0 || index >= BadgeSlots(region)) throw new ArgumentOutOfRangeException(nameof(index), $"{region} has no badge {index}");
+        if (HasBadge(region, index)) return;
+        badges[RegionKey(region)] = BadgeMask(region) | 1 << index;
         Revision++;
     }
 
-    public void SetBadges(int mask)
+    public void GiveBadge(string region, string name) => GiveBadge(region, BadgeIndex(region, name));
+
+    /// <summary>Sets a region's badges at once (a save, a tool, a test); bits past the region's own badges are dropped.</summary>
+    public void SetBadges(string region, int mask)
     {
-        mask &= 0xFF;
-        if (mask == BadgeMask) return;
-        BadgeMask = mask;
+        mask &= (1 << BadgeSlots(region)) - 1;
+        if (mask == BadgeMask(region)) return;
+        if (mask == 0) badges.Remove(RegionKey(region));
+        else badges[RegionKey(region)] = mask;
         Revision++;
     }
+
+    /// <summary>Where a badge stands in its region's list, by its name in any case; -1 when the region has no such badge.</summary>
+    public static int FindBadge(string region, string name)
+    {
+        var names = RegionDatabase.Get(region)?.BadgeNames ?? Array.Empty<string>();
+        for (int k = 0; k < names.Count; k++)
+            if (string.Equals(names[k], name, StringComparison.OrdinalIgnoreCase)) return k;
+        return -1;
+    }
+
+    /// <summary>Where a badge stands in its region's list; a name the region doesn't have is the caller's mistake, and throws.</summary>
+    public static int BadgeIndex(string region, string name) =>
+        FindBadge(region, name) is var k and >= 0 ? k : throw new ArgumentException($"{region} has no badge called '{name}'", nameof(name));
+
+    private static int BadgeSlots(string region) => Math.Min(RegionDatabase.Get(region)?.BadgeNames.Count ?? 0, 31);
+
+    private static string RegionKey(string region) => RegionDatabase.Get(region)?.Id ?? region;
 
     // ------------------------------------------------------------------ the starters
 
@@ -248,7 +281,7 @@ public sealed class StoryState
         taken.Clear();
         greeted.Clear();
         scenes.Clear();
-        BadgeMask = 0;
+        badges.Clear();
         PlayerStarter = RivalStarter = null;
         Revision++;
     }
@@ -259,7 +292,8 @@ public sealed class StoryState
         variables.OrderBy(v => v.Key, StringComparer.Ordinal).ToDictionary(v => v.Key, v => v.Value),
         defeated.Order(StringComparer.Ordinal).ToList(),
         taken.Order(StringComparer.Ordinal).ToList(),
-        BadgeMask, PlayerStarter, RivalStarter);
+        badges.Where(b => b.Value != 0).OrderBy(b => b.Key, StringComparer.Ordinal).ToDictionary(b => b.Key, b => b.Value),
+        PlayerStarter, RivalStarter);
 
     public void Restore(StorySnapshot saved)
     {
@@ -269,7 +303,11 @@ public sealed class StoryState
             if (value != 0) variables[name] = value;
         foreach (string t in saved.DefeatedTrainers) defeated.Add(t);
         foreach (string i in saved.TakenItems) taken.Add(i);
-        BadgeMask = saved.Badges & 0xFF;
+        foreach (var (region, mask) in saved.Badges)
+        {
+            int kept = mask & ((1 << BadgeSlots(region)) - 1);
+            if (kept != 0) badges[RegionKey(region)] = kept;
+        }
         PlayerStarter = saved.PlayerStarter;
         RivalStarter = saved.RivalStarter ?? (saved.PlayerStarter != null ? RivalStarterFor(saved.PlayerStarter) : null);
         Revision++;
@@ -277,15 +315,20 @@ public sealed class StoryState
 
     /// <summary>Only the flags, as saves from before <see cref="StoryState"/> kept them.</summary>
     public void Restore(IEnumerable<string> savedFlags) =>
-        Restore(new StorySnapshot(savedFlags.ToList(), new Dictionary<string, int>(), new List<string>(), new List<string>(), 0, null, null));
+        Restore(new StorySnapshot(savedFlags.ToList(), new Dictionary<string, int>(), new List<string>(), new List<string>(),
+            new Dictionary<string, int>(), null, null));
 }
 
-/// <summary>The story as a save writes it: plain lists and numbers.</summary>
+/// <summary>The story as a save writes it: plain lists and numbers. <see cref="Badges"/> is each region's mask by its id (plan 18 · W2).</summary>
 public sealed record StorySnapshot(
     List<string> Flags,
     Dictionary<string, int> Variables,
     List<string> DefeatedTrainers,
     List<string> TakenItems,
-    int Badges,
+    Dictionary<string, int> Badges,
     string? PlayerStarter,
-    string? RivalStarter);
+    string? RivalStarter)
+{
+    /// <summary>One region's badges as the snapshot has them.</summary>
+    public int BadgesOf(string region) => Badges.FirstOrDefault(b => string.Equals(b.Key, region, StringComparison.OrdinalIgnoreCase)).Value;
+}

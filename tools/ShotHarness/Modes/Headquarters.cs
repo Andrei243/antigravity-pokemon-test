@@ -25,7 +25,7 @@ partial class Harness
         team.Members.Insert(0, infernape);
         // The Badges of the chapters before, and the story as the scene at Lake Acuity leaves it (lake_acuity.txt): the
         // grunt with the Storage Key on the terrace, Looker long gone from the warehouse with the explosion in Pastoria
-        foreach (var badge in new[] { Badge.Coal, Badge.Forest, Badge.Relic, Badge.Cobble, Badge.Fen, Badge.Mine, Badge.Icicle }) story.GiveBadge(badge);
+        foreach (var badge in new[] { "Coal", "Forest", "Relic", "Cobble", "Fen", "Mine", "Icicle" }) story.GiveBadge("Sinnoh", badge);
         foreach (string flag in new[] { "FLAG_TEAM_GALACTIC_LEFT_LAKE_VERITY", "FLAG_HIDE_VEILSTONE_GALACTIC_GRUNTS", "FLAG_HIDE_VEILSTONE_COUNTERPART",
             "FLAG_HIDE_VEILSTONE_CRASHER_WAKE", "FLAG_HIDE_VEILSTONE_CITY_LOOKER", "FLAG_HIDE_VEILSTONE_CITY_GALACTIC_WAREHOUSE_LOOKER",
             "FLAG_OBTAINED_VEILSTONE_CITY_GALACTIC_WAREHOUSE_HM02", "FLAG_HIDE_LAKE_ACUITY_JUPITER", "FLAG_HIDE_LAKE_ACUITY_RIVAL" })

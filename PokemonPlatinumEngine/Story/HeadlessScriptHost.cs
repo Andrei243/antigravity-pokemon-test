@@ -31,6 +31,14 @@ public sealed class HeadlessScriptHost : IScriptHost
     public PlayerLook PlayerLook { get; set; }
     public string RivalName { get; set; } = PlayerIdentity.DefaultRivalName;
 
+    /// <summary>The region whose badges the script means (plan 18 · W2): the one set, else that of <see cref="Map"/>, else Sinnoh.</summary>
+    public string Region
+    {
+        get => region ?? (Map != null ? RegionDatabase.RegionOfMap(Map.Name)?.Id : null) ?? RegionDatabase.Sinnoh;
+        set => region = value;
+    }
+    private string? region;
+
     /// <summary>Where Pokémon go when the team is full.</summary>
     public List<Pokemon> Box { get; } = new();
 

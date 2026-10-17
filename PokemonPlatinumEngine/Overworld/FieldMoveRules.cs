@@ -61,6 +61,9 @@ public sealed record FieldSpot
     /// <summary>A town or a city: Teleport isn't used there.</summary>
     public bool Town { get; init; }
 
+    /// <summary>The region the player is in, whose badges open the field moves (plan 18 · W2; its file's <c>gates</c>).</summary>
+    public string Region { get; init; } = RegionDatabase.Sinnoh;
+
     /// <summary>A cave whose header lets an Escape Rope be used in it: where Dig leads out.</summary>
     public bool CaveWithAWayOut { get; init; }
 
@@ -130,19 +133,13 @@ public static class FieldMoveRules
         _ => move.ToString()
     };
 
-    /// <summary>The badge a move needs before it can be used outside battle; null for the moves that need none.</summary>
-    public static Badge? BadgeFor(FieldMove move) => move switch
-    {
-        FieldMove.Cut => Badge.Forest,
-        FieldMove.Fly => Badge.Cobble,
-        FieldMove.Surf => Badge.Fen,
-        FieldMove.Strength => Badge.Mine,
-        FieldMove.Defog => Badge.Relic,
-        FieldMove.RockSmash => Badge.Coal,
-        FieldMove.Waterfall => Badge.Beacon,
-        FieldMove.RockClimb => Badge.Icicle,
-        _ => null
-    };
+    /// <summary>
+    /// The badge a move needs before it can be used outside battle in a region, by its name in the region's list; null
+    /// for a move the region asks nothing for. The gates are the region's file's (plan 18 · W2): Sinnoh's are Platinum's
+    /// (Relic for Defog and Fen for Surf, not Diamond and Pearl's), each as the original's check asks it.
+    /// </summary>
+    public static string? BadgeFor(FieldMove move, string region) =>
+        RegionDatabase.Get(region)?.Gates.TryGetValue(move.ToString(), out var badge) == true ? badge : null;
 
     /// <summary>The field moves a Pokémon knows, in the order of its moves, as the party menu lists them.</summary>
     public static IEnumerable<FieldMove> Known(Pokemon pokemon)
@@ -162,7 +159,7 @@ public static class FieldMoveRules
     /// </summary>
     public static FieldMoveError Check(FieldMove move, FieldSpot spot, StoryState story)
     {
-        if (BadgeFor(move) is { } badge && !story.HasBadge(badge)) return FieldMoveError.Badge;
+        if (BadgeFor(move, spot.Region) is { } badge && !story.HasBadge(spot.Region, badge)) return FieldMoveError.Badge;
         switch (move)
         {
             case FieldMove.Cut:
@@ -251,6 +248,7 @@ public static class FieldMoveRules
             Fog = map.WeatherAt(x, y) == FieldWeather.Fog,
             Dark = Darkness.Covers(map),
             Surfing = walker.Mode == TravelMode.Surfing,
+            Region = RegionDatabase.RegionOfMap(map.Name)?.Id ?? RegionDatabase.Sinnoh,
             FlyAllowed = area?.FlyAllowed ?? !map.IsIndoors,
             Town = area?.IsTown ?? false,
             CaveWithAWayOut = (area?.IsCave ?? map.Setting == MapSetting.Cave) && (area?.EscapeRopeAllowed ?? false)

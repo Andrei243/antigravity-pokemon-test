@@ -40,7 +40,7 @@ public class StarkMountainAndTheLegendaryPokemonTests
         game.Story.ChooseStarter(StoryState.Starters[0]);
         game.Party.Add(new Pokemon(PokemonDatabase.Get("Garchomp")!, 62));
         game.Party.Add(new Pokemon(PokemonDatabase.Get("Staraptor")!, 58));
-        game.Story.SetBadges(0xFF);
+        game.Story.SetBadges("Sinnoh", 0xFF);
         game.Story.SetVar("VAR_PLAYER_HOUSE_STATE", 6);
         game.Story.Set(StoryState.PokedexFlag);
         game.Facing = Direction.Up;
@@ -99,7 +99,7 @@ public class StarkMountainAndTheLegendaryPokemonTests
     {
         var game = new OpeningTests.Game();
         // No story version of its own: common.ChapterTwelve hid this part's people already (plan 02 · S15, part a)
-        Assert.Equal(18, StoryState.CurrentVersion);
+        Assert.Equal(19, StoryState.CurrentVersion);   // 19 is plan 18 · W2's badges by region, not this part's
         var sinnoh = game.Maps["Sinnoh"];
         NPC Of(Map map, string place, string key) => Assert.Single(map.Everyone, n => n.Key == key && (map.ScriptFileAt(n.GridX, n.GridY) == place || n.ScriptFile == place));
 
@@ -647,7 +647,7 @@ public class StarkMountainAndTheLegendaryPokemonTests
         var game = new OpeningTests.Game();
         game.Story.ChooseStarter(StoryState.Starters[0]);
         game.Party.Add(new Pokemon(PokemonDatabase.Get("Garchomp")!, 80));
-        game.Story.SetBadges(0xFF);
+        game.Story.SetBadges("Sinnoh", 0xFF);
         if (arrested) game.Story.Set(Arrested);
         string suffix = arrested ? "_rematch" : "";
         game.Arrive("PokemonLeagueNorthPokemonCenter", 11, 11);

@@ -27,7 +27,7 @@ partial class Harness
         team.Members.Insert(0, infernape);
         // The Badges of the chapters before, and the story as the scene at Sendoff Spring leaves it (sendoff_spring.txt):
         // Team Galactic gone from the three lakes, Lake Valor full again, the professor's lab waiting to hear it all
-        foreach (var badge in new[] { Badge.Coal, Badge.Forest, Badge.Relic, Badge.Cobble, Badge.Fen, Badge.Mine, Badge.Icicle }) story.GiveBadge(badge);
+        foreach (var badge in new[] { "Coal", "Forest", "Relic", "Cobble", "Fen", "Mine", "Icicle" }) story.GiveBadge("Sinnoh", badge);
         foreach (string flag in new[] { "FLAG_GALACTIC_LEFT_LAKE_VALOR", "FLAG_DEFEATED_COMMANDER_SATURN_VALOR_CAVERN", "FLAG_HIDE_LAKE_VALOR_GALACTIC",
             "FLAG_TEAM_GALACTIC_LEFT_LAKE_VERITY", "FLAG_HIDE_LAKE_VERITY_TEAM_GALACTIC", "FLAG_HIDE_LAKE_VERITY_PROF_ROWAN", "FLAG_HIDE_LAKE_VERITY_COUNTERPART",
             "FLAG_HIDE_LAKE_ACUITY_JUPITER", "FLAG_HIDE_LAKE_ACUITY_RIVAL", "FLAG_HIDE_VALOR_LAKEFRONT_CAMERAMEN" })
@@ -394,12 +394,12 @@ partial class Harness
             ReadTo("Beacon Badge from Volkner"); Frames(4); Shot("sy66_gym_the_beacon_badge");
             ReadTo("Charge Beam"); Frames(4); Shot("sy67_gym_tm57");
             ReadTo(null); Frames(10);
-            Console.WriteLine($"gym: beacon badge {story.HasBadge(Badge.Beacon)}, TM57 {bag.GetQuantity(ItemDatabase.Get("TM57")!)}, {Vars("VAR_SUNYSHORE_CITY_STATE")}");
+            Console.WriteLine($"gym: beacon badge {story.HasBadge("Sinnoh", "Beacon")}, TM57 {bag.GetQuantity(ItemDatabase.Get("TM57")!)}, {Vars("VAR_SUNYSHORE_CITY_STATE")}");
         }
         else
         {
             story.Set("FLAG_HIDE_SUNYSHORE_CITY_FLINT");
-            story.GiveBadge(Badge.Beacon);
+            story.GiveBadge("Sinnoh", "Beacon");
             story.Set("FLAG_RECEIVED_VOLKNER_TM57");
             story.SetVar("VAR_SUNYSHORE_CITY_STATE", 2);
             Frames(2);

@@ -236,7 +236,6 @@ public sealed class Instruction
     /// <summary>For <see cref="Op.Anim"/>: the set piece played (plan 09 · L12).</summary>
     public SetPiece Piece { get; init; }
     public Audio.MusicRole Role { get; init; }
-    public Badge Badge { get; init; }
 
     /// <summary>For <see cref="Op.If"/>: the question, and the line carried out when the answer is yes.</summary>
     public Condition? Condition { get; init; }

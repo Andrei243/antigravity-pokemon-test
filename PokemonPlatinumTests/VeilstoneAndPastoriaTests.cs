@@ -52,7 +52,7 @@ public class VeilstoneAndPastoriaTests
     {
         game.Arrive("VeilstoneGym", 12, 30);
         game.Talk("maylene");
-        Assert.True(game.Story.HasBadge(Badge.Cobble));
+        Assert.True(game.Story.HasBadge("Sinnoh", "Cobble"));
         game.Through("Sinnoh");
     }
 
@@ -61,7 +61,7 @@ public class VeilstoneAndPastoriaTests
     {
         game.Arrive("PastoriaGym", 13, 41);
         game.Talk("crasher_wake");
-        Assert.True(game.Story.HasBadge(Badge.Fen));
+        Assert.True(game.Story.HasBadge("Sinnoh", "Fen"));
         game.Through("Sinnoh");
     }
 
@@ -288,7 +288,7 @@ public class VeilstoneAndPastoriaTests
     {
         var game = NewGame(BattleOutcome.Lost);
         game.Story.SetVar("VAR_VEILSTONE_CITY_CRASHER_WAKE_STATE", 1);
-        game.Story.GiveBadge(Badge.Cobble);
+        game.Story.GiveBadge("Sinnoh", "Cobble");
         Run(game, "veilstone_city", "setvar VAR_VEILSTONE_CITY_COUNTERPART_NEEDS_HELP_STATE 2\n clearflag FLAG_HIDE_VEILSTONE_COUNTERPART");
         game.Arrive("Sinnoh", 690, 600);
         TalkFrom(game, "counterpart", "veilstone_city", Direction.Right);
@@ -597,8 +597,8 @@ public class VeilstoneAndPastoriaTests
         // With Maylene's Badge, Crasher Wake has already come out of her Gym; with Crasher Wake's, the rival has left
         // his doorway and the television crew the gate
         var won = new StoryState();
-        won.GiveBadge(Badge.Cobble);
-        won.GiveBadge(Badge.Fen);
+        won.GiveBadge("Sinnoh", "Cobble");
+        won.GiveBadge("Sinnoh", "Fen");
         StoryMigration.Upgrade(won, 9, Array.Empty<Pokemon>(), Scripts, new Inventory());
         Assert.Equal(1, won.Var("VAR_VEILSTONE_CITY_CRASHER_WAKE_STATE"));
         Assert.True(won.Has("FLAG_HIDE_PASTORIA_CITY_RIVAL"));

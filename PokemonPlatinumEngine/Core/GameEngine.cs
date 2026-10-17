@@ -637,7 +637,7 @@ public partial class GameEngine
             PlayerStarter = told.PlayerStarter,
             RivalStarter = told.RivalStarter,
             Money = flow.Money,
-            Badges = told.Badges,
+            RegionBadges = told.Badges,
             PlayTimeSeconds = flow.PlayTime
         };
     }
@@ -1899,7 +1899,7 @@ public partial class GameEngine
                 break;
             case StartMenuChoice.Trainer:
                 flow.State = GameState.TrainerCard;
-                flow.TrainerCardScreen.Open(world.Portrait(PlayerIdentity.Character));
+                flow.TrainerCardScreen.Open(world.Portrait(PlayerIdentity.Character), TrainerCardNow().RegionPages.Count);
                 break;
             case StartMenuChoice.Options:
                 flow.OptionsReturn = GameState.Overworld;
@@ -1943,14 +1943,35 @@ public partial class GameEngine
         : unitsSold > 0 ? JournalEventKind.SoldALittle
         : null;
 
+    /// <summary>
+    /// The regions the Trainer Card has a word for (plan 18 · W2), in the journey's order: the one the player is in, and
+    /// every other they have been in (its Pokédex entered, a badge won there or its Hall of Fame entered), each with its
+    /// badges.
+    /// </summary>
+    private List<CardRegion> CardRegions()
+    {
+        var here = Here;
+        return RegionDatabase.All
+            .Where(r => r == here || flow.Story.BadgeMask(r.Id) != 0 || flow.Story.IsRegionComplete(r.Id)
+                || (r.Dex is { } dex && flow.Pokedex.Entered.Contains(dex)))
+            .Select(r => new CardRegion(r.Id, r.Generation, r.BadgeNames, flow.Story.BadgeMask(r.Id), flow.Story.IsRegionComplete(r.Id))
+            {
+                Pokedex = r.Dex is { } dex && flow.Pokedex.Regional.Contains(dex)
+                    ? (flow.Pokedex.SeenIn(dex), flow.Pokedex.CaughtIn(dex), Pokedex.Entries(dex).Count) : null
+            })
+            .ToList();
+    }
+
     /// <summary>What the Trainer Card shows now: who the player is, what they have, and its colour by what they have done.</summary>
     private TrainerCardInfo TrainerCardNow()
     {
         bool famous = flow.HallOfFame.Total > 0 || RegionDatabase.All.Any(r => flow.Story.Has(r.StoryCompleteFlag));
         int stars = TrainerCardRules.Level(famous, TrainerCardRules.NationalCaught(flow.Pokedex.CaughtSpecies), TowerBestStreak, IsContestMaster, 0);
+        var regions = CardRegions();
         return new TrainerCardInfo(playerName, flow.TrainerId, flow.Money, flow.Pokedex.SeenCount, flow.Pokedex.CaughtCount, flow.PlayTime,
-            flow.Story.BadgeMask, flow.AdventureStarted)
+            regions.First(r => r.Id == Here.Id), flow.AdventureStarted)
         {
+            Regions = regions,
             Score = flow.TrainerScore,
             Stars = stars,
             Colour = TrainerCardRules.Colour(flow.Story.Has(StoryState.PokedexFlag), stars),
@@ -1998,7 +2019,8 @@ public partial class GameEngine
         {
             BattleResult.PlayerVictory => flow.Battle.IsTrainerBattle ? TrainerScore.WonTrainerBattle : TrainerScore.WonWildBattle,
             BattleResult.EnemyCaught when flow.Battle.Caught is { } caught =>
-                (caught.Species.SinnohNumber != null ? TrainerScore.CaughtRegional : TrainerScore.CaughtNational)
+                // Of the regional Pokédex of the region the player is in (plan 18 · W2), or not
+                (Here.Dex is { } dex && caught.Species.DexNumbers.ContainsKey(dex) ? TrainerScore.CaughtRegional : TrainerScore.CaughtNational)
                 + (flow.Battle.CaughtNewSpecies ? TrainerScore.CaughtNewSpecies : 0),
             _ => 0
         };

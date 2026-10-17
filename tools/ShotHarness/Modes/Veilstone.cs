@@ -146,7 +146,7 @@ partial class Harness
             IntoBattle("Maylene");
             Win();
             ReadTo(null);
-            Console.WriteLine($"veilstone gym: cobble {story.HasBadge(Badge.Cobble)}");
+            Console.WriteLine($"veilstone gym: cobble {story.HasBadge("Sinnoh", "Cobble")}");
             ComeThrough("Sinnoh", 684, 612, Direction.Down);
             ReadTo("snatched my Pokédex"); Frames(10); Shot("vp11_veilstone_the_assistant_needs_help");
             ReadTo(null); Frames(20);
@@ -176,7 +176,7 @@ partial class Harness
         else
         {
             // As the Veilstone scenes would have left it
-            story.GiveBadge(Badge.Cobble);
+            story.GiveBadge("Sinnoh", "Cobble");
             story.SetVar("VAR_VEILSTONE_CITY_CRASHER_WAKE_STATE", 1);
             story.SetVar("VAR_VEILSTONE_CITY_COUNTERPART_NEEDS_HELP_STATE", 2);
             story.SetVar("VAR_VEILSTONE_CITY_GALACTIC_WAREHOUSE_STATE", 2);

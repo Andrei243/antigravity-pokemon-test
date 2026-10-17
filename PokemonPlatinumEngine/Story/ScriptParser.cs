@@ -200,7 +200,7 @@ public static class ScriptParser
                 return new Instruction { Op = Op.GivePokemon, Line = line, Name = species, Number = level };
             }
             case "givebadge":
-                return new Instruction { Op = Op.GiveBadge, Line = line, Badge = r.Enum<Badge>("a badge") };
+                return new Instruction { Op = Op.GiveBadge, Line = line, Name = r.Badge() };
             case "givemoney":
             case "takemoney":
             {
@@ -927,7 +927,7 @@ public static class ScriptParser
                 return new Condition { Query = Query.Var, Negated = negated, Name = name, Compare = compare, Other = r.Variable(writable: false) };
             }
             case "badge":
-                return new Condition { Query = Query.Badge, Negated = negated, Name = r.Enum<Badge>("a badge").ToString() };
+                return new Condition { Query = Query.Badge, Negated = negated, Name = r.Badge() };
             case "badges":
                 return Counted(Query.Badges);
             case "item":
@@ -1165,6 +1165,17 @@ public static class ScriptParser
             if (int.TryParse(word, out _) || !System.Enum.TryParse(word, ignoreCase: true, out T value))
                 throw Error($"'{word}' is not {expected}: {string.Join(", ", System.Enum.GetNames<T>().Select(n => n.ToLowerInvariant()))}");
             return value;
+        }
+
+        /// <summary>
+        /// A badge's name, as some region's file lists it (plan 18 · W2): which region's it must be is the place's, told
+        /// by <see cref="ScriptLibrary.Problems"/> and at run time by the host's region.
+        /// </summary>
+        public string Badge()
+        {
+            string word = Word("a badge");
+            if (!RegionDatabase.All.Any(r => StoryState.FindBadge(r.Id, word) >= 0)) throw Error($"'{word}' is not a badge of any region");
+            return word;
         }
 
         public Direction Direction()

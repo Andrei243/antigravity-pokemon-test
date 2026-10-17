@@ -45,7 +45,7 @@ public class TheNationalPokedexAndTheBattleZoneTests
         game.Story.ChooseStarter(StoryState.Starters[starter]);
         game.Party.Add(new Pokemon(PokemonDatabase.Get("Garchomp")!, 62));
         game.Party.Add(new Pokemon(PokemonDatabase.Get("Staraptor")!, 58));
-        game.Story.SetBadges(0xFF);
+        game.Story.SetBadges("Sinnoh", 0xFF);
         game.Story.SetVar("VAR_PLAYER_HOUSE_STATE", 6);
         // The lab as the tenth chapter leaves it: the professor behind his desk, the assistant gone out
         game.Story.SetVar("VAR_SANDGEM_TOWN_STATE", 2);

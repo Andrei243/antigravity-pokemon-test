@@ -24,7 +24,7 @@ partial class Harness
         // A Garchomp leads: Flint's fire and Volkner's lightning do it little harm
         foreach (var (species, level) in new[] { ("Garchomp", 66), ("Torterra", 62), ("Staraptor", 60), ("Luxray", 60), ("Floatzel", 59), ("Lucario", 61) })
             team.Members.Add(new Pokemon(PokemonDatabase.Get(species)!, level));
-        foreach (var badge in Enum.GetValues<Badge>()) story.GiveBadge(badge);
+        story.SetBadges("Sinnoh", 0xFF);
 
         DialogueManager Box() => game.Dialogue;
         GameState State() => game.State;

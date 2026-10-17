@@ -602,7 +602,7 @@ public class ScriptTests
     [InlineData("script A\n end now", "more than the line needs")]
     [InlineData("script A\n emote self none", "no bubble")]
     [InlineData("script A\n givepokemon \"Starly\" 101", "1 to 100")]
-    [InlineData("script A\n givebadge marsh", "not a badge")]
+    [InlineData("script A\n givebadge glacier", "not a badge")]
     [InlineData("script A\n choose \"Which?\" \"Only one\"", "at least two answers")]
     [InlineData("script A\n fade sideways", "'out' or 'in'")]
     [InlineData("script A\n wait soon", "not a time")]
@@ -1049,7 +1049,7 @@ public class ScriptTests
             """, h => h.Money = 1000);
 
         Assert.Equal(new[] { "No Coal Badge yet.", "The Coal Badge!", "Two badges.", "Can't pay that.", "Paid.", "1200 left." }, Said(host));
-        Assert.Equal(0b11, host.Story.BadgeMask);
+        Assert.Equal(0b11, host.Story.BadgeMask("Sinnoh"));
     }
 
     [Fact]
