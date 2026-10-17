@@ -71,9 +71,9 @@ public static partial class DamageCalculator
     public static bool IsLiftedByMagnetism(Battler defender) =>
         defender.Volatile.MagnetRiseTurns > 0 && !IsHeldDown(defender);
 
-    /// <summary>Something keeps the Pokémon on the ground whatever its type or ability: Gravity, its own roots, an Iron Ball.</summary>
+    /// <summary>Something keeps the Pokémon on the ground whatever its type or ability: Gravity, its own roots, an Iron Ball, Smack Down.</summary>
     public static bool IsHeldDown(Battler b) =>
-        b.Field?.Gravity == true || b.Volatile.Ingrained || BattleEffects.Of(b).Any(e => e.GroundsHolder);
+        b.Field?.Gravity == true || b.Volatile.Ingrained || b.Volatile.SmackedDown || BattleEffects.Of(b).Any(e => e.GroundsHolder);
 
     /// <summary>Each of the target's types with what the move's type does against it, the immunities that don't hold left out.</summary>
     private static IEnumerable<(PokemonType Type, float Multiplier)> Matchups(Battler attacker, Battler defender, Move move, Ruleset rules)
@@ -108,9 +108,34 @@ public static partial class DamageCalculator
     public static bool IsGrounded(Battler b)
     {
         var effects = BattleEffects.Of(b).ToList();
-        if (b.Field?.Gravity == true || effects.Any(e => e.GroundsHolder)) return true;
+        // Smack Down brings a Pokémon down until it leaves the field (plan 06 · R24)
+        if (b.Field?.Gravity == true || b.Volatile.SmackedDown || effects.Any(e => e.GroundsHolder)) return true;
         bool floats = !b.Volatile.Ingrained && effects.Any(e => e.Levitates);
         return !floats && b.Volatile.MagnetRiseTurns == 0 && !b.HasType(PokemonType.Flying);
+    }
+
+    // ---- The later moves that hit with other numbers (plan 06 · R24; Showdown's data/moves.ts)
+
+    /// <summary>Foul Play: the target's Attack and its stage, with the user's own bonuses (<c>overrideOffensivePokemon: 'target'</c>).</summary>
+    public static bool TakesTheTargetsAttack(MoveData move) => move.Effect == "FoulPlay";
+
+    /// <summary>Psyshock, Psystrike and Secret Sword: a special move against the target's Defense (<c>overrideDefensiveStat: 'def'</c>).</summary>
+    public static bool HitsTheDefense(MoveData move) => move.Effect == "Psyshock";
+
+    /// <summary>Chip Away and Sacred Sword take no notice of the target's Defense stage, nor of its evasion (<c>ignoreDefensive</c>, <c>ignoreEvasion</c>).</summary>
+    public static bool IgnoresDefenseStages(MoveData move) => move.Effect == "ChipAway";
+
+    /// <summary>Storm Throw, Frost Breath and Wicked Blow: every hit is critical, unless the target or its side keeps critical hits off (<c>willCrit</c>).</summary>
+    public static bool AlwaysCritical(MoveData move) => move.Effect == "StormThrow";
+
+    /// <summary>Photon Geyser, Sunsteel Strike and Moongeist Beam go through the target's ability as Mold Breaker does (<c>ignoreAbility</c>).</summary>
+    public static bool IgnoresAbilities(MoveData move) => move.Effect is "PhotonGeyser" or "SunsteelStrike";
+
+    /// <summary>Photon Geyser is physical when its user's Attack at its stage is higher than its Sp. Atk at its stage (<c>getStat(stat, false, true)</c>).</summary>
+    public static bool PhysicalByStats(Battler user, MoveData move)
+    {
+        if (move.Effect != "PhotonGeyser" || user.Pokemon is not { } p) return false;
+        return Formulas.Staged(p.Attack, p.StatStages.GetValueOrDefault(StatType.Attack)) > Formulas.Staged(p.SpAttack, p.StatStages.GetValueOrDefault(StatType.SpAttack));
     }
 
     /// <summary>A terrain reaches the Pokémon (plan 06 · R19b; Showdown's terrains): it is on the ground and not up in the air, under the ground or the water.</summary>
@@ -150,7 +175,9 @@ public static partial class DamageCalculator
         var field = defender.Field;
         var weather = selfHit ? BattleWeather.None : field?.WeatherInEffect ?? BattleWeather.None;
         var attackerEffects = BattleEffects.Of(attacker).ToList();
-        bool breaksAbility = attackerEffects.Any(e => e.IgnoresTargetAbility);
+        bool breaksAbility = attackerEffects.Any(e => e.IgnoresTargetAbility) || IgnoresAbilities(move.Data);
+        // Photon Geyser hits as a physical move when its user's Attack at its stage is the higher (plan 06 · R24)
+        if (PhysicalByStats(attacker, move.Data) && move.Category == MoveCategory.Special) move = new Move(move.Data.OfCategory(MoveCategory.Physical), move.CurrentPP);
         var defenderEffects = BattleEffects.Of(defender, includeAbility: !breaksAbility).ToList();
 
         result.TypeMultiplier = typeless ? 1f : Effectiveness(attacker, defender, move, rules);
@@ -170,8 +197,12 @@ public static partial class DamageCalculator
         bool physical = move.Category == MoveCategory.Physical;
         bool typed = !typeless;
         var type = move.Type;
-        int attack = physical ? atkPokemon.Attack : atkPokemon.SpAttack;
-        int defense = physical ? defPokemon.Defense : defPokemon.SpDefense;
+        // The later moves that take another stat (plan 06 · R24): Foul Play the target's Attack and its stage,
+        // Psyshock the target's Defense against a special move
+        var offense = TakesTheTargetsAttack(move.Data) ? defPokemon : atkPokemon;
+        bool defensePhysical = physical || HitsTheDefense(move.Data);
+        int attack = physical ? offense.Attack : offense.SpAttack;
+        int defense = defensePhysical ? defPokemon.Defense : defPokemon.SpDefense;
 
         // The later games put the same bonuses in other places and chain them in 4096ths (plan 06 · R19c)
         if (rules.ModernDamageFormula)
@@ -199,11 +230,11 @@ public static partial class DamageCalculator
         if (!physical && myHold == "ChoiceSpatk") attack = attack * 150 / 100;
         bool frontier = field?.Frontier ?? false;
         if (!physical && myHold == "LatiSpecial" && !frontier && mySpecies is "Latios" or "Latias") attack = attack * 150 / 100;
-        if (!physical && theirHold == "LatiSpecial" && !frontier && theirSpecies is "Latios" or "Latias") defense = defense * 150 / 100;
+        if (!defensePhysical && theirHold == "LatiSpecial" && !frontier && theirSpecies is "Latios" or "Latias") defense = defense * 150 / 100;
         if (!physical && myHold == "ClamperlSpatk" && mySpecies == "Clamperl") attack *= 2;
-        if (!physical && theirHold == "ClamperlSpdef" && theirSpecies == "Clamperl") defense *= 2;
+        if (!defensePhysical && theirHold == "ClamperlSpdef" && theirSpecies == "Clamperl") defense *= 2;
         if (myHold == "PikaSpatkUp" && mySpecies == "Pikachu") power *= 2;
-        if (physical && theirHold == "DittoDefUp" && theirSpecies == "Ditto") defense *= 2;
+        if (defensePhysical && theirHold == "DittoDefUp" && theirSpecies == "Ditto") defense *= 2;
         if (physical && myHold == "CuboneAtkUp" && mySpecies is "Cubone" or "Marowak") attack *= 2;
         if (typed && myHold == "DialgaBoost" && mySpecies == "Dialga" && type is PokemonType.Dragon or PokemonType.Steel) power = power * (100 + myParam) / 100;
         if (typed && myHold == "PalkiaBoost" && mySpecies == "Palkia" && type is PokemonType.Dragon or PokemonType.Water) power = power * (100 + myParam) / 100;
@@ -213,7 +244,7 @@ public static partial class DamageCalculator
         if (typed && theirs == "Thick Fat" && type is PokemonType.Fire or PokemonType.Ice) power /= 2;
         if (physical && mine == "Hustle") attack = attack * 150 / 100;
         if (physical && mine == "Guts" && atkPokemon.Status != StatusCondition.None) attack = attack * 150 / 100;
-        if (physical && theirs == "Marvel Scale" && defPokemon.Status != StatusCondition.None) defense = defense * 150 / 100;
+        if (defensePhysical && theirs == "Marvel Scale" && defPokemon.Status != StatusCondition.None) defense = defense * 150 / 100;
         if (!physical && ((mine == "Plus" && SideHas(attacker, "Minus")) || (mine == "Minus" && SideHas(attacker, "Plus")))) attack = attack * 150 / 100;
         if (typed && field != null)
         {
@@ -250,8 +281,8 @@ public static partial class DamageCalculator
         if (typed && type == PokemonType.Fire && theirs == "Dry Skin") power = power * 125 / 100;
 
         // The stages: Simple doubles its holder's, Unaware ignores the other's, a critical hit the ones that would help the target
-        int attackStage = atkPokemon.StatStages.GetValueOrDefault(physical ? StatType.Attack : StatType.SpAttack);
-        int defenseStage = defPokemon.StatStages.GetValueOrDefault(physical ? StatType.Defense : StatType.SpDefense);
+        int attackStage = offense.StatStages.GetValueOrDefault(physical ? StatType.Attack : StatType.SpAttack);
+        int defenseStage = IgnoresDefenseStages(move.Data) ? 0 : defPokemon.StatStages.GetValueOrDefault(defensePhysical ? StatType.Defense : StatType.SpDefense);
         if (!rules.SimpleDoublesChanges)
         {
             if (mine == "Simple") attackStage = Math.Clamp(attackStage * 2, -6, 6);
@@ -271,11 +302,11 @@ public static partial class DamageCalculator
         if (mine == "Iron Fist" && (move.Data.Flags & MoveFlags.Punch) != 0) power = power * 12 / 10;
         if (!physical && mine == "Solar Power" && weather == BattleWeather.Sun) attack = attack * 15 / 10;
         // A sandstorm hardens Rock types against special moves; Flower Gift's sun for a side's Attack and Sp. Def; Explosion finds half a Defense
-        if (!physical && weather == BattleWeather.Sandstorm && defender.HasType(PokemonType.Rock)) defense = defense * 15 / 10;
+        if (!defensePhysical && weather == BattleWeather.Sandstorm && defender.HasType(PokemonType.Rock)) defense = defense * 15 / 10;
         // Snow hardens Ice types against physical moves as a sandstorm hardens Rock types (plan 06 · R19b)
-        if (physical && !selfHit && field?.SkyInEffect == BattleWeather.Snow && defender.HasType(PokemonType.Ice)) defense = defense * 15 / 10;
+        if (defensePhysical && !selfHit && field?.SkyInEffect == BattleWeather.Snow && defender.HasType(PokemonType.Ice)) defense = defense * 15 / 10;
         if (physical && weather == BattleWeather.Sun && SideHas(attacker, "Flower Gift")) attack = attack * 15 / 10;
-        if (!physical && weather == BattleWeather.Sun && !breaksAbility && SideHas(defender, "Flower Gift")) defense = defense * 15 / 10;
+        if (!defensePhysical && weather == BattleWeather.Sun && !breaksAbility && SideHas(defender, "Flower Gift")) defense = defense * 15 / 10;
         if (rules.ExplosionHalvesDefense && move.Data.Effect == "HalveDefense") defense /= 2;
         power = Math.Max(1, power);
 
@@ -346,7 +377,8 @@ public static partial class DamageCalculator
         bool breaks = attackerEffects.Any(e => e.IgnoresTargetAbility);
         var defenderEffects = BattleEffects.Of(defender, includeAbility: !breaks).ToList();
         int stage = move.Data.CritStage + critBonus + attackerEffects.Sum(e => e.CritStageBonus) + ItemCritStages(attacker) + (attacker.Volatile.FocusEnergy ? 2 : 0);
-        bool rolled = rng.Roll(RollKind.Critical, rules.CriticalOdds[Math.Clamp(stage, 0, 4)]) == 0;
+        // Storm Throw, Frost Breath and Wicked Blow are critical with no roll (Showdown's willCrit; plan 06 · R24)
+        bool rolled = AlwaysCritical(move.Data) || rng.Roll(RollKind.Critical, rules.CriticalOdds[Math.Clamp(stage, 0, 4)]) == 0;
         return rolled && !defenderEffects.Any(e => e.PreventsCriticalHits) && defender.Field?.Side(defender.Side).LuckyChant != true;
     }
 

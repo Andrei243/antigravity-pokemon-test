@@ -168,6 +168,15 @@ public static class MoveEffects
         390, 396, 397, 405, 406, 412, 467, 469
     };
 
+    /// <summary>
+    /// Later moves whose PokeAPI effect id says less than the move does, by the name the engine runs them under
+    /// (plan 06 · R24): Photon Geyser's id is a plain hit's, though the move picks its side and ignores abilities.
+    /// </summary>
+    public static readonly Dictionary<string, string> LaterEffectNames = new()
+    {
+        ["Photon Geyser"] = "PhotonGeyser"
+    };
+
     /// <summary>Fills the side-effect fields of a later move from PokeAPI's move_meta. False when they can't hold it.</summary>
     public static bool FromMeta(MoveData m, CsvRow meta, IEnumerable<(int Stat, int Change)> statChanges, bool selfTargeted)
     {

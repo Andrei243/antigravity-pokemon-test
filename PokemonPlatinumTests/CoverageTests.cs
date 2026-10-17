@@ -47,8 +47,8 @@ public class CoverageTests
         // then says; nothing ever lowers one.
         AtLeast(467, n.PlatinumMovesFully, "Platinum's moves fully run");
         AtLeast(467, n.PlatinumMovesFully + n.PlatinumMovesPartly, "Platinum's moves that at least hit");
-        AtLeast(119, n.LaterMovesFully, "later moves fully run");
-        AtLeast(291, n.LaterMovesFully + n.LaterMovesPartly, "later moves that at least hit");
+        AtLeast(180, n.LaterMovesFully, "later moves fully run"); // plan 06 · R24, the first batch
+        AtLeast(312, n.LaterMovesFully + n.LaterMovesPartly, "later moves that at least hit");
         // All 123 since plan 06 · R7
         AtLeast(123, n.PlatinumAbilitiesRun, "Platinum's abilities with an effect");
         AtLeast(0, n.LaterAbilitiesRun, "later abilities with an effect");

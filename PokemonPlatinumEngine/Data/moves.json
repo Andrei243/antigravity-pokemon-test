@@ -10618,7 +10618,6 @@
     "description": "Averages Defense and Special Defense with the target.",
     "flags": "Protect",
     "effect": "GuardSplit",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Speed"
@@ -10638,7 +10637,6 @@
     "description": "Averages Attack and Special Attack with the target.",
     "flags": "Protect",
     "effect": "PowerSplit",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Speed"
@@ -10679,7 +10677,6 @@
     "description": "Inflicts damage based on the target's Defense, not Special Defense.",
     "flags": "Protect, Mirror",
     "effect": "Psyshock",
-    "support": "Partial",
     "zPower": 160,
     "maxPower": 130
   },
@@ -10695,7 +10692,6 @@
     "description": "Inflicts double damage if the target is Poisoned.",
     "flags": "Protect, Mirror",
     "effect": "Venoshock",
-    "support": "Partial",
     "zPower": 120,
     "maxPower": 85
   },
@@ -10709,10 +10705,13 @@
     "accuracy": 0,
     "maxPP": 15,
     "description": "Raises the user's Speed by two stages and halves the user's weight.",
+    "targetStatChange": "Speed",
+    "statStageAmount": 2,
+    "statChangeTargetSelf": true,
+    "statChangeChancePercent": 100,
     "target": "User",
     "flags": "Snatch",
     "effect": "Autotomize",
-    "support": "None",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -10789,7 +10788,6 @@
     "flags": "Protect, Mirror",
     "effect": "SmackDown",
     "effectChance": 100,
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 100
   },
@@ -10805,7 +10803,6 @@
     "description": "Always scores a critical hit.",
     "flags": "Contact, Protect, Mirror",
     "effect": "StormThrow",
-    "support": "Partial",
     "zPower": 120,
     "maxPower": 80
   },
@@ -10821,7 +10818,6 @@
     "description": "Deals splash damage to Pokémon next to the target.",
     "flags": "Protect, Mirror",
     "effect": "FlameBurst",
-    "support": "Partial",
     "zPower": 140,
     "maxPower": 120
   },
@@ -10878,7 +10874,6 @@
     "description": "Power is higher when the user weighs more than the target, up to a maximum of 120.",
     "flags": "Contact, Protect, Mirror",
     "effect": "HeavySlam",
-    "support": "None",
     "zPower": 160,
     "maxPower": 130
   },
@@ -10895,7 +10890,6 @@
     "target": "AllOthers",
     "flags": "Protect, Mirror",
     "effect": "Synchronoise",
-    "support": "Partial",
     "zPower": 190,
     "maxPower": 140
   },
@@ -10911,7 +10905,6 @@
     "description": "Power is higher when the user has greater Speed than the target, up to a maximum of 150.",
     "flags": "Ballistic, Protect, Mirror",
     "effect": "ElectroBall",
-    "support": "None",
     "zPower": 160,
     "maxPower": 130
   },
@@ -10927,7 +10920,6 @@
     "description": "Changes the target's type to Water.",
     "flags": "Protect, Reflectable, Mirror",
     "effect": "Soak",
-    "support": "None",
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -11023,7 +11015,6 @@
     "description": "Calculates damage with the target's attacking stat.",
     "flags": "Contact, Protect, Mirror",
     "effect": "FoulPlay",
-    "support": "Partial",
     "zPower": 175,
     "maxPower": 130
   },
@@ -11039,7 +11030,6 @@
     "description": "Changes the target's ability to Simple.",
     "flags": "Protect, Reflectable, Mirror",
     "effect": "SimpleBeam",
-    "support": "None",
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -11059,7 +11049,6 @@
     "description": "Copies the user's ability onto the target.",
     "flags": "Protect, Reflectable, Mirror",
     "effect": "Entrainment",
-    "support": "None",
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -11114,7 +11103,6 @@
     "description": "Power increases by 100% for each consecutive use by any friendly Pokémon, to a maximum of 200.",
     "flags": "Sound, Protect, Mirror",
     "effect": "EchoedVoice",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 90
   },
@@ -11130,7 +11118,6 @@
     "description": "Ignores the target's stat modifiers.",
     "flags": "Contact, Protect, Mirror",
     "effect": "ChipAway",
-    "support": "Partial",
     "zPower": 140,
     "maxPower": 120
   },
@@ -11146,7 +11133,6 @@
     "description": "Removes all of the target's stat modifiers.",
     "flags": "Protect, Mirror",
     "effect": "ClearSmog",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 75
   },
@@ -11162,7 +11148,6 @@
     "description": "Power is higher the more the user's stats have been raised, to a maximum of 31×.",
     "flags": "Protect, Mirror",
     "effect": "StoredPower",
-    "support": "Partial",
     "zPower": 160,
     "maxPower": 130
   },
@@ -11238,7 +11223,6 @@
     "target": "User",
     "flags": "Snatch",
     "effect": "ShellSmash",
-    "support": "None",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -11254,8 +11238,8 @@
     "maxPP": 10,
     "description": "Heals the target for half its max HP.",
     "flags": "Pulse, Protect, Reflectable",
+    "healPercent": 50,
     "effect": "HealPulse",
-    "support": "None",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -11272,7 +11256,6 @@
     "description": "Has double power if the target has a major status ailment.",
     "flags": "Protect, Mirror",
     "effect": "Hex",
-    "support": "Partial",
     "zPower": 160,
     "maxPower": 120
   },
@@ -11305,7 +11288,6 @@
     "target": "User",
     "flags": "Snatch",
     "effect": "ShiftGear",
-    "support": "None",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -11323,7 +11305,6 @@
     "description": "Ends wild battles. Forces trainers to switch Pokémon.",
     "flags": "Contact, Protect, Mirror",
     "effect": "CircleThrow",
-    "support": "Partial",
     "zPower": 120,
     "maxPower": 80
   },
@@ -11340,7 +11321,6 @@
     "target": "AllFoes",
     "flags": "Protect, Mirror",
     "effect": "Incinerate",
-    "support": "Partial",
     "zPower": 120,
     "maxPower": 110
   },
@@ -11376,7 +11356,6 @@
     "description": "Has double power if the user has no held item.",
     "flags": "Contact, Protect, Mirror",
     "effect": "Acrobatics",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 110
   },
@@ -11392,7 +11371,6 @@
     "description": "User becomes the target's type.",
     "flags": "Protect",
     "effect": "ReflectType",
-    "support": "None",
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -11412,7 +11390,6 @@
     "description": "Has double power if a friendly Pokémon fainted last turn.",
     "flags": "Contact, Protect, Mirror",
     "effect": "Retaliate",
-    "support": "Partial",
     "zPower": 140,
     "maxPower": 120
   },
@@ -11428,7 +11405,6 @@
     "description": "Inflicts damage equal to the user's remaining HP. User faints.",
     "flags": "Protect",
     "effect": "FinalGambit",
-    "support": "None",
     "zPower": 180,
     "maxPower": 100
   },
@@ -11444,7 +11420,6 @@
     "description": "Gives the user's held item to the target.",
     "flags": "Mirror",
     "effect": "Bestow",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Speed"
@@ -11580,7 +11555,6 @@
     "flags": "Protect, Mirror",
     "effect": "StormThrow",
     "effectChance": 100,
-    "support": "Partial",
     "zPower": 120,
     "maxPower": 110
   },
@@ -11597,7 +11571,6 @@
     "description": "Ends wild battles. Forces trainers to switch Pokémon.",
     "flags": "Contact, Protect, Mirror",
     "effect": "CircleThrow",
-    "support": "Partial",
     "zPower": 120,
     "maxPower": 110
   },
@@ -11687,7 +11660,6 @@
     "description": "Hits twice in one turn.",
     "flags": "Contact, Protect, Mirror",
     "effect": "HitTwice",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 130
   },
@@ -11733,7 +11705,6 @@
     "description": "Ignores the target's stat modifiers.",
     "flags": "Contact, Protect, Mirror",
     "effect": "ChipAway",
-    "support": "Partial",
     "zPower": 175,
     "maxPower": 90
   },
@@ -11766,7 +11737,6 @@
     "description": "Power is higher when the user weighs more than the target, up to a maximum of 120.",
     "flags": "Contact, Protect, Mirror",
     "effect": "HeavySlam",
-    "support": "None",
     "zPower": 160,
     "maxPower": 130
   },
@@ -11853,7 +11823,6 @@
     "description": "Inflicts damage based on the target's Defense, not Special Defense.",
     "flags": "Protect, Mirror",
     "effect": "Psyshock",
-    "support": "Partial",
     "zPower": 180,
     "maxPower": 130
   },
@@ -11869,7 +11838,6 @@
     "description": "Hits 2-5 times in one turn.",
     "flags": "Contact, Protect, Mirror",
     "effect": "MultiHit",
-    "support": "Partial",
     "zPower": 140,
     "maxPower": 130
   },
@@ -11887,7 +11855,6 @@
     "flags": "Protect, Mirror",
     "effect": "Hurricane",
     "effectChance": 30,
-    "support": "Partial",
     "zPower": 185,
     "maxPower": 140
   },
@@ -11918,7 +11885,6 @@
     "description": "Hits twice in one turn.",
     "flags": "Contact, Protect, Mirror",
     "effect": "HitTwice",
-    "support": "Partial",
     "zPower": 180,
     "maxPower": 130
   },
@@ -11983,7 +11949,6 @@
     "description": "Inflicts damage based on the target's Defense, not Special Defense.",
     "flags": "Protect, Mirror",
     "effect": "Psyshock",
-    "support": "Partial",
     "zPower": 160,
     "maxPower": 90
   },
@@ -12070,7 +12035,6 @@
     "flags": "Protect, Mirror",
     "effect": "FreezeShock",
     "effectChance": 30,
-    "support": "Partial",
     "zPower": 200,
     "maxPower": 140
   },
@@ -12089,7 +12053,6 @@
     "flags": "Protect, Mirror",
     "effect": "IceBurn",
     "effectChance": 30,
-    "support": "Partial",
     "zPower": 200,
     "maxPower": 140
   },
@@ -12160,7 +12123,6 @@
     "description": "With Fusion Bolt, inflicts double damage.",
     "flags": "Protect, Mirror",
     "effect": "FusionFlare",
-    "support": "Partial",
     "zPower": 180,
     "maxPower": 130
   },
@@ -12176,7 +12138,6 @@
     "description": "With Fusion Flare, inflicts double damage.",
     "flags": "Protect, Mirror",
     "effect": "FusionBolt",
-    "support": "Partial",
     "zPower": 180,
     "maxPower": 130
   },
@@ -12267,7 +12228,6 @@
     "target": "FoeSide",
     "flags": "Reflectable",
     "effect": "StickyWeb",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Speed"
@@ -12571,7 +12531,6 @@
     "description": "For five turns, heals all Pokémon on the ground for 1/16 max HP each turn and strengthens their Grass moves to 1.5× their power.",
     "target": "Field",
     "effect": "GrassyTerrain",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Defense"
@@ -12591,7 +12550,6 @@
     "description": "For five turns, protects all Pokémon on the ground from major status ailments and confusion, and halves the power of incoming Dragon moves.",
     "target": "Field",
     "effect": "MistyTerrain",
-    "support": "None",
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -13034,7 +12992,6 @@
     "description": "For five turns, prevents all Pokémon on the ground from sleeping and strengthens their Electric moves to 1.5× their power.",
     "target": "Field",
     "effect": "ElectricTerrain",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Speed"
@@ -13171,7 +13128,6 @@
     "flags": "Contact, Protect, Mirror",
     "effect": "BindHit",
     "effectChance": 100,
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 90
   },
@@ -13695,7 +13651,6 @@
     "description": "Ignores the target's stat modifiers.",
     "flags": "Contact, Protect, Mirror",
     "effect": "ChipAway",
-    "support": "Partial",
     "zPower": 160,
     "maxPower": 130
   },
@@ -13962,7 +13917,6 @@
     "description": "Protects Pokémon on the ground from priority moves and increases the power of their Psychic moves by 50%.",
     "target": "Field",
     "effect": "PsychicTerrain",
-    "support": "None",
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -14016,7 +13970,6 @@
     "description": "Power is higher the more the user's stats have been raised, to a maximum of 31×.",
     "flags": "Contact, Protect, Mirror",
     "effect": "StoredPower",
-    "support": "Partial",
     "zPower": 160,
     "maxPower": 130
   },
@@ -14242,7 +14195,6 @@
     "target": "UserSide",
     "flags": "Snatch",
     "effect": "AuroraVeil",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Speed"
@@ -14535,7 +14487,6 @@
     "description": "Cannot be disrupted by abilities.",
     "flags": "Contact, Protect, Mirror",
     "effect": "SunsteelStrike",
-    "support": "Partial",
     "zPower": 180,
     "maxPower": 130
   },
@@ -14551,7 +14502,6 @@
     "description": "Cannot be disrupted by abilities.",
     "flags": "Protect, Mirror",
     "effect": "SunsteelStrike",
-    "support": "Partial",
     "zPower": 180,
     "maxPower": 130
   },
@@ -14682,6 +14632,7 @@
     "maxPP": 5,
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Protect, Mirror",
+    "effect": "PhotonGeyser",
     "zPower": 180,
     "maxPower": 130
   },
@@ -14978,10 +14929,10 @@
     "accuracy": 100,
     "maxPP": 5,
     "description": "Hits twice in one turn.",
+    "flinchChancePercent": 30,
     "flags": "Contact, Punch, Protect, Mirror",
     "effect": "HitTwice",
     "effectChance": 30,
-    "support": "Partial",
     "zPower": 180,
     "maxPower": 140
   },
@@ -15543,7 +15494,6 @@
     "flags": "Contact, Protect, Mirror",
     "effect": "BindHit",
     "effectChance": 100,
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 90
   },
@@ -16113,7 +16063,6 @@
     "flags": "Contact, Protect, Mirror",
     "effect": "HitThreeTimes",
     "effectChance": 100,
-    "support": "Partial",
     "zPower": 120,
     "maxPower": 140
   },
@@ -16130,7 +16079,6 @@
     "flags": "Contact, Protect, Mirror",
     "effect": "HitTwice",
     "effectChance": 100,
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 130
   },
@@ -16178,7 +16126,6 @@
     "flags": "Contact, Punch, Protect, Mirror",
     "effect": "StormThrow",
     "effectChance": 100,
-    "support": "Partial",
     "zPower": 140,
     "maxPower": 130
   },
@@ -16212,7 +16159,6 @@
     "flags": "Protect, Mirror",
     "effect": "BindHit",
     "effectChance": 100,
-    "support": "Partial",
     "zPower": 160,
     "maxPower": 130
   },
