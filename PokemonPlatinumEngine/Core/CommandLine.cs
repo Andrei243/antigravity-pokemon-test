@@ -15,7 +15,7 @@ public sealed record LaunchOptions
     /// <summary><c>--help</c>: print the switches and exit.</summary>
     public bool Help { get; init; }
 
-    /// <summary><c>--region Sinnoh</c>: new games start in this region instead of the first, for testing.</summary>
+    /// <summary><c>--region Kanto</c>: new games start in this region instead of Sinnoh, for testing.</summary>
     public string? Region { get; init; }
 
     /// <summary><c>--windowed</c> and <c>--fullscreen</c>: how the window opens this time, whatever the options say.</summary>
@@ -124,7 +124,7 @@ public static class CommandLine
     public static readonly IReadOnlyList<Switch> Switches = new Switch[]
     {
         new("--help", null, "Show this and exit.", (o, _) => o with { Help = true }) { Aliases = new[] { "-h", "-?", "/?" } },
-        new("--region", "name", $"New games start in this region instead of the first, for testing: {string.Join(", ", RegionDatabase.All.Select(r => r.Id))}.",
+        new("--region", "name", $"New games start in this region instead of Sinnoh, for testing: {string.Join(", ", RegionDatabase.All.Select(r => r.Id))}.",
             (o, v) => o with { Region = v })
         {
             Check = v => RegionDatabase.Get(v) == null ? $"There is no region '{v}'. The regions are {string.Join(", ", RegionDatabase.All.Select(r => r.Id))}." : null

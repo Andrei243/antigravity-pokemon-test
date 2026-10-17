@@ -256,4 +256,32 @@ public class RegionRecordTests
             try { Directory.Delete(folder, true); } catch (IOException) { }
         }
     }
+
+    [Fact]
+    public void ANewGameWithNoRegionNamedBeginsInSinnohsBedroomWithRowansIntroduction()
+    {
+        // Plan 18 · W10: nothing on the command line, nothing asked at NEW GAME
+        string folder = Path.Combine(Path.GetTempPath(), "region-record-" + Guid.NewGuid().ToString("N"));
+        Directory.CreateDirectory(folder);
+        var paths = SavePaths.Current;
+        try
+        {
+            SavePaths.Current = SavePaths.In(folder);
+            var engine = Headless();
+            Assert.Null(engine.NewGameRegion);
+            engine.StartNewGame();
+            Assert.Equal("Sinnoh", engine.Here.Id);
+            Assert.Equal("PlayerHouse2F", engine.Drive.Map.Name);
+            Assert.Equal(0, engine.Drive.Party.Count);
+            Assert.Equal("Barry", PlayerIdentity.RivalName);
+            engine.Close();
+        }
+        finally
+        {
+            SavePaths.Current = paths;
+            PlayerIdentity.SetRival(null);
+            Ruleset.Use(RulesPreset.Platinum);
+            try { Directory.Delete(folder, true); } catch (IOException) { }
+        }
+    }
 }

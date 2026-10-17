@@ -1,7 +1,7 @@
 # Plan 19 · Kanto
 Written 2026-10-06, before any session.
 
-**Goal**: the region a new game starts in, built in full in place of the stand-in Pallet Town: its map read from FireRed and LeafGreen's layouts, every town, route, cave and room from Pallet Town to the Indigo Plateau and the Sevii Islands beyond, its story from Oak's lab to the Hall of Fame in our own words on the original's beats, its gyms and badges, its trainers with their teams, its wild Pokémon, its music by role, and the ship from Vermilion City that takes a Champion on to Johto. Every species of Kanto is hand-built already, so this plan builds no model.
+**Goal**: the region after Sinnoh in the chain (plan 18 · W10: every new game begins in Sinnoh), built in full in place of the stand-in Pallet Town: its map read from FireRed and LeafGreen's layouts, every town, route, cave and room from Pallet Town to the Indigo Plateau and the Sevii Islands beyond, its story from Oak's lab to the Hall of Fame in our own words on the original's beats, its gyms and badges, its trainers with their teams, its wild Pokémon, its music by role, and the ship from Vermilion City that takes a Champion on to Johto. Every species of Kanto is hand-built already, so this plan builds no model.
 
 It follows the shape of plans 01 and 02 together: an import and the first areas, then chapters that open areas and write their scenes, each with its music and its trainers. It needs plan 18 (the regions framework and the GBA reader) before its first session. A full Kanto is already the decided shape of the game (the README's "Regions": a new game starts in Kanto, and its Hall of Fame opens the way to Johto by boat); this plan is the sessions that build it and the choice of its source.
 
@@ -88,7 +88,7 @@ A new `KantoTests` is to Kanto what `WorldTests` and `SouthWestTests` are to Sin
 - Music: `viridian_forest`, `gym`, `oak`, `follow_me`, `rival`, `battle_trainer`, `battle_gym`, `eye_boy`, `eye_girl`, the victories; the table of stand-in roles.
 - Tests: the chapter's story walk (a starter chosen, the Parcel delivered, the Pokédex had, the Boulder Badge won, Flash's gate open); the gates' table; in `MusicTests`, Kanto's `battle_rival` and `battle_elite_four` resolve to Kanto's songs and Sinnoh's roles to what they resolved to before.
 - Harness: `ks01`–`ks08` (Oak's stop, the choice, the first battle, Brock's hall, the badge's fanfare); `k11`–`k16`.
-- **Done when** the chapter plays from NEW GAME to Route 3 with every scene, and `--region Sinnoh` still begins with Rowan.
+- **Done when** the chapter plays from NEW GAME to Route 3 with every scene, and a plain NEW GAME still begins with Rowan in Sinnoh (plan 18 · W10).
 
 ### K4 · Mt. Moon to Vermilion
 - Mt. Moon (the fossils, which plan 06 · R16's fossils revive in K7, the Rocket grunts, the Moon Stone), Route 4, Cerulean City, Nugget Bridge, Bill's house, Misty and the Cascade Badge, the robbed house and the Dig TM, Routes 5 and 6 and the Underground Path, Vermilion City, the Fan Club's Bike Voucher and the Bicycle from Cerulean's shop (plan 02 · S2's Bicycle), the S.S. Anne (the rival, the captain, HM01 Cut), Lt. Surge's bin puzzle (its first switch drawn from `Dice`, as FireRed draws it at random) and the Thunder Badge, Diglett's Cave, Route 11. Team Rocket's classes, looks and roles.

@@ -6,21 +6,37 @@ using PokemonPlatinumEngine.Data;
 
 namespace PokemonPlatinumTests;
 
-/// <summary>The chain of regions: start in Kanto, finish each story to travel on to the next generation's region.</summary>
+/// <summary>The chain of regions: every game starts in Sinnoh, finish each story to travel on to the next region, Kanto onward in generation order.</summary>
 public class RegionTests
 {
     [Fact]
-    public void TestRegionsRunInGenerationOrderStartingInKanto()
+    public void TestRegionsRunSinnohFirstThenInGenerationOrder()
     {
         var regions = RegionDatabase.All;
 
-        Assert.Equal(RegionDatabase.Kanto, RegionDatabase.First.Id);
-        Assert.Equal(Enumerable.Range(1, regions.Count), regions.Select(r => r.Generation));
+        // Plan 18 · W10: every new game begins in Sinnoh, and the chain goes on from Kanto in generation order
+        Assert.Equal(RegionDatabase.Sinnoh, RegionDatabase.First.Id);
+        Assert.Equal(RegionDatabase.Sinnoh, regions[0].Id);
+        Assert.Equal(new[] { 4, 1, 2, 3, 5, 6, 7, 8, 9 }, regions.Select(r => r.Generation));
         Assert.Equal(regions.Count, regions.Select(r => r.Id).Distinct().Count());
+        Assert.Equal(
+            new[] { "Sinnoh", "Kanto", "Johto", "Hoenn", "Unova", "Kalos", "Alola", "Galar", "Paldea" },
+            regions.Select(r => r.Id));
     }
 
     [Fact]
-    public void TestEachRegionLinksOnlyToTheNextGenerationAndTheLastToNothing()
+    public void TestNothingOffersAChoiceOfWhereTheJourneyBegins()
+    {
+        // No title phase, save field or script asks where to begin: the first region starts every game, and the
+        // stand-in Kanto is reached through Sinnoh's Hall of Fame, or by --region or a tool
+        Assert.True(RegionDatabase.First.IsBuilt);
+        Assert.True(RegionDatabase.First.HasStory);
+        Assert.DoesNotContain(System.Enum.GetNames<PokemonPlatinumEngine.UI.TitlePhase>(), n => n.Contains("Region"));
+        Assert.DoesNotContain(typeof(SaveData).GetProperties(), p => p.Name is "StartRegion" or "OneRegion");
+    }
+
+    [Fact]
+    public void TestEachRegionLinksOnlyToTheNextInTheChainAndTheLastToNothing()
     {
         var regions = RegionDatabase.All;
         for (int i = 0; i < regions.Count - 1; i++)
@@ -31,6 +47,21 @@ public class RegionTests
         }
         Assert.Null(RegionDatabase.LinkFrom(regions[^1].Id));
         Assert.Equal(regions.Count - 1, RegionDatabase.Links.Count);
+    }
+
+    [Fact]
+    public void TestSinnohLeadsOnToKantoAndNothingLeadsBackToIt()
+    {
+        var link = RegionDatabase.LinkFrom(RegionDatabase.Sinnoh)!;
+        Assert.Equal(RegionDatabase.Kanto, link.To);
+        Assert.DoesNotContain(RegionDatabase.Links, l => l.To == RegionDatabase.Sinnoh);
+        Assert.Equal(RegionDatabase.Unova, RegionDatabase.LinkFrom(RegionDatabase.Hoenn)!.To);
+
+        // Finishing Sinnoh opens the way on to Kanto; the stand-in has maps, so the way is ready
+        var progress = new PokemonPlatinumEngine.Story.StoryState();
+        Assert.Equal(TravelCheck.StoryUnfinished, RegionDatabase.CheckTravel(link, progress));
+        progress.CompleteRegion(RegionDatabase.Sinnoh);
+        Assert.Equal(TravelCheck.Ready, RegionDatabase.CheckTravel(link, progress));
     }
 
     [Fact]
@@ -118,16 +149,16 @@ public class RegionTests
     public void TestFinishingTheRegionBeforeABuiltRegionLetsThePlayerTravel()
     {
         var progress = new PokemonPlatinumEngine.Story.StoryState();
-        var hoennToSinnoh = RegionDatabase.LinkFrom(RegionDatabase.Hoenn)!;
+        var sinnohToKanto = RegionDatabase.LinkFrom(RegionDatabase.Sinnoh)!;
 
-        Assert.Equal(TravelCheck.StoryUnfinished, RegionDatabase.CheckTravel(hoennToSinnoh, progress));
+        Assert.Equal(TravelCheck.StoryUnfinished, RegionDatabase.CheckTravel(sinnohToKanto, progress));
 
         // Finishing an unrelated region doesn't help
-        progress.CompleteRegion(RegionDatabase.Kanto);
-        Assert.Equal(TravelCheck.StoryUnfinished, RegionDatabase.CheckTravel(hoennToSinnoh, progress));
-
         progress.CompleteRegion(RegionDatabase.Hoenn);
-        Assert.Equal(TravelCheck.Ready, RegionDatabase.CheckTravel(hoennToSinnoh, progress));
+        Assert.Equal(TravelCheck.StoryUnfinished, RegionDatabase.CheckTravel(sinnohToKanto, progress));
+
+        progress.CompleteRegion(RegionDatabase.Sinnoh);
+        Assert.Equal(TravelCheck.Ready, RegionDatabase.CheckTravel(sinnohToKanto, progress));
     }
 
     [Fact]

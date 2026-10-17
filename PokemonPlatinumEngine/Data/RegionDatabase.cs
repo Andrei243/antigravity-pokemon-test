@@ -107,8 +107,10 @@ public enum TravelCheck
 }
 
 /// <summary>
-/// The regions in generation order and the links that chain them: Kanto, then Johto by boat, then Hoenn and the
-/// rest, each reached from the one before.
+/// The regions in the order the journey takes them (plan 18 · W10, the user's answer of 2026-10-12): Sinnoh first,
+/// where every new game begins, then the others in generation order, Kanto, Johto, Hoenn, Unova and so on to Paldea,
+/// each reached from the one before by finishing its story. Nothing leads back from the last, and nothing is asked
+/// about where to begin.
 /// </summary>
 public static class RegionDatabase
 {
@@ -124,15 +126,6 @@ public static class RegionDatabase
 
     private static readonly Region[] regions =
     {
-        new()
-        {
-            Id = Kanto, Name = "Kanto", Generation = 1, File = RegionFiles.Load(Kanto),
-            // A stand-in Pallet Town until the Kanto chapter is built
-            Start = new MapSpot("PalletTown", 9, 9),
-            Maps = new[] { "PalletTown", "PalletPlayerHouse" }
-        },
-        new() { Id = Johto, Name = "Johto", Generation = 2 },
-        new() { Id = Hoenn, Name = "Hoenn", Generation = 3 },
         new()
         {
             Id = Sinnoh, Name = "Sinnoh", Generation = 4, File = RegionFiles.Load(Sinnoh),
@@ -306,6 +299,15 @@ public static class RegionDatabase
                 "PoketchCompany2F", "PoketchCompany3F",
             }
         },
+        new()
+        {
+            Id = Kanto, Name = "Kanto", Generation = 1, File = RegionFiles.Load(Kanto),
+            // A stand-in Pallet Town until the Kanto chapter is built
+            Start = new MapSpot("PalletTown", 9, 9),
+            Maps = new[] { "PalletTown", "PalletPlayerHouse" }
+        },
+        new() { Id = Johto, Name = "Johto", Generation = 2 },
+        new() { Id = Hoenn, Name = "Hoenn", Generation = 3 },
         new() { Id = Unova, Name = "Unova", Generation = 5 },
         new() { Id = Kalos, Name = "Kalos", Generation = 6 },
         new() { Id = Alola, Name = "Alola", Generation = 7 },
@@ -315,24 +317,26 @@ public static class RegionDatabase
 
     private static readonly RegionLink[] links =
     {
+        // Sinnoh first: the way on from its Hall of Fame, to the stand-in Kanto until plan 19 builds it. It has no
+        // attendant yet; plan 18 · W5 gives the crossing its vessel and its scene.
+        new() { From = Sinnoh, To = Kanto, Transport = Transport.Undecided },
         // As in HeartGold and SoulSilver, but the other way round: the ship sails from Vermilion to Olivine.
         // Pallet Town's pier stands in for Vermilion's harbour until Vermilion exists.
         new() { From = Kanto, To = Johto, Transport = Transport.Boat, DepartureMap = "PalletTown" },
         new() { From = Johto, To = Hoenn, Transport = Transport.Undecided },
-        new() { From = Hoenn, To = Sinnoh, Transport = Transport.Undecided },
-        new() { From = Sinnoh, To = Unova, Transport = Transport.Undecided },
+        new() { From = Hoenn, To = Unova, Transport = Transport.Undecided },
         new() { From = Unova, To = Kalos, Transport = Transport.Undecided },
         new() { From = Kalos, To = Alola, Transport = Transport.Undecided },
         new() { From = Alola, To = Galar, Transport = Transport.Undecided },
         new() { From = Galar, To = Paldea, Transport = Transport.Undecided }
     };
 
-    /// <summary>Every region, in generation order.</summary>
+    /// <summary>Every region, in the order of the journey: Sinnoh, then generation order from Kanto.</summary>
     public static IReadOnlyList<Region> All => regions;
 
     public static IReadOnlyList<RegionLink> Links => links;
 
-    /// <summary>The region a new game starts in.</summary>
+    /// <summary>The region every new game starts in: the chain's first, Sinnoh. Only a switch or a tool names another (<c>GameEngine.NewGameRegion</c>).</summary>
     public static Region First => regions[0];
 
     public static Region? Get(string id) =>
