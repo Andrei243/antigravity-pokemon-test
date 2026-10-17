@@ -1,0 +1,122 @@
+{
+  "displayName": {
+    "en": [
+      "Team Galactic Eterna Building"
+    ],
+    "text": [
+      "Clădirea Echipei Galactic din Eterna"
+    ]
+  },
+  "people": {
+    "grunt_m": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Team Galactic is hard at work finding the energy of tomorrow!"
+        ],
+        "text": [
+          "Echipa Galactic muncește din greu să găsească energia de mâine!"
+        ]
+      }
+    },
+    "grunt_f": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We study new kinds of energy here.",
+          "Pokémon hold a strange power inside them. We mean to draw it out and put it to use!"
+        ],
+        "text": [
+          "Aici studiem noi feluri de energie.",
+          "Pokémonii au înăuntrul lor o putere ciudată. Vrem s-o scoatem la iveală și s-o folosim!"
+        ]
+      }
+    },
+    "galactic_grunt_2": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: Snooping about? Snoops get stomped!"
+        ],
+        "text": [
+          "Galactic Grunt: Ai venit să iscodești? Iscoadele sunt călcate în picioare!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: Stomped myself... How embarrassing."
+        ],
+        "text": [
+          "Galactic Grunt: M-am călcat singur în picioare... Ce rușine."
+        ]
+      }
+    },
+    "galactic_grunt_1": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: Ha! You took the wrong stairs. Nothing up here but me!"
+        ],
+        "text": [
+          "Galactic Grunt: Ha! Ai luat-o pe scările greșite. Aici sus nu e nimic în afară de mine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: And now there's nothing up here but you. Off you go."
+        ],
+        "text": [
+          "Galactic Grunt: Și acum aici sus nu mai e nimic în afară de tine. Hai, pleacă."
+        ]
+      }
+    },
+    "3,12": {
+      "name": {
+        "en": [
+          "X Speed"
+        ],
+        "text": [
+          "X Speed"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "16,2": {
+      "en": [
+        "A poster on the wall: \"Forward, all of us, together!\" Team Galactic"
+      ],
+      "text": [
+        "Un afiș pe perete: „Înainte, cu toții, împreună!” Echipa Galactic"
+      ]
+    }
+  }
+}

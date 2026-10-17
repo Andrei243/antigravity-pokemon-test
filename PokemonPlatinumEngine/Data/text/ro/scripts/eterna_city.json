@@ -1,0 +1,608 @@
+{
+  "RivalAndCyrus": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Huh? Who's that?"
+      ],
+      "text": [
+        "Hm? Cine-i ăla?"
+      ]
+    },
+    {
+      "en": [
+        "Cyrus"
+      ],
+      "text": [
+        "Cyrus"
+      ]
+    },
+    {
+      "en": [
+        "...So this is the statue Eterna is so proud of."
+      ],
+      "text": [
+        "...Deci asta e statuia cu care se mândrește Eterna."
+      ]
+    },
+    {
+      "en": [
+        "Time and space, turning round each other in an endless spiral... and the people of Sinnoh still bow to the Pokémon said to rule them."
+      ],
+      "text": [
+        "Timpul și spațiul, rotindu-se unul în jurul celuilalt într-o spirală fără sfârșit... iar oamenii din Sinnoh încă se închină Pokémonului care le-ar stăpâni."
+      ]
+    },
+    {
+      "en": [
+        "An old myth. Its truth needs looking into..."
+      ],
+      "text": [
+        "Un mit vechi. Adevărul lui merită cercetat..."
+      ]
+    },
+    {
+      "en": [
+        "...Excuse me. You're in my way."
+      ],
+      "text": [
+        "...Scuză-mă. Îmi stai în cale."
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Oh, right! {player}! When we crashed into each other just now, I had the best idea!"
+      ],
+      "text": [
+        "A, da! {player}! Când ne-am ciocnit adineauri, mi-a venit cea mai tare idee!"
+      ]
+    },
+    {
+      "en": [
+        "The secret to being the greatest Trainer ever. Ready? Make sure every move you use hits!"
+      ],
+      "text": [
+        "Secretul ca să fii cel mai mare Antrenor din toate timpurile. Gata? Ai grijă ca fiecare mișcare de-a ta să nimerească!"
+      ]
+    },
+    {
+      "en": [
+        "And make sure every move the other side uses misses! Do both, and you can never, ever lose!"
+      ],
+      "text": [
+        "Și ai grijă ca fiecare mișcare a celuilalt să rateze! Fă-le pe amândouă și n-ai cum să pierzi, niciodată!"
+      ]
+    },
+    {
+      "en": [
+        "Unbeatable, that's what I'll be! Anyway, take a good look at the statue. Catch you later!"
+      ],
+      "text": [
+        "De neînvins, asta o să fiu! În fine, uită-te bine la statuie. Ne vedem!"
+      ]
+    }
+  ],
+  "Bump": [
+    {
+      "en": [
+        "Thud!!"
+      ],
+      "text": [
+        "Bum!!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Ow! Oh, it's you, {player}! You've come to see the Pokémon statue too, right? Come on, I'll show you the way!"
+      ],
+      "text": [
+        "Au! A, tu erai, {player}! Ai venit și tu să vezi statuia Pokémonului, nu? Hai, îți arăt eu drumul!"
+      ]
+    }
+  ],
+  "CynthiaCut": [
+    {
+      "en": [
+        "Cynthia"
+      ],
+      "text": [
+        "Cynthia"
+      ]
+    },
+    {
+      "en": [
+        "Oh, that device of yours... Is it a Pokédex? Now that brings back memories."
+      ],
+      "text": [
+        "O, aparatul ăla al tău... E un Pokédex? Ce amintiri îmi trezește."
+      ]
+    },
+    {
+      "en": [
+        "Forgive me for asking, but what's your name? ...{player}. I'll be sure to remember it."
+      ],
+      "text": [
+        "Iartă-mă că te întreb, dar cum te cheamă? ...{player}. O să țin minte."
+      ]
+    },
+    {
+      "en": [
+        "My name is Cynthia. I'm a Trainer, the same as you. Lately I've been reading up on Sinnoh's old myths. I can't help being curious."
+      ],
+      "text": [
+        "Eu sunt Cynthia. Sunt Antrenoare, ca și tine. În ultima vreme citesc despre miturile vechi ale Sinnoh-ului. Nu-mi pot stăpâni curiozitatea."
+      ]
+    },
+    {
+      "en": [
+        "There's a statue of an ancient Pokémon here in Eterna. Have you been to see it yet?"
+      ],
+      "text": [
+        "Aici, în Eterna, e o statuie a unui Pokémon străvechi. Ai fost s-o vezi?"
+      ]
+    },
+    {
+      "en": [
+        "The myths call it a Pokémon of tremendous power. Who knows? Travelling with a Pokédex, you may meet something like it yourself."
+      ],
+      "text": [
+        "Miturile spun că e un Pokémon de o putere uriașă. Cine știe? Călătorind cu un Pokédex, poate întâlnești și tu ceva asemănător."
+      ]
+    },
+    {
+      "en": [
+        "Oh, I know. Take this with you. It should come in handy."
+      ],
+      "text": [
+        "A, știu. Ia asta cu tine. O să-ți prindă bine."
+      ]
+    },
+    {
+      "en": [
+        "Cynthia"
+      ],
+      "text": [
+        "Cynthia"
+      ]
+    },
+    {
+      "en": [
+        "Don't forget, Cut can be used outside battle too. It clears the way to places you couldn't get to before."
+      ],
+      "text": [
+        "Nu uita, Cut se poate folosi și în afara luptei. Îți deschide drumul spre locuri unde nu puteai ajunge înainte."
+      ]
+    },
+    {
+      "en": [
+        "And that matters a great deal when you're filling a Pokédex, doesn't it? Good luck, {player}!"
+      ],
+      "text": [
+        "Iar asta contează mult când completezi un Pokédex, nu? Mult noroc, {player}!"
+      ]
+    },
+    {
+      "en": [
+        "Oh, one last thing. Please give my regards to Professor Rowan."
+      ],
+      "text": [
+        "A, încă un lucru. Te rog să-i transmiți salutări Profesorului Rowan."
+      ]
+    }
+  ],
+  "Gardenia": [
+    {
+      "en": [
+        "Gardenia"
+      ],
+      "text": [
+        "Gardenia"
+      ]
+    },
+    {
+      "en": [
+        "Hi! I'm Gardenia, the Gym Leader of this town!"
+      ],
+      "text": [
+        "Salut! Sunt Gardenia, Lidera Arenei din orașul ăsta!"
+      ]
+    },
+    {
+      "en": [
+        "My last challenger was a boy in a terrible hurry. {rival}, he said his name was. He told me all about you."
+      ],
+      "text": [
+        "Ultimul meu provocator a fost un băiat grăbit nevoie mare. {rival}, așa a zis că-l cheamă. Mi-a povestit totul despre tine."
+      ]
+    },
+    {
+      "en": [
+        "He said there was another challenger on the way, and I haven't been able to sit still since!"
+      ],
+      "text": [
+        "Mi-a zis că mai vine un provocator, și de atunci nu-mi găsesc locul!"
+      ]
+    },
+    {
+      "en": [
+        "In my Gym, nobody gets to battle the Leader until they've beaten every other Trainer in there first."
+      ],
+      "text": [
+        "În Arena mea, nimeni nu se luptă cu Lidera până nu-i învinge pe toți ceilalți Antrenori de acolo."
+      ]
+    },
+    {
+      "en": [
+        "I'll be waiting for you right at the back. Don't you dare disappoint me!"
+      ],
+      "text": [
+        "Te aștept chiar în fundul Arenei. Să nu cumva să mă dezamăgești!"
+      ]
+    }
+  ],
+  "Statue": [
+    {
+      "en": [
+        "Eterna City's statue of an ancient Pokémon. Something was fixed to its base once. Only the marks of the screws are left."
+      ],
+      "text": [
+        "Statuia unui Pokémon străvechi din Orașul Eterna. Pe soclu era prinsă cândva ceva. Au rămas doar urmele șuruburilor."
+      ]
+    }
+  ],
+  "GruntStatue": [
+    {
+      "en": [
+        "Galactic Grunt"
+      ],
+      "text": [
+        "Galactic Grunt"
+      ]
+    },
+    {
+      "en": [
+        "Oi, kid! Stay away from that statue!"
+      ],
+      "text": [
+        "Hei, puștiule! Stai departe de statuia aia!"
+      ]
+    },
+    {
+      "en": [
+        "Team Galactic is conducting an official investigation of it. Official, got it?"
+      ],
+      "text": [
+        "Echipa Galactic o cercetează oficial. Oficial, ai priceput?"
+      ]
+    }
+  ],
+  "GruntTough": [
+    {
+      "en": [
+        "Galactic Grunt"
+      ],
+      "text": [
+        "Galactic Grunt"
+      ]
+    },
+    {
+      "en": [
+        "Hey! You, the Trainer! Hand over your... er..."
+      ],
+      "text": [
+        "Hei! Tu, cu Pokémonii! Dă-mi încoace... ăă..."
+      ]
+    },
+    {
+      "en": [
+        "On second thoughts, you look like you can handle yourself. Keep your Pokémon. Off you go, then!"
+      ],
+      "text": [
+        "Stai, m-am răzgândit, se vede că te descurci. Păstrează-ți Pokémonii. Hai, valea!"
+      ]
+    }
+  ],
+  "GruntBuilding": [
+    {
+      "en": [
+        "Galactic Grunt"
+      ],
+      "text": [
+        "Galactic Grunt"
+      ]
+    },
+    {
+      "en": [
+        "Had a look at our building up the street? It went up in no time at all."
+      ],
+      "text": [
+        "Te-ai uitat la clădirea noastră din capul străzii? A fost gata cât ai zice pește."
+      ]
+    },
+    {
+      "en": [
+        "That's what you can do with Team Galactic's kind of money!"
+      ],
+      "text": [
+        "Asta poți face cu banii Echipei Galactic!"
+      ]
+    }
+  ],
+  "BugCatcherFriend": [
+    {
+      "en": [
+        "Bug Catcher"
+      ],
+      "text": [
+        "Vânătorul de insecte"
+      ]
+    },
+    {
+      "en": [
+        "My friend says Team Galactic took his favourite Pokémon off him."
+      ],
+      "text": [
+        "Prietenul meu zice că Echipa Galactic i-a luat Pokémonul preferat."
+      ]
+    },
+    {
+      "en": [
+        "I bet he's making it up. Team Galactic look so cool! They're nothing like ordinary crooks."
+      ],
+      "text": [
+        "Pun pariu că inventează. Echipa Galactic arată așa de bine! N-au nicio legătură cu niște hoți de rând."
+      ]
+    },
+    {
+      "en": [
+        "When you jump off your Bike, do you kick the stand down as you land? Doing it in one go looks so cool!"
+      ],
+      "text": [
+        "Când sari de pe bicicletă, lovești cricul în jos chiar când aterizezi? Dintr-o mișcare arată super!"
+      ]
+    }
+  ],
+  "BugCatcherBike": [
+    {
+      "en": [
+        "Bug Catcher"
+      ],
+      "text": [
+        "Vânătorul de insecte"
+      ]
+    },
+    {
+      "en": [
+        "Doesn't riding a Bike with the wind in your face feel amazing?"
+      ],
+      "text": [
+        "Nu-i așa că e grozav să mergi cu bicicleta cu vântul în față?"
+      ]
+    }
+  ],
+  "BikeNews": [
+    {
+      "en": [
+        "Whoa! You've got a Bicycle!"
+      ],
+      "text": [
+        "Uau! Ai bicicletă!"
+      ]
+    },
+    {
+      "en": [
+        "Take it down the Cycling Road, south of town. It goes all the way to Hearthome City, and it's fast and fun the whole way!"
+      ],
+      "text": [
+        "Du-te pe Drumul Bicicliștilor, la sud de oraș. Merge tocmai până în Orașul Hearthome și e rapid și distractiv tot drumul!"
+      ]
+    }
+  ],
+  "BlockWest": [
+    {
+      "en": [
+        "Bug Catcher"
+      ],
+      "text": [
+        "Vânătorul de insecte"
+      ]
+    }
+  ],
+  "WomanBuilding": [
+    {
+      "en": [
+        "Woman"
+      ],
+      "text": [
+        "Femeia"
+      ]
+    },
+    {
+      "en": [
+        "Ever since Team Galactic put up that building, the whole town has felt tense and gloomy."
+      ],
+      "text": [
+        "De când Echipa Galactic a ridicat clădirea aia, tot orașul pare încordat și posomorât."
+      ]
+    },
+    {
+      "en": [
+        "Whatever are they up to in there?"
+      ],
+      "text": [
+        "Oare ce pun la cale acolo înăuntru?"
+      ]
+    },
+    {
+      "en": [
+        "Team Galactic has packed up and gone. I wonder what will become of that building of theirs."
+      ],
+      "text": [
+        "Echipa Galactic și-a strâns lucrurile și a plecat. Mă întreb ce-o să se aleagă de clădirea lor."
+      ]
+    }
+  ],
+  "WomanUnderground": [
+    {
+      "en": [
+        "Woman"
+      ],
+      "text": [
+        "Femeia"
+      ]
+    },
+    {
+      "en": [
+        "Going down into the Underground with an Explorer Kit is such fun, isn't it?"
+      ],
+      "text": [
+        "Ce distractiv e să cobori în Subteran cu un Explorer Kit, nu-i așa?"
+      ]
+    }
+  ],
+  "KitNews": [
+    {
+      "en": [
+        "Oh, don't tell me you haven't got an Explorer Kit!"
+      ],
+      "text": [
+        "O, nu-mi spune că n-ai un Explorer Kit!"
+      ]
+    },
+    {
+      "en": [
+        "Go and have a word with the man who lives next door to the Pokémon Center."
+      ],
+      "text": [
+        "Du-te și vorbește cu omul care stă lângă Centrul Pokémon."
+      ]
+    }
+  ],
+  "BlockSouth": [
+    {
+      "en": [
+        "Woman"
+      ],
+      "text": [
+        "Femeia"
+      ]
+    }
+  ],
+  "CynthiaEgg": [
+    {
+      "en": [
+        "Cynthia"
+      ],
+      "text": [
+        "Cynthia"
+      ]
+    }
+  ],
+  "Cynthia": [
+    {
+      "en": [
+        "Good luck on your journey, {player}."
+      ],
+      "text": [
+        "Drum bun în călătoria ta, {player}."
+      ]
+    }
+  ],
+  "CynthiaOffer": [
+    {
+      "en": [
+        "Cynthia"
+      ],
+      "text": [
+        "Cynthia"
+      ]
+    },
+    {
+      "en": [
+        "Oh, there you are! I was hoping to find you. I have something nice for you: a Pokémon Egg. Will you take it?"
+      ],
+      "text": [
+        "O, aici erai! Speram să te găsesc. Am ceva frumos pentru tine: un Ou de Pokémon. Îl primești?"
+      ]
+    },
+    {
+      "en": [
+        "That's wonderful! I'm sure the Pokémon inside is happy about it too."
+      ],
+      "text": [
+        "Minunat! Sunt sigură că și Pokémonul dinăuntru se bucură."
+      ]
+    },
+    {
+      "en": [
+        "Keep the Egg with you, in your party. A Pokémon will hatch from it while you travel.",
+        "I'd be glad to think it might fill another page of your Pokédex. See you again!"
+      ],
+      "text": [
+        "Ține Oul cu tine, în echipă. Din el o să iasă un Pokémon în timp ce călătorești.",
+        "Mi-ar plăcea să cred că o să mai completeze o pagină din Pokédexul tău. Pe curând!"
+      ]
+    },
+    {
+      "en": [
+        "Oh? You have six Pokémon with you already. There's no room for an Egg.",
+        "Put one in a PC Box at the Pokémon Center first. I'll wait right here, and give you the Egg when you've made room."
+      ],
+      "text": [
+        "O? Ai deja șase Pokémoni cu tine. Nu mai e loc pentru un Ou.",
+        "Pune mai întâi unul într-o cutie a PC-ului de la Centrul Pokémon. Te aștept aici și-ți dau Oul când ai făcut loc."
+      ]
+    },
+    {
+      "en": [
+        "Oh...? You mustn't feel you have to.",
+        "Filling the pages of a Pokédex is hard work, isn't it? I only wanted to lend you a little hand, that's all."
+      ],
+      "text": [
+        "O...? Nu e nicio obligație, să știi.",
+        "E greu să umpli paginile unui Pokédex, nu? Voiam doar să-ți dau o mână de ajutor, atâta tot."
+      ]
+    }
+  ],
+  "CynthiaWaits": [
+    {
+      "en": [
+        "Cynthia"
+      ],
+      "text": [
+        "Cynthia"
+      ]
+    },
+    {
+      "en": [
+        "Oh, wait! Please don't go without this Pokémon Egg. I'd really like you to have it."
+      ],
+      "text": [
+        "O, stai! Te rog, nu pleca fără Oul ăsta de Pokémon. Chiar aș vrea să-l ai tu."
+      ]
+    }
+  ]
+}

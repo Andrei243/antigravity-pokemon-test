@@ -1,0 +1,46 @@
+{
+  "TV": [
+    {
+      "en": [
+        "The television has an unfriendly air about it...",
+        "It feels as if it were staring back."
+      ],
+      "text": [
+        "Televizorul are un aer neprietenos...",
+        "Parcă s-ar uita înapoi la tine."
+      ]
+    },
+    {
+      "en": [
+        "Something is moving inside the television... Is that a Pokémon?"
+      ],
+      "text": [
+        "Se mișcă ceva înăuntrul televizorului... E un Pokémon?"
+      ]
+    },
+    {
+      "en": [
+        "It looks as if it might come out. Give the set a thump?"
+      ],
+      "text": [
+        "Parcă ar vrea să iasă. Îi tragi aparatului o palmă?"
+      ]
+    },
+    {
+      "en": [
+        "{player} thumped the television!"
+      ],
+      "text": [
+        "{player} a lovit televizorul!"
+      ]
+    },
+    {
+      "en": [
+        "Rotom slipped back into the television..."
+      ],
+      "text": [
+        "Rotom s-a strecurat înapoi în televizor..."
+      ]
+    }
+  ]
+}

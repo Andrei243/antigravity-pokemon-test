@@ -26,7 +26,7 @@ partial class Harness
         {
             for (int i = 0; i < most; i++)
             {
-                if (text != null && Box().IsActive && Box().CurrentLine.Contains(text)) { Whole(); return; }
+                if (text != null && Box().IsActive && Translated.Saying(Box().CurrentLine, text)) { Whole(); return; }
                 if (!engine.ScriptRunning && !Box().IsActive && game.State == GameState.Overworld && (text == null || i > 60)) break;
                 if (engine.Choice.IsOpen) { Frames(1); engine.Choice.Back(); Frames(1); }
                 else if (Box().IsActive && !Box().IsCurrentLineComplete) { Box().FinishLine(); Frames(1); }

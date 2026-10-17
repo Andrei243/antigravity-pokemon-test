@@ -1,0 +1,50 @@
+{
+  "Clown": [
+    {
+      "en": [
+        "Watch this coin. Watch it closely!",
+        "And... spin!"
+      ],
+      "text": [
+        "Urmărește moneda asta. Urmărește-o cu atenție!",
+        "Și... se învârte!"
+      ]
+    },
+    {
+      "en": [
+        "Now then! Which hand is the coin in?",
+        "The right hand",
+        "The left hand"
+      ],
+      "text": [
+        "Ei bine! În ce mână e moneda?",
+        "Mâna dreaptă",
+        "Mâna stângă"
+      ]
+    },
+    {
+      "en": [
+        "Right you are! And for our winner: a case to keep coins in!"
+      ],
+      "text": [
+        "Ai ghicit! Iar pentru câștigător: o cutie în care să ții monede!"
+      ]
+    },
+    {
+      "en": [
+        "Wrong! What a poor show. The other hand, it was. Come, try again!"
+      ],
+      "text": [
+        "Greșit! Ce slab. Era în cealaltă mână. Hai, mai încearcă!"
+      ]
+    },
+    {
+      "en": [
+        "I gave away my case, and now I've nowhere to keep my coin. I am a tearful clown."
+      ],
+      "text": [
+        "Mi-am dat cutia, și acum n-am unde să-mi țin moneda. Sunt un clovn înlăcrimat."
+      ]
+    }
+  ]
+}

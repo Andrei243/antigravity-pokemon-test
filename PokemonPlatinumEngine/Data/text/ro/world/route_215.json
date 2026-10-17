@@ -1,0 +1,288 @@
+{
+  "people": {
+    "jogger_scott": {
+      "name": {
+        "en": [
+          "Scott"
+        ],
+        "text": [
+          "Scott"
+        ]
+      },
+      "before": {
+        "en": [
+          "Jogger Scott: Rain or shine, I run every morning. And I battle whoever I pass!"
+        ],
+        "text": [
+          "Alergător Scott: Ploaie sau soare, alerg în fiecare dimineață. Și mă lupt cu oricine întâlnesc!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Jogger Scott: Beaten and soaked. Same time tomorrow?"
+        ],
+        "text": [
+          "Alergător Scott: Învins și ud leoarcă. Mâine, la aceeași oră?"
+        ]
+      }
+    },
+    "jogger_craig": {
+      "name": {
+        "en": [
+          "Craig"
+        ],
+        "text": [
+          "Craig"
+        ]
+      },
+      "before": {
+        "en": [
+          "Jogger Craig: My Pokémon run with me every morning. Let's see if it shows!"
+        ],
+        "text": [
+          "Alergător Craig: Pokémonii mei aleargă cu mine în fiecare dimineață. Să vedem dacă se vede!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Jogger Craig: We'll add another lap to tomorrow's run."
+        ],
+        "text": [
+          "Alergător Craig: Mâine mai adăugăm o tură la alergare."
+        ]
+      }
+    },
+    "jogger_scott_no_battle": {
+      "name": {
+        "en": [
+          "Jogger"
+        ],
+        "text": [
+          "Alergătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm just warming down after my run. No battles now, I'm afraid.",
+          "In the morning I'll take on anyone!"
+        ],
+        "text": [
+          "Doar mă destind după alergare. Fără lupte acum, din păcate.",
+          "Dimineața mă iau la trântă cu oricine!"
+        ]
+      }
+    },
+    "jogger_craig_no_battle": {
+      "name": {
+        "en": [
+          "Jogger"
+        ],
+        "text": [
+          "Alergătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Splash, splash, splash... Running in the rain is harder than it looks.",
+          "If you want a battle, find me in the morning. That's when I'm at my best."
+        ],
+        "text": [
+          "Pleosc, pleosc, pleosc... Alergatul prin ploaie e mai greu decât pare.",
+          "Dacă vrei o luptă, caută-mă dimineața. Atunci sunt în cea mai bună formă."
+        ]
+      }
+    },
+    "black_belt": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          "Centură Neagră"
+        ]
+      }
+    },
+    "black_belt_derek": {
+      "name": {
+        "en": [
+          "Derek"
+        ],
+        "text": [
+          "Derek"
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Derek: Rain only makes training harder, and harder is better! Battle me!"
+        ],
+        "text": [
+          "Centură Neagră Derek: Ploaia doar face antrenamentul mai greu, iar mai greu înseamnă mai bine! Luptă-te cu mine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Derek: Soaked through and beaten. At least the soaking was good training."
+        ],
+        "text": [
+          "Centură Neagră Derek: Ud până la piele și învins. Măcar udătura a fost un antrenament bun."
+        ]
+      }
+    },
+    "black_belt_gregory": {
+      "name": {
+        "en": [
+          "Gregory"
+        ],
+        "text": [
+          "Gregory"
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Gregory: My Machop and I train as one. Let's see you handle all three of them!"
+        ],
+        "text": [
+          "Centură Neagră Gregory: Eu și Machop-ii mei ne antrenăm ca unul singur. Să te văd cum te descurci cu toți trei!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Gregory: Three of them, and not one could land the blow that mattered. Back to training!"
+        ],
+        "text": [
+          "Centură Neagră Gregory: Trei, și niciunul n-a dat lovitura care conta. Înapoi la antrenament!"
+        ]
+      }
+    },
+    "black_belt_nathaniel": {
+      "name": {
+        "en": [
+          "Nathaniel"
+        ],
+        "text": [
+          "Nathaniel"
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Nathaniel: Fists up! A real fighter never turns down a challenge!"
+        ],
+        "text": [
+          "Centură Neagră Nathaniel: Pumnii sus! Un luptător adevărat nu refuză niciodată o provocare!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Nathaniel: Hmph. A hundred more push-ups in the puddles for me."
+        ],
+        "text": [
+          "Centură Neagră Nathaniel: Hmf. Încă o sută de flotări prin bălți pentru mine."
+        ]
+      }
+    },
+    "ruin_maniac_calvin": {
+      "name": {
+        "en": [
+          "Calvin"
+        ],
+        "text": [
+          "Calvin"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ruin Maniac Calvin: I'm off to Celestic Town to study its ruins. You'll make a nice break on the way!"
+        ],
+        "text": [
+          "Pasionat de ruine Calvin: Plec în Orășelul Celestic să-i studiez ruinele. Tu o să fii o pauză plăcută pe drum!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ruin Maniac Calvin: I'll leave the battling to you and get back to my old stones."
+        ],
+        "text": [
+          "Pasionat de ruine Calvin: Îți las ție luptele și mă întorc la pietrele mele vechi."
+        ]
+      }
+    },
+    "ace_trainer_dennis": {
+      "name": {
+        "en": [
+          "Dennis"
+        ],
+        "text": [
+          "Dennis"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Dennis: Battling in the rain is all part of my training. Ready to get wet?"
+        ],
+        "text": [
+          "Antrenor As Dennis: Luptele în ploaie fac parte din antrenamentul meu. Ești gata să te uzi?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Dennis: You'd do well anywhere, rain or shine."
+        ],
+        "text": [
+          "Antrenor As Dennis: Te-ai descurca bine oriunde, ploaie sau soare."
+        ]
+      }
+    },
+    "ace_trainer_maya": {
+      "name": {
+        "en": [
+          "Maya"
+        ],
+        "text": [
+          "Maya"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Maya: Rain is good for the flowers, and for my team too! Here we go!"
+        ],
+        "text": [
+          "Antrenor As Maya: Ploaia e bună pentru flori, și pentru echipa mea la fel! Începem!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Maya: I'll dry off, think it over and come back stronger."
+        ],
+        "text": [
+          "Antrenor As Maya: Mă usuc, mă gândesc bine și revin mai puternică."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost_west": {
+      "en": [
+        "Route 215\nWest: Route 210"
+      ],
+      "text": [
+        "Ruta 215\nVest: Ruta 210"
+      ]
+    },
+    "arrow_signpost_veilstone_city": {
+      "en": [
+        "Route 215\nEast: Veilstone City"
+      ],
+      "text": [
+        "Ruta 215\nEst: Orașul Veilstone"
+      ]
+    },
+    "trainer_tips_signpost": {
+      "en": [
+        "Trainer Tips\nIn the rain, Water-type moves hit harder and Fire-type moves are weakened. Some Pokémon love a downpour!"
+      ],
+      "text": [
+        "Sfaturi pentru Antrenori\nPe ploaie, mișcările de tip Apă lovesc mai tare, iar cele de tip Foc slăbesc. Unii Pokémoni adoră o ploaie torențială!"
+      ]
+    }
+  }
+}

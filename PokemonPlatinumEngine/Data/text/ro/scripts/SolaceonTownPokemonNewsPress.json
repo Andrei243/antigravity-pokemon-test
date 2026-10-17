@@ -1,0 +1,76 @@
+{
+  "Editor": [
+    {
+      "en": [
+        "Oh? Come in, come in! You saw the notice outside, I take it?",
+        "Is that a Pokédex? Then you know Professor Rowan! You're exactly the Pokémon finder this paper has been looking for!",
+        "... Only the presses have jammed again, and there's no telling what our lead story needs until they run. Look in another day, will you?"
+      ],
+      "text": [
+        "O? Intră, intră! Ai văzut anunțul de afară, presupun?",
+        "Ăla e un Pokédex? Atunci îl știi pe Profesorul Rowan! Ești exact căutătorul de Pokémoni pe care-l caută ziarul ăsta!",
+        "... Doar că mașinile de tipar s-au blocat iar, și nu se știe de ce are nevoie articolul principal până nu pornesc. Mai treci altă zi, da?"
+      ]
+    },
+    {
+      "en": [
+        "Still jammed, I'm afraid. The moment these presses turn, I'll have a Pokémon for you to find. There'll be Poké Balls and a Heart Scale in it for you!"
+      ],
+      "text": [
+        "Tot blocate, din păcate. Cum pornesc mașinile astea, o să am un Pokémon de căutat pentru tine. Te așteaptă Poké Ball-uri și un Heart Scale!"
+      ]
+    }
+  ],
+  "Articles": [
+    {
+      "en": [
+        "Which article will you read?",
+        "The Dusk Ball",
+        "The Heal Ball",
+        "The Quick Ball",
+        "The Dive Ball",
+        "None"
+      ],
+      "text": [
+        "Ce articol citești?",
+        "Dusk Ball",
+        "Heal Ball",
+        "Quick Ball",
+        "Dive Ball",
+        "Niciunul"
+      ]
+    },
+    {
+      "en": [
+        "\"Caves and unlit streets are no place for the faint of heart. Pack some Dusk Balls! In the dark, nothing catches a Pokémon better. Keep the night at bay on your travels!\""
+      ],
+      "text": [
+        "„Peșterile și străzile neluminate nu sunt pentru cei slabi de înger. Luați Dusk Ball-uri! Pe întuneric, nimic nu prinde un Pokémon mai bine. Țineți noaptea la distanță în călătoriile voastre!”"
+      ]
+    },
+    {
+      "en": [
+        "\"Wear a Pokémon down, then throw: that is how it's done. But a Pokémon caught that way is in no state to battle. Not with the Heal Ball, which cures whatever ails the Pokémon it catches. The ball that's kind to Pokémon!\""
+      ],
+      "text": [
+        "„Slăbești un Pokémon, apoi arunci: așa se face. Dar un Pokémon prins așa nu e în stare să lupte. Nu și cu Heal Ball, care vindecă orice suferință a Pokémonului prins. Mingea blândă cu Pokémonii!”"
+      ]
+    },
+    {
+      "en": [
+        "\"You want the target's HP low before you throw. But a nimble Pokémon may bolt while you're at it. The answer is the Quick Ball, which works best thrown the moment a battle begins. For the Trainer in a hurry!\""
+      ],
+      "text": [
+        "„Vrei ca HP-ul țintei să fie mic înainte să arunci. Dar un Pokémon iute poate fugi între timp. Răspunsul e Quick Ball, care merge cel mai bine aruncat chiar când începe lupta. Pentru Antrenorii grăbiți!”"
+      ]
+    },
+    {
+      "en": [
+        "\"The Pokémon of the sea are not like the rest. For the brave who face them, there is the Dive Ball: for whatever you meet on the water, and whatever you pull up on a line.\""
+      ],
+      "text": [
+        "„Pokémonii mării nu sunt ca ceilalți. Pentru curajoșii care-i înfruntă, există Dive Ball: pentru orice întâlnești pe apă și orice scoți cu undița.”"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,312 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Cynthia"
+      ],
+      "text": [
+        "Cynthia"
+      ]
+    },
+    {
+      "en": [
+        "{player}! Is everyone all right here? You saw those people and their Galactic Bomb, didn't you?"
+      ],
+      "text": [
+        "{player}! E toată lumea bine aici? I-ai văzut pe oamenii ăia cu Bomba lor Galactic, nu?"
+      ]
+    },
+    {
+      "en": [
+        "Team Galactic... I took them for a harmless crowd. The strange outfits, the grand talk about making a new universe..."
+      ],
+      "text": [
+        "Echipa Galactic... Îi credeam o gașcă nevinovată. Costumele ciudate, vorbele mari despre facerea unui univers nou..."
+      ]
+    },
+    {
+      "en": [
+        "I thought it was all just talk, nothing to take seriously. But they're turning out to be far more trouble than I imagined."
+      ],
+      "text": [
+        "Credeam că sunt doar vorbe, nimic de luat în serios. Dar se dovedesc a fi mult mai periculoși decât îmi închipuiam."
+      ]
+    },
+    {
+      "en": [
+        "Trying to keep Pokémon all to themselves? That I can't forgive."
+      ],
+      "text": [
+        "Să încerce să păstreze Pokémonii doar pentru ei? Asta nu pot ierta."
+      ]
+    }
+  ],
+  "Library": [
+    {
+      "en": [
+        "Cynthia"
+      ],
+      "text": [
+        "Cynthia"
+      ]
+    },
+    {
+      "en": [
+        "By the way, did you enjoy the ruins? If they caught your interest, there's a library in Canalave City."
+      ],
+      "text": [
+        "Apropo, ți-au plăcut ruinele? Dacă ți-au stârnit interesul, e o bibliotecă în Orașul Canalave."
+      ]
+    },
+    {
+      "en": [
+        "It's full of old books, and you can read up on Sinnoh's history there. It might even help with your Pokédex."
+      ],
+      "text": [
+        "E plină de cărți vechi și poți citi acolo despre istoria Sinnoh-ului. Poate te ajută chiar și cu Pokédexul."
+      ]
+    },
+    {
+      "en": [
+        "The quickest way to Canalave City is west from Jubilife City."
+      ],
+      "text": [
+        "Cel mai scurt drum spre Orașul Canalave e spre vest, din Orașul Jubilife."
+      ]
+    }
+  ],
+  "Spaceman": [
+    {
+      "en": [
+        "Elder"
+      ],
+      "text": [
+        "Bătrâna înțeleaptă"
+      ]
+    },
+    {
+      "en": [
+        "There's a peculiar sort of spaceman standing in front of our ruins. There's nothing in there for him, and that only seems to make him crosser."
+      ],
+      "text": [
+        "În fața ruinelor noastre stă un fel de cosmonaut ciudat. Nu e nimic acolo pentru el, și asta pare să-l înfurie și mai tare."
+      ]
+    },
+    {
+      "en": [
+        "Now he says he'll blow the whole town up with a bomb... The cheek of it!"
+      ],
+      "text": [
+        "Acum zice că aruncă tot orășelul în aer cu o bombă... Ce obrăznicie!"
+      ]
+    },
+    {
+      "en": [
+        "If I were only a little younger, my Pokémon and I would teach that spaceman some manners..."
+      ],
+      "text": [
+        "Dacă aș fi fost ceva mai tânără, eu și Pokémonii mei l-am fi învățat minte pe cosmonautul ăla..."
+      ]
+    }
+  ],
+  "Elder": [
+    {
+      "en": [
+        "Elder"
+      ],
+      "text": [
+        "Bătrâna înțeleaptă"
+      ]
+    },
+    {
+      "en": [
+        "You've come all the way up to Celestic Town. Don't hurry off: take a good look round the ruins."
+      ],
+      "text": [
+        "Ai urcat tocmai până în Orășelul Celestic. Nu te grăbi să pleci: uită-te bine prin ruine."
+      ]
+    }
+  ],
+  "Grunt": [
+    {
+      "en": [
+        "Galactic Grunt"
+      ],
+      "text": [
+        "Galactic Grunt"
+      ]
+    },
+    {
+      "en": [
+        "This town's a relic! There's nothing here worth a thing. Nobody needs it, so I'm going to blow it sky-high with a Galactic Bomb!"
+      ],
+      "text": [
+        "Orășelul ăsta e o relicvă! Nu e nimic aici care să valoreze ceva. Nimeni n-are nevoie de el, așa că-l arunc în aer cu o Bombă Galactic!"
+      ]
+    },
+    {
+      "en": [
+        "Get in my way and I'll knock you flat in a battle. So, what'll it be? You going to get in my way?"
+      ],
+      "text": [
+        "Bagă-te în calea mea și te pun la pământ într-o luptă. Deci, ce faci? Te bagi în calea mea?"
+      ]
+    },
+    {
+      "en": [
+        "You'd stand up to Team Galactic? Then you're standing up to the whole world... no, the whole universe!"
+      ],
+      "text": [
+        "Ții piept Echipei Galactic? Atunci ții piept lumii întregi... nu, universului întreg!"
+      ]
+    },
+    {
+      "en": [
+        "Galactic Grunt"
+      ],
+      "text": [
+        "Galactic Grunt"
+      ]
+    },
+    {
+      "en": [
+        "Too tough... I can't get anything done here..."
+      ],
+      "text": [
+        "Prea tare... Nu reușesc nimic aici..."
+      ]
+    },
+    {
+      "en": [
+        "Who cares about this backwater anyway? I'm glad to see the back of it!"
+      ],
+      "text": [
+        "Cui îi pasă de fundătura asta, oricum? Mă bucur că scap de ea!"
+      ]
+    },
+    {
+      "en": [
+        "Smart kid! You know what's good for you."
+      ],
+      "text": [
+        "Bună alegere! Știi ce-ți face bine."
+      ]
+    },
+    {
+      "en": [
+        "Team Galactic came all the way out to the sticks for everybody's sake. We appreciate your cooperation."
+      ],
+      "text": [
+        "Echipa Galactic a venit tocmai la coada vacii spre binele tuturor. Vă mulțumim pentru cooperare."
+      ]
+    },
+    {
+      "en": [
+        "...Now where's my partner got to?"
+      ],
+      "text": [
+        "...Acum, unde a dispărut partenerul meu?"
+      ]
+    },
+    {
+      "en": [
+        "Elder"
+      ],
+      "text": [
+        "Bătrâna înțeleaptă"
+      ]
+    },
+    {
+      "en": [
+        "My, weren't you magnificent! Quite the Trainer, aren't you? As the elder of Celestic Town, you have my thanks."
+      ],
+      "text": [
+        "Vai, ce luptă minunată! Ce Antrenor, nu glumă! Ca bătrână înțeleaptă a Orășelului Celestic, îți mulțumesc."
+      ]
+    },
+    {
+      "en": [
+        "Oh? Is that an Old Charm you have there? Might I see it, dear?"
+      ],
+      "text": [
+        "O? Ai acolo un Old Charm? Pot să-l văd, dragă?"
+      ]
+    },
+    {
+      "en": [
+        "...What's this? Cynthia asked you to bring it to me? That girl! She's my granddaughter, you know."
+      ],
+      "text": [
+        "...Ce-i asta? Cynthia te-a rugat să mi-l aduci? Fata asta! E nepoata mea, să știi."
+      ]
+    },
+    {
+      "en": [
+        "{player} handed the Old Charm to the elder."
+      ],
+      "text": [
+        "{player} i-a dat bătrânei înțelepte Old Charm-ul."
+      ]
+    },
+    {
+      "en": [
+        "Elder"
+      ],
+      "text": [
+        "Bătrâna înțeleaptă"
+      ]
+    },
+    {
+      "en": [
+        "Charms like this were made here in Celestic Town, long, long ago, in honour of the deity said to have made Sinnoh."
+      ],
+      "text": [
+        "Amulete ca asta se făceau aici, în Orășelul Celestic, demult de tot, în cinstea zeității despre care se spune că a făcut Sinnoh-ul."
+      ]
+    },
+    {
+      "en": [
+        "One still turns up every so often."
+      ],
+      "text": [
+        "Încă mai apare câte una din când în când."
+      ]
+    },
+    {
+      "en": [
+        "Now that you're here in Celestic Town, why not have a look inside the ruins?"
+      ],
+      "text": [
+        "Acum că ești în Orășelul Celestic, de ce nu arunci o privire înăuntrul ruinelor?"
+      ]
+    }
+  ],
+  "EtchingDialga": [
+    {
+      "en": [
+        "A great carving of something like a Pokémon covers the stone...",
+        "Worn words are cut beneath it...",
+        "\"Time runs on and never stops... What was, what is, what will be...\""
+      ],
+      "text": [
+        "O sculptură mare a ceva ce seamănă cu un Pokémon acoperă piatra...",
+        "Sub ea sunt săpate cuvinte tocite...",
+        "„Timpul curge și nu se oprește niciodată... Ce a fost, ce este, ce va fi...”"
+      ]
+    }
+  ],
+  "EtchingPalkia": [
+    {
+      "en": [
+        "A great carving of something like a Pokémon covers the stone...",
+        "Worn words are cut beneath it...",
+        "\"Space reaches out and never ends... and our spirits are as wide as space...\""
+      ],
+      "text": [
+        "O sculptură mare a ceva ce seamănă cu un Pokémon acoperă piatra...",
+        "Sub ea sunt săpate cuvinte tocite...",
+        "„Spațiul se întinde și nu se sfârșește niciodată... iar sufletele noastre sunt largi cât spațiul...”"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "displayName": {
+    "en": [
+      "House"
+    ],
+    "text": [
+      "Casă"
+    ]
+  },
+  "people": {
+    "clown": {
+      "name": {
+        "en": [
+          "Clown"
+        ],
+        "text": [
+          "Clovnul"
+        ]
+      }
+    },
+    "black_belt": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          "Centură Neagră"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The world is full of magicians. That one has been at the same trick since breakfast.",
+          "I still can't see how he does it."
+        ],
+        "text": [
+          "Lumea e plină de magicieni. Ăla face același truc de la micul dejun.",
+          "Tot nu-mi dau seama cum îl face."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

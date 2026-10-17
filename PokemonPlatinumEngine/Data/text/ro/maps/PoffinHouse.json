@@ -1,0 +1,63 @@
+{
+  "displayName": {
+    "en": [
+      "Poffin House"
+    ],
+    "text": [
+      "Casa Poffinurilor"
+    ]
+  },
+  "people": {
+    "idol": {
+      "name": {
+        "en": [
+          "Idol"
+        ],
+        "text": [
+          "Idolul"
+        ]
+      }
+    },
+    "old_woman": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          "Bătrâna"
+        ]
+      }
+    },
+    "old_man": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      }
+    },
+    "pokefan_f": {
+      "name": {
+        "en": [
+          "Cook"
+        ],
+        "text": [
+          "Bucătăreasa"
+        ]
+      }
+    },
+    "school_kid_f": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

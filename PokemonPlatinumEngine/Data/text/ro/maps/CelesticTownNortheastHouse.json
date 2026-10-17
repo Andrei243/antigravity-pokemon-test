@@ -1,0 +1,51 @@
+{
+  "displayName": {
+    "en": [
+      "Celestic Town"
+    ],
+    "text": [
+      "Orășelul Celestic"
+    ]
+  },
+  "people": {
+    "pokefan_m": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Mt. Coronet stands right in the middle of Sinnoh.",
+          "Nowhere in the region is nearer the sky. Or nearer what lies beyond the sky, come to that."
+        ],
+        "text": [
+          "Muntele Coronet se înalță chiar în mijlocul Sinnoh-ului.",
+          "Niciun loc din regiune nu e mai aproape de cer. Sau de ce e dincolo de cer, dacă stai să te gândești."
+        ]
+      }
+    },
+    "ninja_boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "If I climbed to the very top of Mt. Coronet, could I see the whole of Sinnoh at once?"
+        ],
+        "text": [
+          "Dacă aș urca chiar în vârful Muntelui Coronet, aș putea vedea tot Sinnoh-ul deodată?"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

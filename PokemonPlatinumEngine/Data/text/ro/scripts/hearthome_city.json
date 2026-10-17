@@ -1,0 +1,112 @@
+{
+  "Buneary": [
+    {
+      "en": [
+        "Keira"
+      ],
+      "text": [
+        "Keira"
+      ]
+    },
+    {
+      "en": [
+        "Oh, thank goodness! You stopped it! Buneary just took off, and I couldn't keep up!"
+      ],
+      "text": [
+        "O, slavă cerului! L-ai oprit! Buneary a zbughit-o și n-am putut să țin pasul!"
+      ]
+    },
+    {
+      "en": [
+        "That's enough running about for today, Buneary. Back in your ball!"
+      ],
+      "text": [
+        "Ajunge alergătură pentru azi, Buneary. Înapoi în Ball!"
+      ]
+    },
+    {
+      "en": [
+        "Phew... I'm Keira. Thank you so much! I'd have been chasing it all over Hearthome."
+      ],
+      "text": [
+        "Pfu... Sunt Keira. Mulțumesc mult de tot! Aș fi alergat după el prin tot Hearthome-ul."
+      ]
+    },
+    {
+      "en": [
+        "I have to get to the Contest Hall. Bye now!"
+      ],
+      "text": [
+        "Trebuie să ajung la Sala Concursurilor. Pa!"
+      ]
+    }
+  ],
+  "Fisherman": [
+    {
+      "en": [
+        "Visiting Hearthome? Would you like me to show you to the Contest Hall?"
+      ],
+      "text": [
+        "Ești în vizită în Hearthome? Vrei să te conduc la Sala Concursurilor?"
+      ]
+    },
+    {
+      "en": [
+        "Splendid! Follow me, please."
+      ],
+      "text": [
+        "Splendid! Urmează-mă, te rog."
+      ]
+    },
+    {
+      "en": [
+        "Here we are: the Contest Hall! Trainers come from all over Sinnoh to show their Pokémon off on its stage."
+      ],
+      "text": [
+        "Am ajuns: Sala Concursurilor! Antrenori din tot Sinnoh-ul vin să-și arate Pokémonii pe scena ei."
+      ]
+    },
+    {
+      "en": [
+        "Oh, my apologies. Off you go, then, and enjoy Hearthome!"
+      ],
+      "text": [
+        "O, scuze. Hai, du-te și bucură-te de Hearthome!"
+      ]
+    },
+    {
+      "en": [
+        "Showing visitors round my city makes me happy. Enjoy yourself!"
+      ],
+      "text": [
+        "Mă bucur să le arăt vizitatorilor orașul meu. Distracție plăcută!"
+      ]
+    }
+  ],
+  "GymGuide": [
+    {
+      "en": [
+        "Gym Guide"
+      ],
+      "text": [
+        "Ghidul Arenei"
+      ]
+    },
+    {
+      "en": [
+        "Hey there, champ in the making! Here to take on Fantina? Bad timing, I'm afraid. She's out."
+      ],
+      "text": [
+        "Salutare! Ai venit s-o provoci pe Fantina? Ai picat prost, din păcate. Nu e aici."
+      ]
+    },
+    {
+      "en": [
+        "When she's not in her Gym, you'll usually find her at the Contest Hall, watching the Pokémon on stage. Try there!"
+      ],
+      "text": [
+        "Când nu e în Arena ei, o găsești de obicei la Sala Concursurilor, uitându-se la Pokémonii de pe scenă. Încearcă acolo!"
+      ]
+    }
+  ]
+}

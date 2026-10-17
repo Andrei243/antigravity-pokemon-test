@@ -47,7 +47,7 @@ partial class Harness
         {
             for (int i = 0; i < most; i++)
             {
-                if (text != null && Box().IsActive && Box().CurrentLine.Contains(text)) { Whole(); Console.WriteLine($"  said: {text}"); return; }
+                if (text != null && Box().IsActive && Translated.Saying(Box().CurrentLine, text)) { Whole(); Console.WriteLine($"  said: {text}"); return; }
                 if (text != null && !engine.ScriptRunning && !Box().IsActive && State() == GameState.Overworld && i > 90) break;
                 if (text == null && !engine.ScriptRunning && !Box().IsActive && State() == GameState.Overworld) return;
                 if (State() == GameState.Battle) { Win(); continue; }
@@ -440,7 +440,7 @@ partial class Harness
             ReadTo("That was a blast"); Frames(4); Shot("pg4k_fight_area_that_was_a_blast");
             ReadTo("Battle Fronti"); Frames(4); Shot("pg4l_fight_area_im_off_to_the");
             Box().Advance();
-            Until(() => Box().IsActive && Box().CurrentLine.Contains("Thud"), "the thud", 300);
+            Until(() => Box().IsActive && Translated.Saying(Box().CurrentLine, "Thud"), "the thud", 300);
             Whole(); Frames(2); Shot("pg4m_fight_area_thud");
             Box().Advance();
             Until(() => Someone("Sinnoh", "rival", "fight_area") is { GridY: 427 }, "the rival bowled over", 300);

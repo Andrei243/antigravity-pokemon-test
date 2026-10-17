@@ -1,0 +1,89 @@
+{
+  "displayName": {
+    "en": [
+      "Poké Mart"
+    ],
+    "text": [
+      "Poké Mart"
+    ]
+  },
+  "people": {
+    "cashier_f": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome to the Hearthome Poké Mart! How may I serve you today?"
+        ],
+        "text": [
+          "Vânzătoarea: Bun venit la Poké Martul din Hearthome! Cu ce te pot ajuta azi?"
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A Revive is just the thing I could do with right now.",
+          "But I've only two Gym Badges, so they won't sell me one yet..."
+        ],
+        "text": [
+          "Un Revive mi-ar prinde tare bine acum.",
+          "Dar am doar două Insigne de Arenă, așa că încă nu-mi vând unul..."
+        ]
+      }
+    },
+    "beauty": {
+      "name": {
+        "en": [
+          "Beauty"
+        ],
+        "text": [
+          "Frumoasa"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Have you been to Amity Square? Such a happy, cheerful place.",
+          "You can pick up Accessories there that no Poké Mart sells."
+        ],
+        "text": [
+          "Ai fost în Piața Amity? Ce loc vesel și fericit.",
+          "Acolo poți găsi Accesorii pe care nu le vinde niciun Poké Mart."
+        ]
+      }
+    },
+    "cashier_m": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! This counter has goods you'll only find here in Hearthome."
+        ],
+        "text": [
+          "Vânzătorul: Bun venit! La ghișeul ăsta găsești mărfuri care sunt doar aici, în Hearthome."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

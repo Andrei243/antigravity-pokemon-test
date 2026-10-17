@@ -1,0 +1,72 @@
+{
+  "displayName": {
+    "en": [
+      "Team Galactic Eterna Building"
+    ],
+    "text": [
+      "Clădirea Echipei Galactic din Eterna"
+    ]
+  },
+  "people": {
+    "jupiter": {
+      "name": {
+        "en": [
+          "Jupiter"
+        ],
+        "text": [
+          "Jupiter"
+        ]
+      }
+    },
+    "pokefan_m": {
+      "name": {
+        "en": [
+          "Manager"
+        ],
+        "text": [
+          "Directorul"
+        ]
+      }
+    },
+    "9,6": {
+      "name": {
+        "en": [
+          "Revive"
+        ],
+        "text": [
+          "Revive"
+        ]
+      }
+    },
+    "8,6": {
+      "name": {
+        "en": [
+          "Blue Shard"
+        ],
+        "text": [
+          "Blue Shard"
+        ]
+      }
+    },
+    "21,5": {
+      "name": {
+        "en": [
+          "Upgrade"
+        ],
+        "text": [
+          "Upgrade"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "16,10": {
+      "en": [
+        "A poster on the wall: \"For peace across the whole world!\" Team Galactic"
+      ],
+      "text": [
+        "Un afiș pe perete: „Pentru pace în toată lumea!” Echipa Galactic"
+      ]
+    }
+  }
+}

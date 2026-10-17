@@ -1,0 +1,93 @@
+{
+  "displayName": {
+    "en": [
+      "Hearthome City"
+    ],
+    "text": [
+      "Orașul Hearthome"
+    ]
+  },
+  "people": {
+    "expert_m": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Some people are kind in the hope of kindness in return.",
+          "And what, I ask you, is wrong with that?"
+        ],
+        "text": [
+          "Unii oameni sunt buni în speranța că primesc bunătate înapoi.",
+          "Și ce e rău în asta, te întreb?"
+        ]
+      }
+    },
+    "expert_f": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          "Bătrâna"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "They call Hearthome a city that is good to children. I say that's not the half of it.",
+          "Hearthome is good to children, to grown-ups, and to Pokémon too."
+        ],
+        "text": [
+          "Hearthome e numit orașul care e bun cu copiii. Eu zic că asta nu e nici jumătate din adevăr.",
+          "Hearthome e bun cu copiii, cu oamenii mari și cu Pokémonii."
+        ]
+      }
+    },
+    "old_man": {
+      "name": {
+        "en": [
+          "Grandfather"
+        ],
+        "text": [
+          "Bunicul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every one of my grandchildren is clamouring for a Pokémon of their own.",
+          "It won't be easy to manage. But think how it will liven the place up!"
+        ],
+        "text": [
+          "Fiecare nepot de-al meu cere în gura mare un Pokémon al lui.",
+          "N-o să fie ușor. Dar gândește-te cât de vie o să fie casa!"
+        ]
+      }
+    },
+    "old_woman": {
+      "name": {
+        "en": [
+          "Grandmother"
+        ],
+        "text": [
+          "Bunica"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Stairs? No, dear, this house has none. It is easier that way.",
+          "The little Pokémon can get about so much better without them."
+        ],
+        "text": [
+          "Scări? Nu, drăguță, casa asta n-are. E mai ușor așa.",
+          "Pokémonii mici se descurcă mult mai bine fără ele."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

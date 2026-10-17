@@ -1,0 +1,52 @@
+{
+  "displayName": {
+    "en": [
+      "Berry Master's House"
+    ],
+    "text": [
+      "Casa Maestrului Boabelor"
+    ]
+  },
+  "people": {
+    "old_man": {
+      "name": {
+        "en": [
+          "Berry Master"
+        ],
+        "text": [
+          "Maestrul Boabelor"
+        ]
+      }
+    },
+    "twin": {
+      "name": {
+        "en": [
+          "Little Girl"
+        ],
+        "text": [
+          "Fetița"
+        ]
+      }
+    },
+    "pokemon_breeder_f": {
+      "name": {
+        "en": [
+          "Pokémon Breeder"
+        ],
+        "text": [
+          "Crescătoare de Pokémoni"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "4,6": {
+      "en": [
+        "A book: \"Much Ado About Mulch: A Berry Grower's Guide\"."
+      ],
+      "text": [
+        "O carte: „Mult zgomot pentru mulci: Ghidul cultivatorului de boabe”."
+      ]
+    }
+  }
+}

@@ -1,0 +1,242 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Roark"
+      ],
+      "text": [
+        "Roark"
+      ]
+    },
+    {
+      "en": [
+        "Well, look who it is! {player}! Your first time down here, by the look of you."
+      ],
+      "text": [
+        "Ia uite cine e! {player}! Prima dată aici jos, după cum arăți."
+      ]
+    },
+    {
+      "en": [
+        "This is the Underground: tunnels that run beneath the whole of Sinnoh, from one end to the other."
+      ],
+      "text": [
+        "Ăsta e Subteranul: tuneluri care trec pe sub tot Sinnoh-ul, de la un capăt la altul."
+      ]
+    },
+    {
+      "en": [
+        "What am I doing in a place like this? Hard to say! Down here you do as you please."
+      ],
+      "text": [
+        "Ce caut eu într-un loc ca ăsta? Greu de spus! Aici jos faci ce vrei."
+      ]
+    },
+    {
+      "en": [
+        "Dig Treasure and Spheres out of the walls. Hollow out a Secret Base of your own. That sort of thing."
+      ],
+      "text": [
+        "Scoți Comori și Sfere din pereți. Îți sapi o Bază Secretă a ta. Lucruri de-astea."
+      ]
+    },
+    {
+      "en": [
+        "The Underground Man in Eterna City knows these tunnels better than anyone. Have a word with him."
+      ],
+      "text": [
+        "Omul din Subteran, din Orașul Eterna, știe tunelurile astea mai bine ca oricine. Vorbește cu el."
+      ]
+    },
+    {
+      "en": [
+        "Right, I must be going. Watch where you tread!"
+      ],
+      "text": [
+        "Bun, trebuie să plec. Ai grijă pe unde calci!"
+      ]
+    }
+  ],
+  "HikerGoods": [
+    {
+      "en": [
+        "Hiker"
+      ],
+      "text": [
+        "Drumețul"
+      ]
+    },
+    {
+      "en": [
+        "Got a Sphere or two about you? Then I've goods here you might fancy for your base."
+      ],
+      "text": [
+        "Ai o Sferă-două la tine? Atunci am mărfuri care ți-ar plăcea pentru baza ta."
+      ]
+    },
+    {
+      "en": [
+        "Hiker"
+      ],
+      "text": [
+        "Drumețul"
+      ]
+    },
+    {
+      "en": [
+        "Mind how you go down here!"
+      ],
+      "text": [
+        "Ai grijă pe unde mergi aici jos!"
+      ]
+    }
+  ],
+  "HikerTraps": [
+    {
+      "en": [
+        "Hiker"
+      ],
+      "text": [
+        "Drumețul"
+      ]
+    },
+    {
+      "en": [
+        "Got a Sphere or two about you? I'll swap you a trap for the right one."
+      ],
+      "text": [
+        "Ai o Sferă-două la tine? Îți dau o capcană pe Sfera potrivită."
+      ]
+    },
+    {
+      "en": [
+        "Hiker"
+      ],
+      "text": [
+        "Drumețul"
+      ]
+    },
+    {
+      "en": [
+        "Mind how you go down here!"
+      ],
+      "text": [
+        "Ai grijă pe unde mergi aici jos!"
+      ]
+    }
+  ],
+  "HikerTreasures": [
+    {
+      "en": [
+        "Hiker"
+      ],
+      "text": [
+        "Drumețul"
+      ]
+    },
+    {
+      "en": [
+        "Dug up any treasures? I'll give you good Spheres for them."
+      ],
+      "text": [
+        "Ai scos vreo comoară? Îți dau Sfere bune pe ea."
+      ]
+    },
+    {
+      "en": [
+        "Hiker"
+      ],
+      "text": [
+        "Drumețul"
+      ]
+    },
+    {
+      "en": [
+        "Mind how you go down here!"
+      ],
+      "text": [
+        "Ai grijă pe unde mergi aici jos!"
+      ]
+    }
+  ],
+  "Wall": [
+    {
+      "en": [
+        "This stretch of wall sounds hollow. Something is in there!"
+      ],
+      "text": [
+        "Bucata asta de perete sună a gol. E ceva înăuntru!"
+      ]
+    },
+    {
+      "en": [
+        "Dig into it?"
+      ],
+      "text": [
+        "Sapi în ea?"
+      ]
+    }
+  ],
+  "BasePC": [
+    {
+      "en": [
+        "{digger}'s flag was put up on your PC!"
+      ],
+      "text": [
+        "Steagul lui {digger} a fost pus pe PC-ul tău!"
+      ]
+    },
+    {
+      "en": [
+        "{digger}'s flag was put up on your PC!"
+      ],
+      "text": [
+        "Steagul lui {digger} a fost pus pe PC-ul tău!"
+      ]
+    },
+    {
+      "en": [
+        "Your base's own flag has changed for a finer one!"
+      ],
+      "text": [
+        "Steagul bazei tale s-a schimbat cu unul mai frumos!"
+      ]
+    }
+  ],
+  "DiggerPC": [
+    {
+      "en": [
+        "{digger}'s flag is on the PC. Take it?"
+      ],
+      "text": [
+        "Steagul lui {digger} e pe PC. Îl iei?"
+      ]
+    },
+    {
+      "en": [
+        "You took {digger}'s flag! Carry it home, to the PC of your own base."
+      ],
+      "text": [
+        "Ai luat steagul lui {digger}! Du-l acasă, la PC-ul bazei tale."
+      ]
+    },
+    {
+      "en": [
+        "It is {digger}'s PC. There is no flag on it for you today."
+      ],
+      "text": [
+        "E PC-ul lui {digger}. Azi nu e niciun steag pe el pentru tine."
+      ]
+    }
+  ],
+  "GoUp": [
+    {
+      "en": [
+        "Go back up to the surface?"
+      ],
+      "text": [
+        "Urci înapoi la suprafață?"
+      ]
+    }
+  ]
+}

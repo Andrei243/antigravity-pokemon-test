@@ -1,0 +1,87 @@
+{
+  "displayName": {
+    "en": [
+      "Poké Mart"
+    ],
+    "text": [
+      "Poké Mart"
+    ]
+  },
+  "people": {
+    "cashier_f": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome to the Solaceon Poké Mart! How may I serve you today?"
+        ],
+        "text": [
+          "Vânzătoarea: Bun venit la Poké Martul din Solaceon! Cu ce te pot ajuta azi?"
+        ]
+      }
+    },
+    "ninja_boy": {
+      "name": {
+        "en": [
+          "Ninja Boy"
+        ],
+        "text": [
+          "Micul Ninja"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Somebody gave me a Seal Case! I'm off to the Pokémon Center right now.",
+          "You need a PC to stick Seals on your Poké Balls, see."
+        ],
+        "text": [
+          "Cineva mi-a dat o Seal Case! Mă duc chiar acum la Centrul Pokémon.",
+          "Ai nevoie de un PC ca să lipești Stickere pe Poké Ball-uri, știi."
+        ]
+      }
+    },
+    "pokefan_f": {
+      "name": {
+        "en": [
+          "Pokéfan"
+        ],
+        "text": [
+          "Pokéfana"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "If a Repel doesn't last long enough for you, treat yourself to a Super Repel."
+        ],
+        "text": [
+          "Dacă un Repel nu ține destul pentru tine, răsfață-te cu un Super Repel."
+        ]
+      }
+    },
+    "cashier_m": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! This counter has goods you'll only find here in Solaceon."
+        ],
+        "text": [
+          "Vânzătorul: Bun venit! La ghișeul ăsta găsești mărfuri care sunt doar aici, în Solaceon."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

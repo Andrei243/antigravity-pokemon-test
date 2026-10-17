@@ -1,0 +1,128 @@
+{
+  "displayName": {
+    "en": [
+      "Eterna Gym"
+    ],
+    "text": [
+      "Arena Eterna"
+    ]
+  },
+  "people": {
+    "gym_guide": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          "Ghidul Arenei"
+        ]
+      }
+    },
+    "gardenia": {
+      "name": {
+        "en": [
+          "Gardenia"
+        ],
+        "text": [
+          "Gardenia"
+        ]
+      }
+    },
+    "lass_caroline": {
+      "name": {
+        "en": [
+          "Caroline"
+        ],
+        "text": [
+          "Caroline"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Caroline: The hands of this clock won't budge for someone who can't beat me!"
+        ],
+        "text": [
+          "Domnișoară Caroline: Acele ceasului ăstuia nu se clintesc pentru cine nu mă poate învinge!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Caroline: Oh, you did it... Look, the clock's moving for you now."
+        ],
+        "text": [
+          "Domnișoară Caroline: O, ai reușit... Uite, ceasul se mișcă pentru tine acum."
+        ]
+      }
+    },
+    "aroma_lady_jenna": {
+      "name": {
+        "en": [
+          "Jenna"
+        ],
+        "text": [
+          "Jenna"
+        ]
+      },
+      "before": {
+        "en": [
+          "Aroma Lady Jenna: Breathe in, now. Do my flowers' scent make you sleepy? Then it's time for battle!"
+        ],
+        "text": [
+          "Doamna Aromelor Jenna: Inspiră adânc. Te adoarme parfumul florilor mele? Atunci e timpul pentru luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Aroma Lady Jenna: Such a bracing battle. The clock will turn on for you again."
+        ],
+        "text": [
+          "Doamna Aromelor Jenna: Ce luptă înviorătoare. Ceasul o să se mai rotească pentru tine."
+        ]
+      }
+    },
+    "aroma_lady_angela": {
+      "name": {
+        "en": [
+          "Angela"
+        ],
+        "text": [
+          "Angela"
+        ]
+      },
+      "before": {
+        "en": [
+          "Aroma Lady Angela: You found your way round to me! My Pokémon bloom brightest under pressure."
+        ],
+        "text": [
+          "Doamna Aromelor Angela: Ai găsit drumul până la mine! Pokémonii mei înfloresc cel mai frumos sub presiune."
+        ]
+      },
+      "after": {
+        "en": [
+          "Aroma Lady Angela: Wilted... Off you go: Gardenia is waiting at the top of the clock."
+        ],
+        "text": [
+          "Doamna Aromelor Angela: Ofilită... Hai, du-te: Gardenia te așteaptă în vârful ceasului."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "8,25": {
+      "en": [
+        "ETERNA CITY POKéMON GYM\nLeader: Gardenia"
+      ],
+      "text": [
+        "ARENA POKéMON DIN ORAȘUL ETERNA\nLideră: Gardenia"
+      ]
+    },
+    "14,25": {
+      "en": [
+        "ETERNA CITY POKéMON GYM\nLeader: Gardenia"
+      ],
+      "text": [
+        "ARENA POKéMON DIN ORAȘUL ETERNA\nLideră: Gardenia"
+      ]
+    }
+  }
+}

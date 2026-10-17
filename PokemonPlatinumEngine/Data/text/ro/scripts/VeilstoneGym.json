@@ -1,0 +1,144 @@
+{
+  "GymGuide": [
+    {
+      "en": [
+        "Gym Guide"
+      ],
+      "text": [
+        "Ghidul Arenei"
+      ]
+    },
+    {
+      "en": [
+        "Hey there, champ in the making! Welcome to the Veilstone Gym!"
+      ],
+      "text": [
+        "Salutare! Bun venit la Arena Veilstone!"
+      ]
+    },
+    {
+      "en": [
+        "Maylene trains with Fighting types. Flying and Psychic moves will knock them for six."
+      ],
+      "text": [
+        "Maylene se antrenează cu Pokémoni de tip Luptă. Mișcările de Zbor și Psihic îi dau gata."
+      ]
+    },
+    {
+      "en": [
+        "See those punching bags? Give one a kick and it flies along its track. Clear the stacks of tyres out of your way with them!"
+      ],
+      "text": [
+        "Vezi sacii de box? Dă-i unuia un șut și zboară pe șina lui. Curăță-ți drumul de stivele de cauciucuri cu ei!"
+      ]
+    },
+    {
+      "en": [
+        "{player}, you beat Maylene! That was a fight worth watching."
+      ],
+      "text": [
+        "{player}, ai învins-o pe Maylene! Asta a fost o luptă care a meritat văzută."
+      ]
+    }
+  ],
+  "GymStatue": [
+    {
+      "en": [
+        "VEILSTONE CITY POKéMON GYM. Leader: Maylene. Certified Trainers: {rival}"
+      ],
+      "text": [
+        "ARENA POKéMON DIN ORAȘUL VEILSTONE. Lideră: Maylene. Antrenori atestați: {rival}"
+      ]
+    },
+    {
+      "en": [
+        "VEILSTONE CITY POKéMON GYM. Leader: Maylene. Certified Trainers: {rival}, {player}"
+      ],
+      "text": [
+        "ARENA POKéMON DIN ORAȘUL VEILSTONE. Lideră: Maylene. Antrenori atestați: {rival}, {player}"
+      ]
+    }
+  ],
+  "Maylene": [
+    {
+      "en": [
+        "Maylene"
+      ],
+      "text": [
+        "Maylene"
+      ]
+    },
+    {
+      "en": [
+        "I'm Maylene, the Leader of this Gym. My Pokémon and I train together every single day."
+      ],
+      "text": [
+        "Sunt Maylene, Lidera acestei Arene. Eu și Pokémonii mei ne antrenăm împreună în fiecare zi."
+      ]
+    },
+    {
+      "en": [
+        "I don't hold anything back, and I won't today. Let's begin!"
+      ],
+      "text": [
+        "Nu mă rețin niciodată, și nici azi n-o să mă rețin. Să începem!"
+      ]
+    },
+    {
+      "en": [
+        "I lost... You and your Pokémon are strong together. I'm glad I fought you."
+      ],
+      "text": [
+        "Am pierdut... Tu și Pokémonii tăi sunteți puternici împreună. Mă bucur că ne-am luptat."
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Cobble Badge from Maylene!"
+      ],
+      "text": [
+        "{player} a primit Insigna Pavaj de la Maylene!"
+      ]
+    },
+    {
+      "en": [
+        "With the Cobble Badge, Pokémon up to level 50 will do as you say, even ones from trades."
+      ],
+      "text": [
+        "Cu Insigna Pavaj, Pokémonii până la nivelul 50 te vor asculta, chiar și cei primiți la schimb."
+      ]
+    },
+    {
+      "en": [
+        "And you can use Fly outside of battle, to go straight back to any town you've been to."
+      ],
+      "text": [
+        "Și poți folosi Fly în afara luptei, ca să te întorci direct în orice oraș în care ai fost."
+      ]
+    },
+    {
+      "en": [
+        "Please take this as well."
+      ],
+      "text": [
+        "Te rog să iei și asta."
+      ]
+    },
+    {
+      "en": [
+        "TM60 is Drain Punch. The damage it does heals the Pokémon that throws it. It's a move I trust."
+      ],
+      "text": [
+        "TM60 e Drain Punch. Paguba pe care o face îl vindecă pe Pokémonul care lovește. E o mișcare în care am încredere."
+      ]
+    },
+    {
+      "en": [
+        "{player}... I'll keep training too. The next time we meet, I'll be stronger!"
+      ],
+      "text": [
+        "{player}... O să mă antrenez și eu în continuare. Data viitoare când ne întâlnim, o să fiu mai puternică!"
+      ]
+    }
+  ]
+}

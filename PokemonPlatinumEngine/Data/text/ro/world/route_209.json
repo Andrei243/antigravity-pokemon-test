@@ -1,0 +1,360 @@
+{
+  "people": {
+    "jogger_richard": {
+      "name": {
+        "en": [
+          "Richard"
+        ],
+        "text": [
+          "Richard"
+        ]
+      },
+      "before": {
+        "en": [
+          "Jogger Richard: A morning run and a morning battle. Best way to start the day!"
+        ],
+        "text": [
+          "Alergător Richard: O alergare de dimineață și o luptă de dimineață. Cel mai bun început de zi!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Jogger Richard: Phew! I'm more out of breath from that than from the run."
+        ],
+        "text": [
+          "Alergător Richard: Pfu! Am rămas mai fără suflu din asta decât din alergare."
+        ]
+      }
+    },
+    "jogger_raul": {
+      "name": {
+        "en": [
+          "Raul"
+        ],
+        "text": [
+          "Raul"
+        ]
+      },
+      "before": {
+        "en": [
+          "Jogger Raul: Up with the sun and ready to go! Keep pace with me if you can!"
+        ],
+        "text": [
+          "Alergător Raul: Treaz odată cu soarele și gata de drum! Ține-mi pasul dacă poți!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Jogger Raul: You win. I'll run it off."
+        ],
+        "text": [
+          "Alergător Raul: Ai câștigat. O să-mi trec necazul alergând."
+        ]
+      }
+    },
+    "jogger_richard_no_battle": {
+      "name": {
+        "en": [
+          "Jogger"
+        ],
+        "text": [
+          "Alergătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Huff... huff... Can't stop now, I'm keeping my pace!",
+          "Catch me first thing in the morning. That's when I've got the breath to battle."
+        ],
+        "text": [
+          "Gâf... gâf... Nu mă pot opri acum, îmi țin ritmul!",
+          "Prinde-mă dis-de-dimineață. Atunci am suflu pentru o luptă."
+        ]
+      }
+    },
+    "jogger_raul_no_battle": {
+      "name": {
+        "en": [
+          "Jogger"
+        ],
+        "text": [
+          "Alergătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My run's nearly done for the day. My legs have nothing left for a battle.",
+          "Mornings! I'm full of beans in the mornings."
+        ],
+        "text": [
+          "Alergarea mea de azi e aproape gata. Picioarele n-au mai rămas cu nimic pentru o luptă.",
+          "Dimineața! Dimineața sunt plin de energie."
+        ]
+      }
+    },
+    "pokefan_m": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "That tower up ahead is the Lost Tower.",
+          "People climb it to remember Pokémon who are no longer with them. Go quietly, if you go in."
+        ],
+        "text": [
+          "Turnul ăla din față e Turnul Pierdut.",
+          "Oamenii îl urcă să-și amintească de Pokémonii care nu mai sunt cu ei. Mergi încet, dacă intri."
+        ]
+      }
+    },
+    "fisherman": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          "Pescarul"
+        ]
+      }
+    },
+    "breeder_albert": {
+      "name": {
+        "en": [
+          "Albert"
+        ],
+        "text": [
+          "Albert"
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokémon Breeder Albert: I've raised these little ones since the day they hatched. Let's see how they've grown!"
+        ],
+        "text": [
+          "Crescător Pokémon Albert: I-am crescut pe micuții ăștia din ziua în care au ieșit din ou. Să vedem cât au crescut!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokémon Breeder Albert: They're still young. Every battle teaches them something, win or lose."
+        ],
+        "text": [
+          "Crescător Pokémon Albert: Sunt încă tineri. Fiecare luptă îi învață ceva, câștig sau pierd."
+        ]
+      }
+    },
+    "breeder_jennifer": {
+      "name": {
+        "en": [
+          "Jennifer"
+        ],
+        "text": [
+          "Jennifer"
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokémon Breeder Jennifer: Don't be fooled by their size. My babies are tougher than they look!"
+        ],
+        "text": [
+          "Crescător Pokémon Jennifer: Să nu te păcălească mărimea lor. Puișorii mei sunt mai duri decât par!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokémon Breeder Jennifer: Back home for a nap, all of you. You've more than earned it."
+        ],
+        "text": [
+          "Crescător Pokémon Jennifer: Acasă la somn, toți. V-ați câștigat-o din plin."
+        ]
+      }
+    },
+    "cowgirl_shelley": {
+      "name": {
+        "en": [
+          "Shelley"
+        ],
+        "text": [
+          "Shelley"
+        ]
+      },
+      "before": {
+        "en": [
+          "Cowgirl Shelley: Easy now... My Ponyta's been itching for a gallop all day. Let's go!"
+        ],
+        "text": [
+          "Cowgirl Shelley: Ușurel... Ponyta al meu abia așteaptă să galopeze de azi-dimineață. Să mergem!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Cowgirl Shelley: Whoa there! Looks like we bit off more than we could chew."
+        ],
+        "text": [
+          "Cowgirl Shelley: Hooo! Se pare că ne-am luat o bucată prea mare."
+        ]
+      }
+    },
+    "poke_kid_danielle": {
+      "name": {
+        "en": [
+          "Danielle"
+        ],
+        "text": [
+          "Danielle"
+        ]
+      },
+      "before": {
+        "en": [
+          "Poké Kid Danielle: My Pichu is my very best friend! Will you battle us?"
+        ],
+        "text": [
+          "Poké Copil Danielle: Pichu e cel mai bun prieten al meu! Te lupți cu noi?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Poké Kid Danielle: Are you all right, Pichu? We'll be stronger next time, I promise!"
+        ],
+        "text": [
+          "Poké Copil Danielle: Ești bine, Pichu? Data viitoare o să fim mai puternici, promit!"
+        ]
+      }
+    },
+    "twin_emma": {
+      "name": {
+        "en": [
+          "Emma"
+        ],
+        "text": [
+          "Emma"
+        ]
+      },
+      "before": {
+        "en": [
+          "Emma: Lil and I do everything together. Battles too!"
+        ],
+        "text": [
+          "Emma: Eu și Lil facem totul împreună. Și luptele!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Emma: Well, at least we lost together, Lil."
+        ],
+        "text": [
+          "Emma: Ei, măcar am pierdut împreună, Lil."
+        ]
+      }
+    },
+    "twin_lil": {
+      "name": {
+        "en": [
+          "Lil"
+        ],
+        "text": [
+          "Lil"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lil: Two of us and two of our Pokémon. That's fair, isn't it?"
+        ],
+        "text": [
+          "Lil: Noi două și doi Pokémoni de-ai noștri. E corect, nu?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Lil: Emma, I think we need a bit more practice."
+        ],
+        "text": [
+          "Lil: Emma, cred că ne mai trebuie puțin antrenament."
+        ]
+      }
+    },
+    "young_couple_trainer_sue": {
+      "name": {
+        "en": [
+          "Sue"
+        ],
+        "text": [
+          "Sue"
+        ]
+      },
+      "before": {
+        "en": [
+          "Sue: We're out for a walk together, and you want a battle? Oh, go on then!"
+        ],
+        "text": [
+          "Sue: Suntem la o plimbare împreună și tu vrei o luptă? Of, hai, fie!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Sue: Never mind, Ty. It was still a lovely afternoon."
+        ],
+        "text": [
+          "Sue: Nu-i nimic, Ty. Tot a fost o după-amiază minunată."
+        ]
+      }
+    },
+    "young_couple_trainer_ty": {
+      "name": {
+        "en": [
+          "Ty"
+        ],
+        "text": [
+          "Ty"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ty: Sue and I make a brilliant team. Watch this!"
+        ],
+        "text": [
+          "Ty: Eu și Sue facem o echipă grozavă. Uite!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ty: And I so wanted to look good in front of Sue..."
+        ],
+        "text": [
+          "Ty: Și eu care voiam atât de mult să arăt bine în fața lui Sue..."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost_hearthome_city": {
+      "en": [
+        "Route 209\nWest: Hearthome City"
+      ],
+      "text": [
+        "Ruta 209\nVest: Orașul Hearthome"
+      ]
+    },
+    "arrow_signpost_solaceon_town": {
+      "en": [
+        "Route 209\nNorth: Solaceon Town"
+      ],
+      "text": [
+        "Ruta 209\nNord: Orășelul Solaceon"
+      ]
+    },
+    "trainer_tips_signpost": {
+      "en": [
+        "Trainer Tips\nThe Bag keeps what you carry in pockets. Key Items, such as a Bicycle or a fishing rod, have a pocket all their own."
+      ],
+      "text": [
+        "Sfaturi pentru Antrenori\nRucsacul ține ce cari în buzunare. Obiectele cheie, ca bicicleta sau undița, au un buzunar numai al lor."
+      ]
+    }
+  }
+}

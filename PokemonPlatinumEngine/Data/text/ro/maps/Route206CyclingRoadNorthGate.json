@@ -1,0 +1,63 @@
+{
+  "displayName": {
+    "en": [
+      "Route 206"
+    ],
+    "text": [
+      "Ruta 206"
+    ]
+  },
+  "people": {
+    "cashier_m_east": {
+      "name": {
+        "en": [
+          "Gate Keeper"
+        ],
+        "text": [
+          "Paznicul porții"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Learn to change gears, and there's nowhere a Bicycle won't take you.",
+          "The run button does it. Third gear down the Cycling Road is quite something!"
+        ],
+        "text": [
+          "Învață să schimbi vitezele și nu există loc unde o bicicletă să nu te ducă.",
+          "Se face cu butonul de alergare. A treia viteză pe Drumul Bicicliștilor e ceva de pomină!"
+        ]
+      }
+    },
+    "cashier_m_west": {
+      "name": {
+        "en": [
+          "Gate Keeper"
+        ],
+        "text": [
+          "Paznicul porții"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Learn to change gears, and there's nowhere a Bicycle won't take you.",
+          "The run button does it. Third gear down the Cycling Road is quite something!"
+        ],
+        "text": [
+          "Învață să schimbi vitezele și nu există loc unde o bicicletă să nu te ducă.",
+          "Se face cu butonul de alergare. A treia viteză pe Drumul Bicicliștilor e ceva de pomină!"
+        ]
+      }
+    },
+    "scientist_m": {
+      "name": {
+        "en": [
+          "Assistant"
+        ],
+        "text": [
+          "Asistentul"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

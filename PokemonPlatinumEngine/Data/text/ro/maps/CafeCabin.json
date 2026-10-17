@@ -1,0 +1,131 @@
+{
+  "displayName": {
+    "en": [
+      "Café Cabin"
+    ],
+    "text": [
+      "Cafeneaua Cabană"
+    ]
+  },
+  "people": {
+    "rancher": {
+      "name": {
+        "en": [
+          "Rancher"
+        ],
+        "text": [
+          "Fermierul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Howdy, traveller! Some of the folks at my tables are spoiling for a battle.",
+          "Take them on or leave them be. It's all the same to me."
+        ],
+        "text": [
+          "Salutare și bun venit! Unii dintre cei de la mesele mele abia așteaptă o luptă.",
+          "Înfruntă-i sau lasă-i în pace. Mie mi-e tot una."
+        ]
+      }
+    },
+    "waitress": {
+      "name": {
+        "en": [
+          "Waitress"
+        ],
+        "text": [
+          "Chelnerița"
+        ]
+      }
+    },
+    "collector_fernando": {
+      "name": {
+        "en": [
+          "Fernando"
+        ],
+        "text": [
+          "Fernando"
+        ]
+      },
+      "before": {
+        "en": [
+          "Collector Fernando: A glass of milk, a quiet table and a good battle. That's my idea of a day off!"
+        ],
+        "text": [
+          "Colecționar Fernando: Un pahar de lapte, o masă liniștită și o luptă bună. Asta înțeleg eu prin zi liberă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Collector Fernando: Well, two out of three isn't bad."
+        ],
+        "text": [
+          "Colecționar Fernando: Ei, două din trei nu e rău."
+        ]
+      }
+    },
+    "collector_edwin": {
+      "name": {
+        "en": [
+          "Edwin"
+        ],
+        "text": [
+          "Edwin"
+        ]
+      },
+      "before": {
+        "en": [
+          "Collector Edwin: I collect rare Pokémon. Care to meet the pride of my collection?"
+        ],
+        "text": [
+          "Colecționar Edwin: Colecționez Pokémoni rari. Vrei să cunoști mândria colecției mele?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Collector Edwin: Rare it may be. Unbeatable it is not."
+        ],
+        "text": [
+          "Colecționar Edwin: Rar o fi el. De neînvins nu e."
+        ]
+      }
+    },
+    "waitress_kati": {
+      "name": {
+        "en": [
+          "Kati"
+        ],
+        "text": [
+          "Kati"
+        ]
+      },
+      "before": {
+        "en": [
+          "Waitress Kati: Welcome! Today's special is a battle with me, served piping hot!"
+        ],
+        "text": [
+          "Chelneriță Kati: Bun venit! Specialitatea zilei e o luptă cu mine, servită fierbinte!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Waitress Kati: Oh dear. That one's going straight back to the kitchen."
+        ],
+        "text": [
+          "Chelneriță Kati: Vai. Asta se întoarce direct la bucătărie."
+        ]
+      }
+    },
+    "old_man": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

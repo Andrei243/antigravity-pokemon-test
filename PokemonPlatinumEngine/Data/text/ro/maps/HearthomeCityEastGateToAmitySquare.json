@@ -1,0 +1,51 @@
+{
+  "displayName": {
+    "en": [
+      "Hearthome City"
+    ],
+    "text": [
+      "Orașul Hearthome"
+    ]
+  },
+  "people": {
+    "receptionist": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This is Amity Square, where you may take a cute Pokémon out for a stroll."
+        ],
+        "text": [
+          "Asta e Piața Amity, unde poți scoate la plimbare un Pokémon drăguț."
+        ]
+      }
+    },
+    "black_belt": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          "Centură Neagră"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "It's an outrage! They turned my Pokémon away at the gate!",
+          "My poor Gyarados and Steelix... Not cute enough, they said. I call that prejudice!"
+        ],
+        "text": [
+          "E o rușine! Mi-au întors Pokémonii de la poartă!",
+          "Bieții mei Gyarados și Steelix... Nu destul de drăguți, au zis. Eu zic că e prejudecată!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

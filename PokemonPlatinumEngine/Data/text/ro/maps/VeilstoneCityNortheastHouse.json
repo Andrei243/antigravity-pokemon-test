@@ -1,0 +1,45 @@
+{
+  "displayName": {
+    "en": [
+      "Veilstone City"
+    ],
+    "text": [
+      "Orașul Veilstone"
+    ]
+  },
+  "people": {
+    "pokefan_m": {
+      "name": {
+        "en": [
+          "Pokéfan"
+        ],
+        "text": [
+          "Pokéfana"
+        ]
+      }
+    },
+    "pokefan_f": {
+      "name": {
+        "en": [
+          "Pokéfan"
+        ],
+        "text": [
+          "Pokéfana"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Those spikes all over their building... The way the whole thing turns round for no reason at all...",
+          "If that is what Team Galactic calls stylish, I shall never understand it.",
+          "They do seem to have power to burn, though."
+        ],
+        "text": [
+          "Țepii ăia de pe toată clădirea lor... Felul în care se rotește toată fără niciun motiv...",
+          "Dacă asta numește Echipa Galactic stil, n-o să înțeleg niciodată.",
+          "Totuși, par să aibă energie cu nemiluita."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,96 @@
+{
+  "Assistant": [
+    {
+      "en": [
+        "{assistant}"
+      ],
+      "text": [
+        "{assistant}"
+      ]
+    },
+    {
+      "en": [
+        "{player}! Phew, I caught you before the mountain. The professor asked me to bring you something."
+      ],
+      "text": [
+        "{player}! Pfu, te-am prins înainte de munte. Profesorul m-a rugat să-ți aduc ceva."
+      ]
+    },
+    {
+      "en": [
+        "Here's a game first. Which hand do you think it's in?",
+        "Right",
+        "Left"
+      ],
+      "text": [
+        "Mai întâi, un joc. În care mână crezi că e?",
+        "Dreapta",
+        "Stânga"
+      ]
+    },
+    {
+      "en": [
+        "...Ha ha! It doesn't matter which, actually. You win either way!"
+      ],
+      "text": [
+        "...Ha, ha! De fapt nu contează care. Câștigi oricum!"
+      ]
+    },
+    {
+      "en": [
+        "{assistant}"
+      ],
+      "text": [
+        "{assistant}"
+      ]
+    },
+    {
+      "en": [
+        "It's a Vs. Seeker. Use it, and any trainer you've beaten who wants a rematch will let you know."
+      ],
+      "text": [
+        "E un Vs. Seeker. Folosește-l, și orice antrenor pe care l-ai învins și vrea revanșa o să-ți dea de știre."
+      ]
+    },
+    {
+      "en": [
+        "Oh, and one more thing, since you've got a Pokétch. Have this too!"
+      ],
+      "text": [
+        "A, și încă ceva, dacă tot ai un Pokétch. Ia și asta!"
+      ]
+    },
+    {
+      "en": [
+        "{player} added the Dowsing Machine app to the Pokétch!"
+      ],
+      "text": [
+        "Aplicația Dowsing Machine a fost adăugată în Pokétch!"
+      ]
+    },
+    {
+      "en": [
+        "{assistant}"
+      ],
+      "text": [
+        "{assistant}"
+      ]
+    },
+    {
+      "en": [
+        "It finds items hidden in the ground nearby. Tap it now and then on your way, and you'll be surprised what turns up!"
+      ],
+      "text": [
+        "Găsește obiectele ascunse în pământ prin apropiere. Atinge-o din când în când pe drum și o să te miri ce iese la iveală!"
+      ]
+    },
+    {
+      "en": [
+        "Right, I'm off back to the lab. Good luck on Mt. Coronet, {player}!"
+      ],
+      "text": [
+        "Gata, mă întorc la laborator. Mult noroc pe Muntele Coronet, {player}!"
+      ]
+    }
+  ]
+}

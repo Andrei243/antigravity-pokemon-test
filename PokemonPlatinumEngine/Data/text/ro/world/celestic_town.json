@@ -1,0 +1,104 @@
+{
+  "people": {
+    "expert_m": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Have you seen the little shrine in the middle of town? It was standing long before the town was.",
+          "Nobody remembers who built it. We just keep it swept and look after it."
+        ],
+        "text": [
+          "Ai văzut micul altar din mijlocul orășelului? Era aici cu mult înainte de orășel.",
+          "Nimeni nu-și amintește cine l-a construit. Doar îl măturăm și avem grijă de el."
+        ]
+      }
+    },
+    "ninja_boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Psst! Don't look at me. I'm keeping watch on this house in secret.",
+          "...Oh. You already looked."
+        ],
+        "text": [
+          "Pst! Nu te uita la mine. Păzesc casa asta în secret.",
+          "...A. Deja te-ai uitat."
+        ]
+      }
+    },
+    "ace_trainer_f": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          "Antrenoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I climbed all the way up the mountain to see the old ruins here.",
+          "The air is so still and clear. You can almost hear the past whispering."
+        ],
+        "text": [
+          "Am urcat tot muntele ca să văd ruinele vechi de aici.",
+          "Aerul e atât de liniștit și de limpede. Aproape că auzi trecutul șoptind."
+        ]
+      }
+    },
+    "grunt_m": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      }
+    },
+    "elder": {
+      "name": {
+        "en": [
+          "Elder"
+        ],
+        "text": [
+          "Bătrâna înțeleaptă"
+        ]
+      }
+    },
+    "cynthia": {
+      "name": {
+        "en": [
+          "Cynthia"
+        ],
+        "text": [
+          "Cynthia"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "map_signpost": {
+      "en": [
+        "Celestic Town\nWhere the mountains keep the stories of long ago."
+      ],
+      "text": [
+        "Orășelul Celestic\nUnde munții păstrează poveștile de demult."
+      ]
+    }
+  }
+}

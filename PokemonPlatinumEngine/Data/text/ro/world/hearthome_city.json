@@ -1,0 +1,440 @@
+{
+  "people": {
+    "pachirisu": {
+      "name": {
+        "en": [
+          "Pachirisu"
+        ],
+        "text": [
+          "Pachirisu"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Chipa! Chipa-chii!"
+        ],
+        "text": [
+          "Chipa! Chipa-chii!"
+        ]
+      }
+    },
+    "keira": {
+      "name": {
+        "en": [
+          "Keira"
+        ],
+        "text": [
+          "Keira"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Buneary, wait for me!"
+        ],
+        "text": [
+          "Buneary, așteaptă-mă!"
+        ]
+      }
+    },
+    "buneary": {
+      "name": {
+        "en": [
+          "Buneary"
+        ],
+        "text": [
+          "Buneary"
+        ]
+      }
+    },
+    "fisherman": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          "Pescarul"
+        ]
+      }
+    },
+    "gym_guide": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          "Ghidul Arenei"
+        ]
+      }
+    },
+    "pokefan_m_2": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Day Care couple found an Egg on my Pokémon's account! I had no idea where it came from."
+        ],
+        "text": [
+          "Cei de la Pensiune au găsit un Ou de la Pokémonul meu! N-aveam idee de unde a apărut."
+        ]
+      }
+    },
+    "hiker_2": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Eggs turn up at the Day Care out in Johto as well, I hear. Pokémon are the same everywhere!"
+        ],
+        "text": [
+          "Am auzit că și la Pensiunea din Johto apar Ouă. Pokémonii sunt la fel peste tot!"
+        ]
+      }
+    },
+    "pokefan_m_1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "So, which is it to be first: the Gym, or a contest?",
+          "Win a Badge or win a ribbon. Either way, Hearthome will cheer you on."
+        ],
+        "text": [
+          "Deci, ce faci întâi: Arena sau un concurs?",
+          "Câștigi o Insignă sau câștigi o panglică. Oricum ar fi, Hearthome o să te aplaude."
+        ]
+      }
+    },
+    "pokemon_breeder_f_1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Since I started pushing a pram, I see every step and every kerb in this city.",
+          "Before, I never noticed a single one!"
+        ],
+        "text": [
+          "De când împing un cărucior, văd fiecare treaptă și fiecare bordură din orașul ăsta.",
+          "Înainte nu observam niciuna!"
+        ]
+      }
+    },
+    "pokemon_breeder_m_1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "People here say hello to strangers, and they mean it.",
+          "There's something about this city that makes everyone open up."
+        ],
+        "text": [
+          "Oamenii de aici le spun bună ziua străinilor, și chiar așa simt.",
+          "E ceva în orașul ăsta care-i face pe toți să se deschidă."
+        ]
+      }
+    },
+    "pokefan_f": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "How many kinds of Pokémon do you suppose there are in the world?",
+          "Every time I think I've met them all, a new one turns up."
+        ],
+        "text": [
+          "Câte feluri de Pokémoni crezi că sunt pe lume?",
+          "De fiecare dată când cred că i-am întâlnit pe toți, apare unul nou."
+        ]
+      }
+    },
+    "mr_goods": {
+      "name": {
+        "en": [
+          "Mr. Goods"
+        ],
+        "text": [
+          "Domnul Mărfuri"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "People call me Mr. Goods. I collect fine things, and I give them away to trainers who've earned them.",
+          "Do something truly remarkable, and come and tell me about it."
+        ],
+        "text": [
+          "Lumea îmi spune Domnul Mărfuri. Strâng lucruri frumoase și le dăruiesc antrenorilor care le-au meritat.",
+          "Fă ceva cu adevărat remarcabil și vino să-mi povestești."
+        ]
+      }
+    },
+    "battle_girl_1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A ribbon, a hat, or a flower behind the ear?",
+          "I can never decide what my Pokémon should wear on stage at a contest!"
+        ],
+        "text": [
+          "O panglică, o pălărie sau o floare după ureche?",
+          "Nu mă pot hotărî niciodată ce să poarte Pokémonul meu pe scenă la un concurs!"
+        ]
+      }
+    },
+    "battle_girl_2": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I used a Fire Stone on my Pokémon, and it evolved right there in my hands!",
+          "Some Pokémon won't evolve however much they battle. They need the right stone."
+        ],
+        "text": [
+          "Am folosit o Fire Stone pe Pokémonul meu și a evoluat chiar acolo, în mâinile mele!",
+          "Unii Pokémoni nu evoluează oricât s-ar lupta. Le trebuie piatra potrivită."
+        ]
+      }
+    },
+    "hiker_1": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I walk my Pachirisu round Amity Square every morning, just north of here.",
+          "Big as I am, it's the one setting the pace!"
+        ],
+        "text": [
+          "Îmi plimb Pachirisu-ul prin Piața Amity în fiecare dimineață, chiar la nord de aici.",
+          "Oricât de mare sunt eu, el e cel care dă ritmul!"
+        ]
+      }
+    },
+    "black_belt_1": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          "Centură Neagră"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "For years I trained alone on a mountain, with nobody to talk to.",
+          "Then I came down to Hearthome. Now I can't walk ten steps without someone wanting a chat!"
+        ],
+        "text": [
+          "Ani de zile m-am antrenat singur pe un munte, fără nimeni cu care să vorbesc.",
+          "Apoi am coborât în Hearthome. Acum nu pot face zece pași fără ca cineva să vrea să stea de vorbă!"
+        ]
+      }
+    },
+    "pokemon_breeder_m_2": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "One day my little one will be old enough for a Pokémon of their own.",
+          "I wonder which Pokémon they'll make friends with first?"
+        ],
+        "text": [
+          "Într-o zi, copilul meu o să fie destul de mare pentru un Pokémon al lui.",
+          "Oare cu ce Pokémon o să se împrietenească întâi?"
+        ]
+      }
+    },
+    "pokemon_breeder_f_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm only visiting, but I'd love to live here one day.",
+          "Hearthome feels like home the moment you arrive."
+        ],
+        "text": [
+          "Sunt doar în vizită, dar mi-ar plăcea să locuiesc aici într-o zi.",
+          "Hearthome te face să te simți acasă din clipa în care ajungi."
+        ]
+      }
+    },
+    "artist": {
+      "name": {
+        "en": [
+          "Artist"
+        ],
+        "text": [
+          "Artistul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I come to this spot every day to paint the city.",
+          "The light on these streets is never the same twice. I don't think I'll ever finish!"
+        ],
+        "text": [
+          "Vin în locul ăsta în fiecare zi ca să pictez orașul.",
+          "Lumina de pe străzile astea nu e niciodată la fel de două ori. Cred că n-o să termin niciodată!"
+        ]
+      }
+    },
+    "black_belt_2": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          "Centură Neagră"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Ghost-type Pokémon don't feel Normal or Fighting moves at all.",
+          "I learnt that one the hard way, against this city's Gym."
+        ],
+        "text": [
+          "Pokémonii de tip Fantomă nu simt deloc mișcările de tip Normal sau Luptă.",
+          "Am învățat asta pe pielea mea, la Arena din orașul ăsta."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "map_signpost": {
+      "en": [
+        "Hearthome City\nA city with a warm welcome at every door."
+      ],
+      "text": [
+        "Orașul Hearthome\nUn oraș cu o primire caldă la fiecare ușă."
+      ]
+    },
+    "arrow_signpost_west": {
+      "en": [
+        "Hearthome City\nWest: Route 208, Mt. Coronet\nSouth: Route 212"
+      ],
+      "text": [
+        "Orașul Hearthome\nVest: Ruta 208, Muntele Coronet\nSud: Ruta 212"
+      ]
+    },
+    "arrow_signpost_east": {
+      "en": [
+        "Hearthome City\nEast: Route 209, Solaceon Town"
+      ],
+      "text": [
+        "Orașul Hearthome\nEst: Ruta 209, Orășelul Solaceon"
+      ]
+    },
+    "gym_signpost": {
+      "en": [
+        "Hearthome City Pokémon Gym\nLeader: Fantina\nShe dances with the ghosts!"
+      ],
+      "text": [
+        "Arena Pokémon din Orașul Hearthome\nLideră: Fantina\nDansează cu fantomele!"
+      ]
+    },
+    "signboard_pokemon_contest_hall": {
+      "en": [
+        "Pokémon Contest Hall\nStep up on stage and show the crowd how your Pokémon shines!"
+      ],
+      "text": [
+        "Sala Concursurilor Pokémon\nUrcă pe scenă și arată-i publicului cum strălucește Pokémonul tău!"
+      ]
+    },
+    "signboard_pokemon_fan_club": {
+      "en": [
+        "Pokémon Fan Club\nCome in and tell us all about your favourite!"
+      ],
+      "text": [
+        "Clubul Fanilor Pokémon\nIntră și povestește-ne totul despre preferatul tău!"
+      ]
+    },
+    "signboard_amity_square_west_gate": {
+      "en": [
+        "Amity Square · West Gate\nA park for a quiet stroll with your Pokémon."
+      ],
+      "text": [
+        "Piața Amity · Poarta de Vest\nUn parc pentru o plimbare liniștită cu Pokémonul tău."
+      ]
+    },
+    "signboard_amity_square_east_gate": {
+      "en": [
+        "Amity Square · East Gate\nA park for a quiet stroll with your Pokémon."
+      ],
+      "text": [
+        "Piața Amity · Poarta de Est\nUn parc pentru o plimbare liniștită cu Pokémonul tău."
+      ]
+    },
+    "signboard_poffin_house": {
+      "en": [
+        "Poffin House\nTreats baked together taste twice as sweet."
+      ],
+      "text": [
+        "Casa Poffinurilor\nDulciurile coapte împreună sunt de două ori mai dulci."
+      ]
+    }
+  }
+}

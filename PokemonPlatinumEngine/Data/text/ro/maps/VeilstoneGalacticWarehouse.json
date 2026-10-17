@@ -1,0 +1,63 @@
+{
+  "displayName": {
+    "en": [
+      "Galactic Warehouse"
+    ],
+    "text": [
+      "Depozitul Galactic"
+    ]
+  },
+  "people": {
+    "looker": {
+      "name": {
+        "en": [
+          "Looker"
+        ],
+        "text": [
+          "Looker"
+        ]
+      }
+    },
+    "7,4": {
+      "name": {
+        "en": [
+          "Dusk Stone"
+        ],
+        "text": [
+          "Dusk Stone"
+        ]
+      }
+    },
+    "13,8": {
+      "name": {
+        "en": [
+          "HM02"
+        ],
+        "text": [
+          "HM02"
+        ]
+      }
+    },
+    "galactic_hq_door_west": {
+      "name": {
+        "en": [
+          "Door"
+        ],
+        "text": [
+          "Ușă"
+        ]
+      }
+    },
+    "galactic_hq_door_east": {
+      "name": {
+        "en": [
+          "Door"
+        ],
+        "text": [
+          "Ușă"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

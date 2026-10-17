@@ -1,0 +1,63 @@
+{
+  "displayName": {
+    "en": [
+      "Route 206"
+    ],
+    "text": [
+      "Ruta 206"
+    ]
+  },
+  "people": {
+    "cashier_m_west": {
+      "name": {
+        "en": [
+          "Gate Keeper"
+        ],
+        "text": [
+          "Paznicul porții"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Learn to change gears, and there's nowhere a Bicycle won't take you.",
+          "Uphill, though, even third gear is hard going. Take a run at it!"
+        ],
+        "text": [
+          "Învață să schimbi vitezele și nu există loc unde o bicicletă să nu te ducă.",
+          "La deal, totuși, până și a treia viteză merge greu. Ia-ți avânt!"
+        ]
+      }
+    },
+    "cashier_m_east": {
+      "name": {
+        "en": [
+          "Gate Keeper"
+        ],
+        "text": [
+          "Paznicul porții"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Learn to change gears, and there's nowhere a Bicycle won't take you.",
+          "Uphill, though, even third gear is hard going. Take a run at it!"
+        ],
+        "text": [
+          "Învață să schimbi vitezele și nu există loc unde o bicicletă să nu te ducă.",
+          "La deal, totuși, până și a treia viteză merge greu. Ia-ți avânt!"
+        ]
+      }
+    },
+    "battle_girl": {
+      "name": {
+        "en": [
+          "Battle Girl"
+        ],
+        "text": [
+          "Luptătoarea"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

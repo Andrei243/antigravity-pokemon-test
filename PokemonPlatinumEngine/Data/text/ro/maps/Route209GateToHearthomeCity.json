@@ -1,0 +1,60 @@
+{
+  "displayName": {
+    "en": [
+      "Route 209"
+    ],
+    "text": [
+      "Ruta 209"
+    ]
+  },
+  "people": {
+    "battle_girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Out on Route 209 there's a tiny tower of stones, all tumbled down.",
+          "Someone must have knocked it over. I wonder if it can ever be put right again?"
+        ],
+        "text": [
+          "Pe Ruta 209 e un turnuleț de pietre, prăbușit de tot.",
+          "Cineva trebuie să-l fi dărâmat. Oare se mai poate repara vreodată?"
+        ]
+      }
+    },
+    "rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "5,4": {
+      "en": [
+        "A map of Sinnoh. Hearthome City lies west of here, and Route 209 runs east toward Solaceon Town."
+      ],
+      "text": [
+        "O hartă a Sinnoh-ului. Orașul Hearthome se află la vest de aici, iar Ruta 209 merge spre est, spre Orășelul Solaceon."
+      ]
+    },
+    "6,4": {
+      "en": [
+        "A map of Sinnoh. Hearthome City lies west of here, and Route 209 runs east toward Solaceon Town."
+      ],
+      "text": [
+        "O hartă a Sinnoh-ului. Orașul Hearthome se află la vest de aici, iar Ruta 209 merge spre est, spre Orășelul Solaceon."
+      ]
+    }
+  }
+}

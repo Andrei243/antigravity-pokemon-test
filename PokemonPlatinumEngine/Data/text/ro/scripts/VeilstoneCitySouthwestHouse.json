@@ -1,0 +1,88 @@
+{
+  "Massage": [
+    {
+      "en": [
+        "Oh, somebody looks worn out... No, no, not you. I mean your Pokémon!"
+      ],
+      "text": [
+        "O, cineva arată stors... Nu, nu, nu tu. Mă refer la Pokémonul tău!"
+      ]
+    },
+    {
+      "en": [
+        "I could give one of them a massage, if you like. Shall I?"
+      ],
+      "text": [
+        "Aș putea să-i fac unuia un masaj, dacă vrei. Să-i fac?"
+      ]
+    },
+    {
+      "en": [
+        "Which one could do with a little looking after?"
+      ],
+      "text": [
+        "Care dintre ei are nevoie de puțină îngrijire?"
+      ]
+    },
+    {
+      "en": [
+        "Hee hee... All right, let's begin. There now, sweetie, just relax..."
+      ],
+      "text": [
+        "Hi, hi... Bine, să începem. Gata, puiule, relaxează-te..."
+      ]
+    },
+    {
+      "en": [
+        "{member:RESULT} looks blissfully content..."
+      ],
+      "text": [
+        "{member:RESULT} pare fericit peste poate..."
+      ]
+    },
+    {
+      "en": [
+        "Oh, and look what turned up while I was working on your Pokémon!"
+      ],
+      "text": [
+        "O, și uite ce-a apărut cât lucram la Pokémonul tău!"
+      ]
+    },
+    {
+      "en": [
+        "Do drop by again tomorrow, if you like."
+      ],
+      "text": [
+        "Mai treci mâine, dacă vrei."
+      ]
+    },
+    {
+      "en": [
+        "Don't be silly! I'd crack that Egg if I tried to massage it!"
+      ],
+      "text": [
+        "Ce idee caraghioasă! Aș crăpa Oul ăla dacă aș încerca să-l masez!"
+      ]
+    },
+    {
+      "en": [
+        "Oh! It's nothing shady, I promise..."
+      ],
+      "text": [
+        "O! Nu e nimic necurat, promit..."
+      ]
+    },
+    {
+      "en": [
+        "Hm? You want me to show you how Pokémon are massaged?",
+        "Hee hee hee... That's a secret, of course!",
+        "Come and see me again tomorrow!"
+      ],
+      "text": [
+        "Hm? Vrei să-ți arăt cum se masează Pokémonii?",
+        "Hi, hi, hi... E un secret, firește!",
+        "Vino să mă vezi din nou mâine!"
+      ]
+    }
+  ]
+}

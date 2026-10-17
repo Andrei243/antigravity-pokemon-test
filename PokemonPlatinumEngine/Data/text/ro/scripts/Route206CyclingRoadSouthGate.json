@@ -1,0 +1,50 @@
+{
+  "OnlyBicycles": [
+    {
+      "en": [
+        "Gate Keeper"
+      ],
+      "text": [
+        "Paznicul porții"
+      ]
+    },
+    {
+      "en": [
+        "Hold on! The Cycling Road is open to cyclists only. You'll need to be on a Bicycle."
+      ],
+      "text": [
+        "Stai! Drumul Bicicliștilor e deschis doar bicicliștilor. Trebuie să fii pe bicicletă."
+      ]
+    }
+  ],
+  "BattleGirl": [
+    {
+      "en": [
+        "What's a Bicycle without one of these?",
+        "A Flag! Everybody ought to have one. It's an Accessory for your Pokémon, too."
+      ],
+      "text": [
+        "Ce e o bicicletă fără una ca asta?",
+        "Un Flag! Toată lumea ar trebui să aibă unul. E și un Accesoriu pentru Pokémonul tău."
+      ]
+    },
+    {
+      "en": [
+        "Oh, your Fashion Case has no room for it. Come back when it does!"
+      ],
+      "text": [
+        "O, n-ai loc pentru el în Fashion Case. Revino când ai!"
+      ]
+    },
+    {
+      "en": [
+        "Go on through Mt. Coronet from here and you come to Hearthome City, where the Pokémon Contests are held.",
+        "Dress your Pokémon up in your Accessories and give one a try!"
+      ],
+      "text": [
+        "Mergi mai departe prin Muntele Coronet de aici și ajungi în Orașul Hearthome, unde se țin Concursurile Pokémon.",
+        "Îmbracă-ți Pokémonul cu Accesoriile tale și încearcă unul!"
+      ]
+    }
+  ]
+}

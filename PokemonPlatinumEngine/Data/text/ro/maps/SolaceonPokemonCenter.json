@@ -1,0 +1,91 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Center"
+    ],
+    "text": [
+      "Centrul Pokémon"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "old_man": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Day-Care Man was telling me that Pokémon don't all grow at the same pace."
+        ],
+        "text": [
+          "Omul de la Pensiune îmi spunea că Pokémonii nu cresc toți în același ritm."
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Lass"
+        ],
+        "text": [
+          "Domnișoara"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "It's a long walk from Solaceon Town to Veilstone City.",
+          "There's a café along the way where you can put your feet up, though."
+        ],
+        "text": [
+          "E drum lung din Orășelul Solaceon până în Orașul Veilstone.",
+          "Totuși, pe drum e o cafenea unde te poți odihni."
+        ]
+      }
+    },
+    "ruin_maniac": {
+      "name": {
+        "en": [
+          "Ruin Maniac"
+        ],
+        "text": [
+          "Pasionatul de ruine"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Hidden Machine for Defog lies somewhere in the Solaceon Ruins.",
+          "None of my Pokémon can learn it, though. I'll give the ruins a miss this time."
+        ],
+        "text": [
+          "Mașina Ascunsă pentru Defog e undeva în Ruinele Solaceon.",
+          "Totuși, niciunul dintre Pokémonii mei n-o poate învăța. Ocolesc ruinele de data asta."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

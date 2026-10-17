@@ -1,0 +1,144 @@
+{
+  "people": {
+    "ace_trainer_m": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          "Antrenoarea"
+        ]
+      }
+    },
+    "bird_keeper_katherine": {
+      "name": {
+        "en": [
+          "Katherine"
+        ],
+        "text": [
+          "Katherine"
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Katherine: My Noctowl spotted you long before you reached this slope. Let's battle!"
+        ],
+        "text": [
+          "Crescător de păsări Katherine: Noctowl al meu te-a zărit cu mult înainte să ajungi la panta asta. Hai la luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Katherine: It saw you coming. It just couldn't keep up with you."
+        ],
+        "text": [
+          "Crescător de păsări Katherine: Te-a văzut venind. Doar că n-a putut ține pasul cu tine."
+        ]
+      }
+    },
+    "ninja_boy_nick": {
+      "name": {
+        "en": [
+          "Nick"
+        ],
+        "text": [
+          "Nick"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ninja Boy Nick: A talking rock? No, a ninja! And a ninja never refuses a battle!"
+        ],
+        "text": [
+          "Băiat ninja Nick: O stâncă vorbitoare? Nu, un ninja! Iar un ninja nu refuză niciodată o luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ninja Boy Nick: Back to sitting very still and being a boulder, then."
+        ],
+        "text": [
+          "Băiat ninja Nick: Înapoi la stat nemișcat și la jucat rolul de bolovan, atunci."
+        ]
+      }
+    },
+    "black_belt_sean": {
+      "name": {
+        "en": [
+          "Sean"
+        ],
+        "text": [
+          "Sean"
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Sean: Up and down this slope all day long, that's my training. You'll be my rest stop!"
+        ],
+        "text": [
+          "Centură Neagră Sean: În sus și-n jos pe panta asta toată ziua, ăsta mi-e antrenamentul. Tu o să fii popasul meu!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Sean: Some rest stop. I'm more worn out than when I started."
+        ],
+        "text": [
+          "Centură Neagră Sean: Ce popas. Sunt mai stors decât la început."
+        ]
+      }
+    },
+    "ruin_maniac_harry": {
+      "name": {
+        "en": [
+          "Harry"
+        ],
+        "text": [
+          "Harry"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ruin Maniac Harry: Bronzor were first dug up in ancient ruins, you know. I've three! Care to see them?"
+        ],
+        "text": [
+          "Pasionat de ruine Harry: Bronzor au fost dezgropați prima dată din ruine străvechi, să știi. Am trei! Vrei să-i vezi?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ruin Maniac Harry: All three of them, polished off like old mirrors in a museum."
+        ],
+        "text": [
+          "Pasionat de ruine Harry: Toți trei, terminați ca niște oglinzi vechi dintr-un muzeu."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "trainer_tips_signpost": {
+      "en": [
+        "Trainer Tips\nMountains are long and their caves are dark. Fill your bag with Potions and an Escape Rope or two before you head in!"
+      ],
+      "text": [
+        "Sfaturi pentru Antrenori\nMunții sunt lungi și peșterile lor întunecate. Umple-ți rucsacul cu Potion și un Escape Rope-două înainte să intri!"
+      ]
+    },
+    "arrow_signpost_mt_coronet": {
+      "en": [
+        "Route 211\nWest: Mt. Coronet"
+      ],
+      "text": [
+        "Ruta 211\nVest: Muntele Coronet"
+      ]
+    },
+    "arrow_signpost_celestic_town": {
+      "en": [
+        "Route 211\nEast: Celestic Town"
+      ],
+      "text": [
+        "Ruta 211\nEst: Orășelul Celestic"
+      ]
+    }
+  }
+}

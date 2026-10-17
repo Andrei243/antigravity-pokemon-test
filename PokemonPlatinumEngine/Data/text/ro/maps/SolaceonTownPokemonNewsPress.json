@@ -1,0 +1,52 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon News Press"
+    ],
+    "text": [
+      "Presa de Știri Pokémon"
+    ]
+  },
+  "people": {
+    "gym_guide": {
+      "name": {
+        "en": [
+          "Editor"
+        ],
+        "text": [
+          "Redactorul"
+        ]
+      }
+    },
+    "pokemon_breeder_m": {
+      "name": {
+        "en": [
+          "Pokémon Breeder"
+        ],
+        "text": [
+          "Crescătoare de Pokémoni"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Sinnoh's newspaper is a small one, but it has plenty of loyal readers.",
+          "And every copy of it is printed right here!"
+        ],
+        "text": [
+          "Ziarul din Sinnoh e mic, dar are o mulțime de cititori fideli.",
+          "Și fiecare exemplar e tipărit chiar aici!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "1,3": {
+      "en": [
+        "This week's top story: \"The Poké Ball Round-up\", a look at the newest kinds of ball."
+      ],
+      "text": [
+        "Știrea principală a săptămânii: „Totul despre Poké Ball-uri”, o privire asupra celor mai noi feluri de Ball."
+      ]
+    }
+  }
+}

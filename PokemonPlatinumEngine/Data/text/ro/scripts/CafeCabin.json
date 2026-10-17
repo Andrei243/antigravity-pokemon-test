@@ -1,0 +1,88 @@
+{
+  "Milk": [
+    {
+      "en": [
+        "How are you doing? What'll it be?",
+        "Not that there's much to choose from: Moomoo Milk is all we ever pour.",
+        "Moomoo Milk, $500 a bottle."
+      ],
+      "text": [
+        "Ce mai faci? Ce să fie?",
+        "Nu că ar fi mare lucru de ales: Moomoo Milk e tot ce turnăm.",
+        "Moomoo Milk, $500 sticla."
+      ]
+    },
+    {
+      "en": [
+        "Something for the road?",
+        "1 bottle",
+        "1 dozen",
+        "No, thanks"
+      ],
+      "text": [
+        "Ceva pentru drum?",
+        "1 sticlă",
+        "1 duzină",
+        "Nu, mulțumesc"
+      ]
+    },
+    {
+      "en": [
+        "Suit yourself.",
+        "And don't go thinking Moomoo Milk is all we can get, mind. It's all we choose to serve. We're very particular about it."
+      ],
+      "text": [
+        "Cum vrei.",
+        "Și să nu crezi că Moomoo Milk e tot ce putem găsi. E tot ce alegem să servim. Suntem foarte pretențioși cu asta."
+      ]
+    },
+    {
+      "en": [
+        "Here's your Moomoo Milk. Enjoy."
+      ],
+      "text": [
+        "Poftim Moomoo Milk-ul. Să-ți fie de bine."
+      ]
+    },
+    {
+      "en": [
+        "Moomoo Milk by the dozen. That's twelve to the dozen, of course."
+      ],
+      "text": [
+        "Moomoo Milk la duzină. Adică douăsprezece la duzină, firește."
+      ]
+    },
+    {
+      "en": [
+        "Oh! You haven't the money for that, sweetie."
+      ],
+      "text": [
+        "O! N-ai bani pentru asta, dragă."
+      ]
+    }
+  ],
+  "Psyduck": [
+    {
+      "en": [
+        "You'll have seen the Psyduck huddled across the road outside, youngster?",
+        "Psyduck are plagued by headaches that never quite leave them, poor things.",
+        "I'm afraid there's nothing for it but to wait until they feel better."
+      ],
+      "text": [
+        "Ai văzut Psyduck-ii înghesuiți peste drum, afară, nu?",
+        "Psyduck-ii sunt chinuiți de dureri de cap care nu-i lasă niciodată de tot, sărăcuții.",
+        "Mă tem că nu e altceva de făcut decât să așteptăm să se simtă mai bine."
+      ]
+    },
+    {
+      "en": [
+        "Well, well! I hear you're the one who eased those Psyduck's headaches.",
+        "Whoever trusted you with that Secret Potion must be quite a Trainer!"
+      ],
+      "text": [
+        "Ei, ei! Am auzit că tu le-ai alinat durerile de cap Psyduck-ilor ălora.",
+        "Cine ți-a încredințat Secret Potion trebuie să fie un Antrenor pe cinste!"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,178 @@
+{
+  "Cook": [
+    {
+      "en": [
+        "Cook"
+      ],
+      "text": [
+        "Bucătăreasa"
+      ]
+    },
+    {
+      "en": [
+        "Hello there! This is where Berries are cooked into Poffins."
+      ],
+      "text": [
+        "Bună! Aici boabele sunt gătite și transformate în Poffinuri."
+      ]
+    },
+    {
+      "en": [
+        "Would you like to do some cooking?",
+        "COOK",
+        "INFO",
+        "EXIT"
+      ],
+      "text": [
+        "Vrei să gătești puțin?",
+        "GĂTEȘTE",
+        "INFO",
+        "IEȘIRE"
+      ]
+    },
+    {
+      "en": [
+        "Choose a Berry from your Bag and drop it into the pot, then get stirring!"
+      ],
+      "text": [
+        "Alege o Boabă din Rucsac și pune-o în oală, apoi apucă-te de amestecat!"
+      ]
+    },
+    {
+      "en": [
+        "An arrow tells you which way to stir. Mind your speed: stir too slowly and the batter burns..."
+      ],
+      "text": [
+        "O săgeată îți arată în ce parte să amesteci. Ai grijă la viteză: dacă amesteci prea încet, aluatul se arde..."
+      ]
+    },
+    {
+      "en": [
+        "...stir too quickly and it slops over the side. Do it well, and out comes a tasty Poffin!"
+      ],
+      "text": [
+        "...dacă amesteci prea repede, dă pe dinafară. Fă-o cum trebuie și iese un Poffin gustos!"
+      ]
+    },
+    {
+      "en": [
+        "Cooks can share a pot, up to four of them, and the more there are, the more Poffins each takes home."
+      ],
+      "text": [
+        "Pot găti la aceeași oală până la patru bucătari, și cu cât sunt mai mulți, cu atât fiecare ia acasă mai multe Poffinuri."
+      ]
+    },
+    {
+      "en": [
+        "Oh, I'm sorry, dear. You'll need a Poffin Case to keep the Poffins you cook."
+      ],
+      "text": [
+        "O, îmi pare rău, dragă. Îți trebuie o Poffin Case ca să păstrezi Poffinurile pe care le gătești."
+      ]
+    },
+    {
+      "en": [
+        "Oh dear, you haven't a single Berry to cook!"
+      ],
+      "text": [
+        "Vai, n-ai nicio Boabă de gătit!"
+      ]
+    },
+    {
+      "en": [
+        "Your Poffin Case is full to the brim!"
+      ],
+      "text": [
+        "Poffin Case-ul tău e plin ochi!"
+      ]
+    },
+    {
+      "en": [
+        "Come back whenever you feel like cooking!"
+      ],
+      "text": [
+        "Revino oricând ai chef de gătit!"
+      ]
+    }
+  ],
+  "Idol": [
+    {
+      "en": [
+        "Hi there! Let's get cooking!"
+      ],
+      "text": [
+        "Salutare! Hai la gătit!"
+      ]
+    },
+    {
+      "en": [
+        "Want my secret for Poffins your Pokémon will love? At the start, while it's runny, stir gently so nothing spills."
+      ],
+      "text": [
+        "Vrei secretul meu pentru Poffinuri pe care Pokémonii tăi o să le adore? La început, cât e lichid, amestecă ușor să nu se verse nimic."
+      ]
+    },
+    {
+      "en": [
+        "Once it starts to thicken, stir hard, in big circles!"
+      ],
+      "text": [
+        "Când începe să se îngroașe, amestecă tare, în cercuri mari!"
+      ]
+    },
+    {
+      "en": [
+        "And at the very end, make a wish for something yummy and whisk away like mad!"
+      ],
+      "text": [
+        "Iar chiar la sfârșit, pune-ți o dorință pentru ceva delicios și bate cât te țin puterile!"
+      ]
+    }
+  ],
+  "OldMan": [
+    {
+      "en": [
+        "Got some Berries with you? The rarer the Berry, the tastier the Poffin."
+      ],
+      "text": [
+        "Ai boabe la tine? Cu cât e mai rară Boaba, cu atât e mai gustos Poffinul."
+      ]
+    },
+    {
+      "en": [
+        "And the more cooks round a pot, the better it turns out."
+      ],
+      "text": [
+        "Și cu cât sunt mai mulți bucătari în jurul oalei, cu atât iese mai bun."
+      ]
+    }
+  ],
+  "OldWoman": [
+    {
+      "en": [
+        "A good meal puts a spring in anyone's step, people and Pokémon alike."
+      ],
+      "text": [
+        "O masă bună dă oricui avânt, oamenilor și Pokémonilor deopotrivă."
+      ]
+    },
+    {
+      "en": [
+        "We're not so very different, are we?"
+      ],
+      "text": [
+        "Nu suntem chiar așa de diferiți, nu-i așa?"
+      ]
+    }
+  ],
+  "SchoolKid": [
+    {
+      "en": [
+        "When my friends come round we all stir the same pot. Everybody gets more Poffins that way!"
+      ],
+      "text": [
+        "Când vin prietenii mei, amestecăm toți în aceeași oală. Așa primește fiecare mai multe Poffinuri!"
+      ]
+    }
+  ]
+}

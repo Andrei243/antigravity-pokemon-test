@@ -1,0 +1,396 @@
+{
+  "people": {
+    "psyduck_1": {
+      "name": {
+        "en": [
+          "Psyduck"
+        ],
+        "text": [
+          "Psyduck"
+        ]
+      }
+    },
+    "psyduck_2": {
+      "name": {
+        "en": [
+          "Psyduck"
+        ],
+        "text": [
+          "Psyduck"
+        ]
+      }
+    },
+    "psyduck_3": {
+      "name": {
+        "en": [
+          "Psyduck"
+        ],
+        "text": [
+          "Psyduck"
+        ]
+      }
+    },
+    "psyduck_4": {
+      "name": {
+        "en": [
+          "Psyduck"
+        ],
+        "text": [
+          "Psyduck"
+        ]
+      }
+    },
+    "cynthia": {
+      "name": {
+        "en": [
+          "Cynthia"
+        ],
+        "text": [
+          "Cynthia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Cynthia: My grandmother is the elder of Celestic Town. You'll find her there."
+        ],
+        "text": [
+          "Cynthia: Bunica mea e bătrâna înțeleaptă a Orășelului Celestic. Acolo o găsești."
+        ]
+      }
+    },
+    "jogger_wyatt": {
+      "name": {
+        "en": [
+          "Wyatt"
+        ],
+        "text": [
+          "Wyatt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Jogger Wyatt: Running uphill in the morning gets the heart going. So does a battle!"
+        ],
+        "text": [
+          "Alergător Wyatt: Alergatul la deal dimineața îți pune inima în mișcare. La fel și o luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Jogger Wyatt: Downhill from here, then. In more ways than one."
+        ],
+        "text": [
+          "Alergător Wyatt: De-aici, numai la vale, atunci. În mai multe feluri."
+        ]
+      }
+    },
+    "jogger_wyatt_no_battle": {
+      "name": {
+        "en": [
+          "Jogger"
+        ],
+        "text": [
+          "Alergătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "One more lap and I'm done for the day. Sorry, no battles!",
+          "Come back in the morning, when I'm fresh."
+        ],
+        "text": [
+          "Încă o tură și am terminat pe azi. Scuze, fără lupte!",
+          "Revino dimineața, când sunt odihnit."
+        ]
+      }
+    },
+    "ace_trainer_f": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          "Antrenoarea"
+        ]
+      }
+    },
+    "ninja_boy_fabian": {
+      "name": {
+        "en": [
+          "Fabian"
+        ],
+        "text": [
+          "Fabian"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ninja Boy Fabian: Ha! You walked right past me. A ninja hides where nobody thinks to look!"
+        ],
+        "text": [
+          "Băiat ninja Fabian: Ha! Ai trecut chiar pe lângă mine. Un ninja se ascunde unde nimeni nu se gândește să caute!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ninja Boy Fabian: Next time I'll hide in taller grass. Much taller."
+        ],
+        "text": [
+          "Băiat ninja Fabian: Data viitoare mă ascund în iarbă mai înaltă. Mult mai înaltă."
+        ]
+      }
+    },
+    "ninja_boy_brennan": {
+      "name": {
+        "en": [
+          "Brennan"
+        ],
+        "text": [
+          "Brennan"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ninja Boy Brennan: The grass rustled, and you never guessed it was me!"
+        ],
+        "text": [
+          "Băiat ninja Brennan: Iarba a foșnit și nici n-ai bănuit că eram eu!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ninja Boy Brennan: My hiding is perfect. It's my battling that needs work."
+        ],
+        "text": [
+          "Băiat ninja Brennan: Ascunsul meu e perfect. Luptatul mai trebuie lucrat."
+        ]
+      }
+    },
+    "ninja_boy_bruce": {
+      "name": {
+        "en": [
+          "Bruce"
+        ],
+        "text": [
+          "Bruce"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ninja Boy Bruce: Surprise! A ninja's first lesson: always spring from the grass!"
+        ],
+        "text": [
+          "Băiat ninja Bruce: Surpriză! Prima lecție a unui ninja: sari mereu din iarbă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ninja Boy Bruce: A ninja's second lesson is losing with dignity. I'm still working on that one."
+        ],
+        "text": [
+          "Băiat ninja Bruce: A doua lecție a unui ninja e să pierzi cu demnitate. La asta încă lucrez."
+        ]
+      }
+    },
+    "twin_teri": {
+      "name": {
+        "en": [
+          "Teri"
+        ],
+        "text": [
+          "Teri"
+        ]
+      },
+      "before": {
+        "en": [
+          "Teri: Tia and I picked the sweetest Pokémon we could find. Want to see them?"
+        ],
+        "text": [
+          "Teri: Eu și Tia am ales cei mai drăguți Pokémoni pe care i-am găsit. Vrei să-i vezi?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Teri: Being sweet isn't enough on its own, is it, Tia?"
+        ],
+        "text": [
+          "Teri: Să fii drăguț nu e de ajuns, nu-i așa, Tia?"
+        ]
+      }
+    },
+    "twin_tia": {
+      "name": {
+        "en": [
+          "Tia"
+        ],
+        "text": [
+          "Tia"
+        ]
+      },
+      "before": {
+        "en": [
+          "Tia: Two of us, two Pokémon! You won't know which way to look!"
+        ],
+        "text": [
+          "Tia: Noi două, doi Pokémoni! N-o să știi încotro să te uiți!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Tia: We'll train them to be sweet AND strong, Teri."
+        ],
+        "text": [
+          "Tia: O să-i antrenăm să fie drăguți ȘI puternici, Teri."
+        ]
+      }
+    },
+    "breeder_kahlil": {
+      "name": {
+        "en": [
+          "Kahlil"
+        ],
+        "text": [
+          "Kahlil"
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokémon Breeder Kahlil: Baby Pokémon are small, but never take them lightly. Watch!"
+        ],
+        "text": [
+          "Crescător Pokémon Kahlil: Pokémonii bebeluși sunt mici, dar să nu-i iei niciodată în ușor. Uite!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokémon Breeder Kahlil: They'll grow and evolve one day. Then we'll see who wins."
+        ],
+        "text": [
+          "Crescător Pokémon Kahlil: Într-o zi o să crească și o să evolueze. Atunci vedem cine câștigă."
+        ]
+      }
+    },
+    "breeder_amber": {
+      "name": {
+        "en": [
+          "Amber"
+        ],
+        "text": [
+          "Amber"
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokémon Breeder Amber: I looked after their Eggs myself, and now they're ready for a real battle!"
+        ],
+        "text": [
+          "Crescător Pokémon Amber: Le-am îngrijit Ouăle chiar eu, iar acum sunt gata de o luptă adevărată!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokémon Breeder Amber: There, there. You were all very brave."
+        ],
+        "text": [
+          "Crescător Pokémon Amber: Gata, gata. Ați fost toți foarte curajoși."
+        ]
+      }
+    },
+    "belle_ava": {
+      "name": {
+        "en": [
+          "Ava"
+        ],
+        "text": [
+          "Ava"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ava: Pa and I ride out along this road every day. Fancy a battle at a gallop?"
+        ],
+        "text": [
+          "Ava: Eu și tata ieșim călare pe drumul ăsta în fiecare zi. Ai chef de o luptă în galop?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ava: We'll ride home at a walk, then. Won't we, Pa?"
+        ],
+        "text": [
+          "Ava: Atunci ne întoarcem acasă la pas. Nu-i așa, tată?"
+        ]
+      }
+    },
+    "pa_matt": {
+      "name": {
+        "en": [
+          "Matt"
+        ],
+        "text": [
+          "Matt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Matt: We've raised Ponyta on our farm for years, Ava and I. Here we come!"
+        ],
+        "text": [
+          "Matt: Creștem Ponyta la ferma noastră de ani de zile, eu și Ava. Venim!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Matt: Well, I'll be. You handled that like an old hand."
+        ],
+        "text": [
+          "Matt: Ia te uită. Te-ai descurcat ca un om cu experiență."
+        ]
+      }
+    },
+    "rancher_marco": {
+      "name": {
+        "en": [
+          "Marco"
+        ],
+        "text": [
+          "Marco"
+        ]
+      },
+      "before": {
+        "en": [
+          "Rancher Marco: On a farm, a good Ponyta is worth ten tractors. Let me show you why!"
+        ],
+        "text": [
+          "Fermier Marco: La fermă, un Ponyta bun face cât zece tractoare. Hai să-ți arăt de ce!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Rancher Marco: Ha! My Ponyta needs a few more laps of the field, I reckon."
+        ],
+        "text": [
+          "Fermier Marco: Ha! Ponyta al meu mai are nevoie de câteva ture de câmp, zic eu."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost": {
+      "en": [
+        "Route 210\nSouth: Solaceon Town"
+      ],
+      "text": [
+        "Ruta 210\nSud: Orășelul Solaceon"
+      ]
+    },
+    "signboard_cafe_cabin": {
+      "en": [
+        "Café Cabin\nRest your feet and warm up before the climb into the fog."
+      ],
+      "text": [
+        "Cafeneaua Cabană\nOdihnește-ți picioarele și încălzește-te înainte de urcușul prin ceață."
+      ]
+    }
+  }
+}

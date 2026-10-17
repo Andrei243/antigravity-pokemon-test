@@ -59,7 +59,7 @@ partial class Harness
         {
             for (int i = 0; i < most; i++)
             {
-                if (text != null && Box().IsActive && Box().CurrentLine.Contains(text)) { Whole(); Console.WriteLine($"  said: {text}"); return; }
+                if (text != null && Box().IsActive && Translated.Saying(Box().CurrentLine, text)) { Whole(); Console.WriteLine($"  said: {text}"); return; }
                 if (text == null && !engine.ScriptRunning && !Box().IsActive && State() == GameState.Overworld) return;
                 if (State() == GameState.Battle || engine.Choice.IsOpen) return;
                 if (Box().IsActive && !Box().IsCurrentLineComplete) { Box().FinishLine(); Quick(); }

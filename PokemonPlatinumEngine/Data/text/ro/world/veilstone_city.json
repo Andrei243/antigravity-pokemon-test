@@ -1,0 +1,380 @@
+{
+  "people": {
+    "counterpart": {
+      "name": {
+        "en": [
+          "{assistant}"
+        ],
+        "text": [
+          "{assistant}"
+        ]
+      }
+    },
+    "crasher_wake": {
+      "name": {
+        "en": [
+          "Crasher Wake"
+        ],
+        "text": [
+          "Crasher Wake"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Crasher Wake: Wahahaha! See you in my ring!"
+        ],
+        "text": [
+          "Crasher Wake: Uahahaha! Ne vedem în ringul meu!"
+        ]
+      }
+    },
+    "grunt_m_warehouse_north": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: Two on two, is it? You'll both be crying in a minute!"
+        ],
+        "text": [
+          "Galactic Grunt: Doi contra doi, zici? O să plângeți amândoi într-un minut!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: Our Pokémon are rubbish!"
+        ],
+        "text": [
+          "Galactic Grunt: Pokémonii noștri sunt jalnici!"
+        ]
+      }
+    },
+    "grunt_m_warehouse_south": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: Finally, something to do! Let's go!"
+        ],
+        "text": [
+          "Galactic Grunt: În sfârșit, ceva de făcut! Hai!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: That's it. I'm asking for a transfer."
+        ],
+        "text": [
+          "Galactic Grunt: Gata. Cer transfer."
+        ]
+      }
+    },
+    "grunt_m_southeast": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: There's an HM for Fly in our warehouse. I'm next in line for it...",
+          "...once I've impressed the higher-ups. Which could take a while, to be honest."
+        ],
+        "text": [
+          "Galactic Grunt: În depozitul nostru e un HM pentru Fly. Eu sunt următorul la rând să-l primesc...",
+          "...după ce-i impresionez pe șefi. Ceea ce ar putea dura ceva, sincer să fiu."
+        ]
+      }
+    },
+    "looker": {
+      "name": {
+        "en": [
+          "Looker"
+        ],
+        "text": [
+          "Looker"
+        ]
+      }
+    },
+    "grunt_m_storage_key": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      }
+    },
+    "guitarist_1": {
+      "name": {
+        "en": [
+          "Guitarist"
+        ],
+        "text": [
+          "Chitaristul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Ever wondered what Team Galactic keep behind those warehouse doors?",
+          "Rumour has it one of the boxes holds an HM. I'd write a song about it if I knew which one!"
+        ],
+        "text": [
+          "Te-ai întrebat vreodată ce ține Echipa Galactic după ușile depozitului?",
+          "Se zvonește că într-una din cutii e un HM. Aș scrie un cântec despre asta dacă aș ști care!"
+        ]
+      }
+    },
+    "pokefan_m": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Been to the Department Store yet?",
+          "You could spend a whole day in there and still not see every floor."
+        ],
+        "text": [
+          "Ai fost deja la Magazinul Universal?",
+          "Ai putea să-ți petreci o zi întreagă acolo și tot n-ai vedea toate etajele."
+        ]
+      }
+    },
+    "battle_girl_1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Maylene, our Gym Leader, trains harder than anybody in this city.",
+          "One day I'm going to fight just like her!"
+        ],
+        "text": [
+          "Maylene, Lidera Arenei noastre, se antrenează mai mult decât oricine din oraș.",
+          "Într-o zi o să lupt exact ca ea!"
+        ]
+      }
+    },
+    "lady": {
+      "name": {
+        "en": [
+          "Lady"
+        ],
+        "text": [
+          "Doamna"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I popped into the Department Store for one little thing.",
+          "And here I am with a dozen bags. It happens every single time!"
+        ],
+        "text": [
+          "Am intrat în Magazinul Universal pentru un singur lucrușor.",
+          "Și uite-mă cu o duzină de sacoșe. Se întâmplă de fiecare dată!"
+        ]
+      }
+    },
+    "battle_girl_2": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "See those big rocks at the east end of town? They fell from the sky, ages and ages ago.",
+          "Meteorites! The whole city grew up around them."
+        ],
+        "text": [
+          "Vezi pietrele alea mari din capătul de est al orașului? Au căzut din cer demult, demult de tot.",
+          "Meteoriți! Tot orașul a crescut în jurul lor."
+        ]
+      }
+    },
+    "roughneck_1": {
+      "name": {
+        "en": [
+          "Tough Guy"
+        ],
+        "text": [
+          "Durul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "That big building at the north end of town belongs to Team Galactic.",
+          "New energy for everyone, they say. Funny how you never see anyone go in or out."
+        ],
+        "text": [
+          "Clădirea aia mare din capătul de nord al orașului e a Echipei Galactic.",
+          "Energie nouă pentru toată lumea, zic ei. Ciudat că nu vezi niciodată pe nimeni intrând sau ieșind."
+        ]
+      }
+    },
+    "guitarist_2": {
+      "name": {
+        "en": [
+          "Guitarist"
+        ],
+        "text": [
+          "Chitaristul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Game Corner's right here. Win some coins, and the shop next door swaps them for prizes.",
+          "Me? I'm saving up for a new set of strings."
+        ],
+        "text": [
+          "Sala de Jocuri e chiar aici. Câștigă niște fise, iar magazinul de alături ți le schimbă pe premii.",
+          "Eu? Pun deoparte pentru un set nou de corzi."
+        ]
+      }
+    },
+    "roughneck_2": {
+      "name": {
+        "en": [
+          "Tough Guy"
+        ],
+        "text": [
+          "Durul"
+        ]
+      }
+    },
+    "battle_girl_3": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Through the gate to the south is Route 214, and past that, Lake Valor.",
+          "There's a very grand hotel by the lake. One day I'll stay there!"
+        ],
+        "text": [
+          "Prin poarta din sud se ajunge pe Ruta 214, iar după ea, la Lacul Valor.",
+          "Lângă lac e un hotel foarte elegant. Într-o zi o să stau și eu acolo!"
+        ]
+      }
+    },
+    "guitarist_3": {
+      "name": {
+        "en": [
+          "Guitarist"
+        ],
+        "text": [
+          "Chitaristul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This city is one big dojo. Even I do sit-ups between songs.",
+          "The Gym's just along the street, if you're feeling brave."
+        ],
+        "text": [
+          "Orașul ăsta e un dojo uriaș. Până și eu fac abdomene între cântece.",
+          "Arena e chiar pe stradă, dacă ai curaj."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "map_signpost": {
+      "en": [
+        "Veilstone City\nThe city where the stars came down to stay."
+      ],
+      "text": [
+        "Orașul Veilstone\nOrașul unde stelele au coborât ca să rămână."
+      ]
+    },
+    "gym_signpost": {
+      "en": [
+        "Veilstone City Pokémon Gym\nLeader: Maylene\nHer fighting spirit never bends!"
+      ],
+      "text": [
+        "Arena Pokémon din Orașul Veilstone\nLideră: Maylene\nSpiritul ei de luptă nu se frânge niciodată!"
+      ]
+    },
+    "signboard_department_store": {
+      "en": [
+        "Veilstone Department Store\nFloor after floor of goods for trainers and their Pokémon."
+      ],
+      "text": [
+        "Magazinul Universal Veilstone\nEtaj după etaj de mărfuri pentru antrenori și Pokémonii lor."
+      ]
+    },
+    "signboard_game_corner": {
+      "en": [
+        "Veilstone Game Corner\nBright lights and spinning reels. Coins are sold inside."
+      ],
+      "text": [
+        "Sala de Jocuri Veilstone\nLumini strălucitoare și role care se învârt. Fisele se vând înăuntru."
+      ]
+    },
+    "signboard_prize_exchange": {
+      "en": [
+        "Prize Exchange\nTrade your Game Corner coins for TMs and other prizes."
+      ],
+      "text": [
+        "Schimbul de Premii\nSchimbă-ți fisele de la Sala de Jocuri pe TM-uri și alte premii."
+      ]
+    },
+    "signboard_galactic_warehouse": {
+      "en": [
+        "Galactic Warehouse\nPrivate property. Keep out!"
+      ],
+      "text": [
+        "Depozitul Galactic\nProprietate privată. Intrarea interzisă!"
+      ]
+    },
+    "signboard_galactic_building": {
+      "en": [
+        "Team Galactic Building\nBuilding new energy for a brand-new world."
+      ],
+      "text": [
+        "Clădirea Echipei Galactic\nConstruim energie nouă pentru o lume nouă-nouță."
+      ]
+    },
+    "signboard_lake_valor": {
+      "en": [
+        "Route 214\nSouth: Valor Lakefront, Lake Valor"
+      ],
+      "text": [
+        "Ruta 214\nSud: Malul Valor, Lacul Valor"
+      ]
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "displayName": {
+    "en": [
+      "Celestic Town"
+    ],
+    "text": [
+      "Orășelul Celestic"
+    ]
+  },
+  "people": {
+    "expert_m": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      }
+    },
+    "elder": {
+      "name": {
+        "en": [
+          "Elder"
+        ],
+        "text": [
+          "Bătrâna înțeleaptă"
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My big sister studies the myths of Sinnoh.",
+          "She wants to know how people and Pokémon lived together back in the days of legend.",
+          "Was it different then, or just the same as now? That's what she's trying to find out."
+        ],
+        "text": [
+          "Sora mea mare studiază miturile Sinnoh-ului.",
+          "Vrea să afle cum trăiau oamenii și Pokémonii împreună pe vremea legendelor.",
+          "Era altfel atunci, sau la fel ca acum? Asta încearcă să afle."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "8,3": {
+      "en": [
+        "A very old scroll hangs on the wall. It's hard to be sure, but it looks priceless."
+      ],
+      "text": [
+        "Pe perete atârnă un sul foarte vechi. E greu de spus sigur, dar pare neprețuit."
+      ]
+    },
+    "5,6": {
+      "en": [
+        "An old book lies open on the table. {player} read a little of it... \"When the first was born, wisdom woke in the people, and their lives grew richer.\" \"When the second was born, feeling woke in them: joy, and sorrow with it.\" \"When the third was born, will woke in them, and they rose to act...\""
+      ],
+      "text": [
+        "Pe masă e deschisă o carte veche. {player} a citit puțin din ea... „Când s-a născut primul, înțelepciunea s-a trezit în oameni, iar viețile lor s-au îmbogățit.” „Când s-a născut al doilea, sentimentul s-a trezit în ei: bucuria, și odată cu ea tristețea.” „Când s-a născut al treilea, voința s-a trezit în ei, și s-au ridicat să facă...”"
+      ]
+    }
+  }
+}

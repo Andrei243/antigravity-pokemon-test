@@ -1,0 +1,202 @@
+{
+  "displayName": {
+    "en": [
+      "Contest Hall"
+    ],
+    "text": [
+      "Sala Concursurilor"
+    ]
+  },
+  "people": {
+    "receptionist_link": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      }
+    },
+    "receptionist_official": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      }
+    },
+    "receptionist_practice": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      }
+    },
+    "ace_trainer_f": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A Pokémon that's been fed Poffins looks its best on stage. Sweet ones bring out the cute in it, they say.",
+          "I'd better learn to cook really good ones at the Poffin House!"
+        ],
+        "text": [
+          "Un Pokémon hrănit cu Poffinuri arată cel mai bine pe scenă. Cele dulci îi scot la iveală drăgălășenia, se zice.",
+          "Trebuie să învăț să gătesc unele foarte bune la Casa Poffinurilor!"
+        ]
+      }
+    },
+    "clown": {
+      "name": {
+        "en": [
+          "Clown"
+        ],
+        "text": [
+          "Clovnul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A contest isn't one thing, you know! First the look, then the dance, then the moves.",
+          "A Pokémon has to shine at all three to take the ribbon."
+        ],
+        "text": [
+          "Un concurs nu e un singur lucru, să știi! Întâi înfățișarea, apoi dansul, apoi mișcările.",
+          "Un Pokémon trebuie să strălucească la toate trei ca să ia panglica."
+        ]
+      }
+    },
+    "school_kid_f": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The winners' photos go up on the boards here. Look at them all!",
+          "One day mine will be up there too."
+        ],
+        "text": [
+          "Pozele câștigătorilor se pun pe panourile de aici. Uită-te la toate!",
+          "Într-o zi o să fie și a mea acolo."
+        ]
+      }
+    },
+    "rich_boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      }
+    },
+    "mom": {
+      "name": {
+        "en": [
+          "Mom"
+        ],
+        "text": [
+          "Mama"
+        ]
+      }
+    },
+    "keira": {
+      "name": {
+        "en": [
+          "Keira"
+        ],
+        "text": [
+          "Keira"
+        ]
+      }
+    },
+    "reporter": {
+      "name": {
+        "en": [
+          "Reporter"
+        ],
+        "text": [
+          "Reporterița"
+        ]
+      }
+    },
+    "fantina": {
+      "name": {
+        "en": [
+          "Fantina"
+        ],
+        "text": [
+          "Fantina"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "9,5": {
+      "en": [
+        "Pokémon Super Contests\nShow off your Pokémon's look, its dance and its moves, and win a ribbon to remember!"
+      ],
+      "text": [
+        "Super Concursurile Pokémon\nArată-i înfățișarea, dansul și mișcările Pokémonului tău și câștigă o panglică de neuitat!"
+      ]
+    },
+    "2,11": {
+      "en": [
+        "A frame for the winner of the Cool Contest."
+      ],
+      "text": [
+        "O ramă pentru câștigătorul Concursului de Stil."
+      ]
+    },
+    "4,11": {
+      "en": [
+        "A frame for the winner of the Beauty Contest."
+      ],
+      "text": [
+        "O ramă pentru câștigătorul Concursului de Frumusețe."
+      ]
+    },
+    "6,11": {
+      "en": [
+        "A frame for the winner of the Cute Contest."
+      ],
+      "text": [
+        "O ramă pentru câștigătorul Concursului de Drăgălășenie."
+      ]
+    },
+    "8,11": {
+      "en": [
+        "A frame for the winner of the Smart Contest."
+      ],
+      "text": [
+        "O ramă pentru câștigătorul Concursului de Istețime."
+      ]
+    },
+    "10,11": {
+      "en": [
+        "A frame for the winner of the Tough Contest."
+      ],
+      "text": [
+        "O ramă pentru câștigătorul Concursului de Duritate."
+      ]
+    }
+  }
+}

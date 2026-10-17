@@ -1,0 +1,275 @@
+{
+  "people": {
+    "mira": {
+      "name": {
+        "en": [
+          "Mira"
+        ],
+        "text": [
+          "Mira"
+        ]
+      }
+    },
+    "camper_diego": {
+      "name": {
+        "en": [
+          "Diego"
+        ],
+        "text": [
+          "Diego"
+        ]
+      },
+      "before": {
+        "en": [
+          "Camper Diego: My Aipom scouts ahead with that clever tail of its. Let's see how it battles!"
+        ],
+        "text": [
+          "Campist Diego: Aipom al meu cercetează drumul înainte cu coada aia isteață. Să vedem cum se luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Camper Diego: Aipom's tail is better at pointing the way than at fighting, it seems."
+        ],
+        "text": [
+          "Campist Diego: Coada lui Aipom e mai bună la arătat drumul decât la luptat, se pare."
+        ]
+      }
+    },
+    "picnicker_tori": {
+      "name": {
+        "en": [
+          "Tori"
+        ],
+        "text": [
+          "Tori"
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Tori: Psyduck has had a headache ever since we came underground. Maybe a battle will shake it off!"
+        ],
+        "text": [
+          "Excursionistă Tori: Pe Psyduck îl doare capul de când am intrat sub pământ. Poate o luptă îl scutură!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Tori: It's still holding its head. I think we both need some daylight."
+        ],
+        "text": [
+          "Excursionistă Tori: Tot se ține de cap. Cred că amândoi avem nevoie de lumina zilei."
+        ]
+      }
+    },
+    "lass_cassidy": {
+      "name": {
+        "en": [
+          "Cassidy"
+        ],
+        "text": [
+          "Cassidy"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Cassidy: Buneary's ears pick up every footstep in the dark. It heard you coming ages ago!"
+        ],
+        "text": [
+          "Domnișoară Cassidy: Urechile lui Buneary prind orice pas în întuneric. Te-a auzit venind de mult!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Cassidy: Buneary heard you coming, but it couldn't stop you. Oh well!"
+        ],
+        "text": [
+          "Domnișoară Cassidy: Buneary te-a auzit venind, dar n-a putut să te oprească. Asta e!"
+        ]
+      }
+    },
+    "youngster_wayne": {
+      "name": {
+        "en": [
+          "Wayne"
+        ],
+        "text": [
+          "Wayne"
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Wayne: Ponyta's mane is my lantern down here, and it battles too!"
+        ],
+        "text": [
+          "Puști Wayne: Coama lui Ponyta e felinarul meu aici jos, și se mai și luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Wayne: Keep a light with you in here. Without one, every tunnel looks the same."
+        ],
+        "text": [
+          "Puști Wayne: Ține o lumină la tine aici. Fără ea, toate tunelurile arată la fel."
+        ]
+      }
+    },
+    "hiker_reginald": {
+      "name": {
+        "en": [
+          "Reginald"
+        ],
+        "text": [
+          "Reginald"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Reginald: My two Geodude roll along behind me like a pair of boulders. Stand aside, or battle!"
+        ],
+        "text": [
+          "Drumeț Reginald: Cei doi Geodude ai mei se rostogolesc după mine ca doi bolovani. Fă-te deoparte sau luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Reginald: Rolled flat! You've a sturdy team there."
+        ],
+        "text": [
+          "Drumeț Reginald: Făcut una cu pământul! Ai o echipă zdravănă."
+        ]
+      }
+    },
+    "hiker_lorenzo": {
+      "name": {
+        "en": [
+          "Lorenzo"
+        ],
+        "text": [
+          "Lorenzo"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Lorenzo: Onix bores through rock as if it were cheese. Let's see it go through you!"
+        ],
+        "text": [
+          "Drumeț Lorenzo: Onix trece prin stâncă de parcă ar fi brânză. Să vedem cum trece prin tine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Lorenzo: Not through you, it seems. You're made of sterner stuff than rock."
+        ],
+        "text": [
+          "Drumeț Lorenzo: Nu prin tine, se pare. Ai în tine un aluat mai tare decât stânca."
+        ]
+      }
+    },
+    "picnicker_ana": {
+      "name": {
+        "en": [
+          "Ana"
+        ],
+        "text": [
+          "Ana"
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Ana: Hoothoot sees just fine in the dark. It spotted you long before I did!"
+        ],
+        "text": [
+          "Excursionistă Ana: Hoothoot vede foarte bine pe întuneric. Te-a zărit cu mult înaintea mea!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Ana: Hoothoot's bobbing its head like a clock. It's telling me it's time we went home."
+        ],
+        "text": [
+          "Excursionistă Ana: Hoothoot dă din cap ca un pendul. Îmi spune că e timpul să mergem acasă."
+        ]
+      }
+    },
+    "camper_parker": {
+      "name": {
+        "en": [
+          "Parker"
+        ],
+        "text": [
+          "Parker"
+        ]
+      },
+      "before": {
+        "en": [
+          "Camper Parker: I came in here exploring, and look, I've found a challenger! Buizel, Shinx, let's go!"
+        ],
+        "text": [
+          "Campist Parker: Am intrat aici să explorez și uite, am găsit un adversar! Buizel, Shinx, înainte!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Camper Parker: Exploring's easier than battling. I'll go back to drawing my map."
+        ],
+        "text": [
+          "Campist Parker: Explorarea e mai ușoară decât lupta. Mă întorc la desenat harta."
+        ]
+      }
+    },
+    "collector_terry": {
+      "name": {
+        "en": [
+          "Terry"
+        ],
+        "text": [
+          "Terry"
+        ]
+      },
+      "before": {
+        "en": [
+          "Collector Terry: See my Gible? I found it in this very cave. Isn't it rare? Now watch what it can do!"
+        ],
+        "text": [
+          "Colecționar Terry: Îl vezi pe Gible al meu? L-am găsit chiar în peștera asta. Nu-i așa că e rar? Acum uite ce poate!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Collector Terry: Rare isn't the same as strong, I suppose. I'll keep polishing its scales."
+        ],
+        "text": [
+          "Colecționar Terry: Rar nu înseamnă puternic, presupun. O să-i lustruiesc mai departe solzii."
+        ]
+      }
+    },
+    "ruin_maniac_gerald": {
+      "name": {
+        "en": [
+          "Gerald"
+        ],
+        "text": [
+          "Gerald"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ruin Maniac Gerald: A cave this deep must hide something ancient. While I search, how about a battle?"
+        ],
+        "text": [
+          "Pasionat de ruine Gerald: O peșteră așa de adâncă trebuie să ascundă ceva străvechi. Cât caut, ce zici de o luptă?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ruin Maniac Gerald: Beaten! Still, I'll keep digging. Something old is down here, I can feel it."
+        ],
+        "text": [
+          "Pasionat de ruine Gerald: Învins! Totuși, o să sap mai departe. E ceva vechi aici jos, simt asta."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

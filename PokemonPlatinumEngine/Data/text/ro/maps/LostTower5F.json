@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "Lost Tower"
+    ],
+    "text": [
+      "Turnul Pierdut"
+    ]
+  },
+  "people": {
+    "old_woman_1": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          "Bătrâna"
+        ]
+      }
+    },
+    "old_woman_2": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          "Bătrâna"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

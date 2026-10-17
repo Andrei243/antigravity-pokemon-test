@@ -1,0 +1,91 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Center"
+    ],
+    "text": [
+      "Centrul Pokémon"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "school_kid_m": {
+      "name": {
+        "en": [
+          "Schoolboy"
+        ],
+        "text": [
+          "Școlarul"
+        ]
+      }
+    },
+    "battle_girl": {
+      "name": {
+        "en": [
+          "Battle Girl"
+        ],
+        "text": [
+          "Luptătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When a Pokémon faints, all it means is that it hasn't the strength to battle.",
+          "It can still use its hidden moves out in the field!"
+        ],
+        "text": [
+          "Când un Pokémon leșină, înseamnă doar că nu mai are putere să lupte.",
+          "Tot mai poate folosi mișcările ascunse pe teren!"
+        ]
+      }
+    },
+    "buneary": {
+      "name": {
+        "en": [
+          "Buneary"
+        ],
+        "text": [
+          "Buneary"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Buneary: Bun bun!"
+        ],
+        "text": [
+          "Buneary: Bun bun!"
+        ]
+      }
+    },
+    "pokemon_breeder_f": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

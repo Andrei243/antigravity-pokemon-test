@@ -1,0 +1,88 @@
+{
+  "RivalInTown": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Woo-hoo!"
+      ],
+      "text": [
+        "Iuhuu!"
+      ]
+    },
+    {
+      "en": [
+        "Hey, {player}! I've got something brilliant. Since it's you, I'll let you have a look!"
+      ],
+      "text": [
+        "Hei, {player}! Am ceva genial. Fiindcă ești tu, te las să te uiți!"
+      ]
+    },
+    {
+      "en": [
+        "Huh? Wait a second... Where did they go? I had some Seals, and I never even stuck them on anything.",
+        "Oh, that's right. It's because I was in the ruins!"
+      ],
+      "text": [
+        "Hă? Stai o secundă... Unde au dispărut? Aveam niște Stickere și nici nu le-am lipit pe nimic.",
+        "A, da, gata. E din cauză că am fost în ruine!"
+      ]
+    },
+    {
+      "en": [
+        "The ruins here are amazing. You've got to go and see. I even found a Hidden Machine in there. Defog!",
+        "Anyway, we'll battle another time. See you!"
+      ],
+      "text": [
+        "Ruinele de aici sunt uimitoare. Trebuie să te duci să le vezi. Am găsit chiar și o Mașină Ascunsă acolo. Defog!",
+        "În fine, ne luptăm altă dată. Pa!"
+      ]
+    }
+  ],
+  "RuinManiac": [
+    {
+      "en": [
+        "Every Pokémon you meet becomes part of your story, and you part of theirs.",
+        "This is a Pokétch app called Pokémon History. It keeps a record of the Pokémon you've caught."
+      ],
+      "text": [
+        "Fiecare Pokémon pe care-l întâlnești devine parte din povestea ta, iar tu parte din a lui.",
+        "E o aplicație de Pokétch numită Pokémon History. Ține evidența Pokémonilor pe care i-ai prins."
+      ]
+    },
+    {
+      "en": [
+        "{player}'s Pokétch now has the Pokémon History app!"
+      ],
+      "text": [
+        "Aplicația Pokémon History a fost adăugată în Pokétch!"
+      ]
+    },
+    {
+      "en": [
+        "A travelling trainer, are you? Then how many kinds of Pokémon have you come across so far?",
+        "Any trainer worth the name should have met fifty at least. If you haven't, go further and look harder!"
+      ],
+      "text": [
+        "Ești un antrenor călător, nu? Atunci, câte feluri de Pokémoni ai întâlnit până acum?",
+        "Orice antrenor care se respectă ar trebui să fi întâlnit măcar cincizeci. Dacă n-ai, du-te mai departe și caută mai bine!"
+      ]
+    },
+    {
+      "en": [
+        "You have a history of your own, and so does every Pokémon.",
+        "Where the two cross, a new story begins."
+      ],
+      "text": [
+        "Ai o poveste a ta, și la fel are fiecare Pokémon.",
+        "Acolo unde se întâlnesc cele două începe o poveste nouă."
+      ]
+    }
+  ]
+}

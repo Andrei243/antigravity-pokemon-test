@@ -1,0 +1,136 @@
+{
+  "Wilma": [
+    {
+      "en": [
+        "Ho ho ho... Grandma Wilma, they call me.",
+        "I came out here all on my own, from a town of Dragon tamers.",
+        "The mightiest of all the Dragon-type moves: that is what I can teach the tough Pokémon of Sinnoh."
+      ],
+      "text": [
+        "Ho, ho, ho... Bunica Wilma, așa îmi zice lumea.",
+        "Am venit aici de una singură, dintr-un oraș de îmblânzitori de dragoni.",
+        "Cea mai puternică dintre mișcările de tip Dragon: asta pot să-i învăț pe Pokémonii duri din Sinnoh."
+      ]
+    },
+    {
+      "en": [
+        "Would you have me teach it to one of your Pokémon?"
+      ],
+      "text": [
+        "Vrei s-o învăț pe unul dintre Pokémonii tăi?"
+      ]
+    },
+    {
+      "en": [
+        "Ah, it is you again... Shall I teach the best Dragon-type move I know to one of your Pokémon?"
+      ],
+      "text": [
+        "A, iar tu... Să-l învăț pe unul dintre Pokémonii tăi cea mai bună mișcare de tip Dragon pe care o știu?"
+      ]
+    },
+    {
+      "en": [
+        "Fine, fine. Now choose the Pokémon I am to teach."
+      ],
+      "text": [
+        "Bine, bine. Acum alege Pokémonul pe care să-l învăț."
+      ]
+    },
+    {
+      "en": [
+        "One, two, and... poof! {wearer} forgot {forgotten}. And..."
+      ],
+      "text": [
+        "Unu, doi și... puf! {wearer} a uitat {forgotten}. Și..."
+      ]
+    },
+    {
+      "en": [
+        "{wearer} learned {thing}!"
+      ],
+      "text": [
+        "{wearer} a învățat {thing}!"
+      ]
+    },
+    {
+      "en": [
+        "Draco Meteor's power to destroy is a fearsome thing to see.",
+        "Mind, though: using it lowers the user's own Special Attack."
+      ],
+      "text": [
+        "Puterea distrugătoare a lui Draco Meteor e un lucru înfricoșător de văzut.",
+        "Ai grijă însă: folosirea ei scade Atacul Special al celui care o folosește."
+      ]
+    },
+    {
+      "en": [
+        "Well, should you change your mind, do come back."
+      ],
+      "text": [
+        "Ei, dacă te răzgândești, să mai vii."
+      ]
+    },
+    {
+      "en": [
+        "I see... I do like your spirit.",
+        "But not one of the Pokémon with you now can learn this move."
+      ],
+      "text": [
+        "Înțeleg... Îmi place spiritul tău.",
+        "Dar niciunul dintre Pokémonii pe care-i ai acum nu poate învăța mișcarea asta."
+      ]
+    },
+    {
+      "en": [
+        "Hmmm... Teaching a move to an Egg is a feat beyond even me."
+      ],
+      "text": [
+        "Hmmm... Să înveți un Ou o mișcare e o ispravă peste puterile mele."
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry to disappoint you. That Pokémon cannot learn this move."
+      ],
+      "text": [
+        "Îmi pare rău să te dezamăgesc. Pokémonul ăla nu poate învăța mișcarea asta."
+      ]
+    },
+    {
+      "en": [
+        "Oh? That Pokémon knows {thing} already."
+      ],
+      "text": [
+        "O? Pokémonul ăla știe deja {thing}."
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry to disappoint you...",
+        "That Pokémon could learn this move, but it hasn't come to trust you fully yet.",
+        "Until it does, I can't make it learn."
+      ],
+      "text": [
+        "Îmi pare rău să te dezamăgesc...",
+        "Pokémonul ăla ar putea învăța mișcarea asta, dar încă nu are încredere deplină în tine.",
+        "Până nu are, nu-l pot face să învețe."
+      ]
+    },
+    {
+      "en": [
+        "{wearer} did not learn {thing}."
+      ],
+      "text": [
+        "{wearer} nu a învățat {thing}."
+      ]
+    },
+    {
+      "en": [
+        "{forgotten} isn't a move that can be given up like that. {wearer} did not learn {thing}."
+      ],
+      "text": [
+        "{forgotten} nu e o mișcare la care să se poată renunța așa. {wearer} nu a învățat {thing}."
+      ]
+    }
+  ]
+}

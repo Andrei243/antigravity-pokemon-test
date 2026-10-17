@@ -1,0 +1,100 @@
+{
+  "people": {
+    "bird_keeper_alexandra": {
+      "name": {
+        "en": [
+          "Alexandra"
+        ],
+        "text": [
+          "Alexandra"
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Alexandra: The wind pours down off the mountain here. My birds love to ride it. Shall we?"
+        ],
+        "text": [
+          "Crescător de păsări Alexandra: Aici vântul coboară năvalnic de pe munte. Păsărilor mele le place să-l călărească. Încercăm?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Alexandra: Grounded already! We'll go back to practising our take-offs."
+        ],
+        "text": [
+          "Crescător de păsări Alexandra: Deja la sol! Ne întoarcem la exersat decolările."
+        ]
+      }
+    },
+    "hiker_louis": {
+      "name": {
+        "en": [
+          "Louis"
+        ],
+        "text": [
+          "Louis"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Louis: I'm off into Mt. Coronet. A battle first, to warm up my legs!"
+        ],
+        "text": [
+          "Drumeț Louis: Plec în Muntele Coronet. Întâi o luptă, să-mi încălzesc picioarele!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Louis: That took the puff right out of me. The mountain can wait a while."
+        ],
+        "text": [
+          "Drumeț Louis: Mi-a tăiat tot suflul. Muntele mai poate aștepta puțin."
+        ]
+      }
+    },
+    "ninja_boy_zach": {
+      "name": {
+        "en": [
+          "Zach"
+        ],
+        "text": [
+          "Zach"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ninja Boy Zach: You walked straight past me! Out of the shadows, my Zubat!"
+        ],
+        "text": [
+          "Băiat ninja Zach: Ai trecut drept pe lângă mine! Ieșiți din umbră, Zubat-ii mei!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ninja Boy Zach: Three Zubat, and not one of them could find a way through you."
+        ],
+        "text": [
+          "Băiat ninja Zach: Trei Zubat, și niciunul n-a găsit o cale să treacă de tine."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost_mt_coronet": {
+      "en": [
+        "Route 211\nEast: Mt. Coronet"
+      ],
+      "text": [
+        "Ruta 211\nEst: Muntele Coronet"
+      ]
+    },
+    "arrow_signpost_eterna_city": {
+      "en": [
+        "Route 211\nWest: Eterna City"
+      ],
+      "text": [
+        "Ruta 211\nVest: Orașul Eterna"
+      ]
+    }
+  }
+}

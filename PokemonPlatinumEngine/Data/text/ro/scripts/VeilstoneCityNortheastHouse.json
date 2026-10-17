@@ -1,0 +1,90 @@
+{
+  "Porygon": [
+    {
+      "en": [
+        "You're a Trainer, aren't you?",
+        "You see, there's a Pokémon I'd like somebody to look after. It's called Porygon.",
+        "I found it wandering about near Team Galactic's building, and I'm no Trainer myself."
+      ],
+      "text": [
+        "Ești Antrenor, nu-i așa?",
+        "Vezi tu, e un Pokémon de care aș vrea să aibă grijă cineva. Se numește Porygon.",
+        "L-am găsit rătăcind lângă clădirea Echipei Galactic, iar eu nu sunt Antrenor."
+      ]
+    },
+    {
+      "en": [
+        "Would you take it off my hands?"
+      ],
+      "text": [
+        "L-ai lua tu de la mine?"
+      ]
+    },
+    {
+      "en": [
+        "You're a Trainer, aren't you?",
+        "About that Pokémon I'd like somebody to look after, the Porygon..."
+      ],
+      "text": [
+        "Ești Antrenor, nu-i așa?",
+        "Despre Pokémonul de care aș vrea să aibă grijă cineva, Porygon..."
+      ]
+    },
+    {
+      "en": [
+        "Would you take it off my hands?"
+      ],
+      "text": [
+        "L-ai lua tu de la mine?"
+      ]
+    },
+    {
+      "en": [
+        "Wonderful! Thank you! The Porygon will be glad of it too.",
+        "I suspect it ran away from those Team Galactic goons."
+      ],
+      "text": [
+        "Minunat! Mulțumesc! Și Porygon o să se bucure.",
+        "Bănuiesc că a fugit de golanii ăia de la Echipa Galactic."
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Porygon!"
+      ],
+      "text": [
+        "{player} a primit Porygon!"
+      ]
+    },
+    {
+      "en": [
+        "Thank you! ... Oh, but you've a whole team with you already.",
+        "If you want this Porygon, put one of them in a PC Box first."
+      ],
+      "text": [
+        "Mulțumesc! ... O, dar ai deja o echipă întreagă cu tine.",
+        "Dacă vrei Porygon-ul ăsta, pune mai întâi unul dintre ei într-o cutie a PC-ului."
+      ]
+    },
+    {
+      "en": [
+        "Is that so...",
+        "Then I'll look after it a while longer. Do come and see me if you change your mind."
+      ],
+      "text": [
+        "Așa deci...",
+        "Atunci mai am grijă de el o vreme. Treci pe la mine dacă te răzgândești."
+      ]
+    },
+    {
+      "en": [
+        "That building of Team Galactic's bothers me so much I can hardly sleep.",
+        "It's so strange. Like a robot that might get up and walk off at any moment."
+      ],
+      "text": [
+        "Clădirea aia a Echipei Galactic mă neliniștește atât de tare că abia pot dormi.",
+        "E așa de ciudată. Ca un robot care s-ar putea ridica și pleca în orice clipă."
+      ]
+    }
+  ]
+}

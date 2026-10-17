@@ -1,0 +1,31 @@
+{
+  "people": {
+    "ruin_maniac_karl": {
+      "name": {
+        "en": [
+          "Karl"
+        ],
+        "text": [
+          "Karl"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ruin Maniac Karl: These ruins are full of secrets, and I mean to find them before you do!"
+        ],
+        "text": [
+          "Pasionat de ruine Karl: Ruinele astea sunt pline de secrete și vreau să le găsesc înaintea ta!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ruin Maniac Karl: The Unown on these walls are letters, you know. Read them in order and they spell out words."
+        ],
+        "text": [
+          "Pasionat de ruine Karl: Unown-ii de pe pereții ăștia sunt litere, să știi. Citește-i în ordine și formează cuvinte."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

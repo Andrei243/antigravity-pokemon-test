@@ -1,0 +1,162 @@
+{
+  "Psyduck": [
+    {
+      "en": [
+        "The Psyduck are clutching their heads and won't budge an inch.",
+        "They don't look like they'll be moving any time soon."
+      ],
+      "text": [
+        "Psyduck-ii se țin de cap și nu se clintesc nici un centimetru.",
+        "Nu par să aibă de gând să se miște prea curând."
+      ]
+    },
+    {
+      "en": [
+        "The Psyduck are clutching their heads and won't budge. Use the Secret Potion?"
+      ],
+      "text": [
+        "Psyduck-ii se țin de cap și nu se clintesc. Folosești Secret Potion?"
+      ]
+    },
+    {
+      "en": [
+        "{player} used the Secret Potion!",
+        "The Psyduck's headaches seem to have cleared up!"
+      ],
+      "text": [
+        "{player} a folosit Secret Potion!",
+        "Durerile de cap ale Psyduck-ilor par să fi trecut!"
+      ]
+    },
+    {
+      "en": [
+        "Cynthia"
+      ],
+      "text": [
+        "Cynthia"
+      ]
+    },
+    {
+      "en": [
+        "So you used the Secret Potion I gave you. I'm glad it worked."
+      ],
+      "text": [
+        "Deci ai folosit Secret Potion pe care ți l-am dat. Mă bucur că a mers."
+      ]
+    },
+    {
+      "en": [
+        "Psyduck are prone to terrible headaches, you know. Nobody has ever worked out what sets them off."
+      ],
+      "text": [
+        "Psyduck-ii suferă de dureri de cap groaznice, să știi. Nimeni n-a aflat vreodată ce le declanșează."
+      ]
+    },
+    {
+      "en": [
+        "Oh, while I think of it... could I ask a big favour of you?"
+      ],
+      "text": [
+        "A, dacă tot mi-am adus aminte... aș putea să-ți cer o mare favoare?"
+      ]
+    },
+    {
+      "en": [
+        "I'd like you to take this Old Charm to my grandmother in Celestic Town."
+      ],
+      "text": [
+        "Aș vrea să-i duci Old Charm-ul ăsta bunicii mele din Orășelul Celestic."
+      ]
+    },
+    {
+      "en": [
+        "There are some rare Pokémon living between here and there, so the trip should be worth your while."
+      ],
+      "text": [
+        "Între aici și acolo trăiesc niște Pokémoni rari, așa că drumul ar trebui să merite."
+      ]
+    },
+    {
+      "en": [
+        "Will you take it to her for me?"
+      ],
+      "text": [
+        "I-l duci tu din partea mea?"
+      ]
+    },
+    {
+      "en": [
+        "I know it's a lot to ask. But I'd really like it to be you."
+      ],
+      "text": [
+        "Știu că e mult să-ți cer. Dar chiar aș vrea să fii tu."
+      ]
+    },
+    {
+      "en": [
+        "Will you go to Celestic Town for me?"
+      ],
+      "text": [
+        "Te duci până în Orășelul Celestic pentru mine?"
+      ]
+    },
+    {
+      "en": [
+        "My grandmother has a rather commanding air about her. You'll know her the moment you see her."
+      ],
+      "text": [
+        "Bunica mea are un aer cam poruncitor. O s-o recunoști cum o vezi."
+      ]
+    },
+    {
+      "en": [
+        "She's the elder of Celestic Town. As for where it is, look at your Town Map. You can't miss it."
+      ],
+      "text": [
+        "E bătrâna înțeleaptă a Orășelului Celestic. Cât despre unde e, uită-te pe Town Map. N-ai cum să-l ratezi."
+      ]
+    },
+    {
+      "en": [
+        "I'm counting on you! I'm sure we'll meet again along the way."
+      ],
+      "text": [
+        "Mă bizui pe tine! Sunt sigură că ne mai întâlnim pe drum."
+      ]
+    }
+  ],
+  "Roost": [
+    {
+      "en": [
+        "Ace Trainer"
+      ],
+      "text": [
+        "Antrenor As"
+      ]
+    },
+    {
+      "en": [
+        "Whew! I'm taking a breather before the climb. If I were a bird Pokémon, you'd call this roosting. Ha ha!"
+      ],
+      "text": [
+        "Pfu! Îmi trag sufletul înainte de urcuș. Dacă aș fi un Pokémon pasăre, ai zice că stau cocoțat. Ha, ha!"
+      ]
+    },
+    {
+      "en": [
+        "...You look like you could do with a rest yourself. Here, this one's for you."
+      ],
+      "text": [
+        "...Și tu arăți de parcă ți-ar prinde bine o pauză. Uite, asta e pentru tine."
+      ]
+    },
+    {
+      "en": [
+        "Even bird Pokémon need to land now and then. Nobody can stay up in the air forever!"
+      ],
+      "text": [
+        "Până și Pokémonii păsări trebuie să aterizeze din când în când. Nimeni nu poate sta în aer la nesfârșit!"
+      ]
+    }
+  ]
+}

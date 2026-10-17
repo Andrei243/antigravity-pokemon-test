@@ -1,0 +1,65 @@
+{
+  "displayName": {
+    "en": [
+      "Eterna City"
+    ],
+    "text": [
+      "Orașul Eterna"
+    ]
+  },
+  "people": {
+    "expert_m": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Eterna was founded long, long ago, in honour of the Pokémon of ancient times.",
+          "A great deal has changed since. What matters has not.",
+          "I hope it never will..."
+        ],
+        "text": [
+          "Eterna a fost întemeiată demult de tot, în cinstea Pokémonilor din vremuri străvechi.",
+          "S-au schimbat multe de atunci. Ce contează a rămas la fel.",
+          "Sper să nu se schimbe niciodată..."
+        ]
+      }
+    },
+    "expert_f": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          "Bătrâna"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Have you been to see the Pokémon statue?",
+          "When I was a slip of a girl, every festival in town was held round it..."
+        ],
+        "text": [
+          "Ai fost să vezi statuia Pokémonului?",
+          "Când eram copilă, toate sărbătorile orașului se țineau în jurul ei..."
+        ]
+      }
+    },
+    "pokemon_breeder_m": {
+      "name": {
+        "en": [
+          "Pokémon Breeder"
+        ],
+        "text": [
+          "Crescătoare de Pokémoni"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

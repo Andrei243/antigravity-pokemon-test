@@ -1,0 +1,40 @@
+{
+  "displayName": {
+    "en": [
+      "Route 215"
+    ],
+    "text": [
+      "Ruta 215"
+    ]
+  },
+  "people": {
+    "ruin_maniac": {
+      "name": {
+        "en": [
+          "Ruin Maniac"
+        ],
+        "text": [
+          "Pasionatul de ruine"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "5,4": {
+      "en": [
+        "A map of Sinnoh. Veilstone City lies east of here, and Route 215 runs west through the rain toward Route 210."
+      ],
+      "text": [
+        "O hartă a Sinnoh-ului. Orașul Veilstone se află la est de aici, iar Ruta 215 merge spre vest, prin ploaie, spre Ruta 210."
+      ]
+    },
+    "6,4": {
+      "en": [
+        "A map of Sinnoh. Veilstone City lies east of here, and Route 215 runs west through the rain toward Route 210."
+      ],
+      "text": [
+        "O hartă a Sinnoh-ului. Orașul Veilstone se află la est de aici, iar Ruta 215 merge spre vest, prin ploaie, spre Ruta 210."
+      ]
+    }
+  }
+}

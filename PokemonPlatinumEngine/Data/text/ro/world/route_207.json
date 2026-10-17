@@ -1,0 +1,224 @@
+{
+  "people": {
+    "counterpart": {
+      "name": {
+        "en": [
+          "{assistant}"
+        ],
+        "text": [
+          "{assistant}"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The professor wanted you to have this. Good luck on the mountain!"
+        ],
+        "text": [
+          "Profesorul a vrut să ai asta. Mult noroc pe munte!"
+        ]
+      }
+    },
+    "cyclist_m": {
+      "name": {
+        "en": [
+          "Cyclist"
+        ],
+        "text": [
+          "Biciclista"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "That muddy slope is too steep to walk up, and in a slow gear even a Bicycle slides straight back down.",
+          "Switch to the fast gear, take a run at it and don't stop pedalling!"
+        ],
+        "text": [
+          "Panta aia noroioasă e prea abruptă ca s-o urci pe jos, iar într-o viteză mică până și o bicicletă alunecă înapoi.",
+          "Treci pe viteza mare, ia-ți avânt și nu te opri din pedalat!"
+        ]
+      }
+    },
+    "camper_anthony": {
+      "name": {
+        "en": [
+          "Anthony"
+        ],
+        "text": [
+          "Anthony"
+        ]
+      },
+      "before": {
+        "en": [
+          "Camper Anthony: My Chimchar's flame keeps our camp warm at night. It'll warm you up too!"
+        ],
+        "text": [
+          "Campist Anthony: Flacăra lui Chimchar ne încălzește tabăra noaptea. O să te încălzească și pe tine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Camper Anthony: Burnt out! Chimchar and I will stick to boiling the kettle."
+        ],
+        "text": [
+          "Campist Anthony: S-a stins! Eu și Chimchar ne mărginim la fiert ceaiul."
+        ]
+      }
+    },
+    "picnicker_lauren": {
+      "name": {
+        "en": [
+          "Lauren"
+        ],
+        "text": [
+          "Lauren"
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Lauren: Pachirisu ate half our picnic, so it's bursting with energy. Watch out!"
+        ],
+        "text": [
+          "Excursionistă Lauren: Pachirisu a mâncat jumătate din picnic, așa că e plin de energie. Ai grijă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Lauren: All that energy, and it still lost. I think it's ready for a nap now."
+        ],
+        "text": [
+          "Excursionistă Lauren: Atâta energie și tot a pierdut. Cred că acum e gata de un pui de somn."
+        ]
+      }
+    },
+    "youngster_austin": {
+      "name": {
+        "en": [
+          "Austin"
+        ],
+        "text": [
+          "Austin"
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Austin: I've been training up and down this road all week. Time to see if it worked!"
+        ],
+        "text": [
+          "Puști Austin: M-am antrenat în sus și-n jos pe drumul ăsta toată săptămâna. E timpul să văd dacă a mers!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Austin: A whole week, and that's all it got me? Back to the start of the road, then."
+        ],
+        "text": [
+          "Puști Austin: O săptămână întreagă, și doar atât am câștigat? Înapoi la începutul drumului, atunci."
+        ]
+      }
+    },
+    "hiker_justin": {
+      "name": {
+        "en": [
+          "Justin"
+        ],
+        "text": [
+          "Justin"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Justin: Mt. Coronet's just ahead. I always warm up with a battle before the climb!"
+        ],
+        "text": [
+          "Drumeț Justin: Muntele Coronet e chiar în față. Mereu mă încălzesc cu o luptă înainte de urcare!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Justin: Warmed up? I'm worn out! I'll take the mountain slowly today."
+        ],
+        "text": [
+          "Drumeț Justin: Încălzit? Sunt stors! Azi o iau încet pe munte."
+        ]
+      }
+    },
+    "hiker_kevin": {
+      "name": {
+        "en": [
+          "Kevin"
+        ],
+        "text": [
+          "Kevin"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Kevin: Rocks, rocks and more rocks! I bring my whole collection wherever I go!"
+        ],
+        "text": [
+          "Drumeț Kevin: Pietre, pietre și iar pietre! Îmi iau toată colecția cu mine oriunde merg!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Kevin: My rucksack feels heavier after a loss. Must be all those Geodude."
+        ],
+        "text": [
+          "Drumeț Kevin: Rucsacul pare mai greu după o înfrângere. Trebuie să fie de la toți Geodude ăștia."
+        ]
+      }
+    },
+    "battle_girl_helen": {
+      "name": {
+        "en": [
+          "Helen"
+        ],
+        "text": [
+          "Helen"
+        ]
+      },
+      "before": {
+        "en": [
+          "Battle Girl Helen: I run this road morning and night to strengthen my legs. Let's see if my Pokémon are as strong!"
+        ],
+        "text": [
+          "Luptătoare Helen: Alerg pe drumul ăsta dimineața și seara să-mi întăresc picioarele. Să vedem dacă și Pokémonii mei sunt la fel de tari!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Battle Girl Helen: My legs are ready, but my Pokémon aren't. Back to training, all of us!"
+        ],
+        "text": [
+          "Luptătoare Helen: Picioarele mele sunt gata, dar Pokémonii nu. Înapoi la antrenament, toți!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost_oreburgh_city": {
+      "en": [
+        "Route 207\nWest: Oreburgh City"
+      ],
+      "text": [
+        "Ruta 207\nVest: Orașul Oreburgh"
+      ]
+    },
+    "arrow_signpost_mt_coronet": {
+      "en": [
+        "Route 207\nEast: Mt. Coronet"
+      ],
+      "text": [
+        "Ruta 207\nEst: Muntele Coronet"
+      ]
+    },
+    "trainer_tips_signpost": {
+      "en": [
+        "Trainer Tips\nA move of the same type as the Pokémon using it hits harder. Teach your Pokémon moves of their own types!"
+      ],
+      "text": [
+        "Sfaturi pentru Antrenori\nO mișcare de același tip cu Pokémonul care o folosește lovește mai tare. Învață-ți Pokémonii mișcări de tipul lor!"
+      ]
+    }
+  }
+}

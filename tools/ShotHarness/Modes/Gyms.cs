@@ -118,7 +118,7 @@ partial class Harness
         Console.WriteLine($"oreburgh: heights at the door {rock.HeightAt(5, 24)}, the pit {rock.HeightAt(3, 16)}, the bridge {rock.DeckAt(5, 17)}, " +
             $"the second tier {rock.HeightAt(5, 10)}, the dais {rock.HeightAt(5, 4)}");
         TalkFrom("OreburghGym", "roark", 5, 4, Direction.Up);
-        ReadOn(() => Box().IsActive && Box().CurrentLine.Contains("Roark")); Box().FinishLine(); Frames(4); Shot("g56_oreburgh_roark");
+        ReadOn(() => Box().IsActive && Translated.Saying(Box().CurrentLine, "Roark")); Box().FinishLine(); Frames(4); Shot("g56_oreburgh_roark");
         IntoBattle("Roark's battle"); Shot("g57_oreburgh_battle_roark");
         ReadOn();
         At("OreburghGym", 5, 21, Direction.Up); Frames(4); Shot("g58_oreburgh_from_the_mat");
@@ -153,7 +153,7 @@ partial class Harness
         ReadOn();
         At("EternaGym", 11, 12, Direction.Up); Frames(4); Shot("g09_eterna_quarter_to_one");
         TalkFrom("EternaGym", "gardenia", 11, 4, Direction.Up);
-        ReadOn(() => Box().IsActive && Box().CurrentLine.Contains("Gardenia")); Box().FinishLine(); Frames(4); Shot("g10_eterna_gardenia");
+        ReadOn(() => Box().IsActive && Translated.Saying(Box().CurrentLine, "Gardenia")); Box().FinishLine(); Frames(4); Shot("g10_eterna_gardenia");
         IntoBattle("Gardenia's battle"); Shot("g11_eterna_battle_gardenia");
         ReadOn();
         At("EternaGym", 11, 20, Direction.Up); Frames(4); Shot("g12_eterna_half_past_twelve");
@@ -210,7 +210,7 @@ partial class Harness
             string.Join(" ", dojo.NPCs.Where(VeilstoneBags.IsBag).Select(b => $"{b.GridX},{b.GridY}")));
         At("VeilstoneGym", 12, 8, Direction.Up); Frames(4); Shot("g26_veilstone_the_way_open");
         TalkFrom("VeilstoneGym", "maylene", 12, 5, Direction.Up);
-        ReadOn(() => Box().IsActive && Box().CurrentLine.Contains("Maylene")); Box().FinishLine(); Frames(4); Shot("g27_veilstone_maylene");
+        ReadOn(() => Box().IsActive && Translated.Saying(Box().CurrentLine, "Maylene")); Box().FinishLine(); Frames(4); Shot("g27_veilstone_maylene");
         IntoBattle("Maylene's battle"); Shot("g28_veilstone_battle_maylene");
         ReadOn();
         Console.WriteLine($"veilstone: Cobble Badge {story.HasBadge("Sinnoh", "Cobble")}, TM60 {game.Bag.GetQuantity(ItemDatabase.Get("TM60")!)}");
@@ -264,7 +264,7 @@ partial class Harness
         Pool().Settle(PastoriaWater.Button.Blue);
         At("PastoriaGym", 12, 5, Direction.Up); Frames(4); Shot("g67_pastoria_by_wake");
         TalkFrom("PastoriaGym", "crasher_wake", 13, 5, Direction.Up);
-        ReadOn(() => Box().IsActive && Box().CurrentLine.Contains("Wake")); Box().FinishLine(); Frames(4); Shot("g68_pastoria_wake");
+        ReadOn(() => Box().IsActive && Translated.Saying(Box().CurrentLine, "Wake")); Box().FinishLine(); Frames(4); Shot("g68_pastoria_wake");
         IntoBattle("Wake's battle"); Shot("g69_pastoria_battle_wake");
         ReadOn();
         Console.WriteLine($"pastoria: Fen Badge {story.HasBadge("Sinnoh", "Fen")}, TM55 {game.Bag.GetQuantity(ItemDatabase.Get("TM55")!)}");
@@ -324,7 +324,7 @@ partial class Harness
         foreach (var npc in Here().Everyone.Where(n => n.IsTrainer)) { npc.HasBattled = true; story.Defeat(npc.TrainerData?.Id ?? npc.Key); }
         At("CanalaveGym", 16, 4, Direction.Up); game.Player.SetHeight(30f); Frames(4);
         game.Interact();
-        ReadOn(() => Box().IsActive && Box().CurrentLine.Contains("Byron")); Box().FinishLine(); Frames(4); Shot("g79_canalave_byron");
+        ReadOn(() => Box().IsActive && Translated.Saying(Box().CurrentLine, "Byron")); Box().FinishLine(); Frames(4); Shot("g79_canalave_byron");
         IntoBattle("Byron's battle"); Shot("g7a_canalave_battle_byron");
         ReadOn();
         Console.WriteLine($"canalave: Mine Badge {story.HasBadge("Sinnoh", "Mine")}, TM91 {game.Bag.GetQuantity(ItemDatabase.Get("TM91")!)}");
@@ -376,7 +376,7 @@ partial class Harness
         Shot("g40_hearthome_fantinas_room");
         TalkFrom("HearthomeGymLeaderRoom", "fantina", 4, 11, Direction.Up);
         Skip(0.3); Shot("g41_hearthome_fantina_twirls");
-        ReadOn(() => Box().IsActive && Box().CurrentLine.Contains("Fantina")); Box().FinishLine(); Frames(4); Shot("g42_hearthome_fantina");
+        ReadOn(() => Box().IsActive && Translated.Saying(Box().CurrentLine, "Fantina")); Box().FinishLine(); Frames(4); Shot("g42_hearthome_fantina");
         IntoBattle("Fantina's battle"); Shot("g43_hearthome_battle_fantina");
         ReadOn();
         At("HearthomeGymLeaderRoom", 7, 10, Direction.Right); Frames(4); Shot("g44_hearthome_bollards_gone");
@@ -430,7 +430,7 @@ partial class Harness
         foreach (var npc in Here().Everyone.Where(n => n.IsTrainer)) { npc.HasBattled = true; story.Defeat(npc.TrainerData?.Id ?? npc.Key); }
         At("SnowpointGym", 11, 5, Direction.Up); Frames(4); Shot("g88_snowpoint_below_the_dais");
         TalkFrom("SnowpointGym", "candice", 11, 4, Direction.Up);
-        ReadOn(() => Box().IsActive && Box().CurrentLine.Contains("challenger")); Box().FinishLine(); Frames(4); Shot("g89_snowpoint_candice");
+        ReadOn(() => Box().IsActive && Translated.Saying(Box().CurrentLine, "challenger")); Box().FinishLine(); Frames(4); Shot("g89_snowpoint_candice");
         IntoBattle("Candice's battle"); Shot("g8a_snowpoint_battle_candice");
         ReadOn();
         Console.WriteLine($"snowpoint: Icicle Badge {story.HasBadge("Sinnoh", "Icicle")}, TM72 {game.Bag.GetQuantity(ItemDatabase.Get("TM72")!)}, " +
@@ -486,7 +486,7 @@ partial class Harness
         foreach (var npc in Here().Everyone.Where(n => n.IsTrainer)) { npc.HasBattled = true; story.Defeat(npc.TrainerData?.Id ?? npc.Key); }
         team.HealAll();
         TalkFrom("SunyshoreGymRoom3", "volkner", 11, 4, Direction.Up);
-        ReadOn(() => Box().IsActive && Box().CurrentLine.Contains("Volkner")); Box().FinishLine(); Frames(4); Shot("g9a_sunyshore_volkner");
+        ReadOn(() => Box().IsActive && Translated.Saying(Box().CurrentLine, "Volkner")); Box().FinishLine(); Frames(4); Shot("g9a_sunyshore_volkner");
         IntoBattle("Volkner's battle"); Shot("g9b_sunyshore_battle_volkner");
         ReadOn();
         Console.WriteLine($"sunyshore: Beacon Badge {story.HasBadge("Sinnoh", "Beacon")}, TM57 {game.Bag.GetQuantity(ItemDatabase.Get("TM57")!)}, " +

@@ -1,0 +1,378 @@
+{
+  "displayName": {
+    "en": [
+      "Veilstone Gym"
+    ],
+    "text": [
+      "Arena Veilstone"
+    ]
+  },
+  "people": {
+    "maylene": {
+      "name": {
+        "en": [
+          "Maylene"
+        ],
+        "text": [
+          "Maylene"
+        ]
+      }
+    },
+    "gym_guide": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          "Ghidul Arenei"
+        ]
+      }
+    },
+    "black_belt_colby": {
+      "name": {
+        "en": [
+          "Colby"
+        ],
+        "text": [
+          "Colby"
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Colby: This ring is where we sharpen ourselves. Step in, if you dare!"
+        ],
+        "text": [
+          "Centură Neagră Colby: Ringul ăsta e locul unde ne ascuțim. Intră, dacă ai curaj!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Colby: My guard was down... The bags will show you the way through. Hit them true."
+        ],
+        "text": [
+          "Centură Neagră Colby: Am lăsat garda jos... Sacii îți vor arăta drumul. Lovește-i drept."
+        ]
+      }
+    },
+    "black_belt_darren": {
+      "name": {
+        "en": [
+          "Darren"
+        ],
+        "text": [
+          "Darren"
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Darren: I see everything from inside this ring. Including you!"
+        ],
+        "text": [
+          "Centură Neagră Darren: Văd totul din ringul ăsta. Inclusiv pe tine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Darren: Beaten fair and square. Your Pokémon fight with real spirit."
+        ],
+        "text": [
+          "Centură Neagră Darren: Învins cinstit. Pokémonii tăi luptă cu adevărat cu suflet."
+        ]
+      }
+    },
+    "black_belt_jeffery": {
+      "name": {
+        "en": [
+          "Jeffery"
+        ],
+        "text": [
+          "Jeffery"
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Jeffery: You've come all this way round? Then you'll have to come through me as well!"
+        ],
+        "text": [
+          "Centură Neagră Jeffery: Ai făcut tot ocolul ăsta? Atunci va trebui să treci și de mine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Jeffery: Ugh... Maylene trains harder than all of us put together. Good luck."
+        ],
+        "text": [
+          "Centură Neagră Jeffery: Of... Maylene se antrenează mai mult decât noi toți la un loc. Baftă."
+        ]
+      }
+    },
+    "black_belt_rafael": {
+      "name": {
+        "en": [
+          "Rafael"
+        ],
+        "text": [
+          "Rafael"
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Rafael: Kick a bag and it flies along its track! But you'll have to beat me before you get any further."
+        ],
+        "text": [
+          "Centură Neagră Rafael: Dă un șut unui sac și zboară pe șina lui! Dar va trebui să mă învingi înainte să mergi mai departe."
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Rafael: Hoo! You hit harder than any bag I've ever kicked."
+        ],
+        "text": [
+          "Centură Neagră Rafael: Huh! Lovești mai tare decât orice sac în care am dat vreodată."
+        ]
+      }
+    },
+    "punching_bag_1": {
+      "name": {
+        "en": [
+          "Punching Bag"
+        ],
+        "text": [
+          "Sac de box"
+        ]
+      }
+    },
+    "punching_bag_2": {
+      "name": {
+        "en": [
+          "Punching Bag"
+        ],
+        "text": [
+          "Sac de box"
+        ]
+      }
+    },
+    "punching_bag_3": {
+      "name": {
+        "en": [
+          "Punching Bag"
+        ],
+        "text": [
+          "Sac de box"
+        ]
+      }
+    },
+    "punching_bag_4": {
+      "name": {
+        "en": [
+          "Punching Bag"
+        ],
+        "text": [
+          "Sac de box"
+        ]
+      }
+    },
+    "punching_bag_5": {
+      "name": {
+        "en": [
+          "Punching Bag"
+        ],
+        "text": [
+          "Sac de box"
+        ]
+      }
+    },
+    "punching_bag_6": {
+      "name": {
+        "en": [
+          "Punching Bag"
+        ],
+        "text": [
+          "Sac de box"
+        ]
+      }
+    },
+    "punching_bag_7": {
+      "name": {
+        "en": [
+          "Punching Bag"
+        ],
+        "text": [
+          "Sac de box"
+        ]
+      }
+    },
+    "punching_bag_8": {
+      "name": {
+        "en": [
+          "Punching Bag"
+        ],
+        "text": [
+          "Sac de box"
+        ]
+      }
+    },
+    "punching_bag_9": {
+      "name": {
+        "en": [
+          "Punching Bag"
+        ],
+        "text": [
+          "Sac de box"
+        ]
+      }
+    },
+    "tire_stack_1": {
+      "name": {
+        "en": [
+          "Tyres"
+        ],
+        "text": [
+          "Cauciucuri"
+        ]
+      }
+    },
+    "tire_stack_2": {
+      "name": {
+        "en": [
+          "Tyres"
+        ],
+        "text": [
+          "Cauciucuri"
+        ]
+      }
+    },
+    "tire_stack_3": {
+      "name": {
+        "en": [
+          "Tyres"
+        ],
+        "text": [
+          "Cauciucuri"
+        ]
+      }
+    },
+    "tire_stack_4": {
+      "name": {
+        "en": [
+          "Tyres"
+        ],
+        "text": [
+          "Cauciucuri"
+        ]
+      }
+    },
+    "tire_stack_5": {
+      "name": {
+        "en": [
+          "Tyres"
+        ],
+        "text": [
+          "Cauciucuri"
+        ]
+      }
+    },
+    "tire_stack_6": {
+      "name": {
+        "en": [
+          "Tyres"
+        ],
+        "text": [
+          "Cauciucuri"
+        ]
+      }
+    },
+    "tire_stack_7": {
+      "name": {
+        "en": [
+          "Tyres"
+        ],
+        "text": [
+          "Cauciucuri"
+        ]
+      }
+    },
+    "tire_stack_8": {
+      "name": {
+        "en": [
+          "Tyres"
+        ],
+        "text": [
+          "Cauciucuri"
+        ]
+      }
+    },
+    "tire_stack_9": {
+      "name": {
+        "en": [
+          "Tyres"
+        ],
+        "text": [
+          "Cauciucuri"
+        ]
+      }
+    },
+    "tire_stack_10": {
+      "name": {
+        "en": [
+          "Tyres"
+        ],
+        "text": [
+          "Cauciucuri"
+        ]
+      }
+    },
+    "tire_stack_11": {
+      "name": {
+        "en": [
+          "Tyres"
+        ],
+        "text": [
+          "Cauciucuri"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "10,29": {
+      "en": [
+        "VEILSTONE CITY POKéMON GYM\nLeader: Maylene"
+      ],
+      "text": [
+        "ARENA POKéMON DIN ORAȘUL VEILSTONE\nLideră: Maylene"
+      ]
+    },
+    "14,29": {
+      "en": [
+        "VEILSTONE CITY POKéMON GYM\nLeader: Maylene"
+      ],
+      "text": [
+        "ARENA POKéMON DIN ORAȘUL VEILSTONE\nLideră: Maylene"
+      ]
+    },
+    "10,2": {
+      "en": [
+        "Do one good deed every day."
+      ],
+      "text": [
+        "Fă o faptă bună în fiecare zi."
+      ]
+    },
+    "12,2": {
+      "en": [
+        "Take one day at a time."
+      ],
+      "text": [
+        "Ia fiecare zi pe rând."
+      ]
+    },
+    "14,2": {
+      "en": [
+        "Treasure every meeting."
+      ],
+      "text": [
+        "Prețuiește fiecare întâlnire."
+      ]
+    }
+  }
+}

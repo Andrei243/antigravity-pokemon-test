@@ -1,0 +1,73 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Center"
+    ],
+    "text": [
+      "Centrul Pokémon"
+    ]
+  },
+  "people": {
+    "wifi_plaza_attendant_f": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the desk of the Wi-Fi Plaza: a fair where Trainers from all round the world play games together.",
+          "It is closed, I'm sorry to say. Sinnoh's link to the wider world has gone quiet."
+        ],
+        "text": [
+          "Bine ai venit la ghișeul Wi-Fi Plaza: un bâlci unde Antrenori din toată lumea se joacă împreună.",
+          "Din păcate e închis. Legătura Sinnoh-ului cu restul lumii a amuțit."
+        ]
+      }
+    },
+    "teala_middle": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This is the Pokémon Wi-Fi Club, for battles and trades with friends who live far away.",
+          "Its doors are shut for the time being. The link to the wider world is down."
+        ],
+        "text": [
+          "Acesta e Pokémon Wi-Fi Club, pentru lupte și schimburi cu prieteni care locuiesc departe.",
+          "Deocamdată ușile sunt închise. Legătura cu restul lumii nu funcționează."
+        ]
+      }
+    },
+    "teala_east": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I am here to explain the Wi-Fi Club to anyone who asks.",
+          "There is little to explain while it is closed, though. I do hope you will come back when the link is up again!"
+        ],
+        "text": [
+          "Eu sunt aici ca să explic Wi-Fi Club oricui întreabă.",
+          "Dar cât e închis, nu prea e ce explica. Sper să revii când legătura merge din nou!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

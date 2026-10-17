@@ -1,0 +1,93 @@
+{
+  "people": {
+    "galactic_grunt_mt_coronet_tunnel_room_1": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: Halt! Nobody goes up this mountain today. The boss is busy remaking the world!"
+        ],
+        "text": [
+          "Galactic Grunt: Stai! Azi nimeni nu urcă pe muntele ăsta. Șeful e ocupat să refacă lumea!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: I said halt, and you didn't. That's hardly my fault."
+        ],
+        "text": [
+          "Galactic Grunt: Am zis stai, și n-ai stat. Nu e chiar vina mea."
+        ]
+      }
+    },
+    "galactic_grunt_mt_coronet_tunnel_room_2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: Keep watch, they told me. Nobody comes this way, they told me. And here you are!"
+        ],
+        "text": [
+          "Galactic Grunt: Fă de pază, mi-au zis. Nu vine nimeni pe aici, mi-au zis. Și uite-te la tine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: The one time somebody does come by, it had to be somebody like you."
+        ],
+        "text": [
+          "Galactic Grunt: Singura dată când vine cineva, trebuia să fie cineva ca tine."
+        ]
+      }
+    },
+    "galactic_grunt_mt_coronet_tunnel_room_3": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: Up and down, up and down this tunnel. At last, something to do!"
+        ],
+        "text": [
+          "Galactic Grunt: În sus și-n jos, în sus și-n jos prin tunelul ăsta. În sfârșit, ceva de făcut!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: Back to walking up and down, then."
+        ],
+        "text": [
+          "Galactic Grunt: Înapoi la mers în sus și-n jos, atunci."
+        ]
+      }
+    },
+    "grunt_m": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

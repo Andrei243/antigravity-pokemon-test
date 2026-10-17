@@ -1,0 +1,62 @@
+{
+  "OldWoman1": [
+    {
+      "en": [
+        "Oh! The fog has gone, and there you are. It must have been you who cleared it.",
+        "Take this. It's a little thanks from an old woman."
+      ],
+      "text": [
+        "O! Ceața s-a dus, și uite-te la tine. Tu trebuie s-o fi risipit.",
+        "Ia asta. E un mic mulțumesc de la o bătrână."
+      ]
+    },
+    {
+      "en": [
+        "Fantina of the Hearthome Gym comes up here often, you know.",
+        "She says the Ghost-type Pokémon here are like old friends to her."
+      ],
+      "text": [
+        "Fantina de la Arena Hearthome vine des aici sus, să știi.",
+        "Zice că Pokémonii de tip Fantomă de aici sunt ca niște prieteni vechi pentru ea."
+      ]
+    },
+    {
+      "en": [
+        "Is somebody there? This fog is so thick I can't see my own hand."
+      ],
+      "text": [
+        "E cineva acolo? Ceața asta e așa de deasă că nu-mi văd nici mâna."
+      ]
+    }
+  ],
+  "OldWoman2": [
+    {
+      "en": [
+        "My, how clear it is now! I can see every stone.",
+        "Here. Something to keep you safe on your travels."
+      ],
+      "text": [
+        "Vai, ce senin e acum! Văd fiecare piatră.",
+        "Poftim. Ceva care să te păzească în călătoriile tale."
+      ]
+    },
+    {
+      "en": [
+        "The Pokémon who rest here are at peace.",
+        "I come up to keep them company, and they keep me company in turn."
+      ],
+      "text": [
+        "Pokémonii care se odihnesc aici sunt împăcați.",
+        "Urc să le țin de urât, iar ei îmi țin mie de urât la rândul lor."
+      ]
+    },
+    {
+      "en": [
+        "Ohh... Who's there? I can hardly see a thing in this fog."
+      ],
+      "text": [
+        "Ooo... Cine e acolo? Abia văd ceva prin ceața asta."
+      ]
+    }
+  ]
+}
