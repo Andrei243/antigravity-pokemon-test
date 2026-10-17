@@ -193,6 +193,34 @@ public class MovePresentationTests
     }
 
     [Fact]
+    public void TheSeventhBatchsFirstPartAllHaveALookAndASoundOfTheirOwn()
+    {
+        // Plan 25 · Y7, its first part: Route 204 to Team Galactic's Eterna Building
+        var part = MoveSightings.SeventhBatchFirstPart;
+        output.WriteLine($"{part.Count} moves in Y7's first part: {string.Join(", ", part)}");
+        Assert.Equal(67, part.Count);
+        Assert.All(part, move => Assert.Equal("Y7", MoveFx.BatchOf(move)));
+        Assert.All(part, move => Assert.True(SoundBank.Exists("use_" + SoundBank.MoveKey(move)), move));
+        // And nothing of the second part has run ahead of it
+        Assert.All(MoveFx.Batches.Where(b => b.Value == "Y7"), b => Assert.Contains(b.Key, part, StringComparer.OrdinalIgnoreCase));
+    }
+
+    [Fact]
+    public void TheNewShapesOfTheSeventhBatchAreDrawn()
+    {
+        // Y7's five cells of the atlas: each covers its middle and leaves its edge empty
+        foreach (var shape in new[] { FxShape.Hex, FxShape.Target, FxShape.Beak, FxShape.Horn, FxShape.Seed })
+        {
+            int covered = 0;
+            for (float y = -1f; y <= 1f; y += 0.05f)
+                for (float x = -1f; x <= 1f; x += 0.05f)
+                    if (FxTextures.Coverage(shape, new System.Numerics.Vector2(x, y)) > 0.5f) covered++;
+            Assert.InRange(covered, 80, 1200);
+            Assert.True(FxTextures.Coverage(shape, new System.Numerics.Vector2(1.15f, 1.15f)) < 0.01f, $"{shape} reaches its cell's corner");
+        }
+    }
+
+    [Fact]
     public void TheOrderOfTheBatchesIsTheStorys()
     {
         // The order Y7 to Y10 take (written into plan 25 from this list; MOVE_SIGHTINGS_OUT names a file to write it to)
@@ -228,7 +256,7 @@ public class MovePresentationTests
         int own = PlatinumMoves.Count(m => MoveFx.BatchOf(m.Name) != null &&
             (SoundBank.CryModesOf(m.Name) != null || SoundBank.Exists("use_" + SoundBank.MoveKey(m.Name))));
         output.WriteLine($"{own} of Platinum's 467 have a look and a sound of their own");
-        Assert.True(own >= 47, $"only {own}");
+        Assert.True(own >= 114, $"only {own}");
     }
 
     [Fact]

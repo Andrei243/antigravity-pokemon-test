@@ -12,7 +12,9 @@ internal enum FxShape
     Snowflake, Arrow, Feather, Orb, Claw, Fang, Impact, Zzz,
     Swirl, Beam, Dot, Sword, Wave, Ember, Cross, Spore,
     // Plan 25 · Y6, the moves of their own: rows five to eight, filled as the batches ask for shapes
-    Fist, Foot, Palm, Eye, Crack, Exclaim
+    Fist, Foot, Palm, Eye, Crack, Exclaim,
+    // Plan 25 · Y7
+    Hex, Target, Beak, Horn, Seed
 }
 
 /// <summary>
@@ -433,6 +435,59 @@ internal static class FxTextures
                 float bar = Capsule(p, new Vector2(0f, 0.75f), new Vector2(0f, -0.25f), 0.17f - 0.07f * Sat(-p.Y));
                 float dot = Circle(p, new Vector2(0f, -0.66f), 0.18f);
                 return (Fill(MathF.Min(bar, dot)), 1f);
+            }
+
+            // ---------------------------------------------------------------- plan 25 · Y7
+            case FxShape.Hex:
+            {
+                // A hexagon of a shield, flat sides up and down: a pale panel, a brighter rim and a gleam across its upper half
+                Span<Vector2> v = stackalloc Vector2[6];
+                for (int k = 0; k < 6; k++) v[k] = new Vector2(MathF.Cos(k * MathF.PI / 3f), MathF.Sin(k * MathF.PI / 3f)) * 0.9f;
+                float d = Polygon(p, v);
+                float rim = Sat(1f - MathF.Abs(d + 0.06f) / 0.07f);
+                float gleam = Sat(1f - MathF.Abs(p.Y - 0.35f + p.X * 0.3f) / 0.08f) * Sat((p.X + 0.5f) / 0.3f) * Sat((0.4f - p.X) / 0.3f);
+                return (Fill(d) * MathF.Max(0.55f, MathF.Max(rim, gleam)), 0.8f + 0.2f * MathF.Max(rim, gleam));
+            }
+            case FxShape.Target:
+            {
+                // A ring with four ticks pointing in and a dot in the middle
+                float d = MathF.Abs(r - 0.72f) - 0.07f;
+                d = MathF.Min(d, Capsule(p, new Vector2(0f, 0.95f), new Vector2(0f, 0.42f), 0.055f));
+                d = MathF.Min(d, Capsule(p, new Vector2(0f, -0.95f), new Vector2(0f, -0.42f), 0.055f));
+                d = MathF.Min(d, Capsule(p, new Vector2(0.95f, 0f), new Vector2(0.42f, 0f), 0.055f));
+                d = MathF.Min(d, Capsule(p, new Vector2(-0.95f, 0f), new Vector2(-0.42f, 0f), 0.055f));
+                d = MathF.Min(d, Circle(p, Vector2.Zero, 0.1f));
+                return (Fill(d, 1.6f), 1f);
+            }
+            case FxShape.Beak:
+            {
+                // A beak from the side, pointing right: two curved halves meeting at the tip, a dark line along the gape
+                Span<Vector2> upper = stackalloc Vector2[] { new(-0.7f, 0.05f), new(-0.6f, 0.45f), new(-0.1f, 0.42f), new(0.4f, 0.22f), new(0.9f, -0.02f) };
+                Span<Vector2> lower = stackalloc Vector2[] { new(-0.7f, -0.02f), new(0.75f, -0.06f), new(0.2f, -0.28f), new(-0.6f, -0.32f) };
+                float d = MathF.Min(Polygon(p, upper), Polygon(p, lower));
+                float gape = Sat(1f - MathF.Abs(p.Y + 0.02f + 0.03f * p.X) / 0.035f) * Sat((0.7f - p.X) / 0.2f);
+                return (Fill(d), 0.95f - 0.5f * gape - 0.15f * Sat(-p.Y / 0.3f));
+            }
+            case FxShape.Horn:
+            {
+                // A horn: a curved point rising from a broad base, its base ridged
+                static Vector2 At(float u) => new(-0.35f + 0.6f * u + 0.2f * u * u, -0.62f + 1.45f * u - 0.25f * u * u * u);
+                float d = 1f;
+                for (int k = 0; k < 8; k++)
+                {
+                    float u0 = k / 8f, u1 = (k + 1) / 8f;
+                    d = MathF.Min(d, Capsule(p, At(u0), At(u1), 0.28f * (1f - u0) + 0.02f));
+                }
+                float ridges = Sat(1f - MathF.Abs(((p.Y + 0.9f) * 6f) % 1f - 0.5f) / 0.12f) * Sat((-0.35f - p.Y) / 0.2f);
+                return (Fill(d), 0.95f - 0.3f * ridges - 0.15f * Sat(p.X));
+            }
+            case FxShape.Seed:
+            {
+                // A seed: an oval a little pointed at the top, with a seam down its middle
+                float d = Lens(p, 0.85f, 0.55f);
+                d = MathF.Max(d, Circle(p, new Vector2(0f, -0.15f), 0.8f));
+                float seam = Sat(1f - MathF.Abs(p.X - 0.08f * p.Y) / 0.04f) * Sat((0.6f - MathF.Abs(p.Y)) / 0.2f);
+                return (Fill(d), 0.95f - 0.4f * seam - 0.2f * Sat(-p.X / 0.5f));
             }
         }
         return (0f, 1f);

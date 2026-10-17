@@ -344,8 +344,9 @@ public class SoundTests
             Assert.Contains(then, heard);
             Assert.True(heard.IndexOf(launch) < heard.IndexOf(then), string.Join(", ", heard));
         }
-        // Thunder Wave has no sound of its own yet (its batch is later): its type's
-        Heard(0, "move_electric", "status_paralysis");
+        // Thunder Wave has a sound of its own since plan 25 · Y7 (a move whose batch hasn't come plays its type's:
+        // MovePresentationTests.EveryBatchMoveHasItsOwnSoundAndTheRestTheirTypes)
+        Heard(0, "use_thunder_wave", "status_paralysis");
         // Growl is the user's own voice, in the original's two modes, the second as the first ends (plan 25 · Y6)
         Heard(1, "cry Pikachu Uproar1", "stat_down");
         Heard(2, "use_supersonic", "status_confusion");

@@ -42,6 +42,22 @@ internal static class MoveSightings
         }
     }
 
+    /// <summary>The first area of Y7's second part (plan 25 · Y7b): Y7's first part is everything before it.</summary>
+    public const string SeventhBatchSplits = "route_206";
+
+    /// <summary>
+    /// Platinum's moves, by name, that Y7's first part takes: seen after the first chapter and before
+    /// <see cref="SeventhBatchSplits"/> (Route 204 to Team Galactic's Eterna Building, its rooms with it).
+    /// </summary>
+    public static IReadOnlyList<string> SeventhBatchFirstPart
+    {
+        get
+        {
+            int after = PlaceRanks.Value[FirstChapterEnds], before = PlaceRanks.Value[SeventhBatchSplits];
+            return All.Where(s => s.Rank > after && s.Rank < before).Select(s => s.Move).ToList();
+        }
+    }
+
     private static readonly Lazy<Dictionary<string, int>> PlaceRanks = new(() => Ranks().Ranks);
 
     /// <summary>The areas in their order, then every room ranked by the place whose warp first leads into it.</summary>

@@ -189,6 +189,73 @@ One sound for each type, played as a move of that type sets off (`SoundBank.Move
 | `use_focus_energy` | `SEQ_SE_DP_W082` | Focus Energy: breath drawn in and held, rising. |
 | `use_secret_power` | — | Secret Power: a hidden blow, a quick rising whisper and a knock. |
 | `use_camouflage` | — | Camouflage: colours washing over the user, a soft shimmer sliding down. |
+| `use_string_shot` | `SEQ_SE_DP_W081B` | String Shot: silk spat out in a thin hiss, then wound tight. |
+| `use_rock_tomb` | `SEQ_SE_DP_W070` | Rock Tomb: rocks dropped one after another, four heavy knocks. |
+| `use_water_pulse` | `SEQ_SE_DP_W145C` | Water Pulse: a ball of water throbbing as it rolls, and its break. |
+| `use_bullet_seed` | `SEQ_SE_DP_W202B` | Bullet Seed: seeds spat in a quick rattle. |
+| `use_charge` | `SEQ_SE_DP_W360` | Charge: a hum of electricity gathering, buzzing louder. |
+| `use_charm` | `SEQ_SE_DP_W204` | Charm: two light hops of a chime, sweetly. |
+| `use_leech_seed` | `SEQ_SE_DP_001` | Leech Seed: seeds tossed with a soft pop and a sprout's creak. |
+| `use_poison_sting` | `SEQ_SE_DP_W004` | Poison Sting: a needle's jab and a fizz. |
+| `use_stun_spore` | `SEQ_SE_DP_W077B` | Stun Spore: a puff of powder sifting down, crackling. |
+| `use_wing_attack` | `SEQ_SE_DP_W017` | Wing Attack: two beats of wings and a slap. |
+| `use_pluck` | `SEQ_SE_DP_030` | Pluck: three quick pecks. |
+| `use_baton_pass` | `SEQ_SE_DP_SLOT02` | Baton Pass: a baton whirled, a bright ring as it is passed. |
+| `use_foresight` | `SEQ_SE_DP_100` | Foresight: a lens turning into focus, a ping. |
+| `use_karate_chop` | `SEQ_SE_DP_HURU` | Karate Chop: a hand cutting the air and a crack. |
+| `use_mega_drain` | `SEQ_SE_DP_W145C` | Mega Drain: a long draw upward with a bell at its end. |
+| `use_mud_bomb` | `SEQ_SE_DP_W145C` | Mud Bomb: a wet lob and a heavy splat. |
+| `use_mud_slap` | `SEQ_SE_DP_W028` | Mud-Slap: mud flung, a wet slap. |
+| `use_peck` | `SEQ_SE_DP_W030` | Peck: two hard pecks. |
+| `use_rage` | `SEQ_SE_DP_131` | Rage: a low snarl rising and a blow. |
+| `use_sand_attack` | `SEQ_SE_DP_W028` | Sand Attack: two dry scatters of sand. |
+| `use_sonic_boom` | `SEQ_SE_DP_146` | Sonic Boom: three quick booms of air. |
+| `use_hypnosis` | `SEQ_SE_DP_154` | Hypnosis: a slow wavering tone, rising and falling. |
+| `use_thunderbolt` | `SEQ_SE_DP_KAMI` | Thunderbolt: thunder cracking down three times. |
+| `use_bite` | `SEQ_SE_DP_W044` | Bite: jaws snapping shut. |
+| `use_feint_attack` | `SEQ_SE_DP_061` | Feint Attack: a vanishing whoosh, then a blow from behind. |
+| `use_toxic` | `SEQ_SE_DP_161` | Toxic: a thick bubbling, fouler and lower. |
+| `use_agility` | `SEQ_SE_PL_W097` | Agility: two quick swishes side to side. |
+| `use_aqua_jet` | `SEQ_SE_DP_W029` | Aqua Jet: a rushing jet of water and a splash. |
+| `use_body_slam` | `SEQ_SE_DP_W036` | Body Slam: a heavy leap and a crash. |
+| `use_confuse_ray` | `SEQ_SE_DP_153` | Confuse Ray: an eerie wavering tone circling. |
+| `use_crunch` | `SEQ_SE_DP_W044` | Crunch: jaws snapping hard and something breaking. |
+| `use_fire_punch` | `SEQ_SE_DP_BASI` | Fire Punch: a punch and a burst of flame. |
+| `use_fire_spin` | `SEQ_SE_DP_W221B` | Fire Spin: flames roaring round in a whirl. |
+| `use_hidden_power` | `SEQ_SE_DP_W036` | Hidden Power: a soft swell of chimes, then a gathering rush. |
+| `use_lock_on` | `SEQ_SE_DP_GETTING` | Lock-On: beeps quickening to a steady tone. |
+| `use_magnet_bomb` | `SEQ_SE_DP_290` | Magnet Bomb: metal humming in and four sharp pops. |
+| `use_rain_dance` | `SEQ_SE_DP_W240` | Rain Dance: clouds rumbling and rain pattering down. |
+| `use_spark` | `SEQ_SE_DP_W209` | Spark: a crackle round the user and a zap. |
+| `use_swift` | `SEQ_SE_DP_165` | Swift: a twinkling run of stars. |
+| `use_thunder_wave` | `SEQ_SE_DP_W085C` | Thunder Wave: a buzzing ring tightening, crackling. |
+| `use_confusion` | `SEQ_SE_DP_480` | Confusion: a warbling ripple of the mind. |
+| `use_gust` | `SEQ_SE_DP_W239` | Gust: a gust of wind whirling up. |
+| `use_horn_attack` | `SEQ_SE_DP_W030` | Horn Attack: two hard jabs of a horn. |
+| `use_rollout` | `SEQ_SE_DP_W025B` | Rollout: a rumbling roll and a knock. |
+| `use_sleep_talk` | `SEQ_SE_DP_W173B` | Sleep Talk: a sleepy mumble, low and wobbling. |
+| `use_curse` | `SEQ_SE_DP_W185` | Curse: a dark low swell and a shudder. |
+| `use_endure` | `SEQ_SE_DP_W082` | Endure: a body braced, a held low pulse. |
+| `use_frustration` | `SEQ_SE_DP_W082` | Frustration: an angry huff and a flurry of blows. |
+| `use_mean_look` | `SEQ_SE_DP_W060` | Mean Look: a deep stare, a low tone and a hiss. |
+| `use_meditate` | `SEQ_SE_DP_W029` | Meditate: a calm breath and a soft bell. |
+| `use_protect` | `SEQ_SE_DP_W115` | Protect: a shield springing up with a glassy ring. |
+| `use_spite` | `SEQ_SE_DP_W060` | Spite: a thin, sour wail drawn out. |
+| `use_night_shade` | `SEQ_SE_DP_W109` | Night Shade: a dark drone and a ghostly whoosh. |
+| `use_substitute` | `SEQ_SE_DP_061` | Substitute: a puff of smoke and a pop. |
+| `use_cut` | `SEQ_SE_DP_W015` | Cut: one clean slicing swish. |
+| `use_thief` | `SEQ_SE_DP_W233` | Thief: a quick snatch and a jingle. |
+| `use_grass_knot` | `SEQ_SE_DP_300` | Grass Knot: grass rustling up and pulling tight. |
+| `use_magical_leaf` | `SEQ_SE_DP_PASA2` | Magical Leaf: leaves rustling round with a twinkle. |
+| `use_razor_leaf` | `SEQ_SE_DP_KAZE` | Razor Leaf: leaves whirring through the air. |
+| `use_reflect` | `SEQ_SE_DP_W115` | Reflect: panels of a wall chiming up one after another. |
+| `use_safeguard` | `SEQ_SE_DP_W208` | Safeguard: a soft, shining chord settling. |
+| `use_smokescreen` | `SEQ_SE_DP_W104` | Smokescreen: a lobbed pop and smoke billowing. |
+| `use_sunny_day` | `SEQ_SE_DP_W080` | Sunny Day: a warm swell of light. |
+| `use_recycle` | `SEQ_SE_DP_W278` | Recycle: a whirring loop and a ding. |
+| `use_taunt` | `SEQ_SE_DP_W118` | Taunt: a mocking two-note call. |
+| `use_giga_drain` | `SEQ_SE_DP_W202` | Giga Drain: a great draw upward, leafy, with a bell. |
+| `use_night_slash` | `SEQ_SE_DP_BRADE` | Night Slash: a dark blade drawn and two slashes. |
 
 ## Cries
 
