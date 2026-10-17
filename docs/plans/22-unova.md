@@ -102,7 +102,7 @@ In by ship from Canalave's harbour (open since plan 01 · M7, where Sailor Eldri
 - Music: `aspertia`, `route19`, `floccesy`, `virbank`, `castelia`, `gym`, `battle_gym`, `battle_rival`, `battle_trainer`, `eye_boy`, `eye_girl`, `eye_plasma`, the victories.
 - Tests: the chapter's story walk (a starter chosen, the three badges, the sewers' flag); `StoryTests` on Unova's files.
 - Harness: `us01`–`us10` (the outlook, the ranch, Cheren's hall, Roxie's stage, the boat, the sewers); `u09`–`u20`.
-- **Done when** the chapter plays from NEW GAME to Route 4 with every scene, and `--region Sinnoh` still begins with Rowan.
+- **Done when** the chapter plays from NEW GAME to Route 4 with every scene, and a plain NEW GAME still begins with Rowan in Sinnoh (plan 18 · W10).
 
 ### U6 · The desert to Driftveil
 - Route 4 and the Desert Resort in its sandstorm (`FieldWeather.Sandstorm` from the zone header), the Relic Castle, Join Avenue's street, Nimbasa (Elesa and the Bolt Badge, the Gear Station's desks on R18's lines, the Ferris wheel as a scene), Route 16 and the Lostlorn Forest, Route 5 and the Drawbridge as a deck with its camera, Driftveil (Clay and the Quake Badge, the market, the Tournament's hall with its desks on plan 14 · B11, the Plasma Frigate at the dock, Zinzolin), Clay Tunnel's door shut; `Architecture` rows for Nimbasa and Driftveil and the Drawbridge's deck (the style guide's "Buildings" and "Relief" first).

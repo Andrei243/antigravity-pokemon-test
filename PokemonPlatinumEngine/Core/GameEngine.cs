@@ -147,8 +147,9 @@ public partial class GameEngine
     private static string playerName => PlayerIdentity.Name;
 
     /// <summary>
-    /// The region a new game starts in; null for the first region in the chain (Kanto). Set from the command line
-    /// (--region Sinnoh) to test a later region without playing through the ones before it.
+    /// The region a new game starts in; null for the first region in the chain (Sinnoh, plan 18 · W10: NEW GAME asks
+    /// nothing about regions). Set from the command line (--region Kanto) or by a tool to test another region
+    /// without playing through the ones before it.
     /// </summary>
     public string? NewGameRegion { get; set; }
 
