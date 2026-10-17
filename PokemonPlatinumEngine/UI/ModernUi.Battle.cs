@@ -199,6 +199,7 @@ internal static partial class ModernUi
             UiFonts.DrawCentered(hpText, x + r.Width - 40 - hw, y + 94, 24, Ink, UiWeight.Black);
             ExpBar(new Rectangle(x + pad, y + r.Height - 18, 300, 7), view.DisplayedExp);
         }
+        GiantTags(r, view);
     }
 
     /// <summary>
@@ -346,6 +347,7 @@ internal static partial class ModernUi
         StatusPill(x + 38 + nameW + 14, y + 22, p.Status, 30);
         Level(x + r.Width - 46, y + 38, p.Level, 34);
         HpBar(x + 38, y + 72, r.Width - 90, 24, view.DisplayedHp / Math.Max(1, p.MaxHP));
+        GiantTags(r, view);
     }
 
     /// <summary>
@@ -377,6 +379,7 @@ internal static partial class ModernUi
 
         // EXP runs along the bottom edge of the box
         ExpBar(new Rectangle(x + 40, y + r.Height - 18, 360, 8), view.DisplayedExp);
+        GiantTags(r, view);
     }
 
     /// <summary>

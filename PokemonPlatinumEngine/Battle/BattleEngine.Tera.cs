@@ -9,7 +9,7 @@ namespace PokemonPlatinumEngine.Battle;
 // Terastallization on screen (plan 06 · R23): the move menu's item button arms it where no Mega Evolution, Z-Move or
 // Dynamax can be had, and the screen's Pokémon takes its Tera Type (and a Terapagos its Stellar Form) from the event,
 // so that its types, the move cards' hints and the information panel go by it. The looks (the crystal, the crown, the
-// button) are plan 25's; until then the change plays Transform's cue as Mega Evolution's stand-in does.
+// button, the HP box's crown) are plan 25 · Y15's (BattleAnimator.Terastallize, MoveFx.Giants.cs, ModernUi.Later.cs).
 public partial class BattleEngine
 {
     /// <summary>
@@ -59,29 +59,25 @@ public partial class BattleEngine
         switch (happening)
         {
             case Terastallized tera:
+            {
+                // Its sound and its crystal (plan 25 · Y15): the Tera Type is taken at once (the HP box's crown, the
+                // cards' hints), a Terapagos's Stellar Form inside the light, as the shell shatters
+                var type = TeraType.Parse(tera.TeraType) ?? TeraType.Of(PokemonType.Normal);
+                Sound(type.IsStellar ? "tera_stellar" : "terastallize", tera.Place.Side);
                 if (At(tera.Place).Pokemon is { } shown)
                 {
-                    shown.Terastallized = TeraType.Parse(tera.TeraType);
+                    shown.Terastallized = type;
                     teraShown.Add(shown);
                     if (tera.Form != null)
                     {
-                        shown.Form = tera.Form;
-                        shown.TakeHp(tera.MaxHp, tera.Hp);
+                        TakeRaisedHp(tera.Place, shown, tera.MaxHp, tera.Hp);
+                        if (Scene && shown.Form != tera.Form) After(BattleAnimator.TeraSwapTime, () => shown.Form = tera.Form);
+                        else shown.Form = tera.Form;
                     }
                 }
-                if (Scene)
-                    Anim.Cue(new EffectCue
-                    {
-                        Kind = CueKind.Move,
-                        Move = "Transform",
-                        Type = PokemonType.Normal,
-                        Category = MoveCategory.Status,
-                        FromSide = tera.Place.Side,
-                        FromSlot = tera.Place.Slot,
-                        ToSide = tera.Place.Side,
-                        ToSlot = tera.Place.Slot
-                    });
+                if (Scene) Anim.Terastallize(tera.Place.Side, tera.Place.Slot, type);
                 break;
+            }
             case Ended:
                 foreach (var p in teraShown) p.Terastallized = null;
                 teraShown.Clear();

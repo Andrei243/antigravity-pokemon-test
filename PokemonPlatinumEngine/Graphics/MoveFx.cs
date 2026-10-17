@@ -68,6 +68,8 @@ internal static partial class MoveFx
                 else if (cue.Charging) ChargeHalf(c, ColorsOf(cue.Type), fx);
                 // A Z-Move plays its own set piece (plan 25 · Y14)
                 else if (cue.ZMove) ZMoveRecipe(cue.Move, cue.Type)(c, ColorsOf(cue.Type), fx);
+                // And a Max Move or a G-Max Move its own (plan 25 · Y15)
+                else if (cue.MaxMove) MaxMoveRecipe(cue.Move, cue.Type)(c, ColorsOf(cue.Type), fx);
                 else RecipeFor(cue.Move, cue.Type, cue.Category, cue.OnSelf)(c, ColorsOf(cue.Type), fx);
                 break;
             case CueKind.StatUp:
@@ -99,6 +101,16 @@ internal static partial class MoveFx
                 break;
             case CueKind.ZPower:
                 ZPower(c, ColorsOf(cue.Type), fx);
+                break;
+            // Dynamax and Terastallization (plan 25 · Y15)
+            case CueKind.Dynamax:
+                DynamaxGrowth(c, fx);
+                break;
+            case CueKind.DynamaxEnd:
+                DynamaxShrink(c, fx);
+                break;
+            case CueKind.Tera:
+                Terastallization(c, fx);
                 break;
         }
     }

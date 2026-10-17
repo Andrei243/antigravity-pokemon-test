@@ -89,6 +89,8 @@ public sealed class BattleRenderer
         MoveFx.Emit(anim, places, fx);
         // What lasts about each Pokémon: Z's, bubbles, flames, sparks, a shell of ice, stars, hearts (plan 09 · L2)
         MoveFx.Conditions(anim, places, fx);
+        // And a giant's wreath of red clouds and a Terastallized Pokémon's crown (plan 25 · Y15)
+        MoveFx.Giants(anim, places, fx);
         ArenaFx.Emit(Arena, anim.Time, night, fx, Math.Max(anim.WeatherStrength, anim.FadingStrength));
         ArenaFx.Weather(anim.FadingWeather, BattleAnimator.WeatherFadeTime, anim.Time, places, fx, anim.FadingStrength);
         ArenaFx.Weather(anim.Weather, anim.WeatherAge, anim.Time, places, fx);
@@ -162,7 +164,8 @@ public sealed class BattleRenderer
                 if (shown != null)
                 {
                     var model = PokemonModels.Get(shown.ModelName);
-                    float scale = ModelScale(model, isPlayer, anim);
+                    // A Dynamaxed Pokémon stands giant, and the effects are sized for it (plan 25 · Y15)
+                    float scale = ModelScale(model, isPlayer, anim) * BattleAnimator.GiantOf(anim[s, slot], isPlayer);
                     height = model.Height * scale;
                     halfWidth = PokemonSprites.Framing(model, isPlayer ? SpriteView.Back : SpriteView.Front, PokemonSprites.Size).HalfWidth * scale;
                 }
@@ -726,7 +729,8 @@ public sealed class BattleRenderer
         (Color Color, float Amount) strongest = (default, 0f);
         foreach (var cue in anim.Cues)
         {
-            if (cue.Kind is not (CueKind.Mega or CueKind.UltraBurst or CueKind.ZPower) || cue.ToSide != side || cue.ToSlot != slot) continue;
+            if (cue.Kind is not (CueKind.Mega or CueKind.UltraBurst or CueKind.ZPower or CueKind.Dynamax or CueKind.DynamaxEnd or CueKind.Tera)
+                || cue.ToSide != side || cue.ToSlot != slot) continue;
             var cast = MoveFx.BodyCast(cue);
             if (cast.Amount > strongest.Amount) strongest = cast;
         }
@@ -749,7 +753,8 @@ public sealed class BattleRenderer
         var spot = Spot(isPlayer ? BattleSide.Player : BattleSide.Enemy, slot, anim.Slots);
         var other = isPlayer ? BattleStage.EnemySpot : BattleStage.PlayerSpot;
 
-        float scale = ModelScale(model, isPlayer, anim);
+        // A Dynamaxed Pokémon stands giant (plan 25 · Y15): the lunge and the shake grow with it
+        float scale = ModelScale(model, isPlayer, anim) * BattleAnimator.GiantOf(v, isPlayer);
         float frame = scale * framing.WorldPerPixel * PokemonSprites.Size;
         var toward = Vector3.Normalize(other - spot);
         var feet = spot + new Vector3(0, platformTop, 0)
@@ -790,6 +795,9 @@ public sealed class BattleRenderer
         {
             // A change of shape's light, or the Z-Power's cast (plan 25 · Y14), gives way only to a send-out's or a recall's flash
             var change = ChangeCast(anim, isPlayer ? BattleSide.Player : BattleSide.Enemy, slot);
+            // A giant's red pulse or a Terastallized body's sheen (plan 25 · Y15), under any cue's own
+            var giant = MoveFx.GiantCast(v, anim.Time);
+            if (giant.Amount > change.Amount) change = giant;
             if (a.Flash > 0f) context.Shaders.SetFlash(a.FlashColor, Math.Clamp(a.Flash, 0f, 1f) * 0.85f);
             else if (change.Amount > 0f) context.Shaders.SetFlash(change.Color, Math.Clamp(change.Amount, 0f, 1f));
             else if (a.Silhouette > 0f) context.Shaders.SetFlash(SilhouetteColor, a.Silhouette * 0.92f);

@@ -16,7 +16,15 @@ public static partial class SoundBank
 
     /// <summary>The sounds of the later mechanics' set pieces, which may run to 2 s (a move's own runs to 1).</summary>
     public static bool IsSetPiece(string name) =>
-        name is "mega_evolve" or "primal_reversion" or "ultra_burst" or "z_power" || name.StartsWith("z_move_", StringComparison.OrdinalIgnoreCase);
+        name is "mega_evolve" or "primal_reversion" or "ultra_burst" or "z_power"
+            or "dynamax" or "gigantamax" or "dynamax_end" or "max_guard" or "terastallize" or "tera_stellar"
+        || name.StartsWith("z_move_", StringComparison.OrdinalIgnoreCase) || name.StartsWith("max_move_", StringComparison.OrdinalIgnoreCase);
+
+    /// <summary>The sound a Max Move of this type makes (a G-Max Move is heard as its type's; plan 25 · Y15).</summary>
+    public static string MaxMoveSound(PokemonType type) => "max_move_" + type.ToString().ToLowerInvariant();
+
+    /// <summary>Whether a move is a Max Move or a G-Max Move, heard by its type's Max Move sound (Max Guard by its own).</summary>
+    private static bool IsMaxMove(string move) => move.Length > 0 && MoveDatabase.Get(move) is { Kind: MoveKind.MaxMove or MoveKind.GMaxMove };
 
     private static void AddLaterSounds(Action<string, SoundGroup, string?, string> add)
     {
@@ -26,6 +34,15 @@ public static partial class SoundBank
         add("z_power", SoundGroup.Battle, null, "A Pokémon surrounds itself with its Z-Power: a rising hum and a chord as the Z is drawn.");
         foreach (var type in Enum.GetValues<PokemonType>())
             add(ZMoveSound(type), SoundGroup.Battle, null, $"A Z-Move of the {type} type (and a species' own Z-Move of that type) sets off and lands.");
+        // Dynamax and Terastallization (plan 25 · Y15)
+        add("dynamax", SoundGroup.Battle, null, "A Pokémon Dynamaxes: a deep swell rising as it grows, and a booming burst of cloud (plan 25 · Y15).");
+        add("gigantamax", SoundGroup.Battle, null, "A Pokémon Gigantamaxes: the Dynamax's swell with thunder in its clouds and a bright chord.");
+        add("dynamax_end", SoundGroup.Battle, null, "A Dynamax ends: a falling sigh as the Pokémon shrinks back and its clouds blow away.");
+        add("max_guard", SoundGroup.Battle, null, "Max Guard: a dome of light closing with a deep ring.");
+        foreach (var type in Enum.GetValues<PokemonType>())
+            add(MaxMoveSound(type), SoundGroup.Battle, null, $"A Max Move of the {type} type (and a G-Max Move of that type) sets off and lands.");
+        add("terastallize", SoundGroup.Battle, null, "A Pokémon Terastallizes: crystal ringing as it forms, shattering, and a chime as the crown stands.");
+        add("tera_stellar", SoundGroup.Battle, null, "A Stellar Terastallization: the crystal's ringing in a rising run of seven notes, and a shimmering chord.");
     }
 
     /// <summary>A sound of the later mechanics, or null for a name that isn't one.</summary>
@@ -70,7 +87,52 @@ public static partial class SoundBank
                 d.Notes(0.35f, 0.1f, 0.6f, Wave.Sine, Pitches(79, 83, 86), 0.1f, 0.01f, 1.2f);
                 d.Bell(0.65f, 0.6f, N(91), 2.01f, 0.8f, 0.12f, 2.5f);
                 return Finish(d.S, 0.42f);
+            case "dynamax":
+            case "gigantamax":
+                d = new SoundDesign(1.6f, name == "dynamax" ? 0xD7A1u : 0x6A11u);
+                d.Tone(0, 0.9f, Wave.Saw, 45f, 110f, 0.14f, 0.85f, 0.4f, vibratoHz: 5f, vibratoDepth: 0.03f);
+                d.Tone(0, 0.9f, Wave.Sine, N(43), N(55), 0.16f, 0.85f, 0.4f);
+                d.Noise(0.1f, 0.8f, Filter.Low, 300f, 1800f, 0.2f, 1.2f, 0.85f, 0.4f, 7f, 0.4f);
+                d.Thump(0.9f, 0.6f, 110f, 26f, 1.0f, 0.9f);
+                d.Noise(0.9f, 0.6f, Filter.Band, 900f, 250f, 0.3f, 1f, 0.01f, 1.6f, 9f, 0.5f);
+                if (name == "gigantamax")
+                {
+                    for (int i = 0; i < 3; i++) d.Noise(0.95f + i * 0.14f, 0.18f, Filter.High, 3000f, 6000f, 0.25f, 1.2f, 0.01f, 2f, 40f, 0.6f);
+                    d.Bell(0.92f, 0.65f, N(79), 2.01f, 1.0f, 0.14f, 2.2f);
+                    d.Bell(0.95f, 0.6f, N(86), 3.01f, 0.8f, 0.1f, 2.2f);
+                }
+                return Finish(d.S, 0.48f);
+            case "dynamax_end":
+                d = new SoundDesign(1.0f, 0xE4D0u);
+                d.Tone(0, 0.6f, Wave.Sine, N(60), N(43), 0.16f, 0.1f, 0.8f, vibratoHz: 4f, vibratoDepth: 0.03f);
+                d.Noise(0.05f, 0.8f, Filter.Band, 1600f, 300f, 0.22f, 1.4f, 0.2f, 1.2f, 5f, 0.4f);
+                return Finish(d.S, 0.4f);
+            case "max_guard":
+                d = new SoundDesign(1.2f, 0x6A2Du);
+                d.Tone(0, 0.3f, Wave.Triangle, N(48), N(60), 0.14f, 0.7f, 0.5f);
+                d.Bell(0.25f, 0.9f, N(67), 2.01f, 1.4f, 0.2f, 2f);
+                d.Bell(0.27f, 0.85f, N(74), 3.01f, 1.0f, 0.12f, 2f);
+                d.Noise(0.25f, 0.6f, Filter.Band, 2000f, 1200f, 0.12f, 2f, 0.1f, 1.4f, 6f, 0.4f);
+                return Finish(d.S, 0.42f);
+            case "terastallize":
+            case "tera_stellar":
+            {
+                bool stellar = name == "tera_stellar";
+                d = new SoundDesign(1.7f, stellar ? 0x57E1u : 0x7E2Au);
+                // Crystal ringing as the facets lock on, one after another
+                for (int i = 0; i < 6; i++) d.Bell(0.15f + i * 0.11f, 0.35f, N(84 + (i % 3) * 3), 3.01f, 0.6f, 0.07f, 3f);
+                d.Tone(0.1f, 0.8f, Wave.Sine, N(67), N(79), 0.1f, 0.6f, 0.4f);
+                // The shell shattering at 0.9 s, and the crown's chime
+                d.Crackle(0.9f, 0.4f, 24, 6500f, 0.3f);
+                d.Noise(0.9f, 0.3f, Filter.High, 4000f, 8000f, 0.3f, 1f, 0.01f, 2.2f);
+                d.Thump(0.9f, 0.3f, 220f, 80f, 0.4f, 0.4f);
+                if (stellar) d.Notes(0.95f, 0.07f, 0.5f, Wave.Sine, Pitches(84, 86, 88, 91, 93, 96, 100), 0.08f, 0.01f);
+                else d.Bell(1.0f, 0.65f, N(91), 2.01f, 1.0f, 0.16f, 2.4f);
+                d.Bell(1.05f, 0.6f, N(96), 3.01f, 0.8f, 0.1f, 2.4f);
+                return Finish(d.S, 0.44f);
+            }
         }
+        if (name.StartsWith("max_move_", StringComparison.Ordinal)) return MakeMaxMoveSound(name);
         if (!name.StartsWith("z_move_", StringComparison.Ordinal)) return null;
         PokemonType? found = null;
         foreach (var type in Enum.GetValues<PokemonType>())
@@ -83,6 +145,33 @@ public static partial class SoundBank
         d.Tone(0, 0.36f, Wave.Saw, 90f, 260f, 0.06f, 0.8f, 0.5f);
         d.Thump(0.35f, 0.6f, 150f, 30f, 0.9f, 0.9f);
         d.Noise(0.35f, 0.1f, Filter.Band, 1800f, 700f, 0.6f, 1f, 0.01f, 2.4f);
+        TypeLayer(d, t);
+        return Finish(d.S, 0.48f);
+    }
+
+    /// <summary>
+    /// A Max Move of a type (plan 25 · Y15): a deep red drone swelling to the landing at 0.35 s, a blow heavier and
+    /// lower than a Z-Move's with a boom under it, then the type's own layer, the same as its Z-Move's.
+    /// </summary>
+    private static float[]? MakeMaxMoveSound(string name)
+    {
+        PokemonType? found = null;
+        foreach (var type in Enum.GetValues<PokemonType>())
+            if (MaxMoveSound(type) == name) found = type;
+        if (found is not { } t) return null;
+        var d = new SoundDesign(1.5f, 0x4D00u + (uint)t * 0x13u);
+        d.Tone(0, 0.36f, Wave.Saw, 40f, 120f, 0.1f, 0.8f, 0.5f, vibratoHz: 6f, vibratoDepth: 0.04f);
+        d.Noise(0, 0.36f, Filter.Low, 300f, 1600f, 0.2f, 1.1f, 0.85f, 0.4f, 8f, 0.4f);
+        d.Thump(0.35f, 0.75f, 90f, 22f, 1.0f, 1.0f);
+        d.Noise(0.35f, 0.14f, Filter.Band, 1200f, 400f, 0.55f, 1f, 0.01f, 2.2f);
+        d.Tone(0.35f, 0.6f, Wave.Sine, 70f, 40f, 0.2f, 0.05f, 1f);
+        TypeLayer(d, t);
+        return Finish(d.S, 0.48f);
+    }
+
+    /// <summary>A type's own layer of a Z-Move's and a Max Move's sound, after the landing at 0.35 s.</summary>
+    private static void TypeLayer(SoundDesign d, PokemonType t)
+    {
         switch (t)
         {
             case PokemonType.Fire:
@@ -157,7 +246,6 @@ public static partial class SoundBank
                 d.Bell(0.38f, 0.7f, N(84), 2.01f, 1.0f, 0.15f, 2.4f);
                 break;
         }
-        return Finish(d.S, 0.48f);
     }
 
     /// <summary>Whether a move is a Z-Move, heard by its type's Z-Move sound.</summary>

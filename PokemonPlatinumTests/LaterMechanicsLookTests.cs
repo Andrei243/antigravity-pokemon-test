@@ -328,4 +328,284 @@ public class LaterMechanicsLookTests
         for (float t = 0f; t < BattleAnimator.UltraBurstSwapTime + 0.1f; t += Frame) battle.Update(Frame);
         Assert.Equal("Necrozma-Ultra", necrozma.Form);
     }
+
+    // ------------------------------------------------------------------ the Max Moves (plan 25 · Y15)
+
+    private static IEnumerable<MoveData> MaxMoves => MoveDatabase.GetAll().Where(m => m.Kind is MoveKind.MaxMove or MoveKind.GMaxMove);
+
+    private static EffectCue MaxCue(MoveData move, bool critical = false, bool superEffective = false, bool missed = false)
+    {
+        bool self = move.Category == MoveCategory.Status;
+        return new BattleAnimator().Cue(new EffectCue
+        {
+            Kind = CueKind.Move, Move = move.Name, Type = move.Type, Category = move.Category, MaxMove = true,
+            FromSide = BattleSide.Player, ToSide = self ? BattleSide.Player : BattleSide.Enemy,
+            Critical = critical, SuperEffective = superEffective, Missed = missed
+        });
+    }
+
+    [Fact]
+    public void ThereAreFiftyTwoMaxMovesAndEachHasALookOfItsOwn()
+    {
+        Assert.Equal(19, MoveDatabase.GetAll().Count(m => m.Kind == MoveKind.MaxMove));
+        Assert.Equal(33, MoveDatabase.GetAll().Count(m => m.Kind == MoveKind.GMaxMove));
+        Assert.All(MaxMoves, m => Assert.True(MoveFx.HasMaxLook(m.Name), $"{m.Name} has no look"));
+        Assert.Equal(33, MoveFx.GMaxMoves.Count());
+    }
+
+    [Fact]
+    public void EveryMaxMoveLandsWithinAFrameAndIsOverByTheEndOfItsCue()
+    {
+        foreach (var move in MaxMoves)
+        {
+            var fx = Draw(MaxCue(move), BattleAnimator.ImpactTime);
+            Assert.True(Math.Abs(fx.Landed - BattleAnimator.ImpactTime) <= Frame, $"{move.Name} lands at {fx.Landed:0.000}");
+            Assert.Equal(BattleAnimator.MaxMoveTime, MaxCue(move).Length);
+            foreach (var cue in new[] { MaxCue(move), MaxCue(move, critical: true, superEffective: true), MaxCue(move, missed: true) })
+            {
+                var after = Draw(cue, BattleAnimator.MaxMoveTime + Frame);
+                Assert.True(after.Count == 0 && after.Flash == 0f && after.Shake == 0f, $"{move.Name} still draws {after.Count} after its cue");
+            }
+        }
+    }
+
+    [Fact]
+    public void NoMaxMoveDrawsMoreThanTheCapFlashesTooHardShakesTooMuchOrRisesTooHigh()
+    {
+        var over = new List<string>();
+        foreach (var move in MaxMoves)
+        {
+            var cue = MaxCue(move, critical: true, superEffective: true);
+            var target = move.Category == MoveCategory.Status ? BattleSide.Player : BattleSide.Enemy;
+            float top = Places.Feet(target, 0).Y + Places.Height(target, 0) * 1.3f;
+            for (float age = 0f; age < BattleAnimator.MaxMoveTime; age += Frame)
+            {
+                var fx = Draw(cue, age);
+                if (fx.Count > MoveFx.MaxQuads) over.Add($"{move.Name} draws {fx.Count} at {age:0.00}");
+                if (fx.Flash > 0.35f) over.Add($"{move.Name} flashes {fx.Flash:0.00} at {age:0.00}");
+                if (fx.Shake > 0.5f) over.Add($"{move.Name} shakes {fx.Shake:0.00} at {age:0.00}");
+                // What stands over the target (a sign, an orb, a fist) stays under 1.3 h over its feet, the overview's top:
+                // only small things thrown out or falling from the sky pass it
+                float h = Places.Height(target, 0);
+                var high = fx.Quads.FirstOrDefault(q => q.Size >= h * 0.25f && q.Center.Y > top + 0.01f && Math.Abs(q.Center.X - Places.Feet(target, 0).X) < 4f);
+                if (age > 0.6f && high.Size > 0f)
+                    over.Add($"{move.Name} rises over 1.3 h ({high.Shape}, {(high.Center.Y - Places.Feet(target, 0).Y) / Places.Height(target, 0):0.00} h) at {age:0.00}");
+            }
+        }
+        var firsts = over.GroupBy(o => o.Split(" rises")[0].Split(" draws")[0]).Select(g => g.First()).ToList();
+        Assert.True(firsts.Count == 0, string.Join(" | ", firsts));
+    }
+
+    [Fact]
+    public void EveryMaxMoveIsTheSameForTheSameAgeAndSeedAndEachIsItsOwn()
+    {
+        var seen = new Dictionary<string, string>();
+        foreach (var move in MaxMoves)
+        {
+            var a = MaxCue(move);
+            var b = MaxCue(move);
+            b.Seed = a.Seed = 4242;
+            foreach (float age in new[] { 0.1f, BattleAnimator.ImpactTime, 0.7f, 1.2f })
+                Assert.Equal(Picture(Draw(a, age)), Picture(Draw(b, age)));
+            var fx = Draw(a, 0.7f);
+            Assert.True(fx.Count > 0, $"{move.Name} draws nothing at 0.7 s");
+            string picture = Picture(fx);
+            Assert.False(seen.ContainsKey(picture), $"{move.Name} looks like {seen.GetValueOrDefault(picture)}");
+            seen[picture] = move.Name;
+        }
+    }
+
+    [Fact]
+    public void AMaxMoveIsHeardAsItsTypesMaxMoveAndEverySetPieceIsThere()
+    {
+        Assert.Equal("max_move_fire", SoundBank.MoveSound("Max Flare", PokemonType.Fire));
+        Assert.Equal("max_move_fire", SoundBank.MoveSound("G-Max Wildfire", PokemonType.Fire));
+        Assert.Equal("max_guard", SoundBank.MoveSound("Max Guard", PokemonType.Normal));
+        Assert.Equal("z_move_fire", SoundBank.MoveSound("Inferno Overdrive", PokemonType.Fire));
+        foreach (var type in Enum.GetValues<PokemonType>()) Assert.True(SoundBank.Exists(SoundBank.MaxMoveSound(type)));
+        foreach (var name in new[] { "dynamax", "gigantamax", "dynamax_end", "max_guard", "terastallize", "tera_stellar", "max_move_rock" })
+        {
+            Assert.True(SoundBank.Exists(name), name);
+            Assert.True(SoundBank.IsSetPiece(name));
+            Assert.InRange(SoundBank.Get(name)!.Duration, 0.9, 2.0);
+        }
+    }
+
+    // ------------------------------------------------------------------ Dynamax and Terastallization
+
+    public static IEnumerable<object[]> Giants =>
+    [
+        [CueKind.Dynamax, false, false, PokemonType.Normal],
+        [CueKind.Dynamax, true, false, PokemonType.Normal],
+        [CueKind.DynamaxEnd, false, false, PokemonType.Normal],
+        [CueKind.DynamaxEnd, true, false, PokemonType.Normal],
+        [CueKind.Tera, false, false, PokemonType.Fire],
+        [CueKind.Tera, false, false, PokemonType.Ghost],
+        [CueKind.Tera, false, true, PokemonType.Normal]
+    ];
+
+    [Theory]
+    [MemberData(nameof(Giants))]
+    public void ADynamaxItsEndAndATerastallizationArePureCappedGentleAndOverByTheirEnd(CueKind kind, bool gigantamax, bool stellar, PokemonType type)
+    {
+        foreach (var side in new[] { BattleSide.Player, BattleSide.Enemy })
+        {
+            EffectCue Make() => new BattleAnimator().Cue(new EffectCue { Kind = kind, Gigantamax = gigantamax, Stellar = stellar, Type = type, FromSide = side, ToSide = side });
+            var a = Make();
+            var b = Make();
+            b.Seed = a.Seed;
+            bool drew = false;
+            for (float age = 0f; age < a.Length; age += Frame)
+            {
+                var fx = Draw(a, age);
+                Assert.True(fx.Count <= MoveFx.MaxQuads, $"{kind} draws {fx.Count} at {age:0.00}");
+                Assert.InRange(fx.Flash, 0f, 0.35f);
+                Assert.Equal(0f, fx.Shake);
+                Assert.Equal(Picture(fx), Picture(Draw(b, age)));
+                drew |= fx.Count > 0;
+            }
+            Assert.True(drew);
+            var after = Draw(a, a.Length + Frame);
+            Assert.Equal(0, after.Count);
+            Assert.Equal(0f, after.Flash);
+            Assert.Equal(0f, MoveFx.BodyCast(a).Amount);
+        }
+    }
+
+    [Fact]
+    public void AGiantGrowsThroughItsCueAndShrinksBack()
+    {
+        var anim = new BattleAnimator();
+        anim.Appear(BattleSide.Enemy, Mon("Snorlax", 50, "Splash"));
+        var v = anim.Enemy;
+        Assert.Equal(1f, BattleAnimator.GiantOf(v, false));
+        var cue = anim.Dynamax(BattleSide.Enemy, 0, gigantamax: false)!;
+        Assert.Equal(1f, BattleAnimator.GiantOf(v, false));
+        anim.Update(0.6f, (_, _) => null);
+        float half = BattleAnimator.GiantOf(v, false);
+        Assert.InRange(half, 1.05f, BattleAnimator.DynamaxScaleFoe - 0.01f);
+        // The body is red as it grows
+        Assert.True(MoveFx.BodyCast(cue).Amount > 0.7f && MoveFx.BodyCast(cue).Color.R > 200);
+        anim.Update(1.2f, (_, _) => null);
+        Assert.Equal(BattleAnimator.DynamaxScaleFoe, BattleAnimator.GiantOf(v, false));
+        Assert.Equal(3, v.DynamaxTurnsLeft);
+        // While it lasts: the wreath, under its cap, and the body pulsing red
+        var fx = new FxList();
+        MoveFx.Giants(anim, Places, fx);
+        Assert.InRange(fx.Count, 1, MoveFx.GiantCap);
+        Assert.InRange(MoveFx.GiantCast(v, anim.Time).Amount, 0.11f, 0.25f);
+        // Giant, but kept within the overview's picture (the harness's lt18 and lt19 look at both)
+        Assert.InRange(BattleAnimator.DynamaxScaleFoe, 1.2f, 1.3f);
+        Assert.InRange(BattleAnimator.DynamaxScaleOwn, 1.2f, 1.35f);
+
+        anim.Undynamax(BattleSide.Enemy, 0);
+        Assert.Contains(anim.Cues, c => c.Kind == CueKind.DynamaxEnd);
+        anim.Update(BattleAnimator.DynamaxShrinkTime + Frame, (_, _) => null);
+        Assert.Equal(1f, BattleAnimator.GiantOf(v, false));
+        fx = new FxList();
+        MoveFx.Giants(anim, Places, fx);
+        Assert.Equal(0, fx.Count);
+    }
+
+    [Fact]
+    public void ATerastallizedPokemonKeepsItsCrownUnderItsCapAndASheenOfItsType()
+    {
+        var anim = new BattleAnimator();
+        var p = Mon("Snorlax", 50, "Splash");
+        anim.Appear(BattleSide.Player, p);
+        p.Terastallized = TeraType.Of(PokemonType.Ghost);
+        var fx = new FxList();
+        MoveFx.Giants(anim, Places, fx);
+        Assert.InRange(fx.Count, 1, MoveFx.GiantCap);
+        float top = Places.Feet(BattleSide.Player, 0).Y + Places.Height(BattleSide.Player, 0) * 1.3f;
+        Assert.All(fx.Quads, q => Assert.True(q.Center.Y <= top, "the crown stands under 1.3 h"));
+        var sheen = MoveFx.GiantCast(anim.Player, 0f);
+        Assert.InRange(sheen.Amount, 0.09f, 0.21f);
+        // A Stellar one's colour turns
+        p.Terastallized = TeraType.Stellar;
+        Assert.NotEqual(MoveFx.GiantCast(anim.Player, 0f).Color, MoveFx.GiantCast(anim.Player, 1.5f).Color);
+        // Nothing behind a doll
+        anim.SubstituteUp(BattleSide.Player);
+        fx = new FxList();
+        MoveFx.Giants(anim, Places, fx);
+        Assert.Equal(0, fx.Count);
+    }
+
+    [Fact]
+    public void TheCrystalShattersAndTheBodyTakesTheTypesLight()
+    {
+        var tera = new BattleAnimator().Cue(new EffectCue { Kind = CueKind.Tera, Type = PokemonType.Water, FromSide = BattleSide.Enemy, ToSide = BattleSide.Enemy });
+        tera.Age = 0.8f;
+        Assert.True(MoveFx.BodyCast(tera).Amount > 0.75f);
+        var stellar = new BattleAnimator().Cue(new EffectCue { Kind = CueKind.Tera, Stellar = true, FromSide = BattleSide.Enemy, ToSide = BattleSide.Enemy });
+        stellar.Seed = tera.Seed;
+        foreach (float age in new[] { 0.5f, BattleAnimator.TeraSwapTime + 0.1f })
+            Assert.NotEqual(Picture(Draw(tera, age)), Picture(Draw(stellar, age)));
+    }
+
+    // ------------------------------------------------------------------ on screen
+
+    private static BattleEngine LaterBattle(Pokemon mine, string key, string foe = "Snorlax")
+    {
+        var party = new Party();
+        party.Add(mine);
+        var bag = new Inventory();
+        bag.AddItem(ItemDatabase.Get(key)!);
+        var battle = new BattleEngine(new BattleSetup
+        {
+            PlayerParty = party, Inventory = bag, Pokedex = new Pokedex(),
+            WildPokemon = new List<Pokemon> { Mon(foe, 50, "Splash") }, Random = Calm(), Rules = Ruleset.Modern
+        });
+        Settle(battle);
+        battle.SelectMainMenuOption(0);
+        return battle;
+    }
+
+    [Fact]
+    public void ADynamaxGrowsOnScreenNamesItsMaxMovesAndCountsItsTurnsOnItsBox()
+    {
+        var charizard = Mon("Charizard", 50, "Flamethrower");
+        charizard.DynamaxLevel = 10;
+        charizard.GigantamaxFactor = true;
+        var battle = LaterBattle(charizard, BattleCore.DynamaxBandItem, "Magikarp");
+        Assert.Equal((LaterMark.Dynamax, false), ModernUi.LaterButtonOf(battle));
+        Assert.Equal("Flamethrower", ModernUi.CardName(battle, charizard.Moves[0], 0));
+        Assert.True(battle.ToggleLaterMechanic());
+        Assert.Equal((LaterMark.Dynamax, true), ModernUi.LaterButtonOf(battle));
+        Assert.Equal("G-Max Wildfire", ModernUi.CardName(battle, charizard.Moves[0], 0));
+        battle.SelectMove(0);
+        ReadTo(battle, "Gigantamax");
+        var grow = Assert.Single(battle.Anim.Cues, c => c.Kind == CueKind.Dynamax);
+        Assert.True(grow.Gigantamax);
+        Assert.True(battle.Anim.Player.Dynamaxed);
+        Assert.Equal(3, battle.Anim.Player.DynamaxTurnsLeft);
+        // The HP is the raised one at once; the form is taken inside the red light
+        Assert.True(charizard.MaxHP > 200);
+        // ...and the bar keeps its share: full, with no heal easing up
+        Assert.True(battle.Anim.Player.DisplayedHp >= charizard.MaxHP - 1, $"the bar shows {battle.Anim.Player.DisplayedHp} of {charizard.MaxHP}");
+        Assert.Null(charizard.Form);
+        for (float t = 0f; t < BattleAnimator.DynamaxSwapTime + 0.1f; t += Frame) battle.Update(Frame);
+        Assert.Equal("Charizard-Gmax", charizard.Form);
+        ReadTo(battle, "G-Max Wildfire");
+        var max = Assert.Single(battle.Anim.Cues, c => c.Kind == CueKind.Move && c.Move == "G-Max Wildfire");
+        Assert.True(max.MaxMove);
+        Assert.Equal(BattleAnimator.MaxMoveTime, max.Length);
+    }
+
+    [Fact]
+    public void ATerastallizationPlaysItsCrystalAndArmsItsButton()
+    {
+        var snorlax = Mon("Snorlax", 50, "Splash");
+        snorlax.TeraType = TeraType.Of(PokemonType.Ghost);
+        var battle = LaterBattle(snorlax, BattleCore.TeraOrbItem, "Jolteon");
+        Assert.Equal((LaterMark.Tera, false), ModernUi.LaterButtonOf(battle));
+        Assert.True(battle.ToggleLaterMechanic());
+        Assert.Equal((LaterMark.Tera, true), ModernUi.LaterButtonOf(battle));
+        battle.SelectMove(0);
+        ReadTo(battle, "Terastallized");
+        var cue = Assert.Single(battle.Anim.Cues, c => c.Kind == CueKind.Tera);
+        Assert.Equal(PokemonType.Ghost, cue.Type);
+        Assert.False(cue.Stellar);
+        Assert.DoesNotContain(battle.Anim.Cues, c => c.Kind == CueKind.Move && c.Move == "Transform");
+    }
 }

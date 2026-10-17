@@ -152,6 +152,30 @@ Every sound effect of the game (plan 05 · A3), what it stands for in the origin
 | `z_move_dark` | — | A Z-Move of the Dark type, and a species' own of that type (`SoundBank.ZMoveSound`): a rush to the landing at 0.35 s and a great blow, then a sinking drone drawn into nothing (1.5 s). |
 | `z_move_steel` | — | A Z-Move of the Steel type, and a species' own of that type (`SoundBank.ZMoveSound`): a rush to the landing at 0.35 s and a great blow, then a ringing strike and a grinding drill (1.5 s). |
 | `z_move_fairy` | — | A Z-Move of the Fairy type, and a species' own of that type (`SoundBank.ZMoveSound`): a rush to the landing at 0.35 s and a great blow, then a twinkling run of notes (1.5 s). |
+| `dynamax` | — | A Pokémon Dynamaxes (plan 25 · Y15; our own, Platinum has none): a deep swell rising as it grows, a boom and a blast of cloud 0.9 s in (1.6 s). |
+| `gigantamax` | — | A Pokémon Gigantamaxes: the Dynamax's swell and boom, with three cracks of thunder in its clouds and two bells (1.6 s). |
+| `dynamax_end` | — | A Dynamax ends: a falling sigh as the Pokémon shrinks back and a gust as its clouds blow away (1.0 s). |
+| `max_guard` | — | Max Guard: a rising hum and a dome closing on two deep bells (1.2 s). |
+| `max_move_normal` | — | A Max Move of the Normal type, and a G-Max Move of that type (`SoundBank.MaxMoveSound`): a deep drone swelling to the landing at 0.35 s and a blow with a boom under it, then a great blow under a bell (1.5 s). |
+| `max_move_fire` | — | A Max Move of the Fire type, and a G-Max Move of that type (`SoundBank.MaxMoveSound`): a deep drone swelling to the landing at 0.35 s and a blow with a boom under it, then a roaring blaze crackling (1.5 s). |
+| `max_move_water` | — | A Max Move of the Water type, and a G-Max Move of that type (`SoundBank.MaxMoveSound`): a deep drone swelling to the landing at 0.35 s and a blow with a boom under it, then a surging wash, bubbling (1.5 s). |
+| `max_move_electric` | — | A Max Move of the Electric type, and a G-Max Move of that type (`SoundBank.MaxMoveSound`): a deep drone swelling to the landing at 0.35 s and a blow with a boom under it, then four cracks of thunder, one after another (1.5 s). |
+| `max_move_grass` | — | A Max Move of the Grass type, and a G-Max Move of that type (`SoundBank.MaxMoveSound`): a deep drone swelling to the landing at 0.35 s and a blow with a boom under it, then a rustle and a rising run of notes (1.5 s). |
+| `max_move_ice` | — | A Max Move of the Ice type, and a G-Max Move of that type (`SoundBank.MaxMoveSound`): a deep drone swelling to the landing at 0.35 s and a blow with a boom under it, then a cold bell and the crackle of ice (1.5 s). |
+| `max_move_fighting` | — | A Max Move of the Fighting type, and a G-Max Move of that type (`SoundBank.MaxMoveSound`): a deep drone swelling to the landing at 0.35 s and a blow with a boom under it, then ten blows raining down (1.5 s). |
+| `max_move_poison` | — | A Max Move of the Poison type, and a G-Max Move of that type (`SoundBank.MaxMoveSound`): a deep drone swelling to the landing at 0.35 s and a blow with a boom under it, then bubbling, under a low gurgle (1.5 s). |
+| `max_move_ground` | — | A Max Move of the Ground type, and a G-Max Move of that type (`SoundBank.MaxMoveSound`): a deep drone swelling to the landing at 0.35 s and a blow with a boom under it, then a rumble and the ground breaking (1.5 s). |
+| `max_move_flying` | — | A Max Move of the Flying type, and a G-Max Move of that type (`SoundBank.MaxMoveSound`): a deep drone swelling to the landing at 0.35 s and a blow with a boom under it, then a rushing dive of wind (1.5 s). |
+| `max_move_psychic` | — | A Max Move of the Psychic type, and a G-Max Move of that type (`SoundBank.MaxMoveSound`): a deep drone swelling to the landing at 0.35 s and a blow with a boom under it, then a glide rising, wavering, and a bell (1.5 s). |
+| `max_move_bug` | — | A Max Move of the Bug type, and a G-Max Move of that type (`SoundBank.MaxMoveSound`): a deep drone swelling to the landing at 0.35 s and a blow with a boom under it, then a buzzing swarm (1.5 s). |
+| `max_move_rock` | — | A Max Move of the Rock type, and a G-Max Move of that type (`SoundBank.MaxMoveSound`): a deep drone swelling to the landing at 0.35 s and a blow with a boom under it, then six boulders falling (1.5 s). |
+| `max_move_ghost` | — | A Max Move of the Ghost type, and a G-Max Move of that type (`SoundBank.MaxMoveSound`): a deep drone swelling to the landing at 0.35 s and a blow with a boom under it, then a falling wail over a hollow breath (1.5 s). |
+| `max_move_dragon` | — | A Max Move of the Dragon type, and a G-Max Move of that type (`SoundBank.MaxMoveSound`): a deep drone swelling to the landing at 0.35 s and a blow with a boom under it, then a growling roar of fire (1.5 s). |
+| `max_move_dark` | — | A Max Move of the Dark type, and a G-Max Move of that type (`SoundBank.MaxMoveSound`): a deep drone swelling to the landing at 0.35 s and a blow with a boom under it, then a sinking drone drawn into nothing (1.5 s). |
+| `max_move_steel` | — | A Max Move of the Steel type, and a G-Max Move of that type (`SoundBank.MaxMoveSound`): a deep drone swelling to the landing at 0.35 s and a blow with a boom under it, then a ringing strike and a grinding drill (1.5 s). |
+| `max_move_fairy` | — | A Max Move of the Fairy type, and a G-Max Move of that type (`SoundBank.MaxMoveSound`): a deep drone swelling to the landing at 0.35 s and a blow with a boom under it, then a twinkling run of notes (1.5 s). |
+| `terastallize` | — | A Pokémon Terastallizes: crystal ringing as its facets lock on, a shatter 0.9 s in, and a chime as the crown stands (1.7 s). |
+| `tera_stellar` | — | A Stellar Terastallization: the crystal's ringing and shatter, and a rising run of seven notes (1.7 s). |
 
 **The later mechanics' set pieces** (plan 25 · Y14; `SoundBank.Later.cs`) run up to 2 s, where a move's own sound runs to 1 (`SoundBank.IsSetPiece`, which `SoundTests` allows its 2 s): each plays as its line appears, a Z-Move's with its cue in place of the move's own sound; with the Battle Scene off they are still heard.
 

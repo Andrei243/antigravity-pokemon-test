@@ -7,8 +7,8 @@ namespace PokemonPlatinumEngine.Battle;
 
 // Dynamax on screen (plan 06 · R22): the move menu's item button arms it where neither a Mega Evolution nor a Z-Move
 // can be had, the screen's Pokémon takes its raised HP and its Gigantamax form from the events, and its moves are
-// named as Max Moves while it lasts (MaxMoveAt). The looks (the growth, the red clouds, each Max Move's effect, the
-// button) are plan 25 · Y15's; until then the change plays Transform's cue as Mega Evolution's stand-in does.
+// named as Max Moves while it lasts (MaxMoveAt). The looks are plan 25 · Y15's: the growth and the red clouds
+// (BattleAnimator.Dynamax, MoveFx.Giants.cs), each Max Move's set piece (MoveFx.MaxMoves.cs) and the button.
 public partial class BattleEngine
 {
     /// <summary>
@@ -51,39 +51,51 @@ public partial class BattleEngine
     }
 
     /// <summary>
-    /// A Dynamax or its end on screen: the screen's Pokémon takes the HP, the most HP and the form the event says,
-    /// and a Dynamax plays Transform's cue on itself until plan 25 · Y15 gives it a look of its own.
+    /// The screen's Pokémon takes the HP a Dynamax raises or its end gives back, and its bar keeps its share: the
+    /// numbers the box shows move with it at once, never easing up like a heal or showing more than the most (plan 25 · Y15).
+    /// </summary>
+    private void TakeRaisedHp(Place place, Pokemon? shown, int maxHp, int hp)
+    {
+        if (shown == null) return;
+        int before = Math.Max(1, shown.MaxHP);
+        shown.TakeHp(maxHp, hp);
+        var v = Anim[place.Side, place.Slot];
+        if (v.Shown == shown) v.DisplayedHp = Math.Min(v.DisplayedHp * maxHp / before, maxHp);
+    }
+
+    /// <summary>
+    /// A Dynamax or its end on screen (plan 25 · Y15): its sound and its cue; the screen's Pokémon takes the HP and
+    /// the most HP the event says at once (the box shows the raised numbers from the line on), and the form (a
+    /// Gigantamax's, or back from one) inside the cue's light; at once with the scene off, where nothing plays.
     /// </summary>
     private void ShowDynamax(BattleEvent happening)
     {
         switch (happening)
         {
             case Dynamaxed grown:
-                if (At(grown.Place).Pokemon is { } big)
-                {
-                    big.Form = grown.Form;
-                    big.TakeHp(grown.MaxHp, grown.Hp);
-                }
-                if (Scene)
-                    Anim.Cue(new EffectCue
-                    {
-                        Kind = CueKind.Move,
-                        Move = "Transform",
-                        Type = PokemonType.Normal,
-                        Category = MoveCategory.Status,
-                        FromSide = grown.Place.Side,
-                        FromSlot = grown.Place.Slot,
-                        ToSide = grown.Place.Side,
-                        ToSlot = grown.Place.Slot
-                    });
+            {
+                Sound(grown.Gigantamax ? "gigantamax" : "dynamax", grown.Place.Side);
+                var big = At(grown.Place).Pokemon;
+                TakeRaisedHp(grown.Place, big, grown.MaxHp, grown.Hp);
+                Anim.Dynamax(grown.Place.Side, grown.Place.Slot, grown.Gigantamax, played: Scene);
+                if (big == null) break;
+                if (Scene && big.Form != grown.Form) After(BattleAnimator.DynamaxSwapTime, () => big.Form = grown.Form);
+                else big.Form = grown.Form;
                 break;
+            }
             case DynamaxEnded ended:
-                if (At(ended.Place).Pokemon is { } small)
-                {
-                    small.Form = ended.Form;
-                    small.TakeHp(ended.MaxHp, ended.Hp);
-                }
+            {
+                var small = At(ended.Place).Pokemon;
+                TakeRaisedHp(ended.Place, small, ended.MaxHp, ended.Hp);
+                var v = Anim[ended.Place.Side, ended.Place.Slot];
+                bool standing = v.Dynamaxed && v.Present && v.FaintAge < 0f && v.RecallAge < 0f;
+                if (standing) Sound("dynamax_end", ended.Place.Side);
+                Anim.Undynamax(ended.Place.Side, ended.Place.Slot, played: Scene);
+                if (small == null) break;
+                if (Scene && standing && small.Form != ended.Form) After(BattleAnimator.DynamaxEndSwapTime, () => small.Form = ended.Form);
+                else small.Form = ended.Form;
                 break;
+            }
         }
     }
 }
