@@ -75,6 +75,23 @@ internal static class MoveSightings
         }
     }
 
+    /// <summary>The first area of Y8's second part (plan 25 · Y8b): Y8's first part is everything before it, from Route 208's end.</summary>
+    public const string EighthBatchSplits = "route_210_north";
+
+    /// <summary>
+    /// Platinum's moves, by name, that Y8's first part takes (plan 25 · Y8a): seen after <see cref="SeventhBatchEnds"/>
+    /// and before <see cref="EighthBatchSplits"/> (Hearthome City's gate to the Café Cabin on Route 210, its rooms with
+    /// it). Secret Power, which Amity Square's TM shows, is Y6's.
+    /// </summary>
+    public static IReadOnlyList<string> EighthBatchFirstPart
+    {
+        get
+        {
+            int from = PlaceRanks.Value[SeventhBatchEnds] + 100, to = PlaceRanks.Value[EighthBatchSplits];
+            return All.Where(s => s.Rank >= from && s.Rank < to && s.Move != "Secret Power").Select(s => s.Move).ToList();
+        }
+    }
+
     private static readonly Lazy<Dictionary<string, int>> PlaceRanks = new(() => Ranks().Ranks);
 
     /// <summary>The areas in their order, then every room ranked by the place whose warp first leads into it.</summary>

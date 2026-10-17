@@ -294,6 +294,56 @@ One sound for each type, played as a move of that type sets off (`SoundBank.Move
 | `use_sweet_scent` | `SEQ_SE_DP_W230` | Sweet Scent: a soft sweep of chimes with a shimmer. |
 | `use_twister` | `SEQ_SE_DP_060` | Twister: a wind spiralling up and round. |
 | `use_worry_seed` | `SEQ_SE_DP_001` | Worry Seed: a seed tossed with a plop and two uneasy notes. |
+| `use_bubble_beam` | `SEQ_SE_DP_AWA` | Bubble Beam: a stream of bubbling pops and a final burst. |
+| `use_mach_punch` | `SEQ_SE_DP_W010` | Mach Punch: a fast whoosh and a flat crack. |
+| `use_metal_claw` | `SEQ_SE_DP_W231` | Metal Claw: two metallic rakes, each with a ring. |
+| `use_future_sight` | `SEQ_SE_DP_W060` | Future Sight: a pulsing hum and a foggy chime. |
+| `use_pain_split` | `SEQ_SE_DP_W025B` | Pain Split: six pangs, one side and the other in turn. |
+| `use_psybeam` | `SEQ_SE_DP_W060C` | Psybeam: a wobbling beam crossing the field and a dull bang. |
+| `use_shadow_ball` | `SEQ_SE_DP_W028` | Shadow Ball: a dark swirl building, a throw and a dull burst. |
+| `use_shadow_claw` | `SEQ_SE_DP_161` | Shadow Claw: two ghostly rakes and a hollow toll. |
+| `use_shadow_sneak` | `SEQ_SE_DP_161` | Shadow Sneak: a hush along the ground and a muffled strike. |
+| `use_spit_up` | `SEQ_SE_DP_W036` | Spit Up: a heave, a pop and a wet splat. |
+| `use_stockpile` | `SEQ_SE_DP_W025` | Stockpile: two swelling breaths, each ending in a soft ping. |
+| `use_sucker_punch` | `SEQ_SE_DP_143` | Sucker Punch: a sudden dull smack and a second, smaller. |
+| `use_swallow` | `SEQ_SE_DP_W036` | Swallow: a gathering rush, a gulp and a soft chime. |
+| `use_will_o_wisp` | `SEQ_SE_DP_W052` | Will-O-Wisp: a flickering cold wind that ignites with a whoosh. |
+| `use_minimize` | `SEQ_SE_DP_W107` | Minimize: a tone sliding down and shrinking, with little pops. |
+| `use_payback` | `SEQ_SE_DP_W185` | Payback: a heavy growl gathering and four hard knocks with a jingle. |
+| `use_attract` | `SEQ_SE_DP_W204` | Attract: a sweet lilt, two kisses and a bell. |
+| `use_amnesia` | `SEQ_SE_DP_W118` | Amnesia: a hollow mutter and a bubbling drift away. |
+| `use_aqua_ring` | `SEQ_SE_DP_W392` | Aqua Ring: a gentle watery shimmer closing into a ring. |
+| `use_copycat` | `SEQ_SE_DP_SHUSHU` | Copycat: a rising hiss and a tune repeated a beat later. |
+| `use_fury_attack` | `SEQ_SE_DP_W030` | Fury Attack: four quick jabs. |
+| `use_jump_kick` | `SEQ_SE_DP_131` | Jump Kick: a spring, a whoosh and one hard kick. |
+| `use_light_screen` | `SEQ_SE_DP_W115` | Light Screen: a curtain of chimes shimmering up. |
+| `use_nasty_plot` | `SEQ_SE_DP_W118` | Nasty Plot: a low scheming murmur and a sly rising note. |
+| `use_refresh` | `SEQ_SE_DP_W287` | Refresh: a clean breeze of chimes. |
+| `use_soft_boiled` | `SEQ_SE_DP_112` | Soft-Boiled: a wobbling egg, a crack and a warm bell. |
+| `use_steel_wing` | `SEQ_SE_DP_W231` | Steel Wing: two metal whooshes and four ringing strikes. |
+| `use_sweet_kiss` | `SEQ_SE_DP_041` | Sweet Kiss: a kiss and a dizzy little tune. |
+| `use_whirlwind` | `SEQ_SE_DP_KAZE` | Whirlwind: a great wind rising and a gust carrying off. |
+| `use_mirror_move` | — | Mirror Move: a bright silver ping and a glassy ring (the original plays none of its own). |
+| `use_haze` | `SEQ_SE_DP_W114` | Haze: a long cold hiss and a murmur of mist. |
+| `use_defog` | `SEQ_SE_DP_BFBRADE` | Defog: a wind rushing across the field and clearing. |
+| `use_dig` | `SEQ_SE_DP_W091` | Dig: dirt scrabbled three times, a burst out of the ground and a thud. |
+| `use_yawn` | `SEQ_SE_DP_W281` | Yawn: a long drowsy sigh carried across. |
+| `use_acupressure` | `SEQ_SE_DP_081` | Acupressure: three presses, each with a ping, and a warm chime. |
+| `use_air_cutter` | `SEQ_SE_DP_W104` | Air Cutter: a whoosh and two cuts, crossing. |
+| `use_false_swipe` | `SEQ_SE_DP_W104` | False Swipe: a whoosh and a soft tap of a blade. |
+| `use_feint` | `SEQ_SE_DP_W104` | Feint: two faint whooshes, then one sharp quick hit. |
+| `use_metronome` | `SEQ_SE_DP_W118` | Metronome: a pendulum ticking and a bright flourish. |
+| `use_pin_missile` | `SEQ_SE_DP_W026` | Pin Missile: three light whistling needles, each with a prick. |
+| `use_roost` | `SEQ_SE_DP_210` | Roost: wings settling, a soft sigh and a chime. |
+| `use_scary_face` | `SEQ_SE_DP_W060` | Scary Face: a sudden low roar-hiss and a stab of high notes. |
+| `use_shock_wave` | `SEQ_SE_DP_W082` | Shock Wave: a rising crackle and a crooked zap. |
+| `use_slash` | `SEQ_SE_DP_W013` | Slash: three quick sharp swishes, the last with a ring. |
+| `use_swagger` | `SEQ_SE_DP_W207D` | Swagger: a cocky rising fanfare and two hard snorts. |
+| `use_thunder_shock` | `SEQ_SE_DP_W085` | Thunder Shock: a short sharp zap and a crackle. |
+| `use_toxic_spikes` | `SEQ_SE_DP_W026` | Toxic Spikes: five spikes thrown with a prick each, and bubbling. |
+| `use_wake_up_slap` | `SEQ_SE_DP_030C` | Wake-Up Slap: four slaps and a ring. |
+| `use_cosmic_power` | `SEQ_SE_DP_W322` | Cosmic Power: a deep space hum with twinkling bells. |
+| `use_lick` | `SEQ_SE_DP_W122` | Lick: a wet slurp. |
 
 ## Cries
 

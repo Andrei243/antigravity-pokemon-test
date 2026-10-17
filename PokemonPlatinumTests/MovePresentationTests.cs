@@ -223,6 +223,43 @@ public class MovePresentationTests
     }
 
     [Fact]
+    public void TheEighthBatchsFirstPartAllHaveALookAndASoundOfTheirOwn()
+    {
+        // Plan 25 · Y8a: Hearthome City's gate to the Café Cabin on Route 210
+        var part = MoveSightings.EighthBatchFirstPart;
+        output.WriteLine($"{part.Count} moves in Y8's first part: {string.Join(", ", part)}");
+        Assert.Equal(51, part.Count);
+        Assert.All(part, move => Assert.Equal("Y8", MoveFx.BatchOf(move)));
+        // Chatter is the user's voice and has the look alone
+        Assert.All(part, move => Assert.True(SoundBank.CryModesOf(move) != null || SoundBank.Exists("use_" + SoundBank.MoveKey(move)), move));
+        Assert.Contains("Chatter", part);
+        Assert.False(SoundBank.Exists("use_chatter"));
+        // And nothing outside the part has run into the batch, nor the part into the ones before it
+        Assert.All(MoveFx.Batches.Where(b => b.Value == "Y8"), b => Assert.Contains(b.Key, part, StringComparer.OrdinalIgnoreCase));
+        Assert.Empty(part.Intersect(MoveSightings.SeventhBatchFirstPart.Concat(MoveSightings.SeventhBatchSecondPart), StringComparer.OrdinalIgnoreCase));
+    }
+
+    [Fact]
+    public void TheEighthBatchsMovesThatShareAParticleFileOrAKindLookDifferentHere()
+    {
+        // Metal Claw and Shadow Claw, Fury Attack and Pin Missile, Haze and Defog, Aqua Ring and Light Screen
+        foreach (var (a, b) in new[] { ("Metal Claw", "Shadow Claw"), ("Fury Attack", "Pin Missile"), ("Haze", "Defog"), ("Light Screen", "Aqua Ring"), ("Thunder Shock", "Shock Wave"), ("Stockpile", "Swallow") })
+        {
+            var ma = MoveDatabase.Get(a)!;
+            var mb = MoveDatabase.Get(b)!;
+            int same = 0;
+            foreach (float age in new[] { 0.15f, 0.3f, 0.5f, 0.8f })
+            {
+                var ca = Cue(ma);
+                var cb = Cue(mb);
+                cb.Seed = ca.Seed;
+                if (Picture(Draw(ca, age)) == Picture(Draw(cb, age))) same++;
+            }
+            Assert.True(same < 4, $"{a} and {b} look alike");
+        }
+    }
+
+    [Fact]
     public void MovesThatShareAParticleFileInTheOriginalLookDifferentHere()
     {
         // Block and Imprison, Self-Destruct and Explosion, Snore and Rest, and two more that are alike in kind
@@ -307,7 +344,7 @@ public class MovePresentationTests
         int own = PlatinumMoves.Count(m => MoveFx.BatchOf(m.Name) != null &&
             (SoundBank.CryModesOf(m.Name) != null || SoundBank.Exists("use_" + SoundBank.MoveKey(m.Name))));
         output.WriteLine($"{own} of Platinum's 467 have a look and a sound of their own");
-        Assert.True(own >= 153, $"only {own}");
+        Assert.True(own >= 204, $"only {own}");
     }
 
     [Fact]
