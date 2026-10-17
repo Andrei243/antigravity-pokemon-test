@@ -26,8 +26,10 @@ namespace PokemonPlatinumEngine.Battle;
 /// original's own place (plan 06 · R7 and R8); what is left of <see cref="BattleEffect"/> here is the hooks
 /// abilities still answer (Filter, Tinted Lens, Adaptability, Sniper). The field is read from the target's
 /// <see cref="Battler.Field"/>: a battler that stands on none (a test's two Pokémon) is hit as on a bare one.
+/// Under rules with <see cref="Ruleset.ModernDamageFormula"/> the same bonuses are put where generation 5 on has them,
+/// in 4096ths (<c>DamageCalculator.Modern.cs</c>, plan 06 · R19c).
 /// </summary>
-public static class DamageCalculator
+public static partial class DamageCalculator
 {
     public struct DamageResult
     {
@@ -170,6 +172,15 @@ public static class DamageCalculator
         var type = move.Type;
         int attack = physical ? atkPokemon.Attack : atkPokemon.SpAttack;
         int defense = physical ? defPokemon.Defense : defPokemon.SpDefense;
+
+        // The later games put the same bonuses in other places and chain them in 4096ths (plan 06 · R19c)
+        if (rules.ModernDamageFormula)
+        {
+            var hit = new ModernHit(attacker, defender, move, rng, spread, power, powerTenths, pastScreens, noVariance, damageTenths,
+                typeless, selfHit, weather, attackerEffects, defenderEffects, breaksAbility);
+            result.Damage = hit.Damage(ref result);
+            return result;
+        }
 
         // The move's own multiplier (Pursuit's doubling; Reckless sets it from the move's script), a Charge, an
         // ally's Helping Hand, Technician

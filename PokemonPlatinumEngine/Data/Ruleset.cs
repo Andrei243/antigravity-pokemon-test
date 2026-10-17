@@ -204,6 +204,16 @@ public sealed class Ruleset
     /// </summary>
     public bool SnowInPlaceOfHail { get; private init; }
 
+    /// <summary>
+    /// The damage formula of Generation 5 on (plan 06 · R19c; Pokémon Showdown's <c>getDamage</c> and <c>modifyDamage</c>):
+    /// the bonuses to the power, the stats and the damage chained in 4096ths and rounded half down, the weather and a
+    /// spread hit after the + 2, a burn after the roll, the same-type bonus and the type chart, and the screens, a Life
+    /// Orb, an Expert Belt, Filter and Tinted Lens as final modifiers (<see cref="Battle.DamageCalculator"/>). In
+    /// Platinum every bonus is a step of its own rounded down, and the burn, the screens and the weather come inside the
+    /// base damage, before the + 2 (<c>BattleSystem_CalcMoveDamage</c>).
+    /// </summary>
+    public bool ModernDamageFormula { get; private init; }
+
     /// <summary>The weather these rules make of one asked for: snow for hail where <see cref="SnowInPlaceOfHail"/> holds.</summary>
     public Battle.Sim.BattleWeather Sky(Battle.Sim.BattleWeather weather) =>
         SnowInPlaceOfHail && weather == Battle.Sim.BattleWeather.Hail ? Battle.Sim.BattleWeather.Snow : weather;
@@ -255,7 +265,8 @@ public sealed class Ruleset
         EverstoneAlwaysPassesNature = true,
         ModernInheritance = true,
         MasudaRerolls = 5,
-        SnowInPlaceOfHail = true
+        SnowInPlaceOfHail = true,
+        ModernDamageFormula = true
     };
 
     public static Ruleset Of(RulesPreset preset) => preset == RulesPreset.Modern ? Modern : Platinum;

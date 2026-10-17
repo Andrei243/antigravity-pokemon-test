@@ -13,41 +13,6 @@
       "reason": "Photon Geyser is physical when its user's Attack is higher than its Sp. Atk, and ignores abilities; the data gives it no effect, so the engine runs it as a plain special move and counts it fully run.",
       "when": { "move": "Photon Geyser" },
       "kind": "damage"
-    },
-    {
-      "name": "the screens are the last modifier",
-      "owner": "plan 06 · the modern damage formula (a session of its own, before R24)",
-      "reason": "Platinum halves a hit behind Reflect or Light Screen before the roll, the same-type bonus and the type chart (and takes two thirds for two behind one screen); from generation 5 a screen is a final modifier, 2048/4096 or 2732/4096 in a double battle, applied after them, and Aurora Veil with them.",
-      "when": { "screen": ["Reflect", "Light Screen", "Aurora Veil"] },
-      "within": 8,
-      "withinPercent": 3,
-      "kind": "damage"
-    },
-    {
-      "name": "the burn halves after the type chart",
-      "owner": "plan 06 · the modern damage formula (a session of its own, before R24)",
-      "reason": "Platinum halves a burned Pokémon's physical hit inside the base damage, before the + 2; from generation 5 the halving comes after the roll, the same-type bonus and the type chart.",
-      "when": { "attackerStatus": "brn", "category": "Physical" },
-      "within": 8,
-      "withinPercent": 3,
-      "kind": "damage"
-    },
-    {
-      "name": "the weather comes after the + 2",
-      "owner": "plan 06 · the modern damage formula (a session of its own, before R24)",
-      "reason": "Platinum strengthens or weakens a Fire or Water move in the sun or the rain inside the base damage, before the + 2; from generation 5 the weather is a modifier of its own after it, beside a spread hit's.",
-      "when": { "weather": ["Sun", "Rain", "Harsh Sunshine", "Heavy Rain"], "moveType": ["Fire", "Water"] },
-      "within": 8,
-      "withinPercent": 3,
-      "kind": "damage"
-    },
-    {
-      "name": "the modifiers in 4096ths",
-      "owner": "plan 06 · the modern damage formula (a session of its own, before R24)",
-      "reason": "Platinum rounds down after every bonus; from generation 5 the bonuses to the power, the stats and the damage are chained in 4096ths and rounded half down, the weather and a spread hit come before the critical hit, and the same-type bonus is rounded half down. Differences of a point or two.",
-      "within": 2,
-      "withinPercent": 3,
-      "kind": "damage"
     }
   ]
 }
