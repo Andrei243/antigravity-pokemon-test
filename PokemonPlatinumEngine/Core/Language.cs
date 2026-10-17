@@ -41,6 +41,12 @@ public sealed record Language
     /// </summary>
     public string[]? NameGroups { get; init; }
 
+    /// <summary>
+    /// The capital letters the name keyboard needs beyond A to Z (Romanian: ĂÂÎȘȚ), one key each on a row of their own
+    /// (<see cref="UI.Kit.NameEntry"/>); empty for a language the plain board serves.
+    /// </summary>
+    public string Keyboard { get; init; } = "";
+
     /// <summary>The scripts the interface's faces can draw; another language is listed but not offered until plan 17 · N5.</summary>
     public static readonly IReadOnlySet<string> DrawnScripts = new HashSet<string> { "Latin" };
 

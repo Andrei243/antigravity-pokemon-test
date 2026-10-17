@@ -1,6 +1,6 @@
 [
   { "tag": "en", "name": "English", "script": "Latin", "plural": "english", "decimal": ".", "breaks": "spaces" },
-  { "tag": "ro", "name": "Română", "script": "Latin", "plural": "romanian", "decimal": ",", "breaks": "spaces" },
+  { "tag": "ro", "name": "Română", "script": "Latin", "plural": "romanian", "decimal": ",", "breaks": "spaces", "keyboard": "ĂÂÎȘȚ" },
   { "tag": "fr", "name": "Français", "script": "Latin", "plural": "french", "decimal": ",", "breaks": "spaces" },
   { "tag": "de", "name": "Deutsch", "script": "Latin", "plural": "english", "decimal": ",", "breaks": "spaces" },
   { "tag": "es", "name": "Español", "script": "Latin", "plural": "english", "decimal": ",", "breaks": "spaces" },

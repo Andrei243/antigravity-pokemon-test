@@ -215,7 +215,7 @@ internal static partial class ModernUi
         Keyboard(new Vector2(x0, board.Y + 250), entry);
     }
 
-    /// <summary>The keyboard: four rows of ten keys and a bottom row of three wide ones; the key under the cursor is a Selection-coloured pill.</summary>
+    /// <summary>The keyboard: four rows of ten keys (a fifth of the language's own letters, when it has them) and a bottom row of three wide ones; the key under the cursor is a Selection-coloured pill.</summary>
     public static void Keyboard(Vector2 origin, NameEntry entry)
     {
         void Key(Rectangle r, string label, bool selected, float size)
@@ -237,17 +237,17 @@ internal static partial class ModernUi
             UiFonts.DrawCentered(label, r.X + (r.Width - w) / 2f, r.Y + r.Height / 2f, size, ink, UiWeight.Black);
         }
 
-        for (int row = 0; row < NameEntry.LetterRows; row++)
+        for (int row = 0; row < entry.RowCount; row++)
         {
             string keys = entry.RowKeys(row);
-            for (int col = 0; col < NameEntry.Columns; col++)
+            for (int col = 0; col < entry.KeysIn(row); col++)
             {
                 var r = new Rectangle(origin.X + col * (KeyWidth + KeyGap), origin.Y + row * (KeyHeight + KeyGap), KeyWidth, KeyHeight);
                 Key(r, keys[col].ToString(), entry.Row == row && entry.Column == col && !entry.Done, 44);
             }
         }
 
-        float y = origin.Y + NameEntry.LetterRows * (KeyHeight + KeyGap) + 14;
+        float y = origin.Y + entry.RowCount * (KeyHeight + KeyGap) + 14;
         for (int i = 0; i < NameEntry.WideKeys.Length; i++)
         {
             int start = NameEntry.WideStarts[i], end = i + 1 < NameEntry.WideStarts.Length ? NameEntry.WideStarts[i + 1] : NameEntry.Columns;
@@ -258,7 +258,7 @@ internal static partial class ModernUi
                 NameKey.Delete => Text.Of("intro.key.delete"),
                 _ => Text.Of("shared.ok")
             };
-            bool selected = (entry.Row == NameEntry.LetterRows && entry.WideIndex == i) || (entry.Done && NameEntry.WideKeys[i] == NameKey.Done);
+            bool selected = (entry.Row == entry.WideRow && entry.WideIndex == i) || (entry.Done && NameEntry.WideKeys[i] == NameKey.Done);
             Key(r, label, selected, 34);
         }
     }

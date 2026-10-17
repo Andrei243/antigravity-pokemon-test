@@ -20,14 +20,14 @@ public static class Lines
 {
     private static readonly Lazy<string> longestName = new(() =>
     {
-        // Every key of the name keyboard, in both its cases, as the keyboard itself gives them
-        var keyboard = new NameEntry();
+        // Every key of the name keyboard, in both its cases, as the keyboard itself gives them, with the letters of every language that has some of its own
+        var keyboard = new NameEntry(extras: new string(Language.All.SelectMany(l => l.Keyboard).Distinct().Take(NameEntry.Columns).ToArray()));
         var keys = new StringBuilder();
-        for (int row = 0; row < NameEntry.LetterRows; row++) keys.Append(keyboard.RowKeys(row));
+        for (int row = 0; row < keyboard.RowCount; row++) keys.Append(keyboard.RowKeys(row));
         // One row up from the first, round to the wide keys, is the key that changes the case
         keyboard.Move(0, -1);
         if (keyboard.Press() != NameKey.Case) throw new InvalidOperationException("The name keyboard's case key is not where it was.");
-        for (int row = 0; row < NameEntry.LetterRows; row++) keys.Append(keyboard.RowKeys(row));
+        for (int row = 0; row < keyboard.RowCount; row++) keys.Append(keyboard.RowKeys(row));
         char widest = keys.ToString().Distinct().OrderByDescending(c => Width(c.ToString())).ThenBy(c => c).First();
         return new string(widest, PlayerIdentity.MaxNameLength);
     });

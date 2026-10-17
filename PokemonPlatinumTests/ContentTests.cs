@@ -447,8 +447,8 @@ public class ContentTests
         // The widest name the keyboard takes: its widest key, seven times
         Assert.Equal(PlayerIdentity.MaxNameLength, Lines.LongestName.Length);
         Assert.Single(Lines.LongestName.Distinct());
-        var keyboard = new NameEntry();
-        string keys = string.Concat(Enumerable.Range(0, NameEntry.LetterRows).Select(keyboard.RowKeys));
+        var keyboard = new NameEntry(extras: "ĂÂÎȘȚ");
+        string keys = string.Concat(Enumerable.Range(0, keyboard.RowCount).Select(keyboard.RowKeys));
         Assert.Contains(Lines.LongestName[0], keys);
         Assert.All(keys + keys.ToLowerInvariant(), key =>
             Assert.True(TextMetrics.Measure(key.ToString(), DialogueBox.TextSize, DialogueBox.TextWeight) <= TextMetrics.Measure(Lines.LongestName[..1], DialogueBox.TextSize, DialogueBox.TextWeight)));
