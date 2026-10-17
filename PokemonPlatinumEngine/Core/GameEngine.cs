@@ -521,8 +521,7 @@ public partial class GameEngine
         flow.Pokedex.Clear();
         foreach (var seen in save.SeenSpecies) flow.Pokedex.RegisterSeen(seen);
         foreach (var caught in save.CaughtSpecies) flow.Pokedex.RegisterCaught(caught);
-        flow.Pokedex.Restore(save.NationalPokedex,
-            save.Diplomas.Select(d => Enum.TryParse<PokedexMode>(d, out var mode) ? mode : (PokedexMode?)null).OfType<PokedexMode>());
+        flow.Pokedex.Restore(save.NationalPokedex, save.Diplomas.Select(Pokedex.FromDiplomaKey), save.DexesEntered);
         // A save that had the National Pokédex before the PC grew with it (plan 03 · D13) is given the boxes now
         if (flow.Pokedex.NationalUnlocked) flow.Boxes.Grow();
 
@@ -626,7 +625,8 @@ public partial class GameEngine
             SeenSpecies = flow.Pokedex.SeenSpecies.ToList(),
             CaughtSpecies = flow.Pokedex.CaughtSpecies.ToList(),
             NationalPokedex = flow.Pokedex.NationalUnlocked,
-            Diplomas = flow.Pokedex.Diplomas.Order().Select(d => d.ToString()).ToList(),
+            Diplomas = flow.Pokedex.Diplomas.Select(Pokedex.DiplomaKey).Order().ToList(),
+            DexesEntered = flow.Pokedex.Entered.ToList(),
             DefeatedTrainers = told.DefeatedTrainers,
             StoryFlags = told.Flags,
             StoryVersion = StoryState.CurrentVersion,
@@ -1827,6 +1827,7 @@ public partial class GameEngine
             flow.Map = MapDatabase.Get(spot.Map);
             flow.Player.SetPosition(spot.X, spot.Y, spot.Facing);
             flow.TrainersLookOnArrival = true;
+            flow.Pokedex.Enter(region);
             ArriveOnMap();
             AnnounceLocation();
         });
@@ -1879,7 +1880,8 @@ public partial class GameEngine
                 return;
             case StartMenuChoice.Pokedex:
                 flow.State = GameState.PokedexMenu;
-                flow.PokedexScreen.Open(flow.Pokedex, world.Portrait(PlayerIdentity.Character));
+                flow.Pokedex.Enter(Here);
+                flow.PokedexScreen.Open(flow.Pokedex, world.Portrait(PlayerIdentity.Character), Here);
                 break;
             case StartMenuChoice.Pokemon:
                 flow.State = GameState.PartyMenu;

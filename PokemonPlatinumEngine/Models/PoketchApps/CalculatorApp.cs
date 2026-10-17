@@ -334,7 +334,7 @@ public sealed class CalculatorApp : PoketchAppState
         if (number <= 0 || number > nationalDexCount || context.Pokedex is not { } dex) return;
         int species = dex.NationalUnlocked
             ? (int)number
-            : Pokedex.Entries(PokedexMode.Sinnoh).FirstOrDefault(e => e.Number == number).Species?.DexNumber ?? 0;
+            : Pokedex.Entries(Pokedex.Sinnoh).FirstOrDefault(e => e.Number == number).Species?.DexNumber ?? 0;
         if (species <= 0 || species > nationalDexCount || !dex.IsSeen(species)) return;
         if (PokemonDatabase.GetByDex(species) is not { } kind) return;
         // A Pokémon made only to be heard: its own fixed generator, so no chance of the field's is drawn for it

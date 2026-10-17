@@ -41,7 +41,7 @@ public class PokedexScreen
     public static readonly PokedexSearchButton[] AllButtons = Enum.GetValues<PokedexSearchButton>();
 
     private readonly List<PokedexEntry> rows = new();
-    private readonly Queue<PokedexMode> diplomasDue = new();
+    private readonly Queue<string> diplomasDue = new();
     private Pokedex pokedex = new();
     private float openAge;
     private PokedexFocus beforeDiploma;
@@ -56,24 +56,33 @@ public class PokedexScreen
     public PokedexPage Page { get; private set; }
 
     /// <summary>The Pokédex the list shows; the screen remembers it between openings.</summary>
-    public PokedexMode Mode { get; private set; } = PokedexMode.Sinnoh;
+    public string Mode { get; private set; } = Pokedex.Sinnoh;
 
     /// <summary>The search the list shows the results of, or null for the whole Pokédex.</summary>
     public PokedexQuery? Results { get; private set; }
 
     /// <summary>The search being set up in the panel, and which Pokédex it will look in.</summary>
     public PokedexQuery Draft { get; private set; } = new();
-    public PokedexMode DraftMode { get; private set; }
+    public string DraftMode { get; private set; } = Pokedex.Sinnoh;
     public int SearchIndex { get; private set; }
     public int ButtonIndex { get; private set; }
 
     /// <summary>The diploma being shown.</summary>
-    public PokedexMode ShownDiploma { get; private set; }
+    public string ShownDiploma { get; private set; } = Pokedex.Sinnoh;
 
     /// <summary>The player's own field sprite, which the size page sets beside the species.</summary>
     public Texture2D? Portrait { get; private set; }
 
     public Pokedex Pokedex => pokedex;
+
+    /// <summary>The region the player stands in as the Pokédex is opened (plan 18 · W3); the National listing's AREA page draws its map.</summary>
+    public Region? Here { get; private set; }
+
+    /// <summary>
+    /// The region whose map and wild Pokémon the AREA page shows: the listing's own region, or, for the National
+    /// listing, the region the player stands in, as Platinum shows Sinnoh for everything; Sinnoh's when neither is known.
+    /// </summary>
+    public Region? AreaRegion => Pokedex.RegionOf(Mode) ?? Here ?? RegionDatabase.First;
 
     /// <summary>
     /// How many times each species' entry has been opened (by its National number) while the game runs: the INFO
@@ -102,7 +111,7 @@ public class PokedexScreen
     /// Opens on the first species the player has seen, so the list doesn't begin with a page of dashes, and shows
     /// any diploma that has become due.
     /// </summary>
-    public void Open(Pokedex? pokedex = null, Texture2D? portrait = null)
+    public void Open(Pokedex? pokedex = null, Texture2D? portrait = null, Region? here = null)
     {
         IsActive = true;
         openAge = 0f;
@@ -110,7 +119,8 @@ public class PokedexScreen
         leftRight.Release();
         this.pokedex = pokedex ?? new Pokedex();
         Portrait = portrait;
-        if (!this.pokedex.Modes.Contains(Mode)) Mode = PokedexMode.Sinnoh;
+        Here = here;
+        if (!this.pokedex.Dexes.Contains(Mode)) Mode = here?.Dex is { } own && this.pokedex.Dexes.Contains(own) ? own : this.pokedex.Dexes[0];
         Results = null;
         Focus = PokedexFocus.List;
         Page = PokedexPage.Info;
@@ -281,7 +291,7 @@ public class PokedexScreen
 
     /// <summary>The rows the search panel has: which Pokédex only once the National one is open.</summary>
     public IReadOnlyList<PokedexSearchRow> SearchRows =>
-        Enum.GetValues<PokedexSearchRow>().Where(r => r != PokedexSearchRow.Mode || pokedex.NationalUnlocked).ToList();
+        Enum.GetValues<PokedexSearchRow>().Where(r => r != PokedexSearchRow.Mode || pokedex.Dexes.Count > 1).ToList();
 
     /// <summary>The buttons under the rows: DIPLOMA only once one has been given.</summary>
     public IReadOnlyList<PokedexSearchButton> Buttons =>
@@ -314,7 +324,7 @@ public class PokedexScreen
         switch (SearchRows[SearchIndex])
         {
             case PokedexSearchRow.Mode:
-                var modes = pokedex.Modes;
+                var modes = pokedex.Dexes;
                 DraftMode = modes[UiNav.Wrap(Math.Max(0, modes.ToList().IndexOf(DraftMode)), step, modes.Count)];
                 break;
             case PokedexSearchRow.Order:
@@ -342,10 +352,17 @@ public class PokedexScreen
         }
     }
 
+    /// <summary>A Pokédex's name as the search panel's row says it ("Sinnoh", "Kanto", "National").</summary>
+    public static string ModeName(string dex)
+    {
+        string key = Pokedex.KeyOf(dex);
+        return Text.Of($"pokedex.modeName.{key}");
+    }
+
     /// <summary>What a row of the search panel says now.</summary>
     public string ValueOf(PokedexSearchRow row) => row switch
     {
-        PokedexSearchRow.Mode => Text.Of($"pokedex.modeName.{DraftMode}"),
+        PokedexSearchRow.Mode => ModeName(DraftMode),
         PokedexSearchRow.Order => PokedexSearch.NameOf(Draft.Order),
         PokedexSearchRow.Name => PokedexSearch.NameOfGroup(Draft.NameGroup),
         PokedexSearchRow.Type1 => Draft.Type1 is { } first ? Words.Type(first) : Text.Of("pokedex.search.any"),
@@ -366,7 +383,7 @@ public class PokedexScreen
                 AudioManager.PlaySound("select");
                 break;
             case PokedexSearchButton.Diploma:
-                ShowDiploma(pokedex.Diplomas.Contains(DraftMode) ? DraftMode : pokedex.Diplomas.Min());
+                ShowDiploma(pokedex.Diplomas.Contains(DraftMode) ? DraftMode : pokedex.Diplomas.Order(StringComparer.Ordinal).First());
                 break;
         }
     }
@@ -387,7 +404,7 @@ public class PokedexScreen
 
     // ------------------------------------------------------------------ diplomas
 
-    public void ShowDiploma(PokedexMode mode)
+    public void ShowDiploma(string mode)
     {
         if (Focus != PokedexFocus.Diploma) beforeDiploma = Focus;
         Focus = PokedexFocus.Diploma;

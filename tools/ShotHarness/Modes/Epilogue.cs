@@ -212,7 +212,7 @@ partial class Harness
 
         // A Champion, home again (plan 02 · S14), with 120 of Sinnoh's Pokémon seen and no National Pokédex yet
         Do(Hall, "setflag FLAG_UNLOCKED_VS_SEEKER_LVL_4\ncall Victory\nhalloffame\nsetflag FLAG_GAME_COMPLETED\nsetflag SinnohHallOfFame\nheal\nsetvar VAR_PLAYER_HOUSE_POSTGAME_STATE 2\nsetvar VAR_EXITED_DISTORTION_WORLD_STATE 3");
-        foreach (var entry in Pokedex.Entries(PokedexMode.Sinnoh).Take(120)) game.Pokedex.RegisterSeen(entry.Species.DexNumber);
+        foreach (var entry in Pokedex.Entries(Pokedex.Sinnoh).Take(120)) game.Pokedex.RegisterSeen(entry.Species.DexNumber);
         Do("celestic_town", "clearflag FLAG_HIDE_CELESTIC_TOWN_NORTH_HOUSE_ELDER\nsetflag FLAG_HIDE_CELESTIC_TOWN_ELDER\nsetflag FLAG_HIDE_CELESTIC_TOWN_CAVE_CYRUS\nsetflag FLAG_EXAMINED_CELESTIC_TOWN_CAVE_PAINTING\nsetvar VAR_CELESTIC_TOWN_STATE 2");
 
         if (stage <= 1)
@@ -313,7 +313,7 @@ partial class Harness
         }
 
         // The National Pokédex, the Battle Zone, and Charon caught on Stark Mountain (plan 02 · S15, parts a and b)
-        foreach (var entry in Pokedex.Entries(PokedexMode.Sinnoh)) game.Pokedex.RegisterSeen(entry.Species.DexNumber);
+        foreach (var entry in Pokedex.Entries(Pokedex.Sinnoh)) game.Pokedex.RegisterSeen(entry.Species.DexNumber);
         Do("RowanLab", "nationaldex");
         Do("stark_mountain_room_3", "setflag FLAG_ARRESTED_CHARON_STARK_MOUNTAIN\nsetvar VAR_STARK_MOUNTAIN_ROOM_3_STATE 1\nclearflag FLAG_HIDE_BATTLEGROUND_BUCK\nclearflag FLAG_HIDE_SURVIVAL_AREA_BUCK\nclearflag FLAG_HIDE_SURVIVAL_AREA_RIVAL");
 

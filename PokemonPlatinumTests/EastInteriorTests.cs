@@ -662,7 +662,7 @@ public class EastInteriorTests
     [Fact]
     public void TheGameDirectorKnowsACompletePokedexOfSinnoh()
     {
-        Assert.Equal(210, Pokedex.Entries(PokedexMode.Sinnoh).Count);
+        Assert.Equal(210, Pokedex.Entries(Pokedex.Sinnoh).Count);
         var host = new HeadlessScriptHost { SeenInSinnoh = 209 };
         string filling = Said(Run("Director", "GrandLakeValorLakefrontWestHouse", host));
         Assert.False(host.Story.Has("FLAG_MAP_LOCAL_GAME_DIRECTOR_SPOKE"));

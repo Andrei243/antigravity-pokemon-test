@@ -542,6 +542,42 @@ public class MenuScreenTests
     // ------------------------------------------------------------------ the Pokédex
 
     [Fact]
+    public void ThePokedexSwitchesBetweenTheDexesOfTheRegionsTheGameHasEntered()
+    {
+        var kanto = RegionDatabase.Get("Kanto")!;
+        var pokedex = new Pokedex();
+        var dex = new PokedexScreen();
+        dex.Open(pokedex, null, RegionDatabase.First);
+        dex.OpenSearch();
+        Assert.DoesNotContain(PokedexSearchRow.Mode, dex.SearchRows);   // one Pokédex: nothing to switch to
+
+        pokedex.Enter(kanto);
+        pokedex.RegisterSeen(PokemonDatabase.Get("Bulbasaur")!.DexNumber);
+        dex.Open(pokedex, null, kanto);
+        Assert.Equal(Pokedex.Sinnoh, dex.Mode);   // the screen remembers its listing
+        dex.OpenSearch();
+        Assert.Equal(PokedexSearchRow.Mode, dex.SearchRows[0]);
+        Assert.Equal("Sinnoh", dex.ValueOf(PokedexSearchRow.Mode));
+        dex.Sideways(1);
+        Assert.Equal("Kanto", dex.ValueOf(PokedexSearchRow.Mode));
+        dex.Search();
+        Assert.Equal("kanto", dex.Mode);
+        Assert.Equal(Enumerable.Range(1, 151), dex.Rows.Select(r => r.Number));
+        Assert.Equal("Bulbasaur", dex.Species[0].Name);
+        Assert.Same(kanto, dex.AreaRegion);
+
+        // The National listing draws the region the player stands in; a regional one its own
+        pokedex.UnlockNational();
+        dex.Open(pokedex, null, RegionDatabase.First);
+        dex.OpenSearch();
+        dex.Sideways(1);   // kanto to national
+        dex.Search();
+        Assert.Equal(Pokedex.National, dex.Mode);
+        Assert.Same(RegionDatabase.First, dex.AreaRegion);
+        Assert.Equal(1025, dex.Rows.Count);
+    }
+
+    [Fact]
     public void ThePokedexOpensOnTheFirstSpeciesSeenAndJumpsByTen()
     {
         var pokedex = new Pokedex();
@@ -549,7 +585,7 @@ public class MenuScreenTests
         dex.Open(pokedex);
         Assert.Equal(0, dex.SelectedIndex);
         // Platinum's own Sinnoh Pokédex, in its order
-        Assert.Equal(PokedexMode.Sinnoh, dex.Mode);
+        Assert.Equal(Pokedex.Sinnoh, dex.Mode);
         Assert.Equal(Enumerable.Range(1, 210), dex.Rows.Select(r => r.Number));
         Assert.Equal("Turtwig", dex.Species[0].Name);
 
@@ -728,24 +764,24 @@ public class MenuScreenTests
         dex.Sideways(1);
         Assert.Equal("National", dex.ValueOf(PokedexSearchRow.Mode));
         dex.Search();
-        Assert.Equal((PokedexMode.National, 1025), (dex.Mode, dex.Rows.Count));
+        Assert.Equal((Pokedex.National, 1025), (dex.Mode, dex.Rows.Count));
         Assert.Equal("Bulbasaur", dex.Species[0].Name);
 
         // The screen remembers the Pokédex it showed, but not one the player can no longer open
         dex.Open(pokedex);
-        Assert.Equal(PokedexMode.National, dex.Mode);
+        Assert.Equal(Pokedex.National, dex.Mode);
         dex.Open(new Pokedex());
-        Assert.Equal(PokedexMode.Sinnoh, dex.Mode);
+        Assert.Equal(Pokedex.Sinnoh, dex.Mode);
     }
 
     [Fact]
     public void ADiplomaIsShownOnceThePokedexIsCompleteAndAgainFromTheSearch()
     {
         var pokedex = new Pokedex();
-        foreach (var e in Pokedex.Entries(PokedexMode.Sinnoh)) pokedex.RegisterSeen(e.Species.DexNumber);
+        foreach (var e in Pokedex.Entries(Pokedex.Sinnoh)) pokedex.RegisterSeen(e.Species.DexNumber);
         var dex = new PokedexScreen();
         dex.Open(pokedex);
-        Assert.Equal((PokedexFocus.Diploma, PokedexMode.Sinnoh), (dex.Focus, dex.ShownDiploma));
+        Assert.Equal((PokedexFocus.Diploma, Pokedex.Sinnoh), (dex.Focus, dex.ShownDiploma));
         dex.Confirm();
         Assert.Equal(PokedexFocus.List, dex.Focus);
 

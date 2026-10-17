@@ -63,9 +63,10 @@ internal static partial class ModernUi
     /// with the cells <paramref name="lit"/> breathing in the Selection colour and the one at <paramref name="ring"/>
     /// ringed in white. Used by the Pokédex's area page.
     /// </summary>
-    public static void RegionMap(Rectangle map, float cell, IReadOnlySet<(int X, int Y)> lit, (int X, int Y)? ring = null)
+    public static void RegionMap(Rectangle map, float cell, IReadOnlySet<(int X, int Y)> lit, (int X, int Y)? ring = null, Region? of = null)
     {
-        if (Data.RegionMap.Sinnoh is not { } region) return;
+        if ((of == null ? Data.RegionMap.Sinnoh : Data.RegionMap.Of(of.Folder)) is not { } region)
+            return;
         var view = region.View;
         var picture = new Rectangle(map.X + (map.Width - view.Width * cell) / 2f, map.Y + (map.Height - view.Height * cell) / 2f, view.Width * cell, view.Height * cell);
         RegionPicture(picture, region, small: cell < RegionMapArt.CellTexels);

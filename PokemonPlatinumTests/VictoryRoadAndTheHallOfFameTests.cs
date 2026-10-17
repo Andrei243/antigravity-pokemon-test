@@ -549,7 +549,7 @@ public class VictoryRoadAndTheHallOfFameTests
         Assert.Contains(game.Talk("sandgem_counterpart", "sandgem_town").Transcript, l => l.Text.Contains("Congratulations, Champion"));
 
         // With every Pokémon of Sinnoh seen she wants the Pokédex shown to the professor, which is where the post-game begins
-        game.Seen = Pokedex.Entries(PokedexMode.Sinnoh).Count;
+        game.Seen = Pokedex.Entries(Pokedex.Sinnoh).Count;
         Assert.Equal(210, game.Seen);
         Assert.Contains(game.Talk("sandgem_counterpart", "sandgem_town").Transcript, l => l.Text.Contains("Professor Rowan"));
         game.NationalDex = true;

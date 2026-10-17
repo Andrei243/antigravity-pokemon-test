@@ -166,7 +166,7 @@ partial class Harness
         int Held(string item) => game.Bag.GetQuantity(ItemDatabase.Get(item)!);
         void SeeOfSinnoh(int count)
         {
-            foreach (var entry in Pokedex.Entries(PokedexMode.Sinnoh).Take(count)) game.Pokedex.RegisterSeen(entry.Species.DexNumber);
+            foreach (var entry in Pokedex.Entries(Pokedex.Sinnoh).Take(count)) game.Pokedex.RegisterSeen(entry.Species.DexNumber);
         }
         const string Hall = "PokemonLeagueHallOfFame", Lab = "RowanLab";
 
@@ -193,7 +193,7 @@ partial class Harness
             ReadTo("kinds of Pokémon seen"); Frames(4); Shot("pg03_lab_the_count");
             ReadTo("real eye"); Frames(4); Shot("pg04_lab_the_rating");
             ReadTo(null);
-            Console.WriteLine($"the rating: {game.Pokedex.SeenIn(PokedexMode.Sinnoh)} seen in Sinnoh, national {game.Pokedex.NationalUnlocked}");
+            Console.WriteLine($"the rating: {game.Pokedex.SeenIn(Pokedex.Sinnoh)} seen in Sinnoh, national {game.Pokedex.NationalUnlocked}");
 
             // ---- every Pokémon of Sinnoh seen: the assistant sends the Champion in
             SeeOfSinnoh(210);

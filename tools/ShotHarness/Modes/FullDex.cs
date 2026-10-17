@@ -78,7 +78,7 @@ partial class Harness
             // The diplomas come first, one after the other
             for (int i = 0; i < 4 && dex.Focus == PokedexFocus.Diploma; i++) { Frames(20); dex.Confirm(); }
             dex.OpenSearch();
-            while (dex.DraftMode != PokedexMode.National) dex.Sideways(1);
+            while (dex.DraftMode != Pokedex.National) dex.Sideways(1);
             dex.Search();
             Frames(2);
             Console.WriteLine($"  the list shows {dex.Rows.Count} species under {dex.Mode}");
@@ -111,7 +111,7 @@ partial class Harness
             // The search's orders over everything
             var search = System.Diagnostics.Stopwatch.StartNew();
             foreach (var order in Enum.GetValues<PokedexOrder>())
-                PokedexSearch.Run(pokedex, PokedexMode.National, new PokedexQuery(order));
+                PokedexSearch.Run(pokedex, Pokedex.National, new PokedexQuery(order));
             Console.WriteLine($"  the search's {Enum.GetValues<PokedexOrder>().Length} orders over the National Pokédex: {search.Elapsed.TotalMilliseconds:0.0} ms");
             dex.Close();
             game.State = GameState.Overworld;
@@ -213,7 +213,7 @@ partial class Harness
             Frames(30); Shot("fd02_diploma_national");
             dex.Confirm();
             dex.OpenSearch();
-            while (dex.DraftMode != PokedexMode.National) dex.Sideways(1);
+            while (dex.DraftMode != Pokedex.National) dex.Sideways(1);
             dex.Search();
             Wait(); Shot("fd03_national_list_first");
             for (int i = 0; i < 493; i++) dex.Move(1, held: true);
