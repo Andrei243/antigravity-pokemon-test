@@ -249,7 +249,23 @@ public static class WorldMapBuilder
 
                 int id = ChunkOf(cx, cy);
                 if (id == WorldMatrixFile.NoChunk || world.Chunk(id) is not { } chunk) continue;
-                PlaceChunk(map, chunk, cx * T, cy * T, matrix.AltitudeAt(cx, cy) / 2f, area, under, vague, blank);
+                // A chunk that holds more than one area (a Game Boy Advance map's edge, plan 18 · W6) says so tile by tile
+                MapArea?[]? tilesOwn = null;
+                if (chunk.Areas != null && matrix.AreaKeys is { } keys)
+                {
+                    tilesOwn = new MapArea?[T * T];
+                    for (int z = 0; z < T; z++)
+                        for (int x = 0; x < T; x++)
+                        {
+                            if (chunk.AreaIndexAt(x, z) is not { } index) continue;
+                            string tileKey = keys[index];
+                            if (!areas.TryGetValue(tileKey, out var tileArea)) areas[tileKey] = tileArea = AreaOf(world, tileKey);
+                            if (tileArea == area) continue;
+                            tilesOwn[z * T + x] = tileArea;
+                            map.SetTileArea(cx * T + x, cy * T + z, tileArea);
+                        }
+                }
+                PlaceChunk(map, chunk, cx * T, cy * T, matrix.AltitudeAt(cx, cy) / 2f, area, under, vague, blank, tilesOwn);
                 foreach (var prop in chunk.Props)
                     models.Add(new Placed(prop, cx * T + prop.BoxX, cy * T + prop.BoxZ, WorldModels.Of(prop.Name), area));
 
@@ -894,11 +910,13 @@ public static class WorldMapBuilder
     /// <param name="vague">Gathers the open tiles of ground nobody named.</param>
     /// <param name="blank">Gathers the blocked tiles the original draws nothing on.</param>
     private static void PlaceChunk(Map map, WorldChunkFile chunk, int ox, int oy, float altitude, MapArea area, bool[] under,
-        List<(int X, int Z)> vague, List<(int X, int Z)> blank)
+        List<(int X, int Z)> vague, List<(int X, int Z)> blank, MapArea?[]? own = null)
     {
+        var chunkArea = area;
         for (int z = 0; z < T; z++)
             for (int x = 0; x < T; x++)
             {
+                area = own?[z * T + x] ?? chunkArea;
                 var cover = chunk.CoverAt(x, z);
                 var behaviour = chunk.BehaviourAt(x, z);
                 bool solid = chunk.SolidAt(x, z);

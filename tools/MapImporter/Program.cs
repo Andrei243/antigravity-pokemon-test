@@ -7,7 +7,8 @@
 //   dotnet run --project tools/MapImporter -- --quick           the mosaics and reports only: no per-chunk or per-area pictures, no world files
 //   dotnet run --project tools/MapImporter -- --data            only rewrite the game's own world files (PokemonPlatinumEngine/Data/world/sinnoh)
 //   dotnet run --project tools/MapImporter -- --room <key>      print a room of the original as text, to write its map file from
-//   dotnet run --project tools/MapImporter -- --chunk <id>      print which texture lies over each tile of a chunk (the names only), to sort a new area's ground by
+//   dotnet run --project tools/MapImporter -- --game firered|emerald [--quick]   a Game Boy Advance game into out/kanto or out/hoenn (plan 18 · W6)
+//   dotnet run --project tools/MapImporter -- --chunk <id>     print which texture lies over each tile of a chunk (the names only), to sort a new area's ground by
 
 using System.Diagnostics;
 using System.Globalization;
@@ -20,6 +21,10 @@ string repo = FindRepo();
 string? decompDir = Arg("--decomp");
 string outDir = Arg("--out") ?? Path.Combine(repo, "tools", "MapImporter", "out");
 bool quick = args.Contains("--quick");
+
+// A Game Boy Advance game (plan 18 · W6): its own pin, its own folder under out/
+if (Arg("--game") is { } game)
+    return MapImporter.Gba.GbaImport.Run(repo, game, decompDir, Path.Combine(outDir, MapImporter.Gba.GbaImport.RegionOf(game)), quick);
 
 if (decompDir == null)
 {
@@ -112,7 +117,10 @@ if (!quick)
     Console.WriteLine($"Wrote {files} world files ({clock.Elapsed.TotalSeconds:F1} s)");
 }
 
-File.WriteAllText(Path.Combine(repo, "docs", "tile-behaviours.md"), report.TileBehaviours());
+// The GBA's section (plan 18 · W6) is the --game runs' to write: this run keeps it as it stands
+string behavioursDoc = Path.Combine(repo, "docs", "tile-behaviours.md");
+string gbaSection = File.Exists(behavioursDoc) ? MapImporter.Gba.GbaImport.SectionOf(File.ReadAllText(behavioursDoc)) : "";
+File.WriteAllText(behavioursDoc, gbaSection.Length > 0 ? MapImporter.Gba.GbaImport.Splice(report.TileBehaviours(), gbaSection) : report.TileBehaviours());
 File.WriteAllText(Path.Combine(repo, "docs", "world-models.md"), report.WorldModelsDoc());
 Directory.CreateDirectory(outDir);
 File.WriteAllText(Path.Combine(outDir, "report.md"), report.Run(comparisons));

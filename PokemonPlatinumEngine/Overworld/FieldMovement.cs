@@ -131,6 +131,8 @@ public static class FieldMovement
         TileBehavior.LedgeSouth => Direction.Down,
         TileBehavior.LedgeEast => Direction.Right,
         TileBehavior.LedgeWest => Direction.Left,
+        // Platinum's own jump north, which none of Sinnoh's maps uses; the GBA's maps do (plan 18 · W6)
+        TileBehavior.LedgeNorth => Direction.Up,
         _ => null
     };
 
@@ -158,6 +160,12 @@ public static class FieldMovement
     {
         TileBehavior.BlockEast => side == Direction.Right,
         TileBehavior.BlockWest => side == Direction.Left,
+        TileBehavior.BlockNorth => side == Direction.Up,
+        TileBehavior.BlockSouth => side == Direction.Down,
+        TileBehavior.BlockNorthAndEast => side is Direction.Up or Direction.Right,
+        TileBehavior.BlockNorthAndWest => side is Direction.Up or Direction.Left,
+        TileBehavior.BlockSouthAndEast => side is Direction.Down or Direction.Right,
+        TileBehavior.BlockSouthAndWest => side is Direction.Down or Direction.Left,
         TileBehavior.BlockNorthAndSouth => side is Direction.Up or Direction.Down,
         TileBehavior.BlockEastAndWest => side is Direction.Left or Direction.Right,
         _ => false

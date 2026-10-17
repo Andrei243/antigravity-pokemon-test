@@ -133,3 +133,244 @@ The rules of walking are `Overworld/FieldMovement.cs` (plan 01 · M3), which fol
 ## Sources
 
 The numbers and their order are Platinum's (`include/constants/field/map_tile_behaviors.h` in pret/pokeplatinum, where the names are the decompilation's); which behaviours have wild Pokémon or can be surfed is the table at the top of `src/map_tile_behavior.c`; the blocked bit and the 1.25-tile step are in `src/terrain_collision_manager.c`. The names and descriptions here are our own.
+
+## The GBA's behaviours
+
+*Written by `tools/MapImporter --game firered` or `--game emerald` (plan 18 · W6), which read both games; the Sinnoh run keeps it as it is.*
+
+The Game Boy Advance's maps give a tile a behaviour (`MB_*`, numbered differently in FireRed and Emerald) and, apart from it, two bits of collision and four of elevation. The reader (`tools/MapImporter/Gba/GbaBehaviours.cs`) turns each behaviour into one of this game's values by its name: Platinum's own value where Platinum has one that means the same, a value of the GBA's own among the ones Platinum leaves unused at the top of its byte (`0xED` to `0xFD`) where it has none, and `None` for a behaviour that only says how a tile is read or drawn (a sign, a cupboard), which is an event's or the art's business. Collision bits set make the tile blocked. Elevation becomes height: a level is 1.4 tiles above elevation 3, elevation 0 (any level) slopes between the levels beside it, the water's elevation 1 takes the nearest land's level and a bridge's 15 is a deck over the ground.
+
+| Behaviour | FireRed | Emerald | Becomes | Value | FireRed tiles | Emerald tiles |
+|---|---|---|---|---|---:|---:|
+| `MB_ADVERTISING_POSTER` | 0x98 |  | `None` (not in the table) | `0x00` | 12 |  |
+| `MB_ANIMATED_DOOR` |  | 0x69 | `Door` | `0x69` |  | 251 |
+| `MB_AQUA_HIDEOUT_WARP` |  | 0x67 | `WarpPanel` | `0x67` |  | 58 |
+| `MB_ASHGRASS` |  | 0x24 | `TallGrass` | `0x02` |  | 287 |
+| `MB_BATTLE_PYRAMID_WARP` |  | 0x0D | `WarpPanel` | `0x67` |  | 16 |
+| `MB_BATTLE_RECORDS` | 0x8E |  | `None` (not in the table) | `0x00` | 19 |  |
+| `MB_BERRY_TREE_SOIL` |  | 0xA0 | `BerrySoil` | `0xA0` |  | 87 |
+| `MB_BIKE_BRIDGE_OVER_BARRIER` |  | 0x7F | `Bridge` | `0x71` |  | 6 |
+| `MB_BLINKING_LIGHTS` | 0x9E |  | `None` (not in the table) | `0x00` | 117 |  |
+| `MB_BLUEPRINT` |  | 0xE6 | `None` (not in the table) | `0x00` |  | 48 |
+| `MB_BLUEPRINTS` | 0x93 |  | `None` (not in the table) | `0x00` | 25 |  |
+| `MB_BOOKSHELF` | 0x81 | 0xE1 | `Bookshelf` | `0xE1` | 161 | 34 |
+| `MB_BRIDGE_OVER_OCEAN` |  | 0x70 | `BridgeOverWater` | `0x73` |  | 609 |
+| `MB_BRIDGE_OVER_POND_HIGH` |  | 0x73 | `BridgeOverWater` | `0x73` |  | 35 |
+| `MB_BRIDGE_OVER_POND_HIGH_EDGE_1` |  | 0x7C | `BridgeOverWater` | `0x73` |  | 2 |
+| `MB_BRIDGE_OVER_POND_HIGH_EDGE_2` |  | 0x7D | `BridgeOverWater` | `0x73` |  | 2 |
+| `MB_BRIDGE_OVER_POND_LOW` |  | 0x71 | `BridgeOverWater` | `0x73` |  |  |
+| `MB_BRIDGE_OVER_POND_MED` |  | 0x72 | `BridgeOverWater` | `0x73` |  | 17 |
+| `MB_BRIDGE_OVER_POND_MED_EDGE_1` |  | 0x7A | `BridgeOverWater` | `0x73` |  | 2 |
+| `MB_BRIDGE_OVER_POND_MED_EDGE_2` |  | 0x7B | `BridgeOverWater` | `0x73` |  | 2 |
+| `MB_BUMPY_SLOPE` |  | 0xD1 | `BumpySlope` | `0xFB` |  | 17 |
+| `MB_BURGLARY` | 0xA2 |  | `None` (not in the table) | `0x00` | 11 |  |
+| `MB_CABINET` | 0x89 |  | `None` (not in the table) | `0x00` | 80 |  |
+| `MB_CABLE_BOX_RESULTS_2` |  | 0xE7 | `None` (not in the table) | `0x00` |  | 17 |
+| `MB_CABLE_CLUB_WIRELESS_MONITOR` | 0x8D |  | `None` (not in the table) | `0x00` | 19 |  |
+| `MB_CAVE` | 0x08 | 0x08 | `CaveFloor` | `0x08` | 32,292 | 24,556 |
+| `MB_CAVE_DOOR` | 0x60 |  | `EntranceNorth` | `0x64` | 97 |  |
+| `MB_COMPUTER` | 0x97 |  | `Computer` | `0x83` | 52 |  |
+| `MB_COUNTER` | 0x80 | 0x80 | `Counter` | `0x80` | 730 | 566 |
+| `MB_CRACKED_FLOOR` |  | 0xD2 | `CrackedFloor` | `0xF1` |  | 190 |
+| `MB_CRACKED_FLOOR_HOLE` |  | 0x66 | `Hole` | `0xF2` |  | 80 |
+| `MB_CRACKED_ICE` | 0x27 | 0x27 | `ThinIce` | `0xF0` |  |  |
+| `MB_CUP` | 0x9B |  | `None` (not in the table) | `0x00` | 22 |  |
+| `MB_CYCLING_ROAD_PULL_DOWN` | 0xD0 |  | `CyclingRoadPull` | `0xFC` | 2,041 |  |
+| `MB_CYCLING_ROAD_PULL_DOWN_GRASS` | 0xD1 |  | `CyclingRoadPull` | `0xFC` | 66 |  |
+| `MB_CYCLING_ROAD_WATER` | 0x1B |  | `Sea` | `0x15` | 751 |  |
+| `MB_DEEP_SAND` |  | 0x06 | `Sand` | `0x21` |  | 690 |
+| `MB_DEEP_SOUTH_WARP` |  | 0x6E | `ExitSouth` | `0x6F` |  | 2 |
+| `MB_DEEP_WATER` | 0x12 | 0x12 | `DeepWater` | `0xED` |  | 3,575 |
+| `MB_DOWN_ESCALATOR` | 0x6B | 0x6B | `Escalator` | `0x6B` | 19 | 17 |
+| `MB_DOWN_LEFT_STAIR_WARP` | 0x6F |  | `StairsWest` | `0x5F` | 41 |  |
+| `MB_DOWN_RIGHT_STAIR_WARP` | 0x6E |  | `StairsEast` | `0x5E` | 82 |  |
+| `MB_DRESSER` | 0x8B |  | `None` (not in the table) | `0x00` | 8 |  |
+| `MB_EASTWARD_CURRENT` | 0x50 | 0x50 | `CurrentEast` | `0xF3` | 42 | 56 |
+| `MB_EAST_ARROW_WARP` | 0x62 | 0x62 | `ExitEast` | `0x6C` | 36 | 9 |
+| `MB_FALL_WARP` | 0x66 |  | `Hole` | `0xF2` | 31 |  |
+| `MB_FAST_WATER` | 0x11 |  | `River` | `0x10` | 2,831 |  |
+| `MB_FOOD` | 0x90 |  | `None` (not in the table) | `0x00` | 22 |  |
+| `MB_FOOD_SMELLS_TASTY` | 0x99 |  | `None` (not in the table) | `0x00` | 13 |  |
+| `MB_FOOTPRINTS` |  | 0x25 | `Sand` | `0x21` |  |  |
+| `MB_FORTREE_BRIDGE` |  | 0x78 | `Bridge` | `0x71` |  | 27 |
+| `MB_HOLDS_LARGE_DECORATION` |  | 0xC3 | `None` (not in the table) | `0x00` |  | 8 |
+| `MB_HOLDS_SMALL_DECORATION` |  | 0xB5 | `None` (not in the table) | `0x00` |  | 34 |
+| `MB_HORIZONTAL_RAIL` |  | 0xD6 | `RailEastWest` | `0xFA` |  | 45 |
+| `MB_HOT_SPRINGS` | 0x28 | 0x28 | `ShallowWater` | `0x17` | 37 | 13 |
+| `MB_ICE` | 0x23 | 0x20 | `Ice` | `0x20` | 189 | 340 |
+| `MB_IMPASSABLE_EAST` | 0x30 | 0x30 | `BlockEast` | `0x30` | 67 | 27 |
+| `MB_IMPASSABLE_NORTH` | 0x32 | 0x32 | `BlockNorth` | `0x32` | 2,125 | 2,601 |
+| `MB_IMPASSABLE_NORTHEAST` | 0x34 | 0x34 | `BlockNorthAndEast` | `0x34` |  |  |
+| `MB_IMPASSABLE_NORTHWEST` | 0x35 | 0x35 | `BlockNorthAndWest` | `0x35` |  |  |
+| `MB_IMPASSABLE_SOUTH` | 0x33 | 0x33 | `BlockSouth` | `0x33` | 9 | 3 |
+| `MB_IMPASSABLE_SOUTHEAST` | 0x36 | 0x36 | `BlockSouthAndEast` | `0x36` |  |  |
+| `MB_IMPASSABLE_SOUTHWEST` | 0x37 | 0x37 | `BlockSouthAndWest` | `0x37` |  |  |
+| `MB_IMPASSABLE_SOUTH_AND_NORTH` |  | 0xC0 | `BlockNorthAndSouth` | `0x49` |  | 3 |
+| `MB_IMPASSABLE_WEST` | 0x31 | 0x31 | `BlockWest` | `0x31` | 25 | 24 |
+| `MB_IMPASSABLE_WEST_AND_EAST` |  | 0xC1 | `BlockEastAndWest` | `0x4A` |  |  |
+| `MB_INDIGO_PLATEAU_SIGN_1` | 0x91 |  | `None` (not in the table) | `0x00` | 22 |  |
+| `MB_INDIGO_PLATEAU_SIGN_2` | 0x92 |  | `None` (not in the table) | `0x00` | 21 |  |
+| `MB_INDOOR_ENCOUNTER` | 0x0B | 0x0B | `OldChateauFloor` | `0x0B` |  | 2,564 |
+| `MB_INTERIOR_DEEP_WATER` |  | 0x11 | `DeepWater` | `0xED` |  | 308 |
+| `MB_ISOLATED_HORIZONTAL_RAIL` |  | 0xD4 | `RailEastWest` | `0xFA` |  | 6 |
+| `MB_ISOLATED_VERTICAL_RAIL` |  | 0xD3 | `RailNorthSouth` | `0xF9` |  | 3 |
+| `MB_JUMP_EAST` | 0x38 | 0x38 | `LedgeEast` | `0x38` | 39 | 120 |
+| `MB_JUMP_NORTH` | 0x3A | 0x3A | `LedgeNorth` | `0x3A` |  |  |
+| `MB_JUMP_SOUTH` | 0x3B | 0x3B | `LedgeSouth` | `0x3B` | 962 | 657 |
+| `MB_JUMP_SOUTHEAST` |  | 0x3E | `None` (not in the table) | `0x00` |  | 33 |
+| `MB_JUMP_SOUTHWEST` |  | 0x3F | `None` (not in the table) | `0x00` |  | 44 |
+| `MB_JUMP_WEST` | 0x39 | 0x39 | `LedgeWest` | `0x39` | 41 | 169 |
+| `MB_KITCHEN` | 0x8A |  | `None` (not in the table) | `0x00` | 92 |  |
+| `MB_LADDER` | 0x61 | 0x61 | `WarpPanel` | `0x67` | 142 | 102 |
+| `MB_LAVARIDGE_1F_WARP` | 0x68 |  | `WarpPanel` | `0x67` |  |  |
+| `MB_LAVARIDGE_GYM_1F_WARP` |  | 0x68 | `WarpPanel` | `0x67` |  | 20 |
+| `MB_LAVARIDGE_GYM_B1F_WARP` |  | 0x29 | `WarpPanel` | `0x67` |  | 15 |
+| `MB_LONG_GRASS` |  | 0x03 | `VeryTallGrass` | `0x03` |  | 1,381 |
+| `MB_LONG_GRASS_SOUTH_EDGE` |  | 0x09 | `VeryTallGrass` | `0x03` |  | 335 |
+| `MB_MOSSDEEP_GYM_WARP` |  | 0x0E | `WarpPanel` | `0x67` |  | 23 |
+| `MB_MOUNTAIN_TOP` | 0x0C | 0x0C | `MountainFloor` | `0x0C` | 1,119 | 19,312 |
+| `MB_MT_PYRE_HOLE` |  | 0x0F | `Hole` | `0xF2` |  | 8 |
+| `MB_MUDDY_SLOPE` |  | 0xD0 | `BikeSlopeBottom` | `0xDA` |  | 12 |
+| `MB_NEATLY_LINED_UP_TOOLS` | 0x9F |  | `None` (not in the table) | `0x00` | 75 |  |
+| `MB_NON_ANIMATED_DOOR` |  | 0x60 | `EntranceNorth` | `0x64` |  | 285 |
+| `MB_NORMAL` | 0x00 | 0x00 | `None` | `0x00` | 143,184 | 187,255 |
+| `MB_NORTHWARD_CURRENT` | 0x52 | 0x52 | `CurrentNorth` | `0xF5` | 142 | 319 |
+| `MB_NORTH_ARROW_WARP` | 0x64 | 0x64 | `ExitNorth` | `0x6E` | 16 | 6 |
+| `MB_NO_RUNNING` |  | 0x0A | `NoRunning` | `0xFD` |  | 142 |
+| `MB_NO_SURFACING` |  | 0x19 | `Underwater` | `0xEE` |  | 1,182 |
+| `MB_OCEAN_WATER` | 0x15 | 0x15 | `Sea` | `0x15` | 34,484 | 46,286 |
+| `MB_PACIFIDLOG_HORIZONTAL_LOG_LEFT` |  | 0x76 | `BridgeOverWater` | `0x73` |  | 9 |
+| `MB_PACIFIDLOG_HORIZONTAL_LOG_RIGHT` |  | 0x77 | `BridgeOverWater` | `0x73` |  | 9 |
+| `MB_PACIFIDLOG_VERTICAL_LOG_BOTTOM` |  | 0x75 | `BridgeOverWater` | `0x73` |  | 10 |
+| `MB_PACIFIDLOG_VERTICAL_LOG_TOP` |  | 0x74 | `BridgeOverWater` | `0x73` |  | 10 |
+| `MB_PAINTING` | 0x94 |  | `None` (not in the table) | `0x00` | 99 |  |
+| `MB_PC` | 0x83 | 0x83 | `Computer` | `0x83` | 45 | 51 |
+| `MB_PETALBURG_GYM_DOOR` |  | 0x8D | `Door` | `0x69` |  |  |
+| `MB_PICTURE_BOOK_SHELF` |  | 0xE0 | `SmallBookshelf` | `0xE0` |  | 21 |
+| `MB_PLAYER_ROOM_PC_ON` |  | 0xC5 | `Computer` | `0x83` |  |  |
+| `MB_POKEBLOCK_FEEDER` |  | 0x87 | `None` (not in the table) | `0x00` |  | 11 |
+| `MB_POKEMART_SHELF` | 0x82 |  | `ShopShelf` | `0xE5` | 240 |  |
+| `MB_POKEMART_SIGN` | 0x88 |  | `None` (not in the table) | `0x00` | 26 |  |
+| `MB_POKEMON_CENTER_BOOKSHELF` |  | 0xE2 | `Bookshelf` | `0xE1` |  | 30 |
+| `MB_POKEMON_CENTER_SIGN` | 0x87 |  | `None` (not in the table) | `0x00` | 36 |  |
+| `MB_POND_WATER` | 0x10 | 0x10 | `River` | `0x10` | 635 | 2,031 |
+| `MB_PORTHOLE` | 0x9C |  | `None` (not in the table) | `0x00` | 140 |  |
+| `MB_POWER_PLANT_MACHINE` | 0x95 |  | `None` (not in the table) | `0x00` | 40 |  |
+| `MB_PUDDLE` | 0x16 | 0x16 | `Puddle` | `0x16` | 116 | 646 |
+| `MB_QUESTIONNAIRE` | 0x8F | 0x8F | `None` (not in the table) | `0x00` | 12 | 13 |
+| `MB_REFLECTION_UNDER_BRIDGE` |  | 0x2B | `River` | `0x10` |  | 38 |
+| `MB_REGION_MAP` | 0x85 | 0x85 | `TownMap` | `0x85` | 80 | 36 |
+| `MB_REGULAR_WARP` | 0x67 |  | `WarpPanel` | `0x67` | 64 |  |
+| `MB_ROCK_STAIRS` | 0x2A |  | `None` (not in the table) | `0x00` | 358 |  |
+| `MB_ROULETTE` |  | 0x8A | `None` (not in the table) | `0x00` |  | 12 |
+| `MB_RUNNING_DISALLOWED` | 0x0A |  | `NoRunning` | `0xFD` |  |  |
+| `MB_SAND` | 0x21 | 0x21 | `Sand` | `0x21` | 1,505 | 2,242 |
+| `MB_SAND_CAVE` | 0x2B |  | `CaveFloor` | `0x08` | 516 |  |
+| `MB_SEAWEED` | 0x22 | 0x22 | `Seaweed` | `0xEF` |  | 587 |
+| `MB_SEAWEED_NO_SURFACING` |  | 0x2A | `Seaweed` | `0xEF` |  | 454 |
+| `MB_SECRET_BASE_HOLE` |  | 0xC2 | `None` (not in the table) | `0x00` |  | 14 |
+| `MB_SECRET_BASE_NORTH_WALL` |  | 0xB7 | `None` (not in the table) | `0x00` |  | 260 |
+| `MB_SECRET_BASE_PC` |  | 0xB0 | `Computer` | `0x83` |  | 24 |
+| `MB_SECRET_BASE_REGISTER_PC` |  | 0xB1 | `Computer` | `0x83` |  |  |
+| `MB_SECRET_BASE_SCENERY` |  | 0xB2 | `None` (not in the table) | `0x00` |  | 16 |
+| `MB_SECRET_BASE_SPOT_BLUE_CAVE` |  | 0x9A | `SecretBaseSpot` | `0xF8` |  | 10 |
+| `MB_SECRET_BASE_SPOT_BLUE_CAVE_OPEN` |  | 0x9B | `SecretBaseSpot` | `0xF8` |  |  |
+| `MB_SECRET_BASE_SPOT_BROWN_CAVE` |  | 0x92 | `SecretBaseSpot` | `0xF8` |  | 12 |
+| `MB_SECRET_BASE_SPOT_BROWN_CAVE_OPEN` |  | 0x93 | `SecretBaseSpot` | `0xF8` |  |  |
+| `MB_SECRET_BASE_SPOT_RED_CAVE` |  | 0x90 | `SecretBaseSpot` | `0xF8` |  | 15 |
+| `MB_SECRET_BASE_SPOT_RED_CAVE_OPEN` |  | 0x91 | `SecretBaseSpot` | `0xF8` |  |  |
+| `MB_SECRET_BASE_SPOT_SHRUB` |  | 0x98 | `SecretBaseSpot` | `0xF8` |  | 13 |
+| `MB_SECRET_BASE_SPOT_SHRUB_OPEN` |  | 0x99 | `SecretBaseSpot` | `0xF8` |  |  |
+| `MB_SECRET_BASE_SPOT_TREE_LEFT` |  | 0x96 | `SecretBaseSpot` | `0xF8` |  | 7 |
+| `MB_SECRET_BASE_SPOT_TREE_LEFT_OPEN` |  | 0x97 | `SecretBaseSpot` | `0xF8` |  |  |
+| `MB_SECRET_BASE_SPOT_TREE_RIGHT` |  | 0x9C | `SecretBaseSpot` | `0xF8` |  | 7 |
+| `MB_SECRET_BASE_SPOT_TREE_RIGHT_OPEN` |  | 0x9D | `SecretBaseSpot` | `0xF8` |  |  |
+| `MB_SECRET_BASE_SPOT_YELLOW_CAVE` |  | 0x94 | `SecretBaseSpot` | `0xF8` |  | 11 |
+| `MB_SECRET_BASE_SPOT_YELLOW_CAVE_OPEN` |  | 0x95 | `SecretBaseSpot` | `0xF8` |  |  |
+| `MB_SECRET_BASE_TRAINER_SPOT` |  | 0xB3 | `None` (not in the table) | `0x00` |  | 24 |
+| `MB_SECRET_BASE_WALL` |  | 0x01 | `None` (not in the table) | `0x00` |  | 1,663 |
+| `MB_SHALLOW_WATER` | 0x17 | 0x17 | `ShallowWater` | `0x17` | 775 | 3,683 |
+| `MB_SHOAL_CAVE_ENTRANCE` |  | 0x1C | `None` (not in the table) | `0x00` |  | 2 |
+| `MB_SHOP_SHELF` |  | 0xE5 | `ShopShelf` | `0xE5` |  | 269 |
+| `MB_SHORT_GRASS` |  | 0x07 | `None` | `0x00` |  | 198 |
+| `MB_SIGNPOST` | 0x84 |  | `None` (not in the table) | `0x00` | 189 |  |
+| `MB_SKY_PILLAR_CLOSED_DOOR` |  | 0xEA | `None` (not in the table) | `0x00` |  | 1 |
+| `MB_SLIDE_EAST` | 0x44 | 0x44 | `SlideEast` | `0x40` |  |  |
+| `MB_SLIDE_NORTH` | 0x46 | 0x46 | `SlideNorth` | `0x42` |  |  |
+| `MB_SLIDE_SOUTH` | 0x47 | 0x47 | `SlideSouth` | `0x43` |  | 12 |
+| `MB_SLIDE_WEST` | 0x45 | 0x45 | `SlideWest` | `0x41` |  |  |
+| `MB_SLOT_MACHINE` |  | 0x89 | `None` (not in the table) | `0x00` |  | 20 |
+| `MB_SOOTOPOLIS_DEEP_WATER` |  | 0x14 | `DeepWater` | `0xED` |  | 19 |
+| `MB_SOUTHWARD_CURRENT` | 0x53 | 0x53 | `CurrentSouth` | `0xF6` | 45 | 165 |
+| `MB_SOUTH_ARROW_WARP` | 0x65 | 0x65 | `ExitSouth` | `0x6F` | 282 | 651 |
+| `MB_SPIN_DOWN` | 0x57 |  | `Spinner` | `0xF7` | 52 |  |
+| `MB_SPIN_LEFT` | 0x55 |  | `Spinner` | `0xF7` | 45 |  |
+| `MB_SPIN_RIGHT` | 0x54 |  | `Spinner` | `0xF7` | 38 |  |
+| `MB_SPIN_UP` | 0x56 |  | `Spinner` | `0xF7` | 51 |  |
+| `MB_STAIRS_OUTSIDE_ABANDONED_SHIP` |  | 0x1B | `None` (not in the table) | `0x00` |  | 1 |
+| `MB_STOP_SPINNING` | 0x58 |  | `Spinner` | `0xF7` | 49 |  |
+| `MB_STRENGTH_BUTTON` | 0x20 |  | `None` (not in the table) | `0x00` | 15 |  |
+| `MB_TALL_GRASS` | 0x02 | 0x02 | `TallGrass` | `0x02` | 5,303 | 2,801 |
+| `MB_TELEPHONE` | 0x96 |  | `None` (not in the table) | `0x00` | 39 |  |
+| `MB_TELEVISION` | 0x86 | 0x86 | `Television` | `0x86` | 27 | 43 |
+| `MB_THIN_ICE` | 0x26 | 0x26 | `ThinIce` | `0xF0` | 9 | 64 |
+| `MB_TRAINER_HILL_TIMER` |  | 0xE9 | `None` (not in the table) | `0x00` |  | 4 |
+| `MB_TRAINER_TOWER_MONITOR` | 0xA3 |  | `None` (not in the table) | `0x00` | 8 |  |
+| `MB_TRASH_BIN` | 0x9A |  | `TrashCan` | `0xE4` | 7 |  |
+| `MB_TRASH_CAN` |  | 0xE4 | `TrashCan` | `0xE4` |  | 102 |
+| `MB_TRICK_HOUSE_PUZZLE_8_FLOOR` | 0x48 | 0x48 | `None` (not in the table) | `0x00` |  | 186 |
+| `MB_TRICK_HOUSE_PUZZLE_DOOR` |  | 0x8C | `None` (not in the table) | `0x00` |  | 8 |
+| `MB_UNDERWATER_BLOCKED_ABOVE` | 0x19 |  | `Underwater` | `0xEE` |  |  |
+| `MB_UNION_ROOM_WARP` | 0x71 |  | `WarpPanel` | `0x67` | 1 |  |
+| `MB_UNUSED_BRIDGE` |  | 0x7E | `Bridge` | `0x71` |  |  |
+| `MB_UNUSED_SOOTOPOLIS_DEEP_WATER` |  | 0x18 | `DeepWater` | `0xED` |  |  |
+| `MB_UNUSED_SOOTOPOLIS_DEEP_WATER_2` |  | 0x1A | `DeepWater` | `0xED` |  |  |
+| `MB_UNUSED_WATER` | 0x1A |  | `Sea` | `0x15` |  |  |
+| `MB_UP_ESCALATOR` | 0x6A | 0x6A | `Escalator` | `0x6B` | 19 | 17 |
+| `MB_UP_LEFT_STAIR_WARP` | 0x6D |  | `StairsWest` | `0x5F` | 26 |  |
+| `MB_UP_RIGHT_STAIR_WARP` | 0x6C |  | `StairsEast` | `0x5E` | 37 |  |
+| `MB_VASE` |  | 0xE3 | `None` (not in the table) | `0x00` |  | 29 |
+| `MB_VERTICAL_RAIL` |  | 0xD5 | `RailNorthSouth` | `0xF9` |  | 14 |
+| `MB_WALK_EAST` | 0x40 | 0x40 | `SlideEast` | `0x40` |  |  |
+| `MB_WALK_NORTH` | 0x42 | 0x42 | `SlideNorth` | `0x42` |  |  |
+| `MB_WALK_SOUTH` | 0x43 | 0x43 | `SlideSouth` | `0x43` |  |  |
+| `MB_WALK_WEST` | 0x41 | 0x41 | `SlideWest` | `0x41` |  |  |
+| `MB_WARP_DOOR` | 0x69 |  | `Door` | `0x69` | 205 |  |
+| `MB_WATERFALL` | 0x13 | 0x13 | `Waterfall` | `0x13` | 80 | 277 |
+| `MB_WATER_DOOR` |  | 0x6C | `Door` | `0x69` |  | 6 |
+| `MB_WATER_SOUTH_ARROW_WARP` |  | 0x6D | `ExitSouth` | `0x6F` |  | 9 |
+| `MB_WESTWARD_CURRENT` | 0x51 | 0x51 | `CurrentWest` | `0xF4` |  | 3,844 |
+| `MB_WEST_ARROW_WARP` | 0x63 | 0x63 | `ExitWest` | `0x6D` | 34 | 1 |
+| `MB_WINDOW` | 0x9D |  | `None` (not in the table) | `0x00` | 82 |  |
+| `MB_WIRELESS_BOX_RESULTS` |  | 0xE8 | `None` (not in the table) | `0x00` |  | 17 |
+
+95 more names are defined by one game or the other and used on neither's maps (`MB_UNUSED_*` among them); they become `None`.
+
+The values of the GBA's own, and what the game does with each today:
+
+| Value | Name | What it is | In the game |
+|---|---|---|---|
+| `0x32` | `BlockNorth` | Open ground whose north side is closed. | **Rule.** No step across its closed side, either way. |
+| `0x33` | `BlockSouth` | Open ground whose south side is closed. | **Rule.** No step across its closed side, either way. |
+| `0x34` | `BlockNorthAndEast` | Open ground closed on its north and east sides. | **Rule.** No step across its closed side, either way. |
+| `0x35` | `BlockNorthAndWest` | Open ground closed on its north and west sides. | **Rule.** No step across its closed side, either way. |
+| `0x36` | `BlockSouthAndEast` | Open ground closed on its south and east sides. | **Rule.** No step across its closed side, either way. |
+| `0x37` | `BlockSouthAndWest` | Open ground closed on its south and west sides. | **Rule.** No step across its closed side, either way. |
+| `0x3A` | `LedgeNorth` | A ledge hopped over northward (Platinum's own value, which only the GBA's maps use). | **Rule.** Hopped the way it faces, two tiles on; a wall from every other side. |
+| `0xED` | `DeepWater` | Deep water: surfed, and dived into where the sea floor below is a map (the GBA's). | **Rule.** Stops a walker; surfed with Surf, meeting the area's water Pokémon. Diving is plan 21's (Hoenn). |
+| `0xEE` | `Underwater` | The sea floor, swum along after a dive; no surfacing where it says so (the GBA's). | *Not yet.* The sea floor, reached by Dive: plan 21 (Hoenn). |
+| `0xEF` | `Seaweed` | Seaweed on the sea floor, where wild Pokémon live (the GBA's). | *Not yet.* The sea floor, reached by Dive: plan 21 (Hoenn). |
+| `0xF0` | `ThinIce` | Thin ice that cracks under a step and gives way under the next (the GBA's). | *Not yet.* A Game Boy Advance behaviour whose rule comes with the region plan that opens a place using it (19 · Kanto, 21 · Hoenn); walked like plain ground until then. |
+| `0xF1` | `CrackedFloor` | A cracked floor that gives way after a step, or the hole it leaves (the GBA's). | *Not yet.* A Game Boy Advance behaviour whose rule comes with the region plan that opens a place using it (19 · Kanto, 21 · Hoenn); walked like plain ground until then. |
+| `0xF2` | `Hole` | A hole that drops whoever steps in to the floor below (the GBA's). | *Not yet.* A Game Boy Advance behaviour whose rule comes with the region plan that opens a place using it (19 · Kanto, 21 · Hoenn); walked like plain ground until then. |
+| `0xF3` | `CurrentEast` | Water that carries a surfer east (the GBA's). | **Rule.** Stops a walker and is surfed; the current carrying the surfer along is the region plan's that opens it (19 · Kanto, 21 · Hoenn). |
+| `0xF4` | `CurrentWest` | Water that carries a surfer west (the GBA's). | **Rule.** Stops a walker and is surfed; the current carrying the surfer along is the region plan's that opens it (19 · Kanto, 21 · Hoenn). |
+| `0xF5` | `CurrentNorth` | Water that carries a surfer north (the GBA's). | **Rule.** Stops a walker and is surfed; the current carrying the surfer along is the region plan's that opens it (19 · Kanto, 21 · Hoenn). |
+| `0xF6` | `CurrentSouth` | Water that carries a surfer south (the GBA's). | **Rule.** Stops a walker and is surfed; the current carrying the surfer along is the region plan's that opens it (19 · Kanto, 21 · Hoenn). |
+| `0xF7` | `Spinner` | A floor that sets whoever steps on it spinning along until a stop (the GBA's). | *Not yet.* A Game Boy Advance behaviour whose rule comes with the region plan that opens a place using it (19 · Kanto, 21 · Hoenn); walked like plain ground until then. |
+| `0xF8` | `SecretBaseSpot` | A hollow, a bush or a tree where a secret base can be made (the GBA's). | *Not yet.* A Game Boy Advance behaviour whose rule comes with the region plan that opens a place using it (19 · Kanto, 21 · Hoenn); walked like plain ground until then. |
+| `0xF9` | `RailNorthSouth` | A rail running north to south, hopped along on the Acro Bike (the GBA's). | *Not yet.* A Game Boy Advance behaviour whose rule comes with the region plan that opens a place using it (19 · Kanto, 21 · Hoenn); walked like plain ground until then. |
+| `0xFA` | `RailEastWest` | A rail running east to west, hopped along on the Acro Bike (the GBA's). | *Not yet.* A Game Boy Advance behaviour whose rule comes with the region plan that opens a place using it (19 · Kanto, 21 · Hoenn); walked like plain ground until then. |
+| `0xFB` | `BumpySlope` | A bumpy slope only the Acro Bike's hops climb (the GBA's). | *Not yet.* A Game Boy Advance behaviour whose rule comes with the region plan that opens a place using it (19 · Kanto, 21 · Hoenn); walked like plain ground until then. |
+| `0xFC` | `CyclingRoadPull` | The Cycling Road's slope, which pulls a rider south (the GBA's). | *Not yet.* A Game Boy Advance behaviour whose rule comes with the region plan that opens a place using it (19 · Kanto, 21 · Hoenn); walked like plain ground until then. |
+| `0xFD` | `NoRunning` | Ground where nobody may run (the GBA's). | *Not yet.* A Game Boy Advance behaviour whose rule comes with the region plan that opens a place using it (19 · Kanto, 21 · Hoenn); walked like plain ground until then. |

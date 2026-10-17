@@ -34,6 +34,26 @@ public static class Sources
     public static readonly string[] ShowdownFiles = new[] { "data/moves.ts", "data/items.ts", "data/pokedex.ts", "LICENSE" }
         .Concat(ShowdownSetFiles).ToArray();
 
+    /// <summary>
+    /// The Game Boy Advance decompilations (plan 18 · W6, agreed 2026-10-12): pret/pokefirered for Kanto and
+    /// pret/pokeemerald for Hoenn, read by <c>tools/MapImporter/Gba</c>. Only layouts and numbers are fetched: the
+    /// maps' JSON, the layouts' block data, each tileset's attributes and the headers that name them. Never a
+    /// tileset's graphics or palettes, which the patterns below can't reach.
+    /// </summary>
+    public const string FireRedRepo = "https://github.com/pret/pokefirered.git";
+    public const string FireRedCommit = "037335f4c725d7c9aecdac87066f2002b4bd7e14";
+    public const string EmeraldRepo = "https://github.com/pret/pokeemerald.git";
+    public const string EmeraldCommit = "731ad5bfd6e6f265508d0efcca0ba42f9dcf5881";
+
+    /// <summary>What the GBA reader fetches of either game (W6's layouts and behaviours; W7 adds its events' files).</summary>
+    public static readonly string[] GbaFolders =
+    {
+        "/data/maps/map_groups.json", "/data/maps/*/map.json", "/data/layouts/layouts.json", "/data/layouts/*/map.bin",
+        "/data/tilesets/*/*/metatile_attributes.bin", "/include/constants/metatile_behaviors.h",
+        "/include/constants/metatile_labels.h", "/src/data/tilesets/headers.h", "/src/data/tilesets/metatiles.h",
+        "/include/fieldmap.h"
+    };
+
     /// <summary>The named files of a pinned commit, downloaded once and reused until the commit or the list changes.</summary>
     public static string Download(string cache, string name, string rawBase, string commit, string[] files)
     {

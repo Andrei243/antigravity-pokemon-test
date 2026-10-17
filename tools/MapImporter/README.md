@@ -68,6 +68,41 @@ The layouts of the binary files were confirmed against the game's own loaders in
 
 On the overworld 99.5% of tiles are sorted. When a session builds an area whose textures are still in the list, add their patterns to `Cover.Rules`, run the importer and look at the area's picture.
 
+## The Game Boy Advance's maps (plan 18 · W6)
+
+```bash
+dotnet run --project tools/MapImporter -- --game firered [--quick]   # Kanto, from pret/pokefirered, into out/kanto/
+dotnet run --project tools/MapImporter -- --game emerald [--quick]   # Hoenn, from pret/pokeemerald, into out/hoenn/
+```
+
+`tools/MapImporter/Gba/` reads the GBA decompilations beside `DecompMaps`, sharing nothing with it but the world files' format. Each game's commit is pinned in `tools/DataImporter/Sources.cs` (`FireRedCommit`, `EmeraldCommit`) and fetched once, sparsely (`Sources.GbaFolders`), into `.cache/pokefirered` and `.cache/pokeemerald` (13 and 23 MB). A run takes a few seconds and writes:
+
+| In `out/<region>/` | What |
+| --- | --- |
+| `<region>.png`, `<region>_behaviours.png`, `<region>_heights.png` | The overworld (matrix 0), four pixels a tile (two for heights), by cover, by behaviour and by height, each map outlined and named |
+| `maps/<Map>.png` | Every map by behaviour and by cover, side by side (not with `--quick`) |
+| `world/` | The matrices, chunks and areas, and a `world.json` that makes a map of every matrix and opens every area, so a tool can build it with `World.Open` (not with `--quick`). `--data` for a GBA region is W7's |
+| `report.md` | Problems (connections that disagree, maps that overlap, layouts left out), every behaviour used with what it becomes, the metatiles with no look per tileset, the overworld's elevations, the matrices |
+
+It also rewrites the section "The GBA's behaviours" of `docs/tile-behaviours.md`, from both games (the other is fetched if it isn't there); the Sinnoh run keeps that section as it stands.
+
+| What | From | Kept |
+| --- | --- | --- |
+| The maps and their order | `data/maps/map_groups.json` | the order of the groups and of each group's maps |
+| A map | `data/maps/<Map>/map.json` | its id, name, layout, music, region map section, weather, map type, the cycling, running and escape flags, and its `connections` (map, offset, direction). The four event lists are W7's |
+| Layouts | `data/layouts/layouts.json`, each layout's `map.bin` | its size, its two tilesets, and every block: ten bits of metatile, two of collision, four of elevation |
+| A metatile's behaviour | each tileset's `metatile_attributes.bin`, found through `src/data/tilesets/headers.h` and `metatiles.h` | the behaviour's bits alone (two bytes a metatile in Emerald, four in FireRed); nothing about how it is drawn |
+| The behaviours' names | `include/constants/metatile_behaviors.h` | FireRed's `#define`s and Emerald's `enum` |
+| The metatiles' labels | `include/constants/metatile_labels.h` | a label's words, which sort a metatile into a kind of ground |
+| How many metatiles a primary tileset holds | `include/fieldmap.h` | `NUM_METATILES_IN_PRIMARY` (640 in FireRed, 512 in Emerald) |
+
+Never `tiles.png`, a palette, `metatiles.bin` or anything else a tileset draws with: the folder patterns can't reach them, and no vertex, texture or palette reaches the repository.
+
+- **Behaviours** (`GbaBehaviours.cs`): each `MB_*` by its name onto a `TileBehavior`: Platinum's own value where it has one that means the same (`MB_JUMP_NORTH` is Platinum's jump north, `0x3A`, and the four sides and corners of `MB_IMPASSABLE_*` Platinum's blocks), one of the GBA's own at `0xED` to `0xFD` where it has none (deep water, the sea floor, seaweed, thin ice, a cracked floor, a hole, the four currents, spinners, a secret base's spot, the Acro Bike's rails, a bumpy slope, the Cycling Road's pull, no running), and `None` for what only says how a tile is read or drawn. Collision bits set make the tile blocked.
+- **Heights** (`GbaWorld.Heights`): a level is 1.4 tiles above elevation 3 (`WorldMapBuilder.GroundLevel`), so a straight step over a level's edge is a cliff; elevation 0 ("any level") ramps from the level on one side of its run to the level on the other, its middle 0.7 from either; the water's elevation 1 takes the nearest land's level; elevation 15 is a deck at its ends' level over the lowest ground beside it.
+- **Cover** (`GbaCover.cs`): the behaviour where it shows, then the metatile's label, then `GbaCover.Ranges`, the tilesets' ranges a region's own session writes by hand (empty until plans 19 and 21); otherwise `Unknown`, which the report lists per tileset.
+- **Matrices** (`GbaWorld`): the region's first town (Pallet Town, Littleroot Town) is the origin of matrix 0, and every map its `connections` reach up, down, left and right is placed at its offset; every set no connection reaches (an island group, a cave, a room) is a matrix of its own, in the maps' order. Dive and emerge joins are warps (W7). The grid is padded to whole chunks, and a chunk that holds tiles of more than one map lists them (`areas`). FireRed's routes join a stand-in for Saffron City (`SaffronCity_Connection`), so the city itself is a matrix of its own and its four connections are reported.
+
 ## Tests
 
-`MapImportTests` builds small chunk files, height data and display lists byte by byte and checks each reader on them, so the tests never need the decompilation. `WorldFileTests` checks the world files' format.
+`MapImportTests` builds small chunk files, height data and display lists byte by byte and checks each reader on them, so the tests never need the decompilation. `GbaImportTests` does the same for the GBA reader: a small decompilation of two maps joined by a connection, with a `map.bin`, a tileset's attributes and the two headers, read, stitched, given heights, written as world files and built by `WorldMapBuilder`. `WorldFileTests` checks the world files' format.

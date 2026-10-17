@@ -62,7 +62,12 @@ public sealed class Renders
         ("DEEP SNOW", Rgb.Of(206, 220, 242), b => b is >= 0xA1 and <= 0xA3),
         ("MUD", Rgb.Of(140, 110, 80), b => b is 0xA4 or 0xA5),
         ("MARSH GRASS", Rgb.Of(112, 128, 76), b => b is 0xA6 or 0xA7),
-        ("BIKE", Rgb.Of(240, 200, 60), b => b is >= 0xD7 and <= 0xDB),
+        ("BIKE", Rgb.Of(240, 200, 60), b => b is >= 0xD7 and <= 0xDB or >= 0xF9 and <= 0xFC),
+        // The Game Boy Advance's own (plan 18 · W6)
+        ("DEEP WATER OR CURRENT", Rgb.Of(40, 84, 170), b => b is 0xED or >= 0xF3 and <= 0xF6),
+        ("SEA FLOOR", Rgb.Of(56, 96, 120), b => b is 0xEE or 0xEF),
+        ("TRICK FLOOR", Rgb.Of(210, 120, 220), b => b is >= 0xF0 and <= 0xF2 or 0xF7 or 0xFD),
+        ("SECRET BASE SPOT", Rgb.Of(250, 120, 40), b => b == 0xF8),
     };
 
     private static Rgb OpenGround(Setting setting) => setting switch

@@ -28,8 +28,16 @@ public enum TileBehavior : byte
     NoExplorerKit = 0x2D,
     BlockEast = 0x30,
     BlockWest = 0x31,
+    // Platinum's own values that only the GBA's maps use (plan 18 · W6)
+    BlockNorth = 0x32,
+    BlockSouth = 0x33,
+    BlockNorthAndEast = 0x34,
+    BlockNorthAndWest = 0x35,
+    BlockSouthAndEast = 0x36,
+    BlockSouthAndWest = 0x37,
     LedgeEast = 0x38,
     LedgeWest = 0x39,
+    LedgeNorth = 0x3A,
     LedgeSouth = 0x3B,
     Unknown3C = 0x3C,
     Unknown3D = 0x3D,
@@ -103,7 +111,27 @@ public enum TileBehavior : byte
     Bookshelf = 0xE1,
     TallBookshelf = 0xE2,
     TrashCan = 0xE4,
-    ShopShelf = 0xE5
+    ShopShelf = 0xE5,
+
+    // What the Game Boy Advance's maps have and Platinum has no value for (plan 18 · W6), among the values the
+    // original leaves unused at the top of its byte (0xEA to 0xEC are Platinum's own shelves, unnamed here)
+    DeepWater = 0xED,
+    Underwater = 0xEE,
+    Seaweed = 0xEF,
+    ThinIce = 0xF0,
+    CrackedFloor = 0xF1,
+    Hole = 0xF2,
+    CurrentEast = 0xF3,
+    CurrentWest = 0xF4,
+    CurrentNorth = 0xF5,
+    CurrentSouth = 0xF6,
+    Spinner = 0xF7,
+    SecretBaseSpot = 0xF8,
+    RailNorthSouth = 0xF9,
+    RailEastWest = 0xFA,
+    BumpySlope = 0xFB,
+    CyclingRoadPull = 0xFC,
+    NoRunning = 0xFD
 }
 
 /// <summary>What each <see cref="TileBehavior"/> means, in a sentence, and the two facts the original keeps in a
@@ -205,10 +233,35 @@ public static class TileBehaviors
         [TileBehavior.Bookshelf] = "A bookshelf.",
         [TileBehavior.TallBookshelf] = "A second kind of bookshelf.",
         [TileBehavior.TrashCan] = "A trash can.",
-        [TileBehavior.ShopShelf] = "A shelf of goods in a shop."
+        [TileBehavior.ShopShelf] = "A shelf of goods in a shop.",
+
+        [TileBehavior.BlockNorth] = "Open ground whose north side is closed.",
+        [TileBehavior.BlockSouth] = "Open ground whose south side is closed.",
+        [TileBehavior.BlockNorthAndEast] = "Open ground closed on its north and east sides.",
+        [TileBehavior.BlockNorthAndWest] = "Open ground closed on its north and west sides.",
+        [TileBehavior.BlockSouthAndEast] = "Open ground closed on its south and east sides.",
+        [TileBehavior.BlockSouthAndWest] = "Open ground closed on its south and west sides.",
+        [TileBehavior.LedgeNorth] = "A ledge hopped over northward (Platinum's own value, which only the GBA's maps use).",
+        [TileBehavior.DeepWater] = "Deep water: surfed, and dived into where the sea floor below is a map (the GBA's).",
+        [TileBehavior.Underwater] = "The sea floor, swum along after a dive; no surfacing where it says so (the GBA's).",
+        [TileBehavior.Seaweed] = "Seaweed on the sea floor, where wild Pokémon live (the GBA's).",
+        [TileBehavior.ThinIce] = "Thin ice that cracks under a step and gives way under the next (the GBA's).",
+        [TileBehavior.CrackedFloor] = "A cracked floor that gives way after a step, or the hole it leaves (the GBA's).",
+        [TileBehavior.Hole] = "A hole that drops whoever steps in to the floor below (the GBA's).",
+        [TileBehavior.CurrentEast] = "Water that carries a surfer east (the GBA's).",
+        [TileBehavior.CurrentWest] = "Water that carries a surfer west (the GBA's).",
+        [TileBehavior.CurrentNorth] = "Water that carries a surfer north (the GBA's).",
+        [TileBehavior.CurrentSouth] = "Water that carries a surfer south (the GBA's).",
+        [TileBehavior.Spinner] = "A floor that sets whoever steps on it spinning along until a stop (the GBA's).",
+        [TileBehavior.SecretBaseSpot] = "A hollow, a bush or a tree where a secret base can be made (the GBA's).",
+        [TileBehavior.RailNorthSouth] = "A rail running north to south, hopped along on the Acro Bike (the GBA's).",
+        [TileBehavior.RailEastWest] = "A rail running east to west, hopped along on the Acro Bike (the GBA's).",
+        [TileBehavior.BumpySlope] = "A bumpy slope only the Acro Bike's hops climb (the GBA's).",
+        [TileBehavior.CyclingRoadPull] = "The Cycling Road's slope, which pulls a rider south (the GBA's).",
+        [TileBehavior.NoRunning] = "Ground where nobody may run (the GBA's)."
     };
 
-    /// <summary>True for the values Sinnoh's maps use, which are the ones the enum names.</summary>
+    /// <summary>True for the values the enum names: those Sinnoh's maps use, and those the GBA reader makes (plan 18 · W6).</summary>
     public static bool IsKnown(byte value) => Meanings.ContainsKey((TileBehavior)value);
 
     public static string Meaning(TileBehavior behavior) => Meanings.TryGetValue(behavior, out var text) ? text : "Not used by any map.";
@@ -216,11 +269,12 @@ public static class TileBehaviors
     /// <summary>Wild Pokémon can appear on a step here (what appears depends on the area and on land or water).</summary>
     public static bool HasEncounters(TileBehavior b) => b is TileBehavior.TallGrass or TileBehavior.VeryTallGrass or TileBehavior.CaveFloor
         or TileBehavior.OldChateauFloor or TileBehavior.River or TileBehavior.Sea or TileBehavior.MarshGrass or TileBehavior.DeepMarshGrass
-        or TileBehavior.BridgeOverCave or TileBehavior.BikeBridgeEastWestOverGrass;
+        or TileBehavior.BridgeOverCave or TileBehavior.BikeBridgeEastWestOverGrass or TileBehavior.DeepWater or TileBehavior.Seaweed;
 
     /// <summary>Water a Pokémon can carry its trainer across, including what runs under some bridges.</summary>
     public static bool IsSurfable(TileBehavior b) => b is TileBehavior.River or TileBehavior.Waterfall or TileBehavior.Sea
-        or TileBehavior.BridgeOverWater or TileBehavior.BikeBridgeEastWestOverWater;
+        or TileBehavior.BridgeOverWater or TileBehavior.BikeBridgeEastWestOverWater or TileBehavior.DeepWater
+        or TileBehavior.CurrentEast or TileBehavior.CurrentWest or TileBehavior.CurrentNorth or TileBehavior.CurrentSouth;
 
     /// <summary>Ground that keeps the print of a shoe, as in Platinum: its sand, and snow of every depth.</summary>
     public static bool KeepsFootprints(TileBehavior behaviour) => behaviour is TileBehavior.Sand or TileBehavior.ShallowSnow
@@ -233,10 +287,22 @@ public static class TileBehaviors
     /// </summary>
     public static (BehaviourSupport Support, string Note) InGame(TileBehavior b) => b switch
     {
-        TileBehavior.LedgeSouth or TileBehavior.LedgeEast or TileBehavior.LedgeWest
+        TileBehavior.LedgeSouth or TileBehavior.LedgeEast or TileBehavior.LedgeWest or TileBehavior.LedgeNorth
             => (BehaviourSupport.Ruled, "Hopped the way it faces, two tiles on; a wall from every other side."),
         TileBehavior.BlockEast or TileBehavior.BlockWest or TileBehavior.BlockNorthAndSouth or TileBehavior.BlockEastAndWest
+            or TileBehavior.BlockNorth or TileBehavior.BlockSouth or TileBehavior.BlockNorthAndEast or TileBehavior.BlockNorthAndWest
+            or TileBehavior.BlockSouthAndEast or TileBehavior.BlockSouthAndWest
             => (BehaviourSupport.Ruled, "No step across its closed side, either way."),
+        TileBehavior.DeepWater
+            => (BehaviourSupport.Ruled, "Stops a walker; surfed with Surf, meeting the area's water Pokémon. Diving is plan 21's (Hoenn)."),
+        TileBehavior.CurrentEast or TileBehavior.CurrentWest or TileBehavior.CurrentNorth or TileBehavior.CurrentSouth
+            => (BehaviourSupport.Ruled, "Stops a walker and is surfed; the current carrying the surfer along is the region plan's that opens it (19 · Kanto, 21 · Hoenn)."),
+        TileBehavior.Underwater or TileBehavior.Seaweed
+            => (BehaviourSupport.Waiting, "The sea floor, reached by Dive: plan 21 (Hoenn)."),
+        TileBehavior.ThinIce or TileBehavior.CrackedFloor or TileBehavior.Hole or TileBehavior.Spinner or TileBehavior.SecretBaseSpot
+            or TileBehavior.RailNorthSouth or TileBehavior.RailEastWest or TileBehavior.BumpySlope or TileBehavior.CyclingRoadPull
+            or TileBehavior.NoRunning
+            => (BehaviourSupport.Waiting, "A Game Boy Advance behaviour whose rule comes with the region plan that opens a place using it (19 · Kanto, 21 · Hoenn); walked like plain ground until then."),
         TileBehavior.RockClimbNorthSouth or TileBehavior.RockClimbEastWest
             => (BehaviourSupport.Ruled, "Climbed to its far end by a party that knows Rock Climb."),
         TileBehavior.Waterfall => (BehaviourSupport.Ruled, "Surfed up with Waterfall and down without; never sideways."),

@@ -29,7 +29,7 @@ About 350 sittings are left, a dozen or so of them marked optional (Hisui and th
 | 15 · Side activities | — | 8 | E6–E8 (the Pokéathlon) kept on 2026-10-12, just before 20 · J13 |
 | 16 · Tooling and shipping | T3, T5, T8, T16 (and a CI build-and-test workflow) | 20 | T9, the editor, is now what Unova and the later regions are drawn with |
 | 17 · Localisation | — | 6 | wanted since 2026-10-12: Romanian first, changed in the options at any time |
-| 18 · Other regions | — | 10 | |
+| 18 · Other regions | W6 | 9 | W6 done 2026-10-17: the GBA reader's layouts, behaviours, heights and matrices (`--game firered`, `--game emerald`) |
 | 19 · Kanto | — | 9 | |
 | 20 · Johto | — | 15 | J15 optional |
 | 21 · Hoenn | — | 12 | |
@@ -157,7 +157,7 @@ From wave 12, each lane takes its next session whose gates are met. The waves ar
 **Lane 2 · Map and rooms**
 - 01 · M11d: the gate houses made rooms. `WorldWalk` stops passing through them. It also brings the Pokémon Centers' upper floors, the Global Terminal, the Department Store and the move tutors' rooms.
 - 01 · M12: the Town Map, built as the one region map that 18 · W3 and W9, 20 · J3 and 12 · Q22 reuse. Also the performance pass (the M6–M9 cities and Gyms added to `profile`, `GetNpcAt`/`GetWarpAt`/`IsWalkable` indexed by chunk) and the held-back items.
-- Then plan 18's readers: W6, then W7. The sources are agreed (2026-10-12): pinned commits of pret/pokefirered and pret/pokeemerald, and pret/pokeheartgold for Johto. Plan 01 is done, so the lane is free for them now.
+- Then plan 18's readers: W6 (done 2026-10-17), then W7. The sources are agreed (2026-10-12): pinned commits of pret/pokefirered and pret/pokeemerald, and pret/pokeheartgold for Johto. Plan 01 is done, so the lane is free for them now.
 
 **Lane 3 · Rules**
 - 06 · R19 (the modern groundwork), first. It is a bigger session since 2026-10-12, when the user ruled that **there are no Platinum rules any more: one set of rules, the modern ones, in every region**. This replaces the ruling of 2026-10-04 (Platinum's rules by default, the modern ones as a choice at NEW GAME).
@@ -278,7 +278,7 @@ A seam is a piece several plans offer to write "if it hasn't been". Each has one
 | `Models/Legality.cs` | the first of 13 · V13, 14 · B11, 07 · O5 (08 · P21 is dropped) | later | never two of them in one wave |
 | `LevelScaling` | the first of 13 · V12, 14 · B11, 07 · O6 | later | the same |
 | A hidden ability on `Pokemon` | the first of 14 · B5, 10 · F12, 22 · U11 | later | the same |
-| The Game Boy Advance's behaviour values | 18 · W6 | later | 20 · J1, 22 · U1 |
+| The Game Boy Advance's behaviour values | 18 · W6 | 12 (done: `0xED` to `0xFD`, `Gba/GbaBehaviours.cs`) | 20 · J1, 22 · U1 |
 | A layout swapped behind a fade | 21 · H8 | later | 22 · U4, U8, plan 23 |
 | Rock Smash's roll | the first region chapter that opens such a rock, in the chain's order | later | 19, 20 · J7, 21 · H4 |
 
