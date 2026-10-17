@@ -261,7 +261,10 @@ public sealed partial class BattleCore
             }
 
             // Octolock squeezes after the binding moves (plan 06 · R26; Showdown's residual order 14)
+            // Salt Cure beside them (plan 06 · R26b; order 13), Syrup Bomb after Octolock (order 14)
+            if (b.IsActive) SaltCures(b);
             if (b.IsActive) Octolocked(b);
+            if (b.IsActive) Syrupy(b);
 
             // Bad Dreams across the field wears at a sleeper
             if (b.IsActive && p.Status == StatusCondition.Sleep && !guarded && ActiveFoes(b).Any(foe => Has(foe, "Bad Dreams")))

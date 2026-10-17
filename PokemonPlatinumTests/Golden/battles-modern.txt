@@ -5202,7 +5202,7 @@ log:
   say Houndoom used Comeuppance!
     + Lunged P0 Category=Physical
     + MoveShown Move=Comeuppance Type=Dark Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck E0 Hp=216 Hard=false
+    ! Struck E0 Hp=96 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Octillery used Aurora Beam!
     + Lunged E1 Category=Special
@@ -5214,40 +5214,41 @@ log:
     + Fainted P1
   say Go! Raboot!
     + Entered P1 Pokemon=mine#2 Raboot FromBall=true
-  say Foe Meganium used Safeguard!
-    + Lunged E0 Category=Status
-    + MoveShown Move=Safeguard Type=Normal Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say The foe's team became cloaked in a mystical veil!
-    + SideConditionChanged Side=Enemy Condition=Safeguard Layers=1
-  say Houndoom used Torment!
-    + Lunged P0 Category=Status
-    + MoveShown Move=Torment Type=Dark Category=Status From=P0 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Foe Octillery was subjected to torment!
-  say Foe Octillery used Lock-On!
-    + Lunged E1 Category=Status
-    + MoveShown Move=Lock-On Type=Normal Category=Status From=E1 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Foe Octillery took aim at Houndoom!
-  say Raboot used Counter!
-  say But it failed!
   say Foe Meganium used Body Slam!
     + Lunged E0 Category=Physical
     + MoveShown Move=Body Slam Type=Normal Category=Physical From=E0 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P1 Hp=34 Hard=false
+    ! Struck P1 Hp=44 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
-  say Raboot sprang up!
-    + Lunged P1 Category=Status
-    + Charging P1 Move=Bounce
-    + Vanished P1
-  say Houndoom used Foul Play!
-    + Lunged P0 Category=Physical
-    + MoveShown Move=Foul Play Type=Dark Category=Physical From=P0 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Raboot used Headbutt!
+    + Lunged P1 Category=Physical
+    + MoveShown Move=Headbutt Type=Normal Category=Physical From=P1 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck E0 Hp=83 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=false
+  say Houndoom is paralyzed! It can't move!
+    + MomentShown P0 Moment=Paralyzed From=none
+  say Foe Octillery used Bubble Beam!
+    + Lunged E1 Category=Special
+    + MoveShown Move=Bubble Beam Type=Water Category=Special From=E1 To=P0 Missed=false Blocked=false Critical=false SuperEffective=true
+    ! Struck P0 Hp=40 Hard=true
+    ! HitSounded SuperEffective=true NotVeryEffective=false
+  say It's super effective!
+  say Foe Meganium used Body Slam!
+    + Lunged E0 Category=Physical
+    + MoveShown Move=Body Slam Type=Normal Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck P0 Hp=0 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=false
+  say Houndoom fainted!
+    + Fainted P0
+  say Raboot used Double-Edge!
+    + Lunged P1 Category=Physical
+    + MoveShown Move=Double-Edge Type=Normal Category=Physical From=P1 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
     ! Struck E1 Hp=0 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
+  say Raboot is hit with recoil!
+    + HpChanged P1 Hp=19 Healed=false
   say Foe Octillery fainted!
     + Fainted E1
     + TrainerReacts E1 Cue=FirstDown
-  say Houndoom gained 298 EXP. Points!
-  ExpGained Pokemon=mine#0 Houndoom Amount=298
   say Raboot gained 424 EXP. Points!
   ExpGained Pokemon=mine#2 Raboot Amount=424
   say Ace Trainer Tester sent out Nidorino!
@@ -5258,58 +5259,21 @@ log:
     + Lunged E1 Category=Status
     + MoveShown Move=Helping Hand Type=Normal Category=Status From=E1 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Nidorino is ready to help Foe Meganium!
-  say Foe Meganium used Body Slam!
-    + Lunged E0 Category=Physical
-    + MoveShown Move=Body Slam Type=Normal Category=Physical From=E0 To=P1 Missed=true Blocked=false Critical=false SuperEffective=false
-  say Raboot avoided the attack!
-  say Raboot used Bounce!
-    + Reappeared P1
-    + Lunged P1 Category=Physical
-    + MoveShown Move=Bounce Type=Flying Category=Physical From=P1 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck E1 Hp=128 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=false
-  say Raboot was poisoned!
-    + StatusChanged P1 Status=Poison
-  say Houndoom used Comeuppance!
-    + Lunged P0 Category=Physical
-    + MoveShown Move=Comeuppance Type=Dark Category=Physical From=P0 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck E1 Hp=127 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=false
-  say Raboot is hurt by poison!
-    + MomentShown P1 Moment=Poisoned From=none
-    + HpChanged P1 Hp=18 Healed=false
-  say Foe Nidorino used Helping Hand!
-    + Lunged E1 Category=Status
-    + MoveShown Move=Helping Hand Type=Normal Category=Status From=E1 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Foe Nidorino is ready to help Foe Meganium!
-  say Foe Meganium used Body Slam!
-    + Lunged E0 Category=Physical
-    + MoveShown Move=Body Slam Type=Normal Category=Physical From=E0 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P1 Hp=0 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=false
-  say Raboot fainted!
-    + Fainted P1
-  say Houndoom is paralyzed! It can't move!
-    + MomentShown P0 Moment=Paralyzed From=none
-  say Foe Nidorino used Helping Hand!
-    + Lunged E1 Category=Status
-    + MoveShown Move=Helping Hand Type=Normal Category=Status From=E1 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Foe Nidorino is ready to help Foe Meganium!
   say Foe Meganium used Giga Drain!
     + Lunged E0 Category=Special
-    + MoveShown Move=Giga Drain Type=Grass Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=0 Hard=false
+    + MoveShown Move=Giga Drain Type=Grass Category=Special From=E0 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck P1 Hp=0 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
-  say Houndoom had its energy drained!
-    + HpChanged E0 Hp=217 Healed=true
-  say Houndoom fainted!
-    + Fainted P0
+  say Raboot had its energy drained!
+    + HpChanged E0 Hp=92 Healed=true
+  say Raboot fainted!
+    + Fainted P1
   say Lucas has no Pokémon left that can fight!
   say ...  ...  ...
   say Lucas whited out!
   Ended Result=PlayerDefeat
-result: PlayerDefeat after 5 turns
+result: PlayerDefeat after 3 turns
 === battle 130
 rules: Modern rules
 format: Single
@@ -6143,7 +6107,7 @@ mine:
   mine#2 Zeraora L73 Genderless Timid Volt Absorb @nothing | Thunder Punch, Hone Claws, Discharge, Wild Charge | HP 231 Atk 166 Def 132 SpA 176 SpD 140 Spe 239
 foe: Ace Trainer Tester, ai Basic, items none
   foe#0 Nidoran♂ L61 Male Hardy Poison Point @Damp Rock | Toxic, Flatter, Poison Jab, Earth Power | HP 143 Atk 90 Def 56 SpA 58 SpD 64 Spe 72
-  foe#1 Dewgong L73 Male Docile Thick Fat @Focus Band | Dive, Aqua Tail, Ice Beam, Safeguard | HP 218 Atk 121 Def 129 SpA 113 SpD 152 Spe 113
+  foe#1 Dewgong L73 Male Docile Thick Fat @Focus Band | Aqua Tail, Ice Beam, Safeguard, Snowscape | HP 218 Atk 121 Def 129 SpA 113 SpD 152 Spe 113
   foe#2 Bayleef L43 Female Quirky Overgrow @nothing | Leech Seed, Sweet Scent, Light Screen, Body Slam | HP 106 Atk 60 Def 77 SpA 64 SpD 74 Spe 67
 log:
   Seen Species=Nidoran♂
@@ -6247,29 +6211,17 @@ log:
   say It's super effective!
   say Foe Dewgong is paralyzed! It may be unable to move!
     + StatusChanged E0 Status=Paralyze
-  say Foe Dewgong hid underwater!
-    + Lunged E0 Category=Status
-    + Charging E0 Move=Dive
-    + Vanished E0
-  say Zeraora used Hone Claws!
-    + Lunged P0 Category=Status
-    + MoveShown Move=Hone Claws Type=Dark Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Zeraora's Attack rose!
-    + StageChanged P0 Stat=Attack Stage=1 Rose=true
-  say Zeraora's accuracy rose!
-    + StageChanged P0 Stat=Accuracy Stage=1 Rose=true
-  say Foe Dewgong is paralyzed! It can't move!
-    + MomentShown E0 Moment=Paralyzed From=none
-  Reappeared E0
-  say Zeraora used Wild Charge!
+  say Foe Dewgong used Aqua Tail!
+    + Lunged E0 Category=Physical
+    + MoveShown Move=Aqua Tail Type=Water Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck P0 Hp=96 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=false
+  say Zeraora used Thunder Punch!
     + Lunged P0 Category=Physical
-    + MoveShown Move=Wild Charge Type=Electric Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=true SuperEffective=true
+    + MoveShown Move=Thunder Punch Type=Electric Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=true
     ! Struck E0 Hp=0 Hard=true
     ! HitSounded SuperEffective=true NotVeryEffective=false
-  say A critical hit!
   say It's super effective!
-  say Zeraora is hit with recoil!
-    + HpChanged P0 Hp=162 Healed=false
   say Foe Dewgong fainted!
     + Fainted E0
   say Gorebyss gained 2067 EXP. Points!
@@ -6280,14 +6232,12 @@ log:
     + Seen Species=Bayleef
     + Entered E0 Pokemon=foe#2 Bayleef FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
-  say Zeraora used Wild Charge!
-    + Lunged P0 Category=Physical
-    + MoveShown Move=Wild Charge Type=Electric Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Zeraora used Discharge!
+    + Lunged P0 Category=Special
+    + MoveShown Move=Discharge Type=Electric Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
     ! Struck E0 Hp=0 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
-  say Zeraora is hit with recoil!
-    + HpChanged P0 Hp=136 Healed=false
   say Foe Bayleef fainted!
     + Fainted E0
   say Gorebyss gained 562 EXP. Points!
@@ -6298,7 +6248,7 @@ log:
   say Lucas defeated Ace Trainer Tester!
   say Lucas received $300 for winning!
   Ended Result=PlayerVictory
-result: PlayerVictory after 9 turns
+result: PlayerVictory after 8 turns
 === battle 138
 rules: Modern rules
 format: Double

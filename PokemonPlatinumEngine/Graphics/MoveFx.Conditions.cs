@@ -80,6 +80,69 @@ internal static partial class MoveFx
         if (look.Ailment.Visible) Ailment(look.Status, look.Ailment.Age, look.Ailment.Strength * shown, look.Ailment.Seed, feet, h, w, fx);
         if (look.Confusion.Visible) ConfusionStars(look.Confusion.Age, look.Confusion.Strength * shown, look.Confusion.Seed, feet, h, w, fx);
         if (look.Love.Visible) LoveHearts(look.Love.Age, look.Love.Strength * shown, look.Love.Seed, feet, h, fx);
+        // The later moves' marks (plan 06 · R26b)
+        if (look.Salt.Visible) SaltGrains(look.Salt.Age, look.Salt.Strength * shown, look.Salt.Seed, feet, h, w, fx);
+        if (look.Syrup.Visible) SyrupDrops(look.Syrup.Age, look.Syrup.Strength * shown, look.Syrup.Seed, feet, h, w, fx);
+    }
+
+    // ------------------------------------------------------------------ the later moves' marks (plan 06 · R26b)
+
+    /// <summary>The most a later move's mark draws: salt cured (three grains on their rims and a glint), covered in syrup (three drops, one shine).</summary>
+    public const int SaltCap = 7, SyrupCap = 4;
+
+    /// <summary>The salt's glint comes once in this many seconds; a drop of syrup is this long on its way.</summary>
+    public const float SaltGlintEvery = 1.6f, SyrupTime = 2.2f;
+
+    // Where the three grains cling: across in its half-width (and which side), up in its height
+    private static readonly Vector2[] SaltSpots = { new(-0.92f, 0.22f), new(1.0f, 0.34f), new(-0.85f, 0.5f) };
+
+    /// <summary>Salt cured: three grains of salt clinging low at the edge of its body, slowly turning, a glint on one now and then.</summary>
+    public static void SaltGrains(float age, float k, int seed, Vector3 feet, float h, float w, FxList fx)
+    {
+        if (k <= 0.004f) return;
+        var body = Rgb(236, 232, 222);
+        var rim = Rgb(150, 142, 128);
+        for (int i = 0; i < SaltSpots.Length; i++)
+        {
+            var spot = SaltSpots[i];
+            float size = h * (0.07f + 0.02f * Fx.Rand(seed, i, 391));
+            var p = feet + new Vector3(spot.X * w, spot.Y * h, h * 0.04f * Fx.Signed(seed, i, 392));
+            float turn = age * (0.6f + 0.3f * Fx.Rand(seed, i, 393)) + i * 2.1f;
+            fx.Sprite(FxShape.Shard, p, size * 1.2f, Fx.Fade(rim, k), FxBlend.Alpha, turn);
+            fx.Sprite(FxShape.Shard, p, size, Fx.Fade(body, k), FxBlend.Alpha, turn);
+        }
+        // A glint on one grain for a fifth of a second once in each round
+        float t = Loop(age / SaltGlintEvery) * SaltGlintEvery;
+        if (t < 0.2f)
+        {
+            int lap = (int)MathF.Floor(age / SaltGlintEvery);
+            var spot = SaltSpots[(int)(Fx.Rand(seed, lap, 394) * SaltSpots.Length) % SaltSpots.Length];
+            var p = feet + new Vector3(spot.X * w, spot.Y * h + h * 0.03f, 0f);
+            fx.Sprite(FxShape.Spark, p, h * 0.07f * MathF.Sin(t / 0.2f * MathF.PI), Fx.Fade(Rgb(255, 255, 255), k), FxBlend.Add);
+        }
+    }
+
+    /// <summary>Covered in syrup: three drops gathering on its shoulders, swelling and sliding down to drip off.</summary>
+    public static void SyrupDrops(float age, float k, int seed, Vector3 feet, float h, float w, FxList fx)
+    {
+        if (k <= 0.004f) return;
+        var amber = Rgb(214, 120, 40);
+        var shine = Rgb(255, 214, 140);
+        // The first of the three carries a shine: four at the most
+        for (int i = 0; i < 3; i++)
+        {
+            float u = Loop(age / SyrupTime + i / 3f + Fx.Rand(seed, i, 401) * 0.1f);
+            float side = i == 1 ? 1f : -1f;
+            float x = side * w * (0.6f + 0.3f * Fx.Rand(seed, i, 402));
+            float top = h * (0.7f + 0.15f * Fx.Rand(seed, i, 403));
+            // Gathers for the first half, then slides 0.3 h down and is gone
+            float slide = u < 0.5f ? 0f : (u - 0.5f) * (u - 0.5f) * 4f;
+            float size = h * (0.06f + 0.02f * Math.Min(1f, u * 2f));
+            float fade = k * Math.Min(1f, u * 6f) * Math.Min(1f, (1f - u) * 5f);
+            var p = feet + new Vector3(x, top - h * 0.3f * slide, h * 0.05f);
+            fx.Sprite(FxShape.Drop, p, size, Fx.Fade(amber, fade), FxBlend.Alpha);
+            if (i < 1) fx.Sprite(FxShape.Dot, p + new Vector3(0f, size * 0.25f, 0f), size * 0.33f, Fx.Fade(shine, fade), FxBlend.Add);
+        }
     }
 
     // ------------------------------------------------------------------ the six conditions

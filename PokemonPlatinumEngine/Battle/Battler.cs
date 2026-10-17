@@ -11,7 +11,7 @@ namespace PokemonPlatinumEngine.Battle;
 public enum Elsewhere { No, InTheAir, Underground, Underwater, Vanished }
 
 /// <summary>What a Protect of the later games does to whoever touches it (plan 06 · R25): nothing but Protect's own, or a shield's answer.</summary>
-public enum Shield { None, KingsShield, SpikyShield, BanefulBunker, MaxGuard, Obstruct }
+public enum Shield { None, KingsShield, SpikyShield, BanefulBunker, MaxGuard, Obstruct, SilkTrap, BurningBulwark }
 
 /// <summary>
 /// One place on the field (a side and a slot: one per side in a single battle, two in a double) and the
@@ -409,6 +409,21 @@ internal sealed class Volatiles
 
     /// <summary>Octolock: held by whoever stands there, it can't leave and loses a stage of Defense and Sp. Def at each turn's end.</summary>
     public Place? OctolockedBy;
+
+    // ---- The later moves, batch 3, its second half (plan 06 · R26b)
+
+    /// <summary>Salt Cure: cured with salt, it loses HP at each turn's end while it stays in.</summary>
+    public bool SaltCured;
+
+    /// <summary>Syrup Bomb: covered by whoever stands there, it loses a stage of Speed at each turn's end until the count is done.</summary>
+    public Place? SyrupBombBy;
+    public int SyrupBombTurns;
+
+    /// <summary>Glaive Rush: until it next tries to move, every move finds it and hurts it twice as much.</summary>
+    public bool GlaiveRush;
+
+    /// <summary>Dragon Cheer: so many stages likelier to land a critical hit (two for a Dragon type as it was cheered).</summary>
+    public int DragonCheer;
 
     public Volatiles Copy() => (Volatiles)MemberwiseClone();
 

@@ -24,5 +24,13 @@
   },
   "Take Heart": {
     "target": "User"
+  },
+  // Syrup Bomb's stage of Speed is its syrup's, taken at each turn's end (Showdown's syrupbomb condition), not a
+  // side effect of the hit: the importer read the condition's boost as the move's own, which the engine's code for
+  // the move replaces (plan 06 · R26b)
+  "Syrup Bomb": {
+    "targetStatChange": null,
+    "statStageAmount": null,
+    "statChangeChancePercent": null
   }
 }

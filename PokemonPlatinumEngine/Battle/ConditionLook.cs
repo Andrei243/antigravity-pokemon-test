@@ -102,11 +102,15 @@ public sealed class ConditionLook
     public LastingMark Confusion { get; } = new();
     public LastingMark Love { get; } = new();
 
+    /// <summary>The later moves' marks (plan 06 · R26b): Salt Cure's salt and Syrup Bomb's syrup.</summary>
+    public LastingMark Salt { get; } = new();
+    public LastingMark Syrup { get; } = new();
+
     public bool Confused => Confusion.Up;
     public bool InLove => Love.Up;
 
     /// <summary>Anything at all is shown: standing or fading.</summary>
-    public bool Any => Ailment.Visible || Going.Visible || Confusion.Visible || Love.Visible;
+    public bool Any => Ailment.Visible || Going.Visible || Confusion.Visible || Love.Visible || Salt.Visible || Syrup.Visible;
 
     internal void SetStatus(StatusCondition status, ConditionLooks owner, int salt, bool instantly)
     {
@@ -131,6 +135,9 @@ public sealed class ConditionLook
         Set(Love, inLove, owner, salt + 211, instantly);
     }
 
+    internal void SetMark(MoveMark which, bool up, ConditionLooks owner, int salt, bool instantly) =>
+        Set(which == MoveMark.SaltCure ? Salt : Syrup, up, owner, salt + 307 + (int)which * 53, instantly);
+
     private static void Set(LastingMark mark, bool up, ConditionLooks owner, int salt, bool instantly)
     {
         if (up == mark.Up) return;
@@ -146,6 +153,8 @@ public sealed class ConditionLook
         Going.Clear();
         Confusion.Clear();
         Love.Clear();
+        Salt.Clear();
+        Syrup.Clear();
     }
 
     internal void Advance(float dt)
@@ -154,6 +163,8 @@ public sealed class ConditionLook
         Going.Advance(dt);
         Confusion.Advance(dt);
         Love.Advance(dt);
+        Salt.Advance(dt);
+        Syrup.Advance(dt);
     }
 }
 
@@ -208,6 +219,9 @@ public sealed class ConditionLooks
             case VolatileChanged passing:
                 Of(passing.Place).SetPassing(passing.Confused, passing.InLove, this, Salt(passing.Place), instantly: false);
                 return true;
+            case MarkChanged mark:
+                Of(mark.Place).SetMark(mark.Mark, mark.On, this, Salt(mark.Place), instantly: false);
+                return true;
             case Fainted fainted:
                 Of(fainted.Place).Clear();
                 return true;
@@ -242,6 +256,18 @@ public sealed class ConditionLooks
         look.SetPassing(rules.Confused, rules.InLove, this, Salt(place), instantly: true);
     }
 
+    /// <summary>What the rules have of the later moves' marks on the Pokémon in a place (plan 06 · R26b): salt cured, covered in syrup.</summary>
+    public static (bool Salt, bool Syrup) MarksRulesHave(Battler place) =>
+        place.IsActive ? (place.Volatile.SaltCured, place.Volatile.SyrupBombBy != null) : (false, false);
+
+    /// <summary>The later moves' marks as the rules have them once a menu opens, with nothing played (as <see cref="Settle"/>).</summary>
+    public void SettleMarks(Place place, (bool Salt, bool Syrup) rules)
+    {
+        var look = Of(place);
+        look.SetMark(MoveMark.SaltCure, rules.Salt, this, Salt(place), instantly: true);
+        look.SetMark(MoveMark.SyrupBomb, rules.Syrup, this, Salt(place), instantly: true);
+    }
+
     /// <summary>The first place that shows otherwise than the rules have it, or null when none does.</summary>
     public string? Difference(BattleCore rules)
     {
@@ -252,6 +278,9 @@ public sealed class ConditionLooks
             if (look.Status != have.Status) return $"{b.Side} {b.Slot} ({b.Pokemon?.DisplayName}): shown {look.Status}, the rules have {have.Status}";
             if (look.Confused != have.Confused) return $"{b.Side} {b.Slot} ({b.Pokemon?.DisplayName}): shown {(look.Confused ? "confused" : "not confused")}, the rules have it {(have.Confused ? "confused" : "not")}";
             if (look.InLove != have.InLove) return $"{b.Side} {b.Slot} ({b.Pokemon?.DisplayName}): shown {(look.InLove ? "in love" : "not in love")}, the rules have it {(have.InLove ? "in love" : "not")}";
+            var marks = MarksRulesHave(b);
+            if (look.Salt.Up != marks.Salt) return $"{b.Side} {b.Slot} ({b.Pokemon?.DisplayName}): shown salt cured {look.Salt.Up}, the rules have {marks.Salt}";
+            if (look.Syrup.Up != marks.Syrup) return $"{b.Side} {b.Slot} ({b.Pokemon?.DisplayName}): shown in syrup {look.Syrup.Up}, the rules have {marks.Syrup}";
         }
         return null;
     }

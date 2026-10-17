@@ -149,8 +149,8 @@ public static partial class DamageCalculator
             if (spread) damage = Formulas.Modify(damage, 3072);
             if (typed && !selfHit)
             {
-                bool strong = (weather == BattleWeather.Sun && type == PokemonType.Fire) || (weather == BattleWeather.Rain && type == PokemonType.Water);
-                bool weak = (weather == BattleWeather.Sun && type == PokemonType.Water) || (weather == BattleWeather.Rain && type == PokemonType.Fire);
+                bool strong = (weather == BattleWeather.Sun && (type == PokemonType.Fire || SteamsInTheSun(move.Data, weather))) || (weather == BattleWeather.Rain && type == PokemonType.Water);
+                bool weak = (weather == BattleWeather.Sun && type == PokemonType.Water && !SteamsInTheSun(move.Data, weather)) || (weather == BattleWeather.Rain && type == PokemonType.Fire);
                 if (strong) damage = Formulas.Modify(damage, 6144);
                 else if (weak) damage = Formulas.Modify(damage, 2048);
             }
@@ -172,6 +172,8 @@ public static partial class DamageCalculator
             bool screened = side != null && !result.IsCritical && !pastScreens && !selfHit && ((physical ? side.Reflect : side.LightScreen) || side.AuroraVeil);
             if (screened) final.Add(field!.Standing(defender.Side) >= 2 ? 2732 : 2048);
             if (result.IsCritical) final.Add(Formulas.In4096ths(attackerEffects.Aggregate(1f, (m, e) => Math.Max(m, e.CriticalBoost))));
+            // Glaive Rush leaves its user open to twice the hurt (plan 06 · R26b)
+            if (defender.Volatile.GlaiveRush) final.Add(8192);
             if (typed)
             {
                 foreach (var e in attackerEffects) final.Add(Formulas.In4096ths(e.DamageMultiplier(attacker, defender, move, result.TypeMultiplier)));

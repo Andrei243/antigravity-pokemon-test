@@ -272,7 +272,8 @@ public class DataFileTests
         Assert.Equal(MoveEffectSupport.Full, MoveDatabase.Get("Fake Out").Support);
         // Every one of Platinum's 467 moves runs in full since plan 06 · R6; what is still to write is among the later games' moves
         Assert.All(MoveDatabase.GetAll().Where(m => m.Id <= 467), m => Assert.Equal(MoveEffectSupport.Full, m.Support));
-        Assert.Contains(MoveDatabase.GetAll(), m => m.Id > 467 && m.Support == MoveEffectSupport.None);
+        // and since plan 06 · R26b every later move at least hits: none is flagged as doing nothing
+        Assert.DoesNotContain(MoveDatabase.GetAll(), m => m.Support == MoveEffectSupport.None);
         Assert.Equal((50, "HealHalfMoreInSun"), (MoveDatabase.Get("Synthesis").HealPercent, MoveDatabase.Get("Synthesis").Effect));
     }
 

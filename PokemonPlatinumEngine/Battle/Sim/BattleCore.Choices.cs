@@ -52,6 +52,7 @@ public sealed partial class BattleCore
         // The later moves that keep a move back (plan 06 · R25): Throat Chop a sound move, and Belch until a berry is eaten
         if (ThroatChopped(mine, data)) return Text.Of("battle.cantUseBecauseOfThroatChop", ("pokemon", mine.Name), ("move", move.DisplayName));
         if (data.Effect == "Belch" && !ateBerry.Contains(mine.Pokemon!)) return Text.Of("battle.isDisabled", ("pokemon", mine.Name), ("move", move.DisplayName));
+        if (CantUseTwice(mine, data)) return Text.Of("battle.cantUseTwiceInARow", ("pokemon", mine.Name), ("move", move.DisplayName));
         if (IsSealed(mine, data)) return Text.Of("battle.cantUseTheSealed", ("pokemon", mine.Name), ("move", move.DisplayName));
         if (Field.Gravity && FailsUnderGravity(data)) return Text.Of("battle.cantUseBecauseOf", ("pokemon", mine.Name), ("move", move.DisplayName));
         if (v.HealBlockTurns > 0 && IsHealingMove(data)) return Text.Of("battle.cantUseWhileIt", ("pokemon", mine.Name), ("move", move.DisplayName));

@@ -14925,7 +14925,6 @@
     "flags": "Protect",
     "effect": "DynamaxCannon",
     "effectChance": 100,
-    "support": "Partial",
     "zPower": 180,
     "maxPower": 130
   },
@@ -15481,7 +15480,6 @@
     "flags": "Contact, Protect, Mirror",
     "effect": "DynamaxCannon",
     "effectChance": 100,
-    "support": "Partial",
     "zPower": 180,
     "maxPower": 130
   },
@@ -15498,7 +15496,6 @@
     "flags": "Contact, Protect, Mirror",
     "effect": "DynamaxCannon",
     "effectChance": 100,
-    "support": "Partial",
     "zPower": 180,
     "maxPower": 130
   },
@@ -16661,8 +16658,7 @@
     "priority": 4,
     "description": "",
     "target": "User",
-    "effect": "SilkTrap",
-    "support": "None"
+    "effect": "SilkTrap"
   },
   {
     "id": 853,
@@ -16677,7 +16673,6 @@
     "confuseChancePercent": 30,
     "flags": "Contact, Protect, Mirror",
     "effect": "AxeKick",
-    "support": "Partial",
     "zPower": 190,
     "maxPower": 95
   },
@@ -16693,7 +16688,6 @@
     "description": "",
     "flags": "Protect, Mirror",
     "effect": "LastRespects",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 100
   },
@@ -16712,7 +16706,6 @@
     "statChangeChancePercent": 100,
     "flags": "Protect, Mirror",
     "effect": "LuminaCrash",
-    "support": "Partial",
     "zPower": 160,
     "maxPower": 130
   },
@@ -16728,7 +16721,6 @@
     "description": "",
     "flags": "Protect",
     "effect": "OrderUp",
-    "support": "Partial",
     "zPower": 160,
     "maxPower": 130
   },
@@ -16745,7 +16737,6 @@
     "description": "",
     "flags": "Contact, Punch, Protect, Mirror",
     "effect": "JetPunch",
-    "support": "Partial",
     "zPower": 120,
     "maxPower": 110
   },
@@ -16760,8 +16751,7 @@
     "maxPP": 15,
     "description": "",
     "flags": "Protect, Reflectable, Mirror",
-    "effect": "SpicyExtract",
-    "support": "None"
+    "effect": "SpicyExtract"
   },
   {
     "id": 859,
@@ -16779,7 +16769,6 @@
     "statChangeChancePercent": 100,
     "flags": "Contact, Protect, Mirror",
     "effect": "SpinOut",
-    "support": "Partial",
     "zPower": 180,
     "maxPower": 130
   },
@@ -16795,7 +16784,6 @@
     "description": "",
     "flags": "Contact, Protect, Mirror",
     "effect": "PopulationBomb",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 90
   },
@@ -16811,7 +16799,6 @@
     "description": "",
     "flags": "Contact, Protect, Mirror",
     "effect": "IceSpinner",
-    "support": "Partial",
     "zPower": 160,
     "maxPower": 130
   },
@@ -16827,7 +16814,6 @@
     "description": "",
     "flags": "Contact, Protect, Mirror",
     "effect": "GlaiveRush",
-    "support": "Partial",
     "zPower": 190,
     "maxPower": 140
   },
@@ -16842,8 +16828,7 @@
     "maxPP": 1,
     "description": "",
     "target": "User",
-    "effect": "RevivalBlessing",
-    "support": "None"
+    "effect": "RevivalBlessing"
   },
   {
     "id": 864,
@@ -16857,7 +16842,6 @@
     "description": "",
     "flags": "Protect, Mirror",
     "effect": "SaltCure",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 90
   },
@@ -16873,7 +16857,6 @@
     "description": "",
     "flags": "Contact, Protect, Mirror",
     "effect": "TripleDive",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 90
   },
@@ -16892,7 +16875,6 @@
     "target": "AllFoes",
     "flags": "Contact, Protect, Mirror",
     "effect": "MortalSpin",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 70
   },
@@ -16906,8 +16888,7 @@
     "accuracy": 100,
     "maxPP": 10,
     "description": "",
-    "effect": "Doodle",
-    "support": "None"
+    "effect": "Doodle"
   },
   {
     "id": 868,
@@ -16919,10 +16900,17 @@
     "accuracy": 0,
     "maxPP": 10,
     "description": "",
+    "targetStatChange": "Attack",
+    "statStageAmount": 2,
+    "statChangeTargetSelf": true,
+    "statChangeChancePercent": 100,
+    "alsoChangesStats": [
+      "SpAttack",
+      "Speed"
+    ],
     "target": "User",
     "flags": "Snatch",
-    "effect": "FilletAway",
-    "support": "None"
+    "effect": "FilletAway"
   },
   {
     "id": 869,
@@ -16936,7 +16924,6 @@
     "description": "",
     "flags": "Contact, Protect, Mirror",
     "effect": "KowtowCleave",
-    "support": "Partial",
     "zPower": 160,
     "maxPower": 130
   },
@@ -16952,7 +16939,6 @@
     "description": "",
     "flags": "Protect, Mirror",
     "effect": "FlowerTrick",
-    "support": "Partial",
     "zPower": 140,
     "maxPower": 120
   },
@@ -16972,7 +16958,6 @@
     "statChangeChancePercent": 100,
     "flags": "Sound, Protect, Mirror",
     "effect": "TorchSong",
-    "support": "Partial",
     "zPower": 160,
     "maxPower": 130
   },
@@ -16992,7 +16977,6 @@
     "statChangeChancePercent": 100,
     "flags": "Contact, Dance, Protect, Mirror",
     "effect": "AquaStep",
-    "support": "Partial",
     "zPower": 160,
     "maxPower": 130
   },
@@ -17008,7 +16992,6 @@
     "description": "",
     "flags": "Contact, Protect, Mirror",
     "effect": "RagingBull",
-    "support": "Partial",
     "zPower": 175,
     "maxPower": 130
   },
@@ -17029,7 +17012,6 @@
     "target": "AllFoes",
     "flags": "Protect, Mirror",
     "effect": "MakeItRain",
-    "support": "Partial",
     "zPower": 190,
     "maxPower": 140
   },
@@ -17045,7 +17027,6 @@
     "description": "",
     "flags": "Contact, Protect, Mirror",
     "effect": "Psyblade",
-    "support": "Partial",
     "zPower": 160,
     "maxPower": 130
   },
@@ -17061,7 +17042,6 @@
     "description": "",
     "flags": "Protect, Mirror",
     "effect": "HydroSteam",
-    "support": "Partial",
     "zPower": 160,
     "maxPower": 130
   },
@@ -17077,7 +17057,6 @@
     "description": "",
     "flags": "Protect, Mirror",
     "effect": "Ruination",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 100
   },
@@ -17093,7 +17072,6 @@
     "description": "",
     "flags": "Contact, Protect, Mirror",
     "effect": "CollisionCourse",
-    "support": "Partial",
     "zPower": 180,
     "maxPower": 90
   },
@@ -17109,7 +17087,6 @@
     "description": "",
     "flags": "Contact, Protect, Mirror",
     "effect": "ElectroDrift",
-    "support": "Partial",
     "zPower": 180,
     "maxPower": 130
   },
@@ -17125,7 +17102,6 @@
     "description": "",
     "target": "User",
     "effect": "ShedTail",
-    "support": "None",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -17141,8 +17117,7 @@
     "maxPP": 10,
     "description": "",
     "target": "Field",
-    "effect": "ChillyReception",
-    "support": "None"
+    "effect": "ChillyReception"
   },
   {
     "id": 882,
@@ -17155,8 +17130,7 @@
     "maxPP": 10,
     "description": "",
     "target": "User",
-    "effect": "TidyUp",
-    "support": "None"
+    "effect": "TidyUp"
   },
   {
     "id": 883,
@@ -17169,8 +17143,7 @@
     "maxPP": 10,
     "description": "",
     "target": "Field",
-    "effect": "Snowscape",
-    "support": "None"
+    "effect": "Snowscape"
   },
   {
     "id": 884,
@@ -17187,7 +17160,6 @@
     "statChangeChancePercent": 100,
     "flags": "Contact, Protect, Mirror",
     "effect": "Pounce",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 100
   },
@@ -17207,7 +17179,6 @@
     "statChangeChancePercent": 100,
     "flags": "Contact, Protect, Mirror",
     "effect": "Trailblaze",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 100
   },
@@ -17226,7 +17197,6 @@
     "statChangeChancePercent": 100,
     "flags": "Protect, Mirror",
     "effect": "ChillingWater",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 100
   },
@@ -17242,7 +17212,6 @@
     "description": "",
     "flags": "Contact, Mirror",
     "effect": "HyperDrill",
-    "support": "Partial",
     "zPower": 180,
     "maxPower": 130
   },
@@ -17258,7 +17227,6 @@
     "description": "",
     "flags": "Protect, Mirror",
     "effect": "TwinBeam",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 90
   },
@@ -17274,7 +17242,6 @@
     "description": "",
     "flags": "Contact, Punch, Protect, Mirror",
     "effect": "RageFist",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 100
   },
@@ -17297,7 +17264,6 @@
     ],
     "flags": "Protect, Mirror",
     "effect": "ArmorCannon",
-    "support": "Partial",
     "zPower": 190,
     "maxPower": 140
   },
@@ -17314,7 +17280,6 @@
     "drainPercent": 50,
     "flags": "Contact, Protect, Mirror",
     "effect": "BitterBlade",
-    "support": "Partial",
     "zPower": 175,
     "maxPower": 130
   },
@@ -17330,7 +17295,6 @@
     "description": "",
     "flags": "Contact, Protect, Mirror",
     "effect": "DoubleShock",
-    "support": "Partial",
     "zPower": 190,
     "maxPower": 140
   },
@@ -17346,7 +17310,6 @@
     "description": "",
     "flags": "Protect, Mirror",
     "effect": "GigatonHammer",
-    "support": "Partial",
     "zPower": 200,
     "maxPower": 150
   },
@@ -17362,7 +17325,6 @@
     "description": "",
     "flags": "Contact, Protect, Mirror",
     "effect": "Comeuppance",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 100
   },
@@ -17379,7 +17341,6 @@
     "critStage": 1,
     "flags": "Protect, Mirror",
     "effect": "AquaCutter",
-    "support": "Partial",
     "zPower": 140,
     "maxPower": 120
   },
@@ -17396,7 +17357,6 @@
     "inflictStatus": "Burn",
     "statusChancePercent": 30,
     "effect": "BlazingTorque",
-    "support": "Partial",
     "zPower": 160,
     "maxPower": 130
   },
@@ -17413,7 +17373,6 @@
     "inflictStatus": "Sleep",
     "statusChancePercent": 10,
     "effect": "WickedTorque",
-    "support": "Partial",
     "zPower": 160,
     "maxPower": 130
   },
@@ -17430,7 +17389,6 @@
     "inflictStatus": "Poison",
     "statusChancePercent": 30,
     "effect": "NoxiousTorque",
-    "support": "Partial",
     "zPower": 180,
     "maxPower": 90
   },
@@ -17447,7 +17405,6 @@
     "inflictStatus": "Paralyze",
     "statusChancePercent": 30,
     "effect": "CombatTorque",
-    "support": "Partial",
     "zPower": 180,
     "maxPower": 90
   },
@@ -17463,7 +17420,6 @@
     "description": "",
     "confuseChancePercent": 30,
     "effect": "MagicalTorque",
-    "support": "Partial",
     "zPower": 180,
     "maxPower": 130
   },
@@ -17479,7 +17435,6 @@
     "description": "",
     "flags": "Protect, Mirror",
     "effect": "BloodMoon",
-    "support": "Partial",
     "zPower": 200,
     "maxPower": 140
   },
@@ -17498,7 +17453,6 @@
     "drainPercent": 50,
     "flags": "Protect, Mirror",
     "effect": "MatchaGotcha",
-    "support": "Partial",
     "zPower": 160,
     "maxPower": 130
   },
@@ -17512,12 +17466,8 @@
     "accuracy": 85,
     "maxPP": 10,
     "description": "",
-    "targetStatChange": "Speed",
-    "statStageAmount": -1,
-    "statChangeChancePercent": 100,
     "flags": "Ballistic, Protect, Mirror",
     "effect": "SyrupBomb",
-    "support": "Partial",
     "zPower": 120,
     "maxPower": 110
   },
@@ -17534,7 +17484,6 @@
     "critStage": 1,
     "flags": "Protect, Mirror",
     "effect": "IvyCudgel",
-    "support": "Partial",
     "zPower": 180,
     "maxPower": 130
   },
@@ -17550,7 +17499,6 @@
     "description": "",
     "flags": "Protect, Mirror",
     "effect": "ElectroShot",
-    "support": "Partial",
     "zPower": 195,
     "maxPower": 140
   },
@@ -17583,7 +17531,6 @@
     "description": "",
     "flags": "Protect, Mirror",
     "effect": "FickleBeam",
-    "support": "Partial",
     "zPower": 160,
     "maxPower": 130
   },
@@ -17599,8 +17546,7 @@
     "priority": 4,
     "description": "",
     "target": "User",
-    "effect": "BurningBulwark",
-    "support": "None"
+    "effect": "BurningBulwark"
   },
   {
     "id": 909,
@@ -17615,7 +17561,6 @@
     "description": "",
     "flags": "Protect, Mirror",
     "effect": "Thunderclap",
-    "support": "Partial",
     "zPower": 140,
     "maxPower": 120
   },
@@ -17631,7 +17576,6 @@
     "description": "",
     "flags": "Contact, Mirror",
     "effect": "MightyCleave",
-    "support": "Partial",
     "zPower": 175,
     "maxPower": 130
   },
@@ -17647,7 +17591,6 @@
     "description": "",
     "flags": "Protect, Mirror",
     "effect": "TachyonCutter",
-    "support": "Partial",
     "zPower": 180,
     "maxPower": 140
   },
@@ -17663,7 +17606,6 @@
     "description": "",
     "flags": "Contact, Protect, Mirror",
     "effect": "HardPress",
-    "support": "None",
     "zPower": 100,
     "maxPower": 100
   },
@@ -17678,8 +17620,7 @@
     "maxPP": 15,
     "description": "",
     "target": "Allies",
-    "effect": "DragonCheer",
-    "support": "None"
+    "effect": "DragonCheer"
   },
   {
     "id": 914,
@@ -17693,7 +17634,6 @@
     "description": "",
     "flags": "Sound, Protect, Mirror",
     "effect": "AlluringVoice",
-    "support": "Partial",
     "zPower": 160,
     "maxPower": 130
   },
@@ -17709,7 +17649,6 @@
     "description": "",
     "flags": "Contact, Protect, Mirror",
     "effect": "TemperFlare",
-    "support": "Partial",
     "zPower": 140,
     "maxPower": 130
   },
@@ -17725,7 +17664,6 @@
     "description": "",
     "flags": "Contact, Protect, Mirror",
     "effect": "SupercellSlam",
-    "support": "Partial",
     "zPower": 180,
     "maxPower": 130
   },
@@ -17741,7 +17679,6 @@
     "description": "",
     "flags": "Sound, Protect, Mirror",
     "effect": "PsychicNoise",
-    "support": "Partial",
     "zPower": 140,
     "maxPower": 130
   },
@@ -17759,7 +17696,6 @@
     "flinchChancePercent": 100,
     "flags": "Contact, Protect, Mirror",
     "effect": "UpperHand",
-    "support": "Partial",
     "zPower": 120,
     "maxPower": 85
   },
@@ -17777,7 +17713,6 @@
     "statusChancePercent": 50,
     "flags": "Protect, Mirror",
     "effect": "MalignantChain",
-    "support": "Partial",
     "zPower": 180,
     "maxPower": 90
   },
