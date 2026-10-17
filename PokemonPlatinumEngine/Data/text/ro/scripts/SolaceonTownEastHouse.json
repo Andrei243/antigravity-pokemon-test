@@ -5,7 +5,7 @@
         "Oh, a Trainer! You don't have a Seal Case, do you? I can tell by looking. Here, take this one. I've more than I'll ever use."
       ],
       "text": [
-        "O, un Antrenor! N-ai o Seal Case, nu? Se vede cu ochiul liber. Poftim, ia-o pe asta. Am mai multe decât o să folosesc vreodată."
+        "O, un Antrenor! N-ai o Cutie de Stickere, nu? Se vede cu ochiul liber. Poftim, ia-o pe asta. Am mai multe decât o să folosesc vreodată."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "{player} put the Seals away in the Seal Case."
       ],
       "text": [
-        "{player} a pus Stickerele în Seal Case."
+        "{player} a pus Stickerele în Cutia de Stickere."
       ]
     },
     {
@@ -65,7 +65,7 @@
       ],
       "text": [
         "{player} a primit {seals} × {seal}!",
-        "{player} le-a pus în Seal Case."
+        "{player} le-a pus în Cutia de Stickere."
       ]
     },
     {

@@ -799,9 +799,10 @@ public partial class BattleEngine
             }
             case TrainerReacts reacts:
                 // What the trainer says, read straight after the line it came with (plan 11 · C12): the face's own
-                // line, so the screen never takes the rules' state while it waits. Nothing with the option off.
+                // line, so the screen never takes the rules' state while it waits. Nothing with the option off. The
+                // words are the chosen language's (plan 17 · N6): the data files' table keyed by the English line
                 if (SpeaksTrainerLines && At(reacts.Place).Trainer is { } speaker && TrainerLines.For(speaker.Id, reacts.Cue) is { } said)
-                    interlude.Enqueue(new Line(PlayerIdentity.Fill(said.Text), null, PlayerIdentity.Fill(speaker.Name)));
+                    interlude.Enqueue(new Line(PlayerIdentity.Fill(Text.OfData(said.Text)), null, PlayerIdentity.Fill(speaker.Name)));
                 break;
             case Won:
                 AudioManager.PlayMusic(MusicDirector.VictoryRole(MusicDirector.BattleRole(Trainers.Select(t => t.TrainerClass))));

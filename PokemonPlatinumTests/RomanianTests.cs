@@ -1,6 +1,9 @@
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using PokemonPlatinumEngine.Battle;
+using PokemonPlatinumEngine.Battle.Sim;
+using PokemonPlatinumEngine.Models;
+using static PokemonPlatinumTests.Scenario;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Core.Diagnostics;
 using PokemonPlatinumEngine.Data;
@@ -141,7 +144,9 @@ public class RomanianTests
                 p.Lines.Study, p.Lines.Enough, p.Lines.BoyOrGirl, p.Lines.AskName, p.Lines.NextDoor, p.Lines.NeverStill, p.Lines.FineName,
                 p.Lines.OfCourse, p.Lines.Story, p.Lines.OffYouGo })
             .ToHashSet(StringComparer.Ordinal);
-        // Every line of the table is a line a region's file has (a line rewritten in English leaves its entry behind)
+        // The battle's trainer lines share the table (plan 17 · N6, wave 20)
+        lines.UnionWith(TrainerLineTexts());
+        // Every line of the table is a line a region's file or trainer-lines.json has (a line rewritten in English leaves its entry behind)
         Assert.Empty(table.Keys.Where(k => !lines.Contains(k)).OrderBy(k => k));
         // Every line of Sinnoh's professor is in it, with the placeholders its English has and no character the faces lack
         var sinnoh = RegionDatabase.Get(RegionDatabase.Sinnoh)!.Professor!.Lines;
@@ -161,6 +166,73 @@ public class RomanianTests
         }
         finally { Text.Use(Text.English); }
         Assert.Equal(sinnoh.Hello, Text.OfData(sinnoh.Hello));
+    }
+
+    /// <summary>Every line of <c>trainer-lines.json</c>, as its English is written.</summary>
+    private static HashSet<string> TrainerLineTexts() =>
+        TrainerLines.All.SelectMany(e => Enum.GetValues<TrainerCue>().Select(cue => e.Value.For(cue)?.Text))
+            .Where(t => !string.IsNullOrEmpty(t)).Select(t => t!).ToHashSet(StringComparer.Ordinal);
+
+    [Fact]
+    public void EveryTrainerLineHasARomanianOneThatFitsTheBattlesTwoLines()
+    {
+        var table = Text.DataTable(Romanian);
+        string longest = new('W', PlayerIdentity.MaxNameLength);
+        var wrong = new List<string>();
+        foreach (string en in TrainerLineTexts().OrderBy(t => t, StringComparer.Ordinal))
+        {
+            if (!table.TryGetValue(en, out var ro) || ro.Length == 0) { wrong.Add($"no Romanian for: {en}"); continue; }
+            // The same placeholders as the English, no more and no fewer
+            var holes = Regex.Matches(en, @"\{[a-z]+\}").Select(m => m.Value).OrderBy(h => h).ToList();
+            if (!holes.SequenceEqual(Regex.Matches(ro, @"\{[a-z]+\}").Select(m => m.Value).OrderBy(h => h)))
+                wrong.Add($"placeholders differ: {ro}");
+            if (ro.Contains('ş') || ro.Contains('ţ') || ro.Contains('ã')) wrong.Add($"cedilla or ã: {ro}");
+            string shown = PlayerIdentity.Fill(ro, longest, PlayerLook.Boy, longest);
+            if (TextMetrics.Undrawable(shown, UiWeight.ExtraBold).Any()) wrong.Add($"can't be drawn: {ro}");
+            var rows = TextMetrics.Wrap(shown, ModernUi.MessageBoxWidth - ModernUi.MessageMargin, ModernUi.MessageSize, UiWeight.ExtraBold);
+            if (rows.Count > 2) wrong.Add($"runs past the box's two lines: {ro}");
+        }
+        Assert.True(wrong.Count == 0, string.Join("\n", wrong));
+    }
+
+    [Fact]
+    public void ATrainerSpeaksRomanianInBattleAndEnglishStaysAsItWas()
+    {
+        string firstDown = TrainerLines.For("leader_roark", TrainerCue.FirstDown)!.Text;
+        List<string> Said()
+        {
+            var party = new Party();
+            party.Add(Mon("Gible", 50, "Dragon Rage"));
+            var roark = new Trainer { Id = "leader_roark", Name = "Roark", TrainerClass = "Leader", PrizeMoney = 1000 };
+            roark.Party.Add(Mon("Bidoof", 5, "Growl"));
+            roark.Party.Add(Mon("Bidoof", 30, "Growl"));
+            var battle = new BattleEngine(new BattleSetup
+            {
+                PlayerParty = party, Inventory = new Inventory(), Pokedex = new Pokedex(), Trainers = new List<Trainer> { roark },
+                Random = CoreScenario.Calm(), Rules = Ruleset.Platinum, TrainerLines = true
+            });
+            Settle(battle);
+            battle.SelectMove(0);
+            var said = new List<string>();
+            for (int i = 0; i < 400 && !battle.IsBattleOver; i++)
+            {
+                if (battle.HUD.MenuState is not (BattleMenuState.Message or BattleMenuState.LearnMove)) break;
+                if (battle.IsWaitingForConfirm && battle.CurrentSpeaker == "Roark") said.Add(battle.CurrentMessage);
+                battle.ConfirmMessage();
+                battle.Update(1f / 60f);
+            }
+            return said;
+        }
+        Assert.Contains(firstDown, Said());
+        try
+        {
+            Text.Use(Romanian);
+            var said = Said();
+            Assert.Contains(Text.DataTable(Romanian)[firstDown], said);
+            Assert.DoesNotContain(firstDown, said);
+        }
+        finally { Text.Use(Text.English); }
+        Assert.Contains(firstDown, Said());
     }
 
     [Fact]

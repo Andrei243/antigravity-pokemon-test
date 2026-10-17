@@ -307,7 +307,7 @@
         "There are no Seals in the Seal Case."
       ],
       "text": [
-        "Nu e niciun Sticker în Seal Case."
+        "Nu e niciun Sticker în Cutia de Stickere."
       ]
     }
   ],
@@ -567,7 +567,7 @@
         "{player} used an Escape Rope."
       ],
       "text": [
-        "{player} a folosit un Escape Rope."
+        "{player} a folosit o Frânghie."
       ]
     }
   ],
@@ -691,7 +691,7 @@
         "The Repel's effect wore off..."
       ],
       "text": [
-        "Efectul de Repel s-a terminat..."
+        "Efectul Spray-ului s-a terminat..."
       ]
     }
   ],
@@ -735,7 +735,7 @@
         "Spread some Honey on the bark?"
       ],
       "text": [
-        "Întinzi niște Honey pe scoarță?"
+        "Întinzi niște Miere pe scoarță?"
       ]
     },
     {
@@ -743,7 +743,7 @@
         "{player} spread Honey all over the bark."
       ],
       "text": [
-        "{player} a întins Honey peste toată scoarța."
+        "{player} a întins Miere peste toată scoarța."
       ]
     }
   ],
@@ -753,7 +753,7 @@
         "{player} used the Honey."
       ],
       "text": [
-        "{player} a folosit Honey."
+        "{player} a folosit Miere."
       ]
     },
     {
