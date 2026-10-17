@@ -13,8 +13,10 @@ namespace PokemonPlatinumTests;
 /// <summary>
 /// The region record (plan 18 · W1): what the engine read by name for Sinnoh now comes from
 /// <c>Data/regions/&lt;id&gt;.json</c>, region by region, and the introduction, the briefcase and a new game's
-/// beginning follow the region they are handed.
+/// beginning follow the region they are handed. It begins and loads whole games, which put the modern rules in force
+/// for the whole process (plan 06 · R19), so it runs alone and puts Platinum's back as it ends.
 /// </summary>
+[Collection("Shared clocks and dice")]
 public class RegionRecordTests
 {
     private const float Frame = 1f / 60f;
@@ -249,6 +251,8 @@ public class RegionRecordTests
         {
             SavePaths.Current = paths;
             PlayerIdentity.SetRival(null);
+            // The games put the modern rules in force; the rest of the run reads Platinum's baseline (as HeadlessGameTests)
+            Ruleset.Use(RulesPreset.Platinum);
             try { Directory.Delete(folder, true); } catch (IOException) { }
         }
     }
