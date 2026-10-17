@@ -1,0 +1,23 @@
+{
+  "displayName": {
+    "en": [
+      "Route 222"
+    ],
+    "text": [
+      "Ruta 222"
+    ]
+  },
+  "people": {
+    "fisherman": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          "Pescarul"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

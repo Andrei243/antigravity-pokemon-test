@@ -1,0 +1,404 @@
+{
+  "people": {
+    "rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      }
+    },
+    "buck": {
+      "name": {
+        "en": [
+          "Buck"
+        ],
+        "text": [
+          "Buck"
+        ]
+      }
+    },
+    "flint": {
+      "name": {
+        "en": [
+          "Flint"
+        ],
+        "text": [
+          "Flint"
+        ]
+      },
+      "before": {
+        "en": [
+          "Flint: Burn as bright as you can! I want to see it!"
+        ],
+        "text": [
+          "Flint: Ardeți cât de tare puteți! Vreau să văd!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Flint: ... ... ..."
+        ],
+        "text": [
+          "Flint: ... ... ..."
+        ]
+      }
+    },
+    "volkner": {
+      "name": {
+        "en": [
+          "Volkner"
+        ],
+        "text": [
+          "Volkner"
+        ]
+      }
+    },
+    "palmer": {
+      "name": {
+        "en": [
+          "Palmer"
+        ],
+        "text": [
+          "Palmer"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Palmer: You'll find me at the top of the Battle Tower."
+        ],
+        "text": [
+          "Palmer: Mă găsești în vârful lui Battle Tower."
+        ]
+      }
+    },
+    "ace_trainer_m_2": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          "Antrenor As"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hold on. You've a Pokédex there, haven't you? But only Sinnoh's Pokémon are in it.",
+          "The routes behind us are full of Pokémon it has never heard of. Come back when it knows the whole world's."
+        ],
+        "text": [
+          "Stai puțin. Ai un Pokédex acolo, nu? Dar în el sunt doar Pokémonii din Sinnoh.",
+          "Rutele din spatele nostru sunt pline de Pokémoni de care n-a auzit niciodată. Revino când îi știe pe cei din toată lumea."
+        ]
+      }
+    },
+    "black_belt_2": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          "Centură Neagră"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Have you been up to the Battle Frontier's gate yet? No?",
+          "Then you've no business on the road north! Go and see what the strong look like first. Hah!"
+        ],
+        "text": [
+          "Ai fost deja sus, la poarta Battle Frontier? Nu?",
+          "Atunci n-ai ce căuta pe drumul spre nord! Du-te întâi să vezi cum arată cei puternici. Ha!"
+        ]
+      }
+    },
+    "ace_trainer_m_3": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          "Antrenor As"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "You learn a great deal just by watching a battle between the best. I've stood here since breakfast."
+        ],
+        "text": [
+          "Înveți o mulțime doar uitându-te la o luptă între cei mai buni. Stau aici de la micul dejun."
+        ]
+      }
+    },
+    "ace_trainer_f_2": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          "Antrenor As"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "One of the Elite Four and a Gym Leader, battling side by side! I picked a lucky day to come."
+        ],
+        "text": [
+          "Unul din Elita celor Patru și un Lider de Arenă, luptând umăr la umăr! Am nimerit o zi norocoasă să vin."
+        ]
+      }
+    },
+    "black_belt_3": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          "Centură Neagră"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hrmm... Every move those two make gives me something to think about. A lot to think about!"
+        ],
+        "text": [
+          "Hmm... Fiecare mișcare a ălor doi îmi dă de gândit. Multe de gândit!"
+        ]
+      }
+    },
+    "battle_girl_2": {
+      "name": {
+        "en": [
+          "Battle Girl"
+        ],
+        "text": [
+          "Luptătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Are Volkner and Flint friends? They don't seem a bit alike. One's all fire and the other hardly says a word!"
+        ],
+        "text": [
+          "Volkner și Flint sunt prieteni? Nu seamănă deloc. Unul e numai foc și celălalt abia scoate o vorbă!"
+        ]
+      }
+    },
+    "sailor_3": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          "Marinar"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Fire and lightning on one team! Now there's a pairing you don't meet at sea every day."
+        ],
+        "text": [
+          "Foc și fulger în aceeași echipă! Asta da pereche pe care n-o întâlnești pe mare în fiecare zi."
+        ]
+      }
+    },
+    "sailor_1": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          "Marinar"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every port I put into has something I've never set eyes on. New people, new Pokémon, new trouble!",
+          "That's the thrill of the sea for you. This island has more of all three than most."
+        ],
+        "text": [
+          "Fiecare port în care acostez are ceva ce n-am mai văzut. Oameni noi, Pokémoni noi, necazuri noi!",
+          "Ăsta e farmecul mării. Insula asta are din toate trei mai mult decât majoritatea."
+        ]
+      }
+    },
+    "fisherman": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          "Pescarul"
+        ]
+      }
+    },
+    "pokemon_breeder_m": {
+      "name": {
+        "en": [
+          "Pokémon Breeder"
+        ],
+        "text": [
+          "Crescător de Pokémoni"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This island is all crags and cliffs, with a volcano smoking away at the back of it.",
+          "Hard country to live in. That's why the Pokémon here grow up so strong, and the trainers with them."
+        ],
+        "text": [
+          "Insula asta e numai stânci și faleze, cu un vulcan care fumegă în spatele ei.",
+          "E un ținut greu de trăit. De aceea Pokémonii de aici cresc atât de puternici, și Antrenorii odată cu ei."
+        ]
+      }
+    },
+    "ace_trainer_m_1": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          "Antrenor As"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Go through the gate to the north and you'll see the Battle Tower, standing over everything.",
+          "I look up at it every morning. It reminds me how far there still is to climb."
+        ],
+        "text": [
+          "Treci prin poarta de la nord și o să vezi Battle Tower, înălțându-se peste toate.",
+          "Mă uit la el în fiecare dimineață. Îmi amintește cât mai am de urcat."
+        ]
+      }
+    },
+    "ace_trainer_f_1": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          "Antrenor As"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I've battled more trainers on this island than I can count, and no two of them fought alike.",
+          "That's what keeps me here. Just when I think I've seen everything, somebody shows me something new."
+        ],
+        "text": [
+          "M-am luptat cu mai mulți Antrenori pe insula asta decât pot număra, și n-au fost nici doi care să lupte la fel.",
+          "Asta mă ține aici. Tocmai când cred că am văzut tot, cineva îmi arată ceva nou."
+        ]
+      }
+    },
+    "twin": {
+      "name": {
+        "en": [
+          "Twin"
+        ],
+        "text": [
+          "Geamănă"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Sometimes people from the Elite Four come here on their days off! And Gym Leaders too!",
+          "I got one of them to sign my hat. I'm never, ever washing it."
+        ],
+        "text": [
+          "Uneori vin aici oameni din Elita celor Patru în zilele lor libere! Și Lideri de Arenă!",
+          "L-am convins pe unul să-mi semneze șapca. N-o mai spăl niciodată."
+        ]
+      }
+    },
+    "battle_girl_1": {
+      "name": {
+        "en": [
+          "Battle Girl"
+        ],
+        "text": [
+          "Luptătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came over from another region, so half the Pokémon of Sinnoh are strangers to me.",
+          "I can't tell what they'll do until they've done it. Hi-yah! It keeps me on my toes!"
+        ],
+        "text": [
+          "Am venit din altă regiune, așa că jumătate din Pokémonii din Sinnoh îmi sunt străini.",
+          "Nu pot ști ce fac până nu o fac. Hi-ia! Asta mă ține treaz!"
+        ]
+      }
+    },
+    "sailor_2": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          "Marinar"
+        ]
+      }
+    },
+    "black_belt_1": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          "Centură Neagră"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "There is no end to growing tough! Beat one rival and a stronger one steps up behind him!",
+          "Hah! I wouldn't have it any other way!"
+        ],
+        "text": [
+          "Nu există capăt la a deveni mai dur! Bați un rival și unul mai puternic îi ia locul!",
+          "Ha! Nici nu l-aș vrea altfel!"
+        ]
+      }
+    },
+    "inverse_scientist": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          "Cercetătorul"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "map_signpost": {
+      "en": [
+        "Fight Area\nWhere trainers gather to test their strength."
+      ],
+      "text": [
+        "Zona de Luptă\nUnde se adună Antrenorii să-și încerce puterea."
+      ]
+    },
+    "arrow_signpost_rt_225": {
+      "en": [
+        "Rt. 225\nNorth to the Survival Area."
+      ],
+      "text": [
+        "Ruta 225\nSpre nord: Zona de Supraviețuire."
+      ]
+    },
+    "arrow_signpost_battle_frontier": {
+      "en": [
+        "Battle Frontier\nStraight ahead, through the gate."
+      ],
+      "text": [
+        "Battle Frontier\nDrept înainte, prin poartă."
+      ]
+    }
+  }
+}

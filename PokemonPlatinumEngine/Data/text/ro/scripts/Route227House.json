@@ -1,0 +1,48 @@
+{
+  "Rest": [
+    {
+      "en": [
+        "Oh, dear, are your Pokémon worn out? Then you must rest. Yes, what a good idea!"
+      ],
+      "text": [
+        "Vai, dragă, Pokémonii tăi sunt istoviți? Atunci trebuie să vă odihniți. Da, ce idee bună!"
+      ]
+    },
+    {
+      "en": [
+        "Will you rest here a while?"
+      ],
+      "text": [
+        "Vrei să te odihnești aici puțin?"
+      ]
+    },
+    {
+      "en": [
+        "That's right, that's right. You've earned a good rest."
+      ],
+      "text": [
+        "Așa, așa. Ți-ai meritat o odihnă bună."
+      ]
+    },
+    {
+      "en": [
+        "Oh, but you still look tired to me. You'll be wanting another rest, won't you?",
+        "Rest again whenever you like. Yes, what a good idea!"
+      ],
+      "text": [
+        "O, dar mie tot mi se pare că ești la capătul puterilor. Vrei încă o odihnă, nu-i așa?",
+        "Odihnește-te iar oricând vrei. Da, ce idee bună!"
+      ]
+    },
+    {
+      "en": [
+        "Is that so? You're quite sure, now?",
+        "It's you I'm thinking of. You wouldn't be putting me out at all!"
+      ],
+      "text": [
+        "Chiar așa? Nu te răzgândești?",
+        "La tine mă gândesc. Nu m-ai deranja deloc!"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "The Catching Show is about to begin!",
+        "Three... two... one..."
+      ],
+      "text": [
+        "Spectacolul de Prindere e pe cale să înceapă!",
+        "Trei... doi... unu..."
+      ]
+    },
+    {
+      "en": [
+        "Start!"
+      ],
+      "text": [
+        "Start!"
+      ]
+    }
+  ],
+  "CaughtAll": [
+    {
+      "en": [
+        "Ding-dong! Congratulations, {player}! All six Pokémon have been caught."
+      ],
+      "text": [
+        "Ding-dong! Felicitări, {player}! Toți cei șase Pokémoni au fost prinși."
+      ]
+    }
+  ],
+  "RetireAtGate": [
+    {
+      "en": [
+        "This is the way out. Will you leave the show before all six are caught?"
+      ],
+      "text": [
+        "Aici e ieșirea. Părăsești spectacolul înainte să-i prinzi pe toți șase?"
+      ]
+    },
+    {
+      "en": [
+        "That's a pity. Perhaps another time."
+      ],
+      "text": [
+        "Păcat. Poate altă dată."
+      ]
+    },
+    {
+      "en": [
+        "That's the spirit, {player}!"
+      ],
+      "text": [
+        "Așa te vreau, {player}!"
+      ]
+    }
+  ],
+  "Worker": [
+    {
+      "en": [
+        "How is the show going? You haven't caught all six yet. Will you give up?"
+      ],
+      "text": [
+        "Cum merge spectacolul? Încă nu i-ai prins pe toți șase. Renunți?"
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry to hear it. This way out, please."
+      ],
+      "text": [
+        "Îmi pare rău să aud asta. Ieșirea e pe aici, te rog."
+      ]
+    },
+    {
+      "en": [
+        "That's the spirit, {player}! They're out there in the grass and the water."
+      ],
+      "text": [
+        "Așa te vreau, {player}! Sunt acolo, în iarbă și în apă."
+      ]
+    }
+  ]
+}

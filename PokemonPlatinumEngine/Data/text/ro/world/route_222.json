@@ -1,0 +1,374 @@
+{
+  "people": {
+    "fisherman": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          "Pescarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I hooked a real beauty off this beach this morning. Biggest catch of my life!",
+          "One good bite like that and I'm smiling for a week. That's why I keep coming back."
+        ],
+        "text": [
+          "Am prins o frumusețe de pe plaja asta azi-dimineață. Cea mai mare captură din viața mea!",
+          "O mușcătură bună ca asta și zâmbesc o săptămână. De asta tot revin."
+        ]
+      }
+    },
+    "rich_boy": {
+      "name": {
+        "en": [
+          "Rich Boy"
+        ],
+        "text": [
+          "Băiat bogat"
+        ]
+      }
+    },
+    "fisherman_brett": {
+      "name": {
+        "en": [
+          "Brett"
+        ],
+        "text": [
+          "Brett"
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Brett: Shh, you'll scare the fish away! ...Oh, all right. One quick battle."
+        ],
+        "text": [
+          "Pescar Brett: Șșt, sperii peștii! ...Of, bine. O luptă scurtă."
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Brett: Lost the battle and the fish. What a morning."
+        ],
+        "text": [
+          "Pescar Brett: Am pierdut și lupta, și peștele. Ce dimineață."
+        ]
+      }
+    },
+    "fisherman_alec": {
+      "name": {
+        "en": [
+          "Alec"
+        ],
+        "text": [
+          "Alec"
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Alec: Everyone laughs at a Magikarp. Nobody laughs at what it grows into!"
+        ],
+        "text": [
+          "Pescar Alec: Toată lumea râde de un Magikarp. Nimeni nu râde de ce devine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Alec: Go on, then. You can laugh a little."
+        ],
+        "text": [
+          "Pescar Alec: Hai, atunci. Poți să râzi puțin."
+        ]
+      }
+    },
+    "fisherman_george": {
+      "name": {
+        "en": [
+          "George"
+        ],
+        "text": [
+          "George"
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman George: Four lines in the water, four Pokémon on the hook. Let's see which of them bites!"
+        ],
+        "text": [
+          "Pescar George: Patru fire în apă, patru Pokémoni în cârlig. Să vedem care mușcă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman George: Not so much as a nibble. Back to waiting."
+        ],
+        "text": [
+          "Pescar George: Nici măcar o ciupitură. Înapoi la așteptat."
+        ]
+      }
+    },
+    "fisherman_cole": {
+      "name": {
+        "en": [
+          "Cole"
+        ],
+        "text": [
+          "Cole"
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Cole: I reeled in two Gyarados off this very beach. Want to meet them?"
+        ],
+        "text": [
+          "Pescar Cole: Am scos doi Gyarados de pe plaja asta. Vrei să-i cunoști?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Cole: Two Gyarados, and still you landed me."
+        ],
+        "text": [
+          "Pescar Cole: Doi Gyarados, și tot m-ai prins."
+        ]
+      }
+    },
+    "beauty_nicola": {
+      "name": {
+        "en": [
+          "Nicola"
+        ],
+        "text": [
+          "Nicola"
+        ]
+      },
+      "before": {
+        "en": [
+          "Beauty Nicola: The sea air does wonders for Lopunny's fur. Isn't it gorgeous? Now watch it move!"
+        ],
+        "text": [
+          "Frumoasă Nicola: Aerul mării face minuni pentru blana lui Lopunny. Nu-i superbă? Acum uită-te cum se mișcă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Beauty Nicola: Beaten, but still beautiful. That's what matters."
+        ],
+        "text": [
+          "Frumoasă Nicola: Învinsă, dar tot frumoasă. Asta contează."
+        ]
+      }
+    },
+    "tuber_conner": {
+      "name": {
+        "en": [
+          "Conner"
+        ],
+        "text": [
+          "Conner"
+        ]
+      },
+      "before": {
+        "en": [
+          "Tuber Conner: I can't swim yet, so I stay where my feet touch the bottom! Battle me!"
+        ],
+        "text": [
+          "Copil cu colac Conner: Încă nu știu să înot, așa că stau unde ating fundul cu picioarele! Luptă-te cu mine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Tuber Conner: I'm not crying! It's just sea water!"
+        ],
+        "text": [
+          "Copil cu colac Conner: Nu plâng! E doar apă de mare!"
+        ]
+      }
+    },
+    "tuber_holly": {
+      "name": {
+        "en": [
+          "Holly"
+        ],
+        "text": [
+          "Holly"
+        ]
+      },
+      "before": {
+        "en": [
+          "Tuber Holly: My Remoraid squirts water at anybody who comes close. Here it comes!"
+        ],
+        "text": [
+          "Copil cu colac Holly: Remoraid-ul meu stropește pe oricine se apropie. Uite că vine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Tuber Holly: Now I'm soaked too. I don't mind. It's the beach!"
+        ],
+        "text": [
+          "Copil cu colac Holly: Acum sunt și eu udă leoarcă. Nu-mi pasă. E plajă!"
+        ]
+      }
+    },
+    "rich_boy_trey": {
+      "name": {
+        "en": [
+          "Trey"
+        ],
+        "text": [
+          "Trey"
+        ]
+      },
+      "before": {
+        "en": [
+          "Rich Boy Trey: I'm on my way to see Sunyshore's famous lighthouse. You'll do as a little entertainment."
+        ],
+        "text": [
+          "Băiat bogat Trey: Mă duc să văd faimosul far din Sunyshore. Tu o să fii o mică distracție pe drum."
+        ]
+      },
+      "after": {
+        "en": [
+          "Rich Boy Trey: How tiresome. I shall need a long rest at the hotel."
+        ],
+        "text": [
+          "Băiat bogat Trey: Ce obositor. O să am nevoie de o odihnă lungă la hotel."
+        ]
+      }
+    },
+    "sailor_luther": {
+      "name": {
+        "en": [
+          "Luther"
+        ],
+        "text": [
+          "Luther"
+        ]
+      },
+      "before": {
+        "en": [
+          "Sailor Luther: A good sailor keeps a Pokémon for the sky, one for the deck and one for the sea. Meet my crew!"
+        ],
+        "text": [
+          "Marinar Luther: Un marinar bun ține un Pokémon pentru cer, unul pentru punte și unul pentru mare. Cunoaște-mi echipajul!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Sailor Luther: The whole crew overboard! Abandon ship!"
+        ],
+        "text": [
+          "Marinar Luther: Tot echipajul peste bord! Abandonați nava!"
+        ]
+      }
+    },
+    "sailor_marc": {
+      "name": {
+        "en": [
+          "Marc"
+        ],
+        "text": [
+          "Marc"
+        ]
+      },
+      "before": {
+        "en": [
+          "Sailor Marc: Ahoy! My shipmate's a small one, but it rides the waves like a champion!"
+        ],
+        "text": [
+          "Marinar Marc: Ahoi! Tovarășul meu de bord e mic, dar călărește valurile ca un campion!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Sailor Marc: Small ones grow. Next time we meet, it'll have grown."
+        ],
+        "text": [
+          "Marinar Marc: Cei mici cresc. Data viitoare când ne vedem, o să fi crescut."
+        ]
+      }
+    },
+    "policeman_thomas_no_battle": {
+      "name": {
+        "en": [
+          "Policeman"
+        ],
+        "text": [
+          "Polițistul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Lovely day for the beach. Nobody gets into trouble in the sunshine.",
+          "At night, though, I keep a close watch on everyone."
+        ],
+        "text": [
+          "Ce zi frumoasă de plajă. Nimeni nu intră în bucluc pe soare.",
+          "Noaptea, însă, sunt cu ochii pe toată lumea."
+        ]
+      }
+    },
+    "policeman_thomas": {
+      "name": {
+        "en": [
+          "Thomas"
+        ],
+        "text": [
+          "Thomas"
+        ]
+      },
+      "before": {
+        "en": [
+          "Policeman Thomas: People get up to all sorts once the sun goes down. Let's see what you're up to!"
+        ],
+        "text": [
+          "Polițist Thomas: Oamenii fac tot felul de lucruri după ce apune soarele. Să vedem ce pui tu la cale!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Policeman Thomas: No trouble-maker, just a strong trainer. Carry on, and get home safely."
+        ],
+        "text": [
+          "Polițist Thomas: Nicio problemă cu tine, doar un Antrenor puternic. Mergi mai departe, și ajungi acasă cu bine."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost_sunyshore_city": {
+      "en": [
+        "Route 222\nEast: Sunyshore City"
+      ],
+      "text": [
+        "Ruta 222\nEst: Orașul Sunyshore"
+      ]
+    },
+    "arrow_signpost_hotel_grand_lake": {
+      "en": [
+        "Route 222\nWest: Hotel Grand Lake"
+      ],
+      "text": [
+        "Ruta 222\nVest: Hotelul Grand Lake"
+      ]
+    },
+    "signboard_pikachu_fan_club": {
+      "en": [
+        "Pikachu Fan Club\nAnyone who loves Pikachu is welcome here!"
+      ],
+      "text": [
+        "Clubul Fanilor Pikachu\nOricine iubește Pikachu e binevenit aici!"
+      ]
+    },
+    "signboard_pokemon_size_contest": {
+      "en": [
+        "Pokémon Size Contest\nHow big is your catch? Come in and have it measured!"
+      ],
+      "text": [
+        "Concursul de Mărime Pokémon\nCât de mare e captura ta? Intră s-o măsurăm!"
+      ]
+    }
+  }
+}

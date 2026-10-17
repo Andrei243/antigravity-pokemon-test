@@ -1,0 +1,68 @@
+{
+  "displayName": {
+    "en": [
+      "Pallet Town"
+    ],
+    "text": [
+      "Orășelul Pallet"
+    ]
+  },
+  "people": {
+    "PalletTown.Sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          "Marinar"
+        ]
+      }
+    },
+    "6,11": {
+      "name": {
+        "en": [
+          "Townsperson"
+        ],
+        "text": [
+          "Localnicul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hello! Everyone in Kanto starts out from a town like this one.",
+          "Become Champion here, and the ferry at the pier will take you across the sea to Johto."
+        ],
+        "text": [
+          "Bună! Toată lumea din Kanto pornește dintr-un oraș ca ăsta.",
+          "Devino Campion aici, iar feribotul de la debarcader te va duce peste mare, în Johto."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "8,9": {
+      "en": [
+        "Pallet Town\nA quiet town where every colour begins."
+      ],
+      "text": [
+        "Orășelul Pallet\nUn oraș liniștit unde începe fiecare culoare."
+      ]
+    },
+    "8,2": {
+      "en": [
+        "Route 1 lies north, toward Viridian City.\nThe road is still being laid."
+      ],
+      "text": [
+        "Ruta 1 e la nord, spre Orașul Viridian.\nDrumul încă se construiește."
+      ]
+    },
+    "11,14": {
+      "en": [
+        "Ferry Pier\nShips to Johto call here for Kanto's Champions."
+      ],
+      "text": [
+        "Debarcaderul Feribotului\nCorăbiile spre Johto opresc aici pentru Campionii din Kanto."
+      ]
+    }
+  }
+}

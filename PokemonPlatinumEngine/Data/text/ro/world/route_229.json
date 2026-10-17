@@ -1,0 +1,128 @@
+{
+  "people": {
+    "pokefan_m": {
+      "name": {
+        "en": [
+          "Pokéfan"
+        ],
+        "text": [
+          "Pokéfanul"
+        ]
+      }
+    },
+    "ranger_deshawn": {
+      "name": {
+        "en": [
+          "Deshawn"
+        ],
+        "text": [
+          "Deshawn"
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokémon Ranger Deshawn: A quiet wood, a still pond... and a ranger behind every tree. Halt!"
+        ],
+        "text": [
+          "Ranger Pokémon Deshawn: O pădure liniștită, un iaz nemișcat... și un ranger după fiecare copac. Stai!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokémon Ranger Deshawn: Carry on. Mind the flower beds."
+        ],
+        "text": [
+          "Ranger Pokémon Deshawn: Mergi mai departe. Ai grijă la straturile de flori."
+        ]
+      }
+    },
+    "ace_trainer_felix": {
+      "name": {
+        "en": [
+          "Felix"
+        ],
+        "text": [
+          "Felix"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Felix: East or west, whichever way you're going, the road runs through me!"
+        ],
+        "text": [
+          "Antrenor As Felix: Est sau vest, oriîncotro ai merge, drumul trece prin mine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Felix: Right through me, as it turns out."
+        ],
+        "text": [
+          "Antrenor As Felix: Chiar prin mine, după cum se vede."
+        ]
+      }
+    },
+    "ace_trainer_dana": {
+      "name": {
+        "en": [
+          "Dana"
+        ],
+        "text": [
+          "Dana"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Dana: Everyone hurries past to the Resort Area. Nobody's on holiday until they've battled me!"
+        ],
+        "text": [
+          "Antrenor As Dana: Toată lumea trece în grabă spre Zona de Odihnă. Nimeni nu e în vacanță până nu se luptă cu mine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Dana: Enjoy the resort. You've earned the rest."
+        ],
+        "text": [
+          "Antrenor As Dana: Bucură-te de stațiune. Ți-ai meritat odihna."
+        ]
+      }
+    },
+    "ace_trainer_sandra": {
+      "name": {
+        "en": [
+          "Sandra"
+        ],
+        "text": [
+          "Sandra"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Sandra: Earth, lightning and fire! I never did decide on a favourite, so I brought all three."
+        ],
+        "text": [
+          "Antrenor As Sandra: Pământ, fulger și foc! Nu m-am hotărât niciodată la un preferat, așa că i-am adus pe toți trei."
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Sandra: All three, beaten one after another. At least that's fair."
+        ],
+        "text": [
+          "Antrenor As Sandra: Toți trei, învinși unul după altul. Măcar e corect."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost": {
+      "en": [
+        "Rt. 229\nSouth: Resort Area"
+      ],
+      "text": [
+        "Ruta 229\nSud: Zona de Odihnă"
+      ]
+    }
+  }
+}

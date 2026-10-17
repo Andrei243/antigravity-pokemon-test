@@ -1,0 +1,506 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Host"
+      ],
+      "text": [
+        "Gazda"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Battle Arcade, where anything can happen, and generally does!"
+      ],
+      "text": [
+        "Bine ai venit la Battle Arcade, unde orice se poate întâmpla, și de obicei se și întâmplă!"
+      ]
+    },
+    {
+      "en": [
+        "First things first: whatever your Pokémon were holding is in safe keeping until you leave."
+      ],
+      "text": [
+        "Mai întâi: tot ce țineau Pokémonii tăi e păstrat în siguranță până pleci."
+      ]
+    },
+    {
+      "en": [
+        "Game no. {number}! Here we go!"
+      ],
+      "text": [
+        "Jocul nr. {number}! Începem!"
+      ]
+    },
+    {
+      "en": [
+        "And now, without further ado... let's set the game board going!"
+      ],
+      "text": [
+        "Și acum, fără alte introduceri... pornim tabla de joc!"
+      ]
+    },
+    {
+      "en": [
+        "And the game board says... {event}!"
+      ],
+      "text": [
+        "Iar tabla de joc spune... {event}!"
+      ]
+    },
+    {
+      "en": [
+        "What a pity! Nothing happens this time!"
+      ],
+      "text": [
+        "Ce păcat! De data asta nu se întâmplă nimic!"
+      ]
+    },
+    {
+      "en": [
+        "The battle begins with {struck}'s Pokémon short of their full HP!"
+      ],
+      "text": [
+        "Lupta începe cu Pokémonii lui {struck} fără tot HP-ul!"
+      ]
+    },
+    {
+      "en": [
+        "The battle begins with {struck}'s Pokémon poisoned!"
+      ],
+      "text": [
+        "Lupta începe cu Pokémonii lui {struck} otrăviți!"
+      ]
+    },
+    {
+      "en": [
+        "{struck}'s Pokémon are to begin poisoned... Oh! What a stroke of luck! Not one of them can be poisoned!"
+      ],
+      "text": [
+        "Pokémonii lui {struck} trebuiau să înceapă otrăviți... O! Ce noroc! Niciunul nu poate fi otrăvit!"
+      ]
+    },
+    {
+      "en": [
+        "The battle begins with {struck}'s Pokémon paralyzed!"
+      ],
+      "text": [
+        "Lupta începe cu Pokémonii lui {struck} paralizați!"
+      ]
+    },
+    {
+      "en": [
+        "{struck}'s Pokémon are to begin paralyzed... Oh! What a stroke of luck! Not one of them can be paralyzed!"
+      ],
+      "text": [
+        "Pokémonii lui {struck} trebuiau să înceapă paralizați... O! Ce noroc! Niciunul nu poate fi paralizat!"
+      ]
+    },
+    {
+      "en": [
+        "The battle begins with {struck}'s Pokémon burned!"
+      ],
+      "text": [
+        "Lupta începe cu Pokémonii lui {struck} arși!"
+      ]
+    },
+    {
+      "en": [
+        "{struck}'s Pokémon are to begin burned... Oh! What a stroke of luck! Not one of them can be burned!"
+      ],
+      "text": [
+        "Pokémonii lui {struck} trebuiau să înceapă arși... O! Ce noroc! Niciunul nu poate fi ars!"
+      ]
+    },
+    {
+      "en": [
+        "The battle begins with one of {struck}'s Pokémon fast asleep!"
+      ],
+      "text": [
+        "Lupta începe cu unul dintre Pokémonii lui {struck} adormit buștean!"
+      ]
+    },
+    {
+      "en": [
+        "One of {struck}'s Pokémon is to begin asleep... Oh! What a stroke of luck! Not one of them can be put to sleep!"
+      ],
+      "text": [
+        "Unul dintre Pokémonii lui {struck} trebuia să înceapă adormit... O! Ce noroc! Niciunul nu poate fi adormit!"
+      ]
+    },
+    {
+      "en": [
+        "The battle begins with one of {struck}'s Pokémon frozen solid!"
+      ],
+      "text": [
+        "Lupta începe cu unul dintre Pokémonii lui {struck} înghețat bocnă!"
+      ]
+    },
+    {
+      "en": [
+        "One of {struck}'s Pokémon is to begin frozen... Oh! What a stroke of luck! Not one of them can be frozen!"
+      ],
+      "text": [
+        "Unul dintre Pokémonii lui {struck} trebuia să înceapă înghețat... O! Ce noroc! Niciunul nu poate fi înghețat!"
+      ]
+    },
+    {
+      "en": [
+        "{struck}'s Pokémon are each lent a {item} to hold!"
+      ],
+      "text": [
+        "Fiecare Pokémon al lui {struck} primește de ținut obiectul {item}!"
+      ]
+    },
+    {
+      "en": [
+        "The battle begins with {struck}'s Pokémon three levels higher!"
+      ],
+      "text": [
+        "Lupta începe cu Pokémonii lui {struck} cu trei niveluri mai sus!"
+      ]
+    },
+    {
+      "en": [
+        "This battle is fought under a blazing sun!"
+      ],
+      "text": [
+        "Lupta asta se dă sub un soare dogoritor!"
+      ]
+    },
+    {
+      "en": [
+        "This battle is fought in a steady downpour!"
+      ],
+      "text": [
+        "Lupta asta se dă pe o ploaie torențială!"
+      ]
+    },
+    {
+      "en": [
+        "This battle is fought in a raging sandstorm!"
+      ],
+      "text": [
+        "Lupta asta se dă într-o furtună de nisip cumplită!"
+      ]
+    },
+    {
+      "en": [
+        "This battle is fought under a pelting of hail!"
+      ],
+      "text": [
+        "Lupta asta se dă sub o ploaie de grindină!"
+      ]
+    },
+    {
+      "en": [
+        "This battle is fought in a fog you could lose a Wailord in!"
+      ],
+      "text": [
+        "Lupta asta se dă într-o ceață în care ai pierde și un Wailord!"
+      ]
+    },
+    {
+      "en": [
+        "This battle is fought on a floor where time and space have come loose. The slow go first!"
+      ],
+      "text": [
+        "Lupta asta se dă pe o podea unde timpul și spațiul s-au desprins. Cei lenți merg primii!"
+      ]
+    },
+    {
+      "en": [
+        "From the next game on, the cursor goes faster!"
+      ],
+      "text": [
+        "De la jocul următor, cursorul merge mai repede!"
+      ]
+    },
+    {
+      "en": [
+        "From the next game on, the cursor goes slower!"
+      ],
+      "text": [
+        "De la jocul următor, cursorul merge mai încet!"
+      ]
+    },
+    {
+      "en": [
+        "In the next game, the cursor goes wherever it pleases!"
+      ],
+      "text": [
+        "În jocul următor, cursorul merge unde vrea el!"
+      ]
+    },
+    {
+      "en": [
+        "For this battle, your Pokémon and the other trainer's change sides!"
+      ],
+      "text": [
+        "În lupta asta, Pokémonii tăi și ai celuilalt Antrenor schimbă taberele!"
+      ]
+    },
+    {
+      "en": [
+        "{player} received {number} BP!"
+      ],
+      "text": [
+        "{player} a primit {number} PL!"
+      ]
+    },
+    {
+      "en": [
+        "Now then. Are you ready?"
+      ],
+      "text": [
+        "Ei bine. Ești gata?"
+      ]
+    },
+    {
+      "en": [
+        "Oh! Lucky you! This battle is passed, and it counts as won!"
+      ],
+      "text": [
+        "O! Ce noroc! Lupta asta e sărită și se socotește câștigată!"
+      ]
+    },
+    {
+      "en": [
+        "Then let the battle begin!"
+      ],
+      "text": [
+        "Atunci să înceapă lupta!"
+      ]
+    },
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitoarea"
+      ]
+    },
+    {
+      "en": [
+        "Well played! Let me see to your Pokémon."
+      ],
+      "text": [
+        "Bine jucat! Lasă-mă să am grijă de Pokémonii tăi."
+      ]
+    },
+    {
+      "en": [
+        "Host"
+      ],
+      "text": [
+        "Gazda"
+      ]
+    },
+    {
+      "en": [
+        "Now hear this! Our Arcade Star has been watching you, and she insists on playing the next game herself. No ifs, no buts!"
+      ],
+      "text": [
+        "Atenție, atenție! Vedeta noastră Arcade te-a urmărit și insistă să joace ea însăși jocul următor. Fără discuții!"
+      ]
+    },
+    {
+      "en": [
+        "Game no. {number} is next. Are you ready?",
+        "KEEP GOING",
+        "REST",
+        "RETIRE"
+      ],
+      "text": [
+        "Urmează jocul nr. {number}. Ești gata?",
+        "CONTINUĂ",
+        "PAUZĂ",
+        "RENUNȚĂ"
+      ]
+    },
+    {
+      "en": [
+        "Game no. {number}... but wait! Listen to that crowd!"
+      ],
+      "text": [
+        "Jocul nr. {number}... dar stai! Ascultă mulțimea!"
+      ]
+    },
+    {
+      "en": [
+        "Dahlia"
+      ],
+      "text": [
+        "Dahlia"
+      ]
+    },
+    {
+      "en": [
+        "No need to fret! Chance will do as chance does. The board goes round, and so does everything else."
+      ],
+      "text": [
+        "Nu-ți face griji! Șansa face ce face. Tabla se învârte, și la fel tot restul."
+      ]
+    },
+    {
+      "en": [
+        "But one thing I do know: nobody comes this far on luck alone. I'm Dahlia, the Arcade Star. Let's see what the board has in store for the two of us!"
+      ],
+      "text": [
+        "Dar un lucru știu sigur: nimeni nu ajunge atât de departe doar cu noroc. Eu sunt Dahlia, Vedeta Arcade. Să vedem ce ne pregătește tabla amândurora!"
+      ]
+    },
+    {
+      "en": [
+        "Host"
+      ],
+      "text": [
+        "Gazda"
+      ]
+    },
+    {
+      "en": [
+        "Game no. {number}... and here she comes again! The Arcade Star!"
+      ],
+      "text": [
+        "Jocul nr. {number}... și iat-o din nou! Vedeta Arcade!"
+      ]
+    },
+    {
+      "en": [
+        "Dahlia"
+      ],
+      "text": [
+        "Dahlia"
+      ]
+    },
+    {
+      "en": [
+        "No need to fret! Chance will do as chance does. The board goes round, and so does everything else."
+      ],
+      "text": [
+        "Nu-ți face griji! Șansa face ce face. Tabla se învârte, și la fel tot restul."
+      ]
+    },
+    {
+      "en": [
+        "But you keep on being wonderful, whichever way it turns. Are you wonderful to the very end? Show me, and hold nothing back!"
+      ],
+      "text": [
+        "Dar tu strălucești oricum s-ar întoarce. Strălucești până la capăt? Arată-mi, și nu te reține deloc!"
+      ]
+    },
+    {
+      "en": [
+        "Host"
+      ],
+      "text": [
+        "Gazda"
+      ]
+    },
+    {
+      "en": [
+        "Dahlia"
+      ],
+      "text": [
+        "Dahlia"
+      ]
+    },
+    {
+      "en": [
+        "How perfectly marvellous! You love your Pokémon, and they believe in you. That's why nothing the board threw at you could knock you down."
+      ],
+      "text": [
+        "Ce minunăție! Îți iubești Pokémonii, iar ei cred în tine. De aceea nimic din ce a aruncat tabla spre tine nu te-a putut doborî."
+      ]
+    },
+    {
+      "en": [
+        "What a lovely win!"
+      ],
+      "text": [
+        "Ce victorie frumoasă!"
+      ]
+    },
+    {
+      "en": [
+        "Host"
+      ],
+      "text": [
+        "Gazda"
+      ]
+    },
+    {
+      "en": [
+        "Dahlia"
+      ],
+      "text": [
+        "Dahlia"
+      ]
+    },
+    {
+      "en": [
+        "Marvellous, every one of you! You brushed the bad luck aside and caught the good in both hands, and that takes far more than luck."
+      ],
+      "text": [
+        "Minunați, fiecare dintre voi! Ați dat norocul prost la o parte și l-ați prins pe cel bun cu amândouă mâinile, iar asta cere mult mai mult decât noroc."
+      ]
+    },
+    {
+      "en": [
+        "You have beaten me fair and square, and I couldn't be happier to have been here for it!"
+      ],
+      "text": [
+        "M-ai învins cinstit, și nu puteam fi mai fericită că am fost aici să văd asta!"
+      ]
+    },
+    {
+      "en": [
+        "Host"
+      ],
+      "text": [
+        "Gazda"
+      ]
+    },
+    {
+      "en": [
+        "That's the seventh game, and the seventh win! Congratulations! Your prize is Battle Points!"
+      ],
+      "text": [
+        "Ăsta e al șaptelea joc și a șaptea victorie! Felicitări! Premiul tău sunt Puncte de Luptă!"
+      ]
+    },
+    {
+      "en": [
+        "{player} received {number} BP!"
+      ],
+      "text": [
+        "{player} a primit {number} PL!"
+      ]
+    },
+    {
+      "en": [
+        "Give the challenge up? The streak will end here."
+      ],
+      "text": [
+        "Renunți la provocare? Seria se va încheia aici."
+      ]
+    },
+    {
+      "en": [
+        "Save the game and take a break? You can go on from here later."
+      ],
+      "text": [
+        "Salvezi jocul și iei o pauză? Poți continua de aici mai târziu."
+      ]
+    },
+    {
+      "en": [
+        "Whatever your Pokémon were holding when they came in is theirs again. Thank you for playing!"
+      ],
+      "text": [
+        "Tot ce țineau Pokémonii tăi când au intrat e iar al lor. Mulțumim că ai jucat!"
+      ]
+    }
+  ]
+}

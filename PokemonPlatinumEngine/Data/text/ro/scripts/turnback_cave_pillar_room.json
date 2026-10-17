@@ -1,0 +1,12 @@
+{
+  "Pillar": [
+    {
+      "en": [
+        "A great stone pillar stands here, worn smooth. Pillars passed: {var:VAR_TURNBACK_CAVE_PILLARS_SEEN}. Rooms walked through: {var:VAR_TURNBACK_CAVE_ROOMS_VISITED}."
+      ],
+      "text": [
+        "O mare coloană de piatră stă aici, șlefuită. Coloane trecute: {var:VAR_TURNBACK_CAVE_PILLARS_SEEN}. Camere străbătute: {var:VAR_TURNBACK_CAVE_ROOMS_VISITED}."
+      ]
+    }
+  ]
+}

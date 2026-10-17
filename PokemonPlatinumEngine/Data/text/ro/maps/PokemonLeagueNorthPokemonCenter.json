@@ -1,0 +1,129 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Center"
+    ],
+    "text": [
+      "Centrul Pokémon"
+    ]
+  },
+  "people": {
+    "4,1": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "8,1": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "16,1": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! Stock up well before you take on the Elite Four."
+        ],
+        "text": [
+          "Vânzătoarea: Bine ai venit! Fă-ți bine provizii înainte să înfrunți Elita celor Patru."
+        ]
+      }
+    },
+    "17,1": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! This counter keeps a few things for trainers who've come this far."
+        ],
+        "text": [
+          "Vânzătorul: Bine ai venit! La tejgheaua asta sunt câteva lucruri pentru Antrenorii care au ajuns până aici."
+        ]
+      }
+    },
+    "door_guard": {
+      "name": {
+        "en": [
+          "Guard"
+        ],
+        "text": [
+          "Paznic"
+        ]
+      }
+    },
+    "6,9": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          "Antrenoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Trainer: The Elite Four sent me back here again. That makes five times!",
+          "Trainer: But I'm not giving up. I'll keep coming back until I've beaten every one of them."
+        ],
+        "text": [
+          "Antrenor: Elita celor Patru m-a trimis iar înapoi aici. Asta face cinci ori!",
+          "Antrenor: Dar nu renunț. O să tot vin înapoi până îi bat pe toți."
+        ]
+      }
+    },
+    "17,8": {
+      "name": {
+        "en": [
+          "Guitarist"
+        ],
+        "text": [
+          "Chitaristul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Guitarist: Everybody asks me what the Elite Four are like.",
+          "Guitarist: I could tell you, but that'd spoil it. Some things you've got to go and feel for yourself!"
+        ],
+        "text": [
+          "Chitarist: Toată lumea mă întreabă cum e Elita celor Patru.",
+          "Chitarist: Ți-aș putea spune, dar ți-aș strica plăcerea. Unele lucruri trebuie să le simți pe pielea ta!"
+        ]
+      }
+    },
+    "rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

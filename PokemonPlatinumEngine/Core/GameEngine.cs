@@ -1510,7 +1510,8 @@ public partial class GameEngine
         if (another && !flow.Safari.Active) Roamers.PlayerWalkedInto(flow.Encounters, area.Key, fieldRandom);
         NoteArrival();
         PlayFieldMusic();
-        if (!string.IsNullOrEmpty(area.DisplayName)) flow.LocationSign.Show(area.DisplayName);
+        // As the language writes it (plan 17 · N6b): the area's own name was shown in English under every language
+        if (!string.IsNullOrEmpty(area.DisplayName)) flow.LocationSign.Show(flow.Map.ShownNameAt(flow.Player.GridX, flow.Player.GridY));
         return StartEnterScript();
     }
 

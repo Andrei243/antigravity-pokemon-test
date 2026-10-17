@@ -1,0 +1,490 @@
+{
+  "people": {
+    "ninja_boy": {
+      "name": {
+        "en": [
+          "Ninja Boy"
+        ],
+        "text": [
+          "Micul Ninja"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Look how high the Battle Tower goes! That's no accident.",
+          "The higher it stands, the harder it is to get to the top. It's a dare, built out of bricks."
+        ],
+        "text": [
+          "Uite cât de sus se ridică Battle Tower! Nu e întâmplător.",
+          "Cu cât e mai înalt, cu atât e mai greu să ajungi în vârf. E o provocare ridicată din cărămizi."
+        ]
+      }
+    },
+    "black_belt": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          "Centură Neagră"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every hall of the Frontier has a way in for two.",
+          "Bring a friend you trust and take it on side by side! Hah!"
+        ],
+        "text": [
+          "Fiecare sală a Frontierei are o intrare pentru doi.",
+          "Adu un prieten în care ai încredere și înfruntați-o umăr la umăr! Ha!"
+        ]
+      }
+    },
+    "idol": {
+      "name": {
+        "en": [
+          "Idol"
+        ],
+        "text": [
+          "Idolul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Looking sweet and singing in tune won't keep an idol on the stage for ever.",
+          "So I'm studying battles. If I know my Pokémon, the people who love Pokémon will come to see me too!"
+        ],
+        "text": [
+          "Să arăți drăguț și să cânți afinat nu ține o idolă pe scenă pentru totdeauna.",
+          "Așa că studiez luptele. Dacă îmi cunosc Pokémonii, oamenii care iubesc Pokémonii vor veni să mă vadă și pe mine!"
+        ]
+      }
+    },
+    "ace_trainer_snow_f": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          "Antrenor As"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The best trainers in the world come here, and every battle is all or nothing.",
+          "I've never been so frightened, and I've never been so wide awake."
+        ],
+        "text": [
+          "Cei mai buni Antrenori din lume vin aici, iar fiecare luptă e totul sau nimic.",
+          "N-am fost niciodată atât de speriat și n-am fost niciodată atât de treaz."
+        ]
+      }
+    },
+    "twin": {
+      "name": {
+        "en": [
+          "Twin"
+        ],
+        "text": [
+          "Geamănă"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Do you know who matters most in the Battle Castle? A lady!",
+          "A real lady, I mean. Like a princess!"
+        ],
+        "text": [
+          "Știi cine contează cel mai mult la Battle Castle? O doamnă!",
+          "O doamnă adevărată, adică. Ca o prințesă!"
+        ]
+      }
+    },
+    "parasol_lady": {
+      "name": {
+        "en": [
+          "Parasol Lady"
+        ],
+        "text": [
+          "Doamna cu umbrelă"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "What do I like best about being a trainer?",
+          "That whatever happens, my Pokémon are there beside me. That's all, and it's everything."
+        ],
+        "text": [
+          "Ce-mi place cel mai mult la a fi Antrenor?",
+          "Că orice s-ar întâmpla, Pokémonii mei sunt lângă mine. Asta e tot, și asta e totul."
+        ]
+      }
+    },
+    "expert_m": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "There's a story behind every Pokémon, if you take the time to hear it. Isn't that so, my dear?"
+        ],
+        "text": [
+          "În spatele fiecărui Pokémon e o poveste, dacă îți faci timp s-o asculți. Nu-i așa, dragul meu?"
+        ]
+      }
+    },
+    "expert_f": {
+      "name": {
+        "en": [
+          "Old Lady"
+        ],
+        "text": [
+          "Bătrâna"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We've been side by side for a great many years, he and I, like a Pokémon and its trainer.",
+          "One day we shall be parted. Until that day I mean to treasure every hour, dearest."
+        ],
+        "text": [
+          "Am fost alături atâția ani, el și cu mine, ca un Pokémon și Antrenorul lui.",
+          "Într-o zi ne vom despărți. Până atunci vreau să prețuiesc fiecare ceas, dragul meu."
+        ]
+      }
+    },
+    "waitress": {
+      "name": {
+        "en": [
+          "Maid"
+        ],
+        "text": [
+          "Cameristă"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "People expect a great deal of a maid. Cooking, cleaning, the laundry...",
+          "And being a dab hand at training Pokémon on top of it all!"
+        ],
+        "text": [
+          "Oamenii așteaptă multe de la o cameristă. Gătit, curățenie, spălat rufe...",
+          "Și pe deasupra să se priceapă de minune la antrenat Pokémoni!"
+        ]
+      }
+    },
+    "cowgirl": {
+      "name": {
+        "en": [
+          "Cowgirl"
+        ],
+        "text": [
+          "Cowgirl"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "To be strong is to be weak, and to be weak is to be strong. Somebody told me that when I was small.",
+          "I still haven't the faintest idea what it means."
+        ],
+        "text": [
+          "A fi puternic înseamnă a fi slab, iar a fi slab înseamnă a fi puternic. Cineva mi-a spus asta când eram mic.",
+          "Nici acum n-am nici cea mai vagă idee ce înseamnă."
+        ]
+      }
+    },
+    "roughneck": {
+      "name": {
+        "en": [
+          "Roughneck"
+        ],
+        "text": [
+          "Bătăușul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Some people love a battle right down to the soles of their boots.",
+          "Have a look round you. That's every last one of this lot."
+        ],
+        "text": [
+          "Unii oameni iubesc o luptă până în tălpile cizmelor.",
+          "Uită-te în jur. Ăștia sunt toți, până la ultimul."
+        ]
+      }
+    },
+    "pokefan_m": {
+      "name": {
+        "en": [
+          "Pokéfan"
+        ],
+        "text": [
+          "Pokéfanul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "How many years is it now since I met my first Pokémon? I've lost count.",
+          "And you? How long have you and yours been together?"
+        ],
+        "text": [
+          "Câți ani au trecut de când mi-am întâlnit primul Pokémon? Am pierdut șirul.",
+          "Și tu? De cât timp sunteți împreună, tu și ai tăi?"
+        ]
+      }
+    },
+    "collector": {
+      "name": {
+        "en": [
+          "Collector"
+        ],
+        "text": [
+          "Colecționarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A trainer calls for a move without a moment's doubt, because the trainer trusts the Pokémon.",
+          "And the Pokémon gives the move all it has, to pay that trust back. Obvious, yes. It's still the whole of it."
+        ],
+        "text": [
+          "Un Antrenor cere o mișcare fără nicio clipă de îndoială, pentru că are încredere în Pokémon.",
+          "Iar Pokémonul dă mișcării tot ce are, ca să răsplătească încrederea. Evident, da. Dar asta e tot."
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          "Gentlemanul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I go into every battle as though it were my last. To walk in ready to lose is unforgivable.",
+          "And yet nobody wins for ever. A good trainer takes the lesson and leaves the loss behind."
+        ],
+        "text": [
+          "Intru în fiecare luptă de parcă ar fi ultima. Să intri gata să pierzi e de neiertat.",
+          "Și totuși nimeni nu câștigă la nesfârșit. Un Antrenor bun ia lecția și lasă înfrângerea în urmă."
+        ]
+      }
+    },
+    "ace_trainer_m_2": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          "Antrenor As"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The type! The moves! What it holds!",
+          "If you mean to be the best here, there's not one detail you can let slide."
+        ],
+        "text": [
+          "Tipul! Mișcările! Ce ține!",
+          "Dacă vrei să fii cel mai bun aici, nu poți scăpa niciun detaliu."
+        ]
+      }
+    },
+    "picnicker": {
+      "name": {
+        "en": [
+          "Picnicker"
+        ],
+        "text": [
+          "Excursionistă"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When I lose, the first thing I do is look for something to blame. Bad luck, or the other trainer, or my own Pokémon.",
+          "I know that's wrong. I won't get any better until I stop doing it."
+        ],
+        "text": [
+          "Când pierd, primul lucru pe care îl fac e să caut ceva pe care să dau vina. Ghinionul, celălalt Antrenor sau propriii mei Pokémoni.",
+          "Știu că e greșit. N-o să devin mai bun până nu mă las de asta."
+        ]
+      }
+    },
+    "pokemon_breeder_f": {
+      "name": {
+        "en": [
+          "Pokémon Breeder"
+        ],
+        "text": [
+          "Crescătoare de Pokémoni"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "There are five halls in the Battle Frontier, and at each of them you can win your way up to its master.",
+          "They're called the Frontier Brains. Tough doesn't begin to cover it!"
+        ],
+        "text": [
+          "În Battle Frontier sunt cinci săli, și la fiecare poți urca victorie cu victorie până la stăpânul ei.",
+          "Li se zice Creierele Frontierei. A spune că sunt duri e puțin!"
+        ]
+      }
+    },
+    "ace_trainer_m_1": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          "Antrenor As"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "It's nothing you haven't heard before, but there's no end to what there is to learn about Pokémon."
+        ],
+        "text": [
+          "Nu e nimic ce n-ai mai auzit, dar despre Pokémoni ai de învățat la nesfârșit."
+        ]
+      }
+    },
+    "school_kid_m": {
+      "name": {
+        "en": [
+          "School Kid"
+        ],
+        "text": [
+          "Școlărița"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "At the Battle Factory you fight with Pokémon they lend you, and you have to keep on winning with them.",
+          "It tests what you know, not what you own. Just the place for a student like me!"
+        ],
+        "text": [
+          "La Battle Factory lupți cu Pokémoni pe care ți-i împrumută ei, și trebuie să tot câștigi cu ei.",
+          "Pune la încercare ce știi, nu ce ai. Exact locul pentru un student ca mine!"
+        ]
+      }
+    },
+    "fisherman": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          "Pescarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Battle Hall, that's the one for me.",
+          "In there even the Magikarp I pulled out of a pond has a chance of being number one!"
+        ],
+        "text": [
+          "Battle Hall, ăsta e pentru mine.",
+          "Acolo până și Magikarp-ul pe care l-am scos dintr-un iaz are o șansă să fie numărul unu!"
+        ]
+      }
+    },
+    "tuber_m": {
+      "name": {
+        "en": [
+          "Tuber"
+        ],
+        "text": [
+          "Copilul cu colac"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Life goes up and life goes down. I've got my rubber ring, so I just bob along on top."
+        ],
+        "text": [
+          "Viața urcă și viața coboară. Eu am colacul meu, deci plutesc pe deasupra."
+        ]
+      }
+    },
+    "attendant_southwest": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      }
+    },
+    "attendant_southeast": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      }
+    },
+    "attendant_northwest": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "trainer_tips_signpost_battle_tower": {
+      "en": [
+        "Battle Tower\nNever lose! Keep on winning!"
+      ],
+      "text": [
+        "Battle Tower\nNu pierde niciodată! Câștigă mereu!"
+      ]
+    },
+    "trainer_tips_signpost_battle_hall": {
+      "en": [
+        "Battle Hall\nLet each Pokémon aim for the top."
+      ],
+      "text": [
+        "Battle Hall\nFiecare Pokémon să țintească vârful."
+      ]
+    },
+    "trainer_tips_signpost_battle_castle": {
+      "en": [
+        "Battle Castle\nRule your battles with Castle Points."
+      ],
+      "text": [
+        "Battle Castle\nStăpânește-ți luptele cu Puncte de Castel."
+      ]
+    },
+    "trainer_tips_signpost_battle_arcade": {
+      "en": [
+        "Battle Arcade\nWhere chance sways every battle."
+      ],
+      "text": [
+        "Battle Arcade\nUnde norocul înclină fiecare luptă."
+      ]
+    },
+    "trainer_tips_signpost_battle_factory": {
+      "en": [
+        "Battle Factory\nWin in a row with rental Pokémon."
+      ],
+      "text": [
+        "Battle Factory\nCâștigă la rând cu Pokémoni de împrumut."
+      ]
+    }
+  }
+}

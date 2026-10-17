@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Battle Factory"
+    ],
+    "text": [
+      "Battle Factory"
+    ]
+  },
+  "people": {
+    "opponent": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          "Antrenorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

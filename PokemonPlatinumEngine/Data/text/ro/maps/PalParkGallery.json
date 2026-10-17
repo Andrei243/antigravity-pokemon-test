@@ -1,0 +1,93 @@
+{
+  "displayName": {
+    "en": [
+      "Pal Park"
+    ],
+    "text": [
+      "Pal Park"
+    ]
+  },
+  "people": {
+    "lass_2": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I made Dad bring me here to watch {player}'s Catching Show!",
+          "Is it starting yet? I can't wait much longer!"
+        ],
+        "text": [
+          "L-am pus pe tata să mă aducă aici să văd Spectacolul de Prindere al lui {player}!",
+          "Începe odată? Nu mai pot aștepta mult!"
+        ]
+      }
+    },
+    "pokefan_m": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My girl here thinks the world of you, {player}.",
+          "Not a day goes by but she asks to be taken to a Catching Show."
+        ],
+        "text": [
+          "Fetița mea de aici ține grozav la tine, {player}.",
+          "Nu trece o zi fără să ceară să fie dusă la un Spectacol de Prindere."
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          "Puștiul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "It isn't only the catching that people come up here for.",
+          "You get to see Pokémon from far away that you would never meet in Sinnoh. That's what sets my heart pounding!"
+        ],
+        "text": [
+          "Oamenii nu vin aici sus doar pentru prinderi.",
+          "Vezi Pokémoni de departe pe care nu i-ai întâlni niciodată în Sinnoh. Asta îmi face inima să bată tare!"
+        ]
+      }
+    },
+    "lady": {
+      "name": {
+        "en": [
+          "Lady"
+        ],
+        "text": [
+          "Doamna"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A Catching Show... A Trainer and a Pokémon, each trying to outwit the other, with nothing between them.",
+          "The ones from Kanto and Hoenn are what I come to see. Though it does pull at my heart, to think how far they are from home."
+        ],
+        "text": [
+          "Un Spectacol de Prindere... Un Antrenor și un Pokémon, fiecare încercând să-l păcălească pe celălalt, fără nimic între ei.",
+          "Pe cei din Kanto și Hoenn vin să-i văd. Deși mă strânge de inimă când mă gândesc cât de departe sunt de casă."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

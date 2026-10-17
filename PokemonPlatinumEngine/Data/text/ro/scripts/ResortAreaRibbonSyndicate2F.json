@@ -1,0 +1,118 @@
+{
+  "Spa": [
+    {
+      "en": [
+        "How may we look after you today? With a spa treatment, perhaps?",
+        "Our treatments leave a Pokémon fonder of its Trainer. Your {member:RESULT} would enjoy one, I think."
+      ],
+      "text": [
+        "Cu ce te putem răsfăța azi? Cu un tratament de spa, poate?",
+        "Tratamentele noastre îl fac pe Pokémon să-și îndrăgească și mai mult Antrenorul. Lui {member:RESULT} al tău i-ar plăcea unul, cred."
+      ]
+    },
+    {
+      "en": [
+        "Would you care for a spa treatment, {player}?"
+      ],
+      "text": [
+        "Dorești un tratament de spa, {player}?"
+      ]
+    },
+    {
+      "en": [
+        "Very good. This way, if you please..."
+      ],
+      "text": [
+        "Foarte bine. Pe aici, te rog..."
+      ]
+    },
+    {
+      "en": [
+        "We are ready to begin. Let every muscle go, if you would."
+      ],
+      "text": [
+        "Suntem gata să începem. Lasă fiecare mușchi să se relaxeze, te rog."
+      ]
+    },
+    {
+      "en": [
+        "The herbs you can smell on the air of the salon are there to set the mind at rest."
+      ],
+      "text": [
+        "Ierburile pe care le simți în aerul salonului sunt acolo ca să liniștească mintea."
+      ]
+    },
+    {
+      "en": [
+        "This oil has diamonds dissolved in it. It works all the better for them."
+      ],
+      "text": [
+        "Uleiul acesta are diamante dizolvate în el. Funcționează cu atât mai bine."
+      ]
+    },
+    {
+      "en": [
+        "There is an essence drawn from pearls in this foam."
+      ],
+      "text": [
+        "În spuma aceasta e o esență extrasă din perle."
+      ]
+    },
+    {
+      "en": [
+        "This massage comes from overseas. It drives out everything the body is better without."
+      ],
+      "text": [
+        "Masajul acesta vine de peste mări. Alungă tot ce trupul nu are nevoie."
+      ]
+    },
+    {
+      "en": [
+        "There. All done.",
+        "Our treatment has left your pampered darling a little fonder of you."
+      ],
+      "text": [
+        "Gata. Am terminat.",
+        "Tratamentul nostru l-a făcut pe răsfățatul tău să te îndrăgească ceva mai mult."
+      ]
+    },
+    {
+      "en": [
+        "There. All done.",
+        "Our treatment has left your pampered darling very much fonder of you."
+      ],
+      "text": [
+        "Gata. Am terminat.",
+        "Tratamentul nostru l-a făcut pe răsfățatul tău să te îndrăgească mult mai mult."
+      ]
+    },
+    {
+      "en": [
+        "There. All done.",
+        "Our treatment has left your pampered darling fonder of you."
+      ],
+      "text": [
+        "Gata. Am terminat.",
+        "Tratamentul nostru l-a făcut pe răsfățatul tău să te îndrăgească mai mult."
+      ]
+    },
+    {
+      "en": [
+        "We hope to see you again."
+      ],
+      "text": [
+        "Sperăm să te revedem."
+      ]
+    },
+    {
+      "en": [
+        "Oh, I do beg your pardon.",
+        "A member may have one spa session a day, and no more."
+      ],
+      "text": [
+        "O, te rog să mă ierți.",
+        "Un membru poate avea o singură ședință de spa pe zi, nu mai mult."
+      ]
+    }
+  ]
+}

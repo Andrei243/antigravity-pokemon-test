@@ -1,0 +1,73 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Center"
+    ],
+    "text": [
+      "Centrul Pokémon"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "pokefan_m": {
+      "name": {
+        "en": [
+          "Pokéfan"
+        ],
+        "text": [
+          "Pokéfanul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pokéfan: Every trainer who comes through that door has eight Badges and their eyes on the Pokémon League.",
+          "Pokéfan: I come here just to wish them luck. Good luck to you too!"
+        ],
+        "text": [
+          "Pokéfan: Fiecare Antrenor care trece pe ușa aia are opt Insigne și ochii pe Liga Pokémon.",
+          "Pokéfan: Vin aici doar să le urez noroc. Noroc și ție!"
+        ]
+      }
+    },
+    "ace_trainer_f": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          "Antrenoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Trainer: Victory Road is all boulders, cliffs and dead ends. I got lost in there twice!",
+          "Trainer: Bring Pokémon that can smash rocks, shove boulders and climb walls, or you'll be going round in circles."
+        ],
+        "text": [
+          "Antrenoare: Drumul Victoriei e numai bolovani, stânci și fundături. M-am rătăcit acolo de două ori!",
+          "Antrenoare: Adu Pokémoni care pot sparge pietre, împinge bolovani și urca pereți, altfel o să te învârți în cerc."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,197 @@
+{
+  "displayName": {
+    "en": [
+      "Foreign Building"
+    ],
+    "text": [
+      "Clădirea Străină"
+    ]
+  },
+  "people": {
+    "ruin_maniac": {
+      "name": {
+        "en": [
+          "Ruin Maniac"
+        ],
+        "text": [
+          "Pasionatul de ruine"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I look, and I see my father. My son. My own life.",
+          "I look, and I see nature. Pokémon. The world."
+        ],
+        "text": [
+          "Mă uit și îl văd pe tatăl meu. Pe fiul meu. Propria mea viață.",
+          "Mă uit și văd natura. Pokémonii. Lumea."
+        ]
+      }
+    },
+    "old_man": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Making things wears out the spirit.",
+          "The spirit mends, and the wish to make something comes back. What a wondrous circle it is."
+        ],
+        "text": [
+          "Să faci lucruri îți tocește spiritul.",
+          "Spiritul se vindecă, iar dorința de a face ceva revine. Ce cerc minunat."
+        ]
+      }
+    },
+    "ninja_boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When people and Pokémon join hands, everybody's happy!",
+          "It brings everyone together. It could make the whole world one!"
+        ],
+        "text": [
+          "Când oamenii și Pokémonii își dau mâna, toată lumea e fericită!",
+          "Îi aduce pe toți laolaltă. Ar putea face toată lumea una!"
+        ]
+      }
+    },
+    "old_woman": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          "Bătrâna"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "It is only natural to be lonely. Being lonely is what teaches me to feel for others.",
+          "It is why I look forward to a better tomorrow.",
+          "And still, now and then, I am fond of days gone by. Time does mend some sorrows, though..."
+        ],
+        "text": [
+          "E firesc să fii singur. Singurătatea mă învață să simt pentru alții.",
+          "De aceea aștept un mâine mai bun.",
+          "Și totuși, din când în când, îmi sunt dragi zilele de demult. Timpul vindecă unele dureri, totuși..."
+        ]
+      }
+    },
+    "ace_trainer_f": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          "Antrenor As"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "There are words that not everyone can explain...",
+          "\"Love\", for one. And \"joy\"."
+        ],
+        "text": [
+          "Sunt cuvinte pe care nu oricine le poate explica...",
+          "„Iubire”, de pildă. Și „bucurie”."
+        ]
+      }
+    },
+    "pokefan_f": {
+      "name": {
+        "en": [
+          "Pokéfan"
+        ],
+        "text": [
+          "Pokéfana"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pokémon, people... of course we are all different. How could we not be?",
+          "Never judge a Pokémon by whether it is weak or strong.",
+          "Look for the good in it, always. That is what counts!"
+        ],
+        "text": [
+          "Pokémoni, oameni... sigur că suntem toți diferiți. Cum am putea să nu fim?",
+          "Nu judeca niciodată un Pokémon după cât e de slab sau de puternic.",
+          "Caută mereu binele din el. Asta contează!"
+        ]
+      }
+    },
+    "lady": {
+      "name": {
+        "en": [
+          "Lady"
+        ],
+        "text": [
+          "Doamna"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Mind and matter.",
+          "Neither must be stronger than the other. Balance. That is the key."
+        ],
+        "text": [
+          "Mintea și materia.",
+          "Niciuna nu trebuie să fie mai puternică decât cealaltă. Echilibrul. Asta e cheia."
+        ]
+      }
+    },
+    "psychic": {
+      "name": {
+        "en": [
+          "Psychic"
+        ],
+        "text": [
+          "Mediumul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We cannot read each other's minds, and so we fear and we doubt.",
+          "But to rule what lies beyond our senses is more than anyone can do."
+        ],
+        "text": [
+          "Nu ne putem citi gândurile unii altora, și de aceea ne temem și ne îndoim.",
+          "Dar să stăpânești ce e dincolo de simțuri e mai mult decât poate oricine."
+        ]
+      }
+    },
+    "expert_m": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When the strong and able do too much, they leave no room for what others could give.",
+          "The strong must hold back. That is how everyone lives together, each with a share to carry."
+        ],
+        "text": [
+          "Când cei puternici și pricepuți fac prea mult, nu lasă loc pentru ce ar putea da ceilalți.",
+          "Cei puternici trebuie să se rețină. Așa trăiesc toți împreună, fiecare cu partea lui de dus."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

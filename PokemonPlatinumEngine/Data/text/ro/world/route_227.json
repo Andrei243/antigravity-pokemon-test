@@ -1,0 +1,164 @@
+{
+  "people": {
+    "rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "{rival}: Not now, {player}! I'm training!"
+        ],
+        "text": [
+          "{rival}: Nu acum, {player}! Mă antrenez!"
+        ]
+      }
+    },
+    "crasher_wake": {
+      "name": {
+        "en": [
+          "Crasher Wake"
+        ],
+        "text": [
+          "Crasher Wake"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Crasher Wake: Wahaha! The mountain air does a body good!"
+        ],
+        "text": [
+          "Crasher Wake: Uahaha! Aerul de munte îi face bine trupului!"
+        ]
+      }
+    },
+    "buck": {
+      "name": {
+        "en": [
+          "Buck"
+        ],
+        "text": [
+          "Buck"
+        ]
+      }
+    },
+    "ace_trainer_saul": {
+      "name": {
+        "en": [
+          "Saul"
+        ],
+        "text": [
+          "Saul"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Saul: One Pokémon. That's all I carry up this road, and all I've ever needed!"
+        ],
+        "text": [
+          "Antrenor As Saul: Un Pokémon. Doar atât port pe drumul ăsta, și doar de atât am avut vreodată nevoie!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Saul: ...Perhaps I'll think about a second."
+        ],
+        "text": [
+          "Antrenor As Saul: ...Poate mă gândesc la un al doilea."
+        ]
+      }
+    },
+    "ranger_felicia": {
+      "name": {
+        "en": [
+          "Felicia"
+        ],
+        "text": [
+          "Felicia"
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokémon Ranger Felicia: Ash falls on everything up here, and still the grass comes through it. So do the Pokémon. So do I!"
+        ],
+        "text": [
+          "Ranger Pokémon Felicia: Cenușa cade pe toate aici sus, și totuși iarba răzbate prin ea. La fel și Pokémonii. La fel și eu!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokémon Ranger Felicia: You came through it best of all."
+        ],
+        "text": [
+          "Ranger Pokémon Felicia: Tu ai răzbătut cel mai bine dintre toți."
+        ]
+      }
+    },
+    "black_belt_griffin": {
+      "name": {
+        "en": [
+          "Griffin"
+        ],
+        "text": [
+          "Griffin"
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Griffin: I train at the mouth of a volcano! Hot rock under my feet, ash in my eyes! Nothing can shake me!"
+        ],
+        "text": [
+          "Centură Neagră Griffin: Mă antrenez la gura unui vulcan! Rocă fierbinte sub picioare, cenușă în ochi! Nimic nu mă poate clinti!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Griffin: Shaken! By a traveller! Back to the hot rocks!"
+        ],
+        "text": [
+          "Centură Neagră Griffin: Clintit! De un călător! Înapoi la rocile fierbinți!"
+        ]
+      }
+    },
+    "ace_trainer_mikayla": {
+      "name": {
+        "en": [
+          "Mikayla"
+        ],
+        "text": [
+          "Mikayla"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Mikayla: Tooth, claw and horn. My three have a sharp answer for everything. What's your question?"
+        ],
+        "text": [
+          "Antrenor As Mikayla: Dinte, gheară și corn. Cei trei ai mei au un răspuns tăios la orice. Care e întrebarea ta?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Mikayla: That was a question I hadn't an answer to."
+        ],
+        "text": [
+          "Antrenor As Mikayla: Asta a fost o întrebare la care n-aveam răspuns."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost": {
+      "en": [
+        "Rt. 227\nNorth: Stark Mountain"
+      ],
+      "text": [
+        "Ruta 227\nNord: Muntele Stark"
+      ]
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "displayName": {
+    "en": [
+      "Battle Salon"
+    ],
+    "text": [
+      "Battle Salon"
+    ]
+  },
+  "people": {
+    "teala": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      }
+    },
+    "cheryl": {
+      "name": {
+        "en": [
+          "Cheryl"
+        ],
+        "text": [
+          "Cheryl"
+        ]
+      }
+    },
+    "mira": {
+      "name": {
+        "en": [
+          "Mira"
+        ],
+        "text": [
+          "Mira"
+        ]
+      }
+    },
+    "riley": {
+      "name": {
+        "en": [
+          "Riley"
+        ],
+        "text": [
+          "Riley"
+        ]
+      }
+    },
+    "marley": {
+      "name": {
+        "en": [
+          "Marley"
+        ],
+        "text": [
+          "Marley"
+        ]
+      }
+    },
+    "buck": {
+      "name": {
+        "en": [
+          "Buck"
+        ],
+        "text": [
+          "Buck"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,242 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Announcer"
+      ],
+      "text": [
+        "Crainicul"
+      ]
+    },
+    {
+      "en": [
+        "Now then! Which type of Pokémon will our challenger take on?"
+      ],
+      "text": [
+        "Și acum! Cu ce tip de Pokémon se va lupta concurentul nostru?"
+      ]
+    },
+    {
+      "en": [
+        "Battle no. {number}! The {type} type, at rank {rank}!"
+      ],
+      "text": [
+        "Lupta nr. {number}! Tipul {type}, la rangul {rank}!"
+      ]
+    },
+    {
+      "en": [
+        "{foe} takes the stage!"
+      ],
+      "text": [
+        "{foe} urcă pe scenă!"
+      ]
+    },
+    {
+      "en": [
+        "{entrant} has been restored to full health!"
+      ],
+      "text": [
+        "{entrant} a fost refăcut complet!"
+      ]
+    },
+    {
+      "en": [
+        "Battle no. {number} is next. Are you ready?",
+        "KEEP GOING",
+        "REST",
+        "RETIRE"
+      ],
+      "text": [
+        "Urmează lupta nr. {number}. Ești gata?",
+        "CONTINUĂ",
+        "PAUZĂ",
+        "RENUNȚĂ"
+      ]
+    },
+    {
+      "en": [
+        "Battle no. {number}... But wait! Ladies and gentlemen, look who is coming down to the stage!"
+      ],
+      "text": [
+        "Lupta nr. {number}... Dar stați! Doamnelor și domnilor, uitați cine coboară pe scenă!"
+      ]
+    },
+    {
+      "en": [
+        "Argenta"
+      ],
+      "text": [
+        "Argenta"
+      ]
+    },
+    {
+      "en": [
+        "Well, well, well! Forty-nine in a row, and all with one Pokémon? My dear, you have had this old hall on its feet all day."
+      ],
+      "text": [
+        "Ia te uită! Patruzeci și nouă la rând, și toate cu un singur Pokémon? Dragă, ai ținut sala asta bătrână în picioare toată ziua."
+      ]
+    },
+    {
+      "en": [
+        "I am Argenta, the Hall Matron, and I couldn't sit still in my seat a moment longer. Let me see for myself what the two of you are made of!"
+      ],
+      "text": [
+        "Eu sunt Argenta, Matroana Sălii, și nu mai puteam sta locului nicio clipă. Lasă-mă să văd cu ochii mei ce puteți voi doi!"
+      ]
+    },
+    {
+      "en": [
+        "Announcer"
+      ],
+      "text": [
+        "Crainicul"
+      ]
+    },
+    {
+      "en": [
+        "Battle no. {number}... Listen to them! The Hall Matron is on her way down once more!"
+      ],
+      "text": [
+        "Lupta nr. {number}... Ascultați-i! Matroana Sălii coboară din nou!"
+      ]
+    },
+    {
+      "en": [
+        "Argenta"
+      ],
+      "text": [
+        "Argenta"
+      ]
+    },
+    {
+      "en": [
+        "A hundred and sixty-nine! In all my years nobody has ever made me wait so long for a battle, or made the wait such a pleasure."
+      ],
+      "text": [
+        "O sută șaizeci și nouă! În toți anii mei nimeni nu m-a făcut să aștept atât o luptă și nici n-a făcut așteptarea atât de plăcută."
+      ]
+    },
+    {
+      "en": [
+        "No holding back this time, my dear. Not for you, and certainly not for me!"
+      ],
+      "text": [
+        "Fără rețineri de data asta, dragă. Nici pentru tine, și cu atât mai puțin pentru mine!"
+      ]
+    },
+    {
+      "en": [
+        "Announcer"
+      ],
+      "text": [
+        "Crainicul"
+      ]
+    },
+    {
+      "en": [
+        "Argenta"
+      ],
+      "text": [
+        "Argenta"
+      ]
+    },
+    {
+      "en": [
+        "Oh, bravo! Bravo! That is the finest thing I have seen on this stage in a very long while."
+      ],
+      "text": [
+        "O, bravo! Bravo! E cel mai frumos lucru pe care l-am văzut pe scena asta de foarte multă vreme."
+      ]
+    },
+    {
+      "en": [
+        "You must come back, and with every Pokémon you have. I want to see them all up here!"
+      ],
+      "text": [
+        "Trebuie să revii, și cu toți Pokémonii pe care îi ai. Vreau să-i văd pe toți aici sus!"
+      ]
+    },
+    {
+      "en": [
+        "Announcer"
+      ],
+      "text": [
+        "Crainicul"
+      ]
+    },
+    {
+      "en": [
+        "Argenta"
+      ],
+      "text": [
+        "Argenta"
+      ]
+    },
+    {
+      "en": [
+        "...Splendid. Simply splendid. I gave you everything I had, and the two of you never once looked away from each other."
+      ],
+      "text": [
+        "...Splendid. Pur și simplu splendid. Ți-am dat tot ce aveam, și voi doi nu v-ați luat nicio clipă ochii unul de la altul."
+      ]
+    },
+    {
+      "en": [
+        "This hall was built for a trainer and a Pokémon like you. Thank you, my dear, from all of us."
+      ],
+      "text": [
+        "Sala asta a fost construită pentru un Antrenor și un Pokémon ca voi. Mulțumesc, dragă, din partea tuturor."
+      ]
+    },
+    {
+      "en": [
+        "Announcer"
+      ],
+      "text": [
+        "Crainicul"
+      ]
+    },
+    {
+      "en": [
+        "Ten battles, ten wins! Ladies and gentlemen, {player} and {entrant}!"
+      ],
+      "text": [
+        "Zece lupte, zece victorii! Doamnelor și domnilor, {player} și {entrant}!"
+      ]
+    },
+    {
+      "en": [
+        "{player} received {number} BP!"
+      ],
+      "text": [
+        "{player} a primit {number} PL!"
+      ]
+    },
+    {
+      "en": [
+        "Give the challenge up? The streak will end here."
+      ],
+      "text": [
+        "Renunți la provocare? Seria se va încheia aici."
+      ]
+    },
+    {
+      "en": [
+        "Put the challenge down for now? The game will be saved, and you can go on from here later."
+      ],
+      "text": [
+        "Lași provocarea deocamdată? Jocul va fi salvat și poți continua de aici mai târziu."
+      ]
+    },
+    {
+      "en": [
+        "Thank you for a splendid show! Please come back to the stage soon."
+      ],
+      "text": [
+        "Mulțumim pentru un spectacol splendid! Te rog să revii curând pe scenă."
+      ]
+    }
+  ]
+}

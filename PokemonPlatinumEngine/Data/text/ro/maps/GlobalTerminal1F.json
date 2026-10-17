@@ -1,0 +1,364 @@
+{
+  "displayName": {
+    "en": [
+      "Global Terminal"
+    ],
+    "text": [
+      "Global Terminal"
+    ]
+  },
+  "people": {
+    "receptionist_gts": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      }
+    },
+    "collector": {
+      "name": {
+        "en": [
+          "Collector"
+        ],
+        "text": [
+          "Colecționarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "That is one big globe, eh?",
+          "Now, whereabouts on it do I live? Let me see if I can point to it..."
+        ],
+        "text": [
+          "Ce glob mare, ei?",
+          "Acum, pe unde locuiesc eu pe el? Să vedem dacă pot arăta..."
+        ]
+      }
+    },
+    "bug_catcher": {
+      "name": {
+        "en": [
+          "Bug Catcher"
+        ],
+        "text": [
+          "Vânătorul de insecte"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "They say that when you get in touch with someone far away, the place they live lights up on this giant globe."
+        ],
+        "text": [
+          "Se zice că atunci când iei legătura cu cineva de departe, locul unde trăiește se aprinde pe globul ăsta uriaș."
+        ]
+      }
+    },
+    "guitarist": {
+      "name": {
+        "en": [
+          "Guitarist"
+        ],
+        "text": [
+          "Chitaristul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "All I'd have to do is leave a Pokémon here to be traded.",
+          "Who knows? It might have a new Trainer by the time I woke up."
+        ],
+        "text": [
+          "N-aș avea decât să las aici un Pokémon la schimb.",
+          "Cine știe? Poate ar avea un nou Antrenor până mă trezesc."
+        ]
+      }
+    },
+    "expert_m": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Is all this something even an old fellow like me could work?",
+          "If it is as easy as they say, I should like to trade Pokémon too!"
+        ],
+        "text": [
+          "Oare pe toate astea le-ar putea folosi chiar și un bătrân ca mine?",
+          "Dacă e atât de ușor cum zic ei, aș vrea și eu să schimb Pokémoni!"
+        ]
+      }
+    },
+    "ace_trainer_m": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          "Antrenor As"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This week I'll do it!",
+          "I mean to make the top eight of the rankings, whatever it takes."
+        ],
+        "text": [
+          "Săptămâna asta o fac!",
+          "Am de gând să intru între primii opt din clasament, orice-ar fi."
+        ]
+      }
+    },
+    "beauty_1": {
+      "name": {
+        "en": [
+          "Beauty"
+        ],
+        "text": [
+          "Frumoasa"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Trading Pokémon with people who love them, right round the world, as easily as that.",
+          "Isn't it something?"
+        ],
+        "text": [
+          "Să schimbi Pokémoni cu oameni care îi iubesc, de jur împrejurul lumii, așa de ușor.",
+          "Nu-i așa că e ceva?"
+        ]
+      }
+    },
+    "receptionist_entry_north": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the Global Terminal!",
+          "This is where the Trainers of the whole world come together: to look at one another's records, and to trade Pokémon.",
+          "I am sorry to say the link is down today. Do look round all the same!"
+        ],
+        "text": [
+          "Bine ai venit la Global Terminal!",
+          "Aici se întâlnesc Antrenorii din toată lumea: să-și vadă palmaresul unii altora și să schimbe Pokémoni.",
+          "Îmi pare rău, dar azi legătura nu merge. Uită-te totuși prin jur!"
+        ]
+      }
+    },
+    "receptionist_entry_south": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Global Terminal has a number of machines for reaching the wider world.",
+          "Each of them walks you through what to do. While the link is down, though, their screens show nothing at all."
+        ],
+        "text": [
+          "Global Terminal are mai multe aparate pentru a ajunge la restul lumii.",
+          "Fiecare îți arată pas cu pas ce ai de făcut. Cât timp legătura nu merge, însă, ecranele lor nu arată nimic."
+        ]
+      }
+    },
+    "picnicker": {
+      "name": {
+        "en": [
+          "Picnicker"
+        ],
+        "text": [
+          "Excursionistă"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "You can mark where you live on this giant globe.",
+          "Then anyone you get in touch with can see where you are!"
+        ],
+        "text": [
+          "Poți marca pe globul ăsta uriaș locul unde trăiești.",
+          "Atunci oricine ia legătura cu tine poate vedea unde ești!"
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          "Puștiul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Global Terminal has three floors, and you go between them by warp panel.",
+          "This floor has the GTS. One panel goes to the studios on 2F, for Box Data and Dress-Up Data.",
+          "The other goes up to 3F and the Battle Video Gallery."
+        ],
+        "text": [
+          "Global Terminal are trei etaje, iar între ele te muți cu panouri de teleportare.",
+          "Etajul ăsta are GTS-ul. Un panou duce la studiourile de la etajul 2, pentru Box Data și Dress-Up Data.",
+          "Celălalt urcă la etajul 3 și la Battle Video Gallery."
+        ]
+      }
+    },
+    "pokemon_breeder_f": {
+      "name": {
+        "en": [
+          "Breeder"
+        ],
+        "text": [
+          "Crescătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hello! Have you been to the Dress-Up Data Studio upstairs?",
+          "I hand out Backdrops to everyone who shows their work there. With the studio dark, I've nobody to hand them to!"
+        ],
+        "text": [
+          "Bună! Ai fost la studioul Dress-Up Data de sus?",
+          "Le dau Fundaluri tuturor celor care își arată acolo creațiile. Cu studioul stins, n-am cui să le dau!"
+        ]
+      }
+    },
+    "pokemon_breeder_m": {
+      "name": {
+        "en": [
+          "Breeder"
+        ],
+        "text": [
+          "Crescătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Yo, yo, yo! Want the whole world to know about you?",
+          "Then you tell me, yo! ...Soon as the link's back up, anyway. Nobody out there's listening today."
+        ],
+        "text": [
+          "Iooo! Vrei ca toată lumea să afle de tine?",
+          "Atunci spune-mi mie, iooo! ...Imediat ce revine legătura, adică. Azi nu ascultă nimeni de acolo."
+        ]
+      }
+    },
+    "beauty_2": {
+      "name": {
+        "en": [
+          "Beauty"
+        ],
+        "text": [
+          "Frumoasa"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "9,10": {
+      "en": [
+        "A great globe of the world. Not one point of light shows on it."
+      ],
+      "text": [
+        "Un glob mare al lumii. Nu se vede pe el niciun punct de lumină."
+      ]
+    },
+    "10,10": {
+      "en": [
+        "A great globe of the world. Not one point of light shows on it."
+      ],
+      "text": [
+        "Un glob mare al lumii. Nu se vede pe el niciun punct de lumină."
+      ]
+    },
+    "18,9": {
+      "en": [
+        "A machine for the Battle Video Rankings. NO SIGNAL, says its screen."
+      ],
+      "text": [
+        "Un aparat pentru clasamentul Battle Video. FĂRĂ SEMNAL, spune ecranul."
+      ]
+    },
+    "18,10": {
+      "en": [
+        "A machine for the Battle Video Rankings. NO SIGNAL, says its screen."
+      ],
+      "text": [
+        "Un aparat pentru clasamentul Battle Video. FĂRĂ SEMNAL, spune ecranul."
+      ]
+    },
+    "18,14": {
+      "en": [
+        "A machine for the Trainer Rankings. NO SIGNAL, says its screen."
+      ],
+      "text": [
+        "Un aparat pentru clasamentul Antrenorilor. FĂRĂ SEMNAL, spune ecranul."
+      ]
+    },
+    "18,15": {
+      "en": [
+        "A machine for the Trainer Rankings. NO SIGNAL, says its screen."
+      ],
+      "text": [
+        "Un aparat pentru clasamentul Antrenorilor. FĂRĂ SEMNAL, spune ecranul."
+      ]
+    },
+    "21,9": {
+      "en": [
+        "A machine for the Battle Video Rankings. NO SIGNAL, says its screen."
+      ],
+      "text": [
+        "Un aparat pentru clasamentul Battle Video. FĂRĂ SEMNAL, spune ecranul."
+      ]
+    },
+    "21,10": {
+      "en": [
+        "A machine for the Battle Video Rankings. NO SIGNAL, says its screen."
+      ],
+      "text": [
+        "Un aparat pentru clasamentul Battle Video. FĂRĂ SEMNAL, spune ecranul."
+      ]
+    },
+    "21,15": {
+      "en": [
+        "A machine for the Trainer Rankings. NO SIGNAL, says its screen."
+      ],
+      "text": [
+        "Un aparat pentru clasamentul Antrenorilor. FĂRĂ SEMNAL, spune ecranul."
+      ]
+    },
+    "21,14": {
+      "en": [
+        "A machine for the Trainer Rankings. NO SIGNAL, says its screen."
+      ],
+      "text": [
+        "Un aparat pentru clasamentul Antrenorilor. FĂRĂ SEMNAL, spune ecranul."
+      ]
+    },
+    "18,2": {
+      "en": [
+        "One panel leads to the studios for Box Data and Dress-Up Data on 2F. The other leads to the Battle Video Gallery on 3F."
+      ],
+      "text": [
+        "Un panou duce la studiourile pentru Box Data și Dress-Up Data de la etajul 2. Celălalt duce la Battle Video Gallery de la etajul 3."
+      ]
+    }
+  }
+}

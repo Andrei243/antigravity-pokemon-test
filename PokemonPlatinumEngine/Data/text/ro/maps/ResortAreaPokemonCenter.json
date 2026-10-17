@@ -1,0 +1,73 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Center"
+    ],
+    "text": [
+      "Centrul Pokémon"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "rich_boy": {
+      "name": {
+        "en": [
+          "Rich Boy"
+        ],
+        "text": [
+          "Băiat bogat"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Some Pokémon look just the same upside down as the right way up.",
+          "I stood on my head half the morning to be sure of it. Do try it yourself!"
+        ],
+        "text": [
+          "Unii Pokémoni arată exact la fel cu capul în jos ca și cu capul în sus.",
+          "Am stat în cap jumătate de dimineață ca să fiu sigur. Încearcă și tu!"
+        ]
+      }
+    },
+    "idol": {
+      "name": {
+        "en": [
+          "Idol"
+        ],
+        "text": [
+          "Idolul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Wherever I travel, whatever language people speak, everybody lights up at the word Pokémon.",
+          "Isn't that the most wonderful thing?"
+        ],
+        "text": [
+          "Oriunde călătoresc, orice limbă ar vorbi oamenii, toți se luminează la cuvântul Pokémon.",
+          "Nu-i așa că e cel mai minunat lucru?"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

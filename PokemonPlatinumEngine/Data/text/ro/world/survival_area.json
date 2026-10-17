@@ -1,0 +1,114 @@
+{
+  "people": {
+    "buck": {
+      "name": {
+        "en": [
+          "Buck"
+        ],
+        "text": [
+          "Buck"
+        ]
+      }
+    },
+    "rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      }
+    },
+    "ruin_maniac": {
+      "name": {
+        "en": [
+          "Ruin Maniac"
+        ],
+        "text": [
+          "Pasionatul de ruine"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The rock round here keeps marvellous things. I've chipped out prints of creatures nobody has seen alive!",
+          "A day on this mountain beats a year in any museum."
+        ],
+        "text": [
+          "Roca de pe aici păstrează lucruri minunate. Am scos din ea urme de creaturi pe care nimeni nu le-a văzut vii!",
+          "O zi pe muntele ăsta face cât un an în orice muzeu."
+        ]
+      }
+    },
+    "battle_girl": {
+      "name": {
+        "en": [
+          "Battle Girl"
+        ],
+        "text": [
+          "Luptătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Nobody comes to the Survival Area for the view. We come here to train!",
+          "Cliffs to climb, a volcano up the road and the strongest trainers in the land next door. Hi-yah! Perfect!"
+        ],
+        "text": [
+          "Nimeni nu vine în Zona de Supraviețuire pentru priveliște. Venim aici să ne antrenăm!",
+          "Stânci de urcat, un vulcan mai sus pe drum și cei mai puternici Antrenori din țară alături. Hi-ia! Perfect!"
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          "Puștiul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I packed my Bag so full of items for the routes round here that I can hardly lift it.",
+          "I'm not taking a single one out, though. You'd be mad to set off from here without them!"
+        ],
+        "text": [
+          "Mi-am umplut Rucsacul cu atâtea obiecte pentru rutele de pe aici că abia îl mai ridic.",
+          "Totuși, nu scot niciunul. Doar un nebun ar porni de aici fără ele!"
+        ]
+      }
+    },
+    "cameraman": {
+      "name": {
+        "en": [
+          "Cameraman"
+        ],
+        "text": [
+          "Cameramanul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I once filmed a red Gyarados! Biggest scoop of my life, and I've been after the next one ever since.",
+          "They say something stirs inside the volcano up north. If it shows itself, my camera will be rolling."
+        ],
+        "text": [
+          "Odată am filmat un Gyarados roșu! Cea mai mare lovitură din viața mea, și de atunci tot o caut pe următoarea.",
+          "Se zice că ceva se mișcă în vulcanul din nord. Dacă se arată, camera mea va filma."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "map_signpost": {
+      "en": [
+        "Survival Area\nOnly the toughest stay."
+      ],
+      "text": [
+        "Zona de Supraviețuire\nRămân doar cei mai duri."
+      ]
+    }
+  }
+}

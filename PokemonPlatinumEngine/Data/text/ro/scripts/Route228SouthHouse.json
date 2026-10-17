@@ -1,0 +1,50 @@
+{
+  "Gentleman": [
+    {
+      "en": [
+        "That Badge... Sunyshore's Gym gave you that, didn't it?",
+        "Then you have been to that harbour town..."
+      ],
+      "text": [
+        "Insigna aia... Arena din Sunyshore ți-a dat-o, nu-i așa?",
+        "Atunci ai fost în orașul acela de port..."
+      ]
+    },
+    {
+      "en": [
+        "Would you... would you hear an old man's tale?"
+      ],
+      "text": [
+        "Ai vrea... ai vrea să asculți povestea unui bătrân?"
+      ]
+    },
+    {
+      "en": [
+        "No... I oughtn't to weigh you down with it.",
+        "My grandson grew up in that city by the sea.",
+        "He wore himself out trying to be all his parents wanted of him, and took shelter in tinkering with machines.",
+        "I ask myself even now whether I should have taken the boy in and brought him up myself.",
+        "Would it have been any better for him? I can't tell. I doubt anybody could.",
+        "Forgive me. I should never have told you any of this..."
+      ],
+      "text": [
+        "Nu... N-ar trebui să te împovărez cu ea.",
+        "Nepotul meu a crescut în orașul acela de lângă mare.",
+        "S-a istovit încercând să fie tot ce-și doreau părinții lui de la el și și-a găsit adăpost în meșteritul la mașinării.",
+        "Mă întreb și acum dacă n-ar fi trebuit să-l iau pe băiat la mine și să-l cresc eu.",
+        "Ar fi fost mai bine pentru el? Nu pot spune. Mă îndoiesc că ar putea cineva.",
+        "Iartă-mă. N-ar fi trebuit să-ți spun nimic din toate astea..."
+      ]
+    },
+    {
+      "en": [
+        "Ah... Never mind me, then.",
+        "I had only hoped to ease a guilty mind a little..."
+      ],
+      "text": [
+        "A... Nu mă băga în seamă, atunci.",
+        "Speram doar să-mi ușurez puțin cugetul vinovat..."
+      ]
+    }
+  ]
+}

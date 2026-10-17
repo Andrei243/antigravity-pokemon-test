@@ -1,0 +1,150 @@
+{
+  "DoorGuard": [
+    {
+      "en": [
+        "Guard"
+      ],
+      "text": [
+        "Paznic"
+      ]
+    },
+    {
+      "en": [
+        "Beyond this door the Elite Four are waiting. Only a Trainer with all eight of Sinnoh's Gym Badges goes through. Let me have a look at yours."
+      ],
+      "text": [
+        "Dincolo de ușa asta te așteaptă Elita celor Patru. Trece doar un Antrenor cu toate cele opt Insigne de Arenă din Sinnoh. Lasă-mă să mă uit la ale tale."
+      ]
+    },
+    {
+      "en": [
+        "Oreburgh City's Coal Badge. Eterna City's Forest Badge. Hearthome City's Relic Badge. Veilstone City's Cobble Badge."
+      ],
+      "text": [
+        "Insigna Cărbune din Orașul Oreburgh. Insigna Pădure din Orașul Eterna. Insigna Relicvă din Orașul Hearthome. Insigna Pavaj din Orașul Veilstone."
+      ]
+    },
+    {
+      "en": [
+        "Pastoria City's Fen Badge. Canalave City's Mine Badge. Snowpoint City's Icicle Badge. And... Sunyshore City's Beacon Badge!"
+      ],
+      "text": [
+        "Insigna Mlaștină din Orașul Pastoria. Insigna Mină din Orașul Canalave. Insigna Țurțure din Orașul Snowpoint. Și... Insigna Far din Orașul Sunyshore!"
+      ]
+    },
+    {
+      "en": [
+        "All eight, and every one of them earned. You may go in."
+      ],
+      "text": [
+        "Toate opt, și fiecare câștigată. Poți intra."
+      ]
+    },
+    {
+      "en": [
+        "Make sure your Pokémon are rested first. Once you are through that door there is no coming back until you have won, or lost."
+      ],
+      "text": [
+        "Ai grijă ca Pokémonii tăi să fie odihniți întâi. Odată ce treci de ușa aceea nu mai e cale de întoarcere până nu câștigi, sau pierzi."
+      ]
+    },
+    {
+      "en": [
+        "You will face the Elite Four one after another, and then the Champion. Nobody will heal your Pokémon between the rooms but you."
+      ],
+      "text": [
+        "Vei înfrunta Elita celor Patru unul după altul, apoi Campionul. Nimeni nu-ți va vindeca Pokémonii între camere în afară de tine."
+      ]
+    },
+    {
+      "en": [
+        "Good luck in there."
+      ],
+      "text": [
+        "Mult noroc acolo."
+      ]
+    },
+    {
+      "en": [
+        "...You don't have all eight yet. I can't let you through. Come back when you have every Gym Badge in Sinnoh."
+      ],
+      "text": [
+        "...Nu le ai încă pe toate opt. Nu te pot lăsa să treci. Revino când ai toate Insignele de Arenă din Sinnoh."
+      ]
+    }
+  ],
+  "RivalBeforeTheDoor": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Hold it right there, {player}! You're not going through that door without me!"
+      ],
+      "text": [
+        "Stai pe loc, {player}! Nu treci de ușa aia fără mine!"
+      ]
+    },
+    {
+      "en": [
+        "You've come to take on the Pokémon League, haven't you? Well, so have I! I didn't win eight Badges to stand and watch you go in first."
+      ],
+      "text": [
+        "Ai venit să provoci Liga Pokémon, nu? Ei bine, și eu! N-am câștigat opt Insigne ca să stau și să te văd intrând înaintea mea."
+      ]
+    },
+    {
+      "en": [
+        "So we'll settle it the way we always do. Whoever wins this battle is the one who's ready for the Elite Four!"
+      ],
+      "text": [
+        "Așa că o rezolvăm cum o rezolvăm mereu. Cine câștigă lupta asta e cel gata pentru Elita celor Patru!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "...If I'm still losing to you, then I'm not ready for the Pokémon League. Not yet. Argh, I can't stand it!"
+      ],
+      "text": [
+        "...Dacă tot pierd în fața ta, atunci nu sunt gata pentru Liga Pokémon. Nu încă. Argh, nu suport!"
+      ]
+    },
+    {
+      "en": [
+        "But you just watch! I'm going to get a whole lot tougher, and then I'm coming back to beat every last one of them."
+      ],
+      "text": [
+        "Dar o să vezi! O să devin mult mai dur, și apoi mă întorc să-i bat pe toți până la unul."
+      ]
+    },
+    {
+      "en": [
+        "The Champion is the toughest Trainer there is, and that's going to be me!"
+      ],
+      "text": [
+        "Campionul e cel mai dur Antrenor care există, și ăla o să fiu eu!"
+      ]
+    },
+    {
+      "en": [
+        "So don't you dare lose to anybody in there before I've had my turn, {player}!"
+      ],
+      "text": [
+        "Așa că să nu cumva să pierzi în fața cuiva de acolo înainte să-mi vină rândul, {player}!"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon League"
+    ],
+    "text": [
+      "Liga Pokémon"
+    ]
+  },
+  "people": {
+    "bertha": {
+      "name": {
+        "en": [
+          "Bertha"
+        ],
+        "text": [
+          "Bertha"
+        ]
+      }
+    },
+    "entrance_door": {
+      "name": {
+        "en": [
+          "Door"
+        ],
+        "text": [
+          "Ușă"
+        ]
+      }
+    },
+    "exit_door": {
+      "name": {
+        "en": [
+          "Door"
+        ],
+        "text": [
+          "Ușă"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,430 @@
+{
+  "SingleAttendant": [
+    {
+      "en": [
+        "Welcome to the Battle Factory, where you battle with Pokémon we lend you!"
+      ],
+      "text": [
+        "Bine ai venit la Battle Factory, unde lupți cu Pokémoni pe care ți-i împrumutăm noi!"
+      ]
+    },
+    {
+      "en": [
+        "Which challenge would you like to take?",
+        "SINGLE BATTLE",
+        "DOUBLE BATTLE",
+        "INFO",
+        "EXIT"
+      ],
+      "text": [
+        "Ce provocare vrei să încerci?",
+        "LUPTĂ SIMPLĂ",
+        "LUPTĂ DUBLĂ",
+        "INFO",
+        "IEȘIRE"
+      ]
+    },
+    {
+      "en": [
+        "You bring nothing in. We show you six rental Pokémon, and you choose three of them to battle with."
+      ],
+      "text": [
+        "Nu aduci nimic. Îți arătăm șase Pokémoni de împrumut și alegi trei dintre ei cu care să lupți."
+      ]
+    },
+    {
+      "en": [
+        "Seven trainers follow, one after another. After each win you may trade one of your three for one of the Pokémon you have just beaten."
+      ],
+      "text": [
+        "Urmează șapte Antrenori, unul după altul. După fiecare victorie poți schimba unul dintre cei trei ai tăi cu unul dintre Pokémonii pe care tocmai i-ai învins."
+      ]
+    },
+    {
+      "en": [
+        "Before each battle our staff tell you a little of who comes next. The further your streak goes, the less they can say."
+      ],
+      "text": [
+        "Înaintea fiecărei lupte, personalul nostru îți spune câte ceva despre cine urmează. Cu cât seria ta merge mai departe, cu atât pot spune mai puțin."
+      ]
+    },
+    {
+      "en": [
+        "Win all seven and you earn Battle Points, and stronger rentals wait in the next round. The more you trade, the better some of them will be."
+      ],
+      "text": [
+        "Câștigă toate șapte și primești Puncte de Luptă, iar în runda următoare te așteaptă împrumuturi mai puternice. Cu cât schimbi mai des, cu atât unele vor fi mai bune."
+      ]
+    },
+    {
+      "en": [
+        "At which level will you battle?",
+        "LEVEL 50",
+        "OPEN LEVEL",
+        "CANCEL"
+      ],
+      "text": [
+        "La ce nivel vrei să lupți?",
+        "NIVEL 50",
+        "NIVEL LIBER",
+        "ANULEAZĂ"
+      ]
+    },
+    {
+      "en": [
+        "At which level will you battle?",
+        "LEVEL 50",
+        "OPEN LEVEL",
+        "CANCEL"
+      ],
+      "text": [
+        "La ce nivel vrei să lupți?",
+        "NIVEL 50",
+        "NIVEL LIBER",
+        "ANULEAZĂ"
+      ]
+    },
+    {
+      "en": [
+        "We hope to see you again."
+      ],
+      "text": [
+        "Sperăm să te mai vedem."
+      ]
+    }
+  ],
+  "GoIn": [
+    {
+      "en": [
+        "Your game must be saved before the challenge begins. Shall I save it?"
+      ],
+      "text": [
+        "Jocul trebuie salvat înainte de începerea provocării. Îl salvez?"
+      ]
+    },
+    {
+      "en": [
+        "{player} saved the game."
+      ],
+      "text": [
+        "{player} a salvat jocul."
+      ]
+    },
+    {
+      "en": [
+        "Thank you. This way, please."
+      ],
+      "text": [
+        "Mulțumesc. Pe aici, te rog."
+      ]
+    },
+    {
+      "en": [
+        "Then please come back when you are ready."
+      ],
+      "text": [
+        "Atunci te rog să revii când ești gata."
+      ]
+    }
+  ],
+  "MultiAttendant": [
+    {
+      "en": [
+        "This counter is for the Battle Factory's Multi challenge, which two trainers take side by side with two rental Pokémon each."
+      ],
+      "text": [
+        "Ghișeul acesta e pentru provocarea Multiplă a Battle Factory, pe care o încearcă doi Antrenori umăr la umăr, cu câte doi Pokémoni de împrumut."
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry to say nobody can be linked up with. Only the Single and Double challenges are held."
+      ],
+      "text": [
+        "Îmi pare rău, dar nu ne putem conecta cu nimeni. Se țin doar provocările Simple și Duble."
+      ]
+    }
+  ],
+  "RoundWon": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitoarea"
+      ]
+    },
+    {
+      "en": [
+        "Congratulations on winning all seven battles!"
+      ],
+      "text": [
+        "Felicitări pentru toate cele șapte lupte câștigate!"
+      ]
+    },
+    {
+      "en": [
+        "The result is being recorded. {player} saved the game."
+      ],
+      "text": [
+        "Rezultatul se înregistrează. {player} a salvat jocul."
+      ]
+    },
+    {
+      "en": [
+        "We hope to see you again."
+      ],
+      "text": [
+        "Sperăm să te mai vedem."
+      ]
+    }
+  ],
+  "SilverPrint": [
+    {
+      "en": [
+        "You have beaten the Factory Head! This calls for something to remember it by."
+      ],
+      "text": [
+        "L-ai învins pe Șeful Fabricii! Asta merită o amintire."
+      ]
+    },
+    {
+      "en": [
+        "A Silver Print was added to {player}'s record of the Battle Factory!"
+      ],
+      "text": [
+        "O Amprentă de Argint a fost adăugată în palmaresul lui {player} de la Battle Factory!"
+      ]
+    }
+  ],
+  "GoldPrint": [
+    {
+      "en": [
+        "You have beaten the Factory Head at his very best! There is no higher honour here."
+      ],
+      "text": [
+        "L-ai învins pe Șeful Fabricii în cea mai bună formă a lui! Aici nu există onoare mai mare."
+      ]
+    },
+    {
+      "en": [
+        "A Gold Print was added to {player}'s record of the Battle Factory!"
+      ],
+      "text": [
+        "O Amprentă de Aur a fost adăugată în palmaresul lui {player} de la Battle Factory!"
+      ]
+    }
+  ],
+  "ChallengeEnded": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitoarea"
+      ]
+    },
+    {
+      "en": [
+        "Thank you for taking the challenge."
+      ],
+      "text": [
+        "Mulțumim că ai încercat provocarea."
+      ]
+    },
+    {
+      "en": [
+        "The result is being recorded. {player} saved the game."
+      ],
+      "text": [
+        "Rezultatul se înregistrează. {player} a salvat jocul."
+      ]
+    },
+    {
+      "en": [
+        "We hope to see you again."
+      ],
+      "text": [
+        "Sperăm să te mai vedem."
+      ]
+    }
+  ],
+  "Paused": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitoarea"
+      ]
+    },
+    {
+      "en": [
+        "{player} saved the game."
+      ],
+      "text": [
+        "{player} a salvat jocul."
+      ]
+    },
+    {
+      "en": [
+        "Your challenge is waiting where you put it down, and so are your three rental Pokémon. Would you like to go on with it now?"
+      ],
+      "text": [
+        "Provocarea ta te așteaptă acolo unde ai lăsat-o, la fel și cei trei Pokémoni de împrumut. Vrei s-o continui acum?"
+      ]
+    },
+    {
+      "en": [
+        "Then this way, please."
+      ],
+      "text": [
+        "Atunci pe aici, te rog."
+      ]
+    },
+    {
+      "en": [
+        "Very well. Speak to me whenever you are ready."
+      ],
+      "text": [
+        "Prea bine. Vorbește cu mine când ești gata."
+      ]
+    }
+  ],
+  "WalkedOut": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitoarea"
+      ]
+    },
+    {
+      "en": [
+        "The last challenge was left before it was over, so it can't be taken up again."
+      ],
+      "text": [
+        "Ultima provocare a fost părăsită înainte să se termine, deci nu poate fi reluată."
+      ]
+    },
+    {
+      "en": [
+        "I'm afraid its streak ends there."
+      ],
+      "text": [
+        "Mă tem că seria se încheie aici."
+      ]
+    },
+    {
+      "en": [
+        "We hope to see you again."
+      ],
+      "text": [
+        "Sperăm să te mai vedem."
+      ]
+    }
+  ],
+  "Breeder": [
+    {
+      "en": [
+        "Before every battle the staff let slip a little about the trainer you're going to meet."
+      ],
+      "text": [
+        "Înaintea fiecărei lupte, personalul scapă câte ceva despre Antrenorul pe care urmează să-l întâlnești."
+      ]
+    },
+    {
+      "en": [
+        "Listen hard. It's the only thing in there that isn't a surprise."
+      ],
+      "text": [
+        "Ascultă atent. E singurul lucru de acolo care nu e o surpriză."
+      ]
+    }
+  ],
+  "Sailor": [
+    {
+      "en": [
+        "I got lucky in my first round. They read me the whole of the other trainer's team, one, two, three!"
+      ],
+      "text": [
+        "Am avut noroc în prima mea rundă. Mi-au citit toată echipa celuilalt Antrenor, unu, doi, trei!"
+      ]
+    },
+    {
+      "en": [
+        "They've been tighter with it every round since."
+      ],
+      "text": [
+        "De atunci au fost tot mai zgârciți cu vorbele în fiecare rundă."
+      ]
+    }
+  ],
+  "Beauty": [
+    {
+      "en": [
+        "Watch what each Pokémon does to you in a battle and keep it in your head."
+      ],
+      "text": [
+        "Uită-te ce-ți face fiecare Pokémon în luptă și ține minte."
+      ]
+    },
+    {
+      "en": [
+        "It may be yours a minute later, and then you'll know just what it can do."
+      ],
+      "text": [
+        "S-ar putea să fie al tău un minut mai târziu, și atunci o să știi exact ce poate."
+      ]
+    }
+  ],
+  "Youngster": [
+    {
+      "en": [
+        "Rent them, win with them, hand them back. No favourites, no excuses. That's my style, and I'll teach it to anybody."
+      ],
+      "text": [
+        "Îi închiriezi, câștigi cu ei, îi dai înapoi. Fără favoriți, fără scuze. Ăsta e stilul meu, și îl învăț pe oricine."
+      ]
+    }
+  ],
+  "Clown": [
+    {
+      "en": [
+        "Walk in with empty hands and walk out a winner! Isn't that the best trick you ever heard of?"
+      ],
+      "text": [
+        "Intri cu mâna goală și ieși învingător! Nu e cel mai bun truc de care ai auzit vreodată?"
+      ]
+    }
+  ],
+  "Lady": [
+    {
+      "en": [
+        "I can't take this challenge. I already have my six darlings, and I couldn't bear to battle with anyone else's."
+      ],
+      "text": [
+        "Nu pot încerca provocarea asta. Am deja cei șase dragi ai mei și n-aș suporta să lupt cu ai altcuiva."
+      ]
+    }
+  ],
+  "Policeman": [
+    {
+      "en": [
+        "I never thought much of borrowed Pokémon. Then one of them flattened my whole team with a single move."
+      ],
+      "text": [
+        "N-am ținut niciodată la Pokémonii împrumutați. Apoi unul dintre ei mi-a făcut praf toată echipa dintr-o singură mișcare."
+      ]
+    },
+    {
+      "en": [
+        "I've been coming here ever since."
+      ],
+      "text": [
+        "De atunci tot vin aici."
+      ]
+    }
+  ]
+}

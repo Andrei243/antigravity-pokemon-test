@@ -1,0 +1,153 @@
+{
+  "displayName": {
+    "en": [
+      "Sunyshore City"
+    ],
+    "text": [
+      "Orașul Sunyshore"
+    ]
+  },
+  "people": {
+    "battle_girl": {
+      "name": {
+        "en": [
+          "Battle Girl"
+        ],
+        "text": [
+          "Luptătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Been down in the Underground lately?",
+          "Where you come out down there depends on where you dig down up here.",
+          "So I get my Explorer Kit out in every town I come to."
+        ],
+        "text": [
+          "Ai mai fost în Subteran în ultima vreme?",
+          "Unde ieși acolo jos depinde de unde sapi aici sus.",
+          "Așa că îmi scot Trusa de Explorator în fiecare oraș în care ajung."
+        ]
+      }
+    },
+    "clown": {
+      "name": {
+        "en": [
+          "Clown"
+        ],
+        "text": [
+          "Clovnul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Spheres that turn up in the tunnel walls shine like jewels.",
+          "And the hikers down there will swap you all sorts of things for them."
+        ],
+        "text": [
+          "Sferele care apar în pereții tunelurilor strălucesc ca niște bijuterii.",
+          "Iar drumeții de acolo jos îți dau la schimb tot felul de lucruri pe ele."
+        ]
+      }
+    },
+    "gym_guide": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Mind the traps down there!",
+          "Some you get out of with quick hands. And some want a good, hard puff of breath!"
+        ],
+        "text": [
+          "Ai grijă la capcanele de acolo jos!",
+          "Din unele scapi cu mâini iuți. Iar altele cer o suflare bună și puternică!"
+        ]
+      }
+    },
+    "pokemon_breeder_f": {
+      "name": {
+        "en": [
+          "Breeder"
+        ],
+        "text": [
+          "Crescătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Underground Man of Eterna City and Byron, Canalave's Gym Leader, are family, you know.",
+          "Count Byron's son Roark in too, and that's three generations who can't stop digging."
+        ],
+        "text": [
+          "Omul din Subteran din Orașul Eterna și Byron, Liderul de Arenă din Canalave, sunt rude, să știi.",
+          "Pune-l la socoteală și pe fiul lui Byron, Roark, și sunt trei generații care nu se pot opri din săpat."
+        ]
+      }
+    },
+    "youngster_1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Bury a Sphere and it grows a little bigger every day. Strange things, Spheres.",
+          "Oh, no! I buried some of mine ages ago and forgot all about them! I'd better go and dig them up!"
+        ],
+        "text": [
+          "Îngroapă o Sferă și crește puțin în fiecare zi. Ciudate lucruri, Sferele.",
+          "O, nu! Am îngropat câteva de-ale mele demult și am uitat cu totul de ele! Mai bine mă duc să le dezgrop!"
+        ]
+      }
+    },
+    "youngster_2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every flag you carry home from another digger's Secret Base makes your own a better one.",
+          "So hide yours well, and get good at sniffing out everybody else's."
+        ],
+        "text": [
+          "Fiecare steag pe care îl aduci acasă din Baza Secretă a altui săpător o face mai bună pe a ta.",
+          "Așa că ascunde-o bine pe a ta și învață să le adulmeci pe ale celorlalți."
+        ]
+      }
+    },
+    "youngster_3": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Go on down and have some fun. There's a whole adventure waiting under your feet!"
+        ],
+        "text": [
+          "Hai, coboară și distrează-te. Te așteaptă o aventură întreagă sub picioare!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

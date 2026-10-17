@@ -1,0 +1,270 @@
+{
+  "displayName": {
+    "en": [
+      "Global Terminal"
+    ],
+    "text": [
+      "Global Terminal"
+    ]
+  },
+  "people": {
+    "battle_girl": {
+      "name": {
+        "en": [
+          "Battle Girl"
+        ],
+        "text": [
+          "Luptătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Did you know? About my PC Box, I mean. It is full of Pokémon everybody longs for, such as...",
+          "...No. It would sound like boasting. If you must know, you'll have to find out for yourself."
+        ],
+        "text": [
+          "Știai? De cutia mea de PC, adică. E plină de Pokémoni după care tânjește toată lumea, cum ar fi...",
+          "...Nu. Ar suna a lăudăroșenie. Dacă vrei neapărat să știi, va trebui să afli pe cont propriu."
+        ]
+      }
+    },
+    "twin": {
+      "name": {
+        "en": [
+          "Twin"
+        ],
+        "text": [
+          "Geamănă"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Do you know what I like doing?",
+          "Sneaking a look at the people who come to look at Dress-Up Data."
+        ],
+        "text": [
+          "Știi ce-mi place să fac?",
+          "Să mă uit pe furiș la oamenii care vin să se uite la Dress-Up Data."
+        ]
+      }
+    },
+    "pokefan_f": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "That Pokémon, with those Accessories...",
+          "It was so perfectly wonderful that I feel as if I'd been struck by lightning!"
+        ],
+        "text": [
+          "Pokémonul ăla, cu Accesoriile alea...",
+          "A fost atât de perfect de minunat că parcă m-a lovit trăsnetul!"
+        ]
+      }
+    },
+    "beauty": {
+      "name": {
+        "en": [
+          "Beauty"
+        ],
+        "text": [
+          "Frumoasa"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The very same Accessory can make quite different impressions.",
+          "It all depends on where it is put, and how."
+        ],
+        "text": [
+          "Același Accesoriu poate face impresii cu totul diferite.",
+          "Totul depinde de unde e pus, și cum."
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Lass"
+        ],
+        "text": [
+          "Domnișoara"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A nice lady downstairs gave me a Backdrop once. For nothing!"
+        ],
+        "text": [
+          "O doamnă drăguță de jos mi-a dat odată un Fundal. Pe gratis!"
+        ]
+      }
+    },
+    "expert_f": {
+      "name": {
+        "en": [
+          "Old Lady"
+        ],
+        "text": [
+          "Bătrâna"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Oh, dear me! Gracious! Why, it's very nearly scandalous!"
+        ],
+        "text": [
+          "Vai de mine! Doamne! Păi asta e aproape scandalos!"
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Peeking into other people's PC Boxes gives me a guilty sort of thrill.",
+          "It's a pleasure I'd rather nobody knew about. ...Never mind that standing here rather gives me away."
+        ],
+        "text": [
+          "Să trag cu ochiul în cutiile de PC ale altora îmi dă un fior vinovat.",
+          "E o plăcere pe care aș prefera s-o știe nimeni. ...Nu contează că stând aici cam mă dau de gol."
+        ]
+      }
+    },
+    "idol": {
+      "name": {
+        "en": [
+          "Idol"
+        ],
+        "text": [
+          "Idolul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I come every day to see what everybody's Dress-Up Data looks like.",
+          "For me, it's the first step to being fashionable!"
+        ],
+        "text": [
+          "Vin în fiecare zi să văd cum arată Dress-Up Data a fiecăruia.",
+          "Pentru mine e primul pas spre a fi la modă!"
+        ]
+      }
+    },
+    "artist": {
+      "name": {
+        "en": [
+          "Artist"
+        ],
+        "text": [
+          "Artistul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "It's an outrage! Why are there only pictures of Pokémon?",
+          "Why none of the ladies? I call that unfair!"
+        ],
+        "text": [
+          "E o rușine! De ce sunt doar poze cu Pokémoni?",
+          "De ce niciuna cu doamnele? Eu zic că nu e corect!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "15,3": {
+      "en": [
+        "The panel leads to the GTS and the Trainer Rankings on 1F."
+      ],
+      "text": [
+        "Panoul duce la GTS și la clasamentul Antrenorilor, la parter."
+      ]
+    },
+    "15,13": {
+      "en": [
+        "The panel leads to the Battle Video Gallery on 3F."
+      ],
+      "text": [
+        "Panoul duce la Battle Video Gallery, la etajul 3."
+      ]
+    },
+    "6,7": {
+      "en": [
+        "A machine for Dress-Up Data. NO SIGNAL, says its screen."
+      ],
+      "text": [
+        "Un aparat pentru Dress-Up Data. FĂRĂ SEMNAL, spune ecranul."
+      ]
+    },
+    "6,8": {
+      "en": [
+        "A machine for Dress-Up Data. NO SIGNAL, says its screen."
+      ],
+      "text": [
+        "Un aparat pentru Dress-Up Data. FĂRĂ SEMNAL, spune ecranul."
+      ]
+    },
+    "9,14": {
+      "en": [
+        "A machine for Box Data. NO SIGNAL, says its screen."
+      ],
+      "text": [
+        "Un aparat pentru Box Data. FĂRĂ SEMNAL, spune ecranul."
+      ]
+    },
+    "9,13": {
+      "en": [
+        "A machine for Box Data. NO SIGNAL, says its screen."
+      ],
+      "text": [
+        "Un aparat pentru Box Data. FĂRĂ SEMNAL, spune ecranul."
+      ]
+    },
+    "6,13": {
+      "en": [
+        "A machine for Box Data. NO SIGNAL, says its screen."
+      ],
+      "text": [
+        "Un aparat pentru Box Data. FĂRĂ SEMNAL, spune ecranul."
+      ]
+    },
+    "6,14": {
+      "en": [
+        "A machine for Box Data. NO SIGNAL, says its screen."
+      ],
+      "text": [
+        "Un aparat pentru Box Data. FĂRĂ SEMNAL, spune ecranul."
+      ]
+    },
+    "9,8": {
+      "en": [
+        "A machine for Dress-Up Data. NO SIGNAL, says its screen."
+      ],
+      "text": [
+        "Un aparat pentru Dress-Up Data. FĂRĂ SEMNAL, spune ecranul."
+      ]
+    },
+    "9,7": {
+      "en": [
+        "A machine for Dress-Up Data. NO SIGNAL, says its screen."
+      ],
+      "text": [
+        "Un aparat pentru Dress-Up Data. FĂRĂ SEMNAL, spune ecranul."
+      ]
+    }
+  }
+}

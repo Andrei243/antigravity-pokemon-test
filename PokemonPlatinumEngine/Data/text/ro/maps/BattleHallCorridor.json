@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Battle Hall"
+    ],
+    "text": [
+      "Battle Hall"
+    ]
+  },
+  "people": {
+    "attendant": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The stage is at the foot of this passage. Please speak to the attendant in the lobby."
+        ],
+        "text": [
+          "Scena e la capătul pasajului ăstuia. Te rog să vorbești cu însoțitorul din hol."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

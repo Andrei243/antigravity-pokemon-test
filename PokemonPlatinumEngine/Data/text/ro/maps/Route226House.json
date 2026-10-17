@@ -1,0 +1,32 @@
+{
+  "displayName": {
+    "en": [
+      "Route 226"
+    ],
+    "text": [
+      "Ruta 226"
+    ]
+  },
+  "people": {
+    "meister": {
+      "name": {
+        "en": [
+          "Meister"
+        ],
+        "text": [
+          "Meister"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "4,2": {
+      "en": [
+        "Someone has scribbled on the notice.\n\"The Meister has travelled to over 150 countries of the world!\"\n\"And the world is every bit as big as it was!\""
+      ],
+      "text": [
+        "Cineva a mâzgălit pe anunț.\n„Meister-ul a călătorit în peste 150 de țări ale lumii!”\n„Și lumea e la fel de mare cum era!”"
+      ]
+    }
+  }
+}

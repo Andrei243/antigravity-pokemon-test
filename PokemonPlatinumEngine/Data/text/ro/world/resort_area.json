@@ -1,0 +1,190 @@
+{
+  "people": {
+    "school_kid_m": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      }
+    },
+    "prof_rowan": {
+      "name": {
+        "en": [
+          "Professor Rowan"
+        ],
+        "text": [
+          "Profesorul Rowan"
+        ]
+      }
+    },
+    "roark": {
+      "name": {
+        "en": [
+          "Roark"
+        ],
+        "text": [
+          "Roark"
+        ]
+      }
+    },
+    "gardenia": {
+      "name": {
+        "en": [
+          "Gardenia"
+        ],
+        "text": [
+          "Gardenia"
+        ]
+      }
+    },
+    "maylene": {
+      "name": {
+        "en": [
+          "Maylene"
+        ],
+        "text": [
+          "Maylene"
+        ]
+      }
+    },
+    "byron": {
+      "name": {
+        "en": [
+          "Byron"
+        ],
+        "text": [
+          "Byron"
+        ]
+      }
+    },
+    "beauty_1": {
+      "name": {
+        "en": [
+          "Beauty"
+        ],
+        "text": [
+          "Frumoasa"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came a very long way to be here. Two ships, and a road full of trainers who would not let me by!",
+          "It was worth every step. I may never go home."
+        ],
+        "text": [
+          "Am venit de foarte departe ca să fiu aici. Două corăbii și un drum plin de Antrenori care nu voiau să mă lase să trec!",
+          "A meritat fiecare pas. S-ar putea să nu mai plec acasă."
+        ]
+      }
+    },
+    "beauty_2": {
+      "name": {
+        "en": [
+          "Beauty"
+        ],
+        "text": [
+          "Frumoasa"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Nothing is too good for my Pokémon. The softest beds, the finest Poffins, a view of the water...",
+          "They have earned a holiday. So have I, for carrying all their luggage."
+        ],
+        "text": [
+          "Nimic nu e prea bun pentru Pokémonii mei. Cele mai moi paturi, cele mai fine Poffinuri, priveliște la apă...",
+          "Și-au meritat o vacanță. Și eu, că le-am cărat tot bagajul."
+        ]
+      }
+    },
+    "black_belt": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          "Centură Neagră"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "All these people lying about in the sun! Do they know what's under their feet?",
+          "Go down into the Underground and you can dig up all sorts of wonderful things. Now that's a holiday!"
+        ],
+        "text": [
+          "Toți oamenii ăștia tolăniți la soare! Știu ce e sub picioarele lor?",
+          "Coboară în Subteran și poți scoate tot felul de lucruri minunate. Asta da vacanță!"
+        ]
+      }
+    },
+    "ace_trainer_f": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          "Antrenor As"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Ribbon Syndicate! Only the very finest people, with the very finest Pokémon, are let through its doors.",
+          "Oh, how I long to be a member. Ten Ribbons on one Pokémon, they say, and I have... three."
+        ],
+        "text": [
+          "Ribbon Syndicate! Numai oamenii cei mai aleși, cu cei mai aleși Pokémoni, trec de ușile lui.",
+          "O, cât tânjesc să fiu membră. Zece Panglici pe un singur Pokémon, se zice, iar eu am... trei."
+        ]
+      }
+    },
+    "swimmer_m": {
+      "name": {
+        "en": [
+          "Swimmer"
+        ],
+        "text": [
+          "Înotătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I've swum every stretch of water at the resort, and I'd swear something lurks at the bottom of that pond.",
+          "Something big, that never comes up. A fisherman with a good enough rod might find out what."
+        ],
+        "text": [
+          "Am înotat prin toate apele stațiunii și aș putea jura că ceva pândește pe fundul iazului ăluia.",
+          "Ceva mare, care nu iese niciodată la suprafață. Un pescar cu o undiță destul de bună ar putea afla ce."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "map_signpost": {
+      "en": [
+        "Resort Area\nA place of rest for trainers and their Pokémon."
+      ],
+      "text": [
+        "Zona de Odihnă\nUn loc de odihnă pentru Antrenori și Pokémonii lor."
+      ]
+    },
+    "signboard_ribbon_syndicate": {
+      "en": [
+        "The Ribbon Syndicate\nMembers only."
+      ],
+      "text": [
+        "Ribbon Syndicate\nDoar pentru membri."
+      ]
+    },
+    "signboard_villa": {
+      "en": [
+        "The Villa"
+      ],
+      "text": [
+        "Vila"
+      ]
+    }
+  }
+}

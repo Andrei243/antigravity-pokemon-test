@@ -1,0 +1,20 @@
+{
+  "Portal": [
+    {
+      "en": [
+        "The air is torn here, and Turnback Cave shows through the tear. Leap into the portal?"
+      ],
+      "text": [
+        "Aerul e rupt aici, iar prin ruptură se vede Peștera Întoarcerii. Sari în portal?"
+      ]
+    },
+    {
+      "en": [
+        "{player} leapt into the portal!"
+      ],
+      "text": [
+        "{player} a sărit în portal!"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "people": {
+    "double_team_trainer_jo": {
+      "name": {
+        "en": [
+          "Jo"
+        ],
+        "text": [
+          "Jo"
+        ]
+      },
+      "before": {
+        "en": [
+          "Jo: Pat and I explore every corner of this cave together. Now battle us together!"
+        ],
+        "text": [
+          "Jo: Pat și cu mine explorăm împreună fiecare colț al peșterii. Acum luptă-te cu noi doi deodată!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Jo: Let's go and explore somewhere a little gentler, Pat."
+        ],
+        "text": [
+          "Jo: Hai să explorăm undeva mai blând, Pat."
+        ]
+      }
+    },
+    "double_team_trainer_pat": {
+      "name": {
+        "en": [
+          "Pat"
+        ],
+        "text": [
+          "Pat"
+        ]
+      },
+      "before": {
+        "en": [
+          "Pat: Wherever Jo goes, I go. Even into battle!"
+        ],
+        "text": [
+          "Pat: Oriunde merge Jo, merg și eu. Chiar și în luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Pat: Jo, I followed you straight into a defeat."
+        ],
+        "text": [
+          "Pat: Jo, te-am urmat direct într-o înfrângere."
+        ]
+      }
+    },
+    "dragon_tamer_ondrej": {
+      "name": {
+        "en": [
+          "Ondrej"
+        ],
+        "text": [
+          "Ondrej"
+        ]
+      },
+      "before": {
+        "en": [
+          "Dragon Tamer Ondrej: Dragons are the mightiest Pokémon there are, and mine will prove it!"
+        ],
+        "text": [
+          "Îmblânzitor de dragoni Ondrej: Dragonii sunt cei mai puternici Pokémoni care există, iar ai mei o vor dovedi!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Dragon Tamer Ondrej: Mighty, yes. Mighty enough, no."
+        ],
+        "text": [
+          "Îmblânzitor de dragoni Ondrej: Puternici, da. Destul de puternici, nu."
+        ]
+      }
+    },
+    "psychic_valencia": {
+      "name": {
+        "en": [
+          "Valencia"
+        ],
+        "text": [
+          "Valencia"
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Valencia: The dark down here sharpens the mind. Can you feel what I'm thinking?"
+        ],
+        "text": [
+          "Medium Valencia: Întunericul de aici ascute mintea. Simți la ce mă gândesc?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Valencia: All I can feel now is that I've lost."
+        ],
+        "text": [
+          "Medium Valencia: Tot ce simt acum e că am pierdut."
+        ]
+      }
+    },
+    "ace_trainer_henry": {
+      "name": {
+        "en": [
+          "Henry"
+        ],
+        "text": [
+          "Henry"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Henry: I've been pacing up and down here, getting ready for the League. You're just what I need!"
+        ],
+        "text": [
+          "Antrenor As Henry: M-am tot plimbat încolo și-ncoace aici, pregătindu-mă pentru Ligă. Tu ești exact ce-mi trebuie!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Henry: Back to pacing, then."
+        ],
+        "text": [
+          "Antrenor As Henry: Înapoi la plimbat, atunci."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

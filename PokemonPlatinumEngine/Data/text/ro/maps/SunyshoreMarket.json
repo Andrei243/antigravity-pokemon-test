@@ -1,0 +1,63 @@
+{
+  "displayName": {
+    "en": [
+      "Sunyshore Market"
+    ],
+    "text": [
+      "Piața Sunyshore"
+    ]
+  },
+  "people": {
+    "pokemon_breeder_f": {
+      "name": {
+        "en": [
+          "Breeder"
+        ],
+        "text": [
+          "Crescătoarea"
+        ]
+      }
+    },
+    "pokefan_m": {
+      "name": {
+        "en": [
+          "Pokéfan"
+        ],
+        "text": [
+          "Pokéfanul"
+        ]
+      }
+    },
+    "sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          "Marinar"
+        ]
+      }
+    },
+    "gym_guide": {
+      "name": {
+        "en": [
+          "Seal Merchant"
+        ],
+        "text": [
+          "Negustorul de Stickere"
+        ]
+      }
+    },
+    "battle_girl": {
+      "name": {
+        "en": [
+          "Battle Girl"
+        ],
+        "text": [
+          "Luptătoarea"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

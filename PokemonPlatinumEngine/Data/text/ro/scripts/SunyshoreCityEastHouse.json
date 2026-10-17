@@ -1,0 +1,110 @@
+{
+  "Scientist": [
+    {
+      "en": [
+        "That gleaming, splendid thing on your wrist! A Pokétch, and the newest model, if I'm any judge!",
+        "Wonderful things, aren't they? The Pokétch Company lets me write apps of my own for them.",
+        "You're a Trainer, yes? Then do me a favour.",
+        "Your Pokémon are bound to have all sorts of natures. Would you let me see them?"
+      ],
+      "text": [
+        "Lucrul ăla strălucitor și splendid de la încheietura ta! Un Pokétch, și cel mai nou model, dacă mă pricep eu!",
+        "Lucruri minunate, nu? Compania Pokétch mă lasă să scriu aplicații de-ale mele pentru ele.",
+        "Ești Antrenor, da? Atunci fă-mi un serviciu.",
+        "Pokémonii tăi au sigur tot felul de firi. M-ai lăsa să le văd?"
+      ]
+    },
+    {
+      "en": [
+        "Now, what am I in the mood to see...",
+        "A Pokémon with a Serious nature. Yes, that's the one."
+      ],
+      "text": [
+        "Acum, ce am chef să văd...",
+        "Un Pokémon cu firea Serioasă. Da, ăsta e."
+      ]
+    },
+    {
+      "en": [
+        "Now, what am I in the mood to see...",
+        "A Pokémon with a Naive nature. Yes, that's the one."
+      ],
+      "text": [
+        "Acum, ce am chef să văd...",
+        "Un Pokémon cu firea Naivă. Da, ăsta e."
+      ]
+    },
+    {
+      "en": [
+        "Now, what am I in the mood to see...",
+        "A Pokémon with a Quirky nature. Yes, that's the one."
+      ],
+      "text": [
+        "Acum, ce am chef să văd...",
+        "Un Pokémon cu firea Ciudată. Da, ăsta e."
+      ]
+    },
+    {
+      "en": [
+        "Yes! Your {member:RESULT} is as Serious as they come!",
+        "Thank you. The Calendar app is yours, for your Pokétch."
+      ],
+      "text": [
+        "Da! {member:RESULT} al tău e Serios cum nu se poate mai mult!",
+        "Mulțumesc. Aplicația Calendar e a ta, pentru Pokétch."
+      ]
+    },
+    {
+      "en": [
+        "{player} added the Calendar app to the Pokétch!"
+      ],
+      "text": [
+        "Aplicația Calendar a fost adăugată în Pokétch!"
+      ]
+    },
+    {
+      "en": [
+        "Yes! Your {member:RESULT} is Naive through and through!",
+        "Thank you. The Dot Artist app is yours, for your Pokétch."
+      ],
+      "text": [
+        "Da! {member:RESULT} al tău e Naiv până în măduva oaselor!",
+        "Mulțumesc. Aplicația Dot Artist e a ta, pentru Pokétch."
+      ]
+    },
+    {
+      "en": [
+        "{player} added the Dot Artist app to the Pokétch!"
+      ],
+      "text": [
+        "Aplicația Dot Artist a fost adăugată în Pokétch!"
+      ]
+    },
+    {
+      "en": [
+        "Yes! Your {member:RESULT} is every bit as Quirky as I hoped!",
+        "Thank you. The Roulette app is yours, for your Pokétch."
+      ],
+      "text": [
+        "Da! {member:RESULT} al tău e cel puțin atât de Ciudat cât speram!",
+        "Mulțumesc. Aplicația Roulette e a ta, pentru Pokétch."
+      ]
+    },
+    {
+      "en": [
+        "{player} added the Roulette app to the Pokétch!"
+      ],
+      "text": [
+        "Aplicația Roulette a fost adăugată în Pokétch!"
+      ]
+    },
+    {
+      "en": [
+        "One of these days there may be more Pokétch apps than there are kinds of Pokémon."
+      ],
+      "text": [
+        "Într-o zi s-ar putea să fie mai multe aplicații de Pokétch decât feluri de Pokémoni."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,145 @@
+{
+  "displayName": {
+    "en": [
+      "Battle Frontier"
+    ],
+    "text": [
+      "Battle Frontier"
+    ]
+  },
+  "people": {
+    "pokemon_breeder_m": {
+      "name": {
+        "en": [
+          "Breeder"
+        ],
+        "text": [
+          "Crescătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A place where Trainers do nothing but battle, hall after hall of it. I could move in!"
+        ],
+        "text": [
+          "Un loc unde Antrenorii nu fac altceva decât să lupte, sală după sală. M-aș muta aici!"
+        ]
+      }
+    },
+    "expert_m": {
+      "name": {
+        "en": [
+          "Expert"
+        ],
+        "text": [
+          "Expertul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The mightiest Trainers of every land gather here. It makes these old bones feel young again."
+        ],
+        "text": [
+          "Cei mai puternici Antrenori din toate ținuturile se adună aici. Oasele astea bătrâne se simt iar tinere."
+        ]
+      }
+    },
+    "ruin_maniac": {
+      "name": {
+        "en": [
+          "Ruin Maniac"
+        ],
+        "text": [
+          "Pasionatul de ruine"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Five facilities, and every one with rules of its own. Where's a fellow meant to start?"
+        ],
+        "text": [
+          "Cinci clădiri, și fiecare cu regulile ei. De unde să înceapă omul?"
+        ]
+      }
+    },
+    "attendant_battle_castle": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      }
+    },
+    "attendant_battle_factory": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      }
+    },
+    "attendant_general": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      }
+    },
+    "attendant_battle_arcade": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      }
+    },
+    "attendant_battle_hall": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      }
+    },
+    "attendant_battle_tower": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      }
+    },
+    "beauty": {
+      "name": {
+        "en": [
+          "Beauty"
+        ],
+        "text": [
+          "Frumoasa"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Frontier Brains! Just saying it gives me goose bumps. I'll meet one yet, you'll see."
+        ],
+        "text": [
+          "Creierele Frontierei! Doar când o spun mi se face pielea de găină. O să întâlnesc unul, o să vezi."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

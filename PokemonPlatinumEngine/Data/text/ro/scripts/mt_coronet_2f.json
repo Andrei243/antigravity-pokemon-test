@@ -1,0 +1,106 @@
+{
+  "CavePainting": [
+    {
+      "en": [
+        "A painting covers the rock from the floor up. It is very old: three points of light round a greater one, and under them two beasts, face to face."
+      ],
+      "text": [
+        "O pictură acoperă stânca de la podea în sus. E foarte veche: trei puncte de lumină în jurul unuia mai mare, iar sub ele două fiare, față în față."
+      ]
+    }
+  ],
+  "Shards": [
+    {
+      "en": [
+        "Broken stone lies either side of a hole. A scrap of paint on one piece is all that is left of the cave painting."
+      ],
+      "text": [
+        "Piatră spartă zace de o parte și de alta a unei găuri. O urmă de vopsea pe o bucată e tot ce a rămas din pictura rupestră."
+      ]
+    }
+  ],
+  "Looker": [
+    {
+      "en": [
+        "Looker"
+      ],
+      "text": [
+        "Looker"
+      ]
+    },
+    {
+      "en": [
+        "Wait! It is I, Looker! I followed those space-suited scoundrels all the way from Veilstone City."
+      ],
+      "text": [
+        "Stai! Eu sunt, Looker! I-am urmărit pe ticăloșii ăia în costume spațiale tocmai din Orașul Veilstone."
+      ]
+    },
+    {
+      "en": [
+        "Observe that hole! A painting older than any kingdom stood there this morning. They smashed it to make themselves a shortcut."
+      ],
+      "text": [
+        "Observă gaura aceea! Azi-dimineață acolo stătea o pictură mai veche decât orice regat. Au spart-o ca să-și facă o scurtătură."
+      ]
+    },
+    {
+      "en": [
+        "The top of this mountain... Whatever their boss intends, he intends it up there. And I must ask myself: am I enough to go on?"
+      ],
+      "text": [
+        "Vârful muntelui ăstuia... Orice ar plănui șeful lor, acolo sus plănuiește. Iar eu trebuie să mă întreb: sunt în stare să merg mai departe?"
+      ]
+    },
+    {
+      "en": [
+        "I am not. I have seen you battle. You are far above me, and my Pokémon would only slow you down."
+      ],
+      "text": [
+        "Nu sunt. Te-am văzut luptând. Ești cu mult deasupra mea, iar Pokémonii mei doar te-ar încetini."
+      ]
+    },
+    {
+      "en": [
+        "That flute keeps wild Pokémon at a distance. It is the one thing I have that may be of use to you on the way up."
+      ],
+      "text": [
+        "Flautul acela ține Pokémonii sălbatici la distanță. E singurul lucru pe care îl am care ți-ar putea folosi la urcuș."
+      ]
+    },
+    {
+      "en": [
+        "Go. Stop Team Galactic! I shall hold this spot, so that no more of them come up behind you."
+      ],
+      "text": [
+        "Du-te. Oprește Echipa Galactic! Eu voi păzi locul ăsta, ca să nu mai urce alții în urma ta."
+      ]
+    }
+  ],
+  "LookerTalk": [
+    {
+      "en": [
+        "Looker"
+      ],
+      "text": [
+        "Looker"
+      ]
+    },
+    {
+      "en": [
+        "I can do nothing more than give you this. Take it!"
+      ],
+      "text": [
+        "Nu pot face mai mult decât să-ți dau asta. Ia-l!"
+      ]
+    },
+    {
+      "en": [
+        "You must stop Team Galactic. I am counting on you. All of Sinnoh is, though it does not know it yet!"
+      ],
+      "text": [
+        "Trebuie să oprești Echipa Galactic. Contez pe tine. Tot Sinnoh-ul contează, chiar dacă încă nu știe!"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "people": {
+    "ace_trainer_omar": {
+      "name": {
+        "en": [
+          "Omar"
+        ],
+        "text": [
+          "Omar"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Omar: Only trainers who've beaten every Gym get this far. Let's see what your eight Badges are worth!"
+        ],
+        "text": [
+          "Antrenor As Omar: Doar Antrenorii care au învins toate Arenele ajung până aici. Să vedem cât valorează cele opt Insigne ale tale!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Omar: Worth a great deal, clearly."
+        ],
+        "text": [
+          "Antrenor As Omar: Valorează mult, clar."
+        ]
+      }
+    },
+    "ace_trainer_sydney": {
+      "name": {
+        "en": [
+          "Sydney"
+        ],
+        "text": [
+          "Sydney"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Sydney: The Elite Four are waiting just past this cave, and I mean to reach them first!"
+        ],
+        "text": [
+          "Antrenor As Sydney: Elita celor Patru așteaptă chiar după peștera asta, și vreau să ajung prima la ei!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Sydney: You go on ahead. I'll catch you up."
+        ],
+        "text": [
+          "Antrenor As Sydney: Ia-o tu înainte. Te ajung eu."
+        ]
+      }
+    },
+    "veteran_clayton": {
+      "name": {
+        "en": [
+          "Clayton"
+        ],
+        "text": [
+          "Clayton"
+        ]
+      },
+      "before": {
+        "en": [
+          "Veteran Clayton: You youngsters race through Victory Road. Slow down and battle an old hand!"
+        ],
+        "text": [
+          "Veteran Clayton: Voi, tinerii, treceți în goană prin Drumul Victoriei. Încetinește și luptă-te cu un veteran!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Veteran Clayton: You're in a hurry for good reason, I see."
+        ],
+        "text": [
+          "Veteran Clayton: Văd că te grăbești pe bună dreptate."
+        ]
+      }
+    },
+    "double_team_trainer_al": {
+      "name": {
+        "en": [
+          "Al"
+        ],
+        "text": [
+          "Al"
+        ]
+      },
+      "before": {
+        "en": [
+          "Al: Kay and I have climbed all of Victory Road side by side. We battle side by side too!"
+        ],
+        "text": [
+          "Al: Kay și cu mine am urcat tot Drumul Victoriei umăr la umăr. Luptăm tot umăr la umăr!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Al: Back down to the bottom and up again, Kay?"
+        ],
+        "text": [
+          "Al: Coborâm înapoi și urcăm iar, Kay?"
+        ]
+      }
+    },
+    "double_team_trainer_kay": {
+      "name": {
+        "en": [
+          "Kay"
+        ],
+        "text": [
+          "Kay"
+        ]
+      },
+      "before": {
+        "en": [
+          "Kay: Two against two! Let's see how good your teamwork is!"
+        ],
+        "text": [
+          "Kay: Doi contra doi! Să vedem cât de bun e lucrul tău în echipă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Kay: Our teamwork needs some work, Al."
+        ],
+        "text": [
+          "Kay: Lucrul nostru în echipă mai are nevoie de muncă, Al."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,104 @@
+{
+  "ExchangeItems": [
+    {
+      "en": [
+        "Welcome to the Exchange Service Corner, where Battle Points are traded for prizes!"
+      ],
+      "text": [
+        "Bine ai venit la Exchange Service Corner, unde Punctele de Luptă se schimbă pe premii!"
+      ]
+    }
+  ],
+  "ExchangeMachines": [
+    {
+      "en": [
+        "Welcome to the Exchange Service Corner! This booth trades Battle Points for Technical Machines."
+      ],
+      "text": [
+        "Bine ai venit la Exchange Service Corner! Gereta asta schimbă Puncte de Luptă pe Mașini Tehnice."
+      ]
+    }
+  ],
+  "ExchangeTrade": [
+    {
+      "en": [
+        "{player} traded {price} BP for the {item}."
+      ],
+      "text": [
+        "{player} a dat {price} PL pentru {item}."
+      ]
+    },
+    {
+      "en": [
+        "Thank you! We hope to see you again."
+      ],
+      "text": [
+        "Mulțumim! Sperăm să te mai vedem."
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. You don't have the Battle Points for that."
+      ],
+      "text": [
+        "Îmi pare rău. Nu ai destule Puncte de Luptă pentru asta."
+      ]
+    },
+    {
+      "en": [
+        "We hope to see you again."
+      ],
+      "text": [
+        "Sperăm să te mai vedem."
+      ]
+    }
+  ],
+  "ScratchCards": [
+    {
+      "en": [
+        "Scratch-off cards! One Battle Point a card, and every card a chance at a prize."
+      ],
+      "text": [
+        "Lozuri răzuibile! Un Punct de Luptă lozul, și fiecare loz e o șansă la un premiu."
+      ]
+    },
+    {
+      "en": [
+        "...Or there will be, as soon as the cards come in. Try me again another day."
+      ],
+      "text": [
+        "...Sau vor fi, imediat ce sosesc lozurile. Mai încearcă altă dată."
+      ]
+    }
+  ],
+  "StatueWest": [
+    {
+      "en": [
+        "A statue of a trainer holding a Poké Ball high, with a Pokémon just caught inside it."
+      ],
+      "text": [
+        "Statuia unui Antrenor care ține sus un Poké Ball, cu un Pokémon tocmai prins înăuntru."
+      ]
+    }
+  ],
+  "StatueEast": [
+    {
+      "en": [
+        "A plate on the statue's foot gives it a name: Proud of the Catch."
+      ],
+      "text": [
+        "O plăcuță la picioarele statuii îi dă un nume: Mândria Prinderii."
+      ]
+    }
+  ],
+  "ScaleModel": [
+    {
+      "en": [
+        "A model of the whole Battle Frontier, small enough to walk round: the tower, the four halls and the plaza between them."
+      ],
+      "text": [
+        "O machetă a întregului Battle Frontier, destul de mică să te plimbi în jurul ei: turnul, cele patru săli și piața dintre ele."
+      ]
+    }
+  ]
+}

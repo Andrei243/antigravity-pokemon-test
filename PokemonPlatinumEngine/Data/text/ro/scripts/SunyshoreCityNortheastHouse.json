@@ -1,0 +1,126 @@
+{
+  "Julia": [
+    {
+      "en": [
+        "It's Monday, and I want a story that wakes me right up. Have you one about a time you had to be on your guard?"
+      ],
+      "text": [
+        "E luni, și vreau o poveste care să mă trezească de tot. Ai una despre o dată când a trebuit să fii în gardă?"
+      ]
+    },
+    {
+      "en": [
+        "It's Tuesday. Tell me about something that gave you a real shock! Will you?"
+      ],
+      "text": [
+        "E marți. Povestește-mi despre ceva care te-a speriat de-a binelea! Vrei?"
+      ]
+    },
+    {
+      "en": [
+        "Wednesdays always get me down. Have you a story of a time you felt low, to keep mine company?"
+      ],
+      "text": [
+        "Miercurile mă doboară mereu. Ai o poveste despre o dată când ți-a fost greu, să-mi țină de urât?"
+      ]
+    },
+    {
+      "en": [
+        "Thursday! Tell me about a slip you made without thinking. Go on, will you?"
+      ],
+      "text": [
+        "Joi! Povestește-mi despre o greșeală făcută fără să te gândești. Hai, vrei?"
+      ]
+    },
+    {
+      "en": [
+        "Friday at last. Have you a story about putting your feet up and taking it easy?"
+      ],
+      "text": [
+        "Vineri, în sfârșit. Ai o poveste despre cum ai pus picioarele sus și ai luat-o ușor?"
+      ]
+    },
+    {
+      "en": [
+        "It's a sleepy sort of Saturday. Will you tell me about the best sleep you ever had?"
+      ],
+      "text": [
+        "E o sâmbătă somnoroasă. Îmi povestești despre cel mai bun somn pe care l-ai avut vreodată?"
+      ]
+    },
+    {
+      "en": [
+        "Sunday! I'd like a story that makes me smile. Have you one?"
+      ],
+      "text": [
+        "Duminică! Aș vrea o poveste care să mă facă să zâmbesc. Ai una?"
+      ]
+    },
+    {
+      "en": [
+        "...Oh, that was lovely. Thank you! I shan't forget it, and neither should your {wearer}. Please, give it this."
+      ],
+      "text": [
+        "...O, ce frumos a fost. Mulțumesc! N-o voi uita, și nici {wearer} al tău n-ar trebui. Te rog, dă-i asta."
+      ]
+    },
+    {
+      "en": [
+        "{player} received the {ribbon}!",
+        "{player} put the {ribbon} on {wearer}."
+      ],
+      "text": [
+        "{player} a primit {ribbon}!",
+        "{player} i-a pus lui {wearer} {ribbon}."
+      ]
+    },
+    {
+      "en": [
+        "Come and tell me another story tomorrow, won't you? I've a different ribbon for every day of the week."
+      ],
+      "text": [
+        "Vino și spune-mi altă poveste mâine, da? Am câte o panglică pentru fiecare zi a săptămânii."
+      ]
+    },
+    {
+      "en": [
+        "My husband is a sailor, so I'm often on my own here. A traveller like you must have stories. Would you come and tell me one?"
+      ],
+      "text": [
+        "Soțul meu e marinar, așa că sunt adesea singură aici. Un călător ca tine trebuie să aibă povești. Ai vrea să vii să-mi spui una?"
+      ]
+    },
+    {
+      "en": [
+        "Not today, I'm all out of sorts today. Tomorrow! Do come tomorrow."
+      ],
+      "text": [
+        "Nu azi, azi nu-s în apele mele. Mâine! Vino neapărat mâine."
+      ]
+    },
+    {
+      "en": [
+        "Do come and visit tomorrow. I'll be ready for a story then."
+      ],
+      "text": [
+        "Vino neapărat mâine. Atunci voi fi gata pentru o poveste."
+      ]
+    },
+    {
+      "en": [
+        "Your {wearer} has today's ribbon already. Bring another Pokémon along first, or come back on another day."
+      ],
+      "text": [
+        "{wearer} al tău are deja panglica de azi. Adu alt Pokémon întâi, sau revino în altă zi."
+      ]
+    },
+    {
+      "en": [
+        "Nothing comes to mind? That happens. Come back when you've thought of one."
+      ],
+      "text": [
+        "Nu-ți vine nimic în minte? Se întâmplă. Revino când te-ai gândit la una."
+      ]
+    }
+  ]
+}

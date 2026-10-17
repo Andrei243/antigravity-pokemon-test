@@ -1,0 +1,114 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Cynthia"
+      ],
+      "text": [
+        "Cynthia"
+      ]
+    },
+    {
+      "en": [
+        "This place..."
+      ],
+      "text": [
+        "Locul ăsta..."
+      ]
+    },
+    {
+      "en": [
+        "Up is not up here, and far is not far. This must be the world on the other side of ours. I'll call it what it is: a distortion world."
+      ],
+      "text": [
+        "Sus nu e sus aici, iar departe nu e departe. Asta trebuie să fie lumea de dincolo de a noastră. O voi numi ce este: o lume distorsionată."
+      ]
+    },
+    {
+      "en": [
+        "Giratina is somewhere in it, and Cyrus too. Come on. Let's find them."
+      ],
+      "text": [
+        "Giratina e undeva în ea, și Cyrus la fel. Hai. Să-i găsim."
+      ]
+    },
+    {
+      "en": [
+        "That shadow... That was Giratina. It knows we are here."
+      ],
+      "text": [
+        "Umbra aceea... A fost Giratina. Știe că suntem aici."
+      ]
+    },
+    {
+      "en": [
+        "It didn't come for us. It is watching. We have to hurry, before whatever angered it gets worse."
+      ],
+      "text": [
+        "N-a venit după noi. Ne urmărește. Trebuie să ne grăbim, înainte să se înrăutățească ce l-a înfuriat."
+      ]
+    }
+  ],
+  "SlabMoves": [
+    {
+      "en": [
+        "Cynthia"
+      ],
+      "text": [
+        "Cynthia"
+      ]
+    },
+    {
+      "en": [
+        "Careful. That slab with the star on it isn't fixed to anything. Step onto it and it moves."
+      ],
+      "text": [
+        "Atenție. Lespedea aceea cu stea pe ea nu e prinsă de nimic. Pășește pe ea și se mișcă."
+      ]
+    },
+    {
+      "en": [
+        "Down is the only way I can see from here. I'll be right behind you."
+      ],
+      "text": [
+        "De aici văd doar drumul în jos. Vin chiar în urma ta."
+      ]
+    }
+  ],
+  "CynthiaBySlab": [
+    {
+      "en": [
+        "Cynthia"
+      ],
+      "text": [
+        "Cynthia"
+      ]
+    },
+    {
+      "en": [
+        "Why would only this one stone be a different colour? Nothing here is an accident. I'd say it wants to be stood on."
+      ],
+      "text": [
+        "De ce ar fi doar piatra asta de altă culoare? Nimic nu e întâmplător aici. Aș zice că vrea să se pășească pe ea."
+      ]
+    }
+  ],
+  "Portal": [
+    {
+      "en": [
+        "The air is torn here, and Spear Pillar shows through the tear. Go back to Spear Pillar?"
+      ],
+      "text": [
+        "Aerul e rupt aici, iar prin ruptură se vede Coloana Suliței. Te întorci la Coloana Suliței?"
+      ]
+    },
+    {
+      "en": [
+        "{player} stepped through, toward Spear Pillar."
+      ],
+      "text": [
+        "{player} a trecut prin ruptură, spre Coloana Suliței."
+      ]
+    }
+  ]
+}

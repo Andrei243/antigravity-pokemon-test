@@ -1,0 +1,50 @@
+{
+  "Lift": [
+    {
+      "en": [
+        "Welcome, and thank you for visiting us today. Which floor would you like?",
+        "2F",
+        "1F",
+        "EXIT"
+      ],
+      "text": [
+        "Bine ai venit și îți mulțumim că ne vizitezi azi. La ce etaj dorești?",
+        "ETAJUL 2",
+        "PARTER",
+        "IEȘIRE"
+      ]
+    },
+    {
+      "en": [
+        "Certainly. Going down."
+      ],
+      "text": [
+        "Desigur. Coborâm."
+      ]
+    },
+    {
+      "en": [
+        "Certainly. Going up."
+      ],
+      "text": [
+        "Desigur. Urcăm."
+      ]
+    },
+    {
+      "en": [
+        "Here we are!"
+      ],
+      "text": [
+        "Am ajuns!"
+      ]
+    },
+    {
+      "en": [
+        "Er... But this is that floor already?"
+      ],
+      "text": [
+        "Ăă... Dar suntem deja la etajul acesta?"
+      ]
+    }
+  ]
+}

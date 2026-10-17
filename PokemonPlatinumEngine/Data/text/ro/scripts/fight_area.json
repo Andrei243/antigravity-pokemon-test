@@ -1,0 +1,536 @@
+{
+  "Rival": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Well, {player}? Ready now? Let's show those two what we're made of!"
+      ],
+      "text": [
+        "Deci, {player}? Ești gata acum? Hai să le arătăm ălora doi din ce aluat suntem făcuți!"
+      ]
+    }
+  ],
+  "ToTheGate": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "{player}! There you are! I've been on this pier so long I know every plank of it by name!"
+      ],
+      "text": [
+        "{player}! Aici erai! Am stat pe cheiul ăsta atâta că știu fiecare scândură pe nume!"
+      ]
+    },
+    {
+      "en": [
+        "No time to explain. Something big is going on up at the gate. Come on, come with me!"
+      ],
+      "text": [
+        "N-am timp să-ți explic. Se întâmplă ceva mare sus la poartă. Hai, vino cu mine!"
+      ]
+    }
+  ],
+  "TeamUp": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "See them? That's Flint of the Elite Four. And the one beside him runs the Sunyshore Gym!"
+      ],
+      "text": [
+        "Îi vezi? Ăla e Flint din Elita celor Patru. Iar ăla de lângă el conduce Arena din Sunyshore!"
+      ]
+    },
+    {
+      "en": [
+        "They say they'll take on anybody, two at a time. So how about it, {player}? You and me, together!"
+      ],
+      "text": [
+        "Zic că înfruntă pe oricine, câte doi deodată. Ce zici, {player}? Tu și cu mine, împreună!"
+      ]
+    }
+  ],
+  "INeedYourHelp": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "What?! Come on, {player}! I can't take those two on alone, and there's nobody I'd sooner have beside me!"
+      ],
+      "text": [
+        "Ce?! Haide, {player}! Nu-i pot înfrunta singur pe ăia doi, și nu e nimeni pe care l-aș vrea mai mult lângă mine!"
+      ]
+    }
+  ],
+  "Battle": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Yes! That's the spirit! The two of us can flatten them!"
+      ],
+      "text": [
+        "Da! Așa te vreau! Noi doi îi facem praf!"
+      ]
+    },
+    {
+      "en": [
+        "Flint"
+      ],
+      "text": [
+        "Flint"
+      ]
+    },
+    {
+      "en": [
+        "Ha! So these are the two who mean to try us? Good! Burn as bright as you can. I want to see it!"
+      ],
+      "text": [
+        "Ha! Deci ăștia sunt cei doi care vor să ne încerce? Bun! Ardeți cât de tare puteți. Vreau să văd!"
+      ]
+    },
+    {
+      "en": [
+        "Volkner"
+      ],
+      "text": [
+        "Volkner"
+      ]
+    },
+    {
+      "en": [
+        "...Show me what you can do. It has been a while since a challenger made me sit up."
+      ],
+      "text": [
+        "...Arată-mi ce poți. A trecut ceva timp de când un provocator m-a făcut să mă trezesc."
+      ]
+    },
+    {
+      "en": [
+        "Flint"
+      ],
+      "text": [
+        "Flint"
+      ]
+    },
+    {
+      "en": [
+        "... ... ..."
+      ],
+      "text": [
+        "... ... ..."
+      ]
+    },
+    {
+      "en": [
+        "Volkner"
+      ],
+      "text": [
+        "Volkner"
+      ]
+    },
+    {
+      "en": [
+        "Don't burn yourself out over it, Flint. They were simply better than us today."
+      ],
+      "text": [
+        "Nu te consuma din cauza asta, Flint. Azi au fost pur și simplu mai buni decât noi."
+      ]
+    },
+    {
+      "en": [
+        "That was a blast. I had forgotten a battle could feel like that. Thank you, both of you."
+      ],
+      "text": [
+        "A fost grozav. Uitasem că o luptă se poate simți așa. Mulțumesc, amândurora."
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "We did it! Did you see their faces? Right, no time to lose. I'm off to the Battle Fronti--"
+      ],
+      "text": [
+        "Am reușit! Le-ai văzut fețele? Gata, n-avem timp de pierdut. Eu plec la Battle Fronti--"
+      ]
+    },
+    {
+      "en": [
+        "Thud!"
+      ],
+      "text": [
+        "Buf!"
+      ]
+    },
+    {
+      "en": [
+        "Palmer"
+      ],
+      "text": [
+        "Palmer"
+      ]
+    },
+    {
+      "en": [
+        "Hm? What's all this? I heard there was a battle worth seeing before my gate, and here it's over already!"
+      ],
+      "text": [
+        "Hm? Ce-i asta? Am auzit că era o luptă de văzut în fața porții mele, și iată că s-a terminat deja!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Ow, ow, ow... Hey! Watch where you're... D-Dad?!"
+      ],
+      "text": [
+        "Au, au, au... Hei! Uită-te pe unde... T-tată?!"
+      ]
+    },
+    {
+      "en": [
+        "Palmer"
+      ],
+      "text": [
+        "Palmer"
+      ]
+    },
+    {
+      "en": [
+        "Well, well! If it isn't {rival}! And you must be {player}. I've heard a great deal about you."
+      ],
+      "text": [
+        "Ia te uită! Dacă nu e {rival}! Iar tu trebuie să fii {player}. Am auzit multe despre tine."
+      ]
+    },
+    {
+      "en": [
+        "So you two beat that pair. Then I'll look forward to your challenge. You know where to find me!"
+      ],
+      "text": [
+        "Deci voi doi i-ați învins pe ăia doi. Atunci abia aștept provocarea voastră. Știți unde mă găsiți!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "...That was my dad. He's the Tower Tycoon. The strongest Trainer in the whole Battle Frontier."
+      ],
+      "text": [
+        "...Ăla era tata. E Magnatul Turnului. Cel mai puternic Antrenor din tot Battle Frontier."
+      ]
+    },
+    {
+      "en": [
+        "Argh! What do I do? I came all this way to beat him, and I fell over the moment I saw him!"
+      ],
+      "text": [
+        "Argh! Ce fac? Am venit până aici să-l bat, și am căzut pe jos cum l-am văzut!"
+      ]
+    },
+    {
+      "en": [
+        "No. No! I know what I do. I get tougher. Way tougher! Starting right now! See you, {player}!"
+      ],
+      "text": [
+        "Nu. Nu! Știu ce fac. Devin mai dur. Mult mai dur! Începând de acum! Pe curând, {player}!"
+      ]
+    },
+    {
+      "en": [
+        "Buck"
+      ],
+      "text": [
+        "Buck"
+      ]
+    },
+    {
+      "en": [
+        "Whoa, that was something! You're pretty good, you know that? The name's Buck."
+      ],
+      "text": [
+        "Uau, a fost ceva! Te descurci, să știi. Mă cheamă Buck."
+      ]
+    },
+    {
+      "en": [
+        "I've a place up in the Survival Area. If you're passing that way, come and look me up!"
+      ],
+      "text": [
+        "Am un loc sus în Zona de Supraviețuire. Dacă treci pe acolo, caută-mă!"
+      ]
+    }
+  ],
+  "Flint": [
+    {
+      "en": [
+        "Flint"
+      ],
+      "text": [
+        "Flint"
+      ]
+    },
+    {
+      "en": [
+        "You there! Think you're up to it? Find yourself a partner and we'll see how hot you burn!"
+      ],
+      "text": [
+        "Hei, tu! Crezi că ești în stare? Găsește-ți un partener și vedem cât de tare arzi!"
+      ]
+    }
+  ],
+  "Volkner": [
+    {
+      "en": [
+        "Volkner"
+      ],
+      "text": [
+        "Volkner"
+      ]
+    },
+    {
+      "en": [
+        "Sorry about my friend. He means well. He dragged me out here because he thinks it will do me good."
+      ],
+      "text": [
+        "Scuze pentru prietenul meu. Are intenții bune. M-a târât aici pentru că el crede că-mi va face bine."
+      ]
+    }
+  ],
+  "Buck": [
+    {
+      "en": [
+        "Buck"
+      ],
+      "text": [
+        "Buck"
+      ]
+    },
+    {
+      "en": [
+        "Who are those two? Everybody who goes up against them comes back down again. I can't take my eyes off it!"
+      ],
+      "text": [
+        "Cine sunt ăia doi? Toți cei care urcă să se bată cu ei coboară înapoi. Nu-mi pot lua ochii de la ei!"
+      ]
+    }
+  ],
+  "Ferry": [
+    {
+      "en": [
+        "Heading back to the mainland? I can have you in Snowpoint City before the tea's gone cold."
+      ],
+      "text": [
+        "Te întorci pe continent? Te pot duce în Orașul Snowpoint înainte să se răcească ceaiul."
+      ]
+    },
+    {
+      "en": [
+        "Anchors aweigh, then! Wrap up warm: it's snowing where we're going."
+      ],
+      "text": [
+        "Ridicăm ancora, atunci! Îmbracă-te gros: ninge unde mergem."
+      ]
+    },
+    {
+      "en": [
+        "You'd sooner fly, I expect. Suit yourself! The ship's not going anywhere without me."
+      ],
+      "text": [
+        "Presupun că preferi să zbori. Cum vrei! Corabia nu pleacă nicăieri fără mine."
+      ]
+    }
+  ],
+  "Fisherman": [
+    {
+      "en": [
+        "The Super Rod! Now that is a rod. It hooks the big ones, out where the water's deep. Wouldn't you like one?"
+      ],
+      "text": [
+        "Superundița! Asta da undiță. Prinde peștii mari, acolo unde apa e adâncă. N-ai vrea una?"
+      ]
+    },
+    {
+      "en": [
+        "I knew it! One angler can always tell another. Here, take this one."
+      ],
+      "text": [
+        "Știam eu! Un pescar recunoaște mereu alt pescar. Poftim, ia-o pe asta."
+      ]
+    },
+    {
+      "en": [
+        "Go and try your luck! Any water will do, but the sea round this island is the place for it."
+      ],
+      "text": [
+        "Du-te și încearcă-ți norocul! Orice apă e bună, dar marea din jurul insulei ăsteia e locul potrivit."
+      ]
+    },
+    {
+      "en": [
+        "What? You don't care for fishing? ...I'll pretend I didn't hear that."
+      ],
+      "text": [
+        "Ce? Nu-ți place pescuitul? ...Mă fac că n-am auzit."
+      ]
+    },
+    {
+      "en": [
+        "Here's an angler's advice: the same water gives up different Pokémon to a different rod."
+      ],
+      "text": [
+        "Uite un sfat de pescar: aceeași apă dă Pokémoni diferiți unei undițe diferite."
+      ]
+    },
+    {
+      "en": [
+        "So fish every pond three times over, with the Old Rod, the Good Rod and the Super Rod."
+      ],
+      "text": [
+        "Așa că pescuiește în fiecare iaz de trei ori, cu Undița Veche, cu Undița Bună și cu Superundița."
+      ]
+    }
+  ],
+  "InverseBattle": [
+    {
+      "en": [
+        "Ah, a Champion! Just the person. I study what becomes of a battle when it is stood on its head."
+      ],
+      "text": [
+        "A, un Campion! Exact cine-mi trebuia. Studiez ce se întâmplă cu o luptă când e pusă cu capul în jos."
+      ]
+    },
+    {
+      "en": [
+        "In an inverse battle every matchup of types is turned round. What a Pokémon shrugs off hurts it badly."
+      ],
+      "text": [
+        "Într-o luptă inversă, fiecare potrivire de tipuri e întoarsă. Ce un Pokémon ar duce ușor îl rănește rău."
+      ]
+    },
+    {
+      "en": [
+        "What it fears barely stings. And a type that a move couldn't touch at all? It takes double!"
+      ],
+      "text": [
+        "Ce l-ar speria abia îl ustură. Iar un tip pe care o mișcare nu l-ar fi putut atinge deloc? Primește dublu!"
+      ]
+    },
+    {
+      "en": [
+        "One inverse battle a day is all my notes can keep up with. Will you fight today's, for science?"
+      ],
+      "text": [
+        "Notițele mele pot ține pasul doar cu o luptă inversă pe zi. O lupți pe cea de azi, de dragul științei?"
+      ]
+    },
+    {
+      "en": [
+        "Splendid! Remember: everything you know is backwards. Pencil at the ready... Begin!"
+      ],
+      "text": [
+        "Splendid! Ține minte: tot ce știi e pe dos. Creionul pregătit... Începe!"
+      ]
+    },
+    {
+      "en": [
+        "Remarkable! You turned your whole way of thinking round in a single battle. That goes straight into my notes."
+      ],
+      "text": [
+        "Remarcabil! Ți-ai întors tot felul de a gândi într-o singură luptă. Asta intră direct în notițele mele."
+      ]
+    },
+    {
+      "en": [
+        "Do come back tomorrow. By then I shall have a fresh page, and very likely a fresh headache."
+      ],
+      "text": [
+        "Te rog să revii mâine. Până atunci voi avea o pagină nouă, și foarte probabil o nouă durere de cap."
+      ]
+    },
+    {
+      "en": [
+        "Ha! Old habits, you see. You reached for what has always worked, and here it never does."
+      ],
+      "text": [
+        "Ha! Obiceiurile vechi, vezi? Te-ai întins după ce a mers mereu, iar aici nu merge niciodată."
+      ]
+    },
+    {
+      "en": [
+        "Don't take it to heart. Sleep on it, and try me again tomorrow."
+      ],
+      "text": [
+        "Nu lua în tragic. Dormi pe asta și încearcă-mă iar mâine."
+      ]
+    },
+    {
+      "en": [
+        "No? A pity. The offer stands, should you ever feel like unlearning everything you know."
+      ],
+      "text": [
+        "Nu? Păcat. Oferta rămâne valabilă, dacă vreodată ai chef să dezveți tot ce știi."
+      ]
+    },
+    {
+      "en": [
+        "One inverse battle a day, I'm afraid. My Pokémon need their rest, and so do my notes. Come back tomorrow!"
+      ],
+      "text": [
+        "O singură luptă inversă pe zi, mă tem. Pokémonii mei au nevoie de odihnă, la fel și notițele mele. Revino mâine!"
+      ]
+    }
+  ]
+}

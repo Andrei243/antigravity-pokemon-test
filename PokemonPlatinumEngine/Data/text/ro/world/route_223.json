@@ -1,0 +1,343 @@
+{
+  "people": {
+    "swimmer_wesley": {
+      "name": {
+        "en": [
+          "Wesley"
+        ],
+        "text": [
+          "Wesley"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Wesley: The sea on the way to the League is rough. Only the toughest swimmers make it this far!"
+        ],
+        "text": [
+          "Înotător Wesley: Marea spre Ligă e agitată. Doar cei mai duri înotători ajung până aici!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Wesley: I'm tough. You're tougher."
+        ],
+        "text": [
+          "Înotător Wesley: Eu am putere. Tu ai și mai multă."
+        ]
+      }
+    },
+    "swimmer_ricardo": {
+      "name": {
+        "en": [
+          "Ricardo"
+        ],
+        "text": [
+          "Ricardo"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Ricardo: Mind where you surf! My Tentacruel's tentacles reach a long, long way!"
+        ],
+        "text": [
+          "Înotător Ricardo: Ai grijă pe unde faci surf! Tentaculele lui Tentacruel al meu ajung foarte, foarte departe!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Ricardo: All those tentacles, and not one of them could catch you."
+        ],
+        "text": [
+          "Înotător Ricardo: Atâtea tentacule, și niciunul nu te-a putut prinde."
+        ]
+      }
+    },
+    "swimmer_francisco": {
+      "name": {
+        "en": [
+          "Francisco"
+        ],
+        "text": [
+          "Francisco"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Francisco: My Golduck taught me how to swim. Now it's going to teach you a lesson!"
+        ],
+        "text": [
+          "Înotător Francisco: Golduck al meu m-a învățat să înot. Acum o să-ți dea și ție o lecție!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Francisco: Looks like we're the ones who need more lessons."
+        ],
+        "text": [
+          "Înotător Francisco: Se pare că noi suntem cei care au nevoie de mai multe lecții."
+        ]
+      }
+    },
+    "swimmer_colton": {
+      "name": {
+        "en": [
+          "Colton"
+        ],
+        "text": [
+          "Colton"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Colton: Out here, trouble comes from the sky and the sea at once. Can you watch both?"
+        ],
+        "text": [
+          "Înotător Colton: Aici, necazul vine din cer și din mare deodată. Poți fi atent la amândouă?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Colton: You kept your eyes open, all right."
+        ],
+        "text": [
+          "Înotător Colton: Ai avut ochii în patru, nimic de zis."
+        ]
+      }
+    },
+    "swimmer_troy": {
+      "name": {
+        "en": [
+          "Troy"
+        ],
+        "text": [
+          "Troy"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Troy: One Pokémon is all I need, as long as it's a Gyarados!"
+        ],
+        "text": [
+          "Înotător Troy: Un singur Pokémon îmi trebuie, atâta timp cât e un Gyarados!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Troy: Maybe I need a second one after all."
+        ],
+        "text": [
+          "Înotător Troy: Poate până la urmă îmi trebuie și un al doilea."
+        ]
+      }
+    },
+    "swimmer_oscar": {
+      "name": {
+        "en": [
+          "Oscar"
+        ],
+        "text": [
+          "Oscar"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Oscar: Mantine and Remoraid swim side by side in these waters. My team and I do too!"
+        ],
+        "text": [
+          "Înotător Oscar: Mantine și Remoraid înoată unul lângă altul în apele astea. La fel și eu cu echipa mea!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Oscar: We'll swim off and lick our wounds together, then."
+        ],
+        "text": [
+          "Înotător Oscar: Atunci înotăm departe și ne lingem rănile împreună."
+        ]
+      }
+    },
+    "swimmer_miranda": {
+      "name": {
+        "en": [
+          "Miranda"
+        ],
+        "text": [
+          "Miranda"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Miranda: Lumineon's fins glow in deep water. Pretty, isn't it? It's pretty strong, too!"
+        ],
+        "text": [
+          "Înotător Miranda: Aripioarele lui Lumineon strălucesc în apele adânci. Drăguț, nu? E și destul de puternic!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Miranda: Pretty, yes. Strong enough... not today."
+        ],
+        "text": [
+          "Înotător Miranda: Drăguț, da. Destul de puternic... nu azi."
+        ]
+      }
+    },
+    "swimmer_aubree": {
+      "name": {
+        "en": [
+          "Aubree"
+        ],
+        "text": [
+          "Aubree"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Aubree: Bibarel isn't fast, but it never, ever gets tired. We'll swim rings round you!"
+        ],
+        "text": [
+          "Înotător Aubree: Bibarel nu e rapid, dar nu obosește niciodată. O să înotăm în cercuri în jurul tău!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Aubree: You swam rings round us instead."
+        ],
+        "text": [
+          "Înotător Aubree: Tu ai înotat în cercuri în jurul nostru."
+        ]
+      }
+    },
+    "swimmer_paige": {
+      "name": {
+        "en": [
+          "Paige"
+        ],
+        "text": [
+          "Paige"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Paige: The Pokémon League is just up the waterfall. Bet you can't get past me first!"
+        ],
+        "text": [
+          "Înotător Paige: Liga Pokémon e chiar sus, după cascadă. Pun pariu că nu treci întâi de mine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Paige: Bet lost. Go on, then: the waterfall's that way."
+        ],
+        "text": [
+          "Înotător Paige: Pariu pierdut. Hai, du-te: cascada e pe acolo."
+        ]
+      }
+    },
+    "swimmer_crystal": {
+      "name": {
+        "en": [
+          "Crystal"
+        ],
+        "text": [
+          "Crystal"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Crystal: The water out here is so clear I can see right to the bottom!"
+        ],
+        "text": [
+          "Înotător Crystal: Apa de aici e atât de limpede că văd până la fund!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Crystal: And now I can see clearly that I've lost."
+        ],
+        "text": [
+          "Înotător Crystal: Și acum văd limpede că am pierdut."
+        ]
+      }
+    },
+    "swimmer_cassandra": {
+      "name": {
+        "en": [
+          "Cassandra"
+        ],
+        "text": [
+          "Cassandra"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Cassandra: Training on the open sea makes Pokémon stronger than any pool ever could!"
+        ],
+        "text": [
+          "Înotător Cassandra: Antrenamentul în larg îi face pe Pokémoni mai puternici decât ar putea orice piscină!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Cassandra: Seems the open sea has made you stronger still."
+        ],
+        "text": [
+          "Înotător Cassandra: Se pare că largul ți-a dat și mai multă putere."
+        ]
+      }
+    },
+    "swimmer_gabrielle": {
+      "name": {
+        "en": [
+          "Gabrielle"
+        ],
+        "text": [
+          "Gabrielle"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Gabrielle: Heading for the Pokémon League? You'll have to cross the sea first, and that means me!"
+        ],
+        "text": [
+          "Înotător Gabrielle: Mergi spre Liga Pokémon? Mai întâi trebuie să treci marea, adică pe mine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Gabrielle: Good luck at the League. You'll need less of it than most."
+        ],
+        "text": [
+          "Înotător Gabrielle: Mult noroc la Ligă. O să-ți trebuiască mai puțin decât altora."
+        ]
+      }
+    },
+    "sailor_zachariah": {
+      "name": {
+        "en": [
+          "Zachariah"
+        ],
+        "text": [
+          "Zachariah"
+        ]
+      },
+      "before": {
+        "en": [
+          "Sailor Zachariah: I've sailed every sea there is, and none has waves like these. Steady yourself!"
+        ],
+        "text": [
+          "Marinar Zachariah: Am navigat pe toate mările, și niciuna n-are valuri ca astea. Ține-te bine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Sailor Zachariah: Knocked flat by someone riding on a Pokémon's back. Well, I never!"
+        ],
+        "text": [
+          "Marinar Zachariah: Pus la pământ de cineva care călărește în spatele unui Pokémon. Ei, asta-i bună!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

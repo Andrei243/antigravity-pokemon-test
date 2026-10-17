@@ -1,0 +1,210 @@
+{
+  "people": {
+    "fisherman": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          "Pescarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Not this way, not yet! Have you been to the Battle Frontier? It's through the gate at the top of the town.",
+          "See that before you go paddling off round the island. The sea will still be here afterwards."
+        ],
+        "text": [
+          "Nu pe aici, nu încă! Ai fost la Battle Frontier? E dincolo de poarta din capătul orașului.",
+          "Vezi-l înainte să pleci să te bălăcești în jurul insulei. Marea o să fie tot aici și după."
+        ]
+      }
+    },
+    "rich_boy": {
+      "name": {
+        "en": [
+          "Rich Boy"
+        ],
+        "text": [
+          "Băiat bogat"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Surfing off already? But you've hardly battled anybody here!",
+          "The Fight Area is where Trainers come to challenge one another. It would be rude not to, really."
+        ],
+        "text": [
+          "Pleci deja în larg cu Surf? Dar abia te-ai luptat cu cineva pe aici!",
+          "Zona de Luptă e locul unde vin Antrenorii să se provoace unii pe alții. Ar fi nepoliticos să n-o faci, zău."
+        ]
+      }
+    },
+    "swimmer_glenn": {
+      "name": {
+        "en": [
+          "Glenn"
+        ],
+        "text": [
+          "Glenn"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Glenn: Round and round the bay I go. You're the first thing all day worth stopping for!"
+        ],
+        "text": [
+          "Înotător Glenn: Mă tot învârt prin golf. Tu ești primul lucru din toată ziua pentru care merită să mă opresc!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Glenn: Right. Round and round again."
+        ],
+        "text": [
+          "Înotător Glenn: Bine. Iar la învârtit."
+        ]
+      }
+    },
+    "swimmer_joanna": {
+      "name": {
+        "en": [
+          "Joanna"
+        ],
+        "text": [
+          "Joanna"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Joanna: I ride out here on my Lapras every morning. Race you! No? A battle, then!"
+        ],
+        "text": [
+          "Înotător Joanna: Vin aici în fiecare dimineață pe Lapras-ul meu. Ne întrecem? Nu? Atunci o luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Joanna: I ought to have held out for the race."
+        ],
+        "text": [
+          "Înotător Joanna: Trebuia să insist pentru întrecere."
+        ]
+      }
+    },
+    "swimmer_kurt": {
+      "name": {
+        "en": [
+          "Kurt"
+        ],
+        "text": [
+          "Kurt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Kurt: Careful, the rocks out here are thick with pincers! Most of them are mine!"
+        ],
+        "text": [
+          "Înotător Kurt: Atenție, stâncile de aici sunt pline de clești! Cei mai mulți sunt ai mei!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Kurt: Nipped in the bud."
+        ],
+        "text": [
+          "Înotător Kurt: Ciupit din fașă."
+        ]
+      }
+    },
+    "swimmer_sophia": {
+      "name": {
+        "en": [
+          "Sophia"
+        ],
+        "text": [
+          "Sophia"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Sophia: Up and down, up and down. The swell out here rocks me half to sleep. Wake me up!"
+        ],
+        "text": [
+          "Înotător Sophia: Sus și jos, sus și jos. Valurile de aici mă leagănă de-mi vine să dorm. Trezește-mă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Sophia: Wide awake now, thank you."
+        ],
+        "text": [
+          "Înotător Sophia: Acum sunt trează de-a binelea, mulțumesc."
+        ]
+      }
+    },
+    "swimmer_sam": {
+      "name": {
+        "en": [
+          "Sam"
+        ],
+        "text": [
+          "Sam"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Sam: The Resort Area's that way, the Fight Area's the other. I never could choose, so here I float!"
+        ],
+        "text": [
+          "Înotător Sam: Zona de Odihnă e într-o parte, Zona de Luptă în cealaltă. N-am putut alege niciodată, așa că plutesc aici!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Sam: The resort, then. I need a lie down."
+        ],
+        "text": [
+          "Înotător Sam: Stațiunea, atunci. Trebuie să mă întind."
+        ]
+      }
+    },
+    "swimmer_mallory": {
+      "name": {
+        "en": [
+          "Mallory"
+        ],
+        "text": [
+          "Mallory"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Mallory: My Pokémon skate over the water without so much as a ripple. Try to keep up!"
+        ],
+        "text": [
+          "Înotător Mallory: Pokémonii mei alunecă pe apă fără să facă nici măcar un val. Încearcă să ții pasul!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Mallory: You made rather a splash."
+        ],
+        "text": [
+          "Înotător Mallory: Tu ai făcut destule valuri."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost": {
+      "en": [
+        "Rt. 230\nWest: Fight Area"
+      ],
+      "text": [
+        "Ruta 230\nVest: Zona de Luptă"
+      ]
+    }
+  }
+}

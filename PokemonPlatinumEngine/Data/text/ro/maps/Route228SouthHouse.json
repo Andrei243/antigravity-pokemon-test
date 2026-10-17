@@ -1,0 +1,56 @@
+{
+  "displayName": {
+    "en": [
+      "Route 228"
+    ],
+    "text": [
+      "Ruta 228"
+    ]
+  },
+  "people": {
+    "gentleman": {
+      "name": {
+        "en": [
+          "Old Gentleman"
+        ],
+        "text": [
+          "Bătrânul domn"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "5,3": {
+      "en": [
+        "A stack of old, heavy books.\n\"Matter and the Mind\", \"Where the Spirit Dwells\"..."
+      ],
+      "text": [
+        "Un teanc de cărți vechi și grele.\n„Materia și mintea”, „Unde sălășluiește spiritul”..."
+      ]
+    },
+    "1,7": {
+      "en": [
+        "A stack of old, heavy books.\n\"How Machines Are Made\", \"The Workings of a Perfect Thing\"..."
+      ],
+      "text": [
+        "Un teanc de cărți vechi și grele.\n„Cum se fac mașinăriile”, „Mecanismul unui lucru desăvârșit”..."
+      ]
+    },
+    "7,5": {
+      "en": [
+        "A stack of old, heavy books.\n\"Past the Edge of Time and Space\", \"What Holds Time and Space Together?\"..."
+      ],
+      "text": [
+        "Un teanc de cărți vechi și grele.\n„Dincolo de marginea timpului și a spațiului”, „Ce ține laolaltă timpul și spațiul?”..."
+      ]
+    },
+    "9,7": {
+      "en": [
+        "A stack of old, heavy books.\n\"The Stars and Their Galaxies\", \"How Space Began\"..."
+      ],
+      "text": [
+        "Un teanc de cărți vechi și grele.\n„Stelele și galaxiile lor”, „Cum a început spațiul”..."
+      ]
+    }
+  }
+}

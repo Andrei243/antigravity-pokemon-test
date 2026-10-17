@@ -1,0 +1,431 @@
+{
+  "people": {
+    "buck": {
+      "name": {
+        "en": [
+          "Buck"
+        ],
+        "text": [
+          "Buck"
+        ]
+      }
+    },
+    "ace_trainer_keenan": {
+      "name": {
+        "en": [
+          "Keenan"
+        ],
+        "text": [
+          "Keenan"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Keenan: My shoes are melting and I couldn't care less. Battle me!"
+        ],
+        "text": [
+          "Antrenor As Keenan: Mi se topesc pantofii și nu-mi pasă deloc. Luptă-te cu mine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Keenan: Now I care about the shoes."
+        ],
+        "text": [
+          "Antrenor As Keenan: Acum îmi pasă de pantofi."
+        ]
+      }
+    },
+    "ace_trainer_kassandra": {
+      "name": {
+        "en": [
+          "Kassandra"
+        ],
+        "text": [
+          "Kassandra"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Kassandra: Anyone who has come this far into the mountain is worth my time. Show me!"
+        ],
+        "text": [
+          "Antrenor As Kassandra: Oricine a ajuns atât de adânc în munte merită timpul meu. Arată-mi!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Kassandra: Worth every minute. Go on, the way only gets hotter."
+        ],
+        "text": [
+          "Antrenor As Kassandra: A meritat fiecare minut. Mergi, drumul devine doar mai fierbinte."
+        ]
+      }
+    },
+    "ace_trainer_skylar": {
+      "name": {
+        "en": [
+          "Skylar"
+        ],
+        "text": [
+          "Skylar"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Skylar: Natasha and I have been staring each other down for an hour. You'll do for a warm-up!"
+        ],
+        "text": [
+          "Antrenor As Skylar: Natasha și cu mine ne holbăm unul la altul de o oră. Tu o să fii încălzirea!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Skylar: Some warm-up. I'm cooked."
+        ],
+        "text": [
+          "Antrenor As Skylar: Ce încălzire. Sunt fiert."
+        ]
+      }
+    },
+    "ace_trainer_natasha": {
+      "name": {
+        "en": [
+          "Natasha"
+        ],
+        "text": [
+          "Natasha"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Natasha: Skylar blinked first, whatever he tells you. Now let me see whether you blink."
+        ],
+        "text": [
+          "Antrenor As Natasha: Skylar a clipit primul, orice ți-ar spune. Acum să văd dacă tu clipești."
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Natasha: Not once. I'm impressed."
+        ],
+        "text": [
+          "Antrenor As Natasha: Nici măcar o dată. Sunt impresionată."
+        ]
+      }
+    },
+    "psychic_chelsey": {
+      "name": {
+        "en": [
+          "Chelsey"
+        ],
+        "text": [
+          "Chelsey"
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Chelsey: The moon is a long way from here, and still it pulls on my Pokémon. Can you feel it?"
+        ],
+        "text": [
+          "Medium Chelsey: Luna e departe de aici, și totuși îi trage pe Pokémonii mei. O simți?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Chelsey: You felt nothing at all, did you? How restful that must be."
+        ],
+        "text": [
+          "Medium Chelsey: N-ai simțit absolut nimic, nu? Ce odihnitor trebuie să fie."
+        ]
+      }
+    },
+    "psychic_sterling": {
+      "name": {
+        "en": [
+          "Sterling"
+        ],
+        "text": [
+          "Sterling"
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Sterling: The sun and this mountain burn with the same fire. So does my team!"
+        ],
+        "text": [
+          "Medium Sterling: Soarele și muntele ăsta ard cu același foc. La fel și echipa mea!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Sterling: Burnt out. It happens to suns too, I'm told."
+        ],
+        "text": [
+          "Medium Sterling: Ars de tot. Se întâmplă și sorilor, am auzit."
+        ]
+      }
+    },
+    "bird_keeper_krystal": {
+      "name": {
+        "en": [
+          "Krystal"
+        ],
+        "text": [
+          "Krystal"
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Krystal: Hot air rises, and my birds ride it right up to the roof of the cave. Watch them dive!"
+        ],
+        "text": [
+          "Crescător de păsări Krystal: Aerul cald urcă, iar păsările mele plutesc pe el până în tavanul peșterii. Uită-te cum plonjează!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Krystal: They dived. You were just somewhere else when they landed."
+        ],
+        "text": [
+          "Crescător de păsări Krystal: Au plonjat. Doar că tu erai în altă parte când au aterizat."
+        ]
+      }
+    },
+    "black_belt_ray": {
+      "name": {
+        "en": [
+          "Ray"
+        ],
+        "text": [
+          "Ray"
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Ray: I do my push-ups on the hot rock. A thousand a day! Feel the difference!"
+        ],
+        "text": [
+          "Centură Neagră Ray: Fac flotări pe roca fierbinte. O mie pe zi! Simte diferența!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Ray: Two thousand a day, starting tomorrow."
+        ],
+        "text": [
+          "Centură Neagră Ray: Două mii pe zi, de mâine."
+        ]
+      }
+    },
+    "ace_trainer_stefan": {
+      "name": {
+        "en": [
+          "Stefan"
+        ],
+        "text": [
+          "Stefan"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Stefan: Nobody gets past the pair of us without a battle. Me first!"
+        ],
+        "text": [
+          "Antrenor As Stefan: Nimeni nu trece de noi doi fără o luptă. Eu primul!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Stefan: Past me, then. Jasmin won't be so easy."
+        ],
+        "text": [
+          "Antrenor As Stefan: Ai trecut de mine, atunci. Cu Jasmin n-o să fie atât de ușor."
+        ]
+      }
+    },
+    "ace_trainer_jasmin": {
+      "name": {
+        "en": [
+          "Jasmin"
+        ],
+        "text": [
+          "Jasmin"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Jasmin: One Pokémon is all I brought down here. It has never needed help yet."
+        ],
+        "text": [
+          "Antrenor As Jasmin: Un singur Pokémon am adus aici jos. N-a avut niciodată nevoie de ajutor."
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Jasmin: Today it needed help. I'll remember that."
+        ],
+        "text": [
+          "Antrenor As Jasmin: Azi a avut nevoie de ajutor. O să țin minte."
+        ]
+      }
+    },
+    "dragon_tamer_drake": {
+      "name": {
+        "en": [
+          "Drake"
+        ],
+        "text": [
+          "Drake"
+        ]
+      },
+      "before": {
+        "en": [
+          "Dragon Tamer Drake: My dragons are young yet, and the heat of this mountain is what will bring them on!"
+        ],
+        "text": [
+          "Îmblânzitor de dragoni Drake: Dragonii mei sunt încă tineri, iar căldura muntelui ăstuia o să-i facă să crească!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Dragon Tamer Drake: Not grown enough. Another summer in here should do it."
+        ],
+        "text": [
+          "Îmblânzitor de dragoni Drake: N-au crescut destul. Încă o vară aici ar trebui să ajungă."
+        ]
+      }
+    },
+    "black_belt_jarrett": {
+      "name": {
+        "en": [
+          "Jarrett"
+        ],
+        "text": [
+          "Jarrett"
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Jarrett: Four arms against however many you've brought. I like those odds!"
+        ],
+        "text": [
+          "Centură Neagră Jarrett: Patru brațe contra câți ai adus tu. Îmi plac șansele astea!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Jarrett: I should have counted first."
+        ],
+        "text": [
+          "Centură Neagră Jarrett: Trebuia să număr întâi."
+        ]
+      }
+    },
+    "ace_trainer_abel": {
+      "name": {
+        "en": [
+          "Abel"
+        ],
+        "text": [
+          "Abel"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Abel: I brought ice into a volcano, and it hasn't melted yet. That's how tough my team is!"
+        ],
+        "text": [
+          "Antrenor As Abel: Am adus gheață într-un vulcan și încă nu s-a topit. Atât de dură e echipa mea!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Abel: It melted. I ought to have seen that coming."
+        ],
+        "text": [
+          "Antrenor As Abel: S-a topit. Trebuia să văd asta venind."
+        ]
+      }
+    },
+    "ace_trainer_monique": {
+      "name": {
+        "en": [
+          "Monique"
+        ],
+        "text": [
+          "Monique"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Monique: Abel talks. I battle. Shall we?"
+        ],
+        "text": [
+          "Antrenor As Monique: Abel vorbește. Eu lupt. Începem?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Monique: Short and to the point. I can respect that, even losing."
+        ],
+        "text": [
+          "Antrenor As Monique: Scurt și la obiect. Pot respecta asta, chiar și pierzând."
+        ]
+      }
+    },
+    "veteran_harlan": {
+      "name": {
+        "en": [
+          "Harlan"
+        ],
+        "text": [
+          "Harlan"
+        ]
+      },
+      "before": {
+        "en": [
+          "Veteran Harlan: I saw you coming from the far end of the ledge. An old trainer misses very little."
+        ],
+        "text": [
+          "Veteran Harlan: Te-am văzut venind din capătul celălalt al pervazului. Unui Antrenor bătrân îi scapă foarte puțin."
+        ]
+      },
+      "after": {
+        "en": [
+          "Veteran Harlan: I saw the loss coming too, a little later than I'd have liked."
+        ],
+        "text": [
+          "Veteran Harlan: Am văzut și înfrângerea venind, puțin mai târziu decât mi-ar fi plăcut."
+        ]
+      }
+    },
+    "dragon_tamer_kenny": {
+      "name": {
+        "en": [
+          "Kenny"
+        ],
+        "text": [
+          "Kenny"
+        ]
+      },
+      "before": {
+        "en": [
+          "Dragon Tamer Kenny: They say a Pokémon sleeps in the heart of this mountain. Mine are wide awake!"
+        ],
+        "text": [
+          "Îmblânzitor de dragoni Kenny: Se zice că un Pokémon doarme în inima muntelui ăstuia. Ai mei sunt treji de-a binelea!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Dragon Tamer Kenny: Wide awake, and flat on their backs."
+        ],
+        "text": [
+          "Îmblânzitor de dragoni Kenny: Treji de-a binelea, și cu burta în sus."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

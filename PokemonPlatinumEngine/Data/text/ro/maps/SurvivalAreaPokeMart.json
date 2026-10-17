@@ -1,0 +1,71 @@
+{
+  "displayName": {
+    "en": [
+      "Poké Mart"
+    ],
+    "text": [
+      "Poké Mart"
+    ]
+  },
+  "people": {
+    "ace_trainer_f": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          "Antrenor As"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I was fifty-four wins into a streak at the Battle Tower. Then came battle fifty-five...",
+          "So here I am, buying every Full Restore on the shelf."
+        ],
+        "text": [
+          "Aveam cincizeci și patru de victorii la rând la Battle Tower. Apoi a venit lupta cincizeci și cinci...",
+          "Așa că iată-mă, cumpărând toate Refacerile Totale de pe raft."
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A word of advice: fill your Bag before you set off north or east of here.",
+          "Nobody sells Revives halfway up a volcano."
+        ],
+        "text": [
+          "Un sfat: umple-ți Rucsacul înainte să pornești spre nord sau est de aici.",
+          "Nimeni nu vinde Reînvieri la jumătatea unui vulcan."
+        ]
+      }
+    },
+    "cashier_f": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome to the Survival Area Poké Mart! How may I serve you today?"
+        ],
+        "text": [
+          "Vânzătoarea: Bine ai venit la Poké Martul din Zona de Supraviețuire! Cu ce te pot ajuta azi?"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

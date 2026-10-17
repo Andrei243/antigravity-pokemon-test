@@ -1,0 +1,89 @@
+{
+  "displayName": {
+    "en": [
+      "Poké Mart"
+    ],
+    "text": [
+      "Poké Mart"
+    ]
+  },
+  "people": {
+    "cashier_f": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome to the Sunyshore Poké Mart! How may I serve you today?"
+        ],
+        "text": [
+          "Vânzătoarea: Bine ai venit la Poké Martul din Sunyshore! Cu ce te pot ajuta azi?"
+        ]
+      }
+    },
+    "ruin_maniac": {
+      "name": {
+        "en": [
+          "Ruin Maniac"
+        ],
+        "text": [
+          "Pasionatul de ruine"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I have heard about Victory Road, the way up to the Pokémon League. Harsh going, they say, from end to end.",
+          "I had better buy all the medicine I can carry."
+        ],
+        "text": [
+          "Am auzit de Drumul Victoriei, drumul spre Liga Pokémon. Se zice că e greu de la un capăt la altul.",
+          "Ar fi bine să cumpăr toate medicamentele pe care le pot căra."
+        ]
+      }
+    },
+    "sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          "Marinar"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm off to the Sunyshore Market for Seals to stick on my Poké Balls.",
+          "Put them on with a bit of style, and my Pokémon are sure to be impressed!"
+        ],
+        "text": [
+          "Mă duc la Piața Sunyshore după Stickere pe care să le lipesc pe Poké Balluri.",
+          "Le pun cu puțin stil, și Pokémonii mei sigur vor fi impresionați!"
+        ]
+      }
+    },
+    "cashier_m": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! This counter has goods you'll only find here in Sunyshore."
+        ],
+        "text": [
+          "Vânzătorul: Bine ai venit! La tejgheaua asta sunt mărfuri pe care le găsești doar aici, în Sunyshore."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

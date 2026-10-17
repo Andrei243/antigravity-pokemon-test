@@ -1,0 +1,93 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Center"
+    ],
+    "text": [
+      "Centrul Pokémon"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "guitarist": {
+      "name": {
+        "en": [
+          "Guitarist"
+        ],
+        "text": [
+          "Chitaristul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I took my guitar and my team up to the Battle Frontier. The guitar came out of it better than the team did.",
+          "They are tough up there. Really tough. I need a new song about losing."
+        ],
+        "text": [
+          "Mi-am dus chitara și echipa sus la Battle Frontier. Chitara a ieșit mai bine din asta decât echipa.",
+          "Sunt duri acolo sus. Foarte duri. Am nevoie de un cântec nou despre pierdere."
+        ]
+      }
+    },
+    "waitress": {
+      "name": {
+        "en": [
+          "Waitress"
+        ],
+        "text": [
+          "Chelnerița"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The best trainers from every land end up in the Battle Zone sooner or later.",
+          "I pour their coffee and listen to their stories. You look like you have one or two of your own."
+        ],
+        "text": [
+          "Cei mai buni Antrenori din toate ținuturile ajung mai devreme sau mai târziu în Ținutul Luptelor.",
+          "Le torn cafeaua și le ascult poveștile. Pari să ai și tu una-două de-ale tale."
+        ]
+      }
+    },
+    "black_belt": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          "Centură Neagră"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I crossed the sea to toughen myself up!",
+          "If I ache all over by nightfall, it was a good day."
+        ],
+        "text": [
+          "Am trecut marea ca să mă călesc!",
+          "Dacă mă doare tot corpul până seara, a fost o zi bună."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

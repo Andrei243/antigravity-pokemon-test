@@ -1,0 +1,127 @@
+{
+  "displayName": {
+    "en": [
+      "Sunyshore Gym"
+    ],
+    "text": [
+      "Arena Sunyshore"
+    ]
+  },
+  "people": {
+    "volkner": {
+      "name": {
+        "en": [
+          "Volkner"
+        ],
+        "text": [
+          "Volkner"
+        ]
+      }
+    },
+    "ace_trainer_destiny": {
+      "name": {
+        "en": [
+          "Destiny"
+        ],
+        "text": [
+          "Destiny"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Destiny: You came round the back way, didn't you? Clever. Let's see if you battle as cleverly!"
+        ],
+        "text": [
+          "Antrenor As Destiny: Ai venit pe la spate, nu? Isteț. Să vedem dacă lupți la fel de isteț!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Destiny: You're bright enough to light up the whole town."
+        ],
+        "text": [
+          "Antrenor As Destiny: Ai destulă lumină în cap cât să luminezi tot orașul."
+        ]
+      }
+    },
+    "guitarist_preston": {
+      "name": {
+        "en": [
+          "Preston"
+        ],
+        "text": [
+          "Preston"
+        ]
+      },
+      "before": {
+        "en": [
+          "Guitarist Preston: Up here the whole Gym hums like a song. Let's add a few loud notes!"
+        ],
+        "text": [
+          "Chitarist Preston: Aici sus toată Arena zumzăie ca un cântec. Hai să adăugăm câteva note tari!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Guitarist Preston: That was the big finish? I wasn't ready for the encore."
+        ],
+        "text": [
+          "Chitarist Preston: Ăla a fost finalul mare? Nu eram pregătit pentru bis."
+        ]
+      }
+    },
+    "guitarist_lonnie": {
+      "name": {
+        "en": [
+          "Lonnie"
+        ],
+        "text": [
+          "Lonnie"
+        ]
+      },
+      "before": {
+        "en": [
+          "Guitarist Lonnie: Volkner rebuilds this place all the time. I just keep playing through the blackouts!"
+        ],
+        "text": [
+          "Chitarist Lonnie: Volkner refăce locul ăsta tot timpul. Eu doar cânt mai departe prin pene de curent!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Guitarist Lonnie: The lights are still on... it's only me that's been switched off."
+        ],
+        "text": [
+          "Chitarist Lonnie: Luminile încă sunt aprinse... doar eu am fost stins."
+        ]
+      }
+    },
+    "ace_trainer_zachery": {
+      "name": {
+        "en": [
+          "Zachery"
+        ],
+        "text": [
+          "Zachery"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Zachery: Volkner hasn't had a real battle in ages. Before you get to him, you'll go through me!"
+        ],
+        "text": [
+          "Antrenor As Zachery: Volkner n-a mai avut o luptă adevărată de mult. Înainte să ajungi la el, treci de mine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Zachery: Maybe you're the one who'll wake him up after all."
+        ],
+        "text": [
+          "Antrenor As Zachery: Poate că tu ești cel care-l va trezi, până la urmă."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

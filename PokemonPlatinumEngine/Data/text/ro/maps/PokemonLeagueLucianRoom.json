@@ -1,0 +1,43 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon League"
+    ],
+    "text": [
+      "Liga Pokémon"
+    ]
+  },
+  "people": {
+    "lucian": {
+      "name": {
+        "en": [
+          "Lucian"
+        ],
+        "text": [
+          "Lucian"
+        ]
+      }
+    },
+    "entrance_door": {
+      "name": {
+        "en": [
+          "Door"
+        ],
+        "text": [
+          "Ușă"
+        ]
+      }
+    },
+    "exit_door": {
+      "name": {
+        "en": [
+          "Door"
+        ],
+        "text": [
+          "Ușă"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

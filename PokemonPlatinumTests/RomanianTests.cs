@@ -89,13 +89,58 @@ public class RomanianTests
             .Select(PokemonPlatinumEngine.Models.Trainer.KeyOf).ToHashSet(StringComparer.Ordinal);
         var named = Text.KeysOf(Romanian).Where(k => k.StartsWith("places.", StringComparison.Ordinal)).Select(k => k["places.".Length..]).ToList();
         Assert.NotEmpty(named);
-        Assert.Empty(named.Where(n => !areas.Contains(n)).OrderBy(n => n));
+        // The Battle Zone is no area but the region the Fight, Survival and Resort Areas lie in, which lines name: its
+        // Romanian name is kept here so every line names it alike (plan 17 · N6b, slice 3's decision)
+        Assert.Empty(named.Where(n => !areas.Contains(n) && n != "BattleZone").OrderBy(n => n));
         try
         {
             Text.Use(Romanian);
             Assert.Equal("Orășelul Twinleaf", LocalNames.PlaceShown(null, "Twinleaf Town"));
             Assert.Equal("Ruta 201", LocalNames.PlaceShown(null, "Route 201"));
             Assert.Equal("Liga Pokémon", LocalNames.PlaceShown(null, "Pokémon League"));
+            Assert.Equal("Ținutul Luptelor", LocalNames.PlaceShown(null, "Battle Zone"));
+        }
+        finally { Text.Use(Text.English); }
+    }
+
+    [Fact]
+    public void TheMoveAPokemonTriesToLearnIsNamedInRomanianInEveryLineOfTheQuestion()
+    {
+        // Plan 17 · N6b, slice 4: the lines round the question named the move in English
+        try
+        {
+            Text.Use(Romanian);
+            var turtwig = Mon("Turtwig", 8, "Tackle", "Withdraw", "Growl", "Leer");
+            turtwig.CurrentExp = turtwig.ExpForNextLevel - 1;
+            var foe = Mon("Magikarp", 5);
+            foe.CurrentHP = 1;
+            var battle = Battle(turtwig, foe);
+            battle.SelectMove(0);
+            var said = new List<string>();
+            for (int i = 0; i < 2000 && !battle.IsBattleOver; i++)
+            {
+                if (battle.IsWaitingForConfirm || battle.IsLearningMove) said.Add(battle.CurrentMessage);
+                battle.ConfirmMessage();
+                battle.Update(1f / 60f);
+            }
+            Assert.Contains("Turtwig încearcă să învețe Absorbție.", said);
+            Assert.DoesNotContain(said, line => line.Contains("Absorb ", StringComparison.Ordinal) || line.EndsWith("Absorb.", StringComparison.Ordinal));
+
+            // With room for it the rules learn it themselves, and say so in the same words
+            var roomy = Mon("Turtwig", 8, "Tackle", "Withdraw");
+            roomy.CurrentExp = roomy.ExpForNextLevel - 1;
+            var again = Mon("Magikarp", 5);
+            again.CurrentHP = 1;
+            var second = Battle(roomy, again);
+            second.SelectMove(0);
+            var heard = new List<string>();
+            for (int i = 0; i < 2000 && !second.IsBattleOver; i++)
+            {
+                if (second.IsWaitingForConfirm) heard.Add(second.CurrentMessage);
+                second.ConfirmMessage();
+                second.Update(1f / 60f);
+            }
+            Assert.Contains("Turtwig a învățat Absorbție!", heard);
         }
         finally { Text.Use(Text.English); }
     }

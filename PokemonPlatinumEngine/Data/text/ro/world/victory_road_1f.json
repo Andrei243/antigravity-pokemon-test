@@ -1,0 +1,171 @@
+{
+  "people": {
+    "collector": {
+      "name": {
+        "en": [
+          "Collector"
+        ],
+        "text": [
+          "Colecționarul"
+        ]
+      }
+    },
+    "psychic_bryce": {
+      "name": {
+        "en": [
+          "Bryce"
+        ],
+        "text": [
+          "Bryce"
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Bryce: I foresaw a trainer coming through this cave today. How our battle ends, I haven't seen... yet."
+        ],
+        "text": [
+          "Medium Bryce: Am prevăzut că azi va trece un Antrenor prin peștera asta. Cum se termină lupta noastră n-am văzut... încă."
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Bryce: Ah. Now I see it clearly. I lost."
+        ],
+        "text": [
+          "Medium Bryce: A. Acum văd limpede. Am pierdut."
+        ]
+      }
+    },
+    "black_belt_miles": {
+      "name": {
+        "en": [
+          "Miles"
+        ],
+        "text": [
+          "Miles"
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Miles: Victory Road is the finest training ground in Sinnoh! One more bout before I climb on!"
+        ],
+        "text": [
+          "Centură Neagră Miles: Drumul Victoriei e cel mai bun teren de antrenament din Sinnoh! Încă o rundă înainte să urc!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Miles: Four arms, and not one of them fast enough. More training!"
+        ],
+        "text": [
+          "Centură Neagră Miles: Patru brațe, și niciunul destul de rapid. Mai mult antrenament!"
+        ]
+      }
+    },
+    "bird_keeper_hana": {
+      "name": {
+        "en": [
+          "Hana"
+        ],
+        "text": [
+          "Hana"
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Hana: Even in a cave, my birds always find their way. Let's see if you can find yours!"
+        ],
+        "text": [
+          "Crescător de păsări Hana: Chiar și într-o peșteră, păsările mele își găsesc mereu drumul. Să vedem dacă tu ți-l găsești pe al tău!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Hana: You'll find your way to the League. I'm sure of it."
+        ],
+        "text": [
+          "Crescător de păsări Hana: O să-ți găsești drumul spre Ligă. Sunt sigură."
+        ]
+      }
+    },
+    "ace_trainer_mariah": {
+      "name": {
+        "en": [
+          "Mariah"
+        ],
+        "text": [
+          "Mariah"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Mariah: Everyone in Victory Road has eight Badges. Don't go thinking you're special!"
+        ],
+        "text": [
+          "Antrenor As Mariah: Toată lumea din Drumul Victoriei are opt Insigne. Să nu crezi că ești ceva special!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Mariah: ...All right. Maybe you're a little bit special."
+        ],
+        "text": [
+          "Antrenor As Mariah: ...Bine. Poate ai ceva special, un pic."
+        ]
+      }
+    },
+    "veteran_edgar": {
+      "name": {
+        "en": [
+          "Edgar"
+        ],
+        "text": [
+          "Edgar"
+        ]
+      },
+      "before": {
+        "en": [
+          "Veteran Edgar: I've walked this road more times than I can count, and never reached its end. Show me how it's done!"
+        ],
+        "text": [
+          "Veteran Edgar: Am mers pe drumul ăsta de mai multe ori decât pot număra și n-am ajuns niciodată la capăt. Arată-mi cum se face!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Veteran Edgar: So that's how. Perhaps this will be my year after all."
+        ],
+        "text": [
+          "Veteran Edgar: Deci așa. Poate anul ăsta va fi anul meu, până la urmă."
+        ]
+      }
+    },
+    "dragon_tamer_clinton": {
+      "name": {
+        "en": [
+          "Clinton"
+        ],
+        "text": [
+          "Clinton"
+        ]
+      },
+      "before": {
+        "en": [
+          "Dragon Tamer Clinton: My dragons have grown up in these caves. Soon they'll be ready to fly!"
+        ],
+        "text": [
+          "Îmblânzitor de dragoni Clinton: Dragonii mei au crescut în peșterile astea. Curând vor fi gata să zboare!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Dragon Tamer Clinton: Not ready yet, then. Neither am I."
+        ],
+        "text": [
+          "Îmblânzitor de dragoni Clinton: Nu sunt gata încă, deci. Nici eu."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

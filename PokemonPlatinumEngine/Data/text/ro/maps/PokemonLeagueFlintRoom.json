@@ -1,0 +1,43 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon League"
+    ],
+    "text": [
+      "Liga Pokémon"
+    ]
+  },
+  "people": {
+    "flint": {
+      "name": {
+        "en": [
+          "Flint"
+        ],
+        "text": [
+          "Flint"
+        ]
+      }
+    },
+    "entrance_door": {
+      "name": {
+        "en": [
+          "Door"
+        ],
+        "text": [
+          "Ușă"
+        ]
+      }
+    },
+    "exit_door": {
+      "name": {
+        "en": [
+          "Door"
+        ],
+        "text": [
+          "Ușă"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,210 @@
+{
+  "displayName": {
+    "en": [
+      "Battle Hall"
+    ],
+    "text": [
+      "Battle Hall"
+    ]
+  },
+  "people": {
+    "single_attendant": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      }
+    },
+    "multi_attendant": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      }
+    },
+    "record_keeper": {
+      "name": {
+        "en": [
+          "Record Keeper"
+        ],
+        "text": [
+          "Arhivarul"
+        ]
+      }
+    },
+    "maid": {
+      "name": {
+        "en": [
+          "Maid"
+        ],
+        "text": [
+          "Cameristă"
+        ]
+      }
+    },
+    "pokefan_f": {
+      "name": {
+        "en": [
+          "Pokéfan"
+        ],
+        "text": [
+          "Pokéfana"
+        ]
+      }
+    },
+    "twin": {
+      "name": {
+        "en": [
+          "Twin"
+        ],
+        "text": [
+          "Geamănă"
+        ]
+      }
+    },
+    "pachirisu": {
+      "name": {
+        "en": [
+          "Pachirisu"
+        ],
+        "text": [
+          "Pachirisu"
+        ]
+      }
+    },
+    "snowpoint_npc_f": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      }
+    },
+    "expert_m": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      }
+    },
+    "idol": {
+      "name": {
+        "en": [
+          "Idol"
+        ],
+        "text": [
+          "Idolul"
+        ]
+      }
+    },
+    "bug_catcher": {
+      "name": {
+        "en": [
+          "Bug Catcher"
+        ],
+        "text": [
+          "Vânătorul de insecte"
+        ]
+      }
+    },
+    "fan": {
+      "name": {
+        "en": [
+          "Fan"
+        ],
+        "text": [
+          "Fanul"
+        ]
+      }
+    },
+    "visitor_counterpart": {
+      "name": {
+        "en": [
+          "{assistant}"
+        ],
+        "text": [
+          "{assistant}"
+        ]
+      }
+    },
+    "visitor_mom": {
+      "name": {
+        "en": [
+          "Mom"
+        ],
+        "text": [
+          "Mama"
+        ]
+      }
+    },
+    "visitor_professor": {
+      "name": {
+        "en": [
+          "Prof. Oak"
+        ],
+        "text": [
+          "Prof. Oak"
+        ]
+      }
+    },
+    "visitor_jasmine": {
+      "name": {
+        "en": [
+          "Jasmine"
+        ],
+        "text": [
+          "Jasmine"
+        ]
+      }
+    },
+    "8,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "4,3": {
+      "en": [
+        "The screen shows the stage. A crowd is finding its seats."
+      ],
+      "text": [
+        "Ecranul arată scena. O mulțime își caută locurile."
+      ]
+    },
+    "5,3": {
+      "en": [
+        "The screen shows the stage. A crowd is finding its seats."
+      ],
+      "text": [
+        "Ecranul arată scena. O mulțime își caută locurile."
+      ]
+    }
+  }
+}

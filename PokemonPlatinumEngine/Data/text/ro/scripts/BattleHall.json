@@ -1,0 +1,722 @@
+{
+  "SingleAttendant": [
+    {
+      "en": [
+        "Welcome to the Battle Hall, where a single Pokémon takes the stage!"
+      ],
+      "text": [
+        "Bine ai venit la Battle Hall, unde un singur Pokémon urcă pe scenă!"
+      ]
+    },
+    {
+      "en": [
+        "Which challenge would you like to take?",
+        "SINGLE BATTLE",
+        "DOUBLE BATTLE",
+        "INFO",
+        "EXIT"
+      ],
+      "text": [
+        "Ce provocare vrei să încerci?",
+        "LUPTĂ SIMPLĂ",
+        "LUPTĂ DUBLĂ",
+        "INFO",
+        "IEȘIRE"
+      ]
+    },
+    {
+      "en": [
+        "You enter one Pokémon of level 30 or higher. In a Double Battle you enter two, and they must be the same kind."
+      ],
+      "text": [
+        "Înscrii un Pokémon de nivel 30 sau mai mare. Într-o Luptă Dublă înscrii doi, și trebuie să fie de același fel."
+      ]
+    },
+    {
+      "en": [
+        "On the stage you choose the type of Pokémon you will battle next. Every type has ten ranks, and each win over a type raises its rank and the level of what you meet."
+      ],
+      "text": [
+        "Pe scenă alegi tipul Pokémonului cu care lupți în continuare. Fiecare tip are zece ranguri, iar fiecare victorie asupra unui tip îi ridică rangul și nivelul celor pe care îi întâlnești."
+      ]
+    },
+    {
+      "en": [
+        "Win ten battles and the round is yours, with Battle Points for it. A streak belongs to the kind of Pokémon you began it with."
+      ],
+      "text": [
+        "Câștigă zece lupte și runda e a ta, cu Puncte de Luptă pentru ea. O serie îi aparține felului de Pokémon cu care ai început-o."
+      ]
+    },
+    {
+      "en": [
+        "Please choose the Pokémon you will enter."
+      ],
+      "text": [
+        "Te rog să alegi Pokémonul pe care îl înscrii."
+      ]
+    },
+    {
+      "en": [
+        "Your streak with {thing} is still running, and entering {entrant} will end it. Is that all right?"
+      ],
+      "text": [
+        "Seria ta cu {thing} încă merge, iar dacă îl înscrii pe {entrant} se va încheia. E în regulă?"
+      ]
+    },
+    {
+      "en": [
+        "Please choose the two Pokémon you will enter."
+      ],
+      "text": [
+        "Te rog să alegi cei doi Pokémoni pe care îi înscrii."
+      ]
+    },
+    {
+      "en": [
+        "Your streak with {thing} is still running, and entering {entrant} will end it. Is that all right?"
+      ],
+      "text": [
+        "Seria ta cu {thing} încă merge, iar dacă îl înscrii pe {entrant} se va încheia. E în regulă?"
+      ]
+    },
+    {
+      "en": [
+        "You need a Pokémon of level 30 or higher to take this challenge."
+      ],
+      "text": [
+        "Ai nevoie de un Pokémon de nivel 30 sau mai mare ca să încerci provocarea asta."
+      ]
+    },
+    {
+      "en": [
+        "Eggs can't enter, and neither can {banned}."
+      ],
+      "text": [
+        "Ouăle nu pot intra, și nici {banned}."
+      ]
+    },
+    {
+      "en": [
+        "You need two Pokémon of the same kind, both of level 30 or higher, to take this challenge."
+      ],
+      "text": [
+        "Ai nevoie de doi Pokémoni de același fel, amândoi de nivel 30 sau mai mare, ca să încerci provocarea asta."
+      ]
+    },
+    {
+      "en": [
+        "Eggs can't enter, and neither can {banned}."
+      ],
+      "text": [
+        "Ouăle nu pot intra, și nici {banned}."
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. In a Double Battle the two Pokémon must be of the same kind."
+      ],
+      "text": [
+        "Îmi pare rău. Într-o Luptă Dublă cei doi Pokémoni trebuie să fie de același fel."
+      ]
+    },
+    {
+      "en": [
+        "We hope to see you again."
+      ],
+      "text": [
+        "Sperăm să te mai vedem."
+      ]
+    }
+  ],
+  "GoIn": [
+    {
+      "en": [
+        "Your game must be saved before the challenge begins. Shall I save it?"
+      ],
+      "text": [
+        "Jocul trebuie salvat înainte de începerea provocării. Îl salvez?"
+      ]
+    },
+    {
+      "en": [
+        "{player} saved the game."
+      ],
+      "text": [
+        "{player} a salvat jocul."
+      ]
+    },
+    {
+      "en": [
+        "Thank you. This way, please."
+      ],
+      "text": [
+        "Mulțumesc. Pe aici, te rog."
+      ]
+    },
+    {
+      "en": [
+        "Then please come back when you are ready."
+      ],
+      "text": [
+        "Atunci te rog să revii când ești gata."
+      ]
+    }
+  ],
+  "MultiAttendant": [
+    {
+      "en": [
+        "This counter is for the Battle Hall's Multi challenge, which two trainers take side by side with one Pokémon each."
+      ],
+      "text": [
+        "Ghișeul acesta e pentru provocarea Multiplă a Battle Hall, pe care o încearcă doi Antrenori umăr la umăr, cu câte un Pokémon."
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry to say nobody can be linked up with. Only the Single and Double challenges are held."
+      ],
+      "text": [
+        "Îmi pare rău, dar nu ne putem conecta cu nimeni. Se țin doar provocările Simple și Duble."
+      ]
+    }
+  ],
+  "RoundWon": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitoarea"
+      ]
+    },
+    {
+      "en": [
+        "Congratulations on winning all ten battles!"
+      ],
+      "text": [
+        "Felicitări pentru toate cele zece lupte câștigate!"
+      ]
+    },
+    {
+      "en": [
+        "The result is being recorded. {player} saved the game."
+      ],
+      "text": [
+        "Rezultatul se înregistrează. {player} a salvat jocul."
+      ]
+    },
+    {
+      "en": [
+        "We hope to see you again."
+      ],
+      "text": [
+        "Sperăm să te mai vedem."
+      ]
+    }
+  ],
+  "SilverPrint": [
+    {
+      "en": [
+        "You have beaten the Hall Matron! This calls for something to remember it by."
+      ],
+      "text": [
+        "Ai învins-o pe Matroana Sălii! Asta merită o amintire."
+      ]
+    },
+    {
+      "en": [
+        "A Silver Print was added to {player}'s record of the Battle Hall!"
+      ],
+      "text": [
+        "O Amprentă de Argint a fost adăugată în palmaresul lui {player} de la Battle Hall!"
+      ]
+    }
+  ],
+  "GoldPrint": [
+    {
+      "en": [
+        "You have beaten the Hall Matron at her very best! The whole Hall was on its feet."
+      ],
+      "text": [
+        "Ai învins-o pe Matroana Sălii în cea mai bună formă a ei! Toată sala s-a ridicat în picioare."
+      ]
+    },
+    {
+      "en": [
+        "A Gold Print was added to {player}'s record of the Battle Hall!"
+      ],
+      "text": [
+        "O Amprentă de Aur a fost adăugată în palmaresul lui {player} de la Battle Hall!"
+      ]
+    }
+  ],
+  "ChallengeEnded": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitoarea"
+      ]
+    },
+    {
+      "en": [
+        "Thank you for taking the challenge."
+      ],
+      "text": [
+        "Mulțumim că ai încercat provocarea."
+      ]
+    },
+    {
+      "en": [
+        "The result is being recorded. {player} saved the game."
+      ],
+      "text": [
+        "Rezultatul se înregistrează. {player} a salvat jocul."
+      ]
+    },
+    {
+      "en": [
+        "We hope to see you again."
+      ],
+      "text": [
+        "Sperăm să te mai vedem."
+      ]
+    }
+  ],
+  "Paused": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitoarea"
+      ]
+    },
+    {
+      "en": [
+        "{player} saved the game."
+      ],
+      "text": [
+        "{player} a salvat jocul."
+      ]
+    },
+    {
+      "en": [
+        "Your challenge is waiting where you put it down. Would you like to go on with it now?"
+      ],
+      "text": [
+        "Provocarea ta te așteaptă acolo unde ai lăsat-o. Vrei s-o continui acum?"
+      ]
+    },
+    {
+      "en": [
+        "Then this way, please."
+      ],
+      "text": [
+        "Atunci pe aici, te rog."
+      ]
+    },
+    {
+      "en": [
+        "Very well. Speak to me whenever you are ready."
+      ],
+      "text": [
+        "Prea bine. Vorbește cu mine când ești gata."
+      ]
+    },
+    {
+      "en": [
+        "The Pokémon you entered is no longer with you as it was, so the challenge can't be taken up again. I'm afraid its streak ends there."
+      ],
+      "text": [
+        "Pokémonul pe care l-ai înscris nu mai e cu tine așa cum era, deci provocarea nu poate fi reluată. Mă tem că seria se încheie aici."
+      ]
+    }
+  ],
+  "WalkedOut": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitoarea"
+      ]
+    },
+    {
+      "en": [
+        "The last challenge was left before it was over, so it can't be taken up again."
+      ],
+      "text": [
+        "Ultima provocare a fost părăsită înainte să se termine, deci nu poate fi reluată."
+      ]
+    },
+    {
+      "en": [
+        "I'm afraid its streak ends there."
+      ],
+      "text": [
+        "Mă tem că seria se încheie aici."
+      ]
+    },
+    {
+      "en": [
+        "We hope to see you again."
+      ],
+      "text": [
+        "Sperăm să te mai vedem."
+      ]
+    }
+  ],
+  "RecordKeeper": [
+    {
+      "en": [
+        "I keep the Hall's records. Every kind of Pokémon you enter has a record of its own: its longest streak of Single Battles."
+      ],
+      "text": [
+        "Eu țin palmaresul Sălii. Fiecare fel de Pokémon pe care îl înscrii are palmaresul lui: cea mai lungă serie de Lupte Simple."
+      ]
+    },
+    {
+      "en": [
+        "I add them all up, and each time the total passes a mark I have Battle Points for you. The more kinds you bring, the faster it grows!"
+      ],
+      "text": [
+        "Le adun pe toate, și de fiecare dată când totalul trece de un prag am Puncte de Luptă pentru tine. Cu cât aduci mai multe feluri, cu atât crește mai repede!"
+      ]
+    },
+    {
+      "en": [
+        "{player}, your records add up to {number} now."
+      ],
+      "text": [
+        "{player}, palmaresul tău adună acum {number}."
+      ]
+    },
+    {
+      "en": [
+        "That is past the mark of {number}, and here is what I promised."
+      ],
+      "text": [
+        "Asta trece de pragul de {number}, și iată ce ți-am promis."
+      ]
+    },
+    {
+      "en": [
+        "{player} received {number} BP!"
+      ],
+      "text": [
+        "{player} a primit {number} PL!"
+      ]
+    },
+    {
+      "en": [
+        "{player}, your records add up to {number}."
+      ],
+      "text": [
+        "{player}, palmaresul tău adună {number}."
+      ]
+    },
+    {
+      "en": [
+        "When they reach {number}, I will have Battle Points for you."
+      ],
+      "text": [
+        "Când ajunge la {number}, voi avea Puncte de Luptă pentru tine."
+      ]
+    },
+    {
+      "en": [
+        "{player}, there is no mark left for your records to pass. I have never kept a finer book!"
+      ],
+      "text": [
+        "{player}, nu mai e niciun prag de trecut pentru palmaresul tău. N-am ținut niciodată un registru mai frumos!"
+      ]
+    }
+  ],
+  "Fan": [
+    {
+      "en": [
+        "{player}! Four hundred and seventy-five kinds of Pokémon, every one with a record! Nobody has ever done that. Nobody!"
+      ],
+      "text": [
+        "{player}! Patru sute șaptezeci și cinci de feluri de Pokémoni, fiecare cu palmaresul lui! Nimeni n-a mai făcut asta. Nimeni!"
+      ]
+    },
+    {
+      "en": [
+        "I've watched every battle of it. I think I may be your greatest fan in the whole world."
+      ],
+      "text": [
+        "Am urmărit fiecare luptă. Cred că sunt cel mai mare fan al tău din toată lumea."
+      ]
+    },
+    {
+      "en": [
+        "I come to watch the battles. I haven't found a trainer to cheer for yet, though."
+      ],
+      "text": [
+        "Vin să mă uit la lupte. Totuși, încă n-am găsit un Antrenor pentru care să țin."
+      ]
+    },
+    {
+      "en": [
+        "I saw you on the stage, {player}! You've got a record now. I'm going to keep my eye on you."
+      ],
+      "text": [
+        "Te-am văzut pe scenă, {player}! Acum ai un palmares. O să fiu cu ochii pe tine."
+      ]
+    },
+    {
+      "en": [
+        "More than ten kinds of Pokémon with a record already! I moved up to get a better view, {player}."
+      ],
+      "text": [
+        "Deja peste zece feluri de Pokémoni cu palmares! M-am mutat mai în față ca să văd mai bine, {player}."
+      ]
+    },
+    {
+      "en": [
+        "Over thirty kinds! I've started writing your records down in a notebook, {player}."
+      ],
+      "text": [
+        "Peste treizeci de feluri! Am început să-ți notez palmaresul într-un carnețel, {player}."
+      ]
+    },
+    {
+      "en": [
+        "Fifty kinds and more! My notebook is nearly full, {player}, and it's all you."
+      ],
+      "text": [
+        "Cincizeci de feluri și mai bine! Carnețelul meu e aproape plin, {player}, și numai cu tine."
+      ]
+    },
+    {
+      "en": [
+        "A hundred kinds of Pokémon with a record! I asked if I could stand right by the counter. They said yes!"
+      ],
+      "text": [
+        "O sută de feluri de Pokémoni cu palmares! Am întrebat dacă pot sta chiar lângă ghișeu. Au zis da!"
+      ]
+    },
+    {
+      "en": [
+        "More than a hundred and fifty kinds! {player}, is there a Pokémon you can't win with?"
+      ],
+      "text": [
+        "Peste o sută cincizeci de feluri! {player}, există vreun Pokémon cu care nu poți câștiga?"
+      ]
+    },
+    {
+      "en": [
+        "Two hundred and fifty kinds... I tell everyone I've been your fan since the very first one, {player}."
+      ],
+      "text": [
+        "Două sute cincizeci de feluri... Le spun tuturor că-ți sunt fan de la primul, {player}."
+      ]
+    },
+    {
+      "en": [
+        "Three hundred and fifty kinds! You can't have many left to bring, {player}. I'll be right here for every one."
+      ],
+      "text": [
+        "Trei sute cincizeci de feluri! Nu prea mai poți avea multe de adus, {player}. O să fiu aici la fiecare."
+      ]
+    }
+  ],
+  "Counterpart": [
+    {
+      "en": [
+        "{player}! I came all the way from Sandgem Town to watch. You were amazing up there!"
+      ],
+      "text": [
+        "{player}! Am venit tocmai din Orășelul Sandgem să mă uit. Ce spectacol ai dat acolo sus!"
+      ]
+    },
+    {
+      "en": [
+        "The professor says to tell you he's proud of you. He'd never say it himself."
+      ],
+      "text": [
+        "Profesorul zice să-ți spun că e mândru de tine. N-ar spune-o niciodată el însuși."
+      ]
+    }
+  ],
+  "Mom": [
+    {
+      "en": [
+        "There you are, {player}! I saw the whole thing on the big screen."
+      ],
+      "text": [
+        "Aici erai, {player}! Am văzut totul pe ecranul mare."
+      ]
+    },
+    {
+      "en": [
+        "Look at you, with the crowd on its feet. You and your Pokémon have come such a long way."
+      ],
+      "text": [
+        "Uită-te la tine, cu mulțimea în picioare. Tu și Pokémonii tăi ați ajuns atât de departe."
+      ]
+    }
+  ],
+  "Professor": [
+    {
+      "en": [
+        "So you are {player}. I have come a long way from Kanto to see this stage, and I was not let down."
+      ],
+      "text": [
+        "Deci tu ești {player}. Am venit de departe, din Kanto, să văd scena asta, și n-a fost în zadar."
+      ]
+    },
+    {
+      "en": [
+        "A trainer and a single Pokémon, trusting one another completely. That is the heart of it, young as you are."
+      ],
+      "text": [
+        "Un Antrenor și un singur Pokémon care se încred unul în altul pe deplin. Asta e esența, chiar și la vârsta ta."
+      ]
+    }
+  ],
+  "Jasmine": [
+    {
+      "en": [
+        "Um... hello, {player}. I'm Jasmine. I look after the Gym in Olivine City, far from here."
+      ],
+      "text": [
+        "Ăă... bună, {player}. Eu sunt Jasmine. Am grijă de Arena din Orașul Olivine, departe de aici."
+      ]
+    },
+    {
+      "en": [
+        "I watched your battles. The way your Pokémon looked back at you... it made me want to try harder too."
+      ],
+      "text": [
+        "Ți-am urmărit luptele. Felul în care se uitau Pokémonii tăi la tine... m-a făcut să vreau să mă străduiesc și eu mai mult."
+      ]
+    }
+  ],
+  "Maid": [
+    {
+      "en": [
+        "A maid sees everything and says nothing. I have seen a great deal in this Hall."
+      ],
+      "text": [
+        "O cameristă vede totul și nu spune nimic. Am văzut o mulțime de lucruri în Sala asta."
+      ]
+    },
+    {
+      "en": [
+        "...That was me saying nothing."
+      ],
+      "text": [
+        "...Asta am fost eu nespunând nimic."
+      ]
+    }
+  ],
+  "Pokefan": [
+    {
+      "en": [
+        "A Pokémon with two types can turn up under either one of them! Pick Poison or pick Fighting, and you may meet the very same Croagunk."
+      ],
+      "text": [
+        "Un Pokémon cu două tipuri poate apărea la oricare dintre ele! Alege Otravă sau alege Luptă, și poți da peste exact același Croagunk."
+      ]
+    }
+  ],
+  "Twin": [
+    {
+      "en": [
+        "Isn't my Pachirisu the cutest? It claps when the crowd claps."
+      ],
+      "text": [
+        "Nu-i așa că Pachirisu al meu e cel mai drăguț? Bate din palme când bate mulțimea."
+      ]
+    }
+  ],
+  "Pachirisu": [
+    {
+      "en": [
+        "Pachirisu: Pa-chi!"
+      ],
+      "text": [
+        "Pachirisu: Pa-chi!"
+      ]
+    }
+  ],
+  "Woman": [
+    {
+      "en": [
+        "It's one Pokémon against one. A record made that way is a record worth having, don't you think?"
+      ],
+      "text": [
+        "E un Pokémon contra unul. Un palmares făcut așa merită avut, nu crezi?"
+      ]
+    }
+  ],
+  "Hiker": [
+    {
+      "en": [
+        "Here's a tip. Take on the types that give your Pokémon trouble first, while their rank is low."
+      ],
+      "text": [
+        "Uite un sfat. Înfruntă mai întâi tipurile care le dau bătăi de cap Pokémonilor tăi, cât au rangul mic."
+      ]
+    },
+    {
+      "en": [
+        "Leave them for last and they'll be waiting for you at their toughest!"
+      ],
+      "text": [
+        "Lasă-le la urmă și te vor aștepta în forma lor cea mai grea!"
+      ]
+    }
+  ],
+  "OldMan": [
+    {
+      "en": [
+        "One kind of Pokémon is one record. Bring another kind and you start another."
+      ],
+      "text": [
+        "Un fel de Pokémon e un palmares. Adu alt fel și începi altul."
+      ]
+    },
+    {
+      "en": [
+        "At my age I have a good many. I'd like a good many more."
+      ],
+      "text": [
+        "La vârsta mea am o mulțime. Aș vrea și mai multe."
+      ]
+    }
+  ],
+  "Idol": [
+    {
+      "en": [
+        "I enter the same kind of Pokémon every time, but never with the same moves twice."
+      ],
+      "text": [
+        "Înscriu de fiecare dată același fel de Pokémon, dar niciodată cu aceleași mișcări de două ori."
+      ]
+    },
+    {
+      "en": [
+        "The crowd loves a surprise!"
+      ],
+      "text": [
+        "Mulțimea adoră surprizele!"
+      ]
+    }
+  ],
+  "BugCatcher": [
+    {
+      "en": [
+        "There's a challenge for two, where a friend and you each bring one Pokémon. I'm waiting for my friend to turn up."
+      ],
+      "text": [
+        "Există o provocare pentru doi, în care tu și un prieten aduceți câte un Pokémon. Îmi aștept prietenul să apară."
+      ]
+    }
+  ]
+}

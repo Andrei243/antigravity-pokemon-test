@@ -1,0 +1,53 @@
+{
+  "displayName": {
+    "en": [
+      "Resort Area"
+    ],
+    "text": [
+      "Zona de Odihnă"
+    ]
+  },
+  "people": {
+    "collector": {
+      "name": {
+        "en": [
+          "Collector"
+        ],
+        "text": [
+          "Colecționarul"
+        ]
+      }
+    },
+    "old_man": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The best Trainers there are come together at the Battle Frontier. Not Sinnoh's alone, either.",
+          "To win there with the Pokémon you love, that you caught and raised yourself... What could make a Trainer happier?"
+        ],
+        "text": [
+          "Cei mai buni Antrenori care există se adună la Battle Frontier. Și nu doar cei din Sinnoh.",
+          "Să câștigi acolo cu Pokémonii pe care îi iubești, pe care i-ai prins și crescut singur... Ce l-ar putea face pe un Antrenor mai fericit?"
+        ]
+      }
+    },
+    "ninja_boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

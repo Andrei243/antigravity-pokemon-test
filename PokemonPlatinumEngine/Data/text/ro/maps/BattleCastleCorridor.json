@@ -1,0 +1,64 @@
+{
+  "displayName": {
+    "en": [
+      "Battle Castle"
+    ],
+    "text": [
+      "Battle Castle"
+    ]
+  },
+  "people": {
+    "valet": {
+      "name": {
+        "en": [
+          "Valet"
+        ],
+        "text": [
+          "Valet"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Her ladyship receives challengers by appointment. Please speak to the attendant in the lobby."
+        ],
+        "text": [
+          "Stăpâna primește provocatori doar cu programare. Te rog să vorbești cu însoțitorul din hol."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "2,3": {
+      "en": [
+        "A suit of armour. The crest on its breast is a rose."
+      ],
+      "text": [
+        "O armură. Blazonul de pe pieptul ei e un trandafir."
+      ]
+    },
+    "5,3": {
+      "en": [
+        "A suit of armour. The crest on its breast is a rose."
+      ],
+      "text": [
+        "O armură. Blazonul de pe pieptul ei e un trandafir."
+      ]
+    },
+    "8,3": {
+      "en": [
+        "A suit of armour. The crest on its breast is a rose."
+      ],
+      "text": [
+        "O armură. Blazonul de pe pieptul ei e un trandafir."
+      ]
+    },
+    "11,3": {
+      "en": [
+        "A suit of armour. The crest on its breast is a rose."
+      ],
+      "text": [
+        "O armură. Blazonul de pe pieptul ei e un trandafir."
+      ]
+    }
+  }
+}

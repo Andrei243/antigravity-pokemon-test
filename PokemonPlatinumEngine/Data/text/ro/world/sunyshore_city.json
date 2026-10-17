@@ -1,0 +1,200 @@
+{
+  "people": {
+    "flint": {
+      "name": {
+        "en": [
+          "Flint"
+        ],
+        "text": [
+          "Flint"
+        ]
+      }
+    },
+    "rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "{rival}: I'm going to be the toughest Trainer there ever was. Just you wait and see!"
+        ],
+        "text": [
+          "{rival}: O să fiu cel mai dur Antrenor care a existat vreodată. Stai și-o să vezi!"
+        ]
+      }
+    },
+    "jasmine": {
+      "name": {
+        "en": [
+          "Jasmine"
+        ],
+        "text": [
+          "Jasmine"
+        ]
+      }
+    },
+    "sailor_1": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          "Marinar"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "See that great rock out in the water? Squint a little and it looks just like a Pokémon.",
+          "Sailors steer by it. Once it's in sight, you know you're nearly home."
+        ],
+        "text": [
+          "Vezi stânca aia mare din apă? Mijește puțin ochii și seamănă leit cu un Pokémon.",
+          "Marinarii se orientează după ea. Când o vezi, știi că ești aproape de casă."
+        ]
+      }
+    },
+    "pokefan_f": {
+      "name": {
+        "en": [
+          "Pokéfan"
+        ],
+        "text": [
+          "Pokéfana"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "All the walkways in town are covered in solar panels. They drink in the sunshine all day long.",
+          "A city this bright needs a lot of power, and the sun gives us every bit of it!"
+        ],
+        "text": [
+          "Toate pasarelele din oraș sunt acoperite cu panouri solare. Beau lumina soarelui toată ziua.",
+          "Un oraș atât de luminos are nevoie de multă energie, iar soarele ne-o dă pe toată!"
+        ]
+      }
+    },
+    "pokemon_breeder_f": {
+      "name": {
+        "en": [
+          "Pokémon Breeder"
+        ],
+        "text": [
+          "Crescătoare de Pokémoni"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Sunyshore is one of the busiest ports in Sinnoh.",
+          "Ships from all over the world tie up here. You never know who, or what, will step ashore next!"
+        ],
+        "text": [
+          "Sunyshore e unul dintre cele mai aglomerate porturi din Sinnoh.",
+          "Aici acostează corăbii din toată lumea. Nu știi niciodată cine, sau ce, coboară pe mal!"
+        ]
+      }
+    },
+    "worker": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          "Muncitorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Our Gym Leader keeps rebuilding his Gym, and every time he switches it on, the lights go out all over town!",
+          "Those gears of his gobble up more power than the rest of Sunyshore put together."
+        ],
+        "text": [
+          "Liderul nostru de Arenă tot își reconstruiește Arena, și de fiecare dată când o pornește, se sting luminile în tot orașul!",
+          "Angrenajele alea ale lui înghit mai multă energie decât tot restul Sunyshore-ului la un loc."
+        ]
+      }
+    },
+    "sailor_2": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          "Marinar"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This whole town stands on walkways, up over the rocks and the waves.",
+          "Felt strange when I first came ashore. But people and Pokémon get used to anything, given time."
+        ],
+        "text": [
+          "Tot orașul stă pe pasarele, deasupra stâncilor și a valurilor.",
+          "Mi s-a părut ciudat când am coborât prima oară pe mal. Dar oamenii și Pokémonii se obișnuiesc cu orice, cu timpul."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "map_signpost": {
+      "en": [
+        "Sunyshore City\nA bright harbour city, powered by the sun."
+      ],
+      "text": [
+        "Orașul Sunyshore\nUn oraș-port luminos, alimentat de soare."
+      ]
+    },
+    "gym_signpost": {
+      "en": [
+        "Sunyshore City Pokémon Gym\nLeader: Volkner\nThe strongest Gym Leader in Sinnoh, and the brightest spark in town!"
+      ],
+      "text": [
+        "Arena Pokémon din Orașul Sunyshore\nLider: Volkner\nCel mai puternic Lider de Arenă din Sinnoh și cea mai strălucitoare scânteie din oraș!"
+      ]
+    },
+    "signboard_vista_lighthouse": {
+      "en": [
+        "Vista Lighthouse\nIts light guides every ship safely into Sunyshore."
+      ],
+      "text": [
+        "Farul Vista\nLumina lui călăuzește fiecare corabie în siguranță spre Sunyshore."
+      ]
+    },
+    "signboard_sunyshore_market": {
+      "en": [
+        "Sunyshore Market\nSomething new on sale every day of the week!"
+      ],
+      "text": [
+        "Piața Sunyshore\nCeva nou de vânzare în fiecare zi a săptămânii!"
+      ]
+    },
+    "signboard_julias_house": {
+      "en": [
+        "Julia's House\nDrop in any day: there's a warm welcome for trainers and their Pokémon."
+      ],
+      "text": [
+        "Casa lui Julia\nTreci oricând: Antrenorii și Pokémonii lor sunt primiți cu căldură."
+      ]
+    },
+    "signboard_pokemon_rock": {
+      "en": [
+        "Pokémon Rock\nA rock out at sea in the shape of a Pokémon. Can you tell which?"
+      ],
+      "text": [
+        "Stânca Pokémon\nO stâncă în larg în formă de Pokémon. Îți dai seama care?"
+      ]
+    },
+    "signboard_blank": {
+      "en": [
+        "Whatever this sign once said, the sun and the salt spray have bleached it away."
+      ],
+      "text": [
+        "Orice scria odată pe tăblița asta, soarele și sarea mării au șters."
+      ]
+    }
+  }
+}

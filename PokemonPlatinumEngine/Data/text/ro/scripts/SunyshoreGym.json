@@ -1,0 +1,102 @@
+{
+  "GymGuide": [
+    {
+      "en": [
+        "Gym Guide"
+      ],
+      "text": [
+        "Ghidul Arenei"
+      ]
+    },
+    {
+      "en": [
+        "Hey there! How's it going, future Champ? Let me take a peek at your Badges."
+      ],
+      "text": [
+        "Salutare! Cum merge? Lasă-mă să arunc o privire la Insignele tale."
+      ]
+    },
+    {
+      "en": [
+        "One, two, three... Whoa! Seven already! Beat this Gym and the Pokémon League is next!"
+      ],
+      "text": [
+        "Una, două, trei... Uau! Deja șapte! Învinge Arena asta și urmează Liga Pokémon!"
+      ]
+    },
+    {
+      "en": [
+        "Which means this is the last time I get to give you any advice. So listen up, one last time!"
+      ],
+      "text": [
+        "Ceea ce înseamnă că e ultima dată când îți pot da vreun sfat. Așa că ascultă, pentru ultima oară!"
+      ]
+    },
+    {
+      "en": [
+        "The Gym Leader here is a master of Electric-type Pokémon!"
+      ],
+      "text": [
+        "Liderul de Arenă de aici e un maestru al Pokémonilor de tip Electric!"
+      ]
+    },
+    {
+      "en": [
+        "That's all I've got. The rest is up to you!"
+      ],
+      "text": [
+        "Asta e tot ce am. Restul depinde de tine!"
+      ]
+    },
+    {
+      "en": [
+        "Oh! {player}! Did you beat the Gym Leader? Well, of course you did!"
+      ],
+      "text": [
+        "O! {player}! L-ai învins pe Liderul de Arenă? Păi, sigur că da!"
+      ]
+    },
+    {
+      "en": [
+        "But you know what? I'm not done being impressed yet. You and your Pokémon have so much more in you!"
+      ],
+      "text": [
+        "Dar știi ceva? Încă n-am terminat să fiu impresionat. Tu și Pokémonii tăi mai aveți atâtea în voi!"
+      ]
+    },
+    {
+      "en": [
+        "Still, I'm proud of you. Eight Sinnoh Badges! Way to go, kiddo!"
+      ],
+      "text": [
+        "Totuși, sunt mândru de tine. Opt Insigne din Sinnoh! Bravo ție!"
+      ]
+    }
+  ],
+  "GymStatue": [
+    {
+      "en": [
+        "SUNYSHORE CITY POKéMON GYM. Leader: Volkner"
+      ],
+      "text": [
+        "ARENA POKéMON DIN ORAȘUL SUNYSHORE. Lider: Volkner"
+      ]
+    },
+    {
+      "en": [
+        "SUNYSHORE CITY POKéMON GYM. Leader: Volkner. Certified Trainers: {player}"
+      ],
+      "text": [
+        "ARENA POKéMON DIN ORAȘUL SUNYSHORE. Lider: Volkner. Antrenori atestați: {player}"
+      ]
+    },
+    {
+      "en": [
+        "SUNYSHORE CITY POKéMON GYM. Leader: Volkner. Certified Trainers: {player}, {rival}"
+      ],
+      "text": [
+        "ARENA POKéMON DIN ORAȘUL SUNYSHORE. Lider: Volkner. Antrenori atestați: {player}, {rival}"
+      ]
+    }
+  ]
+}

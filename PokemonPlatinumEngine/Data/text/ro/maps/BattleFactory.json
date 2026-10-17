@@ -1,0 +1,120 @@
+{
+  "displayName": {
+    "en": [
+      "Battle Factory"
+    ],
+    "text": [
+      "Battle Factory"
+    ]
+  },
+  "people": {
+    "single_attendant": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      }
+    },
+    "multi_attendant": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          "Puștiul"
+        ]
+      }
+    },
+    "beauty": {
+      "name": {
+        "en": [
+          "Beauty"
+        ],
+        "text": [
+          "Frumoasa"
+        ]
+      }
+    },
+    "policeman": {
+      "name": {
+        "en": [
+          "Policeman"
+        ],
+        "text": [
+          "Polițistul"
+        ]
+      }
+    },
+    "sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          "Marinar"
+        ]
+      }
+    },
+    "pokemon_breeder_f": {
+      "name": {
+        "en": [
+          "Pokémon Breeder"
+        ],
+        "text": [
+          "Crescătoare de Pokémoni"
+        ]
+      }
+    },
+    "clown": {
+      "name": {
+        "en": [
+          "Clown"
+        ],
+        "text": [
+          "Clovnul"
+        ]
+      }
+    },
+    "lady": {
+      "name": {
+        "en": [
+          "Lady"
+        ],
+        "text": [
+          "Doamna"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "15,3": {
+      "en": [
+        "The screen runs through the Pokémon being readied for rental. They go by too fast to count."
+      ],
+      "text": [
+        "Ecranul trece prin Pokémonii pregătiți pentru împrumut. Trec prea repede ca să-i numeri."
+      ]
+    },
+    "16,3": {
+      "en": [
+        "The screen runs through the Pokémon being readied for rental. They go by too fast to count."
+      ],
+      "text": [
+        "Ecranul trece prin Pokémonii pregătiți pentru împrumut. Trec prea repede ca să-i numeri."
+      ]
+    }
+  }
+}

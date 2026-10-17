@@ -1,0 +1,75 @@
+{
+  "displayName": {
+    "en": [
+      "Fight Area"
+    ],
+    "text": [
+      "Zona de Luptă"
+    ]
+  },
+  "people": {
+    "pokefan_m": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "On a clear day you can make out the peak of Mt. Coronet, even from here.",
+          "Hardly anyone noticed that something happened up there. I did.",
+          "What it was, though, I couldn't begin to tell you."
+        ],
+        "text": [
+          "Pe vreme senină se vede vârful Muntelui Coronet, chiar și de aici.",
+          "Aproape nimeni n-a observat că s-a întâmplat ceva acolo sus. Eu am observat.",
+          "Ce anume, însă, n-aș putea să-ți spun."
+        ]
+      }
+    },
+    "school_kid_m": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Everybody on this island is mad about battling. Everybody!"
+        ],
+        "text": [
+          "Toată lumea de pe insula asta e înnebunită după lupte. Toată lumea!"
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Other people are other people and I'm me. I can't stand being compared.",
+          "Still, set yourself beside someone else now and then and you learn a thing or two about yourself.",
+          "That's what the Global Terminal in Jubilife City is good for. Have a look in some time."
+        ],
+        "text": [
+          "Alții sunt alții, iar eu sunt eu. Nu suport să fiu comparat.",
+          "Totuși, dacă te pui din când în când lângă altcineva, înveți câte ceva despre tine.",
+          "La asta e bun Global Terminal din Orașul Jubilife. Mai trece pe acolo."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

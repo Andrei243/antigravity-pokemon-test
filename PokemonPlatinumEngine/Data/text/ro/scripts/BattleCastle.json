@@ -1,0 +1,450 @@
+{
+  "SingleAttendant": [
+    {
+      "en": [
+        "Welcome to the Battle Castle, where her ladyship delights in a battle fought with care!"
+      ],
+      "text": [
+        "Bine ai venit la Battle Castle, unde stăpâna se bucură de o luptă dusă cu grijă!"
+      ]
+    },
+    {
+      "en": [
+        "Which challenge would you like to take?",
+        "SINGLE BATTLE",
+        "DOUBLE BATTLE",
+        "INFO",
+        "EXIT"
+      ],
+      "text": [
+        "Ce provocare vrei să încerci?",
+        "LUPTĂ SIMPLĂ",
+        "LUPTĂ DUBLĂ",
+        "INFO",
+        "IEȘIRE"
+      ]
+    },
+    {
+      "en": [
+        "You enter three Pokémon and battle seven trainers. Nothing is restored between battles, and whatever your Pokémon hold is looked after at the door."
+      ],
+      "text": [
+        "Înscrii trei Pokémoni și lupți cu șapte Antrenori. Nimic nu se reface între lupte, iar ce țin Pokémonii tăi e păstrat la intrare."
+      ]
+    },
+    {
+      "en": [
+        "Every win earns Castle Points: the more HP and PP your Pokémon keep, the more of them. A valet will exchange them for healing, for berries and items to hold, and for word of who you face next."
+      ],
+      "text": [
+        "Fiecare victorie aduce Puncte de Castel: cu cât Pokémonii păstrează mai mult HP și PP, cu atât mai multe. Un valet le schimbă pe vindecare, pe boabe și obiecte de ținut și pe vești despre următorul adversar."
+      ]
+    },
+    {
+      "en": [
+        "Castle Points can also raise the rank of each service, which opens more of it. They stay with you from round to round for as long as your streak goes on."
+      ],
+      "text": [
+        "Punctele de Castel pot și ridica rangul fiecărui serviciu, ceea ce deschide mai multe din el. Rămân cu tine de la o rundă la alta, cât timp ține seria."
+      ]
+    },
+    {
+      "en": [
+        "Please choose the three Pokémon you will enter."
+      ],
+      "text": [
+        "Te rog să alegi cei trei Pokémoni pe care îi înscrii."
+      ]
+    },
+    {
+      "en": [
+        "You need three Pokémon, each of a different kind, to take this challenge."
+      ],
+      "text": [
+        "Ai nevoie de trei Pokémoni, fiecare de alt fel, ca să încerci provocarea asta."
+      ]
+    },
+    {
+      "en": [
+        "Eggs can't enter, and neither can {banned}."
+      ],
+      "text": [
+        "Ouăle nu pot intra, și nici {banned}."
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. The three Pokémon must each be of a different kind."
+      ],
+      "text": [
+        "Îmi pare rău. Cei trei Pokémoni trebuie să fie fiecare de alt fel."
+      ]
+    },
+    {
+      "en": [
+        "We hope to see you again."
+      ],
+      "text": [
+        "Sperăm să te mai vedem."
+      ]
+    }
+  ],
+  "GoIn": [
+    {
+      "en": [
+        "Your game must be saved before the challenge begins. Shall I save it?"
+      ],
+      "text": [
+        "Jocul trebuie salvat înainte de începerea provocării. Îl salvez?"
+      ]
+    },
+    {
+      "en": [
+        "{player} saved the game."
+      ],
+      "text": [
+        "{player} a salvat jocul."
+      ]
+    },
+    {
+      "en": [
+        "Thank you. This way, please."
+      ],
+      "text": [
+        "Mulțumesc. Pe aici, te rog."
+      ]
+    },
+    {
+      "en": [
+        "Then please come back when you are ready."
+      ],
+      "text": [
+        "Atunci te rog să revii când ești gata."
+      ]
+    }
+  ],
+  "MultiAttendant": [
+    {
+      "en": [
+        "This post is for the Battle Castle's Multi challenge, which two trainers take side by side with two Pokémon each."
+      ],
+      "text": [
+        "Postul acesta e pentru provocarea Multiplă a Battle Castle, pe care o încearcă doi Antrenori umăr la umăr, cu câte doi Pokémoni."
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry to say nobody can be linked up with. Only the Single and Double challenges are held."
+      ],
+      "text": [
+        "Îmi pare rău, dar nu ne putem conecta cu nimeni. Se țin doar provocările Simple și Duble."
+      ]
+    }
+  ],
+  "RoundWon": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitoarea"
+      ]
+    },
+    {
+      "en": [
+        "Congratulations on winning all seven battles!"
+      ],
+      "text": [
+        "Felicitări pentru toate cele șapte lupte câștigate!"
+      ]
+    },
+    {
+      "en": [
+        "The result is being recorded. {player} saved the game."
+      ],
+      "text": [
+        "Rezultatul se înregistrează. {player} a salvat jocul."
+      ]
+    },
+    {
+      "en": [
+        "We hope to see you again."
+      ],
+      "text": [
+        "Sperăm să te mai vedem."
+      ]
+    }
+  ],
+  "SilverPrint": [
+    {
+      "en": [
+        "You have beaten the Castle Valet! Her ladyship asks that you have something to remember it by."
+      ],
+      "text": [
+        "L-ai învins pe Valetul Castelului! Stăpâna dorește să primești ceva drept amintire."
+      ]
+    },
+    {
+      "en": [
+        "A Silver Print was added to {player}'s record of the Battle Castle!"
+      ],
+      "text": [
+        "O Amprentă de Argint a fost adăugată în palmaresul lui {player} de la Battle Castle!"
+      ]
+    }
+  ],
+  "GoldPrint": [
+    {
+      "en": [
+        "You have beaten the Castle Valet at his very best! Her ladyship was seen to smile."
+      ],
+      "text": [
+        "L-ai învins pe Valetul Castelului în cea mai bună formă a lui! Stăpâna a fost văzută zâmbind."
+      ]
+    },
+    {
+      "en": [
+        "A Gold Print was added to {player}'s record of the Battle Castle!"
+      ],
+      "text": [
+        "O Amprentă de Aur a fost adăugată în palmaresul lui {player} de la Battle Castle!"
+      ]
+    }
+  ],
+  "ChallengeEnded": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitoarea"
+      ]
+    },
+    {
+      "en": [
+        "Thank you for taking the challenge."
+      ],
+      "text": [
+        "Mulțumim că ai încercat provocarea."
+      ]
+    },
+    {
+      "en": [
+        "The result is being recorded. {player} saved the game."
+      ],
+      "text": [
+        "Rezultatul se înregistrează. {player} a salvat jocul."
+      ]
+    },
+    {
+      "en": [
+        "We hope to see you again."
+      ],
+      "text": [
+        "Sperăm să te mai vedem."
+      ]
+    }
+  ],
+  "Paused": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitoarea"
+      ]
+    },
+    {
+      "en": [
+        "{player} saved the game."
+      ],
+      "text": [
+        "{player} a salvat jocul."
+      ]
+    },
+    {
+      "en": [
+        "Your challenge is waiting where you put it down. Would you like to go on with it now?"
+      ],
+      "text": [
+        "Provocarea ta te așteaptă acolo unde ai lăsat-o. Vrei s-o continui acum?"
+      ]
+    },
+    {
+      "en": [
+        "Then this way, please."
+      ],
+      "text": [
+        "Atunci pe aici, te rog."
+      ]
+    },
+    {
+      "en": [
+        "Very well. Speak to me whenever you are ready."
+      ],
+      "text": [
+        "Prea bine. Vorbește cu mine când ești gata."
+      ]
+    },
+    {
+      "en": [
+        "The Pokémon you entered are no longer with you as they were, so the challenge can't be taken up again. I'm afraid its streak ends there."
+      ],
+      "text": [
+        "Pokémonii pe care i-ai înscris nu mai sunt cu tine așa cum erau, deci provocarea nu poate fi reluată. Mă tem că seria se încheie aici."
+      ]
+    }
+  ],
+  "WalkedOut": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitoarea"
+      ]
+    },
+    {
+      "en": [
+        "The last challenge was left before it was over, so it can't be taken up again."
+      ],
+      "text": [
+        "Ultima provocare a fost părăsită înainte să se termine, deci nu poate fi reluată."
+      ]
+    },
+    {
+      "en": [
+        "I'm afraid its streak ends there, and its Castle Points with it."
+      ],
+      "text": [
+        "Mă tem că seria se încheie aici, și Punctele de Castel odată cu ea."
+      ]
+    },
+    {
+      "en": [
+        "We hope to see you again."
+      ],
+      "text": [
+        "Sperăm să te mai vedem."
+      ]
+    }
+  ],
+  "Artist": [
+    {
+      "en": [
+        "Win without your Pokémon taking a scratch, and the Castle Points fairly pour in."
+      ],
+      "text": [
+        "Câștigă fără ca Pokémonii tăi să aibă o zgârietură, și Punctele de Castel curg gârlă."
+      ]
+    },
+    {
+      "en": [
+        "It is a thing of beauty when it happens. I have been trying to paint it."
+      ],
+      "text": [
+        "E o frumusețe când se întâmplă. Încerc s-o pictez."
+      ]
+    }
+  ],
+  "Socialite": [
+    {
+      "en": [
+        "You may ask the valet to raise your opponent's Pokémon by five levels. It costs next to nothing."
+      ],
+      "text": [
+        "Poți cere valetului să ridice Pokémonii adversarului cu cinci niveluri. Costă aproape nimic."
+      ]
+    },
+    {
+      "en": [
+        "And when you beat them all the same, the Castle Points you earn are simply delicious."
+      ],
+      "text": [
+        "Iar când îi învingi oricum, Punctele de Castel pe care le câștigi sunt pur și simplu delicioase."
+      ]
+    }
+  ],
+  "Collector": [
+    {
+      "en": [
+        "Know who you're up against before you walk in! The valet will tell you which Pokémon are waiting, for a price."
+      ],
+      "text": [
+        "Află cu cine te bați înainte să intri! Valetul îți spune ce Pokémoni te așteaptă, contra cost."
+      ]
+    }
+  ],
+  "Maid": [
+    {
+      "en": [
+        "Mr. Darach never raises his voice, and he is never late, and his gloves are always white."
+      ],
+      "text": [
+        "Domnul Darach nu ridică niciodată vocea, nu întârzie niciodată, iar mănușile lui sunt mereu albe."
+      ]
+    },
+    {
+      "en": [
+        "...I only work here for the experience. Really."
+      ],
+      "text": [
+        "...Lucrez aici doar pentru experiență. Pe bune."
+      ]
+    }
+  ],
+  "Roughneck": [
+    {
+      "en": [
+        "Don't blow all your Castle Points on potions! Put some into the ranks."
+      ],
+      "text": [
+        "Nu-ți toca toate Punctele de Castel pe poțiuni! Pune câteva în ranguri."
+      ]
+    },
+    {
+      "en": [
+        "Rank up the healing and they'll top up your PP as well. Rank up the rentals and you get the good stuff."
+      ],
+      "text": [
+        "Ridică rangul vindecării și îți completează și PP-ul. Ridică rangul împrumuturilor și primești lucruri bune."
+      ]
+    }
+  ],
+  "Gentleman": [
+    {
+      "en": [
+        "I am here on a matter of grave importance, and I must not be disturbed."
+      ],
+      "text": [
+        "Sunt aici pentru o chestiune de mare importanță și nu trebuie deranjat."
+      ]
+    },
+    {
+      "en": [
+        "...I am deciding which berry to rent."
+      ],
+      "text": [
+        "...Hotărăsc ce boabă să închiriez."
+      ]
+    }
+  ],
+  "BlackBelt": [
+    {
+      "en": [
+        "A castle! Statues of heroes! Stone floors to train on! I want to live here."
+      ],
+      "text": [
+        "Un castel! Statui de eroi! Podele de piatră pe care să te antrenezi! Vreau să locuiesc aici."
+      ]
+    },
+    {
+      "en": [
+        "I asked. They said no."
+      ],
+      "text": [
+        "Am întrebat. Au zis nu."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Cynthia"
+      ],
+      "text": [
+        "Cynthia"
+      ]
+    },
+    {
+      "en": [
+        "The room at the end of this hall is the Hall of Fame. The Trainers who have beaten the League are remembered there, with the Pokémon who stood beside them."
+      ],
+      "text": [
+        "Camera din capătul holului ăstuia e Sala Faimei. Acolo sunt pomeniți Antrenorii care au învins Liga, cu Pokémonii care au stat alături de ei."
+      ]
+    },
+    {
+      "en": [
+        "Professor Rowan"
+      ],
+      "text": [
+        "Profesorul Rowan"
+      ]
+    },
+    {
+      "en": [
+        "{player}! I watched your last battle from beginning to end. It was splendid. Truly splendid!"
+      ],
+      "text": [
+        "{player}! Am urmărit ultima ta luptă de la început până la sfârșit. A fost splendidă. Cu adevărat splendidă!"
+      ]
+    },
+    {
+      "en": [
+        "Cynthia"
+      ],
+      "text": [
+        "Cynthia"
+      ]
+    },
+    {
+      "en": [
+        "Professor Rowan! It's been far too long."
+      ],
+      "text": [
+        "Profesore Rowan! A trecut mult prea mult timp."
+      ]
+    },
+    {
+      "en": [
+        "Professor Rowan"
+      ],
+      "text": [
+        "Profesorul Rowan"
+      ]
+    },
+    {
+      "en": [
+        "Hm! So it has. {player}, when I handed you a Pokédex I hoped you would fill a few pages of it. I did not expect to be standing here. You have grown into a real Champion."
+      ],
+      "text": [
+        "Hm! Așa e. {player}, când ți-am dat un Pokédex, am sperat să-i umpli câteva pagini. Nu mă așteptam să stau aici. Ai ajuns un Campion adevărat."
+      ]
+    },
+    {
+      "en": [
+        "Cynthia"
+      ],
+      "text": [
+        "Cynthia"
+      ]
+    },
+    {
+      "en": [
+        "You haven't changed at all, Professor. I'm glad of it."
+      ],
+      "text": [
+        "Nu v-ați schimbat deloc, Profesore. Mă bucur."
+      ]
+    },
+    {
+      "en": [
+        "Now, {player}. This way, young man: the Hall is waiting for you."
+      ],
+      "text": [
+        "Acum, {player}. Pe aici, tinere: Sala te așteaptă."
+      ]
+    },
+    {
+      "en": [
+        "Now, {player}. This way, young lady: the Hall is waiting for you."
+      ],
+      "text": [
+        "Acum, {player}. Pe aici, domnișoară: Sala te așteaptă."
+      ]
+    },
+    {
+      "en": [
+        "Professor, please come in with us."
+      ],
+      "text": [
+        "Profesore, vă rog să intrați cu noi."
+      ]
+    }
+  ]
+}

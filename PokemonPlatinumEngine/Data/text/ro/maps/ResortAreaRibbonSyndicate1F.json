@@ -1,0 +1,234 @@
+{
+  "displayName": {
+    "en": [
+      "Ribbon Syndicate"
+    ],
+    "text": [
+      "Ribbon Syndicate"
+    ]
+  },
+  "people": {
+    "beauty": {
+      "name": {
+        "en": [
+          "Hostess"
+        ],
+        "text": [
+          "Gazda"
+        ]
+      }
+    },
+    "cashier_f": {
+      "name": {
+        "en": [
+          "Cashier"
+        ],
+        "text": [
+          "Casiera"
+        ]
+      }
+    },
+    "middle_aged_woman": {
+      "name": {
+        "en": [
+          "Member"
+        ],
+        "text": [
+          "Membru"
+        ]
+      }
+    },
+    "lady": {
+      "name": {
+        "en": [
+          "Lady"
+        ],
+        "text": [
+          "Doamna"
+        ]
+      }
+    },
+    "skitty": {
+      "name": {
+        "en": [
+          "Skitty"
+        ],
+        "text": [
+          "Skitty"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Mya-ow!"
+        ],
+        "text": [
+          "Mia-u!"
+        ]
+      }
+    },
+    "psyduck": {
+      "name": {
+        "en": [
+          "Psyduck"
+        ],
+        "text": [
+          "Psyduck"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Psy? Duck..."
+        ],
+        "text": [
+          "Psy? Duck..."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "21,9": {
+      "en": [
+        "Ribbons of every colour, each in a case of its own."
+      ],
+      "text": [
+        "Panglici de toate culorile, fiecare în cutia ei."
+      ]
+    },
+    "21,13": {
+      "en": [
+        "Ribbons of every colour, each in a case of its own."
+      ],
+      "text": [
+        "Panglici de toate culorile, fiecare în cutia ei."
+      ]
+    },
+    "22,9": {
+      "en": [
+        "Ribbons of every colour, each in a case of its own."
+      ],
+      "text": [
+        "Panglici de toate culorile, fiecare în cutia ei."
+      ]
+    },
+    "22,13": {
+      "en": [
+        "Ribbons of every colour, each in a case of its own."
+      ],
+      "text": [
+        "Panglici de toate culorile, fiecare în cutia ei."
+      ]
+    },
+    "23,9": {
+      "en": [
+        "Ribbons of every colour, each in a case of its own."
+      ],
+      "text": [
+        "Panglici de toate culorile, fiecare în cutia ei."
+      ]
+    },
+    "23,13": {
+      "en": [
+        "Ribbons of every colour, each in a case of its own."
+      ],
+      "text": [
+        "Panglici de toate culorile, fiecare în cutia ei."
+      ]
+    },
+    "24,9": {
+      "en": [
+        "Ribbons of every colour, each in a case of its own."
+      ],
+      "text": [
+        "Panglici de toate culorile, fiecare în cutia ei."
+      ]
+    },
+    "24,13": {
+      "en": [
+        "Ribbons of every colour, each in a case of its own."
+      ],
+      "text": [
+        "Panglici de toate culorile, fiecare în cutia ei."
+      ]
+    },
+    "25,9": {
+      "en": [
+        "Ribbons of every colour, each in a case of its own."
+      ],
+      "text": [
+        "Panglici de toate culorile, fiecare în cutia ei."
+      ]
+    },
+    "25,13": {
+      "en": [
+        "Ribbons of every colour, each in a case of its own."
+      ],
+      "text": [
+        "Panglici de toate culorile, fiecare în cutia ei."
+      ]
+    },
+    "26,9": {
+      "en": [
+        "Ribbons of every colour, each in a case of its own."
+      ],
+      "text": [
+        "Panglici de toate culorile, fiecare în cutia ei."
+      ]
+    },
+    "26,13": {
+      "en": [
+        "Ribbons of every colour, each in a case of its own."
+      ],
+      "text": [
+        "Panglici de toate culorile, fiecare în cutia ei."
+      ]
+    },
+    "21,10": {
+      "en": [
+        "Ribbons of every colour, each in a case of its own."
+      ],
+      "text": [
+        "Panglici de toate culorile, fiecare în cutia ei."
+      ]
+    },
+    "26,10": {
+      "en": [
+        "Ribbons of every colour, each in a case of its own."
+      ],
+      "text": [
+        "Panglici de toate culorile, fiecare în cutia ei."
+      ]
+    },
+    "21,11": {
+      "en": [
+        "Ribbons of every colour, each in a case of its own."
+      ],
+      "text": [
+        "Panglici de toate culorile, fiecare în cutia ei."
+      ]
+    },
+    "26,11": {
+      "en": [
+        "Ribbons of every colour, each in a case of its own."
+      ],
+      "text": [
+        "Panglici de toate culorile, fiecare în cutia ei."
+      ]
+    },
+    "21,12": {
+      "en": [
+        "Ribbons of every colour, each in a case of its own."
+      ],
+      "text": [
+        "Panglici de toate culorile, fiecare în cutia ei."
+      ]
+    },
+    "26,12": {
+      "en": [
+        "Ribbons of every colour, each in a case of its own."
+      ],
+      "text": [
+        "Panglici de toate culorile, fiecare în cutia ei."
+      ]
+    }
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "people": {
+    "mesprit_boulder": {
+      "name": {
+        "en": [
+          "Boulder"
+        ],
+        "text": [
+          "Bolovan"
+        ]
+      }
+    },
+    "azelf_boulder": {
+      "name": {
+        "en": [
+          "Boulder"
+        ],
+        "text": [
+          "Bolovan"
+        ]
+      }
+    },
+    "uxie_boulder": {
+      "name": {
+        "en": [
+          "Boulder"
+        ],
+        "text": [
+          "Bolovan"
+        ]
+      }
+    },
+    "mesprit": {
+      "name": {
+        "en": [
+          "Mesprit"
+        ],
+        "text": [
+          "Mesprit"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "azelf": {
+      "name": {
+        "en": [
+          "Azelf"
+        ],
+        "text": [
+          "Azelf"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "uxie": {
+      "name": {
+        "en": [
+          "Uxie"
+        ],
+        "text": [
+          "Uxie"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

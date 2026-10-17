@@ -1,0 +1,70 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Cynthia"
+      ],
+      "text": [
+        "Cynthia"
+      ]
+    },
+    {
+      "en": [
+        "We're out. But this isn't Mt. Coronet. Where has it put us?"
+      ],
+      "text": [
+        "Am ieșit. Dar ăsta nu e Muntele Coronet. Unde ne-a lăsat?"
+      ]
+    },
+    {
+      "en": [
+        "A spring nobody visits, at the end of a road nobody remembers... I know this place from the old books. It is the Sendoff Spring."
+      ],
+      "text": [
+        "Un izvor pe care nu-l vizitează nimeni, la capătul unui drum de care nu-și amintește nimeni... Cunosc locul ăsta din cărțile vechi. E Izvorul Despărțirii."
+      ]
+    },
+    {
+      "en": [
+        "They say it is where this world touches the other one. Whatever was sent across was sent from here. So this is where Giratina let us go."
+      ],
+      "text": [
+        "Se zice că aici se atinge lumea asta de cealaltă. Orice a fost trimis dincolo, de aici a fost trimis. Deci aici ne-a lăsat Giratina să plecăm."
+      ]
+    },
+    {
+      "en": [
+        "It's over, {player}. Sinnoh is as it was, and hardly anyone will ever know how near it came. But Professor Rowan should hear all of it, and from you. Go and see him in Sandgem Town."
+      ],
+      "text": [
+        "S-a terminat, {player}. Sinnoh e cum era, și aproape nimeni nu va ști vreodată cât de aproape a fost. Dar Profesorul Rowan ar trebui să audă totul, și de la tine. Du-te la el în Orășelul Sandgem."
+      ]
+    }
+  ],
+  "Cynthia": [
+    {
+      "en": [
+        "Cynthia"
+      ],
+      "text": [
+        "Cynthia"
+      ]
+    },
+    {
+      "en": [
+        "Go on. Tell Professor Rowan what you saw. I'd like to stay here a while and think about it."
+      ],
+      "text": [
+        "Du-te. Spune-i Profesorului Rowan ce ai văzut. Eu aș vrea să mai stau aici puțin și să mă gândesc."
+      ]
+    },
+    {
+      "en": [
+        "I keep going over it. Giratina, in a world of its own, close enough to touch... I only wish I had been the one to battle it."
+      ],
+      "text": [
+        "Tot mă gândesc la asta. Giratina, într-o lume a lui, atât de aproape încât să-l atingi... Aș fi vrut doar să fi fost eu cea care se luptă cu el."
+      ]
+    }
+  ]
+}

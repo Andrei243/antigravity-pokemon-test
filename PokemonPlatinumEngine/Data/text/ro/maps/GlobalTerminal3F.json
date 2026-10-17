@@ -1,0 +1,240 @@
+{
+  "displayName": {
+    "en": [
+      "Global Terminal"
+    ],
+    "text": [
+      "Global Terminal"
+    ]
+  },
+  "people": {
+    "gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          "Gentlemanul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "To treat oneself to a Battle Video or two every day...",
+          "I should call that a pastime worthy of a true gentleman."
+        ],
+        "text": [
+          "Să te răsfeți cu un Battle Video sau două în fiecare zi...",
+          "Eu aș numi asta o îndeletnicire demnă de un adevărat gentleman."
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Hiker enjoying the Box Data down on 2F? That's my little brother."
+        ],
+        "text": [
+          "Drumețul care se bucură de Box Data jos, la etajul 2? E fratele meu mai mic."
+        ]
+      }
+    },
+    "guitarist": {
+      "name": {
+        "en": [
+          "Guitarist"
+        ],
+        "text": [
+          "Chitaristul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Let me try the alphabet rap on Jubilife, dig?",
+          "J... Just south of here sits Sandgem by the sea. U... Under Oreburgh, a mine goes deep as deep can be.",
+          "B... Beyond the gate the road runs east. I... In the north, Floaroma's flowers are a feast. L... I've lost the beat. Sorry!"
+        ],
+        "text": [
+          "Lasă-mă să încerc rap-ul alfabetului pe Jubilife, pricepi?",
+          "J... Jos la sud e Sandgem, lângă mare, știi tu. U... Un drum sub Oreburgh coboară într-o mină, uu.",
+          "B... Bate drumul spre est dincolo de poartă. I... Iar Floaroma are flori de-ți taie suflarea. L... Am pierdut ritmul. Scuze!"
+        ]
+      }
+    },
+    "school_kid_f": {
+      "name": {
+        "en": [
+          "School Kid"
+        ],
+        "text": [
+          "Școlărița"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "It's such a good idea. Anybody at all can join in.",
+          "Even a battle you lost might turn out to be somebody's favourite Battle Video."
+        ],
+        "text": [
+          "E o idee atât de bună. Absolut oricine poate participa.",
+          "Chiar și o luptă pierdută poate ajunge Battle Video-ul preferat al cuiva."
+        ]
+      }
+    },
+    "camper": {
+      "name": {
+        "en": [
+          "Camper"
+        ],
+        "text": [
+          "Campistul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "What a collection! I can see why everyone comes here.",
+          "I feel tougher just for having watched a few of these."
+        ],
+        "text": [
+          "Ce colecție! Înțeleg de ce vine toată lumea aici.",
+          "Mă simt mai dur doar pentru că m-am uitat la câteva dintre astea."
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          "Puștiul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "What you see here is how much people all over the world love Pokémon.",
+          "Watch their Battle Videos, and you share in the fun they had."
+        ],
+        "text": [
+          "Ce vezi aici e cât de mult iubesc Pokémonii oamenii din toată lumea.",
+          "Uită-te la Battle Video-urile lor și împarți distracția pe care au avut-o."
+        ]
+      }
+    },
+    "pokefan_m": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My favourite Battle Videos are the ones with a sweet little Clefairy in them. Only those."
+        ],
+        "text": [
+          "Battle Video-urile mele preferate sunt cele cu un Clefairy dulce. Doar alea."
+        ]
+      }
+    },
+    "clown": {
+      "name": {
+        "en": [
+          "Clown"
+        ],
+        "text": [
+          "Clovnul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My favourite Battle Video! My favourite Battle Video!",
+          "What's on it? What's on it? It's a secret! It's a secret! And I mean it!"
+        ],
+        "text": [
+          "Battle Video-ul meu preferat! Battle Video-ul meu preferat!",
+          "Ce e pe el? Ce e pe el? E un secret! E un secret! Și chiar așa e!"
+        ]
+      }
+    },
+    "ace_trainer_m": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          "Antrenor As"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This Battle Video is something else!",
+          "One Pokémon left, a hair from being wiped out, and they turned the whole thing round!"
+        ],
+        "text": [
+          "Battle Video-ul ăsta e altceva!",
+          "Un singur Pokémon rămas, la un fir de păr de a fi spulberați, și au întors totul!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "12,2": {
+      "en": [
+        "The panel leads to the GTS and the Trainer Rankings on 1F."
+      ],
+      "text": [
+        "Panoul duce la GTS și la clasamentul Antrenorilor, la parter."
+      ]
+    },
+    "12,12": {
+      "en": [
+        "The panel leads to the studios for Box Data and Dress-Up Data on 2F."
+      ],
+      "text": [
+        "Panoul duce la studiourile pentru Box Data și Dress-Up Data de la etajul 2."
+      ]
+    },
+    "8,10": {
+      "en": [
+        "A machine for Battle Videos. NO SIGNAL, says its screen."
+      ],
+      "text": [
+        "Un aparat pentru Battle Video. FĂRĂ SEMNAL, spune ecranul."
+      ]
+    },
+    "8,11": {
+      "en": [
+        "A machine for Battle Videos. NO SIGNAL, says its screen."
+      ],
+      "text": [
+        "Un aparat pentru Battle Video. FĂRĂ SEMNAL, spune ecranul."
+      ]
+    },
+    "5,11": {
+      "en": [
+        "A machine for Battle Videos. NO SIGNAL, says its screen."
+      ],
+      "text": [
+        "Un aparat pentru Battle Video. FĂRĂ SEMNAL, spune ecranul."
+      ]
+    },
+    "5,10": {
+      "en": [
+        "A machine for Battle Videos. NO SIGNAL, says its screen."
+      ],
+      "text": [
+        "Un aparat pentru Battle Video. FĂRĂ SEMNAL, spune ecranul."
+      ]
+    }
+  }
+}

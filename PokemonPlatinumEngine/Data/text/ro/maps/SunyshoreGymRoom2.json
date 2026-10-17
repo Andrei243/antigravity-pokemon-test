@@ -1,0 +1,91 @@
+{
+  "displayName": {
+    "en": [
+      "Sunyshore Gym"
+    ],
+    "text": [
+      "Arena Sunyshore"
+    ]
+  },
+  "people": {
+    "school_kid_forrest": {
+      "name": {
+        "en": [
+          "Forrest"
+        ],
+        "text": [
+          "Forrest"
+        ]
+      },
+      "before": {
+        "en": [
+          "School Kid Forrest: I'm studying how the gears mesh. Don't interrupt me... Fine, a battle it is!"
+        ],
+        "text": [
+          "Școlar Forrest: Studiez cum se îmbină angrenajele. Nu mă întrerupe... Bine, o luptă să fie!"
+        ]
+      },
+      "after": {
+        "en": [
+          "School Kid Forrest: Each button turns every gear in the room. That part's on the test, you know."
+        ],
+        "text": [
+          "Școlar Forrest: Fiecare buton învârte toate angrenajele din cameră. Asta intră la test, să știi."
+        ]
+      }
+    },
+    "guitarist_jerry": {
+      "name": {
+        "en": [
+          "Jerry"
+        ],
+        "text": [
+          "Jerry"
+        ]
+      },
+      "before": {
+        "en": [
+          "Guitarist Jerry: My amp runs on Volkner's leftover power! Let me crank it all the way up!"
+        ],
+        "text": [
+          "Chitarist Jerry: Amplificatorul meu merge cu curentul rămas de la Volkner! Lasă-mă să-l dau la maximum!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Guitarist Jerry: Feedback! Ugh, my ears are still ringing..."
+        ],
+        "text": [
+          "Chitarist Jerry: Microfonie! Of, încă îmi țiuie urechile..."
+        ]
+      }
+    },
+    "poke_kid_meghan": {
+      "name": {
+        "en": [
+          "Meghan"
+        ],
+        "text": [
+          "Meghan"
+        ]
+      },
+      "before": {
+        "en": [
+          "Poké Kid Meghan: Pika pika! I'm dressed up just like my Pikachu, and we're both full of sparks!"
+        ],
+        "text": [
+          "Poké Copil Meghan: Pika pika! Sunt îmbrăcată exact ca Pikachu al meu, și suntem amândoi plini de scântei!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Poké Kid Meghan: Pika... All our sparks fizzled out."
+        ],
+        "text": [
+          "Poké Copil Meghan: Pika... Toate scânteile noastre s-au stins."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

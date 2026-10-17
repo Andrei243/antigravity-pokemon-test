@@ -1,0 +1,1522 @@
+{
+  "Welcome": [
+    {
+      "en": [
+        "Old Man"
+      ],
+      "text": [
+        "Bătrânul"
+      ]
+    },
+    {
+      "en": [
+        "Oh? Then you must be...! Yes, yes: Buck's friend! I've had the whole story twice over, once from Buck and once from Wake."
+      ],
+      "text": [
+        "O? Atunci tu trebuie să fii...! Da, da: prietenul lui Buck! Am auzit toată povestea de două ori, o dată de la Buck și o dată de la Wake."
+      ]
+    },
+    {
+      "en": [
+        "Well, my young friend, from today this door is open to you whenever you like."
+      ],
+      "text": [
+        "Ei bine, de azi ușa asta îți e deschisă oricând vrei."
+      ]
+    },
+    {
+      "en": [
+        "This is a private club. Sinnoh's Gym Leaders come here, and whoever a Gym Leader will vouch for. Nobody else."
+      ],
+      "text": [
+        "Ăsta e un club privat. Vin aici Liderii de Arenă din Sinnoh și cei pentru care garantează un Lider de Arenă. Nimeni altcineva."
+      ]
+    },
+    {
+      "en": [
+        "The best there are, come to get better still. Welcome to the Battleground!"
+      ],
+      "text": [
+        "Cei mai buni care există, veniți să devină și mai buni. Bine ai venit pe Câmpul de Luptă!"
+      ]
+    }
+  ],
+  "OldMan": [
+    {
+      "en": [
+        "Old Man"
+      ],
+      "text": [
+        "Bătrânul"
+      ]
+    },
+    {
+      "en": [
+        "Now, what shall I tell you about today? ...I know. Stark Mountain."
+      ],
+      "text": [
+        "Acum, ce să-ți povestesc azi? ...Știu. Muntele Stark."
+      ]
+    },
+    {
+      "en": [
+        "That volcano is as old as Sinnoh, from when time and space first ran together and made the land."
+      ],
+      "text": [
+        "Vulcanul ăla e la fel de bătrân ca Sinnoh, din vremea când timpul și spațiul s-au unit prima oară și au făcut pământul."
+      ]
+    },
+    {
+      "en": [
+        "They say the lava that welled up and pooled there became a Pokémon."
+      ],
+      "text": [
+        "Se zice că lava care a țâșnit și s-a strâns acolo a devenit un Pokémon."
+      ]
+    },
+    {
+      "en": [
+        "And that the Magma Stone was set on it to hold it down, so the Pokémon wouldn't rage and the mountain wouldn't burst."
+      ],
+      "text": [
+        "Și că Piatra de Magmă a fost pusă peste el ca să-l țină în frâu, ca Pokémonul să nu se înfurie și muntele să nu erupă."
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Battleground! Make yourself at home, the way you always do."
+      ],
+      "text": [
+        "Bine ai venit pe Câmpul de Luptă! Simte-te ca acasă, ca de obicei."
+      ]
+    }
+  ],
+  "Buck": [
+    {
+      "en": [
+        "Buck"
+      ],
+      "text": [
+        "Buck"
+      ]
+    },
+    {
+      "en": [
+        "My place is for the toughest Trainers and nobody else. I mean it!"
+      ],
+      "text": [
+        "Locul meu e pentru cei mai duri Antrenori și pentru nimeni altcineva. Pe bune!"
+      ]
+    },
+    {
+      "en": [
+        "You're meant to be brought in by a Gym Leader, but you? You're a special case."
+      ],
+      "text": [
+        "Ar trebui să fii adus de un Lider de Arenă, dar tu? Tu ești un caz special."
+      ]
+    },
+    {
+      "en": [
+        "Right, I'm off to the Battle Frontier. I want to see how far up that Tower I can get!"
+      ],
+      "text": [
+        "Gata, eu plec la Battle Frontier. Vreau să văd cât de sus pot urca în Turnul ăla!"
+      ]
+    }
+  ],
+  "Roark": [
+    {
+      "en": [
+        "Roark"
+      ],
+      "text": [
+        "Roark"
+      ]
+    },
+    {
+      "en": [
+        "I've been down in the Underground every single day, digging up Fossil after Fossil. My Pokémon came up tougher each time. Could I show you how tough, in a battle?"
+      ],
+      "text": [
+        "Am fost în Subteran în fiecare zi, scoțând Fosilă după Fosilă. Pokémonii mei au ieșit tot mai duri de fiecare dată. Pot să-ți arăt cât de duri, într-o luptă?"
+      ]
+    },
+    {
+      "en": [
+        "Hold on, could I have a moment? Running into you here feels like luck. Will you take my challenge after all?"
+      ],
+      "text": [
+        "Stai, pot să te rețin o clipă? Să dau de tine aici pare un noroc. Îmi accepți totuși provocarea?"
+      ]
+    },
+    {
+      "en": [
+        "Here goes! These are my rock-solid Pokémon, my pride and joy!"
+      ],
+      "text": [
+        "Hai! Ăștia sunt Pokémonii mei tari ca piatra, mândria și bucuria mea!"
+      ]
+    },
+    {
+      "en": [
+        "Something else, then. You know the Spheres you dig up down there? Why do they grow when you leave them buried?"
+      ],
+      "text": [
+        "Altceva, atunci. Știi Sferele pe care le scoți acolo jos? De ce cresc când le lași îngropate?"
+      ]
+    },
+    {
+      "en": [
+        "It doesn't matter much. But isn't it odd, when you think about it?"
+      ],
+      "text": [
+        "Nu contează prea mult. Dar nu e ciudat, dacă stai să te gândești?"
+      ]
+    },
+    {
+      "en": [
+        "Would you like a battle? You'd meet a different Roark from the one you beat at my Gym."
+      ],
+      "text": [
+        "Vrei o luptă? Ai întâlni un alt Roark decât cel pe care l-ai învins la Arena mea."
+      ]
+    },
+    {
+      "en": [
+        "Oh? You do want to battle?"
+      ],
+      "text": [
+        "O? Chiar vrei să ne luptăm?"
+      ]
+    },
+    {
+      "en": [
+        "I'm sending out my Tyranitar. It's tougher than my dad's Aggron, whatever he says!"
+      ],
+      "text": [
+        "Îl trimit pe Tyranitar al meu. E mai dur decât Aggron al tatălui meu, orice ar zice el!"
+      ]
+    },
+    {
+      "en": [
+        "Roark"
+      ],
+      "text": [
+        "Roark"
+      ]
+    },
+    {
+      "en": [
+        "...We got carried away there. Next time, how about a race instead? Whoever digs up a Fossil first, down in the Underground."
+      ],
+      "text": [
+        "...Ne-am cam lăsat duși de val. Data viitoare, ce-ai zice de o întrecere? Cine scoate primul o Fosilă, acolo jos, în Subteran."
+      ]
+    },
+    {
+      "en": [
+        "Pokémon from ages past... Fossils nobody has found yet... If I dug the whole of Sinnoh over, would I turn up a new one?"
+      ],
+      "text": [
+        "Pokémoni din vremuri străvechi... Fosile pe care nu le-a găsit încă nimeni... Dacă aș săpa tot Sinnoh-ul, aș da peste una nouă?"
+      ]
+    },
+    {
+      "en": [
+        "Hmm... Now that's an answer to break a heart."
+      ],
+      "text": [
+        "Hmm... Ăsta da răspuns care-ți frânge inima."
+      ]
+    },
+    {
+      "en": [
+        "It took becoming a Gym Leader myself to see how good my dad really is."
+      ],
+      "text": [
+        "A trebuit să devin eu însumi Lider de Arenă ca să văd cât de bun e de fapt tatăl meu."
+      ]
+    },
+    {
+      "en": [
+        "Not that I'd ever say so where he could hear me. Keep it to yourself!"
+      ],
+      "text": [
+        "Nu că i-aș spune-o vreodată să mă audă. Să rămână între noi!"
+      ]
+    }
+  ],
+  "Gardenia": [
+    {
+      "en": [
+        "Gardenia"
+      ],
+      "text": [
+        "Gardenia"
+      ]
+    },
+    {
+      "en": [
+        "Hi! Have you been keeping well? ...Let's skip to the good part. Shall we battle?"
+      ],
+      "text": [
+        "Bună! Ți-a mers bine? ...Hai să trecem la partea bună. Ne luptăm?"
+      ]
+    },
+    {
+      "en": [
+        "Oh? So you do want a battle?"
+      ],
+      "text": [
+        "O? Deci vrei o luptă?"
+      ]
+    },
+    {
+      "en": [
+        "That's the way! Nothing tells you how someone has been keeping like a battle with them!"
+      ],
+      "text": [
+        "Așa da! Nimic nu-ți spune mai bine cum i-a mers cuiva decât o luptă cu el!"
+      ]
+    },
+    {
+      "en": [
+        "No? Not in the mood, then. Why not give your Badges a polish instead? It might put a shine on your day as well."
+      ],
+      "text": [
+        "Nu? Nu ai chef, deci. De ce nu-ți lustruiești Insignele în schimb? Poate îți face și ziua mai strălucitoare."
+      ]
+    },
+    {
+      "en": [
+        "My Grass types are coming up lovely and strong, and I'm curious what you've brought along. Fancy a battle? Just a quick one?"
+      ],
+      "text": [
+        "Pokémonii mei de tip Iarbă cresc frumos și puternici, și sunt curioasă ce ai adus. Ai chef de o luptă? Doar una scurtă?"
+      ]
+    },
+    {
+      "en": [
+        "They really are coming up lovely and strong, you know. Come on, a battle! A quick one, all right?"
+      ],
+      "text": [
+        "Chiar cresc frumos și puternici, să știi. Hai, o luptă! Una scurtă, da?"
+      ]
+    },
+    {
+      "en": [
+        "Grass types have their weak points, and plenty of them. I won't pretend otherwise. But that's never the whole of who wins!"
+      ],
+      "text": [
+        "Tipurile Iarbă au punctele lor slabe, și nu puține. Nu mă prefac că n-ar fi așa. Dar asta nu hotărăște niciodată singur cine câștigă!"
+      ]
+    },
+    {
+      "en": [
+        "Gardenia"
+      ],
+      "text": [
+        "Gardenia"
+      ]
+    },
+    {
+      "en": [
+        "Outside her Gym, a Gym Leader is one more Trainer. I still mean to be as strong as I can be wherever I go."
+      ],
+      "text": [
+        "În afara Arenei ei, un Lider de Arenă e doar încă un Antrenor. Tot vreau să fiu cât de puternică pot oriunde aș merge."
+      ]
+    },
+    {
+      "en": [
+        "It wouldn't be fair on my Pokémon if we lost because of me."
+      ],
+      "text": [
+        "N-ar fi corect față de Pokémonii mei să pierdem din cauza mea."
+      ]
+    },
+    {
+      "en": [
+        "By the way... have you ever been inside the Old Chateau? Me? Oh, well, with the Gym to run, and one thing and another..."
+      ],
+      "text": [
+        "Apropo... ai fost vreodată în Old Chateau? Eu? A, păi, cu Arena de condus, și una, și alta..."
+      ]
+    },
+    {
+      "en": [
+        "I'm here to train! ...All right, I'm here for the fun of it. Ahaha! Never mind me!"
+      ],
+      "text": [
+        "Am venit să mă antrenez! ...Bine, am venit de distracție. Ahaha! Nu mă băga în seamă!"
+      ]
+    },
+    {
+      "en": [
+        "Aww, really? And they've come up so lovely and strong..."
+      ],
+      "text": [
+        "Ooo, serios? Și ei care au crescut atât de frumos și puternici..."
+      ]
+    }
+  ],
+  "Wake": [
+    {
+      "en": [
+        "Crasher Wake"
+      ],
+      "text": [
+        "Crasher Wake"
+      ]
+    },
+    {
+      "en": [
+        "What is there for a Trainer to do in a place like this? As far as I can see, nothing but battle! Well?"
+      ],
+      "text": [
+        "Ce poate face un Antrenor într-un loc ca ăsta? Din câte văd eu, nimic altceva decât să lupte! Deci?"
+      ]
+    },
+    {
+      "en": [
+        "No need for words. Trainers understand each other by battling! That's what makes us Trainers! Well?"
+      ],
+      "text": [
+        "N-avem nevoie de vorbe. Antrenorii se înțeleg luptând! Asta ne face Antrenori! Deci?"
+      ]
+    },
+    {
+      "en": [
+        "My Pokémon have learned a few new Water moves since you saw them. Let's see how you hold up!"
+      ],
+      "text": [
+        "Pokémonii mei au învățat câteva mișcări noi de Apă de când i-ai văzut. Să vedem cum reziști!"
+      ]
+    },
+    {
+      "en": [
+        "Then you get the song! Ahem! \"The ring is my ocean, the breakers my home! Crash! Crash! Here comes Crasher Wake!\""
+      ],
+      "text": [
+        "Atunci primești cântecul! Hm-hm! „Ringul e oceanul meu, valurile casa mea! Bum! Bum! Vine Crasher Wake!”"
+      ]
+    },
+    {
+      "en": [
+        "\"He'll douse every fire and wash you away! Crash! Crash! ...But lightning, he'd rather not say!\" Thank you, thank you."
+      ],
+      "text": [
+        "„Stinge orice foc și te spală pe loc! Bum! Bum! ...Dar de fulgere nu zice nimic!” Mulțumesc, mulțumesc."
+      ]
+    },
+    {
+      "en": [
+        "Hah! How's it going? White water made my Pokémon what they are: they'll take all you've got and drag you under! Shall we get to it?"
+      ],
+      "text": [
+        "Ha! Ce mai faci? Apa învolburată i-a făcut pe Pokémonii mei ce sunt: îți iau tot ce ai și te trag la fund! Ne apucăm?"
+      ]
+    },
+    {
+      "en": [
+        "So what's it to be? Are we battling?"
+      ],
+      "text": [
+        "Deci ce facem? Ne luptăm?"
+      ]
+    },
+    {
+      "en": [
+        "That's the spirit! Come and get it!"
+      ],
+      "text": [
+        "Așa te vreau! Vino și ia-o!"
+      ]
+    },
+    {
+      "en": [
+        "Crasher Wake"
+      ],
+      "text": [
+        "Crasher Wake"
+      ]
+    },
+    {
+      "en": [
+        "A battle both sides walk away from grinning, whoever won. That's what I'm after, every time."
+      ],
+      "text": [
+        "O luptă după care ambele tabere pleacă zâmbind, oricine ar câștiga. Asta urmăresc de fiecare dată."
+      ]
+    },
+    {
+      "en": [
+        "One of these days I mean to have battled everyone in the world. Isn't that right, {player}?!"
+      ],
+      "text": [
+        "Într-o bună zi vreau să mă fi luptat cu toată lumea. Nu-i așa, {player}?!"
+      ]
+    },
+    {
+      "en": [
+        "However hard I train, there's always somebody tougher. The stronger I get, the further off the top looks."
+      ],
+      "text": [
+        "Oricât m-aș antrena, mereu e cineva mai tare. Cu cât devin mai puternic, cu atât vârful pare mai departe."
+      ]
+    },
+    {
+      "en": [
+        "It's a long, hard road with no end to it. But my Pokémon are beside me for every step!"
+      ],
+      "text": [
+        "E un drum lung și greu, fără capăt. Dar Pokémonii mei sunt lângă mine la fiecare pas!"
+      ]
+    },
+    {
+      "en": [
+        "Whoa! Slipped right through my fingers! You're a slippery one, {player}!"
+      ],
+      "text": [
+        "Uau! Mi-ai scăpat printre degete! Ești greu de prins, {player}!"
+      ]
+    }
+  ],
+  "Maylene": [
+    {
+      "en": [
+        "Maylene"
+      ],
+      "text": [
+        "Maylene"
+      ]
+    },
+    {
+      "en": [
+        "I don't mind losing to the same Trainer over and over. Each time shows me how far my Pokémon and I have come. So, {player}: a rematch, please?"
+      ],
+      "text": [
+        "Nu mă deranjează să pierd în fața aceluiași Antrenor iar și iar. De fiecare dată văd cât de departe am ajuns cu Pokémonii mei. Deci, {player}: o revanșă, te rog?"
+      ]
+    },
+    {
+      "en": [
+        "Yes, {player}? Is it... would you like a battle?"
+      ],
+      "text": [
+        "Da, {player}? Vrei cumva... o luptă?"
+      ]
+    },
+    {
+      "en": [
+        "Right! Rei! ...That's my bow before a match. {player}, here comes everything I have!"
+      ],
+      "text": [
+        "Bine! Rei! ...Așa mă înclin înaintea unui meci. {player}, vine tot ce am!"
+      ]
+    },
+    {
+      "en": [
+        "Oh... I was all set for a battle. That's let the air out of me a bit."
+      ],
+      "text": [
+        "O... Eram gata de luptă. M-a cam dezumflat asta."
+      ]
+    },
+    {
+      "en": [
+        "Being with my Pokémon is what has kept me going. Please, {player}, will you take our challenge?"
+      ],
+      "text": [
+        "Să fiu cu Pokémonii mei m-a ținut pe picioare. Te rog, {player}, ne accepți provocarea?"
+      ]
+    },
+    {
+      "en": [
+        "{player}! I know I keep on at you, but please: take our challenge?"
+      ],
+      "text": [
+        "{player}! Știu că tot insist, dar te rog: ne accepți provocarea?"
+      ]
+    },
+    {
+      "en": [
+        "All right! Here we come, {player}!"
+      ],
+      "text": [
+        "Bine! Venim, {player}!"
+      ]
+    },
+    {
+      "en": [
+        "Maylene"
+      ],
+      "text": [
+        "Maylene"
+      ]
+    },
+    {
+      "en": [
+        "I love coming here. Buck's grandpa cooks for everyone, and all of it is delicious."
+      ],
+      "text": [
+        "Îmi place să vin aici. Bunicul lui Buck gătește pentru toată lumea, și totul e delicios."
+      ]
+    },
+    {
+      "en": [
+        "And that's not the best part. You can eat as much as you want! Isn't that amazing, {player}?"
+      ],
+      "text": [
+        "Și asta nu e partea cea mai bună. Poți mânca cât vrei! Nu e uimitor, {player}?"
+      ]
+    },
+    {
+      "en": [
+        "Somebody told me going barefoot is good for you. And now that I think about it, every Pokémon goes barefoot!"
+      ],
+      "text": [
+        "Cineva mi-a zis că e sănătos să umbli desculț. Și acum, dacă stau să mă gândesc, toți Pokémonii umblă desculți!"
+      ]
+    },
+    {
+      "en": [
+        "All right! Understood! We'll train a lot harder, until we're worth your time, {player}."
+      ],
+      "text": [
+        "Bine! Am înțeles! O să ne antrenăm mult mai serios, până o să merităm timpul tău, {player}."
+      ]
+    }
+  ],
+  "Fantina": [
+    {
+      "en": [
+        "Fantina"
+      ],
+      "text": [
+        "Fantina"
+      ]
+    },
+    {
+      "en": [
+        "At last, you are here! So: you shall challenge me, and I shall win. You will be astonished at how strong I have become! Yes?"
+      ],
+      "text": [
+        "În sfârșit, ai venit! Deci: tu mă vei provoca, iar eu voi câștiga. Te vei mira cât de puternică am devenit! Da?"
+      ]
+    },
+    {
+      "en": [
+        "This time you shall challenge me, non? And I shall win. You will be astonished at how strong I have become!"
+      ],
+      "text": [
+        "De data asta mă vei provoca, non? Și eu voi câștiga. Te vei mira cât de puternică am devenit!"
+      ]
+    },
+    {
+      "en": [
+        "Ohohoho!!"
+      ],
+      "text": [
+        "Ohohoho!!"
+      ]
+    },
+    {
+      "en": [
+        "You... you disappoint me. It is very sad. But understand this: while you refuse, you have not beaten me."
+      ],
+      "text": [
+        "Tu... tu mă dezamăgești. E foarte trist. Dar să înțelegi asta: cât timp refuzi, nu m-ai învins."
+      ]
+    },
+    {
+      "en": [
+        "Oh? It is you? You are not at the Contests today? One who takes the stage should also take me on. You will?"
+      ],
+      "text": [
+        "O? Tu ești? Nu ești la Concursuri azi? Cine urcă pe scenă trebuie să mă înfrunte și pe mine. Vrei?"
+      ]
+    },
+    {
+      "en": [
+        "Yes, what is it? If you bring me a challenge, I accept!"
+      ],
+      "text": [
+        "Da, ce este? Dacă îmi aduci o provocare, o accept!"
+      ]
+    },
+    {
+      "en": [
+        "A Pokémon battle is a delight, every time without fail. And why? Because in those moments we are at our most serious."
+      ],
+      "text": [
+        "O luptă Pokémon e o încântare, de fiecare dată fără greș. Și de ce? Pentru că în acele clipe suntem cei mai serioși."
+      ]
+    },
+    {
+      "en": [
+        "Fantina"
+      ],
+      "text": [
+        "Fantina"
+      ]
+    },
+    {
+      "en": [
+        "You are an amazing person! Très fantastique! And I am overjoyed, for now I have a purpose."
+      ],
+      "text": [
+        "Ești o persoană uimitoare! Très fantastique! Și sunt în culmea fericirii, căci acum am un scop."
+      ]
+    },
+    {
+      "en": [
+        "My purpose is to defeat you! It is your gift to me!"
+      ],
+      "text": [
+        "Scopul meu e să te înving! E darul tău pentru mine!"
+      ]
+    },
+    {
+      "en": [
+        "I wish to battle the way I dance."
+      ],
+      "text": [
+        "Vreau să lupt așa cum dansez."
+      ]
+    },
+    {
+      "en": [
+        "No? That is all right also. Only to see your face has made me happy."
+      ],
+      "text": [
+        "Nu? E bine și așa. Doar să-ți văd fața m-a făcut fericită."
+      ]
+    }
+  ],
+  "Candice": [
+    {
+      "en": [
+        "Candice"
+      ],
+      "text": [
+        "Candice"
+      ]
+    },
+    {
+      "en": [
+        "Hiya! What's up? Bet you can't guess what I'm thinking! ...I'll just tell you. I want to battle you! OK?"
+      ],
+      "text": [
+        "Salutare! Ce faci? Pun pariu că nu ghicești la ce mă gândesc! ...Îți spun eu. Vreau să mă lupt cu tine! Bine?"
+      ]
+    },
+    {
+      "en": [
+        "Listen, listen. You will battle Candice, won't you?"
+      ],
+      "text": [
+        "Ascultă, ascultă. Te lupți cu Candice, nu-i așa?"
+      ]
+    },
+    {
+      "en": [
+        "This time Candice is getting through on willpower alone!"
+      ],
+      "text": [
+        "De data asta Candice trece doar cu voință!"
+      ]
+    },
+    {
+      "en": [
+        "Oh... Was it my willpower? Did it scare you off?"
+      ],
+      "text": [
+        "O... A fost voința mea? Te-a speriat?"
+      ]
+    },
+    {
+      "en": [
+        "Candice is on fire today! Blazing! Hot enough to melt an Ice type! I need a battle to cool off. Please?"
+      ],
+      "text": [
+        "Candice e în flăcări azi! Arde! Destul de fierbinte să topească un tip Gheață! Am nevoie de o luptă să mă răcoresc. Te rog?"
+      ]
+    },
+    {
+      "en": [
+        "You really do want to battle me, don't you?"
+      ],
+      "text": [
+        "Chiar vrei să te lupți cu mine, nu-i așa?"
+      ]
+    },
+    {
+      "en": [
+        "OK! Now you'll see how good Candice... I mean, how good my Pokémon can be!"
+      ],
+      "text": [
+        "Bine! Acum o să vezi cât de bună e Candice... adică, cât de buni pot fi Pokémonii mei!"
+      ]
+    },
+    {
+      "en": [
+        "Candice"
+      ],
+      "text": [
+        "Candice"
+      ]
+    },
+    {
+      "en": [
+        "Ooh, look at what you're wearing. That is so in right now! I wish I had one like it."
+      ],
+      "text": [
+        "Ooo, uite ce porți. E așa la modă acum! Aș vrea să am și eu așa ceva."
+      ]
+    },
+    {
+      "en": [
+        "Awww! That does it! I'm going to train until I can throw a Focus Punch myself!"
+      ],
+      "text": [
+        "Ooo! Gata! O să mă antrenez până o să pot da și eu un Pumn Concentrat!"
+      ]
+    },
+    {
+      "en": [
+        "Awww!"
+      ],
+      "text": [
+        "Ooo!"
+      ]
+    }
+  ],
+  "Byron": [
+    {
+      "en": [
+        "Byron"
+      ],
+      "text": [
+        "Byron"
+      ]
+    },
+    {
+      "en": [
+        "I've met a good many challengers at my Gym, and spent days on Iron Island asking myself what I'm worth. I'm sure of it now: I can break your guard. A rematch?"
+      ],
+      "text": [
+        "Am întâlnit mulți provocatori la Arena mea și am petrecut zile pe Insula de Fier întrebându-mă cât valorez. Acum sunt sigur: îți pot sparge garda. O revanșă?"
+      ]
+    },
+    {
+      "en": [
+        "I'm sure of it now: I can break your guard. Might I have that rematch?"
+      ],
+      "text": [
+        "Acum sunt sigur: îți pot sparge garda. Pot avea revanșa aceea?"
+      ]
+    },
+    {
+      "en": [
+        "It's battling the strong that tempers and hones us. Here's to our showdown!"
+      ],
+      "text": [
+        "Luptele cu cei puternici ne călesc și ne ascut. Pentru duelul nostru!"
+      ]
+    },
+    {
+      "en": [
+        "You had a gleam in your eye when you came to my Gym. It has dulled a little."
+      ],
+      "text": [
+        "Aveai o sclipire în ochi când ai venit la Arena mea. S-a mai stins puțin."
+      ]
+    },
+    {
+      "en": [
+        "We've been in training ever since we last lost to you, and I believe we've mended what was wrong. Might I ask for another rematch?"
+      ],
+      "text": [
+        "Ne-am antrenat de când am pierdut ultima oară în fața ta și cred că am reparat ce nu mergea. Pot să-ți cer încă o revanșă?"
+      ]
+    },
+    {
+      "en": [
+        "Might I ask for another rematch?"
+      ],
+      "text": [
+        "Pot să-ți cer încă o revanșă?"
+      ]
+    },
+    {
+      "en": [
+        "Thank you! My Pokémon have wanted another go at you as badly as I have!"
+      ],
+      "text": [
+        "Mulțumesc! Pokémonii mei și-au dorit încă o șansă cu tine la fel de mult ca mine!"
+      ]
+    },
+    {
+      "en": [
+        "Byron"
+      ],
+      "text": [
+        "Byron"
+      ]
+    },
+    {
+      "en": [
+        "I trained on Iron Island beside my Pokémon, hammering at steel day in and day out..."
+      ],
+      "text": [
+        "M-am antrenat pe Insula de Fier lângă Pokémonii mei, bătând în oțel zi de zi..."
+      ]
+    },
+    {
+      "en": [
+        "Gwahahaha! And it seems I could do with a good deal more hardening yet!"
+      ],
+      "text": [
+        "Hahahaha! Și se pare că mai am nevoie de multă călire!"
+      ]
+    },
+    {
+      "en": [
+        "Argh... short again. Should I ask my boy Roark to train with me? ...No. Far too embarrassing. Hmm. What a fix."
+      ],
+      "text": [
+        "Argh... iar n-a ajuns. Să-l rog pe băiatul meu Roark să se antreneze cu mine? ...Nu. Mult prea jenant. Hmm. Ce încurcătură."
+      ]
+    },
+    {
+      "en": [
+        "Gwahahaha! A pity, but very well! There's a lot to learn from battling you. We'd got our hopes up."
+      ],
+      "text": [
+        "Hahahaha! Păcat, dar fie! Am multe de învățat dintr-o luptă cu tine. Ne făcusem speranțe."
+      ]
+    },
+    {
+      "en": [
+        "...So that Roark thinks he can show up his old man? I've some polishing left to do, I fear."
+      ],
+      "text": [
+        "...Deci Roark ăla crede că-și poate întrece bătrânul? Mă tem că mai am de lustruit."
+      ]
+    },
+    {
+      "en": [
+        "Ah, it's you! Never mind me. Make yourself at home."
+      ],
+      "text": [
+        "A, tu erai! Nu mă băga în seamă. Simte-te ca acasă."
+      ]
+    }
+  ],
+  "Volkner": [
+    {
+      "en": [
+        "Volkner"
+      ],
+      "text": [
+        "Volkner"
+      ]
+    },
+    {
+      "en": [
+        "Your Pokémon... I can feel the power in them from here. And you can feel it in mine, can't you? Battle us!"
+      ],
+      "text": [
+        "Pokémonii tăi... Le simt puterea de aici. Și tu o simți pe a mea, nu? Luptă-te cu noi!"
+      ]
+    },
+    {
+      "en": [
+        "Hm? What is it? You do want to battle?"
+      ],
+      "text": [
+        "Hm? Ce e? Vrei totuși să ne luptăm?"
+      ]
+    },
+    {
+      "en": [
+        "Yes! This feeling before a battle: it's electric! Let's go. Let's make some sparks fly!"
+      ],
+      "text": [
+        "Da! Senzația asta dinaintea unei lupte: e electrizantă! Hai. Să sară scântei!"
+      ]
+    },
+    {
+      "en": [
+        "Aw, come on. Don't let me down..."
+      ],
+      "text": [
+        "Haide. Nu mă dezamăgi..."
+      ]
+    },
+    {
+      "en": [
+        "My Electivire won't settle for anything less than a tough opponent. I'm not too proud to beg. Battle us?"
+      ],
+      "text": [
+        "Electivire al meu nu se mulțumește cu mai puțin decât un adversar dur. Nu sunt prea mândru să mă rog. Te lupți cu noi?"
+      ]
+    },
+    {
+      "en": [
+        "Hm? What is it? You'll face my Electivire after all, and help me toughen up my team?"
+      ],
+      "text": [
+        "Hm? Ce e? Îl înfrunți totuși pe Electivire al meu și mă ajuți să-mi călesc echipa?"
+      ]
+    },
+    {
+      "en": [
+        "You! And me! Let's make some sparks fly!"
+      ],
+      "text": [
+        "Tu! Și eu! Să sară scântei!"
+      ]
+    },
+    {
+      "en": [
+        "Volkner"
+      ],
+      "text": [
+        "Volkner"
+      ]
+    },
+    {
+      "en": [
+        "Winning makes me happy. Losing makes me furious. Nothing clever about it, but it's what makes me stronger."
+      ],
+      "text": [
+        "Când câștig sunt fericit. Când pierd sunt furios. Nimic deștept aici, dar asta mă face mai puternic."
+      ]
+    },
+    {
+      "en": [
+        "Some Trainers have one Pokémon they can't leave out of their team, whatever happens. Mine is Electivire."
+      ],
+      "text": [
+        "Unii Antrenori au un Pokémon pe care nu-l pot lăsa afară din echipă, orice s-ar întâmpla. Al meu e Electivire."
+      ]
+    },
+    {
+      "en": [
+        "Well, sure. An Electivire is a lot to face. I get it..."
+      ],
+      "text": [
+        "Păi, da. Un Electivire e greu de înfruntat. Înțeleg..."
+      ]
+    }
+  ],
+  "Cheryl": [
+    {
+      "en": [
+        "Cheryl"
+      ],
+      "text": [
+        "Cheryl"
+      ]
+    },
+    {
+      "en": [
+        "Oh, hello, {player}. Are you my opponent for today?"
+      ],
+      "text": [
+        "O, bună, {player}. Tu ești adversarul meu de azi?"
+      ]
+    },
+    {
+      "en": [
+        "{player}, may I ask you for a battle?"
+      ],
+      "text": [
+        "{player}, pot să-ți cer o luptă?"
+      ]
+    },
+    {
+      "en": [
+        "My Pokémon have been longing for a battle."
+      ],
+      "text": [
+        "Pokémonii mei tânjesc după o luptă."
+      ]
+    },
+    {
+      "en": [
+        "Oh... but my Pokémon were so looking forward to it..."
+      ],
+      "text": [
+        "O... dar Pokémonii mei abia așteptau..."
+      ]
+    },
+    {
+      "en": [
+        "It has been a long time, hasn't it? Would you care to have a battle with me?"
+      ],
+      "text": [
+        "A trecut mult timp, nu-i așa? Ai vrea să ne luptăm?"
+      ]
+    },
+    {
+      "en": [
+        "...Yes? Would you like to battle after all?"
+      ],
+      "text": [
+        "...Da? Vrei totuși să ne luptăm?"
+      ]
+    },
+    {
+      "en": [
+        "I ought to warn you: my Pokémon can be rather a handful."
+      ],
+      "text": [
+        "Trebuie să te avertizez: Pokémonii mei pot fi destul de greu de stăpânit."
+      ]
+    },
+    {
+      "en": [
+        "Cheryl"
+      ],
+      "text": [
+        "Cheryl"
+      ]
+    },
+    {
+      "en": [
+        "Thank you, {player}! My darling Pokémon are a little tougher now, and it's your doing."
+      ],
+      "text": [
+        "Mulțumesc, {player}! Dragii mei Pokémoni sunt puțin mai duri acum, și e meritul tău."
+      ]
+    },
+    {
+      "en": [
+        "Being a Trainer isn't easy. The more you battle, the more there is to find out. But do you know? I love Pokémon for that as well!"
+      ],
+      "text": [
+        "Să fii Antrenor nu e ușor. Cu cât lupți mai mult, cu atât ai mai multe de descoperit. Dar știi ceva? Și pentru asta iubesc Pokémonii!"
+      ]
+    },
+    {
+      "en": [
+        "Hee hee... Pokémon would be worn out if we did nothing but battle, wouldn't they?"
+      ],
+      "text": [
+        "Hi hi... Pokémonii ar fi epuizați dacă n-am face decât să ne luptăm, nu?"
+      ]
+    }
+  ],
+  "Riley": [
+    {
+      "en": [
+        "Riley"
+      ],
+      "text": [
+        "Riley"
+      ]
+    },
+    {
+      "en": [
+        "You and I are both Trainers. Let's leave the small talk and go straight to the battle. That's how I do things. Agreed?"
+      ],
+      "text": [
+        "Amândoi suntem Antrenori. Hai să lăsăm vorbăria și să trecem direct la luptă. Așa fac eu lucrurile. De acord?"
+      ]
+    },
+    {
+      "en": [
+        "You see? It doesn't feel right unless we battle. Does it?"
+      ],
+      "text": [
+        "Vezi? Nu pare în regulă decât dacă ne luptăm. Nu-i așa?"
+      ]
+    },
+    {
+      "en": [
+        "A battle is how we say hello!"
+      ],
+      "text": [
+        "O luptă e felul nostru de a spune bună ziua!"
+      ]
+    },
+    {
+      "en": [
+        "Very well. What is it you have to tell me, then?"
+      ],
+      "text": [
+        "Prea bine. Ce aveai să-mi spui, atunci?"
+      ]
+    },
+    {
+      "en": [
+        "Hello. It's been a while. If it suits you, I would like to challenge you here and now."
+      ],
+      "text": [
+        "Bună. A trecut ceva vreme. Dacă îți convine, aș vrea să te provoc aici și acum."
+      ]
+    },
+    {
+      "en": [
+        "That look of yours... You're ready for our battle, I take it?"
+      ],
+      "text": [
+        "Privirea asta a ta... Ești gata de lupta noastră, presupun?"
+      ]
+    },
+    {
+      "en": [
+        "We'll hold nothing back to bring your Pokémon down."
+      ],
+      "text": [
+        "Nu ne vom reține deloc ca să-ți doborâm Pokémonii."
+      ]
+    },
+    {
+      "en": [
+        "Riley"
+      ],
+      "text": [
+        "Riley"
+      ]
+    },
+    {
+      "en": [
+        "Know who you face. Their Pokémon, and the moves those Pokémon use."
+      ],
+      "text": [
+        "Cunoaște-ți adversarul. Pokémonii lui și mișcările pe care le folosesc."
+      ]
+    },
+    {
+      "en": [
+        "Go in knowing that much, and your chances are a good deal better."
+      ],
+      "text": [
+        "Intră știind atât, și șansele tale sunt mult mai bune."
+      ]
+    },
+    {
+      "en": [
+        "If I hadn't been on Iron Island that day... If you hadn't come there..."
+      ],
+      "text": [
+        "Dacă n-aș fi fost pe Insula de Fier în ziua aceea... Dacă n-ai fi venit tu acolo..."
+      ]
+    },
+    {
+      "en": [
+        "Perhaps we would never have met. Or would we have met somewhere else?"
+      ],
+      "text": [
+        "Poate nu ne-am fi întâlnit niciodată. Sau ne-am fi întâlnit altundeva?"
+      ]
+    },
+    {
+      "en": [
+        "All right. We'll wait until you are ready."
+      ],
+      "text": [
+        "Bine. Așteptăm până ești gata."
+      ]
+    }
+  ],
+  "Marley": [
+    {
+      "en": [
+        "Marley"
+      ],
+      "text": [
+        "Marley"
+      ]
+    },
+    {
+      "en": [
+        "I... Is it all right if we battle?"
+      ],
+      "text": [
+        "Eu... E în regulă dacă ne luptăm?"
+      ]
+    },
+    {
+      "en": [
+        "...So? Are we battling?"
+      ],
+      "text": [
+        "...Deci? Ne luptăm?"
+      ]
+    },
+    {
+      "en": [
+        "...OK. I'll do my best."
+      ],
+      "text": [
+        "...Bine. O să fac tot ce pot."
+      ]
+    },
+    {
+      "en": [
+        "...Oh. ...You can be as unkind as that?"
+      ],
+      "text": [
+        "...O. ...Poți fi chiar atât de rău cu mine?"
+      ]
+    },
+    {
+      "en": [
+        "...Oh? A battle? With me?"
+      ],
+      "text": [
+        "...O? O luptă? Cu mine?"
+      ]
+    },
+    {
+      "en": [
+        "...If you won't battle, I might not come back..."
+      ],
+      "text": [
+        "...Dacă nu te lupți, s-ar putea să nu mai vin..."
+      ]
+    },
+    {
+      "en": [
+        "...OK. I... won't lose...!"
+      ],
+      "text": [
+        "...Bine. Eu... n-o să pierd...!"
+      ]
+    },
+    {
+      "en": [
+        "Marley"
+      ],
+      "text": [
+        "Marley"
+      ]
+    },
+    {
+      "en": [
+        "...You're so strong. It makes me happy. ...I don't know why. It's a strange feeling."
+      ],
+      "text": [
+        "...Ai atâta putere. Mă bucură. ...Nu știu de ce. E un sentiment ciudat."
+      ]
+    },
+    {
+      "en": [
+        "...I might like battling you. ...A little. Only the smallest little bit."
+      ],
+      "text": [
+        "...Poate îmi place să mă lupt cu tine. ...Puțin. Doar un pic, cât de mic."
+      ]
+    },
+    {
+      "en": [
+        "...Oh, you. I'm starting to dislike you a little."
+      ],
+      "text": [
+        "...O, tu. Încep să nu te plac puțin."
+      ]
+    }
+  ],
+  "BuckGuest": [
+    {
+      "en": [
+        "Buck"
+      ],
+      "text": [
+        "Buck"
+      ]
+    },
+    {
+      "en": [
+        "Eheheh! There you are at last! No hanging about. Shall we do this?"
+      ],
+      "text": [
+        "Hehehe! În sfârșit ai venit! Fără tărăgănat. Ne apucăm?"
+      ]
+    },
+    {
+      "en": [
+        "What? What?! So we are going to battle?"
+      ],
+      "text": [
+        "Ce? Ce?! Deci chiar ne luptăm?"
+      ]
+    },
+    {
+      "en": [
+        "...I'm telling you now: I'm seriously tough. Try to look surprised!"
+      ],
+      "text": [
+        "...Îți spun de acum: sunt al naibii de dur. Prefă-te că te miri!"
+      ]
+    },
+    {
+      "en": [
+        "Huh? What? There goes the wind from my sails. Well, you're here now. Put your feet up, make yourself at home, all of that."
+      ],
+      "text": [
+        "Hă? Ce? Mi s-a dus tot avântul. Ei, acum că tot ești aici, pune picioarele sus, simte-te ca acasă și toate alea."
+      ]
+    },
+    {
+      "en": [
+        "One: there are no shortcuts where Pokémon are concerned! Two... never mind two. Shall we do this?"
+      ],
+      "text": [
+        "Unu: cu Pokémonii nu există scurtături! Doi... las-o baltă pe doi. Ne apucăm?"
+      ]
+    },
+    {
+      "en": [
+        "So? Feel like battling now?"
+      ],
+      "text": [
+        "Deci? Ai chef de luptă acum?"
+      ]
+    },
+    {
+      "en": [
+        "I can feel my Pokémon shaking in their Poké Balls! They can't wait, that's all. It isn't nerves!"
+      ],
+      "text": [
+        "Îmi simt Pokémonii tremurând în Poké Balluri! Abia așteaptă, atâta tot. Nu-i de emoție!"
+      ]
+    },
+    {
+      "en": [
+        "Buck"
+      ],
+      "text": [
+        "Buck"
+      ]
+    },
+    {
+      "en": [
+        "Phew! Too much! I'd better go and work on my team at the Battle Tower."
+      ],
+      "text": [
+        "Pfiu! Prea mult! Ar fi bine să-mi lucrez echipa la Battle Tower."
+      ]
+    },
+    {
+      "en": [
+        "Phew! Too much! I'd better go and work on my team up Stark Mountain!"
+      ],
+      "text": [
+        "Pfiu! Prea mult! Ar fi bine să-mi lucrez echipa sus pe Muntele Stark!"
+      ]
+    },
+    {
+      "en": [
+        "Hey! This place! They don't call it the Battleground for nothing!"
+      ],
+      "text": [
+        "Hei! Locul ăsta! Nu degeaba îi zice Câmpul de Luptă!"
+      ]
+    }
+  ],
+  "Mira": [
+    {
+      "en": [
+        "Mira"
+      ],
+      "text": [
+        "Mira"
+      ]
+    },
+    {
+      "en": [
+        "{player}! Please teach Mira about Pokémon!"
+      ],
+      "text": [
+        "{player}! Te rog, învaț-o pe Mira despre Pokémoni!"
+      ]
+    },
+    {
+      "en": [
+        "{player}, please? Please teach Mira about Pokémon!"
+      ],
+      "text": [
+        "{player}, te rog? Te rog, învaț-o pe Mira despre Pokémoni!"
+      ]
+    },
+    {
+      "en": [
+        "{player}! Mira will show you: Mira doesn't get lost any more!"
+      ],
+      "text": [
+        "{player}! Mira o să-ți arate: Mira nu se mai rătăcește!"
+      ]
+    },
+    {
+      "en": [
+        "Mira is a little sad... Mira's Pokémon are stronger now."
+      ],
+      "text": [
+        "Mira e un pic tristă... Pokémonii Mirei sunt mai puternici acum."
+      ]
+    },
+    {
+      "en": [
+        "{player}! Mira is stronger now! Please! Battle with Mira!"
+      ],
+      "text": [
+        "{player}! Mira e mai puternică acum! Te rog! Luptă-te cu Mira!"
+      ]
+    },
+    {
+      "en": [
+        "You will battle Mira?"
+      ],
+      "text": [
+        "Te lupți cu Mira?"
+      ]
+    },
+    {
+      "en": [
+        "{player} is going to be so surprised by Mira!"
+      ],
+      "text": [
+        "{player} o să aibă o surpriză mare cu Mira!"
+      ]
+    },
+    {
+      "en": [
+        "Mira"
+      ],
+      "text": [
+        "Mira"
+      ]
+    },
+    {
+      "en": [
+        "{player}, please teach Mira about Pokémon again! Mira wants to get lots and lots stronger, just like {player}!"
+      ],
+      "text": [
+        "{player}, te rog, învaț-o iar pe Mira despre Pokémoni! Mira vrea să devină tare-tare puternică, la fel ca {player}!"
+      ]
+    },
+    {
+      "en": [
+        "You're always with your Pokémon, {player}. That's how you got to be so strong. Mira is starting to understand!"
+      ],
+      "text": [
+        "Ești mereu cu Pokémonii tăi, {player}. De aceea ai atâta putere. Mira începe să înțeleagă!"
+      ]
+    },
+    {
+      "en": [
+        "Mira really did get stronger. Mira wanted {player} to see."
+      ],
+      "text": [
+        "Mira chiar a devenit mai puternică. Mira voia ca {player} să vadă."
+      ]
+    }
+  ]
+}

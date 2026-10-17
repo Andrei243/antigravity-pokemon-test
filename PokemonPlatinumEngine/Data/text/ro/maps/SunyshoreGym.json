@@ -1,0 +1,66 @@
+{
+  "displayName": {
+    "en": [
+      "Sunyshore Gym"
+    ],
+    "text": [
+      "Arena Sunyshore"
+    ]
+  },
+  "people": {
+    "gym_guide": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          "Ghidul Arenei"
+        ]
+      }
+    },
+    "school_kid_tiera": {
+      "name": {
+        "en": [
+          "Tiera"
+        ],
+        "text": [
+          "Tiera"
+        ]
+      },
+      "before": {
+        "en": [
+          "School Kid Tiera: We learned all about electricity in class! Watch me put my homework into practice!"
+        ],
+        "text": [
+          "Școlar Tiera: Am învățat totul despre electricitate la ore! Uite cum îmi pun tema în practică!"
+        ]
+      },
+      "after": {
+        "en": [
+          "School Kid Tiera: Short-circuited... I guess I'll have to study the gears some more."
+        ],
+        "text": [
+          "Școlar Tiera: Scurtcircuit... Cred că trebuie să mai studiez angrenajele."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "6,12": {
+      "en": [
+        "SUNYSHORE CITY POKéMON GYM\nLeader: Volkner"
+      ],
+      "text": [
+        "ARENA POKéMON DIN ORAȘUL SUNYSHORE\nLider: Volkner"
+      ]
+    },
+    "10,12": {
+      "en": [
+        "SUNYSHORE CITY POKéMON GYM\nLeader: Volkner"
+      ],
+      "text": [
+        "ARENA POKéMON DIN ORAȘUL SUNYSHORE\nLider: Volkner"
+      ]
+    }
+  }
+}

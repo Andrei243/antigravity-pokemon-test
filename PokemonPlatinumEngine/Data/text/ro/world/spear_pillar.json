@@ -1,0 +1,175 @@
+{
+  "people": {
+    "grunt_f": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: We'll take you down together!"
+        ],
+        "text": [
+          "Galactic Grunt: Te doborâm împreună!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: Kept you busy, didn't we?"
+        ],
+        "text": [
+          "Galactic Grunt: Ți-am ocupat timpul, nu-i așa?"
+        ]
+      }
+    },
+    "grunt_m": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: Two against one. Hardly fair, is it? Good!"
+        ],
+        "text": [
+          "Galactic Grunt: Doi contra unul. Nu prea e corect, nu? Bun!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: Two against one, and we still lost..."
+        ],
+        "text": [
+          "Galactic Grunt: Doi contra unul, și tot am pierdut..."
+        ]
+      }
+    },
+    "mars": {
+      "name": {
+        "en": [
+          "Mars"
+        ],
+        "text": [
+          "Mars"
+        ]
+      },
+      "before": {
+        "en": [
+          "Mars: You go through me first!"
+        ],
+        "text": [
+          "Mars: Întâi treci de mine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Mars: Unbelievable. Beaten by you again."
+        ],
+        "text": [
+          "Mars: Incredibil. Învinsă iar de tine."
+        ]
+      }
+    },
+    "jupiter": {
+      "name": {
+        "en": [
+          "Jupiter"
+        ],
+        "text": [
+          "Jupiter"
+        ]
+      },
+      "before": {
+        "en": [
+          "Jupiter: And then through me."
+        ],
+        "text": [
+          "Jupiter: Și apoi de mine."
+        ]
+      },
+      "after": {
+        "en": [
+          "Jupiter: Tch. I underestimated the pair of you."
+        ],
+        "text": [
+          "Jupiter: Țțț. V-am subestimat pe amândoi."
+        ]
+      }
+    },
+    "cyrus": {
+      "name": {
+        "en": [
+          "Cyrus"
+        ],
+        "text": [
+          "Cyrus"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "......"
+        ],
+        "text": [
+          "......"
+        ]
+      }
+    },
+    "rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "{rival}: Go on! Stop him!"
+        ],
+        "text": [
+          "{rival}: Du-te! Oprește-l!"
+        ]
+      }
+    },
+    "dialga": {
+      "name": {
+        "en": [
+          "Dialga"
+        ],
+        "text": [
+          "Dialga"
+        ]
+      }
+    },
+    "palkia": {
+      "name": {
+        "en": [
+          "Palkia"
+        ],
+        "text": [
+          "Palkia"
+        ]
+      }
+    },
+    "giratina": {
+      "name": {
+        "en": [
+          "Giratina"
+        ],
+        "text": [
+          "Giratina"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

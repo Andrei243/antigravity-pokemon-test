@@ -1,0 +1,83 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Center"
+    ],
+    "text": [
+      "Centrul Pokémon"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "old_man": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When I was young I dreamed of being a Gym Leader. It never came to anything.",
+          "But I have had Pokémon beside me every day of my life. I call that a lucky life."
+        ],
+        "text": [
+          "Când eram tânăr visam să fiu Lider de Arenă. N-a ieșit nimic din asta.",
+          "Dar am avut Pokémoni lângă mine în fiecare zi a vieții mele. Asta numesc eu o viață norocoasă."
+        ]
+      }
+    },
+    "ninja_boy": {
+      "name": {
+        "en": [
+          "Ninja Boy"
+        ],
+        "text": [
+          "Micul Ninja"
+        ]
+      }
+    },
+    "middle_aged_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "There was no room left to build on, so the city made its roads out of solar panels.",
+          "Clean power, and good roads besides. If you ask me, it shows how set Sunyshore is on getting by."
+        ],
+        "text": [
+          "Nu mai era loc de construit, așa că orașul și-a făcut drumurile din panouri solare.",
+          "Energie curată, și drumuri bune pe deasupra. Dacă mă întrebi pe mine, arată cât de hotărât e Sunyshore să se descurce."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

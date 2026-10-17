@@ -1,0 +1,23 @@
+{
+  "displayName": {
+    "en": [
+      "Route 225"
+    ],
+    "text": [
+      "Ruta 225"
+    ]
+  },
+  "people": {
+    "worker": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          "Muncitorul"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

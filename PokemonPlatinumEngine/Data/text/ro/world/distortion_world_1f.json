@@ -1,0 +1,25 @@
+{
+  "people": {
+    "cynthia": {
+      "name": {
+        "en": [
+          "Cynthia"
+        ],
+        "text": [
+          "Cynthia"
+        ]
+      }
+    },
+    "portal": {
+      "name": {
+        "en": [
+          "Portal"
+        ],
+        "text": [
+          "Portal"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

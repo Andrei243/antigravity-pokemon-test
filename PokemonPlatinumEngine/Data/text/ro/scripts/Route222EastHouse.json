@@ -1,0 +1,88 @@
+{
+  "Fisherman": [
+    {
+      "en": [
+        "I had a dream! Such a wonderful dream!",
+        "A Trainer came to my door and showed me a giant Remoraid!",
+        "... Hold on. Is that...? It wasn't a dream at all!",
+        "Qu-quick! How big is the Remoraid you've brought me?"
+      ],
+      "text": [
+        "Am avut un vis! Un vis atât de minunat!",
+        "Un Antrenor a venit la ușa mea și mi-a arătat un Remoraid uriaș!",
+        "... Stai puțin. Ăsta e...? Nu a fost deloc un vis!",
+        "R-repede! Cât de mare e Remoraid-ul pe care mi l-ai adus?"
+      ]
+    },
+    {
+      "en": [
+        "{size}... This Remoraid measures {size}...",
+        "Why, that's bigger than the one in my dream!",
+        "You must have this. I insist."
+      ],
+      "text": [
+        "{size}... Remoraid-ul ăsta măsoară {size}...",
+        "Păi, e mai mare decât cel din visul meu!",
+        "Trebuie să primești asta. Insist."
+      ]
+    },
+    {
+      "en": [
+        "Thank you! I haven't had such fun in years.",
+        "I think I'll dream of an even bigger Remoraid tonight."
+      ],
+      "text": [
+        "Mulțumesc! N-am mai avut atâta distracție de ani de zile.",
+        "Cred că la noapte o să visez un Remoraid și mai mare."
+      ]
+    },
+    {
+      "en": [
+        "I had a dream! Such a wonderful dream!",
+        "A Trainer came to my door and showed me a giant Remoraid!"
+      ],
+      "text": [
+        "Am avut un vis! Un vis atât de minunat!",
+        "Un Antrenor a venit la ușa mea și mi-a arătat un Remoraid uriaș!"
+      ]
+    },
+    {
+      "en": [
+        "{record}... Have I been here before?",
+        "I could swear I've measured this very size..."
+      ],
+      "text": [
+        "{record}... Am mai fost aici?",
+        "Aș putea să jur că am măsurat exact mărimea asta..."
+      ]
+    },
+    {
+      "en": [
+        "This Remoraid comes to {size}.",
+        "I happen to know a genius who brought me one of {record}..."
+      ],
+      "text": [
+        "Remoraid-ul ăsta are {size}.",
+        "Întâmplarea face să știu un geniu care mi-a adus unul de {record}..."
+      ]
+    },
+    {
+      "en": [
+        "Wha... What do you call that?",
+        "Did you hear a single word I said?"
+      ],
+      "text": [
+        "Ce... Cum îi zici la asta?",
+        "Ai auzit măcar un cuvânt din ce am zis?"
+      ]
+    },
+    {
+      "en": [
+        "Oh, what? You'd keep me from measuring your Remoraid? Why?"
+      ],
+      "text": [
+        "O, ce? Nu mă lași să-ți măsor Remoraid-ul? De ce?"
+      ]
+    }
+  ]
+}

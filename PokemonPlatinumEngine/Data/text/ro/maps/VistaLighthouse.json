@@ -1,0 +1,72 @@
+{
+  "displayName": {
+    "en": [
+      "Vista Lighthouse"
+    ],
+    "text": [
+      "Farul Vista"
+    ]
+  },
+  "people": {
+    "sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          "Marinar"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "To a sailor this light means one thing: you are nearly safe home.",
+          "After a long night at sea, there is no finer sight in all of Sinnoh."
+        ],
+        "text": [
+          "Pentru un marinar, lumina asta înseamnă un singur lucru: ești aproape acasă, în siguranță.",
+          "După o noapte lungă pe mare, nu e priveliște mai frumoasă în tot Sinnoh-ul."
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Lass"
+        ],
+        "text": [
+          "Domnișoara"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "You can see for miles and miles through those binoculars!",
+          "One day my Pokémon and I are going all the way out there, as far as they can show."
+        ],
+        "text": [
+          "Prin binoclul ăla vezi la kilometri întregi!",
+          "Într-o zi, eu și Pokémonii mei o să mergem până acolo, cât de departe arată el."
+        ]
+      }
+    },
+    "volkner": {
+      "name": {
+        "en": [
+          "Volkner"
+        ],
+        "text": [
+          "Volkner"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "6,3": {
+      "en": [
+        "Binoculars, free to use. On a clear day they show all the way to the Pokémon League."
+      ],
+      "text": [
+        "Binoclu, gratuit. Pe vreme senină se vede până la Liga Pokémon."
+      ]
+    }
+  }
+}

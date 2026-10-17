@@ -1,0 +1,15 @@
+{
+  "people": {
+    "sailor": {
+      "name": {
+        "en": [
+          "Sailor Eldritch"
+        ],
+        "text": [
+          "Marinarul Eldritch"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,25 @@
+{
+  "people": {
+    "portal": {
+      "name": {
+        "en": [
+          "Portal"
+        ],
+        "text": [
+          "Portal"
+        ]
+      }
+    },
+    "item_griseous_orb": {
+      "name": {
+        "en": [
+          "Griseous Orb"
+        ],
+        "text": [
+          "Globul Cenușiu"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,23 @@
+{
+  "displayName": {
+    "en": [
+      "Dr. Footstep's House"
+    ],
+    "text": [
+      "Casa doctorului Footstep"
+    ]
+  },
+  "people": {
+    "dr_footstep": {
+      "name": {
+        "en": [
+          "Dr. Footstep"
+        ],
+        "text": [
+          "Dr. Footstep"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

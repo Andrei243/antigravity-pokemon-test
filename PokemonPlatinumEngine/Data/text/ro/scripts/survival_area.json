@@ -1,0 +1,122 @@
+{
+  "BattlegroundDoor": [
+    {
+      "en": [
+        "The door is locked."
+      ],
+      "text": [
+        "Ușa e încuiată."
+      ]
+    },
+    {
+      "en": [
+        "A plate beside it reads: \"Members only.\""
+      ],
+      "text": [
+        "O plăcuță de lângă ea spune: „Doar pentru membri.”"
+      ]
+    },
+    {
+      "en": [
+        "A plate beside the door reads: \"The Battleground. Members only.\""
+      ],
+      "text": [
+        "O plăcuță de lângă ușă spune: „Câmpul de Luptă. Doar pentru membri.”"
+      ]
+    }
+  ],
+  "Cameraman": [
+    {
+      "en": [
+        "You saw it? The Pokémon in the volcano? You actually battled it?!"
+      ],
+      "text": [
+        "L-ai văzut? Pokémonul din vulcan? Chiar te-ai luptat cu el?!"
+      ]
+    },
+    {
+      "en": [
+        "That's it, then. That's my next film! I've got the title, I've got the star... All I need now is the nerve to go up there."
+      ],
+      "text": [
+        "Asta e, deci. Ăsta e următorul meu film! Am titlul, am vedeta... Acum îmi trebuie doar curajul să urc acolo."
+      ]
+    }
+  ],
+  "Buck": [
+    {
+      "en": [
+        "Buck"
+      ],
+      "text": [
+        "Buck"
+      ]
+    },
+    {
+      "en": [
+        "{player}! You made it! Well, this is it: my place. The Battleground."
+      ],
+      "text": [
+        "{player}! Ai ajuns! Ei bine, asta e: locul meu. Câmpul de Luptă."
+      ]
+    },
+    {
+      "en": [
+        "Only the toughest Trainers I know get asked inside. After what we went through up the mountain, that means you. Come in whenever you like!"
+      ],
+      "text": [
+        "Doar cei mai duri Antrenori pe care îi știu sunt invitați înăuntru. După ce am trecut prin ce am trecut pe munte, asta înseamnă tu. Intră oricând vrei!"
+      ]
+    }
+  ],
+  "Rival": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "You know what I've worked out, {player}? The best Trainers are the ones who are crazy about their Pokémon. That's all there is to it!"
+      ],
+      "text": [
+        "Știi ce mi-am dat seama, {player}? Cei mai buni Antrenori sunt cei care-și iubesc la nebunie Pokémonii. Asta e tot!"
+      ]
+    },
+    {
+      "en": [
+        "{player}! I'm piling up the wins at the Battle Frontier! My dad had better watch out. I'm coming for him!"
+      ],
+      "text": [
+        "{player}! Strâng victorie după victorie la Battle Frontier! Tata ar face bine să fie atent. Vin după el!"
+      ]
+    },
+    {
+      "en": [
+        "Have you battled everybody in the Battleground yet, {player}? I have. Twice! ...All right, I lost a few."
+      ],
+      "text": [
+        "Te-ai luptat deja cu toată lumea de pe Câmpul de Luptă, {player}? Eu da. De două ori! ...Bine, am pierdut câteva."
+      ]
+    },
+    {
+      "en": [
+        "{player}! Perfect timing! It's the weekend, and that means it's time I proved which of us is tougher!"
+      ],
+      "text": [
+        "{player}! Exact la timp! E weekend, iar asta înseamnă că e momentul să dovedesc care dintre noi e mai dur!"
+      ]
+    },
+    {
+      "en": [
+        "Argh! You just keep getting tougher, {player}! Fine! Then so will I. Same time next week!"
+      ],
+      "text": [
+        "Argh! Tot prinzi putere, {player}! Bine! Atunci și eu. Aceeași oră săptămâna viitoare!"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "MarleyJoins": [
+    {
+      "en": [
+        "Marley"
+      ],
+      "text": [
+        "Marley"
+      ]
+    },
+    {
+      "en": [
+        "...I'm Marley. There is somewhere beyond this cave I want to reach, but the Trainers in here come at you two at a time."
+      ],
+      "text": [
+        "...Sunt Marley. E un loc dincolo de peștera asta la care vreau să ajung, dar Antrenorii de aici vin peste tine câte doi deodată."
+      ]
+    },
+    {
+      "en": [
+        "...{player}, isn't it? Let me go with you. Please."
+      ],
+      "text": [
+        "...{player}, nu? Lasă-mă să merg cu tine. Te rog."
+      ]
+    },
+    {
+      "en": [
+        "...You took so long. I thought you had changed your mind about me."
+      ],
+      "text": [
+        "...Ai întârziat atât. Credeam că te-ai răzgândit în privința mea."
+      ]
+    },
+    {
+      "en": [
+        "{player} decided to go with Marley."
+      ],
+      "text": [
+        "{player} a hotărât să meargă cu Marley."
+      ]
+    },
+    {
+      "en": [
+        "Marley"
+      ],
+      "text": [
+        "Marley"
+      ]
+    },
+    {
+      "en": [
+        "...I'll see to your Pokémon after every battle. It's the least I can do."
+      ],
+      "text": [
+        "...O să am grijă de Pokémonii tăi după fiecare luptă. E cel mai puțin ce pot face."
+      ]
+    }
+  ],
+  "PlayerTurnsBack": [
+    {
+      "en": [
+        "Marley"
+      ],
+      "text": [
+        "Marley"
+      ]
+    },
+    {
+      "en": [
+        "...You're going back? ...I see. I'll wait here, then."
+      ],
+      "text": [
+        "...Te întorci? ...Înțeleg. Atunci aștept aici."
+      ]
+    }
+  ],
+  "MarleyParts": [
+    {
+      "en": [
+        "Marley"
+      ],
+      "text": [
+        "Marley"
+      ]
+    },
+    {
+      "en": [
+        "...This is far enough. The way out is just ahead. I can smell the sea from here."
+      ],
+      "text": [
+        "...Până aici. Ieșirea e chiar în față. Simt mirosul mării de aici."
+      ]
+    },
+    {
+      "en": [
+        "...Thank you for bringing me, {player}. You are strong. And kinder than you look."
+      ],
+      "text": [
+        "...Mulțumesc că m-ai adus, {player}. Ai putere. Și mai multă bunătate decât pare."
+      ]
+    }
+  ],
+  "Marley": [
+    {
+      "en": [
+        "Marley"
+      ],
+      "text": [
+        "Marley"
+      ]
+    },
+    {
+      "en": [
+        "...You talk a lot. ...I don't mind it. I'm only not used to it."
+      ],
+      "text": [
+        "...Vorbești mult. ...Nu mă deranjează. Doar că nu sunt obișnuită."
+      ]
+    },
+    {
+      "en": [
+        "...Beyond this cave the flowers grow down to the sea. They say a Pokémon lives among them that carries thanks to people far away."
+      ],
+      "text": [
+        "...Dincolo de peștera asta florile cresc până la mare. Se zice că printre ele trăiește un Pokémon care duce mulțumiri oamenilor de departe."
+      ]
+    },
+    {
+      "en": [
+        "...There is someone I would like to thank."
+      ],
+      "text": [
+        "...E cineva căruia aș vrea să-i mulțumesc."
+      ]
+    }
+  ]
+}

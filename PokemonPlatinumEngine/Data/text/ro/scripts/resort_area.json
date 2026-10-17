@@ -1,0 +1,178 @@
+{
+  "GiveVilla": [
+    {
+      "en": [
+        "Boy"
+      ],
+      "text": [
+        "Băiatul"
+      ]
+    },
+    {
+      "en": [
+        "You there! You look like someone who could use a Villa. I'm giving this one away, today, for nothing. Will you have it?"
+      ],
+      "text": [
+        "Hei, tu! Arăți ca cineva căruia i-ar prinde bine o Vilă. O dau pe asta azi, pe nimic. O vrei?"
+      ]
+    },
+    {
+      "en": [
+        "Oh, thank goodness. That is a weight off my mind!",
+        "Come in, come in. I'll show you what you've got."
+      ],
+      "text": [
+        "O, slavă cerului. Mi s-a luat o piatră de pe inimă!",
+        "Intră, intră. Îți arăt ce ai primit."
+      ]
+    },
+    {
+      "en": [
+        "No? I can't blame you. A house for nothing does sound shady. It isn't! ...Mostly."
+      ],
+      "text": [
+        "Nu? Nu te pot învinovăți. O casă pe nimic sună dubios. Nu e! ...În mare parte."
+      ]
+    }
+  ],
+  "SchoolKid": [
+    {
+      "en": [
+        "A Villa, going free! Walk up the path to me and it's yours."
+      ],
+      "text": [
+        "O Vilă, pe gratis! Urcă poteca până la mine și e a ta."
+      ]
+    }
+  ],
+  "ProfRowan": [
+    {
+      "en": [
+        "Hm. {player}. I hear you keep a house here. Might an old man rest his feet in it?"
+      ],
+      "text": [
+        "Hm. {player}. Am auzit că ai o casă aici. Și-ar putea odihni un bătrân picioarele în ea?"
+      ]
+    },
+    {
+      "en": [
+        "Good. I shall follow you in."
+      ],
+      "text": [
+        "Bine. Vin după tine."
+      ]
+    },
+    {
+      "en": [
+        "Hm. Another day, then."
+      ],
+      "text": [
+        "Hm. Altă dată, atunci."
+      ]
+    }
+  ],
+  "Roark": [
+    {
+      "en": [
+        "Hey, {player}! Is this your place? Mind if I come in and have a look at the walls?"
+      ],
+      "text": [
+        "Hei, {player}! Aici stai? Pot să intru să mă uit la pereți?"
+      ]
+    },
+    {
+      "en": [
+        "Great! After you."
+      ],
+      "text": [
+        "Grozav! După tine."
+      ]
+    },
+    {
+      "en": [
+        "No problem. I'll go and look at the cliffs instead."
+      ],
+      "text": [
+        "Nicio problemă. Mă duc să mă uit la stânci în schimb."
+      ]
+    }
+  ],
+  "Gardenia": [
+    {
+      "en": [
+        "{player}! What a pretty house. May I come in? I promise not to rearrange your plants."
+      ],
+      "text": [
+        "{player}! Ce casă drăguță. Pot să intru? Promit să nu-ți rearanjez plantele."
+      ]
+    },
+    {
+      "en": [
+        "Lovely! Lead the way."
+      ],
+      "text": [
+        "Minunat! Arată-mi drumul."
+      ]
+    },
+    {
+      "en": [
+        "Oh. Next time, then! I'll be in the garden."
+      ],
+      "text": [
+        "O. Data viitoare, atunci! Sunt în grădină."
+      ]
+    }
+  ],
+  "Maylene": [
+    {
+      "en": [
+        "Um. {player}. I ran all the way here and then I didn't know if I should knock. Can I come in?"
+      ],
+      "text": [
+        "Ăă. {player}. Am alergat tot drumul până aici și apoi n-am știut dacă să bat la ușă. Pot să intru?"
+      ]
+    },
+    {
+      "en": [
+        "Thanks! I'll take my shoes off. ...I'm not wearing shoes."
+      ],
+      "text": [
+        "Mersi! Îmi scot pantofii. ...Nu port pantofi."
+      ]
+    },
+    {
+      "en": [
+        "OK. I'll run back. It's good training."
+      ],
+      "text": [
+        "Bine. Fug înapoi. E un antrenament bun."
+      ]
+    }
+  ],
+  "Byron": [
+    {
+      "en": [
+        "Gahaha! {player}! A house of your own, eh? Let an old digger in to see it?"
+      ],
+      "text": [
+        "Hahaha! {player}! O casă a ta, ei? Îl lași pe un bătrân săpător să o vadă?"
+      ]
+    },
+    {
+      "en": [
+        "That's the spirit! In we go."
+      ],
+      "text": [
+        "Așa te vreau! Intrăm."
+      ]
+    },
+    {
+      "en": [
+        "Suit yourself! A good defence starts at the front door, I always say."
+      ],
+      "text": [
+        "Cum vrei! O apărare bună începe de la ușa din față, zic eu mereu."
+      ]
+    }
+  ]
+}

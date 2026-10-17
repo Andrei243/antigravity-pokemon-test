@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon League"
+    ],
+    "text": [
+      "Liga Pokémon"
+    ]
+  },
+  "people": {
+    "cynthia": {
+      "name": {
+        "en": [
+          "Cynthia"
+        ],
+        "text": [
+          "Cynthia"
+        ]
+      }
+    },
+    "prof_rowan": {
+      "name": {
+        "en": [
+          "Professor Rowan"
+        ],
+        "text": [
+          "Profesorul Rowan"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

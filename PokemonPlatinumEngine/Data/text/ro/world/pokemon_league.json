@@ -1,0 +1,21 @@
+{
+  "people": {},
+  "signs": {
+    "signboard": {
+      "en": [
+        "Victory Road\nThe last road before the Pokémon League. Only trainers with eight Badges go on."
+      ],
+      "text": [
+        "Drumul Victoriei\nUltimul drum înaintea Ligii Pokémon. Merg mai departe doar Antrenorii cu opt Insigne."
+      ]
+    },
+    "arrow_signpost": {
+      "en": [
+        "Pokémon League\nNorth: the Pokémon League"
+      ],
+      "text": [
+        "Liga Pokémon\nNord: Liga Pokémon"
+      ]
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Battle Tower"
+    ],
+    "text": [
+      "Battle Tower"
+    ]
+  },
+  "people": {
+    "attendant": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Going up. Please stand clear of the doors."
+        ],
+        "text": [
+          "Urcăm. Vă rugăm să nu stați în dreptul ușilor."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}
