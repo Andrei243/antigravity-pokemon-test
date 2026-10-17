@@ -399,6 +399,60 @@ One sound for each type, played as a move of that type sets off (`SoundBank.Move
 | `use_dream_eater` | `SEQ_SE_DP_153` | Dream Eater: soft dreamy notes drawn in with a gulp and a chime. |
 | `use_grass_whistle` | `SEQ_SE_DP_W320` | Grass Whistle: a bright whistle, a lilting tune and a hush. |
 | `use_reversal` | `SEQ_SE_DP_W197` | Reversal: two bright surges, a blow and a crushing second blow. |
+| `use_psych_up` | `SEQ_SE_DP_W060B` | Psych Up: a rising shimmer, a run of bells and a chime as it settles. |
+| `use_thunder` | `SEQ_SE_DP_W161B` | Thunder: a rumble, a flash-crack of lightning and a long rolling boom. |
+| `use_aurora_beam` | `SEQ_SE_DP_W062` | Aurora Beam: a bright rising glide with a ripple of bells and a sparkle. |
+| `use_barrier` | `SEQ_SE_DP_W112B` | Barrier: five panes of glass set one after another, each with a ring. |
+| `use_double_edge` | `SEQ_SE_DP_W025` | Double-Edge: a rush, a crash and a rebounding knock on the user. |
+| `use_thrash` | `SEQ_SE_DP_007` | Thrash: a growling rage and three wild blows. |
+| `use_trick_room` | `SEQ_SE_DP_061` | Trick Room: a low hum with a strange run of notes turning back on themselves. |
+| `use_brine` | `SEQ_SE_DP_W362` | Brine: a stinging spray and a splash. |
+| `use_mud_shot` | `SEQ_SE_DP_W250` | Mud Shot: three wet squelches and a heavy splat. |
+| `use_waterfall` | `SEQ_SE_DP_W152` | Waterfall: a pouring torrent, a rise and a crashing splash. |
+| `use_bind` | `SEQ_SE_DP_W020B` | Bind: two creaking squeezes. |
+| `use_silver_wind` | `SEQ_SE_DP_W016` | Silver Wind: a long gust with a glitter of high notes. |
+| `use_synthesis` | `SEQ_SE_DP_W025` | Synthesis: a warm rising tone with soft chimes. |
+| `use_thunder_punch` | `SEQ_SE_DP_BASI` | Thunder Punch: a heavy punch and a crackle of lightning. |
+| `use_helping_hand` | `SEQ_SE_DP_W227` | Helping Hand: two pats and a rising chime. |
+| `use_bounce` | `SEQ_SE_PL_W100_1` | Bounce: a spring up, a hush in the air and a heavy landing. |
+| `use_egg_bomb` | `SEQ_SE_DP_W039` | Egg Bomb: a lobbed whistle and a rolling blast. |
+| `use_fling` | `SEQ_SE_DP_W374` | Fling: a fast whip through the air and a hard knock. |
+| `use_meteor_mash` | `SEQ_SE_DP_W112` | Meteor Mash: a falling comet, a boom and a ringing steel punch. |
+| `use_petal_dance` | `SEQ_SE_DP_W080` | Petal Dance: a rustling whirl of petals and three flung gusts. |
+| `use_wish` | `SEQ_SE_DP_W115` | Wish: a falling star's whistle, a warm bell and a rising twinkle. |
+| `use_u_turn` | `SEQ_SE_DP_080` | U-turn: a dash, a hit and a swerving dash back. |
+| `use_flash_cannon` | `SEQ_SE_DP_W082` | Flash Cannon: a rising whine, a flash of high light and a boom. |
+| `use_iron_tail` | `SEQ_SE_DP_W231` | Iron Tail: a ring of steel, a heavy swing and a clang. |
+| `use_metal_burst` | `SEQ_SE_DP_W368` | Metal Burst: two rising rings of metal and a bursting boom. |
+| `use_skill_swap` | `SEQ_SE_DP_W179` | Skill Swap: six bell pings that change pitch halfway. |
+| `use_stone_edge` | `SEQ_SE_DP_W088` | Stone Edge: six stones thrust up one after another and a heavy shatter. |
+| `use_dragon_breath` | `SEQ_SE_DP_400` | Dragon Breath: a growl and two puffs of roaring fire. |
+| `use_close_combat` | `SEQ_SE_DP_003` | Close Combat: eight quick blows, each a notch heavier, and a last thud. |
+| `use_dizzy_punch` | `SEQ_SE_DP_W004` | Dizzy Punch: two punches and a wobbling run of dizzy notes. |
+| `use_high_jump_kick` | `SEQ_SE_DP_W026` | High Jump Kick: a spring up, a whoosh down and a heavy kick. |
+| `use_cross_chop` | `SEQ_SE_DP_W025` | Cross Chop: two chops in turn and a hard cross-chop with a ring. |
+| `use_ice_shard` | `SEQ_SE_DP_KAZE` | Ice Shard: an icy gathering, a chime and a sharp cracking hit. |
+| `use_swords_dance` | `SEQ_SE_DP_SHUSHU` | Swords Dance: four blade-swishes round a rising hum and a bright ring. |
+| `use_wood_hammer` | `SEQ_SE_DP_W452` | Wood Hammer: a swing, a hollow wooden crash and a rustle of leaves. |
+| `use_heal_bell` | `SEQ_SE_DP_W234` | Heal Bell: three ringing bells with a soft run of high notes over them. |
+| `use_psywave` | `SEQ_SE_DP_181` | Psywave: three wobbling psychic waves and a ringing break. |
+| `use_fire_blast` | `SEQ_SE_DP_W172` | Fire Blast: a roaring gather, a flash and a great burning boom. |
+| `use_flamethrower` | `SEQ_SE_DP_W053` | Flamethrower: a long steady roar of flame with a crackle. |
+| `use_punishment` | `SEQ_SE_DP_W104` | Punishment: a whip-crack, a thud and three stern beeps. |
+| `use_conversion_2` | `SEQ_SE_DP_W112` | Conversion 2: a scanning sweep and a run of changing notes. |
+| `use_icy_wind` | `SEQ_SE_DP_W016B` | Icy Wind: a long cold wind with chimes of frost. |
+| `use_shadow_punch` | `SEQ_SE_DP_W026` | Shadow Punch: a hollow ghostly rush and a cold dull blow. |
+| `use_hail` | `SEQ_SE_DP_W258` | Hail: a rattle of ice and many small stones hitting. |
+| `use_rock_climb` | `SEQ_SE_DP_W088` | Rock Climb: four stone steps heaving up and a charge into a crash. |
+| `use_avalanche` | `SEQ_SE_DP_W419` | Avalanche: a long rumbling slide of snow and a heavy pile-up. |
+| `use_blizzard` | `SEQ_SE_DP_KAZE` | Blizzard: a howling snowstorm, bells of frost and a freezing crack. |
+| `use_focus_blast` | `SEQ_SE_DP_W062` | Focus Blast: a rising gather of power, a throw and a great blast. |
+| `use_discharge` | `SEQ_SE_DP_W085B` | Discharge: a charging whine and a long crackle of lightning every way. |
+| `use_dragon_dance` | `SEQ_SE_DP_CLIMAX09_1` | Dragon Dance: three deep beats with bells and a winding dragon tune. |
+| `use_hydro_pump` | `SEQ_SE_DP_SUIRYU` | Hydro Pump: a hammering jet of water and a great splash. |
+| `use_muddy_water` | `SEQ_SE_DP_W057` | Muddy Water: a thick heaving surge of brown water and bubbling mud. |
+| `use_thunder_fang` | `SEQ_SE_DP_W044` | Thunder Fang: a snap of teeth and a crackle of lightning. |
+| `use_zen_headbutt` | `SEQ_SE_DP_293` | Zen Headbutt: a gathering hum, a bell and a heavy ringing butt. |
 
 ## Cries
 
