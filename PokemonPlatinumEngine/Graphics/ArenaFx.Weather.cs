@@ -60,6 +60,77 @@ internal static partial class ArenaFx
             case BattleWeather.Fog:
                 FogLayer(fx, time, k);
                 break;
+            // The later games' (plan 06 · R19b): snow drifts down, the harsh sun is the sun's layer with a fiercer
+            // glare, the heavy rain is the rain twice over, and the strong winds sweep pale gusts across the field
+            case BattleWeather.Snow:
+                SnowLayer(fx, time, k, 170, 0);
+                break;
+            case BattleWeather.HarshSun:
+                SunLayer(fx, time, k);
+                HarshGlare(fx, time, k);
+                break;
+            case BattleWeather.HeavyRain:
+                RainLayer(fx, time, places, k);
+                RainLayer(fx, time + 0.37f, places, k * 0.8f);
+                break;
+            case BattleWeather.StrongWinds:
+                WindLayer(fx, time, k, 60, 0);
+                break;
+        }
+    }
+
+    /// <summary>
+    /// Snow (plan 06 · R19b): flakes drifting down slowly, each swaying on its way and settling on whatever it falls
+    /// to, softer and slower than hail and never bouncing. Matter, alpha-blended, so it keeps its white over the sky.
+    /// </summary>
+    private static void SnowLayer(FxList fx, float time, float k, int count, int salt)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            var speed = new Vector3(0.35f + R(i, 131 + salt) * 0.3f, -1.4f - R(i, 132 + salt) * 0.9f, 0.15f);
+            var p = Drift(i, time, RainMin, RainMax, speed, 130 + salt);
+            p.X += MathF.Sin(time * (0.9f + R(i, 133 + salt)) + i) * 0.35f;
+            float u = (p.Y - RainMin.Y) / (RainMax.Y - RainMin.Y);
+            float size = 0.08f + R(i, 134 + salt) * 0.07f;
+            fx.Sprite(FxShape.Dot, p, size, Rgba(246, 250, 255, (int)(245 * k * EdgeFade(u))), FxBlend.Alpha, depth: true);
+        }
+    }
+
+    /// <summary>The harsh sun's own: a second, whiter glare over the sun's and a pale wash breathing across the far ground.</summary>
+    private static void HarshGlare(FxList fx, float time, float k)
+    {
+        float pulse = 0.8f + 0.2f * MathF.Sin(time * 1.3f);
+        fx.Sprite(FxShape.Glow, new Vector3(-13f, 5f, -18f), 7.5f, Rgba(255, 250, 225, (int)(80 * k * pulse)), depth: true);
+        for (int i = 0; i < 4; i++)
+        {
+            var p = new Vector3(-18f + i * 9f, 0.9f, -11f + R(i, 141) * 3f);
+            fx.Sprite(FxShape.Glow, p, 8f, Rgba(255, 220, 160, (int)(26 * k * (0.7f + 0.3f * MathF.Sin(time * 0.5f + i)))), depth: true);
+        }
+    }
+
+    /// <summary>
+    /// The strong winds (plan 06 · R19b): long pale gusts streaming across the field from the left at every height
+    /// the lens takes in, with a few wisps curling as they go.
+    /// </summary>
+    private static void WindLayer(FxList fx, float time, float k, int count, int salt)
+    {
+        var min = new Vector3(-16f, 0.3f, -10f);
+        var max = new Vector3(10f, 5.5f, 22f);
+        for (int i = 0; i < count; i++)
+        {
+            var speed = new Vector3(14f + R(i, 151 + salt) * 8f, 0.6f * MathF.Sin(i * 1.7f), -0.8f);
+            var p = Drift(i, time, min, max, speed, 150 + salt);
+            p.Y += MathF.Sin(time * 2.2f + i) * 0.25f;
+            float u = (p.X - min.X) / (max.X - min.X);
+            WeatherStreak(fx, p, Vector3.Normalize(speed), 0.06f + R(i, 152 + salt) * 0.03f, 9f + R(i, 153 + salt) * 8f,
+                Rgba(236, 246, 252, (int)(190 * k * EdgeFade(u))), SandWidth);
+        }
+        for (int i = 0; i < 8; i++)
+        {
+            var p = Drift(i, time, min, max, new Vector3(7f, 0.2f, 0f), 154 + salt);
+            float u = (p.X - min.X) / (max.X - min.X);
+            fx.Sprite(FxShape.Smoke, p + Vector3.UnitY * 0.6f, 1.6f + R(i, 155 + salt), Rgba(226, 240, 248, (int)(50 * k * EdgeFade(u))),
+                FxBlend.Alpha, time * 2f + R(i, 156 + salt) * 6f, depth: true);
         }
     }
 
@@ -73,6 +144,23 @@ internal static partial class ArenaFx
     {
         float env = Fx.Envelope(age, 0f, 0.15f, 0.75f, BattleAnimator.WeatherCueTime);
         if (env <= 0f) return;
+        // The later games' (plan 06 · R19b): the strong forms gust as the weathers they are kin to, snow as a flurry
+        // of flakes, the winds as a sweep of gusts
+        switch (weather)
+        {
+            case BattleWeather.Snow:
+                SnowLayer(fx, age * 1.8f + Fx.Rand(seed, 0, 26) * 4f, env, 60, 700 + seed % 79);
+                return;
+            case BattleWeather.StrongWinds:
+                WindLayer(fx, age * 1.5f + Fx.Rand(seed, 0, 27) * 4f, env, 40, 800 + seed % 71);
+                return;
+            case BattleWeather.HarshSun:
+                weather = BattleWeather.Sun;
+                break;
+            case BattleWeather.HeavyRain:
+                weather = BattleWeather.Rain;
+                break;
+        }
         switch (weather)
         {
             case BattleWeather.Rain:

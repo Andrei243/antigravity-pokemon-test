@@ -197,6 +197,17 @@ public sealed class Ruleset
     /// </summary>
     public int MasudaRerolls { get; private init; } = 4;
 
+    /// <summary>
+    /// Hail is snow (Generation 9, plan 06 · R19b): whatever would whip up a hailstorm (the move Hail, Snow Warning,
+    /// a snowy place's sky) brings snow instead, which hurts nobody and raises an Ice type's Defense by half
+    /// (<see cref="Battle.Sim.BattleWeather.Snow"/>); everything else hail does, snow does.
+    /// </summary>
+    public bool SnowInPlaceOfHail { get; private init; }
+
+    /// <summary>The weather these rules make of one asked for: snow for hail where <see cref="SnowInPlaceOfHail"/> holds.</summary>
+    public Battle.Sim.BattleWeather Sky(Battle.Sim.BattleWeather weather) =>
+        SnowInPlaceOfHail && weather == Battle.Sim.BattleWeather.Hail ? Battle.Sim.BattleWeather.Snow : weather;
+
     private Ruleset(RulesPreset preset) => Preset = preset;
 
     public static Ruleset Platinum { get; } = new(RulesPreset.Platinum);
@@ -243,7 +254,8 @@ public sealed class Ruleset
         PoisonInTheField = false,
         EverstoneAlwaysPassesNature = true,
         ModernInheritance = true,
-        MasudaRerolls = 5
+        MasudaRerolls = 5,
+        SnowInPlaceOfHail = true
     };
 
     public static Ruleset Of(RulesPreset preset) => preset == RulesPreset.Modern ? Modern : Platinum;

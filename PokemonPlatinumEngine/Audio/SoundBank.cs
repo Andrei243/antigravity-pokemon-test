@@ -83,10 +83,11 @@ public static partial class SoundBank
     /// <summary>The sound of a weather over a battle as it begins and on each turn it goes on (plan 25 · Y1).</summary>
     public static string WeatherSound(Battle.Sim.BattleWeather weather) => weather switch
     {
-        Battle.Sim.BattleWeather.Rain => "weather_rain",
-        Battle.Sim.BattleWeather.Sun => "weather_sun",
-        Battle.Sim.BattleWeather.Sandstorm => "weather_sandstorm",
-        Battle.Sim.BattleWeather.Hail => "weather_hail",
+        Battle.Sim.BattleWeather.Rain or Battle.Sim.BattleWeather.HeavyRain => "weather_rain",
+        Battle.Sim.BattleWeather.Sun or Battle.Sim.BattleWeather.HarshSun => "weather_sun",
+        // The strong winds roar as a sandstorm does, and snow falls with hail's sound (plan 06 · R19b)
+        Battle.Sim.BattleWeather.Sandstorm or Battle.Sim.BattleWeather.StrongWinds => "weather_sandstorm",
+        Battle.Sim.BattleWeather.Hail or Battle.Sim.BattleWeather.Snow => "weather_hail",
         _ => "weather_fog"
     };
 

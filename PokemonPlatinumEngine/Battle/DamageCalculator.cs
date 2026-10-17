@@ -92,9 +92,27 @@ public static class DamageCalculator
                 if (type == PokemonType.Flying && move.Type == PokemonType.Ground && IsHeldDown(defender)) continue;
                 if (type == PokemonType.Dark && move.Type == PokemonType.Psychic && defender.Volatile.MiracleEye) continue;
             }
+            // The strong winds take the Flying type's weaknesses away (plan 06 · R19b; Showdown's deltastream onEffectiveness)
+            if (type == PokemonType.Flying && multiplier > 1f && defender.Field?.SkyInEffect == BattleWeather.StrongWinds) multiplier = 1f;
             if (multiplier != 1f) yield return (type, multiplier);
         }
     }
+
+    /// <summary>
+    /// On the ground (<c>BattlerIsGrounded</c>): not a Flying type, not floating by Levitate or Magnet Rise; or
+    /// weighed down by an Iron Ball or by Gravity all the same. What Spikes, Toxic Spikes, Sticky Web, Arena Trap
+    /// and the terrains ask.
+    /// </summary>
+    public static bool IsGrounded(Battler b)
+    {
+        var effects = BattleEffects.Of(b).ToList();
+        if (b.Field?.Gravity == true || effects.Any(e => e.GroundsHolder)) return true;
+        bool floats = !b.Volatile.Ingrained && effects.Any(e => e.Levitates);
+        return !floats && b.Volatile.MagnetRiseTurns == 0 && !b.HasType(PokemonType.Flying);
+    }
+
+    /// <summary>A terrain reaches the Pokémon (plan 06 · R19b; Showdown's terrains): it is on the ground and not up in the air, under the ground or the water.</summary>
+    public static bool OnTheTerrain(Battler b) => IsGrounded(b) && !b.IsElsewhere;
 
     /// <param name="spread">The move hits more than one Pokémon this time, so each takes 3/4.</param>
     /// <param name="powerOverride">A typeless physical hit of this power, which can't be critical (confusion).</param>
@@ -190,6 +208,27 @@ public static class DamageCalculator
         {
             if (type == PokemonType.Electric && field.MudSport()) power /= 2;
             if (type == PokemonType.Fire && field.WaterSport()) power /= 2;
+            // The terrains (plan 06 · R19b; Showdown's onBasePower): their own type's moves by a Pokémon on them are
+            // 5325/4096 as strong, the quakes against one on Grassy Terrain and Dragon moves against one on Misty
+            // Terrain half as strong. Nothing in Platinum's rules lays a terrain, so its numbers never pass here.
+            if (field.Terrain is { } terrain && field.Has(terrain))
+            {
+                bool boosts = terrain switch
+                {
+                    FieldCondition.ElectricTerrain => type == PokemonType.Electric,
+                    FieldCondition.GrassyTerrain => type == PokemonType.Grass,
+                    FieldCondition.PsychicTerrain => type == PokemonType.Psychic,
+                    _ => false
+                };
+                if (boosts && OnTheTerrain(attacker)) power = (power * 5325 + 2047) / 4096;
+                bool softened = terrain switch
+                {
+                    FieldCondition.GrassyTerrain => move.Data.Name is "Earthquake" or "Bulldoze" or "Magnitude",
+                    FieldCondition.MistyTerrain => type == PokemonType.Dragon,
+                    _ => false
+                };
+                if (softened && OnTheTerrain(defender)) power /= 2;
+            }
         }
         if (typed && atkPokemon.CurrentHP * 3 <= atkPokemon.MaxHP && mine switch
             {
@@ -222,6 +261,8 @@ public static class DamageCalculator
         if (!physical && mine == "Solar Power" && weather == BattleWeather.Sun) attack = attack * 15 / 10;
         // A sandstorm hardens Rock types against special moves; Flower Gift's sun for a side's Attack and Sp. Def; Explosion finds half a Defense
         if (!physical && weather == BattleWeather.Sandstorm && defender.HasType(PokemonType.Rock)) defense = defense * 15 / 10;
+        // Snow hardens Ice types against physical moves as a sandstorm hardens Rock types (plan 06 · R19b)
+        if (physical && !selfHit && field?.SkyInEffect == BattleWeather.Snow && defender.HasType(PokemonType.Ice)) defense = defense * 15 / 10;
         if (physical && weather == BattleWeather.Sun && SideHas(attacker, "Flower Gift")) attack = attack * 15 / 10;
         if (!physical && weather == BattleWeather.Sun && !breaksAbility && SideHas(defender, "Flower Gift")) defense = defense * 15 / 10;
         if (rules.ExplosionHalvesDefense && move.Data.Effect == "HalveDefense") defense /= 2;
@@ -235,7 +276,8 @@ public static class DamageCalculator
         // Reflect against physical moves and Light Screen against special ones, unless the hit is critical; two
         // Pokémon behind one screen share it
         var side = field?.Side(defender.Side);
-        bool screened = side != null && !result.IsCritical && !pastScreens && !selfHit && (physical ? side.Reflect : side.LightScreen);
+        // (Aurora Veil is both screens at once, and counts once beside either: plan 06 · R19b)
+        bool screened = side != null && !result.IsCritical && !pastScreens && !selfHit && ((physical ? side.Reflect : side.LightScreen) || side.AuroraVeil);
         bool shared = screened && field!.Standing(defender.Side) >= 2;
 
         int damage = Formulas.BaseDamage(atkPokemon.Level, power, attack, defense, burned, spread, screened, shared,

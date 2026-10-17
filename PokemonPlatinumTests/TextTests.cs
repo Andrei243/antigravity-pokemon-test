@@ -444,7 +444,9 @@ public class TextTests
     private static readonly Dictionary<string, string[]> BattleNotWords = new()
     {
         // Struggle's description, which is the data's like every other move's (plan 17 · N3)
-        ["Battle/Sim/BattleCore.Moves.cs"] = new[] { "Used only when no other move has PP left. It also hurts the user." }
+        ["Battle/Sim/BattleCore.Moves.cs"] = new[] { "Used only when no other move has PP left. It also hurts the user." },
+        // An ability's name, which the shapes of the later games go by (plan 06 · R19b)
+        ["Battle/Sim/BattleCore.Shapes.cs"] = new[] { "Zero to Hero" }
     };
 
     [Fact]

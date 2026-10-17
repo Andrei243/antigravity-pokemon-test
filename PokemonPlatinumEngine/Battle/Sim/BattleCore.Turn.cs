@@ -24,6 +24,10 @@ public sealed partial class BattleCore
         BattleWeather.Sandstorm => Text.Of("battle.aSandstormKickedUp"),
         BattleWeather.Sun => Text.Of("battle.theSunlightTurnedHarsh"),
         BattleWeather.Hail => Text.Of("battle.itStartedToHail"),
+        BattleWeather.Snow => Text.Of("battle.itStartedToSnow"),
+        BattleWeather.HarshSun => Text.Of("battle.theSunlightTurnedExtremelyHarsh"),
+        BattleWeather.HeavyRain => Text.Of("battle.aHeavyRainBegan"),
+        BattleWeather.StrongWinds => Text.Of("battle.mysteriousStrongWinds"),
         _ => Text.Of("battle.theFogIsDeep")
     };
 
@@ -33,6 +37,10 @@ public sealed partial class BattleCore
         BattleWeather.Sandstorm => Text.Of("battle.theSandstormRages"),
         BattleWeather.Sun => Text.Of("battle.theSunlightIsStrong"),
         BattleWeather.Hail => Text.Of("battle.hailContinuesToFall"),
+        BattleWeather.Snow => Text.Of("battle.snowContinuesToFall"),
+        BattleWeather.HarshSun => Text.Of("battle.theSunlightIsExtremelyHarsh"),
+        BattleWeather.HeavyRain => Text.Of("battle.theRainIsHeavy"),
+        BattleWeather.StrongWinds => Text.Of("battle.theWindsBlowOn"),
         _ => Text.Of("battle.theFogIsDeep")
     };
 
@@ -41,6 +49,10 @@ public sealed partial class BattleCore
         BattleWeather.Rain => Text.Of("battle.theRainStopped"),
         BattleWeather.Sandstorm => Text.Of("battle.theSandstormSubsided"),
         BattleWeather.Sun => Text.Of("battle.theSunlightFaded"),
+        BattleWeather.Snow => Text.Of("battle.theSnowStopped"),
+        BattleWeather.HarshSun => Text.Of("battle.theHarshSunlightFaded"),
+        BattleWeather.HeavyRain => Text.Of("battle.theHeavyRainLifted"),
+        BattleWeather.StrongWinds => Text.Of("battle.theStrongWindsDissipated"),
         _ => Text.Of("battle.theHailStopped")
     };
 
@@ -50,7 +62,7 @@ public sealed partial class BattleCore
     /// </summary>
     private void OpenUnderTheSky()
     {
-        if (Conditions.Weather != BattleWeather.None) SetWeather(Conditions.Weather, 0, Starts(Conditions.Weather));
+        if (Conditions.Weather != BattleWeather.None) SetWeather(Rules.Sky(Conditions.Weather), 0, Starts(Rules.Sky(Conditions.Weather)));
         if (Conditions.TrickRoom)
         {
             Field.TrickRoomTurns = 5;
@@ -83,6 +95,7 @@ public sealed partial class BattleCore
         foreach (var side in sides) if (RunsOut(ref Field.Side(side).SafeguardTurns)) Say(Text.Of("battle.isNoLongerProtected", ("team", TeamOf(side, true)))).With(Now(side, SideCondition.Safeguard));
         foreach (var side in sides) if (RunsOut(ref Field.Side(side).TailwindTurns)) Say(Text.Of("battle.tailwindPeteredOut", ("team", TeamOf(side, true)))).With(Now(side, SideCondition.Tailwind));
         foreach (var side in sides) if (RunsOut(ref Field.Side(side).LuckyChantTurns)) Say(Text.Of("battle.luckyChantWoreOff", ("team", TeamOf(side, true)))).With(Now(side, SideCondition.LuckyChant));
+        foreach (var side in sides) if (RunsOut(ref Field.Side(side).AuroraVeilTurns)) Say(Text.Of("battle.auroraVeilWoreOff", ("team", TeamOf(side, true)))).With(Now(side, SideCondition.AuroraVeil));
 
         // A Wish comes true for whoever stands where it was made
         foreach (var b in speedOrder)
@@ -117,6 +130,9 @@ public sealed partial class BattleCore
         }
 
         if (Field.GravityTurns > 0 && --Field.GravityTurns == 0) Say(Text.Of("battle.gravityReturnedToNormal")).With(new FieldConditionChanged(FieldCondition.Gravity, Up: false));
+
+        // The terrain runs down (plan 06 · R19b; Showdown's onFieldResidual, after the weather)
+        if (Field.Terrain is { } terrain && Field.TerrainTurns > 0 && --Field.TerrainTurns == 0) EndTerrain(terrain);
         return true;
     }
 
@@ -132,12 +148,14 @@ public sealed partial class BattleCore
     {
         var weather = Field.WeatherInEffect;
         if (weather == BattleWeather.None) return true;
+        // Only a sandstorm and hail itself wear: snow, which the rules otherwise read as hail, hurts nobody (plan 06 · R19b)
+        var sky = Field.SkyInEffect;
         foreach (var b in speedOrder.ToList())
         {
             if (!b.IsActive) continue;
             var effects = BattleEffects.Of(b).ToList();
             bool hidden = b.Volatile.Elsewhere is Elsewhere.Underground or Elsewhere.Underwater;
-            bool wears = weather switch
+            bool wears = sky switch
             {
                 BattleWeather.Sandstorm => !b.HasType(PokemonType.Rock) && !b.HasType(PokemonType.Steel) && !b.HasType(PokemonType.Ground),
                 BattleWeather.Hail => !b.HasType(PokemonType.Ice),
@@ -163,6 +181,10 @@ public sealed partial class BattleCore
             var v = b.Volatile;
             bool guarded = BattleEffects.Of(b).Any(e => e.PreventsIndirectDamage);
             int drain = BattleEffects.Of(b).Select(e => e.DrainHundredths).DefaultIfEmpty(100).Max();
+
+            // Grassy Terrain gives a sixteenth back to whoever stands on it (plan 06 · R19b; before the roots and
+            // Leftovers, as Showdown's residual order 5.2 has it)
+            if (b.IsActive) GrassyTerrainHeals(b);
 
             // Roots and a ring of water give a sixteenth back
             // The roots have a moment of their own (subscript_ingrain_heal); the ring of water plays the heal's (plan 25 · Y3)
@@ -298,6 +320,9 @@ public sealed partial class BattleCore
             // Its berries look at what the turn left it with, and an orb does its harm last
             CheckConditionHooks(b, null);
             if (b.IsActive) ItemEffectOf(b)?.AfterTheTurn(this, b);
+
+            // The shapes the turn's end decides (plan 06 · R19b: Zen Mode, Schooling, Shields Down, Hunger Switch)
+            if (b.IsActive) ShapeAtTurnEnd(b);
 
             if (!Settle()) return false;
         }

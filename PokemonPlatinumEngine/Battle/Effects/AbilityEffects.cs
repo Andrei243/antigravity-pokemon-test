@@ -560,7 +560,10 @@ internal sealed class WeatherBringer(BattleWeather weather, string rock, string 
     {
         int turns = ctx.Rules.AbilityWeatherTurns;
         if (turns > 0) turns += BattleEffects.Of(self).Sum(e => e.ExtraTurns(rock));
-        ctx.SetWeather(weather, turns, string.Format(Text.Of(line), self.Name, ctx.AbilityOf(self)));
+        // Snow Warning brings snow where hail is snow (plan 06 · R19b), and says so
+        var sky = ctx.Rules.Sky(weather);
+        string said = sky == weather ? line : "battle.broughtTheSnow";
+        ctx.SetWeather(sky, turns, string.Format(Text.Of(said), self.Name, ctx.AbilityOf(self)));
     }
 }
 

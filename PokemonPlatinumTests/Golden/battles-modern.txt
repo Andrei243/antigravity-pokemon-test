@@ -7917,9 +7917,9 @@ log:
   say Go! Drilbur and Dondozo!
     + Entered P0 Pokemon=mine#0 Drilbur FromBall=true
     + Entered P1 Pokemon=mine#1 Dondozo FromBall=true
-  say Foe Snover's Snow Warning whipped up a hailstorm!
+  say Foe Snover's Snow Warning brought the snow!
     + AbilityShown E0 Ability=Snow Warning
-    + WeatherChanged Weather=Hail
+    + WeatherChanged Weather=Snow
   say Foe Simisage used Seed Bomb!
     + Lunged E1 Category=Physical
     + MoveShown Move=Seed Bomb Type=Grass Category=Physical From=E1 To=P1 Missed=false Blocked=false Critical=false SuperEffective=true
@@ -7945,14 +7945,8 @@ log:
   say It's super effective!
   say Foe Snover is hit with recoil!
     + HpChanged E0 Hp=110 Healed=false
-  say Hail continues to fall.
-    + WeatherContinues Weather=Hail
-  say Foe Simisage is pelted by the hail!
-    + HpChanged E1 Hp=102 Healed=false
-  say Dondozo is pelted by the hail!
-    + HpChanged P1 Hp=50 Healed=false
-  say Drilbur is pelted by the hail!
-    + HpChanged P0 Hp=95 Healed=false
+  say Snow continues to fall.
+    + WeatherContinues Weather=Snow
   say Foe Simisage used Seed Bomb!
     + Lunged E1 Category=Physical
     + MoveShown Move=Seed Bomb Type=Grass Category=Physical From=E1 To=P0 Missed=false Blocked=false Critical=false SuperEffective=true
@@ -7964,7 +7958,7 @@ log:
   say Dondozo used Order Up!
     + Lunged P1 Category=Physical
     + MoveShown Move=Order Up Type=Dragon Category=Physical From=P1 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck E1 Hp=33 Hard=false
+    ! Struck E1 Hp=44 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Snover used Wood Hammer!
     + Lunged E0 Category=Physical
@@ -7973,13 +7967,11 @@ log:
     ! HitSounded SuperEffective=true NotVeryEffective=false
   say It's super effective!
   say Foe Snover is hit with recoil!
-    + HpChanged E0 Hp=94 Healed=false
+    + HpChanged E0 Hp=88 Healed=false
   say Dondozo fainted!
     + Fainted P1
-  say Hail continues to fall.
-    + WeatherContinues Weather=Hail
-  say Foe Simisage is pelted by the hail!
-    + HpChanged E1 Hp=22 Healed=false
+  say Snow continues to fall.
+    + WeatherContinues Weather=Snow
   say Go! Munchlax!
     + Entered P0 Pokemon=mine#2 Munchlax FromBall=true
   say Foe Simisage used Seed Bomb!
@@ -9790,10 +9782,11 @@ log:
   say Foe Rockruff used Stone Edge!
     + Lunged E1 Category=Physical
     + MoveShown Move=Stone Edge Type=Rock Category=Physical From=E1 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P1 Hp=0 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
-  say Mimikyu fainted!
-    + Fainted P1
+  say Its disguise served it as a decoy!
+    + Reshaped P1
+  say Mimikyu's disguise was busted!
+    + HpChanged P1 Hp=29 Healed=false
   say Hatenna used Healing Wish!
     + Lunged P0 Category=Status
     + MoveShown Move=Healing Wish Type=Psychic Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -9805,11 +9798,41 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Hatenna fainted!
     + Fainted P0
+  say Mimikyu used Splash!
+    + Lunged P1 Category=Status
+  say But nothing happened!
+  say Foe Rockruff used Scary Face!
+    + Lunged E1 Category=Status
+    + MoveShown Move=Scary Face Type=Normal Category=Status From=E1 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Mimikyu's Speed harshly fell!
+    + StageChanged P1 Stat=Speed Stage=-2 Rose=false
+  say Foe Petilil used Sunny Day!
+    + Lunged E0 Category=Status
+    + MoveShown Move=Sunny Day Type=Fire Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say The sunlight turned harsh!
+    + WeatherChanged Weather=Sun
+  say Mimikyu used Splash!
+    + Lunged P1 Category=Status
+  say But nothing happened!
+  say The sunlight is strong.
+    + WeatherContinues Weather=Sun
+  say Mimikyu used Shadow Sneak!
+    + Lunged P1 Category=Physical
+    + MoveShown Move=Shadow Sneak Type=Ghost Category=Physical From=P1 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck E0 Hp=104 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=false
+  say Foe Rockruff used Crunch!
+    + Lunged E1 Category=Physical
+    + MoveShown Move=Crunch Type=Dark Category=Physical From=E1 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck P1 Hp=0 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=false
+  say Mimikyu fainted!
+    + Fainted P1
   say Lucas has no Pokémon left that can fight!
   say ...  ...  ...
   say Lucas whited out!
   Ended Result=PlayerDefeat
-result: PlayerDefeat after 1 turns
+result: PlayerDefeat after 3 turns
 === battle 163
 rules: Modern rules
 format: Single
@@ -10150,26 +10173,20 @@ log:
   say Foe Amaura used Hail!
     + Lunged E0 Category=Status
     + MoveShown Move=Hail Type=Ice Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say It started to hail!
-    + WeatherChanged Weather=Hail
-  say Hail continues to fall.
-    + WeatherContinues Weather=Hail
-  say Foe Luxio is pelted by the hail!
-    + HpChanged E1 Hp=124 Healed=false
-  say Azumarill is pelted by the hail!
-    + HpChanged P0 Hp=49 Healed=false
-  say Croagunk is pelted by the hail!
-    + HpChanged P1 Hp=129 Healed=false
+  say It started to snow!
+    + WeatherChanged Weather=Snow
+  say Snow continues to fall.
+    + WeatherContinues Weather=Snow
   say Foe Luxio is hurt by poison!
     + MomentShown E1 Moment=Poisoned From=none
-    + HpChanged E1 Hp=113 Healed=false
+    + HpChanged E1 Hp=124 Healed=false
   say Foe Luxio used Wild Charge!
     + Lunged E1 Category=Physical
     + MoveShown Move=Wild Charge Type=Electric Category=Physical From=E1 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
     ! Struck P1 Hp=0 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Luxio is hit with recoil!
-    + HpChanged E1 Hp=81 Healed=false
+    + HpChanged E1 Hp=90 Healed=false
   say Croagunk fainted!
     + Fainted P1
   say Azumarill used Rain Dance!
@@ -10186,7 +10203,7 @@ log:
     + WeatherContinues Weather=Rain
   say Foe Luxio is hurt by poison!
     + MomentShown E1 Moment=Poisoned From=none
-    + HpChanged E1 Hp=59 Healed=false
+    + HpChanged E1 Hp=68 Healed=false
   say Go! Lopunny!
     + Entered P1 Pokemon=mine#2 Lopunny FromBall=true
   say Foe Luxio used Wild Charge!
@@ -10196,7 +10213,7 @@ log:
     ! HitSounded SuperEffective=true NotVeryEffective=false
   say It's super effective!
   say Foe Luxio is hit with recoil!
-    + HpChanged E1 Hp=47 Healed=false
+    + HpChanged E1 Hp=52 Healed=false
   say Azumarill fainted!
     + Fainted P0
   say Lopunny used Charm!
@@ -10207,17 +10224,13 @@ log:
   say Foe Amaura used Hail!
     + Lunged E0 Category=Status
     + MoveShown Move=Hail Type=Ice Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say It started to hail!
-    + WeatherChanged Weather=Hail
-  say Hail continues to fall.
-    + WeatherContinues Weather=Hail
-  say Foe Luxio is pelted by the hail!
-    + HpChanged E1 Hp=36 Healed=false
-  say Lopunny is pelted by the hail!
-    + HpChanged P1 Hp=85 Healed=false
+  say It started to snow!
+    + WeatherChanged Weather=Snow
+  say Snow continues to fall.
+    + WeatherContinues Weather=Snow
   say Foe Luxio is hurt by poison!
     + MomentShown E1 Moment=Poisoned From=none
-    + HpChanged E1 Hp=3 Healed=false
+    + HpChanged E1 Hp=19 Healed=false
   say Foe Luxio used Wild Charge!
     + Lunged E1 Category=Physical
     + MoveShown Move=Wild Charge Type=Electric Category=Physical From=E1 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -10849,10 +10862,12 @@ log:
     + StageChanged P0 Stat=Attack Stage=-2 Rose=false
   say Perrserker used Metal Claw!
     + Lunged P0 Category=Physical
-    + MoveShown Move=Metal Claw Type=Steel Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=true
-    ! Struck E0 Hp=163 Hard=true
-    ! HitSounded SuperEffective=true NotVeryEffective=false
-  say It's super effective!
+    + MoveShown Move=Metal Claw Type=Steel Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! HitSounded SuperEffective=false NotVeryEffective=false
+  say Its disguise served it as a decoy!
+    + Reshaped E0
+  say Foe Mimikyu's disguise was busted!
+    + HpChanged E0 Hp=154 Healed=false
   say Foe Mimikyu used Shadow Claw!
     + Lunged E0 Category=Physical
     + MoveShown Move=Shadow Claw Type=Ghost Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
