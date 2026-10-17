@@ -97,6 +97,8 @@ public sealed class BattleInfo
         if (WeatherName(field.Weather) is { } weather) lines.Add(new(weather));
         if (field.TrickRoom) lines.Add(new(Text.Of("battleInfo.trickRoom"), Turns(field.TrickRoomTurns)));
         if (field.Gravity) lines.Add(new(Text.Of("battleInfo.gravity"), Turns(field.GravityTurns)));
+        if (field.WonderRoomTurns > 0) lines.Add(new(Text.Of("battleInfo.wonderRoom"), Turns(field.WonderRoomTurns)));
+        if (field.MagicRoomTurns > 0) lines.Add(new(Text.Of("battleInfo.magicRoom"), Turns(field.MagicRoomTurns)));
         // The terrain (plan 06 · R19b); a Terrain Extender lengthens it, so it is named without its count
         if (field.Terrain is { } terrain && field.Has(terrain)) lines.Add(new(TerrainName(terrain)));
         return lines;

@@ -47,6 +47,9 @@ public sealed partial class BattleCore
         if (v.Tormented && v.LastMove == data) return Text.Of("battle.cantUseTheSame", ("pokemon", mine.Name));
         // The original keeps back the moves of power 0 in its table: the status moves (a move of variable power is 1 there)
         if (v.TauntTurns > 0 && move.Category == MoveCategory.Status) return Text.Of("battle.cantUseAfterThe", ("pokemon", mine.Name), ("move", move.DisplayName));
+        // The later moves that keep a move back (plan 06 · R25): Throat Chop a sound move, and Belch until a berry is eaten
+        if (ThroatChopped(mine, data)) return Text.Of("battle.cantUseBecauseOfThroatChop", ("pokemon", mine.Name), ("move", move.DisplayName));
+        if (data.Effect == "Belch" && !ateBerry.Contains(mine.Pokemon!)) return Text.Of("battle.isDisabled", ("pokemon", mine.Name), ("move", move.DisplayName));
         if (IsSealed(mine, data)) return Text.Of("battle.cantUseTheSealed", ("pokemon", mine.Name), ("move", move.DisplayName));
         if (Field.Gravity && FailsUnderGravity(data)) return Text.Of("battle.cantUseBecauseOf", ("pokemon", mine.Name), ("move", move.DisplayName));
         if (v.HealBlockTurns > 0 && IsHealingMove(data)) return Text.Of("battle.cantUseWhileIt", ("pokemon", mine.Name), ("move", move.DisplayName));
@@ -119,7 +122,8 @@ public sealed partial class BattleCore
                 return Text.Of("battle.preventsEscapeWith", ("foe", foe.Name), ("ability", foe.Ability.DisplayName));
         }
         var v = b.Volatile;
-        if (v.BindTurns > 0 || v.TrappedBy != null || v.Ingrained)
+        // Fairy Lock holds everyone for the turn after it (plan 06 · R25)
+        if (v.BindTurns > 0 || v.TrappedBy != null || v.Ingrained || Turn <= fairyLockUntil)
             return forRunning ? Text.Of("battle.cantEscape") : Text.Of("battle.cantBeCalledBack", ("pokemon", b.Name));
         return null;
     }

@@ -345,11 +345,18 @@ public static class BattleEffects
 
     /// <summary>The held item's effect alone: none under an Embargo or with Klutz (the original's <c>Battler_HeldItem</c> says it holds nothing).</summary>
     public static BattleEffect? ItemOf(Battler battler) =>
-        battler.Pokemon == null || battler.Volatile.EmbargoTurns > 0 || battler.Ability?.Effect is { IgnoresHeldItem: true } ? null : HeldItemEffects.For(battler.Pokemon.HeldItem);
+        battler.Pokemon == null || ItemsAreOff(battler) ? null : HeldItemEffects.For(battler.Pokemon.HeldItem);
 
     /// <summary>The item in the holder's hands as far as a move can use it: none under an Embargo or with Klutz.</summary>
     public static ItemData? ItemInHand(Battler battler) =>
-        battler.Pokemon == null || battler.Volatile.EmbargoTurns > 0 || battler.Ability?.Effect is { IgnoresHeldItem: true } ? null : battler.Pokemon.HeldItem;
+        battler.Pokemon == null || ItemsAreOff(battler) ? null : battler.Pokemon.HeldItem;
+
+    /// <summary>
+    /// An Embargo, Klutz or Magic Room (plan 06 · R25: no held item works while the room lasts, as Showdown's
+    /// <c>ignoringItem</c> has it) puts the item out of use.
+    /// </summary>
+    public static bool ItemsAreOff(Battler battler) =>
+        battler.Volatile.EmbargoTurns > 0 || battler.Ability?.Effect is { IgnoresHeldItem: true } || battler.Field?.MagicRoomTurns > 0;
 
     /// <summary>The hold effect in force (the original's <c>Battler_HeldItemEffect</c>): what a line of the formula or the core asks by name. Null with no item, under an Embargo or with Klutz.</summary>
     public static string? HoldEffectOf(Battler battler) => ItemInHand(battler)?.HoldEffect;

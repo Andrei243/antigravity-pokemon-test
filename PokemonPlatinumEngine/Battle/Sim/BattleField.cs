@@ -21,9 +21,10 @@ public enum SideCondition { Reflect, LightScreen, Mist, Safeguard, Tailwind, Luc
 
 /// <summary>
 /// What the whole field can be under besides its weather (<see cref="FieldConditionChanged"/>): Trick Room, Gravity,
-/// and the later games' four terrains (plan 06 · R19b), of which the field has one at a time (<see cref="FieldState.Terrain"/>).
+/// the later games' four terrains (plan 06 · R19b), of which the field has one at a time (<see cref="FieldState.Terrain"/>),
+/// and Wonder Room and Magic Room (plan 06 · R25).
 /// </summary>
-public enum FieldCondition { TrickRoom, Gravity, ElectricTerrain, GrassyTerrain, MistyTerrain, PsychicTerrain }
+public enum FieldCondition { TrickRoom, Gravity, ElectricTerrain, GrassyTerrain, MistyTerrain, PsychicTerrain, WonderRoom, MagicRoom }
 
 /// <summary>What can wait for a place, whoever stands there when it arrives (<see cref="PlaceConditionChanged"/>).</summary>
 public enum PlaceCondition { Wish, FutureSight, DoomDesire }
@@ -133,10 +134,17 @@ public sealed class FieldState
     public int TerrainTurns { get; internal set; }
 
     /// <summary>Whether a condition is one of the four terrains.</summary>
-    public static bool IsTerrain(FieldCondition condition) => condition >= FieldCondition.ElectricTerrain;
+    public static bool IsTerrain(FieldCondition condition) => condition is >= FieldCondition.ElectricTerrain and <= FieldCondition.PsychicTerrain;
 
     public int TrickRoomTurns { get; internal set; }
     public int GravityTurns { get; internal set; }
+
+    /// <summary>
+    /// Wonder Room (every Pokémon's Defense and Sp. Def swapped) and Magic Room (no held item works): the turn ends
+    /// left of each (plan 06 · R25; Showdown's pseudo-weathers of five turns).
+    /// </summary>
+    public int WonderRoomTurns { get; internal set; }
+    public int MagicRoomTurns { get; internal set; }
 
     /// <summary>The battle is one of the Battle Frontier's (plan 06 · R18a): the damage formula leaves a Soul Dew out there.</summary>
     public bool Frontier { get; internal set; }
@@ -155,6 +163,8 @@ public sealed class FieldState
     {
         FieldCondition.TrickRoom => TrickRoom,
         FieldCondition.Gravity => Gravity,
+        FieldCondition.WonderRoom => WonderRoomTurns > 0,
+        FieldCondition.MagicRoom => MagicRoomTurns > 0,
         _ => IsTerrain(condition) && Terrain == condition && TerrainTurns > 0
     };
 

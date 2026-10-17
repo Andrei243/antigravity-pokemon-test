@@ -134,6 +134,8 @@ public sealed partial class BattleCore
         ItemLetItMoveFirst(act);
         if (!CanMove(user, move) || (!goesOn && Disobeys(user, ref move, ref target)))
         {
+            // Stomping Tantrum counts a move lost this way as a move that failed (plan 06 · R25)
+            failedOnTurn[user.Pokemon!] = Turn;
             v.LastMove = null;
             lastMoveShown = null;
             yield break;
@@ -170,7 +172,12 @@ public sealed partial class BattleCore
 
         // What Copycat copies next is the move chosen, even one that went on to call another (the original's
         // UpdateMoveBuffers, once the move is done)
+        // Whether the move failed, as Stomping Tantrum asks next turn (plan 06 · R25): a "But it failed!" said for
+        // it, or every target missed, protected or immune (Showdown's moveThisTurnResult)
+        failedNow = false;
         bool wentOn = Perform(use, goesOn);
+        if (failedNow || (use.Hits.Count > 0 && !use.Hits.Any(h => h.Landed))) failedOnTurn[user.Pokemon!] = Turn;
+        failedNow = false;
         lastMoveShown = move.Data;
         if (!wentOn) yield break;
         foreach (var request in Leave(use)) yield return request;
@@ -191,6 +198,8 @@ public sealed partial class BattleCore
         // reads the ability wherever it reads a move's type; Retype keeps those moves' own types from winning)
         use.Own ??= move.Data;
         use.Move = move = Normalized(user, move);
+        // Ion Deluge, Plasma Fists and Electrify make it Electric (plan 06 · R25)
+        use.Move = move = Electrified(user, move);
 
         // Aegislash draws or sheathes its blade before the move (plan 06 · R19b)
         StanceChange(user, move);
@@ -218,6 +227,9 @@ public sealed partial class BattleCore
             }
             if (!user.IsHeldToItsMove) v.LockedMove = null;
         }
+
+        // A Fire move set off the powder on its user (plan 06 · R25)
+        if (Explodes(use)) return true;
 
         if (use.Targets.Count == 0)
         {
@@ -414,6 +426,14 @@ public sealed partial class BattleCore
         if (v.TauntTurns > 0 && move.Category == MoveCategory.Status)
         {
             Say(Text.Of("battle.cantUseAfterThe", ("pokemon", user.Name), ("move", move.DisplayName)));
+            Unlock(user);
+            return Lost(user);
+        }
+
+        // Throat Chop keeps a sound move from it for two turns (plan 06 · R25)
+        if (ThroatChopped(user, move.Data))
+        {
+            Say(Text.Of("battle.cantUseBecauseOfThroatChop", ("pokemon", user.Name), ("move", move.DisplayName)));
             Unlock(user);
             return Lost(user);
         }
@@ -730,7 +750,7 @@ public sealed partial class BattleCore
         if (use.Effect.Decides != null)
         {
             // A one-hit knockout decides for itself whether it lands; Protect and a target out of reach still stand in its way
-            if (target.Turn.Protecting && use.Data.Flags.HasFlag(MoveFlags.Protect) && use.Effect.StoppedByProtect(user))
+            if (Guarded(use, target, hit))
             {
                 hit.Protected = true;
                 Unlock(user);
@@ -754,14 +774,15 @@ public sealed partial class BattleCore
 
         bool missed = !Hits(use, target);
 
-        if (target.Turn.Protecting && use.Data.Flags.HasFlag(MoveFlags.Protect) && use.Effect.StoppedByProtect(user))
+        if (Guarded(use, target, hit))
         {
             hit.Protected = true;
             Unlock(user);
             return false;
         }
 
-        bool aimed = target.Volatile.LockOnTurns > 0 && target.Volatile.LockedOnBy == user.Place;
+        // Telekinesis holds its target where every move finds it (plan 06 · R25; a one-hit knockout decided above)
+        bool aimed = (target.Volatile.LockOnTurns > 0 && target.Volatile.LockedOnBy == user.Place) || target.Volatile.TelekinesisTurns > 0;
         if (aimed || BattleEffects.Of(user).Concat(BattleEffects.Of(target, includeAbility: !BattleEffects.Of(user).Any(e => e.IgnoresTargetAbility))).Any(e => e.MovesNeverMiss))
             return true;
 
@@ -1119,6 +1140,8 @@ public sealed partial class BattleCore
 
         // What the move does of its own to whoever it hit
         use.Effect.OnHit(this, use, hit);
+        // A beak heating up, a shell trap set (plan 06 · R25)
+        HitAnswers(use, hit);
 
         // A Pokémon in a rage grows angrier with every hit it takes
         if (standing && hit.Touched && dealt > 0 && t != user && t.Volatile.Rage && t.Pokemon.StatStages.GetValueOrDefault(StatType.Attack) < 6)
@@ -1164,7 +1187,9 @@ public sealed partial class BattleCore
             var t = hit.Target;
             if (hit.Protected)
             {
-                Say(Text.Of("battle.protectedItself", ("user", t.Name)));
+                // A side's guard says whose it was, and a shield answers whoever touched it (plan 06 · R25)
+                Say(hit.FailLine ?? Text.Of("battle.protectedItself", ("user", t.Name)));
+                ShieldBites(use, hit);
                 use.Effect.OnMiss(this, use, hit);
                 continue;
             }
@@ -1331,7 +1356,11 @@ public sealed partial class BattleCore
             Say(Text.Of("battle.itDoesntAffect", ("target", target.Name)));
             return false;
         }
-        if (hit.Protected) Say(Text.Of("battle.protectedItself", ("user", target.Name)));
+        if (hit.Protected)
+        {
+            Say(hit.FailLine ?? Text.Of("battle.protectedItself", ("user", target.Name)));
+            ShieldBites(use, hit);
+        }
         else Say(use.Targets.Count > 1 || IsDouble ? Text.Of("battle.avoidedTheAttack", ("target", target.Name)) : Text.Of("battle.attackMissed", ("user", use.User.Name)));
         return false;
     }

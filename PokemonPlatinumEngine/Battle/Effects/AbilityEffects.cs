@@ -292,6 +292,8 @@ internal sealed class Levitate : BattleEffect
         if (move.Type != PokemonType.Ground || move.Category == MoveCategory.Status) return false;
         // Gravity, its own roots or an Iron Ball bring it down
         if (DamageCalculator.IsHeldDown(self)) return false;
+        // Thousand Arrows reaches it all the same (plan 06 · R25)
+        if (DamageCalculator.HitsWhatFloats(move.Data)) return false;
         ctx.Announce(Text.Of("battle.makesGroundMovesMiss", ("pokemon", self.Name), ("ability", ctx.AbilityOf(self))));
         return true;
     }

@@ -61,7 +61,8 @@ public static partial class DamageCalculator
     public static float Effectiveness(Battler attacker, Battler defender, Move move, Ruleset? rules = null)
     {
         rules ??= Ruleset.Current;
-        if (move.Type == PokemonType.Ground && IsLiftedByMagnetism(defender)) return 0f;
+        // Thousand Arrows reaches whatever floats (plan 06 · R25; Showdown's ignoreImmunity), and Telekinesis holds up out of every other Ground move's reach
+        if (move.Type == PokemonType.Ground && !HitsWhatFloats(move.Data) && (IsLiftedByMagnetism(defender) || IsHeldUp(defender))) return 0f;
         float total = 1f;
         foreach (var (_, multiplier) in Matchups(attacker, defender, move, rules)) total *= multiplier;
         return total;
@@ -70,6 +71,23 @@ public static partial class DamageCalculator
     /// <summary>Magnet Rise holds: not for a Pokémon rooted to the ground or weighed down, nor under Gravity.</summary>
     public static bool IsLiftedByMagnetism(Battler defender) =>
         defender.Volatile.MagnetRiseTurns > 0 && !IsHeldDown(defender);
+
+    /// <summary>Telekinesis holds the Pokémon in the air (plan 06 · R25), unless something keeps it on the ground.</summary>
+    public static bool IsHeldUp(Battler defender) => defender.Volatile.TelekinesisTurns > 0 && !IsHeldDown(defender);
+
+    /// <summary>Thousand Arrows: the Flying type's immunity and every float counts for nothing against it (Showdown's <c>ignoreImmunity</c> and <c>onEffectiveness</c>).</summary>
+    public static bool HitsWhatFloats(MoveData move) => move.Effect == "ThousandArrows";
+
+    /// <summary>
+    /// The target's Defense or Sp. Def as it stands before its stage: under Wonder Room (plan 06 · R25) each is the
+    /// other's (Showdown's <c>calculateStat</c>: the stat swaps and its stage stays the move's).
+    /// </summary>
+    public static int DefendingStat(Battler defender, bool physical)
+    {
+        var p = defender.Pokemon!;
+        if (defender.Field?.WonderRoomTurns > 0) physical = !physical;
+        return physical ? p.Defense : p.SpDefense;
+    }
 
     /// <summary>Something keeps the Pokémon on the ground whatever its type or ability: Gravity, its own roots, an Iron Ball, Smack Down.</summary>
     public static bool IsHeldDown(Battler b) =>
@@ -96,6 +114,12 @@ public static partial class DamageCalculator
             }
             // The strong winds take the Flying type's weaknesses away (plan 06 · R19b; Showdown's deltastream onEffectiveness)
             if (type == PokemonType.Flying && multiplier > 1f && defender.Field?.SkyInEffect == BattleWeather.StrongWinds) multiplier = 1f;
+            // The later moves with a type chart of their own (plan 06 · R25; Showdown's onEffectiveness): Freeze-Dry
+            // is twice as strong against Water, Flying Press is the Flying type's matchup too, and Thousand Arrows is
+            // neutral to a Flying type it reaches in the air
+            if (move.Data.Effect == "FreezeDry" && type == PokemonType.Water) multiplier = inverse ? 0.5f : 2f;
+            if (move.Data.Effect == "FlyingPress" && multiplier != 0f) multiplier *= TypeChart.GetEffectiveness(PokemonType.Flying, type, null, rules, inverse);
+            if (HitsWhatFloats(move.Data) && type == PokemonType.Flying && move.Type == PokemonType.Ground && multiplier == 0f) multiplier = 1f;
             if (multiplier != 1f) yield return (type, multiplier);
         }
     }
@@ -111,7 +135,7 @@ public static partial class DamageCalculator
         // Smack Down brings a Pokémon down until it leaves the field (plan 06 · R24)
         if (b.Field?.Gravity == true || b.Volatile.SmackedDown || effects.Any(e => e.GroundsHolder)) return true;
         bool floats = !b.Volatile.Ingrained && effects.Any(e => e.Levitates);
-        return !floats && b.Volatile.MagnetRiseTurns == 0 && !b.HasType(PokemonType.Flying);
+        return !floats && b.Volatile.MagnetRiseTurns == 0 && b.Volatile.TelekinesisTurns == 0 && !b.HasType(PokemonType.Flying);
     }
 
     // ---- The later moves that hit with other numbers (plan 06 · R24; Showdown's data/moves.ts)
@@ -202,7 +226,7 @@ public static partial class DamageCalculator
         var offense = TakesTheTargetsAttack(move.Data) ? defPokemon : atkPokemon;
         bool defensePhysical = physical || HitsTheDefense(move.Data);
         int attack = physical ? offense.Attack : offense.SpAttack;
-        int defense = defensePhysical ? defPokemon.Defense : defPokemon.SpDefense;
+        int defense = DefendingStat(defender, defensePhysical);
 
         // The later games put the same bonuses in other places and chain them in 4096ths (plan 06 · R19c)
         if (rules.ModernDamageFormula)
@@ -378,7 +402,9 @@ public static partial class DamageCalculator
         var defenderEffects = BattleEffects.Of(defender, includeAbility: !breaks).ToList();
         int stage = move.Data.CritStage + critBonus + attackerEffects.Sum(e => e.CritStageBonus) + ItemCritStages(attacker) + (attacker.Volatile.FocusEnergy ? 2 : 0);
         // Storm Throw, Frost Breath and Wicked Blow are critical with no roll (Showdown's willCrit; plan 06 · R24)
-        bool rolled = AlwaysCritical(move.Data) || rng.Roll(RollKind.Critical, rules.CriticalOdds[Math.Clamp(stage, 0, 4)]) == 0;
+        // Laser Focus makes its user's hits critical with no roll for the turn after it too (plan 06 · R25)
+        bool focused = attacker.Volatile.LaserFocusUntil >= (attacker.Field?.Turn() ?? int.MaxValue);
+        bool rolled = AlwaysCritical(move.Data) || focused || rng.Roll(RollKind.Critical, rules.CriticalOdds[Math.Clamp(stage, 0, 4)]) == 0;
         return rolled && !defenderEffects.Any(e => e.PreventsCriticalHits) && defender.Field?.Side(defender.Side).LuckyChant != true;
     }
 

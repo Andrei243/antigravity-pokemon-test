@@ -355,7 +355,9 @@ public class BattleFieldLookTests
     private static readonly string[] FieldMoves =
     {
         "Spikes", "Toxic Spikes", "Stealth Rock", "Reflect", "Light Screen", "Safeguard", "Mist", "Tailwind", "Lucky Chant", "Trick Room", "Gravity",
-        "Wish", "Future Sight", "Doom Desire", "Defog", "Rapid Spin", "Brick Break", "Baton Pass", "U-turn", "Roar", "Whirlwind", "Tackle", "Protect"
+        "Wish", "Future Sight", "Doom Desire", "Defog", "Rapid Spin", "Brick Break", "Baton Pass", "U-turn", "Roar", "Whirlwind", "Tackle", "Protect",
+        // The rooms of plan 06 · R25
+        "Wonder Room", "Magic Room"
     };
 
     private static readonly string[] FieldSpecies =
@@ -665,7 +667,7 @@ public class BattleFieldLookTests
         // Aurora Veil and Sticky Web on both sides and the heaviest terrain among them (plan 06 · R19b)
         Assert.True(BattleFieldFx.MaxQuads <= 500, $"{BattleFieldFx.MaxQuads} quads at the most");
         // (The number the plan and CLAUDE.md give: a look made heavier changes it, and them)
-        Assert.Equal(479, BattleFieldFx.MaxQuads);
+        Assert.Equal(491, BattleFieldFx.MaxQuads);
         Assert.Equal(BattleFieldFx.Cap(FieldCondition.GrassyTerrain),
             Enum.GetValues<FieldCondition>().Where(FieldState.IsTerrain).Max(BattleFieldFx.Cap));
 

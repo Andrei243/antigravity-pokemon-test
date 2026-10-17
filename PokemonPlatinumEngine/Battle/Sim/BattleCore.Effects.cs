@@ -579,6 +579,7 @@ public sealed partial class BattleCore
     /// <summary>"But it failed!" Returns false, so an effect can end on it.</summary>
     private bool Fails()
     {
+        failedNow = true;
         Say(Text.Of("battle.butItFailed"));
         return false;
     }
@@ -623,12 +624,12 @@ public sealed partial class BattleCore
     /// <c>BtlCmd_TryProtection</c>: Protect, Detect and Endure are less likely each time they work in a row, and
     /// never work for the last Pokémon to act in a turn.
     /// </summary>
-    private void Brace(MoveUse use, bool endure)
+    private void Brace(MoveUse use, bool endure, Shield shield = Shield.None)
     {
         var user = use.User;
         var v = user.Volatile;
         use.Line.With(Shown(user, user, use.Move, null));
-        if (use.MoveBefore?.Effect is not ("Protect" or "SurviveWith1Hp")) v.ProtectChain = 0;
+        if (!Stalls(use.MoveBefore)) v.ProtectChain = 0;
 
         var rates = Rules.ProtectRates;
         bool rolled = rates[Math.Min(v.ProtectChain, rates.Count - 1)] >= rng.Roll(RollKind.Protect, 65536);
@@ -642,6 +643,7 @@ public sealed partial class BattleCore
 
         if (endure) user.Turn.Enduring = true;
         else user.Turn.Protecting = true;
+        user.Turn.Shield = shield;
         if (v.ProtectChain < rates.Count - 1) v.ProtectChain++;
         Say(endure ? Text.Of("battle.bracedItself", ("user", user.Name)) : Text.Of("battle.protectedItself", ("user", user.Name)));
     }

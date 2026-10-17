@@ -108,7 +108,7 @@ public static partial class DamageCalculator
                 defenseStage = Math.Min(0, defenseStage);
             }
             int attack = Formulas.Staged(physical ? offense.Attack : offense.SpAttack, attackStage);
-            int defense = Formulas.Staged(defensePhysical ? defPokemon.Defense : defPokemon.SpDefense, defenseStage);
+            int defense = Formulas.Staged(DefendingStat(defender, defensePhysical), defenseStage);
 
             // Hustle is applied to the stat itself, before the chain
             if (physical && mine == "Hustle") attack = attack * 3 / 2;

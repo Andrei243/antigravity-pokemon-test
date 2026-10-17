@@ -9,6 +9,9 @@ namespace PokemonPlatinumEngine.Battle;
 /// <summary>Where a two-turn move has taken its user for the turn in between, out of most moves' reach.</summary>
 public enum Elsewhere { No, InTheAir, Underground, Underwater, Vanished }
 
+/// <summary>What a Protect of the later games does to whoever touches it (plan 06 · R25): nothing but Protect's own, or a shield's answer.</summary>
+public enum Shield { None, KingsShield, SpikyShield, BanefulBunker }
+
 /// <summary>
 /// One place on the field (a side and a slot: one per side in a single battle, two in a double) and the
 /// Pokémon standing there, with the conditions that last only while it stays in (confusion, a Substitute, being
@@ -306,6 +309,17 @@ internal sealed class Volatiles
     /// <summary>Autotomize's uses: each takes 100 kg off its weight, to no less than 0.1 kg.</summary>
     public int Autotomized;
 
+    // ---- The later moves, batch 2 (plan 06 · R25)
+
+    /// <summary>The type Trick-or-Treat or Forest's Curse added to its own (one at a time: a second takes the first's place).</summary>
+    public PokemonType? AddedType;
+
+    /// <summary>Telekinesis: turn ends left of being held up in the air (every move but a one-hit knockout finds it, and no Ground move).</summary>
+    public int TelekinesisTurns;
+
+    /// <summary>The last turn Throat Chop keeps its sound moves from it, and the last turn Laser Focus makes its hits critical (−1: none).</summary>
+    public int ThroatChopUntil = -1, LaserFocusUntil = -1;
+
     // ---- Abilities (plan 06 · R7)
 
     /// <summary>Unburden: it came in holding an item, so losing it doubles its Speed (the original's <c>canUnburden</c>).</summary>
@@ -414,6 +428,18 @@ internal sealed class Original
 internal sealed class TurnFlags
 {
     public bool Protecting, Enduring;
+
+    /// <summary>The shield its Protect is (plan 06 · R25): King's Shield, Spiky Shield or Baneful Bunker answer whoever touches it.</summary>
+    public Shield Shield;
+
+    /// <summary>
+    /// The later moves' marks for the turn (plan 06 · R25): Powder on it (its Fire move explodes), Electrify (its move
+    /// is Electric), its beak heating up (Beak Blast burns who touches it), its shell trap set.
+    /// </summary>
+    public bool Powdered, Electrified, HeatingBeak, ShellTrap;
+
+    /// <summary>A foe's physical move struck it while its shell trap was set: the trap goes off next.</summary>
+    public bool ShellTrapSprung;
 
     /// <summary>Magic Coat is up: a status move that can be reflected bounces back to whoever used it.</summary>
     public bool MagicCoat;
