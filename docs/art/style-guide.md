@@ -708,6 +708,29 @@ Walls, rock faces and rooms take shadows but cast none, so they never darken the
 - **Thrown by the trainer**, overarm (the `Throw` emote lets go 0.3 s in). At a send-out the trainer throws it onto the platform and steps aside; it opens in a white burst and the Pokémon grows out of the light. Later send-outs come in from the trainer's side of the field.
 - **A capture**: the player runs in at the left of their platform and throws; the ball spins end over end along a high arc, pops open over the foe and draws it in with red light, shuts, drops onto the platform with a bounce, wobbles once per successful shake check with a pause after each, and then clicks shut with three stars (it stays on the platform) or bursts open in white light as the Pokémon breaks out.
 
+- **Each its own ball** (plan 25 · Y4). A Pokémon comes out of, and goes back into, the ball it was caught in (`Pokemon.Ball`); one never caught, a trainer's, an Egg's hatchling or a ball the model has no kind for (the Park Ball) is in a Poké Ball, as Platinum makes a trainer's (plan 25, decision 5). The model has sixteen kinds: the fifteen above and the Cherish Ball, red over black with a gold band and gold stripe (`200,40,50`, `50,40,50`, `240,200,80`).
+- **The release** (`BattleBall.ReleaseOf`, `BallRelease.Emit`): every ball opens in the flash, ring and fourteen sparks the Poké Ball has always had (white `255,255,255`, light `255,246,200`: unchanged for it), tinted from its look, with matter of its own added, at most 28 quads more, all gone by 0.6 s after the lid opens:
+  | Ball | Flash / light | Its own |
+  |---|---|---|
+  | Poké | white / cream | nothing |
+  | Great | pale blue / blue | blue sparks flung out as streaks |
+  | Ultra | pale gold / gold | gold stars and a few puffs of black smoke |
+  | Master | lilac / violet | a violet swirl ring and pink stars |
+  | Premier | white / red | a second, red ring and falling white feathers |
+  | Safari | pale green / green | green leaves falling |
+  | Net | teal / deep blue | a lattice of crosses spreading out |
+  | Dive | pale blue / sea blue | bubbles rising |
+  | Nest | yellow-green / green | yellow and green leaves drifting down |
+  | Repeat | orange / yellow | two more rings, each after the last |
+  | Timer | white / red | two slow rings and ticking dots |
+  | Luxury | gold / gold | gold motes rising and glints |
+  | Dusk | violet / orange | dark motes rising and one orange glint |
+  | Heal | pink / white | hearts rising |
+  | Quick | yellow / blue | fast streaks flung out |
+  | Cherish | red / gold | red petals and white stars |
+  The release is a pure function of the ball's look, the time since the lid opened and a seed. A Pokémon that breaks out of a thrown ball bursts in that ball's release and keeps that ball.
+- **The recall** (`BallRecall`, 0.9 s, `BattleAnimator.RecallTime`): the Pokémon's own ball flies in from where the next send-out would come from (the far side of its platform, the trainer having stepped off), growing, to a little over the Pokémon's middle; the lid swings open; a red beam of three ribbons and a red glow draw the Pokémon in as it shrinks (over the middle third); the lid shuts; the ball flies out the way it came, shrinking, and is off the field by the end. It then takes the Pokémon's ball's look, so a Luxury Ball takes it back in gold and black.
+
 ### Weather in battle (plan 25 · Y1)
 
 - **What lasts while the weather does** (`ArenaFx.Weather`), eased in over a second as the weather begins and out over a second as it stops, in the scene and behind whatever stands in front of it:

@@ -14,6 +14,11 @@ partial class Harness
             var vb = StartBattle(names[i + 1], 20);
             ToMainMenu(vb);
             Shot($"95_versus_{names[i].ToLowerInvariant()}_{names[i + 1].ToLowerInvariant()}");
+            // Its lead's ball (plan 25 · Y4): the lead sent out again, a moment after its lid opens
+            Console.WriteLine($"  lead: {mine.DisplayName} in a {BattleBall.NameFor(mine)}");
+            vb.Anim.SendOut(BattleSide.Player, mine);
+            Skip(BattleAnimator.SendOutBallTime + 0.14);
+            Shot($"95_versus_{names[i].ToLowerInvariant()}_{names[i + 1].ToLowerInvariant()}_ball");
             party.Members.Remove(mine);
             game.State = GameState.Overworld;
         }

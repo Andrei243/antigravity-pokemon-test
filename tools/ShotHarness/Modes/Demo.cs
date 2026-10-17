@@ -199,5 +199,30 @@ partial class Harness
             }
         }
         Skip(0.3); Shot("d44_after_scene_off");
+
+        // Each its own ball (plan 25 · Y4): the opening again with a Dive Ball and then a Luxury Ball as the lead's,
+        // shot as the lid opens and a moment on (d50 to d53); the Poké Ball send-outs above are unchanged
+        foreach (var (ball, tag) in new[] { ("Dive Ball", "d50_dive_ball"), ("Luxury Ball", "d52_luxury_ball") })
+        {
+            var ballParty = new Party();
+            var ballLead = new Pokemon(PokemonDatabase.Get("Infernape")!, 60, new Random(3)) { Ball = ball };
+            ballParty.Add(ballLead);
+            var foe = new Trainer { Name = "Barry", TrainerClass = "Rival" };
+            foe.Party.Add(new Pokemon(PokemonDatabase.Get("Torterra")!, 90, new Random(4)));
+            var bb = new BattleEngine(new BattleSetup
+            {
+                PlayerParty = ballParty, Inventory = new Inventory(), Pokedex = new Pokedex(), Trainers = new List<Trainer> { foe }, Random = new Random(11)
+            });
+            game.Battle = bb;
+            game.State = GameState.Battle;
+            Skip(0.05); Skip(1.0); Skip(1.0);
+            Confirm(bb);
+            Skip(1.27);
+            Confirm(bb);
+            Skip(0.1);
+            Skip(0.25); Skip(0.1); Shot(tag + "_open");
+            Skip(0.2); Shot(tag + "_out");
+            Console.WriteLine($"  {ball}: the lead is held as {bb.Anim[BattleSide.Player, 0].Ball}");
+        }
     }
 }

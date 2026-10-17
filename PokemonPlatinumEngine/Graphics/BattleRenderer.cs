@@ -430,7 +430,10 @@ public sealed class BattleRenderer
         balls.Clear();
         for (int side = 0; side < 2; side++)
             for (int slot = 0; slot < anim.Slots; slot++)
+            {
                 PlaceSendOutBall(anim, (BattleSide)side, slot);
+                PlaceRecallBall(anim, (BattleSide)side, slot);
+            }
         if (anim.Ball != null) PlaceCaptureBall(anim, anim.Ball);
     }
 
@@ -447,7 +450,7 @@ public sealed class BattleRenderer
         float h = places.Height(side, slot);
         var feet = places.Feet(side, slot);
         float size = isPlayer ? PlayerBall : EnemyBall;
-        var model = BattleBall.Get("Poké Ball");
+        var model = BattleBall.Get(v.Ball);
 
         // From the hand of the trainer sending it out, if they are still on the platform
         TrainerPlacement? thrower = null;
@@ -484,7 +487,7 @@ public sealed class BattleRenderer
                     return;
                 }
             }
-            else from = isPlayer ? BattleStage.PlayerSpot + new Vector3(-8f, 4f, 5f) : BattleStage.EnemySpot + new Vector3(9f, 7f, -6f);
+            else from = FarSpot(side);
 
             float f = (age - start) / (BattleAnimator.SendOutBallTime - start);
             var at = BattleBall.Arc(from, open, h * 0.3f + 0.25f, f);
@@ -495,16 +498,29 @@ public sealed class BattleRenderer
         // Burst open: the lid flies up and the ball shrinks away in the light the Pokémon grows out of
         float k = (age - BattleAnimator.SendOutBallTime) / 0.3f;
         balls.Add(new BallDraw(model, BattleBall.Place(open, size * (1f - k), FaceCamera(open)), Smooth(0f, 0.3f, k)));
-        Burst(open, h, age - BattleAnimator.SendOutBallTime, new Color(255, 255, 255, 255), new Color(255, 246, 200, 255), (int)side * 7 + slot);
+        BattleBall.ReleaseOf(model.Look).Emit(fx, open, h, age - BattleAnimator.SendOutBallTime, (int)side * 7 + slot);
     }
 
-    /// <summary>The flash of a ball opening: a white glow, a ring and sparks thrown out.</summary>
-    private void Burst(Vector3 at, float h, float t, Color color, Color light, int seed)
+    /// <summary>Where a ball comes from when nobody throws it: off the field on its side (the trainer has stepped off the platform).</summary>
+    private static Vector3 FarSpot(BattleSide side) =>
+        side == BattleSide.Player ? BattleStage.PlayerSpot + new Vector3(-8f, 4f, 5f) : BattleStage.EnemySpot + new Vector3(9f, 7f, -6f);
+
+    /// <summary>A Pokémon called back (plan 25 · Y4): its own ball flies in, opens, draws it in with a red beam, shuts and flies out.</summary>
+    private void PlaceRecallBall(BattleAnimator anim, BattleSide side, int slot)
     {
-        if (t < 0f || t > 0.6f) return;
-        fx.Sprite(FxShape.Glow, at, h * (0.5f + 0.9f * Fx.EaseOut(t / 0.25f)), Fx.Fade(color, (1f - t / 0.6f) * 0.9f));
-        Fx.Shockwave(fx, t, at, Vector3.Zero, 0f, 0.4f, h * 1.1f, light);
-        Fx.Burst(fx, seed * 977 + 13, t, at, h, 0f, 0.55f, 14, FxShape.Spark, color, light, 0.1f, 0.9f);
+        var v = anim[side, slot];
+        if (v.RecallAge < 0f) return;
+        bool isPlayer = side == BattleSide.Player;
+        float h = places.Height(side, slot);
+        var feet = places.Feet(side, slot);
+        float size = isPlayer ? PlayerBall : EnemyBall;
+        var model = BattleBall.Get(v.Ball);
+        var toCamera = Vector3.Normalize(new Vector3(BattleStage.CameraPosition.X - feet.X, 0, BattleStage.CameraPosition.Z - feet.Z));
+        var open = places.Body(side, slot) + Vector3.UnitY * h * 0.55f + toCamera * h * 0.1f;
+        var step = BallRecall.At(v.RecallAge, BattleAnimator.RecallTime, FarSpot(side), open, h, size, HandBall);
+        if (!step.Visible) return;
+        balls.Add(new BallDraw(model, BattleBall.Place(step.At, step.Size, FaceCamera(step.At), 0f), step.Open));
+        BallRecall.Beam(fx, step.Beam, anim.Time, step.At, places.Body(side, slot), h);
     }
 
     /// <summary>A ball thrown at a wild Pokémon, through every step of its timeline.</summary>
@@ -600,7 +616,8 @@ public sealed class BattleRenderer
                 // It bursts open in a flash of light as the Pokémon breaks free
                 float k = Math.Min(1f, p / 0.4f);
                 if (k < 1f) balls.Add(new BallDraw(model, BattleBall.Place(rest, EnemyBall * (1f - k), yaw), 1f));
-                Burst(rest + Vector3.UnitY * h * 0.2f, h, p * BattleAnimator.BallEndTime, Color.White, new Color(255, 236, 200, 255), 77);
+                // In the release of the ball it was thrown in (plan 25 · Y4)
+                BattleBall.ReleaseOf(model.Look).Emit(fx, rest + Vector3.UnitY * h * 0.2f, h, p * BattleAnimator.BallEndTime, 77);
                 break;
             }
         }
@@ -680,7 +697,7 @@ public sealed class BattleRenderer
         }
 
         // Recall or capture: shrink away into a red beam of light
-        float shrink = Math.Max(BattleAnimator.Progress(v.RecallAge, BattleAnimator.RecallTime),
+        float shrink = Math.Max(BallRecall.Shrink(v.RecallAge, BattleAnimator.RecallTime),
             capturing && v.CaptureDelay <= 0f ? BattleAnimator.Progress(v.CaptureAge, BattleAnimator.CaptureTime) : -1f);
         if (shrink >= 0f)
         {

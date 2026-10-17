@@ -36,7 +36,7 @@ About 350 sittings are left, a dozen or so of them marked optional (Hisui and th
 | 22 · Unova | — | 12 | |
 | 23 · Later regions | — | 24 | drawn by hand; Hisui (Z17–Z20) and Lumiose's era (Z21–Z24) are wanted since 2026-10-12, through a rift after the last region |
 | 24 · Guards | X1, X2, X3 | 3 | |
-| 25 · Battle presentation | Y1, Y2, Y3 | 12 | |
+| 25 · Battle presentation | Y1, Y2, Y3, Y4 | 12 | |
 | 26 · Voice | — (only the plan is written) | 8 | NVorbis allowed on 2026-10-12 |
 | 27 · Moving to Unity | — (only the plan is written, 2026-10-08) | 7 | deferred by the user to the end of the project, after every other plan; its numbers are measured again then |
 

@@ -33,6 +33,12 @@ public sealed class CombatantView
     public float RecallAge { get; internal set; } = -1f;
     public float CaptureAge { get; internal set; } = -1f;
 
+    /// <summary>
+    /// The ball this place's Pokémon comes out of and goes back into (plan 25 · Y4): the one it was caught in, a
+    /// Poké Ball for one that was not. Set as it is sent out, called back or breaks out of a thrown ball.
+    /// </summary>
+    public string Ball { get; internal set; } = Graphics.BattleBall.DefaultBall;
+
     /// <summary>HP and EXP as the bars show them: they drain toward the real values instead of jumping.</summary>
     public float DisplayedHp { get; internal set; }
     public float DisplayedExp { get; internal set; }
@@ -200,7 +206,7 @@ public sealed class BattleAnimator
     public const float AttackTime = 0.65f;
     public const float HitTime = 0.55f;
     public const float FaintTime = 1.0f;
-    public const float RecallTime = 0.45f;
+    public const float RecallTime = 0.9f;
     public const float CaptureTime = 0.45f;
     public const float TrainerExitTime = 0.9f;
 
@@ -552,6 +558,7 @@ public sealed class BattleAnimator
         Reset(v, pokemon);
         v.Present = true;
         v.SendOutAge = 0f;
+        v.Ball = Graphics.BattleBall.NameFor(pokemon);
         if (side == BattleSide.Player && PlayerTrainerExit < 0f) PlayerTrainerExit = 0f;
         if (side == BattleSide.Enemy && EnemyTrainer != null && EnemyTrainerExit < 0f) EnemyTrainerExit = 0f;
     }
@@ -637,7 +644,9 @@ public sealed class BattleAnimator
     /// <summary>Called back into its ball: a doll standing in front of it goes as it does.</summary>
     public void Recall(BattleSide side, int slot = 0)
     {
-        this[side, slot].RecallAge = 0f;
+        var v = this[side, slot];
+        v.RecallAge = 0f;
+        v.Ball = Graphics.BattleBall.NameFor(v.Shown);
         SubstituteDown(side, slot);
     }
 
@@ -663,6 +672,8 @@ public sealed class BattleAnimator
         v.CaptureAge = -1f;
         v.Present = true;
         v.SendOutAge = SendOutBallTime;
+        // It keeps the ball it broke out of (plan 25 · Y4)
+        if (Ball != null) v.Ball = Ball.Ball;
     }
 
     public void Update(float dt, Pokemon? player, Pokemon? enemy) =>
