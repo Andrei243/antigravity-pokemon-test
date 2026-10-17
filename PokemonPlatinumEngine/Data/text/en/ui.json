@@ -456,8 +456,8 @@
   "pokedex": {
     "title": "POKÉDEX",
     "page": { "Info": "INFO", "Area": "AREA", "Size": "SIZE" },
-    "mode": { "Sinnoh": "SINNOH", "National": "NATIONAL" },
-    "modeName": { "Sinnoh": "Sinnoh", "National": "National" },
+    "mode": { "sinnoh": "SINNOH", "kanto": "KANTO", "national": "NATIONAL" },
+    "modeName": { "sinnoh": "Sinnoh", "kanto": "Kanto", "national": "National" },
     "found": "FOUND",
     "order": "ORDER",
     "seen": "SEEN",
@@ -512,11 +512,13 @@
     },
     "diploma": {
       "title": "DIPLOMA",
-      "Sinnoh": "SINNOH POKÉDEX",
-      "National": "NATIONAL POKÉDEX",
+      "sinnoh": "SINNOH POKÉDEX",
+      "kanto": "KANTO POKÉDEX",
+      "national": "NATIONAL POKÉDEX",
       "line": {
-        "Sinnoh": "has seen every one of the {count} Pokémon of the Sinnoh Pokédex. A full record of the region's wild life, kept with care.",
-        "National": "has caught every Pokémon of the National Pokédex that a trainer can meet. The work of a true Pokémon Master."
+        "sinnoh": "has seen every one of the {count} Pokémon of the Sinnoh Pokédex. A full record of the region's wild life, kept with care.",
+        "kanto": "has seen every one of the {count} Pokémon of the Kanto Pokédex. A full record of the region's wild life, kept with care.",
+        "national": "has caught every Pokémon of the National Pokédex that a trainer can meet. The work of a true Pokémon Master."
       }
     }
   },

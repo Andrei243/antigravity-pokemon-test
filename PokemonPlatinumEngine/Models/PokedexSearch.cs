@@ -37,7 +37,7 @@ public static class PokedexSearch
         "Ball", "Squiggle", "Fish", "Arms", "Blob", "Upright", "Legs", "Quadruped", "Wings", "Tentacles", "Heads", "Humanoid", "Bug Wings", "Armor"
     };
 
-    public static List<PokedexEntry> Run(Pokedex dex, PokedexMode mode, PokedexQuery query)
+    public static List<PokedexEntry> Run(Pokedex dex, string mode, PokedexQuery query)
     {
         bool bySize = query.Order is PokedexOrder.Heaviest or PokedexOrder.Lightest or PokedexOrder.Tallest or PokedexOrder.Smallest;
         var found = Pokedex.Entries(mode).Where(e => dex.IsSeen(e.Species.DexNumber) && (!bySize || dex.IsCaught(e.Species.DexNumber)));

@@ -33,6 +33,9 @@ internal static partial class ModernUi
     /// <summary>A weight in kilograms, to a tenth: 10.2 kg.</summary>
     public static string Kilograms(float kilograms) => Text.Of("pokedex.kilograms", ("n", kilograms.ToString("0.0", CultureInfo.InvariantCulture)));
 
+    /// <summary>The colour of a Pokédex's tag (plan 18 · W3): Sinnoh's Blue, Kanto's Green, the National one's Red, and Gold for a Pokédex whose region has no colour of its own yet.</summary>
+    public static Color DexColour(string dex) => dex switch { Pokedex.Sinnoh => Blue, "kanto" => Green, Pokedex.National => Red, _ => Gold };
+
     private static readonly Color Cream = new(252, 246, 228, 255);
     private static readonly Color DeepGold = new(176, 120, 30, 255);
 
@@ -75,7 +78,7 @@ internal static partial class ModernUi
                 bool owned = pokedex.IsCaught(entry.Species.DexNumber);
                 switch (page)
                 {
-                    case PokedexPage.Area: DexArea(detail, entry.Species); break;
+                    case PokedexPage.Area: DexArea(detail, entry.Species, dex.AreaRegion); break;
                     case PokedexPage.Size: DexSize(detail, entry.Species, owned, dex.Portrait); break;
                     default: DexInfo(detail, entry, owned, dex.EntryShown(entry.Species)); break;
                 }
@@ -92,7 +95,8 @@ internal static partial class ModernUi
     {
         Panel(list, 34);
         var mode = dex.Mode;
-        float x = list.X + 44 + Tag(list.X + 44, list.Y + 50, Text.Of($"pokedex.mode.{mode}"), mode == PokedexMode.Sinnoh ? Blue : Red, 40) + 36;
+        string modeKey = Pokedex.KeyOf(mode);
+        float x = list.X + 44 + Tag(list.X + 44, list.Y + 50, Text.Of($"pokedex.mode.{modeKey}"), DexColour(mode), 40) + 36;
         if (dex.Results is { } query)
         {
             x = Field(Text.Of("pokedex.found"), dex.Rows.Count.ToString(CultureInfo.InvariantCulture), x, list.Y + 28, 40, 56);
@@ -204,12 +208,12 @@ internal static partial class ModernUi
     /// AREA: the map of Sinnoh (<see cref="RegionMap"/>, the Town Map's own picture, smaller), with the places the
     /// species lives lit, and beside it those places and how the species is met in each.
     /// </summary>
-    private static void DexArea(Rectangle detail, PokemonSpecies s)
+    private static void DexArea(Rectangle detail, PokemonSpecies s, Region? region)
     {
-        var habitats = Habitats.Sinnoh;
+        var habitats = region == null ? null : Habitats.Of(region);
         var places = habitats?.Of(s.Name) ?? Array.Empty<Habitat>();
         var map = new Rectangle(detail.X + 44, detail.Y + 124, 600, 500);
-        RegionMap(map, 20, new HashSet<(int, int)>(places.SelectMany(p => p.Cells)));
+        RegionMap(map, 20, new HashSet<(int, int)>(places.SelectMany(p => p.Cells)), of: region);
 
         // The places, in the region's order, with how the species is met there
         float lx = map.X + map.Width + 28, room = detail.X + detail.Width - 44 - lx, ly = map.Y;
@@ -348,7 +352,7 @@ internal static partial class ModernUi
     // ------------------------------------------------------------------ the diploma
 
     /// <summary>The diploma for a complete Pokédex: a cream certificate with a gold double rule and a seal.</summary>
-    public static void Diploma(int sw, int sh, PokedexMode mode)
+    public static void Diploma(int sw, int sh, string mode)
     {
         Dim(sw, sh, 170);
         var r = new Rectangle(sw / 2f - 600, sh / 2f - 400, 1200, 800);
@@ -363,10 +367,11 @@ internal static partial class ModernUi
         }
 
         Centred(Text.Of("pokedex.diploma.title"), r.Y + 118, 84, DeepGold, UiWeight.Black);
-        Centred(Text.Of($"pokedex.diploma.{mode}"), r.Y + 196, 34, Ink, UiWeight.Black);
+        string modeKey = Pokedex.KeyOf(mode);
+        Centred(Text.Of($"pokedex.diploma.{modeKey}"), r.Y + 196, 34, Ink, UiWeight.Black);
         UiShapes.Fill(new Rectangle(r.X + r.Width / 2f - 160, r.Y + 234, 320, 3), 1.5f, Gold);
         Centred(PlayerIdentity.Name, r.Y + 312, 64, Ink, UiWeight.Black);
-        string line = Text.Of($"pokedex.diploma.line.{mode}", ("count", Pokedex.Entries(PokedexMode.Sinnoh).Count));
+        string line = Text.Of($"pokedex.diploma.line.{modeKey}", ("count", Pokedex.Entries(mode).Count));
         var lines = Wrap(line, 900, 32, UiWeight.ExtraBold);
         for (int i = 0; i < lines.Count; i++) Centred(lines[i], r.Y + 400 + i * 46, 32, Ink, UiWeight.ExtraBold);
 

@@ -182,6 +182,13 @@ public class PokemonSpecies
 
     /// <summary>Its number in Platinum's Sinnoh Pokédex (1–210); null for the species that Pokédex leaves out.</summary>
     public int? SinnohNumber { get; set; }
+
+    /// <summary>
+    /// Its number in each main-series Pokédex, by PokeAPI's identifier (<c>national</c>, <c>kanto</c>,
+    /// <c>extended-sinnoh</c>, <c>galar</c>…), from <c>pokedexes.csv</c> and <c>pokemon_dex_numbers.csv</c> (plan 18 · W3).
+    /// A Pokédex that numbers a species 000 (Unova's Victini) gives it 0. <see cref="SinnohNumber"/> stays Platinum's own.
+    /// </summary>
+    public Dictionary<string, int> DexNumbers { get; set; } = new();
     public string Name { get; set; } = string.Empty;
     public string Category { get; set; } = "Pokémon"; // e.g. "Tiny Leaf Pokémon"
 

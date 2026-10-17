@@ -230,9 +230,9 @@ public class FullDexTests
         var dex = new Pokedex();
         foreach (var species in PokemonDatabase.GetAll()) dex.RegisterCaught(species.DexNumber);
         dex.UnlockNational();
-        Assert.Equal(new[] { PokedexMode.Sinnoh, PokedexMode.National }, dex.AwardDiplomas());
-        Assert.Equal((210, 210), dex.Progress(PokedexMode.Sinnoh));
-        Assert.Equal(1025, dex.CaughtIn(PokedexMode.National));
+        Assert.Equal(new[] { Pokedex.Sinnoh, Pokedex.National }, dex.AwardDiplomas());
+        Assert.Equal((210, 210), dex.Progress(Pokedex.Sinnoh));
+        Assert.Equal(1025, dex.CaughtIn(Pokedex.National));
 
         var save = new SaveData { SeenSpecies = dex.SeenSpecies.OrderBy(n => n).ToList(), CaughtSpecies = dex.CaughtSpecies.OrderBy(n => n).ToList(), NationalPokedex = true };
         var read = SaveManager.Read(SaveManager.Write(save))!;

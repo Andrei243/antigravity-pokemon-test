@@ -102,6 +102,35 @@ public sealed class RegionFile
     public List<RegionSpawn> Spawns { get; set; } = new();
 }
 
+/// <summary>The kinds of rule that open the National Pokédex (plan 18 · W3).</summary>
+public enum NationalUnlockRule
+{
+    /// <summary>The region's Hall of Fame, and every species of its regional Pokédex seen (Platinum's rule).</summary>
+    HallOfFameAndSeenAll,
+
+    /// <summary>A number of species caught (Kanto's: sixty).</summary>
+    Caught,
+
+    /// <summary>The region's Hall of Fame alone.</summary>
+    HallOfFame
+}
+
+/// <summary>
+/// A region's rule for the National Pokédex as its file writes it: <c>HallOfFameAndSeenAll</c>, <c>HallOfFame</c> or
+/// <c>Caught60</c> (the rule's name with its number after it). An empty or unknown text is the Hall of Fame alone.
+/// </summary>
+public readonly record struct NationalUnlock(NationalUnlockRule Rule, int Count)
+{
+    public static NationalUnlock Parse(string? text)
+    {
+        text = text?.Trim() ?? "";
+        if (text.Equals("HallOfFameAndSeenAll", StringComparison.OrdinalIgnoreCase)) return new(NationalUnlockRule.HallOfFameAndSeenAll, 0);
+        if (text.StartsWith("Caught", StringComparison.OrdinalIgnoreCase) && int.TryParse(text.AsSpan(6), out int count) && count > 0)
+            return new(NationalUnlockRule.Caught, count);
+        return new(NationalUnlockRule.HallOfFame, 0);
+    }
+}
+
 /// <summary>Reads the region files.</summary>
 public static class RegionFiles
 {

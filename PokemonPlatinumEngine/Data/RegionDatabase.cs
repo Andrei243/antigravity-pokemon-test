@@ -67,6 +67,12 @@ public sealed class Region
     /// <summary>The names of the region's badges, in the order of its Trainer Card (plan 18 · W2).</summary>
     public IReadOnlyList<string> BadgeNames => (IReadOnlyList<string>?)File?.Badges ?? Array.Empty<string>();
 
+    /// <summary>The regional Pokédex the region plays by, a PokeAPI identifier (<c>extended-sinnoh</c>, <c>kanto</c>); null for a region with no file (plan 18 · W3).</summary>
+    public string? Dex => File?.Dex is { Length: > 0 } d ? d : null;
+
+    /// <summary>The rule that opens the National Pokédex here, read from the file (plan 18 · W3); the Hall of Fame alone for a region that names none.</summary>
+    public NationalUnlock NationalUnlock => NationalUnlock.Parse(File?.NationalUnlock);
+
     public RegionHeroes Heroes => File?.Heroes ?? new RegionHeroes();
 
     public RegionProfessor? Professor => File?.Professor;

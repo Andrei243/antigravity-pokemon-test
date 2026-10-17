@@ -228,11 +228,11 @@ public class TheNationalPokedexAndTheBattleZoneTests
         // Plan 03's decision 5 (Pokedex.CanUnlockNational): the Hall of Fame, and every species of the Sinnoh Pokédex seen
         var dex = new Pokedex();
         var story = new StoryState();
-        foreach (var entry in Pokedex.Entries(PokedexMode.Sinnoh).Skip(seenAll ? 0 : 1)) dex.RegisterSeen(entry.Species.DexNumber);
+        foreach (var entry in Pokedex.Entries(Pokedex.Sinnoh).Skip(seenAll ? 0 : 1)) dex.RegisterSeen(entry.Species.DexNumber);
         if (champion) story.CompleteRegion("Sinnoh");
         bool rule = dex.CanUnlockNational(story);
         Assert.Equal(champion && seenAll, rule);
-        Assert.Equal(210, Pokedex.Entries(PokedexMode.Sinnoh).Count);
+        Assert.Equal(210, Pokedex.Entries(Pokedex.Sinnoh).Count);
 
         var game = Challenger();
         if (champion)
@@ -240,7 +240,7 @@ public class TheNationalPokedexAndTheBattleZoneTests
             game.Story.Set(Completed);
             game.Story.CompleteRegion("Sinnoh");
         }
-        game.Seen = dex.SeenIn(PokedexMode.Sinnoh);
+        game.Seen = dex.SeenIn(Pokedex.Sinnoh);
         AskTheProfessor(game);
         Assert.Equal(rule, game.NationalDex);
     }

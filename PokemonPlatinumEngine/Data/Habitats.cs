@@ -141,6 +141,9 @@ public sealed class Habitats
         }
     }
 
+    /// <summary>A region's habitats, read from its folder; null for a region with none (plan 18 · W3).</summary>
+    public static Habitats? Of(Region region) => For(region.Folder);
+
     /// <summary>Sinnoh's habitats.</summary>
     public static Habitats? Sinnoh => For("sinnoh");
 }

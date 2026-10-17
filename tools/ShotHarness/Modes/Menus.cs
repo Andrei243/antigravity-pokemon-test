@@ -377,7 +377,7 @@ partial class Harness
         Pick("Sprigatito");
         Frames(2); Shot("26b_pokedex_later_generation");
         var complete = new Pokedex();
-        foreach (var e in Pokedex.Entries(PokedexMode.Sinnoh)) complete.RegisterSeen(e.Species.DexNumber);
+        foreach (var e in Pokedex.Entries(Pokedex.Sinnoh)) complete.RegisterSeen(e.Species.DexNumber);
         dexScreen.Open(complete);
         Frames(20); Shot("26l_pokedex_diploma");
         dexScreen.Close();
@@ -393,6 +393,29 @@ partial class Harness
         hinted.HUD.MenuState = BattleMenuState.Moves;
         Frames(2); Shot("23g_battle_hints");
         ShotCrop("23g2_battle_hints_native", 40, 820, 1140, 230, 2);
+
+        // A second Pokédex (plan 18 · W3), last so that no shot before it moves: the player has entered Kanto, whose listing
+        // is picked in the search panel (the dex row now offers two) and shown beside Sinnoh's
+        var kanto = RegionDatabase.Get("Kanto")!;
+        var two = pokedex;   // the screen draws the game's own Pokédex
+        two.Enter(kanto);
+        foreach (var e in Pokedex.Entries("kanto").Take(24)) two.RegisterSeen(e.Species.DexNumber);
+        foreach (var e in Pokedex.Entries("kanto").Take(9)) two.RegisterCaught(e.Species.DexNumber);
+        foreach (var e in Pokedex.Entries(Pokedex.Sinnoh).Skip(9).Take(6)) two.RegisterSeen(e.Species.DexNumber);
+        foreach (int seen in two.SeenSpecies) PokemonSprites.Request(PokemonDatabase.GetByDex(seen)!.Name);
+        PokemonSprites.Flush(game.RenderContext);
+        var stateBefore = game.State;
+        game.State = GameState.PokedexMenu;
+        dexScreen.Open(two, game.World.Portrait(PlayerIdentity.Character), kanto);
+        Frames(2); Shot("26p_pokedex_two_dexes_sinnoh");
+        dexScreen.OpenSearch();
+        dexScreen.Sideways(1);
+        Frames(2); Shot("26p_pokedex_two_dexes_search");
+        dexScreen.Search();
+        Frames(2); Shot("26p_pokedex_two_dexes");
+        Console.WriteLine($"two dexes: {string.Join(", ", two.Dexes)}; listing {dexScreen.Mode} has {dexScreen.Rows.Count} rows, seen {two.SeenIn(dexScreen.Mode)}, caught {two.CaughtIn(dexScreen.Mode)}; area page draws {dexScreen.AreaRegion?.Id}");
+        dexScreen.Close();
+        game.State = stateBefore;
 
         if (args.Length > 2)
             Boards(args[2], new[]

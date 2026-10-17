@@ -432,7 +432,38 @@ public sealed partial class Importer
             if (dex < 1 || dex > list.Count) throw new InvalidDataException($"Sinnoh Pokédex entry {number} is {sinnoh[number]}, which isn't a species");
             list[dex - 1].SinnohNumber = number;
         }
+
+        // Plan 18 · W3: every main-series Pokédex's numbers, from PokeAPI
+        AddDexNumbers(list);
         return list;
+    }
+
+    /// <summary>
+    /// Plan 18 · W3: every main-series Pokédex's number for each species, from PokeAPI's <c>pokedexes.csv</c> and
+    /// <c>pokemon_dex_numbers.csv</c> (<c>DexNumbers</c>, by the dex's identifier). Platinum's own table stays
+    /// <c>SinnohNumber</c>; where PokeAPI's <c>extended-sinnoh</c> disagrees with it the importer says so.
+    /// </summary>
+    private void AddDexNumbers(List<PokemonSpecies> list)
+    {
+        var mainSeries = api.Table("pokedexes").Where(r => r.Bool("is_main_series")).ToDictionary(r => r.Int("id"), r => r["identifier"]);
+        foreach (var row in api.Table("pokemon_dex_numbers"))
+        {
+            int species = row.Int("species_id");
+            if (species < 1 || species > list.Count || !mainSeries.TryGetValue(row.Int("pokedex_id"), out string? dex)) continue;
+            list[species - 1].DexNumbers[dex] = row.Int("pokedex_number");
+        }
+        foreach (var s in list)
+            s.DexNumbers = s.DexNumbers.OrderBy(p => p.Key, StringComparer.Ordinal).ToDictionary(p => p.Key, p => p.Value);
+
+        int disagree = 0;
+        foreach (var s in list)
+        {
+            int? api2 = s.DexNumbers.TryGetValue("extended-sinnoh", out int n) ? n : null;
+            if (api2 == s.SinnohNumber) continue;
+            Console.WriteLine($"  Sinnoh Pokédex: {s.Name} is {s.SinnohNumber?.ToString() ?? "-"} in Platinum's table and {api2?.ToString() ?? "-"} in PokeAPI's extended-sinnoh");
+            disagree++;
+        }
+        Console.WriteLine($"Regional Pokédexes: {list.Count(s => s.DexNumbers.Count > 0)} species numbered in {mainSeries.Count} main-series Pokédexes; extended-sinnoh disagrees with Platinum's table on {disagree}.");
     }
 
     private int PokemonDexOf(string name)

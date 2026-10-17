@@ -181,7 +181,7 @@ partial class Harness
         // A Champion with the National Pokédex (plan 02 · S14 and S15, part a), who has won the tag battle before the
         // Battle Frontier's gate and been asked along by Buck on Route 227
         Do(Hall, "setflag FLAG_UNLOCKED_VS_SEEKER_LVL_4\ncall Victory\nhalloffame\nsetflag FLAG_GAME_COMPLETED\nsetflag SinnohHallOfFame\nheal\nsetvar VAR_PLAYER_HOUSE_POSTGAME_STATE 2");
-        foreach (var entry in Pokedex.Entries(PokedexMode.Sinnoh)) game.Pokedex.RegisterSeen(entry.Species.DexNumber);
+        foreach (var entry in Pokedex.Entries(Pokedex.Sinnoh)) game.Pokedex.RegisterSeen(entry.Species.DexNumber);
         Do("RowanLab", "nationaldex\nadditem \"Poké Radar\"");
         Do("fight_area", "setvar VAR_FIGHT_AREA_STATE 2\nsetflag FLAG_HIDE_FIGHT_AREA_RIVAL\nsetflag FLAG_HIDE_FIGHT_AREA_BLOCKADE\nsetflag FLAG_HIDE_FIGHT_AREA_BATTLERS_AND_SPECTATORS\nsetflag FLAG_HIDE_FIGHT_AREA_BUCK");
         Do("route_227", "setvar VAR_ROUTE_227_WAKE_RIVAL_STATE 1\nsetflag FLAG_HIDE_ROUTE_227_RIVAL\nsetflag FLAG_HIDE_ROUTE_227_CRASHER_WAKE\nsetvar VAR_ROUTE_227_BUCK_STATE 1");

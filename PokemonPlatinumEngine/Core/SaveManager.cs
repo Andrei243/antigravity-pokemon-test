@@ -292,8 +292,11 @@ public class SaveData
     /// <summary>Whether the Pokédex has been upgraded to the National Pokédex (false in older saves).</summary>
     public bool NationalPokedex { get; set; }
 
-    /// <summary>The Pokédexes whose diploma the player has been given: "Sinnoh", "National".</summary>
+    /// <summary>The Pokédexes whose diploma the player has been given: "Sinnoh", "National" (the first two Pokédexes) or the identifier of another (plan 18 · W3).</summary>
     public List<string> Diplomas { get; set; } = new();
+
+    /// <summary>The regional Pokédexes of the regions the player has entered, by identifier (plan 18 · W3); empty in a save from before, which has Sinnoh's only.</summary>
+    public List<string> DexesEntered { get; set; } = new();
 
     /// <summary>Ids of the trainers already beaten; they don't challenge again.</summary>
     public List<string> DefeatedTrainers { get; set; } = new();
