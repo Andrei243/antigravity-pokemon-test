@@ -28,6 +28,12 @@ public sealed partial class GameFlow
     /// <summary>The Trainer Card's ID (saved).</summary>
     public int TrainerId { get; set; }
 
+    /// <summary>How many ids the game has given its Pokémon (plan 07 · O2, <see cref="PokemonIds"/>; saved).</summary>
+    public uint PokemonIdsIssued { get; set; }
+
+    /// <summary>The link battles' record (plan 07 · O2; saved).</summary>
+    public LinkBattleRecord LinkBattles { get; set; } = new();
+
     /// <summary>The Trainer Card's score (plan 06 · R12), and the badges it has counted.</summary>
     public int TrainerScore { get; set; }
     public int ScoredBadges { get; set; }

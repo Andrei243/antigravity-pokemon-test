@@ -97,6 +97,9 @@ public static class FrontierRules
     public static Pokemon ForBattle(Pokemon own, int level = Level)
     {
         var copy = own.Clone();
+        // A copy the Frontier fights with (and keeps, while a challenge is put down) is nobody's Pokémon: it carries
+        // no id, so it is never taken for the one it was made from (plan 07 · O2)
+        copy.Id = Guid.Empty;
         if (copy.Level > level)
         {
             copy.LevelTo(level);

@@ -28,7 +28,8 @@ public class SaveCorpusTests
     /// <summary>Where the saves are: the test project's <c>Fixtures/saves</c>, copied beside the tests.</summary>
     private static string Folder => Path.Combine(AppContext.BaseDirectory, "Fixtures", "saves");
 
-    private static readonly Regex FileName = new(@"^w(\d+)-s(\d+)-[a-z0-9]+(-[a-z0-9]+)*\.json$");
+    // w<world>-s<story>, then -v<save> for a save of SaveVersion 1 or later (plan 07 · O2), then the moment
+    private static readonly Regex FileName = new(@"^w(\d+)-s(\d+)(?:-v(\d+))?-[a-z0-9]+(-[a-z0-9]+)*\.json$");
 
     /// <summary>Every save of the corpus by its file's name, in order.</summary>
     private static List<(string Name, SaveData Save)> Corpus()
@@ -46,12 +47,18 @@ public class SaveCorpusTests
         foreach (var (name, save) in saves)
         {
             var match = FileName.Match(name);
-            Assert.True(match.Success, $"{name} isn't named w<world>-s<story>-<moment>.json");
+            Assert.True(match.Success, $"{name} isn't named w<world>-s<story>[-v<save>]-<moment>.json");
             Assert.True(int.Parse(match.Groups[1].Value) == save.WorldVersion, $"{name} says WorldVersion {save.WorldVersion}");
             Assert.True(int.Parse(match.Groups[2].Value) == save.StoryVersion, $"{name} says StoryVersion {save.StoryVersion}");
+            int named = match.Groups[3].Success ? int.Parse(match.Groups[3].Value) : 0;
+            Assert.True(named == save.SaveVersion, $"{name} says SaveVersion {save.SaveVersion}");
             Assert.InRange(save.WorldVersion, 0, SaveData.CurrentWorld);
             Assert.InRange(save.StoryVersion, 0, StoryState.CurrentVersion);
+            Assert.InRange(save.SaveVersion, 0, SaveData.CurrentSave);
         }
+        for (int version = 0; version <= SaveData.CurrentSave; version++)
+            Assert.True(saves.Any(s => s.Save.SaveVersion == version),
+                $"no save of SaveVersion {version} in PokemonPlatinumTests/Fixtures/saves: run the harness's `saves` mode and copy its files there");
         // A version that rose brings its saves (the harness's `saves` writes today's into <out dir>/saves)
         for (int world = 0; world <= SaveData.CurrentWorld; world++)
             Assert.True(saves.Any(s => s.Save.WorldVersion == world),
@@ -181,6 +188,11 @@ public class SaveCorpusTests
             var badges = save.RegionalBadges();
             string others = string.Concat(badges.Where(b => !string.Equals(b.Key, "Sinnoh", StringComparison.OrdinalIgnoreCase))
                 .OrderBy(b => b.Key, StringComparer.Ordinal).Select(b => $", {b.Key} {Convert.ToString(b.Value, 2)}"));
+            // The save's own records brought up to date as the game brings them (plan 07 · O2): an older save's Pokémon given their ids
+            int savedAs = save.SaveVersion;
+            uint issuedBefore = save.PokemonIdsIssued;
+            int given = SaveMigration.Upgrade(save);
+            text.Append($"save {savedAs}{(savedAs != save.SaveVersion ? $" -> {save.SaveVersion}, {given} ids given" : "")}, ids issued {issuedBefore}{(save.PokemonIdsIssued != issuedBefore ? $" -> {save.PokemonIdsIssued}" : "")}\n");
             text.Append($"world {save.WorldVersion}, story {save.StoryVersion}, {save.Rules} rules, {save.Look} {save.PlayerName}, rival {save.RivalName}, ${save.Money}, " +
                 $"badges {Convert.ToString(badges.GetValueOrDefault("Sinnoh"), 2)}{others}\n");
             var spot = save.PlaceOn(MapDatabase.Get);
@@ -193,7 +205,7 @@ public class SaveCorpusTests
                 string form = p.Form != null ? $" ({p.Form})" : "";
                 string moves = string.Join(", ", p.Moves.Select(m => $"{m.Name} {m.CurrentPP}/{m.MaxPP}"));
                 text.Append($"  {where}: {p.Species.Name}{form} Lv{p.Level} \"{p.DisplayName}\" {p.Gender} {p.Nature}{(p.IsEgg ? " Egg" : "")}{(p.IsShiny ? " shiny" : "")}, " +
-                    $"{p.AbilityName ?? "no ability"}, holds {p.HeldItem?.Name ?? "nothing"}, HP {p.CurrentHP}/{p.MaxHP}, {moves}\n");
+                    $"{p.AbilityName ?? "no ability"}, holds {p.HeldItem?.Name ?? "nothing"}, HP {p.CurrentHP}/{p.MaxHP}, {moves}, id {IdOf(p.Id)}\n");
             }
             var (before, after, bag) = Upgraded(save);
             string had = Items(BagOf(save)), has = Items(bag);
@@ -205,5 +217,25 @@ public class SaveCorpusTests
         }
 
         GoldenFile.Check("saves.txt", text.ToString());
+    }
+
+    /// <summary>An id as the golden file tells it: the trainer's number and the count, or the whole GUID for one of another making.</summary>
+    private static string IdOf(Guid id) =>
+        id == Guid.Empty ? "none" : PokemonIds.Parts(id) is { } parts ? $"{parts.Trainer:x8}#{parts.Serial}" : id.ToString();
+
+    [Fact]
+    public void EverySavesPokemonHaveIdsOfTheirOwnOnceItIsUpToDate()
+    {
+        foreach (var (name, save) in Corpus())
+        {
+            SaveMigration.Upgrade(save);
+            var ids = SaveMigration.Owned(save).Select(p => p.Id).ToList();
+            Assert.True(ids.All(id => id is { } held && held != Guid.Empty), $"{name}: a Pokémon of the player's has no id");
+            Assert.True(ids.Distinct().Count() == ids.Count, $"{name}: two Pokémon hold one id");
+            Assert.True(save.SaveVersion == SaveData.CurrentSave, $"{name} says SaveVersion {save.SaveVersion} once up to date");
+            // And again changes nothing
+            Assert.Equal(0, SaveMigration.Upgrade(save));
+            Assert.Equal(ids, SaveMigration.Owned(save).Select(p => p.Id));
+        }
     }
 }

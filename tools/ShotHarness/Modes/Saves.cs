@@ -6,13 +6,15 @@ partial class Harness
     // saves, SaveCorpusTests): a new game in the player's room once the television has had its say, a game past the
     // first chapter in front of the house, surfing, on a bridge's deck, a Safari Game under way and the girl (every
     // game is played by the modern rules since plan 06 · R19). Each is the engine's own BuildSave written as SaveManager
-    // writes a slot's save, into <out dir>/saves/ as w<world>-s<story>-<moment>.json. No shots. Not part of "all". A
-    // session that raises SaveData.CurrentWorld or StoryState.CurrentVersion runs it and copies the files into the corpus.
+    // writes a slot's save, into <out dir>/saves/ as w<world>-s<story>-v<save>-<moment>.json. No shots. Not part of "all".
+    // A session that raises SaveData.CurrentWorld, StoryState.CurrentVersion or SaveData.CurrentSave runs it and copies
+    // the files into the corpus.
     public void SavesMode()
     {
         string folder = Path.Combine(outDir, "saves");
         Directory.CreateDirectory(folder);
-        string prefix = $"w{SaveData.CurrentWorld}-s{StoryState.CurrentVersion}-";
+        // (and -v<save> since plan 07 · O2 raised the save's own version: SaveData.CurrentSave)
+        string prefix = $"w{SaveData.CurrentWorld}-s{StoryState.CurrentVersion}-v{SaveData.CurrentSave}-";
         var sinnoh = MapDatabase.Get("Sinnoh");
 
         void Write(string moment)
@@ -25,7 +27,8 @@ partial class Harness
             string safari = save.Safari is { } s ? $", a Safari Game with {s.Balls} balls and {s.Steps} steps left" : "";
             Console.WriteLine($"{name}: {save.CurrentMapName} {save.PlayerGridX},{save.PlayerGridY} facing {save.PlayerFacing}, {save.Travel}{height}{safari}; " +
                 $"{save.Rules} rules, {save.Look} {save.PlayerName}, team {string.Join(", ", save.Party.Select(p => $"{p.SpeciesName} {p.Level}"))}, " +
-                $"{save.StoryFlags.Count} flags, {save.StoryVariables.Count} variables, started {save.Started:yyyy-MM-dd}");
+                $"{save.StoryFlags.Count} flags, {save.StoryVariables.Count} variables, started {save.Started:yyyy-MM-dd}, " +
+                $"save {save.SaveVersion}, {save.PokemonIdsIssued} ids issued");
         }
         void Begin(PlayerLook look = PlayerLook.Boy)
         {
