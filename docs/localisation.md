@@ -14,11 +14,11 @@ A line is one string a language may translate. A line is **translated** when its
 
 ## Languages
 
-Each cell of a kind of file is translated / lines; a language with no file for a kind shows 0. `ui.json` is the number of keys the language's own table has (the interface's keys are not counted here: they change with every screen). Names are `names.json` (PokeAPI's, plan 17 · N3).
+Each cell of a kind of file is translated / lines; a language with no file for a kind shows 0. `ui.json` is the number of keys the language's own table has (the interface's keys are not counted here: they change with every screen). Names are `names.json` (PokeAPI's, plan 17 · N3) and the hand-written `names.<kind>.json` beside it (plan 17 · N6): "yes" where the language has either.
 
 | Language | `ui.json` | Names | Scripts | Overlays | Maps | Stale | Unknown |
 |---|---|---|---|---|---|---|---|
-| Română (`ro`) | 2530 | no | 1964 / 5263 | 933 / 2205 | 1421 / 3119 | 0 | 0 |
+| Română (`ro`) | 2530 | yes | 1964 / 5263 | 933 / 2205 | 1421 / 3119 | 0 | 0 |
 | Français (`fr`) | 0 | yes | 0 / 5263 | 0 / 2205 | 0 / 3119 | 0 | 0 |
 | Deutsch (`de`) | 0 | yes | 0 / 5263 | 0 / 2205 | 0 / 3119 | 0 | 0 |
 | Español (`es`) | 0 | yes | 0 / 5263 | 0 / 2205 | 0 / 3119 | 0 | 0 |

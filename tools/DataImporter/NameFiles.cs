@@ -12,7 +12,9 @@ namespace DataImporter;
 /// entry keyed by the English name the data and the save go by. Names are PokeAPI's own tables (the same data and
 /// licence as the English names imported already); nothing of the games' text is read, and a descriptions block holds
 /// PokeAPI's contributors' short prose where the language has it (French for moves, abilities and items, German for
-/// part of the abilities). Romanian has no file, because PokeAPI has no Romanian: its names are the English ones.
+/// part of the abilities). Romanian has no file of the importer's, because PokeAPI has no Romanian: its names and
+/// descriptions are hand-written <c>names.&lt;kind&gt;.json</c> beside where the file would be (plan 17 · N6,
+/// <see cref="LocalNames.OwnFilePattern"/>), which this class never writes and whose entries win over its.
 /// </summary>
 public static class NameFiles
 {

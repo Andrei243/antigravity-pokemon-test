@@ -395,7 +395,7 @@
         "This thin tree could be cut down. Use Cut?"
       ],
       "text": [
-        "Copacul ăsta subțire ar putea fi tăiat. Folosești Cut?"
+        "Copacul ăsta subțire ar putea fi tăiat. Folosești mișcarea Tăiere?"
       ]
     },
     {
@@ -413,7 +413,7 @@
         "The rock is riddled with cracks. Use Rock Smash?"
       ],
       "text": [
-        "Stânca e plină de crăpături. Folosești Rock Smash?"
+        "Stânca e plină de crăpături. Folosești mișcarea Spărgător de Pietre?"
       ]
     },
     {
@@ -421,7 +421,7 @@
         "The rock is riddled with cracks. Rock Smash could break it, but not outside battle until Oreburgh's Gym Badge is won."
       ],
       "text": [
-        "Stânca e plină de crăpături. Rock Smash ar putea s-o spargă, dar în afara luptei abia după Insigna Arenei din Oreburgh."
+        "Stânca e plină de crăpături. Spărgător de Pietre ar putea s-o spargă, dar în afara luptei abia după Insigna Arenei din Oreburgh."
       ]
     },
     {
@@ -429,7 +429,7 @@
         "The rock is riddled with cracks. A Pokémon that knows Rock Smash could break it apart."
       ],
       "text": [
-        "Stânca e plină de crăpături. Un Pokémon care știe Rock Smash ar putea s-o spargă."
+        "Stânca e plină de crăpături. Un Pokémon care știe Spărgător de Pietre ar putea s-o spargă."
       ]
     },
     {
@@ -437,7 +437,7 @@
         "The rock is riddled with cracks. A Pokémon taught Rock Smash with HM06 could break it apart."
       ],
       "text": [
-        "Stânca e plină de crăpături. Un Pokémon care a învățat Rock Smash din HM06 ar putea s-o spargă."
+        "Stânca e plină de crăpături. Un Pokémon care a învățat Spărgător de Pietre din HM06 ar putea s-o spargă."
       ]
     },
     {
@@ -455,7 +455,7 @@
         "A heavy boulder. Use Strength to shift it?"
       ],
       "text": [
-        "Un bolovan greu. Folosești Strength ca să-l muți?"
+        "Un bolovan greu. Folosești mișcarea Forță ca să-l muți?"
       ]
     },
     {
@@ -463,7 +463,7 @@
         "With Strength in use, the boulders here can be pushed."
       ],
       "text": [
-        "Cu Strength în uz, bolovanii de aici pot fi împinși."
+        "Cu Forța în uz, bolovanii de aici pot fi împinși."
       ]
     },
     {
@@ -481,7 +481,7 @@
         "With Strength in use, the boulders here can be pushed."
       ],
       "text": [
-        "Cu Strength în uz, bolovanii de aici pot fi împinși."
+        "Cu Forța în uz, bolovanii de aici pot fi împinși."
       ]
     }
   ],
@@ -501,7 +501,7 @@
         "The rock face is rough enough to grip. Use Rock Climb?"
       ],
       "text": [
-        "Peretele de stâncă e destul de aspru ca să te prinzi de el. Folosești Rock Climb?"
+        "Peretele de stâncă e destul de aspru ca să te prinzi de el. Folosești mișcarea Cățărare?"
       ]
     },
     {
@@ -529,7 +529,7 @@
         "A great waterfall. Use Waterfall to go up it?"
       ],
       "text": [
-        "O cascadă uriașă. Folosești Waterfall ca să urci pe ea?"
+        "O cascadă uriașă. Folosești mișcarea Cascadă ca să urci pe ea?"
       ]
     },
     {

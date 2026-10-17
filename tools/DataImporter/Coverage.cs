@@ -284,26 +284,44 @@ public static class Coverage
     /// <summary>
     /// Plan 17 · N3: the names each language has (<c>Data/text/&lt;tag&gt;/names.json</c>, from the importer) against what the
     /// data holds, and the descriptions PokeAPI's contributors wrote where a language has them. English is the data itself;
-    /// a language with no file (Romanian: PokeAPI has none) shows the English names.
+    /// a language with no file shows the English names, and a language's hand-written <c>names.&lt;kind&gt;.json</c> are counted
+    /// with its <c>names.json</c> (Romanian has those alone: PokeAPI has no Romanian).
     /// </summary>
     private static void Languages(StringBuilder sb, string textFolder, IReadOnlyList<PokemonSpecies> species, IReadOnlyList<MoveData> moves,
         IReadOnlyList<AbilityDatabase.AbilityRecord> abilities, IReadOnlyList<ItemData> items)
     {
         sb.Append("\n## Languages\n\n");
         sb.Append("Names and descriptions per language (plan 17 · N3), counted from `Data/text/<tag>/names.json`, which the importer writes from PokeAPI's own tables: ");
-        sb.Append("a name the file lacks is shown in English. Descriptions are PokeAPI's short prose where a language has it; the games' own text is never read.\n\n");
+        sb.Append("a name the file lacks is shown in English. Descriptions are PokeAPI's short prose where a language has it; the games' own text is never read. ");
+        sb.Append("A language marked (own) also has hand-written `names.<kind>.json` files beside it (plan 17 · N6: Romanian's names and descriptions, made up by us), which the importer never writes and whose entries win.\n\n");
         sb.Append($"| Language | Species ({species.Count}) | Forms | Moves ({moves.Count}) | Abilities ({abilities.Count}) | Items ({items.Count}) | Places | Move descriptions | Ability descriptions | Item descriptions |\n");
         sb.Append("| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n");
         foreach (var dir in Directory.GetDirectories(textFolder).OrderBy(d => Path.GetFileName(d), StringComparer.Ordinal))
         {
-            string file = Path.Combine(dir, "names.json");
-            if (!File.Exists(file)) continue;
-            using var document = System.Text.Json.JsonDocument.Parse(File.ReadAllText(file));
-            var root = document.RootElement;
-            int Count(System.Text.Json.JsonElement element, string name) => element.TryGetProperty(name, out var section) ? section.EnumerateObject().Count() : 0;
-            var descriptions = root.GetProperty("descriptions");
-            sb.Append($"| {Path.GetFileName(dir)} | {Count(root, "species")} | {Count(root, "forms")} | {Count(root, "moves")} | {Count(root, "abilities")} | {Count(root, "items")} | {Count(root, "places")} | " +
-                      $"{Count(descriptions, "moves")} | {Count(descriptions, "abilities")} | {Count(descriptions, "items")} |\n");
+            // The importer's names.json and the hand-written names.<kind>.json beside it, read as LocalNames reads them
+            var files = new List<string>();
+            string main = Path.Combine(dir, NameFiles.FileName);
+            if (File.Exists(main)) files.Add(main);
+            files.AddRange(Directory.GetFiles(dir, LocalNames.OwnFilePattern).Where(f => Path.GetFileName(f) != NameFiles.FileName)
+                .OrderBy(f => Path.GetFileName(f), StringComparer.Ordinal));
+            if (files.Count == 0) continue;
+            var keys = new Dictionary<string, HashSet<string>>();
+            void Take(System.Text.Json.JsonElement element, string name)
+            {
+                if (!keys.TryGetValue(name, out var set)) keys[name] = set = new HashSet<string>(StringComparer.Ordinal);
+                foreach (var entry in element.EnumerateObject()) set.Add(entry.Name);
+            }
+            foreach (string file in files)
+            {
+                using var document = System.Text.Json.JsonDocument.Parse(File.ReadAllText(file));
+                foreach (var section in document.RootElement.EnumerateObject())
+                    if (section.Name == "descriptions") foreach (var d in section.Value.EnumerateObject()) Take(d.Value, "descriptions." + d.Name);
+                    else Take(section.Value, section.Name);
+            }
+            int Count(string name) => keys.TryGetValue(name, out var set) ? set.Count : 0;
+            string own = files.Count > 1 || Path.GetFileName(files[0]) != NameFiles.FileName ? " (own)" : "";
+            sb.Append($"| {Path.GetFileName(dir)}{own} | {Count("species")} | {Count("forms")} | {Count("moves")} | {Count("abilities")} | {Count("items")} | {Count("places")} | " +
+                      $"{Count("descriptions.moves")} | {Count("descriptions.abilities")} | {Count("descriptions.items")} |\n");
         }
     }
 

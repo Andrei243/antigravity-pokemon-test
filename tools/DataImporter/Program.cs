@@ -93,7 +93,9 @@ Write(Path.Combine(outDir, SealDatabase.FileName), GameDataFiles.Serialize(seals
 Write(Path.Combine(outDir, RibbonDatabase.FileName), GameDataFiles.Serialize(ribbons));
 Write(Path.Combine(outDir, UndergroundDatabase.FileName), GameDataFiles.Serialize(underground));
 Write(Path.Combine(outDir, FrontierDatabase.FileName), GameDataFiles.Serialize(frontier));
-// Plan 17 · N3: the names in every language PokeAPI has them in, one file each beside the language's interface table
+// Plan 17 · N3: the names in every language PokeAPI has them in, one file each beside the language's interface table.
+// Only names.json is written: a language's hand-written names.<kind>.json (plan 17 · N6, LocalNames.OwnFilePattern) are
+// never written, moved or deleted here
 var pokeApi = new PokeApi(pokeApiDir);
 foreach (var (tag, ids) in PokeApi.Languages)
 {

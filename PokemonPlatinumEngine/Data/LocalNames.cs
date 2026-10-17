@@ -9,12 +9,26 @@ namespace PokemonPlatinumEngine.Data;
 /// options chose (plan 17 · N3). A language's <c>Data/text/&lt;tag&gt;/names.json</c> is written by <c>tools/DataImporter</c>
 /// from PokeAPI's own tables, each entry keyed by the English name the data, the save and the rules go by, so a name
 /// is only ever <em>shown</em> through here: <see cref="Models.PokemonSpecies.DisplayName"/> and its fellows. A name
-/// the language's file lacks is the English one (Romanian has no file at all, PokeAPI having no Romanian), and the
-/// pseudo-language brackets every name as <see cref="Text"/> brackets every string. GPU-free.
+/// the language's files lack is the English one, and the pseudo-language brackets every name as <see cref="Text"/>
+/// brackets every string. GPU-free.
+/// <para>
+/// A language may also have hand-written files beside it (plan 17 · N6): <c>names.&lt;kind&gt;.json</c>
+/// (<c>names.moves.json</c>, <c>names.abilities.json</c>, <c>names.items.json</c>), each in the shape of <c>names.json</c>
+/// itself and holding only the sections it writes (<c>"moves": { "Tackle": "…" }</c> and
+/// <c>"descriptions": { "moves": { "Tackle": "…" } }</c>). They are read after <c>names.json</c>, in the order of their
+/// names, and an entry of theirs wins over the importer's. The importer writes <c>names.json</c> alone and never touches
+/// them: they are how a language PokeAPI doesn't name (Romanian, whose names and descriptions are our own) has names.
+/// </para>
 /// </summary>
 public static class LocalNames
 {
     public const string FileName = "names.json";
+
+    /// <summary>The hand-written files a language may have beside <see cref="FileName"/>: <c>names.&lt;kind&gt;.json</c>.</summary>
+    public const string OwnFilePattern = "names.*.json";
+
+    /// <summary>The name of a language's hand-written file for one kind of name (<c>moves</c>, <c>abilities</c>, <c>items</c>).</summary>
+    public static string OwnFileName(string kind) => $"names.{kind}.json";
 
     private sealed class Names
     {
@@ -27,12 +41,12 @@ public static class LocalNames
     /// <summary>Whether the chosen language is the pseudo-language, which brackets every name.</summary>
     private static bool Bracketed => Text.Language.Pseudo;
 
-    /// <summary>The names file of a language, or null where it has none (English, the pseudo-language, Romanian).</summary>
+    /// <summary>The names of a language, or null where it has no file of them (English, the pseudo-language).</summary>
     private static Names? For(string tag) => Loaded.GetOrAdd(tag, Read);
 
     private static Names? Current => Text.Language.Pseudo || Text.Current == Text.English ? null : For(Text.Current);
 
-    /// <summary>Whether a language has a names file of its own.</summary>
+    /// <summary>Whether a language has names of its own: the importer's file, hand-written ones (<see cref="OwnFilePattern"/>), or both.</summary>
     public static bool Has(string tag) => tag != Text.English && For(tag) != null;
 
     /// <summary>The entries of one section of a language's file, keyed by English name (nothing for a language with no file).</summary>
@@ -128,21 +142,37 @@ public static class LocalNames
 
     // ------------------------------------------------------------------ the files
 
+    /// <summary>The files a language's names are read from, in the order they are read: <c>names.json</c>, then its own files by name.</summary>
+    public static IReadOnlyList<string> FilesOf(string tag)
+    {
+        var files = new List<string>();
+        if (tag == Text.English) return files;
+        string folder = GameDataFiles.PathOf(Path.Combine("text", tag));
+        if (!Directory.Exists(folder)) return files;
+        string main = Path.Combine(folder, FileName);
+        if (File.Exists(main)) files.Add(main);
+        files.AddRange(Directory.GetFiles(folder, OwnFilePattern).Where(f => Path.GetFileName(f) != FileName)
+            .OrderBy(f => Path.GetFileName(f), StringComparer.Ordinal));
+        return files;
+    }
+
     private static Names? Read(string tag)
     {
-        if (tag == Text.English) return null;
-        string path = GameDataFiles.PathOf(Path.Combine("text", tag, FileName));
-        if (!File.Exists(path)) return null;
-        using var document = JsonDocument.Parse(File.ReadAllText(path));
+        var files = FilesOf(tag);
+        if (files.Count == 0) return null;
         var names = new Names();
-        foreach (var section in document.RootElement.EnumerateObject())
+        foreach (string path in files)
         {
-            if (section.Name == "descriptions")
+            using var document = JsonDocument.Parse(File.ReadAllText(path));
+            foreach (var section in document.RootElement.EnumerateObject())
             {
-                foreach (var d in section.Value.EnumerateObject()) Fill(Pick(names, "descriptions." + d.Name), d.Value);
-                continue;
+                if (section.Name == "descriptions")
+                {
+                    foreach (var d in section.Value.EnumerateObject()) Fill(Pick(names, "descriptions." + d.Name), d.Value);
+                    continue;
+                }
+                Fill(Pick(names, section.Name), section.Value);
             }
-            Fill(Pick(names, section.Name), section.Value);
         }
         return names;
     }

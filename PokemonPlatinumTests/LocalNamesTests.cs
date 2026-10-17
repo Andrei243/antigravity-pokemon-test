@@ -77,13 +77,30 @@ public class LocalNamesTests
     }
 
     [Fact]
-    public void RomanianIsListedWithNoNamesBecausePokeApiHasNoRomanianAndKeepsTheEnglishOnes()
+    public void RomanianHasNoNamesOfPokeApisButHandWrittenOnesOfItsOwnAndKeepsTheSpeciesEnglishNames()
     {
         Assert.NotNull(Language.Of("ro"));
-        Assert.False(LocalNames.Has("ro"));
-        // Offered since plan 17 · N6 for its ui.json; the names stay English all the same
+        // PokeAPI has no Romanian, so the importer writes no names.json for it; its names are hand-written names.<kind>.json (plan 17 · N6)
+        Assert.True(LocalNames.Has("ro"));
+        Assert.DoesNotContain(LocalNames.FilesOf("ro"), f => Path.GetFileName(f) == LocalNames.FileName);
+        Assert.Empty(LocalNames.Section("ro", "species"));
         Assert.Contains(Language.Offered, l => l.Tag == "ro");
-        Assert.Equal(("Bulbasaur", "Tackle", "Potion"), InLanguage("ro", () => (PokemonDatabase.Get("Bulbasaur")!.DisplayName, MoveDatabase.Get("Tackle")!.DisplayName, ItemDatabase.Get("Potion")!.DisplayName)));
+        // A species keeps its English name; a move takes the name made up for it
+        Assert.Equal(("Bulbasaur", "Izbitură"), InLanguage("ro", () => (PokemonDatabase.Get("Bulbasaur")!.DisplayName, MoveDatabase.Get("Tackle")!.DisplayName)));
+    }
+
+    [Fact]
+    public void AHandWrittenFileIsReadAfterTheImportersAndItsEntriesWin()
+    {
+        // FilesOf puts names.json first and the hand-written ones after it by name, which is the order Read takes them in
+        foreach (var tag in Written.Append("ro"))
+        {
+            var files = LocalNames.FilesOf(tag).Select(Path.GetFileName).ToList();
+            Assert.All(files.Skip(1), f => Assert.Matches("^names\\..+\\.json$", f!));
+            if (files.Contains(LocalNames.FileName)) Assert.Equal(LocalNames.FileName, files[0]);
+            Assert.Equal(files.Skip(1).OrderBy(f => f, StringComparer.Ordinal), files.Skip(1));
+        }
+        Assert.Equal("names.moves.json", LocalNames.OwnFileName("moves"));
     }
 
     [Fact]
