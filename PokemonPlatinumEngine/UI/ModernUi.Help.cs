@@ -139,8 +139,9 @@ internal static partial class ModernUi
     {
         var panel = new Rectangle(Margin, top, sw - Margin * 2, ContentBottom - top);
         Panel(panel, 30);
-        var rows = InputManager.Bindings.Select(b => (b.Name, Keys: b.Keys.Select(InputManager.KeyName).ToArray(), Pad: (string?)InputManager.PadName(b.Pad)))
-            .Concat(HelpScreen.OtherKeys.Select(k => (k.Name, Keys: new[] { k.Key }, Pad: (string?)null))).ToArray();
+        // (PageLeft, PageRight and Screenshot have no reader yet; plan 12 · Q5's Controls page lists every action)
+        var rows = InputManager.Bindings.Where(b => !InputManager.NotReadYet.Contains(b.Action))
+            .Select(b => (b.Name, Keys: b.Keys.Select(InputManager.KeyName).ToArray(), Pad: b.Pad.Length == 0 ? null : string.Join(" / ", b.Pad.Select(InputManager.PadName)))).ToArray();
         int perColumn = (rows.Length + 1) / 2;
         float colW = (panel.Width - 64 - Gutter) / 2f, pitch = (panel.Height - 48) / perColumn;
         for (int i = 0; i < rows.Length; i++)

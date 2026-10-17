@@ -192,6 +192,25 @@
         "Set": "Când Pokémonul unui antrenor leșină, următorul iese imediat și nu ești întrebat dacă vrei să schimbi."
       }
     },
+    "buttonMode": {
+      "label": "Modul butoanelor",
+      "value": { "Normal": "Normal", "StartIsX": "Start = X", "LIsA": "L = A" },
+      "help": {
+        "Normal": "Butoanele manetei ca în joc: A confirmă, B înapoi, butonul din stânga pentru obiectul înregistrat, Start pentru meniu.",
+        "StartIsX": "Start și butonul din stânga își schimbă locurile: meniul e pe butonul din față, iar obiectul înregistrat pe Start.",
+        "LIsA": "Butonul de umăr din stânga confirmă ca A. Atingerea Pokétch-ului rămâne atunci doar pe tastatură (I)."
+      }
+    },
+    "stickDeadZone": {
+      "label": "Zona moartă a manetei",
+      "value": "{n}%",
+      "help": "Cât trebuie împinsă maneta stângă înainte să meargă sau să miște un cursor. Mărește-o dacă maneta se mișcă singură, micșorează-o dacă pare moale."
+    },
+    "gamepad": {
+      "label": "Maneta",
+      "value": "Maneta {n}",
+      "help": "Care dintre manetele conectate este citită de joc. Tastatura merge oricare ar fi aleasă."
+    },
     "help": {
       "label": "Ajutor",
       "value": "Deschide",
@@ -200,7 +219,7 @@
   },
 
   "title": {
-    "press": "APASĂ  Z  SAU  ENTER",
+    "press": "APASĂ  {KEY:confirm}  SAU  {KEY:menu}",
     "credit": "Un proiect făcut de fani, neafiliat cu Nintendo, Creatures sau GAME FREAK.",
     "disclaimer": {
       "heading": "O refacere făcută de fani",
@@ -742,7 +761,6 @@
         "text": "Salvează din meniu oricând vrei. Un Centru Pokémon îți vindecă echipa pe gratis, iar ultimul vizitat e locul unde te trezești după o luptă pierdută."
       }
     },
-    "key": { "fullScreen": "Ecran complet", "sound": "Sunet pornit sau oprit" },
     "matchup": {
       "super": { "headline": "Foarte eficientă", "line": "O mișcare de tip {attack} împotriva unui Pokémon de tip {defend} face dublu de mult rău." },
       "half": { "headline": "Puțin eficientă", "line": "O mișcare de tip {attack} împotriva unui Pokémon de tip {defend} face jumătate din rău." },
@@ -1058,7 +1076,7 @@
     "nextTrainer": "URMĂTORUL ANTRENOR",
     "opening": "Tabla de joc pornește...",
     "ready": "Fii gata!",
-    "running": "Apasă Z ca să oprești cursorul!",
+    "running": "Apasă {key:confirm} ca să oprești cursorul!",
     "said": "{effect}!",
     "cursor": "CURSOR",
     "random": "LA ÎNTÂMPLARE",
@@ -1515,13 +1533,19 @@
     "action": {
       "Up": "Sus", "Down": "Jos", "Left": "Stânga", "Right": "Dreapta", "Confirm": "Confirmă, vorbește, citește", "Cancel": "Înapoi", "Menu": "Meniu",
       "Run": "Fugă (ținut apăsat)", "Item": "Obiect înregistrat", "Poketch": "Scoate sau ascunde Pokétch-ul", "PoketchApp": "Următoarea aplicație Pokétch",
-      "PoketchTouch": "Atinge Pokétch-ul"
+      "PoketchTouch": "Atinge Pokétch-ul", "PageLeft": "Pagina înapoi", "PageRight": "Pagina înainte", "Fullscreen": "Ecran complet", "Mute": "Sunet pornit sau oprit", "Screenshot": "Fă o captură de ecran"
     },
     "key": { "esc": "Esc", "shift": "Shift", "up": "Săgeată sus", "down": "Săgeată jos", "left": "Săgeată stânga", "right": "Săgeată dreapta" },
+    "unbound": "Nimic",
     "pad": {
       "up": "Cruce sus", "down": "Cruce jos", "left": "Cruce stânga", "right": "Cruce dreapta", "bottom": "Butonul de jos",
       "rightButton": "Butonul din dreapta", "leftButton": "Butonul din stânga", "top": "Butonul de sus", "start": "Start", "r": "R", "l": "L"
     }
+  },
+  "padButtons": {
+    "bottom": "A", "right": "B", "left": "X", "top": "Y", "start": "Start", "select": "Select",
+    "l1": "L", "r1": "R", "l2": "ZL", "r2": "ZR", "dpad": "Cruce",
+    "dpadUp": "Cruce sus", "dpadDown": "Cruce jos", "dpadLeft": "Cruce stânga", "dpadRight": "Cruce dreapta"
   },
   "found": {
     "found": { "one": "{player} a găsit {item}!", "few": "{player} a găsit {n} × {item}!", "other": "{player} a găsit {n} × {item}!" },

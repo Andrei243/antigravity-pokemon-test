@@ -102,6 +102,32 @@ partial class Harness
         engine.Settings.Speakers = SpeakerMode.Stereo;
         engine.ApplySettings(window: false);
         Console.WriteLine($"the options as they were again: battle scene {engine.Settings.BattleScene}, battle style {engine.Settings.BattleStyle}, speakers {engine.Settings.Speakers}");
+
+        // The pad's rows (plan 12 · Q4), the last before HELP: as they are unless chosen, each changed, and the key hints
+        // naming the pad's buttons once the player's last touch was the pad
+        GoToRow(OptionRow.ButtonMode);
+        Frames(1); Shot("look_15_options_button_mode");
+        OptionsScreen.Change(engine.Settings, OptionRow.ButtonMode, 1);
+        Frames(1); Shot("look_15b_options_button_mode_start_is_x");
+        OptionsScreen.Change(engine.Settings, OptionRow.ButtonMode, 1);
+        Frames(1); Shot("look_15c_options_button_mode_l_is_a");
+        GoToRow(OptionRow.StickDeadZone);
+        OptionsScreen.Change(engine.Settings, OptionRow.StickDeadZone, 1);
+        Frames(1); Shot("look_15d_options_stick_dead_zone");
+        GoToRow(OptionRow.Gamepad);
+        OptionsScreen.Change(engine.Settings, OptionRow.Gamepad, 1);
+        Frames(1); Shot("look_15e_options_controller");
+        engine.ApplySettings(window: false);
+        InputManager.LastDevice = InputDevice.Pad;
+        Frames(1); Shot("look_15f_options_hints_on_the_pad");
+        GoToRow(OptionRow.Help);
+        Frames(1); Shot("look_15g_options_help_on_the_pad");
+        InputManager.LastDevice = InputDevice.Keyboard;
+        engine.Settings.ButtonMode = ButtonMode.Normal;
+        engine.Settings.StickDeadZone = 35;
+        engine.Settings.GamepadIndex = 0;
+        engine.ApplySettings(window: false);
+        Console.WriteLine($"the options as they were again: button mode {engine.Settings.ButtonMode}, dead zone {engine.Settings.StickDeadZone}, pad {engine.Settings.GamepadIndex + 1}, device {InputManager.LastDevice}");
         options.Open();
         game.State = GameState.Overworld;
 

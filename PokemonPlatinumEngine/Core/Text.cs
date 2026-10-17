@@ -60,6 +60,8 @@ public static partial class Text
     /// <summary>The string of <paramref name="key"/> in the chosen language, its named arguments put in.</summary>
     public static string Of(string key, params (string Name, object? Value)[] args)
     {
+        // The name of a control follows the device the player touched last (plan 12 · Q4)
+        if (Prompts.ForPad(key) is { } onThePad) return onThePad;
         Entry? entry;
         Language lang;
         lock (gate)
@@ -69,7 +71,7 @@ public static partial class Text
             entry = chosen != null && chosen.TryGetValue(key, out var own) ? own
                 : english.TryGetValue(key, out var en) ? en : null;
         }
-        string text = entry == null ? $"[{key}]" : Fill(entry.Pick(lang, args), args);
+        string text = entry == null ? $"[{key}]" : Prompts.Fill(Fill(entry.Pick(lang, args), args));
         return lang.Pseudo ? $"[{text}]" : text;
     }
 

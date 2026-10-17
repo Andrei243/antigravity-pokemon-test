@@ -33,8 +33,6 @@ public sealed class HelpScreen
         (Text.Of("help.note.saving.title"), Text.Of("help.note.saving.text"))
     };
 
-    /// <summary>Keys the game reads beyond the actions: full screen and the sound.</summary>
-    public static (string Name, string Key)[] OtherKeys => new[] { (Text.Of("help.key.fullScreen"), "F11"), (Text.Of("help.key.sound"), "M") };
 
     public bool IsActive { get; private set; }
     public HelpPage Page { get; private set; }
