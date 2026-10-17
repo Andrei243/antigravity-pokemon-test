@@ -186,8 +186,8 @@ label ManyMore
   say "The world holds many, many more kinds of Pokémon than Sinnoh does, {player}. Go and meet them. I envy you!"
   end
 # Plan 03 · D12a, ours: the two Pokémon of the briefcase the player didn't choose, once the Hall of Fame is behind
-# them and the Pokédex is the National one, at the Battle Zone's levels (a gift of the post-game, set against
-# levels.txt). Each goes to the boxes when the team is full.
+# them and the Pokédex is the National one, at level 5 as the later games' gifts of starters are (the user's choice,
+# 2026-10-17), so the player raises and evolves them. Each goes to the boxes when the team is full.
 label OtherStarters
   say "Ah, {player}. Before you go: the other two Pokémon from that briefcase have been waiting here all this time." "A Champion's lab should not keep them on a shelf. Take them both, and show them the world."
   if not starter "Turtwig" call GiveTurtwig
@@ -382,23 +382,23 @@ script Assistant
   end
 
 
-# Plan 03 · D12a: one of the briefcase's Pokémon handed over by OtherStarters, at level 50
+# Plan 03 · D12a: one of the briefcase's Pokémon handed over by OtherStarters, at level 5 (the user's choice, 2026-10-17)
 script GiveTurtwig
-  givepokemon "Turtwig" 50
+  givepokemon "Turtwig" 5
   fanfare pokemon
   text "{player} received the Turtwig!"
   return
 
 
 script GiveChimchar
-  givepokemon "Chimchar" 50
+  givepokemon "Chimchar" 5
   fanfare pokemon
   text "{player} received the Chimchar!"
   return
 
 
 script GivePiplup
-  givepokemon "Piplup" 50
+  givepokemon "Piplup" 5
   fanfare pokemon
   text "{player} received the Piplup!"
   return

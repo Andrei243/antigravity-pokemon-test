@@ -63,43 +63,71 @@ public class SinnohSpeciesTests
             $"Only Pal Park now gives: {string.Join(", ", lost)}. Another way now gives: {string.Join(", ", given)}. The pool: {string.Join(", ", pool.Select(p => $"\"{p}\""))}");
     }
 
-    [Fact]
-    public void TheOtherVersionsSpeciesAreMetInTheBattleZoneWithTheNationalPokedex()
+    /// <summary>
+    /// Where Diamond's and Pearl's species that Platinum's tables leave out are met with the National Pokédex (the
+    /// user's choice of 2026-10-17: their own places in those versions, not the Battle Zone), by area and the grass's
+    /// two slots or the Super Rod's.
+    /// </summary>
+    public static readonly (string Area, string[] Land, string? SuperRod)[] TheirOwnPlaces =
     {
-        // Diamond's and Pearl's species that Platinum's own tables leave out
+        ("eterna_forest", new[] { "Murkrow", "Misdreavus" }, null),
+        ("route_221", new[] { "Stunky", "Skuntank" }, "Clamperl"),
+        ("route_222", new[] { "Glameow", "Purugly" }, null),
+        ("route_228", new[] { "Trapinch", "Vibrava" }, null),
+        ("route_219", Array.Empty<string>(), "Clamperl"),
+    };
+
+    [Fact]
+    public void TheOtherVersionsSpeciesAreMetInTheirOwnPlacesWithTheNationalPokedex()
+    {
+        // Diamond's and Pearl's species that Platinum's tables leave out
         string[] exclusives = { "Murkrow", "Misdreavus", "Glameow", "Purugly", "Stunky", "Skuntank", "Trapinch", "Vibrava", "Clamperl" };
         foreach (string s in exclusives)
             Assert.True(Sinnoh.Has(s) && Sinnoh.Ways[s].Contains("National Pokédex"), $"{s}: {Sinnoh.Ways.GetValueOrDefault(s)}");
         // ... and by evolving them
         foreach (string s in new[] { "Honchkrow", "Mismagius", "Flygon", "Huntail", "Gorebyss" }) Assert.True(Sinnoh.Has(s), s);
+        // None is left in the Battle Zone's routes but the Trapinch line, whose own place Route 228 is
+        foreach (string key in new[] { "route_225", "route_226", "route_229" })
+            Assert.True(AreaOf(key).NationalSlots.Count == 0 && AreaOf(key).NationalSuperRod.Count == 0, key);
     }
+
+    /// <summary>An area on the map that holds it (Eterna Forest is a map of its own, the routes the map of Sinnoh).</summary>
+    private static MapArea AreaOf(string key) => MapDatabase.Get(SinnohWorld.Value.MapOf(key)!.Name).FindArea(key)!;
+
+    private static readonly Lazy<World> SinnohWorld = new(() => World.LoadAll().First(w => w.Index.Region == "Sinnoh"));
 
     [Fact]
     public void TheNationalSlotsComeOnlyWithTheNationalPokedexAtTheSlotsOwnLevels()
     {
-        var map = MapDatabase.Get("Sinnoh");
-        var area = map.FindArea("route_226")!;
-        var before = EncounterSlots.Grass(area, new EncounterMoment());
-        var after = EncounterSlots.Grass(area, new EncounterMoment { NationalDex = true });
-        Assert.DoesNotContain(before, e => e.SpeciesName is "Murkrow" or "Misdreavus");
-        Assert.Equal(new[] { "Murkrow", "Misdreavus" }, after.Skip(OverlayNational.FirstLandSlot).Take(2).Select(e => e.SpeciesName));
-        for (int i = 0; i < 12; i++)
+        foreach (var (key, land, superRod) in TheirOwnPlaces)
         {
-            Assert.Equal(before[i].MinLevel, after[i].MinLevel);
-            Assert.Equal(before[i].Weight, after[i].Weight);
+            var area = AreaOf(key);
+            if (land.Length > 0)
+            {
+                var before = EncounterSlots.Grass(area, new EncounterMoment());
+                var after = EncounterSlots.Grass(area, new EncounterMoment { NationalDex = true });
+                Assert.DoesNotContain(before, e => land.Contains(e.SpeciesName));
+                Assert.Equal(land, after.Skip(OverlayNational.FirstLandSlot).Take(2).Select(e => e.SpeciesName));
+                for (int i = 0; i < 12; i++)
+                {
+                    Assert.Equal(before[i].MinLevel, after[i].MinLevel);
+                    Assert.Equal(before[i].Weight, after[i].Weight);
+                }
+            }
+            var rod = area.RodEncounters[(int)FishingRod.Super];
+            if (superRod != null)
+            {
+                Assert.Equal(superRod, EncounterSlots.SuperRod(area, rod, new EncounterMoment { NationalDex = true })[OverlayNational.SuperRodSlot].SpeciesName);
+                Assert.Same(rod, EncounterSlots.SuperRod(area, rod, new EncounterMoment()));
+            }
         }
-        // The levels are the Battle Zone's grass (plan 03 · D13: 47 to 55)
-        foreach (string key in new[] { "route_225", "route_226", "route_228", "route_229" })
-        {
-            var slots = EncounterSlots.Grass(map.FindArea(key)!, new EncounterMoment { NationalDex = true });
-            foreach (var e in slots.Skip(OverlayNational.FirstLandSlot).Take(2))
-                Assert.InRange(e.MinLevel, 47, 55);
-        }
-
-        var rod = area.RodEncounters[(int)FishingRod.Super];
-        Assert.Equal("Clamperl", EncounterSlots.SuperRod(area, rod, new EncounterMoment { NationalDex = true })[OverlayNational.SuperRodSlot].SpeciesName);
-        Assert.Same(rod, EncounterSlots.SuperRod(area, rod, new EncounterMoment()));
-        Assert.InRange(rod[OverlayNational.SuperRodSlot].MaxLevel, 47, 55);
+        // The slots' own levels: the forest's 13, Route 221's 31 and 30, Route 222's 40 and 41, Route 228's 49 and 50
+        int[] Levels(string key) => EncounterSlots.Grass(AreaOf(key), new EncounterMoment { NationalDex = true })
+            .Skip(OverlayNational.FirstLandSlot).Take(2).Select(e => e.MinLevel).ToArray();
+        Assert.Equal(new[] { 13, 13 }, Levels("eterna_forest"));
+        Assert.Equal(new[] { 31, 30 }, Levels("route_221"));
+        Assert.Equal(new[] { 40, 41 }, Levels("route_222"));
+        Assert.Equal(new[] { 49, 50 }, Levels("route_228"));
     }
 
     [Fact]
@@ -188,7 +216,8 @@ public class SinnohSpeciesTests
             Run("Rowan", "RowanLab", host);
             var given = host.Party.Members.Concat(host.Boxes).Select(p => p.Species.Name).ToList();
             Assert.Equal(StoryState.Starters.Where(s => s != chosen).OrderBy(s => s), given.OrderBy(s => s));
-            Assert.All(host.Party.Members, p => Assert.Equal(50, p.Level));
+            // At level 5, so the player raises and evolves them (the user's choice, 2026-10-17)
+            Assert.All(host.Party.Members, p => Assert.Equal(5, p.Level));
             Assert.True(story.Has("FLAG_RECEIVED_SANDGEM_TOWN_LAB_OTHER_STARTERS"));
 
             // Once only
@@ -221,21 +250,57 @@ public class SinnohSpeciesTests
     }
 
     [Fact]
-    public void PalParksVisitorsAreSixOfThePoolTheUncaughtFirst()
+    public void PalParksVisitorsGoRoundThePoolSixADay()
     {
+        // The user's choice of 2026-10-17: a fixed rotation by the date, no chance in which species come
         var pool = Sinnoh.PalParkPool;
         Assert.True(pool.Count >= 6);
-        var caught = pool.Skip(6).Select(s => PokemonDatabase.Get(s)!.DexNumber).ToHashSet();
-        var six = PalParkState.Visitors(pool, caught.Contains, new Random(7));
-        Assert.Equal(6, six.Select(p => p.Species.Name).Distinct().Count());
-        Assert.All(six, p => Assert.Contains(p.Species.Name, pool.Take(6)));
-        Assert.All(six, p => Assert.InRange(p.Level, PalParkState.VisitorLowest, PalParkState.VisitorHighest));
+        var day = new DateTime(2026, 10, 17);
 
-        // A pool of fewer than six is made up from the rest of the National Pokédex to Arceus
-        var few = PalParkState.Visitors(new[] { "Bulbasaur", "Mew" }, _ => false, new Random(3));
-        Assert.Equal(6, few.Select(p => p.Species.Name).Distinct().Count());
-        Assert.Contains(few, p => p.Species.Name == "Mew");
-        Assert.All(few, p => Assert.InRange(p.Species.DexNumber, 1, SpeciesSources.HighestInSinnoh));
+        // One date always brings the same six, whatever the dice
+        var six = PalParkState.VisitorSpecies(pool, day);
+        Assert.Equal(6, six.Distinct().Count());
+        Assert.All(six, s => Assert.Contains(s, pool));
+        Assert.Equal(six, PalParkState.VisitorSpecies(pool, day));
+        Assert.Equal(six, PalParkState.Visitors(pool, day, new Random(7)).Select(p => p.Species.Name));
+        Assert.Equal(six, PalParkState.Visitors(pool, day.AddHours(23), new Random(8)).Select(p => p.Species.Name));
+        Assert.All(PalParkState.Visitors(pool, day, new Random(7)), p => Assert.InRange(p.Level, PalParkState.VisitorLowest, PalParkState.VisitorHighest));
+
+        // The next day brings the next six of the ring
+        var next = PalParkState.VisitorSpecies(pool, day.AddDays(1));
+        Assert.NotEqual(six.OrderBy(s => s), next.OrderBy(s => s));
+        int at = pool.ToList().IndexOf(six[0]);
+        Assert.Equal(pool[(at + 6) % pool.Count], next[0]);
+
+        // Every species of the pool comes round in turn
+        var seen = new HashSet<string>();
+        for (int d = 0; d < pool.Count; d++) seen.UnionWith(PalParkState.VisitorSpecies(pool, day.AddDays(d)));
+        Assert.Equal(pool.OrderBy(s => s), seen.OrderBy(s => s));
+
+        // A pool of fewer than six is made up from Diamond's, Pearl's and Platinum's species in National order
+        var few = PalParkState.VisitorSpecies(new[] { "Bulbasaur", "Mew" }, day);
+        Assert.Equal(6, few.Distinct().Count());
+        Assert.Contains("Mew", few);
+        Assert.All(few, s => Assert.InRange(PokemonDatabase.Get(s)!.DexNumber, 1, SpeciesSources.HighestInSinnoh));
+    }
+
+    [Fact]
+    public void AnotherDaysVisitorsMakeWayForTodays()
+    {
+        var pool = Sinnoh.PalParkPool;
+        var park = new PalParkState();
+        var day = new DateTime(2026, 10, 17);
+        Assert.True(park.Welcome(pool, day, new Random(1)));
+        var first = park.Waiting.ToList();
+        // The same day leaves the six waiting as they are
+        Assert.False(park.Welcome(pool, day, new Random(2)));
+        Assert.Equal(first, park.Waiting);
+        // The next day's six take their place, but never in the middle of a show
+        park.Begin(new Random(3));
+        Assert.False(park.Welcome(pool, day.AddDays(1), new Random(4)));
+        park.Abandon();
+        Assert.True(park.Welcome(pool, day.AddDays(1), new Random(4)));
+        Assert.Equal(PalParkState.VisitorSpecies(pool, day.AddDays(1)), park.Waiting.Select(p => p.Species.Name));
     }
 
     [Fact]

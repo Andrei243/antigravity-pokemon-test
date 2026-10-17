@@ -97,31 +97,62 @@ public sealed class PalParkState
     /// <summary>The levels the six visitors come at (plan 03 · D12a): the Battle Zone's grass, 47 to 55.</summary>
     public const int VisitorLowest = 47, VisitorHighest = 55;
 
+    /// <summary>The day the visitors' rotation counts from (<see cref="RotationDay"/> 0).</summary>
+    public static readonly DateTime RotationEpoch = new(2000, 1, 1);
+
+    /// <summary>The day's place in the visitors' rotation: whole days since <see cref="RotationEpoch"/>.</summary>
+    public static long RotationDay(DateTime day) => (long)Math.Floor((day.Date - RotationEpoch).TotalDays);
+
     /// <summary>
-    /// Six visitors from far away (plan 03 · D12a, ours, the stand-in for the migration the user can overturn): six
-    /// different species of the pool (<see cref="Data.SpeciesSources.PalParkPool"/>, the species Sinnoh has no other
-    /// way to), those the Pokédex hasn't caught first; where the pool hasn't six, any of Diamond's, Pearl's and
-    /// Platinum's make up the number. Each at a level of <see cref="VisitorLowest"/> to <see cref="VisitorHighest"/>.
-    /// Every draw is on <paramref name="chance"/>.
+    /// The six species that visit on a day (plan 03 · D12a, the user's choice of 2026-10-17: a fixed rotation by the
+    /// day, so the six can be planned for): the pool (<see cref="Data.SpeciesSources.PalParkPool"/>, the species Sinnoh
+    /// has no other way to, in National order) is read as a ring, and each day takes the next six of it, the day's
+    /// six starting at <c>day × 6</c> round the ring. So one date always brings the same six, the next day the six
+    /// after them, and the whole pool comes round in turn. No chance is drawn. Where the pool hasn't six, Diamond's,
+    /// Pearl's and Platinum's species in National order make up the number.
     /// </summary>
-    public static List<Pokemon> Visitors(IReadOnlyList<string> pool, Func<int, bool> caught, Random chance)
+    public static List<string> VisitorSpecies(IReadOnlyList<string> pool, DateTime day)
     {
-        var inPool = pool.Select(Data.PokemonDatabase.Get).OfType<PokemonSpecies>().ToList();
-        var chosen = new List<PokemonSpecies>();
-        void Draw(List<PokemonSpecies> from)
+        int size = Overworld.CatchingShow.Size;
+        var inPool = pool.Where(s => Data.PokemonDatabase.Get(s) != null).Distinct().ToList();
+        var chosen = new List<string>();
+        int n = inPool.Count;
+        if (n > 0)
         {
-            from = from.Where(s => !chosen.Contains(s)).ToList();
-            while (chosen.Count < Overworld.CatchingShow.Size && from.Count > 0)
-            {
-                int i = chance.Next(from.Count);
-                chosen.Add(from[i]);
-                from.RemoveAt(i);
-            }
+            int start = (int)((RotationDay(day) * size % n + n) % n);
+            for (int k = 0; k < Math.Min(size, n); k++) chosen.Add(inPool[(start + k) % n]);
         }
-        Draw(inPool.Where(s => !caught(s.DexNumber)).ToList());
-        Draw(inPool);
-        Draw(Data.PokemonDatabase.GetAll().Where(s => s.DexNumber is >= 1 and <= Data.SpeciesSources.HighestInSinnoh).OrderBy(s => s.DexNumber).ToList());
-        return chosen.Select(s => new Pokemon(s, chance.Next(VisitorLowest, VisitorHighest + 1), chance)).ToList();
+        foreach (var s in Data.PokemonDatabase.GetAll().Where(s => s.DexNumber is >= 1 and <= Data.SpeciesSources.HighestInSinnoh).OrderBy(s => s.DexNumber))
+        {
+            if (chosen.Count >= size) break;
+            if (!chosen.Contains(s.Name)) chosen.Add(s.Name);
+        }
+        return chosen;
+    }
+
+    /// <summary>
+    /// Six visitors from far away (plan 03 · D12a, ours, the stand-in for the migration): the day's six species
+    /// (<see cref="VisitorSpecies"/>), each at a level of <see cref="VisitorLowest"/> to <see cref="VisitorHighest"/>.
+    /// Which species come is the date's alone; the levels and the Pokémon themselves are drawn on <paramref name="chance"/>.
+    /// </summary>
+    public static List<Pokemon> Visitors(IReadOnlyList<string> pool, DateTime day, Random chance) =>
+        VisitorSpecies(pool, day).Select(Data.PokemonDatabase.Get).OfType<PokemonSpecies>()
+            .Select(s => new Pokemon(s, chance.Next(VisitorLowest, VisitorHighest + 1), chance)).ToList();
+
+    /// <summary>
+    /// The day's visitors come to the park (plan 03 · D12a): when nothing waits there, or when the six waiting are
+    /// another day's and no show is under way, today's six take their place. False when the park is left as it was.
+    /// </summary>
+    public bool Welcome(IReadOnlyList<string> pool, DateTime day, Random chance)
+    {
+        if (Show != null) return false;
+        var today = VisitorSpecies(pool, day);
+        if (Stocked && waiting.Select(p => p.Species.Name).OrderBy(s => s, StringComparer.Ordinal)
+                .SequenceEqual(today.OrderBy(s => s, StringComparer.Ordinal)))
+            return false;
+        waiting.Clear();
+        waiting.AddRange(Visitors(pool, day, chance));
+        return true;
     }
 
     /// <summary><c>CatchingShow_Start</c>: the six are let loose.</summary>

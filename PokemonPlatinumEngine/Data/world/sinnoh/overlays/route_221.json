@@ -1,5 +1,9 @@
 {
   "area": "route_221",
+  // Plan 03 · D12a: Diamond's Stunky line, which Platinum's tables leave out, where Diamond has both (Stunky on
+  // Routes 206, 214 and 221, Skuntank on this route and 225): in the grass's slots 8 and 9 once the National Pokédex
+  // is had, at those slots' levels (31 and 30); and Clamperl on the Super Rod's slot 3, as on Route 219 (40 to 55)
+  "national": { "land": [ "Stunky", "Skuntank" ], "superRod": [ "Clamperl" ] },
   "bgmTrack": "sinnoh/route206",
   "trees": "Round",
   // Pal Park's lobby, built to the original's plan (plan 06 · R16b). The two workers stand before its doors until the

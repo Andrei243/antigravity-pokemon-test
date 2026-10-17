@@ -12,7 +12,8 @@ namespace PokemonPlatinumTests.Golden;
 /// standing in it, by its area's key, with the levels of what is met in its grass or cave, on its water and on each
 /// rod, and of the trainers there. They are Platinum's own, read from the imported world and the trainer table, so a
 /// block that moves is an import that changed a level; and they are the yardstick for whatever this game places of
-/// its own (the other versions' exclusives and the gifts of plan 03 · D12a: set against the Battle Zone's rows).
+/// its own (plan 03 · D12a: the other versions' exclusives take the levels of the slots they stand in, in the places
+/// Diamond and Pearl have them; Pal Park's visitors are set against the Battle Zone's rows).
 /// </summary>
 public class GoldenLevelTests
 {
