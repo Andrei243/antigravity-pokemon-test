@@ -22,7 +22,21 @@ static class Translated
         if (Text.Current == Text.English) return false;
         foreach (string probe in ProbesFor(english))
             if (line.Contains(probe)) return true;
+        // A line that names an item or a move says it by its own name in another language
+        foreach (string own in NamesIn(english))
+            if (line.Contains(own)) return true;
         return false;
+    }
+
+    // The other language's names of the items and moves the English piece names
+    static List<string> NamesIn(string english)
+    {
+        var found = new List<string>();
+        foreach (var item in ItemDatabase.GetAll())
+            if (english.Contains(item.Name) && LocalNames.Item(item.Name) is { Length: > 0 } own && own != item.Name) found.Add(own);
+        foreach (var move in MoveDatabase.GetAll())
+            if (english.Contains(move.Name) && LocalNames.Move(move.Name) is { Length: > 0 } own && own != move.Name) found.Add(own);
+        return found;
     }
 
     static List<string> ProbesFor(string english)

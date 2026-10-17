@@ -193,7 +193,7 @@ partial class Harness
             else Confirm(fight);
             Skip(0.5);
         }
-        Until(() => State() == GameState.Overworld, "the field again", 1200);
+        Until(() => FieldAgain(), "the field again", 1200);
         Frames(20);
         Console.WriteLine($"trainer: beaten {tristan.HasBattled}, the story knows {story.HasDefeated(tristan.TrainerData!.Id)}, script running {engine.ScriptRunning}, state {State()}");
         Shot("st24_trainer_beaten");
