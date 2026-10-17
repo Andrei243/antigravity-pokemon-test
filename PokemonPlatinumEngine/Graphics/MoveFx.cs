@@ -642,6 +642,7 @@ internal static partial class MoveFx
             }
         }
         Batch("Y6", Platinum1());
+        Batch("Y7", Platinum2());
         return (all, batches);
     }
 
