@@ -124,8 +124,8 @@ public static class PokedexSearch
     /// <summary>The weight a list sorted by size shows beside each species, or null when the order isn't by size.</summary>
     public static string? SizeLabel(PokedexOrder order, PokemonSpecies s) => order switch
     {
-        PokedexOrder.Heaviest or PokedexOrder.Lightest => Text.Of("pokedex.kilograms", ("n", s.Weight.ToString("0.0", CultureInfo.InvariantCulture))),
-        PokedexOrder.Tallest or PokedexOrder.Smallest => Text.Of("pokedex.metres", ("n", s.Height.ToString("0.0", CultureInfo.InvariantCulture))),
+        PokedexOrder.Heaviest or PokedexOrder.Lightest => Text.Of("pokedex.kilograms", ("n", Text.Decimal(s.Weight, 1))),
+        PokedexOrder.Tallest or PokedexOrder.Smallest => Text.Of("pokedex.metres", ("n", Text.Decimal(s.Height, 1))),
         _ => null
     };
 }

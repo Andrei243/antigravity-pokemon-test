@@ -152,7 +152,9 @@ public sealed class BattleInfo
     {
         StatType.Accuracy => Text.Of("battleInfo.accuracy"),
         StatType.Evasion => Text.Of("battleInfo.evasion"),
-        _ => BattleText.StatName(stat)
+        // The summary's word, not the battle line's: a language may write the stat in a line with its article
+        // ("Atacul lui Bidoof a crescut!") and on the panel without it (plan 17 · N6)
+        _ => Text.Of($"summary.stat.{stat}")
     };
 
     private static PokemonInfo Card(Battler b, FieldState field, Revealed revealed)

@@ -30,7 +30,7 @@ public sealed class ScriptTranslationTests : IDisposable
         Text.Use(Text.English);
     }
 
-    /// <summary>Gives the language <c>ro</c> (listed, with no files of its own yet) the files named, by their path under <c>Data</c>.</summary>
+    /// <summary>Gives the language <c>ro</c> (listed, with its own <c>ui.json</c> since plan 17 · N6 but no script files yet) the files named, by their path under <c>Data</c>.</summary>
     private static void Romanian(Dictionary<string, string> files)
     {
         string Key(string relative) => relative.Replace('\\', '/');
@@ -119,7 +119,9 @@ script Greet
         Romanian(new Dictionary<string, string>());
         var (romanian, _) = Play(Source, "Greet");
         Assert.Equal(english.Transcript, romanian.Transcript);
-        Assert.Equal(english.Asked, romanian.Asked);
+        // The questions are the script's English; the yes and no of an ask are the runner's own words, from Romanian's ui.json (plan 17 · N6)
+        Assert.Equal(english.Asked.Select(a => a.Question), romanian.Asked.Select(a => a.Question));
+        Assert.Equal(new[] { "Da", "Red" }, romanian.Asked.Select(a => a.Answer));
     }
 
     [Fact]
@@ -135,7 +137,7 @@ script Greet
         Assert.Equal(("Mama", "Sigur?"), host.Transcript[2]);
         Assert.Equal(("Mama", "Alege"), host.Transcript[3]);
         // The answers are the language's; the script goes by the one chosen (the second: Blue)
-        Assert.Equal(new[] { ("Sigur?", "Yes"), ("Alege", "Albastru") }, host.Asked.Select(a => (a.Question, a.Answer)).ToArray());
+        Assert.Equal(new[] { ("Sigur?", "Da"), ("Alege", "Albastru") }, host.Asked.Select(a => (a.Question, a.Answer)).ToArray());
         Assert.Equal((null, "O replica fara vorbitor."), host.Transcript[^1]);
     }
 

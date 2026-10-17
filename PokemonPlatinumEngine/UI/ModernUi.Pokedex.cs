@@ -28,10 +28,10 @@ internal static partial class ModernUi
     public static string DexNumber(int number) => Text.Of("summary.number", ("number", number.ToString("D3", CultureInfo.InvariantCulture)));
 
     /// <summary>A height in metres, to a tenth: 0.4 m.</summary>
-    public static string Metres(float metres) => Text.Of("pokedex.metres", ("n", metres.ToString("0.0", CultureInfo.InvariantCulture)));
+    public static string Metres(float metres) => Text.Of("pokedex.metres", ("n", Text.Decimal(metres, 1)));
 
     /// <summary>A weight in kilograms, to a tenth: 10.2 kg.</summary>
-    public static string Kilograms(float kilograms) => Text.Of("pokedex.kilograms", ("n", kilograms.ToString("0.0", CultureInfo.InvariantCulture)));
+    public static string Kilograms(float kilograms) => Text.Of("pokedex.kilograms", ("n", Text.Decimal(kilograms, 1)));
 
     /// <summary>The colour of a Pokédex's tag (plan 18 · W3): Sinnoh's Blue, Kanto's Green, the National one's Red, and Gold for a Pokédex whose region has no colour of its own yet.</summary>
     public static Color DexColour(string dex) => dex switch { Pokedex.Sinnoh => Blue, "kanto" => Green, Pokedex.National => Red, _ => Gold };

@@ -155,6 +155,51 @@ Placeholders and plan 09's markup pass through untouched; a translation may use 
 - Tests: the report for the language shows nothing untranslated at the end of the session (its number is pinned, and rises as later sessions write scripts until they translate theirs); the longest line of each screen measured against its panel's width.
 - Harness: `menus`, `battle`, `intro`, `opening` and `story` under the language, read page by page for clipped or overflowing text.
 - **Done when** a new game can be played from the title to Oreburgh City in the language without an English word on screen.
+- **Split in two (wave 16)**, since the user chose Romanian (decision 1) and the work is two kinds: **part a**, the screens' and the battle's words (`ui.json`), and **part b**, the scripts, overlays, rooms, places, the region file's lines and the trainers' battle lines.
+- **Part a, done 2026-10-17 (wave 16)**:
+  - **`Data/text/ro/ui.json`**: every one of English's 2,452 keys (2,443 with forms counted once), in Romanian with its own diacritics (ă â î and the comma-below ș ț, never the cedilla's ş ţ), and nothing else. Romanian is offered on the options' first row as "Română" (`Language.HasTable`), and every string is drawn from Nunito's two faces with no "?".
+  - **Plurals**: every entry of numbers has Romanian's three forms (`one` 1, `few` 0 and 2 to 19, `other` 20 and more, which takes "de": "20 de inimi"); an entry whose `one` says the number in words drops `{n}` ("o dată", "o tură").
+  - **Three lines of the engine moved onto the table**, English unchanged to the character (the golden battles held still): a stat's change was composed in `BattleCore.Context` as "{pokemon}'s {stat} {stage}" and is the key `battle.statChange` now, which Romanian writes "{stat} lui {pokemon} {stage}" ("Atacul lui Bidoof a crescut brusc!"), so `battle.stat.*` is the stat as a line names it, with its article, and the battle's information panel names a stat by `summary.stat.*` instead (`BattleInfo.StageName`); the Pokédex's habitat words were literals of `DexEntries.Word` and are `pokedex.habitatWord.*`; and the Pokédex's metres and kilograms are written with the language's decimal mark (`Text.Decimal`: "0,4 m").
+  - **Tests** (`RomanianTests`): every key of English's and no other; each entry takes only its English's placeholders (two exceptions named with why: the composed entry drops `{article}`, and a field line of `string.Format` takes the team's other form) and Romanian's forms; no cedilla, no ã, nothing the faces lack; every `battle.*` line within the message box's two lines at n = 1, 10 and 20 with long Romanian stand-ins; the field text box's lines (the runner's own, the field moves', the rods', the tunnels', the hikers') within its three rows; the title's notices and questions within their panels, as `TitleScreenTests` and `DiagnosticsTests` hold English's; and a stat's change read as one sentence. `ScriptTranslationTests`, `TextTests`' replay and `LocalNamesTests` assumed Romanian had no table and now say what it has.
+  - **Harness** under `SHOTS_LANGUAGE=ro`: `menus`, `look`, `title`, `battle` and `intro` looked at screen by screen (the start menu, party, summary, bag and its pockets, shop, Pokédex and its search, Trainer Card, PC, Journal, options, help, the title with its slots and notices, a battle's menus, panel and lines, the introduction and its keyboard); nothing clipped, nothing drew as "?". The longest labels (the bag's FOLOSEȘTE and ÎNREGISTREAZĂ, MEDICAMENTE and OBIECTE CHEIE on the pockets' tabs, the start menu's IEȘI DIN JOC) all fit their panels.
+- **Decisions of part a** (the user may overturn any):
+  - **The player is spoken to as "tu"**, never "dumneavoastră": the games speak to a child of ten, and the professor and the clerks with them. A shop's question is "Cu ce te pot ajuta?".
+  - **A Pokémon is grammatically masculine** ("Pokémonul", plural "Pokémonii", and "otrăvit", "confuz", "inamic" whatever the species), as the word is; a line is built so that a name needs no case of its own: "lui" before a name in the genitive and dative ("Atacul lui Starly"), "pe" before a name as an object ("l-a învins pe Roark"). A move is feminine ("mișcarea", "Mișcarea Tackle a lui Bidoof e blocată!"), an ability feminine ("Abilitatea Levitate a lui Bronzor…"), an item neuter ("Leftovers al lui Snorlax").
+  - **The foe is "{pokemon} inamic"** after the name ("Starly inamic a leșinat!"), which keeps "lui" before the whole: "Atacul lui Starly inamic a crescut!". The opposing team is "echipa adversă".
+  - **Names stay English**: species, moves, abilities, items, trainer names and Battle Frontier facilities, as Romanian players know them (PokeAPI has no Romanian, and the games were never sold in Romanian). The places' names are part b's.
+  - **Descriptions stay English** (the user's open question, below), and so do a species' category in "Pokémon Tiny Leaf", which is PokeAPI's English genus.
+  - **The name keyboard stays ASCII.** `NameEntry` is four rows of ten with four keys of punctuation and a lowercase page; Ă Â Î Ș Ț and their small letters need a fifth row, which is the style guide's "Menu screens (G10)" and the board's height, and nobody has asked for diacritics in a name. A Romanian player types "Stefan" for Ștefan, as on most keyboards of the games' era. Left for a session of its own if the user wants it.
+  - **The Battle Points and the Castle Points are "PL" and "PCA"** ("puncte de luptă", "puncte de castel"), since "PC" is the computer.
+- **Glossary** (the terms every later Romanian line keeps to; part b and plan 26's voices read it):
+
+| English | Română | | English | Română |
+|---|---|---|---|---|
+| Pokémon (one, many) | Pokémon, Pokémoni; Pokémonul | | Trainer | Antrenor |
+| Poké Ball, Great Ball… | Poké Ball (unchanged) | | Gym / Gym Leader | Arenă / Lider de Arenă |
+| Badge | Insignă (pl. Insigne) | | Elite Four | Elita celor Patru |
+| Champion | Campion | | Hall of Fame | Sala Faimei |
+| Pokédex | Pokédex | | Pokétch | Pokétch |
+| Bag | Rucsac | | Party / team | Echipă |
+| PC box | cutie (the PC's) | | Item / key item | Obiect / obiect cheie |
+| Move | Mișcare | | Ability | Abilitate |
+| Nature | Fire | | Level, Lv. | Nivel, Nv. |
+| HP, PP, EXP. | HP, PP, Puncte EXP. | | Attack, Defense | Atac, Apărare |
+| Sp. Atk, Sp. Def | At. Sp., Ap. Sp. | | Speed | Viteză |
+| Accuracy, evasion | Precizie, evaziune | | fainted | a leșinat |
+| wild | sălbatic | | foe | inamic (after the name) |
+| super effective | foarte eficientă | | not very effective | puțin eficientă |
+| critical hit | lovitură critică | | Egg | Ou |
+| Berry | Boabă (pl. Boabe) | | TM, HM | TM, HM |
+| Poké Mart | Poké Mart | | Pokémon Center | Centru Pokémon |
+| Rival | Rivalul | | Seal | Sticker |
+| Ball Capsule | Capsulă de Ball | | Poffin (pl.) | Poffin (Poffinuri) |
+| Super Contest | Super Concurs | | Cool, Beauty, Cute, Smart, Tough | Stil, Frumusețe, Drăgălășenie, Istețime, Duritate |
+| Underground | Subteran | | Sphere | Sferă |
+| Normal, Fire, Water, Grass, Electric, Ice | Normal, Foc, Apă, Iarbă, Electric, Gheață | | Fighting, Poison, Ground, Flying, Psychic, Bug | Luptă, Otravă, Pământ, Zbor, Psihic, Insectă |
+| Rock, Ghost, Dragon, Dark, Steel, Fairy | Rocă, Fantomă, Dragon, Întuneric, Oțel, Zână | | statuses (pill) | OTR, ARS, PAR, ADR, ÎNG, KO |
+
+- **Part b, still to do**: the scripts' lines (5,248), the overlays' (2,205) and the rooms' (3,123) through `TextTool extract ro` and `docs/localisation.md`'s counts; the places' names (`places` and `PlaceWords`, whose Romanian prepositions are in already: "în", "pe", "la"); the region file's professor and his lines (`Text.OfData`, English in every language until a table beside the file exists); `trainer-lines.json`'s battle lines; the credits; the boxes' default names ("BOX 1", kept in the save); the harness's `opening` and `story` under `ro`. Then the plan's "Done when": a new game from the title to Oreburgh City with no English word on screen but the names.
+- **The user's open questions from part a**: (1) **descriptions of moves, abilities and items** (PokeAPI has none in Romanian, some thousands of sentences): English, as now, or written in Romanian for those met before Oreburgh City (the plan's own suggestion) and later by chapter, in a `descriptions` block of a hand-written `Data/text/ro/names.json` the importer would have to keep; (2) **names of moves, abilities and items** in Romanian (no official ones exist): English, as now, or a list of our own; (3) **diacritics on the name keyboard** (a fifth row); (4) the "tu" and the masculine Pokémon above.
 
 ## Risks
 
@@ -185,4 +230,4 @@ Placeholders and plan 09's markup pass through untouched; a translation may use 
 - [x] N3 Names in every language, from the importer (done 2026-10-17; the harness runs under `fr` and `xx` and the `en` diffs are owed)
 - [x] N4 Scripts, overlays and the report (done 2026-10-17; the harness runs under `xx` and the `en` diffs are owed)
 - [~] N5 Fonts beyond Latin-1: the Latin half done 2026-10-17 (Latin Extended-A and the marks in a second atlas, runs, the no-break spaces; the CJK face, the break rules by language and the name keyboards wait for a CJK language and the user's OK for a Noto face)
-- [ ] N6 The first translation
+- [~] N6 The first translation, Romanian: part a done 2026-10-17 in wave 16 (`ro/ui.json`, every key, offered in the options, measured and looked at; three lines of the engine moved onto the table with English unchanged); part b (scripts, overlays, rooms, places, the region file's and the trainers' lines) to come

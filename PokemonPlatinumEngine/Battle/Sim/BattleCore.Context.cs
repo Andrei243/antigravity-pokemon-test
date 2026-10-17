@@ -68,7 +68,7 @@ public sealed partial class BattleCore
         }
 
         p.StatStages[stat] = next;
-        Say($"{target.Name}'s {BattleText.StatName(stat)} {BattleText.StageChange(next - current)}")
+        Say(Text.Of("battle.statChange", ("pokemon", target.Name), ("stat", BattleText.StatName(stat)), ("stage", BattleText.StageChange(next - current))))
             .With(new StageChanged(target.Place, stat, next, next > current));
         return true;
     }

@@ -69,17 +69,6 @@ public static class DexEntries
     }
 
     /// <summary>The habitat as the INFO page says it: "Water's edge", "Rough terrain".</summary>
-    public static string Word(DexHabitat habitat) => habitat switch
-    {
-        DexHabitat.Grassland => "Grassland",
-        DexHabitat.Forest => "Forest",
-        DexHabitat.WatersEdge => "Water's edge",
-        DexHabitat.Sea => "Sea",
-        DexHabitat.Cave => "Cave",
-        DexHabitat.Mountain => "Mountain",
-        DexHabitat.RoughTerrain => "Rough terrain",
-        DexHabitat.Urban => "Urban",
-        DexHabitat.Rare => "Rare",
-        _ => habitat.ToString()
-    };
+    // The words are the string table's (plan 17 · N6), so the page says them in the language chosen.
+    public static string Word(DexHabitat habitat) => Core.Text.Of($"pokedex.habitatWord.{habitat}");
 }

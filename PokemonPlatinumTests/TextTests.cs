@@ -574,10 +574,10 @@ public class TextTests
     }
 
     [Fact]
-    public void ARecordedBattleReplaysTheSameInALanguageWithNoTableOfItsOwn()
+    public void ARecordedBattleReplaysTheSameInAnotherLanguage()
     {
-        // The record is the seed and the answers alone, so a battle played in English replays line for line in a
-        // language listed with no table yet (Romanian, whose every line falls back to English: PokeAPI has no Romanian names either), and to the same end
+        // The record is the seed and the answers alone, so a battle played in English replays event for event in
+        // Romanian, which says every line in its own words (plan 17 · N6), and to the same end
         // in the pseudo-language, every line its own in brackets
         static BattleCore Battle(BattleRandom rolls)
         {
@@ -598,10 +598,13 @@ public class TextTests
         {
             Text.Use("ro");
             Assert.Equal("ro", Text.Current);
-            Assert.DoesNotContain(Language.Offered, l => l.Tag == "ro");
             var again = Battle(new BattleRandom(record.Seed));
             again.Replay(record);
-            Assert.Equal(Golden.BattleText.Written(played), Golden.BattleText.Written(again));
+            // Romanian has its own table (plan 17 · N6): the same events to the same end, every line said in Romanian
+            Assert.Equal(played.Result, again.Result);
+            Assert.Equal(played.Log.Select(e => e.GetType()), again.Log.Select(e => e.GetType()));
+            Assert.Equal(LinesOf(played).Count, LinesOf(again).Count);
+            Assert.NotEqual(LinesOf(played), LinesOf(again));
 
             Text.Use(Text.Pseudo);
             var bracketed = Battle(new BattleRandom(record.Seed));
