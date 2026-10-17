@@ -109,6 +109,21 @@ internal static class MoveSightings
         }
     }
 
+    /// <summary>The first place of Y9's second part (plan 25 · Y9b): Y9's first part is everything from <see cref="EighthBatchEnds"/> to before it.</summary>
+    public const string NinthBatchSplits = "SunyshoreGym";
+
+    /// <summary>
+    /// Platinum's moves, by name, that Y9's first part takes (plan 25 · Y9a): seen from <see cref="EighthBatchEnds"/>
+    /// (Lake Valor) to before <see cref="NinthBatchSplits"/> (Route 222 is its last place, its rooms with it).
+    /// </summary>
+    public static IReadOnlyList<string> NinthBatchFirstPart
+    {
+        get
+        {
+            int from = PlaceRanks.Value[EighthBatchEnds], to = PlaceRanks.Value[NinthBatchSplits];
+            return All.Where(s => s.Rank >= from && s.Rank < to).Select(s => s.Move).ToList();
+        }
+    }
     private static readonly Lazy<Dictionary<string, int>> PlaceRanks = new(() => Ranks().Ranks);
 
     /// <summary>The areas in their order, then every room ranked by the place whose warp first leads into it.</summary>

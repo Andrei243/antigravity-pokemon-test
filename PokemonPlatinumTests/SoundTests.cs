@@ -253,7 +253,7 @@ public class SoundTests
         foreach (var group in Enum.GetValues<SoundGroup>()) Assert.Contains(SoundBank.Entries, e => e.Group == group);
         Assert.All(SoundBank.Entries, e =>
         {
-            Assert.Matches("^[a-z_]+$", e.Name);
+            Assert.Matches("^[a-z0-9_]+$", e.Name);
             Assert.False(string.IsNullOrWhiteSpace(e.PlayedWhen), e.Name);
             // Only the original's names are kept, never its sounds
             // The decompilation names most of its sounds SEQ_SE_DP_..., and a few by the sequence itself (SE_DP_..._sseq)
