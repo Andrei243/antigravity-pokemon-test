@@ -17,7 +17,7 @@ public enum BattleWeather { None, Rain, Sandstorm, Sun, Hail, Fog, Snow, HarshSu
 /// its feet. The log tells of each as it comes and goes (<see cref="SideConditionChanged"/>); the later games' Aurora
 /// Veil and Sticky Web joined at the end (plan 06 · R19b).
 /// </summary>
-public enum SideCondition { Reflect, LightScreen, Mist, Safeguard, Tailwind, LuckyChant, Spikes, ToxicSpikes, StealthRock, AuroraVeil, StickyWeb }
+public enum SideCondition { Reflect, LightScreen, Mist, Safeguard, Tailwind, LuckyChant, Spikes, ToxicSpikes, StealthRock, AuroraVeil, StickyWeb, Rainbow, SeaOfFire, Swamp }
 
 /// <summary>
 /// What the whole field can be under besides its weather (<see cref="FieldConditionChanged"/>): Trick Room, Gravity,
@@ -49,6 +49,9 @@ public sealed class SideState
         SideCondition.StealthRock => StealthRock ? 1 : 0,
         SideCondition.AuroraVeil => AuroraVeil ? 1 : 0,
         SideCondition.StickyWeb => StickyWeb ? 1 : 0,
+        SideCondition.Rainbow => Rainbow ? 1 : 0,
+        SideCondition.SeaOfFire => SeaOfFire ? 1 : 0,
+        SideCondition.Swamp => Swamp ? 1 : 0,
         _ => 0
     };
 
@@ -74,6 +77,18 @@ public sealed class SideState
     public bool Tailwind => TailwindTurns > 0;
     public bool LuckyChant => LuckyChantTurns > 0;
     public bool AuroraVeil => AuroraVeilTurns > 0;
+
+    /// <summary>
+    /// What two Pledges together leave for four turns (plan 06 · R25's leftovers; Showdown's waterpledge, firepledge
+    /// and grasspledge side conditions): a rainbow over the side whose Water and Fire Pledges met (its moves' side
+    /// effects twice as likely), a sea of fire round the side the Fire and Grass Pledges struck (an eighth of every
+    /// Pokémon's HP that isn't a Fire type at each turn's end) and a swamp round the side the Grass and Water Pledges
+    /// struck (a quarter of its Speed).
+    /// </summary>
+    public int RainbowTurns, SeaOfFireTurns, SwampTurns;
+    public bool Rainbow => RainbowTurns > 0;
+    public bool SeaOfFire => SeaOfFireTurns > 0;
+    public bool Swamp => SwampTurns > 0;
 }
 
 /// <summary>

@@ -704,6 +704,12 @@ public partial class BattleEngine
                     });
                 break;
             }
+            case PlacesSwapped swap:
+                // Ally Switch (plan 06 · R25's leftovers): the screen's two places change Pokémon, and the views go
+                // with them (the marks that last were moved by Conditions.Tell above)
+                BattleCore.Exchange(At(swap.First), At(swap.Second), PlayerSlots.Concat(EnemySlots));
+                Anim.SwapPlaces(swap.First.Side, swap.First.Slot, swap.Second.Slot);
+                break;
             case AbilityShown ability:
                 // Nothing is drawn or heard: the information panel remembers what the line named (plan 12 · Q11)
                 if (At(ability.Place).Pokemon is { } bearer) Revealed.Ability(bearer, ability.Ability);

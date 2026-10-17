@@ -838,6 +838,8 @@ public sealed partial class BattleCore : IBattleContext
         if (ability == "Slow Start" && Turn - b.Volatile.SlowStartTurn < 5) speed /= 2;
         if (ability == "Unburden" && b.Volatile.CanUnburden && p.HeldItem == null) speed *= 2;
         if (Field.Side(b.Side).Tailwind) speed *= 2;
+        // A swamp round its side quarters it (plan 06 · R25's leftovers; Showdown's grasspledge onModifySpe)
+        if (Field.Side(b.Side).Swamp) speed = Formulas.Modify(speed, 1024);
         return Math.Max(1, speed);
     }
 

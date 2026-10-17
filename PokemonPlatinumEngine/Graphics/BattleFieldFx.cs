@@ -67,8 +67,15 @@ internal static class BattleFieldFx
         SideCondition.LuckyChant => 9,
         SideCondition.AuroraVeil => 7,
         SideCondition.StickyWeb => WebSpokes + WebRings + 3,
+        // What two Pledges leave (plan 06 · R25's leftovers)
+        SideCondition.Rainbow => RainbowBands,
+        SideCondition.SeaOfFire => 2 + Flames,
+        SideCondition.Swamp => 2 + SwampBubbles * 2,
         _ => 0
     };
+
+    /// <summary>The pieces of what two Pledges leave: a rainbow's bands, a sea of fire's tongues, a swamp's bubbles.</summary>
+    public const int RainbowBands = 5, Flames = 6, SwampBubbles = 3;
 
     public static int Cap(FieldCondition what) => what switch
     {
@@ -178,6 +185,15 @@ internal static class BattleFieldFx
                 break;
             case SideCondition.StickyWeb:
                 Web(p, view, time, fx);
+                break;
+            case SideCondition.Rainbow:
+                Rainbow(p, view, time, fx);
+                break;
+            case SideCondition.SeaOfFire:
+                Mire(p, view, time, fx, fire: true);
+                break;
+            case SideCondition.Swamp:
+                Mire(p, view, time, fx, fire: false);
                 break;
         }
     }
@@ -621,6 +637,75 @@ internal static class BattleFieldFx
             int spoke = (int)(Fx.Rand(view.Seed + round, i, 5) * WebSpokes);
             var at = p.At(turn + spoke * MathF.Tau / WebSpokes, p.R * (0.3f + 0.6f * Fx.Rand(view.Seed + round, i, 6)) * grow, lift + p.R * 0.02f);
             fx.Sprite(FxShape.Spark, at, p.R * 0.05f, Fx.Fade(Color.White, k * grow * MathF.Sin(u * MathF.PI)), rotation: time, depth: true);
+        }
+    }
+
+    /// <summary>
+    /// A rainbow (plan 06 · R25's leftovers): five thin bands of colour arching over the rim from end to end of the arc
+    /// that faces nobody, the outermost red and highest, shimmering band by band; they rise from their feet as it
+    /// comes in. Matter in its own colours, so the day's light doesn't wash it out.
+    /// </summary>
+    private static void Rainbow(Platform p, ConditionView view, float time, FxList fx)
+    {
+        float k = view.Strength, grow = Fx.EaseOut(view.Arrival);
+        if (grow <= 0f) return;
+        const int segments = 16;
+        var colours = new[] { Rgba(255, 120, 120), Rgba(255, 184, 96), Rgba(255, 236, 120), Rgba(128, 220, 136), Rgba(128, 170, 255) };
+        for (int band = 0; band < RainbowBands; band++)
+        {
+            var points = new Vector3[segments + 1];
+            for (int i = 0; i <= segments; i++)
+            {
+                float u = i / (float)segments;
+                float arch = MathF.Sin(u * MathF.PI);
+                points[i] = p.At(p.Open(0.03f + 0.94f * u), p.R * (1.08f - 0.012f * band),
+                    p.Top + p.R * (0.2f + (0.42f - 0.035f * band) * arch * grow));
+            }
+            float shimmer = 0.7f + 0.3f * MathF.Sin(time * 0.9f - band * 0.8f + view.Seed * 0.29f);
+            fx.Ribbon(points, p.R * 0.045f * (0.4f + 0.6f * grow), Fx.Fade(colours[band], 0.6f * k * shimmer), FxBlend.Alpha, depth: true);
+        }
+    }
+
+    /// <summary>
+    /// A sea of fire or a swamp (plan 06 · R25's leftovers), round the side it envelops: a wash of its colour on the
+    /// platform's top and a low band of it standing round the far rim, as a terrain's; tongues of flame flickering up
+    /// from the far rim for the sea, bubbles of mud rising slowly and bursting for the swamp.
+    /// </summary>
+    private static void Mire(Platform p, ConditionView view, float time, FxList fx, bool fire)
+    {
+        float k = view.Strength, grow = Fx.EaseOut(view.Arrival);
+        if (grow <= 0f) return;
+        int seed = view.Seed;
+        var wash = fire ? Rgba(232, 84, 40) : Rgba(112, 120, 64);
+        var rim = fire ? Rgba(232, 84, 40) : Rgba(88, 96, 52);
+        float breathe = 0.8f + 0.2f * MathF.Sin(time * (fire ? 2.3f : 0.7f) + seed);
+        fx.Flat(FxShape.Glow, p.At(0f, 0f, p.Top + 0.01f), Vector3.UnitY, p.R * 2.3f * (0.6f + 0.4f * grow), Fx.Fade(wash, 0.45f * k * breathe), FxBlend.Alpha);
+        const int segments = 12;
+        var band = new Vector3[segments + 1];
+        for (int i = 0; i <= segments; i++) band[i] = p.At(p.Open(i / (float)segments), p.R * 1.01f, p.Top + p.R * 0.05f * grow);
+        fx.Ribbon(band, p.R * 0.12f * grow, Fx.Fade(rim, 0.6f * k * breathe), FxBlend.Alpha, depth: true);
+        if (fire)
+        {
+            for (int i = 0; i < Flames; i++)
+            {
+                // Each tongue licks up on its own beat, a little way round the rim from the last
+                float flicker = 0.5f + 0.5f * MathF.Sin(time * (6f + 1.5f * Fx.Rand(seed, i, 1)) + i * 1.9f);
+                float angle = p.Open((i + 0.5f + Fx.Signed(seed, i, 2) * 0.25f) / Flames);
+                float height = p.R * (0.1f + 0.1f * flicker) * grow;
+                var at = p.At(angle, p.R * 1.0f, p.Top + height * 0.5f);
+                fx.Sprite(FxShape.Flame, at, height * 0.6f, Rgba(255, 150, 60, 230f * k), FxBlend.Alpha, Fx.Signed(seed, i, 3) * 0.2f, depth: true);
+            }
+            return;
+        }
+        for (int i = 0; i < SwampBubbles; i++)
+        {
+            float phase = time / (2.2f + 0.6f * Fx.Rand(seed, i, 4)) + Fx.Rand(seed, i, 5);
+            int round = (int)MathF.Floor(phase);
+            float u = phase - round;
+            var at = p.At(p.Open(Fx.Rand(seed + round, i, 6)), p.R * 0.98f, p.Top + p.R * (0.04f + 0.12f * u));
+            float size = p.R * (0.03f + 0.025f * u), alpha = k * grow * MathF.Sin(u * MathF.PI);
+            fx.Sprite(FxShape.Dot, at, size * 1.3f, Rgba(70, 76, 40, 150f * alpha), FxBlend.Alpha, depth: true);
+            fx.Sprite(FxShape.Bubble, at, size, Rgba(196, 206, 150, 255f * alpha), FxBlend.Alpha, depth: true);
         }
     }
 

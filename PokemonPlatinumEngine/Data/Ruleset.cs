@@ -205,6 +205,15 @@ public sealed class Ruleset
     public bool SnowInPlaceOfHail { get; private init; }
 
     /// <summary>
+    /// The reach the later games gave two of Platinum's moves (plan 06 · R25's leftovers; Pokémon Showdown's
+    /// <c>defog</c> and <c>feint</c>): Defog clears the hazards from its user's own side too and lifts any terrain
+    /// (Generations 6 and 8), and Feint strikes whether or not its target protects itself, breaking the side's guards
+    /// as it breaks Protect (Generation 5). In Platinum Defog clears the target's side alone and Feint fails on a
+    /// target that isn't protecting.
+    /// </summary>
+    public bool LaterMoveReach { get; private init; }
+
+    /// <summary>
     /// The damage formula of Generation 5 on (plan 06 · R19c; Pokémon Showdown's <c>getDamage</c> and <c>modifyDamage</c>):
     /// the bonuses to the power, the stats and the damage chained in 4096ths and rounded half down, the weather and a
     /// spread hit after the + 2, a burn after the roll, the same-type bonus and the type chart, and the screens, a Life
@@ -284,6 +293,7 @@ public sealed class Ruleset
         ModernInheritance = true,
         MasudaRerolls = 5,
         SnowInPlaceOfHail = true,
+        LaterMoveReach = true,
         ModernDamageFormula = true,
         MegaEvolution = true,
         ZMoves = true

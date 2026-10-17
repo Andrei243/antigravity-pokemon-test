@@ -331,3 +331,11 @@ public sealed record ZPowerUsed(Place Place, string ZMove, string From) : Battle
 /// the place is in <paramref name="Form"/>, with that form's stats, ability and types, as after a Mega Evolution.
 /// </summary>
 public sealed record UltraBursted(Place Place, string Form) : BattleEvent;
+
+/// <summary>
+/// Two places of a side change Pokémon (Ally Switch, plan 06 · R25's leftovers; Showdown's <c>swapPosition</c>): from
+/// this line on whoever stood in <paramref name="First"/> stands in <paramref name="Second"/>, and the other way
+/// round, with everything that lasts on each. What waits for a place (a Wish, an attack sent ahead) stays where it
+/// is. Whoever shows the battle moves the two Pokémon, their boxes and their marks; the rules change nothing more.
+/// </summary>
+public sealed record PlacesSwapped(Place First, Place Second) : BattleEvent;

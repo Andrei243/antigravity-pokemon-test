@@ -365,7 +365,7 @@ public static partial class DamageCalculator
         if (!typeless)
         {
             // Same-type attack bonus
-            if (attacker.HasType(move.Type))
+            if (attacker.HasType(move.Type) || move.Data.ForcesStab)
             {
                 result.IsSTAB = true;
                 float stab = attackerEffects.Select(e => e.StabOverride).Where(s => s.HasValue).Select(s => s!.Value).DefaultIfEmpty(1.5f).Max();
