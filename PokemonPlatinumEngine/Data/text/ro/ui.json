@@ -212,6 +212,11 @@
       "value": "Maneta {n}",
       "help": "Care dintre manetele conectate este citită de joc. Tastatura merge oricare ar fi aleasă."
     },
+    "controls": {
+      "label": "Comenzi",
+      "value": "Deschide",
+      "help": "Vezi fiecare tastă și buton, schimbă-le pe oricare și pune-le înapoi cum erau."
+    },
     "help": {
       "label": "Ajutor",
       "value": "Deschide",
@@ -1308,7 +1313,7 @@
     "capsuleTag": "CAPSULA {n}",
     "keyC": "C",
     "hint": {
-      "putOn": "Pune", "swap": "Schimbă", "stickOn": "Lipește", "seal": "Sticker", "pickUp": "Ridică", "case": "Cutie",
+      "putOn": "Pune", "swap": "Inversează", "stickOn": "Lipește", "seal": "Sticker", "pickUp": "Ridică", "case": "Cutie",
       "keep": "Păstrează", "take": "Ia", "ball": "Ball"
     },
     "quitQuestion": "O lași cum era?",
@@ -1535,6 +1540,37 @@
       "Up": "Sus", "Down": "Jos", "Left": "Stânga", "Right": "Dreapta", "Confirm": "Confirmă, vorbește, citește", "Cancel": "Înapoi", "Menu": "Meniu",
       "Run": "Fugă (ținut apăsat)", "Item": "Obiect înregistrat", "Poketch": "Scoate sau ascunde Pokétch-ul", "PoketchApp": "Următoarea aplicație Pokétch",
       "PoketchTouch": "Atinge Pokétch-ul", "PageLeft": "Pagina înapoi", "PageRight": "Pagina înainte", "Fullscreen": "Ecran complet", "Mute": "Sunet pornit sau oprit", "Screenshot": "Fă o captură de ecran"
+    },
+    "page": {
+      "title": "COMENZI",
+      "keyboard": "TASTATURĂ",
+      "pad": "MANETĂ",
+      "waitKey": "Apasă o tastă…",
+      "waitButton": "Apasă un buton…",
+      "resetAll": "PUNE TOTUL LA LOC",
+      "clash": "Folosit și pentru {others}.",
+      "help": "Alege o acțiune și o coloană, apoi apasă A ca s-o schimbi. Butonul obiectului pune o acțiune înapoi cum era.",
+      "pressKey": "Apasă tasta nouă pentru {action}. Esc o lasă cum era.",
+      "pressButton": "Apasă butonul nou pentru {action}. Esc sau zece secunde de așteptare îl lasă cum era.",
+      "choose": "{input} face deja {others}. Le schimbi între ele sau lași totul cum era?",
+      "resetAsk": "Pui toate tastele și butoanele înapoi, cum le are modul butoanelor?",
+      "bound": "Salvat. {action} are acum altă comandă.",
+      "swapped": "Cele două comenzi s-au schimbat între ele.",
+      "kept": "Lăsat cum era.",
+      "cancelled": "Nimic nu s-a schimbat.",
+      "reset": "Pus înapoi cum era.",
+      "allReset": "Toate comenzile sunt înapoi cum erau.",
+      "needOne": "Așa jocul n-ar mai avea cum să primească răspuns. Alege altceva.",
+      "hint": {
+        "change": "Schimbă",
+        "reset": "Resetează",
+        "column": "Coloană",
+        "swap": "Inversează",
+        "keep": "Lasă",
+        "cancel": "Renunță",
+        "yes": "Pune la loc",
+        "no": "Lasă"
+      }
     },
     "key": { "esc": "Esc", "shift": "Shift", "up": "Săgeată sus", "down": "Săgeată jos", "left": "Săgeată stânga", "right": "Săgeată dreapta" },
     "unbound": "Nimic",

@@ -760,7 +760,7 @@ public partial class GameEngine
     private void UpdateFrame(float dt)
     {
         // Full screen on F11 or Alt+Enter: the Fullscreen action (plan 12 · Q4), read even while the game waits behind another window
-        if (!IsHeadless && InputManager.IsActionPressed(GameAction.Fullscreen)) ToggleFullscreen();
+        if (!IsHeadless && !InputManager.CaptureRequested && InputManager.IsActionPressed(GameAction.Fullscreen)) ToggleFullscreen();
         // Behind another window, with the option on, the game waits where it is and its sound drops (plan 16 · T3)
         bool held = HeldForFocus;
         AudioManager.Away = held;
@@ -823,7 +823,7 @@ public partial class GameEngine
         UpdateAmbience();
 
         // Global mute toggle: the Mute action (M), plan 12 · Q4
-        if (InputManager.IsActionPressed(GameAction.Mute))
+        if (!InputManager.CaptureRequested && InputManager.IsActionPressed(GameAction.Mute))
         {
             Settings.Muted = !Settings.Muted;
             ApplySettings(window: false);

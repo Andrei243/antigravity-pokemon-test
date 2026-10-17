@@ -218,11 +218,11 @@ internal static partial class ModernUi
         }
         string act = m.WaitsForBet ? Text.Of("slots.hints.bet") : m.WaitsForLever ? Text.Of("slots.hints.lever") : m.Counting ? Text.Of("slots.hints.take") : "";
         if (act.Length > 0 && (m.WaitsForBet || m.WaitsForLever))
-            Hints(sw - 48, sh - 76, (Text.Of("shared.keys.z"), act), Hint("shared.keys.x", "shared.hints.leave"));
+            Hints(sw - 48, sh - 76, HintOf("shared.keys.z", act), Hint("shared.keys.x", "shared.hints.leave"));
         else if (m.Spinning)
             Hints(sw - 48, sh - 76, Hint("slots.reelKeys", "slots.hints.stop"));
         else if (act.Length > 0)
-            Hints(sw - 48, sh - 76, (Text.Of("shared.keys.z"), act));
+            Hints(sw - 48, sh - 76, HintOf("shared.keys.z", act));
     }
 
     // What the display shows: the machine's sign of what it drew; the sevens the bonus waits for; and in the bonus game

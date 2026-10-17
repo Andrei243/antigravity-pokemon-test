@@ -480,7 +480,10 @@ public class BagScreen
             return;
         }
 
+        // The page buttons turn the pocket too (plan 12 · Q5)
+        int pages = InputManager.Axis(GameAction.PageLeft, GameAction.PageRight);
         if (dx != 0) MovePocket(dx);
+        else if (pages != 0 && dy == 0) MovePocket(pages);
         else if (dy != 0)
         {
             int count = inventory.GetPocketItems(CurrentPocket).Count;

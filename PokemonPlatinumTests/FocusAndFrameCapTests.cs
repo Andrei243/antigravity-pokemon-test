@@ -35,7 +35,7 @@ public class FocusAndFrameCapTests
     public void TheRowsStandAtTheEndOfTheSettingsBeforeHelp()
     {
         // (The rows after them are plan 12 · Q20's and plan 08 · P1's, which went in before HELP as every new row does)
-        Assert.Equal(new[] { OptionRow.FocusPause, OptionRow.FrameCap, OptionRow.SkipScenes, OptionRow.BattleScene, OptionRow.BattleStyle }, Rows[^9..^4]);
+        Assert.Equal(new[] { OptionRow.FocusPause, OptionRow.FrameCap, OptionRow.SkipScenes, OptionRow.BattleScene, OptionRow.BattleStyle }, Rows[^10..^5]);
         // The screen still shows nine at a time and scrolls to the rest
         Assert.Equal(9, OptionsScreen.VisibleRows);
         var screen = new OptionsScreen();

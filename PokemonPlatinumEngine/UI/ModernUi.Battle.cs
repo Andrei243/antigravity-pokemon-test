@@ -251,7 +251,7 @@ internal static partial class ModernUi
         var info = new Rectangle(1172, 836, 700, 200);
         Panel(info, 28);
         UiFonts.DrawCentered(Text.Of("battleMenu.target"), info.X + 44, info.Y + 44, 24, Muted, UiWeight.Black);
-        HintsDark(info.X + info.Width - 24, info.Y + 18, (Text.Of("shared.keys.x"), Text.Of("shared.hints.back")));
+        HintsDark(info.X + info.Width - 24, info.Y + 18, Hint("shared.keys.x", "shared.hints.back"));
         var move = battle.TargetingMove;
         if (move != null)
         {
@@ -512,11 +512,12 @@ internal static partial class ModernUi
             : battle.OfferedFoe is { } coming ? Text.Of("battleMenu.comingOutNext", ("pokemon", coming.DisplayName))
             : Text.Of("battleMenu.sendOutWhich");
         UiFonts.DrawCentered(heading, head.X + 48, head.Y + head.Height / 2f, 36, Ink, UiWeight.ExtraBold);
-        string keyZ = Text.Of("shared.keys.z"), keyX = Text.Of("shared.keys.x"), sendOut = Text.Of("battleMenu.hint.sendOut");
-        if (forced) HintsDark(head.X + head.Width - 24, head.Y + 16, (keyZ, sendOut));
+        string sendOut = Text.Of("battleMenu.hint.sendOut");
+        var keyZ = "shared.keys.z"; var keyX = "shared.keys.x";
+        if (forced) HintsDark(head.X + head.Width - 24, head.Y + 16, HintOf(keyZ, sendOut));
         // Opened by Battle Style Shift's Yes (plan 08 · P1): backing out stays in, and says so
-        else if (battle.IsOfferingSwitch) HintsDark(head.X + head.Width - 24, head.Y + 16, (keyZ, sendOut), (keyX, Text.Of("battleMenu.hint.stayIn")));
-        else HintsDark(head.X + head.Width - 24, head.Y + 16, (keyZ, sendOut), (keyX, Text.Of("shared.hints.back")));
+        else if (battle.IsOfferingSwitch) HintsDark(head.X + head.Width - 24, head.Y + 16, HintOf(keyZ, sendOut), HintOf(keyX, Text.Of("battleMenu.hint.stayIn")));
+        else HintsDark(head.X + head.Width - 24, head.Y + 16, HintOf(keyZ, sendOut), HintOf(keyX, Text.Of("shared.hints.back")));
 
         for (int i = 0; i < Party.MaxSize; i++)
         {
@@ -549,15 +550,15 @@ internal static partial class ModernUi
     }
 
     /// <summary>Key hints on a light panel (dark pills instead of the translucent ones used over backdrops).</summary>
-    private static void HintsDark(float rightX, float y, params (string Key, string Label)[] hints)
+    private static void HintsDark(float rightX, float y, params HintItem[] hints)
     {
         float x = rightX;
         for (int i = hints.Length - 1; i >= 0; i--)
         {
-            float width = HintWidth(hints[i].Key, hints[i].Label);
+            float width = HintWidth(hints[i]);
             x -= width;
             UiShapes.Fill(new Rectangle(x, y, width, 52), 26, Frame);
-            HintPill(x, y, hints[i].Key, hints[i].Label);
+            HintPill(x, y, hints[i]);
             x -= 16;
         }
     }
@@ -582,7 +583,7 @@ internal static partial class ModernUi
         var head = new Rectangle(48, 548, 1824, 84);
         Panel(head, 26);
         UiFonts.DrawCentered(Text.Of("battleMenu.bagTitle"), head.X + 48, head.Y + head.Height / 2f, 36, Ink, UiWeight.ExtraBold);
-        HintsDark(head.X + head.Width - 24, head.Y + 16, (Text.Of("shared.keys.z"), Text.Of("shared.hints.open")), (Text.Of("shared.keys.x"), Text.Of("shared.hints.back")));
+        HintsDark(head.X + head.Width - 24, head.Y + 16, Hint("shared.keys.z", "shared.hints.open"), Hint("shared.keys.x", "shared.hints.back"));
 
         for (int i = 0; i < BattleBag.Pockets.Length; i++)
         {
@@ -609,7 +610,7 @@ internal static partial class ModernUi
         var head = new Rectangle(48, 548, 1824, 84);
         Panel(head, 26);
         UiFonts.DrawCentered(BattleBag.Pockets[battle.BagPocket], head.X + 48, head.Y + head.Height / 2f, 36, Ink, UiWeight.ExtraBold);
-        HintsDark(head.X + head.Width - 24, head.Y + 16, (Text.Of("shared.keys.z"), Text.Of("shared.hints.use")), (Text.Of("shared.keys.x"), Text.Of("shared.hints.back")));
+        HintsDark(head.X + head.Width - 24, head.Y + 16, Hint("shared.keys.z", "shared.hints.use"), Hint("shared.keys.x", "shared.hints.back"));
 
         ItemData? chosen = null;
         int first = hud.BagFirstRow * BattleEngine.BagColumns;
@@ -654,7 +655,7 @@ internal static partial class ModernUi
         Panel(head, 26);
         string heading = battle.BagItemChosen is { } chosen ? Text.Of("battleMenu.useOnWhichPokemon", ("item", chosen.DisplayName)) : Text.Of("battleMenu.useItOnWhichPokemon");
         UiFonts.DrawCentered(heading, head.X + 48, head.Y + head.Height / 2f, 36, Ink, UiWeight.ExtraBold);
-        HintsDark(head.X + head.Width - 24, head.Y + 16, (Text.Of("shared.keys.z"), Text.Of("shared.hints.use")), (Text.Of("shared.keys.x"), Text.Of("shared.hints.back")));
+        HintsDark(head.X + head.Width - 24, head.Y + 16, Hint("shared.keys.z", "shared.hints.use"), Hint("shared.keys.x", "shared.hints.back"));
 
         for (int i = 0; i < Party.MaxSize; i++)
         {
@@ -692,7 +693,7 @@ internal static partial class ModernUi
     /// </summary>
     private static void InfoPanel(BattleInfo info, bool doubles)
     {
-        HintsDark(1872, 52, (Text.Of("shared.keys.x"), Text.Of("shared.hints.close")));
+        HintsDark(1872, 52, Hint("shared.keys.x", "shared.hints.close"));
 
         // The strip: FIELD, then the weather, Trick Room and Gravity, or a word that nothing is
         float x = 56, y = doubles ? 286 : 240;

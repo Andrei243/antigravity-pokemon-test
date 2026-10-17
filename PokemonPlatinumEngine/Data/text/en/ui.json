@@ -212,6 +212,11 @@
       "value": "Pad {n}",
       "help": "Which of the connected controllers the game reads. The keyboard works whichever is chosen."
     },
+    "controls": {
+      "label": "Controls",
+      "value": "Open",
+      "help": "See every key and button, change any of them, and put them back as they were."
+    },
     "help": {
       "label": "Help",
       "value": "Open",
@@ -1532,6 +1537,37 @@
       "Up": "Up", "Down": "Down", "Left": "Left", "Right": "Right", "Confirm": "Confirm, talk, read", "Cancel": "Back", "Menu": "Menu",
       "Run": "Run (held)", "Item": "Registered item", "Poketch": "Pokétch out or away", "PoketchApp": "Next Pokétch app",
       "PoketchTouch": "Touch the Pokétch", "PageLeft": "Page back", "PageRight": "Page on", "Fullscreen": "Full screen", "Mute": "Sound on or off", "Screenshot": "Take a screenshot"
+    },
+    "page": {
+      "title": "CONTROLS",
+      "keyboard": "KEYBOARD",
+      "pad": "CONTROLLER",
+      "waitKey": "Press a key…",
+      "waitButton": "Press a button…",
+      "resetAll": "PUT EVERYTHING BACK",
+      "clash": "Also used for {others}.",
+      "help": "Choose an action and a column, then press A to change it. The item button puts one action back as it was.",
+      "pressKey": "Press the new key for {action}. Esc keeps it as it was.",
+      "pressButton": "Press the new button for {action}. Esc, or ten seconds of waiting, keeps it as it was.",
+      "choose": "{input} already does {others}. Swap the two, or keep things as they were?",
+      "resetAsk": "Put every key and button back as the Button mode has them?",
+      "bound": "Saved. {action} now has a new control.",
+      "swapped": "The two controls were swapped.",
+      "kept": "Kept as it was.",
+      "cancelled": "Nothing changed.",
+      "reset": "Put back as it was.",
+      "allReset": "Every control is back as it was.",
+      "needOne": "That would leave the game with no way to answer it. Choose another.",
+      "hint": {
+        "change": "Change",
+        "reset": "Reset",
+        "column": "Column",
+        "swap": "Swap",
+        "keep": "Keep",
+        "cancel": "Cancel",
+        "yes": "Put back",
+        "no": "Keep"
+      }
     },
     "key": { "esc": "Esc", "shift": "Shift", "up": "Up arrow", "down": "Down arrow", "left": "Left arrow", "right": "Right arrow" },
     "unbound": "None",

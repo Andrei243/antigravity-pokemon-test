@@ -380,6 +380,8 @@ public class PartyScreen
 
         int dx = (InputManager.IsActionPressed(GameAction.Right) ? 1 : 0) - (InputManager.IsActionPressed(GameAction.Left) ? 1 : 0);
         int dy = (InputManager.IsActionPressed(GameAction.Down) ? 1 : 0) - (InputManager.IsActionPressed(GameAction.Up) ? 1 : 0);
+        // In the summary the page buttons turn its pages as left and right do (plan 12 · Q5)
+        if (ShowSummary && dx == 0) dx = InputManager.Axis(GameAction.PageLeft, GameAction.PageRight);
 
         if (ShowSummary)
         {

@@ -69,9 +69,9 @@ internal static partial class ModernUi
         Backdrop(sw, sh);
         action ??= Text.Of("shared.hints.use");
         ScreenTitle(Text.Of("party.title"));
-        string z = Text.Of("shared.keys.z");
-        if (waiting) Hints(sw - 64, 44, (z, action));
-        else Hints(sw - 64, 44, (z, action), Hint("shared.keys.esc", "shared.hints.back"));
+        const string z = "shared.keys.z";
+        if (waiting) Hints(sw - 64, 44, HintOf(z, action));
+        else Hints(sw - 64, 44, HintOf(z, action), Hint("shared.keys.esc", "shared.hints.back"));
         string able = Text.Of("party.tag.able"), notAble = Text.Of("party.tag.notAble");
 
         for (int i = 0; i < Party.MaxSize; i++)

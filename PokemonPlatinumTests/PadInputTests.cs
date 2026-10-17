@@ -236,8 +236,8 @@ public class PadInputTests
             Assert.Equal("X", Text.Of("capsules.keyC"));
             Assert.Equal("PRESS  A  OR  START", Text.Of("title.press"));
             Assert.Equal("Press A to stop the cursor!", Text.Of("arcadeBoard.running"));
-            // Directions that name no one button stay what they are
-            Assert.Equal("Left / Right", Text.Of("shared.keys.leftRight"));
+            // The directions are the d-pad on the pad (plan 12 · Q5)
+            Assert.Equal("D-pad", Text.Of("shared.keys.leftRight"));
 
             // The prompt follows the preset: with Start = X, the menu is on the X button and Start is the item
             InputManager.Use(InputBindings.For(ButtonMode.StartIsX));
@@ -335,7 +335,7 @@ public class PadInputTests
     public void TheOptionsRowsStandBeforeHelpAndChange()
     {
         var rows = Enum.GetValues<OptionRow>();
-        Assert.Equal(new[] { OptionRow.ButtonMode, OptionRow.StickDeadZone, OptionRow.Gamepad, OptionRow.Help }, rows[^4..]);
+        Assert.Equal(new[] { OptionRow.ButtonMode, OptionRow.StickDeadZone, OptionRow.Gamepad, OptionRow.Controls, OptionRow.Help }, rows[^5..]);
 
         var s = new GameSettings();
         OptionsScreen.Change(s, OptionRow.ButtonMode, 1);

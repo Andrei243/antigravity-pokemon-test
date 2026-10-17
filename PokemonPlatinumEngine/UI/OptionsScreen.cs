@@ -19,6 +19,7 @@ public enum OptionRow
     SkipScenes,
     BattleScene, BattleStyle,
     ButtonMode, StickDeadZone, Gamepad,
+    Controls,
     Help
 }
 
@@ -47,12 +48,16 @@ public class OptionsScreen
     /// <summary>The help pages, open over the options while <see cref="HelpScreen.IsActive"/>.</summary>
     public HelpScreen Help { get; } = new();
 
+    /// <summary>The Controls page (plan 12 · Q5), open over the options while <see cref="ControlsScreen.IsActive"/>.</summary>
+    public ControlsScreen Controls { get; } = new();
+
     public void Open()
     {
         IsActive = true;
         SelectedIndex = 0;
         FirstRow = 0;
         Help.Close();
+        Controls.Close();
     }
 
     /// <summary>One step of the cursor up or down the rows, wrapping round; the window follows it.</summary>
@@ -72,6 +77,7 @@ public class OptionsScreen
             Help.Update();
             return false;
         }
+        if (Controls.IsActive) return Controls.Update(settings);
 
         if (InputManager.IsActionPressed(GameAction.Up)) Move(-1);
         else if (InputManager.IsActionPressed(GameAction.Down)) Move(1);
@@ -80,9 +86,9 @@ public class OptionsScreen
             IsActive = false;
             AudioManager.PlaySound("cancel");
         }
-        else if (Rows[SelectedIndex] == OptionRow.Help)
+        else if (Rows[SelectedIndex] is OptionRow.Help or OptionRow.Controls)
         {
-            if (InputManager.IsActionPressed(GameAction.Confirm)) Confirm();
+            if (InputManager.IsActionPressed(GameAction.Confirm)) Confirm(settings);
         }
         else
         {
@@ -99,8 +105,14 @@ public class OptionsScreen
     }
 
     /// <summary>The A button on the row the cursor is on: HELP opens the help pages; any other row is changed by Update.</summary>
-    public void Confirm()
+    public void Confirm(GameSettings? settings = null)
     {
+        if (Rows[SelectedIndex] == OptionRow.Controls && settings != null)
+        {
+            Controls.Open(settings);
+            AudioManager.PlaySound("select");
+            return;
+        }
         if (Rows[SelectedIndex] != OptionRow.Help) return;
         Help.Open();
         AudioManager.PlaySound("select");
@@ -233,6 +245,7 @@ public class OptionsScreen
         OptionRow.ButtonMode => (Text.Of("options.buttonMode.label"), Text.Of($"options.buttonMode.value.{s.ButtonMode}"), Text.Of($"options.buttonMode.help.{s.ButtonMode}")),
         OptionRow.StickDeadZone => (Text.Of("options.stickDeadZone.label"), Text.Of("options.stickDeadZone.value", ("n", s.StickDeadZone)), Text.Of("options.stickDeadZone.help")),
         OptionRow.Gamepad => (Text.Of("options.gamepad.label"), Text.Of("options.gamepad.value", ("n", Math.Clamp(s.GamepadIndex, 0, 3) + 1)), Text.Of("options.gamepad.help")),
+        OptionRow.Controls => (Text.Of("options.controls.label"), Text.Of("options.controls.value"), Text.Of("options.controls.help")),
         _ => (Text.Of("options.help.label"), Text.Of("options.help.value"), Text.Of("options.help.help"))
     };
 
@@ -248,10 +261,15 @@ public class OptionsScreen
             Help.Draw(sw, sh);
             return;
         }
+        if (Controls.IsActive)
+        {
+            Controls.Draw(sw, sh);
+            return;
+        }
         ModernUi.Backdrop(sw, sh);
         ModernUi.ScreenTitle(Text.Of("options.title"));
-        if (Rows[SelectedIndex] == OptionRow.Help) ModernUi.Hints(sw - 64, 44, (Text.Of("shared.keys.z"), Text.Of("shared.hints.open")), (Text.Of("shared.keys.esc"), Text.Of("shared.hints.back")));
-        else ModernUi.Hints(sw - 64, 44, (Text.Of("shared.keys.leftRight"), Text.Of("shared.hints.change")), (Text.Of("shared.keys.esc"), Text.Of("shared.hints.back")));
+        if (Rows[SelectedIndex] is OptionRow.Help or OptionRow.Controls) ModernUi.Hints(sw - 64, 44, ModernUi.Hint("shared.keys.z", "shared.hints.open"), ModernUi.Hint("shared.keys.esc", "shared.hints.back"));
+        else ModernUi.Hints(sw - 64, 44, ModernUi.Hint("shared.keys.leftRight", "shared.hints.change"), ModernUi.Hint("shared.keys.esc", "shared.hints.back"));
 
         const float pitch = 86, height = 78;
         bool scrolls = Rows.Length > VisibleRows;
