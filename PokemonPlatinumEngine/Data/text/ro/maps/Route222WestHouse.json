@@ -1,0 +1,147 @@
+{
+  "displayName": {
+    "en": [
+      "Pikachu Fan Club"
+    ],
+    "text": [
+      "Clubul Fanilor Pikachu"
+    ]
+  },
+  "people": {
+    "pikachu_1": {
+      "name": {
+        "en": [
+          "Pikachu"
+        ],
+        "text": [
+          "Pikachu"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pikachu: Pikachuu!"
+        ],
+        "text": [
+          "Pikachu: Pikachuu!"
+        ]
+      }
+    },
+    "pikachu_2": {
+      "name": {
+        "en": [
+          "Pikachu"
+        ],
+        "text": [
+          "Pikachu"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pikachu: Pika! Pika pi!"
+        ],
+        "text": [
+          "Pikachu: Pika! Pika pi!"
+        ]
+      }
+    },
+    "pikachu_3": {
+      "name": {
+        "en": [
+          "Pikachu"
+        ],
+        "text": [
+          "Pikachu"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pikachu: Chaa..."
+        ],
+        "text": [
+          "Pikachu: Chaa..."
+        ]
+      }
+    },
+    "pikachu_4": {
+      "name": {
+        "en": [
+          "Pikachu"
+        ],
+        "text": [
+          "Pikachu"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pikachu: Pi? Pikapi?"
+        ],
+        "text": [
+          "Pikachu: Pi? Pikapi?"
+        ]
+      }
+    },
+    "pikachu_5": {
+      "name": {
+        "en": [
+          "Pikachu"
+        ],
+        "text": [
+          "Pikachu"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pikachu: Pika pika!"
+        ],
+        "text": [
+          "Pikachu: Pika pika!"
+        ]
+      }
+    },
+    "pokefan_m": {
+      "name": {
+        "en": [
+          "Pokéfan"
+        ],
+        "text": [
+          "Pokéfanul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Heh heh heh! I'm going to be Champion one day, and I'll do it with nothing but Pikachu!"
+        ],
+        "text": [
+          "He he he! Într-o zi o să fiu Campion, și o să reușesc doar cu Pikachu!"
+        ]
+      }
+    },
+    "poke_kid_janet": {
+      "name": {
+        "en": [
+          "Janet"
+        ],
+        "text": [
+          "Janet"
+        ]
+      },
+      "before": {
+        "en": [
+          "Poké Kid Janet: Pika, pika... Oh! You could tell? I'm not a real Pikachu. I'm a Trainer!"
+        ],
+        "text": [
+          "Poké Copil Janet: Pika, pika... O! Ți-ai dat seama? Nu sunt un Pikachu adevărat. Sunt Antrenoare!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Poké Kid Janet: Pikaaa... I mean: you win."
+        ],
+        "text": [
+          "Poké Copil Janet: Pikaaa... Adică: ai câștigat."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

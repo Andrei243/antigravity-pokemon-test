@@ -1,0 +1,266 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitoarea"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Battle Frontier! This way, please, if this is your first visit."
+      ],
+      "text": [
+        "Bine ai venit la Battle Frontier! Pe aici, te rog, dacă e prima ta vizită."
+      ]
+    },
+    {
+      "en": [
+        "The Battle Frontier keeps a record of everything you do in its halls. May I see your Vs. Recorder for a moment?"
+      ],
+      "text": [
+        "Battle Frontier ține evidența a tot ce faci în sălile sale. Pot să văd puțin Vs. Recorder-ul tău?"
+      ]
+    },
+    {
+      "en": [
+        "{player}'s Vs. Recorder was upgraded! It can keep the Battle Frontier's records now."
+      ],
+      "text": [
+        "Vs. Recorder-ul lui {player} a fost îmbunătățit! Acum poate păstra palmaresul de la Battle Frontier."
+      ]
+    },
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitoarea"
+      ]
+    }
+  ],
+  "General": [
+    {
+      "en": [
+        "What would you like to hear about?",
+        "THE FRONTIER",
+        "THE RULES",
+        "BATTLE POINTS",
+        "THE EXCHANGE",
+        "THE RECORDS",
+        "NOTHING"
+      ],
+      "text": [
+        "Despre ce vrei să afli?",
+        "FRONTIER",
+        "REGULILE",
+        "PUNCTE DE LUPTĂ",
+        "SCHIMBUL",
+        "PALMARESUL",
+        "NIMIC"
+      ]
+    },
+    {
+      "en": [
+        "The Battle Frontier is five halls for Pokémon battles and nothing else: the Battle Tower, the Battle Factory, the Battle Hall, the Battle Castle and the Battle Arcade.",
+        "Each hall has rules of its own, and each is run by a Trainer of fearsome strength. We call them the Frontier Brains."
+      ],
+      "text": [
+        "Battle Frontier înseamnă cinci săli pentru lupte Pokémon și nimic altceva: Battle Tower, Battle Factory, Battle Hall, Battle Castle și Battle Arcade.",
+        "Fiecare sală are regulile ei, și fiecare e condusă de un Antrenor de o putere înfricoșătoare. Noi îi numim Creierele Frontierei."
+      ]
+    },
+    {
+      "en": [
+        "In every hall you battle Trainer after Trainer without a rest at a Pokémon Center between them.",
+        "No items from your Bag, no Exp. Points and no prize money. Pokémon above level 50 fight as if they were level 50, and certain rare Pokémon may not enter at all.",
+        "No two of your Pokémon may be the same species or hold the same item."
+      ],
+      "text": [
+        "În fiecare sală lupți cu Antrenor după Antrenor, fără popas la vreun Centru Pokémon între ei.",
+        "Fără obiecte din Rucsac, fără Puncte EXP. și fără bani de premiu. Pokémonii peste nivelul 50 luptă ca și cum ar fi la nivelul 50, iar unii Pokémoni rari nu pot intra deloc.",
+        "Doi dintre Pokémonii tăi nu pot fi din aceeași specie și nici nu pot ține același obiect."
+      ]
+    },
+    {
+      "en": [
+        "Win through a round and the hall awards you Battle Points, BP for short.",
+        "The longer your winning streak, the more each round is worth. Beat a Frontier Brain and there is a handsome bonus."
+      ],
+      "text": [
+        "Treci de o rundă și sala îți dă Puncte de Luptă, pe scurt PL.",
+        "Cu cât seria de victorii e mai lungă, cu atât fiecare rundă valorează mai mult. Învinge un Creier al Frontierei și primești un bonus frumos."
+      ]
+    },
+    {
+      "en": [
+        "Battle Points are traded for prizes at the Exchange Service Corner, the booths in the middle of the grounds.",
+        "Items your Pokémon can hold, moves to teach them, and more besides."
+      ],
+      "text": [
+        "Punctele de Luptă se schimbă pe premii la Exchange Service Corner, gheretele din mijlocul curții.",
+        "Obiecte pe care le pot ține Pokémonii, mișcări de învățat și altele pe deasupra."
+      ]
+    },
+    {
+      "en": [
+        "Every hall keeps a board of your best streaks beside its counter, and stamps a print in your records when you beat its Frontier Brain.",
+        "Have a look at one whenever you'd like to see how far you've come."
+      ],
+      "text": [
+        "Fiecare sală ține lângă ghișeu un panou cu cele mai bune serii ale tale și îți pune o amprentă în palmares când îi învingi Creierul Frontierei.",
+        "Uită-te la unul ori de câte ori vrei să vezi cât de departe ai ajuns."
+      ]
+    },
+    {
+      "en": [
+        "Please enjoy your visit to the Battle Frontier!"
+      ],
+      "text": [
+        "Să-ți placă vizita la Battle Frontier!"
+      ]
+    }
+  ],
+  "Tower": [
+    {
+      "en": [
+        "This desk answers for the Battle Tower. Shall I tell you about it?"
+      ],
+      "text": [
+        "Biroul acesta răspunde de Battle Tower. Să-ți povestesc despre el?"
+      ]
+    },
+    {
+      "en": [
+        "The Battle Tower is the tall one at the head of the grounds. You enter three Pokémon and take on seven Trainers in a row, room after room.",
+        "It is battling at its plainest: your team against theirs. Keep winning and you may meet the Tower Tycoon."
+      ],
+      "text": [
+        "Battle Tower e clădirea înaltă din capătul curții. Înscrii trei Pokémoni și înfrunți șapte Antrenori la rând, cameră după cameră.",
+        "E lupta în forma ei cea mai simplă: echipa ta contra echipei lor. Continuă să câștigi și s-ar putea să-l întâlnești pe Magnatul Turnului."
+      ]
+    },
+    {
+      "en": [
+        "We hope you'll try the Battle Tower!"
+      ],
+      "text": [
+        "Sperăm că vei încerca Battle Tower!"
+      ]
+    }
+  ],
+  "Factory": [
+    {
+      "en": [
+        "This desk answers for the Battle Factory. Shall I tell you about it?"
+      ],
+      "text": [
+        "Biroul acesta răspunde de Battle Factory. Să-ți povestesc despre el?"
+      ]
+    },
+    {
+      "en": [
+        "At the Battle Factory you leave your own Pokémon at the door. You are lent three out of six, and battle with those.",
+        "After each win you may swap one of yours for one you have just beaten. It tests what you know of every Pokémon there is."
+      ],
+      "text": [
+        "La Battle Factory îți lași Pokémonii la intrare. Primești trei din șase de împrumut și lupți cu ei.",
+        "După fiecare victorie poți schimba unul dintre ai tăi cu unul pe care tocmai l-ai învins. Te pune la încercare cât știi despre toți Pokémonii."
+      ]
+    },
+    {
+      "en": [
+        "We hope you'll try the Battle Factory!"
+      ],
+      "text": [
+        "Sperăm că vei încerca Battle Factory!"
+      ]
+    }
+  ],
+  "Hall": [
+    {
+      "en": [
+        "This desk answers for the Battle Hall. Shall I tell you about it?"
+      ],
+      "text": [
+        "Biroul acesta răspunde de Battle Hall. Să-ți povestesc despre el?"
+      ]
+    },
+    {
+      "en": [
+        "At the Battle Hall a single Pokémon of yours takes the stage, and you choose which type it faces next.",
+        "Each type you beat comes back stronger. Carry one Pokémon through them all, if you can!"
+      ],
+      "text": [
+        "La Battle Hall un singur Pokémon de-al tău urcă pe scenă, iar tu alegi ce tip înfruntă în continuare.",
+        "Fiecare tip pe care îl învingi revine mai puternic. Du un singur Pokémon prin toate, dacă poți!"
+      ]
+    },
+    {
+      "en": [
+        "We hope you'll try the Battle Hall!"
+      ],
+      "text": [
+        "Sperăm că vei încerca Battle Hall!"
+      ]
+    }
+  ],
+  "Castle": [
+    {
+      "en": [
+        "This desk answers for the Battle Castle. Shall I tell you about it?"
+      ],
+      "text": [
+        "Biroul acesta răspunde de Battle Castle. Să-ți povestesc despre el?"
+      ]
+    },
+    {
+      "en": [
+        "At the Battle Castle your Pokémon are not healed between battles. You earn Castle Points by winning well, and spend them on healing, on items, or on a look at what your next opponent has.",
+        "It is a hall for those who plan ahead."
+      ],
+      "text": [
+        "La Battle Castle Pokémonii tăi nu se vindecă între lupte. Câștigi Puncte de Castel luptând bine și le cheltui pe vindecare, pe obiecte sau ca să vezi ce are următorul adversar.",
+        "E o sală pentru cei care plănuiesc dinainte."
+      ]
+    },
+    {
+      "en": [
+        "We hope you'll try the Battle Castle!"
+      ],
+      "text": [
+        "Sperăm că vei încerca Battle Castle!"
+      ]
+    }
+  ],
+  "Arcade": [
+    {
+      "en": [
+        "This desk answers for the Battle Arcade. Shall I tell you about it?"
+      ],
+      "text": [
+        "Biroul acesta răspunde de Battle Arcade. Să-ți povestesc despre el?"
+      ]
+    },
+    {
+      "en": [
+        "At the Battle Arcade a game board is spun before every battle, and where it stops decides what befalls you or your opponent: a status, a berry, a change of weather...",
+        "Luck counts for as much as strength there. Some people can't keep away!"
+      ],
+      "text": [
+        "La Battle Arcade se învârte o tablă de joc înaintea fiecărei lupte, iar unde se oprește hotărăște ce ți se întâmplă ție sau adversarului: o stare, o boabă, o schimbare de vreme...",
+        "Acolo norocul contează cât puterea. Unii nu se mai pot dezlipi!"
+      ]
+    },
+    {
+      "en": [
+        "We hope you'll try the Battle Arcade!"
+      ],
+      "text": [
+        "Sperăm că vei încerca Battle Arcade!"
+      ]
+    }
+  ]
+}

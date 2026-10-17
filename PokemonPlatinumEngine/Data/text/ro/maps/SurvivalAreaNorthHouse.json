@@ -1,0 +1,62 @@
+{
+  "displayName": {
+    "en": [
+      "Survival Area"
+    ],
+    "text": [
+      "Zona de Supraviețuire"
+    ]
+  },
+  "people": {
+    "hiker": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      }
+    },
+    "psychic": {
+      "name": {
+        "en": [
+          "Psychic"
+        ],
+        "text": [
+          "Mediumul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came to live where nobody could reach me without Rock Climb. I'd had my fill of people, you see.",
+          "But once I'd stopped seeing people, I found myself looking forward to visitors.",
+          "Where one lives can change a person. A Pokémon too, I shouldn't wonder."
+        ],
+        "text": [
+          "Am venit să locuiesc unde nimeni nu poate ajunge la mine fără Cățărare. Mă săturasem de oameni, înțelegi.",
+          "Dar după ce n-am mai văzut oameni, m-am trezit că aștept musafiri.",
+          "Locul în care trăiești te poate schimba. Și pe un Pokémon, n-ar fi de mirare."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "4,2": {
+      "en": [
+        "A list is pinned to the wall. MOVES TAUGHT FOR SHARDS: Mud-Slap, Rollout, Superpower, Iron Head, Aqua Tail, Gastro Acid, Endeavor, Outrage, Ancient Power, Signal Beam, Earth Power, Gunk Shot, Twister, Seed Bomb, Iron Defense, Bounce, Heat Wave."
+      ],
+      "text": [
+        "Pe perete e prinsă o listă. MIȘCĂRI PE CIOBURI: Palmă de Noroi, Rostogolire, Superforță, Cap de Fier, Coadă de Apă, Acid Gastric, Străduință, Furie Oarbă, Putere Străveche, Rază Semnal, Puterea Pământului, Gunoi Aruncat, Tornadă, Bombă de Semințe, Apărare de Fier, Săritură, Val de Căldură."
+      ]
+    },
+    "1,4": {
+      "en": [
+        "A diary lies open. \"Red Shards speak of power. Blue Shards speak of cunning effects. Yellow Shards speak of troubles for the foe.\" \"Red Shards are the ones I like!\""
+      ],
+      "text": [
+        "Un jurnal stă deschis. „Cioburile Roșii vorbesc despre putere. Cioburile Albastre, despre efecte viclene. Cioburile Galbene, despre necazuri pentru adversar.” „Cioburile Roșii îmi plac!”"
+      ]
+    }
+  }
+}

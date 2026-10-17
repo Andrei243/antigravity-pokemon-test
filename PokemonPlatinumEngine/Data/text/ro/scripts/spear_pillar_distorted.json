@@ -1,0 +1,160 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Cynthia"
+      ],
+      "text": [
+        "Cynthia"
+      ]
+    },
+    {
+      "en": [
+        "No... I'm too late."
+      ],
+      "text": [
+        "Nu... Am ajuns prea târziu."
+      ]
+    },
+    {
+      "en": [
+        "Forgive me. I came as fast as I could, and I missed all of it. But I can see what happened."
+      ],
+      "text": [
+        "Iartă-mă. Am venit cât de repede am putut și am ratat tot. Dar văd ce s-a întâmplat."
+      ]
+    },
+    {
+      "en": [
+        "Dialga and Palkia are gone, and Cyrus with them. What took him is the Pokémon the old books barely dare to name: Giratina."
+      ],
+      "text": [
+        "Dialga și Palkia au dispărut, și Cyrus odată cu ei. Ce l-a luat e Pokémonul pe care cărțile vechi abia îndrăznesc să-l numească: Giratina."
+      ]
+    },
+    {
+      "en": [
+        "That darkness is a way into its world, the other side of ours. And look at the pillars. The two worlds are bleeding into each other. Left alone, this one will come apart."
+      ],
+      "text": [
+        "Întunericul acela e o cale spre lumea lui, cealaltă față a lumii noastre. Și uită-te la coloane. Cele două lumi se scurg una în alta. Lăsată așa, asta se va destrăma."
+      ]
+    },
+    {
+      "en": [
+        "The Pokémon of the lakes are holding the tear shut as best they can. They can't hold it for long. Somebody has to go in and calm Giratina."
+      ],
+      "text": [
+        "Pokémonii lacurilor țin ruptura închisă cât pot. Nu o pot ține mult. Cineva trebuie să intre și să-l liniștească pe Giratina."
+      ]
+    }
+  ],
+  "Cynthia": [
+    {
+      "en": [
+        "Cynthia"
+      ],
+      "text": [
+        "Cynthia"
+      ]
+    },
+    {
+      "en": [
+        "I'm going in after it. Will you come with me? Are you ready?"
+      ],
+      "text": [
+        "Eu intru după el. Vii cu mine? Ești gata?"
+      ]
+    },
+    {
+      "en": [
+        "Then we have to hurry. Stay close. Nothing in there will be the way you expect it."
+      ],
+      "text": [
+        "Atunci trebuie să ne grăbim. Stai aproape. Nimic de acolo nu va fi așa cum te aștepți."
+      ]
+    },
+    {
+      "en": [
+        "Then get ready, and be quick about it. I'll wait for you here. I won't go in without you."
+      ],
+      "text": [
+        "Atunci pregătește-te, și repede. Te aștept aici. Nu intru fără tine."
+      ]
+    }
+  ],
+  "Jupiter": [
+    {
+      "en": [
+        "Jupiter"
+      ],
+      "text": [
+        "Jupiter"
+      ]
+    },
+    {
+      "en": [
+        "What was that thing? The shadow that... No. Don't ask me. I don't know."
+      ],
+      "text": [
+        "Ce era chestia aia? Umbra care... Nu. Nu mă întreba. Nu știu."
+      ]
+    }
+  ],
+  "Mars": [
+    {
+      "en": [
+        "Mars"
+      ],
+      "text": [
+        "Mars"
+      ]
+    },
+    {
+      "en": [
+        "Where did he go? Where did it take him? He's coming back. He has to come back!"
+      ],
+      "text": [
+        "Unde s-a dus? Unde l-a dus? Se întoarce. Trebuie să se întoarcă!"
+      ]
+    }
+  ],
+  "Grunt": [
+    {
+      "en": [
+        "Galactic Grunt"
+      ],
+      "text": [
+        "Galactic Grunt"
+      ]
+    },
+    {
+      "en": [
+        "The boss is gone and the sky's the wrong way up. What are we supposed to do? Nobody gave any orders for this!"
+      ],
+      "text": [
+        "Șeful a dispărut și cerul e cu susul în jos. Ce ar trebui să facem? Nimeni n-a dat ordine pentru asta!"
+      ]
+    }
+  ],
+  "RiftDialga": [
+    {
+      "en": [
+        "A rift hangs in the air. Standing near it, a moment seems to last too long, and then not long enough."
+      ],
+      "text": [
+        "O ruptură plutește în aer. Când stai lângă ea, o clipă pare să țină prea mult, apoi nu destul."
+      ]
+    }
+  ],
+  "RiftPalkia": [
+    {
+      "en": [
+        "A rift hangs in the air. Standing near it, the far wall seems close enough to touch, and your own hand a long way off."
+      ],
+      "text": [
+        "O ruptură plutește în aer. Când stai lângă ea, peretele îndepărtat pare la o atingere, iar propria mână departe."
+      ]
+    }
+  ]
+}

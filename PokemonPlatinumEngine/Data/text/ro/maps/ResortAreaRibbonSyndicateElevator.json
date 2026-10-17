@@ -1,0 +1,23 @@
+{
+  "displayName": {
+    "en": [
+      "Ribbon Syndicate"
+    ],
+    "text": [
+      "Ribbon Syndicate"
+    ]
+  },
+  "people": {
+    "receptionist": {
+      "name": {
+        "en": [
+          "Lift Attendant"
+        ],
+        "text": [
+          "Însoțitorul liftului"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

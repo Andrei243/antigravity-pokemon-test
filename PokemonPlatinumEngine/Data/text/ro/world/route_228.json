@@ -1,0 +1,230 @@
+{
+  "people": {
+    "ace_trainer_jose": {
+      "name": {
+        "en": [
+          "Jose"
+        ],
+        "text": [
+          "Jose"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Jose: Sand in your eyes already? It only gets worse from here. Let me toughen you up for it!"
+        ],
+        "text": [
+          "Antrenor As Jose: Ai deja nisip în ochi? De aici încolo e și mai rău. Lasă-mă să te călesc pentru asta!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Jose: You'll manage the storm. It's me that needs toughening."
+        ],
+        "text": [
+          "Antrenor As Jose: O să faci față furtunii. Eu sunt cel care trebuie călit."
+        ]
+      }
+    },
+    "ace_trainer_moira": {
+      "name": {
+        "en": [
+          "Moira"
+        ],
+        "text": [
+          "Moira"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Moira: My Pokémon were raised in this sandstorm. They can't see you. They don't need to!"
+        ],
+        "text": [
+          "Antrenor As Moira: Pokémonii mei au crescut în furtuna asta de nisip. Nu te văd. Nici nu le trebuie!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Moira: You saw us coming all the same."
+        ],
+        "text": [
+          "Antrenor As Moira: Ne-ai văzut venind oricum."
+        ]
+      }
+    },
+    "ranger_kyler": {
+      "name": {
+        "en": [
+          "Kyler"
+        ],
+        "text": [
+          "Kyler"
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokémon Ranger Kyler: The desert looks empty until you kneel down and look. Then it's all eyes!"
+        ],
+        "text": [
+          "Ranger Pokémon Kyler: Deșertul pare gol până îngenunchezi și te uiți. Atunci e numai ochi!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokémon Ranger Kyler: And every one of those eyes watched me lose."
+        ],
+        "text": [
+          "Ranger Pokémon Kyler: Și toți ochii ăia m-au văzut pierzând."
+        ]
+      }
+    },
+    "ranger_krista": {
+      "name": {
+        "en": [
+          "Krista"
+        ],
+        "text": [
+          "Krista"
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokémon Ranger Krista: Kyler counts the Pokémon. I count the trainers who stray off the path. That's one!"
+        ],
+        "text": [
+          "Ranger Pokémon Krista: Kyler numără Pokémonii. Eu număr Antrenorii care se abat de la potecă. Unul!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokémon Ranger Krista: One trainer, quite able to look after themselves. Noted."
+        ],
+        "text": [
+          "Ranger Pokémon Krista: Un Antrenor care se descurcă foarte bine singur. Notat."
+        ]
+      }
+    },
+    "dragon_tamer_keegan": {
+      "name": {
+        "en": [
+          "Keegan"
+        ],
+        "text": [
+          "Keegan"
+        ]
+      },
+      "before": {
+        "en": [
+          "Dragon Tamer Keegan: Under this sand a dragon is waiting to hatch out of an ant-lion. Mine are nearly there!"
+        ],
+        "text": [
+          "Îmblânzitor de dragoni Keegan: Sub nisipul ăsta un dragon așteaptă să iasă dintr-un furnicar. Ai mei aproape au ajuns acolo!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Dragon Tamer Keegan: Nearly. Back under the sand with us."
+        ],
+        "text": [
+          "Îmblânzitor de dragoni Keegan: Aproape. Înapoi sub nisip cu noi."
+        ]
+      }
+    },
+    "psychic_corbin": {
+      "name": {
+        "en": [
+          "Corbin"
+        ],
+        "text": [
+          "Corbin"
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Corbin: I felt your footsteps through the sand a long way off. I have been ready for some time."
+        ],
+        "text": [
+          "Medium Corbin: Ți-am simțit pașii prin nisip de foarte departe. Sunt gata de ceva vreme."
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Corbin: Being ready, I find, is not the same as being right."
+        ],
+        "text": [
+          "Medium Corbin: Să fii gata, constat, nu e același lucru cu a avea dreptate."
+        ]
+      }
+    },
+    "ace_trainer_meagan": {
+      "name": {
+        "en": [
+          "Meagan"
+        ],
+        "text": [
+          "Meagan"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Meagan: Guess what I brought to a desert? A snowstorm! Nobody ever sees it coming!"
+        ],
+        "text": [
+          "Antrenor As Meagan: Ghici ce am adus în deșert? O furtună de zăpadă! Nimeni n-o vede venind!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Meagan: You didn't so much as shiver."
+        ],
+        "text": [
+          "Antrenor As Meagan: N-ai tremurat nici măcar o dată."
+        ]
+      }
+    },
+    "black_belt_davon": {
+      "name": {
+        "en": [
+          "Davon"
+        ],
+        "text": [
+          "Davon"
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Davon: Hah! You never saw me! I've been lying under this sand since breakfast!"
+        ],
+        "text": [
+          "Centură Neagră Davon: Ha! Nu m-ai văzut deloc! Stau sub nisipul ăsta de la micul dejun!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Davon: Beaten... and I've sand in my ears."
+        ],
+        "text": [
+          "Centură Neagră Davon: Învins... și cu nisip în urechi."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost_rt_226": {
+      "en": [
+        "Rt. 228\nWest: Rt. 226"
+      ],
+      "text": [
+        "Ruta 228\nVest: Ruta 226"
+      ]
+    },
+    "arrow_signpost_rt_229": {
+      "en": [
+        "Rt. 228\nSouth: Rt. 229"
+      ],
+      "text": [
+        "Ruta 228\nSud: Ruta 229"
+      ]
+    }
+  }
+}

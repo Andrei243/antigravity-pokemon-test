@@ -1,0 +1,110 @@
+{
+  "SealShop": [
+    {
+      "en": [
+        "Seals! Seals for your Ball Capsules! Come and see what the tide brought in today."
+      ],
+      "text": [
+        "Stickere! Stickere pentru Capsulele de Ball! Vino să vezi ce a adus valul azi."
+      ]
+    },
+    {
+      "en": [
+        "Seals for sale! ...Ah, but you've no Seal Case to put them in. There's a house in Solaceon Town that gives them away, I hear."
+      ],
+      "text": [
+        "Stickere de vânzare! ...A, dar n-ai o Cutie de Stickere în care să le pui. Am auzit că o casă din Orășelul Solaceon le dă gratuit."
+      ]
+    }
+  ],
+  "EffortRibbonWoman": [
+    {
+      "en": [
+        "Oh? Your {wearer}..."
+      ],
+      "text": [
+        "O? {wearer} al tău..."
+      ]
+    },
+    {
+      "en": [
+        "It has worked so very, very hard! It couldn't have put in more effort if it tried. That deserves a reward."
+      ],
+      "text": [
+        "A muncit atât, atât de mult! Nu s-ar fi putut strădui mai tare nici dacă ar fi vrut. Asta merită o răsplată."
+      ]
+    },
+    {
+      "en": [
+        "{player} received the {ribbon}!",
+        "{player} put the {ribbon} on {wearer}."
+      ],
+      "text": [
+        "{player} a primit {ribbon}!",
+        "{player} i-a pus lui {wearer} {ribbon}."
+      ]
+    },
+    {
+      "en": [
+        "It could put in a little more effort, I think. Come and show me when it has given everything it has."
+      ],
+      "text": [
+        "Cred că s-ar mai putea strădui puțin. Vino să mi-l arăți când a dat tot ce are."
+      ]
+    },
+    {
+      "en": [
+        "That Effort Ribbon looks wonderful on your {wearer}. It wears its hard work proudly."
+      ],
+      "text": [
+        "Panglica Efortului arată minunat pe {wearer} al tău. Își poartă cu mândrie munca grea."
+      ]
+    }
+  ],
+  "Sailor": [
+    {
+      "en": [
+        "Sunyshore's market is known up and down the coast for one thing: Seals. Nowhere else has so many."
+      ],
+      "text": [
+        "Piața din Sunyshore e cunoscută pe toată coasta pentru un singur lucru: Stickere. Nicăieri nu sunt atâtea."
+      ]
+    }
+  ],
+  "PokefanM": [
+    {
+      "en": [
+        "Have you been to the Seal merchant's stall? He never has the same Seals two days running."
+      ],
+      "text": [
+        "Ai fost la taraba negustorului de Stickere? Nu are niciodată aceleași Stickere două zile la rând."
+      ]
+    },
+    {
+      "en": [
+        "The ones I'm after weren't out today. I'll be back later in the week."
+      ],
+      "text": [
+        "Cele pe care le caut nu erau azi. Revin mai târziu în săptămâna asta."
+      ]
+    },
+    {
+      "en": [
+        "He came through with a different lot again today. I can't keep up!"
+      ],
+      "text": [
+        "Azi a venit iar cu alt lot. Nu mai țin pasul!"
+      ]
+    }
+  ],
+  "BattleGirl": [
+    {
+      "en": [
+        "I put my Pokémon's name on its Ball Capsule, a letter Seal at a time. Eight letters is all that fit, though."
+      ],
+      "text": [
+        "Am pus numele Pokémonului meu pe Capsula lui de Ball, cu câte un Sticker-literă. Dar încap doar opt litere."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "displayName": {
+    "en": [
+      "Sunyshore City"
+    ],
+    "text": [
+      "Orașul Sunyshore"
+    ]
+  },
+  "people": {
+    "old_man": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "They say Team Galactic has been making trouble all over Sinnoh.",
+          "We've never seen so much as one of them in Sunyshore, mind you.",
+          "Small wonder. Our Gym Leader Volkner is more than a match for anybody."
+        ],
+        "text": [
+          "Se zice că Echipa Galactic a făcut necazuri în tot Sinnoh-ul.",
+          "N-am văzut nici măcar unul de-al lor în Sunyshore, să știi.",
+          "Nici nu e de mirare. Liderul nostru de Arenă, Volkner, e mai mult decât pe măsura oricui."
+        ]
+      }
+    },
+    "old_woman": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          "Bătrâna"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A long time ago a boy called Cyrus lived in this town.",
+          "He kept away from other people. He was happier among his machines.",
+          "Such a clever boy at his lessons, too... I do wonder sometimes what became of him."
+        ],
+        "text": [
+          "Cu mult timp în urmă, în orașul ăsta locuia un băiat pe nume Cyrus.",
+          "Stătea departe de ceilalți oameni. Era mai fericit printre mașinăriile lui.",
+          "Și atât de deștept la lecții... Mă întreb uneori ce s-a ales de el."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

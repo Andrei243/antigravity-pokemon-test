@@ -1,0 +1,55 @@
+{
+  "people": {
+    "mars": {
+      "name": {
+        "en": [
+          "Mars"
+        ],
+        "text": [
+          "Mars"
+        ]
+      }
+    },
+    "jupiter": {
+      "name": {
+        "en": [
+          "Jupiter"
+        ],
+        "text": [
+          "Jupiter"
+        ]
+      }
+    },
+    "charon": {
+      "name": {
+        "en": [
+          "Charon"
+        ],
+        "text": [
+          "Charon"
+        ]
+      }
+    },
+    "grunt_m_1": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      }
+    },
+    "grunt_m_2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

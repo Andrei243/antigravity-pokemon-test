@@ -1,0 +1,115 @@
+{
+  "people": {
+    "charon": {
+      "name": {
+        "en": [
+          "Charon"
+        ],
+        "text": [
+          "Charon"
+        ]
+      }
+    },
+    "grunt_m_1": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      }
+    },
+    "grunt_m_2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      }
+    },
+    "buck": {
+      "name": {
+        "en": [
+          "Buck"
+        ],
+        "text": [
+          "Buck"
+        ]
+      }
+    },
+    "looker": {
+      "name": {
+        "en": [
+          "Looker"
+        ],
+        "text": [
+          "Looker"
+        ]
+      }
+    },
+    "croagunk": {
+      "name": {
+        "en": [
+          "Croagunk"
+        ],
+        "text": [
+          "Croagunk"
+        ]
+      }
+    },
+    "policeman_1": {
+      "name": {
+        "en": [
+          "Policeman"
+        ],
+        "text": [
+          "Polițistul"
+        ]
+      }
+    },
+    "policeman_2": {
+      "name": {
+        "en": [
+          "Policeman"
+        ],
+        "text": [
+          "Polițistul"
+        ]
+      }
+    },
+    "heatran": {
+      "name": {
+        "en": [
+          "Heatran"
+        ],
+        "text": [
+          "Heatran"
+        ]
+      }
+    },
+    "magma_stone": {
+      "name": {
+        "en": [
+          "Magma Stone"
+        ],
+        "text": [
+          "Piatra de Magmă"
+        ]
+      }
+    },
+    "rock_smash_looker": {
+      "name": {
+        "en": [
+          "Cracked rock"
+        ],
+        "text": [
+          "Stâncă crăpată"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

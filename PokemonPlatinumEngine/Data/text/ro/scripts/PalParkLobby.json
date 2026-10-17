@@ -1,0 +1,376 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Park Attendant"
+      ],
+      "text": [
+        "Îngrijitorul Parcului"
+      ]
+    },
+    {
+      "en": [
+        "All six caught! Now, let's see how your Catching Show went."
+      ],
+      "text": [
+        "Toți șase prinși! Acum, să vedem cum ți-a mers Spectacolul de Prindere."
+      ]
+    },
+    {
+      "en": [
+        "Catching points: {number}"
+      ],
+      "text": [
+        "Puncte de prindere: {number}"
+      ]
+    },
+    {
+      "en": [
+        "Time points: {number}"
+      ],
+      "text": [
+        "Puncte de timp: {number}"
+      ]
+    },
+    {
+      "en": [
+        "Type points: {number}"
+      ],
+      "text": [
+        "Puncte de tip: {number}"
+      ]
+    },
+    {
+      "en": [
+        "Total: {number} points!"
+      ],
+      "text": [
+        "Total: {number} puncte!"
+      ]
+    },
+    {
+      "en": [
+        "A fine show. Here is something for your trouble."
+      ],
+      "text": [
+        "Un spectacol frumos. Iată ceva pentru osteneala ta."
+      ]
+    },
+    {
+      "en": [
+        "That beats the record! Outstanding! This is for you."
+      ],
+      "text": [
+        "Asta bate recordul! Extraordinar! Asta e pentru tine."
+      ]
+    },
+    {
+      "en": [
+        "Shall I send the six you caught to your PC boxes?"
+      ],
+      "text": [
+        "Să-i trimit pe cei șase pe care i-ai prins în cutiile PC-ului tău?"
+      ]
+    },
+    {
+      "en": [
+        "Then you'd like them left in the park, to put on the show again?"
+      ],
+      "text": [
+        "Atunci vrei să-i lași în parc, ca să facă spectacolul din nou?"
+      ]
+    },
+    {
+      "en": [
+        "That's the spirit! They'll be waiting for you."
+      ],
+      "text": [
+        "Așa te vreau! Te vor aștepta."
+      ]
+    },
+    {
+      "en": [
+        "Your Pokémon have been sent to your PC boxes.",
+        "Do come and see us again!"
+      ],
+      "text": [
+        "Pokémonii tăi au fost trimiși în cutiile PC-ului tău.",
+        "Mai treci pe la noi!"
+      ]
+    }
+  ],
+  "OakWelcomes": [
+    {
+      "en": [
+        "Prof. Oak"
+      ],
+      "text": [
+        "Prof. Oak"
+      ]
+    },
+    {
+      "en": [
+        "Ah, {player}! So you came. Welcome to Pal Park!"
+      ],
+      "text": [
+        "A, {player}! Deci ai venit. Bine ai venit la Pal Park!"
+      ]
+    },
+    {
+      "en": [
+        "Pokémon are brought here from all over the country and let loose in the park, and their Trainers catch them again in a Catching Show. I had a hand in setting it up."
+      ],
+      "text": [
+        "Pokémonii sunt aduși aici din toată țara și lăsați liberi în parc, iar Antrenorii lor îi prind din nou într-un Spectacol de Prindere. Am pus și eu umărul la el."
+      ]
+    },
+    {
+      "en": [
+        "Now that I think of it, I have just the thing for a Trainer with a National Pokédex to fill. Hold out your Pokétch!"
+      ],
+      "text": [
+        "Acum că mă gândesc, am exact ce-i trebuie unui Antrenor cu un Pokédex Național de umplut. Întinde-ți Pokétch-ul!"
+      ]
+    },
+    {
+      "en": [
+        "The Trainer Counter was added to the Pokétch!"
+      ],
+      "text": [
+        "Aplicația Trainer Counter a fost adăugată în Pokétch!"
+      ]
+    },
+    {
+      "en": [
+        "It keeps count of the Pokémon you meet one after another. You will find a use for it, I am sure."
+      ],
+      "text": [
+        "Numără Pokémonii pe care îi întâlnești unul după altul. Sunt sigur că-i vei găsi o întrebuințare."
+      ]
+    },
+    {
+      "en": [
+        "I shall be staying in Eterna City for some time. Do call on me there. Good luck, {player}!"
+      ],
+      "text": [
+        "O să stau o vreme în Orașul Eterna. Treci pe la mine acolo. Mult noroc, {player}!"
+      ]
+    }
+  ],
+  "Worker": [
+    {
+      "en": [
+        "Welcome to Pal Park, {player}!",
+        "Pokémon from far away come to stay in the park, and Trainers catch them in a Catching Show."
+      ],
+      "text": [
+        "Bine ai venit la Pal Park, {player}!",
+        "Pokémoni de departe vin să stea în parc, iar Antrenorii îi prind într-un Spectacol de Prindere."
+      ]
+    },
+    {
+      "en": [
+        "What will it be today?",
+        "ENTER",
+        "INFO",
+        "EXIT"
+      ],
+      "text": [
+        "Ce alegi azi?",
+        "ÎNSCRIE",
+        "INFO",
+        "IEȘIRE"
+      ]
+    },
+    {
+      "en": [
+        "Aww, that's too bad. Another day, then!"
+      ],
+      "text": [
+        "Ooo, păcat. Altă dată, atunci!"
+      ]
+    },
+    {
+      "en": [
+        "What shall I read out of the manual?",
+        "The park",
+        "The Catching Show",
+        "Bringing Pokémon",
+        "That's enough"
+      ],
+      "text": [
+        "Ce să-ți citesc din manual?",
+        "Parcul",
+        "Spectacolul de Prindere",
+        "Aducerea Pokémonilor",
+        "Ajunge"
+      ]
+    },
+    {
+      "en": [
+        "Ask me whenever you like!"
+      ],
+      "text": [
+        "Întreabă-mă oricând vrei!"
+      ]
+    },
+    {
+      "en": [
+        "Pal Park is where Pokémon from faraway regions come to stay. Six at a time come over, Pokémon that live nowhere else in Sinnoh, and wait in the park until someone catches them."
+      ],
+      "text": [
+        "Pal Park e locul unde vin să stea Pokémoni din regiuni îndepărtate. Vin câte șase odată, Pokémoni care nu trăiesc nicăieri altundeva în Sinnoh, și așteaptă în parc până îi prinde cineva."
+      ]
+    },
+    {
+      "en": [
+        "In a Catching Show you walk the park's grass and water with six Park Balls. Each of the six keeps to its own corner, and a Park Ball never misses."
+      ],
+      "text": [
+        "Într-un Spectacol de Prindere străbați iarba și apa parcului cu șase Park Balluri. Fiecare dintre cei șase stă în colțul lui, iar un Park Ball nu ratează niciodată."
+      ]
+    },
+    {
+      "en": [
+        "The score is the Pokémon's own points, plus points for catching them quickly, and for never catching two of a type in a row. A good score earns a berry!"
+      ],
+      "text": [
+        "Scorul e făcut din punctele Pokémonilor, plus puncte pentru prinderea lor rapidă și pentru că nu prinzi niciodată doi de același tip la rând. Un scor bun aduce o boabă!"
+      ]
+    },
+    {
+      "en": [
+        "Six Pokémon come over together, and no more until those six have been caught and sent to your PC boxes."
+      ],
+      "text": [
+        "Șase Pokémoni vin împreună, și nu mai vin alții până nu sunt prinși și trimiși în cutiile PC-ului tău."
+      ]
+    },
+    {
+      "en": [
+        "Here are your six Park Balls. The score to beat is {var:VAR_CATCHING_SHOW_RECORD} points. Good luck, {player}!"
+      ],
+      "text": [
+        "Iată cele șase Park Balluri ale tale. Scorul de bătut e de {var:VAR_CATCHING_SHOW_RECORD} de puncte. Mult noroc, {player}!"
+      ]
+    },
+    {
+      "en": [
+        "Oh! But there are no Pokémon waiting in the park.",
+        "Six must come over from far away before a show can be held. None have come yet."
+      ],
+      "text": [
+        "O! Dar nu așteaptă niciun Pokémon în parc.",
+        "Trebuie să vină șase de departe ca să se țină un spectacol. Încă n-a venit niciunul."
+      ]
+    },
+    {
+      "en": [
+        "Your PC boxes haven't room for six more Pokémon. Please make some room first."
+      ],
+      "text": [
+        "Cutiile PC-ului tău nu mai au loc pentru șase Pokémoni. Te rog să faci loc mai întâi."
+      ]
+    }
+  ],
+  "RecordGuy": [
+    {
+      "en": [
+        "The record for a Catching Show stands at {var:VAR_CATCHING_SHOW_RECORD} points. It's written up behind the counter."
+      ],
+      "text": [
+        "Recordul unui Spectacol de Prindere e de {var:VAR_CATCHING_SHOW_RECORD} de puncte. E scris în spatele ghișeului."
+      ]
+    },
+    {
+      "en": [
+        "The record for a Catching Show stands at 2000 points. Somebody called {rival} set it, and then ran out of the door before I could shake his hand."
+      ],
+      "text": [
+        "Recordul unui Spectacol de Prindere e de 2000 de puncte. L-a stabilit unul pe nume {rival}, apoi a fugit pe ușă înainte să-i pot strânge mâna."
+      ]
+    },
+    {
+      "en": [
+        "Nobody has put on a Catching Show here yet. The first score will be the record!"
+      ],
+      "text": [
+        "Nimeni n-a făcut încă un Spectacol de Prindere aici. Primul scor va fi recordul!"
+      ]
+    }
+  ],
+  "PoketchAppLady": [
+    {
+      "en": [
+        "Isn't Pal Park wonderful? Pokémon I have never seen, from places I'll never go!"
+      ],
+      "text": [
+        "Nu-i așa că Pal Park e minunat? Pokémoni pe care nu i-am văzut niciodată, din locuri unde n-o să ajung niciodată!"
+      ]
+    },
+    {
+      "en": [
+        "There is one I long to see: it does nothing but eat and sleep, they say, and it is as big as a house."
+      ],
+      "text": [
+        "E unul pe care tânjesc să-l văd: nu face nimic decât să mănânce și să doarmă, se zice, și e cât o casă."
+      ]
+    },
+    {
+      "en": [
+        "That's it! That's the very one! Oh, thank you. Here, take this for your Pokétch."
+      ],
+      "text": [
+        "Ăla e! Exact ăla! O, mulțumesc. Poftim, ia asta pentru Pokétch-ul tău."
+      ]
+    },
+    {
+      "en": [
+        "And there's another: it changes colour to match whatever it stands on. Imagine!"
+      ],
+      "text": [
+        "Și mai e unul: își schimbă culoarea după orice stă pe el. Închipuie-ți!"
+      ]
+    },
+    {
+      "en": [
+        "Oh! It went green, and then it went pink! Thank you! This is for your Pokétch."
+      ],
+      "text": [
+        "O! S-a făcut verde, apoi s-a făcut roz! Mulțumesc! Asta e pentru Pokétch-ul tău."
+      ]
+    },
+    {
+      "en": [
+        "The Kitchen Timer makes you want to cook something, doesn't it?"
+      ],
+      "text": [
+        "Kitchen Timer îți face poftă să gătești ceva, nu-i așa?"
+      ]
+    },
+    {
+      "en": [
+        "Changing the Pokétch's colour changes my mood for the whole day."
+      ],
+      "text": [
+        "Când schimb culoarea Pokétch-ului, mi se schimbă toată ziua."
+      ]
+    },
+    {
+      "en": [
+        "What was its name, now? If you ever have one with you, do show me."
+      ],
+      "text": [
+        "Cum îi zicea? Dacă ai vreodată unul cu tine, arată-mi-l."
+      ]
+    },
+    {
+      "en": [
+        "Are you putting on a Catching Show today? I'll be cheering!"
+      ],
+      "text": [
+        "Faci azi un Spectacol de Prindere? Eu o să te încurajez!"
+      ]
+    }
+  ]
+}

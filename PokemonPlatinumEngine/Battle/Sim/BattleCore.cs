@@ -1215,7 +1215,7 @@ public sealed partial class BattleCore : IBattleContext
         var grew = Say(Text.Of("battle.grewToLv", ("pokemon", p.DisplayName), ("level", p.Level)));
         // Only a Pokémon standing on the field plays the level's animation (SEQ_GET_EXP_CHECK_LEVEL_UP; plan 25 · Y3)
         if (PlayerSlots.FirstOrDefault(b => b.IsActive && b.Pokemon == p) is { } standing) grew.With(Moment(standing, BattleMoment.LevelUp));
-        foreach (string move in learned) Say(Text.Of("battle.learned", ("pokemon", p.DisplayName), ("move", move)));
+        foreach (string move in learned) Say(Text.Of("battle.learned", ("pokemon", p.DisplayName), ("move", LocalNames.Move(move))));
         foreach (string move in wanted) Emit(new MoveWanted(p, move));
     }
 }

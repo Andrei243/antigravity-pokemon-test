@@ -1,0 +1,162 @@
+{
+  "BuckJoins": [
+    {
+      "en": [
+        "Buck"
+      ],
+      "text": [
+        "Buck"
+      ]
+    },
+    {
+      "en": [
+        "Hey, {player}! Wait for me!"
+      ],
+      "text": [
+        "Hei, {player}! Așteaptă-mă!"
+      ]
+    },
+    {
+      "en": [
+        "So what's going on in here? ...What?! Team Galactic's inside? Got it! Then we're a team, you and me. Let's go!"
+      ],
+      "text": [
+        "Deci ce se petrece aici? ...Ce?! Echipa Galactic e înăuntru? Am înțeles! Atunci facem echipă, tu și cu mine. Hai!"
+      ]
+    },
+    {
+      "en": [
+        "Buck"
+      ],
+      "text": [
+        "Buck"
+      ]
+    },
+    {
+      "en": [
+        "Team Galactic's still in there, isn't it? Come on! We'll go together!"
+      ],
+      "text": [
+        "Echipa Galactic tot e acolo, nu? Hai! Mergem împreună!"
+      ]
+    },
+    {
+      "en": [
+        "{player} decided to go with Buck."
+      ],
+      "text": [
+        "{player} a hotărât să meargă cu Buck."
+      ]
+    },
+    {
+      "en": [
+        "Buck"
+      ],
+      "text": [
+        "Buck"
+      ]
+    },
+    {
+      "en": [
+        "You won't be sorry you brought me! I'll have your Pokémon fit again after every battle."
+      ],
+      "text": [
+        "N-o să-ți pară rău că m-ai luat! Îți pun Pokémonii pe picioare după fiecare luptă."
+      ]
+    }
+  ],
+  "PlayerTurnsBack": [
+    {
+      "en": [
+        "Buck"
+      ],
+      "text": [
+        "Buck"
+      ]
+    },
+    {
+      "en": [
+        "Whoa, hold on! If you go back now I'm left in here all on my own!"
+      ],
+      "text": [
+        "Uau, stai! Dacă te întorci acum, rămân aici de unul singur!"
+      ]
+    },
+    {
+      "en": [
+        "...Well. If you've got to go, you've got to go. I'll hang about here till you're back."
+      ],
+      "text": [
+        "...Ei bine. Dacă trebuie să pleci, trebuie. Rămân pe aici până te întorci."
+      ]
+    }
+  ],
+  "BuckGoesAhead": [
+    {
+      "en": [
+        "Buck"
+      ],
+      "text": [
+        "Buck"
+      ]
+    },
+    {
+      "en": [
+        "Here we are, {player}! The heart of the mountain. Team Galactic's just through there, right?"
+      ],
+      "text": [
+        "Am ajuns, {player}! Inima muntelui. Echipa Galactic e chiar acolo, nu?"
+      ]
+    },
+    {
+      "en": [
+        "This is it, then. No more fooling about!"
+      ],
+      "text": [
+        "Asta e, deci. Gata cu prostiile!"
+      ]
+    }
+  ],
+  "Buck": [
+    {
+      "en": [
+        "Buck"
+      ],
+      "text": [
+        "Buck"
+      ]
+    },
+    {
+      "en": [
+        "This mountain's where I raised my Pokémon, {player}. Every one of them! I know it like my own back yard."
+      ],
+      "text": [
+        "Muntele ăsta e locul unde mi-am crescut Pokémonii, {player}. Pe toți! Îl știu ca pe propria curte."
+      ]
+    },
+    {
+      "en": [
+        "People keep telling me a Trainer has to be tough. Says who? There's no law about it! I do this because it's fun."
+      ],
+      "text": [
+        "Lumea tot îmi zice că un Antrenor trebuie să fie dur. Cine zice? Nu e nicio lege! Eu fac asta pentru că e distractiv."
+      ]
+    },
+    {
+      "en": [
+        "My big brother's one of the Elite Four, you know. You've met him: Flint! Loud, isn't he? It runs in the family."
+      ],
+      "text": [
+        "Fratele meu mai mare e în Elita celor Patru, să știi. L-ai cunoscut: Flint! Gălăgios, nu? E de familie."
+      ]
+    },
+    {
+      "en": [
+        "Wouldn't it be something if there was a Pokémon down here that nobody's ever seen? I've always thought there might be."
+      ],
+      "text": [
+        "N-ar fi grozav să fie aici jos un Pokémon pe care nu l-a văzut nimeni? Mereu am crezut că s-ar putea."
+      ]
+    }
+  ]
+}

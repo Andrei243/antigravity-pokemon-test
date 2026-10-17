@@ -1,0 +1,93 @@
+{
+  "people": {
+    "cynthia": {
+      "name": {
+        "en": [
+          "Cynthia"
+        ],
+        "text": [
+          "Cynthia"
+        ]
+      }
+    },
+    "mesprit": {
+      "name": {
+        "en": [
+          "Mesprit"
+        ],
+        "text": [
+          "Mesprit"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "jupiter": {
+      "name": {
+        "en": [
+          "Jupiter"
+        ],
+        "text": [
+          "Jupiter"
+        ]
+      }
+    },
+    "mars": {
+      "name": {
+        "en": [
+          "Mars"
+        ],
+        "text": [
+          "Mars"
+        ]
+      }
+    },
+    "grunt_f": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      }
+    },
+    "grunt_m": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      }
+    },
+    "uxie": {
+      "name": {
+        "en": [
+          "Uxie"
+        ],
+        "text": [
+          "Uxie"
+        ]
+      }
+    },
+    "azelf": {
+      "name": {
+        "en": [
+          "Azelf"
+        ],
+        "text": [
+          "Azelf"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

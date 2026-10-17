@@ -1,0 +1,67 @@
+{
+  "displayName": {
+    "en": [
+      "Battle Castle"
+    ],
+    "text": [
+      "Battle Castle"
+    ]
+  },
+  "people": {
+    "lady": {
+      "name": {
+        "en": [
+          "Lady Caitlin"
+        ],
+        "text": [
+          "Lady Caitlin"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "opponent": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          "Antrenorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "valet": {
+      "name": {
+        "en": [
+          "Valet"
+        ],
+        "text": [
+          "Valet"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

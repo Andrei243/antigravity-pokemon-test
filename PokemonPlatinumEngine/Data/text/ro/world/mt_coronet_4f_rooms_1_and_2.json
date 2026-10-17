@@ -1,0 +1,57 @@
+{
+  "people": {
+    "_galactic_grunt_1": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: Snow outside, a draught in here. A battle will warm me up!"
+        ],
+        "text": [
+          "Galactic Grunt: Afară zăpadă, aici curent. O luptă o să mă încălzească!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: Now I'm cold and I've lost. Wonderful."
+        ],
+        "text": [
+          "Galactic Grunt: Acum mi-e frig și am pierdut. Minunat."
+        ]
+      }
+    },
+    "_galactic_grunt_2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: A new world is nearly here, and you want to spoil it? Not on my watch!"
+        ],
+        "text": [
+          "Galactic Grunt: O lume nouă e aproape aici, și tu vrei s-o strici? Nu cât sunt eu de pază!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: My watch is over, it seems."
+        ],
+        "text": [
+          "Galactic Grunt: Se pare că paza mea s-a terminat."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,23 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon League"
+    ],
+    "text": [
+      "Liga Pokémon"
+    ]
+  },
+  "people": {
+    "cynthia": {
+      "name": {
+        "en": [
+          "Cynthia"
+        ],
+        "text": [
+          "Cynthia"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

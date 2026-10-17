@@ -1,0 +1,33 @@
+{
+  "people": {
+    "mesprit": {
+      "name": {
+        "en": [
+          "Mesprit"
+        ],
+        "text": [
+          "Mesprit"
+        ]
+      }
+    },
+    "prof_rowan": {
+      "name": {
+        "en": [
+          "Prof. Rowan"
+        ],
+        "text": [
+          "Prof. Rowan"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Prof. Rowan: So this is where it sleeps..."
+        ],
+        "text": [
+          "Prof. Rowan: Deci aici doarme..."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

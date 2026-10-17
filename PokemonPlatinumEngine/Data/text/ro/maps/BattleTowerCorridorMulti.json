@@ -1,0 +1,67 @@
+{
+  "displayName": {
+    "en": [
+      "Battle Tower"
+    ],
+    "text": [
+      "Battle Tower"
+    ]
+  },
+  "people": {
+    "attendant_left": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Multi Battle Room is through the middle doors."
+        ],
+        "text": [
+          "Camera de Luptă Multiplă e dincolo de ușile din mijloc."
+        ]
+      }
+    },
+    "attendant_right": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Multi Battle Room is through the middle doors."
+        ],
+        "text": [
+          "Camera de Luptă Multiplă e dincolo de ușile din mijloc."
+        ]
+      }
+    },
+    "partner": {
+      "name": {
+        "en": [
+          "Partner"
+        ],
+        "text": [
+          "Partenerul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Let's do our best in there."
+        ],
+        "text": [
+          "Să dăm tot ce putem acolo înăuntru."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

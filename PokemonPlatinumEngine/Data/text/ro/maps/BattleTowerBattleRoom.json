@@ -1,0 +1,49 @@
+{
+  "displayName": {
+    "en": [
+      "Battle Room"
+    ],
+    "text": [
+      "Camera de Luptă"
+    ]
+  },
+  "people": {
+    "attendant": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The next challenger will be along shortly."
+        ],
+        "text": [
+          "Următorul provocator va sosi îndată."
+        ]
+      }
+    },
+    "opponent": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          "Antrenorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

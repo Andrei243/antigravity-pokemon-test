@@ -1,0 +1,265 @@
+{
+  "displayName": {
+    "en": [
+      "Battle Hall"
+    ],
+    "text": [
+      "Battle Hall"
+    ]
+  },
+  "people": {
+    "announcer": {
+      "name": {
+        "en": [
+          "Announcer"
+        ],
+        "text": [
+          "Crainicul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Ladies and gentlemen, the stage is being made ready. Please speak to the attendant in the lobby."
+        ],
+        "text": [
+          "Doamnelor și domnilor, scena se pregătește. Vă rog să vorbiți cu însoțitorul din hol."
+        ]
+      }
+    },
+    "opponent": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          "Antrenorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "spectator_1": {
+      "name": {
+        "en": [
+          "Spectator"
+        ],
+        "text": [
+          "Spectator"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I never miss a round."
+        ],
+        "text": [
+          "Nu ratez nicio rundă."
+        ]
+      }
+    },
+    "spectator_2": {
+      "name": {
+        "en": [
+          "Spectator"
+        ],
+        "text": [
+          "Spectator"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Which type will it be this time?"
+        ],
+        "text": [
+          "Ce tip va fi de data asta?"
+        ]
+      }
+    },
+    "spectator_3": {
+      "name": {
+        "en": [
+          "Spectator"
+        ],
+        "text": [
+          "Spectator"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The best seat is right at the front."
+        ],
+        "text": [
+          "Cel mai bun loc e chiar în față."
+        ]
+      }
+    },
+    "spectator_4": {
+      "name": {
+        "en": [
+          "Spectator"
+        ],
+        "text": [
+          "Spectator"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "One Pokémon against one. That is a battle as it should be."
+        ],
+        "text": [
+          "Un Pokémon contra unul. Așa trebuie să fie o luptă."
+        ]
+      }
+    },
+    "spectator_5": {
+      "name": {
+        "en": [
+          "Spectator"
+        ],
+        "text": [
+          "Spectator"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Word gets round when a streak is on."
+        ],
+        "text": [
+          "Vestea se duce când merge o serie."
+        ]
+      }
+    },
+    "spectator_6": {
+      "name": {
+        "en": [
+          "Spectator"
+        ],
+        "text": [
+          "Spectator"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came as soon as I heard."
+        ],
+        "text": [
+          "Am venit imediat ce am auzit."
+        ]
+      }
+    },
+    "spectator_7": {
+      "name": {
+        "en": [
+          "Spectator"
+        ],
+        "text": [
+          "Spectator"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "What a show!"
+        ],
+        "text": [
+          "Ce spectacol!"
+        ]
+      }
+    },
+    "spectator_8": {
+      "name": {
+        "en": [
+          "Spectator"
+        ],
+        "text": [
+          "Spectator"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Twenty wins and still going!"
+        ],
+        "text": [
+          "Douăzeci de victorii, și tot merge!"
+        ]
+      }
+    },
+    "spectator_9": {
+      "name": {
+        "en": [
+          "Spectator"
+        ],
+        "text": [
+          "Spectator"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The whole Frontier is talking about this streak."
+        ],
+        "text": [
+          "Tot Frontier-ul vorbește despre seria asta."
+        ]
+      }
+    },
+    "spectator_10": {
+      "name": {
+        "en": [
+          "Spectator"
+        ],
+        "text": [
+          "Spectator"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "There wasn't a seat to be had."
+        ],
+        "text": [
+          "Nu mai era niciun loc liber."
+        ]
+      }
+    },
+    "spectator_11": {
+      "name": {
+        "en": [
+          "Spectator"
+        ],
+        "text": [
+          "Spectator"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I've lost my voice from cheering."
+        ],
+        "text": [
+          "Mi-am pierdut vocea de atâtea urale."
+        ]
+      }
+    },
+    "spectator_12": {
+      "name": {
+        "en": [
+          "Spectator"
+        ],
+        "text": [
+          "Spectator"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Fifty in a row! Fifty!"
+        ],
+        "text": [
+          "Cincizeci la rând! Cincizeci!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

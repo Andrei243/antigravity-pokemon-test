@@ -1,0 +1,146 @@
+{
+  "displayName": {
+    "en": [
+      "Battle Castle"
+    ],
+    "text": [
+      "Battle Castle"
+    ]
+  },
+  "people": {
+    "single_attendant": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      }
+    },
+    "multi_attendant": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      }
+    },
+    "roughneck": {
+      "name": {
+        "en": [
+          "Roughneck"
+        ],
+        "text": [
+          "Bătăușul"
+        ]
+      }
+    },
+    "black_belt": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          "Centură Neagră"
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          "Gentlemanul"
+        ]
+      }
+    },
+    "collector": {
+      "name": {
+        "en": [
+          "Collector"
+        ],
+        "text": [
+          "Colecționarul"
+        ]
+      }
+    },
+    "artist": {
+      "name": {
+        "en": [
+          "Artist"
+        ],
+        "text": [
+          "Artistul"
+        ]
+      }
+    },
+    "socialite": {
+      "name": {
+        "en": [
+          "Socialite"
+        ],
+        "text": [
+          "Mondena"
+        ]
+      }
+    },
+    "waitress": {
+      "name": {
+        "en": [
+          "Maid"
+        ],
+        "text": [
+          "Cameristă"
+        ]
+      }
+    },
+    "7,8": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "9,3": {
+      "en": [
+        "The screen shows a great hall, and a lady sitting very still at the far end of it."
+      ],
+      "text": [
+        "Ecranul arată o sală mare și o doamnă care stă foarte nemișcată în capătul ei."
+      ]
+    },
+    "10,3": {
+      "en": [
+        "The screen shows a great hall, and a lady sitting very still at the far end of it."
+      ],
+      "text": [
+        "Ecranul arată o sală mare și o doamnă care stă foarte nemișcată în capătul ei."
+      ]
+    },
+    "4,14": {
+      "en": [
+        "A suit of armour stands guard. It has been polished until it shines."
+      ],
+      "text": [
+        "O armură stă de pază. A fost lustruită până strălucește."
+      ]
+    },
+    "9,14": {
+      "en": [
+        "A suit of armour stands guard. It has been polished until it shines."
+      ],
+      "text": [
+        "O armură stă de pază. A fost lustruită până strălucește."
+      ]
+    }
+  }
+}

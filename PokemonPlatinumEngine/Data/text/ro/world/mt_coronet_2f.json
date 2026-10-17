@@ -1,0 +1,45 @@
+{
+  "people": {
+    "looker": {
+      "name": {
+        "en": [
+          "Looker"
+        ],
+        "text": [
+          "Looker"
+        ]
+      }
+    },
+    "cave_painting": {
+      "name": {
+        "en": [
+          "Cave painting"
+        ],
+        "text": [
+          "Pictură rupestră"
+        ]
+      }
+    },
+    "cave_painting_shards_left": {
+      "name": {
+        "en": [
+          "Rubble"
+        ],
+        "text": [
+          "Moloz"
+        ]
+      }
+    },
+    "cave_painting_shards_right": {
+      "name": {
+        "en": [
+          "Rubble"
+        ],
+        "text": [
+          "Moloz"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

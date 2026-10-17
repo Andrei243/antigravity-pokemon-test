@@ -1,0 +1,92 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Cynthia"
+      ],
+      "text": [
+        "Cynthia"
+      ]
+    },
+    {
+      "en": [
+        "So it's you, {player}. Somehow I thought it would be."
+      ],
+      "text": [
+        "Deci tu ești, {player}. Cumva mă gândeam că așa va fi."
+      ]
+    },
+    {
+      "en": [
+        "On Mt. Coronet, and in that world behind this one, you never once let go of your Pokémon, whatever stood in the way. I have wondered ever since how far that would carry you."
+      ],
+      "text": [
+        "Pe Muntele Coronet și în lumea aceea din spatele lumii noastre, nu ți-ai lăsat niciodată Pokémonii, orice ți-ar fi stat în cale. De atunci mă tot întreb cât de departe te va duce asta."
+      ]
+    },
+    {
+      "en": [
+        "And here is the answer: all the way to this room. I couldn't be happier."
+      ],
+      "text": [
+        "Și iată răspunsul: până în camera asta. Nu puteam fi mai fericită."
+      ]
+    },
+    {
+      "en": [
+        "Then let me welcome you properly. I am Cynthia, Champion of the Pokémon League, and I accept your challenge!"
+      ],
+      "text": [
+        "Atunci lasă-mă să-ți urez bun venit cum se cuvine. Eu sunt Cynthia, Campioana Ligii Pokémon, și îți accept provocarea!"
+      ]
+    },
+    {
+      "en": [
+        "Welcome back, {player}. I was hoping you would come."
+      ],
+      "text": [
+        "Bine ai revenit, {player}. Speram să vii."
+      ]
+    },
+    {
+      "en": [
+        "A Champion's room is a quiet place, you know. There is nothing I look forward to more than a challenger worth every one of my Pokémon."
+      ],
+      "text": [
+        "Camera unui Campion e un loc liniștit, să știi. Nimic nu aștept mai mult decât un provocator care să merite fiecare Pokémon al meu."
+      ]
+    },
+    {
+      "en": [
+        "Come, then. As Champion of the Pokémon League, I accept your challenge!"
+      ],
+      "text": [
+        "Hai, atunci. Ca Campioană a Ligii Pokémon, îți accept provocarea!"
+      ]
+    },
+    {
+      "en": [
+        "...It has been a long time since I lost a battle. I had forgotten how it feels. It feels like the start of something."
+      ],
+      "text": [
+        "...A trecut mult timp de când n-am mai pierdut o luptă. Uitasem cum e. E ca începutul a ceva."
+      ]
+    },
+    {
+      "en": [
+        "That was superb, {player}. You knew just when to change, just which move to choose. You and your Pokémon fought as one."
+      ],
+      "text": [
+        "A fost superb, {player}. Ai știut exact când să schimbi, exact ce mișcare să alegi. Tu și Pokémonii tăi ați luptat ca unul."
+      ]
+    },
+    {
+      "en": [
+        "From this moment you are the Champion. Come with me. We'll take the lift."
+      ],
+      "text": [
+        "Din clipa asta ești Campion. Vino cu mine. Luăm liftul."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "people": {
+    "giratina": {
+      "name": {
+        "en": [
+          "Giratina"
+        ],
+        "text": [
+          "Giratina"
+        ]
+      }
+    },
+    "portal": {
+      "name": {
+        "en": [
+          "Portal"
+        ],
+        "text": [
+          "Portal"
+        ]
+      }
+    },
+    "cynthia": {
+      "name": {
+        "en": [
+          "Cynthia"
+        ],
+        "text": [
+          "Cynthia"
+        ]
+      }
+    },
+    "cyrus": {
+      "name": {
+        "en": [
+          "Cyrus"
+        ],
+        "text": [
+          "Cyrus"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "......"
+        ],
+        "text": [
+          "......"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

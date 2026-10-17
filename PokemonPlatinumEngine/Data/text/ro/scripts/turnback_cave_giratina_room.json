@@ -1,0 +1,48 @@
+{
+  "Giratina": [
+    {
+      "en": [
+        "A roar shakes the whole cave!"
+      ],
+      "text": [
+        "Un răget zguduie toată peștera!"
+      ]
+    },
+    {
+      "en": [
+        "Giratina sank back into the shadows and was gone..."
+      ],
+      "text": [
+        "Giratina s-a scufundat înapoi în umbre și a dispărut..."
+      ]
+    }
+  ],
+  "Inscription": [
+    {
+      "en": [
+        "Words are cut into the stone: \"Here the world we know and the world beyond it lie one over the other.\""
+      ],
+      "text": [
+        "Cuvinte sunt săpate în piatră: „Aici lumea pe care o știm și lumea de dincolo stau una peste alta.”"
+      ]
+    }
+  ],
+  "Portal": [
+    {
+      "en": [
+        "The air is torn here, and somewhere else shows through the tear. Leap into the portal?"
+      ],
+      "text": [
+        "Aerul e rupt aici, iar prin ruptură se vede alt loc. Sari în portal?"
+      ]
+    },
+    {
+      "en": [
+        "{player} leapt into the portal!"
+      ],
+      "text": [
+        "{player} a sărit în portal!"
+      ]
+    }
+  ]
+}

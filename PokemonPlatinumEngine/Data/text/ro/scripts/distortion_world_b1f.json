@@ -1,0 +1,38 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Cynthia"
+      ],
+      "text": [
+        "Cynthia"
+      ]
+    },
+    {
+      "en": [
+        "There is no sign of it. Giratina can see us, I'm sure of that. Will it let us see it?"
+      ],
+      "text": [
+        "Nici urmă de el. Giratina ne poate vedea, sunt sigură. Ne va lăsa să-l vedem?"
+      ]
+    },
+    {
+      "en": [
+        "Mind the gaps between the stones. A good run carries you over. Watch how I go."
+      ],
+      "text": [
+        "Ai grijă la golurile dintre pietre. Un avânt bun te duce peste ele. Uită-te cum fac eu."
+      ]
+    }
+  ],
+  "Mesprit": [
+    {
+      "en": [
+        "Kyauuun!"
+      ],
+      "text": [
+        "Kyauuun!"
+      ]
+    }
+  ]
+}

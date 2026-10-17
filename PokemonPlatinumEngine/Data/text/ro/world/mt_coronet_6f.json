@@ -1,0 +1,31 @@
+{
+  "people": {
+    "galactic_grunt": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: Spear Pillar is through there, and our boss with it. This is as far as you go!"
+        ],
+        "text": [
+          "Galactic Grunt: Coloana Suliței e pe acolo, și șeful nostru odată cu ea. Până aici ai ajuns!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: Go, then. It makes no difference. Nobody can stop him now."
+        ],
+        "text": [
+          "Galactic Grunt: Du-te, atunci. Nu mai contează. Nimeni nu-l mai poate opri acum."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

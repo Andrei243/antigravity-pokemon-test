@@ -1,0 +1,301 @@
+{
+  "displayName": {
+    "en": [
+      "Battle Arcade"
+    ],
+    "text": [
+      "Battle Arcade"
+    ]
+  },
+  "people": {
+    "host": {
+      "name": {
+        "en": [
+          "Host"
+        ],
+        "text": [
+          "Gazda"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "attendant": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "opponent": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          "Antrenorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "spectator_1": {
+      "name": {
+        "en": [
+          "Spectator"
+        ],
+        "text": [
+          "Spectator"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "spectator_2": {
+      "name": {
+        "en": [
+          "Spectator"
+        ],
+        "text": [
+          "Spectator"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "spectator_3": {
+      "name": {
+        "en": [
+          "Spectator"
+        ],
+        "text": [
+          "Spectator"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "spectator_4": {
+      "name": {
+        "en": [
+          "Spectator"
+        ],
+        "text": [
+          "Spectator"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "spectator_5": {
+      "name": {
+        "en": [
+          "Spectator"
+        ],
+        "text": [
+          "Spectator"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "spectator_6": {
+      "name": {
+        "en": [
+          "Spectator"
+        ],
+        "text": [
+          "Spectator"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "spectator_7": {
+      "name": {
+        "en": [
+          "Spectator"
+        ],
+        "text": [
+          "Spectator"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "spectator_8": {
+      "name": {
+        "en": [
+          "Spectator"
+        ],
+        "text": [
+          "Spectator"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "spectator_9": {
+      "name": {
+        "en": [
+          "Spectator"
+        ],
+        "text": [
+          "Spectator"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "spectator_10": {
+      "name": {
+        "en": [
+          "Spectator"
+        ],
+        "text": [
+          "Spectator"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "spectator_11": {
+      "name": {
+        "en": [
+          "Spectator"
+        ],
+        "text": [
+          "Spectator"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "spectator_12": {
+      "name": {
+        "en": [
+          "Spectator"
+        ],
+        "text": [
+          "Spectator"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "spectator_13": {
+      "name": {
+        "en": [
+          "Spectator"
+        ],
+        "text": [
+          "Spectator"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

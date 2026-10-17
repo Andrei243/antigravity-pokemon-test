@@ -1,0 +1,102 @@
+{
+  "DrFootstep": [
+    {
+      "en": [
+        "I am Dr. Footstep! Footprints tell me everything. Show me a Pokémon's, and I'll tell you what it thinks of you."
+      ],
+      "text": [
+        "Eu sunt Dr. Footstep! Urmele de pași îmi spun totul. Arată-mi urmele unui Pokémon și îți spun ce crede despre tine."
+      ]
+    },
+    {
+      "en": [
+        "Back again? Then let us see what your {wearer}'s footprints have to say today."
+      ],
+      "text": [
+        "Iar ai venit? Atunci să vedem ce au de spus azi urmele lui {wearer} al tău."
+      ]
+    },
+    {
+      "en": [
+        "Hmm, hmm! 'Being with my Trainer is the best part of every day,' these prints say. You two are close indeed."
+      ],
+      "text": [
+        "Hm, hm! „Să fiu cu Antrenorul meu e cea mai bună parte a fiecărei zile”, spun urmele astea. Voi doi chiar sunteți apropiați."
+      ]
+    },
+    {
+      "en": [
+        "Hmm! 'I've come to like travelling with this Trainer,' they say. A good, steady bond."
+      ],
+      "text": [
+        "Hm! „Am început să-mi placă să călătoresc cu Antrenorul ăsta”, spun ele. O legătură bună, statornică."
+      ]
+    },
+    {
+      "en": [
+        "Hmm. 'This Trainer is all right, I suppose,' they say. There is room to grow, but it is on its way."
+      ],
+      "text": [
+        "Hm. „Antrenorul ăsta e în regulă, cred”, spun ele. E loc de mai bine, dar e pe drum."
+      ]
+    },
+    {
+      "en": [
+        "Hmm... 'I don't know what to make of this Trainer yet,' they say. Give it time, and kindness."
+      ],
+      "text": [
+        "Hm... „Încă nu știu ce să cred despre Antrenorul ăsta”, spun ele. Dă-i timp, și bunătate."
+      ]
+    },
+    {
+      "en": [
+        "And that is what your Pokémon thinks!"
+      ],
+      "text": [
+        "Și asta crede Pokémonul tău!"
+      ]
+    },
+    {
+      "en": [
+        "Oh, my! 'I would follow my Trainer anywhere at all,' these prints say. I have seldom read a heart so open!"
+      ],
+      "text": [
+        "Vai! „Mi-aș urma Antrenorul oriunde”, spun urmele astea. Rar am citit o inimă atât de deschisă!"
+      ]
+    },
+    {
+      "en": [
+        "A bond like that should be seen by everyone. Allow me!"
+      ],
+      "text": [
+        "O legătură ca asta ar trebui văzută de toată lumea. Dă-mi voie!"
+      ]
+    },
+    {
+      "en": [
+        "{player} received the {ribbon}!",
+        "{player} put the {ribbon} on {wearer}."
+      ],
+      "text": [
+        "{player} a primit {ribbon}!",
+        "{player} i-a pus lui {wearer} {ribbon}."
+      ]
+    },
+    {
+      "en": [
+        "And it wears the ribbon to prove it. Splendid, splendid!"
+      ],
+      "text": [
+        "Și poartă panglica drept dovadă. Splendid, splendid!"
+      ]
+    },
+    {
+      "en": [
+        "I am Dr. Footstep, and I read footprints. But you have no Pokémon with you to leave me any!"
+      ],
+      "text": [
+        "Eu sunt Dr. Footstep și citesc urme de pași. Dar n-ai niciun Pokémon cu tine care să-mi lase vreuna!"
+      ]
+    }
+  ]
+}

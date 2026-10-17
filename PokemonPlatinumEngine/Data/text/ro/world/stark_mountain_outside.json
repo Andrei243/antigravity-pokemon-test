@@ -1,0 +1,96 @@
+{
+  "people": {
+    "grunt_m_1": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      }
+    },
+    "grunt_m_2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      }
+    },
+    "looker": {
+      "name": {
+        "en": [
+          "Looker"
+        ],
+        "text": [
+          "Looker"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Looker: Kaff! This ash, it is everywhere!"
+        ],
+        "text": [
+          "Looker: Hof! Cenușa asta, e peste tot!"
+        ]
+      }
+    },
+    "buck": {
+      "name": {
+        "en": [
+          "Buck"
+        ],
+        "text": [
+          "Buck"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Buck: Give me a minute to get my breath back!"
+        ],
+        "text": [
+          "Buck: Dă-mi un minut să-mi trag sufletul!"
+        ]
+      }
+    },
+    "dragon_tamer_darien": {
+      "name": {
+        "en": [
+          "Darien"
+        ],
+        "text": [
+          "Darien"
+        ]
+      },
+      "before": {
+        "en": [
+          "Dragon Tamer Darien: A dragon is at its best where the air is hottest. So this is where mine and I come to train!"
+        ],
+        "text": [
+          "Îmblânzitor de dragoni Darien: Un dragon dă tot ce are mai bun unde aerul e cel mai fierbinte. Așa că aici venim să ne antrenăm, eu și ai mei!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Dragon Tamer Darien: The ash got in its eyes. That's my story, and I'm keeping to it."
+        ],
+        "text": [
+          "Îmblânzitor de dragoni Darien: I-a intrat cenușă în ochi. Asta e povestea mea, și mă țin de ea."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "signboard": {
+      "en": [
+        "Stark Mountain\nThe mountain is awake. Go carefully."
+      ],
+      "text": [
+        "Muntele Stark\nMuntele s-a trezit. Mergi cu grijă."
+      ]
+    }
+  }
+}

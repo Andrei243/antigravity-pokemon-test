@@ -1,0 +1,160 @@
+{
+  "displayName": {
+    "en": [
+      "Battle Arcade"
+    ],
+    "text": [
+      "Battle Arcade"
+    ]
+  },
+  "people": {
+    "single_attendant": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      }
+    },
+    "multi_attendant": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      }
+    },
+    "psychic": {
+      "name": {
+        "en": [
+          "Psychic"
+        ],
+        "text": [
+          "Mediumul"
+        ]
+      }
+    },
+    "waitress": {
+      "name": {
+        "en": [
+          "Waitress"
+        ],
+        "text": [
+          "Chelnerița"
+        ]
+      }
+    },
+    "camper": {
+      "name": {
+        "en": [
+          "Camper"
+        ],
+        "text": [
+          "Campistul"
+        ]
+      }
+    },
+    "beauty": {
+      "name": {
+        "en": [
+          "Beauty"
+        ],
+        "text": [
+          "Frumoasa"
+        ]
+      }
+    },
+    "worker": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          "Muncitorul"
+        ]
+      }
+    },
+    "bug_catcher": {
+      "name": {
+        "en": [
+          "Bug Catcher"
+        ],
+        "text": [
+          "Vânătorul de insecte"
+        ]
+      }
+    },
+    "tuber_f": {
+      "name": {
+        "en": [
+          "Tuber"
+        ],
+        "text": [
+          "Copilul cu colac"
+        ]
+      }
+    },
+    "parasol_lady": {
+      "name": {
+        "en": [
+          "Parasol Lady"
+        ],
+        "text": [
+          "Doamna cu umbrelă"
+        ]
+      }
+    },
+    "hiker_1": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      }
+    },
+    "hiker_2": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      }
+    },
+    "17,5": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "19,3": {
+      "en": [
+        "The screen shows a board of sixteen lights, and a cursor racing round them faster than the eye can follow."
+      ],
+      "text": [
+        "Ecranul arată o tablă cu șaisprezece lumini și un cursor care fuge printre ele mai repede decât poate urmări ochiul."
+      ]
+    },
+    "20,3": {
+      "en": [
+        "The screen shows a board of sixteen lights, and a cursor racing round them faster than the eye can follow."
+      ],
+      "text": [
+        "Ecranul arată o tablă cu șaisprezece lumini și un cursor care fuge printre ele mai repede decât poate urmări ochiul."
+      ]
+    }
+  }
+}

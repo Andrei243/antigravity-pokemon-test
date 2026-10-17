@@ -1,0 +1,28 @@
+{
+  "Ferry": [
+    {
+      "en": [
+        "Not a place to linger, this. Shall we sail back to Canalave City?"
+      ],
+      "text": [
+        "Nu e un loc în care să zăbovești. Ne întoarcem cu corabia la Orașul Canalave?"
+      ]
+    },
+    {
+      "en": [
+        "Aye, aye! Anchors aweigh!"
+      ],
+      "text": [
+        "Am înțeles! Ridicăm ancora!"
+      ]
+    },
+    {
+      "en": [
+        "All right, then. Tell me when you want to go. I'll not be wandering off."
+      ],
+      "text": [
+        "Bine, atunci. Spune-mi când vrei să plecăm. Eu nu mă îndepărtez."
+      ]
+    }
+  ]
+}

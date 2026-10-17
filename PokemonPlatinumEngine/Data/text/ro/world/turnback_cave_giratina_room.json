@@ -1,0 +1,35 @@
+{
+  "people": {
+    "item": {
+      "name": {
+        "en": [
+          "Poké Ball"
+        ],
+        "text": [
+          "Poké Ball"
+        ]
+      }
+    },
+    "giratina": {
+      "name": {
+        "en": [
+          "Giratina"
+        ],
+        "text": [
+          "Giratina"
+        ]
+      }
+    },
+    "portal": {
+      "name": {
+        "en": [
+          "Portal"
+        ],
+        "text": [
+          "Portal"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

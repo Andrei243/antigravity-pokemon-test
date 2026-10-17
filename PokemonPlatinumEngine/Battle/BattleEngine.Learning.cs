@@ -123,7 +123,7 @@ public partial class BattleEngine
     private void AskToLearn()
     {
         var (p, move) = learning!.Value;
-        Interlude(Text.Of("battle.isTryingToLearn", ("pokemon", p.DisplayName), ("move", move)));
+        Interlude(Text.Of("battle.isTryingToLearn", ("pokemon", p.DisplayName), ("move", LocalNames.Move(move))));
         Interlude(Text.Of("battle.butAlreadyKnowsFour", ("pokemon", p.DisplayName)));
         Open(LearnStep.Forget, Text.Of("battle.forgetOneOfThem", ("move", LocalNames.Move(move))));
     }
@@ -203,7 +203,7 @@ public partial class BattleEngine
                 Interlude(Text.Of("battle.oneTwoThreeAnd"));
                 Interlude(Text.Of("battle.hasForgotten", ("pokemon", p.DisplayName), ("forgotten", forgotten)));
                 Interlude(Text.Of("battle.andInItsPlace"));
-                Interlude(Text.Of("battle.learned", ("pokemon", p.DisplayName), ("move", move)));
+                Interlude(Text.Of("battle.learned", ("pokemon", p.DisplayName), ("move", LocalNames.Move(move))));
                 learning = null;
                 break;
             }
@@ -215,7 +215,7 @@ public partial class BattleEngine
                 break;
             case LearnStep.GiveUp when answer == 0:
                 AudioManager.PlaySound("select");
-                Interlude(Text.Of("battle.didNotLearn", ("pokemon", p.DisplayName), ("move", move)));
+                Interlude(Text.Of("battle.didNotLearn", ("pokemon", p.DisplayName), ("move", LocalNames.Move(move))));
                 learning = null;
                 break;
             case LearnStep.GiveUp:

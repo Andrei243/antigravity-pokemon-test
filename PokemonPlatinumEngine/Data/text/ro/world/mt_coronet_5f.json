@@ -1,0 +1,57 @@
+{
+  "people": {
+    "galactic_grunt_1": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: Did you feel the mountain shake just now? That's our boss at work. You're too late!"
+        ],
+        "text": [
+          "Galactic Grunt: Ai simțit muntele zguduindu-se adineauri? E șeful nostru la treabă. E prea târziu!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: Too late or not, you're too strong for me."
+        ],
+        "text": [
+          "Galactic Grunt: Prea târziu sau nu, ai prea multă putere pentru mine."
+        ]
+      }
+    },
+    "galactic_grunt_2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: The peak is one floor up, and I'm what stands between it and you!"
+        ],
+        "text": [
+          "Galactic Grunt: Vârful e cu un etaj mai sus, iar eu sunt ce stă între el și tine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: Nothing stands between it and you now. Lucky you."
+        ],
+        "text": [
+          "Galactic Grunt: Acum nu mai stă nimic între el și tine. Noroc de tine."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,32 @@
+{
+  "displayName": {
+    "en": [
+      "Route 228"
+    ],
+    "text": [
+      "Ruta 228"
+    ]
+  },
+  "people": {
+    "expert_m": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "4,2": {
+      "en": [
+        "A poster. \"The ultimate moves may be taught to the Pokémon listed here!\" \"The blazing fire Pokémon: Charizard, Typhlosion, Blaziken, Infernape.\" \"The restless water Pokémon: Blastoise, Feraligatr, Swampert, Empoleon.\" \"The quiet grass Pokémon: Venusaur, Meganium, Sceptile, Torterra.\""
+      ],
+      "text": [
+        "Un afiș. „Mișcările supreme le pot fi învățate Pokémonilor de mai jos!” „Pokémonii focului arzător: Charizard, Typhlosion, Blaziken, Infernape.” „Pokémonii apei neliniștite: Blastoise, Feraligatr, Swampert, Empoleon.” „Pokémonii ierbii liniștite: Venusaur, Meganium, Sceptile, Torterra.”"
+      ]
+    }
+  }
+}

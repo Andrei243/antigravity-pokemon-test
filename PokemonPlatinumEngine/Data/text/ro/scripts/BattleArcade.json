@@ -1,0 +1,504 @@
+{
+  "SingleAttendant": [
+    {
+      "en": [
+        "Welcome to the Battle Arcade, where the game board has the last word! I look after the Single and Double challenges."
+      ],
+      "text": [
+        "Bine ai venit la Battle Arcade, unde tabla de joc are ultimul cuvânt! Eu mă ocup de provocările Simple și Duble."
+      ]
+    },
+    {
+      "en": [
+        "Which challenge would you like to take?",
+        "SINGLE BATTLE",
+        "DOUBLE BATTLE",
+        "INFO",
+        "EXIT"
+      ],
+      "text": [
+        "Ce provocare vrei să încerci?",
+        "LUPTĂ SIMPLĂ",
+        "LUPTĂ DUBLĂ",
+        "INFO",
+        "IEȘIRE"
+      ]
+    },
+    {
+      "en": [
+        "You enter three Pokémon and battle seven trainers. Before every battle the game board is set going, and whatever its cursor stops on happens."
+      ],
+      "text": [
+        "Înscrii trei Pokémoni și lupți cu șapte Antrenori. Înaintea fiecărei lupte pornește tabla de joc, și se întâmplă ce arată cursorul când se oprește."
+      ]
+    },
+    {
+      "en": [
+        "It may fall on you, on your opponent or on both of you, and it may be a help or a hindrance. Your Pokémon are made whole again before each battle, and whatever they hold is looked after at the door."
+      ],
+      "text": [
+        "Poate cădea pe tine, pe adversar sau pe amândoi, și poate ajuta sau încurca. Pokémonii tăi sunt refăcuți înaintea fiecărei lupte, iar ce țin e păstrat la intrare."
+      ]
+    },
+    {
+      "en": [
+        "Stop the cursor yourself if you can. Leave it for thirty seconds and it stops where it pleases."
+      ],
+      "text": [
+        "Oprește cursorul singur, dacă poți. Lasă-l treizeci de secunde și se oprește unde vrea el."
+      ]
+    },
+    {
+      "en": [
+        "Please choose the three Pokémon you will enter."
+      ],
+      "text": [
+        "Te rog să alegi cei trei Pokémoni pe care îi înscrii."
+      ]
+    },
+    {
+      "en": [
+        "You need three Pokémon, each of a different kind, to take this challenge."
+      ],
+      "text": [
+        "Ai nevoie de trei Pokémoni, fiecare de alt fel, ca să încerci provocarea asta."
+      ]
+    },
+    {
+      "en": [
+        "Eggs can't enter, and neither can {banned}."
+      ],
+      "text": [
+        "Ouăle nu pot intra, și nici {banned}."
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. The three Pokémon must each be of a different kind."
+      ],
+      "text": [
+        "Îmi pare rău. Cei trei Pokémoni trebuie să fie fiecare de alt fel."
+      ]
+    },
+    {
+      "en": [
+        "We hope to see you again!"
+      ],
+      "text": [
+        "Sperăm să te mai vedem!"
+      ]
+    }
+  ],
+  "GoIn": [
+    {
+      "en": [
+        "Your game must be saved before the challenge begins. Shall I save it?"
+      ],
+      "text": [
+        "Jocul trebuie salvat înainte de începerea provocării. Îl salvez?"
+      ]
+    },
+    {
+      "en": [
+        "{player} saved the game."
+      ],
+      "text": [
+        "{player} a salvat jocul."
+      ]
+    },
+    {
+      "en": [
+        "Thank you. Right this way, please!"
+      ],
+      "text": [
+        "Mulțumesc. Pe aici, te rog!"
+      ]
+    },
+    {
+      "en": [
+        "Then please come and see me when you are ready."
+      ],
+      "text": [
+        "Atunci vino la mine când ești gata."
+      ]
+    }
+  ],
+  "MultiAttendant": [
+    {
+      "en": [
+        "Welcome to the Battle Arcade! I look after the Multi challenge, which two trainers take side by side with two Pokémon each."
+      ],
+      "text": [
+        "Bine ai venit la Battle Arcade! Eu mă ocup de provocarea Multiplă, pe care o încearcă doi Antrenori umăr la umăr, cu câte doi Pokémoni."
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry to say nobody can be linked up with. Only the Single and Double challenges are held."
+      ],
+      "text": [
+        "Îmi pare rău, dar nu ne putem conecta cu nimeni. Se țin doar provocările Simple și Duble."
+      ]
+    }
+  ],
+  "RoundWon": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitoarea"
+      ]
+    },
+    {
+      "en": [
+        "Seven games, seven wins! Congratulations!"
+      ],
+      "text": [
+        "Șapte jocuri, șapte victorii! Felicitări!"
+      ]
+    },
+    {
+      "en": [
+        "The result is being recorded. {player} saved the game."
+      ],
+      "text": [
+        "Rezultatul se înregistrează. {player} a salvat jocul."
+      ]
+    },
+    {
+      "en": [
+        "We hope to see you again!"
+      ],
+      "text": [
+        "Sperăm să te mai vedem!"
+      ]
+    }
+  ],
+  "SilverPrint": [
+    {
+      "en": [
+        "And you beat the Arcade Star herself! Please take this to remember it by."
+      ],
+      "text": [
+        "Și ai învins-o chiar pe Vedeta Arcade! Te rog să primești asta drept amintire."
+      ]
+    },
+    {
+      "en": [
+        "A Silver Print was added to {player}'s record of the Battle Arcade!"
+      ],
+      "text": [
+        "O Amprentă de Argint a fost adăugată în palmaresul lui {player} de la Battle Arcade!"
+      ]
+    }
+  ],
+  "GoldPrint": [
+    {
+      "en": [
+        "You beat the Arcade Star with every light on the board against you! Nobody will believe it without this."
+      ],
+      "text": [
+        "Ai învins-o pe Vedeta Arcade cu toate luminile tablei împotriva ta! Nimeni n-o să creadă fără asta."
+      ]
+    },
+    {
+      "en": [
+        "A Gold Print was added to {player}'s record of the Battle Arcade!"
+      ],
+      "text": [
+        "O Amprentă de Aur a fost adăugată în palmaresul lui {player} de la Battle Arcade!"
+      ]
+    }
+  ],
+  "ChallengeEnded": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitoarea"
+      ]
+    },
+    {
+      "en": [
+        "Thank you for playing."
+      ],
+      "text": [
+        "Mulțumim că ai jucat."
+      ]
+    },
+    {
+      "en": [
+        "The result is being recorded. {player} saved the game."
+      ],
+      "text": [
+        "Rezultatul se înregistrează. {player} a salvat jocul."
+      ]
+    },
+    {
+      "en": [
+        "We hope to see you again!"
+      ],
+      "text": [
+        "Sperăm să te mai vedem!"
+      ]
+    }
+  ],
+  "Paused": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitoarea"
+      ]
+    },
+    {
+      "en": [
+        "{player} saved the game."
+      ],
+      "text": [
+        "{player} a salvat jocul."
+      ]
+    },
+    {
+      "en": [
+        "We have missed you! Your challenge is waiting where you put it down. Would you like to go on with it now?"
+      ],
+      "text": [
+        "Ne-ai lipsit! Provocarea ta te așteaptă acolo unde ai lăsat-o. Vrei s-o continui acum?"
+      ]
+    },
+    {
+      "en": [
+        "Then right this way, please!"
+      ],
+      "text": [
+        "Atunci pe aici, te rog!"
+      ]
+    },
+    {
+      "en": [
+        "Very well. Speak to me whenever you are ready."
+      ],
+      "text": [
+        "Prea bine. Vorbește cu mine când ești gata."
+      ]
+    },
+    {
+      "en": [
+        "The Pokémon you entered are no longer with you as they were, so the challenge can't be taken up again. I'm afraid its streak ends there."
+      ],
+      "text": [
+        "Pokémonii pe care i-ai înscris nu mai sunt cu tine așa cum erau, deci provocarea nu poate fi reluată. Mă tem că seria se încheie aici."
+      ]
+    }
+  ],
+  "WalkedOut": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitoarea"
+      ]
+    },
+    {
+      "en": [
+        "Excuse me! The last challenge was left before it was over, so it can't be taken up again."
+      ],
+      "text": [
+        "Scuză-mă! Ultima provocare a fost părăsită înainte să se termine, deci nu poate fi reluată."
+      ]
+    },
+    {
+      "en": [
+        "I'm afraid its streak ends there."
+      ],
+      "text": [
+        "Mă tem că seria se încheie aici."
+      ]
+    },
+    {
+      "en": [
+        "We hope to see you again!"
+      ],
+      "text": [
+        "Sperăm să te mai vedem!"
+      ]
+    }
+  ],
+  "Worker": [
+    {
+      "en": [
+        "Whoever masters the game board masters the Battle Arcade!"
+      ],
+      "text": [
+        "Cine stăpânește tabla de joc stăpânește Battle Arcade!"
+      ]
+    },
+    {
+      "en": [
+        "It sounds deep when I say it out loud. It's really just how the place works."
+      ],
+      "text": [
+        "Sună profund când o spun cu voce tare. De fapt, așa merg lucrurile aici."
+      ]
+    }
+  ],
+  "ParasolLady": [
+    {
+      "en": [
+        "Everything here comes down to luck..."
+      ],
+      "text": [
+        "Totul aici ține de noroc..."
+      ]
+    },
+    {
+      "en": [
+        "My poor darlings were frozen solid before they could lift a paw."
+      ],
+      "text": [
+        "Bieții mei dragi au înghețat bocnă înainte să ridice o labă."
+      ]
+    }
+  ],
+  "Psychic": [
+    {
+      "en": [
+        "Luck can't be argued with. It is there, or it isn't."
+      ],
+      "text": [
+        "Cu norocul nu te poți certa. Ori e, ori nu e."
+      ]
+    },
+    {
+      "en": [
+        "I know. I looked."
+      ],
+      "text": [
+        "Știu. Am verificat."
+      ]
+    }
+  ],
+  "BugCatcher": [
+    {
+      "en": [
+        "Don't stand there gawping at the cursor going round!"
+      ],
+      "text": [
+        "Nu sta acolo cu gura căscată la cursor!"
+      ]
+    },
+    {
+      "en": [
+        "If you haven't stopped it in thirty seconds, it stops all by itself."
+      ],
+      "text": [
+        "Dacă nu-l oprești în treizeci de secunde, se oprește singur."
+      ]
+    }
+  ],
+  "Waitress": [
+    {
+      "en": [
+        "The Arcade Star dresses like nobody else, and she never walks anywhere. She sort of twirls. A hop here, a spin there, like this..."
+      ],
+      "text": [
+        "Vedeta Arcade se îmbracă precum nimeni altcineva și nu merge niciodată pe jos. Mai degrabă se învârte. Un salt aici, o piruetă acolo, așa..."
+      ]
+    },
+    {
+      "en": [
+        "...Please stop looking at me like that. It isn't kind."
+      ],
+      "text": [
+        "...Te rog, nu te mai uita așa la mine. Nu e frumos."
+      ]
+    }
+  ],
+  "Camper": [
+    {
+      "en": [
+        "They can start a battle with a Trick Room already up? Yikes!"
+      ],
+      "text": [
+        "Pot începe o luptă cu Camera Truc deja pornită? Vai!"
+      ]
+    },
+    {
+      "en": [
+        "Build your whole team round being fast, and it blows up in your face!"
+      ],
+      "text": [
+        "Îți construiești toată echipa pe viteză, și îți explodează în față!"
+      ]
+    }
+  ],
+  "Beauty": [
+    {
+      "en": [
+        "Feel the thrill of a hand you can't see! Throw yourself into a battle that fate hasn't made its mind up about!"
+      ],
+      "text": [
+        "Simte fiorul unei mâini pe care n-o vezi! Aruncă-te într-o luptă pe care soarta n-a hotărât-o încă!"
+      ]
+    },
+    {
+      "en": [
+        "That is how the Battle Arcade is meant to be enjoyed."
+      ],
+      "text": [
+        "Așa trebuie savurat Battle Arcade."
+      ]
+    }
+  ],
+  "Tuber": [
+    {
+      "en": [
+        "Blaming the board when you lose is a poor show."
+      ],
+      "text": [
+        "Să dai vina pe tablă când pierzi e urât."
+      ]
+    },
+    {
+      "en": [
+        "The more you win, the better the things it has to offer. So win more!"
+      ],
+      "text": [
+        "Cu cât câștigi mai mult, cu atât are lucruri mai bune de oferit. Deci câștigă mai mult!"
+      ]
+    }
+  ],
+  "Hiker1": [
+    {
+      "en": [
+        "Worked this one out yet? The board's poison and its ice don't always take."
+      ],
+      "text": [
+        "Ai priceput-o pe asta? Otrava și gheața tablei nu prind mereu."
+      ]
+    },
+    {
+      "en": [
+        "A Pokémon whose type or ability keeps it safe from them just shrugs."
+      ],
+      "text": [
+        "Un Pokémon pe care tipul sau abilitatea îl apără de ele doar ridică din umeri."
+      ]
+    }
+  ],
+  "Hiker2": [
+    {
+      "en": [
+        "Same goes for paralysis. If the board comes up with that, Ground types don't feel a thing."
+      ],
+      "text": [
+        "La fel și cu paralizia. Dacă tabla o scoate pe asta, Pokémonii de tip Pământ nu simt nimic."
+      ]
+    }
+  ]
+}

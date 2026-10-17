@@ -1,0 +1,70 @@
+{
+  "displayName": {
+    "en": [
+      "Route 225"
+    ],
+    "text": [
+      "Ruta 225"
+    ]
+  },
+  "people": {
+    "ace_trainer_m": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          "Antrenor As"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "North of here is the Survival Area, and beyond it Stark Mountain.",
+          "I'd love to see them. The road there is more than I can manage yet, though."
+        ],
+        "text": [
+          "La nord de aici e Zona de Supraviețuire, iar dincolo de ea Muntele Stark.",
+          "Mi-ar plăcea să le văd. Dar drumul până acolo e încă prea greu pentru mine."
+        ]
+      }
+    },
+    "rich_boy": {
+      "name": {
+        "en": [
+          "Rich Boy"
+        ],
+        "text": [
+          "Băiat bogat"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I hope you've brought plenty of Poké Balls.",
+          "The tall grass past this gate hides Pokémon you won't meet anywhere else in Sinnoh!"
+        ],
+        "text": [
+          "Sper că ai adus destule Poké Balluri.",
+          "Iarba înaltă de dincolo de poarta asta ascunde Pokémoni pe care nu-i întâlnești nicăieri altundeva în Sinnoh!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "8,2": {
+      "en": [
+        "A map of the island. The Fight Area lies south of here, and Route 225 climbs north toward the Survival Area."
+      ],
+      "text": [
+        "O hartă a insulei. Zona de Luptă e la sud de aici, iar Ruta 225 urcă spre nord, spre Zona de Supraviețuire."
+      ]
+    },
+    "9,2": {
+      "en": [
+        "A map of the island. The Fight Area lies south of here, and Route 225 climbs north toward the Survival Area."
+      ],
+      "text": [
+        "O hartă a insulei. Zona de Luptă e la sud de aici, iar Ruta 225 urcă spre nord, spre Zona de Supraviețuire."
+      ]
+    }
+  }
+}

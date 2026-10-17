@@ -1,0 +1,25 @@
+{
+  "people": {
+    "ruin_maniac": {
+      "name": {
+        "en": [
+          "Ruin Maniac"
+        ],
+        "text": [
+          "Pasionatul de ruine"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The ruins at Solaceon are full of those strange letter-shaped Pokémon. I'm digging my way there!",
+          "Tell you what: find more kinds of them, and I'll put my back into it. This tunnel will reach the ruins yet."
+        ],
+        "text": [
+          "Ruinele din Solaceon sunt pline de Pokémonii ăia ciudați în formă de litere. Îmi sap drumul până acolo!",
+          "Uite cum facem: găsește mai multe feluri de-ale lor și pun mai mult suflet. Tunelul ăsta tot o să ajungă la ruine."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

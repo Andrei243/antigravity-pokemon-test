@@ -1,0 +1,23 @@
+{
+  "displayName": {
+    "en": [
+      "Pal Park"
+    ],
+    "text": [
+      "Pal Park"
+    ]
+  },
+  "people": {
+    "worker": {
+      "name": {
+        "en": [
+          "Park Attendant"
+        ],
+        "text": [
+          "Îngrijitorul Parcului"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

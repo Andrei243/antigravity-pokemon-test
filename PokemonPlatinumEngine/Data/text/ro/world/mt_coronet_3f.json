@@ -1,0 +1,57 @@
+{
+  "people": {
+    "galactic_grunt_1": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: You broke into our headquarters and came straight here? You don't know when to stop!"
+        ],
+        "text": [
+          "Galactic Grunt: Ai intrat cu forța în cartierul nostru și ai venit direct aici? Nu știi când să te oprești!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: Fine, fine. Go on up. See if I care."
+        ],
+        "text": [
+          "Galactic Grunt: Bine, bine. Urcă. Ce-mi pasă."
+        ]
+      }
+    },
+    "galactic_grunt_2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: The summit is for Team Galactic alone today. Turn round, or be turned round!"
+        ],
+        "text": [
+          "Galactic Grunt: Vârful e doar al Echipei Galactic azi. Întoarce-te, sau te întoarcem noi!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: You'll only be in the boss's way up there. Not that he'll notice you."
+        ],
+        "text": [
+          "Galactic Grunt: Acolo sus doar o să-i stai în cale șefului. Nu că te-ar observa."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

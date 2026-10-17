@@ -1,0 +1,234 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitoarea"
+      ]
+    },
+    {
+      "en": [
+        "This is the Battle Salon. Please find yourself a partner among the trainers here."
+      ],
+      "text": [
+        "Acesta e Battle Salon. Te rog să-ți găsești un partener printre Antrenorii de aici."
+      ]
+    },
+    {
+      "en": [
+        "Speak to me if you would rather leave."
+      ],
+      "text": [
+        "Vorbește cu mine dacă preferi să pleci."
+      ]
+    }
+  ],
+  "Attendant": [
+    {
+      "en": [
+        "Would you like to leave the Battle Salon, {player}? Your challenge will be called off."
+      ],
+      "text": [
+        "Vrei să părăsești Battle Salon, {player}? Provocarea ta va fi anulată."
+      ]
+    },
+    {
+      "en": [
+        "Then please find yourself a partner."
+      ],
+      "text": [
+        "Atunci te rog să-ți găsești un partener."
+      ]
+    }
+  ],
+  "TeamUp": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitoarea"
+      ]
+    },
+    {
+      "en": [
+        "Your partner has gone on ahead. Let me show you up to the Multi Battle Room."
+      ],
+      "text": [
+        "Partenerul tău a luat-o înainte. Lasă-mă să te conduc sus, în Camera de Luptă Multiplă."
+      ]
+    }
+  ],
+  "Cheryl": [
+    {
+      "en": [
+        "Oh, {player}! How lovely. I've brought {ally:0}, which knows {allymove:0}, and {ally:1}, which knows {allymove:1}. Shall we team up?"
+      ],
+      "text": [
+        "O, {player}! Ce frumos. L-am adus pe {ally:0}, care știe {allymove:0}, și pe {ally:1}, care știe {allymove:1}. Facem echipă?"
+      ]
+    },
+    {
+      "en": [
+        "Thank you! I'll do my very best not to hold you back."
+      ],
+      "text": [
+        "Mulțumesc! O să fac tot ce pot să nu te încurc."
+      ]
+    },
+    {
+      "en": [
+        "Oh... Another time, then. I'll be here."
+      ],
+      "text": [
+        "O... Altă dată, atunci. Sunt aici."
+      ]
+    },
+    {
+      "en": [
+        "I come here to find someone to battle beside. It's much less frightening with two."
+      ],
+      "text": [
+        "Vin aici să găsesc pe cineva lângă care să lupt. E mult mai puțin înfricoșător în doi."
+      ]
+    }
+  ],
+  "Mira": [
+    {
+      "en": [
+        "{player}! Mira has {ally:0} with {allymove:0}, and {ally:1} with {allymove:1}! Will you battle with Mira?"
+      ],
+      "text": [
+        "{player}! Mira are {ally:0} cu {allymove:0} și {ally:1} cu {allymove:1}! Lupți alături de Mira?"
+      ]
+    },
+    {
+      "en": [
+        "Yay! Mira won't get lost this time, promise!"
+      ],
+      "text": [
+        "Ura! Mira nu se mai rătăcește de data asta, promit!"
+      ]
+    },
+    {
+      "en": [
+        "Aww. Mira will wait right here."
+      ],
+      "text": [
+        "Ooo. Mira așteaptă chiar aici."
+      ]
+    },
+    {
+      "en": [
+        "Mira is getting stronger! Mira came all this way by herself."
+      ],
+      "text": [
+        "Mira devine mai puternică! Mira a venit până aici singură."
+      ]
+    }
+  ],
+  "Riley": [
+    {
+      "en": [
+        "It's good to see you again. I have {ally:0}, which knows {allymove:0}, and {ally:1}, which knows {allymove:1}. Shall we see how far we get together?"
+      ],
+      "text": [
+        "Mă bucur să te revăd. Am {ally:0}, care știe {allymove:0}, și {ally:1}, care știe {allymove:1}. Vedem cât de departe ajungem împreună?"
+      ]
+    },
+    {
+      "en": [
+        "Then let's begin. I'll match my pace to yours."
+      ],
+      "text": [
+        "Atunci să începem. Îmi potrivesc pasul după al tău."
+      ]
+    },
+    {
+      "en": [
+        "I understand. The offer stands."
+      ],
+      "text": [
+        "Înțeleg. Oferta rămâne valabilă."
+      ]
+    },
+    {
+      "en": [
+        "A tower built for nothing but battling. It clears the mind, don't you find?"
+      ],
+      "text": [
+        "Un turn construit doar pentru luptă. Îți limpezește mintea, nu crezi?"
+      ]
+    }
+  ],
+  "Marley": [
+    {
+      "en": [
+        "...{ally:0}, with {allymove:0}. {ally:1}, with {allymove:1}. ...Will you be my partner?"
+      ],
+      "text": [
+        "...{ally:0}, cu {allymove:0}. {ally:1}, cu {allymove:1}. ...Facem echipă?"
+      ]
+    },
+    {
+      "en": [
+        "...Thank you. Let's go."
+      ],
+      "text": [
+        "...Mulțumesc. Să mergem."
+      ]
+    },
+    {
+      "en": [
+        "...I see."
+      ],
+      "text": [
+        "...Înțeleg."
+      ]
+    },
+    {
+      "en": [
+        "...It's quiet in here. I like that."
+      ],
+      "text": [
+        "...E liniște aici. Îmi place asta."
+      ]
+    }
+  ],
+  "Buck": [
+    {
+      "en": [
+        "Hey, it's you! I'm packing {ally:0} with {allymove:0} and {ally:1} with {allymove:1}. You and me, what do you say?"
+      ],
+      "text": [
+        "Hei, tu erai! Am la mine {ally:0} cu {allymove:0} și {ally:1} cu {allymove:1}. Tu și cu mine, ce zici?"
+      ]
+    },
+    {
+      "en": [
+        "That's what I like to hear! Nobody's getting past the two of us!"
+      ],
+      "text": [
+        "Asta vreau să aud! Nimeni nu trece de noi doi!"
+      ]
+    },
+    {
+      "en": [
+        "Suit yourself! You know where to find me."
+      ],
+      "text": [
+        "Cum vrei! Știi unde să mă găsești."
+      ]
+    },
+    {
+      "en": [
+        "My big brother's one of the Elite Four, you know. I'm going to be tougher than him one day!"
+      ],
+      "text": [
+        "Fratele meu mai mare e în Elita celor Patru, să știi. Într-o zi o să fiu mai tare decât el!"
+      ]
+    }
+  ]
+}

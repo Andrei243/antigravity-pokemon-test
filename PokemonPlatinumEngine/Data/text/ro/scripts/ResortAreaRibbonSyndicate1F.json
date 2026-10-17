@@ -1,0 +1,74 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Hostess"
+      ],
+      "text": [
+        "Gazda"
+      ]
+    }
+  ],
+  "Hostess": [
+    {
+      "en": [
+        "Hostess"
+      ],
+      "text": [
+        "Gazda"
+      ]
+    },
+    {
+      "en": [
+        "{player}! We had so looked forward to seeing you again. Do make yourself at home."
+      ],
+      "text": [
+        "{player}! Abia așteptam să te revedem. Simte-te ca acasă."
+      ]
+    }
+  ],
+  "Member": [
+    {
+      "en": [
+        "Member"
+      ],
+      "text": [
+        "Membru"
+      ]
+    },
+    {
+      "en": [
+        "To belong here says something about a person. One does not simply walk in off the beach, you know."
+      ],
+      "text": [
+        "Să faci parte de aici spune ceva despre o persoană. Nu intri pur și simplu venind de pe plajă, să știi."
+      ]
+    }
+  ],
+  "Lady": [
+    {
+      "en": [
+        "Lady"
+      ],
+      "text": [
+        "Doamna"
+      ]
+    },
+    {
+      "en": [
+        "I do wish gentlemen took more trouble over how they look. A fine Pokémon deserves a trainer fit to stand beside it."
+      ],
+      "text": [
+        "Aș vrea ca domnii să se îngrijească mai mult de cum arată. Un Pokémon frumos merită un Antrenor demn să stea lângă el."
+      ]
+    },
+    {
+      "en": [
+        "A lady ought to be worth seeing beside her Pokémon. I have always said so, and I see that you agree."
+      ],
+      "text": [
+        "O doamnă ar trebui să merite văzută alături de Pokémonul ei. Mereu am spus-o, și văd că ești de acord."
+      ]
+    }
+  ]
+}

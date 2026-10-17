@@ -1,0 +1,105 @@
+{
+  "people": {
+    "mesprit_boulder": {
+      "name": {
+        "en": [
+          "Boulder"
+        ],
+        "text": [
+          "Bolovan"
+        ]
+      }
+    },
+    "azelf_boulder": {
+      "name": {
+        "en": [
+          "Boulder"
+        ],
+        "text": [
+          "Bolovan"
+        ]
+      }
+    },
+    "uxie_boulder": {
+      "name": {
+        "en": [
+          "Boulder"
+        ],
+        "text": [
+          "Bolovan"
+        ]
+      }
+    },
+    "mesprit_boulder_in_pit": {
+      "name": {
+        "en": [
+          "Boulder"
+        ],
+        "text": [
+          "Bolovan"
+        ]
+      }
+    },
+    "azelf_boulder_in_pit": {
+      "name": {
+        "en": [
+          "Boulder"
+        ],
+        "text": [
+          "Bolovan"
+        ]
+      }
+    },
+    "uxie_boulder_in_pit": {
+      "name": {
+        "en": [
+          "Boulder"
+        ],
+        "text": [
+          "Bolovan"
+        ]
+      }
+    },
+    "mesprit": {
+      "name": {
+        "en": [
+          "Mesprit"
+        ],
+        "text": [
+          "Mesprit"
+        ]
+      }
+    },
+    "uxie": {
+      "name": {
+        "en": [
+          "Uxie"
+        ],
+        "text": [
+          "Uxie"
+        ]
+      }
+    },
+    "azelf": {
+      "name": {
+        "en": [
+          "Azelf"
+        ],
+        "text": [
+          "Azelf"
+        ]
+      }
+    },
+    "cynthia": {
+      "name": {
+        "en": [
+          "Cynthia"
+        ],
+        "text": [
+          "Cynthia"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

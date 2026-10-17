@@ -1,0 +1,379 @@
+{
+  "people": {
+    "marley": {
+      "name": {
+        "en": [
+          "Marley"
+        ],
+        "text": [
+          "Marley"
+        ]
+      }
+    },
+    "ace_trainer_micah": {
+      "name": {
+        "en": [
+          "Micah"
+        ],
+        "text": [
+          "Micah"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Micah: Brandi and I have guarded this passage since the day it opened. Nobody has slipped between us yet!"
+        ],
+        "text": [
+          "Antrenor As Micah: Brandi și cu mine păzim pasajul ăsta din ziua în care s-a deschis. Nimeni nu s-a strecurat încă printre noi!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Micah: Brandi! One got through!"
+        ],
+        "text": [
+          "Antrenor As Micah: Brandi! A trecut unul!"
+        ]
+      }
+    },
+    "ace_trainer_brandi": {
+      "name": {
+        "en": [
+          "Brandi"
+        ],
+        "text": [
+          "Brandi"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Brandi: Micah talks. I battle. Shall we?"
+        ],
+        "text": [
+          "Antrenor As Brandi: Micah vorbește. Eu lupt. Începem?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Brandi: ...Micah will never let me hear the end of this."
+        ],
+        "text": [
+          "Antrenor As Brandi: ...Micah n-o să mă lase niciodată să uit asta."
+        ]
+      }
+    },
+    "psychic_desiree": {
+      "name": {
+        "en": [
+          "Desiree"
+        ],
+        "text": [
+          "Desiree"
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Desiree: In the dark the mind sees furthest. I watched you come all the way from the door."
+        ],
+        "text": [
+          "Medium Desiree: În întuneric mintea vede cel mai departe. Te-am urmărit venind tocmai de la ușă."
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Desiree: I saw you coming. I did not see you winning."
+        ],
+        "text": [
+          "Medium Desiree: Te-am văzut venind. Nu te-am văzut câștigând."
+        ]
+      }
+    },
+    "psychic_landon": {
+      "name": {
+        "en": [
+          "Landon"
+        ],
+        "text": [
+          "Landon"
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Landon: Desiree looks ahead, and I look into the here and now. Here and now, you battle me!"
+        ],
+        "text": [
+          "Medium Landon: Desiree privește înainte, iar eu privesc aici și acum. Aici și acum, te lupți cu mine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Landon: The here and now has turned out badly."
+        ],
+        "text": [
+          "Medium Landon: Aici și acum s-a dovedit a fi prost."
+        ]
+      }
+    },
+    "black_belt_eddie": {
+      "name": {
+        "en": [
+          "Eddie"
+        ],
+        "text": [
+          "Eddie"
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Eddie: The old man and I spar in this cave from dawn till dusk! Fresh opponents are a treat!"
+        ],
+        "text": [
+          "Centură Neagră Eddie: Bătrânul și cu mine ne antrenăm în peștera asta din zori până-n seară! Adversarii noi sunt un deliciu!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Eddie: A treat! Even beaten, a treat!"
+        ],
+        "text": [
+          "Centură Neagră Eddie: Un deliciu! Chiar și învins, un deliciu!"
+        ]
+      }
+    },
+    "veteran_terrell": {
+      "name": {
+        "en": [
+          "Terrell"
+        ],
+        "text": [
+          "Terrell"
+        ]
+      },
+      "before": {
+        "en": [
+          "Veteran Terrell: The lad has the muscle and I have the years. Let me show you which counts for more."
+        ],
+        "text": [
+          "Veteran Terrell: Flăcăul are mușchii, iar eu am anii. Lasă-mă să-ți arăt ce contează mai mult."
+        ]
+      },
+      "after": {
+        "en": [
+          "Veteran Terrell: Neither, against you. Well fought."
+        ],
+        "text": [
+          "Veteran Terrell: Niciuna, contra ta. Bine luptat."
+        ]
+      }
+    },
+    "ace_trainer_arthur": {
+      "name": {
+        "en": [
+          "Arthur"
+        ],
+        "text": [
+          "Arthur"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Arthur: Past here it's daylight and Route 224. You'll have to earn the fresh air!"
+        ],
+        "text": [
+          "Antrenor As Arthur: Dincolo de aici e lumina zilei și Ruta 224. Va trebui să-ți câștigi aerul curat!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Arthur: Earned. Breathe deep when you get out there."
+        ],
+        "text": [
+          "Antrenor As Arthur: Câștigat. Respiră adânc când ajungi afară."
+        ]
+      }
+    },
+    "ace_trainer_clarice": {
+      "name": {
+        "en": [
+          "Clarice"
+        ],
+        "text": [
+          "Clarice"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Clarice: Poison, fire and steel. Arthur says my team makes no sense. Does it have to?"
+        ],
+        "text": [
+          "Antrenor As Clarice: Otravă, foc și oțel. Arthur zice că echipa mea n-are niciun sens. Trebuie să aibă?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Clarice: Perhaps it does have to."
+        ],
+        "text": [
+          "Antrenor As Clarice: Poate că trebuie, totuși."
+        ]
+      }
+    },
+    "psychic_deandre": {
+      "name": {
+        "en": [
+          "Deandre"
+        ],
+        "text": [
+          "Deandre"
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Deandre: Something followed me into this cave years ago, and never left my side. Would you like to meet it?"
+        ],
+        "text": [
+          "Medium Deandre: Ceva m-a urmat în peștera asta acum mulți ani și nu m-a mai părăsit. Vrei să-l cunoști?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Deandre: It liked you. That is rare."
+        ],
+        "text": [
+          "Medium Deandre: I-ai plăcut. Asta e rar."
+        ]
+      }
+    },
+    "psychic_kendra": {
+      "name": {
+        "en": [
+          "Kendra"
+        ],
+        "text": [
+          "Kendra"
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Kendra: Did you hear a bell just now? No? Then it rang for you. Battle me!"
+        ],
+        "text": [
+          "Medium Kendra: Ai auzit adineauri un clopot? Nu? Atunci a sunat pentru tine. Luptă-te cu mine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Kendra: The bell has stopped. So have I."
+        ],
+        "text": [
+          "Medium Kendra: Clopotul s-a oprit. Și eu la fel."
+        ]
+      }
+    },
+    "bird_keeper_autumn": {
+      "name": {
+        "en": [
+          "Autumn"
+        ],
+        "text": [
+          "Autumn"
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Autumn: My birds don't mind the dark. They were night birds long before I caught them!"
+        ],
+        "text": [
+          "Crescător de păsări Autumn: Păsărilor mele nu le pasă de întuneric. Erau păsări de noapte cu mult înainte să le prind!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Autumn: Even night birds have their off nights."
+        ],
+        "text": [
+          "Crescător de păsări Autumn: Chiar și păsările de noapte au nopțile lor proaste."
+        ]
+      }
+    },
+    "dragon_tamer_joe": {
+      "name": {
+        "en": [
+          "Joe"
+        ],
+        "text": [
+          "Joe"
+        ]
+      },
+      "before": {
+        "en": [
+          "Dragon Tamer Joe: A cave this deep is just where a dragon ought to live. I've brought two!"
+        ],
+        "text": [
+          "Îmblânzitor de dragoni Joe: O peșteră atât de adâncă e exact locul în care ar trebui să trăiască un dragon. Am adus doi!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Dragon Tamer Joe: Two dragons down. I'm going to need a deeper cave."
+        ],
+        "text": [
+          "Îmblânzitor de dragoni Joe: Doi dragoni doborâți. O să-mi trebuiască o peșteră mai adâncă."
+        ]
+      }
+    },
+    "black_belt_willie": {
+      "name": {
+        "en": [
+          "Willie"
+        ],
+        "text": [
+          "Willie"
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Willie: I punch this rock a thousand times a day! It hasn't broken yet! Will you?"
+        ],
+        "text": [
+          "Centură Neagră Willie: Lovesc stânca asta de o mie de ori pe zi! Încă nu s-a spart! Tu te spargi?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Willie: You're harder than the rock!"
+        ],
+        "text": [
+          "Centură Neagră Willie: Ești mai tare decât stânca!"
+        ]
+      }
+    },
+    "veteran_brenden": {
+      "name": {
+        "en": [
+          "Brenden"
+        ],
+        "text": [
+          "Brenden"
+        ]
+      },
+      "before": {
+        "en": [
+          "Veteran Brenden: Shell, scale and hide. My three have stood in this passage longer than you've been a trainer."
+        ],
+        "text": [
+          "Veteran Brenden: Carapace, solzi și piele groasă. Cei trei ai mei stau în pasajul ăsta de mai mult timp decât ești tu Antrenor."
+        ]
+      },
+      "after": {
+        "en": [
+          "Veteran Brenden: And now they'll stand aside. Go on through."
+        ],
+        "text": [
+          "Veteran Brenden: Iar acum se dau la o parte. Treci."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

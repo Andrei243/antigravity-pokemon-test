@@ -1,0 +1,91 @@
+{
+  "displayName": {
+    "en": [
+      "Pal Park"
+    ],
+    "text": [
+      "Pal Park"
+    ]
+  },
+  "people": {
+    "worker": {
+      "name": {
+        "en": [
+          "Park Attendant"
+        ],
+        "text": [
+          "Îngrijitorul Parcului"
+        ]
+      }
+    },
+    "4,8": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "pokemon_breeder_m": {
+      "name": {
+        "en": [
+          "Breeder"
+        ],
+        "text": [
+          "Crescătorul"
+        ]
+      }
+    },
+    "lass_1": {
+      "name": {
+        "en": [
+          "Lass"
+        ],
+        "text": [
+          "Domnișoara"
+        ]
+      }
+    },
+    "beauty": {
+      "name": {
+        "en": [
+          "Beauty"
+        ],
+        "text": [
+          "Frumoasa"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The rare ones take so long to come out! I've walked that grass until my feet ached.",
+          "They say the rarer the Pokémon, the better the show's score. I suppose it's only fair."
+        ],
+        "text": [
+          "Cei rari ies atât de greu! Am bătut iarba aia până m-au durut picioarele.",
+          "Se zice că cu cât e mai rar Pokémonul, cu atât scorul spectacolului e mai bun. Cred că e corect."
+        ]
+      }
+    },
+    "prof_oak": {
+      "name": {
+        "en": [
+          "Prof. Oak"
+        ],
+        "text": [
+          "Prof. Oak"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Prof. Oak: Ah, {player}!"
+        ],
+        "text": [
+          "Prof. Oak: A, {player}!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

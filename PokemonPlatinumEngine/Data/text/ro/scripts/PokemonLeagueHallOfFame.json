@@ -1,0 +1,132 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Professor Rowan"
+      ],
+      "text": [
+        "Profesorul Rowan"
+      ]
+    },
+    {
+      "en": [
+        "Hm... It has been a very long time since I last set foot in this room."
+      ],
+      "text": [
+        "Hm... A trecut foarte mult timp de când n-am mai pus piciorul în camera asta."
+      ]
+    },
+    {
+      "en": [
+        "Cynthia"
+      ],
+      "text": [
+        "Cynthia"
+      ]
+    },
+    {
+      "en": [
+        "If the last time was the day I became Champion, Professor, then it has been a long time indeed."
+      ],
+      "text": [
+        "Dacă ultima dată a fost ziua în care am devenit Campioană, Profesore, atunci chiar a trecut mult timp."
+      ]
+    },
+    {
+      "en": [
+        "Professor Rowan"
+      ],
+      "text": [
+        "Profesorul Rowan"
+      ]
+    },
+    {
+      "en": [
+        "However often I come in here, I catch myself standing a little straighter than I do anywhere else."
+      ],
+      "text": [
+        "Oricât de des aș veni aici, mă surprind stând un pic mai drept decât oriunde altundeva."
+      ]
+    },
+    {
+      "en": [
+        "Cynthia"
+      ],
+      "text": [
+        "Cynthia"
+      ]
+    },
+    {
+      "en": [
+        "So does everyone, Professor. Everything Pokémon and their Trainers have hoped for and fought for is kept in this room. It asks no less of whoever walks into it."
+      ],
+      "text": [
+        "La fel toată lumea, Profesore. Tot ce au sperat și pentru ce au luptat Pokémonii și Antrenorii lor e păstrat în camera asta. Nu cere mai puțin celui care intră în ea."
+      ]
+    },
+    {
+      "en": [
+        "Cynthia"
+      ],
+      "text": [
+        "Cynthia"
+      ]
+    },
+    {
+      "en": [
+        "{player}. Welcome to the Hall of Fame."
+      ],
+      "text": [
+        "{player}. Bine ai venit în Sala Faimei."
+      ]
+    },
+    {
+      "en": [
+        "Here your names are kept for good: your own, and those of the Pokémon who came all this way beside you."
+      ],
+      "text": [
+        "Aici numele voastre sunt păstrate pentru totdeauna: al tău și ale Pokémonilor care au venit până aici alături de tine."
+      ]
+    },
+    {
+      "en": [
+        "What you leave in this room is the memory of your journey so far."
+      ],
+      "text": [
+        "Ce lași în camera asta e amintirea drumului tău de până acum."
+      ]
+    },
+    {
+      "en": [
+        "Think of them as you do it. They are your partners. They grew as you grew, through one hard battle after another."
+      ],
+      "text": [
+        "Gândește-te la ei când o faci. Sunt partenerii tăi. Au crescut odată cu tine, printr-o luptă grea după alta."
+      ]
+    },
+    {
+      "en": [
+        "Now, {player}. This machine will make a lasting record of what you have done together."
+      ],
+      "text": [
+        "Acum, {player}. Mașina asta va face o înregistrare de durată a ceea ce ați făcut împreună."
+      ]
+    },
+    {
+      "en": [
+        "{player} saved the game."
+      ],
+      "text": [
+        "{player} a salvat jocul."
+      ]
+    },
+    {
+      "en": [
+        "The game could not be saved."
+      ],
+      "text": [
+        "Jocul nu a putut fi salvat."
+      ]
+    }
+  ]
+}

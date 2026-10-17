@@ -1,0 +1,230 @@
+{
+  "people": {
+    "ace_trainer_rodolfo": {
+      "name": {
+        "en": [
+          "Rodolfo"
+        ],
+        "text": [
+          "Rodolfo"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Rodolfo: Back and forth along this ledge, all day long. Nobody gets up the hill without going through me!"
+        ],
+        "text": [
+          "Antrenor As Rodolfo: Înainte și înapoi pe pervazul ăsta, toată ziua. Nimeni nu urcă dealul fără să treacă de mine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Rodolfo: Up you go, then. Mind the drop."
+        ],
+        "text": [
+          "Antrenor As Rodolfo: Urcă, atunci. Ai grijă la prăpastie."
+        ]
+      }
+    },
+    "ranger_ashlee": {
+      "name": {
+        "en": [
+          "Ashlee"
+        ],
+        "text": [
+          "Ashlee"
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokémon Ranger Ashlee: Careful where you tread! These woods belong to the Pokémon. We're only passing through."
+        ],
+        "text": [
+          "Ranger Pokémon Ashlee: Ai grijă pe unde calci! Pădurea asta e a Pokémonilor. Noi doar trecem prin ea."
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokémon Ranger Ashlee: You fight hard and you fight fair. The woods can spare you a path."
+        ],
+        "text": [
+          "Ranger Pokémon Ashlee: Lupți tare și lupți cinstit. Pădurea îți poate face loc de o potecă."
+        ]
+      }
+    },
+    "bird_keeper_audrey": {
+      "name": {
+        "en": [
+          "Audrey"
+        ],
+        "text": [
+          "Audrey"
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Audrey: The sea wind climbs these cliffs and my birds ride it for hours. Come and see how high!"
+        ],
+        "text": [
+          "Crescător de păsări Audrey: Vântul mării urcă stâncile astea, iar păsările mele plutesc pe el ore întregi. Vino să vezi cât de sus!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Audrey: Brought down to earth. It's a long way to fall."
+        ],
+        "text": [
+          "Crescător de păsări Audrey: Adusă cu picioarele pe pământ. E mult de căzut."
+        ]
+      }
+    },
+    "psychic_daisy": {
+      "name": {
+        "en": [
+          "Daisy"
+        ],
+        "text": [
+          "Daisy"
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Daisy: My Pokémon are slow. So slow! But they've already thought of everything you're about to do."
+        ],
+        "text": [
+          "Medium Daisy: Pokémonii mei sunt lenți. Atât de lenți! Dar s-au gândit deja la tot ce urmează să faci."
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Daisy: ...Everything except that."
+        ],
+        "text": [
+          "Medium Daisy: ...La tot, în afară de asta."
+        ]
+      }
+    },
+    "dragon_tamer_geoffrey": {
+      "name": {
+        "en": [
+          "Geoffrey"
+        ],
+        "text": [
+          "Geoffrey"
+        ]
+      },
+      "before": {
+        "en": [
+          "Dragon Tamer Geoffrey: Dragons don't obey just anybody. Mine obey me! Mostly!"
+        ],
+        "text": [
+          "Îmblânzitor de dragoni Geoffrey: Dragonii nu ascultă de oricine. Ai mei ascultă de mine! În mare parte!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Dragon Tamer Geoffrey: Mostly wasn't enough today."
+        ],
+        "text": [
+          "Îmblânzitor de dragoni Geoffrey: În mare parte n-a fost destul azi."
+        ]
+      }
+    },
+    "ace_trainer_deanna": {
+      "name": {
+        "en": [
+          "Deanna"
+        ],
+        "text": [
+          "Deanna"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Deanna: The Survival Area is just over the rise. Let's find out whether you'd survive it!"
+        ],
+        "text": [
+          "Antrenor As Deanna: Zona de Supraviețuire e chiar după deal. Hai să vedem dacă i-ai supraviețui!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Deanna: You'll do. Tell them Deanna sent you."
+        ],
+        "text": [
+          "Antrenor As Deanna: Te descurci. Spune-le că te-a trimis Deanna."
+        ]
+      }
+    },
+    "ranger_dwayne": {
+      "name": {
+        "en": [
+          "Dwayne"
+        ],
+        "text": [
+          "Dwayne"
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokémon Ranger Dwayne: I walk this whole wood twice a day, looking after every Pokémon in it. You're next on my round!"
+        ],
+        "text": [
+          "Ranger Pokémon Dwayne: Străbat toată pădurea asta de două ori pe zi, având grijă de fiecare Pokémon din ea. Tu urmezi pe lista mea!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokémon Ranger Dwayne: Nothing wrong with your team. I'll make a note of it."
+        ],
+        "text": [
+          "Ranger Pokémon Dwayne: Nimic în neregulă cu echipa ta. O să notez asta."
+        ]
+      }
+    },
+    "ace_trainer_quinn": {
+      "name": {
+        "en": [
+          "Quinn"
+        ],
+        "text": [
+          "Quinn"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Quinn: I've lost to everybody in the Battle Zone once. I don't lose to anybody twice. You're new, aren't you?"
+        ],
+        "text": [
+          "Antrenor As Quinn: Am pierdut o dată în fața tuturor din Ținutul Luptelor. Nu pierd de două ori în fața nimănui. E prima oară când te văd, nu?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Quinn: That's once. Come back and try me again."
+        ],
+        "text": [
+          "Antrenor As Quinn: Asta a fost o dată. Revino și mai încearcă."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost_fight_area": {
+      "en": [
+        "Rt. 225\nSouth: Fight Area"
+      ],
+      "text": [
+        "Ruta 225\nSud: Zona de Luptă"
+      ]
+    },
+    "arrow_signpost_surival_area": {
+      "en": [
+        "Rt. 225\nEast: Survival Area"
+      ],
+      "text": [
+        "Ruta 225\nEst: Zona de Supraviețuire"
+      ]
+    }
+  }
+}

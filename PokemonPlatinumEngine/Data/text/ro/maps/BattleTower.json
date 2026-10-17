@@ -1,0 +1,180 @@
+{
+  "displayName": {
+    "en": [
+      "Battle Tower"
+    ],
+    "text": [
+      "Battle Tower"
+    ]
+  },
+  "people": {
+    "single_attendant": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      }
+    },
+    "multi_attendant": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      }
+    },
+    "wifi_attendant": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      }
+    },
+    "teala": {
+      "name": {
+        "en": [
+          "Teala"
+        ],
+        "text": [
+          "Teala"
+        ]
+      }
+    },
+    "artist": {
+      "name": {
+        "en": [
+          "Artist"
+        ],
+        "text": [
+          "Artistul"
+        ]
+      }
+    },
+    "jogger": {
+      "name": {
+        "en": [
+          "Jogger"
+        ],
+        "text": [
+          "Alergătorul"
+        ]
+      }
+    },
+    "idol": {
+      "name": {
+        "en": [
+          "Idol"
+        ],
+        "text": [
+          "Idolul"
+        ]
+      }
+    },
+    "rich_boy": {
+      "name": {
+        "en": [
+          "Rich Boy"
+        ],
+        "text": [
+          "Băiat bogat"
+        ]
+      }
+    },
+    "pikachu_1": {
+      "name": {
+        "en": [
+          "Pikachu"
+        ],
+        "text": [
+          "Pikachu"
+        ]
+      }
+    },
+    "pikachu_2": {
+      "name": {
+        "en": [
+          "Pikachu"
+        ],
+        "text": [
+          "Pikachu"
+        ]
+      }
+    },
+    "school_kid_m_1": {
+      "name": {
+        "en": [
+          "School Kid"
+        ],
+        "text": [
+          "Școlărița"
+        ]
+      }
+    },
+    "parasol_lady": {
+      "name": {
+        "en": [
+          "Parasol Lady"
+        ],
+        "text": [
+          "Doamna cu umbrelă"
+        ]
+      }
+    },
+    "school_kid_m_2": {
+      "name": {
+        "en": [
+          "School Kid"
+        ],
+        "text": [
+          "Școlărița"
+        ]
+      }
+    },
+    "stats_judge": {
+      "name": {
+        "en": [
+          "Judge"
+        ],
+        "text": [
+          "Judecătorul"
+        ]
+      }
+    },
+    "22,6": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "23,5": {
+      "en": [
+        "A map of the Battle Frontier hangs here: the tower at the top, the four halls round the plaza."
+      ],
+      "text": [
+        "Aici atârnă o hartă a Battle Frontier: turnul în capăt, cele patru săli în jurul pieței."
+      ]
+    },
+    "24,5": {
+      "en": [
+        "A map of the Battle Frontier hangs here: the tower at the top, the four halls round the plaza."
+      ],
+      "text": [
+        "Aici atârnă o hartă a Battle Frontier: turnul în capăt, cele patru săli în jurul pieței."
+      ]
+    }
+  }
+}

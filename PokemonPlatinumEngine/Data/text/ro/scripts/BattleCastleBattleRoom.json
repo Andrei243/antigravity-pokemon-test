@@ -1,0 +1,150 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Battle no. {number}. {foe} comes forward!"
+      ],
+      "text": [
+        "Lupta nr. {number}. {foe} pășește înainte!"
+      ]
+    },
+    {
+      "en": [
+        "A good effort. Her ladyship sends these Castle Points."
+      ],
+      "text": [
+        "Un efort bun. Stăpâna îți trimite aceste Puncte de Castel."
+      ]
+    },
+    {
+      "en": [
+        "A flawless victory! Her ladyship is delighted, and sends these Castle Points with her compliments."
+      ],
+      "text": [
+        "O victorie fără cusur! Stăpâna e încântată și îți trimite aceste Puncte de Castel, cu complimente."
+      ]
+    },
+    {
+      "en": [
+        "A remarkable victory. Her ladyship is most pleased, and sends these Castle Points."
+      ],
+      "text": [
+        "O victorie remarcabilă. Stăpâna e foarte mulțumită și îți trimite aceste Puncte de Castel."
+      ]
+    },
+    {
+      "en": [
+        "A hard-fought victory. Her ladyship sends these Castle Points."
+      ],
+      "text": [
+        "O victorie grea. Stăpâna îți trimite aceste Puncte de Castel."
+      ]
+    },
+    {
+      "en": [
+        "{player} received {number} Castle Points!"
+      ],
+      "text": [
+        "{player} a primit {number} Puncte de Castel!"
+      ]
+    },
+    {
+      "en": [
+        "Darach"
+      ],
+      "text": [
+        "Darach"
+      ]
+    },
+    {
+      "en": [
+        "I am Darach, valet to the lady of this castle. Twenty battles, and not one of them careless. Her ladyship has noticed."
+      ],
+      "text": [
+        "Sunt Darach, valetul stăpânei acestui castel. Douăzeci de lupte, și niciuna neglijentă. Stăpâna a observat."
+      ]
+    },
+    {
+      "en": [
+        "She has asked me to see for her what you are made of. I do not disappoint her ladyship. En garde!"
+      ],
+      "text": [
+        "M-a rugat să văd în locul ei ce poți. Eu nu o dezamăgesc pe stăpână. În gardă!"
+      ]
+    },
+    {
+      "en": [
+        "We meet again, {player}. Forty-eight battles. Her ladyship has spoken of little else."
+      ],
+      "text": [
+        "Ne revedem, {player}. Patruzeci și opt de lupte. Stăpâna aproape că nu mai vorbește despre altceva."
+      ]
+    },
+    {
+      "en": [
+        "I shall hold nothing in reserve, and I trust that you will not insult me by doing otherwise."
+      ],
+      "text": [
+        "Nu voi păstra nimic în rezervă și am încredere că nu mă vei insulta făcând altfel."
+      ]
+    },
+    {
+      "en": [
+        "Darach"
+      ],
+      "text": [
+        "Darach"
+      ]
+    },
+    {
+      "en": [
+        "...Admirably done. I shall have to tell her ladyship that I was outmatched, and I find I do not mind in the least."
+      ],
+      "text": [
+        "...Admirabil. Va trebui să-i spun stăpânei că am fost depășit, și constat că nu mă deranjează deloc."
+      ]
+    },
+    {
+      "en": [
+        "Darach"
+      ],
+      "text": [
+        "Darach"
+      ]
+    },
+    {
+      "en": [
+        "There is nothing left that I could have done. You plan as a valet plans, and you battle as a champion battles."
+      ],
+      "text": [
+        "N-a mai rămas nimic ce aș fi putut face. Plănuiești ca un valet și lupți ca un campion."
+      ]
+    },
+    {
+      "en": [
+        "It has been an honour, {player}. Her ladyship is smiling. I can tell without looking."
+      ],
+      "text": [
+        "A fost o onoare, {player}. Stăpâna zâmbește. Îmi dau seama fără să mă uit."
+      ]
+    },
+    {
+      "en": [
+        "{player} presented a pass. Her ladyship inclines her head, and the battle is not held."
+      ],
+      "text": [
+        "{player} a prezentat un permis. Stăpâna înclină capul, și lupta nu se mai ține."
+      ]
+    }
+  ],
+  "ValetIn": [
+    {
+      "en": [
+        "Valet"
+      ],
+      "text": [
+        "Valet"
+      ]
+    }
+  ]
+}

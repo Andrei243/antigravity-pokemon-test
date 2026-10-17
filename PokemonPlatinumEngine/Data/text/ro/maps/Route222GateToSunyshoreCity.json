@@ -1,0 +1,70 @@
+{
+  "displayName": {
+    "en": [
+      "Route 222"
+    ],
+    "text": [
+      "Ruta 222"
+    ]
+  },
+  "people": {
+    "worker": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          "Muncitorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "If I had to sum up Sunyshore's Gym in one word, it'd be...",
+          "Shockingly electric! Hang on, that's two words."
+        ],
+        "text": [
+          "Dacă ar trebui să descriu Arena din Sunyshore într-un cuvânt, ar fi...",
+          "Șocant de electrică! Stai, astea-s două cuvinte."
+        ]
+      }
+    },
+    "pokefan_m": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "They say Volkner, Sunyshore's Gym Leader, has been bored stiff lately.",
+          "What he needs is a challenger tough enough to wake him up. Idle hands get up to mischief!"
+        ],
+        "text": [
+          "Se zice că Volkner, Liderul de Arenă din Sunyshore, se plictisește de moarte în ultima vreme.",
+          "Îi trebuie un provocator destul de dur să-l trezească. Mâinile care stau degeaba fac numai pozne!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "5,4": {
+      "en": [
+        "A map of Sinnoh. Sunyshore City lies east of here, and Route 222 runs west along the shore toward Valor Lakefront."
+      ],
+      "text": [
+        "O hartă a Sinnoh-ului. Orașul Sunyshore e la est de aici, iar Ruta 222 merge spre vest de-a lungul țărmului, spre Malul Valor."
+      ]
+    },
+    "6,4": {
+      "en": [
+        "A map of Sinnoh. Sunyshore City lies east of here, and Route 222 runs west along the shore toward Valor Lakefront."
+      ],
+      "text": [
+        "O hartă a Sinnoh-ului. Orașul Sunyshore e la est de aici, iar Ruta 222 merge spre vest de-a lungul țărmului, spre Malul Valor."
+      ]
+    }
+  }
+}

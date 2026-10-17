@@ -1,0 +1,79 @@
+{
+  "displayName": {
+    "en": [
+      "Ribbon Syndicate"
+    ],
+    "text": [
+      "Ribbon Syndicate"
+    ]
+  },
+  "people": {
+    "receptionist_1": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "No guest of ours ever sets eyes on another, and neither do their Pokémon.",
+          "That way every one of them can let go and rest."
+        ],
+        "text": [
+          "Niciun oaspete al nostru nu-l vede vreodată pe altul, și nici Pokémonii lor.",
+          "Așa fiecare se poate relaxa și odihni."
+        ]
+      }
+    },
+    "receptionist_2": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Ours is a most exclusive service. We see five members a day, and not one more."
+        ],
+        "text": [
+          "Al nostru e un serviciu foarte exclusivist. Primim cinci membri pe zi, nici unul în plus."
+        ]
+      }
+    },
+    "receptionist_3": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      }
+    },
+    "receptionist_4": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Our members leave us closer to their Pokémon than they came. We are rather known for it."
+        ],
+        "text": [
+          "Membrii noștri pleacă mai apropiați de Pokémonii lor decât au venit. Suntem destul de cunoscuți pentru asta."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

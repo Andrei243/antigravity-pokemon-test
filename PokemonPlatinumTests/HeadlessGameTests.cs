@@ -132,6 +132,38 @@ public class HeadlessGameTests
     }
 
     [Fact]
+    public void TheSignOverTheFieldNamesTheAreaInTheChosenLanguage()
+    {
+        // Plan 17 · N6b, slice 4: walking into an area showed its English name under every language
+        string folder = Path.Combine(Path.GetTempPath(), "headless-" + Guid.NewGuid().ToString("N"));
+        Directory.CreateDirectory(folder);
+        var paths = SavePaths.Current;
+        try
+        {
+            SavePaths.Current = SavePaths.In(folder);
+            Dice.Seed(12);
+            var engine = Headless();
+            var game = engine.Drive;
+            engine.NewGameRegion = "Sinnoh";
+            engine.StartNewGame();
+            StoryMigration.PastTheOpening(game.Story, ScriptLibrary.Default);
+            var sinnoh = MapDatabase.Get("Sinnoh");
+            game.Place(sinnoh, 116, 886, Direction.Right);
+            Text.Use("ro");
+            game.EnterArea();
+            Assert.Equal("Orășelul Twinleaf", game.LocationSign.Name);
+        }
+        finally
+        {
+            Text.Use(Text.English);
+            Dice.Seed(null);
+            Ruleset.Use(RulesPreset.Platinum);
+            SavePaths.Current = paths;
+            try { Directory.Delete(folder, recursive: true); } catch (IOException) { }
+        }
+    }
+
+    [Fact]
     public void AGameWithNoWindowRefusesToDraw()
     {
         var engine = new GameEngine(new GameSettings());

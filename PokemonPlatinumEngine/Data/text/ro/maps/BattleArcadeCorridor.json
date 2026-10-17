@@ -1,0 +1,64 @@
+{
+  "displayName": {
+    "en": [
+      "Battle Arcade"
+    ],
+    "text": [
+      "Battle Arcade"
+    ]
+  },
+  "people": {
+    "attendant": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "7,3": {
+      "en": [
+        "A screen full of coloured lights. They chase one another round and round."
+      ],
+      "text": [
+        "Un ecran plin de lumini colorate. Se urmăresc unele pe altele, în cerc, la nesfârșit."
+      ]
+    },
+    "8,3": {
+      "en": [
+        "A screen full of coloured lights. They chase one another round and round."
+      ],
+      "text": [
+        "Un ecran plin de lumini colorate. Se urmăresc unele pe altele, în cerc, la nesfârșit."
+      ]
+    },
+    "10,3": {
+      "en": [
+        "A screen full of coloured lights. They chase one another round and round."
+      ],
+      "text": [
+        "Un ecran plin de lumini colorate. Se urmăresc unele pe altele, în cerc, la nesfârșit."
+      ]
+    },
+    "11,3": {
+      "en": [
+        "A screen full of coloured lights. They chase one another round and round."
+      ],
+      "text": [
+        "Un ecran plin de lumini colorate. Se urmăresc unele pe altele, în cerc, la nesfârșit."
+      ]
+    }
+  }
+}

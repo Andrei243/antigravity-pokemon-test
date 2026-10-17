@@ -1,0 +1,208 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Valet"
+      ],
+      "text": [
+        "Valet"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Battle Castle. I am to see that you want for nothing, within reason."
+      ],
+      "text": [
+        "Bine ai venit la Battle Castle. Am grijă să nu-ți lipsească nimic, în limita bunului-simț."
+      ]
+    },
+    {
+      "en": [
+        "By her ladyship's rule, whatever your Pokémon hold is kept at the door until you leave, and nothing is restored between battles."
+      ],
+      "text": [
+        "După regula stăpânei, ce țin Pokémonii tăi e păstrat la intrare până pleci, iar nimic nu se reface între lupte."
+      ]
+    },
+    {
+      "en": [
+        "What you need, you earn. A battle won with care is rewarded in Castle Points, and Castle Points are what I answer to."
+      ],
+      "text": [
+        "Ce-ți trebuie, câștigi. O luptă câștigată cu grijă e răsplătită cu Puncte de Castel, iar eu răspund la Puncte de Castel."
+      ]
+    },
+    {
+      "en": [
+        "Welcome back, {player}. Whatever your Pokémon held is in safe keeping, as before."
+      ],
+      "text": [
+        "Bine ai revenit, {player}. Ce țineau Pokémonii tăi e păstrat în siguranță, ca înainte."
+      ]
+    },
+    {
+      "en": [
+        "From this round on you may pass a battle altogether, for fifty Castle Points. It counts as won, though it earns you nothing."
+      ],
+      "text": [
+        "Din runda asta poți sări cu totul peste o luptă, pentru cincizeci de Puncte de Castel. Se socotește câștigată, deși nu-ți aduce nimic."
+      ]
+    },
+    {
+      "en": [
+        "How may I be of service?"
+      ],
+      "text": [
+        "Cu ce te pot servi?"
+      ]
+    },
+    {
+      "en": [
+        "You have {cp} Castle Points.",
+        "BATTLE",
+        "MY POKéMON",
+        "THE OPPONENT"
+      ],
+      "text": [
+        "Ai {cp} Puncte de Castel.",
+        "LUPTĂ",
+        "POKéMONII MEI",
+        "ADVERSARUL"
+      ]
+    },
+    {
+      "en": [
+        "You have {cp} Castle Points.",
+        "BATTLE",
+        "MY POKéMON",
+        "THE OPPONENT",
+        "PASS"
+      ],
+      "text": [
+        "Ai {cp} Puncte de Castel.",
+        "LUPTĂ",
+        "POKéMONII MEI",
+        "ADVERSARUL",
+        "PERMIS"
+      ]
+    },
+    {
+      "en": [
+        "Passing this battle will cost 50 Castle Points. Is that agreeable?"
+      ],
+      "text": [
+        "Să sari peste lupta asta costă 50 de Puncte de Castel. Ești de acord?"
+      ]
+    },
+    {
+      "en": [
+        "Very good. I shall make your excuses to her ladyship."
+      ],
+      "text": [
+        "Foarte bine. Îți voi prezenta scuzele stăpânei."
+      ]
+    },
+    {
+      "en": [
+        "I regret that you have not the Castle Points for it."
+      ],
+      "text": [
+        "Regret, dar nu ai destule Puncte de Castel."
+      ]
+    },
+    {
+      "en": [
+        "Then please go up. Her ladyship is waiting."
+      ],
+      "text": [
+        "Atunci te rog să urci. Stăpâna te așteaptă."
+      ]
+    },
+    {
+      "en": [
+        "The Pokémon that fainted has been brought round. I fear it has very little strength left."
+      ],
+      "text": [
+        "Pokémonul care leșinase și-a revenit. Mă tem că mai are foarte puțină putere."
+      ]
+    },
+    {
+      "en": [
+        "I should tell you, {player}: the Castle Valet himself has asked to meet you in the next battle."
+      ],
+      "text": [
+        "Trebuie să-ți spun, {player}: Valetul Castelului însuși a cerut să te întâlnească în lupta următoare."
+      ]
+    },
+    {
+      "en": [
+        "Battle no. {number} is next. Are you ready?",
+        "KEEP GOING",
+        "REST",
+        "RETIRE"
+      ],
+      "text": [
+        "Urmează lupta nr. {number}. Ești gata?",
+        "CONTINUĂ",
+        "PAUZĂ",
+        "RENUNȚĂ"
+      ]
+    },
+    {
+      "en": [
+        "How may I be of service?"
+      ],
+      "text": [
+        "Cu ce te pot servi?"
+      ]
+    },
+    {
+      "en": [
+        "You have beaten the Castle Valet. He asked that these Battle Points come to you from his own hand, and I am that hand."
+      ],
+      "text": [
+        "L-ai învins pe Valetul Castelului. A cerut ca aceste Puncte de Luptă să ajungă la tine din propria lui mână, iar eu sunt mâna aceea."
+      ]
+    },
+    {
+      "en": [
+        "Seven battles, and her ladyship well pleased. You have earned Battle Points."
+      ],
+      "text": [
+        "Șapte lupte, iar stăpâna e foarte mulțumită. Ai câștigat Puncte de Luptă."
+      ]
+    },
+    {
+      "en": [
+        "{player} received {number} BP!"
+      ],
+      "text": [
+        "{player} a primit {number} PL!"
+      ]
+    },
+    {
+      "en": [
+        "Give the challenge up? Your streak and your Castle Points will end with it."
+      ],
+      "text": [
+        "Renunți la provocare? Seria și Punctele de Castel se vor încheia odată cu ea."
+      ]
+    },
+    {
+      "en": [
+        "Put the challenge down for now? The game will be saved, and you can go on from here later."
+      ],
+      "text": [
+        "Lași provocarea deocamdată? Jocul va fi salvat și poți continua de aici mai târziu."
+      ]
+    },
+    {
+      "en": [
+        "What your Pokémon held at the door is theirs again. Thank you for your visit."
+      ],
+      "text": [
+        "Ce țineau Pokémonii tăi la intrare e iar al lor. Mulțumim pentru vizită."
+      ]
+    }
+  ]
+}

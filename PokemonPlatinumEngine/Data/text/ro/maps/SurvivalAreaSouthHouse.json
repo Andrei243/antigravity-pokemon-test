@@ -1,0 +1,23 @@
+{
+  "displayName": {
+    "en": [
+      "Survival Area"
+    ],
+    "text": [
+      "Zona de Supraviețuire"
+    ]
+  },
+  "people": {
+    "black_belt": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          "Centură Neagră"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

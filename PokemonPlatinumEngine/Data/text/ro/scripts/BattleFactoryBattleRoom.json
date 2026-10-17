@@ -1,0 +1,68 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "{foe} steps up to battle!"
+      ],
+      "text": [
+        "{foe} pășește în luptă!"
+      ]
+    },
+    {
+      "en": [
+        "Thorton"
+      ],
+      "text": [
+        "Thorton"
+      ]
+    },
+    {
+      "en": [
+        "...{rental:0}. {rental:1}. {rental:2}. So those are the three you rented."
+      ],
+      "text": [
+        "...{rental:0}. {rental:1}. {rental:2}. Deci ăștia sunt cei trei pe care i-ai împrumutat."
+      ]
+    },
+    {
+      "en": [
+        "I am Thorton, the Factory Head, and my machine has already worked this battle out. Your chance of winning: {number} per cent."
+      ],
+      "text": [
+        "Sunt Thorton, Șeful Fabricii, iar mașina mea a calculat deja lupta asta. Șansele tale de câștig: {number} la sută."
+      ]
+    },
+    {
+      "en": [
+        "{rental:0}, {rental:1} and {rental:2}. I see. You have come a long way with borrowed Pokémon."
+      ],
+      "text": [
+        "{rental:0}, {rental:1} și {rental:2}. Înțeleg. Ai ajuns departe cu Pokémoni împrumutați."
+      ]
+    },
+    {
+      "en": [
+        "My machine gives you {number} chances in a hundred. This time I have built it to be right."
+      ],
+      "text": [
+        "Mașina mea îți dă {number} șanse din o sută. De data asta am construit-o să aibă dreptate."
+      ]
+    },
+    {
+      "en": [
+        "...Error. Recalculating. No. The machine was wrong, and you were not."
+      ],
+      "text": [
+        "...Eroare. Recalculez. Nu. Mașina a greșit, iar tu nu."
+      ]
+    },
+    {
+      "en": [
+        "No machine could have told me this. What you do with a Pokémon can't be measured, and I am glad of it."
+      ],
+      "text": [
+        "Nicio mașină nu mi-ar fi putut spune asta. Ce faci cu un Pokémon nu se poate măsura, și mă bucur de asta."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "Master": [
+    {
+      "en": [
+        "Your hunger for power has brought you all the way out here...",
+        "...Very well.",
+        "Such devotion deserves moves that will take your breath away."
+      ],
+      "text": [
+        "Setea ta de putere te-a adus până aici...",
+        "...Prea bine.",
+        "O asemenea devoțiune merită mișcări care să-ți taie respirația."
+      ]
+    },
+    {
+      "en": [
+        "The ultimate moves! Shall I teach one to a Pokémon of yours?"
+      ],
+      "text": [
+        "Mișcările supreme! Să-l învăț pe unul dintre Pokémonii tăi una?"
+      ]
+    },
+    {
+      "en": [
+        "To which Pokémon shall I teach a move?"
+      ],
+      "text": [
+        "Pe care Pokémon să-l învăț o mișcare?"
+      ]
+    },
+    {
+      "en": [
+        "I am to teach {thing} to your {wearer}?"
+      ],
+      "text": [
+        "Să-l învăț {thing} pe {wearer} al tău?"
+      ]
+    },
+    {
+      "en": [
+        "One, two, and... poof! {wearer} forgot {forgotten}. And..."
+      ],
+      "text": [
+        "Unu, doi și... puf! {wearer} a uitat {forgotten}. Și..."
+      ]
+    },
+    {
+      "en": [
+        "{wearer} learned {thing}!"
+      ],
+      "text": [
+        "{wearer} a învățat {thing}!"
+      ]
+    },
+    {
+      "en": [
+        "Hmm... Well, that is your affair. Come and see me if you have a change of heart."
+      ],
+      "text": [
+        "Hmm... Ei bine, e treaba ta. Vino la mine dacă te răzgândești."
+      ]
+    },
+    {
+      "en": [
+        "Teach a move to an Egg? Not even I can do that! Keh!"
+      ],
+      "text": [
+        "Să învăț o mișcare unui Ou? Nici măcar eu nu pot face asta! Keh!"
+      ]
+    },
+    {
+      "en": [
+        "That Pokémon can't learn one of my moves! Read the poster! Keh!"
+      ],
+      "text": [
+        "Pokémonul ăla nu poate învăța una dintre mișcările mele! Citește afișul! Keh!"
+      ]
+    },
+    {
+      "en": [
+        "That Pokémon already knows the move I would teach it! Keh!"
+      ],
+      "text": [
+        "Pokémonul ăla știe deja mișcarea pe care l-aș învăța-o! Keh!"
+      ]
+    },
+    {
+      "en": [
+        "You and that Pokémon are not close enough yet! Keh!"
+      ],
+      "text": [
+        "Tu și Pokémonul ăla nu sunteți încă destul de apropiați! Keh!"
+      ]
+    },
+    {
+      "en": [
+        "{wearer} did not learn {thing}."
+      ],
+      "text": [
+        "{wearer} nu a învățat {thing}."
+      ]
+    },
+    {
+      "en": [
+        "{forgotten} isn't a move that can be given up like that. {wearer} did not learn {thing}."
+      ],
+      "text": [
+        "{forgotten} nu e o mișcare la care să se poată renunța așa. {wearer} nu a învățat {thing}."
+      ]
+    }
+  ]
+}

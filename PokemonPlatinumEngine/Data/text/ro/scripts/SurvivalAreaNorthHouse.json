@@ -1,0 +1,84 @@
+{
+  "Tutor": [
+    {
+      "en": [
+        "If you'll share your Shards with me, I can teach some moves. Would you like one taught?"
+      ],
+      "text": [
+        "Dacă împarți Cioburile cu mine, pot învăța unele mișcări. Vrei să te învăț una?"
+      ]
+    },
+    {
+      "en": [
+        "Which Pokémon should I teach?"
+      ],
+      "text": [
+        "Pe care Pokémon să-l învăț?"
+      ]
+    },
+    {
+      "en": [
+        "One, two, and... poof! {wearer} forgot {forgotten}. And..."
+      ],
+      "text": [
+        "Unu, doi și... puf! {wearer} a uitat {forgotten}. Și..."
+      ]
+    },
+    {
+      "en": [
+        "{wearer} learned {thing}!"
+      ],
+      "text": [
+        "{wearer} a învățat {thing}!"
+      ]
+    },
+    {
+      "en": [
+        "See you, then!"
+      ],
+      "text": [
+        "Pe curând, atunci!"
+      ]
+    },
+    {
+      "en": [
+        "Teach an Egg a move? That's out of my league!"
+      ],
+      "text": [
+        "Să învăț un Ou o mișcare? Asta e peste puterile mele!"
+      ]
+    },
+    {
+      "en": [
+        "There's no move of mine that this Pokémon can be taught."
+      ],
+      "text": [
+        "Nu am nicio mișcare pe care s-o poată învăța Pokémonul ăsta."
+      ]
+    },
+    {
+      "en": [
+        "You haven't enough Shards for that."
+      ],
+      "text": [
+        "Nu ai destule Cioburi pentru asta."
+      ]
+    },
+    {
+      "en": [
+        "{wearer} did not learn {thing}."
+      ],
+      "text": [
+        "{wearer} nu a învățat {thing}."
+      ]
+    },
+    {
+      "en": [
+        "{forgotten} isn't a move that can be given up like that. {wearer} did not learn {thing}."
+      ],
+      "text": [
+        "{forgotten} nu e o mișcare la care să se poată renunța așa. {wearer} nu a învățat {thing}."
+      ]
+    }
+  ]
+}

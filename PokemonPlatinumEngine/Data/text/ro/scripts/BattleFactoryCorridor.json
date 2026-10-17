@@ -1,0 +1,174 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Factory Staff"
+      ],
+      "text": [
+        "Personalul Fabricii"
+      ]
+    },
+    {
+      "en": [
+        "Now, please choose three of the six Pokémon we have made ready for you."
+      ],
+      "text": [
+        "Acum, te rog să alegi trei dintre cei șase Pokémoni pe care i-am pregătit pentru tine."
+      ]
+    },
+    {
+      "en": [
+        "Your rental Pokémon are ready. Please go in."
+      ],
+      "text": [
+        "Pokémonii tăi de împrumut sunt gata. Te rog să intri."
+      ]
+    },
+    {
+      "en": [
+        "Well done! Your Pokémon have been restored to full health."
+      ],
+      "text": [
+        "Bravo! Pokémonii tăi au fost refăcuți complet."
+      ]
+    },
+    {
+      "en": [
+        "Next is battle no. {number}. Are you ready?",
+        "KEEP GOING",
+        "REST",
+        "RETIRE"
+      ],
+      "text": [
+        "Urmează lupta nr. {number}. Ești gata?",
+        "CONTINUĂ",
+        "PAUZĂ",
+        "RENUNȚĂ"
+      ]
+    },
+    {
+      "en": [
+        "Would you like to trade one of your Pokémon for one of those you have just beaten?"
+      ],
+      "text": [
+        "Vrei să schimbi unul dintre Pokémonii tăi cu unul dintre cei pe care tocmai i-ai învins?"
+      ]
+    },
+    {
+      "en": [
+        "Then please go in."
+      ],
+      "text": [
+        "Atunci te rog să intri."
+      ]
+    },
+    {
+      "en": [
+        "You have beaten the Factory Head! He asked that these Battle Points be given to you himself."
+      ],
+      "text": [
+        "L-ai învins pe Șeful Fabricii! A cerut ca aceste Puncte de Luptă să-ți fie date chiar de el."
+      ]
+    },
+    {
+      "en": [
+        "Congratulations! Seven wins in a row. You have earned Battle Points."
+      ],
+      "text": [
+        "Felicitări! Șapte victorii la rând. Ai câștigat Puncte de Luptă."
+      ]
+    },
+    {
+      "en": [
+        "{player} received {number} BP!"
+      ],
+      "text": [
+        "{player} a primit {number} PL!"
+      ]
+    },
+    {
+      "en": [
+        "Give the challenge up and hand your rental Pokémon back?"
+      ],
+      "text": [
+        "Renunți la provocare și dai înapoi Pokémonii de împrumut?"
+      ]
+    },
+    {
+      "en": [
+        "Put the challenge down for now? The game will be saved, and you can go on from here later."
+      ],
+      "text": [
+        "Lași provocarea deocamdată? Jocul va fi salvat și poți continua de aici mai târziu."
+      ]
+    },
+    {
+      "en": [
+        "Thank you. We will look after the rental Pokémon from here."
+      ],
+      "text": [
+        "Mulțumim. De aici avem noi grijă de Pokémonii de împrumut."
+      ]
+    }
+  ],
+  "Hint": [
+    {
+      "en": [
+        "I can tell you about the next trainer. Their Pokémon are {hint:0}, {hint:1} and {hint:2}."
+      ],
+      "text": [
+        "Pot să-ți spun ceva despre următorul Antrenor. Pokémonii lui sunt {hint:0}, {hint:1} și {hint:2}."
+      ]
+    },
+    {
+      "en": [
+        "I can tell you about the next trainer. Two of their Pokémon are {hint:0} and {hint:1}."
+      ],
+      "text": [
+        "Pot să-ți spun ceva despre următorul Antrenor. Doi dintre Pokémonii lui sunt {hint:0} și {hint:1}."
+      ]
+    },
+    {
+      "en": [
+        "I can tell you about the next trainer. The first Pokémon you will meet is {hint:0}, and it knows {hint:1}."
+      ],
+      "text": [
+        "Pot să-ți spun ceva despre următorul Antrenor. Primul Pokémon pe care îl vei întâlni e {hint:0} și știe {hint:1}."
+      ]
+    },
+    {
+      "en": [
+        "I can tell you this much about the next trainer: their first Pokémon knows {hint:0}."
+      ],
+      "text": [
+        "Atât pot să-ți spun despre următorul Antrenor: primul lui Pokémon știe {hint:0}."
+      ]
+    },
+    {
+      "en": [
+        "I can tell you this much about the next trainer: they are fond of the {hint:0} type."
+      ],
+      "text": [
+        "Atât pot să-ți spun despre următorul Antrenor: îi place tipul {hint:0}."
+      ]
+    },
+    {
+      "en": [
+        "I can tell you this much about the next trainer: their Pokémon have no type in common."
+      ],
+      "text": [
+        "Atât pot să-ți spun despre următorul Antrenor: Pokémonii lui nu au niciun tip în comun."
+      ]
+    }
+  ],
+  "HeadComes": [
+    {
+      "en": [
+        "Please be on your guard. The Factory Head himself has come down to meet you!"
+      ],
+      "text": [
+        "Te rog să fii în gardă. Șeful Fabricii însuși a coborât să te întâlnească!"
+      ]
+    }
+  ]
+}

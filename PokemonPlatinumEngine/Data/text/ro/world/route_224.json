@@ -1,0 +1,213 @@
+{
+  "people": {
+    "ace_trainer_ruben": {
+      "name": {
+        "en": [
+          "Ruben"
+        ],
+        "text": [
+          "Ruben"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Ruben: Out of the cave at last! Don't relax yet: this side of Victory Road is harder than the other."
+        ],
+        "text": [
+          "Antrenor As Ruben: În sfârșit afară din peșteră! Nu te relaxa încă: partea asta a Drumului Victoriei e mai grea decât cealaltă."
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Ruben: Harder for me than for you, it seems."
+        ],
+        "text": [
+          "Antrenor As Ruben: Mai grea pentru mine decât pentru tine, se pare."
+        ]
+      }
+    },
+    "psychic_maxwell": {
+      "name": {
+        "en": [
+          "Maxwell"
+        ],
+        "text": [
+          "Maxwell"
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Maxwell: Shh. The spirits of this headland were whispering about you just now."
+        ],
+        "text": [
+          "Medium Maxwell: Șșt. Spiritele promontoriului ăstuia șopteau despre tine adineauri."
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Maxwell: They whispered that I would lose. I had hoped they were joking."
+        ],
+        "text": [
+          "Medium Maxwell: Șopteau că voi pierde. Speram că glumesc."
+        ]
+      }
+    },
+    "black_belt_carl": {
+      "name": {
+        "en": [
+          "Carl"
+        ],
+        "text": [
+          "Carl"
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Carl: A hundred laps of this meadow before lunch! You've wandered onto my track!"
+        ],
+        "text": [
+          "Centură Neagră Carl: O sută de ture ale pajiștii ăsteia înainte de prânz! Ai rătăcit pe pista mea!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Carl: Ninety-nine laps, and a lesson. Good!"
+        ],
+        "text": [
+          "Centură Neagră Carl: Nouăzeci și nouă de ture, și o lecție. Bun!"
+        ]
+      }
+    },
+    "veteran_armando": {
+      "name": {
+        "en": [
+          "Armando"
+        ],
+        "text": [
+          "Armando"
+        ]
+      },
+      "before": {
+        "en": [
+          "Veteran Armando: Forty years a trainer, and I still walk out to the end of the land to see who turns up."
+        ],
+        "text": [
+          "Veteran Armando: Patruzeci de ani de Antrenor, și tot merg până la capătul pământului să văd cine apare."
+        ]
+      },
+      "after": {
+        "en": [
+          "Veteran Armando: Someone worth the walk turned up today."
+        ],
+        "text": [
+          "Veteran Armando: Azi a apărut cineva care a meritat drumul."
+        ]
+      }
+    },
+    "psychic_brittney": {
+      "name": {
+        "en": [
+          "Brittney"
+        ],
+        "text": [
+          "Brittney"
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Brittney: Don't tell me which Pokémon you'll send out first. I already know!"
+        ],
+        "text": [
+          "Medium Brittney: Nu-mi spune ce Pokémon trimiți primul. Știu deja!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Brittney: I knew how it would end, too. I just didn't want to believe it."
+        ],
+        "text": [
+          "Medium Brittney: Știam și cum se va termina. Doar că nu voiam să cred."
+        ]
+      }
+    },
+    "ace_trainer_jamie": {
+      "name": {
+        "en": [
+          "Jamie"
+        ],
+        "text": [
+          "Jamie"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Jamie: I saw you from right across the grass. One Pokémon is all I carry, and all I need for you!"
+        ],
+        "text": [
+          "Antrenor As Jamie: Te-am văzut de peste toată iarba. Un singur Pokémon port la mine, și doar de unul am nevoie pentru tine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Jamie: Four legs of steel, and you still knocked it flat."
+        ],
+        "text": [
+          "Antrenor As Jamie: Patru picioare de oțel, și tot l-ai pus la pământ."
+        ]
+      }
+    },
+    "ruin_maniac_larry": {
+      "name": {
+        "en": [
+          "Larry"
+        ],
+        "text": [
+          "Larry"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ruin Maniac Larry: That white rock on the point is older than any ruin in Sinnoh. Hands off! I saw it first!"
+        ],
+        "text": [
+          "Pasionat de ruine Larry: Roca albă de pe vârful promontoriului e mai veche decât orice ruină din Sinnoh. Jos labele! Eu am văzut-o primul!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ruin Maniac Larry: Look, then. But don't chip it."
+        ],
+        "text": [
+          "Pasionat de ruine Larry: Uită-te, atunci. Dar nu ciobi nimic din ea."
+        ]
+      }
+    },
+    "dragon_tamer_hayden": {
+      "name": {
+        "en": [
+          "Hayden"
+        ],
+        "text": [
+          "Hayden"
+        ]
+      },
+      "before": {
+        "en": [
+          "Dragon Tamer Hayden: Round and round I turn, and whoever I'm facing when they walk by battles my dragons!"
+        ],
+        "text": [
+          "Îmblânzitor de dragoni Hayden: Mă învârt și iar mă învârt, iar cine trece prin fața mea se luptă cu dragonii mei!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Dragon Tamer Hayden: Now I'm dizzy as well as beaten."
+        ],
+        "text": [
+          "Îmblânzitor de dragoni Hayden: Acum sunt și amețit, și învins."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

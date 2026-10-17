@@ -1,0 +1,176 @@
+{
+  "WakeAndRival": [
+    {
+      "en": [
+        "Crasher Wake"
+      ],
+      "text": [
+        "Crasher Wake"
+      ]
+    },
+    {
+      "en": [
+        "Wahaha! Well, if it isn't {player}! The new Champion, come all the way out here!"
+      ],
+      "text": [
+        "Uahaha! Ia te uită, dacă nu e {player}! Noul Campion, venit tocmai până aici!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "{player}, meet my master! I asked him to train me. Nobody in Sinnoh is tougher than Crasher Wake!"
+      ],
+      "text": [
+        "{player}, fă cunoștință cu maestrul meu! L-am rugat să mă antreneze. Nimeni din Sinnoh nu e mai dur decât Crasher Wake!"
+      ]
+    },
+    {
+      "en": [
+        "Crasher Wake"
+      ],
+      "text": [
+        "Crasher Wake"
+      ]
+    },
+    {
+      "en": [
+        "Master, he says! I still can't make head or tail of it. You run off before I've finished a single lesson!"
+      ],
+      "text": [
+        "Maestru, zice! Tot nu înțeleg nimic. Fugi înainte să termin o singură lecție!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Aw, don't be like that, Master! I'm listening! Mostly!"
+      ],
+      "text": [
+        "Ei, nu fi așa, Maestre! Ascult! În mare parte!"
+      ]
+    },
+    {
+      "en": [
+        "Crasher Wake"
+      ],
+      "text": [
+        "Crasher Wake"
+      ]
+    },
+    {
+      "en": [
+        "{player}! That mountain up the road is no place to stroll into. Go fully prepared, or don't go at all!"
+      ],
+      "text": [
+        "{player}! Muntele ăla de pe drum nu e un loc în care să intri la plimbare. Du-te cu toate pregătirile făcute, sau nu te duce deloc!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Right! Training's over, so I'm off to the Battle Frontier. My dad's at the top of it, and I'm going to beat him!"
+      ],
+      "text": [
+        "Bun! Antrenamentul s-a terminat, deci plec la Battle Frontier. Tata e în vârful lui, și o să-l bat!"
+      ]
+    },
+    {
+      "en": [
+        "You'd better come too, {player}. I'll be waiting, so don't make me wait long!"
+      ],
+      "text": [
+        "Ar trebui să vii și tu, {player}. Te aștept, așa că nu mă lăsa să aștept mult!"
+      ]
+    }
+  ],
+  "BuckAsks": [
+    {
+      "en": [
+        "Buck"
+      ],
+      "text": [
+        "Buck"
+      ]
+    },
+    {
+      "en": [
+        "Hey, {player}! It is you! I had a feeling you'd turn up here."
+      ],
+      "text": [
+        "Hei, {player}! Chiar tu ești! Aveam o presimțire că o să apari pe aici."
+      ]
+    },
+    {
+      "en": [
+        "Listen. Will you take a look round Stark Mountain with me?"
+      ],
+      "text": [
+        "Ascultă. Vii să te uiți cu mine prin Muntele Stark?"
+      ]
+    },
+    {
+      "en": [
+        "Aw, come on! I'll go on asking till you say yes, you know."
+      ],
+      "text": [
+        "Haide! O să te tot întreb până zici da, să știi."
+      ]
+    },
+    {
+      "en": [
+        "There's a bunch of goons in weird outfits poking about up there. I don't like the look of them one bit."
+      ],
+      "text": [
+        "E o gașcă de indivizi în costume ciudate care scotocesc pe acolo. Nu-mi plac deloc."
+      ]
+    },
+    {
+      "en": [
+        "What, me? Sure I'm coming! I'll be right behind you. Somebody has to keep an eye on the road!"
+      ],
+      "text": [
+        "Ce, eu? Sigur că vin! Sunt chiar în spatele tău. Cineva trebuie să fie cu ochii pe drum!"
+      ]
+    }
+  ],
+  "Buck": [
+    {
+      "en": [
+        "Buck"
+      ],
+      "text": [
+        "Buck"
+      ]
+    },
+    {
+      "en": [
+        "Go on ahead! You're in charge, {player}. I'll catch you up."
+      ],
+      "text": [
+        "Ia-o înainte! Tu conduci, {player}. Te ajung eu."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "displayName": {
+    "en": [
+      "Multi Battle Room"
+    ],
+    "text": [
+      "Camera de Luptă Multiplă"
+    ]
+  },
+  "people": {
+    "attendant_north": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The next challengers will be along shortly."
+        ],
+        "text": [
+          "Următorii provocatori vor sosi îndată."
+        ]
+      }
+    },
+    "attendant_south": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The next challengers will be along shortly."
+        ],
+        "text": [
+          "Următorii provocatori vor sosi îndată."
+        ]
+      }
+    },
+    "partner": {
+      "name": {
+        "en": [
+          "Partner"
+        ],
+        "text": [
+          "Partenerul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Let's do our best."
+        ],
+        "text": [
+          "Să dăm tot ce putem."
+        ]
+      }
+    },
+    "opponent_2": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          "Antrenorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "opponent": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          "Antrenorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

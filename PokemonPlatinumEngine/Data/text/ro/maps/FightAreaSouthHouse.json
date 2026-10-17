@@ -1,0 +1,83 @@
+{
+  "displayName": {
+    "en": [
+      "Fight Area"
+    ],
+    "text": [
+      "Zona de Luptă"
+    ]
+  },
+  "people": {
+    "old_man": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Only the toughest of Trainers used to come out to the Battle Zone.",
+          "Odd fish, people called them, for gathering in a place like this.",
+          "You'd hardly know it now. The Fight Area, the Survival Area... they seemed to go up overnight."
+        ],
+        "text": [
+          "Pe vremuri, doar cei mai duri Antrenori veneau în Ținutul Luptelor.",
+          "Oamenii le ziceau ciudați, fiindcă se adunau într-un loc ca ăsta.",
+          "Acum abia ți-ai da seama. Zona de Luptă, Zona de Supraviețuire... parcă au răsărit peste noapte."
+        ]
+      }
+    },
+    "torchic": {
+      "name": {
+        "en": [
+          "Torchic"
+        ],
+        "text": [
+          "Torchic"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Torchic: Chic! Chi-chic!"
+        ],
+        "text": [
+          "Torchic: Chic! Chi-chic!"
+        ]
+      }
+    },
+    "old_woman": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          "Bătrâna"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "He was one of those odd fish, back when the Battle Zone was young.",
+          "Well... so was I."
+        ],
+        "text": [
+          "Era unul dintre ciudații ăia, când Ținutul Luptelor era tânăr.",
+          "Ei bine... și eu eram."
+        ]
+      }
+    },
+    "item_expert": {
+      "name": {
+        "en": [
+          "Item Expert"
+        ],
+        "text": [
+          "Expertul în Obiecte"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

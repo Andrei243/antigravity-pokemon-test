@@ -1,0 +1,128 @@
+{
+  "MespritPit": [
+    {
+      "en": [
+        "Kyauuun!"
+      ],
+      "text": [
+        "Kyauuun!"
+      ]
+    }
+  ],
+  "UxiePit": [
+    {
+      "en": [
+        "Kyuuun!"
+      ],
+      "text": [
+        "Kyuuun!"
+      ]
+    }
+  ],
+  "AzelfPit": [
+    {
+      "en": [
+        "Kyaaan!"
+      ],
+      "text": [
+        "Kyaaan!"
+      ]
+    }
+  ],
+  "Swallowed": [
+    {
+      "en": [
+        "The boulder fell through the pit and out of sight. Nothing came of it."
+      ],
+      "text": [
+        "Bolovanul a căzut prin groapă și a dispărut din vedere. N-a ieșit nimic din asta."
+      ]
+    },
+    {
+      "en": [
+        "...Far overhead, something heavy settled back where it first stood."
+      ],
+      "text": [
+        "...Departe, sus, ceva greu s-a așezat la loc acolo unde stătuse la început."
+      ]
+    }
+  ],
+  "BoulderPit": [
+    {
+      "en": [
+        "A round pit is cut into the edge of the stone. A boulder might fit it."
+      ],
+      "text": [
+        "O groapă rotundă e săpată în marginea pietrei. Un bolovan ar putea încăpea în ea."
+      ]
+    }
+  ],
+  "InPit": [
+    {
+      "en": [
+        "The boulder sits in the pit as if it had been cut for it. It won't be moved again."
+      ],
+      "text": [
+        "Bolovanul stă în groapă de parcă ar fi fost tăiată pentru el. Nu se va mai mișca."
+      ]
+    }
+  ],
+  "Cynthia": [
+    {
+      "en": [
+        "Cynthia"
+      ],
+      "text": [
+        "Cynthia"
+      ]
+    },
+    {
+      "en": [
+        "This whole floor is one great puzzle. Boulders above, pits here, and the three Pokémon of the lakes waiting by them."
+      ],
+      "text": [
+        "Tot etajul ăsta e un singur mare puzzle. Bolovani sus, gropi aici, și cei trei Pokémoni ai lacurilor așteptând lângă ele."
+      ]
+    },
+    {
+      "en": [
+        "They followed us in to help, I think. Give each of them what it is waiting for."
+      ],
+      "text": [
+        "Ne-au urmat aici ca să ajute, cred. Dă-i fiecăruia ce așteaptă."
+      ]
+    },
+    {
+      "en": [
+        "I saw them go. The three of them have gone home to their lakes: they did what they came for."
+      ],
+      "text": [
+        "I-am văzut plecând. Toți trei s-au întors acasă, la lacurile lor: au făcut ce veniseră să facă."
+      ]
+    },
+    {
+      "en": [
+        "They were holding this place steady for us, each at its own corner. Emotion, knowledge and will..."
+      ],
+      "text": [
+        "Țineau locul ăsta stabil pentru noi, fiecare în colțul lui. Emoție, cunoaștere și voință..."
+      ]
+    },
+    {
+      "en": [
+        "Look. Stones, coming up out of nothing. That is our way down."
+      ],
+      "text": [
+        "Uite. Pietre care se ridică din nimic. Acela e drumul nostru în jos."
+      ]
+    },
+    {
+      "en": [
+        "We're getting close. The air is heavier with every floor. Giratina is right under us."
+      ],
+      "text": [
+        "Ne apropiem. Aerul e mai greu cu fiecare etaj. Giratina e chiar sub noi."
+      ]
+    }
+  ]
+}

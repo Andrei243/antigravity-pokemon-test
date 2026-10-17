@@ -1,0 +1,42 @@
+{
+  "Fell": [
+    {
+      "en": [
+        "The boulder dropped through the hole. From far below came the sound of it landing."
+      ],
+      "text": [
+        "Bolovanul a căzut prin gaură. De departe, de jos, s-a auzit cum aterizează."
+      ]
+    }
+  ],
+  "MespritShows": [
+    {
+      "en": [
+        "Mesprit looks from the boulder to the hole in front of it, and back to {player}."
+      ],
+      "text": [
+        "Mesprit se uită de la bolovan la gaura din fața lui, și înapoi la {player}."
+      ]
+    }
+  ],
+  "AzelfShows": [
+    {
+      "en": [
+        "Azelf darts at the boulder as if to push it into the hole, stops short, and looks at {player}."
+      ],
+      "text": [
+        "Azelf se năpustește spre bolovan ca și cum ar vrea să-l împingă în gaură, se oprește brusc și se uită la {player}."
+      ]
+    }
+  ],
+  "UxieShows": [
+    {
+      "en": [
+        "Uxie hangs beyond the hole with its eyes shut, and tilts its head toward the boulder."
+      ],
+      "text": [
+        "Uxie plutește dincolo de gaură cu ochii închiși și își înclină capul spre bolovan."
+      ]
+    }
+  ]
+}

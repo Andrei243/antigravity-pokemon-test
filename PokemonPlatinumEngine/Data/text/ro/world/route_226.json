@@ -1,0 +1,152 @@
+{
+  "people": {
+    "swimmer_lydia": {
+      "name": {
+        "en": [
+          "Lydia"
+        ],
+        "text": [
+          "Lydia"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Lydia: The water under these cliffs is warmer than it looks. The volcano heats it! Come on in!"
+        ],
+        "text": [
+          "Înotător Lydia: Apa de sub stâncile astea e mai caldă decât pare. O încălzește vulcanul! Hai, intră!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Lydia: Brr. Losing takes the warmth right out of it."
+        ],
+        "text": [
+          "Înotător Lydia: Brr. Înfrângerea îi ia toată căldura."
+        ]
+      }
+    },
+    "ace_trainer_graham": {
+      "name": {
+        "en": [
+          "Graham"
+        ],
+        "text": [
+          "Graham"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Graham: One good punch settles most things. My Pokémon have been practising theirs all week!"
+        ],
+        "text": [
+          "Antrenor As Graham: Un pumn bun rezolvă cele mai multe lucruri. Pokémonii mei și-au exersat pumnii toată săptămâna!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Graham: Out for the count. Fair and square."
+        ],
+        "text": [
+          "Antrenor As Graham: Numărat până la zece. Cinstit."
+        ]
+      }
+    },
+    "bird_keeper_geneva": {
+      "name": {
+        "en": [
+          "Geneva"
+        ],
+        "text": [
+          "Geneva"
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Geneva: My Xatu stared at the horizon all morning and wouldn't say why. Then you turned up!"
+        ],
+        "text": [
+          "Crescător de păsări Geneva: Xatu al meu s-a uitat la orizont toată dimineața și n-a vrut să spună de ce. Apoi ai apărut tu!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Geneva: So that's what it saw coming. It might have warned me."
+        ],
+        "text": [
+          "Crescător de păsări Geneva: Deci asta a văzut venind. Putea să mă avertizeze."
+        ]
+      }
+    },
+    "dragon_tamer_stanley": {
+      "name": {
+        "en": [
+          "Stanley"
+        ],
+        "text": [
+          "Stanley"
+        ]
+      },
+      "before": {
+        "en": [
+          "Dragon Tamer Stanley: A little Dratini today, a mighty dragon tomorrow. Help me hurry it along!"
+        ],
+        "text": [
+          "Îmblânzitor de dragoni Stanley: Un mic Dratini azi, un dragon puternic mâine. Ajută-mă să grăbim lucrurile!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Dragon Tamer Stanley: Tomorrow's a while off yet, it seems."
+        ],
+        "text": [
+          "Îmblânzitor de dragoni Stanley: Se pare că mâine mai e o vreme până vine."
+        ]
+      }
+    },
+    "swimmer_wade": {
+      "name": {
+        "en": [
+          "Wade"
+        ],
+        "text": [
+          "Wade"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Wade: I swim with a shoal of Carvanha. They've only bitten me twice! Want to meet them?"
+        ],
+        "text": [
+          "Înotător Wade: Înot cu un banc de Carvanha. M-au mușcat doar de două ori! Vrei să-i cunoști?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Wade: Make that three times. They always sulk when we lose."
+        ],
+        "text": [
+          "Înotător Wade: De trei ori, acum. Mereu se îmbufnează când pierdem."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost_survival_area": {
+      "en": [
+        "Rt. 226\nWest: Survival Area"
+      ],
+      "text": [
+        "Ruta 226\nVest: Zona de Supraviețuire"
+      ]
+    },
+    "arrow_signpost_rt_227_rt_228": {
+      "en": [
+        "Rt. 226\nNorth: Rt. 227\nEast: Rt. 228"
+      ],
+      "text": [
+        "Ruta 226\nNord: Ruta 227\nEst: Ruta 228"
+      ]
+    }
+  }
+}

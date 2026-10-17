@@ -1,0 +1,23 @@
+{
+  "displayName": {
+    "en": [
+      "Sunyshore City"
+    ],
+    "text": [
+      "Orașul Sunyshore"
+    ]
+  },
+  "people": {
+    "scientist_m": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          "Cercetătorul"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

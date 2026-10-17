@@ -1,0 +1,83 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Center"
+    ],
+    "text": [
+      "Centrul Pokémon"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "ace_trainer_m": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          "Antrenor As"
+        ]
+      }
+    },
+    "expert_m": {
+      "name": {
+        "en": [
+          "Veteran"
+        ],
+        "text": [
+          "Veteranul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Strong Pokémon are not enough out here.",
+          "A team wins when each of its moves covers for another. Coordination! That is the word to remember."
+        ],
+        "text": [
+          "Pokémonii puternici nu ajung aici.",
+          "O echipă câștigă când fiecare mișcare o acoperă pe alta. Coordonare! Ăsta e cuvântul de ținut minte."
+        ]
+      }
+    },
+    "psychic": {
+      "name": {
+        "en": [
+          "Psychic"
+        ],
+        "text": [
+          "Mediumul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A Pokémon hatched from an Egg can know moves its kind never learns by itself.",
+          "Its parents shape it before it has so much as cracked the shell."
+        ],
+        "text": [
+          "Un Pokémon ieșit dintr-un Ou poate ști mișcări pe care specia lui nu le învață singură.",
+          "Părinții îl modelează înainte să fi crăpat măcar coaja."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,162 @@
+{
+  "ItemExpert": [
+    {
+      "en": [
+        "I am the Item Expert! What a Pokémon can be given to hold, I know from end to end!",
+        "Your Pokémon, now: do they hold anything? The better the thing held, the stronger its holder.",
+        "There are some I can vouch for. Care to hear?"
+      ],
+      "text": [
+        "Eu sunt Expertul în Obiecte! Ce i se poate da unui Pokémon să țină, știu de la un capăt la altul!",
+        "Pokémonii tăi, acum: țin ceva? Cu cât e mai bun obiectul ținut, cu atât e mai puternic cel care-l ține.",
+        "Sunt câteva pentru care garantez. Vrei să auzi?"
+      ]
+    },
+    {
+      "en": [
+        "Which item shall I tell you about?",
+        "LUM BERRY",
+        "FOCUS SASH",
+        "EXPERT BELT",
+        "LIFE ORB",
+        "OTHERS",
+        "EXIT"
+      ],
+      "text": [
+        "Despre ce obiect să-ți povestesc?",
+        "BOABĂ LUM",
+        "EȘARFĂ DE CONCENTRARE",
+        "CENTURĂ DE EXPERT",
+        "GLOBUL VIEȚII",
+        "ALTELE",
+        "IEȘIRE"
+      ]
+    },
+    {
+      "en": [
+        "And of these, which?",
+        "CHOICE SCARF",
+        "CHOICE BAND",
+        "CHOICE SPECS",
+        "LEFTOVERS",
+        "EXIT"
+      ],
+      "text": [
+        "Și dintre acestea, care?",
+        "EȘARFĂ DE ALEGERE",
+        "BENTIȚĂ DE ALEGERE",
+        "OCHELARI DE ALEGERE",
+        "RESTURI",
+        "IEȘIRE"
+      ]
+    },
+    {
+      "en": [
+        "There are a great many more, of course.",
+        "And which is the one to hold comes down to how you mean to battle.",
+        "My last word on it: you'll never know until you try!"
+      ],
+      "text": [
+        "Mai sunt multe altele, firește.",
+        "Iar care e cel potrivit depinde de cum vrei să lupți.",
+        "Ultimul meu cuvânt: nu știi până nu încerci!"
+      ]
+    },
+    {
+      "en": [
+        "The Lum Berry!",
+        "The Pokémon holding it shakes off whatever ails it on the spot: sleep, paralysis, confusion, the lot.",
+        "It is a berry, mind. Once eaten, it's gone."
+      ],
+      "text": [
+        "Boaba Lum!",
+        "Pokémonul care o ține scapă pe loc de orice-l necăjește: somn, paralizie, confuzie, tot.",
+        "E o boabă, să știi. Odată mâncată, s-a dus."
+      ]
+    },
+    {
+      "en": [
+        "The Focus Sash!",
+        "A Pokémon at full HP that holds one can't be knocked out by a single hit: it hangs on with 1 HP.",
+        "One more turn than you had any right to. Ask anyone who plans their battles what that is worth!"
+      ],
+      "text": [
+        "Eșarfa de Concentrare!",
+        "Un Pokémon cu tot HP-ul care ține una nu poate fi doborât dintr-o singură lovitură: rămâne cu 1 HP.",
+        "O tură mai mult decât aveai dreptul. Întreabă pe oricine își plănuiește luptele cât valorează asta!"
+      ]
+    },
+    {
+      "en": [
+        "The Expert Belt!",
+        "It lifts a super-effective move to 120% of its power.",
+        "Just the thing for a Pokémon that knows moves of several types."
+      ],
+      "text": [
+        "Centura de Expert!",
+        "Ridică o mișcare foarte eficientă la 120% din puterea ei.",
+        "Exact ce-i trebuie unui Pokémon care știe mișcări de mai multe tipuri."
+      ]
+    },
+    {
+      "en": [
+        "The Life Orb!",
+        "Every move its holder uses hits at 130% of its power!",
+        "But! Each time one lands, the holder pays a tenth of its own HP."
+      ],
+      "text": [
+        "Globul Vieții!",
+        "Fiecare mișcare a celui care-l ține lovește cu 130% din puterea ei!",
+        "Dar! De fiecare dată când una nimerește, cel care-l ține plătește o zecime din propriul HP."
+      ]
+    },
+    {
+      "en": [
+        "The Choice Scarf!",
+        "It takes its holder's Speed to 150%!",
+        "But take care: the Pokémon is held to the one move it picks."
+      ],
+      "text": [
+        "Eșarfa de Alegere!",
+        "Duce Viteza celui care o ține la 150%!",
+        "Dar ai grijă: Pokémonul rămâne legat de singura mișcare pe care o alege."
+      ]
+    },
+    {
+      "en": [
+        "The Choice Band!",
+        "It takes its holder's Attack to 150%, and holds it to one move.",
+        "It does nothing for Sp. Atk, mind. Make no mistake about that."
+      ],
+      "text": [
+        "Bentița de Alegere!",
+        "Duce Atacul celui care o ține la 150% și îl leagă de o singură mișcare.",
+        "Nu face nimic pentru Atacul Sp., să știi. Să nu te înșeli în privința asta."
+      ]
+    },
+    {
+      "en": [
+        "The Choice Specs!",
+        "They take their holder's Sp. Atk to 150%, and hold it to one move.",
+        "They do nothing for Attack, mind. Make no mistake about that."
+      ],
+      "text": [
+        "Ochelarii de Alegere!",
+        "Duc Atacul Sp. al celui care-i ține la 150% și îl leagă de o singură mișcare.",
+        "Nu fac nimic pentru Atac, să știi. Să nu te înșeli în privința asta."
+      ]
+    },
+    {
+      "en": [
+        "Leftovers!",
+        "At the end of every turn, once both sides have moved, the holder gets back a sixteenth of its HP.",
+        "In a close battle, that little can be the whole difference."
+      ],
+      "text": [
+        "Resturile!",
+        "La sfârșitul fiecărei ture, după ce ambele tabere au mișcat, cel care le ține își recapătă o șaisprezecime din HP.",
+        "Într-o luptă strânsă, puținul ăla poate face toată diferența."
+      ]
+    }
+  ]
+}

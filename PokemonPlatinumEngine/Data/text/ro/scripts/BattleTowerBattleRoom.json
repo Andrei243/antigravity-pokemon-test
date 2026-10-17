@@ -1,0 +1,154 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitoarea"
+      ]
+    },
+    {
+      "en": [
+        "{foe} steps up to battle!"
+      ],
+      "text": [
+        "{foe} pășește în luptă!"
+      ]
+    },
+    {
+      "en": [
+        "Well done! Let me restore your Pokémon to full health."
+      ],
+      "text": [
+        "Bravo! Lasă-mă să-ți refac complet Pokémonii."
+      ]
+    },
+    {
+      "en": [
+        "Please prepare yourself. The Tower Tycoon is on his way to this room!"
+      ],
+      "text": [
+        "Te rog să te pregătești. Magnatul Turnului vine spre camera asta!"
+      ]
+    },
+    {
+      "en": [
+        "Next is battle no. {number}. Are you ready?",
+        "KEEP GOING",
+        "REST",
+        "RETIRE"
+      ],
+      "text": [
+        "Urmează lupta nr. {number}. Ești gata?",
+        "CONTINUĂ",
+        "PAUZĂ",
+        "RENUNȚĂ"
+      ]
+    },
+    {
+      "en": [
+        "Palmer"
+      ],
+      "text": [
+        "Palmer"
+      ]
+    },
+    {
+      "en": [
+        "So you are {player}! I've heard a great deal about you from that boy of mine, {rival}."
+      ],
+      "text": [
+        "Deci tu ești {player}! Am auzit o mulțime despre tine de la băiatul meu, {rival}."
+      ]
+    },
+    {
+      "en": [
+        "I am Palmer, the Tower Tycoon. Show me a battle worth the climb!"
+      ],
+      "text": [
+        "Eu sunt Palmer, Magnatul Turnului. Arată-mi o luptă care să merite urcușul!"
+      ]
+    },
+    {
+      "en": [
+        "{player}! You've come all this way again. I can't tell you how glad that makes me."
+      ],
+      "text": [
+        "{player}! Ai venit iar până aici. Nici nu-ți pot spune cât mă bucură asta."
+      ]
+    },
+    {
+      "en": [
+        "This time I hold nothing back. Meet the very best the Tower Tycoon has!"
+      ],
+      "text": [
+        "De data asta nu mă rețin deloc. Întâlnește tot ce are mai bun Magnatul Turnului!"
+      ]
+    },
+    {
+      "en": [
+        "Ha ha ha! Wonderful! To lose like that is no loss at all."
+      ],
+      "text": [
+        "Ha ha ha! Minunat! Să pierzi așa nu e deloc o înfrângere."
+      ]
+    },
+    {
+      "en": [
+        "...Magnificent. You and your Pokémon are everything a trainer could hope to be."
+      ],
+      "text": [
+        "...Magnific. Tu și Pokémonii tăi sunteți tot ce poate spera să fie un Antrenor."
+      ]
+    },
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitoarea"
+      ]
+    },
+    {
+      "en": [
+        "You have beaten the Tower Tycoon! He asked that you be given these Battle Points himself."
+      ],
+      "text": [
+        "L-ai învins pe Magnatul Turnului! A cerut să-ți dăm aceste Puncte de Luptă chiar el."
+      ]
+    },
+    {
+      "en": [
+        "Congratulations! Seven wins in a row. You have earned Battle Points."
+      ],
+      "text": [
+        "Felicitări! Șapte victorii la rând. Ai câștigat Puncte de Luptă."
+      ]
+    },
+    {
+      "en": [
+        "{player} received {number} BP!"
+      ],
+      "text": [
+        "{player} a primit {number} PL!"
+      ]
+    },
+    {
+      "en": [
+        "Give the challenge up and go back down?"
+      ],
+      "text": [
+        "Renunți la provocare și cobori înapoi?"
+      ]
+    },
+    {
+      "en": [
+        "Put the challenge down for now? The game will be saved, and you can go on from here later."
+      ],
+      "text": [
+        "Lași provocarea deocamdată? Jocul va fi salvat și poți continua de aici mai târziu."
+      ]
+    }
+  ]
+}

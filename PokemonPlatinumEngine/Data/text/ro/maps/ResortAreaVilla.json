@@ -1,0 +1,181 @@
+{
+  "displayName": {
+    "en": [
+      "Villa"
+    ],
+    "text": [
+      "Vila"
+    ]
+  },
+  "people": {
+    "counterpart": {
+      "name": {
+        "en": [
+          "{assistant}"
+        ],
+        "text": [
+          "{assistant}"
+        ]
+      }
+    },
+    "rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      }
+    },
+    "prof_rowan": {
+      "name": {
+        "en": [
+          "Professor Rowan"
+        ],
+        "text": [
+          "Profesorul Rowan"
+        ]
+      }
+    },
+    "mom": {
+      "name": {
+        "en": [
+          "Mom"
+        ],
+        "text": [
+          "Mama"
+        ]
+      }
+    },
+    "roark": {
+      "name": {
+        "en": [
+          "Roark"
+        ],
+        "text": [
+          "Roark"
+        ]
+      }
+    },
+    "gardenia": {
+      "name": {
+        "en": [
+          "Gardenia"
+        ],
+        "text": [
+          "Gardenia"
+        ]
+      }
+    },
+    "fantina": {
+      "name": {
+        "en": [
+          "Fantina"
+        ],
+        "text": [
+          "Fantina"
+        ]
+      }
+    },
+    "maylene": {
+      "name": {
+        "en": [
+          "Maylene"
+        ],
+        "text": [
+          "Maylene"
+        ]
+      }
+    },
+    "byron": {
+      "name": {
+        "en": [
+          "Byron"
+        ],
+        "text": [
+          "Byron"
+        ]
+      }
+    },
+    "crasher_wake": {
+      "name": {
+        "en": [
+          "Crasher Wake"
+        ],
+        "text": [
+          "Crasher Wake"
+        ]
+      }
+    },
+    "candice": {
+      "name": {
+        "en": [
+          "Candice"
+        ],
+        "text": [
+          "Candice"
+        ]
+      }
+    },
+    "volkner": {
+      "name": {
+        "en": [
+          "Volkner"
+        ],
+        "text": [
+          "Volkner"
+        ]
+      }
+    },
+    "cynthia": {
+      "name": {
+        "en": [
+          "Cynthia"
+        ],
+        "text": [
+          "Cynthia"
+        ]
+      }
+    },
+    "flint": {
+      "name": {
+        "en": [
+          "Flint"
+        ],
+        "text": [
+          "Flint"
+        ]
+      }
+    },
+    "school_kid_m": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      }
+    },
+    "delivery_guy": {
+      "name": {
+        "en": [
+          "Delivery Man"
+        ],
+        "text": [
+          "Curierul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Thank you for your order!"
+        ],
+        "text": [
+          "Mulțumim pentru comandă!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

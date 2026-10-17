@@ -1,0 +1,1256 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Boy"
+      ],
+      "text": [
+        "Băiatul"
+      ]
+    },
+    {
+      "en": [
+        "Well, here it is. Yours now, every board of it!",
+        "...Ah. I may have sold the furniture. All of it. I needed the money, you see."
+      ],
+      "text": [
+        "Ei bine, iat-o. E a ta acum, până la ultima scândură!",
+        "...A. Se poate să fi vândut mobila. Toată. Aveam nevoie de bani, înțelegi."
+      ]
+    },
+    {
+      "en": [
+        "But a house needs a table, so the first one's on me. The catalogue's right here."
+      ],
+      "text": [
+        "Dar o casă are nevoie de o masă, așa că prima e din partea mea. Catalogul e chiar aici."
+      ]
+    }
+  ],
+  "OfferTable": [
+    {
+      "en": [
+        "Order the Table? It's free."
+      ],
+      "text": [
+        "Comanzi Masa? E gratuită."
+      ]
+    },
+    {
+      "en": [
+        "Boy"
+      ],
+      "text": [
+        "Băiatul"
+      ]
+    },
+    {
+      "en": [
+        "There. A table! It's a home already.",
+        "That's the last of it off my hands. Do look after the place, won't you?"
+      ],
+      "text": [
+        "Gata. O masă! E deja un cămin.",
+        "Cu asta am scăpat de tot. Ai grijă de casă, da?"
+      ]
+    },
+    {
+      "en": [
+        "Boy"
+      ],
+      "text": [
+        "Băiatul"
+      ]
+    },
+    {
+      "en": [
+        "Go on, order the table. I can't hand over an empty house and sleep at night."
+      ],
+      "text": [
+        "Hai, comandă masa. Nu pot să predau o casă goală și să dorm liniștit noaptea."
+      ]
+    }
+  ],
+  "DontGoYet": [
+    {
+      "en": [
+        "Wait, don't go yet! Order the table first. Please."
+      ],
+      "text": [
+        "Stai, nu pleca încă! Comandă întâi masa. Te rog."
+      ]
+    }
+  ],
+  "OrderForm": [
+    {
+      "en": [
+        "{player} opened the furniture catalogue. Money: ${money}."
+      ],
+      "text": [
+        "{player} a deschis catalogul de mobilă. Bani: ${money}."
+      ]
+    },
+    {
+      "en": [
+        "Order the {thing} for ${price}?"
+      ],
+      "text": [
+        "Comanzi {thing} cu ${price}?"
+      ]
+    },
+    {
+      "en": [
+        "The {thing} has been bought already. The page is stamped: sold out."
+      ],
+      "text": [
+        "Ai cumpărat deja {thing}. Pagina e ștampilată: epuizat."
+      ]
+    },
+    {
+      "en": [
+        "There isn't enough money for the {thing}."
+      ],
+      "text": [
+        "Nu ai destui bani pentru {thing}."
+      ]
+    }
+  ],
+  "Deliver": [
+    {
+      "en": [
+        "Delivery Man"
+      ],
+      "text": [
+        "Curierul"
+      ]
+    },
+    {
+      "en": [
+        "Delivery! One {thing}, put right where it belongs. Thank you for your order!"
+      ],
+      "text": [
+        "Livrare! Am adus {thing}, exact unde trebuie. Mulțumim pentru comandă!"
+      ]
+    },
+    {
+      "en": [
+        "Delivery! One {thing}... and that's the whole catalogue. You've bought us out!"
+      ],
+      "text": [
+        "Livrare! Am adus {thing}... și cu asta, tot catalogul. Ne-ai golit depozitul!"
+      ]
+    }
+  ],
+  "RivalDropsIn": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "{player}! You got yourself a whole Villa?! No fair!",
+        "...One table. That's it? OK, I'm fining you a million if this place isn't full the next time I come by!"
+      ],
+      "text": [
+        "{player}! Ți-ai luat o Vilă întreagă?! Nu e corect!",
+        "...O masă. Atât? Bine, te amendez cu un milion dacă locul ăsta nu e plin data viitoare când trec!"
+      ]
+    }
+  ],
+  "CounterpartDropsIn": [
+    {
+      "en": [
+        "{assistant}"
+      ],
+      "text": [
+        "{assistant}"
+      ]
+    },
+    {
+      "en": [
+        "{player}! The professor said you had a Villa now, and I had to see.",
+        "Oh, a sofa! May I sit a while? It's been a long day of Pokédex pages."
+      ],
+      "text": [
+        "{player}! Profesorul a zis că acum ai o Vilă, și trebuia să văd.",
+        "O, o canapea! Pot să stau puțin? A fost o zi lungă de pagini de Pokédex."
+      ]
+    }
+  ],
+  "RowanDropsIn": [
+    {
+      "en": [
+        "Professor Rowan"
+      ],
+      "text": [
+        "Profesorul Rowan"
+      ]
+    },
+    {
+      "en": [
+        "Hm. I was passing, and I saw a bookshelf carried in.",
+        "A house with books in it is a house worth visiting. I shall look them over, if I may."
+      ],
+      "text": [
+        "Hm. Treceam pe aici și am văzut că se aducea o bibliotecă.",
+        "O casă cu cărți în ea e o casă care merită vizitată. Le voi răsfoi, dacă îmi dai voie."
+      ]
+    }
+  ],
+  "GardeniaDropsIn": [
+    {
+      "en": [
+        "Gardenia"
+      ],
+      "text": [
+        "Gardenia"
+      ]
+    },
+    {
+      "en": [
+        "I knew it! I could smell fresh leaves from the road.",
+        "Houseplants! Four of them! You have very good taste, you know."
+      ],
+      "text": [
+        "Știam eu! Simțeam miros de frunze proaspete de la drum.",
+        "Plante de interior! Patru! Ai foarte mult gust, să știi."
+      ]
+    }
+  ],
+  "CynthiaDropsIn": [
+    {
+      "en": [
+        "Cynthia"
+      ],
+      "text": [
+        "Cynthia"
+      ]
+    },
+    {
+      "en": [
+        "Forgive me for walking in. I heard a piano being tuned, and my feet did the rest.",
+        "I played when I was small. May I?"
+      ],
+      "text": [
+        "Iartă-mă că am intrat așa. Am auzit un pian acordat, iar picioarele au făcut restul.",
+        "Cântam când eram mică. Pot?"
+      ]
+    }
+  ],
+  "Rival": [
+    {
+      "en": [
+        "{player}! I ran the whole way from the Battle Frontier. Ten seconds flat. Probably."
+      ],
+      "text": [
+        "{player}! Am alergat tot drumul de la Battle Frontier. Zece secunde fix. Probabil."
+      ]
+    },
+    {
+      "en": [
+        "You know what this place needs? A training room. And a second training room."
+      ],
+      "text": [
+        "Știi de ce are nevoie locul ăsta? De o sală de antrenament. Și de încă o sală de antrenament."
+      ]
+    },
+    {
+      "en": [
+        "My dad never sits down, either. Runs in the family! ...OK, I'll sit. For a second."
+      ],
+      "text": [
+        "Nici tata nu stă niciodată jos. E de familie! ...Bine, mă așez. O secundă."
+      ]
+    },
+    {
+      "en": [
+        "One day I'm getting a Villa of my own. Bigger than this. With a slide."
+      ],
+      "text": [
+        "Într-o zi o să-mi iau și eu o Vilă. Mai mare decât asta. Cu tobogan."
+      ]
+    },
+    {
+      "en": [
+        "Hey, {player}. Thanks for letting me drop in. Don't tell anyone I said that."
+      ],
+      "text": [
+        "Hei, {player}. Mersi că m-ai lăsat să trec pe aici. Să nu spui nimănui că am zis asta."
+      ]
+    }
+  ],
+  "Counterpart": [
+    {
+      "en": [
+        "It's so quiet here, {player}. I can hear the waves from the window."
+      ],
+      "text": [
+        "E atâta liniște aici, {player}. Aud valurile de la fereastră."
+      ]
+    },
+    {
+      "en": [
+        "The professor gave me a day off. I didn't know what to do with it, so I came to see you."
+      ],
+      "text": [
+        "Profesorul mi-a dat o zi liberă. Nu știam ce să fac cu ea, așa că am venit la tine."
+      ]
+    },
+    {
+      "en": [
+        "Do you remember Lake Verity? It feels like such a long time ago, and it wasn't, really."
+      ],
+      "text": [
+        "Îți amintești de Lacul Verity? Pare că a fost acum atâta timp, deși de fapt n-a fost."
+      ]
+    },
+    {
+      "en": [
+        "I've been thinking about how many Pokémon we still haven't met. Isn't that a wonderful problem to have?"
+      ],
+      "text": [
+        "M-am tot gândit câți Pokémoni încă n-am întâlnit. Nu-i așa că e o problemă minunată?"
+      ]
+    },
+    {
+      "en": [
+        "You've made this place really nice. I could stay all afternoon. ...I am staying all afternoon."
+      ],
+      "text": [
+        "Ai făcut locul ăsta tare frumos. Aș putea sta toată după-amiaza. ...Chiar stau toată după-amiaza."
+      ]
+    }
+  ],
+  "ProfRowan": [
+    {
+      "en": [
+        "Hm. A good room to think in. I have not had one of those in forty years of fieldwork."
+      ],
+      "text": [
+        "Hm. O cameră bună pentru gândit. N-am mai avut una în patruzeci de ani de cercetare pe teren."
+      ]
+    },
+    {
+      "en": [
+        "Even resting, a Pokémon changes. Remember that, the next time you think nothing is happening."
+      ],
+      "text": [
+        "Chiar și când se odihnește, un Pokémon se schimbă. Ține minte asta data viitoare când crezi că nu se întâmplă nimic."
+      ]
+    },
+    {
+      "en": [
+        "I brought my notes. Do not mind me. I shall be no trouble at all.",
+        "...Is there tea?"
+      ],
+      "text": [
+        "Mi-am adus notițele. Nu mă băga în seamă. Nu-ți voi face niciun deranj.",
+        "...Există ceai?"
+      ]
+    },
+    {
+      "en": [
+        "You have come a long way from Route 201. I thought so then, and I think so now."
+      ],
+      "text": [
+        "Ai venit de departe de la Ruta 201. Așa credeam atunci, și așa cred și acum."
+      ]
+    },
+    {
+      "en": [
+        "The Pokédex is never finished. That is the joy of it. Go on, off with you. I am reading."
+      ],
+      "text": [
+        "Pokédex-ul nu e niciodată terminat. Asta e bucuria lui. Hai, du-te. Eu citesc."
+      ]
+    }
+  ],
+  "Mom": [
+    {
+      "en": [
+        "My own child, with a Villa! I had to come and see it with my own eyes."
+      ],
+      "text": [
+        "Copilul meu, cu o Vilă! Trebuia să vin s-o văd cu ochii mei."
+      ]
+    },
+    {
+      "en": [
+        "Are you eating properly? Sleeping? You'd tell me if you weren't. No, you wouldn't. I'm asking anyway."
+      ],
+      "text": [
+        "Mănânci cum trebuie? Dormi? Mi-ai spune dacă n-ai face-o. Ba nu, nu mi-ai spune. Te întreb oricum."
+      ]
+    },
+    {
+      "en": [
+        "{rival}'s mother sends her love. She says he ran past the house last week and forgot to stop."
+      ],
+      "text": [
+        "Mama lui {rival} te salută cu drag. Zice că a trecut în fugă pe lângă casă săptămâna trecută și a uitat să se oprească."
+      ]
+    },
+    {
+      "en": [
+        "It needs curtains. Every house needs curtains. I'll say no more about it."
+      ],
+      "text": [
+        "Îi trebuie perdele. Orice casă are nevoie de perdele. Nu mai zic nimic."
+      ]
+    },
+    {
+      "en": [
+        "I'm proud of you, dear. I don't say it enough. There, I've said it."
+      ],
+      "text": [
+        "Sunt mândră de tine, dragă. Nu-ți spun destul de des. Gata, am spus-o."
+      ]
+    }
+  ],
+  "Roark": [
+    {
+      "en": [
+        "Nice place! Solid foundations, too. I checked. Force of habit."
+      ],
+      "text": [
+        "Ce loc frumos! Și fundația e solidă. Am verificat. Deformație profesională."
+      ]
+    },
+    {
+      "en": [
+        "Dug anything up lately? The Underground's been good to me this month. Three Skull Fossils!"
+      ],
+      "text": [
+        "Ai mai scos ceva în ultima vreme? Subteranul a fost darnic cu mine luna asta. Trei Fosile Craniu!"
+      ]
+    },
+    {
+      "en": [
+        "My father says a holiday is a waste of a good shift. I say he should try one."
+      ],
+      "text": [
+        "Tata zice că o vacanță e o tură bună irosită. Eu zic că ar trebui să încerce una."
+      ]
+    },
+    {
+      "en": [
+        "I keep looking at your walls and wondering what's behind them. Don't worry. I left my pick at home."
+      ],
+      "text": [
+        "Tot mă uit la pereții tăi și mă întreb ce e în spatele lor. Nu-ți face griji. Mi-am lăsat târnăcopul acasă."
+      ]
+    },
+    {
+      "en": [
+        "Come down the mine again some time. The Machop still ask after you."
+      ],
+      "text": [
+        "Mai vino prin mină cândva. Machop-ii tot întreabă de tine."
+      ]
+    }
+  ],
+  "Gardenia": [
+    {
+      "en": [
+        "The air here is so soft! My Roserade would never want to leave."
+      ],
+      "text": [
+        "Ce aer moale e aici! Roserade al meu n-ar mai vrea să plece niciodată."
+      ]
+    },
+    {
+      "en": [
+        "Water them every third day, and talk to them. Plants like to be told how they're doing."
+      ],
+      "text": [
+        "Udă-le o dată la trei zile și vorbește cu ele. Plantelor le place să li se spună cum se descurcă."
+      ]
+    },
+    {
+      "en": [
+        "This house is lovely by daylight. You won't catch me here after dark, though. Old houses creak."
+      ],
+      "text": [
+        "Casa asta e minunată pe lumină. Dar pe întuneric nu mă prinzi aici. Casele vechi scârțâie."
+      ]
+    },
+    {
+      "en": [
+        "I'd put flowers on every sill. And the roof. Is anyone using the roof?"
+      ],
+      "text": [
+        "Eu aș pune flori pe fiecare pervaz. Și pe acoperiș. Folosește cineva acoperișul?"
+      ]
+    },
+    {
+      "en": [
+        "Thank you for having me! It's nice to be somewhere that isn't a Gym for once."
+      ],
+      "text": [
+        "Mulțumesc că m-ai primit! E plăcut să fiu, măcar o dată, undeva care nu e o Arenă."
+      ]
+    }
+  ],
+  "Fantina": [
+    {
+      "en": [
+        "Ohohoho! So this is your Villa. It has the charm. A little more purple, and it would be perfect."
+      ],
+      "text": [
+        "Ohohoho! Deci asta e Vila ta. Are farmec. Ceva mai mult mov, și ar fi perfectă."
+      ]
+    },
+    {
+      "en": [
+        "I practise my words every day. Yesterday I learned 'chandelier'. Today I look for one."
+      ],
+      "text": [
+        "Îmi exersez cuvintele în fiecare zi. Ieri am învățat „candelabru”. Azi caut unul."
+      ]
+    },
+    {
+      "en": [
+        "A room like this wants dancing! You do not dance? Then I shall, for both of us."
+      ],
+      "text": [
+        "O cameră ca asta cere dans! Tu nu dansezi? Atunci dansez eu, pentru amândoi."
+      ]
+    },
+    {
+      "en": [
+        "The Contests miss you. So do I, a little. Come and be dazzling again soon."
+      ],
+      "text": [
+        "Concursurilor le e dor de tine. Și mie, puțin. Vino curând să strălucești din nou."
+      ]
+    },
+    {
+      "en": [
+        "To rest is also an art. You see? I am resting very beautifully."
+      ],
+      "text": [
+        "Și odihna e o artă. Vezi? Mă odihnesc foarte frumos."
+      ]
+    }
+  ],
+  "Maylene": [
+    {
+      "en": [
+        "Is it all right if I don't sit? I never know what to do with chairs."
+      ],
+      "text": [
+        "E în regulă dacă nu mă așez? Nu știu niciodată ce să fac cu scaunele."
+      ]
+    },
+    {
+      "en": [
+        "I ran here barefoot along the shore. The sand is good for the ankles. You should try it."
+      ],
+      "text": [
+        "Am alergat până aici desculță pe țărm. Nisipul e bun pentru glezne. Ar trebui să încerci."
+      ]
+    },
+    {
+      "en": [
+        "Is there... anything to eat? No, no, it's fine. I had breakfast. Two days ago."
+      ],
+      "text": [
+        "Există... ceva de mâncare? Nu, nu, e în regulă. Am luat micul dejun. Acum două zile."
+      ]
+    },
+    {
+      "en": [
+        "If you see my dad at the Game Corner, tell him I know."
+      ],
+      "text": [
+        "Dacă-l vezi pe tata la Sala de Jocuri, spune-i că știu."
+      ]
+    },
+    {
+      "en": [
+        "You've got stronger again. I can tell by how you stand. Battle me soon, OK?"
+      ],
+      "text": [
+        "Ai mai prins putere. Îmi dau seama după cum stai. Luptă-te cu mine curând, bine?"
+      ]
+    }
+  ],
+  "CrasherWake": [
+    {
+      "en": [
+        "WAHAHAHA! Crasher Wake has entered the Villa! ...Sorry. Was that too loud for indoors?"
+      ],
+      "text": [
+        "UAHAHAHA! Crasher Wake a intrat în Vilă! ...Scuze. A fost prea tare pentru interior?"
+      ]
+    },
+    {
+      "en": [
+        "There's a pool out back! I took a dip on the way in. The towel is yours now. Sorry about that too."
+      ],
+      "text": [
+        "E o piscină în spate! Am făcut o baie în drum spre aici. Prosopul e al tău acum. Scuze și pentru asta."
+      ]
+    },
+    {
+      "en": [
+        "I wrote a new song for my entrance. It's mostly my name. Want to hear it? It's mostly my name."
+      ],
+      "text": [
+        "Am scris un cântec nou pentru intrarea mea. E mai mult numele meu. Vrei să-l auzi? E mai mult numele meu."
+      ]
+    },
+    {
+      "en": [
+        "A mask is like a house: you have to feel at home in it. Deep, isn't it? I thought of that just now."
+      ],
+      "text": [
+        "O mască e ca o casă: trebuie să te simți ca acasă în ea. Profund, nu? Chiar acum m-am gândit la asta."
+      ]
+    },
+    {
+      "en": [
+        "Good roof, good walls, good company! That's a tag team nobody beats!"
+      ],
+      "text": [
+        "Acoperiș bun, pereți buni, companie bună! E o echipă pe care n-o bate nimeni!"
+      ]
+    }
+  ],
+  "Byron": [
+    {
+      "en": [
+        "Gahahaha! A fine house! But soft. Where's the steel? A house wants a good steel door."
+      ],
+      "text": [
+        "Hahahaha! O casă frumoasă! Dar moale. Unde e oțelul? O casă are nevoie de o ușă bună de oțel."
+      ]
+    },
+    {
+      "en": [
+        "My boy Roark been round? He never visits ME. Says I talk about defence too much. Nonsense!"
+      ],
+      "text": [
+        "A trecut pe aici băiatul meu, Roark? Pe MINE nu mă vizitează niciodată. Zice că vorbesc prea mult despre apărare. Prostii!"
+      ]
+    },
+    {
+      "en": [
+        "I walked the island for Fossils this morning. Found a shovel I lost in the spring. A good day!"
+      ],
+      "text": [
+        "Azi-dimineață am cutreierat insula după Fosile. Am găsit o lopată pe care o pierdusem primăvara. O zi bună!"
+      ]
+    },
+    {
+      "en": [
+        "You don't mind if I stand? I think better on my feet. Thirty years of standing in a Gym does that."
+      ],
+      "text": [
+        "Nu te deranjează dacă stau în picioare? Gândesc mai bine în picioare. Treizeci de ani de stat în picioare într-o Arenă fac asta."
+      ]
+    },
+    {
+      "en": [
+        "You beat me fair and square, and I've not forgotten it. Come to Canalave and do it again!"
+      ],
+      "text": [
+        "M-ai învins cinstit, și n-am uitat. Vino la Canalave și fă-o din nou!"
+      ]
+    }
+  ],
+  "Candice": [
+    {
+      "en": [
+        "It's SO warm here! I took off my scarf and I didn't know what to do with my hands."
+      ],
+      "text": [
+        "E ATÂT de cald aici! Mi-am dat jos fularul și nu știam ce să fac cu mâinile."
+      ]
+    },
+    {
+      "en": [
+        "Focus! That's what matters, in battle and in decorating. This room has focus. I like it."
+      ],
+      "text": [
+        "Concentrare! Asta contează, în luptă și în decorat. Camera asta are concentrare. Îmi place."
+      ]
+    },
+    {
+      "en": [
+        "Do you ever get snow here? No? Not even a little? ...I'll bring some next time."
+      ],
+      "text": [
+        "Ninge vreodată aici? Nu? Nici măcar puțin? ...Data viitoare aduc eu niște zăpadă."
+      ]
+    },
+    {
+      "en": [
+        "Maylene says I talk too much about fashion. Maylene owns one pair of trousers."
+      ],
+      "text": [
+        "Maylene zice că vorbesc prea mult despre modă. Maylene are o singură pereche de pantaloni."
+      ]
+    },
+    {
+      "en": [
+        "Thanks for having me over! Come up to Snowpoint and I'll show you a REAL winter."
+      ],
+      "text": [
+        "Mersi că m-ai primit! Vino sus la Snowpoint și-ți arăt o iarnă ADEVĂRATĂ."
+      ]
+    }
+  ],
+  "Volkner": [
+    {
+      "en": [
+        "...Nice place. Who wired it? No, don't tell me. I'd only want to redo it."
+      ],
+      "text": [
+        "...Frumos loc. Cine a făcut instalația electrică? Nu, nu-mi spune. Aș vrea doar s-o refac."
+      ]
+    },
+    {
+      "en": [
+        "I came here to do nothing. It's harder than it sounds."
+      ],
+      "text": [
+        "Am venit aici să nu fac nimic. E mai greu decât pare."
+      ]
+    },
+    {
+      "en": [
+        "Since our battle the Gym's been busy again. I suppose I owe you for that."
+      ],
+      "text": [
+        "De la lupta noastră, Arena e iar plină. Cred că-ți rămân dator pentru asta."
+      ]
+    },
+    {
+      "en": [
+        "If the lights flicker, that wasn't me. ...It might have been me."
+      ],
+      "text": [
+        "Dacă pâlpâie luminile, n-am fost eu. ...S-ar putea să fi fost eu."
+      ]
+    },
+    {
+      "en": [
+        "You're the kind of trainer who keeps things interesting. Don't stop."
+      ],
+      "text": [
+        "Ești genul de Antrenor care face lucrurile interesante. Nu te opri."
+      ]
+    }
+  ],
+  "Cynthia": [
+    {
+      "en": [
+        "A house by the sea, at the far end of everything. I can see why you chose it."
+      ],
+      "text": [
+        "O casă lângă mare, la capătul tuturor lucrurilor. Înțeleg de ce ai ales-o."
+      ]
+    },
+    {
+      "en": [
+        "I spend so long deciding what to do with a free day that the day is over. Today I simply came here."
+      ],
+      "text": [
+        "Petrec atât timp hotărând ce să fac cu o zi liberă, încât ziua se termină. Azi pur și simplu am venit aici."
+      ]
+    },
+    {
+      "en": [
+        "Every old story in Sinnoh begins in a quiet place. Perhaps one will begin in this room."
+      ],
+      "text": [
+        "Fiecare poveste veche din Sinnoh începe într-un loc liniștit. Poate una va începe în camera asta."
+      ]
+    },
+    {
+      "en": [
+        "You remind me why I became a trainer. Don't let me grow too used to winning."
+      ],
+      "text": [
+        "Îmi amintești de ce am devenit Antrenoare. Nu mă lăsa să mă obișnuiesc prea mult cu victoria."
+      ]
+    },
+    {
+      "en": [
+        "Thank you for the welcome. When you next come to the League, come as a friend first."
+      ],
+      "text": [
+        "Mulțumesc pentru primire. Când mai vii la Ligă, vino întâi în prietenie."
+      ]
+    }
+  ],
+  "FlintAndVolkner": [
+    {
+      "en": [
+        "Flint"
+      ],
+      "text": [
+        "Flint"
+      ]
+    },
+    {
+      "en": [
+        "Look at this place, Volkner! We should get one. I'd light the fire, you'd fix the lights."
+      ],
+      "text": [
+        "Uită-te la locul ăsta, Volkner! Ar trebui să ne luăm și noi unul. Eu aprind focul, tu repari luminile."
+      ]
+    },
+    {
+      "en": [
+        "Volkner"
+      ],
+      "text": [
+        "Volkner"
+      ]
+    },
+    {
+      "en": [
+        "...We'd burn it down in a week."
+      ],
+      "text": [
+        "...L-am arde din temelii într-o săptămână."
+      ]
+    },
+    {
+      "en": [
+        "Flint"
+      ],
+      "text": [
+        "Flint"
+      ]
+    },
+    {
+      "en": [
+        "I dragged him out of his Gym by the collar. Fresh air! Sea! A friend's house!"
+      ],
+      "text": [
+        "L-am scos din Arena lui de guler. Aer curat! Mare! Casa unui prieten!"
+      ]
+    },
+    {
+      "en": [
+        "Volkner"
+      ],
+      "text": [
+        "Volkner"
+      ]
+    },
+    {
+      "en": [
+        "He did. By the actual collar."
+      ],
+      "text": [
+        "Chiar așa. De gulerul propriu-zis."
+      ]
+    },
+    {
+      "en": [
+        "Volkner"
+      ],
+      "text": [
+        "Volkner"
+      ]
+    },
+    {
+      "en": [
+        "Flint talks. I listen. It's worked since we were kids."
+      ],
+      "text": [
+        "Flint vorbește. Eu ascult. Merge așa de când eram copii."
+      ]
+    },
+    {
+      "en": [
+        "Flint"
+      ],
+      "text": [
+        "Flint"
+      ]
+    },
+    {
+      "en": [
+        "He means I'm the interesting one."
+      ],
+      "text": [
+        "Vrea să spună că eu sunt cel interesant."
+      ]
+    },
+    {
+      "en": [
+        "Flint"
+      ],
+      "text": [
+        "Flint"
+      ]
+    },
+    {
+      "en": [
+        "You lit a fire under this one, {player}. He hasn't yawned through a battle since."
+      ],
+      "text": [
+        "I-ai aprins un foc sub picioare ăstuia, {player}. De atunci n-a mai căscat în timpul unei lupte."
+      ]
+    },
+    {
+      "en": [
+        "Volkner"
+      ],
+      "text": [
+        "Volkner"
+      ]
+    },
+    {
+      "en": [
+        "...I never yawned."
+      ],
+      "text": [
+        "...N-am căscat niciodată."
+      ]
+    },
+    {
+      "en": [
+        "Flint"
+      ],
+      "text": [
+        "Flint"
+      ]
+    },
+    {
+      "en": [
+        "Next time, the three of us battle on the beach. Loser cooks!"
+      ],
+      "text": [
+        "Data viitoare ne luptăm toți trei pe plajă. Cine pierde gătește!"
+      ]
+    },
+    {
+      "en": [
+        "Volkner"
+      ],
+      "text": [
+        "Volkner"
+      ]
+    },
+    {
+      "en": [
+        "Then you're cooking."
+      ],
+      "text": [
+        "Atunci gătești tu."
+      ]
+    }
+  ],
+  "MayleneAndCandice": [
+    {
+      "en": [
+        "Candice"
+      ],
+      "text": [
+        "Candice"
+      ]
+    },
+    {
+      "en": [
+        "So I said to her, shoes are not weakness, shoes are focus for the feet!"
+      ],
+      "text": [
+        "Și i-am zis: pantofii nu sunt slăbiciune, pantofii sunt concentrare pentru picioare!"
+      ]
+    },
+    {
+      "en": [
+        "Maylene"
+      ],
+      "text": [
+        "Maylene"
+      ]
+    },
+    {
+      "en": [
+        "...I still don't see what's wrong with feet."
+      ],
+      "text": [
+        "...Tot nu văd ce e în neregulă cu picioarele."
+      ]
+    },
+    {
+      "en": [
+        "Maylene"
+      ],
+      "text": [
+        "Maylene"
+      ]
+    },
+    {
+      "en": [
+        "We trained on the beach all morning. Candice didn't complain once."
+      ],
+      "text": [
+        "Ne-am antrenat pe plajă toată dimineața. Candice nu s-a plâns nicio dată."
+      ]
+    },
+    {
+      "en": [
+        "Candice"
+      ],
+      "text": [
+        "Candice"
+      ]
+    },
+    {
+      "en": [
+        "I complained the whole time! You just weren't listening!"
+      ],
+      "text": [
+        "M-am plâns tot timpul! Doar că tu nu ascultai!"
+      ]
+    },
+    {
+      "en": [
+        "Candice"
+      ],
+      "text": [
+        "Candice"
+      ]
+    },
+    {
+      "en": [
+        "{player}, settle this. Snow or sand?"
+      ],
+      "text": [
+        "{player}, hotărăște tu. Zăpadă sau nisip?"
+      ]
+    },
+    {
+      "en": [
+        "Maylene"
+      ],
+      "text": [
+        "Maylene"
+      ]
+    },
+    {
+      "en": [
+        "Don't answer. There's no right answer. I tried."
+      ],
+      "text": [
+        "Nu răspunde. Nu există răspuns corect. Am încercat."
+      ]
+    },
+    {
+      "en": [
+        "Maylene"
+      ],
+      "text": [
+        "Maylene"
+      ]
+    },
+    {
+      "en": [
+        "Candice walked all the way to Veilstone to see me, once. Through the snow."
+      ],
+      "text": [
+        "Odată, Candice a mers pe jos până la Veilstone să mă vadă. Prin zăpadă."
+      ]
+    },
+    {
+      "en": [
+        "Candice"
+      ],
+      "text": [
+        "Candice"
+      ]
+    },
+    {
+      "en": [
+        "And you walked back with me barefoot. We're both a bit much, aren't we?"
+      ],
+      "text": [
+        "Iar tu te-ai întors cu mine desculță. Amândouă suntem cam exagerate, nu?"
+      ]
+    },
+    {
+      "en": [
+        "Candice"
+      ],
+      "text": [
+        "Candice"
+      ]
+    },
+    {
+      "en": [
+        "Real cups! Real tea! Maylene, put the cup down, you drink it, you don't train with it."
+      ],
+      "text": [
+        "Cești adevărate! Ceai adevărat! Maylene, lasă ceașca jos, din ea bei, nu te antrenezi cu ea."
+      ]
+    },
+    {
+      "en": [
+        "Maylene"
+      ],
+      "text": [
+        "Maylene"
+      ]
+    },
+    {
+      "en": [
+        "...It's a good weight, though."
+      ],
+      "text": [
+        "...Are totuși o greutate bună."
+      ]
+    }
+  ],
+  "LookBigSofa": [
+    {
+      "en": [
+        "A big sofa. It is very hard to get up from."
+      ],
+      "text": [
+        "O canapea mare. E foarte greu să te ridici de pe ea."
+      ]
+    }
+  ],
+  "LookSmallSofa": [
+    {
+      "en": [
+        "A small sofa, just right for two."
+      ],
+      "text": [
+        "O canapea mică, exact cât pentru doi."
+      ]
+    }
+  ],
+  "LookBed": [
+    {
+      "en": [
+        "A bed wide enough to sleep across. The sheets smell of the sea."
+      ],
+      "text": [
+        "Un pat destul de lat ca să dormi de-a curmezișul. Cearșafurile miros a mare."
+      ]
+    }
+  ],
+  "LookNightTable": [
+    {
+      "en": [
+        "A night table. Its lamp gives a small, warm light."
+      ],
+      "text": [
+        "O noptieră. Lampa ei dă o lumină mică și caldă."
+      ]
+    }
+  ],
+  "LookTv": [
+    {
+      "en": [
+        "A wide television. The picture is of a hillside on a fine day."
+      ],
+      "text": [
+        "Un televizor lat. Imaginea arată un deal într-o zi frumoasă."
+      ]
+    }
+  ],
+  "LookAudioSystem": [
+    {
+      "en": [
+        "An audio system. The dials are all set exactly in the middle."
+      ],
+      "text": [
+        "Un sistem audio. Toate butoanele sunt fixate exact la mijloc."
+      ]
+    }
+  ],
+  "LookBookshelf": [
+    {
+      "en": [
+        "A bookshelf full of books about Pokémon, and one about furniture."
+      ],
+      "text": [
+        "O bibliotecă plină de cărți despre Pokémoni, și una despre mobilă."
+      ]
+    }
+  ],
+  "LookRack": [
+    {
+      "en": [
+        "A rack of odds and ends from all over Sinnoh."
+      ],
+      "text": [
+        "Un raft cu mărunțișuri din tot Sinnoh-ul."
+      ]
+    }
+  ],
+  "LookHouseplant": [
+    {
+      "en": [
+        "A houseplant. Its leaves have been dusted."
+      ],
+      "text": [
+        "O plantă de interior. Frunzele i-au fost șterse de praf."
+      ]
+    }
+  ],
+  "LookPcDesk": [
+    {
+      "en": [
+        "A desk with a computer on it. The screen shows the catalogue's order page."
+      ],
+      "text": [
+        "Un birou cu un computer pe el. Ecranul arată pagina de comenzi a catalogului."
+      ]
+    }
+  ],
+  "LookPokemonBust": [
+    {
+      "en": [
+        "A bronze bust of a Pokémon. The plate reads: for victories everywhere at the Battle Frontier."
+      ],
+      "text": [
+        "Un bust de bronz al unui Pokémon. Plăcuța spune: pentru victorii peste tot la Battle Frontier."
+      ]
+    }
+  ],
+  "LookPokemonBustSilver": [
+    {
+      "en": [
+        "A silver bust of a Pokémon. The plate reads: for a silver print at the Battle Frontier."
+      ],
+      "text": [
+        "Un bust de argint al unui Pokémon. Plăcuța spune: pentru o amprentă de argint la Battle Frontier."
+      ]
+    }
+  ],
+  "LookPiano": [
+    {
+      "en": [
+        "A grand piano. A key, pressed, sounds long after the finger has gone."
+      ],
+      "text": [
+        "Un pian cu coadă. O clapă apăsată sună mult după ce degetul a plecat."
+      ]
+    }
+  ],
+  "LookGuestSet": [
+    {
+      "en": [
+        "A low table and two seats, for guests."
+      ],
+      "text": [
+        "O măsuță joasă și două scaune, pentru oaspeți."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "Favourite": [
+    {
+      "en": [
+        "Your favourite is {lead}, isn't it?"
+      ],
+      "text": [
+        "Preferatul tău e {lead}, nu-i așa?"
+      ]
+    },
+    {
+      "en": [
+        "There, I was right! I knew it!"
+      ],
+      "text": [
+        "Na, aveam dreptate! Știam eu!"
+      ]
+    },
+    {
+      "en": [
+        "...Oh? But your favourite really is {lead}, isn't it?"
+      ],
+      "text": [
+        "...O? Dar preferatul tău chiar e {lead}, nu?"
+      ]
+    },
+    {
+      "en": [
+        "I want to know what kind of Pokémon everybody likes best."
+      ],
+      "text": [
+        "Vreau să știu ce fel de Pokémon îi place fiecăruia cel mai mult."
+      ]
+    }
+  ],
+  "Gts": [
+    {
+      "en": [
+        "Welcome! This is the Global Trade Station: the GTS, for short. Here Pokémon are traded with people all over the world.",
+        "Or they were. Sinnoh's link to the wider world has gone quiet, and no trade can leave this desk until it is back."
+      ],
+      "text": [
+        "Bine ai venit! Aceasta e Stația Globală de Schimb: GTS, pe scurt. Aici se schimbă Pokémoni cu oameni din toată lumea.",
+        "Sau se schimbau. Legătura Sinnoh-ului cu restul lumii a amuțit, și niciun schimb nu poate pleca de la biroul ăsta până nu revine."
+      ]
+    },
+    {
+      "en": [
+        "But a Pokémon that grows only through a trade needn't wait for the link. Here: a Linking Cord does the same for it."
+      ],
+      "text": [
+        "Dar un Pokémon care evoluează doar printr-un schimb nu trebuie să aștepte legătura. Poftim: un Șnur de Legătură face același lucru pentru el."
+      ]
+    },
+    {
+      "en": [
+        "Use it on the Pokémon like a stone. Come back for another whenever yours is used up!"
+      ],
+      "text": [
+        "Folosește-l pe Pokémon ca pe o piatră. Vino după altul oricând l-ai folosit pe al tău!"
+      ]
+    },
+    {
+      "en": [
+        "You still have a Linking Cord, I see. Use it on a Pokémon that grows through a trade, and come back for another."
+      ],
+      "text": [
+        "Văd că mai ai un Șnur de Legătură. Folosește-l pe un Pokémon care evoluează printr-un schimb și vino după altul."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "displayName": {
+    "en": [
+      "Poké Mart"
+    ],
+    "text": [
+      "Poké Mart"
+    ]
+  },
+  "people": {
+    "clown": {
+      "name": {
+        "en": [
+          "Clown"
+        ],
+        "text": [
+          "Clovnul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I asked for a TM. They don't sell those. I asked for a Berry. They don't sell those either.",
+          "A plain shop for a plain-speaking town. I rather like it."
+        ],
+        "text": [
+          "Am cerut un TM. Nu vând așa ceva. Am cerut o Boabă. Nici asta nu vând.",
+          "Un magazin simplu pentru un oraș care vorbește pe șleau. Îmi place."
+        ]
+      }
+    },
+    "socialite": {
+      "name": {
+        "en": [
+          "Socialite"
+        ],
+        "text": [
+          "Mondena"
+        ]
+      }
+    },
+    "cashier_f": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome to the Fight Area Poké Mart! How may I serve you today?"
+        ],
+        "text": [
+          "Vânzătoarea: Bine ai venit la Poké Martul din Zona de Luptă! Cu ce te pot ajuta azi?"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,40 @@
+{
+  "Collector": [
+    {
+      "en": [
+        "Give me my television and I'm a happy man. I want for nothing else.",
+        "The things I learn, just sitting here! I soak it all up!",
+        "The Pokétch's Marking Map app, for one: they say it keeps track of Pokémon that roam about the region.",
+        "... Not that I've ever met a Pokémon that roams. I've only heard tell of them."
+      ],
+      "text": [
+        "Dă-mi televizorul și sunt un om fericit. Nu-mi mai lipsește nimic.",
+        "Câte învăț, doar stând aici! Le absorb pe toate!",
+        "Aplicația Marking Map din Pokétch, de pildă: se zice că ține evidența Pokémonilor care hoinăresc prin regiune.",
+        "... Nu că aș fi întâlnit vreodată un Pokémon care hoinărește. Am auzit doar de ei."
+      ]
+    }
+  ],
+  "Boy": [
+    {
+      "en": [
+        "Have you seen every single Pokémon there is in Sinnoh? No? Not yet?",
+        "Come back and tell me when you have! I'm going to travel with Pokémon too, when I'm bigger!"
+      ],
+      "text": [
+        "Ai văzut fiecare Pokémon care există în Sinnoh? Nu? Încă nu?",
+        "Vino și spune-mi când o să-i fi văzut! Și eu o să călătoresc cu Pokémoni când o să fiu mare!"
+      ]
+    },
+    {
+      "en": [
+        "You've seen every single Pokémon there is in Sinnoh! That is so cool!",
+        "I'm going to travel with Pokémon too, when I'm bigger!"
+      ],
+      "text": [
+        "Ai văzut fiecare Pokémon care există în Sinnoh! Ce tare!",
+        "Și eu o să călătoresc cu Pokémoni când o să fiu mare!"
+      ]
+    }
+  ]
+}

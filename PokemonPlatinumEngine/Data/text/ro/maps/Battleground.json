@@ -1,0 +1,163 @@
+{
+  "displayName": {
+    "en": [
+      "Battleground"
+    ],
+    "text": [
+      "Câmpul de Luptă"
+    ]
+  },
+  "people": {
+    "expert_m": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      }
+    },
+    "buck": {
+      "name": {
+        "en": [
+          "Buck"
+        ],
+        "text": [
+          "Buck"
+        ]
+      }
+    },
+    "roark": {
+      "name": {
+        "en": [
+          "Roark"
+        ],
+        "text": [
+          "Roark"
+        ]
+      }
+    },
+    "gardenia": {
+      "name": {
+        "en": [
+          "Gardenia"
+        ],
+        "text": [
+          "Gardenia"
+        ]
+      }
+    },
+    "wake": {
+      "name": {
+        "en": [
+          "Crasher Wake"
+        ],
+        "text": [
+          "Crasher Wake"
+        ]
+      }
+    },
+    "maylene": {
+      "name": {
+        "en": [
+          "Maylene"
+        ],
+        "text": [
+          "Maylene"
+        ]
+      }
+    },
+    "fantina": {
+      "name": {
+        "en": [
+          "Fantina"
+        ],
+        "text": [
+          "Fantina"
+        ]
+      }
+    },
+    "candice": {
+      "name": {
+        "en": [
+          "Candice"
+        ],
+        "text": [
+          "Candice"
+        ]
+      }
+    },
+    "byron": {
+      "name": {
+        "en": [
+          "Byron"
+        ],
+        "text": [
+          "Byron"
+        ]
+      }
+    },
+    "volkner": {
+      "name": {
+        "en": [
+          "Volkner"
+        ],
+        "text": [
+          "Volkner"
+        ]
+      }
+    },
+    "cheryl": {
+      "name": {
+        "en": [
+          "Cheryl"
+        ],
+        "text": [
+          "Cheryl"
+        ]
+      }
+    },
+    "riley": {
+      "name": {
+        "en": [
+          "Riley"
+        ],
+        "text": [
+          "Riley"
+        ]
+      }
+    },
+    "marley": {
+      "name": {
+        "en": [
+          "Marley"
+        ],
+        "text": [
+          "Marley"
+        ]
+      }
+    },
+    "buck_guest": {
+      "name": {
+        "en": [
+          "Buck"
+        ],
+        "text": [
+          "Buck"
+        ]
+      }
+    },
+    "mira": {
+      "name": {
+        "en": [
+          "Mira"
+        ],
+        "text": [
+          "Mira"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

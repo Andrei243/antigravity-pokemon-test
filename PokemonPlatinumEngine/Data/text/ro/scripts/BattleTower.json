@@ -1,0 +1,728 @@
+{
+  "SingleAttendant": [
+    {
+      "en": [
+        "Welcome to the Battle Tower! This counter is for the Single and Double Battle Rooms."
+      ],
+      "text": [
+        "Bine ai venit la Battle Tower! Ghișeul acesta e pentru Camerele de Luptă Simplă și Dublă."
+      ]
+    },
+    {
+      "en": [
+        "Would you like to take a Battle Room challenge?",
+        "CHALLENGE",
+        "INFO",
+        "EXIT"
+      ],
+      "text": [
+        "Vrei să încerci o provocare într-o Cameră de Luptă?",
+        "PROVOCARE",
+        "INFO",
+        "IEȘIRE"
+      ]
+    },
+    {
+      "en": [
+        "Which Battle Room will it be?",
+        "SINGLE BATTLE",
+        "DOUBLE BATTLE",
+        "CANCEL"
+      ],
+      "text": [
+        "Ce Cameră de Luptă alegi?",
+        "LUPTĂ SIMPLĂ",
+        "LUPTĂ DUBLĂ",
+        "ANULEAZĂ"
+      ]
+    },
+    {
+      "en": [
+        "In a Battle Room you meet seven trainers, one after another. Beat all seven and you earn Battle Points."
+      ],
+      "text": [
+        "Într-o Cameră de Luptă întâlnești șapte Antrenori, unul după altul. Învinge-i pe toți șapte și primești Puncte de Luptă."
+      ]
+    },
+    {
+      "en": [
+        "A Single Battle takes three Pokémon and a Double Battle four. Any above Lv. 50 are brought down to it for the battles."
+      ],
+      "text": [
+        "O Luptă Simplă cere trei Pokémoni, iar una Dublă patru. Cei peste Nv. 50 sunt coborâți la el pentru lupte."
+      ]
+    },
+    {
+      "en": [
+        "No two may be of one species, no two may hold the same item, and nothing from the Bag may be used."
+      ],
+      "text": [
+        "Doi nu pot fi din aceeași specie, doi nu pot ține același obiect, și nu se poate folosi nimic din Rucsac."
+      ]
+    },
+    {
+      "en": [
+        "Win set after set and your streak grows. Lose once, and it starts again from nothing."
+      ],
+      "text": [
+        "Câștigă set după set și seria ta crește. Pierzi o dată, și o ia de la zero."
+      ]
+    },
+    {
+      "en": [
+        "Please choose the Pokémon you will enter."
+      ],
+      "text": [
+        "Te rog să alegi Pokémonii pe care îi înscrii."
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. The Pokémon entered must all be of different species."
+      ],
+      "text": [
+        "Îmi pare rău. Pokémonii înscriși trebuie să fie toți din specii diferite."
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. No two of the Pokémon entered may hold the same item."
+      ],
+      "text": [
+        "Îmi pare rău. Doi dintre Pokémonii înscriși nu pot ține același obiect."
+      ]
+    },
+    {
+      "en": [
+        "We hope to see you again."
+      ],
+      "text": [
+        "Sperăm să te mai vedem."
+      ]
+    }
+  ],
+  "TooFew": [
+    {
+      "en": [
+        "I'm sorry. You need {number} Pokémon that can take part, all of different species and holding different items."
+      ],
+      "text": [
+        "Îmi pare rău. Ai nevoie de {number} Pokémoni care pot participa, toți din specii diferite și ținând obiecte diferite."
+      ]
+    },
+    {
+      "en": [
+        "An Egg can't take part, and nor can {banned}."
+      ],
+      "text": [
+        "Un Ou nu poate participa, și nici {banned}."
+      ]
+    }
+  ],
+  "GoUp": [
+    {
+      "en": [
+        "Your game must be saved before you go up. Shall I save it?"
+      ],
+      "text": [
+        "Jocul trebuie salvat înainte să urci. Îl salvez?"
+      ]
+    },
+    {
+      "en": [
+        "{player} saved the game."
+      ],
+      "text": [
+        "{player} a salvat jocul."
+      ]
+    },
+    {
+      "en": [
+        "Thank you. Let me show you the way."
+      ],
+      "text": [
+        "Mulțumesc. Lasă-mă să-ți arăt drumul."
+      ]
+    },
+    {
+      "en": [
+        "Then please come back when you are ready."
+      ],
+      "text": [
+        "Atunci te rog să revii când ești gata."
+      ]
+    }
+  ],
+  "MultiAttendant": [
+    {
+      "en": [
+        "Welcome! This counter is for the Multi Battle Room, where two trainers battle side by side."
+      ],
+      "text": [
+        "Bine ai venit! Ghișeul acesta e pentru Camera de Luptă Multiplă, unde doi Antrenori luptă umăr la umăr."
+      ]
+    },
+    {
+      "en": [
+        "Would you like to take a Multi Battle Room challenge?",
+        "CHALLENGE",
+        "INFO",
+        "EXIT"
+      ],
+      "text": [
+        "Vrei să încerci o provocare în Camera de Luptă Multiplă?",
+        "PROVOCARE",
+        "INFO",
+        "IEȘIRE"
+      ]
+    },
+    {
+      "en": [
+        "In the Multi Battle Room you and a partner each bring two Pokémon, and meet seven pairs of trainers."
+      ],
+      "text": [
+        "În Camera de Luptă Multiplă tu și un partener aduceți câte doi Pokémoni și întâlniți șapte perechi de Antrenori."
+      ]
+    },
+    {
+      "en": [
+        "You find your partner in the Battle Salon downstairs: trainers you have travelled with wait there for someone to team up with."
+      ],
+      "text": [
+        "Partenerul îl găsești în Battle Salon, la parter: acolo așteaptă Antrenori cu care ai călătorit, să facă echipă cu cineva."
+      ]
+    },
+    {
+      "en": [
+        "The rules are the Battle Rooms' own: different species, different items, and nothing from the Bag."
+      ],
+      "text": [
+        "Regulile sunt cele ale Camerelor de Luptă: specii diferite, obiecte diferite și nimic din Rucsac."
+      ]
+    },
+    {
+      "en": [
+        "Please choose the two Pokémon you will enter."
+      ],
+      "text": [
+        "Te rog să alegi cei doi Pokémoni pe care îi înscrii."
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. The two Pokémon entered must be of different species."
+      ],
+      "text": [
+        "Îmi pare rău. Cei doi Pokémoni înscriși trebuie să fie din specii diferite."
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. The two Pokémon entered may not hold the same item."
+      ],
+      "text": [
+        "Îmi pare rău. Cei doi Pokémoni înscriși nu pot ține același obiect."
+      ]
+    },
+    {
+      "en": [
+        "We hope to see you again."
+      ],
+      "text": [
+        "Sperăm să te mai vedem."
+      ]
+    }
+  ],
+  "WifiAttendant": [
+    {
+      "en": [
+        "This counter is for the Wi-Fi Battle Rooms, where teams sent in from all over the world are battled."
+      ],
+      "text": [
+        "Ghișeul acesta e pentru Camerele de Luptă Wi-Fi, unde lupți cu echipe trimise din toată lumea."
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry to say the rooms are closed. Nothing is coming in over the air."
+      ],
+      "text": [
+        "Îmi pare rău, dar camerele sunt închise. Nu vine nimic prin eter."
+      ]
+    }
+  ],
+  "ChallengeEnded": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitoarea"
+      ]
+    },
+    {
+      "en": [
+        "Thank you for taking the challenge."
+      ],
+      "text": [
+        "Mulțumim că ai încercat provocarea."
+      ]
+    },
+    {
+      "en": [
+        "Congratulations! You have beaten all seven trainers!"
+      ],
+      "text": [
+        "Felicitări! I-ai învins pe toți cei șapte Antrenori!"
+      ]
+    },
+    {
+      "en": [
+        "And for beating the Tower Tycoon, the Pokémon you entered are awarded a ribbon."
+      ],
+      "text": [
+        "Iar pentru că l-ai învins pe Magnatul Turnului, Pokémonii pe care i-ai înscris primesc o panglică."
+      ]
+    },
+    {
+      "en": [
+        "Congratulations! You have beaten all seven trainers!"
+      ],
+      "text": [
+        "Felicitări! I-ai învins pe toți cei șapte Antrenori!"
+      ]
+    },
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitoarea"
+      ]
+    },
+    {
+      "en": [
+        "We hope to see you again."
+      ],
+      "text": [
+        "Sperăm să te mai vedem."
+      ]
+    }
+  ],
+  "StreakRibbons": [
+    {
+      "en": [
+        "A streak of fifty! The Pokémon you entered are awarded a ribbon for it."
+      ],
+      "text": [
+        "O serie de cincizeci! Pokémonii pe care i-ai înscris primesc o panglică pentru ea."
+      ]
+    }
+  ],
+  "SilverPrint": [
+    {
+      "en": [
+        "You have beaten the Tower Tycoon! This calls for something to remember it by."
+      ],
+      "text": [
+        "L-ai învins pe Magnatul Turnului! Asta merită o amintire."
+      ]
+    },
+    {
+      "en": [
+        "A Silver Print was added to {player}'s record of the Battle Tower!"
+      ],
+      "text": [
+        "O Amprentă de Argint a fost adăugată în palmaresul lui {player} de la Battle Tower!"
+      ]
+    }
+  ],
+  "GoldPrint": [
+    {
+      "en": [
+        "You have beaten the Tower Tycoon at his very best! There is no higher honour here."
+      ],
+      "text": [
+        "L-ai învins pe Magnatul Turnului în cea mai bună formă a lui! Aici nu există onoare mai mare."
+      ]
+    },
+    {
+      "en": [
+        "A Gold Print was added to {player}'s record of the Battle Tower!"
+      ],
+      "text": [
+        "O Amprentă de Aur a fost adăugată în palmaresul lui {player} de la Battle Tower!"
+      ]
+    }
+  ],
+  "Record": [
+    {
+      "en": [
+        "The result is being recorded. {player} saved the game."
+      ],
+      "text": [
+        "Rezultatul se înregistrează. {player} a salvat jocul."
+      ]
+    }
+  ],
+  "Trophy": [
+    {
+      "en": [
+        "Teala"
+      ],
+      "text": [
+        "Teala"
+      ]
+    },
+    {
+      "en": [
+        "A streak of {number} in the Single Battle Room! That deserves a trophy."
+      ],
+      "text": [
+        "O serie de {number} în Camera de Luptă Simplă! Asta merită un trofeu."
+      ]
+    },
+    {
+      "en": [
+        "The {thing} was sent to the PC in {player}'s Secret Base."
+      ],
+      "text": [
+        "Trofeul {thing} a ajuns în PC-ul din Baza Secretă a lui {player}."
+      ]
+    },
+    {
+      "en": [
+        "You have earned a trophy, but the PC in your Secret Base has no room for it. Please make some room and come to see me."
+      ],
+      "text": [
+        "Ai câștigat un trofeu, dar PC-ul din Baza ta Secretă nu mai are loc pentru el. Te rog să faci loc și să vii la mine."
+      ]
+    }
+  ],
+  "Teala": [
+    {
+      "en": [
+        "I look after the Tower's trophies. Keep winning in the Single Battle Room and one will be yours."
+      ],
+      "text": [
+        "Eu am grijă de trofeele Turnului. Continuă să câștigi în Camera de Luptă Simplă și unul va fi al tău."
+      ]
+    }
+  ],
+  "Paused": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitoarea"
+      ]
+    },
+    {
+      "en": [
+        "{player} saved the game."
+      ],
+      "text": [
+        "{player} a salvat jocul."
+      ]
+    },
+    {
+      "en": [
+        "Your challenge is waiting where you put it down. Would you like to go on with it now?"
+      ],
+      "text": [
+        "Provocarea ta te așteaptă acolo unde ai lăsat-o. Vrei s-o continui acum?"
+      ]
+    },
+    {
+      "en": [
+        "Then let me show you the way."
+      ],
+      "text": [
+        "Atunci lasă-mă să-ți arăt drumul."
+      ]
+    },
+    {
+      "en": [
+        "Very well. Speak to me whenever you are ready."
+      ],
+      "text": [
+        "Prea bine. Vorbește cu mine când ești gata."
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. The Pokémon you entered are no longer as they were, so the challenge can't go on. It ends here."
+      ],
+      "text": [
+        "Îmi pare rău. Pokémonii pe care i-ai înscris nu mai sunt așa cum erau, deci provocarea nu poate continua. Se încheie aici."
+      ]
+    }
+  ],
+  "LeftSalon": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitoarea"
+      ]
+    },
+    {
+      "en": [
+        "We hope to see you again."
+      ],
+      "text": [
+        "Sperăm să te mai vedem."
+      ]
+    }
+  ],
+  "WalkedOut": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitoarea"
+      ]
+    },
+    {
+      "en": [
+        "The last challenge was left before it was over, so it can't be taken up again."
+      ],
+      "text": [
+        "Ultima provocare a fost părăsită înainte să se termine, deci nu poate fi reluată."
+      ]
+    },
+    {
+      "en": [
+        "I'm afraid its streak ends there."
+      ],
+      "text": [
+        "Mă tem că seria se încheie aici."
+      ]
+    },
+    {
+      "en": [
+        "We hope to see you again."
+      ],
+      "text": [
+        "Sperăm să te mai vedem."
+      ]
+    }
+  ],
+  "WifiMachine": [
+    {
+      "en": [
+        "A screen for the Wi-Fi Battle Rooms' results. There is no data yet."
+      ],
+      "text": [
+        "Un ecran pentru rezultatele Camerelor de Luptă Wi-Fi. Încă nu există date."
+      ]
+    }
+  ],
+  "StatsJudge": [
+    {
+      "en": [
+        "I have spent a lifetime looking at Pokémon, and I can tell at a glance what one is capable of."
+      ],
+      "text": [
+        "Mi-am petrecut o viață uitându-mă la Pokémoni și îmi dau seama dintr-o privire de ce e în stare unul."
+      ]
+    },
+    {
+      "en": [
+        "Show me one of yours, and I'll tell you what I see in it."
+      ],
+      "text": [
+        "Arată-mi unul de-al tău și îți spun ce văd în el."
+      ]
+    },
+    {
+      "en": [
+        "Ah, it's you. Shall I judge one of your Pokémon?"
+      ],
+      "text": [
+        "A, tu erai. Să judec unul dintre Pokémonii tăi?"
+      ]
+    },
+    {
+      "en": [
+        "Taken all together, {wearer} is as gifted a Pokémon as I have ever been shown."
+      ],
+      "text": [
+        "Una peste alta, {wearer} e un Pokémon cât se poate de înzestrat, cum n-am mai văzut."
+      ]
+    },
+    {
+      "en": [
+        "Taken all together, {wearer} is nothing out of the ordinary. There is no shame in that."
+      ],
+      "text": [
+        "Una peste alta, {wearer} nu are nimic ieșit din comun. Nu e nicio rușine în asta."
+      ]
+    },
+    {
+      "en": [
+        "Taken all together, {wearer} has rather more in it than most."
+      ],
+      "text": [
+        "Una peste alta, {wearer} are ceva mai mult în el decât majoritatea."
+      ]
+    },
+    {
+      "en": [
+        "Taken all together, {wearer} has a great deal in it. You have a fine one there."
+      ],
+      "text": [
+        "Una peste alta, {wearer} are foarte multe în el. Ai unul bun acolo."
+      ]
+    },
+    {
+      "en": [
+        "What it has most of is {thing}."
+      ],
+      "text": [
+        "Ce are cel mai mult e {thing}."
+      ]
+    },
+    {
+      "en": [
+        "And there it leaves nothing to wish for. I have never seen better."
+      ],
+      "text": [
+        "Și acolo nu lasă nimic de dorit. N-am văzut niciodată mai bine."
+      ]
+    },
+    {
+      "en": [
+        "Though even there it is only fair."
+      ],
+      "text": [
+        "Deși chiar și acolo e doar acceptabil."
+      ]
+    },
+    {
+      "en": [
+        "And there it is strong."
+      ],
+      "text": [
+        "Și acolo e puternic."
+      ]
+    },
+    {
+      "en": [
+        "And there it is splendid."
+      ],
+      "text": [
+        "Și acolo e splendid."
+      ]
+    },
+    {
+      "en": [
+        "An Egg? I can't judge what hasn't hatched yet."
+      ],
+      "text": [
+        "Un Ou? Nu pot judeca ce n-a eclozat încă."
+      ]
+    },
+    {
+      "en": [
+        "Another time, then."
+      ],
+      "text": [
+        "Altă dată, atunci."
+      ]
+    }
+  ],
+  "Artist": [
+    {
+      "en": [
+        "You have the look of someone strong. I'd like to paint that look, if it would only hold still."
+      ],
+      "text": [
+        "Ai privirea cuiva puternic. Aș vrea să pictez privirea asta, numai să stea pe loc."
+      ]
+    }
+  ],
+  "Jogger": [
+    {
+      "en": [
+        "The Battle Tower is full of surprises. I never know who will walk into the room next!"
+      ],
+      "text": [
+        "Battle Tower e plin de surprize. Nu știu niciodată cine intră în cameră!"
+      ]
+    }
+  ],
+  "Idol": [
+    {
+      "en": [
+        "If I keep on winning here, they'll put my profile on television. So I keep on trying!"
+      ],
+      "text": [
+        "Dacă tot câștig aici, o să-mi pună profilul la televizor. Așa că tot încerc!"
+      ]
+    }
+  ],
+  "RichBoy": [
+    {
+      "en": [
+        "I raised this little fellow myself, from the day it hatched. Nobody in that tower frightens us."
+      ],
+      "text": [
+        "L-am crescut singur pe micuțul ăsta, din ziua în care a eclozat. Nimeni din turnul ăla nu ne sperie."
+      ]
+    }
+  ],
+  "Pikachu1": [
+    {
+      "en": [
+        "Pikachu: Pika... chu..."
+      ],
+      "text": [
+        "Pikachu: Pika... chu..."
+      ]
+    }
+  ],
+  "Pikachu2": [
+    {
+      "en": [
+        "Pikachu: Pika pichuu!"
+      ],
+      "text": [
+        "Pikachu: Pika pichuu!"
+      ]
+    }
+  ],
+  "SchoolKid1": [
+    {
+      "en": [
+        "There are so many tough trainers here. I come to watch, and to learn."
+      ],
+      "text": [
+        "Sunt atâția Antrenori duri aici. Vin să mă uit și să învăț."
+      ]
+    }
+  ],
+  "SchoolKid2": [
+    {
+      "en": [
+        "Seven battles in a row, and the Pokémon are healed between them. It's the trainer who gets tired!"
+      ],
+      "text": [
+        "Șapte lupte la rând, iar Pokémonii se vindecă între ele. Antrenorul e cel care obosește!"
+      ]
+    }
+  ],
+  "ParasolLady": [
+    {
+      "en": [
+        "I used to live in Hoenn. There was a Battle Tower there too, you know. It brings back memories."
+      ],
+      "text": [
+        "Am locuit în Hoenn. Și acolo era un Battle Tower, să știi. Îmi aduce aminte de vremurile acelea."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitoarea"
+      ]
+    },
+    {
+      "en": [
+        "{foe} step up to battle!"
+      ],
+      "text": [
+        "{foe} pășesc în luptă!"
+      ]
+    },
+    {
+      "en": [
+        "Well done, both of you! Let me restore your Pokémon to full health."
+      ],
+      "text": [
+        "Bravo, amândurora! Lasă-mă să vă refac complet Pokémonii."
+      ]
+    },
+    {
+      "en": [
+        "Next is battle no. {number}. Are you ready?",
+        "KEEP GOING",
+        "REST",
+        "RETIRE"
+      ],
+      "text": [
+        "Urmează lupta nr. {number}. Ești gata?",
+        "CONTINUĂ",
+        "PAUZĂ",
+        "RENUNȚĂ"
+      ]
+    },
+    {
+      "en": [
+        "Congratulations! Seven pairs beaten in a row. You have earned Battle Points."
+      ],
+      "text": [
+        "Felicitări! Șapte perechi învinse la rând. Ai câștigat Puncte de Luptă."
+      ]
+    },
+    {
+      "en": [
+        "{player} received {number} BP!"
+      ],
+      "text": [
+        "{player} a primit {number} PL!"
+      ]
+    },
+    {
+      "en": [
+        "Give the challenge up and go back down?"
+      ],
+      "text": [
+        "Renunți la provocare și cobori înapoi?"
+      ]
+    },
+    {
+      "en": [
+        "Put the challenge down for now? The game will be saved, and you can go on from here later."
+      ],
+      "text": [
+        "Lași provocarea deocamdată? Jocul va fi salvat și poți continua de aici mai târziu."
+      ]
+    }
+  ]
+}

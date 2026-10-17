@@ -1,0 +1,332 @@
+{
+  "GruntsStop": [
+    {
+      "en": [
+        "Galactic Grunt"
+      ],
+      "text": [
+        "Galactic Grunt"
+      ]
+    },
+    {
+      "en": [
+        "Stop right there! The boss is making a new world up ahead, and we're here to see nobody spoils it."
+      ],
+      "text": [
+        "Stai pe loc! Șeful face o lume nouă acolo în față, iar noi suntem aici să nu strice nimeni asta."
+      ]
+    },
+    {
+      "en": [
+        "Two of us, one of you. We'll take you down together!"
+      ],
+      "text": [
+        "Noi doi, tu unul. Te doborâm împreună!"
+      ]
+    },
+    {
+      "en": [
+        "Galactic Grunt"
+      ],
+      "text": [
+        "Galactic Grunt"
+      ]
+    },
+    {
+      "en": [
+        "Go on, then. We've done our part: we kept you busy. You're too late to change a thing."
+      ],
+      "text": [
+        "Hai, du-te. Ne-am făcut partea: ți-am ocupat timpul. E prea târziu să mai schimbi ceva."
+      ]
+    },
+    {
+      "en": [
+        "One Pokémon? You came all the way up here with one Pokémon? Come back when there's something for the two of us to beat!"
+      ],
+      "text": [
+        "Un Pokémon? Ai venit până aici sus cu un singur Pokémon? Revino când ai ceva ce să batem amândoi!"
+      ]
+    }
+  ],
+  "Grunts": [
+    {
+      "en": [
+        "Galactic Grunt"
+      ],
+      "text": [
+        "Galactic Grunt"
+      ]
+    },
+    {
+      "en": [
+        "We let you past. Call it that, anyway. It makes no difference now."
+      ],
+      "text": [
+        "Te-am lăsat să treci. Hai să zicem așa. Oricum nu mai contează acum."
+      ]
+    }
+  ],
+  "Jupiter": [
+    {
+      "en": [
+        "Jupiter"
+      ],
+      "text": [
+        "Jupiter"
+      ]
+    },
+    {
+      "en": [
+        "Hush. Something nobody has ever seen is about to happen. Be quiet and watch."
+      ],
+      "text": [
+        "Liniște. E pe cale să se întâmple ceva ce n-a mai văzut nimeni. Taci și privește."
+      ]
+    }
+  ],
+  "Mars": [
+    {
+      "en": [
+        "Mars"
+      ],
+      "text": [
+        "Mars"
+      ]
+    },
+    {
+      "en": [
+        "You made it up here? Well, well. I'm almost impressed."
+      ],
+      "text": [
+        "Ai ajuns până aici sus? Ia te uită. Aproape că sunt impresionată."
+      ]
+    }
+  ],
+  "MarsAndJupiter": [
+    {
+      "en": [
+        "Mars"
+      ],
+      "text": [
+        "Mars"
+      ]
+    },
+    {
+      "en": [
+        "That's far enough. The boss is not to be disturbed, least of all by you. If you want to reach him, you go through me first!"
+      ],
+      "text": [
+        "Până aici. Șeful nu trebuie deranjat, cu atât mai puțin de tine. Dacă vrei să ajungi la el, treci întâi de mine!"
+      ]
+    },
+    {
+      "en": [
+        "Jupiter"
+      ],
+      "text": [
+        "Jupiter"
+      ]
+    },
+    {
+      "en": [
+        "And then through me. Did you think we would take turns? How sweet."
+      ],
+      "text": [
+        "Și apoi de mine. Credeai că o să luăm pe rând? Ce drăguț."
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Hey! Don't you dare start without me!"
+      ],
+      "text": [
+        "Hei! Să nu îndrăzniți să începeți fără mine!"
+      ]
+    },
+    {
+      "en": [
+        "Jupiter"
+      ],
+      "text": [
+        "Jupiter"
+      ]
+    },
+    {
+      "en": [
+        "...Hm? Oh. The boy from the lake. Come back for more?"
+      ],
+      "text": [
+        "...Hm? A. Băiatul de la lac. Ai venit după mai mult?"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "I've come for payback! I'm not who I was at Lake Acuity. I've done nothing but train since then!"
+      ],
+      "text": [
+        "Am venit după revanșă! Nu mai sunt cel de la Lacul Acuity. De atunci n-am făcut decât să mă antrenez!"
+      ]
+    },
+    {
+      "en": [
+        "{player}! Two of them, two of us. Let's take them on together!"
+      ],
+      "text": [
+        "{player}! Ele două, noi doi. Să le înfruntăm împreună!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "We did it! Those two were something else, though. My Pokémon are just about spent."
+      ],
+      "text": [
+        "Am reușit! Totuși, astea două au fost ceva de speriat. Pokémonii mei sunt aproape terminați."
+      ]
+    },
+    {
+      "en": [
+        "So here's what I can do for you, {player}. Hold still!"
+      ],
+      "text": [
+        "Deci iată ce pot face pentru tine, {player}. Nu te mișca!"
+      ]
+    },
+    {
+      "en": [
+        "{rival} used his medicine on {player}'s team. Every Pokémon is back at full health!"
+      ],
+      "text": [
+        "{rival} și-a folosit medicamentele pe echipa lui {player}. Fiecare Pokémon e iar complet refăcut!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "That's the last of what I had. From here on it's your show. Go and stop him!"
+      ],
+      "text": [
+        "Asta a fost tot ce mai aveam. De aici e spectacolul tău. Du-te și oprește-l!"
+      ]
+    },
+    {
+      "en": [
+        "Cyrus"
+      ],
+      "text": [
+        "Cyrus"
+      ]
+    },
+    {
+      "en": [
+        "Everything is ready. Here everything ends, and here everything begins."
+      ],
+      "text": [
+        "Totul e pregătit. Aici totul se termină, și aici totul începe."
+      ]
+    },
+    {
+      "en": [
+        "With the Red Chain made of the crystals of the three Pokémon of the lakes, and with a second that I forged by my own science, I take hold of what made this world."
+      ],
+      "text": [
+        "Cu Lanțul Roșu făcut din cristalele celor trei Pokémoni ai lacurilor, și cu un al doilea pe care l-am făurit prin propria mea știință, pun mâna pe ceea ce a făcut lumea asta."
+      ]
+    },
+    {
+      "en": [
+        "Come. Lord of time, whom the myths call Dialga!"
+      ],
+      "text": [
+        "Vino. Stăpân al timpului, pe care miturile îl numesc Dialga!"
+      ]
+    },
+    {
+      "en": [
+        "And you. Lord of space, whom they call Palkia!"
+      ],
+      "text": [
+        "Și tu. Stăpân al spațiului, pe care îl numesc Palkia!"
+      ]
+    },
+    {
+      "en": [
+        "At last. For this I schemed, and lied, and spent every one of those who followed me. Time and space are in my hands."
+      ],
+      "text": [
+        "În sfârșit. Pentru asta am uneltit, am mințit și i-am cheltuit pe toți cei care m-au urmat. Timpul și spațiul sunt în mâinile mele."
+      ]
+    },
+    {
+      "en": [
+        "This crooked, unfinished world and the spirit that fouls it will be unmade, and I shall make another: a world without strife, because it is without heart. Complete."
+      ],
+      "text": [
+        "Lumea asta strâmbă și neterminată și spiritul care o murdărește vor fi desfăcute, iar eu voi face alta: o lume fără conflict, pentru că e fără inimă. Desăvârșită."
+      ]
+    },
+    {
+      "en": [
+        "...What is this? A weight in the air. Something is angry. At me?"
+      ],
+      "text": [
+        "...Ce-i asta? O greutate în aer. Ceva e furios. Pe mine?"
+      ]
+    },
+    {
+      "en": [
+        "A Pokémon that comes as a shadow... So there was a third, set against the other two. Interesting."
+      ],
+      "text": [
+        "Un Pokémon care vine ca o umbră... Deci a existat un al treilea, pus împotriva celorlalți doi. Interesant."
+      ]
+    },
+    {
+      "en": [
+        "It changes nothing! I hold the power of Dialga and of Palkia. Whatever you are, you cannot..."
+      ],
+      "text": [
+        "Nu schimbă nimic! Eu țin puterea lui Dialga și a lui Palkia. Orice ai fi, nu poți..."
+      ]
+    },
+    {
+      "en": [
+        "The shadow closed over Cyrus and sank into the floor. Where it went down, the stone of Spear Pillar is gone."
+      ],
+      "text": [
+        "Umbra s-a închis peste Cyrus și s-a scufundat în podea. Acolo unde a coborât, piatra Coloanei Suliței a dispărut."
+      ]
+    }
+  ]
+}

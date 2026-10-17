@@ -1,0 +1,70 @@
+{
+  "displayName": {
+    "en": [
+      "Route 228"
+    ],
+    "text": [
+      "Ruta 228"
+    ]
+  },
+  "people": {
+    "school_kid_f": {
+      "name": {
+        "en": [
+          "School Kid"
+        ],
+        "text": [
+          "Școlărița"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "There's something I keep wondering, and nobody can tell me.",
+          "Why does nobody study what Pokémon shed when they moult? I think it would tell us a great deal!"
+        ],
+        "text": [
+          "E ceva ce mă tot întreb, și nimeni nu-mi poate spune.",
+          "De ce nu studiază nimeni ce lasă în urmă Pokémonii când năpârlesc? Cred că ne-ar spune foarte multe!"
+        ]
+      }
+    },
+    "ace_trainer_f": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          "Antrenor As"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "One that is strong and stands alone... or the weak who gather in a crowd...",
+          "Who can say which is the better off?"
+        ],
+        "text": [
+          "Unul puternic care stă singur... sau cei slabi care se adună în mulțime...",
+          "Cine poate spune care o duce mai bine?"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "5,4": {
+      "en": [
+        "A map of the island. Route 226 runs west of here toward the sea, and Route 228 runs south through the sandstorm toward the Resort Area."
+      ],
+      "text": [
+        "O hartă a insulei. Ruta 226 merge spre vest de aici, spre mare, iar Ruta 228 merge spre sud prin furtuna de nisip, spre Zona de Odihnă."
+      ]
+    },
+    "6,4": {
+      "en": [
+        "A map of the island. Route 226 runs west of here toward the sea, and Route 228 runs south through the sandstorm toward the Resort Area."
+      ],
+      "text": [
+        "O hartă a insulei. Ruta 226 merge spre vest de aici, spre mare, iar Ruta 228 merge spre sud prin furtuna de nisip, spre Zona de Odihnă."
+      ]
+    }
+  }
+}
