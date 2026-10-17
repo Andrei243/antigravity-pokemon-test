@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Numerics;
 using Raylib_cs;
 
@@ -17,11 +18,16 @@ public enum GameAction
     Item,     // Y button: the registered key item (C)
     Poketch,  // The Pokétch, the handheld's lower screen: out or away (P)
     PoketchApp, // The Pokétch's side button: the next app (O)
-    PoketchTouch // The Pokétch taken in hand to touch its screen, and let go (I)
+    PoketchTouch, // The Pokétch taken in hand to touch its screen, and let go (I)
+    PageLeft,     // The left shoulder (Q): a page back, for the bag's letter jump, the boxes and the Pokédex's pages (plan 12 · Q4)
+    PageRight,    // The right shoulder (E): a page on
+    Fullscreen,   // F11 (Alt+Enter too)
+    Mute,         // M
+    Screenshot    // F12 (plan 12 · Q16 takes the picture)
 }
 
-/// <summary>An action's keys and the pad's button for it, with the name the help page gives it.</summary>
-public readonly record struct Binding(GameAction Action, KeyboardKey[] Keys, GamepadButton Pad)
+/// <summary>An action's keys and the pad's buttons for it, with the name the help page gives it.</summary>
+public readonly record struct Binding(GameAction Action, KeyboardKey[] Keys, GamepadButton[] Pad)
 {
     /// <summary>The action's name on the help page, in the language of the moment.</summary>
     public string Name => Text.Of($"controls.action.{Action}");
@@ -29,24 +35,64 @@ public readonly record struct Binding(GameAction Action, KeyboardKey[] Keys, Gam
 
 public static class InputManager
 {
-    /// <summary>Every action's keys and button: what the game reads and what the help page shows (plan 12 · Q10).</summary>
-    public static readonly Binding[] Bindings =
-    {
-        new(GameAction.Up, new[] { KeyboardKey.Up, KeyboardKey.W }, GamepadButton.LeftFaceUp),
-        new(GameAction.Down, new[] { KeyboardKey.Down, KeyboardKey.S }, GamepadButton.LeftFaceDown),
-        new(GameAction.Left, new[] { KeyboardKey.Left, KeyboardKey.A }, GamepadButton.LeftFaceLeft),
-        new(GameAction.Right, new[] { KeyboardKey.Right, KeyboardKey.D }, GamepadButton.LeftFaceRight),
-        new(GameAction.Confirm, new[] { KeyboardKey.Z, KeyboardKey.Space }, GamepadButton.RightFaceDown),
-        new(GameAction.Cancel, new[] { KeyboardKey.X, KeyboardKey.Escape }, GamepadButton.RightFaceRight),
-        new(GameAction.Menu, new[] { KeyboardKey.Enter, KeyboardKey.Tab }, GamepadButton.MiddleRight),
-        new(GameAction.Run, new[] { KeyboardKey.LeftShift, KeyboardKey.X }, GamepadButton.RightFaceRight),
-        new(GameAction.Item, new[] { KeyboardKey.C }, GamepadButton.RightFaceLeft),
-        new(GameAction.Poketch, new[] { KeyboardKey.P }, GamepadButton.RightFaceUp),
-        new(GameAction.PoketchApp, new[] { KeyboardKey.O }, GamepadButton.RightTrigger1),
-        new(GameAction.PoketchTouch, new[] { KeyboardKey.I }, GamepadButton.LeftTrigger1)
-    };
+    private static InputBindings active = InputBindings.For(ButtonMode.Normal);
+    private static float deadZone = DefaultDeadZone;
+    private static int padIndex;
+    private static volatile int lastDevice;
+    private static readonly StickReader stick = new();
 
-    private static Binding Of(GameAction action) => Bindings[(int)action];
+    /// <summary>The left stick's dead zone when nothing was chosen (plan 12 · Q4).</summary>
+    public const float DefaultDeadZone = 0.35f;
+
+    /// <summary>The binding set in force: what the game reads, what the help page shows.</summary>
+    public static InputBindings Active => active;
+
+    /// <summary>Every action's keys and buttons in force, in the order of <see cref="GameAction"/>.</summary>
+    public static Binding[] Bindings => active.All.Select(a => new Binding(a.Action, a.Inputs.Keys, a.Inputs.Pad)).ToArray();
+
+    /// <summary>The stick's dead zone in force, 0.05 to 0.95.</summary>
+    public static float DeadZone => deadZone;
+
+    /// <summary>The pad read, 0 to 3 (raylib's own numbering).</summary>
+    public static int PadIndex => padIndex;
+
+    /// <summary>
+    /// Which device the player touched last (plan 12 · Q4): what a prompt names the controls of, and the pad that
+    /// plan 12 · Q24's pulses go to. Set from the keys and the pad as they are read each frame, never by a fed frame.
+    /// </summary>
+    public static InputDevice LastDevice
+    {
+        get => (InputDevice)lastDevice;
+        set => lastDevice = (int)value;
+    }
+
+    /// <summary>Puts a player's options in force: the Button Mode's preset with their own overrides, the stick's dead zone and the pad.</summary>
+    public static void Use(GameSettings settings)
+    {
+        active = InputBindings.From(settings);
+        deadZone = Math.Clamp(settings.StickDeadZone / 100f, 0.05f, 0.95f);
+        int index = Math.Clamp(settings.GamepadIndex, 0, 3);
+        if (index != padIndex) stick.Reset();
+        padIndex = index;
+    }
+
+    /// <summary>Puts a binding set in force (a test's, or the Controls page's while a binding is tried).</summary>
+    public static void Use(InputBindings bindings) => active = bindings;
+
+    /// <summary>Back to the defaults: today's keys, the stick's usual dead zone, the first pad, the keyboard.</summary>
+    public static void Reset()
+    {
+        active = InputBindings.For(ButtonMode.Normal);
+        deadZone = DefaultDeadZone;
+        padIndex = 0;
+        lastDevice = (int)InputDevice.Keyboard;
+        stick.Reset();
+    }
+
+    /// <summary>Actions bound and kept in the settings that nothing in the game reads yet (the pages: plan 12 · Q4 names them, the screens that use them come after; the screenshot: plan 12 · Q16).</summary>
+    public static readonly IReadOnlySet<GameAction> NotReadYet = new HashSet<GameAction> { GameAction.PageLeft, GameAction.PageRight, GameAction.Screenshot };
+
+    private static Binding Of(GameAction action) => new(action, active[action].Keys, active[action].Pad);
 
     /// <summary>
     /// The actions a tool, a test or a headless game hands this thread in place of the keys (plan 16 · T11c): while
@@ -67,20 +113,43 @@ public static class InputManager
     /// </summary>
     public static ActionFrame ReadKeys()
     {
+        var pad = ReadPad();
+        var held = stick.Update(pad.StickX, pad.StickY, deadZone, out var stickPressed);
+        // Alt+Enter is full screen too, and not the menu's Enter
+        bool altEnter = Raylib.IsKeyDown(KeyboardKey.LeftAlt) && Raylib.IsKeyPressed(KeyboardKey.Enter);
+        var frame = active.Resolve(key => Raylib.IsKeyDown(key), key => Raylib.IsKeyPressed(key), pad, held, stickPressed);
+        if (altEnter) frame = new ActionFrame(frame.Down & ~Bit(GameAction.Menu) | Bit(GameAction.Fullscreen), frame.Pressed & ~Bit(GameAction.Menu) | Bit(GameAction.Fullscreen));
+
+        // The device touched last: the pad once a bound button or the stick is pressed, the keyboard once a bound key is
+        LastDevice = InputBindings.DeviceAfter(LastDevice, KeyActivity(), active.PadActivity(pad, stickPressed));
+        return frame;
+    }
+
+    private static uint Bit(GameAction action) => 1u << (int)action;
+
+    /// <summary>Whether a bound key went down this frame (the only keyboard read of the device memory).</summary>
+    private static bool KeyActivity()
+    {
+        foreach (var (_, inputs) in active.All)
+            foreach (var key in inputs.Keys)
+                if (Raylib.IsKeyPressed(key)) return true;
+        return false;
+    }
+
+    /// <summary>The pad as raylib reports it (the thin layer: everything made of it is <see cref="InputBindings"/>'s).</summary>
+    private static PadSnapshot ReadPad()
+    {
+        if (!Raylib.IsGamepadAvailable(padIndex)) return PadSnapshot.None;
         uint down = 0, pressed = 0;
-        foreach (var binding in Bindings)
+        foreach (var button in Enum.GetValues<GamepadButton>())
         {
-            uint bit = 1u << (int)binding.Action;
-            bool isDown = Raylib.IsGamepadButtonDown(0, binding.Pad), isPressed = Raylib.IsGamepadButtonPressed(0, binding.Pad);
-            foreach (var key in binding.Keys)
-            {
-                isDown |= Raylib.IsKeyDown(key);
-                isPressed |= Raylib.IsKeyPressed(key);
-            }
-            if (isDown) down |= bit;
-            if (isPressed) pressed |= bit;
+            if (button == GamepadButton.Unknown) continue;
+            uint bit = 1u << (int)button;
+            if (Raylib.IsGamepadButtonDown(padIndex, button)) down |= bit;
+            if (Raylib.IsGamepadButtonPressed(padIndex, button)) pressed |= bit;
         }
-        return new ActionFrame(down, pressed);
+        return new PadSnapshot(true, down, pressed,
+            Raylib.GetGamepadAxisMovement(padIndex, GamepadAxis.LeftX), Raylib.GetGamepadAxisMovement(padIndex, GamepadAxis.LeftY));
     }
 
     public static bool IsActionPressed(GameAction action)
@@ -88,10 +157,13 @@ public static class InputManager
         // Running is a key held, so it counts as pressed for as long as it is down
         if (action == GameAction.Run) return IsActionDown(action);
         if (fed is { } frame) return frame.IsPressed(action);
+        // Outside the engine's own frame (the title's first moments, the harness's windows) the keys are asked for directly
         var binding = Of(action);
         foreach (var key in binding.Keys)
             if (Raylib.IsKeyPressed(key)) return true;
-        return Raylib.IsGamepadButtonPressed(0, binding.Pad);
+        foreach (var button in binding.Pad)
+            if (Raylib.IsGamepadButtonPressed(padIndex, button)) return true;
+        return false;
     }
 
     public static bool IsActionDown(GameAction action)
@@ -100,7 +172,9 @@ public static class InputManager
         var binding = Of(action);
         foreach (var key in binding.Keys)
             if (Raylib.IsKeyDown(key)) return true;
-        return Raylib.IsGamepadButtonDown(0, binding.Pad);
+        foreach (var button in binding.Pad)
+            if (Raylib.IsGamepadButtonDown(padIndex, button)) return true;
+        return false;
     }
 
     /// <summary>A key's name as the help page writes it.</summary>

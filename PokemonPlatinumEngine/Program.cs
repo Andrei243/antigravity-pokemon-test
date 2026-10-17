@@ -157,12 +157,6 @@ public static class Program
         {
             if (Raylib.WindowShouldClose()) engine.RequestClose();
 
-            // Toggle full screen on F11 or Alt+Enter
-            if (Raylib.IsKeyPressed(KeyboardKey.F11) || (Raylib.IsKeyDown(KeyboardKey.LeftAlt) && Raylib.IsKeyPressed(KeyboardKey.Enter)))
-            {
-                engine.ToggleFullscreen();
-            }
-
             // Whether the window is the one in front: with the options' "Pause in the background" on, the game waits while it isn't
             engine.WindowFocused = Raylib.IsWindowFocused();
 

@@ -18,6 +18,7 @@ public enum OptionRow
     FocusPause, FrameCap,
     SkipScenes,
     BattleScene, BattleStyle,
+    ButtonMode, StickDeadZone, Gamepad,
     Help
 }
 
@@ -184,6 +185,21 @@ public class OptionsScreen
             case OptionRow.BattleStyle:
                 s.BattleStyle = s.BattleStyle == BattleStyle.Shift ? BattleStyle.Set : BattleStyle.Shift;
                 break;
+            case OptionRow.ButtonMode:
+                // Normal, Start=X, L=A, and round again (plan 12 · Q4)
+                s.ButtonMode = (ButtonMode)Wrap((int)s.ButtonMode + step, 3);
+                break;
+            case OptionRow.StickDeadZone:
+                // 10 to 60 percent along GameSettings.StickDeadZones; a number the file was given by hand counts as the nearest
+                var zones = GameSettings.StickDeadZones;
+                int zone = Array.IndexOf(zones, s.StickDeadZone);
+                if (zone < 0) zone = Array.IndexOf(zones, zones.OrderBy(z => Math.Abs(z - s.StickDeadZone)).First());
+                s.StickDeadZone = zones[Math.Clamp(zone + step, 0, zones.Length - 1)];
+                break;
+            case OptionRow.Gamepad:
+                // Pad 1 to 4, and round again
+                s.GamepadIndex = Wrap(Math.Clamp(s.GamepadIndex, 0, 3) + step, 4);
+                break;
         }
     }
 
@@ -214,6 +230,9 @@ public class OptionsScreen
         OptionRow.SkipScenes => (Text.Of("options.skipScenes.label"), Text.Of($"options.skipScenes.value.{s.SkipScenes}"), Text.Of($"options.skipScenes.help.{s.SkipScenes}")),
         OptionRow.BattleScene => (Text.Of("options.battleScene.label"), OnOff(s.BattleScene), Text.Of(s.BattleScene ? "options.battleScene.help.on" : "options.battleScene.help.off")),
         OptionRow.BattleStyle => (Text.Of("options.battleStyle.label"), Text.Of($"options.battleStyle.value.{s.BattleStyle}"), Text.Of($"options.battleStyle.help.{s.BattleStyle}")),
+        OptionRow.ButtonMode => (Text.Of("options.buttonMode.label"), Text.Of($"options.buttonMode.value.{s.ButtonMode}"), Text.Of($"options.buttonMode.help.{s.ButtonMode}")),
+        OptionRow.StickDeadZone => (Text.Of("options.stickDeadZone.label"), Text.Of("options.stickDeadZone.value", ("n", s.StickDeadZone)), Text.Of("options.stickDeadZone.help")),
+        OptionRow.Gamepad => (Text.Of("options.gamepad.label"), Text.Of("options.gamepad.value", ("n", Math.Clamp(s.GamepadIndex, 0, 3) + 1)), Text.Of("options.gamepad.help")),
         _ => (Text.Of("options.help.label"), Text.Of("options.help.value"), Text.Of("options.help.help"))
     };
 

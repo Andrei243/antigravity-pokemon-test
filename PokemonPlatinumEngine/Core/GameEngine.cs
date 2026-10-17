@@ -405,6 +405,8 @@ public partial class GameEngine
         renderContext.SetQuality(Settings.Quality);
         // The language every later string is given in (plan 17 · N1)
         Text.Use(Settings.Language);
+        // The keys and the pad as the options have them (plan 12 · Q4)
+        InputManager.Use(Settings);
         GameClock.Fixed = Settings.TimeOfDay;
         if (AudioManager.IsMuted != Settings.Muted) AudioManager.ToggleMute();
         AudioManager.SetVolumes(Settings.MusicVolume / 100f, Settings.SoundVolume / 100f, Settings.CryVolume / 100f, Settings.AmbienceVolume / 100f);
@@ -757,6 +759,8 @@ public partial class GameEngine
 
     private void UpdateFrame(float dt)
     {
+        // Full screen on F11 or Alt+Enter: the Fullscreen action (plan 12 · Q4), read even while the game waits behind another window
+        if (!IsHeadless && InputManager.IsActionPressed(GameAction.Fullscreen)) ToggleFullscreen();
         // Behind another window, with the option on, the game waits where it is and its sound drops (plan 16 · T3)
         bool held = HeldForFocus;
         AudioManager.Away = held;
@@ -818,8 +822,8 @@ public partial class GameEngine
 
         UpdateAmbience();
 
-        // Global Mute Toggle (M)
-        if (Raylib.IsKeyPressed(KeyboardKey.M))
+        // Global mute toggle: the Mute action (M), plan 12 · Q4
+        if (InputManager.IsActionPressed(GameAction.Mute))
         {
             Settings.Muted = !Settings.Muted;
             ApplySettings(window: false);

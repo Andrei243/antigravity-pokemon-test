@@ -192,6 +192,25 @@
         "Set": "When a trainer's Pokémon faints, the next one comes straight out and you are not asked to switch."
       }
     },
+    "buttonMode": {
+      "label": "Button mode",
+      "value": { "Normal": "Normal", "StartIsX": "Start = X", "LIsA": "L = A" },
+      "help": {
+        "Normal": "The pad's buttons as the game has them: A to confirm, B to go back, the left face button for the registered item, Start for the menu.",
+        "StartIsX": "Start and the left face button change places: the menu is on the face button and the registered item on Start.",
+        "LIsA": "The left shoulder button confirms as A does. The Pokétch's touch is then on the keyboard (I) alone."
+      }
+    },
+    "stickDeadZone": {
+      "label": "Stick dead zone",
+      "value": "{n}%",
+      "help": "How far the pad's left stick has to be pushed before it walks or moves a cursor. Raise it if the stick drifts, lower it if it feels dull."
+    },
+    "gamepad": {
+      "label": "Controller",
+      "value": "Pad {n}",
+      "help": "Which of the connected controllers the game reads. The keyboard works whichever is chosen."
+    },
     "help": {
       "label": "Help",
       "value": "Open",
@@ -200,7 +219,7 @@
   },
 
   "title": {
-    "press": "PRESS  Z  OR  ENTER",
+    "press": "PRESS  {KEY:confirm}  OR  {KEY:menu}",
     "credit": "A fan-made project, not affiliated with Nintendo, Creatures or GAME FREAK.",
     "disclaimer": {
       "heading": "A fan-made remake",
@@ -620,7 +639,7 @@
     "release": {
       "question": "Release {name}?",
       "body": "Once it goes back to the wild, it won't come back to you.",
-      "yes": "RELEASE  (Z)",
+      "yes": "RELEASE  ({KEY:confirm})",
       "no": "KEEP IT  (ESC)"
     },
     "moves": "MOVES",
@@ -739,7 +758,6 @@
         "text": "Save from the menu whenever you like. A Pokémon Center heals your team for nothing, and the last one you visited is where you wake up after losing a battle."
       }
     },
-    "key": { "fullScreen": "Full screen", "sound": "Sound on or off" },
     "matchup": {
       "super": { "headline": "Super effective", "line": "A {attack} move against a {defend} Pokémon does twice the damage." },
       "half": { "headline": "Not very effective", "line": "A {attack} move against a {defend} Pokémon does half the damage." },
@@ -1055,7 +1073,7 @@
     "nextTrainer": "NEXT TRAINER",
     "opening": "The game board is starting up...",
     "ready": "Get ready!",
-    "running": "Press Z to stop the cursor!",
+    "running": "Press {key:confirm} to stop the cursor!",
     "said": "{effect}!",
     "cursor": "CURSOR",
     "random": "RANDOM",
@@ -1512,13 +1530,19 @@
     "action": {
       "Up": "Up", "Down": "Down", "Left": "Left", "Right": "Right", "Confirm": "Confirm, talk, read", "Cancel": "Back", "Menu": "Menu",
       "Run": "Run (held)", "Item": "Registered item", "Poketch": "Pokétch out or away", "PoketchApp": "Next Pokétch app",
-      "PoketchTouch": "Touch the Pokétch"
+      "PoketchTouch": "Touch the Pokétch", "PageLeft": "Page back", "PageRight": "Page on", "Fullscreen": "Full screen", "Mute": "Sound on or off", "Screenshot": "Take a screenshot"
     },
     "key": { "esc": "Esc", "shift": "Shift", "up": "Up arrow", "down": "Down arrow", "left": "Left arrow", "right": "Right arrow" },
+    "unbound": "None",
     "pad": {
       "up": "D-pad up", "down": "D-pad down", "left": "D-pad left", "right": "D-pad right", "bottom": "Bottom button",
       "rightButton": "Right button", "leftButton": "Left button", "top": "Top button", "start": "Start", "r": "R", "l": "L"
     }
+  },
+  "padButtons": {
+    "bottom": "A", "right": "B", "left": "X", "top": "Y", "start": "Start", "select": "Select",
+    "l1": "L", "r1": "R", "l2": "ZL", "r2": "ZR", "dpad": "D-pad",
+    "dpadUp": "D-pad up", "dpadDown": "D-pad down", "dpadLeft": "D-pad left", "dpadRight": "D-pad right"
   },
   "found": {
     "found": { "one": "{player} found the {item}!", "other": "{player} found {n} × {item}!" },

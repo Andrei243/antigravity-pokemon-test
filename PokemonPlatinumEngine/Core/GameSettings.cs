@@ -98,6 +98,27 @@ public sealed class GameSettings
     /// </summary>
     public BattleStyle BattleStyle { get; set; } = BattleStyle.Shift;
 
+    /// <summary>
+    /// Platinum's Button Mode (plan 12 · Q4): Normal unless chosen. Start=X and L=A are presets of the bindings
+    /// (<see cref="InputBindings.For"/>); <see cref="Bindings"/> lays a player's own over the preset.
+    /// </summary>
+    public ButtonMode ButtonMode { get; set; } = ButtonMode.Normal;
+
+    /// <summary>How far the pad's left stick must be pushed before it walks or moves a cursor, in percent (<see cref="StickDeadZones"/>): 35 unless chosen.</summary>
+    public int StickDeadZone { get; set; } = 35;
+
+    /// <summary>The stick's dead zones the options offer, in percent.</summary>
+    public static readonly int[] StickDeadZones = { 10, 15, 20, 25, 30, 35, 40, 45, 50, 60 };
+
+    /// <summary>The pad the game reads, 0 to 3 (the options say 1 to 4): the first unless chosen.</summary>
+    public int GamepadIndex { get; set; }
+
+    /// <summary>
+    /// The player's own bindings, an action's name to its keys and pad buttons, laid over the Button Mode's preset
+    /// (plan 12 · Q4; the Controls page of plan 12 · Q5 writes it). Empty unless the player rebinds something.
+    /// </summary>
+    public Dictionary<string, SavedBinding> Bindings { get; set; } = new();
+
     /// <summary>The options move a volume by this much.</summary>
     public const int VolumeStep = 10;
 
