@@ -114,7 +114,7 @@ partial class Harness
                 else Confirm(fight);
                 Skip(0.5);
             }
-            Until(() => State() == GameState.Overworld, "the field again", 1500);
+            Until(() => FieldAgain(), "the field again", 1500);
             foreach (var mine in team.Members.Where(p => !p.IsEgg)) { mine.CurrentHP = mine.MaxHP; mine.Status = StatusCondition.None; }
             Frames(10);
         }
@@ -228,7 +228,7 @@ partial class Harness
             Console.WriteLine($"the upgrade: national {game.Pokedex.NationalUnlocked}, the PC's boxes {game.Boxes.Boxes.Count}, Poké Radar {Held("Poké Radar")}, Professor Oak there {Someone(Lab, "prof_oak") != null}, "
                 + Flags("FLAG_HIDE_SANDGEM_TOWN_LAB_PROF_OAK", "FLAG_HIDE_FIGHT_AREA_BLOCKADE") + $", player at {Me().GridX},{Me().GridY}");
             game.Interact();
-            ReadTo("many more"); Frames(4); Shot("pg0h_lab_many_more_pokemon");
+            ReadTo("other two Pokémon"); Frames(4); Shot("pg0h_lab_the_other_starters");
             ReadTo(null);
         }
         else

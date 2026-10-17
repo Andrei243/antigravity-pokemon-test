@@ -52,7 +52,7 @@ partial class Harness
                 else Confirm(fight);
                 Skip(0.5);
             }
-            Until(() => State() == GameState.Overworld, "the field again", 1500);
+            Until(() => FieldAgain(), "the field again", 1500);
             Frames(10);
         }
         // Reads on until the script has ended, winning its battles; or, given a test, until it holds

@@ -21,7 +21,8 @@ partial class Harness
         var story = game.Story;
         var bag = game.Bag;
         var team = game.Party;
-        var infernape = new Pokemon(PokemonDatabase.Get("Infernape")!, 64);
+        // Level 100 so that Volkner's Full Restore and Giga Impact cannot cost the lead its place and the battle (it was 64)
+        var infernape = new Pokemon(PokemonDatabase.Get("Infernape")!, 100);
         infernape.Moves.Clear();
         foreach (string move in new[] { "Flamethrower", "Close Combat", "Earthquake", "Mach Punch" }) infernape.Moves.Add(new Move(MoveDatabase.Get(move)!));
         team.Members.Insert(0, infernape);
@@ -87,7 +88,7 @@ partial class Harness
                 else Confirm(fight);
                 Skip(0.5);
             }
-            Until(() => State() == GameState.Overworld, "the field again", 1500);
+            Until(() => FieldAgain(), "the field again", 1500);
             foreach (var mine in team.Members.Where(p => !p.IsEgg)) { mine.CurrentHP = mine.MaxHP; mine.Status = StatusCondition.None; }
             Frames(10);
         }

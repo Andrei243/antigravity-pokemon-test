@@ -423,6 +423,17 @@ partial class Harness
         }
     }
 
+    // The field again after a won battle, as a player gets there: a Pokémon that levelled and wants to evolve is
+    // stopped (B), and a move it would learn is kept as it is, through the game's own evolution screen, so a mode that
+    // wins the battles a scene starts is not carried off by the starter's evolution. True once the field is back
+    bool FieldAgain()
+    {
+        if (game.State != GameState.Evolution) return game.State == GameState.Overworld;
+        var scene = game.Evolution;
+        if (scene.Phase == EvolutionPhase.Notice) scene.PressConfirm(); else scene.PressCancel();
+        return false;
+    }
+
     /// <summary>Whether <see cref="Confirm"/> answers Battle Style Shift's offer as it comes (plan 08 · P1); off only where a mode shoots it.</summary>
     bool AnswersOffers = true;
 
