@@ -50,20 +50,18 @@ partial class Harness
         saved.PressConfirm();
         Seconds(0.2f); Shot("title_11_confirm_new_game");
 
-        // "Yes" leads to the last question: whose rules. Platinum's are offered; the other answer has its own words
+        // "Yes" begins the new game: the question of whose rules that followed it is gone (plan 06 · R19), and with it
+        // title_12 and title_13 and the card that said "modern rules" (title_14). The time they took is still spent,
+        // so that nothing after them moves
         saved.Move(1);
         saved.PressConfirm();
-        Seconds(0.2f); Shot("title_12_rules_platinum");
-        saved.Move(1);
-        Seconds(0.2f); Shot("title_13_rules_modern");
-
-        // A game played by the modern rules says so on its panel
-        save.Rules = RulesPreset.Modern;
-        var modern = NewTitle(save);
-        modern.PressConfirm();
+        Seconds(0.2f); Shot("title_12_new_game_leaving");
+        Seconds(0.2f);
+        var again = NewTitle(save);
+        again.PressConfirm();
         Seconds(1.2f);
-        modern.PressConfirm();
-        Seconds(1f); Shot("title_14_continue_modern_rules");
+        again.PressConfirm();
+        Seconds(1f);
 
         // A save that couldn't be read: the one before it was loaded, and the title says so before its menu (plan 12 · Q1)
         var recovered = NewTitle(save, TitleNotice.ForSave(SaveLoad.Recovered));
@@ -140,7 +138,7 @@ partial class Harness
         // The slots (plan 12 · Q2), after everything else so that nothing before it moves. A game is saved in one of
         // three, and the menu has a card for each that holds a save. The saves are made up here, as the one above is:
         // no file stands behind them, so the slot the mode deletes is one whose files were never there
-        SaveData Game(string name, PlayerLook look, int x, int y, float hours, int badges, int caught, RulesPreset rules, params (string, int)[] team) => new()
+        SaveData Game(string name, PlayerLook look, int x, int y, float hours, int badges, int caught, params (string, int)[] team) => new()
         {
             PlayerName = name,
             Look = look,
@@ -150,13 +148,11 @@ partial class Harness
             WorldVersion = SaveData.CurrentWorld,
             PlayTimeSeconds = hours * 3600f,
             Badges = (1 << badges) - 1,
-            Rules = rules,
             CaughtSpecies = Enumerable.Range(387, caught).ToList(),
             Party = team.Select(p => SavedPokemonData.FromPokemon(new Pokemon(PokemonDatabase.Get(p.Item1)!, p.Item2))).ToList()
         };
-        save.Rules = RulesPreset.Platinum;
-        var second = Game("Dawn", PlayerLook.Girl, 305, 531, 31.75f, 2, 22, RulesPreset.Modern, ("Monferno", 21), ("Buizel", 19));
-        var third = Game("Barry", PlayerLook.Boy, 860, 785, 96.2f, 8, 151, RulesPreset.Platinum, ("Empoleon", 58), ("Staraptor", 56), ("Roserade", 55));
+        var second = Game("Dawn", PlayerLook.Girl, 305, 531, 31.75f, 2, 22, ("Monferno", 21), ("Buizel", 19));
+        var third = Game("Barry", PlayerLook.Boy, 860, 785, 96.2f, 8, 151, ("Empoleon", 58), ("Staraptor", 56), ("Roserade", 55));
         TitleScreen Slots(params TitleSlot[] taken)
         {
             var title = TitleScreen.WithSlots(taken);

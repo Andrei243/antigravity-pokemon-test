@@ -12,12 +12,13 @@ namespace PokemonPlatinumEngine.UI;
 
 /// <summary>
 /// Where the opening is: the notice, the fly-over shots, Giratina's reveal, the idle title, then the menu and the
-/// two questions a new game asks (whether to leave a save behind, and whose rules to play by). Between the title and
+/// question a new game asks where a save exists (whether to leave it behind; whose rules is no longer asked, plan
+/// 06 · R19: every game is played by the modern ones). Between the title and
 /// the menu, <see cref="Warning"/> tells what the player must know before choosing (a save that couldn't be read,
 /// plan 12 · Q1), one <see cref="TitleNotice"/> at a time. Deleting a save (plan 12 · Q2) is <see cref="ChooseDelete"/>,
 /// the cursor on the saves' cards alone, and <see cref="ConfirmDelete"/>, the question that names the slot.
 /// </summary>
-public enum TitlePhase { Notice, Journey, Reveal, Idle, Menu, ConfirmNewGame, ChooseRules, Leaving, Warning, ChooseDelete, ConfirmDelete }
+public enum TitlePhase { Notice, Journey, Reveal, Idle, Menu, ConfirmNewGame, Leaving, Warning, ChooseDelete, ConfirmDelete }
 
 /// <summary>
 /// A slot the title has a card for (plan 12 · Q2): its number from 1 and the game saved in it, or no game for a
@@ -144,12 +145,6 @@ public sealed class TitleScreen
     /// <summary>In the "start a new game?" and the "delete this save?" prompts: true while Yes is highlighted.</summary>
     public bool ConfirmYes { get; private set; }
 
-    /// <summary>
-    /// Whose rules the new game is played by: what is highlighted in the "which rules?" prompt, and the answer
-    /// once New Game has been handed over. It is asked here because it can never be changed afterwards.
-    /// </summary>
-    public RulesPreset Rules { get; private set; }
-
     /// <summary>Whether there is a game to continue: a slot whose save could be read.</summary>
     public bool HasSave => cards.Any(c => c.Save != null);
     public IReadOnlyList<TitleChoice> Entries => entries;
@@ -241,7 +236,7 @@ public sealed class TitleScreen
         phaseTime += dt;
         totalTime += dt;
         skipFlash = Math.Max(0f, skipFlash - dt);
-        bool menuUp = Phase is TitlePhase.Menu or TitlePhase.ConfirmNewGame or TitlePhase.ChooseRules or TitlePhase.Leaving
+        bool menuUp = Phase is TitlePhase.Menu or TitlePhase.ConfirmNewGame or TitlePhase.Leaving
             or TitlePhase.ChooseDelete or TitlePhase.ConfirmDelete || Phase == TitlePhase.Warning && noticeOverMenu;
         menuBlend = Math.Clamp(menuBlend + (menuUp ? dt : -dt) / 0.45f, 0f, 1f);
 
@@ -293,7 +288,7 @@ public sealed class TitleScreen
                         ConfirmYes = false;
                         Enter(TitlePhase.ConfirmNewGame);
                         break;
-                    case TitleChoice.NewGame: AskRules(); break;
+                    case TitleChoice.NewGame: BeginNewGame(); break;
                     // With one save there is no asking which
                     case TitleChoice.Delete when cards.Count == 1: AskDelete(cards[0].Number); break;
                     case TitleChoice.Delete:
@@ -307,13 +302,8 @@ public sealed class TitleScreen
                 break;
             case TitlePhase.ConfirmNewGame:
                 AudioManager.PlaySound(ConfirmYes ? "select" : "cancel");
-                if (ConfirmYes) AskRules();
+                if (ConfirmYes) BeginNewGame();
                 else Enter(TitlePhase.Menu);
-                break;
-            case TitlePhase.ChooseRules:
-                AudioManager.PlaySound("select");
-                Slot = FreeSlot ?? 1;
-                Leave(TitleChoice.NewGame);
                 break;
             case TitlePhase.ChooseDelete:
                 AudioManager.PlaySound("select");
@@ -370,11 +360,14 @@ public sealed class TitleScreen
         Enter(TitlePhase.Warning);
     }
 
-    /// <summary>The last question before a new game: whose rules. Platinum's are highlighted.</summary>
-    private void AskRules()
+    /// <summary>
+    /// A new game is handed over, in the first empty slot. Every game is played by the modern rules (plan 06 · R19, the
+    /// user's ruling of 2026-10-12), so nothing more is asked: the question of whose rules is gone.
+    /// </summary>
+    private void BeginNewGame()
     {
-        Rules = RulesPreset.Platinum;
-        Enter(TitlePhase.ChooseRules);
+        Slot = FreeSlot ?? 1;
+        Leave(TitleChoice.NewGame);
     }
 
     /// <summary>A notice read: the next one, or the menu once none is left.</summary>
@@ -394,7 +387,7 @@ public sealed class TitleScreen
             PutNoticeAway();
             return;
         }
-        if (Phase is TitlePhase.ConfirmNewGame or TitlePhase.ChooseRules) Enter(TitlePhase.Menu);
+        if (Phase == TitlePhase.ConfirmNewGame) Enter(TitlePhase.Menu);
         // Out of the delete question to where it was asked; out of the choice of a save to the row that asked for it
         else if (Phase == TitlePhase.ConfirmDelete) Enter(deleteFrom);
         else if (Phase == TitlePhase.ChooseDelete)
@@ -414,7 +407,6 @@ public sealed class TitleScreen
         if (Phase == TitlePhase.Menu) SelectedIndex = ((SelectedIndex + step) % entries.Count + entries.Count) % entries.Count;
         else if (Phase == TitlePhase.ChooseDelete) SelectedIndex = ((SelectedIndex + step) % cards.Count + cards.Count) % cards.Count;
         else if (Phase is TitlePhase.ConfirmNewGame or TitlePhase.ConfirmDelete) ConfirmYes = !ConfirmYes;
-        else if (Phase == TitlePhase.ChooseRules) Rules = Rules == RulesPreset.Platinum ? RulesPreset.Modern : RulesPreset.Platinum;
         else return;
         AudioManager.PlaySound("cursor");
     }
@@ -528,7 +520,6 @@ public sealed class TitleScreen
         }
         if (menuBlend > 0.01f) DrawMenu(sw, ease);
         if (Phase == TitlePhase.ConfirmNewGame) DrawConfirm(sw, sh);
-        if (Phase == TitlePhase.ChooseRules) DrawRules(sw, sh);
         if (Phase == TitlePhase.ConfirmDelete) DrawDelete(sw, sh);
         if (Phase == TitlePhase.Warning && Notice is { } notice)
             ModernUi.Notice(sw, sh, notice.Heading, notice.Body, Text.Of("shared.ok"), Smooth(0f, 0.18f, phaseTime));
@@ -724,13 +715,4 @@ public sealed class TitleScreen
         ModernUi.Prompt(sw, sh, DeleteHeading(DeletingSlot), DeleteBlurb(save, save != null ? ModernUi.PlaceOf(save) : null),
             new[] { (DeleteAnswers[0], ModernUi.Blue), (DeleteAnswers[1], ModernUi.Red) }, ConfirmYes ? 1 : 0);
     }
-
-    /// <summary>What the "which rules?" prompt says about the answer that is highlighted.</summary>
-    public static string RulesBlurb(RulesPreset rules) => rules == RulesPreset.Modern
-        ? Text.Of("title.rules.modernBlurb")
-        : Text.Of("title.rules.platinumBlurb");
-
-    private void DrawRules(int sw, int sh) =>
-        ModernUi.Prompt(sw, sh, Text.Of("title.rules.heading"), RulesBlurb(Rules),
-            new[] { (Text.Of("title.rules.platinum"), ModernUi.Blue), (Text.Of("title.rules.modern"), ModernUi.Green) }, Rules == RulesPreset.Modern ? 1 : 0);
 }

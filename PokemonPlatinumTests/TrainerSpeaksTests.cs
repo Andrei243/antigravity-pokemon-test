@@ -277,17 +277,17 @@ public class TrainerSpeaksTests
     }
 
     [Fact]
-    public void UnderRulesAPlatinumGamesTrainersKeepQuiet()
+    public void TrainersSpeakUnlessTurnedOff()
     {
-        Assert.Equal(RulesDefault.Rules, new GameSettings().TrainerLines);
+        // Every game is played by the modern rules (plan 06 · R19), under which the trainers spoke: the row is on or off
+        Assert.Equal(RulesDefault.On, new GameSettings().TrainerLines);
         var settings = new GameSettings();
-        OptionsScreen.Change(settings, OptionRow.TrainerLines, 1);
-        Assert.Equal(RulesDefault.On, settings.TrainerLines);
         OptionsScreen.Change(settings, OptionRow.TrainerLines, 1);
         Assert.Equal(RulesDefault.Off, settings.TrainerLines);
         OptionsScreen.Change(settings, OptionRow.TrainerLines, 1);
-        Assert.Equal(RulesDefault.Rules, settings.TrainerLines);
-        Assert.False(settings.TrainerLines.Holds(RulesPreset.Platinum));
+        Assert.Equal(RulesDefault.On, settings.TrainerLines);
+        settings.TrainerLines = RulesDefault.Rules;
+        Assert.Equal(RulesDefault.On, settings.TrainerLines);
         Assert.True(settings.TrainerLines.Holds(RulesPreset.Modern));
     }
 

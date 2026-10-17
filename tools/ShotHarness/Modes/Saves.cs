@@ -4,10 +4,10 @@ partial class Harness
 
     // Saves as today's game writes them, for the test project's corpus of every version (PokemonPlatinumTests/Fixtures/
     // saves, SaveCorpusTests): a new game in the player's room once the television has had its say, a game past the
-    // first chapter in front of the house, surfing, on a bridge's deck, a Safari Game under way, the girl, and a game
-    // under the modern rules. Each is the engine's own BuildSave written as SaveManager writes a slot's save, into
-    // <out dir>/saves/ as w<world>-s<story>-<moment>.json. No shots. Not part of "all". A session that raises
-    // SaveData.CurrentWorld or StoryState.CurrentVersion runs it and copies the files into the corpus.
+    // first chapter in front of the house, surfing, on a bridge's deck, a Safari Game under way and the girl (every
+    // game is played by the modern rules since plan 06 · R19). Each is the engine's own BuildSave written as SaveManager
+    // writes a slot's save, into <out dir>/saves/ as w<world>-s<story>-<moment>.json. No shots. Not part of "all". A
+    // session that raises SaveData.CurrentWorld or StoryState.CurrentVersion runs it and copies the files into the corpus.
     public void SavesMode()
     {
         string folder = Path.Combine(outDir, "saves");
@@ -27,9 +27,9 @@ partial class Harness
                 $"{save.Rules} rules, {save.Look} {save.PlayerName}, team {string.Join(", ", save.Party.Select(p => $"{p.SpeciesName} {p.Level}"))}, " +
                 $"{save.StoryFlags.Count} flags, {save.StoryVariables.Count} variables, started {save.Started:yyyy-MM-dd}");
         }
-        void Begin(PlayerLook look = PlayerLook.Boy, RulesPreset rules = RulesPreset.Platinum)
+        void Begin(PlayerLook look = PlayerLook.Boy)
         {
-            engine.StartNewGame(null, look, rules);
+            engine.StartNewGame(null, look);
             game.State = GameState.Overworld;
             game.LocationSign.Hide();
         }
@@ -108,12 +108,7 @@ partial class Harness
         PastTheOpening();
         Write("the-girl");
 
-        // ---- a game played by the modern rules, past the first chapter
-        Begin(rules: RulesPreset.Modern);
-        PastTheOpening();
-        Write("modern-rules");
-
-        // Platinum's rules again, as every mode expects
+        // A game past the first chapter again, as every mode expects
         Begin();
         PastTheOpening();
         Console.WriteLine($"{Directory.GetFiles(folder, prefix + "*.json").Length} saves in {folder}");

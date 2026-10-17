@@ -961,15 +961,20 @@ public sealed partial class Importer
     private static bool Same(List<LearnableMove> a, List<LearnableMove> b) =>
         a.Select(m => (m.Level, m.MoveName)).SequenceEqual(b.Select(m => (m.Level, m.MoveName)));
 
-    /// <summary>What the newest games changed of a set of values: null when nothing.</summary>
+    /// <summary>
+    /// What the newest games changed of a set of values: null when nothing. The moves learned by level are the newest
+    /// game's list of the species (<see cref="LearnsetVersionGroups"/>, plan 06 · R19), where it has one and it isn't
+    /// Platinum's.
+    /// </summary>
     private static SpeciesValues? Changes(Look platinum, Look modern)
     {
         var values = new SpeciesValues
         {
             Types = modern.Types.SequenceEqual(platinum.Types) ? null : modern.Types,
-            BaseStats = Same(modern.BaseStats, platinum.BaseStats) ? null : modern.BaseStats
+            BaseStats = Same(modern.BaseStats, platinum.BaseStats) ? null : modern.BaseStats,
+            Learnset = modern.Learnset.Count == 0 || Same(modern.Learnset, platinum.Learnset) ? null : modern.Learnset
         };
-        return values.Types == null && values.BaseStats == null ? null : values;
+        return values.Types == null && values.BaseStats == null && values.Learnset == null ? null : values;
     }
 
     /// <summary>The newest games' types and base stats of Platinum's species, where they differ from Platinum's own.</summary>
@@ -1042,7 +1047,15 @@ public sealed partial class Importer
                 else if (ownEntry) Differences(form, PokeApiLook(p), mainLook);
                 if (ownTypes != null && !ownTypes.SequenceEqual(mainLook.Types)) form.Types = ownTypes;
                 // A form held only in battle keeps the moves it had before
-                if (form.Kind is FormKind.Mega or FormKind.Primal or FormKind.Gigantamax or FormKind.Battle) form.Learnset = null;
+                if (form.Kind is FormKind.Mega or FormKind.Primal or FormKind.Gigantamax or FormKind.Battle)
+                {
+                    form.Learnset = null;
+                    if (form.Modern != null)
+                    {
+                        form.Modern.Learnset = null;
+                        if (form.Modern is { Types: null, BaseStats: null }) form.Modern = null;
+                    }
+                }
                 // An entry of its own with nothing in it that the species hasn't (Pikachu's caps) is only a look
                 if (form.Kind == FormKind.Alternate && form is { Types: null, BaseStats: null, Abilities: null, HiddenAbility: null, Height: null,
                         Weight: null, BaseExpYield: null, EvYield: null, CatchRate: null, Learnset: null, Modern: null })

@@ -4,9 +4,10 @@ Choices made where the games disagree with each other, or where a rule leans on 
 
 ## The general rulings (plan 06 · R1, confirmed by the user on 2026-10-04)
 
-1. **Whose rules: Platinum's, or the modern ones, chosen once.** A new game asks on the title screen, after NEW GAME: *Platinum rules* (offered first) or *Modern rules*. The answer is kept in the save (`SaveData.Rules`) and nothing in the game changes it afterwards: there is no option for it. Under Platinum's rules everything Platinum has works as in Platinum. Under the modern rules the same things follow the newest games. Either way, whatever came after Platinum follows the game that introduced it, in its latest form.
-   - Every difference lives in `Data/Ruleset.cs`. Code that runs a rule which differs between the generations asks the battle's `Rules` (or `Ruleset.Current` outside a battle) for the number; it never carries a constant of its own. The table below is the list.
-   - A move's own numbers follow the rules too: `moves.json` holds Platinum's values, and `modern` beside them where the newest games differ (107 of Platinum's moves). `Ruleset.Use` swaps them in as a game begins or loads.
+1. **Whose rules: the modern ones, in every game** (the user's ruling of 2026-10-12, carried out by plan 06 · R19 on 2026-10-17; it replaces the ruling of 2026-10-04, under which a new game asked on the title screen whether to play by Platinum's rules or the modern ones). There is no question after NEW GAME any more: every new game is played by the modern rules, and a game begun under Platinum's is brought over to them as it loads (`GameEngine.ApplySaveData`: its Pokémon take the modern moves', species' and learnsets' values, effort past the modern 252 in a stat is cut to it and PP past a move's modern most to that, `SavedPokemonData.ToPokemon`; its next save says `Modern`). `SaveData.Rules` is read for that alone. The options that followed the rules (the move hints, the trainers' lines in battle) take what they gave under the modern ones: they are on unless turned off, and a settings file that says "Rules" reads as on. What stays Platinum's is the content: Sinnoh's story, maps, encounter tables and trainers. Whatever came after Platinum follows the game that introduced it, in its latest form.
+   - Every difference lives in `Data/Ruleset.cs`. `Ruleset.Platinum` stays in the code as the baseline the modern rules are written as differences from: the tests of R1 to R18 hold it to the decompilation, `battles-platinum.txt` keeps it from moving, and a test or a battle handed no rules of its own is fought by it. No game is played by it. Whether it goes for good is R30's question at the sign-off. Code that runs a rule which differs between the generations asks the battle's `Rules` (or `Ruleset.Current` outside a battle) for the number; it never carries a constant of its own. The table below is the list.
+   - A move's own numbers follow the rules too: `moves.json` holds Platinum's values, and `modern` beside them where the newest games differ (107 of Platinum's moves). A species' and a form's types, base stats and, since R19, the moves they learn by level do the same (`species.json`'s `modern`). `Ruleset.Use` swaps them in as a game begins or loads.
+   - **The moves learned by level are the newest game's** (the user's "latest moveset for each Pokémon", R19): the importer gives each of species 1 to 493 the list of the newest game it is in (by `LearnsetVersionGroups`, Scarlet and Violet first, as species 494 on already had theirs): 486 species and 12 forms learn another list than Platinum's. **Until R24 to R26 give the later moves their effects, a Pokémon learns by level only the moves that do something in a battle** (`MoveDatabase.Runs`, read by `Pokemon.Learnset`): a move whose effect is still missing but that hits (`support: Partial`) is learned and hits; a move that does nothing yet (`support: None`) is passed over, and is learned by the Pokémon that reach its level once it runs. A trainer's Pokémon whose moves the original's data gives keep them.
 2. **When Mega Evolution, Z-Moves, Dynamax and Terastallization appear: during Sinnoh's story, if they can be balanced there; otherwise after the Hall of Fame.** See "The later mechanics in the story" below for what balanced has to mean and when it is checked.
 3. **How they live together: one of each.** Each mechanic once per trainer per battle, and a Pokémon can use only one of them in a battle. A Pokémon holding a Mega Stone or a Z-Crystal can't Terastallize; a Mega or Primal Pokémon can't Dynamax.
 4. **Where Dynamax works: anywhere**, once the Dynamax Band is in hand.
@@ -17,9 +18,11 @@ Choices made where the games disagree with each other, or where a rule leans on 
 
 ### What the two sets of rules say
 
+Every game is played by the modern column (R19). The Platinum column is the baseline the code writes it against. Before taking Platinum's column out of play, R19 laid the table before the user for any rule wanted as Platinum has it; with no answer to the contrary the whole modern column is kept (the overview's default). The one to look at twice is **EXP**: the modern formula gives the whole team a share, which feeds the levels plan 18 · W4 has to solve. A rule the user wants kept as Platinum has it becomes a value of the modern preset in `Ruleset.Modern`, and nothing else changes.
+
 In the `Ruleset` today, because the engine already runs these rules:
 
-| Rule | Platinum | Modern |
+| Rule | Platinum (the baseline) | Modern (every game) |
 | --- | --- | --- |
 | A critical hit | × 2 | × 1.5 |
 | Chance of one, by stage | 1 in 16, 8, 4, 3, 2 | 1 in 24, 8, 2, then always |
@@ -58,8 +61,9 @@ In the `Ruleset` today, because the engine already runs these rules:
 | An Everstone in breeding (plan 06 · R15) | the mother's or Ditto's nature one time in two | the holder's nature, always, whichever parent |
 | The IVs an Egg inherits | three picks that can fall on the same stat; no item changes them | three different stats, five with a Destiny Knot, a Power item's from its holder |
 | The Masuda method | four more draws for a shiny personality | five more |
+| The moves learned by level | Platinum's lists | the newest game's list of each species (less the moves that do nothing yet: above) |
 
-The modern column's numbers for the rules R3 to R5 added (from the weather's length down) are the newest games' as we know them: the moves' own durations were read from Pokémon Showdown's move table, but its table of conditions (binding, the chance of protecting again) was not among the files fetched in R1. R19 checks every one of them against the source before the modern rules are signed off.
+The modern column's numbers for the rules R3 to R5 added (from the weather's length down) were checked in R19 against Pokémon Showdown at the importer's pinned commit (`data/conditions.ts` and the conditions of `data/moves.ts`), and every one holds: a burn's sixteenth, paralysis's half, a sleep of one to three turns (`random(2, 5)`), confusion's one time in three, a binding move's five or six (`random(5, 7)`, eight with a Grip Claw) and its eighth, protecting again at a third as likely each time down to 1 in 729 (`counterMax: 729`), an ability's weather of five turns (eight with its rock), Taunt's 3, Encore's 3, Disable's 5, Tailwind's 4, Uproar's 3 and Minimize's two stages.
 
 Known differences that join the `Ruleset` in the session that writes their rule, never as a constant beside it:
 
@@ -68,7 +72,7 @@ Known differences that join the `Ruleset` in the session that writes their rule,
 | Catching | Platinum's formula | critical captures, the later status bonuses | R9, R13 |
 | TMs | used up | kept | R11 |
 | Poison in the field | hurts every four steps, down to 1 HP | none | R13 |
-| Species' types and base stats | Platinum's (Clefairy is Normal) | the newest games' (Fairy; the stat raises of Generations 6 and 7) | plan 03 · D11 (done: `Ruleset.ModernSpeciesValues`), then R19 |
+| Species' types and base stats | Platinum's (Clefairy is Normal) | the newest games' (Fairy; the stat raises of Generations 6 and 7) | plan 03 · D11 (done: `Ruleset.ModernSpeciesValues`); in play since R19, every game being played by them, which is what puts the Fairy type on Sinnoh's own species |
 | Abilities that were reworked (Sturdy holding on at 1 HP, Lightning Rod and Storm Drain taking the move in, Stench's flinch, Pickup in battle) | as in Platinum (written in R7) | as in the newest games | R27 |
 
 ### Where the engine stands against Platinum's own code
@@ -2028,7 +2032,7 @@ The rooms made by hand before the world was imported, laid out again on the orig
 
 ## Trainers who speak in battle (2026-10-12, plan 11 · C12)
 
-Platinum's trainers speak before a battle and after it, never during it; from Black and White on, leaders, rivals and bosses speak at its turning points. This game has them speak only where the `TrainerLines` option holds (On, or Rules in a game played by the modern rules), so a Platinum game shows nothing new. The rules mark the moments (`TrainerReacts`, `BattleCore.Speaks.cs`) whatever the option says; the words are ours (`Data/trainer-lines.json`) and the face's alone.
+Platinum's trainers speak before a battle and after it, never during it; from Black and White on, leaders, rivals and bosses speak at its turning points. This game has them speak while the `TrainerLines` option is on, which it is unless turned off (since R19 every game is played by the modern rules, where "Rules" gave on). The rules mark the moments (`TrainerReacts`, `BattleCore.Speaks.cs`) whatever the option says; the words are ours (`Data/trainer-lines.json`) and the face's alone.
 
 - **The three moments**, each once per trainer and battle: their last Pokémon able to fight comes out in the middle of the battle (a replacement, a switch, a move that brings it in; the opening's send-outs never count, so a trainer of one has no such moment); the first of theirs falls while others can still fight (the faint that leaves them nobody is the battle's end, which has its own words); their last one stands in the red, a fifth of its HP or under (`BattleCore.RedShare`, the HP bar's red).
 - **The red is read after each action and after the end of a turn**, not at the hit's own impact as the plan first had it: the reaction goes with the last line the action said, so the trainer speaks once the move has been told whole ("It's super effective!" and a critical hit included). At the hit's impact the face's interlude would have put the line between the move and its effectiveness. It follows that whatever left the last one in the red counts (a hit, poison, recoil), that a Pokémon taken from above the red straight to nothing never stood in it and says nothing, and that one healed out of the red in the same action says nothing either.

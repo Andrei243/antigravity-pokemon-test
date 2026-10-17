@@ -146,9 +146,6 @@ public partial class GameEngine
 
     private static string playerName => PlayerIdentity.Name;
 
-    /// <summary>The rules picked on the title screen, held while the introduction plays.</summary>
-    private RulesPreset newGameRules;
-
     /// <summary>
     /// The region a new game starts in; null for the first region in the chain (Kanto). Set from the command line
     /// (--region Sinnoh) to test a later region without playing through the ones before it.
@@ -270,17 +267,17 @@ public partial class GameEngine
     public void StartNewGame() => StartNewGame(null, PlayerLook.Boy);
 
     /// <summary>
-    /// Starts a new game as the character and under the name chosen in the introduction, played by the rules chosen
-    /// on the title screen. The rules stay with the adventure: nothing in the game changes them afterwards.
+    /// Starts a new game as the character and under the name chosen in the introduction. Every game is played by the
+    /// modern rules (plan 06 · R19): Platinum's are the baseline the code writes them against, and no game's.
     /// </summary>
-    public void StartNewGame(string? name, PlayerLook look, RulesPreset rules = RulesPreset.Platinum, string? rival = null)
+    public void StartNewGame(string? name, PlayerLook look, string? rival = null)
     {
         // The new game is saved in the slot the title chose for it, the first empty one; a game begun without the
         // title (a test, a tool) takes the first empty one too, and with none keeps the slot it had (plan 12 · Q2)
         flow.SaveSlot = newGameSlot ?? SaveSlots.FirstEmpty(SavePaths.Current) ?? flow.SaveSlot;
         newGameSlot = null;
         // Before any Pokémon is made: the moves they learn take their values from the rules
-        Ruleset.Use(rules);
+        Ruleset.Use(RulesPreset.Modern);
         flow.Party.Clear();
         flow.Bag.Clear();
         flow.Pokedex.Clear();
@@ -437,8 +434,12 @@ public partial class GameEngine
 
     private void ApplySaveData(SaveData save)
     {
-        // The rules the adventure began under, before any of its Pokémon are made
-        Ruleset.Use(save.Rules);
+        // The modern rules, before any of its Pokémon are made (plan 06 · R19). A game begun under Platinum's is
+        // brought over as it loads: its Pokémon take the modern moves' and species' values, effort over the modern
+        // limit is cut to it and PP over a move's modern most to that (SavedPokemonData.ToPokemon), and its next
+        // save says Modern. SaveData.Rules is read for nothing else.
+        if (save.Rules != RulesPreset.Modern) Log.Info($"A game begun under {Ruleset.Of(save.Rules).Name} is brought over to the modern rules.");
+        Ruleset.Use(RulesPreset.Modern);
 
         // (A save made in a room laid out again since wakes on the tile the room is come into by: plan 01 · M11)
         var place = save.PlaceOn(MapDatabase.Get);
@@ -809,10 +810,9 @@ public partial class GameEngine
                         ContinueGame(flow.TitleScreen.Slot);
                         break;
                     case TitleChoice.NewGame:
-                        // The professor's welcome comes first; the game begins when it ends, by the rules just chosen
-                        // and in the slot the title found empty
+                        // The professor's welcome comes first; the game begins when it ends, in the slot the title
+                        // found empty
                         newGameSlot = flow.TitleScreen.Slot;
-                        newGameRules = flow.TitleScreen.Rules;
                         flow.State = GameState.Intro;
                         flow.IntroScreen.Open(GameSettings.CharactersPerSecond(Settings.TextSpeed));
                         AudioManager.PlayMusic(MusicRole.Introduction);
@@ -832,7 +832,7 @@ public partial class GameEngine
                 if (flow.IntroScreen.Phase == IntroPhase.Done)
                 {
                     flow.IntroScreen.Close();
-                    StartNewGame(flow.IntroScreen.Name, flow.IntroScreen.Look, newGameRules, flow.IntroScreen.RivalName);
+                    StartNewGame(flow.IntroScreen.Name, flow.IntroScreen.Look, flow.IntroScreen.RivalName);
                 }
                 break;
             case GameState.Overworld:

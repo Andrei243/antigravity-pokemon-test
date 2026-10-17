@@ -161,10 +161,10 @@ public class OptionsScreen
                 s.Speakers = (SpeakerMode)Wrap((int)s.Speakers + step, 3);
                 break;
             case OptionRow.MoveHints:
-                s.MoveHints = (RulesDefault)Wrap((int)s.MoveHints + step, 3);
+                s.MoveHints = s.MoveHints == RulesDefault.Off ? RulesDefault.On : RulesDefault.Off;
                 break;
             case OptionRow.TrainerLines:
-                s.TrainerLines = (RulesDefault)Wrap((int)s.TrainerLines + step, 3);
+                s.TrainerLines = s.TrainerLines == RulesDefault.Off ? RulesDefault.On : RulesDefault.Off;
                 break;
             case OptionRow.FocusPause:
                 s.FocusPause = !s.FocusPause;
@@ -205,8 +205,8 @@ public class OptionsScreen
         OptionRow.CryVolume => (Text.Of("options.cries.label"), Percent(s.CryVolume), Text.Of("options.cries.help")),
         OptionRow.AmbienceVolume => (Text.Of("options.ambience.label"), Percent(s.AmbienceVolume), Text.Of("options.ambience.help")),
         OptionRow.Speakers => (Text.Of("options.speakers.label"), Text.Of($"options.speakers.value.{s.Speakers}"), Text.Of($"options.speakers.help.{s.Speakers}")),
-        OptionRow.MoveHints => (Text.Of("options.moveHints.label"), Value(s.MoveHints), Text.Of("options.moveHints.help") + " " + RulesLine(s.MoveHints, "options.moveHints.modern", "options.moveHints.platinum")),
-        OptionRow.TrainerLines => (Text.Of("options.trainerLines.label"), Value(s.TrainerLines), Text.Of("options.trainerLines.help") + " " + RulesLine(s.TrainerLines, "options.trainerLines.modern", "options.trainerLines.platinum")),
+        OptionRow.MoveHints => (Text.Of("options.moveHints.label"), OnOff(s.MoveHints != RulesDefault.Off), Text.Of("options.moveHints.help")),
+        OptionRow.TrainerLines => (Text.Of("options.trainerLines.label"), OnOff(s.TrainerLines != RulesDefault.Off), Text.Of("options.trainerLines.help")),
         OptionRow.FocusPause => (Text.Of("options.focusPause.label"), OnOff(s.FocusPause), Text.Of(s.FocusPause ? "options.focusPause.help.on" : "options.focusPause.help.off")),
         OptionRow.FrameCap => (Text.Of("options.frameCap.label"),
             s.FrameCap > 0 ? Text.Of("options.frameCap.value", ("n", s.FrameCap)) : Text.Of("options.frameCap.none"),
@@ -220,21 +220,6 @@ public class OptionsScreen
     private static string OnOff(bool on) => Text.Of(on ? "shared.on" : "shared.off");
 
     private static string Percent(int volume) => Text.Of("shared.percent", ("n", volume));
-
-    /// <summary>A three-way row's value (style guide, "Options").</summary>
-    private static string Value(RulesDefault value) => value switch
-    {
-        RulesDefault.Off => Text.Of("shared.off"),
-        RulesDefault.On => Text.Of("shared.on"),
-        _ => Text.Of("options.rules.value")
-    };
-
-    /// <summary>What Rules gives in the game in progress, for a three-way row's help line.</summary>
-    private static string RulesLine(RulesDefault value, string modern, string platinum) => value switch
-    {
-        RulesDefault.Rules => Text.Of(Data.Ruleset.Current.Preset == Data.RulesPreset.Modern ? modern : platinum),
-        _ => Text.Of("options.rules.other")
-    };
 
     public void Draw(int sw, int sh, GameSettings settings)
     {
