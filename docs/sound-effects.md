@@ -139,6 +139,57 @@ One sound for each type, played as a move of that type sets off (`SoundBank.Move
 
 `move_normal`, `move_fire`, `move_water`, `move_grass`, `move_electric`, `move_ice`, `move_fighting`, `move_poison`, `move_ground`, `move_flying`, `move_psychic`, `move_bug`, `move_rock`, `move_ghost`, `move_dragon`, `move_steel`, `move_dark`, `move_fairy`.
 
+**A move's own sound** (plan 25 · Y6 on, decision 3: one entry per move, built from the bank's shared layers): `use_<key>`, the key being the move's name in lower case with its words joined by underscores (`SoundBank.MoveKey`: `use_mud_slap`, `use_will_o_wisp`; the prefix keeps the move Psychic's apart from `move_psychic`). `SoundBank.MoveSound(move, type)` plays it as the move sets off, and the type's `move_…` for a move whose batch hasn't come yet. Its beats are read from the original's animation script (when it rings, what it is made of); its sound is our own, and the entry names the original's first sound of the move. Five moves are the user's own voice and play no sound of the bank: Growl, Roar, Hyper Voice and Howl play the user's cry in the modes of their own below (`SoundBank.CryModesOf`; the second as the first ends), Chatter its plain cry. An attack sent ahead lands with its move's own sound, where it lands.
+
+| Sound | The original's | What it is |
+|---|---|---|
+| `use_leer` | `SEQ_SE_DP_W043` | Leer: a glint and a low hum as the eyes narrow, twice. |
+| `use_pound` | `SEQ_SE_DP_030` | Pound: a flat slap. |
+| `use_scratch` | `SEQ_SE_DP_W010` | Scratch: claws raked once, a dry scrape. |
+| `use_tackle` | `SEQ_SE_DP_050` | Tackle: a run's rush and a body's thud. |
+| `use_withdraw` | `SEQ_SE_DP_W029` | Withdraw: a shell drawn shut, a slide down and a hollow knock. |
+| `use_bide` | `SEQ_SE_DP_W025B` | Bide: a low swell held under a pulse, then a thump. |
+| `use_return` | `SEQ_SE_DP_W039` | Return: a warm rising chime and a soft blow. |
+| `use_quick_attack` | `SEQ_SE_DP_W104` | Quick Attack: a whip of air and a quick knock. |
+| `use_absorb` | `SEQ_SE_DP_W071B` | Absorb: a soft draw upward and a little bell. |
+| `use_bubble` | `SEQ_SE_DP_W145` | Bubble: a string of bubbles popping. |
+| `use_ember` | `SEQ_SE_DP_W052` | Ember: a small flame's puff and crackle. |
+| `use_fake_out` | `SEQ_SE_DP_W166` | Fake Out: a sharp clap and its ring. |
+| `use_fury_swipes` | `SEQ_SE_DP_W010` | Fury Swipes: two scrapes, quick on one another. |
+| `use_poison_gas` | `SEQ_SE_DP_W054` | Poison Gas: a slow hiss of gas, bubbling. |
+| `use_screech` | `SEQ_SE_DP_020` | Screech: a grating squeal that wavers. |
+| `use_splash` | `SEQ_SE_DP_023` | Splash: a flop and its splash. |
+| `use_growth` | `SEQ_SE_DP_W036` | Growth: a green swell climbing. |
+| `use_leech_life` | `SEQ_SE_DP_W071` | Leech Life: a needle's tick and a sip drawn back. |
+| `use_low_kick` | `SEQ_SE_DP_007` | Low Kick: a low sweep of air and a knock at the feet. |
+| `use_supersonic` | `SEQ_SE_DP_W048` | Supersonic: a thin, high wobbling whine. |
+| `use_tail_whip` | `SEQ_SE_DP_112` | Tail Whip: a tail swished twice. |
+| `use_teleport` | `SEQ_SE_PL_W100` | Teleport: a shimmer rising out of hearing. |
+| `use_water_sport` | `SEQ_SE_DP_W057` | Water Sport: water thrown up and pattering down. |
+| `use_defense_curl` | `SEQ_SE_DP_W161` | Defense Curl: a body rolled up, a soft curl and a pop. |
+| `use_mud_sport` | `SEQ_SE_DP_W091` | Mud Sport: wet mud flung up and slapping down. |
+| `use_rock_smash` | `SEQ_SE_DP_W233B` | Rock Smash: a punch and stone cracking. |
+| `use_aerial_ace` | `SEQ_SE_DP_W013B` | Aerial Ace: a rush of air and a clean slash. |
+| `use_astonish` | `SEQ_SE_DP_W280B` | Astonish: a sudden boo, a jump of pitch and a shiver. |
+| `use_brick_break` | `SEQ_SE_DP_W233` | Brick Break: a chop and something breaking. |
+| `use_counter` | `SEQ_SE_DP_BASI` | Counter: a turn caught and struck back. |
+| `use_earthquake` | `SEQ_SE_DP_W089` | Earthquake: the ground heaving, a long rumble. |
+| `use_flash` | `SEQ_SE_DP_W043` | Flash: a bright pop of light ringing. |
+| `use_focus_punch` | `SEQ_SE_DP_W082` | Focus Punch: focus gathering, a rush and a heavy blow. |
+| `use_force_palm` | `SEQ_SE_DP_208` | Force Palm: a palm's push and a ringing shock. |
+| `use_rock_polish` | `SEQ_SE_DP_BRADE` | Rock Polish: stone rubbed bright, a glint at the end. |
+| `use_rock_slide` | `SEQ_SE_DP_W088` | Rock Slide: rocks tumbling down. |
+| `use_take_down` | `SEQ_SE_DP_W029` | Take Down: a step back, a charge and a hard crash. |
+| `use_water_gun` | `SEQ_SE_DP_W055` | Water Gun: a squirt of water. |
+| `use_harden` | `SEQ_SE_DP_W231` | Harden: a body set hard, a metal ring. |
+| `use_headbutt` | `SEQ_SE_DP_W029` | Headbutt: a run and a hard knock of heads. |
+| `use_pursuit` | `SEQ_SE_DP_030` | Pursuit: a dark rush closing in and a blow. |
+| `use_rock_throw` | `SEQ_SE_DP_W088` | Rock Throw: stones thrown, landing one, two. |
+| `use_stealth_rock` | `SEQ_SE_DP_W070` | Stealth Rock: stones scattered, settling round the foe. |
+| `use_focus_energy` | `SEQ_SE_DP_W082` | Focus Energy: breath drawn in and held, rising. |
+| `use_secret_power` | — | Secret Power: a hidden blow, a quick rising whisper and a knock. |
+| `use_camouflage` | — | Camouflage: colours washing over the user, a soft shimmer sliding down. |
+
 ## Cries
 
 Every species and every form has a cry of its own (plan 05 · A4), synthesised by `Audio/Cries` from its data alone and the same on every run; none of the games' cries is copied or imitated.
@@ -159,6 +210,10 @@ Every species and every form has a cry of its own (plan 05 · A4), synthesised b
 | `Half`, `PinchHalf` | Twenty frames of sixty, the last ten fading. | Kept for the moments the original uses them. |
 | `FieldEvent` | A semitone higher, with an echo a third of a semitone up beside it at half the volume. | A script's `cry`. |
 | `Pokedex` | As it is. | An entry of the Pokédex opening. |
+| `Uproar1`, `Uproar2` | Two semitones lower and rumbling (its loudness shaken 28 times a second); then a semitone lower, rumbling harder, cut to twenty frames. | Growl, the second as the first ends (plan 25 · Y6; the original's `UPROAR_1` and `_2`). |
+| `Howl1`, `Howl2` | Three semitones lower, ringing out in echoes 0.11 s apart; then a semitone and a half lower with a louder ring. | Roar (the original's `HOWL_1` and `_2`). |
+| `HyperVoice1`, `HyperVoice2` | Two semitones higher, doubled seven semitones over itself; then three higher, doubled, ringing and cut short. | Hyper Voice (the original's `HYPERVOICE_1` and `_2`). |
+| `MidMove` | A semitone lower, drawn out by an echo 0.16 s behind. | Howl (the original's `MID_MOVE`). |
 
 - **Playing one**: `AudioManager.PlayCry(pokemon or species, form, mode, pan)` plays it on the cry bus, which dips the music under it. A battle asks for its Pokémon's cries ahead (`AudioManager.RequestCries`), and they are made on a worker. The last 48 are kept (`Cries.Kept`); a cry takes about ten milliseconds to make.
 - **Checking them**: `dotnet run --project tools/MusicRender -- <out dir> --cries [species or form ...] [--modes] [--all]` renders cries with their spectrograms (a sample of every size and type when no species is named; `--all` checks every species and form without writing files). `CryTests` makes every species' and form's cry and holds it clean, unlike any other and inside the cry bus's loudness window as the mixer plays it. A cry is brought to its peak (`Cries.Peak`) unless that would make it louder than `Loudness.CryCeiling`, and then turned down to the ceiling instead: a long, even cry (Leafeon, Florges) at its peak would sound louder than the rest.

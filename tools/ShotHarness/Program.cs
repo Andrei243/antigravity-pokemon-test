@@ -132,6 +132,7 @@ if (h.Run("pokemon")) h.PokemonMode();
 if (mode == "dex") h.DexMode();
 if (mode == "fulldex") h.FullDexMode();
 if (mode == "versus") h.VersusMode();
+if (mode == "moves") h.MovesMode();
 if (mode == "conditions") h.ConditionsMode();
 if (h.Run("sheets")) h.SheetsMode();
 if (h.Run("story")) h.StoryMode();

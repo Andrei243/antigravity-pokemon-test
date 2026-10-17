@@ -26,7 +26,25 @@ public enum CryMode
     Pinch,
     PinchHalf,
     /// <summary>The Pokédex's entry.</summary>
-    Pokedex
+    Pokedex,
+
+    // The moves whose animation is the user's voice (plan 25 · Y6), after the original's modes of the same names;
+    // what each does to the cry is our own
+
+    /// <summary>Growl's first: two semitones down, rumbling (a fast tremolo).</summary>
+    Uproar1,
+    /// <summary>Growl's second, as the first ends: a semitone down, rumbling, cut short.</summary>
+    Uproar2,
+    /// <summary>Roar's first: three semitones down and as much slower, ringing out.</summary>
+    Howl1,
+    /// <summary>Roar's second: a semitone and a half down, with a louder ring.</summary>
+    Howl2,
+    /// <summary>Hyper Voice's first: two semitones up, doubled a fifth above.</summary>
+    HyperVoice1,
+    /// <summary>Hyper Voice's second: three semitones up, doubled and ringing, cut short.</summary>
+    HyperVoice2,
+    /// <summary>Howl's: a semitone down, drawn out by a long echo.</summary>
+    MidMove
 }
 
 /// <summary>
@@ -398,9 +416,33 @@ public static class Cries
             CryMode.PinchHalf => Shortened(Pitched(cry, -1.5f)),
             CryMode.Half => Shortened((float[])cry.Clone()),
             CryMode.FieldEvent => Chorus(Pitched(cry, 1f), Pitched(cry, 0.3125f)),
+            CryMode.Uproar1 => Tremolo(Pitched(cry, -2f), 28f, 0.45f),
+            CryMode.Uproar2 => Shortened(Tremolo(Pitched(cry, -1f), 32f, 0.5f)),
+            CryMode.Howl1 => Echoed(Pitched(cry, -3f), 0.11f, 0.4f),
+            CryMode.Howl2 => Echoed(Pitched(cry, -1.5f), 0.08f, 0.55f),
+            CryMode.HyperVoice1 => Chorus(Pitched(cry, 2f), Pitched(cry, 9f)),
+            CryMode.HyperVoice2 => Shortened(Echoed(Chorus(Pitched(cry, 3f), Pitched(cry, 10f)), 0.06f, 0.4f)),
+            CryMode.MidMove => Echoed(Pitched(cry, -1f), 0.16f, 0.5f),
             _ => (float[])cry.Clone()
         };
         return Finish(s);
+    }
+
+    /// <summary>The cry's loudness shaken at <paramref name="hz"/> by <paramref name="depth"/>: a rumble in the throat.</summary>
+    private static float[] Tremolo(float[] s, float hz, float depth)
+    {
+        for (int i = 0; i < s.Length; i++) s[i] *= 1f - depth * (0.5f + 0.5f * MathF.Sin(MathF.Tau * hz * i / Rate));
+        return s;
+    }
+
+    /// <summary>The cry ringing out: echoes every <paramref name="delay"/> seconds, each <paramref name="feedback"/> as loud, for up to a third of a second more.</summary>
+    private static float[] Echoed(float[] s, float delay, float feedback)
+    {
+        int d = (int)(delay * Rate), tail = Rate / 3;
+        var o = new float[s.Length + tail];
+        Array.Copy(s, o, s.Length);
+        for (int i = d; i < o.Length; i++) o[i] += o[i - d] * feedback;
+        return o;
     }
 
     /// <summary>Played faster or slower, as the DS pitches a sample: up a semitone is a sixteenth shorter.</summary>

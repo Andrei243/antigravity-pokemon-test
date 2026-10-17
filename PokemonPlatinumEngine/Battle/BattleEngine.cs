@@ -195,6 +195,8 @@ public partial class BattleEngine
 
         Kind = setup.Kind;
         Partner = setup.Partner;
+        // The ground fought on, for the looks that go by it (plan 25 · Y6: Secret Power, Camouflage); never the rules'
+        terrain = setup.Conditions?.Terrain ?? BattleTerrain.Plain;
         // Whoever battles beside the player stands on the platform beside them, in their class's look or their own
         if (Partner != null)
             Anim.PartnerTrainer = CharacterStyles.Default.InBattle(Partner.TrainerClass, Partner.Look is { } theirs ? PlayerIdentity.CharacterFor(theirs) : null);
@@ -541,7 +543,7 @@ public partial class BattleEngine
                 if (Anim.Time != moveSoundAt)
                 {
                     moveSoundAt = Anim.Time;
-                    Sound(SoundBank.MoveSound(move.Type), move.From.Side);
+                    MoveHeard(move.Move, move.Type, move.From);
                 }
                 // With the scene off no move's effect plays but Transform's, as the original plays it all the same
                 // (BtlCmd_PlayMoveAnimation; plan 08 · P1); its sound above still does
@@ -559,7 +561,8 @@ public partial class BattleEngine
                     Missed = move.Missed,
                     Blocked = move.Blocked,
                     Critical = move.Critical,
-                    SuperEffective = move.SuperEffective
+                    SuperEffective = move.SuperEffective,
+                    Terrain = terrain
                 });
                 // A blow that lands on a doll makes it flinch as it lands: the rules say so with no Struck, since the
                 // Pokémon behind it takes nothing (subscript_hit_substitute's flicker)
@@ -633,7 +636,7 @@ public partial class BattleEngine
             case AheadLanded landed:
                 // An attack sent ahead lands with its own move's effect and sound, heard where it lands: nobody need
                 // stand where it was sent from (plan 25 · Y3). With the scene off, the sound alone (plan 08 · P1)
-                Sound(SoundBank.MoveSound(landed.Type), landed.To.Side);
+                Sound(SoundBank.MoveSound(landed.Move, landed.Type), landed.To.Side);
                 if (Scene)
                 Anim.Cue(new EffectCue
                 {
@@ -929,6 +932,26 @@ public partial class BattleEngine
 
     /// <summary>When the last move's sound was played: a move aimed at several Pokémon is shown once for each, and heard once.</summary>
     private float moveSoundAt = -1f;
+
+    /// <summary>The ground the battle is fought on, which a cue carries for the looks that go by it (plan 25 · Y6).</summary>
+    private readonly BattleTerrain terrain;
+
+    /// <summary>
+    /// A move's own sound as it sets off (plan 25 · Y6): its <c>use_</c> sound, or its type's until its batch gives it
+    /// one; or, for the moves whose animation is the user's own voice (Growl, Roar, Hyper Voice, Howl, Chatter), the
+    /// user's cry in the modes the original plays, the second as the first ends.
+    /// </summary>
+    private void MoveHeard(string move, PokemonType type, Place from)
+    {
+        if (SoundBank.CryModesOf(move) is { } modes && At(from).Pokemon is { } user)
+        {
+            AudioManager.PlayCry(user, modes[0], Pan(from.Side));
+            if (modes.Length > 1)
+                After((float)Cries.Get(user, modes[0]).Duration, () => AudioManager.PlayCry(user, modes[1], Pan(from.Side)));
+            return;
+        }
+        Sound(SoundBank.MoveSound(move, type), from.Side);
+    }
 
     private void UpdatePendingEffects(float dt)
     {

@@ -10,7 +10,9 @@ internal enum FxShape
     Glow, Spark, Star, Ring, Flame, Drop, Bubble, Leaf,
     Shard, Rock, Smoke, Heart, Note, Streak, Wisp, Petal,
     Snowflake, Arrow, Feather, Orb, Claw, Fang, Impact, Zzz,
-    Swirl, Beam, Dot, Sword, Wave, Ember, Cross, Spore
+    Swirl, Beam, Dot, Sword, Wave, Ember, Cross, Spore,
+    // Plan 25 · Y6, the moves of their own: rows five to eight, filled as the batches ask for shapes
+    Fist, Foot, Palm, Eye, Crack, Exclaim
 }
 
 /// <summary>
@@ -21,7 +23,11 @@ internal enum FxShape
 /// </summary>
 internal static class FxTextures
 {
-    public const int Columns = 8, Rows = 4, Cell = 128;
+    /// <summary>
+    /// Eight by eight cells of 128 px (plan 25 · Y6 grew it from four rows): the first 32 are G8's, the rest are
+    /// filled by the move batches as they ask for shapes, and a cell nobody has asked for yet is left empty.
+    /// </summary>
+    public const int Columns = 8, Rows = 8, Cell = 128;
 
     // Shapes are drawn in the middle of their cell with this much space round them, so mipmaps don't bleed
     private const float Inner = 56f;
@@ -101,6 +107,13 @@ internal static class FxTextures
         float f = MathF.Abs(((a % sector) + sector) % sector / sector * 2f - 1f); // 1 at a point, 0 between
         float edge = inner + (outer - inner) * f * f;
         return (p.Length() - edge) * 0.8f;
+    }
+
+    /// <summary>A box of half-size <paramref name="half"/> with corners rounded by <paramref name="round"/>.</summary>
+    private static float RoundBox(Vector2 p, Vector2 half, float round)
+    {
+        var q = new Vector2(MathF.Abs(p.X), MathF.Abs(p.Y)) - half + new Vector2(round);
+        return new Vector2(MathF.Max(q.X, 0f), MathF.Max(q.Y, 0f)).Length() + MathF.Min(MathF.Max(q.X, q.Y), 0f) - round;
     }
 
     private static float Polygon(Vector2 p, ReadOnlySpan<Vector2> v)
@@ -359,6 +372,67 @@ internal static class FxTextures
             {
                 // A soft ball of light with a firmer middle
                 return (MathF.Max(Sat(1f - r) * Sat(1f - r) * 0.6f, Fill(r - 0.3f, 4f)), 1f);
+            }
+
+            // ---------------------------------------------------------------- plan 25 · Y6
+            case FxShape.Fist:
+            {
+                // A fist seen from the front, knuckles up: a rounded block, four knuckle lines and the thumb across
+                float body = RoundBox(p - new Vector2(0f, -0.05f), new Vector2(0.62f, 0.55f), 0.28f);
+                float thumb = Capsule(p, new Vector2(-0.55f, -0.25f), new Vector2(0.15f, -0.4f), 0.17f);
+                float d = MathF.Min(body, thumb);
+                float lines = 0f;
+                for (int k = 1; k < 4; k++) lines = MathF.Max(lines, Sat(1f - MathF.Abs(p.X - (-0.62f + k * 0.31f)) / 0.03f) * Sat((p.Y - 0.05f) / 0.1f));
+                float crease = Sat(1f - MathF.Abs(thumb) / 0.035f) * (p.Y > -0.6f ? 1f : 0f);
+                float l = 0.95f - 0.2f * Sat(-p.Y) - 0.35f * MathF.Max(lines, crease);
+                return (Fill(d), l);
+            }
+            case FxShape.Foot:
+            {
+                // A foot from the side, toes to the right: a sole, a heel and a rounded toe
+                float sole = RoundBox(p - new Vector2(0.05f, -0.38f), new Vector2(0.78f, 0.22f), 0.2f);
+                float leg = RoundBox(p - new Vector2(-0.42f, 0.3f), new Vector2(0.28f, 0.6f), 0.18f);
+                float d = MathF.Min(sole, leg);
+                return (Fill(d), 0.95f - 0.25f * Sat(-p.Y - 0.3f) / 0.3f);
+            }
+            case FxShape.Palm:
+            {
+                // An open hand, fingers up: a palm and four fingers with the thumb out to the left
+                float d = RoundBox(p - new Vector2(0.05f, -0.4f), new Vector2(0.45f, 0.42f), 0.2f);
+                for (int k = 0; k < 4; k++)
+                {
+                    float x = -0.3f + k * 0.21f;
+                    float top = 0.62f + (k is 1 or 2 ? 0.2f : 0f);
+                    d = MathF.Min(d, Capsule(p, new Vector2(x + 0.05f, -0.1f), new Vector2(x + 0.05f, top), 0.085f));
+                }
+                d = MathF.Min(d, Capsule(p, new Vector2(-0.32f, -0.45f), new Vector2(-0.72f, -0.05f), 0.1f));
+                return (Fill(d), 0.92f - 0.2f * Sat(-p.Y - 0.2f));
+            }
+            case FxShape.Eye:
+            {
+                // A narrowed eye: a lens of white, a dark iris and a glint
+                float lens = Lens(new Vector2(p.Y, p.X), 0.9f, 0.42f);
+                float iris = Circle(p, Vector2.Zero, 0.3f);
+                float glint = Fill(Circle(p, new Vector2(-0.1f, 0.1f), 0.08f), 2f);
+                float l = iris < 0f ? MathF.Max(0.25f, glint) : 1f;
+                return (Fill(lens), l);
+            }
+            case FxShape.Crack:
+            {
+                // Cracks running out from a point, a jagged line each way and two branches
+                float d = 1f;
+                Span<Vector2> path = stackalloc Vector2[] { new(-0.85f, 0.2f), new(-0.45f, -0.05f), new(-0.2f, 0.15f), new(0.1f, -0.1f), new(0.4f, 0.12f), new(0.85f, -0.15f) };
+                for (int k = 0; k + 1 < path.Length; k++) d = MathF.Min(d, Capsule(p, path[k], path[k + 1], 0.055f));
+                d = MathF.Min(d, Capsule(p, new Vector2(-0.2f, 0.15f), new Vector2(-0.1f, 0.7f), 0.04f));
+                d = MathF.Min(d, Capsule(p, new Vector2(0.1f, -0.1f), new Vector2(0.25f, -0.75f), 0.04f));
+                return (Fill(d, 1.6f), 1f);
+            }
+            case FxShape.Exclaim:
+            {
+                // An exclamation mark: a tapering bar and a dot
+                float bar = Capsule(p, new Vector2(0f, 0.75f), new Vector2(0f, -0.25f), 0.17f - 0.07f * Sat(-p.Y));
+                float dot = Circle(p, new Vector2(0f, -0.66f), 0.18f);
+                return (Fill(MathF.Min(bar, dot)), 1f);
             }
         }
         return (0f, 1f);

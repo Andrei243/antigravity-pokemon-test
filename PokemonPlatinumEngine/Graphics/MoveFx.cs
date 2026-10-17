@@ -140,6 +140,7 @@ internal static partial class MoveFx
     /// </summary>
     private static void Impact(in FxCtx c, FxColors col, FxList fx, float scale = 1f, float at = I)
     {
+        fx.Land(at);
         if (c.Cue.Missed) return;
         float h = c.ToSize;
         if (c.Cue.Blocked)
@@ -304,6 +305,7 @@ internal static partial class MoveFx
     /// <summary>A status move on itself: an aura rises round it and a glint pops.</summary>
     private static void SelfAura(in FxCtx c, FxColors col, FxList fx)
     {
+        fx.Land(I);
         Fx.Aura(fx, c.Age, c.Seed, c.FromFeet, c.FromSize, 0f, 0.95f, col.Main, col.Light);
         Fx.Glint(fx, c.Age, c.FromFeet + Vector3.UnitY * c.FromSize * 0.85f, c.FromSize, 0.55f, col.Light);
     }
@@ -311,6 +313,7 @@ internal static partial class MoveFx
     /// <summary>A status move on a foe: waves of its type roll over to the target.</summary>
     private static void StatusWaves(in FxCtx c, FxColors col, FxList fx)
     {
+        fx.Land(I);
         Fx.Waves(fx, c, 0.05f, 0.75f, 3, FxShape.Ring, Fx.Fade(col.Main, 0.9f), 0.45f);
         Fx.Glint(fx, c.Age, c.To, c.ToSize, 0.55f, col.Light, 0.35f);
     }
@@ -446,7 +449,8 @@ internal static partial class MoveFx
 
     // ------------------------------------------------------------------ moves with their own effect
 
-    private static readonly Dictionary<string, FxRecipe> Overrides = new(StringComparer.OrdinalIgnoreCase)
+    /// <summary>G8's 146 (plan 04), what every move had before the batches of plan 25 · Y6 to Y10 gave each its own.</summary>
+    private static Dictionary<string, FxRecipe> G8Recipes() => new(StringComparer.OrdinalIgnoreCase)
     {
         // Electric
         ["Thunder"] = Thunder,
@@ -507,13 +511,13 @@ internal static partial class MoveFx
         ["Confusion"] = PsychicWaves,
         ["Psychic"] = PsychicStrong,
         ["Psybeam"] = (in FxCtx c, FxColors col, FxList fx) => { Fx.Beam(fx, c, 0.06f, 0.58f, 0.12f, col.Main, Rgb(255, 230, 120)); Fx.Waves(fx, c, 0.06f, 0.58f, 5, FxShape.Ring, col.Light, 0.3f, 0.2f); Impact(c, col, fx); },
-        ["Hypnosis"] = (in FxCtx c, FxColors col, FxList fx) => Fx.Waves(fx, c, 0.05f, 0.85f, 4, FxShape.Swirl, col.Light, 0.45f, 0.35f),
+        ["Hypnosis"] = (in FxCtx c, FxColors col, FxList fx) => { fx.Land(I); Fx.Waves(fx, c, 0.05f, 0.85f, 4, FxShape.Swirl, col.Light, 0.45f, 0.35f); },
         ["Rest"] = Rest,
         // Ghost and Dark
         ["Shadow Ball"] = ShadowOrb,
         ["Shadow Sneak"] = ShadowSneak,
         ["Ominous Wind"] = (in FxCtx c, FxColors col, FxList fx) => { Fx.Stream(fx, c, 0f, 0.5f, 0.3f, 12, FxShape.Wisp, col.Main, col.Light, 0.12f, spread: 0.6f); Impact(c, col, fx); },
-        ["Confuse Ray"] = (in FxCtx c, FxColors col, FxList fx) => Fx.Orb(fx, c, 0.05f, 0.6f, 0.18f, Rgb(255, 230, 90), White),
+        ["Confuse Ray"] = (in FxCtx c, FxColors col, FxList fx) => { fx.Land(I); Fx.Orb(fx, c, 0.05f, 0.6f, 0.18f, Rgb(255, 230, 90), White); },
         ["Dark Pulse"] = DarkWaves,
         ["Night Shade"] = DarkWaves,
         // Fighting
@@ -542,7 +546,7 @@ internal static partial class MoveFx
         ["Sing"] = Sing,
         ["Leer"] = Leer,
         ["Scary Face"] = Leer,
-        ["Tail Whip"] = (in FxCtx c, FxColors col, FxList fx) => { SpeedLines(c, fx, 0.05f, 0.45f, 4, 0.45f); Fx.Glint(fx, c.Age, c.To, c.ToSize, 0.45f, White, 0.3f); },
+        ["Tail Whip"] = (in FxCtx c, FxColors col, FxList fx) => { fx.Land(I); SpeedLines(c, fx, 0.05f, 0.45f, 4, 0.45f); Fx.Glint(fx, c.Age, c.To, c.ToSize, 0.45f, White, 0.3f); },
         ["Charm"] = Hearts,
         ["Sweet Kiss"] = Hearts,
         ["Attract"] = Hearts,
@@ -555,7 +559,7 @@ internal static partial class MoveFx
         ["Barrier"] = Shine,
         ["Protect"] = Shine,
         ["Detect"] = Shine,
-        ["Agility"] = (in FxCtx c, FxColors col, FxList fx) => { SpeedLines(c, fx, 0f, 0.9f, 10, 0.6f); Fx.Glint(fx, c.Age, c.From, c.FromSize, 0.6f, White); },
+        ["Agility"] = (in FxCtx c, FxColors col, FxList fx) => { fx.Land(I); SpeedLines(c, fx, 0f, 0.9f, 10, 0.6f); Fx.Glint(fx, c.Age, c.From, c.FromSize, 0.6f, White); },
         ["Recover"] = HealAura,
         ["Roost"] = HealAura,
         ["Moonlight"] = HealAura,
@@ -596,7 +600,7 @@ internal static partial class MoveFx
         ["Toxic"] = (in FxCtx c, FxColors col, FxList fx) => Powder(c, fx, Rgb(150, 60, 190), Rgb(210, 150, 240)),
         ["Signal Beam"] = (in FxCtx c, FxColors col, FxList fx) => { Fx.Beam(fx, c, 0.06f, 0.58f, 0.12f, Rgb(255, 120, 200), Rgb(200, 255, 140)); Impact(c, col, fx); },
         ["Bug Buzz"] = (in FxCtx c, FxColors col, FxList fx) => { Sound(c, fx, 5, FxShape.Wave, false, col.Main); Impact(c, col, fx); },
-        ["String Shot"] = (in FxCtx c, FxColors col, FxList fx) => Fx.Stream(fx, c, 0f, 0.6f, 0.3f, 18, FxShape.Dot, White, Rgb(230, 230, 230), 0.035f, spread: 0.15f, blend: FxBlend.Alpha, trail: 2f),
+        ["String Shot"] = (in FxCtx c, FxColors col, FxList fx) => { fx.Land(I); Fx.Stream(fx, c, 0f, 0.6f, 0.3f, 18, FxShape.Dot, White, Rgb(230, 230, 230), 0.035f, spread: 0.15f, blend: FxBlend.Alpha, trail: 2f); },
         // Flying
         ["Gust"] = WindStream,
         ["Twister"] = (in FxCtx c, FxColors col, FxList fx) => { Whirl(c, ColorsOf(PokemonType.Dragon), fx, 0.1f, 0.8f); Impact(c, col, fx); },
@@ -610,6 +614,36 @@ internal static partial class MoveFx
         ["Explosion"] = Explosion,
         ["Self-Destruct"] = Explosion
     };
+
+    /// <summary>
+    /// Every move with a look of its own: G8's, then each batch of plan 25 (Y6 on), whose recipe for a move replaces
+    /// G8's. The batches are methods, never static fields, so their order doesn't hang on which file is read first.
+    /// </summary>
+    private static readonly (Dictionary<string, FxRecipe> Recipes, Dictionary<string, string> Batches) Own = AllRecipes();
+
+    private static Dictionary<string, FxRecipe> Overrides => Own.Recipes;
+
+    /// <summary>The batch of plan 25 that gave a move its own look and sound ("Y6"…), for the moves board and the floors.</summary>
+    internal static IReadOnlyDictionary<string, string> Batches => Own.Batches;
+
+    /// <summary>The batch that gave this move its own look, or null for one still on G8's look or its type's template.</summary>
+    public static string? BatchOf(string move) => Own.Batches.TryGetValue(move, out var b) ? b : null;
+
+    private static (Dictionary<string, FxRecipe>, Dictionary<string, string>) AllRecipes()
+    {
+        var all = G8Recipes();
+        var batches = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        void Batch(string name, Dictionary<string, FxRecipe> recipes)
+        {
+            foreach (var (move, recipe) in recipes)
+            {
+                all[move] = recipe;
+                batches[move] = name;
+            }
+        }
+        Batch("Y6", Platinum1());
+        return (all, batches);
+    }
 
     private static void Thunder(in FxCtx c, FxColors col, FxList fx)
     {
@@ -630,6 +664,7 @@ internal static partial class MoveFx
 
     private static void ThunderWave(in FxCtx c, FxColors col, FxList fx)
     {
+        fx.Land(I);
         Fx.Waves(fx, c, 0f, 0.4f, 3, FxShape.Ring, col.Main, 0.35f, 0.25f);
         for (int k = 0; k < 4; k++)
         {
@@ -702,6 +737,7 @@ internal static partial class MoveFx
 
     private static void WillOWisp(in FxCtx c, FxColors col, FxList fx)
     {
+        fx.Land(I);
         var ghost = ColorsOf(PokemonType.Ghost);
         Fx.Stream(fx, c, 0f, 0.7f, 0.45f, 3, FxShape.Wisp, Rgb(120, 140, 255), ghost.Light, 0.18f, arc: 0.1f, spread: 0.4f);
     }
@@ -732,6 +768,7 @@ internal static partial class MoveFx
 
     private static void Splash(in FxCtx c, FxColors col, FxList fx)
     {
+        fx.Land(I);
         Fx.Burst(fx, c.Seed, c.Age, c.FromFeet + Vector3.UnitY * c.FromSize * 0.2f, c.FromSize, 0.1f, 0.8f, 14, FxShape.Drop, col.Main, col.Light, 0.08f, 1.0f, 2.5f, FxBlend.Alpha);
     }
 
@@ -747,6 +784,7 @@ internal static partial class MoveFx
     /// <summary>A powder sprinkled over the target.</summary>
     private static void Powder(in FxCtx c, FxList fx, Color a, Color b)
     {
+        fx.Land(I);
         Fx.Stream(fx, c, 0f, 0.35f, 0.3f, 6, FxShape.Spore, a, b, 0.07f, arc: 0.12f, spread: 0.3f);
         Fx.Rain(fx, c.Age, c.Seed, c.To, c.ToSize, 0.25f, 1.1f, 0.6f, 26, FxShape.Spore, a, b, 0.05f, FxBlend.Add);
     }
@@ -830,6 +868,7 @@ internal static partial class MoveFx
     /// <summary>Sound waves rolling out of the user (and notes, for a growl).</summary>
     private static void Sound(in FxCtx c, FxList fx, int count, FxShape shape, bool notes, Color? tint = null)
     {
+        fx.Land(I);
         var color = tint ?? Rgb(236, 240, 255);
         Fx.Waves(fx, c, 0f, 0.7f, count, shape, color, 0.5f, 0.3f);
         if (!notes) return;
@@ -844,17 +883,20 @@ internal static partial class MoveFx
 
     private static void Sing(in FxCtx c, FxColors col, FxList fx)
     {
+        fx.Land(I);
         Fx.Stream(fx, c, 0f, 0.9f, 0.6f, 6, FxShape.Note, Rgb(255, 210, 240), Rgb(200, 230, 255), 0.13f, arc: 0.1f, spread: 0.6f, blend: FxBlend.Alpha);
     }
 
     private static void Leer(in FxCtx c, FxColors col, FxList fx)
     {
+        fx.Land(I);
         Fx.Glint(fx, c.Age, c.FromFeet + Vector3.UnitY * c.FromSize * 0.8f, c.FromSize, 0.05f, Rgb(255, 120, 120), 0.5f);
         Fx.Waves(fx, c, 0.2f, 0.7f, 2, FxShape.Ring, Rgb(255, 120, 120, 180), 0.4f, 0.25f);
     }
 
     private static void Hearts(in FxCtx c, FxColors col, FxList fx)
     {
+        fx.Land(I);
         Fx.Stream(fx, c, 0f, 0.7f, 0.45f, 6, FxShape.Heart, Rgb(255, 120, 170), Rgb(255, 190, 220), 0.12f, arc: 0.08f, spread: 0.5f, blend: FxBlend.Alpha);
         Fx.Burst(fx, c.Seed, c.Age, c.To, c.ToSize, 0.55f, 0.6f, 6, FxShape.Heart, Rgb(255, 120, 170), Rgb(255, 200, 225), 0.09f, 0.7f, -0.5f, FxBlend.Alpha);
     }
@@ -862,6 +904,7 @@ internal static partial class MoveFx
     /// <summary>Swords circling the user, closing in, and a flash as they meet.</summary>
     private static void SwordsDance(in FxCtx c, FxColors col, FxList fx)
     {
+        fx.Land(I);
         float env = Fx.Envelope(c.Age, 0f, 0.15f, 0.7f, 0.9f);
         if (env > 0f)
             for (int i = 0; i < 6; i++)
@@ -878,6 +921,7 @@ internal static partial class MoveFx
     /// <summary>A hardened body: a pale ring of light passes over it and glints pop.</summary>
     private static void Shine(in FxCtx c, FxColors col, FxList fx)
     {
+        fx.Land(I);
         float k = c.Age / 0.7f;
         if (k <= 1f)
             fx.Flat(FxShape.Ring, c.FromFeet + Vector3.UnitY * c.FromSize * k, Vector3.UnitY, c.FromSize * 0.6f, Fx.Fade(Rgb(220, 236, 255), MathF.Sin(k * MathF.PI)));
@@ -887,7 +931,11 @@ internal static partial class MoveFx
                 c.FromSize, 0.2f + i * 0.18f, White, 0.35f);
     }
 
-    private static void HealAura(in FxCtx c, FxColors col, FxList fx) => HealOn(fx, c.Age, c.Seed, c.FromFeet, c.FromSize, 0f);
+    private static void HealAura(in FxCtx c, FxColors col, FxList fx)
+    {
+        fx.Land(I);
+        HealOn(fx, c.Age, c.Seed, c.FromFeet, c.FromSize, 0f);
+    }
 
     /// <summary>Fangs closing on the target from above and below.</summary>
     private static void Chomp(in FxCtx c, FxColors col, FxList fx)
@@ -937,6 +985,7 @@ internal static partial class MoveFx
     /// <summary>Sand or mud flung at the target from the user's feet.</summary>
     private static void Spray(in FxCtx c, FxList fx, Color a, Color b, bool wet)
     {
+        fx.Land(I);
         Fx.Stream(fx, c, 0f, 0.4f, 0.24f, 34, wet ? FxShape.Drop : FxShape.Dot, a, b, wet ? 0.06f : 0.035f, arc: 0.04f, spread: 0.55f, blend: FxBlend.Alpha);
         if (!wet) Fx.Burst(fx, c.Seed, c.Age, c.To, c.ToSize, 0.24f, 0.6f, 6, FxShape.Smoke, Fx.Fade(a, 0.7f), Fx.Fade(b, 0.6f), 0.2f, 0.4f, -0.2f, FxBlend.Alpha);
     }
@@ -970,12 +1019,14 @@ internal static partial class MoveFx
 
     private static void RainDance(in FxCtx c, FxColors col, FxList fx)
     {
+        fx.Land(I);
         var blue = ColorsOf(PokemonType.Water);
         Fx.Rain(fx, c.Age, c.Seed, c.From, c.FromSize * 2f, 0f, 1.2f, 0.35f, 40, FxShape.Streak, blue.Light, blue.Main, 0.03f, FxBlend.Add, 4f);
     }
 
     private static void SunnyDay(in FxCtx c, FxColors col, FxList fx)
     {
+        fx.Land(I);
         fx.ScreenFlash(Rgb(255, 220, 150), 0.3f * Fx.Envelope(c.Age, 0f, 0.2f, 0.6f, 1.1f));
         Fx.Aura(fx, c.Age, c.Seed, c.FromFeet, c.FromSize, 0f, 1.1f, Rgb(255, 180, 80), Rgb(255, 240, 180));
     }
