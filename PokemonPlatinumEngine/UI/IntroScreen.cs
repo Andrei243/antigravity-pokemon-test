@@ -99,7 +99,8 @@ public class IntroScreen
 
     private static string Shown(string line) => Text.OfData(line);
 
-    private string Fill(string line) => Shown(line.Replace("{name}", Name).Replace("{rival}", RivalName));
+    // The line is looked up as the region file writes it, placeholders and all, and filled afterwards (plan 17 · N6)
+    private string Fill(string line) => Shown(line).Replace("{name}", Name).Replace("{rival}", RivalName);
 
     private readonly DialogueManager talk = new();
     private float time, phaseTime;

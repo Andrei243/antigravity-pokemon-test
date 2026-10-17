@@ -98,6 +98,41 @@ public class RomanianTests
     }
 
     [Fact]
+    public void TheIntroductionIsSaidInRomanianWithTheNamesFilledAfterTheLineIsFound()
+    {
+        try
+        {
+            Text.Use(Romanian);
+            var intro = new IntroScreen();
+            intro.Open();
+            var said = new List<string>();
+            for (int guard = 0; guard < 20000 && intro.Phase != IntroPhase.Done; guard++)
+            {
+                if (intro.Talking)
+                {
+                    if (intro.LineComplete) said.Add(intro.SpokenText);
+                    intro.PressConfirm();
+                }
+                else if (intro.Phase is IntroPhase.ChooseLook or IntroPhase.ConfirmLook or IntroPhase.ConfirmName or IntroPhase.ConfirmRival)
+                    intro.PressConfirm();
+                else if (intro.Phase is IntroPhase.EnterName or IntroPhase.EnterRival)
+                {
+                    intro.PressStart();
+                    intro.PressConfirm();
+                }
+                intro.Advance(1f / 60f);
+            }
+            Assert.Equal(IntroPhase.Done, intro.Phase);
+            Assert.Contains("Bună! Mă bucur că ai putut veni.", said);
+            // A line with a name in it is found by its English as the file writes it, {name} and all
+            Assert.Contains("Lucas! Ce nume frumos.", said);
+            Assert.Contains(said, line => line.StartsWith("Barry, desigur!", StringComparison.Ordinal));
+            Assert.DoesNotContain(said, line => line.Contains("fine name", StringComparison.Ordinal));
+        }
+        finally { Text.Use(Text.English); }
+    }
+
+    [Fact]
     public void TheProfessorSpeaksRomanianFromTheTableBesideTheRegionFiles()
     {
         var table = Text.DataTable(Romanian);
