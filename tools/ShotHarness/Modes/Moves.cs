@@ -69,7 +69,11 @@ partial class Harness
                 var cue = Start(move);
                 Console.WriteLine($"  {move.Name} ({Whose(move.Name)}): sound {SoundBank.MoveSound(move.Name, move.Type)}");
                 double at = 0;
-                foreach (var (moment, age) in new[] { (1, 0.15), (2, BattleAnimator.ImpactTime + 0.03), (3, 0.6), (4, 0.95) })
+                // MOVES_AGES=0.25,0.33 asks for other moments (a look is judged where it is strongest)
+                var ages = new[] { (1, 0.15), (2, BattleAnimator.ImpactTime + 0.03), (3, 0.6), (4, 0.95) };
+                if (Environment.GetEnvironmentVariable("MOVES_AGES") is { Length: > 0 } custom)
+                    ages = custom.Split(',').Select((s, i) => (i + 1, double.Parse(s, System.Globalization.CultureInfo.InvariantCulture))).ToArray();
+                foreach (var (moment, age) in ages)
                 {
                     Skip(age - at);
                     at = age;

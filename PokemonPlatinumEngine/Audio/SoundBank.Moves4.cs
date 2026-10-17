@@ -414,6 +414,6 @@ public static partial class SoundBank
                 d.Thump(0.3f, 0.06f, 260f, 130f, 0.25f, 0.4f);
                 return Finish(d.S, 0.36f);
         }
-        return null;
+        return MakeMoveSoundY8b(name);
     }
 }
