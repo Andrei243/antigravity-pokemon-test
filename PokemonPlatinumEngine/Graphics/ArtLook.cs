@@ -465,7 +465,7 @@ internal static class ArtLook
         strength = Math.Clamp(strength, 0f, 1f);
         if (weather == BattleWeather.None || strength <= 0f) return rig;
         LightRig under;
-        if (weather == BattleWeather.Sun) under = HarshSun(rig);
+        if (weather is BattleWeather.Sun or BattleWeather.HarshSun) under = HarshSun(rig);
         else
         {
             under = Weathered(rig, Weathers.FromBattle(weather));
@@ -473,7 +473,10 @@ internal static class ArtLook
             {
                 BattleWeather.Sandstorm => (V(1.12f, 0.98f, 0.76f), 0.75f),
                 BattleWeather.Fog => (V(0.98f, 1f, 1.02f), 0.85f),
-                BattleWeather.Hail => (V(0.96f, 1f, 1.06f), 0.6f),
+                BattleWeather.Hail or BattleWeather.Snow => (V(0.96f, 1f, 1.06f), 0.6f),
+                // The heavy rain hides more of the sky than rain; the strong winds only thin it (plan 06 · R19b)
+                BattleWeather.HeavyRain => (V(0.92f, 0.96f, 1.04f), 0.85f),
+                BattleWeather.StrongWinds => (V(0.98f, 1.02f, 1.04f), 0.35f),
                 _ => (V(0.94f, 0.98f, 1.04f), 0.7f)
             };
             var sky = new SkyColors(Clouded(rig.Sky.Zenith, tint, cover), Clouded(rig.Sky.Middle, tint, cover), Clouded(rig.Sky.Horizon, tint, cover),

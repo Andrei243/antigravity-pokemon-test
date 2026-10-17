@@ -454,7 +454,8 @@ internal sealed partial class AiThinking
     public int TurnsIn(Who who) => Of(who) is { } b ? Battle.Turn - b.Volatile.FirstTurn : Battle.Turn;
 
     /// <summary><c>LoadCurrentWeather</c>.</summary>
-    public AiWeather CurrentWeather => Battle.Field.Weather switch
+    // (The later weathers as the ones they are kin to: snow is hail to the AI, the harsh sun the sun; plan 06 · R19b)
+    public AiWeather CurrentWeather => FieldState.AsTheRulesRead(Battle.Field.Weather) switch
     {
         BattleWeather.Rain => AiWeather.Raining,
         BattleWeather.Sandstorm => AiWeather.Sandstorm,

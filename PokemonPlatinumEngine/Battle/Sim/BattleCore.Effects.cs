@@ -197,12 +197,14 @@ public sealed partial class BattleCore
             Reach = (b, use, t) =>
             {
                 var side = b.Field.Side(t.Side);
-                if (!side.Reflect && !side.LightScreen) return;
+                if (!side.Reflect && !side.LightScreen && !side.AuroraVeil) return;
                 bool reflect = side.Reflect, lightScreen = side.LightScreen;
                 side.ReflectTurns = side.LightScreenTurns = 0;
                 var shattered = b.Say(Text.Of("battle.itShatteredTheBarrier"));
                 if (reflect) shattered.With(new SideConditionChanged(t.Side, SideCondition.Reflect, 0));
                 if (lightScreen) shattered.With(new SideConditionChanged(t.Side, SideCondition.LightScreen, 0));
+                // Aurora Veil breaks with them (plan 06 · R19b; Showdown's brickbreak onTryHit)
+                b.ClearLaterSide(t.Side, shattered, veil: true, web: false);
             }
         },
         ["RemoveHazardsScreensEvaDown"] = new() { Does = (b, use) => b.Defog(use) },
@@ -786,6 +788,9 @@ public sealed partial class BattleCore
             if (side.Spikes > 0) Say(Text.Of("battle.theSpikesAroundWere", ("team", TeamOf(t.Side)))).With(Gone(SideCondition.Spikes));
             if (side.ToxicSpikes > 0) Say(Text.Of("battle.thePoisonSpikesAround", ("team", TeamOf(t.Side)))).With(Gone(SideCondition.ToxicSpikes));
             if (side.StealthRock) Say(Text.Of("battle.thePointedStonesAround", ("team", TeamOf(t.Side)))).With(Gone(SideCondition.StealthRock));
+            // The later games' veil and web go the same way, each on a line of its own (plan 06 · R19b)
+            if (side.AuroraVeil) ClearLaterSide(t.Side, Say(Text.Of("battle.auroraVeilWasBlownAway", ("team", team))), veil: true, web: false);
+            if (side.StickyWeb) ClearLaterSide(t.Side, Say(Text.Of("battle.theStickyWebAroundWas", ("team", TeamOf(t.Side)))), veil: false, web: true);
             side.ReflectTurns = side.LightScreenTurns = side.MistTurns = side.SafeguardTurns = 0;
             side.Spikes = side.ToxicSpikes = 0;
             side.StealthRock = false;
@@ -830,6 +835,7 @@ public sealed partial class BattleCore
             side.StealthRock = false;
             Say(Text.Of("battle.blewAwayStealthRock", ("user", user.Name))).With(Now(user.Side, SideCondition.StealthRock));
         }
+        if (side.StickyWeb) ClearLaterSide(user.Side, Say(Text.Of("battle.blewAwayStickyWeb", ("user", user.Name))), veil: false, web: true);
     }
 
     // ---------------------------------------------------------------- sent ahead

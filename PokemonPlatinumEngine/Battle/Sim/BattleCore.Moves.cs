@@ -192,6 +192,9 @@ public sealed partial class BattleCore
         use.Own ??= move.Data;
         use.Move = move = Normalized(user, move);
 
+        // Aegislash draws or sheathes its blade before the move (plan 06 · R19b)
+        StanceChange(user, move);
+
         // A move that takes a turn to get ready spends it now
         if (use.Effect.Charge is { } charge && !use.Strikes && !SkipsTheCharge(use, charge))
         {
@@ -646,6 +649,8 @@ public sealed partial class BattleCore
             said.With(new Vanished(user.Place));
         }
         if (charge.RaisesDefense) ChangeStat(user, StatType.Defense, 1, user);
+        // Dive's plunge brings a Cramorant up with something in its beak (plan 06 · R19b)
+        if (use.Data.Name == "Dive") Gulp(user, use.Data);
     }
 
     // ---------------------------------------------------------------- at whom
@@ -737,6 +742,14 @@ public sealed partial class BattleCore
                 return false;
             }
             return use.Effect.Decides(this, use, target, hit);
+        }
+
+        // Psychic Terrain keeps a move that goes first off a foe on the ground (plan 06 · R19b; Showdown's psychicterrain onTryHit)
+        if (Field.Has(FieldCondition.PsychicTerrain) && use.Data.Priority > 0 && target.Side != user.Side && DamageCalculator.OnTheTerrain(target))
+        {
+            hit.Missed = true;
+            hit.FailLine = Text.Of("battle.isProtectedByPsychicTerrain", ("target", target.Name));
+            return false;
         }
 
         bool missed = !Hits(use, target);
@@ -850,6 +863,16 @@ public sealed partial class BattleCore
 
         // Its effect may have made another move of it by now (Weather Ball takes its type from the sky)
         var move = use.Move;
+
+        // The harsh sun burns a Water move away and the heavy rain puts a Fire move out (plan 06 · R19b)
+        if (WashedOut(move))
+        {
+            Unlock(user);
+            return;
+        }
+        // Surf brings a Cramorant up with something in its beak (plan 06 · R19b)
+        if (move.Data.Name == "Surf") Gulp(user, move.Data);
+
         if (!use.Line.Shows.OfType<Lunged>().Any()) use.Line.With(new Lunged(user.Place, move.Category));
 
         // Explosion and its kind cost their user everything before the hit, whatever comes of it
@@ -893,6 +916,8 @@ public sealed partial class BattleCore
                 }
                 if (effect.StrikeLine?.Invoke(this, use) is { } line) Say(line);
                 if (!StrikeOnce(use, hit, userBreaks)) break;
+                // A Cramorant with its catch spits it back (plan 06 · R19b)
+                SpitsTheCatch(use, hit);
                 if (use.StrikeCount > 1) AfterOneOfSeveral(use, hit, n == use.StrikeCount);
             }
             if (hit.Landed) RememberHit(t, user, move);
@@ -908,6 +933,8 @@ public sealed partial class BattleCore
         use.DamageDealt = use.Hits.Where(h => h.Landed).Sum(h => h.Dealt);
 
         AfterStrike(use);
+        // Relic Song turns Meloetta (plan 06 · R19b)
+        if (Result == BattleResult.None) Sings(use);
     }
 
     /// <summary>
@@ -964,6 +991,14 @@ public sealed partial class BattleCore
             return true;
         }
         hit.IntoSubstitute = false;
+
+        // A disguise or an icy face takes the hit instead (plan 06 · R19b)
+        if (effect.Deals == null && ShapeTakesTheHit(use, hit, userBreaks))
+        {
+            hit.LastDealt = 0;
+            hit.Strikes++;
+            return true;
+        }
 
         var p = t.Pokemon!;
         // A berry against the move's type halves the hit as it lands, and is eaten (subscript_type_resist_berry)

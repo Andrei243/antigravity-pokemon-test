@@ -72,6 +72,9 @@ public static class Weathers
     {
         Battle.Sim.BattleWeather.Rain => FieldWeather.Rain,
         Battle.Sim.BattleWeather.Hail => FieldWeather.Hail,
+        // The later games' (plan 06 · R19b): snow and the heavy rain as the field's; the harsh sun and the winds clear
+        Battle.Sim.BattleWeather.Snow => FieldWeather.Snow,
+        Battle.Sim.BattleWeather.HeavyRain => FieldWeather.HeavyRain,
         Battle.Sim.BattleWeather.Sandstorm => FieldWeather.Sandstorm,
         Battle.Sim.BattleWeather.Fog => FieldWeather.Fog,
         _ => FieldWeather.Clear

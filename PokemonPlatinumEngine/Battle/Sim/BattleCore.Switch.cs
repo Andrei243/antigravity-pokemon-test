@@ -97,10 +97,14 @@ public sealed partial class BattleCore
             ? new Baton(place.Volatile.Passed(), new Dictionary<StatType, int>(place.Pokemon!.StatStages), place.ConfusionTurns)
             : null;
         ComeBack(place);
+        // A Palafin that leaves in its Zero Form will be back as a hero (plan 06 · R19b)
+        LeavesAHero(place);
         Revert(place);
         place.ClearVolatile();
         place.Pokemon!.ResetStatStages();
         place.Pokemon.ToxicCounter = 0;
+        // The strong weather goes with the last who could bring it (plan 06 · R19b)
+        CheckStrongWeather(place);
         return baton;
     }
 
@@ -246,6 +250,8 @@ public sealed partial class BattleCore
             if (!b.IsActive) continue;
             string? line = b.Pokemon!.Species.Name == "Cherrim" ? Shapes.Cherrim(this, b) : b.Ability?.Effect?.ChangeShape(this, b);
             if (line != null) Say(line).With(new Reshaped(b.Place));
+            // The later games' shapes taken on entry, once a stay (plan 06 · R19b)
+            if (b.IsActive) ShapeOnEntry(b);
         }
     }
 
@@ -331,6 +337,13 @@ public sealed partial class BattleCore
     /// anyone. Magic Guard walks through all three. A Poison type on the ground takes the Toxic Spikes away.
     /// </summary>
     private void Hazards(Battler b)
+    {
+        Hurts(b);
+        // Sticky Web after the rest, which Magic Guard doesn't walk through (plan 06 · R19b)
+        CaughtInTheWeb(b);
+    }
+
+    private void Hurts(Battler b)
     {
         if (!b.IsActive) return;
         var side = Field.Side(b.Side);

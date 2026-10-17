@@ -111,6 +111,9 @@ public sealed partial class BattleCore
             return false;
         }
 
+        // A terrain keeps conditions off whoever stands on it (plan 06 · R19b)
+        if (TerrainKeepsOff(target, status, announceFailure)) return false;
+
         // Nothing freezes under a strong sun
         if (status == StatusCondition.Freeze && Field.WeatherInEffect == BattleWeather.Sun)
         {
@@ -169,6 +172,12 @@ public sealed partial class BattleCore
         if (target.IsConfused)
         {
             if (announceFailure) Say(Text.Of("battle.isAlreadyConfused", ("target", target.Name)));
+            return false;
+        }
+        // Misty Terrain keeps any confusion off whoever stands on it, a rampage's too (plan 06 · R19b)
+        if (Field.Has(FieldCondition.MistyTerrain) && DamageCalculator.OnTheTerrain(target))
+        {
+            if (announceFailure) Say(Text.Of("battle.surroundsItselfWithMist", ("target", target.Name)));
             return false;
         }
         bool breaks = byAnother && BattleEffects.Of(source!).Any(e => e.IgnoresTargetAbility);
@@ -272,15 +281,25 @@ public sealed partial class BattleCore
     /// </summary>
     public bool SetWeather(BattleWeather weather, int turns, string line)
     {
-        if (Field.Weather == weather && (turns > 0 || Field.WeatherLasts))
+        // Under the modern rules hail is snow (plan 06 · R19b): the caller asks for hail and says hail's line
+        if (Rules.Sky(weather) != weather)
+        {
+            if (line == Starts(weather)) line = Starts(Rules.Sky(weather));
+            weather = Rules.Sky(weather);
+        }
+        // No other weather can take a strong one's place (Showdown's setWeather: STRONG_WEATHERS)
+        if (Field.Weather == weather && (turns > 0 || Field.WeatherLasts) || Field.WeatherIsStrong)
         {
             Unsaid();
             return false;
         }
+        Field.StrongWeatherBy = null;
         Field.Weather = weather;
         Field.WeatherTurns = turns;
         Field.WeatherLasts = turns == 0 && weather != BattleWeather.None;
         Say(line).With(new WeatherChanged(weather));
+        // Snow mends a broken icy face (plan 06 · R19b)
+        IceFaceInTheSnow();
         return true;
     }
 }

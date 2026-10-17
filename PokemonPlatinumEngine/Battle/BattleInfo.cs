@@ -97,6 +97,8 @@ public sealed class BattleInfo
         if (WeatherName(field.Weather) is { } weather) lines.Add(new(weather));
         if (field.TrickRoom) lines.Add(new(Text.Of("battleInfo.trickRoom"), Turns(field.TrickRoomTurns)));
         if (field.Gravity) lines.Add(new(Text.Of("battleInfo.gravity"), Turns(field.GravityTurns)));
+        // The terrain (plan 06 · R19b); a Terrain Extender lengthens it, so it is named without its count
+        if (field.Terrain is { } terrain && field.Has(terrain)) lines.Add(new(TerrainName(terrain)));
         return lines;
     }
 
@@ -107,7 +109,19 @@ public sealed class BattleInfo
         BattleWeather.Sun => Text.Of("battleInfo.sun"),
         BattleWeather.Hail => Text.Of("battleInfo.hail"),
         BattleWeather.Fog => Text.Of("battleInfo.fog"),
+        BattleWeather.Snow => Text.Of("battleInfo.snow"),
+        BattleWeather.HarshSun => Text.Of("battleInfo.harshSun"),
+        BattleWeather.HeavyRain => Text.Of("battleInfo.heavyRain"),
+        BattleWeather.StrongWinds => Text.Of("battleInfo.strongWinds"),
         _ => null
+    };
+
+    public static string TerrainName(FieldCondition terrain) => terrain switch
+    {
+        FieldCondition.ElectricTerrain => Text.Of("battleInfo.electricTerrain"),
+        FieldCondition.GrassyTerrain => Text.Of("battleInfo.grassyTerrain"),
+        FieldCondition.MistyTerrain => Text.Of("battleInfo.mistyTerrain"),
+        _ => Text.Of("battleInfo.psychicTerrain")
     };
 
     private static List<InfoLine> SideLines(FieldState field, BattleSide side)
@@ -125,6 +139,8 @@ public sealed class BattleInfo
         if (s.Spikes > 0) lines.Add(new(Text.Of("battleInfo.spikes"), Text.Of("battleInfo.times", ("n", s.Spikes)), InfoTone.Bad));
         if (s.ToxicSpikes > 0) lines.Add(new(Text.Of("battleInfo.toxicSpikes"), Text.Of("battleInfo.times", ("n", s.ToxicSpikes)), InfoTone.Bad));
         if (s.StealthRock) lines.Add(new(Text.Of("battleInfo.stealthRock"), "", InfoTone.Bad));
+        if (s.AuroraVeil) lines.Add(new(Text.Of("battleInfo.auroraVeil"), ours ? Turns(s.AuroraVeilTurns) : "", InfoTone.Good));
+        if (s.StickyWeb) lines.Add(new(Text.Of("battleInfo.stickyWeb"), "", InfoTone.Bad));
         return lines;
     }
 

@@ -87,6 +87,21 @@ public interface IBattleContext
     /// </summary>
     bool SetWeather(BattleWeather weather, int turns, string line);
 
+    /// <summary>
+    /// Brings one of the strong weathers (plan 06 · R19b: the harsh sun, the heavy rain, the strong winds) for the
+    /// holder's ability, which no other weather can take the place of and which goes when the last Pokémon on the
+    /// field with that ability leaves it: what Desolate Land, Primordial Sea and Delta Stream do as their holder comes
+    /// in (R27 writes the abilities). False when the field has that strong weather already.
+    /// </summary>
+    bool SetStrongWeather(Battler holder, BattleWeather weather);
+
+    /// <summary>
+    /// Lays a terrain over the field for five turns, eight when <paramref name="setter"/> holds a Terrain Extender
+    /// (plan 06 · R19b), and says <paramref name="line"/> or the terrain's own: what the moves of R24 to R26 and the
+    /// Surge abilities of R27 call. False, saying nothing, when that terrain is already there.
+    /// </summary>
+    bool SetTerrain(FieldCondition terrain, Battler? setter, string? line = null);
+
     /// <summary>Someone on the field, still standing, has this ability in force (Damp against Aftermath).</summary>
     bool AnyoneHas(string ability);
 
@@ -308,6 +323,12 @@ public abstract class BattleEffect
 
     /// <summary>The holder takes the shape the weather or its item gives it, on entry and when the weather changes (Forecast, Flower Gift, Multitype). Returns the line to say, or null when nothing changed.</summary>
     public virtual string? ChangeShape(IBattleContext ctx, Battler self) => null;
+
+    /// <summary>
+    /// The terrain has come, changed or gone (plan 06 · R19b): the hook Mimicry answers (R27), called for everyone on
+    /// the field, the fastest first, once the terrain's line is said.
+    /// </summary>
+    public virtual void OnTerrainChange(IBattleContext ctx, Battler self) { }
 }
 
 /// <summary>Finds the effects in play for a Pokémon on the field.</summary>

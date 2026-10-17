@@ -4,18 +4,26 @@ using PokemonPlatinumEngine.Models;
 
 namespace PokemonPlatinumEngine.Battle.Sim;
 
-/// <summary>The weather over a battle. Fog only ever comes from the field outside: no move or ability starts it.</summary>
-public enum BattleWeather { None, Rain, Sandstorm, Sun, Hail, Fog }
+/// <summary>
+/// The weather over a battle. Fog only ever comes from the field outside: no move or ability starts it. The later
+/// games' join at the end (plan 06 · R19b): snow, which takes hail's place under the modern rules
+/// (<see cref="Data.Ruleset.SnowInPlaceOfHail"/>), and the three strong weathers of the primal Pokémon and Mega
+/// Rayquaza, which never wear off and keep every other weather away (<see cref="FieldState.WeatherIsStrong"/>).
+/// </summary>
+public enum BattleWeather { None, Rain, Sandstorm, Sun, Hail, Fog, Snow, HarshSun, HeavyRain, StrongWinds }
 
 /// <summary>
 /// What a side of the field can have (plan 25 · Y2): a screen, a veil, a wind or a chant up, or something lying at
-/// its feet. The log tells of each as it comes and goes (<see cref="SideConditionChanged"/>); plan 06 · R19's Aurora
-/// Veil and new hazards join at the end.
+/// its feet. The log tells of each as it comes and goes (<see cref="SideConditionChanged"/>); the later games' Aurora
+/// Veil and Sticky Web joined at the end (plan 06 · R19b).
 /// </summary>
-public enum SideCondition { Reflect, LightScreen, Mist, Safeguard, Tailwind, LuckyChant, Spikes, ToxicSpikes, StealthRock }
+public enum SideCondition { Reflect, LightScreen, Mist, Safeguard, Tailwind, LuckyChant, Spikes, ToxicSpikes, StealthRock, AuroraVeil, StickyWeb }
 
-/// <summary>What the whole field can be under besides its weather (<see cref="FieldConditionChanged"/>); R19's terrains join at the end.</summary>
-public enum FieldCondition { TrickRoom, Gravity }
+/// <summary>
+/// What the whole field can be under besides its weather (<see cref="FieldConditionChanged"/>): Trick Room, Gravity,
+/// and the later games' four terrains (plan 06 · R19b), of which the field has one at a time (<see cref="FieldState.Terrain"/>).
+/// </summary>
+public enum FieldCondition { TrickRoom, Gravity, ElectricTerrain, GrassyTerrain, MistyTerrain, PsychicTerrain }
 
 /// <summary>What can wait for a place, whoever stands there when it arrives (<see cref="PlaceConditionChanged"/>).</summary>
 public enum PlaceCondition { Wish, FutureSight, DoomDesire }
@@ -38,10 +46,18 @@ public sealed class SideState
         SideCondition.Spikes => Spikes,
         SideCondition.ToxicSpikes => ToxicSpikes,
         SideCondition.StealthRock => StealthRock ? 1 : 0,
+        SideCondition.AuroraVeil => AuroraVeil ? 1 : 0,
+        SideCondition.StickyWeb => StickyWeb ? 1 : 0,
         _ => 0
     };
 
     public int ReflectTurns, LightScreenTurns, MistTurns, SafeguardTurns, TailwindTurns, LuckyChantTurns;
+
+    /// <summary>Aurora Veil (plan 06 · R19b): Reflect and Light Screen at once, five turns or eight with a Light Clay.</summary>
+    public int AuroraVeilTurns;
+
+    /// <summary>Sticky Web (plan 06 · R19b): whoever comes in on the ground here loses a stage of Speed.</summary>
+    public bool StickyWeb;
 
     /// <summary>Follow Me: the foes' moves aimed at one Pokémon of this side go to whoever stands here instead, this turn.</summary>
     public Place? FollowMe { get; internal set; }
@@ -56,6 +72,7 @@ public sealed class SideState
     public bool Safeguard => SafeguardTurns > 0;
     public bool Tailwind => TailwindTurns > 0;
     public bool LuckyChant => LuckyChantTurns > 0;
+    public bool AuroraVeil => AuroraVeilTurns > 0;
 }
 
 /// <summary>
@@ -100,6 +117,24 @@ public sealed class FieldState
     /// <summary>The weather has no end of its own: brought by an ability under Platinum's rules, or by the place the battle is fought in.</summary>
     public bool WeatherLasts { get; internal set; }
 
+    /// <summary>
+    /// The strong weather's (plan 06 · R19b): the ability that brought it, whose last holder on the field takes it
+    /// away by leaving. Null while the weather is any other.
+    /// </summary>
+    public string? StrongWeatherBy { get; internal set; }
+
+    /// <summary>The harsh sun, the heavy rain or the strong winds: no other weather can take their place.</summary>
+    public bool WeatherIsStrong => Weather is BattleWeather.HarshSun or BattleWeather.HeavyRain or BattleWeather.StrongWinds;
+
+    /// <summary>The terrain over the field (plan 06 · R19b): one of the four terrains of <see cref="FieldCondition"/>, or null.</summary>
+    public FieldCondition? Terrain { get; internal set; }
+
+    /// <summary>Turn ends the terrain has left: five, or eight from a Terrain Extender.</summary>
+    public int TerrainTurns { get; internal set; }
+
+    /// <summary>Whether a condition is one of the four terrains.</summary>
+    public static bool IsTerrain(FieldCondition condition) => condition >= FieldCondition.ElectricTerrain;
+
     public int TrickRoomTurns { get; internal set; }
     public int GravityTurns { get; internal set; }
 
@@ -120,7 +155,7 @@ public sealed class FieldState
     {
         FieldCondition.TrickRoom => TrickRoom,
         FieldCondition.Gravity => Gravity,
-        _ => false
+        _ => IsTerrain(condition) && Terrain == condition && TerrainTurns > 0
     };
 
     /// <summary>Indexed by <see cref="BattleSide"/>.</summary>
@@ -147,8 +182,28 @@ public sealed class FieldState
     /// <summary>Every place on the field with its Pokémon (Plus and Minus, Flower Gift ask after the holder's side).</summary>
     internal Func<IEnumerable<Battler>> Battlers = () => Array.Empty<Battler>();
 
-    /// <summary>The weather as it bears on the battle: none while Cloud Nine or Air Lock is out.</summary>
-    public BattleWeather WeatherInEffect => WeatherIgnored() ? BattleWeather.None : Weather;
+    /// <summary>
+    /// The weather as the rules read it: none while Cloud Nine or Air Lock is out. The later weathers read as the
+    /// ones they are kin to (plan 06 · R19b): the harsh sun as the sun and the heavy rain as the rain (the moves they
+    /// stop are <see cref="BattleCore"/>'s), snow as hail (but for hail's wear, which asks <see cref="SkyInEffect"/>),
+    /// and the strong winds as no weather at all (they only take the Flying type's weaknesses away, which
+    /// <see cref="DamageCalculator"/> asks of the sky). So Weather Ball, Solar Beam, Thunder, Blizzard, the healing
+    /// moves, Castform and every ability of the weather follow them with no rule of their own.
+    /// </summary>
+    public BattleWeather WeatherInEffect => AsTheRulesRead(SkyInEffect);
+
+    /// <summary>The weather itself, as it bears on the battle: none while Cloud Nine or Air Lock is out.</summary>
+    public BattleWeather SkyInEffect => WeatherIgnored() ? BattleWeather.None : Weather;
+
+    /// <summary>What a weather is to the rules that ask which of Platinum's weathers is out (<see cref="WeatherInEffect"/>).</summary>
+    public static BattleWeather AsTheRulesRead(BattleWeather weather) => weather switch
+    {
+        BattleWeather.HarshSun => BattleWeather.Sun,
+        BattleWeather.HeavyRain => BattleWeather.Rain,
+        BattleWeather.Snow => BattleWeather.Hail,
+        BattleWeather.StrongWinds => BattleWeather.None,
+        _ => weather
+    };
 
     /// <summary>Rain, a sandstorm, hail or fog: what weakens Solar Beam and the healing of Morning Sun.</summary>
     public bool WeatherDimsTheSun => WeatherInEffect is BattleWeather.Rain or BattleWeather.Sandstorm or BattleWeather.Hail or BattleWeather.Fog;

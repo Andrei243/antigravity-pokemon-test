@@ -65,6 +65,8 @@ internal static class BattleFieldFx
         SideCondition.Mist => 16,
         SideCondition.Tailwind => 10,
         SideCondition.LuckyChant => 9,
+        SideCondition.AuroraVeil => 7,
+        SideCondition.StickyWeb => WebSpokes + WebRings + 3,
         _ => 0
     };
 
@@ -72,8 +74,16 @@ internal static class BattleFieldFx
     {
         FieldCondition.TrickRoom => GridLines * 2 + 3 * (GridLines + 2),
         FieldCondition.Gravity => 16,
+        // The terrains, on both platforms: a wash each and their pieces (plan 06 · R19b)
+        FieldCondition.ElectricTerrain => 2 * (2 + Sparks),
+        FieldCondition.GrassyTerrain => 2 * (2 + Blades),
+        FieldCondition.MistyTerrain => 2 * (2 + Wisps + 2),
+        FieldCondition.PsychicTerrain => 2 * (2 + 2 + Motes),
         _ => 0
     };
+
+    /// <summary>The pieces of the later games' looks (plan 06 · R19b): Sticky Web's threads, and each terrain's on a platform.</summary>
+    public const int WebSpokes = 8, WebRings = 2, Sparks = 6, Blades = 9, Wisps = 5, Motes = 4;
 
     public static int Cap(PlaceCondition what) => what switch
     {
@@ -90,7 +100,11 @@ internal static class BattleFieldFx
         {
             int total = 0;
             foreach (var kind in Enum.GetValues<SideCondition>()) total += 2 * Cap(kind);
-            foreach (var kind in Enum.GetValues<FieldCondition>()) total += Cap(kind);
+            // The field has one terrain at a time: the heaviest of the four counts
+            foreach (var kind in Enum.GetValues<FieldCondition>()) if (!FieldState.IsTerrain(kind)) total += Cap(kind);
+            int terrain = 0;
+            foreach (var kind in Enum.GetValues<FieldCondition>()) if (FieldState.IsTerrain(kind)) terrain = Math.Max(terrain, Cap(kind));
+            total += terrain;
             // A place waits for one attack at a time: Doom Desire's is the heavier of the two
             total += 4 * (Cap(PlaceCondition.Wish) + Cap(PlaceCondition.DoomDesire));
             return total;
@@ -154,15 +168,23 @@ internal static class BattleFieldFx
             case SideCondition.LuckyChant:
                 Charms(p, view, time, fx);
                 break;
+            case SideCondition.AuroraVeil:
+                Aurora(p, view, time, fx);
+                break;
+            case SideCondition.StickyWeb:
+                Web(p, view, time, fx);
+                break;
         }
     }
 
-    /// <summary>Trick Room's grid, or Gravity's sinking dust (its light is <see cref="ArtLook.UnderGravity"/>).</summary>
+    /// <summary>Trick Room's grid, Gravity's sinking dust (its light is <see cref="ArtLook.UnderGravity"/>), or a terrain on both platforms.</summary>
     public static void Field(FieldCondition what, ConditionView view, float time, FxPlaces places, FxList fx)
     {
         if (!view.Visible) return;
         if (what == FieldCondition.TrickRoom) Grid(view, time, fx);
         else if (what == FieldCondition.Gravity) SinkingDust(view, time, places, fx);
+        else if (FieldState.IsTerrain(what))
+            for (int s = 0; s < 2; s++) Terrain(what, PlatformOf((BattleSide)s, places), s, view, time, fx);
     }
 
     /// <summary>What waits over a place: a Wish's star, or the mote of an attack sent ahead.</summary>
@@ -484,6 +506,173 @@ internal static class BattleFieldFx
                 float ends = Math.Clamp(Math.Min(u * 4f, (1f - u) * 8f), 0f, 1f);
                 fx.Streak(FxShape.Streak, at, -Vector3.UnitY, p.R * 0.09f, 2.4f, Rgba(170, 150, 210, 220f * k * ends), FxBlend.Alpha, depth: true);
             }
+        }
+    }
+
+    // ------------------------------------------------------------------ the later games' (plan 06 · R19b)
+
+    /// <summary>
+    /// Aurora Veil: two curtains of the northern lights hanging over the rim on the flanks and the far side, green
+    /// over pink, rippling as they hang, with a few glints running down them. They keep to the arc that faces nobody,
+    /// as the stones do, and rise into being as it comes in.
+    /// </summary>
+    private static void Aurora(Platform p, ConditionView view, float time, FxList fx)
+    {
+        float k = view.Strength, grow = Fx.EaseOut(view.Arrival);
+        if (grow <= 0f) return;
+        const int segments = 14;
+        var colours = new[] { Rgba(120, 255, 196), Rgba(236, 150, 255) };
+        for (int band = 0; band < 2; band++)
+        {
+            var points = new Vector3[segments + 1];
+            for (int i = 0; i <= segments; i++)
+            {
+                float u = i / (float)segments;
+                float wave = MathF.Sin(u * 9f + time * (1.1f + 0.3f * band) + view.Seed * 0.37f + band * 1.4f);
+                points[i] = p.At(p.Open(0.04f + 0.92f * u), p.R * (1.04f + 0.04f * band + 0.02f * wave),
+                    p.Top + p.R * (0.3f + 0.16f * band + 0.04f * wave) * grow);
+            }
+            float breathe = 0.75f + 0.25f * MathF.Sin(time * 0.8f + band * 2.1f + view.Seed);
+            fx.Ribbon(points, p.R * (0.42f - 0.12f * band) * grow, Fx.Fade(colours[band], 0.6f * k * breathe), FxBlend.Alpha, depth: true);
+        }
+        // Glints running down the curtains
+        for (int i = 0; i < 5; i++)
+        {
+            float phase = time / (1.3f + 0.4f * Fx.Rand(view.Seed, i, 1)) + Fx.Rand(view.Seed, i, 2);
+            int round = (int)MathF.Floor(phase);
+            float u = phase - round;
+            float angle = p.Open(0.1f + 0.8f * Fx.Rand(view.Seed + round, i, 3));
+            var at = p.At(angle, p.R * 1.05f, p.Top + p.R * (0.46f - 0.3f * u) * grow);
+            fx.Sprite(FxShape.Spark, at, p.R * 0.05f, Fx.Fade(Color.White, k * grow * MathF.Sin(u * MathF.PI)), rotation: time + i, depth: true);
+        }
+    }
+
+    /// <summary>
+    /// Sticky Web: a web of silver threads strung over the platform, its spokes running out to the rim and its rings
+    /// between them, lying just over the top so a body hides what is under it; dew glints along a thread now and
+    /// then. The spokes run out from the middle as it comes in; fading, it thins away.
+    /// </summary>
+    private static void Web(Platform p, ConditionView view, float time, FxList fx)
+    {
+        float k = view.Strength, grow = Fx.EaseOut(view.Arrival);
+        if (grow <= 0f) return;
+        var silver = Rgba(226, 230, 240);
+        float turn = Fx.Rand(view.Seed, 0, 1) * MathF.Tau / WebSpokes;
+        float lift = p.Top + p.R * 0.012f;
+        for (int i = 0; i < WebSpokes; i++)
+        {
+            float angle = turn + i * MathF.Tau / WebSpokes;
+            fx.Ribbon(new[] { p.At(angle, p.R * 0.08f, lift), p.At(angle, p.R * 0.98f * grow, lift) }, p.R * 0.014f, Fx.Fade(silver, 0.8f * k), FxBlend.Alpha, depth: true);
+        }
+        for (int ring = 0; ring < WebRings; ring++)
+        {
+            float radius = p.R * (0.42f + 0.36f * ring);
+            if (radius > p.R * 0.98f * grow) continue;
+            // A ring of a spider's web sags between its spokes
+            var points = new Vector3[WebSpokes * 2 + 1];
+            for (int i = 0; i < points.Length; i++)
+            {
+                float angle = turn + i * MathF.PI / WebSpokes;
+                float sag = i % 2 == 1 ? 0.9f : 1f;
+                points[i] = p.At(angle, radius * sag, lift + p.R * 0.002f);
+            }
+            fx.Ribbon(points, p.R * 0.012f, Fx.Fade(silver, 0.7f * k), FxBlend.Alpha, depth: true);
+        }
+        for (int i = 0; i < 3; i++)
+        {
+            float phase = time / (1.7f + 0.5f * i) + Fx.Rand(view.Seed, i, 4);
+            int round = (int)MathF.Floor(phase);
+            float u = phase - round;
+            int spoke = (int)(Fx.Rand(view.Seed + round, i, 5) * WebSpokes);
+            var at = p.At(turn + spoke * MathF.Tau / WebSpokes, p.R * (0.3f + 0.6f * Fx.Rand(view.Seed + round, i, 6)) * grow, lift + p.R * 0.02f);
+            fx.Sprite(FxShape.Spark, at, p.R * 0.05f, Fx.Fade(Color.White, k * grow * MathF.Sin(u * MathF.PI)), rotation: time, depth: true);
+        }
+    }
+
+    /// <summary>
+    /// A terrain on one platform: a wash of its colour lying on the platform's top (matter, alpha-blended, so it keeps
+    /// its colour under the day's light), and its own pieces round the rim, standing only on the arc that faces
+    /// nobody. Electric Terrain crackles with sparks along the ground, Grassy Terrain grows blades of grass that
+    /// sway, Misty Terrain lies in pink wisps, Psychic Terrain ripples in violet rings with motes rising.
+    /// </summary>
+    private static void Terrain(FieldCondition what, Platform p, int side, ConditionView view, float time, FxList fx)
+    {
+        float k = view.Strength, grow = Fx.EaseOut(view.Arrival);
+        if (grow <= 0f) return;
+        int seed = view.Seed + side * 97;
+        var (wash, piece) = what switch
+        {
+            FieldCondition.ElectricTerrain => (Rgba(255, 236, 110), Rgba(255, 250, 170)),
+            FieldCondition.GrassyTerrain => (Rgba(96, 196, 92), Rgba(120, 214, 96)),
+            FieldCondition.MistyTerrain => (Rgba(255, 176, 226), Rgba(255, 214, 240)),
+            _ => (Rgba(196, 110, 255), Rgba(226, 170, 255))
+        };
+        float breathe = 0.8f + 0.2f * MathF.Sin(time * 1.2f + seed);
+        fx.Flat(FxShape.Glow, p.At(0f, 0f, p.Top + 0.01f), Vector3.UnitY, p.R * 2.3f * (0.6f + 0.4f * grow), Fx.Fade(wash, 0.45f * k * breathe), FxBlend.Alpha);
+        // A low band of the terrain's colour standing round the far rim, which is what the overview sees of a flat
+        // thing on the foe's platform (a wash alone is a thread at its seven degrees)
+        const int segments = 12;
+        var band = new Vector3[segments + 1];
+        for (int i = 0; i <= segments; i++) band[i] = p.At(p.Open(i / (float)segments), p.R * 1.01f, p.Top + p.R * 0.05f * grow);
+        fx.Ribbon(band, p.R * 0.12f * grow, Fx.Fade(wash, 0.55f * k * breathe), FxBlend.Alpha, depth: true);
+        switch (what)
+        {
+            case FieldCondition.ElectricTerrain:
+                for (int i = 0; i < Sparks; i++)
+                {
+                    // A spark leaps along the ground for a moment, somewhere new each time
+                    float phase = time / (0.5f + 0.3f * Fx.Rand(seed, i, 1)) + Fx.Rand(seed, i, 2);
+                    int round = (int)MathF.Floor(phase);
+                    float u = phase - round;
+                    if (u > 0.5f) continue;
+                    float angle = p.Open(Fx.Rand(seed + round, i, 3));
+                    var at = p.At(angle, p.R * (0.9f + 0.25f * Fx.Rand(seed + round, i, 4)), p.Top + p.R * 0.08f);
+                    fx.Sprite(FxShape.Spark, at, p.R * 0.13f, Fx.Fade(piece, k * grow * MathF.Sin(u / 0.5f * MathF.PI)), FxBlend.Alpha, Fx.Rand(seed + round, i, 5) * MathF.Tau, depth: true);
+                }
+                break;
+            case FieldCondition.GrassyTerrain:
+                for (int i = 0; i < Blades; i++)
+                {
+                    float angle = p.Open((i + 0.5f + Fx.Signed(seed, i, 1) * 0.3f) / Blades);
+                    float height = p.R * (0.16f + 0.08f * Fx.Rand(seed, i, 2)) * grow;
+                    float sway = 0.22f * MathF.Sin(time * 1.6f + i * 1.3f);
+                    var foot = p.At(angle, p.R * (1.0f + 0.06f * Fx.Rand(seed, i, 3)), p.Top);
+                    var along = Vector3.Normalize(new Vector3(sway, 1f, 0f));
+                    fx.Streak(FxShape.Leaf, foot + along * height * 0.5f, along, height * 0.5f, 2.6f, Fx.Fade(piece, k), FxBlend.Alpha, depth: true);
+                }
+                break;
+            case FieldCondition.MistyTerrain:
+                for (int i = 0; i < Wisps; i++)
+                {
+                    // Puffs of pink mist standing on the far rim, drifting round it
+                    float angle = p.Open((i + 0.5f) / Wisps + 0.04f * MathF.Sin(time * 0.3f + i * 1.7f));
+                    var at = p.At(angle, p.R * 0.98f, p.Top + p.R * 0.08f);
+                    fx.Sprite(FxShape.Smoke, at, p.R * 0.2f, Fx.Fade(piece, 0.75f * k * grow * (0.8f + 0.2f * MathF.Sin(time + i))), FxBlend.Alpha, time * 0.15f + i + Fx.Rand(seed, i, 1) * MathF.Tau, depth: true);
+                }
+                for (int i = 0; i < 2; i++)
+                {
+                    float phase = time / 1.9f + Fx.Rand(seed, i, 2);
+                    float u = Frac(phase);
+                    var at = p.At(p.Open(Fx.Rand(seed + (int)MathF.Floor(phase), i, 3)), p.R * 0.95f, p.Top + p.R * (0.08f + 0.2f * u));
+                    fx.Sprite(FxShape.Spark, at, p.R * 0.06f, Fx.Fade(Color.White, k * grow * MathF.Sin(u * MathF.PI)), rotation: time, depth: true);
+                }
+                break;
+            default:
+                for (int i = 0; i < 2; i++)
+                {
+                    // Rings spreading out over the top, one after the other
+                    float u = Frac(time / 2.2f + i * 0.5f + Fx.Rand(seed, i, 1) * 0.1f);
+                    fx.Flat(FxShape.Ring, p.At(0f, 0f, p.Top + 0.015f), Vector3.UnitY, p.R * (0.4f + 1.1f * u) * RingScale, Fx.Fade(piece, 0.8f * k * grow * (1f - u)), FxBlend.Alpha);
+                }
+                for (int i = 0; i < Motes; i++)
+                {
+                    float phase = time / (2f + 0.6f * Fx.Rand(seed, i, 3)) + Fx.Rand(seed, i, 4);
+                    int round = (int)MathF.Floor(phase);
+                    float u = phase - round;
+                    var at = p.At(p.Open(Fx.Rand(seed + round, i, 5)), p.R * 1.02f, p.Top + p.R * (0.05f + 0.35f * u));
+                    fx.Sprite(FxShape.Orb, at, p.R * 0.07f, Fx.Fade(piece, k * grow * MathF.Sin(u * MathF.PI)), FxBlend.Alpha, time, depth: true);
+                }
+                break;
         }
     }
 }

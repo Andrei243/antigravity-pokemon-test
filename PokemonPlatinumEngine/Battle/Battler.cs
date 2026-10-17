@@ -371,7 +371,9 @@ internal enum EntryCheck
     /// <summary>An ability of a later generation that acts on entry.</summary>
     Other = 1024,
     /// <summary>Its held item's say on entry, and the conditions it can't keep.</summary>
-    Item = 2048
+    Item = 2048,
+    /// <summary>The shape a later ability gives on entry (plan 06 · R19b: Schooling, Shields Down, Zero to Hero, Ice Face).</summary>
+    Shape = 4096
 }
 
 /// <summary>

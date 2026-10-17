@@ -131,11 +131,5 @@ public sealed partial class BattleCore
     /// On the ground, as Spikes, Toxic Spikes and Arena Trap ask (<c>BattlerIsGrounded</c>): not a Flying type,
     /// not floating by Levitate or Magnet Rise; or weighed down by an Iron Ball or by Gravity all the same.
     /// </summary>
-    private bool IsOnTheGround(Battler b)
-    {
-        var effects = BattleEffects.Of(b).ToList();
-        if (Field.Gravity || effects.Any(e => e.GroundsHolder)) return true;
-        bool floats = !b.Volatile.Ingrained && effects.Any(e => e.Levitates);
-        return !floats && b.Volatile.MagnetRiseTurns == 0 && !b.HasType(PokemonType.Flying);
-    }
+    private static bool IsOnTheGround(Battler b) => DamageCalculator.IsGrounded(b);
 }

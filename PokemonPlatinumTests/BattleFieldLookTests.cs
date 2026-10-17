@@ -653,16 +653,21 @@ public class BattleFieldLookTests
                 look.Set(new Place(side, slot), PlaceCondition.DoomDesire, true);
             }
         }
-        foreach (var kind in Enum.GetValues<FieldCondition>()) look.Set(kind, true);
+        // The field has one terrain at a time (plan 06 · R19b): the heaviest stands with the rest
+        foreach (var kind in Enum.GetValues<FieldCondition>()) if (!FieldState.IsTerrain(kind)) look.Set(kind, true);
+        look.Set(FieldCondition.GrassyTerrain, true);
         look.Advance(3f);
 
         int most = 0;
         for (int step = 0; step < 120; step++) most = Math.Max(most, Drawn(fx => BattleFieldFx.Emit(look, step * 0.21f, Places, 2, fx)).Count);
         Assert.InRange(most, BattleFieldFx.MaxQuads / 2, BattleFieldFx.MaxQuads);
-        // Lighter than two weathers' layers at once: small things, for all that there are many kinds of them
-        Assert.True(BattleFieldFx.MaxQuads <= 450, $"{BattleFieldFx.MaxQuads} quads at the most");
+        // Small things, for all that there are many kinds of them: under five hundred with every kind up at once,
+        // Aurora Veil and Sticky Web on both sides and the heaviest terrain among them (plan 06 · R19b)
+        Assert.True(BattleFieldFx.MaxQuads <= 500, $"{BattleFieldFx.MaxQuads} quads at the most");
         // (The number the plan and CLAUDE.md give: a look made heavier changes it, and them)
-        Assert.Equal(417, BattleFieldFx.MaxQuads);
+        Assert.Equal(479, BattleFieldFx.MaxQuads);
+        Assert.Equal(BattleFieldFx.Cap(FieldCondition.GrassyTerrain),
+            Enum.GetValues<FieldCondition>().Where(FieldState.IsTerrain).Max(BattleFieldFx.Cap));
 
         // A single battle draws nothing over the second places, and an empty look nothing at all
         Assert.True(Drawn(fx => BattleFieldFx.Emit(look, 1f, Places, 1, fx)).Count < Drawn(fx => BattleFieldFx.Emit(look, 1f, Places, 2, fx)).Count);
@@ -712,6 +717,32 @@ public class BattleFieldLookTests
         // The style guide's number: under a ninth of the radius, which reaches a Pokémon's feet from the far platform's rim and no further
         Assert.True(BattleFieldFx.TallestBeforeTheCamera <= 1f / 9f);
         Assert.Equal(65f, BattleFieldFx.CameraArc * 180f / MathF.PI, 3);
+    }
+
+    [Theory]
+    [InlineData(BattleSide.Player)]
+    [InlineData(BattleSide.Enemy)]
+    public void TheLaterLooksStandOnlyWhereTheyFaceNobody(BattleSide side)
+    {
+        // Plan 06 · R19b: Aurora Veil's curtains hang over the far rim, and a terrain's pieces stand there too
+        for (int step = 0; step < 40; step++)
+        {
+            float time = step * 0.29f;
+            var veil = Drawn(f => BattleFieldFx.Side(side, SideCondition.AuroraVeil, Standing(1, 3f, 6151 + step), time, Places, f));
+            foreach (var ribbon in veil.Ribbons)
+                Assert.All(ribbon.Points, p => Assert.True(FromTheCamera(side, p) > BattleFieldFx.CameraArc - 0.12f, $"the veil at {FromTheCamera(side, p)} from the camera"));
+            foreach (var q in veil.Quads)
+                Assert.True(FromTheCamera(side, q.Center) > BattleFieldFx.CameraArc - 0.12f, $"a glint at {FromTheCamera(side, q.Center)}");
+            foreach (var terrain in Enum.GetValues<FieldCondition>().Where(FieldState.IsTerrain))
+            {
+                var fx = Drawn(f => BattleFieldFx.Field(terrain, Standing(1, 3f, 6151 + step), time, Places, f));
+                var centre = side == BattleSide.Player ? BattleStage.PlayerSpot : BattleStage.EnemySpot;
+                float radius = side == BattleSide.Player ? BattleStage.PlayerPlatformRadius : BattleStage.EnemyPlatformRadius;
+                // What stands up (a sprite or a streak, not a wash lying on the platform) near this platform's rim
+                foreach (var q in fx.Quads.Where(q => q.Normal == Vector3.Zero && Vector2.Distance(new(q.Center.X, q.Center.Z), new(centre.X, centre.Z)) < radius * 1.5f))
+                    Assert.True(FromTheCamera(side, q.Center) > BattleFieldFx.CameraArc - 0.12f, $"{terrain} at {FromTheCamera(side, q.Center)} from the camera");
+            }
+        }
     }
 
     [Fact]

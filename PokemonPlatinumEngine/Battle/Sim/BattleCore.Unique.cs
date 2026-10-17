@@ -126,9 +126,22 @@ public sealed partial class BattleCore
         [BattleTerrain.Special] = (PokemonType.Normal, "Tri Attack", "Paralyze")
     };
 
-    /// <summary>What the ground this battle is fought on comes to in the tables.</summary>
+    /// <summary>
+    /// The later games' terrains' rows of the same tables (plan 06 · R19b; Showdown's naturepower, camouflage and
+    /// secretpower): a terrain over the field goes before the ground under it.
+    /// </summary>
+    private static readonly Dictionary<FieldCondition, (PokemonType Type, string Move, string Effect)> TerrainGrounds = new()
+    {
+        [FieldCondition.ElectricTerrain] = (PokemonType.Electric, "Thunderbolt", "Paralyze"),
+        [FieldCondition.GrassyTerrain] = (PokemonType.Grass, "Energy Ball", "Sleep"),
+        [FieldCondition.MistyTerrain] = (PokemonType.Fairy, "Moonblast", "SpAttackDown"),
+        [FieldCondition.PsychicTerrain] = (PokemonType.Psychic, "Psychic", "SpeedDown")
+    };
+
+    /// <summary>What the ground this battle is fought on comes to in the tables: the terrain's row while there is one.</summary>
     private (PokemonType Type, string Move, string Effect) Ground =>
-        Terrains.TryGetValue(Conditions.Terrain, out var ground) ? ground : Terrains[BattleTerrain.Special];
+        Field.Terrain is { } terrain && Field.Has(terrain) ? TerrainGrounds[terrain]
+        : Terrains.TryGetValue(Conditions.Terrain, out var ground) ? ground : Terrains[BattleTerrain.Special];
 
     /// <summary>Whether Metronome, Assist or Copycat may call a move (<c>Move_CanBeMetronomed</c>): not one of the list, nor one Gravity or Heal Block would stop.</summary>
     private bool CanBeCalled(Battler user, MoveData data) =>
@@ -951,6 +964,7 @@ public sealed partial class BattleCore
             case "AccuracyDown": ChangeStat(t, StatType.Accuracy, -1, user, false, By.SideEffect); break;
             case "AttackDown": ChangeStat(t, StatType.Attack, -1, user, false, By.SideEffect); break;
             case "SpeedDown": ChangeStat(t, StatType.Speed, -1, user, false, By.SideEffect); break;
+            case "SpAttackDown": ChangeStat(t, StatType.SpAttack, -1, user, false, By.SideEffect); break;
             case "EvasionDown": ChangeStat(t, StatType.Evasion, -1, user, false, By.SideEffect); break;
             case "Sleep": TryInflictStatus(t, StatusCondition.Sleep, user, false, By.SideEffect); break;
             case "Freeze": TryInflictStatus(t, StatusCondition.Freeze, user, false, By.SideEffect); break;

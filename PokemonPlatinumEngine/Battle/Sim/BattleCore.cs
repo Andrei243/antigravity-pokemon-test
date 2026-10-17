@@ -947,6 +947,7 @@ public sealed partial class BattleCore : IBattleContext
         foreach (var told in letGo) fell.With(told);
         FellFirst(down, fell);
         if (!down.IsPlayerSide) AwardExp(down);
+        CheckStrongWeather(down);
     }
 
     /// <summary>The next Pokémon at 0 HP that hasn't been told so yet: the fastest first, as the original faints them.</summary>
@@ -1031,6 +1032,8 @@ public sealed partial class BattleCore : IBattleContext
         // Whatever a move changed for the battle is put back (the original's party data was never touched), and
         // a knocked-off item is in its holder's hands again
         foreach (var b in AllBattlers.Where(b => b.Pokemon != null)) Revert(b);
+        // And the shapes that last the battle out are given back (plan 06 · R19b: Disguise, Ice Face, Zero to Hero)
+        GiveBackLastingShapes();
         foreach (var (pokemon, item) in knockedOff) pokemon.HeldItem ??= item;
         knockedOff.Clear();
         if (result == BattleResult.PlayerVictory && !Frontier) PickUp();
