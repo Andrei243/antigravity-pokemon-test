@@ -21,7 +21,7 @@
         "{player} handed over the Parcel."
       ],
       "text": [
-        "{player} i-a predat Parcel."
+        "{player} i-a predat Coletul."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Whoa, it's a Town Map! Two of them! Mom must've packed one for you, too. Here, take it!"
       ],
       "text": [
-        "Uau, e un Town Map! Două! Mama sigur a pus una și pentru tine. Poftim, ia-o!"
+        "Uau, e o Hartă a Regiunii! Două! Mama sigur a pus una și pentru tine. Poftim, ia-o!"
       ]
     },
     {
@@ -91,7 +91,7 @@
         "Poison: the Pokémon loses HP each turn, and even as it walks in the field. An Antidote cures it."
       ],
       "text": [
-        "Otrăvirea: Pokémonul pierde HP în fiecare tură, ba chiar și când merge pe teren. Un Antidote îl vindecă."
+        "Otrăvirea: Pokémonul pierde HP în fiecare tură, ba chiar și când merge pe teren. Un Antidot îl vindecă."
       ]
     },
     {
@@ -99,7 +99,7 @@
         "Paralysis: the Pokémon is slowed down, and sometimes can't move at all. A Paralyze Heal cures it."
       ],
       "text": [
-        "Paralizia: Pokémonul e încetinit și uneori nu se poate mișca deloc. Un Paralyze Heal îl vindecă."
+        "Paralizia: Pokémonul e încetinit și uneori nu se poate mișca deloc. Un Leac de Paralizie îl vindecă."
       ]
     },
     {
@@ -107,7 +107,7 @@
         "Sleep: the Pokémon can't use moves until it wakes up. An Awakening wakes it at once."
       ],
       "text": [
-        "Somnul: Pokémonul nu poate folosi mișcări până nu se trezește. Un Awakening îl trezește imediat."
+        "Somnul: Pokémonul nu poate folosi mișcări până nu se trezește. O Trezire îl trezește imediat."
       ]
     },
     {
@@ -115,7 +115,7 @@
         "Burn: the Pokémon loses HP each turn, and its physical moves hit weaker. A Burn Heal cures it."
       ],
       "text": [
-        "Arsura: Pokémonul pierde HP în fiecare tură, iar mișcările lui fizice lovesc mai slab. Un Burn Heal o vindecă."
+        "Arsura: Pokémonul pierde HP în fiecare tură, iar mișcările lui fizice lovesc mai slab. Un Leac de Arsuri o vindecă."
       ]
     },
     {
@@ -123,7 +123,7 @@
         "Freeze: the Pokémon can't move until it thaws. Fire-type moves thaw it, and so does an Ice Heal."
       ],
       "text": [
-        "Înghețul: Pokémonul nu se poate mișca până nu se dezgheață. Mișcările de tip Foc îl dezgheață, la fel și un Ice Heal."
+        "Înghețul: Pokémonul nu se poate mișca până nu se dezgheață. Mișcările de tip Foc îl dezgheață, la fel și un Leac de Îngheț."
       ]
     }
   ],
@@ -165,7 +165,7 @@
         "A Potion gives back 20 HP. Use it before your Pokémon gets too weak!"
       ],
       "text": [
-        "Un Potion îți dă înapoi 20 HP. Folosește-l înainte să slăbească prea tare Pokémonul tău!"
+        "O Poțiune îți dă înapoi 20 HP. Folosește-o înainte să slăbească prea tare Pokémonul tău!"
       ]
     }
   ],

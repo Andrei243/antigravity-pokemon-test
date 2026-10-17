@@ -91,10 +91,10 @@
       ],
       "text": [
         "Ăă... N-ai vrea niște mulci? E bun pentru crescut boabe. Ai ${money}.",
-        "Growth Mulch: $200",
-        "Damp Mulch: $200",
-        "Stable Mulch: $200",
-        "Gooey Mulch: $200",
+        "Mulci de Creștere: $200",
+        "Mulci Umed: $200",
+        "Mulci Stabil: $200",
+        "Mulci Lipicios: $200",
         "Nu, mulțumesc"
       ]
     },
@@ -137,10 +137,10 @@
       ],
       "text": [
         "Despre ce mulci vrei să citești?",
-        "Growth Mulch",
-        "Damp Mulch",
-        "Stable Mulch",
-        "Gooey Mulch",
+        "Mulci de Creștere",
+        "Mulci Umed",
+        "Mulci Stabil",
+        "Mulci Lipicios",
         "Închide cartea"
       ]
     },
@@ -149,7 +149,7 @@
         "Growth Mulch makes berries grow faster. The soil dries out faster too, so water it more often."
       ],
       "text": [
-        "Growth Mulch face boabele să crească mai repede. Și solul se usucă mai repede, așa că udă-l mai des."
+        "Mulciul de Creștere face boabele să crească mai repede. Și solul se usucă mai repede, așa că udă-l mai des."
       ]
     },
     {
@@ -157,7 +157,7 @@
         "Damp Mulch keeps the soil from drying out. The berries grow more slowly for it."
       ],
       "text": [
-        "Damp Mulch împiedică solul să se usuce. În schimb, boabele cresc mai încet."
+        "Mulciul Umed împiedică solul să se usuce. În schimb, boabele cresc mai încet."
       ]
     },
     {
@@ -165,7 +165,7 @@
         "Stable Mulch keeps ripe berries on the plant for longer. Some growers lay it where they seldom pass."
       ],
       "text": [
-        "Stable Mulch ține boabele coapte pe plantă mai mult timp. Unii cultivatori îl pun unde trec rar."
+        "Mulciul Stabil ține boabele coapte pe plantă mai mult timp. Unii cultivatori îl pun unde trec rar."
       ]
     },
     {
@@ -173,7 +173,7 @@
         "Gooey Mulch lets a plant come up again more times from where the old one withered."
       ],
       "text": [
-        "Gooey Mulch face o plantă să răsară de mai multe ori din locul unde s-a uscat cea veche."
+        "Mulciul Lipicios face o plantă să răsară de mai multe ori din locul unde s-a uscat cea veche."
       ]
     }
   ]

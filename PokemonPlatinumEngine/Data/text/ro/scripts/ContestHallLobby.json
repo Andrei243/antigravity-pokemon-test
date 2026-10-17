@@ -69,7 +69,7 @@
         "Here, take this. It's not much, but it's a start for your Fashion Case."
       ],
       "text": [
-        "Uite, ia asta. Nu e mare lucru, dar e un început pentru Fashion Case-ul tău."
+        "Uite, ia asta. Nu e mare lucru, dar e un început pentru Cutia ta de Modă."
       ]
     },
     {
@@ -255,7 +255,7 @@
         "You are given a theme and sixty seconds to put Accessories from your Fashion Case on your Pokémon. The better they fit the theme, the better the score."
       ],
       "text": [
-        "Primești o temă și șaizeci de secunde ca să pui pe Pokémonul tău Accesorii din Fashion Case. Cu cât se potrivesc mai bine cu tema, cu atât e mai mare scorul."
+        "Primești o temă și șaizeci de secunde ca să pui pe Pokémonul tău Accesorii din Cutia de Modă. Cu cât se potrivesc mai bine cu tema, cu atât e mai mare scorul."
       ]
     },
     {
@@ -369,7 +369,7 @@
         "{player} put it away in the Fashion Case."
       ],
       "text": [
-        "{player} l-a pus în Fashion Case."
+        "{player} l-a pus în Cutia de Modă."
       ]
     },
     {
@@ -615,7 +615,7 @@
         "You're entering contests? And yes, you've got a Poffin Case."
       ],
       "text": [
-        "Te înscrii la concursuri? Și da, ai o Poffin Case."
+        "Te înscrii la concursuri? Și da, ai o Cutie de Poffinuri."
       ]
     },
     {
@@ -639,7 +639,7 @@
         "Oh, no. Your Poffin Case is full."
       ],
       "text": [
-        "O, nu. Poffin Case-ul tău e plin."
+        "O, nu. Cutia ta de Poffinuri e plină."
       ]
     },
     {
@@ -647,7 +647,7 @@
         "You're entering contests? And yes, you've got a Poffin Case."
       ],
       "text": [
-        "Te înscrii la concursuri? Și da, ai o Poffin Case."
+        "Te înscrii la concursuri? Și da, ai o Cutie de Poffinuri."
       ]
     },
     {
@@ -671,7 +671,7 @@
         "Oh, no. Your Poffin Case is full. I'll give it to you another time."
       ],
       "text": [
-        "O, nu. Poffin Case-ul tău e plin. Ți-l dau altă dată."
+        "O, nu. Cutia ta de Poffinuri e plină. Ți-l dau altă dată."
       ]
     },
     {
@@ -687,7 +687,7 @@
         "You're entering contests? But I don't see a Poffin Case..."
       ],
       "text": [
-        "Te înscrii la concursuri? Dar nu văd nicio Poffin Case..."
+        "Te înscrii la concursuri? Dar nu văd nicio Cutie de Poffinuri..."
       ]
     },
     {
@@ -721,7 +721,7 @@
         "The Mild Poffin was put away in the Poffin Case."
       ],
       "text": [
-        "Poffinul blând a fost pus în Poffin Case."
+        "Poffinul blând a fost pus în Cutia de Poffinuri."
       ]
     }
   ],

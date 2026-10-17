@@ -5,7 +5,7 @@
         "There is a gap in the little tower of stones. Set the Odd Keystone in it?"
       ],
       "text": [
-        "E un gol în turnulețul de pietre. Pui Odd Keystone acolo?"
+        "E un gol în turnulețul de pietre. Pui Cheia de Boltă acolo?"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "{player} set the Odd Keystone in the tower."
       ],
       "text": [
-        "{player} a pus Odd Keystone în turn."
+        "{player} a pus Cheia de Boltă în turn."
       ]
     },
     {
@@ -79,7 +79,7 @@
         "Fishing is all very well, but a Good Rod is something else again! Would you like one?"
       ],
       "text": [
-        "Pescuitul e bun și frumos, dar un Good Rod e cu totul altceva! Vrei unul?"
+        "Pescuitul e bun și frumos, dar o Undiță Bună e cu totul altceva! Vrei una?"
       ]
     },
     {
@@ -95,7 +95,7 @@
         "Shall I tell you how to fish with the Good Rod?"
       ],
       "text": [
-        "Să-ți spun cum se pescuiește cu Good Rod?"
+        "Să-ți spun cum se pescuiește cu Undița Bună?"
       ]
     },
     {

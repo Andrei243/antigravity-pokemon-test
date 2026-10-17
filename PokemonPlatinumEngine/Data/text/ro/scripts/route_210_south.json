@@ -15,7 +15,7 @@
         "The Psyduck are clutching their heads and won't budge. Use the Secret Potion?"
       ],
       "text": [
-        "Psyduck-ii se țin de cap și nu se clintesc. Folosești Secret Potion?"
+        "Psyduck-ii se țin de cap și nu se clintesc. Folosești Poțiunea Secretă?"
       ]
     },
     {
@@ -24,7 +24,7 @@
         "The Psyduck's headaches seem to have cleared up!"
       ],
       "text": [
-        "{player} a folosit Secret Potion!",
+        "{player} a folosit Poțiunea Secretă!",
         "Durerile de cap ale Psyduck-ilor par să fi trecut!"
       ]
     },
@@ -41,7 +41,7 @@
         "So you used the Secret Potion I gave you. I'm glad it worked."
       ],
       "text": [
-        "Deci ai folosit Secret Potion pe care ți l-am dat. Mă bucur că a mers."
+        "Deci ai folosit Poțiunea Secretă pe care ți-am dat-o. Mă bucur că a mers."
       ]
     },
     {
@@ -65,7 +65,7 @@
         "I'd like you to take this Old Charm to my grandmother in Celestic Town."
       ],
       "text": [
-        "Aș vrea să-i duci Old Charm-ul ăsta bunicii mele din Orășelul Celestic."
+        "Aș vrea să-i duci acest Talisman Vechi bunicii mele din Orășelul Celestic."
       ]
     },
     {
@@ -113,7 +113,7 @@
         "She's the elder of Celestic Town. As for where it is, look at your Town Map. You can't miss it."
       ],
       "text": [
-        "E bătrâna înțeleaptă a Orășelului Celestic. Cât despre unde e, uită-te pe Town Map. N-ai cum să-l ratezi."
+        "E bătrâna înțeleaptă a Orășelului Celestic. Cât despre unde e, uită-te pe Harta Regiunii. N-ai cum să-l ratezi."
       ]
     },
     {

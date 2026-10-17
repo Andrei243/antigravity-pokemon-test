@@ -13,7 +13,7 @@
         "Come on, old man, hand over the Honey! The sweet stuff brings Pokémon running, and we need plenty of Pokémon."
       ],
       "text": [
-        "Haide, moșule, dă-ne Honey! Chestia dulce aduce Pokémonii în fugă, și ne trebuie o grămadă de Pokémoni."
+        "Haide, moșule, dă-ne Miere! Chestia dulce aduce Pokémonii în fugă, și ne trebuie o grămadă de Pokémoni."
       ]
     },
     {
@@ -101,7 +101,7 @@
         "And please, take some Honey for your trouble. I've plenty to spare!"
       ],
       "text": [
-        "Și te rog, ia niște Honey pentru osteneală. Am destulă!"
+        "Și te rog, ia niște Miere pentru osteneală. Am destulă!"
       ]
     },
     {
@@ -109,7 +109,7 @@
         "Spread Honey on a sweet-smelling tree and come back after a while. Pokémon can't resist it!"
       ],
       "text": [
-        "Întinde Honey pe un copac care miroase dulce și revino peste o vreme. Pokémonii nu-i pot rezista!"
+        "Întinde Miere pe un copac care miroase dulce și revino peste o vreme. Pokémonii nu-i pot rezista!"
       ]
     }
   ],
@@ -130,7 +130,7 @@
         "No, thanks"
       ],
       "text": [
-        "Ai ${money}. Câtă Honey vrei?",
+        "Ai ${money}. Câtă Miere vrei?",
         "Un borcan pentru $100",
         "Zece borcane pentru $1.000",
         "Nu, mersi"

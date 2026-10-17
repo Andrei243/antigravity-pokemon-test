@@ -18,6 +18,23 @@ public static class TextSources
     // ------------------------------------------------------------------ the English side
 
     /// <summary>
+    /// The lines of the data files that a language translates in its <c>data.json</c> (<see cref="Text.OfData"/>, keyed
+    /// by the English line): every region's professor in the introduction and every trainer's lines in battle
+    /// (<c>trainer-lines.json</c>). Each line once.
+    /// </summary>
+    public static SortedSet<string> DataLines()
+    {
+        var lines = new SortedSet<string>(StringComparer.Ordinal);
+        foreach (var professor in RegionDatabase.All.Select(r => r.Professor).Where(p => p != null))
+            foreach (var property in typeof(RegionIntroLines).GetProperties())
+                if (property.GetValue(professor!.Lines) is string { Length: > 0 } line) lines.Add(line);
+        foreach (var (_, set) in TrainerLines.All)
+            foreach (var cue in Enum.GetValues<Battle.Sim.TrainerCue>())
+                if (set.For(cue)?.Text is { Length: > 0 } line) lines.Add(line);
+        return lines;
+    }
+
+    /// <summary>
     /// The scripts of every file, as the entries a translation lists (English filled in, no text yet): file name to
     /// script name to its text-bearing instructions in <see cref="Instruction.TextIndex"/> order. A file or a script
     /// with nothing to say is left out.
@@ -219,6 +236,7 @@ public static class TextSources
 
         int Lines(IEnumerable<Dictionary<string, LineEntry>> files) => files.Sum(f => f.Values.Sum(e => e.En.Count));
         var english = Text.EnglishKeys;
+        var dataLines = DataLines();
 
         var report = new StringBuilder();
         report.AppendLine("# Localisation");
@@ -234,13 +252,14 @@ public static class TextSources
         report.AppendLine($"| Scripts (`scripts/<file>.json`) | {scripts.Count} | {Lines(scriptLines.Values)} |");
         report.AppendLine($"| Overlays (`world/<key>.json`) | {overlays.Count} | {Lines(overlayLines.Values)} |");
         report.AppendLine($"| Hand-made maps (`maps/<Name>.json`) | {maps.Count} | {Lines(mapLines.Values)} |");
+        report.AppendLine($"| Data files' lines (`data.json`: the professors, the trainers in battle) | 1 | {dataLines.Count} |");
         report.AppendLine();
         report.AppendLine("## Languages");
         report.AppendLine();
-        report.AppendLine("Each cell of a kind of file is translated / lines; a language with no file for a kind shows 0. `ui.json` is the number of keys the language's own table has (the interface's keys are not counted here: they change with every screen). Names are `names.json` (PokeAPI's, plan 17 · N3) and the hand-written `names.<kind>.json` beside it (plan 17 · N6): \"yes\" where the language has either.");
+        report.AppendLine("Each cell of a kind of file is translated / lines; a language with no file for a kind shows 0. `ui.json` is the number of keys the language's own table has (the interface's keys are not counted here: they change with every screen). Names are `names.json` (PokeAPI's, plan 17 · N3) and the hand-written `names.<kind>.json` beside it (plan 17 · N6): \"yes\" where the language has either. Data is the lines of its `data.json`, keyed by the English line, so a line rewritten in English counts as untranslated.");
         report.AppendLine();
-        report.AppendLine("| Language | `ui.json` | Names | Scripts | Overlays | Maps | Stale | Unknown |");
-        report.AppendLine("|---|---|---|---|---|---|---|---|");
+        report.AppendLine("| Language | `ui.json` | Names | Scripts | Overlays | Maps | Data | Stale | Unknown |");
+        report.AppendLine("|---|---|---|---|---|---|---|---|---|");
         foreach (var language in Language.All.Where(l => l.Tag != Text.English && !l.Pseudo))
         {
             string tag = language.Tag;
@@ -249,7 +268,9 @@ public static class TextSources
             var o = Tally(overlayLines, key => TranslationFiles.Place(tag, key, TranslationFiles.WorldFolder) is { } t ? Flatten(t) : null);
             var m = Tally(mapLines, name => TranslationFiles.Place(tag, name, TranslationFiles.MapsFolder) is { } t ? Flatten(t) : null);
             string names = LocalNames.Has(tag) ? "yes" : "no";
-            report.AppendLine($"| {language.Name} (`{tag}`) | {own} | {names} | {s.Translated} / {s.Lines} | {o.Translated} / {o.Lines} | {m.Translated} / {m.Lines} | {s.Stale + o.Stale + m.Stale} | {s.Unknown + o.Unknown + m.Unknown} |");
+            var table = Text.DataTable(tag);
+            int data = dataLines.Count(l => table.TryGetValue(l, out var mine) && mine.Length > 0);
+            report.AppendLine($"| {language.Name} (`{tag}`) | {own} | {names} | {s.Translated} / {s.Lines} | {o.Translated} / {o.Lines} | {m.Translated} / {m.Lines} | {data} / {dataLines.Count} | {s.Stale + o.Stale + m.Stale} | {s.Unknown + o.Unknown + m.Unknown} |");
         }
         report.AppendLine();
         report.AppendLine("The overlays and maps are found by the key or name of the file; a place both an overlay and a map name is looked for as an overlay first.");
