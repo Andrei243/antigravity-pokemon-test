@@ -743,6 +743,13 @@ public sealed class BattleRenderer
             + toward * a.Lunge * frame * (22f / 128f)
             + Vector3.UnitX * a.Shake * frame * (4f / 128f)
             - Vector3.UnitY * a.Sink * frame;
+        // A dodge takes the whole body aside, away from the miss's path, and back (plan 25 · Y5)
+        float dodge = Math.Max(0f, BattleAnimator.Progress(v.DodgeAge, BattleAnimator.DodgeTime));
+        if (dodge > 0f)
+        {
+            var from = Spot(v.DodgeFromSide, v.DodgeFromSlot, anim.Slots);
+            feet += PokemonAnimation.DodgeAway(from, spot) * PokemonAnimation.DodgeAside(model, dodge) * model.Height * scale;
+        }
         var root = Matrix4x4.CreateScale(scale * a.Grow) * Matrix4x4.CreateRotationY(framing.Yaw) * Matrix4x4.CreateTranslation(feet);
 
         float phase = (isPlayer ? 0.37f : 0f) + slot * 0.53f;
@@ -757,7 +764,13 @@ public sealed class BattleRenderer
             Entry = a.Entry,
             // The body's own part of a condition that lasts (plan 09 · L2): as the lines have told of it, never the rules
             Asleep = v.Condition.Status == StatusCondition.Sleep,
-            Frozen = v.Condition.Status == StatusCondition.Freeze
+            Frozen = v.Condition.Status == StatusCondition.Freeze,
+            // A battle's answers (plan 25 · Y5), as the lines and the bar have told of them
+            Dodge = dodge,
+            Tired = v.Tired,
+            Cheer = Math.Max(0f, BattleAnimator.Progress(v.CheerAge, BattleAnimator.CheerTime)),
+            Charge = BattleAnimator.Gathered(v),
+            Stat = BattleAnimator.StatShown(v)
         };
 
         if (pass == CharacterPass.Color)

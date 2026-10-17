@@ -221,6 +221,7 @@ log:
     + StatusChanged P1 Status=Sleep
   say Foe Scovillain took in sunlight!
     + Lunged E1 Category=Status
+    + Charging E1 Move=Solar Beam
   say Foe Oinkologne used Uproar!
     + Lunged E0 Category=Special
     + MoveShown Move=Uproar Type=Normal Category=Special From=E0 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -2475,6 +2476,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Clawitzer sprang up!
     + Lunged E0 Category=Status
+    + Charging E0 Move=Bounce
     + Vanished E0
   say The sunlight is strong.
     + WeatherContinues Weather=Sun
@@ -4978,6 +4980,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Raboot sprang up!
     + Lunged P1 Category=Status
+    + Charging P1 Move=Bounce
     + Vanished P1
   say Houndoom used Foul Play!
     + Lunged P0 Category=Physical
@@ -5846,6 +5849,7 @@ log:
     + TrainerReacts E0 Cue=LowHp
   say Foe Clefairy sprang up!
     + Lunged E0 Category=Status
+    + Charging E0 Move=Bounce
     + Vanished E0
   say Cetoddle used Take Down!
     + Lunged P0 Category=Physical
@@ -5994,6 +5998,7 @@ log:
     + StatusChanged E0 Status=Paralyze
   say Foe Dewgong hid underwater!
     + Lunged E0 Category=Status
+    + Charging E0 Move=Dive
     + Vanished E0
   say Zeraora used Hone Claws!
     + Lunged P0 Category=Status
@@ -8885,6 +8890,7 @@ log:
     + Entered E0 Pokemon=foe#1 Brambleghast FromBall=true
   say Foe Brambleghast vanished instantly!
     + Lunged E0 Category=Status
+    + Charging E0 Move=Phantom Force
     + Vanished E0
   say Chespin used Pain Split!
     + Lunged P0 Category=Status
@@ -8955,6 +8961,7 @@ log:
   say It doesn't affect Foe Brambleghast...
   say Foe Brambleghast vanished instantly!
     + Lunged E0 Category=Status
+    + Charging E0 Move=Phantom Force
     + Vanished E0
   say Electivire used Discharge!
     + Lunged P0 Category=Special
@@ -8984,6 +8991,7 @@ log:
     + SideConditionChanged Side=Player Condition=LightScreen Layers=1
   say Foe Brambleghast vanished instantly!
     + Lunged E0 Category=Status
+    + Charging E0 Move=Phantom Force
     + Vanished E0
   say Electivire used Discharge!
     + Lunged P0 Category=Special
@@ -10318,6 +10326,7 @@ log:
   say It doesn't affect Foe Hoopa...
   say Foe Hoopa vanished instantly!
     + Lunged E0 Category=Status
+    + Charging E0 Move=Phantom Force
     + Vanished E0
   say Machamp used Strength!
     + Lunged P0 Category=Physical
@@ -10723,6 +10732,7 @@ log:
     + StatusChanged E0 Status=Paralyze
   say Dondozo hid underwater!
     + Lunged P0 Category=Status
+    + Charging P0 Move=Dive
     + Vanished P0
   say Foe Komala used Slam!
     + Lunged E0 Category=Physical
@@ -10980,6 +10990,7 @@ log:
     + HpChanged P0 Hp=113 Healed=true
   say Foe Togekiss is glowing!
     + Lunged E0 Category=Status
+    + Charging E0 Move=Sky Attack
   say Foe Togekiss is hurt by Fire Spin!
     + MomentShown E0 Moment=FireSpin From=none
     + HpChanged E0 Hp=18 Healed=false
@@ -11361,6 +11372,7 @@ log:
     + Entered P0 Pokemon=mine#0 Rockruff FromBall=true
   say Foe Brambleghast vanished instantly!
     + Lunged E0 Category=Status
+    + Charging E0 Move=Phantom Force
     + Vanished E0
   say Rockruff used Stone Edge!
     + Lunged P0 Category=Physical
@@ -12207,6 +12219,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Mantine sprang up!
     + Lunged E0 Category=Status
+    + Charging E0 Move=Bounce
     + Vanished E0
   say Foe Machoke used Dynamic Punch!
     + Lunged E1 Category=Physical
@@ -12240,6 +12253,7 @@ log:
     + HpChanged E0 Hp=31 Healed=true
   say Foe Mantine sprang up!
     + Lunged E0 Category=Status
+    + Charging E0 Move=Bounce
     + Vanished E0
   say Ogerpon used Power Whip!
     + Lunged P1 Category=Physical
@@ -12353,6 +12367,7 @@ log:
     + StageChanged E0 Stat=Attack Stage=4 Rose=true
   say Cinderace sprang up!
     + Lunged P0 Category=Status
+    + Charging P0 Move=Bounce
     + Vanished P0
   say Foe Terrakion used Take Down!
     + Lunged E0 Category=Physical
@@ -13729,6 +13744,7 @@ log:
   say It's super effective!
   say Gourgeist vanished instantly!
     + Lunged P0 Category=Status
+    + Charging P0 Move=Phantom Force
     + Vanished P0
   say Kingler used Crabhammer!
     + Lunged P1 Category=Physical
@@ -13786,6 +13802,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Gourgeist vanished instantly!
     + Lunged P0 Category=Status
+    + Charging P0 Move=Phantom Force
     + Vanished P0
   say Foe Noctowl used Roost!
     + Lunged E0 Category=Status

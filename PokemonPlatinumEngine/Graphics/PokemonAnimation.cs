@@ -27,14 +27,61 @@ internal static class PokemonAnimation
         if (p.Asleep) return EyeState.Shut;
         // 3. A hit
         if (p.Hurt > 0.02f && p.Hurt < 0.75f) return EyeState.Squeeze;
-        // 4. An attack that is no status move (and a charge: Y5)
+        // 4. An attack that is no status move, or a charge (Y5)
         if (p.Attack > 0.06f && p.Attack < 0.8f && p.Kind != MoveCategory.Status) return EyeState.Fierce;
-        // 5. A held fierce look (F10), and 6. a stat's fall or rise (Y5) go here
+        if (p.Charge > 0.3f) return EyeState.Fierce;
+        // 5. A held fierce look (F10) goes here
+        // 6. A stat falling, squeezed, or rising, fierce, for its 0.6 s (Y5)
+        if (p.Stat < 0f) return EyeState.Squeeze;
+        if (p.Stat > 0f) return EyeState.Fierce;
         // 7. Frozen: open and held; nothing below reaches a frozen face
         if (p.Frozen) return EyeState.Open;
-        // 8. A cheer (Y5) and the camp's faces (F6), and 9. tiredness's longer blinks (Y5) go here
+        // 8. A cheer (Y5): smiling; the camp's faces (F6) go here too
+        if (p.Cheer > 0.04f && p.Cheer < 0.96f) return EyeState.Smile;
+        // 9. Tiredness: longer, slower blinks in place of the blink below (Y5)
+        if (p.Tired > 0.5f) return Frac(p.Time / TiredBlinkEvery) * TiredBlinkEvery < TiredBlinkLength ? EyeState.Shut : EyeState.Open;
         // 10. A blink, 11. open
         return p.Blink > 0.5f ? EyeState.Shut : EyeState.Open;
+    }
+
+    /// <summary>How often a tired Pokémon blinks, and how long its eyes stay shut (plan 25 · Y5): one slow breath each.</summary>
+    internal const float TiredBlinkEvery = TiredBreath, TiredBlinkLength = 0.45f;
+
+    /// <summary>Seconds of a tired Pokémon's slow, deep breath (plan 25 · Y5).</summary>
+    internal const float TiredBreath = 2.6f;
+
+    /// <summary>How far through its dodge a body is furthest aside: the miss passes then.</summary>
+    internal const float DodgePeak = Battle.BattleAnimator.ImpactTime / Battle.BattleAnimator.DodgeTime;
+
+    /// <summary>
+    /// The way a dodge goes, level with the ground: away from the side a miss flies past on (<see cref="FxCtx.Aim"/>
+    /// goes wide along the cross of the move's way with the up axis; the dodge takes the other side).
+    /// </summary>
+    internal static Vector3 DodgeAway(Vector3 from, Vector3 to)
+    {
+        var dir = new Vector3(to.X - from.X, 0f, to.Z - from.Z);
+        if (dir.LengthSquared() < 1e-6f) return Vector3.UnitX;
+        return -Vector3.Normalize(Vector3.Cross(dir, Vector3.UnitY));
+    }
+
+    /// <summary>How far aside a dodge has taken the body at <paramref name="d"/> of its clip: 0 at rest, 1 at its furthest.</summary>
+    internal static float DodgeAmount(float d) => d <= 0f || d >= 1f ? 0f : Bump(d, 0f, DodgePeak, 1f);
+
+    /// <summary>
+    /// How far aside a dodge takes the whole body, in its own height (style guide, "Bodies that answer"): a third for
+    /// one that hops, a quarter for one that banks or dips, a fifth for a serpent, which mostly coils. The renderer
+    /// moves it this far away from the miss's path, whatever clip plays: which side the miss passes on is the
+    /// battle's, so an imported model's own dodge clip plays the body's part only.
+    /// </summary>
+    internal static float DodgeAside(PokeModel m, float d)
+    {
+        float share = m.Plan switch
+        {
+            BodyPlan.Biped or BodyPlan.Quadruped when !m.Hovers => 0.34f,
+            BodyPlan.Serpent => 0.2f,
+            _ => 0.25f
+        };
+        return share * DodgeAmount(d);
     }
 
     /// <summary>The moment of its idle loop a frozen Pokémon is held at: the loop's start, whatever the clock says.</summary>
@@ -48,7 +95,11 @@ internal static class PokemonAnimation
         pose.Reset();
         // A fainting Pokémon stops breathing and swaying as it goes down
         float down = p.Faint > 0f ? Smooth(0f, 0.7f, p.Faint) : 0f;
-        if (!m.OwnIdle) Idle(m, IdleTime(p) * m.Tempo, 1f - down, pose);
+        // A tired one's slow, deep breath takes over most of the idle's; a charge stills it (plan 25 · Y5)
+        float tired = Math.Clamp(p.Tired, 0f, 1f) * (1f - down), charge = Math.Clamp(p.Charge, 0f, 1f) * (1f - down);
+        if (!m.OwnIdle) Idle(m, IdleTime(p) * m.Tempo, (1f - down) * (1f - 0.6f * tired) * (1f - 0.5f * charge), pose);
+        if (tired > 0f && !(m.Imported?.Has(ClipRole.Tired) == true)) Tired(m, tired, IdleTime(p), pose);
+        if (charge > 0f) Charge(m, charge, IdleTime(p), pose);
         if (p.Entry > 0f && p.Entry < 1f) Entry(m, p.Entry, pose);
         if (p.Attack > 0f && p.Attack < 1f)
         {
@@ -59,6 +110,8 @@ internal static class PokemonAnimation
                 default: Status(m, p.Attack, pose); break;
             }
         }
+        if (p.Dodge > 0f && p.Dodge < 1f) Dodge(m, p.Dodge, pose);
+        if (p.Cheer > 0f && p.Cheer < 1f) Cheer(m, p.Cheer, pose);
         if (p.Hurt > 0f && p.Hurt < 1f) Hit(m, p.Hurt, pose);
         if (p.Faint > 0f) Faint(m, Math.Min(1f, p.Faint), pose);
     }
@@ -473,6 +526,244 @@ internal static class PokemonAnimation
                     break;
                 case PokeRole.Fin:
                     pose.Turn(b, 0f, 0f, side * 0.4f * proud);
+                    break;
+            }
+        }
+    }
+
+    // ------------------------------------------------------------------ a battle's answers (plan 25 · Y5)
+
+    /// <summary>
+    /// A dodge from a move that misses: a biped or a quadruped hops (aside, then back), a bird banks, a fish or a
+    /// floater dips, a serpent coils. The renderer moves the whole body aside, away from the miss's path, by
+    /// <see cref="DodgeAside"/>; this is what the body does meanwhile. It starts and ends at rest.
+    /// </summary>
+    private static void Dodge(PokeModel m, float d, SkeletonPose pose)
+    {
+        float amt = DodgeAmount(d);
+        if (amt <= 0f) return;
+        float h = m.Height;
+        bool hops = m.Plan is BodyPlan.Biped or BodyPlan.Quadruped && !m.Hovers;
+        // Two hops for one that stands: off to the side as the miss comes, and back after it
+        float hop = Bump(d, 0f, DodgePeak * 0.6f, DodgePeak * 1.15f) + 0.55f * Bump(d, 0.6f, 0.76f, 0.94f);
+        float land = Bump(d, DodgePeak * 0.95f, DodgePeak * 1.3f, 0.62f);
+        for (int b = 0; b < m.Bones.Count; b++)
+        {
+            var info = m.Bones[b];
+            float side = info.Side;
+            switch (info.Role)
+            {
+                case PokeRole.Root:
+                    if (hops) pose.Offset[b].Y += 0.13f * h * hop;
+                    else if (m.Plan == BodyPlan.Bird) pose.Turn(b, -0.08f * amt, 0f, 0.55f * amt);
+                    else if (m.Plan is BodyPlan.Fish or BodyPlan.Floating || m.Hovers)
+                    {
+                        pose.Offset[b].Y -= 0.12f * h * amt;
+                        pose.Turn(b, 0.12f * amt, 0f, 0.15f * amt);
+                    }
+                    else if (m.Plan == BodyPlan.Serpent) pose.Offset[b].Y -= 0.02f * h * amt;
+                    break;
+                case PokeRole.Body:
+                    if (hops) pose.Scale[b] *= new Vector3(1f + 0.06f * land, 1f - 0.09f * land, 1f + 0.06f * land);
+                    pose.Turn(b, -0.08f * amt, 0f, 0.12f * amt);
+                    break;
+                case PokeRole.Head:
+                    // It pulls its head back from what passes
+                    pose.Turn(b, -0.25f * amt, 0.15f * amt);
+                    break;
+                case PokeRole.Arm:
+                    pose.Turn(b, -0.2f * amt, 0f, side * 0.5f * amt);
+                    break;
+                case PokeRole.Wing:
+                    // Banking: one wing up, the other down
+                    pose.Turn(b, 0f, 0f, (m.Plan == BodyPlan.Bird ? 0.7f : side * 0.5f) * amt);
+                    break;
+                case PokeRole.Leg:
+                    // Tucked up while off the ground
+                    if (hops) pose.Turn(b, (info.Front || m.Plan == BodyPlan.Biped ? -0.3f : 0.3f) * hop);
+                    break;
+                case PokeRole.Tail:
+                    pose.Turn(b, 0.2f * amt, 0.35f * amt);
+                    break;
+                case PokeRole.Ear:
+                    pose.Turn(b, -0.35f * amt);
+                    break;
+                case PokeRole.Segment:
+                    // A coil: each segment bends a little the same way, which adds up along the body
+                    pose.Turn(b, -0.04f * amt, 0.14f * amt);
+                    break;
+                case PokeRole.Fin:
+                    pose.Turn(b, 0f, 0f, side * 0.45f * amt);
+                    break;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Tired, while its HP bar is in the red: the head lowers, the limbs droop, a flier hangs lower, and a slow, deep
+    /// breath (one every <see cref="TiredBreath"/> s) heaves the body. Played at the idle's time, so a frozen body holds it.
+    /// </summary>
+    private static void Tired(PokeModel m, float a, float t, SkeletonPose pose)
+    {
+        float breath = MathF.Sin(MathF.Tau * t / TiredBreath) * a;
+        float h = m.Height;
+        for (int b = 0; b < m.Bones.Count; b++)
+        {
+            var info = m.Bones[b];
+            float side = info.Side;
+            switch (info.Role)
+            {
+                case PokeRole.Root:
+                    if (m.Hovers) pose.Offset[b].Y -= 0.06f * h * a;
+                    break;
+                case PokeRole.Body:
+                    pose.Offset[b].Y -= 0.02f * h * a;
+                    pose.Turn(b, 0.1f * a + 0.02f * breath);
+                    pose.Scale[b] *= new Vector3(1f + 0.025f * breath, 1f + 0.055f * breath, 1f + 0.025f * breath);
+                    break;
+                case PokeRole.Head:
+                    pose.Turn(b, 0.3f * a - 0.05f * breath);
+                    break;
+                case PokeRole.Jaw:
+                    // A breath taken through the mouth
+                    pose.Turn(b, 0.12f * MathF.Max(0f, breath));
+                    break;
+                case PokeRole.Arm:
+                    pose.Turn(b, 0.15f * a, 0f, -side * 0.1f * a);
+                    break;
+                case PokeRole.Wing:
+                    pose.Turn(b, 0f, 0f, -side * (0.4f * a - 0.06f * breath));
+                    break;
+                case PokeRole.Leg:
+                    if (m.Hovers) pose.Turn(b, 0.2f * a);
+                    break;
+                case PokeRole.Tail:
+                    pose.Turn(b, -0.35f * a);
+                    break;
+                case PokeRole.Ear:
+                    pose.Turn(b, 0.4f * a);
+                    break;
+                case PokeRole.Leaf:
+                    pose.Turn(b, 0.25f * a);
+                    break;
+                case PokeRole.Flame:
+                    pose.Scale[b] *= 1f - 0.25f * a;
+                    break;
+                case PokeRole.Segment:
+                    pose.Turn(b, 0.04f * a);
+                    break;
+                case PokeRole.Fin:
+                    pose.Turn(b, 0f, 0f, -side * 0.2f * a);
+                    break;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Through a charge turn: the body gathers itself low, its head down and drawn in, its arms and wings folded, a
+    /// little tremble running through it. Played at the idle's time, so a frozen body holds it.
+    /// </summary>
+    private static void Charge(PokeModel m, float a, float t, SkeletonPose pose)
+    {
+        float tremble = MathF.Sin(t * 41f) * 0.02f * a;
+        float pulse = 0.5f + 0.5f * MathF.Sin(t * 7f);
+        float h = m.Height;
+        for (int b = 0; b < m.Bones.Count; b++)
+        {
+            var info = m.Bones[b];
+            float side = info.Side;
+            switch (info.Role)
+            {
+                case PokeRole.Root:
+                    if (m.Hovers) pose.Offset[b].Y -= 0.04f * h * a;
+                    break;
+                case PokeRole.Body:
+                    pose.Offset[b].Y -= 0.06f * h * a;
+                    pose.Turn(b, 0.14f * a, tremble);
+                    pose.Scale[b] *= new Vector3(1f + 0.05f * a, 1f - 0.08f * a, 1f + 0.05f * a);
+                    break;
+                case PokeRole.Head:
+                    pose.Turn(b, 0.28f * a, tremble);
+                    break;
+                case PokeRole.Arm:
+                    pose.Turn(b, -0.55f * a, 0f, -side * 0.25f * a);
+                    break;
+                case PokeRole.Wing:
+                    pose.Turn(b, 0f, 0f, -side * 0.55f * a);
+                    break;
+                case PokeRole.Tail:
+                    pose.Turn(b, 0.3f * a, tremble * 3f);
+                    break;
+                case PokeRole.Ear:
+                    pose.Turn(b, -0.35f * a);
+                    break;
+                case PokeRole.Flame:
+                    pose.Scale[b] *= 1f + (0.25f + 0.15f * pulse) * a;
+                    break;
+                case PokeRole.Leaf:
+                    pose.Turn(b, -0.2f * a);
+                    break;
+                case PokeRole.Segment:
+                    pose.Turn(b, -0.05f * a, tremble);
+                    break;
+                case PokeRole.Fin:
+                    pose.Turn(b, 0f, 0f, side * 0.3f * a);
+                    break;
+            }
+        }
+    }
+
+    /// <summary>A cheer: two hops with the head thrown back and the arms, wings and tail up. It starts and ends at rest.</summary>
+    private static void Cheer(PokeModel m, float c, SkeletonPose pose)
+    {
+        float env = Smooth(0f, 0.12f, c) * (1f - Smooth(0.86f, 1f, c));
+        if (env <= 0f) return;
+        // Two hops, landing at the clip's middle and end
+        float hop = MathF.Abs(MathF.Sin(MathF.Tau * c)) * env;
+        float squash = env * MathF.Pow(1f - MathF.Abs(MathF.Sin(MathF.Tau * c)), 4f);
+        float h = m.Height;
+        for (int b = 0; b < m.Bones.Count; b++)
+        {
+            var info = m.Bones[b];
+            float side = info.Side;
+            switch (info.Role)
+            {
+                case PokeRole.Root:
+                    pose.Offset[b].Y += 0.12f * h * hop;
+                    break;
+                case PokeRole.Body:
+                    pose.Turn(b, -0.1f * env);
+                    pose.Scale[b] *= new Vector3(1f + 0.06f * squash, 1f - 0.09f * squash, 1f + 0.06f * squash);
+                    break;
+                case PokeRole.Head:
+                    pose.Turn(b, -0.35f * env);
+                    break;
+                case PokeRole.Jaw:
+                    pose.Turn(b, 0.45f * env);
+                    break;
+                case PokeRole.Arm:
+                    pose.Turn(b, -1.7f * env, 0f, side * 0.5f * env);
+                    break;
+                case PokeRole.Wing:
+                    pose.Turn(b, 0f, 0f, side * (0.8f + 0.3f * hop) * env);
+                    break;
+                case PokeRole.Leg:
+                    if (m.Plan == BodyPlan.Quadruped) pose.Turn(b, (info.Front ? -0.25f : 0.2f) * hop);
+                    break;
+                case PokeRole.Tail:
+                    pose.Turn(b, 0.5f * env, 0.3f * MathF.Sin(MathF.Tau * c * 3f) * env);
+                    break;
+                case PokeRole.Ear:
+                    pose.Turn(b, -0.3f * env);
+                    break;
+                case PokeRole.Flame:
+                    pose.Scale[b] *= 1f + 0.4f * env;
+                    break;
+                case PokeRole.Segment:
+                    pose.Turn(b, -0.06f * env);
+                    break;
+                case PokeRole.Fin:
+                    pose.Turn(b, 0f, 0f, side * 0.4f * env);
                     break;
             }
         }

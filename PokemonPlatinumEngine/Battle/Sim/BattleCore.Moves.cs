@@ -636,6 +636,8 @@ public sealed partial class BattleCore
         var user = use.User;
         var said = Say(string.Format(Text.Of(charge.Line), user.Name));
         said.With(new Lunged(user.Place, MoveCategory.Status));
+        // The body gathers itself until the move is let go (plan 25 · Y5): the screen's alone, the rules know nothing of it
+        said.With(new Charging(user.Place, (use.Own ?? use.Data).Name));
         user.Volatile.Charging = true;
         user.Volatile.LockedMove = use.Own ?? use.Data;
         if (charge.Where != Elsewhere.No)

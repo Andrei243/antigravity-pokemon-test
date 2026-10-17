@@ -187,6 +187,24 @@ partial class Harness
             Skip(1.0);
             Profile("battle in rain, at the menu");
 
+            // Both tired at the menu, their bars in the red (plan 25 · Y5): the slow breath and the droop are poses,
+            // and should cost what the battle at the menu costs
+            var weary = new Party();
+            var spent = Made("Turtwig", 5, 21);
+            spent.CurrentHP = Math.Max(1, spent.MaxHP / 6);
+            weary.Add(spent);
+            var foeSpent = Made("Shinx", 5, 24);
+            foeSpent.CurrentHP = Math.Max(1, foeSpent.MaxHP / 6);
+            var tired = new BattleEngine(new BattleSetup
+            {
+                PlayerParty = weary, Inventory = inventory, Pokedex = pokedex, WildPokemon = new List<Pokemon> { foeSpent }, Random = new Random(33)
+            });
+            game.Battle = tired;
+            game.State = GameState.Battle;
+            ToMainMenu(tired);
+            Skip(1.0);
+            Profile("battle, both tired, at the menu");
+
             var show = new Party();
             var lead = new Pokemon(PokemonDatabase.Get("Infernape")!, 60, new Random(3));
             show.Add(lead);

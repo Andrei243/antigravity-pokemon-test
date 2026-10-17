@@ -46,7 +46,12 @@ partial class Harness
             ("status", new[] { 0.1f, 0.3f, 0.45f, 0.6f, 0.86f }),
             ("hit", new[] { 0.04f, 0.12f, 0.3f, 0.55f, 0.8f }),
             ("faint", new[] { 0.15f, 0.35f, 0.55f, 0.75f, 1f }),
-            ("entry", new[] { 0.3f, 0.4f, 0.55f, 0.72f, 0.9f })
+            ("entry", new[] { 0.3f, 0.4f, 0.55f, 0.72f, 0.9f }),
+            // A battle's answers (plan 25 · Y5)
+            ("dodge", new[] { 0.15f, 0.3f, 0.44f, 0.7f, 0.85f }),
+            ("tired", new[] { 0f, 0.65f, 1.3f, 1.95f, 2.6f }),
+            ("cheer", new[] { 0.1f, 0.25f, 0.5f, 0.75f, 0.92f }),
+            ("charge", new[] { 0f, 0.1f, 0.2f, 0.3f, 0.4f })
         };
         foreach (var species in named.Length > 0 ? Array.Empty<string>() : new[] { "Riolu", "Chimchar", "Shinx", "Turtwig", "Starly", "Garchomp", "Giratina", "sample Serpent", "sample Fish", "sample Floating" })
         {
@@ -113,9 +118,11 @@ partial class Harness
             string name = "93_eyes_" + species.ToLowerInvariant();
             if (!Wanted(name)) continue;
             const int Box = 260;
-            var board = Raylib.GenImageColor(4 * Box, Box, backdrop);
+            // and since plan 25 · Y5 smiling in a cheer
             var frames = new[] { Studio(species, "idle", new[] { 0.4f }, new[] { 0f }, Box, Box, 0.6f, lookY), Studio(species, "idle", new[] { 0.4f }, new[] { 0f }, Box, Box, 0.6f, lookY, true),
-                Studio(species, "hit", new[] { 0.025f }, new[] { 0f }, Box, Box, 0.6f, lookY), Studio(species, "physical", new[] { 0.07f }, new[] { 0f }, Box, Box, 0.6f, lookY) };
+                Studio(species, "hit", new[] { 0.025f }, new[] { 0f }, Box, Box, 0.6f, lookY), Studio(species, "physical", new[] { 0.07f }, new[] { 0f }, Box, Box, 0.6f, lookY),
+                Studio(species, "cheer", new[] { 0.06f }, new[] { 0f }, Box, Box, 0.6f, lookY) };
+            var board = Raylib.GenImageColor(frames.Length * Box, Box, backdrop);
             for (int i = 0; i < frames.Length; i++)
             {
                 Raylib.ImageDraw(ref board, frames[i], new Rectangle(0, 0, Box, Box), new Rectangle(i * Box, 0, Box, Box), Color.White);

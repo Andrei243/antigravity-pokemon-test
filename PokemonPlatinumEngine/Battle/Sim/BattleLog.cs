@@ -302,3 +302,11 @@ public sealed record VolatileChanged(Place Place, bool Confused, bool InLove) : 
 /// it was last seen: a cure on the bench (Heal Bell, Natural Cure, medicine out of the bag) has no event of its own.
 /// </summary>
 public sealed record CameInWith(Place Place, StatusCondition Status) : BattleEvent;
+
+/// <summary>
+/// A Pokémon spends a turn getting a move ready (plan 25 · Y5): Solar Beam's light, Skull Bash's tuck, Sky Attack's
+/// glow, Fly's rise, Dig's burrow and the rest of the moves of two turns. It rides on the line that tells of the
+/// charge (<c>BeginCharge</c>), so whoever shows the battle can gather the body and a type's aura round it until the
+/// move is let go next turn. The rules change nothing by it.
+/// </summary>
+public sealed record Charging(Place Place, string Move) : BattleEvent;

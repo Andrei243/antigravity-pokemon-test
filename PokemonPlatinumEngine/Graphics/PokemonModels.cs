@@ -55,10 +55,27 @@ internal struct PokePose
 
     /// <summary>Frozen: the idle loop is held at one moment, and the eyes are held open.</summary>
     public bool Frozen;
+
+    // A battle's answers (plan 25 · Y5; style guide, "Bodies that answer")
+
+    /// <summary>0..1 progress of a dodge from a move that misses it (0 when none is playing).</summary>
+    public float Dodge;
+
+    /// <summary>0..1 how tired it shows: its HP bar in the red.</summary>
+    public float Tired;
+
+    /// <summary>0..1 progress of a cheer for a battle won, a Pokémon caught or the player's loss (0 when none).</summary>
+    public float Cheer;
+
+    /// <summary>0..1 how far it has gathered itself through a charge turn.</summary>
+    public float Charge;
+
+    /// <summary>A stat's change within its 0.6 s: above nought while one rises, below while one falls, else nought.</summary>
+    public float Stat;
 }
 
-/// <summary>Which eye texture shows (see <see cref="PokemonDecals"/>).</summary>
-internal enum EyeState { Open, Shut, Squeeze, Fierce }
+/// <summary>Which eye texture shows (see <see cref="PokemonDecals"/>). <see cref="Smile"/> is a cheer's (plan 25 · Y5).</summary>
+internal enum EyeState { Open, Shut, Squeeze, Fierce, Smile }
 
 internal enum MarkShape { Disc, Ring, Star, Bar, Star5, Wave, Zigzag, Triangle, Diamond, Smile }
 

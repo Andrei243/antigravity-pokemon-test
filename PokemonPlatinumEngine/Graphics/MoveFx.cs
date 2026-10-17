@@ -64,6 +64,8 @@ internal static partial class MoveFx
             case CueKind.Move:
                 // An attack sent ahead plays its landing half (plan 25 · Y3)
                 if (cue.Arriving) Landing(c, ColorsOf(cue.Type), fx);
+                // A charge turn plays the move's charge half on its user (plan 25 · Y5)
+                else if (cue.Charging) ChargeHalf(c, ColorsOf(cue.Type), fx);
                 else RecipeFor(cue.Move, cue.Type, cue.Category, cue.OnSelf)(c, ColorsOf(cue.Type), fx);
                 break;
             case CueKind.StatUp:
@@ -239,6 +241,40 @@ internal static partial class MoveFx
                 Fx.Burst(fx, s, age, to, h, at, 0.4f, n(8), FxShape.Spark, White, Rgb(255, 250, 220), 0.08f, 0.9f, salt: 9);
                 break;
         }
+    }
+
+    // ------------------------------------------------------------------ a charge turn (plan 25 · Y5)
+
+    /// <summary>Most a move's charge half draws at any age.</summary>
+    internal const int ChargeCap = 24;
+
+    /// <summary>
+    /// A move's charge half, the template every charge move plays until its batch gives it its own: motes of its type
+    /// drawn in from round the user to its middle, and a glow there that swells as they gather and dims as the line
+    /// ends. Nothing flashes the screen or shakes it. Pure in the cue's age and seed.
+    /// </summary>
+    private static void ChargeHalf(in FxCtx c, FxColors col, FxList fx)
+    {
+        float h = c.FromSize;
+        float env = Fx.Envelope(c.Age, 0f, 0.15f, BattleAnimator.EffectTime - 0.35f, BattleAnimator.EffectTime);
+        if (env <= 0f) return;
+        var middle = c.FromFeet + Vector3.UnitY * h * 0.5f;
+        const int Motes = 18;
+        for (int i = 0; i < Motes; i++)
+        {
+            // Each mote comes in from its own way round the body, again and again, faster as the charge builds
+            float u = (c.Age * 1.4f + Fx.Rand(c.Seed, i, 61)) % 1f;
+            float a = Fx.Rand(c.Seed, i, 62) * MathF.Tau;
+            float lift = Fx.Signed(c.Seed, i, 63) * 0.45f;
+            var outward = new Vector3(MathF.Cos(a), lift, MathF.Sin(a) * 0.6f);
+            var p = middle + outward * h * 0.95f * (1f - Fx.EaseOut(u));
+            fx.Sprite(i % 3 == 0 ? FxShape.Spark : FxShape.Glow, p, h * (0.05f + 0.05f * u), Fx.Fade(Fx.Mix(col.Main, col.Light, u), env * MathF.Sin(u * MathF.PI)));
+        }
+        // A small core where they gather (a glow over the whole body would wash it out to white), and a ring at its
+        // feet drawing in
+        float swell = Math.Clamp(c.Age / 0.8f, 0f, 1f);
+        fx.Sprite(FxShape.Glow, middle, h * (0.08f + 0.12f * swell), Fx.Fade(col.Light, env * 0.45f));
+        fx.Flat(FxShape.Ring, c.FromFeet + Vector3.UnitY * h * 0.04f, Vector3.UnitY, h * (0.7f - 0.25f * swell), Fx.Fade(col.Main, env * 0.6f), depth: true);
     }
 
     // ------------------------------------------------------------------ templates

@@ -68,10 +68,16 @@ A file's clips are played for what their names say. The first matching word wins
 | Being hit | `damage`, `hurt`, `flinch`, `hit` |
 | Fainting | `down`, `faint`, `death`, `die`, `dead`, `lose` |
 | Coming out of the ball | `appear`, `entry`, `intro`, `landing`, `roar`, `cry` |
+| Dodging a move that misses | `dodge`, `evade` |
+| Standing in battle with its HP in the red, in place of the idle | `lowhp`, `low_hp`, `tired` |
+| Cheering for a win, a catch or the other side's loss | `victory`, `cheer`, `win` |
 
 A file with a single clip plays it as its idle. Actions are stretched over their time in battle (a move takes 0.65 s
-and lands its blow 0.35 s in). For whatever the file has no clip for, the species' body plan moves the model as a
-whole: it breathes and sways, leans into a strike, recoils from a hit and topples when it faints.
+and lands its blow 0.35 s in, a dodge takes 0.8 s and is furthest aside 0.35 s in, a cheer takes 1.2 s). For
+whatever the file has no clip for, the species' body plan moves the model as a whole: it breathes and sways, leans
+into a strike, recoils from a hit, hops or dips out of a miss's way, droops when tired, hops for joy and topples when
+it faints. A dodge clip plays the body's part only: the step aside, away from the side the miss passes on, is the
+battle's and is added whatever clip plays.
 
 ## Options
 
@@ -89,7 +95,8 @@ A `.json` file with the same name beside a model file can set:
 - `yaw`: degrees to turn the model round the vertical, for a file whose front isn't +Z.
 - `fill`: how much of its sprite frame (and so its platform) the species fills, 0.45 to 1.
 - `hovers`: whether it floats above its platform.
-- `clips`: clip names by role (`idle`, `physical`, `special`, `status`, `hit`, `faint`, `entry`), where the names
+- `clips`: clip names by role (`idle`, `physical`, `special`, `status`, `hit`, `faint`, `entry`, `dodge`, `tired`,
+  `cheer`), where the names
   don't say.
 
 ## Exporting a model
