@@ -1,5 +1,8 @@
 {
   "area": "route_229",
+  // Plan 03 · D12a: Pearl's Glameow line, which Platinum's tables leave out, in the grass's slots 8 and 9 once the
+  // National Pokédex is had, at those slots' levels (48)
+  "national": { "land": [ "Glameow", "Purugly" ] },
   // The original's role is ROAD_BZA (Routes 228 to 230), which has no song yet (plan 05 · A6): Route 209's stands in
   "bgmTrack": "sinnoh/route209",
   "trees": "Round",

@@ -92,6 +92,13 @@ public static class EncounterSlots
             Put(0, area.SwarmSlots[0]);
             Put(1, area.SwarmSlots[1]);
         }
+        // Plan 03 · D12a: the other versions' species of ours, in the slots the original gave a second game in the
+        // console (WildEncounters_ReplaceDualSlotEncounters), once the National Pokédex is had
+        if (moment.NationalDex && area.NationalSlots.Count == 2)
+        {
+            Put(OverlayNational.FirstLandSlot, area.NationalSlots[0]);
+            Put(OverlayNational.FirstLandSlot + 1, area.NationalSlots[1]);
+        }
         // WildEncounters_ReplaceTrophyGardenEncounters
         if (area.Key == TrophyGarden && moment.NationalDex)
         {
@@ -104,6 +111,18 @@ public static class EncounterSlots
             Put(6, today);
             Put(7, today);
         }
+        return slots;
+    }
+
+    /// <summary>
+    /// What the Super Rod hooks at a moment (plan 03 · D12a): the area's own table, with our species in slot 3 once the
+    /// National Pokédex is had. The area's own list when nothing changes.
+    /// </summary>
+    public static IReadOnlyList<WildEncounterEntry> SuperRod(MapArea area, IReadOnlyList<WildEncounterEntry> table, EncounterMoment? moment)
+    {
+        if (moment?.NationalDex != true || area.NationalSuperRod.Count == 0 || table.Count <= OverlayNational.SuperRodSlot) return table;
+        var slots = table.Select(Copy).ToList();
+        slots[OverlayNational.SuperRodSlot].SpeciesName = area.NationalSuperRod[0];
         return slots;
     }
 

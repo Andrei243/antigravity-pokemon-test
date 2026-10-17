@@ -2888,6 +2888,16 @@ way 0
 way 1, from answer 1
   Beauty> ...Oh? But your favourite really is Turtwig, isn't it?
   ? Your favourite is Turtwig, isn't it? = No
+=== GlobalTerminal1F.Gts
+from Receptionist at 7,3 of GlobalTerminal1F
+way -
+  Receptionist> Welcome! This is the Global Trade Station: the GTS, for short. Here Pokémon are traded with people all over the world.
+  Receptionist> Or they were. Sinnoh's link to the wider world has gone quiet, and no trade can leave this desk until it is back.
+  Receptionist> But a Pokémon that grows only through a trade needn't wait for the link. Here: a Linking Cord does the same for it.
+  > Lucas received the Linking Cord!
+  > Lucas put it away in the Items pocket.
+  Receptionist> Use it on the Pokémon like a stone. Come back for another whenever yours is used up!
+  * fanfare FanfareItem
 === GrandLakeRoute213EastHouse.Traveller
 from Guest at 8,5 of GrandLakeRoute213EastHouse
 way -
@@ -3182,6 +3192,11 @@ way 0
 way 1, from answer 1
   * battle leader_roark Lost
   * scene over, unseen
+=== OreburghMiningMuseum.Collector
+from Collector at 8,12 of OreburghMiningMuseum
+way -
+  Collector> Digging takes a strong arm, they say. Nonsense. It takes a strong mind.
+  Collector> One blow too many and the whole wall comes down on your find. Patience, patience.
 === OreburghMiningMuseum.FossilResearcher
 from Scientist at 6,3 of OreburghMiningMuseum
 way -
@@ -3229,12 +3244,12 @@ way -
 from Park Attendant at 7,11 of PalParkLobby
 way 0
   Park Attendant> Welcome to Pal Park, Lucas!
-  Park Attendant> Pokémon brought here from far away are let loose in the park, and their trainer catches them again in a Catching Show.
+  Park Attendant> Pokémon from far away come to stay in the park, and Trainers catch them in a Catching Show.
   Park Attendant> What will it be today?
-  Park Attendant> Oh! But there are no Pokémon of yours waiting in the park.
-  Park Attendant> Six must be brought over from far away before a show can be held. Nobody has brought any yet.
+  Park Attendant> Here are your six Park Balls. The score to beat is 0 points. Good luck, Lucas!
   ? What will it be today? = ENTER
   * pastime boxroom 0
+  * warp PalPark 24 47
   + FLAG_TALKED_TO_PAL_PARK_LOBBY_RECEPTIONIST
 way 2, from answer 1
   Park Attendant> Aww, that's too bad. Another day, then!
@@ -3242,7 +3257,7 @@ way 2, from answer 1
   + FLAG_TALKED_TO_PAL_PARK_LOBBY_RECEPTIONIST
 way 1.0, from answer 1
   Park Attendant> What shall I read out of the manual?
-  Park Attendant> Pal Park is where Pokémon from faraway regions come to stay. Six at a time are brought over, and wait in the park until their trainer has caught them again.
+  Park Attendant> Pal Park is where Pokémon from faraway regions come to stay. Six at a time come over, Pokémon that live nowhere else in Sinnoh, and wait in the park until someone catches them.
   ? What will it be today? = INFO
   ? What shall I read out of the manual? = The park
   + FLAG_TALKED_TO_PAL_PARK_LOBBY_RECEPTIONIST
@@ -3251,7 +3266,7 @@ way 1.3, from answer 2
   ? What shall I read out of the manual? = That's enough
   + FLAG_TALKED_TO_PAL_PARK_LOBBY_RECEPTIONIST
 way 1.2, from answer 2
-  Park Attendant> Six Pokémon are brought over together, and no more until those six have been caught and sent to your PC boxes.
+  Park Attendant> Six Pokémon come over together, and no more until those six have been caught and sent to your PC boxes.
   ? What shall I read out of the manual? = Bringing Pokémon
   + FLAG_TALKED_TO_PAL_PARK_LOBBY_RECEPTIONIST
 way 1.1, from answer 2

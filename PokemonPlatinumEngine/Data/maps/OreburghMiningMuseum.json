@@ -483,10 +483,7 @@
       "x": 8,
       "y": 12,
       "facing": "Up",
-      "dialog": [
-        "Digging takes a strong arm, they say. Nonsense. It takes a strong mind.",
-        "One blow too many and the whole wall comes down on your find. Patience, patience."
-      ]
+      "script": "Collector"
     },
     {
       "id": "expert_m",

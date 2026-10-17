@@ -23,3 +23,18 @@ label Really
 label Nobody
   say "I want to know what kind of Pokémon everybody likes best."
   end
+
+
+# The GTS's own receptionist. Plan 03 · D12a, ours: with no link to trade over, she hands out a Linking Cord in its
+# place whenever the bag holds none, so that every Pokémon that evolves by a trade can evolve with nobody else (a
+# cord used on a Pokémon counts as a trade, Models/Evolution.cs).
+script Gts
+  say "Welcome! This is the Global Trade Station: the GTS, for short. Here Pokémon are traded with people all over the world." "Or they were. Sinnoh's link to the wider world has gone quiet, and no trade can leave this desk until it is back."
+  if item "Linking Cord" goto Holding
+  say "But a Pokémon that grows only through a trade needn't wait for the link. Here: a Linking Cord does the same for it."
+  give "Linking Cord"
+  say "Use it on the Pokémon like a stone. Come back for another whenever yours is used up!"
+  end
+label Holding
+  say "You still have a Linking Cord, I see. Use it on a Pokémon that grows through a trade, and come back for another."
+  end

@@ -75,6 +75,13 @@ public sealed class MapArea
     public List<string> SwarmSlots { get; } = new();
     public List<string> RadarSlots { get; } = new();
 
+    /// <summary>
+    /// Our own species once the National Pokédex is had (plan 03 · D12a, an overlay's <c>national</c>): two for the
+    /// grass's slots 8 and 9, and one for the Super Rod's slot 3. Empty where the area adds none.
+    /// </summary>
+    public List<string> NationalSlots { get; } = new();
+    public List<string> NationalSuperRod { get; } = new();
+
     /// <summary>The wild Pokémon met surfing on the area's water, and the rate for them.</summary>
     public List<WildEncounterEntry> WaterEncounters { get; } = new();
     public int WaterRate { get; set; }
@@ -1173,6 +1180,7 @@ public class Map
         IReadOnlyList<WildEncounterEntry> table = area.RodEncounters[(int)rod];
         int rate = area.RodRates[(int)rod];
         if (table.Count == 0 || rate <= 0 || rng.Next(100) >= rate) return null;
+        if (rod == FishingRod.Super) table = EncounterSlots.SuperRod(area, table, moment);
         var feebas = SpecialEncounterTables.Sinnoh.Feebas;
         if (moment?.State is { } state && feebas.Area == area.Key
             && Feebas.Bites(SpecialEncounterTables.FeebasTiles, state.DailyNumber, x, y, rng))

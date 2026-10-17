@@ -55,6 +55,9 @@ public partial class GameEngine
                 return 1;
             case "boxroom":
                 return flow.Boxes.Free;
+            // Plan 03 · D12a: whether the Pokédex has caught a species (by its National number), for Pal Park's visitors
+            case "caught":
+                return flow.Pokedex.IsCaught(number) ? 1 : 0;
             case "store":
                 if (!flow.Pastimes.PalPark.Stocked) return 0;
                 foreach (var pokemon in flow.Pastimes.PalPark.TakeSix("Pal Park", GameClock.Today))

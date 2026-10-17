@@ -1,5 +1,8 @@
 {
   "area": "eterna_forest",
+  // The mossy rock stands in the forest: Eevee become Leafeon here, as the original's table of places says (plan
+  // 03 · D12a found Leafeon with no way to it). The rock itself is an object of the original's that nothing draws yet
+  "evolutionSites": [ "Moss Rock" ],
   "bgmTrack": "sinnoh/forest",
   // Plan 01 · M11, part a: rooms on the original's plans
   "doors": [

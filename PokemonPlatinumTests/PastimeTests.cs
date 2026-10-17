@@ -737,13 +737,15 @@ public class PastimeTests
     public void TheLobbyHoldsAShowForSixBroughtOver()
     {
         var lobby = Room("PalParkLobby");
-        // Nobody has brought any: the attendant says so, and nothing begins
+        // Nothing waits: six visitors come of the species Sinnoh has no other way to (plan 03 · D12a), and a show begins
         var none = new HeadlessScriptHost { Map = lobby };
+        none.Place(null, 7, 12, Direction.Up);
         none.Story.Set("FLAG_TALKED_TO_PAL_PARK_LOBBY_RECEPTIONIST");
         none.Answers.Enqueue(0);
         Run("Worker", "PalParkLobby", none, who: "worker");
-        Assert.True(Said(none, "no Pokémon of yours"));
-        Assert.Null(none.Pastimes.PalPark.Show);
+        Assert.False(Said(none, "no Pokémon waiting"));
+        Assert.NotNull(none.Pastimes.PalPark.Show);
+        Assert.All(none.Pastimes.PalPark.Waiting, p => Assert.Contains(p.Species.Name, SpeciesSources.Sinnoh.PalParkPool));
 
         // Six waiting: the show begins and the player is sent into the park
         var host = new HeadlessScriptHost { Map = Room("PalParkLobby") };
