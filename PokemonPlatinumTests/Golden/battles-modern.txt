@@ -2355,7 +2355,7 @@ log:
     + MoveShown Move=Boomburst Type=Normal Category=Special From=E0 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
     + MoveShown Move=Boomburst Type=Normal Category=Special From=E0 To=P1 Missed=false Blocked=false Critical=true SuperEffective=false
     ! Struck P0 Hp=91 Hard=false
-    ! Struck E1 Hp=67 Hard=false
+    ! Struck E1 Hp=69 Hard=false
     ! Struck P1 Hp=0 Hard=true
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say A critical hit on Lickitung!
@@ -2366,7 +2366,7 @@ log:
   say Metang used Bullet Punch!
     + Lunged P1 Category=Physical
     + MoveShown Move=Bullet Punch Type=Steel Category=Physical From=P1 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck E1 Hp=66 Hard=false
+    ! Struck E1 Hp=68 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Gothita used Future Sight!
     + Lunged P0 Category=Special
@@ -2393,7 +2393,7 @@ log:
   say Gothita used Psychic!
     + Lunged P0 Category=Special
     + MoveShown Move=Psychic Type=Psychic Category=Special From=P0 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck E1 Hp=60 Hard=false
+    ! Struck E1 Hp=62 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
   say Foe Cosmoem used Cosmic Power!
@@ -3467,7 +3467,7 @@ log:
   say Heliolisk used Discharge!
     + Lunged P0 Category=Special
     + MoveShown Move=Discharge Type=Electric Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck E0 Hp=2 Hard=false
+    ! Struck E0 Hp=3 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
   say Foe Magneton used Metal Sound!
@@ -3869,7 +3869,7 @@ log:
     + MoveShown Move=Dazzling Gleam Type=Fairy Category=Special From=P1 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
     + MoveShown Move=Dazzling Gleam Type=Fairy Category=Special From=P1 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
     ! Struck E0 Hp=18 Hard=false
-    ! Struck E1 Hp=104 Hard=false
+    ! Struck E1 Hp=105 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say It's not very effective on Foe Klink...
   say Foe Quagsire used Amnesia!
@@ -3908,7 +3908,7 @@ log:
   say Staryu used Psybeam!
     + Lunged P1 Category=Special
     + MoveShown Move=Psybeam Type=Psychic Category=Special From=P1 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck E1 Hp=99 Hard=false
+    ! Struck E1 Hp=100 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
   say Foe Klink used Gear Grind!
@@ -4625,7 +4625,7 @@ log:
     + MoveShown Move=Rock Slide Type=Rock Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=true SuperEffective=false
     + MoveShown Move=Rock Slide Type=Rock Category=Physical From=P0 To=E1 Missed=false Blocked=false Critical=true SuperEffective=true
     ! Struck E0 Hp=117 Hard=true
-    ! Struck E1 Hp=2 Hard=true
+    ! Struck E1 Hp=6 Hard=true
     ! HitSounded SuperEffective=true NotVeryEffective=false
   say A critical hit on Foe Dragonair!
   say A critical hit on Foe Burmy!
@@ -4751,7 +4751,7 @@ log:
   say Illumise used Infestation!
     + Lunged P0 Category=Special
     + MoveShown Move=Infestation Type=Bug Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck E0 Hp=1 Hard=false
+    ! Struck E0 Hp=3 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Amaura was caught in Illumise's Infestation!
   say Foe Amaura used Blizzard!
@@ -7543,7 +7543,7 @@ log:
   say Foe Gastrodon used Muddy Water!
     + Lunged E0 Category=Special
     + MoveShown Move=Muddy Water Type=Water Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=14 Hard=false
+    ! Struck P0 Hp=12 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Alcremie's accuracy fell!
     + StageChanged P0 Stat=Accuracy Stage=-2 Rose=false
@@ -7567,160 +7567,148 @@ log:
   say Foe Gastrodon used Body Slam!
     + Lunged E0 Category=Physical
     + MoveShown Move=Body Slam Type=Normal Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=2 Hard=false
+    ! Struck P0 Hp=0 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
-  say Alcremie used Dazzling Gleam!
-    + Lunged P0 Category=Special
-    + MoveShown Move=Dazzling Gleam Type=Fairy Category=Special From=P0 To=E0 Missed=true Blocked=false Critical=false SuperEffective=false
-  say Alcremie's attack missed!
+  say Alcremie fainted!
+    + Fainted P0
+    + VolatileChanged E0 Confused=false InLove=false
   say Rain continues to fall.
     + WeatherContinues Weather=Rain
-  say Foe Gastrodon is in love with Alcremie!
-    + MomentShown E0 Moment=Infatuated From=none
-  say Foe Gastrodon is immobilized by love!
-  say Alcremie used Recover!
+  say Go! Roserade!
+    + Entered P0 Pokemon=mine#2 Roserade FromBall=true
+  say Roserade used Leech Seed!
     + Lunged P0 Category=Status
-    + MoveShown Move=Recover Type=Normal Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Alcremie regained health!
-    + HpChanged P0 Hp=58 Healed=true
+    + MoveShown Move=Leech Seed Type=Grass Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Foe Gastrodon was seeded!
+  say Foe Gastrodon used Hidden Power!
+    + Lunged E0 Category=Special
+    + MoveShown Move=Hidden Power Type=Fighting Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck P0 Hp=96 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=true
+  say It's not very effective...
   say The rain stopped.
     + WeatherChanged Weather=None
-  say Foe Gastrodon is in love with Alcremie!
-    + MomentShown E0 Moment=Infatuated From=none
-  say Foe Gastrodon is immobilized by love!
-  say Alcremie is paralyzed! It can't move!
-    + MomentShown P0 Moment=Paralyzed From=none
-  say Foe Gastrodon is in love with Alcremie!
-    + MomentShown E0 Moment=Infatuated From=none
-  say Foe Gastrodon used Hidden Power!
-    + Lunged E0 Category=Special
-    + MoveShown Move=Hidden Power Type=Fighting Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=50 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=true
-  say It's not very effective...
-  say Alcremie is paralyzed! It can't move!
-    + MomentShown P0 Moment=Paralyzed From=none
-  say Foe Gastrodon is in love with Alcremie!
-    + MomentShown E0 Moment=Infatuated From=none
-  say Foe Gastrodon used Hidden Power!
-    + Lunged E0 Category=Special
-    + MoveShown Move=Hidden Power Type=Fighting Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=42 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=true
-  say It's not very effective...
-  say Alcremie used Acid Armor!
+  say Foe Gastrodon's health is sapped by Leech Seed!
+    + MomentShown E0 Moment=LeechSeed From=P0
+    + HpChanged E0 Hp=73 Healed=false
+  say Roserade took in the sapped health!
+    + HpChanged P0 Hp=105 Healed=true
+  say Roserade used Leech Seed!
     + Lunged P0 Category=Status
-    + MoveShown Move=Acid Armor Type=Poison Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Alcremie's Defense sharply rose!
-    + StageChanged P0 Stat=Defense Stage=6 Rose=true
-  say Foe Gastrodon is in love with Alcremie!
-    + MomentShown E0 Moment=Infatuated From=none
-  say Foe Gastrodon used Muddy Water!
-    + Lunged E0 Category=Special
-    + MoveShown Move=Muddy Water Type=Water Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=8 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=false
-  say Alcremie used Dazzling Gleam!
-    + Lunged P0 Category=Special
-    + MoveShown Move=Dazzling Gleam Type=Fairy Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck E0 Hp=34 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=false
-  say Foe Gastrodon is in love with Alcremie!
-    + MomentShown E0 Moment=Infatuated From=none
-  say Foe Gastrodon is immobilized by love!
-  say Alcremie used Recover!
-    + Lunged P0 Category=Status
-    + MoveShown Move=Recover Type=Normal Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Alcremie regained health!
-    + HpChanged P0 Hp=64 Healed=true
-  say Foe Gastrodon is in love with Alcremie!
-    + MomentShown E0 Moment=Infatuated From=none
-  say Foe Gastrodon is immobilized by love!
-  say Alcremie used Acid Armor!
-    + Lunged P0 Category=Status
-    + MoveShown Move=Acid Armor Type=Poison Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Alcremie's Defense won't go any higher!
-  say Foe Gastrodon is in love with Alcremie!
-    + MomentShown E0 Moment=Infatuated From=none
-  say Foe Gastrodon is immobilized by love!
-  say Alcremie is paralyzed! It can't move!
-    + MomentShown P0 Moment=Paralyzed From=none
-  say Foe Gastrodon is in love with Alcremie!
-    + MomentShown E0 Moment=Infatuated From=none
-  say Foe Gastrodon is immobilized by love!
-  say Alcremie used Attract!
-    + Lunged P0 Category=Status
-    + MoveShown Move=Attract Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say But it failed!
-  say Foe Gastrodon is in love with Alcremie!
-    + MomentShown E0 Moment=Infatuated From=none
+    + MoveShown Move=Leech Seed Type=Grass Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Roserade's attack missed!
   say Foe Gastrodon used Body Slam!
     + Lunged E0 Category=Physical
     + MoveShown Move=Body Slam Type=Normal Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=55 Hard=false
+    ! Struck P0 Hp=63 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
-  say Alcremie used Dazzling Gleam!
-    + Lunged P0 Category=Special
-    + MoveShown Move=Dazzling Gleam Type=Fairy Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck E0 Hp=0 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=false
+  say Foe Gastrodon's health is sapped by Leech Seed!
+    + MomentShown E0 Moment=LeechSeed From=P0
+    + HpChanged E0 Hp=55 Healed=false
+  say Roserade took in the sapped health!
+    + HpChanged P0 Hp=81 Healed=true
+  say Roserade used Poison Sting!
+    + Lunged P0 Category=Physical
+    + MoveShown Move=Poison Sting Type=Poison Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck E0 Hp=51 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=true
+  say It's not very effective...
+  say Foe Gastrodon was poisoned!
+    + StatusChanged E0 Status=Poison
+  say Foe Gastrodon used Muddy Water!
+    + Lunged E0 Category=Special
+    + MoveShown Move=Muddy Water Type=Water Category=Special From=E0 To=P0 Missed=true Blocked=false Critical=false SuperEffective=false
+  say Foe Gastrodon's attack missed!
+  say Foe Gastrodon's health is sapped by Leech Seed!
+    + MomentShown E0 Moment=LeechSeed From=P0
+    + HpChanged E0 Hp=33 Healed=false
+  say Roserade took in the sapped health!
+    + HpChanged P0 Hp=99 Healed=true
+  say Foe Gastrodon is hurt by poison!
+    + MomentShown E0 Moment=Poisoned From=none
+    + HpChanged E0 Hp=15 Healed=false
+  say Roserade used Leech Seed!
+    + Lunged P0 Category=Status
+    + MoveShown Move=Leech Seed Type=Grass Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Foe Gastrodon evaded the attack!
+  say Foe Gastrodon used Hidden Power!
+    + Lunged E0 Category=Special
+    + MoveShown Move=Hidden Power Type=Fighting Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck P0 Hp=90 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=true
+  say It's not very effective...
+  say Foe Gastrodon's health is sapped by Leech Seed!
+    + MomentShown E0 Moment=LeechSeed From=P0
+    + HpChanged E0 Hp=0 Healed=false
+  say Roserade took in the sapped health!
+    + HpChanged P0 Hp=105 Healed=true
   say Foe Gastrodon fainted!
     + Fainted E0
-  say Alcremie gained 1554 EXP. Points!
-  ExpGained Pokemon=mine#0 Alcremie Amount=1554
   say Marill gained 1010 EXP. Points!
   ExpGained Pokemon=mine#1 Marill Amount=1010
-  say Roserade gained 842 EXP. Points!
-  ExpGained Pokemon=mine#2 Roserade Amount=842
+  say Roserade gained 1684 EXP. Points!
+  ExpGained Pokemon=mine#2 Roserade Amount=1684
   say Sailor Luther sent out Machoke!
     + Seen Species=Machoke
     + Entered E0 Pokemon=foe#1 Machoke FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
-  say Foe Machoke used Wake-Up Slap!
-    + Lunged E0 Category=Physical
-    + MoveShown Move=Wake-Up Slap Type=Fighting Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=50 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=true
-  say It's not very effective...
-  say Alcremie is paralyzed! It can't move!
-    + MomentShown P0 Moment=Paralyzed From=none
+  say Roserade used Poison Sting!
+    + Lunged P0 Category=Physical
+    + MoveShown Move=Poison Sting Type=Poison Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck E0 Hp=110 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Machoke used Cross Chop!
     + Lunged E0 Category=Physical
     + MoveShown Move=Cross Chop Type=Fighting Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=42 Hard=false
+    ! Struck P0 Hp=66 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
-  say Alcremie is paralyzed! It can't move!
-    + MomentShown P0 Moment=Paralyzed From=none
+  say Roserade used Mega Drain!
+    + Lunged P0 Category=Special
+    + MoveShown Move=Mega Drain Type=Grass Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck E0 Hp=71 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=false
+  say Foe Machoke had its energy drained!
+    + HpChanged P0 Hp=85 Healed=true
   say Foe Machoke used Wake-Up Slap!
     + Lunged E0 Category=Physical
     + MoveShown Move=Wake-Up Slap Type=Fighting Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=37 Hard=false
+    ! Struck P0 Hp=57 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
-  say Alcremie used Acid Armor!
+  say Roserade used Leech Seed!
     + Lunged P0 Category=Status
-    + MoveShown Move=Acid Armor Type=Poison Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Alcremie's Defense won't go any higher!
-  say Alcremie used Dazzling Gleam!
+    + MoveShown Move=Leech Seed Type=Grass Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Foe Machoke was seeded!
+  say Foe Machoke used Submission!
+    + Lunged E0 Category=Physical
+    + MoveShown Move=Submission Type=Fighting Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck P0 Hp=27 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=true
+  say It's not very effective...
+  say Foe Machoke is hit with recoil!
+    + HpChanged E0 Hp=64 Healed=false
+  say Foe Machoke's health is sapped by Leech Seed!
+    + MomentShown E0 Moment=LeechSeed From=P0
+    + HpChanged E0 Hp=50 Healed=false
+  say Roserade took in the sapped health!
+    + HpChanged P0 Hp=41 Healed=true
+  say Roserade used Magical Leaf!
     + Lunged P0 Category=Special
-    + MoveShown Move=Dazzling Gleam Type=Fairy Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=true
-    ! Struck E0 Hp=0 Hard=true
-    ! HitSounded SuperEffective=true NotVeryEffective=false
-  say It's super effective!
+    + MoveShown Move=Magical Leaf Type=Grass Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck E0 Hp=0 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Machoke fainted!
     + Fainted E0
-  say Alcremie gained 1227 EXP. Points!
-  ExpGained Pokemon=mine#0 Alcremie Amount=1227
   say Marill gained 798 EXP. Points!
   ExpGained Pokemon=mine#1 Marill Amount=798
-  say Roserade gained 665 EXP. Points!
-  ExpGained Pokemon=mine#2 Roserade Amount=665
+  say Roserade gained 1330 EXP. Points!
+  ExpGained Pokemon=mine#2 Roserade Amount=1330
   Won
   say Lucas defeated Sailor Luther!
   say Lucas received $1376 for winning!
   Ended Result=PlayerVictory
-result: PlayerVictory after 28 turns
+result: PlayerVictory after 22 turns
 === battle 149
 rules: Modern rules
 format: Single
@@ -10567,12 +10555,10 @@ log:
   say Venonat used Sleep Powder!
     + Lunged P1 Category=Status
     + MoveShown Move=Sleep Powder Type=Grass Category=Status From=P1 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Foe Probopass avoided the attack!
-  say Foe Probopass used Sandstorm!
-    + Lunged E1 Category=Status
-    + MoveShown Move=Sandstorm Type=Rock Category=Status From=E1 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
-  say A sandstorm kicked up!
-    + WeatherChanged Weather=Sandstorm
+  say Foe Probopass fell asleep!
+    + StatusChanged E1 Status=Sleep
+  say Foe Probopass is fast asleep.
+    + MomentShown E1 Moment=Asleep From=none
   say Foe Graveler used Rollout!
     + Lunged E0 Category=Physical
     + MoveShown Move=Rollout Type=Rock Category=Physical From=E0 To=P1 Missed=false Blocked=false Critical=false SuperEffective=true
@@ -10584,21 +10570,12 @@ log:
     + MoveShown Move=Harden Type=Normal Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Metapod's Defense rose!
     + StageChanged P0 Stat=Defense Stage=1 Rose=true
-  say The sandstorm rages.
-    + WeatherContinues Weather=Sandstorm
-  say Venonat is buffeted by the sandstorm!
-    + HpChanged P1 Hp=51 Healed=false
-  say Metapod is buffeted by the sandstorm!
-    + HpChanged P0 Hp=77 Healed=false
   say Venonat used Poison Fang!
     + Lunged P1 Category=Physical
     + MoveShown Move=Poison Fang Type=Poison Category=Physical From=P1 To=E1 Missed=false Blocked=true Critical=false SuperEffective=false
   say It doesn't affect Foe Probopass...
-  say Foe Probopass used Thunder Wave!
-    + Lunged E1 Category=Status
-    + MoveShown Move=Thunder Wave Type=Electric Category=Status From=E1 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Venonat is paralyzed! It may be unable to move!
-    + StatusChanged P1 Status=Paralyze
+  say Foe Probopass is fast asleep.
+    + MomentShown E1 Moment=Asleep From=none
   say Foe Graveler used Rollout!
     + Lunged E0 Category=Physical
     + MoveShown Move=Rollout Type=Rock Category=Physical From=E0 To=P1 Missed=false Blocked=false Critical=false SuperEffective=true
@@ -10612,43 +10589,19 @@ log:
     + MoveShown Move=Harden Type=Normal Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Metapod's Defense rose!
     + StageChanged P0 Stat=Defense Stage=2 Rose=true
-  say The sandstorm rages.
-    + WeatherContinues Weather=Sandstorm
-  say Metapod is buffeted by the sandstorm!
-    + HpChanged P0 Hp=72 Healed=false
   say Go! Bulbasaur!
     + Entered P1 Pokemon=mine#2 Bulbasaur FromBall=true
-  say Bulbasaur used Worry Seed!
+  say Bulbasaur used Synthesis!
     + Lunged P1 Category=Status
-    + MoveShown Move=Worry Seed Type=Grass Category=Status From=P1 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Foe Graveler acquired Insomnia!
-    + AbilityShown E0 Ability=Insomnia
-  say Foe Probopass used Thunder Wave!
+    + MoveShown Move=Synthesis Type=Grass Category=Status From=P1 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Bulbasaur's HP is full!
+  say Foe Probopass woke up!
+    + StatusChanged E1 Status=None
+  say Foe Probopass used Sandstorm!
     + Lunged E1 Category=Status
-    + MoveShown Move=Thunder Wave Type=Electric Category=Status From=E1 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Bulbasaur is paralyzed! It may be unable to move!
-    + StatusChanged P1 Status=Paralyze
-  say Foe Graveler used Rollout!
-    + Lunged E0 Category=Physical
-    + MoveShown Move=Rollout Type=Rock Category=Physical From=E0 To=P1 Missed=false Blocked=false Critical=true SuperEffective=false
-    ! Struck P1 Hp=0 Hard=true
-    ! HitSounded SuperEffective=false NotVeryEffective=false
-  say A critical hit!
-  say Bulbasaur fainted!
-    + Fainted P1
-  say Metapod used Harden!
-    + Lunged P0 Category=Status
-    + MoveShown Move=Harden Type=Normal Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Metapod's Defense rose!
-    + StageChanged P0 Stat=Defense Stage=3 Rose=true
-  say The sandstorm rages.
-    + WeatherContinues Weather=Sandstorm
-  say Metapod is buffeted by the sandstorm!
-    + HpChanged P0 Hp=67 Healed=false
-  say Foe Probopass used Block!
-    + Lunged E1 Category=Status
-    + MoveShown Move=Block Type=Normal Category=Status From=E1 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Metapod can no longer escape!
+    + MoveShown Move=Sandstorm Type=Rock Category=Status From=E1 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
+  say A sandstorm kicked up!
+    + WeatherChanged Weather=Sandstorm
   say Foe Graveler used Rollout!
     + Lunged E0 Category=Physical
     + MoveShown Move=Rollout Type=Rock Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=true
@@ -10657,11 +10610,57 @@ log:
   say It's super effective!
   say Metapod fainted!
     + Fainted P0
+  say The sandstorm rages.
+    + WeatherContinues Weather=Sandstorm
+  say Bulbasaur is buffeted by the sandstorm!
+    + HpChanged P1 Hp=76 Healed=false
+  say Bulbasaur took in sunlight!
+    + Lunged P1 Category=Status
+    + Charging P1 Move=Solar Beam
+  say Foe Probopass used Thunder Wave!
+    + Lunged E1 Category=Status
+    + MoveShown Move=Thunder Wave Type=Electric Category=Status From=E1 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Bulbasaur is paralyzed! It may be unable to move!
+    + StatusChanged P1 Status=Paralyze
+  say Foe Graveler used Rollout!
+    + Lunged E0 Category=Physical
+    + MoveShown Move=Rollout Type=Rock Category=Physical From=E0 To=P1 Missed=true Blocked=false Critical=false SuperEffective=false
+  say Bulbasaur avoided the attack!
+  say The sandstorm rages.
+    + WeatherContinues Weather=Sandstorm
+  say Bulbasaur is buffeted by the sandstorm!
+    + HpChanged P1 Hp=71 Healed=false
+  say Foe Probopass used Block!
+    + Lunged E1 Category=Status
+    + MoveShown Move=Block Type=Normal Category=Status From=E1 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Bulbasaur can no longer escape!
+  say Foe Graveler used Rollout!
+    + Lunged E0 Category=Physical
+    + MoveShown Move=Rollout Type=Rock Category=Physical From=E0 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck P1 Hp=46 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=false
+  say Bulbasaur used Solar Beam!
+    + Lunged P1 Category=Special
+    + MoveShown Move=Solar Beam Type=Grass Category=Special From=P1 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck E1 Hp=89 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=false
+  say The sandstorm rages.
+    + WeatherContinues Weather=Sandstorm
+  say Bulbasaur is buffeted by the sandstorm!
+    + HpChanged P1 Hp=41 Healed=false
+  say Foe Probopass used Rock Slide!
+    + Lunged E1 Category=Physical
+    + MoveShown Move=Rock Slide Type=Rock Category=Physical From=E1 To=P1 Missed=false Blocked=false Critical=true SuperEffective=false
+    ! Struck P1 Hp=0 Hard=true
+    ! HitSounded SuperEffective=false NotVeryEffective=false
+  say A critical hit!
+  say Bulbasaur fainted!
+    + Fainted P1
   say Lucas has no Pokémon left that can fight!
   say ...  ...  ...
   say Lucas whited out!
   Ended Result=PlayerDefeat
-result: PlayerDefeat after 3 turns
+result: PlayerDefeat after 5 turns
 === battle 169
 rules: Modern rules
 format: Single
@@ -11083,7 +11082,7 @@ log:
   say Foe Blastoise used Aqua Tail!
     + Lunged E0 Category=Physical
     + MoveShown Move=Aqua Tail Type=Water Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=70 Hard=false
+    ! Struck P0 Hp=71 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
   say Rain continues to fall.
@@ -11109,7 +11108,7 @@ log:
   say Foe Blastoise used Water Pulse!
     + Lunged E0 Category=Special
     + MoveShown Move=Water Pulse Type=Water Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=94 Hard=false
+    ! Struck P0 Hp=93 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
   say Rain continues to fall.
@@ -12392,7 +12391,7 @@ log:
     + Reappeared P0
     + Lunged P0 Category=Physical
     + MoveShown Move=Bounce Type=Flying Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck E0 Hp=77 Hard=false
+    ! Struck E0 Hp=76 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Terrakion used Rock Slide!
     + Lunged E0 Category=Physical
@@ -12611,7 +12610,7 @@ log:
   say Foe Rayquaza used Hyper Voice!
     + Lunged E0 Category=Special
     + MoveShown Move=Hyper Voice Type=Normal Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=90 Hard=false
+    ! Struck P0 Hp=91 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
   say Magneton used Light Screen!
@@ -12621,7 +12620,7 @@ log:
   say Foe Rayquaza used Dragon Pulse!
     + Lunged E0 Category=Special
     + MoveShown Move=Dragon Pulse Type=Dragon Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=73 Hard=false
+    ! Struck P0 Hp=75 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
   say Magneton used Light Screen!
@@ -12633,7 +12632,7 @@ log:
   say Foe Rayquaza used Dragon Pulse!
     + Lunged E0 Category=Special
     + MoveShown Move=Dragon Pulse Type=Dragon Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=38 Hard=false
+    ! Struck P0 Hp=40 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
   say Magneton used Metal Sound!
@@ -12644,7 +12643,7 @@ log:
   say Foe Rayquaza used Hyper Voice!
     + Lunged E0 Category=Special
     + MoveShown Move=Hyper Voice Type=Normal Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=15 Hard=false
+    ! Struck P0 Hp=17 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
   say Magneton used Metal Sound!
@@ -12714,7 +12713,7 @@ log:
     + MoveShown Move=Explosion Type=Normal Category=Physical From=E0 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
     + MoveShown Move=Explosion Type=Normal Category=Physical From=E0 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
     + MoveShown Move=Explosion Type=Normal Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=true SuperEffective=false
-    ! Struck P1 Hp=28 Hard=false
+    ! Struck P1 Hp=29 Hard=false
     ! Struck E1 Hp=0 Hard=false
     ! Struck P0 Hp=0 Hard=true
     ! HitSounded SuperEffective=false NotVeryEffective=false
@@ -12999,7 +12998,7 @@ log:
     + HpChanged E0 Hp=0 Healed=false
     + MoveShown Move=Explosion Type=Normal Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
     + MoveShown Move=Explosion Type=Normal Category=Physical From=E0 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=53 Hard=false
+    ! Struck P0 Hp=54 Hard=false
     ! Struck P1 Hp=0 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Electrike fainted!
@@ -13009,7 +13008,7 @@ log:
   say Palkia gained 3319 EXP. Points!
   ExpGained Pokemon=mine#0 Palkia Amount=3319
   say Palkia's veil of water restored its HP!
-    + HpChanged P0 Hp=64 Healed=true
+    + HpChanged P0 Hp=65 Healed=true
   say Ace Trainer Tester sent out Fomantis!
     + Seen Species=Fomantis
     + Entered E0 Pokemon=foe#2 Fomantis FromBall=true
@@ -13021,7 +13020,7 @@ log:
     + Lunged E0 Category=Status
   say Foe Fomantis planted its roots!
   say Palkia's veil of water restored its HP!
-    + HpChanged P0 Hp=75 Healed=true
+    + HpChanged P0 Hp=76 Healed=true
   MomentShown P0 Moment=HeldItem From=none
   say Palkia used Power Gem!
     + Lunged P0 Category=Special
@@ -13542,7 +13541,7 @@ log:
   say Spidops used Bug Bite!
     + Lunged P0 Category=Physical
     + MoveShown Move=Bug Bite Type=Bug Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck E0 Hp=25 Hard=false
+    ! Struck E0 Hp=26 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
   say Foe Dusknoir used Confuse Ray!
@@ -13576,6 +13575,21 @@ log:
   say Celebi used Magical Leaf!
     + Lunged P0 Category=Special
     + MoveShown Move=Magical Leaf Type=Grass Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+    + TrainerReacts E0 Cue=LowHp
+    ! Struck E0 Hp=1 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=false
+  say Foe Dusknoir used Confuse Ray!
+    + Lunged E0 Category=Status
+    + MoveShown Move=Confuse Ray Type=Ghost Category=Status From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Celebi became confused!
+    + Confused P0
+    + VolatileChanged P0 Confused=true InLove=false
+  say Celebi is confused!
+    + Confused P0
+    + MomentShown P0 Moment=Confused From=none
+  say Celebi used Confusion!
+    + Lunged P0 Category=Special
+    + MoveShown Move=Confusion Type=Psychic Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
     ! Struck E0 Hp=0 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Dusknoir fainted!
@@ -13586,7 +13600,7 @@ log:
   say Lucas defeated Ace Trainer Tester!
   say Lucas received $300 for winning!
   Ended Result=PlayerVictory
-result: PlayerVictory after 13 turns
+result: PlayerVictory after 14 turns
 === battle 191
 rules: Modern rules
 format: Single

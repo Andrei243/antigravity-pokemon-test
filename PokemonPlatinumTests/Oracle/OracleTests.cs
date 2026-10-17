@@ -149,7 +149,10 @@ public class OracleTests
         theirs = answer.Defender!;
         if (!ours.SequenceEqual(theirs)) return new Difference("stats", ours, theirs, $"#{s.Id} defender's stats ours {string.Join("/", ours)} theirs {string.Join("/", theirs)} | {Describe(s)}");
 
-        var move = new Move(OracleScenarios.MoveOf(s.Move));
+        // The move as the core hands it to the formula: Normal, whatever it was, for a user with Normalize
+        var data = OracleScenarios.MoveOf(s.Move);
+        if (s.Attacker.Ability == "Normalize" && data.Type != PokemonType.Normal) data = data.OfType(PokemonType.Normal);
+        var move = new Move(data);
         var rolls = new int[16];
         bool? crit = null;
         for (int roll = 0; roll < 16; roll++)

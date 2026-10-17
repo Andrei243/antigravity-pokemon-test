@@ -96,6 +96,58 @@ public static class Formulas
         return Math.Max(1, damage * (100 - roll) / 100);
     }
 
+    // ---- The modern damage formula's arithmetic (plan 06 · R19c; Pokémon Showdown's, generation 5 on)
+
+    /// <summary>A bonus as the later games write it, in 4096ths of the value: 1.5 is 6144, 1.3 is 5324 (rounded down, as a Life Orb's is).</summary>
+    public static int In4096ths(float factor) => (int)MathF.Floor(factor * 4096f + 0.0001f);
+
+    /// <summary>
+    /// <c>pokeRound</c> of <paramref name="numerator"/> / 4096: rounded half down, so that exactly a half goes down
+    /// and anything over it goes up.
+    /// </summary>
+    public static long RoundHalfDown(long numerator, long denominator = 4096)
+    {
+        long whole = numerator / denominator, rest = numerator % denominator;
+        return rest * 2 > denominator ? whole + 1 : whole;
+    }
+
+    /// <summary>
+    /// <c>chainMods</c>: several bonuses in 4096ths made one, each step rounded half up (<c>(M × mod + 2048) &gt;&gt; 12</c>)
+    /// and the whole held between <paramref name="least"/> and <paramref name="most"/>.
+    /// </summary>
+    public static int Chain(System.Collections.Generic.IEnumerable<int> mods, int least, int most)
+    {
+        long m = 4096;
+        foreach (int mod in mods)
+            if (mod != 4096) m = (m * mod + 2048) >> 12;
+        return (int)Math.Clamp(m, least, most);
+    }
+
+    /// <summary>A value times one bonus in 4096ths, rounded half down (a spread hit's 3072, the weather's 6144 and 2048).</summary>
+    public static int Modify(int value, int mod) => (int)RoundHalfDown((long)value * mod);
+
+    /// <summary>
+    /// The base damage of the later games (<c>getBaseDamage</c>): (2 × level / 5 + 2) × power × attack / defence / 50,
+    /// each step rounded down, + 2. The burn, the screens and the weather are not in it.
+    /// </summary>
+    public static int ModernBaseDamage(int level, int power, int attack, int defense) =>
+        (int)((long)(level * 2 / 5 + 2) * power * attack / Math.Max(1, defense) / 50) + 2;
+
+    /// <summary>
+    /// What one roll comes to in the later games (<c>getFinalDamage</c>): the roll (<paramref name="roll"/> 0 the
+    /// strongest, as <see cref="Variance"/>'s), the same-type bonus rounded half down, the type chart rounded down, a
+    /// burn's halving, then the final modifiers, rounded half down and never less than one.
+    /// </summary>
+    public static int ModernFinalDamage(int baseDamage, int roll, int stab, float effectiveness, bool burned, int finalMod, bool rolled = true)
+    {
+        long damage = rolled ? (long)baseDamage * (100 - roll) / 100 : baseDamage;
+        if (stab != 4096) damage = RoundHalfDown(damage * stab);
+        damage = (long)Math.Floor(damage * (double)effectiveness);
+        if (burned) damage /= 2;
+        long scaled = damage * finalMod;
+        return scaled < 4096 ? 1 : (int)RoundHalfDown(scaled);
+    }
+
     /// <summary>
     /// The hit rate of a move before abilities and items (<c>BattleControllerPlayer_CheckMoveHitAccuracy</c>):
     /// its accuracy by the user's accuracy stage less the target's evasion stage. A move hits when a roll of 100
