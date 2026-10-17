@@ -84,11 +84,14 @@ partial class Harness
         }
         else
         {
-            var moves = MoveDatabase.GetAll().Where(m => m.Id <= 467).OrderBy(m => m.Id).ToList();
+            // MOVES_LATER=1: the later games' moves that have a look (plan 25 · Y11 on), on boards of their own (mvl_NN)
+            bool later = Environment.GetEnvironmentVariable("MOVES_LATER") is { Length: > 0 };
+            string prefix = later ? "mvl" : "mv";
+            var moves = MoveDatabase.GetAll().Where(m => later ? m.Id > 467 && MoveFx.BatchOf(m.Name) != null : m.Id <= 467).OrderBy(m => m.Id).ToList();
             const int perBoard = 60, columns = 10, tileW = 288, tileH = 162, label = 22;
             for (int first = 0; first < moves.Count; first += perBoard)
             {
-                string board = $"mv_{first / perBoard:00}";
+                string board = $"{prefix}_{first / perBoard:00}";
                 bool wanted = Wanted(board);
                 var sheet = Raylib.GenImageColor(columns * tileW, (perBoard / columns) * (tileH + label), new Color(24, 26, 34, 255));
                 for (int i = 0; i < perBoard && first + i < moves.Count; i++)
