@@ -380,9 +380,45 @@ public class MovePresentationTests
         // Hyper Voice is the user's voice; every other has a sound of its own
         Assert.All(part, move => Assert.True(SoundBank.CryModesOf(move) != null || SoundBank.Exists("use_" + SoundBank.MoveKey(move)), move));
         Assert.Empty(part.Intersect(MoveSightings.NinthBatchFirstPart.Concat(MoveSightings.NinthBatchSecondPart), StringComparer.OrdinalIgnoreCase));
-        // The batch is these 32 and the moves of its second part, nothing else
-        var second = TenthBatchSecondPart();
-        Assert.All(MoveFx.Batches.Where(b => b.Value == "Y10"), b => Assert.Contains(b.Key, part.Concat(second), StringComparer.OrdinalIgnoreCase));
+        // The batch is these 32, nothing else
+        Assert.All(MoveFx.Batches.Where(b => b.Value == "Y10"), b => Assert.Contains(b.Key, part, StringComparer.OrdinalIgnoreCase));
+    }
+
+    [Fact]
+    public void TheTenthBatchsSecondPartAllHaveALookAndASoundOfTheirOwn()
+    {
+        // Plan 25 - Y10b: the moves MoveSightings finds nowhere (tutors, shop TMs, breeding, a legendary's own)
+        var part = TenthBatchSecondPart().ToList();
+        output.WriteLine($"{part.Count} moves in Y10's second part: {string.Join(", ", part)}");
+        Assert.Equal(64, part.Count);
+        Assert.All(part, move => Assert.Equal("Y10b", MoveFx.BatchOf(move)));
+        Assert.All(part, move => Assert.True(SoundBank.CryModesOf(move) != null || SoundBank.Exists("use_" + SoundBank.MoveKey(move)), move));
+        Assert.All(MoveFx.Batches.Where(b => b.Value == "Y10b"), b => Assert.Contains(b.Key, part, StringComparer.OrdinalIgnoreCase));
+        // Every one of Platinum's 467 moves now has its own look and sound (or its user's voice)
+        Assert.All(PlatinumMoves, m => Assert.NotNull(MoveFx.BatchOf(m.Name)));
+    }
+
+    [Fact]
+    public void TheTenthBatchsSecondPartsMovesThatShareAParticleFileOrAKindLookDifferentHere()
+    {
+        foreach (var (a, b) in new[] { ("Vise Grip", "Crush Grip"), ("Vise Grip", "Guillotine"), ("Hydro Cannon", "Water Spout"), ("Blast Burn", "Eruption"),
+            ("Mist Ball", "Luster Purge"), ("Frenzy Plant", "Power Whip"), ("Roar of Time", "Spacial Rend"), ("Dark Void", "Nightmare"), ("Heart Swap", "Lovely Kiss"),
+            ("Trump Card", "Present"), ("Bonemerang", "Bone Club"), ("Sky Attack", "Aeroblast"), ("Comet Punch", "Arm Thrust"), ("Sharpen", "Conversion"),
+            ("Tail Glow", "Morning Sun"), ("Role Play", "Transform"), ("Fake Tears", "Feather Dance"), ("Poison Tail", "Twineedle"), ("Spike Cannon", "Barrage"),
+            ("Psycho Boost", "Judgment"), ("Seed Flare", "Draco Meteor") })
+        {
+            var ma = MoveDatabase.Get(a)!;
+            var mb = MoveDatabase.Get(b)!;
+            int same = 0;
+            foreach (float age in new[] { 0.15f, 0.3f, 0.5f, 0.8f })
+            {
+                var ca = Cue(ma);
+                var cb = Cue(mb);
+                cb.Seed = ca.Seed;
+                if (Picture(Draw(ca, age)) == Picture(Draw(cb, age))) same++;
+            }
+            Assert.True(same < 4, $"{a} and {b} look alike");
+        }
     }
 
     /// <summary>The Platinum moves that <see cref="MoveSightings"/> finds nowhere (plan 25 · Y10b): tutors, shop TMs, breeding, a legendary's own.</summary>
@@ -499,7 +535,7 @@ public class MovePresentationTests
         int own = PlatinumMoves.Count(m => MoveFx.BatchOf(m.Name) != null &&
             (SoundBank.CryModesOf(m.Name) != null || SoundBank.Exists("use_" + SoundBank.MoveKey(m.Name))));
         output.WriteLine($"{own} of Platinum's 467 have a look and a sound of their own");
-        Assert.True(own >= 403, $"only {own}");
+        Assert.True(own >= 467, $"only {own}");
     }
 
     [Fact]

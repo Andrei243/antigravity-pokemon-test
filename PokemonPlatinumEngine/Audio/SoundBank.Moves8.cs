@@ -299,6 +299,6 @@ public static partial class SoundBank
                 d.Noise(0.4f, 0.4f, Filter.Band, 1200f, 3000f, 0.1f, 1f, 0.05f, 1.4f, 30f, 0.7f);
                 return Finish(d.S, 0.34f);
         }
-        return null;
+        return MakeMoveSoundY10b(name);
     }
 }
