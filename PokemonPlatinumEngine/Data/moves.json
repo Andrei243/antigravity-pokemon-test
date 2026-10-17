@@ -13314,7 +13314,6 @@
     "maxPP": 1,
     "description": "The Normal-type Z-Move. Its power comes from the move it is made out of.",
     "effect": "ZMove",
-    "support": "None",
     "kind": "ZMove"
   },
   {
@@ -13328,7 +13327,6 @@
     "maxPP": 1,
     "description": "The Fighting-type Z-Move. Its power comes from the move it is made out of.",
     "effect": "ZMove",
-    "support": "None",
     "kind": "ZMove"
   },
   {
@@ -13342,7 +13340,6 @@
     "maxPP": 1,
     "description": "The Flying-type Z-Move. Its power comes from the move it is made out of.",
     "effect": "ZMove",
-    "support": "None",
     "kind": "ZMove"
   },
   {
@@ -13356,7 +13353,6 @@
     "maxPP": 1,
     "description": "The Poison-type Z-Move. Its power comes from the move it is made out of.",
     "effect": "ZMove",
-    "support": "None",
     "kind": "ZMove"
   },
   {
@@ -13370,7 +13366,6 @@
     "maxPP": 1,
     "description": "The Ground-type Z-Move. Its power comes from the move it is made out of.",
     "effect": "ZMove",
-    "support": "None",
     "kind": "ZMove"
   },
   {
@@ -13384,7 +13379,6 @@
     "maxPP": 1,
     "description": "The Rock-type Z-Move. Its power comes from the move it is made out of.",
     "effect": "ZMove",
-    "support": "None",
     "kind": "ZMove"
   },
   {
@@ -13398,7 +13392,6 @@
     "maxPP": 1,
     "description": "The Bug-type Z-Move. Its power comes from the move it is made out of.",
     "effect": "ZMove",
-    "support": "None",
     "kind": "ZMove"
   },
   {
@@ -13412,7 +13405,6 @@
     "maxPP": 1,
     "description": "The Ghost-type Z-Move. Its power comes from the move it is made out of.",
     "effect": "ZMove",
-    "support": "None",
     "kind": "ZMove"
   },
   {
@@ -13426,7 +13418,6 @@
     "maxPP": 1,
     "description": "The Steel-type Z-Move. Its power comes from the move it is made out of.",
     "effect": "ZMove",
-    "support": "None",
     "kind": "ZMove"
   },
   {
@@ -13440,7 +13431,6 @@
     "maxPP": 1,
     "description": "The Fire-type Z-Move. Its power comes from the move it is made out of.",
     "effect": "ZMove",
-    "support": "None",
     "kind": "ZMove"
   },
   {
@@ -13454,7 +13444,6 @@
     "maxPP": 1,
     "description": "The Water-type Z-Move. Its power comes from the move it is made out of.",
     "effect": "ZMove",
-    "support": "None",
     "kind": "ZMove"
   },
   {
@@ -13468,7 +13457,6 @@
     "maxPP": 1,
     "description": "The Grass-type Z-Move. Its power comes from the move it is made out of.",
     "effect": "ZMove",
-    "support": "None",
     "kind": "ZMove"
   },
   {
@@ -13482,7 +13470,6 @@
     "maxPP": 1,
     "description": "The Electric-type Z-Move. Its power comes from the move it is made out of.",
     "effect": "ZMove",
-    "support": "None",
     "kind": "ZMove"
   },
   {
@@ -13496,7 +13483,6 @@
     "maxPP": 1,
     "description": "The Psychic-type Z-Move. Its power comes from the move it is made out of.",
     "effect": "ZMove",
-    "support": "None",
     "kind": "ZMove"
   },
   {
@@ -13510,7 +13496,6 @@
     "maxPP": 1,
     "description": "The Ice-type Z-Move. Its power comes from the move it is made out of.",
     "effect": "ZMove",
-    "support": "None",
     "kind": "ZMove"
   },
   {
@@ -13524,7 +13509,6 @@
     "maxPP": 1,
     "description": "The Dragon-type Z-Move. Its power comes from the move it is made out of.",
     "effect": "ZMove",
-    "support": "None",
     "kind": "ZMove"
   },
   {
@@ -13538,7 +13522,6 @@
     "maxPP": 1,
     "description": "The Dark-type Z-Move. Its power comes from the move it is made out of.",
     "effect": "ZMove",
-    "support": "None",
     "kind": "ZMove"
   },
   {
@@ -13552,7 +13535,6 @@
     "maxPP": 1,
     "description": "The Fairy-type Z-Move. Its power comes from the move it is made out of.",
     "effect": "ZMove",
-    "support": "None",
     "kind": "ZMove"
   },
   {
@@ -13565,8 +13547,8 @@
     "accuracy": 0,
     "maxPP": 1,
     "description": "A Z-Move one species makes out of its own move with its Z-Crystal.",
+    "flags": "Contact",
     "effect": "ZMove",
-    "support": "None",
     "kind": "ZMove"
   },
   {
@@ -14208,7 +14190,6 @@
     "maxPP": 1,
     "description": "A Z-Move one species makes out of its own move with its Z-Crystal.",
     "effect": "ZMove",
-    "support": "None",
     "kind": "ZMove"
   },
   {
@@ -14221,8 +14202,8 @@
     "accuracy": 0,
     "maxPP": 1,
     "description": "A Z-Move one species makes out of its own move with its Z-Crystal.",
-    "effect": "ZMove",
-    "support": "None",
+    "flags": "Contact",
+    "effect": "FlinchMinimizeDoubleHit",
     "kind": "ZMove"
   },
   {
@@ -14236,7 +14217,6 @@
     "maxPP": 1,
     "description": "A Z-Move one species makes out of its own move with its Z-Crystal.",
     "effect": "ZMove",
-    "support": "None",
     "kind": "ZMove"
   },
   {
@@ -14249,8 +14229,7 @@
     "accuracy": 0,
     "maxPP": 1,
     "description": "A Z-Move one species makes out of its own move with its Z-Crystal.",
-    "effect": "ZMove",
-    "support": "None",
+    "effect": "ZGuardianOfAlola",
     "kind": "ZMove"
   },
   {
@@ -14263,8 +14242,8 @@
     "accuracy": 0,
     "maxPP": 1,
     "description": "A Z-Move one species makes out of its own move with its Z-Crystal.",
+    "flags": "Contact",
     "effect": "ZMove",
-    "support": "None",
     "kind": "ZMove"
   },
   {
@@ -14277,8 +14256,9 @@
     "accuracy": 0,
     "maxPP": 1,
     "description": "A Z-Move one species makes out of its own move with its Z-Crystal.",
+    "inflictStatus": "Paralyze",
+    "statusChancePercent": 100,
     "effect": "ZMove",
-    "support": "None",
     "kind": "ZMove"
   },
   {
@@ -14291,8 +14271,8 @@
     "accuracy": 0,
     "maxPP": 1,
     "description": "A Z-Move one species makes out of its own move with its Z-Crystal.",
+    "flags": "Contact",
     "effect": "ZMove",
-    "support": "None",
     "kind": "ZMove"
   },
   {
@@ -14305,8 +14285,8 @@
     "accuracy": 0,
     "maxPP": 1,
     "description": "A Z-Move one species makes out of its own move with its Z-Crystal.",
-    "effect": "ZMove",
-    "support": "None",
+    "target": "User",
+    "effect": "ZExtremeEvoboost",
     "kind": "ZMove"
   },
   {
@@ -14319,8 +14299,7 @@
     "accuracy": 0,
     "maxPP": 1,
     "description": "A Z-Move one species makes out of its own move with its Z-Crystal.",
-    "effect": "ZMove",
-    "support": "None",
+    "effect": "ZGenesisSupernova",
     "kind": "ZMove"
   },
   {
@@ -14576,8 +14555,8 @@
     "accuracy": 0,
     "maxPP": 1,
     "description": "A Z-Move one species makes out of its own move with its Z-Crystal.",
+    "critStage": 2,
     "effect": "ZMove",
-    "support": "None",
     "kind": "ZMove"
   },
   {
@@ -14636,8 +14615,7 @@
     "accuracy": 0,
     "maxPP": 1,
     "description": "A Z-Move one species makes out of its own move with its Z-Crystal.",
-    "effect": "ZMove",
-    "support": "None",
+    "effect": "PhotonGeyser",
     "kind": "ZMove"
   },
   {
@@ -14650,8 +14628,8 @@
     "accuracy": 0,
     "maxPP": 1,
     "description": "A Z-Move one species makes out of its own move with its Z-Crystal.",
-    "effect": "ZMove",
-    "support": "None",
+    "flags": "Contact",
+    "effect": "SunsteelStrike",
     "kind": "ZMove"
   },
   {
@@ -14664,8 +14642,7 @@
     "accuracy": 0,
     "maxPP": 1,
     "description": "A Z-Move one species makes out of its own move with its Z-Crystal.",
-    "effect": "ZMove",
-    "support": "None",
+    "effect": "SunsteelStrike",
     "kind": "ZMove"
   },
   {
@@ -14678,8 +14655,8 @@
     "accuracy": 0,
     "maxPP": 1,
     "description": "A Z-Move one species makes out of its own move with its Z-Crystal.",
+    "flags": "Contact",
     "effect": "ZMove",
-    "support": "None",
     "kind": "ZMove"
   },
   {
@@ -14692,8 +14669,7 @@
     "accuracy": 0,
     "maxPP": 1,
     "description": "A Z-Move one species makes out of its own move with its Z-Crystal.",
-    "effect": "ZMove",
-    "support": "None",
+    "effect": "ZSplinteredStormshards",
     "kind": "ZMove"
   },
   {
@@ -14706,8 +14682,9 @@
     "accuracy": 0,
     "maxPP": 1,
     "description": "A Z-Move one species makes out of its own move with its Z-Crystal.",
-    "effect": "ZMove",
-    "support": "None",
+    "target": "AllFoes",
+    "flags": "Sound",
+    "effect": "ZClangorousSoulblaze",
     "kind": "ZMove"
   },
   {

@@ -42,7 +42,8 @@ internal sealed class BattleMirror
         DoubleBattle = trainer.DoubleBattle,
         Ai = trainer.Ai,
         Items = new List<string>(trainer.Items),
-        KeyStone = trainer.KeyStone
+        KeyStone = trainer.KeyStone,
+        ZRing = trainer.ZRing
     };
 
     /// <summary>The game's own Pokémon that one of the rules' copies stands for.</summary>

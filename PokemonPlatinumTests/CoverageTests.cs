@@ -55,7 +55,8 @@ public class CoverageTests
         AtLeast(304, n.PlatinumItemsFully, "Platinum's items that work");
         AtLeast(357, n.PlatinumItemsFully + n.PlatinumItemsPartly, "Platinum's items that work at least partly");
         AtLeast(158, n.HoldEffectsRun, "hold effects run");
-        AtLeast(0, n.SpecialMovesRun, "Z-Moves and Max Moves run");
+        // The 35 Z-Moves since plan 06 · R21
+        AtLeast(35, n.SpecialMovesRun, "Z-Moves and Max Moves run");
 
         Assert.True(fallen.Count == 0, "The coverage report got worse:\n" + string.Join("\n", fallen));
     }
@@ -75,9 +76,10 @@ public class CoverageTests
         Assert.Equal(Moves.Count, Moves.Select(m => m.Name).Distinct().Count());
 
         var special = Moves.Where(m => m.Kind != MoveKind.Standard).ToList();
+        // The Z-Moves run since plan 06 · R21; the Max Moves wait for R22
         Assert.All(special, m =>
         {
-            Assert.Equal(MoveEffectSupport.None, m.Support);
+            Assert.Equal(m.Kind == MoveKind.ZMove ? MoveEffectSupport.Full : MoveEffectSupport.None, m.Support);
             Assert.NotNull(m.Effect);
             Assert.True(m.Description.Length > 0, m.Name);
         });

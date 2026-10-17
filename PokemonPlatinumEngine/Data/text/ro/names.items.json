@@ -775,7 +775,8 @@
     "Distortion Orb": "Globul Distorsiunii",
     "Key Stone": "Piatra-Cheie",
     "Red Orb": "Globul Roșu",
-    "Blue Orb": "Globul Albastru"
+    "Blue Orb": "Globul Albastru",
+    "Z-Ring": "Inelul Z"
   },
   "descriptions": {
     "items": {
@@ -1554,7 +1555,8 @@
       "Distortion Orb": "Un glob întunecat care pare să tragă spre el spațiul din jur.",
       "Key Stone": "O piatră care le permite Pokémonilor tăi să facă Megaevoluția în luptă.",
       "Red Orb": "Ținut de Groudon, îl aduce la forma sa primordială când intră în luptă.",
-      "Blue Orb": "Ținut de Kyogre, îl aduce la forma sa primordială când intră în luptă."
+      "Blue Orb": "Ținut de Kyogre, îl aduce la forma sa primordială când intră în luptă.",
+      "Z-Ring": "Un inel care le permite Pokémonilor tăi să dezlănțuie o mișcare Z pe luptă, prin Cristalul Z ținut."
     }
   }
 }

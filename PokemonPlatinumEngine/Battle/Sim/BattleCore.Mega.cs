@@ -78,6 +78,8 @@ public sealed partial class BattleCore
     /// </summary>
     private bool ClingsTo(ItemData? item, Pokemon? holder)
     {
+        // A Z-Crystal in anyone's hands (plan 06 · R21; the crystals' onTakeItem is false)
+        if (Rules.ZMoves && item?.ZCrystal != null && holder != null) return true;
         if (!Rules.MegaEvolution || item == null || holder == null) return false;
         if (item.MegaStone is { } stone) return stone.Species == holder.Species.Name;
         return (item.Name, holder.Species.Name) is ("Blue Orb", "Kyogre") or ("Red Orb", "Groudon");
@@ -104,6 +106,8 @@ public sealed partial class BattleCore
     {
         foreach (var choice in chosen.Where(c => c.Mega))
             if (!megaChosen.Add(MegaKey(At(choice.Who)))) throw new ArgumentException(Text.Of("battle.megaOnlyOnce"));
+        // And the Z-Moves and Ultra Bursts (plan 06 · R21)
+        ChooseZ(chosen);
     }
 
     /// <summary>
@@ -115,14 +119,24 @@ public sealed partial class BattleCore
     private bool MegaEvolutions(IReadOnlyList<Act> acts)
     {
         megaChosen.Clear();
-        var megas = acts.Where(a => a.Choice is { Kind: ChoiceKind.Fight, Mega: true } && a.User.IsActive && a.User.Pokemon == a.Actor).ToList();
+        // An Ultra Burst comes with them (plan 06 · R21: Showdown's megaEvo action runs both)
+        var megas = acts.Where(a => a.Choice is { Kind: ChoiceKind.Fight } c && (c.Mega || c.UltraBurst) && a.User.IsActive && a.User.Pokemon == a.Actor).ToList();
         if (megas.Count == 0) return false;
         bool any = false;
         foreach (var b in BySpeed().Where(b => megas.Any(a => a.User == b)))
         {
             if (Result != BattleResult.None) break;
-            if (!b.IsActive || WhyNotMega(b) != null) continue;
-            MegaEvolve(b);
+            if (!b.IsActive) continue;
+            if (megas.First(a => a.User == b).Choice.UltraBurst)
+            {
+                if (WhyNotUltraBurst(b) != null) continue;
+                UltraBurstNow(b);
+            }
+            else
+            {
+                if (WhyNotMega(b) != null) continue;
+                MegaEvolve(b);
+            }
             any = true;
         }
         return any;

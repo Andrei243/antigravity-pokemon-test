@@ -168,6 +168,14 @@ public class MoveData
         return copy;
     }
 
+    /// <summary>A copy of the move with something changed, for one use alone (a Z-Move's power and category, plan 06 · R21).</summary>
+    public MoveData CopyWith(Action<MoveData> change)
+    {
+        var copy = (MoveData)MemberwiseClone();
+        change(copy);
+        return copy;
+    }
+
     /// <summary>A copy of the move made of another category, for its user alone (Photon Geyser's physical side).</summary>
     public MoveData OfCategory(MoveCategory category)
     {

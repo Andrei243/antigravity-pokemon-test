@@ -32,6 +32,18 @@ public sealed record BattleChoice(Place Who, ChoiceKind Kind)
     /// </summary>
     public bool Mega { get; init; }
 
+    /// <summary>
+    /// With a move: it is used as its Z-Move (plan 06 · R21; Showdown's <c>move 1 zmove</c>), through the Z-Crystal its
+    /// user holds. Refused where it can't be (<see cref="BattleCore.WhyNotZMove"/>).
+    /// </summary>
+    public bool ZMove { get; init; }
+
+    /// <summary>
+    /// With a move: a Necrozma fused with Solgaleo or Lunala Ultra Bursts first (plan 06 · R21; Showdown's
+    /// <c>move 1 ultra</c>), when the turn's Mega Evolutions come. Refused where it can't (<see cref="BattleCore.WhyNotUltraBurst"/>).
+    /// </summary>
+    public bool UltraBurst { get; init; }
+
     /// <summary>In place of a move's position: the move the Pokémon is in the middle of or held to.</summary>
     public const int HeldMove = -2;
 

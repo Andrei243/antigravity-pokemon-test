@@ -81,6 +81,12 @@ public sealed class CoreSetup
     /// own Pokémon may Mega Evolve once in the battle. A trainer has theirs as <see cref="Trainer.KeyStone"/>.
     /// </summary>
     public bool KeyStone { get; init; }
+
+    /// <summary>
+    /// The player has a Z-Ring (plan 06 · R21): under rules with <see cref="Ruleset.ZMoves"/> one of their own Pokémon
+    /// may use a Z-Move once in the battle, and one may Ultra Burst. A trainer has theirs as <see cref="Trainer.ZRing"/>.
+    /// </summary>
+    public bool ZRing { get; init; }
 }
 
 /// <summary>
@@ -209,6 +215,7 @@ public sealed partial class BattleCore : IBattleContext
         Frontier = setup.Frontier;
         OffersSwitch = setup.OffersSwitch;
         KeyStone = setup.KeyStone;
+        ZRing = setup.ZRing;
         Field.Frontier = Frontier;
         NoBattleItems = setup.NoBattleItems;
         Field.Inverse = Conditions.Inverse;
@@ -295,6 +302,8 @@ public sealed partial class BattleCore : IBattleContext
                 // One Mega Evolution a trainer (plan 06 · R20): two in one answer are refused
                 if (choices.Where(c => c.Mega).GroupBy(c => MegaKey(At(c.Who))).Any(g => g.Count() > 1))
                     throw new ArgumentException(Text.Of("battle.megaOnlyOnce"));
+                // And one Z-Move and one Ultra Burst (plan 06 · R21)
+                RefuseTwoZ(choices);
                 break;
             case ReplacementRequest replacement:
                 if (choices.Count != 1 || choices[0].Kind != ChoiceKind.Switch || choices[0].Who != replacement.Place || !CanSendIn(At(replacement.Place), choices[0].SwitchTo))
@@ -457,6 +466,7 @@ public sealed partial class BattleCore : IBattleContext
             var free = InTurnOrderOfPlaces().Where(b => b.IsActive && !b.IsHeldToItsMove).ToList();
             var asked = free.Where(b => ControllerOf(b) == null).Select(b => b.Place).ToList();
             megaChosen.Clear();
+            zChosen.Clear();
             if (asked.Count > 0)
             {
                 yield return new ActionRequest(asked);
@@ -468,6 +478,8 @@ public sealed partial class BattleCore : IBattleContext
                 var chosen = ControllerOf(b)!.ChooseAction(this, b);
                 // A chooser inside may only Mega Evolve where the rules let it (plan 06 · R20)
                 if (chosen.Mega && !CanMegaEvolve(b)) chosen = chosen with { Mega = false };
+                // And use a Z-Move or Ultra Burst only where they let it (plan 06 · R21)
+                chosen = AsTheZRulesLet(b, chosen);
                 ChooseMegas(new[] { chosen });
                 choices.Add(chosen);
             }

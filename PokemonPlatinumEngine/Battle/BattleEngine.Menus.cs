@@ -136,6 +136,7 @@ public partial class BattleEngine
         choices.Clear();
         targetingMove = null;
         MegaArmed = false;
+        ZArmed = false;
         // Only the Pokémon the rules ask about: one in the middle of a move has nothing to choose
         asked = core.Request is ActionRequest request ? request.Places.Where(p => p.Side == BattleSide.Player).Select(p => p.Slot).ToList() : new List<int>();
         menuSlot = asked.Count > 0 ? asked[0] : 0;
@@ -170,6 +171,8 @@ public partial class BattleEngine
         // A move goes with the Mega Evolution armed for it (plan 06 · R20)
         if (MegaArmed && choice.Kind == ChoiceKind.Fight && CanMegaEvolveNow) choice = choice with { Mega = true };
         MegaArmed = false;
+        // And with the Z-Move and the Ultra Burst armed for it (plan 06 · R21)
+        choice = WithZArmed(choice);
         choices[menuSlot] = choice;
 
         // Running is for the whole side: nobody else is asked
@@ -656,7 +659,7 @@ public partial class BattleEngine
                 // The item button arms the Mega Evolution for the move (plan 06 · R20)
                 if (InputManager.IsActionPressed(GameAction.Item))
                 {
-                    AudioManager.PlaySound(ToggleMega() ? "select" : "cancel");
+                    AudioManager.PlaySound(ToggleLaterMechanic() ? "select" : "cancel");
                     return;
                 }
                 MoveCursor(dx, dy);

@@ -29,9 +29,17 @@ public sealed class TrainerAi : IBattleController
     /// can Mega Evolve the Pokémon does so with the move, whenever it can, as Pokémon Showdown's random player does
     /// with its <c>mega</c> option at 1 (<c>sim/tools/random-player-ai.ts</c>). Nothing is drawn for it, so what the
     /// AI chose and every roll it made are what they were; under Platinum's rules, or with no Key Stone, nothing changes.
+    /// The same for a Z-Move (plan 06 · R21): the move chosen is used as its Z-Move whenever it has one, and a Necrozma
+    /// that can Ultra Burst does so; with no Z-Ring nothing changes.
     /// </summary>
-    private static BattleChoice WithTheLaterMechanics(BattleCore battle, Battler mine, BattleChoice choice) =>
-        choice.Kind == ChoiceKind.Fight && choice.Move != BattleChoice.HeldMove && battle.CanMegaEvolve(mine) ? choice with { Mega = true } : choice;
+    private static BattleChoice WithTheLaterMechanics(BattleCore battle, Battler mine, BattleChoice choice)
+    {
+        if (choice.Kind != ChoiceKind.Fight || choice.Move == BattleChoice.HeldMove) return choice;
+        if (battle.CanMegaEvolve(mine)) choice = choice with { Mega = true };
+        if (battle.CanUltraBurst(mine)) choice = choice with { UltraBurst = true };
+        if (choice.Move >= 0 && battle.CanUseZMove(mine, choice.Move)) choice = choice with { ZMove = true };
+        return choice;
+    }
 
     private static BattleChoice Choose(BattleCore battle, Battler mine)
     {

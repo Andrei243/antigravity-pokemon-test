@@ -318,3 +318,16 @@ public sealed record Charging(Place Place, string Move) : BattleEvent;
 /// nothing more by it.
 /// </summary>
 public sealed record MegaEvolved(Place Place, string Form, bool Primal) : BattleEvent;
+
+/// <summary>
+/// A Pokémon surrounds itself with its Z-Power (plan 06 · R21): it rides on the line that says so, before the move,
+/// which is <paramref name="ZMove"/> made of <paramref name="From"/> (the same move for a status move's Z-Power).
+/// Whoever shows the battle may show the Z-Power on it (plan 25 · Y14); the rules change nothing by it.
+/// </summary>
+public sealed record ZPowerUsed(Place Place, string ZMove, string From) : BattleEvent;
+
+/// <summary>
+/// A Necrozma Ultra Bursts (plan 06 · R21): it rides on the line that says so, and from that line on the Pokémon in
+/// the place is in <paramref name="Form"/>, with that form's stats, ability and types, as after a Mega Evolution.
+/// </summary>
+public sealed record UltraBursted(Place Place, string Form) : BattleEvent;
