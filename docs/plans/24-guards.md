@@ -111,6 +111,12 @@ Written 2026-10-06, before any session.
 - Tests: the comparison.
 - **Done when** the modern rules' damage agrees with generation 9 on every scenario but those a later session of plan 06 owns by name.
 
+**Done (2026-10-17), before X5.** Decisions 4 and 5 as the overview answered them (node in a CI workflow, the answers committed; X6 right after R19). What was built, and where it differs from the above:
+- **X5's frame came with it, for generation 9 alone**: `tools/CalcOracle` (`package.json` and `package-lock.json` pinning `@smogon/calc` 0.12.0, `oracle.mjs`, a README; `node_modules` git-ignored, nothing of the calculator committed), `PokemonPlatinumTests/Oracle/` (`OracleScenarios.cs`, `OracleTests.cs`, `scenarios-gen9.json`, `damage-gen9.json`, `known-gen9.json`), `.github/workflows/oracle.yml` (on a dispatch, a call from T4's nightly, and a push or pull request that touches the tool or the two files: `npm ci`, the script, the answers kept as an artifact, and a failure where they are not the committed ones; `node oracle.mjs --check` does the same by hand), `THIRD-PARTY-NOTICES.md`'s section. X5 adds `scenarios-gen4.json` beside it if R30 keeps the baseline.
+- **The scenarios**: 3,000 from a `BattleRandom` of seed 9 (`ORACLE=write` writes them): all 1025 species and their regional and alternate forms `Under(Ruleset.Modern)`, levels, IVs, effort within 510, natures, an ability of theirs the engine runs (none where it runs none: the calculator's "No Ability"), one of Platinum's held items the engine runs or none, the four stages, a status, a share of HP, one of 310 moves of one hit that run fully, the seven weathers, the four terrains, the three screens, a critical hit, a double battle with spread moves. What the core decides before the formula is asked is left out, and the rulings list it. The answers carry a SHA-256 of the scenarios file they answered, which a test holds.
+- **The comparison** builds the two `Battler`s on a `FieldState` of their own and asks `DamageCalculator.Calculate` for each roll, the stats first. The known list's entries match a scenario by what it has (an ability, an item, a move, its type or category, the weather, a screen, a status…), and those of the formula's order and rounding only within 8 points or 3% of the hit (2 points for the 4096ths); an entry that matches nothing fails as stale, so each session that lands its difference takes its entry off. `ORACLE=report` writes the tally into `disagreements.received.txt`.
+- **Found**: 2,244 of 3,000 agree to the point. The 756 others are six differences, none changed here: the screens as the last modifier (503), the burn after the type chart (153), the weather after the + 2 (36) and the modifiers in 4096ths (52), all four the generation 5 formula's order, owed by a session of its own proposed before R24; Lightning Rod's and Storm Drain's immunity (6, R27); Photon Geyser, which the data runs as a plain special move and counts as fully run (6, R24 to R26). The rulings' "Oracle disagreements" has each with its recommendation, and the forms the data names otherwise than Showdown.
+
 ## Risks
 
 - **Churn.** Every rule session of plan 06 (R11 to R30) moves golden battles; accepting and reading the diff is part of its work. A change of the log's text format rewrites the whole corpus: it goes in a session of its own with nothing else.
@@ -144,4 +150,4 @@ Written 2026-10-06, before any session.
 - [x] X3 Golden scripts and saves of every version
 - [ ] X4 Strict loading and schemas
 - [ ] X5 The damage oracle: Platinum against generation 4
-- [ ] X6 The oracle under the modern rules
+- [x] X6 The oracle under the modern rules (2026-10-17, before X5, as the overview orders since one set of rules)
