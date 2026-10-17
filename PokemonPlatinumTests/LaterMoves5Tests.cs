@@ -235,8 +235,8 @@ public class LaterMoves5Tests
     [Fact]
     public void PsybladeIsHalfAsStrongAgainOnElectricTerrain()
     {
-        int plain = Took(Mon("Iron Leaves", 50, "Psyblade"), Mon("Snorlax", 50));
-        int charged = Took(Mon("Iron Leaves", 50, "Psyblade"), Mon("Snorlax", 50), c => c.SetTerrain(FieldCondition.ElectricTerrain, null));
+        int plain = Took(Mon("Machamp", 50, "Psyblade"), Mon("Snorlax", 50));
+        int charged = Took(Mon("Machamp", 50, "Psyblade"), Mon("Snorlax", 50), c => c.SetTerrain(FieldCondition.ElectricTerrain, null));
         Assert.InRange(charged, plain * 3 / 2 - 3, plain * 3 / 2 + 3);
     }
 
@@ -376,7 +376,7 @@ public class LaterMoves5Tests
     [Fact]
     public void SupercellSlamCrashesAgainstAGroundType()
     {
-        var core = Duel(Mon("Iron Hands", 50, "Supercell Slam"), Mon("Rhydon", 50));
+        var core = Duel(Mon("Iron Hands", 50, "Supercell Slam"), Mon("Donphan", 50));
         Assert.Contains("Iron Hands kept going and crashed!", Turn(core, 0, 0));
     }
 
