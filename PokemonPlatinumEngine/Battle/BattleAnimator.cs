@@ -60,6 +60,28 @@ public sealed class CombatantView
     /// love. Set by the log's lines (<see cref="ConditionLooks.Tell"/>), never read from the rules.
     /// </summary>
     public ConditionLook Condition { get; internal set; } = new();
+
+    // A battle's answers (plan 25 · Y5; style guide, "Bodies that answer"), set by the log's lines, never the rules
+
+    /// <summary>Seconds since a move that missed began to pass it (-1 = no dodge playing).</summary>
+    public float DodgeAge { get; internal set; } = -1f;
+
+    /// <summary>Where the move it dodges came from: the dodge goes away from the miss's path.</summary>
+    public BattleSide DodgeFromSide { get; internal set; }
+    public int DodgeFromSlot { get; internal set; }
+
+    /// <summary>Seconds since it began to cheer (-1 = none).</summary>
+    public float CheerAge { get; internal set; } = -1f;
+
+    /// <summary>Seconds since its charge turn began, for as long as it lasts (-1 = not charging).</summary>
+    public float ChargeAge { get; internal set; } = -1f;
+
+    /// <summary>Seconds since one of its stats rose or fell, for the eyes (-1 = none lately), and which.</summary>
+    public float StatAge { get; internal set; } = -1f;
+    public bool StatRose { get; internal set; }
+
+    /// <summary>0..1 how tired it shows: its HP bar in the red, eased in and out as the bar crosses.</summary>
+    public float Tired { get; internal set; }
 }
 
 /// <summary>
@@ -129,6 +151,12 @@ public sealed class EffectCue
     /// move's landing half from the place it was sent from, where nobody need stand any more.
     /// </summary>
     public bool Arriving { get; init; }
+
+    /// <summary>
+    /// For <see cref="CueKind.Move"/>: a move's charge half (plan 25 · Y5), played on its user through the charge
+    /// turn: an aura of its type gathering round it. Each charge move's own comes with its batch of Y6 to Y10.
+    /// </summary>
+    public bool Charging { get; init; }
 
     public BattleSide FromSide { get; init; }
     public int FromSlot { get; init; }
@@ -313,6 +341,23 @@ public sealed class BattleAnimator
 
     /// <summary>The share of its HP at which a Pokémon is in the red: the bar's colour and the music's low-HP arrangement.</summary>
     public const float LowHpRatio = 0.2f;
+
+    // A battle's answers (plan 25 · Y5; style guide, "Bodies that answer")
+
+    /// <summary>Seconds of a dodge, furthest aside at <see cref="ImpactTime"/>, where a miss passes.</summary>
+    public const float DodgeTime = 0.8f;
+
+    /// <summary>Seconds of a cheer: two hops.</summary>
+    public const float CheerTime = 1.2f;
+
+    /// <summary>Seconds a charge takes to gather the body.</summary>
+    public const float ChargeInTime = 0.4f;
+
+    /// <summary>Seconds a stat's change shows in the eyes: squeezed for a fall, fierce for a rise.</summary>
+    public const float StatEyesTime = 0.6f;
+
+    /// <summary>Seconds tiredness takes to come on or go as the bar crosses into or out of the red.</summary>
+    public const float TiredEaseTime = 0.6f;
 
     /// <summary>Pokémon per side: 1 in a single battle, 2 in a double.</summary>
     public int Slots { get; internal set; } = 1;
@@ -568,6 +613,8 @@ public sealed class BattleAnimator
         var v = this[side, slot];
         v.AttackAge = 0f;
         v.AttackCategory = category;
+        // A move let go ends the charge that got it ready (plan 25 · Y5)
+        v.ChargeAge = -1f;
     }
 
     /// <param name="strength">How hard the camera shakes: 1 for a hit, up to 2 for a critical or super-effective one.</param>
@@ -591,8 +638,14 @@ public sealed class BattleAnimator
     }
 
     /// <summary>A stat going up or down on one Pokémon.</summary>
-    public EffectCue StatChange(BattleSide side, int slot, bool up) =>
-        Cue(new EffectCue { Kind = up ? CueKind.StatUp : CueKind.StatDown, FromSide = side, FromSlot = slot, ToSide = side, ToSlot = slot });
+    public EffectCue StatChange(BattleSide side, int slot, bool up)
+    {
+        // The eyes answer it for a moment (plan 25 · Y5)
+        var v = this[side, slot];
+        v.StatAge = 0f;
+        v.StatRose = up;
+        return Cue(new EffectCue { Kind = up ? CueKind.StatUp : CueKind.StatDown, FromSide = side, FromSlot = slot, ToSide = side, ToSlot = slot });
+    }
 
     /// <summary>HP restored to one Pokémon.</summary>
     public EffectCue Heal(BattleSide side, int slot) =>
@@ -632,6 +685,73 @@ public sealed class BattleAnimator
             Kind = CueKind.Seals, Capsule = capsule, FromSide = side, FromSlot = slot,
             ToSide = side == BattleSide.Player ? BattleSide.Enemy : BattleSide.Player, ToSlot = 0
         });
+
+    // ------------------------------------------------------------------ a battle's answers (plan 25 · Y5)
+
+    /// <summary>
+    /// A move that missed passes the Pokémon here, sent from <paramref name="fromSide"/>'s <paramref name="fromSlot"/>:
+    /// it dodges, away from the miss's path, furthest aside at <see cref="ImpactTime"/>. Not on a Pokémon that can't be
+    /// seen (behind a doll, out of sight) or is going down.
+    /// </summary>
+    public void Dodge(BattleSide side, int slot, BattleSide fromSide, int fromSlot)
+    {
+        var v = this[side, slot];
+        if (!InSight(side, slot) || v.FaintAge >= 0f || v.RecallAge >= 0f || v.CaptureAge >= 0f || !v.Present) return;
+        v.DodgeAge = 0f;
+        v.DodgeFromSide = fromSide;
+        v.DodgeFromSlot = fromSlot;
+    }
+
+    /// <summary>Every Pokémon standing on <paramref name="side"/>'s platforms cheers: a battle won, a Pokémon caught, the player's loss.</summary>
+    public void Cheer(BattleSide side)
+    {
+        for (int slot = 0; slot < Slots; slot++)
+        {
+            var v = this[side, slot];
+            if (!v.Present || v.Away || v.Shown == null || v.Shown.IsFainted || v.FaintAge >= 0f || v.RecallAge >= 0f || v.CaptureAge >= 0f) continue;
+            v.CheerAge = 0f;
+        }
+    }
+
+    /// <summary>
+    /// The Pokémon here begins a charge turn: it gathers itself until its move is let go (the next lunge from it),
+    /// and the move's charge half plays round it. The charges count their seeds for themselves, so a battle's other
+    /// cues keep the seeds they had before there were any.
+    /// </summary>
+    public EffectCue Charge(BattleSide side, int slot, string move, PokemonType type, MoveCategory category)
+    {
+        var v = this[side, slot];
+        v.ChargeAge = 0f;
+        // The charge takes the place of the hop its line began
+        v.AttackAge = -1f;
+        var cue = new EffectCue
+        {
+            Kind = CueKind.Move, Charging = true, Move = move, Type = type, Category = category,
+            FromSide = side, FromSlot = slot, ToSide = side, ToSlot = slot,
+            Seed = ++chargeCount * 4111 + move.Length
+        };
+        if (Shows(cue)) cues.Add(cue);
+        return cue;
+    }
+
+    private int chargeCount;
+
+    /// <summary>A charge that ended with no move let go (the rules say so once a menu opens: put to sleep, the move gone).</summary>
+    public void SettleCharge(BattleSide side, int slot, bool charging)
+    {
+        var v = this[side, slot];
+        if (!charging) v.ChargeAge = -1f;
+    }
+
+    /// <summary>How far the Pokémon here has gathered itself through a charge turn, 0..1.</summary>
+    public static float Gathered(CombatantView v) => v.ChargeAge < 0f ? 0f : Math.Clamp(v.ChargeAge / ChargeInTime, 0f, 1f);
+
+    /// <summary>A stat's change as the eyes show it for <see cref="StatEyesTime"/>: above nought rising, below falling.</summary>
+    public static float StatShown(CombatantView v) => v.StatAge < 0f ? 0f : v.StatRose ? 1f : -1f;
+
+    /// <summary>Whether the bar's HP is in the red: a fifth or less, as the bar shows it, and not nought.</summary>
+    public static bool InTheRed(CombatantView v) =>
+        v.Shown is { MaxHP: > 0 } shown && v.DisplayedHp > 0f && v.DisplayedHp <= shown.MaxHP * LowHpRatio;
 
     /// <summary>Faints after <paramref name="delay"/> seconds (so the hit and the HP drain play first).</summary>
     public void Faint(BattleSide side, float delay = 0.6f, int slot = 0)
@@ -725,6 +845,10 @@ public sealed class BattleAnimator
         }
         v.AttackAge = Tick(v.AttackAge, dt, AttackTime);
         v.HitAge = Tick(v.HitAge, dt, HitTime);
+        v.DodgeAge = Tick(v.DodgeAge, dt, DodgeTime);
+        v.CheerAge = Tick(v.CheerAge, dt, CheerTime);
+        v.StatAge = Tick(v.StatAge, dt, StatEyesTime);
+        if (v.ChargeAge >= 0f) v.ChargeAge += dt;
 
         if (v.FaintAge >= 0f)
         {
@@ -757,6 +881,8 @@ public sealed class BattleAnimator
         v.DisplayedHp = Toward(v.DisplayedHp, shown.CurrentHP, hpRate * dt);
         float exp = shown.ExpProgressRatio;
         v.DisplayedExp = exp < v.DisplayedExp ? exp : Toward(v.DisplayedExp, exp, 0.8f * dt);
+        // Tiredness follows the bar, never the HP the rules have (plan 25 · Y5), coming on as the bar crosses into the red
+        v.Tired = Toward(v.Tired, InTheRed(v) ? 1f : 0f, dt / TiredEaseTime);
     }
 
     private static void Reset(CombatantView v, Pokemon pokemon)
@@ -764,11 +890,14 @@ public sealed class BattleAnimator
         v.Shown = pokemon;
         v.Away = false;
         v.SendOutAge = v.AttackAge = v.HitAge = v.FaintAge = v.RecallAge = v.CaptureAge = -1f;
+        v.DodgeAge = v.CheerAge = v.ChargeAge = v.StatAge = -1f;
         v.FaintDelay = v.CaptureDelay = 0f;
         // A new Pokémon on the place stands in front of nothing (a passed doll comes in after it, by its own line)
         v.Substitute = null;
         v.DisplayedHp = pokemon.CurrentHP;
         v.DisplayedExp = pokemon.ExpProgressRatio;
+        // One that comes in already in the red is tired from the start (plan 25 · Y5)
+        v.Tired = InTheRed(v) ? 1f : 0f;
     }
 
     private static float Tick(float age, float dt, float length) => age < 0f ? age : (age + dt >= length ? -1f : age + dt);

@@ -218,6 +218,10 @@ internal static class GltfWriter
         yield return ("hit", BattleAnimator.HitTime, t => new PokePose { Time = 0.4f, Hurt = Math.Clamp(t / BattleAnimator.HitTime, 0.001f, 0.999f) });
         yield return ("faint", BattleAnimator.FaintTime, t => new PokePose { Time = 0.4f, Faint = t / BattleAnimator.FaintTime });
         yield return ("entry", 0.8f, t => new PokePose { Time = 0.4f, Entry = Math.Clamp(t / 0.8f, 0.001f, 0.999f) });
+        // A battle's answers (plan 25 · Y5): the step aside of a dodge is the battle's own, never the clip's
+        yield return ("dodge", BattleAnimator.DodgeTime, t => new PokePose { Time = 0.4f, Dodge = Math.Clamp(t / BattleAnimator.DodgeTime, 0.001f, 0.999f) });
+        yield return ("tired", PokemonAnimation.TiredBreath * 2f, t => new PokePose { Time = t, Tired = 1f });
+        yield return ("cheer", BattleAnimator.CheerTime, t => new PokePose { Time = 0.4f, Cheer = Math.Clamp(t / BattleAnimator.CheerTime, 0.001f, 0.999f) });
     }
 
     /// <summary>One clip baked from the body plan's motion: a translation, rotation and scale key for every bone at every frame.</summary>

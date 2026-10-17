@@ -19,6 +19,11 @@ partial class Harness
             BallsMode();
             return;
         }
+        if (Environment.GetEnvironmentVariable("CONDITIONS_FROM") == "bodies")
+        {
+            BodiesMode();
+            return;
+        }
 
         var flyer = new Pokemon(PokemonDatabase.Get("Staravia")!, 30);
         flyer.Moves.Clear();
@@ -128,6 +133,8 @@ partial class Harness
         SceneOffMode();
         // Each its own ball (plan 25 · Y4, Modes/ConditionsBalls.cs), after it for the same reason
         BallsMode();
+        // Bodies that answer (plan 25 · Y5, Modes/ConditionsBodies.cs), after it for the same reason
+        BodiesMode();
     }
 
     // A battle with the scene off (plan 08 · P1): in the rain, whose layer comes in with no cue (96_scene_off_menu); a

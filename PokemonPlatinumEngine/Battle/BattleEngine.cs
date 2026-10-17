@@ -295,6 +295,8 @@ public partial class BattleEngine
             place.CopyVolatileFrom(theirs);
             Anim[place.Side, place.Slot].Away = theirs.IsActive && theirs.IsElsewhere;
             Anim.SettleSubstitute(place.Side, place.Slot, theirs.IsActive && theirs.HasSubstitute);
+            // A charge that ended with no move let go (put to sleep, flinched) has nothing more to gather (plan 25 · Y5)
+            Anim.SettleCharge(place.Side, place.Slot, theirs.IsActive && theirs.Volatile.Charging);
             // What lasts on it (plan 09 · L2): the lines have told all of it already; this catches a Pokémon changed from outside
             Anim.Conditions.Settle(place.Place, ConditionLooks.RulesHave(theirs));
         }
@@ -352,8 +354,22 @@ public partial class BattleEngine
 
     private void Enqueue(List<BattleEvent> events)
     {
-        foreach (var happening in events)
+        // The foe's Pokémon cheer as the player loses (plan 25 · Y5): on the first line after the player's last one
+        // went down. The log has told it already: the loss ends the batch its last fall is in
+        int cheerBefore = -1;
+        if (events.Any(e => e is Ended { Result: BattleResult.PlayerDefeat }))
         {
+            int lastFall = events.FindLastIndex(PlayersFall);
+            if (lastFall >= 0) cheerBefore = events.FindIndex(lastFall + 1, e => e is Said);
+        }
+        for (int i = 0; i < events.Count; i++)
+        {
+            var happening = events[i];
+            if (i == cheerBefore)
+                steps.Enqueue(new Happening(() =>
+                {
+                    if (Scene) Anim.Cheer(BattleSide.Enemy);
+                }));
             if (happening is Said said)
             {
                 steps.Enqueue(new Line(said.Text, () =>
@@ -368,6 +384,14 @@ public partial class BattleEngine
             else steps.Enqueue(new Happening(() => Show(happening)));
         }
     }
+
+    /// <summary>One of the player's Pokémon going down, by itself or on the line that tells of it.</summary>
+    private static bool PlayersFall(BattleEvent e) => e switch
+    {
+        Fainted fainted => fainted.Place.Side == BattleSide.Player,
+        Said said => said.Shows.Concat(said.OnImpact).Any(PlayersFall),
+        _ => false
+    };
 
     /// <summary>A line of the screen's own (a menu's refusal), with what follows once it has been read.</summary>
     private void QueueMessage(string msg, Action? onComplete = null)
@@ -541,7 +565,20 @@ public partial class BattleEngine
                 // Pokémon behind it takes nothing (subscript_hit_substitute's flicker)
                 if (move.Category != MoveCategory.Status && !move.Missed && !move.Blocked && move.To != move.From && Anim[move.To.Side, move.To.Slot].BehindDoll)
                     After(ImpactDelay, () => Anim.SubstituteHit(move.To.Side, move.To.Slot));
+                // A miss is dodged, furthest aside as it passes (plan 25 · Y5): our own, so none with the scene off
+                if (Scene && move.Missed && move.To != move.From)
+                    Anim.Dodge(move.To.Side, move.To.Slot, move.From.Side, move.From.Slot);
                 break;
+            case Charging charging:
+            {
+                // A charge turn (plan 25 · Y5): the body gathers itself and its type's aura round it until the move is
+                // let go, in place of the hop its line began. Nothing for one that goes up or under on the same line,
+                // nor with the scene off, as the lunge it stands in for
+                if (!Scene || showing?.Shows.Any(e => e is Vanished gone && gone.Place == charging.Place) == true) break;
+                var data = MoveDatabase.Get(charging.Move);
+                Anim.Charge(charging.Place.Side, charging.Place.Slot, charging.Move, data?.Type ?? PokemonType.Normal, data?.Category ?? MoveCategory.Physical);
+                break;
+            }
             case Struck struck:
                 if (At(struck.Place).Pokemon is { } hit) hit.CurrentHP = struck.Hp;
                 Anim.Hit(struck.Place.Side, struck.Place.Slot, struck.Hard ? 1.8f : 1f);
@@ -742,6 +779,8 @@ public partial class BattleEngine
                 AudioManager.PlayMusic(MusicRole.VictoryWild);
                 // The catching lesson's catch is the assistant's: neither the player's Pokédex nor their team hears of it
                 if (Kind == BattleKind.CatchingLesson) break;
+                // The player's Pokémon cheer for the catch (plan 25 · Y5)
+                if (Scene) Anim.Cheer(BattleSide.Player);
                 CaughtNewSpecies = !Pokedex.IsCaught(mine.Species.DexNumber);
                 Caught = mine;
                 Pokedex.RegisterCaught(mine.Species.DexNumber);
@@ -763,6 +802,8 @@ public partial class BattleEngine
                 break;
             case Won:
                 AudioManager.PlayMusic(MusicDirector.VictoryRole(MusicDirector.BattleRole(Trainers.Select(t => t.TrainerClass))));
+                // Whoever of the player's still stands cheers (plan 25 · Y5)
+                if (Scene) Anim.Cheer(BattleSide.Player);
                 break;
             case Ended ended:
                 Result = ended.Result;

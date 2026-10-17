@@ -20,6 +20,7 @@ log:
     + Entered P0 Pokemon=mine#0 Ponyta FromBall=true
   say Ponyta sprang up!
     + Lunged P0 Category=Status
+    + Charging P0 Move=Bounce
     + Vanished P0
   say Foe Silcoon used Harden!
     + Lunged E0 Category=Status
@@ -68,6 +69,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Ponyta sprang up!
     + Lunged P0 Category=Status
+    + Charging P0 Move=Bounce
     + Vanished P0
   say Foe Deoxys used Psychic!
     + Lunged E0 Category=Special
@@ -89,6 +91,7 @@ log:
     + TrainerReacts E0 Cue=LastPokemon
   say Ponyta sprang up!
     + Lunged P0 Category=Status
+    + Charging P0 Move=Bounce
     + Vanished P0
   say Foe Delcatty used Sing!
     + Lunged E0 Category=Status
@@ -2075,6 +2078,7 @@ log:
     + Entered E0 Pokemon=foe#2 Baltoy FromBall=true
   say Gabite burrowed its way under the ground!
     + Lunged P0 Category=Status
+    + Charging P0 Move=Dig
     + Vanished P0
   say Foe Baltoy used Mud-Slap!
     + Lunged E0 Category=Special
@@ -3932,6 +3936,7 @@ log:
     + Entered P1 Pokemon=mine#1 Heatran FromBall=true
   say Foe Skiploom sprang up!
     + Lunged E0 Category=Status
+    + Charging E0 Move=Bounce
     + Vanished E0
   say Foe Pichu used Thunder Wave!
     + Lunged E1 Category=Status
@@ -4039,6 +4044,7 @@ log:
   say Foe Skiploom avoided the attack!
   say Foe Skiploom sprang up!
     + Lunged E0 Category=Status
+    + Charging E0 Move=Bounce
     + Vanished E0
   say Suicune used Mirror Coat!
   say But it failed!
@@ -4082,6 +4088,7 @@ log:
     + StageChanged E0 Stat=SpDefense Stage=-2 Rose=false
   say Foe Skiploom sprang up!
     + Lunged E0 Category=Status
+    + Charging E0 Move=Bounce
     + Vanished E0
   say Heatran used Lava Plume!
     + Lunged P1 Category=Special
@@ -4098,6 +4105,7 @@ log:
     + StatusChanged P1 Status=Paralyze
   say Foe Skiploom sprang up!
     + Lunged E0 Category=Status
+    + Charging E0 Move=Bounce
     + Vanished E0
   say Heatran used Metal Sound!
     + Lunged P1 Category=Status
@@ -4116,6 +4124,7 @@ log:
   say Foe Skiploom avoided the attack!
   say Foe Skiploom sprang up!
     + Lunged E0 Category=Status
+    + Charging E0 Move=Bounce
     + Vanished E0
   say Heatran is paralyzed! It can't move!
     + MomentShown P1 Moment=Paralyzed From=none
@@ -4257,9 +4266,11 @@ log:
   say Electricity's power was weakened!
   say Foe Relicanth hid underwater!
     + Lunged E0 Category=Status
+    + Charging E0 Move=Dive
     + Vanished E0
   say Ditto hid underwater!
     + Lunged P0 Category=Status
+    + Charging P0 Move=Dive
     + Vanished P0
   say Foe Relicanth used Dive!
     + Reappeared E0
@@ -4274,9 +4285,11 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Relicanth hid underwater!
     + Lunged E0 Category=Status
+    + Charging E0 Move=Dive
     + Vanished E0
   say Ditto hid underwater!
     + Lunged P0 Category=Status
+    + Charging P0 Move=Dive
     + Vanished P0
   say Foe Relicanth used Dive!
     + Reappeared E0
@@ -4301,6 +4314,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Relicanth hid underwater!
     + Lunged E0 Category=Status
+    + Charging E0 Move=Dive
     + Vanished E0
   say Foe Relicanth used Dive!
     + Reappeared E0
@@ -4310,6 +4324,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Ditto hid underwater!
     + Lunged P0 Category=Status
+    + Charging P0 Move=Dive
     + Vanished P0
   say Ditto used Dive!
     + Reappeared P0
@@ -5580,6 +5595,7 @@ log:
   say It's not very effective...
   say Foe Cherrim took in sunlight!
     + Lunged E0 Category=Status
+    + Charging E0 Move=Solar Beam
   say Arbok's health is sapped by Leech Seed!
     + MomentShown P0 Moment=LeechSeed From=E0
     + HpChanged P0 Hp=98 Healed=false
@@ -5605,6 +5621,7 @@ log:
   say All stat changes were eliminated!
   say Foe Cherrim took in sunlight!
     + Lunged E0 Category=Status
+    + Charging E0 Move=Solar Beam
   say Arbok's health is sapped by Leech Seed!
     + MomentShown P0 Moment=LeechSeed From=E0
     + HpChanged P0 Hp=45 Healed=false
@@ -5806,6 +5823,7 @@ log:
     + HpChanged E0 Hp=50 Healed=true
   say Wartortle lowered its head!
     + Lunged P0 Category=Status
+    + Charging P0 Move=Skull Bash
   say Foe Dewgong used Encore!
     + Lunged E0 Category=Status
     + MoveShown Move=Encore Type=Normal Category=Status From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -5832,6 +5850,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Wartortle lowered its head!
     + Lunged P0 Category=Status
+    + Charging P0 Move=Skull Bash
   say Foe Haunter used Destiny Bond!
     + Lunged E0 Category=Status
   say Foe Haunter is trying to take its foe down with it!
@@ -5844,6 +5863,7 @@ log:
   say Foe Haunter is trying to take its foe down with it!
   say Wartortle lowered its head!
     + Lunged P0 Category=Status
+    + Charging P0 Move=Skull Bash
   say Foe Haunter used Destiny Bond!
     + Lunged E0 Category=Status
   say Foe Haunter is trying to take its foe down with it!
@@ -5868,6 +5888,7 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Chikorita took in sunlight!
     + Lunged P0 Category=Status
+    + Charging P0 Move=Solar Beam
   say Foe Haunter used Destiny Bond!
     + Lunged E0 Category=Status
   say Foe Haunter is trying to take its foe down with it!
@@ -11667,6 +11688,7 @@ log:
   say It's super effective!
   say Bayleef took in sunlight!
     + Lunged P0 Category=Status
+    + Charging P0 Move=Solar Beam
   say Foe Dragonite used Wing Attack!
     + Lunged E0 Category=Physical
     + MoveShown Move=Wing Attack Type=Flying Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=true

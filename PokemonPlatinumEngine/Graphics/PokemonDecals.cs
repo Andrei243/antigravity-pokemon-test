@@ -166,7 +166,7 @@ internal static class PokemonDecals
         Vector2 P(float x, float y) => center + new Vector2(x * size * k.X, -y * size * k.Y);
         Vector2 R(float rx, float ry) => new(rx * size * k.X, ry * size * k.Y);
         float line = Math.Max(2f, 0.17f * size * k.Y);
-        if (d.Closed && state != EyeState.Squeeze) state = EyeState.Shut;
+        if (d.Closed && state is not (EyeState.Squeeze or EyeState.Smile)) state = EyeState.Shut;
         if (d.Glare && state == EyeState.Open) state = EyeState.Fierce;
 
         switch (state)
@@ -174,6 +174,10 @@ internal static class PokemonDecals
             case EyeState.Shut:
                 // A lid closed in a gentle curve
                 AaPaint.Arc(c, P(0, 0.12f), R(0.78f, 0.5f).X, R(0.78f, 0.5f).Y, MathF.PI * 0.12f, MathF.PI * 0.88f, line, Ink);
+                return;
+            case EyeState.Smile:
+                // A cheer (plan 25 · Y5): the shut curve turned over, an arch with its middle raised
+                AaPaint.Arc(c, P(0, -0.22f), R(0.78f, 0.55f).X, R(0.78f, 0.55f).Y, MathF.PI * 1.1f, MathF.PI * 1.9f, line * 1.1f, Ink);
                 return;
             case EyeState.Squeeze:
             {

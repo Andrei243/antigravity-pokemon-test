@@ -33,6 +33,11 @@ internal static class PokemonStudio
             case "hit": pose.Hurt = t; break;
             case "faint": pose.Faint = t; break;
             case "entry": pose.Entry = t; break;
+            // A battle's answers (plan 25 · Y5): tiredness and a charge held at full, at time t of their own loops
+            case "dodge": pose.Dodge = t; break;
+            case "tired": pose.Time = t; pose.Tired = 1f; break;
+            case "cheer": pose.Cheer = t; break;
+            case "charge": pose.Time = t; pose.Charge = 1f; break;
         }
         return pose;
     }
@@ -67,8 +72,10 @@ internal static class PokemonStudio
             var look = new Vector3(0, lookY * model.Height, 0);
             float pitch = 10f * MathF.PI / 180f;
             var camera = new Camera3D(look + new Vector3(0, MathF.Sin(pitch), MathF.Cos(pitch)) * 8f, look, Vector3.UnitY, zoom * span, CameraProjection.Orthographic);
-            var root = Matrix4x4.CreateRotationY(yaws[Math.Min(i, yaws.Length - 1)]);
             var pose = PoseOf(clip, times[Math.Min(i, times.Length - 1)], blink);
+            // A dodge's step aside is the battle's, along the way it goes there (to the model's right, here)
+            var root = Matrix4x4.CreateRotationY(yaws[Math.Min(i, yaws.Length - 1)])
+                * Matrix4x4.CreateTranslation(PokemonAnimation.DodgeAside(model, pose.Dodge) * model.Height, 0f, 0f);
 
             Raylib.BeginTextureMode(target);
             Raylib.ClearBackground(new Color(206, 218, 232, 255));
