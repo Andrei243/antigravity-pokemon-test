@@ -175,7 +175,7 @@ partial class Harness
         ToMainMenu(gymFight); Shot("j20_gym_the_battle");
         ReadTo("received the Coal Badge"); Frames(10); Shot("j21_gym_the_coal_badge");
         ReadTo(null);
-        Console.WriteLine($"gym: coal badge {story.HasBadge(Badge.Coal)}, TM76 {bag.GetQuantity(ItemDatabase.Get("TM76")!)}, jubilife {story.Var("VAR_JUBILIFE_CITY_STATE")}");
+        Console.WriteLine($"gym: coal badge {story.HasBadge("Sinnoh", "Coal")}, TM76 {bag.GetQuantity(ItemDatabase.Get("TM76")!)}, jubilife {story.Var("VAR_JUBILIFE_CITY_STATE")}");
 
         // ---- the way out: the rival; then Jubilife's north gate
         StepOnto(262, 749, Direction.Left);

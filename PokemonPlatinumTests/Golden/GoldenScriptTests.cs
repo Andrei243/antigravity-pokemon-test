@@ -102,7 +102,14 @@ public class GoldenScriptTests
         foreach (string id in before.DefeatedTrainers.Except(after.DefeatedTrainers).Order(StringComparer.Ordinal)) yield return $"- beaten {id}";
         foreach (string id in after.TakenItems.Except(before.TakenItems).Order(StringComparer.Ordinal)) yield return $"+ taken {id}";
         foreach (string id in before.TakenItems.Except(after.TakenItems).Order(StringComparer.Ordinal)) yield return $"- taken {id}";
-        if (before.Badges != after.Badges) yield return $"= badges {Convert.ToString(before.Badges, 2)} -> {Convert.ToString(after.Badges, 2)}";
+        // Each region's badges (plan 18 · W2); Sinnoh's are told as they always were, another region's with its name
+        foreach (string region in before.Badges.Keys.Union(after.Badges.Keys, StringComparer.OrdinalIgnoreCase).Order(StringComparer.Ordinal))
+        {
+            int was = before.BadgesOf(region), now = after.BadgesOf(region);
+            if (was == now) continue;
+            string whose = string.Equals(region, "Sinnoh", StringComparison.OrdinalIgnoreCase) ? "" : $" {region}";
+            yield return $"= badges{whose} {Convert.ToString(was, 2)} -> {Convert.ToString(now, 2)}";
+        }
         if (before.PlayerStarter != after.PlayerStarter || before.RivalStarter != after.RivalStarter)
             yield return $"= starters {before.PlayerStarter ?? "none"}/{before.RivalStarter ?? "none"} -> {after.PlayerStarter ?? "none"}/{after.RivalStarter ?? "none"}";
     }

@@ -58,7 +58,7 @@ public class TheBattlegroundAndTheLastLegendsTests
         game.Story.ChooseStarter(StoryState.Starters[0]);
         game.Party.Add(new Pokemon(PokemonDatabase.Get("Garchomp")!, 72));
         game.Party.Add(new Pokemon(PokemonDatabase.Get("Staraptor")!, 66));
-        game.Story.SetBadges(0xFF);
+        game.Story.SetBadges("Sinnoh", 0xFF);
         game.Story.SetVar("VAR_PLAYER_HOUSE_STATE", 6);
         game.Story.Set(StoryState.PokedexFlag);
         game.Facing = Direction.Up;
@@ -110,7 +110,7 @@ public class TheBattlegroundAndTheLastLegendsTests
     {
         var game = new OpeningTests.Game();
         // common.ChapterTwelve hid this part's people already (plan 02 · S15, part a): Buck in his room, Cynthia in the ruins
-        Assert.Equal(18, StoryState.CurrentVersion);
+        Assert.Equal(19, StoryState.CurrentVersion);   // 19 is plan 18 · W2's badges by region, not this part's
         var room = game.Maps[Room];
         Assert.Equal((17, 13, InteriorStyle.House), (room.Width, room.Height, room.Interior));
         var buck = Assert.Single(room.Everyone, n => n.Key == "buck");

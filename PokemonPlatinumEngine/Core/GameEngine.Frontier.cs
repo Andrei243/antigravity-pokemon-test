@@ -197,7 +197,7 @@ public partial class GameEngine
                     Terrain = Battle.Sim.BattleTerrain.Special,
                     Night = GameClock.IsNight,
                     HasCaught = species => flow.Pokedex.IsCaught(species.DexNumber),
-                    Badges = flow.Story.BadgeCount,
+                    Badges = flow.Story.BadgeCount(Here.Id),
                     Player = PlayerMark,
                     // The weather or the Trick Room a facility's own rules open the battle under (the Battle Arcade's board, plan 06 · R18d)
                     Weather = conditions?.Weather ?? Battle.Sim.BattleWeather.None,

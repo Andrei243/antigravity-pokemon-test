@@ -1664,3 +1664,47 @@ wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Female Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40
 bag: Poké Ball x10, Potion x5, Revive x2
 upgrade: nothing
+=== w4-s19-badges-in-two-regions.json
+world 4, story 19, Modern rules, Girl Dawn, rival Barry, $3000, badges 111, Kanto 1
+wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
+  team #0: Turtwig Lv5 "Turtwig" Female Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40
+bag: Poké Ball x10, Potion x5, Revive x2
+upgrade: nothing
+=== w4-s19-new-game-in-the-bedroom.json
+world 4, story 19, Modern rules, Boy Lucas, rival Barry, $3000, badges 0
+wakes on PlayerHouse2F 4,6 facing Up, OnFoot at height 0
+bag: nothing
+upgrade: nothing
+=== w4-s19-on-a-bridge.json
+world 4, story 19, Modern rules, Boy Lucas, rival Barry, $3000, badges 0
+wakes on Sinnoh 206,616 facing Left, OnFoot at height 7
+  team #0: Turtwig Lv5 "Turtwig" Male Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40
+  team #1: Bibarel Lv30 "Bibarel" Female Hardy, Unaware, holds nothing, HP 88/88, Headbutt 15/15, Hyper Fang 15/15, Yawn 10/10, Surf 15/15
+bag: Poké Ball x10, Potion x5, Revive x2
+upgrade: nothing
+=== w4-s19-past-the-opening.json
+world 4, story 19, Modern rules, Boy Lucas, rival Barry, $3000, badges 0
+wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
+  team #0: Turtwig Lv5 "Turtwig" Male Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40
+bag: Poké Ball x10, Potion x5, Revive x2
+upgrade: nothing
+=== w4-s19-safari-game.json
+world 4, story 19, Modern rules, Boy Lucas, rival Barry, $3000, badges 0
+wakes on GreatMarsh 47,48 facing Up, OnFoot at height 1, a Safari Game with 27 balls and 475 steps left
+  team #0: Turtwig Lv5 "Turtwig" Male Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40
+  team #1: Bibarel Lv30 "Bibarel" Female Hardy, Unaware, holds nothing, HP 88/88, Headbutt 15/15, Hyper Fang 15/15, Yawn 10/10, Surf 15/15
+bag: Poké Ball x10, Potion x5, Revive x2
+upgrade: nothing
+=== w4-s19-surfing.json
+world 4, story 19, Modern rules, Boy Lucas, rival Barry, $3000, badges 0
+wakes on Sinnoh 111,892 facing Right, Surfing at height 0.5
+  team #0: Turtwig Lv5 "Turtwig" Male Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40
+  team #1: Bibarel Lv30 "Bibarel" Female Hardy, Unaware, holds nothing, HP 88/88, Headbutt 15/15, Hyper Fang 15/15, Yawn 10/10, Surf 15/15
+bag: Poké Ball x10, Potion x5, Revive x2
+upgrade: nothing
+=== w4-s19-the-girl.json
+world 4, story 19, Modern rules, Girl Dawn, rival Barry, $3000, badges 0
+wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
+  team #0: Turtwig Lv5 "Turtwig" Female Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40
+bag: Poké Ball x10, Potion x5, Revive x2
+upgrade: nothing

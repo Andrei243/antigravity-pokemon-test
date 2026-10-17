@@ -209,13 +209,8 @@ public sealed class TitleScreen
         return $"{minutes / 60}:{minutes % 60:D2}";
     }
 
-    public static int CountBadges(int mask)
-    {
-        int count = 0;
-        for (int b = 0; b < 8; b++)
-            if ((mask & (1 << b)) != 0) count++;
-        return count;
-    }
+    /// <summary>How many badges a region's mask holds (plan 18 · W2: a region has none to eight, so only eight bits count).</summary>
+    public static int CountBadges(int mask) => System.Numerics.BitOperations.PopCount((uint)mask & 0xFF);
 
     // ------------------------------------------------------------------ logic
 

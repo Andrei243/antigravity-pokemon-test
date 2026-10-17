@@ -23,7 +23,7 @@ partial class Harness
         foreach (string move in new[] { "Surf", "Drill Peck", "Metal Claw", "Brine" }) empoleon.Moves.Add(new Move(MoveDatabase.Get(move)!));
         team.Members.Insert(0, empoleon);
         // The Badges of the chapters before, and the rival beaten on Canalave's bridge
-        foreach (var badge in new[] { Badge.Coal, Badge.Forest, Badge.Relic, Badge.Cobble, Badge.Fen }) story.GiveBadge(badge);
+        foreach (var badge in new[] { "Coal", "Forest", "Relic", "Cobble", "Fen" }) story.GiveBadge("Sinnoh", badge);
         story.SetVar("VAR_CANALAVE_CITY_STATE", 1);
 
         DialogueManager Box() => game.Dialogue;
@@ -202,7 +202,7 @@ partial class Harness
         if (stage <= 1)
         {
             // ---- Canalave City: Byron's Badge (as his Gym's script leaves the story), and the rival out of the Gym's door
-            story.GiveBadge(Badge.Mine);
+            story.GiveBadge("Sinnoh", "Mine");
             foreach (string flag in new[] { "FLAG_HIDE_CANALAVE_CITY_RIVAL_BRIDGE", "FLAG_HIDE_CANALAVE_CITY_RIVAL_LIBRARY", "FLAG_HIDE_CANALAVE_LIBRARY_RIVAL",
                 "FLAG_HIDE_CANALAVE_LIBRARY_COUNTERPART", "FLAG_HIDE_CANALAVE_LIBRARY_ROWAN" })
                 story.Unset(flag);
@@ -262,7 +262,7 @@ partial class Harness
         else
         {
             // As Canalave City's scenes would have left it
-            story.GiveBadge(Badge.Mine);
+            story.GiveBadge("Sinnoh", "Mine");
             foreach (string flag in new[] { "FLAG_LAKE_VALOR_EXPLODED", "FLAG_HIDE_VALOR_LAKEFRONT_CAMERAMEN", "FLAG_HIDE_CANALAVE_CITY_RIVAL_LIBRARY", "FLAG_HIDE_CANALAVE_CITY_PROF_ROWAN",
                 "FLAG_HIDE_CANALAVE_CITY_COUNTERPART" })
                 story.Set(flag);

@@ -67,6 +67,9 @@ public sealed class Region
     /// <summary>The names of the region's badges, in the order of its Trainer Card (plan 18 · W2).</summary>
     public IReadOnlyList<string> BadgeNames => (IReadOnlyList<string>?)File?.Badges ?? Array.Empty<string>();
 
+    /// <summary>The badge each field move asks for here, by the move's name (<c>Cut</c>, <c>RockSmash</c>) to the badge's (plan 18 · W2).</summary>
+    public IReadOnlyDictionary<string, string> Gates => (IReadOnlyDictionary<string, string>?)File?.Gates ?? new Dictionary<string, string>();
+
     /// <summary>The regional Pokédex the region plays by, a PokeAPI identifier (<c>extended-sinnoh</c>, <c>kanto</c>); null for a region with no file (plan 18 · W3).</summary>
     public string? Dex => File?.Dex is { Length: > 0 } d ? d : null;
 

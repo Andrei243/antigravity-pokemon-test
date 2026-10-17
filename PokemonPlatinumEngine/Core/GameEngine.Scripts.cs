@@ -104,8 +104,8 @@ public partial class GameEngine
         if (!startOver && flow.PresenceRevision == flow.Story.Revision) return;
         flow.PresenceRevision = flow.Story.Revision;
         // Each badge won adds to the Trainer Card's score; a loaded save has counted its own already
-        if (startOver) flow.ScoredBadges = flow.Story.BadgeCount;
-        for (; flow.ScoredBadges < flow.Story.BadgeCount; flow.ScoredBadges++) flow.TrainerScore = TrainerScore.Add(flow.TrainerScore, TrainerScore.Badge);
+        if (startOver) flow.ScoredBadges = flow.Story.TotalBadges;
+        for (; flow.ScoredBadges < flow.Story.TotalBadges; flow.ScoredBadges++) flow.TrainerScore = TrainerScore.Add(flow.TrainerScore, TrainerScore.Badge);
         // A place the story reveals is in the map from then on, and drawn again (the Spring Path, plan 01 · M8)
         foreach (var (map, place) in MapDatabase.ApplyHiddenPlaces(flow.Story.Var))
             world?.Forget(map, place.X, place.Y, place.Width, place.Height);
@@ -175,7 +175,7 @@ public partial class GameEngine
         if (flow.LeftCave && outdoors) flow.Journal.Tell(new JournalEvent(JournalEventKind.LeftCave, flow.LeftPlace));
         if (flow.LeftMap == "PlayerHouse" && outdoors) flow.Journal.Tell(new JournalEvent(JournalEventKind.RestedAtHome));
         if (flow.LeftMap == "RowanLab" && outdoors) flow.Journal.Tell(new JournalEvent(JournalEventKind.LeftResearchLab));
-        if (Gyms.TryGetValue(flow.Map.Name, out var gym) && flow.LeftMap == "Sinnoh" && !flow.Story.HasBadge(gym.Badge))
+        if (Gyms.TryGetValue(flow.Map.Name, out var gym) && flow.LeftMap == "Sinnoh" && !flow.Story.HasBadge(RegionDatabase.Sinnoh, gym.Badge))
             flow.Journal.Tell(new JournalEvent(JournalEventKind.GymWasTooTough, gym.Town));
         flow.Journal.ChangedPlace();
         flow.LeftMap = flow.Map.Name;
@@ -183,14 +183,17 @@ public partial class GameEngine
         flow.LeftCave = cave;
     }
 
-    /// <summary>The Gyms built so far, by their room: the town and the Badge (the original's <c>sGymsInfo</c>).</summary>
-    private static readonly Dictionary<string, (string Town, Badge Badge)> Gyms = new()
+    /// <summary>
+    /// Sinnoh's Gyms the Journal names, by their room: the town and the Badge, by its place in Sinnoh's list (the
+    /// original's <c>sGymsInfo</c>): Coal, Forest, Relic, Cobble and Beacon.
+    /// </summary>
+    private static readonly Dictionary<string, (string Town, int Badge)> Gyms = new()
     {
-        ["OreburghGym"] = ("Oreburgh", Badge.Coal),
-        ["EternaGym"] = ("Eterna", Badge.Forest),
-        ["HearthomeGym"] = ("Hearthome", Badge.Relic),
-        ["VeilstoneGym"] = ("Veilstone", Badge.Cobble),
-        ["SunyshoreGym"] = ("Sunyshore", Badge.Beacon)
+        ["OreburghGym"] = ("Oreburgh", 0),
+        ["EternaGym"] = ("Eterna", 1),
+        ["HearthomeGym"] = ("Hearthome", 4),
+        ["VeilstoneGym"] = ("Veilstone", 2),
+        ["SunyshoreGym"] = ("Sunyshore", 7)
     };
 
     /// <summary>
@@ -771,6 +774,7 @@ public partial class GameEngine
         public FieldHost(GameEngine game) => this.game = game;
 
         public StoryState Story => game.flow.Story;
+        public string Region => game.Here.Id;
         public Party Party => game.flow.Party;
         public Inventory Bag => game.flow.Bag;
         public Poketch Poketch => game.flow.Poketch;
@@ -998,7 +1002,7 @@ public partial class GameEngine
                     game.flow.State = GameState.Shop;
                     // The counter's own stock: the clerk's specialties, or the common list by the badges (plan 06 · R11)
                     game.flow.ShopScreen.Open(game.flow.Map.ShownNameAt(game.flow.Player.GridX, game.flow.Player.GridY),
-                        MartDatabase.Stock(counter ?? subject?.Mart, game.flow.Story.BadgeCount));
+                        MartDatabase.Stock(counter ?? subject?.Mart, game.flow.Story.BadgeCount(game.Here.Id)));
                     break;
                 case ScriptScreen.Wardrobe:
                     // At home the clothes owned; at a boutique its stock as well, headed with the place's name

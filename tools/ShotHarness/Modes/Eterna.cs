@@ -132,7 +132,7 @@ partial class Harness
             story.Set("FLAG_HIDE_ETERNA_CITY_CYNTHIA");
             story.Set("FLAG_HIDE_ETERNA_CITY_GARDENIA");
             bag.AddItem(ItemDatabase.Get("HM01")!, 1);
-            story.GiveBadge(Badge.Forest);
+            story.GiveBadge("Sinnoh", "Forest");
             story.Unset("FLAG_HIDE_ETERNA_FOREST_GARDENIA");
         }
 
@@ -166,7 +166,7 @@ partial class Harness
             ReadTo(null); Frames(20); Shot("et14_eterna_gardenia_gone_in");
 
             // ---- the Forest Badge as the Gym gives it, and the tree before the building cut down
-            story.GiveBadge(Badge.Forest);
+            story.GiveBadge("Sinnoh", "Forest");
             story.Unset("FLAG_HIDE_ETERNA_FOREST_GARDENIA");
             At("Sinnoh", 305, 522, Direction.Up);
             game.Interact();

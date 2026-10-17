@@ -29,7 +29,7 @@ partial class Harness
             if (species == "Lucario") pokemon.MetLevel = 0;
             team.Members.Add(pokemon);
         }
-        foreach (var badge in Enum.GetValues<Badge>()) story.GiveBadge(badge);
+        story.SetBadges("Sinnoh", 0xFF);
         story.SetVar("VAR_SUNYSHORE_CITY_STATE", 3);
 
         DialogueManager Box() => game.Dialogue;

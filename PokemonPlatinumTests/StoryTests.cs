@@ -36,17 +36,17 @@ public class StoryTests
         story.AddVar("VAR_JUBILIFE_CITY_STATE", 1);
         story.Defeat("route_202_tristan");
         story.Take("item_potion");
-        story.GiveBadge(Badge.Coal);
-        story.GiveBadge(Badge.Relic);
+        story.GiveBadge("Sinnoh", "Coal");
+        story.GiveBadge("Sinnoh", "Relic");
 
         Assert.True(story.Has("FLAG_MET_ROWAN"));
         Assert.Equal(3, story.Var("VAR_JUBILIFE_CITY_STATE"));
         Assert.True(story.HasDefeated("route_202_tristan"));
         Assert.True(story.HasTaken("item_potion"));
-        Assert.True(story.HasBadge(Badge.Coal) && story.HasBadge(Badge.Relic) && !story.HasBadge(Badge.Forest));
-        Assert.Equal(2, story.BadgeCount);
+        Assert.True(story.HasBadge("Sinnoh", "Coal") && story.HasBadge("Sinnoh", "Relic") && !story.HasBadge("Sinnoh", "Forest"));
+        Assert.Equal(2, story.BadgeCount("Sinnoh"));
         // The bits are the Trainer Card's: Coal is the first, Relic the fifth
-        Assert.Equal(0b10001, story.BadgeMask);
+        Assert.Equal(0b10001, story.BadgeMask("Sinnoh"));
 
         story.Unset("FLAG_MET_ROWAN");
         story.SetVar("VAR_JUBILIFE_CITY_STATE", 0);
@@ -57,9 +57,13 @@ public class StoryTests
     [Fact]
     public void TheBadgesAreInTheOrderTheTrainerCardShowsThem()
     {
-        // The card names each by the Badge itself (plan 17 · N1c), in English the enum's own name
-        Assert.Equal(new[] { "Coal", "Forest", "Cobble", "Fen", "Relic", "Mine", "Icicle", "Beacon" }, Enum.GetNames<Badge>());
-        Assert.Equal(Enum.GetNames<Badge>(), Enum.GetValues<Badge>().Select(PokemonPlatinumEngine.Core.Words.Badge));
+        // Sinnoh's file lists them (plan 18 · W2), and the card names each by its name (plan 17 · N1c), in English the name itself
+        var sinnoh = RegionDatabase.Get("Sinnoh")!.BadgeNames;
+        Assert.Equal(new[] { "Coal", "Forest", "Cobble", "Fen", "Relic", "Mine", "Icicle", "Beacon" }, sinnoh);
+        Assert.Equal(sinnoh, sinnoh.Select(PokemonPlatinumEngine.Core.Words.Badge));
+        // So are Kanto's, which its file lists too
+        var kanto = RegionDatabase.Get("Kanto")!.BadgeNames;
+        Assert.Equal(kanto, kanto.Select(PokemonPlatinumEngine.Core.Words.Badge));
     }
 
     [Fact]
@@ -74,9 +78,9 @@ public class StoryTests
         story.Set("FLAG_A");
         int once = story.Revision;
         story.Set("FLAG_A");
-        story.GiveBadge(Badge.Coal);
+        story.GiveBadge("Sinnoh", "Coal");
         int twice = story.Revision;
-        story.GiveBadge(Badge.Coal);
+        story.GiveBadge("Sinnoh", "Coal");
         Assert.True(once > before && twice > once);
         Assert.Equal(twice, story.Revision);
     }
@@ -107,14 +111,14 @@ public class StoryTests
         story.SetVar("VAR_POKETCH_CAMPAIGN_STATE", 2);
         story.Defeat("route_202_tristan");
         story.Take("jubilife_city.item_potion");
-        story.GiveBadge(Badge.Coal);
+        story.GiveBadge("Sinnoh", "Coal");
         story.ChooseStarter("Piplup");
 
         var told = story.Snapshot();
         var save = new SaveData
         {
             StoryFlags = told.Flags, StoryVariables = told.Variables, DefeatedTrainers = told.DefeatedTrainers, TakenItems = told.TakenItems,
-            Badges = told.Badges, PlayerStarter = told.PlayerStarter, RivalStarter = told.RivalStarter, StoryVersion = StoryState.CurrentVersion
+            RegionBadges = told.Badges, PlayerStarter = told.PlayerStarter, RivalStarter = told.RivalStarter, StoryVersion = StoryState.CurrentVersion
         };
         var loaded = JsonSerializer.Deserialize<SaveData>(JsonSerializer.Serialize(save, new JsonSerializerOptions { WriteIndented = true }))!;
 
@@ -123,7 +127,7 @@ public class StoryTests
         Assert.Equal(StoryState.CurrentVersion, loaded.StoryVersion);
         Assert.True(back.Has("FLAG_RECEIVED_COUPON_1") && back.IsRegionComplete(RegionDatabase.Kanto));
         Assert.Equal(2, back.Var("VAR_POKETCH_CAMPAIGN_STATE"));
-        Assert.True(back.HasDefeated("route_202_tristan") && back.HasTaken("jubilife_city.item_potion") && back.HasBadge(Badge.Coal));
+        Assert.True(back.HasDefeated("route_202_tristan") && back.HasTaken("jubilife_city.item_potion") && back.HasBadge("Sinnoh", "Coal"));
         Assert.Equal(("Piplup", "Turtwig"), (back.PlayerStarter, back.RivalStarter));
         Assert.Equal(JsonSerializer.Serialize(told), JsonSerializer.Serialize(back.Snapshot()));
     }
@@ -160,7 +164,7 @@ public class StoryTests
 
         // It keeps what it had
         Assert.True(story.IsRegionComplete(RegionDatabase.Kanto));
-        Assert.True(story.HasBadge(Badge.Coal));
+        Assert.True(story.HasBadge("Sinnoh", "Coal"));
         Assert.True(story.HasDefeated("route_202_tristan"));
         // It is given what every game begins with
         Assert.True(story.Has("FLAG_HIDE_SOMEONE_UNTIL_LATER"));
@@ -926,7 +930,7 @@ public class StoryTests
         var story = new StoryState();
         StoryMigration.BeginNewGame(story, Scripts);
         // Nothing of the story has been written yet that hides anyone: every open area has its people (plan 02 · S4 on)
-        Assert.Equal(0, story.BadgeCount);
+        Assert.Equal(0, story.BadgeCount("Sinnoh"));
         Assert.Null(story.PlayerStarter);
     }
 

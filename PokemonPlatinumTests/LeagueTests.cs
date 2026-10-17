@@ -424,7 +424,7 @@ public class LeagueTests
     {
         var game = new OpeningTests.Game(0, fight);
         game.Party.Add(new Pokemon(PokemonDatabase.Get("Garchomp")!, 60));
-        game.Story.SetBadges((1 << badges) - 1);
+        game.Story.SetBadges("Sinnoh", (1 << badges) - 1);
         return game;
     }
 

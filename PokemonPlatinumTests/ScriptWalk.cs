@@ -238,7 +238,7 @@ internal sealed class ScriptWalk
             foreach (string move in moves.Skip(i).Take(4)) pokemon.Moves.Add(new Move(MoveDatabase.Get(move)!));
             host.Party.Add(pokemon);
         }
-        host.Story.SetBadges(0xFF);
+        host.Story.SetBadges("Sinnoh", 0xFF);
     }
 
     /// <summary>A trainer of no place, with lines and a team of one.</summary>
@@ -336,10 +336,10 @@ internal sealed class ScriptWalk
                     break;
                 case Query.Badges:
                     foreach (int badges in new[] { c.Number, c.Number - 1 }.Where(b => b is > 0 and <= 8))
-                        Add($"{badges} badges", host => host.Story.SetBadges((1 << badges) - 1));
+                        Add($"{badges} badges", host => host.Story.SetBadges("Sinnoh", (1 << badges) - 1));
                     break;
                 case Query.Badge:
-                    Add($"the {c.Name} badge", host => host.Story.GiveBadge(Enum.Parse<Badge>(c.Name)));
+                    Add($"the {c.Name} badge", host => host.Story.GiveBadge("Sinnoh", c.Name));
                     break;
                 case Query.NationalDex:
                     Add("the National Pokédex", host => host.NationalDex = true);

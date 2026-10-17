@@ -47,6 +47,6 @@ public static class Words
         return Text.Of($"summary.weekday.{name}");
     }
 
-    /// <summary>A Badge's name as the Trainer Card writes it under its medallion (Coal to Beacon).</summary>
-    public static string Badge(Badge badge) => Text.Of($"badges.{badge}");
+    /// <summary>A Badge's name as the Trainer Card writes it under its medallion, by its name in its region's list (Coal, Boulder).</summary>
+    public static string Badge(string name) => Text.Of($"badges.{name}");
 }

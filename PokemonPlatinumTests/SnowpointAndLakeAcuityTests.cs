@@ -66,7 +66,7 @@ public class SnowpointAndLakeAcuityTests
     {
         game.Arrive("SnowpointGym", 11, 28);
         game.Talk("candice");
-        Assert.True(game.Story.HasBadge(Badge.Icicle));
+        Assert.True(game.Story.HasBadge("Sinnoh", "Icicle"));
         game.Through("Sinnoh");
     }
 
@@ -205,7 +205,7 @@ public class SnowpointAndLakeAcuityTests
         // A climb said yes to ends at the head of the face, where the rival stood
         var climb = FieldMovement.Step(map, 310, 242, Direction.Up, new Walker(TravelMode.OnFoot, foot, Moves: FieldMoves.RockClimb, Climbing: true));
         Assert.Equal((StepKind.Climb, 310, 237), (climb.Kind, climb.X, climb.Y));
-        Assert.Equal(Badge.Icicle, FieldMoveRules.BadgeFor(FieldMove.RockClimb));
+        Assert.Equal("Icicle", FieldMoveRules.BadgeFor(FieldMove.RockClimb, "Sinnoh"));
 
         // The face's own script, which is the common one here too: no Badge, no climb
         Assert.Equal(Scripts.Find(FieldScripts.RockFace)!.FullName, Scripts.Find("RockFace", "acuity_lakefront")!.FullName);
@@ -216,7 +216,7 @@ public class SnowpointAndLakeAcuityTests
         game.Facing = Direction.Up;
         var refused = game.Play(Scripts.Find(FieldScripts.RockFace)!);
         Assert.Empty(refused.Asked);
-        game.Story.GiveBadge(Badge.Icicle);
+        game.Story.GiveBadge("Sinnoh", "Icicle");
         var asked = game.Play(Scripts.Find(FieldScripts.RockFace)!);
         Assert.Contains(asked.Asked, a => a.Question.Contains("Rock Climb"));
     }
@@ -350,7 +350,7 @@ public class SnowpointAndLakeAcuityTests
         // As the chapter before leaves the story: the lake's news in Canalave, the professor and the assistant at Lake Verity
         Run(game, "canalave_city", "setflag FLAG_LAKE_VALOR_EXPLODED\nclearflag FLAG_HIDE_LAKE_VERITY_LOW_WATER_PROF_ROWAN\nclearflag FLAG_HIDE_LAKE_VERITY_LOW_WATER_COUNTERPART");
         PastLakeVerity(game);
-        game.Story.GiveBadge(Badge.Icicle);
+        game.Story.GiveBadge("Sinnoh", "Icicle");
 
         var scene = IntoTheLake(game, x);
         // Nobody battles: she has won already
@@ -520,7 +520,7 @@ public class SnowpointAndLakeAcuityTests
         foreach (bool byBadge in new[] { false, true })
         {
             var north = new StoryState();
-            if (byBadge) north.GiveBadge(Badge.Icicle);
+            if (byBadge) north.GiveBadge("Sinnoh", "Icicle");
             else north.Set(StoryMigration.ArrivedInSnowpointFlag);
             StoryMigration.Upgrade(north, 12, Array.Empty<Pokemon>(), Scripts, new Inventory());
             foreach (string flag in always) Assert.True(north.Has(flag), flag);
@@ -541,7 +541,7 @@ public class SnowpointAndLakeAcuityTests
     {
         var game = NewGame();
         game.Story.Set(StoryMigration.ArrivedInSnowpointFlag);
-        game.Story.GiveBadge(Badge.Icicle);
+        game.Story.GiveBadge("Sinnoh", "Icicle");
         StoryMigration.Upgrade(game.Story, 12, Array.Empty<Pokemon>(), Scripts, new Inventory());
         game.Arrive("Sinnoh", 318, 246);
         Assert.Null(game.Present("rival", "acuity_lakefront"));

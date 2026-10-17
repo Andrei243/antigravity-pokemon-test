@@ -21,7 +21,7 @@ partial class Harness
         team.Members.Clear();
         foreach (var (species, level) in new[] { ("Garchomp", 78), ("Torterra", 72), ("Staraptor", 70), ("Luxray", 70), ("Floatzel", 70), ("Lucario", 72) })
             team.Members.Add(new Pokemon(PokemonDatabase.Get(species)!, level));
-        foreach (var badge in Enum.GetValues<Badge>()) story.GiveBadge(badge);
+        story.SetBadges("Sinnoh", 0xFF);
 
         DialogueManager Box() => game.Dialogue;
         GameState State() => game.State;

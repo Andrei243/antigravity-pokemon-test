@@ -23,7 +23,7 @@ partial class Harness
         team.Members.Insert(0, infernape);
         // The Badges of the chapters before, and the story as Commander Mars's defeat at Lake Verity leaves it
         // (lake_verity.txt): Mt. Coronet's hall clear, Lake Acuity waiting, Maylene gone by on Route 217
-        foreach (var badge in new[] { Badge.Coal, Badge.Forest, Badge.Relic, Badge.Cobble, Badge.Fen, Badge.Mine }) story.GiveBadge(badge);
+        foreach (var badge in new[] { "Coal", "Forest", "Relic", "Cobble", "Fen", "Mine" }) story.GiveBadge("Sinnoh", badge);
         foreach (string flag in new[] { "FLAG_LAKE_VALOR_EXPLODED", "FLAG_TEAM_GALACTIC_LEFT_LAKE_VERITY", "FLAG_HIDE_LAKE_VERITY_TEAM_GALACTIC",
             "FLAG_HIDE_MT_CORONET_1F_NORTH_ROOM_1_GRUNTS_M", "FLAG_HIDE_VEILSTONE_CITY_GYM_MAYLENE" })
             story.Set(flag);
@@ -202,7 +202,7 @@ partial class Harness
             ReadTo("Icicle Badge from Candice"); Frames(4); Shot("sn32_gym_the_icicle_badge");
             ReadTo("Avalanche"); Frames(4); Shot("sn33_gym_tm72");
             ReadTo(null); Frames(10);
-            Console.WriteLine($"gym: icicle badge {story.HasBadge(Badge.Icicle)}, TM72 {bag.GetQuantity(ItemDatabase.Get("TM72")!)}, {Flags("FLAG_HIDE_VEILSTONE_GALACTIC_GRUNTS")}");
+            Console.WriteLine($"gym: icicle badge {story.HasBadge("Sinnoh", "Icicle")}, TM72 {bag.GetQuantity(ItemDatabase.Get("TM72")!)}, {Flags("FLAG_HIDE_VEILSTONE_GALACTIC_GRUNTS")}");
 
             // ---- Maylene once the Badge is won
             ComeThrough("SnowpointPokemonCenter", 8, 12, Direction.Up);
@@ -212,7 +212,7 @@ partial class Harness
         }
         else
         {
-            story.GiveBadge(Badge.Icicle);
+            story.GiveBadge("Sinnoh", "Icicle");
             story.Set("FLAG_RECEIVED_CANDICE_TM72");
             story.Set("FLAG_HIDE_VEILSTONE_GALACTIC_GRUNTS");
         }

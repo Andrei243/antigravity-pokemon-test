@@ -176,7 +176,13 @@ public class SaveCorpusTests
         foreach (var (name, save) in corpus)
         {
             text.Append($"{GoldenFile.BlockMark}{name}\n");
-            text.Append($"world {save.WorldVersion}, story {save.StoryVersion}, {save.Rules} rules, {save.Look} {save.PlayerName}, rival {save.RivalName}, ${save.Money}, badges {Convert.ToString(save.Badges, 2)}\n");
+            // The badges by region as the save is read (plan 18 · W2: an older save's one mask is the region's it was made
+            // in), Sinnoh's as the line always told them and any other region's after it by name
+            var badges = save.RegionalBadges();
+            string others = string.Concat(badges.Where(b => !string.Equals(b.Key, "Sinnoh", StringComparison.OrdinalIgnoreCase))
+                .OrderBy(b => b.Key, StringComparer.Ordinal).Select(b => $", {b.Key} {Convert.ToString(b.Value, 2)}"));
+            text.Append($"world {save.WorldVersion}, story {save.StoryVersion}, {save.Rules} rules, {save.Look} {save.PlayerName}, rival {save.RivalName}, ${save.Money}, " +
+                $"badges {Convert.ToString(badges.GetValueOrDefault("Sinnoh"), 2)}{others}\n");
             var spot = save.PlaceOn(MapDatabase.Get);
             string height = save.PlayerHeight is { } h ? $" at height {h:0.##}" : "";
             text.Append($"wakes on {spot.Map} {spot.X},{spot.Y} facing {spot.Facing}, {save.Travel}{height}" +

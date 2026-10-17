@@ -34,7 +34,7 @@ public class VictoryRoadAndTheHallOfFameTests
         game.Story.ChooseStarter(StoryState.Starters[starter]);
         game.Party.Add(new Pokemon(PokemonDatabase.Get("Garchomp")!, 62));
         game.Party.Add(new Pokemon(PokemonDatabase.Get("Staraptor")!, 58));
-        game.Story.SetBadges(0xFF);
+        game.Story.SetBadges("Sinnoh", 0xFF);
         // Home is as the first chapter leaves it (common.OpeningDone): Mom has long since said her first piece
         game.Story.SetVar("VAR_PLAYER_HOUSE_STATE", 6);
         return game;
@@ -305,7 +305,7 @@ public class VictoryRoadAndTheHallOfFameTests
         game.Arrive(Center, 11, 11);
         StepOnto(game, 11, 4, "RivalBeforeTheDoor");
         Assert.EndsWith($"Certified Trainers: Ash, {OpeningTests.Game.Rival}", Statue());
-        game.Story.SetBadges(0x7F);
+        game.Story.SetBadges("Sinnoh", 0x7F);
         Assert.EndsWith("Leader: Volkner", Statue());
     }
 

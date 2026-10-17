@@ -308,6 +308,9 @@ public sealed class ScriptLibrary
                     case Op.Sound when soundExists != null && !soundExists(i.Name):
                         Wrong(i, $"there is no sound '{i.Name}'");
                         break;
+                    case Op.GiveBadge when NoBadge(script.File, i.Name) is { } why:
+                        Wrong(i, why);
+                        break;
                 }
 
                 if (i.Condition is not { } c) continue;
@@ -322,9 +325,32 @@ public sealed class ScriptLibrary
                     case Query.Knows when MoveDatabase.Get(c.Name) == null:
                         Wrong(i, $"there is no move '{c.Name}'");
                         break;
+                    case Query.Badge when NoBadge(script.File, c.Name) is { } why:
+                        Wrong(i, why);
+                        break;
                 }
             }
         }
         return problems;
     }
+
+    /// <summary>
+    /// What is wrong with a badge a script names (plan 18 · W2), or null: a file of a region's own (a room of its maps, an
+    /// area of its world) names one of that region's badges, and a file every region shares (<c>common</c>) one that some
+    /// region has.
+    /// </summary>
+    private static string? NoBadge(string file, string badge)
+    {
+        if (RegionOfFile(file) is { } region)
+            return StoryState.FindBadge(region.Id, badge) >= 0 ? null : $"{region.Name} has no badge '{badge}'";
+        return RegionDatabase.All.Any(r => StoryState.FindBadge(r.Id, badge) >= 0) ? null : $"no region has a badge '{badge}'";
+    }
+
+    /// <summary>
+    /// The region a script file belongs to: the region that lists the map it is named for, or whose world has the area it
+    /// is named for (<c>world/&lt;folder&gt;/areas/&lt;key&gt;.json</c>); null for a file of no one region (<c>common</c>).
+    /// </summary>
+    public static Region? RegionOfFile(string file) =>
+        RegionDatabase.RegionOfMap(file)
+        ?? RegionDatabase.All.FirstOrDefault(r => r.File != null && System.IO.File.Exists(GameDataFiles.PathOf($"world/{r.Folder}/areas/{file}.json")));
 }

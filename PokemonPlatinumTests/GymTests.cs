@@ -354,7 +354,7 @@ public class GymTests
 
         var gym = game.Talk("crasher_wake");
         Assert.Contains("battle leader_wake Won", gym.Log);
-        Assert.True(game.Story.HasBadge(Badge.Fen));
+        Assert.True(game.Story.HasBadge("Sinnoh", "Fen"));
         Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM55")!));
         Assert.True(game.Story.Has("FLAG_RECEIVED_WAKE_TM55"));
         Assert.True(game.Story.Has("FLAG_HIDE_PASTORIA_CITY_GRUNT_M"));
@@ -466,7 +466,7 @@ public class GymTests
         // Gardenia: the battle, the Forest Badge, TM86, her trainers counted as beaten, and the clock's last time
         var gym = game.Talk("gardenia");
         Assert.Contains("battle leader_gardenia Won", gym.Log);
-        Assert.True(game.Story.HasBadge(Badge.Forest));
+        Assert.True(game.Story.HasBadge("Sinnoh", "Forest"));
         Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM86")!));
         Assert.True(game.Story.Has("FLAG_RECEIVED_GARDENIA_TM86"));
         Assert.False(game.Story.Has("FLAG_HIDE_ETERNA_FOREST_GARDENIA"));
@@ -601,7 +601,7 @@ public class GymTests
 
         var gym = game.Talk("maylene");
         Assert.Contains("battle leader_maylene Won", gym.Log);
-        Assert.True(game.Story.HasBadge(Badge.Cobble));
+        Assert.True(game.Story.HasBadge("Sinnoh", "Cobble"));
         Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM60")!));
         Assert.True(game.Story.Has("FLAG_RECEIVED_MAYLENE_TM60"));
         Assert.True(game.Story.Has("FLAG_HIDE_GAME_CORNER_LOOKER"));
@@ -681,7 +681,7 @@ public class GymTests
         var first = Room("HearthomeGymRoom1");
         first.Puzzle!.Apply(first, story);
         Assert.Equal(109 / 127f, ((HearthomeDoors)first.Puzzle).Fog);
-        story.GiveBadge(Badge.Relic);
+        story.GiveBadge("Sinnoh", "Relic");
         rooms.Apply(map, story);
         Assert.Equal(91 / 127f, rooms.Fog);
         // Clear at a light, thick past its reach; and only the trainers carry one besides the player
@@ -712,7 +712,7 @@ public class GymTests
         Assert.DoesNotContain((14, 3), Reach(map, 4, 13));
         var gym = game.Talk("fantina");
         Assert.Contains("battle leader_fantina Won", gym.Log);
-        Assert.True(game.Story.HasBadge(Badge.Relic));
+        Assert.True(game.Story.HasBadge("Sinnoh", "Relic"));
         Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM65")!));
         Assert.True(game.Story.Has("FLAG_RECEIVED_FANTINA_TM65"));
         Assert.True(game.Story.Has("FLAG_HIDE_HEARTHOME_CITY_GYM_BOLLARDS"));
@@ -869,7 +869,7 @@ public class GymTests
 
         var gym = game.Talk("byron");
         Assert.Contains("battle leader_byron Won", gym.Log);
-        Assert.True(game.Story.HasBadge(Badge.Mine));
+        Assert.True(game.Story.HasBadge("Sinnoh", "Mine"));
         Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM91")!));
         Assert.True(game.Story.Has("FLAG_RECEIVED_BYRON_TM91"));
         Assert.Equal(2, game.Story.Var("VAR_CANALAVE_CITY_STATE"));
@@ -1130,8 +1130,8 @@ public class GymTests
 
         var gym = game.Talk("candice");
         Assert.Contains("battle leader_candice Won", gym.Log);
-        Assert.True(game.Story.HasBadge(Badge.Icicle));
-        Assert.Equal(Badge.Icicle, FieldMoveRules.BadgeFor(FieldMove.RockClimb));
+        Assert.True(game.Story.HasBadge("Sinnoh", "Icicle"));
+        Assert.Equal("Icicle", FieldMoveRules.BadgeFor(FieldMove.RockClimb, "Sinnoh"));
         Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM72")!));
         Assert.True(game.Story.Has("FLAG_RECEIVED_CANDICE_TM72"));
         Assert.True(game.Story.Has("FLAG_HIDE_VEILSTONE_GALACTIC_GRUNTS"));
@@ -1493,8 +1493,8 @@ public class GymTests
 
         var gym = game.Talk("volkner");
         Assert.Contains("battle leader_volkner Won", gym.Log);
-        Assert.True(game.Story.HasBadge(Badge.Beacon));
-        Assert.Equal(Badge.Beacon, FieldMoveRules.BadgeFor(FieldMove.Waterfall));
+        Assert.True(game.Story.HasBadge("Sinnoh", "Beacon"));
+        Assert.Equal("Beacon", FieldMoveRules.BadgeFor(FieldMove.Waterfall, "Sinnoh"));
         Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM57")!));
         Assert.True(game.Story.Has("FLAG_RECEIVED_VOLKNER_TM57"));
         Assert.Equal(2, game.Story.Var("VAR_SUNYSHORE_CITY_STATE"));

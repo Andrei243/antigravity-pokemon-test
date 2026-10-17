@@ -168,12 +168,12 @@ public class PoketchTests
 
         Talk();
         Assert.Empty(host.Poketch.Apps);
-        story.GiveBadge(Badge.Coal);
+        story.GiveBadge("Sinnoh", "Coal");
         Talk();
         Talk();
         Assert.Equal(new[] { PoketchApp.MemoPad }, host.Poketch.Apps);
 
-        foreach (var badge in new[] { Badge.Forest, Badge.Cobble, Badge.Fen, Badge.Relic, Badge.Mine, Badge.Icicle }) story.GiveBadge(badge);
+        foreach (var badge in new[] { "Forest", "Cobble", "Fen", "Relic", "Mine", "Icicle" }) story.GiveBadge("Sinnoh", badge);
         for (int i = 0; i < 4; i++) Talk();
         Assert.Equal(new[] { PoketchApp.MemoPad, PoketchApp.MarkingMap, PoketchApp.LinkSearcher, PoketchApp.MoveTester }, host.Poketch.Apps);
     }

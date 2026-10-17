@@ -497,7 +497,7 @@ public class HearthomeTests
         Assert.False(before.Has("FLAG_HIDE_HEARTHOME_CITY_GYM_GUIDE"));
 
         var won = new StoryState();
-        won.GiveBadge(Badge.Relic);
+        won.GiveBadge("Sinnoh", "Relic");
         StoryMigration.Upgrade(won, 8, Array.Empty<Pokemon>(), Scripts, new Inventory());
         Assert.True(won.Has("FLAG_HIDE_HEARTHOME_CITY_GYM_GUIDE"));
         Assert.True(won.Has("FLAG_HIDE_CONTEST_HALL_LOBBY_FANTINA"));

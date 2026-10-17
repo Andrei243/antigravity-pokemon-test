@@ -29,17 +29,17 @@ public class FieldMoveTests
     // ------------------------------------------------------------------ the badges
 
     [Theory]
-    [InlineData(FieldMove.Cut, Badge.Forest)]
-    [InlineData(FieldMove.Fly, Badge.Cobble)]
-    [InlineData(FieldMove.Surf, Badge.Fen)]
-    [InlineData(FieldMove.Strength, Badge.Mine)]
-    [InlineData(FieldMove.Defog, Badge.Relic)]
-    [InlineData(FieldMove.RockSmash, Badge.Coal)]
-    [InlineData(FieldMove.Waterfall, Badge.Beacon)]
-    [InlineData(FieldMove.RockClimb, Badge.Icicle)]
-    public void EachHiddenMoveNeedsTheOriginalsBadge(FieldMove move, Badge badge)
+    [InlineData(FieldMove.Cut, "Forest")]
+    [InlineData(FieldMove.Fly, "Cobble")]
+    [InlineData(FieldMove.Surf, "Fen")]
+    [InlineData(FieldMove.Strength, "Mine")]
+    [InlineData(FieldMove.Defog, "Relic")]
+    [InlineData(FieldMove.RockSmash, "Coal")]
+    [InlineData(FieldMove.Waterfall, "Beacon")]
+    [InlineData(FieldMove.RockClimb, "Icicle")]
+    public void EachHiddenMoveNeedsTheOriginalsBadge(FieldMove move, string badge)
     {
-        Assert.Equal(badge, FieldMoveRules.BadgeFor(move));
+        Assert.Equal(badge, FieldMoveRules.BadgeFor(move, "Sinnoh"));
         // With everything it needs but the badge, it can't be used; with the badge too, it can
         var spot = new FieldSpot
         {
@@ -48,7 +48,7 @@ public class FieldMoveTests
         };
         var story = new StoryState();
         Assert.Equal(FieldMoveError.Badge, FieldMoveRules.Check(move, spot, story));
-        story.GiveBadge(badge);
+        story.GiveBadge("Sinnoh", badge);
         Assert.Equal(FieldMoveError.None, FieldMoveRules.Check(move, spot, story));
     }
 
@@ -56,7 +56,7 @@ public class FieldMoveTests
     public void FlashTeleportDigAndSweetScentNeedNoBadge()
     {
         foreach (var move in new[] { FieldMove.Flash, FieldMove.Teleport, FieldMove.Dig, FieldMove.SweetScent, FieldMove.MilkDrink, FieldMove.Softboiled })
-            Assert.Null(FieldMoveRules.BadgeFor(move));
+            Assert.Null(FieldMoveRules.BadgeFor(move, "Sinnoh"));
         var story = new StoryState();
         Assert.Equal(FieldMoveError.None, FieldMoveRules.Check(FieldMove.Flash, new FieldSpot { Dark = true }, story));
         Assert.Equal(FieldMoveError.Location, FieldMoveRules.Check(FieldMove.Flash, new FieldSpot(), story));
@@ -68,7 +68,7 @@ public class FieldMoveTests
         Assert.Equal(FieldMoveError.None, FieldMoveRules.Check(FieldMove.Dig, new FieldSpot { CaveWithAWayOut = true }, story));
         Assert.Equal(FieldMoveError.None, FieldMoveRules.Check(FieldMove.SweetScent, new FieldSpot(), story));
         // Surf can't start on the water, and Rock Smash isn't used from it
-        story.SetBadges(0xFF);
+        story.SetBadges("Sinnoh", 0xFF);
         Assert.Equal(FieldMoveError.State, FieldMoveRules.Check(FieldMove.Surf, new FieldSpot { Water = true, Surfing = true }, story));
         Assert.Equal(FieldMoveError.Location, FieldMoveRules.Check(FieldMove.RockSmash, new FieldSpot { Obstacle = PropType.CrackedRock, Surfing = true }, story));
         // Every error has something to say
@@ -91,14 +91,14 @@ public class FieldMoveTests
     // ------------------------------------------------------------------ the obstacles
 
     /// <summary>An obstacle faced, its script played with the team given, and the map's people put where its flags say.</summary>
-    private static (HeadlessScriptHost Host, Map Map, NPC Thing) Face(PropType kind, Pokemon? pokemon, Badge? badge, int answer = 0, Action<HeadlessScriptHost>? setUp = null)
+    private static (HeadlessScriptHost Host, Map Map, NPC Thing) Face(PropType kind, Pokemon? pokemon, string? badge, int answer = 0, Action<HeadlessScriptHost>? setUp = null)
     {
         var map = new Map(5, 5) { Name = "Obstacle" };
         var thing = map.AddObstacle(kind, 2, 1);
         thing.HiddenBy = "FLAG_MAP_LOCAL_HIDE_OBSTACLE_1_TEST";
         var host = new HeadlessScriptHost { Map = map, PlayerTile = (2, 2), PlayerFacing = Direction.Up };
         host.Party.Add(pokemon ?? Knowing("Tackle"));
-        if (badge is { } b) host.Story.GiveBadge(b);
+        if (badge is { } b) host.Story.GiveBadge("Sinnoh", b);
         host.Answers.Enqueue(answer);
         setUp?.Invoke(host);
         var runner = new ScriptRunner(ScriptLibrary.Default, host);
@@ -109,12 +109,12 @@ public class FieldMoveTests
     }
 
     [Theory]
-    [InlineData(PropType.CutTree, "Cut", Badge.Forest)]
-    [InlineData(PropType.CrackedRock, "Rock Smash", Badge.Coal)]
-    public void AnObstacleGivesWayToItsMoveAndBadgeOnly(PropType kind, string move, Badge badge)
+    [InlineData(PropType.CutTree, "Cut", "Forest")]
+    [InlineData(PropType.CrackedRock, "Rock Smash", "Coal")]
+    public void AnObstacleGivesWayToItsMoveAndBadgeOnly(PropType kind, string move, string badge)
     {
         // Not without the move, not without the badge: it says what it is and asks nothing
-        foreach (var (pokemon, has) in new[] { (Knowing("Tackle"), (Badge?)badge), (Knowing(move), (Badge?)null) })
+        foreach (var (pokemon, has) in new[] { (Knowing("Tackle"), (string?)badge), (Knowing(move), (string?)null) })
         {
             var (host, map, thing) = Face(kind, pokemon, has);
             Assert.Empty(host.Asked);
@@ -140,7 +140,7 @@ public class FieldMoveTests
     public void ACrackedRockSaysWhatTheWayOnIsWaitingFor()
     {
         // The Ravaged Path's rocks shut the way north to Floaroma Town: whoever can't break them yet is told why
-        string Says(Pokemon pokemon, Badge? badge, bool hm = false)
+        string Says(Pokemon pokemon, string? badge, bool hm = false)
         {
             var (host, _, _) = Face(PropType.CrackedRock, pokemon, badge, setUp: h => { if (hm) h.Bag.AddItem(ItemDatabase.Get("HM06")!); });
             Assert.Empty(host.Asked);
@@ -151,10 +151,10 @@ public class FieldMoveTests
         // The move known, the Badge not won: Rock Smash isn't used outside battle until then
         Assert.Contains("not outside battle until Oreburgh's Gym Badge", Says(Knowing("Rock Smash"), null));
         // The HM in the bag and nobody taught it: teach it
-        Assert.Contains("HM06", Says(Knowing("Tackle"), Badge.Coal, hm: true));
+        Assert.Contains("HM06", Says(Knowing("Tackle"), "Coal", hm: true));
         Assert.Contains("HM06", Says(Knowing("Tackle"), null, hm: true));
         // The Badge and neither: a Pokémon that knows the move
-        Assert.Contains("knows Rock Smash", Says(Knowing("Tackle"), Badge.Coal));
+        Assert.Contains("knows Rock Smash", Says(Knowing("Tackle"), "Coal"));
     }
 
     [Fact]
@@ -164,7 +164,7 @@ public class FieldMoveTests
         Assert.False(without.Story.Has(FieldMoveRules.StrengthFlag));
         Assert.Empty(without.Asked);
 
-        var (with, map, stays) = Face(PropType.StrengthBoulder, Knowing("Strength"), Badge.Mine);
+        var (with, map, stays) = Face(PropType.StrengthBoulder, Knowing("Strength"), "Mine");
         Assert.True(with.Story.Has(FieldMoveRules.StrengthFlag));
         // The boulder itself stays: Strength is what lets it be pushed
         Assert.Contains(stays, map.NPCs);
@@ -257,7 +257,7 @@ public class FieldMoveTests
         var spot = new FieldSpot { Water = true };
         var story = new StoryState();
         Assert.Equal(FieldMoveError.Badge, FieldMoveRules.Check(FieldMove.Surf, spot, story));
-        story.GiveBadge(Badge.Fen);
+        story.GiveBadge("Sinnoh", "Fen");
         Assert.Equal(FieldMoveError.None, FieldMoveRules.Check(FieldMove.Surf, spot, story));
 
         // The question at the water's edge, and the ride out
@@ -298,7 +298,7 @@ public class FieldMoveTests
         {
             var host = new HeadlessScriptHost { Map = map, PlayerTile = at, PlayerFacing = Direction.Up, PlayerMode = mode };
             host.Party.Add(pokemon);
-            host.Story.SetBadges(badges);
+            host.Story.SetBadges("Sinnoh", badges);
             var runner = new ScriptRunner(ScriptLibrary.Default, host);
             runner.Start(ScriptLibrary.Default.Find(script)!);
             runner.RunToEnd();
@@ -306,12 +306,12 @@ public class FieldMoveTests
         }
 
         // Up the waterfall with the move and the Beacon Badge; not without either
-        Assert.Equal((2, 3), Play(FieldScripts.Waterfall, (2, 7), TravelMode.Surfing, Knowing("Waterfall"), 1 << (int)Badge.Beacon).PlayerTile);
+        Assert.Equal((2, 3), Play(FieldScripts.Waterfall, (2, 7), TravelMode.Surfing, Knowing("Waterfall"), 1 << StoryState.BadgeIndex("Sinnoh", "Beacon")).PlayerTile);
         Assert.Equal((2, 7), Play(FieldScripts.Waterfall, (2, 7), TravelMode.Surfing, Knowing("Waterfall"), 0).PlayerTile);
         Assert.Equal((2, 7), Play(FieldScripts.Waterfall, (2, 7), TravelMode.Surfing, Knowing("Surf"), 0xFF).PlayerTile);
 
         // Up the rock face with Rock Climb and the Icicle Badge; not without either
-        Assert.Equal((5, 2), Play(FieldScripts.RockFace, (5, 6), TravelMode.OnFoot, Knowing("Rock Climb"), 1 << (int)Badge.Icicle).PlayerTile);
+        Assert.Equal((5, 2), Play(FieldScripts.RockFace, (5, 6), TravelMode.OnFoot, Knowing("Rock Climb"), 1 << StoryState.BadgeIndex("Sinnoh", "Icicle")).PlayerTile);
         Assert.Equal((5, 6), Play(FieldScripts.RockFace, (5, 6), TravelMode.OnFoot, Knowing("Rock Climb"), 0).PlayerTile);
         Assert.Equal((5, 6), Play(FieldScripts.RockFace, (5, 6), TravelMode.OnFoot, Knowing("Strength"), 0xFF).PlayerTile);
 
@@ -359,7 +359,7 @@ public class FieldMoveTests
         Assert.True(spot.Fog);
         var story = new StoryState();
         Assert.Equal(FieldMoveError.Badge, FieldMoveRules.Check(FieldMove.Defog, spot, story));
-        story.GiveBadge(Badge.Relic);
+        story.GiveBadge("Sinnoh", "Relic");
         Assert.Equal(FieldMoveError.None, FieldMoveRules.Check(FieldMove.Defog, spot, story));
         Assert.Equal(FieldMoveError.Location, FieldMoveRules.Check(FieldMove.Defog, FieldMoveRules.SpotOf(new Map(5, 5) { Name = "Clear" }, 2, 2, Direction.Up, new Walker()), story));
 

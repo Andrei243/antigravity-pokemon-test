@@ -139,7 +139,7 @@ public class JubilifeAndRoarkTests
         var gym = game.Talk("roark");
         Assert.Contains("battle leader_roark Won", gym.Log);
         Assert.Contains($"fanfare {PokemonPlatinumEngine.Audio.MusicRole.FanfareBadge}", gym.Log);
-        Assert.True(game.Story.HasBadge(Badge.Coal));
+        Assert.True(game.Story.HasBadge("Sinnoh", "Coal"));
         Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM76")!));
         Assert.Equal(2, game.Story.Var("VAR_OREBURGH_CITY_STATE"));
         Assert.Equal(3, game.Story.Var("VAR_JUBILIFE_CITY_STATE"));
@@ -247,7 +247,7 @@ public class JubilifeAndRoarkTests
         // with it, and the Ravaged Path's cracked rocks would shut it out of the north. The Badge says it has been by.
         var hm = ItemDatabase.Get("HM06")!;
         var story = new StoryState();
-        story.GiveBadge(Badge.Coal);
+        story.GiveBadge("Sinnoh", "Coal");
         var bag = new Inventory();
         StoryMigration.Upgrade(story, 4, Array.Empty<Pokemon>(), Scripts, bag);
         Assert.Equal(1, bag.GetQuantity(hm));
@@ -263,14 +263,14 @@ public class JubilifeAndRoarkTests
 
         // One the hiker already gave it to has nothing more; and a save of today is left as it is
         var given = new StoryState();
-        given.GiveBadge(Badge.Coal);
+        given.GiveBadge("Sinnoh", "Coal");
         given.Set(StoryMigration.ReceivedRockSmashFlag);
         var one = new Inventory();
         one.AddItem(hm);
         StoryMigration.Upgrade(given, 4, Array.Empty<Pokemon>(), Scripts, one);
         Assert.Equal(1, one.GetQuantity(hm));
         var today = new StoryState();
-        today.GiveBadge(Badge.Coal);
+        today.GiveBadge("Sinnoh", "Coal");
         StoryMigration.Upgrade(today, StoryState.CurrentVersion, Array.Empty<Pokemon>(), Scripts, new Inventory());
         Assert.False(today.Has(StoryMigration.ReceivedRockSmashFlag));
         Assert.True(StoryState.CurrentVersion >= 5);

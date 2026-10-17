@@ -155,7 +155,7 @@ public partial class GameEngine
         Night = GameClock.IsNight,
         HasCaught = species => flow.Pokedex.IsCaught(species.DexNumber),
         Weather = Weathers.InBattle(flow.Map.WeatherAt(flow.Player.GridX, flow.Player.GridY)),
-        Badges = flow.Story.BadgeCount,
+        Badges = flow.Story.BadgeCount(Here.Id),
         Money = flow.Money,
         Player = PlayerMark
     };

@@ -53,7 +53,7 @@ partial class Harness
         team.Add(Knowing("Chansey", "Soft-Boiled", "Sweet Scent", "Teleport"));
         team.Members[3].CurrentHP = team.Members[3].MaxHP;
         team.Members[1].CurrentHP = team.Members[1].MaxHP / 3;
-        story.SetBadges(0xFF);
+        story.SetBadges("Sinnoh", 0xFF);
 
         // ---- Eterna City's first tree: the question, the line, the cut-in, the tree gone in a burst of leaves
         var sinnoh = MapDatabase.Get("Sinnoh");

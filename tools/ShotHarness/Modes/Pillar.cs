@@ -37,7 +37,7 @@ partial class Harness
         }
         // The Badges of the chapters before, and the story as the button in Team Galactic's control room leaves it
         // (GalacticHQControlRoom.txt): the painting on Mt. Coronet's second floor broken, the grunt back in its north hall
-        foreach (var badge in new[] { Badge.Coal, Badge.Forest, Badge.Relic, Badge.Cobble, Badge.Fen, Badge.Mine, Badge.Icicle }) story.GiveBadge(badge);
+        foreach (var badge in new[] { "Coal", "Forest", "Relic", "Cobble", "Fen", "Mine", "Icicle" }) story.GiveBadge("Sinnoh", badge);
         foreach (string flag in new[] { "FLAG_TEAM_GALACTIC_LEFT_LAKE_VERITY", "FLAG_HIDE_MT_CORONET_1F_NORTH_ROOM_1_GRUNTS_M", "FLAG_HIDE_GALACTIC_HQ_4F_CYRUS" }) story.Set(flag);
 
         DialogueManager Box() => game.Dialogue;

@@ -75,8 +75,8 @@ partial class Harness
         var surf = new Move(MoveDatabase.Get("Surf")!);
         swimmer.Moves.Add(surf);
         var story = game.Story;
-        int badges = story.BadgeMask;
-        story.GiveBadge(Badge.Fen);
+        int badges = story.BadgeMask("Sinnoh");
+        story.GiveBadge("Sinnoh", "Fen");
         var (bankX, bankY) = Nearest(111, 892, (x, y) => sinnoh.IsWalkable(x, y) && sinnoh.IsDeepWater(x + 1, y) && sinnoh.IsDeepWater(x + 2, y) && !sinnoh.IsSolid(x + 1, y));
         Put(bankX, bankY, Direction.Right);
         game.Interact();
@@ -93,7 +93,7 @@ partial class Harness
         // On the water, the player rides the Pokémon whose Surf it was (plan 10 · F1)
         Walk(Direction.Right, 1); Frames(4); Shot("l06e_surfer_on_its_own_pokemon"); ShotCrop("l06f_surfer_native", 640, 380, 640, 360, 2);
         swimmer.Moves.Remove(surf);
-        story.SetBadges(badges);
+        story.SetBadges("Sinnoh", badges);
         walker.SetMode(TravelMode.OnFoot);
 
         // A door: ajar as the step toward it begins, open as it ends, then from inside out again and shut behind
