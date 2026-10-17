@@ -453,6 +453,64 @@ One sound for each type, played as a move of that type sets off (`SoundBank.Move
 | `use_muddy_water` | `SEQ_SE_DP_W057` | Muddy Water: a thick heaving surge of brown water and bubbling mud. |
 | `use_thunder_fang` | `SEQ_SE_DP_W044` | Thunder Fang: a snap of teeth and a crackle of lightning. |
 | `use_zen_headbutt` | `SEQ_SE_DP_293` | Zen Headbutt: a gathering hum, a bell and a heavy ringing butt. |
+| `use_super_fang` | `SEQ_SE_DP_W044` | Super Fang: a snap of teeth, a thud and a second clack. |
+| `use_mirror_shot` | `SEQ_SE_DP_146` | Mirror Shot: four glassy pings, a rising whine and a bright flash. |
+| `use_charge_beam` | `SEQ_SE_DP_206` | Charge Beam: a crackling charge and a long humming beam. |
+| `use_giga_impact` | `SEQ_SE_DP_131` | Giga Impact: a heavy wind-up, a rushing charge and a great crash. |
+| `use_octazooka` | `SEQ_SE_DP_W025B` | Octazooka: three wet spits and a splattering burst. |
+| `use_wring_out` | `SEQ_SE_DP_021` | Wring Out: three creaking twists, each ending in a squeeze. |
+| `use_dark_pulse` | `SEQ_SE_DP_W399` | Dark Pulse: a low dark hum, three rising rings and a deep boom. |
+| `use_dragon_pulse` | `SEQ_SE_DP_W373` | Dragon Pulse: a rising roar with a run of bright notes and a ringing boom. |
+| `use_dragon_rush` | `SEQ_SE_PL_WHIP_1` | Dragon Rush: a whip through the air, a growl and a heavy crash. |
+| `use_hammer_arm` | `SEQ_SE_DP_W011` | Hammer Arm: a raised swing and a very heavy slam with rumble. |
+| `use_hyper_beam` | `SEQ_SE_DP_W062D` | Hyper Beam: a rising charge and a huge roaring beam ending in a boom. |
+| `use_natural_gift` | `SEQ_SE_PL_W363_1` | Natural Gift: four light rising notes, a bell and a soft burst. |
+| `use_power_whip` | `SEQ_SE_DP_W104` | Power Whip: two cracking lashes and a thick leafy thud. |
+| `use_brave_bird` | `SEQ_SE_DP_W360C` | Brave Bird: a rising rush of wind, a heavy crash and a ringing recoil. |
+| `use_head_smash` | `SEQ_SE_DP_143` | Head Smash: a long wind-up, a stony smash and a rolling rumble. |
+| `use_leaf_storm` | `SEQ_SE_DP_KAZE2` | Leaf Storm: a long whirl of rustling leaves and a last thud. |
+| `use_attack_order` | `SEQ_SE_DP_W456` | Attack Order: a droning swarm and a flurry of stings. |
+| `use_bug_buzz` | `SEQ_SE_DP_W405` | Bug Buzz: a loud two-tone insect buzz. |
+| `use_cross_poison` | `SEQ_SE_DP_W015` | Cross Poison: two crossing slashes and a bubbling poison hiss. |
+| `use_defend_order` | `SEQ_SE_DP_W456` | Defend Order: a droning swarm ending in a bright hardening ring. |
+| `use_heal_order` | `SEQ_SE_DP_W456` | Heal Order: a droning swarm ending in a rising healing chime. |
+| `use_iron_head` | `SEQ_SE_DP_W029` | Iron Head: a ring of steel, a heavy thud and a clang. |
+| `use_megahorn` | `SEQ_SE_DP_W082` | Megahorn: a rushing wind-up, a stabbing boom and a ringing horn. |
+| `use_power_gem` | `SEQ_SE_DP_W408` | Power Gem: a rising shimmer, a fan of gem notes and a glittering burst. |
+| `use_earth_power` | `SEQ_SE_DP_W053` | Earth Power: three eruptions of earth, each with a rumble and a crack. |
+| `use_rock_wrecker` | `SEQ_SE_DP_W082` | Rock Wrecker: a clatter of stones packing, a throw and a shattering smash. |
+| `use_flare_blitz` | `SEQ_SE_DP_W052` | Flare Blitz: a roaring wind of flame, a crash and a burning boom. |
+| `use_overheat` | `SEQ_SE_DP_W082` | Overheat: a trembling heat, a flash and a vast roaring blaze. |
+| `use_solar_beam` | `SEQ_SE_DP_SHUSHU` | Solar Beam: a bright rising gather and a long humming beam. |
+| `use_energy_ball` | `SEQ_SE_DP_211` | Energy Ball: a rising green swell, a throw and a bright burst. |
+| `use_leaf_blade` | `SEQ_SE_DP_W015` | Leaf Blade: two swift blade swishes and a leafy thud. |
+| `use_aura_sphere` | `SEQ_SE_DP_131` | Aura Sphere: a deep rising gather, a throw and a ringing boom. |
+| `use_extreme_speed` | `SEQ_SE_DP_W013B` | Extreme Speed: a rush of speed and three quick blows. |
+| `use_mirror_coat` | `SEQ_SE_DP_W115` | Mirror Coat: glassy bells and a returning flash. |
+| `use_surf` | `SEQ_SE_DP_W057` | Surf: a great rolling surge of water and a crashing splash. |
+| `use_heat_wave` | `SEQ_SE_DP_W257` | Heat Wave: a long hot roaring wind with embers crackling in it. |
+| `use_acid` | `SEQ_SE_DP_W145C` | Acid: a wet fling, a splash and a fizzing hiss. |
+| `use_constrict` | `SEQ_SE_DP_W020` | Constrict: five quick wraps and two tighter squeezes. |
+| `use_razor_wind` | `SEQ_SE_DP_060` | Razor Wind: a rising whirl of wind and two keen cutting blasts. |
+| `use_tailwind` | `SEQ_SE_DP_KAZE` | Tailwind: a long rushing wind with a rising chime. |
+| `use_bullet_punch` | `SEQ_SE_DP_W025C` | Bullet Punch: two fast steel punches, each with a ring. |
+| `use_dive` | `SEQ_SE_DP_W291` | Dive: a splash and gurgle, then a spout of water erupting. |
+| `use_dynamic_punch` | `SEQ_SE_DP_W233B` | Dynamic Punch: a fiery wind-up and a huge booming punch with a rumble. |
+| `use_guard_swap` | `SEQ_SE_DP_W179` | Guard Swap: six bell pings that change pitch halfway. |
+| `use_gunk_shot` | `SEQ_SE_DP_290` | Gunk Shot: a thick wet heave and a rank, bubbling splatter. |
+| `use_outrage` | `SEQ_SE_DP_W082` | Outrage: a furious growl with two heavy blows. |
+| `use_perish_song` | `SEQ_SE_DP_W195` | Perish Song: a slow falling tune over a deep drone. |
+| `use_power_swap` | `SEQ_SE_DP_W179` | Power Swap: six bell pings that change pitch halfway, lower and heavier. |
+| `use_sheer_cold` | `SEQ_SE_DP_W258` | Sheer Cold: an icy rush, chimes of frost and a freezing crack. |
+| `use_spore` | `SEQ_SE_DP_W077B` | Spore: a soft fizzing drift and a slow sleepy tune. |
+| `use_acid_armor` | `SEQ_SE_DP_154` | Acid Armor: a wobbling melt and four wet plops. |
+| `use_aromatherapy` | `SEQ_SE_DP_W080` | Aromatherapy: a soft breeze with a gentle run of healing notes. |
+| `use_destiny_bond` | `SEQ_SE_DP_W060` | Destiny Bond: a low ghostly drone and two heavy tolling bells. |
+| `use_gastro_acid` | `SEQ_SE_DP_W380` | Gastro Acid: a bubbling hiss and a gurgling sizzle. |
+| `use_grudge` | `SEQ_SE_DP_W060` | Grudge: a low growling drone, a sinking tune and a dull crackle. |
+| `use_mega_kick` | `SEQ_SE_DP_140` | Mega Kick: a swing and a huge booming kick. |
+| `use_moonlight` | `SEQ_SE_DP_W236` | Moonlight: a soft rising hum and a slow twinkle of high notes. |
+| `use_trick` | `SEQ_SE_DP_166` | Trick: a puff, a quick run of notes and four sparkling pings. |
 
 ## Cries
 
