@@ -183,7 +183,8 @@ public sealed partial class BattleCore
     /// <summary>A Pokémon's weight in battle: its own, less 100 kg for each Autotomize, never under 0.1 kg (Showdown's <c>getWeight</c>).</summary>
     internal static float WeightOf(Battler b)
     {
-        float kg = b.Pokemon!.Weight;
+        // (Heavy Metal and Light Metal first: plan 06 · R27)
+        float kg = AbilityWeight(b, b.Pokemon!.Weight);
         if (b.Volatile.Autotomized == 0) return kg;
         return Math.Max(0.1f, kg - 100f * b.Volatile.Autotomized);
     }

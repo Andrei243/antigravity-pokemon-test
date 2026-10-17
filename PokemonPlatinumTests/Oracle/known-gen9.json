@@ -1,11 +1,3 @@
 {
-  "known": [
-    {
-      "name": "Lightning Rod and Storm Drain take the move in",
-      "owner": "plan 06 · R27",
-      "reason": "From generation 5 Lightning Rod and Storm Drain make their holder immune to the type they draw and raise its Sp. Atk; the engine still runs Platinum's ability, which only draws the move.",
-      "when": { "defenderAbility": ["Lightning Rod", "Storm Drain"] },
-      "kind": "damage"
-    }
-  ]
+  "known": []
 }

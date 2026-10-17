@@ -1026,6 +1026,8 @@ public sealed partial class BattleCore : IBattleContext
         FellFirst(down, fell);
         if (!down.IsPlayerSide) AwardExp(down);
         CheckStrongWeather(down);
+        // Soul-Heart answers every faint (plan 06 · R27)
+        SoulHeart(down);
     }
 
     /// <summary>The next Pokémon at 0 HP that hasn't been told so yet: the fastest first, as the original faints them.</summary>

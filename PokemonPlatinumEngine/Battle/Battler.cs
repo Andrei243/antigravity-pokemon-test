@@ -433,6 +433,11 @@ internal sealed class Volatiles
     /// <summary>Dragon Cheer: so many stages likelier to land a critical hit (two for a Dragon type as it was cheered).</summary>
     public int DragonCheer;
 
+    // ---- The later abilities (plan 06 · R27)
+
+    /// <summary>Protean or Libero has changed its type since it came in (generation 9: once a stay on the field).</summary>
+    public bool ProteanUsed;
+
     public Volatiles Copy() => (Volatiles)MemberwiseClone();
 
     /// <summary>What Baton Pass hands on to the Pokémon that takes its place (the original's two <c>BATON_PASSED</c> masks).</summary>
@@ -563,6 +568,13 @@ internal sealed class TurnFlags
 
     /// <summary>A stage of its rose, or fell, this turn (plan 06 · R26; Showdown's <c>statsRaisedThisTurn</c>, <c>statsLoweredThisTurn</c>): Burning Jealousy and Lash Out ask.</summary>
     public bool StatsRaised, StatsLowered;
+
+    /// <summary>
+    /// The later abilities' marks on the move it is using (plan 06 · R27): a -ate ability made it of another type (a
+    /// fifth again), Sheer Force took its side effects away (power 5325/4096), and the hit being worked out is Parental
+    /// Bond's second (a quarter as strong).
+    /// </summary>
+    public bool AteBoosted, SheerForced, ParentalChild;
 
     public void Took(Place from, MoveCategory category, int damage)
     {

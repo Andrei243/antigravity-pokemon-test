@@ -175,6 +175,15 @@ internal static class OracleScenarios
             "Volt Absorb" or "Motor Drive" => move.Type == PokemonType.Electric,
             "Flash Fire" => move.Type == PokemonType.Fire,
             "Soundproof" => (move.Flags & MoveFlags.Sound) != 0,
+            // The later abilities that take a move in (plan 06 · R27)
+            "Lightning Rod" => move.Type == PokemonType.Electric,
+            "Storm Drain" => move.Type == PokemonType.Water,
+            "Sap Sipper" => move.Type == PokemonType.Grass,
+            "Earth Eater" or "Eelevate" => move.Type == PokemonType.Ground,
+            "Well-Baked Body" => move.Type == PokemonType.Fire,
+            "Bulletproof" => (move.Flags & MoveFlags.Ballistic) != 0,
+            "Wind Rider" => LaterAbilities.IsWind(move),
+            "Dazzling" or "Queenly Majesty" or "Armor Tail" => move.Priority > 0,
             "Wonder Guard" => true,
             _ => false
         };

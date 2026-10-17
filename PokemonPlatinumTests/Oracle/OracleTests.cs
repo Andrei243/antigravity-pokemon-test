@@ -164,6 +164,8 @@ public class OracleTests
         }
         var calc = answer.Damage!;
         if (rolls.SequenceEqual(calc)) return null;
+        // The core keeps the move off before the formula is asked (an ability that takes it in, plan 06 · R27): nothing, as the calculator says
+        if (calc.All(d => d == 0) && OracleScenarios.StoppedBeforeTheFormula(data, s.Defender, s.Field.Weather, s.Field.Terrain)) return null;
         int points = rolls.Zip(calc, (a, b) => Math.Abs(a - b)).Max();
         return new Difference("damage", rolls, calc,
             $"#{s.Id} by {points} ({100.0 * points / Math.Max(1, calc.Max()):0.#}%) ours {Range(rolls)} theirs {Range(calc)}{(crit != s.Crit && rolls.Any(r => r > 0) ? " (our hit's critical: " + crit + ")" : "")} | {Describe(s)}");

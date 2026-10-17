@@ -176,6 +176,8 @@ public sealed partial class BattleCore
     private int PriorityOf(Act act)
     {
         int priority = act.Move?.Priority ?? 0;
+        // Prankster, Gale Wings, Triage (plan 06 · R27)
+        priority += AbilityPriority(act.User, act.Move);
         if (act.Move?.Data.Effect == "GrassyGlide" && Field.Has(FieldCondition.GrassyTerrain) && DamageCalculator.IsGrounded(act.User)) priority++;
         return priority;
     }

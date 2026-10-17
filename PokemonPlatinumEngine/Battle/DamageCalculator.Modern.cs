@@ -92,6 +92,8 @@ public static partial class DamageCalculator
             else if (!physical && myHold == "PowerUpSpec") bp.Add(In(100 + myParam, 100));
             // Solar Beam under a sky that dims the sun
             if (move.Data.Effect == "SkipChargeTurnInSun" && field?.WeatherDimsTheSun == true) bp.Add(2048);
+            // The later abilities' (plan 06 · R27; DamageCalculator.Abilities.cs)
+            if (!selfHit) LaterPower(bp, attacker, defender, move, mine, typed, weather);
             power = Math.Max(1, (int)Formulas.RoundHalfDown((long)power * Formulas.Chain(bp, 41, 2097152)));
 
             // ---- The stats: the stage first, then the bonuses (onModifyAtk and its kin)
@@ -132,6 +134,7 @@ public static partial class DamageCalculator
             if (myHold == "PikaSpatkUp" && mySpecies == "Pikachu") at.Add(8192);
             // (A Choice item does nothing for a Dynamaxed Pokémon: plan 06 · R22, Showdown's choiceband onModifyAtk)
             if (((physical && myHold == "ChoiceAtk") || (!physical && myHold == "ChoiceSpatk")) && !attacker.Volatile.Dynamaxed) at.Add(6144);
+            if (!selfHit) LaterAttack(at, attacker, defender, move, mine, theirs, physical, typed, weather);
             attack = Math.Max(1, (int)Formulas.RoundHalfDown((long)attack * Formulas.Chain(at, 410, 131072)));
 
             // A sandstorm hardens Rock types against special moves and snow Ice types against physical ones, on the stat itself
@@ -142,6 +145,7 @@ public static partial class DamageCalculator
             if (!defensePhysical && weather == BattleWeather.Sun && !breaksAbility && SideHas(defender, "Flower Gift")) df.Add(6144);
             if (!defensePhysical && theirHold == "ClamperlSpdef" && theirSpecies == "Clamperl") df.Add(8192);
             if (defensePhysical && theirHold == "DittoDefUp" && theirSpecies == "Ditto" && !defender.Volatile.Transformed) df.Add(8192);
+            if (!selfHit) LaterDefense(df, defender, theirs, defensePhysical);
             defense = Math.Max(1, (int)Formulas.RoundHalfDown((long)defense * Formulas.Chain(df, 410, 131072)));
 
             // ---- The base damage, then a spread hit, the weather and a critical hit
@@ -175,7 +179,7 @@ public static partial class DamageCalculator
 
             var final = new List<int>();
             var side = field?.Side(defender.Side);
-            bool screened = side != null && !result.IsCritical && !pastScreens && !selfHit && ((physical ? side.Reflect : side.LightScreen) || side.AuroraVeil);
+            bool screened = side != null && !result.IsCritical && !pastScreens && !selfHit && !Infiltrates(attacker) && ((physical ? side.Reflect : side.LightScreen) || side.AuroraVeil);
             if (screened) final.Add(field!.Standing(defender.Side) >= 2 ? 2732 : 2048);
             if (result.IsCritical) final.Add(Formulas.In4096ths(attackerEffects.Aggregate(1f, (m, e) => Math.Max(m, e.CriticalBoost))));
             // Glaive Rush leaves its user open to twice the hurt (plan 06 · R26b)
@@ -191,6 +195,7 @@ public static partial class DamageCalculator
                 else if (myHold == "HpDrainOnAtk") final.Add(In(100 + myParam, 100));
                 else if (myHold == "BoostRepeated") final.Add(4096 + 819 * Math.Min(5, Math.Max(0, attacker.Volatile.MetronomeCount - 1)));
             }
+            if (typed && !selfHit) LaterFinal(final, attacker, defender, move, mine, theirs, result.TypeMultiplier);
             int finalMod = Formulas.Chain(final, 41, 131072);
 
             int roll = noVariance ? 0 : rng.Roll(RollKind.Damage, 16);
