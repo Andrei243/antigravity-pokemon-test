@@ -15,7 +15,7 @@ namespace PokemonPlatinumEngine.Battle.Sim;
 public sealed partial class BattleCore
 {
     /// <summary>A turn spent getting ready: the line it is told with, and where it takes the user meanwhile.</summary>
-    private sealed record ChargeTurn(string Line, Elsewhere Where = Elsewhere.No, bool RaisesDefense = false, bool NotInTheSun = false, bool RaisesSpAttack = false);
+    private sealed record ChargeTurn(string Line, Elsewhere Where = Elsewhere.No, bool RaisesDefense = false, bool NotInTheSun = false, bool RaisesSpAttack = false, bool NotInTheRain = false);
 
     /// <summary>
     /// One move effect: only the parts it has are set. <see cref="Does"/> is a whole move in itself (a status

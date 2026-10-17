@@ -469,7 +469,7 @@ public sealed partial class BattleCore
         Baton? baton = null;
         if (place.IsActive)
         {
-            baton = Withdraw(place, use.Leaves == Leaving.PassesTheBaton);
+            baton = use.Leaves == Leaving.ShedsItsTail ? HandOnTheDoll(place) : Withdraw(place, use.Leaves == Leaving.PassesTheBaton);
             Emit(new Recalled(place.Place));
             Emit(new Left(place.Place));
         }

@@ -65,7 +65,7 @@ public sealed partial class BattleCore
     }
 
     /// <summary>How a Pokémon leaves the field by its own move, once the move is done.</summary>
-    private enum Leaving { No, Returns, PassesTheBaton, MakesAWish, DancesAway }
+    private enum Leaving { No, Returns, PassesTheBaton, MakesAWish, DancesAway, ShedsItsTail }
 
     /// <summary>One use of a move: who, what, at whom, and what came of it.</summary>
     private sealed class MoveUse
@@ -132,6 +132,7 @@ public sealed partial class BattleCore
         }
 
         user.MovedThisTurn = true;
+        PaysForTheRush(user);
         ItemLetItMoveFirst(act);
         if (!CanMove(user, move) || (!goesOn && Disobeys(user, ref move, ref target)))
         {
@@ -656,6 +657,8 @@ public sealed partial class BattleCore
     private bool SkipsTheCharge(MoveUse use, ChargeTurn charge)
     {
         if (charge.NotInTheSun && Field.WeatherInEffect == BattleWeather.Sun) return true;
+        // Electro Shot gathers itself and strikes at once in the rain (plan 06 · R26b)
+        if (charge.NotInTheRain && Field.WeatherInEffect is BattleWeather.Rain or BattleWeather.HeavyRain) return ChargesInTheRain(use, charge);
         if (!BattleEffects.Of(use.User).Any(e => e.SkipsChargeTurn)) return false;
 
         Say(string.Format(Text.Of(charge.Line), use.User.Name));
@@ -795,7 +798,7 @@ public sealed partial class BattleCore
         }
 
         // Telekinesis holds its target where every move finds it (plan 06 · R25; a one-hit knockout decided above)
-        bool aimed = (target.Volatile.LockOnTurns > 0 && target.Volatile.LockedOnBy == user.Place) || target.Volatile.TelekinesisTurns > 0;
+        bool aimed = (target.Volatile.LockOnTurns > 0 && target.Volatile.LockedOnBy == user.Place) || target.Volatile.TelekinesisTurns > 0 || target.Volatile.GlaiveRush;
         if (aimed || BattleEffects.Of(user).Concat(BattleEffects.Of(target, includeAbility: !BattleEffects.Of(user).Any(e => e.IgnoresTargetAbility))).Any(e => e.MovesNeverMiss))
             return true;
 
@@ -942,7 +945,7 @@ public sealed partial class BattleCore
                 {
                     // The hits stop once the target is down or their user has been put to sleep (Effect Spore); Triple Kick rolls each kick
                     if (!t.IsActive || user.Pokemon!.Status == StatusCondition.Sleep) break;
-                    if (effect.EachHitRollsAccuracy && !Hits(use, t))
+                    if (effect.EachHitRollsAccuracy && RollsEachHit(use) && !Hits(use, t))
                     {
                         hit.Disrupted = true;
                         break;
@@ -1068,6 +1071,7 @@ public sealed partial class BattleCore
 
         // What the target took this turn, for Counter, Mirror Coat, Metal Burst, Revenge, Assurance and Focus Punch
         t.Turn.Took(user.Place, move.Category, endured ? dealt : damage);
+        CountTheBlow(t);
         p.CurrentHP -= dealt;
         t.Volatile.LastHitBy = user.Place;
         if (t.IsPlayerSide) Evolution.CountDamageTaken(p, dealt);
@@ -1181,7 +1185,7 @@ public sealed partial class BattleCore
         }
 
         // A Fire move thaws a frozen target
-        if (t.Pokemon.CurrentHP > 0 && hit.Touched && dealt > 0 && t != user && move.Type == PokemonType.Fire && t.Pokemon.Status == StatusCondition.Freeze)
+        if (t.Pokemon.CurrentHP > 0 && hit.Touched && dealt > 0 && t != user && (move.Type == PokemonType.Fire || ThawsItsTarget(move.Data)) && t.Pokemon.Status == StatusCondition.Freeze)
         {
             t.Pokemon.Status = StatusCondition.None;
             Say(Text.Of("battle.thawedOut", ("user", t.Name))).With(new StatusChanged(t.Place, StatusCondition.None));

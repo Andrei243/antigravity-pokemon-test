@@ -1019,6 +1019,7 @@ public sealed partial class BattleCore : IBattleContext
         down.ClearVolatile();
         NoteFaint(down);
         faintedOnTurn[down.Side] = Turn;
+        CountTheFallen(down);
         var fell = Say(Text.Of("battle.fainted", ("pokemon", down.Name))).With(new Fainted(down.Place));
         // Whoever loved it no longer does, from the line that tells of its fall (plan 09 · L2)
         foreach (var told in letGo) fell.With(told);

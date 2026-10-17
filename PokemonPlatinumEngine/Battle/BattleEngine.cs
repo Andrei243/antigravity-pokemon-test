@@ -309,6 +309,7 @@ public partial class BattleEngine
             Anim.SettleCharge(place.Side, place.Slot, theirs.IsActive && theirs.Volatile.Charging);
             // What lasts on it (plan 09 · L2): the lines have told all of it already; this catches a Pokémon changed from outside
             Anim.Conditions.Settle(place.Place, ConditionLooks.RulesHave(theirs));
+            Anim.Conditions.SettleMarks(place.Place, ConditionLooks.MarksRulesHave(theirs));
         }
         Weather = core.Field.Weather;
         Anim.SettleWeather(Weather);

@@ -369,3 +369,16 @@ public sealed record MaxMoveUsed(Place Place, string MaxMove, string From) : Bat
 /// <paramref name="Hp"/>). Whoever shows the battle takes them from it (plan 25 gives it a look of its own).
 /// </summary>
 public sealed record Terastallized(Place Place, string TeraType, string? Form, int MaxHp, int Hp) : BattleEvent;
+
+/// <summary>
+/// What a later move leaves on a Pokémon for as long as it stays in (plan 06 · R26b): Salt Cure's salt and Syrup
+/// Bomb's syrup, at the enum's end for those to come.
+/// </summary>
+public enum MoveMark { SaltCure, SyrupBomb }
+
+/// <summary>
+/// A later move's mark on a Pokémon comes or goes (plan 06 · R26b): it rides on the line that tells of it, or stands by
+/// itself where the mark goes with no line (the syrup's last turn, its user gone). Leaving the field or fainting clears
+/// every mark with no event, as it clears a confusion. Whoever shows the battle shows the mark while it lasts.
+/// </summary>
+public sealed record MarkChanged(Place Place, MoveMark Mark, bool On) : BattleEvent;

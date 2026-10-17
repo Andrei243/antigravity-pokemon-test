@@ -13797,10 +13797,10 @@
         "ivScale": 255,
         "personality": 2406673376,
         "moves": [
-          "Bullet Seed",
-          "Rock Blast",
           "U-turn",
-          "Knock Off"
+          "Tidy Up",
+          "Tail Slap",
+          "Bullet Seed"
         ]
       }
     ]
@@ -14725,10 +14725,10 @@
         "ivScale": 255,
         "personality": 3145498627,
         "moves": [
-          "Earthquake",
-          "Swords Dance",
+          "Aqua Jet",
           "Icicle Crash",
-          "Aqua Jet"
+          "Snowscape",
+          "Earthquake"
         ]
       }
     ]
@@ -21260,9 +21260,9 @@
         "personality": 2462779283,
         "moves": [
           "Recover",
-          "Sludge Bomb",
+          "Dynamax Cannon",
           "Fire Blast",
-          "Cosmic Power"
+          "Sludge Bomb"
         ]
       }
     ]
@@ -21710,9 +21710,9 @@
         "personality": 1111101546,
         "moves": [
           "U-turn",
+          "Flower Trick",
           "Knock Off",
-          "Leaf Storm",
-          "Grassy Terrain"
+          "Leaf Storm"
         ]
       }
     ]
@@ -21775,10 +21775,10 @@
         "ivScale": 255,
         "personality": 2317455843,
         "moves": [
-          "Slack Off",
-          "Hex",
           "Will-O-Wisp",
-          "Overheat"
+          "Slack Off",
+          "Torch Song",
+          "Hex"
         ]
       }
     ]
@@ -21841,9 +21841,9 @@
         "ivScale": 255,
         "personality": 3523810140,
         "moves": [
+          "Aqua Step",
           "Roost",
           "Close Combat",
-          "Rapid Spin",
           "Swords Dance"
         ]
       }
@@ -21982,7 +21982,7 @@
           "First Impression",
           "U-turn",
           "Sucker Punch",
-          "Bounce"
+          "Axe Kick"
         ]
       }
     ]
@@ -22045,10 +22045,10 @@
         "ivScale": 255,
         "personality": 2848036808,
         "moves": [
+          "Double Shock",
+          "Revival Blessing",
           "Nuzzle",
-          "Close Combat",
-          "Agility",
-          "Discharge"
+          "Close Combat"
         ]
       }
     ]
@@ -22092,9 +22092,9 @@
         "personality": 788961476,
         "moves": [
           "Encore",
+          "Tidy Up",
           "Bite",
-          "Copycat",
-          "Beat Up"
+          "Population Bomb"
         ]
       }
     ]
@@ -22295,10 +22295,10 @@
         "ivScale": 255,
         "personality": 113057071,
         "moves": [
-          "Earthquake",
           "Recover",
           "Stealth Rock",
-          "Protect"
+          "Protect",
+          "Earthquake"
         ]
       }
     ]
@@ -22342,9 +22342,9 @@
         "personality": 2349014571,
         "moves": [
           "Energy Ball",
+          "Armor Cannon",
           "Focus Blast",
-          "Psyshock",
-          "Expanding Force"
+          "Psyshock"
         ]
       }
     ]
@@ -22367,10 +22367,10 @@
         "ivScale": 255,
         "personality": 1319476904,
         "moves": [
+          "Bitter Blade",
           "Swords Dance",
           "Shadow Sneak",
-          "Flare Blitz",
-          "Psycho Cut"
+          "Flare Blitz"
         ]
       }
     ]
@@ -22761,10 +22761,10 @@
         "ivScale": 255,
         "personality": 997271298,
         "moves": [
-          "Recover",
+          "Revival Blessing",
           "Psychic",
-          "Bug Buzz",
-          "Trick Room"
+          "Recover",
+          "Bug Buzz"
         ]
       }
     ]
@@ -22807,10 +22807,10 @@
         "ivScale": 255,
         "personality": 3233228797,
         "moves": [
-          "Calm Mind",
+          "U-turn",
           "Dazzling Gleam",
-          "Roost",
-          "Substitute"
+          "Shadow Ball",
+          "Lumina Crash"
         ]
       }
     ]
@@ -22873,10 +22873,10 @@
         "ivScale": 255,
         "personality": 144615799,
         "moves": [
-          "Stealth Rock",
           "Knock Off",
-          "Play Rough",
-          "Thunder Wave"
+          "Thunder Wave",
+          "Gigaton Hammer",
+          "Stealth Rock"
         ]
       }
     ]
@@ -22991,10 +22991,10 @@
         "ivScale": 255,
         "personality": 3586862059,
         "moves": [
-          "Drain Punch",
-          "Bulk Up",
           "Wave Crash",
-          "Focus Punch"
+          "Drain Punch",
+          "Jet Punch",
+          "Bulk Up"
         ]
       }
     ]
@@ -23040,7 +23040,7 @@
           "Shift Gear",
           "Gunk Shot",
           "Iron Head",
-          "Uproar"
+          "Spin Out"
         ]
       }
     ]
@@ -23063,10 +23063,10 @@
         "ivScale": 255,
         "personality": 498314597,
         "moves": [
-          "Rapid Spin",
           "Taunt",
-          "Draco Meteor",
-          "Knock Off"
+          "Rapid Spin",
+          "Shed Tail",
+          "Draco Meteor"
         ]
       }
     ]
@@ -23092,7 +23092,7 @@
           "Coil",
           "Rest",
           "Iron Tail",
-          "Earthquake"
+          "Shed Tail"
         ]
       }
     ]
@@ -23136,9 +23136,9 @@
         "personality": 1704668894,
         "moves": [
           "Sludge Wave",
-          "Power Gem",
+          "Mortal Spin",
           "Stealth Rock",
-          "Acid Armor"
+          "Power Gem"
         ]
       }
     ]
@@ -23279,10 +23279,10 @@
         "ivScale": 255,
         "personality": 4117443024,
         "moves": [
-          "Psycho Cut",
-          "Night Slash",
           "Aqua Jet",
-          "Final Gambit"
+          "Psycho Cut",
+          "Aqua Cutter",
+          "Night Slash"
         ]
       }
     ]
@@ -23357,9 +23357,9 @@
         "ivScale": 255,
         "personality": 1028830025,
         "moves": [
-          "Gunk Shot",
-          "Drain Punch",
           "Bulk Up",
+          "Rage Fist",
+          "Gunk Shot",
           "Rest"
         ]
       }
@@ -23461,10 +23461,10 @@
         "ivScale": 255,
         "personality": 1205712192,
         "moves": [
-          "Swords Dance",
-          "Iron Head",
           "Sucker Punch",
-          "Guillotine"
+          "Iron Head",
+          "Kowtow Cleave",
+          "Swords Dance"
         ]
       }
     ]
@@ -23839,10 +23839,10 @@
         "ivScale": 255,
         "personality": 2942581918,
         "moves": [
+          "Earthquake",
           "Icicle Crash",
           "Ice Shard",
-          "Earthquake",
-          "Crunch"
+          "Glaive Rush"
         ]
       }
     ]
@@ -23885,10 +23885,10 @@
         "ivScale": 255,
         "personality": 883506586,
         "moves": [
-          "Recover",
-          "Thunder Wave",
-          "Nasty Plot",
-          "Shadow Ball"
+          "Make It Rain",
+          "Shadow Ball",
+          "Focus Blast",
+          "Nasty Plot"
         ]
       }
     ]
@@ -23912,8 +23912,8 @@
         "personality": 4149001752,
         "moves": [
           "Knock Off",
-          "Leech Seed",
           "Giga Drain",
+          "Leech Seed",
           "Stun Spore"
         ]
       }
@@ -24093,10 +24093,10 @@
         "ivScale": 255,
         "personality": 1237205384,
         "moves": [
-          "Dragon Pulse",
-          "Calm Mind",
           "Draco Meteor",
-          "Mirror Coat"
+          "Electro Drift",
+          "Dragon Pulse",
+          "Calm Mind"
         ]
       }
     ]
@@ -24119,10 +24119,10 @@
         "ivScale": 255,
         "personality": 207733253,
         "moves": [
-          "Hydro Pump",
-          "Draco Meteor",
+          "Sunny Day",
+          "Hydro Steam",
           "Flamethrower",
-          "Outrage"
+          "Draco Meteor"
         ]
       }
     ]
@@ -24145,10 +24145,10 @@
         "ivScale": 255,
         "personality": 3473097347,
         "moves": [
-          "Megahorn",
+          "Psyblade",
           "Leaf Blade",
           "Swords Dance",
-          "Close Combat"
+          "Megahorn"
         ]
       }
     ]
@@ -24217,10 +24217,10 @@
         "ivScale": 255,
         "personality": 384549884,
         "moves": [
-          "Shadow Ball",
-          "Strength Sap",
+          "Matcha Gotcha",
           "Calm Mind",
-          "Leaf Storm"
+          "Shadow Ball",
+          "Strength Sap"
         ]
       }
     ]
@@ -24321,10 +24321,10 @@
         "ivScale": 255,
         "personality": 561366515,
         "moves": [
-          "Synthesis",
-          "Superpower",
           "U-turn",
-          "Wood Hammer"
+          "Ivy Cudgel",
+          "Superpower",
+          "Synthesis"
         ]
       }
     ]
@@ -24373,10 +24373,10 @@
         "ivScale": 255,
         "personality": 2797324015,
         "moves": [
-          "Dragon Tail",
           "Giga Drain",
-          "Power Whip",
-          "Substitute"
+          "Dragon Tail",
+          "Fickle Beam",
+          "Power Whip"
         ]
       }
     ]
@@ -24425,10 +24425,10 @@
         "ivScale": 255,
         "personality": 738248682,
         "moves": [
-          "Discharge",
-          "Thunderbolt",
           "Draco Meteor",
-          "Dragon Pulse"
+          "Discharge",
+          "Thunderclap",
+          "Thunderbolt"
         ]
       }
     ]
@@ -24451,10 +24451,10 @@
         "ivScale": 255,
         "personality": 4003612776,
         "moves": [
+          "Mighty Cleave",
           "Swords Dance",
           "Megahorn",
-          "Sacred Sword",
-          "Rock Tomb"
+          "Sacred Sword"
         ]
       }
     ]
@@ -24477,10 +24477,10 @@
         "ivScale": 255,
         "personality": 2974140646,
         "moves": [
-          "Focus Blast",
           "Psyshock",
+          "Focus Blast",
           "Calm Mind",
-          "Volt Switch"
+          "Tachyon Cutter"
         ]
       }
     ]
@@ -24529,9 +24529,9 @@
         "ivScale": 255,
         "personality": 915065313,
         "moves": [
-          "Shadow Ball",
-          "Parting Shot",
           "Nasty Plot",
+          "Malignant Chain",
+          "Parting Shot",
           "Recover"
         ]
       }

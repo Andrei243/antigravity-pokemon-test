@@ -156,7 +156,7 @@ public static partial class DamageCalculator
     public static bool IgnoresDefenseStages(MoveData move) => move.Effect == "ChipAway";
 
     /// <summary>Storm Throw, Frost Breath and Wicked Blow: every hit is critical, unless the target or its side keeps critical hits off (<c>willCrit</c>).</summary>
-    public static bool AlwaysCritical(MoveData move) => move.Effect is "StormThrow" or "SurgingStrikes";
+    public static bool AlwaysCritical(MoveData move) => move.Effect is "StormThrow" or "SurgingStrikes" or "FlowerTrick";
 
     /// <summary>
     /// The stat a move hits with: Attack or Sp. Atk by its category, or Body Press's Defense (<c>overrideOffensiveStat:
@@ -366,7 +366,7 @@ public static partial class DamageCalculator
         bool shared = screened && field!.Standing(defender.Side) >= 2;
 
         int damage = Formulas.BaseDamage(atkPokemon.Level, power, attack, defense, burned, spread, screened, shared,
-            typeless ? BattleWeather.None : weather, move.Type,
+            typeless ? BattleWeather.None : weather, SteamsInTheSun(move.Data, weather) ? PokemonType.Fire : move.Type,
             dimmedBeam: move.Data.Effect == "SkipChargeTurnInSun" && field?.WeatherDimsTheSun == true,
             flashFire: attacker.FlashFire && move.Type == PokemonType.Fire && !typeless);
 
@@ -399,6 +399,8 @@ public static partial class DamageCalculator
             foreach (var e in defenderEffects) damage = Formulas.Scale(damage, e.IncomingDamageMultiplier(defender, attacker, move, result.TypeMultiplier));
             if (result.IsSuperEffective && myHold == "PowerUpSe") damage = damage * (100 + myParam) / 100;
             foreach (var e in attackerEffects) damage = Formulas.Scale(damage, e.DamageMultiplier(attacker, defender, move, result.TypeMultiplier));
+            // Glaive Rush leaves its user open to twice the hurt (plan 06 · R26b; its condition's onSourceModifyDamage)
+            if (defender.Volatile.GlaiveRush) damage *= 2;
         }
 
         result.Damage = Math.Max(1, damage);
@@ -419,7 +421,7 @@ public static partial class DamageCalculator
         var attackerEffects = BattleEffects.Of(attacker).ToList();
         bool breaks = attackerEffects.Any(e => e.IgnoresTargetAbility);
         var defenderEffects = BattleEffects.Of(defender, includeAbility: !breaks).ToList();
-        int stage = move.Data.CritStage + critBonus + attackerEffects.Sum(e => e.CritStageBonus) + ItemCritStages(attacker) + (attacker.Volatile.FocusEnergy ? 2 : 0) + attacker.Volatile.ChiStrike;
+        int stage = move.Data.CritStage + critBonus + attackerEffects.Sum(e => e.CritStageBonus) + ItemCritStages(attacker) + (attacker.Volatile.FocusEnergy ? 2 : 0) + attacker.Volatile.ChiStrike + attacker.Volatile.DragonCheer;
         // Storm Throw, Frost Breath and Wicked Blow are critical with no roll (Showdown's willCrit; plan 06 · R24)
         // Laser Focus makes its user's hits critical with no roll for the turn after it too (plan 06 · R25)
         bool focused = attacker.Volatile.LaserFocusUntil >= (attacker.Field?.Turn() ?? int.MaxValue);
