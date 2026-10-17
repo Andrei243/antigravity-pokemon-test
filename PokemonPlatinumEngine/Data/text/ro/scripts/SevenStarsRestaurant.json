@@ -1,0 +1,48 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Waiter"
+      ],
+      "text": [
+        "Chelner"
+      ]
+    },
+    {
+      "en": [
+        "I do beg your pardon. The Seven Stars is closed for the night.",
+        "We look forward to serving you once we have opened again."
+      ],
+      "text": [
+        "Vă rog să mă iertați. Șapte Stele e închis în seara asta.",
+        "Abia așteptăm să vă servim când redeschidem."
+      ]
+    }
+  ],
+  "Ask": [
+    {
+      "en": [
+        "The house rule is two Pokémon against two, I'm afraid. Do come back with a second!"
+      ],
+      "text": [
+        "Regula casei e doi Pokémoni contra doi, mă tem. Revino cu încă unul!"
+      ]
+    },
+    {
+      "en": [
+        "Will you take the two of us on?"
+      ],
+      "text": [
+        "Te lupți cu noi doi?"
+      ]
+    },
+    {
+      "en": [
+        "Another time, then. The soup is getting cold in any case."
+      ],
+      "text": [
+        "Altă dată, atunci. Oricum se răcește supa."
+      ]
+    }
+  ]
+}

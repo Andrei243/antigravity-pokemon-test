@@ -1,0 +1,54 @@
+{
+  "CoinToss": [
+    {
+      "en": [
+        "The hotel was full, but they managed to squeeze the two of us in here.",
+        "So at last we're alone together. Or we would be, if you weren't standing there.",
+        "Look, here's something we have no more use for. Take it, would you?"
+      ],
+      "text": [
+        "Hotelul era plin, dar au reușit să ne înghesuie pe amândoi aici.",
+        "Așa că, în sfârșit, suntem singuri. Sau am fi, dacă n-ai sta tu acolo.",
+        "Uite, avem ceva de care nu mai avem nevoie. Ia-l, te rog."
+      ]
+    },
+    {
+      "en": [
+        "{player} added the Coin Toss app to the Pokétch!"
+      ],
+      "text": [
+        "Aplicația Coin Toss a fost adăugată în Pokétch!"
+      ]
+    },
+    {
+      "en": [
+        "I've always left my decisions to the toss of a coin.",
+        "It makes me brave. Nothing I decide is ever my fault!"
+      ],
+      "text": [
+        "Mereu mi-am lăsat hotărârile pe seama unei monede aruncate.",
+        "Mă face curajos. Nimic din ce hotărăsc nu e vreodată vina mea!"
+      ]
+    }
+  ],
+  "Lady": [
+    {
+      "en": [
+        "It was his coin toss that landed us in this musty, stuffy old cottage..."
+      ],
+      "text": [
+        "Moneda lui ne-a adus în căsuța asta veche, îmbâcsită și mucegăită..."
+      ]
+    },
+    {
+      "en": [
+        "We came here to be alone and talk, with nobody to disturb us.",
+        "We need this time together, just the two of us."
+      ],
+      "text": [
+        "Am venit aici ca să stăm singuri și să vorbim, fără să ne deranjeze nimeni.",
+        "Avem nevoie de timpul ăsta împreună, doar noi doi."
+      ]
+    }
+  ]
+}

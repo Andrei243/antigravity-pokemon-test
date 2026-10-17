@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "Galactic HQ"
+    ],
+    "text": [
+      "Cartierul Galactic"
+    ]
+  },
+  "people": {
+    "grunt_m": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm in Team Galactic, and I haven't got a single Pokémon. The lowest of the low, that's me.",
+          "It's my own fault, mind. I still can't work out which warp panel goes where."
+        ],
+        "text": [
+          "Sunt în Echipa Galactic și n-am niciun Pokémon. Cel mai de jos dintre cei de jos, ăsta-s eu.",
+          "E vina mea, să știi. Încă nu-mi dau seama ce panou de teleportare unde duce."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

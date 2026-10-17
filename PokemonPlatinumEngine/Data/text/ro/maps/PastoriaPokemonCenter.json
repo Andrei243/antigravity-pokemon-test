@@ -1,0 +1,73 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Center"
+    ],
+    "text": [
+      "Centrul Pokémon"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "black_belt": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          "Centură Neagră"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Great Marsh is vast! How vast, you ask?",
+          "Go up to the observatory and see for yourself!"
+        ],
+        "text": [
+          "Marea Mlaștină e uriașă! Cât de uriașă, întrebi?",
+          "Urcă la observator și vezi cu ochii tăi!"
+        ]
+      }
+    },
+    "school_kid_f": {
+      "name": {
+        "en": [
+          "Schoolgirl"
+        ],
+        "text": [
+          "Școlărița"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pastoria's Great Marsh used to be part of the sea.",
+          "The water drained away little by little and left the marsh behind. That's why Pokémon live there that you'll see nowhere else."
+        ],
+        "text": [
+          "Marea Mlaștină din Pastoria făcea odată parte din mare.",
+          "Apa s-a scurs încetul cu încetul și a lăsat în urmă mlaștina. De aceea trăiesc acolo Pokémoni pe care nu-i vezi nicăieri altundeva."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

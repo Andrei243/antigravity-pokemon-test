@@ -1,0 +1,82 @@
+{
+  "Attendant": [
+    {
+      "en": [
+        "Hello. May I help you with anything?",
+        "WHAT'S GOOD?",
+        "NOTHING, THANKS"
+      ],
+      "text": [
+        "Bună ziua. Te pot ajuta cu ceva?",
+        "CE-MI RECOMANZI?",
+        "NIMIC, MERSI"
+      ]
+    },
+    {
+      "en": [
+        "Please enjoy your visit."
+      ],
+      "text": [
+        "Să ai o vizită plăcută."
+      ]
+    },
+    {
+      "en": [
+        "Might I interest you in a Protein? It is a drink that raises Attack."
+      ],
+      "text": [
+        "Te-ar interesa o Proteină? E o băutură care crește Atacul."
+      ]
+    }
+  ],
+  "Poketch": [
+    {
+      "en": [
+        "We're giving away a Pokétch app, quite free, as a promotion. The Counter app, over the counter! Would you like it?"
+      ],
+      "text": [
+        "Dăruim o aplicație de Pokétch, gratis, ca promoție. Aplicația Counter, chiar de la tejghea! O vrei?"
+      ]
+    },
+    {
+      "en": [
+        "There you are. Go forth and count!"
+      ],
+      "text": [
+        "Poftim. Du-te și numără!"
+      ]
+    },
+    {
+      "en": [
+        "{player} added the Counter app to the Pokétch!"
+      ],
+      "text": [
+        "Aplicația Counter a fost adăugată în Pokétch!"
+      ]
+    },
+    {
+      "en": [
+        "I do hope that Counter app is proving useful."
+      ],
+      "text": [
+        "Sper că aplicația Counter îți e de folos."
+      ]
+    },
+    {
+      "en": [
+        "Not interested? I'll be here if you change your mind."
+      ],
+      "text": [
+        "Nu te interesează? Sunt aici dacă te răzgândești."
+      ]
+    },
+    {
+      "en": [
+        "Oh! But you have no Pokétch to put it on. Come back when you have one!"
+      ],
+      "text": [
+        "O! Dar n-ai un Pokétch în care s-o pui. Revino când ai unul!"
+      ]
+    }
+  ]
+}

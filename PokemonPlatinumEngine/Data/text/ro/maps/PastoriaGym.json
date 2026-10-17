@@ -1,0 +1,206 @@
+{
+  "displayName": {
+    "en": [
+      "Pastoria Gym"
+    ],
+    "text": [
+      "Arena Pastoria"
+    ]
+  },
+  "people": {
+    "crasher_wake": {
+      "name": {
+        "en": [
+          "Crasher Wake"
+        ],
+        "text": [
+          "Crasher Wake"
+        ]
+      }
+    },
+    "gym_guide": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          "Ghidul Arenei"
+        ]
+      }
+    },
+    "tuber_jacky": {
+      "name": {
+        "en": [
+          "Jacky"
+        ],
+        "text": [
+          "Jacky"
+        ]
+      },
+      "before": {
+        "en": [
+          "Tuber Jacky: I float wherever the water takes me! Want to see where it takes you?"
+        ],
+        "text": [
+          "Copil cu colac Jacky: Plutesc oriunde mă duce apa! Vrei să vezi unde te duce pe tine?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Tuber Jacky: Blub... I sank. Push the buttons and the water goes up and down, you know."
+        ],
+        "text": [
+          "Copil cu colac Jacky: Blub... M-am scufundat. Apeși butoanele și apa urcă și coboară, să știi."
+        ]
+      }
+    },
+    "tuber_caitlyn": {
+      "name": {
+        "en": [
+          "Caitlyn"
+        ],
+        "text": [
+          "Caitlyn"
+        ]
+      },
+      "before": {
+        "en": [
+          "Tuber Caitlyn: My float ring and I are ready for anything! Even you!"
+        ],
+        "text": [
+          "Copil cu colac Caitlyn: Eu și colacul meu suntem gata de orice! Chiar și de tine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Tuber Caitlyn: My ring went flat... You're really strong!"
+        ],
+        "text": [
+          "Copil cu colac Caitlyn: Mi s-a dezumflat colacul... Ai o forță grozavă!"
+        ]
+      }
+    },
+    "sailor_damian": {
+      "name": {
+        "en": [
+          "Damian"
+        ],
+        "text": [
+          "Damian"
+        ]
+      },
+      "before": {
+        "en": [
+          "Sailor Damian: Ahoy! A sailor reads the tide. Let's see if you can read it too!"
+        ],
+        "text": [
+          "Marinar Damian: Ahoi! Un marinar citește mareea. Să vedem dacă o poți citi și tu!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Sailor Damian: Ran aground, I did. Mind which button you step on, matey."
+        ],
+        "text": [
+          "Marinar Damian: Am eșuat pe uscat. Ai grijă pe ce buton calci, camarade."
+        ]
+      }
+    },
+    "sailor_samson": {
+      "name": {
+        "en": [
+          "Samson"
+        ],
+        "text": [
+          "Samson"
+        ]
+      },
+      "before": {
+        "en": [
+          "Sailor Samson: The Leader's waves are bigger than any at sea! Mine are no ripple either!"
+        ],
+        "text": [
+          "Marinar Samson: Valurile Liderului sunt mai mari ca oricare de pe mare! Nici ale mele nu-s simple unde!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Sailor Samson: Swamped! Go on, then. Wake's waiting up top."
+        ],
+        "text": [
+          "Marinar Samson: Inundat! Hai, du-te. Wake te așteaptă sus."
+        ]
+      }
+    },
+    "fisherman_erick": {
+      "name": {
+        "en": [
+          "Erick"
+        ],
+        "text": [
+          "Erick"
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Erick: Shh, you'll scare the fish. Fine, I'll reel you in instead!"
+        ],
+        "text": [
+          "Pescar Erick: Șșt, sperii peștii. Bine, atunci te prind pe tine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Erick: The one that got away... That was you."
+        ],
+        "text": [
+          "Pescar Erick: Cel care a scăpat... Ăla ai fost tu."
+        ]
+      }
+    },
+    "fisherman_walter": {
+      "name": {
+        "en": [
+          "Walter"
+        ],
+        "text": [
+          "Walter"
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Walter: A bite! Oh, it's only a Trainer. Well, a battle'll do!"
+        ],
+        "text": [
+          "Pescar Walter: A mușcat! A, e doar un Antrenor. Ei, merge și o luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Walter: Snapped my line clean through. Nice work."
+        ],
+        "text": [
+          "Pescar Walter: Mi-ai rupt firul de tot. Bună treabă."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "11,38": {
+      "en": [
+        "PASTORIA CITY POKéMON GYM\nLeader: Crasher Wake"
+      ],
+      "text": [
+        "ARENA POKéMON DIN ORAȘUL PASTORIA\nLider: Crasher Wake"
+      ]
+    },
+    "15,38": {
+      "en": [
+        "PASTORIA CITY POKéMON GYM\nLeader: Crasher Wake"
+      ],
+      "text": [
+        "ARENA POKéMON DIN ORAȘUL PASTORIA\nLider: Crasher Wake"
+      ]
+    }
+  }
+}

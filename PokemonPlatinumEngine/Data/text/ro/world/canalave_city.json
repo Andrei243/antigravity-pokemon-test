@@ -1,0 +1,240 @@
+{
+  "people": {
+    "rival_bridge": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      }
+    },
+    "rival_library": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      }
+    },
+    "prof_rowan": {
+      "name": {
+        "en": [
+          "Prof. Rowan"
+        ],
+        "text": [
+          "Prof. Rowan"
+        ]
+      }
+    },
+    "counterpart": {
+      "name": {
+        "en": [
+          "{assistant}"
+        ],
+        "text": [
+          "{assistant}"
+        ]
+      }
+    },
+    "sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          "Marinar"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Sailor: It came from the east, right across the water!"
+        ],
+        "text": [
+          "Marinar: A venit din est, chiar de peste apă!"
+        ]
+      }
+    },
+    "psyduck": {
+      "name": {
+        "en": [
+          "Psyduck"
+        ],
+        "text": [
+          "Psyduck"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Psy...? Psyduck?"
+        ],
+        "text": [
+          "Psy...? Psyduck?"
+        ]
+      }
+    },
+    "sailor_eldritch": {
+      "name": {
+        "en": [
+          "Sailor Eldritch"
+        ],
+        "text": [
+          "Marinarul Eldritch"
+        ]
+      }
+    },
+    "collector": {
+      "name": {
+        "en": [
+          "Collector"
+        ],
+        "text": [
+          "Colecționarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Ships bring all sorts into this harbour from over the sea.",
+          "I'm on the quay first thing every morning to see what's come in. You never know!"
+        ],
+        "text": [
+          "Corăbiile aduc tot felul de lucruri în portul ăsta de peste mare.",
+          "În fiecare dimineață sunt primul pe chei, să văd ce-a sosit. Nu se știe niciodată!"
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Lass"
+        ],
+        "text": [
+          "Domnișoara"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Psyduck could watch the boats on the canal all day.",
+          "It just sits there, holding its head, and never says a word. Well, apart from \"Psy?\""
+        ],
+        "text": [
+          "Psyduck al meu ar putea privi bărcile de pe canal toată ziua.",
+          "Stă doar acolo, ținându-se de cap, și nu scoate o vorbă. Ei, în afară de „Psy?”"
+        ]
+      }
+    },
+    "pokemon_breeder_m": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Out at sea there's an island riddled with old mine tunnels: Iron Island.",
+          "Nobody digs there now, but trainers go over to train in the dark. A sailor down at the harbour takes them across."
+        ],
+        "text": [
+          "În larg e o insulă plină de galerii vechi de mină: Insula de Fier.",
+          "Acum nu mai sapă nimeni acolo, dar Antrenorii merg să se antreneze pe întuneric. Un marinar din port îi duce peste apă."
+        ]
+      }
+    },
+    "ace_trainer_f": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          "Antrenoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Gym Leader here is Byron. His son Roark runs the Gym in Oreburgh City.",
+          "Steel-type Pokémon shrug off most moves. Fire, Fighting and Ground moves are the ones that get through."
+        ],
+        "text": [
+          "Liderul Arenei de aici e Byron. Fiul lui, Roark, conduce Arena din Orașul Oreburgh.",
+          "Pokémonii de tip Oțel rezistă la cele mai multe mișcări. Cele de Foc, Luptă și Pământ trec de ei."
+        ]
+      }
+    },
+    "old_man": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When a tall ship comes in, the bridge over the canal lifts right up to let it through.",
+          "I've watched it go up and down every day of my life, and I still stop to look."
+        ],
+        "text": [
+          "Când vine o corabie înaltă, podul de peste canal se ridică s-o lase să treacă.",
+          "L-am văzut urcând și coborând în fiecare zi a vieții mele, și tot mă opresc să mă uit."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "map_signpost": {
+      "en": [
+        "Canalave City\nA harbour town where the ships still come and go."
+      ],
+      "text": [
+        "Orașul Canalave\nUn oraș-port unde corăbiile încă vin și pleacă."
+      ]
+    },
+    "gym_signpost": {
+      "en": [
+        "Canalave City Pokémon Gym\nLeader: Byron\nHis Pokémon are forged from steel!"
+      ],
+      "text": [
+        "Arena Pokémon din Orașul Canalave\nLider: Byron\nPokémonii lui sunt făuriți din oțel!"
+      ]
+    },
+    "signboard_canalave_library": {
+      "en": [
+        "Canalave Library\nThree floors of books, and stories older than the city."
+      ],
+      "text": [
+        "Biblioteca Canalave\nTrei etaje de cărți și povești mai vechi decât orașul."
+      ]
+    },
+    "signboard_canalave_dock": {
+      "en": [
+        "Canalave Harbour\nFerries leave from the end of this pier."
+      ],
+      "text": [
+        "Portul Canalave\nFeriboturile pleacă de la capătul acestui chei."
+      ]
+    },
+    "signboard_sailor_eldritchs_house": {
+      "en": [
+        "Sailor Eldritch's House\nHome of the Iron Island ferry's skipper."
+      ],
+      "text": [
+        "Casa Marinarului Eldritch\nCasa căpitanului feribotului spre Insula de Fier."
+      ]
+    },
+    "signboard_harbor_inn": {
+      "en": [
+        "Harbour Inn\nA warm bed, a hot meal, and the sound of the sea."
+      ],
+      "text": [
+        "Hanul din Port\nUn pat cald, o masă caldă și zgomotul mării."
+      ]
+    }
+  }
+}

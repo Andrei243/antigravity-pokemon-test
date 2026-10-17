@@ -1,0 +1,505 @@
+{
+  "people": {
+    "grunt_m_1": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: What do you want? There's nothing to see here. The Commander's busy in the cave, so run along!"
+        ],
+        "text": [
+          "Galactic Grunt: Ce vrei? Nu-i nimic de văzut aici. Comandantul e ocupat în peșteră, așa că valea!"
+        ]
+      }
+    },
+    "grunt_f": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: All that noise, all that water gone, and what's left? Magikarp. Heaps and heaps of Magikarp.",
+          "Useless things. They can't even flop in a straight line."
+        ],
+        "text": [
+          "Galactic Grunt: Atâta zgomot, atâta apă dusă, și ce-a rămas? Magikarp. Grămezi întregi de Magikarp.",
+          "Niște nefolositori. Nici măcar nu pot zvâcni în linie dreaptă."
+        ]
+      }
+    },
+    "grunt_m_2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: That's one lake done. Next stop, Lake Verity! Commander Mars will have the place to herself by now."
+        ],
+        "text": [
+          "Galactic Grunt: Un lac gata. Următoarea oprire, Lacul Verity! Comandantul Mars îl are deja numai pentru ea."
+        ]
+      }
+    },
+    "galactic_grunt_lake_valor_1": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: A kid? Out here? Whatever you came to see, you're not going to see it!"
+        ],
+        "text": [
+          "Galactic Grunt: Un copil? Aici? Orice-ai venit să vezi, n-o să vezi!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: You're too late anyway. We've got what we came for."
+        ],
+        "text": [
+          "Galactic Grunt: Oricum e prea târziu. Avem ce-am venit să luăm."
+        ]
+      }
+    },
+    "galactic_grunt_lake_valor_2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: The Galactic Bomb did its job, and I'll do mine. Nobody gets near the cave!"
+        ],
+        "text": [
+          "Galactic Grunt: Bomba Galactic și-a făcut treaba, și eu mi-o fac pe a mea. Nimeni nu se apropie de peșteră!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: Fine, go and look. See if the Commander is as easy as I was."
+        ],
+        "text": [
+          "Galactic Grunt: Bine, du-te și uită-te. Să vedem dacă și Comandantul e la fel de ușor ca mine."
+        ]
+      }
+    },
+    "galactic_grunt_lake_valor_3": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: Mind your feet! These Magikarp are everywhere. And mind me, while you're at it!"
+        ],
+        "text": [
+          "Galactic Grunt: Ai grijă pe unde calci! Magikarp ăștia sunt peste tot. Și ai grijă și de mine, dacă tot ești aici!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: I slipped on a Magikarp. That's the only reason you won."
+        ],
+        "text": [
+          "Galactic Grunt: Am alunecat pe un Magikarp. Doar de-aia ai câștigat."
+        ]
+      }
+    },
+    "magikarp_1": {
+      "name": {
+        "en": [
+          "Magikarp"
+        ],
+        "text": [
+          "Magikarp"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Magikarp splashes in a puddle no deeper than its fins."
+        ],
+        "text": [
+          "Magikarp se bălăcește într-o baltă cât înotătoarele lui."
+        ]
+      }
+    },
+    "magikarp_2": {
+      "name": {
+        "en": [
+          "Magikarp"
+        ],
+        "text": [
+          "Magikarp"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Magikarp gapes up at the sky, as if asking where its lake went."
+        ],
+        "text": [
+          "Magikarp se holbează la cer, de parcă ar întreba unde i-a dispărut lacul."
+        ]
+      }
+    },
+    "magikarp_3": {
+      "name": {
+        "en": [
+          "Magikarp"
+        ],
+        "text": [
+          "Magikarp"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Magikarp is flopping about where the water used to be."
+        ],
+        "text": [
+          "Magikarp zvâcnește acolo unde era odată apa."
+        ]
+      }
+    },
+    "magikarp_4": {
+      "name": {
+        "en": [
+          "Magikarp"
+        ],
+        "text": [
+          "Magikarp"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Magikarp splashes in a puddle no deeper than its fins."
+        ],
+        "text": [
+          "Magikarp se bălăcește într-o baltă cât înotătoarele lui."
+        ]
+      }
+    },
+    "magikarp_5": {
+      "name": {
+        "en": [
+          "Magikarp"
+        ],
+        "text": [
+          "Magikarp"
+        ]
+      }
+    },
+    "magikarp_6": {
+      "name": {
+        "en": [
+          "Magikarp"
+        ],
+        "text": [
+          "Magikarp"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Magikarp is flopping about where the water used to be."
+        ],
+        "text": [
+          "Magikarp zvâcnește acolo unde era odată apa."
+        ]
+      }
+    },
+    "magikarp_7": {
+      "name": {
+        "en": [
+          "Magikarp"
+        ],
+        "text": [
+          "Magikarp"
+        ]
+      }
+    },
+    "magikarp_8": {
+      "name": {
+        "en": [
+          "Magikarp"
+        ],
+        "text": [
+          "Magikarp"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Magikarp gapes up at the sky, as if asking where its lake went."
+        ],
+        "text": [
+          "Magikarp se holbează la cer, de parcă ar întreba unde i-a dispărut lacul."
+        ]
+      }
+    },
+    "magikarp_9": {
+      "name": {
+        "en": [
+          "Magikarp"
+        ],
+        "text": [
+          "Magikarp"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Magikarp is flopping about where the water used to be."
+        ],
+        "text": [
+          "Magikarp zvâcnește acolo unde era odată apa."
+        ]
+      }
+    },
+    "magikarp_10": {
+      "name": {
+        "en": [
+          "Magikarp"
+        ],
+        "text": [
+          "Magikarp"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Magikarp splashes in a puddle no deeper than its fins."
+        ],
+        "text": [
+          "Magikarp se bălăcește într-o baltă cât înotătoarele lui."
+        ]
+      }
+    },
+    "magikarp_11": {
+      "name": {
+        "en": [
+          "Magikarp"
+        ],
+        "text": [
+          "Magikarp"
+        ]
+      }
+    },
+    "magikarp_12": {
+      "name": {
+        "en": [
+          "Magikarp"
+        ],
+        "text": [
+          "Magikarp"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Magikarp is flopping about where the water used to be."
+        ],
+        "text": [
+          "Magikarp zvâcnește acolo unde era odată apa."
+        ]
+      }
+    },
+    "magikarp_13": {
+      "name": {
+        "en": [
+          "Magikarp"
+        ],
+        "text": [
+          "Magikarp"
+        ]
+      }
+    },
+    "magikarp_14": {
+      "name": {
+        "en": [
+          "Magikarp"
+        ],
+        "text": [
+          "Magikarp"
+        ]
+      }
+    },
+    "magikarp_15": {
+      "name": {
+        "en": [
+          "Magikarp"
+        ],
+        "text": [
+          "Magikarp"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Magikarp is flopping about where the water used to be."
+        ],
+        "text": [
+          "Magikarp zvâcnește acolo unde era odată apa."
+        ]
+      }
+    },
+    "magikarp_16": {
+      "name": {
+        "en": [
+          "Magikarp"
+        ],
+        "text": [
+          "Magikarp"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Magikarp splashes in a puddle no deeper than its fins."
+        ],
+        "text": [
+          "Magikarp se bălăcește într-o baltă cât înotătoarele lui."
+        ]
+      }
+    },
+    "magikarp_17": {
+      "name": {
+        "en": [
+          "Magikarp"
+        ],
+        "text": [
+          "Magikarp"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Magikarp gapes up at the sky, as if asking where its lake went."
+        ],
+        "text": [
+          "Magikarp se holbează la cer, de parcă ar întreba unde i-a dispărut lacul."
+        ]
+      }
+    },
+    "magikarp_18": {
+      "name": {
+        "en": [
+          "Magikarp"
+        ],
+        "text": [
+          "Magikarp"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Magikarp is flopping about where the water used to be."
+        ],
+        "text": [
+          "Magikarp zvâcnește acolo unde era odată apa."
+        ]
+      }
+    },
+    "magikarp_19": {
+      "name": {
+        "en": [
+          "Magikarp"
+        ],
+        "text": [
+          "Magikarp"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Magikarp splashes in a puddle no deeper than its fins."
+        ],
+        "text": [
+          "Magikarp se bălăcește într-o baltă cât înotătoarele lui."
+        ]
+      }
+    },
+    "magikarp_20": {
+      "name": {
+        "en": [
+          "Magikarp"
+        ],
+        "text": [
+          "Magikarp"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Magikarp gapes up at the sky, as if asking where its lake went."
+        ],
+        "text": [
+          "Magikarp se holbează la cer, de parcă ar întreba unde i-a dispărut lacul."
+        ]
+      }
+    },
+    "magikarp_21": {
+      "name": {
+        "en": [
+          "Magikarp"
+        ],
+        "text": [
+          "Magikarp"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Magikarp is flopping about where the water used to be."
+        ],
+        "text": [
+          "Magikarp zvâcnește acolo unde era odată apa."
+        ]
+      }
+    },
+    "magikarp_22": {
+      "name": {
+        "en": [
+          "Magikarp"
+        ],
+        "text": [
+          "Magikarp"
+        ]
+      }
+    },
+    "magikarp_23": {
+      "name": {
+        "en": [
+          "Magikarp"
+        ],
+        "text": [
+          "Magikarp"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Magikarp gapes up at the sky, as if asking where its lake went."
+        ],
+        "text": [
+          "Magikarp se holbează la cer, de parcă ar întreba unde i-a dispărut lacul."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

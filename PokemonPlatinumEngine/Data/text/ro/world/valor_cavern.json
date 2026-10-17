@@ -1,0 +1,25 @@
+{
+  "people": {
+    "saturn": {
+      "name": {
+        "en": [
+          "Saturn"
+        ],
+        "text": [
+          "Saturn"
+        ]
+      }
+    },
+    "azelf": {
+      "name": {
+        "en": [
+          "Azelf"
+        ],
+        "text": [
+          "Azelf"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

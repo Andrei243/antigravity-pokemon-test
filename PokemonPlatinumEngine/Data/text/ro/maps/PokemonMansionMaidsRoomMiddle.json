@@ -1,0 +1,40 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Mansion"
+    ],
+    "text": [
+      "Conacul Pokémon"
+    ]
+  },
+  "people": {
+    "maid_middle": {
+      "name": {
+        "en": [
+          "Maid"
+        ],
+        "text": [
+          "Cameristă"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "6,4": {
+      "en": [
+        "A bed, neatly made."
+      ],
+      "text": [
+        "Un pat, făcut frumos."
+      ]
+    },
+    "6,5": {
+      "en": [
+        "A bed, neatly made."
+      ],
+      "text": [
+        "Un pat, făcut frumos."
+      ]
+    }
+  }
+}

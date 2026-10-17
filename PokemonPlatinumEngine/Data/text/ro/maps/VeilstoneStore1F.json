@@ -1,0 +1,116 @@
+{
+  "displayName": {
+    "en": [
+      "Veilstone Dept. Store"
+    ],
+    "text": [
+      "Magazinul Universal Veilstone"
+    ]
+  },
+  "people": {
+    "receptionist": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitor"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the wonderful Veilstone Department Store!"
+        ],
+        "text": [
+          "Bun venit la minunatul Magazin Universal Veilstone!"
+        ]
+      }
+    },
+    "middle_aged_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This store knows how to keep its customers happy.",
+          "Become a regular, and they really do look after you."
+        ],
+        "text": [
+          "Magazinul ăsta știe cum să-și mulțumească clienții.",
+          "Dacă vii des, chiar au grijă de tine."
+        ]
+      }
+    },
+    "lady": {
+      "name": {
+        "en": [
+          "Lady"
+        ],
+        "text": [
+          "Doamna"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I do like the formal air of a grand department store."
+        ],
+        "text": [
+          "Îmi place aerul solemn al unui magazin universal mare."
+        ]
+      }
+    },
+    "socialite": {
+      "name": {
+        "en": [
+          "Socialite"
+        ],
+        "text": [
+          "Mondena"
+        ]
+      }
+    },
+    "cashier_f": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      }
+    },
+    "cashier_m": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "10,9": {
+      "en": [
+        "\"Discover a new you! Veilstone Department Store\""
+      ],
+      "text": [
+        "„Descoperă-te din nou! Magazinul Universal Veilstone”"
+      ]
+    },
+    "13,2": {
+      "en": [
+        "B1F: Food and Produce. 1F: Trainers' Zone. 2F: Battle Collection. 3F: TM Corner. 4F: Poké Dolls and Goods. 5F: Rooftop Plaza."
+      ],
+      "text": [
+        "Subsol: Alimente. Parter: Antrenori. Et. 2: Luptă. Et. 3: TM-uri. Et. 4: Păpuși și mobilier. Et. 5: Terasa."
+      ]
+    }
+  }
+}

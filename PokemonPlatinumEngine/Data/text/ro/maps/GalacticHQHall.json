@@ -1,0 +1,1507 @@
+{
+  "displayName": {
+    "en": [
+      "Galactic HQ"
+    ],
+    "text": [
+      "Cartierul Galactic"
+    ]
+  },
+  "people": {
+    "looker": {
+      "name": {
+        "en": [
+          "Looker"
+        ],
+        "text": [
+          "Looker"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Looker: Shh! Something is about to happen up there."
+        ],
+        "text": [
+          "Looker: Șșt! Se pregătește ceva acolo sus."
+        ]
+      }
+    },
+    "cyrus": {
+      "name": {
+        "en": [
+          "Cyrus"
+        ],
+        "text": [
+          "Cyrus"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Cyrus: ..."
+        ],
+        "text": [
+          "Cyrus: ..."
+        ]
+      }
+    },
+    "grunt_1": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_2": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_3": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_4": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_5": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_6": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_7": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_8": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_9": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_10": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_11": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_12": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_13": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_14": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_15": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_16": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_17": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_18": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_19": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_20": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_21": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_22": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_23": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_24": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_25": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_26": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_27": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_28": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_29": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_30": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_31": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_32": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_33": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_34": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_35": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_36": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_37": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_38": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_39": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_40": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_41": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_42": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_43": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_44": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_45": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_46": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_47": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_48": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_49": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_50": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_51": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_52": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_53": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_54": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_55": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_56": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_57": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_58": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_59": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_60": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_61": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_62": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_63": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_64": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_65": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_66": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_67": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_68": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_69": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_70": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_71": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_72": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_73": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_74": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_75": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_76": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_77": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_78": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_79": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_80": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    },
+    "grunt_81": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+        ],
+        "text": [
+          "Galactic Grunt: Liniște! Maestrul Cyrus e pe cale să vorbească!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

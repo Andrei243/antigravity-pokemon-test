@@ -1,0 +1,188 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitor"
+      ]
+    },
+    {
+      "en": [
+        "You still have time left. Are you sure you want to leave the Great Marsh?"
+      ],
+      "text": [
+        "Mai ai timp. Sigur vrei să ieși din Marea Mlaștină?"
+      ]
+    },
+    {
+      "en": [
+        "Very well. I'll take the Safari Balls you have left.",
+        "Thank you for playing. We hope to see you again!"
+      ],
+      "text": [
+        "Foarte bine. Iau Safari Ballurile care ți-au rămas.",
+        "Mulțumim că ai jucat. Sperăm să te mai vedem!"
+      ]
+    },
+    {
+      "en": [
+        "Then do enjoy the rest of your Safari Game!"
+      ],
+      "text": [
+        "Atunci bucură-te de restul Jocului Safari!"
+      ]
+    },
+    {
+      "en": [
+        "Cowgirl"
+      ],
+      "text": [
+        "Cowgirl"
+      ]
+    },
+    {
+      "en": [
+        "Well now, how many Pokémon did you catch in that Safari Game? Five at least?",
+        "Ayup! So you did! Isn't that something!",
+        "Here you are, then: the Matchup Checker, for your Pokétch."
+      ],
+      "text": [
+        "Ia zi, câți Pokémoni ai prins în Jocul Safari? Cel puțin cinci?",
+        "Aha! Chiar așa! Ce ispravă!",
+        "Poftim, atunci: Matchup Checker, pentru Pokétchul tău."
+      ]
+    },
+    {
+      "en": [
+        "{player} added the Matchup Checker app to the Pokétch!"
+      ],
+      "text": [
+        "Aplicația Matchup Checker a fost adăugată în Pokétch!"
+      ]
+    }
+  ],
+  "Counter": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitor"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Great Marsh, the home of Pastoria's Safari Game!"
+      ],
+      "text": [
+        "Bun venit la Marea Mlaștină, casa Jocului Safari din Pastoria!"
+      ]
+    },
+    {
+      "en": [
+        "All you can catch for just $500! Would you like to play a Safari Game?"
+      ],
+      "text": [
+        "Prinzi cât poți pentru doar $500! Vrei să joci un Joc Safari?"
+      ]
+    },
+    {
+      "en": [
+        "That will be $500, please."
+      ],
+      "text": [
+        "Costă $500, te rog."
+      ]
+    },
+    {
+      "en": [
+        "Here are your Safari Balls."
+      ],
+      "text": [
+        "Poftim Safari Ballurile tale."
+      ]
+    },
+    {
+      "en": [
+        "{player} received 30 Safari Balls."
+      ],
+      "text": [
+        "{player} a primit 30 de Safari Balluri."
+      ]
+    },
+    {
+      "en": [
+        "We'll call you when your game is over. Until then, enjoy yourself! Off you go into the wild!"
+      ],
+      "text": [
+        "Te chemăm când se termină jocul. Până atunci, distracție plăcută! Hai, în sălbăticie!"
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. You don't have enough money."
+      ],
+      "text": [
+        "Îmi pare rău. Nu ai destui bani."
+      ]
+    }
+  ],
+  "Explain": [
+    {
+      "en": [
+        "Welcome to the Great Marsh! Is this your first Safari Game?"
+      ],
+      "text": [
+        "Bun venit la Marea Mlaștină! E primul tău Joc Safari?"
+      ]
+    },
+    {
+      "en": [
+        "You go into the Great Marsh with 30 Safari Balls, and they are the only balls you may throw in there.",
+        "The game is over when your last ball is thrown, or when you have walked 500 steps.",
+        "Do enjoy the Great Marsh, just as nature left it!"
+      ],
+      "text": [
+        "Intri în Marea Mlaștină cu 30 de Safari Balluri, și sunt singurele Balluri pe care le poți arunca acolo.",
+        "Jocul se termină când arunci ultimul Ball sau când ai făcut 500 de pași.",
+        "Bucură-te de Marea Mlaștină, așa cum a lăsat-o natura!"
+      ]
+    },
+    {
+      "en": [
+        "I see. Then enjoy your Safari Game!"
+      ],
+      "text": [
+        "Înțeleg. Atunci bucură-te de Jocul Safari!"
+      ]
+    }
+  ],
+  "Cowgirl": [
+    {
+      "en": [
+        "Howdy. Playing the Safari Game, are you?",
+        "How would you like to play a little game of mine at the same time?",
+        "There's only the one rule, and it's a simple one: catch five Pokémon or more in a single Safari Game.",
+        "Manage that, and the Matchup Checker for your Pokétch is yours."
+      ],
+      "text": [
+        "Salutare. Joci Jocul Safari, da?",
+        "Ce-ai zice să joci în același timp și un mic joc de-al meu?",
+        "E o singură regulă, și e simplă: prinde cinci Pokémoni sau mai mulți într-un singur Joc Safari.",
+        "Dacă reușești, aplicația Matchup Checker pentru Pokétch e a ta."
+      ]
+    },
+    {
+      "en": [
+        "The Matchup Checker shows how well two of your Pokémon get along.",
+        "It can't tell how you and I would get along as friends, mind."
+      ],
+      "text": [
+        "Matchup Checker arată cât de bine se înțeleg doi dintre Pokémonii tăi.",
+        "Dar nu-ți poate spune cât de bine ne-am înțelege noi doi ca prieteni."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "Deleter": [
+    {
+      "en": [
+        "Um... Who did you say I was, again?",
+        "... ...",
+        "Ah, yes, it comes back to me now! I'm the Move Deleter!"
+      ],
+      "text": [
+        "Ăă... Cine ziceai că sunt, de fapt?",
+        "... ...",
+        "A, da, acum îmi amintesc! Sunt Ștergătorul de Mișcări!"
+      ]
+    },
+    {
+      "en": [
+        "You've come to have me make a Pokémon of yours forget a move?"
+      ],
+      "text": [
+        "Ai venit să-l fac pe un Pokémon de-al tău să uite o mișcare?"
+      ]
+    },
+    {
+      "en": [
+        "Which Pokémon is to forget one?"
+      ],
+      "text": [
+        "Ce Pokémon să uite una?"
+      ]
+    },
+    {
+      "en": [
+        "Hm! {thing}, is it? That is the move to be forgotten?"
+      ],
+      "text": [
+        "Hm! {thing}, deci? Asta e mișcarea de uitat?"
+      ]
+    },
+    {
+      "en": [
+        "It worked a treat!",
+        "{wearer} has forgotten {thing} completely."
+      ],
+      "text": [
+        "A mers ca uns!",
+        "{wearer} a uitat complet {thing}."
+      ]
+    },
+    {
+      "en": [
+        "Remember me, if ever there's a move that wants forgetting."
+      ],
+      "text": [
+        "Să-ți amintești de mine, dacă vreodată e de uitat vreo mișcare."
+      ]
+    },
+    {
+      "en": [
+        "What? That's an Egg. An Egg oughtn't to know any moves at all!"
+      ],
+      "text": [
+        "Ce? Ăsta e un Ou. Un Ou n-ar trebui să știe nicio mișcare!"
+      ]
+    },
+    {
+      "en": [
+        "That Pokémon knows only the one move. It can't very well forget that..."
+      ],
+      "text": [
+        "Pokémonul ăsta știe o singură mișcare. N-o poate uita tocmai pe aceea..."
+      ]
+    }
+  ]
+}

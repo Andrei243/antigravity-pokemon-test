@@ -1,0 +1,23 @@
+{
+  "displayName": {
+    "en": [
+      "Hotel Grand Lake"
+    ],
+    "text": [
+      "Hotelul Grand Lake"
+    ]
+  },
+  "people": {
+    "middle_aged_man": {
+      "name": {
+        "en": [
+          "Guest"
+        ],
+        "text": [
+          "Oaspete"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

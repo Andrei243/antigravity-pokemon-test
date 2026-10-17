@@ -1,0 +1,58 @@
+{
+  "Rest": [
+    {
+      "en": [
+        "Good day. You would like a room for the night? Ah, but you have no reservation.",
+        "I'm afraid every room is taken. You are welcome to rest here a while, though."
+      ],
+      "text": [
+        "Bună ziua. Doriți o cameră pentru noapte? A, dar n-ai rezervare.",
+        "Mă tem că toate camerele sunt ocupate. Dar te poți odihni puțin aici."
+      ]
+    },
+    {
+      "en": [
+        "Your Pokémon are quite recovered. We hope to see you again!"
+      ],
+      "text": [
+        "Pokémonii tăi și-au revenit complet. Sperăm să te mai vedem!"
+      ]
+    }
+  ],
+  "Looker": [
+    {
+      "en": [
+        "Ah, my friend, it is you! Yes, I am at this hotel now.",
+        "I question the guests, one by one. Has anybody seen a suspicious character?",
+        "I ask for your help. Search outside, if you will.",
+        "Our man, he may have slipped past already without a soul noticing."
+      ],
+      "text": [
+        "A, prietene, tu ești! Da, acum sunt la hotelul ăsta.",
+        "Îi interoghez pe oaspeți, unul câte unul. A văzut cineva un personaj suspect?",
+        "Îți cer ajutorul. Caută afară, te rog.",
+        "Omul nostru poate s-a strecurat deja fără să-l vadă nimeni."
+      ]
+    },
+    {
+      "en": [
+        "Is that so? The Champion of the Hoenn region has stayed in this hotel?",
+        "But that is of no importance! A suspicious character, I said! Your boasting, I do not need!"
+      ],
+      "text": [
+        "Așa deci? Campionul regiunii Hoenn a stat la hotelul ăsta?",
+        "Dar asta n-are importanță! Un personaj suspect, am zis! De lăudăroșenia ta n-am nevoie!"
+      ]
+    },
+    {
+      "en": [
+        "Inside the hotel, I will search. You, I ask to search outside.",
+        "Our man, he may have slipped past already without a soul noticing."
+      ],
+      "text": [
+        "Eu caut înăuntrul hotelului. Pe tine te rog să cauți afară.",
+        "Omul nostru poate s-a strecurat deja fără să-l vadă nimeni."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "displayName": {
+    "en": [
+      "Route 218"
+    ],
+    "text": [
+      "Ruta 218"
+    ]
+  },
+  "people": {
+    "policeman": {
+      "name": {
+        "en": [
+          "Policeman"
+        ],
+        "text": [
+          "Polițistul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Phew... Standing watch all day is thirsty work, I can tell you."
+        ],
+        "text": [
+          "Pfiu... Să stai de pază toată ziua îți face sete, ți-o spun eu."
+        ]
+      }
+    },
+    "scientist_m": {
+      "name": {
+        "en": [
+          "Assistant"
+        ],
+        "text": [
+          "Asistentul"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "5,4": {
+      "en": [
+        "A map of Sinnoh. Canalave City lies west of here, and Route 218 runs east over the water toward Jubilife City."
+      ],
+      "text": [
+        "O hartă a Sinnohului. Orașul Canalave e la vest, iar Ruta 218 merge spre est, peste apă, spre Orașul Jubilife."
+      ]
+    },
+    "6,4": {
+      "en": [
+        "A map of Sinnoh. Canalave City lies west of here, and Route 218 runs east over the water toward Jubilife City."
+      ],
+      "text": [
+        "O hartă a Sinnohului. Orașul Canalave e la vest, iar Ruta 218 merge spre est, peste apă, spre Orașul Jubilife."
+      ]
+    }
+  }
+}

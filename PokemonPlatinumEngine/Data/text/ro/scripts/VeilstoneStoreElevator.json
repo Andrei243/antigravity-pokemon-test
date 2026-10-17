@@ -1,0 +1,126 @@
+{
+  "Attendant": [
+    {
+      "en": [
+        "Hello, and thank you for shopping with us today."
+      ],
+      "text": [
+        "Bună ziua și mulțumim că faceți cumpărături la noi."
+      ]
+    },
+    {
+      "en": [
+        "To which floor may I take you?",
+        "5F",
+        "4F",
+        "3F",
+        "2F",
+        "1F OR B1F",
+        "NEVER MIND"
+      ],
+      "text": [
+        "La ce etaj te duc?",
+        "ETAJUL 5",
+        "ETAJUL 4",
+        "ETAJUL 3",
+        "ETAJUL 2",
+        "PARTER SAU SUBSOL",
+        "LASĂ"
+      ]
+    },
+    {
+      "en": [
+        "The ground floor, or the basement?",
+        "1F",
+        "B1F",
+        "NEVER MIND"
+      ],
+      "text": [
+        "Parterul sau subsolul?",
+        "PARTER",
+        "SUBSOL",
+        "LASĂ"
+      ]
+    },
+    {
+      "en": [
+        "Certainly. Going down!"
+      ],
+      "text": [
+        "Desigur. Coborâm!"
+      ]
+    },
+    {
+      "en": [
+        "Certainly. Going up!"
+      ],
+      "text": [
+        "Desigur. Urcăm!"
+      ]
+    },
+    {
+      "en": [
+        "Fifth floor: the Rooftop Plaza, for a breath of air between purchases."
+      ],
+      "text": [
+        "Etajul cinci: Terasa, pentru o gură de aer între cumpărături."
+      ]
+    },
+    {
+      "en": [
+        "Basement floor: food and produce, with a good many treats you will find nowhere else."
+      ],
+      "text": [
+        "Subsolul: alimente și produse, cu multe bunătăți pe care nu le găsești altundeva."
+      ]
+    },
+    {
+      "en": [
+        "Ground floor: medicine and everything else an adventure calls for."
+      ],
+      "text": [
+        "Parterul: medicamente și tot ce-ți trebuie pentru o aventură."
+      ]
+    },
+    {
+      "en": [
+        "Second floor: all that a Pokémon battle could ask for."
+      ],
+      "text": [
+        "Etajul doi: tot ce-ți poate cere o luptă Pokémon."
+      ]
+    },
+    {
+      "en": [
+        "Third floor: Technical Machines, to make your Pokémon the stronger."
+      ],
+      "text": [
+        "Etajul trei: Mașini Tehnice, ca să-ți faci Pokémonii mai puternici."
+      ]
+    },
+    {
+      "en": [
+        "Fourth floor: furnishings to covet and Pokémon Dolls."
+      ],
+      "text": [
+        "Etajul patru: mobilier de dorit și Păpuși Pokémon."
+      ]
+    },
+    {
+      "en": [
+        "But we are on that floor already?!"
+      ],
+      "text": [
+        "Dar suntem deja la etajul acela?!"
+      ]
+    },
+    {
+      "en": [
+        "I look forward to serving you again."
+      ],
+      "text": [
+        "Aștept să te servesc din nou."
+      ]
+    }
+  ]
+}

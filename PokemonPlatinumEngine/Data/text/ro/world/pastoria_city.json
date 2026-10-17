@@ -1,0 +1,266 @@
+{
+  "people": {
+    "clefairy": {
+      "name": {
+        "en": [
+          "Clefairy"
+        ],
+        "text": [
+          "Clefairy"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pi! Pippi!"
+        ],
+        "text": [
+          "Pi! Pippi!"
+        ]
+      }
+    },
+    "rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      }
+    },
+    "crasher_wake": {
+      "name": {
+        "en": [
+          "Crasher Wake"
+        ],
+        "text": [
+          "Crasher Wake"
+        ]
+      }
+    },
+    "grunt_m": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      }
+    },
+    "picnicker": {
+      "name": {
+        "en": [
+          "Picnicker"
+        ],
+        "text": [
+          "Excursionistă"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I spent all morning at the top of the observatory, looking out over the Great Marsh.",
+          "Different Pokémon come out to play in the mud every day. I could watch them for hours!"
+        ],
+        "text": [
+          "Am stat toată dimineața în vârful observatorului, privind peste Marea Mlaștină.",
+          "În fiecare zi ies alți Pokémoni să se joace în noroi. Aș putea să mă uit la ei ore întregi!"
+        ]
+      }
+    },
+    "black_belt": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          "Centură Neagră"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Our Gym Leader is a wrestler, and he never holds anything back!",
+          "His Pokémon are all Water types. Bring something that doesn't mind a soaking."
+        ],
+        "text": [
+          "Liderul Arenei noastre e luptător de wrestling și nu se cruță niciodată!",
+          "Pokémonii lui sunt toți de tip Apă. Adu ceva căruia să nu-i pese că se udă."
+        ]
+      }
+    },
+    "ace_trainer_m_1": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          "Antrenoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This Clefairy follows me everywhere. I hardly ever put it in its ball.",
+          "It likes Pastoria's sunshine as much as I do."
+        ],
+        "text": [
+          "Clefairy ăsta mă urmează peste tot. Aproape că nu-l mai bag în Ball.",
+          "Îi place soarele din Pastoria la fel de mult ca mie."
+        ]
+      }
+    },
+    "collector_1": {
+      "name": {
+        "en": [
+          "Collector"
+        ],
+        "text": [
+          "Colecționarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Great Marsh is different from one day to the next.",
+          "A Pokémon you saw yesterday might not show its face today. That's what keeps me coming back."
+        ],
+        "text": [
+          "Marea Mlaștină e diferită de la o zi la alta.",
+          "Un Pokémon pe care l-ai văzut ieri poate nu se arată azi. De asta tot revin."
+        ]
+      }
+    },
+    "scientist_m": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          "Cercetătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Marsh mud is full of minerals. It keeps the skin of Water Pokémon healthy.",
+          "No wonder so many of them make their homes out there."
+        ],
+        "text": [
+          "Noroiul mlaștinii e plin de minerale. Ține sănătoasă pielea Pokémonilor de Apă.",
+          "Nu e de mirare că atâția își fac casa acolo."
+        ]
+      }
+    },
+    "beauty": {
+      "name": {
+        "en": [
+          "Beauty"
+        ],
+        "text": [
+          "Frumoasa"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came all this way to see the Great Marsh.",
+          "Now I'm here, I'm not sure I dare walk in the mud in these shoes."
+        ],
+        "text": [
+          "Am venit tocmai până aici să văd Marea Mlaștină.",
+          "Acum că sunt aici, nu știu dacă îndrăznesc să calc în noroi cu pantofii ăștia."
+        ]
+      }
+    },
+    "parasol_lady": {
+      "name": {
+        "en": [
+          "Parasol Lady"
+        ],
+        "text": [
+          "Doamna cu umbrelă"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Just west of town, on Route 212, the rain hardly ever stops.",
+          "In Pastoria the sun shines, but I keep my parasol up anyway. You never know!"
+        ],
+        "text": [
+          "Imediat la vest de oraș, pe Ruta 212, ploaia aproape că nu se oprește.",
+          "În Pastoria strălucește soarele, dar țin umbrela deschisă oricum. Nu se știe niciodată!"
+        ]
+      }
+    },
+    "collector_2": {
+      "name": {
+        "en": [
+          "Collector"
+        ],
+        "text": [
+          "Colecționarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Some of the Pokémon in the Great Marsh live nowhere else in Sinnoh.",
+          "Collectors like me come from all over, just for a chance to catch one."
+        ],
+        "text": [
+          "Unii Pokémoni din Marea Mlaștină nu trăiesc nicăieri altundeva în Sinnoh.",
+          "Colecționari ca mine vin de peste tot doar pentru o șansă să prindă unul."
+        ]
+      }
+    },
+    "ace_trainer_m_2": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          "Antrenoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Gym here hits you with wave after wave of Water moves.",
+          "So I'm buying every Potion the Poké Mart has on its shelves."
+        ],
+        "text": [
+          "Arena de aici te lovește cu val după val de mișcări de Apă.",
+          "Așa că cumpăr toate Poțiunile de pe rafturile Poké Martului."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "map_signpost": {
+      "en": [
+        "Pastoria City\nWhere the wetlands begin and the wild comes right up to the door."
+      ],
+      "text": [
+        "Orașul Pastoria\nAici încep mlaștinile, iar sălbăticia vine până la ușă."
+      ]
+    },
+    "gym_signpost": {
+      "en": [
+        "Pastoria City Pokémon Gym\nLeader: Crasher Wake\nHis Water Pokémon hit like a breaking wave!"
+      ],
+      "text": [
+        "Arena Pokémon din Orașul Pastoria\nLider: Crasher Wake\nPokémonii lui de Apă lovesc ca un val care se sparge!"
+      ]
+    },
+    "signboard_great_marsh": {
+      "en": [
+        "Great Marsh Observatory\nLook out over the marsh from the top floor, or step into it for the Safari Game."
+      ],
+      "text": [
+        "Observatorul Marii Mlaștini\nPrivește mlaștina de la ultimul etaj sau intră în ea pentru Jocul Safari."
+      ]
+    },
+    "signboard_safari_game": {
+      "en": [
+        "Safari Game\nCatch the Great Marsh's Pokémon with Safari Balls! Sign up at the observatory, north of town."
+      ],
+      "text": [
+        "Jocul Safari\nPrinde Pokémonii Marii Mlaștini cu Safari Balluri! Înscrie-te la observator, la nordul orașului."
+      ]
+    }
+  }
+}

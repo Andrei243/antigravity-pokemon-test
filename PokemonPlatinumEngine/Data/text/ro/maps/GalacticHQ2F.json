@@ -1,0 +1,218 @@
+{
+  "displayName": {
+    "en": [
+      "Galactic HQ"
+    ],
+    "text": [
+      "Cartierul Galactic"
+    ]
+  },
+  "people": {
+    "48,21": {
+      "name": {
+        "en": [
+          "Max Revive"
+        ],
+        "text": [
+          "Reînviere Maximă"
+        ]
+      }
+    },
+    "galactic_grunt_1": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: The boss is about to speak, and you barge in now? Out you go!"
+        ],
+        "text": [
+          "Galactic Grunt: Șeful e pe cale să vorbească, și tu dai buzna tocmai acum? Afară!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: Now I'll miss the speech AND get a telling-off..."
+        ],
+        "text": [
+          "Galactic Grunt: Acum pierd discursul ȘI mai iau și o săpuneală..."
+        ]
+      }
+    },
+    "galactic_grunt_2": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: These machines are worth more than you are. Hands off!"
+        ],
+        "text": [
+          "Galactic Grunt: Mașinăriile astea valorează mai mult decât tine. Nu pune mâna!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: Fine. Touch what you like. See if I care."
+        ],
+        "text": [
+          "Galactic Grunt: Bine. Atinge ce vrei. Ce-mi pasă mie."
+        ]
+      }
+    },
+    "galactic_grunt_3": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: Lost, are you? This floor is for Team Galactic and nobody else!"
+        ],
+        "text": [
+          "Galactic Grunt: Te-ai rătăcit? Etajul ăsta e doar al Echipei Galactic!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: You don't battle like somebody who's lost."
+        ],
+        "text": [
+          "Galactic Grunt: Nu te lupți ca cineva care s-a rătăcit."
+        ]
+      }
+    },
+    "scientist_darrius": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          "Cercetătorul"
+        ]
+      },
+      "before": {
+        "en": [
+          "Scientist Darrius: Shh! Our broadcast is on. ...Wait. You're no member!"
+        ],
+        "text": [
+          "Om de știință Darrius: Șșt! E emisiunea noastră. ...Stai. Tu nu ești membru!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Scientist Darrius: And now I've missed the best part."
+        ],
+        "text": [
+          "Om de știință Darrius: Și acum am pierdut partea cea mai bună."
+        ]
+      }
+    },
+    "3,11": {
+      "name": {
+        "en": [
+          "Green Shard"
+        ],
+        "text": [
+          "Ciob Verde"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "40,4": {
+      "en": [
+        "It's a bed."
+      ],
+      "text": [
+        "E un pat."
+      ]
+    },
+    "40,5": {
+      "en": [
+        "It's a bed."
+      ],
+      "text": [
+        "E un pat."
+      ]
+    },
+    "44,4": {
+      "en": [
+        "It's a bed."
+      ],
+      "text": [
+        "E un pat."
+      ]
+    },
+    "42,2": {
+      "en": [
+        "Team Galactic Nap Room\nMake sure the bed is empty before you get into it!"
+      ],
+      "text": [
+        "Camera de odihnă a Echipei Galactic\nVerifică dacă patul e liber înainte să te bagi în el!"
+      ]
+    },
+    "31,18": {
+      "en": [
+        "Team Galactic TV Room\nThe finest sound and picture there is, for members only. Onward to a new universe!"
+      ],
+      "text": [
+        "Sala TV a Echipei Galactic\nCel mai bun sunet și cea mai bună imagine, doar pentru membri. Înainte, spre un univers nou!"
+      ]
+    },
+    "9,19": {
+      "en": [
+        "A notice on the wall:\n\"Team Galactic's creed! All that there is belongs to Team Galactic. Lift your eyes past this world: the stars shall be Team Galactic's too!\""
+      ],
+      "text": [
+        "Un anunț pe perete:\n„Crezul Echipei Galactic! Tot ce există e al Echipei Galactic. Ridicați ochii dincolo de lumea asta: și stelele vor fi ale Echipei Galactic!”"
+      ]
+    },
+    "39,14": {
+      "en": [
+        "A note is taped to the fridge:\n\"Drink your fill, and find the strength to drive us on!\"\nInside there is nothing but bottles of something murky..."
+      ],
+      "text": [
+        "Pe frigider e lipit un bilet:\n„Beți pe săturate și găsiți puterea să mergem înainte!”\nÎnăuntru nu sunt decât sticle cu ceva tulbure..."
+      ]
+    },
+    "41,12": {
+      "en": [
+        "A note is pinned up over the sink:\n\"Eat what you love, and thrive!\"\nSomething nobody could put a name to has dried in a crust all round the basin..."
+      ],
+      "text": [
+        "Deasupra chiuvetei e prins un bilet:\n„Mâncați ce vă place și înfloriți!”\nCeva ce nimeni n-ar ști să numească s-a uscat în crustă în jurul chiuvetei..."
+      ]
+    },
+    "42,12": {
+      "en": [
+        "A note is pinned up over the sink:\n\"Eat what you love, and thrive!\"\nSomething nobody could put a name to has dried in a crust all round the basin..."
+      ],
+      "text": [
+        "Deasupra chiuvetei e prins un bilet:\n„Mâncați ce vă place și înfloriți!”\nCeva ce nimeni n-ar ști să numească s-a uscat în crustă în jurul chiuvetei..."
+      ]
+    },
+    "41,17": {
+      "en": [
+        "A report lies on the table: \"The Pokémon Statue of Eterna City\"."
+      ],
+      "text": [
+        "Pe masă e un raport: „Statuia Pokémon din Orașul Eterna”."
+      ]
+    }
+  }
+}

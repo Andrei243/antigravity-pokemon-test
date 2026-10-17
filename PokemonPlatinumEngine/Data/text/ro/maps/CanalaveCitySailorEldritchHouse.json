@@ -1,0 +1,83 @@
+{
+  "displayName": {
+    "en": [
+      "Canalave City"
+    ],
+    "text": [
+      "Orașul Canalave"
+    ]
+  },
+  "people": {
+    "little_boy": {
+      "name": {
+        "en": [
+          "Little Boy"
+        ],
+        "text": [
+          "Băiețelul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm going to be a sailor, just like my dad!",
+          "He's the bravest man there is. Even the sea doesn't scare him!",
+          "A Gym Leader would be good too, though. Byron's amazing!"
+        ],
+        "text": [
+          "O să fiu marinar, ca tata!",
+          "E cel mai curajos om din lume. Nici marea nu-l sperie!",
+          "Dar și Lider de Arenă ar fi bine. Byron e grozav!"
+        ]
+      }
+    },
+    "pokefan_f": {
+      "name": {
+        "en": [
+          "Mother"
+        ],
+        "text": [
+          "Mamă"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "That boy of ours never runs out of energy!",
+          "Which is just how a boy ought to be."
+        ],
+        "text": [
+          "Băiatul nostru nu rămâne niciodată fără energie!",
+          "Exact cum trebuie să fie un băiat."
+        ]
+      }
+    },
+    "little_boy_in_bed": {
+      "name": {
+        "en": [
+          "Little Boy"
+        ],
+        "text": [
+          "Băiețelul"
+        ]
+      }
+    },
+    "sailor_eldritch": {
+      "name": {
+        "en": [
+          "Sailor Eldritch"
+        ],
+        "text": [
+          "Marinarul Eldritch"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My boy's himself again, and I've you to thank for it!"
+        ],
+        "text": [
+          "Băiatul meu e iar cel dinainte, și ție îți mulțumesc pentru asta!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

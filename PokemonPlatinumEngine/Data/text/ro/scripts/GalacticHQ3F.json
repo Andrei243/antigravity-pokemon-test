@@ -1,0 +1,28 @@
+{
+  "Door": [
+    {
+      "en": [
+        "The shutter is locked. It wants a special key."
+      ],
+      "text": [
+        "Oblonul e încuiat. E nevoie de o cheie specială."
+      ]
+    },
+    {
+      "en": [
+        "The shutter is locked. It wants a special key. Use the Galactic Key?"
+      ],
+      "text": [
+        "Oblonul e încuiat. E nevoie de o cheie specială. Folosești Cheia Galactic?"
+      ]
+    },
+    {
+      "en": [
+        "The shutter slid open."
+      ],
+      "text": [
+        "Oblonul s-a ridicat."
+      ]
+    }
+  ]
+}

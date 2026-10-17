@@ -1,0 +1,232 @@
+{
+  "displayName": {
+    "en": [
+      "Canalave Gym"
+    ],
+    "text": [
+      "Arena Canalave"
+    ]
+  },
+  "people": {
+    "byron": {
+      "name": {
+        "en": [
+          "Byron"
+        ],
+        "text": [
+          "Byron"
+        ]
+      }
+    },
+    "gym_guide": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          "Ghidul Arenei"
+        ]
+      }
+    },
+    "worker_gerardo": {
+      "name": {
+        "en": [
+          "Gerardo"
+        ],
+        "text": [
+          "Gerardo"
+        ]
+      },
+      "before": {
+        "en": [
+          "Worker Gerardo: These platforms were built to carry steel beams. Let's see if they can carry you!"
+        ],
+        "text": [
+          "Muncitor Gerardo: Platformele astea au fost făcute să care grinzi de oțel. Să vedem dacă te duc pe tine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Worker Gerardo: Knocked clean off my feet... Mind the edge on your way up."
+        ],
+        "text": [
+          "Muncitor Gerardo: M-ai pus la pământ de-a binelea... Ai grijă la margine cât urci."
+        ]
+      }
+    },
+    "worker_jackson": {
+      "name": {
+        "en": [
+          "Jackson"
+        ],
+        "text": [
+          "Jackson"
+        ]
+      },
+      "before": {
+        "en": [
+          "Worker Jackson: We bolted every one of these lifts together ourselves. Sturdy, eh? So are my Pokémon!"
+        ],
+        "text": [
+          "Muncitor Jackson: Am înșurubat singuri fiecare lift de aici. Solide, nu? La fel și Pokémonii mei!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Worker Jackson: Rattled loose! A lift only goes where it goes, so choose the one you step on."
+        ],
+        "text": [
+          "Muncitor Jackson: M-am deșurubat! Un lift merge doar unde merge, așa că alege bine pe ce calci."
+        ]
+      }
+    },
+    "worker_gary": {
+      "name": {
+        "en": [
+          "Gary"
+        ],
+        "text": [
+          "Gary"
+        ]
+      },
+      "before": {
+        "en": [
+          "Worker Gary: Hard hat on, Pokémon out! Safety first, battle second!"
+        ],
+        "text": [
+          "Muncitor Gary: Casca pe cap, Pokémonii afară! Întâi siguranța, apoi lupta!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Worker Gary: If that wasn't an accident on the job, I don't know what is."
+        ],
+        "text": [
+          "Muncitor Gary: Dacă ăsta n-a fost un accident de muncă, nu știu ce e."
+        ]
+      }
+    },
+    "black_belt_david": {
+      "name": {
+        "en": [
+          "David"
+        ],
+        "text": [
+          "David"
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt David: I train up here, where the steel is cold and the drop is long!"
+        ],
+        "text": [
+          "Centură Neagră David: Mă antrenez aici sus, unde oțelul e rece și hăul e adânc!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt David: My stance cracked like cast iron..."
+        ],
+        "text": [
+          "Centură Neagră David: Garda mea a crăpat ca fonta..."
+        ]
+      }
+    },
+    "black_belt_ricky": {
+      "name": {
+        "en": [
+          "Ricky"
+        ],
+        "text": [
+          "Ricky"
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Ricky: Steel types shrug off my punches. Will yours?"
+        ],
+        "text": [
+          "Centură Neagră Ricky: Cei de tip Oțel rezistă la pumnii mei. Ai tăi la fel?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Ricky: Even steel bends if you push hard enough. Today it was me."
+        ],
+        "text": [
+          "Centură Neagră Ricky: Chiar și oțelul se îndoaie dacă împingi destul. Azi am fost eu acela."
+        ]
+      }
+    },
+    "ace_trainer_cesar": {
+      "name": {
+        "en": [
+          "Cesar"
+        ],
+        "text": [
+          "Cesar"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Cesar: Byron only meets Trainers who can find their own way up. Prove you belong!"
+        ],
+        "text": [
+          "Antrenor As Cesar: Byron îi primește doar pe Antrenorii care găsesc singuri drumul în sus. Dovedește că-ți ai locul aici!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Cesar: You belong, all right. Up you go."
+        ],
+        "text": [
+          "Antrenor As Cesar: Chiar îți ai locul aici. Hai, sus."
+        ]
+      }
+    },
+    "ace_trainer_breanna": {
+      "name": {
+        "en": [
+          "Breanna"
+        ],
+        "text": [
+          "Breanna"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Breanna: My Bronzor ring like bells when they battle. Shall we make some noise?"
+        ],
+        "text": [
+          "Antrenor As Breanna: Bronzor ai mei sună ca niște clopote când se luptă. Facem puțin zgomot?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Breanna: Not one note out of tune. Impressive."
+        ],
+        "text": [
+          "Antrenor As Breanna: Nicio notă falsă. Impresionant."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "14,25": {
+      "en": [
+        "CANALAVE CITY POKéMON GYM\nLeader: Byron"
+      ],
+      "text": [
+        "ARENA POKéMON DIN ORAȘUL CANALAVE\nLider: Byron"
+      ]
+    },
+    "18,25": {
+      "en": [
+        "CANALAVE CITY POKéMON GYM\nLeader: Byron"
+      ],
+      "text": [
+        "ARENA POKéMON DIN ORAȘUL CANALAVE\nLider: Byron"
+      ]
+    }
+  }
+}

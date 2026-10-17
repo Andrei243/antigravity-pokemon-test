@@ -1,0 +1,94 @@
+{
+  "Ferry": [
+    {
+      "en": [
+        "Seen enough of the island? The tunnels under it go a long way down."
+      ],
+      "text": [
+        "Ai văzut destul din insulă? Tunelurile de dedesubt merg foarte adânc."
+      ]
+    },
+    {
+      "en": [
+        "Shall I sail you back to Canalave City?"
+      ],
+      "text": [
+        "Te duc înapoi în Orașul Canalave?"
+      ]
+    },
+    {
+      "en": [
+        "Off we go, then!"
+      ],
+      "text": [
+        "Atunci, la drum!"
+      ]
+    },
+    {
+      "en": [
+        "Take your time. I'll be here with the boat."
+      ],
+      "text": [
+        "Nu te grăbi. Sunt aici cu barca."
+      ]
+    }
+  ],
+  "Riley": [
+    {
+      "en": [
+        "Riley"
+      ],
+      "text": [
+        "Riley"
+      ]
+    },
+    {
+      "en": [
+        "Hello there. I don't think we've met. My name is Riley, and I'm a Trainer, same as you."
+      ],
+      "text": [
+        "Salut. Nu cred că ne cunoaștem. Mă numesc Riley și sunt Antrenor, ca tine."
+      ]
+    },
+    {
+      "en": [
+        "You've come to the island to train, {player}? Then here, a small gift from one Trainer to another."
+      ],
+      "text": [
+        "Ai venit pe insulă să te antrenezi, {player}? Atunci uite, un mic dar de la un Antrenor pentru altul."
+      ]
+    },
+    {
+      "en": [
+        "That HM holds Strength. A Pokémon that knows it can push the heaviest boulders out of the way."
+      ],
+      "text": [
+        "HM-ul acela conține Forță. Un Pokémon care o știe poate împinge din drum cei mai grei bolovani."
+      ]
+    },
+    {
+      "en": [
+        "Outside of battle, though, it answers only to the Gym Badge of Canalave City. Something to aim for!"
+      ],
+      "text": [
+        "Dar în afara luptei merge doar cu Insigna Arenei din Orașul Canalave. Ai un țel!"
+      ]
+    },
+    {
+      "en": [
+        "That HM holds Strength. With Canalave's Gym Badge on you already, your Pokémon can shove boulders aside with it."
+      ],
+      "text": [
+        "HM-ul acela conține Forță. Cum ai deja Insigna din Canalave, Pokémonii tăi pot da bolovanii la o parte cu ea."
+      ]
+    },
+    {
+      "en": [
+        "I'm going back inside to train. Come and find me down there, if you like."
+      ],
+      "text": [
+        "Mă întorc înăuntru să mă antrenez. Caută-mă acolo jos, dacă vrei."
+      ]
+    }
+  ]
+}

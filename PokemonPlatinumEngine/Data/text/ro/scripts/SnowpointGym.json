@@ -1,0 +1,184 @@
+{
+  "GymGuide": [
+    {
+      "en": [
+        "Gym Guide"
+      ],
+      "text": [
+        "Ghidul Arenei"
+      ]
+    },
+    {
+      "en": [
+        "Hey there! How's it going, future Champ?"
+      ],
+      "text": [
+        "Salutare! Ce mai faci?"
+      ]
+    },
+    {
+      "en": [
+        "See those giant snowballs all over the place? Get a good slide going down the ice and you'll smash straight through them!"
+      ],
+      "text": [
+        "Vezi bulgării ăia uriași de peste tot? Ia avânt bun pe gheață la vale și treci drept prin ei!"
+      ]
+    },
+    {
+      "en": [
+        "Candice uses Ice types. Thaw them out with some red-hot Fire moves!"
+      ],
+      "text": [
+        "Candice folosește Pokémoni de tip Gheață. Dezgheață-i cu niște mișcări de Foc încinse!"
+      ]
+    },
+    {
+      "en": [
+        "This Gym is all about focus. Keep your head clear and your feet moving!"
+      ],
+      "text": [
+        "Arena asta ține numai de concentrare. Minte limpede și picioare în mișcare!"
+      ]
+    },
+    {
+      "en": [
+        "{player}! You beat Candice! Your focus was even sharper than hers, and your Pokémon could feel it!"
+      ],
+      "text": [
+        "{player}! Ai învins-o pe Candice! Concentrarea ta a fost și mai ascuțită decât a ei, și Pokémonii tăi au simțit-o!"
+      ]
+    }
+  ],
+  "GymStatue": [
+    {
+      "en": [
+        "SNOWPOINT CITY POKéMON GYM. Leader: Candice. Certified Trainers: {rival}"
+      ],
+      "text": [
+        "ARENA POKéMON DIN ORAȘUL SNOWPOINT. Lideră: Candice. Antrenori atestați: {rival}"
+      ]
+    },
+    {
+      "en": [
+        "SNOWPOINT CITY POKéMON GYM. Leader: Candice. Certified Trainers: {rival}, {player}"
+      ],
+      "text": [
+        "ARENA POKéMON DIN ORAȘUL SNOWPOINT. Lideră: Candice. Antrenori atestați: {rival}, {player}"
+      ]
+    }
+  ],
+  "Candice": [
+    {
+      "en": [
+        "Candice"
+      ],
+      "text": [
+        "Candice"
+      ]
+    },
+    {
+      "en": [
+        "A challenger? For me? All right! I've been hoping somebody tough would come along!"
+      ],
+      "text": [
+        "Un provocator? Pentru mine? Super! Speram să vină cineva tare!"
+      ]
+    },
+    {
+      "en": [
+        "Just so you know, I'm tough too. And it's because I know how to focus."
+      ],
+      "text": [
+        "Ca să știi, și eu sunt tare. Și asta pentru că știu să mă concentrez."
+      ]
+    },
+    {
+      "en": [
+        "Battling, picking out the perfect scarf, falling for someone... Whatever it is, it all comes down to focus!"
+      ],
+      "text": [
+        "Să te lupți, să alegi fularul perfect, să te îndrăgostești... Orice ar fi, totul ține de concentrare!"
+      ]
+    },
+    {
+      "en": [
+        "I'll show you exactly what I mean. Get ready to lose!"
+      ],
+      "text": [
+        "O să-ți arăt exact ce vreau să spun. Pregătește-te să pierzi!"
+      ]
+    },
+    {
+      "en": [
+        "Wow, you're amazing! You've totally earned my respect."
+      ],
+      "text": [
+        "Uau, ce talent ai! Mi-ai câștigat respectul de-a binelea."
+      ]
+    },
+    {
+      "en": [
+        "Your focus and your will just bowled my team right over. Oh, that's right! I'm meant to give you this!"
+      ],
+      "text": [
+        "Concentrarea și voința ta mi-au dat echipa peste cap. A, da! Trebuie să-ți dau asta!"
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Icicle Badge from Candice!"
+      ],
+      "text": [
+        "{player} a primit Insigna Țurțure de la Candice!"
+      ]
+    },
+    {
+      "en": [
+        "With the Icicle Badge, your Pokémon can use Rock Climb whenever you like, even outside of battle!"
+      ],
+      "text": [
+        "Cu Insigna Țurțure, Pokémonii tăi pot folosi Cățărare oricând vrei, chiar și în afara luptei!"
+      ]
+    },
+    {
+      "en": [
+        "Oh, and take this too!"
+      ],
+      "text": [
+        "A, și ia și asta!"
+      ]
+    },
+    {
+      "en": [
+        "TM72 is Avalanche. If the user gets hit before it moves, the move comes crashing back twice as hard!"
+      ],
+      "text": [
+        "TM72 e Lavină. Dacă Pokémonul e lovit înainte să atace, mișcarea lovește înapoi de două ori mai tare!"
+      ]
+    },
+    {
+      "en": [
+        "Can you imagine the focus it takes to stand there and wait for that hit?"
+      ],
+      "text": [
+        "Îți imaginezi câtă concentrare îți trebuie să stai acolo și să aștepți lovitura aia?"
+      ]
+    },
+    {
+      "en": [
+        "Hey, do you think I should act more like an Ice-type Leader? You know, all cool and aloof?"
+      ],
+      "text": [
+        "Hei, crezi că ar trebui să mă port mai mult ca o Lideră de tip Gheață? Știi tu, rece și distantă?"
+      ]
+    },
+    {
+      "en": [
+        "I tried it once. I lasted about five seconds before I started giggling!"
+      ],
+      "text": [
+        "Am încercat o dată. Am rezistat vreo cinci secunde până am început să chicotesc!"
+      ]
+    }
+  ]
+}

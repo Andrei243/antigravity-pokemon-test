@@ -1,0 +1,206 @@
+{
+  "people": {
+    "worker_west": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          "Muncitorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pal Park isn't open yet. We're still getting everything ready."
+        ],
+        "text": [
+          "Pal Park încă nu s-a deschis. Încă pregătim totul."
+        ]
+      }
+    },
+    "worker_east": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          "Muncitorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We're getting Pal Park ready to open. Wonder what folks will get up to in there?"
+        ],
+        "text": [
+          "Pregătim Pal Park pentru deschidere. Oare ce-o să facă lumea acolo?"
+        ]
+      }
+    },
+    "swimmer_dillon": {
+      "name": {
+        "en": [
+          "Dillon"
+        ],
+        "text": [
+          "Dillon"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Dillon: I swam all the way over from Route 220 without stopping! Mind if I battle while I rest?"
+        ],
+        "text": [
+          "Înotător Dillon: Am înotat tocmai de pe Ruta 220 fără oprire! Te superi dacă ne luptăm cât mă odihnesc?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Dillon: I'll just float on my back for a bit. Ahh, that's better."
+        ],
+        "text": [
+          "Înotător Dillon: Plutesc puțin pe spate. Ahh, așa mai merge."
+        ]
+      }
+    },
+    "swimmer_vanessa": {
+      "name": {
+        "en": [
+          "Vanessa"
+        ],
+        "text": [
+          "Vanessa"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Vanessa: My Golduck swims faster than any Pokémon I know. Want to see?"
+        ],
+        "text": [
+          "Înotător Vanessa: Golduck al meu înoată mai repede decât orice Pokémon pe care-l știu. Vrei să vezi?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Vanessa: Fast isn't the same as strong. I'll remember that."
+        ],
+        "text": [
+          "Înotător Vanessa: Rapid nu e totuna cu puternic. O să țin minte."
+        ]
+      }
+    },
+    "fisherman_cory": {
+      "name": {
+        "en": [
+          "Cory"
+        ],
+        "text": [
+          "Cory"
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Cory: Three casts, three Finneon, all before breakfast. Want to meet them?"
+        ],
+        "text": [
+          "Pescar Cory: Trei aruncări, trei Finneon, toate înainte de micul dejun. Vrei să-i cunoști?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Cory: They'll grow. And when they do, you'd better watch out."
+        ],
+        "text": [
+          "Pescar Cory: O să crească. Și atunci să te ferești."
+        ]
+      }
+    },
+    "collector_ivan": {
+      "name": {
+        "en": [
+          "Ivan"
+        ],
+        "text": [
+          "Ivan"
+        ]
+      },
+      "before": {
+        "en": [
+          "Collector Ivan: I've gathered rare Pokémon from all over. Let me show you the jewel of my collection!"
+        ],
+        "text": [
+          "Colecționar Ivan: Am adunat Pokémoni rari de peste tot. Lasă-mă să-ți arăt bijuteria colecției mele!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Collector Ivan: My jewel has lost its sparkle. A good polish, and it'll shine again."
+        ],
+        "text": [
+          "Colecționar Ivan: Bijuteria mea și-a pierdut strălucirea. O lustruire bună, și va străluci din nou."
+        ]
+      }
+    },
+    "ace_trainer_jake": {
+      "name": {
+        "en": [
+          "Jake"
+        ],
+        "text": [
+          "Jake"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Jake: Staraptor and I flew out over the sea looking for a strong trainer. Looks like we found one!"
+        ],
+        "text": [
+          "Antrenor As Jake: Eu și Staraptor am zburat peste mare după un Antrenor puternic. Se pare că am găsit!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Jake: A good battle is worth the trip, win or lose."
+        ],
+        "text": [
+          "Antrenor As Jake: O luptă bună merită drumul, fie că câștigi, fie că pierzi."
+        ]
+      }
+    },
+    "ace_trainer_shannon": {
+      "name": {
+        "en": [
+          "Shannon"
+        ],
+        "text": [
+          "Shannon"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Shannon: This far from the cities, there's nobody to hold back for. Give it everything!"
+        ],
+        "text": [
+          "Antrenor As Shannon: Așa departe de orașe, n-ai de ce să te abții. Dă tot ce ai!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Shannon: You gave it everything, all right. More than I did!"
+        ],
+        "text": [
+          "Antrenor As Shannon: Chiar ai dat tot. Mai mult decât mine!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "signboard_pal_park": {
+      "en": [
+        "Pal Park\nPokémon from distant lands, waiting to make new friends."
+      ],
+      "text": [
+        "Pal Park\nPokémoni din ținuturi îndepărtate, care așteaptă prieteni noi."
+      ]
+    }
+  }
+}

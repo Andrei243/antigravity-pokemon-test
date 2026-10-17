@@ -1,0 +1,186 @@
+{
+  "Rowan": [
+    {
+      "en": [
+        "Prof. Rowan"
+      ],
+      "text": [
+        "Prof. Rowan"
+      ]
+    },
+    {
+      "en": [
+        "Hmm... Rage Candy Bars are altogether too popular, it would seem."
+      ],
+      "text": [
+        "Hmm... Batoanele de Furie se pare că sunt mult prea căutate."
+      ]
+    },
+    {
+      "en": [
+        "Ah, {player}. It's you.",
+        "Does life go on thrilling you? It does me.",
+        "Only the other day I learned that some Pokémon evolve in certain places and nowhere else.",
+        "When I found that out, I was thrilled, I can tell you!"
+      ],
+      "text": [
+        "A, {player}. Tu erai.",
+        "Viața te mai încântă? Pe mine, da.",
+        "Chiar zilele trecute am aflat că unii Pokémoni evoluează doar în anumite locuri și nicăieri altundeva.",
+        "Când am aflat, am fost încântat, ți-o spun sincer!"
+      ]
+    }
+  ],
+  "LavaCookies": [
+    {
+      "en": [
+        "Hello, there. Would you care for some Lava Cookies? They are 200 each.",
+        "1",
+        "10",
+        "NO, THANKS"
+      ],
+      "text": [
+        "Bună ziua. Vrei niște Biscuiți de Lavă? Costă 200 bucata.",
+        "1",
+        "10",
+        "NU, MERSI"
+      ]
+    },
+    {
+      "en": [
+        "Please come again."
+      ],
+      "text": [
+        "Mai treci pe la noi."
+      ]
+    },
+    {
+      "en": [
+        "There you are: one Lava Cookie. Thank you."
+      ],
+      "text": [
+        "Poftim: un Biscuit de Lavă. Mulțumesc."
+      ]
+    },
+    {
+      "en": [
+        "There you are: ten Lava Cookies. Thank you very much."
+      ],
+      "text": [
+        "Poftim: zece Biscuiți de Lavă. Mulțumesc frumos."
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry, but you haven't enough money."
+      ],
+      "text": [
+        "Îmi pare rău, dar nu ai destui bani."
+      ]
+    }
+  ],
+  "Poffins": [
+    {
+      "en": [
+        "Hello! I sell Poffins. Mine are 6,400 each."
+      ],
+      "text": [
+        "Bună! Vând Poffinuri. Ale mele costă 6.400 bucata."
+      ]
+    },
+    {
+      "en": [
+        "Which Poffin would you like?",
+        "SPICY-DRY",
+        "SPICY-SWEET",
+        "SPICY-BITTER",
+        "SPICY-SOUR",
+        "OTHER KINDS",
+        "NO, THANKS"
+      ],
+      "text": [
+        "Ce Poffin vrei?",
+        "IUTE-SEC",
+        "IUTE-DULCE",
+        "IUTE-AMAR",
+        "IUTE-ACRU",
+        "ALTE FELURI",
+        "NU, MERSI"
+      ]
+    },
+    {
+      "en": [
+        "Which of these, then?",
+        "DRY-SWEET",
+        "DRY-BITTER",
+        "DRY-SOUR",
+        "OTHER KINDS",
+        "NO, THANKS"
+      ],
+      "text": [
+        "Atunci, care dintre acestea?",
+        "SEC-DULCE",
+        "SEC-AMAR",
+        "SEC-ACRU",
+        "ALTE FELURI",
+        "NU, MERSI"
+      ]
+    },
+    {
+      "en": [
+        "One of these, perhaps?",
+        "SWEET-BITTER",
+        "SWEET-SOUR",
+        "BITTER-SOUR",
+        "NO, THANKS"
+      ],
+      "text": [
+        "Poate unul dintre acestea?",
+        "DULCE-AMAR",
+        "DULCE-ACRU",
+        "AMAR-ACRU",
+        "NU, MERSI"
+      ]
+    },
+    {
+      "en": [
+        "Thank you very much. Do shop with us again."
+      ],
+      "text": [
+        "Mulțumesc frumos. Mai cumpără de la noi."
+      ]
+    },
+    {
+      "en": [
+        "Please come again."
+      ],
+      "text": [
+        "Mai treci pe la noi."
+      ]
+    },
+    {
+      "en": [
+        "I'm so sorry, but you haven't enough money."
+      ],
+      "text": [
+        "Îmi pare tare rău, dar nu ai destui bani."
+      ]
+    },
+    {
+      "en": [
+        "Oh... Your Poffin Case is full already."
+      ],
+      "text": [
+        "O... Cutia ta de Poffinuri e deja plină."
+      ]
+    },
+    {
+      "en": [
+        "I'm so sorry. We can't sell Poffins to someone with no Poffin Case to put them in."
+      ],
+      "text": [
+        "Îmi pare rău. Nu putem vinde Poffinuri cuiva care n-are o Cutie de Poffinuri."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "displayName": {
+    "en": [
+      "Veilstone Dept. Store"
+    ],
+    "text": [
+      "Magazinul Universal Veilstone"
+    ]
+  },
+  "people": {
+    "receptionist": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitor"
+        ]
+      }
+    },
+    "twin": {
+      "name": {
+        "en": [
+          "Twin"
+        ],
+        "text": [
+          "Geamănă"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A friend of mine was sent a Machoke in a trade.",
+          "Only it wasn't a Machoke that came out the other end!"
+        ],
+        "text": [
+          "Un prieten de-al meu a primit un Machoke la schimb.",
+          "Doar că n-a mai fost un Machoke când a ajuns la el!"
+        ]
+      }
+    },
+    "guitarist": {
+      "name": {
+        "en": [
+          "Guitarist"
+        ],
+        "text": [
+          "Chitaristul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I wrote some secrets down on a sheet of Mail, to remind myself...",
+          "If anybody reads it, I'm done for."
+        ],
+        "text": [
+          "Mi-am scris niște secrete pe o Scrisoare, ca să nu le uit...",
+          "Dacă o citește cineva, sunt pierdut."
+        ]
+      }
+    },
+    "cashier_f": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      }
+    },
+    "cashier_m": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      }
+    },
+    "pokemon_breeder_f": {
+      "name": {
+        "en": [
+          "Breeder"
+        ],
+        "text": [
+          "Crescătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'd love to buy up everything they sell here.",
+          "Just the once would do!"
+        ],
+        "text": [
+          "Aș vrea să cumpăr tot ce vând aici.",
+          "Măcar o dată!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "13,2": {
+      "en": [
+        "B1F: Food and Produce. 1F: Trainers' Zone. 2F: Battle Collection. 3F: TM Corner. 4F: Poké Dolls and Goods. 5F: Rooftop Plaza."
+      ],
+      "text": [
+        "Subsol: Alimente. Parter: Antrenori. Et. 2: Luptă. Et. 3: TM-uri. Et. 4: Păpuși și mobilier. Et. 5: Terasa."
+      ]
+    }
+  }
+}

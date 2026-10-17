@@ -1,0 +1,34 @@
+{
+  "people": {
+    "ace_trainer_m": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          "Antrenoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Once your last Safari Ball is gone, your time in the marsh is up.",
+          "So don't waste them. Make every throw count!"
+        ],
+        "text": [
+          "Când îți termini ultimul Safari Ball, timpul tău în mlaștină s-a încheiat.",
+          "Așa că nu le irosi. Fă ca fiecare aruncare să conteze!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "signboard": {
+      "en": [
+        "Great Marsh · Area 6\nThe way in and out. The observatory, and Pastoria City beyond it, lie just to the south."
+      ],
+      "text": [
+        "Marea Mlaștină · Zona 6\nIntrarea și ieșirea. Observatorul și, dincolo de el, Orașul Pastoria sunt chiar la sud."
+      ]
+    }
+  }
+}

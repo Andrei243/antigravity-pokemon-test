@@ -1,0 +1,43 @@
+{
+  "displayName": {
+    "en": [
+      "Snowpoint City"
+    ],
+    "text": [
+      "Orașul Snowpoint"
+    ]
+  },
+  "people": {
+    "ace_trainer_m": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          "Antrenor As"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Some Pokémon only evolve when they change hands in a trade.",
+          "A new Trainer, a new home... I suppose a move like that changes anyone."
+        ],
+        "text": [
+          "Unii Pokémoni evoluează doar când își schimbă stăpânul printr-un schimb.",
+          "Un Antrenor nou, o casă nouă... Cred că o asemenea mutare schimbă pe oricine."
+        ]
+      }
+    },
+    "mindy": {
+      "name": {
+        "en": [
+          "Mindy"
+        ],
+        "text": [
+          "Mindy"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

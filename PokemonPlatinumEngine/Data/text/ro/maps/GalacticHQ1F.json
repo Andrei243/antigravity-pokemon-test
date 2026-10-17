@@ -1,0 +1,164 @@
+{
+  "displayName": {
+    "en": [
+      "Galactic HQ"
+    ],
+    "text": [
+      "Cartierul Galactic"
+    ]
+  },
+  "people": {
+    "grunt_f_1": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      }
+    },
+    "scientist_m_1": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          "Cercetătorul"
+        ]
+      }
+    },
+    "52,14": {
+      "name": {
+        "en": [
+          "TM49"
+        ],
+        "text": [
+          "TM49"
+        ]
+      }
+    },
+    "galactic_grunt": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: Hold it! How did a kid get past the warp panels?!"
+        ],
+        "text": [
+          "Galactic Grunt: Stai! Cum a trecut un copil de panourile de teleportare?!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: Beaten on my own doorstep. Wonderful."
+        ],
+        "text": [
+          "Galactic Grunt: Învins chiar la ușa mea. Minunat."
+        ]
+      }
+    },
+    "scientist_fredrick": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          "Cercetătorul"
+        ]
+      },
+      "before": {
+        "en": [
+          "Scientist Fredrick: An intruder? Splendid! I have a theory about battles that wants testing."
+        ],
+        "text": [
+          "Om de știință Fredrick: Un intrus? Splendid! Am o teorie despre lupte care trebuie testată."
+        ]
+      },
+      "after": {
+        "en": [
+          "Scientist Fredrick: Theory disproved. Back to the drawing board."
+        ],
+        "text": [
+          "Om de știință Fredrick: Teorie infirmată. Înapoi la planșetă."
+        ]
+      }
+    },
+    "galactic_hq_door_west": {
+      "name": {
+        "en": [
+          "Door"
+        ],
+        "text": [
+          "Ușă"
+        ]
+      }
+    },
+    "galactic_hq_door_east": {
+      "name": {
+        "en": [
+          "Door"
+        ],
+        "text": [
+          "Ușă"
+        ]
+      }
+    },
+    "grunt_f_2": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      }
+    },
+    "grunt_m": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      }
+    },
+    "saturn": {
+      "name": {
+        "en": [
+          "Saturn"
+        ],
+        "text": [
+          "Saturn"
+        ]
+      }
+    },
+    "16,6": {
+      "name": {
+        "en": [
+          "Dubious Disc"
+        ],
+        "text": [
+          "Disc Îndoielnic"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "42,13": {
+      "en": [
+        "A notice on the wall:\n\"Team Galactic's creed! All that there is belongs to Team Galactic. Lift your eyes past this world: the stars shall be Team Galactic's too!\""
+      ],
+      "text": [
+        "Un anunț pe perete:\n„Crezul Echipei Galactic! Tot ce există e al Echipei Galactic. Ridicați ochii dincolo de lumea asta: și stelele vor fi ale Echipei Galactic!”"
+      ]
+    }
+  }
+}

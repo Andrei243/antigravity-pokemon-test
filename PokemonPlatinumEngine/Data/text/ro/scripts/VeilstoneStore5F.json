@@ -1,0 +1,106 @@
+{
+  "VendingMachine": [
+    {
+      "en": [
+        "A vending machine. Which drink would you like?",
+        "FRESH WATER  200",
+        "SODA POP  300",
+        "LEMONADE  350",
+        "NONE"
+      ],
+      "text": [
+        "Un automat de băuturi. Ce băutură vrei?",
+        "APĂ PROASPĂTĂ  200",
+        "SUC ACIDULAT  300",
+        "LIMONADĂ  350",
+        "NIMIC"
+      ]
+    },
+    {
+      "en": [
+        "Decided not to buy a drink."
+      ],
+      "text": [
+        "Te-ai hotărât să nu cumperi nimic."
+      ]
+    },
+    {
+      "en": [
+        "Clang! A can of Fresh Water dropped down."
+      ],
+      "text": [
+        "Clinc! A căzut o doză de Apă Proaspătă."
+      ]
+    },
+    {
+      "en": [
+        "Bonus! Another can of Fresh Water dropped down."
+      ],
+      "text": [
+        "Bonus! A mai căzut o doză de Apă Proaspătă."
+      ]
+    },
+    {
+      "en": [
+        "Clang! A can of Soda Pop dropped down."
+      ],
+      "text": [
+        "Clinc! A căzut o doză de Suc Acidulat."
+      ]
+    },
+    {
+      "en": [
+        "Bonus! Another can of Soda Pop dropped down."
+      ],
+      "text": [
+        "Bonus! A mai căzut o doză de Suc Acidulat."
+      ]
+    },
+    {
+      "en": [
+        "Clang! A can of Lemonade dropped down."
+      ],
+      "text": [
+        "Clinc! A căzut o doză de Limonadă."
+      ]
+    },
+    {
+      "en": [
+        "Bonus! Another can of Lemonade dropped down."
+      ],
+      "text": [
+        "Bonus! A mai căzut o doză de Limonadă."
+      ]
+    },
+    {
+      "en": [
+        "Not enough money..."
+      ],
+      "text": [
+        "Nu ai destui bani..."
+      ]
+    }
+  ],
+  "Collector": [
+    {
+      "en": [
+        "Ah, a young Pokémon Trainer...",
+        "As one with a few more years behind him, allow me to make you a present. A Sticky Barb!"
+      ],
+      "text": [
+        "A, un tânăr Antrenor Pokémon...",
+        "Ca unul cu câțiva ani în plus, dă-mi voie să-ți fac un cadou. Un Ghimpe Lipicios!"
+      ]
+    },
+    {
+      "en": [
+        "The Sticky Barb is for a Pokémon to hold. Should the holder be struck...",
+        "...the barb sticks to its foe, and hurts it turn after turn!"
+      ],
+      "text": [
+        "Ghimpele Lipicios e ținut de un Pokémon. Dacă purtătorul e lovit...",
+        "...ghimpele se lipește de adversar și îl rănește tură după tură!"
+      ]
+    }
+  ]
+}

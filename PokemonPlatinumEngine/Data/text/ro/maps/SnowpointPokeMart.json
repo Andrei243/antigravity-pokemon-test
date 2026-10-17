@@ -1,0 +1,89 @@
+{
+  "displayName": {
+    "en": [
+      "Poké Mart"
+    ],
+    "text": [
+      "Poké Mart"
+    ]
+  },
+  "people": {
+    "cashier_f": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome to the Snowpoint Poké Mart! How may I serve you today?"
+        ],
+        "text": [
+          "Vânzătoarea: Bun venit la Poké Martul din Snowpoint! Cu ce te pot ajuta azi?"
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          "Puștiul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm teaching my Pokémon new moves with Technical Machines, a different mix of types for each of them.",
+          "It's all for the Elite Four of the Pokémon League. They say those four are far tougher than any Gym Leader!"
+        ],
+        "text": [
+          "Îmi învăț Pokémonii mișcări noi cu Mașini Tehnice, câte un amestec diferit de tipuri pentru fiecare.",
+          "Totul pentru Elita celor Patru de la Liga Pokémon. Se zice că sunt mult mai tari decât orice Lider de Arenă!"
+        ]
+      }
+    },
+    "snowpoint_lady": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A frozen Pokémon thaws out by itself, given time.",
+          "All the same, if I were you I'd keep a few Ice Heals in my bag."
+        ],
+        "text": [
+          "Un Pokémon înghețat se dezgheață singur, cu timpul.",
+          "Totuși, în locul tău, aș ține câteva Leacuri de Îngheț în rucsac."
+        ]
+      }
+    },
+    "cashier_m": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! This counter has goods you'll only find here in Snowpoint."
+        ],
+        "text": [
+          "Vânzătoarea: Bun venit! La tejgheaua asta sunt mărfuri pe care le găsești doar aici, în Snowpoint."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

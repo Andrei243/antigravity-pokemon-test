@@ -1,0 +1,275 @@
+{
+  "people": {
+    "riley": {
+      "name": {
+        "en": [
+          "Riley"
+        ],
+        "text": [
+          "Riley"
+        ]
+      }
+    },
+    "grunt_m_west": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: Two of you? Then we'll take your Pokémon as well!"
+        ],
+        "text": [
+          "Galactic Grunt: Sunteți doi? Atunci vă luăm și Pokémonii voștri!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: Nobody said there'd be Trainers down here..."
+        ],
+        "text": [
+          "Galactic Grunt: Nu ne-a zis nimeni că vor fi Antrenori aici jos..."
+        ]
+      }
+    },
+    "grunt_m_east": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: You're in Team Galactic's way. Big mistake!"
+        ],
+        "text": [
+          "Galactic Grunt: Stai în calea Echipei Galactic. Mare greșeală!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: I want to go back to headquarters."
+        ],
+        "text": [
+          "Galactic Grunt: Vreau înapoi la cartierul general."
+        ]
+      }
+    },
+    "hiker_damon": {
+      "name": {
+        "en": [
+          "Damon"
+        ],
+        "text": [
+          "Damon"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Damon: These tunnels were dug by hand, you know. I come down here to feel the rock all round me."
+        ],
+        "text": [
+          "Drumeț Damon: Tunelurile astea au fost săpate cu mâna, să știi. Vin aici să simt piatra peste tot în jurul meu."
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Damon: I thought we were as tough as this island's iron. Not tough enough, it seems."
+        ],
+        "text": [
+          "Drumeț Damon: Credeam că suntem tari ca fierul insulei. Se pare că nu destul."
+        ]
+      }
+    },
+    "hiker_maurice": {
+      "name": {
+        "en": [
+          "Maurice"
+        ],
+        "text": [
+          "Maurice"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Maurice: Heave-ho! My Pokémon are every bit as tough as the rock we're standing in!"
+        ],
+        "text": [
+          "Drumeț Maurice: Hei-rup! Pokémonii mei sunt la fel de tari ca stânca în care stăm!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Maurice: Crumbled like old shale. You've got real grit, you have."
+        ],
+        "text": [
+          "Drumeț Maurice: M-am fărâmițat ca șistul vechi. Ai ceva oțel în tine, zău."
+        ]
+      }
+    },
+    "black_belt_kendal": {
+      "name": {
+        "en": [
+          "Kendal"
+        ],
+        "text": [
+          "Kendal"
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Kendal: I train in the deepest tunnels, where nobody can hear me shout. Hyaah!"
+        ],
+        "text": [
+          "Centură Neagră Kendal: Mă antrenez în cele mai adânci tuneluri, unde nu mă aude nimeni strigând. Hiaa!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Kendal: Even down here, there's someone stronger. Back to my training."
+        ],
+        "text": [
+          "Centură Neagră Kendal: Chiar și aici jos e cineva mai puternic. Înapoi la antrenament."
+        ]
+      }
+    },
+    "battle_girl_tyler": {
+      "name": {
+        "en": [
+          "Tyler"
+        ],
+        "text": [
+          "Tyler"
+        ]
+      },
+      "before": {
+        "en": [
+          "Battle Girl Tyler: Breathe in... breathe out... Medicham and I are ready. Are you?"
+        ],
+        "text": [
+          "Luptătoare Tyler: Inspiră... expiră... Eu și Medicham suntem gata. Tu?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Battle Girl Tyler: My focus slipped. A real fighter stays calm, win or lose."
+        ],
+        "text": [
+          "Luptătoare Tyler: Mi-am pierdut concentrarea. Un adevărat luptător rămâne calm, fie că câștigă, fie că pierde."
+        ]
+      }
+    },
+    "worker_brendon": {
+      "name": {
+        "en": [
+          "Brendon"
+        ],
+        "text": [
+          "Brendon"
+        ]
+      },
+      "before": {
+        "en": [
+          "Worker Brendon: The mine's closed, but my crew still come down to look at the old seams. And to battle!"
+        ],
+        "text": [
+          "Muncitor Brendon: Mina e închisă, dar echipa mea tot coboară să se uite la filoanele vechi. Și să se lupte!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Worker Brendon: You hit like a pickaxe. My Pokémon need a tea break."
+        ],
+        "text": [
+          "Muncitor Brendon: Lovești ca un târnăcop. Pokémonii mei au nevoie de o pauză de ceai."
+        ]
+      }
+    },
+    "worker_quentin": {
+      "name": {
+        "en": [
+          "Quentin"
+        ],
+        "text": [
+          "Quentin"
+        ]
+      },
+      "before": {
+        "en": [
+          "Worker Quentin: Mind your head down here! And mind your Pokémon, because here we come!"
+        ],
+        "text": [
+          "Muncitor Quentin: Ai grijă la cap aici jos! Și la Pokémoni, că venim peste tine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Worker Quentin: Knocked flat. Good thing I kept my helmet on."
+        ],
+        "text": [
+          "Muncitor Quentin: Făcut praf. Bine că mi-am ținut casca pe cap."
+        ]
+      }
+    },
+    "ace_trainer_jonah": {
+      "name": {
+        "en": [
+          "Jonah"
+        ],
+        "text": [
+          "Jonah"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Jonah: They say this island teems with Steel-type Pokémon. I came to test my team against them, and against you!"
+        ],
+        "text": [
+          "Antrenor As Jonah: Se zice că insula asta e plină de Pokémoni de tip Oțel. Am venit să-mi încerc echipa cu ei, și cu tine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Jonah: I've a long way to go yet. That's what makes the trip worth it."
+        ],
+        "text": [
+          "Antrenor As Jonah: Mai am mult de mers. Tocmai asta face drumul să merite."
+        ]
+      }
+    },
+    "ace_trainer_brenda": {
+      "name": {
+        "en": [
+          "Brenda"
+        ],
+        "text": [
+          "Brenda"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Brenda: Nobody comes this deep by accident. Let's see what you're made of!"
+        ],
+        "text": [
+          "Antrenor As Brenda: Nimeni nu coboară atât de adânc din întâmplare. Să vedem ce poți!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Brenda: So that's how it's done. I'll remember that."
+        ],
+        "text": [
+          "Antrenor As Brenda: Deci așa se face. O să țin minte."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

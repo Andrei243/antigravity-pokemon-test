@@ -1,0 +1,36 @@
+{
+  "RivalCallsDown": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Hey! {player}! Down there! You're only getting here now? You're so slow it hurts to watch!"
+      ],
+      "text": [
+        "Hei! {player}! Acolo jos! Abia acum ajungi? Mergi atât de încet că doare să te privesc!"
+      ]
+    },
+    {
+      "en": [
+        "Listen up! See how knobbly these rocks are? You can't climb them until you've got the Badge from Snowpoint's Gym. So go and get it!"
+      ],
+      "text": [
+        "Ascultă! Vezi cât de colțuroase-s stâncile astea? Nu le poți urca până nu iei Insigna Arenei din Snowpoint. Așa că du-te și ia-o!"
+      ]
+    },
+    {
+      "en": [
+        "Anyway, I'm not standing about. Team Galactic! Ready or not, here I come!"
+      ],
+      "text": [
+        "În fine, eu nu stau degeaba. Echipa Galactic! Gata sau nu, vin peste voi!"
+      ]
+    }
+  ]
+}

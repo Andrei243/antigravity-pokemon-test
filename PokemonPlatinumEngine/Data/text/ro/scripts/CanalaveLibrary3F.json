@@ -1,0 +1,730 @@
+{
+  "Meeting": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "{player}! Over here, over here! You're the last one in. As usual!"
+      ],
+      "text": [
+        "{player}! Aici, aici! Tu ai venit la urmă. Ca de obicei!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "There you go, old man. One {player}, safely delivered. So that's me done, and I'll be heading off..."
+      ],
+      "text": [
+        "Poftim, bătrâne. Misiune îndeplinită: {player} e aici. Gata, eu mi-am făcut treaba și plec..."
+      ]
+    },
+    {
+      "en": [
+        "Prof. Rowan"
+      ],
+      "text": [
+        "Prof. Rowan"
+      ]
+    },
+    {
+      "en": [
+        "......"
+      ],
+      "text": [
+        "......"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "...OK, OK! I get it! Quit looking at me like that. I'm staying, all right?"
+      ],
+      "text": [
+        "...Bine, bine! Am înțeles! Nu te mai uita așa la mine. Rămân, bine?"
+      ]
+    },
+    {
+      "en": [
+        "Prof. Rowan"
+      ],
+      "text": [
+        "Prof. Rowan"
+      ]
+    },
+    {
+      "en": [
+        "Good. Then we are all here at last."
+      ],
+      "text": [
+        "Bun. Atunci, în sfârșit, suntem toți aici."
+      ]
+    },
+    {
+      "en": [
+        "I have spent most of my life studying how Pokémon evolve. And the more I learn, the more mysteries I find."
+      ],
+      "text": [
+        "Mi-am petrecut cea mai mare parte a vieții studiind cum evoluează Pokémonii. Și cu cât aflu mai mult, cu atât găsesc mai multe mistere."
+      ]
+    },
+    {
+      "en": [
+        "Some Pokémon evolve, and some never do. What sets them apart? Could a Pokémon that never evolves be something older, something closer to where all Pokémon began?"
+      ],
+      "text": [
+        "Unii Pokémoni evoluează, alții niciodată. Ce-i deosebește? Ar putea un Pokémon care nu evoluează să fie ceva mai vechi, mai aproape de începutul tuturor Pokémonilor?"
+      ]
+    },
+    {
+      "en": [
+        "Sinnoh has three great lakes: Verity, Valor and Acuity. Each is said to be the home of a Pokémon that nobody has ever caught."
+      ],
+      "text": [
+        "Sinnohul are trei lacuri mari: Verity, Valor și Acuity. Se zice că în fiecare trăiește un Pokémon pe care nu l-a prins nimeni niciodată."
+      ]
+    },
+    {
+      "en": [
+        "If we could only see those Pokémon for ourselves, we might learn something about evolution that no book in this library can tell us. I want your help to find them."
+      ],
+      "text": [
+        "Dacă i-am putea vedea cu ochii noștri, am putea afla ceva despre evoluție ce nicio carte din biblioteca asta nu ne poate spune. Vreau ajutorul vostru ca să-i găsim."
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Hold on a second! How come I never got a Pokédex from you?"
+      ],
+      "text": [
+        "Stai puțin! Cum de eu n-am primit niciodată un Pokédex de la tine?"
+      ]
+    },
+    {
+      "en": [
+        "Prof. Rowan"
+      ],
+      "text": [
+        "Prof. Rowan"
+      ]
+    },
+    {
+      "en": [
+        "Because you ran out of my lab before I could hand you one. I have never seen anyone leave a room so quickly."
+      ],
+      "text": [
+        "Pentru că ai fugit din laboratorul meu înainte să-ți pot da unul. N-am văzut pe nimeni ieșind dintr-o cameră atât de repede."
+      ]
+    },
+    {
+      "en": [
+        "{assistant}"
+      ],
+      "text": [
+        "{assistant}"
+      ]
+    },
+    {
+      "en": [
+        "You can count on me, Professor!"
+      ],
+      "text": [
+        "Poți conta pe mine, profesore!"
+      ]
+    },
+    {
+      "en": [
+        "You bet, Professor! I'm in."
+      ],
+      "text": [
+        "Sigur, profesore! Sunt cu dumneavoastră."
+      ]
+    },
+    {
+      "en": [
+        "Prof. Rowan"
+      ],
+      "text": [
+        "Prof. Rowan"
+      ]
+    },
+    {
+      "en": [
+        "Three lakes, then, and four of us. We shall split up and look into each of them on our own."
+      ],
+      "text": [
+        "Trei lacuri, deci, și noi patru. Ne despărțim și cercetăm fiecare lac pe cont propriu."
+      ]
+    },
+    {
+      "en": [
+        "{assistant}. You will come with me to Lake Verity."
+      ],
+      "text": [
+        "{assistant}. Vii cu mine la Lacul Verity."
+      ]
+    },
+    {
+      "en": [
+        "{assistant}"
+      ],
+      "text": [
+        "{assistant}"
+      ]
+    },
+    {
+      "en": [
+        "Lake Verity. Will do, Professor!"
+      ],
+      "text": [
+        "Lacul Verity. S-a făcut, profesore!"
+      ]
+    },
+    {
+      "en": [
+        "Yes, sir!"
+      ],
+      "text": [
+        "Da, domnule!"
+      ]
+    },
+    {
+      "en": [
+        "Prof. Rowan"
+      ],
+      "text": [
+        "Prof. Rowan"
+      ]
+    },
+    {
+      "en": [
+        "{rival}. Lake Acuity is yours. The road there is the hardest of the three."
+      ],
+      "text": [
+        "{rival}. Lacul Acuity e al tău. Drumul până acolo e cel mai greu dintre toate trei."
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Yeah, of course it is! The toughest lake for the toughest Trainer. Makes sense to me!"
+      ],
+      "text": [
+        "Da, sigur că e! Cel mai greu lac pentru cel mai tare Antrenor. Mie îmi sună logic!"
+      ]
+    },
+    {
+      "en": [
+        "Prof. Rowan"
+      ],
+      "text": [
+        "Prof. Rowan"
+      ]
+    },
+    {
+      "en": [
+        "Which leaves Lake Valor for you, {player}. Now, when you get there, I want you to..."
+      ],
+      "text": [
+        "Așa că pentru tine rămâne Lacul Valor, {player}. Când ajungi acolo, vreau să..."
+      ]
+    },
+    {
+      "en": [
+        "The whole library shook!"
+      ],
+      "text": [
+        "S-a zguduit toată biblioteca!"
+      ]
+    },
+    {
+      "en": [
+        "Prof. Rowan"
+      ],
+      "text": [
+        "Prof. Rowan"
+      ]
+    },
+    {
+      "en": [
+        "...! Is everyone unharmed?"
+      ],
+      "text": [
+        "...! E toată lumea teafără?"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Whoa! What was THAT all about?!"
+      ],
+      "text": [
+        "Uau! Ce-a fost ASTA?!"
+      ]
+    },
+    {
+      "en": [
+        "TV"
+      ],
+      "text": [
+        "Televizor"
+      ]
+    },
+    {
+      "en": [
+        "...and we break into this programme with news just in from the east of Sinnoh."
+      ],
+      "text": [
+        "...și întrerupem programul cu o știre tocmai sosită din estul Sinnohului."
+      ]
+    },
+    {
+      "en": [
+        "A tremendous explosion has been reported at Lake Valor. Witnesses speak of a flash, and of a blast felt as far away as Canalave City."
+      ],
+      "text": [
+        "La Lacul Valor a avut loc o explozie uriașă. Martorii vorbesc de un fulger și de o suflătură simțită până în Orașul Canalave."
+      ]
+    },
+    {
+      "en": [
+        "Nobody yet knows the cause. We will bring you more as we have it."
+      ],
+      "text": [
+        "Încă nu se cunoaște cauza. Vă vom aduce detalii pe măsură ce le aflăm."
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Did you hear that? An explosion! At a lake! One of OUR lakes!"
+      ],
+      "text": [
+        "Ați auzit? O explozie! La un lac! Unul dintre lacurile NOASTRE!"
+      ]
+    },
+    {
+      "en": [
+        "Prof. Rowan"
+      ],
+      "text": [
+        "Prof. Rowan"
+      ]
+    },
+    {
+      "en": [
+        "Outside, all of you. Quickly, now."
+      ],
+      "text": [
+        "Afară, toți. Repede."
+      ]
+    },
+    {
+      "en": [
+        "Prof. Rowan"
+      ],
+      "text": [
+        "Prof. Rowan"
+      ]
+    },
+    {
+      "en": [
+        "{player}, you had better come along too. Don't dawdle."
+      ],
+      "text": [
+        "{player}, mai bine vii și tu. Nu zăbovi."
+      ]
+    }
+  ],
+  "Scientist": [
+    {
+      "en": [
+        "Scientist"
+      ],
+      "text": [
+        "Cercetătorul"
+      ]
+    },
+    {
+      "en": [
+        "A book holds the memory of whoever wrote it. Reading one is like listening to somebody from long ago."
+      ],
+      "text": [
+        "O carte păstrează amintirea celui care a scris-o. Să citești una e ca și cum ai asculta pe cineva de demult."
+      ]
+    },
+    {
+      "en": [
+        "Was that an earthquake? Every shelf on this floor was swaying!"
+      ],
+      "text": [
+        "A fost un cutremur? Toate rafturile de la etajul ăsta se clătinau!"
+      ]
+    }
+  ],
+  "Youngster": [
+    {
+      "en": [
+        "Youngster"
+      ],
+      "text": [
+        "Puștiul"
+      ]
+    },
+    {
+      "en": [
+        "There's one book I'm after, and it's out on loan every single time I come. Every time!"
+      ],
+      "text": [
+        "E o carte pe care o caut, și e împrumutată de fiecare dată când vin. De fiecare dată!"
+      ]
+    },
+    {
+      "en": [
+        "I've gone all wobbly... Is the floor still moving, or is that just me?"
+      ],
+      "text": [
+        "Mi s-au înmuiat picioarele... Se mai mișcă podeaua, sau doar mi se pare?"
+      ]
+    }
+  ],
+  "SinnohMyth": [
+    {
+      "en": [
+        "It's a book called \"A Myth of Sinnoh\". Read it?"
+      ],
+      "text": [
+        "E o carte numită „Un mit din Sinnoh”. O citești?"
+      ]
+    },
+    {
+      "en": [
+        "Long ago, when Sinnoh had only just been made, people and Pokémon lived their lives apart.",
+        "Apart, but not as strangers: each gave the other what it could spare, and each leaned on the other when times were hard."
+      ],
+      "text": [
+        "Demult, când Sinnohul abia fusese făcut, oamenii și Pokémonii își trăiau viețile separat.",
+        "Separat, dar nu ca străinii: fiecare îi dădea celuilalt ce putea și se sprijinea pe celălalt când erau vremuri grele."
+      ]
+    },
+    {
+      "en": [
+        "One day a Pokémon said to all the rest: let us be close by whenever people have need of us. Let us show ourselves to them.",
+        "And that, the story goes, is why a Pokémon still comes out to meet whoever walks into the tall grass."
+      ],
+      "text": [
+        "Într-o zi, un Pokémon le-a spus tuturor celorlalți: să fim aproape ori de câte ori oamenii au nevoie de noi. Să ne arătăm lor.",
+        "Și de aceea, spune povestea, un Pokémon încă iese în calea oricui intră în iarba înaltă."
+      ]
+    }
+  ],
+  "SinnohRegionsMythology": [
+    {
+      "en": [
+        "It's a book called \"The Mythology of the Sinnoh Region\". Read it?"
+      ],
+      "text": [
+        "E o carte numită „Mitologia regiunii Sinnoh”. O citești?"
+      ]
+    },
+    {
+      "en": [
+        "There were three Pokémon.",
+        "They plunged into the lakes: down and down, never once coming up for air."
+      ],
+      "text": [
+        "Erau trei Pokémoni.",
+        "S-au aruncat în lacuri: tot mai jos, fără să iasă nicio dată după aer."
+      ]
+    },
+    {
+      "en": [
+        "Down past where the light gives out, down where no breath could last, until they came to rest on the very bottom.",
+        "And from the floor of each lake they rose again, bringing up with them the power to shape whole lands."
+      ],
+      "text": [
+        "Mai jos de unde se termină lumina, mai jos de unde nicio suflare n-ar ține, până s-au oprit chiar pe fund.",
+        "Și de pe fundul fiecărui lac s-au ridicat din nou, aducând cu ei puterea de a modela ținuturi întregi."
+      ]
+    }
+  ],
+  "SinnohsMyth": [
+    {
+      "en": [
+        "It's a book called \"Sinnoh's Myth\". Read it?"
+      ],
+      "text": [
+        "E o carte numită „Mitul Sinnohului”. O citești?"
+      ]
+    },
+    {
+      "en": [
+        "Never let your anger show, or ??? will come for you.",
+        "Never give yourself up to weeping, or ??? will draw near."
+      ],
+      "text": [
+        "Nu-ți arăta niciodată mânia, sau va veni ??? după tine.",
+        "Nu te lăsa niciodată pradă plânsului, sau se va apropia ???."
+      ]
+    },
+    {
+      "en": [
+        "But where gladness comes as easily as breathing, there is happiness, and the hand of ??? rests on it as a blessing.",
+        "(Wherever a name was written, the ink has been rubbed away.)"
+      ],
+      "text": [
+        "Dar unde bucuria vine ușor ca respirația, acolo e fericire, și mâna lui ??? se odihnește pe ea ca o binecuvântare.",
+        "(Oriunde era scris un nume, cerneala a fost ștearsă.)"
+      ]
+    }
+  ],
+  "VeilstonesMyth": [
+    {
+      "en": [
+        "It's a book called \"Veilstone's Myth\". Read it?"
+      ],
+      "text": [
+        "E o carte numită „Mitul din Veilstone”. O citești?"
+      ]
+    },
+    {
+      "en": [
+        "Long ago a young man of Veilstone owned a sword, and with it he hunted Pokémon: some for food, far more than he could ever eat, and many only because he could.",
+        "Whatever he had no use for, he threw away."
+      ],
+      "text": [
+        "Demult, un tânăr din Veilstone avea o sabie și vâna cu ea Pokémoni: unii pentru hrană, mult mai mulți decât putea mânca, și mulți doar pentru că putea.",
+        "Tot ce nu-i folosea, arunca."
+      ]
+    },
+    {
+      "en": [
+        "Read on?"
+      ],
+      "text": [
+        "Citești mai departe?"
+      ]
+    },
+    {
+      "en": [
+        "The next year not a single Pokémon was to be seen. The young man went looking, and a long way from home he found one at last.",
+        "He asked it why they had all hidden themselves away."
+      ],
+      "text": [
+        "Anul următor nu se mai vedea niciun Pokémon. Tânărul a plecat să caute și, departe de casă, a găsit în sfârșit unul.",
+        "L-a întrebat de ce se ascunseseră toți."
+      ]
+    },
+    {
+      "en": [
+        "Read on?"
+      ],
+      "text": [
+        "Citești mai departe?"
+      ]
+    },
+    {
+      "en": [
+        "The Pokémon answered him quietly: carry that sword and harm us for nothing, and we will bare fang and claw against you. We do not wish it. But we must guard our own.",
+        "The young man broke his sword on the ground in front of it, to show that he had understood. And the Pokémon, seeing it, went away to a place nobody has ever found."
+      ],
+      "text": [
+        "Pokémonul i-a răspuns încet: dacă porți sabia aceea și ne faci rău fără rost, ne vom arăta colții și ghearele. Nu vrem asta. Dar trebuie să-i apărăm pe ai noștri.",
+        "Tânărul și-a rupt sabia de pământ în fața lui, ca să arate că a înțeles. Iar Pokémonul, văzând asta, a plecat într-un loc pe care nu l-a găsit nimeni niciodată."
+      ]
+    }
+  ],
+  "TheOriginalStory": [
+    {
+      "en": [
+        "It's a book called \"The Original Story\". Read it?"
+      ],
+      "text": [
+        "E o carte numită „Povestea de la început”. O citești?"
+      ]
+    },
+    {
+      "en": [
+        "At first there was nothing but a churning, shapeless chaos.",
+        "At the heart of it, where all things ran together into one, an Egg appeared. And out of the Egg, as it tumbled from that whirl, came the Original One."
+      ],
+      "text": [
+        "La început nu era decât un haos fără formă, care se frământa.",
+        "În inima lui, unde toate se contopeau într-una, a apărut un Ou. Și din Ou, rostogolit din vârtejul acela, a ieșit Cel Dintâi."
+      ]
+    },
+    {
+      "en": [
+        "Read on?"
+      ],
+      "text": [
+        "Citești mai departe?"
+      ]
+    },
+    {
+      "en": [
+        "Out of itself the Original One made two beings. Time began to turn. Space began to spread.",
+        "Out of itself again it made three living things. The two beings wished, and matter came to be. The three wished, and spirit came to be."
+      ],
+      "text": [
+        "Din sine, Cel Dintâi a făcut două ființe. Timpul a început să se rotească. Spațiul a început să se întindă.",
+        "Din sine a mai făcut trei ființe vii. Cele două au dorit, și s-a ivit materia. Cele trei au dorit, și s-a ivit spiritul."
+      ]
+    },
+    {
+      "en": [
+        "Read on?"
+      ],
+      "text": [
+        "Citești mai departe?"
+      ]
+    },
+    {
+      "en": [
+        "So the world was made.",
+        "And the Original One, its work done, fell into a sleep that nothing has broken since."
+      ],
+      "text": [
+        "Așa a fost făcută lumea.",
+        "Iar Cel Dintâi, cu lucrul încheiat, a căzut într-un somn pe care nimic nu l-a mai tulburat de atunci."
+      ]
+    }
+  ],
+  "HorrificMyth": [
+    {
+      "en": [
+        "It's a book called \"A Horrific Myth\". Read it?"
+      ],
+      "text": [
+        "E o carte numită „Un mit înfiorător”. O citești?"
+      ]
+    },
+    {
+      "en": [
+        "Do not look into the Pokémon's eyes. In a moment you will have forgotten everything, even who you are.",
+        "You may try to go home. But how, with nothing left to remember?"
+      ],
+      "text": [
+        "Nu te uita în ochii Pokémonului. Într-o clipă vei fi uitat totul, chiar și cine ești.",
+        "Poți încerca să te întorci acasă. Dar cum, fără să-ți mai amintești nimic?"
+      ]
+    },
+    {
+      "en": [
+        "Do not dare lay a hand on the Pokémon. Within three days every feeling you ever had will have drained away.",
+        "Above all, do the Pokémon no harm. In five short years the one who did will be unable to move at all."
+      ],
+      "text": [
+        "Să nu îndrăznești să atingi Pokémonul. În trei zile se va scurge din tine orice sentiment ai avut vreodată.",
+        "Mai presus de toate, nu-i face rău Pokémonului. În cinci ani scurți, cel care a făcut-o nu se va mai putea mișca deloc."
+      ]
+    }
+  ],
+  "SinnohFolkStories": [
+    {
+      "en": [
+        "It's a book called \"Folk Stories of Sinnoh\". Which story will you read?",
+        "The first",
+        "The second",
+        "The third",
+        "Put it back"
+      ],
+      "text": [
+        "E o carte numită „Povești populare din Sinnoh”. Ce poveste citești?",
+        "PRIMA",
+        "A DOUA",
+        "A TREIA",
+        "LA LOC"
+      ]
+    },
+    {
+      "en": [
+        "When you have caught a Pokémon from the sea or the stream to eat, pick its bones clean, and thank it for the meal.",
+        "When the bones are as clean as you can make them, give them back to the water they came from. The Pokémon will come back whole, and it all begins again."
+      ],
+      "text": [
+        "Când ai prins un Pokémon din mare sau din pârâu ca să-l mănânci, curăță-i bine oasele și mulțumește-i pentru masă.",
+        "Când oasele sunt cât se poate de curate, dă-le înapoi apei din care au venit. Pokémonul se va întoarce întreg, și totul o ia de la capăt."
+      ]
+    },
+    {
+      "en": [
+        "There was a Pokémon that lived in the forest. Deep among the trees it would slip out of its hide and sleep in the shape of a person.",
+        "And when it woke, that person would pull the hide back on and wander down to the villages as a Pokémon."
+      ],
+      "text": [
+        "Era un Pokémon care trăia în pădure. Adânc printre copaci, își lepăda blana și dormea în chip de om.",
+        "Iar când se trezea, omul acela își punea la loc blana și cobora prin sate ca Pokémon."
+      ]
+    },
+    {
+      "en": [
+        "There was a time when Pokémon and people were closer than they are now: a time when they sat down to eat at the same table.",
+        "In those days, they say, there was nothing to tell the one from the other."
+      ],
+      "text": [
+        "A fost o vreme când Pokémonii și oamenii erau mai apropiați decât acum: o vreme când se așezau să mănânce la aceeași masă.",
+        "Pe atunci, se zice, nu era nimic care să-i deosebească pe unii de alții."
+      ]
+    }
+  ],
+  "PutBack": [
+    {
+      "en": [
+        "{player} put the book back on its shelf."
+      ],
+      "text": [
+        "{player} a pus cartea la loc pe raft."
+      ]
+    }
+  ]
+}

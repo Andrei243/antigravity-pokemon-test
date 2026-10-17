@@ -1,0 +1,212 @@
+{
+  "displayName": {
+    "en": [
+      "Canalave Library"
+    ],
+    "text": [
+      "Biblioteca Canalave"
+    ]
+  },
+  "people": {
+    "receptionist": {
+      "name": {
+        "en": [
+          "Librarian"
+        ],
+        "text": [
+          "Bibliotecara"
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Lass"
+        ],
+        "text": [
+          "Domnișoara"
+        ]
+      }
+    },
+    "lucian": {
+      "name": {
+        "en": [
+          "Lucian"
+        ],
+        "text": [
+          "Lucian"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "1,4": {
+      "en": [
+        "The shelves are crammed with books from the floor to the ceiling."
+      ],
+      "text": [
+        "Rafturile sunt ticsite de cărți, de la podea până la tavan."
+      ]
+    },
+    "2,4": {
+      "en": [
+        "The shelves are crammed with books from the floor to the ceiling."
+      ],
+      "text": [
+        "Rafturile sunt ticsite de cărți, de la podea până la tavan."
+      ]
+    },
+    "3,4": {
+      "en": [
+        "The shelves are crammed with books from the floor to the ceiling."
+      ],
+      "text": [
+        "Rafturile sunt ticsite de cărți, de la podea până la tavan."
+      ]
+    },
+    "4,4": {
+      "en": [
+        "The shelves are crammed with books from the floor to the ceiling."
+      ],
+      "text": [
+        "Rafturile sunt ticsite de cărți, de la podea până la tavan."
+      ]
+    },
+    "5,4": {
+      "en": [
+        "The shelves are crammed with books from the floor to the ceiling."
+      ],
+      "text": [
+        "Rafturile sunt ticsite de cărți, de la podea până la tavan."
+      ]
+    },
+    "6,4": {
+      "en": [
+        "The shelves are crammed with books from the floor to the ceiling."
+      ],
+      "text": [
+        "Rafturile sunt ticsite de cărți, de la podea până la tavan."
+      ]
+    },
+    "15,4": {
+      "en": [
+        "The shelves are crammed with books from the floor to the ceiling."
+      ],
+      "text": [
+        "Rafturile sunt ticsite de cărți, de la podea până la tavan."
+      ]
+    },
+    "16,4": {
+      "en": [
+        "The shelves are crammed with books from the floor to the ceiling."
+      ],
+      "text": [
+        "Rafturile sunt ticsite de cărți, de la podea până la tavan."
+      ]
+    },
+    "17,4": {
+      "en": [
+        "The shelves are crammed with books from the floor to the ceiling."
+      ],
+      "text": [
+        "Rafturile sunt ticsite de cărți, de la podea până la tavan."
+      ]
+    },
+    "18,4": {
+      "en": [
+        "The shelves are crammed with books from the floor to the ceiling."
+      ],
+      "text": [
+        "Rafturile sunt ticsite de cărți, de la podea până la tavan."
+      ]
+    },
+    "19,4": {
+      "en": [
+        "The shelves are crammed with books from the floor to the ceiling."
+      ],
+      "text": [
+        "Rafturile sunt ticsite de cărți, de la podea până la tavan."
+      ]
+    },
+    "20,4": {
+      "en": [
+        "The shelves are crammed with books from the floor to the ceiling."
+      ],
+      "text": [
+        "Rafturile sunt ticsite de cărți, de la podea până la tavan."
+      ]
+    },
+    "1,7": {
+      "en": [
+        "Row upon row of books, every one in its place."
+      ],
+      "text": [
+        "Rând după rând de cărți, fiecare la locul ei."
+      ]
+    },
+    "2,7": {
+      "en": [
+        "Row upon row of books, every one in its place."
+      ],
+      "text": [
+        "Rând după rând de cărți, fiecare la locul ei."
+      ]
+    },
+    "3,7": {
+      "en": [
+        "Row upon row of books, every one in its place."
+      ],
+      "text": [
+        "Rând după rând de cărți, fiecare la locul ei."
+      ]
+    },
+    "4,7": {
+      "en": [
+        "Row upon row of books, every one in its place."
+      ],
+      "text": [
+        "Rând după rând de cărți, fiecare la locul ei."
+      ]
+    },
+    "4,8": {
+      "en": [
+        "Row upon row of books, every one in its place."
+      ],
+      "text": [
+        "Rând după rând de cărți, fiecare la locul ei."
+      ]
+    },
+    "1,9": {
+      "en": [
+        "Row upon row of books, every one in its place."
+      ],
+      "text": [
+        "Rând după rând de cărți, fiecare la locul ei."
+      ]
+    },
+    "2,9": {
+      "en": [
+        "Row upon row of books, every one in its place."
+      ],
+      "text": [
+        "Rând după rând de cărți, fiecare la locul ei."
+      ]
+    },
+    "3,9": {
+      "en": [
+        "Row upon row of books, every one in its place."
+      ],
+      "text": [
+        "Rând după rând de cărți, fiecare la locul ei."
+      ]
+    },
+    "4,9": {
+      "en": [
+        "Row upon row of books, every one in its place."
+      ],
+      "text": [
+        "Rând după rând de cărți, fiecare la locul ei."
+      ]
+    }
+  }
+}

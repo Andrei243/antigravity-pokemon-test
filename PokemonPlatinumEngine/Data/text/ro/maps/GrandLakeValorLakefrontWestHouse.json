@@ -1,0 +1,23 @@
+{
+  "displayName": {
+    "en": [
+      "Hotel Grand Lake"
+    ],
+    "text": [
+      "Hotelul Grand Lake"
+    ]
+  },
+  "people": {
+    "game_director": {
+      "name": {
+        "en": [
+          "Game Director"
+        ],
+        "text": [
+          "Director de jocuri"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

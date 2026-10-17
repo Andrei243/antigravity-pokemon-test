@@ -1,0 +1,44 @@
+{
+  "Rival": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "{player}? What are you doing here? This lake's mine to watch, remember? You've got your own."
+      ],
+      "text": [
+        "{player}? Ce cauți aici? Lacul ăsta e al meu de păzit, ții minte? Tu ai lacul tău."
+      ]
+    },
+    {
+      "en": [
+        "There's nothing going on, anyway. And if anything does, I've got it covered. I've got my Pokémon with me, and you know how tough I am!"
+      ],
+      "text": [
+        "Oricum, nu se întâmplă nimic. Și dacă se întâmplă ceva, mă ocup eu. Am Pokémonii cu mine, și știi cât de tare sunt!"
+      ]
+    },
+    {
+      "en": [
+        "What did I tell you? I'm fine here by myself!"
+      ],
+      "text": [
+        "Ce ți-am zis? Mă descurc foarte bine singur aici!"
+      ]
+    },
+    {
+      "en": [
+        "If you haven't been yet, go and take on Sunyshore's Gym. Things are only going to get rougher from here, and you'll want every Badge you can get."
+      ],
+      "text": [
+        "Dacă n-ai fost încă, du-te și provoacă Arena din Sunyshore. De aici încolo o să fie tot mai greu, și o să ai nevoie de toate Insignele."
+      ]
+    }
+  ]
+}

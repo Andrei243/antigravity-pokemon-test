@@ -1,0 +1,34 @@
+{
+  "people": {
+    "bug_catcher": {
+      "name": {
+        "en": [
+          "Bug Catcher"
+        ],
+        "text": [
+          "Vânătorul de insecte"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm after the Yanma that zip over the reeds here. They're so fast!",
+          "I've walked every bit of this marsh looking for them. Well, nearly every bit."
+        ],
+        "text": [
+          "Umblu după Yanma care zboară iute peste trestii aici. Sunt așa de rapizi!",
+          "Am umblat prin fiecare colț al mlaștinii căutându-i. Ei, aproape prin fiecare."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "signboard": {
+      "en": [
+        "Great Marsh · Area 4\nDeep mud ahead: slow going on foot, and no place for a Bicycle."
+      ],
+      "text": [
+        "Marea Mlaștină · Zona 4\nÎn față e noroi adânc: pe jos se merge greu, iar bicicleta n-are ce căuta."
+      ]
+    }
+  }
+}

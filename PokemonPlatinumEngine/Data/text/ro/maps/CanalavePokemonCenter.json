@@ -1,0 +1,111 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Center"
+    ],
+    "text": [
+      "Centrul Pokémon"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Lass"
+        ],
+        "text": [
+          "Domnișoara"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I was lucky enough to come back from Iron Island with the HM for Strength.",
+          "But I can't shift a single boulder with it until I've beaten Byron, the Gym Leader. I'd better jot that down on my Pokétch's Memo Pad."
+        ],
+        "text": [
+          "Am avut noroc și m-am întors de pe Insula de Fier cu HM-ul pentru Forță.",
+          "Dar nu pot mișca niciun bolovan cu el până nu-l înving pe Byron, Liderul Arenei. Mai bine notez asta în Memo Pad-ul Pokétchului."
+        ]
+      }
+    },
+    "pokemon_breeder_f": {
+      "name": {
+        "en": [
+          "Pokémon Breeder"
+        ],
+        "text": [
+          "Crescătoare de Pokémoni"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Iron Island is easy to get to. One boat ride from here and you're there."
+        ],
+        "text": [
+          "Insula de Fier e ușor de ajuns. O plimbare cu barca de aici și ai ajuns."
+        ]
+      }
+    },
+    "bug_catcher": {
+      "name": {
+        "en": [
+          "Bug Catcher"
+        ],
+        "text": [
+          "Vânătorul de insecte"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I heard something really cool!",
+          "They say the basement of every Pokémon Center leads to the Wi-Fi Plaza, once you're linked up to the rest of the world."
+        ],
+        "text": [
+          "Am auzit ceva tare de tot!",
+          "Se zice că subsolul fiecărui Centru Pokémon duce la Wi-Fi Plaza, odată ce te conectezi la restul lumii."
+        ]
+      }
+    },
+    "scientist_m": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          "Cercetătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Two Pokémon of the very same kind can have different Abilities.",
+          "Well, that's news to me!"
+        ],
+        "text": [
+          "Doi Pokémoni de același fel pot avea Abilități diferite.",
+          "Ei, asta e o noutate pentru mine!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

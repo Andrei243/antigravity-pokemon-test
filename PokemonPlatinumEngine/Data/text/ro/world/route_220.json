@@ -1,0 +1,187 @@
+{
+  "people": {
+    "swimmer_erik": {
+      "name": {
+        "en": [
+          "Erik"
+        ],
+        "text": [
+          "Erik"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Erik: The open sea is my gym! I swim the length of this route every morning."
+        ],
+        "text": [
+          "Înotător Erik: Marea largă e sala mea de sport! Înot toată ruta asta în fiecare dimineață."
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Erik: Sunk without a trace. Another lap should clear my head."
+        ],
+        "text": [
+          "Înotător Erik: M-am scufundat fără urmă. Încă o tură o să-mi limpezească mintea."
+        ]
+      }
+    },
+    "swimmer_vincent": {
+      "name": {
+        "en": [
+          "Vincent"
+        ],
+        "text": [
+          "Vincent"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Vincent: You ride, I swim. Let's see whose Pokémon are quicker in the water!"
+        ],
+        "text": [
+          "Înotător Vincent: Tu călărești, eu înot. Să vedem ai cui Pokémoni sunt mai iuți în apă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Vincent: My arms are tired, and so are my Pokémon. You win this one."
+        ],
+        "text": [
+          "Înotător Vincent: Mă dor brațele, și Pokémonii mei sunt la fel de obosiți. Asta e a ta."
+        ]
+      }
+    },
+    "swimmer_jessica": {
+      "name": {
+        "en": [
+          "Jessica"
+        ],
+        "text": [
+          "Jessica"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Jessica: My Goldeen follow me in a line wherever I swim. Aren't they lovely?"
+        ],
+        "text": [
+          "Înotător Jessica: Goldeen ai mei mă urmează în șir oriunde înot. Nu-s drăguți?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Jessica: Lovely isn't enough, is it? Come on, everyone, more practice."
+        ],
+        "text": [
+          "Înotător Jessica: Drăguț nu e de ajuns, nu? Haideți, toată lumea, mai exersăm."
+        ]
+      }
+    },
+    "swimmer_erica": {
+      "name": {
+        "en": [
+          "Erica"
+        ],
+        "text": [
+          "Erica"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Erica: Finneon's tail glows after dark. Swimming with it at night is like carrying a lantern!"
+        ],
+        "text": [
+          "Înotător Erica: Coada lui Finneon strălucește noaptea. Să înoți cu el e ca și cum ai duce un felinar!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Erica: We'll just float here a while and get our breath back."
+        ],
+        "text": [
+          "Înotător Erica: Plutim puțin aici, să ne tragem sufletul."
+        ]
+      }
+    },
+    "swimmer_adrian": {
+      "name": {
+        "en": [
+          "Adrian"
+        ],
+        "text": [
+          "Adrian"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Adrian: Watch out for Tentacool in these waters. They sting! ...Like this!"
+        ],
+        "text": [
+          "Înotător Adrian: Ai grijă la Tentacool în apele astea. Înțeapă! ...Uite așa!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Adrian: Stung right back. Fair's fair, I suppose."
+        ],
+        "text": [
+          "Înotător Adrian: Am fost înțepat înapoi. E corect, presupun."
+        ]
+      }
+    },
+    "swimmer_katelyn": {
+      "name": {
+        "en": [
+          "Katelyn"
+        ],
+        "text": [
+          "Katelyn"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Katelyn: Sun, sea and a battle. What more could anyone ask for?"
+        ],
+        "text": [
+          "Înotător Katelyn: Soare, mare și o luptă. Ce-ți mai poți dori?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Katelyn: A win, maybe. A win would have been nice."
+        ],
+        "text": [
+          "Înotător Katelyn: O victorie, poate. O victorie ar fi fost frumoasă."
+        ]
+      }
+    },
+    "swimmer_claire": {
+      "name": {
+        "en": [
+          "Claire"
+        ],
+        "text": [
+          "Claire"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Claire: Floatzel and I race each other out here. It always wins, but I'm catching up!"
+        ],
+        "text": [
+          "Înotător Claire: Eu și Floatzel ne întrecem aici. El câștigă mereu, dar îl ajung!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Claire: Beaten by you as well. I really must swim faster."
+        ],
+        "text": [
+          "Înotător Claire: Și tu m-ai învins. Chiar trebuie să înot mai repede."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

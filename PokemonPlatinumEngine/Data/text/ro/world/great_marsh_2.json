@@ -1,0 +1,34 @@
+{
+  "people": {
+    "parasol_lady": {
+      "name": {
+        "en": [
+          "Parasol Lady"
+        ],
+        "text": [
+          "Doamna cu umbrelă"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "One step into the deep mud and you're wading along at half the pace.",
+          "I keep to the firm ground. My parasol and I prefer to stay clean."
+        ],
+        "text": [
+          "Un pas în noroiul adânc și mergi cu jumătate de viteză.",
+          "Eu mă țin de pământul tare. Eu și umbrela mea preferăm să rămânem curate."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "signboard": {
+      "en": [
+        "Great Marsh · Area 2\nThe marsh's far north-east. Keep to the paths and keep your boots dry."
+      ],
+      "text": [
+        "Marea Mlaștină · Zona 2\nCapătul de nord-est al mlaștinii. Ține-te de cărări și păstrează-ți cizmele uscate."
+      ]
+    }
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Mansion"
+    ],
+    "text": [
+      "Conacul Pokémon"
+    ]
+  },
+  "people": {
+    "maid_office": {
+      "name": {
+        "en": [
+          "Maid"
+        ],
+        "text": [
+          "Cameristă"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This is the office of Mr. Backlot, the master of the mansion."
+        ],
+        "text": [
+          "Acesta e biroul domnului Backlot, stăpânul conacului."
+        ]
+      }
+    },
+    "maid_trophy_garden": {
+      "name": {
+        "en": [
+          "Maid"
+        ],
+        "text": [
+          "Cameristă"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This way to the Trophy Garden. The master keeps it open to every visitor.",
+          "Do take care, though: wild Pokémon live out there."
+        ],
+        "text": [
+          "Pe aici spre Grădina Trofeelor. Stăpânul o ține deschisă oricărui vizitator.",
+          "Dar ai grijă: acolo trăiesc Pokémoni sălbatici."
+        ]
+      }
+    },
+    "maid_far_west": {
+      "name": {
+        "en": [
+          "Maid"
+        ],
+        "text": [
+          "Cameristă"
+        ]
+      }
+    },
+    "maid_far_east": {
+      "name": {
+        "en": [
+          "Maid"
+        ],
+        "text": [
+          "Cameristă"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm so sorry. Nobody may go beyond this point.",
+          "Please, you really mustn't. Mr. Backlot would be ever so cross with me!"
+        ],
+        "text": [
+          "Îmi pare tare rău. Nimeni nu are voie mai departe de aici.",
+          "Te rog, chiar nu ai voie. Domnul Backlot s-ar supăra foarte tare pe mine!"
+        ]
+      }
+    },
+    "five_maid_knockout_maid": {
+      "name": {
+        "en": [
+          "Maid"
+        ],
+        "text": [
+          "Cameristă"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "maid_east": {
+      "name": {
+        "en": [
+          "Maid"
+        ],
+        "text": [
+          "Cameristă"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "That book on the master's desk looks dreadfully expensive.",
+          "I do wish I could have one little peek inside it..."
+        ],
+        "text": [
+          "Cartea de pe biroul stăpânului pare îngrozitor de scumpă.",
+          "Tare aș vrea să trag și eu cu ochiul în ea..."
+        ]
+      }
+    },
+    "liam": {
+      "name": {
+        "en": [
+          "Liam"
+        ],
+        "text": [
+          "Liam"
+        ]
+      }
+    },
+    "celeste": {
+      "name": {
+        "en": [
+          "Celeste"
+        ],
+        "text": [
+          "Celeste"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

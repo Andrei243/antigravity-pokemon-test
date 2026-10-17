@@ -1,0 +1,70 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Mansion"
+    ],
+    "text": [
+      "Conacul Pokémon"
+    ]
+  },
+  "people": {
+    "item_tm87": {
+      "name": {
+        "en": [
+          "TM87"
+        ],
+        "text": [
+          "TM87"
+        ]
+      }
+    },
+    "mr_backlot": {
+      "name": {
+        "en": [
+          "Mr. Backlot"
+        ],
+        "text": [
+          "Domnul Backlot"
+        ]
+      }
+    },
+    "old_man": {
+      "name": {
+        "en": [
+          "Butler"
+        ],
+        "text": [
+          "Majordom"
+        ]
+      }
+    },
+    "policeman": {
+      "name": {
+        "en": [
+          "Guard"
+        ],
+        "text": [
+          "Paznic"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "7,3": {
+      "en": [
+        "A statue of a Pokémon. It looks dreadfully expensive."
+      ],
+      "text": [
+        "O statuie de Pokémon. Pare îngrozitor de scumpă."
+      ]
+    },
+    "7,6": {
+      "en": [
+        "A book about Pokémon. It looks dreadfully expensive."
+      ],
+      "text": [
+        "O carte despre Pokémoni. Pare îngrozitor de scumpă."
+      ]
+    }
+  }
+}

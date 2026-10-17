@@ -1,0 +1,66 @@
+{
+  "people": {
+    "tuber_trenton": {
+      "name": {
+        "en": [
+          "Trenton"
+        ],
+        "text": [
+          "Trenton"
+        ]
+      },
+      "before": {
+        "en": [
+          "Tuber Trenton: My rubber ring and me can float all day! Want to battle while I dry off?"
+        ],
+        "text": [
+          "Copil cu colac Trenton: Eu și colacul meu putem pluti toată ziua! Ne luptăm cât mă usuc?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Tuber Trenton: Sploosh. That's the sound of me losing."
+        ],
+        "text": [
+          "Copil cu colac Trenton: Pleosc. Ăsta e sunetul când pierd."
+        ]
+      }
+    },
+    "tuber_mariel": {
+      "name": {
+        "en": [
+          "Mariel"
+        ],
+        "text": [
+          "Mariel"
+        ]
+      },
+      "before": {
+        "en": [
+          "Tuber Mariel: I'm not allowed past the rocks without a grown-up. But I'm allowed to battle!"
+        ],
+        "text": [
+          "Copil cu colac Mariel: N-am voie dincolo de stânci fără un adult. Dar am voie să mă lupt!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Tuber Mariel: I'm going back in the water. It's nicer than losing."
+        ],
+        "text": [
+          "Copil cu colac Mariel: Mă întorc în apă. E mai plăcut decât să pierd."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost_sandgem_beach": {
+      "en": [
+        "Route 219\nNorth: Sandgem Town"
+      ],
+      "text": [
+        "Ruta 219\nNord: Orășelul Sandgem"
+      ]
+    }
+  }
+}

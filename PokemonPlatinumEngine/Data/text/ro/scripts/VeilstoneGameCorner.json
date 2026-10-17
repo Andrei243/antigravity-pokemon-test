@@ -1,0 +1,380 @@
+{
+  "Machine0": [
+    {
+      "en": [
+        "The reels turn behind the glass. Without a Coin Case there is nothing to play with."
+      ],
+      "text": [
+        "Rolele se învârt după geam. Fără o Cutie de Fise n-ai cu ce juca."
+      ]
+    }
+  ],
+  "Machine1": [
+    {
+      "en": [
+        "The reels turn behind the glass. Without a Coin Case there is nothing to play with."
+      ],
+      "text": [
+        "Rolele se învârt după geam. Fără o Cutie de Fise n-ai cu ce juca."
+      ]
+    }
+  ],
+  "Machine2": [
+    {
+      "en": [
+        "The reels turn behind the glass. Without a Coin Case there is nothing to play with."
+      ],
+      "text": [
+        "Rolele se învârt după geam. Fără o Cutie de Fise n-ai cu ce juca."
+      ]
+    }
+  ],
+  "Machine3": [
+    {
+      "en": [
+        "The reels turn behind the glass. Without a Coin Case there is nothing to play with."
+      ],
+      "text": [
+        "Rolele se învârt după geam. Fără o Cutie de Fise n-ai cu ce juca."
+      ]
+    }
+  ],
+  "Machine4": [
+    {
+      "en": [
+        "The reels turn behind the glass. Without a Coin Case there is nothing to play with."
+      ],
+      "text": [
+        "Rolele se învârt după geam. Fără o Cutie de Fise n-ai cu ce juca."
+      ]
+    }
+  ],
+  "Machine5": [
+    {
+      "en": [
+        "The reels turn behind the glass. Without a Coin Case there is nothing to play with."
+      ],
+      "text": [
+        "Rolele se învârt după geam. Fără o Cutie de Fise n-ai cu ce juca."
+      ]
+    }
+  ],
+  "Machine6": [
+    {
+      "en": [
+        "The reels turn behind the glass. Without a Coin Case there is nothing to play with."
+      ],
+      "text": [
+        "Rolele se învârt după geam. Fără o Cutie de Fise n-ai cu ce juca."
+      ]
+    }
+  ],
+  "Machine7": [
+    {
+      "en": [
+        "The reels turn behind the glass. Without a Coin Case there is nothing to play with."
+      ],
+      "text": [
+        "Rolele se învârt după geam. Fără o Cutie de Fise n-ai cu ce juca."
+      ]
+    }
+  ],
+  "Machine8": [
+    {
+      "en": [
+        "The reels turn behind the glass. Without a Coin Case there is nothing to play with."
+      ],
+      "text": [
+        "Rolele se învârt după geam. Fără o Cutie de Fise n-ai cu ce juca."
+      ]
+    }
+  ],
+  "Machine9": [
+    {
+      "en": [
+        "The reels turn behind the glass. Without a Coin Case there is nothing to play with."
+      ],
+      "text": [
+        "Rolele se învârt după geam. Fără o Cutie de Fise n-ai cu ce juca."
+      ]
+    }
+  ],
+  "Machine10": [
+    {
+      "en": [
+        "The reels turn behind the glass. Without a Coin Case there is nothing to play with."
+      ],
+      "text": [
+        "Rolele se învârt după geam. Fără o Cutie de Fise n-ai cu ce juca."
+      ]
+    }
+  ],
+  "Machine11": [
+    {
+      "en": [
+        "The reels turn behind the glass. Without a Coin Case there is nothing to play with."
+      ],
+      "text": [
+        "Rolele se învârt după geam. Fără o Cutie de Fise n-ai cu ce juca."
+      ]
+    }
+  ],
+  "CoinsClerk": [
+    {
+      "en": [
+        "Welcome to the Veilstone Game Corner!"
+      ],
+      "text": [
+        "Bun venit la Sala de Jocuri Veilstone!"
+      ]
+    },
+    {
+      "en": [
+        "Coins are $1,000 for 50. How many would you like?",
+        "50 Coins",
+        "500 Coins",
+        "No, thanks"
+      ],
+      "text": [
+        "50 de Fise costă $1.000. Câte vrei?",
+        "50 DE FISE",
+        "500 DE FISE",
+        "Nu, mulțumesc"
+      ]
+    },
+    {
+      "en": [
+        "Do come and play again!"
+      ],
+      "text": [
+        "Mai treci pe la noi să joci!"
+      ]
+    },
+    {
+      "en": [
+        "Thank you! Here are your 50 Coins. Good luck at the machines!"
+      ],
+      "text": [
+        "Mulțumim! Poftim cele 50 de Fise. Baftă la aparate!"
+      ]
+    },
+    {
+      "en": [
+        "Thank you! Here are your 500 Coins. Good luck at the machines!"
+      ],
+      "text": [
+        "Mulțumim! Poftim cele 500 de Fise. Baftă la aparate!"
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry, you haven't the money for that."
+      ],
+      "text": [
+        "Îmi pare rău, nu ai destui bani pentru asta."
+      ]
+    },
+    {
+      "en": [
+        "Oh! Your Coin Case won't hold that many more. You are doing well!"
+      ],
+      "text": [
+        "O! Cutia ta de Fise nu mai încape atâtea. Văd că-ți merge bine!"
+      ]
+    },
+    {
+      "en": [
+        "Ten bonus rounds, one after another? In all my years at this counter I never saw it done!",
+        "Please, take this to remember the day by."
+      ],
+      "text": [
+        "Zece runde bonus una după alta? În toți anii mei la tejgheaua asta n-am mai văzut așa ceva!",
+        "Te rog, ia asta, ca amintire a zilei de azi."
+      ]
+    },
+    {
+      "en": [
+        "And please keep playing our machines!"
+      ],
+      "text": [
+        "Și continuă să joci la aparatele noastre!"
+      ]
+    },
+    {
+      "en": [
+        "I'm afraid you have no Coin Case to put Coins in. You can't play without one."
+      ],
+      "text": [
+        "Mă tem că n-ai o Cutie de Fise în care să le pui. Fără ea nu poți juca."
+      ]
+    }
+  ],
+  "LadyExplains": [
+    {
+      "en": [
+        "Bet three Coins, pull the lever, and stop the reels one by one. Three alike in a line, and the machine pays!",
+        "And if three sevens line up... well. You'll see who comes out to play."
+      ],
+      "text": [
+        "Pariezi trei Fise, tragi de manetă și oprești rolele una câte una. Trei la fel pe o linie, și aparatul plătește!",
+        "Iar dacă se aliniază trei de șapte... ei bine. Vei vedea cine iese la joacă."
+      ]
+    }
+  ],
+  "OldMan": [
+    {
+      "en": [
+        "Ho ho! The machines have been kind to me today, {player}. Here, have a few of mine and try your luck."
+      ],
+      "text": [
+        "Ho-ho! Aparatele au fost bune cu mine azi, {player}. Uite, ia câteva de-ale mele și încearcă-ți norocul."
+      ]
+    },
+    {
+      "en": [
+        "{player} received 20 Coins!"
+      ],
+      "text": [
+        "{player} a primit 20 de Fise!"
+      ]
+    },
+    {
+      "en": [
+        "When Clefairy comes out, watch where it points and stop the reels in that order. That's all there is to it!"
+      ],
+      "text": [
+        "Când iese Clefairy, uită-te unde arată și oprește rolele în ordinea aceea. Asta-i tot secretul!"
+      ]
+    },
+    {
+      "en": [
+        "No Coin Case? The fellow in the house next door had one, last I heard. He does tricks with coins."
+      ],
+      "text": [
+        "N-ai Cutie de Fise? Omul din casa de alături avea una, din câte știu. Face trucuri cu monede."
+      ]
+    }
+  ],
+  "Farmer": [
+    {
+      "en": [
+        "Lights! Bells! It's like the harvest fair in here, {player}! Here, you have some too. I've more than I can carry."
+      ],
+      "text": [
+        "Lumini! Clopoței! E ca la târgul de toamnă aici, {player}! Uite, ia și tu. Am mai multe decât pot căra."
+      ]
+    },
+    {
+      "en": [
+        "{player} received 50 Coins!"
+      ],
+      "text": [
+        "{player} a primit 50 de Fise!"
+      ]
+    },
+    {
+      "en": [
+        "That Clefairy! I'd play all day just to watch it hop about."
+      ],
+      "text": [
+        "Clefairy ăla! Aș juca toată ziua doar ca să-l văd țopăind."
+      ]
+    },
+    {
+      "en": [
+        "Round and round they go and I can't stop them where I want. It's driving me up the wall!"
+      ],
+      "text": [
+        "Se tot învârt și nu le pot opri unde vreau. Mă scoate din minți!"
+      ]
+    }
+  ],
+  "Worker": [
+    {
+      "en": [
+        "What do I want? Coins, of course. Lots of them. There's a TM over at the prize counter with my name on it."
+      ],
+      "text": [
+        "Ce vreau? Fise, firește. Multe. La ghișeul de premii e un TM care mă așteaptă pe mine."
+      ]
+    }
+  ],
+  "LadyBalls": [
+    {
+      "en": [
+        "Sometimes the machine shows you a little sign before you stop the reels. It's telling you what to aim for.",
+        "It isn't always honest, mind. But mostly it is."
+      ],
+      "text": [
+        "Uneori aparatul îți arată un mic semn înainte să oprești rolele. Îți spune ce să urmărești.",
+        "Nu spune mereu adevărul, să știi. Dar de cele mai multe ori, da."
+      ]
+    }
+  ],
+  "Guitarist": [
+    {
+      "en": [
+        "A friend of mine won a mountain of Coins in one sitting. Said the moon went bright and Clefairy just wouldn't go home."
+      ],
+      "text": [
+        "Un prieten a câștigat un munte de Fise dintr-o dată. Zicea că luna s-a luminat și Clefairy nu mai voia să plece."
+      ]
+    }
+  ],
+  "MaylenesDad": [
+    {
+      "en": [
+        "Nothing's going my way today. Nothing went my way yesterday either.",
+        "...Don't tell my daughter you saw me here. She thinks I'm out training."
+      ],
+      "text": [
+        "Azi nu-mi iese nimic. Nici ieri nu mi-a ieșit nimic.",
+        "...Nu-i spune fiicei mele că m-ai văzut aici. Crede că sunt la antrenament."
+      ]
+    }
+  ],
+  "BonusSign": [
+    {
+      "en": [
+        "The board reads: 'Bonus rounds in a row: can you reach 10?'",
+        "Chalked underneath: 'Your best so far: {var:VAR_CONSECUTIVE_BONUS_ROUND_WINS}.'"
+      ],
+      "text": [
+        "Pe tablă scrie: „Runde bonus la rând: poți ajunge la 10?”",
+        "Dedesubt, cu creta: „Recordul tău: {var:VAR_CONSECUTIVE_BONUS_ROUND_WINS}.”"
+      ]
+    },
+    {
+      "en": [
+        "The board reads: 'Bonus rounds in a row: can you reach 10?'",
+        "Chalked underneath: 'Your best so far: 999.'"
+      ],
+      "text": [
+        "Pe tablă scrie: „Runde bonus la rând: poți ajunge la 10?”",
+        "Dedesubt, cu creta: „Recordul tău: 999.”"
+      ]
+    }
+  ],
+  "Looker": [
+    {
+      "en": [
+        "Shh! I am not here. That is to say, I am here, but as a man who plays the machines, nothing more.",
+        "One hears a great deal at a place like this, if one sits very still and keeps losing."
+      ],
+      "text": [
+        "Șșt! Nu sunt aici. Adică sunt aici, dar ca un om care joacă la aparate, nimic mai mult.",
+        "Auzi multe într-un loc ca ăsta, dacă stai foarte liniștit și tot pierzi."
+      ]
+    },
+    {
+      "en": [
+        "Ah! My friend! The case is closed, the last of them is behind bars, and so I allow myself a small holiday.",
+        "You see? Now I am a man who plays the machines, nothing more, and it is the truth. If only the machines would let me win once!"
+      ],
+      "text": [
+        "A! Prietene! Cazul e închis, ultimul dintre ei e după gratii, așa că îmi permit o mică vacanță.",
+        "Vezi? Acum chiar sunt un om care joacă la aparate, nimic mai mult. Măcar de m-ar lăsa aparatele să câștig o dată!"
+      ]
+    }
+  ]
+}

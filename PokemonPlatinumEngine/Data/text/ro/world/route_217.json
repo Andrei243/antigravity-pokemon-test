@@ -1,0 +1,286 @@
+{
+  "people": {
+    "maylene": {
+      "name": {
+        "en": [
+          "Maylene"
+        ],
+        "text": [
+          "Maylene"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Maylene: Snowpoint City is just a little further!"
+        ],
+        "text": [
+          "Maylene: Orașul Snowpoint e doar puțin mai încolo!"
+        ]
+      }
+    },
+    "snowpoint_npc_f": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm combing every inch of this snow with my Dowsing Machine.",
+          "Things dropped in a blizzard get buried in no time. You wouldn't believe what turns up out here!"
+        ],
+        "text": [
+          "Scotocesc fiecare palmă din zăpada asta cu Dowsing Machine-ul meu.",
+          "Lucrurile scăpate în viscol se îngroapă imediat. N-ai crede ce iese la iveală pe aici!"
+        ]
+      }
+    },
+    "skier_shawn": {
+      "name": {
+        "en": [
+          "Shawn"
+        ],
+        "text": [
+          "Shawn"
+        ]
+      },
+      "before": {
+        "en": [
+          "Skier Shawn: Three Snover, all ready to bury you in snow! Here we go!"
+        ],
+        "text": [
+          "Schior Shawn: Trei Snover, toți gata să te îngroape în zăpadă! Hai!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Skier Shawn: All three of them buried instead. Under their own snow!"
+        ],
+        "text": [
+          "Schior Shawn: În schimb, toți trei îngropați. Sub propria zăpadă!"
+        ]
+      }
+    },
+    "skier_lexie": {
+      "name": {
+        "en": [
+          "Lexie"
+        ],
+        "text": [
+          "Lexie"
+        ]
+      },
+      "before": {
+        "en": [
+          "Skier Lexie: My Eevee grew into a Glaceon right here, beside the rock covered in ice! Want to see how strong it is?"
+        ],
+        "text": [
+          "Schior Lexie: Eevee al meu a devenit Glaceon chiar aici, lângă stânca acoperită de gheață! Vrei să vezi cât e de puternic?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Skier Lexie: Even beaten, my Glaceon sparkles like fresh frost."
+        ],
+        "text": [
+          "Schior Lexie: Chiar și învins, Glaceon al meu sclipește ca bruma proaspătă."
+        ]
+      }
+    },
+    "skier_bjorn": {
+      "name": {
+        "en": [
+          "Bjorn"
+        ],
+        "text": [
+          "Bjorn"
+        ]
+      },
+      "before": {
+        "en": [
+          "Skier Bjorn: Snow in my face and the wind at my back! Quick, battle me before I freeze solid!"
+        ],
+        "text": [
+          "Schior Bjorn: Zăpadă în față și vânt în spate! Repede, luptă-te cu mine până nu îngheț bocnă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Skier Bjorn: Now I'm frozen solid and beaten."
+        ],
+        "text": [
+          "Schior Bjorn: Acum sunt înghețat bocnă și învins."
+        ]
+      }
+    },
+    "skier_madison": {
+      "name": {
+        "en": [
+          "Madison"
+        ],
+        "text": [
+          "Madison"
+        ]
+      },
+      "before": {
+        "en": [
+          "Skier Madison: Round and round I go in the snow! Try not to get dizzy watching me!"
+        ],
+        "text": [
+          "Schior Madison: Mă învârt și iar mă învârt prin zăpadă! Încearcă să nu amețești uitându-te la mine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Skier Madison: Whoa... now I'm the dizzy one."
+        ],
+        "text": [
+          "Schior Madison: Uau... acum eu am amețit."
+        ]
+      }
+    },
+    "ninja_boy_matthew": {
+      "name": {
+        "en": [
+          "Matthew"
+        ],
+        "text": [
+          "Matthew"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ninja Boy Matthew: That snowdrift you nearly trod on? It was me! Battle!"
+        ],
+        "text": [
+          "Băiat ninja Matthew: Troianul pe care era să calci? Eram eu! La luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ninja Boy Matthew: Hiding in the snow is really, really cold."
+        ],
+        "text": [
+          "Băiat ninja Matthew: E tare, tare frig să te ascunzi în zăpadă."
+        ]
+      }
+    },
+    "ninja_boy_ethan": {
+      "name": {
+        "en": [
+          "Ethan"
+        ],
+        "text": [
+          "Ethan"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ninja Boy Ethan: Brrr! I've been lying under the snow for hours, waiting for someone to come by!"
+        ],
+        "text": [
+          "Băiat ninja Ethan: Brrr! Stau sub zăpadă de ore întregi, așteptând să treacă cineva!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ninja Boy Ethan: All that waiting, and over so quickly. Achoo!"
+        ],
+        "text": [
+          "Băiat ninja Ethan: Atâta așteptare, și s-a terminat așa de repede. Hapciu!"
+        ]
+      }
+    },
+    "black_belt_luke": {
+      "name": {
+        "en": [
+          "Luke"
+        ],
+        "text": [
+          "Luke"
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Luke: Training in a blizzard toughens the body and the spirit! Face me!"
+        ],
+        "text": [
+          "Centură Neagră Luke: Antrenamentul pe viscol călește trupul și spiritul! Înfruntă-mă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Luke: My body is tough enough. My spirit needs more work."
+        ],
+        "text": [
+          "Centură Neagră Luke: Trupul mi-e destul de călit. Spiritul mai are de lucru."
+        ]
+      }
+    },
+    "ace_trainer_dalton": {
+      "name": {
+        "en": [
+          "Dalton"
+        ],
+        "text": [
+          "Dalton"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Dalton: Lightning and fire: just the pair for a frozen road. Let's warm things up!"
+        ],
+        "text": [
+          "Antrenor As Dalton: Fulger și foc: perechea potrivită pentru un drum înghețat. Hai să încălzim atmosfera!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Dalton: Not even fire could thaw a loss like that."
+        ],
+        "text": [
+          "Antrenor As Dalton: Nici focul n-ar dezgheța o asemenea înfrângere."
+        ]
+      }
+    },
+    "ace_trainer_olivia": {
+      "name": {
+        "en": [
+          "Olivia"
+        ],
+        "text": [
+          "Olivia"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Olivia: It's a long trudge through the snow to the lake. A battle will keep me going!"
+        ],
+        "text": [
+          "Antrenor As Olivia: E drum lung prin zăpadă până la lac. O luptă îmi dă putere să merg mai departe!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Olivia: That was worth stopping for. Now, on to the lake!"
+        ],
+        "text": [
+          "Antrenor As Olivia: A meritat oprirea. Acum, mai departe, la lac!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost": {
+      "en": [
+        "Route 217\nNorth: Lake Acuity"
+      ],
+      "text": [
+        "Ruta 217\nNord: Lacul Acuity"
+      ]
+    }
+  }
+}

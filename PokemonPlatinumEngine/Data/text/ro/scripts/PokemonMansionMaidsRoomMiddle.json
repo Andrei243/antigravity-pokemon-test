@@ -1,0 +1,50 @@
+{
+  "SootheBell": [
+    {
+      "en": [
+        "You know you can catch Pokémon out in the Trophy Garden?",
+        "Put this on one you have caught and it will warm to you all the faster.",
+        "I'll let you have one of mine. Do try it!"
+      ],
+      "text": [
+        "Știai că poți prinde Pokémoni în Grădina Trofeelor?",
+        "Pune-i asta unuia pe care l-ai prins și se va atașa de tine mai repede.",
+        "Îți dau unul de-al meu. Încearcă-l!"
+      ]
+    },
+    {
+      "en": [
+        "I do hope you grow into a Trainer that Pokémon can love and trust."
+      ],
+      "text": [
+        "Sper din suflet să ajungi un Antrenor pe care Pokémonii să-l iubească și în care să aibă încredere."
+      ]
+    }
+  ],
+  "Bed": [
+    {
+      "en": [
+        "It's a bed... Take a rest?"
+      ],
+      "text": [
+        "E un pat... Te odihnești?"
+      ]
+    },
+    {
+      "en": [
+        "{player} was fast asleep in no time..."
+      ],
+      "text": [
+        "{player} a adormit buștean într-o clipă..."
+      ]
+    },
+    {
+      "en": [
+        "{player} and the Pokémon woke from their nap as good as new!"
+      ],
+      "text": [
+        "{player} și Pokémonii s-au trezit din somn ca noi!"
+      ]
+    }
+  ]
+}

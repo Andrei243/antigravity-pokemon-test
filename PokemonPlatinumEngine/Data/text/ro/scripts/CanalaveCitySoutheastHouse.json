@@ -1,0 +1,28 @@
+{
+  "SkillSwap": [
+    {
+      "en": [
+        "Hello, Trainer! Here's something I came across.",
+        "It was mixed in with a load of cargo from another country.",
+        "It's no use to me, so you had better have it."
+      ],
+      "text": [
+        "Bună! Uite ce-am găsit.",
+        "Era amestecat cu o încărcătură venită din altă țară.",
+        "Mie nu-mi folosește, așa că mai bine îl iei tu."
+      ]
+    },
+    {
+      "en": [
+        "You know how every Pokémon has an Ability of its own?",
+        "Skill Swap makes the Pokémon that uses it change Abilities with its target.",
+        "How well you use it shows what kind of Trainer you are."
+      ],
+      "text": [
+        "Știi că fiecare Pokémon are o Abilitate a lui?",
+        "Schimb de Abilități face ca Pokémonul care o folosește să-și schimbe Abilitatea cu ținta.",
+        "Cât de bine o folosești arată ce fel de Antrenor ești."
+      ]
+    }
+  ]
+}

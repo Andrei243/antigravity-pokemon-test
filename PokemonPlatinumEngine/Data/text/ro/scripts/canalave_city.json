@@ -1,0 +1,482 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "{player}! Took you long enough! So you got Byron's Badge too, huh?"
+      ],
+      "text": [
+        "{player}! Ți-a luat ceva! Deci ai luat și tu Insigna lui Byron, nu?"
+      ]
+    },
+    {
+      "en": [
+        "Listen, the old professor's in town. He wants us at the library, and you know he hates waiting. Come on!"
+      ],
+      "text": [
+        "Ascultă, bătrânul profesor e în oraș. Ne vrea la bibliotecă, și știi că urăște să aștepte. Hai!"
+      ]
+    },
+    {
+      "en": [
+        "Prof. Rowan"
+      ],
+      "text": [
+        "Prof. Rowan"
+      ]
+    },
+    {
+      "en": [
+        "Hmm... That was no ordinary tremor. The ground doesn't shake like that by itself."
+      ],
+      "text": [
+        "Hmm... N-a fost un cutremur obișnuit. Pământul nu se zguduie așa de la sine."
+      ]
+    },
+    {
+      "en": [
+        "Sailor"
+      ],
+      "text": [
+        "Marinar"
+      ]
+    },
+    {
+      "en": [
+        "Have you heard? It's all over the harbour! There's been a huge explosion out east, at Lake Valor!"
+      ],
+      "text": [
+        "Ați auzit? Toată lumea din port vorbește! A fost o explozie uriașă în est, la Lacul Valor!"
+      ]
+    },
+    {
+      "en": [
+        "They say the whole lake went up! I've got to tell the others!"
+      ],
+      "text": [
+        "Se zice că a sărit în aer tot lacul! Trebuie să le spun și celorlalți!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "An explosion at a lake? I've got a bad feeling about this. A really bad feeling!"
+      ],
+      "text": [
+        "O explozie la un lac? Am o presimțire rea. Una foarte rea!"
+      ]
+    },
+    {
+      "en": [
+        "I'm going to Lake Acuity, right now! Whoever gets there last is paying the fine!"
+      ],
+      "text": [
+        "Mă duc la Lacul Acuity, chiar acum! Cine ajunge ultimul plătește amenda!"
+      ]
+    },
+    {
+      "en": [
+        "Prof. Rowan"
+      ],
+      "text": [
+        "Prof. Rowan"
+      ]
+    },
+    {
+      "en": [
+        "{rival} is as hasty as ever. But this time he is right to hurry."
+      ],
+      "text": [
+        "{rival} e grăbit ca întotdeauna. Dar de data asta are dreptate să se grăbească."
+      ]
+    },
+    {
+      "en": [
+        "{player}! I need you at Lake Valor. Find out what has happened there. I am counting on you."
+      ],
+      "text": [
+        "{player}! Am nevoie de tine la Lacul Valor. Află ce s-a întâmplat acolo. Contez pe tine."
+      ]
+    },
+    {
+      "en": [
+        "{assistant}"
+      ],
+      "text": [
+        "{assistant}"
+      ]
+    },
+    {
+      "en": [
+        "{player}, you'll be all right, won't you? The professor and I are going to Lake Verity. Be careful!"
+      ],
+      "text": [
+        "{player}, o să fie bine, da? Profesorul și cu mine mergem la Lacul Verity. Ai grijă!"
+      ]
+    },
+    {
+      "en": [
+        "I wonder what really happened out there... The professor and I will look into Lake Verity. Take care, {player}!"
+      ],
+      "text": [
+        "Oare ce s-a întâmplat de fapt acolo... Profesorul și cu mine cercetăm Lacul Verity. Ai grijă, {player}!"
+      ]
+    }
+  ],
+  "RivalOnTheBridge": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Whoa, close one! Hey, {player}! On your way to take on the Gym Leader past here, huh?"
+      ],
+      "text": [
+        "Uau, era să ne ciocnim! Hei, {player}! Mergi să-l provoci pe Liderul Arenei de mai încolo, nu?"
+      ]
+    },
+    {
+      "en": [
+        "Somebody's got to make sure you're up to it first. And that somebody is me! With the brand-new Badge I just won!"
+      ],
+      "text": [
+        "Cineva trebuie să verifice întâi dacă ești în stare. Și acel cineva sunt eu! Cu Insigna nouă-nouță pe care tocmai am câștigat-o!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Yeah, yeah. You're a bit better than me. Same as always."
+      ],
+      "text": [
+        "Da, da. Ești un pic mai tare decât mine. Ca de obicei."
+      ]
+    },
+    {
+      "en": [
+        "But get this: guess who's going to take on the Pokémon League and be Champion? Right first time. It's me!"
+      ],
+      "text": [
+        "Dar ascultă aici: ghici cine o să provoace Liga Pokémon și o să ajungă Campion? Din prima. Eu!"
+      ]
+    },
+    {
+      "en": [
+        "Anyway, you should head over to Iron Island and toughen up some more. That's where I trained before the Gym!"
+      ],
+      "text": [
+        "În fine, ar trebui să mergi pe Insula de Fier și să te mai călești. Acolo m-am antrenat eu înainte de Arenă!"
+      ]
+    }
+  ],
+  "Rival": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Go to Iron Island and toughen up! Seriously, that's what I did!"
+      ],
+      "text": [
+        "Du-te pe Insula de Fier și călește-te! Pe bune, asta am făcut și eu!"
+      ]
+    }
+  ],
+  "RivalLibrary": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "What? You haven't got the HM for Strength yet? Didn't I tell you to go and train on Iron Island?"
+      ],
+      "text": [
+        "Ce? Încă n-ai HM-ul pentru Forță? Nu ți-am zis să te duci să te antrenezi pe Insula de Fier?"
+      ]
+    },
+    {
+      "en": [
+        "There's a guy over there handing it out. Go and get it, then come back. The professor can wait. Not for long, though!"
+      ],
+      "text": [
+        "E un tip acolo care îl dă. Du-te și ia-l, apoi întoarce-te. Profesorul poate aștepta. Dar nu mult!"
+      ]
+    },
+    {
+      "en": [
+        "{player}! You're too slow! Everybody's waiting upstairs. Move it!"
+      ],
+      "text": [
+        "{player}! Mișcă-te mai repede! Toată lumea așteaptă sus. Hai!"
+      ]
+    }
+  ],
+  "Rowan": [
+    {
+      "en": [
+        "Prof. Rowan"
+      ],
+      "text": [
+        "Prof. Rowan"
+      ]
+    },
+    {
+      "en": [
+        "What is taking place at the lakes? Something is very wrong, and I mean to find out what."
+      ],
+      "text": [
+        "Ce se petrece la lacuri? Ceva e foarte în neregulă, și vreau să aflu ce."
+      ]
+    },
+    {
+      "en": [
+        "Lake Valor lies east of Pastoria City, {player}. Go, and be careful."
+      ],
+      "text": [
+        "Lacul Valor e la est de Orașul Pastoria, {player}. Du-te, și ai grijă."
+      ]
+    }
+  ],
+  "Assistant": [
+    {
+      "en": [
+        "{assistant}"
+      ],
+      "text": [
+        "{assistant}"
+      ]
+    },
+    {
+      "en": [
+        "The professor and I are going to Lake Verity. It's right by home, so I know the way. You look after Lake Valor, {player}!"
+      ],
+      "text": [
+        "Profesorul și cu mine mergem la Lacul Verity. E chiar lângă casă, așa că știu drumul. Tu ai grijă de Lacul Valor, {player}!"
+      ]
+    },
+    {
+      "en": [
+        "The professor and I will take Lake Verity. It's not far from Sandgem Town. Lake Valor is yours, {player}!"
+      ],
+      "text": [
+        "Profesorul și cu mine ne ocupăm de Lacul Verity. Nu e departe de Orășelul Sandgem. Lacul Valor e al tău, {player}!"
+      ]
+    }
+  ],
+  "Collector": [
+    {
+      "en": [
+        "That tremor just now was no earthquake. I've felt plenty of those, and none of them came with a bang."
+      ],
+      "text": [
+        "Zguduitura de adineauri n-a fost un cutremur. Am simțit destule, și niciunul n-a venit cu bubuitură."
+      ]
+    }
+  ],
+  "Man": [
+    {
+      "en": [
+        "A boy in a terrible hurry ran past me to the library just now. He kept stamping his feet by the door."
+      ],
+      "text": [
+        "Un băiat tare grăbit a trecut în fugă pe lângă mine spre bibliotecă. Tot bătea din picior lângă ușă."
+      ]
+    },
+    {
+      "en": [
+        "I do hope whoever he's waiting for turns up soon."
+      ],
+      "text": [
+        "Sper ca cel pe care-l așteaptă să apară curând."
+      ]
+    },
+    {
+      "en": [
+        "What in the world was that tremor? The water in the canal jumped right out of its bed!"
+      ],
+      "text": [
+        "Ce Dumnezeu a fost zguduitura aia? Apa din canal a sărit din albie!"
+      ]
+    }
+  ],
+  "AceTrainer": [
+    {
+      "en": [
+        "They're saying there was an explosion at Lake Valor. That's the other side of Sinnoh, and we felt it here!"
+      ],
+      "text": [
+        "Se zice că a fost o explozie la Lacul Valor. E în partea cealaltă a Sinnohului, și am simțit-o aici!"
+      ]
+    }
+  ],
+  "Lass": [
+    {
+      "en": [
+        "My Psyduck always knows when a storm is coming. But it never saw that tremor coming at all."
+      ],
+      "text": [
+        "Psyduck al meu știe mereu când vine o furtună. Dar zguduitura aia n-a simțit-o deloc."
+      ]
+    }
+  ],
+  "Psyduck": [
+    {
+      "en": [
+        "Psy! Psy-duck! Psyyy...?"
+      ],
+      "text": [
+        "Psy! Psy-duck! Psyyy...?"
+      ]
+    }
+  ],
+  "OldMan": [
+    {
+      "en": [
+        "An explosion, at a lake? What is there at a lake that could blow up? I don't like it one bit."
+      ],
+      "text": [
+        "O explozie, la un lac? Ce poate exploda la un lac? Nu-mi place deloc."
+      ]
+    }
+  ],
+  "Ferry": [
+    {
+      "en": [
+        "Ahoy there! I sail folk over to Iron Island and back again, whenever the sea's kind."
+      ],
+      "text": [
+        "Ahoi! Duc oamenii pe Insula de Fier și înapoi, când marea e bună."
+      ]
+    },
+    {
+      "en": [
+        "Fancy a trip across to Iron Island?"
+      ],
+      "text": [
+        "Vrei o călătorie până pe Insula de Fier?"
+      ]
+    },
+    {
+      "en": [
+        "Right you are. All aboard, and hold on to something!"
+      ],
+      "text": [
+        "S-a făcut. Toată lumea la bord, și țineți-vă bine!"
+      ]
+    },
+    {
+      "en": [
+        "Where shall I take you?",
+        "Iron Island",
+        "Fullmoon Island",
+        "Nowhere today"
+      ],
+      "text": [
+        "Unde să te duc?",
+        "INSULA DE FIER",
+        "INSULA LUNII PLINE",
+        "NICĂIERI AZI"
+      ]
+    },
+    {
+      "en": [
+        "Fullmoon Island it is. Anchors aweigh!"
+      ],
+      "text": [
+        "Insula Lunii Pline să fie. Ridicați ancora!"
+      ]
+    },
+    {
+      "en": [
+        "No hurry. The boat's here whenever you want it."
+      ],
+      "text": [
+        "Nicio grabă. Barca e aici oricând o vrei."
+      ]
+    },
+    {
+      "en": [
+        "...You. You'd go to Fullmoon Island, for my boy?"
+      ],
+      "text": [
+        "...Tu. Te-ai duce pe Insula Lunii Pline, pentru băiatul meu?"
+      ]
+    },
+    {
+      "en": [
+        "His mother and I are counting on you! You're the only one who can bring him out of that nightmare."
+      ],
+      "text": [
+        "Mama lui și cu mine contăm pe tine! Doar tu îl poți scoate din coșmarul acela."
+      ]
+    },
+    {
+      "en": [
+        "There's a thing called the Lunar Wing on Fullmoon Island, and they say it will wake him. I went myself. I couldn't find it..."
+      ],
+      "text": [
+        "Pe Insula Lunii Pline e ceva numit Pana Lunii și se zice că îl va trezi. M-am dus și eu. N-am găsit-o..."
+      ]
+    },
+    {
+      "en": [
+        "Things to see to first? I'll be here, with the boat ready."
+      ],
+      "text": [
+        "Ai mai întâi treburi de rezolvat? Eu sunt aici, cu barca pregătită."
+      ]
+    },
+    {
+      "en": [
+        "Please. We don't know who else to ask."
+      ],
+      "text": [
+        "Te rog. Nu știm pe cine altcineva să rugăm."
+      ]
+    },
+    {
+      "en": [
+        "That feather... Is that the Lunar Wing? Then take it to my son! Please, as quick as you can!"
+      ],
+      "text": [
+        "Pana aia... E Pana Lunii? Atunci du-o la fiul meu! Te rog, cât poți de repede!"
+      ]
+    }
+  ]
+}

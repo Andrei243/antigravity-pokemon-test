@@ -1,0 +1,116 @@
+{
+  "Binoculars": [
+    {
+      "en": [
+        "A pair of binoculars, pointed out over the Great Marsh. Put $100 in?"
+      ],
+      "text": [
+        "Un binoclu, îndreptat spre Marea Mlaștină. Bagi $100?"
+      ]
+    },
+    {
+      "en": [
+        "The glass swings out over Area 1..."
+      ],
+      "text": [
+        "Lentila se rotește spre Zona 1..."
+      ]
+    },
+    {
+      "en": [
+        "A {marsh:1} lifts its head out of the reeds and looks about."
+      ],
+      "text": [
+        "Un {marsh:1} își scoate capul din trestii și se uită în jur."
+      ]
+    },
+    {
+      "en": [
+        "The glass swings out over Area 2..."
+      ],
+      "text": [
+        "Lentila se rotește spre Zona 2..."
+      ]
+    },
+    {
+      "en": [
+        "A {marsh:2} is wading through the shallows."
+      ],
+      "text": [
+        "Un {marsh:2} se bălăcește prin apa mică."
+      ]
+    },
+    {
+      "en": [
+        "The glass swings out over Area 3..."
+      ],
+      "text": [
+        "Lentila se rotește spre Zona 3..."
+      ]
+    },
+    {
+      "en": [
+        "A {marsh:3} peers out from the tall grass."
+      ],
+      "text": [
+        "Un {marsh:3} trage cu ochiul din iarba înaltă."
+      ]
+    },
+    {
+      "en": [
+        "The glass swings out over Area 4..."
+      ],
+      "text": [
+        "Lentila se rotește spre Zona 4..."
+      ]
+    },
+    {
+      "en": [
+        "A {marsh:4} is splashing about in the mud."
+      ],
+      "text": [
+        "Un {marsh:4} se tăvălește prin noroi."
+      ]
+    },
+    {
+      "en": [
+        "The glass swings out over Area 5..."
+      ],
+      "text": [
+        "Lentila se rotește spre Zona 5..."
+      ]
+    },
+    {
+      "en": [
+        "A {marsh:5} darts across a patch of open ground."
+      ],
+      "text": [
+        "Un {marsh:5} trece în fugă printr-un loc deschis."
+      ]
+    },
+    {
+      "en": [
+        "The glass swings out over Area 6..."
+      ],
+      "text": [
+        "Lentila se rotește spre Zona 6..."
+      ]
+    },
+    {
+      "en": [
+        "A {marsh:6} is dozing in the sun by the tram's rails."
+      ],
+      "text": [
+        "Un {marsh:6} moțăie la soare lângă șinele tramvaiului."
+      ]
+    },
+    {
+      "en": [
+        "There isn't enough money for that..."
+      ],
+      "text": [
+        "Nu sunt destui bani pentru asta..."
+      ]
+    }
+  ]
+}

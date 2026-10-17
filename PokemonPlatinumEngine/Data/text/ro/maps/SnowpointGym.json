@@ -1,0 +1,396 @@
+{
+  "displayName": {
+    "en": [
+      "Snowpoint Gym"
+    ],
+    "text": [
+      "Arena Snowpoint"
+    ]
+  },
+  "people": {
+    "candice": {
+      "name": {
+        "en": [
+          "Candice"
+        ],
+        "text": [
+          "Candice"
+        ]
+      }
+    },
+    "gym_guide": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          "Ghidul Arenei"
+        ]
+      }
+    },
+    "ace_trainer_anton": {
+      "name": {
+        "en": [
+          "Anton"
+        ],
+        "text": [
+          "Anton"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Anton: Up here by the dais the ice is at its slickest. Think you can keep your footing in a battle?"
+        ],
+        "text": [
+          "Antrenor As Anton: Aici sus, lângă podium, gheața e cea mai alunecoasă. Crezi că poți sta în picioare într-o luptă?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Anton: I slipped up... Nobody climbs to Candice without a running start from down below."
+        ],
+        "text": [
+          "Antrenor As Anton: Am alunecat... Nimeni nu urcă la Candice fără să-și ia avânt de jos."
+        ]
+      }
+    },
+    "ace_trainer_savannah": {
+      "name": {
+        "en": [
+          "Savannah"
+        ],
+        "text": [
+          "Savannah"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Savannah: Kids in Snowpoint learn to slide before they learn to walk. Every slope here is a running start!"
+        ],
+        "text": [
+          "Antrenor As Savannah: Copiii din Snowpoint învață să alunece înainte să meargă. Fiecare pantă de aici îți dă avânt!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Savannah: Melted! You've got the ice figured out, haven't you?"
+        ],
+        "text": [
+          "Antrenor As Savannah: M-am topit! Ai prins șmecheria cu gheața, nu?"
+        ]
+      }
+    },
+    "ace_trainer_alicia": {
+      "name": {
+        "en": [
+          "Alicia"
+        ],
+        "text": [
+          "Alicia"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Alicia: My Sneasel skate over the ice without making a sound. Can you say the same?"
+        ],
+        "text": [
+          "Antrenor As Alicia: Sneasel ai mei patinează pe gheață fără un sunet. Poți spune la fel?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Alicia: Hmph. Their claws were sharp, but your focus was sharper."
+        ],
+        "text": [
+          "Antrenor As Alicia: Hmpf. Ghearele lor erau ascuțite, dar concentrarea ta a fost mai ascuțită."
+        ]
+      }
+    },
+    "ace_trainer_isaiah": {
+      "name": {
+        "en": [
+          "Isaiah"
+        ],
+        "text": [
+          "Isaiah"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Isaiah: It takes speed to smash those snowballs. Speed, and a little nerve!"
+        ],
+        "text": [
+          "Antrenor As Isaiah: Îți trebuie viteză ca să spargi bulgării ăia. Viteză și un pic de curaj!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Isaiah: Bowled over! Remember: a slope down gives you speed, a slope up takes it away."
+        ],
+        "text": [
+          "Antrenor As Isaiah: Dat peste cap! Ține minte: panta la vale îți dă viteză, cea la deal ți-o ia."
+        ]
+      }
+    },
+    "ace_trainer_brenna": {
+      "name": {
+        "en": [
+          "Brenna"
+        ],
+        "text": [
+          "Brenna"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Brenna: The middle of the Gym is its lowest point. Everything slides down to it sooner or later!"
+        ],
+        "text": [
+          "Antrenor As Brenna: Mijlocul Arenei e punctul ei cel mai de jos. Totul alunecă acolo mai devreme sau mai târziu!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Brenna: This time I was the one who slid... Candice is waiting at the very top."
+        ],
+        "text": [
+          "Antrenor As Brenna: De data asta eu am alunecat... Candice așteaptă chiar în vârf."
+        ]
+      }
+    },
+    "ace_trainer_sergio": {
+      "name": {
+        "en": [
+          "Sergio"
+        ],
+        "text": [
+          "Sergio"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Sergio: Snow falls, snow piles up, and snow gets in your way. Just like me!"
+        ],
+        "text": [
+          "Antrenor As Sergio: Zăpada cade, zăpada se strânge și zăpada îți stă în cale. Exact ca mine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Sergio: What a blizzard of a battle! Keep sliding, you'll get there."
+        ],
+        "text": [
+          "Antrenor As Sergio: Ce viscol de luptă! Alunecă mai departe, o să ajungi."
+        ]
+      }
+    },
+    "snowball_1": {
+      "name": {
+        "en": [
+          "Snowball"
+        ],
+        "text": [
+          "Bulgăre"
+        ]
+      }
+    },
+    "snowball_2": {
+      "name": {
+        "en": [
+          "Snowball"
+        ],
+        "text": [
+          "Bulgăre"
+        ]
+      }
+    },
+    "snowball_3": {
+      "name": {
+        "en": [
+          "Snowball"
+        ],
+        "text": [
+          "Bulgăre"
+        ]
+      }
+    },
+    "snowball_4": {
+      "name": {
+        "en": [
+          "Snowball"
+        ],
+        "text": [
+          "Bulgăre"
+        ]
+      }
+    },
+    "snowball_5": {
+      "name": {
+        "en": [
+          "Snowball"
+        ],
+        "text": [
+          "Bulgăre"
+        ]
+      }
+    },
+    "snowball_6": {
+      "name": {
+        "en": [
+          "Snowball"
+        ],
+        "text": [
+          "Bulgăre"
+        ]
+      }
+    },
+    "snowball_7": {
+      "name": {
+        "en": [
+          "Snowball"
+        ],
+        "text": [
+          "Bulgăre"
+        ]
+      }
+    },
+    "snowball_8": {
+      "name": {
+        "en": [
+          "Snowball"
+        ],
+        "text": [
+          "Bulgăre"
+        ]
+      }
+    },
+    "snowball_9": {
+      "name": {
+        "en": [
+          "Snowball"
+        ],
+        "text": [
+          "Bulgăre"
+        ]
+      }
+    },
+    "snowball_10": {
+      "name": {
+        "en": [
+          "Snowball"
+        ],
+        "text": [
+          "Bulgăre"
+        ]
+      }
+    },
+    "snowball_11": {
+      "name": {
+        "en": [
+          "Snowball"
+        ],
+        "text": [
+          "Bulgăre"
+        ]
+      }
+    },
+    "snowball_12": {
+      "name": {
+        "en": [
+          "Snowball"
+        ],
+        "text": [
+          "Bulgăre"
+        ]
+      }
+    },
+    "snowball_13": {
+      "name": {
+        "en": [
+          "Snowball"
+        ],
+        "text": [
+          "Bulgăre"
+        ]
+      }
+    },
+    "snowball_14": {
+      "name": {
+        "en": [
+          "Snowball"
+        ],
+        "text": [
+          "Bulgăre"
+        ]
+      }
+    },
+    "snowball_15": {
+      "name": {
+        "en": [
+          "Snowball"
+        ],
+        "text": [
+          "Bulgăre"
+        ]
+      }
+    },
+    "snowball_16": {
+      "name": {
+        "en": [
+          "Snowball"
+        ],
+        "text": [
+          "Bulgăre"
+        ]
+      }
+    },
+    "snowball_17": {
+      "name": {
+        "en": [
+          "Snowball"
+        ],
+        "text": [
+          "Bulgăre"
+        ]
+      }
+    },
+    "snowball_18": {
+      "name": {
+        "en": [
+          "Snowball"
+        ],
+        "text": [
+          "Bulgăre"
+        ]
+      }
+    },
+    "snowball_19": {
+      "name": {
+        "en": [
+          "Snowball"
+        ],
+        "text": [
+          "Bulgăre"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "9,27": {
+      "en": [
+        "SNOWPOINT CITY POKéMON GYM\nLeader: Candice"
+      ],
+      "text": [
+        "ARENA POKéMON DIN ORAȘUL SNOWPOINT\nLideră: Candice"
+      ]
+    },
+    "13,27": {
+      "en": [
+        "SNOWPOINT CITY POKéMON GYM\nLeader: Candice"
+      ],
+      "text": [
+        "ARENA POKéMON DIN ORAȘUL SNOWPOINT\nLideră: Candice"
+      ]
+    }
+  }
+}

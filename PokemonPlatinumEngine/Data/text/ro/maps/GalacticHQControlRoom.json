@@ -1,0 +1,120 @@
+{
+  "displayName": {
+    "en": [
+      "Galactic HQ"
+    ],
+    "text": [
+      "Cartierul Galactic"
+    ]
+  },
+  "people": {
+    "saturn": {
+      "name": {
+        "en": [
+          "Saturn"
+        ],
+        "text": [
+          "Saturn"
+        ]
+      }
+    },
+    "azelf": {
+      "name": {
+        "en": [
+          "Azelf"
+        ],
+        "text": [
+          "Azelf"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Azelf is shut inside! It shudders, as if it is in pain."
+        ],
+        "text": [
+          "Azelf e închis înăuntru! Se cutremură, de parcă l-ar durea."
+        ]
+      }
+    },
+    "mesprit": {
+      "name": {
+        "en": [
+          "Mesprit"
+        ],
+        "text": [
+          "Mesprit"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Mesprit is shut inside! Its tails twitch, as if it is in pain."
+        ],
+        "text": [
+          "Mesprit e închis înăuntru! Cozile îi zvâcnesc, de parcă l-ar durea."
+        ]
+      }
+    },
+    "uxie": {
+      "name": {
+        "en": [
+          "Uxie"
+        ],
+        "text": [
+          "Uxie"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Uxie is shut inside! Its eyes are screwed tight, as if it is in pain."
+        ],
+        "text": [
+          "Uxie e închis înăuntru! Ține ochii strânși, de parcă l-ar durea."
+        ]
+      }
+    },
+    "charon": {
+      "name": {
+        "en": [
+          "Charon"
+        ],
+        "text": [
+          "Charon"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "8,10": {
+      "en": [
+        "One of Team Galactic's sinister machines. Uxie was held inside it."
+      ],
+      "text": [
+        "Una dintre mașinile sinistre ale Echipei Galactic. Uxie a fost ținut în ea."
+      ]
+    },
+    "2,4": {
+      "en": [
+        "One of Team Galactic's sinister machines. Mesprit was held inside it."
+      ],
+      "text": [
+        "Una dintre mașinile sinistre ale Echipei Galactic. Mesprit a fost ținut în ea."
+      ]
+    },
+    "14,4": {
+      "en": [
+        "One of Team Galactic's sinister machines. Azelf was held inside it."
+      ],
+      "text": [
+        "Una dintre mașinile sinistre ale Echipei Galactic. Azelf a fost ținut în ea."
+      ]
+    },
+    "8,5": {
+      "en": [
+        "A single button sits in the middle of the console."
+      ],
+      "text": [
+        "În mijlocul pupitrului e un singur buton."
+      ]
+    }
+  }
+}

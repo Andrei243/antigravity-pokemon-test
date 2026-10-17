@@ -1,0 +1,152 @@
+{
+  "GymGuide": [
+    {
+      "en": [
+        "Gym Guide"
+      ],
+      "text": [
+        "Ghidul Arenei"
+      ]
+    },
+    {
+      "en": [
+        "Hey, champ in the making! Welcome to the Canalave Gym!"
+      ],
+      "text": [
+        "Salutare! Bun venit la Arena Canalave!"
+      ]
+    },
+    {
+      "en": [
+        "Byron uses Steel types. They shrug off most hits, but Fire, Fighting and Ground moves will rattle them."
+      ],
+      "text": [
+        "Byron folosește Pokémoni de tip Oțel. Rezistă la cele mai multe lovituri, dar mișcările de Foc, Luptă și Pământ îi zdruncină."
+      ]
+    },
+    {
+      "en": [
+        "The Gym is a mine shaft. Ride the lifts up and down and the carts side to side. Each one only goes back and forth between two stops!"
+      ],
+      "text": [
+        "Arena e un puț de mină. Liftul te duce sus și jos, vagonetul, dintr-o parte în alta. Fiecare merge doar între două opriri!"
+      ]
+    },
+    {
+      "en": [
+        "{player}, you beat Byron! You came up through that shaft like a drill through rock!"
+      ],
+      "text": [
+        "{player}, l-ai învins pe Byron! Ai urcat prin puț ca un burghiu prin stâncă!"
+      ]
+    }
+  ],
+  "GymStatue": [
+    {
+      "en": [
+        "CANALAVE CITY POKéMON GYM. Leader: Byron. Certified Trainers: {rival}"
+      ],
+      "text": [
+        "ARENA POKéMON DIN ORAȘUL CANALAVE. Lider: Byron. Antrenori atestați: {rival}"
+      ]
+    },
+    {
+      "en": [
+        "CANALAVE CITY POKéMON GYM. Leader: Byron. Certified Trainers: {rival}, {player}"
+      ],
+      "text": [
+        "ARENA POKéMON DIN ORAȘUL CANALAVE. Lider: Byron. Antrenori atestați: {rival}, {player}"
+      ]
+    }
+  ],
+  "Byron": [
+    {
+      "en": [
+        "Byron"
+      ],
+      "text": [
+        "Byron"
+      ]
+    },
+    {
+      "en": [
+        "Ho! You found your way up my shaft! I am Byron, Leader of this Gym, and father to Roark of Oreburgh."
+      ],
+      "text": [
+        "Ho! Ai găsit drumul în susul puțului meu! Sunt Byron, Liderul acestei Arene și tatăl lui Roark din Oreburgh."
+      ]
+    },
+    {
+      "en": [
+        "My boy and I both dig deep, but where he loves the rock, I love the steel inside it."
+      ],
+      "text": [
+        "Băiatul meu și cu mine săpăm adânc amândoi, dar el iubește piatra, iar eu oțelul din ea."
+      ]
+    },
+    {
+      "en": [
+        "Steel doesn't bend and doesn't break. Let's see if you can dent it!"
+      ],
+      "text": [
+        "Oțelul nu se îndoaie și nu se rupe. Să vedem dacă-l poți ciupi!"
+      ]
+    },
+    {
+      "en": [
+        "Hmm! Well struck! My steel gave way before your team's resolve."
+      ],
+      "text": [
+        "Hmm! Bine lovit! Oțelul meu a cedat în fața hotărârii echipei tale."
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Mine Badge from Byron!"
+      ],
+      "text": [
+        "{player} a primit Insigna Mină de la Byron!"
+      ]
+    },
+    {
+      "en": [
+        "With the Mine Badge, your Pokémon can use Strength outside of battle. Push the boulders out of your way!"
+      ],
+      "text": [
+        "Cu Insigna Mină, Pokémonii tăi pot folosi mișcarea Forță în afara luptei. Împinge bolovanii din cale!"
+      ]
+    },
+    {
+      "en": [
+        "And this is for you. Steel's best answer to anything that comes at it!"
+      ],
+      "text": [
+        "Și asta e pentru tine. Cel mai bun răspuns al oțelului la orice îl atacă!"
+      ]
+    },
+    {
+      "en": [
+        "TM91 is Flash Cannon. A beam of light off polished steel, and it may lower the foe's Special Defense."
+      ],
+      "text": [
+        "TM91 e Tun de Lumină. O rază de lumină de pe oțel lustruit, care poate scădea Apărarea Specială a adversarului."
+      ]
+    },
+    {
+      "en": [
+        "Your friend {rival} came through here too, and left in a hurry for the library."
+      ],
+      "text": [
+        "Prietenul tău {rival} a trecut și el pe aici și a plecat în grabă spre bibliotecă."
+      ]
+    },
+    {
+      "en": [
+        "Go on, then! A Trainer who can dent steel shouldn't keep friends waiting."
+      ],
+      "text": [
+        "Hai, du-te! Cine poate ciupi oțelul nu-și lasă prietenii să aștepte."
+      ]
+    }
+  ]
+}

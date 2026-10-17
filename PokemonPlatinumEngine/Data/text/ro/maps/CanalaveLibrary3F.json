@@ -1,0 +1,280 @@
+{
+  "displayName": {
+    "en": [
+      "Canalave Library"
+    ],
+    "text": [
+      "Biblioteca Canalave"
+    ]
+  },
+  "people": {
+    "scientist_f": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          "Cercetătorul"
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          "Puștiul"
+        ]
+      }
+    },
+    "prof_rowan": {
+      "name": {
+        "en": [
+          "Prof. Rowan"
+        ],
+        "text": [
+          "Prof. Rowan"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Prof. Rowan: Hm. Are we all here?"
+        ],
+        "text": [
+          "Prof. Rowan: Hm. Suntem toți aici?"
+        ]
+      }
+    },
+    "counterpart": {
+      "name": {
+        "en": [
+          "{assistant}"
+        ],
+        "text": [
+          "{assistant}"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "{assistant}: The professor has something important to tell us."
+        ],
+        "text": [
+          "{assistant}: Profesorul are ceva important să ne spună."
+        ]
+      }
+    },
+    "rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "{rival}: Come on, come on! The old man is waiting!"
+        ],
+        "text": [
+          "{rival}: Hai, hai! Bătrânul așteaptă!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "9,3": {
+      "en": [
+        "A book: \"A Myth of Sinnoh\"."
+      ],
+      "text": [
+        "O carte: „Un mit din Sinnoh”."
+      ]
+    },
+    "10,3": {
+      "en": [
+        "A book: \"A Myth of Sinnoh\"."
+      ],
+      "text": [
+        "O carte: „Un mit din Sinnoh”."
+      ]
+    },
+    "11,3": {
+      "en": [
+        "A book: \"The Mythology of the Sinnoh Region\"."
+      ],
+      "text": [
+        "O carte: „Mitologia regiunii Sinnoh”."
+      ]
+    },
+    "12,3": {
+      "en": [
+        "A book: \"The Mythology of the Sinnoh Region\"."
+      ],
+      "text": [
+        "O carte: „Mitologia regiunii Sinnoh”."
+      ]
+    },
+    "17,3": {
+      "en": [
+        "A book: \"Sinnoh's Myth\"."
+      ],
+      "text": [
+        "O carte: „Mitul Sinnohului”."
+      ]
+    },
+    "18,3": {
+      "en": [
+        "A book: \"Sinnoh's Myth\"."
+      ],
+      "text": [
+        "O carte: „Mitul Sinnohului”."
+      ]
+    },
+    "19,3": {
+      "en": [
+        "A book: \"Veilstone's Myth\"."
+      ],
+      "text": [
+        "O carte: „Mitul din Veilstone”."
+      ]
+    },
+    "20,3": {
+      "en": [
+        "A book: \"Veilstone's Myth\"."
+      ],
+      "text": [
+        "O carte: „Mitul din Veilstone”."
+      ]
+    },
+    "15,7": {
+      "en": [
+        "A book: \"The Original Story\"."
+      ],
+      "text": [
+        "O carte: „Povestea de la început”."
+      ]
+    },
+    "15,8": {
+      "en": [
+        "A book: \"The Original Story\"."
+      ],
+      "text": [
+        "O carte: „Povestea de la început”."
+      ]
+    },
+    "15,9": {
+      "en": [
+        "A book: \"The Original Story\"."
+      ],
+      "text": [
+        "O carte: „Povestea de la început”."
+      ]
+    },
+    "16,7": {
+      "en": [
+        "A book: \"The Original Story\"."
+      ],
+      "text": [
+        "O carte: „Povestea de la început”."
+      ]
+    },
+    "16,9": {
+      "en": [
+        "A book: \"The Original Story\"."
+      ],
+      "text": [
+        "O carte: „Povestea de la început”."
+      ]
+    },
+    "17,7": {
+      "en": [
+        "A book: \"A Horrific Myth\"."
+      ],
+      "text": [
+        "O carte: „Un mit înfiorător”."
+      ]
+    },
+    "18,7": {
+      "en": [
+        "A book: \"A Horrific Myth\"."
+      ],
+      "text": [
+        "O carte: „Un mit înfiorător”."
+      ]
+    },
+    "17,9": {
+      "en": [
+        "A book: \"A Horrific Myth\"."
+      ],
+      "text": [
+        "O carte: „Un mit înfiorător”."
+      ]
+    },
+    "18,9": {
+      "en": [
+        "A book: \"A Horrific Myth\"."
+      ],
+      "text": [
+        "O carte: „Un mit înfiorător”."
+      ]
+    },
+    "19,7": {
+      "en": [
+        "A book: \"Folk Stories of Sinnoh\"."
+      ],
+      "text": [
+        "O carte: „Povești populare din Sinnoh”."
+      ]
+    },
+    "20,7": {
+      "en": [
+        "A book: \"Folk Stories of Sinnoh\"."
+      ],
+      "text": [
+        "O carte: „Povești populare din Sinnoh”."
+      ]
+    },
+    "19,9": {
+      "en": [
+        "A book: \"Folk Stories of Sinnoh\"."
+      ],
+      "text": [
+        "O carte: „Povești populare din Sinnoh”."
+      ]
+    },
+    "20,9": {
+      "en": [
+        "A book: \"Folk Stories of Sinnoh\"."
+      ],
+      "text": [
+        "O carte: „Povești populare din Sinnoh”."
+      ]
+    },
+    "14,2": {
+      "en": [
+        "Canalave Library, third floor\nThe myths and folk tales of Sinnoh."
+      ],
+      "text": [
+        "Biblioteca Canalave, etajul trei\nMiturile și poveștile populare ale Sinnohului."
+      ]
+    },
+    "7,5": {
+      "en": [
+        "The shelves are crammed with books from the floor to the ceiling."
+      ],
+      "text": [
+        "Rafturile sunt ticsite de cărți, de la podea până la tavan."
+      ]
+    },
+    "8,5": {
+      "en": [
+        "A television. It is showing the library's opening hours."
+      ],
+      "text": [
+        "Un televizor. Arată programul bibliotecii."
+      ]
+    }
+  }
+}

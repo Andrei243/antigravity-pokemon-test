@@ -1,0 +1,53 @@
+{
+  "displayName": {
+    "en": [
+      "Hotel Grand Lake"
+    ],
+    "text": [
+      "Hotelul Grand Lake"
+    ]
+  },
+  "people": {
+    "ace_trainer_f": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          "Antrenoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Isn't this hotel the most romantic place you ever saw?",
+          "One day a knight will ride up on his Pokémon and carry me off here for our honeymoon. I just know it!"
+        ],
+        "text": [
+          "Nu-i hotelul ăsta cel mai romantic loc pe care l-ai văzut vreodată?",
+          "Într-o zi va veni un cavaler călare pe Pokémonul lui și mă va aduce aici în luna de miere. Știu sigur!"
+        ]
+      }
+    },
+    "policeman": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      }
+    },
+    "looker": {
+      "name": {
+        "en": [
+          "Looker"
+        ],
+        "text": [
+          "Looker"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

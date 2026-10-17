@@ -1,0 +1,31 @@
+{
+  "people": {
+    "camper_lawrence": {
+      "name": {
+        "en": [
+          "Lawrence"
+        ],
+        "text": [
+          "Lawrence"
+        ]
+      },
+      "before": {
+        "en": [
+          "Camper Lawrence: I came out to camp in the old mine. Battling in the dark is the best training there is!"
+        ],
+        "text": [
+          "Campist Lawrence: Am venit să campez în mina veche. Lupta pe întuneric e cel mai bun antrenament!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Camper Lawrence: I'd better pitch my tent somewhere quieter and train a while longer."
+        ],
+        "text": [
+          "Campist Lawrence: Mai bine îmi pun cortul undeva mai liniștit și mă mai antrenez."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,316 @@
+{
+  "Join": [
+    {
+      "en": [
+        "Riley"
+      ],
+      "text": [
+        "Riley"
+      ]
+    },
+    {
+      "en": [
+        "{player}! So you came down after all. I'm glad. Something isn't right on this island."
+      ],
+      "text": [
+        "{player}! Până la urmă ai coborât. Mă bucur. Ceva nu e în regulă pe insula asta."
+      ]
+    },
+    {
+      "en": [
+        "The Pokémon are restless, far more than they should be. I mean to find out why. Shall we team up, the two of us?"
+      ],
+      "text": [
+        "Pokémonii sunt neliniștiți, mult mai mult decât ar trebui. Vreau să aflu de ce. Facem echipă, noi doi?"
+      ]
+    },
+    {
+      "en": [
+        "Hi, {player}. Back again? Then let's team up after all."
+      ],
+      "text": [
+        "Salut, {player}. Iar aici? Atunci hai să facem echipă până la urmă."
+      ]
+    },
+    {
+      "en": [
+        "{player} decided to go with Riley."
+      ],
+      "text": [
+        "{player} a hotărât să meargă cu Riley."
+      ]
+    },
+    {
+      "en": [
+        "Riley"
+      ],
+      "text": [
+        "Riley"
+      ]
+    },
+    {
+      "en": [
+        "I'll see to your Pokémon after every battle, so fight as hard as you like. Lead on!"
+      ],
+      "text": [
+        "Am grijă de Pokémonii tăi după fiecare luptă, așa că luptă cât de tare vrei. Ia-o înainte!"
+      ]
+    }
+  ],
+  "Leave": [
+    {
+      "en": [
+        "Riley"
+      ],
+      "text": [
+        "Riley"
+      ]
+    },
+    {
+      "en": [
+        "Heading back up? That's all right. I'd be glad if you came back, though. I'll keep looking round down here."
+      ],
+      "text": [
+        "Urci înapoi? Nu-i nimic. Dar m-aș bucura să te întorci. Eu mai caut pe aici, jos."
+      ]
+    }
+  ],
+  "Riley": [
+    {
+      "en": [
+        "Riley"
+      ],
+      "text": [
+        "Riley"
+      ]
+    },
+    {
+      "en": [
+        "Two Trainers side by side can do what neither could alone. I think so, anyway. Don't you, {player}?"
+      ],
+      "text": [
+        "Doi Antrenori umăr la umăr pot face ce n-ar putea niciunul singur. Așa cred eu, cel puțin. Tu nu, {player}?"
+      ]
+    },
+    {
+      "en": [
+        "They dug iron ore out of this island for years. The seams gave out long ago, and the tunnels were left to the Pokémon."
+      ],
+      "text": [
+        "Ani de zile s-a scos minereu de fier din insula asta. Filoanele s-au terminat demult, iar tunelurile au rămas Pokémonilor."
+      ]
+    },
+    {
+      "en": [
+        "Have you met Byron, Canalave's Gym Leader? He comes here to train as well. He digs more than he battles, mind you."
+      ],
+      "text": [
+        "L-ai cunoscut pe Byron, Liderul Arenei din Canalave? Vine și el aici să se antreneze. Deși sapă mai mult decât se luptă."
+      ]
+    },
+    {
+      "en": [
+        "Steel against steel. Imagine the sparks! That's the kind of battle I'd cross the sea to watch."
+      ],
+      "text": [
+        "Oțel contra oțel. Închipuie-ți scânteile! Pentru o asemenea luptă aș trece marea s-o văd."
+      ]
+    },
+    {
+      "en": [
+        "The Pokémon here are afraid of something. What is going on on this island?"
+      ],
+      "text": [
+        "Pokémonii de aici se tem de ceva. Ce se petrece pe insula asta?"
+      ]
+    },
+    {
+      "en": [
+        "I'm looking into what is upsetting the Pokémon here. Come and find me when you're ready to team up."
+      ],
+      "text": [
+        "Cercetez ce-i tulbură pe Pokémonii de aici. Caută-mă când ești gata să facem echipă."
+      ]
+    },
+    {
+      "en": [
+        "Look after that Egg, {player}. Let's meet again somewhere, and battle properly next time."
+      ],
+      "text": [
+        "Ai grijă de Oul acela, {player}. Să ne mai vedem undeva și data viitoare să ne luptăm ca lumea."
+      ]
+    }
+  ],
+  "Grunts": [
+    {
+      "en": [
+        "Riley"
+      ],
+      "text": [
+        "Riley"
+      ]
+    },
+    {
+      "en": [
+        "So it was you. You're the ones who have been frightening the Pokémon of this island!"
+      ],
+      "text": [
+        "Deci voi erați. Voi i-ați speriat pe Pokémonii de pe insula asta!"
+      ]
+    },
+    {
+      "en": [
+        "Galactic Grunt"
+      ],
+      "text": [
+        "Galactic Grunt"
+      ]
+    },
+    {
+      "en": [
+        "And what if we are? Team Galactic is taking every Pokémon on this rock, scared or not!"
+      ],
+      "text": [
+        "Și ce dacă? Echipa Galactic ia toți Pokémonii de pe stânca asta, speriați sau nu!"
+      ]
+    },
+    {
+      "en": [
+        "They're no use to anybody down here in the dark. With us they'll help make a whole new world. Now clear off!"
+      ],
+      "text": [
+        "Aici, jos, în întuneric, nu-i folosesc nimănui. Cu noi vor ajuta la făurirea unei lumi noi. Acum, cărați-vă!"
+      ]
+    },
+    {
+      "en": [
+        "Riley"
+      ],
+      "text": [
+        "Riley"
+      ]
+    },
+    {
+      "en": [
+        "{player}! We can't lose to people like these. Together, now!"
+      ],
+      "text": [
+        "{player}! Nu putem pierde în fața unora ca ei. Împreună, acum!"
+      ]
+    },
+    {
+      "en": [
+        "Galactic Grunt"
+      ],
+      "text": [
+        "Galactic Grunt"
+      ]
+    },
+    {
+      "en": [
+        "Ugh! Two against two, and they flattened us! Let's beat it, partner!"
+      ],
+      "text": [
+        "Uf! Doi contra doi, și ne-au făcut praf! Hai s-o ștergem, partenere!"
+      ]
+    },
+    {
+      "en": [
+        "Don't look at us! We only do what we're told. Nobody tells grunts what the big plan is!"
+      ],
+      "text": [
+        "Nu te uita la noi! Facem doar ce ni se spune. Nimeni nu le spune soldaților care e planul cel mare!"
+      ]
+    },
+    {
+      "en": [
+        "Galactic Grunt"
+      ],
+      "text": [
+        "Galactic Grunt"
+      ]
+    },
+    {
+      "en": [
+        "What are you gawping at? This lift is Team Galactic's business. Clear off!"
+      ],
+      "text": [
+        "Ce te holbezi? Liftul ăsta e treaba Echipei Galactic. Cară-te!"
+      ]
+    }
+  ],
+  "EggOffer": [
+    {
+      "en": [
+        "Riley"
+      ],
+      "text": [
+        "Riley"
+      ]
+    },
+    {
+      "en": [
+        "Thank you, {player}. The Pokémon here will calm down now that those two have gone."
+      ],
+      "text": [
+        "Mulțumesc, {player}. Pokémonii de aici se vor liniști acum că au plecat cei doi."
+      ]
+    },
+    {
+      "en": [
+        "I'd like you to have something. It's a Pokémon Egg. Will you take it?"
+      ],
+      "text": [
+        "Aș vrea să-ți dau ceva. E un Ou de Pokémon. Îl primești?"
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Egg from Riley!"
+      ],
+      "text": [
+        "{player} a primit Oul de la Riley!"
+      ]
+    },
+    {
+      "en": [
+        "Take the Pokémon that hatches from it to all sorts of places. It will grow up strong and kind for it."
+      ],
+      "text": [
+        "Du Pokémonul care iese din el prin tot felul de locuri. Așa va crește puternic și bun."
+      ]
+    },
+    {
+      "en": [
+        "Riley"
+      ],
+      "text": [
+        "Riley"
+      ]
+    },
+    {
+      "en": [
+        "I'll stay on the island a while and train some more. Let's meet again somewhere, {player}!"
+      ],
+      "text": [
+        "Mai rămân pe insulă o vreme să mă antrenez. Să ne mai vedem undeva, {player}!"
+      ]
+    },
+    {
+      "en": [
+        "Ah. Your team is full, so there's no room for an Egg. Make a space in it, and come and see me. I'll be right here."
+      ],
+      "text": [
+        "A. Echipa ta e plină, așa că n-ai loc pentru un Ou. Fă-ți loc și vino la mine. Sunt chiar aici."
+      ]
+    },
+    {
+      "en": [
+        "Please. Think of it as a token of how well we fought together. I'd like you to have it."
+      ],
+      "text": [
+        "Te rog. Socotește-l un semn al cât de bine ne-am luptat împreună. Aș vrea să-l ai."
+      ]
+    }
+  ]
+}

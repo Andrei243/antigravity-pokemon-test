@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "Hotel Grand Lake"
+    ],
+    "text": [
+      "Hotelul Grand Lake"
+    ]
+  },
+  "people": {
+    "rich_boy": {
+      "name": {
+        "en": [
+          "Rich Boy"
+        ],
+        "text": [
+          "Băiat bogat"
+        ]
+      }
+    },
+    "lady": {
+      "name": {
+        "en": [
+          "Lady"
+        ],
+        "text": [
+          "Doamna"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

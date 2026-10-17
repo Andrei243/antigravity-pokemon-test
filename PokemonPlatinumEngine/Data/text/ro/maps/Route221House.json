@@ -1,0 +1,32 @@
+{
+  "displayName": {
+    "en": [
+      "Route 221"
+    ],
+    "text": [
+      "Ruta 221"
+    ]
+  },
+  "people": {
+    "expert_m": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "4,2": {
+      "en": [
+        "WIN A PRIZE FROM ME!\nBlack Belt: Fighting-type moves hit harder. Expert Belt: moves that are super effective hit harder still.\nFocus Sash: a Pokémon at full HP can't be knocked out in one hit."
+      ],
+      "text": [
+        "CÂȘTIGĂ UN PREMIU!\nCentură Neagră: mișcările de Luptă lovesc mai tare. Centură de Expert: cele foarte eficiente, și mai tare.\nEșarfă de Concentrare: cu HP plin, nu poți fi doborât dintr-o lovitură."
+      ]
+    }
+  }
+}

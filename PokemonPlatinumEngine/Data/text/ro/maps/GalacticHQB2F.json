@@ -1,0 +1,157 @@
+{
+  "displayName": {
+    "en": [
+      "Galactic HQ"
+    ],
+    "text": [
+      "Cartierul Galactic"
+    ]
+  },
+  "people": {
+    "grunt_m": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Right, Master Cyrus's speech. Now where was it... In the Galactic Veilstone Building, that much I'm sure of.",
+          "In through the door beside the reception counter, I think?",
+          "Hang on. What did I do with that key? Where's it gone?"
+        ],
+        "text": [
+          "Bun, discursul Maestrului Cyrus. Unde era oare... În Clădirea Galactic din Veilstone, de asta sunt sigur.",
+          "Pe ușa de lângă recepție, cred?",
+          "Stai. Ce-am făcut cu cheia aia? Unde a dispărut?"
+        ]
+      }
+    },
+    "scientist_m": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          "Cercetătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Team Galactic will set every Pokémon free, and all of nature with them! Wahaha!",
+          "And then every last bit of it will be ours!"
+        ],
+        "text": [
+          "Echipa Galactic va elibera toți Pokémonii, și toată natura odată cu ei! Uahaha!",
+          "Și apoi totul, până la ultima fărâmă, va fi al nostru!"
+        ]
+      }
+    },
+    "29,11": {
+      "name": {
+        "en": [
+          "TM36"
+        ],
+        "text": [
+          "TM36"
+        ]
+      }
+    },
+    "galactic_grunt_1": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: In through the warehouse, was it? Then that's the way you'll be leaving!"
+        ],
+        "text": [
+          "Galactic Grunt: Ai intrat prin depozit, nu? Atunci tot pe acolo o să ieși!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: ...Or you could carry on. Your choice."
+        ],
+        "text": [
+          "Galactic Grunt: ...Sau poți merge mai departe. Cum vrei."
+        ]
+      }
+    },
+    "galactic_grunt_2": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: An intruder in the basement! Here's my chance at a promotion!"
+        ],
+        "text": [
+          "Galactic Grunt: Un intrus în subsol! Asta e șansa mea la o avansare!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: So much for the promotion."
+        ],
+        "text": [
+          "Galactic Grunt: S-a dus avansarea."
+        ]
+      }
+    },
+    "20,5": {
+      "name": {
+        "en": [
+          "Galactic Key"
+        ],
+        "text": [
+          "Cheia Galactic"
+        ]
+      }
+    },
+    "galactic_hq_door_west": {
+      "name": {
+        "en": [
+          "Door"
+        ],
+        "text": [
+          "Ușă"
+        ]
+      }
+    },
+    "galactic_hq_door_east": {
+      "name": {
+        "en": [
+          "Door"
+        ],
+        "text": [
+          "Ușă"
+        ]
+      }
+    },
+    "62,3": {
+      "name": {
+        "en": [
+          "Zinc"
+        ],
+        "text": [
+          "Zinc"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

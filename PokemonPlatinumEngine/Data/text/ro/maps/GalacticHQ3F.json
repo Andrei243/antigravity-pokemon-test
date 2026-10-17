@@ -1,0 +1,196 @@
+{
+  "displayName": {
+    "en": [
+      "Galactic HQ"
+    ],
+    "text": [
+      "Cartierul Galactic"
+    ]
+  },
+  "people": {
+    "grunt_m": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The locked doors in this building all open with one special key.",
+          "If I were the sort of villain who's only here for the laughs, I'd let slip where it is. But I honestly haven't a clue!"
+        ],
+        "text": [
+          "Toate ușile încuiate din clădirea asta se deschid cu o singură cheie specială.",
+          "Dacă aș fi genul de răufăcător care e aici doar de amuzament, ți-aș spune unde e. Dar sincer, habar n-am!"
+        ]
+      }
+    },
+    "36,12": {
+      "name": {
+        "en": [
+          "TM21"
+        ],
+        "text": [
+          "TM21"
+        ]
+      }
+    },
+    "galactic_grunt_2": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: Up and down, up and down... Oh! At last, something to do!"
+        ],
+        "text": [
+          "Galactic Grunt: Sus și jos, sus și jos... O! În sfârșit, ceva de făcut!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: Back to pacing, then."
+        ],
+        "text": [
+          "Galactic Grunt: Înapoi la plimbat, atunci."
+        ]
+      }
+    },
+    "galactic_grunt_3": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: The boss said nobody goes past. So nobody goes past!"
+        ],
+        "text": [
+          "Galactic Grunt: Șeful a zis că nu trece nimeni. Deci nu trece nimeni!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: Somebody went past."
+        ],
+        "text": [
+          "Galactic Grunt: A trecut cineva."
+        ]
+      }
+    },
+    "galactic_grunt_4": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: A brand-new world is on its way, and there's no room in it for you!"
+        ],
+        "text": [
+          "Galactic Grunt: Vine o lume nouă-nouță, și în ea nu e loc pentru tine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: Will there be room in it for me, though?"
+        ],
+        "text": [
+          "Galactic Grunt: Dar pentru mine o fi loc?"
+        ]
+      }
+    },
+    "galactic_hq_door_west": {
+      "name": {
+        "en": [
+          "Door"
+        ],
+        "text": [
+          "Ușă"
+        ]
+      }
+    },
+    "galactic_hq_door_east": {
+      "name": {
+        "en": [
+          "Door"
+        ],
+        "text": [
+          "Ușă"
+        ]
+      }
+    },
+    "galactic_grunt_1": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: No key, no business up here. Out!"
+        ],
+        "text": [
+          "Galactic Grunt: Fără cheie, n-ai ce căuta aici sus. Afară!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: Who needs a key when you battle like that..."
+        ],
+        "text": [
+          "Galactic Grunt: Cui îi trebuie cheie când se luptă așa..."
+        ]
+      }
+    },
+    "50,21": {
+      "name": {
+        "en": [
+          "Max Elixir"
+        ],
+        "text": [
+          "Elixir Maxim"
+        ]
+      }
+    },
+    "38,20": {
+      "name": {
+        "en": [
+          "Protein"
+        ],
+        "text": [
+          "Proteină"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "6,19": {
+      "en": [
+        "A notice on the wall:\n\"Team Galactic's creed! All that there is belongs to Team Galactic. Lift your eyes past this world: the stars shall be Team Galactic's too!\""
+      ],
+      "text": [
+        "Un anunț pe perete:\n„Crezul Echipei Galactic! Tot ce există e al Echipei Galactic. Ridicați ochii dincolo de lumea asta: și stelele vor fi ale Echipei Galactic!”"
+      ]
+    }
+  }
+}

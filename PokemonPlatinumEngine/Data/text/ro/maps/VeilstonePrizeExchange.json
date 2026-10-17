@@ -1,0 +1,53 @@
+{
+  "displayName": {
+    "en": [
+      "Prize Exchange"
+    ],
+    "text": [
+      "Schimbul de Premii"
+    ]
+  },
+  "people": {
+    "receptionist": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      }
+    },
+    "guitarist": {
+      "name": {
+        "en": [
+          "Guitarist"
+        ],
+        "text": [
+          "Chitaristul"
+        ]
+      }
+    },
+    "old_man": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "All these fine prizes, and not a Coin to my name.",
+          "I come in to look. Looking is free."
+        ],
+        "text": [
+          "Atâtea premii frumoase, și eu fără nicio Fisă.",
+          "Intru doar să mă uit. Uitatul e gratis."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

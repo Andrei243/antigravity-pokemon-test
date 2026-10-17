@@ -1,0 +1,34 @@
+{
+  "people": {
+    "ruin_maniac": {
+      "name": {
+        "en": [
+          "Ruin Maniac"
+        ],
+        "text": [
+          "Pasionatul de ruine"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came here to dig for relics. So far all I've dug up is mud, mud and more mud.",
+          "Still, who knows what the marsh has swallowed over the years? I'll keep digging!"
+        ],
+        "text": [
+          "Am venit să sap după relicve. Până acum am scos doar noroi, noroi și iar noroi.",
+          "Totuși, cine știe ce a înghițit mlaștina de-a lungul anilor? Sap mai departe!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "signboard": {
+      "en": [
+        "Great Marsh · Area 1\nThe marsh's far north-west. Few visitors make it this far!"
+      ],
+      "text": [
+        "Marea Mlaștină · Zona 1\nCapătul de nord-vest al mlaștinii. Puțini vizitatori ajung până aici!"
+      ]
+    }
+  }
+}

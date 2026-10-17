@@ -1,0 +1,118 @@
+{
+  "displayName": {
+    "en": [
+      "Pastoria City"
+    ],
+    "text": [
+      "Orașul Pastoria"
+    ]
+  },
+  "people": {
+    "ace_trainer_f": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          "Antrenoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Tell me I'm not imagining things...",
+          "The Pokémon out in the Great Marsh aren't the ones I saw there yesterday!"
+        ],
+        "text": [
+          "Spune-mi că nu-mi închipui...",
+          "Pokémonii din Marea Mlaștină nu sunt cei pe care i-am văzut ieri!"
+        ]
+      }
+    },
+    "bug_catcher": {
+      "name": {
+        "en": [
+          "Bug Catcher"
+        ],
+        "text": [
+          "Vânătorul de insecte"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Put a coin in the binoculars and look out over the Great Marsh.",
+          "You can see which Pokémon are about today before you ever set foot in the mud."
+        ],
+        "text": [
+          "Bagă o monedă în binoclu și privește peste Marea Mlaștină.",
+          "Poți vedea ce Pokémoni sunt pe acolo azi înainte să calci în noroi."
+        ]
+      }
+    },
+    "pokefan_m": {
+      "name": {
+        "en": [
+          "Pokéfan"
+        ],
+        "text": [
+          "Pokéfana"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "There are little trains out in the marsh. Quick Trams, they call them.",
+          "Take one if you're heading for the far end. It beats wading."
+        ],
+        "text": [
+          "În mlaștină sunt niște trenulețe. Le zice Tramvaie Rapide.",
+          "Ia unul dacă mergi în capătul celălalt. E mai bine decât să te bălăcești."
+        ]
+      }
+    },
+    "picnicker": {
+      "name": {
+        "en": [
+          "Picnicker"
+        ],
+        "text": [
+          "Excursionistă"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Walk across the bog and every so often you sink right in, up to your knees!",
+          "Here's the odd thing, though: turn about while you're stuck, and a Pokémon may pop out beside you."
+        ],
+        "text": [
+          "Mergi prin mlaștină și din când în când te afunzi până la genunchi!",
+          "Dar uite ciudățenia: dacă te învârți cât te-ai împotmolit, poate sări un Pokémon lângă tine."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "2,3": {
+      "en": [
+        "A pair of binoculars, pointed out over the Great Marsh."
+      ],
+      "text": [
+        "Un binoclu, îndreptat spre Marea Mlaștină."
+      ]
+    },
+    "6,3": {
+      "en": [
+        "A pair of binoculars, pointed out over the Great Marsh."
+      ],
+      "text": [
+        "Un binoclu, îndreptat spre Marea Mlaștină."
+      ]
+    },
+    "10,3": {
+      "en": [
+        "A pair of binoculars, pointed out over the Great Marsh."
+      ],
+      "text": [
+        "Un binoclu, îndreptat spre Marea Mlaștină."
+      ]
+    }
+  }
+}

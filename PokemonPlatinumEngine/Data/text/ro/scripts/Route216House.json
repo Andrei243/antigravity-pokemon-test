@@ -1,0 +1,64 @@
+{
+  "Rest": [
+    {
+      "en": [
+        "Yahoo! The old lodge has seen better days, but come in out of the snow and make yourself at home!"
+      ],
+      "text": [
+        "Iuhuu! Cabana a văzut și zile mai bune, dar intră de la zăpadă și simte-te ca acasă!"
+      ]
+    },
+    {
+      "en": [
+        "Want a rest before you go back out?"
+      ],
+      "text": [
+        "Vrei să te odihnești înainte să ieși iar?"
+      ]
+    },
+    {
+      "en": [
+        "There! You and your Pokémon are fit, cheerful and ready to go!"
+      ],
+      "text": [
+        "Gata! Tu și Pokémonii tăi sunteți în formă, voioși și gata de drum!"
+      ]
+    },
+    {
+      "en": [
+        "It's a tumbledown place, as you can see.",
+        "Do as you like: head straight back out, or have a nap in the bed first."
+      ],
+      "text": [
+        "E un loc dărăpănat, cum vezi.",
+        "Fă cum vrei: ieși direct afară sau trage întâi un pui de somn în pat."
+      ]
+    }
+  ],
+  "Bed": [
+    {
+      "en": [
+        "It's a bed... Take a rest?"
+      ],
+      "text": [
+        "E un pat... Te odihnești?"
+      ]
+    },
+    {
+      "en": [
+        "{player} was asleep almost at once..."
+      ],
+      "text": [
+        "{player} a adormit aproape imediat..."
+      ]
+    },
+    {
+      "en": [
+        "{player} and the Pokémon woke up completely rested!"
+      ],
+      "text": [
+        "{player} și Pokémonii s-au trezit complet odihniți!"
+      ]
+    }
+  ]
+}
