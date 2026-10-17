@@ -251,7 +251,7 @@ public class ContentTests
         var found = folder.Check();
 
         Has(found, Kind.TooWide, OverlayFile, "people.lass", "rows and the text box holds 3");
-        Has(found, Kind.Character, OverlayFile, "people.youngster_tristan", "U+2019");
+        Has(found, Kind.Character, OverlayFile, "people.youngster_tristan", "U+266A");
         Has(found, Kind.Character, OverlayFile, "people.youngster_tristan", "U+266A");
         Has(found, Kind.TooWide, "scripts/test_town.txt", "line 2 (Hiker)", "rows and the text box holds 3");
         Has(found, Kind.TooWide, "scripts/test_town.txt", "line 3 (Hiker)", "one word wider than the text box");
@@ -393,15 +393,18 @@ public class ContentTests
         // Black is wider than Bold
         Assert.True(TextMetrics.Measure("Pokémon", 30, UiWeight.Black) > TextMetrics.Measure("Pokémon", 30, UiWeight.Bold));
 
-        // What the interface can draw: Latin-1, the dashes and the ellipsis. No arrow (the typeface has none), no
-        // curly quote, no gender mark; and the non-breaking space is drawn as nothing at all
+        // What the interface can draw: Latin-1, Latin Extended-A, the comma-below letters, the dashes, the curly
+        // quotes and the ellipsis (plan 17 · N5). No arrow (the typeface has none), no gender mark; and the
+        // non-breaking space is drawn as a plain space (it has no outline in the typeface)
         foreach (var weight in Enum.GetValues<UiWeight>())
         {
             Assert.Empty(TextMetrics.Undrawable("Pokémon: 100% naïve façade × ÷ ¿? – — …", weight));
-            Assert.Equal(new[] { 0x2192, 0x2019, 0x2642, 0xA0 }, TextMetrics.Undrawable("→ it’s ♂ →", weight).Select(r => r.Value));
+            Assert.Empty(TextMetrics.Undrawable("it’s „ro” ‘x’ ăâîșțĂÂÎȘȚ şţ ĄęŁőű", weight));
+            Assert.Equal(new[] { 0x2192, 0x2642 }, TextMetrics.Undrawable("→ it’s ♂ →", weight).Select(r => r.Value));
         }
         Assert.Equal(TextMetrics.Measure("?", 40), TextMetrics.Measure("→", 40));
-        Assert.Equal(0f, TextMetrics.Measure(" ", 40));
+        Assert.Equal(TextMetrics.Measure("a b", 40), TextMetrics.Measure("a b", 40));
+        Assert.NotEqual(0f, TextMetrics.Measure(" ", 40));
 
         // Wrapping is the interface's one way of it: a break where a word would run over, and where the text says so
         Assert.Equal(new[] { "one two", "three" }, TextMetrics.Wrap("one two three", 7, text => text.Length));

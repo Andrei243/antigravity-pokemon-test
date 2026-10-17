@@ -19,13 +19,29 @@ public static class UiFonts
     // Large enough that 60-unit text stays sharp when the layout is rendered at 4K
     internal const int AtlasSize = 160;
     private static readonly Dictionary<UiWeight, Font> Fonts = new();
+    private static readonly Dictionary<UiWeight, Font> ExtraFonts = new();
 
     /// <summary>
-    /// The characters the typeface is loaded with: Latin-1 plus the dashes, the ellipsis and the arrows the menus use.
-    /// Anything else is drawn as a question mark; <see cref="TextMetrics.CanDraw"/> answers for one character, with no
+    /// The characters the first face is loaded with: Latin-1 plus the dashes, the ellipsis and the arrows the menus use
+    /// (the arrows are not in Nunito and are asked for all the same). Anything else is drawn as a question mark unless
+    /// <see cref="ExtraCodepoints"/> has it; <see cref="TextMetrics.CanDraw"/> answers for one character, with no
     /// window (plan 16 · T8).
     /// </summary>
     internal static readonly int[] Codepoints = Enumerable.Range(32, 224).Concat(new[] { 0x2013, 0x2014, 0x2026, 0x2190, 0x2191, 0x2192, 0x2193 }).ToArray();
+
+    /// <summary>
+    /// The Latin half of plan 17 · N5: the second face, a second atlas of the same typeface and size that is made the
+    /// first time a text needs a glyph from it, so English (and every text within Latin-1) pays nothing for it. It holds
+    /// Latin Extended-A (Romanian ă â î, Polish, Czech, Turkish, Hungarian, the Baltic languages…), the comma-below
+    /// letters Ș ș Ț ț (Romanian proper; the cedilla forms Ş ş Ţ ţ are in Extended-A), the curly and low quotation marks,
+    /// the guillemets, the euro and the trade mark. A codepoint the typeface has no glyph for is left out when the atlas
+    /// is made (raylib skips it) and measured and drawn as a question mark, like any other.
+    /// </summary>
+    internal static readonly int[] ExtraCodepoints = Enumerable.Range(0x100, 0x80)
+        .Concat(new[] { 0x218, 0x219, 0x21A, 0x21B, 0x1E9E, 0x2018, 0x2019, 0x201A, 0x201C, 0x201D, 0x201E, 0x2039, 0x203A, 0x20AC, 0x2122 })
+        .ToArray();
+
+    private static readonly HashSet<int> ExtraSet = new(ExtraCodepoints);
 
     internal static string FileFor(UiWeight weight) => weight switch
     {
@@ -34,13 +50,18 @@ public static class UiFonts
         _ => "Nunito-Bold.ttf"
     };
 
-    public static Font Get(UiWeight weight)
+    public static Font Get(UiWeight weight) => Load(Fonts, weight, Codepoints);
+
+    /// <summary>The second face of a weight (<see cref="ExtraCodepoints"/>), made on first use.</summary>
+    public static Font GetExtra(UiWeight weight) => Load(ExtraFonts, weight, ExtraCodepoints);
+
+    private static Font Load(Dictionary<UiWeight, Font> kept, UiWeight weight, int[] codepoints)
     {
-        if (Fonts.TryGetValue(weight, out var font)) return font;
+        if (kept.TryGetValue(weight, out var font)) return font;
         string path = Path.Combine(AppContext.BaseDirectory, "Assets", "Fonts", FileFor(weight));
         if (File.Exists(path))
         {
-            font = Raylib.LoadFontEx(path, AtlasSize, Codepoints, Codepoints.Length);
+            font = Raylib.LoadFontEx(path, AtlasSize, codepoints, codepoints.Length);
             if (font.Texture.Id != 0)
             {
                 Raylib.GenTextureMipmaps(ref font.Texture);
@@ -51,18 +72,89 @@ public static class UiFonts
         {
             font = Raylib.GetFontDefault();
         }
-        Fonts[weight] = font;
+        kept[weight] = font;
         return font;
     }
 
     /// <summary>Letter spacing: Nunito is set a touch open at small sizes and tighter at display sizes.</summary>
     internal static float Tracking(float size) => size >= 40 ? 0f : size <= 20 ? 0.8f : 0.4f;
 
-    public static void Draw(string text, float x, float y, float size, Color color, UiWeight weight = UiWeight.Bold) =>
-        Raylib.DrawTextEx(Get(weight), text, new Vector2(MathF.Round(x), MathF.Round(y)), size, Tracking(size), color);
+    /// <summary>
+    /// Whether a character is drawn from the second face: one of <see cref="ExtraCodepoints"/> that the weight's file
+    /// has a glyph for. Anything within Latin-1 and the dashes is the first face's, and so is a character neither has
+    /// (which comes out as the question mark).
+    /// </summary>
+    internal static bool InExtra(int codepoint, UiWeight weight) =>
+        codepoint > 0xFF && ExtraSet.Contains(codepoint) && TextMetrics.HasExtra(codepoint, weight);
 
-    public static float Measure(string text, float size, UiWeight weight = UiWeight.Bold) =>
-        Raylib.MeasureTextEx(Get(weight), text, size, Tracking(size)).X;
+    /// <summary>
+    /// A text cut into runs by the face that has each glyph, in order (<c>Extra</c> says which): one run for the
+    /// text of Latin-1, the common case, which is found with a scan of its characters and no allocation.
+    /// </summary>
+    internal static List<(string Text, bool Extra)> Runs(string text, UiWeight weight)
+    {
+        var runs = new List<(string, bool)>();
+        int start = 0;
+        bool extra = false;
+        for (int i = 0; i < text.Length; i++)
+        {
+            bool here = text[i] > 0xFF && InExtra(text[i], weight);
+            if (here == extra) continue;
+            if (i > start) runs.Add((text[start..i], extra));
+            start = i;
+            extra = here;
+        }
+        if (text.Length > start) runs.Add((text[start..], extra));
+        return runs;
+    }
+
+    private static bool NeedsExtra(string text, UiWeight weight)
+    {
+        foreach (char c in text)
+            if (c > 0xFF && InExtra(c, weight)) return true;
+        return false;
+    }
+
+    /// <summary>
+    /// A text as it is drawn: the no-break and narrow no-break spaces (French sets one before ? ! : ; and inside «»;
+    /// Nunito's glyph for them has no outline and no width, so they would close the gap up) are the plain space's width.
+    /// They are no break either, since <see cref="TextMetrics.Wrap(string, float, Func{string, float})"/> breaks at the
+    /// plain space alone.
+    /// </summary>
+    internal static string Spaced(string text) =>
+        text.AsSpan().IndexOfAny(' ', ' ') < 0 ? text : text.Replace(' ', ' ').Replace(' ', ' ');
+
+    public static void Draw(string text, float x, float y, float size, Color color, UiWeight weight = UiWeight.Bold)
+    {
+        text = Spaced(text);
+        float tracking = Tracking(size);
+        if (!NeedsExtra(text, weight))
+        {
+            Raylib.DrawTextEx(Get(weight), text, new Vector2(MathF.Round(x), MathF.Round(y)), size, tracking, color);
+            return;
+        }
+        // Runs by face, each drawn where the one before ended: the tracking sits between two runs as between two letters
+        float at = MathF.Round(x);
+        y = MathF.Round(y);
+        foreach (var (part, extra) in Runs(text, weight))
+        {
+            var font = extra ? GetExtra(weight) : Get(weight);
+            Raylib.DrawTextEx(font, part, new Vector2(at, y), size, tracking, color);
+            at += Raylib.MeasureTextEx(font, part, size, tracking).X + tracking;
+        }
+    }
+
+    public static float Measure(string text, float size, UiWeight weight = UiWeight.Bold)
+    {
+        text = Spaced(text);
+        float tracking = Tracking(size);
+        if (!NeedsExtra(text, weight)) return Raylib.MeasureTextEx(Get(weight), text, size, tracking).X;
+        float width = 0f;
+        var runs = Runs(text, weight);
+        foreach (var (part, extra) in runs)
+            width += Raylib.MeasureTextEx(extra ? GetExtra(weight) : Get(weight), part, size, tracking).X;
+        return width + (runs.Count - 1) * tracking;
+    }
 
     /// <summary>Draws text with its cap height centred on <paramref name="centerY"/>.</summary>
     public static void DrawCentered(string text, float x, float centerY, float size, Color color, UiWeight weight = UiWeight.Bold) =>
