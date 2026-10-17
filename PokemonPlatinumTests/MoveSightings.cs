@@ -124,6 +124,21 @@ internal static class MoveSightings
             return All.Where(s => s.Rank >= from && s.Rank < to).Select(s => s.Move).ToList();
         }
     }
+    /// <summary>The last place of Y9's second part (plan 25 · Y9b): Route 224 is the last of it, its rooms with it (they rank a little after it).</summary>
+    public const string NinthBatchEnds = "route_224";
+
+    /// <summary>
+    /// Platinum's moves, by name, that Y9's second part takes (plan 25 · Y9b): seen from <see cref="NinthBatchSplits"/>
+    /// (the Sunyshore Gym) to Route 224, rooms included.
+    /// </summary>
+    public static IReadOnlyList<string> NinthBatchSecondPart
+    {
+        get
+        {
+            int from = PlaceRanks.Value[NinthBatchSplits], to = PlaceRanks.Value[NinthBatchEnds] + 100;
+            return All.Where(s => s.Rank >= from && s.Rank < to).Select(s => s.Move).ToList();
+        }
+    }
     private static readonly Lazy<Dictionary<string, int>> PlaceRanks = new(() => Ranks().Ranks);
 
     /// <summary>The areas in their order, then every room ranked by the place whose warp first leads into it.</summary>

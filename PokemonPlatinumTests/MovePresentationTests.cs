@@ -110,7 +110,8 @@ public class MovePresentationTests
             }
         }
         output.WriteLine($"heaviest before the batches: {which}, {heaviest}");
-        Assert.InRange(heaviest, MoveFx.MaxQuads - 15, MoveFx.MaxQuads);
+        // Y9b replaced the one that set it (G8's Surf, 124); what is left is only held under it
+        Assert.InRange(heaviest, 0, MoveFx.MaxQuads);
     }
 
     [Fact]
@@ -331,6 +332,44 @@ public class MovePresentationTests
         }
     }
     [Fact]
+    public void TheNinthBatchsSecondPartAllHaveALookAndASoundOfTheirOwn()
+    {
+        // Plan 25 - Y9b: the Sunyshore Gym to Route 224
+        var part = MoveSightings.NinthBatchSecondPart;
+        output.WriteLine($"{part.Count} moves in Y9's second part: {string.Join(", ", part)}");
+        Assert.Equal(58, part.Count);
+        Assert.All(part, move => Assert.Equal("Y9b", MoveFx.BatchOf(move)));
+        Assert.All(part, move => Assert.True(SoundBank.Exists("use_" + SoundBank.MoveKey(move)), move));
+        // And nothing outside the part has run into the batch, nor the part into the ones before it
+        Assert.All(MoveFx.Batches.Where(b => b.Value == "Y9b"), b => Assert.Contains(b.Key, part, StringComparer.OrdinalIgnoreCase));
+        Assert.Empty(part.Intersect(MoveSightings.NinthBatchFirstPart.Concat(MoveSightings.EighthBatchSecondPart).Concat(MoveSightings.EighthBatchFirstPart), StringComparer.OrdinalIgnoreCase));
+    }
+
+    [Fact]
+    public void TheNinthBatchsSecondPartsMovesThatShareAParticleFileOrAKindLookDifferentHere()
+    {
+        // The swaps, the orders, the pulses, the beams, the fire, the wrings and the punches
+        foreach (var (a, b) in new[] { ("Guard Swap", "Power Swap"), ("Attack Order", "Defend Order"), ("Defend Order", "Heal Order"), ("Acid", "Gastro Acid"),
+            ("Constrict", "Wring Out"), ("Dark Pulse", "Dragon Pulse"), ("Solar Beam", "Hyper Beam"), ("Energy Ball", "Aura Sphere"), ("Leaf Blade", "Cross Poison"),
+            ("Mega Kick", "Hammer Arm"), ("Iron Head", "Head Smash"), ("Flare Blitz", "Overheat"), ("Dynamic Punch", "Bullet Punch"), ("Earth Power", "Rock Wrecker"),
+            ("Surf", "Dive"), ("Heal Order", "Aromatherapy"), ("Moonlight", "Synthesis"), ("Super Fang", "Hyper Fang"), ("Megahorn", "Horn Attack"),
+            ("Power Whip", "Vine Whip"), ("Bug Buzz", "Attack Order"), ("Dragon Rush", "Dragon Claw"), ("Brave Bird", "Drill Peck") })
+        {
+            var ma = MoveDatabase.Get(a)!;
+            var mb = MoveDatabase.Get(b)!;
+            int same = 0;
+            foreach (float age in new[] { 0.15f, 0.3f, 0.5f, 0.8f })
+            {
+                var ca = Cue(ma);
+                var cb = Cue(mb);
+                cb.Seed = ca.Seed;
+                if (Picture(Draw(ca, age)) == Picture(Draw(cb, age))) same++;
+            }
+            Assert.True(same < 4, $"{a} and {b} look alike");
+        }
+    }
+
+    [Fact]
     public void MovesThatShareAParticleFileInTheOriginalLookDifferentHere()
     {
         // Block and Imprison, Self-Destruct and Explosion, Snore and Rest, and two more that are alike in kind
@@ -415,7 +454,7 @@ public class MovePresentationTests
         int own = PlatinumMoves.Count(m => MoveFx.BatchOf(m.Name) != null &&
             (SoundBank.CryModesOf(m.Name) != null || SoundBank.Exists("use_" + SoundBank.MoveKey(m.Name))));
         output.WriteLine($"{own} of Platinum's 467 have a look and a sound of their own");
-        Assert.True(own >= 313, $"only {own}");
+        Assert.True(own >= 371, $"only {own}");
     }
 
     [Fact]
