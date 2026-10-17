@@ -195,6 +195,15 @@ public class PCScreen
         if (tick.Sounds(held)) AudioManager.PlaySound(Box != boxBefore ? "page" : "cursor");
     }
 
+    /// <summary>The page buttons (plan 12 · Q5): the previous or the next box, wherever the cursor is, unless a menu or a question is open.</summary>
+    public bool ChangeBox(int step, int partyCount)
+    {
+        if (step == 0 || Busy || BoxCount < 2) return false;
+        Box = UiNav.Wrap(Box, Math.Sign(step), BoxCount);
+        AudioManager.PlaySound("page");
+        return true;
+    }
+
     /// <summary>What the menu offers for the Pokémon under the cursor.</summary>
     public IReadOnlyList<PcAction> ActionsFor(StorageZone zone) => zone == StorageZone.Party
         ? new[] { PcAction.Move, PcAction.Store, PcAction.Mark, PcAction.Release, PcAction.Cancel }
@@ -472,6 +481,8 @@ public class PCScreen
         bool runs = Zone == StorageZone.BoxName && !Busy;
         int dx = boxKey.Advance(dt, InputManager.Axis(GameAction.Left, GameAction.Right), runs ? InputManager.Axis(GameAction.Left, GameAction.Right, held: true) : 0);
         int dy = (InputManager.IsActionPressed(GameAction.Down) ? 1 : 0) - (InputManager.IsActionPressed(GameAction.Up) ? 1 : 0);
+        int pages = InputManager.Axis(GameAction.PageLeft, GameAction.PageRight);
+        if (pages != 0 && dx == 0 && dy == 0 && ChangeBox(pages, party.Count)) return;
         if (boxKey.Repeating && dx != 0)
             for (int i = 0; i < Math.Abs(dx); i++) Move(Math.Sign(dx), 0, party.Count, held: true);
         else if (dx != 0 || dy != 0) Move(dx, dy, party.Count);

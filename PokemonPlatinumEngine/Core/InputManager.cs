@@ -33,6 +33,12 @@ public readonly record struct Binding(GameAction Action, KeyboardKey[] Keys, Gam
     public string Name => Text.Of($"controls.action.{Action}");
 }
 
+/// <summary>A key or a pad button read while the Controls page waits for the player's new binding (plan 12 · Q5).</summary>
+public readonly record struct CapturedInput(KeyboardKey? Key, GamepadButton? Button)
+{
+    public string Name => Key is { } k ? InputManager.KeyName(k) : Button is { } b ? InputManager.PadName(b) : "";
+}
+
 public static class InputManager
 {
     private static InputBindings active = InputBindings.For(ButtonMode.Normal);
@@ -86,11 +92,35 @@ public static class InputManager
         deadZone = DefaultDeadZone;
         padIndex = 0;
         lastDevice = (int)InputDevice.Keyboard;
+        CaptureRequested = false;
+        Captured = null;
         stick.Reset();
     }
 
-    /// <summary>Actions bound and kept in the settings that nothing in the game reads yet (the pages: plan 12 · Q4 names them, the screens that use them come after; the screenshot: plan 12 · Q16).</summary>
-    public static readonly IReadOnlySet<GameAction> NotReadYet = new HashSet<GameAction> { GameAction.PageLeft, GameAction.PageRight, GameAction.Screenshot };
+    /// <summary>Actions bound and kept in the settings that nothing in the game reads yet (the screenshot: plan 12 · Q16; the page buttons are read by the bag, the PC, the Pokédex and the summary).</summary>
+    public static readonly IReadOnlySet<GameAction> NotReadYet = new HashSet<GameAction> { GameAction.Screenshot };
+
+    /// <summary>Set by the Controls page while it waits for a new binding: <see cref="ReadKeys"/> then reports the first key or button pressed in <see cref="Captured"/>.</summary>
+    public static volatile bool CaptureRequested;
+
+    /// <summary>The key or pad button pressed this frame while a capture was asked for (null otherwise); fed by <see cref="ReadKeys"/> or, in a test, by <see cref="Inject"/>.</summary>
+    public static CapturedInput? Captured { get; private set; }
+
+    /// <summary>Sets what this frame captured (a test's or a tool's stand-in for the keyboard).</summary>
+    public static void Inject(CapturedInput? input) => Captured = input;
+
+    private static CapturedInput? ReadCapture(PadSnapshot pad)
+    {
+        // The queue of keys pressed is emptied every frame, so a key pressed before a capture was asked for never answers it
+        int code = 0, first = 0;
+        while ((code = Raylib.GetKeyPressed()) != 0) if (first == 0) first = code;
+        if (!CaptureRequested) return null;
+        if (first != 0 && Enum.IsDefined((KeyboardKey)first)) return new CapturedInput((KeyboardKey)first, null);
+        if (pad.Connected)
+            foreach (var button in Enum.GetValues<GamepadButton>())
+                if (button != GamepadButton.Unknown && pad.IsPressed(button)) return new CapturedInput(null, button);
+        return null;
+    }
 
     private static Binding Of(GameAction action) => new(action, active[action].Keys, active[action].Pad);
 
@@ -119,6 +149,8 @@ public static class InputManager
         bool altEnter = Raylib.IsKeyDown(KeyboardKey.LeftAlt) && Raylib.IsKeyPressed(KeyboardKey.Enter);
         var frame = active.Resolve(key => Raylib.IsKeyDown(key), key => Raylib.IsKeyPressed(key), pad, held, stickPressed);
         if (altEnter) frame = new ActionFrame(frame.Down & ~Bit(GameAction.Menu) | Bit(GameAction.Fullscreen), frame.Pressed & ~Bit(GameAction.Menu) | Bit(GameAction.Fullscreen));
+
+        Captured = ReadCapture(pad);
 
         // The device touched last: the pad once a bound button or the stick is pressed, the keyboard once a bound key is
         LastDevice = InputBindings.DeviceAfter(LastDevice, KeyActivity(), active.PadActivity(pad, stickPressed));

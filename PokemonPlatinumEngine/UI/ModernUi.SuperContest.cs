@@ -192,7 +192,7 @@ internal static partial class ModernUi
 
     // ------------------------------------------------------------------ the frame every phase shares
 
-    private static void ContestFrame(int sw, int sh, SuperContestScreen screen, params (string Key, string Label)[] hints)
+    private static void ContestFrame(int sw, int sh, SuperContestScreen screen, params HintItem[] hints)
     {
         var contest = screen.Contest!;
         Backdrop(sw, sh);

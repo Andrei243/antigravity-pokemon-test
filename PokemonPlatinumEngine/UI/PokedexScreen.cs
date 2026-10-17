@@ -440,6 +440,9 @@ public class PokedexScreen
             Focus == PokedexFocus.List ? InputManager.Axis(GameAction.Left, GameAction.Right, held: true) : 0);
         for (int i = 0; i < Math.Abs(dy); i++) Move(Math.Sign(dy), upDown.Repeating);
         for (int i = 0; i < Math.Abs(dx); i++) Sideways(Math.Sign(dx), leftRight.Repeating);
+        // The page buttons do what a press of left or right does: ten species down the list, a page on in an entry (plan 12 · Q5)
+        int pages = InputManager.Axis(GameAction.PageLeft, GameAction.PageRight);
+        if (pages != 0 && dx == 0 && dy == 0) Sideways(pages);
 
         // A button pressed while the list runs on still counts: it acts on the species the cursor has come to
         if (InputManager.IsActionPressed(GameAction.Confirm)) Confirm();

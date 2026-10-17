@@ -61,7 +61,7 @@ public static partial class Text
     public static string Of(string key, params (string Name, object? Value)[] args)
     {
         // The name of a control follows the device the player touched last (plan 12 · Q4)
-        if (Prompts.ForPad(key) is { } onThePad) return onThePad;
+        if (Prompts.ForHand(key) is { } onThePad) return onThePad;
         Entry? entry;
         Language lang;
         lock (gate)

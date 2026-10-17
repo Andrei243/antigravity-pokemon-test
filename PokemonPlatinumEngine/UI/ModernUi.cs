@@ -265,32 +265,42 @@ internal static partial class ModernUi
     public static void Dim(int sw, int sh, int alpha) => Raylib.DrawRectangle(0, 0, sw, sh, new Color(8, 12, 30, alpha));
 
     /// <summary>A key cap and what it does; returns its width.</summary>
-    public static float HintPill(float x, float y, string key, string label)
+    public static float HintPill(float x, float y, string key, string label) => HintPill(x, y, new HintItem(key, label));
+
+    /// <summary>A key cap (the key's name, or the pad's sign once the player is on the pad) and what it does; returns its width.</summary>
+    public static float HintPill(float x, float y, HintItem hint)
     {
-        float width = HintWidth(key, label);
-        float kw = Math.Max(44, UiFonts.Measure(key, 22, UiWeight.Black) + 24);
+        float width = HintWidth(hint);
+        float kw = CapWidth(hint);
         UiShapes.Fill(new Rectangle(x, y, width, 52), 26, new Color(10, 30, 60, 90));
         var k = new Rectangle(x + 6, y + 6, kw, 40);
         UiShapes.Fill(k, 20, Color.White);
-        UiFonts.DrawCentered(key, k.X + (kw - UiFonts.Measure(key, 22, UiWeight.Black)) / 2f, k.Y + 20, 22, Ink, UiWeight.Black);
-        UiFonts.DrawCentered(label, k.X + kw + 12, y + 26, 24, Color.White, UiWeight.ExtraBold);
+        if (hint.Glyph is { } glyph) PadGlyphArt.Draw(glyph, new Vector2(k.X + kw / 2f, k.Y + 20));
+        else UiFonts.DrawCentered(hint.Key, k.X + (kw - UiFonts.Measure(hint.Key, 22, UiWeight.Black)) / 2f, k.Y + 20, 22, Ink, UiWeight.Black);
+        UiFonts.DrawCentered(hint.Label, k.X + kw + 12, y + 26, 24, Color.White, UiWeight.ExtraBold);
         return width;
     }
 
-    private static float HintWidth(string key, string label) =>
-        Math.Max(44, UiFonts.Measure(key, 22, UiWeight.Black) + 24) + UiFonts.Measure(label, 24, UiWeight.ExtraBold) + 34;
+    private static float CapWidth(HintItem hint) => hint.Glyph is { } glyph
+        ? PadGlyphArt.Width(glyph) + 8
+        : Math.Max(44, UiFonts.Measure(hint.Key, 22, UiWeight.Black) + 24);
 
-    /// <summary>A key hint whose key and label are both keys of the string table (<c>shared.keys.z</c>, <c>shared.hints.back</c>).</summary>
-    public static (string Key, string Label) Hint(string key, string label) => (Text.Of(key), Text.Of(label));
+    private static float HintWidth(HintItem hint) => CapWidth(hint) + UiFonts.Measure(hint.Label, 24, UiWeight.ExtraBold) + 34;
+
+    /// <summary>A key hint whose key and label are both keys of the string table (<c>shared.keys.z</c>, <c>shared.hints.back</c>); the key follows a rebinding and the pad.</summary>
+    public static HintItem Hint(string key, string label) => new(Text.Of(key), Text.Of(label), Prompts.GlyphFor(key));
+
+    /// <summary>A key hint whose label is a text already worked out (the key is a key of the table).</summary>
+    public static HintItem HintOf(string key, string label) => new(Text.Of(key), label, Prompts.GlyphFor(key));
 
     /// <summary>The key hints of a screen, right-aligned so the last one ends at <paramref name="rightX"/>.</summary>
-    public static void Hints(float rightX, float y, params (string Key, string Label)[] hints)
+    public static void Hints(float rightX, float y, params HintItem[] hints)
     {
         float x = rightX;
         for (int i = hints.Length - 1; i >= 0; i--)
         {
-            x -= HintWidth(hints[i].Key, hints[i].Label);
-            HintPill(x, y, hints[i].Key, hints[i].Label);
+            x -= HintWidth(hints[i]);
+            HintPill(x, y, hints[i]);
             x -= 20;
         }
     }
@@ -369,4 +379,10 @@ internal static partial class ModernUi
         // A glint on the upper left
         UiShapes.Circle(center + new Vector2(-r * 0.42f, -r * 0.45f), r * 0.16f, new Color(255, 255, 255, 150));
     }
+}
+
+/// <summary>A key hint as the screens hand it over: the cap's name, what it does and, on the pad, the sign to draw in the cap (plan 12 · Q5).</summary>
+internal readonly record struct HintItem(string Key, string Label, PadGlyph? Glyph = null)
+{
+    public static implicit operator HintItem((string Key, string Label) pair) => new(pair.Key, pair.Label);
 }

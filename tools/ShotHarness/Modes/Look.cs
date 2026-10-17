@@ -129,6 +129,46 @@ partial class Harness
         engine.ApplySettings(window: false);
         Console.WriteLine($"the options as they were again: button mode {engine.Settings.ButtonMode}, dead zone {engine.Settings.StickDeadZone}, pad {engine.Settings.GamepadIndex + 1}, device {InputManager.LastDevice}");
         options.Open();
+
+        // The Controls page (plan 12 · Q5): the list on the keyboard, the pad's column, waiting for a key, a clash, the
+        // bottom of the list, then the hints drawn by action: a rebound key named, the pad's signs
+        GoToRow(OptionRow.Controls);
+        Frames(1); Shot("look_16_options_controls_row");
+        options.Confirm(engine.Settings);
+        Frames(1); Shot("look_16b_controls");
+        options.Controls.MoveColumn(1);
+        Frames(1); Shot("look_16c_controls_pad_column");
+        options.Controls.MoveColumn(-1);
+        while (options.Controls.SelectedAction != GameAction.Confirm) options.Controls.Move(1);
+        options.Controls.Confirm();
+        Frames(1); Shot("look_16d_controls_waiting");
+        options.Controls.Capture(new CapturedInput(KeyboardKey.Enter, null));
+        Frames(1); Shot("look_16e_controls_clash");
+        options.Controls.Resolve(swap: true);
+        Frames(1); Shot("look_16f_controls_swapped");
+        Console.WriteLine($"controls: confirm {string.Join("/", options.Controls.Working[GameAction.Confirm].Keys)}, menu {string.Join("/", options.Controls.Working[GameAction.Menu].Keys)}, clashes {options.Controls.Working.Conflicts().Count}");
+        options.Controls.Move(-1);
+        options.Controls.Move(-1);
+        Frames(1); Shot("look_16g_controls_wrapped_to_the_end");
+        while (options.Controls.SelectedAction != GameAction.Run) options.Controls.Move(-1);
+        Frames(1); Shot("look_16h_controls_run");
+        InputManager.LastDevice = InputDevice.Pad;
+        Frames(1); Shot("look_16i_controls_on_the_pad");
+        InputManager.LastDevice = InputDevice.Keyboard;
+        options.Controls.Close();
+        // The hints drawn by action: Confirm and Cancel rebound on the keyboard and the pad
+        engine.Settings.Bindings[nameof(GameAction.Confirm)] = new SavedBinding { Keys = new[] { nameof(KeyboardKey.Q) }, Pad = new[] { nameof(GamepadButton.RightFaceUp) } };
+        engine.Settings.Bindings[nameof(GameAction.Cancel)] = new SavedBinding { Keys = new[] { nameof(KeyboardKey.B) }, Pad = new[] { nameof(GamepadButton.RightFaceLeft) } };
+        engine.ApplySettings(window: false);
+        GoToRow(OptionRow.Help);
+        Frames(1); Shot("look_16j_hints_rebound");
+        InputManager.LastDevice = InputDevice.Pad;
+        Frames(1); Shot("look_16k_hints_rebound_on_the_pad");
+        InputManager.LastDevice = InputDevice.Keyboard;
+        engine.Settings.Bindings.Clear();
+        engine.ApplySettings(window: false);
+        Console.WriteLine($"the bindings as they were again: {engine.Settings.Bindings.Count} overrides, device {InputManager.LastDevice}");
+        options.Open();
         game.State = GameState.Overworld;
 
         if (args.Length > 2)
