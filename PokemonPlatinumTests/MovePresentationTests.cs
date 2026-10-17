@@ -260,6 +260,41 @@ public class MovePresentationTests
     }
 
     [Fact]
+    public void TheEighthBatchsSecondPartAllHaveALookAndASoundOfTheirOwn()
+    {
+        // Plan 25 · Y8b: Route 210's northern half to the Seven Stars Restaurant
+        var part = MoveSightings.EighthBatchSecondPart;
+        output.WriteLine($"{part.Count} moves in Y8's second part: {string.Join(", ", part)}");
+        Assert.Equal(55, part.Count);
+        Assert.All(part, move => Assert.Equal("Y8b", MoveFx.BatchOf(move)));
+        Assert.All(part, move => Assert.True(SoundBank.Exists("use_" + SoundBank.MoveKey(move)), move));
+        // And nothing outside the part has run into the batch, nor the part into the ones before it
+        Assert.All(MoveFx.Batches.Where(b => b.Value == "Y8b"), b => Assert.Contains(b.Key, part, StringComparer.OrdinalIgnoreCase));
+        Assert.Empty(part.Intersect(MoveSightings.EighthBatchFirstPart.Concat(MoveSightings.SeventhBatchFirstPart).Concat(MoveSightings.SeventhBatchSecondPart), StringComparer.OrdinalIgnoreCase));
+    }
+
+    [Fact]
+    public void TheEighthBatchsSecondPartsMovesThatShareAParticleFileOrAKindLookDifferentHere()
+    {
+        // The fangs, the punches, the poison moves, the airs, the mists and the whips
+        foreach (var (a, b) in new[] { ("Hyper Fang", "Fire Fang"), ("Fire Fang", "Poison Fang"), ("Drain Punch", "Ice Punch"), ("Poison Jab", "Poison Fang"),
+            ("Air Slash", "Air Cutter"), ("Mist", "Haze"), ("Sludge Bomb", "Mud Bomb"), ("Vine Whip", "Aqua Tail"), ("Strength", "Vital Throw"), ("Psychic", "Psycho Cut") })
+        {
+            var ma = MoveDatabase.Get(a)!;
+            var mb = MoveDatabase.Get(b)!;
+            int same = 0;
+            foreach (float age in new[] { 0.15f, 0.3f, 0.5f, 0.8f })
+            {
+                var ca = Cue(ma);
+                var cb = Cue(mb);
+                cb.Seed = ca.Seed;
+                if (Picture(Draw(ca, age)) == Picture(Draw(cb, age))) same++;
+            }
+            Assert.True(same < 4, $"{a} and {b} look alike");
+        }
+    }
+
+    [Fact]
     public void MovesThatShareAParticleFileInTheOriginalLookDifferentHere()
     {
         // Block and Imprison, Self-Destruct and Explosion, Snore and Rest, and two more that are alike in kind
@@ -344,7 +379,7 @@ public class MovePresentationTests
         int own = PlatinumMoves.Count(m => MoveFx.BatchOf(m.Name) != null &&
             (SoundBank.CryModesOf(m.Name) != null || SoundBank.Exists("use_" + SoundBank.MoveKey(m.Name))));
         output.WriteLine($"{own} of Platinum's 467 have a look and a sound of their own");
-        Assert.True(own >= 204, $"only {own}");
+        Assert.True(own >= 259,$"only {own}");
     }
 
     [Fact]

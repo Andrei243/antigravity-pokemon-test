@@ -92,6 +92,23 @@ internal static class MoveSightings
         }
     }
 
+    /// <summary>The first area of Y9 (plan 25 · Y8b): Y8's second part is everything ranked before it, from <see cref="EighthBatchSplits"/>.</summary>
+    public const string EighthBatchEnds = "lake_valor";
+
+    /// <summary>
+    /// Platinum's moves, by name, that Y8's second part takes (plan 25 · Y8b): seen from <see cref="EighthBatchSplits"/>
+    /// (Route 210's northern half) to before <see cref="EighthBatchEnds"/> (the Seven Stars Restaurant is its last
+    /// place, its rooms with it).
+    /// </summary>
+    public static IReadOnlyList<string> EighthBatchSecondPart
+    {
+        get
+        {
+            int from = PlaceRanks.Value[EighthBatchSplits], to = PlaceRanks.Value[EighthBatchEnds];
+            return All.Where(s => s.Rank >= from && s.Rank < to).Select(s => s.Move).ToList();
+        }
+    }
+
     private static readonly Lazy<Dictionary<string, int>> PlaceRanks = new(() => Ranks().Ranks);
 
     /// <summary>The areas in their order, then every room ranked by the place whose warp first leads into it.</summary>

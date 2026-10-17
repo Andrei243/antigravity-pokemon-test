@@ -344,6 +344,61 @@ One sound for each type, played as a move of that type sets off (`SoundBank.Move
 | `use_wake_up_slap` | `SEQ_SE_DP_030C` | Wake-Up Slap: four slaps and a ring. |
 | `use_cosmic_power` | `SEQ_SE_DP_W322` | Cosmic Power: a deep space hum with twinkling bells. |
 | `use_lick` | `SEQ_SE_DP_W122` | Lick: a wet slurp. |
+| `use_air_slash` | `SEQ_SE_DP_BRADE` | Air Slash: a gathering wind and one sharp slash with a ring. |
+| `use_ancient_power` | `SEQ_SE_DP_W082` | Ancient Power: a low rumble, rocks clattering up and a heavy burst of stones. |
+| `use_aqua_tail` | `SEQ_SE_DP_W057` | Aqua Tail: a coil of rushing water, a crack of the whip and a splash. |
+| `use_assurance` | `SEQ_SE_DP_050` | Assurance: a dull blow and a heavier one behind it. |
+| `use_calm_mind` | `SEQ_SE_DP_W048` | Calm Mind: a still, low hum and soft bells settling. |
+| `use_double_hit` | `SEQ_SE_DP_030` | Double Hit: two swings, each with a thud. |
+| `use_dragon_claw` | `SEQ_SE_DP_W221B` | Dragon Claw: a growling roar rising and two ringing rakes. |
+| `use_hyper_fang` | `SEQ_SE_DP_W044` | Hyper Fang: a snap of teeth and a heavy crunch. |
+| `use_ingrain` | `SEQ_SE_DP_W010` | Ingrain: roots creeping into the ground with three soft thuds. |
+| `use_iron_defense` | `SEQ_SE_DP_W231` | Iron Defense: two bright metallic rings, each sweeping up. |
+| `use_mist` | `SEQ_SE_DP_W109` | Mist: a long, soft hiss of mist and a faint shimmer. |
+| `use_poison_powder` | `SEQ_SE_DP_W077B` | Poison Powder: a puff of powder and a long sprinkling hiss. |
+| `use_submission` | `SEQ_SE_DP_W104` | Submission: a grip and a strained wrench, then five blows. |
+| `use_vital_throw` | `SEQ_SE_DP_W233` | Vital Throw: a spinning whoosh up and over, and a heavy slam. |
+| `use_whirlpool` | `SEQ_SE_DP_W250` | Whirlpool: water churning round and round with bubbles. |
+| `use_beat_up` | `SEQ_SE_DP_W233B` | Beat Up: three quick smacks and a heavier one. |
+| `use_fire_fang` | `SEQ_SE_DP_W044` | Fire Fang: a snap of teeth that ignites into a crackling roar. |
+| `use_odor_sleuth` | `SEQ_SE_DP_W207` | Odor Sleuth: four quick sniffs and a bark. |
+| `use_kinesis` | `SEQ_SE_DP_W060` | Kinesis: a wavering tone and a bell struck at each swing. |
+| `use_metal_sound` | `SEQ_SE_DP_W103` | Metal Sound: a shrieking scrape of metal. |
+| `use_miracle_eye` | `SEQ_SE_DP_183` | Miracle Eye: a rising tone, three notes and a bright bell. |
+| `use_ominous_wind` | `SEQ_SE_DP_W466` | Ominous Wind: a cold wind moaning past twice. |
+| `use_psychic` | `SEQ_SE_DP_480` | Psychic: a wobbling tone climbing and a heavy crush. |
+| `use_wrap` | `SEQ_SE_DP_W020B` | Wrap: a rustling coil winding round, twice. |
+| `use_embargo` | `SEQ_SE_DP_W373` | Embargo: two falling buzzes and a hard stamp. |
+| `use_gravity` | `SEQ_SE_DP_W356` | Gravity: a deep tone sinking and a heavy press. |
+| `use_psycho_cut` | `SEQ_SE_DP_020` | Psycho Cut: a humming gather and three sharp cuts rising. |
+| `use_torment` | `SEQ_SE_DP_W029` | Torment: six sharp jabs and a sour growl. |
+| `use_assist` | `SEQ_SE_DP_W010` | Assist: four quick ticks, each with a bell, and a bright pop. |
+| `use_bone_rush` | `SEQ_SE_DP_W155` | Bone Rush: a bone whirring in, two hollow knocks and rattling. |
+| `use_captivate` | `SEQ_SE_DP_164` | Captivate: a sweet rising lilt and a shimmer of sparkles. |
+| `use_drain_punch` | `SEQ_SE_DP_050` | Drain Punch: a solid punch and a long draw upward. |
+| `use_fly` | `SEQ_SE_DP_W327` | Fly: a whoosh up, a whistle down and a hard landing. |
+| `use_recover` | `SEQ_SE_DP_W025` | Recover: a warm swelling tone, three bells climbing and a chime. |
+| `use_snatch` | `SEQ_SE_DP_W036` | Snatch: a swift grab, a small pop and a sly jingle. |
+| `use_strength` | `SEQ_SE_DP_W036` | Strength: a straining groan and a heavy shove with rubble. |
+| `use_ice_beam` | `SEQ_SE_DP_025` | Ice Beam: a thin icy beam and frost crackling to a chime. |
+| `use_poison_fang` | `SEQ_SE_DP_W044` | Poison Fang: a snap of teeth and a bubbling ooze. |
+| `use_poison_jab` | `SEQ_SE_DP_030` | Poison Jab: two quick jabs, each with a wet pop. |
+| `use_signal_beam` | `SEQ_SE_DP_W062` | Signal Beam: a beam of pulsing tones changing in turn. |
+| `use_sludge_bomb` | `SEQ_SE_DP_W145B` | Sludge Bomb: a gurgling lob and a wet splat. |
+| `use_tri_attack` | `SEQ_SE_DP_W161` | Tri Attack: a rising gather and three different bursts in turn. |
+| `use_memento` | `SEQ_SE_DP_W060` | Memento: a dark sinking drone and a tolling bell. |
+| `use_drill_peck` | `SEQ_SE_DP_W029` | Drill Peck: a rising whir and eight quick pecks. |
+| `use_ice_punch` | `SEQ_SE_DP_BASI` | Ice Punch: a hard punch and a crackle of frost with a chime. |
+| `use_gyro_ball` | `SEQ_SE_DP_W360` | Gyro Ball: a whirring spin rising and a metallic crash. |
+| `use_x_scissor` | `SEQ_SE_DP_W015` | X-Scissor: two crossing cuts, each with a ring. |
+| `use_horn_drill` | `SEQ_SE_DP_W030` | Horn Drill: a drilling whine, three times, each ending in a knock. |
+| `use_last_resort` | `SEQ_SE_DP_W387` | Last Resort: four notes drawn in and two crushing blows. |
+| `use_magnet_rise` | `SEQ_SE_DP_W085B` | Magnet Rise: a humming field rising with two bells. |
+| `use_smog` | `SEQ_SE_DP_W109` | Smog: three wheezing belches and a thick hiss. |
+| `use_vine_whip` | `SEQ_SE_PL_WHIP` | Vine Whip: a whistle through the air, a crack and rustling leaves. |
+| `use_dream_eater` | `SEQ_SE_DP_153` | Dream Eater: soft dreamy notes drawn in with a gulp and a chime. |
+| `use_grass_whistle` | `SEQ_SE_DP_W320` | Grass Whistle: a bright whistle, a lilting tune and a hush. |
+| `use_reversal` | `SEQ_SE_DP_W197` | Reversal: two bright surges, a blow and a crushing second blow. |
 
 ## Cries
 

@@ -93,7 +93,7 @@ internal static partial class MoveFx
     }
 
     /// <summary>Things (Z's, notes) rising from a point and fading as they climb: <paramref name="count"/> of them in turn.</summary>
-    private static void Rising(FxList fx, float age, int seed, Vector3 from, float h, float t0, float t1, int count, FxShape shape, Color color, float size, float sway)
+    private static void Rising(FxList fx, float age, int seed, Vector3 from, float h, float t0, float t1, int count, FxShape shape, Color color, float size, float sway, float turn = 0f)
     {
         // Each lives 2.4 spans and starts 0.6 of a span after the one before, the last ending at t1
         float span = (t1 - t0) / (0.6f * (count - 1) + 2.4f);
@@ -102,7 +102,7 @@ internal static partial class MoveFx
             float k = (age - t0 - i * span * 0.6f) / (span * 2.4f);
             if (k < 0f || k > 1f) continue;
             var p = from + new Vector3(MathF.Sin(k * 6f + i * 2f) * h * sway + h * 0.12f * k, h * (0.15f + 0.9f * k), 0f);
-            fx.Sprite(shape, p, h * size * (0.55f + 0.7f * k), Fx.Fade(color, MathF.Sin(k * MathF.PI)), FxBlend.Alpha, Fx.Signed(seed, i, 92) * 0.3f);
+            fx.Sprite(shape, p, h * size * (0.55f + 0.7f * k), Fx.Fade(color, MathF.Sin(k * MathF.PI)), FxBlend.Alpha, Fx.Signed(seed, i, 92) * 0.3f + turn);
         }
     }
 
