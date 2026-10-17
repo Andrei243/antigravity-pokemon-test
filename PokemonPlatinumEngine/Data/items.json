@@ -8936,6 +8936,17 @@
     }
   },
   {
+    "id": 1838,
+    "name": "Z-Ring",
+    "pocket": "KeyItems",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A ring that lets the player's Pokémon unleash one Z-Move a battle through a held Z-Crystal."
+  },
+  {
     "id": 1839,
     "name": "Decidium Z",
     "pocket": "Items",

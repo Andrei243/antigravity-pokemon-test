@@ -223,6 +223,15 @@ public sealed class Ruleset
     /// </summary>
     public bool MegaEvolution { get; private init; }
 
+    /// <summary>
+    /// Z-Moves and Ultra Burst (plan 06 · R21; Pokémon Showdown's <c>canZMove</c>, <c>getActiveZMove</c>,
+    /// <c>runZPower</c> and <c>canUltraBurst</c>): a trainer with a Z-Ring may turn one move a battle into its Z-Move
+    /// through the Z-Crystal its Pokémon holds, and a Necrozma fused with Solgaleo or Lunala holding Ultranecrozium Z
+    /// may Ultra Burst once; a Z-Crystal never leaves the hands it is in. Platinum has none of it, and the Z-Ring is
+    /// Alola's to hand over.
+    /// </summary>
+    public bool ZMoves { get; private init; }
+
     /// <summary>The weather these rules make of one asked for: snow for hail where <see cref="SnowInPlaceOfHail"/> holds.</summary>
     public Battle.Sim.BattleWeather Sky(Battle.Sim.BattleWeather weather) =>
         SnowInPlaceOfHail && weather == Battle.Sim.BattleWeather.Hail ? Battle.Sim.BattleWeather.Snow : weather;
@@ -276,7 +285,8 @@ public sealed class Ruleset
         MasudaRerolls = 5,
         SnowInPlaceOfHail = true,
         ModernDamageFormula = true,
-        MegaEvolution = true
+        MegaEvolution = true,
+        ZMoves = true
     };
 
     public static Ruleset Of(RulesPreset preset) => preset == RulesPreset.Modern ? Modern : Platinum;

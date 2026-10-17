@@ -35,13 +35,13 @@ public sealed partial class Importer
     private const int MegaStones = 44, ZCrystals = 46;
 
     /// <summary>
-    /// Single items of other categories that a mechanic of plan 06 needs (R20): the Key Stone a trainer Mega Evolves
-    /// with (a key item), and the two orbs Primal Reversion goes by, which are held and so go in the Items pocket,
+    /// Single items of other categories that a mechanic of plan 06 needs (R20, R21): the Key Stone a trainer Mega Evolves
+    /// with and the Z-Ring a trainer uses Z-Moves with (key items), and the two orbs Primal Reversion goes by, which are held and so go in the Items pocket,
     /// although Generation 3 first had them as key items.
     /// </summary>
     private static readonly Dictionary<string, ItemPocket> LaterItemsByName = new()
     {
-        ["key-stone"] = ItemPocket.KeyItems, ["red-orb"] = ItemPocket.Items, ["blue-orb"] = ItemPocket.Items
+        ["key-stone"] = ItemPocket.KeyItems, ["z-ring"] = ItemPocket.KeyItems, ["red-orb"] = ItemPocket.Items, ["blue-orb"] = ItemPocket.Items
     };
 
     private readonly Decomp decomp;
@@ -289,7 +289,39 @@ public sealed partial class Importer
                     : e.Text("category") == "Status" ? "What every status move becomes under Dynamax: it protects the user."
                     : $"The {type}-type Max Move. Its power comes from the move it is made out of."
             };
+            if (isZ) ZMoveFields(m, e);
             moves.Add(m);
+        }
+    }
+
+    /// <summary>
+    /// The Z-Moves' own effects (R21), by the engine's names: the signature Z-Moves that are more than a hit of their
+    /// power, read from their Showdown entries (<c>boosts</c>, <c>secondary</c>, <c>selfBoost</c>, <c>onHit</c>,
+    /// <c>damageCallback</c>, <c>ignoreAbility</c>, <c>onModifyMove</c>, the minimize flag); every other one is a plain
+    /// <c>ZMove</c>.
+    /// </summary>
+    private static readonly Dictionary<string, string> ZMoveEffects = new()
+    {
+        ["Extreme Evoboost"] = "ZExtremeEvoboost", ["Genesis Supernova"] = "ZGenesisSupernova", ["Splintered Stormshards"] = "ZSplinteredStormshards",
+        ["Clangorous Soulblaze"] = "ZClangorousSoulblaze", ["Guardian of Alola"] = "ZGuardianOfAlola",
+        ["Searing Sunraze Smash"] = "SunsteelStrike", ["Menacing Moonraze Maelstrom"] = "SunsteelStrike",
+        ["Light That Burns the Sky"] = "PhotonGeyser", ["Malicious Moonsault"] = "FlinchMinimizeDoubleHit"
+    };
+
+    /// <summary>A Z-Move's effect, the flags that matter to a battle, its target, its critical-hit stage and Stoked Sparksurfer's paralysis (R21).</summary>
+    private static void ZMoveFields(MoveData m, Showdown.Entry e)
+    {
+        m.Effect = ZMoveEffects.GetValueOrDefault(m.Name, "ZMove");
+        m.Support = BattleCore.HasMoveEffect(m.Effect) ? MoveEffectSupport.Full : MoveEffectSupport.None;
+        string flags = e.Fields.GetValueOrDefault("flags") ?? "";
+        if (flags.Contains("contact: 1")) m.Flags |= MoveFlags.Contact;
+        if (flags.Contains("sound: 1")) m.Flags |= MoveFlags.Sound;
+        m.Target = e.Text("target") switch { "self" => MoveTarget.User, "allAdjacentFoes" => MoveTarget.AllFoes, _ => MoveTarget.Selected };
+        if (e.Number("critRatio") is { } crit) m.CritStage = crit - 1;
+        if (m.Name == "Stoked Sparksurfer")
+        {
+            m.InflictStatus = StatusCondition.Paralyze;
+            m.StatusChancePercent = 100;
         }
     }
 

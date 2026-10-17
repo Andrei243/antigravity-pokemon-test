@@ -415,6 +415,9 @@ public partial class GameEngine
         // A Mega or primal form it may take (plan 06 · R20), only where the rules of the game have them
         if (Ruleset.Current.MegaEvolution && (PokemonPlatinumEngine.Battle.Sim.BattleCore.MegaFormOf(p) ?? PokemonPlatinumEngine.Battle.Sim.BattleCore.PrimalFormOf(p)) is { } mega)
             return new[] { mega };
+        // And the form an Ultra Burst gives (plan 06 · R21)
+        if (Ruleset.Current.ZMoves && PokemonPlatinumEngine.Battle.Sim.BattleCore.UltraBurstFormOf(p) is { } ultra)
+            return new[] { ultra };
         switch (p.Species.Name)
         {
             case "Castform" when p.AbilityName == "Forecast":

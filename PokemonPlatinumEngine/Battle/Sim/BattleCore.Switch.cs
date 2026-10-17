@@ -187,6 +187,8 @@ public sealed partial class BattleCore
         var order = BySpeed();
         // Primal Reversion before anything acts on entry (plan 06 · R20)
         PrimalReversions(order);
+        // A Z-Power's heal waiting for whoever comes in (plan 06 · R21)
+        HealReplacements();
         foreach (var (flag, abilities) in EntryPhases)
         {
             foreach (var b in order)

@@ -32,6 +32,12 @@ public class Trainer
     public bool KeyStone { get; set; }
 
     /// <summary>
+    /// The trainer has a Z-Ring and may use one Z-Move and one Ultra Burst a battle (plan 06 · R21), under rules that
+    /// have them. None of Platinum's trainers has one; Alola's chapter gives its trainers theirs.
+    /// </summary>
+    public bool ZRing { get; set; }
+
+    /// <summary>
     /// The team, prize money and mind were taken from Platinum's data (<c>trainers.json</c>), because the map wrote
     /// only the trainer's id: a map written back out leaves them to the data again (<c>MapFile.FromMap</c>).
     /// </summary>

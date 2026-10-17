@@ -69,6 +69,8 @@ public sealed partial class BattleCore
         // A Mega Evolution goes with a move and where the rules let it (plan 06 · R20)
         if (choice.Mega && (choice.Kind != ChoiceKind.Fight || choice.Move == BattleChoice.HeldMove)) return Text.Of("battle.cantMegaEvolve", ("pokemon", b.Name));
         if (choice.Mega && WhyNotMega(b) is { } noMega) return noMega;
+        // So do a Z-Move and an Ultra Burst (plan 06 · R21)
+        if (WhyNotZ(choice, b) is { } noZ) return noZ;
         switch (choice.Kind)
         {
             case ChoiceKind.Fight:

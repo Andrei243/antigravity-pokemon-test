@@ -223,7 +223,9 @@ public partial class BattleEngine
             NoBattleItems = setup.NoBattleItems,
             OffersSwitch = setup.OffersSwitch,
             // A Key Stone in the bag lets one of the player's Pokémon Mega Evolve (plan 06 · R20)
-            KeyStone = setup.Inventory.AllItems.Any(s => s.Name == BattleCore.KeyStoneItem)
+            KeyStone = setup.Inventory.AllItems.Any(s => s.Name == BattleCore.KeyStoneItem),
+            // And a Z-Ring lets one use a Z-Move and Ultra Burst (plan 06 · R21)
+            ZRing = setup.Inventory.AllItems.Any(s => s.Name == BattleCore.ZRingItem)
         });
 
         Anim.Slots = core.PlayerSlots.Count;
@@ -672,6 +674,10 @@ public partial class BattleEngine
                 }
                 break;
             }
+            case UltraBursted burst:
+                // An Ultra Burst (plan 06 · R21): the form taken as a Mega Evolution's is
+                TakeTheForm(burst.Place);
+                break;
             case MegaEvolved mega:
             {
                 // A Mega Evolution or a Primal Reversion (plan 06 · R20): the screen's Pokémon takes the form as the line

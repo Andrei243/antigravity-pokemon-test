@@ -174,6 +174,8 @@ public sealed partial class BattleCore
         // UpdateMoveBuffers, once the move is done)
         // Whether the move failed, as Stomping Tantrum asks next turn (plan 06 · R25): a "But it failed!" said for
         // it, or every target missed, protected or immune (Showdown's moveThisTurnResult)
+        // A move chosen as a Z-Move becomes it, now that it is paid for (plan 06 · R21)
+        if (act.Choice.ZMove && !goesOn) BecomeZMove(use, target);
         failedNow = false;
         bool wentOn = Perform(use, goesOn);
         if (failedNow || (use.Hits.Count > 0 && !use.Hits.Any(h => h.Landed))) failedOnTurn[user.Pokemon!] = Turn;
@@ -989,6 +991,8 @@ public sealed partial class BattleCore
                 basePower: effect.BasePower?.Invoke(this, use, t), noVariance: effect.NoVariance, damageTenths: use.DamageTenths,
                 // The catching lesson and the first battle have no critical hits (BtlCmd_CalcCrit)
                 noCrit: NoCriticalHits);
+            // A Z-Move through a protection does a quarter (plan 06 · R21)
+            if (zUses.Count > 0) result = ThroughProtection(use, t, result);
         }
         bool critical = result.IsCritical || use.StrikeCritical;
         use.StrikeCritical = false;

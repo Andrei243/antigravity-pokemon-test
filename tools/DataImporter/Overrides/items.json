@@ -28,5 +28,9 @@
   },
   "Red Orb": {
     "description": "Held by Groudon, it brings out its primal form when it enters battle."
+  },
+  // The ring of Z-Moves (plan 06 · R21): our own words for what it does
+  "Z-Ring": {
+    "description": "A ring that lets the player's Pokémon unleash one Z-Move a battle through a held Z-Crystal."
   }
 }
