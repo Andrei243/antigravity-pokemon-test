@@ -1,0 +1,71 @@
+{
+  "displayName": {
+    "en": [
+      "Oreburgh City"
+    ],
+    "text": [
+      "Orașul Oreburgh"
+    ]
+  },
+  "people": {
+    "pokefan_m": {
+      "name": {
+        "en": [
+          "Pokéfan"
+        ],
+        "text": [
+          "Pokéfanul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hello there! Those Pokémon of yours could do with some toughening up.",
+          "Why not train them in the Oreburgh Mine?"
+        ],
+        "text": [
+          "Salut! Pokémonilor tăi nu le-ar strica să se mai călească puțin.",
+          "De ce nu-i antrenezi în Mina Oreburgh?"
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Which moves should my Pokémon learn, and which should they forget?",
+          "I agonise over it every single time."
+        ],
+        "text": [
+          "Ce mișcări să învețe Pokémonii mei și pe care să le uite?",
+          "Mă frământ de fiecare dată."
+        ]
+      }
+    },
+    "ace_trainer_m": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          "Antrenor As"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Looking at you takes me right back to the day I got my first Pokémon."
+        ],
+        "text": [
+          "Când mă uit la tine, îmi amintesc de ziua în care am primit primul meu Pokémon."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

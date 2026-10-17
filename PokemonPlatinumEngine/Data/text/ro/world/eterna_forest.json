@@ -1,0 +1,270 @@
+{
+  "people": {
+    "cheryl": {
+      "name": {
+        "en": [
+          "Cheryl"
+        ],
+        "text": [
+          "Cheryl"
+        ]
+      }
+    },
+    "gardenia": {
+      "name": {
+        "en": [
+          "Gardenia"
+        ],
+        "text": [
+          "Gardenia"
+        ]
+      }
+    },
+    "bug_catcher": {
+      "name": {
+        "en": [
+          "Bug Catcher"
+        ],
+        "text": [
+          "Vânătorul de insecte"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A Wurmple grows into a Silcoon or a Cascoon, and nobody can tell you which beforehand.",
+          "I've raised four of them now. Every single one turned out a Cascoon!"
+        ],
+        "text": [
+          "Un Wurmple devine Silcoon sau Cascoon, și nimeni nu-ți poate spune dinainte care.",
+          "Am crescut deja patru. Toți s-au făcut Cascoon!"
+        ]
+      }
+    },
+    "bug_catcher_jack": {
+      "name": {
+        "en": [
+          "Jack"
+        ],
+        "text": [
+          "Jack"
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Jack: This forest is my back garden! Want to see what I found in it?"
+        ],
+        "text": [
+          "Vânător de insecte Jack: Pădurea asta e grădina mea din spate! Vrei să vezi ce-am găsit în ea?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Jack: My Beautifly started out as a little Wurmple. Raising it was worth every minute."
+        ],
+        "text": [
+          "Vânător de insecte Jack: Beautifly-ul meu a fost la început un mic Wurmple. A meritat fiecare minut."
+        ]
+      }
+    },
+    "lass_briana": {
+      "name": {
+        "en": [
+          "Briana"
+        ],
+        "text": [
+          "Briana"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Briana: It's so gloomy under these trees! A battle will cheer me up."
+        ],
+        "text": [
+          "Domnișoară Briana: E așa de mohorât sub copacii ăștia! O luptă o să mă înveselească."
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Briana: I only came in for a short walk, and somehow I'm still walking. Which way is out?"
+        ],
+        "text": [
+          "Domnișoară Briana: Am intrat doar pentru o plimbare scurtă și cumva încă mă plimb. Pe unde se iese?"
+        ]
+      }
+    },
+    "psychic_lindsey": {
+      "name": {
+        "en": [
+          "Lindsey"
+        ],
+        "text": [
+          "Lindsey"
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Lindsey: I saw you coming long before you came round the bend. Shall I tell you how this ends?"
+        ],
+        "text": [
+          "Medium Lindsey: Te-am văzut venind cu mult înainte să ieși din curbă. Să-ți spun cum se termină?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Lindsey: ...That isn't the ending I saw. I must have been looking at somebody else's."
+        ],
+        "text": [
+          "Medium Lindsey: ...Nu ăsta e finalul pe care l-am văzut. Probabil mă uitam la al altcuiva."
+        ]
+      }
+    },
+    "psychic_elijah": {
+      "name": {
+        "en": [
+          "Elijah"
+        ],
+        "text": [
+          "Elijah"
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Elijah: The trees murmur, if you listen with your mind. They told me you were on your way."
+        ],
+        "text": [
+          "Medium Elijah: Copacii murmură, dacă asculți cu mintea. Mi-au spus că ești pe drum."
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Elijah: The trees never said I'd lose. Too polite, I expect."
+        ],
+        "text": [
+          "Medium Elijah: Copacii nu mi-au spus niciodată că o să pierd. Prea politicoși, bănuiesc."
+        ]
+      }
+    },
+    "psychic_kody": {
+      "name": {
+        "en": [
+          "Kody"
+        ],
+        "text": [
+          "Kody"
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Kody: I come into the forest to train my mind. You turning up is part of the training."
+        ],
+        "text": [
+          "Medium Kody: Vin în pădure să-mi antrenez mintea. Faptul că ai apărut face parte din antrenament."
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Kody: My concentration has gone. I'll sit under a tree and start again from the beginning."
+        ],
+        "text": [
+          "Medium Kody: Mi s-a dus concentrarea. O să stau sub un copac și o iau de la capăt."
+        ]
+      }
+    },
+    "psychic_rachael": {
+      "name": {
+        "en": [
+          "Rachael"
+        ],
+        "text": [
+          "Rachael"
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Rachael: My Psyduck has one of its headaches. That's when its powers come out!"
+        ],
+        "text": [
+          "Medium Rachael: Psyduck-ul meu are iar o durere de cap. Atunci ies la iveală puterile lui!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Rachael: Its headache has gone, and its powers went with it. Poor thing."
+        ],
+        "text": [
+          "Medium Rachael: I-a trecut durerea de cap și i-au plecat și puterile. Săracul."
+        ]
+      }
+    },
+    "bug_catcher_phillip": {
+      "name": {
+        "en": [
+          "Phillip"
+        ],
+        "text": [
+          "Phillip"
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Phillip: Everybody wants a Beautifly. Not me! I raised a Dustox, and I'm proud of it."
+        ],
+        "text": [
+          "Vânător de insecte Phillip: Toată lumea vrea un Beautifly. Eu nu! Eu am crescut un Dustox și sunt mândru de el."
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Phillip: My Dustox flies to the lamps every evening. Mum says it's not allowed in the kitchen."
+        ],
+        "text": [
+          "Vânător de insecte Phillip: Dustox-ul meu zboară spre lămpi în fiecare seară. Mama zice că n-are voie în bucătărie."
+        ]
+      }
+    },
+    "bug_catcher_donald": {
+      "name": {
+        "en": [
+          "Donald"
+        ],
+        "text": [
+          "Donald"
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Donald: My Burmy dress in leaves from this very forest. Smart, aren't they?"
+        ],
+        "text": [
+          "Vânător de insecte Donald: Burmy-ii mei se îmbracă în frunze chiar din pădurea asta. Eleganți, nu?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Donald: Battle a Burmy in a cave or among buildings and it makes itself a new cloak. I want all three!"
+        ],
+        "text": [
+          "Vânător de insecte Donald: Luptă cu un Burmy într-o peșteră sau printre clădiri și își face o mantie nouă. Le vreau pe toate trei!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "signboard": {
+      "en": [
+        "Eterna Forest\nThe old woods. Eterna City lies past their eastern edge."
+      ],
+      "text": [
+        "Pădurea Eterna\nPădurea cea veche. Orașul Eterna e dincolo de marginea ei estică."
+      ]
+    },
+    "trainer_tips_signpost": {
+      "en": [
+        "Trainer Tips\nA thin tree in the way can be felled with Cut. Outside battle, it takes the Badge of Eterna City's Gym."
+      ],
+      "text": [
+        "Sfaturi pentru Antrenori\nUn copac subțire din cale poate fi doborât cu Cut. În afara luptei, e nevoie de Insigna Arenei din Orașul Eterna."
+      ]
+    }
+  }
+}

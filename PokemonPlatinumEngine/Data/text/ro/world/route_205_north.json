@@ -1,0 +1,120 @@
+{
+  "people": {
+    "fisherman": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          "Pescarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A rod reaches the Pokémon that never come up onto the bank. Cast, wait, and pull the moment it bites.",
+          "Psyduck and Golduck swim in this water. Between them they've stolen half my bait."
+        ],
+        "text": [
+          "O undiță ajunge la Pokémonii care nu urcă niciodată pe mal. Aruncă, așteaptă și trage în clipa în care mușcă.",
+          "În apa asta înoată Psyduck și Golduck. Între ei doi, mi-au furat jumătate din momeală."
+        ]
+      }
+    },
+    "fisherman_andrew": {
+      "name": {
+        "en": [
+          "Andrew"
+        ],
+        "text": [
+          "Andrew"
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Andrew: Every one of my Pokémon came out of this water. Want to meet the lot of them?"
+        ],
+        "text": [
+          "Pescar Andrew: Toți Pokémonii mei au ieșit din apa asta. Vrei să-i cunoști pe toți?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Andrew: One of these days one of them will grow into something fearsome. You just wait."
+        ],
+        "text": [
+          "Pescar Andrew: Într-o zi, unul dintre ei o să ajungă ceva de speriat. Stai și-o să vezi."
+        ]
+      }
+    },
+    "fisherman_joseph": {
+      "name": {
+        "en": [
+          "Joseph"
+        ],
+        "text": [
+          "Joseph"
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Joseph: Shh, you'll scare the fish! ...Oh, go on, then. One battle, and back to my line."
+        ],
+        "text": [
+          "Pescar Joseph: Ssst, sperii peștii! ...Ei, hai. O luptă, și înapoi la undiță."
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Joseph: My Goldeen's horn is sharp, but you were sharper today."
+        ],
+        "text": [
+          "Pescar Joseph: Cornul lui Goldeen al meu e ascuțit, dar tu ai fost și mai iute azi."
+        ]
+      }
+    },
+    "fisherman_zachary": {
+      "name": {
+        "en": [
+          "Zachary"
+        ],
+        "text": [
+          "Zachary"
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Zachary: Not a single bite all morning. A battle will pass the time!"
+        ],
+        "text": [
+          "Pescar Zachary: Niciun pește toată dimineața. O luptă o să-mi treacă timpul!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Zachary: Lost the battle and still no fish. It just isn't my day."
+        ],
+        "text": [
+          "Pescar Zachary: Am pierdut lupta și tot fără pește. Nu e ziua mea."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost_eterna_forest": {
+      "en": [
+        "Route 205\nWest: Eterna Forest, Floaroma Town"
+      ],
+      "text": [
+        "Ruta 205\nVest: Pădurea Eterna, Orășelul Floaroma"
+      ]
+    },
+    "arrow_signpost_eterna_city": {
+      "en": [
+        "Route 205\nEast: Eterna City"
+      ],
+      "text": [
+        "Ruta 205\nEst: Orașul Eterna"
+      ]
+    }
+  }
+}

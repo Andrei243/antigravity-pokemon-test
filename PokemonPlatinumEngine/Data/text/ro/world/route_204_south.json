@@ -1,0 +1,120 @@
+{
+  "people": {
+    "youngster_south": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The cave ahead is the Ravaged Path. Rocks have come down right across the way through.",
+          "A Pokémon could smash them, I reckon, if it knew the right move."
+        ],
+        "text": [
+          "Peștera din față e Cărarea Devastată. S-au prăbușit stânci de-a curmezișul drumului.",
+          "Cred că un Pokémon le-ar putea sparge, dacă ar ști mișcarea potrivită."
+        ]
+      }
+    },
+    "lass_sarah": {
+      "name": {
+        "en": [
+          "Sarah"
+        ],
+        "text": [
+          "Sarah"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Sarah: Oh, you don't look so tough. Shall we have a go?"
+        ],
+        "text": [
+          "Domnișoară Sarah: O, nu pari cine știe ce. Ne încercăm puterile?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Sarah: That was mean! I've only just started training, you know."
+        ],
+        "text": [
+          "Domnișoară Sarah: Ce cruzime! Abia am început antrenamentul, să știi."
+        ]
+      }
+    },
+    "youngster_tyler": {
+      "name": {
+        "en": [
+          "Tyler"
+        ],
+        "text": [
+          "Tyler"
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Tyler: My dad gave me this Magikarp. You don't stand a chance!"
+        ],
+        "text": [
+          "Puști Tyler: Tata mi-a dat Magikarp-ul ăsta. N-ai nicio șansă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Tyler: Who gave you your first Pokémon? You never forget that one, do you?"
+        ],
+        "text": [
+          "Puști Tyler: Cine ți-a dat primul Pokémon? Pe ăla nu-l uiți niciodată, nu?"
+        ]
+      }
+    },
+    "lass_samantha": {
+      "name": {
+        "en": [
+          "Samantha"
+        ],
+        "text": [
+          "Samantha"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Samantha: Excuse me. Would you mind terribly having a battle with me?"
+        ],
+        "text": [
+          "Domnișoară Samantha: Scuză-mă. Te-ar deranja foarte tare să ne luptăm?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Samantha: You're so strong... Perhaps a Berry for my Pokémon to hold would have saved us."
+        ],
+        "text": [
+          "Domnișoară Samantha: Ce puternică e echipa ta... Poate o Boabă ținută de Pokémonul meu ne-ar fi salvat."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost": {
+      "en": [
+        "Route 204\nSouth: Jubilife City"
+      ],
+      "text": [
+        "Ruta 204\nSud: Orașul Jubilife"
+      ]
+    },
+    "signboard": {
+      "en": [
+        "Ravaged Path\nMind the fallen rocks."
+      ],
+      "text": [
+        "Cărarea Devastată\nAtenție la stâncile căzute."
+      ]
+    }
+  }
+}

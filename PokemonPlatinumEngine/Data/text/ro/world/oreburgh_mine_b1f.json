@@ -1,0 +1,45 @@
+{
+  "people": {
+    "worker": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          "Muncitorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Everybody who works down here brings a Pokémon along.",
+          "So don't be surprised if one of the lads fancies a battle on his break. Hahaha!"
+        ],
+        "text": [
+          "Toți cei care lucrează aici jos își aduc câte un Pokémon.",
+          "Așa că nu te mira dacă vreunuia dintre băieți îi vine poftă de o luptă în pauză. Hahaha!"
+        ]
+      }
+    },
+    "twin": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I saw some rocks in the dark, and then the rocks got up and walked off!",
+          "They were Pokémon all along. They only look like rocks!"
+        ],
+        "text": [
+          "Am văzut niște pietre în întuneric, și apoi pietrele s-au ridicat și au plecat!",
+          "Erau Pokémoni de la bun început. Doar arată ca niște pietre!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

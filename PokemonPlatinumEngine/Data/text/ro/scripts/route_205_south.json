@@ -1,0 +1,64 @@
+{
+  "Girl": [
+    {
+      "en": [
+        "I want to see my papa... Please make the spacemen go away."
+      ],
+      "text": [
+        "Vreau la tata... Te rog, fă-i pe cosmonauți să plece."
+      ]
+    }
+  ],
+  "Help": [
+    {
+      "en": [
+        "Little Girl"
+      ],
+      "text": [
+        "Fetița"
+      ]
+    },
+    {
+      "en": [
+        "Please, you have to help! My papa works at the Valley Windworks, and people dressed like spacemen took it over!"
+      ],
+      "text": [
+        "Te rog, trebuie să mă ajuți! Tata lucrează la Centrala Eoliană, iar niște oameni îmbrăcați ca niște cosmonauți au pus stăpânire pe ea!"
+      ]
+    },
+    {
+      "en": [
+        "They won't let him come home! And two of them were in town just now... They said they were going to the flower meadow."
+      ],
+      "text": [
+        "Nu-l lasă să vină acasă! Și doi dintre ei au fost adineauri în oraș... Au zis că merg la pajiștea cu flori."
+      ]
+    }
+  ],
+  "GruntsTalk": [
+    {
+      "en": [
+        "Galactic Grunt"
+      ],
+      "text": [
+        "Galactic Grunt"
+      ]
+    },
+    {
+      "en": [
+        "Team Galactic is carrying out important research in Eterna Forest. No kids past this point."
+      ],
+      "text": [
+        "Echipa Galactic face cercetări importante în Pădurea Eterna. Copiii nu trec de aici."
+      ]
+    },
+    {
+      "en": [
+        "Research means catching Pokémon, lots of them. And the Windworks makes all the power we could want!"
+      ],
+      "text": [
+        "Cercetare înseamnă să prinzi Pokémoni, o grămadă. Iar Centrala Eoliană face toată energia de care avem nevoie!"
+      ]
+    }
+  ]
+}

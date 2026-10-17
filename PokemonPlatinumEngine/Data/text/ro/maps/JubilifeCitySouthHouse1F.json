@@ -1,0 +1,71 @@
+{
+  "displayName": {
+    "en": [
+      "Jubilife City"
+    ],
+    "text": [
+      "Orașul Jubilife"
+    ]
+  },
+  "people": {
+    "ace_trainer_m": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          "Antrenor As"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pokémon are a wonder and a riddle, every one of them.",
+          "But ask any Trainer what matters most and you'll hear the same thing: the battle you fight together."
+        ],
+        "text": [
+          "Pokémonii sunt o minune și o ghicitoare, fiecare în parte.",
+          "Dar întreabă orice Antrenor ce contează cel mai mult și o să auzi același lucru: lupta pe care o duceți împreună."
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Lass"
+        ],
+        "text": [
+          "Domnișoara"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hi, Trainer! Ever get stuck, with no idea what to do next?",
+          "Talk to people! Everyone you meet! And go everywhere your feet will take you. That's how you find new places."
+        ],
+        "text": [
+          "Salut! Te-ai blocat vreodată, fără să știi ce să faci mai departe?",
+          "Vorbește cu oamenii! Cu toți pe care îi întâlnești! Și mergi oriunde te duc picioarele. Așa găsești locuri noi."
+        ]
+      }
+    },
+    "pachirisu": {
+      "name": {
+        "en": [
+          "Pachirisu"
+        ],
+        "text": [
+          "Pachirisu"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pachirisu: Kukkuuh!"
+        ],
+        "text": [
+          "Pachirisu: Kukkuuh!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

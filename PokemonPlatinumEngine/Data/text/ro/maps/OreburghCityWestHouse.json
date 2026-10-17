@@ -1,0 +1,71 @@
+{
+  "displayName": {
+    "en": [
+      "Oreburgh City"
+    ],
+    "text": [
+      "Orașul Oreburgh"
+    ]
+  },
+  "people": {
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          "Puștiul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Ever seen a Pokémon that's the wrong colour? Or heard of one?",
+          "Take Pikachu. Yellow, right? Well, once in a blue moon there's one that's more of an orange."
+        ],
+        "text": [
+          "Ai văzut vreodată un Pokémon de altă culoare? Sau ai auzit de vreunul?",
+          "Ia Pikachu. Galben, nu? Ei bine, o dată la mia de ani apare unul mai degrabă portocaliu."
+        ]
+      }
+    },
+    "pokefan_f": {
+      "name": {
+        "en": [
+          "Pokéfan"
+        ],
+        "text": [
+          "Pokéfana"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pokémon have natures the way we have personalities, don't they?",
+          "So it hardly surprises me that some come in a different colour."
+        ],
+        "text": [
+          "Pokémonii au firi, așa cum avem noi personalități, nu?",
+          "Așa că nu mă miră deloc că unii vin în altă culoare."
+        ]
+      }
+    },
+    "pikachu": {
+      "name": {
+        "en": [
+          "Pikachu"
+        ],
+        "text": [
+          "Pikachu"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pikachu: Pikaaah!"
+        ],
+        "text": [
+          "Pikachu: Pikaaah!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

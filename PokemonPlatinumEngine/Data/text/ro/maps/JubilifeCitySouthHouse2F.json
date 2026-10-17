@@ -1,0 +1,71 @@
+{
+  "displayName": {
+    "en": [
+      "Jubilife City"
+    ],
+    "text": [
+      "Orașul Jubilife"
+    ]
+  },
+  "people": {
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          "Puștiul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Guess what? Some Pokémon evolve once battling has made them strong enough!",
+          "They can come out looking like something else altogether!"
+        ],
+        "text": [
+          "Știi ce? Unii Pokémoni evoluează după ce luptele i-au făcut destul de puternici!",
+          "Pot ajunge să arate cu totul altfel!"
+        ]
+      }
+    },
+    "pokefan_f": {
+      "name": {
+        "en": [
+          "Pokéfan"
+        ],
+        "text": [
+          "Pokéfana"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Evolution is what makes Pokémon so endlessly fascinating.",
+          "How does it work? I wonder whether that dashing Professor Rowan will ever get to the bottom of it."
+        ],
+        "text": [
+          "Evoluția e ce-i face pe Pokémoni atât de fascinanți.",
+          "Cum funcționează? Mă întreb dacă atrăgătorul profesor Rowan o să-i dea vreodată de capăt."
+        ]
+      }
+    },
+    "pokemon_breeder_f": {
+      "name": {
+        "en": [
+          "Pokémon Breeder"
+        ],
+        "text": [
+          "Crescătoare de Pokémoni"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Didn't Professor Rowan once do his research alongside Professor Oak, over in Kanto?"
+        ],
+        "text": [
+          "Profesorul Rowan n-a lucrat cândva alături de profesorul Oak, acolo, în Kanto?"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

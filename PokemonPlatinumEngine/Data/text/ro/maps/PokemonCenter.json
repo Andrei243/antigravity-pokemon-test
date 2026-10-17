@@ -1,0 +1,113 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Center"
+    ],
+    "text": [
+      "Centrul Pokémon"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "pokemon_breeder_m": {
+      "name": {
+        "en": [
+          "Pokémon Breeder"
+        ],
+        "text": [
+          "Crescător de Pokémoni"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "See the lady behind the counter? Hand your Pokémon over to her.",
+          "She'll have every one of them fit and well again before you've counted to ten."
+        ],
+        "text": [
+          "O vezi pe doamna de la tejghea? Dă-i ei Pokémonii tăi.",
+          "Ți-i face pe toți bine până să apuci să numeri până la zece."
+        ]
+      }
+    },
+    "expert_m": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Do you see that machine over there? The smart blue one? That's a PC.",
+          "Anybody travelling with Pokémon may use it, and it doesn't cost a thing."
+        ],
+        "text": [
+          "Vezi aparatul ăla de colo? Cel albastru și elegant? E un PC.",
+          "Oricine călătorește cu Pokémoni îl poate folosi, și nu costă nimic."
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Lass"
+        ],
+        "text": [
+          "Domnișoara"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every Pokémon Center has a floor upstairs where Trainers get together with their friends.",
+          "There's ever so much to do up there. It's a bit quiet just now, mind you."
+        ],
+        "text": [
+          "Fiecare Centru Pokémon are un etaj sus, unde Antrenorii se întâlnesc cu prietenii.",
+          "E mult de făcut acolo. Deocamdată e cam liniște, ce-i drept."
+        ]
+      }
+    },
+    "teala": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm so sorry! The floor downstairs isn't open to visitors yet.",
+          "Do ask again once you've seen a little more of Sinnoh."
+        ],
+        "text": [
+          "Îmi pare tare rău! Etajul de jos nu e încă deschis vizitatorilor.",
+          "Mai întreabă după ce vezi ceva mai mult din Sinnoh."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,64 @@
+{
+  "displayName": {
+    "en": [
+      "{player}'s Home"
+    ],
+    "text": [
+      "Casa lui {player}"
+    ]
+  },
+  "people": {
+    "rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "1,4": {
+      "en": [
+        "There's a note on the computer: \"Pokémon live in the tall grass. Never walk in without one of your own!\""
+      ],
+      "text": [
+        "Pe calculator e un bilețel: „Pokémonii trăiesc în iarba înaltă. Nu intra niciodată fără unul al tău!”"
+      ]
+    },
+    "4,4": {
+      "en": [
+        "A cartoon about a Pokémon who loves to sleep is on. Mom bought this television for the room."
+      ],
+      "text": [
+        "Rulează un desen animat despre un Pokémon căruia îi place să doarmă. Mama a cumpărat televizorul ăsta pentru cameră."
+      ]
+    },
+    "3,4": {
+      "en": [
+        "A cartoon about a Pokémon who loves to sleep is on. Mom bought this television for the room."
+      ],
+      "text": [
+        "Rulează un desen animat despre un Pokémon căruia îi place să doarmă. Mama a cumpărat televizorul ăsta pentru cameră."
+      ]
+    },
+    "5,4": {
+      "en": [
+        "It's your wardrobe. All your clothes are in here."
+      ],
+      "text": [
+        "E dulapul tău. Toate hainele tale sunt aici."
+      ]
+    },
+    "2,4": {
+      "en": [
+        "A poster is pinned up over the desk.\n\"Lost? Stuck? The menu knows! Open it with Enter or Tab.\""
+      ],
+      "text": [
+        "Deasupra biroului e prins un afiș.\n„Te-ai rătăcit? Te-ai blocat? Meniul știe! Deschide-l cu Enter sau Tab.”"
+      ]
+    }
+  }
+}

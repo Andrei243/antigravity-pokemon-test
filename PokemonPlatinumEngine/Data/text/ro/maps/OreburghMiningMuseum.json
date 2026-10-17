@@ -1,0 +1,410 @@
+{
+  "displayName": {
+    "en": [
+      "Oreburgh Mining Museum"
+    ],
+    "text": [
+      "Muzeul Mineritului din Oreburgh"
+    ]
+  },
+  "people": {
+    "ace_trainer_f": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the Oreburgh Mining Museum!",
+          "Everything here came up out of our own mine. Please take your time."
+        ],
+        "text": [
+          "Bine ai venit la Muzeul Mineritului din Oreburgh!",
+          "Tot ce e aici a ieșit din mina noastră. Te rog, nu te grăbi."
+        ]
+      }
+    },
+    "scientist_m": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          "Cercetătorul"
+        ]
+      }
+    },
+    "school_kid_m": {
+      "name": {
+        "en": [
+          "Schoolboy"
+        ],
+        "text": [
+          "Școlarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The mine goes on and on under the ground, right out beneath the sea!",
+          "I asked how they keep the water out. Nobody would tell me. I think it's a secret."
+        ],
+        "text": [
+          "Mina ține și ține pe sub pământ, până departe, sub mare!",
+          "Am întrebat cum țin apa afară. Nu mi-a spus nimeni. Cred că e un secret."
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A lump of coal that size! You could warm the whole of Oreburgh through a winter with it.",
+          "Well. Half a winter. Our winters are long."
+        ],
+        "text": [
+          "O bucată de cărbune așa de mare! Ai putea încălzi tot Oreburgh-ul o iarnă întreagă cu ea.",
+          "Mă rog. O jumătate de iarnă. Iernile noastre sunt lungi."
+        ]
+      }
+    },
+    "twin": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "It's black and it shines. Is it a jewel? Granddad says it's better than a jewel.",
+          "You can't keep warm with a jewel, he says."
+        ],
+        "text": [
+          "E neagră și strălucește. E o bijuterie? Bunicul zice că e mai bună decât o bijuterie.",
+          "Cu o bijuterie nu te încălzești, zice el."
+        ]
+      }
+    },
+    "pokemon_breeder_f": {
+      "name": {
+        "en": [
+          "Breeder"
+        ],
+        "text": [
+          "Crescătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Have you met the Underground Man in Eterna City? He knows everything about digging.",
+          "He'll give you a kit of your own, if you ask. Then you can dig up Fossils yourself!"
+        ],
+        "text": [
+          "L-ai cunoscut pe Omul din Subteran, din Orașul Eterna? Știe totul despre săpat.",
+          "Îți dă o trusă numai a ta, dacă îl rogi. Atunci poți dezgropa și tu Fosile!"
+        ]
+      }
+    },
+    "collector": {
+      "name": {
+        "en": [
+          "Collector"
+        ],
+        "text": [
+          "Colecționarul"
+        ]
+      }
+    },
+    "expert_m": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I went down that mine at fifteen and came up for good at sixty.",
+          "The town was built on what we dug. Mind you remember that, when you look at these old tools."
+        ],
+        "text": [
+          "Am coborât în mina aia la cincisprezece ani și am ieșit de-a binelea la șaizeci.",
+          "Orașul a fost clădit pe ce-am scos noi. Să ții minte asta când te uiți la uneltele astea vechi."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "10,3": {
+      "en": [
+        "How coal is made, 1:\nLong, long ago, forests grew and fell where the sea and the land met."
+      ],
+      "text": [
+        "Cum se face cărbunele, 1:\nDemult, demult, creșteau și cădeau păduri acolo unde marea întâlnea uscatul."
+      ]
+    },
+    "11,3": {
+      "en": [
+        "How coal is made, 1:\nLong, long ago, forests grew and fell where the sea and the land met."
+      ],
+      "text": [
+        "Cum se face cărbunele, 1:\nDemult, demult, creșteau și cădeau păduri acolo unde marea întâlnea uscatul."
+      ]
+    },
+    "12,3": {
+      "en": [
+        "How coal is made, 2:\nMud and sand buried the fallen trees, layer on layer, and shut the air out."
+      ],
+      "text": [
+        "Cum se face cărbunele, 2:\nNămolul și nisipul au îngropat copacii căzuți, strat după strat, și au oprit aerul."
+      ]
+    },
+    "13,3": {
+      "en": [
+        "How coal is made, 2:\nMud and sand buried the fallen trees, layer on layer, and shut the air out."
+      ],
+      "text": [
+        "Cum se face cărbunele, 2:\nNămolul și nisipul au îngropat copacii căzuți, strat după strat, și au oprit aerul."
+      ]
+    },
+    "14,3": {
+      "en": [
+        "How coal is made, 3:\nThe weight and the warmth of the ground, over ages beyond counting, pressed the wood into coal."
+      ],
+      "text": [
+        "Cum se face cărbunele, 3:\nGreutatea și căldura pământului, de-a lungul unor vremuri fără număr, au presat lemnul în cărbune."
+      ]
+    },
+    "15,3": {
+      "en": [
+        "How coal is made, 3:\nThe weight and the warmth of the ground, over ages beyond counting, pressed the wood into coal."
+      ],
+      "text": [
+        "Cum se face cărbunele, 3:\nGreutatea și căldura pământului, de-a lungul unor vremuri fără număr, au presat lemnul în cărbune."
+      ]
+    },
+    "14,9": {
+      "en": [
+        "Coal from other regions. Each lump is a little different in colour and in weight."
+      ],
+      "text": [
+        "Cărbune din alte regiuni. Fiecare bucată are culoarea și greutatea ei."
+      ]
+    },
+    "15,9": {
+      "en": [
+        "Coal from other regions. Each lump is a little different in colour and in weight."
+      ],
+      "text": [
+        "Cărbune din alte regiuni. Fiecare bucată are culoarea și greutatea ei."
+      ]
+    },
+    "14,10": {
+      "en": [
+        "Coal from other regions. Each lump is a little different in colour and in weight."
+      ],
+      "text": [
+        "Cărbune din alte regiuni. Fiecare bucată are culoarea și greutatea ei."
+      ]
+    },
+    "15,10": {
+      "en": [
+        "Coal from other regions. Each lump is a little different in colour and in weight."
+      ],
+      "text": [
+        "Cărbune din alte regiuni. Fiecare bucată are culoarea și greutatea ei."
+      ]
+    },
+    "14,12": {
+      "en": [
+        "Samples of coal, sorted by how hard they are and how hot they burn."
+      ],
+      "text": [
+        "Mostre de cărbune, sortate după cât de tari sunt și cât de tare ard."
+      ]
+    },
+    "15,12": {
+      "en": [
+        "Samples of coal, sorted by how hard they are and how hot they burn."
+      ],
+      "text": [
+        "Mostre de cărbune, sortate după cât de tari sunt și cât de tare ard."
+      ]
+    },
+    "14,13": {
+      "en": [
+        "Samples of coal, sorted by how hard they are and how hot they burn."
+      ],
+      "text": [
+        "Mostre de cărbune, sortate după cât de tari sunt și cât de tare ard."
+      ]
+    },
+    "15,13": {
+      "en": [
+        "Samples of coal, sorted by how hard they are and how hot they burn."
+      ],
+      "text": [
+        "Mostre de cărbune, sortate după cât de tari sunt și cât de tare ard."
+      ]
+    },
+    "18,6": {
+      "en": [
+        "Miners' lamps through the years, from an open flame to a light worn on the helmet."
+      ],
+      "text": [
+        "Lămpi de miner de-a lungul anilor, de la flacăra deschisă la lumina purtată pe cască."
+      ]
+    },
+    "19,6": {
+      "en": [
+        "Miners' lamps through the years, from an open flame to a light worn on the helmet."
+      ],
+      "text": [
+        "Lămpi de miner de-a lungul anilor, de la flacăra deschisă la lumina purtată pe cască."
+      ]
+    },
+    "20,6": {
+      "en": [
+        "Miners' lamps through the years, from an open flame to a light worn on the helmet."
+      ],
+      "text": [
+        "Lămpi de miner de-a lungul anilor, de la flacăra deschisă la lumina purtată pe cască."
+      ]
+    },
+    "18,7": {
+      "en": [
+        "Miners' lamps through the years, from an open flame to a light worn on the helmet."
+      ],
+      "text": [
+        "Lămpi de miner de-a lungul anilor, de la flacăra deschisă la lumina purtată pe cască."
+      ]
+    },
+    "19,7": {
+      "en": [
+        "Miners' lamps through the years, from an open flame to a light worn on the helmet."
+      ],
+      "text": [
+        "Lămpi de miner de-a lungul anilor, de la flacăra deschisă la lumina purtată pe cască."
+      ]
+    },
+    "20,7": {
+      "en": [
+        "Miners' lamps through the years, from an open flame to a light worn on the helmet."
+      ],
+      "text": [
+        "Lămpi de miner de-a lungul anilor, de la flacăra deschisă la lumina purtată pe cască."
+      ]
+    },
+    "18,9": {
+      "en": [
+        "The tools of the mine: picks, hammers, wedges and a drill worn smooth by hands."
+      ],
+      "text": [
+        "Uneltele minei: târnăcoape, ciocane, pene și un sfredel tocit de mâini."
+      ]
+    },
+    "19,9": {
+      "en": [
+        "The tools of the mine: picks, hammers, wedges and a drill worn smooth by hands."
+      ],
+      "text": [
+        "Uneltele minei: târnăcoape, ciocane, pene și un sfredel tocit de mâini."
+      ]
+    },
+    "20,9": {
+      "en": [
+        "The tools of the mine: picks, hammers, wedges and a drill worn smooth by hands."
+      ],
+      "text": [
+        "Uneltele minei: târnăcoape, ciocane, pene și un sfredel tocit de mâini."
+      ]
+    },
+    "18,10": {
+      "en": [
+        "The tools of the mine: picks, hammers, wedges and a drill worn smooth by hands."
+      ],
+      "text": [
+        "Uneltele minei: târnăcoape, ciocane, pene și un sfredel tocit de mâini."
+      ]
+    },
+    "19,10": {
+      "en": [
+        "The tools of the mine: picks, hammers, wedges and a drill worn smooth by hands."
+      ],
+      "text": [
+        "Uneltele minei: târnăcoape, ciocane, pene și un sfredel tocit de mâini."
+      ]
+    },
+    "20,10": {
+      "en": [
+        "The tools of the mine: picks, hammers, wedges and a drill worn smooth by hands."
+      ],
+      "text": [
+        "Uneltele minei: târnăcoape, ciocane, pene și un sfredel tocit de mâini."
+      ]
+    },
+    "18,12": {
+      "en": [
+        "What a mine worker carries: a helmet, a lunch tin, a whistle and a pair of very dusty gloves."
+      ],
+      "text": [
+        "Ce poartă un miner: o cască, o cutie cu mâncare, un fluier și o pereche de mănuși foarte prăfuite."
+      ]
+    },
+    "19,12": {
+      "en": [
+        "What a mine worker carries: a helmet, a lunch tin, a whistle and a pair of very dusty gloves."
+      ],
+      "text": [
+        "Ce poartă un miner: o cască, o cutie cu mâncare, un fluier și o pereche de mănuși foarte prăfuite."
+      ]
+    },
+    "20,12": {
+      "en": [
+        "What a mine worker carries: a helmet, a lunch tin, a whistle and a pair of very dusty gloves."
+      ],
+      "text": [
+        "Ce poartă un miner: o cască, o cutie cu mâncare, un fluier și o pereche de mănuși foarte prăfuite."
+      ]
+    },
+    "18,13": {
+      "en": [
+        "What a mine worker carries: a helmet, a lunch tin, a whistle and a pair of very dusty gloves."
+      ],
+      "text": [
+        "Ce poartă un miner: o cască, o cutie cu mâncare, un fluier și o pereche de mănuși foarte prăfuite."
+      ]
+    },
+    "19,13": {
+      "en": [
+        "What a mine worker carries: a helmet, a lunch tin, a whistle and a pair of very dusty gloves."
+      ],
+      "text": [
+        "Ce poartă un miner: o cască, o cutie cu mâncare, un fluier și o pereche de mănuși foarte prăfuite."
+      ]
+    },
+    "20,13": {
+      "en": [
+        "What a mine worker carries: a helmet, a lunch tin, a whistle and a pair of very dusty gloves."
+      ],
+      "text": [
+        "Ce poartă un miner: o cască, o cutie cu mâncare, un fluier și o pereche de mănuși foarte prăfuite."
+      ]
+    }
+  }
+}

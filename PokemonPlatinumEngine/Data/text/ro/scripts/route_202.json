@@ -1,0 +1,118 @@
+{
+  "Counterpart": [
+    {
+      "en": [
+        "{assistant}"
+      ],
+      "text": [
+        "{assistant}"
+      ]
+    },
+    {
+      "en": [
+        "{player}! You came! Right, the Poké Radar. Let me show you how it works."
+      ],
+      "text": [
+        "{player}! Ai venit! Deci, Poké Radar. Să-ți arăt cum funcționează."
+      ]
+    },
+    {
+      "en": [
+        "You use it standing in tall grass, like that patch over there, and then you watch. Here and there the grass will shake, and a Pokémon is hiding in every patch that does."
+      ],
+      "text": [
+        "Îl folosești stând în iarba înaltă, ca în smocul de acolo, apoi te uiți. Ici și colo, iarba se va scutura, și în fiecare smoc care se scutură se ascunde un Pokémon."
+      ]
+    },
+    {
+      "en": [
+        "Walk straight into one, without stepping out of the grass, and it jumps out at you."
+      ],
+      "text": [
+        "Intră direct într-unul, fără să ieși din iarbă, și Pokémonul sare la tine."
+      ]
+    },
+    {
+      "en": [
+        "And here's the strange part. Catch it, or make it faint, and the grass shakes again. Go into another shaking patch and the very same kind of Pokémon is there!"
+      ],
+      "text": [
+        "Și acum partea ciudată. Prinde-l sau fă-l să leșine, și iarba se scutură din nou. Intră în alt smoc care se scutură și găsești exact același fel de Pokémon!"
+      ]
+    },
+    {
+      "en": [
+        "Keep that going and you have a chain. The longer the chain, the likelier it is that a patch will sparkle instead of shaking... I'll leave you to find out what's in those."
+      ],
+      "text": [
+        "Continuă așa și faci un lanț. Cu cât e mai lung lanțul, cu atât e mai probabil ca un smoc să sclipească în loc să se scuture... Te las pe tine să afli ce e în ăia."
+      ]
+    },
+    {
+      "en": [
+        "One more thing: the Radar's battery runs flat when you use it. Fifty steps on foot charges it up again. Good luck, {player}!"
+      ],
+      "text": [
+        "Încă ceva: bateria Radarului se descarcă atunci când îl folosești. Cincizeci de pași pe jos o reîncarcă. Baftă, {player}!"
+      ]
+    }
+  ],
+  "CatchingLesson": [
+    {
+      "en": [
+        "{assistant}"
+      ],
+      "text": [
+        "{assistant}"
+      ]
+    },
+    {
+      "en": [
+        "{player}! Have you told your family you're helping the professor? Go home and tell them first. Your mom will worry otherwise!"
+      ],
+      "text": [
+        "{player}! Le-ai spus alor tăi că-l ajuți pe profesor? Du-te acasă și spune-le întâi. Altfel mama ta o să-și facă griji!"
+      ]
+    },
+    {
+      "en": [
+        "Go home and tell your family first!"
+      ],
+      "text": [
+        "Du-te întâi acasă și spune-le alor tăi!"
+      ]
+    },
+    {
+      "en": [
+        "{assistant}"
+      ],
+      "text": [
+        "{assistant}"
+      ]
+    },
+    {
+      "en": [
+        "Oh, {player}! Are you off to Jubilife City? ...Do you know how to catch a Pokémon? I'll show you. Watch closely!"
+      ],
+      "text": [
+        "A, {player}! Mergi în Orașul Jubilife? ...Știi cum se prinde un Pokémon? Îți arăt eu. Uită-te bine!"
+      ]
+    },
+    {
+      "en": [
+        "That's how it's done! Weaken it first, then throw a Poké Ball. Here, take some of these."
+      ],
+      "text": [
+        "Așa se face! Întâi îl slăbești, apoi arunci un Poké Ball. Poftim, ia câteva."
+      ]
+    },
+    {
+      "en": [
+        "Good luck with the Pokédex, {player}! I'll see you around!"
+      ],
+      "text": [
+        "Spor cu Pokédexul, {player}! Ne mai vedem!"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "Psychic": [
+    {
+      "en": [
+        "Hmmm...! Tell me, what kind of Trainer do you like best of all?"
+      ],
+      "text": [
+        "Hmmm...! Spune-mi, ce fel de Antrenor îți place cel mai mult?"
+      ]
+    },
+    {
+      "en": [
+        "No, no, don't answer straight away. It is the sort of thing a person ought to think over."
+      ],
+      "text": [
+        "Nu, nu, nu răspunde imediat. E genul de lucru la care ar trebui să te gândești bine."
+      ]
+    },
+    {
+      "en": [
+        "The way you see yourself is the way others will come to see you. Tell me when you have made up your mind!"
+      ],
+      "text": [
+        "Cum te vezi tu e felul în care ajung să te vadă și ceilalți. Spune-mi când te-ai hotărât!"
+      ]
+    }
+  ],
+  "Gentleman": [
+    {
+      "en": [
+        "Hmmm! Team Galactic... What are they? Who are they?"
+      ],
+      "text": [
+        "Hmmm! Echipa Galactic... Ce sunt ei? Cine sunt ei?"
+      ]
+    },
+    {
+      "en": [
+        "They promise the world a marvellous new kind of energy. And yet people whisper that they take Pokémon away by force."
+      ],
+      "text": [
+        "Promit lumii un fel nou și minunat de energie. Și totuși, oamenii șoptesc că iau Pokémoni cu forța."
+      ]
+    },
+    {
+      "en": [
+        "A mystery! A mystery, I tell you! Is nobody looking into them?"
+      ],
+      "text": [
+        "Un mister! Un mister, îți spun! Nu cercetează nimeni ce fac?"
+      ]
+    },
+    {
+      "en": [
+        "Hmmm! Team Galactic... What were they, in the end?"
+      ],
+      "text": [
+        "Hmmm! Echipa Galactic... Ce erau ei, până la urmă?"
+      ]
+    },
+    {
+      "en": [
+        "I hear they have sworn off taking other people's Pokémon. They still work on that energy of theirs, but honestly these days."
+      ],
+      "text": [
+        "Am auzit că s-au jurat să nu mai ia Pokémonii altora. Lucrează încă la energia aia a lor, dar cinstit, de data asta."
+      ]
+    }
+  ]
+}

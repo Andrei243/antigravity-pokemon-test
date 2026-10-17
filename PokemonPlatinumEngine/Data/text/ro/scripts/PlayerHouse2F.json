@@ -1,0 +1,94 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "TV"
+      ],
+      "text": [
+        "Televizor"
+      ]
+    },
+    {
+      "en": [
+        "...and that brings us to the end of tonight's special, \"Meet Professor Rowan\"."
+      ],
+      "text": [
+        "...și cu asta ajungem la finalul emisiunii speciale de diseară, „Faceți cunoștință cu profesorul Rowan”."
+      ]
+    },
+    {
+      "en": [
+        "After many years of research far away in the Kanto region, the professor has come home to Sinnoh, to his laboratory in Sandgem Town."
+      ],
+      "text": [
+        "După mulți ani de cercetare departe, în regiunea Kanto, profesorul s-a întors acasă în Sinnoh, la laboratorul său din Orășelul Sandgem."
+      ]
+    },
+    {
+      "en": [
+        "We'll leave you with his own words: \"We share this world with Pokémon. Live alongside them, and you will come to understand them.\""
+      ],
+      "text": [
+        "Vă lăsăm cu propriile lui cuvinte: „Împărțim lumea aceasta cu Pokémonii. Trăiți alături de ei și veți ajunge să-i înțelegeți.”"
+      ]
+    },
+    {
+      "en": [
+        "This has been Jubilife TV. Good night, Sinnoh!"
+      ],
+      "text": [
+        "Ați urmărit Jubilife TV. Noapte bună, Sinnoh!"
+      ]
+    }
+  ],
+  "RivalRushesIn": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "{player}! Did you see it? On TV, just now? The special on Professor Rowan!"
+      ],
+      "text": [
+        "{player}! Ai văzut? La TV, adineauri? Emisiunea despre profesorul Rowan!"
+      ]
+    },
+    {
+      "en": [
+        "He's back in Sinnoh, and he studies Pokémon, so he's got to have tons of them! If we ask nicely, he's sure to give us one each!"
+      ],
+      "text": [
+        "S-a întors în Sinnoh și studiază Pokémoni, deci sigur are o grămadă! Dacă-l rugăm frumos, sigur ne dă câte unul!"
+      ]
+    },
+    {
+      "en": [
+        "...Whoa, is that a new computer? Lucky!"
+      ],
+      "text": [
+        "...Uau, ăla e un calculator nou? Ce noroc!"
+      ]
+    },
+    {
+      "en": [
+        "...Huh? What was I saying?"
+      ],
+      "text": [
+        "...Hă? Ce ziceam?"
+      ]
+    },
+    {
+      "en": [
+        "Right! We're going to see Professor Rowan! I'll wait for you outside. If you're late, that's a ten-million fine!"
+      ],
+      "text": [
+        "Da! Mergem la profesorul Rowan! Te aștept afară. Dacă întârzii, plătești amendă zece milioane!"
+      ]
+    }
+  ]
+}

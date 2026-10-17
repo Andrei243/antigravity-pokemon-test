@@ -1,0 +1,264 @@
+{
+  "MeetAssistant": [
+    {
+      "en": [
+        "{assistant}"
+      ],
+      "text": [
+        "{assistant}"
+      ]
+    },
+    {
+      "en": [
+        "Oh! You're {player}, right? Professor Rowan is waiting for you in his lab. Come on, it's right here!"
+      ],
+      "text": [
+        "Oh! Tu ești {player}, nu? Profesorul Rowan te așteaptă în laborator. Hai, e chiar aici!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Whoa, {player}! Slow as ever. ...You know, the professor isn't scary at all. He's just kind of strange!"
+      ],
+      "text": [
+        "Uau, {player}! La fel de încet ca de obicei. ...Știi, profesorul nu e deloc înfricoșător. E doar cam ciudat!"
+      ]
+    },
+    {
+      "en": [
+        "Anyway, I'm off. Later!"
+      ],
+      "text": [
+        "Oricum, eu am plecat. Pe curând!"
+      ]
+    },
+    {
+      "en": [
+        "{assistant}"
+      ],
+      "text": [
+        "{assistant}"
+      ]
+    },
+    {
+      "en": [
+        "Was that your friend? He's in a real hurry, isn't he? ...Well, in we go!"
+      ],
+      "text": [
+        "El era prietenul tău? Tare se mai grăbește, nu? ...Ei, hai înăuntru!"
+      ]
+    }
+  ],
+  "OnEnter": [
+    {
+      "en": [
+        "Prof. Rowan"
+      ],
+      "text": [
+        "Prof. Rowan"
+      ]
+    },
+    {
+      "en": [
+        "{player}! One more thing."
+      ],
+      "text": [
+        "{player}! Încă ceva."
+      ]
+    },
+    {
+      "en": [
+        "Take this with you."
+      ],
+      "text": [
+        "Ia asta cu tine."
+      ]
+    },
+    {
+      "en": [
+        "A Technical Machine teaches a Pokémon a move. Each one can be used only once, so think before you use it."
+      ],
+      "text": [
+        "O Mașină Tehnică învață un Pokémon o mișcare. Fiecare poate fi folosită o singură dată, așa că gândește-te înainte."
+      ]
+    },
+    {
+      "en": [
+        "That one holds Return. The more your Pokémon cares for you, the stronger the move becomes."
+      ],
+      "text": [
+        "Aceea conține Return. Cu cât te îndrăgește mai mult Pokémonul, cu atât e mai puternică mișcarea."
+      ]
+    },
+    {
+      "en": [
+        "{assistant}"
+      ],
+      "text": [
+        "{assistant}"
+      ]
+    },
+    {
+      "en": [
+        "The professor had TMs? I never knew! ...Oh, let me show you round Sandgem!"
+      ],
+      "text": [
+        "Profesorul avea TM-uri? N-aveam idee! ...A, hai să-ți arăt Sandgem-ul!"
+      ]
+    },
+    {
+      "en": [
+        "That's the Pokémon Center, with the red roof. They'll heal your Pokémon there whenever you like, and it's free."
+      ],
+      "text": [
+        "Acolo e Centrul Pokémon, cu acoperiș roșu. Acolo îți vindecă Pokémonii oricând vrei, și e gratis."
+      ]
+    },
+    {
+      "en": [
+        "And that's the Poké Mart, with the blue roof. You can buy Poké Balls and Potions there."
+      ],
+      "text": [
+        "Iar acolo e Poké Martul, cu acoperiș albastru. Acolo poți cumpăra Poké Ball și Potion."
+      ]
+    },
+    {
+      "en": [
+        "Don't forget to tell your family you're helping the professor! Heal your Pokémon at the Center first, though."
+      ],
+      "text": [
+        "Nu uita să le spui alor tăi că-l ajuți pe profesor! Dar întâi vindecă-ți Pokémonii la Centru."
+      ]
+    },
+    {
+      "en": [
+        "See you later, {player}!"
+      ],
+      "text": [
+        "Pe curând, {player}!"
+      ]
+    }
+  ],
+  "Counterpart": [
+    {
+      "en": [
+        "{assistant}"
+      ],
+      "text": [
+        "{assistant}"
+      ]
+    },
+    {
+      "en": [
+        "Oh, {player}! The professor told me something. He thinks Dialga or Palkia might show itself at Spear Pillar again!"
+      ],
+      "text": [
+        "A, {player}! Profesorul mi-a spus ceva. Crede că Dialga sau Palkia s-ar putea arăta din nou la Coloana Suliței!"
+      ]
+    },
+    {
+      "en": [
+        "Hi, {player}! You know the elder of Celestic Town, don't you? She asked me to tell you she has something important to say to you."
+      ],
+      "text": [
+        "Bună, {player}! O știi pe bătrâna din Orășelul Celestic, nu? M-a rugat să-ți spun că are să-ți spună ceva important."
+      ]
+    },
+    {
+      "en": [
+        "{player}! The professor told me everything! Congratulations, Champion!"
+      ],
+      "text": [
+        "{player}! Profesorul mi-a povestit tot! Felicitări, acum ești Campion!"
+      ]
+    },
+    {
+      "en": [
+        "Hi, {player}! May I have a look at your Pokédex?"
+      ],
+      "text": [
+        "Bună, {player}! Pot să mă uit în Pokédexul tău?"
+      ]
+    },
+    {
+      "en": [
+        "... ... ..."
+      ],
+      "text": [
+        "... ... ..."
+      ]
+    },
+    {
+      "en": [
+        "Oh! You've seen every kind of Pokémon there is in Sinnoh! Come on, let's show it to Professor Rowan!"
+      ],
+      "text": [
+        "Oh! Ai văzut toate felurile de Pokémoni din Sinnoh! Hai, să i-l arătăm profesorului Rowan!"
+      ]
+    },
+    {
+      "en": [
+        "I'm helping the professor with the National Pokédex too, {player}. I'll never catch up with you, but I'm not giving up!"
+      ],
+      "text": [
+        "Îl ajut și eu pe profesor cu Pokédexul Național, {player}. N-o să te ajung niciodată, dar nu renunț!"
+      ]
+    },
+    {
+      "en": [
+        "How are you getting on with the Poké Radar, {player}? The Pokémon it finds aren't ones you'd meet just walking about."
+      ],
+      "text": [
+        "Cum te descurci cu Poké Radar, {player}? Pokémonii pe care îi găsește nu-i întâlnești doar plimbându-te."
+      ]
+    },
+    {
+      "en": [
+        "Did you know? Once in a long while a patch of grass doesn't shake for the Poké Radar: it sparkles. I wonder what's in one of those..."
+      ],
+      "text": [
+        "Știai? Foarte rar, un smoc de iarbă nu se scutură pentru Poké Radar, ci sclipește. Oare ce-o fi într-unul ca ăsta..."
+      ]
+    },
+    {
+      "en": [
+        "So that's the National Pokédex! Oh, {player}, have you had a chat with my little sister lately? She's found out something you'll want to hear."
+      ],
+      "text": [
+        "Deci ăsta e Pokédexul Național! A, {player}, ai mai vorbit cu sora mea mai mică? A aflat ceva ce-o să vrei să auzi."
+      ]
+    },
+    {
+      "en": [
+        "So that's the National Pokédex! Say, {player}, have you seen my little sister lately? She's picked up some news you can use."
+      ],
+      "text": [
+        "Deci ăsta e Pokédexul Național! Zi, {player}, ai mai văzut-o pe sora mea mai mică? A aflat niște vești care-ți vor folosi."
+      ]
+    },
+    {
+      "en": [
+        "{player}, have you met Bebe, in Hearthome City? She looks after the Pokémon Boxes. She's been asking after people filling in the National Pokédex!"
+      ],
+      "text": [
+        "{player}, ai cunoscut-o pe Bebe, în Orașul Hearthome? Ea are grijă de Cutiile Pokémon. A tot întrebat de cei care completează Pokédexul Național!"
+      ]
+    },
+    {
+      "en": [
+        "The professor gave you a Poké Radar, didn't he? I'll show you how to use it! Come and find me on Route 202, in the tall grass."
+      ],
+      "text": [
+        "Profesorul ți-a dat un Poké Radar, nu? Îți arăt eu cum se folosește! Vino să mă găsești pe Ruta 202, în iarba înaltă."
+      ]
+    }
+  ]
+}

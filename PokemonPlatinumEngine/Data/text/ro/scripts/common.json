@@ -1,0 +1,1158 @@
+{
+  "Sign": [
+    {
+      "en": [
+        "Sign"
+      ],
+      "text": [
+        "Indicator"
+      ]
+    }
+  ],
+  "BerryPatch": [
+    {
+      "en": [
+        "It's soft, crumbly soil, just right for planting."
+      ],
+      "text": [
+        "E pământ moale și afânat, numai bun de plantat."
+      ]
+    },
+    {
+      "en": [
+        "It's soft, crumbly soil."
+      ],
+      "text": [
+        "E pământ moale și afânat."
+      ]
+    },
+    {
+      "en": [
+        "The soil has been covered with {mulch}."
+      ],
+      "text": [
+        "Pământul a fost acoperit cu {mulch}."
+      ]
+    },
+    {
+      "en": [
+        "The soil has been covered with {mulch}."
+      ],
+      "text": [
+        "Pământul a fost acoperit cu {mulch}."
+      ]
+    },
+    {
+      "en": [
+        "It's soft, crumbly soil, just right for planting."
+      ],
+      "text": [
+        "E pământ moale și afânat, numai bun de plantat."
+      ]
+    },
+    {
+      "en": [
+        "What would you like to do?",
+        "Spread mulch",
+        "Plant a Berry",
+        "Leave it"
+      ],
+      "text": [
+        "Ce vrei să faci?",
+        "Pune compost",
+        "Plantează o Boabă",
+        "Lasă-l așa"
+      ]
+    },
+    {
+      "en": [
+        "Spread some mulch on the soil?"
+      ],
+      "text": [
+        "Pui niște compost pe pământ?"
+      ]
+    },
+    {
+      "en": [
+        "{player} spread the {mulch} over the soil."
+      ],
+      "text": [
+        "{player} a întins {mulch} peste pământ."
+      ]
+    },
+    {
+      "en": [
+        "{player} spread the {mulch} over the soil."
+      ],
+      "text": [
+        "{player} a întins {mulch} peste pământ."
+      ]
+    },
+    {
+      "en": [
+        "Plant a Berry here?"
+      ],
+      "text": [
+        "Plantezi aici o Boabă?"
+      ]
+    },
+    {
+      "en": [
+        "{player} pressed one {berry} into the soft soil."
+      ],
+      "text": [
+        "{player} a îngropat o {berry} în pământul moale."
+      ]
+    },
+    {
+      "en": [
+        "One {berry} was planted here."
+      ],
+      "text": [
+        "Aici a fost plantată o {berry}."
+      ]
+    },
+    {
+      "en": [
+        "One {berry} was planted here."
+      ],
+      "text": [
+        "Aici a fost plantată o {berry}."
+      ]
+    },
+    {
+      "en": [
+        "A little {berry} plant has pushed up through the soil."
+      ],
+      "text": [
+        "Un mic lăstar de {berry} a ieșit din pământ."
+      ]
+    },
+    {
+      "en": [
+        "A little {berry} plant has pushed up through the soil."
+      ],
+      "text": [
+        "Un mic lăstar de {berry} a ieșit din pământ."
+      ]
+    },
+    {
+      "en": [
+        "The {berry} plant is growing taller."
+      ],
+      "text": [
+        "Planta de {berry} crește tot mai înaltă."
+      ]
+    },
+    {
+      "en": [
+        "The {berry} plant is growing taller."
+      ],
+      "text": [
+        "Planta de {berry} crește tot mai înaltă."
+      ]
+    },
+    {
+      "en": [
+        "The {berry} plant has burst into flower!"
+      ],
+      "text": [
+        "Planta de {berry} a dat în floare!"
+      ]
+    },
+    {
+      "en": [
+        "The {berry} plant has burst into flower!"
+      ],
+      "text": [
+        "Planta de {berry} a dat în floare!"
+      ]
+    },
+    {
+      "en": [
+        "Give it some water?"
+      ],
+      "text": [
+        "O uzi puțin?"
+      ]
+    },
+    {
+      "en": [
+        "There you go. It looks pleased."
+      ],
+      "text": [
+        "Gata. Pare mulțumită."
+      ]
+    },
+    {
+      "en": [
+        "There are {yield} × {berry} here. Pick them?"
+      ],
+      "text": [
+        "Aici sunt {yield} × {berry}. Le culegi?"
+      ]
+    },
+    {
+      "en": [
+        "{player} picked {yield} × {berry}!",
+        "{player} put them away in the Berries pocket."
+      ],
+      "text": [
+        "{player} a cules {yield} × {berry}!",
+        "{player} le-a pus în buzunarul Boabe."
+      ]
+    },
+    {
+      "en": [
+        "{player} left the {berry} on the plant."
+      ],
+      "text": [
+        "{player} a lăsat {berry} pe plantă."
+      ]
+    }
+  ],
+  "Nurse": [
+    {
+      "en": [
+        "Good day! You've come to a Pokémon Center."
+      ],
+      "text": [
+        "Bună ziua! Bine ai venit la Centrul Pokémon."
+      ]
+    },
+    {
+      "en": [
+        "Your Pokémon look as if they could do with a rest. Shall I see to them?"
+      ],
+      "text": [
+        "Pokémonii tăi par să aibă nevoie de odihnă. Vrei să mă ocup de ei?"
+      ]
+    },
+    {
+      "en": [
+        "Leave them with me. It won't take a moment."
+      ],
+      "text": [
+        "Lasă-i în grija mea. Nu durează decât o clipă."
+      ]
+    },
+    {
+      "en": [
+        "There we are! Every one of them is fit and well again."
+      ],
+      "text": [
+        "Gata! Toți sunt din nou în formă."
+      ]
+    },
+    {
+      "en": [
+        "Oh, one more thing. Your Pokémon seem to be carrying something very small... Pokérus, we call it."
+      ],
+      "text": [
+        "A, încă ceva. Pokémonii tăi par să poarte ceva foarte mic... Îi spunem Pokérus."
+      ]
+    },
+    {
+      "en": [
+        "Don't worry, it does them no harm. Pokémon who have it grow a little stronger from every battle, and it fades away after a few days."
+      ],
+      "text": [
+        "Nu-ți face griji, nu le face rău. Cei care îl au devin puțin mai puternici după fiecare luptă, iar el dispare în câteva zile."
+      ]
+    },
+    {
+      "en": [
+        "Take care out there, and come back whenever you need us!"
+      ],
+      "text": [
+        "Ai grijă de tine și revino oricând ai nevoie de noi!"
+      ]
+    }
+  ],
+  "Clerk": [
+    {
+      "en": [
+        "Thank you! Do come again."
+      ],
+      "text": [
+        "Mulțumesc! Să mai treci pe la noi."
+      ]
+    }
+  ],
+  "PC": [
+    {
+      "en": [
+        "{player} switched the PC on."
+      ],
+      "text": [
+        "{player} a pornit PC-ul."
+      ]
+    },
+    {
+      "en": [
+        "Which should be opened?",
+        "POKéMON STORAGE",
+        "BALL CAPSULES",
+        "SWITCH OFF"
+      ],
+      "text": [
+        "Ce deschizi?",
+        "DEPOZIT POKéMON",
+        "CAPSULE DE BALL",
+        "OPREȘTE"
+      ]
+    },
+    {
+      "en": [
+        "There are no Seals in the Seal Case."
+      ],
+      "text": [
+        "Nu e niciun Sticker în Seal Case."
+      ]
+    }
+  ],
+  "RibbonSyndicateEntry": [
+    {
+      "en": [
+        "Ten ribbons, and more! {player}, you simply must join us. Welcome to the Ribbon Syndicate."
+      ],
+      "text": [
+        "Zece panglici, și chiar mai multe! {player}, trebuie neapărat să ni te alături. Bine ai venit la Ribbon Syndicate."
+      ]
+    },
+    {
+      "en": [
+        "The Ribbon Syndicate is for those who have collected a great many ribbons. Do come back when you have."
+      ],
+      "text": [
+        "Ribbon Syndicate e pentru cei care au strâns foarte multe panglici. Te rog să revii când vei avea și tu."
+      ]
+    }
+  ],
+  "RibbonSyndicateCashier": [
+    {
+      "en": [
+        "Welcome, {player}. For your {wearer}, may I suggest the Gorgeous Ribbon? It is a mere 10,000."
+      ],
+      "text": [
+        "Bine ai venit, {player}. Pentru {wearer}, îți propun Gorgeous Ribbon. Costă doar 10.000."
+      ]
+    },
+    {
+      "en": [
+        "For a {wearer} of such taste, the Royal Ribbon. It is 100,000. Shall I?"
+      ],
+      "text": [
+        "Pentru un {wearer} cu atâta gust, Royal Ribbon. Costă 100.000. Îl iei?"
+      ]
+    },
+    {
+      "en": [
+        "The Gorgeous Royal Ribbon, {player}. There is nothing finer. It is 999,999. Shall I?"
+      ],
+      "text": [
+        "Gorgeous Royal Ribbon, {player}. Nu există nimic mai fin. Costă 999.999. Îl iei?"
+      ]
+    },
+    {
+      "en": [
+        "{player} bought the {ribbon}!",
+        "{player} put the {ribbon} on {wearer}."
+      ],
+      "text": [
+        "{player} a cumpărat {ribbon}!",
+        "{player} i-a pus lui {wearer} {ribbon}."
+      ]
+    },
+    {
+      "en": [
+        "Please, {player}. One does not joke about money in the Ribbon Syndicate."
+      ],
+      "text": [
+        "Te rog, {player}. La Ribbon Syndicate nu se glumește cu banii."
+      ]
+    },
+    {
+      "en": [
+        "Do visit us again."
+      ],
+      "text": [
+        "Te mai așteptăm."
+      ]
+    },
+    {
+      "en": [
+        "That is the Gorgeous Royal Ribbon on your {wearer}. There is nothing more I could possibly sell it."
+      ],
+      "text": [
+        "{wearer} poartă deja Gorgeous Royal Ribbon. Nu mai am nimic ce i-aș putea vinde."
+      ]
+    }
+  ],
+  "CutTree": [
+    {
+      "en": [
+        "This thin tree could be cut down. Use Cut?"
+      ],
+      "text": [
+        "Copacul ăsta subțire ar putea fi tăiat. Folosești Cut?"
+      ]
+    },
+    {
+      "en": [
+        "A thin tree stands in the way. A sharp enough move might clear it."
+      ],
+      "text": [
+        "Un copac subțire îți stă în cale. O mișcare destul de tăioasă l-ar putea doborî."
+      ]
+    }
+  ],
+  "Rock": [
+    {
+      "en": [
+        "The rock is riddled with cracks. Use Rock Smash?"
+      ],
+      "text": [
+        "Stânca e plină de crăpături. Folosești Rock Smash?"
+      ]
+    },
+    {
+      "en": [
+        "The rock is riddled with cracks. Rock Smash could break it, but not outside battle until Oreburgh's Gym Badge is won."
+      ],
+      "text": [
+        "Stânca e plină de crăpături. Rock Smash ar putea s-o spargă, dar în afara luptei abia după Insigna Arenei din Oreburgh."
+      ]
+    },
+    {
+      "en": [
+        "The rock is riddled with cracks. A Pokémon that knows Rock Smash could break it apart."
+      ],
+      "text": [
+        "Stânca e plină de crăpături. Un Pokémon care știe Rock Smash ar putea s-o spargă."
+      ]
+    },
+    {
+      "en": [
+        "The rock is riddled with cracks. A Pokémon taught Rock Smash with HM06 could break it apart."
+      ],
+      "text": [
+        "Stânca e plină de crăpături. Un Pokémon care a învățat Rock Smash din HM06 ar putea s-o spargă."
+      ]
+    },
+    {
+      "en": [
+        "The rock is riddled with cracks. A hard enough blow might break it apart, once Oreburgh's Gym Badge is won."
+      ],
+      "text": [
+        "Stânca e plină de crăpături. O lovitură destul de puternică ar sparge-o, după ce câștigi Insigna Arenei din Oreburgh."
+      ]
+    }
+  ],
+  "Boulder": [
+    {
+      "en": [
+        "A heavy boulder. Use Strength to shift it?"
+      ],
+      "text": [
+        "Un bolovan greu. Folosești Strength ca să-l muți?"
+      ]
+    },
+    {
+      "en": [
+        "With Strength in use, the boulders here can be pushed."
+      ],
+      "text": [
+        "Cu Strength în uz, bolovanii de aici pot fi împinși."
+      ]
+    },
+    {
+      "en": [
+        "A heavy boulder. Only a Pokémon of great power could shift it."
+      ],
+      "text": [
+        "Un bolovan greu. Doar un Pokémon foarte puternic l-ar putea urni."
+      ]
+    }
+  ],
+  "UseStrength": [
+    {
+      "en": [
+        "With Strength in use, the boulders here can be pushed."
+      ],
+      "text": [
+        "Cu Strength în uz, bolovanii de aici pot fi împinși."
+      ]
+    }
+  ],
+  "StrengthOn": [
+    {
+      "en": [
+        "{user} braces itself. The boulders here can be pushed now."
+      ],
+      "text": [
+        "{user} se pregătește. Acum bolovanii de aici pot fi împinși."
+      ]
+    }
+  ],
+  "RockFace": [
+    {
+      "en": [
+        "The rock face is rough enough to grip. Use Rock Climb?"
+      ],
+      "text": [
+        "Peretele de stâncă e destul de aspru ca să te prinzi de el. Folosești Rock Climb?"
+      ]
+    },
+    {
+      "en": [
+        "A steep, rough wall of rock. A Pokémon might be able to scale it."
+      ],
+      "text": [
+        "Un perete de stâncă abrupt și aspru. Poate un Pokémon l-ar putea urca."
+      ]
+    }
+  ],
+  "Water": [
+    {
+      "en": [
+        "The water is deep enough to cross on a Pokémon. Use Surf?"
+      ],
+      "text": [
+        "Apa e destul de adâncă pentru a o traversa pe un Pokémon. Folosești Surf?"
+      ]
+    }
+  ],
+  "Waterfall": [
+    {
+      "en": [
+        "A great waterfall. Use Waterfall to go up it?"
+      ],
+      "text": [
+        "O cascadă uriașă. Folosești Waterfall ca să urci pe ea?"
+      ]
+    },
+    {
+      "en": [
+        "A wall of water comes crashing down."
+      ],
+      "text": [
+        "Un zid de apă se prăvălește cu zgomot."
+      ]
+    }
+  ],
+  "UseDefog": [
+    {
+      "en": [
+        "The fog has lifted."
+      ],
+      "text": [
+        "Ceața s-a risipit."
+      ]
+    }
+  ],
+  "UseSweetScent": [
+    {
+      "en": [
+        "The sweet scent drifts away, but nothing comes out."
+      ],
+      "text": [
+        "Mireasma dulce se împrăștie, dar nu iese nimic."
+      ]
+    }
+  ],
+  "EscapeRope": [
+    {
+      "en": [
+        "{player} used an Escape Rope."
+      ],
+      "text": [
+        "{player} a folosit un Escape Rope."
+      ]
+    }
+  ],
+  "CyclistsOnly": [
+    {
+      "en": [
+        "Gate Keeper"
+      ],
+      "text": [
+        "Paznicul porții"
+      ]
+    },
+    {
+      "en": [
+        "Hold on there! Past this gate is the Cycling Road, and it's for Bicycles only. Come back riding one!"
+      ],
+      "text": [
+        "Stai puțin! Dincolo de poarta asta e Cycling Road, doar pentru bicicliști. Revino pe bicicletă!"
+      ]
+    }
+  ],
+  "BlackOutCenter": [
+    {
+      "en": [
+        "Oh my, you came in looking exhausted. First, let me look after your Pokémon."
+      ],
+      "text": [
+        "Vai de mine, ai intrat de-abia mai respiri. Întâi, să am grijă de Pokémonii tăi."
+      ]
+    },
+    {
+      "en": [
+        "There we are. Every one of them is fit and well again."
+      ],
+      "text": [
+        "Gata. Toți sunt din nou în formă."
+      ]
+    },
+    {
+      "en": [
+        "Please be careful out there. We'll be here whenever you need us."
+      ],
+      "text": [
+        "Te rog să ai grijă de tine. Noi suntem aici oricând ai nevoie."
+      ]
+    }
+  ],
+  "BlackOutHome": [
+    {
+      "en": [
+        "{player}! Look at you, you're worn out. Sit down and rest for a bit."
+      ],
+      "text": [
+        "{player}! Uită-te la tine, ești frânt. Stai jos și odihnește-te puțin."
+      ]
+    },
+    {
+      "en": [
+        "There. You all look much better now. Off you go again, and look after each other out there!"
+      ],
+      "text": [
+        "Așa. Arătați cu toții mult mai bine acum. Hai, la drum, și aveți grijă unii de alții!"
+      ]
+    }
+  ],
+  "SafariTimeUp": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitor"
+      ]
+    },
+    {
+      "en": [
+        "Ding-dong! That's time! Your Safari Game is over."
+      ],
+      "text": [
+        "Ding-dong! Timpul a expirat! Jocul tău Safari s-a încheiat."
+      ]
+    },
+    {
+      "en": [
+        "Thank you for playing. Please come again!"
+      ],
+      "text": [
+        "Mulțumim că ai jucat. Te mai așteptăm!"
+      ]
+    }
+  ],
+  "SafariOutOfBalls": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitor"
+      ]
+    },
+    {
+      "en": [
+        "Ding-dong! You're out of Safari Balls, so your Safari Game is over."
+      ],
+      "text": [
+        "Ding-dong! Nu mai ai Safari Ball, așa că jocul tău Safari s-a încheiat."
+      ]
+    },
+    {
+      "en": [
+        "Thank you for playing. Please come again!"
+      ],
+      "text": [
+        "Mulțumim că ai jucat. Te mai așteptăm!"
+      ]
+    }
+  ],
+  "RepelWoreOff": [
+    {
+      "en": [
+        "The Repel's effect wore off..."
+      ],
+      "text": [
+        "Efectul de Repel s-a terminat..."
+      ]
+    }
+  ],
+  "HoneyTree": [
+    {
+      "en": [
+        "The bark of this tree smells faintly sweet."
+      ],
+      "text": [
+        "Scoarța copacului miroase ușor a dulce."
+      ]
+    },
+    {
+      "en": [
+        "The bark of this tree smells faintly sweet.",
+        "Pokémon might come to it, with a little Honey to tempt them."
+      ],
+      "text": [
+        "Scoarța copacului miroase ușor a dulce.",
+        "Poate ar veni niște Pokémoni, dacă i-ai ademeni cu puțină miere."
+      ]
+    },
+    {
+      "en": [
+        "Honey glistens on the bark. Nothing has come for it yet."
+      ],
+      "text": [
+        "Pe scoarță lucește miere. Încă n-a venit nimeni după ea."
+      ]
+    },
+    {
+      "en": [
+        "Honey glistens on the bark. Nothing has come for it yet."
+      ],
+      "text": [
+        "Pe scoarță lucește miere. Încă n-a venit nimeni după ea."
+      ]
+    },
+    {
+      "en": [
+        "Spread some Honey on the bark?"
+      ],
+      "text": [
+        "Întinzi niște Honey pe scoarță?"
+      ]
+    },
+    {
+      "en": [
+        "{player} spread Honey all over the bark."
+      ],
+      "text": [
+        "{player} a întins Honey peste toată scoarța."
+      ]
+    }
+  ],
+  "UseHoney": [
+    {
+      "en": [
+        "{player} used the Honey."
+      ],
+      "text": [
+        "{player} a folosit Honey."
+      ]
+    },
+    {
+      "en": [
+        "The sweet smell hangs in the air, but nothing comes out."
+      ],
+      "text": [
+        "Mireasma dulce plutește în aer, dar nu iese nimic."
+      ]
+    }
+  ],
+  "PoisonSurvived": [
+    {
+      "en": [
+        "{member:VAR_POISON_SURVIVOR} held on through the poison!",
+        "It shook the poison off."
+      ],
+      "text": [
+        "{member:VAR_POISON_SURVIVOR} a rezistat otrăvirii!",
+        "A scăpat de otravă."
+      ]
+    }
+  ],
+  "SwarmNews": [
+    {
+      "en": [
+        "Did you hear? Lately, whole crowds of one kind of Pokémon keep turning up in one place or another!",
+        "Every day it's somewhere new. Come and ask me, and I'll tell you where it is today, {player}!"
+      ],
+      "text": [
+        "Ai auzit? În ultima vreme apar tot felul de cârduri de Pokémoni de un singur fel, când într-un loc, când în altul!",
+        "În fiecare zi e altundeva. Vino să mă întrebi și-ți spun unde sunt azi, {player}!"
+      ]
+    },
+    {
+      "en": [
+        "Today there's a whole crowd of {swarm} on {swarmplace}!",
+        "If you want to meet one, now's your chance, {player}!"
+      ],
+      "text": [
+        "Azi e un cârd întreg de {swarm} pe {swarmplace}!",
+        "Dacă vrei să întâlnești unul, acum e momentul, {player}!"
+      ]
+    }
+  ],
+  "HatchEgg": [
+    {
+      "en": [
+        "Oh?"
+      ],
+      "text": [
+        "Oh?"
+      ]
+    }
+  ],
+  "DayCareMan": [
+    {
+      "en": [
+        "Day-Care Man"
+      ],
+      "text": [
+        "Omul de la Pensiune"
+      ]
+    },
+    {
+      "en": [
+        "I'm the Day-Care Man. My wife and I look after other Trainers' Pokémon for them.",
+        "If you'd like us to raise one of yours, have a word with her inside."
+      ],
+      "text": [
+        "Eu sunt Omul de la Pensiune. Eu și soția mea avem grijă de Pokémonii altor Antrenori.",
+        "Dacă vrei să creștem unul de-al tău, vorbește cu ea înăuntru."
+      ]
+    },
+    {
+      "en": [
+        "Ah, there you are! We had a real surprise while we were minding your Pokémon. One of them had an Egg! Goodness knows where it came from, but it's yours. Will you take it?"
+      ],
+      "text": [
+        "A, iată-te! Am avut o mare surpriză cât am avut grijă de Pokémonii tăi. Unul dintre ei avea un Ou! Habar n-am de unde, dar e al tău. Îl iei?"
+      ]
+    },
+    {
+      "en": [
+        "Are you sure? I'll keep it myself, then. You really don't want it?"
+      ],
+      "text": [
+        "Sigur? Atunci îl păstrez eu. Chiar nu-l vrei?"
+      ]
+    },
+    {
+      "en": [
+        "Then I'll hang on to it. Thank you kindly!"
+      ],
+      "text": [
+        "Atunci îl mai țin eu. Mulțumesc frumos!"
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Egg from the Day-Care Man."
+      ],
+      "text": [
+        "{player} a primit Oul de la Omul de la Pensiune."
+      ]
+    },
+    {
+      "en": [
+        "Look after it well, now."
+      ],
+      "text": [
+        "Ai grijă de el, da?"
+      ]
+    },
+    {
+      "en": [
+        "Ah, but you've no room for it on your team just now. Come back once you've made some."
+      ],
+      "text": [
+        "A, dar n-ai loc pentru el în echipă acum. Revino după ce faci loc."
+      ]
+    },
+    {
+      "en": [
+        "Ah, it's you! Good to see you. Your {daycare:0} is getting on just fine."
+      ],
+      "text": [
+        "A, tu erai! Mă bucur să te văd. {daycare:0} al tău se descurcă de minune."
+      ]
+    },
+    {
+      "en": [
+        "Ah, it's you! Good to see you. Your {daycare:0} and {daycare:1} are both getting on just fine."
+      ],
+      "text": [
+        "A, tu erai! Mă bucur să te văd. {daycare:0} și {daycare:1} ai tăi se descurcă amândoi de minune."
+      ]
+    },
+    {
+      "en": [
+        "The two of them are as thick as thieves."
+      ],
+      "text": [
+        "Cei doi sunt nedespărțiți."
+      ]
+    },
+    {
+      "en": [
+        "The two of them get along well enough."
+      ],
+      "text": [
+        "Cei doi se înțeleg destul de bine."
+      ]
+    },
+    {
+      "en": [
+        "The two of them don't seem to care for each other much."
+      ],
+      "text": [
+        "Cei doi nu prea par să se placă."
+      ]
+    },
+    {
+      "en": [
+        "The two of them would rather play with the other Pokémon than with each other."
+      ],
+      "text": [
+        "Cei doi preferă să se joace cu ceilalți Pokémoni decât unul cu altul."
+      ]
+    }
+  ],
+  "DayCareLady": [
+    {
+      "en": [
+        "Day-Care Lady"
+      ],
+      "text": [
+        "Doamna de la Pensiune"
+      ]
+    },
+    {
+      "en": [
+        "Hello, dear. I'm the Day-Care Lady. We can raise Pokémon for you. Shall we look after one of yours?"
+      ],
+      "text": [
+        "Bună, dragă. Eu sunt Doamna de la Pensiune. Putem crește Pokémoni pentru tine. Să avem grijă de unul de-al tău?"
+      ]
+    },
+    {
+      "en": [
+        "Oh, never mind, then. Do come again."
+      ],
+      "text": [
+        "A, nu-i nimic, atunci. Mai treci pe la noi."
+      ]
+    },
+    {
+      "en": [
+        "Which of your Pokémon shall we raise?"
+      ],
+      "text": [
+        "Pe care dintre Pokémonii tăi să-l creștem?"
+      ]
+    },
+    {
+      "en": [
+        "Lovely. We'll raise your {left} for a while. Come back for it later."
+      ],
+      "text": [
+        "Minunat. O să avem grijă de {left} o vreme. Vino după el mai târziu."
+      ]
+    },
+    {
+      "en": [
+        "We can look after two Pokémon at once. Shall we raise another?"
+      ],
+      "text": [
+        "Putem avea grijă de doi Pokémoni deodată. Să-l creștem și pe al doilea?"
+      ]
+    },
+    {
+      "en": [
+        "Very good. Do come again."
+      ],
+      "text": [
+        "Foarte bine. Mai treci pe la noi."
+      ]
+    },
+    {
+      "en": [
+        "Now, now. That's only an Egg, dear!"
+      ],
+      "text": [
+        "Ei, ei. Ăla e doar un Ou, dragă!"
+      ]
+    },
+    {
+      "en": [
+        "If you leave that one with me, what would you battle with? Come back another time."
+      ],
+      "text": [
+        "Dacă mi-l lași pe ăsta, cu ce o să mai lupți? Revino altă dată."
+      ]
+    },
+    {
+      "en": [
+        "Oh? But you've only the one Pokémon with you. You can't go off without a Pokémon! Come back another time."
+      ],
+      "text": [
+        "Oh? Dar ai doar un singur Pokémon la tine. Nu poți pleca fără Pokémon! Revino altă dată."
+      ]
+    },
+    {
+      "en": [
+        "Now, now. If you leave that one with me, you'll be left with just the one.",
+        "You'd do better to catch a few more first, if you ask me."
+      ],
+      "text": [
+        "Ei, ei. Dacă mi-l lași pe ăsta, rămâi doar cu unul.",
+        "Mai bine prinzi întâi câțiva, dacă mă întrebi pe mine."
+      ]
+    },
+    {
+      "en": [
+        "Ah, there you are! My husband has been looking for you."
+      ],
+      "text": [
+        "A, iată-te! Soțul meu te-a căutat."
+      ]
+    },
+    {
+      "en": [
+        "Ah, it's you! Good to see you. Now, about your Pokémon..."
+      ],
+      "text": [
+        "A, tu erai! Mă bucur să te văd. Deci, cât despre Pokémonii tăi..."
+      ]
+    },
+    {
+      "en": [
+        "We can look after two Pokémon at once. Shall we raise another?"
+      ],
+      "text": [
+        "Putem avea grijă de doi Pokémoni deodată. Să-l creștem și pe al doilea?"
+      ]
+    },
+    {
+      "en": [
+        "Would you like your Pokémon back?"
+      ],
+      "text": [
+        "Vrei Pokémonii înapoi?"
+      ]
+    },
+    {
+      "en": [
+        "Ah, it's you! Good to see you. Now, about your Pokémon..."
+      ],
+      "text": [
+        "A, tu erai! Mă bucur să te văd. Deci, cât despre Pokémonii tăi..."
+      ]
+    },
+    {
+      "en": [
+        "Would you like your Pokémon back?"
+      ],
+      "text": [
+        "Vrei Pokémonii înapoi?"
+      ]
+    },
+    {
+      "en": [
+        "Which Pokémon will you take back?",
+        "{daycare:0}  Lv. {level:0}",
+        "{daycare:1}  Lv. {level:1}",
+        "Cancel"
+      ],
+      "text": [
+        "Pe care Pokémon îl iei înapoi?",
+        "{daycare:0}  Nv. {level:0}",
+        "{daycare:1}  Nv. {level:1}",
+        "Anulează"
+      ]
+    },
+    {
+      "en": [
+        "If you'd like your {daycare:0} back, that will be ${fee:0}."
+      ],
+      "text": [
+        "Dacă vrei înapoi pe {daycare:0}, costă ${fee:0}."
+      ]
+    },
+    {
+      "en": [
+        "If you'd like your {daycare:1} back, that will be ${fee:1}."
+      ],
+      "text": [
+        "Dacă vrei înapoi pe {daycare:1}, costă ${fee:1}."
+      ]
+    },
+    {
+      "en": [
+        "Splendid! Here's your Pokémon."
+      ],
+      "text": [
+        "Minunat! Poftim Pokémonul tău."
+      ]
+    },
+    {
+      "en": [
+        "{player} took {taken} back from the Day-Care Lady."
+      ],
+      "text": [
+        "{player} l-a luat înapoi pe {taken} de la Doamna de la Pensiune."
+      ]
+    },
+    {
+      "en": [
+        "Would you like the other one back as well?"
+      ],
+      "text": [
+        "Îl vrei înapoi și pe celălalt?"
+      ]
+    },
+    {
+      "en": [
+        "Oh dear. You haven't got enough money..."
+      ],
+      "text": [
+        "Vai de mine. Nu ai destui bani..."
+      ]
+    },
+    {
+      "en": [
+        "Your team is full, dear. Make some room, then come and see me."
+      ],
+      "text": [
+        "Echipa ta e plină, dragă. Fă loc, apoi vino la mine."
+      ]
+    }
+  ],
+  "Grown0": [
+    {
+      "en": [
+        "By my reckoning, your {daycare:0} has grown by about {grown:0} levels."
+      ],
+      "text": [
+        "După socotelile mele, {daycare:0} al tău a crescut cu vreo {grown:0} niveluri."
+      ]
+    }
+  ],
+  "Grown1": [
+    {
+      "en": [
+        "By my reckoning, your {daycare:1} has grown by about {grown:1} levels."
+      ],
+      "text": [
+        "După socotelile mele, {daycare:1} al tău a crescut cu vreo {grown:1} niveluri."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "people": {
+    "machop_1": {
+      "name": {
+        "en": [
+          "Machop"
+        ],
+        "text": [
+          "Machop"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Maaa... CHOP!",
+          "It's carrying a lump of coal nearly as big as itself."
+        ],
+        "text": [
+          "Maaa... CHOP!",
+          "Duce o bucată de cărbune aproape cât el de mare."
+        ]
+      }
+    },
+    "machop_2": {
+      "name": {
+        "en": [
+          "Machop"
+        ],
+        "text": [
+          "Machop"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Chop-chop! Machop!"
+        ],
+        "text": [
+          "Chop-chop! Machop!"
+        ]
+      }
+    },
+    "machop_3": {
+      "name": {
+        "en": [
+          "Machop"
+        ],
+        "text": [
+          "Machop"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hup! Hup! Chooop!"
+        ],
+        "text": [
+          "Hup! Hup! Chooop!"
+        ]
+      }
+    },
+    "roark": {
+      "name": {
+        "en": [
+          "Roark"
+        ],
+        "text": [
+          "Roark"
+        ]
+      }
+    },
+    "worker": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          "Muncitorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I met my Machop up on Route 207, the pair of them.",
+          "There's nobody I'd rather have beside me at the coal face."
+        ],
+        "text": [
+          "Pe Machop-ii mei i-am întâlnit sus, pe Ruta 207, pe amândoi.",
+          "Nu e nimeni pe care să-l vreau mai mult alături în abataj."
+        ]
+      }
+    },
+    "worker_colin": {
+      "name": {
+        "en": [
+          "Colin"
+        ],
+        "text": [
+          "Colin"
+        ]
+      },
+      "before": {
+        "en": [
+          "Worker Colin: Go on, then. A quick one while I'm on my break!"
+        ],
+        "text": [
+          "Muncitor Colin: Hai, atunci. Una rapidă cât sunt în pauză!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Worker Colin: Back to it. I tell you, I'd sooner be out on the road with my Pokémon, like you."
+        ],
+        "text": [
+          "Muncitor Colin: Înapoi la treabă. Zău, aș prefera să fiu pe drumuri cu Pokémonii mei, ca tine."
+        ]
+      }
+    },
+    "worker_mason": {
+      "name": {
+        "en": [
+          "Mason"
+        ],
+        "text": [
+          "Mason"
+        ]
+      },
+      "before": {
+        "en": [
+          "Worker Mason: Keep it quiet, but I brought my Pokémon to work with me today!"
+        ],
+        "text": [
+          "Muncitor Mason: Să rămână între noi, dar azi mi-am adus Pokémonii la muncă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Worker Mason: Well, aren't you something! Right. Back to the coal, me and my partner."
+        ],
+        "text": [
+          "Muncitor Mason: Ei, ce mai talent! Bun. Înapoi la cărbune, eu și partenerul meu."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

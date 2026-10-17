@@ -1,0 +1,53 @@
+{
+  "displayName": {
+    "en": [
+      "Oreburgh City"
+    ],
+    "text": [
+      "Orașul Oreburgh"
+    ]
+  },
+  "people": {
+    "school_kid_f": {
+      "name": {
+        "en": [
+          "School Kid"
+        ],
+        "text": [
+          "Școlărița"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Roark trains Rock-type Pokémon.",
+          "Aren't Rock types great? I love how lumpy they are!"
+        ],
+        "text": [
+          "Roark antrenează Pokémoni de tip Rocă.",
+          "Nu-i așa că tipul Rocă e grozav? Îmi plac așa de mult cât sunt de colțuroși!"
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Roark is this town's Gym Leader.",
+          "He's young, but he keeps the mine running safe and smooth."
+        ],
+        "text": [
+          "Roark e Liderul de Arenă al orașului.",
+          "E tânăr, dar ține mina în siguranță și în bună rânduială."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

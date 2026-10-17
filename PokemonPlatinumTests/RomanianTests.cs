@@ -73,7 +73,94 @@ public class RomanianTests
         var english = Text.EnglishKeys;
         var romanian = Text.KeysOf(Romanian);
         Assert.Empty(english.Except(romanian).OrderBy(k => k));
-        Assert.Empty(romanian.Except(english).OrderBy(k => k));
+        // The places' names are the one section a language fills where English has nothing (plan 17 · N4, N6): an
+        // area's English name is its file's, and places.<its letters> is what another language shows instead
+        Assert.Empty(romanian.Except(english).Where(k => !k.StartsWith("places.", StringComparison.Ordinal)).OrderBy(k => k));
+    }
+
+    [Fact]
+    public void EveryPlaceRomanianNamesIsAnAreaOfSinnohAndShowsOnItsSign()
+    {
+        var areas = Directory.GetFiles(Path.Combine(Repository.Root, "PokemonPlatinumEngine", "Data", "world", "sinnoh", "areas"), "*.json")
+            .Select(f => JsonDocument.Parse(File.ReadAllText(f)).RootElement.GetProperty("name").GetString()!)
+            .Select(PokemonPlatinumEngine.Models.Trainer.KeyOf).ToHashSet(StringComparer.Ordinal);
+        var named = Text.KeysOf(Romanian).Where(k => k.StartsWith("places.", StringComparison.Ordinal)).Select(k => k["places.".Length..]).ToList();
+        Assert.NotEmpty(named);
+        Assert.Empty(named.Where(n => !areas.Contains(n)).OrderBy(n => n));
+        try
+        {
+            Text.Use(Romanian);
+            Assert.Equal("Orășelul Twinleaf", LocalNames.PlaceShown(null, "Twinleaf Town"));
+            Assert.Equal("Ruta 201", LocalNames.PlaceShown(null, "Route 201"));
+            Assert.Equal("Liga Pokémon", LocalNames.PlaceShown(null, "Pokémon League"));
+        }
+        finally { Text.Use(Text.English); }
+    }
+
+    [Fact]
+    public void TheIntroductionIsSaidInRomanianWithTheNamesFilledAfterTheLineIsFound()
+    {
+        try
+        {
+            Text.Use(Romanian);
+            var intro = new IntroScreen();
+            intro.Open();
+            var said = new List<string>();
+            for (int guard = 0; guard < 20000 && intro.Phase != IntroPhase.Done; guard++)
+            {
+                if (intro.Talking)
+                {
+                    if (intro.LineComplete) said.Add(intro.SpokenText);
+                    intro.PressConfirm();
+                }
+                else if (intro.Phase is IntroPhase.ChooseLook or IntroPhase.ConfirmLook or IntroPhase.ConfirmName or IntroPhase.ConfirmRival)
+                    intro.PressConfirm();
+                else if (intro.Phase is IntroPhase.EnterName or IntroPhase.EnterRival)
+                {
+                    intro.PressStart();
+                    intro.PressConfirm();
+                }
+                intro.Advance(1f / 60f);
+            }
+            Assert.Equal(IntroPhase.Done, intro.Phase);
+            Assert.Contains("Bună! Mă bucur că ai putut veni.", said);
+            // A line with a name in it is found by its English as the file writes it, {name} and all
+            Assert.Contains("Lucas! Ce nume frumos.", said);
+            Assert.Contains(said, line => line.StartsWith("Barry, desigur!", StringComparison.Ordinal));
+            Assert.DoesNotContain(said, line => line.Contains("fine name", StringComparison.Ordinal));
+        }
+        finally { Text.Use(Text.English); }
+    }
+
+    [Fact]
+    public void TheProfessorSpeaksRomanianFromTheTableBesideTheRegionFiles()
+    {
+        var table = Text.DataTable(Romanian);
+        var lines = RegionDatabase.All.Select(r => r.Professor).Where(p => p != null)
+            .SelectMany(p => new[] { p!.Lines.Hello, p.Lines.Welcome, p.Lines.MyName, p.Lines.World, p.Lines.OneOfThem, p.Lines.LiveAlongside,
+                p.Lines.Study, p.Lines.Enough, p.Lines.BoyOrGirl, p.Lines.AskName, p.Lines.NextDoor, p.Lines.NeverStill, p.Lines.FineName,
+                p.Lines.OfCourse, p.Lines.Story, p.Lines.OffYouGo })
+            .ToHashSet(StringComparer.Ordinal);
+        // Every line of the table is a line a region's file has (a line rewritten in English leaves its entry behind)
+        Assert.Empty(table.Keys.Where(k => !lines.Contains(k)).OrderBy(k => k));
+        // Every line of Sinnoh's professor is in it, with the placeholders its English has and no character the faces lack
+        var sinnoh = RegionDatabase.Get(RegionDatabase.Sinnoh)!.Professor!.Lines;
+        foreach (string line in new[] { sinnoh.Hello, sinnoh.Story, sinnoh.FineName, sinnoh.OfCourse, sinnoh.OffYouGo })
+            Assert.True(table.ContainsKey(line), line);
+        foreach (var (en, ro) in table)
+        {
+            foreach (System.Text.RegularExpressions.Match m in System.Text.RegularExpressions.Regex.Matches(ro, @"\{[a-z]+\}"))
+                Assert.Contains(m.Value, en);
+            Assert.Empty(TextMetrics.Undrawable(ro, UiWeight.Bold));
+        }
+        try
+        {
+            Text.Use(Romanian);
+            Assert.Equal("Bună! Mă bucur că ai putut veni.", Text.OfData(sinnoh.Hello));
+            Assert.Equal("A line no table has.", Text.OfData("A line no table has."));
+        }
+        finally { Text.Use(Text.English); }
+        Assert.Equal(sinnoh.Hello, Text.OfData(sinnoh.Hello));
     }
 
     [Fact]
@@ -84,7 +171,12 @@ public class RomanianTests
         var wrong = new List<string>();
         foreach (var (key, entry) in romanian)
         {
-            var en = english[key];
+            // A place's name is Romanian's own (English shows the area's file), and takes no argument
+            if (!english.TryGetValue(key, out var en))
+            {
+                if (!key.StartsWith("places.", StringComparison.Ordinal) || Holes(entry).Count > 0) wrong.Add($"{key}: no English entry");
+                continue;
+            }
             var holes = Holes(entry);
             var allowed = Holes(en);
             if (OwnPlaceholders.TryGetValue(key, out var own)) allowed.UnionWith(own.Split(' '));

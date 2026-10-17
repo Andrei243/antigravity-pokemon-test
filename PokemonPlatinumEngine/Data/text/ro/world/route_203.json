@@ -1,0 +1,206 @@
+{
+  "people": {
+    "rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "{rival}: Oreburgh City's just through the gate! Get a move on!"
+        ],
+        "text": [
+          "{rival}: Orașul Oreburgh e chiar după poartă! Mișcă-te!"
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Lass"
+        ],
+        "text": [
+          "Domnișoara"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Whichever Pokémon is first in your party is the one that goes out first.",
+          "So put the one you trust most at the top!"
+        ],
+        "text": [
+          "Pokémonul care e primul în echipă e cel care iese primul în luptă.",
+          "Așa că pune-l sus pe cel în care ai cea mai mare încredere!"
+        ]
+      }
+    },
+    "youngster_michael": {
+      "name": {
+        "en": [
+          "Michael"
+        ],
+        "text": [
+          "Michael"
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Michael: My Pokémon are what get me out of bed in the morning! Go, both of you!"
+        ],
+        "text": [
+          "Puști Michael: Pokémonii mei sunt motivul pentru care mă dau jos din pat dimineața! La atac, amândoi!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Michael: Through the grass, or past the trainers? I can never make up my mind which is worse."
+        ],
+        "text": [
+          "Puști Michael: Prin iarbă sau pe lângă antrenori? Nu mă pot hotărî niciodată ce e mai rău."
+        ]
+      }
+    },
+    "youngster_dallas": {
+      "name": {
+        "en": [
+          "Dallas"
+        ],
+        "text": [
+          "Dallas"
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Dallas: Me and my Shinx go everywhere together. Nothing comes between us!"
+        ],
+        "text": [
+          "Puști Dallas: Eu și Shinx-ul meu mergem peste tot împreună. Nimic nu ne desparte!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Dallas: I'm not sore about it. We'll just have to get tougher, the two of us."
+        ],
+        "text": [
+          "Puști Dallas: Nu sunt supărat. Doar că trebuie să devenim mai duri, noi doi."
+        ]
+      }
+    },
+    "youngster_sebastian": {
+      "name": {
+        "en": [
+          "Sebastian"
+        ],
+        "text": [
+          "Sebastian"
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Sebastian: I'm on my way to challenge the Gym. You'll do for a warm-up!"
+        ],
+        "text": [
+          "Puști Sebastian: Merg să provoc Arena. Mă încălzesc cu tine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Sebastian: So I'm not ready for the Gym yet. Good thing I found out here."
+        ],
+        "text": [
+          "Puști Sebastian: Deci încă nu sunt gata de Arenă. Bine că am aflat aici."
+        ]
+      }
+    },
+    "lass_madeline": {
+      "name": {
+        "en": [
+          "Madeline"
+        ],
+        "text": [
+          "Madeline"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Madeline: Look what the Gym Leader in Oreburgh City gave me! Want to see how I won it?"
+        ],
+        "text": [
+          "Domnișoară Madeline: Uite ce mi-a dat Liderul de Arenă din Orașul Oreburgh! Vrei să vezi cum am câștigat-o?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Madeline: I'm going to collect every Badge there is. They're so shiny!"
+        ],
+        "text": [
+          "Domnișoară Madeline: O să adun toate Insignele care există. Sunt atât de strălucitoare!"
+        ]
+      }
+    },
+    "lass_kaitlin": {
+      "name": {
+        "en": [
+          "Kaitlin"
+        ],
+        "text": [
+          "Kaitlin"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Kaitlin: I was looking for Pokémon, and I found a trainer instead!"
+        ],
+        "text": [
+          "Domnișoară Kaitlin: Căutam Pokémoni și am găsit în schimb un antrenor!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Kaitlin: I just keep walking through the grass until the one I want jumps out."
+        ],
+        "text": [
+          "Domnișoară Kaitlin: Eu tot merg prin iarbă până sare cel pe care îl vreau."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost_jubilife_city": {
+      "en": [
+        "Route 203\nWest: Jubilife City"
+      ],
+      "text": [
+        "Ruta 203\nVest: Orașul Jubilife"
+      ]
+    },
+    "arrow_signpost_oreburgh_city": {
+      "en": [
+        "Route 203\nEast: Oreburgh Gate, Oreburgh City"
+      ],
+      "text": [
+        "Ruta 203\nEst: Poarta Oreburgh, Orașul Oreburgh"
+      ]
+    },
+    "trainer_tips_signpost_east": {
+      "en": [
+        "Trainer Tips\nA Pokémon that is about to evolve can be stopped. Press Cancel while it changes and it stays as it is."
+      ],
+      "text": [
+        "Sfaturi pentru Antrenori\nUn Pokémon care e pe cale să evolueze poate fi oprit. Apasă Anulează cât se schimbă și rămâne așa cum e."
+      ]
+    },
+    "trainer_tips_signpost_west": {
+      "en": [
+        "Trainer Tips\nEvery move can only be used so many times: its PP. A Pokémon Center restores the PP of every move."
+      ],
+      "text": [
+        "Sfaturi pentru Antrenori\nFiecare mișcare poate fi folosită doar de un număr de ori: PP-ul ei. Un Centru Pokémon reface PP-ul tuturor mișcărilor."
+      ]
+    }
+  }
+}

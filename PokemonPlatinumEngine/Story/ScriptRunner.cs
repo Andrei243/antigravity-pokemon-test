@@ -427,10 +427,13 @@ public sealed partial class ScriptRunner
                 var trainer = whose.TrainerData ?? throw Wrong(i, $"{whose.Name} is no trainer and has no trainer's lines");
                 string line = i.Option ? trainer.DialogueAfter : trainer.DialogueBefore;
                 Result = string.IsNullOrEmpty(line) ? 0 : 1;
-                // A line written "Youngster Tristan: ..." is said under that whole title, as the text box shows who speaks
-                string? title = line.StartsWith(trainer.FullTitle + ": ", StringComparison.Ordinal) ? trainer.FullTitle : whose == Subject ? speakerShown : ShownNameOf(whose);
+                // A line written "Youngster Tristan: ..." is said under that whole title, as the text box shows who speaks;
+                // a translated line begins with the title as its language says it ("Puști Tristan: ...", plan 17 · N6)
+                string said = Text.PersonLine(whose.LinesPlace, whose.LinesKey, i.Option ? PersonField.After : PersonField.Before, 0, new[] { line });
+                string? title = said.StartsWith(trainer.FullTitle + ": ", StringComparison.Ordinal) || line.StartsWith(trainer.FullTitle + ": ", StringComparison.Ordinal)
+                    ? trainer.FullTitle : whose == Subject ? speakerShown : ShownNameOf(whose);
                 if (Result == 1)
-                    host.Say(title, new[] { Fill(Text.PersonLine(whose.LinesPlace, whose.LinesKey, i.Option ? PersonField.After : PersonField.Before, 0, new[] { line })) });
+                    host.Say(title, new[] { Fill(said) });
                 break;
             }
             case Op.Speaker:

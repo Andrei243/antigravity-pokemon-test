@@ -1,0 +1,54 @@
+{
+  "GiveHm": [
+    {
+      "en": [
+        "Hiker"
+      ],
+      "text": [
+        "Drumețul"
+      ]
+    },
+    {
+      "en": [
+        "Hey there, young Trainer! Going through the Gate? Then you'll want this."
+      ],
+      "text": [
+        "Salut! Treci prin Poartă? Atunci o să vrei asta."
+      ]
+    },
+    {
+      "en": [
+        "Plenty of cracked rocks in these tunnels. Smash 'em, and you'll find all sorts of things!"
+      ],
+      "text": [
+        "Sunt o grămadă de stânci crăpate prin tunelurile astea. Sparge-le și o să găsești tot felul de lucruri!"
+      ]
+    }
+  ],
+  "Explain": [
+    {
+      "en": [
+        "Hiker"
+      ],
+      "text": [
+        "Drumețul"
+      ]
+    },
+    {
+      "en": [
+        "That HM holds Rock Smash. Teach it to a Pokémon and it can break cracked rocks out here in the field."
+      ],
+      "text": [
+        "HM-ul ăla conține Rock Smash. Învață-l pe un Pokémon și poate sparge stâncile crăpate pe teren."
+      ]
+    },
+    {
+      "en": [
+        "Mind you, it only works outside battle once you've earned the Badge from Oreburgh's Gym."
+      ],
+      "text": [
+        "Dar ține minte, în afara luptei merge doar după ce câștigi Insigna Arenei din Oreburgh."
+      ]
+    }
+  ]
+}

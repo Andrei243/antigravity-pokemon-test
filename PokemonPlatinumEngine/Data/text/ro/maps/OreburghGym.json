@@ -1,0 +1,102 @@
+{
+  "displayName": {
+    "en": [
+      "Oreburgh Gym"
+    ],
+    "text": [
+      "Arena Oreburgh"
+    ]
+  },
+  "people": {
+    "roark": {
+      "name": {
+        "en": [
+          "Roark"
+        ],
+        "text": [
+          "Roark"
+        ]
+      }
+    },
+    "gym_guide": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          "Ghidul Arenei"
+        ]
+      }
+    },
+    "youngster_jonathon": {
+      "name": {
+        "en": [
+          "Jonathon"
+        ],
+        "text": [
+          "Jonathon"
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Jonathon: Rock types are tough as stone! Can you even scratch mine?"
+        ],
+        "text": [
+          "Puști Jonathon: Tipul Rocă e tare ca piatra! Poți măcar să-l zgârii pe-al meu?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Jonathon: Cracked like a pebble... The Leader is much harder than me, though!"
+        ],
+        "text": [
+          "Puști Jonathon: Crăpat ca o pietricică... Dar Liderul e mult mai tare decât mine!"
+        ]
+      }
+    },
+    "youngster_darius": {
+      "name": {
+        "en": [
+          "Darius"
+        ],
+        "text": [
+          "Darius"
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Darius: Nobody gets to Roark without getting past me first!"
+        ],
+        "text": [
+          "Puști Darius: Nimeni nu ajunge la Roark fără să treacă întâi de mine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Darius: Fine, go on up. Roark's waiting, and he doesn't go easy."
+        ],
+        "text": [
+          "Puști Darius: Bine, urcă. Roark te așteaptă și nu se lasă ușor."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "3,23": {
+      "en": [
+        "OREBURGH CITY POKéMON GYM\nLeader: Roark"
+      ],
+      "text": [
+        "ARENA POKéMON A ORAȘULUI OREBURGH\nLider: Roark"
+      ]
+    },
+    "7,23": {
+      "en": [
+        "OREBURGH CITY POKéMON GYM\nLeader: Roark"
+      ],
+      "text": [
+        "ARENA POKéMON A ORAȘULUI OREBURGH\nLider: Roark"
+      ]
+    }
+  }
+}

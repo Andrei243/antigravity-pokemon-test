@@ -1,0 +1,43 @@
+{
+  "displayName": {
+    "en": [
+      "Flower Shop"
+    ],
+    "text": [
+      "Florăria"
+    ]
+  },
+  "people": {
+    "beauty": {
+      "name": {
+        "en": [
+          "Florist"
+        ],
+        "text": [
+          "Florăreasa"
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Lass"
+        ],
+        "text": [
+          "Domnișoara"
+        ]
+      }
+    },
+    "pokemon_breeder_f": {
+      "name": {
+        "en": [
+          "Pokémon Breeder"
+        ],
+        "text": [
+          "Crescătoare de Pokémoni"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

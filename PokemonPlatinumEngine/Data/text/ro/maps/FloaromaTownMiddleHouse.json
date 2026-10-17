@@ -1,0 +1,63 @@
+{
+  "displayName": {
+    "en": [
+      "Floaroma Town"
+    ],
+    "text": [
+      "Orășelul Floaroma"
+    ]
+  },
+  "people": {
+    "pokemon_breeder_f": {
+      "name": {
+        "en": [
+          "Pokémon Breeder"
+        ],
+        "text": [
+          "Crescătoare de Pokémoni"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Long ago this was a bare, lonely hill that even Pokémon kept away from.",
+          "People felt sorry for it and planted flowers, but not one would take. Nobody knew what else to try.",
+          "Then one day somebody gave thanks for everything nature gives us. And the whole hill burst into bloom."
+        ],
+        "text": [
+          "Demult, aici era un deal gol și pustiu, de care până și Pokémonii se fereau.",
+          "Oamenilor li s-a făcut milă de el și au plantat flori, dar niciuna n-a prins. Nimeni nu știa ce altceva să încerce.",
+          "Apoi, într-o zi, cineva a mulțumit pentru tot ce ne dă natura. Și tot dealul a înflorit."
+        ]
+      }
+    },
+    "twin": {
+      "name": {
+        "en": [
+          "Little Girl"
+        ],
+        "text": [
+          "Fetița"
+        ]
+      }
+    },
+    "clefairy": {
+      "name": {
+        "en": [
+          "Clefairy"
+        ],
+        "text": [
+          "Clefairy"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clefairy: Rii?"
+        ],
+        "text": [
+          "Clefairy: Rii?"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

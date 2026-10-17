@@ -48,6 +48,8 @@ What it looks for is, above all, what the game's readers pass over **without a w
 - it can be drawn: the interface's typeface is loaded with Latin-1, the two dashes and the ellipsis, and anything else comes out as a question mark (a curly quote, a gender mark, an arrow: the typeface has none), or as nothing (a non-breaking space)
 - it isn't empty
 
+**Every translated line** (plan 17 · N6; `Translations.cs`: a language's `text/<tag>/scripts`, `world` and `maps` files) is held to the same three rules as the English one it stands for: a line to the text box, with its speaker dropped as the language names them (the `speaker` line's own translation, or the person's `name`); an answer to its panel; a name to the faces. A script's entry that is stale (its `en` no longer the game's English) is passed over, since the game shows the English, which is held already.
+
 ## When it finds something
 
 Fix the file. A finding is a mistake of the data unless the check is wrong, and then the check is what to fix; `ContentTests` has a world to break for it.

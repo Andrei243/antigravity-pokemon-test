@@ -1,0 +1,71 @@
+{
+  "displayName": {
+    "en": [
+      "Oreburgh City"
+    ],
+    "text": [
+      "Orașul Oreburgh"
+    ]
+  },
+  "people": {
+    "pokemon_breeder_m": {
+      "name": {
+        "en": [
+          "Pokémon Breeder"
+        ],
+        "text": [
+          "Crescător de Pokémoni"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Sinnoh has eight Gym Leaders, and every Trainer is after the same thing: a Badge from each.",
+          "Which means beating all eight of them in their own Gyms!"
+        ],
+        "text": [
+          "Sinnoh are opt Lideri de Arenă, iar fiecare Antrenor vrea același lucru: o Insignă de la fiecare.",
+          "Asta înseamnă să-i bați pe toți opt, în propriile lor Arene!"
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          "Puștiul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A Gym Leader isn't some Trainer you bump into on a route. They're tough. Really tough.",
+          "If I were you I'd bring as many Pokémon as I could carry."
+        ],
+        "text": [
+          "Un Lider de Arenă nu e un Antrenor oarecare peste care dai pe o rută. Sunt duri. Foarte duri.",
+          "În locul tău, aș lua cu mine câți Pokémoni pot căra."
+        ]
+      }
+    },
+    "pokefan_f": {
+      "name": {
+        "en": [
+          "Pokéfan"
+        ],
+        "text": [
+          "Pokéfana"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Roark lets us townsfolk train our Pokémon down in the mine."
+        ],
+        "text": [
+          "Roark ne lasă pe noi, orășenii, să ne antrenăm Pokémonii jos, în mină."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

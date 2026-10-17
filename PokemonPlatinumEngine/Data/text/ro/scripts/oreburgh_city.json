@@ -1,0 +1,198 @@
+{
+  "ToTheGym": [
+    {
+      "en": [
+        "Boy"
+      ],
+      "text": [
+        "Băiatul"
+      ]
+    },
+    {
+      "en": [
+        "Hey! You're a Trainer, right? You've come for the Gym? I knew it!"
+      ],
+      "text": [
+        "Hei! Tu ești Antrenor, nu? Ai venit pentru Arenă? Știam eu!"
+      ]
+    },
+    {
+      "en": [
+        "I'll show you the way. Follow me!"
+      ],
+      "text": [
+        "Îți arăt drumul. Vino după mine!"
+      ]
+    },
+    {
+      "en": [
+        "This is the Oreburgh Gym! The Leader, Roark, is really strong. ...Huh? There's someone at the door."
+      ],
+      "text": [
+        "Asta e Arena din Oreburgh! Liderul, Roark, e foarte puternic. ...Hă? E cineva la ușă."
+      ]
+    }
+  ],
+  "Rival": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "{player}! You're late! I was going to take the Gym on first, but the Leader's not even here!"
+      ],
+      "text": [
+        "{player}! Ai întârziat! Voiam să provoc eu primul Arena, dar Liderul nici măcar nu e aici!"
+      ]
+    },
+    {
+      "en": [
+        "Somebody said Roark went down the Oreburgh Mine. That's at the south end of town."
+      ],
+      "text": [
+        "Cineva a zis că Roark a coborât în Mina Oreburgh. E la capătul de sud al orașului."
+      ]
+    },
+    {
+      "en": [
+        "Go and get him, will you? I'm waiting right here. Hurry it up!"
+      ],
+      "text": [
+        "Du-te și adu-l, te rog! Eu aștept chiar aici. Grăbește-te!"
+      ]
+    },
+    {
+      "en": [
+        "The Gym Leader went down the mine, south of town. Go and drag him back already!"
+      ],
+      "text": [
+        "Liderul de Arenă a coborât în mină, la sud de oraș. Du-te și adu-l odată!"
+      ]
+    }
+  ],
+  "RivalOnTheWayOut": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Whoa! {player}! Watch where you're going!"
+      ],
+      "text": [
+        "Uau! {player}! Uită-te pe unde mergi!"
+      ]
+    },
+    {
+      "en": [
+        "Got the Coal Badge? Me too! Roark was tough, but me and my team were tougher. Obviously."
+      ],
+      "text": [
+        "Ai luat Insigna Cărbune? Și eu! Roark a fost tare, dar eu și echipa mea am fost mai tari. Evident."
+      ]
+    },
+    {
+      "en": [
+        "Next stop: Eterna City and its Gym Badge. Out through Jubilife, then north. Bet I get there first!"
+      ],
+      "text": [
+        "Următoarea oprire: Orașul Eterna și Insigna Arenei de acolo. Înapoi prin Jubilife, apoi spre nord. Pun pariu că ajung primul!"
+      ]
+    }
+  ],
+  "Youngster": [
+    {
+      "en": [
+        "Boy"
+      ],
+      "text": [
+        "Băiatul"
+      ]
+    },
+    {
+      "en": [
+        "The Gym's right there. Roark's the best Trainer in the whole town!"
+      ],
+      "text": [
+        "Arena e chiar acolo. Roark e cel mai bun Antrenor din tot orașul!"
+      ]
+    },
+    {
+      "en": [
+        "Roark's back at the Gym! Go on, he's waiting for you!"
+      ],
+      "text": [
+        "Roark s-a întors la Arenă! Hai, te așteaptă!"
+      ]
+    },
+    {
+      "en": [
+        "You beat Roark? Can I see the Badge? ...Wow. So that's what a Coal Badge looks like up close!"
+      ],
+      "text": [
+        "L-ai bătut pe Roark? Pot să văd Insigna? ...Uau. Deci așa arată de aproape o Insignă Cărbune!"
+      ]
+    }
+  ],
+  "SchoolKidF": [
+    {
+      "en": [
+        "Schoolgirl"
+      ],
+      "text": [
+        "Școlărița"
+      ]
+    },
+    {
+      "en": [
+        "Roark runs the Gym, but he's down in the mine more than he's up here."
+      ],
+      "text": [
+        "Roark conduce Arena, dar stă mai mult jos în mină decât aici sus."
+      ]
+    },
+    {
+      "en": [
+        "Roark isn't only the Gym Leader. He keeps the mine safe for the workers too!"
+      ],
+      "text": [
+        "Roark nu e doar Lider de Arenă. Are grijă și ca mina să fie sigură pentru muncitori!"
+      ]
+    }
+  ],
+  "Worker2": [
+    {
+      "en": [
+        "Worker"
+      ],
+      "text": [
+        "Muncitorul"
+      ]
+    },
+    {
+      "en": [
+        "Hard work digging coal all day... Thanks for stopping to chat. Here, I've got a spare."
+      ],
+      "text": [
+        "E muncă grea să sapi cărbune toată ziua... Mersi că te-ai oprit la o vorbă. Poftim, am unul în plus."
+      ]
+    },
+    {
+      "en": [
+        "Seeing a young Trainer about puts a smile on my face. Keep at it!"
+      ],
+      "text": [
+        "Când văd un Antrenor tânăr pe aici, îmi vine să zâmbesc. Ține-o tot așa!"
+      ]
+    }
+  ]
+}

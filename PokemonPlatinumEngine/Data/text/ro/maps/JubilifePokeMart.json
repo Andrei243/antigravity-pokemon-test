@@ -1,0 +1,109 @@
+{
+  "displayName": {
+    "en": [
+      "Poké Mart"
+    ],
+    "text": [
+      "Poké Mart"
+    ]
+  },
+  "people": {
+    "guitarist": {
+      "name": {
+        "en": [
+          "Guitarist"
+        ],
+        "text": [
+          "Chitaristul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Aw, man. All that money on Poké Balls, gone.",
+          "I should've worn those wild Pokémon down a bit more before I threw them."
+        ],
+        "text": [
+          "Of, frate. Toți banii ăia pe Poké Ball, duși.",
+          "Trebuia să-i obosesc mai mult pe Pokémonii sălbatici înainte să arunc."
+        ]
+      }
+    },
+    "pokefan_f": {
+      "name": {
+        "en": [
+          "Pokéfan"
+        ],
+        "text": [
+          "Pokéfana"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Whatever else you forget, pack some Potions.",
+          "If your whole team faints, that's the end of the road for you as well!"
+        ],
+        "text": [
+          "Orice altceva ai uita, ia-ți niște Potion.",
+          "Dacă îți leșină toată echipa, s-a terminat drumul și pentru tine!"
+        ]
+      }
+    },
+    "cashier_f": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome to the Jubilife Poké Mart! How may I serve you today?"
+        ],
+        "text": [
+          "Vânzătoarea: Bine ai venit la Poké Martul din Jubilife! Cu ce te pot ajuta azi?"
+        ]
+      }
+    },
+    "cashier_m": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! This counter has goods you'll only find here in Jubilife."
+        ],
+        "text": [
+          "Vânzătorul: Bine ai venit! La tejgheaua asta găsești mărfuri care se vând doar aici, în Jubilife."
+        ]
+      }
+    },
+    "beauty_5": {
+      "name": {
+        "en": [
+          "Beauty"
+        ],
+        "text": [
+          "Frumoasa"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Potions matter, but now and then it's wiser not to battle at all.",
+          "Spray on a Repel and the wild Pokémon keep their distance for a while. No battles, no HP lost!"
+        ],
+        "text": [
+          "Potion-urile contează, dar uneori e mai înțelept să nu lupți deloc.",
+          "Pulverizează un Repel și Pokémonii sălbatici stau o vreme la distanță. Fără lupte, fără HP pierdut!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

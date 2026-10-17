@@ -1,0 +1,63 @@
+{
+  "displayName": {
+    "en": [
+      "Oreburgh City"
+    ],
+    "text": [
+      "Orașul Oreburgh"
+    ]
+  },
+  "people": {
+    "expert_f": {
+      "name": {
+        "en": [
+          "Expert"
+        ],
+        "text": [
+          "Experta"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Trade a Pokémon away and whatever it's holding goes along with it.",
+          "I once sent off a dear little Amulet Coin that way. Check their paws before you trade!"
+        ],
+        "text": [
+          "Dacă dai un Pokémon la schimb, pleacă și obiectul pe care îl ține.",
+          "Așa am pierdut odată un Amulet Coin tare drăguț. Verifică-le labele înainte de schimb!"
+        ]
+      }
+    },
+    "school_kid_f": {
+      "name": {
+        "en": [
+          "School Kid"
+        ],
+        "text": [
+          "Școlărița"
+        ]
+      }
+    },
+    "pokemon_breeder_m": {
+      "name": {
+        "en": [
+          "Pokémon Breeder"
+        ],
+        "text": [
+          "Crescător de Pokémoni"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A breeder's secret for you: a Pokémon that came to you in a trade grows up in a hurry.",
+          "It takes a bigger share of experience from every battle than one you caught yourself."
+        ],
+        "text": [
+          "Un secret de crescător: un Pokémon primit la schimb crește repede.",
+          "Ia din fiecare luptă o parte mai mare de experiență decât unul prins de tine."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

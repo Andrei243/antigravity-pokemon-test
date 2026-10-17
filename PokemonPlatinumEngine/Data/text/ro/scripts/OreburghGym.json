@@ -1,0 +1,160 @@
+{
+  "Roark": [
+    {
+      "en": [
+        "Roark"
+      ],
+      "text": [
+        "Roark"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Oreburgh Gym! I'm Roark, the Gym Leader."
+      ],
+      "text": [
+        "Bine ai venit la Arena din Oreburgh! Eu sunt Roark, Liderul de Arenă."
+      ]
+    },
+    {
+      "en": [
+        "Down in the mine I dig for fossils and coal. Up here I dig for strong Trainers."
+      ],
+      "text": [
+        "Jos, în mină, sap după fosile și cărbune. Aici sus, sap după Antrenori puternici."
+      ]
+    },
+    {
+      "en": [
+        "My Rock-type Pokémon are as hard as the bedrock under this town. Let's see what you're made of!"
+      ],
+      "text": [
+        "Pokémonii mei de tip Rocă sunt tari ca roca de sub orașul ăsta. Să vedem ce poți!"
+      ]
+    },
+    {
+      "en": [
+        "...Hah. That was a fine battle. You've earned this: the Coal Badge, the Badge of the Oreburgh Gym."
+      ],
+      "text": [
+        "...Ha. A fost o luptă frumoasă. Ai meritat-o: Insigna Cărbune, Insigna Arenei din Oreburgh."
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Coal Badge from Roark!"
+      ],
+      "text": [
+        "{player} a primit Insigna Cărbune de la Roark!"
+      ]
+    },
+    {
+      "en": [
+        "With it, Pokémon up to level 20 will obey you, even ones you got in a trade."
+      ],
+      "text": [
+        "Cu ea, te vor asculta Pokémonii până la nivelul 20, chiar și cei primiți la schimb."
+      ]
+    },
+    {
+      "en": [
+        "And Rock Smash can be used outside battle now. Cracked rocks won't stand in your way."
+      ],
+      "text": [
+        "Iar Rock Smash poate fi folosit acum și în afara luptei. Stâncile crăpate nu-ți mai stau în cale."
+      ]
+    },
+    {
+      "en": [
+        "Take this too. It's a TM I'm rather proud of."
+      ],
+      "text": [
+        "Ia și asta. E un TM de care sunt destul de mândru."
+      ]
+    },
+    {
+      "en": [
+        "TM76 holds Stealth Rock. It scatters sharp rocks around the other side, and they hurt every Pokémon that comes in."
+      ],
+      "text": [
+        "TM76 conține Stealth Rock. Împrăștie pietre ascuțite în tabăra adversă, care rănesc fiecare Pokémon care intră."
+      ]
+    },
+    {
+      "en": [
+        "The next Gym is in Eterna City, north past Floaroma Town. Its Leader, Gardenia, uses Grass types. Good luck!"
+      ],
+      "text": [
+        "Următoarea Arenă e în Orașul Eterna, la nord, după Orășelul Floaroma. Lidera ei, Gardenia, folosește tipul Iarbă. Baftă!"
+      ]
+    },
+    {
+      "en": [
+        "Every Trainer that comes through here leaves me stronger, win or lose. Come back any time!"
+      ],
+      "text": [
+        "Fiecare Antrenor care trece pe aici mă face mai puternic, fie că câștig, fie că pierd. Revino oricând!"
+      ]
+    }
+  ],
+  "GymGuide": [
+    {
+      "en": [
+        "Gym Guide"
+      ],
+      "text": [
+        "Ghidul Arenei"
+      ]
+    },
+    {
+      "en": [
+        "Hey there, champ in the making! Welcome to the Oreburgh Gym!"
+      ],
+      "text": [
+        "Salut, viitoare vedetă! Bine ai venit la Arena din Oreburgh!"
+      ]
+    },
+    {
+      "en": [
+        "Roark uses Rock types. Grass and Water moves hit them hard, and Fighting and Ground do well too."
+      ],
+      "text": [
+        "Roark folosește tipul Rocă. Mișcările de Iarbă și de Apă îi lovesc tare, iar Luptă și Pământ merg și ele bine."
+      ]
+    },
+    {
+      "en": [
+        "Normal and Flying moves barely scratch them. Choose your team with that in mind!"
+      ],
+      "text": [
+        "Mișcările Normale și de Zbor abia îi zgârie. Alege-ți echipa ținând cont de asta!"
+      ]
+    },
+    {
+      "en": [
+        "You beat Roark! That was something to see. Your name's going up on the statue!"
+      ],
+      "text": [
+        "L-ai bătut pe Roark! Merita văzut. Numele tău urcă pe statuie!"
+      ]
+    }
+  ],
+  "GymStatue": [
+    {
+      "en": [
+        "OREBURGH CITY POKéMON GYM. Leader: Roark. Certified Trainers: (none yet)"
+      ],
+      "text": [
+        "ARENA POKéMON A ORAȘULUI OREBURGH. Lider: Roark. Antrenori atestați: (încă niciunul)"
+      ]
+    },
+    {
+      "en": [
+        "OREBURGH CITY POKéMON GYM. Leader: Roark. Certified Trainers: {player}"
+      ],
+      "text": [
+        "ARENA POKéMON A ORAȘULUI OREBURGH. Lider: Roark. Antrenori atestați: {player}"
+      ]
+    }
+  ]
+}

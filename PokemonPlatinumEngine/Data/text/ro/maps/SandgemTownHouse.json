@@ -1,0 +1,53 @@
+{
+  "displayName": {
+    "en": [
+      "Sandgem Town"
+    ],
+    "text": [
+      "Orășelul Sandgem"
+    ]
+  },
+  "people": {
+    "pokemon_breeder_m": {
+      "name": {
+        "en": [
+          "Pokémon Breeder"
+        ],
+        "text": [
+          "Crescător de Pokémoni"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every battle leaves a Pokémon a little stronger than it was. That's all training is.",
+          "Don't rush it, though. Drop in at a Pokémon Center whenever your team looks worn out."
+        ],
+        "text": [
+          "Fiecare luptă face un Pokémon puțin mai puternic decât era. Asta e tot antrenamentul.",
+          "Dar nu te grăbi. Treci pe la un Centru Pokémon ori de câte ori echipa ta pare istovită."
+        ]
+      }
+    },
+    "pokemon_breeder_f": {
+      "name": {
+        "en": [
+          "Pokémon Breeder"
+        ],
+        "text": [
+          "Crescătoare de Pokémoni"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "You can tell a good Trainer by one thing: their Pokémon hardly ever faint.",
+          "They see the HP running low and do something about it in time."
+        ],
+        "text": [
+          "Un Antrenor bun îl recunoști după un singur lucru: Pokémonii lui aproape că nu leșină niciodată.",
+          "Văd când le scade HP-ul și fac ceva la timp."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

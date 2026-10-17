@@ -1,0 +1,133 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Center"
+    ],
+    "text": [
+      "Centrul Pokémon"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "psychic": {
+      "name": {
+        "en": [
+          "Psychic"
+        ],
+        "text": [
+          "Mediumul"
+        ]
+      }
+    },
+    "ace_trainer_f": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          "Antrenor As"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The PC in any Pokémon Center opens the Pokémon Storage System.",
+          "It keeps the Pokémon you can't carry, and it's where you go to fetch them back. That's all there is to it."
+        ],
+        "text": [
+          "PC-ul din orice Centru Pokémon deschide Sistemul de Depozitare Pokémon.",
+          "Păstrează Pokémonii pe care nu-i poți căra, și de acolo îi iei înapoi. Asta-i tot."
+        ]
+      }
+    },
+    "ninja_boy": {
+      "name": {
+        "en": [
+          "Ninja Boy"
+        ],
+        "text": [
+          "Micul Ninja"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I went downstairs to sign up for the Pokémon Wi-Fi Club!",
+          "They told me to come back when the link is up again. I'm going to ask every single day!"
+        ],
+        "text": [
+          "Am coborât să mă înscriu la Pokémon Wi-Fi Club!",
+          "Mi-au zis să revin când merge din nou legătura. O să întreb în fiecare zi!"
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          "Gentlemanul"
+        ]
+      }
+    },
+    "kid_with_nds_west": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "You know how friends battle each other over the wireless link?",
+          "With a Vs. Recorder you can keep the whole battle to watch again. A Battle Video, it's called!"
+        ],
+        "text": [
+          "Știi cum se luptă prietenii între ei prin legătura wireless?",
+          "Cu un Vs. Recorder poți păstra toată lupta ca s-o revezi. I se spune Battle Video!"
+        ]
+      }
+    },
+    "kid_with_nds_east": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A Vs. Recorder! I want one of those so much!",
+          "Did you go to the Global Terminal in Jubilife City? Did you? Did you?"
+        ],
+        "text": [
+          "Un Vs. Recorder! Îmi doresc așa de mult unul!",
+          "Ai fost la Global Terminal din Orașul Jubilife? Ai fost? Ai fost?"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

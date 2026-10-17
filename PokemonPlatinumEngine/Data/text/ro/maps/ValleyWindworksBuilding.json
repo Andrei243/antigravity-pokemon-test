@@ -1,0 +1,142 @@
+{
+  "displayName": {
+    "en": [
+      "Valley Windworks"
+    ],
+    "text": [
+      "Centrala Eoliană"
+    ]
+  },
+  "people": {
+    "galactic_grunt_1": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      }
+    },
+    "mars": {
+      "name": {
+        "en": [
+          "Mars"
+        ],
+        "text": [
+          "Mars"
+        ]
+      }
+    },
+    "scientist_papa": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          "Cercetătorul"
+        ]
+      }
+    },
+    "galactic_grunt_2": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: Hey! Nobody walks into the Windworks without Team Galactic's say-so!"
+        ],
+        "text": [
+          "Galactic Grunt: Hei! Nimeni nu intră în Centrală fără voia Echipei Galactic!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: Whoa... Fine, go on in. The Commander will sort you out."
+        ],
+        "text": [
+          "Galactic Grunt: Uau... Bine, intră. Te aranjează Comandanta."
+        ]
+      }
+    },
+    "galactic_grunt_3": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: Every gust this valley makes belongs to Team Galactic now. Want it back? Take it!"
+        ],
+        "text": [
+          "Galactic Grunt: Fiecare pală de vânt din valea asta e acum a Echipei Galactic. O vrei înapoi? Ia-o!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: Blown away... The Commander is not going to like this."
+        ],
+        "text": [
+          "Galactic Grunt: Spulberat... Comandantei n-o să-i placă asta."
+        ]
+      }
+    },
+    "little_girl": {
+      "name": {
+        "en": [
+          "Little Girl"
+        ],
+        "text": [
+          "Fetița"
+        ]
+      }
+    },
+    "grunt_m": {
+      "name": {
+        "en": [
+          "Galactic Grunt"
+        ],
+        "text": [
+          "Galactic Grunt"
+        ]
+      }
+    },
+    "charon": {
+      "name": {
+        "en": [
+          "Charon"
+        ],
+        "text": [
+          "Charon"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "19,9": {
+      "en": [
+        "Notes fill the screen: where each of Team Galactic's Commanders is sent, and what each is to bring back. The Valley Windworks' power heads the list."
+      ],
+      "text": [
+        "Ecranul e plin de notițe: unde e trimis fiecare Comandant al Echipei Galactic și ce trebuie să aducă înapoi. Energia Centralei Eoliene e prima pe listă."
+      ]
+    },
+    "22,9": {
+      "en": [
+        "Notes fill the screen: where each of Team Galactic's Commanders is sent, and what each is to bring back. The Valley Windworks' power heads the list."
+      ],
+      "text": [
+        "Ecranul e plin de notițe: unde e trimis fiecare Comandant al Echipei Galactic și ce trebuie să aducă înapoi. Energia Centralei Eoliene e prima pe listă."
+      ]
+    }
+  }
+}

@@ -1,0 +1,450 @@
+{
+  "people": {
+    "counterpart": {
+      "name": {
+        "en": [
+          "{assistant}"
+        ],
+        "text": [
+          "{assistant}"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "{assistant}: The professor's research is important. We can't let anyone take it!"
+        ],
+        "text": [
+          "{assistant}: Cercetarea profesorului e importantă. Nu putem lăsa pe nimeni s-o ia!"
+        ]
+      }
+    },
+    "looker": {
+      "name": {
+        "en": [
+          "Looker"
+        ],
+        "text": [
+          "Looker"
+        ]
+      }
+    },
+    "poketch_co_president": {
+      "name": {
+        "en": [
+          "President"
+        ],
+        "text": [
+          "Președintele"
+        ]
+      }
+    },
+    "prof_rowan": {
+      "name": {
+        "en": [
+          "Prof. Rowan"
+        ],
+        "text": [
+          "Prof. Rowan"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Prof. Rowan: Hmph. These people will not get one page of my research."
+        ],
+        "text": [
+          "Prof. Rowan: Hm. Oamenii ăștia nu vor primi nici măcar o pagină din cercetarea mea."
+        ]
+      }
+    },
+    "grunt_m_1": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: You'll regret getting in Team Galactic's way!"
+        ],
+        "text": [
+          "Galactic Grunt: O să-ți pară rău că te-ai pus în calea Echipei Galactic!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: Ugh! Beaten by a kid..."
+        ],
+        "text": [
+          "Galactic Grunt: Ah! Bătut de un copil..."
+        ]
+      }
+    },
+    "grunt_m_2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: Two on two, then! Don't cry when you lose!"
+        ],
+        "text": [
+          "Galactic Grunt: Doi contra doi, atunci! Să nu plângi când pierzi!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: How did we lose?!"
+        ],
+        "text": [
+          "Galactic Grunt: Cum am putut să pierdem?!"
+        ]
+      }
+    },
+    "clown_1": {
+      "name": {
+        "en": [
+          "Clown"
+        ],
+        "text": [
+          "Clovnul"
+        ]
+      }
+    },
+    "clown_2": {
+      "name": {
+        "en": [
+          "Clown"
+        ],
+        "text": [
+          "Clovnul"
+        ]
+      }
+    },
+    "clown_3": {
+      "name": {
+        "en": [
+          "Clown"
+        ],
+        "text": [
+          "Clovnul"
+        ]
+      }
+    },
+    "collector": {
+      "name": {
+        "en": [
+          "TV Producer"
+        ],
+        "text": [
+          "Producătorul TV"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The camera loves a Pokémon that is dressed for it. Remember that!"
+        ],
+        "text": [
+          "Camera iubește un Pokémon îmbrăcat cum trebuie. Ține minte asta!"
+        ]
+      }
+    },
+    "ace_trainer_f": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          "Antrenoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "That's the Pokétch Company. It makes the watch half the trainers in Sinnoh wear.",
+          "They say the president invented the thing himself."
+        ],
+        "text": [
+          "Aia e Compania Pokétch. Face ceasul pe care îl poartă jumătate din antrenorii din Sinnoh.",
+          "Se zice că președintele l-a inventat singur."
+        ]
+      }
+    },
+    "ace_trainer_m_1": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          "Antrenorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "You walked here from Twinleaf Town? It's a quiet place, that. I like it.",
+          "Jubilife must be a bit of a shock after it. Give it a day and you'll know every street."
+        ],
+        "text": [
+          "Ai venit pe jos din Orășelul Twinleaf? E un loc liniștit. Îmi place.",
+          "Jubilife te-o fi luat prin surprindere după el. Dă-i o zi și o să știi toate străzile."
+        ]
+      }
+    },
+    "ace_trainer_m_2": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          "Antrenorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Have you been to the TV station yet? It's the tall building at the top of the square.",
+          "Go even if you've been. Anybody can end up on the screen there!"
+        ],
+        "text": [
+          "Ai fost deja la televiziune? E clădirea înaltă din capătul de sus al pieței.",
+          "Du-te chiar dacă ai mai fost. Oricine poate ajunge pe ecran acolo!"
+        ]
+      }
+    },
+    "ace_trainer_m_3": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          "Antrenorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Through here is the Global Terminal, where trainers trade with the whole world.",
+          "They only let you in once you've won a Gym Badge, though."
+        ],
+        "text": [
+          "Pe aici e Global Terminal, unde antrenorii fac schimburi cu toată lumea.",
+          "Dar te lasă înăuntru doar după ce câștigi o Insignă de Arenă."
+        ]
+      }
+    },
+    "school_kid_m_1": {
+      "name": {
+        "en": [
+          "Schoolboy"
+        ],
+        "text": [
+          "Școlarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "One, two, three... six Poké Balls on the belt, and that's all it holds.",
+          "Six Pokémon is the most you can carry. Any more go to a PC box."
+        ],
+        "text": [
+          "Unu, doi, trei... șase Poké Ball la centură, și mai multe nu încap.",
+          "Poți purta cel mult șase Pokémoni. Restul ajung într-o cutie a PC-ului."
+        ]
+      }
+    },
+    "school_kid_m_2": {
+      "name": {
+        "en": [
+          "Schoolboy"
+        ],
+        "text": [
+          "Școlarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The more you walk with your Pokémon, the more they come to like you.",
+          "Mine wouldn't even look at me the day I caught it!"
+        ],
+        "text": [
+          "Cu cât te plimbi mai mult cu Pokémonii tăi, cu atât te îndrăgesc mai mult.",
+          "Al meu nici nu se uita la mine în ziua în care l-am prins!"
+        ]
+      }
+    },
+    "twin": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Did you see me on TV? They asked me questions and everything!"
+        ],
+        "text": [
+          "M-ai văzut la TV? M-au întrebat de toate!"
+        ]
+      }
+    },
+    "expert_m_1": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "New to Pokémon, are you? Then the Trainers' School is the place: the long building behind me.",
+          "And if you think you know it all already, go in anyway. There's always one more thing to learn."
+        ],
+        "text": [
+          "Abia te-ai apucat de Pokémoni, da? Atunci Școala de Antrenori e locul potrivit: clădirea lungă din spatele meu.",
+          "Și dacă tot crezi că știi totul, intră oricum. Mereu mai e ceva de învățat."
+        ]
+      }
+    },
+    "expert_m_2": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This city stands on ground that was cut out of a mountainside.",
+          "The people of Oreburgh did the cutting, and their Pokémon with them. We haven't forgotten."
+        ],
+        "text": [
+          "Orașul ăsta stă pe un teren tăiat dintr-o coastă de munte.",
+          "Oamenii din Oreburgh l-au tăiat, împreună cu Pokémonii lor. Nu i-am uitat."
+        ]
+      }
+    },
+    "kid_with_nds_1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm trading Pokémon with my friend!"
+        ],
+        "text": [
+          "Fac schimb de Pokémoni cu prietenul meu!"
+        ]
+      }
+    },
+    "kid_with_nds_2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I gave my Pokémon an item to hold before I traded it.",
+          "That way my friend gets two presents at once!"
+        ],
+        "text": [
+          "I-am dat Pokémonului meu un obiect să-l țină înainte să-l dau la schimb.",
+          "Așa prietenul meu primește două cadouri deodată!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "map_signpost_1": {
+      "en": [
+        "Jubilife City\nSinnoh's busiest city, where people and new ideas meet."
+      ],
+      "text": [
+        "Orașul Jubilife\nCel mai agitat oraș din Sinnoh, unde se întâlnesc oamenii și ideile noi."
+      ]
+    },
+    "map_signpost_2": {
+      "en": [
+        "Jubilife City\nSinnoh's busiest city, where people and new ideas meet."
+      ],
+      "text": [
+        "Orașul Jubilife\nCel mai agitat oraș din Sinnoh, unde se întâlnesc oamenii și ideile noi."
+      ]
+    },
+    "map_signpost_3": {
+      "en": [
+        "Jubilife City\nSinnoh's busiest city, where people and new ideas meet."
+      ],
+      "text": [
+        "Orașul Jubilife\nCel mai agitat oraș din Sinnoh, unde se întâlnesc oamenii și ideile noi."
+      ]
+    },
+    "map_signpost_4": {
+      "en": [
+        "Jubilife City\nSinnoh's busiest city, where people and new ideas meet."
+      ],
+      "text": [
+        "Orașul Jubilife\nCel mai agitat oraș din Sinnoh, unde se întâlnesc oamenii și ideile noi."
+      ]
+    },
+    "signboard_jubilife_condominiums": {
+      "en": [
+        "Jubilife Condominiums"
+      ],
+      "text": [
+        "Blocurile Jubilife"
+      ]
+    },
+    "signboard_poketch_company": {
+      "en": [
+        "Pokétch Company\nWe make the Pokétch, the Pokémon Watch every trainer needs."
+      ],
+      "text": [
+        "Compania Pokétch\nFacem Pokétch-ul, ceasul Pokémon de care are nevoie orice antrenor."
+      ]
+    },
+    "signboard_jubilife_tv": {
+      "en": [
+        "Jubilife TV\nSinnoh's own broadcast station."
+      ],
+      "text": [
+        "Jubilife TV\nPostul de televiziune al Sinnoh-ului."
+      ]
+    },
+    "signboard_trainers_school": {
+      "en": [
+        "Trainers' School\nEvery new trainer is welcome to learn the basics here, free of charge!"
+      ],
+      "text": [
+        "Școala de Antrenori\nOrice antrenor începător e binevenit să învețe aici noțiunile de bază, gratuit!"
+      ]
+    },
+    "signboard_global_terminal": {
+      "en": [
+        "Global Terminal\nTrade with trainers far away."
+      ],
+      "text": [
+        "Global Terminal\nFă schimburi cu antrenori de departe."
+      ]
+    }
+  }
+}

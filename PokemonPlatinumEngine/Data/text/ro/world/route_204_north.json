@@ -1,0 +1,158 @@
+{
+  "people": {
+    "youngster_north": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Do you raise Pokémon of different types?",
+          "A team that's all one type goes down together the moment it meets the type it's weak to."
+        ],
+        "text": [
+          "Crești Pokémoni de tipuri diferite?",
+          "O echipă de un singur tip cade toată deodată când dă de tipul la care e slabă."
+        ]
+      }
+    },
+    "ace_trainer_f": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          "Antrenoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I teach at the Trainers' School, so here's today's lesson.",
+          "Some moves care whether a Pokémon is male or female. Captivate only works on the opposite gender!"
+        ],
+        "text": [
+          "Predau la Școala de Antrenori, așa că uite lecția de azi.",
+          "Unor mișcări le pasă dacă un Pokémon e mascul sau femelă. Captivate merge doar pe sexul opus!"
+        ]
+      }
+    },
+    "aroma_lady_taylor": {
+      "name": {
+        "en": [
+          "Taylor"
+        ],
+        "text": [
+          "Taylor"
+        ]
+      },
+      "before": {
+        "en": [
+          "Aroma Lady Taylor: The scent of the flowers brought you this way too? Let's see what sort of trainer you are."
+        ],
+        "text": [
+          "Doamna Aromelor Taylor: Și pe tine te-a adus încoace mireasma florilor? Să vedem ce fel de antrenor ești."
+        ]
+      },
+      "after": {
+        "en": [
+          "Aroma Lady Taylor: A strong one, it turns out. Follow the scent north and you'll come to Floaroma Town."
+        ],
+        "text": [
+          "Doamna Aromelor Taylor: Unul puternic, după cum se vede. Urmează mireasma spre nord și ajungi în Orășelul Floaroma."
+        ]
+      }
+    },
+    "bug_catcher_brandon": {
+      "name": {
+        "en": [
+          "Brandon"
+        ],
+        "text": [
+          "Brandon"
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Brandon: Hey, hey! Come and look at my Bug Pokémon!"
+        ],
+        "text": [
+          "Vânător de insecte Brandon: Hei, hei! Vino să vezi Pokémonii mei Insectă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Brandon: They grow up fast, they poison, they paralyse, and they're cute. Bugs are the best, honest!"
+        ],
+        "text": [
+          "Vânător de insecte Brandon: Cresc repede, otrăvesc, paralizează și sunt drăguți. Insectele sunt cele mai tari, pe cuvânt!"
+        ]
+      }
+    },
+    "twin_liv": {
+      "name": {
+        "en": [
+          "Liv"
+        ],
+        "text": [
+          "Liv"
+        ]
+      },
+      "before": {
+        "en": [
+          "Liv: We can beat this one in a single turn. Can't we, Liz?"
+        ],
+        "text": [
+          "Liv: Pe ăsta îl batem într-o singură tură. Nu-i așa, Liz?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Liv: ...This trainer is going to tell everybody about it, Liz."
+        ],
+        "text": [
+          "Liv: ...O să le povestească tuturor, Liz."
+        ]
+      }
+    },
+    "twin_liz": {
+      "name": {
+        "en": [
+          "Liz"
+        ],
+        "text": [
+          "Liz"
+        ]
+      },
+      "before": {
+        "en": [
+          "Liz: We're the best in our whole class!"
+        ],
+        "text": [
+          "Liz: Suntem cele mai bune din toată clasa!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Liz: ...This trainer looks much too pleased about it, Liv."
+        ],
+        "text": [
+          "Liz: ...Uite ce zâmbet larg are, Liv."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost": {
+      "en": [
+        "Route 204\nNorth: Floaroma Town"
+      ],
+      "text": [
+        "Ruta 204\nNord: Orășelul Floaroma"
+      ]
+    }
+  }
+}

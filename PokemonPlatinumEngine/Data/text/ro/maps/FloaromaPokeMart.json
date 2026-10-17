@@ -1,0 +1,89 @@
+{
+  "displayName": {
+    "en": [
+      "Poké Mart"
+    ],
+    "text": [
+      "Poké Mart"
+    ]
+  },
+  "people": {
+    "beauty": {
+      "name": {
+        "en": [
+          "Beauty"
+        ],
+        "text": [
+          "Frumoasa"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm going to dress my Pokémon up in the sweetest Accessories and take it to the TV station in Jubilife City.",
+          "Then the whole of Sinnoh will get to see it!"
+        ],
+        "text": [
+          "O să-mi îmbrac Pokémonul cu cele mai drăguțe Accesorii și o să-l duc la televiziunea din Orașul Jubilife.",
+          "Atunci tot Sinnoh-ul o să-l vadă!"
+        ]
+      }
+    },
+    "school_kid_f": {
+      "name": {
+        "en": [
+          "Schoolgirl"
+        ],
+        "text": [
+          "Școlărița"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Poké Marts don't sell Berries, or Accessories either.",
+          "Just as well. I'd only spend all my pocket money on them."
+        ],
+        "text": [
+          "Poké Martul nu vinde Boabe și nici Accesorii.",
+          "Cu atât mai bine. Mi-aș cheltui toți banii de buzunar pe ele."
+        ]
+      }
+    },
+    "cashier_f": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome to the Floaroma Poké Mart! How may I serve you today?"
+        ],
+        "text": [
+          "Vânzătoarea: Bine ai venit la Poké Martul din Floaroma! Cu ce te pot ajuta azi?"
+        ]
+      }
+    },
+    "cashier_m": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! This counter has goods you'll only find here in Floaroma."
+        ],
+        "text": [
+          "Vânzătorul: Bine ai venit! La tejgheaua asta găsești mărfuri care se vând doar aici, în Floaroma."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

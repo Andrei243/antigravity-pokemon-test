@@ -1,0 +1,81 @@
+{
+  "displayName": {
+    "en": [
+      "Oreburgh City"
+    ],
+    "text": [
+      "Orașul Oreburgh"
+    ]
+  },
+  "people": {
+    "worker": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          "Muncitorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Give your Pokémon a nickname, that's what I say.",
+          "Nothing makes one feel more like your very own."
+        ],
+        "text": [
+          "Dă-i Pokémonului tău o poreclă, asta zic eu.",
+          "Nimic nu te face să-l simți mai mult al tău."
+        ]
+      }
+    },
+    "school_kid_f": {
+      "name": {
+        "en": [
+          "School Kid"
+        ],
+        "text": [
+          "Școlărița"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "He called our Psyduck \"Yellow\". Because it's yellow.",
+          "I've thought about it for days and I still can't see the reasoning."
+        ],
+        "text": [
+          "El i-a pus Psyduck-ului nostru numele „Galbenul”. Pentru că e galben.",
+          "M-am gândit zile întregi și tot nu-i pricep logica."
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Lass"
+        ],
+        "text": [
+          "Domnișoara"
+        ]
+      }
+    },
+    "psyduck": {
+      "name": {
+        "en": [
+          "Yellow"
+        ],
+        "text": [
+          "Galbenul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Yellow: Duuuck?"
+        ],
+        "text": [
+          "Galbenul: Duuuck?"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,21 @@
+{
+  "displayName": {
+    "en": [
+      "Sandgem Town"
+    ],
+    "text": [
+      "Orășelul Sandgem"
+    ]
+  },
+  "people": {},
+  "signs": {
+    "2,3": {
+      "en": [
+        "{assistant}'s computer. A note is stuck to the screen:\n\"Rule one: the Start Menu has everything. Rule two: SAVE before bed!\""
+      ],
+      "text": [
+        "Calculatorul lui {assistant}. Pe ecran e lipit un bilețel:\n„Regula unu: Meniul Start are de toate. Regula doi: SALVEAZĂ înainte de culcare!”"
+      ]
+    }
+  }
+}

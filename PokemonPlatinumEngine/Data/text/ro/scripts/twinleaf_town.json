@@ -1,0 +1,80 @@
+{
+  "GuitaristStops": [
+    {
+      "en": [
+        "Guitarist"
+      ],
+      "text": [
+        "Chitaristul"
+      ]
+    },
+    {
+      "en": [
+        "Whoa, hold on! {rival} was out here a minute ago, looking all over for you."
+      ],
+      "text": [
+        "Stai, stai puțin! {rival} a fost aici adineauri și te căuta peste tot."
+      ]
+    },
+    {
+      "en": [
+        "He went back home. Don't you want to know what he wanted?"
+      ],
+      "text": [
+        "S-a întors acasă. Nu vrei să afli ce voia?"
+      ]
+    }
+  ],
+  "RivalRunsOut": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Ow! Who's standing right outside my door? ...Oh, it's you, {player}!"
+      ],
+      "text": [
+        "Au! Cine stă chiar în fața ușii mele? ...A, tu erai, {player}!"
+      ]
+    },
+    {
+      "en": [
+        "Listen, I'm off to see Professor Rowan! You're coming too, right? Hurry up!"
+      ],
+      "text": [
+        "Ascultă, mă duc la profesorul Rowan! Vii și tu, nu? Grăbește-te!"
+      ]
+    },
+    {
+      "en": [
+        "Wait, wait! I forgot something! Don't go anywhere!"
+      ],
+      "text": [
+        "Stai, stai! Am uitat ceva! Nu pleca nicăieri!"
+      ]
+    }
+  ],
+  "Guitarist": [
+    {
+      "en": [
+        "Guitarist"
+      ],
+      "text": [
+        "Chitaristul"
+      ]
+    },
+    {
+      "en": [
+        "{rival} was out here looking for you. He's back at his house now."
+      ],
+      "text": [
+        "{rival} a fost aici și te căuta. Acum s-a întors acasă."
+      ]
+    }
+  ]
+}

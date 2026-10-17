@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "Oreburgh City"
+    ],
+    "text": [
+      "Orașul Oreburgh"
+    ]
+  },
+  "people": {
+    "worker": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          "Muncitorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Come to have a look round our coal mine, have you? Good for you!",
+          "Seeing something new always leaves you a little wiser than you were."
+        ],
+        "text": [
+          "Ai venit să vezi mina noastră de cărbune, da? Bravo ție!",
+          "Când vezi ceva nou, pleci mereu un pic mai înțelept decât ai venit."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

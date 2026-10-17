@@ -1,0 +1,53 @@
+{
+  "displayName": {
+    "en": [
+      "Floaroma Meadow"
+    ],
+    "text": [
+      "Pajiștea Floaroma"
+    ]
+  },
+  "people": {
+    "hiker": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The flowers in these fields are something special.",
+          "See how much brighter they are than flowers anywhere else in Sinnoh? You have Pokémon to thank for that."
+        ],
+        "text": [
+          "Florile de pe câmpurile astea sunt ceva deosebit.",
+          "Vezi cât sunt de vii față de florile de oriunde altundeva din Sinnoh? Pentru asta trebuie să le mulțumești Pokémonilor."
+        ]
+      }
+    },
+    "ninja_boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "If you spread Honey on a tree, come back later and see whether it's shaking.",
+          "If it is, there's often a rare Pokémon in it. I get all excited every time I see one moving!"
+        ],
+        "text": [
+          "Dacă întinzi Honey pe un copac, revino mai târziu și uită-te dacă se scutură.",
+          "Dacă da, e adesea un Pokémon rar în el. Mă entuziasmez de fiecare dată când văd unul mișcându-se!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

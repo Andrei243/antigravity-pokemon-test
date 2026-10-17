@@ -1,0 +1,132 @@
+{
+  "displayName": {
+    "en": [
+      "Rowan's Pokémon Lab"
+    ],
+    "text": [
+      "Laboratorul lui Rowan"
+    ]
+  },
+  "people": {
+    "prof_rowan": {
+      "name": {
+        "en": [
+          "Prof. Rowan"
+        ],
+        "text": [
+          "Prof. Rowan"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Prof. Rowan: Ah, {player}! Welcome to my research facility.",
+          "Prof. Rowan: The bond between trainers and Pokémon is truly limitless.",
+          "Prof. Rowan: Explore Sinnoh, complete the Pokédex, and unravel the secrets of the Distortion World!"
+        ],
+        "text": [
+          "Prof. Rowan: A, {player}! Bine ai venit la centrul meu de cercetare.",
+          "Prof. Rowan: Legătura dintre antrenori și Pokémoni e cu adevărat fără margini.",
+          "Prof. Rowan: Explorează Sinnoh-ul, completează Pokédexul și dezleagă tainele Lumii Distorsionate!"
+        ]
+      }
+    },
+    "scientist_m": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          "Cercetătorul"
+        ]
+      }
+    },
+    "scientist_f": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          "Cercetătoarea"
+        ]
+      }
+    },
+    "counterpart": {
+      "name": {
+        "en": [
+          "{assistant}"
+        ],
+        "text": [
+          "{assistant}"
+        ]
+      }
+    },
+    "prof_oak": {
+      "name": {
+        "en": [
+          "Prof. Oak"
+        ],
+        "text": [
+          "Prof. Oak"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Prof. Oak: Well, I must be going!"
+        ],
+        "text": [
+          "Prof. Oak: Ei, eu trebuie să plec!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "3,2": {
+      "en": [
+        "A note is tucked in between the books.\n\"Adventure Rule No. 1: the menu is a traveller's best friend. Open it often.\""
+      ],
+      "text": [
+        "Între cărți e strecurat un bilețel.\n„Regula de aventură nr. 1: meniul e cel mai bun prieten al călătorului. Deschide-l des.”"
+      ]
+    },
+    "4,2": {
+      "en": [
+        "A second note, in the same hand.\n\"Adventure Rule No. 2: SAVE before anything daring, and after anything worth keeping.\""
+      ],
+      "text": [
+        "Un al doilea bilețel, cu același scris.\n„Regula de aventură nr. 2: SALVEAZĂ înainte de orice îndrăzneală și după orice merită păstrat.”"
+      ]
+    },
+    "5,2": {
+      "en": [
+        "The shelf is crammed with books on Pokémon: where they live, what they eat, how they grow."
+      ],
+      "text": [
+        "Raftul e ticsit cu cărți despre Pokémoni: unde trăiesc, ce mănâncă, cum cresc."
+      ]
+    },
+    "6,2": {
+      "en": [
+        "Folders of field notes and research reports, every spine labelled in the professor's square hand."
+      ],
+      "text": [
+        "Dosare cu notițe de teren și rapoarte de cercetare, fiecare cotor etichetat cu scrisul colțuros al profesorului."
+      ]
+    },
+    "11,2": {
+      "en": [
+        "{player} looked at the PC.\nThe screen is a wall of graphs and technical terms. It might as well be written in Unown."
+      ],
+      "text": [
+        "{player} s-a uitat la PC.\nEcranul e un zid de grafice și termeni tehnici. Parcă ar fi scris în Unown."
+      ]
+    },
+    "20,2": {
+      "en": [
+        "The refrigerator is full of sweets, shelf upon shelf of them.\nSo that is what keeps a laboratory going..."
+      ],
+      "text": [
+        "Frigiderul e plin de dulciuri, raft după raft.\nDeci asta ține în viață un laborator..."
+      ]
+    }
+  }
+}

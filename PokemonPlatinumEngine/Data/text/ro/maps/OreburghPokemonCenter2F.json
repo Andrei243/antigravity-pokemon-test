@@ -1,0 +1,73 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Center"
+    ],
+    "text": [
+      "Centrul Pokémon"
+    ]
+  },
+  "people": {
+    "teala_west": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This is the desk of the Union Room, where Trainers from all over meet to chat, to trade and to battle.",
+          "I'm sorry to say its door is shut for now. The wireless link it runs on has gone quiet all over Sinnoh."
+        ],
+        "text": [
+          "Acesta e ghișeul Union Room, unde Antrenori de peste tot se întâlnesc să stea la povești, să facă schimburi și să lupte.",
+          "Din păcate, ușa e închisă deocamdată. Legătura wireless de care depinde a amuțit în tot Sinnoh-ul."
+        ]
+      }
+    },
+    "teala_middle": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This is the desk of the Colosseum, where friends bring their teams to battle one another.",
+          "It is closed for the time being, I'm afraid. The wireless link is down."
+        ],
+        "text": [
+          "Acesta e ghișeul Colosseum, unde prietenii își aduc echipele ca să lupte între ei.",
+          "Deocamdată e închis, mă tem. Legătura wireless nu funcționează."
+        ]
+      }
+    },
+    "teala_east": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "At this desk Trainers mix their records and sign one another's Trainer Cards.",
+          "With the link down there is nobody to mix them with. Do ask again another day!"
+        ],
+        "text": [
+          "La ghișeul ăsta Antrenorii își amestecă recordurile și își semnează unii altora Cardul de Antrenor.",
+          "Fără legătură, n-ai cu cine să le amesteci. Mai întreabă altă dată!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}
