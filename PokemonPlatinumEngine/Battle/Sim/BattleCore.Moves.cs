@@ -999,7 +999,8 @@ public sealed partial class BattleCore
         {
             result = DamageCalculator.Calculate(user, t, move, rng, spread: use.Targets.Count > 1 && !StrikesEachAlone(use.Data), rules: Rules,
                 powerTenths: effect.PowerTenths(this, use, t), critBonus: effect.CritBonus, pastScreens: effect.PastScreens,
-                basePower: effect.BasePower?.Invoke(this, use, t), noVariance: effect.NoVariance, damageTenths: use.DamageTenths,
+                // (a Terastallized user's weak move of its Tera Type hits as 60: plan 06 · R23)
+                basePower: TeraPower(use, effect.BasePower?.Invoke(this, use, t)), noVariance: effect.NoVariance, damageTenths: use.DamageTenths,
                 // The catching lesson and the first battle have no critical hits (BtlCmd_CalcCrit)
                 noCrit: NoCriticalHits);
             // A Z-Move through a protection does a quarter (plan 06 · R21)

@@ -227,7 +227,9 @@ public partial class BattleEngine
             // And a Z-Ring lets one use a Z-Move and Ultra Burst (plan 06 · R21)
             ZRing = setup.Inventory.AllItems.Any(s => s.Name == BattleCore.ZRingItem),
             // And a Dynamax Band lets one Dynamax (plan 06 · R22)
-            DynamaxBand = setup.Inventory.AllItems.Any(s => s.Name == BattleCore.DynamaxBandItem)
+            DynamaxBand = setup.Inventory.AllItems.Any(s => s.Name == BattleCore.DynamaxBandItem),
+            // And a Tera Orb lets one Terastallize (plan 06 · R23)
+            TeraOrb = setup.Inventory.AllItems.Any(s => s.Name == BattleCore.TeraOrbItem)
         });
 
         Anim.Slots = core.PlayerSlots.Count;
@@ -680,6 +682,10 @@ public partial class BattleEngine
                 // A Dynamax and its end (plan 06 · R22)
                 ShowDynamax(happening);
                 break;
+            case Terastallized:
+                // A Terastallization (plan 06 · R23)
+                ShowTera(happening);
+                break;
             case UltraBursted burst:
                 // An Ultra Burst (plan 06 · R21): the form taken as a Mega Evolution's is
                 TakeTheForm(burst.Place);
@@ -857,6 +863,8 @@ public partial class BattleEngine
                 break;
             case Ended ended:
                 Result = ended.Result;
+                // Every Tera Type is taken off (plan 06 · R23)
+                ShowTera(happening);
                 break;
         }
     }

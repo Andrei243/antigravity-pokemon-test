@@ -361,3 +361,11 @@ public sealed record DynamaxEnded(Place Place, string? Form, int MaxHp, int Hp) 
 /// it (plan 25 · Y15); the rules change nothing by it.
 /// </summary>
 public sealed record MaxMoveUsed(Place Place, string MaxMove, string From) : BattleEvent;
+
+/// <summary>
+/// A Pokémon Terastallizes (plan 06 · R23): it rides on the line that says so, and from that line on the Pokémon in
+/// the place has the Tera Type <paramref name="TeraType"/> (a type's name, or "Stellar") until the battle ends, and is
+/// in <paramref name="Form"/> where that is not null (a Terapagos in its Stellar Form, with <paramref name="MaxHp"/> and
+/// <paramref name="Hp"/>). Whoever shows the battle takes them from it (plan 25 gives it a look of its own).
+/// </summary>
+public sealed record Terastallized(Place Place, string TeraType, string? Form, int MaxHp, int Hp) : BattleEvent;

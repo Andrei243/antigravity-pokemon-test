@@ -36,13 +36,13 @@ public sealed partial class Importer
     private const int MegaStones = 44, ZCrystals = 46;
 
     /// <summary>
-    /// Single items of other categories that a mechanic of plan 06 needs (R20 to R22): the Key Stone a trainer Mega Evolves
-    /// with, the Z-Ring a trainer uses Z-Moves with and the Dynamax Band a trainer Dynamaxes with (key items), and the two orbs Primal Reversion goes by, which are held and so go in the Items pocket,
+    /// Single items of other categories that a mechanic of plan 06 needs (R20 to R23): the Key Stone a trainer Mega Evolves
+    /// with, the Z-Ring a trainer uses Z-Moves with and the Dynamax Band a trainer Dynamaxes with and the Tera Orb a trainer Terastallizes with (key items), and the two orbs Primal Reversion goes by, which are held and so go in the Items pocket,
     /// although Generation 3 first had them as key items.
     /// </summary>
     private static readonly Dictionary<string, ItemPocket> LaterItemsByName = new()
     {
-        ["key-stone"] = ItemPocket.KeyItems, ["z-ring"] = ItemPocket.KeyItems, ["dynamax-band"] = ItemPocket.KeyItems, ["red-orb"] = ItemPocket.Items, ["blue-orb"] = ItemPocket.Items
+        ["key-stone"] = ItemPocket.KeyItems, ["z-ring"] = ItemPocket.KeyItems, ["dynamax-band"] = ItemPocket.KeyItems, ["tera-orb"] = ItemPocket.KeyItems, ["red-orb"] = ItemPocket.Items, ["blue-orb"] = ItemPocket.Items
     };
 
     private readonly Decomp decomp;

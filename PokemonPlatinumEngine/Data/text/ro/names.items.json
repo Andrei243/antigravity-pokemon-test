@@ -777,7 +777,8 @@
     "Red Orb": "Globul Roșu",
     "Blue Orb": "Globul Albastru",
     "Z-Ring": "Inelul Z",
-    "Dynamax Band": "Brățara Dynamax"
+    "Dynamax Band": "Brățara Dynamax",
+    "Tera Orb": "Globul Tera"
   },
   "descriptions": {
     "items": {
@@ -1558,7 +1559,8 @@
       "Red Orb": "Ținut de Groudon, îl aduce la forma sa primordială când intră în luptă.",
       "Blue Orb": "Ținut de Kyogre, îl aduce la forma sa primordială când intră în luptă.",
       "Z-Ring": "Un inel care le permite Pokémonilor tăi să dezlănțuie o mișcare Z pe luptă, prin Cristalul Z ținut.",
-      "Dynamax Band": "O brățară care îi permite unui Pokémon de-al tău să se Dynamaxeze o dată pe luptă, uriaș timp de trei ture."
+      "Dynamax Band": "O brățară care îi permite unui Pokémon de-al tău să se Dynamaxeze o dată pe luptă, uriaș timp de trei ture.",
+      "Tera Orb": "Un glob care îi permite unui Pokémon de-al tău să se Teracristalizeze o dată pe luptă, strălucind în tipul său Tera."
     }
   }
 }

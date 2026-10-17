@@ -34,7 +34,8 @@ public partial class BattleEngine
         if (!CanDynamaxNow)
         {
             DynamaxArmed = false;
-            return false;
+            // A Terastallization where no Dynamax can be had either (plan 06 · R23)
+            return ToggleTera();
         }
         DynamaxArmed = !DynamaxArmed;
         return true;

@@ -61,11 +61,14 @@ public static partial class DamageCalculator
     public static float Effectiveness(Battler attacker, Battler defender, Move move, Ruleset? rules = null)
     {
         rules ??= Ruleset.Current;
+        // A Stellar move goes by no chart (plan 06 · R23)
+        if (move.Data.Stellar) return StellarEffectiveness(defender);
         // Thousand Arrows reaches whatever floats (plan 06 · R25; Showdown's ignoreImmunity), and Telekinesis holds up out of every other Ground move's reach
         if (move.Type == PokemonType.Ground && !HitsWhatFloats(move.Data) && (IsLiftedByMagnetism(defender) || IsHeldUp(defender))) return 0f;
         float total = 1f;
         foreach (var (_, multiplier) in Matchups(attacker, defender, move, rules)) total *= multiplier;
-        return total;
+        // Tera Shell turns a hit at full HP aside (plan 06 · R23)
+        return TeraShell(attacker, defender, move, total);
     }
 
     /// <summary>Magnet Rise holds: not for a Pokémon rooted to the ground or weighed down, nor under Gravity.</summary>
@@ -104,7 +107,8 @@ public static partial class DamageCalculator
 
         foreach (var type in types)
         {
-            if (type == PokemonType.Flying && defender.Turn.Roosting) continue;
+            // (A Terastallized Pokémon's type isn't taken away by roosting: plan 06 · R23)
+            if (type == PokemonType.Flying && defender.Turn.Roosting && !TeraTyped(defender)) continue;
             float multiplier = TypeChart.GetEffectiveness(move.Type, type, null, rules, inverse);
             if (multiplier == 0f)
             {

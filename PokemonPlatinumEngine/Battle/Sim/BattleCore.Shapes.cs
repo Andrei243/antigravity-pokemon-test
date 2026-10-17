@@ -98,6 +98,8 @@ public sealed partial class BattleCore
         }
         if (Is(b, "Eiscue", "Ice Face") && p.Form == "Eiscue-Noice" && Field.WeatherInEffect == BattleWeather.Hail)
             Reshape(b, null, Text.Of("battle.iceFaceRestored", ("pokemon", b.Name)), lasting: true);
+        // Tera Shift and Embody Aspect (plan 06 · R23)
+        TeraOnEntry(b);
         HpShapes(b);
     }
 

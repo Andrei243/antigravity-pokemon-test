@@ -15541,22 +15541,25 @@ log:
   say Go! Thwackey and Basculegion!
     + Entered P0 Pokemon=mine#0 Thwackey FromBall=true
     + Entered P1 Pokemon=mine#1 Basculegion FromBall=true
+  say Foe Terapagos transformed!
+    + Reshaped E0
   say Foe Terapagos used Earth Power!
     + Lunged E0 Category=Special
     + MoveShown Move=Earth Power Type=Ground Category=Special From=E0 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P1 Hp=122 Hard=false
+    ! Struck P1 Hp=90 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Basculegion used Take Down!
     + Lunged P1 Category=Physical
     + MoveShown Move=Take Down Type=Normal Category=Physical From=P1 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck E0 Hp=178 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=false
+    ! Struck E0 Hp=202 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=true
+  say It's not very effective...
   say Basculegion is hit with recoil!
-    + HpChanged P1 Hp=115 Healed=false
+    + HpChanged P1 Hp=88 Healed=false
   say Foe Sprigatito used Play Rough!
     + Lunged E1 Category=Physical
     + MoveShown Move=Play Rough Type=Fairy Category=Physical From=E1 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P1 Hp=89 Hard=false
+    ! Struck P1 Hp=62 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Thwackey used Scratch!
     + Lunged P0 Category=Physical
@@ -15565,15 +15568,13 @@ log:
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Terapagos used Tera Starstorm!
     + Lunged E0 Category=Special
-    + MoveShown Move=Tera Starstorm Type=Normal Category=Special From=E0 To=P1 Missed=false Blocked=true Critical=false SuperEffective=false
     + MoveShown Move=Tera Starstorm Type=Normal Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
     ! Struck P0 Hp=0 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
-  say It doesn't affect Basculegion...
   say Foe Terapagos was hurt by Thwackey's Rowap Berry!
     + ItemShown P0 Item=Rowap Berry
     + MomentShown P0 Moment=HeldItem From=none
-    + HpChanged E0 Hp=153 Healed=false
+    + HpChanged E0 Hp=176 Healed=false
   say Thwackey fainted!
     + Fainted P0
   say Basculegion used Take Down!
@@ -15583,7 +15584,7 @@ log:
   say Foe Sprigatito used Energy Ball!
     + Lunged E1 Category=Special
     + MoveShown Move=Energy Ball Type=Grass Category=Special From=E1 To=P1 Missed=false Blocked=false Critical=false SuperEffective=true
-    ! Struck P1 Hp=39 Hard=true
+    ! Struck P1 Hp=12 Hard=true
     ! HitSounded SuperEffective=true NotVeryEffective=false
   say It's super effective!
   say Go! Maushold!
@@ -15596,45 +15597,14 @@ log:
   say Foe Terapagos used Heavy Slam!
     + Lunged E0 Category=Physical
     + MoveShown Move=Heavy Slam Type=Steel Category=Physical From=E0 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P1 Hp=26 Hard=false
+    ! Struck P1 Hp=0 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
-  say Basculegion used Wave Crash!
-    + Lunged P1 Category=Physical
-    + MoveShown Move=Wave Crash Type=Water Category=Physical From=P1 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck E1 Hp=0 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=true
-  say It's not very effective...
-  say Basculegion is hit with recoil!
-    + HpChanged P1 Hp=0 Healed=false
   say Basculegion fainted!
     + Fainted P1
-  say Foe Sprigatito fainted!
-    + Fainted E1
-    + TrainerReacts E1 Cue=FirstDown
-  say Maushold gained 1759 EXP. Points!
-  ExpGained Pokemon=mine#2 Maushold Amount=1759
-  LevelRose Pokemon=mine#2 Maushold Level=13 Before=23/11/13/12/12/17 After=46/25/27/24/25/36
-  say Maushold grew to Lv. 13!
-    + MomentShown P0 Moment=LevelUp From=none
-  MoveWanted Pokemon=mine#2 Maushold Move=Helping Hand
-  MoveWanted Pokemon=mine#2 Maushold Move=Super Fang
-  say Ace Trainer Tester sent out Wyrdeer!
-    + Seen Species=Wyrdeer
-    + Entered E1 Pokemon=foe#2 Wyrdeer FromBall=true
-    + TrainerReacts E1 Cue=LastPokemon
-  say Foe Wyrdeer's Intimidate cuts Maushold's Attack!
-    + AbilityShown E1 Ability=Intimidate
-  say Maushold's Attack fell!
-    + StageChanged P0 Stat=Attack Stage=-1 Rose=false
-  say Maushold used Baby-Doll Eyes!
-    + Lunged P0 Category=Status
-    + MoveShown Move=Baby-Doll Eyes Type=Fairy Category=Status From=P0 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Foe Wyrdeer's Attack fell!
-    + StageChanged E1 Stat=Attack Stage=-1 Rose=false
-  say Foe Terapagos used Tera Starstorm!
-    + Lunged E0 Category=Special
-    + MoveShown Move=Tera Starstorm Type=Normal Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Foe Sprigatito used Energy Ball!
+    + Lunged E1 Category=Special
+    + MoveShown Move=Energy Ball Type=Grass Category=Special From=E1 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
     ! Struck P0 Hp=0 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Maushold fainted!
@@ -15643,7 +15613,7 @@ log:
   say ...  ...  ...
   say Lucas whited out!
   Ended Result=PlayerDefeat
-result: PlayerDefeat after 3 turns
+result: PlayerDefeat after 2 turns
 === battle 199
 rules: Modern rules
 format: Single

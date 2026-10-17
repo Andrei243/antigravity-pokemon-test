@@ -10291,6 +10291,17 @@
     "description": ""
   },
   {
+    "id": 2669,
+    "name": "Tera Orb",
+    "pocket": "KeyItems",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "An orb that lets one of the player's Pokémon a battle Terastallize, shining in its Tera Type."
+  },
+  {
     "id": 2675,
     "name": "Scroll of Darkness",
     "pocket": "KeyItems",
