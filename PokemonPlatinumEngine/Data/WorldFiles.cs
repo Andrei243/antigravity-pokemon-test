@@ -383,6 +383,22 @@ public sealed class WorldAreaFile
     /// <summary>Which of the original's Unown tables the Unown met here come from, from 1 (<see cref="Models.FormRules.UnownTables"/>); left out for the first.</summary>
     public int? UnownTable { get; set; }
 
+    /// <summary>
+    /// The wild Pokémon a rock smashed with Rock Smash lets out (plan 18 · W7: the GBA games' <c>rock_smash_mons</c>,
+    /// five slots met 60, 30, 5, 4 and 1 times in a hundred) and the chance in a hundred that one does. Nothing reads it
+    /// yet: Platinum has no such table, and the region plan that opens a place with one gives Rock Smash its rule.
+    /// </summary>
+    public List<AreaEncounter>? RockSmash { get; set; }
+    public int? RockSmashRate { get; set; }
+
+    /// <summary>
+    /// For a GBA map with a sea floor under it (plan 18 · W7, the original's <c>dive</c> and <c>emerge</c>
+    /// connections): the area Dive goes down into from its deep water, and the area surfacing from its sea floor comes
+    /// up into, tile for tile. A join of every such tile, so no warp of <see cref="Warps"/>; plan 21's Dive reads it.
+    /// </summary>
+    public string? Dive { get; set; }
+    public string? Emerge { get; set; }
+
     public List<AreaWarp> Warps { get; set; } = new();
     public List<AreaObject> Objects { get; set; } = new();
     public List<AreaSign> Signs { get; set; } = new();
@@ -398,6 +414,12 @@ public sealed class AreaEncounter
 
     /// <summary>For a slot with a range of levels (water), its top; <see cref="Level"/> is then its bottom.</summary>
     public int? MaxLevel { get; set; }
+
+    /// <summary>
+    /// How often in a hundred the slot is met, where it isn't what its place in the table says (plan 18 · W7: the
+    /// GBA's Old Rod's two slots, 70 and 30, and its Good Rod's three, 60, 20 and 20); left out where it is.
+    /// </summary>
+    public int? Weight { get; set; }
 }
 
 /// <summary>
@@ -540,6 +562,14 @@ public sealed class FeebasTiles
 public sealed class WorldIndexFile
 {
     public string Region { get; set; } = "";
+
+    /// <summary>
+    /// The region's houses are drawn into its tiles, not placed as models (plan 18 · W7: a GBA game's), so the
+    /// builder finds each at its door (<see cref="WorldMapBuilder.BuildingsAtDoors"/>). Left out for Sinnoh.
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
+    public bool BuildingsAtDoors { get; set; }
+
     public List<WorldMapEntry> Maps { get; set; } = new();
     public List<string> Areas { get; set; } = new();
 

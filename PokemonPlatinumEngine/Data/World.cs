@@ -207,7 +207,7 @@ public static class WorldMapBuilder
         bool Built(int cx, int cy) => swap == null || swap.Cells.Any(c => Math.Abs(c.ChunkX - cx) <= 1 && Math.Abs(c.ChunkY - cy) <= 1);
         int ChunkOf(int cx, int cy) =>
             swap?.Cells.FirstOrDefault(c => c.ChunkX == cx && c.ChunkY == cy) is { } swapped ? swapped.Chunk : Built(cx, cy) ? matrix.ChunkAt(cx, cy) : WorldMatrixFile.NoChunk;
-        bool cave = entry.Setting == MapSetting.Cave, nothing = entry.Setting == MapSetting.Void;
+        bool cave = entry.Setting == MapSetting.Cave, nothing = entry.Setting == MapSetting.Void, room = entry.Setting == MapSetting.Indoors;
         var map = new Map(matrix.Width * T, matrix.Height * T)
         {
             Name = entry.Name, DisplayName = world.Index.Region, Trees = entry.Trees, GroundLevel = GroundLevel, Setting = entry.Setting
@@ -224,7 +224,7 @@ public static class WorldMapBuilder
         for (int y = 0; y < map.Height; y++)
             for (int x = 0; x < map.Width; x++)
             {
-                map.SetGroundTile(x, y, cave ? TileType.CaveWall : nothing ? TileType.Void : TileType.Tree, isSolid: true);
+                map.SetGroundTile(x, y, cave ? TileType.CaveWall : nothing ? TileType.Void : room ? TileType.Wall : TileType.Tree, isSolid: true);
                 map.SetHeight(x, y, GroundLevel);
             }
 
@@ -295,7 +295,7 @@ public static class WorldMapBuilder
         // Where the world has no chunk at all there is forest too. Round the Battle Zone, where every chunk with trees
         // beside such a cell grows round ones, it is that forest; anywhere a pine wood stands beside it, it stays one
         TreeStyle? TreesOfChunk(int cx, int cy) => wooded.Contains((cx, cy)) ? map.TreesAt(cx * T, cy * T) : null;
-        if (!cave && !nothing)
+        if (!cave && !nothing && !room)
             for (int cy = 0; cy < matrix.Height; cy++)
                 for (int cx = 0; cx < matrix.Width; cx++)
                 {
@@ -348,6 +348,13 @@ public static class WorldMapBuilder
         {
             VoidIslands(map);
         }
+        else if (room)
+        {
+            // A room built from a layout (plan 18 · W7): what the import couldn't name is floor where it is walked and
+            // wall where it is blocked, never lawn and forest
+            foreach (var (x, z) in vague) map.SetGroundTile(x, z, TileType.Floor, map.IsSolid(x, z));
+            foreach (var (x, z) in blank) map.SetGroundTile(x, z, TileType.Wall, isSolid: true);
+        }
         else
         {
             // The original paints its dark of a cave's mouth in a few places that lead into nothing (the west end of
@@ -387,7 +394,73 @@ public static class WorldMapBuilder
 
         // Last, because a door knows where it leads only once the warps are in place
         map.PlacedBuildings = parts.Select(part => ToBuilding(map, part, entrances)).ToList();
+        // A world whose houses are drawn into its tiles (a GBA game's, plan 18 · W7) has its buildings found at their doors
+        if (world.Index.BuildingsAtDoors && !cave && !nothing && !room) map.PlacedBuildings.AddRange(BuildingsAtDoors(map, blank));
         return map;
+    }
+
+    /// <summary>How far a building found at its door reaches: a GBA game's largest houses and halls fit.</summary>
+    public const int DoorBuildingWidth = 16, DoorBuildingDepth = 12;
+
+    /// <summary>
+    /// The buildings of a map whose world has no models (plan 18 · W7): from each door of an open area (a warp on a
+    /// tile of the behaviour <see cref="TileBehavior.Door"/>), the blocked tiles the import couldn't name round it,
+    /// row by row: the front row the door is in, as wide as the row behind it (a fence running on from the front wall
+    /// is left out), and the rows behind as long as each is about as wide as that (the trees behind a house, which run
+    /// on far wider, are not the house), within <see cref="DoorBuildingWidth"/> by <see cref="DoorBuildingDepth"/>.
+    /// Its kind is what the door leads into (<see cref="MapStructures.KindOfDoor"/>). The box is laid as a building's
+    /// tiles: roof, the front row wall, the doors doors.
+    /// </summary>
+    public static List<BuildingInfo> BuildingsAtDoors(Map map, IEnumerable<(int X, int Z)> unnamedBlocked)
+    {
+        var blank = new HashSet<(int X, int Z)>(unnamedBlocked);
+        var buildings = new List<BuildingInfo>();
+        var taken = new HashSet<(int X, int Z)>();
+        foreach (var warp in map.Warps.OrderBy(w => w.SourceY).ThenBy(w => w.SourceX))
+        {
+            int dx = warp.SourceX, dz = warp.SourceY;
+            if (!map.InBounds(dx, dz) || map.BehaviourAt(dx, dz) != TileBehavior.Door || taken.Contains((dx, dz))) continue;
+            // The run of such tiles along a row through the door's column, no further than half the widest either way
+            bool Wall(int x, int z) => (x == dx && z == dz) || blank.Contains((x, z)) && !taken.Contains((x, z));
+            (int A, int B)? Run(int z)
+            {
+                if (!Wall(dx, z)) return null;
+                int a = dx, b = dx;
+                while (a - 1 > dx - DoorBuildingWidth / 2 && Wall(a - 1, z)) a--;
+                while (b + 1 < dx + DoorBuildingWidth / 2 && Wall(b + 1, z)) b++;
+                return (a, b);
+            }
+            // The building is the body over its front row: a fence that runs on from the front wall is no part of it,
+            // and a row that reaches much wider than the body (the trees behind a house) is where it ends
+            if (Run(dz) is not { } front || Run(dz - 1) is not { } body) continue;
+            int x0 = Math.Max(front.A, body.A), x1 = Math.Min(front.B, body.B), z0 = dz - 1, z1 = dz;
+            while (z0 - 1 > dz - DoorBuildingDepth && Run(z0 - 1) is { } above && above.A >= x0 - 1 && above.B <= x1 + 1
+                   && above.B - above.A + 1 >= (x1 - x0 + 1) * 3 / 4)
+                z0--;
+            var tiles = new HashSet<(int X, int Z)>();
+            for (int z = z0; z <= z1; z++)
+                for (int x = x0; x <= x1; x++)
+                    if (Wall(x, z)) tiles.Add((x, z));
+            var info = new BuildingInfo
+            {
+                X0 = x0, Y0 = z0, X1 = x1, Y1 = z1, RoofTile = TileType.RoofRed,
+                Kind = MapStructures.KindOfDoor(warp.TargetMap) ?? BuildingKind.House
+            };
+            for (int z = z0; z <= z1; z++)
+                for (int x = x0; x <= x1; x++)
+                {
+                    taken.Add((x, z));
+                    if (map.BehaviourAt(x, z) == TileBehavior.Door && map.GetWarpAt(x, z) is { } door)
+                    {
+                        map.SetGroundTile(x, z, TileType.Door, isSolid: false);
+                        if (z == z1) info.Doors.Add((x, door.TargetMap));
+                    }
+                    // An open tile inside the box (a step beside a porch) stays as it was
+                    else if (tiles.Contains((x, z)) || map.IsSolid(x, z)) map.SetGroundTile(x, z, z == z1 ? TileType.Wall : TileType.RoofRed, isSolid: true);
+                }
+            buildings.Add(info);
+        }
+        return buildings;
     }
 
     /// <summary>Makes the ground under a prop flat, at the height of the lowest tile it covers.</summary>
@@ -792,7 +865,7 @@ public static class WorldMapBuilder
                     SpeciesName = wild.Species,
                     MinLevel = wild.Level,
                     MaxLevel = wild.MaxLevel ?? wild.Level,
-                    Weight = slot < weights.Length ? weights[slot] : 1
+                    Weight = wild.Weight ?? (slot < weights.Length ? weights[slot] : 1)
                 });
             }
         }

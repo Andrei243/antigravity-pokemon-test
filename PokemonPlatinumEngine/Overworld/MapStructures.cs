@@ -192,17 +192,7 @@ public static class MapStructures
                 plaques.Sort();
 
                 var kind = BuildingKind.House;
-                foreach (var (_, target) in doors)
-                {
-                    kind = target switch
-                    {
-                        // Each town has its own Center and Mart ("JubilifePokemonCenter"), named after Sandgem's
-                        string t when t.EndsWith("PokemonCenter") => BuildingKind.PokemonCenter,
-                        string t when t.EndsWith("PokeMart") => BuildingKind.PokeMart,
-                        "RowanLab" => BuildingKind.Lab,
-                        _ => kind
-                    };
-                }
+                foreach (var (_, target) in doors) kind = KindOfDoor(target) ?? kind;
 
                 // What the map says outright wins over what the door suggests
                 foreach (var (tile, named) in map.BuildingKinds)
@@ -218,6 +208,23 @@ public static class MapStructures
         }
         return result;
     }
+
+    /// <summary>
+    /// What a building is by the room its door leads into, or null where the name doesn't say. Each of Sinnoh's
+    /// towns has its own Center and Mart (<c>JubilifePokemonCenter</c>), named after Sandgem's; a GBA game's rooms are
+    /// named by their map (plan 18 · W7: <c>ViridianCity_PokemonCenter_1F</c>, <c>ViridianCity_Mart</c>,
+    /// <c>PewterCity_Gym</c>, <c>PalletTown_ProfessorOaksLab</c>).
+    /// </summary>
+    public static BuildingKind? KindOfDoor(string? target) => target switch
+    {
+        null => null,
+        string t when t.EndsWith("PokemonCenter") || t.Contains("_PokemonCenter_") => BuildingKind.PokemonCenter,
+        string t when t.EndsWith("PokeMart") || t.EndsWith("_Mart") => BuildingKind.PokeMart,
+        "RowanLab" => BuildingKind.Lab,
+        string t when t.Contains('_') && t.EndsWith("Lab") => BuildingKind.Lab,
+        string t when t.Contains('_') && (t.EndsWith("_Gym") || t.Contains("_Gym_")) => BuildingKind.Gym,
+        _ => null
+    };
 
     private static bool IsWallOrDoor(Map map, int x, int y) =>
         map.InBounds(x, y) && map.GetGroundTile(x, y) is TileType.Wall or TileType.Door;

@@ -87,7 +87,13 @@ public enum MapSetting
     /// The Distortion World (plan 01 · M8): islands floating over nothing. Where nothing stands there is no ground at
     /// all, only the drop beneath the islands, which nobody walks into; the islands have a light of their own.
     /// </summary>
-    Void
+    Void,
+    /// <summary>
+    /// A room built from a layout of the world files (plan 18 · W7: a house of a GBA game, which keeps its rooms as
+    /// maps of their own and not as models): wall where no chunk says otherwise and wherever no way in reaches, the
+    /// room's open tiles floor where the import couldn't name their ground. Sinnoh's rooms are map files instead.
+    /// </summary>
+    Indoors
 }
 
 /// <summary>

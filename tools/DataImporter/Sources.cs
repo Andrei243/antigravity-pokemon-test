@@ -45,13 +45,19 @@ public static class Sources
     public const string EmeraldRepo = "https://github.com/pret/pokeemerald.git";
     public const string EmeraldCommit = "731ad5bfd6e6f265508d0efcca0ba42f9dcf5881";
 
-    /// <summary>What the GBA reader fetches of either game (W6's layouts and behaviours; W7 adds its events' files).</summary>
+    /// <summary>What the GBA reader fetches of either game (W6 the layouts and behaviours, W7 the wild Pokémon, items, trainers and heal locations).</summary>
     public static readonly string[] GbaFolders =
     {
         "/data/maps/map_groups.json", "/data/maps/*/map.json", "/data/layouts/layouts.json", "/data/layouts/*/map.bin",
         "/data/tilesets/*/*/metatile_attributes.bin", "/include/constants/metatile_behaviors.h",
         "/include/constants/metatile_labels.h", "/src/data/tilesets/headers.h", "/src/data/tilesets/metatiles.h",
-        "/include/fieldmap.h"
+        "/include/fieldmap.h",
+        // W7: the wild Pokémon, what each item's ball holds (finditem lines, no text), the trainers and their parties
+        // (names and numbers), the heal locations and the trainers' constants
+        "/src/data/wild_encounters.json", "/data/scripts/item_ball_scripts.inc", "/src/data/trainers.h",
+        "/src/data/trainer_parties.h", "/src/data/heal_locations.json", "/include/constants/opponents.h",
+        // which trainer each map's trainers battle as (the trainerbattle lines; the text beside them is never kept)
+        "/data/maps/*/scripts.inc", "/data/scripts/trainers.inc"
     };
 
     /// <summary>The named files of a pinned commit, downloaded once and reused until the commit or the list changes.</summary>
