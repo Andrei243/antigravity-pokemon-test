@@ -1157,8 +1157,8 @@ public class MenuScreenTests
     [Fact]
     public void APartnerIsChosenOnlyAfterTheQuestionIsAnsweredYes()
     {
-        Assert.Equal(new[] { "Turtwig", "Chimchar", "Piplup" }, StarterSelectScreen.Starters);
         var screen = new StarterSelectScreen();
+        Assert.Equal(new[] { "Turtwig", "Chimchar", "Piplup" }, screen.Starters);
         screen.Open();
         screen.Move(-1);
         Assert.Equal(2, screen.SelectedIndex);
@@ -1468,7 +1468,7 @@ public class MenuScreenTests
         intro.PressCancel();
         Assert.Equal(second, intro.SpokenText);
         intro.PressConfirm();
-        Assert.Equal(IntroScreen.Professor, intro.Speaker);
+        Assert.Equal(intro.Professor, intro.Speaker);
 
         // The world, then the ball: it opens by itself and a Pokémon is there
         Through(intro, IntroPhase.BallOpens);
@@ -1627,8 +1627,9 @@ public class MenuScreenTests
     [Fact]
     public void TheIntroductionShowsPlatinumsPokemonAndItHasAModel()
     {
-        Assert.Equal("Buneary", IntroScreen.ShownSpecies);
-        Assert.True(PokemonModels.HasModel(IntroScreen.ShownSpecies));
-        Assert.NotNull(PokemonDatabase.Get(IntroScreen.ShownSpecies));
+        var intro = new IntroScreen();
+        Assert.Equal("Buneary", intro.ShownSpecies);
+        Assert.True(PokemonModels.HasModel(intro.ShownSpecies));
+        Assert.NotNull(PokemonDatabase.Get(intro.ShownSpecies));
     }
 }

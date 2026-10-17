@@ -32,29 +32,12 @@ public static class SpawnLocations
     /// </summary>
     public const string Variable = "VAR_SPAWN_LOCATION";
 
-    public static readonly IReadOnlyList<SpawnLocation> All = new SpawnLocation[]
-    {
-        new(1, "twinleaf_town", 116, 886, "PlayerHouse"),
-        new(2, "sandgem_town", 177, 843, "PokemonCenter"),
-        new(3, "floaroma_town", 176, 667, "FloaromaPokemonCenter"),
-        new(4, "solaceon_town", 566, 657, "SolaceonPokemonCenter"),
-        new(5, "celestic_town", 472, 539, "CelesticPokemonCenter"),
-        new(6, "jubilife_city", 180, 777, "JubilifePokemonCenter"),
-        new(7, "canalave_city", 58, 723, "CanalavePokemonCenter"),
-        new(8, "oreburgh_city", 303, 757, "OreburghPokemonCenter"),
-        new(9, "eterna_city", 305, 531, "EternaPokemonCenter"),
-        new(10, "hearthome_city", 465, 698, "HearthomePokemonCenter"),
-        new(11, "pastoria_city", 600, 816, "PastoriaPokemonCenter"),
-        new(12, "veilstone_city", 717, 612, "VeilstonePokemonCenter"),
-        new(13, "sunyshore_city", 860, 785, "SunyshorePokemonCenter"),
-        new(14, "snowpoint_city", 379, 234, "SnowpointPokemonCenter"),
-        new(15, "pokemon_league", 842, 599, "PokemonLeagueSouthPokemonCenter", UnlockedOnArrival: false, Flag: "FLAG_FIRST_ARRIVAL_OUTSIDE_VICTORY_ROAD"),
-        new(16, "fight_area", 647, 430, "FightAreaPokemonCenter"),
-        new(17, "survival_area", 659, 339, "SurvivalAreaPokemonCenter"),
-        new(18, "resort_area", 802, 473, "ResortAreaPokemonCenter"),
-        new(19, "route_221", 306, 910, "PalParkLobby", UnlockedOnArrival: false),
-        new(20, "pokemon_league", 847, 560, "PokemonLeagueNorthPokemonCenter", UnlockedOnArrival: false)
-    };
+    /// <summary>A region's spawn locations as its file lists them (plan 18 · W1), numbered as the file numbers them.</summary>
+    public static IReadOnlyList<SpawnLocation> Of(Region region) =>
+        (region.File?.Spawns ?? new()).Select(p => new SpawnLocation(p.Id, p.Area, p.X, p.Y, p.Room, p.UnlockedOnArrival, p.Flag)).ToList();
+
+    /// <summary>Sinnoh's twenty, from <c>regions/sinnoh.json</c>: the places the rest of this class speaks of until Fly is region by region (plan 18 · W9).</summary>
+    public static readonly IReadOnlyList<SpawnLocation> All = Of(RegionDatabase.Get(RegionDatabase.Sinnoh)!);
 
     public static SpawnLocation? Get(int id) => id >= 1 && id <= All.Count ? All[id - 1] : null;
 

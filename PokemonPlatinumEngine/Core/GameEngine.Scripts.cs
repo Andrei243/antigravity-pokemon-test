@@ -992,7 +992,7 @@ public partial class GameEngine
             {
                 case ScriptScreen.Starter:
                     game.flow.State = GameState.StarterSelect;
-                    game.flow.StarterSelectScreen.Open();
+                    game.flow.StarterSelectScreen.Open(game.Here);
                     break;
                 case ScriptScreen.Shop:
                     game.flow.State = GameState.Shop;

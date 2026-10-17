@@ -73,6 +73,16 @@ public static class Text
         return lang.Pseudo ? $"[{text}]" : text;
     }
 
+    /// <summary>
+    /// A line a data file gives in English (a region's professor and his lines, plan 18 · W1) as the chosen language
+    /// shows it: itself, in brackets under the pseudo-language. Another language's own words for such files are a
+    /// later session's (a table per language beside the file); until then they are English in every language.
+    /// </summary>
+    public static string OfData(string line)
+    {
+        lock (gate) return (language ??= Core.Language.Of(English) ?? new Language()).Pseudo ? $"[{line}]" : line;
+    }
+
     /// <summary>Whether English has <paramref name="key"/>.</summary>
     public static bool Has(string key)
     {

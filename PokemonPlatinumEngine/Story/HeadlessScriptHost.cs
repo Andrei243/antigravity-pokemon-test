@@ -672,7 +672,7 @@ public sealed class HeadlessScriptHost : IScriptHost
         if (screen != ScriptScreen.Starter) return;
 
         // As the game does: the Pokémon chosen joins the team (the player's first, since plan 02 · S4)
-        int choice = Math.Clamp(StarterChoice, 0, StoryState.Starters.Length - 1);
+        int choice = Math.Clamp(StarterChoice, 0, StoryState.Starters.Count - 1);
         string species = StoryState.Starters[choice];
         GivePokemon(new Pokemon(PokemonDatabase.Get(species)!, 5));
         Story.ChooseStarter(species);

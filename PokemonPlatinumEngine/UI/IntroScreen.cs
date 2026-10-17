@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Raylib_cs;
 using PokemonPlatinumEngine.Core;
+using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Overworld;
 using PokemonPlatinumEngine.UI.Kit;
@@ -52,27 +53,53 @@ public class IntroScreen
 {
     public const float FadeInTime = 1.2f, BallOpenTime = 1.5f, BallCloseTime = 0.6f, SendOffTime = 2.6f;
 
-    /// <summary>The Pokémon the professor shows, as in Platinum.</summary>
-    public const string ShownSpecies = "Buneary";
+    /// <summary>
+    /// The region the new game starts in (plan 18 · W1): its professor, the Pokémon he shows, his lines and the name
+    /// offered for the rival all come from its record. Sinnoh's until <see cref="Open"/> is handed another.
+    /// </summary>
+    public Region Region { get; private set; } = RegionDatabase.Get(RegionDatabase.Sinnoh)!;
+
+    private RegionProfessor Who => Region.Professor ?? RegionDatabase.Get(RegionDatabase.Sinnoh)!.Professor!;
+
+    /// <summary>The Pokémon the professor shows.</summary>
+    public string ShownSpecies => Who.Species;
 
     /// <summary>The name over the professor's lines.</summary>
-    public static string Professor => Text.Of("intro.professor");
+    public string Professor => Text.OfData(Who.Name);
+
+    /// <summary>The character type the professor is drawn as.</summary>
+    public string ProfessorLook => Who.Look;
+
+    /// <summary>Whether the region's rival is a friend to name (false where he is the player's other hero).</summary>
+    public bool NamesARival => Region.Rival != null;
+
+    /// <summary>The question that asks the player's look, shown under the choice too.</summary>
+    public string BoyOrGirl => Shown(Said.BoyOrGirl);
+
+    /// <summary>The name offered for the rival, and taken when none is entered.</summary>
+    public string DefaultRival => Region.Rival ?? PlayerIdentity.DefaultRivalName;
 
     /// <summary>The character type the rival is drawn as.</summary>
     public const string Rival = "RIVAL";
 
-    // The professor's lines (plan 17 · N2): properties, so that each is read in the language of the moment
-    private static string[] Greeting => new[] { Text.Of("intro.greeting.hello"), Text.Of("intro.greeting.welcome"), Text.Of("intro.greeting.name") };
+    // The professor's lines are the region's (plan 18 · W1, `Data/regions/<id>.json`)
+    private RegionIntroLines Said => Who.Lines;
 
-    private static string[] World => new[] { Text.Of("intro.world") };
+    private string[] Greeting => new[] { Shown(Said.Hello), Shown(Said.Welcome), Shown(Said.MyName) };
 
-    private static string[] Alongside => new[] { Text.Of("intro.alongside.oneOfThem"), Text.Of("intro.alongside.liveAlongside"), Text.Of("intro.alongside.study") };
+    private string[] World => new[] { Shown(Said.World) };
 
-    private static string[] AboutYou => new[] { Text.Of("intro.aboutYou.enough"), Text.Of("intro.aboutYou.boyOrGirl") };
+    private string[] Alongside => new[] { Shown(Said.OneOfThem), Shown(Said.LiveAlongside), Shown(Said.Study) };
 
-    private static string[] AskName => new[] { Text.Of("intro.askName") };
+    private string[] AboutYou => new[] { Shown(Said.Enough), Shown(Said.BoyOrGirl) };
 
-    private static string[] AboutRival => new[] { Text.Of("intro.aboutRival.nextDoor"), Text.Of("intro.aboutRival.neverStill") };
+    private string[] AskName => new[] { Shown(Said.AskName) };
+
+    private string[] AboutRival => new[] { Shown(Said.NextDoor), Shown(Said.NeverStill) };
+
+    private static string Shown(string line) => Text.OfData(line);
+
+    private string Fill(string line) => Shown(line.Replace("{name}", Name).Replace("{rival}", RivalName));
 
     private readonly DialogueManager talk = new();
     private float time, phaseTime;
@@ -96,7 +123,7 @@ public class IntroScreen
     public NameEntry? RivalEntry { get; private set; }
 
     /// <summary>The rival's name: what was entered, or his own if nothing was.</summary>
-    public string RivalName => RivalEntry?.Result(PlayerIdentity.DefaultRivalName) ?? PlayerIdentity.DefaultRivalName;
+    public string RivalName => RivalEntry?.Result(DefaultRival) ?? DefaultRival;
 
     /// <summary>Seconds since the introduction began, and since its present phase did.</summary>
     public float Time => time;
@@ -108,8 +135,9 @@ public class IntroScreen
     public bool LineComplete => talk.IsActive && talk.IsCurrentLineComplete;
     public bool Talking => talk.IsActive;
 
-    public void Open(float charactersPerSecond = 45f)
+    public void Open(float charactersPerSecond = 45f, Region? region = null)
     {
+        Region = region ?? RegionDatabase.Get(RegionDatabase.Sinnoh)!;
         IsActive = true;
         time = 0f;
         Look = PlayerLook.Boy;
@@ -159,19 +187,18 @@ public class IntroScreen
                 else Entry.Reopen();
                 break;
             case IntroPhase.AskRival:
-                Say(Professor, new[] { Text.Of("intro.fineName", ("name", Name)) }.Concat(AboutRival), () => Enter(IntroPhase.EnterRival));
+                Say(Professor, new[] { Fill(Said.FineName) }.Concat(AboutRival), () => Enter(IntroPhase.EnterRival));
                 break;
             case IntroPhase.EnterRival:
                 if (RivalEntry == null) RivalEntry = new NameEntry();
                 else RivalEntry.Reopen();
                 break;
             case IntroPhase.Farewell:
-                Say(Professor, new[]
-                {
-                    Text.Of("intro.farewell.ofCourse", ("rival", RivalName)),
-                    Text.Of("intro.farewell.story", ("name", Name)),
-                    Text.Of("intro.farewell.offYouGo")
-                }, () => Enter(IntroPhase.SendOff));
+                var parting = new List<string>();
+                if (NamesARival) parting.Add(Fill(Said.OfCourse));
+                parting.Add(Fill(Said.Story));
+                parting.Add(Shown(Said.OffYouGo));
+                Say(Professor, parting, () => Enter(IntroPhase.SendOff));
                 break;
             case IntroPhase.Done:
                 IsActive = false;
@@ -239,7 +266,7 @@ public class IntroScreen
                 break;
             case IntroPhase.ConfirmName:
                 AudioManager.PlaySound(AnswerYes ? "select" : "cancel");
-                Enter(AnswerYes ? IntroPhase.AskRival : IntroPhase.EnterName);
+                Enter(AnswerYes ? (NamesARival ? IntroPhase.AskRival : IntroPhase.Farewell) : IntroPhase.EnterName);
                 break;
             case IntroPhase.EnterRival:
                 var letter = RivalEntry!.Press();
@@ -427,7 +454,7 @@ public class IntroScreen
             var pose = new CharacterPose { Time = time, Blink = blink };
             if (Phase == IntroPhase.Greeting && phaseTime < CharacterAnimation.Duration(Emote.Wave)) (pose.Emote, pose.EmoteTime) = (Emote.Wave, phaseTime);
             else if (Phase == IntroPhase.Farewell && phaseTime < CharacterAnimation.Duration(Emote.Nod)) (pose.Emote, pose.EmoteTime) = (Emote.Nod, phaseTime);
-            CharacterStudio.Render(context, "ROWAN", professorPicture, pose, yaw: look.ProfessorShift * -0.35f);
+            CharacterStudio.Render(context, ProfessorLook, professorPicture, pose, yaw: look.ProfessorShift * -0.35f);
         }
         if (look.Choice > 0.01f)
         {

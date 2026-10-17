@@ -42,6 +42,44 @@ public sealed class Region
     public bool IsBuilt => Start != null;
 
     public MapSpot? ArrivalSpot => Arrival ?? Start;
+
+    /// <summary>What the region's file holds (plan 18 · W1); null for a region with no file yet.</summary>
+    public RegionFile? File { get; init; }
+
+    /// <summary>The folder of the region's world and music; its lower-cased id when it has no file.</summary>
+    public string Folder => File?.Folder is { Length: > 0 } f ? f : Id.ToLowerInvariant();
+
+    /// <summary>The catalogue of models its world's props are looked up in (see <see cref="WorldModels.Catalogue"/>).</summary>
+    public string Models => File?.Models is { Length: > 0 } m ? m : Folder;
+
+    /// <summary>The region's overworld map, where Fly, Teleport and a way out noted for Dig land.</summary>
+    public string? OverworldMap => File?.Map is { Length: > 0 } m ? m : null;
+
+    /// <summary>Whether a new game here begins with the region's story rather than a Pokémon and a few items.</summary>
+    public bool HasStory => File?.HasStory ?? false;
+
+    /// <summary>The name the introduction offers for the rival; null where the region's rival is its other hero.</summary>
+    public string? Rival => File?.Rival;
+
+    /// <summary>The three Pokémon of the professor's briefcase, in the order they are shown.</summary>
+    public IReadOnlyList<string> Starters => (IReadOnlyList<string>?)File?.Starters ?? Array.Empty<string>();
+
+    /// <summary>The names of the region's badges, in the order of its Trainer Card (plan 18 · W2).</summary>
+    public IReadOnlyList<string> BadgeNames => (IReadOnlyList<string>?)File?.Badges ?? Array.Empty<string>();
+
+    public RegionHeroes Heroes => File?.Heroes ?? new RegionHeroes();
+
+    public RegionProfessor? Professor => File?.Professor;
+
+    /// <summary>The starter the rival takes when the player takes this one: the next in the briefcase, round (grass is answered with fire).</summary>
+    public string RivalStarterFor(string playerStarter)
+    {
+        var list = Starters;
+        if (list.Count == 0) return playerStarter;
+        int i = -1;
+        for (int k = 0; k < list.Count; k++) if (list[k] == playerStarter) i = k;
+        return list[(Math.Max(i, 0) + 1) % list.Count];
+    }
 }
 
 /// <summary>The way from one region to the next, open once the first region's story is finished.</summary>
@@ -88,7 +126,7 @@ public static class RegionDatabase
     {
         new()
         {
-            Id = Kanto, Name = "Kanto", Generation = 1,
+            Id = Kanto, Name = "Kanto", Generation = 1, File = RegionFiles.Load(Kanto),
             // A stand-in Pallet Town until the Kanto chapter is built
             Start = new MapSpot("PalletTown", 9, 9),
             Maps = new[] { "PalletTown", "PalletPlayerHouse" }
@@ -97,7 +135,7 @@ public static class RegionDatabase
         new() { Id = Hoenn, Name = "Hoenn", Generation = 3 },
         new()
         {
-            Id = Sinnoh, Name = "Sinnoh", Generation = 4,
+            Id = Sinnoh, Name = "Sinnoh", Generation = 4, File = RegionFiles.Load(Sinnoh),
             // In the player's room upstairs at home in Twinleaf Town, facing the television, as in Platinum (plan 02 · S4)
             Start = new MapSpot("PlayerHouse2F", 4, 6, Direction.Up),
             Maps = new[]

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using PokemonPlatinumEngine.Audio;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
@@ -16,9 +17,13 @@ public class StarterSelectScreen
 {
     private const float AppearTime = 0.45f;
 
-    /// <summary>Sinnoh's three partners, in Pokédex order, and the level they are given at.</summary>
-    public static readonly string[] Starters = { "Turtwig", "Chimchar", "Piplup" };
+    /// <summary>The level the partners are given at.</summary>
     public const int Level = 5;
+
+    /// <summary>The region whose briefcase this is (plan 18 · W1): its three partners, in the order the file lists them. Sinnoh's until opened.</summary>
+    public Region Region { get; private set; } = RegionDatabase.Get(RegionDatabase.Sinnoh)!;
+
+    public IReadOnlyList<string> Starters => Region.Starters;
 
     private readonly UiReveal asking = new(0.18f, 0.1f);
     private float openAge;
@@ -30,8 +35,9 @@ public class StarterSelectScreen
     public bool ConfirmingSelection { get; set; }
     public bool AnswerYes { get; private set; }
 
-    public void Open()
+    public void Open(Region? region = null)
     {
+        Region = region ?? RegionDatabase.Get(RegionDatabase.Sinnoh)!;
         IsActive = true;
         SelectedIndex = 0;
         ConfirmingSelection = false;
@@ -47,7 +53,7 @@ public class StarterSelectScreen
     {
         if (step == 0) return;
         if (ConfirmingSelection) AnswerYes = step > 0;
-        else SelectedIndex = UiNav.Wrap(SelectedIndex, step, Starters.Length);
+        else SelectedIndex = UiNav.Wrap(SelectedIndex, step, Starters.Count);
         AudioManager.PlaySound("cursor");
     }
 

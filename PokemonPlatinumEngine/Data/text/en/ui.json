@@ -2212,33 +2212,6 @@
   },
 
   "intro": {
-    "professor": "Prof. Rowan",
-    "greeting": {
-      "hello": "Hello there! I'm glad you could come.",
-      "welcome": "Welcome to the world of Pokémon!",
-      "name": "My name is Rowan. People call me the Pokémon Professor."
-    },
-    "world": "This world is home to the creatures we call Pokémon. They live in the tall grass, in caves, in the sea and in the sky.",
-    "alongside": {
-      "oneOfThem": "This is one of them. Friendly, isn't it?",
-      "liveAlongside": "We people live alongside Pokémon. Some of us keep them as friends and some battle together with them.",
-      "study": "As for me, I study them. There is still so much about them that nobody knows."
-    },
-    "aboutYou": {
-      "enough": "But that's enough about me. Tell me about yourself.",
-      "boyOrGirl": "Are you a boy, or are you a girl?"
-    },
-    "askName": "And what is your name?",
-    "aboutRival": {
-      "nextDoor": "And this is the boy from next door. You two have been friends for as long as either of you can remember.",
-      "neverStill": "He's never still for a moment, that one. Now, what was his name again?"
-    },
-    "fineName": "{name}! That's a fine name.",
-    "farewell": {
-      "ofCourse": "{rival}, of course! How could I forget?",
-      "story": "{name}, your very own story is about to begin. You will meet many Pokémon and many people on your way.",
-      "offYouGo": "Now, off you go. The world of Pokémon is waiting!"
-    },
     "hisName": "HIS NAME",
     "yourName": "YOUR NAME",
     "confirmRival": {

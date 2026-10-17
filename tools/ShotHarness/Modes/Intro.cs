@@ -97,5 +97,14 @@ partial class Harness
             intro.Close();
             game.State = GameState.Overworld;
         }
+
+        // A Kanto game's professor (plan 18 · W1): Oak, in Kanto's words, the figure Rowan's until plan 11 · C6 draws him.
+        // The stand-in is where a plain new game begins; the harness keeps Sinnoh, so the screen is handed the region
+        game.State = GameState.Intro;
+        intro.Open(region: RegionDatabase.Get(RegionDatabase.Kanto));
+        Until(IntroPhase.Greeting); Frames(40);
+        Line(); intro.PressConfirm(); Line(); intro.PressConfirm(); Line(); Shot("i40_professor_oak");
+        intro.Close();
+        game.State = GameState.Overworld;
     }
 }

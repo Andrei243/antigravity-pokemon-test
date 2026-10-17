@@ -366,8 +366,8 @@ internal static partial class ModernUi
 
         const float gap = 40;
         float w = (sw - Margin * 2 - gap * 2) / 3f;
-        var names = StarterSelectScreen.Starters;
-        for (int i = 0; i < names.Length; i++)
+        var names = screen.Starters;
+        for (int i = 0; i < names.Count; i++)
         {
             var species = PokemonDatabase.Get(names[i])!;
             float rise = (1f - UiMotion.EaseOut(appear * 1.5f - i * 0.14f)) * 50f;
