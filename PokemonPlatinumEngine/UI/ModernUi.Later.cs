@@ -3,13 +3,15 @@ using System.Numerics;
 using Raylib_cs;
 using PokemonPlatinumEngine.Battle;
 using PokemonPlatinumEngine.Core;
+using PokemonPlatinumEngine.Data;
+using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.UI.Kit;
 
 namespace PokemonPlatinumEngine.UI;
 
 /// <summary>Which mark the move menu's item button carries (plan 25 · Y14).</summary>
-internal enum LaterMark { None, Mega, ZPower, UltraBurst }
+internal enum LaterMark { None, Mega, ZPower, UltraBurst, Dynamax, Tera }
 
 // The move menu's item button (plan 06 · R20, R21; plan 25 · Y14; style guide, "Battle panels", "The item button in
 // the move menu"): where the Pokémon whose moves are chosen can Mega Evolve, use a Z-Move or Ultra Burst, a button over
@@ -26,13 +28,19 @@ internal static partial class ModernUi
     {
         if (battle.CanMegaEvolveNow) return (LaterMark.Mega, battle.MegaArmed);
         if (battle.CanZMoveNow) return (battle.CanUltraBurstNow ? LaterMark.UltraBurst : LaterMark.ZPower, battle.ZArmed);
+        // Dynamax and Terastallization (plan 25 · Y15), in the order the button goes by
+        if (battle.CanDynamaxNow) return (LaterMark.Dynamax, battle.DynamaxArmed);
+        if (battle.CanTerastallizeNow) return (LaterMark.Tera, battle.TeraArmed);
         return (LaterMark.None, false);
     }
 
-    /// <summary>What a move's card says: its own name, or with the Z-Power armed its Z-Move's (a status move's as Z- and its name); null where it has none.</summary>
+    /// <summary>
+    /// What a move's card says: its own name; with the Z-Power armed its Z-Move's (a status move's as Z- and its name),
+    /// null where it has none; with the Dynamax armed or the Pokémon Dynamaxed its Max Move's (plan 25 · Y15).
+    /// </summary>
     public static string? CardName(BattleEngine battle, Move move, int index)
     {
-        if (!battle.ZArmed) return move.DisplayName;
+        if (!battle.ZArmed) return battle.MaxMoveAt(index)?.DisplayName ?? move.DisplayName;
         var z = battle.ZMoveAt(index);
         if (z == null) return null;
         return z == move.Data ? Text.Of("battle.zMoveName", ("move", move.DisplayName)) : z.DisplayName;
@@ -46,8 +54,11 @@ internal static partial class ModernUi
         {
             LaterMark.Mega => Text.Of("battleMenu.later.mega"),
             LaterMark.UltraBurst => Text.Of("battleMenu.later.ultraBurst"),
+            LaterMark.Dynamax => Text.Of("battleMenu.later.dynamax"),
+            LaterMark.Tera => Text.Of("battleMenu.later.tera"),
             _ => Text.Of("battleMenu.later.zPower")
         }).ToUpperInvariant();
+        var tera = battle.MenuBattler.Pokemon?.TeraType ?? TeraType.Of(PokemonType.Normal);
         string key = Text.Of("shared.keys.c");
         float wordWidth = UiFonts.Measure(word, 26, UiWeight.Black);
         float keyWidth = Math.Max(34f, UiFonts.Measure(key, 22, UiWeight.Black) + 18f);
@@ -58,6 +69,8 @@ internal static partial class ModernUi
         {
             LaterMark.Mega => (MegaFrom, MegaTo),
             LaterMark.UltraBurst => (ZTo, BurstDark),
+            LaterMark.Dynamax => (DynamaxTo, DynamaxFrom),
+            LaterMark.Tera => TeraButtonColours(tera),
             _ => (ZTo, ZFrom)
         };
         if (armed)
@@ -73,7 +86,7 @@ internal static partial class ModernUi
         var disc = new Vector2(r.X + 37, r.Y + 31);
         if (armed) UiShapes.Glow(disc, 34, 34, Color.White with { A = 120 });
         UiShapes.Circle(disc, 25, armed ? Color.White : new Color(232, 236, 246, 255));
-        DrawLaterMark(mark, disc);
+        DrawLaterMark(mark, disc, tera);
         UiFonts.DrawCentered(word, r.X + 72, r.Y + 31, 26, armed ? Color.White : Ink, UiWeight.Black);
         var pill = new Rectangle(r.X + r.Width - 14 - keyWidth, r.Y + 14, keyWidth, 34);
         UiShapes.Shape(pill, 17, armed ? Darker(deep, 0.35f) : Frame, armed ? Darker(deep, 0.45f) : Darker(Frame, 0.15f));
@@ -81,11 +94,99 @@ internal static partial class ModernUi
         UiFonts.DrawCentered(key, pill.X + (pill.Width - kw) / 2f, pill.Y + 17, 22, Color.White, UiWeight.Black);
     }
 
-    /// <summary>A mark of our own on a disc 50 across: the Key Stone, the Z crystal or Ultra Burst's ring of rays.</summary>
-    private static void DrawLaterMark(LaterMark mark, Vector2 c)
+    private static readonly Color DynamaxFrom = new(200, 30, 70, 255), DynamaxTo = new(255, 96, 150, 255), DynamaxRed = new(232, 40, 84, 255);
+    private static readonly Color StellarGold = new(255, 206, 96, 255), StellarViolet = new(150, 96, 200, 255);
+
+    /// <summary>A Tera Type's colour on the interface: its type's, or a Stellar one's gold.</summary>
+    private static Color TeraColour(TeraType tera) => tera.IsStellar ? StellarGold : Palette.GetTypeColor(tera.Type.ToString());
+
+    /// <summary>The TERASTALLIZE button's two colours armed: the Tera Type's, lighter to darker (a Stellar one's gold to violet).</summary>
+    private static (Color Lit, Color Deep) TeraButtonColours(TeraType tera) =>
+        tera.IsStellar ? (StellarGold, StellarViolet) : (Lighter(TeraColour(tera), 0.15f), Darker(TeraColour(tera), 0.2f));
+
+    /// <summary>
+    /// What a Dynamax and a Terastallization add to a Pokémon's HP box (plan 25 · Y15; style guide, "Battle panels"):
+    /// the turns its Dynamax has left on a red pill and the crown of its Tera Type, each hung on the box's top edge.
+    /// </summary>
+    private static void GiantTags(Rectangle box, CombatantView view)
+    {
+        if (view.Dynamaxed && view.DynamaxTurnsLeft > 0)
+        {
+            var pill = new Rectangle(box.X + box.Width - 40 - 92, box.Y - 14, 92, 30);
+            UiShapes.Shadow(pill, 15, 8, new Vector2(0, 3), ShadowColor);
+            UiShapes.Shape(pill, 15, Lighter(DynamaxRed, 0.1f), Darker(DynamaxRed, 0.1f), Darker(DynamaxRed, 0.35f), 2);
+            // Three small chevrons rising, and the turns left
+            for (int i = 0; i < 3; i++)
+            {
+                var at = new Vector2(pill.X + 18 + i * 13, pill.Y + 19);
+                UiShapes.Line(at + new Vector2(-5, 0), at + new Vector2(0, -6), 2.5f, Color.White);
+                UiShapes.Line(at + new Vector2(0, -6), at + new Vector2(5, 0), 2.5f, Color.White);
+            }
+            string turns = view.DynamaxTurnsLeft.ToString();
+            float tw = UiFonts.Measure(turns, 24, UiWeight.Black);
+            UiFonts.DrawCentered(turns, pill.X + pill.Width - 16 - tw, pill.Y + 15, 24, Color.White, UiWeight.Black);
+        }
+        if (view.Shown?.Terastallized is { } tera)
+        {
+            var c = new Vector2(box.X + box.Width - 150 - 19, box.Y + 1);
+            UiShapes.Circle(c, 19, Frame);
+            UiShapes.Circle(c, 16.5f, Color.White);
+            TeraCrown(c, tera, 0.62f);
+        }
+    }
+
+    /// <summary>A crown of three facets in a Tera Type's colour (a Stellar one's in four), 34 wide at a scale of 1 × 0.62 on the box.</summary>
+    private static void TeraCrown(Vector2 c, TeraType tera, float scale)
+    {
+        Color[] stellar = { new(255, 92, 92, 255), StellarGold, new(90, 220, 240, 255), new(186, 110, 255, 255) };
+        var colour = TeraColour(tera);
+        for (int i = -1; i <= 1; i++)
+        {
+            float tall = (i == 0 ? 24f : 17f) * scale;
+            float half = 8f * scale;
+            var foot = c + new Vector2(i * 15f * scale, 10f * scale);
+            var tip = foot + new Vector2(i * 4f * scale, -tall);
+            var fill = tera.IsStellar ? stellar[i + 1] : (i == 0 ? Lighter(colour, 0.15f) : colour);
+            UiShapes.Triangle(tip, foot + new Vector2(-half, 0), foot + new Vector2(half, 0), fill);
+            UiShapes.Triangle(tip, foot + new Vector2(0, 0), foot + new Vector2(half, 0), Darker(fill, 0.2f));
+        }
+        UiShapes.Line(c + new Vector2(-22f * scale, 11f * scale), c + new Vector2(22f * scale, 11f * scale), 4f * scale, tera.IsStellar ? stellar[3] : Darker(colour, 0.3f));
+    }
+
+    /// <summary>A mark of our own on a disc 50 across: the Key Stone, the Z crystal, Ultra Burst's ring of rays, Dynamax's rising chevrons or a Tera gem.</summary>
+    private static void DrawLaterMark(LaterMark mark, Vector2 c, TeraType tera = default)
     {
         switch (mark)
         {
+            case LaterMark.Dynamax:
+            {
+                // A red ring, and three chevrons rising inside it
+                UiShapes.Ring(c, 19, 4, DynamaxRed);
+                for (int i = 0; i < 3; i++)
+                {
+                    var at = c + new Vector2(0, 9 - i * 8);
+                    UiShapes.Line(at + new Vector2(-9, 0), at + new Vector2(0, -7), 4f, i == 2 ? DynamaxTo : DynamaxRed);
+                    UiShapes.Line(at + new Vector2(0, -7), at + new Vector2(9, 0), 4f, i == 2 ? DynamaxTo : DynamaxRed);
+                }
+                break;
+            }
+            case LaterMark.Tera:
+            {
+                // A faceted gem: six triangles round its middle, lit and shaded in turn
+                var colour = TeraColour(tera);
+                for (int i = 0; i < 6; i++)
+                {
+                    float a0 = i * MathF.Tau / 6f - MathF.PI / 2f, a1 = (i + 1) * MathF.Tau / 6f - MathF.PI / 2f;
+                    var p0 = c + new Vector2(MathF.Cos(a0), MathF.Sin(a0)) * 20f;
+                    var p1 = c + new Vector2(MathF.Cos(a1), MathF.Sin(a1)) * 20f;
+                    var fill = tera.IsStellar
+                        ? (i % 3 == 0 ? StellarGold : i % 3 == 1 ? StellarViolet : new Color(90, 220, 240, 255))
+                        : i % 2 == 0 ? Lighter(colour, 0.25f) : Darker(colour, 0.1f);
+                    UiShapes.Triangle(c, p0, p1, fill);
+                }
+                UiShapes.Circle(c + new Vector2(-6, -8), 2.5f, Color.White);
+                break;
+            }
             case LaterMark.Mega:
             {
                 // A round stone with two arcs of colour swirled through it and a glint

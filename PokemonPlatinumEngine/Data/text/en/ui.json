@@ -2398,7 +2398,9 @@
     "later": {
       "mega": "Mega Evolution",
       "zPower": "Z-Power",
-      "ultraBurst": "Ultra Burst"
+      "ultraBurst": "Ultra Burst",
+      "dynamax": "Dynamax",
+      "tera": "Terastallize"
     },
     "fight": "FIGHT",
     "bag": "BAG",

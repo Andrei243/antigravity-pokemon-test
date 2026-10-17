@@ -44,7 +44,8 @@ internal static partial class MoveFx
             case CueKind.ZPower:
                 return (ColorsOf(cue.Type).Main, 0.3f * (0.6f + 0.4f * MathF.Sin(t * 9f)) * Fx.Envelope(t, 0f, 0.25f, 1.1f, BattleAnimator.ZPowerTime));
             default:
-                return (default, 0f);
+                // A Dynamax's, its end's or a Terastallization's (plan 25 · Y15)
+                return GiantBodyCast(cue);
         }
     }
 

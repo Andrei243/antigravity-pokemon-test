@@ -307,6 +307,8 @@ public partial class BattleEngine
             Anim.SettleSubstitute(place.Side, place.Slot, theirs.IsActive && theirs.HasSubstitute);
             // A charge that ended with no move let go (put to sleep, flinched) has nothing more to gather (plan 25 · Y5)
             Anim.SettleCharge(place.Side, place.Slot, theirs.IsActive && theirs.Volatile.Charging);
+            // A Dynamax and the turns it has left, for the HP box (plan 25 · Y15)
+            Anim.SettleDynamax(place.Side, place.Slot, theirs.IsActive && theirs.Volatile.Dynamaxed, 3 - theirs.Volatile.DynamaxTurns, theirs.Volatile.Gigantamaxed);
             // What lasts on it (plan 09 · L2): the lines have told all of it already; this catches a Pokémon changed from outside
             Anim.Conditions.Settle(place.Place, ConditionLooks.RulesHave(theirs));
             Anim.Conditions.SettleMarks(place.Place, ConditionLooks.MarksRulesHave(theirs));
@@ -573,7 +575,9 @@ public partial class BattleEngine
                     SuperEffective = move.SuperEffective,
                     Terrain = terrain,
                     // A Z-Move plays its own set piece, a little longer than a move's (plan 25 · Y14)
-                    ZMove = MoveDatabase.Get(move.Move)?.Kind == MoveKind.ZMove
+                    ZMove = MoveDatabase.Get(move.Move)?.Kind == MoveKind.ZMove,
+                    // And a Max Move or a G-Max Move its own (plan 25 · Y15)
+                    MaxMove = MoveDatabase.Get(move.Move)?.Kind is MoveKind.MaxMove or MoveKind.GMaxMove
                 });
                 // A blow that lands on a doll makes it flinch as it lands: the rules say so with no Struck, since the
                 // Pokémon behind it takes nothing (subscript_hit_substitute's flicker)

@@ -82,6 +82,21 @@ public sealed class CombatantView
 
     /// <summary>0..1 how tired it shows: its HP bar in the red, eased in and out as the bar crosses.</summary>
     public float Tired { get; internal set; }
+
+    // A Dynamax (plan 25 · Y15; style guide, "Dynamax, Max Moves and Terastallization"), set by the log's lines and
+    // settled with the rules once a menu opens
+
+    /// <summary>It is Dynamaxed, as the lines have told: it stands giant, its wreath over its head.</summary>
+    public bool Dynamaxed { get; internal set; }
+
+    /// <summary>Its Dynamax is a Gigantamax: gold in its wreath.</summary>
+    public bool Gigantamax { get; internal set; }
+
+    /// <summary>Seconds since it began to grow (<see cref="Dynamaxed"/>) or to shrink back (-1 = standing at its size).</summary>
+    public float GiantAge { get; internal set; } = -1f;
+
+    /// <summary>The turns its Dynamax has left, for its HP box (3, 2, 1; 0 when it isn't Dynamaxed).</summary>
+    public int DynamaxTurnsLeft { get; internal set; }
 }
 
 /// <summary>
@@ -111,7 +126,7 @@ public sealed class SubstituteView
 }
 
 /// <summary>What an effect cue shows: a move, something that happens to one Pokémon, the weather over the field, or a moment of the turn (plan 25 · Y3).</summary>
-public enum CueKind { Move, StatUp, StatDown, Heal, Status, Seals, Weather, Moment, Mega, UltraBurst, ZPower }
+public enum CueKind { Move, StatUp, StatDown, Heal, Status, Seals, Weather, Moment, Mega, UltraBurst, ZPower, Dynamax, DynamaxEnd, Tera }
 
 /// <summary>
 /// An effect for the renderer to play (plan 04 · G8): a move from one place to another and how it landed, or a
@@ -154,6 +169,18 @@ public sealed class EffectCue
     /// <see cref="BattleAnimator.ZMoveTime"/>, landing at <see cref="BattleAnimator.ImpactTime"/> as every move does.
     /// </summary>
     public bool ZMove { get; init; }
+
+    /// <summary>
+    /// For <see cref="CueKind.Move"/> (plan 25 · Y15): a Max Move or a G-Max Move, which plays its own set piece for
+    /// <see cref="BattleAnimator.MaxMoveTime"/>, landing at <see cref="BattleAnimator.ImpactTime"/>.
+    /// </summary>
+    public bool MaxMove { get; init; }
+
+    /// <summary>For <see cref="CueKind.Dynamax"/> and <see cref="CueKind.DynamaxEnd"/> (plan 25 · Y15): a Gigantamax, with gold in its light.</summary>
+    public bool Gigantamax { get; init; }
+
+    /// <summary>For <see cref="CueKind.Tera"/> (plan 25 · Y15): a Stellar Terastallization, in seven colours turning (<see cref="Type"/> is then the Pokémon's own).</summary>
+    public bool Stellar { get; init; }
 
     /// <summary>
     /// For <see cref="CueKind.Move"/>: an attack sent ahead landing (Future Sight, Doom Desire), which plays its
@@ -200,7 +227,10 @@ public sealed class EffectCue
     /// <summary>How long this cue plays.</summary>
     public float Length => Kind switch
     {
-        CueKind.Move => ZMove ? BattleAnimator.ZMoveTime : BattleAnimator.EffectTime,
+        CueKind.Move => ZMove ? BattleAnimator.ZMoveTime : MaxMove ? BattleAnimator.MaxMoveTime : BattleAnimator.EffectTime,
+        CueKind.Dynamax => BattleAnimator.DynamaxTime,
+        CueKind.DynamaxEnd => BattleAnimator.DynamaxEndTime,
+        CueKind.Tera => BattleAnimator.TeraTime,
         CueKind.Mega => BattleAnimator.MegaTime,
         CueKind.UltraBurst => BattleAnimator.UltraBurstTime,
         CueKind.ZPower => BattleAnimator.ZPowerTime,
@@ -272,6 +302,27 @@ public sealed class BattleAnimator
     public const float UltraBurstSwapTime = 0.85f;
     public const float ZPowerTime = 1.4f;
     public const float ZMoveTime = 1.5f;
+
+    /// <summary>
+    /// Dynamax and Terastallization (plan 25 · Y15; style guide, "Dynamax, Max Moves and Terastallization"): a Dynamax
+    /// plays this long, grows the body from <see cref="DynamaxGrowStart"/> to <see cref="DynamaxGrown"/> and takes a
+    /// Gigantamax form <see cref="DynamaxSwapTime"/> in; its end shrinks it back over <see cref="DynamaxShrinkTime"/>,
+    /// the form going back <see cref="DynamaxEndSwapTime"/> in; a Max Move plays as long as a Z-Move; a
+    /// Terastallization's shell shatters, and a Terapagos takes its form, <see cref="TeraSwapTime"/> in.
+    /// </summary>
+    public const float DynamaxTime = 1.6f;
+    public const float DynamaxGrowStart = 0.3f;
+    public const float DynamaxGrown = 0.9f;
+    public const float DynamaxSwapTime = 0.6f;
+    public const float DynamaxEndTime = 1.0f;
+    public const float DynamaxShrinkTime = 0.5f;
+    public const float DynamaxEndSwapTime = 0.25f;
+    public const float MaxMoveTime = 1.5f;
+    public const float TeraTime = 1.7f;
+    public const float TeraSwapTime = 0.9f;
+
+    /// <summary>How much bigger a Dynamaxed Pokémon stands: on the foe's platform, and on the player's own, which is near the lens.</summary>
+    public const float DynamaxScaleFoe = 1.25f, DynamaxScaleOwn = 1.3f;
 
     /// <summary>How long a stat change, a heal or a status condition shows on its Pokémon.</summary>
     public const float MarkTime = 1.1f;
@@ -553,7 +604,8 @@ public sealed class BattleAnimator
         if (v.Substitute is { Up: false } fading) shown *= Math.Clamp(fading.Age / SubstituteOutTime, 0f, 1f);
         foreach (var cue in cues)
         {
-            if (cue.Kind is not (CueKind.Moment or CueKind.Status or CueKind.StatUp or CueKind.StatDown or CueKind.Heal)) continue;
+            if (cue.Kind is not (CueKind.Moment or CueKind.Status or CueKind.StatUp or CueKind.StatDown or CueKind.Heal
+                or CueKind.Dynamax or CueKind.DynamaxEnd or CueKind.Tera)) continue;
             if (cue.ToSide != side || cue.ToSlot != slot) continue;
             float back = Math.Min(cue.Age / ConditionStandBackTime, (cue.Length - cue.Age) / ConditionReturnTime);
             shown *= 1f - Math.Clamp(back, 0f, 1f);
@@ -749,6 +801,97 @@ public sealed class BattleAnimator
 
     private int zPowerCount;
 
+    // ------------------------------------------------------------------ Dynamax and Terastallization (plan 25 · Y15)
+
+    /// <summary>
+    /// The Pokémon here Dynamaxes (or Gigantamaxes): it stands giant from now on. <paramref name="played"/>, its cue
+    /// plays and it grows through it (seeded as the move cue it stands in for was, so later cues keep their seeds);
+    /// otherwise (the scene off) it is giant at once.
+    /// </summary>
+    public EffectCue? Dynamax(BattleSide side, int slot, bool gigantamax, bool played = true)
+    {
+        var v = this[side, slot];
+        v.Dynamaxed = true;
+        v.Gigantamax = gigantamax;
+        v.DynamaxTurnsLeft = 3;
+        v.GiantAge = played ? 0f : -1f;
+        if (!played) return null;
+        return Cue(new EffectCue
+        {
+            Kind = CueKind.Dynamax, Gigantamax = gigantamax, Move = "Transform", Type = PokemonType.Normal,
+            FromSide = side, FromSlot = slot, ToSide = side, ToSlot = slot
+        });
+    }
+
+    /// <summary>
+    /// The Dynamax here ends: the body shrinks back through its cue, or at once with the scene off. Its cues count
+    /// their seeds for themselves, so a battle's other cues keep theirs.
+    /// </summary>
+    public EffectCue? Undynamax(BattleSide side, int slot, bool played = true)
+    {
+        var v = this[side, slot];
+        if (!v.Dynamaxed) return null;
+        bool gigantamax = v.Gigantamax;
+        v.Dynamaxed = v.Gigantamax = false;
+        v.DynamaxTurnsLeft = 0;
+        // A Pokémon going down or back into its ball shrinks back as it goes, with no cue of its own
+        bool leaving = v.FaintAge >= 0f || v.RecallAge >= 0f || !v.Present;
+        v.GiantAge = played ? 0f : -1f;
+        if (!played || leaving) return null;
+        var cue = new EffectCue
+        {
+            Kind = CueKind.DynamaxEnd, Gigantamax = gigantamax, FromSide = side, FromSlot = slot, ToSide = side, ToSlot = slot,
+            Seed = ++giantCount * 4583 + slot * 17 + (int)side
+        };
+        cues.Add(cue);
+        return cue;
+    }
+
+    private int giantCount;
+
+    /// <summary>A Dynamax as the rules have it once a menu opens, with the turns it has left: nothing played.</summary>
+    public void SettleDynamax(BattleSide side, int slot, bool dynamaxed, int turnsLeft, bool gigantamax)
+    {
+        var v = this[side, slot];
+        if (v.Dynamaxed != dynamaxed)
+        {
+            v.Dynamaxed = dynamaxed;
+            v.Gigantamax = dynamaxed && gigantamax;
+            v.GiantAge = -1f;
+        }
+        v.DynamaxTurnsLeft = dynamaxed ? Math.Clamp(turnsLeft, 1, 3) : 0;
+    }
+
+    /// <summary>
+    /// How much bigger the Pokémon here stands than its own size: <see cref="DynamaxScaleFoe"/> (or
+    /// <see cref="DynamaxScaleOwn"/> on the player's side) while Dynamaxed, eased in as it grows and out as it shrinks.
+    /// </summary>
+    public static float GiantOf(CombatantView v, bool isPlayer)
+    {
+        float big = isPlayer ? DynamaxScaleOwn : DynamaxScaleFoe;
+        if (v.Dynamaxed)
+        {
+            if (v.GiantAge < 0f) return big;
+            float k = Math.Clamp((v.GiantAge - DynamaxGrowStart) / (DynamaxGrown - DynamaxGrowStart), 0f, 1f);
+            return 1f + (big - 1f) * (1f - (1f - k) * (1f - k));
+        }
+        if (v.GiantAge < 0f) return 1f;
+        float s = Math.Clamp(v.GiantAge / DynamaxShrinkTime, 0f, 1f);
+        return big - (big - 1f) * s * s * (3f - 2f * s);
+    }
+
+    /// <summary>
+    /// The Pokémon here Terastallizes into <paramref name="tera"/>: its crystal shell forms and shatters and its
+    /// crown stays (the crown and the sheen that last are read from its Pokémon's own Tera Type). Seeded as the move
+    /// cue it stands in for was.
+    /// </summary>
+    public EffectCue Terastallize(BattleSide side, int slot, Models.TeraType tera) =>
+        Cue(new EffectCue
+        {
+            Kind = CueKind.Tera, Type = tera.Type, Stellar = tera.IsStellar, Move = "Transform",
+            FromSide = side, FromSlot = slot, ToSide = side, ToSlot = slot
+        });
+
     /// <summary>
     /// The Seals of a Ball Capsule bursting round a Pokémon as it is sent out (plan 06 · R17b). It begins with the
     /// throw (<see cref="SendOut"/>); the Seals go off once the ball has opened, each by its own delay.
@@ -923,6 +1066,7 @@ public sealed class BattleAnimator
         v.CheerAge = Tick(v.CheerAge, dt, CheerTime);
         v.StatAge = Tick(v.StatAge, dt, StatEyesTime);
         if (v.ChargeAge >= 0f) v.ChargeAge += dt;
+        if (v.GiantAge >= 0f && (v.GiantAge += dt) >= (v.Dynamaxed ? DynamaxTime : DynamaxEndTime)) v.GiantAge = -1f;
 
         if (v.FaintAge >= 0f)
         {
@@ -968,6 +1112,10 @@ public sealed class BattleAnimator
         v.FaintDelay = v.CaptureDelay = 0f;
         // A new Pokémon on the place stands in front of nothing (a passed doll comes in after it, by its own line)
         v.Substitute = null;
+        // ...and at its own size (a Dynamax ends as its Pokémon leaves: plan 25 · Y15)
+        v.Dynamaxed = v.Gigantamax = false;
+        v.GiantAge = -1f;
+        v.DynamaxTurnsLeft = 0;
         v.DisplayedHp = pokemon.CurrentHP;
         v.DisplayedExp = pokemon.ExpProgressRatio;
         // One that comes in already in the red is tired from the start (plan 25 · Y5)
