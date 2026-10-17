@@ -214,6 +214,13 @@ public sealed class ConditionLooks
             case Left left:
                 Of(left.Place).Clear();
                 return true;
+            case PlacesSwapped swap:
+            {
+                // Ally Switch: what lasts on a Pokémon goes with it (plan 06 · R25's leftovers)
+                int side = (int)swap.First.Side, a = Math.Clamp(swap.First.Slot, 0, 1), b = Math.Clamp(swap.Second.Slot, 0, 1);
+                (places[side, a], places[side, b]) = (places[side, b], places[side, a]);
+                return true;
+            }
             default:
                 return false;
         }

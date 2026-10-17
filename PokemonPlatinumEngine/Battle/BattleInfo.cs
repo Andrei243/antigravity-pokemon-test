@@ -143,6 +143,10 @@ public sealed class BattleInfo
         if (s.StealthRock) lines.Add(new(Text.Of("battleInfo.stealthRock"), "", InfoTone.Bad));
         if (s.AuroraVeil) lines.Add(new(Text.Of("battleInfo.auroraVeil"), ours ? Turns(s.AuroraVeilTurns) : "", InfoTone.Good));
         if (s.StickyWeb) lines.Add(new(Text.Of("battleInfo.stickyWeb"), "", InfoTone.Bad));
+        // What two Pledges together leave (plan 06 · R25's leftovers): four turns each, told on both sides
+        if (s.Rainbow) lines.Add(new(Text.Of("battleInfo.rainbow"), Turns(s.RainbowTurns), InfoTone.Good));
+        if (s.SeaOfFire) lines.Add(new(Text.Of("battleInfo.seaOfFire"), Turns(s.SeaOfFireTurns), InfoTone.Bad));
+        if (s.Swamp) lines.Add(new(Text.Of("battleInfo.swamp"), Turns(s.SwampTurns), InfoTone.Bad));
         return lines;
     }
 

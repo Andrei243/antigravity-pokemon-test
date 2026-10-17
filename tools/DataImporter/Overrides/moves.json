@@ -1,0 +1,10 @@
+// Hand corrections to moves.json: a name maps to the fields to change (null removes one).
+{
+  // PokeAPI gives Sappy Seed (a move of Let's Go, Pikachu! and Eevee!) the effect of Pound, so the import names it
+  // so; it is Leech Seed after its hit (Showdown's sappyseed), which the engine runs as its own effect (plan 06 ·
+  // R25's leftovers)
+  "Sappy Seed": {
+    "effect": "SappySeed",
+    "support": "Full"
+  }
+}

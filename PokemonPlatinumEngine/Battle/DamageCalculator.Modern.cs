@@ -156,7 +156,7 @@ public static partial class DamageCalculator
 
             // ---- The same-type bonus, the type chart, a burn and the final modifiers
             int stab = 4096;
-            if (typed && attacker.HasType(type))
+            if (typed && (attacker.HasType(type) || move.Data.ForcesStab))
             {
                 result.IsSTAB = true;
                 float factor = attackerEffects.Select(e => e.StabOverride).Where(s => s.HasValue).Select(s => s!.Value).DefaultIfEmpty(1.5f).Max();

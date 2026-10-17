@@ -145,10 +145,16 @@ public sealed partial class BattleCore
         ["RemoveProtect"] = new()
         {
             Protectable = _ => false,
-            Start = (b, use) => use.Targets.Any(t => t.Turn.Protecting) || b.Fails(),
+            Start = (b, use) => b.Rules.LaterMoveReach || use.Targets.Any(t => t.Turn.Protecting) || b.Fails(),
             Hit = (b, use, hit) =>
             {
                 if (!hit.Landed) return;
+                // The later games' Feint breaks a shield and the side's guards with Protect (plan 06 · R25's leftovers)
+                if (b.Rules.LaterMoveReach)
+                {
+                    b.Feinted(hit.Target);
+                    return;
+                }
                 hit.Target.Turn.Protecting = false;
                 b.Say(Text.Of("battle.fellForTheFeint", ("target", hit.Target.Name)));
             }
@@ -750,9 +756,11 @@ public sealed partial class BattleCore
         foreach (var b in BySpeed().Where(b => b.IsActive))
         {
             var v = b.Volatile;
-            bool floated = v.MagnetRiseTurns > 0 || v.Elsewhere == Elsewhere.InTheAir ||
+            bool floated = v.MagnetRiseTurns > 0 || v.TelekinesisTurns > 0 || v.Elsewhere == Elsewhere.InTheAir ||
                 (!v.Ingrained && (b.HasType(PokemonType.Flying) || BattleEffects.Of(b).Any(e => e.Levitates)));
             v.MagnetRiseTurns = 0;
+            // Gravity ends Telekinesis too (plan 06 · R25's leftovers; Showdown's gravity onFieldStart)
+            v.TelekinesisTurns = 0;
             if (v.Elsewhere == Elsewhere.InTheAir) Unlock(b);
             if (floated) Say(Text.Of("battle.couldntStayAirborneBecause", ("pokemon", b.Name)));
         }
@@ -796,6 +804,8 @@ public sealed partial class BattleCore
             side.ReflectTurns = side.LightScreenTurns = side.MistTurns = side.SafeguardTurns = 0;
             side.Spikes = side.ToxicSpikes = 0;
             side.StealthRock = false;
+            // The later games' reach: its user's own side and the terrain too (plan 06 · R25's leftovers)
+            if (Rules.LaterMoveReach) DefogsFurther(use.User);
             return true;
         });
         if (Field.Weather == BattleWeather.Fog)

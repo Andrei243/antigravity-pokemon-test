@@ -11179,7 +11179,6 @@
     "description": "User switches places with the friendly Pokémon opposite it.",
     "target": "User",
     "effect": "AllySwitch",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Speed"
@@ -11264,7 +11263,6 @@
     "description": "Carries the target high into the air, dodging all attacks against either, and drops it next turn.",
     "flags": "Contact, Protect, Mirror",
     "effect": "SkyDrop",
-    "support": "Partial",
     "zPower": 120,
     "maxPower": 110
   },
@@ -11447,7 +11445,6 @@
     "description": "With Grass Pledge, halves opposing Pokémon's Speed for four turns.",
     "flags": "Protect, Mirror",
     "effect": "WaterPledge",
-    "support": "Partial",
     "zPower": 160,
     "maxPower": 130
   },
@@ -11463,7 +11460,6 @@
     "description": "With Water Pledge, doubles the effect chance of friendly Pokémon's moves for four turns.",
     "flags": "Protect, Mirror",
     "effect": "FirePledge",
-    "support": "Partial",
     "zPower": 160,
     "maxPower": 130
   },
@@ -11479,7 +11475,6 @@
     "description": "With Fire Pledge, damages opposing Pokémon for 1/8 their max HP every turn for four turns.",
     "flags": "Protect, Mirror",
     "effect": "GrassPledge",
-    "support": "Partial",
     "zPower": 160,
     "maxPower": 130
   },
@@ -14861,9 +14856,8 @@
     "maxPP": 10,
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Protect, Reflectable, Mirror",
-    "effect": "Pound",
+    "effect": "SappySeed",
     "effectChance": 100,
-    "support": "Partial",
     "zPower": 180,
     "maxPower": 130
   },

@@ -177,6 +177,22 @@ public class MoveData
         return copy;
     }
 
+    /// <summary>
+    /// The same-type bonus whatever its user's types (Showdown's <c>forceSTAB</c>; plan 06 · R25's leftovers: a
+    /// combined Pledge). Only a copy made for one use has it.
+    /// </summary>
+    [JsonIgnore]
+    public bool ForcesStab { get; private set; }
+
+    /// <summary>A copy of the move that takes the same-type bonus whoever uses it (a combined Pledge's).</summary>
+    public MoveData WithForcedStab()
+    {
+        if (ForcesStab) return this;
+        var copy = (MoveData)MemberwiseClone();
+        copy.ForcesStab = true;
+        return copy;
+    }
+
     private MoveValues Values() =>
         new() { Power = Power, Accuracy = Accuracy, MaxPP = MaxPP, Priority = Priority, Type = Type, Category = Category };
 

@@ -318,3 +318,11 @@ public sealed record Charging(Place Place, string Move) : BattleEvent;
 /// nothing more by it.
 /// </summary>
 public sealed record MegaEvolved(Place Place, string Form, bool Primal) : BattleEvent;
+
+/// <summary>
+/// Two places of a side change Pokémon (Ally Switch, plan 06 · R25's leftovers; Showdown's <c>swapPosition</c>): from
+/// this line on whoever stood in <paramref name="First"/> stands in <paramref name="Second"/>, and the other way
+/// round, with everything that lasts on each. What waits for a place (a Wish, an attack sent ahead) stays where it
+/// is. Whoever shows the battle moves the two Pokémon, their boxes and their marks; the rules change nothing more.
+/// </summary>
+public sealed record PlacesSwapped(Place First, Place Second) : BattleEvent;

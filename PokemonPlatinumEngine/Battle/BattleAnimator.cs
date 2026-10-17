@@ -407,6 +407,19 @@ public sealed class BattleAnimator
     public CombatantView this[BattleSide side] => this[side, 0];
     public CombatantView this[BattleSide side, int slot] => views[(int)side, slot];
 
+    /// <summary>
+    /// Two places of a side change Pokémon (Ally Switch, plan 06 · R25's leftovers): each view goes with its Pokémon,
+    /// its HP box, its doll and what it is in the middle of. The marks that last are moved by
+    /// <see cref="ConditionLooks.Tell"/>, and each view takes its new place's look.
+    /// </summary>
+    public void SwapPlaces(BattleSide side, int first, int second)
+    {
+        int s = (int)side;
+        (views[s, first], views[s, second]) = (views[s, second], views[s, first]);
+        views[s, first].Condition = Conditions.Of(side, first);
+        views[s, second].Condition = Conditions.Of(side, second);
+    }
+
     // ------------------------------------------------------------------ the weather (plan 25 · Y1)
 
     /// <summary>The weather in the air over the stage, as the lines have told of it (none: a clear sky).</summary>

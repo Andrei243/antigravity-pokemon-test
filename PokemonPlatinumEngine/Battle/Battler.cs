@@ -1,4 +1,5 @@
 using PokemonPlatinumEngine.Core;
+using System;
 using System.Collections.Generic;
 using PokemonPlatinumEngine.Battle.Sim;
 using PokemonPlatinumEngine.Data;
@@ -319,6 +320,32 @@ internal sealed class Volatiles
 
     /// <summary>The last turn Throat Chop keeps its sound moves from it, and the last turn Laser Focus makes its hits critical (−1: none).</summary>
     public int ThroatChopUntil = -1, LaserFocusUntil = -1;
+
+    // ---- The later moves, R25's leftovers
+
+    /// <summary>Sky Drop: whoever it has carried into the sky (its own), and whoever carried it up (the one carried).</summary>
+    public Place? Lifting, LiftedBy;
+
+    /// <summary>Ally Switch: the last turn it worked, and one chance in this many that it works again the turn after (3, then ×3 to 729).</summary>
+    public int AllySwitchTurn = -1, AllySwitchOdds = 3;
+
+    /// <summary>The place its last move was aimed at, which Instruct aims it at again (Showdown's <c>lastMoveTargetLoc</c>).</summary>
+    public Place? LastMoveTarget;
+
+    /// <summary>Every place it remembers, as another place's (Ally Switch: who stood where follows the Pokémon).</summary>
+    public void Remap(Func<Place?, Place?> to)
+    {
+        InLoveWith = to(InLoveWith);
+        SeededBy = to(SeededBy);
+        BoundBy = to(BoundBy);
+        TrappedBy = to(TrappedBy);
+        LockedOnBy = to(LockedOnBy);
+        LastHitBy = to(LastHitBy);
+        LastHitMoveBy = to(LastHitMoveBy);
+        Conversion2By = to(Conversion2By);
+        Lifting = to(Lifting);
+        LiftedBy = to(LiftedBy);
+    }
 
     // ---- Abilities (plan 06 · R7)
 

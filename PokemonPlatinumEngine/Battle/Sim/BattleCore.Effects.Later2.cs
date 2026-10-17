@@ -25,8 +25,11 @@ public sealed partial class BattleCore
     /// <summary>The Pokémon that have eaten a berry this battle (Showdown's <c>ateBerry</c>): only they can use Belch.</summary>
     private readonly HashSet<Pokemon> ateBerry = new();
 
-    /// <summary>The last turn Fairy Lock holds everyone, the turn Ion Deluge was used, the turn a Round was last used.</summary>
-    private int fairyLockUntil = -1, ionDelugeTurn = -1, roundTurn = -1;
+    /// <summary>The last turn Fairy Lock holds everyone, and the turn Ion Deluge was used.</summary>
+    private int fairyLockUntil = -1, ionDelugeTurn = -1;
+
+    /// <summary>The Pokémon whose Round a Round brought forward, by turn: theirs is twice as strong.</summary>
+    private readonly HashSet<(int Turn, Pokemon Who)> roundBrought = new();
 
     /// <summary>Happy Hour was used by the player's side: a trainer battle won pays twice.</summary>
     private bool happyHour;
@@ -58,14 +61,18 @@ public sealed partial class BattleCore
         ["Quash"] = new() { Does = (b, use) => b.OnEach(use, t => b.Reorder(t, first: false)) },
         ["Round"] = new()
         {
-            // Twice as strong after a Round used earlier in the turn; whoever else chose Round goes next (basePowerCallback, onTry)
+            // The first Round still to come goes next, and is twice as strong for being brought forward by a Round; it
+            // brings the next in its turn (onTry's prioritizeAction, basePowerCallback's sourceEffect)
             Start = (b, use) =>
             {
-                use.Scratch = b.roundTurn == b.Turn;
-                b.roundTurn = b.Turn;
-                var others = b.waiting.Where(a => a.Choice.Kind == ChoiceKind.Fight && a.Move?.Data.Effect == "Round" && a.User.IsActive).ToList();
-                foreach (var a in others) b.waiting.Remove(a);
-                b.waiting.InsertRange(0, others);
+                use.Scratch = !use.Called && b.roundBrought.Remove((b.Turn, use.User.Pokemon!));
+                var next = b.waiting.FirstOrDefault(a => a.Choice.Kind == ChoiceKind.Fight && a.Move?.Data.Effect == "Round" && a.User.IsActive && a.User.Pokemon == a.Actor);
+                if (next != null)
+                {
+                    b.waiting.Remove(next);
+                    b.waiting.Insert(0, next);
+                    b.roundBrought.Add((b.Turn, next.Actor!));
+                }
                 return true;
             },
             BasePower = (b, use, t) => use.Scratch is true ? use.Data.Power * 2 : use.Data.Power
@@ -119,7 +126,12 @@ public sealed partial class BattleCore
                 if (hit.Landed) b.BreakGuards(hit.Target);
             }
         },
-        ["WaterShuriken"] = new() { Strikes = (b, use) => b.MultiHitCount(use.User) },
+        ["WaterShuriken"] = new()
+        {
+            // Ash-Greninja's (with Battle Bond, not transformed) hits three times, 20 strong (onModifyMove, basePowerCallback)
+            Strikes = (b, use) => AshGreninja(use.User) ? 3 : b.MultiHitCount(use.User),
+            BasePower = (b, use, t) => AshGreninja(use.User) ? use.Data.Power + 5 : use.Data.Power
+        },
         ["AromaticMist"] = new() { Does = (b, use) => b.OnEach(use, t => b.ChangeStat(t, StatType.SpDefense, 1, use.User, true, By.Move)) },
         ["VenomDrench"] = new() { Does = (b, use) => b.OnEach(use, t => b.VenomDrench(use, t)) },
         ["Powder"] = new() { Does = (b, use) => b.OnEach(use, t => b.Powder(t)) },
@@ -258,6 +270,10 @@ public sealed partial class BattleCore
             })
         }
     };
+
+    /// <summary>Greninja in its Ash form with Battle Bond, its own and not a Transform's.</summary>
+    private static bool AshGreninja(Battler user) =>
+        user.Pokemon!.Form == "Greninja-Ash" && user.Ability?.Name == "Battle Bond" && !user.Volatile.Transformed;
 
     // ---------------------------------------------------------------- protection of the later games
 
@@ -644,7 +660,8 @@ public sealed partial class BattleCore
         Say(Text.Of("battle.followedInstructions", ("target", t.Name), ("user", use.User.Name)));
         known.CurrentPP--;
         var inner = new MoveUse { User = t, Move = known, Effect = EffectOf(data), MoveBefore = t.Volatile.LastMove };
-        inner.Targets = ResolveTargets(t, known, null);
+        // At the place it last aimed at (lastMoveTargetLoc), or wherever a move goes when that place has nobody
+        inner.Targets = ResolveTargets(t, known, t.Volatile.LastMoveTarget is { } aimed ? At(aimed) : null);
         Perform(inner);
         return true;
     }

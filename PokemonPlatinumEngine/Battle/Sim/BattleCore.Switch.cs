@@ -47,6 +47,8 @@ public sealed partial class BattleCore
         v.SlowStartTurn = v.FirstTurn;
         v.TruantParity = v.FirstTurn & 1;
         v.CanUnburden = place.Pokemon?.HeldItem != null;
+        // Whatever its move came to before is forgotten as it comes in (Stomping Tantrum; Showdown's clearVolatile)
+        if (place.Pokemon != null) failedOnTurn.Remove(place.Pokemon);
     }
 
     /// <summary>

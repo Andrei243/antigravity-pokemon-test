@@ -163,6 +163,7 @@ public sealed partial class BattleCore
         }
         if (BattleEffects.Of(user).Any(e => e.LocksMoveChoice) && user.Pokemon!.Moves.Contains(move)) user.ChoiceLock = move;
         v.LastMove = move.Data == StruggleData ? null : move.Data;
+        v.LastMoveTarget = target?.Place;
         // Using a move of its own forgets the one that hit it (BattleControllerPlayer_MoveEnd)
         v.LastHitMove = null;
         v.LastHitMoveBy = null;
@@ -359,6 +360,9 @@ public sealed partial class BattleCore
         // Whatever it was holding on to from its last move is over
         v.DestinyBond = false;
         v.Grudge = false;
+
+        // Carried into the sky by a foe's Sky Drop, it does nothing, and nothing is said (plan 06 · R25's leftovers)
+        if (v.LiftedBy != null) return false;
 
         if (p.Status == StatusCondition.Sleep)
         {
@@ -605,7 +609,7 @@ public sealed partial class BattleCore
     private static bool UsableAsleep(MoveData move) => move.Effect is "DamageWhileAsleep" or "UseRandomLearnedMoveSleep";
 
     /// <summary>The moves that can't be used while Gravity holds (the original's list: Fly, Bounce, the Jump Kicks, Splash, Magnet Rise).</summary>
-    private static bool FailsUnderGravity(MoveData move) => move.Effect is "Fly" or "Bounce" or "CrashOnMiss" or "DoNothing" or "GiveGroundImmunity";
+    private static bool FailsUnderGravity(MoveData move) => move.Effect is "Fly" or "Bounce" or "CrashOnMiss" or "DoNothing" or "GiveGroundImmunity" or "SkyDrop" or "Telekinesis" or "FlyingPress";
 
     /// <summary>The moves Heal Block stops (the original's list: Recover and its like, Rest, the sun's three, Swallow, Roost, Wish and the two wishes that end their user).</summary>
     private static bool IsHealingMove(MoveData move) =>
@@ -634,6 +638,8 @@ public sealed partial class BattleCore
     /// <summary>Back from the air, the ground or wherever a two-turn move took it.</summary>
     private void ComeBack(Battler b)
     {
+        // Sky Drop lets go of whoever it carried, or of whoever carried it (plan 06 · R25's leftovers)
+        LetGoOfTheSky(b);
         if (!b.IsElsewhere) return;
         b.Volatile.Elsewhere = Elsewhere.No;
         Emit(new Reappeared(b.Place));
@@ -1119,6 +1125,9 @@ public sealed partial class BattleCore
         var userEffects = BattleEffects.Of(user).ToList();
         bool userBreaks = userEffects.Any(e => e.IgnoresTargetAbility);
         int chanceMult = userEffects.Select(e => e.SideEffectChanceMultiplier).DefaultIfEmpty(1).Max();
+        // A rainbow over its user's side doubles them again, but a flinch for one with Serene Grace (plan 06 · R25's leftovers)
+        int flinchMult = Rainbowed(user) && chanceMult > 1 ? chanceMult : chanceMult * RainbowOver(user);
+        chanceMult *= RainbowOver(user);
         bool standing = t.Pokemon!.CurrentHP > 0;
 
         // Side effects on the target: it has to be standing, hit itself and not behind Shield Dust
@@ -1133,7 +1142,7 @@ public sealed partial class BattleCore
                 foreach (var also in data.AlsoChangesStats ?? []) ChangeStat(t, also, data.StatStageAmount, user, false, By.SideEffect);
             }
             if (data.ConfuseChancePercent > 0 && Chance(data.ConfuseChancePercent * chanceMult)) Confuse(t, user, false, By.SideEffect);
-            if (data.FlinchChancePercent > 0 && !t.MovedThisTurn && Chance(data.FlinchChancePercent * chanceMult) &&
+            if (data.FlinchChancePercent > 0 && !t.MovedThisTurn && Chance(data.FlinchChancePercent * flinchMult) &&
                 !BattleEffects.Of(t).Any(e => e.BlocksFlinch))
                 t.Flinched = true;
         }
@@ -1180,7 +1189,7 @@ public sealed partial class BattleCore
         var data = move.Data;
         bool several = use.Hits.Count > 1;
         var userEffects = BattleEffects.Of(user).ToList();
-        int chanceMult = userEffects.Select(e => e.SideEffectChanceMultiplier).DefaultIfEmpty(1).Max();
+        int chanceMult = userEffects.Select(e => e.SideEffectChanceMultiplier).DefaultIfEmpty(1).Max() * RainbowOver(user);
 
         foreach (var hit in use.Hits)
         {

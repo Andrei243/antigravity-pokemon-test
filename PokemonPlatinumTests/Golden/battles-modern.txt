@@ -5079,12 +5079,14 @@ log:
     + Entered E0 Pokemon=foe#1 Gallade FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Foe Gallade used Feint!
-  say But it failed!
+    + Lunged E0 Category=Physical
+    + MoveShown Move=Feint Type=Normal Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck P0 Hp=144 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=false
   say Dedenne used Thunder!
     + Lunged P0 Category=Special
-    + MoveShown Move=Thunder Type=Electric Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck E0 Hp=81 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=false
+    + MoveShown Move=Thunder Type=Electric Category=Special From=P0 To=E0 Missed=true Blocked=false Critical=false SuperEffective=false
+  say Dedenne's attack missed!
   say Dedenne used Entrainment!
     + Lunged P0 Category=Status
     + MoveShown Move=Entrainment Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -5093,7 +5095,7 @@ log:
   say Foe Gallade used False Swipe!
     + Lunged E0 Category=Physical
     + MoveShown Move=False Swipe Type=Normal Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=true SuperEffective=false
-    ! Struck P0 Hp=119 Hard=true
+    ! Struck P0 Hp=91 Hard=true
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say A critical hit!
   say Foe Gallade used Protect!
@@ -5123,6 +5125,18 @@ log:
   say Dedenne used Play Rough!
     + Lunged P0 Category=Physical
     + MoveShown Move=Play Rough Type=Fairy Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=true
+    ! Struck E0 Hp=7 Hard=true
+    ! HitSounded SuperEffective=true NotVeryEffective=false
+  say It's super effective!
+    + TrainerReacts E0 Cue=LowHp
+  say Foe Gallade used False Swipe!
+    + Lunged E0 Category=Physical
+    + MoveShown Move=False Swipe Type=Normal Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck P0 Hp=56 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=false
+  say Dedenne used Play Rough!
+    + Lunged P0 Category=Physical
+    + MoveShown Move=Play Rough Type=Fairy Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=true
     ! Struck E0 Hp=0 Hard=true
     ! HitSounded SuperEffective=true NotVeryEffective=false
   say It's super effective!
@@ -5138,7 +5152,7 @@ log:
   say Lucas defeated Psychic Corbin!
   say Lucas received $1920 for winning!
   Ended Result=PlayerVictory
-result: PlayerVictory after 6 turns
+result: PlayerVictory after 7 turns
 === battle 129
 rules: Modern rules
 format: Double
@@ -6533,7 +6547,12 @@ log:
     + MomentShown E1 Moment=HeldItem From=none
     + HpChanged E1 Hp=24 Healed=false
   say Foe Nymble used Feint!
-  say But it failed!
+    + Lunged E0 Category=Physical
+    + MoveShown Move=Feint Type=Normal Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck P0 Hp=0 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=false
+  say Floette fainted!
+    + Fainted P0
   say Foe Inkay used Switcheroo!
     + Lunged E1 Category=Status
     + MoveShown Move=Switcheroo Type=Dark Category=Status From=E1 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -6544,11 +6563,6 @@ log:
     + Lunged P1 Category=Status
     + MoveShown Move=Gastro Acid Type=Poison Category=Status From=P1 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say But it failed!
-  say Floette used Tackle!
-    + Lunged P0 Category=Physical
-    + MoveShown Move=Tackle Type=Normal Category=Physical From=P0 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck E1 Hp=22 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Nymble is hurt by its Black Sludge!
     + ItemShown E0 Item=Black Sludge
     + MomentShown E0 Moment=HeldItem From=none
@@ -6558,37 +6572,47 @@ log:
     + MoveShown Move=Agility Type=Psychic Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
   say Foe Nymble's Speed sharply rose!
     + StageChanged E0 Stat=Speed Stage=2 Rose=true
-  say Foe Inkay used Topsy-Turvy!
+  say Foe Inkay used Switcheroo!
     + Lunged E1 Category=Status
-    + MoveShown Move=Topsy-Turvy Type=Dark Category=Status From=E1 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say But it failed!
+    + MoveShown Move=Switcheroo Type=Dark Category=Status From=E1 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Foe Inkay switched items with its target!
+  say Foe Inkay obtained one Black Sludge.
+    + ItemShown E1 Item=Black Sludge
   say Lileep used Amnesia!
     + Lunged P1 Category=Status
     + MoveShown Move=Amnesia Type=Psychic Category=Status From=P1 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
   say Lileep's Sp. Def sharply rose!
     + StageChanged P1 Stat=SpDefense Stage=-4 Rose=true
-  say Floette used Tackle!
-    + Lunged P0 Category=Physical
-    + MoveShown Move=Tackle Type=Normal Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck E0 Hp=2 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=false
   say Your team is no longer protected by Safeguard!
     + SideConditionChanged Side=Player Condition=Safeguard Layers=0
-  say Foe Nymble is hurt by its Black Sludge!
+  say Foe Inkay is hurt by its Black Sludge!
+    + ItemShown E1 Item=Black Sludge
+    + MomentShown E1 Moment=HeldItem From=none
+    + HpChanged E1 Hp=10 Healed=false
+  say Foe Nymble used Agility!
+    + Lunged E0 Category=Status
+    + MoveShown Move=Agility Type=Psychic Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Foe Nymble's Speed sharply rose!
+    + StageChanged E0 Stat=Speed Stage=4 Rose=true
+  say Foe Inkay used Switcheroo!
+    + Lunged E1 Category=Status
+    + MoveShown Move=Switcheroo Type=Dark Category=Status From=E1 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Foe Inkay switched items with its target!
+  say Foe Nymble obtained one Black Sludge.
     + ItemShown E0 Item=Black Sludge
-    + MomentShown E0 Moment=HeldItem From=none
-    + HpChanged E0 Hp=0 Healed=false
+  say Lileep used Mega Drain!
+    + Lunged P1 Category=Special
+    + MoveShown Move=Mega Drain Type=Grass Category=Special From=P1 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck E0 Hp=0 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=true
+  say It's not very effective...
+  say Foe Nymble had its energy drained!
+    + HpChanged P1 Hp=71 Healed=true
   say Foe Nymble fainted!
     + Fainted E0
     + TrainerReacts E0 Cue=FirstDown
   say Lileep gained 1378 EXP. Points!
   ExpGained Pokemon=mine#1 Lileep Amount=1378
-  say Floette gained 2092 EXP. Points!
-  ExpGained Pokemon=mine#2 Floette Amount=2092
-  LevelRose Pokemon=mine#2 Floette Level=16 Before=39/19/19/29/28/20 After=43/21/22/32/32/22
-  say Floette grew to Lv. 16!
-    + MomentShown P0 Moment=LevelUp From=none
-  MoveWanted Pokemon=mine#2 Floette Move=Razor Leaf
   say Ace Trainer Tester sent out Komala!
     + Seen Species=Komala
     + Entered E0 Pokemon=foe#2 Komala FromBall=true
@@ -6596,43 +6620,21 @@ log:
   say Foe Komala used Flail!
     + Lunged E0 Category=Physical
     + MoveShown Move=Flail Type=Normal Category=Physical From=E0 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P1 Hp=61 Hard=false
+    ! Struck P1 Hp=62 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
-  say Foe Inkay used Switcheroo!
-    + Lunged E1 Category=Status
-    + MoveShown Move=Switcheroo Type=Dark Category=Status From=E1 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Foe Inkay switched items with its target!
-  say Foe Inkay obtained one Jaboca Berry.
-    + ItemShown E1 Item=Jaboca Berry
-  say Lileep used Amnesia!
-    + Lunged P1 Category=Status
-    + MoveShown Move=Amnesia Type=Psychic Category=Status From=P1 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Lileep's Sp. Def sharply rose!
-    + StageChanged P1 Stat=SpDefense Stage=-2 Rose=true
-  say Floette used Safeguard!
-    + Lunged P0 Category=Status
-    + MoveShown Move=Safeguard Type=Normal Category=Status From=P0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Your team became cloaked in a mystical veil!
-    + SideConditionChanged Side=Player Condition=Safeguard Layers=1
-  say Foe Komala used Wood Hammer!
-    + Lunged E0 Category=Physical
-    + MoveShown Move=Wood Hammer Type=Grass Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=0 Hard=false
+  say Foe Inkay used Foul Play!
+    + Lunged E1 Category=Physical
+    + MoveShown Move=Foul Play Type=Dark Category=Physical From=E1 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck P1 Hp=28 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
-  say Foe Komala is hit with recoil!
-    + HpChanged E0 Hp=105 Healed=false
-  say Floette fainted!
-    + Fainted P0
-  say Foe Inkay used Topsy-Turvy!
-    + Lunged E1 Category=Status
-    + MoveShown Move=Topsy-Turvy Type=Dark Category=Status From=E1 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Lileep's stat changes were turned around!
-  say Lileep used Brine!
+  say Lileep used Mega Drain!
     + Lunged P1 Category=Special
-    + MoveShown Move=Brine Type=Water Category=Special From=P1 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
+    + MoveShown Move=Mega Drain Type=Grass Category=Special From=P1 To=E1 Missed=false Blocked=false Critical=false SuperEffective=false
     ! Struck E1 Hp=0 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
+  say Foe Inkay had its energy drained!
+    + HpChanged P1 Hp=33 Healed=true
   say Foe Inkay fainted!
     + Fainted E1
   say Lileep gained 942 EXP. Points!
@@ -6640,20 +6642,21 @@ log:
   say Foe Komala used Flail!
     + Lunged E0 Category=Physical
     + MoveShown Move=Flail Type=Normal Category=Physical From=E0 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P1 Hp=53 Hard=false
+    ! Struck P1 Hp=24 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=true
   say It's not very effective...
-  say Lileep used Gastro Acid!
+  say Lileep used Amnesia!
     + Lunged P1 Category=Status
-    + MoveShown Move=Gastro Acid Type=Poison Category=Status From=P1 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Foe Komala's ability was suppressed!
+    + MoveShown Move=Amnesia Type=Psychic Category=Status From=P1 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Lileep's Sp. Def sharply rose!
+    + StageChanged P1 Stat=SpDefense Stage=-2 Rose=true
   say Foe Komala used Wood Hammer!
     + Lunged E0 Category=Physical
     + MoveShown Move=Wood Hammer Type=Grass Category=Physical From=E0 To=P1 Missed=false Blocked=false Critical=false SuperEffective=false
     ! Struck P1 Hp=0 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Komala is hit with recoil!
-    + HpChanged E0 Hp=88 Healed=false
+    + HpChanged E0 Hp=111 Healed=false
   say Lileep fainted!
     + Fainted P1
   say Lucas has no Pokémon left that can fight!
@@ -14015,7 +14018,10 @@ log:
   say Go! Hitmontop!
     + Entered P0 Pokemon=mine#2 Hitmontop FromBall=true
   say Hitmontop used Feint!
-  say But it failed!
+    + Lunged P0 Category=Physical
+    + MoveShown Move=Feint Type=Normal Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck E0 Hp=146 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Krokorok used Thrash!
     + Lunged E0 Category=Physical
     + MoveShown Move=Thrash Type=Normal Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -14666,7 +14672,10 @@ log:
   say Go! Tarountula!
     + Entered P0 Pokemon=mine#2 Tarountula FromBall=true
   say Tarountula used Feint!
-  say But it failed!
+    + Lunged P0 Category=Physical
+    + MoveShown Move=Feint Type=Normal Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck E0 Hp=110 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Panpour used Brine!
     + Lunged E0 Category=Special
     + MoveShown Move=Brine Type=Water Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -14676,33 +14685,33 @@ log:
     + Fainted P0
   say Go! Vanillish!
     + Entered P0 Pokemon=mine#1 Vanillish FromBall=true
+  say Foe Panpour used Crunch!
+    + Lunged E0 Category=Physical
+    + MoveShown Move=Crunch Type=Dark Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck P0 Hp=95 Hard=false
+    ! HitSounded SuperEffective=false NotVeryEffective=false
+  say Vanillish used Mirror Coat!
+  say But it failed!
   say Foe Panpour used Brine!
     + Lunged E0 Category=Special
     + MoveShown Move=Brine Type=Water Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=98 Hard=false
+    ! Struck P0 Hp=58 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Vanillish used Mirror Coat!
     + Lunged P0 Category=Special
     + MoveShown Move=Mirror Coat Type=Psychic Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck E0 Hp=35 Hard=false
+    ! Struck E0 Hp=36 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Panpour used Crunch!
     + Lunged E0 Category=Physical
     + MoveShown Move=Crunch Type=Dark Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=56 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=false
-  say Vanillish used Mirror Coat!
-  say But it failed!
-  say Foe Panpour used Crunch!
-    + Lunged E0 Category=Physical
-    + MoveShown Move=Crunch Type=Dark Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=15 Hard=false
+    ! Struck P0 Hp=18 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Vanillish used Mirror Coat!
   say But it failed!
-  say Foe Panpour used Crunch!
-    + Lunged E0 Category=Physical
-    + MoveShown Move=Crunch Type=Dark Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Foe Panpour used Brine!
+    + Lunged E0 Category=Special
+    + MoveShown Move=Brine Type=Water Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
     ! Struck P0 Hp=0 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Vanillish fainted!
