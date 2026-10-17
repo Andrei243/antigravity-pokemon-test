@@ -37,8 +37,9 @@ public enum BattleStyle { Shift, Set }
 public enum TextSpeed { Slow, Normal, Fast }
 
 /// <summary>
-/// A help the newest games made their default (plan 12): off, as the rules of the game in progress have it (a
-/// Platinum game goes without, a modern one has it), or on.
+/// A help the newest games made their default (plan 12): off or on. The middle value, as the rules of the game in
+/// progress have it, is read from older settings files alone: since plan 06 · R19 every game is played by the modern
+/// rules, so it means on and the settings turn it into on as they are read (plan 12 rewrites the rows that name it).
 /// </summary>
 public enum RulesDefault { Off, Rules, On }
 
@@ -116,16 +117,21 @@ public sealed class GameSettings
 
     /// <summary>
     /// Whether a damaging move's card says how it will do against a foe already seen (plan 12 · Q10): Sun and
-    /// Moon's way, so a modern game has it and a Platinum game doesn't unless the player asks.
+    /// Moon's way, on unless the player turns it off. Since every game is played by the modern rules (plan 06 · R19)
+    /// the row is on or off, and a file that says <see cref="RulesDefault.Rules"/> reads as on, what it gave there.
     /// </summary>
-    public RulesDefault MoveHints { get; set; } = RulesDefault.Rules;
+    public RulesDefault MoveHints { get => moveHints; set => moveHints = Modern(value); }
+    private RulesDefault moveHints = RulesDefault.On;
 
     /// <summary>
     /// Whether the trainers across the field speak at the battle's turning points (plan 11 · C12): Black and White's
-    /// way, so a modern game has it and a Platinum game, whose trainers speak only before and after, doesn't unless
-    /// the player asks.
+    /// way, on unless the player turns it off; <see cref="RulesDefault.Rules"/> reads as on, as for the move hints.
     /// </summary>
-    public RulesDefault TrainerLines { get; set; } = RulesDefault.Rules;
+    public RulesDefault TrainerLines { get => trainerLines; set => trainerLines = Modern(value); }
+    private RulesDefault trainerLines = RulesDefault.On;
+
+    /// <summary>What a row that followed the rules gives under the modern ones, the only rules a game is played by.</summary>
+    private static RulesDefault Modern(RulesDefault value) => value == RulesDefault.Rules ? RulesDefault.On : value;
 
     /// <summary>A fixed time of day, or null to follow the clock.</summary>
     public TimeOfDay? TimeOfDay { get; set; }

@@ -816,20 +816,24 @@ public class BattlePresentationTests
     }
 
     [Fact]
-    public void UnderRulesAPlatinumGameShowsNoHintsAndAModernOneDoes()
+    public void MoveHintsAreOnUnlessTurnedOffAndAnOlderRulesValueReadsAsOn()
     {
-        Assert.Equal(RulesDefault.Rules, new GameSettings().MoveHints);
-        Assert.False(RulesDefault.Rules.Holds(RulesPreset.Platinum));
-        Assert.True(RulesDefault.Rules.Holds(RulesPreset.Modern));
+        // Every game is played by the modern rules (plan 06 · R19): the hints are on, as they were under them
+        Assert.Equal(RulesDefault.On, new GameSettings().MoveHints);
+        Assert.True(RulesDefault.On.Holds(RulesPreset.Modern));
         Assert.False(RulesDefault.Off.Holds(RulesPreset.Modern));
-        Assert.True(RulesDefault.On.Holds(RulesPreset.Platinum));
 
-        // The row goes round its three values
+        // The row is on or off
         var settings = new GameSettings();
         OptionsScreen.Change(settings, OptionRow.MoveHints, 1);
-        Assert.Equal(RulesDefault.On, settings.MoveHints);
-        OptionsScreen.Change(settings, OptionRow.MoveHints, 1);
         Assert.Equal(RulesDefault.Off, settings.MoveHints);
+        OptionsScreen.Change(settings, OptionRow.MoveHints, -1);
+        Assert.Equal(RulesDefault.On, settings.MoveHints);
+
+        // An older settings file's "Rules" is what it gave under the modern rules: on
+        var read = System.Text.Json.JsonSerializer.Deserialize<GameSettings>("""{ "MoveHints": 1, "TrainerLines": 1 }""")!;
+        Assert.Equal(RulesDefault.On, read.MoveHints);
+        Assert.Equal(RulesDefault.On, read.TrainerLines);
     }
 
     [Fact]

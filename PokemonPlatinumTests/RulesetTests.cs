@@ -268,4 +268,22 @@ public class RulesetTests
         Assert.Contains("\"Rules\":\"Modern\"", json);
         Assert.Equal(RulesPreset.Modern, JsonSerializer.Deserialize<SaveData>(json)!.Rules);
     }
+
+    [Fact]
+    public void APokemonOfAGameBegunUnderPlatinumsRulesIsBroughtOverToTheModernOnes()
+    {
+        // Plan 06 · R19: every game is played by the modern rules, and an older save's Pokémon load under them.
+        // Effort past the modern 252 is cut to it; PP past a move's most is cut to that
+        var bred = new Pokemon(PokemonDatabase.Get("Bidoof")!, 30) { EvAttack = 255, EvSpeed = 255 };
+        var saved = SavedPokemonData.FromPokemon(bred);
+        saved.Moves[0].CurrentPP = 99;
+
+        var modern = saved.ToPokemon(Ruleset.Modern);
+        Assert.Equal(252, modern.EvAttack);
+        Assert.Equal(252, modern.EvSpeed);
+        Assert.Equal(modern.Moves[0].MaxPP, modern.Moves[0].CurrentPP);
+
+        // Under Platinum's baseline the effort stands as it was
+        Assert.Equal(255, saved.ToPokemon(Ruleset.Platinum).EvAttack);
+    }
 }

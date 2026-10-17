@@ -144,12 +144,6 @@ public class TitleScreenTests
         Run(menu, TitleScreen.IdleTime * 3f);
         Assert.Equal(TitlePhase.ConfirmNewGame, menu.Phase);
 
-        menu.Move(1);
-        menu.PressConfirm();
-        Assert.Equal(TitlePhase.ChooseRules, menu.Phase);
-        Run(menu, TitleScreen.IdleTime * 3f);
-        Assert.Equal(TitlePhase.ChooseRules, menu.Phase);
-
         var warned = new TitleScreen(Save(), TitleNotice.ForSave(SaveLoad.Recovered));
         warned.PressConfirm();
         warned.PressConfirm();
@@ -229,51 +223,15 @@ public class TitleScreenTests
     }
 
     [Fact]
-    public void NewGameAsksOnlyForTheRulesWhenNothingIsSaved()
+    public void NewGameAsksNothingWhenNothingIsSaved()
     {
+        // Every game is played by the modern rules (plan 06 · R19): the question of whose rules is gone
         var title = AtMenu(null);
-        title.PressConfirm();
-        Assert.Equal(TitlePhase.ChooseRules, title.Phase);
-        Assert.Equal(RulesPreset.Platinum, title.Rules);
-
         title.PressConfirm();
         Assert.Equal(TitlePhase.Leaving, title.Phase);
         Run(title, TitleScreen.LeaveTime + 0.05f);
         Assert.Equal(TitleChoice.NewGame, title.TakeChoice());
-        Assert.Equal(RulesPreset.Platinum, title.Rules);
-    }
-
-    [Fact]
-    public void TheRulesAreChosenBeforeANewGameAndPlatinumsAreOffered()
-    {
-        var title = AtMenu(null);
-        title.PressConfirm();
-
-        // Any direction flips the answer; each has its own words, and both say it is for good
-        Assert.Contains("Platinum", TitleScreen.RulesBlurb(title.Rules));
-        title.Move(1);
-        Assert.Equal(RulesPreset.Modern, title.Rules);
-        Assert.Contains("newest", TitleScreen.RulesBlurb(title.Rules));
-        Assert.All(new[] { RulesPreset.Platinum, RulesPreset.Modern }, r => Assert.Contains("can't be changed", TitleScreen.RulesBlurb(r)));
-        title.Move(-1);
-        Assert.Equal(RulesPreset.Platinum, title.Rules);
-
-        // B goes back to the menu without starting anything, and the question starts over at Platinum's
-        title.Move(1);
-        title.PressCancel();
-        Assert.Equal(TitlePhase.Menu, title.Phase);
-        Assert.Equal(TitleChoice.None, title.TakeChoice());
-        title.PressConfirm();
-        Assert.Equal(TitlePhase.ChooseRules, title.Phase);
-        Assert.Equal(RulesPreset.Platinum, title.Rules);
-
-        // The modern rules, chosen: the new game is handed over with them
-        title.Move(1);
-        title.PressConfirm();
-        Assert.Equal(TitlePhase.Leaving, title.Phase);
-        Run(title, TitleScreen.LeaveTime + 0.05f);
-        Assert.Equal(TitleChoice.NewGame, title.TakeChoice());
-        Assert.Equal(RulesPreset.Modern, title.Rules);
+        Assert.DoesNotContain("ChooseRules", Enum.GetNames<TitlePhase>());
     }
 
     [Fact]
@@ -292,12 +250,10 @@ public class TitleScreenTests
         title.PressCancel();
         Assert.Equal(TitlePhase.Menu, title.Phase);
 
-        // "Yes" goes on to the rules, and those to the new game
+        // "Yes" goes on to the new game
         title.PressConfirm();
         title.Move(1);
         Assert.True(title.ConfirmYes);
-        title.PressConfirm();
-        Assert.Equal(TitlePhase.ChooseRules, title.Phase);
         title.PressConfirm();
         Assert.Equal(TitlePhase.Leaving, title.Phase);
         Run(title, TitleScreen.LeaveTime + 0.05f);
@@ -523,10 +479,8 @@ public class TitleScreenTests
     [Fact]
     public void ANewGameTakesTheFirstEmptySlot()
     {
-        // With nothing saved it is slot 1, and nothing is asked but the rules
+        // With nothing saved it is slot 1, and nothing is asked
         var fresh = AtMenu(null);
-        fresh.PressConfirm();
-        Assert.Equal(TitlePhase.ChooseRules, fresh.Phase);
         fresh.PressConfirm();
         Run(fresh, TitleScreen.LeaveTime + 0.05f);
         Assert.Equal((TitleChoice.NewGame, 1), (fresh.TakeChoice(), fresh.Slot));
@@ -542,8 +496,6 @@ public class TitleScreenTests
         Assert.Equal("It will be saved in slot 2. The saves you have are kept as they are.", TitleScreen.NewGameBlurb(title.FreeSlot!.Value, title.Cards.Count));
         Assert.Equal("It will be saved in slot 2. The save you have is kept as it is.", TitleScreen.NewGameBlurb(2, 1));
         title.Move(1);
-        title.PressConfirm();
-        Assert.Equal(TitlePhase.ChooseRules, title.Phase);
         title.PressConfirm();
         Run(title, TitleScreen.LeaveTime + 0.05f);
         Assert.Equal((TitleChoice.NewGame, 2), (title.TakeChoice(), title.Slot));

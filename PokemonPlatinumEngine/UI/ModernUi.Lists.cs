@@ -327,12 +327,6 @@ internal static partial class ModernUi
         UiFonts.Draw(save.CaughtSpecies.Count.ToString(), x + 540, r.Y + 146, 40, Ink, UiWeight.Black);
 
         Label(Text.Of("saving.badges", ("count", TitleScreen.CountBadges(save.Badges))), x, r.Y + 216);
-        // An adventure played by the modern rules says so; Platinum's rules are the game's own and need no word
-        if (save.Rules == RulesPreset.Modern)
-        {
-            string rules = Text.Of("saving.modernRules");
-            UiFonts.Draw(rules, r.X + r.Width - 48 - UiFonts.Measure(rules, 20, UiWeight.Black), r.Y + 216, 20, Green, UiWeight.Black);
-        }
         for (int b = 0; b < 8; b++)
             Badge(new Vector2(x + 34 + b * 92, r.Y + 286), 34, b, (save.Badges & (1 << b)) != 0);
 
@@ -383,15 +377,9 @@ internal static partial class ModernUi
         for (int b = 0; b < 8; b++)
             Badge(new Vector2(x + 517 + b * 28, r.Y + 68), 13, b, (save.Badges & (1 << b)) != 0);
 
-        // Along the foot: where it was saved, and whose rules it is played by where they aren't Platinum's own
+        // Along the foot: where it was saved (every game is played by the modern rules since plan 06 · R19, so no card
+        // says whose rules it is)
         float room = right - x;
-        if (save.Rules == RulesPreset.Modern)
-        {
-            string rules = Text.Of("saving.modernRules");
-            float rw = UiFonts.Measure(rules, 20, UiWeight.Black);
-            UiFonts.Draw(rules, right - rw, r.Y + 103, 20, Green, UiWeight.Black);
-            room -= rw + 24;
-        }
         string where = PlaceOf(save);
         float size = 24, ww = UiFonts.Measure(where, size, UiWeight.ExtraBold);
         if (ww > room && ww > 0) size = MathF.Max(18, MathF.Floor(size * room / ww));

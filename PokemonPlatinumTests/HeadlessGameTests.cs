@@ -42,6 +42,7 @@ public class HeadlessGameTests
             engine.NewGameRegion = "Sinnoh";
             engine.StartNewGame();
             Assert.Equal(0, game.Party.Count);
+            Assert.Same(Ruleset.Modern, Ruleset.Current);
             StoryMigration.PastTheOpening(game.Story, ScriptLibrary.Default);
             var lead = new Pokemon(PokemonDatabase.Get("Turtwig")!, 20);
             game.Party.Add(lead);
@@ -65,13 +66,15 @@ public class HeadlessGameTests
             Assert.NotEqual(GameState.Overworld, game.State);
             Until(engine, () => game.State == GameState.Battle, "the battle");
 
-            // The battle, won with the lead's first move, its lines read on with the confirm button as frames
+            // The battle, won with the lead's first damaging move (which the newest learnset puts where it puts it,
+            // plan 06 · R19), its lines read on with the confirm button as frames
             var battle = game.Battle!;
             string foe = battle.EnemyPokemon.Species.Name;
+            int hit = lead.Moves.FindIndex(m => m.Data.Category != MoveCategory.Status);
             Until(engine, () => battle.IsBattleOver || battle.HUD.MenuState == BattleMenuState.Main, "the battle's menu", press: true);
             for (int guard = 0; guard < 60 * 120 && !battle.IsBattleOver; guard++)
             {
-                if (battle.HUD.MenuState == BattleMenuState.Main) battle.SelectMove(0);
+                if (battle.HUD.MenuState == BattleMenuState.Main) battle.SelectMove(hit);
                 Run(engine, guard % 8 == 0 ? ActionFrame.Press(GameAction.Confirm) : ActionFrame.None);
             }
             Assert.True(battle.IsBattleOver, $"The battle with {foe} never ended.");
@@ -120,6 +123,9 @@ public class HeadlessGameTests
             InputManager.Feed(null);
             AudioManager.StopListening();
             Dice.Seed(null);
+            // The game put the modern rules in force (plan 06 · R19); the rest of the run reads Platinum's baseline, as every
+            // test does that hands its battle no rules of its own
+            Ruleset.Use(RulesPreset.Platinum);
             SavePaths.Current = paths;
             try { Directory.Delete(folder, recursive: true); } catch (IOException) { }
         }

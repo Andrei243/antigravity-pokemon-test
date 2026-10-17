@@ -32,7 +32,7 @@ The data has 934 moves in all. The games number 919 of them, because each of the
 | 9 | 120 | 69 | 0 | 57 | 12 | 47 | 0 |
 | All | 1025 | 847 | 586 | 172 | 89 | 313 | 123 |
 
-**Forms** (plan 03 · D11): 541, of 241 species: 97 Mega, 2 Primal, 34 Gigantamax, 57 regional, 23 for battle only, 85 others with values of their own and 243 that only look different. 61 species and 5 forms have other types or base stats in the newest games.
+**Forms** (plan 03 · D11): 541, of 241 species: 97 Mega, 2 Primal, 34 Gigantamax, 57 regional, 23 for battle only, 85 others with values of their own and 243 that only look different. 61 species and 5 forms have other types or base stats in the newest games, and 486 species and 12 forms learn another list of moves by level there, which every game learns by (plan 06 · R19).
 
 ## Move effects still to write
 

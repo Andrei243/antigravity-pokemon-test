@@ -79,12 +79,16 @@ public class StatSpread
     public override string ToString() => $"{HP}/{Attack}/{Defense}/{SpAttack}/{SpDefense}/{Speed}";
 }
 
-/// <summary>The values that differ between the rules a game is played by (plan 06 · R1): types and base stats.</summary>
+/// <summary>
+/// The values that differ between the rules a game is played by (plan 06 · R1): types and base stats, and since
+/// plan 06 · R19 the moves learned by level (the newest game's list, where Platinum's is another).
+/// </summary>
 public class SpeciesValues
 {
     /// <summary>One type or two.</summary>
     public List<PokemonType>? Types { get; set; }
     public StatSpread? BaseStats { get; set; }
+    public List<LearnableMove>? Learnset { get; set; }
 }
 
 /// <summary>
@@ -126,7 +130,7 @@ public class PokemonForm
     {
         if (Modern == null) return this;
         var copy = (PokemonForm)MemberwiseClone();
-        copy.platinum = platinum ?? new SpeciesValues { Types = Types, BaseStats = BaseStats };
+        copy.platinum = platinum ?? new SpeciesValues { Types = Types, BaseStats = BaseStats, Learnset = Learnset };
         copy.Take(rules.ModernSpeciesValues ? Modern : null);
         return copy;
     }
@@ -134,7 +138,7 @@ public class PokemonForm
     internal void UseRules(Ruleset rules)
     {
         if (Modern == null) return;
-        platinum ??= new SpeciesValues { Types = Types, BaseStats = BaseStats };
+        platinum ??= new SpeciesValues { Types = Types, BaseStats = BaseStats, Learnset = Learnset };
         Take(rules.ModernSpeciesValues ? Modern : null);
     }
 
@@ -142,6 +146,7 @@ public class PokemonForm
     {
         Types = values?.Types ?? platinum!.Types;
         BaseStats = values?.BaseStats ?? platinum!.BaseStats;
+        Learnset = values?.Learnset ?? platinum!.Learnset;
     }
 }
 
@@ -264,7 +269,8 @@ public class PokemonSpecies
 
     /// <summary>
     /// The newest games' types and base stats where they differ from Platinum's (Clefairy has been a Fairy type
-    /// since Generation 6, and Pikachu's Defense rose then). Null when nothing differs, and for every species after
+    /// since Generation 6, and Pikachu's Defense rose then), and the newest game's moves learned by level (plan 06 ·
+    /// R19). Null when nothing differs, and for every species after
     /// Platinum. The values above are the ones in force: <see cref="Ruleset.Use"/> swaps these in for a game played
     /// by the modern rules, as it does the moves'.
     /// </summary>
@@ -342,7 +348,8 @@ public class PokemonSpecies
     private SpeciesValues Values() => new()
     {
         Types = SecondaryType is { } second ? new() { PrimaryType, second } : new() { PrimaryType },
-        BaseStats = new StatSpread { HP = BaseHP, Attack = BaseAttack, Defense = BaseDefense, SpAttack = BaseSpAttack, SpDefense = BaseSpDefense, Speed = BaseSpeed }
+        BaseStats = new StatSpread { HP = BaseHP, Attack = BaseAttack, Defense = BaseDefense, SpAttack = BaseSpAttack, SpDefense = BaseSpDefense, Speed = BaseSpeed },
+        Learnset = Learnset
     };
 
     private void Take(SpeciesValues? values)
@@ -357,6 +364,7 @@ public class PokemonSpecies
         BaseSpAttack = stats.SpAttack;
         BaseSpDefense = stats.SpDefense;
         BaseSpeed = stats.Speed;
+        Learnset = values?.Learnset ?? platinum!.Learnset!;
     }
 }
 
@@ -562,8 +570,19 @@ public class Pokemon
     /// <summary>The abilities its form can have, in the order the game picks from.</summary>
     public IReadOnlyList<string> Abilities => FormData?.Abilities ?? Species.Abilities;
 
-    /// <summary>The moves its form learns by level.</summary>
-    public IReadOnlyList<LearnableMove> Learnset => FormData?.Learnset ?? Species.Learnset;
+    /// <summary>
+    /// The moves its form learns by level, under the rules in force (the newest games' list under the modern ones,
+    /// plan 06 · R19), less any move that does nothing in a battle yet (<see cref="MoveDatabase.Runs"/>): those join
+    /// as R24 to R26 give them their effects.
+    /// </summary>
+    public IReadOnlyList<LearnableMove> Learnset
+    {
+        get
+        {
+            var all = FormData?.Learnset ?? Species.Learnset;
+            return all.All(m => MoveDatabase.Runs(m.MoveName)) ? all : all.Where(m => MoveDatabase.Runs(m.MoveName)).ToList();
+        }
+    }
 
     public float Height => FormData?.Height ?? Species.Height;
     public float Weight => FormData?.Weight ?? Species.Weight;

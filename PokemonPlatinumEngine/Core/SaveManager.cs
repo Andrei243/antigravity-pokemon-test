@@ -70,8 +70,9 @@ public class SaveData
     public DateTime? Started { get; set; }
 
     /// <summary>
-    /// Whose rules the adventure is played by, chosen as it began and never changed after. Saves from before the
-    /// choice existed are Platinum's.
+    /// Whose rules the game was saved under: Modern for every save written since plan 06 · R19, when every game came to
+    /// be played by them. A save that says Platinum (or nothing, from before the choice existed) was begun under
+    /// Platinum's rules and is brought over to the modern ones as it loads; this is read for nothing else.
     /// </summary>
     [System.Text.Json.Serialization.JsonConverter(typeof(System.Text.Json.Serialization.JsonStringEnumConverter))]
     public RulesPreset Rules { get; set; }
@@ -513,9 +514,12 @@ public class SavedPokemonData
         return saved;
     }
 
-    public Pokemon ToPokemon()
+    public Pokemon ToPokemon(Ruleset? rules = null)
     {
         var sp = PokemonDatabase.Get(SpeciesName) ?? PokemonDatabase.GetByDex(DexNumber) ?? PokemonDatabase.Get("Turtwig")!;
+        // Effort past the most a stat may hold under the rules in force is cut to it: a game brought over from
+        // Platinum's rules (255) to the modern ones (252), plan 06 · R19
+        int cap = (rules ?? Ruleset.Current).EvStatCap;
         var p = new Pokemon(sp, Level, Gender, Nature, IsShiny)
         {
             // One that was never given a name of its own is called what its species is called today
@@ -528,12 +532,12 @@ public class SavedPokemonData
             IvSpAttack = IvSpAttack,
             IvSpDefense = IvSpDefense,
             IvSpeed = IvSpeed,
-            EvHP = EvHP,
-            EvAttack = EvAttack,
-            EvDefense = EvDefense,
-            EvSpAttack = EvSpAttack,
-            EvSpDefense = EvSpDefense,
-            EvSpeed = EvSpeed,
+            EvHP = Math.Min(EvHP, cap),
+            EvAttack = Math.Min(EvAttack, cap),
+            EvDefense = Math.Min(EvDefense, cap),
+            EvSpAttack = Math.Min(EvSpAttack, cap),
+            EvSpDefense = Math.Min(EvSpDefense, cap),
+            EvSpeed = Math.Min(EvSpeed, cap),
             CurrentExp = CurrentExp,
             HeldItem = HeldItem != null ? ItemDatabase.Get(HeldItem) : null,
             Cool = Cool,
@@ -577,7 +581,8 @@ public class SavedPokemonData
             {
                 var move = MoveDatabase.Create(sm.MoveName);
                 move.PPUps = Math.Clamp(sm.PPUps, 0, 3);
-                move.CurrentPP = sm.CurrentPP;
+                // A move whose modern PP is fewer (a game brought over from Platinum's rules) keeps no more than its most
+                move.CurrentPP = Math.Clamp(sm.CurrentPP, 0, move.MaxPP);
                 p.Moves.Add(move);
             }
         }

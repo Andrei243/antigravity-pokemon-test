@@ -144,21 +144,13 @@
         "Mono": "Everything in one channel, the same in both ears: for a single speaker, or one ear."
       }
     },
-    "rules": {
-      "value": "Rules",
-      "other": "Rules follows the rules the game was begun under."
-    },
     "moveHints": {
       "label": "Move hints",
-      "help": "In battle, a move's card says whether it is super effective, not very effective or has no effect on a Pokémon you have seen before.",
-      "modern": "Rules: this game is played by the modern rules, so it shows them.",
-      "platinum": "Rules: this game is played by Platinum's rules, so it goes without."
+      "help": "In battle, a move's card says whether it is super effective, not very effective or has no effect on a Pokémon you have seen before."
     },
     "trainerLines": {
       "label": "Trainers speak",
-      "help": "In battle, Gym Leaders, your rival and other bosses say a line when their last Pokémon comes out, when their first one falls and when their last one is in the red.",
-      "modern": "Rules: this game is played by the modern rules, so it has them speak.",
-      "platinum": "Rules: this game is played by Platinum's rules, so it keeps them quiet, as Platinum did."
+      "help": "In battle, Gym Leaders, your rival and other bosses say a line when their last Pokémon comes out, when their first one falls and when their last one is in the red."
     },
     "focusPause": {
       "label": "Pause in the background",
@@ -272,13 +264,6 @@
       "unreadable": "This save can't be read, nor can the one before it. Deleting it frees the slot.",
       "blurb": "{name}, {time} played. The save and its backup are deleted for good.",
       "blurbIn": "{name} in {place}, {time} played. The save and its backup are deleted for good."
-    },
-    "rules": {
-      "heading": "Which rules?",
-      "platinum": "PLATINUM RULES",
-      "modern": "MODERN RULES",
-      "platinumBlurb": "Battles play exactly as they do in Platinum, which the story is balanced for. This can't be changed later.",
-      "modernBlurb": "Battles use the newest games' numbers for critical hits, burns, paralysis and moves. This can't be changed later."
     }
   },
 
@@ -652,7 +637,6 @@
     "timePlayed": "TIME PLAYED",
     "pokedex": "POKÉDEX",
     "badges": "BADGES  {count} / 8",
-    "modernRules": "MODERN RULES",
     "party": "PARTY",
     "slot": "SLOT {slot}",
     "unreadable": {

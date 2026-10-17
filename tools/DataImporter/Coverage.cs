@@ -182,8 +182,8 @@ public static class Coverage
         int Forms(FormKind kind) => forms.Count(f => f.Kind == kind);
         Line($"**Forms** (plan 03 · D11): {forms.Count}, of {species.Count(s => s.Forms != null)} species: {Forms(FormKind.Mega)} Mega, {Forms(FormKind.Primal)} Primal, " +
              $"{Forms(FormKind.Gigantamax)} Gigantamax, {Forms(FormKind.Regional)} regional, {Forms(FormKind.Battle)} for battle only, {Forms(FormKind.Alternate)} others " +
-             $"with values of their own and {Forms(FormKind.Look)} that only look different. {species.Count(s => s.Modern != null)} species and " +
-             $"{forms.Count(f => f.Modern != null)} forms have other types or base stats in the newest games.");
+             $"with values of their own and {Forms(FormKind.Look)} that only look different. {species.Count(s => s.Modern is { Types: not null } or { BaseStats: not null })} species and " +
+             $"{forms.Count(f => f.Modern is { Types: not null } or { BaseStats: not null })} forms have other types or base stats in the newest games, and {species.Count(s => s.Modern?.Learnset != null)} species and {forms.Count(f => f.Modern?.Learnset != null)} forms learn another list of moves by level there, which every game learns by (plan 06 · R19).");
         Line();
 
         Line("## Move effects still to write");
