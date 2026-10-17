@@ -209,8 +209,8 @@ public class SaveFileTests
 
     /// <summary>
     /// What a Pokémon has that its save doesn't keep yet, by name: the battle's own state (a sleep's count, the toxic
-    /// count, the stat stages), which a battle sets afresh. Plan 07 · O2's id and what plan 08 · P3 brings are added
-    /// here, or to the save, as they come.
+    /// count, the stat stages), which a battle sets afresh. Plan 07 · O2's id is kept since O2; whatever a later
+    /// session adds to a Pokémon is added here, or to the save, as it comes.
     /// </summary>
     private static readonly string[] NotKept = { nameof(Pokemon.SleepTurns), nameof(Pokemon.ToxicCounter), nameof(Pokemon.StatStages) };
 
@@ -232,6 +232,7 @@ public class SaveFileTests
         p.Tough = 6;
         p.Sheen = 77;
         p.Personality = 0xBEEF;
+        p.Id = PokemonIds.Make(51234, 17);
         p.Ball = "Dusk Ball";
         p.OriginalTrainer = new TrainerMark("Barry", 51234, PlayerLook.Boy);
         p.Pokerus = 0x13;

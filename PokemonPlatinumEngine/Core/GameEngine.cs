@@ -343,8 +343,11 @@ public partial class GameEngine
         flow.TrainerScore = flow.ScoredBadges = 0;
         flow.HallOfFame = new HallOfFame();
         flow.Journal = new Journal();
+        flow.PokemonIdsIssued = 0;
+        flow.LinkBattles = new LinkBattleRecord();
 
         InitializeNewGame();
+        GiveIds();
         flow.Journal.TakenUp(GameClock.Today, PlaceName());
         EnterGame();
     }
@@ -451,6 +454,10 @@ public partial class GameEngine
         // save says Modern. SaveData.Rules is read for nothing else.
         if (save.Rules != RulesPreset.Modern) Log.Info($"A game begun under {Ruleset.Of(save.Rules).Name} is brought over to the modern rules.");
         Ruleset.Use(RulesPreset.Modern);
+        // The save's own records brought up to date (plan 07 · O2): an older save's Pokémon are given their ids
+        int savedFrom = save.SaveVersion;
+        int idsGiven = SaveMigration.Upgrade(save);
+        if (idsGiven > 0) Log.Info($"A save of version {savedFrom} was brought up to date: {idsGiven} Pokémon were given ids.");
 
         // (A save made in a room laid out again since wakes on the tile the room is come into by: plan 01 · M11)
         var place = save.PlaceOn(MapDatabase.Get);
@@ -551,6 +558,11 @@ public partial class GameEngine
         KeepTrainerNumber();
         // The Day Care as it was left (plan 06 · R15): an older save's is empty
         DayCareSave.Restore(save.DayCare, flow.DayCare);
+        // Every Pokémon with its own id (plan 07 · O2): the save's count goes on, and one given here (the Turtwig of a
+        // save from before the opening, two that came to hold one id) takes the next
+        flow.PokemonIdsIssued = save.PokemonIdsIssued;
+        GiveIds();
+        flow.LinkBattles = LinkBattleRecord.From(save.LinkBattles);
         flow.AdventureStarted = save.Started;
         flow.TrainerScore = save.TrainerScore;
         flow.HallOfFame = new HallOfFame();
@@ -576,6 +588,8 @@ public partial class GameEngine
     {
         // A trainer marked as beaten on the map itself (a test, a tool) is beaten in the story too
         foreach (string id in MapDatabase.DefeatedTrainerIds()) flow.Story.Defeat(id);
+        // Every Pokémon the player has joined since the last save is given its id now (plan 07 · O2)
+        GiveIds();
         var told = flow.Story.Snapshot();
         return new()
         {
@@ -619,6 +633,9 @@ public partial class GameEngine
             ContestRecords = flow.ContestRecords.IsEmpty ? null : flow.ContestRecords,
             DayCare = DayCareSave.From(flow.DayCare),
             WorldVersion = SaveData.CurrentWorld,
+            SaveVersion = SaveData.CurrentSave,
+            PokemonIdsIssued = flow.PokemonIdsIssued,
+            LinkBattles = flow.LinkBattles.ToSave(),
             Party = flow.Party.Members.Select(SavedPokemonData.FromPokemon).ToList(),
             Boxes = SavedBoxes.From(flow.Boxes),
             Inventory = flow.Bag.AllItems.Select(i => new SavedItemData { ItemName = i.Name, Quantity = i.Quantity }).ToList(),
@@ -1591,8 +1608,12 @@ public partial class GameEngine
     /// goes into the Pokédex, and evolves there and then if trading is what it was waiting for, which can't be
     /// stopped. Saving and what the other side receives are the caller's.
     /// </summary>
-    public void ReceiveTradedPokemon(Pokemon received, Pokemon? given = null)
+    public bool ReceiveTradedPokemon(Pokemon received, Pokemon? given = null)
     {
+        // A Pokémon whose id the player holds already is one received before (a receipt played twice): it is
+        // refused, and nothing changes (plan 07 · O2). One that comes with no id (a character's) is given one.
+        if (received.Id != Guid.Empty && OwnedPokemon().Any(p => p != given && p.Id == received.Id)) return false;
+
         int place = given != null ? flow.Party.Members.IndexOf(given) : -1;
         if (place >= 0) flow.Party.Members[place] = received;
         else
@@ -1604,8 +1625,38 @@ public partial class GameEngine
         received.Friendship = received.Species.BaseFriendship;
         flow.Pokedex.RegisterCaught(received.Species.DexNumber);
 
+        GiveIds();
+
         var returnTo = flow.State == GameState.Transition ? flow.After : flow.State;
         PlayEvolutions(FindEvolutions(new[] { received }, EvolutionTrigger.Trade, cancellable: false, given?.Species), returnTo);
+        return true;
+    }
+
+    /// <summary>
+    /// Every Pokémon of the player's, in the order ids are given (plan 07 · O2): the team, the PC box by box, the Day
+    /// Care. Not the Battle Frontier's copies, nor whoever is in a battle's own copies, which keep the id of the
+    /// Pokémon they stand for and are thrown away.
+    /// </summary>
+    internal IEnumerable<Pokemon> OwnedPokemon()
+    {
+        foreach (var p in flow.Party.Members) yield return p;
+        foreach (var p in flow.Boxes.All) yield return p;
+        for (int i = 0; i < DayCare.Places; i++)
+            if (flow.DayCare[i] is { } left) yield return left;
+    }
+
+    /// <summary>
+    /// Gives every Pokémon of the player's that has no id one, and a new one to a second that holds the same id as
+    /// another (plan 07 · O2, <see cref="PokemonIds"/>): the trainer's number and the game's count, which goes on. Run
+    /// as a game begins, loads and saves and as a Pokémon is received; a later session that keeps Pokémon by their id
+    /// while the game is played (a team kept, plan 12 · Q27; a trade's offer, plan 07 · O5) runs it first.
+    /// </summary>
+    internal int GiveIds()
+    {
+        uint next = flow.PokemonIdsIssued;
+        int given = PokemonIds.Give(OwnedPokemon(), TrainerNumber, ref next);
+        flow.PokemonIdsIssued = next;
+        return given;
     }
 
     /// <summary>After each step: a trainer looking this way notices the player and comes over to battle.</summary>

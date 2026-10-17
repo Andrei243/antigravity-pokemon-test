@@ -442,6 +442,16 @@ public class Pokemon
     /// <summary>A random number fixed for life, as in the games; Wurmple's evolution is read from it.</summary>
     public uint Personality { get; set; }
 
+    /// <summary>
+    /// The Pokémon's own id (plan 07 · O2; <see cref="PokemonIds"/>): what tells two Pokémon apart that are alike in
+    /// everything else, which a trade's receipt and a kept team go by. Empty for one that is nobody's (a wild one, a
+    /// trainer's, a rental, the Battle Frontier's copies); a Pokémon of the player's is given one by the engine as it is
+    /// saved, loaded or received (<c>GameEngine.GiveIds</c>), and keeps it for life: through a battle's copies
+    /// (<see cref="Clone"/>, <see cref="CopyStateFrom"/>), an evolution, a hatching and a trade. Drawn from nothing:
+    /// it is the trainer's number and a count, so it moves no seeded draw.
+    /// </summary>
+    public Guid Id { get; set; }
+
     /// <summary>The ball it was caught in (null for one that wasn't caught). A Luxury Ball makes friendship grow faster.</summary>
     public string? Ball { get; set; }
 
@@ -1109,6 +1119,7 @@ public class Pokemon
     /// </summary>
     public void CopyStateFrom(Pokemon other)
     {
+        Id = other.Id;
         Species = other.Species;
         Form = other.Form;
         Nickname = other.Nickname;

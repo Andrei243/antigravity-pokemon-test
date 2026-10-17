@@ -232,6 +232,13 @@ public partial class GameEngine
         public bool DeleteSave() => SaveSlots.Delete(SavePaths.Current, game.flow.SaveSlot);
         /// <summary>The game as it stands, as the save screen would write it (plan 24 · X3: the harness's <c>saves</c>).</summary>
         public SaveData BuildSave() => game.BuildSave();
+        /// <summary>Every Pokémon of the player's given its own id, as a save gives them (plan 07 · O2); how many were.</summary>
+        public int GiveIds() => game.GiveIds();
+        /// <summary>Every Pokémon of the player's: the team, the PC, the Day Care.</summary>
+        public IEnumerable<Pokemon> OwnedPokemon => game.OwnedPokemon();
+        /// <summary>How many ids the game has given its Pokémon, and the link battles' record (plan 07 · O2).</summary>
+        public uint PokemonIdsIssued => game.flow.PokemonIdsIssued;
+        public LinkBattleRecord LinkBattles => game.flow.LinkBattles;
 
         // ------------------------------------------------------------ a scene skipped (plan 12 · Q20)
 

@@ -191,6 +191,34 @@ public class SaveData
     /// </summary>
     public int WorldVersion { get; set; }
 
+    /// <summary>
+    /// The <see cref="SaveVersion"/> from which every Pokémon of the player's has its own id (plan 07 · O2,
+    /// <see cref="SavedPokemonData.Id"/>): a save from before is given them as it loads (<see cref="SaveMigration"/>).
+    /// </summary>
+    public const int PokemonIdsGiven = 1;
+
+    /// <summary>The <see cref="SaveVersion"/> of saves made today.</summary>
+    public const int CurrentSave = PokemonIdsGiven;
+
+    /// <summary>
+    /// The version of the save's own records, beside <see cref="WorldVersion"/> (where its player stands) and
+    /// <see cref="StoryVersion"/> (what its story knows): its Pokémon and what is kept of them (plan 07 · O2). 0, what a
+    /// file without the field reads as, is every save from before; <see cref="SaveMigration.Upgrade"/> brings one up to
+    /// <see cref="CurrentSave"/> as it loads, a step for each version. A later session that changes what a save keeps
+    /// raises it and adds its step there.
+    /// </summary>
+    public int SaveVersion { get; set; }
+
+    /// <summary>
+    /// How many ids this game has given its Pokémon (plan 07 · O2): the count the next is made from
+    /// (<see cref="Models.PokemonIds"/>). 0 in a save from before, whose ids are counted from nought as it loads.
+    /// </summary>
+    public uint PokemonIdsIssued { get; set; }
+
+    /// <summary>The link battles' record (plan 07 · O2): wins, losses and draws by friend code. Null while empty, and in older saves.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public LinkBattleRecord? LinkBattles { get; set; }
+
     // Where a save made on one of the old hand-made maps wakes up in the imported world, and the version from
     // which that map is gone: a name can come back as a map of the world (the lake), so the version decides
     private static readonly Dictionary<string, (int Until, MapSpot Spot)> OldMaps = new(StringComparer.OrdinalIgnoreCase)
@@ -411,6 +439,14 @@ public class SavedPokemonData
     public string SpeciesName { get; set; } = "Turtwig";
 
     /// <summary>
+    /// Its own id (plan 07 · O2, <see cref="Pokemon.Id"/>). Null, left out, for one that has none (a copy the Battle
+    /// Frontier keeps while a challenge is put down) and in saves from before, whose Pokémon are given theirs as they
+    /// load (<see cref="SaveMigration"/>).
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public Guid? Id { get; set; }
+
+    /// <summary>
     /// Its species' number in the National Pokédex (plan 03 · D13), kept beside the name: a species is found by its
     /// name, and by this if the data no longer has the name (a name respelt by a later import: an apostrophe, an
     /// accent, a gender sign). 0, left out, in saves from before it was kept.
@@ -495,6 +531,7 @@ public class SavedPokemonData
     {
         var saved = new SavedPokemonData
         {
+            Id = p.Id != Guid.Empty ? p.Id : null,
             SpeciesName = p.Species.Name,
             DexNumber = p.Species.DexNumber,
             IsEgg = p.IsEgg,
@@ -592,6 +629,7 @@ public class SavedPokemonData
             Language = Language
         };
         p.IsEgg = IsEgg;
+        p.Id = Id ?? Guid.Empty;
         if (Form != null) p.RestoreForm(Form);
         if (Ability != null) p.AbilityName = Ability;
         if (Friendship is { } friendship) p.Friendship = friendship;
