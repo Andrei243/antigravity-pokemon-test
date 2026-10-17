@@ -138,6 +138,7 @@ public partial class BattleEngine
         MegaArmed = false;
         ZArmed = false;
         DynamaxArmed = false;
+        TeraArmed = false;
         // Only the Pokémon the rules ask about: one in the middle of a move has nothing to choose
         asked = core.Request is ActionRequest request ? request.Places.Where(p => p.Side == BattleSide.Player).Select(p => p.Slot).ToList() : new List<int>();
         menuSlot = asked.Count > 0 ? asked[0] : 0;
@@ -176,6 +177,8 @@ public partial class BattleEngine
         choice = WithZArmed(choice);
         // And with the Dynamax armed for it (plan 06 · R22)
         choice = WithDynamaxArmed(choice);
+        // And with the Terastallization armed for it (plan 06 · R23)
+        choice = WithTeraArmed(choice);
         choices[menuSlot] = choice;
 
         // Running is for the whole side: nobody else is asked

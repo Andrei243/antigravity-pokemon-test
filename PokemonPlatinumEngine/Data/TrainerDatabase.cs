@@ -41,6 +41,10 @@ public sealed class TrainerRecord
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public bool DynamaxBand { get; set; }
 
+    /// <summary>The trainer has a Tera Orb and Terastallizes under rules that have it (plan 06 · R23); none of Platinum's does.</summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public bool TeraOrb { get; set; }
+
     public int PrizeMoney { get; set; }
     public List<TrainerPokemonRecord> Party { get; set; } = new();
 
@@ -159,6 +163,7 @@ public static class TrainerDatabase
         trainer.KeyStone = record.KeyStone;
         trainer.ZRing = record.ZRing;
         trainer.DynamaxBand = record.DynamaxBand;
+        trainer.TeraOrb = record.TeraOrb;
         var mine = trainer.Party.Members;
         bool same = mine.Count == 0 || (mine.Count == record.Party.Count &&
             mine.Zip(record.Party).All(pair => pair.First.Species.Name == pair.Second.Species && pair.First.Level == pair.Second.Level));

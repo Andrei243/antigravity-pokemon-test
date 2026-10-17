@@ -23,6 +23,7 @@ public sealed partial class BattleCore
         foreach (var (name, effect) in LaterEffects2) MoveEffects[name] = effect;
         foreach (var (name, effect) in ZEffects) MoveEffects[name] = effect;
         foreach (var (name, effect) in MaxEffects) MoveEffects[name] = effect;
+        foreach (var (name, effect) in TeraEffects) MoveEffects[name] = effect;
         foreach (var (name, effect) in LaterEffects3) MoveEffects[name] = effect;
         foreach (var (name, effect) in LaterEffects4) MoveEffects[name] = effect;
     }

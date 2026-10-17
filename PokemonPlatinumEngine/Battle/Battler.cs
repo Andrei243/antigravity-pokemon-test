@@ -143,6 +143,13 @@ public sealed class Battler
 
     /// <summary>The types the Pokémon has right now: its own, unless a move changed them for the battle (Conversion, Transform).</summary>
     public bool HasType(PokemonType type) =>
+        TeraShown is { } tera ? type == tera : HasTypeBeforeTera(type);
+
+    /// <summary>A Terastallized Pokémon is its Tera Type alone (plan 06 · R23; Showdown's <c>getTypes</c>), but a Stellar one keeps its own.</summary>
+    private PokemonType? TeraShown => Pokemon?.Terastallized is { IsStellar: false } tera ? tera.Type : null;
+
+    /// <summary>Its types as they would be without a Terastallization (Showdown's <c>getTypes(false, true)</c>), what the same-type bonus still counts.</summary>
+    public bool HasTypeBeforeTera(PokemonType type) =>
         PlateType is { } plate ? type == plate : Volatile.Types != null ? Volatile.Types.Contains(type) : Pokemon != null && Pokemon.HasType(type);
 
     /// <summary>Its types right now, one or two, the first its own first.</summary>
@@ -150,6 +157,7 @@ public sealed class Battler
     {
         get
         {
+            if (TeraShown is { } tera) return new[] { tera };
             if (PlateType is { } plate) return new[] { plate };
             if (Volatile.Types != null) return Volatile.Types;
             if (Pokemon == null) return System.Array.Empty<PokemonType>();

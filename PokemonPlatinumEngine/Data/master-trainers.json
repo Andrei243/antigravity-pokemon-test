@@ -24503,10 +24503,10 @@
         "ivScale": 255,
         "personality": 1944602980,
         "moves": [
-          "Dark Pulse",
+          "Rest",
+          "Tera Starstorm",
           "Rapid Spin",
-          "Calm Mind",
-          "Rest"
+          "Dark Pulse"
         ]
       }
     ]

@@ -158,7 +158,13 @@ public static partial class DamageCalculator
 
             // ---- The same-type bonus, the type chart, a burn and the final modifiers
             int stab = 4096;
-            if (typed && (attacker.HasType(type) || move.Data.ForcesStab))
+            // A Terastallized user's bonus goes by its Tera Type and its own types both (plan 06 · R23)
+            if (typed && TeraStab(attacker, move, type, attackerEffects) is { } tera)
+            {
+                stab = tera.Stab;
+                result.IsSTAB = tera.IsStab;
+            }
+            else if (typed && (attacker.HasType(type) || move.Data.ForcesStab))
             {
                 result.IsSTAB = true;
                 float factor = attackerEffects.Select(e => e.StabOverride).Where(s => s.HasValue).Select(s => s!.Value).DefaultIfEmpty(1.5f).Max();

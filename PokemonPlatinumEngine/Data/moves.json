@@ -16645,7 +16645,6 @@
     "description": "",
     "flags": "Protect, Mirror",
     "effect": "TeraBlast",
-    "support": "Partial",
     "zPower": 160,
     "maxPower": 130
   },
@@ -17567,7 +17566,6 @@
     "target": "AllFoes",
     "flags": "Protect, Mirror",
     "effect": "TeraStarstorm",
-    "support": "Partial",
     "zPower": 190,
     "maxPower": 140
   },

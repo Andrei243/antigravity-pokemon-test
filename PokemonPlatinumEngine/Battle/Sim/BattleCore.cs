@@ -93,6 +93,12 @@ public sealed class CoreSetup
     /// Pokémon may Dynamax once in the battle. A trainer has theirs as <see cref="Trainer.DynamaxBand"/>.
     /// </summary>
     public bool DynamaxBand { get; init; }
+
+    /// <summary>
+    /// The player has a Tera Orb (plan 06 · R23): under rules with <see cref="Ruleset.Terastallization"/> one of their
+    /// own Pokémon may Terastallize once in the battle. A trainer has theirs as <see cref="Trainer.TeraOrb"/>.
+    /// </summary>
+    public bool TeraOrb { get; init; }
 }
 
 /// <summary>
@@ -223,6 +229,7 @@ public sealed partial class BattleCore : IBattleContext
         KeyStone = setup.KeyStone;
         ZRing = setup.ZRing;
         DynamaxBand = setup.DynamaxBand;
+        TeraOrb = setup.TeraOrb;
         Field.Frontier = Frontier;
         NoBattleItems = setup.NoBattleItems;
         Field.Inverse = Conditions.Inverse;
@@ -313,6 +320,8 @@ public sealed partial class BattleCore : IBattleContext
                 RefuseTwoZ(choices);
                 // And one Dynamax (plan 06 · R22)
                 RefuseTwoDynamax(choices);
+                // And one Terastallization (plan 06 · R23)
+                RefuseTwoTera(choices);
                 break;
             case ReplacementRequest replacement:
                 if (choices.Count != 1 || choices[0].Kind != ChoiceKind.Switch || choices[0].Who != replacement.Place || !CanSendIn(At(replacement.Place), choices[0].SwitchTo))
@@ -477,6 +486,7 @@ public sealed partial class BattleCore : IBattleContext
             megaChosen.Clear();
             zChosen.Clear();
             dynamaxChosen.Clear();
+            teraChosen.Clear();
             if (asked.Count > 0)
             {
                 yield return new ActionRequest(asked);
@@ -492,6 +502,8 @@ public sealed partial class BattleCore : IBattleContext
                 chosen = AsTheZRulesLet(b, chosen);
                 // And Dynamax only where they let it (plan 06 · R22)
                 chosen = AsTheDynamaxRulesLet(b, chosen);
+                // And Terastallize only where they let it (plan 06 · R23)
+                chosen = AsTheTeraRulesLet(b, chosen);
                 ChooseMegas(new[] { chosen });
                 choices.Add(chosen);
             }
@@ -603,7 +615,8 @@ public sealed partial class BattleCore : IBattleContext
             {
                 megasDone = true;
                 // The Dynamaxes come after them (plan 06 · R22; Showdown's runDynamax, order 105)
-                if (MegaEvolutions(waiting) | Dynamaxes(waiting))
+                // And the Terastallizations after those (plan 06 · R23; Showdown's terastallize, order 106)
+                if (MegaEvolutions(waiting) | Dynamaxes(waiting) | Terastallizations(waiting))
                 {
                     if (Result != BattleResult.None) yield break;
                     waiting = Order(waiting);
@@ -1102,6 +1115,8 @@ public sealed partial class BattleCore : IBattleContext
         GiveBackLastingShapes();
         // And so are the Mega and primal forms (plan 06 · R20)
         GiveBackMegas();
+        // And a Terastallization ends (plan 06 · R23)
+        EndTerastallizations();
         foreach (var (pokemon, item) in knockedOff) pokemon.HeldItem ??= item;
         knockedOff.Clear();
         if (result == BattleResult.PlayerVictory && !Frontier) PickUp();

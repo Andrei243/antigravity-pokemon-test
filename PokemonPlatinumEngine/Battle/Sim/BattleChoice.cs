@@ -50,6 +50,12 @@ public sealed record BattleChoice(Place Who, ChoiceKind Kind)
     /// </summary>
     public bool Dynamax { get; init; }
 
+    /// <summary>
+    /// With a move: the Pokémon Terastallizes first (plan 06 · R23; Showdown's <c>move 1 terastallize</c>), after the
+    /// turn's Mega Evolutions and Dynamaxes. Refused where it can't (<see cref="BattleCore.WhyNotTera"/>).
+    /// </summary>
+    public bool Terastallize { get; init; }
+
     /// <summary>In place of a move's position: the move the Pokémon is in the middle of or held to.</summary>
     public const int HeldMove = -2;
 

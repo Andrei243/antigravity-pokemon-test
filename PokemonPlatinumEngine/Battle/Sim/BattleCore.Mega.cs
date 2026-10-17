@@ -110,6 +110,8 @@ public sealed partial class BattleCore
         ChooseZ(chosen);
         // And the Dynamaxes (plan 06 · R22)
         ChooseDynamax(chosen);
+        // And the Terastallizations (plan 06 · R23)
+        ChooseTera(chosen);
     }
 
     /// <summary>

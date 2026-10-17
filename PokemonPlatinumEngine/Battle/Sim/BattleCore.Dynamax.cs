@@ -140,7 +140,8 @@ public sealed partial class BattleCore
         if (!Rules.Dynamax || mine.Pokemon is not { } p || !HasDynamaxBand(mine) || mine.Volatile.Dynamaxed) return no;
         if (dynamaxUsed.Contains(MegaKey(mine))) return Text.Of("battle.dynamaxOnlyOnce");
         if (p.FormData?.Kind is FormKind.Mega or FormKind.Primal || p.Form == UltraForm || p.HeldItem?.ZCrystal != null || MegaFormOf(p) != null) return no;
-        if (NeverDynamax.Contains(p.Species.Name) || p.IsEgg) return no;
+        // (Nor a Terastallized one: one mechanic a Pokémon, plan 06 · R23)
+        if (NeverDynamax.Contains(p.Species.Name) || p.IsEgg || p.Terastallized != null) return no;
         return p.Moves.Any(m => WhyNotMaxMove(mine, m) == null) ? null : no;
     }
 

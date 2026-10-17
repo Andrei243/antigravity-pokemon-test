@@ -68,7 +68,7 @@ public class LocalNamesTests
     public void TheCountsOfFrenchAreWhatTheImporterFound()
     {
         // PokeAPI's French is the one language with prose for moves, abilities and items (docs/mechanics/coverage.md has every language)
-        Assert.Equal((1025, 901, 310, 776), (LocalNames.Section("fr", "species").Count, LocalNames.Section("fr", "moves").Count,
+        Assert.Equal((1025, 901, 310, 777), (LocalNames.Section("fr", "species").Count, LocalNames.Section("fr", "moves").Count,
             LocalNames.Section("fr", "abilities").Count, LocalNames.Section("fr", "items").Count));
         Assert.Equal((764, 305, 520), (LocalNames.Section("fr", "descriptions.moves").Count, LocalNames.Section("fr", "descriptions.abilities").Count,
             LocalNames.Section("fr", "descriptions.items").Count));

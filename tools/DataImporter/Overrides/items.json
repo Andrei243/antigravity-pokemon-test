@@ -36,5 +36,9 @@
   // The band of Dynamax (plan 06 · R22): our own words for what it does
   "Dynamax Band": {
     "description": "A band that lets one of the player's Pokémon a battle Dynamax, growing huge for three turns."
+  },
+  // The orb of Terastallization (plan 06 · R23): our own words for what it does
+  "Tera Orb": {
+    "description": "An orb that lets one of the player's Pokémon a battle Terastallize, shining in its Tera Type."
   }
 }

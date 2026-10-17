@@ -201,6 +201,24 @@ public class MoveData
         return copy;
     }
 
+    /// <summary>
+    /// The move is of the Stellar type for this use (plan 06 · R23: a Stellar Pokémon's Tera Blast, a Terapagos's Tera
+    /// Starstorm), which is no type of the chart: it hits every Pokémon for its plain worth and a Terastallized one
+    /// twice as hard. Its <see cref="Type"/> stays Normal, which nothing reads for it. Only a copy made for one use has it.
+    /// </summary>
+    [JsonIgnore]
+    public bool Stellar { get; private set; }
+
+    /// <summary>A copy of the move of the Stellar type, for one use alone.</summary>
+    public MoveData AsStellar()
+    {
+        if (Stellar) return this;
+        var copy = (MoveData)MemberwiseClone();
+        copy.Type = PokemonType.Normal;
+        copy.Stellar = true;
+        return copy;
+    }
+
     private MoveValues Values() =>
         new() { Power = Power, Accuracy = Accuracy, MaxPP = MaxPP, Priority = Priority, Type = Type, Category = Category };
 

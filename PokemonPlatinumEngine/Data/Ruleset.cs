@@ -249,6 +249,14 @@ public sealed class Ruleset
     /// </summary>
     public bool Dynamax { get; private init; }
 
+    /// <summary>
+    /// Terastallization (plan 06 · R23; Pokémon Showdown's <c>terastallize</c>, <c>canTerastallize</c>, the same-type
+    /// bonus of <c>modifyDamage</c> and the power of 60 in <c>getDamage</c>): a trainer with a Tera Orb may Terastallize
+    /// one Pokémon a battle, which takes its Tera Type for defence until the battle ends. Platinum has none of it, and
+    /// the orb is Paldea's to hand over.
+    /// </summary>
+    public bool Terastallization { get; private init; }
+
     /// <summary>The weather these rules make of one asked for: snow for hail where <see cref="SnowInPlaceOfHail"/> holds.</summary>
     public Battle.Sim.BattleWeather Sky(Battle.Sim.BattleWeather weather) =>
         SnowInPlaceOfHail && weather == Battle.Sim.BattleWeather.Hail ? Battle.Sim.BattleWeather.Snow : weather;
@@ -305,7 +313,8 @@ public sealed class Ruleset
         ModernDamageFormula = true,
         MegaEvolution = true,
         ZMoves = true,
-        Dynamax = true
+        Dynamax = true,
+        Terastallization = true
     };
 
     public static Ruleset Of(RulesPreset preset) => preset == RulesPreset.Modern ? Modern : Platinum;

@@ -531,6 +531,10 @@ public class SavedPokemonData
     public int DynamaxLevel { get; set; }
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
     public bool GigantamaxFactor { get; set; }
+
+    /// <summary>Its Tera Type where one was given to it (plan 06 · R23: a type's name or "Stellar"); left out for one that has its first type.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public string? TeraType { get; set; }
     public List<SavedMoveData> Moves { get; set; } = new();
 
     public static SavedPokemonData FromPokemon(Pokemon p)
@@ -585,7 +589,8 @@ public class SavedPokemonData
             CapsuleId = p.CapsuleId,
             Capsule = p.CapsuleId != 0 ? (p.Capsule ?? BallCapsule.Empty).ToSave() : null,
             DynamaxLevel = p.DynamaxLevel,
-            GigantamaxFactor = p.GigantamaxFactor
+            GigantamaxFactor = p.GigantamaxFactor,
+            TeraType = p.HasOwnTeraType ? p.TeraType.Name : null
         };
 
         foreach (var m in p.Moves)
@@ -639,6 +644,7 @@ public class SavedPokemonData
             GigantamaxFactor = GigantamaxFactor
         };
         p.IsEgg = IsEgg;
+        if (Models.TeraType.Parse(TeraType) is { } tera) p.TeraType = tera;
         p.Id = Id ?? Guid.Empty;
         if (Form != null) p.RestoreForm(Form);
         if (Ability != null) p.AbilityName = Ability;

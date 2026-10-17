@@ -508,6 +508,35 @@ public class Pokemon
         CurrentHP = Math.Clamp(current, 0, max);
     }
 
+    /// <summary>The Tera Type given to it (a Tera Shard's, a trainer's), or null for the one it has by default.</summary>
+    private TeraType? teraType;
+
+    /// <summary>
+    /// Its Tera Type (plan 06 · R23; Showdown's <c>teraType</c>): the type it takes as it Terastallizes. Ogerpon's is
+    /// its mask's and Terapagos's Stellar whatever is set (Showdown's <c>forceTeraType</c>); any other Pokémon's is the
+    /// one given to it, or its own first type where none was (our default: no draw, so no battle's dice move for it).
+    /// </summary>
+    public TeraType TeraType
+    {
+        get => Models.TeraType.ForcedFor(this) ?? teraType ?? Models.TeraType.Of(PrimaryType);
+        set => teraType = value;
+    }
+
+    /// <summary>A Tera Type was given to it (what a save keeps); without one it is its first type.</summary>
+    public bool HasOwnTeraType => teraType != null;
+
+    /// <summary>
+    /// The Tera Type it has Terastallized into in the battle being fought (plan 06 · R23), through switches until the
+    /// battle ends; null when it hasn't. Only a battle's rules set it, and the screen's copy from the log's event.
+    /// </summary>
+    internal TeraType? Terastallized { get; set; }
+
+    /// <summary>The types a Stellar Terastallization has spent its one boost on, by name, "Stellar" among them (Showdown's <c>stellarBoostedTypes</c>).</summary>
+    internal HashSet<string>? StellarBoosted { get; set; }
+
+    /// <summary>The move it is using now has the Stellar boost (Showdown's <c>move.stellarBoosted</c>): every hit of the use takes it.</summary>
+    internal bool StellarThisUse { get; set; }
+
     /// <summary>
     /// Where it was met (plan 06 · R12): the name of the place, as the original writes the location's name, or a
     /// name of its own for how it came ("a trade"); null for one met before this was kept.
@@ -1162,6 +1191,7 @@ public class Pokemon
         Capsule = other.Capsule;
         DynamaxLevel = other.DynamaxLevel;
         GigantamaxFactor = other.GigantamaxFactor;
+        teraType = other.teraType;
         MetLocation = other.MetLocation;
         MetLevel = other.MetLevel;
         MetDate = other.MetDate;
