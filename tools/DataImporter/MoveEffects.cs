@@ -174,7 +174,11 @@ public static class MoveEffects
     /// </summary>
     public static readonly Dictionary<string, string> LaterEffectNames = new()
     {
-        ["Photon Geyser"] = "PhotonGeyser"
+        ["Photon Geyser"] = "PhotonGeyser",
+        // Legends: Arceus's moves that are one of Platinum's in all but name (plan 06 · R26): Raging Fury is Outrage
+        // (Showdown's lockedmove, a random foe), Power Shift is Power Trick (Attack and Defense trade places)
+        ["Raging Fury"] = "ContinueAndConfuseSelf",
+        ["Power Shift"] = "SwapAtkDef"
     };
 
     /// <summary>Fills the side-effect fields of a later move from PokeAPI's move_meta. False when they can't hold it.</summary>

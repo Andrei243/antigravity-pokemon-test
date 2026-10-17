@@ -197,7 +197,7 @@ public sealed partial class BattleCore
         if (a.Move is not { } m) return 0;
         bool max = Rules.Dynamax && a.Choice.Kind == ChoiceKind.Fight && a.Choice.Move != BattleChoice.HeldMove && m.Data != StruggleData
             && (a.Choice.Dynamax || a.User.Volatile.Dynamaxed);
-        if (!max) return m.Priority;
+        if (!max) return PriorityOf(a);
         return m.Data.Category == MoveCategory.Status ? MoveDatabase.Get(MaxGuardName)?.Priority ?? 4 : 0;
     }
 

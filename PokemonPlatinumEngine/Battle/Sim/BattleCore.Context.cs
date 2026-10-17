@@ -68,6 +68,8 @@ public sealed partial class BattleCore
         }
 
         p.StatStages[stat] = next;
+        if (next > current) target.Turn.StatsRaised = true;
+        else target.Turn.StatsLowered = true;
         Say(Text.Of("battle.statChange", ("pokemon", target.Name), ("stat", BattleText.StatName(stat)), ("stage", BattleText.StageChange(next - current))))
             .With(new StageChanged(target.Place, stat, next, next > current));
         return true;

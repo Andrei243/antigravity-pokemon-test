@@ -133,7 +133,8 @@ public sealed partial class BattleCore
         }
         var v = b.Volatile;
         // Fairy Lock holds everyone for the turn after it (plan 06 · R25)
-        if (v.BindTurns > 0 || v.TrappedBy != null || v.Ingrained || Turn <= fairyLockUntil || v.LiftedBy != null)
+        // No Retreat and Octolock hold it too (plan 06 · R26)
+        if (v.BindTurns > 0 || v.TrappedBy != null || v.Ingrained || Turn <= fairyLockUntil || v.LiftedBy != null || HeldByALaterMove(b))
             return forRunning ? Text.Of("battle.cantEscape") : Text.Of("battle.cantBeCalledBack", ("pokemon", b.Name));
         return null;
     }

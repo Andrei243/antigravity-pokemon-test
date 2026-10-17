@@ -1,4 +1,5 @@
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using PokemonPlatinumEngine.Battle.Sim;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
@@ -245,7 +246,10 @@ public sealed partial class Importer
         foreach (var m in moves)
         {
             if (!standard.TryGetValue(m.Id, out var e)) continue;
-            string? z = e.Fields.GetValueOrDefault("zMove"), max = e.Fields.GetValueOrDefault("maxMove");
+            // A move PokeAPI says nothing of but its numbers (Legends: Arceus's and Scarlet and Violet's) takes its
+            // flags and side effects from Showdown's table (plan 06 · R26)
+            if (m.Id > LastPlatinumMove && string.IsNullOrEmpty(m.Description)) FromShowdown(m, e);
+            string? z =e.Fields.GetValueOrDefault("zMove"), max = e.Fields.GetValueOrDefault("maxMove");
             if (e.Text("category") == "Status")
             {
                 m.ZBonus = ZBonusOf(z, m.Name);
@@ -313,6 +317,97 @@ public sealed partial class Importer
         ["Searing Sunraze Smash"] = "SunsteelStrike", ["Menacing Moonraze Maelstrom"] = "SunsteelStrike",
         ["Light That Burns the Sky"] = "PhotonGeyser", ["Malicious Moonsault"] = "FlinchMinimizeDoubleHit"
     };
+
+    private static readonly Dictionary<string, StatusCondition> ShowdownStatuses = new()
+    {
+        ["par"] = StatusCondition.Paralyze, ["slp"] = StatusCondition.Sleep, ["frz"] = StatusCondition.Freeze,
+        ["brn"] = StatusCondition.Burn, ["psn"] = StatusCondition.Poison, ["tox"] = StatusCondition.Toxic
+    };
+
+    /// <summary>
+    /// What Showdown's table says of a later move that PokeAPI has nothing on but its numbers (plan 06 · R26: the
+    /// moves of Legends: Arceus and of Scarlet and Violet): the flags that matter to a battle, its critical-hit
+    /// stage, its recoil, drain and healing, and the side effects its data fields can hold (a condition, a flinch,
+    /// confusion, stat changes of one amount on the target or its user). A side effect of its own code
+    /// (<c>onHit</c>) is left to the engine's code for the move.
+    /// </summary>
+    private static void FromShowdown(MoveData m, Showdown.Entry e)
+    {
+        string flags = e.Fields.GetValueOrDefault("flags") ?? "";
+        if (m.Flags == MoveFlags.None)
+        {
+            (string Key, MoveFlags Flag)[] map =
+            {
+                ("contact", MoveFlags.Contact), ("protect", MoveFlags.Protect), ("reflectable", MoveFlags.Reflectable), ("snatch", MoveFlags.Snatch),
+                ("mirror", MoveFlags.Mirror), ("punch", MoveFlags.Punch), ("sound", MoveFlags.Sound), ("bite", MoveFlags.Bite),
+                ("pulse", MoveFlags.Pulse), ("bullet", MoveFlags.Ballistic), ("powder", MoveFlags.Powder), ("dance", MoveFlags.Dance)
+            };
+            foreach (var (key, flag) in map)
+                if (Regex.IsMatch(flags, $@"\b{key}: 1")) m.Flags |= flag;
+        }
+        if (m.CritStage == 0 && e.Number("critRatio") is int ratio && ratio > 1) m.CritStage = ratio - 1;
+
+        int Fraction(string key)
+        {
+            var match = Regex.Match(e.Fields.GetValueOrDefault(key) ?? "", @"\[(\d+), (\d+)\]");
+            return match.Success ? int.Parse(match.Groups[1].Value) * 100 / int.Parse(match.Groups[2].Value) : 0;
+        }
+        if (m.RecoilPercent == 0) m.RecoilPercent = Fraction("recoil");
+        if (m.DrainPercent == 0) m.DrainPercent = Fraction("drain");
+        if (m.HealPercent == 0) m.HealPercent = Fraction("heal");
+
+        // The stat changes of one amount, in the order Showdown lists them; false when the amounts differ
+        bool Stats(string? table, bool self, int chance)
+        {
+            if (table == null || m.TargetStatChange != null) return false;
+            var changes = Regex.Matches(table, @"\b(atk|def|spa|spd|spe|accuracy|evasion): (-?\d+)")
+                .Select(x => (Stat: ShowdownStats[x.Groups[1].Value], By: int.Parse(x.Groups[2].Value))).ToList();
+            if (changes.Count == 0 || changes.Any(c => c.By != changes[0].By)) return false;
+            m.TargetStatChange = changes[0].Stat;
+            m.StatStageAmount = changes[0].By;
+            m.StatChangeTargetSelf = self;
+            m.StatChangeChancePercent = chance;
+            if (changes.Count > 1) m.AlsoChangesStats = changes.Skip(1).Select(c => c.Stat).ToArray();
+            return true;
+        }
+
+        void Secondary(string block)
+        {
+            if (block.Contains("onHit")) return;
+            int chance = Regex.Match(block, @"\bchance: (\d+)") is { Success: true } c ? int.Parse(c.Groups[1].Value) : 100;
+            if (Regex.Match(block, @"\bstatus: '(\w+)'") is { Success: true } s && ShowdownStatuses.TryGetValue(s.Groups[1].Value, out var status))
+            {
+                m.InflictStatus = status;
+                m.StatusChancePercent = chance;
+            }
+            if (Regex.Match(block, @"\bvolatileStatus: '(\w+)'") is { Success: true } v)
+            {
+                if (v.Groups[1].Value == "flinch") m.FlinchChancePercent = chance;
+                else if (v.Groups[1].Value == "confusion") m.ConfuseChancePercent = chance;
+            }
+            if (Showdown.Block(block, "self", tabs: 3) is { } self) Stats(Showdown.Block(self, "boosts", tabs: 4), true, chance);
+            else Stats(Showdown.Block(block, "boosts", tabs: 3), false, chance);
+        }
+
+        if (Showdown.Block(e.Body, "secondary") is { } secondary) Secondary(secondary);
+        if (Showdown.Block(e.Body, "secondaries") is { } secondaries)
+            foreach (Match each in Regex.Matches(secondaries, @"\{(?>[^{}]+|\{(?<d>)|\}(?<-d>))*(?(d)(?!))\}"))
+                Secondary("\n\t\t\t" + each.Value[1..^1].Replace("\n\t\t\t\t", "\n\t\t\t"));
+        // What happens to the user every time (self.boosts, selfBoost), and a status move's own changes
+        if (Showdown.Block(e.Body, "self") is { } own) Stats(Showdown.Block(own, "boosts", tabs: 3), true, 100);
+        if (Showdown.Block(e.Body, "selfBoost") is { } boost) Stats(Showdown.Block(boost, "boosts", tabs: 3), true, 100);
+        if (m.Category == MoveCategory.Status)
+        {
+            Stats(Showdown.Block(e.Body, "boosts"), e.Text("target") == "self", 100);
+            if (e.Fields.GetValueOrDefault("status") is { } st && ShowdownStatuses.TryGetValue(st.Trim('\'', '"'), out var given))
+            {
+                m.InflictStatus = given;
+                m.StatusChancePercent = 100;
+            }
+        }
+        // A move that does nothing yet carries no half-working side effects (its flags are kept)
+        if (m.Support == MoveEffectSupport.None) MoveEffects.ClearFields(m);
+    }
 
     /// <summary>A Z-Move's effect, the flags that matter to a battle, its target, its critical-hit stage and Stoked Sparksurfer's paralysis (R21).</summary>
     private static void ZMoveFields(MoveData m, Showdown.Entry e)

@@ -11,7 +11,7 @@ namespace PokemonPlatinumEngine.Battle;
 public enum Elsewhere { No, InTheAir, Underground, Underwater, Vanished }
 
 /// <summary>What a Protect of the later games does to whoever touches it (plan 06 · R25): nothing but Protect's own, or a shield's answer.</summary>
-public enum Shield { None, KingsShield, SpikyShield, BanefulBunker, MaxGuard }
+public enum Shield { None, KingsShield, SpikyShield, BanefulBunker, MaxGuard, Obstruct }
 
 /// <summary>
 /// One place on the field (a side and a slot: one per side in a single battle, two in a double) and the
@@ -347,6 +347,7 @@ internal sealed class Volatiles
         Conversion2By = to(Conversion2By);
         Lifting = to(Lifting);
         LiftedBy = to(LiftedBy);
+        OctolockedBy = to(OctolockedBy);
     }
 
     // ---- Abilities (plan 06 · R7)
@@ -397,6 +398,18 @@ internal sealed class Volatiles
 
     /// <summary>A layer of G-Max Chi Strike for each time it was given (up to three): so much higher its critical-hit stage.</summary>
     public int ChiStrike;
+
+    // ---- The later moves, batch 3 (plan 06 · R26)
+
+    /// <summary>No Retreat: it can't leave the field (and can't use the move again) while it stays in.</summary>
+    public bool NoRetreat;
+
+    /// <summary>Tar Shot: Fire moves are twice as strong against it while it stays in.</summary>
+    public bool TarShot;
+
+    /// <summary>Octolock: held by whoever stands there, it can't leave and loses a stage of Defense and Sp. Def at each turn's end.</summary>
+    public Place? OctolockedBy;
+
     public Volatiles Copy() => (Volatiles)MemberwiseClone();
 
     /// <summary>What Baton Pass hands on to the Pokémon that takes its place (the original's two <c>BATON_PASSED</c> masks).</summary>
@@ -524,6 +537,9 @@ internal sealed class TurnFlags
 
     /// <summary>The last physical and special hit it took this turn, whoever from (Focus Punch loses its focus on either).</summary>
     public int PhysicalTaken, SpecialTaken;
+
+    /// <summary>A stage of its rose, or fell, this turn (plan 06 · R26; Showdown's <c>statsRaisedThisTurn</c>, <c>statsLoweredThisTurn</c>): Burning Jealousy and Lash Out ask.</summary>
+    public bool StatsRaised, StatsLowered;
 
     public void Took(Place from, MoveCategory category, int damage)
     {
