@@ -158,6 +158,12 @@ public sealed class EffectCue
     /// </summary>
     public bool Charging { get; init; }
 
+    /// <summary>
+    /// For <see cref="CueKind.Move"/>: the ground the battle is fought on (plan 25 · Y6), for the looks that go by it:
+    /// Secret Power's by what it does there, Camouflage's by the type it takes.
+    /// </summary>
+    public Sim.BattleTerrain Terrain { get; init; }
+
     public BattleSide FromSide { get; init; }
     public int FromSlot { get; init; }
     public BattleSide ToSide { get; init; }

@@ -126,6 +126,8 @@ public static partial class SoundBank
         // ---- A move's launch, one per type (the hit's sound comes as it lands)
         foreach (var type in Enum.GetValues<PokemonType>())
             Add("move_" + type.ToString().ToLowerInvariant(), SoundGroup.Move, null, $"A {type} move sets off.");
+        // ---- A move's own, as it sets off (plan 25 · Y6 on): SoundBank.Moves.cs
+        AddMoveSounds(Add);
         return list;
     }
 
@@ -970,7 +972,7 @@ public static partial class SoundBank
                 return Finish(d.S, 0.36f);
 
             default:
-                throw new ArgumentOutOfRangeException(nameof(name), name, "not a sound of the bank");
+                return MakeMoveSound(name) ?? throw new ArgumentOutOfRangeException(nameof(name), name, "not a sound of the bank");
         }
     }
 }

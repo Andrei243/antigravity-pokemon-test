@@ -61,12 +61,22 @@ internal sealed class FxList
 
     public int Count => Quads.Count + Ribbons.Count;
 
+    /// <summary>
+    /// When the last effect played into this list lands, in seconds of its cue's age (plan 25 · Y6), or −1: set by
+    /// the landing (<c>MoveFx.Impact</c>) and by any recipe that lands its own way, so a test can hold every move to
+    /// <see cref="BattleAnimator.ImpactTime"/>.
+    /// </summary>
+    public float Landed = -1f;
+
+    public void Land(float at) => Landed = at;
+
     public void Clear()
     {
         Quads.Clear();
         Ribbons.Clear();
         Flash = 0f;
         Shake = 0f;
+        Landed = -1f;
     }
 
     public void Sprite(FxShape shape, Vector3 at, float size, Color color, FxBlend blend = FxBlend.Add, float rotation = 0f, bool depth = false)
