@@ -511,6 +511,100 @@ One sound for each type, played as a move of that type sets off (`SoundBank.Move
 | `use_mega_kick` | `SEQ_SE_DP_140` | Mega Kick: a swing and a huge booming kick. |
 | `use_moonlight` | `SEQ_SE_DP_W236` | Moonlight: a soft rising hum and a slow twinkle of high notes. |
 | `use_trick` | `SEQ_SE_DP_166` | Trick: a puff, a quick run of notes and four sparkling pings. |
+| `use_clamp` | `SEQ_SE_DP_050` | Clamp: a shell's clack, a thud and a tighter second clack with bubbles. |
+| `use_crabhammer` | `SEQ_SE_DP_W233B` | Crabhammer: a watery gather, a very heavy hammer blow and a crashing splash. |
+| `use_double_kick` | `SEQ_SE_DP_030` | Double Kick: two swings, each ending in a thud. |
+| `use_icicle_spear` | `SEQ_SE_DP_W196` | Icicle Spear: four icy whooshes and four ringing shatters. |
+| `use_rapid_spin` | `SEQ_SE_DP_207` | Rapid Spin: a rising whirl and three rolling thuds. |
+| `use_water_spout` | `SEQ_SE_DP_W291` | Water Spout: a rising rush of water, a spout and a heavy falling splash. |
+| `use_belly_drum` | `SEQ_SE_DP_W187` | Belly Drum: six deep drum beats and a rising tone. |
+| `use_covet` | `SEQ_SE_DP_W204` | Covet: a pleading run of soft notes, a pat and a twinkle. |
+| `use_slack_off` | `SEQ_SE_DP_W281` | Slack Off: a long low yawn and a soft healing run of notes. |
+| `use_superpower` | `SEQ_SE_DP_W025` | Superpower: a rising growl of power and a huge booming blow with a crackle. |
+| `use_blaze_kick` | `SEQ_SE_DP_W172` | Blaze Kick: a roaring flame, a kick and a burning crackle. |
+| `use_eruption` | `SEQ_SE_DP_W153` | Eruption: two deep rumbles and a run of six booming blasts. |
+| `use_facade` | `SEQ_SE_DP_W207` | Facade: four pulsing tones that climb and a heavy blow. |
+| `use_seed_bomb` | `SEQ_SE_DP_HURU2` | Seed Bomb: five quick pings thrown and three booming bursts. |
+| `use_triple_kick` | `SEQ_SE_DP_W007` | Triple Kick: three quick kicks, each harder. |
+| `use_mega_punch` | `SEQ_SE_DP_140` | Mega Punch: a swing and a huge booming punch with a bell. |
+| `use_skull_bash` | `SEQ_SE_DP_W036` | Skull Bash: a tucking swish, a rushing charge and a ringing crack. |
+| `use_glare` | `SEQ_SE_DP_W043D` | Glare: a low menacing drone with sour notes and a crackle. |
+| `use_healing_wish` | `SEQ_SE_DP_W361` | Healing Wish: a long rising glow with a run of bright notes and a bell. |
+| `use_lava_plume` | `SEQ_SE_DP_W436` | Lava Plume: a thick roaring surge of lava with bubbling and crackling. |
+| `use_sky_uppercut` | `SEQ_SE_DP_W327` | Sky Uppercut: a rising rush, a booming blow and a second lighter one. |
+| `use_cotton_spore` | `SEQ_SE_DP_W199` | Cotton Spore: a long soft rustle with a gentle drifting tune. |
+| `use_crush_claw` | `SEQ_SE_DP_W013` | Crush Claw: two heavy slashes, each with a thud and a crack. |
+| `use_fissure` | `SEQ_SE_DP_W090` | Fissure: a long grinding rumble, a crackle of rock and a deep thud. |
+| `use_needle_arm` | `SEQ_SE_DP_W030` | Needle Arm: four quick prickling jabs and a last hard blow. |
+| `use_spikes` | `SEQ_SE_DP_W026` | Spikes: five thrown pings, each landing as a bright iron ring. |
+| `use_teeter_dance` | `SEQ_SE_DP_W298` | Teeter Dance: a wobbling tune that sways and a rising twinkle. |
+| `use_guillotine` | `SEQ_SE_DP_W011` | Guillotine: a swing, a snip of steel and a ringing chop. |
+| `use_present` | `SEQ_SE_DP_W039` | Present: a playful toss, a boom and a bright run of notes. |
+| `use_heal_block` | `SEQ_SE_DP_W377` | Heal Block: a low dark drone, falling notes and a dull toll. |
+| `use_psycho_shift` | `SEQ_SE_DP_W375` | Psycho Shift: a wavering rise, a spiral of notes and a falling tone with a bell. |
+| `use_comet_punch` | `SEQ_SE_DP_030` | Comet Punch: four quick punches, each a thud, and a small bell. |
+| `use_pay_day` | `SEQ_SE_DP_W013B` | Pay Day: a rush of ringing coins, a thud and a bright scatter of coins. |
+| `use_vise_grip` | `SEQ_SE_DP_W011` | Vise Grip: a closing swish, a tight clamp and a straining creak. |
+| `use_rolling_kick` | `SEQ_SE_DP_050` | Rolling Kick: a spinning rush and a heavy kick with a rumble. |
+| `use_twineedle` | `SEQ_SE_DP_HURU2` | Twineedle: two thin whistling needles, each a prick, and a poisonous bubbling. |
+| `use_sleep_powder` | `SEQ_SE_DP_W077B` | Sleep Powder: a long soft sifting hiss and a slow falling lullaby. |
+| `use_sludge` | `SEQ_SE_DP_W145C` | Sludge: a wet fling, a heavy splat and a bubbling ooze. |
+| `use_bone_club` | `SEQ_SE_DP_W155` | Bone Club: a swing and a hollow clonk of bone with a thud. |
+| `use_spike_cannon` | `SEQ_SE_DP_W013` | Spike Cannon: a rattling volley of twelve spikes and a clatter of them landing. |
+| `use_barrage` | `SEQ_SE_DP_W207` | Barrage: five lobbed pops, each ending in a thud and a puff. |
+| `use_lovely_kiss` | `SEQ_SE_DP_W213` | Lovely Kiss: a run of sweet notes, a smack and a drowsy falling tune. |
+| `use_sky_attack` | `SEQ_SE_DP_W360` | Sky Attack: a rising shriek of wind, a vast crash and a ringing flare. |
+| `use_transform` | `SEQ_SE_PL_W100` | Transform: a crackling pixel whine that rises, breaks and falls again, with a bell. |
+| `use_bonemerang` | `SEQ_SE_DP_HURU` | Bonemerang: a spinning whoosh out, a thud, a whoosh back and a second thud. |
+| `use_sharpen` | `SEQ_SE_DP_W112` | Sharpen: a bright rising run of notes and a glassy ring. |
+| `use_conversion` | `SEQ_SE_DP_W112` | Conversion: four climbing tones that shift and a bright closing run. |
+| `use_struggle` | `SEQ_SE_DP_001` | Struggle: a flailing patter of weak thumps and a weak blow. |
+| `use_sketch` | `SEQ_SE_DP_W092` | Sketch: a quick scratching of pencil lines and a small bell. |
+| `use_spider_web` | `SEQ_SE_DP_W081B` | Spider Web: two sticky threads thrown and a trembling web. |
+| `use_nightmare` | `SEQ_SE_DP_W171` | Nightmare: a low wavering drone and a creeping, falling tune. |
+| `use_aeroblast` | `SEQ_SE_DP_KAZE` | Aeroblast: a roaring rush of wind, a vast boom and a rushing burst. |
+| `use_powder_snow` | `SEQ_SE_DP_150` | Powder Snow: a long cold sifting hiss with a chime of frost. |
+| `use_zap_cannon` | `SEQ_SE_DP_W086` | Zap Cannon: a whining charge, a thunderous boom and a long crackle. |
+| `use_milk_drink` | `SEQ_SE_DP_W152` | Milk Drink: gurgling bubbles, a gulp and a soft healing chime. |
+| `use_sacred_fire` | `SEQ_SE_DP_W221B` | Sacred Fire: a rising holy tune over a roaring flame and a rumbling blaze. |
+| `use_morning_sun` | `SEQ_SE_DP_W234` | Morning Sun: a warm rising swell with bright bells and twinkles. |
+| `use_flatter` | `SEQ_SE_DP_W227B` | Flatter: a coaxing run of notes with a shimmer and a wobbling falling tone. |
+| `use_smelling_salts` | `SEQ_SE_DP_030C` | Smelling Salts: a sharp sniffing hiss, a crackling jolt and a bright jump. |
+| `use_nature_power` | `SEQ_SE_DP_W053` | Nature Power: a rising rustle of nature, a throw and a booming burst. |
+| `use_role_play` | `SEQ_SE_DP_W161` | Role Play: a gliding tone, a run of mimicking notes and a bell. |
+| `use_magic_coat` | `SEQ_SE_DP_W112` | Magic Coat: a shimmering run of glassy notes and a bell. |
+| `use_arm_thrust` | `SEQ_SE_DP_030` | Arm Thrust: five quick open-palm thuds and a last blow. |
+| `use_tail_glow` | `SEQ_SE_DP_W234` | Tail Glow: a rising shining tone and a string of bright bells. |
+| `use_luster_purge` | `SEQ_SE_DP_W076` | Luster Purge: a swelling shimmer, a bright flash and a glittering burst. |
+| `use_mist_ball` | `SEQ_SE_DP_W081` | Mist Ball: a soft rolling mist, a throw and a misty burst with falling notes. |
+| `use_feather_dance` | `SEQ_SE_DP_W080` | Feather Dance: a soft drifting hush with a gentle falling tune. |
+| `use_ice_ball` | `SEQ_SE_DP_W196` | Ice Ball: an icy rolling clatter, a thud and a shattering chime. |
+| `use_blast_burn` | `SEQ_SE_DP_W085` | Blast Burn: a roaring wind of flame, a vast boom and a long burning crackle. |
+| `use_hydro_cannon` | `SEQ_SE_DP_W056` | Hydro Cannon: a rising roar of water, a cannon blast and a crashing splash. |
+| `use_weather_ball` | `SEQ_SE_DP_W207` | Weather Ball: a wavering gather, a bright flash and a booming burst. |
+| `use_fake_tears` | `SEQ_SE_DP_W039` | Fake Tears: a sobbing falling tune and a patter of drops. |
+| `use_frenzy_plant` | `SEQ_SE_DP_W010` | Frenzy Plant: four creaking vines lashing, a very heavy blow and a crackle of leaves. |
+| `use_bulk_up` | `SEQ_SE_DP_W207` | Bulk Up: three straining beats that climb and a firm closing run. |
+| `use_poison_tail` | `SEQ_SE_DP_BRADE` | Poison Tail: a swishing tail, a thud and four bubbling drips. |
+| `use_volt_tackle` | `SEQ_SE_DP_W120` | Volt Tackle: a crackling charge, a huge crash and a long sizzle of lightning. |
+| `use_doom_desire` | `SEQ_SE_DP_W466` | Doom Desire: a deep golden hum, a tolling bell and a rising run of notes. |
+| `use_psycho_boost` | `SEQ_SE_DP_W376` | Psycho Boost: a swelling charge with a run of notes and a huge falling wave. |
+| `use_trump_card` | `SEQ_SE_DP_W376` | Trump Card: four flicked cards, each a swish and a tap, and a bell. |
+| `use_power_trick` | `SEQ_SE_DP_CLIMAX09` | Power Trick: two rising swaps, each with a bell and a run of notes. |
+| `use_me_first` | `SEQ_SE_DP_SHUSHU` | Me First: a falling pull of light, a quick run of notes and a thud. |
+| `use_heart_swap` | `SEQ_SE_DP_W179` | Heart Swap: six bell pings, a gliding run of notes and a last twinkle. |
+| `use_vacuum_wave` | `SEQ_SE_DP_W015` | Vacuum Wave: three whistling whirls and a punch of air. |
+| `use_switcheroo` | `SEQ_SE_DP_166` | Switcheroo: a quick run of notes, a rustle of shuffling cups and five bright pings. |
+| `use_draco_meteor` | `SEQ_SE_DP_201` | Draco Meteor: a deep rising roar and six meteors, each a rush and a boom. |
+| `use_judgment` | `SEQ_SE_DP_CLIMAX03` | Judgment: a rising holy tone, a booming bell and a glittering fall of light. |
+| `use_roar_of_time` | `SEQ_SE_DP_W459` | Roar of Time: a deep drone, a ticking of bells and a vast crash with a toll. |
+| `use_spacial_rend` | `SEQ_SE_PL_W460B` | Spacial Rend: a rising whine, a tearing slash and a falling hum with a bell. |
+| `use_lunar_dance` | `SEQ_SE_DP_W461` | Lunar Dance: a slow dancing tune over a soft rising hum and a twinkle. |
+| `use_crush_grip` | `SEQ_SE_DP_W462` | Crush Grip: a swing, a vast crushing blow and a creaking squeeze. |
+| `use_magma_storm` | `SEQ_SE_DP_W463` | Magma Storm: a long deep roaring storm of fire with crackling and bubbling lava. |
+| `use_dark_void` | `SEQ_SE_DP_W464` | Dark Void: a deep sinking drone, a falling tune and a hollow toll. |
+| `use_seed_flare` | `SEQ_SE_DP_W465` | Seed Flare: a bright rising gather, a glittering flash and a ringing burst. |
+| `use_shadow_force` | `SEQ_SE_DP_W467` | Shadow Force: a fading shadowy whine, a dark slam and a growling crackle. |
 
 ## Cries
 
