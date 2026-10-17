@@ -216,7 +216,8 @@ public sealed class TrainerAi : IBattleController
     private static bool ShouldSwitch(BattleCore battle, Battler mine)
     {
         var v = mine.Volatile;
-        if (v.BindTurns > 0 || v.TrappedBy != null || v.Ingrained) return false;
+        // (No Retreat and Octolock hold it as Mean Look does: plan 06 · R26)
+        if (v.BindTurns > 0 || v.TrappedBy != null || v.Ingrained || v.NoRetreat || v.OctolockedBy != null) return false;
         var foes = battle.SlotsOf(Other(mine.Side)).Where(b => b.Pokemon != null && !b.Pokemon.IsFainted).ToList();
         if (foes.Any(f => f.Ability?.Name is "Shadow Tag" or "Arena Trap")) return false;
         if (mine.HasType(PokemonType.Steel) && battle.AllBattlers.Any(b => b != mine && b.IsActive && b.Ability?.Name == "Magnet Pull")) return false;

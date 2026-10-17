@@ -78,6 +78,7 @@ public sealed partial class BattleCore
             }
             if (passesTheBaton) continue;
             if (v.TrappedBy == leaving.Place) v.TrappedBy = null;
+            if (v.OctolockedBy == leaving.Place) v.OctolockedBy = null;
             if (v.LockedOnBy == leaving.Place)
             {
                 v.LockedOnBy = null;

@@ -279,7 +279,7 @@ public sealed partial class BattleCore
 
     /// <summary>The moves that count toward Protect's chain (Showdown's <c>stall</c>): Protect's kin, and Wide Guard and Quick Guard.</summary>
     private static bool Stalls(MoveData? move) =>
-        move?.Effect is "Protect" or "SurviveWith1Hp" or "KingsShield" or "SpikyShield" or "BanefulBunker" or "WideGuard" or "QuickGuard";
+        move?.Effect is "Protect" or "SurviveWith1Hp" or "KingsShield" or "SpikyShield" or "BanefulBunker" or "WideGuard" or "QuickGuard" or "Obstruct";
 
     /// <summary>
     /// Whether Protect, a shield or the target's side's guard stops a move at its target (each guard's
@@ -293,7 +293,8 @@ public sealed partial class BattleCore
         if (target == user || !use.Effect.StoppedByProtect(user)) return false;
         bool protectable = use.Data.Flags.HasFlag(MoveFlags.Protect);
         bool status = use.Move.Category == MoveCategory.Status;
-        if (target.Turn.Protecting && protectable && !(target.Turn.Shield == Shield.KingsShield && status)) return true;
+        // King's Shield and Obstruct (plan 06 · R26) let a status move through
+        if (target.Turn.Protecting && protectable && !(target.Turn.Shield is Shield.KingsShield or Shield.Obstruct && status)) return true;
 
         var up = GuardsOf(target.Side);
         if (up == SideGuard.None) return false;
@@ -326,6 +327,10 @@ public sealed partial class BattleCore
                 break;
             case Shield.BanefulBunker:
                 TryInflictStatus(user, StatusCondition.Poison, t, false, By.Other);
+                break;
+            case Shield.Obstruct:
+                // Two stages of Defense (plan 06 · R26; Obstruct's onTryHit)
+                ChangeStat(user, StatType.Defense, -2, t, false, By.Other);
                 break;
         }
     }

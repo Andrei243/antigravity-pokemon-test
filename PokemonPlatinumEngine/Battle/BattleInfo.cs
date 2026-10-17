@@ -206,7 +206,8 @@ public sealed class BattleInfo
         if (v.HealBlockTurns > 0) Bad(Text.Of("battleInfo.healBlock"), Turns(v.HealBlockTurns));
         if (v.EmbargoTurns > 0) Bad(Text.Of("battleInfo.embargo"), Turns(v.EmbargoTurns));
         if (v.BindTurns > 0 && v.BindingMove.Length > 0) Bad(Text.Of("battleInfo.bound", ("move", LocalNames.Move(v.BindingMove))));
-        if (v.TrappedBy != null) Bad(Text.Of("battleInfo.cantEscape"));
+        // No Retreat and Octolock hold it too (plan 06 · R26)
+        if (v.TrappedBy != null || v.NoRetreat || v.OctolockedBy != null) Bad(Text.Of("battleInfo.cantEscape"));
         if (v.Identified || v.MiracleEye) Bad(Text.Of("battleInfo.identified"));
         if (v.LockedOnBy != null) Bad(Text.Of("battleInfo.takenAimAt"));
         if (v.AbilitySuppressed) Bad(Text.Of("battleInfo.abilitySuppressed"));

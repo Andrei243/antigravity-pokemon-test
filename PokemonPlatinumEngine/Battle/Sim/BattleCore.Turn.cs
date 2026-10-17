@@ -256,6 +256,9 @@ public sealed partial class BattleCore
                 }
             }
 
+            // Octolock squeezes after the binding moves (plan 06 · R26; Showdown's residual order 14)
+            if (b.IsActive) Octolocked(b);
+
             // Bad Dreams across the field wears at a sleeper
             if (b.IsActive && p.Status == StatusCondition.Sleep && !guarded && ActiveFoes(b).Any(foe => Has(foe, "Bad Dreams")))
                 LoseHp(b, Formulas.Divide(p.MaxHP, 8), Text.Of("battle.isTormented", ("pokemon", b.Name)));

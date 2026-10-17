@@ -15374,9 +15374,9 @@
         "personality": 1117982022,
         "moves": [
           "Grass Knot",
+          "Bleakwind Storm",
           "Focus Blast",
-          "Heat Wave",
-          "U-turn"
+          "Heat Wave"
         ]
       }
     ]
@@ -18613,10 +18613,10 @@
         "ivScale": 255,
         "personality": 776622350,
         "moves": [
-          "Swords Dance",
           "Crunch",
           "Aqua Jet",
-          "Psychic Fangs"
+          "Ice Fang",
+          "Wave Crash"
         ]
       }
     ]
@@ -18731,10 +18731,10 @@
         "ivScale": 255,
         "personality": 4218934147,
         "moves": [
+          "Clangorous Soul",
+          "Iron Head",
           "Drain Punch",
-          "Clanging Scales",
-          "Boomburst",
-          "Iron Head"
+          "Clanging Scales"
         ]
       }
     ]
@@ -19489,10 +19489,10 @@
         "ivScale": 255,
         "personality": 2368234172,
         "moves": [
-          "U-turn",
-          "High Jump Kick",
+          "Will-O-Wisp",
+          "Court Change",
           "Pyro Ball",
-          "Sucker Punch"
+          "U-turn"
         ]
       }
     ]
@@ -20078,7 +20078,7 @@
           "Dragon Dance",
           "Sucker Punch",
           "U-turn",
-          "Dragon Rush"
+          "Grav Apple"
         ]
       }
     ]
@@ -20472,7 +20472,7 @@
           "Mystical Fire",
           "Calm Mind",
           "Psychic",
-          "Healing Wish"
+          "Magic Powder"
         ]
       }
     ]
@@ -20763,10 +20763,10 @@
         "ivScale": 255,
         "personality": 1578630592,
         "moves": [
-          "Close Combat",
+          "No Retreat",
           "Rock Slide",
-          "Counter",
-          "Megahorn"
+          "Close Combat",
+          "Counter"
         ]
       }
     ]
@@ -20939,10 +20939,10 @@
         "ivScale": 255,
         "personality": 2961801520,
         "moves": [
-          "Parting Shot",
           "Protect",
           "Rapid Spin",
-          "Thrash"
+          "Aura Wheel",
+          "Parting Shot"
         ]
       }
     ]
@@ -21011,10 +21011,10 @@
         "ivScale": 255,
         "personality": 4168155817,
         "moves": [
+          "Bolt Beak",
           "Aerial Ace",
           "Dragon Pulse",
-          "Discharge",
-          "Slam"
+          "Discharge"
         ]
       }
     ]
@@ -21037,10 +21037,10 @@
         "ivScale": 255,
         "personality": 3138618151,
         "moves": [
-          "Freeze-Dry",
           "Icicle Crash",
-          "Discharge",
-          "Slam"
+          "Freeze-Dry",
+          "Bolt Beak",
+          "Discharge"
         ]
       }
     ]
@@ -21064,9 +21064,9 @@
         "personality": 2109080485,
         "moves": [
           "Crunch",
+          "Fishious Rend",
           "Dragon Pulse",
-          "Super Fang",
-          "Stomp"
+          "Super Fang"
         ]
       }
     ]
@@ -21091,8 +21091,8 @@
         "moves": [
           "Freeze-Dry",
           "Icicle Crash",
-          "Stone Edge",
-          "Crunch"
+          "Fishious Rend",
+          "Stone Edge"
         ]
       }
     ]
@@ -21513,10 +21513,10 @@
         "ivScale": 255,
         "personality": 757402748,
         "moves": [
-          "X-Scissor",
           "Defog",
-          "U-turn",
-          "Swords Dance"
+          "Stone Axe",
+          "Swords Dance",
+          "X-Scissor"
         ]
       }
     ]
@@ -21539,10 +21539,10 @@
         "ivScale": 255,
         "personality": 4022832378,
         "moves": [
+          "Headlong Rush",
           "Swords Dance",
-          "Facade",
           "Crunch",
-          "Hammer Arm"
+          "Facade"
         ]
       }
     ]
@@ -21565,10 +21565,10 @@
         "ivScale": 255,
         "personality": 2993294712,
         "moves": [
+          "Wave Crash",
           "Aqua Jet",
           "Shadow Ball",
-          "Head Smash",
-          "Double-Edge"
+          "Head Smash"
         ]
       }
     ]
@@ -21591,10 +21591,10 @@
         "ivScale": 255,
         "personality": 1963822581,
         "moves": [
-          "U-turn",
           "Close Combat",
-          "Screech",
-          "Agility"
+          "Dire Claw",
+          "U-turn",
+          "Screech"
         ]
       }
     ]
@@ -22344,7 +22344,7 @@
           "Energy Ball",
           "Focus Blast",
           "Psyshock",
-          "Flamethrower"
+          "Expanding Force"
         ]
       }
     ]
@@ -22993,8 +22993,8 @@
         "moves": [
           "Drain Punch",
           "Bulk Up",
-          "Focus Punch",
-          "Hydro Pump"
+          "Wave Crash",
+          "Focus Punch"
         ]
       }
     ]
@@ -23305,10 +23305,10 @@
         "ivScale": 255,
         "personality": 3087905358,
         "moves": [
+          "Wave Crash",
           "Sleep Talk",
-          "Rest",
           "Curse",
-          "Double-Edge"
+          "Rest"
         ]
       }
     ]

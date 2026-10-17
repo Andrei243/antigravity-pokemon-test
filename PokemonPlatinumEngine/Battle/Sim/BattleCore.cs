@@ -760,7 +760,7 @@ public sealed partial class BattleCore : IBattleContext
         if (a.CurrentHP <= 0 && b.CurrentHP > 0) return true;
         if (a.CurrentHP > 0 && b.CurrentHP <= 0) return false;
 
-        int priorityA = first.Move?.Priority ?? 0, priorityB = second.Move?.Priority ?? 0;
+        int priorityA = PriorityOf(first), priorityB = PriorityOf(second);
         if (priorityA != priorityB) return priorityA < priorityB;
 
         // A Quick Claw or a Custap Berry that went off (two: by Speed alone, Trick Room or not), then a Lagging

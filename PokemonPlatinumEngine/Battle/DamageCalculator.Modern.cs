@@ -98,7 +98,8 @@ public static partial class DamageCalculator
             // Foul Play takes the target's Attack and its stage, Psyshock the target's Defense, Chip Away no notice of
             // the target's stages (plan 06 · R24; Showdown's overrideOffensivePokemon, overrideDefensiveStat, ignoreDefensive)
             var offense = TakesTheTargetsAttack(move.Data) ? defPokemon : atkPokemon;
-            int attackStage = offense.StatStages.GetValueOrDefault(physical ? StatType.Attack : StatType.SpAttack);
+            // Body Press its user's Defense and its stage (plan 06 · R26; overrideOffensiveStat)
+            int attackStage = offense.StatStages.GetValueOrDefault(OffensiveStat(move.Data, physical));
             int defenseStage = IgnoresDefenseStages(move.Data) ? 0 : defPokemon.StatStages.GetValueOrDefault(defensePhysical ? StatType.Defense : StatType.SpDefense);
             if (theirs == "Unaware") attackStage = 0;
             if (mine == "Unaware") defenseStage = 0;
@@ -107,7 +108,7 @@ public static partial class DamageCalculator
                 attackStage = Math.Max(0, attackStage);
                 defenseStage = Math.Min(0, defenseStage);
             }
-            int attack = Formulas.Staged(physical ? offense.Attack : offense.SpAttack, attackStage);
+            int attack = Formulas.Staged(StatOf(offense, OffensiveStat(move.Data, physical)), attackStage);
             int defense = Formulas.Staged(DefendingStat(defender, defensePhysical), defenseStage);
 
             // Hustle is applied to the stat itself, before the chain

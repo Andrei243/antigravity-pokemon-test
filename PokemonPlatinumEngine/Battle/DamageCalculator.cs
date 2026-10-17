@@ -120,6 +120,8 @@ public static partial class DamageCalculator
             if (move.Data.Effect == "FreezeDry" && type == PokemonType.Water) multiplier = inverse ? 0.5f : 2f;
             if (move.Data.Effect == "FlyingPress" && multiplier != 0f) multiplier *= TypeChart.GetEffectiveness(PokemonType.Flying, type, null, rules, inverse);
             if (HitsWhatFloats(move.Data) && type == PokemonType.Flying && move.Type == PokemonType.Ground && multiplier == 0f) multiplier = 1f;
+            // Tar Shot makes a Fire move a step more effective, on the target's first type (plan 06 · R26; its condition's onEffectiveness)
+            if (defender.Volatile.TarShot && move.Type == PokemonType.Fire && type == types[0]) multiplier *= 2f;
             if (multiplier != 1f) yield return (type, multiplier);
         }
     }
@@ -150,7 +152,20 @@ public static partial class DamageCalculator
     public static bool IgnoresDefenseStages(MoveData move) => move.Effect == "ChipAway";
 
     /// <summary>Storm Throw, Frost Breath and Wicked Blow: every hit is critical, unless the target or its side keeps critical hits off (<c>willCrit</c>).</summary>
-    public static bool AlwaysCritical(MoveData move) => move.Effect == "StormThrow";
+    public static bool AlwaysCritical(MoveData move) => move.Effect is "StormThrow" or "SurgingStrikes";
+
+    /// <summary>
+    /// The stat a move hits with: Attack or Sp. Atk by its category, or Body Press's Defense (<c>overrideOffensiveStat:
+    /// 'def'</c>; plan 06 · R26), its stage with it.
+    /// </summary>
+    public static StatType OffensiveStat(MoveData move, bool physical) =>
+        move.Effect == "BodyPress" ? StatType.Defense : physical ? StatType.Attack : StatType.SpAttack;
+
+    /// <summary>A Pokémon's stat by its kind, as a hit reads it.</summary>
+    private static int StatOf(Pokemon p, StatType stat) => stat switch
+    {
+        StatType.Attack => p.Attack, StatType.Defense => p.Defense, StatType.SpAttack => p.SpAttack, StatType.SpDefense => p.SpDefense, _ => p.Speed
+    };
 
     /// <summary>Photon Geyser, Sunsteel Strike and Moongeist Beam go through the target's ability as Mold Breaker does (<c>ignoreAbility</c>).</summary>
     public static bool IgnoresAbilities(MoveData move) => move.Effect is "PhotonGeyser" or "SunsteelStrike";
@@ -225,7 +240,7 @@ public static partial class DamageCalculator
         // Psyshock the target's Defense against a special move
         var offense = TakesTheTargetsAttack(move.Data) ? defPokemon : atkPokemon;
         bool defensePhysical = physical || HitsTheDefense(move.Data);
-        int attack = physical ? offense.Attack : offense.SpAttack;
+        int attack = StatOf(offense, OffensiveStat(move.Data, physical));
         int defense = DefendingStat(defender, defensePhysical);
 
         // The later games put the same bonuses in other places and chain them in 4096ths (plan 06 · R19c)
@@ -305,7 +320,7 @@ public static partial class DamageCalculator
         if (typed && type == PokemonType.Fire && theirs == "Dry Skin") power = power * 125 / 100;
 
         // The stages: Simple doubles its holder's, Unaware ignores the other's, a critical hit the ones that would help the target
-        int attackStage = offense.StatStages.GetValueOrDefault(physical ? StatType.Attack : StatType.SpAttack);
+        int attackStage = offense.StatStages.GetValueOrDefault(OffensiveStat(move.Data, physical));
         int defenseStage = IgnoresDefenseStages(move.Data) ? 0 : defPokemon.StatStages.GetValueOrDefault(defensePhysical ? StatType.Defense : StatType.SpDefense);
         if (!rules.SimpleDoublesChanges)
         {

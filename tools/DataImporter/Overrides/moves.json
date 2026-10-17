@@ -6,5 +6,23 @@
   "Sappy Seed": {
     "effect": "SappySeed",
     "support": "Full"
+  },
+  // PokeAPI's side effect for Burning Jealousy is a burn every time; Showdown burns only a target whose stats rose
+  // this turn, which the engine's code for the move decides (plan 06 · R26)
+  "Burning Jealousy": {
+    "inflictStatus": null,
+    "statusChancePercent": null
+  },
+  // Who a move of Sword and Shield's or Legends: Arceus's is for, where PokeAPI's target and Showdown's part (plan 06
+  // · R26): Coaching is for the ally beside its user (adjacentAlly), Lunar Blessing for its user and its allies
+  // (allies), Take Heart for its user alone (self)
+  "Coaching": {
+    "target": "Ally"
+  },
+  "Lunar Blessing": {
+    "target": "UserAndAllies"
+  },
+  "Take Heart": {
+    "target": "User"
   }
 }

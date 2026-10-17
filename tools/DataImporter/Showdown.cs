@@ -19,6 +19,9 @@ public sealed partial class Showdown
 {
     public sealed record Entry(string Id, Dictionary<string, string> Fields)
     {
+        /// <summary>The entry's whole text, every line between its first and its last, nested tables and functions too (plan 06 · R26: <see cref="Block"/> reads a table that runs over several lines).</summary>
+        public string Body { get; set; } = "";
+
         public string? Text(string key) => Fields.TryGetValue(key, out var v) && Quoted().Match(v) is { Success: true } m ? m.Groups[1].Value : null;
         public int? Number(string key) => Fields.TryGetValue(key, out var v) && int.TryParse(v, out int n) ? n : null;
         public bool Is(string key, string value) => Fields.TryGetValue(key, out var v) && v == value;
@@ -48,6 +51,7 @@ public sealed partial class Showdown
     {
         var entries = new List<Entry>();
         Entry? current = null;
+        var body = new System.Text.StringBuilder();
         foreach (string raw in lines)
         {
             string line = raw.TrimEnd('\r');
@@ -58,10 +62,13 @@ public sealed partial class Showdown
             }
             if (line == "\t},")
             {
+                current.Body = body.ToString();
+                body.Clear();
                 entries.Add(current);
                 current = null;
                 continue;
             }
+            body.Append(line).Append('\n');
             if (Field().Match(line) is { Success: true } field)
             {
                 string value = field.Groups[2].Value;
@@ -89,6 +96,29 @@ public sealed partial class Showdown
         foreach (Match pair in Regex.Matches(table.Groups[1].Value, @"(\w+): (-?\d+)"))
             pairs.Add((pair.Groups[1].Value, int.Parse(pair.Groups[2].Value)));
         return pairs;
+    }
+
+    /// <summary>
+    /// A field's table, however many lines it runs over: from <c>key: {</c> (or <c>[</c>) at the given depth of tabs
+    /// to the bracket that closes it, brackets matched; the text between the two, or null when there is no such field.
+    /// </summary>
+    public static string? Block(string body, string key, int tabs = 2)
+    {
+        string indent = new('\t', tabs);
+        string text = "\n" + body;
+        foreach (char open in new[] { '{', '[' })
+        {
+            int at = text.IndexOf($"\n{indent}{key}: {open}", StringComparison.Ordinal);
+            if (at < 0) continue;
+            int start = text.IndexOf(open, at + 1);
+            int depth = 0;
+            for (int i = start; i < text.Length; i++)
+            {
+                if (text[i] is '{' or '[') depth++;
+                else if (text[i] is '}' or ']' && --depth == 0) return text[(start + 1)..i];
+            }
+        }
+        return null;
     }
 
     /// <summary>The pairs of a one-line table of names: <c>{ "Charizard": "Charizard-Mega-X" }</c>.</summary>

@@ -657,6 +657,7 @@ public sealed partial class BattleCore
 
         Say(string.Format(Text.Of(charge.Line), use.User.Name));
         if (charge.RaisesDefense) ChangeStat(use.User, StatType.Defense, 1, use.User);
+        if (charge.RaisesSpAttack) ChangeStat(use.User, StatType.SpAttack, 1, use.User);
         Say(Text.Of("battle.becameFullyChargedDue", ("user", use.User.Name), ("item", ItemAtWork(use.User))));
         ConsumeItem(use.User);
         return true;
@@ -677,6 +678,7 @@ public sealed partial class BattleCore
             said.With(new Vanished(user.Place));
         }
         if (charge.RaisesDefense) ChangeStat(user, StatType.Defense, 1, user);
+        if (charge.RaisesSpAttack) ChangeStat(user, StatType.SpAttack, 1, user);
         // Dive's plunge brings a Cramorant up with something in its beak (plan 06 · R19b)
         if (use.Data.Name == "Dive") Gulp(user, use.Data);
     }
@@ -718,14 +720,14 @@ public sealed partial class BattleCore
                 return foes.Count == 0 ? foes : Drawn(foes[rng.Roll(RollKind.Target, foes.Count)]);
         }
 
-        Battler? Centre() => Field.Side(Other(user.Side)).FollowMe is { } place && At(place) is { IsActive: true } centre ? centre : null;
+        Battler? Centre() => !TracksItsTarget(move.Data) && Field.Side(Other(user.Side)).FollowMe is { } place && At(place) is { IsActive: true } centre ? centre : null;
 
         // Lightning Rod and Storm Drain (BattleSystem_CheckRedirectionAbilities): an Electric or a Water move aimed
         // at one Pokémon goes to the fastest holder that isn't its user, unless it is on its turn of getting ready
         // or its user has Normalize or Mold Breaker. Nothing is said when it was aimed at the holder already.
         List<Battler> Drawn(Battler target)
         {
-            if (Has(user, "Normalize") || Has(user, "Mold Breaker") || move.Type is not (PokemonType.Electric or PokemonType.Water)) return new List<Battler> { target };
+            if (Has(user, "Normalize") || Has(user, "Mold Breaker") || TracksItsTarget(move.Data) || move.Type is not (PokemonType.Electric or PokemonType.Water)) return new List<Battler> { target };
             if (EffectOf(move.Data).Charge != null && !user.Volatile.Charging) return new List<Battler> { target };
             var holder = BySpeed().FirstOrDefault(b => b.IsActive && b != user && b.Ability?.Effect?.DrawsMovesOf(move.Type) == true);
             if (holder == null || holder == target) return new List<Battler> { target };
@@ -992,7 +994,7 @@ public sealed partial class BattleCore
         }
         else
         {
-            result = DamageCalculator.Calculate(user, t, move, rng, spread: use.Targets.Count > 1, rules: Rules,
+            result = DamageCalculator.Calculate(user, t, move, rng, spread: use.Targets.Count > 1 && !StrikesEachAlone(use.Data), rules: Rules,
                 powerTenths: effect.PowerTenths(this, use, t), critBonus: effect.CritBonus, pastScreens: effect.PastScreens,
                 basePower: effect.BasePower?.Invoke(this, use, t), noVariance: effect.NoVariance, damageTenths: use.DamageTenths,
                 // The catching lesson and the first battle have no critical hits (BtlCmd_CalcCrit)
