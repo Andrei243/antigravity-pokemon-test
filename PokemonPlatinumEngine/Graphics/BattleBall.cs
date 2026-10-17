@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Numerics;
 using System.Threading.Tasks;
 using PokemonPlatinumEngine.Battle;
+using PokemonPlatinumEngine.Models;
 using Raylib_cs;
 
 namespace PokemonPlatinumEngine.Graphics;
@@ -11,7 +12,10 @@ namespace PokemonPlatinumEngine.Graphics;
 internal enum BallMark { None, Wings, H, Domes, Stripes, Spots }
 
 /// <summary>How one kind of ball looks: its two halves, the band round its middle and its marks.</summary>
-internal readonly record struct BallLook(Color Top, Color Bottom, Color Band, Color Accent, BallMark Mark);
+internal readonly record struct BallLook(Color Top, Color Bottom, Color Band, Color Accent, BallMark Mark, BallKind Kind = BallKind.Poke);
+
+/// <summary>The sixteen kinds of ball the battle draws (plan 25 · Y4); each has a release of its own.</summary>
+internal enum BallKind { Poke, Great, Ultra, Master, Premier, Safari, Net, Dive, Nest, Repeat, Timer, Luxury, Dusk, Heal, Quick, Cherish }
 
 /// <summary>A ball's two halves, meshed and (once drawn) on the GPU.</summary>
 internal sealed class BallModel
@@ -51,22 +55,31 @@ internal static class BattleBall
     /// <summary>The colours of a ball by its item name (anything unknown looks like a Poké Ball).</summary>
     public static BallLook LookOf(string ball) => ball.ToUpperInvariant() switch
     {
-        "GREAT BALL" => new(Rgb(54, 116, 226), White, Ink, Rgb(226, 54, 60), BallMark.Wings),
-        "ULTRA BALL" => new(Rgb(50, 50, 60), White, Ink, Rgb(250, 206, 50), BallMark.H),
-        "MASTER BALL" => new(Rgb(126, 52, 170), White, Ink, Rgb(236, 110, 180), BallMark.Domes),
-        "PREMIER BALL" => new(White, White, Rgb(220, 50, 56), Rgb(220, 50, 56), BallMark.None),
-        "SAFARI BALL" => new(Rgb(110, 160, 70), Rgb(232, 224, 190), Ink, Rgb(70, 110, 50), BallMark.Spots),
-        "NET BALL" => new(Rgb(60, 180, 200), White, Ink, Rgb(30, 70, 110), BallMark.Stripes),
-        "DIVE BALL" => new(Rgb(60, 120, 220), White, Ink, Rgb(150, 210, 255), BallMark.Stripes),
-        "NEST BALL" => new(Rgb(120, 190, 60), Rgb(244, 220, 120), Ink, Rgb(80, 140, 40), BallMark.None),
-        "REPEAT BALL" => new(Rgb(230, 100, 40), Rgb(250, 220, 90), Ink, Rgb(250, 220, 90), BallMark.Stripes),
-        "TIMER BALL" => new(White, White, Ink, Rgb(220, 60, 50), BallMark.Stripes),
-        "LUXURY BALL" => new(Rgb(48, 44, 52), Rgb(48, 44, 52), Rgb(220, 60, 50), Rgb(240, 200, 80), BallMark.Stripes),
-        "DUSK BALL" => new(Rgb(48, 120, 60), Rgb(48, 44, 52), Ink, Rgb(240, 140, 60), BallMark.Stripes),
-        "HEAL BALL" => new(Rgb(250, 150, 190), White, Ink, Rgb(255, 230, 240), BallMark.Stripes),
-        "QUICK BALL" => new(Rgb(60, 140, 230), Rgb(250, 220, 80), Ink, Rgb(250, 220, 80), BallMark.Stripes),
+        "GREAT BALL" => new(Rgb(54, 116, 226), White, Ink, Rgb(226, 54, 60), BallMark.Wings, BallKind.Great),
+        "ULTRA BALL" => new(Rgb(50, 50, 60), White, Ink, Rgb(250, 206, 50), BallMark.H, BallKind.Ultra),
+        "MASTER BALL" => new(Rgb(126, 52, 170), White, Ink, Rgb(236, 110, 180), BallMark.Domes, BallKind.Master),
+        "PREMIER BALL" => new(White, White, Rgb(220, 50, 56), Rgb(220, 50, 56), BallMark.None, BallKind.Premier),
+        "SAFARI BALL" => new(Rgb(110, 160, 70), Rgb(232, 224, 190), Ink, Rgb(70, 110, 50), BallMark.Spots, BallKind.Safari),
+        "NET BALL" => new(Rgb(60, 180, 200), White, Ink, Rgb(30, 70, 110), BallMark.Stripes, BallKind.Net),
+        "DIVE BALL" => new(Rgb(60, 120, 220), White, Ink, Rgb(150, 210, 255), BallMark.Stripes, BallKind.Dive),
+        "NEST BALL" => new(Rgb(120, 190, 60), Rgb(244, 220, 120), Ink, Rgb(80, 140, 40), BallMark.None, BallKind.Nest),
+        "REPEAT BALL" => new(Rgb(230, 100, 40), Rgb(250, 220, 90), Ink, Rgb(250, 220, 90), BallMark.Stripes, BallKind.Repeat),
+        "TIMER BALL" => new(White, White, Ink, Rgb(220, 60, 50), BallMark.Stripes, BallKind.Timer),
+        "LUXURY BALL" => new(Rgb(48, 44, 52), Rgb(48, 44, 52), Rgb(220, 60, 50), Rgb(240, 200, 80), BallMark.Stripes, BallKind.Luxury),
+        "DUSK BALL" => new(Rgb(48, 120, 60), Rgb(48, 44, 52), Ink, Rgb(240, 140, 60), BallMark.Stripes, BallKind.Dusk),
+        "HEAL BALL" => new(Rgb(250, 150, 190), White, Ink, Rgb(255, 230, 240), BallMark.Stripes, BallKind.Heal),
+        "QUICK BALL" => new(Rgb(60, 140, 230), Rgb(250, 220, 80), Ink, Rgb(250, 220, 80), BallMark.Stripes, BallKind.Quick),
+        "CHERISH BALL" => new(Rgb(200, 40, 50), Rgb(50, 40, 50), Rgb(240, 200, 80), Rgb(240, 200, 80), BallMark.Stripes, BallKind.Cherish),
         _ => new(Rgb(226, 54, 54), White, Ink, Rgb(226, 54, 54), BallMark.None)
     };
+
+    public const string DefaultBall = "Poké Ball";
+
+    /// <summary>The ball a Pokémon is in (plan 25 · Y4): the one it was caught in, or a Poké Ball for one that was not caught, a trainer's, or a ball with no kind of its own.</summary>
+    public static string NameFor(Pokemon? pokemon) => string.IsNullOrEmpty(pokemon?.Ball) ? DefaultBall : pokemon!.Ball!;
+
+    /// <summary>How the ball of this look opens (plan 25 · Y4; style guide, "Poké Ball (G8)").</summary>
+    public static BallRelease ReleaseOf(BallLook look) => BallRelease.Of(look);
 
     /// <summary>The meshed model for a ball (built now if needed; a background build in progress is waited for).</summary>
     public static BallModel Get(string ball) => Get(LookOf(ball));
