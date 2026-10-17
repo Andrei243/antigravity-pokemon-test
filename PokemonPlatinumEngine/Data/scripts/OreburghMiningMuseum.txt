@@ -45,3 +45,20 @@ label Declined
 label NotYet
   say "...But you've never dug anything up yourself, have you? Come back when you have. It will mean more."
   end
+
+
+# The collector before the cases. Plan 03 · D12a, ours: the Underground gives a Skull Fossil to a trainer whose number
+# is odd and an Armor Fossil to one whose number is even (the original's weights, Models/Underground/MiningGame.cs),
+# so one game could only ever have Cranidos or Shieldon. Once the Pokédex is the National one he hands over the two
+# he dug in his own day, once.
+script Collector
+  if not nationaldex goto Talk
+  if flag FLAG_RECEIVED_MINING_MUSEUM_COLLECTOR_FOSSILS goto Talk
+  say "A National Pokédex! Then you'll want both of the old armoured ones in it, and the wall only ever gives a digger one kind." "I dug these two up in my own day, one of each. The scientist at the desk can bring them back."
+  give "Skull Fossil"
+  give "Armor Fossil"
+  setflag FLAG_RECEIVED_MINING_MUSEUM_COLLECTOR_FOSSILS
+  end
+label Talk
+  say "Digging takes a strong arm, they say. Nonsense. It takes a strong mind." "One blow too many and the whole wall comes down on your find. Patience, patience."
+  end

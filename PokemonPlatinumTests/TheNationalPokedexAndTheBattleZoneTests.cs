@@ -278,7 +278,9 @@ public class TheNationalPokedexAndTheBattleZoneTests
         // Nobody had won the tag battle yet: the Fight Area's blockades stand
         Assert.False(game.Story.Has(Blockade));
 
-        // From then on the professor speaks of the world's Pokémon, and gives nothing more
+        // Next he hands over the briefcase's other two (plan 03 · D12a), and from then on he speaks of the world's
+        // Pokémon and gives nothing more
+        Assert.Contains(AskTheProfessor(game).Transcript, l => l.Text.Contains("other two"));
         var after = AskTheProfessor(game);
         Assert.Contains("many more", Assert.Single(after.Transcript).Text);
         Assert.Equal(1, game.Bag.GetQuantity(Item("Poké Radar")));

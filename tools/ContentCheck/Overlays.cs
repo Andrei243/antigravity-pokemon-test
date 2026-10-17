@@ -76,6 +76,17 @@ public static class Overlays
         Song(found, file, "bgmTrack", overlay.BgmTrack);
         EvolutionSites(found, file, "evolutionSites", overlay.EvolutionSites);
 
+        // ---- our own wild Pokémon with the National Pokédex (plan 03 · D12a): species of the data, as many as the slots
+        if (overlay.National is { } national)
+        {
+            if (national.Land != null && national.Land.Count != 2) Add(Kind.Data, "national.land", $"names {national.Land.Count} species; the grass's slots 8 and 9 take two");
+            if (national.Land != null && (area.Land?.Count ?? 0) != WorldAreaFile.LandSlotWeights.Length) Add(Kind.Data, "national.land", "the area has no grass table of twelve slots to put them in");
+            if (national.SuperRod != null && national.SuperRod.Count != 1) Add(Kind.Data, "national.superRod", $"names {national.SuperRod.Count} species; the Super Rod's slot 3 takes one");
+            if (national.SuperRod != null && (area.SuperRod?.Count ?? 0) <= OverlayNational.SuperRodSlot) Add(Kind.Data, "national.superRod", "the area has no Super Rod table to put it in");
+            foreach (string s in (national.Land ?? new()).Concat(national.SuperRod ?? new()))
+                if (PokemonDatabase.Get(s) == null) Add(Kind.Data, "national", $"names '{s}', which is no species of the data");
+        }
+
         // ---- the people
 
         var objects = area.Objects.GroupBy(o => o.Id).ToDictionary(g => g.Key, g => g.First());

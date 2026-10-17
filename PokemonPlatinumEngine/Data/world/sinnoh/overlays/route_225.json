@@ -1,5 +1,8 @@
 {
   "area": "route_225",
+  // Plan 03 · D12a: Diamond's Stunky line, which Platinum's tables leave out, in the grass's slots 8 and 9 once the
+  // National Pokédex is had (where the original put a second game's species), at those slots' levels (47)
+  "national": { "land": [ "Stunky", "Skuntank" ] },
   // The original's role (Routes 225 to 227 and Stark Mountain's foot share it) has no song yet (plan 05 · A6):
   // Routes 206 to 208's climb stands in
   "bgmTrack": "sinnoh/route206",

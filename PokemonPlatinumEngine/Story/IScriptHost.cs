@@ -432,7 +432,8 @@ public interface IScriptHost
     /// <summary>
     /// What those commands need of the game itself: <c>slots</c> sits the player at a machine of the Game Corner (the
     /// script waits; the number is the machine's), <c>furnish</c> stands the Villa's furniture in its room,
-    /// <c>boxroom</c> is how many free places the boxes have, <c>store</c> sends Pal Park's six to them (1 when done).
+    /// <c>boxroom</c> is how many free places the boxes have, <c>store</c> sends Pal Park's six to them (1 when done),
+    /// <c>caught</c> is 1 when the Pokédex has caught the species of that National number (plan 03 · D12a).
     /// </summary>
     int PastimeAct(string what, int number, NPC? subject);
 

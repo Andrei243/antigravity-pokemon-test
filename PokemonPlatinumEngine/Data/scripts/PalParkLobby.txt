@@ -5,8 +5,9 @@
 # Pokémon waiting in the park and six free places in the PC boxes, steps aside and lets the player through the door
 # to the park. VAR_PAL_PARK_STATE says how the player comes back: 1 with all six caught (the score is told, the
 # record kept, a berry given, and the six sent to the boxes or left in the park for another try), 2 having given
-# up (the six go on waiting). Nothing has been brought over until this game's migration exists (plan 08 · P21), and
-# the attendant says so.
+# up (the six go on waiting). Nothing is migrated (plan 08 · P20 to P23 were dropped): when nothing waits, palpark check
+# lets six visitors come of the species Sinnoh has no other way to (plan 03 · D12a, Models/Pastimes.cs
+# PalParkState.Visitors, a stand-in the user can overturn).
 #
 # Professor Oak stands in the middle of the lobby the first time the player comes in (plan 02 · S15, part a; the
 # original's OnFrame while VAR_PAL_PARK_LOBBY_STATE is 0: nobody comes in before the National Pokédex, since Route
@@ -111,7 +112,7 @@ script OakWelcomes
 script Worker
   if flag FLAG_TALKED_TO_PAL_PARK_LOBBY_RECEPTIONIST goto Greeting
   setflag FLAG_TALKED_TO_PAL_PARK_LOBBY_RECEPTIONIST
-  say "Welcome to Pal Park, {player}!" "Pokémon brought here from far away are let loose in the park, and their trainer catches them again in a Catching Show."
+  say "Welcome to Pal Park, {player}!" "Pokémon from far away come to stay in the park, and Trainers catch them in a Catching Show."
 label Greeting
   choose "What will it be today?" "ENTER" "INFO" "EXIT"
   if result == 0 goto Check
@@ -126,14 +127,14 @@ label Info
   say "Ask me whenever you like!"
   end
 label Park
-  say "Pal Park is where Pokémon from faraway regions come to stay. Six at a time are brought over, and wait in the park until their trainer has caught them again."
+  say "Pal Park is where Pokémon from faraway regions come to stay. Six at a time come over, Pokémon that live nowhere else in Sinnoh, and wait in the park until someone catches them."
   end
 label Show
   say "In a Catching Show you walk the park's grass and water with six Park Balls. Each of the six keeps to its own corner, and a Park Ball never misses."
   say "The score is the Pokémon's own points, plus points for catching them quickly, and for never catching two of a type in a row. A good score earns a berry!"
   end
 label Bringing
-  say "Six Pokémon are brought over together, and no more until those six have been caught and sent to your PC boxes."
+  say "Six Pokémon come over together, and no more until those six have been caught and sent to your PC boxes."
   end
 label Check
   palpark check
@@ -147,7 +148,7 @@ label Check
   warp "PalPark" 24 47 up
   end
 label NoneBrought
-  say "Oh! But there are no Pokémon of yours waiting in the park." "Six must be brought over from far away before a show can be held. Nobody has brought any yet."
+  say "Oh! But there are no Pokémon waiting in the park." "Six must come over from far away before a show can be held. None have come yet."
   end
 label BoxesFull
   say "Your PC boxes haven't room for six more Pokémon. Please make some room first."

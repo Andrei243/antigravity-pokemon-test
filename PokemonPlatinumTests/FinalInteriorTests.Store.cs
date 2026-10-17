@@ -403,8 +403,13 @@ public partial class FinalInteriorTests
         // Its machines show no signal, and its receptionists say why
         var ground = Room("GlobalTerminal1F");
         Assert.True(ground.Signboards.Count(s => s.Value.Contains("NO SIGNAL")) >= 8);
-        Assert.Contains("GTS", string.Join(" ", ground.Everyone.Single(n => n.Key == "receptionist_gts").DialogLines));
-        Assert.All(ground.Everyone.Where(n => n.Key.StartsWith("receptionist", StringComparison.Ordinal)), n => Assert.Contains("link", string.Join(" ", n.DialogLines)));
+        // The GTS's own speaks through her script, which hands over a Linking Cord in the link's place (plan 03 · D12a)
+        var gts = ground.Everyone.Single(n => n.Key == "receptionist_gts");
+        Assert.Equal("Gts", gts.Script);
+        string told = string.Join(" ", Run("Gts", "GlobalTerminal1F", new HeadlessScriptHost()).Transcript.Select(l => l.Text));
+        Assert.Contains("GTS", told);
+        Assert.Contains("link", told);
+        Assert.All(ground.Everyone.Where(n => n.Key.StartsWith("receptionist", StringComparison.Ordinal) && n != gts), n => Assert.Contains("link", string.Join(" ", n.DialogLines)));
         // The beauty guesses the first of the team
         var host = new HeadlessScriptHost();
         host.Party.Add(Mon("Bidoof"));

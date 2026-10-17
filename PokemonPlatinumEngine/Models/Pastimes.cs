@@ -94,6 +94,36 @@ public sealed class PalParkState
         return true;
     }
 
+    /// <summary>The levels the six visitors come at (plan 03 · D12a): the Battle Zone's grass, 47 to 55.</summary>
+    public const int VisitorLowest = 47, VisitorHighest = 55;
+
+    /// <summary>
+    /// Six visitors from far away (plan 03 · D12a, ours, the stand-in for the migration the user can overturn): six
+    /// different species of the pool (<see cref="Data.SpeciesSources.PalParkPool"/>, the species Sinnoh has no other
+    /// way to), those the Pokédex hasn't caught first; where the pool hasn't six, any of Diamond's, Pearl's and
+    /// Platinum's make up the number. Each at a level of <see cref="VisitorLowest"/> to <see cref="VisitorHighest"/>.
+    /// Every draw is on <paramref name="chance"/>.
+    /// </summary>
+    public static List<Pokemon> Visitors(IReadOnlyList<string> pool, Func<int, bool> caught, Random chance)
+    {
+        var inPool = pool.Select(Data.PokemonDatabase.Get).OfType<PokemonSpecies>().ToList();
+        var chosen = new List<PokemonSpecies>();
+        void Draw(List<PokemonSpecies> from)
+        {
+            from = from.Where(s => !chosen.Contains(s)).ToList();
+            while (chosen.Count < Overworld.CatchingShow.Size && from.Count > 0)
+            {
+                int i = chance.Next(from.Count);
+                chosen.Add(from[i]);
+                from.RemoveAt(i);
+            }
+        }
+        Draw(inPool.Where(s => !caught(s.DexNumber)).ToList());
+        Draw(inPool);
+        Draw(Data.PokemonDatabase.GetAll().Where(s => s.DexNumber is >= 1 and <= Data.SpeciesSources.HighestInSinnoh).OrderBy(s => s.DexNumber).ToList());
+        return chosen.Select(s => new Pokemon(s, chance.Next(VisitorLowest, VisitorHighest + 1), chance)).ToList();
+    }
+
     /// <summary><c>CatchingShow_Start</c>: the six are let loose.</summary>
     public bool Begin(Random chance)
     {

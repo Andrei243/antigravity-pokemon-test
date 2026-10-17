@@ -332,16 +332,11 @@ partial class Harness
             Shot("pt60_pal_park_door");
             Enter("PalParkLobby", 7, 19, Direction.Up);
             Shot("pt61_pal_park_lobby");
-            Talk(7, 12, Direction.Up, "no Pokémon of yours", "pt62_nothing_brought", 0);
-
-            // Six brought over, as this game's migration will bring them
-            var six = new[] { "Bulbasaur", "Pikachu", "Geodude", "Magikarp", "Oddish", "Zubat" }.Select(name => Meet(name, 30)).ToList();
-            pastimes.PalPark.Stock(six);
-            Console.WriteLine($"  six wait in the park: {string.Join(", ", six.Select(p => $"{p.Species.Name} (corner {CatchingShow.AreaOf(p.Species)})"))}");
-            game.Player.SetPosition(7, 12, Direction.Up);
-            Frames(2);
-            game.Interact(); Frames(3);
-            ReadOn("Park Balls", "pt63_park_balls", 0);
+            // Nothing waits, so six visitors come of the species Sinnoh has no other way to (plan 03 · D12a, in place of
+            // the migration and of pt62, the attendant's "nothing brought over", which no game reaches any more)
+            Talk(7, 12, Direction.Up, "Park Balls", "pt63_park_balls", 0);
+            var six = pastimes.PalPark.Waiting;
+            Console.WriteLine($"  six visitors wait in the park: {string.Join(", ", six.Select(p => $"{p.Species.Name} {p.Level} (corner {CatchingShow.AreaOf(p.Species)})"))}");
             Through(GameEngine.PalParkMap, speaks: true);
             ReadOn("about to begin", "pt64_countdown");
             Frames(10);

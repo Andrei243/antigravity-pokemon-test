@@ -705,6 +705,13 @@ public sealed class WorldOverlayFile
     /// </summary>
     public List<string>? HeldBack { get; set; }
 
+    /// <summary>
+    /// The wild Pokémon of ours the area adds once the National Pokédex is had (plan 03 · D12a): Diamond's and
+    /// Pearl's species that Platinum's tables leave out, in the slots a second game in the console filled in the
+    /// original. Left out where the area adds none.
+    /// </summary>
+    public OverlayNational? National { get; set; }
+
     /// <summary>What the area's signposts and mailboxes say, by their id in the area file.</summary>
     public Dictionary<string, string>? Signs { get; set; }
 
@@ -755,6 +762,21 @@ public sealed class OverlayDoor
 
     /// <summary>A story flag the door stays locked until (plan 02 · S6); left out for a door that is always open.</summary>
     public string? OpenedBy { get; set; }
+}
+
+/// <summary>
+/// An area's wild Pokémon of ours once the National Pokédex is had (plan 03 · D12a, <see cref="WorldOverlayFile.National"/>):
+/// two species for the grass's slots 8 and 9 (met 4 times in a hundred each, at the slots' own levels), where the
+/// original put the species a second game in the console called up; and one for the Super Rod's slot 3 (4 in a
+/// hundred, at its levels). Each list may be left out.
+/// </summary>
+public sealed class OverlayNational
+{
+    public List<string>? Land { get; set; }
+    public List<string>? SuperRod { get; set; }
+
+    /// <summary>The grass's slots the two take, and the Super Rod's slot the one takes.</summary>
+    public const int FirstLandSlot = 8, SuperRodSlot = 3;
 }
 
 /// <summary>
