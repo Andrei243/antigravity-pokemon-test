@@ -294,7 +294,7 @@ public class FullDexTests
         // The title's Giratina and the introduction's Pokémon are drawn the moment their screens open; every other
         // model is made when a scene asks for it. Their menu sprites are among those the start makes ready
         Assert.Contains("Giratina", PokemonModels.ShownAtOnce);
-        Assert.Contains(PokemonPlatinumEngine.UI.IntroScreen.ShownSpecies, PokemonModels.ShownAtOnce);
+        Assert.Contains(new PokemonPlatinumEngine.UI.IntroScreen().ShownSpecies, PokemonModels.ShownAtOnce);
         Assert.True(PokemonModels.ShownAtOnce.Length <= 4, "the start asks for more models than its first screens draw");
         Assert.All(PokemonModels.ShownAtOnce, species => Assert.Contains(species, PokemonModels.Preloaded));
     }

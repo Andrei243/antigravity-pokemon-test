@@ -21,7 +21,7 @@ public static class PlayerIdentity
     public static PlayerLook Look { get; private set; }
 
     /// <summary>The rival's name, as the player gave it.</summary>
-    public static string RivalName { get; private set; } = DefaultRivalName;
+    public static string RivalName { get; private set; } = "Barry";
 
     /// <summary>
     /// The trainer's whole number (plan 06 · R15): the Trainer Card's ID in the low half and the hidden half the card
@@ -33,11 +33,16 @@ public static class PlayerIdentity
 
     public static void SetNumber(uint number) => Number = number;
 
-    /// <summary>The rival's own name, when none is entered.</summary>
-    public const string DefaultRivalName = "Barry";
+    /// <summary>
+    /// The rival's own name for a game that has none of its region's to go by: Sinnoh's (the record of a region
+    /// holds the name its introduction offers, <see cref="Data.Region.Rival"/>; plan 18 · W1), which an older save and
+    /// a test that names no region read.
+    /// </summary>
+    public static string DefaultRivalName => Data.RegionDatabase.Get(Data.RegionDatabase.Sinnoh)?.Rival ?? "Barry";
 
-    /// <summary>Names the rival; an empty name takes his own.</summary>
-    public static void SetRival(string? name) => RivalName = Clean(name) is { Length: > 0 } given ? given : DefaultRivalName;
+    /// <summary>Names the rival; an empty name takes the region's own (Sinnoh's when none is given).</summary>
+    public static void SetRival(string? name, string? regionsOwn = null) =>
+        RivalName = Clean(name) is { Length: > 0 } given ? given : regionsOwn is { Length: > 0 } own ? own : DefaultRivalName;
 
     /// <summary>Sets who the player is; an empty name takes the look's own.</summary>
     public static void Set(string? name, PlayerLook look)
@@ -84,8 +89,8 @@ public static class PlayerIdentity
     /// <summary>A written line with the player's, the assistant's and the rival's names put in.</summary>
     public static string Fill(string text) => Fill(text, Name, Look, RivalName);
 
-    public static string Fill(string text, string name, PlayerLook look, string rival = DefaultRivalName) =>
-        text.Contains('{') ? text.Replace("{player}", name).Replace("{assistant}", DefaultName(Other(look))).Replace("{rival}", rival) : text;
+    public static string Fill(string text, string name, PlayerLook look, string? rival = null) =>
+        text.Contains('{') ? text.Replace("{player}", name).Replace("{assistant}", DefaultName(Other(look))).Replace("{rival}", rival ?? DefaultRivalName) : text;
 
     /// <summary>A name as it may be kept: trimmed, at most seven characters, nothing that would break a line.</summary>
     public static string Clean(string? name)

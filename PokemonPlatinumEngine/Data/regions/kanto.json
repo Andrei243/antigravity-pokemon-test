@@ -1,0 +1,43 @@
+{
+  "id": "Kanto",
+  "folder": "kanto",
+  "models": "kanto",
+  "map": "PalletTown",
+  "dex": "kanto",
+  "nationalUnlock": "Caught60",
+  "hasStory": false,
+  "rival": "Blue",
+  "heroes": { "boy": "PLAYER", "girl": "DAWN" },
+  "starters": [ "Bulbasaur", "Charmander", "Squirtle" ],
+  "badges": [ "Boulder", "Cascade", "Thunder", "Rainbow", "Soul", "Marsh", "Volcano", "Earth" ],
+  "gates": {
+    "Cut": "Cascade",
+    "Fly": "Thunder",
+    "Surf": "Soul",
+    "Strength": "Rainbow"
+  },
+  "professor": {
+    "name": "Prof. Oak",
+    "look": "ROWAN",
+    "species": "Buneary",
+    "lines": {
+      "hello": "Hello there! Glad you could make it.",
+      "welcome": "Welcome to the world of Pokémon!",
+      "myName": "My name is Oak. People call me the Pokémon Professor.",
+      "world": "This world is inhabited by creatures we call Pokémon. They live in the grass, in caves, in the sea and in the sky.",
+      "oneOfThem": "This is one of them. Isn't it friendly?",
+      "liveAlongside": "People and Pokémon live together. Some keep them as friends, and some battle alongside them.",
+      "study": "As for myself, I study Pokémon for a living. There is much that is still a mystery.",
+      "enough": "But that's enough about me. Tell me a little about yourself.",
+      "boyOrGirl": "Are you a boy, or are you a girl?",
+      "askName": "Now, what is your name?",
+      "nextDoor": "And this is my grandson. The two of you have been rivals for as long as either of you can remember.",
+      "neverStill": "He never lets anyone get ahead of him. Now, what was his name again?",
+      "fineName": "{name}! What a fine name.",
+      "ofCourse": "{rival}, that's right! How could I forget?",
+      "story": "{name}, your very own legend is about to begin. Joy and hardship will meet you along the way.",
+      "offYouGo": "Now, off you go. The world of Pokémon is waiting!"
+    }
+  },
+  "spawns": []
+}

@@ -292,7 +292,14 @@ public static class WorldModels
     /// <summary>Every model the catalogue knows.</summary>
     public static IReadOnlyList<WorldModel> All => Table;
 
-    /// <summary>What a model is, by the original's short name for it; null for a name the catalogue doesn't know.</summary>
+    /// <summary>
+    /// The catalogue a region looks its world's props up in (<see cref="Region.Models"/>): Sinnoh's table; a region
+    /// with no world yet has an empty one (plan 18 · W1; Kanto's and Hoenn's are plan 19's and 21's).
+    /// </summary>
+    public static IReadOnlyList<WorldModel> Catalogue(string models) =>
+        string.Equals(models, "sinnoh", StringComparison.OrdinalIgnoreCase) ? Table : Array.Empty<WorldModel>();
+
+    /// <summary>What a model is in Sinnoh's catalogue, by the original's short name for it; null for a name the catalogue doesn't know.</summary>
     public static WorldModel? Of(string name) => ByName.GetValueOrDefault(name);
 
     /// <summary>The type of the leader whose Gym stands in an area, by the area's key; null where there is none.</summary>

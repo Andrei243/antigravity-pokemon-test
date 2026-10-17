@@ -152,6 +152,16 @@ public partial class GameEngine
     /// </summary>
     public string? NewGameRegion { get; set; }
 
+    /// <summary>The record of the region a new game starts in: <see cref="NewGameRegion"/>'s, or the chain's first.</summary>
+    private Region NewGameRegionRecord => (NewGameRegion != null ? RegionDatabase.Get(NewGameRegion) : null) ?? RegionDatabase.First;
+
+    /// <summary>
+    /// The region the player stands in (plan 18 · W1): the one that lists the map they are on, the chain's first
+    /// before a game is loaded. What belongs to a region (its starters, its professor, its spawns) is asked of this,
+    /// and handed to the screens, never read from a static.
+    /// </summary>
+    public Region Here => (flow.Map != null ? RegionDatabase.RegionOfMap(flow.Map.Name) : null) ?? RegionDatabase.First;
+
     // The band a Gym Leader's, an Elite Four's or the Champion's battle opens on, and its portraits (plan 09 · L15):
     // begun with the transition, rendered offscreen as its frames find the rigs ready, ended at the midpoint
     private readonly BandPortraits band = new();
@@ -321,7 +331,7 @@ public partial class GameEngine
         flow.PlayTime = 0f;
         // As in the games, the Trainer Card's number is drawn when the adventure begins
         PlayerIdentity.Set(name, look);
-        PlayerIdentity.SetRival(rival);
+        PlayerIdentity.SetRival(rival, NewGameRegionRecord.Rival);
         flow.Wardrobe.Clear();
         PlayerIdentity.SetOutfit(flow.Wardrobe.Worn);
         flow.TrainerId = fieldRandom.Next(0, 65536);
@@ -412,20 +422,20 @@ public partial class GameEngine
 
     private void InitializeNewGame()
     {
-        var region = (NewGameRegion != null ? RegionDatabase.Get(NewGameRegion) : null) ?? RegionDatabase.First;
+        var region = NewGameRegionRecord;
         var start = region.Start ?? RegionDatabase.First.Start!;
         flow.Map = MapDatabase.Get(start.Map);
         flow.Player = new Player(start.X, start.Y);
         flow.Player.Facing = start.Facing;
         // As in Platinum, the adventure begins with an empty bag and no Pokémon: the first comes from the
         // professor's briefcase on Route 201 (plan 02 · S4). A region whose story isn't written yet (Kanto) still
-        // starts as every game did before: a Pokémon and a few items.
-        if (region.Id != RegionDatabase.Sinnoh)
+        // starts as every game did before: a Pokémon, its first starter, and a few items (plan 18 · W1: by the record's HasStory).
+        if (!region.HasStory)
         {
             flow.Bag.AddItem(ItemDatabase.Get("Poké Ball")!, 10);
             flow.Bag.AddItem(ItemDatabase.Get("Potion")!, 5);
             flow.Bag.AddItem(ItemDatabase.Get("Revive")!, 2);
-            var first = new Pokemon(PokemonDatabase.Get("Turtwig")!, 5);
+            var first = new Pokemon(PokemonDatabase.Get(region.Starters.FirstOrDefault() ?? "Turtwig")!, 5);
             flow.Party.Add(first);
             flow.Pokedex.RegisterSeen(first.Species.DexNumber);
             flow.Pokedex.RegisterCaught(first.Species.DexNumber);
@@ -485,7 +495,8 @@ public partial class GameEngine
             flow.Pokedex.RegisterCaught(p.Species.DexNumber);
         }
 
-        if (flow.Party.Count == 0)
+        // (A save from before plan 02 · S4, whose game began with a Pokémon; one made in the opening has none yet)
+        if (flow.Party.Count == 0 && save.StoryVersion < 2)
         {
             var fallback = new Pokemon(PokemonDatabase.Get("Turtwig")!, 5);
             flow.Party.Add(fallback);
@@ -814,7 +825,7 @@ public partial class GameEngine
                         // found empty
                         newGameSlot = flow.TitleScreen.Slot;
                         flow.State = GameState.Intro;
-                        flow.IntroScreen.Open(GameSettings.CharactersPerSecond(Settings.TextSpeed));
+                        flow.IntroScreen.Open(GameSettings.CharactersPerSecond(Settings.TextSpeed), NewGameRegionRecord);
                         AudioManager.PlayMusic(MusicRole.Introduction);
                         break;
                     case TitleChoice.Options:
@@ -975,7 +986,7 @@ public partial class GameEngine
                     flow.Pokedex.RegisterCaught(chosen.Species.DexNumber);
                     // The story remembers which was taken, and with it which the rival takes
                     flow.Story.ChooseStarter(chosen.Species.Name);
-                    flow.ScriptAnswer = Math.Max(0, Array.IndexOf(StoryState.Starters, chosen.Species.Name));
+                    flow.ScriptAnswer = Math.Max(0, Here.Starters.ToList().IndexOf(chosen.Species.Name));
                     flow.State = GameState.Overworld;
                 }
                 break;
@@ -2009,7 +2020,7 @@ public partial class GameEngine
         var (x, y, facing) = healer == null ? (4, 5, Direction.Down) : home ? HomeSpot(healer) : (healer.GridX, healer.GridY + 2, Direction.Up);
         flow.Player.SetMode(TravelMode.OnFoot);
         flow.Player.SetPosition(x, y, facing);
-        if (SpawnLocations.Get(flow.Story.Var(SpawnLocations.Variable)) is { } town) flow.ExitSpot = new MapSpot("Sinnoh", town.X, town.Y, Direction.Down);
+        if (SpawnLocations.Get(flow.Story.Var(SpawnLocations.Variable)) is { } town) flow.ExitSpot = new MapSpot(Here.OverworldMap ?? "Sinnoh", town.X, town.Y, Direction.Down);
         // A scene the battle was lost in left its camera, its bars and its pace behind with the place (plan 09 · L4)
         world.Camera.Reset();
         flow.CameraSent = false;

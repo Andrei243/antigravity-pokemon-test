@@ -203,8 +203,11 @@ public sealed class StoryState
 
     // ------------------------------------------------------------------ the starters
 
-    /// <summary>The three Pokémon Professor Rowan's briefcase holds.</summary>
-    public static readonly string[] Starters = { "Turtwig", "Chimchar", "Piplup" };
+    /// <summary>
+    /// The three Pokémon Professor Rowan's briefcase holds: Sinnoh's, which Sinnoh's story is written on (the rival's
+    /// battles, the assistant's). A region's own are <see cref="Region.Starters"/> (plan 18 · W1).
+    /// </summary>
+    public static IReadOnlyList<string> Starters => RegionDatabase.Get(RegionDatabase.Sinnoh)!.Starters;
 
     /// <summary>The species the player took from the briefcase; null until they have.</summary>
     public string? PlayerStarter { get; private set; }
@@ -216,11 +219,7 @@ public sealed class StoryState
     public string? AssistantStarter => PlayerStarter == null ? null : Starters.First(s => s != PlayerStarter && s != RivalStarter);
 
     /// <summary>The starter the rival takes when the player takes this one (grass is answered with fire, fire with water, water with grass).</summary>
-    public static string RivalStarterFor(string playerStarter)
-    {
-        int i = Array.IndexOf(Starters, playerStarter);
-        return Starters[(Math.Max(i, 0) + 1) % Starters.Length];
-    }
+    public static string RivalStarterFor(string playerStarter) => RegionDatabase.Get(RegionDatabase.Sinnoh)!.RivalStarterFor(playerStarter);
 
     public void ChooseStarter(string species)
     {

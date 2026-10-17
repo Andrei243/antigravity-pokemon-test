@@ -67,6 +67,13 @@ public static partial class MapDatabase
         return loaded;
     }
 
+    /// <summary>
+    /// The map called this, or null for a name no world has. <see cref="Get"/> answers the map of Sinnoh instead;
+    /// it becomes an exception once a second world folder exists (plan 18 · W1, decision 4), so a caller that means
+    /// "if there is one" asks here.
+    /// </summary>
+    public static Map? TryGet(string name) => Maps.GetValueOrDefault(name);
+
     public static Map Get(string name)
     {
         var all = Maps;

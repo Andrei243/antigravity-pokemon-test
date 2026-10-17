@@ -56,7 +56,7 @@ internal static partial class ModernUi
         if (phase is IntroPhase.EnterRival or IntroPhase.ConfirmRival)
         {
             DrawNameEntry(sw, sh, intro.RivalEntry!, sprite, intro.Look, UiMotion.EaseOut(Math.Clamp(intro.PhaseTime / 0.3f, 0f, 1f)),
-                Text.Of("intro.hisName"), PlayerIdentity.DefaultRivalName);
+                Text.Of("intro.hisName"), intro.DefaultRival);
             if (phase == IntroPhase.ConfirmRival)
                 Prompt(sw, sh, Text.Of("intro.confirmRival.question", ("name", intro.RivalName)), Text.Of("intro.confirmRival.blurb"),
                     new[] { (Text.Of("intro.confirmRival.yes"), Green), (Text.Of("intro.changeIt"), Blue) }, intro.AnswerYes ? 0 : 1,
@@ -129,7 +129,7 @@ internal static partial class ModernUi
         // ---- What is being said
         if (intro.Talking) DrawDialogue(sw, sh, intro.Speaker, intro.SpokenText, intro.LineComplete);
         else if (phase is IntroPhase.ChooseLook or IntroPhase.ConfirmLook)
-            DrawDialogue(sw, sh, IntroScreen.Professor, Text.Of("intro.aboutYou.boyOrGirl"), false);
+            DrawDialogue(sw, sh, intro.Professor, intro.BoyOrGirl, false);
 
         if (phase == IntroPhase.ChooseLook) Hints(sw - Margin, 44, Hint("shared.keys.leftRight", "shared.hints.choose"), Hint("shared.keys.z", "intro.thisOne"));
         if (phase == IntroPhase.ConfirmLook)
