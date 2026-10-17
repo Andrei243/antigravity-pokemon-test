@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.Models.Frontier;
@@ -45,10 +46,10 @@ public sealed partial class ScriptRunner
             case "prize":
             {
                 var stock = FrontierExchange.Stock(machines: i.Other == "machines");
-                var rows = stock.Select(p => ItemDatabase.Get(p.Item)?.TeachesMove is { Length: > 0 } move ? $"{p.Item} {move}   {p.Price} BP" : $"{p.Item}   {p.Price} BP")
-                    .Append("No thanks").ToList();
+                var rows = stock.Select(p => PrizeRow(p.Item, "scriptLines.priceBp", "price", p.Price.ToString()))
+                    .Append(Text.Of("scriptLines.noThanks")).ToList();
                 host.FrontierAct("points", 1, Subject);
-                host.Ask(speaker, "Which prize would you like?", rows, cancel: stock.Count);
+                host.Ask(speakerShown, Text.Of("scriptLines.whichPrize"), rows, cancel: stock.Count);
                 afterBusy = () =>
                 {
                     if (host.Answer < 0 || host.Answer >= stock.Count) { Result = 0; return; }

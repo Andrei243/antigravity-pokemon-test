@@ -18,10 +18,20 @@ public static class PlaceWords
     };
 
     /// <summary>The name as it stands in a sentence: "the Great Marsh", "Route 201".</summary>
-    public static string Named(string place) => WithThe.Contains(place) ? "the " + place : place;
+    public static string Named(string place)
+    {
+        string shown = Data.LocalNames.PlaceShown(null, place);
+        // "the" is English's: another language says it only if its own table does (plan 17 · N4)
+        return WithThe.Contains(place) && (Core.Text.Current == Core.Text.English || Core.Text.HasOwn("placeWords.the"))
+            ? Core.Text.Of("placeWords.the", ("place", shown)) : shown;
+    }
 
     /// <summary>Where something happened: "on Route 201", "at Lake Verity", "in the Great Marsh".</summary>
-    public static string In(string place) => Preposition(place) + " " + Named(place);
+    public static string In(string place)
+    {
+        string preposition = Preposition(place);
+        return Core.Text.Of($"placeWords.{preposition}", ("place", Named(place)));
+    }
 
     private static string Preposition(string place)
     {

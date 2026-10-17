@@ -1689,7 +1689,8 @@ public partial class GameEngine
         if (sign != null)
         {
             string read = flow.Map.SignScripts.GetValueOrDefault((targetX, targetY)) ?? FieldScripts.Sign;
-            if (StartScript(read, own: new[] { sign }, file: flow.Map.ScriptFileAt(targetX, targetY))) return;
+            string signPlace = flow.Map.ScriptFileAt(targetX, targetY);
+            if (StartScript(read, own: new[] { sign }, file: signPlace, sign: flow.Map.SignKeys.TryGetValue((targetX, targetY), out var signKey) ? (signPlace, signKey) : null)) return;
         }
 
         // A tile that is read when faced: an inscription, a pillar
@@ -1868,7 +1869,7 @@ public partial class GameEngine
         flow.CurrentArea = flow.Map.AreaAt(flow.Player.GridX, flow.Player.GridY);
         NoteArrival();
         if (flow.Map.IsIndoors) flow.LocationSign.Hide();
-        else flow.LocationSign.Show(flow.Map.DisplayNameAt(flow.Player.GridX, flow.Player.GridY));
+        else flow.LocationSign.Show(flow.Map.ShownNameAt(flow.Player.GridX, flow.Player.GridY));
     }
 
     private void HandleStartMenuChoice(StartMenuChoice choice)

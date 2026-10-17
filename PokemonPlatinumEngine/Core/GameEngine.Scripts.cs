@@ -67,7 +67,7 @@ public partial class GameEngine
     /// <param name="flag">The flag its <c>setflag own</c> sets, when it isn't the one that hides the subject.</param>
     /// <param name="pokemon">The Pokémon of the team the script is for: the one whose field move was chosen in the party menu.</param>
     public bool StartScript(string name, NPC? subject = null, IReadOnlyList<string>? own = null, string? file = null,
-        (string Item, int Count)? item = null, string? flag = null, Pokemon? pokemon = null, NPC? pair = null)
+        (string Item, int Count)? item = null, string? flag = null, Pokemon? pokemon = null, NPC? pair = null, (string Place, string Key)? sign = null)
     {
         file ??= subject?.ScriptFile ?? flow.Map.ScriptFileAt(subject?.GridX ?? flow.Player.GridX, subject?.GridY ?? flow.Player.GridY);
         if (flow.Scripts.Find(name, file) is not { } script)
@@ -75,7 +75,7 @@ public partial class GameEngine
             Log.Error($"No script '{name}' for {file}.");
             return false;
         }
-        flow.Runner.Start(script, subject, own, item, flag, pokemon, pair);
+        flow.Runner.Start(script, subject, own, item, flag, pokemon, pair, sign);
         return true;
     }
 
@@ -997,14 +997,14 @@ public partial class GameEngine
                 case ScriptScreen.Shop:
                     game.flow.State = GameState.Shop;
                     // The counter's own stock: the clerk's specialties, or the common list by the badges (plan 06 · R11)
-                    game.flow.ShopScreen.Open(game.flow.Map.DisplayNameAt(game.flow.Player.GridX, game.flow.Player.GridY),
+                    game.flow.ShopScreen.Open(game.flow.Map.ShownNameAt(game.flow.Player.GridX, game.flow.Player.GridY),
                         MartDatabase.Stock(counter ?? subject?.Mart, game.flow.Story.BadgeCount));
                     break;
                 case ScriptScreen.Wardrobe:
                     // At home the clothes owned; at a boutique its stock as well, headed with the place's name
                     game.flow.State = GameState.Wardrobe;
                     game.flow.WardrobeScreen.Open(game.flow.Wardrobe, counter != null ? ClothingDatabase.Stock(counter) : null,
-                        counter != null ? game.flow.Map.DisplayNameAt(game.flow.Player.GridX, game.flow.Player.GridY) : null);
+                        counter != null ? game.flow.Map.ShownNameAt(game.flow.Player.GridX, game.flow.Player.GridY) : null);
                     break;
                 case ScriptScreen.HallOfFame:
                     game.flow.State = GameState.HallOfFame;

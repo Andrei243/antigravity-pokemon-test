@@ -338,6 +338,14 @@ public class NPC
     public string? Key { get; set; }
 
     /// <summary>
+    /// Where a translation of their name and their lines is found (plan 17 · N4): the area's key or the hand-made
+    /// map's name, and their id there (or <c>x,y</c> of the tile they begin on, where the file gives them none).
+    /// Null for someone no file lists.
+    /// </summary>
+    public string? LinesPlace { get; set; }
+    public string? LinesKey { get; set; }
+
+    /// <summary>
     /// The script that talking to them runs; null to go by what they are (a nurse, a trainer, someone with lines
     /// to say: <see cref="Story.FieldScripts.For"/>).
     /// </summary>

@@ -869,6 +869,16 @@ where the flags have them whenever a flag changes.
 People who appear later in the story are hidden at the start, as in the original: the chapter that brings them
 sets their flag in `common.NewGame` and clears it in their scene.
 
+## Translating a script
+
+The lines of a script are English, in the file; another language is a sibling file (`Data/text/<tag>/scripts/<file>.json`, `docs/data-files.md`, "Translating the scripts, the overlays and the rooms"). The parser numbers the lines that speak (`Instruction.TextIndex`, counted from nought in the order they are written: `say`, `text`, `ask`, `choose` with its answers, a `speaker` with a name; a line an `if` guards is numbered where it is written), and the runner asks `Text.Line(script, index, k, lines)` for the k-th string of the instruction before it fills the placeholders in. So:
+
+- **A new line goes anywhere**, but rewording one makes its translations stale (they fall back to English and the report says so); inserting one between two others shifts the index of every later one, which the report shows as stale lines up to the end of the script. Add lines at the end of a script when it is easy to.
+- **Write a placeholder as the English does** in every language (`{player}`, `{rival}`, `{var:VAR_X}`): a translation may use only those its English line has.
+- `sayown` says a person's or a sign's own lines, found by the place and the id the overlay or map file gives them; a person with no id is found by the tile they begin on (`12,3`).
+- The questions' Yes and No, and the lines the runner says for itself (a thing found, a prize list, a tutor's question), are the interface's: `ui.json`, section `scriptLines` and `found`.
+- `dotnet run --project tools/TextTool -- extract <tag>` writes a language's skeleton, `-- report <tag> --lines` says what is missing.
+
 ## Trying a script without the game
 
 `HeadlessScriptHost` is a game with no screen: messages are confirmed as they come (and kept in `Transcript`),

@@ -91,6 +91,23 @@ public static class LocalNames
     public static string Item(string english) => Show(Current?.Items, english);
     public static string Place(string english) => Show(Current?.Places, english);
 
+    /// <summary>
+    /// A place's name as it is shown (plan 17 · N4), by the first of these a language has: the place's own file
+    /// (<c>maps/&lt;Name&gt;.json</c> or an overlay's, <paramref name="place"/> being its map's name or area's key), PokeAPI's
+    /// name for it (<c>names.json</c>), the <c>places</c> section of the language's <c>ui.json</c> for a place PokeAPI
+    /// doesn't name, and the English. The pseudo-language brackets the English. <c>{player}</c> is left for the caller to fill.
+    /// </summary>
+    public static string PlaceShown(string? place, string english)
+    {
+        if (english.Length == 0) return english;
+        if (Bracketed) return $"[{english}]";
+        if (Text.PlaceName(place, english) is { } own) return own;
+        if (Current?.Places is { } places && places.TryGetValue(english, out var named)) return named;
+        string name = Models.Trainer.KeyOf(english);
+        string key = $"places.{name}";
+        return Text.HasOwn(key) ? Text.Of(key) : english;
+    }
+
     /// <summary>A type's name in the language's names file; null where it has none (the string table then names it).</summary>
     public static string? TypeName(PokemonType type) => Current != null && Current.Types.TryGetValue(type.ToString(), out var n) ? n : null;
 

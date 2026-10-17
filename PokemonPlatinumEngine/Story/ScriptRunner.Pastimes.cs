@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 
@@ -43,7 +44,7 @@ public sealed partial class ScriptRunner
                 else if (held.Count == 1) Pick(held[0]);                                       // FindFossilAtThreshold
                 else
                 {
-                    host.Ask(speaker, "Which Fossil is it to be?", held.Append("Cancel").ToList(), cancel: held.Count);
+                    host.Ask(speakerShown, Text.Of("scriptLines.whichFossil"), held.Select(LocalNames.Item).Append(Text.Of("scriptLines.cancel")).ToList(), cancel: held.Count);
                     afterBusy = () =>
                     {
                         if (host.Answer >= 0 && host.Answer < held.Count) Pick(held[host.Answer]);
@@ -119,9 +120,9 @@ public sealed partial class ScriptRunner
             {
                 var prizes = GameCornerPrizes.All;
                 // A TM is listed with the move it holds
-                var rows = prizes.Select(p => ItemDatabase.Get(p.Item)?.TeachesMove is { Length: > 0 } move ? $"{p.Item} {move}   {p.Coins:N0} C" : $"{p.Item}   {p.Coins:N0} C")
-                    .Append("No thanks").ToList();
-                host.Ask(speaker, "Which prize would you like?", rows, cancel: prizes.Length);
+                var rows = prizes.Select(p => PrizeRow(p.Item, "scriptLines.priceCoins", "price", p.Coins.ToString("N0")))
+                    .Append(Text.Of("scriptLines.noThanks")).ToList();
+                host.Ask(speakerShown, Text.Of("scriptLines.whichPrize"), rows, cancel: prizes.Length);
                 afterBusy = () =>
                 {
                     if (host.Answer < 0 || host.Answer >= prizes.Length) { Result = 0; return; }
@@ -177,9 +178,11 @@ public sealed partial class ScriptRunner
             case "catalogue":
             {
                 var listed = VillaRules.Catalogue(story, host.VillaRecords);
-                var rows = listed.Select(p => VillaRules.Owns(story, p) ? $"{p.Name}   sold out" : p.Price == 0 ? $"{p.Name}   free" : $"{p.Name}   ${p.Price:N0}")
-                    .Append("Cancel").ToList();
-                host.Ask(speaker, "Which piece will it be?", rows, cancel: listed.Count);
+                var rows = listed.Select(p => VillaRules.Owns(story, p) ? Text.Of("scriptLines.soldOut", ("name", p.Name))
+                        : p.Price == 0 ? Text.Of("scriptLines.free", ("name", p.Name))
+                        : Text.Of("scriptLines.priceDollars", ("name", p.Name), ("price", p.Price.ToString("N0"))))
+                    .Append(Text.Of("scriptLines.cancel")).ToList();
+                host.Ask(speakerShown, Text.Of("scriptLines.whichPiece"), rows, cancel: listed.Count);
                 afterBusy = () => Result = host.Answer >= 0 && host.Answer < listed.Count ? Chosen(listed[host.Answer]) : 0;
                 break;
             }
@@ -263,7 +266,7 @@ public sealed partial class ScriptRunner
                 host.Bag.AddItem(item, 1);
                 lastItem = item.Name;
                 host.Fanfare(FanfareFor(item));
-                host.Say(null, new List<string> { $"{{player}} received the {item.Name}!", $"{{player}} put it away in the {PocketName(item.Pocket)} pocket." });
+                host.Say(null, new List<string> { Text.Of("found.received", ("n", 1), ("item", item.DisplayName)), Text.Of("found.putAway", ("n", 1), ("pocket", PocketName(item.Pocket))) });
                 Result = 1;
                 break;
             }
