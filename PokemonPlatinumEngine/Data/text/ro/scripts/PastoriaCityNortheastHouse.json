@@ -1,0 +1,134 @@
+{
+  "Scarves": [
+    {
+      "en": [
+        "I'm clean out of scarves to give you! And clean out of things to say, too!"
+      ],
+      "text": [
+        "Am rămas fără eșarfe de dat! Și fără lucruri de spus, de asemenea!"
+      ]
+    },
+    {
+      "en": [
+        "Howdy there! Let's have a look at your Pokémon and see whether it's earned itself a scarf!",
+        "Hm, hm... I see..."
+      ],
+      "text": [
+        "Salutare! Ia să mă uit la Pokémonul tău, să văd dacă și-a câștigat o eșarfă!",
+        "Hm, hm... Înțeleg..."
+      ]
+    },
+    {
+      "en": [
+        "Hmm. This isn't quite what I was hoping to see...",
+        "I won't lie to you. Your Pokémon isn't bad, but it isn't good either. It's just so-so.",
+        "If you want it in better condition, feed it some more Poffins!"
+      ],
+      "text": [
+        "Hmm. Nu e chiar ce speram să văd...",
+        "Nu te mint. Pokémonul tău nu e rău, dar nici bun. E așa și-așa.",
+        "Dacă vrei să fie în formă mai bună, mai dă-i niște Poffinuri!"
+      ]
+    },
+    {
+      "en": [
+        "Your {lead} is looking good! Mighty impressive, I'd say!",
+        "Tell you what: you can have this Red Scarf!"
+      ],
+      "text": [
+        "{lead} al tău arată bine! Chiar impresionant, aș zice!",
+        "Știi ce? Poți lua Eșarfa Roșie!"
+      ]
+    },
+    {
+      "en": [
+        "The Red Scarf stands for passion!",
+        "Give it to a Pokémon to hold and it has the edge in a Cool Contest."
+      ],
+      "text": [
+        "Eșarfa Roșie înseamnă pasiune!",
+        "Dă-i-o unui Pokémon s-o țină și va avea un avantaj la un Concurs de Stil."
+      ]
+    },
+    {
+      "en": [
+        "Your {lead} is looking good! Mighty impressive, I'd say!",
+        "Tell you what: you can have this Blue Scarf!"
+      ],
+      "text": [
+        "{lead} al tău arată bine! Chiar impresionant, aș zice!",
+        "Știi ce? Poți lua Eșarfa Albastră!"
+      ]
+    },
+    {
+      "en": [
+        "The Blue Scarf stands for the wide open sea!",
+        "Give it to a Pokémon to hold and it has the edge in a Beauty Contest."
+      ],
+      "text": [
+        "Eșarfa Albastră înseamnă marea largă!",
+        "Dă-i-o unui Pokémon s-o țină și va avea un avantaj la un Concurs de Frumusețe."
+      ]
+    },
+    {
+      "en": [
+        "Your {lead} is looking good! Mighty impressive, I'd say!",
+        "Tell you what: you can have this Pink Scarf!"
+      ],
+      "text": [
+        "{lead} al tău arată bine! Chiar impresionant, aș zice!",
+        "Știi ce? Poți lua Eșarfa Roz!"
+      ]
+    },
+    {
+      "en": [
+        "The Pink Scarf stands for charm!",
+        "Give it to a Pokémon to hold and it has the edge in a Cute Contest."
+      ],
+      "text": [
+        "Eșarfa Roz înseamnă farmec!",
+        "Dă-i-o unui Pokémon s-o țină și va avea un avantaj la un Concurs de Drăgălășenie."
+      ]
+    },
+    {
+      "en": [
+        "Your {lead} is looking good! Mighty impressive, I'd say!",
+        "Tell you what: you can have this Green Scarf!"
+      ],
+      "text": [
+        "{lead} al tău arată bine! Chiar impresionant, aș zice!",
+        "Știi ce? Poți lua Eșarfa Verde!"
+      ]
+    },
+    {
+      "en": [
+        "The Green Scarf stands for the breeze in spring!",
+        "Give it to a Pokémon to hold and it has the edge in a Smart Contest."
+      ],
+      "text": [
+        "Eșarfa Verde înseamnă briza de primăvară!",
+        "Dă-i-o unui Pokémon s-o țină și va avea un avantaj la un Concurs de Istețime."
+      ]
+    },
+    {
+      "en": [
+        "Your {lead} is looking good! Mighty impressive, I'd say!",
+        "Tell you what: you can have this Yellow Scarf!"
+      ],
+      "text": [
+        "{lead} al tău arată bine! Chiar impresionant, aș zice!",
+        "Știi ce? Poți lua Eșarfa Galbenă!"
+      ]
+    },
+    {
+      "en": [
+        "The Yellow Scarf stands for toughness!",
+        "Give it to a Pokémon to hold and it has the edge in a Tough Contest."
+      ],
+      "text": [
+        "Eșarfa Galbenă înseamnă duritate!",
+        "Dă-i-o unui Pokémon s-o țină și va avea un avantaj la un Concurs de Duritate."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "displayName": {
+    "en": [
+      "Veilstone Dept. Store"
+    ],
+    "text": [
+      "Magazinul Universal Veilstone"
+    ]
+  },
+  "people": {
+    "bug_catcher": {
+      "name": {
+        "en": [
+          "Bug Catcher"
+        ],
+        "text": [
+          "Vânătorul de insecte"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "That's enough shopping for one day.",
+          "I'm going to grab a drink and put my feet up."
+        ],
+        "text": [
+          "Destule cumpărături pentru o zi.",
+          "Îmi iau o băutură și mă odihnesc puțin."
+        ]
+      }
+    },
+    "middle_aged_woman": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I've shopped here faithfully for years and years.",
+          "They call me a regular now! Ha!"
+        ],
+        "text": [
+          "Fac cumpărături aici cu credință de ani și ani.",
+          "Acum îmi zic client fidel! Ha!"
+        ]
+      }
+    },
+    "collector_1": {
+      "name": {
+        "en": [
+          "Collector"
+        ],
+        "text": [
+          "Colecționarul"
+        ]
+      }
+    },
+    "collector_2": {
+      "name": {
+        "en": [
+          "Collector"
+        ],
+        "text": [
+          "Colecționarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Two strapping fellows, standing side by side. That's all.",
+          "What? Is there a problem?"
+        ],
+        "text": [
+          "Doi flăcăi zdraveni, unul lângă altul. Atât.",
+          "Ce? E vreo problemă?"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "5,3": {
+      "en": [
+        "A vending machine."
+      ],
+      "text": [
+        "Un automat de băuturi."
+      ]
+    },
+    "6,3": {
+      "en": [
+        "A vending machine."
+      ],
+      "text": [
+        "Un automat de băuturi."
+      ]
+    },
+    "13,2": {
+      "en": [
+        "B1F: Food and Produce. 1F: Trainers' Zone. 2F: Battle Collection. 3F: TM Corner. 4F: Poké Dolls and Goods. 5F: Rooftop Plaza."
+      ],
+      "text": [
+        "Subsol: Alimente. Parter: Antrenori. Et. 2: Luptă. Et. 3: TM-uri. Et. 4: Păpuși și mobilier. Et. 5: Terasa."
+      ]
+    }
+  }
+}

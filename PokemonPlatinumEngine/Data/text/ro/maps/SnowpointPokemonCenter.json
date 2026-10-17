@@ -1,0 +1,99 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Center"
+    ],
+    "text": [
+      "Centrul Pokémon"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Lass"
+        ],
+        "text": [
+          "Domnișoara"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "There are Ice-type Pokémon everywhere you look around Snowpoint City.",
+          "Do you suppose they live inside the temple as well?"
+        ],
+        "text": [
+          "Oriunde te uiți prin Orașul Snowpoint sunt Pokémoni de tip Gheață.",
+          "Crezi că trăiesc și în templu?"
+        ]
+      }
+    },
+    "battle_girl": {
+      "name": {
+        "en": [
+          "Battle Girl"
+        ],
+        "text": [
+          "Luptătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Snow swallows up every sound. That's why this town is always so quiet."
+        ],
+        "text": [
+          "Zăpada înghite orice sunet. De aceea orașul ăsta e mereu atât de liniștit."
+        ]
+      }
+    },
+    "psyduck": {
+      "name": {
+        "en": [
+          "Psyduck"
+        ],
+        "text": [
+          "Psyduck"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Psyduck: Gwa gwa? Gwaaa!"
+        ],
+        "text": [
+          "Psyduck: Gwa gwa? Gwaaa!"
+        ]
+      }
+    },
+    "maylene": {
+      "name": {
+        "en": [
+          "Maylene"
+        ],
+        "text": [
+          "Maylene"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

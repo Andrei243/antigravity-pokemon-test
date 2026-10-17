@@ -1,0 +1,28 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitor"
+      ]
+    },
+    {
+      "en": [
+        "Excuse me! Nobody goes into the Great Marsh without a Safari Game."
+      ],
+      "text": [
+        "Scuză-mă! Nimeni nu intră în Marea Mlaștină fără un Joc Safari."
+      ]
+    },
+    {
+      "en": [
+        "This way back to the counter, please."
+      ],
+      "text": [
+        "Pe aici, înapoi la ghișeu, te rog."
+      ]
+    }
+  ]
+}

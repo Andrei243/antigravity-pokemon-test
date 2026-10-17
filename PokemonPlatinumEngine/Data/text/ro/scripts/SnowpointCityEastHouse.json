@@ -1,0 +1,114 @@
+{
+  "Tutor": [
+    {
+      "en": [
+        "Share your coloured Shards with me, and I'll teach your Pokémon a move. Want one taught?"
+      ],
+      "text": [
+        "Dă-mi din Cioburile tale colorate și-ți învăț Pokémonii o mișcare. Vrei să-l învăț pe unul?"
+      ]
+    },
+    {
+      "en": [
+        "Which Pokémon will it be?"
+      ],
+      "text": [
+        "Ce Pokémon să fie?"
+      ]
+    },
+    {
+      "en": [
+        "One, two, and... poof! {wearer} forgot {forgotten}. And..."
+      ],
+      "text": [
+        "Unu, doi și... puf! {wearer} a uitat {forgotten}. Și..."
+      ]
+    },
+    {
+      "en": [
+        "{wearer} learned {thing}!"
+      ],
+      "text": [
+        "{wearer} a învățat {thing}!"
+      ]
+    },
+    {
+      "en": [
+        "Be seeing you, then!"
+      ],
+      "text": [
+        "Ne mai vedem, atunci!"
+      ]
+    },
+    {
+      "en": [
+        "Teaching a move to an Egg is beyond me!"
+      ],
+      "text": [
+        "Să învăț un Ou o mișcare e peste puterile mele!"
+      ]
+    },
+    {
+      "en": [
+        "There's no move of mine that this Pokémon can be taught."
+      ],
+      "text": [
+        "Nu am nicio mișcare pe care s-o poată învăța Pokémonul ăsta."
+      ]
+    },
+    {
+      "en": [
+        "You haven't enough Shards."
+      ],
+      "text": [
+        "Nu ai destule Cioburi."
+      ]
+    },
+    {
+      "en": [
+        "{wearer} did not learn {thing}."
+      ],
+      "text": [
+        "{wearer} nu a învățat {thing}."
+      ]
+    },
+    {
+      "en": [
+        "{forgotten} isn't a move that can be given up like that. {wearer} did not learn {thing}."
+      ],
+      "text": [
+        "{forgotten} nu e o mișcare la care să se poată renunța așa. {wearer} nu a învățat {thing}."
+      ]
+    }
+  ],
+  "Sayings": [
+    {
+      "en": [
+        "Hello, hello. Would you care to hear a trendy saying?"
+      ],
+      "text": [
+        "Salut, salut. Vrei să auzi o vorbă la modă?"
+      ]
+    },
+    {
+      "en": [
+        "Very well... The trendy thing to say, for someone like you, would be...",
+        "...Oh, bother. It was on the tip of my tongue a moment ago.",
+        "Sayings go out of fashion faster than I can remember them these days!"
+      ],
+      "text": [
+        "Foarte bine... Vorba la modă pentru cineva ca tine ar fi...",
+        "...Of, la naiba. O aveam pe vârful limbii adineauri.",
+        "În ziua de azi, vorbele ies din modă mai repede decât le pot ține minte!"
+      ]
+    },
+    {
+      "en": [
+        "Oh, come now. With an attitude like that, you'll fall behind the times!"
+      ],
+      "text": [
+        "Haide, haide. Cu atitudinea asta, o să rămâi în urma vremurilor!"
+      ]
+    }
+  ]
+}

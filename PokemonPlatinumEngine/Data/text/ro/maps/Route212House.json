@@ -1,0 +1,80 @@
+{
+  "displayName": {
+    "en": [
+      "Route 212"
+    ],
+    "text": [
+      "Ruta 212"
+    ]
+  },
+  "people": {
+    "beauty": {
+      "name": {
+        "en": [
+          "Beauty"
+        ],
+        "text": [
+          "Frumoasa"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My daddy likes Blue Shards best.",
+          "There are others in Sinnoh who are fond of Shards. One of them likes the red ones, and another collects the yellow."
+        ],
+        "text": [
+          "Tati iubește cel mai mult Cioburile Albastre.",
+          "Mai sunt și alții în Sinnoh cărora le plac Cioburile. Unul le iubește pe cele roșii, altul le adună pe cele galbene."
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      }
+    },
+    "twin": {
+      "name": {
+        "en": [
+          "Twin"
+        ],
+        "text": [
+          "Geamănă"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My daddy collects Shards.",
+          "If you find any, down in the Underground maybe, bring them to us, please!"
+        ],
+        "text": [
+          "Tati adună Cioburi.",
+          "Dacă găsești vreunul, poate în Subteran, adu-ni-l, te rog!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "1,4": {
+      "en": [
+        "A diary lies open. \"Red Shards speak of power. Blue Shards speak of cunning effects. Yellow Shards speak of troubles for the foe.\" \"For my part, give me the blue ones!\""
+      ],
+      "text": [
+        "Un jurnal deschis. „Cioburile Roșii vorbesc de putere. Cele Albastre, de efecte iscusite. Cele Galbene, de necazuri pentru adversar.” „Eu le vreau pe cele albastre!”"
+      ]
+    },
+    "4,2": {
+      "en": [
+        "A list is pinned to the wall. MOVES TAUGHT FOR SHARDS: Dive, Fury Cutter, Icy Wind, Thunder Punch, Fire Punch, Ice Punch, Ominous Wind, Air Cutter, Zen Headbutt, Vacuum Wave, Trick, Knock Off, Sucker Punch."
+      ],
+      "text": [
+        "O listă pe perete. MIȘCĂRI PENTRU CIOBURI: Scufundare, Tăiș Furios, Vânt Înghețat, Pumn Electric, Pumn de Foc, Pumn de Gheață, Vânt Sinistru, Tăietor de Aer, Lovitură Zen, Undă de Vid, Șmecherie, Doborâre, Pumn Viclean."
+      ]
+    }
+  }
+}

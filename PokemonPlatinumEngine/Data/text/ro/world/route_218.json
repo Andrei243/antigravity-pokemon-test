@@ -1,0 +1,186 @@
+{
+  "people": {
+    "guitarist": {
+      "name": {
+        "en": [
+          "Guitarist"
+        ],
+        "text": [
+          "Chitaristul"
+        ]
+      }
+    },
+    "fisherman": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          "Pescarul"
+        ]
+      }
+    },
+    "clefairy_south": {
+      "name": {
+        "en": [
+          "Clefairy"
+        ],
+        "text": [
+          "Clefairy"
+        ]
+      }
+    },
+    "clefairy_north": {
+      "name": {
+        "en": [
+          "Clefairy"
+        ],
+        "text": [
+          "Clefairy"
+        ]
+      }
+    },
+    "pikachu_south": {
+      "name": {
+        "en": [
+          "Pikachu"
+        ],
+        "text": [
+          "Pikachu"
+        ]
+      }
+    },
+    "pikachu_north": {
+      "name": {
+        "en": [
+          "Pikachu"
+        ],
+        "text": [
+          "Pikachu"
+        ]
+      }
+    },
+    "guitarist_tony": {
+      "name": {
+        "en": [
+          "Tony"
+        ],
+        "text": [
+          "Tony"
+        ]
+      },
+      "before": {
+        "en": [
+          "Guitarist Tony: The waves keep the beat and I play along. Here comes the loud part!"
+        ],
+        "text": [
+          "Chitarist Tony: Valurile țin ritmul și eu cânt odată cu ele. Acum vine partea tare!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Guitarist Tony: Out of tune and out of luck. I'll go back to playing for the gulls."
+        ],
+        "text": [
+          "Chitarist Tony: Fals și fără noroc. Mă întorc să le cânt pescărușilor."
+        ]
+      }
+    },
+    "sailor_skyler": {
+      "name": {
+        "en": [
+          "Skyler"
+        ],
+        "text": [
+          "Skyler"
+        ]
+      },
+      "before": {
+        "en": [
+          "Sailor Skyler: Months at sea, and dry land still rocks under my feet! Battle me while I find my legs!"
+        ],
+        "text": [
+          "Marinar Skyler: Luni întregi pe mare, și uscatul încă se clatină sub mine! Luptă-te cu mine cât îmi revin!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Sailor Skyler: Bah! Give me a rolling deck any day. I fight better with the sea under me."
+        ],
+        "text": [
+          "Marinar Skyler: Pff! Dați-mi oricând o punte care se leagănă. Mă lupt mai bine cu marea sub picioare."
+        ]
+      }
+    },
+    "fisherman_miguel": {
+      "name": {
+        "en": [
+          "Miguel"
+        ],
+        "text": [
+          "Miguel"
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Miguel: Shh, you'll frighten the fish! ...A battle? Go on, then, but keep it quiet."
+        ],
+        "text": [
+          "Pescar Miguel: Șșt, sperii peștii! ...O luptă? Hai, dar fără gălăgie."
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Miguel: Lost the battle, and the fish have all swum off. Not my day."
+        ],
+        "text": [
+          "Pescar Miguel: Am pierdut lupta, și peștii au plecat toți. Nu-i ziua mea."
+        ]
+      }
+    },
+    "fisherman_luc": {
+      "name": {
+        "en": [
+          "Luc"
+        ],
+        "text": [
+          "Luc"
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Luc: Every one of my Pokémon came up out of this water on the end of my line!"
+        ],
+        "text": [
+          "Pescar Luc: Toți Pokémonii mei au ieșit din apa asta în cârligul meu!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Luc: I'll cast again. There's always something bigger down there."
+        ],
+        "text": [
+          "Pescar Luc: Mai arunc o dată. Mereu e ceva mai mare acolo jos."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost_jubilife_city": {
+      "en": [
+        "Route 218\nEast: Jubilife City"
+      ],
+      "text": [
+        "Ruta 218\nEst: Orașul Jubilife"
+      ]
+    },
+    "arrow_signpost_canalave_city": {
+      "en": [
+        "Route 218\nWest: Canalave City"
+      ],
+      "text": [
+        "Ruta 218\nVest: Orașul Canalave"
+      ]
+    }
+  }
+}

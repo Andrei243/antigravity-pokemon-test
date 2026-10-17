@@ -1,0 +1,23 @@
+{
+  "displayName": {
+    "en": [
+      "Route 217"
+    ],
+    "text": [
+      "Ruta 217"
+    ]
+  },
+  "people": {
+    "pokemon_breeder_f": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,216 @@
+{
+  "TempleGuard": [
+    {
+      "en": [
+        "Temple Guard"
+      ],
+      "text": [
+        "Paznica Templului"
+      ]
+    },
+    {
+      "en": [
+        "Only those the temple has chosen may set foot in Snowpoint Temple."
+      ],
+      "text": [
+        "Doar cei aleși de templu pot călca în Templul Snowpoint."
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry, but I must ask you to leave."
+      ],
+      "text": [
+        "Îmi pare rău, dar trebuie să te rog să pleci."
+      ]
+    }
+  ],
+  "Guard": [
+    {
+      "en": [
+        "Temple Guard"
+      ],
+      "text": [
+        "Paznica Templului"
+      ]
+    },
+    {
+      "en": [
+        "They say the temple was raised in an age nobody remembers, in honour of the Pokémon of rock, of ice and of steel that gave the land its shape."
+      ],
+      "text": [
+        "Se zice că templul a fost înălțat într-o epocă pe care n-o mai ține minte nimeni, în cinstea Pokémonilor de piatră, de gheață și de oțel care au dat formă pământului."
+      ]
+    },
+    {
+      "en": [
+        "So the story goes. I have guarded its door for years, and I have never once been inside."
+      ],
+      "text": [
+        "Așa spune povestea. Îi păzesc ușa de ani de zile și n-am fost niciodată înăuntru."
+      ]
+    },
+    {
+      "en": [
+        "Only those the temple has chosen may set foot in Snowpoint Temple."
+      ],
+      "text": [
+        "Doar cei aleși de templu pot călca în Templul Snowpoint."
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry, but I must ask you to leave."
+      ],
+      "text": [
+        "Îmi pare rău, dar trebuie să te rog să pleci."
+      ]
+    }
+  ],
+  "CandiceLetsIn": [
+    {
+      "en": [
+        "Candice"
+      ],
+      "text": [
+        "Candice"
+      ]
+    },
+    {
+      "en": [
+        "It's all right! You can let this one in!"
+      ],
+      "text": [
+        "E în regulă! E cu mine, poate intra!"
+      ]
+    },
+    {
+      "en": [
+        "Cynthia's told me all about you, {player}. You're filling in a Pokédex, aren't you?"
+      ],
+      "text": [
+        "Cynthia mi-a povestit totul despre tine, {player}. Completezi un Pokédex, nu?"
+      ]
+    },
+    {
+      "en": [
+        "There are Pokémon in the temple you won't find anywhere else. Have fun exploring! And wrap up warm: it's colder in there than out here."
+      ],
+      "text": [
+        "În templu sunt Pokémoni pe care nu-i găsești altundeva. Distracție plăcută la explorat! Și îmbracă-te gros: e mai frig acolo decât aici."
+      ]
+    }
+  ],
+  "Candice": [
+    {
+      "en": [
+        "Candice"
+      ],
+      "text": [
+        "Candice"
+      ]
+    },
+    {
+      "en": [
+        "There are Pokémon in the temple you won't find anywhere else. Have fun exploring!"
+      ],
+      "text": [
+        "În templu sunt Pokémoni pe care nu-i găsești altundeva. Distracție plăcută la explorat!"
+      ]
+    }
+  ],
+  "Man": [
+    {
+      "en": [
+        "They say Pokémon dragged the whole of Snowpoint City up here, long ago, and that the temple is where they lay down to rest afterwards."
+      ],
+      "text": [
+        "Se zice că, demult, Pokémonii au tras tot Orașul Snowpoint până aici, iar templul e locul unde s-au culcat apoi să se odihnească."
+      ]
+    },
+    {
+      "en": [
+        "You've been let in? Then tell me what it's like in there! ...No, don't. I want to see it for myself one day."
+      ],
+      "text": [
+        "Te-au lăsat să intri? Atunci spune-mi cum e acolo! ...Nu, lasă. Vreau să văd cu ochii mei într-o zi."
+      ]
+    }
+  ],
+  "Ship": [
+    {
+      "en": [
+        "Ahoy, Champion! This ship is bound for the Battle Zone. Shall we cast off?"
+      ],
+      "text": [
+        "Ahoi! Corabia asta merge spre Ținutul Luptelor. Ridicăm ancora?"
+      ]
+    },
+    {
+      "en": [
+        "All aboard, then! Next stop, the Fight Area!"
+      ],
+      "text": [
+        "Toată lumea la bord, atunci! Următoarea oprire, Zona de Luptă!"
+      ]
+    },
+    {
+      "en": [
+        "Suit yourself. But mind: there's no surfing across that sea. The only way to the Battle Zone is by this ship."
+      ],
+      "text": [
+        "Cum vrei. Dar să știi: marea aia nu se trece cu Surf. Singurul drum spre Ținutul Luptelor e cu corabia asta."
+      ]
+    }
+  ],
+  "CynthiaSeesOff": [
+    {
+      "en": [
+        "Cynthia"
+      ],
+      "text": [
+        "Cynthia"
+      ]
+    },
+    {
+      "en": [
+        "{player}! I'm so glad I waited. I had a feeling you would come this way."
+      ],
+      "text": [
+        "{player}! Ce bine că am așteptat. Simțeam că vei trece pe aici."
+      ]
+    },
+    {
+      "en": [
+        "Do you know, I think it is a fine thing that our world keeps changing."
+      ],
+      "text": [
+        "Știi, cred că e un lucru frumos că lumea noastră se tot schimbă."
+      ]
+    },
+    {
+      "en": [
+        "New places, new Pokémon, new people to meet. However far you go, there is always more of it."
+      ],
+      "text": [
+        "Locuri noi, Pokémoni noi, oameni noi de cunoscut. Oricât de departe ai merge, mereu mai e ceva."
+      ]
+    },
+    {
+      "en": [
+        "So go and see the far-off places, {player}. Meet everything they have to show you."
+      ],
+      "text": [
+        "Așa că du-te și vezi locurile îndepărtate, {player}. Cunoaște tot ce au să-ți arate."
+      ]
+    },
+    {
+      "en": [
+        "And when you come back, tell me all about it. Safe travels, Champion."
+      ],
+      "text": [
+        "Și când te întorci, povestește-mi tot. Drum bun!"
+      ]
+    }
+  ]
+}

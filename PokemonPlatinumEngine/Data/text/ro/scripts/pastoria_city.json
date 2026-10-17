@@ -1,0 +1,520 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "There you are! Got the Badge, didn't you? Told you Mr. Wake... er, my master... was the real deal!"
+      ],
+      "text": [
+        "Aici erai! Ai luat Insigna, nu? Ți-am zis că domnul Wake... ăă, maestrul meu... e grozav!"
+      ]
+    },
+    {
+      "en": [
+        "Crasher Wake"
+      ],
+      "text": [
+        "Crasher Wake"
+      ]
+    },
+    {
+      "en": [
+        "Who's making all that noise on my doorstep? Oh. The pair of you."
+      ],
+      "text": [
+        "Cine face atâta gălăgie la ușa mea? A. Voi doi."
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Master! Over here!"
+      ],
+      "text": [
+        "Maestre! Aici!"
+      ]
+    },
+    {
+      "en": [
+        "Crasher Wake"
+      ],
+      "text": [
+        "Crasher Wake"
+      ]
+    },
+    {
+      "en": [
+        "Hold it, kid. Sure, your dad and I go way back. But I never signed up to be anybody's teacher!"
+      ],
+      "text": [
+        "Stai, puștiule. Sigur, tatăl tău și cu mine ne știm de mult. Dar n-am zis niciodată că vreau să fiu profesorul cuiva!"
+      ]
+    },
+    {
+      "en": [
+        "And the two of you hardly need one. You'll find your own strength, each in your own way."
+      ],
+      "text": [
+        "Și voi doi nici n-aveți nevoie. Vă veți găsi puterea, fiecare în felul lui."
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Doesn't matter what you signed up for. I picked you, so that's that!"
+      ],
+      "text": [
+        "Nu contează ce-ai zis. Eu te-am ales, și gata!"
+      ]
+    },
+    {
+      "en": [
+        "Anyway, never mind that! Some Team Galactic guy's loitering at the observatory gate, and he was mumbling about a bomb!"
+      ],
+      "text": [
+        "În fine, lasă asta! Un tip de la Echipa Galactic stă la poarta observatorului și mormăia ceva despre o bombă!"
+      ]
+    },
+    {
+      "en": [
+        "Crasher Wake"
+      ],
+      "text": [
+        "Crasher Wake"
+      ]
+    },
+    {
+      "en": [
+        "A BOMB?! In MY city?! Not while I'm breathing!"
+      ],
+      "text": [
+        "O BOMBĂ?! În orașul MEU?! Nu cât trăiesc eu!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Master! Hang on, wait up!"
+      ],
+      "text": [
+        "Maestre! Stai, așteaptă-mă!"
+      ]
+    }
+  ],
+  "SafariOver": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitor"
+      ]
+    },
+    {
+      "en": [
+        "Welcome back! That's the end of your Safari Game. Did the marsh treat you well?"
+      ],
+      "text": [
+        "Bine ai revenit! Jocul Safari s-a încheiat. Te-a tratat bine mlaștina?"
+      ]
+    }
+  ],
+  "RivalBattle": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Ha! Bet you thought I'd come barrelling into you again. Not this time!"
+      ],
+      "text": [
+        "Ha! Pun pariu că credeai că iar dau buzna peste tine. Nu de data asta!"
+      ]
+    },
+    {
+      "en": [
+        "Been training, {player}? Let's find out how much. Show me what your team's got!"
+      ],
+      "text": [
+        "Te-ai antrenat, {player}? Hai să vedem cât. Arată-mi ce poate echipa ta!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Huh. Fine, you've got stronger. I wasn't really trying, anyway!"
+      ],
+      "text": [
+        "Hm. Bine, ți-ai crescut puterea. Oricum, nu m-am străduit!"
+      ]
+    },
+    {
+      "en": [
+        "Oh, big news: Mr. Wake's taking me on as his apprentice! Someday I'll have a theme tune all my own!"
+      ],
+      "text": [
+        "A, mare veste: domnul Wake mă ia ucenic! Într-o zi o să am și eu melodia mea!"
+      ]
+    }
+  ],
+  "Rival": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Hey, {player}. Bad timing, I'm afraid. Mr. Wake, the Gym Leader, isn't here. He's off in Veilstone City."
+      ],
+      "text": [
+        "Hei, {player}. Ai picat prost. Domnul Wake, Liderul Arenei, nu e aici. E plecat în Orașul Veilstone."
+      ]
+    },
+    {
+      "en": [
+        "Went to spar with Maylene, their Leader. I came all this way just to miss him!"
+      ],
+      "text": [
+        "S-a dus să se antreneze cu Maylene, Lidera de acolo. Am venit tocmai până aici ca să-l ratez!"
+      ]
+    },
+    {
+      "en": [
+        "Come round the front! I'm not chatting to you sideways!"
+      ],
+      "text": [
+        "Vino în fața mea! Nu vorbesc cu tine din profil!"
+      ]
+    },
+    {
+      "en": [
+        "When I catch my next Pokémon, it's going to be a Croagunk. You've seen that smirk, right? Unbeatable!"
+      ],
+      "text": [
+        "Următorul Pokémon pe care-l prind o să fie un Croagunk. Ai văzut rânjetul ăla, nu? Imbatabil!"
+      ]
+    },
+    {
+      "en": [
+        "Why are you still standing about here?! That Galactic creep is getting away!"
+      ],
+      "text": [
+        "Ce mai stai pe aici?! Netrebnicul de la Galactic scapă!"
+      ]
+    }
+  ],
+  "Wake": [
+    {
+      "en": [
+        "Crasher Wake"
+      ],
+      "text": [
+        "Crasher Wake"
+      ]
+    },
+    {
+      "en": [
+        "Wahahaha! Pastoria's waters are calm today. Just how I like them!"
+      ],
+      "text": [
+        "Uahahaha! Apele din Pastoria sunt liniștite azi. Exact cum îmi plac!"
+      ]
+    }
+  ],
+  "Explosion": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Oi! Wait for me! I'm part of this too!"
+      ],
+      "text": [
+        "Hei! Așteptați-mă! Și eu fac parte din asta!"
+      ]
+    },
+    {
+      "en": [
+        "Crasher Wake"
+      ],
+      "text": [
+        "Crasher Wake"
+      ]
+    },
+    {
+      "en": [
+        "Now then, where's this Galactic so-and..."
+      ],
+      "text": [
+        "Ia să vedem, unde-i nemernicul ăla de la Galac..."
+      ]
+    },
+    {
+      "en": [
+        "KA-BOOOOOM!!"
+      ],
+      "text": [
+        "BUUUUUM!!"
+      ]
+    }
+  ],
+  "ButtonPushed": [
+    {
+      "en": [
+        "Galactic Grunt"
+      ],
+      "text": [
+        "Galactic Grunt"
+      ]
+    },
+    {
+      "en": [
+        "Whoa... My ears are ringing."
+      ],
+      "text": [
+        "Uau... Îmi țiuie urechile."
+      ]
+    },
+    {
+      "en": [
+        "Crasher Wake"
+      ],
+      "text": [
+        "Crasher Wake"
+      ]
+    },
+    {
+      "en": [
+        "YOU THERE! What did you just do?!"
+      ],
+      "text": [
+        "TU DE COLO! Ce-ai făcut?!"
+      ]
+    },
+    {
+      "en": [
+        "Galactic Grunt"
+      ],
+      "text": [
+        "Galactic Grunt"
+      ]
+    },
+    {
+      "en": [
+        "Who, me? I only did as I was told."
+      ],
+      "text": [
+        "Cine, eu? Am făcut doar ce mi s-a spus."
+      ]
+    },
+    {
+      "en": [
+        "That parcel from Veilstone? It was the Galactic Bomb. Somebody had to press its button, and that somebody was me. Click!"
+      ],
+      "text": [
+        "Coletul din Veilstone? Era Bomba Galactic. Cineva trebuia să-i apese butonul, și acel cineva am fost eu. Clic!"
+      ]
+    },
+    {
+      "en": [
+        "Ooh, I'd better go and tell the bosses how the test went! Toodles! Love the mask, by the way. Not!"
+      ],
+      "text": [
+        "Uh, mai bine mă duc să le spun șefilor cum a mers testul! Pa-pa! Super masca, apropo. Glumeam!"
+      ]
+    }
+  ],
+  "GruntRuns": [
+    {
+      "en": [
+        "Crasher Wake"
+      ],
+      "text": [
+        "Crasher Wake"
+      ]
+    },
+    {
+      "en": [
+        "The Great Marsh... If that blast has done it any harm..."
+      ],
+      "text": [
+        "Marea Mlaștină... Dacă explozia i-a făcut vreun rău..."
+      ]
+    }
+  ],
+  "GoAfterTheGoon": [
+    {
+      "en": [
+        "Crasher Wake"
+      ],
+      "text": [
+        "Crasher Wake"
+      ]
+    },
+    {
+      "en": [
+        "Stay here, both of you! I'm going in alone, and nobody else follows me. Got that?"
+      ],
+      "text": [
+        "Rămâneți aici, amândoi! Intru singur și nu mă urmează nimeni. Ne-am înțeles?"
+      ]
+    },
+    {
+      "en": [
+        "If there's more of that bomb lying about in there, it could go off any second!"
+      ],
+      "text": [
+        "Dacă mai e ceva din bomba aia pe acolo, poate exploda în orice clipă!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "{player}! That Galactic creep went east. Go and get him!"
+      ],
+      "text": [
+        "{player}! Netrebnicul de la Galactic a luat-o spre est. Prinde-l!"
+      ]
+    },
+    {
+      "en": [
+        "I'll guard this door, like my master told us. Nobody's getting past me!"
+      ],
+      "text": [
+        "Eu păzesc ușa asta, cum ne-a zis maestrul. Nu trece nimeni de mine!"
+      ]
+    },
+    {
+      "en": [
+        "Now hurry, before he gets away!"
+      ],
+      "text": [
+        "Acum grăbește-te, până nu scapă!"
+      ]
+    }
+  ],
+  "BlockGreatMarsh": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Why are you still standing about here?! That Galactic creep is getting away!"
+      ],
+      "text": [
+        "Ce mai stai pe aici?! Netrebnicul de la Galactic scapă!"
+      ]
+    }
+  ],
+  "Grunt": [
+    {
+      "en": [
+        "Galactic Grunt"
+      ],
+      "text": [
+        "Galactic Grunt"
+      ]
+    },
+    {
+      "en": [
+        "Where's that delivery from Veilstone got to? I've been stood here for ages."
+      ],
+      "text": [
+        "Unde-a rămas livrarea din Veilstone? Stau aici de o veșnicie."
+      ]
+    },
+    {
+      "en": [
+        "They'd better get a move on. The sooner it turns up, the sooner things go off with a bang. Heh heh..."
+      ],
+      "text": [
+        "Ar face bine să se grăbească. Cu cât ajunge mai repede, cu atât mai repede bubuie totul. He-he..."
+      ]
+    },
+    {
+      "en": [
+        "You again? Stop tailing me, will you?"
+      ],
+      "text": [
+        "Iar tu? Nu te mai ține după mine, bine?"
+      ]
+    },
+    {
+      "en": [
+        "I'd teach you a lesson, but I'm wanted at the lake and I'm late already. Count yourself lucky!"
+      ],
+      "text": [
+        "Ți-aș da o lecție, dar sunt așteptat la lac și deja am întârziat. Ai noroc!"
+      ]
+    },
+    {
+      "en": [
+        "And stay put this time. I mean it!"
+      ],
+      "text": [
+        "Și de data asta stai pe loc. Vorbesc serios!"
+      ]
+    }
+  ]
+}

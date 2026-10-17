@@ -1,0 +1,534 @@
+{
+  "Painting": [
+    {
+      "en": [
+        "{player} looked closely at the ancient painting.",
+        "Strange shapes cover a whole stretch of the rock.",
+        "Three figures stand in a triangle... and at their heart, a sphere of light?",
+        "What could it all mean?"
+      ],
+      "text": [
+        "{player} s-a uitat atent la pictura străveche.",
+        "Forme ciudate acoperă o bucată întreagă de stâncă.",
+        "Trei figuri stau în triunghi... iar în mijlocul lor, o sferă de lumină?",
+        "Oare ce înseamnă toate astea?"
+      ]
+    },
+    {
+      "en": [
+        "Elder"
+      ],
+      "text": [
+        "Bătrâna înțeleaptă"
+      ]
+    },
+    {
+      "en": [
+        "As we tell it, the painting means this..."
+      ],
+      "text": [
+        "Așa cum o povestim noi, pictura înseamnă asta..."
+      ]
+    },
+    {
+      "en": [
+        "Once there were two beings, so mighty that the people of the time took them for gods."
+      ],
+      "text": [
+        "Au fost odată două ființe atât de puternice încât oamenii de atunci le credeau zei."
+      ]
+    },
+    {
+      "en": [
+        "And there were three Pokémon whose power matched either of them. Those three held the two in balance, like the sides of a pyramid."
+      ],
+      "text": [
+        "Și au fost trei Pokémoni a căror putere egala pe a fiecăreia. Cei trei le țineau pe cele două în echilibru, ca laturile unei piramide."
+      ]
+    },
+    {
+      "en": [
+        "That is Sinnoh's ancient legend, as Celestic Town still tells it today."
+      ],
+      "text": [
+        "Aceasta e legenda străveche a Sinnohului, așa cum o mai spune și azi Orășelul Celestic."
+      ]
+    },
+    {
+      "en": [
+        "???"
+      ],
+      "text": [
+        "???"
+      ]
+    },
+    {
+      "en": [
+        "I would like to hear more of that legend, if you'll allow me."
+      ],
+      "text": [
+        "Aș vrea să aud mai mult din legenda aceea, dacă îmi permiteți."
+      ]
+    },
+    {
+      "en": [
+        "Elder"
+      ],
+      "text": [
+        "Bătrâna înțeleaptă"
+      ]
+    },
+    {
+      "en": [
+        "And who might you be...?"
+      ],
+      "text": [
+        "Și cine ești tu...?"
+      ]
+    },
+    {
+      "en": [
+        "Cyrus"
+      ],
+      "text": [
+        "Cyrus"
+      ]
+    },
+    {
+      "en": [
+        "My name is Cyrus. I mean to put an end to pointless conflict and hostility. I am looking for the power to make an ideal world."
+      ],
+      "text": [
+        "Numele meu e Cyrus. Vreau să pun capăt conflictelor și urii fără rost. Caut puterea de a făuri o lume ideală."
+      ]
+    },
+    {
+      "en": [
+        "So answer me this. The world cannot change today because those three Pokémon keep it in balance. Is that what you are telling me?"
+      ],
+      "text": [
+        "Atunci răspundeți-mi. Lumea nu se poate schimba azi pentru că acei trei Pokémoni o țin în echilibru. Asta îmi spuneți?"
+      ]
+    },
+    {
+      "en": [
+        "Elder"
+      ],
+      "text": [
+        "Bătrâna înțeleaptă"
+      ]
+    },
+    {
+      "en": [
+        "I couldn't tell you. What I do know is that the world is in balance, and I'm quite content with it as it is."
+      ],
+      "text": [
+        "N-aș ști să spun. Ce știu e că lumea e în echilibru, și mie îmi place așa cum e."
+      ]
+    },
+    {
+      "en": [
+        "Your question doesn't interest me."
+      ],
+      "text": [
+        "Întrebarea ta nu mă interesează."
+      ]
+    },
+    {
+      "en": [
+        "Cyrus"
+      ],
+      "text": [
+        "Cyrus"
+      ]
+    },
+    {
+      "en": [
+        "...So you plead ignorance. How pointless."
+      ],
+      "text": [
+        "...Deci pretindeți că nu știți. Ce zadarnic."
+      ]
+    },
+    {
+      "en": [
+        "You fail to see that this world is incomplete. I will change it. And as a first step, I will destroy this painting you have guarded for so long."
+      ],
+      "text": [
+        "Nu vedeți că lumea asta e incompletă. Eu o voi schimba. Și, ca prim pas, voi distruge pictura pe care ați păzit-o atâta vreme."
+      ]
+    },
+    {
+      "en": [
+        "A new world deserves a new legend in its place. Am I mistaken?"
+      ],
+      "text": [
+        "O lume nouă merită o legendă nouă în locul celei vechi. Greșesc?"
+      ]
+    },
+    {
+      "en": [
+        "If you believe I am, then challenge me."
+      ],
+      "text": [
+        "Dacă credeți că greșesc, atunci provocați-mă."
+      ]
+    },
+    {
+      "en": [
+        "...You choose to be a coward. A sensible choice. Stand aside, then, and watch me change the world."
+      ],
+      "text": [
+        "...Alegi lașitatea. O alegere înțeleaptă. Dă-te la o parte, atunci, și privește-mă cum schimb lumea."
+      ]
+    },
+    {
+      "en": [
+        "{player} looked closely at the ancient painting.",
+        "Strange shapes cover a whole stretch of the rock.",
+        "Three figures stand in a triangle... and at their heart, a sphere of light..."
+      ],
+      "text": [
+        "{player} s-a uitat atent la pictura străveche.",
+        "Forme ciudate acoperă o bucată întreagă de stâncă.",
+        "Trei figuri stau în triunghi... iar în mijlocul lor, o sferă de lumină..."
+      ]
+    }
+  ],
+  "CynthiaReads": [
+    {
+      "en": [
+        "Cynthia"
+      ],
+      "text": [
+        "Cynthia"
+      ]
+    },
+    {
+      "en": [
+        "This painting... It has always been read the same way."
+      ],
+      "text": [
+        "Pictura asta... A fost citită mereu la fel."
+      ]
+    },
+    {
+      "en": [
+        "The light in the middle is Dialga, or Palkia, as it appears at Spear Pillar. And the three lights round it are Uxie, Mesprit and Azelf."
+      ],
+      "text": [
+        "Lumina din mijloc e Dialga sau Palkia, așa cum apare pe Coloana Suliței. Iar cele trei lumini din jur sunt Uxie, Mesprit și Azelf."
+      ]
+    },
+    {
+      "en": [
+        "May I go on?"
+      ],
+      "text": [
+        "Pot să continui?"
+      ]
+    },
+    {
+      "en": [
+        "But then it struck me that there might be another way to read it."
+      ],
+      "text": [
+        "Dar apoi mi-a trecut prin minte că ar putea fi citită și altfel."
+      ]
+    },
+    {
+      "en": [
+        "What if this triangle of lights is a different three? What if they are Dialga, Palkia and Giratina?"
+      ],
+      "text": [
+        "Dacă triunghiul ăsta de lumini e alt trio? Dacă sunt Dialga, Palkia și Giratina?"
+      ]
+    },
+    {
+      "en": [
+        "And the great light at their heart: is that something else again? Could it be whatever made this world of ours?"
+      ],
+      "text": [
+        "Iar marea lumină din mijlocul lor: e cu totul altceva? Ar putea fi cel care a făcut lumea noastră?"
+      ]
+    },
+    {
+      "en": [
+        "May I go on a little longer?"
+      ],
+      "text": [
+        "Pot să mai continui puțin?"
+      ]
+    },
+    {
+      "en": [
+        "Thank you for hearing my idea out."
+      ],
+      "text": [
+        "Mulțumesc că mi-ai ascultat ideea până la capăt."
+      ]
+    },
+    {
+      "en": [
+        "You know the old Plates that turn up all over Sinnoh? One of them carries a line that says, as near as I can put it: \"From the First One, two were let go: one of time, one of space.\""
+      ],
+      "text": [
+        "Știi Plăcile vechi care apar prin tot Sinnohul? Pe una scrie, cam așa: „Din Cel Dintâi au fost slobozite două: una a timpului, una a spațiului.”"
+      ]
+    },
+    {
+      "en": [
+        "I think that line points the same way: to one more Pokémon, mightier even than Dialga or Palkia. Does that sound possible to you?"
+      ],
+      "text": [
+        "Cred că rândul acela arată în aceeași direcție: spre încă un Pokémon, mai puternic chiar decât Dialga sau Palkia. Ți se pare cu putință?"
+      ]
+    },
+    {
+      "en": [
+        "I can't say for certain where Giratina belongs in all this. But they say that in the Distortion World neither time nor space holds steady."
+      ],
+      "text": [
+        "Nu pot spune sigur unde se potrivește Giratina în toate astea. Dar se zice că în Lumea Distorsionată nici timpul, nici spațiul nu stau pe loc."
+      ]
+    },
+    {
+      "en": [
+        "That tells us something about the one Pokémon that lives there. It must be a match for Dialga and Palkia, who rule time and space..."
+      ],
+      "text": [
+        "Asta ne spune ceva despre singurul Pokémon care trăiește acolo. Trebuie să fie pe măsura lui Dialga și Palkia, stăpânii timpului și spațiului..."
+      ]
+    },
+    {
+      "en": [
+        "...and yet its power must be the opposite of theirs, somehow."
+      ],
+      "text": [
+        "...și totuși puterea lui trebuie să fie cumva opusul puterii lor."
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry, this has gone on so long. May I say one last thing?"
+      ],
+      "text": [
+        "Îmi pare rău că a durat atât. Pot să mai spun un ultim lucru?"
+      ]
+    },
+    {
+      "en": [
+        "I wonder who it was that painted this, all that time ago."
+      ],
+      "text": [
+        "Mă întreb cine a pictat asta, cu atâta vreme în urmă."
+      ]
+    },
+    {
+      "en": [
+        "Dialga's Roar of Time... Palkia's Spacial Rend... To the people of those days it must truly have seemed that these Pokémon ruled time and space. The sight must have shaken them to the core."
+      ],
+      "text": [
+        "Răgetul Timpului al lui Dialga... Ruptura Spațiului a lui Palkia... Oamenilor de atunci trebuie să le fi părut cu adevărat că acești Pokémoni stăpânesc timpul și spațiul. Priveliștea i-a cutremurat, desigur."
+      ]
+    },
+    {
+      "en": [
+        "This painting is that awe and that wonder, set down on stone. It carried the memory to more people than anyone could count, until it had become a myth."
+      ],
+      "text": [
+        "Pictura asta e acea uimire și acea minune, așternute pe piatră. A dus amintirea la mai mulți oameni decât se pot număra, până a devenit mit."
+      ]
+    },
+    {
+      "en": [
+        "That is what I believe, as someone who studies myths."
+      ],
+      "text": [
+        "Asta cred eu, ca cineva care studiază miturile."
+      ]
+    },
+    {
+      "en": [
+        "...I have let myself run on, and for far too long. I'm sorry, and thank you. Let's meet again."
+      ],
+      "text": [
+        "...M-am lăsat purtată de vorbă, și mult prea mult. Iartă-mă, și mulțumesc. Să ne mai vedem."
+      ]
+    },
+    {
+      "en": [
+        "Cynthia"
+      ],
+      "text": [
+        "Cynthia"
+      ]
+    },
+    {
+      "en": [
+        "I'm so sorry. I let myself get carried away..."
+      ],
+      "text": [
+        "Îmi pare tare rău. M-am lăsat dusă de val..."
+      ]
+    }
+  ],
+  "Cyrus": [
+    {
+      "en": [
+        "Cyrus"
+      ],
+      "text": [
+        "Cyrus"
+      ]
+    },
+    {
+      "en": [
+        "Well? Am I mistaken? If you believe I am, then challenge me."
+      ],
+      "text": [
+        "Ei? Greșesc? Dacă crezi că greșesc, atunci provoacă-mă."
+      ]
+    },
+    {
+      "en": [
+        "...You choose to be a coward. A sensible choice. Stand aside, then, and watch me change the world."
+      ],
+      "text": [
+        "...Alegi lașitatea. O alegere înțeleaptă. Dă-te la o parte, atunci, și privește-mă cum schimb lumea."
+      ]
+    }
+  ],
+  "CyrusBattle": [
+    {
+      "en": [
+        "Cyrus"
+      ],
+      "text": [
+        "Cyrus"
+      ]
+    },
+    {
+      "en": [
+        "...I know you, Trainer. We met on Mt. Coronet. Why would you defend a world as incomplete as this?"
+      ],
+      "text": [
+        "...Te cunosc. Ne-am întâlnit pe Muntele Coronet. De ce ai apăra o lume atât de incompletă?"
+      ]
+    },
+    {
+      "en": [
+        "As the leader of Team Galactic, I will show you how wrong you are."
+      ],
+      "text": [
+        "Ca lider al Echipei Galactic, îți voi arăta cât de mult greșești."
+      ]
+    },
+    {
+      "en": [
+        "Cyrus"
+      ],
+      "text": [
+        "Cyrus"
+      ]
+    },
+    {
+      "en": [
+        "...Remarkable. But your answers have told me what I needed to know, Elder."
+      ],
+      "text": [
+        "...Remarcabil. Dar răspunsurile dumneavoastră mi-au spus ce trebuia să aflu, bătrână înțeleaptă."
+      ]
+    },
+    {
+      "en": [
+        "If the beings of time and of space were brought together, nothing could stand in their way..."
+      ],
+      "text": [
+        "Dacă ființele timpului și spațiului ar fi aduse laolaltă, nimic nu le-ar putea sta în cale..."
+      ]
+    },
+    {
+      "en": [
+        "Elder"
+      ],
+      "text": [
+        "Bătrâna înțeleaptă"
+      ]
+    },
+    {
+      "en": [
+        "What a strange, strange man, talking such nonsense."
+      ],
+      "text": [
+        "Ce om ciudat, ciudat, să spună asemenea prostii."
+      ]
+    },
+    {
+      "en": [
+        "The time and space of Sinnoh are full of the memories and feelings of countless people and Pokémon. It's a wonderful world. Why would anyone want to change it?"
+      ],
+      "text": [
+        "Timpul și spațiul Sinnohului sunt pline de amintirile și sentimentele a nenumărați oameni și Pokémoni. E o lume minunată. De ce ar vrea cineva s-o schimbe?"
+      ]
+    },
+    {
+      "en": [
+        "Oh, yes. I found something you might use. Take it. It was my granddaughter's, but she has no need of it now."
+      ],
+      "text": [
+        "A, da. Am găsit ceva ce-ți poate folosi. Ia-l. Era al nepoatei mele, dar acum nu mai are nevoie de el."
+      ]
+    },
+    {
+      "en": [
+        "Teach a Pokémon Surf, and it will carry you over lakes and the sea."
+      ],
+      "text": [
+        "Învață un Pokémon mișcarea Surf și te va purta peste lacuri și mare."
+      ]
+    },
+    {
+      "en": [
+        "You've been a great help to this town. Think of that as our thanks."
+      ],
+      "text": [
+        "Ne-ai fost de mare ajutor orășelului. Socotește-l mulțumirea noastră."
+      ]
+    }
+  ],
+  "Elder": [
+    {
+      "en": [
+        "Elder"
+      ],
+      "text": [
+        "Bătrâna înțeleaptă"
+      ]
+    },
+    {
+      "en": [
+        "We don't look after that painting simply because it's old."
+      ],
+      "text": [
+        "Nu avem grijă de pictura aceea doar pentru că e veche."
+      ]
+    },
+    {
+      "en": [
+        "We keep it for the memories it holds: a legacy of people and Pokémon beyond counting."
+      ],
+      "text": [
+        "O păstrăm pentru amintirile pe care le poartă: o moștenire de oameni și Pokémoni fără număr."
+      ]
+    },
+    {
+      "en": [
+        "A man who can't understand that... what sort of world could he possibly dream of?"
+      ],
+      "text": [
+        "Un om care nu poate înțelege asta... ce fel de lume ar putea să viseze?"
+      ]
+    }
+  ]
+}

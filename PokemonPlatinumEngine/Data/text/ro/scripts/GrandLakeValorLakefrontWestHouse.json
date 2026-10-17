@@ -1,0 +1,46 @@
+{
+  "Director": [
+    {
+      "en": [
+        "Hello there! I'm the game director!",
+        "Oh! You're filling in a Pokédex, I see!",
+        "Do come and show me again once there's more in it!"
+      ],
+      "text": [
+        "Salut! Eu sunt directorul de jocuri!",
+        "O! Văd că completezi un Pokédex!",
+        "Vino să mi-l mai arăți când are mai mulți!"
+      ]
+    },
+    {
+      "en": [
+        "Hello there! I'm the game director!",
+        "Oh! You've seen every single Pokémon of Sinnoh! That's marvellous!"
+      ],
+      "text": [
+        "Salut! Eu sunt directorul de jocuri!",
+        "O! Ai văzut toți Pokémonii din Sinnoh! E minunat!"
+      ]
+    },
+    {
+      "en": [
+        "Work like that deserves a diploma. Open your Pokédex: you'll find it waiting for you inside."
+      ],
+      "text": [
+        "O asemenea muncă merită o diplomă. Deschide Pokédexul: o vei găsi acolo."
+      ]
+    },
+    {
+      "en": [
+        "How did you come by all the Pokémon in your Pokédex, I wonder?",
+        "Did you work long and hard to catch and raise each one? Were some of them gifts from friends? Did a few arrive in trades from far away?",
+        "Every Pokédex may look the same in the end. The stories inside them never are."
+      ],
+      "text": [
+        "Oare cum ai ajuns la toți Pokémonii din Pokédexul tău?",
+        "I-ai prins și crescut pe fiecare cu trudă? Ți-au fost unii dăruiți de prieteni? Au venit câțiva prin schimburi de departe?",
+        "Toate Pokédexurile par la fel până la urmă. Poveștile din ele, niciodată."
+      ]
+    }
+  ]
+}

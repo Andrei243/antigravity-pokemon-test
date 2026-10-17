@@ -1,0 +1,43 @@
+{
+  "displayName": {
+    "en": [
+      "Canalave City"
+    ],
+    "text": [
+      "Orașul Canalave"
+    ]
+  },
+  "people": {
+    "lass": {
+      "name": {
+        "en": [
+          "Lass"
+        ],
+        "text": [
+          "Domnișoara"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Somewhere out there, far across the sea...",
+          "...there are other lands, with Pokémon and Trainers of their own."
+        ],
+        "text": [
+          "Undeva acolo, departe, peste mare...",
+          "...sunt alte ținuturi, cu Pokémonii și Antrenorii lor."
+        ]
+      }
+    },
+    "ace_trainer_f": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          "Antrenoarea"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

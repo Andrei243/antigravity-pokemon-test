@@ -1,0 +1,136 @@
+{
+  "Receptionist": [
+    {
+      "en": [
+        "Librarian"
+      ],
+      "text": [
+        "Bibliotecara"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Canalave Library. Three floors of books, and the oldest stories are at the top."
+      ],
+      "text": [
+        "Bun venit la Biblioteca Canalave. Trei etaje de cărți, iar cele mai vechi povești sunt sus."
+      ]
+    },
+    {
+      "en": [
+        "Please keep your voice down while you're with us."
+      ],
+      "text": [
+        "Te rog să vorbești încet cât ești la noi."
+      ]
+    },
+    {
+      "en": [
+        "Please keep your voice... Oh! That shriek just now? That wasn't me. It really wasn't!"
+      ],
+      "text": [
+        "Te rog să vorbești înc... O! Țipătul de adineauri? N-am fost eu. Chiar n-am fost!"
+      ]
+    }
+  ],
+  "Lass": [
+    {
+      "en": [
+        "Lass"
+      ],
+      "text": [
+        "Domnișoara"
+      ]
+    },
+    {
+      "en": [
+        "......"
+      ],
+      "text": [
+        "......"
+      ]
+    },
+    {
+      "en": [
+        "Shh! I'm in the middle of a chapter. Please don't disturb me."
+      ],
+      "text": [
+        "Șșt! Sunt la mijlocul unui capitol. Te rog nu mă deranja."
+      ]
+    },
+    {
+      "en": [
+        "I can't take in a single word any more. That tremor has left me all in a flutter!"
+      ],
+      "text": [
+        "Nu mai pricep niciun cuvânt. Zguduitura aia m-a dat peste cap!"
+      ]
+    }
+  ],
+  "Lucian": [
+    {
+      "en": [
+        "Lucian"
+      ],
+      "text": [
+        "Lucian"
+      ]
+    },
+    {
+      "en": [
+        "Ah, the new Champion. Forgive me, I was miles away. Aren't books wonderful? An hour in here and I forget there is a League at all."
+      ],
+      "text": [
+        "A, noul Campion. Iartă-mă, eram cu gândul departe. Nu-s minunate cărțile? O oră aici și uit că mai există o Ligă."
+      ]
+    },
+    {
+      "en": [
+        "This one is a book of philosophy. It asks what a Pokémon and a person owe one another, and has the grace not to answer."
+      ],
+      "text": [
+        "Aceasta e o carte de filozofie. Întreabă ce își datorează un Pokémon și un om unul altuia și are delicatețea să nu răspundă."
+      ]
+    },
+    {
+      "en": [
+        "This one is a bundle of letters, written long ago by someone who crossed Sinnoh on foot. Every page smells of rain."
+      ],
+      "text": [
+        "Acesta e un teanc de scrisori, scrise demult de cineva care a străbătut Sinnohul pe jos. Fiecare pagină miroase a ploaie."
+      ]
+    },
+    {
+      "en": [
+        "This one is a learned tome on humankind: why we gather, why we quarrel, why we keep Pokémon by us through it all."
+      ],
+      "text": [
+        "Acesta e un tom savant despre oameni: de ce ne adunăm, de ce ne certăm, de ce ținem Pokémonii lângă noi prin toate."
+      ]
+    },
+    {
+      "en": [
+        "This one is a record of wild Pokémon, watched for years by somebody too patient ever to catch one."
+      ],
+      "text": [
+        "Aceasta e o cronică a Pokémonilor sălbatici, urmăriți ani de zile de cineva prea răbdător ca să prindă vreunul."
+      ]
+    },
+    {
+      "en": [
+        "This one is a collection of essays on worlds that might be. Fancies, most of them. The best fancies are half true."
+      ],
+      "text": [
+        "Aceasta e o culegere de eseuri despre lumi care ar putea fi. Năluciri, cele mai multe. Cele mai bune năluciri sunt pe jumătate adevărate."
+      ]
+    },
+    {
+      "en": [
+        "But I have read long enough. Come and challenge us again, Champion. I shall be waiting at the Pokémon League."
+      ],
+      "text": [
+        "Dar am citit destul. Vino să ne provoci din nou. Te voi aștepta la Liga Pokémon."
+      ]
+    }
+  ]
+}

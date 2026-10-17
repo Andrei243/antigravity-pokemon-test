@@ -1,0 +1,110 @@
+{
+  "displayName": {
+    "en": [
+      "Veilstone Dept. Store"
+    ],
+    "text": [
+      "Magazinul Universal Veilstone"
+    ]
+  },
+  "people": {
+    "ninja_boy": {
+      "name": {
+        "en": [
+          "Ninja Boy"
+        ],
+        "text": [
+          "Micul Ninja"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Meet a wild Pokémon, and you chuck a Quick Ball straight off!",
+          "And if catching it drags on and on, that's the time for a Timer Ball!"
+        ],
+        "text": [
+          "Întâlnești un Pokémon sălbatic și arunci imediat un Ball Rapid!",
+          "Iar dacă prinderea se tot lungește, e momentul pentru un Ball Cronometru!"
+        ]
+      }
+    },
+    "pokefan_f": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "That boy over there has no Pokémon of his own.",
+          "He says he's training his imagination!"
+        ],
+        "text": [
+          "Băiatul de acolo n-are niciun Pokémon al lui.",
+          "Zice că își antrenează imaginația!"
+        ]
+      }
+    },
+    "receptionist": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitor"
+        ]
+      }
+    },
+    "cashier_f": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      }
+    },
+    "cashier_m": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      }
+    },
+    "school_kid_m": {
+      "name": {
+        "en": [
+          "School Kid"
+        ],
+        "text": [
+          "Școlărița"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "If only there were two of everything, I could challenge my papa!"
+        ],
+        "text": [
+          "Dacă ar fi câte două din toate, l-aș putea provoca pe tati!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "13,2": {
+      "en": [
+        "B1F: Food and Produce. 1F: Trainers' Zone. 2F: Battle Collection. 3F: TM Corner. 4F: Poké Dolls and Goods. 5F: Rooftop Plaza."
+      ],
+      "text": [
+        "Subsol: Alimente. Parter: Antrenori. Et. 2: Luptă. Et. 3: TM-uri. Et. 4: Păpuși și mobilier. Et. 5: Terasa."
+      ]
+    }
+  }
+}

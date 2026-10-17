@@ -1,0 +1,43 @@
+{
+  "displayName": {
+    "en": [
+      "Pastoria City"
+    ],
+    "text": [
+      "Orașul Pastoria"
+    ]
+  },
+  "people": {
+    "move_maniac": {
+      "name": {
+        "en": [
+          "Move Tutor"
+        ],
+        "text": [
+          "Profesor de Mișcări"
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          "Puștiul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm always off to Solaceon Town on errands for my big brother.",
+          "The newspaper there pays me in Heart Scales for the odd job."
+        ],
+        "text": [
+          "Mereu mă duc în Orășelul Solaceon cu treburi pentru fratele meu mai mare.",
+          "Ziarul de acolo mă plătește în Solzi-Inimă pentru câte o treabă."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

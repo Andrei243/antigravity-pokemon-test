@@ -1,0 +1,62 @@
+{
+  "displayName": {
+    "en": [
+      "Snowbound Lodge"
+    ],
+    "text": [
+      "Cabana din Zăpadă"
+    ]
+  },
+  "people": {
+    "hiker": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      }
+    },
+    "snowpoint_npc_f": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Some Pokémon have Thick Fat to keep them warm. I have three coats and a scarf.",
+          "Do you know what Thick Fat does in a battle, by the way?",
+          "It halves the damage of Fire-type and Ice-type moves."
+        ],
+        "text": [
+          "Unii Pokémoni au Grăsime ca să le fie cald. Eu am trei paltoane și un fular.",
+          "Apropo, știi ce face Grăsimea în luptă?",
+          "Înjumătățește daunele mișcărilor de tip Foc și Gheață."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "8,6": {
+      "en": [
+        "A bed, with the blankets turned down."
+      ],
+      "text": [
+        "Un pat, cu păturile date la o parte."
+      ]
+    },
+    "8,7": {
+      "en": [
+        "A bed, with the blankets turned down."
+      ],
+      "text": [
+        "Un pat, cu păturile date la o parte."
+      ]
+    }
+  }
+}

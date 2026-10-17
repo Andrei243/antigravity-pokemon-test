@@ -1,0 +1,190 @@
+{
+  "people": {
+    "ace_trainer_snow_f": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          "Antrenoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Brrr! Snowpoint never warms up, not even in the middle of summer.",
+          "I wear three coats, and my Pokémon still have to huddle round me to keep me warm!"
+        ],
+        "text": [
+          "Brrr! În Snowpoint nu se încălzește niciodată, nici în mijlocul verii.",
+          "Port trei paltoane, și tot trebuie să se strângă Pokémonii în jurul meu să-mi țină de cald!"
+        ]
+      }
+    },
+    "snowpoint_npc_f_1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Everybody in Snowpoint owns a good scarf. You can't get through a winter here without one.",
+          "Mine was knitted from Mareep wool. Soft, warm, and only a little bit static!"
+        ],
+        "text": [
+          "Toată lumea din Snowpoint are un fular bun. Fără unul nu treci de o iarnă aici.",
+          "Al meu e tricotat din lână de Mareep. Moale, cald și doar puțin electrizat!"
+        ]
+      }
+    },
+    "snowpoint_npc_f_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Candice, our Gym Leader, has been teaching me how to battle!",
+          "She says the cold air keeps your mind sharp. Mostly it just makes my nose run."
+        ],
+        "text": [
+          "Candice, Lidera Arenei noastre, mă învață să mă lupt!",
+          "Zice că aerul rece îți ține mintea ageră. Pe mine mai mult mă face să-mi curgă nasul."
+        ]
+      }
+    },
+    "snowpoint_npc_m": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "There's an ancient temple at the top of town. I'd give anything to see what's inside.",
+          "Nobody gets past the woman standing at its door, though. Not even me, and I've lived here all my life."
+        ],
+        "text": [
+          "În capătul de sus al orașului e un templu străvechi. Aș da orice să văd ce e înăuntru.",
+          "Dar nimeni nu trece de femeia de la ușă. Nici măcar eu, și am trăit aici toată viața."
+        ]
+      }
+    },
+    "sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          "Marinar"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Ships put in here from all over. Snowpoint's a quiet stop, mind you. Not much ever happens.",
+          "After weeks out on a cold sea, though, a quiet town is just what a sailor wants."
+        ],
+        "text": [
+          "Vin corăbii aici de peste tot. Snowpoint e o oprire liniștită, să știi. Nu se întâmplă mare lucru.",
+          "Dar după săptămâni pe o mare rece, un oraș liniștit e exact ce-i trebuie unui marinar."
+        ]
+      }
+    },
+    "temple_guard": {
+      "name": {
+        "en": [
+          "Temple Guard"
+        ],
+        "text": [
+          "Paznica Templului"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Behind me stands Snowpoint Temple, built in an age long before the town.",
+          "Only those the temple has chosen may enter. I'm sorry, but I cannot let you pass."
+        ],
+        "text": [
+          "În spatele meu e Templul Snowpoint, construit cu mult înaintea orașului.",
+          "Doar cei aleși de templu pot intra. Îmi pare rău, dar nu te pot lăsa să treci."
+        ]
+      }
+    },
+    "cynthia": {
+      "name": {
+        "en": [
+          "Cynthia"
+        ],
+        "text": [
+          "Cynthia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Cynthia: Safe travels."
+        ],
+        "text": [
+          "Cynthia: Drum bun."
+        ]
+      }
+    },
+    "candice": {
+      "name": {
+        "en": [
+          "Candice"
+        ],
+        "text": [
+          "Candice"
+        ]
+      }
+    },
+    "sailor_ss_spiral": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          "Marinar"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This ship sails north to the Battle Zone, where the strongest trainers in the land gather.",
+          "We only take trainers who have proved themselves at the Pokémon League. I'll be watching for you!"
+        ],
+        "text": [
+          "Corabia asta navighează spre nord, în Ținutul Luptelor, unde se adună cei mai puternici Antrenori din țară.",
+          "Luăm doar Antrenori care s-au dovedit la Liga Pokémon. Te aștept!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "map_signpost": {
+      "en": [
+        "Snowpoint City\nThe northernmost town in Sinnoh, where the snow never melts."
+      ],
+      "text": [
+        "Orașul Snowpoint\nCel mai nordic oraș din Sinnoh, unde zăpada nu se topește niciodată."
+      ]
+    },
+    "gym_signpost": {
+      "en": [
+        "Snowpoint City Pokémon Gym\nLeader: Candice\nHer Ice-type Pokémon never feel the cold!"
+      ],
+      "text": [
+        "Arena Pokémon din Orașul Snowpoint\nLideră: Candice\nPokémonii ei de tip Gheață nu simt niciodată frigul!"
+      ]
+    }
+  }
+}

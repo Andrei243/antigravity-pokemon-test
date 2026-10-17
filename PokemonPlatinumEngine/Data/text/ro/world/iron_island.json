@@ -1,0 +1,25 @@
+{
+  "people": {
+    "sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          "Marinar"
+        ]
+      }
+    },
+    "riley": {
+      "name": {
+        "en": [
+          "Riley"
+        ],
+        "text": [
+          "Riley"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

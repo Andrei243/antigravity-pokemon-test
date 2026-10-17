@@ -1,0 +1,184 @@
+{
+  "displayName": {
+    "en": [
+      "Veilstone Dept. Store"
+    ],
+    "text": [
+      "Magazinul Universal Veilstone"
+    ]
+  },
+  "people": {
+    "receptionist_1": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitor"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the basement: food and produce.",
+          "We keep a fine selection of things for Pokémon to eat, and treats to spoil them with."
+        ],
+        "text": [
+          "Bun venit la subsol: alimente și produse.",
+          "Avem o selecție aleasă de mâncare pentru Pokémoni și bunătăți cu care să-i răsfeți."
+        ]
+      }
+    },
+    "cashier_f_lava_cookie": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      }
+    },
+    "cashier_f_poffin": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      }
+    },
+    "socialite_1": {
+      "name": {
+        "en": [
+          "Socialite"
+        ],
+        "text": [
+          "Mondena"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm hopeless at cooking Poffins, so I buy mine here.",
+          "I do wish I could feed my little ones Poffins I'd made myself, though."
+        ],
+        "text": [
+          "Sunt varză la gătit Poffinuri, așa că le cumpăr de aici.",
+          "Totuși, mi-ar plăcea să le dau micuților mei Poffinuri făcute de mine."
+        ]
+      }
+    },
+    "receptionist_2": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitor"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Have you ever planted Berries and then clean forgotten about them?",
+          "If that sounds like you, we sell Berries here too."
+        ],
+        "text": [
+          "Ți s-a întâmplat să plantezi Boabe și apoi să uiți complet de ele?",
+          "Dacă da, vindem și Boabe aici."
+        ]
+      }
+    },
+    "cashier_f_berry": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      }
+    },
+    "cashier_f_rage_candy_bar": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hello! Rage Candy Bars...",
+          "...are all sold out. I'm terribly sorry."
+        ],
+        "text": [
+          "Bună! Batoanele de Furie...",
+          "...s-au vândut toate. Îmi pare nespus de rău."
+        ]
+      }
+    },
+    "socialite_2": {
+      "name": {
+        "en": [
+          "Socialite"
+        ],
+        "text": [
+          "Mondena"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Do pay attention, please. A Poffin's flavour shapes a Pokémon's condition.",
+          "Spicy makes it cooler. Dry, more beautiful. Sweet, cuter. Bitter, smarter. And sour makes it tougher.",
+          "Sigh... Aren't Poffins wonderful?"
+        ],
+        "text": [
+          "Ascultă bine, te rog. Gustul unui Poffin îi modelează forma unui Pokémon.",
+          "Iutele îi dă Stil. Secul, Frumusețe. Dulcele, Drăgălășenie. Amarul, Istețime. Iar acrul, Duritate.",
+          "Of... Nu-s minunate Poffinurile?"
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          "Gentlemanul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Who'd have thought I'd find paradise in the basement of a department store?",
+          "I got carried away and bought every Rage Candy Bar they had!"
+        ],
+        "text": [
+          "Cine s-ar fi gândit că o să găsesc raiul la subsolul unui magazin universal?",
+          "M-am luat cu valul și am cumpărat toate Batoanele de Furie pe care le aveau!"
+        ]
+      }
+    },
+    "prof_rowan": {
+      "name": {
+        "en": [
+          "Prof. Rowan"
+        ],
+        "text": [
+          "Prof. Rowan"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "12,2": {
+      "en": [
+        "B1F: Food and Produce. 1F: Trainers' Zone. 2F: Battle Collection. 3F: TM Corner. 4F: Poké Dolls and Goods. 5F: Rooftop Plaza."
+      ],
+      "text": [
+        "Subsol: Alimente. Parter: Antrenori. Et. 2: Luptă. Et. 3: TM-uri. Et. 4: Păpuși și mobilier. Et. 5: Terasa."
+      ]
+    }
+  }
+}

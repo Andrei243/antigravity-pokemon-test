@@ -1,0 +1,78 @@
+{
+  "Bed": [
+    {
+      "en": [
+        "It's a bed, neatly made. Lie down for a rest?"
+      ],
+      "text": [
+        "E un pat, făcut frumos. Te întinzi să te odihnești?"
+      ]
+    },
+    {
+      "en": [
+        "{player} was asleep almost at once..."
+      ],
+      "text": [
+        "{player} a adormit aproape imediat..."
+      ]
+    },
+    {
+      "en": [
+        "{player} and the Pokémon woke up fully rested!"
+      ],
+      "text": [
+        "{player} și Pokémonii s-au trezit complet odihniți!"
+      ]
+    }
+  ],
+  "Report": [
+    {
+      "en": [
+        "A report lies on the table: \"The Pokémon Statue of Eterna City\". Read it?"
+      ],
+      "text": [
+        "Pe masă e un raport: „Statuia Pokémon din Orașul Eterna”. Îl citești?"
+      ]
+    },
+    {
+      "en": [
+        "From the first plate, taken off the statue: \"...DIALGA is made, who gives out time... Joy and sorrow come round by turns, and so do the hours. One river of time carries everyone. Such is DIALGA's gift.\""
+      ],
+      "text": [
+        "De pe prima placă, luată de pe statuie: „...se face DIALGA, care împarte timpul... Bucuria și tristețea vin pe rând, la fel și orele. Un singur râu al timpului îi poartă pe toți. Acesta e darul lui DIALGA.”"
+      ]
+    },
+    {
+      "en": [
+        "A note in the margin: the words that had worn away were read with a device of the boss's own making. Keep reading?"
+      ],
+      "text": [
+        "O notă pe margine: cuvintele șterse de vreme au fost citite cu un aparat făcut chiar de șef. Citești mai departe?"
+      ]
+    },
+    {
+      "en": [
+        "From the second plate, taken off the statue: \"...PALKIA is born, who lays worlds side by side... Neither quite living nor quite not, all things float through space, and come to rest in one same world. Such is PALKIA's gift.\""
+      ],
+      "text": [
+        "De pe a doua placă, luată de pe statuie: „...se naște PALKIA, care așază lumile una lângă alta... Nici vii de tot, nici neînsuflețite, toate plutesc prin spațiu și se opresc în aceeași lume. Acesta e darul lui PALKIA.”"
+      ]
+    },
+    {
+      "en": [
+        "The same note in the margin: read with a device of the boss's own making."
+      ],
+      "text": [
+        "Aceeași notă pe margine: citit cu un aparat făcut chiar de șef."
+      ]
+    },
+    {
+      "en": [
+        "{player} put the report back on the table."
+      ],
+      "text": [
+        "{player} a pus raportul la loc pe masă."
+      ]
+    }
+  ]
+}

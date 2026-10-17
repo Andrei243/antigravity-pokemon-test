@@ -1,0 +1,42 @@
+{
+  "displayName": {
+    "en": [
+      "Snowpoint City"
+    ],
+    "text": [
+      "Orașul Snowpoint"
+    ]
+  },
+  "people": {
+    "expert_m": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "4,2": {
+      "en": [
+        "A list is pinned to the wall. MOVES TAUGHT FOR SHARDS: Snore, Spite, Helping Hand, Synthesis, Magnet Rise, Last Resort, Swift, Uproar."
+      ],
+      "text": [
+        "O listă pe perete. MIȘCĂRI PENTRU CIOBURI: Sforăit, Pică, Mână de Ajutor, Sinteză, Levitație Magnetică, Ultima Șansă, Stele Iuți, Gălăgie."
+      ]
+    }
+  }
+}

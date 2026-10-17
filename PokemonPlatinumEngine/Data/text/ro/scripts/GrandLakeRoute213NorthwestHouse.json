@@ -1,0 +1,90 @@
+{
+  "TrickRoom": [
+    {
+      "en": [
+        "We're a travelling troupe of street performers!",
+        "Never mind the introductions. Have this instead!"
+      ],
+      "text": [
+        "Suntem o trupă de artiști ambulanți!",
+        "Lasă prezentările. Ia mai bine asta!"
+      ]
+    },
+    {
+      "en": [
+        "Trick Room is a strange one: it turns time itself on its head.",
+        "For a little while after it is used, the slowest Pokémon moves first and the quickest waits its turn.",
+        "What you make of that is up to you, Trainer..."
+      ],
+      "text": [
+        "Camera Truc e ciudată: întoarce timpul însuși pe dos.",
+        "O vreme după ce e folosită, cel mai lent Pokémon atacă primul, iar cel mai iute își așteaptă rândul.",
+        "Ce faci cu asta depinde numai de tine..."
+      ]
+    }
+  ],
+  "Fortune": [
+    {
+      "en": [
+        "Let me look into your eyes... I shall read your fortune...",
+        "... ... ..."
+      ],
+      "text": [
+        "Lasă-mă să te privesc în ochi... Îți voi citi viitorul...",
+        "... ... ..."
+      ]
+    },
+    {
+      "en": [
+        "Your destiny is about to turn...",
+        "For better or for worse? That lies beyond what I can see..."
+      ],
+      "text": [
+        "Destinul tău e pe cale să se schimbe...",
+        "În bine sau în rău? Asta e dincolo de ce pot vedea..."
+      ]
+    },
+    {
+      "en": [
+        "A magical meeting is on the wind...",
+        "With a Pokémon, or with a Trainer? That I cannot tell..."
+      ],
+      "text": [
+        "O întâlnire magică plutește în aer...",
+        "Cu un Pokémon sau cu un Antrenor? Asta nu pot spune..."
+      ]
+    },
+    {
+      "en": [
+        "A brief moment of joy is close at hand...",
+        "But remember this: good and ill are two sides of one coin..."
+      ],
+      "text": [
+        "O scurtă clipă de bucurie e aproape...",
+        "Dar ține minte: binele și răul sunt două fețe ale aceleiași monede..."
+      ]
+    },
+    {
+      "en": [
+        "An accident nobody could foresee lies in wait...",
+        "Whether you fall to it or rise above it rests with you alone..."
+      ],
+      "text": [
+        "Te pândește o întâmplare pe care nimeni n-o putea prevedea...",
+        "Dacă te doboară sau o depășești, depinde numai de tine..."
+      ]
+    },
+    {
+      "en": [
+        "I have looked into a great many eyes over the years, human and Pokémon alike...",
+        "But yours hold kindness, strength, joy, sorrow and more besides, all swirling together...",
+        "Eyes whose colours never settle are the hardest of all to read..."
+      ],
+      "text": [
+        "Am privit în foarte mulți ochi de-a lungul anilor, de oameni și de Pokémoni deopotrivă...",
+        "Dar ai tăi ascund bunătate, forță, bucurie, tristețe și încă multe, toate vârtejite laolaltă...",
+        "Ochii ale căror culori nu se liniștesc niciodată sunt cel mai greu de citit..."
+      ]
+    }
+  ]
+}

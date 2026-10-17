@@ -1,0 +1,60 @@
+{
+  "displayName": {
+    "en": [
+      "Route 213"
+    ],
+    "text": [
+      "Ruta 213"
+    ]
+  },
+  "people": {
+    "pokefan_m": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Walk along a beach and your footprints stay behind you in the sand.",
+          "Pokémon like leaving theirs as much as people do, it seems."
+        ],
+        "text": [
+          "Mergi pe o plajă și urmele tale rămân în nisip.",
+          "Se pare că și Pokémonilor le place să-și lase urmele, ca oamenilor."
+        ]
+      }
+    },
+    "school_kid_f": {
+      "name": {
+        "en": [
+          "School Kid"
+        ],
+        "text": [
+          "Școlărița"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "5,4": {
+      "en": [
+        "A map of Sinnoh. Pastoria City lies west of here, and Route 213 runs east along the beach toward Valor Lakefront."
+      ],
+      "text": [
+        "O hartă a Sinnohului. Orașul Pastoria e la vest, iar Ruta 213 merge spre est, de-a lungul plajei, spre Malul Valor."
+      ]
+    },
+    "6,4": {
+      "en": [
+        "A map of Sinnoh. Pastoria City lies west of here, and Route 213 runs east along the beach toward Valor Lakefront."
+      ],
+      "text": [
+        "O hartă a Sinnohului. Orașul Pastoria e la vest, iar Ruta 213 merge spre est, de-a lungul plajei, spre Malul Valor."
+      ]
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "people": {
+    "collector": {
+      "name": {
+        "en": [
+          "Collector"
+        ],
+        "text": [
+          "Colecționarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Bait makes a Pokémon easier to catch, but it makes it likelier to run off, too.",
+          "Mud keeps it from running, but makes it harder to catch. Knowing which to throw is the whole game!"
+        ],
+        "text": [
+          "Momeala face un Pokémon mai ușor de prins, dar și mai gata să fugă.",
+          "Noroiul îl oprește să fugă, dar îl face mai greu de prins. Tot jocul e să știi ce arunci!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "signboard": {
+      "en": [
+        "Great Marsh · Area 3\nTall marsh grass ahead. Have your Safari Balls ready!"
+      ],
+      "text": [
+        "Marea Mlaștină · Zona 3\nÎn față e iarbă înaltă de mlaștină. Ține Safari Ballurile pregătite!"
+      ]
+    }
+  }
+}

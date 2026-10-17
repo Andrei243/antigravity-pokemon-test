@@ -1,0 +1,140 @@
+{
+  "people": {
+    "cameraman_north": {
+      "name": {
+        "en": [
+          "Cameraman"
+        ],
+        "text": [
+          "Cameramanul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Sorry, nobody goes down to the lake while we're filming.",
+          "We've had the camera on that water for a week, and the Pokémon they talk about hasn't shown so much as a ripple."
+        ],
+        "text": [
+          "Îmi pare rău, nimeni nu coboară la lac cât filmăm.",
+          "Ținem camera pe apa aia de o săptămână, și Pokémonul de care se vorbește n-a făcut nici măcar un val."
+        ]
+      }
+    },
+    "cameraman_south": {
+      "name": {
+        "en": [
+          "Cameraman"
+        ],
+        "text": [
+          "Cameramanul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "They say a legendary Pokémon sleeps in this lake. We mean to be the first to catch it on film!",
+          "So the lake is closed for now. You understand."
+        ],
+        "text": [
+          "Se spune că în lacul ăsta doarme un Pokémon legendar. Vrem să fim primii care îl prind pe peliculă!",
+          "Așa că lacul e închis deocamdată. Înțelegi."
+        ]
+      }
+    },
+    "grunt_m": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      }
+    },
+    "cynthia": {
+      "name": {
+        "en": [
+          "Cynthia"
+        ],
+        "text": [
+          "Cynthia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Cynthia: The lake is closed to visitors just now. I wonder why?"
+        ],
+        "text": [
+          "Cynthia: Lacul e închis vizitatorilor acum. Oare de ce?"
+        ]
+      }
+    },
+    "rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "{rival}: Which way did that Galactic creep go?"
+        ],
+        "text": [
+          "{rival}: Încotro a luat-o netrebnicul ăla de la Galactic?"
+        ]
+      }
+    },
+    "collector": {
+      "name": {
+        "en": [
+          "Collector"
+        ],
+        "text": [
+          "Colecționarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Sorry, the road to Sunyshore City is shut.",
+          "They've had a blackout down there, and the crews are still working to get the lights back on."
+        ],
+        "text": [
+          "Îmi pare rău, drumul spre Orașul Sunyshore e închis.",
+          "S-a luat curentul acolo, și echipele încă lucrează să-l repună."
+        ]
+      }
+    },
+    "beauty": {
+      "name": {
+        "en": [
+          "Beauty"
+        ],
+        "text": [
+          "Frumoasa"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My suite key... it's gone! It must have slipped out of my pocket somewhere between here and the hotel.",
+          "A Pokétch that could sniff out lost things would come in very handy right now..."
+        ],
+        "text": [
+          "Cheia apartamentului... a dispărut! Mi-a alunecat din buzunar undeva între aici și hotel.",
+          "Un Pokétch care să adulmece lucrurile pierdute mi-ar prinde tare bine acum..."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "signboard_seven_stars_restaurant": {
+      "en": [
+        "Seven Stars Restaurant\nLakeside dining. Bring a partner: the house serves its battles two at a time."
+      ],
+      "text": [
+        "Restaurantul Șapte Stele\nCină pe malul lacului. Vino cu un partener: casa servește luptele câte două."
+      ]
+    }
+  }
+}

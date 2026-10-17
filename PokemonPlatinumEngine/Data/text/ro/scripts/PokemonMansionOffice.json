@@ -1,0 +1,274 @@
+{
+  "Backlot": [
+    {
+      "en": [
+        "Hello, hello! Welcome to my magnificent mansion!",
+        "There is a great deal to be proud of in this house, inside and out...",
+        "But nothing makes me prouder than my Trophy Garden at the back!",
+        "Why travel far and wide, when Pokémon come flocking to a garden like mine?",
+        "You are welcome to join them and marvel at it!"
+      ],
+      "text": [
+        "Salut, salut! Bun venit în magnificul meu conac!",
+        "Sunt multe de care să fiu mândru în casa asta, înăuntru și afară...",
+        "Dar nimic nu mă face mai mândru decât Grădina mea a Trofeelor, din spate!",
+        "De ce să călătorești în lung și-n lat, când Pokémonii vin cu toții într-o grădină ca a mea?",
+        "Poftește și tu să te minunezi!"
+      ]
+    },
+    {
+      "en": [
+        "Ahem!",
+        "There is a great deal to be proud of in this house, inside and out...",
+        "But nothing makes me prouder than my Trophy Garden at the back!",
+        "Why travel far and wide, when Pokémon come flocking to a garden like mine?"
+      ],
+      "text": [
+        "Hm-hm!",
+        "Sunt multe de care să fiu mândru în casa asta, înăuntru și afară...",
+        "Dar nimic nu mă face mai mândru decât Grădina mea a Trofeelor, din spate!",
+        "De ce să călătorești în lung și-n lat, când Pokémonii vin cu toții într-o grădină ca a mea?"
+      ]
+    },
+    {
+      "en": [
+        "Well? Doesn't that make you envious? You are envious, aren't you?"
+      ],
+      "text": [
+        "Ei? Nu te face asta să mă invidiezi? Mă invidiezi, nu-i așa?"
+      ]
+    },
+    {
+      "en": [
+        "Muhohoho... I thought so! I knew you would be!",
+        "Not that I mind. I do enjoy telling you my little stories!",
+        "When I step out into my prized garden, you see, Pokémon come running up to me, as pleased as can be to see me!"
+      ],
+      "text": [
+        "Muhohoho... Așa mă gândeam! Știam eu!",
+        "Nu că m-ar deranja. Îmi place mult să-ți spun poveștile mele!",
+        "Când ies în grădina mea dragă, vezi tu, Pokémonii aleargă la mine, bucuroși nevoie mare să mă vadă!"
+      ]
+    },
+    {
+      "en": [
+        "Well? Doesn't THAT make you envious? You are envious, aren't you?"
+      ],
+      "text": [
+        "Ei? Nu te face ASTA să mă invidiezi? Mă invidiezi, nu-i așa?"
+      ]
+    },
+    {
+      "en": [
+        "Muhohoho... I thought so! I knew you would be!",
+        "Let me tell you what happened this very morning, when I went out into my garden.",
+        "A {trophygarden} with the sweetest eyes came scampering over, jumped up, and gave me a kiss on the cheek..."
+      ],
+      "text": [
+        "Muhohoho... Așa mă gândeam! Știam eu!",
+        "Să-ți spun ce s-a întâmplat chiar azi-dimineață, când am ieșit în grădină.",
+        "Un {trophygarden} cu cei mai dulci ochi a venit în fugă, a sărit și m-a pupat pe obraz..."
+      ]
+    },
+    {
+      "en": [
+        "Butler"
+      ],
+      "text": [
+        "Majordom"
+      ]
+    },
+    {
+      "en": [
+        "M-Master! That Pokémon you speak of... There is no such Pokémon in the garden..."
+      ],
+      "text": [
+        "S-stăpâne! Pokémonul de care vorbiți... Nu există așa Pokémon în grădină..."
+      ]
+    },
+    {
+      "en": [
+        "Wha... Erm...",
+        "Wh-what are you saying? I am no teller of tall tales!",
+        "Now listen... Mutter, mutter... Whisper, whisper..."
+      ],
+      "text": [
+        "Ce... Ăă...",
+        "C-ce tot spui? Eu nu spun povești gogonate!",
+        "Acum ascultă... Mor-mor... Pss, pss..."
+      ]
+    },
+    {
+      "en": [
+        "Butler"
+      ],
+      "text": [
+        "Majordom"
+      ]
+    },
+    {
+      "en": [
+        "Yes, Master! At once, sir!"
+      ],
+      "text": [
+        "Da, stăpâne! Imediat, domnule!"
+      ]
+    },
+    {
+      "en": [
+        "... It's true, I tell you! Not one fib has ever passed these lips!",
+        "There really are darling {trophygarden} in my Trophy Garden! That is the honest truth!"
+      ],
+      "text": [
+        "... E adevărat, îți spun! Nicio minciună n-a ieșit vreodată pe buzele astea!",
+        "Chiar sunt niște {trophygarden} drăgălași în Grădina mea a Trofeelor! E purul adevăr!"
+      ]
+    },
+    {
+      "en": [
+        "I know you are, really... You don't fool anybody..."
+      ],
+      "text": [
+        "Știu eu că mă invidiezi... Nu păcălești pe nimeni..."
+      ]
+    }
+  ],
+  "Butler": [
+    {
+      "en": [
+        "And how do you find it? The master's Trophy Garden as it is now, I mean.",
+        "You will have noticed how many rare Pokémon have come to it of late?",
+        "But that is only to be expected. It is the master's Trophy Garden."
+      ],
+      "text": [
+        "Și cum ți se pare? Grădina Trofeelor a stăpânului, așa cum e acum, vreau să spun.",
+        "Ai observat câți Pokémoni rari au venit în ea în ultima vreme?",
+        "Dar e de la sine înțeles. E Grădina Trofeelor a stăpânului."
+      ]
+    },
+    {
+      "en": [
+        "The master took his stroll in the Trophy Garden today, as he does every day."
+      ],
+      "text": [
+        "Stăpânul s-a plimbat azi prin Grădina Trofeelor, ca în fiecare zi."
+      ]
+    },
+    {
+      "en": [
+        "The master does so enjoy showing his prized garden to strong Trainers."
+      ],
+      "text": [
+        "Stăpânului îi place tare mult să-și arate grădina dragă Antrenorilor puternici."
+      ]
+    },
+    {
+      "en": [
+        "The master is a truly wonderful and generous man!",
+        "It is on his orders that the garden, his pride and joy, is open to everyone. Even to Trainers."
+      ],
+      "text": [
+        "Stăpânul e un om cu adevărat minunat și generos!",
+        "Din ordinul lui, grădina, mândria lui, e deschisă tuturor. Chiar și Antrenorilor."
+      ]
+    },
+    {
+      "en": [
+        "Did you see them? There were {trophygarden} in the garden, were there not?",
+        "But that is only to be expected. It is the master's Trophy Garden."
+      ],
+      "text": [
+        "I-ai văzut? Erau niște {trophygarden} în grădină, nu-i așa?",
+        "Dar e de la sine înțeles. E Grădina Trofeelor a stăpânului."
+      ]
+    }
+  ],
+  "Guard": [
+    {
+      "en": [
+        "You may look, but please keep your hands off this statue."
+      ],
+      "text": [
+        "Poți să te uiți, dar te rog să nu atingi statuia asta."
+      ]
+    }
+  ],
+  "BlockStatue": [
+    {
+      "en": [
+        "Guard"
+      ],
+      "text": [
+        "Paznic"
+      ]
+    },
+    {
+      "en": [
+        "I am very sorry, but please keep your hands off the statue."
+      ],
+      "text": [
+        "Îmi pare foarte rău, dar te rog să nu atingi statuia."
+      ]
+    }
+  ],
+  "Statue": [
+    {
+      "en": [
+        "A statue of a Pokémon. It looks dreadfully expensive..."
+      ],
+      "text": [
+        "O statuie de Pokémon. Pare îngrozitor de scumpă..."
+      ]
+    },
+    {
+      "en": [
+        "... ! You have left fingerprints all over it..."
+      ],
+      "text": [
+        "... ! Ai lăsat amprente peste tot pe ea..."
+      ]
+    }
+  ],
+  "Book": [
+    {
+      "en": [
+        "A book about Pokémon. It looks dreadfully expensive. Read it?"
+      ],
+      "text": [
+        "O carte despre Pokémoni. Pare îngrozitor de scumpă. O citești?"
+      ]
+    },
+    {
+      "en": [
+        "MANAPHY"
+      ],
+      "text": [
+        "MANAPHY"
+      ]
+    },
+    {
+      "en": [
+        "A Pokémon so rare that it has never once been seen in Sinnoh, let alone caught."
+      ],
+      "text": [
+        "Un Pokémon atât de rar că n-a fost văzut niciodată în Sinnoh, darămite prins."
+      ]
+    },
+    {
+      "en": [
+        "What the book says of Manaphy was added to the Pokédex."
+      ],
+      "text": [
+        "Ce scrie cartea despre Manaphy a fost adăugat în Pokédex."
+      ]
+    },
+    {
+      "en": [
+        "{player} put the book back."
+      ],
+      "text": [
+        "{player} a pus cartea la loc."
+      ]
+    }
+  ]
+}

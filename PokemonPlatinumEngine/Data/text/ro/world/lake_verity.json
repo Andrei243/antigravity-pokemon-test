@@ -1,0 +1,149 @@
+{
+  "people": {
+    "prof_rowan": {
+      "name": {
+        "en": [
+          "Prof. Rowan"
+        ],
+        "text": [
+          "Prof. Rowan"
+        ]
+      }
+    },
+    "counterpart": {
+      "name": {
+        "en": [
+          "{assistant}"
+        ],
+        "text": [
+          "{assistant}"
+        ]
+      }
+    },
+    "mars": {
+      "name": {
+        "en": [
+          "Mars"
+        ],
+        "text": [
+          "Mars"
+        ]
+      }
+    },
+    "grunt_m": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      }
+    },
+    "galactic_grunt_1": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: Another one! First the old man, then the kid with the hat, and now you!"
+        ],
+        "text": [
+          "Galactic Grunt: Încă unul! Întâi moșul, apoi copilul cu pălărie, și acum tu!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: Go on, then. The Commander will sort you out."
+        ],
+        "text": [
+          "Galactic Grunt: Hai, du-te. Comandantul o să se ocupe de tine."
+        ]
+      }
+    },
+    "galactic_grunt_2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: This lake belongs to Team Galactic today. Turn round and go home!"
+        ],
+        "text": [
+          "Galactic Grunt: Azi lacul ăsta e al Echipei Galactic. Întoarce-te și du-te acasă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: It's still ours. You just... walked through it."
+        ],
+        "text": [
+          "Galactic Grunt: Tot al nostru e. Doar că... ai trecut prin el."
+        ]
+      }
+    },
+    "galactic_grunt_3": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: Shh! The Commander is working. Nobody disturbs the Commander!"
+        ],
+        "text": [
+          "Galactic Grunt: Șșt! Comandantul lucrează. Nimeni nu deranjează Comandantul!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: Well, that's her disturbed. I'm for it now."
+        ],
+        "text": [
+          "Galactic Grunt: Gata, am deranjat-o. Acum o încasez."
+        ]
+      }
+    },
+    "galactic_grunt_4": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Galactic Grunt: Your friend didn't get past the Commander, and you won't get past me!"
+        ],
+        "text": [
+          "Galactic Grunt: Prietenul tău n-a trecut de Comandant, iar tu n-o să treci de mine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Galactic Grunt: All right, you got past me. That was the easy part."
+        ],
+        "text": [
+          "Galactic Grunt: Bine, ai trecut de mine. Asta a fost partea ușoară."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

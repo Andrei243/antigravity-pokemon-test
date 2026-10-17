@@ -1,0 +1,98 @@
+{
+  "displayName": {
+    "en": [
+      "Poké Mart"
+    ],
+    "text": [
+      "Poké Mart"
+    ]
+  },
+  "people": {
+    "cashier_f": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome to the Pastoria Poké Mart! How may I serve you today?"
+        ],
+        "text": [
+          "Vânzătoarea: Bun venit la Poké Martul din Pastoria! Cu ce te pot ajuta azi?"
+        ]
+      }
+    },
+    "bug_catcher": {
+      "name": {
+        "en": [
+          "Bug Catcher"
+        ],
+        "text": [
+          "Vânătorul de insecte"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Croagunk is our city's mascot, official and all.",
+          "We reckon it's right handsome, and one day the whole world is going to think so too."
+        ],
+        "text": [
+          "Croagunk e mascota orașului nostru, oficial și tot.",
+          "Noi zicem că e chiar arătos, și într-o zi toată lumea o să creadă la fel."
+        ]
+      }
+    },
+    "school_kid_f": {
+      "name": {
+        "en": [
+          "Schoolgirl"
+        ],
+        "text": [
+          "Școlărița"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Stick Seals on a Ball Capsule, pop the capsule on a Poké Ball...",
+          "There! One more Poké Ball like no other in the world. Do you use Ball Capsules too?"
+        ],
+        "text": [
+          "Lipești Stickere pe o Capsulă de Ball, pui capsula pe un Poké Ball...",
+          "Gata! Încă un Poké Ball cum nu mai e altul pe lume. Folosești și tu Capsule de Ball?"
+        ]
+      }
+    },
+    "cashier_m": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! This counter has goods you'll only find here in Pastoria."
+        ],
+        "text": [
+          "Vânzătoarea: Bun venit! La tejgheaua asta sunt mărfuri pe care le găsești doar aici, în Pastoria."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "1,6": {
+      "en": [
+        "A wood carving of a Croagunk.\nIt is only wood, and still it looks as if poison were oozing out of it..."
+      ],
+      "text": [
+        "O sculptură în lemn a unui Croagunk.\nE doar lemn, și totuși pare că-i curge otravă din el..."
+      ]
+    }
+  }
+}

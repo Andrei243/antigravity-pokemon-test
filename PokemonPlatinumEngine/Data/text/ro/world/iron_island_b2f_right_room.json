@@ -1,0 +1,57 @@
+{
+  "people": {
+    "worker_noel": {
+      "name": {
+        "en": [
+          "Noel"
+        ],
+        "text": [
+          "Noel"
+        ]
+      },
+      "before": {
+        "en": [
+          "Worker Noel: Round and round these tunnels I go, checking the old props. And now I've found a trainer!"
+        ],
+        "text": [
+          "Muncitor Noel: Mă tot învârt prin tunelurile astea, verificând stâlpii vechi. Și acum am găsit un Antrenor!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Worker Noel: You've shaken me up more than any rockfall ever did."
+        ],
+        "text": [
+          "Muncitor Noel: M-ai zdruncinat mai tare decât orice surpare."
+        ]
+      }
+    },
+    "worker_braden": {
+      "name": {
+        "en": [
+          "Braden"
+        ],
+        "text": [
+          "Braden"
+        ]
+      },
+      "before": {
+        "en": [
+          "Worker Braden: My Steelix grew up down here in the dark, among the iron. It's as hard as the island itself!"
+        ],
+        "text": [
+          "Muncitor Braden: Steelix al meu a crescut aici jos, în întuneric, printre fier. E tare ca insula însăși!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Worker Braden: Even steel can be beaten, then. Who'd have thought it?"
+        ],
+        "text": [
+          "Muncitor Braden: Deci și oțelul poate fi învins. Cine s-ar fi gândit?"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

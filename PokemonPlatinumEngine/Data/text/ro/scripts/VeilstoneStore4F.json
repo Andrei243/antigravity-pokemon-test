@@ -1,0 +1,178 @@
+{
+  "Attendant": [
+    {
+      "en": [
+        "Hello. May I help you with anything?",
+        "WHAT'S GOOD?",
+        "NOTHING, THANKS"
+      ],
+      "text": [
+        "Bună ziua. Te pot ajuta cu ceva?",
+        "CE-MI RECOMANZI?",
+        "NIMIC, MERSI"
+      ]
+    },
+    {
+      "en": [
+        "Please enjoy your visit."
+      ],
+      "text": [
+        "Să ai o vizită plăcută."
+      ]
+    },
+    {
+      "en": [
+        "The Yellow Cushion is a great favourite: neither too soft nor too firm."
+      ],
+      "text": [
+        "Perna Galbenă e foarte căutată: nici prea moale, nici prea tare."
+      ]
+    }
+  ],
+  "Goods": [
+    {
+      "en": [
+        "Welcome! Furnishings for a Secret Base, sent straight to its PC."
+      ],
+      "text": [
+        "Bun venit! Mobilier pentru Baza Secretă, trimis direct la PC-ul ei."
+      ]
+    },
+    {
+      "en": [
+        "Which would you like?",
+        "YELLOW CUSHION  500",
+        "CUPBOARD  1,000",
+        "TV  4,500",
+        "REFRIGERATOR  1,000",
+        "PRETTY SINK  3,000",
+        "NOTHING"
+      ],
+      "text": [
+        "Pe care îl vrei?",
+        "PERNĂ GALBENĂ  500",
+        "DULAP  1.000",
+        "TELEVIZOR  4.500",
+        "FRIGIDER  1.000",
+        "CHIUVETĂ  3.000",
+        "NIMIC"
+      ]
+    },
+    {
+      "en": [
+        "Please come again!"
+      ],
+      "text": [
+        "Să mai treci!"
+      ]
+    },
+    {
+      "en": [
+        "Thank you! It is on its way to the PC of your Secret Base."
+      ],
+      "text": [
+        "Mulțumim! E pe drum spre PC-ul Bazei tale Secrete."
+      ]
+    },
+    {
+      "en": [
+        "I'm so sorry, but you haven't the money for that."
+      ],
+      "text": [
+        "Îmi pare tare rău, dar nu ai destui bani pentru asta."
+      ]
+    },
+    {
+      "en": [
+        "I'm so sorry. The PC of your Secret Base has no room for anything more."
+      ],
+      "text": [
+        "Îmi pare tare rău. PC-ul Bazei tale Secrete nu mai are loc de nimic."
+      ]
+    }
+  ],
+  "Dolls": [
+    {
+      "en": [
+        "Welcome! Pokémon Dolls for a Secret Base, sent straight to its PC."
+      ],
+      "text": [
+        "Bun venit! Păpuși Pokémon pentru Baza Secretă, trimise direct la PC-ul ei."
+      ]
+    },
+    {
+      "en": [
+        "Which doll would you like?",
+        "MUNCHLAX  2,000",
+        "BONSLY  2,000",
+        "MIME JR.  2,000",
+        "OTHER DOLLS",
+        "NOTHING"
+      ],
+      "text": [
+        "Ce păpușă vrei?",
+        "MUNCHLAX  2.000",
+        "BONSLY  2.000",
+        "MIME JR.  2.000",
+        "ALTE PĂPUȘI",
+        "NIMIC"
+      ]
+    },
+    {
+      "en": [
+        "Please come again!"
+      ],
+      "text": [
+        "Să mai treci!"
+      ]
+    },
+    {
+      "en": [
+        "Which of these, then?",
+        "MANTYKE  3,000",
+        "BUIZEL  3,000",
+        "CHATOT  3,000",
+        "NOTHING"
+      ],
+      "text": [
+        "Atunci, care dintre acestea?",
+        "MANTYKE  3.000",
+        "BUIZEL  3.000",
+        "CHATOT  3.000",
+        "NIMIC"
+      ]
+    },
+    {
+      "en": [
+        "Please come again!"
+      ],
+      "text": [
+        "Să mai treci!"
+      ]
+    },
+    {
+      "en": [
+        "Thank you! It is on its way to the PC of your Secret Base."
+      ],
+      "text": [
+        "Mulțumim! E pe drum spre PC-ul Bazei tale Secrete."
+      ]
+    },
+    {
+      "en": [
+        "I'm so sorry, but you haven't the money for that."
+      ],
+      "text": [
+        "Îmi pare tare rău, dar nu ai destui bani pentru asta."
+      ]
+    },
+    {
+      "en": [
+        "I'm so sorry. The PC of your Secret Base has no room for anything more."
+      ],
+      "text": [
+        "Îmi pare tare rău. PC-ul Bazei tale Secrete nu mai are loc de nimic."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "displayName": {
+    "en": [
+      "Hotel Grand Lake"
+    ],
+    "text": [
+      "Hotelul Grand Lake"
+    ]
+  },
+  "people": {
+    "clown": {
+      "name": {
+        "en": [
+          "Clown"
+        ],
+        "text": [
+          "Clovnul"
+        ]
+      }
+    },
+    "psychic": {
+      "name": {
+        "en": [
+          "Psychic"
+        ],
+        "text": [
+          "Mediumul"
+        ]
+      }
+    },
+    "guitarist": {
+      "name": {
+        "en": [
+          "Guitarist"
+        ],
+        "text": [
+          "Chitaristul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Me, I'm a simple fellow. I let my guitar do the talking.",
+          "A tune and my Pokémon: with those two I can shine wherever the road takes me.",
+          "They say you'll find players like me hanging around Pokémon Centers, too."
+        ],
+        "text": [
+          "Eu sunt un om simplu. Las chitara să vorbească.",
+          "O melodie și Pokémonii mei: cu astea două strălucesc oriunde m-ar duce drumul.",
+          "Se zice că găsești muzicanți ca mine și prin Centrele Pokémon."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,42 @@
+{
+  "Hiker": [
+    {
+      "en": [
+        "I was fighting my way through the blizzard out there when I dropped an HM.",
+        "Rock Climb, it was. With that I could go straight up a sheer cliff..."
+      ],
+      "text": [
+        "Îmi croiam drum prin viscolul de afară când am scăpat un HM.",
+        "Era Cățărare. Cu el puteam urca drept în sus pe o stâncă abruptă..."
+      ]
+    },
+    {
+      "en": [
+        "I was fighting my way through the blizzard out there when I dropped an HM.",
+        "Rock Climb, it was. With that I could go straight up a sheer cliff...",
+        "Hey! What's that you've got? You found my Hidden Machine?",
+        "I'd given it up for lost, and you dug it out of the snow. No, no, you keep it. Put it to good use.",
+        "I like an honest face, though. Here, take this for yours."
+      ],
+      "text": [
+        "Îmi croiam drum prin viscolul de afară când am scăpat un HM.",
+        "Era Cățărare. Cu el puteam urca drept în sus pe o stâncă abruptă...",
+        "Hei! Ce ai acolo? Mi-ai găsit Mașina Ascunsă?",
+        "O dădusem drept pierdută, și tu ai scos-o din zăpadă. Nu, nu, păstreaz-o. Folosește-o cu folos.",
+        "Îmi plac oamenii cinstiți. Uite, ia asta pentru cinstea ta."
+      ]
+    },
+    {
+      "en": [
+        "That Icicle Plate turned up under the snow too.",
+        "I'm no scholar, but it looks ancient to me.",
+        "As old as the day Sinnoh itself was made, maybe..."
+      ],
+      "text": [
+        "Și Placa Țurțurelui a ieșit tot de sub zăpadă.",
+        "Nu sunt om învățat, dar mie mi se pare străveche.",
+        "Veche cât ziua în care s-a făcut Sinnohul, poate..."
+      ]
+    }
+  ]
+}

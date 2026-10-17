@@ -1,0 +1,38 @@
+{
+  "Level": [
+    {
+      "en": [
+        "... I see it! Today's number is {var:VAR_DAILY_RANDOM_LEVEL}!",
+        "Show me a Pokémon at Lv. {var:VAR_DAILY_RANDOM_LEVEL}. Do that, and there's a reward in it for you."
+      ],
+      "text": [
+        "... Îl văd! Numărul zilei de azi e {var:VAR_DAILY_RANDOM_LEVEL}!",
+        "Arată-mi un Pokémon de Nv. {var:VAR_DAILY_RANDOM_LEVEL}. Dacă o faci, primești o răsplată."
+      ]
+    },
+    {
+      "en": [
+        "... Oh? Now what's this?!",
+        "Your {member:RESULT} is at Lv. {var:VAR_DAILY_RANDOM_LEVEL}. Well, I'll be! Remarkable!",
+        "A sight like that deserves a thank-you."
+      ],
+      "text": [
+        "... O? Ia te uită!",
+        "{member:RESULT} al tău e la Nv. {var:VAR_DAILY_RANDOM_LEVEL}. Ei, poftim! Remarcabil!",
+        "O asemenea priveliște merită un mulțumesc."
+      ]
+    },
+    {
+      "en": [
+        "A Pokémon of a high level was at a low one once.",
+        "And one at a low level will not stay there, for all it can do is grow.",
+        "That's the way of it, youngster. Come and see me again tomorrow."
+      ],
+      "text": [
+        "Un Pokémon de nivel înalt a fost odată de nivel mic.",
+        "Iar unul de nivel mic nu va rămâne așa, căci tot ce poate face e să crească.",
+        "Așa merg lucrurile. Mai vino pe la mine mâine."
+      ]
+    }
+  ]
+}

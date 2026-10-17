@@ -1,0 +1,144 @@
+{
+  "displayName": {
+    "en": [
+      "Galactic HQ"
+    ],
+    "text": [
+      "Cartierul Galactic"
+    ]
+  },
+  "people": {
+    "scientist_m": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          "Cercetătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I feel sick about what we did. That experiment went much too far.",
+          "Whatever Master Cyrus means to do next, I don't know that I can stomach it."
+        ],
+        "text": [
+          "Mi-e rău când mă gândesc ce-am făcut. Experimentul acela a mers mult prea departe.",
+          "Orice vrea să facă Maestrul Cyrus mai departe, nu știu dacă o să pot îndura."
+        ]
+      }
+    },
+    "scientist_f": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          "Cercetătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Urgh... I can't bring myself to talk about it.",
+          "But that thing we made... What does he want it for?"
+        ],
+        "text": [
+          "Uf... Nu-mi vine să vorbesc despre asta.",
+          "Dar chestia aia pe care am făcut-o... La ce-i trebuie lui?"
+        ]
+      }
+    },
+    "6,8": {
+      "name": {
+        "en": [
+          "Full Restore"
+        ],
+        "text": [
+          "Refacere Totală"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "10,9": {
+      "en": [
+        "Something hangs in the green fluid, perfectly still."
+      ],
+      "text": [
+        "Ceva atârnă în lichidul verde, cu totul nemișcat."
+      ]
+    },
+    "11,9": {
+      "en": [
+        "Something hangs in the green fluid, perfectly still."
+      ],
+      "text": [
+        "Ceva atârnă în lichidul verde, cu totul nemișcat."
+      ]
+    },
+    "17,9": {
+      "en": [
+        "Something hangs in the green fluid, perfectly still."
+      ],
+      "text": [
+        "Ceva atârnă în lichidul verde, cu totul nemișcat."
+      ]
+    },
+    "18,9": {
+      "en": [
+        "Something hangs in the green fluid, perfectly still."
+      ],
+      "text": [
+        "Ceva atârnă în lichidul verde, cu totul nemișcat."
+      ]
+    },
+    "21,9": {
+      "en": [
+        "Something hangs in the green fluid, perfectly still."
+      ],
+      "text": [
+        "Ceva atârnă în lichidul verde, cu totul nemișcat."
+      ]
+    },
+    "22,9": {
+      "en": [
+        "Something hangs in the green fluid, perfectly still."
+      ],
+      "text": [
+        "Ceva atârnă în lichidul verde, cu totul nemișcat."
+      ]
+    },
+    "25,9": {
+      "en": [
+        "Something hangs in the green fluid, perfectly still."
+      ],
+      "text": [
+        "Ceva atârnă în lichidul verde, cu totul nemișcat."
+      ]
+    },
+    "26,9": {
+      "en": [
+        "Something hangs in the green fluid, perfectly still."
+      ],
+      "text": [
+        "Ceva atârnă în lichidul verde, cu totul nemișcat."
+      ]
+    },
+    "29,9": {
+      "en": [
+        "Something hangs in the green fluid, perfectly still."
+      ],
+      "text": [
+        "Ceva atârnă în lichidul verde, cu totul nemișcat."
+      ]
+    },
+    "30,9": {
+      "en": [
+        "Something hangs in the green fluid, perfectly still."
+      ],
+      "text": [
+        "Ceva atârnă în lichidul verde, cu totul nemișcat."
+      ]
+    }
+  }
+}

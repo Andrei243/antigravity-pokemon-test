@@ -1,0 +1,41 @@
+{
+  "people": {
+    "jupiter": {
+      "name": {
+        "en": [
+          "Jupiter"
+        ],
+        "text": [
+          "Jupiter"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Jupiter: Brr. What a miserable place to be sent."
+        ],
+        "text": [
+          "Jupiter: Brr. Ce loc mizerabil unde să fii trimis."
+        ]
+      }
+    },
+    "rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "{rival}: ..."
+        ],
+        "text": [
+          "{rival}: ..."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

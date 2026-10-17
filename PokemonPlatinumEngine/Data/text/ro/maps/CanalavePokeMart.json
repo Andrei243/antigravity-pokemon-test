@@ -1,0 +1,89 @@
+{
+  "displayName": {
+    "en": [
+      "Poké Mart"
+    ],
+    "text": [
+      "Poké Mart"
+    ]
+  },
+  "people": {
+    "lady": {
+      "name": {
+        "en": [
+          "Lady"
+        ],
+        "text": [
+          "Doamna"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A Poké Ball that works best on the kinds of Pokémon you have caught before...",
+          "That's the Repeat Ball for you!"
+        ],
+        "text": [
+          "Un Poké Ball care merge cel mai bine pe felurile de Pokémoni pe care le-ai mai prins...",
+          "Ăsta e Ballul Repetare!"
+        ]
+      }
+    },
+    "pokefan_f": {
+      "name": {
+        "en": [
+          "Pokéfan"
+        ],
+        "text": [
+          "Pokéfana"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I ought to take some Revives over to the people training on Iron Island.",
+          "They'd be glad of them. It's hard going out there, with no Pokémon Center."
+        ],
+        "text": [
+          "Ar trebui să le duc niște Reînvieri celor care se antrenează pe Insula de Fier.",
+          "S-ar bucura de ele. E greu acolo, fără un Centru Pokémon."
+        ]
+      }
+    },
+    "cashier_f": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome to the Canalave Poké Mart! How may I serve you today?"
+        ],
+        "text": [
+          "Vânzătoarea: Bun venit la Poké Martul din Canalave! Cu ce te pot ajuta azi?"
+        ]
+      }
+    },
+    "cashier_m": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! This counter has goods you'll only find here in Canalave."
+        ],
+        "text": [
+          "Vânzătoarea: Bun venit! La tejgheaua asta sunt mărfuri pe care le găsești doar aici, în Canalave."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

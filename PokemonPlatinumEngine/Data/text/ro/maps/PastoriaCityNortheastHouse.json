@@ -1,0 +1,61 @@
+{
+  "displayName": {
+    "en": [
+      "Pastoria City"
+    ],
+    "text": [
+      "Orașul Pastoria"
+    ]
+  },
+  "people": {
+    "ace_trainer_m": {
+      "name": {
+        "en": [
+          "Scarf Guy"
+        ],
+        "text": [
+          "Omul cu eșarfe"
+        ]
+      }
+    },
+    "battle_girl": {
+      "name": {
+        "en": [
+          "Battle Girl"
+        ],
+        "text": [
+          "Luptătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My brother's girlfriend is the Massage Girl over in Veilstone City.",
+          "They keep in touch by giving their Pokémon Mail to carry to each other."
+        ],
+        "text": [
+          "Prietena fratelui meu e Fata cu Masajele din Orașul Veilstone.",
+          "Țin legătura dându-le Pokémonilor Scrisori să și le ducă unul altuia."
+        ]
+      }
+    },
+    "pachirisu": {
+      "name": {
+        "en": [
+          "Pachirisu"
+        ],
+        "text": [
+          "Pachirisu"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pachirisu: Suu! Pasuu!"
+        ],
+        "text": [
+          "Pachirisu: Suu! Pasuu!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,422 @@
+{
+  "people": {
+    "school_kid_m": {
+      "name": {
+        "en": [
+          "Schoolboy"
+        ],
+        "text": [
+          "Școlarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "There are coloured shards hidden all over Sinnoh: red, blue, yellow and green.",
+          "The man in that house over there is always asking for them. I'm collecting them for him!"
+        ],
+        "text": [
+          "Prin tot Sinnohul sunt ascunse cioburi colorate: roșii, albastre, galbene și verzi.",
+          "Omul din casa de acolo le cere mereu. Eu le adun pentru el!"
+        ]
+      }
+    },
+    "lady": {
+      "name": {
+        "en": [
+          "Lady"
+        ],
+        "text": [
+          "Doamna"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The rain hardly ever lets up along this stretch of road.",
+          "Still, it keeps everything so lovely and green. I suppose it's worth getting wet for."
+        ],
+        "text": [
+          "Ploaia nu se oprește aproape niciodată pe bucata asta de drum.",
+          "Totuși, ține totul atât de frumos și verde. Cred că merită să te uzi pentru asta."
+        ]
+      }
+    },
+    "collector": {
+      "name": {
+        "en": [
+          "Collector"
+        ],
+        "text": [
+          "Colecționarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pastoria City is just ahead, and past it the Great Marsh.",
+          "Collectors like me come from all over Sinnoh for the Pokémon that live in that mud."
+        ],
+        "text": [
+          "Orașul Pastoria e chiar în față, iar dincolo de el, Marea Mlaștină.",
+          "Colecționari ca mine vin din tot Sinnohul pentru Pokémonii care trăiesc în noroiul acela."
+        ]
+      }
+    },
+    "fisherman_juan": {
+      "name": {
+        "en": [
+          "Juan"
+        ],
+        "text": [
+          "Juan"
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Juan: The fish bite best in the rain, and so do I. Let's battle!"
+        ],
+        "text": [
+          "Pescar Juan: Peștii mușcă cel mai bine pe ploaie, și eu la fel. Hai să ne luptăm!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Juan: Soaked to the skin and beaten as well. Still, the fishing's good."
+        ],
+        "text": [
+          "Pescar Juan: Ud până la piele și învins pe deasupra. Măcar pescuitul e bun."
+        ]
+      }
+    },
+    "fisherman_josh": {
+      "name": {
+        "en": [
+          "Josh"
+        ],
+        "text": [
+          "Josh"
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Josh: Two Goldeen on a single line, that's my record! Want to meet them?"
+        ],
+        "text": [
+          "Pescar Josh: Doi Goldeen pe un singur fir, ăsta-i recordul meu! Vrei să-i cunoști?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Josh: Back into the water with you both. You've done your best."
+        ],
+        "text": [
+          "Pescar Josh: Înapoi în apă, amândoi. Ați dat tot ce-ați putut."
+        ]
+      }
+    },
+    "fisherman_travis": {
+      "name": {
+        "en": [
+          "Travis"
+        ],
+        "text": [
+          "Travis"
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Travis: Hey! You splashed right past my float. Now you owe me a battle!"
+        ],
+        "text": [
+          "Pescar Travis: Hei! Ai trecut cu stropi chiar pe lângă pluta mea. Acum îmi datorezi o luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Travis: All right, all right. I'll go and find a quieter pond."
+        ],
+        "text": [
+          "Pescar Travis: Bine, bine. Îmi caut un iaz mai liniștit."
+        ]
+      }
+    },
+    "ranger_taylor": {
+      "name": {
+        "en": [
+          "Taylor"
+        ],
+        "text": [
+          "Taylor"
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokémon Ranger Taylor: Rangers look after Pokémon and the places they live. Let's see how you look after yours!"
+        ],
+        "text": [
+          "Ranger Pokémon Taylor: Rangerii au grijă de Pokémoni și de locurile lor. Să vedem cum ai tu grijă de ai tăi!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokémon Ranger Taylor: Your Pokémon trust you. That much is plain to see."
+        ],
+        "text": [
+          "Ranger Pokémon Taylor: Pokémonii tăi au încredere în tine. Asta se vede clar."
+        ]
+      }
+    },
+    "ranger_allison": {
+      "name": {
+        "en": [
+          "Allison"
+        ],
+        "text": [
+          "Allison"
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokémon Ranger Allison: I patrol this marsh in all weathers. A bit of rain never stopped a Ranger!"
+        ],
+        "text": [
+          "Ranger Pokémon Allison: Patrulez mlaștina pe orice vreme. Puțină ploaie n-a oprit niciodată un Ranger!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokémon Ranger Allison: Well! That's going in my patrol report."
+        ],
+        "text": [
+          "Ranger Pokémon Allison: Ei bine! Asta intră în raportul de patrulă."
+        ]
+      }
+    },
+    "ranger_jeffrey": {
+      "name": {
+        "en": [
+          "Jeffrey"
+        ],
+        "text": [
+          "Jeffrey"
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokémon Ranger Jeffrey: Halt! Every trainer on this road gets a Ranger's inspection."
+        ],
+        "text": [
+          "Ranger Pokémon Jeffrey: Stai! Fiecare Antrenor de pe drumul ăsta trece printr-o inspecție de Ranger."
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokémon Ranger Jeffrey: Inspection passed, with flying colours."
+        ],
+        "text": [
+          "Ranger Pokémon Jeffrey: Inspecție trecută, cu brio."
+        ]
+      }
+    },
+    "policeman_danny_no_battle": {
+      "name": {
+        "en": [
+          "Policeman"
+        ],
+        "text": [
+          "Polițistul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Night patrols are where the action is. By day, it's mostly giving directions.",
+          "Pastoria City is that way. Mind the puddles!"
+        ],
+        "text": [
+          "Patrulele de noapte sunt cele cu acțiune. Ziua mai mult dau indicații.",
+          "Orașul Pastoria e pe acolo. Ai grijă la bălți!"
+        ]
+      }
+    },
+    "policeman_danny": {
+      "name": {
+        "en": [
+          "Danny"
+        ],
+        "text": [
+          "Danny"
+        ]
+      },
+      "before": {
+        "en": [
+          "Policeman Danny: Hold it there! Routine check. I'll need a look at your Pokémon, in battle."
+        ],
+        "text": [
+          "Polițist Danny: Stai acolo! Control de rutină. Trebuie să mă uit la Pokémonii tăi, în luptă."
+        ]
+      },
+      "after": {
+        "en": [
+          "Policeman Danny: All in order. Mind how you go on these wet roads."
+        ],
+        "text": [
+          "Polițist Danny: Totul în regulă. Ai grijă pe drumurile astea ude."
+        ]
+      }
+    },
+    "scientist_stefano": {
+      "name": {
+        "en": [
+          "Stefano"
+        ],
+        "text": [
+          "Stefano"
+        ]
+      },
+      "before": {
+        "en": [
+          "Scientist Stefano: I study how Pokémon battle in the rain. You'll make an excellent subject!"
+        ],
+        "text": [
+          "Om de știință Stefano: Studiez cum se luptă Pokémonii pe ploaie. Vei fi un subiect excelent!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Scientist Stefano: Remarkable. I must write this down before the ink runs."
+        ],
+        "text": [
+          "Om de știință Stefano: Remarcabil. Trebuie să notez asta înainte să se întindă cerneala."
+        ]
+      }
+    },
+    "collector_dean": {
+      "name": {
+        "en": [
+          "Dean"
+        ],
+        "text": [
+          "Dean"
+        ]
+      },
+      "before": {
+        "en": [
+          "Collector Dean: Behold my pride and joy: one Pokémon of the sun and one of the moon!"
+        ],
+        "text": [
+          "Colecționar Dean: Iată mândria mea: un Pokémon al soarelui și unul al lunii!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Collector Dean: The sun and the moon, both beaten at once... I shall go and polish their Poké Balls."
+        ],
+        "text": [
+          "Colecționar Dean: Soarele și luna, învinși deodată... Mă duc să le lustruiesc Poké Ballurile."
+        ]
+      }
+    },
+    "scientist_shaun": {
+      "name": {
+        "en": [
+          "Shaun"
+        ],
+        "text": [
+          "Shaun"
+        ]
+      },
+      "before": {
+        "en": [
+          "Scientist Shaun: Does a Magnemite rust in the rain? An experiment is in order!"
+        ],
+        "text": [
+          "Om de știință Shaun: Ruginește un Magnemite în ploaie? Se impune un experiment!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Scientist Shaun: Hypothesis: you are the stronger trainer. Result: confirmed."
+        ],
+        "text": [
+          "Om de știință Shaun: Ipoteză: ești Antrenorul mai puternic. Rezultat: confirmat."
+        ]
+      }
+    },
+    "parasol_lady_alexa": {
+      "name": {
+        "en": [
+          "Alexa"
+        ],
+        "text": [
+          "Alexa"
+        ]
+      },
+      "before": {
+        "en": [
+          "Parasol Lady Alexa: Pitter-patter, pitter-patter. What could be nicer than a battle in the rain?"
+        ],
+        "text": [
+          "Doamna cu umbrelă Alexa: Pic-pic, pic-pic. Ce poate fi mai frumos decât o luptă în ploaie?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Parasol Lady Alexa: Well, my parasol kept me dry, at least."
+        ],
+        "text": [
+          "Doamna cu umbrelă Alexa: Ei, măcar umbrela m-a ținut uscată."
+        ]
+      }
+    },
+    "parasol_lady_sabrina": {
+      "name": {
+        "en": [
+          "Sabrina"
+        ],
+        "text": [
+          "Sabrina"
+        ]
+      },
+      "before": {
+        "en": [
+          "Parasol Lady Sabrina: My Wooper jumps in every puddle it finds. Shall we make a splash too?"
+        ],
+        "text": [
+          "Doamna cu umbrelă Sabrina: Wooper al meu sare în fiecare baltă. Facem și noi niște stropi?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Parasol Lady Sabrina: Oh, how very drippy of me. Off you go, then."
+        ],
+        "text": [
+          "Doamna cu umbrelă Sabrina: Vai, ce udă am rămas. Hai, du-te."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost": {
+      "en": [
+        "Route 212\nEast: Pastoria City\nNorth-west: Hearthome City"
+      ],
+      "text": [
+        "Ruta 212\nEst: Orașul Pastoria\nNord-vest: Orașul Hearthome"
+      ]
+    },
+    "signboard_shards_wanted": {
+      "en": [
+        "Shards Wanted!\nBring me coloured shards, and I'll teach your Pokémon a new move in return."
+      ],
+      "text": [
+        "Caut cioburi!\nAdu-mi cioburi colorate și îi învăț pe Pokémonii tăi o mișcare nouă în schimb."
+      ]
+    },
+    "trainer_tips_signpost": {
+      "en": [
+        "Trainer Tips\nRain makes Water-type moves stronger and Fire-type moves weaker. Plan your team around the weather!"
+      ],
+      "text": [
+        "Sfaturi pentru Antrenori\nPloaia întărește mișcările de tip Apă și le slăbește pe cele de tip Foc. Ține cont de vreme!"
+      ]
+    }
+  }
+}

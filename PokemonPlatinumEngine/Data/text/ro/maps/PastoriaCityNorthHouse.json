@@ -1,0 +1,71 @@
+{
+  "displayName": {
+    "en": [
+      "Pastoria City"
+    ],
+    "text": [
+      "Orașul Pastoria"
+    ]
+  },
+  "people": {
+    "scientist_m": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          "Cercetătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Out in the Great Marsh, people get about on the Quick Trams that run on rails.",
+          "That way nobody tramples what lives and grows in the mud."
+        ],
+        "text": [
+          "În Marea Mlaștină, oamenii umblă cu Tramvaiele Rapide, care merg pe șine.",
+          "Așa nimeni nu calcă în picioare ce trăiește și crește în noroi."
+        ]
+      }
+    },
+    "psyduck": {
+      "name": {
+        "en": [
+          "Psyduck"
+        ],
+        "text": [
+          "Psyduck"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Psyduck: Gwah?!"
+        ],
+        "text": [
+          "Psyduck: Gwah?!"
+        ]
+      }
+    },
+    "kid_with_nds": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "They call them Quick Trams, but have you ever seen one move?",
+          "I could walk across the Great Marsh faster. If I didn't keep sinking in."
+        ],
+        "text": [
+          "Le zice Tramvaie Rapide, dar ai văzut vreunul mișcându-se?",
+          "Aș traversa Marea Mlaștină mai repede pe jos. Dacă nu m-aș tot scufunda."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

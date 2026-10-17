@@ -1,0 +1,32 @@
+{
+  "people": {
+    "rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "{rival}: Team Galactic! I'm coming for you!"
+        ],
+        "text": [
+          "{rival}: Echipa Galactic! Vin după voi!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost": {
+      "en": [
+        "Acuity Lakefront\nNorth: Lake Acuity"
+      ],
+      "text": [
+        "Malul Acuity\nNord: Lacul Acuity"
+      ]
+    }
+  }
+}

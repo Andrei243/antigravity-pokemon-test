@@ -1,0 +1,256 @@
+{
+  "people": {
+    "pi_carlos": {
+      "name": {
+        "en": [
+          "Carlos"
+        ],
+        "text": [
+          "Carlos"
+        ]
+      },
+      "before": {
+        "en": [
+          "PI Carlos: I'm a private investigator. And you, unless I'm much mistaken, are a trainer!"
+        ],
+        "text": [
+          "Detectiv Carlos: Sunt detectiv particular. Iar tu, dacă nu mă înșel, ești Antrenor!"
+        ]
+      },
+      "after": {
+        "en": [
+          "PI Carlos: My conclusion: I've lost. Case closed."
+        ],
+        "text": [
+          "Detectiv Carlos: Concluzia mea: am pierdut. Caz închis."
+        ]
+      }
+    },
+    "collector_douglas": {
+      "name": {
+        "en": [
+          "Douglas"
+        ],
+        "text": [
+          "Douglas"
+        ]
+      },
+      "before": {
+        "en": [
+          "Collector Douglas: Three of Eevee's evolutions, and every one of them mine! Feast your eyes!"
+        ],
+        "text": [
+          "Colecționar Douglas: Trei evoluții ale lui Eevee, și toate ale mele! Bucură-ți ochii!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Collector Douglas: I'll just have to collect the rest of them. Then you'll see!"
+        ],
+        "text": [
+          "Colecționar Douglas: O să le adun și pe celelalte. Atunci o să vezi!"
+        ]
+      }
+    },
+    "collector_brady": {
+      "name": {
+        "en": [
+          "Brady"
+        ],
+        "text": [
+          "Brady"
+        ]
+      },
+      "before": {
+        "en": [
+          "Collector Brady: I've gathered rare Pokémon from every corner of Sinnoh. Six of them! Want to see?"
+        ],
+        "text": [
+          "Colecționar Brady: Am adunat Pokémoni rari din toate colțurile Sinnohului. Șase! Vrei să-i vezi?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Collector Brady: Collecting them is one thing. Training them is another thing entirely."
+        ],
+        "text": [
+          "Colecționar Brady: Una e să-i aduni. Cu totul alta e să-i antrenezi."
+        ]
+      }
+    },
+    "ruin_maniac_bryan": {
+      "name": {
+        "en": [
+          "Bryan"
+        ],
+        "text": [
+          "Bryan"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ruin Maniac Bryan: The rocks round here hide all sorts of old secrets. Don't you go digging before I do!"
+        ],
+        "text": [
+          "Pasionat de ruine Bryan: Stâncile de aici ascund tot felul de secrete vechi. Să nu sapi înaintea mea!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ruin Maniac Bryan: Old stones I understand. Battles, not so much."
+        ],
+        "text": [
+          "Pasionat de ruine Bryan: Pietrele vechi le pricep. Luptele, nu prea."
+        ]
+      }
+    },
+    "ruin_maniac_ronald": {
+      "name": {
+        "en": [
+          "Ronald"
+        ],
+        "text": [
+          "Ronald"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ruin Maniac Ronald: My Shieldon was brought back from a fossil. A living piece of history!"
+        ],
+        "text": [
+          "Pasionat de ruine Ronald: Shieldon al meu a fost readus la viață dintr-o fosilă. O bucată vie de istorie!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ruin Maniac Ronald: Have a rest, Shieldon. You've waited this long, after all."
+        ],
+        "text": [
+          "Pasionat de ruine Ronald: Odihnește-te, Shieldon. Oricum ai așteptat atâta."
+        ]
+      }
+    },
+    "collector_jamal": {
+      "name": {
+        "en": [
+          "Jamal"
+        ],
+        "text": [
+          "Jamal"
+        ]
+      },
+      "before": {
+        "en": [
+          "Collector Jamal: Porygon was made by people, not born. That makes it the rarest of the rare!"
+        ],
+        "text": [
+          "Colecționar Jamal: Porygon a fost făcut de oameni, nu s-a născut. Asta îl face cel mai rar dintre rari!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Collector Jamal: Even the rarest Pokémon loses sometimes, it turns out."
+        ],
+        "text": [
+          "Colecționar Jamal: Se pare că și cel mai rar Pokémon mai pierde."
+        ]
+      }
+    },
+    "beauty_devon": {
+      "name": {
+        "en": [
+          "Devon"
+        ],
+        "text": [
+          "Devon"
+        ]
+      },
+      "before": {
+        "en": [
+          "Beauty Devon: Three Wormadam in three different cloaks. Fashion is a battle too, you know!"
+        ],
+        "text": [
+          "Frumoasă Devon: Trei Wormadam în trei mantii diferite. Și moda e o luptă, să știi!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Beauty Devon: Out-dressed and out-battled. What a day."
+        ],
+        "text": [
+          "Frumoasă Devon: Întrecută și la modă, și la luptă. Ce zi."
+        ]
+      }
+    },
+    "psychic_mitchell": {
+      "name": {
+        "en": [
+          "Mitchell"
+        ],
+        "text": [
+          "Mitchell"
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Mitchell: I knew you were coming before you'd even left Veilstone City."
+        ],
+        "text": [
+          "Medium Mitchell: Știam că vii înainte să fi plecat din Orașul Veilstone."
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Mitchell: That, though... that I didn't see coming."
+        ],
+        "text": [
+          "Medium Mitchell: Dar asta... asta n-am prevăzut-o."
+        ]
+      }
+    },
+    "psychic_abigail": {
+      "name": {
+        "en": [
+          "Abigail"
+        ],
+        "text": [
+          "Abigail"
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Abigail: My mind and my Pokémon's minds are one. Can you keep up with all of us?"
+        ],
+        "text": [
+          "Medium Abigail: Mintea mea și mințile Pokémonilor mei sunt una. Ții pasul cu noi toți?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Abigail: Your thoughts moved too fast for us to read."
+        ],
+        "text": [
+          "Medium Abigail: Gândurile tale au fost prea iuți ca să le citim."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost_veilstone_city": {
+      "en": [
+        "Route 214\nNorth: Veilstone City"
+      ],
+      "text": [
+        "Ruta 214\nNord: Orașul Veilstone"
+      ]
+    },
+    "arrow_signpost_lake_valor": {
+      "en": [
+        "Route 214\nSouth: Valor Lakefront, Lake Valor"
+      ],
+      "text": [
+        "Ruta 214\nSud: Malul Valor, Lacul Valor"
+      ]
+    }
+  }
+}

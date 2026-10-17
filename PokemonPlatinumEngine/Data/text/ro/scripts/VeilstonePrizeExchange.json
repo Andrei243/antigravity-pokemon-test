@@ -1,0 +1,102 @@
+{
+  "Receptionist": [
+    {
+      "en": [
+        "Welcome! Coins from the Game Corner are exchanged here for prizes. You have {coins} Coins."
+      ],
+      "text": [
+        "Bun venit! Aici schimbi Fisele de la Sala de Jocuri pe premii. Ai {coins} Fise."
+      ]
+    },
+    {
+      "en": [
+        "The {item}, for {price} Coins?"
+      ],
+      "text": [
+        "{item}, pentru {price} Fise?"
+      ]
+    },
+    {
+      "en": [
+        "Here you are!"
+      ],
+      "text": [
+        "Poftim!"
+      ]
+    },
+    {
+      "en": [
+        "{player} put the {item} away."
+      ],
+      "text": [
+        "{player} a pus deoparte {item}."
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry, you haven't enough Coins for that."
+      ],
+      "text": [
+        "Îmi pare rău, nu ai destule Fise pentru asta."
+      ]
+    },
+    {
+      "en": [
+        "Oh, is that so? Do come again when something takes your fancy."
+      ],
+      "text": [
+        "A, da? Mai treci când îți place ceva."
+      ]
+    }
+  ],
+  "Guitarist": [
+    {
+      "en": [
+        "I've a knack nobody asked for: I can tell what type a Pokémon's Hidden Power would be. Want to hear it?"
+      ],
+      "text": [
+        "Am un talent pe care nu mi l-a cerut nimeni: știu de ce tip ar fi Puterea Ascunsă a unui Pokémon. Vrei să auzi?"
+      ]
+    },
+    {
+      "en": [
+        "Shall I tell you the type of one of your Pokémon's Hidden Power?"
+      ],
+      "text": [
+        "Să-ți spun de ce tip e Puterea Ascunsă a unuia dintre Pokémonii tăi?"
+      ]
+    },
+    {
+      "en": [
+        "Hmm, hmm. If that one learned Hidden Power, the move would be of the {thing} type."
+      ],
+      "text": [
+        "Hmm, hmm. Dacă ar învăța Putere Ascunsă, mișcarea ar fi de tip {thing}."
+      ]
+    },
+    {
+      "en": [
+        "Hmm, hmm. That one's Hidden Power is of the {thing} type. No doubt about it."
+      ],
+      "text": [
+        "Hmm, hmm. Puterea Ascunsă a acestuia e de tip {thing}. Fără îndoială."
+      ]
+    },
+    {
+      "en": [
+        "An Egg? Even I can't hear anything through a shell."
+      ],
+      "text": [
+        "Un Ou? Nici eu nu aud nimic prin coajă."
+      ]
+    },
+    {
+      "en": [
+        "Whenever you're curious, just ask."
+      ],
+      "text": [
+        "Când te roade curiozitatea, întreabă-mă."
+      ]
+    }
+  ]
+}

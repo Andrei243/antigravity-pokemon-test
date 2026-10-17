@@ -1,0 +1,52 @@
+{
+  "Traveller": [
+    {
+      "en": [
+        "Is that so? A traveller, are you? Good for you. Everybody ought to see other places!"
+      ],
+      "text": [
+        "Așa deci? Ești călător? Bravo ție. Toată lumea ar trebui să vadă alte locuri!"
+      ]
+    },
+    {
+      "en": [
+        "Have you heard of the Whirl Islands, off in the Johto region?",
+        "A Pokémon of shining silver, they say... I mean to see it before I'm through."
+      ],
+      "text": [
+        "Ai auzit de Insulele Vârtej, din regiunea Johto?",
+        "Un Pokémon de argint strălucitor, se zice... Vreau să-l văd cât mai trăiesc."
+      ]
+    },
+    {
+      "en": [
+        "Do you know Mt. Moon, in the Kanto region?",
+        "Clefairy dancing under the full moon... That is a sight I must see once in my life."
+      ],
+      "text": [
+        "Știi Muntele Lunii, din regiunea Kanto?",
+        "Clefairy dansând sub luna plină... E o priveliște pe care trebuie s-o văd o dată în viață."
+      ]
+    },
+    {
+      "en": [
+        "Have you heard of the Tin Tower, in the Johto region?",
+        "A Pokémon in all the colours of the rainbow... I mean to see it before I'm through."
+      ],
+      "text": [
+        "Ai auzit de Turnul de Cositor, din regiunea Johto?",
+        "Un Pokémon în toate culorile curcubeului... Vreau să-l văd cât mai trăiesc."
+      ]
+    },
+    {
+      "en": [
+        "Do you know the Space Center, in the Hoenn region?",
+        "A rocket climbing all the way up into space... That is a sight I must see once in my life."
+      ],
+      "text": [
+        "Știi Centrul Spațial, din regiunea Hoenn?",
+        "O rachetă urcând până în spațiu... E o priveliște pe care trebuie s-o văd o dată în viață."
+      ]
+    }
+  ]
+}

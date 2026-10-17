@@ -1,0 +1,43 @@
+{
+  "displayName": {
+    "en": [
+      "Pastoria City"
+    ],
+    "text": [
+      "Orașul Pastoria"
+    ]
+  },
+  "people": {
+    "pokemon_breeder_f": {
+      "name": {
+        "en": [
+          "Pokémon Breeder"
+        ],
+        "text": [
+          "Crescătoare de Pokémoni"
+        ]
+      }
+    },
+    "twin": {
+      "name": {
+        "en": [
+          "Little Girl"
+        ],
+        "text": [
+          "Fetița"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My big sister goes out picking berries every single day! Come and see us again!",
+          "We cook them, too. We mix them all up, and they come out yummy!"
+        ],
+        "text": [
+          "Sora mea mai mare iese la cules boabe în fiecare zi! Mai vino pe la noi!",
+          "Le și gătim. Le amestecăm pe toate și ies delicioase!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,34 @@
+{
+  "Attendant": [
+    {
+      "en": [
+        "Hello. May I help you with anything?",
+        "WHAT'S GOOD?",
+        "NOTHING, THANKS"
+      ],
+      "text": [
+        "Bună ziua. Te pot ajuta cu ceva?",
+        "CE-MI RECOMANZI?",
+        "NIMIC, MERSI"
+      ]
+    },
+    {
+      "en": [
+        "Please enjoy your visit."
+      ],
+      "text": [
+        "Să ai o vizită plăcută."
+      ]
+    },
+    {
+      "en": [
+        "False Swipe makes a wild Pokémon easier to catch.",
+        "A good many customers have told me so in confidence lately."
+      ],
+      "text": [
+        "Lovitura Blândă face un Pokémon sălbatic mai ușor de prins.",
+        "Mulți clienți mi-au spus-o în taină în ultima vreme."
+      ]
+    }
+  ]
+}

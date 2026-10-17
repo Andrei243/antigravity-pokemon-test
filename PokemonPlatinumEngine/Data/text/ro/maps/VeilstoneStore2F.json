@@ -1,0 +1,120 @@
+{
+  "displayName": {
+    "en": [
+      "Veilstone Dept. Store"
+    ],
+    "text": [
+      "Magazinul Universal Veilstone"
+    ]
+  },
+  "people": {
+    "lady": {
+      "name": {
+        "en": [
+          "Lady"
+        ],
+        "text": [
+          "Doamna"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Where might I find matching dresses for myself and my darling Pokémon?"
+        ],
+        "text": [
+          "Unde găsesc rochii asortate pentru mine și scumpul meu Pokémon?"
+        ]
+      }
+    },
+    "bug_catcher_1": {
+      "name": {
+        "en": [
+          "Bug Catcher"
+        ],
+        "text": [
+          "Vânătorul de insecte"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm giving my Kricketot an HP Up.",
+          "That makes its HP go up, right?"
+        ],
+        "text": [
+          "Îi dau lui Kricketot al meu un Plus de HP.",
+          "Asta îi crește HP-ul, nu?"
+        ]
+      }
+    },
+    "cashier_m": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      }
+    },
+    "receptionist": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitor"
+        ]
+      }
+    },
+    "cashier_f_up": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      }
+    },
+    "cashier_f_mid": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      }
+    },
+    "bug_catcher_2": {
+      "name": {
+        "en": [
+          "Bug Catcher"
+        ],
+        "text": [
+          "Vânătorul de insecte"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm getting a Carbos! Or should it be a Protein?",
+          "Then again, Iron's not bad either..."
+        ],
+        "text": [
+          "Iau un Carbos! Sau mai bine o Proteină?",
+          "Pe de altă parte, nici Fierul nu e rău..."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "13,2": {
+      "en": [
+        "B1F: Food and Produce. 1F: Trainers' Zone. 2F: Battle Collection. 3F: TM Corner. 4F: Poké Dolls and Goods. 5F: Rooftop Plaza."
+      ],
+      "text": [
+        "Subsol: Alimente. Parter: Antrenori. Et. 2: Luptă. Et. 3: TM-uri. Et. 4: Păpuși și mobilier. Et. 5: Terasa."
+      ]
+    }
+  }
+}

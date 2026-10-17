@@ -1,0 +1,501 @@
+{
+  "displayName": {
+    "en": [
+      "Seven Stars Restaurant"
+    ],
+    "text": [
+      "Restaurantul Șapte Stele"
+    ]
+  },
+  "people": {
+    "gentleman_leonardo": {
+      "name": {
+        "en": [
+          "Leonardo"
+        ],
+        "text": [
+          "Leonardo"
+        ]
+      },
+      "before": {
+        "en": [
+          "Gentleman Leonardo: Forty years we have dined here, my dear wife and I. Indulge an old couple with a battle?"
+        ],
+        "text": [
+          "Gentleman Leonardo: De patruzeci de ani cinăm aici, draga mea soție și cu mine. Le faci plăcerea a doi bătrâni cu o luptă?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Gentleman Leonardo: Splendid! That takes me back forty years."
+        ],
+        "text": [
+          "Gentleman Leonardo: Splendid! M-a întors cu patruzeci de ani în urmă."
+        ]
+      }
+    },
+    "socialite_rebecca": {
+      "name": {
+        "en": [
+          "Rebecca"
+        ],
+        "text": [
+          "Rebecca"
+        ]
+      },
+      "before": {
+        "en": [
+          "Socialite Rebecca: Leonardo is quite hopeless on his own. In a double battle I can keep an eye on him."
+        ],
+        "text": [
+          "Mondenă Rebecca: Leonardo singur e un caz pierdut. Într-o luptă dublă pot să am grijă de el."
+        ]
+      },
+      "after": {
+        "en": [
+          "Socialite Rebecca: You see, dear? I told you not to lead with the Chatot."
+        ],
+        "text": [
+          "Mondenă Rebecca: Vezi, dragule? Ți-am zis să nu începi cu Chatot."
+        ]
+      }
+    },
+    "rich_boy_roman": {
+      "name": {
+        "en": [
+          "Roman"
+        ],
+        "text": [
+          "Roman"
+        ]
+      },
+      "before": {
+        "en": [
+          "Rich Boy Roman: We've had every dish on the menu, twice. The only thing left to order is a battle."
+        ],
+        "text": [
+          "Băiat bogat Roman: Am mâncat tot din meniu, de două ori. Singurul lucru rămas de comandat e o luptă."
+        ]
+      },
+      "after": {
+        "en": [
+          "Rich Boy Roman: Waiter! The bill. And something for my pride."
+        ],
+        "text": [
+          "Băiat bogat Roman: Chelner! Nota. Și ceva pentru mândria mea."
+        ]
+      }
+    },
+    "lady_kylie": {
+      "name": {
+        "en": [
+          "Kylie"
+        ],
+        "text": [
+          "Kylie"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lady Kylie: My Clefairy are too well brought up to battle at the table. Well, usually."
+        ],
+        "text": [
+          "Doamnă Kylie: Clefairy ai mei sunt prea bine crescuți ca să se lupte la masă. Ei, de obicei."
+        ]
+      },
+      "after": {
+        "en": [
+          "Lady Kylie: Oh my. We did forget our manners, didn't we?"
+        ],
+        "text": [
+          "Doamnă Kylie: Vai. Ne-am uitat bunele maniere, nu?"
+        ]
+      }
+    },
+    "reporter_valerie": {
+      "name": {
+        "en": [
+          "Valerie"
+        ],
+        "text": [
+          "Valerie"
+        ]
+      },
+      "before": {
+        "en": [
+          "Reporter Valerie: Tonight's top story: a challenger walks up to our table! More after this battle."
+        ],
+        "text": [
+          "Reporter Valerie: Știrea serii: un adversar se apropie de masa noastră! Detalii după luptă."
+        ]
+      },
+      "after": {
+        "en": [
+          "Reporter Valerie: And that's the news. Back to my dessert."
+        ],
+        "text": [
+          "Reporter Valerie: Acestea au fost știrile. Mă întorc la desert."
+        ]
+      }
+    },
+    "cameraman_darryl": {
+      "name": {
+        "en": [
+          "Darryl"
+        ],
+        "text": [
+          "Darryl"
+        ]
+      },
+      "before": {
+        "en": [
+          "Cameraman Darryl: We're off the clock, so no cameras. But I never turn down a good scene."
+        ],
+        "text": [
+          "Cameraman Darryl: Suntem în timpul liber, deci fără camere. Dar nu refuz niciodată o scenă bună."
+        ]
+      },
+      "after": {
+        "en": [
+          "Cameraman Darryl: And of course, the one time I'm not filming..."
+        ],
+        "text": [
+          "Cameraman Darryl: Și, firește, singura dată când nu filmez..."
+        ]
+      }
+    },
+    "artist_ismael": {
+      "name": {
+        "en": [
+          "Ismael"
+        ],
+        "text": [
+          "Ismael"
+        ]
+      },
+      "before": {
+        "en": [
+          "Artist Ismael: Don't move! The light on your face just now... No, it's gone. A battle will have to do instead."
+        ],
+        "text": [
+          "Artist Ismael: Nu mișca! Lumina de pe fața ta... Nu, a dispărut. Va trebui să ne mulțumim cu o luptă."
+        ]
+      },
+      "after": {
+        "en": [
+          "Artist Ismael: I shall call this one \"Still Life with Defeat\"."
+        ],
+        "text": [
+          "Artist Ismael: Pe asta o voi numi „Natură moartă cu înfrângere”."
+        ]
+      }
+    },
+    "pi_kendrick": {
+      "name": {
+        "en": [
+          "Kendrick"
+        ],
+        "text": [
+          "Kendrick"
+        ]
+      },
+      "before": {
+        "en": [
+          "PI Kendrick: I have been watching you since you came in. You have the look of a Trainer who can't refuse a challenge."
+        ],
+        "text": [
+          "Detectiv Kendrick: Te urmăresc de când ai intrat. Ai aerul cuiva care nu poate refuza o provocare."
+        ]
+      },
+      "after": {
+        "en": [
+          "PI Kendrick: My deductions were right. I only wish they'd been wrong."
+        ],
+        "text": [
+          "Detectiv Kendrick: Deducțiile mele au fost corecte. Aș fi vrut să fie greșite."
+        ]
+      }
+    },
+    "beauty_gabriella": {
+      "name": {
+        "en": [
+          "Gabriella"
+        ],
+        "text": [
+          "Gabriella"
+        ]
+      },
+      "before": {
+        "en": [
+          "Beauty Gabriella: He says he's working on a case. I say he's just nosy. Shall we give him something to investigate?"
+        ],
+        "text": [
+          "Frumoasă Gabriella: El zice că lucrează la un caz. Eu zic că e doar băgăcios. Îi dăm ceva de investigat?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Beauty Gabriella: Case closed, I think."
+        ],
+        "text": [
+          "Frumoasă Gabriella: Caz închis, cred."
+        ]
+      }
+    },
+    "beauty_harley": {
+      "name": {
+        "en": [
+          "Harley"
+        ],
+        "text": [
+          "Harley"
+        ]
+      },
+      "before": {
+        "en": [
+          "Beauty Harley: He has been staring at his soup for an hour, looking for the right colours. Do rescue me."
+        ],
+        "text": [
+          "Frumoasă Harley: Se uită de o oră la supă, căutând culorile potrivite. Salvează-mă, te rog."
+        ]
+      },
+      "after": {
+        "en": [
+          "Beauty Harley: That was the most fun I've had all evening."
+        ],
+        "text": [
+          "Frumoasă Harley: Asta a fost cea mai mare distracție din toată seara."
+        ]
+      }
+    },
+    "aroma_lady_alison": {
+      "name": {
+        "en": [
+          "Alison"
+        ],
+        "text": [
+          "Alison"
+        ]
+      },
+      "before": {
+        "en": [
+          "Aroma Lady Alison: Can you smell the roses on the tables? My Roselia arranged them. It battles just as prettily."
+        ],
+        "text": [
+          "Doamna Aromelor Alison: Simți trandafirii de pe mese? I-a aranjat Roselia mea. Se luptă la fel de frumos."
+        ]
+      },
+      "after": {
+        "en": [
+          "Aroma Lady Alison: Even a rose that loses still smells lovely."
+        ],
+        "text": [
+          "Doamna Aromelor Alison: Chiar și un trandafir care pierde miroase frumos."
+        ]
+      }
+    },
+    "veteran_emanuel": {
+      "name": {
+        "en": [
+          "Emanuel"
+        ],
+        "text": [
+          "Emanuel"
+        ]
+      },
+      "before": {
+        "en": [
+          "Veteran Emanuel: I am teaching my granddaughter how two Pokémon cover each other. You will do nicely for the lesson."
+        ],
+        "text": [
+          "Veteran Emanuel: Îmi învăț nepoata cum se apără doi Pokémoni unul pe altul. Pici numai bine pentru lecție."
+        ]
+      },
+      "after": {
+        "en": [
+          "Veteran Emanuel: Hm. It seems the lesson was for me."
+        ],
+        "text": [
+          "Veteran Emanuel: Hm. Se pare că lecția a fost pentru mine."
+        ]
+      }
+    },
+    "lass_blythe": {
+      "name": {
+        "en": [
+          "Blythe"
+        ],
+        "text": [
+          "Blythe"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Blythe: Grandpa talks about tactics all through dinner. I just want to get on with it!"
+        ],
+        "text": [
+          "Domnișoară Blythe: Bunicul vorbește despre tactică toată cina. Eu vreau doar să ne apucăm!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Blythe: Next time I'm picking the tactics."
+        ],
+        "text": [
+          "Domnișoară Blythe: Data viitoare aleg eu tactica."
+        ]
+      }
+    },
+    "pokefan_meredith": {
+      "name": {
+        "en": [
+          "Meredith"
+        ],
+        "text": [
+          "Meredith"
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokéfan Meredith: My little ones have been so good all through dinner. They've earned a run-around."
+        ],
+        "text": [
+          "Pokéfan Meredith: Micuții mei au fost cuminți toată cina. Merită să se zbenguie puțin."
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokéfan Meredith: There, there. Pudding for everybody anyway."
+        ],
+        "text": [
+          "Pokéfan Meredith: Gata, gata. Budincă pentru toată lumea, oricum."
+        ]
+      }
+    },
+    "scientist_emilio": {
+      "name": {
+        "en": [
+          "Emilio"
+        ],
+        "text": [
+          "Emilio"
+        ]
+      },
+      "before": {
+        "en": [
+          "Scientist Emilio: My theory: two minds working as one will beat any single Trainer. Shall we run the experiment?"
+        ],
+        "text": [
+          "Om de știință Emilio: Teoria mea: două minți care lucrează ca una bat orice Antrenor singur. Facem experimentul?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Scientist Emilio: Fascinating. The theory needs more work."
+        ],
+        "text": [
+          "Om de știință Emilio: Fascinant. Teoria mai are nevoie de lucru."
+        ]
+      }
+    },
+    "school_kid_esteban": {
+      "name": {
+        "en": [
+          "Esteban"
+        ],
+        "text": [
+          "Esteban"
+        ]
+      },
+      "before": {
+        "en": [
+          "School Kid Esteban: Mum says no pudding until I've finished my homework. Our homework is double battles!"
+        ],
+        "text": [
+          "Școlar Esteban: Mama zice că nu primesc budincă până nu-mi fac temele. Tema noastră e luptele duble!"
+        ]
+      },
+      "after": {
+        "en": [
+          "School Kid Esteban: Does losing count as finishing it?"
+        ],
+        "text": [
+          "Școlar Esteban: Dacă pierd, se pune că am terminat-o?"
+        ]
+      }
+    },
+    "breeder_kaylee": {
+      "name": {
+        "en": [
+          "Kaylee"
+        ],
+        "text": [
+          "Kaylee"
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokémon Breeder Kaylee: I raised these three from Eggs. They've never eaten anywhere this fancy, and they're over-excited."
+        ],
+        "text": [
+          "Crescător Pokémon Kaylee: Pe ăștia trei i-am crescut din Ouă. N-au mâncat niciodată într-un loc așa de elegant și sunt prea agitați."
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokémon Breeder Kaylee: Well battled, all of you. Now sit down and behave."
+        ],
+        "text": [
+          "Crescător Pokémon Kaylee: Bine v-ați luptat, toți. Acum stați jos și fiți cuminți."
+        ]
+      }
+    },
+    "collector_eugine": {
+      "name": {
+        "en": [
+          "Eugene"
+        ],
+        "text": [
+          "Eugene"
+        ]
+      },
+      "before": {
+        "en": [
+          "Collector Eugene: I fished for a whole year to find this Pokémon. Tonight it finally gets to show off."
+        ],
+        "text": [
+          "Colecționar Eugene: Am pescuit un an întreg ca să găsesc Pokémonul ăsta. În seara asta, în sfârșit, se poate arăta."
+        ]
+      },
+      "after": {
+        "en": [
+          "Collector Eugene: A whole year... and it was over before the starter arrived."
+        ],
+        "text": [
+          "Colecționar Eugene: Un an întreg... și s-a terminat înainte să vină aperitivul."
+        ]
+      }
+    },
+    "waiter": {
+      "name": {
+        "en": [
+          "Waiter"
+        ],
+        "text": [
+          "Chelner"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the Seven Stars Restaurant.",
+          "Our guests come for the cooking and stay for the battles: two Pokémon against two, at any table you like."
+        ],
+        "text": [
+          "Bun venit la Restaurantul Șapte Stele.",
+          "Oaspeții vin pentru bucătărie și rămân pentru lupte: doi Pokémoni contra doi, la orice masă vrei."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

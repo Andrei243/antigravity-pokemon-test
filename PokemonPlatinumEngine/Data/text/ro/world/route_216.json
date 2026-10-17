@@ -1,0 +1,256 @@
+{
+  "people": {
+    "ace_trainer_blake": {
+      "name": {
+        "en": [
+          "Blake"
+        ],
+        "text": [
+          "Blake"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Blake: Every step through this snow is training. A battle is the best step of all!"
+        ],
+        "text": [
+          "Antrenor As Blake: Fiecare pas prin zăpada asta e antrenament. O luptă e cel mai bun pas dintre toate!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Blake: I'd blame the snow, but it was you. It was all you."
+        ],
+        "text": [
+          "Antrenor As Blake: Aș da vina pe zăpadă, dar ai fost tu. Numai tu."
+        ]
+      }
+    },
+    "ace_trainer_laura": {
+      "name": {
+        "en": [
+          "Laura"
+        ],
+        "text": [
+          "Laura"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Laura: My Tropius doesn't mind the cold at all. Even the fruit round its neck never freezes!"
+        ],
+        "text": [
+          "Antrenor As Laura: Lui Tropius al meu nu-i pasă de frig. Nici fructele de la gât nu-i îngheață!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Laura: Cool as the snow itself. You kept your head the whole way through."
+        ],
+        "text": [
+          "Antrenor As Laura: Rece ca zăpada însăși. Ți-ai păstrat cumpătul de la început până la sfârșit."
+        ]
+      }
+    },
+    "black_belt_philip": {
+      "name": {
+        "en": [
+          "Philip"
+        ],
+        "text": [
+          "Philip"
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Philip: I train by smashing the ice on this road! Let's see if you crack as easily!"
+        ],
+        "text": [
+          "Centură Neagră Philip: Mă antrenez spărgând gheața de pe drumul ăsta! Să vedem dacă și tu crapi la fel de ușor!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Philip: I was the one who cracked. Back to the ice for me."
+        ],
+        "text": [
+          "Centură Neagră Philip: Eu am crăpat. Înapoi la gheață."
+        ]
+      }
+    },
+    "skier_bradley": {
+      "name": {
+        "en": [
+          "Bradley"
+        ],
+        "text": [
+          "Bradley"
+        ]
+      },
+      "before": {
+        "en": [
+          "Skier Bradley: Look out below! ...Oh, a battle? Sure, I can stop. Eventually!"
+        ],
+        "text": [
+          "Schior Bradley: Feriți-vă jos! ...A, o luptă? Sigur, pot să mă opresc. Până la urmă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Skier Bradley: Wiped out! Right into the deepest drift on the slope."
+        ],
+        "text": [
+          "Schior Bradley: Am căzut! Drept în cel mai adânc troian de pe pârtie."
+        ]
+      }
+    },
+    "ace_trainer_garrett": {
+      "name": {
+        "en": [
+          "Garrett"
+        ],
+        "text": [
+          "Garrett"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Garrett: You came all the way through the mountain? Then you're worth a battle."
+        ],
+        "text": [
+          "Antrenor As Garrett: Ai trecut tot muntele? Atunci meriți o luptă."
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Garrett: You've earned the road ahead. I'll go and thaw out somewhere."
+        ],
+        "text": [
+          "Antrenor As Garrett: Ți-ai câștigat drumul înainte. Eu mă duc să mă dezgheț undeva."
+        ]
+      }
+    },
+    "ace_trainer_maria": {
+      "name": {
+        "en": [
+          "Maria"
+        ],
+        "text": [
+          "Maria"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Maria: I'm on my way to Snowpoint to take on its Gym. You'll be my warm-up!"
+        ],
+        "text": [
+          "Antrenor As Maria: Merg la Snowpoint să provoc Arena. Tu o să fii încălzirea mea!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Maria: If that was the warm-up, I'd better keep training before I reach the Gym."
+        ],
+        "text": [
+          "Antrenor As Maria: Dacă asta a fost încălzirea, mai bine mă mai antrenez până ajung la Arenă."
+        ]
+      }
+    },
+    "skier_kaitlyn": {
+      "name": {
+        "en": [
+          "Kaitlyn"
+        ],
+        "text": [
+          "Kaitlyn"
+        ]
+      },
+      "before": {
+        "en": [
+          "Skier Kaitlyn: Fresh snow, clear skies and a trainer to battle. What a perfect day!"
+        ],
+        "text": [
+          "Schior Kaitlyn: Zăpadă proaspătă, cer senin și un Antrenor cu care să mă lupt. Ce zi perfectă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Skier Kaitlyn: Face first into the snow. Good thing it's soft!"
+        ],
+        "text": [
+          "Schior Kaitlyn: Cu fața în zăpadă. Bine că e moale!"
+        ]
+      }
+    },
+    "skier_edward": {
+      "name": {
+        "en": [
+          "Edward"
+        ],
+        "text": [
+          "Edward"
+        ]
+      },
+      "before": {
+        "en": [
+          "Skier Edward: Nobody's faster on these slopes than me, except my Sneasel!"
+        ],
+        "text": [
+          "Schior Edward: Nimeni nu e mai rapid pe pârtiile astea decât mine, în afară de Sneasel al meu!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Skier Edward: Too fast for my own good. I went sliding right past the win."
+        ],
+        "text": [
+          "Schior Edward: Prea rapid pentru binele meu. Am alunecat chiar pe lângă victorie."
+        ]
+      }
+    },
+    "skier_andrea": {
+      "name": {
+        "en": [
+          "Andrea"
+        ],
+        "text": [
+          "Andrea"
+        ]
+      },
+      "before": {
+        "en": [
+          "Skier Andrea: My Snover and I play out in the snow all day. Want to join in?"
+        ],
+        "text": [
+          "Schior Andrea: Eu și Snover al meu ne jucăm în zăpadă toată ziua. Vrei să te joci și tu?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Skier Andrea: That wasn't the snowball fight I had in mind."
+        ],
+        "text": [
+          "Schior Andrea: Nu la bătaia asta cu bulgări mă gândeam."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost": {
+      "en": [
+        "Route 216\nEast: Mt. Coronet"
+      ],
+      "text": [
+        "Ruta 216\nEst: Muntele Coronet"
+      ]
+    },
+    "signboard_snowbound_lodge": {
+      "en": [
+        "Snowbound Lodge\nCome in out of the snow and rest by the fire."
+      ],
+      "text": [
+        "Cabana din Zăpadă\nIntră de la zăpadă și odihnește-te lângă foc."
+      ]
+    }
+  }
+}

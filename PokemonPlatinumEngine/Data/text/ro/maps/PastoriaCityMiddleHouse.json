@@ -1,0 +1,45 @@
+{
+  "displayName": {
+    "en": [
+      "Pastoria City"
+    ],
+    "text": [
+      "Orașul Pastoria"
+    ]
+  },
+  "people": {
+    "old_man": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Combee are curious little things. Only the females ever evolve and grow strong. The males never do.",
+          "Come to think of it, my wife was a strong one too.",
+          "She evolved from my bride into the mother of all our children."
+        ],
+        "text": [
+          "Combee sunt niște ființe ciudate. Doar femelele evoluează și devin puternice. Masculii, niciodată.",
+          "Dacă stau să mă gândesc, și soția mea era puternică.",
+          "A evoluat din mireasa mea în mama tuturor copiilor noștri."
+        ]
+      }
+    },
+    "bug_catcher": {
+      "name": {
+        "en": [
+          "Bug Catcher"
+        ],
+        "text": [
+          "Vânătorul de insecte"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

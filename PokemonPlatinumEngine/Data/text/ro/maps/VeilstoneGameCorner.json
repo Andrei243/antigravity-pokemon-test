@@ -1,0 +1,208 @@
+{
+  "displayName": {
+    "en": [
+      "Game Corner"
+    ],
+    "text": [
+      "Sala de Jocuri"
+    ]
+  },
+  "people": {
+    "receptionist": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      }
+    },
+    "beauty_1": {
+      "name": {
+        "en": [
+          "Beauty"
+        ],
+        "text": [
+          "Frumoasa"
+        ]
+      }
+    },
+    "pokefan_m_1": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      }
+    },
+    "collector": {
+      "name": {
+        "en": [
+          "Farmer"
+        ],
+        "text": [
+          "Fermier"
+        ]
+      }
+    },
+    "guitarist": {
+      "name": {
+        "en": [
+          "Guitarist"
+        ],
+        "text": [
+          "Chitaristul"
+        ]
+      }
+    },
+    "worker": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          "Muncitorul"
+        ]
+      }
+    },
+    "beauty_2": {
+      "name": {
+        "en": [
+          "Beauty"
+        ],
+        "text": [
+          "Frumoasa"
+        ]
+      }
+    },
+    "pokefan_m_2": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      }
+    },
+    "looker": {
+      "name": {
+        "en": [
+          "Looker"
+        ],
+        "text": [
+          "Looker"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "12,6": {
+      "en": [
+        "A slot machine."
+      ],
+      "text": [
+        "Un aparat de joc."
+      ]
+    },
+    "13,7": {
+      "en": [
+        "A slot machine."
+      ],
+      "text": [
+        "Un aparat de joc."
+      ]
+    },
+    "7,7": {
+      "en": [
+        "A slot machine."
+      ],
+      "text": [
+        "Un aparat de joc."
+      ]
+    },
+    "7,8": {
+      "en": [
+        "A slot machine."
+      ],
+      "text": [
+        "Un aparat de joc."
+      ]
+    },
+    "13,9": {
+      "en": [
+        "A slot machine."
+      ],
+      "text": [
+        "Un aparat de joc."
+      ]
+    },
+    "8,6": {
+      "en": [
+        "A slot machine."
+      ],
+      "text": [
+        "Un aparat de joc."
+      ]
+    },
+    "8,7": {
+      "en": [
+        "A slot machine."
+      ],
+      "text": [
+        "Un aparat de joc."
+      ]
+    },
+    "8,8": {
+      "en": [
+        "A slot machine."
+      ],
+      "text": [
+        "Un aparat de joc."
+      ]
+    },
+    "8,9": {
+      "en": [
+        "A slot machine."
+      ],
+      "text": [
+        "Un aparat de joc."
+      ]
+    },
+    "13,6": {
+      "en": [
+        "A slot machine."
+      ],
+      "text": [
+        "Un aparat de joc."
+      ]
+    },
+    "12,8": {
+      "en": [
+        "A slot machine."
+      ],
+      "text": [
+        "Un aparat de joc."
+      ]
+    },
+    "12,9": {
+      "en": [
+        "A slot machine."
+      ],
+      "text": [
+        "Un aparat de joc."
+      ]
+    },
+    "10,2": {
+      "en": [
+        "A board on the wall."
+      ],
+      "text": [
+        "O tablă pe perete."
+      ]
+    }
+  }
+}

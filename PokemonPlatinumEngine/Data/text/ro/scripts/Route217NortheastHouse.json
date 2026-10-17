@@ -1,0 +1,28 @@
+{
+  "Woman": [
+    {
+      "en": [
+        "... Somebody... here...?",
+        "... How rare...",
+        "... Thank you... for coming... A gift..."
+      ],
+      "text": [
+        "... Cineva... aici...?",
+        "... Ce rar...",
+        "... Mulțumesc... că ai venit... Un dar..."
+      ]
+    },
+    {
+      "en": [
+        "... The Spell Tag...",
+        "... It gives Ghost-type moves more strength...",
+        "... May it serve you well..."
+      ],
+      "text": [
+        "... Talismanul Vrăjit...",
+        "... Dă mai multă putere mișcărilor de tip Fantomă...",
+        "... Să-ți fie de folos..."
+      ]
+    }
+  ]
+}

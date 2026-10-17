@@ -1,0 +1,51 @@
+{
+  "displayName": {
+    "en": [
+      "Pastoria City"
+    ],
+    "text": [
+      "Orașul Pastoria"
+    ]
+  },
+  "people": {
+    "cashier_f": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitor"
+        ]
+      }
+    },
+    "cashier_m": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitor"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the Great Marsh! Step up to the counter if you would like to play a Safari Game."
+        ],
+        "text": [
+          "Bun venit la Marea Mlaștină! Vino la ghișeu dacă vrei să joci un Joc Safari."
+        ]
+      }
+    },
+    "cowgirl": {
+      "name": {
+        "en": [
+          "Cowgirl"
+        ],
+        "text": [
+          "Cowgirl"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

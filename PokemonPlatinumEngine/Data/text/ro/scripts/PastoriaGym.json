@@ -1,0 +1,152 @@
+{
+  "GymGuide": [
+    {
+      "en": [
+        "Gym Guide"
+      ],
+      "text": [
+        "Ghidul Arenei"
+      ]
+    },
+    {
+      "en": [
+        "Hey there, champ in the making! Welcome to the Pastoria Gym!"
+      ],
+      "text": [
+        "Salutare! Bun venit la Arena Pastoria!"
+      ]
+    },
+    {
+      "en": [
+        "Crasher Wake uses Water types. Grass and Electric moves will make a real splash against them."
+      ],
+      "text": [
+        "Crasher Wake folosește Pokémoni de tip Apă. Mișcările de Iarbă și Electric îi dau gata."
+      ]
+    },
+    {
+      "en": [
+        "See the buttons on the walkways? Step on one and the water rises or falls. Some paths only show up at the right level!"
+      ],
+      "text": [
+        "Vezi butoanele de pe pasarele? Calci pe unul și apa urcă sau coboară. Unele drumuri apar doar la nivelul potrivit!"
+      ]
+    },
+    {
+      "en": [
+        "{player}, you beat Crasher Wake! Now that's what I call riding the wave!"
+      ],
+      "text": [
+        "{player}, l-ai învins pe Crasher Wake! Asta înseamnă să călărești valul!"
+      ]
+    }
+  ],
+  "GymStatue": [
+    {
+      "en": [
+        "PASTORIA CITY POKéMON GYM. Leader: Crasher Wake. Certified Trainers: {rival}"
+      ],
+      "text": [
+        "ARENA POKéMON DIN ORAȘUL PASTORIA. Lider: Crasher Wake. Antrenori atestați: {rival}"
+      ]
+    },
+    {
+      "en": [
+        "PASTORIA CITY POKéMON GYM. Leader: Crasher Wake. Certified Trainers: {rival}, {player}"
+      ],
+      "text": [
+        "ARENA POKéMON DIN ORAȘUL PASTORIA. Lider: Crasher Wake. Antrenori atestați: {rival}, {player}"
+      ]
+    }
+  ],
+  "Wake": [
+    {
+      "en": [
+        "Crasher Wake"
+      ],
+      "text": [
+        "Crasher Wake"
+      ]
+    },
+    {
+      "en": [
+        "Wahahaha! I am the masked marvel of the marsh! I am Crasher Wake!"
+      ],
+      "text": [
+        "Uahahaha! Sunt minunea mascată a mlaștinii! Sunt Crasher Wake!"
+      ]
+    },
+    {
+      "en": [
+        "My Water-type Pokémon and I crash through anything like a wave on the rocks!"
+      ],
+      "text": [
+        "Pokémonii mei de tip Apă și cu mine spargem orice, ca un val de stânci!"
+      ]
+    },
+    {
+      "en": [
+        "Let's see if you can stand up to the tide! Here I come!"
+      ],
+      "text": [
+        "Să vedem dacă reziști la maree! Vin peste tine!"
+      ]
+    },
+    {
+      "en": [
+        "Glub... What a battle! You rode out every wave I threw at you!"
+      ],
+      "text": [
+        "Glub... Ce luptă! Ai rezistat la fiecare val pe care l-am trimis!"
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Fen Badge from Crasher Wake!"
+      ],
+      "text": [
+        "{player} a primit Insigna Mlaștină de la Crasher Wake!"
+      ]
+    },
+    {
+      "en": [
+        "With the Fen Badge, Pokémon up to level 60 will listen to you, even traded ones."
+      ],
+      "text": [
+        "Cu Insigna Mlaștină, te ascultă Pokémonii până la nivelul 60, chiar și cei primiți la schimb."
+      ]
+    },
+    {
+      "en": [
+        "And you can use Surf outside of battle now. Ride the waves anywhere you like!"
+      ],
+      "text": [
+        "Și acum poți folosi mișcarea Surf în afara luptei. Călărește valurile oriunde vrei!"
+      ]
+    },
+    {
+      "en": [
+        "And take this! A souvenir from a Leader who never holds back!"
+      ],
+      "text": [
+        "Și ia asta! O amintire de la un Lider care nu se cruță niciodată!"
+      ]
+    },
+    {
+      "en": [
+        "TM55 is Brine. It hits twice as hard when the foe is down to half its health or less. Finish them with a splash!"
+      ],
+      "text": [
+        "TM55 e Saramură. Lovește de două ori mai tare când adversarul are jumătate din HP sau mai puțin. Termină-l cu o stropitură!"
+      ]
+    },
+    {
+      "en": [
+        "Wahaha! The next time we meet, my waves will be even bigger! Count on it!"
+      ],
+      "text": [
+        "Uahaha! Data viitoare când ne vedem, valurile mele vor fi și mai mari! Pe cuvânt!"
+      ]
+    }
+  ]
+}

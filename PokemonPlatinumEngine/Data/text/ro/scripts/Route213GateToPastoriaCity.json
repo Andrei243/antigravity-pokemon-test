@@ -1,0 +1,32 @@
+{
+  "SchoolKid": [
+    {
+      "en": [
+        "Tell me, have you heard of the Battle Frontier?"
+      ],
+      "text": [
+        "Spune-mi, ai auzit de Battle Frontier?"
+      ]
+    },
+    {
+      "en": [
+        "Then you're someone who keeps up with things.",
+        "It's meant to be great fun: halls for battling in, each with rules all its own."
+      ],
+      "text": [
+        "Atunci ții pasul cu noutățile.",
+        "Se zice că e foarte distractiv: săli de luptă, fiecare cu regulile ei."
+      ]
+    },
+    {
+      "en": [
+        "Then you're a little behind the times, I'd say.",
+        "It's meant to be great fun: halls where you battle one Trainer after another, each with rules all its own."
+      ],
+      "text": [
+        "Atunci ai cam rămas în urmă cu noutățile, aș zice.",
+        "Se zice că e foarte distractiv: săli unde te lupți cu un Antrenor după altul, fiecare cu regulile ei."
+      ]
+    }
+  ]
+}

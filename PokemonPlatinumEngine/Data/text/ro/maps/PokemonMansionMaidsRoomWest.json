@@ -1,0 +1,40 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Mansion"
+    ],
+    "text": [
+      "Conacul Pokémon"
+    ]
+  },
+  "people": {
+    "item_luxury_ball": {
+      "name": {
+        "en": [
+          "Luxury Ball"
+        ],
+        "text": [
+          "Ball de Lux"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "6,4": {
+      "en": [
+        "A bed, neatly made."
+      ],
+      "text": [
+        "Un pat, făcut frumos."
+      ]
+    },
+    "6,5": {
+      "en": [
+        "A bed, neatly made."
+      ],
+      "text": [
+        "Un pat, făcut frumos."
+      ]
+    }
+  }
+}

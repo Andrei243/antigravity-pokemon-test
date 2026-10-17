@@ -1,0 +1,15 @@
+{
+  "people": {
+    "rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

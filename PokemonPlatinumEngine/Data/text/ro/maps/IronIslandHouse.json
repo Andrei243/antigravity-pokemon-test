@@ -1,0 +1,23 @@
+{
+  "displayName": {
+    "en": [
+      "Iron Island"
+    ],
+    "text": [
+      "INSULA DE FIER"
+    ]
+  },
+  "people": {
+    "byron": {
+      "name": {
+        "en": [
+          "Byron"
+        ],
+        "text": [
+          "Byron"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

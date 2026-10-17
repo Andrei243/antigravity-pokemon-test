@@ -1,0 +1,92 @@
+{
+  "Guitarist": [
+    {
+      "en": [
+        "Guitarist"
+      ],
+      "text": [
+        "Chitaristul"
+      ]
+    },
+    {
+      "en": [
+        "And one, two, three, four... That's it, Clefairy! Sweeter! Give them a smile they'll never forget!"
+      ],
+      "text": [
+        "Și unu, doi, trei, patru... Așa, Clefairy! Mai dulce! Fă-le un zâmbet pe care să nu-l uite niciodată!"
+      ]
+    }
+  ],
+  "Fisherman": [
+    {
+      "en": [
+        "Fisherman"
+      ],
+      "text": [
+        "Pescarul"
+      ]
+    },
+    {
+      "en": [
+        "Pikachu! Keep up with the music! You've got to sparkle out there!"
+      ],
+      "text": [
+        "Pikachu! Ține ritmul cu muzica! Trebuie să strălucești acolo!"
+      ]
+    }
+  ],
+  "ClefairySouth": [
+    {
+      "en": [
+        "Clefairy"
+      ],
+      "text": [
+        "Clefairy"
+      ]
+    },
+    {
+      "en": [
+        "Fai-fai!"
+      ],
+      "text": [
+        "Fai-fai!"
+      ]
+    }
+  ],
+  "ClefairyNorth": [
+    {
+      "en": [
+        "Clefairy"
+      ],
+      "text": [
+        "Clefairy"
+      ]
+    },
+    {
+      "en": [
+        "Fai-fai-fai!"
+      ],
+      "text": [
+        "Fai-fai-fai!"
+      ]
+    }
+  ],
+  "Pikachu": [
+    {
+      "en": [
+        "Pikachu"
+      ],
+      "text": [
+        "Pikachu"
+      ]
+    },
+    {
+      "en": [
+        "Pika-pikaaa!"
+      ],
+      "text": [
+        "Pika-pikaaa!"
+      ]
+    }
+  ]
+}

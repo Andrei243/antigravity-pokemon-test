@@ -1,0 +1,366 @@
+{
+  "Challenge": [
+    {
+      "en": [
+        "Welcome.",
+        "Here you may challenge the pride of the mansion: its five Trainer maids.",
+        "The challenge is to beat all five of us one after another, with no rest in between.",
+        "And should you beat us in exactly the number of turns we name, there is a special reward."
+      ],
+      "text": [
+        "Bun venit.",
+        "Aici poți provoca mândria conacului: cele cinci cameriste Antrenoare.",
+        "Provocarea e să ne învingi pe toate cinci, una după alta, fără odihnă între lupte.",
+        "Iar dacă ne învingi în exact numărul de ture pe care-l spunem noi, primești o răsplată specială."
+      ]
+    },
+    {
+      "en": [
+        "A turn, by the way, is one round of a battle: each side has a Pokémon use a move, uses an item, or changes Pokémon.",
+        "And now..."
+      ],
+      "text": [
+        "O tură e o rundă de luptă: fiecare parte folosește o mișcare sau un obiect ori schimbă Pokémonul.",
+        "Și acum..."
+      ]
+    },
+    {
+      "en": [
+        "The 5-Maid Knockout Exact-Turn Attack Challenge! Today's number of turns is {var:VAR_FIVE_MAID_KNOCKOUT_TURN_TARGET}! Will you try?"
+      ],
+      "text": [
+        "Provocarea celor 5 Cameriste în Ture Exacte! Numărul de ture de azi e {var:VAR_FIVE_MAID_KNOCKOUT_TURN_TARGET}! Încerci?"
+      ]
+    },
+    {
+      "en": [
+        "Very well! Our first maid, please!"
+      ],
+      "text": [
+        "Foarte bine! Prima cameristă, vă rog!"
+      ]
+    },
+    {
+      "en": [
+        "Maid Belinda"
+      ],
+      "text": [
+        "Cameristă Belinda"
+      ]
+    },
+    {
+      "en": [
+        "First up! My favourite colour is blue, and I shall open the proceedings!"
+      ],
+      "text": [
+        "Prima! Culoarea mea preferată e albastrul, și eu deschid lucrările!"
+      ]
+    },
+    {
+      "en": [
+        "Maid Belinda"
+      ],
+      "text": [
+        "Cameristă Belinda"
+      ]
+    },
+    {
+      "en": [
+        "The next of us is really rather strong."
+      ],
+      "text": [
+        "Următoarea dintre noi e chiar destul de puternică."
+      ]
+    },
+    {
+      "en": [
+        "Maid Sophie"
+      ],
+      "text": [
+        "Cameristă Sophie"
+      ]
+    },
+    {
+      "en": [
+        "Delighted to meet you in battle. Green is the colour that suits me best!"
+      ],
+      "text": [
+        "Încântată să te întâlnesc în luptă. Verdele e culoarea care mi se potrivește cel mai bine!"
+      ]
+    },
+    {
+      "en": [
+        "Maid Sophie"
+      ],
+      "text": [
+        "Cameristă Sophie"
+      ]
+    },
+    {
+      "en": [
+        "I was number two, and a little bit tough. The next maid is tougher still!"
+      ],
+      "text": [
+        "Am fost numărul doi și puțin dură. Următoarea e și mai dură!"
+      ]
+    },
+    {
+      "en": [
+        "Maid Emily"
+      ],
+      "text": [
+        "Cameristă Emily"
+      ]
+    },
+    {
+      "en": [
+        "My lucky colour is yellow! The sunshine girl, that's me!"
+      ],
+      "text": [
+        "Culoarea mea norocoasă e galbenul! Eu sunt fata-soare!"
+      ]
+    },
+    {
+      "en": [
+        "Maid Emily"
+      ],
+      "text": [
+        "Cameristă Emily"
+      ]
+    },
+    {
+      "en": [
+        "The next maid is a wee bit stronger than I am."
+      ],
+      "text": [
+        "Următoarea cameristă e un pic mai puternică decât mine."
+      ]
+    },
+    {
+      "en": [
+        "Maid Elena"
+      ],
+      "text": [
+        "Cameristă Elena"
+      ]
+    },
+    {
+      "en": [
+        "Pink is the colour I can't do without! And I am fourth in line!"
+      ],
+      "text": [
+        "Rozul e culoarea fără de care nu pot trăi! Și sunt a patra la rând!"
+      ]
+    },
+    {
+      "en": [
+        "Maid Elena"
+      ],
+      "text": [
+        "Cameristă Elena"
+      ]
+    },
+    {
+      "en": [
+        "Th-the next maid is ever so strong!"
+      ],
+      "text": [
+        "U-următoarea cameristă e foarte, foarte puternică!"
+      ]
+    },
+    {
+      "en": [
+        "Congratulations! You have beaten four maids so far.",
+        "You have taken {var:TURNS} turns up to now. The target is {var:VAR_FIVE_MAID_KNOCKOUT_TURN_TARGET} turns."
+      ],
+      "text": [
+        "Felicitări! Până acum ai învins patru cameriste.",
+        "Până acum ai folosit {var:TURNS} ture. Ținta e de {var:VAR_FIVE_MAID_KNOCKOUT_TURN_TARGET} ture."
+      ]
+    },
+    {
+      "en": [
+        "Maid Clare"
+      ],
+      "text": [
+        "Cameristă Clare"
+      ]
+    },
+    {
+      "en": [
+        "Red is my colour! Ready or not, here comes number five!"
+      ],
+      "text": [
+        "Roșul e culoarea mea! Gata sau nu, vine numărul cinci!"
+      ]
+    },
+    {
+      "en": [
+        "Maid Clare"
+      ],
+      "text": [
+        "Cameristă Clare"
+      ]
+    },
+    {
+      "en": [
+        "You knocked out all five of us! You must be something splendid!"
+      ],
+      "text": [
+        "Ne-ai doborât pe toate cinci! Ce Antrenor strașnic!"
+      ]
+    },
+    {
+      "en": [
+        "Congratulations on your sweep.",
+        "The target was {var:VAR_FIVE_MAID_KNOCKOUT_TURN_TARGET} turns. The number of turns you took to beat the maids was {var:TURNS}."
+      ],
+      "text": [
+        "Felicitări pentru victoria completă.",
+        "Ținta era de {var:VAR_FIVE_MAID_KNOCKOUT_TURN_TARGET} ture. Ca să învingi cameristele, ai avut nevoie de {var:TURNS} ture."
+      ]
+    },
+    {
+      "en": [
+        "How splendid of you! You hit the target exactly!",
+        "A sweep in the very number of turns we named earns a special reward..."
+      ],
+      "text": [
+        "Minunat! Ai nimerit ținta exact!",
+        "O victorie completă în exact numărul de ture spus merită o răsplată specială..."
+      ]
+    },
+    {
+      "en": [
+        "The chance to battle our own young prodigy, Master Liam!"
+      ],
+      "text": [
+        "Șansa de a te lupta cu tânărul nostru geniu, conașul Liam!"
+      ]
+    },
+    {
+      "en": [
+        "Rich Boy Liam"
+      ],
+      "text": [
+        "Băiat bogat Liam"
+      ]
+    },
+    {
+      "en": [
+        "A Trainer has come all this way to pull me into a battle...?",
+        "I never expected that. Still, I may as well enjoy it, don't you think?"
+      ],
+      "text": [
+        "Un Antrenor a venit tocmai până aici ca să mă tragă într-o luptă...?",
+        "Nu mă așteptam. Totuși, aș putea să mă și bucur de ea, nu crezi?"
+      ]
+    },
+    {
+      "en": [
+        "Rich Boy Liam"
+      ],
+      "text": [
+        "Băiat bogat Liam"
+      ]
+    },
+    {
+      "en": [
+        "Wonderful! You are a marvel of a Trainer!",
+        "Oh, and I'll thank you not to pry into what I get up to at the back of the mansion. A knowing wink is all you will get out of me."
+      ],
+      "text": [
+        "Minunat! Ești o minune de Antrenor!",
+        "A, și te rog să nu-ți bagi nasul în ce fac eu în spatele conacului. O clipire complice e tot ce scoți de la mine."
+      ]
+    },
+    {
+      "en": [
+        "You are the real thing! Sweeping the floor with five maids wasn't enough for you, oh no!",
+        "To think you would get the better of our Master Liam as well!"
+      ],
+      "text": [
+        "Ești de soi! N-a fost de ajuns să le mături pe cinci cameriste, o, nu!",
+        "Și să-l mai învingi și pe conașul Liam!"
+      ]
+    },
+    {
+      "en": [
+        "The chance to battle our own young prodigy, Lady Celeste!"
+      ],
+      "text": [
+        "Șansa de a te lupta cu tânăra noastră minune, domnișoara Celeste!"
+      ]
+    },
+    {
+      "en": [
+        "Lady Celeste"
+      ],
+      "text": [
+        "Doamnă Celeste"
+      ]
+    },
+    {
+      "en": [
+        "Oh, my... If the maids have called me out, you must be good. Do show me how good."
+      ],
+      "text": [
+        "Vai... Dacă m-au chemat cameristele, înseamnă că te pricepi. Arată-mi cât de mult."
+      ]
+    },
+    {
+      "en": [
+        "Lady Celeste"
+      ],
+      "text": [
+        "Doamnă Celeste"
+      ]
+    },
+    {
+      "en": [
+        "Oh, my! My, my, my! You battle quite enchantingly.",
+        "I shall take my leave now. Hee hee..."
+      ],
+      "text": [
+        "Vai! Vai, vai, vai! Te lupți de-a dreptul fermecător.",
+        "Acum îmi iau rămas-bun. Hi-hi..."
+      ]
+    },
+    {
+      "en": [
+        "You are the real thing! Sweeping the floor with five maids wasn't enough for you, oh no!",
+        "To think you would get the better of our Lady Celeste as well!"
+      ],
+      "text": [
+        "Ești de soi! N-a fost de ajuns să le mături pe cinci cameriste, o, nu!",
+        "Și s-o mai învingi și pe domnișoara Celeste!"
+      ]
+    },
+    {
+      "en": [
+        "Oh... How disappointing for you.",
+        "All the same, you swept all five maids, and that is plenty to be proud of!"
+      ],
+      "text": [
+        "O... Ce dezamăgire pentru tine.",
+        "Cu toate astea, ne-ai învins pe toate cinci, și asta e un motiv de mândrie!"
+      ]
+    },
+    {
+      "en": [
+        "Please visit us again tomorrow."
+      ],
+      "text": [
+        "Te rugăm să ne vizitezi din nou mâine."
+      ]
+    },
+    {
+      "en": [
+        "Oh, how disappointing... Do take the challenge some time."
+      ],
+      "text": [
+        "O, ce păcat... Încearcă provocarea altă dată."
+      ]
+    }
+  ]
+}

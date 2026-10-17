@@ -1,0 +1,206 @@
+{
+  "Receptionist": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        "Recepționera"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to Team Galactic's headq... Ahem. Welcome to the Galactic Veilstone Building."
+      ],
+      "text": [
+        "Bun venit la cartierul gen... Hm-hm. Bun venit în Clădirea Galactic din Veilstone."
+      ]
+    },
+    {
+      "en": [
+        "We study the energy of the cosmos here. Power without end, enough for everybody! Wouldn't that be something?"
+      ],
+      "text": [
+        "Aici studiem energia cosmosului. Putere fără sfârșit, destulă pentru toată lumea! N-ar fi grozav?"
+      ]
+    },
+    {
+      "en": [
+        "Whether it's for the better or the worse I couldn't tell you, but nothing whatever is planned for today."
+      ],
+      "text": [
+        "Dacă e în bine sau în rău, n-aș ști să-ți spun, dar azi nu e nimic programat."
+      ]
+    }
+  ],
+  "Scientist": [
+    {
+      "en": [
+        "Team Galactic's research goes on day and night in this building."
+      ],
+      "text": [
+        "Cercetările Echipei Galactic merg zi și noapte în clădirea asta."
+      ]
+    },
+    {
+      "en": [
+        "New sources of energy: that is what we are after."
+      ],
+      "text": [
+        "Surse noi de energie: asta căutăm."
+      ]
+    },
+    {
+      "en": [
+        "This is where Team Galactic works. On what, now? On our dream, I suppose."
+      ],
+      "text": [
+        "Aici lucrează Echipa Galactic. La ce, acum? La visul nostru, presupun."
+      ]
+    },
+    {
+      "en": [
+        "A wonderful new world... Not that anybody has told me how."
+      ],
+      "text": [
+        "O lume nouă și minunată... Numai că nimeni nu mi-a spus cum."
+      ]
+    }
+  ],
+  "GruntM": [
+    {
+      "en": [
+        "Whatever can be taken, Team Galactic takes! Whatever isn't needed, Team Galactic throws out!"
+      ],
+      "text": [
+        "Ce se poate lua, Echipa Galactic ia! Ce nu trebuie, Echipa Galactic aruncă!"
+      ]
+    },
+    {
+      "en": [
+        "That's how we do things!"
+      ],
+      "text": [
+        "Așa facem noi!"
+      ]
+    },
+    {
+      "en": [
+        "...That's how we did things, anyway. There's nothing left to take now."
+      ],
+      "text": [
+        "...Așa făceam, mă rog. Acum nu mai e nimic de luat."
+      ]
+    }
+  ],
+  "GruntF2": [
+    {
+      "en": [
+        "You? You're far too young for us."
+      ],
+      "text": [
+        "Tu? Încă ești copil pentru noi."
+      ]
+    },
+    {
+      "en": [
+        "Come back when you've done some growing."
+      ],
+      "text": [
+        "Revino după ce mai crești."
+      ]
+    },
+    {
+      "en": [
+        "Where has our boss got to, I wonder..."
+      ],
+      "text": [
+        "Oare unde a dispărut șeful nostru..."
+      ]
+    }
+  ],
+  "Saturn": [
+    {
+      "en": [
+        "Saturn"
+      ],
+      "text": [
+        "Saturn"
+      ]
+    },
+    {
+      "en": [
+        "So. It's you. I heard what happened on Spear Pillar."
+      ],
+      "text": [
+        "Deci. Tu ești. Am auzit ce s-a întâmplat pe Coloana Suliței."
+      ]
+    },
+    {
+      "en": [
+        "Master Cyrus despised the heart for being unfinished. And yet it was hearts he stirred, with every speech he gave, to make people follow him."
+      ],
+      "text": [
+        "Maestrul Cyrus disprețuia inima pentru că e neterminată. Și totuși, inimile le-a stârnit cu fiecare discurs, ca oamenii să-l urmeze."
+      ]
+    },
+    {
+      "en": [
+        "The thing he hated most was the tool he used. I found that fascinating. I wanted to see where he would take it, and I did, at his side."
+      ],
+      "text": [
+        "Ce ura mai mult era chiar unealta pe care o folosea. Mi s-a părut fascinant. Am vrut să văd unde va ajunge cu ea, și am văzut, alături de el."
+      ]
+    },
+    {
+      "en": [
+        "It's over now. A world with no heart in it... Who would want such a thing?"
+      ],
+      "text": [
+        "Acum s-a terminat. O lume fără inimă... Cine ar vrea așa ceva?"
+      ]
+    },
+    {
+      "en": [
+        "So what becomes of Team Galactic? I have learned this much: going to extremes solves nothing."
+      ],
+      "text": [
+        "Deci ce se alege de Echipa Galactic? Atât am învățat: extremele nu rezolvă nimic."
+      ]
+    },
+    {
+      "en": [
+        "Perhaps we really should look for new sources of energy. Instead of only saying so in our advertisements."
+      ],
+      "text": [
+        "Poate chiar ar trebui să căutăm surse noi de energie. În loc doar să spunem asta în reclamele noastre."
+      ]
+    }
+  ],
+  "Door": [
+    {
+      "en": [
+        "The shutter is locked. It wants a special key."
+      ],
+      "text": [
+        "Oblonul e încuiat. E nevoie de o cheie specială."
+      ]
+    },
+    {
+      "en": [
+        "The shutter is locked. It wants a special key. Use the Galactic Key?"
+      ],
+      "text": [
+        "Oblonul e încuiat. E nevoie de o cheie specială. Folosești Cheia Galactic?"
+      ]
+    },
+    {
+      "en": [
+        "The shutter slid open."
+      ],
+      "text": [
+        "Oblonul s-a ridicat."
+      ]
+    }
+  ]
+}

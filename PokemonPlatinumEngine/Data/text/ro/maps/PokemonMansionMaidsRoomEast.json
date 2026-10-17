@@ -1,0 +1,50 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Mansion"
+    ],
+    "text": [
+      "Conacul Pokémon"
+    ]
+  },
+  "people": {
+    "maid_east": {
+      "name": {
+        "en": [
+          "Maid"
+        ],
+        "text": [
+          "Cameristă"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I am not slacking. I am taking a personal break.",
+          "When I slack, I do it properly: in bed, with the curtains drawn."
+        ],
+        "text": [
+          "Nu trândăvesc. Îmi iau o pauză personală.",
+          "Când trândăvesc, o fac cum trebuie: în pat, cu perdelele trase."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "6,4": {
+      "en": [
+        "A bed, neatly made."
+      ],
+      "text": [
+        "Un pat, făcut frumos."
+      ]
+    },
+    "6,5": {
+      "en": [
+        "A bed, neatly made."
+      ],
+      "text": [
+        "Un pat, făcut frumos."
+      ]
+    }
+  }
+}

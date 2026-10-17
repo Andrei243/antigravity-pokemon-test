@@ -1,0 +1,64 @@
+{
+  "Words": [
+    {
+      "en": [
+        "Assistant"
+      ],
+      "text": [
+        "Asistentul"
+      ]
+    },
+    {
+      "en": [
+        "{player}! It's been a long time!",
+        "Ah, that look. You're wondering who on earth I am, aren't you?",
+        "I work for Professor Rowan. And I'm {assistant}'s father, as it happens."
+      ],
+      "text": [
+        "{player}! A trecut mult timp!",
+        "A, privirea asta. Te întrebi cine naiba sunt, nu?",
+        "Lucrez pentru profesorul Rowan. Și, întâmplător, sunt tatăl lui {assistant}."
+      ]
+    },
+    {
+      "en": [
+        "The professor asked me to upgrade your Pokédex. I had a hunch you'd come through this gate sooner or later, so here I've waited.",
+        "Might I borrow your Pokédex a moment, {player}?"
+      ],
+      "text": [
+        "Profesorul m-a rugat să-ți îmbunătățesc Pokédexul. Bănuiam că mai devreme sau mai târziu treci prin poarta asta, așa că te-am așteptat aici.",
+        "Pot să-ți împrumut Pokédexul o clipă, {player}?"
+      ]
+    },
+    {
+      "en": [
+        "Now, where does the software go... In here, was it?",
+        "Ka-chunk. Ka-chunk!"
+      ],
+      "text": [
+        "Ia să vedem, unde intră programul... Aici, parcă?",
+        "Clanc. Clanc!"
+      ]
+    },
+    {
+      "en": [
+        "There, all done! Your Pokédex is upgraded.",
+        "I'd better say what's new. It can now show you how the males and the females of a Pokémon differ."
+      ],
+      "text": [
+        "Gata, am terminat! Pokédexul tău e îmbunătățit.",
+        "Să-ți spun ce e nou. Acum îți poate arăta cum diferă masculii și femelele unui Pokémon."
+      ]
+    },
+    {
+      "en": [
+        "Well, I'll let you get on with your work for the professor.",
+        "One more thing, if I may: keep an eye on Team Galactic. The professor is worried about what they're up to."
+      ],
+      "text": [
+        "Ei, te las să-ți vezi de treaba pentru profesor.",
+        "Încă ceva, dacă-mi permiți: fii cu ochii pe Echipa Galactic. Profesorul e îngrijorat de ce pun la cale."
+      ]
+    }
+  ]
+}

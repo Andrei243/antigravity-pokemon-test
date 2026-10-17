@@ -1,0 +1,93 @@
+{
+  "people": {
+    "mr_fuego": {
+      "name": {
+        "en": [
+          "Mr. Fuego"
+        ],
+        "text": [
+          "Domnul Fuego"
+        ]
+      }
+    },
+    "worker_dillan": {
+      "name": {
+        "en": [
+          "Dillan"
+        ],
+        "text": [
+          "Dillan"
+        ]
+      },
+      "before": {
+        "en": [
+          "Worker Dillan: Mind the moving floor! It'll carry you off before you know it. A battle, though? Now that I can do!"
+        ],
+        "text": [
+          "Muncitor Dillan: Ai grijă la podeaua mobilă! Te duce până să-ți dai seama. Dar o luptă? Asta pot!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Worker Dillan: Knocked flat. I'll blame the floor for that one."
+        ],
+        "text": [
+          "Muncitor Dillan: Făcut praf. Dau vina pe podea."
+        ]
+      }
+    },
+    "worker_holden": {
+      "name": {
+        "en": [
+          "Holden"
+        ],
+        "text": [
+          "Holden"
+        ]
+      },
+      "before": {
+        "en": [
+          "Worker Holden: Hot work in here. Let's see if your Pokémon can stand the heat!"
+        ],
+        "text": [
+          "Muncitor Holden: E cald la treabă aici. Să vedem dacă Pokémonii tăi suportă căldura!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Worker Holden: Phew. I think I need to cool off."
+        ],
+        "text": [
+          "Muncitor Holden: Pfiu. Cred că trebuie să mă răcoresc."
+        ]
+      }
+    },
+    "worker_conrad": {
+      "name": {
+        "en": [
+          "Conrad"
+        ],
+        "text": [
+          "Conrad"
+        ]
+      },
+      "before": {
+        "en": [
+          "Worker Conrad: Iron's forged in fire, and so are Pokémon. Come on, then!"
+        ],
+        "text": [
+          "Muncitor Conrad: Fierul se călește în foc, la fel și Pokémonii. Hai, atunci!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Worker Conrad: Still a bit soft, my team. Back in the furnace with us."
+        ],
+        "text": [
+          "Muncitor Conrad: Echipa mea e încă cam moale. Înapoi în cuptor cu noi."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,23 @@
+{
+  "displayName": {
+    "en": [
+      "Route 217"
+    ],
+    "text": [
+      "Ruta 217"
+    ]
+  },
+  "people": {
+    "hiker": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

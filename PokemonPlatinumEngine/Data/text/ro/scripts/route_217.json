@@ -1,0 +1,36 @@
+{
+  "Maylene": [
+    {
+      "en": [
+        "Maylene"
+      ],
+      "text": [
+        "Maylene"
+      ]
+    },
+    {
+      "en": [
+        "Oh! {player}! It's you!"
+      ],
+      "text": [
+        "O! {player}! Tu ești!"
+      ]
+    },
+    {
+      "en": [
+        "Brrr, it's freezing out here! I'm on my way to Snowpoint City. Their Gym Leader is a friend of mine, and we train together."
+      ],
+      "text": [
+        "Brrr, e un ger aici! Merg în Orașul Snowpoint. Lidera Arenei de acolo e prietena mea și ne antrenăm împreună."
+      ]
+    },
+    {
+      "en": [
+        "Running barefoot through the snow is good training too. That's what I keep telling my feet, anyway. See you there!"
+      ],
+      "text": [
+        "Să alergi desculță prin zăpadă e tot un antrenament. Cel puțin asta le tot spun picioarelor mele. Ne vedem acolo!"
+      ]
+    }
+  ]
+}

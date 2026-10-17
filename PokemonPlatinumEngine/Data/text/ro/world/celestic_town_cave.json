@@ -1,0 +1,43 @@
+{
+  "people": {
+    "elder": {
+      "name": {
+        "en": [
+          "Elder"
+        ],
+        "text": [
+          "Bătrâna înțeleaptă"
+        ]
+      }
+    },
+    "cyrus": {
+      "name": {
+        "en": [
+          "Cyrus"
+        ],
+        "text": [
+          "Cyrus"
+        ]
+      }
+    },
+    "cynthia": {
+      "name": {
+        "en": [
+          "Cynthia"
+        ],
+        "text": [
+          "Cynthia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Cynthia: ...I never tire of looking at it."
+        ],
+        "text": [
+          "Cynthia: ...Nu mă satur să mă uit la ea."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

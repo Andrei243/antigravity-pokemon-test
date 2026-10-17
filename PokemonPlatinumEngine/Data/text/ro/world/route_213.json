@@ -1,0 +1,352 @@
+{
+  "people": {
+    "grunt_m": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      }
+    },
+    "looker": {
+      "name": {
+        "en": [
+          "Looker"
+        ],
+        "text": [
+          "Looker"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Looker: That bowl-haired fellow! Which way did he go?"
+        ],
+        "text": [
+          "Looker: Tipul cu părul ca o oală! Încotro a luat-o?"
+        ]
+      }
+    },
+    "fisherman": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          "Pescarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "See those rocks along the beach? They're cracked right through.",
+          "A Pokémon that knows Rock Smash breaks them in one go. Me, I just fish round them."
+        ],
+        "text": [
+          "Vezi stâncile de pe plajă? Sunt crăpate de tot.",
+          "Un Pokémon care știe Spărgător de Pietre le sparge dintr-o lovitură. Eu doar pescuiesc pe lângă ele."
+        ]
+      }
+    },
+    "beauty": {
+      "name": {
+        "en": [
+          "Beauty"
+        ],
+        "text": [
+          "Frumoasa"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I've taken a cottage at the Hotel Grand Lake for the whole summer.",
+          "Mornings on the beach, evenings by the lake. Bliss!"
+        ],
+        "text": [
+          "Am închiriat o căsuță la Hotelul Grand Lake pentru toată vara.",
+          "Diminețile pe plajă, serile lângă lac. Fericire curată!"
+        ]
+      }
+    },
+    "collector": {
+      "name": {
+        "en": [
+          "Collector"
+        ],
+        "text": [
+          "Colecționarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Listen closely to a Chatot. It picks up the sounds around it and sings them back to you.",
+          "There are plenty in the grass along this beach, chattering away."
+        ],
+        "text": [
+          "Ascultă bine un Chatot. Prinde sunetele din jur și ți le cântă înapoi.",
+          "Sunt mulți în iarba de lângă plaja asta, ciripind întruna."
+        ]
+      }
+    },
+    "swimmer_sheltin": {
+      "name": {
+        "en": [
+          "Sheltin"
+        ],
+        "text": [
+          "Sheltin"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Sheltin: Out here, the sea belongs to me and my Pokémon. Let's see you keep your head above water!"
+        ],
+        "text": [
+          "Înotător Sheltin: Aici, marea e a mea și a Pokémonilor mei. Să te văd cum îți ții capul deasupra apei!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Sheltin: Washed up on the shore... I'd better swim a few more lengths."
+        ],
+        "text": [
+          "Înotător Sheltin: Aruncat pe țărm... Mai bine mai înot câteva lungimi."
+        ]
+      }
+    },
+    "swimmer_evan": {
+      "name": {
+        "en": [
+          "Evan"
+        ],
+        "text": [
+          "Evan"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Evan: Race you to the rocks! Or we could just battle. Battling's quicker."
+        ],
+        "text": [
+          "Înotător Evan: Ne întrecem până la stânci! Sau ne putem lupta. Lupta e mai rapidă."
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Evan: I'd have done better in the race."
+        ],
+        "text": [
+          "Înotător Evan: La întrecere m-aș fi descurcat mai bine."
+        ]
+      }
+    },
+    "swimmer_mary": {
+      "name": {
+        "en": [
+          "Mary"
+        ],
+        "text": [
+          "Mary"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Mary: The water's lovely and warm today. Fancy a battle while you're out here?"
+        ],
+        "text": [
+          "Înotător Mary: Apa e caldă și plăcută azi. O luptă, cât ești pe aici?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Mary: Brr! Losing gives me goose bumps."
+        ],
+        "text": [
+          "Înotător Mary: Brr! Când pierd, mi se face pielea de găină."
+        ]
+      }
+    },
+    "swimmer_haley": {
+      "name": {
+        "en": [
+          "Haley"
+        ],
+        "text": [
+          "Haley"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Haley: Up and down I swim, until a trainer comes along. And here you are!"
+        ],
+        "text": [
+          "Înotător Haley: Înot înainte și înapoi, până vine un Antrenor. Și uite-te!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Haley: Oh well. Back to my lengths, then."
+        ],
+        "text": [
+          "Înotător Haley: Ei, asta e. Înapoi la lungimile mele."
+        ]
+      }
+    },
+    "tuber_jared": {
+      "name": {
+        "en": [
+          "Jared"
+        ],
+        "text": [
+          "Jared"
+        ]
+      },
+      "before": {
+        "en": [
+          "Tuber Jared: My rubber ring keeps me floating all day long. Let's battle!"
+        ],
+        "text": [
+          "Copil cu colac Jared: Colacul meu mă ține la suprafață toată ziua. Hai la luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Tuber Jared: Glub... I'm going back to the shallow end."
+        ],
+        "text": [
+          "Copil cu colac Jared: Glub... Mă întorc la apa mică."
+        ]
+      }
+    },
+    "tuber_chelsea": {
+      "name": {
+        "en": [
+          "Chelsea"
+        ],
+        "text": [
+          "Chelsea"
+        ]
+      },
+      "before": {
+        "en": [
+          "Tuber Chelsea: Mummy says I can play on the beach until teatime. Battle with me!"
+        ],
+        "text": [
+          "Copil cu colac Chelsea: Mami zice că mă pot juca pe plajă până la ora ceaiului. Luptă-te cu mine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Tuber Chelsea: Never mind. Marill and I are going to build a sandcastle instead."
+        ],
+        "text": [
+          "Copil cu colac Chelsea: Nu-i nimic. Eu și Marill facem un castel de nisip."
+        ]
+      }
+    },
+    "beauty_cyndy": {
+      "name": {
+        "en": [
+          "Cyndy"
+        ],
+        "text": [
+          "Cyndy"
+        ]
+      },
+      "before": {
+        "en": [
+          "Beauty Cyndy: A day by the sea is good for the skin, and a battle is good for the spirit!"
+        ],
+        "text": [
+          "Frumoasă Cyndy: O zi la mare face bine pielii, iar o luptă face bine spiritului!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Beauty Cyndy: I came here to relax, and now look at me. Time to lie in the sun a while."
+        ],
+        "text": [
+          "Frumoasă Cyndy: Am venit să mă relaxez, și uite-mă acum. E timpul să stau puțin la soare."
+        ]
+      }
+    },
+    "fisherman_kenneth": {
+      "name": {
+        "en": [
+          "Kenneth"
+        ],
+        "text": [
+          "Kenneth"
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Kenneth: Something's tugging at my line... Oh, it's only you. A battle it is, then!"
+        ],
+        "text": [
+          "Pescar Kenneth: Trage ceva de fir... A, ești doar tu. Atunci, la luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Kenneth: Off you go. You've scared all the fish away anyway."
+        ],
+        "text": [
+          "Pescar Kenneth: Hai, du-te. Oricum ai speriat toți peștii."
+        ]
+      }
+    },
+    "sailor_paul": {
+      "name": {
+        "en": [
+          "Paul"
+        ],
+        "text": [
+          "Paul"
+        ]
+      },
+      "before": {
+        "en": [
+          "Sailor Paul: Ahoy there! Every sailor worth his salt needs a strong arm. Let's test yours!"
+        ],
+        "text": [
+          "Marinar Paul: Ahoi! Orice marinar care se respectă are nevoie de un braț puternic. Să-l testăm pe al tău!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Sailor Paul: Blow me down! You'd make a fine deckhand."
+        ],
+        "text": [
+          "Marinar Paul: Ei, asta-i bună! Ai fi un marinar de punte excelent."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost": {
+      "en": [
+        "Route 213\nWest: Pastoria City\nEast: Hotel Grand Lake, Valor Lakefront"
+      ],
+      "text": [
+        "Ruta 213\nVest: Orașul Pastoria\nEst: Hotelul Grand Lake, Malul Valor"
+      ]
+    },
+    "signboard_dr_footsteps_house": {
+      "en": [
+        "Dr. Footstep's House\nHe reads a Pokémon's footprints to learn what is in its heart."
+      ],
+      "text": [
+        "Casa Doctorului Footstep\nCitește urmele unui Pokémon ca să afle ce are în suflet."
+      ]
+    },
+    "signboard_hotel_grand_lake": {
+      "en": [
+        "Hotel Grand Lake\nCottages by the sea, a short stroll from Lake Valor."
+      ],
+      "text": [
+        "Hotelul Grand Lake\nCăsuțe lângă mare, la o scurtă plimbare de Lacul Valor."
+      ]
+    }
+  }
+}

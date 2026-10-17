@@ -1,0 +1,96 @@
+{
+  "displayName": {
+    "en": [
+      "Galactic HQ"
+    ],
+    "text": [
+      "Cartierul Galactic"
+    ]
+  },
+  "people": {
+    "cyrus": {
+      "name": {
+        "en": [
+          "Cyrus"
+        ],
+        "text": [
+          "Cyrus"
+        ]
+      }
+    },
+    "galactic_hq_door_west": {
+      "name": {
+        "en": [
+          "Door"
+        ],
+        "text": [
+          "Ușă"
+        ]
+      }
+    },
+    "galactic_hq_door_east": {
+      "name": {
+        "en": [
+          "Door"
+        ],
+        "text": [
+          "Ușă"
+        ]
+      }
+    },
+    "bollard_west": {
+      "name": {
+        "en": [
+          "Bollard"
+        ],
+        "text": [
+          "Stâlpișor"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A steel post has risen out of the floor. It won't budge."
+        ],
+        "text": [
+          "Din podea s-a ridicat un stâlp de oțel. Nu se clintește."
+        ]
+      }
+    },
+    "bollard_east": {
+      "name": {
+        "en": [
+          "Bollard"
+        ],
+        "text": [
+          "Stâlpișor"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A steel post has risen out of the floor. It won't budge."
+        ],
+        "text": [
+          "Din podea s-a ridicat un stâlp de oțel. Nu se clintește."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "21,14": {
+      "en": [
+        "Team Galactic warp panels!\nThe green panel takes you back down to the ground floor. Onward to a new universe!"
+      ],
+      "text": [
+        "Panourile de teleportare ale Echipei Galactic!\nPanoul verde te duce înapoi la parter. Înainte, spre un univers nou!"
+      ]
+    },
+    "1,6": {
+      "en": [
+        "Team Galactic's reports are kept on this machine."
+      ],
+      "text": [
+        "Rapoartele Echipei Galactic sunt păstrate pe mașina asta."
+      ]
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "people": {
+    "youngster": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Bicycle's no use in here. The wheels just sink into the mud!",
+          "And don't bother running, either. You'll only splash yourself."
+        ],
+        "text": [
+          "Bicicleta nu-mi folosește la nimic aici. Roțile se afundă în noroi!",
+          "Și nici nu te osteni să alergi. Doar te împroști."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "signboard": {
+      "en": [
+        "Great Marsh · Area 5\nPlease leave the marsh as you found it, for the Pokémon who call it home."
+      ],
+      "text": [
+        "Marea Mlaștină · Zona 5\nLasă mlaștina cum ai găsit-o, de dragul Pokémonilor care trăiesc aici."
+      ]
+    }
+  }
+}

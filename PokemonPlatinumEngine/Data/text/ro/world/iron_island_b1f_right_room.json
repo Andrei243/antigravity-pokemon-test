@@ -1,0 +1,31 @@
+{
+  "people": {
+    "picnicker_summer": {
+      "name": {
+        "en": [
+          "Summer"
+        ],
+        "text": [
+          "Summer"
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Summer: A picnic down a mine? Why not! Raichu and I will go anywhere for a good battle."
+        ],
+        "text": [
+          "Excursionistă Summer: Un picnic într-o mină? De ce nu! Eu și Raichu mergem oriunde pentru o luptă bună."
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Summer: Oh well. Sandwich time, Raichu. We've earned that much."
+        ],
+        "text": [
+          "Excursionistă Summer: Ei, asta e. E ora sendvișului, Raichu. Măcar atât am meritat."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}
