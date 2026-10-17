@@ -12,7 +12,8 @@
       "shift": "Shift",
       "arrows": "Săgeți",
       "enter": "Enter",
-      "x": "X"
+      "x": "X",
+      "c": "C"
     },
     "hints": {
       "open": "Deschide",
@@ -2366,6 +2367,11 @@
   },
 
   "battleMenu": {
+    "later": {
+      "mega": "Megaevoluție",
+      "zPower": "Puterea Z",
+      "ultraBurst": "Ultra Explozie"
+    },
     "fight": "LUPTĂ",
     "bag": "RUCSAC",
     "pokemon": "POKÉMON",

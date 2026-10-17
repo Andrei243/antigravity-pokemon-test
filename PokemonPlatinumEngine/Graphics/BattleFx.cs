@@ -171,6 +171,9 @@ internal readonly struct FxCtx
     public readonly Vector3 From, To, FromFeet, ToFeet;
     public readonly float FromSize, ToSize;
 
+    /// <summary>Half the width of the user's and the target's bodies as the battle sees them (<see cref="FxPlaces.HalfWidth"/>; plan 25 · Y14).</summary>
+    public readonly float FromHalfWidth, ToHalfWidth;
+
     /// <summary>Where the move ends: the target, or past it for a miss.</summary>
     public readonly Vector3 Aim;
 
@@ -193,6 +196,8 @@ internal readonly struct FxCtx
         To = places.Body(cue.ToSide, cue.ToSlot);
         FromSize = places.Height(cue.FromSide, cue.FromSlot);
         ToSize = places.Height(cue.ToSide, cue.ToSlot);
+        FromHalfWidth = places.HalfWidth(cue.FromSide, cue.FromSlot);
+        ToHalfWidth = places.HalfWidth(cue.ToSide, cue.ToSlot);
         var otherSide = cue.FromSide == BattleSide.Player ? BattleSide.Enemy : BattleSide.Player;
         Foe = places.Body(otherSide, cue.FromSlot);
         FoeSize = places.Height(otherSide, cue.FromSlot);

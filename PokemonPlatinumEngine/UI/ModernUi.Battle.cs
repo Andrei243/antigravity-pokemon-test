@@ -442,7 +442,9 @@ internal static partial class ModernUi
                 continue;
             }
             var move = p.Moves[i];
-            var type = Palette.GetTypeColor(move.Type.ToString());
+            // With the Z-Power armed a card names its Z-Move, and one with none is greyed (plan 25 · Y14)
+            string? cardName = CardName(battle, move, i);
+            var type = cardName == null ? Closed : Palette.GetTypeColor(move.Type.ToString());
             if (selected) UiShapes.Shadow(r, 26, 26, Vector2.Zero, type with { A = 170 });
             else UiShapes.Shadow(r, 26, 14, new Vector2(0, 6), ShadowColor);
             UiShapes.Shape(r, 26, PanelTop, PanelBottom, selected ? Darker(type, 0.15f) : Frame, selected ? 5f : 3f);
@@ -451,7 +453,9 @@ internal static partial class ModernUi
             string typeName = Words.Type(move.Type).ToUpperInvariant();
             float tw = UiFonts.Measure(typeName, 20, UiWeight.Black);
             UiFonts.DrawCentered(typeName, band.X + (band.Width - tw) / 2f, band.Y + band.Height / 2f, 20, Color.White, UiWeight.Black);
-            UiFonts.DrawCentered(move.DisplayName, r.X + 156, r.Y + r.Height / 2f, 32, move.CurrentPP > 0 ? Ink : Muted, UiWeight.Black);
+            string named = cardName ?? move.DisplayName;
+            float nameSize = Math.Min(32f, 32f * 250f / Math.Max(1f, UiFonts.Measure(named, 32, UiWeight.Black)));
+            UiFonts.DrawCentered(named, r.X + 156, r.Y + r.Height / 2f, nameSize, move.CurrentPP > 0 && cardName != null ? Ink : Muted, UiWeight.Black);
             string pp = $"{move.CurrentPP}/{move.MaxPP}";
             float pw = UiFonts.Measure(pp, 26, UiWeight.Black);
             UiFonts.DrawCentered(pp, r.X + r.Width - 30 - pw, r.Y + r.Height / 2f, 26, move.CurrentPP > 0 ? Ink : Red, UiWeight.Black);
@@ -471,6 +475,9 @@ internal static partial class ModernUi
             }
         }
 
+        // The item button: a Mega Evolution, the Z-Power or an Ultra Burst armed for the move (plan 25 · Y14)
+        LaterButton(battle);
+
         var info = new Rectangle(1172, 848, 700, 188);
         Panel(info, 28);
         if (hud.MoveMenuIndex < p.Moves.Count)
@@ -478,7 +485,10 @@ internal static partial class ModernUi
             var move = p.Moves[hud.MoveMenuIndex];
             string cat = Words.Category(move.Category).ToUpperInvariant();
             UiFonts.DrawCentered(cat, info.X + 44, info.Y + 44, 24, Muted, UiWeight.Black);
-            string pwr = move.Power > 0 ? move.Power.ToString() : "—";
+            int power = move.Power;
+            // With the Z-Power armed, the Z-Move's power (a type's Z-Move takes it from the move, plan 25 · Y14)
+            if (battle.ZArmed && battle.ZMoveAt(hud.MoveMenuIndex) is { } zMove && zMove != move.Data) power = zMove.Power > 0 ? zMove.Power : move.Data.ZPower;
+            string pwr = power > 0 ? power.ToString() : "—";
             string acc = move.Accuracy > 0 ? move.Accuracy.ToString() : "—";
             UiFonts.DrawCentered(Text.Of("summary.power"), info.X + 260, info.Y + 44, 20, Muted, UiWeight.ExtraBold);
             UiFonts.DrawCentered(pwr, info.X + 350, info.Y + 44, 30, Ink, UiWeight.Black);

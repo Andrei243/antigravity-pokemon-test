@@ -111,7 +111,7 @@ public sealed class SubstituteView
 }
 
 /// <summary>What an effect cue shows: a move, something that happens to one Pokémon, the weather over the field, or a moment of the turn (plan 25 · Y3).</summary>
-public enum CueKind { Move, StatUp, StatDown, Heal, Status, Seals, Weather, Moment }
+public enum CueKind { Move, StatUp, StatDown, Heal, Status, Seals, Weather, Moment, Mega, UltraBurst, ZPower }
 
 /// <summary>
 /// An effect for the renderer to play (plan 04 · G8): a move from one place to another and how it landed, or a
@@ -145,6 +145,15 @@ public sealed class EffectCue
 
     /// <summary>For the held item's moment: the item that went off is a berry, eaten; anything else only glints.</summary>
     public bool Berry { get; init; }
+
+    /// <summary>For <see cref="CueKind.Mega"/> (plan 25 · Y14): a Primal Reversion, in its own colour (<see cref="Type"/>: Water for Kyogre, Ground for Groudon).</summary>
+    public bool Primal { get; init; }
+
+    /// <summary>
+    /// For <see cref="CueKind.Move"/> (plan 25 · Y14): a Z-Move, which plays its own set piece for
+    /// <see cref="BattleAnimator.ZMoveTime"/>, landing at <see cref="BattleAnimator.ImpactTime"/> as every move does.
+    /// </summary>
+    public bool ZMove { get; init; }
 
     /// <summary>
     /// For <see cref="CueKind.Move"/>: an attack sent ahead landing (Future Sight, Doom Desire), which plays its
@@ -191,7 +200,10 @@ public sealed class EffectCue
     /// <summary>How long this cue plays.</summary>
     public float Length => Kind switch
     {
-        CueKind.Move => BattleAnimator.EffectTime,
+        CueKind.Move => ZMove ? BattleAnimator.ZMoveTime : BattleAnimator.EffectTime,
+        CueKind.Mega => BattleAnimator.MegaTime,
+        CueKind.UltraBurst => BattleAnimator.UltraBurstTime,
+        CueKind.ZPower => BattleAnimator.ZPowerTime,
         CueKind.Seals => BattleAnimator.SealTime,
         CueKind.Weather => BattleAnimator.WeatherCueTime,
         CueKind.Moment => BattleAnimator.MomentTime,
@@ -247,6 +259,19 @@ public sealed class BattleAnimator
     /// <summary>How long a move's effect plays; it lands <see cref="ImpactTime"/> in, when the damage does.</summary>
     public const float EffectTime = 1.3f;
     public const float ImpactTime = 0.35f;
+
+    /// <summary>
+    /// The later mechanics' set pieces (plan 25 · Y14; style guide, "Mega Evolution, Ultra Burst and Z-Moves"): a
+    /// Mega Evolution plays this long and changes the Pokémon's shape <see cref="MegaSwapTime"/> in, inside its light;
+    /// an Ultra Burst the same at its own times; the Z-Power's frame stands before its Z-Move, which lands at
+    /// <see cref="ImpactTime"/> and grows for a second after.
+    /// </summary>
+    public const float MegaTime = 1.6f;
+    public const float MegaSwapTime = 0.8f;
+    public const float UltraBurstTime = 1.8f;
+    public const float UltraBurstSwapTime = 0.85f;
+    public const float ZPowerTime = 1.4f;
+    public const float ZMoveTime = 1.5f;
 
     /// <summary>How long a stat change, a heal or a status condition shows on its Pokémon.</summary>
     public const float MarkTime = 1.1f;
@@ -693,6 +718,36 @@ public sealed class BattleAnimator
     }
 
     private int momentCount;
+
+    /// <summary>
+    /// A Mega Evolution, a Primal Reversion or an Ultra Burst on the Pokémon here (plan 25 · Y14): its light gathers,
+    /// its body turns to light and its shape changes inside it (the engine hands the new form over
+    /// <see cref="MegaSwapTime"/> or <see cref="UltraBurstSwapTime"/> in). Seeded as the move cue it stands in for was,
+    /// so a battle's later cues keep the seeds they had under the stand-in.
+    /// </summary>
+    public EffectCue Change(BattleSide side, int slot, CueKind kind, bool primal = false, PokemonType type = PokemonType.Normal) =>
+        Cue(new EffectCue { Kind = kind, Primal = primal, Type = type, Move = "Transform", FromSide = side, FromSlot = slot, ToSide = side, ToSlot = slot });
+
+    /// <summary>
+    /// The Z-Power gathered round the Pokémon here before its Z-Move (plan 25 · Y14): it gathers itself (the charge
+    /// pose, let go by its Z-Move's lunge) inside a frame of its Z-Move's type. The Z-Power counts its seeds for
+    /// itself, so a battle's other cues keep theirs.
+    /// </summary>
+    public EffectCue ZPower(BattleSide side, int slot, PokemonType type)
+    {
+        var v = this[side, slot];
+        v.ChargeAge = 0f;
+        v.AttackAge = -1f;
+        var cue = new EffectCue
+        {
+            Kind = CueKind.ZPower, Type = type, FromSide = side, FromSlot = slot, ToSide = side, ToSlot = slot,
+            Seed = ++zPowerCount * 5233 + (int)type * 97
+        };
+        cues.Add(cue);
+        return cue;
+    }
+
+    private int zPowerCount;
 
     /// <summary>
     /// The Seals of a Ball Capsule bursting round a Pokémon as it is sent out (plan 06 · R17b). It begins with the

@@ -130,6 +130,30 @@ Every sound effect of the game (plan 05 · A3), what it stands for in the origin
 | `moment_clamp` | — | Clamp snaps shut (`BATTLE_ANIMATION_DAMAGE_CLAMP`): a rush inward and a hard clack. |
 | `moment_whirlpool` | — | Whirlpool turns under a Pokémon (`BATTLE_ANIMATION_DAMAGE_WHIRLPOOL`): a wash that swells and sinks, bubbling. |
 | `moment_sand_tomb` | — | Sand Tomb draws a Pokémon down (`BATTLE_ANIMATION_DAMAGE_SAND_TOMB`): a hiss sinking over a low rumble. |
+| `mega_evolve` | — | A Pokémon Mega Evolves (plan 25 · Y14; our own, Platinum has none): light gathering in a rising hum, the change of shape 0.8 s in on a blow, three bells and a sparkle (1.6 s). |
+| `primal_reversion` | — | Kyogre or Groudon undergoes Primal Reversion: a deep swell, a roaring burst as its shape changes 0.8 s in (1.6 s). |
+| `ultra_burst` | — | Necrozma Ultra Bursts: a dark drone, cracks as the light breaks through, a blow and ringing bells as it bursts 0.85 s in (1.8 s). |
+| `z_power` | — | A Pokémon surrounds itself with its Z-Power: a rising hum and three notes as the Z is drawn, a bell (1.3 s). |
+| `z_move_normal` | — | A Z-Move of the Normal type, and a species' own of that type (`SoundBank.ZMoveSound`): a rush to the landing at 0.35 s and a great blow, then a great blow under a bell (1.5 s). |
+| `z_move_fire` | — | A Z-Move of the Fire type, and a species' own of that type (`SoundBank.ZMoveSound`): a rush to the landing at 0.35 s and a great blow, then a roaring blaze crackling (1.5 s). |
+| `z_move_water` | — | A Z-Move of the Water type, and a species' own of that type (`SoundBank.ZMoveSound`): a rush to the landing at 0.35 s and a great blow, then a surging wash, bubbling (1.5 s). |
+| `z_move_electric` | — | A Z-Move of the Electric type, and a species' own of that type (`SoundBank.ZMoveSound`): a rush to the landing at 0.35 s and a great blow, then four cracks of thunder, one after another (1.5 s). |
+| `z_move_grass` | — | A Z-Move of the Grass type, and a species' own of that type (`SoundBank.ZMoveSound`): a rush to the landing at 0.35 s and a great blow, then a rustle and a rising run of notes (1.5 s). |
+| `z_move_ice` | — | A Z-Move of the Ice type, and a species' own of that type (`SoundBank.ZMoveSound`): a rush to the landing at 0.35 s and a great blow, then a cold bell and the crackle of ice (1.5 s). |
+| `z_move_fighting` | — | A Z-Move of the Fighting type, and a species' own of that type (`SoundBank.ZMoveSound`): a rush to the landing at 0.35 s and a great blow, then ten blows raining down (1.5 s). |
+| `z_move_poison` | — | A Z-Move of the Poison type, and a species' own of that type (`SoundBank.ZMoveSound`): a rush to the landing at 0.35 s and a great blow, then bubbling, under a low gurgle (1.5 s). |
+| `z_move_ground` | — | A Z-Move of the Ground type, and a species' own of that type (`SoundBank.ZMoveSound`): a rush to the landing at 0.35 s and a great blow, then a rumble and the ground breaking (1.5 s). |
+| `z_move_flying` | — | A Z-Move of the Flying type, and a species' own of that type (`SoundBank.ZMoveSound`): a rush to the landing at 0.35 s and a great blow, then a rushing dive of wind (1.5 s). |
+| `z_move_psychic` | — | A Z-Move of the Psychic type, and a species' own of that type (`SoundBank.ZMoveSound`): a rush to the landing at 0.35 s and a great blow, then a glide rising, wavering, and a bell (1.5 s). |
+| `z_move_bug` | — | A Z-Move of the Bug type, and a species' own of that type (`SoundBank.ZMoveSound`): a rush to the landing at 0.35 s and a great blow, then a buzzing swarm (1.5 s). |
+| `z_move_rock` | — | A Z-Move of the Rock type, and a species' own of that type (`SoundBank.ZMoveSound`): a rush to the landing at 0.35 s and a great blow, then six boulders falling (1.5 s). |
+| `z_move_ghost` | — | A Z-Move of the Ghost type, and a species' own of that type (`SoundBank.ZMoveSound`): a rush to the landing at 0.35 s and a great blow, then a falling wail over a hollow breath (1.5 s). |
+| `z_move_dragon` | — | A Z-Move of the Dragon type, and a species' own of that type (`SoundBank.ZMoveSound`): a rush to the landing at 0.35 s and a great blow, then a growling roar of fire (1.5 s). |
+| `z_move_dark` | — | A Z-Move of the Dark type, and a species' own of that type (`SoundBank.ZMoveSound`): a rush to the landing at 0.35 s and a great blow, then a sinking drone drawn into nothing (1.5 s). |
+| `z_move_steel` | — | A Z-Move of the Steel type, and a species' own of that type (`SoundBank.ZMoveSound`): a rush to the landing at 0.35 s and a great blow, then a ringing strike and a grinding drill (1.5 s). |
+| `z_move_fairy` | — | A Z-Move of the Fairy type, and a species' own of that type (`SoundBank.ZMoveSound`): a rush to the landing at 0.35 s and a great blow, then a twinkling run of notes (1.5 s). |
+
+**The later mechanics' set pieces** (plan 25 · Y14; `SoundBank.Later.cs`) run up to 2 s, where a move's own sound runs to 1 (`SoundBank.IsSetPiece`, which `SoundTests` allows its 2 s): each plays as its line appears, a Z-Move's with its cue in place of the move's own sound; with the Battle Scene off they are still heard.
 
 **The turn's moments** (plan 25 · Y3; `SoundBank.MomentSound`): each moment of the turn has a sound, heard as its line appears and only where its mark is seen (none on a Pokémon behind a Substitute or out of sight). A condition as it plays on its turn sounds as it did when it was given: `status_sleep` for a Pokémon fast asleep, `status_poison` and `status_burn` as poison and a burn bite at the turn's end, `status_freeze` frozen solid, `status_paralysis` fully paralysed, `status_confusion` confused. A level has none of its own: its fanfare plays with it. An HP change that comes with a moment makes no sound: no `hit_normal` for a poison tick, no `heal` for Leftovers. An attack sent ahead (Future Sight, Doom Desire) lands with its type's `move_…` sound, from the side it lands on. The original plays its animations' own sounds; these stand for no named one.
 

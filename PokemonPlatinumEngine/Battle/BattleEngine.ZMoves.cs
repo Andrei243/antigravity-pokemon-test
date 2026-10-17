@@ -6,9 +6,8 @@ using PokemonPlatinumEngine.Models;
 namespace PokemonPlatinumEngine.Battle;
 
 // Z-Moves and Ultra Burst on screen (plan 06 · R21): the move menu's item button arms them, as it arms a Mega
-// Evolution, and an Ultra Burst's form is taken from its event. Their looks (the Z-Power, the Z-Move's own effect, the
-// light of the burst) are plan 25 · Y14's; until then a Z-Move is shown as the move it is and the burst as a Mega
-// Evolution's stand-in.
+// Evolution, and an Ultra Burst's form is taken from its event. Their looks are plan 25 · Y14's: the Z-Power's cue on
+// its line, the Z-Move's own set piece (MoveFx.ZMoves.cs), and a change of shape taken inside its light (Change).
 public partial class BattleEngine
 {
     /// <summary>
@@ -64,27 +63,38 @@ public partial class BattleEngine
         return choice;
     }
 
-    /// <summary>The screen's Pokémon takes the form the rules' copy has taken (an Ultra Burst), with Transform's cue as its stand-in.</summary>
-    private void TakeTheForm(Place place)
+    /// <summary>The Pokémon whose moves are being chosen can Ultra Burst, and no other of the player's has been chosen to (the item button's word, plan 25 · Y14).</summary>
+    public bool CanUltraBurstNow =>
+        core.Request is ActionRequest && !playingTheLog && MenuBattler.Pokemon != null && !choices.Values.Any(c => c.UltraBurst) && core.CanUltraBurst(InCore(MenuBattler));
+
+    /// <summary>
+    /// A change of shape on screen (a Mega Evolution, a Primal Reversion, an Ultra Burst; plan 25 · Y14): its sound, its
+    /// cue, and the screen's Pokémon taking the form the rules' copy has taken <paramref name="swap"/> into the cue,
+    /// inside its light; at once with the scene off, where no cue plays.
+    /// </summary>
+    private void Change(Place place, string form, CueKind kind, string sound, float swap, bool primal = false)
     {
-        if (core.At(place).Pokemon is { } theirs && At(place).Pokemon is { } shown)
+        Sound(sound, place.Side);
+        var shown = At(place).Pokemon;
+        if (shown == null) return;
+        // The form is the event's: the rules' copy is a turn ahead, and may have gone back to its own shape already (a
+        // battle won on the same turn). Where it still stands in the form, its numbers are taken as they are
+        var theirs = core.At(place).Pokemon;
+        var stood = theirs?.Form == form ? (theirs.AbilityName, theirs.Attack, theirs.Defense, theirs.SpAttack, theirs.SpDefense, theirs.Speed) : default;
+        var colour = shown.PrimaryType;
+        void Take()
         {
-            shown.Species = theirs.Species;
-            shown.Form = theirs.Form;
-            shown.AbilityName = theirs.AbilityName;
-            (shown.Attack, shown.Defense, shown.SpAttack, shown.SpDefense, shown.Speed) = (theirs.Attack, theirs.Defense, theirs.SpAttack, theirs.SpDefense, theirs.Speed);
+            if (shown.Species.Form(form) == null) return;
+            shown.ChangeForm(form);
+            if (stood.AbilityName != null)
+                (shown.AbilityName, shown.Attack, shown.Defense, shown.SpAttack, shown.SpDefense, shown.Speed) = stood;
         }
-        if (Scene)
-            Anim.Cue(new EffectCue
-            {
-                Kind = CueKind.Move,
-                Move = "Transform",
-                Type = PokemonType.Normal,
-                Category = MoveCategory.Status,
-                FromSide = place.Side,
-                FromSlot = place.Slot,
-                ToSide = place.Side,
-                ToSlot = place.Slot
-            });
+        if (!Scene)
+        {
+            Take();
+            return;
+        }
+        Anim.Change(place.Side, place.Slot, kind, primal, colour);
+        After(swap, Take);
     }
 }
