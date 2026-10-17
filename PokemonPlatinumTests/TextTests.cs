@@ -69,6 +69,8 @@ public class TextTests
     {
         ["UI/TitleScreen.cs"] = new[] { "Sinnoh", "Giratina", "PLATINUM", "Pokémon", "A  FAN  REMAKE" },
         ["UI/StartMenu.cs"] = new[] { "Trainer" },
+        // The address of a translated line, which is a key and no word (plan 17 · N4)
+        ["Core/Text.Lines.cs"] = new[] { "script:{script}#{index}.{k}" },
         // The items' own names and the uses the item table gives them, which the bag goes by
         ["UI/BagScreen.cs"] = new[]
         {
