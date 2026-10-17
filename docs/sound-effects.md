@@ -256,6 +256,44 @@ One sound for each type, played as a move of that type sets off (`SoundBank.Move
 | `use_taunt` | `SEQ_SE_DP_W118` | Taunt: a mocking two-note call. |
 | `use_giga_drain` | `SEQ_SE_DP_W202` | Giga Drain: a great draw upward, leafy, with a bell. |
 | `use_night_slash` | `SEQ_SE_DP_BRADE` | Night Slash: a dark blade drawn and two slashes. |
+| `use_double_team` | `SEQ_SE_DP_053` | Double Team: four quick swishes, one after another, rising. |
+| `use_endeavor` | `SEQ_SE_DP_W039` | Endeavor: four quick flat blows. |
+| `use_flame_wheel` | `SEQ_SE_DP_W172` | Flame Wheel: a fiery whirr winding up, then a crackling break. |
+| `use_fury_cutter` | `SEQ_SE_DP_W043` | Fury Cutter: three thin cuts of the air, the last with a ring. |
+| `use_knock_off` | `SEQ_SE_DP_W233` | Knock Off: a smack and a small thing popping off with a chirp. |
+| `use_magnitude` | `SEQ_SE_DP_W070` | Magnitude: the ground heaving: four low thumps and a rumble. |
+| `use_seismic_toss` | `SEQ_SE_DP_W327` | Seismic Toss: a whoosh up, a whoosh down, a heavy slam and a rebound. |
+| `use_self_destruct` | `SEQ_SE_DP_W120` | Self-Destruct: a fuse hissing higher and a great boom. |
+| `use_slam` | `SEQ_SE_DP_W025B` | Slam: a whip through the air and a hard slap. |
+| `use_stomp` | `SEQ_SE_DP_W036` | Stomp: a heavy thud and a knock. |
+| `use_block` | `SEQ_SE_DP_050` | Block: two hard clanks of metal and a low ring. |
+| `use_detect` | `SEQ_SE_DP_081` | Detect: a bright rising chime and a soft ring. |
+| `use_mind_reader` | `SEQ_SE_DP_W109` | Mind Reader: a scanning whir sweeping up and down, a ping. |
+| `use_disable` | `SEQ_SE_DP_081` | Disable: a tone sagging out of tune and a dull pop. |
+| `use_dragon_rage` | `SEQ_SE_DP_W082C` | Dragon Rage: a roaring blaze rushing over and its blast, twice. |
+| `use_extrasensory` | `SEQ_SE_DP_W020` | Extrasensory: three throbbing pulses rising and a ring. |
+| `use_imprison` | `SEQ_SE_DP_050` | Imprison: five clinks of bars dropped in turn and a deep lock. |
+| `use_sand_tomb` | `SEQ_SE_DP_W028` | Sand Tomb: gritty sand swirling round and round. |
+| `use_sandstorm` | `SEQ_SE_DP_W201` | Sandstorm: a long wind howling with sand in it. |
+| `use_tickle` | `SEQ_SE_DP_W197` | Tickle: four squeaky giggles over a sparkle. |
+| `use_uproar` | `SEQ_SE_DP_W253` | Uproar: a loud blaring din, three times. |
+| `use_double_slap` | `SEQ_SE_DP_030C` | Double Slap: two flat slaps. |
+| `use_follow_me` | `SEQ_SE_DP_W213` | Follow Me: a bright call for attention and three bouncy pops. |
+| `use_sing` | `SEQ_SE_DP_W047` | Sing: a soft lullaby of three long notes. |
+| `use_bug_bite` | `SEQ_SE_DP_W025B` | Bug Bite: four quick crunching bites. |
+| `use_encore` | `SEQ_SE_DP_W227B` | Encore: five claps in a row over a little tune. |
+| `use_explosion` | `SEQ_SE_DP_SHUSHU` | Explosion: a fuse hissing higher, a huge boom and a long roll. |
+| `use_flail` | `SEQ_SE_DP_050` | Flail: six frantic flaps and a thump. |
+| `use_ice_fang` | `SEQ_SE_DP_W044` | Ice Fang: a chomp and an icy crackle with a chime. |
+| `use_lucky_chant` | `SEQ_SE_DP_163` | Lucky Chant: bright bells climbing in a chant. |
+| `use_mimic` | `SEQ_SE_DP_W107` | Mimic: a warbling tone copied a beat later and a pop. |
+| `use_rest` | `SEQ_SE_DP_W173B` | Rest: two slow snoring breaths and a soft bell. |
+| `use_revenge` | `SEQ_SE_DP_W036` | Revenge: a low growl gathering and one heavy punch. |
+| `use_rock_blast` | `SEQ_SE_DP_W207` | Rock Blast: four rocks flung with knocks and rubble. |
+| `use_snore` | `SEQ_SE_DP_W173B` | Snore: two big rumbling snores. |
+| `use_sweet_scent` | `SEQ_SE_DP_W230` | Sweet Scent: a soft sweep of chimes with a shimmer. |
+| `use_twister` | `SEQ_SE_DP_060` | Twister: a wind spiralling up and round. |
+| `use_worry_seed` | `SEQ_SE_DP_001` | Worry Seed: a seed tossed with a plop and two uneasy notes. |
 
 ## Cries
 

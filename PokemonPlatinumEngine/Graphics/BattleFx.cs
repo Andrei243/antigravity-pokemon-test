@@ -174,6 +174,13 @@ internal readonly struct FxCtx
     /// <summary>Where the move ends: the target, or past it for a miss.</summary>
     public readonly Vector3 Aim;
 
+    /// <summary>
+    /// The body and the height of whoever stands across from the user in its slot (plan 25 · Y7b): where a move that
+    /// is cast on the user's own side but is for the foes (Imprison, a weather) puts its look.
+    /// </summary>
+    public readonly Vector3 Foe;
+    public readonly float FoeSize;
+
     public float Age => Cue.Age;
     public int Seed => Cue.Seed;
 
@@ -186,6 +193,9 @@ internal readonly struct FxCtx
         To = places.Body(cue.ToSide, cue.ToSlot);
         FromSize = places.Height(cue.FromSide, cue.FromSlot);
         ToSize = places.Height(cue.ToSide, cue.ToSlot);
+        var otherSide = cue.FromSide == BattleSide.Player ? BattleSide.Enemy : BattleSide.Player;
+        Foe = places.Body(otherSide, cue.FromSlot);
+        FoeSize = places.Height(otherSide, cue.FromSlot);
         Aim = To;
         if (cue.Missed)
         {
