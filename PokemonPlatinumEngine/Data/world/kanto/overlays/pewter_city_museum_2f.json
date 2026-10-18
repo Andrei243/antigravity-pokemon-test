@@ -1,0 +1,16 @@
+{
+  // The museum's upper floor (plan 19 · K3): space and the stone from Mt. Moon
+  "area": "pewter_city_museum_2f",
+  "bgmTrack": "kanto/viridian",
+  "people": {
+    "scientist": { "name": "Scientist", "dialog": [ "Up here we show what fell from space. The Moon Stone came from Mt. Moon, east of here." ] },
+    "man": { "name": "Man", "dialog": [ "That space shuttle took people all the way to the moon and back." ] },
+    "old_man_2": { "name": "Old Man", "dialog": [ "When I was young, nobody thought we'd ever leave the sky. Now look!" ] },
+    "little_girl": { "name": "Girl", "dialog": [ "Daddy, can Pokémon go to space too?" ] },
+    "balding_man": { "name": "Man", "dialog": [ "Of course they can, sweetheart. Some of them came from there in the first place." ] }
+  },
+  "signs": {
+    "PewterCity_Museum_2F_EventScript_MoonStone": "A stone that fell from the sky.\nIt's called the Moon Stone.",
+    "PewterCity_Museum_2F_EventScript_SpaceShuttle": "A model of a space shuttle."
+  }
+}

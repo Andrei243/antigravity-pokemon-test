@@ -1,0 +1,69 @@
+{
+  // Route 3 (plan 19 · K3): east of Pewter City toward Mt. Moon, which is plan 19 · K4's. Its trainers are FireRed's
+  // own, their teams read from Kanto's trainers.json by the trainer each object's script names
+  "area": "route_3",
+  "bgmTrack": "kanto/route3",
+  "trees": "Round",
+  "people": {
+    "youngster": { "name": "Youngster", "dialog": [ "Mt. Moon is just ahead. Bring plenty of Repel, the Zubat never stop!" ] },
+    "lass": {
+      "name": "Robin",
+      "trainer": {
+        "dialogueBefore": "Lass Robin: Eek! You stepped right in front of me. Now you have to battle!",
+        "dialogueAfter": "Lass Robin: Oh, that's not fair. You were so much stronger!"
+      }
+    },
+    "bug_catcher": {
+      "name": "James",
+      "trainer": {
+        "dialogueBefore": "Bug Catcher James: You can't beat my bugs! They've been training all week!",
+        "dialogueAfter": "Bug Catcher James: All week, and still not enough..."
+      }
+    },
+    "lass_2": {
+      "name": "Sally",
+      "trainer": {
+        "dialogueBefore": "Lass Sally: That look in your eyes! You want to battle, don't you?",
+        "dialogueAfter": "Lass Sally: You're good. I'll be careful who I stare at from now on."
+      }
+    },
+    "bug_catcher_2": {
+      "name": "Greg",
+      "trainer": {
+        "dialogueBefore": "Bug Catcher Greg: Hey! I caught these in Viridian Forest. Want to see?",
+        "dialogueAfter": "Bug Catcher Greg: Back to the forest to catch some stronger ones!"
+      }
+    },
+    "youngster_2": {
+      "name": "Calvin",
+      "trainer": {
+        "dialogueBefore": "Youngster Calvin: Wait! I've been waiting all day for a trainer to come along!",
+        "dialogueAfter": "Youngster Calvin: That was over quick. Maybe I'll wait a bit longer next time."
+      }
+    },
+    "lass_3": {
+      "name": "Janice",
+      "trainer": {
+        "dialogueBefore": "Lass Janice: You're a trainer too? Then let's see whose Pokémon are cuter!",
+        "dialogueAfter": "Lass Janice: Cute doesn't win battles, does it?"
+      }
+    },
+    "bug_catcher_3": {
+      "name": "Colton",
+      "trainer": {
+        "dialogueBefore": "Bug Catcher Colton: Bugs are the best! Want me to prove it?",
+        "dialogueAfter": "Bug Catcher Colton: Bugs are still the best. I'm just not."
+      }
+    },
+    "youngster_3": {
+      "name": "Ben",
+      "trainer": {
+        "dialogueBefore": "Youngster Ben: Hi! I like shorts. They're comfy and easy to wear. Let's battle!",
+        "dialogueAfter": "Youngster Ben: My shorts are still comfy, at least."
+      }
+    }
+  },
+  "signs": {
+    "Route3_EventScript_RouteSign": "Route 3\nMt. Moon ahead"
+  }
+}

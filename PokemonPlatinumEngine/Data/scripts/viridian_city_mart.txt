@@ -1,0 +1,30 @@
+# Viridian City's Poké Mart (plan 19 · K3). docs/scripts.md describes the language; the lines are our own, on
+# FireRed's beats (data/maps/ViridianCity_Mart/scripts.inc).
+#
+# VAR_MAP_SCENE_VIRIDIAN_CITY_MART, as FireRed counts it: 0 the Parcel waiting at the counter, 1 the Parcel carried
+# to Pallet Town, 2 the Pokédex had and the counter open.
+
+
+# The first time in (FireRed's OnFrame at 0): the clerk knows where the player is from and has something for Oak.
+script OnEnter
+  if var VAR_MAP_SCENE_VIRIDIAN_CITY_MART != 0 end
+  scene "Oak's Parcel"
+  face player up
+  speaker "Clerk"
+  say "Oh! You're from Pallet Town, aren't you? Then you know Professor Oak!"
+  say "His order came in this morning. Would you be a dear and take it to him for me?"
+  give "Parcel"
+  say "Thank you ever so much! Give him my regards."
+  setvar VAR_MAP_SCENE_VIRIDIAN_CITY_MART 1
+  endscene
+  end
+
+
+# The clerk: only the counter once the Parcel has gone to Oak.
+script MartClerk
+  if var VAR_MAP_SCENE_VIRIDIAN_CITY_MART >= 2 goto Open
+  say "Professor Oak's waiting on that parcel. Off you go, quick as you can!"
+  end
+label Open
+  call Clerk
+  end

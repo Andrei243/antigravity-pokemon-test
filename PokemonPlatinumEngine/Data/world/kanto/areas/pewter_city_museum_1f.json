@@ -1,0 +1,44 @@
+{
+  "key": "pewter_city_museum_1f",
+  "index": 264,
+  "name": "Pewter City",
+  "matrix": 211,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PEWTER",
+  "nightMusic": "MUS_PEWTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 13, "z": 9, "to": "pewter_city", "toWarp": 0 },
+    { "x": 14, "z": 9, "to": "pewter_city", "toWarp": 0 },
+    { "x": 15, "z": 9, "to": "pewter_city", "toWarp": 0 },
+    { "x": 21, "z": 9, "to": "pewter_city", "toWarp": 1 },
+    { "x": 22, "z": 9, "to": "pewter_city", "toWarp": 1 },
+    { "x": 8, "z": 8, "to": "pewter_city_museum_2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "museum_scientist1", "looks": "worker_m", "movement": "look_west", "x": 16, "z": 5, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "PewterCity_Museum_1F_EventScript_Scientist1" },
+    { "id": "old_man_1", "looks": "old_man_1", "movement": "look_east", "x": 2, "z": 4, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "PewterCity_Museum_1F_EventScript_OldMan" },
+    { "id": "scientist", "looks": "scientist", "movement": "look_south", "x": 21, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "PewterCity_Museum_1F_EventScript_OldAmberScientist" },
+    { "id": "old_amber", "looks": "old_amber", "movement": "look_south", "x": 22, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_OLD_AMBER", "script": "PewterCity_Museum_1F_EventScript_OldAmber" },
+    { "id": "scientist_2", "looks": "scientist", "movement": "look_east", "x": 26, "z": 4, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "PewterCity_Museum_1F_EventScript_Scientist2" },
+    { "id": "scientist_3", "looks": "scientist", "movement": "look_east", "x": 26, "z": 7, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "PewterCity_Museum_1F_EventScript_SeismicTossTutor" }
+  ],
+  "signs": [
+    { "x": 4, "z": 4, "type": 0, "script": "PewterCity_Museum_1F_EventScript_AerodactylFossil" },
+    { "x": 4, "z": 7, "type": 0, "script": "PewterCity_Museum_1F_EventScript_KabutopsFossil" },
+    { "x": 27, "z": 1, "type": 0, "script": "PewterCity_Museum_1F_EventScript_PokemonJournalBrock" },
+    { "x": 26, "z": 1, "type": 0, "script": "PewterCity_Museum_1F_EventScript_PokemonJournalBrock" }
+  ],
+  "triggers": [
+    { "x": 12, "z": 5, "width": 1, "depth": 1, "script": "PewterCity_Museum_1F_EventScript_EntranceTriggerLeft", "variable": "VAR_MAP_SCENE_PEWTER_CITY_MUSEUM_1F", "value": "0" },
+    { "x": 13, "z": 5, "width": 1, "depth": 1, "script": "PewterCity_Museum_1F_EventScript_EntranceTriggerMid", "variable": "VAR_MAP_SCENE_PEWTER_CITY_MUSEUM_1F", "value": "0" },
+    { "x": 14, "z": 5, "width": 1, "depth": 1, "script": "PewterCity_Museum_1F_EventScript_EntranceTriggerRight", "variable": "VAR_MAP_SCENE_PEWTER_CITY_MUSEUM_1F", "value": "0" }
+  ]
+}

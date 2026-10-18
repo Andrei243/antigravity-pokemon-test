@@ -1,0 +1,32 @@
+{
+  // The Pewter Museum of Science, ground floor (plan 19 · K3). The desk's ticket is pewter_city_museum_1f.txt's; the
+  // Old Amber, which a scientist gives in FireRed, waits for the fossils of plan 06 · R16 and K7, and only talks here
+  "area": "pewter_city_museum_1f",
+  "bgmTrack": "kanto/viridian",
+  "triggers": [ { "trigger": 0, "script": "Ticket" }, { "trigger": 1, "script": "Ticket" }, { "trigger": 2, "script": "Ticket" } ],
+  "people": {
+    "museum_scientist1": { "name": "Receptionist", "script": "Receptionist", "still": true },
+    "old_man_1": {
+      "name": "Old Man",
+      "dialog": [ "That skeleton is from a Pokémon that flew through the skies in ancient times. Imagine it!" ]
+    },
+    "scientist": {
+      "name": "Scientist",
+      "dialog": [ "This piece of amber has something inside. We're trying to work out what." ]
+    },
+    "old_amber": { "name": "Old Amber", "dialog": [ "A lump of amber, glowing gold. Something seems to be sealed inside." ] },
+    "scientist_2": {
+      "name": "Scientist",
+      "dialog": [ "We dig fossils out of Mt. Moon. They tell us how Pokémon lived long ago." ]
+    },
+    "scientist_3": {
+      "name": "Scientist",
+      "dialog": [ "Fossils and Pokémon, Pokémon and fossils. I could talk about them all day." ]
+    }
+  },
+  "signs": {
+    "PewterCity_Museum_1F_EventScript_AerodactylFossil": "A fossil of a flying Pokémon\nfrom long, long ago.",
+    "PewterCity_Museum_1F_EventScript_KabutopsFossil": "A fossil of a Pokémon\nthat lived in the ancient sea.",
+    "PewterCity_Museum_1F_EventScript_PokemonJournalBrock": "A magazine is open at an interview:\n\"Brock's rock-solid training methods.\""
+  }
+}

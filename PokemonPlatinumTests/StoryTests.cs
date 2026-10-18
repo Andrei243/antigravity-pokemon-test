@@ -662,6 +662,9 @@ public class StoryTests
     {
         var started = Walk.Starters().Select(s => Scripts.Find(s.Script, s.File)!.FullName).ToHashSet();
         started.UnionWith(new[] { FieldScripts.Nurse, FieldScripts.Clerk, FieldScripts.Pc, FieldScripts.Briefcase, FieldScripts.Attendant, FieldScripts.Trainer, FieldScripts.Talk, FieldScripts.Sign, ScriptLibrary.NewGame, ScriptLibrary.OpeningDone });
+        // Each region's own new game and Kanto's opening for an older save (plan 19 · K3), which StoryMigration runs
+        started.UnionWith(StoryMigration.RegionalNewGames);
+        started.Add("common.KantoOpeningDone");
         // The field moves': what an obstacle, the water, a waterfall and a rock face run, and what the party menu runs
         started.UnionWith(new[] { FieldScripts.CutTree, FieldScripts.Rock, FieldScripts.Boulder, FieldScripts.Water, FieldScripts.Waterfall, FieldScripts.RockFace });
         // An Escape Rope from the bag, and a gate onto the Cycling Road refusing someone on foot

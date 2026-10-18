@@ -209,6 +209,10 @@ public static class TrainerDatabase
     /// <summary>The rival's trainer class: his data's name stands for the one the player gives him.</summary>
     public const string RivalClass = "Rival";
 
+    /// <summary>The rival's class, or one of FireRed's two of him ("Rival Early", "Rival Late"; plan 19 · K3).</summary>
+    public static bool IsRival(string trainerClass) =>
+        trainerClass == RivalClass || trainerClass.StartsWith(RivalClass + " ", StringComparison.Ordinal);
+
     /// <summary>A trainer by its id (<c>youngster_tristan</c>) or its constant (<c>TRAINER_YOUNGSTER_TRISTAN</c>); null for none.</summary>
     public static TrainerRecord? Get(string? idOrConstant)
     {
@@ -238,8 +242,9 @@ public static class TrainerDatabase
         {
             if (string.IsNullOrEmpty(trainer.Name)) trainer.Name = record.Name;
             // The rival's name is the one the player gives him, not the data's
-            if (record.Class == RivalClass && trainer.Name == record.Name) trainer.Name = "{rival}";
-            if (string.IsNullOrEmpty(trainer.TrainerClass) || trainer.TrainerClass == "Trainer") trainer.TrainerClass = record.Class;
+            if (IsRival(record.Class) && trainer.Name == record.Name) trainer.Name = "{rival}";
+            // FireRed splits its rival's class in two (RIVAL_EARLY, RIVAL_LATE, plan 19 · K3): both are the rival's class here
+            if (string.IsNullOrEmpty(trainer.TrainerClass) || trainer.TrainerClass == "Trainer") trainer.TrainerClass = IsRival(record.Class) ? RivalClass : record.Class;
             trainer.PrizeMoney = record.PrizeMoney;
             trainer.DoubleBattle |= record.DoubleBattle;
         }

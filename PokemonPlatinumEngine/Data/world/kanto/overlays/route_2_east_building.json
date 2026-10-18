@@ -1,11 +1,12 @@
 {
-  // The building on Route 2's east lane (plan 19 · K2). Professor Oak's aide hands out HM05 Flash for ten species
-  // caught in the original: that is the story's (K3), with the Pokédex it counts; until then he only talks
+  // The building on Route 2's east lane (plan 19 · K2). Professor Oak's aide hands out Flash for ten species caught
+  // once the Pokédex is had (plan 19 · K3, route_2_east_building.txt); before it he only talks
   "area": "route_2_east_building",
   "bgmTrack": "kanto/viridian",
   "people": {
     "scientist": {
       "name": "Aide",
+      "script": "Aide",
       "dialog": [
         "I'm one of Professor Oak's aides. I keep an eye on how his Pokédex is coming along.",
         "Catch plenty of Pokémon and I may have something for you."

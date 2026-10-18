@@ -29,3 +29,58 @@ script GymDoorLocked
   say "The Gym's doors are locked tight. Nobody seems to be inside."
   walk player down
   end
+
+
+# ------------------------------------------------------------------ plan 19 · K3: the old man of the road north
+#
+# VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, as FireRed counts it: 0 the old man lying across the road north, grumpy for
+# want of his coffee (the area's trigger 0 turns the player back); 1 his coffee had, once the Pokédex is given, and
+# his lesson in catching waiting on the steps before him (triggers 2 and 3); 2 the lesson given. FireRed's lesson is a
+# battle the old man fights against a Weedle while the player watches; here he tells it, since this game's
+# watched lesson is the assistant's own (docs/mechanics/rulings.md, "Kanto's first chapter").
+
+
+# The step before the old man while he blocks the road (ViridianCity_EventScript_RoadBlocked).
+script RoadBlocked
+  face viridian_woman player
+  speaker "Woman"
+  say "Oh, I'm so sorry! That's my grandfather lying across the road. He won't budge until he's had his coffee."
+  say "Could you go round another way for now?"
+  walk player down 1
+  end
+
+
+# The old man, by what he has had.
+script OldMan
+  if var VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN >= 1 goto Awake
+  say "Grumble... This is private property! No coffee, no passing. Go away!"
+  end
+label Awake
+  say "Ahh, I've had my coffee and I feel like a new man. Off you go, the road north is all yours."
+  end
+
+
+# His granddaughter, by the same.
+script Granddaughter
+  if var VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN >= 1 goto Better
+  sayown
+  end
+label Better
+  say "Grandpa's had his coffee at last. He's much nicer now, isn't he?"
+  end
+
+
+# The steps before him once he is awake (ViridianCity_EventScript_TutorialTrigger): he stops the player and tells
+# how a Pokémon is caught.
+script Tutorial
+  scene "The old man's lesson"
+  face tutorial_man player
+  emote tutorial_man exclaim
+  speaker "Old Man"
+  say "Ah, there you are! You look like a trainer in a hurry. Got a Pokédex, have you?"
+  say "Then listen to an old man. You can't just throw a Poké Ball at any wild Pokémon and hope."
+  say "Wear it down in battle first, without making it faint. The weaker it is, the easier it is to catch."
+  say "A Pokémon that's asleep or paralysed is easier still. Now go and try it for yourself!"
+  setvar VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN 2
+  endscene
+  end

@@ -1,0 +1,29 @@
+{
+  "key": "pewter_city_house_1",
+  "index": 268,
+  "name": "Pewter City",
+  "matrix": 215,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PEWTER",
+  "nightMusic": "MUS_PEWTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 7, "to": "pewter_city", "toWarp": 4 },
+    { "x": 4, "z": 7, "to": "pewter_city", "toWarp": 4 },
+    { "x": 5, "z": 7, "to": "pewter_city", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "balding_man", "looks": "balding_man", "movement": "look_north", "x": 1, "z": 2, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "PewterCity_House1_EventScript_BaldingMan" },
+    { "id": "little_boy", "looks": "little_boy", "movement": "look_east", "x": 5, "z": 3, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "PewterCity_House1_EventScript_LittleBoy" },
+    { "id": "pewter_house_nidoran", "looks": "nidoran_m", "movement": "look_west", "x": 6, "z": 3, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "PewterCity_House1_EventScript_Nidoran" }
+  ],
+  "signs": [],
+  "triggers": []
+}

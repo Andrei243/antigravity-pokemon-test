@@ -1,0 +1,43 @@
+{
+  // Pewter City (plan 19 · K3): FireRed's map, our words; it plays Viridian's song, as FireRed plays one song in both.
+  // The Gym's guide who stops the player on the road east and Oak's aide with the Running Shoes are pewter_city.txt's
+  "area": "pewter_city",
+  "bgmTrack": "kanto/viridian",
+  "trees": "Round",
+  "architecture": "Granite",
+  "triggers": [
+    { "trigger": 0, "script": "GymGuide" }, { "trigger": 1, "script": "GymGuide" }, { "trigger": 2, "script": "GymGuide" },
+    { "trigger": 3, "script": "GymGuide" },
+    { "trigger": 4, "script": "RunningShoes" }, { "trigger": 5, "script": "RunningShoes" }, { "trigger": 6, "script": "RunningShoes" }
+  ],
+  "people": {
+    "pewter_gym_guide": { "name": "Boy", "script": "GymGuide", "still": true },
+    "pewter_aide": { "name": "Aide", "script": "RunningShoes", "still": true },
+    "pewter_museum_guide": { "name": "Man", "script": "MuseumGuide" },
+    "lass": {
+      "name": "Lass",
+      "dialog": [
+        "They say Clefairy came down to Mt. Moon from the stars.",
+        "I'd love to see one dancing under the moon!"
+      ]
+    },
+    "fat_man": {
+      "name": "Man",
+      "dialog": [ "Brock's the only trainer in this town worth worrying about. The rest of us just watch!" ]
+    },
+    "bug_catcher": {
+      "name": "Boy",
+      "dialog": [
+        "I'm spraying Repel round the flowers to keep wild Pokémon out of the garden.",
+        "Gardening is hard work!"
+      ]
+    }
+  },
+  "signs": {
+    "PewterCity_EventScript_CitySign": "Pewter City\nA stone grey city.",
+    "PewterCity_EventScript_MuseumSign": "Pewter Museum of Science",
+    "PewterCity_EventScript_GymSign": "Pewter City Pokémon Gym\nLeader: Brock\nThe rock-solid Pokémon trainer!",
+    "PewterCity_EventScript_TrainerTips": "TRAINER TIPS\nEvery Pokémon that takes part in a battle\nearns experience, not only the one that wins.",
+    "PewterCity_EventScript_PoliceNotice": "NOTICE\nThieves have been seen near Mt. Moon.\nPlease report anything suspicious."
+  }
+}

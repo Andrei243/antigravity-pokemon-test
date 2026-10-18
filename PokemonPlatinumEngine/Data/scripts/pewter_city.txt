@@ -1,0 +1,67 @@
+# Pewter City (plan 19 · K3). docs/scripts.md describes the language; the lines are our own, on FireRed's beats
+# (data/maps/PewterCity/scripts.inc).
+#
+# VAR_MAP_SCENE_PEWTER_CITY, as FireRed counts it: 0 until the Boulder Badge, when the Gym's guide stops whoever heads
+# east for Route 3 and brings them to the Gym (the area's triggers 0 to 3); 1 the Badge won, when Oak's aide waits on
+# the same road with the Running Shoes (triggers 4 to 6); 2 the shoes given. FireRed's guide walks the player round to
+# the Gym's door; here the picture goes dark and comes up again before it (docs/mechanics/rulings.md, "Kanto's first
+# chapter").
+
+
+# FireRed's OnTransition: the museum asks for its ticket again on every visit to the city.
+script OnEnter
+  setvar VAR_MAP_SCENE_PEWTER_CITY_MUSEUM_1F 0
+  end
+
+
+# The guide on the road east, before the Badge (the area's triggers 0 to 3, and the guide spoken to).
+script GymGuide
+  scene "To the Gym"
+  face pewter_gym_guide player
+  emote pewter_gym_guide exclaim
+  speaker "Boy"
+  say "Hey, you're a trainer, right? Brock's always looking for someone new to battle! Come on, the Gym's this way!"
+  fade out
+  place player 63 77 up
+  place pewter_gym_guide 64 77 up
+  fade in
+  face pewter_gym_guide player
+  say "There, that's the Gym. Go on, show Brock what you can do!"
+  fade out
+  place pewter_gym_guide 90 80 down
+  fade in
+  endscene
+  end
+
+
+# Oak's aide on the road east once the Badge is won (triggers 4 to 6): the Running Shoes, with a note from Mom.
+script RunningShoes
+  scene "The Running Shoes"
+  face pewter_aide player
+  emote pewter_aide exclaim
+  speaker "Aide"
+  say "Oh, {player}! There you are. Professor Oak asked me to bring you something."
+  say "Your mother sent these to the lab for you. A pair of Running Shoes!"
+  setflag FLAG_HAS_RUNNING_SHOES
+  fanfare keyitem
+  text "{player} put on the Running Shoes!"
+  say "Hold the run button down as you walk, and you'll go twice as fast. There's a note with them, too."
+  text "\"Don't forget to rest when you're tired, and call home now and then. Love, Mom.\""
+  say "Well, I'd better be getting back to the lab. Good luck out there!"
+  walk pewter_aide right 4
+  hide pewter_aide
+  setflag FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  setvar VAR_MAP_SCENE_PEWTER_CITY 2
+  endscene
+  end
+
+
+# The man by the museum, who asks whether the player has seen it.
+script MuseumGuide
+  ask "Have you been to the Museum of Science yet? It's full of fossils!"
+  if yes goto Seen
+  say "You haven't? You really must. It's just over there, by the big rocks."
+  end
+label Seen
+  say "Weren't those fossils amazing? Imagine Pokémon that lived so long ago!"
+  end

@@ -1,0 +1,31 @@
+# The Pewter Museum of Science, ground floor (plan 19 · K3). docs/scripts.md describes the language; the lines are
+# our own, on FireRed's beats (data/maps/PewterCity_Museum_1F/scripts.inc).
+#
+# The steps past the desk (the area's triggers 0 to 2, on VAR_MAP_SCENE_PEWTER_CITY_MUSEUM_1F 0, which the city sets
+# back to 0 on every visit): a child's ticket is 50, and whoever won't pay or can't is turned back.
+
+
+script Ticket
+  face museum_scientist1 player
+  speaker "Receptionist"
+  ask "Welcome! A child's ticket is 50. Would you like to come in?"
+  if no goto NotToday
+  takemoney 50
+  if result == 0 goto Short
+  say "Thank you! Please enjoy the exhibits."
+  setvar VAR_MAP_SCENE_PEWTER_CITY_MUSEUM_1F 1
+  end
+label Short
+  say "Oh dear, you don't have enough money. Please come back another time."
+  walk player down 1
+  end
+label NotToday
+  say "Do come again!"
+  walk player down 1
+  end
+
+
+# The receptionist, spoken to from inside.
+script Receptionist
+  say "Amber is sap from ancient trees that hardened over time. Sometimes something is caught inside it."
+  end

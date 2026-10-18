@@ -60,16 +60,22 @@ public class KantoTests
     }
 
     [Fact]
-    public void ANewGameInKantoBeginsBeforeThePlayersHouseInPalletTown()
+    public void ANewGameInKantoBeginsInThePlayersRoomAndAChampionArrivesBeforeTheHouse()
     {
-        var start = RegionDatabase.Get(RegionDatabase.Kanto)!.Start!;
-        Assert.Equal("Kanto", start.Map);
-        Assert.True(Overworld.IsWalkable(start.X, start.Y));
-        Assert.Equal("pallet_town", Overworld.AreaAt(start.X, start.Y)?.Key);
-        Assert.Equal("Pallet Town", Overworld.DisplayNameAt(start.X, start.Y));
-        // The door right behind is the player's house
-        Assert.Equal("PalletTown_PlayersHouse_1F", Overworld.GetWarpAt(start.X, start.Y - 1)?.TargetMap);
-        Assert.Equal("Kanto", RegionDatabase.Get(RegionDatabase.Kanto)!.OverworldMap);
+        // Since plan 19 · K3 a new game wakes upstairs at home, on FireRed's tile of the bedroom
+        var kanto = RegionDatabase.Get(RegionDatabase.Kanto)!;
+        var start = kanto.Start!;
+        Assert.Equal(new MapSpot("PalletTown_PlayersHouse_2F", 6, 6, Direction.Up), start);
+        Assert.True(BuiltMaps.Value[start.Map].IsWalkable(start.X, start.Y));
+        Assert.True(kanto.HasStory);
+        // Whoever crosses from Sinnoh steps out before the house, the door right behind
+        var arrival = kanto.ArrivalSpot!;
+        Assert.Equal("Kanto", arrival.Map);
+        Assert.True(Overworld.IsWalkable(arrival.X, arrival.Y));
+        Assert.Equal("pallet_town", Overworld.AreaAt(arrival.X, arrival.Y)?.Key);
+        Assert.Equal("Pallet Town", Overworld.DisplayNameAt(arrival.X, arrival.Y));
+        Assert.Equal("PalletTown_PlayersHouse_1F", Overworld.GetWarpAt(arrival.X, arrival.Y - 1)?.TargetMap);
+        Assert.Equal("Kanto", kanto.OverworldMap);
     }
 
     [Fact]

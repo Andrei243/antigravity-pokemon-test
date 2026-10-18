@@ -1,0 +1,27 @@
+# Victory over a Gym Leader of Kanto (FireRed's MUS_VICTORY_GYM_LEADER, also the Elite Four's): a proud brass
+# fanfare and a loop in G. Original composition for this game (plan 19 · K3).
+title Victory! Gym Leader (Kanto)
+tempo 140
+meter 4/4
+reverb 0.24
+
+track lead brass vol=0.8 pan=0 rev=0.26
+  o5 d8 r16 d16 d8 r8 g4 b4 | o6 d2. r4 | L o5 b4 o6 d8 o5 b8 g4 d4 | o5 c4 e8 g8 o6 c4 o5 g4 |
+  o5 a4 f+8 a8 o6 d4 o5 a4 | o5 g2 b4 o6 d4 | o5 e4 g8 b8 g4 e4 | o5 e4 g4 o6 c4 o5 g4 |
+  o5 a4 o6 c4 o5 a4 f+4 | o5 g2. r4 |
+
+track pad strings vol=0.36 pan=0.3 rev=0.34
+  o4 (d g b)1 | (d g b)1 | L (d g b)1 | (e g >c)1 |
+  (d f+ a)1 | (d g b)1 | (e g b)1 | (e g >c)1 |
+  (c e a)2 (d f+ a)2 | (d g b)1 |
+
+track bass bass vol=0.66 rev=0.08
+  o3 g8 r8 g8 r8 g4 d4 | o3 g2. r4 | L o3 g4 d4 g4 d4 | o3 c4 g4 c4 g4 |
+  o3 d4 a4 d4 a4 | o3 g4 d4 g4 d4 | o3 e4 b4 e4 b4 | o3 c4 g4 c4 g4 |
+  o3 a4 e4 d4 a4 | o3 g4 d4 g2 |
+
+track drums kit vol=0.46 rev=0.12
+  v90 b8 s16 s16 s8 r8 b4 b4 | (b c)2. r4 | L [ b4 s4 b8 b8 s4 | ]7 b4 s4 s16 s16 s16 s16 s8 s8 |
+
+track hats kit vol=0.42 pan=0.15 rev=0.1
+  r1 | r1 | L v60 [ h8 v40 h8 v60 h8 v40 h8 v60 h8 v40 h8 v60 h8 v40 h8 v60 | ]8

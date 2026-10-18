@@ -1,0 +1,52 @@
+{
+  "key": "pewter_city",
+  "index": 8,
+  "name": "Pewter City",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PEWTER",
+  "nightMusic": "MUS_PEWTER",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 65, "z": 66, "to": "pewter_city_museum_1f", "toWarp": 1 },
+    { "x": 73, "z": 64, "to": "pewter_city_museum_1f", "toWarp": 3 },
+    { "x": 63, "z": 76, "to": "pewter_city_gym", "toWarp": 1 },
+    { "x": 76, "z": 78, "to": "pewter_city_mart", "toWarp": 1 },
+    { "x": 81, "z": 71, "to": "pewter_city_house_1", "toWarp": 1 },
+    { "x": 65, "z": 85, "to": "pewter_city_pokemon_center_1f", "toWarp": 1 },
+    { "x": 57, "z": 90, "to": "pewter_city_house_2", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "lass", "looks": "lass", "movement": "look_around", "x": 54, "z": 75, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "PewterCity_EventScript_Lass" },
+    { "id": "pewter_museum_guide", "looks": "man", "movement": "look_around", "x": 81, "z": 77, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_PEWTER_MUSEUM_GUIDE", "script": "PewterCity_EventScript_MuseumGuide" },
+    { "id": "fat_man", "looks": "fat_man", "movement": "look_south", "x": 69, "z": 88, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "PewterCity_EventScript_FatMan" },
+    { "id": "bug_catcher", "looks": "bug_catcher", "movement": "wander_west_and_east", "x": 81, "z": 87, "facing": 2, "rangeX": 2, "rangeZ": 1, "script": "PewterCity_EventScript_BugCatcher" },
+    { "id": "pewter_gym_guide", "looks": "boy", "movement": "look_south", "x": 90, "z": 80, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_PEWTER_CITY_GYM_GUIDE", "script": "PewterCity_EventScript_GymGuide" },
+    { "id": "cut_tree", "looks": "cut_tree", "movement": "look_south", "x": 78, "z": 65, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_12", "script": "EventScript_CutTree" },
+    { "id": "pewter_aide", "looks": "scientist", "movement": "look_east", "x": 94, "z": 80, "facing": 3, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY", "script": "PewterCity_EventScript_RunningShoesAide" }
+  ],
+  "signs": [
+    { "x": 67, "z": 67, "type": 0, "script": "PewterCity_EventScript_MuseumSign" },
+    { "x": 87, "z": 79, "type": 0, "script": "PewterCity_EventScript_PoliceNotice" },
+    { "x": 59, "z": 76, "type": 0, "script": "PewterCity_EventScript_GymSign" },
+    { "x": 68, "z": 90, "type": 0, "script": "PewterCity_EventScript_TrainerTips" },
+    { "x": 79, "z": 85, "type": 0, "script": "PewterCity_EventScript_CitySign" },
+    { "x": 54, "z": 63, "type": 2, "script": "", "item": "Poké Ball", "flag": "FLAG_HIDDEN_ITEM_PEWTER_CITY_POKE_BALL" }
+  ],
+  "triggers": [
+    { "x": 90, "z": 81, "width": 1, "depth": 1, "script": "PewterCity_EventScript_GymGuideTriggerTop", "variable": "VAR_MAP_SCENE_PEWTER_CITY", "value": "0" },
+    { "x": 90, "z": 82, "width": 1, "depth": 1, "script": "PewterCity_EventScript_GymGuideTriggerMid", "variable": "VAR_MAP_SCENE_PEWTER_CITY", "value": "0" },
+    { "x": 90, "z": 83, "width": 1, "depth": 1, "script": "PewterCity_EventScript_GymGuideTriggerBottom", "variable": "VAR_MAP_SCENE_PEWTER_CITY", "value": "0" },
+    { "x": 91, "z": 83, "width": 1, "depth": 1, "script": "PewterCity_EventScript_GymGuideTriggerRight", "variable": "VAR_MAP_SCENE_PEWTER_CITY", "value": "0" },
+    { "x": 94, "z": 81, "width": 1, "depth": 1, "script": "PewterCity_EventScript_RunningShoesAideTriggerTop", "variable": "VAR_MAP_SCENE_PEWTER_CITY", "value": "1" },
+    { "x": 94, "z": 82, "width": 1, "depth": 1, "script": "PewterCity_EventScript_RunningShoesAideTriggerMid", "variable": "VAR_MAP_SCENE_PEWTER_CITY", "value": "1" },
+    { "x": 94, "z": 83, "width": 1, "depth": 1, "script": "PewterCity_EventScript_RunningShoesAideTriggerBottom", "variable": "VAR_MAP_SCENE_PEWTER_CITY", "value": "1" }
+  ]
+}

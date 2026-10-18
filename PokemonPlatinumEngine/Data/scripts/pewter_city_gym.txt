@@ -1,0 +1,52 @@
+# The Pewter City Gym (plan 19 · K3). docs/scripts.md describes the language; the lines are our own, on FireRed's
+# beats (data/maps/PewterCity_Gym/scripts.inc).
+#
+# Brock battles for the Boulder Badge (FLAG_BADGE01_GET is the badge itself, `givebadge boulder`) and gives TM39, Rock
+# Tomb. His Badge sends the Gym's guide home from the road east, brings Oak's aide with the Running Shoes into the
+# city (VAR_MAP_SCENE_PEWTER_CITY 1) and counts his trainer beaten (FireRed's set_gym_trainers).
+
+
+script Brock
+  face brock player
+  speaker "Brock"
+  if badge boulder goto Won
+  scene "Brock"
+  say "So you're the new challenger. I'm Brock, Pewter's Gym Leader."
+  say "I believe in rock-hard defence and unshakable will. My Pokémon are Rock types, solid to the core."
+  say "Show me what you've got!"
+  battle self as "kanto_leader_brock"
+  say "...I misjudged you. You and your Pokémon fought as one. That deserves the Boulder Badge."
+  givebadge boulder
+  text "{player} received the Boulder Badge from Brock!"
+  say "With it, Flash can be used outside battle, and Pokémon you get in trades will listen to you a little better."
+  setflag FLAG_DEFEATED_BROCK
+  setvar VAR_MAP_SCENE_PEWTER_CITY 1
+  setflag FLAG_HIDE_PEWTER_CITY_GYM_GUIDE
+  clearflag FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  defeat "kanto_camper_liam"
+label Tm
+  say "Wait, take this as well. It's a TM of my own choosing."
+  give "TM39"
+  setflag FLAG_GOT_TM39_FROM_BROCK
+  say "TM39 holds Rock Tomb. It drops rocks on the foe and slows it down. A move worthy of a Pewter trainer."
+  say "There are other Gyms all over Kanto, each tougher than the last. Go and test yourself against them."
+  endscene
+  end
+label Won
+  if not flag FLAG_GOT_TM39_FROM_BROCK goto Tm
+  say "The world is big, and there are trainers far stronger than me out there. Keep at it!"
+  end
+
+
+# The guide by the door: advice before the Badge, praise after.
+script GymGuy
+  speaker "Gym Guide"
+  if badge boulder goto Won
+  say "Hey, future Champion! Brock's Pokémon are Rock types, hard as stone."
+  say "Normal moves bounce right off them. Water and Grass moves are what they hate."
+  say "If your Pokémon can't do either, train up a bit more before you take him on!"
+  end
+label Won
+  say "You beat Brock! I knew you had what it takes. Champion material, that's you!"
+  end
+

@@ -1,0 +1,24 @@
+# The rival turns up (FireRed's MUS_ENCOUNTER_RIVAL, the region's role `rival`): a cocky, strutting tune in A minor,
+# a sawtooth lead over pumping octaves. Original composition for this game (plan 19 · K3).
+title Here Comes the Rival (Kanto)
+tempo 152
+meter 4/4
+reverb 0.18
+
+track lead sawlead vol=0.7 pan=0 rev=0.18
+  L o5 a8 e8 a8 e8 o6 c4 o5 a4 | o5 g8 a8 o6 c8 o5 a8 e4 c4 | o5 f8 a8 o6 c8 o5 a8 f4 c4 | o5 g8 b8 o6 d8 o5 b8 g4 d4 |
+  o5 a4 o6 c8 e8 d4 c4 | o5 b8 a8 e8 c8 a4 e4 | o5 f4 a4 o6 c4 o5 a4 | o5 g+4 b4 e4 g+4 |
+
+track pad strings vol=0.3 pan=-0.25 rev=0.3
+  L o4 (a >c e)1 | (a >c e)1 | (f a >c)1 | (g b >d)1 |
+  (a >c e)1 | (a >c e)1 | (f a >c)1 | (e g+ b)1 |
+
+track bass synthbass vol=0.66 rev=0.06
+  L o2 a8 o3 a8 o2 a8 o3 a8 o2 a8 o3 a8 o2 a8 o3 a8 | o2 a8 o3 a8 o2 a8 o3 a8 o2 a8 o3 a8 o2 a8 o3 a8 | o2 f8 o3 f8 o2 f8 o3 f8 o2 f8 o3 f8 o2 f8 o3 f8 | o2 g8 o3 g8 o2 g8 o3 g8 o2 g8 o3 g8 o2 g8 o3 g8 |
+  o2 a8 o3 a8 o2 a8 o3 a8 o2 a8 o3 a8 o2 a8 o3 a8 | o2 a8 o3 a8 o2 a8 o3 a8 o2 a8 o3 a8 o2 a8 o3 a8 | o2 f8 o3 f8 o2 f8 o3 f8 o2 f8 o3 f8 o2 f8 o3 f8 | o2 e8 o3 e8 o2 e8 o3 e8 o2 e8 o3 e8 o2 e8 o3 e8 |
+
+track drums kit vol=0.5 rev=0.1
+  v95 L [ b8 r8 s8 b8 r8 b8 s8 r8 | ]8
+
+track hats kit vol=0.42 pan=0.15 rev=0.1
+  v65 L [ h8 v45 h8 v65 h8 v45 h8 v65 h8 v45 h8 v65 h8 v45 h8 v65 | ]8

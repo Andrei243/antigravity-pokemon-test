@@ -1158,3 +1158,41 @@ script Grown1
   daycare grown 1
   if result > 0 say "By my reckoning, your {daycare:1} has grown by about {grown:1} levels."
   return
+
+
+# ------------------------------------------------------------------ Kanto (plan 19 · K3)
+
+# What every game starts with in Kanto, as FireRed's new game sets it (its EventScript_ResetAllMapFlags, for the
+# people of the first chapter): Professor Oak away from his lab and off the road north of Pallet Town until he stops
+# the player in the grass, the rival not yet on Route 22, and the aide with the Running Shoes not yet in Pewter City.
+# Run with no screen after NewGame for every new game (Story/StoryMigration.BeginNewGame runs each region's
+# <Region>NewGame), and for a save from before Kanto's story was written (version 20). It may only set flags and
+# variables, and ends in return.
+script KantoNewGame
+  setflag FLAG_HIDE_OAK_IN_PALLET_TOWN
+  setflag FLAG_HIDE_OAK_IN_HIS_LAB
+  setflag FLAG_HIDE_ROUTE_22_RIVAL
+  setflag FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  return
+
+
+# What Kanto's first steps leave behind once they are played (plan 19 · K3): run with no screen for a save of Kanto
+# from before its story was written, whose game began in front of the player's house with a Pokémon and a few items
+# already (Story/StoryMigration.cs, version 20). Oak has stopped the player in the grass, the starters are chosen, the
+# rival beaten in the lab, the Parcel delivered and the Pokédex had; the old man of Viridian City has had his coffee.
+script KantoOpeningDone
+  setvar VAR_MAP_SCENE_PALLET_TOWN_OAK 1
+  setvar VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB 6
+  setvar VAR_MAP_SCENE_VIRIDIAN_CITY_MART 2
+  setvar VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN 2
+  setvar VAR_MAP_SCENE_PALLET_TOWN_RIVALS_HOUSE 1
+  setvar VAR_MAP_SCENE_ROUTE22 1
+  setflag FLAG_HIDE_OAK_IN_PALLET_TOWN
+  clearflag FLAG_HIDE_OAK_IN_HIS_LAB
+  setflag FLAG_HIDE_RIVAL_IN_LAB
+  setflag FLAG_HIDE_POKEDEX
+  setflag FLAG_HIDE_BULBASAUR_BALL
+  setflag FLAG_HIDE_CHARMANDER_BALL
+  setflag FLAG_HIDE_SQUIRTLE_BALL
+  setflag FLAG_HAS_POKEDEX
+  return
