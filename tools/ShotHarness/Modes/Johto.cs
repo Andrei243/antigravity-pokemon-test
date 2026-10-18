@@ -31,6 +31,9 @@ partial class Harness
             }
         }
         Areas("day");
+        // Route 32 (plan 20 · J4), from its head and by the Pokémon Center
+        At("Johto", 470, 320, Direction.Down); Frames(2); Shot("jw15_route_32_north");
+        At("Johto", 466, 412, Direction.Down); Frames(2); Shot("jw16_route_32_south");
         // Close up at the screen's own resolution: New Bark Town's turbines and houses, Cherrygrove's front
         At("Johto", 690, 400, Direction.Up); Frames(2); Shot("jw11_new_bark_houses"); ShotCrop("jw11_new_bark_houses_native", 640, 300, 640, 360, 2);
         At("Johto", 560, 395, Direction.Up); Frames(2); Shot("jw12_cherrygrove_center"); ShotCrop("jw12_cherrygrove_center_native", 640, 300, 640, 360, 2);
@@ -42,7 +45,10 @@ partial class Harness
             "cherrygrove_pokecenter_1f", "cherrygrove_pokecenter_b1f", "cherrygrove_pokemart", "cherrygrove_guide_gent_house",
             "cherrygrove_southwest_house", "cherrygrove_southeast_house", "route_30_apricorn_house", "route_30_mr_pokemon_house",
             "route_31_violet_gatehouse", "violet_pokecenter_1f", "violet_pokecenter_b1f", "violet_pokemart", "violet_pokemon_school",
-            "violet_northwest_house", "violet_bellsprout_onyx_trade_house", "violet_route_36_gatehouse"
+            "violet_northwest_house", "violet_bellsprout_onyx_trade_house", "violet_route_36_gatehouse",
+            // plan 20 · J4: Violet's Gym, Sprout Tower's floors and Route 32's rooms
+            "violet_gym", "sprout_tower_1f", "sprout_tower_2f", "sprout_tower_3f", "route_32_pokecenter_1f", "route_32_pokecenter_b1f",
+            "route_32_ruins_of_alph_gatehouse"
         };
         for (int i = 0; i < rooms.Length; i++)
         {
@@ -97,6 +103,7 @@ partial class Harness
                 Timing("johto " + key);
             }
         }
+        JohtoScenes();
         engine.NewGameRegion = "Sinnoh";
     }
 }
