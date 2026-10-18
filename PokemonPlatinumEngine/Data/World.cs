@@ -675,7 +675,7 @@ public static class WorldMapBuilder
             if (!map.InBounds(dx, dz) || taken.Contains((dx, dz))) continue;
             // A way off a map of its own straight onto the region's open country is no building's door (plan 19 · K4,
             // part b: the S.S. Anne's gangway at Vermilion's pier)
-            if (overworld != null && map.Name != overworld && warp.TargetMap.Equals(overworld, StringComparison.OrdinalIgnoreCase)) continue;
+            if (overworld != null && map.Name != overworld && warp.Target != null && warp.Target.Equals(overworld, StringComparison.OrdinalIgnoreCase)) continue;
             bool isDoor = map.BehaviourAt(dx, dz) == TileBehavior.Door;
             if (!isDoor && (map.IsSolid(dx, dz) || !blank.Contains((dx, dz + 1)) && !blank.Contains((dx, dz - 1)))) continue;
             // The run of such tiles along a row through the door's column, no further than half the widest either way

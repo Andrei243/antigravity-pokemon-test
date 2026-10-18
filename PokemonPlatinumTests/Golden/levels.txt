@@ -382,6 +382,12 @@ surf 20-40
 old rod 3-15
 good rod 10-25
 super rod 30-55
+=== petalburg_city
+Petalburg City
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 20-45
 === pewter_city_gym
 Pewter City
 trainers 1, 10-11: kanto_camper_liam 11
@@ -407,6 +413,25 @@ super rod 1-100
 === route_1
 Route 1
 grass 2-5
+=== route_101
+Route 101
+grass 2-3
+=== route_102
+Route 102
+grass 3-4
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 20-45
+trainers 4, 3-5: hoenn_allen 4, hoenn_calvin_1 5, hoenn_rick 4, hoenn_tiana 4
+=== route_103
+Route 103
+grass 2-4
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 25-45
+trainers 8, 5-15: hoenn_amy_and_liv_1 15, hoenn_andrew 15, hoenn_daisy 14, hoenn_isabelle 15, hoenn_marcos 15, hoenn_miguel_1 15, hoenn_pete 15, hoenn_rhett 15
 === route_11
 Route 11
 grass 11-17
